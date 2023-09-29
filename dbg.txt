@@ -1,12 +1,12 @@
 version	major=2,minor=0
 info	csym=0,file=549,lib=1,line=5022,mod=9,scope=0,seg=11,span=0,sym=0,type=0
-file	id=0,name="crt0.s",size=4447,mtime=0x63F0EBD6,mod=0
+file	id=0,name="crt0.s",size=4445,mtime=0x6516451D,mod=0
 file	id=1,name="zeropage.inc",size=717,mtime=0x651625E4,mod=0
 file	id=2,name="LIB/neslib.s",size=14968,mtime=0x63F0EBD6,mod=0
 file	id=3,name="LIB/nesdoug.s",size=11667,mtime=0x63F0EBD6,mod=0
 file	id=4,name="MUSIC/famitone2.s",size=27594,mtime=0x63F0EBD6,mod=0
-file	id=5,name="platformer.chr",size=8192,mtime=0x63F0EBD6,mod=0
-file	id=6,name="famidash.s",size=42606,mtime=0x651629F8,mod=1
+file	id=5,name="famidash.chr",size=8192,mtime=0x65162260,mod=0
+file	id=6,name="famidash.s",size=42606,mtime=0x65163949,mod=1
 file	id=7,name="longbranch.mac",size=2632,mtime=0x651625D8,mod=1
 file	id=8,name="/Users/mortenj/src/cc65/asminc/cpu.mac",size=843,mtime=0x5C6D5D08,mod=4+5
 file	id=9,name="/Users/mortenj/src/cc65/asminc/zeropage.inc",size=721,mtime=0x5C6D5D08,mod=8

@@ -142,39 +142,39 @@ _RoundSprR:
 	.byte	$00
 	.byte	$80
 _palette_bg:
-	.byte	$22
-	.byte	$16
-	.byte	$36
+	.byte	$21
+	.byte	$0C
 	.byte	$0F
-	.byte	$00
-	.byte	$08
-	.byte	$18
-	.byte	$39
-	.byte	$00
-	.byte	$00
-	.byte	$10
-	.byte	$20
-	.byte	$00
-	.byte	$0A
-	.byte	$1A
-	.byte	$2A
-_palette_sp:
-	.byte	$22
-	.byte	$01
-	.byte	$11
-	.byte	$10
-	.byte	$22
-	.byte	$17
-	.byte	$28
-	.byte	$38
-	.byte	$22
-	.byte	$05
-	.byte	$15
-	.byte	$35
-	.byte	$22
-	.byte	$0F
-	.byte	$00
 	.byte	$30
+	.byte	$21
+	.byte	$01
+	.byte	$1C
+	.byte	$30
+	.byte	$21
+	.byte	$28
+	.byte	$14
+	.byte	$20
+	.byte	$21
+	.byte	$0F
+	.byte	$00
+	.byte	$20
+_palette_sp:
+	.byte	$00
+	.byte	$0F
+	.byte	$2A
+	.byte	$21
+	.byte	$00
+	.byte	$12
+	.byte	$22
+	.byte	$32
+	.byte	$00
+	.byte	$13
+	.byte	$23
+	.byte	$33
+	.byte	$00
+	.byte	$14
+	.byte	$24
+	.byte	$34
 _metatiles1:
 	.byte	$00
 	.byte	$00
@@ -1806,9 +1806,9 @@ L0004:	jsr     decsp2
 	lda     _Cube
 	sta     _old_x
 ;
-; Cube.vel_x = 0x100;
+; Cube.vel_x = 0x200;
 ;
-	ldx     #$01
+	ldx     #$02
 	lda     #$00
 	sta     _Cube+4
 	stx     _Cube+4+1
@@ -1837,7 +1837,7 @@ L0004:	jsr     decsp2
 	lda     _old_x+1
 	sbc     #$80
 	lda     #$00
-	dex
+	tax
 	bcc     L0025
 ;
 ; Cube.x = 0xf000; // max right

@@ -116,7 +116,7 @@ void movement(void){
 
 	old_x = Cube.x;
 	
-	Cube.vel_x = 0x100;
+	Cube.vel_x = 0x200;
 	/*
 	if(pad1 & PAD_LEFT){
 		direction = LEFT;

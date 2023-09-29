@@ -286,4 +286,4 @@ sounds_data:
 
 .segment "CHARS"
 
-	.incbin "platformer.chr"
+	.incbin "famidash.chr"
