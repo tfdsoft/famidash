@@ -27,7 +27,7 @@ crt0.o: crt0.s famidash.chr
 $(NAME).o: $(NAME).s
 	$(CA65) $(NAME).s -g
 
-$(NAME).s: $(NAME).c Sprites.h famidash.h BG/Room1.c BG/Room2.c BG/Room3.c BG/Room4.c BG/Room5.c
+$(NAME).s: $(NAME).c Sprites.h famidash.h BG/Room1.c
 	$(CC65) -Oirs $(NAME).c --add-source
 
 clean:

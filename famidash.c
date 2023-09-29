@@ -31,27 +31,47 @@ void main (void) {
 	
 	load_room();
 
+	song = 0;
+	music_play(song);
+
 	ppu_on_all(); // turn on screen
 	
 	
 
-	
+	cube_rotate = 0;
 	while (1){
 		// infinite loop
 		ppu_wait_nmi(); // wait till beginning of the frame
 		
+		
+		
+
+		set_music_speed(4);
+
 		pad1 = pad_poll(0); // read the first controller
 		pad1_new = get_pad_new(0);
 		
+		
+
 		movement();
 		// set scroll
 		set_scroll_x(scroll_x);
 		set_scroll_y(scroll_y);
 		draw_screen_R();
 		draw_sprites();
+		bg_coll_death();
 		gray_line();
 	}
 }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -83,10 +103,12 @@ void load_room(void){
 		if (y == 0xe0) break;
 	}
 	
+
 	// copy the room to the collision map
 	// the second one should auto-load with the scrolling code
 	memcpy (c_map, Rooms[0], 240);
 }
+
 
 
 
@@ -99,14 +121,12 @@ void draw_sprites(void){
 	if(temp_x > 0xfc) temp_x = 1;
 	if(temp_x == 0) temp_x = 1;
 	// draw 1 CUBE
-	if(direction == LEFT) {
-		oam_meta_spr(temp_x, high_byte(Cube.y), RoundSprL);
-	}
-	else{
-		oam_meta_spr(temp_x, high_byte(Cube.y), RoundSprR);
-	}
+	cube_rotate += 0x60;
+	if (high_byte(cube_rotate) > 0x05) cube_rotate = 0;
+	oam_meta_spr(temp_x, high_byte(Cube.y), CUBE[high_byte(cube_rotate)]);
 }
 	
+
 
 	
 	
@@ -116,7 +136,7 @@ void movement(void){
 
 	old_x = Cube.x;
 	
-	Cube.vel_x = 0x200;
+	Cube.vel_x = CUBE_SPEED;
 	/*
 	if(pad1 & PAD_LEFT){
 		direction = LEFT;
@@ -206,7 +226,7 @@ void movement(void){
 		Cube.vel_y += GRAVITY;
 	//}
 	//else{
-		//Cube.vel_y = 0x300; // consistent
+		//Cube.vel_y = 0x400; // consistent
 	//}
 	Cube.y += Cube.vel_y;
 	
@@ -214,12 +234,13 @@ void movement(void){
 	Generic.y = high_byte(Cube.y);
 	
     if(Cube.vel_y > 0){
-        if(bg_coll_D() ){ // check collision below
+        if(bg_coll_D()){ // check collision below
             high_byte(Cube.y) = high_byte(Cube.y) - eject_D;
             Cube.y &= 0xff00;
             if(Cube.vel_y > 0) {
                 Cube.vel_y = 0;
             }
+
         }
     }
     else if(Cube.vel_y < 0){
@@ -232,11 +253,11 @@ void movement(void){
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(Cube.y); // the rest should be the same
 	
-	if(pad1_new & PAD_A) {
-        if(bg_coll_D2() ) {
+	if(bg_coll_D2()) {
+        if(pad1 & PAD_A) {
 			Cube.vel_y = JUMP_VEL; // JUMP
 		}
-		
+		cube_rotate = 0x0000;
 	}
 	
 	// do we need to load a new collision map? (scrolled into a new room)
@@ -262,10 +283,16 @@ void movement(void){
 
 	if(scroll_x >= MAX_SCROLL) {
 		scroll_x = MAX_SCROLL; // stop scrolling right, end of level
+
+		die_lmao();
+
+
+		/*	
 		Cube.x = temp5; // but allow the x position to go all the way right
 		if(high_byte(Cube.x) >= 0xf1) {
 			Cube.x = 0xf100;
 		}
+		*/
 	}
 }	
 
@@ -302,6 +329,9 @@ char bg_coll_R(void){
     temp_y -= 2;
     if(bg_collision_sub() & COL_ALL) return 1;
     
+
+
+
     return 0;
 }
 
@@ -313,7 +343,7 @@ char bg_coll_U(void){
     temp_room = temp5 >> 8; // high byte
     
     temp_y = Generic.y;
-    eject_U = temp_y | 0xf0;
+    eject_U = temp_y & 0xf0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
     temp5 = Generic.x + scroll_x + Generic.width;
@@ -341,16 +371,16 @@ char bg_coll_D(void){
     
     eject_D = (temp_y + 1) & 0x0f;
     
-    if(bg_collision_sub() ) return 1;
+    if(bg_collision_sub() & COL_ALL) return 1;
     
     temp5 = Generic.x + scroll_x + Generic.width;
     temp5 -= 2;
     temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
     
-    if(bg_collision_sub() ) return 1;
+    if(bg_collision_sub() & COL_ALL) return 1; 
     
-    return 0;
+    return 0; 
 }
 
 char bg_coll_D2(void){
@@ -363,14 +393,14 @@ char bg_coll_D2(void){
     
     temp_y = Generic.y + Generic.height;
     temp_y += 2;
-    if(bg_collision_sub() ) return 1;
+    if(bg_collision_sub() & COL_ALL) return 1;
     
-    temp5 = Generic.x + scroll_x + Generic.width;
-    temp5 -= 2;
-    temp_x = (char)temp5; // low byte
-    temp_room = temp5 >> 8; // high byte
+    //temp5 = Generic.x + scroll_x + Generic.width;
+    //temp5 -= 2;
+    //temp_x = (char)temp5; // low byte
+    //temp_room = temp5 >> 8; // high byte
     
-    if(bg_collision_sub() ) return 1;
+    //if(bg_collision_sub() ) return 1;
     
     return 0;
 }
@@ -392,6 +422,7 @@ char bg_collision_sub(void){
 		collision = c_map2[coordinates];
 	}
 	
+	//if (is_solid[collision] == COL_DEATH) die_lmao();
     return is_solid[collision];
 }
 
@@ -399,7 +430,7 @@ char bg_collision_sub(void){
 
 void draw_screen_R(void){
 	// scrolling to the right, draw metatiles as we go
-	pseudo_scroll_x = scroll_x + 0xF0;
+	pseudo_scroll_x = scroll_x + 0x100;
 	
 	temp1 = pseudo_scroll_x >> 8;
 	
@@ -470,6 +501,33 @@ void new_cmap(void){
 
 
 
+void die_lmao(void) {
+
+	ppu_off(); // reset the level when you get to this point, and change this later
+	load_room();
+	scroll_x = 0;
+	Cube.x = 0x10;
+	music_stop();
+	music_play(song);
+	ppu_on_all();
+
+}
 
 
 
+char bg_coll_death(void) {
+	if(temp_y >= 0xf0) return 0;
+    
+		coordinates = (high_byte(Cube.x) >> 4) + (high_byte(Cube.y) & 0xf0);
+    	// we just need 4 bits each from x and y
+	
+		map = temp_room&1; // high byte
+		if(!map){
+			collision = c_map[coordinates];
+		}
+		else{
+			collision = c_map2[coordinates];
+		}
+	if (is_solid[collision] == COL_DEATH) die_lmao();
+
+}

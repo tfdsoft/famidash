@@ -1,21 +1,43 @@
-;FamiTone2 v1.12
+;FamiTone3.2022.Mar.12
+;fork of Famitone2 v1.15 by Shiru 04'17
+;for ca65
+;Revision 1-21-2021, Doug Fraker, to be used with text2vol
+;added volume column and support for all NES notes
+;Pal support fixed, volume table exact now
+;2022.Mar.12 moved variables to be contiguous
 
+
+.export FamiToneInit, FamiToneMusicPlay, FamiToneUpdate
+
+
+
+
+.segment "ZEROPAGE"
+
+;FT_TEMP:	.res 3
+
+; variables moved below
+
+.segment "CODE"
 
 
 ;settings, uncomment or put them into your main program; the latter makes possible updates easier
 
-; FT_BASE_ADR		= $0300	;page in the RAM used for FT2 variables, should be $xx00
-; FT_TEMP			= $fd	;3 bytes in zeropage used by the library as a scratchpad
-; FT_DPCM_OFF		= $fc00	;$c000..$ffc0, 64-byte steps
-; FT_SFX_STREAMS	= 1		;number of sound effects played at once, 1..4
+;FT_BASE_ADR		= $0300	;page in the RAM used for FT2 variables, should be $xx00
 
-; FT_DPCM_ENABLE = 1		;undefine to exclude all DMC code
-; FT_SFX_ENABLE = 1		;undefine to exclude all sound effects code
-; FT_THREAD = 1			;undefine if you are calling sound effects from the same thread as the sound update call
+;FT_DPCM_OFF		= $f000	;$c000..$ffc0, 64-byte steps
+;FT_SFX_STREAMS	= 1		;number of sound effects played at once, 1..4
 
-; FT_PAL_SUPPORT = 1		;undefine to exclude PAL support
-; FT_NTSC_SUPPORT = 1		;undefine to exclude NTSC support
+;FT_DPCM_ENABLE = 1		;change to 0 to exclude all DMC code
+;FT_SFX_ENABLE = 1		;change to 0 to exclude all sound effects code
+;FT_THREAD = 1			;change to 0 if you are calling sound effects from the same thread as the sound update call
 
+;FT_PAL_SUPPORT = 1		;change to 0 to exclude PAL support
+;FT_NTSC_SUPPORT = 1		;change to 0 to exclude NTSC support
+
+	.if(FT_SFX_ENABLE)
+.export FamiToneSfxPlay, FamiToneSfxInit
+	.endif
 
 
 ;internal defines
@@ -156,6 +178,7 @@ FT_SFX_CH0			= FT_SFX_STRUCT_SIZE*0
 FT_SFX_CH1			= FT_SFX_STRUCT_SIZE*1
 FT_SFX_CH2			= FT_SFX_STRUCT_SIZE*2
 FT_SFX_CH3			= FT_SFX_STRUCT_SIZE*3
+SIZE_FT_SFX = FT_SFX_STRUCT_SIZE*FT_SFX_STREAMS
 
 
 ;aliases for the APU registers
@@ -209,6 +232,18 @@ FT_MR_NOISE_V		= FT_OUT_BUF+9
 FT_MR_NOISE_F		= FT_OUT_BUF+10
 	.endif
 
+FT_EXTRA = FT_SFX_BASE_ADR+SIZE_FT_SFX
+volume_Sq1 = FT_EXTRA
+volume_Sq2 = FT_EXTRA+1	
+volume_Nz = FT_EXTRA+2
+vol_change = FT_EXTRA+3	
+multiple1 = FT_EXTRA+4	
+
+POST_FT = FT_EXTRA+5
+LAST_FT = POST_FT-1
+
+.out .sprintf("last FT variable at %x", LAST_FT)
+.out .sprintf("safe to use at %x", POST_FT)
 
 
 ;------------------------------------------------------------------------------
@@ -216,6 +251,8 @@ FT_MR_NOISE_F		= FT_OUT_BUF+10
 ; in: A   0 for PAL, not 0 for NTSC
 ;     X,Y pointer to music data
 ;------------------------------------------------------------------------------
+
+
 
 FamiToneInit:
 
@@ -227,14 +264,14 @@ FamiToneInit:
 	.if(FT_PITCH_FIX)
 	tax						;set SZ flags for A
 	beq @pal
-	lda #64
+	lda #(NoteTable_Count-_FT2NoteTableLSB) ;64
 @pal:
 	.else
 	.if(FT_PAL_SUPPORT)
 	lda #0
 	.endif
 	.if(FT_NTSC_SUPPORT)
-	lda #64
+	lda #(NoteTable_Count-_FT2NoteTableLSB) ;64
 	.endif
 	.endif
 	sta FT_PAL_ADJUST
@@ -327,7 +364,13 @@ FamiToneMusicStop:
 ; in: A number of subsong
 ;------------------------------------------------------------------------------
 
+
 FamiToneMusicPlay:
+
+	ldx #$0f		; full volume to start
+	stx volume_Sq1	; **
+	stx volume_Sq2
+	stx volume_Nz
 
 	ldx FT_SONG_LIST_L
 	stx <FT_TEMP_PTR_L
@@ -411,11 +454,7 @@ FamiToneMusicPause:
 
 	tax					;set SZ flags for A
 	beq @unpause
-	
 @pause:
-
-	jsr FamiToneSampleStop
-	
 	lda #0				;mute sound
 	sta FT_CH1_VOLUME
 	sta FT_CH2_VOLUME
@@ -474,7 +513,13 @@ FamiToneUpdate:
 
 
 	ldx #.lobyte(FT_CH1_VARS)	;process channel 1
+		lda #$ff
+		sta vol_change 			; **
 	jsr _FT2ChannelUpdate
+		lda vol_change			; **
+		bmi :+
+		sta volume_Sq1
+		:
 	bcc @no_new_note1
 	ldx #.lobyte(FT_CH1_ENVS)
 	lda FT_CH1_INSTRUMENT
@@ -483,7 +528,13 @@ FamiToneUpdate:
 @no_new_note1:
 
 	ldx #.lobyte(FT_CH2_VARS)	;process channel 2
+		lda #$ff
+		sta vol_change 			; **
 	jsr _FT2ChannelUpdate
+		lda vol_change			; **
+		bmi :+
+		sta volume_Sq2
+		:
 	bcc @no_new_note2
 	ldx #.lobyte(FT_CH2_ENVS)
 	lda FT_CH2_INSTRUMENT
@@ -500,7 +551,13 @@ FamiToneUpdate:
 @no_new_note3:
 
 	ldx #.lobyte(FT_CH4_VARS)	;process channel 4
+		lda #$ff
+		sta vol_change 			; **
 	jsr _FT2ChannelUpdate
+		lda vol_change			; **
+		bmi :+
+		sta volume_Nz
+		:
 	bcc @no_new_note4
 	ldx #.lobyte(FT_CH4_ENVS)
 	lda FT_CH4_INSTRUMENT
@@ -573,7 +630,7 @@ FamiToneUpdate:
 
 @env_next:
 
-	inx						;next envelope
+	inx						 ;next envelope
 
 	cpx #.lobyte(FT_ENVELOPES)+FT_ENVELOPES_ALL
 	bne @env_process
@@ -588,7 +645,8 @@ FamiToneUpdate:
 	clc
 	adc FT_CH1_NOTE_OFF
 	.if(FT_PITCH_FIX)
-	ora FT_PAL_ADJUST
+	clc
+	adc FT_PAL_ADJUST
 	.endif
 	tax
 	lda FT_CH1_PITCH_OFF
@@ -611,6 +669,15 @@ FamiToneUpdate:
 	sta FT_MR_PULSE1_H
 @ch1prev:
 	lda FT_CH1_VOLUME
+		; **
+		beq @ch1cut ;if zero, skip multiply
+		ldx volume_Sq1
+		bne :+
+		lda #0 ;if volume column = zero, skip multiply
+		beq @ch1cut
+		:
+		jsr Multiply
+	
 @ch1cut:
 	ora FT_CH1_DUTY
 	sta FT_MR_PULSE1_V
@@ -621,7 +688,8 @@ FamiToneUpdate:
 	clc
 	adc FT_CH2_NOTE_OFF
 	.if(FT_PITCH_FIX)
-	ora FT_PAL_ADJUST
+	clc
+	adc FT_PAL_ADJUST
 	.endif
 	tax
 	lda FT_CH2_PITCH_OFF
@@ -644,6 +712,17 @@ FamiToneUpdate:
 	sta FT_MR_PULSE2_H
 @ch2prev:
 	lda FT_CH2_VOLUME
+	
+		; **
+		beq @ch2cut ;if zero, skip multiply
+		ldx volume_Sq2
+		bne :+
+		lda #0 ;if volume column = zero, skip multiply
+		beq @ch2cut
+		:
+		jsr Multiply
+	
+	
 @ch2cut:
 	ora FT_CH2_DUTY
 	sta FT_MR_PULSE2_V
@@ -654,7 +733,8 @@ FamiToneUpdate:
 	clc
 	adc FT_CH3_NOTE_OFF
 	.if(FT_PITCH_FIX)
-	ora FT_PAL_ADJUST
+	clc
+	adc FT_PAL_ADJUST
 	.endif
 	tax
 	lda FT_CH3_PITCH_OFF
@@ -669,6 +749,8 @@ FamiToneUpdate:
 	adc _FT2NoteTableMSB,x
 	sta FT_MR_TRI_H
 	lda FT_CH3_VOLUME
+		; ** there should be no volume column for Triangle channel
+	
 @ch3cut:
 	ora #$80
 	sta FT_MR_TRI_V
@@ -687,6 +769,16 @@ FamiToneUpdate:
 	ora <FT_TEMP_VAR1
 	sta FT_MR_NOISE_F
 	lda FT_CH4_VOLUME
+	
+		; **
+		beq @ch4cut ;if zero, skip multiply
+		ldx volume_Nz
+		bne :+
+		lda #0 ;if volume column = zero, skip multiply
+		beq @ch4cut
+		:
+		jsr Multiply
+	
 @ch4cut:
 	ora #$f0
 	sta FT_MR_NOISE_V
@@ -845,10 +937,19 @@ _FT2ChannelUpdate:
 	ora #0
 	bmi @special_code		;bit 7 0=note 1=special code
 
-	lsr a					;bit 0 set means the note is followed by an empty row
-	bcc @no_empty_row
-	inc FT_CHN_REPEAT,x		;set repeat counter to 1
-@no_empty_row:
+; **	lsr a				;bit 0 set means the note is followed by an empty row
+;	bcc @no_empty_row
+;	inc FT_CHN_REPEAT,x		;set repeat counter to 1
+;@no_empty_row:
+
+	cmp #$70	;70-7f = 	; ** start
+	bcc @no_vol_change
+	
+	and #$0f
+	sta vol_change			; ** end
+	jmp @read_byte	;read the next byte
+	
+@no_vol_change:
 	sta FT_CHN_NOTE,x		;store note code
 	sec						;new note flag is set
 	bcs @done ;bra
@@ -943,9 +1044,9 @@ FamiToneSampleStop:
 	sta APU_SND_CHN
 
 	rts
-
-
 	
+	
+
 	.if(FT_DPCM_ENABLE)
 
 ;------------------------------------------------------------------------------
@@ -1078,9 +1179,10 @@ _FT2SfxClearChannel:
 
 ;------------------------------------------------------------------------------
 ; play sound effect
-; in: A is a number of the sound effect 0..127
+; in: A is a number of the sound effect
 ;     X is offset of sound effect channel, should be FT_SFX_CH0..FT_SFX_CH3
 ;------------------------------------------------------------------------------
+
 
 FamiToneSfxPlay:
 
@@ -1156,8 +1258,9 @@ _FT2SfxUpdate:
 	sta <FT_TEMP_VAR1		;main buffer, overwrite the main buffer value with the new one
 	lda FT_SFX_BUF+0,x
 	and #$0f
-	cmp <FT_TEMP_VAR1
-	bcc @no_pulse1
+		;cmp <FT_TEMP_VAR1	; **
+		;bcc @no_pulse1
+		beq @no_pulse1
 	lda FT_SFX_BUF+0,x
 	sta FT_OUT_BUF+0
 	lda FT_SFX_BUF+1,x
@@ -1171,8 +1274,9 @@ _FT2SfxUpdate:
 	sta <FT_TEMP_VAR1
 	lda FT_SFX_BUF+3,x
 	and #$0f
-	cmp <FT_TEMP_VAR1
-	bcc @no_pulse2
+		;cmp <FT_TEMP_VAR1	; **
+		;bcc @no_pulse2
+		beq @no_pulse2 
 	lda FT_SFX_BUF+3,x
 	sta FT_OUT_BUF+3
 	lda FT_SFX_BUF+4,x
@@ -1195,8 +1299,9 @@ _FT2SfxUpdate:
 	sta <FT_TEMP_VAR1
 	lda FT_SFX_BUF+9,x
 	and #$0f
-	cmp <FT_TEMP_VAR1
-	bcc @no_noise
+		;cmp <FT_TEMP_VAR1	; **
+		;bcc @no_noise
+		beq @no_noise
 	lda FT_SFX_BUF+9,x
 	sta FT_OUT_BUF+9
 	lda FT_SFX_BUF+10,x
@@ -1213,33 +1318,91 @@ _FT2SfxUpdate:
 _FT2DummyEnvelope:
 	.byte $c0,$00,$00
 
-;PAL and NTSC, 11-bit dividers
-;rest note, then octaves 1-5, then three zeroes
-;first 64 bytes are PAL, next 64 bytes are NTSC
+
 
 _FT2NoteTableLSB:
 	.if(FT_PAL_SUPPORT)
-	.byte $00,$33,$da,$86,$36,$eb,$a5,$62,$23,$e7,$af,$7a,$48,$19,$ec,$c2
-	.byte $9a,$75,$52,$30,$11,$f3,$d7,$bc,$a3,$8c,$75,$60,$4c,$3a,$28,$17
-	.byte $08,$f9,$eb,$dd,$d1,$c5,$ba,$af,$a5,$9c,$93,$8b,$83,$7c,$75,$6e
-	.byte $68,$62,$5c,$57,$52,$4d,$49,$45,$41,$3d,$3a,$36,$33,$30,$2d,$2b
+	.byte $00 ;PAL ;nesdev wiki, Celius
+	.byte $60,$f6,$92,$34,$db,$86,$37,$ec,$a5,$62,$23,$e8
+	.byte $b0,$7b,$49,$19,$ed,$c3,$9b,$75,$52,$31,$11,$f3
+	.byte $d7,$bd,$a4,$8c,$76,$61,$4d,$3a,$29,$18,$08,$f9
+	.byte $eb,$de,$d1,$c6,$ba,$b0,$a6,$9d,$94,$8b,$84,$7c
+	.byte $75,$6e,$68,$62,$5d,$57,$52,$4e,$49,$45,$41,$3e
+	.byte $3a,$37,$34,$31,$2e,$2b,$29,$26,$24,$22,$20,$1e
+	.byte $1d,$1b,$19,$18,$16,$15,$14,$13,$12,$11,$10,$0f
+	.byte $0e,$0d,$0c
 	.endif
+NoteTable_Count: 	
 	.if(FT_NTSC_SUPPORT)
-	.byte $00,$ad,$4d,$f2,$9d,$4c,$00,$b8,$74,$34,$f7,$be,$88,$56,$26,$f8
-	.byte $ce,$a5,$7f,$5b,$39,$19,$fb,$de,$c3,$aa,$92,$7b,$66,$52,$3f,$2d
-	.byte $1c,$0c,$fd,$ee,$e1,$d4,$c8,$bd,$b2,$a8,$9f,$96,$8d,$85,$7e,$76
-	.byte $70,$69,$63,$5e,$58,$53,$4f,$4a,$46,$42,$3e,$3a,$37,$34,$31,$2e
+	.byte $00 ;NTSC
+	.byte $f1,$7e,$13,$ad,$4d,$f3,$9d,$4c,$00,$b8,$74,$34
+	.byte $f8,$bf,$89,$56,$26,$f9,$ce,$a6,$80,$5c,$3a,$1a
+	.byte $fb,$df,$c4,$ab,$93,$7c,$67,$52,$3f,$2d,$1c,$0c
+	.byte $fd,$ef,$e1,$d5,$c9,$bd,$b3,$a9,$9f,$96,$8e,$86
+	.byte $7e,$77,$70,$6a,$64,$5e,$59,$54,$4f,$4b,$46,$42
+	.byte $3f,$3b,$38,$34,$31,$2f,$2c,$29,$27,$25,$23,$21
+	.byte $1f,$1d,$1b,$1a,$18,$17,$15,$14,$13,$12,$11,$10 
+	.byte $0f,$0e,$0d
 	.endif
+	
+
 _FT2NoteTableMSB:
 	.if(FT_PAL_SUPPORT)
-	.byte $00,$06,$05,$05,$05,$04,$04,$04,$04,$03,$03,$03,$03,$03,$02,$02
-	.byte $02,$02,$02,$02,$02,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01
-	.byte $01,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
-	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+	.byte $00 ;PAL
+	.byte $07,$06,$06,$06,$05,$05,$05,$04,$04,$04,$04,$03 
+	.byte $03,$03,$03,$03,$02,$02,$02,$02,$02,$02,$02,$01 
+	.byte $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$00 
+	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00 
+	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00 
+	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00 
+	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00 
+	.byte $00,$00,$00
 	.endif
 	.if(FT_NTSC_SUPPORT)
-	.byte $00,$06,$06,$05,$05,$05,$05,$04,$04,$04,$03,$03,$03,$03,$03,$02
-	.byte $02,$02,$02,$02,$02,$02,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01
-	.byte $01,$01,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
-	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+	.byte $00 ;NTSC
+	.byte $07,$07,$07,$06,$06,$05,$05,$05,$05,$04,$04,$04
+	.byte $03,$03,$03,$03,$03,$02,$02,$02,$02,$02,$02,$02
+	.byte $01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01,$01
+	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+	.byte $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+	.byte $00,$00,$00
 	.endif
+
+	
+	
+Multiply: 	; **
+			;a = note volume
+			;x = volume column
+
+	stx multiple1
+	asl a
+	asl a
+	asl a
+	asl a
+	ora multiple1
+	tax
+	lda ft_volume_table, x
+	rts
+			
+ft_volume_table:
+	.byte 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+	.byte 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
+	.byte 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2
+ 	.byte 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3
+ 	.byte 0, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4
+ 	.byte 0, 1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5
+ 	.byte 0, 1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 4, 5, 5, 6
+ 	.byte 0, 1, 1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7
+ 	.byte 0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8 
+ 	.byte 0, 1, 1, 1, 2, 3, 3, 4, 4, 5, 6, 6, 7, 7, 8, 9 
+ 	.byte 0, 1, 1, 2, 2, 3, 4, 4, 5, 6, 6, 7, 8, 8, 9, 10 
+ 	.byte 0, 1, 1, 2, 2, 3, 4, 5, 5, 6, 7, 8, 8, 9, 10, 11 
+ 	.byte 0, 1, 1, 2, 3, 4, 4, 5, 6, 7, 8, 8, 9, 10, 11, 12 
+ 	.byte 0, 1, 1, 2, 3, 4, 5, 6, 6, 7, 8, 9, 10, 11, 12, 13 
+ 	.byte 0, 1, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14
+ 	.byte 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15	
+	
+	
+	
