@@ -18,7 +18,7 @@
 void main (void) {
 	
 	ppu_off(); // screen off
-	
+	ppu_mask(0x00);
 	// load the palettes
 	pal_bg(palette_bg);
 	pal_spr(palette_sp);
@@ -42,24 +42,17 @@ void main (void) {
 	while (1){
 		// infinite loop
 		ppu_wait_nmi(); // wait till beginning of the frame
+		bg_coll_death();
 		
 		
-		
-
-		set_music_speed(4);
 
 		pad1 = pad_poll(0); // read the first controller
 		pad1_new = get_pad_new(0);
-		
-		
-
 		movement();
-		// set scroll
 		set_scroll_x(scroll_x);
 		set_scroll_y(scroll_y);
 		draw_screen_R();
 		draw_sprites();
-		bg_coll_death();
 		gray_line();
 	}
 }
@@ -121,7 +114,7 @@ void draw_sprites(void){
 	if(temp_x > 0xfc) temp_x = 1;
 	if(temp_x == 0) temp_x = 1;
 	// draw 1 CUBE
-	cube_rotate += 0x60;
+	cube_rotate += 0x68;
 	if (high_byte(cube_rotate) > 0x05) cube_rotate = 0;
 	oam_meta_spr(temp_x, high_byte(Cube.y), CUBE[high_byte(cube_rotate)]);
 }
@@ -222,12 +215,12 @@ void movement(void){
 // gravity
 
 	// Cube.vel_y is signed
-	//if(Cube.vel_y < 0x300){
+	if(Cube.vel_y < 0x400){
 		Cube.vel_y += GRAVITY;
-	//}
-	//else{
-		//Cube.vel_y = 0x400; // consistent
-	//}
+}
+	else{
+		Cube.vel_y = 0x400; // consistent
+	}
 	Cube.y += Cube.vel_y;
 	
 	Generic.x = high_byte(Cube.x);
@@ -329,9 +322,6 @@ char bg_coll_R(void){
     temp_y -= 2;
     if(bg_collision_sub() & COL_ALL) return 1;
     
-
-
-
     return 0;
 }
 
@@ -357,6 +347,7 @@ char bg_coll_U(void){
 }
 
 char bg_coll_D(void){
+
     // check 2 points on the bottom side
     temp5 = Generic.x + scroll_x;
     temp5 += 2;
@@ -379,7 +370,7 @@ char bg_coll_D(void){
     temp_room = temp5 >> 8; // high byte
     
     if(bg_collision_sub() & COL_ALL) return 1; 
-    
+
     return 0; 
 }
 
@@ -395,12 +386,12 @@ char bg_coll_D2(void){
     temp_y += 2;
     if(bg_collision_sub() & COL_ALL) return 1;
     
-    //temp5 = Generic.x + scroll_x + Generic.width;
-    //temp5 -= 2;
-    //temp_x = (char)temp5; // low byte
-    //temp_room = temp5 >> 8; // high byte
+    temp5 = Generic.x + scroll_x + Generic.width;
+    temp5 -= 2;
+    temp_x = (char)temp5; // low byte
+    temp_room = temp5 >> 8; // high byte
     
-    //if(bg_collision_sub() ) return 1;
+    if(bg_collision_sub() & COL_ALL) return 1;
     
     return 0;
 }
@@ -422,7 +413,6 @@ char bg_collision_sub(void){
 		collision = c_map2[coordinates];
 	}
 	
-	//if (is_solid[collision] == COL_DEATH) die_lmao();
     return is_solid[collision];
 }
 
@@ -430,7 +420,7 @@ char bg_collision_sub(void){
 
 void draw_screen_R(void){
 	// scrolling to the right, draw metatiles as we go
-	pseudo_scroll_x = scroll_x + 0x100;
+	pseudo_scroll_x = scroll_x + 0xF8;
 	
 	temp1 = pseudo_scroll_x >> 8;
 	
@@ -506,28 +496,65 @@ void die_lmao(void) {
 	ppu_off(); // reset the level when you get to this point, and change this later
 	load_room();
 	scroll_x = 0;
-	Cube.x = 0x10;
+	Cube.x = 0x0000;
+	Cube.y = 0xb400;
+	Cube.vel_x = 0;
+	Cube.vel_y = 0;
 	music_stop();
-	music_play(song);
 	ppu_on_all();
-
+	music_play(song);
 }
 
 
 
 char bg_coll_death(void) {
-	if(temp_y >= 0xf0) return 0;
-    
-		coordinates = (high_byte(Cube.x) >> 4) + (high_byte(Cube.y) & 0xf0);
-    	// we just need 4 bits each from x and y
-	
-		map = temp_room&1; // high byte
-		if(!map){
-			collision = c_map[coordinates];
-		}
-		else{
-			collision = c_map2[coordinates];
-		}
-	if (is_solid[collision] == COL_DEATH) die_lmao();
+
+
+	// top left corner
+	temp5 = Generic.x + scroll_x + (Generic.width/2);
+	--temp5;--temp5;
+	temp_x = (char)temp5; // low byte
+    temp_room = temp5 >> 8; // high byte
+	temp_y = Generic.y + (Generic.height/2);
+	--temp_y;--temp_y;
+	if(bg_collision_sub() & COL_DEATH) die_lmao();
+
+
+
+
+	// top right corner
+	temp5 = Generic.x + scroll_x + (Generic.width/2);
+	++temp5;++temp5;
+	temp_x = (char)temp5; // low byte
+    temp_room = temp5 >> 8; // high byte
+	temp_y = Generic.y + (Generic.height/2);
+	--temp_y;--temp_y;
+	if(bg_collision_sub() & COL_DEATH) die_lmao();
+
+
+
+
+	// bottom left corner
+	temp5 = Generic.x + scroll_x + (Generic.width/2);
+	--temp5;--temp5;
+	temp_x = (char)temp5; // low byte
+    temp_room = temp5 >> 8; // high byte
+	temp_y = Generic.y + (Generic.height/2);
+	++temp_y;++temp_y;
+	if(bg_collision_sub() & COL_DEATH) die_lmao();
+
+
+
+
+	// bottom right corner
+	temp5 = Generic.x + scroll_x + (Generic.width/2);
+	++temp5;++temp5;
+	temp_x = (char)temp5; // low byte
+    temp_room = temp5 >> 8; // high byte
+	temp_y = Generic.y + (Generic.height/2);
+	++temp_y;++temp_y;
+	if(bg_collision_sub() & COL_DEATH) die_lmao();
+
+
 
 }

@@ -16,6 +16,7 @@
 	.import		_ppu_wait_nmi
 	.import		_ppu_off
 	.import		_ppu_on_all
+	.import		_ppu_mask
 	.import		_oam_clear
 	.import		_oam_meta_spr
 	.import		_music_play
@@ -25,7 +26,6 @@
 	.import		_memcpy
 	.import		_set_vram_buffer
 	.import		_get_pad_new
-	.import		_set_music_speed
 	.import		_set_scroll_x
 	.import		_set_scroll_y
 	.import		_get_ppu_addr
@@ -115,7 +115,7 @@
 .segment	"DATA"
 
 _Cube:
-	.word	$1000
+	.word	$0000
 	.word	$B400
 	.res	4,$00
 
@@ -281,7 +281,7 @@ _palette_bg:
 	.byte	$30
 	.byte	$21
 	.byte	$01
-	.byte	$1C
+	.byte	$11
 	.byte	$30
 	.byte	$21
 	.byte	$28
@@ -2840,9 +2840,9 @@ L0008:	lda     _temp_x
 	lda     #$01
 	sta     _temp_x
 ;
-; cube_rotate += 0x60;
+; cube_rotate += 0x68;
 ;
-L0003:	lda     #$60
+L0003:	lda     #$68
 	clc
 	adc     _cube_rotate
 	sta     _cube_rotate
@@ -2927,7 +2927,7 @@ L0007:	adc     #<(_CUBE)
 	cmp     #$01
 	lda     _Cube+1
 	sbc     #$F0
-	bcc     L0025
+	bcc     L0028
 ;
 ; if(old_x >= 0x8000){
 ;
@@ -2937,7 +2937,7 @@ L0007:	adc     #<(_CUBE)
 	sbc     #$80
 	lda     #$00
 	tax
-	bcc     L0024
+	bcc     L0027
 ;
 ; Cube.x = 0xf000; // max right
 ;
@@ -2945,7 +2945,7 @@ L0007:	adc     #<(_CUBE)
 ;
 ; Cube.x = 0x0000; // max left
 ;
-L0024:	sta     _Cube
+L0027:	sta     _Cube
 	stx     _Cube+1
 ;
 ; Cube.vel_x = 0;
@@ -2955,7 +2955,7 @@ L0024:	sta     _Cube
 ;
 ; Generic.x = high_byte(Cube.x); // this is much faster than passing a pointer to Cube
 ;
-L0025:	lda     _Cube+1
+L0028:	lda     _Cube+1
 	sta     _Generic
 ;
 ; Generic.y = high_byte(Cube.y);
@@ -3011,7 +3011,7 @@ L0025:	lda     _Cube+1
 ;
 ; else if(Cube.vel_x > 0){
 ;
-	jmp     L002D
+	jmp     L0030
 L0005:	lda     _Cube+4
 	cmp     #$01
 	lda     _Cube+4+1
@@ -3050,22 +3050,43 @@ L000A:	bpl     L000C
 ; Cube.x = 0x0000;
 ;
 	ldx     #$00
-L002D:	lda     #$00
+L0030:	lda     #$00
 	sta     _Cube
 	stx     _Cube+1
 ;
+; if(Cube.vel_y < 0x400){
+;
+L000C:	lda     _Cube+6
+	cmp     #$00
+	lda     _Cube+6+1
+	sbc     #$04
+	bvc     L000E
+	eor     #$80
+L000E:	bpl     L000D
+;
 ; Cube.vel_y += GRAVITY;
 ;
-L000C:	lda     #$58
+	lda     #$5A
 	clc
 	adc     _Cube+6
 	sta     _Cube+6
-	bcc     L000D
+	bcc     L0010
 	inc     _Cube+6+1
+;
+; else{
+;
+	jmp     L0010
+;
+; Cube.vel_y = 0x400; // consistent
+;
+L000D:	ldx     #$04
+	lda     #$00
+	sta     _Cube+6
+	stx     _Cube+6+1
 ;
 ; Cube.y += Cube.vel_y;
 ;
-L000D:	lda     _Cube+6
+L0010:	lda     _Cube+6
 	clc
 	adc     _Cube+2
 	sta     _Cube+2
@@ -3089,15 +3110,15 @@ L000D:	lda     _Cube+6
 	cmp     #$01
 	lda     _Cube+6+1
 	sbc     #$00
-	bvs     L000F
+	bvs     L0012
 	eor     #$80
-L000F:	bpl     L000E
+L0012:	bpl     L0011
 ;
 ; if(bg_coll_D()){ // check collision below
 ;
 	jsr     _bg_coll_D
 	tax
-	beq     L0026
+	beq     L0029
 ;
 ; high_byte(Cube.y) = high_byte(Cube.y) - eject_D;
 ;
@@ -3119,22 +3140,22 @@ L000F:	bpl     L000E
 	cmp     #$01
 	lda     _Cube+6+1
 	sbc     #$00
-	bvs     L0012
+	bvs     L0015
 	eor     #$80
-L0012:	bpl     L0026
+L0015:	bpl     L0029
 ;
 ; else if(Cube.vel_y < 0){
 ;
-	jmp     L002E
-L000E:	ldx     _Cube+6+1
+	jmp     L0031
+L0011:	ldx     _Cube+6+1
 	cpx     #$80
-	bcc     L0026
+	bcc     L0029
 ;
 ; if(bg_coll_U() ){ // check collision above
 ;
 	jsr     _bg_coll_U
 	tax
-	beq     L0026
+	beq     L0029
 ;
 ; high_byte(Cube.y) = high_byte(Cube.y) - eject_U;
 ;
@@ -3145,26 +3166,26 @@ L000E:	ldx     _Cube+6+1
 ;
 ; Cube.vel_y = 0;
 ;
-L002E:	lda     #$00
+L0031:	lda     #$00
 	sta     _Cube+6
 	sta     _Cube+6+1
 ;
 ; Generic.y = high_byte(Cube.y); // the rest should be the same
 ;
-L0026:	lda     _Cube+3
+L0029:	lda     _Cube+3
 	sta     _Generic+1
 ;
 ; if(bg_coll_D2()) {
 ;
 	jsr     _bg_coll_D2
 	tax
-	beq     L0016
+	beq     L0019
 ;
 ; if(pad1 & PAD_A) {
 ;
 	lda     _pad1
 	and     #$80
-	beq     L0028
+	beq     L002B
 ;
 ; Cube.vel_y = JUMP_VEL; // JUMP
 ;
@@ -3176,19 +3197,19 @@ L0026:	lda     _Cube+3
 ; cube_rotate = 0x0000;
 ;
 	lda     #$00
-L0028:	sta     _cube_rotate
+L002B:	sta     _cube_rotate
 	sta     _cube_rotate+1
 ;
 ; if((scroll_x & 0xff) < 4){
 ;
-L0016:	lda     _scroll_x
+L0019:	lda     _scroll_x
 	cmp     #$04
-	bcs     L0029
+	bcs     L002C
 ;
 ; if(!map_loaded){
 ;
 	lda     _map_loaded
-	bne     L001B
+	bne     L001E
 ;
 ; new_cmap();
 ;
@@ -3200,16 +3221,16 @@ L0016:	lda     _scroll_x
 ;
 ; else{
 ;
-	jmp     L0022
+	jmp     L0025
 ;
 ; map_loaded = 0;
 ;
-L0029:	lda     #$00
-L0022:	sta     _map_loaded
+L002C:	lda     #$00
+L0025:	sta     _map_loaded
 ;
 ; temp5 = Cube.x;
 ;
-L001B:	lda     _Cube+1
+L001E:	lda     _Cube+1
 	sta     _temp5+1
 	lda     _Cube
 	sta     _temp5
@@ -3220,7 +3241,7 @@ L001B:	lda     _Cube+1
 	cmp     #$01
 	lda     _Cube+1
 	sbc     #$60
-	bcc     L001C
+	bcc     L001F
 ;
 ; temp1 = (Cube.x - MAX_RIGHT) >> 8;
 ;
@@ -3232,13 +3253,13 @@ L001B:	lda     _Cube+1
 ; if (temp1 > 3) temp1 = 3; // max scroll change
 ;
 	cmp     #$04
-	bcc     L002A
+	bcc     L002D
 	lda     #$03
 	sta     _temp1
 ;
 ; scroll_x += temp1;
 ;
-L002A:	lda     _temp1
+L002D:	lda     _temp1
 	clc
 	adc     _scroll_x
 	sta     _scroll_x
@@ -3255,11 +3276,11 @@ L002A:	lda     _temp1
 ;
 ; if(scroll_x >= MAX_SCROLL) {
 ;
-L001C:	lda     _scroll_x
+L001F:	lda     _scroll_x
 	cmp     #$FF
 	lda     _scroll_x+1
 	sbc     #$06
-	bcc     L001E
+	bcc     L0021
 ;
 ; scroll_x = MAX_SCROLL; // stop scrolling right, end of level
 ;
@@ -3274,7 +3295,7 @@ L001C:	lda     _scroll_x
 ;
 ; } 
 ;
-L001E:	rts
+L0021:	rts
 
 .endproc
 
@@ -3289,12 +3310,15 @@ L001E:	rts
 .segment	"CODE"
 
 ;
-; pseudo_scroll_x = scroll_x + 0x100;
+; pseudo_scroll_x = scroll_x + 0xF8;
 ;
 	lda     _scroll_x
 	ldx     _scroll_x+1
+	clc
+	adc     #$F8
+	bcc     L0002
 	inx
-	sta     _pseudo_scroll_x
+L0002:	sta     _pseudo_scroll_x
 	stx     _pseudo_scroll_x+1
 ;
 ; temp1 = pseudo_scroll_x >> 8;
@@ -3307,10 +3331,10 @@ L001E:	rts
 	ldx     #$00
 	lda     _temp1
 	asl     a
-	bcc     L0011
+	bcc     L0012
 	inx
 	clc
-L0011:	adc     #<(_Rooms)
+L0012:	adc     #<(_Rooms)
 	sta     ptr1
 	txa
 	adc     #>(_Rooms)
@@ -3341,18 +3365,18 @@ L0011:	adc     #<(_Rooms)
 ;
 ; }
 ;
-	beq     L0004
+	beq     L0005
 	cmp     #$01
-	beq     L0006
+	beq     L0007
 	cmp     #$02
-	jeq     L0009
+	jeq     L000A
 	cmp     #$03
-	jeq     L000C
-	jmp     L0012
+	jeq     L000D
+	jmp     L0013
 ;
 ; address = get_ppu_addr(nt, x, 0);
 ;
-L0004:	jsr     decsp2
+L0005:	jsr     decsp2
 	lda     _nt
 	ldy     #$01
 	sta     (sp),y
@@ -3403,11 +3427,11 @@ L0004:	jsr     decsp2
 ;
 ; break;
 ;
-	jmp     L0017
+	jmp     L0018
 ;
 ; address = get_ppu_addr(nt, x, 0x40);
 ;
-L0006:	jsr     decsp2
+L0007:	jsr     decsp2
 	lda     _nt
 	ldy     #$01
 	sta     (sp),y
@@ -3460,11 +3484,11 @@ L0006:	jsr     decsp2
 ;
 ; break;
 ;
-	jmp     L0017
+	jmp     L0018
 ;
 ; address = get_ppu_addr(nt, x, 0x80);
 ;
-L0009:	jsr     decsp2
+L000A:	jsr     decsp2
 	lda     _nt
 	ldy     #$01
 	sta     (sp),y
@@ -3517,11 +3541,11 @@ L0009:	jsr     decsp2
 ;
 ; break;
 ;
-	jmp     L0017
+	jmp     L0018
 ;
 ; address = get_ppu_addr(nt, x, 0xc0);
 ;
-L000C:	jsr     decsp2
+L000D:	jsr     decsp2
 	lda     _nt
 	ldy     #$01
 	sta     (sp),y
@@ -3571,7 +3595,7 @@ L000C:	jsr     decsp2
 	jsr     shrax4
 	clc
 	adc     #$E0
-L0017:	sta     _index
+L0018:	sta     _index
 ;
 ; buffer_4_mt(address, index); // ppu_address, index to the data
 ;
@@ -3583,7 +3607,7 @@ L0017:	sta     _index
 ;
 ; ++scroll_count;
 ;
-L0012:	inc     _scroll_count
+L0013:	inc     _scroll_count
 ;
 ; scroll_count &= 3; //mask off top bits, keep it 0-3
 ;
@@ -3683,29 +3707,43 @@ L0009:	adc     #<(_Rooms)
 ;
 ; scroll_x = 0;
 ;
-	ldx     #$00
-	txa
+	lda     #$00
 	sta     _scroll_x
 	sta     _scroll_x+1
 ;
-; Cube.x = 0x10;
+; Cube.x = 0x0000;
 ;
-	lda     #$10
 	sta     _Cube
-	stx     _Cube+1
+	sta     _Cube+1
+;
+; Cube.y = 0xb400;
+;
+	ldx     #$B4
+	sta     _Cube+2
+	stx     _Cube+2+1
+;
+; Cube.vel_x = 0;
+;
+	sta     _Cube+4
+	sta     _Cube+4+1
+;
+; Cube.vel_y = 0;
+;
+	sta     _Cube+6
+	sta     _Cube+6+1
 ;
 ; music_stop();
 ;
 	jsr     _music_stop
 ;
+; ppu_on_all();
+;
+	jsr     _ppu_on_all
+;
 ; music_play(song);
 ;
 	lda     _song
-	jsr     _music_play
-;
-; ppu_on_all();
-;
-	jmp     _ppu_on_all
+	jmp     _music_play
 
 .endproc
 
@@ -4247,15 +4285,60 @@ L0002:	lda     _temp5
 ; if(bg_collision_sub() & COL_ALL) return 1;
 ;
 	jsr     _bg_collision_sub
+	and     #$40
+	beq     L0008
+	ldx     #$00
+	lda     #$01
+	rts
+;
+; temp5 = Generic.x + scroll_x + Generic.width;
+;
+L0008:	lda     _Generic
+	clc
+	adc     _scroll_x
+	pha
+	lda     #$00
+	adc     _scroll_x+1
+	tax
+	pla
+	clc
+	adc     _Generic+2
+	bcc     L0007
+	inx
+L0007:	sta     _temp5
+	stx     _temp5+1
+;
+; temp5 -= 2;
+;
+	lda     _temp5
+	sec
+	sbc     #$02
+	sta     _temp5
+	bcs     L0004
+	dec     _temp5+1
+;
+; temp_x = (char)temp5; // low byte
+;
+L0004:	lda     _temp5
+	sta     _temp_x
+;
+; temp_room = temp5 >> 8; // high byte
+;
+	lda     _temp5+1
+	sta     _temp_room
+;
+; if(bg_collision_sub() & COL_ALL) return 1;
+;
+	jsr     _bg_collision_sub
 	ldx     #$00
 	and     #$40
-	beq     L0006
+	beq     L000A
 	lda     #$01
 	rts
 ;
 ; }
 ;
-L0006:	rts
+L000A:	rts
 
 .endproc
 
@@ -4270,66 +4353,254 @@ L0006:	rts
 .segment	"CODE"
 
 ;
-; if(temp_y >= 0xf0) return 0;
+; temp5 = Generic.x + scroll_x + (Generic.width/2);
 ;
-	lda     _temp_y
-	cmp     #$F0
-	ldx     #$00
-	bcc     L000B
-	txa
-	rts
-;
-; coordinates = (high_byte(Cube.x) >> 4) + (high_byte(Cube.y) & 0xf0);
-;
-L000B:	lda     _Cube+1
-	lsr     a
-	lsr     a
-	lsr     a
-	lsr     a
+	lda     _Generic
+	clc
+	adc     _scroll_x
 	sta     ptr1
-	lda     _Cube+3
-	and     #$F0
+	lda     #$00
+	adc     _scroll_x+1
+	sta     ptr1+1
+	lda     _Generic+2
+	lsr     a
 	clc
 	adc     ptr1
-	sta     _coordinates
+	ldx     ptr1+1
+	bcc     L000E
+	inx
+L000E:	sta     _temp5
+	stx     _temp5+1
 ;
-; map = temp_room&1; // high byte
+; --temp5;--temp5;
 ;
-	lda     _temp_room
-	and     #$01
-	sta     _map
+	lda     _temp5
+	sec
+	sbc     #$01
+	sta     _temp5
+	bcs     L0002
+	dec     _temp5+1
+L0002:	lda     _temp5
+	sec
+	sbc     #$01
+	sta     _temp5
+	bcs     L0003
+	dec     _temp5+1
 ;
-; if(!map){
+; temp_x = (char)temp5; // low byte
 ;
-	lda     _map
-	bne     L0003
+L0003:	lda     _temp5
+	sta     _temp_x
 ;
-; collision = c_map[coordinates];
+; temp_room = temp5 >> 8; // high byte
 ;
-	ldy     _coordinates
-	lda     _c_map,y
+	lda     _temp5+1
+	sta     _temp_room
 ;
-; else{
+; temp_y = Generic.y + (Generic.height/2);
 ;
-	jmp     L000A
+	lda     _Generic+3
+	lsr     a
+	clc
+	adc     _Generic+1
+	sta     _temp_y
 ;
-; collision = c_map2[coordinates];
+; --temp_y;--temp_y;
 ;
-L0003:	ldy     _coordinates
-	lda     _c_map2,y
-L000A:	sta     _collision
+	dec     _temp_y
+	dec     _temp_y
 ;
-; if (is_solid[collision] == COL_DEATH) die_lmao();
+; if(bg_collision_sub() & COL_DEATH) die_lmao();
 ;
-	ldy     _collision
-	lda     _is_solid,y
-	cmp     #$80
-	bne     L0007
+	jsr     _bg_collision_sub
+	and     #$80
+	beq     L0016
+	jsr     _die_lmao
+;
+; temp5 = Generic.x + scroll_x + (Generic.width/2);
+;
+L0016:	lda     _Generic
+	clc
+	adc     _scroll_x
+	sta     ptr1
+	lda     #$00
+	adc     _scroll_x+1
+	sta     ptr1+1
+	lda     _Generic+2
+	lsr     a
+	clc
+	adc     ptr1
+	ldx     ptr1+1
+	bcc     L0010
+	inx
+L0010:	sta     _temp5
+	stx     _temp5+1
+;
+; ++temp5;++temp5;
+;
+	inc     _temp5
+	bne     L0005
+	inc     _temp5+1
+L0005:	inc     _temp5
+	bne     L0006
+	inc     _temp5+1
+;
+; temp_x = (char)temp5; // low byte
+;
+L0006:	lda     _temp5
+	sta     _temp_x
+;
+; temp_room = temp5 >> 8; // high byte
+;
+	lda     _temp5+1
+	sta     _temp_room
+;
+; temp_y = Generic.y + (Generic.height/2);
+;
+	lda     _Generic+3
+	lsr     a
+	clc
+	adc     _Generic+1
+	sta     _temp_y
+;
+; --temp_y;--temp_y;
+;
+	dec     _temp_y
+	dec     _temp_y
+;
+; if(bg_collision_sub() & COL_DEATH) die_lmao();
+;
+	jsr     _bg_collision_sub
+	and     #$80
+	beq     L0017
+	jsr     _die_lmao
+;
+; temp5 = Generic.x + scroll_x + (Generic.width/2);
+;
+L0017:	lda     _Generic
+	clc
+	adc     _scroll_x
+	sta     ptr1
+	lda     #$00
+	adc     _scroll_x+1
+	sta     ptr1+1
+	lda     _Generic+2
+	lsr     a
+	clc
+	adc     ptr1
+	ldx     ptr1+1
+	bcc     L0012
+	inx
+L0012:	sta     _temp5
+	stx     _temp5+1
+;
+; --temp5;--temp5;
+;
+	lda     _temp5
+	sec
+	sbc     #$01
+	sta     _temp5
+	bcs     L0008
+	dec     _temp5+1
+L0008:	lda     _temp5
+	sec
+	sbc     #$01
+	sta     _temp5
+	bcs     L0009
+	dec     _temp5+1
+;
+; temp_x = (char)temp5; // low byte
+;
+L0009:	lda     _temp5
+	sta     _temp_x
+;
+; temp_room = temp5 >> 8; // high byte
+;
+	lda     _temp5+1
+	sta     _temp_room
+;
+; temp_y = Generic.y + (Generic.height/2);
+;
+	lda     _Generic+3
+	lsr     a
+	clc
+	adc     _Generic+1
+	sta     _temp_y
+;
+; ++temp_y;++temp_y;
+;
+	inc     _temp_y
+	inc     _temp_y
+;
+; if(bg_collision_sub() & COL_DEATH) die_lmao();
+;
+	jsr     _bg_collision_sub
+	and     #$80
+	beq     L0018
+	jsr     _die_lmao
+;
+; temp5 = Generic.x + scroll_x + (Generic.width/2);
+;
+L0018:	lda     _Generic
+	clc
+	adc     _scroll_x
+	sta     ptr1
+	lda     #$00
+	adc     _scroll_x+1
+	sta     ptr1+1
+	lda     _Generic+2
+	lsr     a
+	clc
+	adc     ptr1
+	ldx     ptr1+1
+	bcc     L0014
+	inx
+L0014:	sta     _temp5
+	stx     _temp5+1
+;
+; ++temp5;++temp5;
+;
+	inc     _temp5
+	bne     L000B
+	inc     _temp5+1
+L000B:	inc     _temp5
+	bne     L000C
+	inc     _temp5+1
+;
+; temp_x = (char)temp5; // low byte
+;
+L000C:	lda     _temp5
+	sta     _temp_x
+;
+; temp_room = temp5 >> 8; // high byte
+;
+	lda     _temp5+1
+	sta     _temp_room
+;
+; temp_y = Generic.y + (Generic.height/2);
+;
+	lda     _Generic+3
+	lsr     a
+	clc
+	adc     _Generic+1
+	sta     _temp_y
+;
+; ++temp_y;++temp_y;
+;
+	inc     _temp_y
+	inc     _temp_y
+;
+; if(bg_collision_sub() & COL_DEATH) die_lmao();
+;
+	jsr     _bg_collision_sub
+	ldx     #$00
+	and     #$80
+	beq     L000D
 	jmp     _die_lmao
 ;
 ; }
 ;
-L0007:	rts
+L000D:	rts
 
 .endproc
 
@@ -4347,6 +4618,11 @@ L0007:	rts
 ; ppu_off(); // screen off
 ;
 	jsr     _ppu_off
+;
+; ppu_mask(0x00);
+;
+	lda     #$00
+	jsr     _ppu_mask
 ;
 ; pal_bg(palette_bg);
 ;
@@ -4396,10 +4672,9 @@ L0007:	rts
 ;
 L0002:	jsr     _ppu_wait_nmi
 ;
-; set_music_speed(4);
+; bg_coll_death();
 ;
-	lda     #$04
-	jsr     _set_music_speed
+	jsr     _bg_coll_death
 ;
 ; pad1 = pad_poll(0); // read the first controller
 ;
@@ -4436,10 +4711,6 @@ L0002:	jsr     _ppu_wait_nmi
 ; draw_sprites();
 ;
 	jsr     _draw_sprites
-;
-; bg_coll_death();
-;
-	jsr     _bg_coll_death
 ;
 ; gray_line();
 ;

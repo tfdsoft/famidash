@@ -1,6 +1,6 @@
 #define ACCEL 30
 #define DECEL 50
-#define GRAVITY 0x58
+#define GRAVITY 0x5A
 #define MAX_SPEED 0x240
 #define JUMP_VEL -0x540
 #define MAX_RIGHT 0x6000
@@ -83,7 +83,7 @@ struct CUBE {
 	signed int vel_y;
 };
 
-struct CUBE Cube = {0x1000,0xb400}; // starting position
+struct CUBE Cube = {0x0000,0xb400}; // starting position
 // the width and height should be 1 less than the dimensions (14x12)
 // note, I'm using the top left as the 0,0 on x,y
 
@@ -96,9 +96,10 @@ struct CUBE Cube = {0x1000,0xb400}; // starting position
 
 
 
+
 const unsigned char palette_bg[]={
 0x21,0x0c,0x0f,0x30,
-0x21,0x01,0x1c,0x30,
+0x21,0x01,0x11,0x30,
 0x21,0x28,0x14,0x20,
 0x21,0x0f,0x00,0x20
 }; 
@@ -246,6 +247,7 @@ const unsigned char is_solid[]={
 const unsigned char * const Rooms[]= {
 	Room1_0,Room1_1,Room1_2,Room1_3,Room1_4,Room1_5,Room1_6,Room1_7
 };
+
 
 
 // PROTOTYPES
