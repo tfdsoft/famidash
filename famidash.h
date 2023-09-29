@@ -2,7 +2,7 @@
 #define DECEL 50
 #define GRAVITY 0x4c
 #define MAX_SPEED 0x240
-#define JUMP_VEL -0x600
+#define JUMP_VEL -0x500
 #define MAX_RIGHT 0x9000
 
 

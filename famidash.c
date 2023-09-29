@@ -49,6 +49,7 @@ void main (void) {
 		set_scroll_y(scroll_y);
 		draw_screen_R();
 		draw_sprites();
+		gray_line();
 	}
 }
 
@@ -115,6 +116,8 @@ void movement(void){
 
 	old_x = Cube.x;
 	
+	Cube.vel_x = 0x100;
+	/*
 	if(pad1 & PAD_LEFT){
 		direction = LEFT;
 		
@@ -149,7 +152,7 @@ void movement(void){
 		else if(Cube.vel_x < -ACCEL) Cube.vel_x += ACCEL;
 		else Cube.vel_x = 0;
 	}
-	
+	*/
 	Cube.x += Cube.vel_x;
 	
 	if(Cube.x > 0xf000) { // too far, don't wrap around
@@ -164,6 +167,8 @@ void movement(void){
 		Cube.vel_x = 0;
 	} 
 	
+
+
 	Generic.x = high_byte(Cube.x); // this is much faster than passing a pointer to Cube
 	Generic.y = high_byte(Cube.y);
 	Generic.width = CUBE_WIDTH;
@@ -190,19 +195,19 @@ void movement(void){
         }
     }
     // skip collision if vel = 0
-
+    
 	
 // handle y
 
 // gravity
 
 	// Cube.vel_y is signed
-	if(Cube.vel_y < 0x300){
+	//if(Cube.vel_y < 0x300){
 		Cube.vel_y += GRAVITY;
-	}
-	else{
-		Cube.vel_y = 0x300; // consistent
-	}
+	//}
+	//else{
+		//Cube.vel_y = 0x300; // consistent
+	//}
 	Cube.y += Cube.vel_y;
 	
 	Generic.x = high_byte(Cube.x);
@@ -394,7 +399,7 @@ char bg_collision_sub(void){
 
 void draw_screen_R(void){
 	// scrolling to the right, draw metatiles as we go
-	pseudo_scroll_x = scroll_x + 0x120;
+	pseudo_scroll_x = scroll_x + 0xF0;
 	
 	temp1 = pseudo_scroll_x >> 8;
 	
@@ -433,7 +438,7 @@ void draw_screen_R(void){
 			buffer_4_mt(address, index); // ppu_address, index to the data
 			break;
 			
-		default:
+		case 3:
 			address = get_ppu_addr(nt, x, 0xc0);
 			index = 0xc0 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
