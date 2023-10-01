@@ -5,7 +5,10 @@
 #define JUMP_VEL -0x540
 #define MAX_RIGHT 0x6000
 #define CUBE_SPEED 0x0280
+//#define CUBE_SPEED 0x0000
 
+#define CUBE_DEATH 0x01
+#define CUBE_ORBJUMP 0x02
 
 
 #pragma bss-name(push, "ZEROPAGE")
@@ -56,7 +59,7 @@ unsigned char map_loaded; //only load it once
 unsigned char temp_room;
 
 unsigned char song;
-#define MAX_SONGS 1
+#define MAX_SONGS 4
 enum {SONG_GAME, SONG_PAUSE};
 
 
@@ -64,7 +67,11 @@ enum {SONG_GAME, SONG_PAUSE};
 
 #pragma bss-name(push, "BSS")
 
-unsigned char crashed = 0;
+unsigned char cube_data = 0;
+
+
+
+
 
 
 unsigned char c_map[240];
@@ -142,7 +149,6 @@ const unsigned char metatiles1[]={
 	1, 1, 1, 1,  0,
 	1, 1, 1, 1,  0,
 	1, 1, 1, 1,  0,
-
 	32, 33, 48, 49,  0,
 	34, 35, 50, 51,  0,
 	0, 0, 52, 53,  0,
@@ -159,7 +165,6 @@ const unsigned char metatiles1[]={
 	1, 1, 1, 1,  0,
 	1, 1, 1, 1,  0,
 	1, 1, 1, 1,  0,
-
 	64, 65, 80, 81,  0,
 	68, 69, 86, 87,  0,
 	70, 67, 86, 83,  0,
@@ -178,8 +183,10 @@ const unsigned char metatiles1[]={
 };
 
 
+
 #define COL_DEATH 0x80
 #define COL_ALL 0x40
+#define COL_YEL_ORB 0x20
 
 const unsigned char is_solid[]={
 
@@ -206,7 +213,7 @@ const unsigned char is_solid[]={
 	COL_DEATH,	// big spike
 	COL_DEATH,	// small spike
 	0,			// yellow pad
-	0, 			// yellow orb
+	COL_YEL_ORB,// yellow orb
 	0,			// pink pad
 	0,			// pink orb
 	0,			// bg trigger
@@ -260,6 +267,7 @@ void movement(void);
 void draw_screen_R(void);
 void new_cmap(void);
 void reset_level(void);
+void orbjump(void);
 
 char bg_collision_sub(void);
 char bg_coll_L(void);
@@ -268,3 +276,4 @@ char bg_coll_U(void);
 char bg_coll_D(void);
 char bg_coll_D2(void);
 char bg_coll_death(void);
+char bg_coll_orbs(void);

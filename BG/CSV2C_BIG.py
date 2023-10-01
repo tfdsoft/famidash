@@ -46,14 +46,14 @@ for h in range(0, loops):
 		newfile.write("\n")	
 	# delete that last comma, back it up	
 	z = newfile.tell()
-	z = z - 3
+	z = z - 2
 	newfile.seek(z)
 	newfile.write("\n};\n\n")
 	
 
 newfile.write("\nconst unsigned char * const " + newname2 + "_list[]={\n")	
-for h in range(0, loops):
-	if(h == loops-1):
+for h in range(0, loops-1):
+	if(h == loops):
 		newfile.write(newname2 + "_" + str(h))
 	else:
 		newfile.write(newname2 + "_" + str(h) + ",")
