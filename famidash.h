@@ -64,6 +64,9 @@ enum {SONG_GAME, SONG_PAUSE};
 
 #pragma bss-name(push, "BSS")
 
+unsigned char crashed = 0;
+
+
 unsigned char c_map[240];
 unsigned char c_map2[240];
 
@@ -256,7 +259,7 @@ void draw_sprites(void);
 void movement(void);	
 void draw_screen_R(void);
 void new_cmap(void);
-void die_lmao(void);
+void reset_level(void);
 
 char bg_collision_sub(void);
 char bg_coll_L(void);

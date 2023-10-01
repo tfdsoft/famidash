@@ -277,7 +277,7 @@ void movement(void){
 	if(scroll_x >= MAX_SCROLL) {
 		scroll_x = MAX_SCROLL; // stop scrolling right, end of level
 
-		die_lmao();
+		reset_level();
 
 
 		/*	
@@ -314,14 +314,10 @@ char bg_coll_R(void){
     temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
     
-    eject_R = (temp_x + 1) & 0x0f;
-    temp_y = Generic.y + 2;
-    if(bg_collision_sub() & COL_ALL) return 1;
-    
-    temp_y = Generic.y + Generic.height;
-    temp_y -= 2;
-    if(bg_collision_sub() & COL_ALL) return 1;
-    
+
+	temp_y = Generic.y + (Generic.height>>1); // this checks for a thing called *middle point collision* and kills you if you're inside a wall
+	if(bg_collision_sub() & COL_ALL) crashed = 1; return 1;
+	
     return 0;
 }
 
@@ -491,7 +487,7 @@ void new_cmap(void){
 
 
 
-void die_lmao(void) {
+void reset_level(void) {
 
 	ppu_off(); // reset the level when you get to this point, and change this later
 	load_room();
@@ -500,6 +496,7 @@ void die_lmao(void) {
 	Cube.y = 0xb400;
 	Cube.vel_x = 0;
 	Cube.vel_y = 0;
+	crashed = 0;
 	music_stop();
 	ppu_on_all();
 	music_play(song);
@@ -517,7 +514,7 @@ char bg_coll_death(void) {
     temp_room = temp5 >> 8; // high byte
 	temp_y = Generic.y + (Generic.height/2);
 	--temp_y;--temp_y;
-	if(bg_collision_sub() & COL_DEATH) die_lmao();
+	if(bg_collision_sub() & COL_DEATH) crashed = 1;
 
 
 
@@ -529,7 +526,7 @@ char bg_coll_death(void) {
     temp_room = temp5 >> 8; // high byte
 	temp_y = Generic.y + (Generic.height/2);
 	--temp_y;--temp_y;
-	if(bg_collision_sub() & COL_DEATH) die_lmao();
+	if(bg_collision_sub() & COL_DEATH) crashed = 1;
 
 
 
@@ -541,7 +538,7 @@ char bg_coll_death(void) {
     temp_room = temp5 >> 8; // high byte
 	temp_y = Generic.y + (Generic.height/2);
 	++temp_y;++temp_y;
-	if(bg_collision_sub() & COL_DEATH) die_lmao();
+	if(bg_collision_sub() & COL_DEATH) crashed = 1;
 
 
 
@@ -553,8 +550,8 @@ char bg_coll_death(void) {
     temp_room = temp5 >> 8; // high byte
 	temp_y = Generic.y + (Generic.height/2);
 	++temp_y;++temp_y;
-	if(bg_collision_sub() & COL_DEATH) die_lmao();
+	if(bg_collision_sub() & COL_DEATH) crashed = 1;
 
 
-
+	if(crashed & 0x01) reset_level();
 }

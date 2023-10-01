@@ -79,6 +79,7 @@
 	.export		_map_loaded
 	.export		_temp_room
 	.export		_song
+	.export		_crashed
 	.export		_c_map
 	.export		_c_map2
 	.export		_Generic
@@ -102,7 +103,7 @@
 	.export		_movement
 	.export		_draw_screen_R
 	.export		_new_cmap
-	.export		_die_lmao
+	.export		_reset_level
 	.export		_bg_collision_sub
 	.export		_bg_coll_L
 	.export		_bg_coll_R
@@ -114,6 +115,8 @@
 
 .segment	"DATA"
 
+_crashed:
+	.byte	$00
 _Cube:
 	.word	$0000
 	.word	$B400
@@ -3289,9 +3292,9 @@ L001F:	lda     _scroll_x
 	sta     _scroll_x
 	stx     _scroll_x+1
 ;
-; die_lmao();
+; reset_level();
 ;
-	jmp     _die_lmao
+	jmp     _reset_level
 ;
 ; } 
 ;
@@ -3687,12 +3690,12 @@ L0009:	adc     #<(_Rooms)
 .endproc
 
 ; ---------------------------------------------------------------
-; void __near__ die_lmao (void)
+; void __near__ reset_level (void)
 ; ---------------------------------------------------------------
 
 .segment	"CODE"
 
-.proc	_die_lmao: near
+.proc	_reset_level: near
 
 .segment	"CODE"
 
@@ -3731,6 +3734,10 @@ L0009:	adc     #<(_Rooms)
 ;
 	sta     _Cube+6
 	sta     _Cube+6+1
+;
+; crashed = 0;
+;
+	sta     _crashed
 ;
 ; music_stop();
 ;
@@ -3922,9 +3929,9 @@ L0008:	rts
 	pla
 	clc
 	adc     _Generic+2
-	bcc     L0006
+	bcc     L0007
 	inx
-L0006:	sta     _temp5
+L0007:	sta     _temp5
 	stx     _temp5+1
 ;
 ; temp_x = (char)temp5; // low byte
@@ -3937,55 +3944,24 @@ L0006:	sta     _temp5
 	lda     _temp5+1
 	sta     _temp_room
 ;
-; eject_R = (temp_x + 1) & 0x0f;
+; temp_y = Generic.y + (Generic.height>>1); // this checks for a thing called *middle point collision* and kills you if you're inside a wall
 ;
-	lda     _temp_x
+	lda     _Generic+3
+	lsr     a
 	clc
-	adc     #$01
-	and     #$0F
-	sta     _eject_R
-;
-; temp_y = Generic.y + 2;
-;
-	lda     _Generic+1
-	clc
-	adc     #$02
+	adc     _Generic+1
 	sta     _temp_y
 ;
-; if(bg_collision_sub() & COL_ALL) return 1;
-;
-	jsr     _bg_collision_sub
-	and     #$40
-	beq     L0008
-	ldx     #$00
-	lda     #$01
-	rts
-;
-; temp_y = Generic.y + Generic.height;
-;
-L0008:	lda     _Generic+1
-	clc
-	adc     _Generic+3
-	sta     _temp_y
-;
-; temp_y -= 2;
-;
-	sec
-	sbc     #$02
-	sta     _temp_y
-;
-; if(bg_collision_sub() & COL_ALL) return 1;
+; if(bg_collision_sub() & COL_ALL) crashed = 1; return 1;
 ;
 	jsr     _bg_collision_sub
 	ldx     #$00
 	and     #$40
 	beq     L000A
 	lda     #$01
+	sta     _crashed
+L000A:	lda     #$01
 	rts
-;
-; }
-;
-L000A:	rts
 
 .endproc
 
@@ -4367,9 +4343,9 @@ L000A:	rts
 	clc
 	adc     ptr1
 	ldx     ptr1+1
-	bcc     L000E
+	bcc     L000F
 	inx
-L000E:	sta     _temp5
+L000F:	sta     _temp5
 	stx     _temp5+1
 ;
 ; --temp5;--temp5;
@@ -4410,16 +4386,17 @@ L0003:	lda     _temp5
 	dec     _temp_y
 	dec     _temp_y
 ;
-; if(bg_collision_sub() & COL_DEATH) die_lmao();
+; if(bg_collision_sub() & COL_DEATH) crashed = 1;
 ;
 	jsr     _bg_collision_sub
 	and     #$80
-	beq     L0016
-	jsr     _die_lmao
+	beq     L0017
+	lda     #$01
+	sta     _crashed
 ;
 ; temp5 = Generic.x + scroll_x + (Generic.width/2);
 ;
-L0016:	lda     _Generic
+L0017:	lda     _Generic
 	clc
 	adc     _scroll_x
 	sta     ptr1
@@ -4431,9 +4408,9 @@ L0016:	lda     _Generic
 	clc
 	adc     ptr1
 	ldx     ptr1+1
-	bcc     L0010
+	bcc     L0011
 	inx
-L0010:	sta     _temp5
+L0011:	sta     _temp5
 	stx     _temp5+1
 ;
 ; ++temp5;++temp5;
@@ -4468,16 +4445,17 @@ L0006:	lda     _temp5
 	dec     _temp_y
 	dec     _temp_y
 ;
-; if(bg_collision_sub() & COL_DEATH) die_lmao();
+; if(bg_collision_sub() & COL_DEATH) crashed = 1;
 ;
 	jsr     _bg_collision_sub
 	and     #$80
-	beq     L0017
-	jsr     _die_lmao
+	beq     L0018
+	lda     #$01
+	sta     _crashed
 ;
 ; temp5 = Generic.x + scroll_x + (Generic.width/2);
 ;
-L0017:	lda     _Generic
+L0018:	lda     _Generic
 	clc
 	adc     _scroll_x
 	sta     ptr1
@@ -4489,9 +4467,9 @@ L0017:	lda     _Generic
 	clc
 	adc     ptr1
 	ldx     ptr1+1
-	bcc     L0012
+	bcc     L0013
 	inx
-L0012:	sta     _temp5
+L0013:	sta     _temp5
 	stx     _temp5+1
 ;
 ; --temp5;--temp5;
@@ -4532,16 +4510,17 @@ L0009:	lda     _temp5
 	inc     _temp_y
 	inc     _temp_y
 ;
-; if(bg_collision_sub() & COL_DEATH) die_lmao();
+; if(bg_collision_sub() & COL_DEATH) crashed = 1;
 ;
 	jsr     _bg_collision_sub
 	and     #$80
-	beq     L0018
-	jsr     _die_lmao
+	beq     L0019
+	lda     #$01
+	sta     _crashed
 ;
 ; temp5 = Generic.x + scroll_x + (Generic.width/2);
 ;
-L0018:	lda     _Generic
+L0019:	lda     _Generic
 	clc
 	adc     _scroll_x
 	sta     ptr1
@@ -4553,9 +4532,9 @@ L0018:	lda     _Generic
 	clc
 	adc     ptr1
 	ldx     ptr1+1
-	bcc     L0014
+	bcc     L0015
 	inx
-L0014:	sta     _temp5
+L0015:	sta     _temp5
 	stx     _temp5+1
 ;
 ; ++temp5;++temp5;
@@ -4590,17 +4569,25 @@ L000C:	lda     _temp5
 	inc     _temp_y
 	inc     _temp_y
 ;
-; if(bg_collision_sub() & COL_DEATH) die_lmao();
+; if(bg_collision_sub() & COL_DEATH) crashed = 1;
 ;
 	jsr     _bg_collision_sub
-	ldx     #$00
 	and     #$80
-	beq     L000D
-	jmp     _die_lmao
+	beq     L001A
+	lda     #$01
+	sta     _crashed
+;
+; if(crashed & 0x01) reset_level();
+;
+L001A:	lda     _crashed
+	ldx     #$00
+	and     #$01
+	beq     L000E
+	jmp     _reset_level
 ;
 ; }
 ;
-L000D:	rts
+L000E:	rts
 
 .endproc
 
