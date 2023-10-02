@@ -51,6 +51,7 @@ void main (void) {
 		movement();
 		bg_coll_death();
 		orbjump();
+		padjump();
 		set_scroll_x(scroll_x);
 		set_scroll_y(scroll_y);
 		draw_screen_R();
@@ -223,12 +224,12 @@ void movement(void){
 // gravity
 
 	// Cube.vel_y is signed
-	if(Cube.vel_y < 0x400){
+	//if(Cube.vel_y < 0x400){
 		Cube.vel_y += GRAVITY;
-}
-	else{
-		Cube.vel_y = 0x400; // consistent
-	}
+	//}
+	//else{
+	//	Cube.vel_y = 0x400; // consistent
+	//}
 	Cube.y += Cube.vel_y;
 	
 	Generic.x = high_byte(Cube.x);
@@ -557,41 +558,41 @@ char bg_coll_death(void) {
 
 
 	// top left corner
-	temp5 = Generic.x + scroll_x + (Generic.width/2);
+	temp5 = Generic.x + scroll_x + (Generic.width >> 1);
 	--temp5;--temp5;
 	temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
-	temp_y = Generic.y + (Generic.height/2);
+	temp_y = Generic.y + (Generic.height>> 1);
 	--temp_y;--temp_y;
 	if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
 
 
 	// top right corner
-	temp5 = Generic.x + scroll_x + (Generic.width/2);
+	temp5 = Generic.x + scroll_x + (Generic.width >> 1);
 	++temp5;++temp5;
 	temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
-	temp_y = Generic.y + (Generic.height/2);
+	temp_y = Generic.y + (Generic.height >> 1);
 	--temp_y;--temp_y;
 	if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
 
 
 	// bottom left corner
-	temp5 = Generic.x + scroll_x + (Generic.width/2);
+	temp5 = Generic.x + scroll_x + (Generic.width >> 1);
 	--temp5;--temp5;
 	temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
-	temp_y = Generic.y + (Generic.height/2);
+	temp_y = Generic.y + (Generic.height >> 1);
 	++temp_y;++temp_y;
 	if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
 
 
 	// bottom right corner
-	temp5 = Generic.x + scroll_x + (Generic.width/2);
+	temp5 = Generic.x + scroll_x + (Generic.width >> 1);
 	++temp5;++temp5;
 	temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
-	temp_y = Generic.y + (Generic.height/2);
+	temp_y = Generic.y + (Generic.height >> 1);
 	++temp_y;++temp_y;
 	if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
 
@@ -652,4 +653,27 @@ void orbjump() {
 		Cube.vel_y = JUMP_VEL;
 		cube_data = 0x00;
 	}
+}
+
+
+char bg_coll_pads() {
+
+	// top left corner
+	temp5 = Generic.x + scroll_x + (Generic.width>>1);
+	temp_x = (char)temp5; // low byte
+	temp_room = temp5 >> 8; // high byte
+	temp_y = Generic.y + (Generic.height>>1);
+	if(bg_collision_sub() & COL_YEL_PAD) return 1;
+
+	return 0;
+}
+
+
+
+void padjump() {
+	bg_coll_pads();
+	if (bg_coll_pads()) {
+		Cube.vel_y = YEL_PAD_HEIGHT;
+	}
+
 }

@@ -1,10 +1,11 @@
 #define ACCEL 30
 #define DECEL 50
-#define GRAVITY 0x5A
+#define GRAVITY 0x62
 #define MAX_SPEED 0x240
 #define JUMP_VEL -0x540
 #define MAX_RIGHT 0x6000
-#define CUBE_SPEED 0x0280
+#define CUBE_SPEED 0x02C0
+#define YEL_PAD_HEIGHT -0x6E0
 //#define CUBE_SPEED 0x0000
 
 #define CUBE_DEATH 0x01
@@ -107,11 +108,13 @@ struct CUBE Cube = {0x0000,0xb400}; // starting position
 
 
 
+
+
 const unsigned char palette_bg[]={
 0x21,0x0c,0x0f,0x30,
 0x21,0x01,0x11,0x30,
-0x21,0x28,0x14,0x20,
-0x21,0x0f,0x00,0x20
+0x21,0x28,0x14,0x30,
+0x21,0x0f,0x00,0x30
 }; 
 
 
@@ -134,21 +137,22 @@ const unsigned char palette_sp[]={
 
 const unsigned char metatiles1[]={
 	0, 0, 0, 0,  0,
-	10, 11, 26, 3,  1,
-	26, 3, 42, 43,  1,
-	42, 43, 42, 27,  1,
-	42, 27, 58, 59,  1,
-	11, 11, 3, 3,  1,
-	3, 3, 43, 43,  1,
-	43, 43, 27, 27,  1,
-	27, 27, 59, 59,  1,
-	11, 12, 3, 28,  1,
-	3, 28, 43, 44,  1,
-	43, 44, 27, 44,  1,
-	27, 44, 59, 60,  1,
-	1, 1, 1, 1,  0,
-	1, 1, 1, 1,  0,
-	1, 1, 1, 1,  0,
+	10, 11, 26, 27,  1,
+	26, 27, 26, 27,  1,
+	42, 43, 42, 43,  1,
+	42, 43, 58, 59,  1,
+	11, 11, 27, 27,  1,
+	27, 27, 27, 27,  1,
+	43, 43, 43, 43,  1,
+	43, 43, 59, 59,  1,
+	255, 255, 255, 255,  1,
+	255, 255, 255, 255,  1,
+	255, 255, 255, 255,  1,
+	255, 255, 255, 255,  1,
+	255, 255, 255, 255,  1,
+	255, 255, 255, 255,  1,
+	255, 255, 255, 255,  1,
+
 	32, 33, 48, 49,  0,
 	34, 35, 50, 51,  0,
 	0, 0, 52, 53,  0,
@@ -158,13 +162,14 @@ const unsigned char metatiles1[]={
 	166, 167, 182, 183,  2,
 	226, 231, 0, 0,  0,
 	0, 0, 54, 55,  0,
-	1, 1, 1, 1,  0,
-	1, 1, 1, 1,  0,
-	1, 1, 1, 1,  0,
-	1, 1, 1, 1,  0,
-	1, 1, 1, 1,  0,
-	1, 1, 1, 1,  0,
-	1, 1, 1, 1,  0,
+	36, 37, 0, 0,  0,
+	12, 13, 28, 29,  0,
+	44, 45, 60, 61,  0,
+	14, 15, 30, 31,  0,
+	40, 0, 56, 0,  0,
+	38, 39, 0, 0,  0,
+
+	0, 41, 0, 57,  0,
 	64, 65, 80, 81,  0,
 	68, 69, 86, 87,  0,
 	70, 67, 86, 83,  0,
@@ -187,6 +192,7 @@ const unsigned char metatiles1[]={
 #define COL_DEATH 0x80
 #define COL_ALL 0x40
 #define COL_YEL_ORB 0x20
+#define COL_YEL_PAD 0x10
 
 const unsigned char is_solid[]={
 
@@ -212,19 +218,19 @@ const unsigned char is_solid[]={
 	COL_ALL,	// default block
 	COL_DEATH,	// big spike
 	COL_DEATH,	// small spike
-	0,			// yellow pad
+	COL_YEL_PAD,// yellow pad
 	COL_YEL_ORB,// yellow orb
 	0,			// pink pad
 	0,			// pink orb
 	0,			// bg trigger
 	COL_DEATH,	// ground spikes
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
+	COL_ALL,	// half-slab 2
+	COL_DEATH,	// the other spikes
+	COL_DEATH,
+	COL_DEATH,
+	COL_DEATH,
+	COL_DEATH,
+	COL_DEATH,
 
 	COL_ALL,	// default block 2
 	COL_ALL,	// start of checkerboard blocks
@@ -268,6 +274,7 @@ void draw_screen_R(void);
 void new_cmap(void);
 void reset_level(void);
 void orbjump(void);
+void padjump(void);
 
 char bg_collision_sub(void);
 char bg_coll_L(void);
@@ -277,3 +284,4 @@ char bg_coll_D(void);
 char bg_coll_D2(void);
 char bg_coll_death(void);
 char bg_coll_orbs(void);
+char bg_coll_pads(void);

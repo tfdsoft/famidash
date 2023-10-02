@@ -74,39 +74,39 @@ music_music_data:
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;19
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;20
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;21
-	.byte $16+.lobyte(FT_DPCM_PTR),$2b,$05	;22
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$05	;23
-	.byte $16+.lobyte(FT_DPCM_PTR),$2b,$06	;24
-	.byte $16+.lobyte(FT_DPCM_PTR),$2b,$07	;25
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$07	;26
-	.byte $2c+.lobyte(FT_DPCM_PTR),$2b,$07	;27
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$08	;28
-	.byte $2c+.lobyte(FT_DPCM_PTR),$2b,$08	;29
-	.byte $16+.lobyte(FT_DPCM_PTR),$2b,$09	;30
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$09	;31
-	.byte $16+.lobyte(FT_DPCM_PTR),$2b,$0a	;32
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$0a	;33
-	.byte $2c+.lobyte(FT_DPCM_PTR),$2b,$0a	;34
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$0b	;35
-	.byte $2c+.lobyte(FT_DPCM_PTR),$2b,$0b	;36
-	.byte $16+.lobyte(FT_DPCM_PTR),$2b,$0c	;37
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$0c	;38
-	.byte $2c+.lobyte(FT_DPCM_PTR),$2b,$0c	;39
-	.byte $0b+.lobyte(FT_DPCM_PTR),$2b,$0d	;40
-	.byte $16+.lobyte(FT_DPCM_PTR),$2b,$0d	;41
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$0d	;42
-	.byte $2c+.lobyte(FT_DPCM_PTR),$2b,$0d	;43
-	.byte $16+.lobyte(FT_DPCM_PTR),$2b,$0e	;44
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$0e	;45
-	.byte $2c+.lobyte(FT_DPCM_PTR),$2b,$0e	;46
-	.byte $00+.lobyte(FT_DPCM_PTR),$2b,$0f	;47
-	.byte $0b+.lobyte(FT_DPCM_PTR),$2b,$0f	;48
-	.byte $16+.lobyte(FT_DPCM_PTR),$2b,$0f	;49
-	.byte $21+.lobyte(FT_DPCM_PTR),$2b,$0f	;50
-	.byte $2c+.lobyte(FT_DPCM_PTR),$2b,$0f	;51
+	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$05	;22
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$05	;23
+	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$06	;24
+	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$07	;25
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$07	;26
+	.byte $30+.lobyte(FT_DPCM_PTR),$2f,$07	;27
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$08	;28
+	.byte $30+.lobyte(FT_DPCM_PTR),$2f,$08	;29
+	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$09	;30
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$09	;31
+	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$0a	;32
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$0a	;33
+	.byte $30+.lobyte(FT_DPCM_PTR),$2f,$0a	;34
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$0b	;35
+	.byte $30+.lobyte(FT_DPCM_PTR),$2f,$0b	;36
+	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$0c	;37
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$0c	;38
+	.byte $30+.lobyte(FT_DPCM_PTR),$2f,$0c	;39
+	.byte $0c+.lobyte(FT_DPCM_PTR),$2f,$0d	;40
+	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$0d	;41
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$0d	;42
+	.byte $30+.lobyte(FT_DPCM_PTR),$2f,$0d	;43
+	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$0e	;44
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$0e	;45
+	.byte $30+.lobyte(FT_DPCM_PTR),$2f,$0e	;46
+	.byte $00+.lobyte(FT_DPCM_PTR),$2f,$0f	;47
+	.byte $0c+.lobyte(FT_DPCM_PTR),$2f,$0f	;48
+	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$0f	;49
+	.byte $24+.lobyte(FT_DPCM_PTR),$2f,$0f	;50
+	.byte $30+.lobyte(FT_DPCM_PTR),$2f,$0f	;51
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;52
-	.byte $37+.lobyte(FT_DPCM_PTR),$13,$0d	;53
-	.byte $37+.lobyte(FT_DPCM_PTR),$13,$0f	;54
+	.byte $3c+.lobyte(FT_DPCM_PTR),$13,$0e	;53
+	.byte $41+.lobyte(FT_DPCM_PTR),$27,$0f	;54
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;55
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;56
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;57
@@ -1279,30 +1279,29 @@ music_music_data:
 	.byte $35,$81,$20,$81,$20,$81,$20,$81,$35,$81,$20,$81,$20,$81,$20,$81
 	.byte $35,$81,$22,$81,$22,$81,$22,$81,$36,$81,$22,$81,$36,$81,$22,$81
 @ref512:
-	.byte $35,$81,$27,$81,$27,$81,$27,$81,$36,$81,$27,$81,$27,$81,$27,$81
-	.byte $35,$81,$29,$81,$29,$81,$29,$81,$36,$81,$29,$81,$29,$81,$29,$81
-@ref513:
-	.byte $35,$81,$2b,$81,$2b,$81,$2b,$81,$36,$81,$2b,$81,$2b,$81,$2b,$81
-	.byte $35,$81,$2b,$81,$2b,$81,$2b,$81,$36,$81,$2b,$81,$2b,$81,$2b,$81
+	.byte $35,$81,$1b,$81,$1b,$81,$1b,$81,$36,$81,$1b,$81,$1b,$81,$1b,$81
+	.byte $35,$81,$1d,$81,$1d,$81,$1d,$81,$36,$81,$1d,$81,$1d,$81,$1d,$81
+	.byte $ff,$20
+	.word @ref465
 	.byte $ff,$20
 	.word @ref512
 	.byte $ff,$20
-	.word @ref513
+	.word @ref465
 	.byte $ff,$20
 	.word @ref512
 	.byte $ff,$20
-	.word @ref513
+	.word @ref465
 	.byte $ff,$20
 	.word @ref512
 @ref519:
-	.byte $35,$81,$2a,$81,$2a,$81,$2a,$81,$36,$81,$2a,$81,$2a,$81,$2a,$81
-	.byte $35,$81,$2c,$81,$2c,$81,$2c,$81,$36,$81,$2c,$81,$2c,$81,$2c,$81
+	.byte $35,$81,$1e,$81,$1e,$81,$1e,$81,$36,$81,$1e,$81,$1e,$81,$1e,$81
+	.byte $35,$81,$20,$81,$20,$81,$20,$81,$36,$81,$20,$81,$20,$81,$20,$81
 @ref520:
-	.byte $35,$81,$25,$81,$25,$81,$25,$81,$36,$81,$25,$81,$25,$81,$25,$81
-	.byte $35,$81,$27,$81,$27,$81,$27,$81,$36,$81,$27,$81,$27,$81,$27,$81
+	.byte $35,$81,$19,$81,$19,$81,$19,$81,$36,$81,$19,$81,$19,$81,$19,$81
+	.byte $35,$81,$1b,$81,$1b,$81,$1b,$81,$36,$81,$1b,$81,$1b,$81,$1b,$81
 @ref521:
-	.byte $35,$81,$29,$81,$29,$81,$29,$81,$36,$81,$29,$81,$29,$81,$29,$81
-	.byte $35,$81,$29,$81,$29,$81,$29,$81,$36,$81,$29,$81,$29,$81,$29,$81
+	.byte $35,$81,$1d,$81,$1d,$81,$1d,$81,$36,$81,$1d,$81,$1d,$81,$1d,$81
+	.byte $35,$81,$1d,$81,$1d,$81,$1d,$81,$36,$81,$1d,$81,$1d,$81,$1d,$81
 	.byte $ff,$20
 	.word @ref520
 	.byte $ff,$20
@@ -1314,8 +1313,8 @@ music_music_data:
 	.byte $ff,$20
 	.word @ref520
 @ref527:
-	.byte $35,$81,$28,$81,$28,$81,$28,$81,$00,$81,$28,$81,$28,$81,$28,$81
-	.byte $35,$81,$2a,$81,$2a,$81,$2a,$81,$36,$81,$2a,$81,$36,$81,$36,$81
+	.byte $35,$81,$1c,$81,$1c,$81,$1c,$81,$00,$81,$1c,$81,$1c,$81,$1c,$81
+	.byte $35,$81,$1e,$81,$1e,$81,$1e,$81,$36,$81,$1e,$81,$36,$81,$36,$81
 	.byte $ff,$20
 	.word @ref464
 	.byte $ff,$20
@@ -1526,9 +1525,9 @@ music_music_data:
 @ref613:
 	.byte $bf
 @ref614:
-	.byte $9f,$20,$00,$9b
-	.byte $ff,$06
-	.word @ref611
+	.byte $bf
+@ref615:
+	.byte $bf
 @ref616:
 	.byte $20,$00,$83,$28,$81,$00,$81,$20,$00,$20,$00,$28,$81,$00,$81,$20
 	.byte $00,$83,$28,$81,$00,$81,$20,$00,$20,$00,$28,$81,$00,$81
@@ -1573,7 +1572,7 @@ music_music_data:
 @song1ch3:
 @song1ch3loop:
 @ref632:
-	.byte $71,$80,$0c,$85,$72,$83,$73,$83
+	.byte $71,$80,$06,$85,$72,$83,$73,$83
 @ref633:
 	.byte $74,$81,$75,$81,$76,$81,$77,$81,$78,$81,$7a,$81,$7c,$81,$7e,$81
 @ref634:
