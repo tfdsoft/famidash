@@ -5,7 +5,7 @@
 #define JUMP_VEL -0x5B0
 #define MAX_RIGHT 0x6000
 #define CUBE_SPEED 0x02C0
-#define YEL_PAD_HEIGHT -0x6E0
+#define YEL_PAD_HEIGHT -0x700
 //#define CUBE_SPEED 0x0000
 
 #define CUBE_DEATH 0x01
@@ -261,8 +261,15 @@ const unsigned char is_solid[]={
 
 
 const unsigned char * const Rooms[]= {
-	Room1_0,Room1_1,Room1_2,Room1_3,Room1_4,Room1_5,Room1_6,Room1_7,
-	Room1_8,Room1_9,Room1_10,Room1_11,Room1_12,Room1_13,Room1_14,Room1_15
+	Room1_0,Room1_1,Room1_2,Room1_3,
+	Room1_4,Room1_5,Room1_6,Room1_7,
+	Room1_8,Room1_9,Room1_10,Room1_11,
+	Room1_12,Room1_13,Room1_14,Room1_15,
+
+	Room1_16,Room1_17,Room1_18,Room1_19,
+	Room1_20,Room1_21,Room1_22,Room1_23,
+	Room1_24,Room1_25,Room1_26,Room1_27,
+	Room1_28,Room1_29,Room1_30,Room1_31
 };
 
 
