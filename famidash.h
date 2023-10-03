@@ -1,8 +1,8 @@
 #define ACCEL 30
 #define DECEL 50
-#define GRAVITY 0x62
+#define GRAVITY 0x6C
 #define MAX_SPEED 0x240
-#define JUMP_VEL -0x540
+#define JUMP_VEL -0x5B0
 #define MAX_RIGHT 0x6000
 #define CUBE_SPEED 0x02C0
 #define YEL_PAD_HEIGHT -0x6E0
@@ -60,7 +60,7 @@ unsigned char map_loaded; //only load it once
 unsigned char temp_room;
 
 unsigned char song;
-#define MAX_SONGS 4
+#define MAX_SONGS 5
 enum {SONG_GAME, SONG_PAUSE};
 
 
@@ -254,15 +254,18 @@ const unsigned char is_solid[]={
 
 #include "BG/Room1.c"
 
-#define MAX_ROOMS (8-1)
+#define MAX_ROOMS 255
 #define MAX_SCROLL (MAX_ROOMS*0x100)-1
 // data is exactly 240 bytes, 16 * 15
 // doubles as the collision map data
 
 
 const unsigned char * const Rooms[]= {
-	Room1_0,Room1_1,Room1_2,Room1_3,Room1_4,Room1_5,Room1_6,Room1_7
+	Room1_0,Room1_1,Room1_2,Room1_3,Room1_4,Room1_5,Room1_6,Room1_7,
+	Room1_8,Room1_9,Room1_10,Room1_11,Room1_12,Room1_13,Room1_14,Room1_15
 };
+
+
 
 
 

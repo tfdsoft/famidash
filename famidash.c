@@ -31,7 +31,7 @@ void main (void) {
 	
 	load_room();
 
-	song = 1;
+	song = 2;
 	music_play(song);
 
 	ppu_on_all(); // turn on screen
@@ -42,7 +42,6 @@ void main (void) {
 	while (1){
 		// infinite loop
 		ppu_wait_nmi(); // wait till beginning of the frame
-		
 		
 		
 
@@ -87,7 +86,7 @@ void load_room(void){
 	}
 	
 	
-	
+	/*
 	// a little bit in the next room
 	set_data_pointer(Rooms[1]);
 	for(y=0; ;y+=0x20){
@@ -98,7 +97,7 @@ void load_room(void){
 		flush_vram_update2();
 		if (y == 0xe0) break;
 	}
-	
+	*/
 
 	// copy the room to the collision map
 	// the second one should auto-load with the scrolling code
@@ -120,9 +119,9 @@ void draw_sprites(void){
 	if(temp_x > 0xfc) temp_x = 1;
 	if(temp_x == 0) temp_x = 1;
 	// draw 1 CUBE
-	cube_rotate += 0x68;
+	cube_rotate += 0x70;
 	if (high_byte(cube_rotate) > 0x05) cube_rotate = 0;
-	oam_meta_spr(temp_x, high_byte(Cube.y), CUBE[high_byte(cube_rotate)]);
+	oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
 }
 	
 
@@ -179,7 +178,7 @@ void movement(void){
 	
 	if(Cube.x > 0xf000) { // too far, don't wrap around
         
-        if(old_x >= 0x8000){
+        if(old_x >= 0xf000){
             Cube.x = 0xf000; // max right
         }
         else{
@@ -238,17 +237,16 @@ void movement(void){
     if(Cube.vel_y > 0){
         if(bg_coll_D()){ // check collision below
             high_byte(Cube.y) = high_byte(Cube.y) - eject_D;
-            Cube.y &= 0xff00;
-            if(Cube.vel_y > 0) {
-                Cube.vel_y = 0;
-            }
+            Cube.vel_y = 0;
+            
 
         }
     }
     else if(Cube.vel_y < 0){
         if(bg_coll_U() ){ // check collision above
             high_byte(Cube.y) = high_byte(Cube.y) - eject_U;
-            Cube.vel_y = 0;
+           cube_data = 1;
+			
         }
     }
     
@@ -334,7 +332,8 @@ char bg_coll_R(void){
     temp_room = temp5 >> 8; // high byte
     
 
-	temp_y = Generic.y + (Generic.height>>1); // this checks for a thing called *middle point collision* and kills you if you're inside a wall
+	temp_y = Generic.y + (Generic.height>>1); 	// this checks for a thing called *middle point collision* 
+												// and kills you if you're inside a wall
 	if(bg_collision_sub() & COL_ALL) cube_data = 1; return 1;
 	
     return 0;
@@ -351,7 +350,7 @@ char bg_coll_U(void){
     temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
     
-    temp_y = Generic.y;
+    temp_y = Generic.y + 2;
     eject_U = temp_y & 0xf0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
@@ -379,7 +378,7 @@ char bg_coll_D(void){
     
     temp_y = Generic.y + Generic.height;
     
-    if((temp_y & 0x0f) > 3) return 0; // bug fix
+    //if((temp_y & 0x04)) return 0; // bug fix
     // so we don't snap to those platforms
     // don't fall too fast, or might miss it.
     
@@ -572,8 +571,6 @@ char bg_coll_death(void) {
 	++temp5;++temp5;
 	temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
-	temp_y = Generic.y + (Generic.height >> 1);
-	--temp_y;--temp_y;
 	if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
 
 
@@ -592,8 +589,6 @@ char bg_coll_death(void) {
 	++temp5;++temp5;
 	temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
-	temp_y = Generic.y + (Generic.height >> 1);
-	++temp_y;++temp_y;
 	if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
 
 
@@ -623,7 +618,6 @@ char bg_coll_orbs() {
 		temp5 = Generic.x + scroll_x + Generic.width;
 		temp_x = (char)temp5; // low byte
     	temp_room = temp5 >> 8; // high byte
-		temp_y = Generic.y;
 		if(bg_collision_sub() & COL_YEL_ORB) return 1;
 
 
@@ -639,7 +633,6 @@ char bg_coll_orbs() {
 		temp5 = Generic.x + scroll_x + Generic.width;
 		temp_x = (char)temp5; // low byte
     	temp_room = temp5 >> 8; // high byte
-		temp_y = Generic.y + Generic.height;
 		if(bg_collision_sub() & COL_YEL_ORB) return 1;
 
 		return 0;
@@ -658,13 +651,22 @@ void orbjump() {
 
 char bg_coll_pads() {
 
-	// top left corner
-	temp5 = Generic.x + scroll_x + (Generic.width>>1);
+	// left
+	temp5 = Generic.x + scroll_x;
+	++temp5; ++temp5;
 	temp_x = (char)temp5; // low byte
 	temp_room = temp5 >> 8; // high byte
 	temp_y = Generic.y + (Generic.height>>1);
 	if(bg_collision_sub() & COL_YEL_PAD) return 1;
 
+	// right
+	temp5 = Generic.x + scroll_x + Generic.width;
+	--temp5; --temp5;
+	temp_x = (char)temp5; // low byte
+	temp_room = temp5 >> 8; // high byte
+	temp_y = Generic.y + (Generic.height>>1);
+	if(bg_collision_sub() & COL_YEL_PAD) return 1;
+	
 	return 0;
 }
 
