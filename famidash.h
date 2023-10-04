@@ -269,7 +269,12 @@ const unsigned char * const Rooms[]= {
 	Room1_16,Room1_17,Room1_18,Room1_19,
 	Room1_20,Room1_21,Room1_22,Room1_23,
 	Room1_24,Room1_25,Room1_26,Room1_27,
-	Room1_28,Room1_29,Room1_30,Room1_31
+	Room1_28,Room1_29,Room1_30,Room1_31,
+
+	Room1_32,Room1_33,Room1_34,Room1_35,
+	Room1_36,Room1_37,Room1_38,Room1_39,
+	Room1_40,Room1_41,Room1_42,Room1_43,
+	Room1_44,Room1_45,Room1_46,Room1_47
 };
 
 
