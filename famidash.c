@@ -664,3 +664,13 @@ void padjump() {
 	}
 
 }
+
+
+
+
+
+void update_colors() {
+
+	
+
+}

@@ -55,14 +55,12 @@ unsigned int old_x;
 //unsigned int old_y;
 unsigned char temp_x;
 unsigned char temp_y;
-
 unsigned char map_loaded; //only load it once
 unsigned char temp_room;
-
 unsigned char song;
 #define MAX_SONGS 5
 enum {SONG_GAME, SONG_PAUSE};
-
+unsigned char bg_col;
 
 
 
@@ -111,10 +109,10 @@ struct CUBE Cube = {0x0000,0xb400}; // starting position
 
 
 const unsigned char palette_bg[]={
-0x21,0x0c,0x0f,0x30,
-0x21,0x01,0x11,0x30,
-0x21,0x28,0x14,0x30,
-0x21,0x0f,0x00,0x30
+0x21,0x0c,0x0f,0x30,	// palette 0, used for level tiles
+0x0f,0x01,0x11,0x30,	// palette 1, used for ground
+0x0f,0x28,0x14,0x30,	// palette 2, used for pads and orbs
+0x0f,0x0f,0x00,0x30 	// palette 3, used for text
 }; 
 
 
@@ -305,6 +303,7 @@ void new_cmap(void);
 void reset_level(void);
 void orbjump(void);
 void padjump(void);
+void update_colors(void);
 
 char bg_collision_sub(void);
 char bg_coll_L(void);
