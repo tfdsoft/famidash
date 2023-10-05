@@ -31,7 +31,7 @@ void main (void) {
 	
 	load_room();
 
-	song = 2;
+	song = 0;
 	music_play(song);
 
 	ppu_on_all(); // turn on screen
@@ -42,8 +42,6 @@ void main (void) {
 	while (1){
 		// infinite loop
 		ppu_wait_nmi(); // wait till beginning of the frame
-		
-		
 
 		pad1 = pad_poll(0); // read the first controller
 		pad1_new = get_pad_new(0);
@@ -55,7 +53,6 @@ void main (void) {
 		set_scroll_y(scroll_y);
 		draw_screen_R();
 		draw_sprites();
-		gray_line();
 	}
 }
 
@@ -341,8 +338,6 @@ char bg_coll_R(void){
 
 
 
-
-
 char bg_coll_U(void){
     // check 2 points on the top side
     temp5 = Generic.x + scroll_x;
@@ -363,7 +358,6 @@ char bg_coll_U(void){
     
     return 0;
 }
-
 
 
 
@@ -398,8 +392,6 @@ char bg_coll_D(void){
 
 
 
-
-
 char bg_coll_D2(void){
     // check 2 points on the bottom side
     // a little lower, for jumping
@@ -426,9 +418,6 @@ char bg_coll_D2(void){
 
 
 
-
-
-
 char bg_collision_sub(void){
     if(temp_y >= 0xf0) return 0;
     
@@ -445,9 +434,6 @@ char bg_collision_sub(void){
 	
     return is_solid[collision];
 }
-
-
-
 
 
 
@@ -669,7 +655,6 @@ char bg_coll_pads() {
 	
 	return 0;
 }
-
 
 
 void padjump() {

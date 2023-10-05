@@ -4,8 +4,8 @@
 #define MAX_SPEED 0x240
 #define JUMP_VEL -0x5B0
 #define MAX_RIGHT 0x6000
-#define CUBE_SPEED 0x02C0
-#define YEL_PAD_HEIGHT -0x700
+#define CUBE_SPEED 0x02C4
+#define YEL_PAD_HEIGHT -0x760
 //#define CUBE_SPEED 0x0000
 
 #define CUBE_DEATH 0x01
@@ -168,8 +168,8 @@ const unsigned char metatiles1[]={
 	14, 15, 30, 31,  0,
 	40, 0, 56, 0,  0,
 	38, 39, 0, 0,  0,
-
 	0, 41, 0, 57,  0,
+
 	64, 65, 80, 81,  0,
 	68, 69, 86, 87,  0,
 	70, 67, 86, 83,  0,
@@ -184,7 +184,13 @@ const unsigned char metatiles1[]={
 	70, 71, 86, 89,  0,
 	70, 71, 88, 87,  0,
 	66, 67, 82, 83,  0,
-	68, 69, 84, 85,  0
+	68, 69, 84, 85,  0,
+	70, 71, 86, 87,  0,
+
+	64, 65, 82, 83,  0,
+	68, 65, 84, 81,  0,
+	66, 67, 80, 81,  0,
+	64, 69, 80, 85,  0
 };
 
 
@@ -247,14 +253,19 @@ const unsigned char is_solid[]={
 	COL_ALL,
 	COL_ALL,
 	COL_ALL,	// end of checkerboard blocks
-	0
+	0,
+
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL
 };
 
 
 
 #include "BG/Room1.c"
 
-#define MAX_ROOMS 255
+#define MAX_ROOMS 58
 #define MAX_SCROLL (MAX_ROOMS*0x100)-1
 // data is exactly 240 bytes, 16 * 15
 // doubles as the collision map data
@@ -274,7 +285,11 @@ const unsigned char * const Rooms[]= {
 	Room1_32,Room1_33,Room1_34,Room1_35,
 	Room1_36,Room1_37,Room1_38,Room1_39,
 	Room1_40,Room1_41,Room1_42,Room1_43,
-	Room1_44,Room1_45,Room1_46,Room1_47
+	Room1_44,Room1_45,Room1_46,Room1_47,
+
+	Room1_48,Room1_49,Room1_50,Room1_51,
+	Room1_52,Room1_53,Room1_54,Room1_55,
+	Room1_56,Room1_57
 };
 
 
