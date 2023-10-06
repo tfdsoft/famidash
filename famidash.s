@@ -78,6 +78,7 @@
 	.export		_map_loaded
 	.export		_temp_room
 	.export		_song
+	.export		_bg_col
 	.export		_cube_data
 	.export		_c_map
 	.export		_c_map2
@@ -155,6 +156,7 @@
 	.export		_reset_level
 	.export		_orbjump
 	.export		_padjump
+	.export		_update_colors
 	.export		_bg_collision_sub
 	.export		_bg_coll_L
 	.export		_bg_coll_R
@@ -335,15 +337,15 @@ _palette_bg:
 	.byte	$0C
 	.byte	$0F
 	.byte	$30
-	.byte	$21
+	.byte	$0F
 	.byte	$01
 	.byte	$11
 	.byte	$30
-	.byte	$21
+	.byte	$0F
 	.byte	$28
 	.byte	$14
 	.byte	$30
-	.byte	$21
+	.byte	$0F
 	.byte	$0F
 	.byte	$00
 	.byte	$30
@@ -14853,6 +14855,8 @@ _temp_room:
 	.res	1,$00
 _song:
 	.res	1,$00
+_bg_col:
+	.res	1,$00
 .segment	"BSS"
 _c_map:
 	.res	240,$00
@@ -15960,6 +15964,23 @@ L0008:	ldx     #$FA
 ; }
 ;
 L0002:	rts
+
+.endproc
+
+; ---------------------------------------------------------------
+; void __near__ update_colors (void)
+; ---------------------------------------------------------------
+
+.segment	"CODE"
+
+.proc	_update_colors: near
+
+.segment	"CODE"
+
+;
+; }
+;
+	rts
 
 .endproc
 

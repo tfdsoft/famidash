@@ -345,15 +345,15 @@ music_music_data:
 	.byte $bf
 @ref85:
 	.byte $bf
-@ref86:
-	.byte $bf
-@ref87:
-	.byte $bf
-@ref88:
-	.byte $bf
+	.byte $ff,$1e
+	.word @ref78
+	.byte $ff,$1e
+	.word @ref78
+	.byte $ff,$1e
+	.word @ref78
 @ref89:
-	.byte $9f,$92,$36,$81,$42,$81,$36,$81,$42,$81,$36,$81,$42,$81,$36,$81
-	.byte $42,$81
+	.byte $20,$00,$83,$28,$81,$00,$81,$20,$00,$20,$00,$28,$81,$00,$81,$92
+	.byte $36,$81,$42,$81,$36,$81,$42,$81,$36,$81,$42,$81,$36,$81,$42,$81
 @ref90:
 	.byte $36,$81,$42,$81,$36,$81,$42,$81,$36,$81,$42,$81,$36,$81,$42,$81
 	.byte $34,$81,$40,$81,$34,$81,$40,$81,$34,$81,$40,$81,$34,$81,$40,$81
@@ -439,22 +439,22 @@ music_music_data:
 	.byte $bf
 @ref120:
 	.byte $bf
-@ref121:
-	.byte $bf
-@ref122:
-	.byte $bf
-@ref123:
-	.byte $bf
-@ref124:
-	.byte $bf
-@ref125:
-	.byte $bf
-@ref126:
-	.byte $bf
-@ref127:
-	.byte $bf
-@ref128:
-	.byte $bf
+	.byte $ff,$20
+	.word @ref113
+	.byte $ff,$20
+	.word @ref114
+	.byte $ff,$20
+	.word @ref114
+	.byte $ff,$20
+	.word @ref114
+	.byte $ff,$20
+	.word @ref114
+	.byte $ff,$20
+	.word @ref114
+	.byte $ff,$20
+	.word @ref114
+	.byte $ff,$20
+	.word @ref114
 	.byte $ff,$20
 	.word @ref109
 	.byte $ff,$20
