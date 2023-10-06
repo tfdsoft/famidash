@@ -11,7 +11,7 @@ FT_THREAD       = 1		;undefine if you call sound effects in the same thread as s
 FT_PAL_SUPPORT	= 0		;undefine to exclude PAL support
 FT_NTSC_SUPPORT	= 1		;undefine to exclude NTSC support
 FT_DPCM_ENABLE  = 1		;undefine to exclude all DMC code
-FT_SFX_ENABLE   = 0		;undefine to exclude all sound effects code
+FT_SFX_ENABLE   = 1		;undefine to exclude all sound effects code
 
 
 
