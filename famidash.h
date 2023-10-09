@@ -294,6 +294,21 @@ const unsigned char * const Rooms[]= {
 
 
 
+// sound effects lol.
+#define SFX_DEATH 0x00
+
+
+
+
+
+
+
+
+
+
+
+
+
 // PROTOTYPES
 void load_room(void);
 void draw_sprites(void);

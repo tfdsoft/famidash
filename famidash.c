@@ -521,8 +521,8 @@ void new_cmap(void){
 void reset_level(void) {
 
 	ppu_off(); // reset the level when you get to this point, and change this later
-	load_room();
 	scroll_x = 0;
+	load_room();
 	Cube.x = 0x0000;
 	Cube.y = 0xb400;
 	Cube.vel_x = 0;

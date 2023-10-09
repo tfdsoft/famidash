@@ -15840,18 +15840,19 @@ L0009:	adc     #<(_Rooms)
 ;
 	jsr     _ppu_off
 ;
-; load_room();
-;
-	jsr     _load_room
-;
 ; scroll_x = 0;
 ;
 	lda     #$00
 	sta     _scroll_x
 	sta     _scroll_x+1
 ;
+; load_room();
+;
+	jsr     _load_room
+;
 ; Cube.x = 0x0000;
 ;
+	lda     #$00
 	sta     _Cube
 	sta     _Cube+1
 ;
