@@ -44,7 +44,7 @@ char bg_coll_U(void){
     temp_room = temp5 >> 8; // high byte
     
     temp_y = Generic.y;
-    eject_U = temp_y & 0xf0;
+    eject_U = temp_y | 0xf0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
     temp5 = Generic.x + scroll_x + Generic.width;

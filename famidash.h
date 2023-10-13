@@ -75,9 +75,9 @@ unsigned char temp_room;
 #define MAX_SONGS 1
 unsigned char song;
 enum {SONG_GAME, SONG_PAUSE};
-unsigned char cube_data = 0;
+unsigned char cube_data;
 unsigned char bg_col;
-
+unsigned char gamemode;
 
 unsigned char c_map[240];
 unsigned char c_map2[240];

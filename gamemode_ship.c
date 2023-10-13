@@ -121,14 +121,10 @@ void ship_movement(void){
 			
         }
     }
-    
-	// check collision down a little lower than CUBE
-	Generic.y = high_byte(Cube.y); // the rest should be the same
-	
-        if(pad1 & PAD_A) {
-			Cube.vel_y -= SHIP_GRAVITY; // fly
-			Cube.vel_y -= SHIP_GRAVITY;
-		}
+    if(pad1 & PAD_A) {
+		Cube.vel_y -= SHIP_GRAVITY; // fly
+		Cube.vel_y -= SHIP_GRAVITY;
+	}
 
 	
 	// do we need to load a new collision map? (scrolled into a new room)
