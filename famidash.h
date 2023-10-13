@@ -1,6 +1,5 @@
 #define ACCEL 30
 #define DECEL 50
-#define GRAVITY 0x6C
 #define MAX_SPEED 0x240
 #define JUMP_VEL -0x5B0
 #define MAX_RIGHT 0x6000
@@ -10,6 +9,14 @@
 
 #define CUBE_DEATH 0x01
 #define CUBE_ORBJUMP 0x02
+
+
+//gamemode max fall speed
+#define CUBE_MAX_FALLSPEED 0x600
+#define CUBE_GRAVITY 0x6C
+#define SHIP_MAX_FALLSPEED 0x300
+#define SHIP_MAX_GOUPSPEED -0x300
+#define SHIP_GRAVITY 0x36
 
 
 #pragma bss-name(push, "ZEROPAGE")
@@ -57,20 +64,19 @@ unsigned char temp_x;
 unsigned char temp_y;
 unsigned char map_loaded; //only load it once
 unsigned char temp_room;
-unsigned char song;
-#define MAX_SONGS 5
-enum {SONG_GAME, SONG_PAUSE};
-unsigned char bg_col;
+
+
+
 
 
 
 #pragma bss-name(push, "BSS")
 
+#define MAX_SONGS 1
+unsigned char song;
+enum {SONG_GAME, SONG_PAUSE};
 unsigned char cube_data = 0;
-
-
-
-
+unsigned char bg_col;
 
 
 unsigned char c_map[240];
@@ -102,20 +108,12 @@ struct CUBE Cube = {0x0000,0xb400}; // starting position
 
 
 
-
-
-
-
-
-
 const unsigned char palette_bg[]={
 0x21,0x0c,0x0f,0x30,	// palette 0, used for level tiles
 0x0f,0x01,0x11,0x30,	// palette 1, used for ground
 0x0f,0x28,0x14,0x30,	// palette 2, used for pads and orbs
 0x0f,0x0f,0x00,0x30 	// palette 3, used for text
 }; 
-
-
 
 
 const unsigned char palette_sp[]={
@@ -193,6 +191,9 @@ const unsigned char metatiles1[]={
 
 
 
+
+
+
 #define COL_DEATH 0x80
 #define COL_ALL 0x40
 #define COL_YEL_ORB 0x20
@@ -260,7 +261,7 @@ const unsigned char is_solid[]={
 };
 
 
-
+#include "Sprites.h" // holds our metasprite data
 #include "BG/Room1.c"
 
 #define MAX_ROOMS 58

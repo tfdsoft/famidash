@@ -33,13 +33,6 @@
 	.import		_set_mt_pointer
 	.import		_buffer_4_mt
 	.import		_flush_vram_update2
-	.export		_Cube_0
-	.export		_Cube_1
-	.export		_Cube_2
-	.export		_Cube_3
-	.export		_Cube_4
-	.export		_Cube_5
-	.export		_CUBE
 	.export		_cube_rotate
 	.export		_pad1
 	.export		_pad1_new
@@ -78,8 +71,8 @@
 	.export		_map_loaded
 	.export		_temp_room
 	.export		_song
-	.export		_bg_col
 	.export		_cube_data
+	.export		_bg_col
 	.export		_c_map
 	.export		_c_map2
 	.export		_Generic
@@ -88,6 +81,13 @@
 	.export		_palette_sp
 	.export		_metatiles1
 	.export		_is_solid
+	.export		_Cube_0
+	.export		_Cube_1
+	.export		_Cube_2
+	.export		_Cube_3
+	.export		_Cube_4
+	.export		_Cube_5
+	.export		_CUBE
 	.export		_Room1_0
 	.export		_Room1_1
 	.export		_Room1_2
@@ -150,7 +150,7 @@
 	.export		_Rooms
 	.export		_load_room
 	.export		_draw_sprites
-	.export		_movement
+	.export		_cube_movement
 	.export		_draw_screen_R
 	.export		_new_cmap
 	.export		_reset_level
@@ -166,6 +166,7 @@
 	.export		_bg_coll_death
 	.export		_bg_coll_orbs
 	.export		_bg_coll_pads
+	.export		_ship_movement
 	.export		_main
 
 .segment	"DATA"
@@ -179,159 +180,6 @@ _Cube:
 
 .segment	"RODATA"
 
-_Cube_0:
-	.byte	$00
-	.byte	$00
-	.byte	$01
-	.byte	$00
-	.byte	$00
-	.byte	$08
-	.byte	$01
-	.byte	$80
-	.byte	$08
-	.byte	$00
-	.byte	$01
-	.byte	$40
-	.byte	$08
-	.byte	$08
-	.byte	$01
-	.byte	$C0
-	.byte	$80
-_Cube_1:
-	.byte	$00
-	.byte	$00
-	.byte	$09
-	.byte	$00
-	.byte	$00
-	.byte	$08
-	.byte	$0A
-	.byte	$C0
-	.byte	$08
-	.byte	$00
-	.byte	$0A
-	.byte	$00
-	.byte	$08
-	.byte	$08
-	.byte	$09
-	.byte	$C0
-	.byte	$80
-_Cube_2:
-	.byte	$00
-	.byte	$FC
-	.byte	$02
-	.byte	$00
-	.byte	$08
-	.byte	$FC
-	.byte	$03
-	.byte	$00
-	.byte	$FC
-	.byte	$04
-	.byte	$04
-	.byte	$00
-	.byte	$04
-	.byte	$04
-	.byte	$05
-	.byte	$00
-	.byte	$0C
-	.byte	$04
-	.byte	$04
-	.byte	$C0
-	.byte	$00
-	.byte	$0C
-	.byte	$03
-	.byte	$C0
-	.byte	$08
-	.byte	$0C
-	.byte	$02
-	.byte	$C0
-	.byte	$80
-_Cube_3:
-	.byte	$00
-	.byte	$FC
-	.byte	$06
-	.byte	$00
-	.byte	$08
-	.byte	$FC
-	.byte	$06
-	.byte	$40
-	.byte	$FC
-	.byte	$04
-	.byte	$07
-	.byte	$00
-	.byte	$04
-	.byte	$04
-	.byte	$08
-	.byte	$00
-	.byte	$0C
-	.byte	$04
-	.byte	$07
-	.byte	$40
-	.byte	$00
-	.byte	$0C
-	.byte	$06
-	.byte	$80
-	.byte	$08
-	.byte	$0C
-	.byte	$06
-	.byte	$C0
-	.byte	$80
-_Cube_4:
-	.byte	$00
-	.byte	$FC
-	.byte	$03
-	.byte	$40
-	.byte	$08
-	.byte	$FC
-	.byte	$02
-	.byte	$40
-	.byte	$FC
-	.byte	$04
-	.byte	$04
-	.byte	$80
-	.byte	$04
-	.byte	$04
-	.byte	$05
-	.byte	$40
-	.byte	$0C
-	.byte	$04
-	.byte	$04
-	.byte	$40
-	.byte	$00
-	.byte	$0C
-	.byte	$02
-	.byte	$80
-	.byte	$08
-	.byte	$0C
-	.byte	$03
-	.byte	$80
-	.byte	$80
-_Cube_5:
-	.byte	$00
-	.byte	$00
-	.byte	$0A
-	.byte	$40
-	.byte	$00
-	.byte	$08
-	.byte	$09
-	.byte	$80
-	.byte	$08
-	.byte	$00
-	.byte	$09
-	.byte	$40
-	.byte	$08
-	.byte	$08
-	.byte	$0A
-	.byte	$80
-	.byte	$80
-_CUBE:
-	.addr	_Cube_0
-	.addr	_Cube_1
-	.addr	_Cube_2
-	.addr	_Cube_3
-	.addr	_Cube_4
-	.addr	_Cube_5
-	.addr	_Cube_0
-	.addr	_Cube_0
 _palette_bg:
 	.byte	$21
 	.byte	$0C
@@ -680,6 +528,159 @@ _is_solid:
 	.byte	$40
 	.byte	$40
 	.byte	$40
+_Cube_0:
+	.byte	$00
+	.byte	$00
+	.byte	$01
+	.byte	$00
+	.byte	$00
+	.byte	$08
+	.byte	$01
+	.byte	$80
+	.byte	$08
+	.byte	$00
+	.byte	$01
+	.byte	$40
+	.byte	$08
+	.byte	$08
+	.byte	$01
+	.byte	$C0
+	.byte	$80
+_Cube_1:
+	.byte	$00
+	.byte	$00
+	.byte	$09
+	.byte	$00
+	.byte	$00
+	.byte	$08
+	.byte	$0A
+	.byte	$C0
+	.byte	$08
+	.byte	$00
+	.byte	$0A
+	.byte	$00
+	.byte	$08
+	.byte	$08
+	.byte	$09
+	.byte	$C0
+	.byte	$80
+_Cube_2:
+	.byte	$00
+	.byte	$FC
+	.byte	$02
+	.byte	$00
+	.byte	$08
+	.byte	$FC
+	.byte	$03
+	.byte	$00
+	.byte	$FC
+	.byte	$04
+	.byte	$04
+	.byte	$00
+	.byte	$04
+	.byte	$04
+	.byte	$05
+	.byte	$00
+	.byte	$0C
+	.byte	$04
+	.byte	$04
+	.byte	$C0
+	.byte	$00
+	.byte	$0C
+	.byte	$03
+	.byte	$C0
+	.byte	$08
+	.byte	$0C
+	.byte	$02
+	.byte	$C0
+	.byte	$80
+_Cube_3:
+	.byte	$00
+	.byte	$FC
+	.byte	$06
+	.byte	$00
+	.byte	$08
+	.byte	$FC
+	.byte	$06
+	.byte	$40
+	.byte	$FC
+	.byte	$04
+	.byte	$07
+	.byte	$00
+	.byte	$04
+	.byte	$04
+	.byte	$08
+	.byte	$00
+	.byte	$0C
+	.byte	$04
+	.byte	$07
+	.byte	$40
+	.byte	$00
+	.byte	$0C
+	.byte	$06
+	.byte	$80
+	.byte	$08
+	.byte	$0C
+	.byte	$06
+	.byte	$C0
+	.byte	$80
+_Cube_4:
+	.byte	$00
+	.byte	$FC
+	.byte	$03
+	.byte	$40
+	.byte	$08
+	.byte	$FC
+	.byte	$02
+	.byte	$40
+	.byte	$FC
+	.byte	$04
+	.byte	$04
+	.byte	$80
+	.byte	$04
+	.byte	$04
+	.byte	$05
+	.byte	$40
+	.byte	$0C
+	.byte	$04
+	.byte	$04
+	.byte	$40
+	.byte	$00
+	.byte	$0C
+	.byte	$02
+	.byte	$80
+	.byte	$08
+	.byte	$0C
+	.byte	$03
+	.byte	$80
+	.byte	$80
+_Cube_5:
+	.byte	$00
+	.byte	$00
+	.byte	$0A
+	.byte	$40
+	.byte	$00
+	.byte	$08
+	.byte	$09
+	.byte	$80
+	.byte	$08
+	.byte	$00
+	.byte	$09
+	.byte	$40
+	.byte	$08
+	.byte	$08
+	.byte	$0A
+	.byte	$80
+	.byte	$80
+_CUBE:
+	.addr	_Cube_0
+	.addr	_Cube_1
+	.addr	_Cube_2
+	.addr	_Cube_3
+	.addr	_Cube_4
+	.addr	_Cube_5
+	.addr	_Cube_0
+	.addr	_Cube_0
 _Room1_0:
 	.byte	$00
 	.byte	$00
@@ -14853,11 +14854,11 @@ _map_loaded:
 	.res	1,$00
 _temp_room:
 	.res	1,$00
+.segment	"BSS"
 _song:
 	.res	1,$00
 _bg_col:
 	.res	1,$00
-.segment	"BSS"
 _c_map:
 	.res	240,$00
 _c_map2:
@@ -15066,12 +15067,12 @@ L0008:	adc     #<(_CUBE)
 .endproc
 
 ; ---------------------------------------------------------------
-; void __near__ movement (void)
+; void __near__ cube_movement (void)
 ; ---------------------------------------------------------------
 
 .segment	"CODE"
 
-.proc	_movement: near
+.proc	_cube_movement: near
 
 .segment	"CODE"
 
@@ -15232,7 +15233,7 @@ L0027:	lda     #$00
 	sta     _Cube
 	stx     _Cube+1
 ;
-; Cube.vel_y += GRAVITY;
+; Cube.vel_y += CUBE_GRAVITY;
 ;
 L000C:	lda     #$6C
 	clc
@@ -15310,7 +15311,7 @@ L000E:	ldx     _Cube+6+1
 	sbc     _eject_U
 	sta     _Cube+3
 ;
-; cube_data = 1;
+; cube_data = 0x01;
 ;
 	lda     #$01
 	sta     _cube_data
@@ -15430,11 +15431,15 @@ L001A:	lda     _scroll_x
 ;
 ; reset_level();
 ;
-	jmp     _reset_level
+	jsr     _reset_level
 ;
-; } 
+; orbjump();
 ;
-L001C:	rts
+L001C:	jsr     _orbjump
+;
+; padjump();
+;
+	jmp     _padjump
 
 .endproc
 
@@ -16160,9 +16165,9 @@ L0008:	rts
 	pla
 	clc
 	adc     _Generic+2
-	bcc     L0003
+	bcc     L0006
 	inx
-L0003:	sta     _temp5
+L0006:	sta     _temp5
 	stx     _temp5+1
 ;
 ; temp_x = (char)temp5; // low byte
@@ -16175,24 +16180,55 @@ L0003:	sta     _temp5
 	lda     _temp5+1
 	sta     _temp_room
 ;
-; temp_y = Generic.y + (Generic.height>>1);  // this checks for a thing called *middle point collision* 
+; eject_R = (temp_x + 1) & 0x0f;
 ;
-	lda     _Generic+3
-	lsr     a
+	lda     _temp_x
 	clc
-	adc     _Generic+1
+	adc     #$01
+	and     #$0F
+	sta     _eject_R
+;
+; temp_y = Generic.y + 2;
+;
+	lda     _Generic+1
+	clc
+	adc     #$02
 	sta     _temp_y
 ;
-; if(bg_collision_sub() & COL_ALL) cube_data = 1; return 1;
+; if(bg_collision_sub() & COL_ALL) return 1;
+;
+	jsr     _bg_collision_sub
+	and     #$40
+	beq     L0008
+	ldx     #$00
+	lda     #$01
+	rts
+;
+; temp_y = Generic.y + Generic.height;
+;
+L0008:	lda     _Generic+1
+	clc
+	adc     _Generic+3
+	sta     _temp_y
+;
+; temp_y -= 2;
+;
+	sec
+	sbc     #$02
+	sta     _temp_y
+;
+; if(bg_collision_sub() & COL_ALL) return 1;
 ;
 	jsr     _bg_collision_sub
 	ldx     #$00
 	and     #$40
-	beq     L0005
+	beq     L000A
 	lda     #$01
-	sta     _cube_data
-L0005:	lda     #$01
 	rts
+;
+; }
+;
+L000A:	rts
 
 .endproc
 
@@ -17093,6 +17129,423 @@ L000D:	rts
 .endproc
 
 ; ---------------------------------------------------------------
+; void __near__ ship_movement (void)
+; ---------------------------------------------------------------
+
+.segment	"CODE"
+
+.proc	_ship_movement: near
+
+.segment	"CODE"
+
+;
+; old_x = Cube.x;
+;
+	lda     _Cube+1
+	sta     _old_x+1
+	lda     _Cube
+	sta     _old_x
+;
+; Cube.vel_x = CUBE_SPEED;
+;
+	ldx     #$02
+	lda     #$C4
+	sta     _Cube+4
+	stx     _Cube+4+1
+;
+; Cube.x += Cube.vel_x;
+;
+	clc
+	adc     _Cube
+	sta     _Cube
+	txa
+	adc     _Cube+1
+	sta     _Cube+1
+;
+; if(Cube.x > 0xf000) { // too far, don't wrap around
+;
+	lda     _Cube
+	cmp     #$01
+	lda     _Cube+1
+	sbc     #$F0
+	bcc     L002A
+;
+; if(old_x >= 0xf000){
+;
+	lda     _old_x
+	cmp     #$00
+	lda     _old_x+1
+	sbc     #$F0
+	lda     #$00
+	tax
+	bcc     L0029
+;
+; Cube.x = 0xf000; // max right
+;
+	ldx     #$F0
+;
+; Cube.x = 0x0000; // max left
+;
+L0029:	sta     _Cube
+	stx     _Cube+1
+;
+; Cube.vel_x = 0;
+;
+	sta     _Cube+4
+	sta     _Cube+4+1
+;
+; Generic.x = high_byte(Cube.x); // this is much faster than passing a pointer to Cube
+;
+L002A:	lda     _Cube+1
+	sta     _Generic
+;
+; Generic.y = high_byte(Cube.y);
+;
+	lda     _Cube+3
+	sta     _Generic+1
+;
+; Generic.width = CUBE_WIDTH;
+;
+	lda     #$0F
+	sta     _Generic+2
+;
+; Generic.height = CUBE_HEIGHT;
+;
+	sta     _Generic+3
+;
+; if(Cube.vel_x < 0){
+;
+	ldx     _Cube+4+1
+	cpx     #$80
+	bcc     L0005
+;
+; if(bg_coll_L() ){ // check collision left
+;
+	jsr     _bg_coll_L
+	tax
+	beq     L000C
+;
+; high_byte(Cube.x) = high_byte(Cube.x) - eject_L;
+;
+	lda     _Cube+1
+	sec
+	sbc     _eject_L
+	sta     _Cube+1
+;
+; Cube.vel_x = 0;
+;
+	lda     #$00
+	sta     _Cube+4
+	sta     _Cube+4+1
+;
+; if(Cube.x > 0xf000) {
+;
+	lda     _Cube
+	cmp     #$01
+	lda     _Cube+1
+	sbc     #$F0
+	bcc     L000C
+;
+; Cube.x = 0xf000;
+;
+	ldx     #$F0
+;
+; else if(Cube.vel_x > 0){
+;
+	jmp     L0030
+L0005:	lda     _Cube+4
+	cmp     #$01
+	lda     _Cube+4+1
+	sbc     #$00
+	bvs     L000A
+	eor     #$80
+L000A:	bpl     L000C
+;
+; if(bg_coll_R() ){ // check collision right
+;
+	jsr     _bg_coll_R
+	tax
+	beq     L000C
+;
+; high_byte(Cube.x) = high_byte(Cube.x) - eject_R;
+;
+	lda     _Cube+1
+	sec
+	sbc     _eject_R
+	sta     _Cube+1
+;
+; Cube.vel_x = 0;
+;
+	lda     #$00
+	sta     _Cube+4
+	sta     _Cube+4+1
+;
+; if(Cube.x > 0xf000) {
+;
+	lda     _Cube
+	cmp     #$01
+	lda     _Cube+1
+	sbc     #$F0
+	bcc     L000C
+;
+; Cube.x = 0x0000;
+;
+	ldx     #$00
+L0030:	lda     #$00
+	sta     _Cube
+	stx     _Cube+1
+;
+; if(Cube.vel_y < SHIP_MAX_FALLSPEED){
+;
+L000C:	lda     _Cube+6
+	cmp     #$00
+	lda     _Cube+6+1
+	sbc     #$03
+	bvc     L000E
+	eor     #$80
+L000E:	bpl     L000D
+;
+; Cube.vel_y += SHIP_GRAVITY;
+;
+	lda     #$36
+	clc
+	adc     _Cube+6
+	sta     _Cube+6
+	bcc     L0010
+	inc     _Cube+6+1
+;
+; else{
+;
+	jmp     L0010
+;
+; Cube.vel_y = SHIP_MAX_FALLSPEED; // consistent
+;
+L000D:	ldx     #$03
+	lda     #$00
+	sta     _Cube+6
+	stx     _Cube+6+1
+;
+; if(Cube.vel_y > SHIP_MAX_GOUPSPEED) {}
+;
+L0010:	lda     _Cube+6
+	cmp     #$01
+	lda     _Cube+6+1
+	sbc     #$FD
+	bvs     L0012
+	eor     #$80
+;
+; else{
+;
+L0012:	bmi     L0013
+;
+; Cube.vel_y = SHIP_MAX_GOUPSPEED; // consistent
+;
+	ldx     #$FD
+	lda     #$00
+	sta     _Cube+6
+	stx     _Cube+6+1
+;
+; Cube.y += Cube.vel_y;
+;
+L0013:	lda     _Cube+6
+	clc
+	adc     _Cube+2
+	sta     _Cube+2
+	lda     _Cube+6+1
+	adc     _Cube+2+1
+	sta     _Cube+2+1
+;
+; Generic.x = high_byte(Cube.x);
+;
+	lda     _Cube+1
+	sta     _Generic
+;
+; Generic.y = high_byte(Cube.y);
+;
+	lda     _Cube+3
+	sta     _Generic+1
+;
+; if(Cube.vel_y > 0){
+;
+	lda     _Cube+6
+	cmp     #$01
+	lda     _Cube+6+1
+	sbc     #$00
+	bvs     L0015
+	eor     #$80
+L0015:	bpl     L0014
+;
+; if(bg_coll_D()){ // check collision below
+;
+	jsr     _bg_coll_D
+	tax
+	beq     L002B
+;
+; high_byte(Cube.y) = high_byte(Cube.y) - eject_D;
+;
+	lda     _Cube+3
+	sec
+	sbc     _eject_D
+;
+; else if(Cube.vel_y < 0){
+;
+	jmp     L0032
+L0014:	ldx     _Cube+6+1
+	cpx     #$80
+	bcc     L002B
+;
+; if(bg_coll_U()){ // check collision above
+;
+	jsr     _bg_coll_U
+	tax
+	beq     L002B
+;
+; high_byte(Cube.y) = high_byte(Cube.y) - eject_U;
+;
+	lda     _Cube+3
+	sec
+	sbc     _eject_U
+L0032:	sta     _Cube+3
+;
+; Cube.vel_y = 0;
+;
+	lda     #$00
+	sta     _Cube+6
+	sta     _Cube+6+1
+;
+; Generic.y = high_byte(Cube.y); // the rest should be the same
+;
+L002B:	lda     _Cube+3
+	sta     _Generic+1
+;
+; if(pad1 & PAD_A) {
+;
+	lda     _pad1
+	and     #$80
+	beq     L001A
+;
+; Cube.vel_y -= SHIP_GRAVITY; // fly
+;
+	lda     _Cube+6
+	sec
+	sbc     #$36
+	sta     _Cube+6
+	bcs     L001B
+	dec     _Cube+6+1
+;
+; Cube.vel_y -= SHIP_GRAVITY;
+;
+L001B:	lda     _Cube+6
+	sec
+	sbc     #$36
+	sta     _Cube+6
+	bcs     L001A
+	dec     _Cube+6+1
+;
+; if((scroll_x & 0xff) < 4){
+;
+L001A:	lda     _scroll_x
+	cmp     #$04
+	bcs     L002C
+;
+; if(!map_loaded){
+;
+	lda     _map_loaded
+	bne     L0020
+;
+; new_cmap();
+;
+	jsr     _new_cmap
+;
+; map_loaded = 1; // only do once
+;
+	lda     #$01
+;
+; else{
+;
+	jmp     L0027
+;
+; map_loaded = 0;
+;
+L002C:	lda     #$00
+L0027:	sta     _map_loaded
+;
+; temp5 = Cube.x;
+;
+L0020:	lda     _Cube+1
+	sta     _temp5+1
+	lda     _Cube
+	sta     _temp5
+;
+; if (Cube.x > MAX_RIGHT){
+;
+	lda     _Cube
+	cmp     #$01
+	lda     _Cube+1
+	sbc     #$60
+	bcc     L0021
+;
+; temp1 = (Cube.x - MAX_RIGHT) >> 8;
+;
+	lda     _Cube+1
+	sec
+	sbc     #$60
+	sta     _temp1
+;
+; if (temp1 > 3) temp1 = 3; // max scroll change
+;
+	cmp     #$04
+	bcc     L002D
+	lda     #$03
+	sta     _temp1
+;
+; scroll_x += temp1;
+;
+L002D:	lda     _temp1
+	clc
+	adc     _scroll_x
+	sta     _scroll_x
+	lda     #$00
+	adc     _scroll_x+1
+	sta     _scroll_x+1
+;
+; high_byte(Cube.x) = high_byte(Cube.x) - temp1;
+;
+	lda     _Cube+1
+	sec
+	sbc     _temp1
+	sta     _Cube+1
+;
+; if(scroll_x >= MAX_SCROLL) {
+;
+L0021:	lda     _scroll_x
+	cmp     #$FF
+	lda     _scroll_x+1
+	sbc     #$39
+	bcc     L0023
+;
+; scroll_x = MAX_SCROLL; // stop scrolling right, end of level
+;
+	ldx     #$39
+	lda     #$FF
+	sta     _scroll_x
+	stx     _scroll_x+1
+;
+; reset_level();
+;
+	jsr     _reset_level
+;
+; orbjump();
+;
+L0023:	jsr     _orbjump
+;
+; padjump();
+;
+	jmp     _padjump
+
+.endproc
+
+; ---------------------------------------------------------------
 ; void __near__ main (void)
 ; ---------------------------------------------------------------
 
@@ -17172,21 +17625,13 @@ L0002:	jsr     _ppu_wait_nmi
 	jsr     _get_pad_new
 	sta     _pad1_new
 ;
-; movement();
+; ship_movement();
 ;
-	jsr     _movement
+	jsr     _ship_movement
 ;
 ; bg_coll_death();
 ;
 	jsr     _bg_coll_death
-;
-; orbjump();
-;
-	jsr     _orbjump
-;
-; padjump();
-;
-	jsr     _padjump
 ;
 ; set_scroll_x(scroll_x);
 ;
