@@ -45,10 +45,8 @@ void main (void) {
 
 		pad1 = pad_poll(0); // read the first controller
 		pad1_new = get_pad_new(0);
-		movement();
+		cube_movement();
 		bg_coll_death();
-		orbjump();
-		padjump();
 		set_scroll_x(scroll_x);
 		set_scroll_y(scroll_y);
 		draw_screen_R();
@@ -128,7 +126,7 @@ void draw_sprites(void){
 
 
 
-void movement(void){
+void cube_movement(void){
 	
 // handle x
 
@@ -291,6 +289,8 @@ void movement(void){
 		}
 		*/
 	}
+	orbjump();
+	padjump();
 }	
 
 

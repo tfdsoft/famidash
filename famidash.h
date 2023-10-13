@@ -312,7 +312,7 @@ const unsigned char * const Rooms[]= {
 // PROTOTYPES
 void load_room(void);
 void draw_sprites(void);
-void movement(void);	
+void cube_movement(void);	
 void draw_screen_R(void);
 void new_cmap(void);
 void reset_level(void);
