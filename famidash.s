@@ -33,6 +33,7 @@
 	.import		_set_mt_pointer
 	.import		_buffer_4_mt
 	.import		_flush_vram_update2
+	.import		_gray_line
 	.export		_cube_rotate
 	.export		_pad1
 	.export		_pad1_new
@@ -15169,9 +15170,9 @@ L0010:	lda     _gamemode
 	and     #$01
 	beq     L0008
 ;
-; cube_rotate = 0x0400 - Cube.vel_y;
+; cube_rotate = 0x0480 - Cube.vel_y;
 ;
-	lda     #$00
+	lda     #$80
 	sec
 	sbc     _Cube+6
 	sta     _cube_rotate
@@ -17776,6 +17777,10 @@ L0007:	jsr     _bg_coll_death
 ; draw_sprites();
 ;
 	jsr     _draw_sprites
+;
+; gray_line();
+;
+	jsr     _gray_line
 ;
 ; while (1){
 ;

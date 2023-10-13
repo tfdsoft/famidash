@@ -53,6 +53,7 @@ void main (void) {
 		set_scroll_y(scroll_y);
 		draw_screen_R();
 		draw_sprites();
+		gray_line();
 	}
 }
 
@@ -122,7 +123,7 @@ void draw_sprites(void){
 		oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
 	}
 	if (gamemode & 0x01){
-		cube_rotate = 0x0400 - Cube.vel_y;
+		cube_rotate = 0x0480 - Cube.vel_y;
 		oam_meta_spr(temp_x, high_byte(Cube.y)-1, SHIP[high_byte(cube_rotate)]);
 	}
 }
