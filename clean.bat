@@ -1,0 +1,1 @@
+winmake.exe clean
