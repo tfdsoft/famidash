@@ -61,7 +61,7 @@ $(NAME).s: $(NAME).c Sprites.h famidash.h BG/Room1.c
 
 clean:
 ifeq ($(OS),Windows_NT)
-	del BUILD/*.*
+	clean.bat
 else ifeq ($(OS),MSDOS)
 	rm -rf BUILD/*.*
 else

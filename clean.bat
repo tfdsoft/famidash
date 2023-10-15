@@ -1,1 +1,1 @@
-winmake.exe clean
+del /Q BUILD\*.*
