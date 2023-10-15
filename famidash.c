@@ -33,7 +33,7 @@ void main (void) {
 	ppu_on_all(); // turn on screen
 	
 	
-	gamemode = 0x01;
+	gamemode = 0x02;
 	cube_rotate = 0;
 	while (1){
 		// infinite loop
@@ -43,8 +43,8 @@ void main (void) {
 		pad1_new = get_pad_new(0);
 
 
-		if (gamemode & 0x00) cube_movement();
-		else if (gamemode & 0x01) ship_movement();
+		if (gamemode & 0x01) cube_movement();
+		else if (gamemode & 0x02) ship_movement();
 
 
 
@@ -117,12 +117,12 @@ void draw_sprites(void){
 	if(temp_x > 0xfc) temp_x = 1;
 	if(temp_x == 0) temp_x = 1;
 	// draw 1 CUBE
-	if (gamemode & 0x00) {
+	if (gamemode & 0x01) {
 		cube_rotate += 0x70;
 		if (high_byte(cube_rotate) > 0x05) cube_rotate = 0;
 		oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
 	}
-	if (gamemode & 0x01){
+	if (gamemode & 0x02){
 		cube_rotate = 0x0480 - Cube.vel_y;
 		oam_meta_spr(temp_x, high_byte(Cube.y)-1, SHIP[high_byte(cube_rotate)]);
 	}

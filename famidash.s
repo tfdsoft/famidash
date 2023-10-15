@@ -15160,14 +15160,67 @@ L0003:	lda     #<(_c_map)
 ; if(temp_x == 0) temp_x = 1;
 ;
 L000E:	lda     _temp_x
-	bne     L0010
+	bne     L000F
 	lda     #$01
 	sta     _temp_x
 ;
-; if (gamemode & 0x01){
+; if (gamemode & 0x01) {
+;
+L000F:	lda     _gamemode
+	and     #$01
+	beq     L0010
+;
+; cube_rotate += 0x70;
+;
+	lda     #$70
+	clc
+	adc     _cube_rotate
+	sta     _cube_rotate
+	bcc     L0005
+	inc     _cube_rotate+1
+;
+; if (high_byte(cube_rotate) > 0x05) cube_rotate = 0;
+;
+L0005:	lda     _cube_rotate+1
+	cmp     #$06
+	bcc     L0006
+	lda     #$00
+	sta     _cube_rotate
+	sta     _cube_rotate+1
+;
+; oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
+;
+L0006:	jsr     decsp2
+	lda     _temp_x
+	ldy     #$01
+	sta     (sp),y
+	lda     _Cube+3
+	sec
+	sbc     #$01
+	dey
+	sta     (sp),y
+	ldx     #$00
+	lda     _cube_rotate+1
+	asl     a
+	bcc     L000C
+	inx
+	clc
+L000C:	adc     #<(_CUBE)
+	sta     ptr1
+	txa
+	adc     #>(_CUBE)
+	sta     ptr1+1
+	iny
+	lda     (ptr1),y
+	tax
+	dey
+	lda     (ptr1),y
+	jsr     _oam_meta_spr
+;
+; if (gamemode & 0x02){
 ;
 L0010:	lda     _gamemode
-	and     #$01
+	and     #$02
 	beq     L0008
 ;
 ; cube_rotate = 0x0480 - Cube.vel_y;
@@ -17720,9 +17773,9 @@ L0023:	jsr     _orbjump
 ;
 	jsr     _ppu_on_all
 ;
-; gamemode = 0x01;
+; gamemode = 0x02;
 ;
-	lda     #$01
+	lda     #$02
 	sta     _gamemode
 ;
 ; cube_rotate = 0;
@@ -17747,10 +17800,18 @@ L0002:	jsr     _ppu_wait_nmi
 	jsr     _get_pad_new
 	sta     _pad1_new
 ;
-; else if (gamemode & 0x01) ship_movement();
+; if (gamemode & 0x01) cube_movement();
 ;
 	lda     _gamemode
 	and     #$01
+	beq     L0008
+	jsr     _cube_movement
+;
+; else if (gamemode & 0x02) ship_movement();
+;
+	jmp     L0007
+L0008:	lda     _gamemode
+	and     #$02
 	beq     L0007
 	jsr     _ship_movement
 ;
