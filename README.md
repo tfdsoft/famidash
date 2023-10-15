@@ -26,8 +26,8 @@ MS-DOS:
 Locate the ``.conf`` file, and scroll down to the ``autoexec`` section.  
 add lines to mount and go to your C drive:  
 ``path\to\directory`` is the path on your PC where the virtual C drive will be. Example: ``C:\DOS``
-``mount C: path\to\directory
-C:``
+```mount C: path\to\directory
+C:```
 
 Install DJGPP. ZIPs for the current release can be found [here.](https://www.delorie.com/pub/djgpp/current/v2gnu/)  
 Download these ZIP files:  
@@ -37,6 +37,7 @@ djdev205.zip - Basic runtime/dev package
 fil41br3.zip - GNU fileutils
 mak43br2.zip - GNU Make
 txt20br3.zip - GNU textutils```
+
 Create a directory named ``djgpp`` in the directory you mounted as the virtual C drive in DOSBOX and extract the contents of each zip into this directory.  
 Add these lines to the start of autoexec:  
 ```set PATH=C:\DJGPP\BIN;%PATH%
