@@ -1,3 +1,4 @@
 # ew windows
 dbg.txt
+*.o
 famidash.s
