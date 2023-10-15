@@ -889,6 +889,22 @@ _Room1_0:
 	.byte	$00
 	.byte	$00
 	.byte	$00
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -902,25 +918,9 @@ _Room1_0:
 	.byte	$00
 	.byte	$00
 	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
+	.byte	$1B
+	.byte	$1B
+	.byte	$1B
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -1130,6 +1130,16 @@ _Room1_1:
 	.byte	$00
 	.byte	$00
 	.byte	$00
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
+	.byte	$10
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -1140,26 +1150,16 @@ _Room1_1:
 	.byte	$00
 	.byte	$00
 	.byte	$00
+	.byte	$1B
+	.byte	$1B
+	.byte	$1B
 	.byte	$00
 	.byte	$00
 	.byte	$00
 	.byte	$00
 	.byte	$00
 	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
+	.byte	$14
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -1404,6 +1404,7 @@ _Room1_2:
 	.byte	$00
 	.byte	$00
 	.byte	$00
+	.byte	$14
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -1423,8 +1424,7 @@ _Room1_2:
 	.byte	$00
 	.byte	$00
 	.byte	$00
-	.byte	$00
-	.byte	$00
+	.byte	$14
 	.byte	$00
 	.byte	$00
 	.byte	$00
