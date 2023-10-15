@@ -13,11 +13,6 @@ ifeq ($(shell lsb_release -si),Ubuntu)
 CC65 = cc65
 CA65 = ca65
 LD65 = ld65
-else
-# Other Linux Distro
-CC65 = ./bin/cc65
-CA65 = ./bin/ca65
-LD65 = ./bin/ld65
 endif
 else ifeq ($(OS),MSDOS)
 # MS-DOS
