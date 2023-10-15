@@ -7,13 +7,6 @@ ifeq ($(OS),Windows_NT)
 CC65 = ./bin/cc65.exe
 CA65 = ./bin/ca65.exe
 LD65 = ./bin/ld65.exe
-else ifeq ($(shell uname -s),Linux)
-ifeq ($(shell lsb_release -si),Ubuntu)
-# Ubuntu
-CC65 = cc65
-CA65 = ca65
-LD65 = ld65
-endif
 else ifeq ($(OS),MSDOS)
 # MS-DOS
 # add "set OS=MSDOS" to autoexec
@@ -21,6 +14,11 @@ else ifeq ($(OS),MSDOS)
 CC65 = ./bin/cc65d.exe
 CA65 = ./bin/ca65d.exe
 LD65 = ./bin/ld65d.exe
+else
+# Ubuntu/Debian
+CC65 = cc65
+CA65 = ca65
+LD65 = ld65
 endif
 
 NAME = famidash
