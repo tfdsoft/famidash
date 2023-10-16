@@ -29,7 +29,7 @@ char bg_coll_R(void){
 
 	temp_y = Generic.y + (Generic.height>>1); 	// this checks for a thing called *middle point collision* 
 												// and kills you if you're inside a wall
-	if(bg_collision_sub() & COL_ALL) {cube_data = 0x01;}
+	//if(bg_collision_sub() & COL_ALL) {cube_data = 0x01;}
 	
     return 0;
 }

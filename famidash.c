@@ -8,7 +8,9 @@
 
 #include "include.h"
 
-
+#include "collision.c"
+#include "gamemode_cube.c"
+#include "gamemode_ship.c"
 	
 	
 void main (void) {
@@ -33,7 +35,7 @@ void main (void) {
 	ppu_on_all(); // turn on screen
 	
 	
-	gamemode = 0x02;
+	gamemode = 0x01;
 	cube_rotate = 0;
 	while (1){
 		// infinite loop
@@ -235,6 +237,7 @@ void reset_level(void) {
 	load_room();
 	Cube.x = 0x0000;
 	Cube.y = 0xb400;
+	gravity = 0;
 	Cube.vel_x = 0;
 	Cube.vel_y = 0;
 	cube_data = 0;
@@ -382,5 +385,5 @@ void padjump() {
 void update_colors() {
 
 	
-
 }
+

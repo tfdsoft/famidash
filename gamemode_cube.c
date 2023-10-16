@@ -89,9 +89,16 @@ void cube_movement(void){
 
 // gravity
 
+
+
 	// Cube.vel_y is signed
 	//if(Cube.vel_y < 0x400){
+	if(gravity < 1){
 		Cube.vel_y += CUBE_GRAVITY;
+	}
+	else{
+		Cube.vel_y -= CUBE_GRAVITY;
+	}		
 	//}
 	//else{
 	//	Cube.vel_y = 0x400; // consistent
@@ -101,22 +108,24 @@ void cube_movement(void){
 	Generic.x = high_byte(Cube.x);
 	Generic.y = high_byte(Cube.y);
 	
-    if(Cube.vel_y > 0){
-        if(bg_coll_D()){ // check collision below
-            high_byte(Cube.y) = high_byte(Cube.y) - eject_D;
-            Cube.vel_y = 0;
-            
 
-        }
-    }
-    else if(Cube.vel_y < 0){
-        if(bg_coll_U() ){ // check collision above
-            high_byte(Cube.y) = high_byte(Cube.y) - eject_U;
-            cube_data = 0x01;
-			
-        }
-    }
-    
+		if(Cube.vel_y > 0){
+			if(bg_coll_D()){ // check collision below
+			    high_byte(Cube.y) = high_byte(Cube.y) - eject_D;
+			    Cube.vel_y = 0;
+			}
+		}
+		else if(Cube.vel_y < 0){
+			if(bg_coll_U() ){ // check collision above
+				high_byte(Cube.y) = high_byte(Cube.y) - eject_U;
+				Cube.vel_y = 0;
+			}
+		}
+
+	
+	
+
+	
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(Cube.y); // the rest should be the same
 	
@@ -124,6 +133,16 @@ void cube_movement(void){
 		
         if(pad1 & PAD_A) {
 			Cube.vel_y = JUMP_VEL; // JUMP
+		}
+	
+        
+	}
+	if(pad1_new & PAD_B) {
+		if(gravity == 1) {
+			gravity = 0;
+		}
+		else if(gravity == 0) {
+			gravity = 1;
 		}
 	}
 	
