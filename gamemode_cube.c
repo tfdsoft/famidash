@@ -134,9 +134,14 @@ void cube_movement(void){
         if(pad1 & PAD_A) {
 			Cube.vel_y = JUMP_VEL; // JUMP
 		}
-	
-        
 	}
+	if(bg_coll_U2()) {
+		
+        if(pad1 & PAD_A) {
+			Cube.vel_y = -JUMP_VEL; // JUMP
+		}
+	}
+	
 	if(pad1_new & PAD_B) {
 		if(gravity == 1) {
 			gravity = 0;

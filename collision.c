@@ -29,7 +29,7 @@ char bg_coll_R(void){
 
 	temp_y = Generic.y + (Generic.height>>1); 	// this checks for a thing called *middle point collision* 
 												// and kills you if you're inside a wall
-	//if(bg_collision_sub() & COL_ALL) {cube_data = 0x01;}
+	if(bg_collision_sub() & COL_ALL) {cube_data = 0x01;}
 	
     return 0;
 }
@@ -100,6 +100,30 @@ char bg_coll_D2(void){
 
     temp_y = Generic.y + Generic.height;
     temp_y += 2;
+    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+
+    temp5 = Generic.x + scroll_x + Generic.width;
+    temp5 -= 2;
+    temp_x = (char)temp5; // low byte
+    temp_room = temp5 >> 8; // high byte
+    
+    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+    
+	
+
+    return 0;
+}
+
+char bg_coll_U2(void){
+    // check 2 points on the bottom side
+    // a little lower, for jumping
+    temp5 = Generic.x + scroll_x;
+    temp5 += 2;
+    temp_x = (char)temp5; // low byte
+    temp_room = temp5 >> 8; // high byte
+
+    temp_y = Generic.y;
+    temp_y -= 2;
     if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
 
     temp5 = Generic.x + scroll_x + Generic.width;

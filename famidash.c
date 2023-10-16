@@ -8,9 +8,7 @@
 
 #include "include.h"
 
-#include "collision.c"
-#include "gamemode_cube.c"
-#include "gamemode_ship.c"
+
 	
 	
 void main (void) {
@@ -342,7 +340,8 @@ char bg_coll_orbs() {
 void orbjump() {
 	bg_coll_orbs();
 	if (bg_coll_orbs() && cube_data & CUBE_ORBJUMP) {
-		Cube.vel_y = JUMP_VEL;
+		if (gravity == 1) Cube.vel_y = -JUMP_VEL;
+		else Cube.vel_y = JUMP_VEL;
 		cube_data = 0x00;
 	}
 }
@@ -373,9 +372,9 @@ char bg_coll_pads() {
 void padjump() {
 	bg_coll_pads();
 	if (bg_coll_pads()) {
-		Cube.vel_y = YEL_PAD_HEIGHT;
+		if (gravity == 1) Cube.vel_y = -YEL_PAD_HEIGHT;
+		else Cube.vel_y = YEL_PAD_HEIGHT;
 	}
-
 }
 
 

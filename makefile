@@ -16,7 +16,10 @@ default: $(NAME).nes
 
 #target: dependencies
 
+
+
 $(NAME).nes: $(NAME).o crt0.o $(CFG)
+	rm ./BUILD/$(NAME).nes
 	$(LD65) -C $(CFG) -o ./BUILD/$(NAME).nes crt0.o $(NAME).o nes.lib -Ln labels.txt --dbgfile dbg.txt
 	rm *.o
 	@echo $(NAME).nes created
@@ -31,4 +34,4 @@ $(NAME).s: $(NAME).c Sprites.h famidash.h BG/Room1.c
 	$(CC65) -Oirs $(NAME).c --add-source
 
 clean:
-	rm $(NAME).nes
+	rm ./BUILD/$(NAME).nes
