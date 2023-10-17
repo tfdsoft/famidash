@@ -38,9 +38,6 @@ void main (void) {
 	while (1){
 		// infinite loop
 		ppu_wait_nmi(); // wait till beginning of the frame
-		ppu_wait_nmi();
-		ppu_wait_nmi();
-		ppu_wait_nmi();
 
 		pad1 = pad_poll(0); // read the first controller
 		pad1_new = get_pad_new(0);
@@ -49,7 +46,9 @@ void main (void) {
 		if (gamemode & 0x01) cube_movement();
 		else if (gamemode & 0x02) ship_movement();
 
-
+		check_spr_objects(); // see which objects are on screen
+			
+		sprite_collisions();
 
 		bg_coll_death();
 		set_scroll_x(scroll_x);
@@ -103,6 +102,8 @@ void load_room(void){
 	// copy the room to the collision map
 	// the second one should auto-load with the scrolling code
 	memcpy (c_map, Rooms[0], 240);
+
+	sprite_obj_init();
 }
 
 
@@ -116,15 +117,31 @@ void draw_sprites(void){
 	// clear all sprites from sprite buffer
 	oam_clear();
 	
+	
+
+
+	// PORTALS
+	for(index = 0; index < MAX_OBJ; ++index){
+		temp_y = obj_y[index];
+		if(temp_y == TURN_OFF) continue;
+        if(!obj_active[index]) continue;
+        temp_x = obj_x[index];
+		if(temp_x > 0xf0) continue;
+		index2 = obj_type[index];
+		if(temp_y < 0xf0) {
+			oam_meta_spr(temp_x, temp_y, Portals[index2]);
+		}
+	}
+
+
+
+
+
+	// CUBE
+	// draw the cube last so that the cube appears behind portals
 	temp_x = high_byte(Cube.x);
 	if(temp_x > 0xfc) temp_x = 1;
 	if(temp_x == 0) temp_x = 1;
-
-
-
-
-
-	// draw 1 CUBE
 	if (gamemode & 0x01) {
 		oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
 		
@@ -141,6 +158,15 @@ void draw_sprites(void){
 
 		cube_rotate = 0x0480 - Cube.vel_y;
 	}
+
+
+
+
+
+
+
+	
+	
 }
 	
 
@@ -372,3 +398,109 @@ void update_colors() {
 	
 }
 
+
+void check_spr_objects(void){
+	Generic2.x = high_byte(Cube.x);
+	// mark each object "active" if they are, and get the screen x
+	
+	for(index = 0; index < MAX_OBJ; ++index){
+		obj_active[index] = 0; //default to zero
+		if(obj_y[index] != TURN_OFF){
+			high_byte(temp5) = obj_room[index];
+			low_byte(temp5) = obj_actual_x[index];
+			obj_active[index] = get_position();
+			obj_x[index] = temp_x; // screen x coords
+		}
+	}
+}
+
+
+
+char get_position(void){
+	// is it in range ? return 1 if yes
+	
+	temp5 -= scroll_x;
+	temp_x = temp5 & 0xff;
+	if(high_byte(temp5)) return 0;
+	return 1;
+}
+
+
+
+
+void sprite_collisions(void){
+
+	Generic.x = high_byte(Cube.x);
+	Generic.y = high_byte(Cube.y);
+	Generic.width = CUBE_WIDTH;
+	Generic.height = CUBE_HEIGHT;
+	
+	for(index = 0; index < MAX_OBJ; ++index){
+		if(obj_active[index]){
+			Generic2.width = PORTAL_WIDTH;
+			Generic2.height = PORTAL_HEIGHT;
+			
+			Generic2.x = obj_x[index];
+			Generic2.y = obj_y[index];
+
+			if(check_collision(&Generic, &Generic2)){
+				switch (obj_type[index]) {
+				case PORTAL_GAMEMODE_CUBE:
+					gamemode = 0x01;
+					break;
+
+				case PORTAL_GAMEMODE_SHIP:
+					gamemode = 0x02;
+					break;
+
+				case PORTAL_GRAVITY_DOWN:
+					gravity = 0x00;
+					break;
+
+				case PORTAL_GRAVITY_UP:
+					gravity = 0x01;
+					break;
+				}
+				//if(obj_type[index] == OBJ_END);
+			}
+		}
+	}
+}
+
+void sprite_obj_init(void){
+
+	pointer = obj_list[level];
+	for(index = 0,index2 = 0;index < MAX_OBJ; ++index){
+		
+		obj_x[index] = 0;
+
+		temp1 = pointer[index2]; // get a byte of data
+		obj_y[index] = temp1;
+		
+		if(temp1 == TURN_OFF) break;
+
+		++index2;
+		
+		obj_active[index] = 0;
+
+		
+		temp1 = pointer[index2]; // get a byte of data
+		obj_room[index] = temp1;
+		
+		++index2;
+		
+		temp1 = pointer[index2]; // get a byte of data
+		obj_actual_x[index] = temp1;
+		
+		++index2;
+		
+		temp1 = pointer[index2]; // get a byte of data
+		obj_type[index] = temp1;
+		
+		++index2;
+	}
+	
+	for(++index;index < MAX_OBJ; ++index){
+		obj_y[index] = TURN_OFF;
+	}
+}

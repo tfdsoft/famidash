@@ -27,6 +27,7 @@
 	.import		_memcpy
 	.import		_set_vram_buffer
 	.import		_get_pad_new
+	.import		_check_collision
 	.import		_set_scroll_x
 	.import		_set_scroll_y
 	.import		_get_ppu_addr
@@ -61,6 +62,7 @@
 	.export		_y
 	.export		_nt
 	.export		_index
+	.export		_index2
 	.export		_room
 	.export		_map
 	.export		_scroll_x
@@ -77,10 +79,19 @@
 	.export		_cube_data
 	.export		_bg_col
 	.export		_gamemode
+	.export		_level
+	.export		_pointer
 	.export		_c_map
 	.export		_c_map2
 	.export		_Generic
+	.export		_Generic2
 	.export		_Cube
+	.export		_obj_x
+	.export		_obj_y
+	.export		_obj_active
+	.export		_obj_room
+	.export		_obj_actual_x
+	.export		_obj_type
 	.export		_palette_bg
 	.export		_palette_sp
 	.export		_metatiles1
@@ -100,65 +111,69 @@
 	.export		_Ship_5
 	.export		_Ship_6
 	.export		_SHIP
-	.export		_Room1_0
-	.export		_Room1_1
-	.export		_Room1_2
-	.export		_Room1_3
-	.export		_Room1_4
-	.export		_Room1_5
-	.export		_Room1_6
-	.export		_Room1_7
-	.export		_Room1_8
-	.export		_Room1_9
-	.export		_Room1_10
-	.export		_Room1_11
-	.export		_Room1_12
-	.export		_Room1_13
-	.export		_Room1_14
-	.export		_Room1_15
-	.export		_Room1_16
-	.export		_Room1_17
-	.export		_Room1_18
-	.export		_Room1_19
-	.export		_Room1_20
-	.export		_Room1_21
-	.export		_Room1_22
-	.export		_Room1_23
-	.export		_Room1_24
-	.export		_Room1_25
-	.export		_Room1_26
-	.export		_Room1_27
-	.export		_Room1_28
-	.export		_Room1_29
-	.export		_Room1_30
-	.export		_Room1_31
-	.export		_Room1_32
-	.export		_Room1_33
-	.export		_Room1_34
-	.export		_Room1_35
-	.export		_Room1_36
-	.export		_Room1_37
-	.export		_Room1_38
-	.export		_Room1_39
-	.export		_Room1_40
-	.export		_Room1_41
-	.export		_Room1_42
-	.export		_Room1_43
-	.export		_Room1_44
-	.export		_Room1_45
-	.export		_Room1_46
-	.export		_Room1_47
-	.export		_Room1_48
-	.export		_Room1_49
-	.export		_Room1_50
-	.export		_Room1_51
-	.export		_Room1_52
-	.export		_Room1_53
-	.export		_Room1_54
-	.export		_Room1_55
-	.export		_Room1_56
-	.export		_Room1_57
-	.export		_Room1_list
+	.export		_Portal_Gamemode_Cube
+	.export		_Portal_Gamemode_Ship
+	.export		_Portal_Gravity_Down
+	.export		_Portal_Gravity_Up
+	.export		_Portals
+	.export		_Room1__0
+	.export		_Room1__1
+	.export		_Room1__2
+	.export		_Room1__3
+	.export		_Room1__4
+	.export		_Room1__5
+	.export		_Room1__6
+	.export		_Room1__7
+	.export		_Room1__8
+	.export		_Room1__9
+	.export		_Room1__10
+	.export		_Room1__11
+	.export		_Room1__12
+	.export		_Room1__13
+	.export		_Room1__14
+	.export		_Room1__15
+	.export		_Room1__16
+	.export		_Room1__17
+	.export		_Room1__18
+	.export		_Room1__19
+	.export		_Room1__20
+	.export		_Room1__21
+	.export		_Room1__22
+	.export		_Room1__23
+	.export		_Room1__24
+	.export		_Room1__25
+	.export		_Room1__26
+	.export		_Room1__27
+	.export		_Room1__28
+	.export		_Room1__29
+	.export		_Room1__30
+	.export		_Room1__31
+	.export		_Room1__32
+	.export		_Room1__33
+	.export		_Room1__34
+	.export		_Room1__35
+	.export		_Room1__36
+	.export		_Room1__37
+	.export		_Room1__38
+	.export		_Room1__39
+	.export		_Room1__40
+	.export		_Room1__41
+	.export		_Room1__42
+	.export		_Room1__43
+	.export		_Room1__44
+	.export		_Room1__45
+	.export		_Room1__46
+	.export		_Room1__47
+	.export		_Room1__48
+	.export		_Room1__49
+	.export		_Room1__50
+	.export		_Room1__51
+	.export		_Room1__52
+	.export		_Room1__53
+	.export		_Room1__54
+	.export		_Room1__55
+	.export		_Room1__56
+	.export		_Room1__57
 	.export		_Rooms
 	.export		_load_room
 	.export		_draw_sprites
@@ -169,6 +184,9 @@
 	.export		_orbjump
 	.export		_padjump
 	.export		_update_colors
+	.export		_sprite_obj_init
+	.export		_sprite_collisions
+	.export		_check_spr_objects
 	.export		_bg_collision_sub
 	.export		_bg_coll_L
 	.export		_bg_coll_R
@@ -178,6 +196,9 @@
 	.export		_bg_coll_death
 	.export		_bg_coll_orbs
 	.export		_bg_coll_pads
+	.export		_get_position
+	.export		_obj_polargeist
+	.export		_obj_list
 	.export		_bg_coll_U2
 	.export		_ship_movement
 	.export		_main
@@ -214,13 +235,13 @@ _palette_sp:
 	.byte	$2A
 	.byte	$21
 	.byte	$00
-	.byte	$12
-	.byte	$22
-	.byte	$32
+	.byte	$0F
+	.byte	$2A
+	.byte	$24
 	.byte	$00
-	.byte	$13
-	.byte	$23
-	.byte	$33
+	.byte	$0F
+	.byte	$21
+	.byte	$28
 	.byte	$00
 	.byte	$14
 	.byte	$24
@@ -827,7 +848,164 @@ _SHIP:
 	.addr	_Ship_4
 	.addr	_Ship_5
 	.addr	_Ship_6
-_Room1_0:
+_Portal_Gamemode_Cube:
+	.byte	$00
+	.byte	$F0
+	.byte	$20
+	.byte	$01
+	.byte	$03
+	.byte	$F8
+	.byte	$21
+	.byte	$01
+	.byte	$06
+	.byte	$00
+	.byte	$22
+	.byte	$01
+	.byte	$06
+	.byte	$08
+	.byte	$22
+	.byte	$81
+	.byte	$03
+	.byte	$10
+	.byte	$21
+	.byte	$81
+	.byte	$00
+	.byte	$18
+	.byte	$20
+	.byte	$81
+	.byte	$06
+	.byte	$F0
+	.byte	$26
+	.byte	$01
+	.byte	$09
+	.byte	$F8
+	.byte	$27
+	.byte	$01
+	.byte	$0C
+	.byte	$00
+	.byte	$28
+	.byte	$01
+	.byte	$0C
+	.byte	$08
+	.byte	$28
+	.byte	$81
+	.byte	$09
+	.byte	$10
+	.byte	$27
+	.byte	$81
+	.byte	$06
+	.byte	$18
+	.byte	$26
+	.byte	$81
+	.byte	$80
+_Portal_Gamemode_Ship:
+	.byte	$00
+	.byte	$F0
+	.byte	$23
+	.byte	$01
+	.byte	$03
+	.byte	$F8
+	.byte	$24
+	.byte	$01
+	.byte	$06
+	.byte	$00
+	.byte	$25
+	.byte	$01
+	.byte	$06
+	.byte	$08
+	.byte	$25
+	.byte	$81
+	.byte	$03
+	.byte	$10
+	.byte	$24
+	.byte	$81
+	.byte	$00
+	.byte	$18
+	.byte	$23
+	.byte	$81
+	.byte	$06
+	.byte	$F0
+	.byte	$26
+	.byte	$01
+	.byte	$09
+	.byte	$F8
+	.byte	$27
+	.byte	$01
+	.byte	$0C
+	.byte	$00
+	.byte	$28
+	.byte	$01
+	.byte	$0C
+	.byte	$08
+	.byte	$28
+	.byte	$81
+	.byte	$09
+	.byte	$10
+	.byte	$27
+	.byte	$81
+	.byte	$06
+	.byte	$18
+	.byte	$26
+	.byte	$81
+	.byte	$80
+_Portal_Gravity_Down:
+	.byte	$00
+	.byte	$F0
+	.byte	$20
+	.byte	$02
+	.byte	$03
+	.byte	$F8
+	.byte	$21
+	.byte	$02
+	.byte	$06
+	.byte	$00
+	.byte	$22
+	.byte	$02
+	.byte	$06
+	.byte	$08
+	.byte	$22
+	.byte	$82
+	.byte	$03
+	.byte	$10
+	.byte	$21
+	.byte	$82
+	.byte	$00
+	.byte	$18
+	.byte	$20
+	.byte	$82
+	.byte	$80
+_Portal_Gravity_Up:
+	.byte	$00
+	.byte	$00
+	.byte	$23
+	.byte	$02
+	.byte	$03
+	.byte	$08
+	.byte	$24
+	.byte	$02
+	.byte	$06
+	.byte	$10
+	.byte	$25
+	.byte	$02
+	.byte	$06
+	.byte	$18
+	.byte	$25
+	.byte	$82
+	.byte	$03
+	.byte	$20
+	.byte	$24
+	.byte	$82
+	.byte	$00
+	.byte	$28
+	.byte	$23
+	.byte	$82
+	.byte	$80
+_Portals:
+	.addr	_Portal_Gamemode_Cube
+	.addr	_Portal_Gamemode_Ship
+	.addr	_Portal_Gravity_Down
+	.addr	_Portal_Gravity_Up
+_Room1__0:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -1068,7 +1246,7 @@ _Room1_0:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_1:
+_Room1__1:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -1309,7 +1487,7 @@ _Room1_1:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_2:
+_Room1__2:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -1550,7 +1728,7 @@ _Room1_2:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_3:
+_Room1__3:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -1791,7 +1969,7 @@ _Room1_3:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_4:
+_Room1__4:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -2032,7 +2210,7 @@ _Room1_4:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_5:
+_Room1__5:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -2273,7 +2451,7 @@ _Room1_5:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_6:
+_Room1__6:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -2514,7 +2692,7 @@ _Room1_6:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_7:
+_Room1__7:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -2755,7 +2933,7 @@ _Room1_7:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_8:
+_Room1__8:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -2996,7 +3174,7 @@ _Room1_8:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_9:
+_Room1__9:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -3237,7 +3415,7 @@ _Room1_9:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_10:
+_Room1__10:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -3478,7 +3656,7 @@ _Room1_10:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_11:
+_Room1__11:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -3719,7 +3897,7 @@ _Room1_11:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_12:
+_Room1__12:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -3960,7 +4138,7 @@ _Room1_12:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_13:
+_Room1__13:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -4201,7 +4379,7 @@ _Room1_13:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_14:
+_Room1__14:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -4442,7 +4620,7 @@ _Room1_14:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_15:
+_Room1__15:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -4683,7 +4861,7 @@ _Room1_15:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_16:
+_Room1__16:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -4924,7 +5102,7 @@ _Room1_16:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_17:
+_Room1__17:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -5165,7 +5343,7 @@ _Room1_17:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_18:
+_Room1__18:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -5406,7 +5584,7 @@ _Room1_18:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_19:
+_Room1__19:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -5647,7 +5825,7 @@ _Room1_19:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_20:
+_Room1__20:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -5888,7 +6066,7 @@ _Room1_20:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_21:
+_Room1__21:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -6129,7 +6307,7 @@ _Room1_21:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_22:
+_Room1__22:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -6370,7 +6548,7 @@ _Room1_22:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_23:
+_Room1__23:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -6611,7 +6789,7 @@ _Room1_23:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_24:
+_Room1__24:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -6852,7 +7030,7 @@ _Room1_24:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_25:
+_Room1__25:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -7093,7 +7271,7 @@ _Room1_25:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_26:
+_Room1__26:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -7334,7 +7512,7 @@ _Room1_26:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_27:
+_Room1__27:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -7575,7 +7753,7 @@ _Room1_27:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_28:
+_Room1__28:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -7816,7 +7994,7 @@ _Room1_28:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_29:
+_Room1__29:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -8057,7 +8235,7 @@ _Room1_29:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_30:
+_Room1__30:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -8298,7 +8476,7 @@ _Room1_30:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_31:
+_Room1__31:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -8539,7 +8717,7 @@ _Room1_31:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_32:
+_Room1__32:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -8780,7 +8958,7 @@ _Room1_32:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_33:
+_Room1__33:
 	.byte	$00
 	.byte	$00
 	.byte	$2D
@@ -9021,7 +9199,7 @@ _Room1_33:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_34:
+_Room1__34:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -9262,7 +9440,7 @@ _Room1_34:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_35:
+_Room1__35:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -9503,7 +9681,7 @@ _Room1_35:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_36:
+_Room1__36:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -9744,7 +9922,7 @@ _Room1_36:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_37:
+_Room1__37:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -9985,7 +10163,7 @@ _Room1_37:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_38:
+_Room1__38:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -10226,7 +10404,7 @@ _Room1_38:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_39:
+_Room1__39:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -10467,7 +10645,7 @@ _Room1_39:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_40:
+_Room1__40:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -10708,7 +10886,7 @@ _Room1_40:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_41:
+_Room1__41:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -10949,7 +11127,7 @@ _Room1_41:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_42:
+_Room1__42:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -11190,7 +11368,7 @@ _Room1_42:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_43:
+_Room1__43:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -11431,7 +11609,7 @@ _Room1_43:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_44:
+_Room1__44:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -11672,7 +11850,7 @@ _Room1_44:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_45:
+_Room1__45:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -11913,7 +12091,7 @@ _Room1_45:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_46:
+_Room1__46:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -12154,7 +12332,7 @@ _Room1_46:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_47:
+_Room1__47:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -12395,7 +12573,7 @@ _Room1_47:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_48:
+_Room1__48:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -12636,7 +12814,7 @@ _Room1_48:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_49:
+_Room1__49:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -12877,7 +13055,7 @@ _Room1_49:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_50:
+_Room1__50:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -13118,7 +13296,7 @@ _Room1_50:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_51:
+_Room1__51:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -13359,7 +13537,7 @@ _Room1_51:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_52:
+_Room1__52:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -13600,7 +13778,7 @@ _Room1_52:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_53:
+_Room1__53:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -13841,7 +14019,7 @@ _Room1_53:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_54:
+_Room1__54:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -14082,7 +14260,7 @@ _Room1_54:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_55:
+_Room1__55:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -14323,7 +14501,7 @@ _Room1_55:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_56:
+_Room1__56:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -14564,7 +14742,7 @@ _Room1_56:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_57:
+_Room1__57:
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -14805,123 +14983,81 @@ _Room1_57:
 	.byte	$07
 	.byte	$07
 	.byte	$07
-_Room1_list:
-	.addr	_Room1_0
-	.addr	_Room1_1
-	.addr	_Room1_2
-	.addr	_Room1_3
-	.addr	_Room1_4
-	.addr	_Room1_5
-	.addr	_Room1_6
-	.addr	_Room1_7
-	.addr	_Room1_8
-	.addr	_Room1_9
-	.addr	_Room1_10
-	.addr	_Room1_11
-	.addr	_Room1_12
-	.addr	_Room1_13
-	.addr	_Room1_14
-	.addr	_Room1_15
-	.addr	_Room1_16
-	.addr	_Room1_17
-	.addr	_Room1_18
-	.addr	_Room1_19
-	.addr	_Room1_20
-	.addr	_Room1_21
-	.addr	_Room1_22
-	.addr	_Room1_23
-	.addr	_Room1_24
-	.addr	_Room1_25
-	.addr	_Room1_26
-	.addr	_Room1_27
-	.addr	_Room1_28
-	.addr	_Room1_29
-	.addr	_Room1_30
-	.addr	_Room1_31
-	.addr	_Room1_32
-	.addr	_Room1_33
-	.addr	_Room1_34
-	.addr	_Room1_35
-	.addr	_Room1_36
-	.addr	_Room1_37
-	.addr	_Room1_38
-	.addr	_Room1_39
-	.addr	_Room1_40
-	.addr	_Room1_41
-	.addr	_Room1_42
-	.addr	_Room1_43
-	.addr	_Room1_44
-	.addr	_Room1_45
-	.addr	_Room1_46
-	.addr	_Room1_47
-	.addr	_Room1_48
-	.addr	_Room1_49
-	.addr	_Room1_50
-	.addr	_Room1_51
-	.addr	_Room1_52
-	.addr	_Room1_53
-	.addr	_Room1_54
-	.addr	_Room1_55
-	.addr	_Room1_56
 _Rooms:
-	.addr	_Room1_0
-	.addr	_Room1_1
-	.addr	_Room1_2
-	.addr	_Room1_3
-	.addr	_Room1_4
-	.addr	_Room1_5
-	.addr	_Room1_6
-	.addr	_Room1_7
-	.addr	_Room1_8
-	.addr	_Room1_9
-	.addr	_Room1_10
-	.addr	_Room1_11
-	.addr	_Room1_12
-	.addr	_Room1_13
-	.addr	_Room1_14
-	.addr	_Room1_15
-	.addr	_Room1_16
-	.addr	_Room1_17
-	.addr	_Room1_18
-	.addr	_Room1_19
-	.addr	_Room1_20
-	.addr	_Room1_21
-	.addr	_Room1_22
-	.addr	_Room1_23
-	.addr	_Room1_24
-	.addr	_Room1_25
-	.addr	_Room1_26
-	.addr	_Room1_27
-	.addr	_Room1_28
-	.addr	_Room1_29
-	.addr	_Room1_30
-	.addr	_Room1_31
-	.addr	_Room1_32
-	.addr	_Room1_33
-	.addr	_Room1_34
-	.addr	_Room1_35
-	.addr	_Room1_36
-	.addr	_Room1_37
-	.addr	_Room1_38
-	.addr	_Room1_39
-	.addr	_Room1_40
-	.addr	_Room1_41
-	.addr	_Room1_42
-	.addr	_Room1_43
-	.addr	_Room1_44
-	.addr	_Room1_45
-	.addr	_Room1_46
-	.addr	_Room1_47
-	.addr	_Room1_48
-	.addr	_Room1_49
-	.addr	_Room1_50
-	.addr	_Room1_51
-	.addr	_Room1_52
-	.addr	_Room1_53
-	.addr	_Room1_54
-	.addr	_Room1_55
-	.addr	_Room1_56
-	.addr	_Room1_57
+	.addr	_Room1__0
+	.addr	_Room1__1
+	.addr	_Room1__2
+	.addr	_Room1__3
+	.addr	_Room1__4
+	.addr	_Room1__5
+	.addr	_Room1__6
+	.addr	_Room1__7
+	.addr	_Room1__8
+	.addr	_Room1__9
+	.addr	_Room1__10
+	.addr	_Room1__11
+	.addr	_Room1__12
+	.addr	_Room1__13
+	.addr	_Room1__14
+	.addr	_Room1__15
+	.addr	_Room1__16
+	.addr	_Room1__17
+	.addr	_Room1__18
+	.addr	_Room1__19
+	.addr	_Room1__20
+	.addr	_Room1__21
+	.addr	_Room1__22
+	.addr	_Room1__23
+	.addr	_Room1__24
+	.addr	_Room1__25
+	.addr	_Room1__26
+	.addr	_Room1__27
+	.addr	_Room1__28
+	.addr	_Room1__29
+	.addr	_Room1__30
+	.addr	_Room1__31
+	.addr	_Room1__32
+	.addr	_Room1__33
+	.addr	_Room1__34
+	.addr	_Room1__35
+	.addr	_Room1__36
+	.addr	_Room1__37
+	.addr	_Room1__38
+	.addr	_Room1__39
+	.addr	_Room1__40
+	.addr	_Room1__41
+	.addr	_Room1__42
+	.addr	_Room1__43
+	.addr	_Room1__44
+	.addr	_Room1__45
+	.addr	_Room1__46
+	.addr	_Room1__47
+	.addr	_Room1__48
+	.addr	_Room1__49
+	.addr	_Room1__50
+	.addr	_Room1__51
+	.addr	_Room1__52
+	.addr	_Room1__53
+	.addr	_Room1__54
+	.addr	_Room1__55
+	.addr	_Room1__56
+	.addr	_Room1__57
+_obj_polargeist:
+	.byte	$50
+	.byte	$14
+	.byte	$10
+	.byte	$01
+	.byte	$50
+	.byte	$1B
+	.byte	$B0
+	.byte	$00
+	.byte	$60
+	.byte	$1B
+	.byte	$B0
+	.byte	$00
+	.byte	$FF
+_obj_list:
+	.addr	_obj_polargeist
 
 .segment	"BSS"
 
@@ -14978,6 +15114,8 @@ _nt:
 	.res	1,$00
 _index:
 	.res	1,$00
+_index2:
+	.res	1,$00
 _room:
 	.res	1,$00
 _map:
@@ -15011,12 +15149,30 @@ _bg_col:
 	.res	1,$00
 _gamemode:
 	.res	1,$00
+_level:
+	.res	1,$00
+_pointer:
+	.res	2,$00
 _c_map:
 	.res	240,$00
 _c_map2:
 	.res	240,$00
 _Generic:
 	.res	4,$00
+_Generic2:
+	.res	4,$00
+_obj_x:
+	.res	16,$00
+_obj_y:
+	.res	16,$00
+_obj_active:
+	.res	16,$00
+_obj_room:
+	.res	16,$00
+_obj_actual_x:
+	.res	16,$00
+_obj_type:
+	.res	16,$00
 
 ; ---------------------------------------------------------------
 ; void __near__ load_room (void)
@@ -15131,7 +15287,11 @@ L0003:	lda     #<(_c_map)
 	jsr     pushax
 	ldx     #$00
 	lda     #$F0
-	jmp     _memcpy
+	jsr     _memcpy
+;
+; sprite_obj_init();
+;
+	jmp     _sprite_obj_init
 
 .endproc
 
@@ -15150,30 +15310,110 @@ L0003:	lda     #<(_c_map)
 ;
 	jsr     _oam_clear
 ;
+; for(index = 0; index < MAX_OBJ; ++index){
+;
+	lda     #$00
+	sta     _index
+L0021:	lda     _index
+	cmp     #$10
+	bcs     L0023
+;
+; temp_y = obj_y[index];
+;
+	ldy     _index
+	lda     _obj_y,y
+	sta     _temp_y
+;
+; if(temp_y == TURN_OFF) continue;
+;
+	cmp     #$FF
+	beq     L0022
+;
+; if(!obj_active[index]) continue;
+;
+	ldy     _index
+	lda     _obj_active,y
+	beq     L0022
+;
+; temp_x = obj_x[index];
+;
+	ldy     _index
+	lda     _obj_x,y
+	sta     _temp_x
+;
+; if(temp_x > 0xf0) continue;
+;
+	cmp     #$F1
+	bcs     L0022
+;
+; index2 = obj_type[index];
+;
+	ldy     _index
+	lda     _obj_type,y
+	sta     _index2
+;
+; if(temp_y < 0xf0) {
+;
+	lda     _temp_y
+	cmp     #$F0
+	bcs     L0022
+;
+; oam_meta_spr(temp_x, temp_y, Portals[index2]);
+;
+	jsr     decsp2
+	lda     _temp_x
+	ldy     #$01
+	sta     (sp),y
+	lda     _temp_y
+	dey
+	sta     (sp),y
+	ldx     #$00
+	lda     _index2
+	asl     a
+	bcc     L001E
+	inx
+	clc
+L001E:	adc     #<(_Portals)
+	sta     ptr1
+	txa
+	adc     #>(_Portals)
+	sta     ptr1+1
+	iny
+	lda     (ptr1),y
+	tax
+	dey
+	lda     (ptr1),y
+	jsr     _oam_meta_spr
+;
+; for(index = 0; index < MAX_OBJ; ++index){
+;
+L0022:	inc     _index
+	jmp     L0021
+;
 ; temp_x = high_byte(Cube.x);
 ;
-	lda     _Cube+1
+L0023:	lda     _Cube+1
 	sta     _temp_x
 ;
 ; if(temp_x > 0xfc) temp_x = 1;
 ;
 	cmp     #$FD
-	bcc     L0013
+	bcc     L0024
 	lda     #$01
 	sta     _temp_x
 ;
 ; if(temp_x == 0) temp_x = 1;
 ;
-L0013:	lda     _temp_x
-	bne     L0014
+L0024:	lda     _temp_x
+	bne     L0025
 	lda     #$01
 	sta     _temp_x
 ;
 ; if (gamemode & 0x01) {
 ;
-L0014:	lda     _gamemode
+L0025:	lda     _gamemode
 	and     #$01
-	jeq     L0015
+	jeq     L0026
 ;
 ; oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
 ;
@@ -15189,10 +15429,10 @@ L0014:	lda     _gamemode
 	ldx     #$00
 	lda     _cube_rotate+1
 	asl     a
-	bcc     L0011
+	bcc     L001F
 	inx
 	clc
-L0011:	adc     #<(_CUBE)
+L001F:	adc     #<(_CUBE)
 	sta     ptr1
 	txa
 	adc     #>(_CUBE)
@@ -15207,33 +15447,33 @@ L0011:	adc     #<(_CUBE)
 ; if (gravity) cube_rotate -= CUBE_GRAVITY;
 ;
 	lda     _gravity
-	beq     L0006
+	beq     L0012
 	lda     _cube_rotate
 	sec
 	sbc     #$6C
 	sta     _cube_rotate
-	bcs     L0009
+	bcs     L0015
 	dec     _cube_rotate+1
 ;
 ; else cube_rotate += CUBE_GRAVITY;
 ;
-	jmp     L0009
-L0006:	lda     #$6C
+	jmp     L0015
+L0012:	lda     #$6C
 	clc
 	adc     _cube_rotate
 	sta     _cube_rotate
-	bcc     L0009
+	bcc     L0015
 	inc     _cube_rotate+1
 ;
 ; if (cube_rotate > 0x05FF) cube_rotate -= 0x05FF;
 ;
-L0009:	lda     _cube_rotate
+L0015:	lda     _cube_rotate
 	cmp     #$00
 	lda     _cube_rotate+1
 	sbc     #$06
-	bvs     L000B
+	bvs     L0017
 	eor     #$80
-L000B:	bpl     L000A
+L0017:	bpl     L0016
 	lda     _cube_rotate
 	sec
 	sbc     #$FF
@@ -15244,9 +15484,9 @@ L000B:	bpl     L000A
 ;
 ; if (cube_rotate < 0x0000) cube_rotate += 0x05FF;
 ;
-L000A:	ldx     _cube_rotate+1
+L0016:	ldx     _cube_rotate+1
 	cpx     #$80
-	bcc     L0015
+	bcc     L0026
 	lda     #$FF
 	clc
 	adc     _cube_rotate
@@ -15257,9 +15497,9 @@ L000A:	ldx     _cube_rotate+1
 ;
 ; if (gamemode & 0x02){
 ;
-L0015:	lda     _gamemode
+L0026:	lda     _gamemode
 	and     #$02
-	beq     L000D
+	beq     L0019
 ;
 ; oam_meta_spr(temp_x, high_byte(Cube.y)-1, SHIP[high_byte(cube_rotate)]);
 ;
@@ -15275,10 +15515,10 @@ L0015:	lda     _gamemode
 	ldx     #$00
 	lda     _cube_rotate+1
 	asl     a
-	bcc     L0012
+	bcc     L0020
 	inx
 	clc
-L0012:	adc     #<(_SHIP)
+L0020:	adc     #<(_SHIP)
 	sta     ptr1
 	txa
 	adc     #>(_SHIP)
@@ -15302,7 +15542,7 @@ L0012:	adc     #<(_SHIP)
 ;
 ; }
 ;
-L000D:	rts
+L0019:	rts
 
 .endproc
 
@@ -16329,6 +16569,386 @@ L0004:	rts
 .endproc
 
 ; ---------------------------------------------------------------
+; void __near__ sprite_obj_init (void)
+; ---------------------------------------------------------------
+
+.segment	"CODE"
+
+.proc	_sprite_obj_init: near
+
+.segment	"CODE"
+
+;
+; pointer = obj_list[level];
+;
+	ldx     #$00
+	lda     _level
+	asl     a
+	bcc     L0018
+	inx
+	clc
+L0018:	adc     #<(_obj_list)
+	sta     ptr1
+	txa
+	adc     #>(_obj_list)
+	sta     ptr1+1
+	ldy     #$01
+	lda     (ptr1),y
+	sta     _pointer+1
+	dey
+	lda     (ptr1),y
+	sta     _pointer
+;
+; for(index = 0,index2 = 0;index < MAX_OBJ; ++index){
+;
+	tya
+	sta     _index
+	sta     _index2
+L0019:	lda     _index
+	cmp     #$10
+	jcs     L001A
+;
+; obj_x[index] = 0;
+;
+	ldy     _index
+	lda     #$00
+	sta     _obj_x,y
+;
+; temp1 = pointer[index2]; // get a byte of data
+;
+	lda     _pointer
+	ldx     _pointer+1
+	ldy     _index2
+	sta     ptr1
+	stx     ptr1+1
+	lda     (ptr1),y
+	sta     _temp1
+;
+; obj_y[index] = temp1;
+;
+	ldy     _index
+	lda     _temp1
+	sta     _obj_y,y
+;
+; if(temp1 == TURN_OFF) break;
+;
+	lda     _temp1
+	cmp     #$FF
+	beq     L001A
+;
+; ++index2;
+;
+	inc     _index2
+;
+; obj_active[index] = 0;
+;
+	ldy     _index
+	lda     #$00
+	sta     _obj_active,y
+;
+; temp1 = pointer[index2]; // get a byte of data
+;
+	lda     _pointer
+	ldx     _pointer+1
+	ldy     _index2
+	sta     ptr1
+	stx     ptr1+1
+	lda     (ptr1),y
+	sta     _temp1
+;
+; obj_room[index] = temp1;
+;
+	ldy     _index
+	lda     _temp1
+	sta     _obj_room,y
+;
+; ++index2;
+;
+	inc     _index2
+;
+; temp1 = pointer[index2]; // get a byte of data
+;
+	lda     _pointer
+	ldx     _pointer+1
+	ldy     _index2
+	sta     ptr1
+	stx     ptr1+1
+	lda     (ptr1),y
+	sta     _temp1
+;
+; obj_actual_x[index] = temp1;
+;
+	ldy     _index
+	lda     _temp1
+	sta     _obj_actual_x,y
+;
+; ++index2;
+;
+	inc     _index2
+;
+; temp1 = pointer[index2]; // get a byte of data
+;
+	lda     _pointer
+	ldx     _pointer+1
+	ldy     _index2
+	sta     ptr1
+	stx     ptr1+1
+	lda     (ptr1),y
+	sta     _temp1
+;
+; obj_type[index] = temp1;
+;
+	ldy     _index
+	lda     _temp1
+	sta     _obj_type,y
+;
+; ++index2;
+;
+	inc     _index2
+;
+; for(index = 0,index2 = 0;index < MAX_OBJ; ++index){
+;
+	inc     _index
+	jmp     L0019
+;
+; for(++index;index < MAX_OBJ; ++index){
+;
+L001A:	inc     _index
+	lda     _index
+	cmp     #$10
+	bcs     L000E
+;
+; obj_y[index] = TURN_OFF;
+;
+	ldy     _index
+	lda     #$FF
+	sta     _obj_y,y
+;
+; for(++index;index < MAX_OBJ; ++index){
+;
+	jmp     L001A
+;
+; }
+;
+L000E:	rts
+
+.endproc
+
+; ---------------------------------------------------------------
+; void __near__ sprite_collisions (void)
+; ---------------------------------------------------------------
+
+.segment	"CODE"
+
+.proc	_sprite_collisions: near
+
+.segment	"CODE"
+
+;
+; Generic.x = high_byte(Cube.x);
+;
+	lda     _Cube+1
+	sta     _Generic
+;
+; Generic.y = high_byte(Cube.y);
+;
+	lda     _Cube+3
+	sta     _Generic+1
+;
+; Generic.width = CUBE_WIDTH;
+;
+	lda     #$0F
+	sta     _Generic+2
+;
+; Generic.height = CUBE_HEIGHT;
+;
+	sta     _Generic+3
+;
+; for(index = 0; index < MAX_OBJ; ++index){
+;
+	lda     #$00
+	sta     _index
+L0013:	lda     _index
+	cmp     #$10
+	bcs     L0003
+;
+; if(obj_active[index]){
+;
+	ldy     _index
+	lda     _obj_active,y
+	beq     L0018
+;
+; Generic2.width = PORTAL_WIDTH;
+;
+	lda     #$0F
+	sta     _Generic2+2
+;
+; Generic2.height = PORTAL_HEIGHT;
+;
+	lda     #$2F
+	sta     _Generic2+3
+;
+; Generic2.x = obj_x[index];
+;
+	ldy     _index
+	lda     _obj_x,y
+	sta     _Generic2
+;
+; Generic2.y = obj_y[index];
+;
+	ldy     _index
+	lda     _obj_y,y
+	sta     _Generic2+1
+;
+; if(check_collision(&Generic, &Generic2)){
+;
+	lda     #<(_Generic)
+	ldx     #>(_Generic)
+	jsr     pushax
+	lda     #<(_Generic2)
+	ldx     #>(_Generic2)
+	jsr     _check_collision
+	tax
+	beq     L0018
+;
+; switch (obj_type[index]) {
+;
+	ldy     _index
+	lda     _obj_type,y
+;
+; }
+;
+	beq     L0014
+	cmp     #$01
+	beq     L0015
+	cmp     #$02
+	beq     L0016
+	cmp     #$03
+	beq     L0017
+	jmp     L0018
+;
+; gamemode = 0x01;
+;
+L0014:	lda     #$01
+	sta     _gamemode
+;
+; break;
+;
+	jmp     L0018
+;
+; gamemode = 0x02;
+;
+L0015:	lda     #$02
+	sta     _gamemode
+;
+; break;
+;
+	jmp     L0018
+;
+; gravity = 0x00;
+;
+L0016:	lda     #$00
+;
+; break;
+;
+	jmp     L0012
+;
+; gravity = 0x01;
+;
+L0017:	lda     #$01
+L0012:	sta     _gravity
+;
+; for(index = 0; index < MAX_OBJ; ++index){
+;
+L0018:	inc     _index
+	jmp     L0013
+;
+; }
+;
+L0003:	rts
+
+.endproc
+
+; ---------------------------------------------------------------
+; void __near__ check_spr_objects (void)
+; ---------------------------------------------------------------
+
+.segment	"CODE"
+
+.proc	_check_spr_objects: near
+
+.segment	"CODE"
+
+;
+; Generic2.x = high_byte(Cube.x);
+;
+	lda     _Cube+1
+	sta     _Generic2
+;
+; for(index = 0; index < MAX_OBJ; ++index){
+;
+	lda     #$00
+	sta     _index
+L000D:	lda     _index
+	cmp     #$10
+	bcs     L0003
+;
+; obj_active[index] = 0; //default to zero
+;
+	ldy     _index
+	lda     #$00
+	sta     _obj_active,y
+;
+; if(obj_y[index] != TURN_OFF){
+;
+	ldy     _index
+	lda     _obj_y,y
+	cmp     #$FF
+	beq     L000E
+;
+; high_byte(temp5) = obj_room[index];
+;
+	ldy     _index
+	lda     _obj_room,y
+	sta     _temp5+1
+;
+; low_byte(temp5) = obj_actual_x[index];
+;
+	ldy     _index
+	lda     _obj_actual_x,y
+	sta     _temp5
+;
+; obj_active[index] = get_position();
+;
+	lda     #<(_obj_active)
+	ldx     #>(_obj_active)
+	clc
+	adc     _index
+	bcc     L000B
+	inx
+L000B:	jsr     pushax
+	jsr     _get_position
+	ldy     #$00
+	jsr     staspidx
+;
+; obj_x[index] = temp_x; // screen x coords
+;
+	ldy     _index
+	lda     _temp_x
+	sta     _obj_x,y
+;
+; for(index = 0; index < MAX_OBJ; ++index){
+;
+L000E:	inc     _index
+	jmp     L000D
+;
+; }
+;
+L0003:	rts
+
+.endproc
+
+; ---------------------------------------------------------------
 ; char __near__ bg_collision_sub (void)
 ; ---------------------------------------------------------------
 
@@ -17266,6 +17886,52 @@ L000D:	rts
 .endproc
 
 ; ---------------------------------------------------------------
+; char __near__ get_position (void)
+; ---------------------------------------------------------------
+
+.segment	"CODE"
+
+.proc	_get_position: near
+
+.segment	"CODE"
+
+;
+; temp5 -= scroll_x;
+;
+	lda     _scroll_x
+	eor     #$FF
+	sec
+	adc     _temp5
+	sta     _temp5
+	lda     _scroll_x+1
+	eor     #$FF
+	adc     _temp5+1
+	sta     _temp5+1
+;
+; temp_x = temp5 & 0xff;
+;
+	lda     _temp5
+	ldx     #$00
+	sta     _temp_x
+;
+; if(high_byte(temp5)) return 0;
+;
+	lda     _temp5+1
+	beq     L0003
+	txa
+	rts
+;
+; return 1;
+;
+L0003:	lda     #$01
+;
+; }
+;
+	rts
+
+.endproc
+
+; ---------------------------------------------------------------
 ; char __near__ bg_coll_U2 (void)
 ; ---------------------------------------------------------------
 
@@ -17859,18 +18525,6 @@ L0023:	jsr     _orbjump
 ;
 L0002:	jsr     _ppu_wait_nmi
 ;
-; ppu_wait_nmi();
-;
-	jsr     _ppu_wait_nmi
-;
-; ppu_wait_nmi();
-;
-	jsr     _ppu_wait_nmi
-;
-; ppu_wait_nmi();
-;
-	jsr     _ppu_wait_nmi
-;
 ; pad1 = pad_poll(0); // read the first controller
 ;
 	lda     #$00
@@ -17898,9 +18552,17 @@ L0008:	lda     _gamemode
 	beq     L0007
 	jsr     _ship_movement
 ;
+; check_spr_objects(); // see which objects are on screen
+;
+L0007:	jsr     _check_spr_objects
+;
+; sprite_collisions();
+;
+	jsr     _sprite_collisions
+;
 ; bg_coll_death();
 ;
-L0007:	jsr     _bg_coll_death
+	jsr     _bg_coll_death
 ;
 ; set_scroll_x(scroll_x);
 ;

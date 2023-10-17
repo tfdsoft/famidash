@@ -52,6 +52,7 @@ unsigned short x; // room loader code
 unsigned char y;
 unsigned char nt;
 unsigned char index;
+unsigned char index2;
 unsigned char room;
 unsigned char map;
 unsigned int scroll_x;
@@ -74,12 +75,17 @@ unsigned char temp_room;
 
 #pragma bss-name(push, "BSS")
 
+
 #define MAX_SONGS 1
 unsigned char song;
 enum {SONG_GAME, SONG_PAUSE};
+
+
 unsigned char cube_data;
 unsigned char bg_col;
 unsigned char gamemode;
+unsigned char level;
+const unsigned char * pointer;
 
 unsigned char c_map[240];
 unsigned char c_map2[240];
@@ -91,7 +97,8 @@ struct Base {
 	unsigned char height;
 };
 
-struct Base Generic; 
+struct Base Generic;
+struct Base Generic2;
 
 struct CUBE {
 	unsigned int x; // low byte is sub-pixel
@@ -110,6 +117,26 @@ struct CUBE Cube = {0x0000,0xb400}; // starting position
 
 
 
+
+// define the stuff for the in-level objects
+#define MAX_OBJ 16
+unsigned char obj_x[MAX_OBJ];
+unsigned char obj_y[MAX_OBJ];
+unsigned char obj_active[MAX_OBJ];
+unsigned char obj_room[MAX_OBJ];
+unsigned char obj_actual_x[MAX_OBJ];
+unsigned char obj_type[MAX_OBJ];
+
+
+#define TURN_OFF 0xff
+#define PORTAL_WIDTH 15
+#define PORTAL_HEIGHT 47
+
+
+
+
+
+
 const unsigned char palette_bg[]={
 0x21,0x0c,0x0f,0x30,	// palette 0, used for level tiles
 0x0f,0x01,0x11,0x30,	// palette 1, used for ground
@@ -120,10 +147,11 @@ const unsigned char palette_bg[]={
 
 const unsigned char palette_sp[]={
 0x00,0x0f,0x2a,0x21,
-0x00,0x12,0x22,0x32,
-0x00,0x13,0x23,0x33,
-0x00,0x14,0x24,0x34 
+0x00,0x0f,0x2a,0x24,
+0x00,0x0f,0x21,0x28,
+0x00,0x14,0x24,0x34
 }; 
+
 
 
 // 5 bytes per metatile definition, tile TL, TR, BL, BR, palette 0-3
@@ -264,7 +292,7 @@ const unsigned char is_solid[]={
 
 
 #include "Sprites.h" // holds our metasprite data
-#include "BG/Room1.c"
+#include "BG/Room1_.c"
 
 #define MAX_ROOMS 58
 #define MAX_SCROLL (MAX_ROOMS*0x100)-1
@@ -272,26 +300,7 @@ const unsigned char is_solid[]={
 // doubles as the collision map data
 
 
-const unsigned char * const Rooms[]= {
-	Room1_0,Room1_1,Room1_2,Room1_3,
-	Room1_4,Room1_5,Room1_6,Room1_7,
-	Room1_8,Room1_9,Room1_10,Room1_11,
-	Room1_12,Room1_13,Room1_14,Room1_15,
 
-	Room1_16,Room1_17,Room1_18,Room1_19,
-	Room1_20,Room1_21,Room1_22,Room1_23,
-	Room1_24,Room1_25,Room1_26,Room1_27,
-	Room1_28,Room1_29,Room1_30,Room1_31,
-
-	Room1_32,Room1_33,Room1_34,Room1_35,
-	Room1_36,Room1_37,Room1_38,Room1_39,
-	Room1_40,Room1_41,Room1_42,Room1_43,
-	Room1_44,Room1_45,Room1_46,Room1_47,
-
-	Room1_48,Room1_49,Room1_50,Room1_51,
-	Room1_52,Room1_53,Room1_54,Room1_55,
-	Room1_56,Room1_57
-};
 
 
 
@@ -322,6 +331,10 @@ void reset_level(void);
 void orbjump(void);
 void padjump(void);
 void update_colors(void);
+void sprite_obj_init(void);
+void sprite_collisions(void);
+void check_spr_objects(void);
+
 
 char bg_collision_sub(void);
 char bg_coll_L(void);
@@ -332,3 +345,4 @@ char bg_coll_D2(void);
 char bg_coll_death(void);
 char bg_coll_orbs(void);
 char bg_coll_pads(void);
+char get_position(void);
