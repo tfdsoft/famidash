@@ -90,17 +90,12 @@ void ship_movement(void){
 // gravity
 
 	// Cube.vel_y is signed
-	if(Cube.vel_y < SHIP_MAX_FALLSPEED){
-		Cube.vel_y += SHIP_GRAVITY;
-	}
-	else{
-		Cube.vel_y = SHIP_MAX_FALLSPEED; // consistent
-	}
+	if(Cube.vel_y < SHIP_MAX_FALLSPEED) Cube.vel_y += SHIP_GRAVITY;
+	else Cube.vel_y = SHIP_MAX_FALLSPEED; // consistent
+
 
 	if(Cube.vel_y > SHIP_MAX_GOUPSPEED) {}
-	else{
-		Cube.vel_y = SHIP_MAX_GOUPSPEED; // consistent
-	}
+	else Cube.vel_y = SHIP_MAX_GOUPSPEED; // consistent
 	Cube.y += Cube.vel_y;
 	
 	Generic.x = high_byte(Cube.x);

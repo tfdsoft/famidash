@@ -22,7 +22,7 @@
 #pragma bss-name(push, "ZEROPAGE")
 
 // GLOBAL VARIABLES
-unsigned short cube_rotate;
+signed short cube_rotate;
 unsigned char pad1;
 unsigned char pad1_new;
 unsigned char collision;

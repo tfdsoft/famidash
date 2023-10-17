@@ -100,14 +100,14 @@ char bg_coll_D2(void){
 
     temp_y = Generic.y + Generic.height;
     temp_y += 2;
-    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 
     temp5 = Generic.x + scroll_x + Generic.width;
     temp5 -= 2;
     temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
     
-    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
     
 	
 
@@ -124,14 +124,14 @@ char bg_coll_U2(void){
 
     temp_y = Generic.y;
     temp_y -= 2;
-    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 
     temp5 = Generic.x + scroll_x + Generic.width;
     temp5 -= 2;
     temp_x = (char)temp5; // low byte
     temp_room = temp5 >> 8; // high byte
     
-    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
     
 	
 

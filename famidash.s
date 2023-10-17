@@ -21,6 +21,7 @@
 	.import		_oam_meta_spr
 	.import		_music_play
 	.import		_music_stop
+	.import		_sfx_play
 	.import		_pad_poll
 	.import		_bank_spr
 	.import		_memcpy
@@ -15157,44 +15158,26 @@ L0003:	lda     #<(_c_map)
 ; if(temp_x > 0xfc) temp_x = 1;
 ;
 	cmp     #$FD
-	bcc     L000E
+	bcc     L0013
 	lda     #$01
 	sta     _temp_x
 ;
 ; if(temp_x == 0) temp_x = 1;
 ;
-L000E:	lda     _temp_x
-	bne     L000F
+L0013:	lda     _temp_x
+	bne     L0014
 	lda     #$01
 	sta     _temp_x
 ;
 ; if (gamemode & 0x01) {
 ;
-L000F:	lda     _gamemode
+L0014:	lda     _gamemode
 	and     #$01
-	beq     L0010
-;
-; cube_rotate += 0x70;
-;
-	lda     #$70
-	clc
-	adc     _cube_rotate
-	sta     _cube_rotate
-	bcc     L0005
-	inc     _cube_rotate+1
-;
-; if (high_byte(cube_rotate) > 0x05) cube_rotate = 0;
-;
-L0005:	lda     _cube_rotate+1
-	cmp     #$06
-	bcc     L0006
-	lda     #$00
-	sta     _cube_rotate
-	sta     _cube_rotate+1
+	jeq     L0015
 ;
 ; oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
 ;
-L0006:	jsr     decsp2
+	jsr     decsp2
 	lda     _temp_x
 	ldy     #$01
 	sta     (sp),y
@@ -15206,10 +15189,10 @@ L0006:	jsr     decsp2
 	ldx     #$00
 	lda     _cube_rotate+1
 	asl     a
-	bcc     L000C
+	bcc     L0011
 	inx
 	clc
-L000C:	adc     #<(_CUBE)
+L0011:	adc     #<(_CUBE)
 	sta     ptr1
 	txa
 	adc     #>(_CUBE)
@@ -15221,21 +15204,62 @@ L000C:	adc     #<(_CUBE)
 	lda     (ptr1),y
 	jsr     _oam_meta_spr
 ;
+; if (gravity) cube_rotate -= CUBE_GRAVITY;
+;
+	lda     _gravity
+	beq     L0006
+	lda     _cube_rotate
+	sec
+	sbc     #$6C
+	sta     _cube_rotate
+	bcs     L0009
+	dec     _cube_rotate+1
+;
+; else cube_rotate += CUBE_GRAVITY;
+;
+	jmp     L0009
+L0006:	lda     #$6C
+	clc
+	adc     _cube_rotate
+	sta     _cube_rotate
+	bcc     L0009
+	inc     _cube_rotate+1
+;
+; if (cube_rotate > 0x05FF) cube_rotate -= 0x05FF;
+;
+L0009:	lda     _cube_rotate
+	cmp     #$00
+	lda     _cube_rotate+1
+	sbc     #$06
+	bvs     L000B
+	eor     #$80
+L000B:	bpl     L000A
+	lda     _cube_rotate
+	sec
+	sbc     #$FF
+	sta     _cube_rotate
+	lda     _cube_rotate+1
+	sbc     #$05
+	sta     _cube_rotate+1
+;
+; if (cube_rotate < 0x0000) cube_rotate += 0x05FF;
+;
+L000A:	ldx     _cube_rotate+1
+	cpx     #$80
+	bcc     L0015
+	lda     #$FF
+	clc
+	adc     _cube_rotate
+	sta     _cube_rotate
+	lda     #$05
+	adc     _cube_rotate+1
+	sta     _cube_rotate+1
+;
 ; if (gamemode & 0x02){
 ;
-L0010:	lda     _gamemode
+L0015:	lda     _gamemode
 	and     #$02
-	beq     L0008
-;
-; cube_rotate = 0x0480 - Cube.vel_y;
-;
-	lda     #$80
-	sec
-	sbc     _Cube+6
-	sta     _cube_rotate
-	lda     #$04
-	sbc     _Cube+6+1
-	sta     _cube_rotate+1
+	beq     L000D
 ;
 ; oam_meta_spr(temp_x, high_byte(Cube.y)-1, SHIP[high_byte(cube_rotate)]);
 ;
@@ -15251,10 +15275,10 @@ L0010:	lda     _gamemode
 	ldx     #$00
 	lda     _cube_rotate+1
 	asl     a
-	bcc     L000D
+	bcc     L0012
 	inx
 	clc
-L000D:	adc     #<(_SHIP)
+L0012:	adc     #<(_SHIP)
 	sta     ptr1
 	txa
 	adc     #>(_SHIP)
@@ -15264,11 +15288,21 @@ L000D:	adc     #<(_SHIP)
 	tax
 	dey
 	lda     (ptr1),y
-	jmp     _oam_meta_spr
+	jsr     _oam_meta_spr
+;
+; cube_rotate = 0x0480 - Cube.vel_y;
+;
+	lda     #$80
+	sec
+	sbc     _Cube+6
+	sta     _cube_rotate
+	lda     #$04
+	sbc     _Cube+6+1
+	sta     _cube_rotate+1
 ;
 ; }
 ;
-L0008:	rts
+L000D:	rts
 
 .endproc
 
@@ -15312,7 +15346,7 @@ L0008:	rts
 	cmp     #$01
 	lda     _Cube+1
 	sbc     #$F0
-	bcc     L002D
+	bcc     L0030
 ;
 ; if(old_x >= 0xf000){
 ;
@@ -15322,7 +15356,7 @@ L0008:	rts
 	sbc     #$F0
 	lda     #$00
 	tax
-	bcc     L002C
+	bcc     L002F
 ;
 ; Cube.x = 0xf000; // max right
 ;
@@ -15330,7 +15364,7 @@ L0008:	rts
 ;
 ; Cube.x = 0x0000; // max left
 ;
-L002C:	sta     _Cube
+L002F:	sta     _Cube
 	stx     _Cube+1
 ;
 ; Cube.vel_x = 0;
@@ -15340,7 +15374,7 @@ L002C:	sta     _Cube
 ;
 ; Generic.x = high_byte(Cube.x); // this is much faster than passing a pointer to Cube
 ;
-L002D:	lda     _Cube+1
+L0030:	lda     _Cube+1
 	sta     _Generic
 ;
 ; Generic.y = high_byte(Cube.y);
@@ -15367,7 +15401,7 @@ L002D:	lda     _Cube+1
 ;
 	jsr     _bg_coll_L
 	tax
-	beq     L002E
+	beq     L0031
 ;
 ; high_byte(Cube.x) = high_byte(Cube.x) - eject_L;
 ;
@@ -15388,7 +15422,7 @@ L002D:	lda     _Cube+1
 	cmp     #$01
 	lda     _Cube+1
 	sbc     #$F0
-	bcc     L002E
+	bcc     L0031
 ;
 ; Cube.x = 0xf000;
 ;
@@ -15396,20 +15430,20 @@ L002D:	lda     _Cube+1
 ;
 ; else if(Cube.vel_x > 0){
 ;
-	jmp     L0036
+	jmp     L0039
 L0005:	lda     _Cube+4
 	cmp     #$01
 	lda     _Cube+4+1
 	sbc     #$00
 	bvs     L000A
 	eor     #$80
-L000A:	bpl     L002E
+L000A:	bpl     L0031
 ;
 ; if(bg_coll_R() ){ // check collision right
 ;
 	jsr     _bg_coll_R
 	tax
-	beq     L002E
+	beq     L0031
 ;
 ; high_byte(Cube.x) = high_byte(Cube.x) - eject_R;
 ;
@@ -15430,32 +15464,50 @@ L000A:	bpl     L002E
 	cmp     #$01
 	lda     _Cube+1
 	sbc     #$F0
-	bcc     L002E
+	bcc     L0031
 ;
 ; Cube.x = 0x0000;
 ;
 	ldx     #$00
-L0036:	lda     #$00
+L0039:	lda     #$00
 	sta     _Cube
 	stx     _Cube+1
 ;
 ; if(gravity < 1){
 ;
-L002E:	lda     _gravity
+L0031:	lda     _gravity
 	bne     L000D
 ;
-; Cube.vel_y += CUBE_GRAVITY;
+; if(Cube.vel_y > CUBE_MAX_FALLSPEED){
 ;
-	lda     #$6C
+	lda     _Cube+6
+	cmp     #$01
+	lda     _Cube+6+1
+	sbc     #$06
+	bvs     L000F
+	eor     #$80
+L000F:	bpl     L000E
+;
+; Cube.vel_y = CUBE_MAX_FALLSPEED;
+;
+	ldx     #$06
+	lda     #$00
+	sta     _Cube+6
+	stx     _Cube+6+1
+;
+; } else Cube.vel_y += CUBE_GRAVITY;
+;
+	jmp     L0012
+L000E:	lda     #$6C
 	clc
 	adc     _Cube+6
 	sta     _Cube+6
-	bcc     L0010
+	bcc     L0012
 	inc     _Cube+6+1
 ;
 ; else{
 ;
-	jmp     L0010
+	jmp     L0012
 ;
 ; Cube.vel_y -= CUBE_GRAVITY;
 ;
@@ -15463,12 +15515,12 @@ L000D:	lda     _Cube+6
 	sec
 	sbc     #$6C
 	sta     _Cube+6
-	bcs     L0010
+	bcs     L0012
 	dec     _Cube+6+1
 ;
 ; Cube.y += Cube.vel_y;
 ;
-L0010:	lda     _Cube+6
+L0012:	lda     _Cube+6
 	clc
 	adc     _Cube+2
 	sta     _Cube+2
@@ -15492,15 +15544,15 @@ L0010:	lda     _Cube+6
 	cmp     #$01
 	lda     _Cube+6+1
 	sbc     #$00
-	bvs     L0012
+	bvs     L0015
 	eor     #$80
-L0012:	bpl     L0011
+L0015:	bpl     L0014
 ;
 ; if(bg_coll_D()){ // check collision below
 ;
 	jsr     _bg_coll_D
 	tax
-	beq     L002F
+	beq     L0032
 ;
 ; high_byte(Cube.y) = high_byte(Cube.y) - eject_D;
 ;
@@ -15510,23 +15562,23 @@ L0012:	bpl     L0011
 ;
 ; else if(Cube.vel_y < 0){
 ;
-	jmp     L0038
-L0011:	ldx     _Cube+6+1
+	jmp     L003B
+L0014:	ldx     _Cube+6+1
 	cpx     #$80
-	bcc     L002F
+	bcc     L0032
 ;
 ; if(bg_coll_U() ){ // check collision above
 ;
 	jsr     _bg_coll_U
 	tax
-	beq     L002F
+	beq     L0032
 ;
 ; high_byte(Cube.y) = high_byte(Cube.y) - eject_U;
 ;
 	lda     _Cube+3
 	sec
 	sbc     _eject_U
-L0038:	sta     _Cube+3
+L003B:	sta     _Cube+3
 ;
 ; Cube.vel_y = 0;
 ;
@@ -15536,20 +15588,20 @@ L0038:	sta     _Cube+3
 ;
 ; Generic.y = high_byte(Cube.y); // the rest should be the same
 ;
-L002F:	lda     _Cube+3
+L0032:	lda     _Cube+3
 	sta     _Generic+1
 ;
 ; if(bg_coll_D2()) {
 ;
 	jsr     _bg_coll_D2
 	tax
-	beq     L0018
+	beq     L001B
 ;
 ; if(pad1 & PAD_A) {
 ;
 	lda     _pad1
 	and     #$80
-	beq     L0018
+	beq     L001B
 ;
 ; Cube.vel_y = JUMP_VEL; // JUMP
 ;
@@ -15560,15 +15612,15 @@ L002F:	lda     _Cube+3
 ;
 ; if(bg_coll_U2()) {
 ;
-L0018:	jsr     _bg_coll_U2
+L001B:	jsr     _bg_coll_U2
 	tax
-	beq     L0030
+	beq     L0033
 ;
 ; if(pad1 & PAD_A) {
 ;
 	lda     _pad1
 	and     #$80
-	beq     L0030
+	beq     L0033
 ;
 ; Cube.vel_y = -JUMP_VEL; // JUMP
 ;
@@ -15579,15 +15631,15 @@ L0018:	jsr     _bg_coll_U2
 ;
 ; if(pad1_new & PAD_B) {
 ;
-L0030:	lda     _pad1_new
+L0033:	lda     _pad1_new
 	and     #$40
-	beq     L001E
+	beq     L0021
 ;
 ; if(gravity == 1) {
 ;
 	lda     _gravity
 	cmp     #$01
-	bne     L0031
+	bne     L0034
 ;
 ; gravity = 0;
 ;
@@ -15595,25 +15647,25 @@ L0030:	lda     _pad1_new
 ;
 ; else if(gravity == 0) {
 ;
-	jmp     L0029
-L0031:	lda     _gravity
-	bne     L001E
+	jmp     L002C
+L0034:	lda     _gravity
+	bne     L0021
 ;
 ; gravity = 1;
 ;
 	lda     #$01
-L0029:	sta     _gravity
+L002C:	sta     _gravity
 ;
 ; if((scroll_x & 0xff) < 4){
 ;
-L001E:	lda     _scroll_x
+L0021:	lda     _scroll_x
 	cmp     #$04
-	bcs     L0032
+	bcs     L0035
 ;
 ; if(!map_loaded){
 ;
 	lda     _map_loaded
-	bne     L0022
+	bne     L0025
 ;
 ; new_cmap();
 ;
@@ -15625,16 +15677,16 @@ L001E:	lda     _scroll_x
 ;
 ; else{
 ;
-	jmp     L002A
+	jmp     L002D
 ;
 ; map_loaded = 0;
 ;
-L0032:	lda     #$00
-L002A:	sta     _map_loaded
+L0035:	lda     #$00
+L002D:	sta     _map_loaded
 ;
 ; temp5 = Cube.x;
 ;
-L0022:	lda     _Cube+1
+L0025:	lda     _Cube+1
 	sta     _temp5+1
 	lda     _Cube
 	sta     _temp5
@@ -15645,7 +15697,7 @@ L0022:	lda     _Cube+1
 	cmp     #$01
 	lda     _Cube+1
 	sbc     #$60
-	bcc     L0023
+	bcc     L0026
 ;
 ; temp1 = (Cube.x - MAX_RIGHT) >> 8;
 ;
@@ -15657,13 +15709,13 @@ L0022:	lda     _Cube+1
 ; if (temp1 > 3) temp1 = 3; // max scroll change
 ;
 	cmp     #$04
-	bcc     L0033
+	bcc     L0036
 	lda     #$03
 	sta     _temp1
 ;
 ; scroll_x += temp1;
 ;
-L0033:	lda     _temp1
+L0036:	lda     _temp1
 	clc
 	adc     _scroll_x
 	sta     _scroll_x
@@ -15680,11 +15732,11 @@ L0033:	lda     _temp1
 ;
 ; if(scroll_x >= MAX_SCROLL) {
 ;
-L0023:	lda     _scroll_x
+L0026:	lda     _scroll_x
 	cmp     #$FF
 	lda     _scroll_x+1
 	sbc     #$39
-	bcc     L0025
+	bcc     L0028
 ;
 ; scroll_x = MAX_SCROLL; // stop scrolling right, end of level
 ;
@@ -15699,7 +15751,7 @@ L0023:	lda     _scroll_x
 ;
 ; orbjump();
 ;
-L0025:	jsr     _orbjump
+L0028:	jsr     _orbjump
 ;
 ; padjump();
 ;
@@ -16771,15 +16823,15 @@ L0002:	lda     _temp5
 	adc     _temp_y
 	sta     _temp_y
 ;
-; if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+; if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 ;
 	jsr     _bg_collision_sub
 	and     #$40
 	beq     L0008
 	ldx     #$00
-	txa
+	lda     #$80
 	sta     _cube_rotate
-	sta     _cube_rotate+1
+	stx     _cube_rotate+1
 	lda     #$01
 	rts
 ;
@@ -16819,15 +16871,15 @@ L0004:	lda     _temp5
 	lda     _temp5+1
 	sta     _temp_room
 ;
-; if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+; if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 ;
 	jsr     _bg_collision_sub
 	ldx     #$00
 	and     #$40
 	beq     L000A
-	txa
+	lda     #$80
 	sta     _cube_rotate
-	sta     _cube_rotate+1
+	stx     _cube_rotate+1
 	lda     #$01
 	rts
 ;
@@ -16862,29 +16914,14 @@ L000A:	rts
 	clc
 	adc     ptr1
 	ldx     ptr1+1
-	bcc     L000F
+	bcc     L0004
 	inx
-L000F:	sta     _temp5
+L0004:	sta     _temp5
 	stx     _temp5+1
-;
-; --temp5;--temp5;
-;
-	lda     _temp5
-	sec
-	sbc     #$01
-	sta     _temp5
-	bcs     L0002
-	dec     _temp5+1
-L0002:	lda     _temp5
-	sec
-	sbc     #$01
-	sta     _temp5
-	bcs     L0003
-	dec     _temp5+1
 ;
 ; temp_x = (char)temp5; // low byte
 ;
-L0003:	lda     _temp5
+	lda     _temp5
 	sta     _temp_x
 ;
 ; temp_room = temp5 >> 8; // high byte
@@ -16900,187 +16937,28 @@ L0003:	lda     _temp5
 	adc     _Generic+1
 	sta     _temp_y
 ;
-; --temp_y;--temp_y;
-;
-	dec     _temp_y
-	dec     _temp_y
-;
 ; if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
 ;
 	jsr     _bg_collision_sub
 	and     #$80
-	beq     L0015
+	beq     L0006
 	lda     #$01
 	sta     _cube_data
 ;
-; temp5 = Generic.x + scroll_x + (Generic.width >> 1);
+; if(cube_data & 0x01) { reset_level(); sfx_play(SFX_DEATH, 0);}
 ;
-L0015:	lda     _Generic
-	clc
-	adc     _scroll_x
-	sta     ptr1
-	lda     #$00
-	adc     _scroll_x+1
-	sta     ptr1+1
-	lda     _Generic+2
-	lsr     a
-	clc
-	adc     ptr1
-	ldx     ptr1+1
-	bcc     L0011
-	inx
-L0011:	sta     _temp5
-	stx     _temp5+1
-;
-; ++temp5;++temp5;
-;
-	inc     _temp5
-	bne     L0005
-	inc     _temp5+1
-L0005:	inc     _temp5
-	bne     L0006
-	inc     _temp5+1
-;
-; temp_x = (char)temp5; // low byte
-;
-L0006:	lda     _temp5
-	sta     _temp_x
-;
-; temp_room = temp5 >> 8; // high byte
-;
-	lda     _temp5+1
-	sta     _temp_room
-;
-; if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
-;
-	jsr     _bg_collision_sub
-	and     #$80
-	beq     L0016
-	lda     #$01
-	sta     _cube_data
-;
-; temp5 = Generic.x + scroll_x + (Generic.width >> 1);
-;
-L0016:	lda     _Generic
-	clc
-	adc     _scroll_x
-	sta     ptr1
-	lda     #$00
-	adc     _scroll_x+1
-	sta     ptr1+1
-	lda     _Generic+2
-	lsr     a
-	clc
-	adc     ptr1
-	ldx     ptr1+1
-	bcc     L0012
-	inx
-L0012:	sta     _temp5
-	stx     _temp5+1
-;
-; --temp5;--temp5;
-;
-	lda     _temp5
-	sec
-	sbc     #$01
-	sta     _temp5
-	bcs     L0008
-	dec     _temp5+1
-L0008:	lda     _temp5
-	sec
-	sbc     #$01
-	sta     _temp5
-	bcs     L0009
-	dec     _temp5+1
-;
-; temp_x = (char)temp5; // low byte
-;
-L0009:	lda     _temp5
-	sta     _temp_x
-;
-; temp_room = temp5 >> 8; // high byte
-;
-	lda     _temp5+1
-	sta     _temp_room
-;
-; temp_y = Generic.y + (Generic.height >> 1);
-;
-	lda     _Generic+3
-	lsr     a
-	clc
-	adc     _Generic+1
-	sta     _temp_y
-;
-; ++temp_y;++temp_y;
-;
-	inc     _temp_y
-	inc     _temp_y
-;
-; if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
-;
-	jsr     _bg_collision_sub
-	and     #$80
-	beq     L0017
-	lda     #$01
-	sta     _cube_data
-;
-; temp5 = Generic.x + scroll_x + (Generic.width >> 1);
-;
-L0017:	lda     _Generic
-	clc
-	adc     _scroll_x
-	sta     ptr1
-	lda     #$00
-	adc     _scroll_x+1
-	sta     ptr1+1
-	lda     _Generic+2
-	lsr     a
-	clc
-	adc     ptr1
-	ldx     ptr1+1
-	bcc     L0014
-	inx
-L0014:	sta     _temp5
-	stx     _temp5+1
-;
-; ++temp5;++temp5;
-;
-	inc     _temp5
-	bne     L000B
-	inc     _temp5+1
-L000B:	inc     _temp5
-	bne     L000C
-	inc     _temp5+1
-;
-; temp_x = (char)temp5; // low byte
-;
-L000C:	lda     _temp5
-	sta     _temp_x
-;
-; temp_room = temp5 >> 8; // high byte
-;
-	lda     _temp5+1
-	sta     _temp_room
-;
-; if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
-;
-	jsr     _bg_collision_sub
-	and     #$80
-	beq     L0018
-	lda     #$01
-	sta     _cube_data
-;
-; if(cube_data & 0x01) reset_level();
-;
-L0018:	lda     _cube_data
+L0006:	lda     _cube_data
 	ldx     #$00
 	and     #$01
-	beq     L000E
-	jmp     _reset_level
+	beq     L0003
+	jsr     _reset_level
+	lda     #$00
+	jsr     pusha
+	jmp     _sfx_play
 ;
 ; }
 ;
-L000E:	rts
+L0003:	rts
 
 .endproc
 
@@ -17438,15 +17316,15 @@ L0002:	lda     _temp5
 	sbc     #$02
 	sta     _temp_y
 ;
-; if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+; if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 ;
 	jsr     _bg_collision_sub
 	and     #$40
 	beq     L0007
 	ldx     #$00
-	txa
+	lda     #$80
 	sta     _cube_rotate
-	sta     _cube_rotate+1
+	stx     _cube_rotate+1
 	lda     #$01
 	rts
 ;
@@ -17486,15 +17364,15 @@ L0004:	lda     _temp5
 	lda     _temp5+1
 	sta     _temp_room
 ;
-; if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0000; return 1;}
+; if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 ;
 	jsr     _bg_collision_sub
 	ldx     #$00
 	and     #$40
 	beq     L0009
-	txa
+	lda     #$80
 	sta     _cube_rotate
-	sta     _cube_rotate+1
+	stx     _cube_rotate+1
 	lda     #$01
 	rts
 ;
@@ -17671,7 +17549,7 @@ L0030:	lda     #$00
 	sta     _Cube
 	stx     _Cube+1
 ;
-; if(Cube.vel_y < SHIP_MAX_FALLSPEED){
+; if(Cube.vel_y < SHIP_MAX_FALLSPEED) Cube.vel_y += SHIP_GRAVITY;
 ;
 L000C:	lda     _Cube+6
 	cmp     #$00
@@ -17680,9 +17558,6 @@ L000C:	lda     _Cube+6
 	bvc     L000E
 	eor     #$80
 L000E:	bpl     L000D
-;
-; Cube.vel_y += SHIP_GRAVITY;
-;
 	lda     #$36
 	clc
 	adc     _Cube+6
@@ -17690,12 +17565,9 @@ L000E:	bpl     L000D
 	bcc     L0010
 	inc     _Cube+6+1
 ;
-; else{
+; else Cube.vel_y = SHIP_MAX_FALLSPEED; // consistent
 ;
 	jmp     L0010
-;
-; Cube.vel_y = SHIP_MAX_FALLSPEED; // consistent
-;
 L000D:	ldx     #$03
 	lda     #$00
 	sta     _Cube+6
@@ -17710,12 +17582,9 @@ L0010:	lda     _Cube+6
 	bvs     L0012
 	eor     #$80
 ;
-; else{
+; else Cube.vel_y = SHIP_MAX_GOUPSPEED; // consistent
 ;
 L0012:	bmi     L0013
-;
-; Cube.vel_y = SHIP_MAX_GOUPSPEED; // consistent
-;
 	ldx     #$FD
 	lda     #$00
 	sta     _Cube+6
@@ -17979,15 +17848,28 @@ L0023:	jsr     _orbjump
 	lda     #$01
 	sta     _gamemode
 ;
-; cube_rotate = 0;
+; cube_rotate = 0x80;
 ;
-	lda     #$00
+	ldx     #$00
+	lda     #$80
 	sta     _cube_rotate
-	sta     _cube_rotate+1
+	stx     _cube_rotate+1
 ;
 ; ppu_wait_nmi(); // wait till beginning of the frame
 ;
 L0002:	jsr     _ppu_wait_nmi
+;
+; ppu_wait_nmi();
+;
+	jsr     _ppu_wait_nmi
+;
+; ppu_wait_nmi();
+;
+	jsr     _ppu_wait_nmi
+;
+; ppu_wait_nmi();
+;
+	jsr     _ppu_wait_nmi
 ;
 ; pad1 = pad_poll(0); // read the first controller
 ;

@@ -94,7 +94,9 @@ void cube_movement(void){
 	// Cube.vel_y is signed
 	//if(Cube.vel_y < 0x400){
 	if(gravity < 1){
-		Cube.vel_y += CUBE_GRAVITY;
+		if(Cube.vel_y > CUBE_MAX_FALLSPEED){
+			Cube.vel_y = CUBE_MAX_FALLSPEED;
+		} else Cube.vel_y += CUBE_GRAVITY;
 	}
 	else{
 		Cube.vel_y -= CUBE_GRAVITY;
