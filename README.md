@@ -11,6 +11,12 @@ do this stuff (ordered from most important to least important):
 - [ ] level ending  
 - [ ] title screen  
 
+## DISCORD SERVER
+interested in the project? join the discord and i'll add you to the repository!
+https://discord.gg/Jrf5CQEfzC
+
+
+
 # Building
 ## Ubuntu/Debian:  
 Clone the repo: ``git clone https://github.com/zephyrside/famidash.git``  
