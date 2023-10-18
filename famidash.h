@@ -292,14 +292,16 @@ const unsigned char is_solid[]={
 
 
 #include "Sprites.h" // holds our metasprite data
-#include "BG/Room1_.c"
+#include "BG/polargeist_.c"
 
-#define MAX_ROOMS 58
+#define MAX_ROOMS 63
 #define MAX_SCROLL (MAX_ROOMS*0x100)-1
 // data is exactly 240 bytes, 16 * 15
 // doubles as the collision map data
 
-
+const unsigned char * const Rooms[]={
+	polargeist__0,polargeist__1,polargeist__2,polargeist__3,polargeist__4,polargeist__5,polargeist__6,polargeist__7,polargeist__8,polargeist__9,polargeist__10,polargeist__11,polargeist__12,polargeist__13,polargeist__14,polargeist__15,polargeist__16,polargeist__17,polargeist__18,polargeist__19,polargeist__20,polargeist__21,polargeist__22,polargeist__23,polargeist__24,polargeist__25,polargeist__26,polargeist__27,polargeist__28,polargeist__29,polargeist__30,polargeist__31,polargeist__32,polargeist__33,polargeist__34,polargeist__35,polargeist__36,polargeist__37,polargeist__38,polargeist__39,polargeist__40,polargeist__41,polargeist__42,polargeist__43,polargeist__44,polargeist__45,polargeist__46,polargeist__47,polargeist__48,polargeist__49,polargeist__50,polargeist__51,polargeist__52,polargeist__53,polargeist__54,polargeist__55,polargeist__56,polargeist__57
+};
 
 
 
