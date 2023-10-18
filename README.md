@@ -1,13 +1,13 @@
 # famidash
 
 Geometry Dash but on the Famicom/NES.  
-The end goal is to demake the initial release of the original game (Update 1.0)  
+The end goal is to demake the initial release of the original game (Update 1.0), and maybe do updates afterward up to 2.0
 
 ## TODO
 
 do this stuff (ordered from most important to least important):  
-- [ ] ship  
-- [ ] gravity  
+- [X] ship  
+- [X] gravity  
 - [ ] level ending  
 - [ ] title screen  
 
