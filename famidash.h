@@ -10,6 +10,7 @@
 #define CUBE_DEATH 0x01
 #define CUBE_ORBJUMP 0x02
 
+#define LEVEL01NAME "BG/stereomadness_.c"
 
 //gamemode max fall speed
 #define CUBE_MAX_FALLSPEED 0x600
@@ -17,6 +18,12 @@
 #define SHIP_MAX_FALLSPEED 0x300
 #define SHIP_MAX_GOUPSPEED -0x300
 #define SHIP_GRAVITY 0x36
+
+
+#define COL_BG 0x00
+#define COL_BG_TILES 0x01
+
+
 
 
 #pragma bss-name(push, "ZEROPAGE")
@@ -82,7 +89,6 @@ enum {SONG_GAME, SONG_PAUSE};
 
 
 unsigned char cube_data;
-unsigned char bg_col;
 unsigned char gamemode;
 unsigned char level;
 const unsigned char * pointer;
@@ -119,7 +125,7 @@ struct CUBE Cube = {0x0000,0xb400}; // starting position
 
 
 // define the stuff for the in-level objects
-#define MAX_OBJ 16
+#define MAX_OBJ 24
 unsigned char obj_x[MAX_OBJ];
 unsigned char obj_y[MAX_OBJ];
 unsigned char obj_active[MAX_OBJ];
@@ -131,7 +137,7 @@ unsigned char obj_type[MAX_OBJ];
 #define TURN_OFF 0xff
 #define PORTAL_WIDTH 15
 #define PORTAL_HEIGHT 47
-
+#define TRIGGER_HEIGHT 255
 
 
 
@@ -292,7 +298,7 @@ const unsigned char is_solid[]={
 
 
 #include "Sprites.h" // holds our metasprite data
-#include "BG/polargeist_.c"
+#include LEVEL01NAME
 
 #define MAX_ROOMS 63
 #define MAX_SCROLL (MAX_ROOMS*0x100)-1
@@ -300,7 +306,7 @@ const unsigned char is_solid[]={
 // doubles as the collision map data
 
 const unsigned char * const Rooms[]={
-	polargeist__0,polargeist__1,polargeist__2,polargeist__3,polargeist__4,polargeist__5,polargeist__6,polargeist__7,polargeist__8,polargeist__9,polargeist__10,polargeist__11,polargeist__12,polargeist__13,polargeist__14,polargeist__15,polargeist__16,polargeist__17,polargeist__18,polargeist__19,polargeist__20,polargeist__21,polargeist__22,polargeist__23,polargeist__24,polargeist__25,polargeist__26,polargeist__27,polargeist__28,polargeist__29,polargeist__30,polargeist__31,polargeist__32,polargeist__33,polargeist__34,polargeist__35,polargeist__36,polargeist__37,polargeist__38,polargeist__39,polargeist__40,polargeist__41,polargeist__42,polargeist__43,polargeist__44,polargeist__45,polargeist__46,polargeist__47,polargeist__48,polargeist__49,polargeist__50,polargeist__51,polargeist__52,polargeist__53,polargeist__54,polargeist__55,polargeist__56,polargeist__57
+	stereomadness__0,stereomadness__1,stereomadness__2,stereomadness__3,stereomadness__4,stereomadness__5,stereomadness__6,stereomadness__7,stereomadness__8,stereomadness__9,stereomadness__10,stereomadness__11,stereomadness__12,stereomadness__13,stereomadness__14,stereomadness__15,stereomadness__16,stereomadness__17,stereomadness__18,stereomadness__19,stereomadness__20,stereomadness__21,stereomadness__22,stereomadness__23,stereomadness__24,stereomadness__25,stereomadness__26,stereomadness__27,stereomadness__28,stereomadness__29,stereomadness__30,stereomadness__31,stereomadness__32,stereomadness__33,stereomadness__34,stereomadness__35,stereomadness__36,stereomadness__37,stereomadness__38,stereomadness__39,stereomadness__40,stereomadness__41,stereomadness__42,stereomadness__43,stereomadness__44,stereomadness__45,stereomadness__46,stereomadness__47,stereomadness__48,stereomadness__49,stereomadness__50,stereomadness__51,stereomadness__52,stereomadness__53,stereomadness__54,stereomadness__55,stereomadness__56,
 };
 
 

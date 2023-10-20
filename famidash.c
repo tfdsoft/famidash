@@ -55,7 +55,6 @@ void main (void) {
 		set_scroll_y(scroll_y);
 		draw_screen_R();
 		draw_sprites();
-		gray_line();
 	}
 }
 
@@ -149,14 +148,14 @@ void draw_sprites(void){
 		if (gravity) cube_rotate -= CUBE_GRAVITY;
 		else cube_rotate += CUBE_GRAVITY;
 			
-		if (cube_rotate > 0x05FF) cube_rotate -= 0x05FF;
-		if (cube_rotate < 0x0000) cube_rotate += 0x05FF;
+		if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
+		if (cube_rotate < 0x0000) cube_rotate += 0x0600;
 	}
 	if (gamemode & 0x02){
 		oam_meta_spr(temp_x, high_byte(Cube.y)-1, SHIP[high_byte(cube_rotate)]);
 
 
-		cube_rotate = 0x0480 - Cube.vel_y;
+		cube_rotate = 0x047F - Cube.vel_y;
 	}
 
 
@@ -437,14 +436,19 @@ void sprite_collisions(void){
 	
 	for(index = 0; index < MAX_OBJ; ++index){
 		if(obj_active[index]){
+
 			Generic2.width = PORTAL_WIDTH;
-			Generic2.height = PORTAL_HEIGHT;
-			
+
+			if(obj_type[index] & 0xF0) Generic2.height = TRIGGER_HEIGHT;
+			else Generic2.height = PORTAL_HEIGHT;
+
 			Generic2.x = obj_x[index];
 			Generic2.y = obj_y[index];
 
 			if(check_collision(&Generic, &Generic2)){
 				switch (obj_type[index]) {
+				default:
+					break;
 				case PORTAL_GAMEMODE_CUBE:
 					gamemode = 0x01;
 					break;
@@ -459,6 +463,212 @@ void sprite_collisions(void){
 
 				case PORTAL_GRAVITY_UP:
 					gravity = 0x01;
+					break;
+
+				// COLOR TRIGGERS (this is very lengthy)
+				// dark
+				case TRIG_BG_DR:
+					pal_col(COL_BG, 0x06);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DO:
+					pal_col(COL_BG, 0x07);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DY:
+					pal_col(COL_BG, 0x08);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DG0:
+					pal_col(COL_BG, 0x09);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DG1: 
+					pal_col(COL_BG, 0x0A);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DT: 
+					pal_col(COL_BG, 0x0B);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DB0: 
+					pal_col(COL_BG, 0x0C);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DB1:
+					pal_col(COL_BG, 0x01);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DI: 
+					pal_col(COL_BG, 0x02);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DV: 
+					pal_col(COL_BG, 0x03);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DP: 
+					pal_col(COL_BG, 0x04);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DM: 
+					pal_col(COL_BG, 0x05);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_DGRAY: 
+					pal_col(COL_BG, 0x00);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_BLACK: 
+					pal_col(COL_BG, 0x0F);
+					pal_col(COL_BG_TILES, 0x0F);
+					obj_y[index] = TURN_OFF;
+					break;
+				// mid
+				case TRIG_BG_R:
+					pal_col(COL_BG, 0x16);
+					pal_col(COL_BG_TILES, 0x06);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_O:
+					pal_col(COL_BG, 0x17);
+					pal_col(COL_BG_TILES, 0x07);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_Y:
+					pal_col(COL_BG, 0x18);
+					pal_col(COL_BG_TILES, 0x08);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_G0:
+					pal_col(COL_BG, 0x19);
+					pal_col(COL_BG_TILES, 0x09);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_G1: 
+					pal_col(COL_BG, 0x1A);
+					pal_col(COL_BG_TILES, 0x0A);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_T: 
+					pal_col(COL_BG, 0x1B);
+					pal_col(COL_BG_TILES, 0x0B);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_B0: 
+					pal_col(COL_BG, 0x1C);
+					pal_col(COL_BG_TILES, 0x0C);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_B1:
+					pal_col(COL_BG, 0x11);
+					pal_col(COL_BG_TILES, 0x01);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_I: 
+					pal_col(COL_BG, 0x12);
+					pal_col(COL_BG_TILES, 0x02);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_V: 
+					pal_col(COL_BG, 0x13);
+					pal_col(COL_BG_TILES, 0x03);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_P: 
+					pal_col(COL_BG, 0x14);
+					pal_col(COL_BG_TILES, 0x04);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_M: 
+					pal_col(COL_BG, 0x15);
+					pal_col(COL_BG_TILES, 0x05);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_GRAY: 
+					pal_col(COL_BG, 0x10);
+					pal_col(COL_BG_TILES, 0x00);
+					obj_y[index] = TURN_OFF;
+					break;
+
+				// light
+				case TRIG_BG_LR:
+					pal_col(COL_BG, 0x26);
+					pal_col(COL_BG_TILES, 0x06);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LO:
+					pal_col(COL_BG, 0x27);
+					pal_col(COL_BG_TILES, 0x07);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LY:
+					pal_col(COL_BG, 0x28);
+					pal_col(COL_BG_TILES, 0x08);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LG0:
+					pal_col(COL_BG, 0x29);
+					pal_col(COL_BG_TILES, 0x09);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LG1: 
+					pal_col(COL_BG, 0x2A);
+					pal_col(COL_BG_TILES, 0x0A);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LT: 
+					pal_col(COL_BG, 0x2B);
+					pal_col(COL_BG_TILES, 0x0B);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LB0: 
+					pal_col(COL_BG, 0x2C);
+					pal_col(COL_BG_TILES, 0x0C);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LB1:
+					pal_col(COL_BG, 0x21);
+					pal_col(COL_BG_TILES, 0x01);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LI: 
+					pal_col(COL_BG, 0x22);
+					pal_col(COL_BG_TILES, 0x02);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LV: 
+					pal_col(COL_BG, 0x23);
+					pal_col(COL_BG_TILES, 0x03);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LP: 
+					pal_col(COL_BG, 0x24);
+					pal_col(COL_BG_TILES, 0x04);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_LM: 
+					pal_col(COL_BG, 0x25);
+					pal_col(COL_BG_TILES, 0x05);
+					obj_y[index] = TURN_OFF;
+					break;
+				case TRIG_BG_WHITE: 
+					pal_col(COL_BG, 0x30);
+					pal_col(COL_BG_TILES, 0x00);
+					obj_y[index] = TURN_OFF;
 					break;
 				}
 				//if(obj_type[index] == OBJ_END);

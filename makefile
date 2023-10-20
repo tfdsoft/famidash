@@ -49,7 +49,7 @@ crt0.o: crt0.s famidash.chr
 $(NAME).o: $(NAME).s
 	$(CA65) $(NAME).s -g
 
-$(NAME).s: $(NAME).c include.h gamemode_cube.c gamemode_ship.c Sprites.h famidash.h level_data.c BG/polargeist_.c
+$(NAME).s: $(NAME).c include.h gamemode_cube.c gamemode_ship.c Sprites.h famidash.h level_data.c BG/stereomadness_.c
 	$(CC65) -Oirs $(NAME).c --add-source
 
 clean:

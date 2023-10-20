@@ -88,7 +88,8 @@ void ship_movement(void){
 // handle y
 
 // gravity
-
+	orbjump();
+	padjump();
 	// Cube.vel_y is signed
 	if(Cube.vel_y < SHIP_MAX_FALLSPEED) Cube.vel_y += SHIP_GRAVITY;
 	else Cube.vel_y = SHIP_MAX_FALLSPEED; // consistent
@@ -156,6 +157,5 @@ void ship_movement(void){
 		}
 		*/
 	}
-	orbjump();
-	padjump();
+	
 }	

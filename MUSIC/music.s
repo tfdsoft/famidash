@@ -5,38 +5,38 @@ music_music_data:
 	.byte 1
 	.word @instruments
 	.word @samples-3
-	.word @song0ch0,@song0ch1,@song0ch2,@song0ch3,@song0ch4,333,278 ; Polargeist (Step)
+	.word @song0ch0,@song0ch1,@song0ch2,@song0ch3,@song0ch4,327,273 ; Stereo Madness (ForeverBound)
 
 @instruments:
 	.byte $30 ;instrument $00
 	.word @env7,@env0,@env0
 	.byte $00
-	.byte $b0 ;instrument $01
-	.word @env6,@env0,@env0
-	.byte $00
 	.byte $b0 ;instrument $02
+	.word @env2,@env0,@env0
+	.byte $00
+	.byte $70 ;instrument $03
 	.word @env1,@env0,@env0
 	.byte $00
-	.byte $30 ;instrument $07
-	.word @env2,@env10,@env0
+	.byte $30 ;instrument $04
+	.word @env8,@env0,@env0
 	.byte $00
-	.byte $30 ;instrument $08
+	.byte $30 ;instrument $05
+	.word @env9,@env0,@env0
+	.byte $00
+	.byte $30 ;instrument $07
 	.word @env3,@env11,@env0
 	.byte $00
-	.byte $30 ;instrument $09
-	.word @env4,@env13,@env0
+	.byte $30 ;instrument $08
+	.word @env4,@env12,@env0
 	.byte $00
-	.byte $30 ;instrument $0a
-	.word @env5,@env13,@env0
+	.byte $30 ;instrument $09
+	.word @env5,@env14,@env0
 	.byte $00
 	.byte $30 ;instrument $0b
-	.word @env6,@env0,@env14
+	.word @env6,@env13,@env0
 	.byte $00
-	.byte $b0 ;instrument $0c
-	.word @env8,@env12,@env0
-	.byte $00
-	.byte $30 ;instrument $0d
-	.word @env9,@env0,@env0
+	.byte $30 ;instrument $0e
+	.word @env10,@env0,@env0
 	.byte $00
 
 @samples:
@@ -61,39 +61,39 @@ music_music_data:
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;19
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;20
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;21
-	.byte $00+.lobyte(FT_DPCM_PTR),$2f,$05	;22
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;22
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;23
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;24
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;25
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;26
-	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$07	;27
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;27
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;28
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;29
 	.byte $00+.lobyte(FT_DPCM_PTR),$2f,$09	;30
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;31
 	.byte $00+.lobyte(FT_DPCM_PTR),$2f,$0a	;32
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;33
-	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$0a	;34
+	.byte $0c+.lobyte(FT_DPCM_PTR),$2f,$0a	;34
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;35
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;36
 	.byte $00+.lobyte(FT_DPCM_PTR),$2f,$0c	;37
-	.byte $0c+.lobyte(FT_DPCM_PTR),$2f,$0c	;38
-	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$0c	;39
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;38
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;39
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;40
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;41
-	.byte $0c+.lobyte(FT_DPCM_PTR),$2f,$0d	;42
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;42
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;43
-	.byte $00+.lobyte(FT_DPCM_PTR),$2f,$0e	;44
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;44
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;45
-	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$0e	;46
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;46
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;47
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;48
-	.byte $00+.lobyte(FT_DPCM_PTR),$2f,$0f	;49
-	.byte $0c+.lobyte(FT_DPCM_PTR),$2f,$0f	;50
-	.byte $18+.lobyte(FT_DPCM_PTR),$2f,$0f	;51
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;49
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;50
+	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;51
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;52
-	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;53
-	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;54
+	.byte $18+.lobyte(FT_DPCM_PTR),$13,$0e	;53
+	.byte $1d+.lobyte(FT_DPCM_PTR),$27,$0f	;54
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;55
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;56
 	.byte $00+.lobyte(FT_DPCM_PTR),$00,$00	;57
@@ -107,467 +107,400 @@ music_music_data:
 @env0:
 	.byte $c0,$00,$00
 @env1:
-	.byte $c9,$c7,$c5,$c3,$c2,$c1,$c1,$c0,$c3,$c2,$c1,$c1,$c0,$00,$0c
+	.byte $c3,$c6,$c5,$c5,$c4,$c4,$c3,$c3,$c2,$02,$c1,$03,$c0,$00,$0c
 @env2:
-	.byte $ca,$c7,$c4,$c2,$c1,$c0,$00,$05
+	.byte $c9,$c7,$c5,$c3,$c2,$c1,$c1,$c0,$c3,$c2,$c1,$c1,$c0,$00,$0c
 @env3:
-	.byte $cd,$c9,$c7,$c5,$c4,$c3,$c2,$c2,$c1,$c1,$c0,$00,$0a
+	.byte $ca,$c7,$c4,$c2,$c1,$c0,$00,$05
 @env4:
-	.byte $c8,$c4,$c2,$c0,$00,$03
+	.byte $cd,$c9,$c7,$c5,$c4,$c3,$c2,$c2,$c1,$c1,$c0,$00,$0a
 @env5:
-	.byte $c9,$c7,$c5,$c4,$c3,$c3,$c2,$c2,$c1,$c1,$c0,$00,$0a
+	.byte $c8,$c4,$c2,$c0,$00,$03
 @env6:
 	.byte $c9,$c8,$c7,$c6,$c6,$c5,$c5,$c4,$00,$07
 @env7:
 	.byte $cf,$00,$00
 @env8:
-	.byte $c8,$c6,$c5,$00,$02
+	.byte $c7,$c6,$c5,$c5,$c4,$c4,$c3,$02,$c2,$02,$c1,$00,$0a
 @env9:
-	.byte $c1,$c0,$00,$01
+	.byte $c8,$c6,$c5,$00,$02
 @env10:
-	.byte $c6,$cf,$00,$01
+	.byte $c7,$02,$c0,$00,$02
 @env11:
-	.byte $c6,$c9,$00,$01
+	.byte $c6,$cf,$00,$01
 @env12:
-	.byte $c0,$c0,$cc,$cc,$00,$00
+	.byte $c6,$c9,$00,$01
 @env13:
-	.byte $be,$c0,$00,$01
+	.byte $c0,$bf,$be,$bd,$bc,$bb,$ba,$b9,$b8,$b7,$b6,$b5,$b4,$b3,$b2,$b1
+	.byte $00,$0f
 @env14:
-	.byte $c0,$ff,$0d,$ff,$00,$03
+	.byte $be,$c0,$00,$01
 
 
-; Polargeist (Step)
+; Stereo Madness (ForeverBound)
 @song0ch0:
 	.byte $fb,$06
 @ref0:
-	.byte $71,$80,$12,$85,$72,$83,$73,$83
+	.byte $82,$28,$81,$2f,$81,$28,$81,$2f,$81,$28,$81,$2f,$81,$28,$81,$2f
+	.byte $81,$23,$81,$2a,$81,$23,$81,$2a,$81,$23,$81,$2a,$81,$23,$81,$2a
+	.byte $81
 @ref1:
-	.byte $74,$81,$75,$81,$76,$81,$77,$81,$78,$81,$7a,$81,$7c,$81,$7f,$81
+	.byte $25,$81,$2c,$81,$25,$81,$2c,$81,$25,$81,$2c,$81,$25,$81,$2c,$81
+	.byte $21,$81,$28,$81,$21,$81,$28,$81,$21,$81,$28,$81,$21,$81,$28,$81
 @ref2:
-	.byte $7f,$84,$36,$89,$3d,$81,$40,$85,$42,$91,$39,$81,$3b,$85,$3d,$85
-@ref3:
-	.byte $36,$89,$3d,$81,$40,$85,$42,$81,$3b,$8d,$42,$81,$45,$85,$47,$85
-@ref4:
-	.byte $36,$89,$3d,$81,$40,$85,$42,$91,$39,$81,$3b,$85,$3d,$85
-@ref5:
-	.byte $36,$85,$36,$81,$3d,$81,$40,$85,$42,$81,$3b,$85,$3b,$85,$42,$81
-	.byte $45,$85,$47,$85
-@ref6:
-	.byte $36,$89,$3d,$81,$40,$85,$42,$81,$31,$85,$31,$85,$39,$81,$3b,$85
-	.byte $3d,$85
-	.byte $ff,$14
-	.word @ref5
+	.byte $28,$81,$2f,$81,$28,$81,$2f,$81,$28,$81,$2f,$81,$28,$81,$2f,$81
+	.byte $23,$81,$2a,$81,$23,$81,$2a,$81,$23,$81,$2a,$81,$23,$81,$2a,$81
+	.byte $ff,$20
+	.word @ref1
+	.byte $ff,$20
+	.word @ref2
+	.byte $ff,$20
+	.word @ref1
+	.byte $ff,$20
+	.word @ref2
+	.byte $ff,$20
+	.word @ref1
 @ref8:
-	.byte $82,$1e,$81,$00,$85,$25,$81,$28,$85,$2a,$81,$19,$83,$00,$19,$81
-	.byte $00,$81,$20,$81,$23,$85,$25,$85
+	.byte $8f
 @ref9:
-	.byte $1e,$83,$00,$1e,$81,$25,$81,$28,$85,$2a,$81,$23,$83,$00,$23,$81
-	.byte $00,$81,$2a,$81,$2d,$85,$2f,$85
-@ref10:
-	.byte $1e,$83,$00,$1e,$81,$25,$81,$28,$85,$2a,$81,$19,$83,$00,$19,$81
-	.byte $00,$81,$20,$81,$23,$85,$25,$85
-@ref11:
-	.byte $1e,$81,$1e,$81,$00,$81,$21,$81,$21,$81,$00,$81,$23,$81,$23,$81
-	.byte $00,$81,$25,$81,$25,$81,$00,$81,$28,$85,$29,$85
-@ref12:
-	.byte $2a,$85,$00,$89,$84,$42,$81,$3d,$85,$3b,$85,$3d,$85,$38,$85,$36
-	.byte $85
-@ref13:
-	.byte $31,$89,$34,$85,$36,$85,$3d,$81,$2f,$81,$36,$85,$2f,$81,$36,$85
-	.byte $39,$85
-@ref14:
-	.byte $36,$89,$3d,$85,$40,$81,$3d,$85,$3b,$85,$3d,$85,$40,$85,$42,$85
-@ref15:
-	.byte $49,$89,$40,$85,$42,$85,$49,$85,$49,$81,$49,$47,$45,$42,$40,$3d
-	.byte $3b,$39,$36,$34,$31,$2d
-@ref16:
-	.byte $87,$90,$36,$81,$00,$81,$36,$00,$34,$81,$00,$81,$34,$81,$00,$81
-	.byte $34,$81,$00,$81,$34,$81,$00,$81,$33,$81,$00,$81,$33,$81
-@ref17:
-	.byte $a7,$00,$95
+	.byte $8f
+	.byte $ff,$20
+	.word @ref2
+	.byte $ff,$20
+	.word @ref1
+	.byte $ff,$20
+	.word @ref2
+	.byte $ff,$20
+	.word @ref1
+	.byte $ff,$20
+	.word @ref2
+	.byte $ff,$20
+	.word @ref1
+	.byte $ff,$20
+	.word @ref2
+	.byte $ff,$20
+	.word @ref1
 @ref18:
-	.byte $87,$36,$81,$00,$81,$36,$00,$34,$81,$00,$81,$34,$81,$00,$81,$34
-	.byte $81,$00,$81,$34,$81,$00,$81,$39,$81,$00,$81,$3b,$81
+	.byte $00,$bd
 @ref19:
-	.byte $a7,$00,$95
+	.byte $bf
 @ref20:
-	.byte $87,$36,$81,$00,$81,$36,$81,$00,$a9
-	.byte $ff,$09
-	.word @ref20
-	.byte $ff,$1d
-	.word @ref18
+	.byte $00,$bd
+@ref21:
+	.byte $bf
+@ref22:
+	.byte $00,$bd
 @ref23:
-	.byte $a7,$00,$95
+	.byte $bf
 @ref24:
-	.byte $84,$36,$89,$3d,$81,$40,$85,$42,$81,$31,$85,$31,$85,$39,$81,$3b
-	.byte $85,$3d,$85
-	.byte $ff,$14
-	.word @ref5
-	.byte $ff,$12
-	.word @ref6
-	.byte $ff,$14
-	.word @ref5
+	.byte $00,$bd
+@ref25:
+	.byte $bf
+@ref26:
+	.byte $84,$34,$81,$00,$34,$81,$00,$34,$81,$00,$34,$81,$00,$34,$81,$00
+	.byte $34,$81,$00,$33,$81,$00,$33,$81,$00,$33,$81,$00,$33,$81,$00,$33
+	.byte $81
+@ref27:
+	.byte $34,$81,$00,$34,$81,$00,$34,$81,$00,$34,$81,$00,$34,$81,$00,$34
+	.byte $81,$00,$36,$81,$00,$36,$81,$00,$36,$81,$00,$36,$81,$00,$36,$81
 @ref28:
-	.byte $90,$2a,$00,$87,$31,$00,$34,$83,$00,$36,$00,$25,$83,$00,$25,$81
-	.byte $00,$81,$2c,$00,$2f,$83,$00,$31,$83,$00
+	.byte $34,$81,$00,$34,$81,$00,$34,$81,$00,$34,$81,$00,$34,$81,$00,$34
+	.byte $81,$00,$33,$81,$00,$33,$81,$00,$33,$81,$00,$33,$81,$00,$33,$81
 @ref29:
-	.byte $2a,$83,$00,$2a,$00,$31,$00,$34,$83,$00,$36,$00,$2f,$83,$00,$2f
-	.byte $81,$00,$81,$36,$00,$39,$83,$00,$3b,$83,$00
-@ref30:
-	.byte $2a,$00,$83,$2a,$00,$31,$00,$34,$83,$00,$36,$00,$25,$83,$00,$25
-	.byte $81,$00,$81,$2c,$00,$2f,$83,$00,$31,$83,$00
-@ref31:
-	.byte $2a,$00,$2a,$81,$00,$81,$2d,$00,$2d,$81,$00,$81,$2f,$00,$2f,$81
-	.byte $00,$81,$31,$00,$31,$81,$00,$81,$34,$85,$35,$85
-@ref32:
-	.byte $36,$89
-@ref33:
-	.byte $31,$2a
+	.byte $34,$81,$00,$34,$81,$00,$34,$81,$00,$34,$81,$00,$34,$81,$00,$34
+	.byte $81,$00,$36,$81,$00,$36,$81,$00,$36,$81,$00,$38,$81,$00,$38,$81
 @song0ch0loop:
-@ref34:
-	.byte $90,$00
+@ref30:
+	.byte $84,$00
 	.byte $fd
 	.word @song0ch0loop
 
-; Polargeist (Step)
+; Stereo Madness (ForeverBound)
 @song0ch1:
+@ref31:
+	.byte $00,$bd
+@ref32:
+	.byte $bf
+@ref33:
+	.byte $00,$bd
+@ref34:
+	.byte $bf
 @ref35:
-	.byte $71,$80,$06,$85,$72,$83,$73,$83
-	.byte $ff,$08
-	.word @ref1
+	.byte $88,$10,$9d,$0b,$9d
+@ref36:
+	.byte $0d,$9d,$09,$9d
 @ref37:
-	.byte $7f,$00,$bd
+	.byte $10,$9d,$0b,$9d
 @ref38:
-	.byte $bf
+	.byte $0d,$9d,$09,$9d
 @ref39:
-	.byte $7f,$00,$bd
+	.byte $00,$8d
 @ref40:
-	.byte $bf
+	.byte $8f
 @ref41:
-	.byte $7f,$00,$bd
+	.byte $10,$9d,$0b,$9d
 @ref42:
-	.byte $bf
+	.byte $0d,$9d,$09,$9d
 @ref43:
-	.byte $82,$06,$85,$00,$81,$0d,$81,$10,$85,$12,$81,$01,$83,$00,$01,$81
-	.byte $00,$81,$08,$81,$0b,$85,$0d,$85
+	.byte $10,$9d,$0b,$9d
 @ref44:
-	.byte $06,$83,$00,$06,$81,$0d,$81,$10,$85,$12,$81,$0b,$83,$00,$0b,$81
-	.byte $00,$81,$12,$81,$15,$85,$17,$85
+	.byte $0d,$9d,$09,$9d
 @ref45:
-	.byte $06,$83,$00,$06,$81,$0d,$81,$10,$85,$12,$81,$01,$83,$00,$01,$81
-	.byte $00,$81,$08,$81,$0b,$85,$0d,$85
+	.byte $10,$9d,$0b,$9d
 @ref46:
-	.byte $06,$81,$06,$81,$00,$81,$09,$81,$09,$81,$00,$81,$0b,$81,$0b,$81
-	.byte $00,$81,$0d,$81,$0d,$81,$00,$81,$10,$85,$11,$85
+	.byte $0d,$9d,$09,$9d
 @ref47:
-	.byte $12,$89,$0d,$06,$00,$ad
+	.byte $10,$9d,$0b,$9d
 @ref48:
-	.byte $bf
+	.byte $0d,$9d,$09,$9d
 @ref49:
 	.byte $00,$bd
 @ref50:
 	.byte $bf
 @ref51:
-	.byte $bf
+	.byte $00,$bd
 @ref52:
-	.byte $83,$84,$3b,$81,$3b,$81,$36,$81,$36,$81,$2f,$81,$2f,$81,$2d,$81
-	.byte $2d,$81,$2f,$81,$2f,$95
+	.byte $bf
 @ref53:
-	.byte $bf
+	.byte $00,$bd
 @ref54:
-	.byte $83,$3b,$81,$3b,$81,$36,$81,$36,$81,$2f,$81,$2f,$81,$39,$81,$39
-	.byte $81,$3b,$81,$3b,$95
+	.byte $bf
 @ref55:
-	.byte $bf
+	.byte $00,$bd
 @ref56:
-	.byte $83,$3b,$81,$3b,$81,$36,$81,$36,$81,$2f,$81,$34,$81,$35,$81,$36
-	.byte $81,$2f,$81,$2f,$95
+	.byte $bf
 @ref57:
-	.byte $bf
-	.byte $ff,$15
-	.word @ref54
+	.byte $86,$28,$81,$00,$28,$81,$00,$28,$81,$00,$28,$81,$00,$28,$81,$00
+	.byte $28,$81,$00,$27,$81,$00,$27,$81,$00,$27,$81,$00,$27,$81,$00,$27
+	.byte $81
+@ref58:
+	.byte $28,$81,$00,$28,$81,$00,$28,$81,$00,$28,$81,$00,$28,$81,$00,$28
+	.byte $81,$00,$2a,$81,$00,$2a,$81,$00,$2a,$81,$00,$2a,$81,$00,$2a,$81
 @ref59:
-	.byte $7f,$80,$00,$bd
+	.byte $28,$81,$00,$28,$81,$00,$28,$81,$00,$28,$81,$00,$28,$81,$00,$28
+	.byte $81,$00,$27,$81,$00,$27,$81,$00,$27,$81,$00,$27,$81,$00,$27,$81
 @ref60:
-	.byte $bf
-@ref61:
-	.byte $7f,$00,$bd
-@ref62:
-	.byte $bf
-	.byte $ff,$17
-	.word @ref43
-	.byte $ff,$18
-	.word @ref44
-	.byte $ff,$18
-	.word @ref45
-	.byte $ff,$1c
-	.word @ref46
-@ref67:
-	.byte $12,$89
-@ref68:
-	.byte $0d,$06
+	.byte $28,$81,$00,$28,$81,$00,$28,$81,$00,$28,$81,$00,$28,$81,$00,$28
+	.byte $81,$00,$2a,$81,$00,$2a,$81,$00,$2a,$81,$00,$2c,$81,$00,$2c,$81
 @song0ch1loop:
-@ref69:
-	.byte $82,$00
+@ref61:
+	.byte $86,$00
 	.byte $fd
 	.word @song0ch1loop
 
-; Polargeist (Step)
+; Stereo Madness (ForeverBound)
 @song0ch2:
+@ref62:
+	.byte $bf
+@ref63:
+	.byte $bf
+@ref64:
+	.byte $bf
+@ref65:
+	.byte $bf
+@ref66:
+	.byte $90,$1e,$00,$83,$25,$81,$00,$81,$1e,$00,$83,$25,$81,$00,$81,$1e
+	.byte $00,$83,$25,$81,$00,$81,$1e,$00,$83,$25,$81,$00,$81
+@ref67:
+	.byte $1e,$00,$83,$25,$81,$00,$81,$1e,$00,$83,$25,$81,$00,$81,$1e,$00
+	.byte $83,$25,$81,$00,$81,$1e,$00,$83,$25,$81,$00,$81
+	.byte $ff,$1c
+	.word @ref67
+	.byte $ff,$1c
+	.word @ref67
 @ref70:
 	.byte $8f
 @ref71:
 	.byte $8f
 @ref72:
-	.byte $8e,$20,$00,$9b,$20,$00,$9b
+	.byte $92,$34,$81,$34,$81,$34,$81,$34,$34,$81,$34,$34,$81,$34,$81,$34
+	.byte $34,$34,$81,$33,$81,$33,$81,$33,$33,$81,$33,$33,$81,$33,$81,$33
+	.byte $33
 @ref73:
-	.byte $20,$00,$9b,$20,$00,$9b
+	.byte $34,$81,$34,$81,$34,$81,$34,$34,$81,$34,$34,$81,$34,$81,$34,$34
+	.byte $34,$81,$36,$81,$36,$81,$36,$36,$81,$36,$36,$81,$36,$81,$36,$36
 @ref74:
-	.byte $20,$00,$9b,$20,$00,$97,$20,$00
-	.byte $ff,$08
+	.byte $34,$81,$34,$81,$34,$81,$34,$34,$81,$34,$34,$81,$34,$81,$34,$34
+	.byte $34,$81,$33,$81,$33,$81,$33,$33,$81,$33,$33,$81,$33,$81,$33,$33
+@ref75:
+	.byte $34,$81,$34,$81,$34,$81,$34,$34,$81,$34,$34,$81,$34,$81,$34,$34
+	.byte $34,$81,$36,$81,$36,$81,$36,$36,$81,$36,$38,$81,$38,$81,$38,$38
+	.byte $ff,$20
 	.word @ref74
-	.byte $ff,$08
+	.byte $ff,$20
+	.word @ref73
+	.byte $ff,$20
 	.word @ref74
-@ref77:
-	.byte $20,$00,$83,$20,$00,$83,$20,$00,$83,$20,$00,$83,$20,$00,$93,$20
-	.byte $00,$83
-@ref78:
-	.byte $20,$00,$83,$28,$81,$00,$81,$20,$00,$20,$00,$28,$81,$00,$81,$20
-	.byte $00,$83,$28,$81,$00,$81,$20,$00,$20,$00,$28,$81,$00,$81
-	.byte $ff,$1e
-	.word @ref78
-	.byte $ff,$1e
-	.word @ref78
-@ref81:
-	.byte $28,$81,$20,$00,$83,$28,$81,$20,$00,$83,$28,$81,$20,$00,$83,$28
-	.byte $81,$20,$00,$83,$28,$81,$20,$00,$28,$81,$20,$00
-	.byte $ff,$08
+	.byte $ff,$20
+	.word @ref75
+	.byte $ff,$20
 	.word @ref74
-	.byte $ff,$08
+	.byte $ff,$20
+	.word @ref73
+	.byte $ff,$20
 	.word @ref74
-	.byte $ff,$08
+	.byte $ff,$20
+	.word @ref75
+	.byte $ff,$20
 	.word @ref74
-	.byte $ff,$08
+	.byte $ff,$20
+	.word @ref73
+	.byte $ff,$20
 	.word @ref74
-	.byte $ff,$1e
-	.word @ref78
-	.byte $ff,$1e
-	.word @ref78
-	.byte $ff,$1e
-	.word @ref78
+	.byte $ff,$20
+	.word @ref75
+@ref88:
+	.byte $bf
 @ref89:
-	.byte $20,$00,$83,$28,$81,$00,$81,$20,$00,$20,$00,$28,$81,$00,$81,$92
-	.byte $36,$81,$42,$81,$8e,$28,$81,$92,$42,$81,$36,$81,$42,$81,$8e,$28
-	.byte $81,$92,$42,$81
+	.byte $bf
 @ref90:
-	.byte $36,$81,$42,$81,$8e,$28,$81,$92,$42,$81,$36,$81,$42,$81,$8e,$28
-	.byte $81,$92,$42,$81,$34,$81,$40,$81,$8e,$28,$81,$92,$40,$81,$34,$81
-	.byte $40,$81,$8e,$28,$81,$92,$40,$81
+	.byte $bf
 @ref91:
-	.byte $33,$81,$3f,$81,$8e,$28,$81,$92,$3f,$81,$33,$81,$3f,$81,$8e,$28
-	.byte $81,$92,$3f,$81,$33,$81,$3f,$81,$8e,$28,$81,$92,$3f,$81,$33,$81
-	.byte $3f,$81,$8e,$28,$81,$92,$3f,$81
-	.byte $ff,$20
-	.word @ref90
-	.byte $ff,$20
-	.word @ref91
-@ref94:
-	.byte $8e,$20,$00,$9b,$20,$00,$97,$20,$00
-	.byte $ff,$08
-	.word @ref74
-	.byte $ff,$08
-	.word @ref74
-	.byte $ff,$12
-	.word @ref77
-	.byte $ff,$1e
-	.word @ref78
-	.byte $ff,$1e
-	.word @ref78
-	.byte $ff,$1e
-	.word @ref78
-	.byte $ff,$1c
-	.word @ref81
-@ref102:
-	.byte $28,$81,$00,$85
-@ref103:
-	.byte $83
+	.byte $bf
 @song0ch2loop:
-@ref104:
+@ref92:
 	.byte $81
 	.byte $fd
 	.word @song0ch2loop
 
-; Polargeist (Step)
+; Stereo Madness (ForeverBound)
 @song0ch3:
-	.byte $ff,$04
-	.word @ref35
-@ref106:
-	.byte $74,$81,$75,$81,$76,$81,$77,$81,$78,$81,$7a,$81,$7c,$81,$7e,$81
-@ref107:
-	.byte $7f,$86,$10,$81,$8c,$0f,$81,$0d,$81,$0f,$81,$0d,$81,$0f,$81,$0d
-	.byte $81,$0f,$81,$86,$10,$81,$8c,$0f,$81,$0d,$81,$0f,$81,$0d,$81,$0f
-	.byte $81,$0d,$81,$0f,$81
-@ref108:
-	.byte $86,$10,$81,$8c,$0f,$81,$0d,$81,$0f,$81,$0d,$81,$0f,$81,$0d,$81
-	.byte $0f,$81,$86,$10,$81,$8c,$0f,$81,$0d,$81,$0f,$81,$0d,$81,$0f,$81
-	.byte $0d,$81,$0f,$81
-@ref109:
-	.byte $88,$0f,$81,$8c,$0d,$81,$0b,$81,$0d,$81,$0b,$81,$0d,$81,$0b,$81
-	.byte $0d,$81,$86,$10,$81,$8c,$0d,$81,$0b,$81,$0d,$81,$0b,$81,$0d,$81
-	.byte $0b,$81,$86,$10,$81
-@ref110:
-	.byte $10,$81,$8c,$0d,$81,$0b,$81,$0d,$81,$0b,$81,$0d,$81,$0b,$81,$0d
-	.byte $81,$86,$10,$81,$8c,$0d,$81,$0b,$81,$0d,$81,$0b,$81,$0d,$81,$0b
-	.byte $81,$86,$10,$81
+@ref93:
+	.byte $bf
+@ref94:
+	.byte $bf
+@ref95:
+	.byte $bf
+@ref96:
+	.byte $bf
+@ref97:
+	.byte $8a,$10,$81,$8e,$0d,$81,$8c,$10,$81,$8e,$0d,$0f,$8a,$10,$8e,$0f
+	.byte $0d,$81,$8c,$10,$81,$8e,$0d,$0f,$8a,$10,$81,$8e,$0d,$81,$8c,$10
+	.byte $81,$8e,$0d,$0f,$8a,$10,$8e,$0f,$0d,$81,$8c,$10,$81,$8e,$0d,$0f
 	.byte $ff,$20
-	.word @ref110
-@ref112:
-	.byte $10,$81,$8c,$0d,$81,$86,$10,$81,$8c,$0d,$81,$86,$10,$81,$8c,$0d
-	.byte $81,$86,$10,$81,$8c,$0d,$81,$86,$10,$95,$10,$85
-@ref113:
-	.byte $10,$81,$8a,$0d,$81,$88,$10,$81,$8a,$0d,$81,$86,$10,$81,$10,$81
-	.byte $88,$10,$81,$8a,$0d,$81,$86,$10,$81,$8a,$0d,$81,$88,$10,$81,$8a
-	.byte $0d,$81,$86,$10,$81,$10,$81,$88,$10,$81,$8a,$0d,$81
-@ref114:
-	.byte $86,$10,$81,$8a,$0d,$81,$88,$10,$81,$8a,$0d,$81,$86,$10,$81,$10
-	.byte $81,$88,$10,$81,$8a,$0d,$81,$86,$10,$81,$8a,$0d,$81,$88,$10,$81
-	.byte $8a,$0d,$81,$86,$10,$81,$10,$81,$88,$10,$81,$8a,$0d,$81
+	.word @ref97
 	.byte $ff,$20
-	.word @ref114
-@ref116:
-	.byte $88,$10,$81,$86,$10,$81,$8c,$0e,$81,$88,$10,$81,$86,$10,$81,$8c
-	.byte $0e,$81,$88,$10,$81,$86,$10,$81,$8c,$0e,$81,$88,$10,$81,$86,$10
-	.byte $81,$8c,$0e,$81,$88,$10,$81,$86,$10,$81,$88,$10,$81,$86,$10,$81
+	.word @ref97
 	.byte $ff,$20
-	.word @ref109
+	.word @ref97
+@ref101:
+	.byte $8f
+@ref102:
+	.byte $8f
 	.byte $ff,$20
-	.word @ref110
+	.word @ref97
 	.byte $ff,$20
-	.word @ref109
+	.word @ref97
 	.byte $ff,$20
-	.word @ref110
+	.word @ref97
 	.byte $ff,$20
-	.word @ref113
+	.word @ref97
 	.byte $ff,$20
-	.word @ref114
+	.word @ref97
 	.byte $ff,$20
-	.word @ref114
+	.word @ref97
 	.byte $ff,$20
-	.word @ref114
+	.word @ref97
 	.byte $ff,$20
-	.word @ref114
+	.word @ref97
 	.byte $ff,$20
-	.word @ref114
+	.word @ref97
 	.byte $ff,$20
-	.word @ref114
+	.word @ref97
 	.byte $ff,$20
-	.word @ref114
+	.word @ref97
 	.byte $ff,$20
-	.word @ref109
+	.word @ref97
 	.byte $ff,$20
-	.word @ref110
+	.word @ref97
 	.byte $ff,$20
-	.word @ref110
-	.byte $ff,$14
-	.word @ref112
+	.word @ref97
 	.byte $ff,$20
-	.word @ref113
+	.word @ref97
 	.byte $ff,$20
-	.word @ref114
-	.byte $ff,$20
-	.word @ref114
-	.byte $ff,$20
-	.word @ref116
-@ref137:
-	.byte $88,$10,$89
-@ref138:
-	.byte $83
+	.word @ref97
+@ref119:
+	.byte $bf
+@ref120:
+	.byte $bf
+@ref121:
+	.byte $bf
+@ref122:
+	.byte $bf
 @song0ch3loop:
-@ref139:
+@ref123:
 	.byte $81
 	.byte $fd
 	.word @song0ch3loop
 
-; Polargeist (Step)
+; Stereo Madness (ForeverBound)
 @song0ch4:
-@ref140:
-	.byte $8f
-@ref141:
-	.byte $8f
-@ref142:
+@ref124:
 	.byte $bf
-@ref143:
+@ref125:
 	.byte $bf
-@ref144:
-	.byte $27,$81,$27,$81,$27,$81,$27,$81,$27,$81,$27,$81,$27,$81,$27,$81
-	.byte $22,$81,$22,$81,$22,$81,$22,$81,$22,$81,$22,$81,$22,$81,$22,$81
-@ref145:
-	.byte $27,$81,$27,$81,$27,$81,$27,$81,$27,$81,$27,$81,$27,$81,$2c,$81
-	.byte $2c,$81,$2c,$81,$2c,$81,$2c,$81,$2c,$81,$2c,$81,$2c,$81,$2c,$81
+@ref126:
+	.byte $bf
+@ref127:
+	.byte $bf
+@ref128:
+	.byte $bf
+@ref129:
+	.byte $bf
+@ref130:
+	.byte $bf
+@ref131:
+	.byte $bf
+@ref132:
+	.byte $8f
+@ref133:
+	.byte $8f
+@ref134:
+	.byte $35,$81,$25,$81,$36,$81,$25,$81,$35,$81,$25,$81,$36,$81,$25,$81
+	.byte $35,$81,$20,$81,$36,$81,$20,$81,$35,$81,$20,$81,$36,$81,$20,$81
+@ref135:
+	.byte $35,$81,$22,$81,$36,$81,$22,$81,$35,$81,$22,$81,$36,$81,$22,$81
+	.byte $35,$81,$1e,$81,$36,$81,$1e,$81,$35,$81,$1e,$81,$36,$81,$1e,$81
 	.byte $ff,$20
-	.word @ref144
-@ref147:
-	.byte $27,$81,$27,$81,$27,$81,$27,$81,$27,$81,$27,$81,$27,$81,$2c,$81
-	.byte $00,$9d
-@ref148:
-	.byte $1b,$81,$27,$81,$1b,$81,$27,$81,$1b,$81,$27,$81,$1b,$81,$22,$81
-	.byte $16,$81,$22,$81,$16,$81,$22,$81,$16,$81,$22,$81,$16,$81,$22,$81
-@ref149:
-	.byte $1b,$81,$27,$81,$1b,$81,$27,$81,$1b,$81,$27,$81,$1b,$81,$2c,$81
-	.byte $20,$81,$2c,$81,$20,$81,$2c,$81,$20,$81,$2c,$81,$20,$81,$2c,$81
+	.word @ref134
 	.byte $ff,$20
-	.word @ref148
+	.word @ref135
+	.byte $ff,$20
+	.word @ref134
+	.byte $ff,$20
+	.word @ref135
+	.byte $ff,$20
+	.word @ref134
+	.byte $ff,$20
+	.word @ref135
+	.byte $ff,$20
+	.word @ref134
+	.byte $ff,$20
+	.word @ref135
+	.byte $ff,$20
+	.word @ref134
+	.byte $ff,$20
+	.word @ref135
+	.byte $ff,$20
+	.word @ref134
+	.byte $ff,$20
+	.word @ref135
+	.byte $ff,$20
+	.word @ref134
+	.byte $ff,$20
+	.word @ref135
+@ref150:
+	.byte $25,$81,$25,$81,$25,$81,$25,$81,$25,$81,$25,$81,$25,$81,$25,$81
+	.byte $25,$81,$20,$81,$20,$81,$20,$81,$20,$81,$20,$81,$20,$81,$20,$81
 @ref151:
-	.byte $27,$81,$27,$81,$1b,$81,$2a,$81,$2a,$81,$1e,$81,$2c,$81,$2c,$81
-	.byte $20,$81,$2e,$81,$2e,$81,$22,$81,$31,$81,$25,$81,$32,$81,$26,$81
-@ref152:
-	.byte $27,$89,$2e,$81,$00,$8d,$20,$89,$27,$81,$00,$8d
-	.byte $ff,$0c
-	.word @ref152
-	.byte $ff,$0c
-	.word @ref152
-@ref155:
-	.byte $27,$89,$2e,$81,$00,$8d,$27,$89,$2e,$81,$00,$8d
-@ref156:
-	.byte $27,$85,$27,$81,$00,$85,$27,$85,$27,$81,$27,$85,$27,$81,$00,$85
-	.byte $27,$85,$27,$81
-@ref157:
-	.byte $20,$85,$20,$81,$00,$85,$20,$85,$20,$81,$20,$85,$20,$81,$00,$85
-	.byte $20,$85,$20,$81
-	.byte $ff,$14
-	.word @ref156
-	.byte $ff,$14
-	.word @ref157
-	.byte $ff,$14
-	.word @ref156
-	.byte $ff,$14
-	.word @ref157
-	.byte $ff,$14
-	.word @ref156
-	.byte $ff,$14
-	.word @ref157
+	.byte $22,$81,$22,$81,$22,$81,$22,$81,$22,$81,$22,$81,$22,$81,$22,$81
+	.byte $22,$81,$1e,$81,$1e,$81,$1e,$81,$1e,$81,$1e,$81,$1e,$81,$1e,$81
 	.byte $ff,$20
-	.word @ref144
-	.byte $ff,$20
-	.word @ref145
-	.byte $ff,$20
-	.word @ref144
-	.byte $ff,$12
-	.word @ref147
-	.byte $ff,$20
-	.word @ref148
-	.byte $ff,$20
-	.word @ref149
-	.byte $ff,$20
-	.word @ref148
+	.word @ref150
 	.byte $ff,$20
 	.word @ref151
-@ref172:
-	.byte $33,$89
-@ref173:
-	.byte $83
 @song0ch4loop:
-@ref174:
-	.byte $81
+@ref154:
+	.byte $00
 	.byte $fd
 	.word @song0ch4loop

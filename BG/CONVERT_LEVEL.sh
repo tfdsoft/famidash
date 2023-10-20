@@ -1,2 +1,2 @@
-./CSV2C_BIG.py polargeist_.csv
-./CSV2C_SP.py polargeist_SP.csv
+./CSV2C_BIG.py stereomadness_.csv
+./CSV2C_SP.py stereomadness_SP.csv

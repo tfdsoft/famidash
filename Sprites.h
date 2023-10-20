@@ -126,7 +126,7 @@ const unsigned char Ship_6[]={
 };
 
 
-const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_3, Ship_4, Ship_5, Ship_6};
+const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_3, Ship_4, Ship_5, Ship_6, Ship_6};
 // end ship
 
 
@@ -157,20 +157,20 @@ const unsigned char Portal_Gamemode_Cube[]={
 
 const unsigned char Portal_Gamemode_Ship[]={
 
-	  0,-16,0x23,1,
-	  3,- 8,0x24,1,
-	  6,  0,0x25,1,
-	  6,  8,0x25,1|OAM_FLIP_V,
+	  0,  0,0x23,1,
+	  3,  8,0x24,1,
+	  6, 16,0x25,1,
+	  6, 24,0x25,1|OAM_FLIP_V,
 
-	  3, 16,0x24,1|OAM_FLIP_V,
-	  0, 24,0x23,1|OAM_FLIP_V,
-	  6,-16,0x26,1,
-	  9,- 8,0x27,1,
+	  3, 32,0x24,1|OAM_FLIP_V,
+	  0, 40,0x23,1|OAM_FLIP_V,
+	  6,  0,0x26,1,
+	  9,  8,0x27,1,
 
-	 12,  0,0x28,1,
-	 12,  8,0x28,1|OAM_FLIP_V,
-	  9, 16,0x27,1|OAM_FLIP_V,
-	  6, 24,0x26,1|OAM_FLIP_V,
+	 12, 16,0x28,1,
+	 12, 24,0x28,1|OAM_FLIP_V,
+	  9, 32,0x27,1|OAM_FLIP_V,
+	  6, 40,0x26,1|OAM_FLIP_V,
 	0x80
 };
 
