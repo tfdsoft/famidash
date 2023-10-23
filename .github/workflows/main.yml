@@ -1,0 +1,20 @@
+name: Build ROM
+
+on: [push]
+
+jobs:
+  build_rom:
+    runs-on: ubuntu-latest
+    name: Compile rom
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Get cc65
+        run: sudo apt install cc65
+      - name: Build the game
+        run: make
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: famidash.nes
+          path: BUILD/famidash.nes

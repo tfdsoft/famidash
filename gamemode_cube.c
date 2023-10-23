@@ -141,7 +141,7 @@ void cube_movement(void){
 	} else {
 		if(bg_coll_U2()) {
     	    if(pad1 & PAD_A) {
-				Cube.vel_y = -JUMP_VEL; // JUMP
+				Cube.vel_y = JUMP_VEL^0xFF; // JUMP
 			}
 		}
 	}
