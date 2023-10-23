@@ -55,6 +55,7 @@ void main (void) {
 		set_scroll_y(scroll_y);
 		draw_screen_R();
 		draw_sprites();
+		gray_line();
 	}
 }
 
@@ -119,14 +120,15 @@ void draw_sprites(void){
 	
 
 
-	// PORTALS
+	// OBJECTS
 	for(index = 0; index < MAX_OBJ; ++index){
+		index2 = obj_type[index];
+		if(index2 & 0x30) continue;
 		temp_y = obj_y[index];
 		if(temp_y == TURN_OFF) continue;
         if(!obj_active[index]) continue;
         temp_x = obj_x[index];
 		if(temp_x > 0xf0) continue;
-		index2 = obj_type[index];
 		if(temp_y < 0xf0) {
 			oam_meta_spr(temp_x, temp_y, Portals[index2]);
 		}
@@ -156,31 +158,12 @@ void draw_sprites(void){
 
 
 		cube_rotate = 0x047F - Cube.vel_y;
-	}
-
-
-
-
-
-
-
-	
-	
+	}	
 }
 	
 
 
 	
-	
-
-
-
-
-
-
-
-
-
 
 
 
@@ -275,7 +258,8 @@ void reset_level(void) {
 	load_room();
 	Cube.x = 0x0000;
 	Cube.y = 0xb400;
-	gravity = 0;
+	gravity = 0x00;
+	gamemode = 0x01;
 	Cube.vel_x = 0;
 	Cube.vel_y = 0;
 	cube_data = 0;
@@ -439,7 +423,7 @@ void sprite_collisions(void){
 
 			Generic2.width = PORTAL_WIDTH;
 
-			if(obj_type[index] & 0xF0) Generic2.height = TRIGGER_HEIGHT;
+			if(obj_type[index] & 0x30) Generic2.height = TRIGGER_HEIGHT;
 			else Generic2.height = PORTAL_HEIGHT;
 
 			Generic2.x = obj_x[index];
@@ -449,6 +433,7 @@ void sprite_collisions(void){
 				switch (obj_type[index]) {
 				default:
 					break;
+					
 				case PORTAL_GAMEMODE_CUBE:
 					gamemode = 0x01;
 					break;
@@ -466,6 +451,7 @@ void sprite_collisions(void){
 					break;
 
 				// COLOR TRIGGERS (this is very lengthy)
+				// Background Color Triggers
 				// dark
 				case TRIG_BG_DR:
 					pal_col(COL_BG, 0x06);
@@ -670,8 +656,8 @@ void sprite_collisions(void){
 					pal_col(COL_BG_TILES, 0x00);
 					obj_y[index] = TURN_OFF;
 					break;
-				}
 				//if(obj_type[index] == OBJ_END);
+				}
 			}
 		}
 	}

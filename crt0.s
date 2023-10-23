@@ -101,11 +101,11 @@ RLE_HIGH	=TEMP+1
 RLE_TAG		=TEMP+2
 RLE_BYTE	=TEMP+3
 
-;nesdoug code requires
 VRAM_INDEX:			.res 1
 META_PTR:			.res 2
+META_PTR2:			.res 2
 DATA_PTR:			.res 2
-
+META_VAR:			.res 1
 
 
 
