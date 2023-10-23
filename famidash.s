@@ -36,6 +36,7 @@
 	.import		_set_mt_pointer
 	.import		_buffer_4_mt
 	.import		_flush_vram_update2
+	.import		_gray_line
 	.export		_cube_rotate
 	.export		_pad1
 	.export		_pad1_new
@@ -507,6 +508,11 @@ _metatiles1:
 	.byte	$50
 	.byte	$55
 	.byte	$00
+	.byte	$40
+	.byte	$45
+	.byte	$50
+	.byte	$55
+	.byte	$00
 _is_solid:
 	.byte	$00
 	.byte	$40
@@ -531,7 +537,7 @@ _is_solid:
 	.byte	$20
 	.byte	$00
 	.byte	$00
-	.byte	$00
+	.byte	$80
 	.byte	$80
 	.byte	$40
 	.byte	$80
@@ -3880,8 +3886,8 @@ _stereomadness__11:
 	.byte	$2F
 	.byte	$2F
 	.byte	$22
-	.byte	$00
-	.byte	$00
+	.byte	$18
+	.byte	$18
 	.byte	$01
 	.byte	$05
 	.byte	$05
@@ -4107,22 +4113,22 @@ _stereomadness__12:
 	.byte	$00
 	.byte	$00
 	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
 	.byte	$01
 	.byte	$05
 	.byte	$05
@@ -4348,22 +4354,22 @@ _stereomadness__13:
 	.byte	$00
 	.byte	$00
 	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
 	.byte	$01
 	.byte	$05
 	.byte	$05
@@ -4589,22 +4595,22 @@ _stereomadness__14:
 	.byte	$00
 	.byte	$00
 	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
-	.byte	$00
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
+	.byte	$18
 	.byte	$01
 	.byte	$05
 	.byte	$05
@@ -4830,9 +4836,9 @@ _stereomadness__15:
 	.byte	$2F
 	.byte	$2F
 	.byte	$2F
-	.byte	$00
-	.byte	$00
-	.byte	$00
+	.byte	$18
+	.byte	$18
+	.byte	$18
 	.byte	$24
 	.byte	$2F
 	.byte	$2F
@@ -12883,14 +12889,14 @@ _stereomadness__49:
 	.byte	$2F
 	.byte	$2F
 	.byte	$10
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
 	.byte	$10
 	.byte	$2F
 	.byte	$2F
@@ -13126,17 +13132,17 @@ _stereomadness__50:
 	.byte	$2F
 	.byte	$2F
 	.byte	$10
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
 	.byte	$2F
 	.byte	$2F
 	.byte	$2F
@@ -13362,22 +13368,22 @@ _stereomadness__51:
 	.byte	$06
 	.byte	$06
 	.byte	$06
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
 	.byte	$10
 	.byte	$2F
 	.byte	$10
-	.byte	$18
-	.byte	$18
+	.byte	$17
+	.byte	$17
 	.byte	$00
 	.byte	$00
 	.byte	$00
@@ -13603,18 +13609,18 @@ _stereomadness__52:
 	.byte	$06
 	.byte	$06
 	.byte	$06
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
 	.byte	$10
 	.byte	$10
 	.byte	$10
@@ -13846,20 +13852,20 @@ _stereomadness__53:
 	.byte	$06
 	.byte	$10
 	.byte	$10
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
-	.byte	$18
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
+	.byte	$17
 	.byte	$10
 	.byte	$2F
 	.byte	$2F
 	.byte	$2F
 	.byte	$2F
 	.byte	$10
-	.byte	$18
-	.byte	$18
-	.byte	$18
+	.byte	$17
+	.byte	$17
+	.byte	$17
 	.byte	$1B
 	.byte	$1B
 	.byte	$00
@@ -14085,9 +14091,9 @@ _stereomadness__54:
 	.byte	$06
 	.byte	$06
 	.byte	$06
-	.byte	$18
-	.byte	$18
-	.byte	$18
+	.byte	$17
+	.byte	$17
+	.byte	$17
 	.byte	$10
 	.byte	$2F
 	.byte	$2F
@@ -15105,18 +15111,34 @@ _obj_stereomadness:
 	.byte	$00
 	.byte	$00
 	.byte	$27
+	.byte	$10
+	.byte	$00
+	.byte	$00
+	.byte	$67
 	.byte	$00
 	.byte	$07
-	.byte	$F0
+	.byte	$D0
 	.byte	$29
+	.byte	$10
+	.byte	$07
+	.byte	$D0
+	.byte	$69
 	.byte	$00
 	.byte	$0F
-	.byte	$50
+	.byte	$30
 	.byte	$19
+	.byte	$10
+	.byte	$0F
+	.byte	$30
+	.byte	$59
 	.byte	$00
 	.byte	$0F
-	.byte	$60
+	.byte	$40
 	.byte	$1F
+	.byte	$10
+	.byte	$0F
+	.byte	$40
+	.byte	$5F
 	.byte	$70
 	.byte	$10
 	.byte	$A0
@@ -15125,14 +15147,18 @@ _obj_stereomadness:
 	.byte	$10
 	.byte	$B0
 	.byte	$1A
+	.byte	$10
+	.byte	$10
+	.byte	$B0
+	.byte	$5A
 	.byte	$00
 	.byte	$10
 	.byte	$C0
 	.byte	$2A
-	.byte	$70
-	.byte	$1A
-	.byte	$20
-	.byte	$00
+	.byte	$10
+	.byte	$10
+	.byte	$C0
+	.byte	$6A
 	.byte	$80
 	.byte	$1A
 	.byte	$20
@@ -15141,42 +15167,26 @@ _obj_stereomadness:
 	.byte	$1A
 	.byte	$30
 	.byte	$29
-	.byte	$00
-	.byte	$1F
-	.byte	$E0
-	.byte	$29
-	.byte	$00
-	.byte	$1F
-	.byte	$F0
-	.byte	$2A
+	.byte	$10
+	.byte	$1A
+	.byte	$30
+	.byte	$69
 	.byte	$00
 	.byte	$20
-	.byte	$00
-	.byte	$2B
 	.byte	$00
 	.byte	$20
 	.byte	$10
 	.byte	$20
 	.byte	$00
-	.byte	$2F
-	.byte	$C0
-	.byte	$2B
-	.byte	$70
-	.byte	$2F
-	.byte	$C0
-	.byte	$01
-	.byte	$80
-	.byte	$2F
-	.byte	$C0
-	.byte	$01
+	.byte	$60
 	.byte	$00
 	.byte	$2F
 	.byte	$D0
-	.byte	$2A
-	.byte	$00
-	.byte	$2F
-	.byte	$E0
 	.byte	$29
+	.byte	$10
+	.byte	$2F
+	.byte	$D0
+	.byte	$69
 	.byte	$FF
 _obj_list:
 	.addr	_obj_stereomadness
@@ -15235,9 +15245,9 @@ _y:
 _nt:
 	.res	1,$00
 _index:
-	.res	1,$00
+	.res	2,$00
 _index2:
-	.res	1,$00
+	.res	2,$00
 _room:
 	.res	1,$00
 _map:
@@ -15282,17 +15292,17 @@ _Generic:
 _Generic2:
 	.res	4,$00
 _obj_x:
-	.res	24,$00
+	.res	32,$00
 _obj_y:
-	.res	24,$00
+	.res	32,$00
 _obj_active:
-	.res	24,$00
+	.res	32,$00
 _obj_room:
-	.res	24,$00
+	.res	32,$00
 _obj_actual_x:
-	.res	24,$00
+	.res	32,$00
 _obj_type:
-	.res	24,$00
+	.res	32,$00
 
 ; ---------------------------------------------------------------
 ; void __near__ load_room (void)
@@ -15352,7 +15362,10 @@ L0009:	jsr     decsp2
 	jsr     shrax4
 	clc
 	adc     ptr1
-	sta     _index
+	bcc     L000E
+	inx
+L000E:	sta     _index
+	stx     _index+1
 ;
 ; buffer_4_mt(address, index); // ppu_address, index to the data
 ;
@@ -15434,49 +15447,84 @@ L0003:	lda     #<(_c_map)
 ;
 	lda     #$00
 	sta     _index
-L0021:	lda     _index
-	cmp     #$18
-	bcs     L0023
+	sta     _index+1
+L0002:	lda     _index+1
+	cmp     #$00
+	bne     L0006
+	lda     _index
+	cmp     #$20
+L0006:	jcs     L0003
+;
+; index2 = obj_type[index];
+;
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_type)
+	sta     ptr1+1
+	ldy     #<(_obj_type)
+	ldx     #$00
+	lda     (ptr1),y
+	sta     _index2
+	stx     _index2+1
+;
+; if(index2 & 0x30) continue;
+;
+	and     #$30
+	bne     L0004
 ;
 ; temp_y = obj_y[index];
 ;
-	ldy     _index
-	lda     _obj_y,y
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_y)
+	sta     ptr1+1
+	ldy     #<(_obj_y)
+	lda     (ptr1),y
 	sta     _temp_y
 ;
 ; if(temp_y == TURN_OFF) continue;
 ;
 	cmp     #$FF
-	beq     L0022
+	beq     L0004
 ;
 ; if(!obj_active[index]) continue;
 ;
-	ldy     _index
-	lda     _obj_active,y
-	beq     L0022
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_active)
+	sta     ptr1+1
+	ldy     #<(_obj_active)
+	lda     (ptr1),y
+	beq     L0004
 ;
 ; temp_x = obj_x[index];
 ;
-	ldy     _index
-	lda     _obj_x,y
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_x)
+	sta     ptr1+1
+	ldy     #<(_obj_x)
+	lda     (ptr1),y
 	sta     _temp_x
 ;
 ; if(temp_x > 0xf0) continue;
 ;
 	cmp     #$F1
-	bcs     L0022
-;
-; index2 = obj_type[index];
-;
-	ldy     _index
-	lda     _obj_type,y
-	sta     _index2
+	bcs     L0004
 ;
 ; if(temp_y < 0xf0) {
 ;
 	lda     _temp_y
 	cmp     #$F0
-	bcs     L0022
+	bcs     L0004
 ;
 ; oam_meta_spr(temp_x, temp_y, Portals[index2]);
 ;
@@ -15487,15 +15535,15 @@ L0021:	lda     _index
 	lda     _temp_y
 	dey
 	sta     (sp),y
-	ldx     #$00
 	lda     _index2
+	ldx     _index2+1
+	stx     tmp1
 	asl     a
-	bcc     L001E
-	inx
+	rol     tmp1
 	clc
-L001E:	adc     #<(_Portals)
+	adc     #<(_Portals)
 	sta     ptr1
-	txa
+	lda     tmp1
 	adc     #>(_Portals)
 	sta     ptr1+1
 	iny
@@ -15507,33 +15555,35 @@ L001E:	adc     #<(_Portals)
 ;
 ; for(index = 0; index < MAX_OBJ; ++index){
 ;
-L0022:	inc     _index
-	jmp     L0021
+L0004:	inc     _index
+	jne     L0002
+	inc     _index+1
+	jmp     L0002
 ;
 ; temp_x = high_byte(Cube.x);
 ;
-L0023:	lda     _Cube+1
+L0003:	lda     _Cube+1
 	sta     _temp_x
 ;
 ; if(temp_x > 0xfc) temp_x = 1;
 ;
 	cmp     #$FD
-	bcc     L0024
+	bcc     L001E
 	lda     #$01
 	sta     _temp_x
 ;
 ; if(temp_x == 0) temp_x = 1;
 ;
-L0024:	lda     _temp_x
-	bne     L0025
+L001E:	lda     _temp_x
+	bne     L001F
 	lda     #$01
 	sta     _temp_x
 ;
 ; if (gamemode & 0x01) {
 ;
-L0025:	lda     _gamemode
+L001F:	lda     _gamemode
 	and     #$01
-	jeq     L0026
+	jeq     L0020
 ;
 ; oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
 ;
@@ -15549,10 +15599,10 @@ L0025:	lda     _gamemode
 	ldx     #$00
 	lda     _cube_rotate+1
 	asl     a
-	bcc     L001F
+	bcc     L001C
 	inx
 	clc
-L001F:	adc     #<(_CUBE)
+L001C:	adc     #<(_CUBE)
 	sta     ptr1
 	txa
 	adc     #>(_CUBE)
@@ -15567,33 +15617,33 @@ L001F:	adc     #<(_CUBE)
 ; if (gravity) cube_rotate -= CUBE_GRAVITY;
 ;
 	lda     _gravity
-	beq     L0012
+	beq     L0011
 	lda     _cube_rotate
 	sec
 	sbc     #$6C
 	sta     _cube_rotate
-	bcs     L0015
+	bcs     L0014
 	dec     _cube_rotate+1
 ;
 ; else cube_rotate += CUBE_GRAVITY;
 ;
-	jmp     L0015
-L0012:	lda     #$6C
+	jmp     L0014
+L0011:	lda     #$6C
 	clc
 	adc     _cube_rotate
 	sta     _cube_rotate
-	bcc     L0015
+	bcc     L0014
 	inc     _cube_rotate+1
 ;
 ; if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
 ;
-L0015:	lda     _cube_rotate
+L0014:	lda     _cube_rotate
 	cmp     #$00
 	lda     _cube_rotate+1
 	sbc     #$06
-	bvs     L0017
+	bvs     L0016
 	eor     #$80
-L0017:	bpl     L0016
+L0016:	bpl     L0015
 	lda     _cube_rotate
 	sec
 	sta     _cube_rotate
@@ -15603,9 +15653,9 @@ L0017:	bpl     L0016
 ;
 ; if (cube_rotate < 0x0000) cube_rotate += 0x0600;
 ;
-L0016:	ldx     _cube_rotate+1
+L0015:	ldx     _cube_rotate+1
 	cpx     #$80
-	bcc     L0026
+	bcc     L0020
 	clc
 	lda     _cube_rotate
 	sta     _cube_rotate
@@ -15615,9 +15665,9 @@ L0016:	ldx     _cube_rotate+1
 ;
 ; if (gamemode & 0x02){
 ;
-L0026:	lda     _gamemode
+L0020:	lda     _gamemode
 	and     #$02
-	beq     L0019
+	beq     L0018
 ;
 ; oam_meta_spr(temp_x, high_byte(Cube.y)-1, SHIP[high_byte(cube_rotate)]);
 ;
@@ -15633,10 +15683,10 @@ L0026:	lda     _gamemode
 	ldx     #$00
 	lda     _cube_rotate+1
 	asl     a
-	bcc     L0020
+	bcc     L001D
 	inx
 	clc
-L0020:	adc     #<(_SHIP)
+L001D:	adc     #<(_SHIP)
 	sta     ptr1
 	txa
 	adc     #>(_SHIP)
@@ -15660,7 +15710,7 @@ L0020:	adc     #<(_SHIP)
 ;
 ; }
 ;
-L0019:	rts
+L0018:	rts
 
 .endproc
 
@@ -16219,6 +16269,7 @@ L0005:	jsr     decsp2
 	ldx     _x+1
 	jsr     shrax4
 	sta     _index
+	stx     _index+1
 ;
 ; buffer_4_mt(address, index); // ppu_address, index to the data
 ;
@@ -16252,7 +16303,7 @@ L0005:	jsr     decsp2
 ;
 ; break;
 ;
-	jmp     L0018
+	jmp     L001A
 ;
 ; address = get_ppu_addr(nt, x, 0x40);
 ;
@@ -16275,7 +16326,10 @@ L0007:	jsr     decsp2
 	jsr     shrax4
 	clc
 	adc     #$40
-	sta     _index
+	bcc     L0008
+	inx
+L0008:	sta     _index
+	stx     _index+1
 ;
 ; buffer_4_mt(address, index); // ppu_address, index to the data
 ;
@@ -16309,7 +16363,7 @@ L0007:	jsr     decsp2
 ;
 ; break;
 ;
-	jmp     L0018
+	jmp     L001A
 ;
 ; address = get_ppu_addr(nt, x, 0x80);
 ;
@@ -16332,7 +16386,10 @@ L000A:	jsr     decsp2
 	jsr     shrax4
 	clc
 	adc     #$80
-	sta     _index
+	bcc     L000B
+	inx
+L000B:	sta     _index
+	stx     _index+1
 ;
 ; buffer_4_mt(address, index); // ppu_address, index to the data
 ;
@@ -16366,7 +16423,7 @@ L000A:	jsr     decsp2
 ;
 ; break;
 ;
-	jmp     L0018
+	jmp     L001A
 ;
 ; address = get_ppu_addr(nt, x, 0xc0);
 ;
@@ -16389,7 +16446,10 @@ L000D:	jsr     decsp2
 	jsr     shrax4
 	clc
 	adc     #$C0
-	sta     _index
+	bcc     L000E
+	inx
+L000E:	sta     _index
+	stx     _index+1
 ;
 ; buffer_4_mt(address, index); // ppu_address, index to the data
 ;
@@ -16420,7 +16480,10 @@ L000D:	jsr     decsp2
 	jsr     shrax4
 	clc
 	adc     #$E0
-L0018:	sta     _index
+L001A:	bcc     L000F
+	inx
+L000F:	sta     _index
+	stx     _index+1
 ;
 ; buffer_4_mt(address, index); // ppu_address, index to the data
 ;
@@ -16548,12 +16611,18 @@ L0009:	adc     #<(_Rooms)
 	sta     _Cube+2
 	stx     _Cube+2+1
 ;
-; gravity = 0;
+; gravity = 0x00;
 ;
 	sta     _gravity
 ;
+; gamemode = 0x01;
+;
+	lda     #$01
+	sta     _gamemode
+;
 ; Cube.vel_x = 0;
 ;
+	lda     #$00
 	sta     _Cube+4
 	sta     _Cube+4+1
 ;
@@ -16709,10 +16778,10 @@ L0004:	rts
 	ldx     #$00
 	lda     _level
 	asl     a
-	bcc     L0018
+	bcc     L0016
 	inx
 	clc
-L0018:	adc     #<(_obj_list)
+L0016:	adc     #<(_obj_list)
 	sta     ptr1
 	txa
 	adc     #>(_obj_list)
@@ -16728,130 +16797,200 @@ L0018:	adc     #<(_obj_list)
 ;
 	tya
 	sta     _index
+	sta     _index+1
 	sta     _index2
-L0019:	lda     _index
-	cmp     #$18
-	jcs     L001A
+	sta     _index2+1
+L0002:	lda     _index+1
+	cmp     #$00
+	bne     L0006
+	lda     _index
+	cmp     #$20
+L0006:	jcs     L0003
 ;
 ; obj_x[index] = 0;
 ;
-	ldy     _index
+	lda     _index
+	clc
+	adc     #<(_obj_x)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_x)
+	sta     ptr1+1
 	lda     #$00
-	sta     _obj_x,y
+	sta     (ptr1),y
 ;
 ; temp1 = pointer[index2]; // get a byte of data
 ;
 	lda     _pointer
-	ldx     _pointer+1
-	ldy     _index2
+	clc
+	adc     _index2
 	sta     ptr1
-	stx     ptr1+1
+	lda     _pointer+1
+	adc     _index2+1
+	sta     ptr1+1
 	lda     (ptr1),y
 	sta     _temp1
 ;
 ; obj_y[index] = temp1;
 ;
-	ldy     _index
+	lda     _index
+	clc
+	adc     #<(_obj_y)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_y)
+	sta     ptr1+1
 	lda     _temp1
-	sta     _obj_y,y
+	sta     (ptr1),y
 ;
 ; if(temp1 == TURN_OFF) break;
 ;
 	lda     _temp1
 	cmp     #$FF
-	beq     L001A
+	jeq     L0003
 ;
 ; ++index2;
 ;
 	inc     _index2
+	bne     L0009
+	inc     _index2+1
 ;
 ; obj_active[index] = 0;
 ;
-	ldy     _index
+L0009:	lda     _index
+	clc
+	adc     #<(_obj_active)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_active)
+	sta     ptr1+1
 	lda     #$00
-	sta     _obj_active,y
+	sta     (ptr1),y
 ;
 ; temp1 = pointer[index2]; // get a byte of data
 ;
 	lda     _pointer
-	ldx     _pointer+1
-	ldy     _index2
+	clc
+	adc     _index2
 	sta     ptr1
-	stx     ptr1+1
+	lda     _pointer+1
+	adc     _index2+1
+	sta     ptr1+1
 	lda     (ptr1),y
 	sta     _temp1
 ;
 ; obj_room[index] = temp1;
 ;
-	ldy     _index
+	lda     _index
+	clc
+	adc     #<(_obj_room)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_room)
+	sta     ptr1+1
 	lda     _temp1
-	sta     _obj_room,y
+	sta     (ptr1),y
 ;
 ; ++index2;
 ;
 	inc     _index2
+	bne     L000A
+	inc     _index2+1
 ;
 ; temp1 = pointer[index2]; // get a byte of data
 ;
-	lda     _pointer
-	ldx     _pointer+1
-	ldy     _index2
+L000A:	lda     _pointer
+	clc
+	adc     _index2
 	sta     ptr1
-	stx     ptr1+1
+	lda     _pointer+1
+	adc     _index2+1
+	sta     ptr1+1
 	lda     (ptr1),y
 	sta     _temp1
 ;
 ; obj_actual_x[index] = temp1;
 ;
-	ldy     _index
+	lda     _index
+	clc
+	adc     #<(_obj_actual_x)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_actual_x)
+	sta     ptr1+1
 	lda     _temp1
-	sta     _obj_actual_x,y
+	sta     (ptr1),y
 ;
 ; ++index2;
 ;
 	inc     _index2
+	bne     L000B
+	inc     _index2+1
 ;
 ; temp1 = pointer[index2]; // get a byte of data
 ;
-	lda     _pointer
-	ldx     _pointer+1
-	ldy     _index2
+L000B:	lda     _pointer
+	clc
+	adc     _index2
 	sta     ptr1
-	stx     ptr1+1
+	lda     _pointer+1
+	adc     _index2+1
+	sta     ptr1+1
 	lda     (ptr1),y
 	sta     _temp1
 ;
 ; obj_type[index] = temp1;
 ;
-	ldy     _index
+	lda     _index
+	clc
+	adc     #<(_obj_type)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_type)
+	sta     ptr1+1
 	lda     _temp1
-	sta     _obj_type,y
+	sta     (ptr1),y
 ;
 ; ++index2;
 ;
 	inc     _index2
+	bne     L000C
+	inc     _index2+1
 ;
 ; for(index = 0,index2 = 0;index < MAX_OBJ; ++index){
 ;
-	inc     _index
-	jmp     L0019
+L000C:	inc     _index
+	jne     L0002
+	inc     _index+1
+	jmp     L0002
 ;
 ; for(++index;index < MAX_OBJ; ++index){
 ;
-L001A:	inc     _index
+L0003:	inc     _index
+	bne     L0015
+	inc     _index+1
+L0015:	lda     _index+1
+	cmp     #$00
+	bne     L0012
 	lda     _index
-	cmp     #$18
-	bcs     L000E
+	cmp     #$20
+L0012:	bcs     L000E
 ;
 ; obj_y[index] = TURN_OFF;
 ;
-	ldy     _index
+	lda     _index
+	clc
+	adc     #<(_obj_y)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_y)
+	sta     ptr1+1
 	lda     #$FF
-	sta     _obj_y,y
+	sta     (ptr1),y
 ;
 ; for(++index;index < MAX_OBJ; ++index){
 ;
-	jmp     L001A
+	jmp     L0003
 ;
 ; }
 ;
@@ -16893,9 +17032,13 @@ L000E:	rts
 ;
 	lda     #$00
 	sta     _index
-L0068:	lda     _index
-	cmp     #$18
-	bcc     L009E
+	sta     _index+1
+L0002:	lda     _index+1
+	cmp     #$00
+	bne     L0006
+	lda     _index
+	cmp     #$20
+L0006:	bcc     L0078
 ;
 ; }
 ;
@@ -16903,39 +17046,63 @@ L0068:	lda     _index
 ;
 ; if(obj_active[index]){
 ;
-L009E:	ldy     _index
-	lda     _obj_active,y
-	jeq     L0096
+L0078:	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_active)
+	sta     ptr1+1
+	ldy     #<(_obj_active)
+	lda     (ptr1),y
+	jeq     L0004
 ;
 ; Generic2.width = PORTAL_WIDTH;
 ;
 	lda     #$0F
 	sta     _Generic2+2
 ;
-; if(obj_type[index] & 0xF0) Generic2.height = TRIGGER_HEIGHT;
+; if(obj_type[index] & 0x30) Generic2.height = TRIGGER_HEIGHT;
 ;
-	ldy     _index
-	lda     _obj_type,y
-	and     #$F0
-	beq     L0069
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_type)
+	sta     ptr1+1
+	ldy     #<(_obj_type)
+	lda     (ptr1),y
+	and     #$30
+	beq     L003D
 	lda     #$FF
 ;
 ; else Generic2.height = PORTAL_HEIGHT;
 ;
-	jmp     L0066
-L0069:	lda     #$2F
-L0066:	sta     _Generic2+3
+	jmp     L003B
+L003D:	lda     #$2F
+L003B:	sta     _Generic2+3
 ;
 ; Generic2.x = obj_x[index];
 ;
-	ldy     _index
-	lda     _obj_x,y
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_x)
+	sta     ptr1+1
+	ldy     #<(_obj_x)
+	lda     (ptr1),y
 	sta     _Generic2
 ;
 ; Generic2.y = obj_y[index];
 ;
-	ldy     _index
-	lda     _obj_y,y
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_y)
+	sta     ptr1+1
+	ldy     #<(_obj_y)
+	lda     (ptr1),y
 	sta     _Generic2+1
 ;
 ; if(check_collision(&Generic, &Generic2)){
@@ -16947,143 +17114,149 @@ L0066:	sta     _Generic2+3
 	ldx     #>(_Generic2)
 	jsr     _check_collision
 	tax
-	jeq     L0096
+	jeq     L0004
 ;
 ; switch (obj_type[index]) {
 ;
-	ldy     _index
-	lda     _obj_type,y
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_type)
+	sta     ptr1+1
+	ldy     #<(_obj_type)
+	lda     (ptr1),y
 ;
 ; }
 ;
-	jeq     L006A
+	jeq     L003E
 	cmp     #$01
-	jeq     L006B
+	jeq     L003F
 	cmp     #$02
-	jeq     L006C
+	jeq     L0040
 	cmp     #$03
-	jeq     L006D
+	jeq     L0041
 	cmp     #$10
-	jeq     L006E
+	jeq     L0042
 	cmp     #$11
-	jeq     L006F
+	jeq     L0043
 	cmp     #$12
-	jeq     L0070
+	jeq     L0044
 	cmp     #$13
-	jeq     L0071
+	jeq     L0045
 	cmp     #$14
-	jeq     L0072
+	jeq     L0046
 	cmp     #$15
-	jeq     L0073
+	jeq     L0047
 	cmp     #$16
-	jeq     L0074
+	jeq     L0048
 	cmp     #$17
-	jeq     L0075
+	jeq     L0049
 	cmp     #$18
-	jeq     L0076
+	jeq     L004A
 	cmp     #$19
-	jeq     L0077
+	jeq     L004B
 	cmp     #$1A
-	jeq     L0078
+	jeq     L004C
 	cmp     #$1B
-	jeq     L0079
+	jeq     L004D
 	cmp     #$1C
-	jeq     L007A
+	jeq     L004E
 	cmp     #$1F
-	jeq     L007B
+	jeq     L004F
 	cmp     #$20
-	jeq     L007C
+	jeq     L0050
 	cmp     #$21
-	jeq     L007D
+	jeq     L0051
 	cmp     #$22
-	jeq     L007E
+	jeq     L0052
 	cmp     #$23
-	jeq     L007F
+	jeq     L0053
 	cmp     #$24
-	jeq     L0080
+	jeq     L0054
 	cmp     #$25
-	jeq     L0081
+	jeq     L0055
 	cmp     #$26
-	jeq     L0082
+	jeq     L0056
 	cmp     #$27
-	jeq     L0083
+	jeq     L0057
 	cmp     #$28
-	jeq     L0084
+	jeq     L0058
 	cmp     #$29
-	jeq     L0085
+	jeq     L0059
 	cmp     #$2A
-	jeq     L0086
+	jeq     L005A
 	cmp     #$2B
-	jeq     L0087
+	jeq     L005B
 	cmp     #$2C
-	jeq     L0088
+	jeq     L005C
 	cmp     #$30
-	jeq     L0089
+	jeq     L005D
 	cmp     #$31
-	jeq     L008A
+	jeq     L005E
 	cmp     #$32
-	jeq     L008B
+	jeq     L005F
 	cmp     #$33
-	jeq     L008C
+	jeq     L0060
 	cmp     #$34
-	jeq     L008D
+	jeq     L0061
 	cmp     #$35
-	jeq     L008E
+	jeq     L0062
 	cmp     #$36
-	jeq     L008F
+	jeq     L0063
 	cmp     #$37
-	jeq     L0090
+	jeq     L0064
 	cmp     #$38
-	jeq     L0091
+	jeq     L0065
 	cmp     #$39
-	jeq     L0092
+	jeq     L0066
 	cmp     #$3A
-	jeq     L0093
+	jeq     L0067
 	cmp     #$3B
-	jeq     L0094
+	jeq     L0068
 	cmp     #$3C
-	jeq     L0095
-	jmp     L0096
+	jeq     L0069
+	jmp     L0004
 ;
 ; gamemode = 0x01;
 ;
-L006A:	lda     #$01
+L003E:	lda     #$01
 	sta     _gamemode
 ;
 ; break;
 ;
-	jmp     L0096
+	jmp     L0004
 ;
 ; gamemode = 0x02;
 ;
-L006B:	lda     #$02
+L003F:	lda     #$02
 	sta     _gamemode
 ;
 ; break;
 ;
-	jmp     L0096
+	jmp     L0004
 ;
 ; gravity = 0x00;
 ;
-L006C:	lda     #$00
+L0040:	lda     #$00
 	sta     _gravity
 ;
 ; break;
 ;
-	jmp     L0096
+	jmp     L0004
 ;
 ; gravity = 0x01;
 ;
-L006D:	lda     #$01
+L0041:	lda     #$01
 	sta     _gravity
 ;
 ; break;
 ;
-	jmp     L0096
+	jmp     L0004
 ;
 ; pal_col(COL_BG, 0x06);
 ;
-L006E:	lda     #$00
+L0042:	lda     #$00
 	jsr     pusha
 	lda     #$06
 	jsr     _pal_col
@@ -17096,11 +17269,11 @@ L006E:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x07);
 ;
-L006F:	lda     #$00
+L0043:	lda     #$00
 	jsr     pusha
 	lda     #$07
 	jsr     _pal_col
@@ -17113,11 +17286,11 @@ L006F:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x08);
 ;
-L0070:	lda     #$00
+L0044:	lda     #$00
 	jsr     pusha
 	lda     #$08
 	jsr     _pal_col
@@ -17130,11 +17303,11 @@ L0070:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x09);
 ;
-L0071:	lda     #$00
+L0045:	lda     #$00
 	jsr     pusha
 	lda     #$09
 	jsr     _pal_col
@@ -17147,11 +17320,11 @@ L0071:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x0A);
 ;
-L0072:	lda     #$00
+L0046:	lda     #$00
 	jsr     pusha
 	lda     #$0A
 	jsr     _pal_col
@@ -17164,11 +17337,11 @@ L0072:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x0B);
 ;
-L0073:	lda     #$00
+L0047:	lda     #$00
 	jsr     pusha
 	lda     #$0B
 	jsr     _pal_col
@@ -17181,11 +17354,11 @@ L0073:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x0C);
 ;
-L0074:	lda     #$00
+L0048:	lda     #$00
 	jsr     pusha
 	lda     #$0C
 	jsr     _pal_col
@@ -17198,11 +17371,11 @@ L0074:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x01);
 ;
-L0075:	lda     #$00
+L0049:	lda     #$00
 	jsr     pusha
 	lda     #$01
 	jsr     _pal_col
@@ -17215,11 +17388,11 @@ L0075:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x02);
 ;
-L0076:	lda     #$00
+L004A:	lda     #$00
 	jsr     pusha
 	lda     #$02
 	jsr     _pal_col
@@ -17232,11 +17405,11 @@ L0076:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x03);
 ;
-L0077:	lda     #$00
+L004B:	lda     #$00
 	jsr     pusha
 	lda     #$03
 	jsr     _pal_col
@@ -17249,11 +17422,11 @@ L0077:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x04);
 ;
-L0078:	lda     #$00
+L004C:	lda     #$00
 	jsr     pusha
 	lda     #$04
 	jsr     _pal_col
@@ -17266,11 +17439,11 @@ L0078:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x05);
 ;
-L0079:	lda     #$00
+L004D:	lda     #$00
 	jsr     pusha
 	lda     #$05
 	jsr     _pal_col
@@ -17283,11 +17456,11 @@ L0079:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x00);
 ;
-L007A:	lda     #$00
+L004E:	lda     #$00
 	jsr     pusha
 	jsr     _pal_col
 ;
@@ -17299,11 +17472,11 @@ L007A:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x0F);
 ;
-L007B:	lda     #$00
+L004F:	lda     #$00
 	jsr     pusha
 	lda     #$0F
 	jsr     _pal_col
@@ -17316,11 +17489,11 @@ L007B:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x16);
 ;
-L007C:	lda     #$00
+L0050:	lda     #$00
 	jsr     pusha
 	lda     #$16
 	jsr     _pal_col
@@ -17333,11 +17506,11 @@ L007C:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x17);
 ;
-L007D:	lda     #$00
+L0051:	lda     #$00
 	jsr     pusha
 	lda     #$17
 	jsr     _pal_col
@@ -17350,11 +17523,11 @@ L007D:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x18);
 ;
-L007E:	lda     #$00
+L0052:	lda     #$00
 	jsr     pusha
 	lda     #$18
 	jsr     _pal_col
@@ -17367,11 +17540,11 @@ L007E:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x19);
 ;
-L007F:	lda     #$00
+L0053:	lda     #$00
 	jsr     pusha
 	lda     #$19
 	jsr     _pal_col
@@ -17384,11 +17557,11 @@ L007F:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x1A);
 ;
-L0080:	lda     #$00
+L0054:	lda     #$00
 	jsr     pusha
 	lda     #$1A
 	jsr     _pal_col
@@ -17401,11 +17574,11 @@ L0080:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x1B);
 ;
-L0081:	lda     #$00
+L0055:	lda     #$00
 	jsr     pusha
 	lda     #$1B
 	jsr     _pal_col
@@ -17418,11 +17591,11 @@ L0081:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x1C);
 ;
-L0082:	lda     #$00
+L0056:	lda     #$00
 	jsr     pusha
 	lda     #$1C
 	jsr     _pal_col
@@ -17435,11 +17608,11 @@ L0082:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x11);
 ;
-L0083:	lda     #$00
+L0057:	lda     #$00
 	jsr     pusha
 	lda     #$11
 	jsr     _pal_col
@@ -17451,11 +17624,11 @@ L0083:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x12);
 ;
-L0084:	lda     #$00
+L0058:	lda     #$00
 	jsr     pusha
 	lda     #$12
 	jsr     _pal_col
@@ -17468,11 +17641,11 @@ L0084:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x13);
 ;
-L0085:	lda     #$00
+L0059:	lda     #$00
 	jsr     pusha
 	lda     #$13
 	jsr     _pal_col
@@ -17485,11 +17658,11 @@ L0085:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x14);
 ;
-L0086:	lda     #$00
+L005A:	lda     #$00
 	jsr     pusha
 	lda     #$14
 	jsr     _pal_col
@@ -17502,11 +17675,11 @@ L0086:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x15);
 ;
-L0087:	lda     #$00
+L005B:	lda     #$00
 	jsr     pusha
 	lda     #$15
 	jsr     _pal_col
@@ -17519,21 +17692,21 @@ L0087:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x10);
 ;
-L0088:	lda     #$00
+L005C:	lda     #$00
 	jsr     pusha
 	lda     #$10
 ;
 ; break;
 ;
-	jmp     L009D
+	jmp     L0077
 ;
 ; pal_col(COL_BG, 0x26);
 ;
-L0089:	lda     #$00
+L005D:	lda     #$00
 	jsr     pusha
 	lda     #$26
 	jsr     _pal_col
@@ -17546,11 +17719,11 @@ L0089:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x27);
 ;
-L008A:	lda     #$00
+L005E:	lda     #$00
 	jsr     pusha
 	lda     #$27
 	jsr     _pal_col
@@ -17563,11 +17736,11 @@ L008A:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x28);
 ;
-L008B:	lda     #$00
+L005F:	lda     #$00
 	jsr     pusha
 	lda     #$28
 	jsr     _pal_col
@@ -17580,11 +17753,11 @@ L008B:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x29);
 ;
-L008C:	lda     #$00
+L0060:	lda     #$00
 	jsr     pusha
 	lda     #$29
 	jsr     _pal_col
@@ -17597,11 +17770,11 @@ L008C:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x2A);
 ;
-L008D:	lda     #$00
+L0061:	lda     #$00
 	jsr     pusha
 	lda     #$2A
 	jsr     _pal_col
@@ -17614,11 +17787,11 @@ L008D:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x2B);
 ;
-L008E:	lda     #$00
+L0062:	lda     #$00
 	jsr     pusha
 	lda     #$2B
 	jsr     _pal_col
@@ -17631,11 +17804,11 @@ L008E:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x2C);
 ;
-L008F:	lda     #$00
+L0063:	lda     #$00
 	jsr     pusha
 	lda     #$2C
 	jsr     _pal_col
@@ -17648,11 +17821,11 @@ L008F:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x21);
 ;
-L0090:	lda     #$00
+L0064:	lda     #$00
 	jsr     pusha
 	lda     #$21
 	jsr     _pal_col
@@ -17664,11 +17837,11 @@ L0090:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x22);
 ;
-L0091:	lda     #$00
+L0065:	lda     #$00
 	jsr     pusha
 	lda     #$22
 	jsr     _pal_col
@@ -17681,11 +17854,11 @@ L0091:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x23);
 ;
-L0092:	lda     #$00
+L0066:	lda     #$00
 	jsr     pusha
 	lda     #$23
 	jsr     _pal_col
@@ -17698,11 +17871,11 @@ L0092:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x24);
 ;
-L0093:	lda     #$00
+L0067:	lda     #$00
 	jsr     pusha
 	lda     #$24
 	jsr     _pal_col
@@ -17715,11 +17888,11 @@ L0093:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x25);
 ;
-L0094:	lda     #$00
+L0068:	lda     #$00
 	jsr     pusha
 	lda     #$25
 	jsr     _pal_col
@@ -17732,32 +17905,41 @@ L0094:	lda     #$00
 ;
 ; break;
 ;
-	jmp     L0099
+	jmp     L0073
 ;
 ; pal_col(COL_BG, 0x30);
 ;
-L0095:	lda     #$00
+L0069:	lda     #$00
 	jsr     pusha
 	lda     #$30
-L009D:	jsr     _pal_col
+L0077:	jsr     _pal_col
 ;
 ; pal_col(COL_BG_TILES, 0x00);
 ;
 	lda     #$01
 	jsr     pusha
 	lda     #$00
-L0099:	jsr     _pal_col
+L0073:	jsr     _pal_col
 ;
 ; obj_y[index] = TURN_OFF;
 ;
-	ldy     _index
+	lda     _index
+	clc
+	adc     #<(_obj_y)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_y)
+	sta     ptr1+1
 	lda     #$FF
-	sta     _obj_y,y
+	ldy     #$00
+	sta     (ptr1),y
 ;
 ; for(index = 0; index < MAX_OBJ; ++index){
 ;
-L0096:	inc     _index
-	jmp     L0068
+L0004:	inc     _index
+	jne     L0002
+	inc     _index+1
+	jmp     L0002
 
 .endproc
 
@@ -17781,62 +17963,102 @@ L0096:	inc     _index
 ;
 	lda     #$00
 	sta     _index
-L000D:	lda     _index
-	cmp     #$18
-	bcs     L0003
+	sta     _index+1
+L0002:	lda     _index+1
+	cmp     #$00
+	bne     L0006
+	lda     _index
+	cmp     #$20
+L0006:	bcc     L0009
+;
+; }
+;
+	rts
 ;
 ; obj_active[index] = 0; //default to zero
 ;
-	ldy     _index
+L0009:	lda     _index
+	clc
+	adc     #<(_obj_active)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_active)
+	sta     ptr1+1
 	lda     #$00
-	sta     _obj_active,y
+	tay
+	sta     (ptr1),y
 ;
 ; if(obj_y[index] != TURN_OFF){
 ;
-	ldy     _index
-	lda     _obj_y,y
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_y)
+	sta     ptr1+1
+	ldy     #<(_obj_y)
+	lda     (ptr1),y
 	cmp     #$FF
-	beq     L000E
+	beq     L0004
 ;
 ; high_byte(temp5) = obj_room[index];
 ;
-	ldy     _index
-	lda     _obj_room,y
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_room)
+	sta     ptr1+1
+	ldy     #<(_obj_room)
+	lda     (ptr1),y
 	sta     _temp5+1
 ;
 ; low_byte(temp5) = obj_actual_x[index];
 ;
-	ldy     _index
-	lda     _obj_actual_x,y
+	lda     _index
+	sta     ptr1
+	lda     _index+1
+	clc
+	adc     #>(_obj_actual_x)
+	sta     ptr1+1
+	ldy     #<(_obj_actual_x)
+	lda     (ptr1),y
 	sta     _temp5
 ;
 ; obj_active[index] = get_position();
 ;
-	lda     #<(_obj_active)
-	ldx     #>(_obj_active)
+	lda     _index
 	clc
-	adc     _index
-	bcc     L000B
-	inx
-L000B:	jsr     pushax
+	adc     #<(_obj_active)
+	tay
+	lda     _index+1
+	adc     #>(_obj_active)
+	tax
+	tya
+	jsr     pushax
 	jsr     _get_position
 	ldy     #$00
 	jsr     staspidx
 ;
 ; obj_x[index] = temp_x; // screen x coords
 ;
-	ldy     _index
+	lda     _index
+	clc
+	adc     #<(_obj_x)
+	sta     ptr1
+	lda     _index+1
+	adc     #>(_obj_x)
+	sta     ptr1+1
 	lda     _temp_x
-	sta     _obj_x,y
+	ldy     #$00
+	sta     (ptr1),y
 ;
 ; for(index = 0; index < MAX_OBJ; ++index){
 ;
-L000E:	inc     _index
-	jmp     L000D
-;
-; }
-;
-L0003:	rts
+L0004:	inc     _index
+	jne     L0002
+	inc     _index+1
+	jmp     L0002
 
 .endproc
 
@@ -19479,6 +19701,10 @@ L0007:	jsr     _check_spr_objects
 ; draw_sprites();
 ;
 	jsr     _draw_sprites
+;
+; gray_line();
+;
+	jsr     _gray_line
 ;
 ; while (1){
 ;

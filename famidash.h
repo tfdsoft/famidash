@@ -22,6 +22,8 @@
 
 #define COL_BG 0x00
 #define COL_BG_TILES 0x01
+#define COL_G 0x06
+#define COL_G_DRK 0x05
 
 
 
@@ -58,8 +60,8 @@ int address;
 unsigned short x; // room loader code
 unsigned char y;
 unsigned char nt;
-unsigned char index;
-unsigned char index2;
+unsigned short index;
+unsigned short index2;
 unsigned char room;
 unsigned char map;
 unsigned int scroll_x;
@@ -125,7 +127,7 @@ struct CUBE Cube = {0x0000,0xb400}; // starting position
 
 
 // define the stuff for the in-level objects
-#define MAX_OBJ 24
+#define MAX_OBJ 32
 unsigned char obj_x[MAX_OBJ];
 unsigned char obj_y[MAX_OBJ];
 unsigned char obj_active[MAX_OBJ];
@@ -222,6 +224,7 @@ const unsigned char metatiles1[]={
 	64, 65, 82, 83,  0,
 	68, 65, 84, 81,  0,
 	66, 67, 80, 81,  0,
+	64, 69, 80, 85,  0,
 	64, 69, 80, 85,  0
 };
 
@@ -263,7 +266,7 @@ const unsigned char is_solid[]={
 	COL_YEL_ORB,// yellow orb
 	0,			// pink pad
 	0,			// pink orb
-	0,			// bg trigger
+	COL_DEATH,	// ceiling spikes
 	COL_DEATH,	// ground spikes
 	COL_ALL,	// half-slab 2
 	COL_DEATH,	// the other spikes
@@ -287,13 +290,13 @@ const unsigned char is_solid[]={
 	COL_ALL,
 	COL_ALL,
 	COL_ALL,
-	COL_ALL,	// end of checkerboard blocks
+	COL_ALL,	
 	0,
 
 	COL_ALL,
 	COL_ALL,
 	COL_ALL,
-	COL_ALL
+	COL_ALL		// end of checkerboard blocks
 };
 
 
