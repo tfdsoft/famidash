@@ -1,4 +1,6 @@
 # ew windows
 dbg.txt
+labels.txt
 *.o
 famidash.s
+famidash.nes
