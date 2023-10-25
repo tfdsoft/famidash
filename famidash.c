@@ -33,11 +33,13 @@ void main (void) {
 	ppu_on_all(); // turn on screen
 	
 	
-	gamemode = 0x01;
+	gamemode = 0x03;
 	cube_rotate = 0x80;
 	while (1){
 		// infinite loop
 		ppu_wait_nmi(); // wait till beginning of the frame
+		ppu_wait_nmi();
+		ppu_wait_nmi();
 
 		pad1 = pad_poll(0); // read the first controller
 		pad1_new = get_pad_new(0);
