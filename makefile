@@ -36,7 +36,7 @@ default: $(NAME).nes
 #target: dependencies
 
 $(NAME).nes: $(NAME).o crt0.o $(CFG)
-	$(LD65) -C $(CFG) -o ./BUILD/$(NAME).nes crt0.o $(NAME).o nes.lib -Ln labels.txt --dbgfile dbg.txt
+	$(LD65) -C $(CFG) -o ./bin/$(NAME).nes crt0.o $(NAME).o nes.lib -Ln labels.txt --dbgfile dbg.txt
 	$(DEL) *.o
 	@echo $(NAME).nes created
 
