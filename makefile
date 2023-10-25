@@ -1,6 +1,4 @@
 # makefile for nesdoug example code, for Linux
-# this version won't move the final files to BUILD folder
-# also won't rebuild on changes to neslib/nesdoug/famitone files
 
 ifeq ($(OS),Windows_NT)
 # Windows
@@ -29,8 +27,8 @@ endif
 
 NAME = famidash
 CFG = nrom_32k_vert.cfg
-OUT_FOLDER = ./BUILD
-TMP_FOLDER = ./TMP
+OUT_FOLDER = BUILD
+TMP_FOLDER = TMP
 
 .PHONY: default clean
 
