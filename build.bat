@@ -1,1 +1,2 @@
 winmake.exe
+pause

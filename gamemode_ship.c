@@ -91,6 +91,18 @@ void ship_movement(void){
 	orbjump();
 	padjump();
 	// Cube.vel_y is signed
+
+	if(pad1_new & PAD_B) {
+		if(gravity == 1) {
+			gravity = 0;
+		}
+		else if(gravity == 0) {
+			gravity = 1;
+		}
+	}
+	
+	if(gravity == 0) {
+
 	if(Cube.vel_y < SHIP_MAX_FALLSPEED) Cube.vel_y += SHIP_GRAVITY;
 	else Cube.vel_y = SHIP_MAX_FALLSPEED; // consistent
 
@@ -98,6 +110,21 @@ void ship_movement(void){
 	if(Cube.vel_y > SHIP_MAX_GOUPSPEED) {}
 	else Cube.vel_y = SHIP_MAX_GOUPSPEED; // consistent
 	Cube.y += Cube.vel_y;
+	}
+
+	else if(gravity == 1) {
+
+	if(Cube.vel_y > SHIP_MAX_FALLSPEEDG) Cube.vel_y += SHIP_GRAVITYG;
+	else Cube.vel_y = SHIP_MAX_FALLSPEEDG; // consistent
+
+
+	if(Cube.vel_y < SHIP_MAX_GOUPSPEEDG) {}
+	else Cube.vel_y = SHIP_MAX_GOUPSPEEDG; // consistent
+	Cube.y += Cube.vel_y;
+	}
+
+
+
 	
 	Generic.x = high_byte(Cube.x);
 	Generic.y = high_byte(Cube.y);
@@ -118,8 +145,16 @@ void ship_movement(void){
         }
     }
     if(pad1 & PAD_A) {
+
+	if(gravity == 0) {
 		Cube.vel_y -= SHIP_GRAVITY; // fly
 		Cube.vel_y -= SHIP_GRAVITY;
+	}
+	else if(gravity == 1) {
+		Cube.vel_y -= -SHIP_GRAVITY; // fly
+		Cube.vel_y -= -SHIP_GRAVITY;
+	}
+	
 	}
 
 	

@@ -33,7 +33,7 @@ void main (void) {
 	ppu_on_all(); // turn on screen
 	
 	
-	gamemode = 0x01;
+	gamemode = 0x02;
 	cube_rotate = 0x80;
 	while (1){
 		// infinite loop
