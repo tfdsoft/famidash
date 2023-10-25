@@ -1,22 +1,6 @@
 ; Startup code for cc65 and Shiru's NES library
 ; based on code by Groepaz/Hitmen <groepaz@gmx.net>, Ullrich von Bassewitz <uz@cc65.org>
 
-
-
-FT_BASE_ADR		= $0100		;page in RAM, should be $xx00
-FT_DPCM_OFF		= $f600		;$c000..$ffc0, 64-byte steps
-FT_SFX_STREAMS	= 1			;number of sound effects played at once, 1..4
-
-FT_THREAD       = 1		;undefine if you call sound effects in the same thread as sound update
-FT_PAL_SUPPORT	= 0		;undefine to exclude PAL support
-FT_NTSC_SUPPORT	= 1		;undefine to exclude NTSC support
-FT_DPCM_ENABLE  = 1		;undefine to exclude all DMC code
-FT_SFX_ENABLE   = 1		;undefine to exclude all sound effects code
-
-
-
-
-
 ;REMOVED initlib
 ;this called the CONDES function
 
@@ -33,7 +17,6 @@ FT_SFX_ENABLE   = 1		;undefine to exclude all sound effects code
 
 	.importzp _PAD_STATE, _PAD_STATET ;added
     .include "zeropage.inc"
-
 
 
 
@@ -231,16 +214,14 @@ detectNTSC:
 	ldx #0
 	jsr _set_vram_update
 
-	ldx #<music_data
-	ldy #>music_data
-	lda <NTSC_MODE
-	jsr FamiToneInit
+	ldx #<music_data_famidash
+	ldy #>music_data_famidash
+	; lda <NTSC_MODE	not needed since no dual support
+	jsr famistudio_init
 
-	.if(FT_SFX_ENABLE)
-	ldx #<sounds_data
-	ldy #>sounds_data
-	jsr FamiToneSfxInit
-	.endif
+	ldx #<sounds
+	ldy #>sounds
+	jsr famistudio_sfx_init
 
 	lda #$fd
 	sta <RAND_SEED
@@ -254,27 +235,23 @@ detectNTSC:
 
 	.include "LIB/neslib.s"
 	.include "LIB/nesdoug.s"
-	.include "MUSIC/famitone.s"
 	
 	
-	
-.segment "RODATA"
-
-music_data:
-	.include "MUSIC/music.s"
-
-
-
-	.if(FT_SFX_ENABLE)
-sounds_data:
-	.include "MUSIC/sfx.s"
-	.endif
-
-	
-	
+		
 .segment "SAMPLES"
+	FAMISTUDIO_DPCM_OFF:
 	.incbin "MUSIC/music.dmc"
 
+.segment "CODE"
+	.include "MUSIC/famistudio_ca65.s"
+
+
+.segment "RODATA"
+
+.include "MUSIC/music.s"
+.include "MUSIC/sfx.s"
+
+	
 
 .segment "VECTORS"
 

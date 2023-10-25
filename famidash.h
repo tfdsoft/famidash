@@ -315,26 +315,6 @@ const unsigned char * const Rooms[]={
 	stereomadness__0,stereomadness__1,stereomadness__2,stereomadness__3,stereomadness__4,stereomadness__5,stereomadness__6,stereomadness__7,stereomadness__8,stereomadness__9,stereomadness__10,stereomadness__11,stereomadness__12,stereomadness__13,stereomadness__14,stereomadness__15,stereomadness__16,stereomadness__17,stereomadness__18,stereomadness__19,stereomadness__20,stereomadness__21,stereomadness__22,stereomadness__23,stereomadness__24,stereomadness__25,stereomadness__26,stereomadness__27,stereomadness__28,stereomadness__29,stereomadness__30,stereomadness__31,stereomadness__32,stereomadness__33,stereomadness__34,stereomadness__35,stereomadness__36,stereomadness__37,stereomadness__38,stereomadness__39,stereomadness__40,stereomadness__41,stereomadness__42,stereomadness__43,stereomadness__44,stereomadness__45,stereomadness__46,stereomadness__47,stereomadness__48,stereomadness__49,stereomadness__50,stereomadness__51,stereomadness__52,stereomadness__53,stereomadness__54,stereomadness__55,stereomadness__56,
 };
 
-
-
-
-
-
-// sound effects lol.
-#define SFX_DEATH 0x00
-
-
-
-
-
-
-
-
-
-
-
-
-
 // PROTOTYPES
 void load_room(void);
 void draw_sprites(void);

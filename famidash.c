@@ -28,7 +28,7 @@ void main (void) {
 	load_room();
 
 	song = 0;
-	music_play(song);
+	famistudio_music_play(song);
 
 	ppu_on_all(); // turn on screen
 	
@@ -265,9 +265,9 @@ void reset_level(void) {
 	Cube.vel_x = 0;
 	Cube.vel_y = 0;
 	cube_data = 0;
-	music_stop();
+	famistudio_music_stop();
 	ppu_on_all();
-	music_play(song);
+	famistudio_music_play(song);
 }
 
 
@@ -286,7 +286,7 @@ char bg_coll_death(void) {
 	temp_y = Generic.y + (Generic.height>> 1);
 	if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
 
-	if(cube_data & 0x01) { reset_level(); sfx_play(SFX_DEATH, 0);}
+	if(cube_data & 0x01) { reset_level(); famistudio_sfx_play(sfx_death, 0);}
 }
 
 

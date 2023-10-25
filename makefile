@@ -37,6 +37,13 @@ default: $(OUT_FOLDER)/$(NAME).nes
 
 #target: dependencies
 
+musicDefines.h: MUSIC/sfx_sfxlist.inc MUSIC/music_songlist.inc
+ifeq ($(OS),Windows_NT)
+else ifeq ($(OS),MSDOS)
+else
+		python3 MUSIC/parse_inc_files.py
+endif
+
 $(OUT_FOLDER):
 	$(MKDIR) $(OUT_FOLDER)
 
@@ -53,7 +60,7 @@ $(TMP_FOLDER)/crt0.o: crt0.s famidash.chr LIB/*.s MUSIC/*.s MUSIC/*.dmc
 $(TMP_FOLDER)/$(NAME).o: $(TMP_FOLDER)/$(NAME).s
 	$(CA65) $(TMP_FOLDER)/$(NAME).s -g
 
-$(TMP_FOLDER)/$(NAME).s: $(TMP_FOLDER) $(NAME).c include.h gamemode_cube.c gamemode_ship.c Sprites.h famidash.h level_data.c BG/stereomadness_.c
+$(TMP_FOLDER)/$(NAME).s: $(TMP_FOLDER) $(NAME).c include.h musicDefines.h gamemode_cube.c gamemode_ship.c Sprites.h famidash.h level_data.c BG/stereomadness_.c
 	$(CC65) -Oirs $(NAME).c --add-source -o $(TMP_FOLDER)/$(NAME).s
 
 clean:
