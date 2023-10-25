@@ -93,7 +93,7 @@ void cube_movement(void){
 
 	// Cube.vel_y is signed
 	//if(Cube.vel_y < 0x400){
-	if(gravity < 1){
+	if(!gravity){
 		if(Cube.vel_y > CUBE_MAX_FALLSPEED){
 			Cube.vel_y = CUBE_MAX_FALLSPEED;
 		} else Cube.vel_y += CUBE_GRAVITY;
@@ -133,7 +133,7 @@ void cube_movement(void){
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(Cube.y); // the rest should be the same
 	
-	if (gravity == 0x00){
+	if (!gravity){
 		if(bg_coll_D2()) {
     	    if(pad1 & PAD_A) {
 				Cube.vel_y = JUMP_VEL; // JUMP
@@ -143,16 +143,16 @@ void cube_movement(void){
 	} else {
 		if(bg_coll_U2()) {
     	    if(pad1 & PAD_A) {
-				Cube.vel_y = -JUMP_VEL; // JUMP
+				Cube.vel_y = JUMP_VEL^0xFFFF; // JUMP
 			}
 		}
 	}
 
 	if(pad1_new & PAD_B) {
-		if(gravity == 1) {
+		if(gravity) {
 			gravity = 0;
 		}
-		else if(gravity == 0) {
+		else {
 			gravity = 1;
 		}
 	}

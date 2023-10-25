@@ -93,15 +93,15 @@ void ship_movement(void){
 	// Cube.vel_y is signed
 
 	if(pad1_new & PAD_B) {
-		if(gravity == 1) {
+		if(gravity) {
 			gravity = 0;
 		}
-		else if(gravity == 0) {
+		else {
 			gravity = 1;
 		}
 	}
 	
-	if(gravity == 0) {
+	if(!gravity) {
 
 	if(Cube.vel_y < SHIP_MAX_FALLSPEED) Cube.vel_y += SHIP_GRAVITY;
 	else Cube.vel_y = SHIP_MAX_FALLSPEED; // consistent
@@ -112,7 +112,7 @@ void ship_movement(void){
 	Cube.y += Cube.vel_y;
 	}
 
-	else if(gravity == 1) {
+	else {
 
 	if(Cube.vel_y > SHIP_MAX_FALLSPEEDG) Cube.vel_y += SHIP_GRAVITYG;
 	else Cube.vel_y = SHIP_MAX_FALLSPEEDG; // consistent
@@ -146,11 +146,11 @@ void ship_movement(void){
     }
     if(pad1 & PAD_A) {
 
-	if(gravity == 0) {
+	if(!gravity) {
 		Cube.vel_y -= SHIP_GRAVITY; // fly
 		Cube.vel_y -= SHIP_GRAVITY;
 	}
-	else if(gravity == 1) {
+	else {
 		Cube.vel_y -= -SHIP_GRAVITY; // fly
 		Cube.vel_y -= -SHIP_GRAVITY;
 	}

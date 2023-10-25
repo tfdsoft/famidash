@@ -1,9 +1,4 @@
 # ew windows
-dbg.txt
-labels.txt
-*.o
-famidash.s
-bin/famidash.nes
 .vscode
 MUSIC/FamiStudio410-SoundEngine.zip
 BUILD
