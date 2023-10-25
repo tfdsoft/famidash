@@ -99,7 +99,9 @@ void cube_movement(void){
 		} else Cube.vel_y += CUBE_GRAVITY;
 	}
 	else{
-		Cube.vel_y -= CUBE_GRAVITY;
+		if(Cube.vel_y < -CUBE_MAX_FALLSPEED){
+			Cube.vel_y = -CUBE_MAX_FALLSPEED;
+		} else Cube.vel_y -= CUBE_GRAVITY;
 	}		
 	//}
 	//else{
@@ -141,7 +143,7 @@ void cube_movement(void){
 	} else {
 		if(bg_coll_U2()) {
     	    if(pad1 & PAD_A) {
-				Cube.vel_y = JUMP_VEL^0xFF; // JUMP
+				Cube.vel_y = -JUMP_VEL; // JUMP
 			}
 		}
 	}
