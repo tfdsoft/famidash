@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ew windows
 dbg.txt
 labels.txt
@@ -7,8 +6,5 @@ famidash.s
 bin/famidash.nes
 .vscode
 MUSIC/FamiStudio410-SoundEngine.zip
-=======
-.vscode
 BUILD
 TMP
->>>>>>> 04686959d42df349986e5f961b13922b35e45a83
