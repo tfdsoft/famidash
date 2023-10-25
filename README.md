@@ -18,11 +18,12 @@ https://discord.gg/Jrf5CQEfzC
 
 
 # Building
-## Ubuntu/Debian:  
+## Ubuntu/Debian:
 Clone the repo: ``git clone https://github.com/zephyrside/famidash.git``  
 Install cc65: ``sudo apt-get install cc65``  
 Run ``make`` to build the ROM, ``make clean`` to clean.    
 
-## Windows:  
+## Windows:
+### DISCLAIMER: THE BUILD PROCESS WAS NOT MADE FOR WINDOWS. WE CANNOT GUARANTEE THAT IT WILL WORK.
 Download the repo ZIP and extract it to somewhere.  
 Run ``build.bat`` to build the ROM, ``clean.bat`` to clean.  
