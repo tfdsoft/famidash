@@ -335,7 +335,7 @@ char bg_coll_orbs() {
 void orbjump() {
 	bg_coll_orbs();
 	if (bg_coll_orbs() && cube_data & CUBE_ORBJUMP) {
-		if (gravity == 1) Cube.vel_y = JUMP_VEL^0xFF;
+		if (gravity != 0) Cube.vel_y = JUMP_VEL^0xFFFF;
 		else Cube.vel_y = JUMP_VEL;
 		cube_data = 0x00;
 	}
@@ -367,7 +367,7 @@ char bg_coll_pads() {
 void padjump() {
 	bg_coll_pads();
 	if (bg_coll_pads()) {
-		if (gravity == 1) Cube.vel_y = YEL_PAD_HEIGHT^0xFF;
+		if (gravity != 0) Cube.vel_y = YEL_PAD_HEIGHT^0xFFFF;
 		else Cube.vel_y = YEL_PAD_HEIGHT;
 	}
 }

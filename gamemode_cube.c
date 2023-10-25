@@ -143,13 +143,13 @@ void cube_movement(void){
 	} else {
 		if(bg_coll_U2()) {
     	    if(pad1 & PAD_A) {
-				Cube.vel_y = -JUMP_VEL; // JUMP
+				Cube.vel_y = JUMP_VEL^0xFFFF; // JUMP
 			}
 		}
 	}
 
 	if(pad1_new & PAD_B) {
-		if(gravity == 1) {
+		if(gravity != 0) {
 			gravity = 0;
 		}
 		else if(gravity == 0) {
