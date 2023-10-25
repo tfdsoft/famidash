@@ -7,6 +7,7 @@ ifeq ($(OS),Windows_NT)
 CC65 = ./bin/cc65.exe
 CA65 = ./bin/ca65.exe
 LD65 = ./bin/ld65.exe
+DEL = del
 else ifeq ($(OS),MSDOS)
 # MS-DOS
 # add "set OS=MSDOS" to autoexec
@@ -14,11 +15,13 @@ else ifeq ($(OS),MSDOS)
 CC65 = ./bin/cc65d.exe
 CA65 = ./bin/ca65d.exe
 LD65 = ./bin/ld65d.exe
+DEL = del
 else
 # Ubuntu/Debian
 CC65 = cc65
 CA65 = ca65
 LD65 = ld65
+DEL = rm
 endif
 
 NAME = famidash
@@ -34,16 +37,10 @@ default: $(NAME).nes
 
 $(NAME).nes: $(NAME).o crt0.o $(CFG)
 	$(LD65) -C $(CFG) -o ./BUILD/$(NAME).nes crt0.o $(NAME).o nes.lib -Ln labels.txt --dbgfile dbg.txt
-ifeq ($(OS),Windows_NT)
-	del *.o
-else ifeq ($(OS),MSDOS)
-	del *.o
-else
-	rm *.o
-endif
+	$(DEL) *.o
 	@echo $(NAME).nes created
 
-crt0.o: crt0.s famidash.chr
+crt0.o: crt0.s famidash.chr LIB/*.s MUSIC/*.s MUSIC/*.dmc
 	$(CA65) crt0.s
 
 $(NAME).o: $(NAME).s
