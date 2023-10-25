@@ -3,5 +3,5 @@ dbg.txt
 labels.txt
 *.o
 famidash.s
-./bin/famidash.nes
+bin/famidash.nes
 .vscode
