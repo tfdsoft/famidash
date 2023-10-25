@@ -1,1 +1,1 @@
-del /Q BUILD\*.*
+del /Q TMP\*.*
