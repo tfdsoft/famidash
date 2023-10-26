@@ -25,5 +25,6 @@ Run ``make`` to build the ROM, ``make clean`` to clean.
 
 ## Windows:
 **DISCLAIMER: This game was developed on Linux, and as such, building on Windows is currently not a priority. We cannot guarantee that the build process will work 100% of the time.**
+
 Download the repo ZIP and extract it to somewhere.  
 Run ``build.bat`` to build the ROM, ``clean.bat`` to clean.  
