@@ -233,23 +233,23 @@ detectNTSC:
 
 	jmp _main			;no parameters
 
-	.include "LIB/neslib.s"
-	.include "LIB/nesdoug.s"
+	.include "neslib.s"
+	.include "nesdoug.s"
 	
 	
 		
 .segment "SAMPLES"
 	FAMISTUDIO_DPCM_OFF:
-	.incbin "MUSIC/music.dmc"
+	.incbin "music.dmc"
 
 .segment "CODE"
-	.include "MUSIC/famistudio_ca65.s"
+	.include "famistudio_ca65.s"
 
 
 .segment "RODATA"
 
-.include "MUSIC/music.s"
-.include "MUSIC/sfx.s"
+.include "music.s"
+.include "sfx.s"
 
 	
 

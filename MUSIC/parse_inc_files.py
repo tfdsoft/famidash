@@ -1,5 +1,5 @@
 def readFile (file : str) -> list:
-    file = open("MUSIC/"+file+".inc")
+    file = open("MUSIC/EXPORTS/"+file+".inc")
     output = []
 
     while (True):
