@@ -28,18 +28,16 @@ void main (void) {
 	load_room();
 
 	song = 0;
-	music_play(song);
+	famistudio_music_play(song);
 
 	ppu_on_all(); // turn on screen
 	
 	
-	gamemode = 0x03;
+	gamemode = 0x01;
 	cube_rotate = 0x80;
 	while (1){
 		// infinite loop
 		ppu_wait_nmi(); // wait till beginning of the frame
-		ppu_wait_nmi();
-		ppu_wait_nmi();
 
 		pad1 = pad_poll(0); // read the first controller
 		pad1_new = get_pad_new(0);
@@ -265,9 +263,9 @@ void reset_level(void) {
 	Cube.vel_x = 0;
 	Cube.vel_y = 0;
 	cube_data = 0;
-	music_stop();
+	famistudio_music_stop();
 	ppu_on_all();
-	music_play(song);
+	famistudio_music_play(song);
 }
 
 
@@ -286,7 +284,7 @@ char bg_coll_death(void) {
 	temp_y = Generic.y + (Generic.height>> 1);
 	if(bg_collision_sub() & COL_DEATH) cube_data = 0x01;
 
-	if(cube_data & 0x01) { reset_level(); sfx_play(SFX_DEATH, 0);}
+	if(cube_data & 0x01) { reset_level(); famistudio_sfx_play(sfx_death, 0);}
 }
 
 

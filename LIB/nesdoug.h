@@ -38,15 +38,6 @@ unsigned char __fastcall__ get_pad_new(unsigned char pad);
 unsigned char __fastcall__ get_frame_count(void);
 // use this internal value to time events, this ticks up every frame
 
-
-void __fastcall__ set_music_speed(unsigned char tempo);
-// this will alter the tempo of music, range 1-12 are reasonable, low is faster
-// default is 6
-// music_play also sets the tempo, and any Fxx effect in the song will too
-// you will probably have to repeatedly set_music_speed() every frame
-// music_stop() and music_pause() also overwrite this value
-
-
 unsigned char __fastcall__ check_collision(void * object1, void * object2);
 // expects an object (struct) where the first 4 bytes are X, Y, width, height
 // you will probably have to pass the address of the object like &object

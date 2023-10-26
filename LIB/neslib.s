@@ -20,8 +20,6 @@
 	.export _scroll,_split
 	.export _bank_spr,_bank_bg
 	.export _vram_read,_vram_write
-	.export _music_play,_music_stop,_music_pause
-	.export _sfx_play,_sample_play
 	.export _pad_poll,_pad_trigger,_pad_state
 	.export _rand8,_rand16,_set_rand
 	.export _vram_adr,_vram_put,_vram_fill,_vram_inc,_vram_unrle
@@ -136,7 +134,7 @@ nmi:
 
 @skipNtsc:
 
-	jsr FamiToneUpdate
+	jsr famistudio_update
 
 	pla
 	tay
@@ -799,58 +797,6 @@ _vram_write:
 	bne @1
 
 	rts
-
-
-
-;void __fastcall__ music_play(unsigned char song);
-
-_music_play=FamiToneMusicPlay
-
-
-
-;void __fastcall__ music_stop(void);
-
-_music_stop=FamiToneMusicStop
-
-
-
-;void __fastcall__ music_pause(unsigned char pause);
-
-_music_pause=FamiToneMusicPause
-
-
-
-;void __fastcall__ sfx_play(unsigned char sound,unsigned char channel);
-
-_sfx_play:
-
-.if(FT_SFX_ENABLE)
-
-	and #$03
-	tax
-	lda @sfxPriority,x
-	tax
-	jsr popa
-	jmp FamiToneSfxPlay
-
-@sfxPriority:
-
-	.byte FT_SFX_CH0,FT_SFX_CH1,FT_SFX_CH2,FT_SFX_CH3
-	
-.else
-	rts
-.endif
-
-
-;void __fastcall__ sample_play(unsigned char sample);
-
-.if(FT_DPCM_ENABLE)
-_sample_play=FamiToneSamplePlay
-.else
-_sample_play:
-	rts
-.endif
-
 
 ;unsigned char __fastcall__ pad_poll(unsigned char pad);
 
