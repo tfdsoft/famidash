@@ -15,6 +15,6 @@ if __name__ == "__main__":
     output = readFile("music_songlist")
     output += readFile("sfx_sfxlist")
 
-    outfile = open("musicDefines.h", "w")
+    outfile = open("MUSIC/EXPORTS/musicDefines.h", "w")
     outfile.write("\n".join(output))
     outfile.close()
