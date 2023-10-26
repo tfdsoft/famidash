@@ -1,2 +1,2 @@
-winmake.exe
+bin\winmake.exe
 pause

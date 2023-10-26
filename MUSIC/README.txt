@@ -7,10 +7,11 @@ DO NOT OPEN THE MODULE IN ANY VERSION NEWER THAN DN-FAMITRACKER 0.4.0.1. THE MOD
 
 How to compile the music:
 If you worked in Deeznuts-FT:
-    1. Export the .txt file into the INTERMEDIATES folder
-    2. Run the adjust_txt_header.py script (run it from the main folder)
-    3. Import *only the song and instruments you have modified* into FamiStudio 4.1.3.
-    4. Hand-correct things that FS gave warnings about.
+    1. Copy the song into music.dnm
+    2. While still in Dn-FT, export music.dnm as .txt into the INTERMEDIATES folder
+    3. Run the adjust_txt_header.py script (run it from the main folder)
+    4. Import *only the song and instruments you have modified* into FamiStudio 4.1.3.
+    5. Hand-correct things that FS gave warnings about.
 
 After this, the same steps apply for everything:
     1. Export all the songs into EXPORTS/music.s in CA65 mode and with the songlist .inc file enabled, note the settings it tells you to turn on
