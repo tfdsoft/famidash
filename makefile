@@ -25,42 +25,56 @@ DEL = rm
 MKDIR = mkdir
 endif
 
+define ca65IncDir
+-I $(1) --bin-include-dir $(1)
+endef
+define ld65IncDir
+-L $(1) --obj-path $(1)
+endef
+
 NAME = famidash
 CFG = nrom_32k_vert.cfg
-OUT_FOLDER = BUILD
-TMP_FOLDER = TMP
+OUTDIR = BUILD
+TMPDIR = TMP
 
 .PHONY: default clean
 
-default: $(OUT_FOLDER)/$(NAME).nes
+default: $(OUTDIR)/$(NAME).nes
 
 
 #target: dependencies
 
-$(OUT_FOLDER):
-	$(MKDIR) $(OUT_FOLDER)
+MUSIC/EXPORTS/musicDefines.h: MUSIC/EXPORTS/*.inc
+ifeq ($(OS),Windows_NT)
+else ifeq ($(OS),MSDOS)
+else
+		python3 MUSIC/parse_inc_files.py
+endif
 
-$(TMP_FOLDER):
-	$(MKDIR) $(TMP_FOLDER)
+$(OUTDIR):
+	$(MKDIR) $(OUTDIR)
 
-$(OUT_FOLDER)/$(NAME).nes: $(OUT_FOLDER) $(TMP_FOLDER)/$(NAME).o $(TMP_FOLDER)/crt0.o $(CFG)
-	$(LD65) -C $(CFG) -o $(OUT_FOLDER)/$(NAME).nes --obj-path $(TMP_FOLDER) crt0.o $(NAME).o nes.lib -Ln $(OUT_FOLDER)/labels.txt --dbgfile $(OUT_FOLDER)/dbg.txt
+$(TMPDIR):
+	$(MKDIR) $(TMPDIR)
+
+$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
+	$(LD65) -C $(CFG) -o $(OUTDIR)/$(NAME).nes $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0.o $(NAME).o nes.lib -Ln $(OUTDIR)/labels.txt --dbgfile $(OUTDIR)/dbg.txt
 	@echo $(NAME).nes created
 
-$(TMP_FOLDER)/crt0.o: crt0.s famidash.chr LIB/*.s MUSIC/*.s MUSIC/*.dmc
-	$(CA65) crt0.s -o $(TMP_FOLDER)/crt0.o
+$(TMPDIR)/crt0.o: crt0.s famidash.chr LIB/*.s MUSIC/EXPORTS/*.s MUSIC/EXPORTS/*.dmc
+	$(CA65) crt0.s -I LIB $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
 
-$(TMP_FOLDER)/$(NAME).o: $(TMP_FOLDER)/$(NAME).s
-	$(CA65) $(TMP_FOLDER)/$(NAME).s -g
+$(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
+	$(CA65) $(call ca65IncDir,LIB) $(TMPDIR)/$(NAME).s -g
 
-$(TMP_FOLDER)/$(NAME).s: $(TMP_FOLDER) $(NAME).c include.h gamemode_cube.c gamemode_ship.c Sprites.h famidash.h level_data.c BG/stereomadness_.c
-	$(CC65) -Oirs $(NAME).c --add-source -o $(TMP_FOLDER)/$(NAME).s
+$(TMPDIR)/$(NAME).s: $(TMPDIR) $(NAME).c include.h MUSIC/EXPORTS/musicDefines.h gamemode_cube.c gamemode_ship.c Sprites.h famidash.h level_data.c BG/stereomadness_.c
+	$(CC65) -Oirs $(NAME).c --add-source -o $(TMPDIR)/$(NAME).s
 
 clean:
 ifeq ($(OS),Windows_NT)
 	clean.bat
 else ifeq ($(OS),MSDOS)
-	rm -rf $(TMP_FOLDER)/*.*
+	rm -rf $(TMPDIR)/*.*
 else
-	rm -rf $(TMP_FOLDER)
+	rm -rf $(TMPDIR)
 endif

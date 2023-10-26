@@ -129,30 +129,6 @@ void __fastcall__ oam_set(unsigned char index);
 unsigned char __fastcall__ oam_get(void);
 
 
-
-
-//play a music in FamiTone format
-
-void __fastcall__ music_play(unsigned char song);
-
-//stop music
-
-void __fastcall__ music_stop(void);
-
-//pause and unpause music
-
-void __fastcall__ music_pause(unsigned char pause);
-
-//play FamiTone sound effect on channel 0..3
-
-void __fastcall__ sfx_play(unsigned char sound,unsigned char channel);
-
-//play a DPCM sample, 1..63
-
-void __fastcall__ sample_play(unsigned char sample);
-
-
-
 //poll controller and return flags like PAD_LEFT etc, input is pad number (0 or 1)
 
 unsigned char __fastcall__ pad_poll(unsigned char pad);
