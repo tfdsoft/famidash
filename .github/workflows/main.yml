@@ -8,7 +8,7 @@ jobs:
     name: Compile rom
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Get cc65
         run: sudo apt install cc65
       - name: Build the game
