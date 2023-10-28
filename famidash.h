@@ -87,8 +87,9 @@ unsigned char temp_room;
 
 #pragma bss-name(push, "BSS")
 
+unsigned char gamestate;
 
-#define MAX_SONGS 1
+#define MAX_SONGS 25
 unsigned char song;
 enum {SONG_GAME, SONG_PAUSE};
 
@@ -130,7 +131,7 @@ struct CUBE Cube = {0x0000,0xb400}; // starting position
 
 
 // define the stuff for the in-level objects
-#define MAX_OBJ 32
+#define MAX_OBJ 24
 unsigned char obj_x[MAX_OBJ];
 unsigned char obj_y[MAX_OBJ];
 unsigned char obj_active[MAX_OBJ];
@@ -328,7 +329,8 @@ void update_colors(void);
 void sprite_obj_init(void);
 void sprite_collisions(void);
 void check_spr_objects(void);
-
+void state_menu(void);
+void state_game(void);
 
 char bg_collision_sub(void);
 char bg_coll_L(void);

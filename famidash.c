@@ -25,9 +25,22 @@ void main (void) {
 
 	set_vram_buffer(); // do at least once
 	
+	gamestate = 0x02;
+
+	while (1){
+		switch (gamestate){
+			case 0x02: state_game();
+		}
+			
+	}
+	
+}
+
+
+void state_game(){
 	load_room();
 
-	song = 0;
+	song = 22;
 	famistudio_music_play(song);
 
 	ppu_on_all(); // turn on screen
@@ -57,6 +70,7 @@ void main (void) {
 		draw_sprites();
 		gray_line();
 	}
+	
 }
 
 

@@ -182,7 +182,7 @@ void ship_movement(void){
 	if(scroll_x >= MAX_SCROLL) {
 		scroll_x = MAX_SCROLL; // stop scrolling right, end of level
 
-		reset_level();
+		gamestate = 0x01;
 
 
 		/*	
