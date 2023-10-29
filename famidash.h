@@ -10,7 +10,7 @@
 #define CUBE_DEATH 0x01
 #define CUBE_ORBJUMP 0x02
 
-#define LEVEL01NAME "BG/stereomadness_.c"
+#define STEREOMADNESS "BG/stereomadness_.c"
 
 //gamemode max fall speed
 #define CUBE_MAX_FALLSPEED 0x600
@@ -49,13 +49,13 @@ unsigned char temp3;
 unsigned char temp4;
 unsigned int temp5;
 unsigned int temp6;
-unsigned int temp6;
 unsigned char gravity;
 unsigned char eject_L; // from the left
 unsigned char eject_R; // remember these from the collision sub routine
 unsigned char eject_D; // from below
 unsigned char eject_U; // from up
 unsigned char direction; //facing left or right?
+unsigned char i;
 #define LEFT 0
 #define RIGHT 1
 
@@ -119,7 +119,7 @@ struct CUBE {
 	signed int vel_y;
 };
 
-struct CUBE Cube = {0x0000,0xb400}; // starting position
+struct CUBE Cube = {0x0000,0xd000}; // starting position
 // the width and height should be 1 less than the dimensions (14x12)
 // note, I'm using the top left as the 0,0 on x,y
 
@@ -150,19 +150,21 @@ unsigned char obj_type[MAX_OBJ];
 
 
 const unsigned char palette_bg[]={
-0x21,0x0c,0x0f,0x30,	// palette 0, used for level tiles
-0x0f,0x01,0x11,0x30,	// palette 1, used for ground
-0x0f,0x28,0x14,0x30,	// palette 2, used for pads and orbs
-0x0f,0x0f,0x00,0x30 	// palette 3, used for text
+	0x11,0x0c,0x0f,0x30,	// palette 0, used for level tiles
+	0x0f,0x01,0x11,0x30,	// palette 1, used for ground
+	0x0f,0x28,0x14,0x30,	// palette 2, used for pads and orbs
+	0x0f,0x0f,0x00,0x30 	// palette 3, used for text
 }; 
 
 
 const unsigned char palette_sp[]={
-0x00,0x0f,0x2a,0x21,
-0x00,0x0f,0x2a,0x24,
-0x00,0x0f,0x21,0x28,
-0x00,0x14,0x24,0x34
-}; 
+	0x00,0x0f,0x2a,0x21,
+	0x00,0x0f,0x24,0x28,
+	0x00,0x0f,0x0f,0x0f,
+	0x00,0x14,0x24,0x34 
+};
+
+
 
 
 
@@ -305,7 +307,7 @@ const unsigned char is_solid[]={
 
 
 #include "Sprites.h" // holds our metasprite data
-#include LEVEL01NAME
+#include STEREOMADNESS
 
 #define MAX_ROOMS 63
 #define MAX_SCROLL (MAX_ROOMS*0x100)-1
@@ -316,6 +318,15 @@ const unsigned char * const Rooms[]={
 	stereomadness__0,stereomadness__1,stereomadness__2,stereomadness__3,stereomadness__4,stereomadness__5,stereomadness__6,stereomadness__7,stereomadness__8,stereomadness__9,stereomadness__10,stereomadness__11,stereomadness__12,stereomadness__13,stereomadness__14,stereomadness__15,stereomadness__16,stereomadness__17,stereomadness__18,stereomadness__19,stereomadness__20,stereomadness__21,stereomadness__22,stereomadness__23,stereomadness__24,stereomadness__25,stereomadness__26,stereomadness__27,stereomadness__28,stereomadness__29,stereomadness__30,stereomadness__31,stereomadness__32,stereomadness__33,stereomadness__34,stereomadness__35,stereomadness__36,stereomadness__37,stereomadness__38,stereomadness__39,stereomadness__40,stereomadness__41,stereomadness__42,stereomadness__43,stereomadness__44,stereomadness__45,stereomadness__46,stereomadness__47,stereomadness__48,stereomadness__49,stereomadness__50,stereomadness__51,stereomadness__52,stereomadness__53,stereomadness__54,stereomadness__55,stereomadness__56,
 };
 
+
+
+
+
+const unsigned char menutext[]="GEOMETRY DASH";
+const unsigned char menutext2[]="PRESS START TO LOAD";
+const unsigned char menutext3[]="STEREO MADNESS";
+
+
 // PROTOTYPES
 void load_room(void);
 void draw_sprites(void);
@@ -325,7 +336,6 @@ void new_cmap(void);
 void reset_level(void);
 void orbjump(void);
 void padjump(void);
-void update_colors(void);
 void sprite_obj_init(void);
 void sprite_collisions(void);
 void check_spr_objects(void);

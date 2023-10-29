@@ -25,22 +25,80 @@ void main (void) {
 
 	set_vram_buffer(); // do at least once
 	
-	gamestate = 0x02;
+	gamestate = 0x01;
 
 	while (1){
 		switch (gamestate){
-			case 0x02: state_game();
+			case 0x01: state_menu(); break;
+			case 0x02: state_game(); break;
 		}
-			
 	}
-	
 }
 
 
+
+
+
+
+void state_menu(){
+	ppu_off();
+
+	set_scroll_x(0);
+
+	song = song_geometry_dash_menu_theme;
+	famistudio_music_play(song);
+
+	// make the entire first nametable use bg palette 3
+	vram_adr(0x23C0);
+	for(i=0;i<0x40;++i){
+		vram_put(0xFF);
+	}
+
+	// print menu text
+	vram_adr(NTADR_A(4,4));
+	for(i=0;menutext[i];++i){
+		vram_put(0xA0+menutext[i]);
+	}
+	vram_adr(NTADR_A(7,26));
+	for(i=0;menutext2[i];++i){
+		vram_put(0xA0+menutext2[i]);
+	}
+	vram_adr(NTADR_A(9,27));
+	for(i=0;menutext3[i];++i){
+		vram_put(0xA0+menutext3[i]);
+	}
+
+	ppu_on_all();
+
+	while (1){
+		ppu_wait_nmi();
+
+		pad1 = pad_poll(0); // read the first controller
+		pad1_new = get_pad_new(0);
+
+		if (pad1_new & PAD_START){
+			gamestate = 0x02;
+			famistudio_music_stop();
+			return;
+		}
+		gray_line();
+	}
+}
+
+
+
+
+
+
+
+
+
 void state_game(){
+	ppu_off();
+
 	load_room();
 
-	song = 22;
+	song = song_stereo_madness_foreverbound;
 	famistudio_music_play(song);
 
 	ppu_on_all(); // turn on screen
@@ -55,9 +113,12 @@ void state_game(){
 		pad1 = pad_poll(0); // read the first controller
 		pad1_new = get_pad_new(0);
 
+		switch (gamemode){
+			case 0x01: cube_movement(); break;
+			case 0x02: ship_movement(); break;
+		}
+		
 
-		if (gamemode & 0x01) cube_movement();
-		else if (gamemode & 0x02) ship_movement();
 
 		check_spr_objects(); // see which objects are on screen
 			
@@ -271,7 +332,7 @@ void reset_level(void) {
 	scroll_x = 0;
 	load_room();
 	Cube.x = 0x0000;
-	Cube.y = 0xb400;
+	Cube.y = 0xd000;
 	gravity = 0x00;
 	gamemode = 0x01;
 	Cube.vel_x = 0;
@@ -388,12 +449,6 @@ void padjump() {
 
 
 
-
-
-void update_colors() {
-
-	
-}
 
 
 void check_spr_objects(void){

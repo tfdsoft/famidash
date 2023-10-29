@@ -138,32 +138,13 @@ const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_3, Sh
 // Portals
 const unsigned char Portal_Gamemode_Cube[]={
 
-	  0,-16,0x20,1,
-	  3,- 8,0x21,1,
-	  6,  0,0x22,1,
-	  6,  8,0x22,1|OAM_FLIP_V,
+	  0,  0,0x20,0,
+	  3,  8,0x21,0,
+	  6, 16,0x22,0,
+	  6, 24,0x22,0|OAM_FLIP_V,
 
-	  3, 16,0x21,1|OAM_FLIP_V,
-	  0, 24,0x20,1|OAM_FLIP_V,
-	  6,-16,0x26,1,
-	  9,- 8,0x27,1,
-
-	 12,  0,0x28,1,
-	 12,  8,0x28,1|OAM_FLIP_V,
-	  9, 16,0x27,1|OAM_FLIP_V,
-	  6, 24,0x26,1|OAM_FLIP_V,
-	0x80
-};
-
-const unsigned char Portal_Gamemode_Ship[]={
-
-	  0,  0,0x23,1,
-	  3,  8,0x24,1,
-	  6, 16,0x25,1,
-	  6, 24,0x25,1|OAM_FLIP_V,
-
-	  3, 32,0x24,1|OAM_FLIP_V,
-	  0, 40,0x23,1|OAM_FLIP_V,
+	  3, 32,0x21,0|OAM_FLIP_V,
+	  0, 40,0x20,0|OAM_FLIP_V,
 	  6,  0,0x26,1,
 	  9,  8,0x27,1,
 
@@ -174,29 +155,52 @@ const unsigned char Portal_Gamemode_Ship[]={
 	0x80
 };
 
+const unsigned char Portal_Gamemode_Ship[]={
+
+	  0,  0,0x20,1,
+	  3,  8,0x21,1,
+	  6, 16,0x22,1,
+	  6, 24,0x22,1|OAM_FLIP_V,
+
+	  3, 32,0x21,1|OAM_FLIP_V,
+	  0, 40,0x20,1|OAM_FLIP_V,
+	  6,  0,0x26,1,
+	  9,  8,0x27,1,
+
+	 12, 16,0x28,1,
+	 12, 24,0x28,1|OAM_FLIP_V,
+	  9, 32,0x27,1|OAM_FLIP_V,
+	  6, 40,0x26,1|OAM_FLIP_V,
+	0x80
+};
+
+
+
 const unsigned char Portal_Gravity_Down[]={
 
-	  0,-16,0x20,2,
-	  3,- 8,0x21,2,
-	  6,  0,0x22,2,
-	  6,  8,0x22,2|OAM_FLIP_V,
+	  0,-16,0x23,0,
+	  3,- 8,0x24,0,
+	  6,  0,0x25,0,
+	  6,  8,0x25,0|OAM_FLIP_V,
 
-	  3, 16,0x21,2|OAM_FLIP_V,
-	  0, 24,0x20,2|OAM_FLIP_V,
+	  3, 16,0x24,0|OAM_FLIP_V,
+	  0, 24,0x23,0|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Portal_Gravity_Up[]={
 
-	  0,  0,0x23,2,
-	  3,  8,0x24,2,
-	  6, 16,0x25,2,
-	  6, 24,0x25,2|OAM_FLIP_V,
+	  0,-16,0x23,1,
+	  3,- 8,0x24,1,
+	  6,  0,0x25,1,
+	  6,  8,0x25,1|OAM_FLIP_V,
 
-	  3, 32,0x24,2|OAM_FLIP_V,
-	  0, 40,0x23,2|OAM_FLIP_V,
+	  3, 16,0x24,1|OAM_FLIP_V,
+	  0, 24,0x23,1|OAM_FLIP_V,
 	0x80
 };
+
+
 
 
 const unsigned char * const Portals[]={Portal_Gamemode_Cube, Portal_Gamemode_Ship, Portal_Gravity_Down, Portal_Gravity_Up};
