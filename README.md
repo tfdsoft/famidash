@@ -9,7 +9,7 @@ do this stuff (ordered from most important to least important):
 - [X] ship  
 - [X] gravity  
 - [ ] level ending  
-- [ ] title screen  
+- [X] title screen  
 
 ## DISCORD SERVER
 interested in the project? join the discord and i'll add you to the repository!
