@@ -477,7 +477,7 @@ _oam_meta_spr:
 @2:
 
 	lda <sp
-	adc #1 ;2			;carry is always set here, so it adds 3
+	adc #1 ;2			;carry is always set here, so it adds 2
 	sta <sp
 	bcc @3
 	inc <sp+1

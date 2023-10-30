@@ -235,6 +235,7 @@ detectNTSC:
 
 	.include "neslib.s"
 	.include "nesdoug.s"
+	.include "nesdash.s"
 	
 	
 		
