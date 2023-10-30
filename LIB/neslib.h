@@ -103,7 +103,7 @@ void __fastcall__ oam_spr(unsigned char x,unsigned char y,unsigned char chrnum,u
 
 
 
-//set metasprite in OAM buffer
+//set metasprite in OAM buffer (normal)
 //meta sprite is a const unsigned char array, it contains four bytes per sprite
 //in order x offset, y offset, tile, attribute
 //x=128 is end of a meta sprite

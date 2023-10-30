@@ -1,5 +1,6 @@
-ONLY ONE PERSON CAN WORK ON THE .dnm AT ANY GIVEN TIME, SINCE SAVING IT COMPLETELY REWRITES THE FILE.
-^^ turns out that this isn't true at all, the merge editor just hates you
+IT IS NOT RECOMMENDED FOR 2 PEOPLE TO WORK SIMULTANEOUSLY ON THE .dnm, SINCE MERGING THAT IS ONE HELL OF A HASSLE.
+
+(to do that you need to export text from both versions of the module, and manually adjust shit until it can be imported back)
 
 DO NOT OPEN THE MODULE IN ANY VERSION NEWER THAN DN-FAMITRACKER 0.4.0.1. THE MODULE WILL BREAK OTHERWISE.
 
