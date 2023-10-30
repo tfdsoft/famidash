@@ -218,22 +218,17 @@ void draw_sprites(void){
 	temp_x = high_byte(Cube.x);
 	if(temp_x > 0xfc) temp_x = 1;
 	if(temp_x == 0) temp_x = 1;
-	if (gamemode & 0x01) {
-		oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
-		
-		
-		if (gravity) cube_rotate -= CUBE_GRAVITY;
-		else cube_rotate += CUBE_GRAVITY;
+	switch (gamemode){
+		default:
+			cube_rotate += CUBE_GRAVITY;
+			if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
 			
-		if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
-		if (cube_rotate < 0x0000) cube_rotate += 0x0600;
+			oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
+			
+		case 0x02:
+			cube_rotate = 0x047F - Cube.vel_y;
+			oam_meta_spr(temp_x, high_byte(Cube.y)-1, SHIP[high_byte(cube_rotate)]);
 	}
-	if (gamemode & 0x02){
-		oam_meta_spr(temp_x, high_byte(Cube.y)-1, SHIP[high_byte(cube_rotate)]);
-
-
-		cube_rotate = 0x047F - Cube.vel_y;
-	}	
 }
 	
 
@@ -332,7 +327,7 @@ void reset_level(void) {
 	scroll_x = 0;
 	load_room();
 	Cube.x = 0x0000;
-	Cube.y = 0xd000;
+	Cube.y = 0xd3000;
 	gravity = 0x00;
 	gamemode = 0x01;
 	Cube.vel_x = 0;

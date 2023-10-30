@@ -248,10 +248,10 @@ detectNTSC:
 
 .segment "RODATA"
 
-.include "music.s"
-.include "sfx.s"
+	.include "music.s"
+	.include "sfx.s"
 
-	
+
 
 .segment "VECTORS"
 
