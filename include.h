@@ -11,3 +11,4 @@
 #include "collision.c"
 #include "gamemode_cube.c"
 #include "gamemode_ship.c"
+#include "gamemode_ball.c"

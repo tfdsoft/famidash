@@ -67,7 +67,7 @@ $(TMPDIR)/crt0.o: crt0.s famidash.chr LIB/*.s MUSIC/EXPORTS/*.s MUSIC/EXPORTS/*.
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 	$(CA65) $(call ca65IncDir,LIB) $(TMPDIR)/$(NAME).s -g
 
-$(TMPDIR)/$(NAME).s: $(TMPDIR) $(NAME).c include.h MUSIC/EXPORTS/musicDefines.h gamemode_cube.c gamemode_ship.c Sprites.h famidash.h level_data.c BG/stereomadness_.c
+$(TMPDIR)/$(NAME).s: $(TMPDIR) $(NAME).c include.h MUSIC/EXPORTS/musicDefines.h gamemode_cube.c gamemode_ship.c gamemode_ball.c Sprites.h famidash.h level_data.c BG/stereomadness_.c
 	$(CC65) -Oirs $(NAME).c --add-source -o $(TMPDIR)/$(NAME).s
 
 clean:

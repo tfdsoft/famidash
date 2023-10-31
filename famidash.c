@@ -104,7 +104,7 @@ void state_game(){
 	ppu_on_all(); // turn on screen
 	
 	
-	gamemode = 0x01;
+	gamemode = 0x04;
 	cube_rotate = 0x80;
 	while (1){
 		// infinite loop
@@ -116,6 +116,7 @@ void state_game(){
 		switch (gamemode){
 			case 0x01: cube_movement(); break;
 			case 0x02: ship_movement(); break;
+			case 0x04: ball_movement(); break;
 		}
 		
 
@@ -234,6 +235,8 @@ void draw_sprites(void){
 			else oam_meta_spr_vflipped(temp_x, high_byte(Cube.y)+15, SHIP[8-high_byte(cube_rotate)]);
 
 			break;
+		case 0x04:
+			oam_meta_spr(temp_x, high_byte(Cube.y)-1, Ball);
 	}
 }
 	

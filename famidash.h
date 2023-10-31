@@ -330,7 +330,6 @@ const unsigned char menutext3[]="STEREO MADNESS";
 // PROTOTYPES
 void load_room(void);
 void draw_sprites(void);
-void cube_movement(void);	
 void draw_screen_R(void);
 void new_cmap(void);
 void reset_level(void);
