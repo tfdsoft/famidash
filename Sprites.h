@@ -130,8 +130,14 @@ const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_3, Sh
 // end ship
 
 
+const unsigned char Ball[]={
 
-
+	  0,  0,0x29,0,
+	  8,  0,0x29,0|OAM_FLIP_H,
+	  0,  8,0x29,0|OAM_FLIP_V,
+	  8,  8,0x29,0|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
 
 
 
