@@ -225,14 +225,14 @@ void draw_sprites(void){
 			if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
 
 			if (!gravity) oam_meta_spr(temp_x, high_byte(Cube.y)-1, CUBE[high_byte(cube_rotate)]);
-			else oam_meta_spr_vflipped(temp_x, high_byte(Cube.y)+15, CUBE[high_byte(cube_rotate)]);
+			else oam_meta_spr_vflipped(temp_x, high_byte(Cube.y)+7, CUBE[high_byte(cube_rotate)]);
 
 			break;
 		case 0x02:
 			cube_rotate = 0x047F - Cube.vel_y;
 
 			if (!gravity) oam_meta_spr(temp_x, high_byte(Cube.y)-1, SHIP[high_byte(cube_rotate)]);
-			else oam_meta_spr_vflipped(temp_x, high_byte(Cube.y)+15, SHIP[8-high_byte(cube_rotate)]);
+			else oam_meta_spr_vflipped(temp_x, high_byte(Cube.y)+7, SHIP[8-high_byte(cube_rotate)]);
 
 			break;
 		case 0x04:

@@ -14,8 +14,6 @@ _oam_meta_spr_vflipped:
     dey
     sta <SCRX
     lda (sp),y
-    SEC
-    SBC #$08        ; Offset everything by 8 pixels
     sta <SCRY
     
     ldx SPRID
