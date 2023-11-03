@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# written by Doug Fraker 2018
+# written by Doug Fraker 2018, modified by skiskissue gd 2023
 # this program takes csv output from Tiled
 # and turns it into a C style array that can be included
 # This version is for multi-room csv files and it breaks
@@ -34,26 +34,26 @@ if(columns < 16):
 if((columns & 0x0f) != 0):
 	print("Warning, expected width divisible by 16.")
 
-loops = columns // 16 # force int division
+loops = columns  # force int division
 a = 0
 
+j = 0
 for h in range(0, loops):
-	newfile.write("const unsigned char " + newname2 + "_" + str(h) + "[]={\n")
+	newfile.write("const unsigned char " + newname2 + "_" + str(h) + "[]={")
 	for i in range (0, rows):
-		for j in range (0, 16):
-			a = j + (h * 16)
-			newfile.write(your_list[i][a] + ",")
-		newfile.write("\n")	
+		a = j + h
+		print(str(i) + " - " + str(your_list[i][a]))
+		newfile.write(your_list[i][a] + ",")
 	# delete that last comma, back it up	
 	z = newfile.tell()
 	z = z - 2
 	newfile.seek(z)
-	newfile.write("\n};\n\n")
+	newfile.write("};\n")
 	
 
 newfile.write("\nconst unsigned char * const " + newname2 + "_list[]={\n")	
-for h in range(0, loops-1):
-	if(h == loops):
+for h in range(0, loops):
+	if(h == loops-1):
 		newfile.write(newname2 + "_" + str(h))
 	else:
 		newfile.write(newname2 + "_" + str(h) + ",")
