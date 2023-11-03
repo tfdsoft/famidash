@@ -9,13 +9,30 @@
 #pragma bss-name(push, "ZEROPAGE")
 // zero-page variables go here
 
+unsigned char i;
+unsigned char tmp1;
+unsigned short tmp2;
+unsigned short tmp3;
+unsigned short tmp4;
+
+
+
+
 
 
 
 #pragma bss-name(push, "BSS")
 // other variables go here
+unsigned char gameState;
+unsigned char a;
 
-unsigned char collisionMap[432];
+
+
+unsigned short address;
+
+
+
+unsigned char collisionMap[432]; // collision map, for a 16*27 tile area
 
 struct player {
 	unsigned short x; // low byte is sub-pixel

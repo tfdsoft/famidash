@@ -12,6 +12,7 @@
 
 
 #include "famidash.h"
+#include "level_decomp.c"
 
 
 

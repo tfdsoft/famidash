@@ -6,7 +6,7 @@ void main(){
     load_ground(0);
     ppu_on_all();
     famistudio_music_play(song_stereo_madness_foreverbound);
-    set_scroll_y(0x100);
+    set_scroll_y(0xef);
     while (1){
         ppu_wait_nmi();
     }
