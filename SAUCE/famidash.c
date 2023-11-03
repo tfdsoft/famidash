@@ -99,6 +99,6 @@ void main(){
 
 
 void load_ground(unsigned char id){
-    vram_adr(NAMETABLE_B);
+    vram_adr(NAMETABLE_C);
     vram_unrle(ground[id]);
 }

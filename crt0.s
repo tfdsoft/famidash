@@ -244,7 +244,6 @@ detectNTSC:
 .segment "CODE"
 	.include "famistudio_ca65.s"
 
-
 .segment "RODATA"
 
 	.include "music.s"

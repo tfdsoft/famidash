@@ -61,7 +61,7 @@ $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
 	$(LD65) -C $(CFG) -o $(OUTDIR)/$(NAME).nes $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0.o $(NAME).o nes.lib -Ln $(OUTDIR)/labels.txt --dbgfile $(OUTDIR)/dbg.txt
 	@echo $(NAME).nes created
 
-$(TMPDIR)/crt0.o: crt0.s GRAPHICS/famidash.chr LIB/*.s MUSIC/EXPORTS/*.s MUSIC/EXPORTS/*.dmc
+$(TMPDIR)/crt0.o: crt0.s GRAPHICS/famidash.chr LIB/*.s MUSIC/EXPORTS/*.s MUSIC/EXPORTS/music.dmc
 	$(CA65) crt0.s -I LIB $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
 
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s

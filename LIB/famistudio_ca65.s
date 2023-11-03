@@ -214,7 +214,7 @@ FAMISTUDIO_USE_DELTA_COUNTER     = 1
 
 ; Must be enabled if your project uses more than 63 unique DPCM mappings (a mapping is DPCM sample
 ; assigned to a note, with a specific pitch/loop, etc.). Implied when using FAMISTUDIO_USE_DPCM_BANKSWITCHING.
-FAMISTUDIO_USE_DPCM_EXTENDED_RANGE = 1
+; FAMISTUDIO_USE_DPCM_EXTENDED_RANGE = 1
 
 ; Must be enabled if your project uses the "Phase Reset" effect.
 ; FAMISTUDIO_USE_PHASE_RESET = 1
@@ -223,7 +223,7 @@ FAMISTUDIO_USE_DPCM_EXTENDED_RANGE = 1
 
 ; Memory location of the DPCM samples. Must be between $c000 and $ffc0, and a multiple of 64.
 .ifndef FAMISTUDIO_DPCM_OFF
-    FAMISTUDIO_DPCM_OFF = $c000
+    FAMISTUDIO_DPCM_OFF = $ffc0
 .endif
 
 ;======================================================================================================================
