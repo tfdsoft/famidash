@@ -213,8 +213,8 @@ detectNTSC:
 	ldx #0
 	jsr _set_vram_update
 
-	ldx #<music_data_
-	ldy #>music_data_
+	ldx #<music_data_famidash
+	ldy #>music_data_famidash
 	; lda <NTSC_MODE	not needed since no dual support
 	jsr famistudio_init
 
@@ -236,7 +236,6 @@ detectNTSC:
 	.include "LIB/nesdoug.s"
 	.include "LIB/nesdash.s"
 	
-		
 .segment "SAMPLES"
 	FAMISTUDIO_DPCM_OFF:
 	.incbin "MUSIC/EXPORTS/music.dmc"
@@ -248,8 +247,6 @@ detectNTSC:
 
 	.include "MUSIC/EXPORTS/music.s"
 	.include "MUSIC/EXPORTS/sfx.s"
-
-
 
 .segment "VECTORS"
 
