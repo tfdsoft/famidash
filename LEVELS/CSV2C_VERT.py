@@ -31,8 +31,6 @@ columns = len(your_list[0])
 if(columns < 16):
 	print("Error. File too small. Use CSV2C.py")
 	exit()
-if((columns & 0x0f) != 0):
-	print("Warning, expected width divisible by 16.")
 
 loops = columns  # force int division
 a = 0
