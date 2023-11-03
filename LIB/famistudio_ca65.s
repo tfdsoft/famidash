@@ -162,7 +162,7 @@ FAMISTUDIO_USE_FAMITRACKER_TEMPO = 1
 
 ; Must be enabled if the songs uses delayed notes or delayed cuts. This is obviously only available when using
 ; FamiTracker tempo mode as FamiStudio tempo mode does not need this.
-; FAMISTUDIO_USE_FAMITRACKER_DELAYED_NOTES_OR_CUTS = 1
+FAMISTUDIO_USE_FAMITRACKER_DELAYED_NOTES_OR_CUTS = 1
 
 ; Must be enabled if the songs uses release notes. 
 ; More information at: https://famistudio.org/doc/pianoroll/#release-point
@@ -184,7 +184,7 @@ FAMISTUDIO_USE_PITCH_TRACK       = 1
 
 ; Must be enabled if any song uses slide notes. Slide notes allows portamento and slide effects.
 ; More information at: https://famistudio.org/doc/pianoroll/#slide-notes
-; FAMISTUDIO_USE_SLIDE_NOTES       = 1
+FAMISTUDIO_USE_SLIDE_NOTES       = 1
 
 ; Must be enabled if any song uses slide notes on the noise channel too. 
 ; More information at: https://famistudio.org/doc/pianoroll/#slide-notes
@@ -197,7 +197,7 @@ FAMISTUDIO_USE_PITCH_TRACK       = 1
 ; Must be enabled if any song uses arpeggios (not to be confused with instrument arpeggio envelopes, those are always
 ; supported).
 ; More information at: (TODO)
-; FAMISTUDIO_USE_ARPEGGIO          = 1
+FAMISTUDIO_USE_ARPEGGIO          = 1
 
 ; Must be enabled if any song uses the "Duty Cycle" effect (equivalent of FamiTracker Vxx, also called "Timbre").  
 ; FAMISTUDIO_USE_DUTYCYCLE_EFFECT  = 1
