@@ -180,7 +180,7 @@ FAMISTUDIO_USE_VOLUME_TRACK      = 1
 ; Must be enabled if any song uses the pitch track. The pitch track allows manipulating the pitch at the track level
 ; independently from instruments.
 ; More information at: https://famistudio.org/doc/pianoroll/#pitch
-; FAMISTUDIO_USE_PITCH_TRACK       = 1
+FAMISTUDIO_USE_PITCH_TRACK       = 1
 
 ; Must be enabled if any song uses slide notes. Slide notes allows portamento and slide effects.
 ; More information at: https://famistudio.org/doc/pianoroll/#slide-notes
@@ -205,7 +205,7 @@ FAMISTUDIO_USE_VOLUME_TRACK      = 1
 ; Must be enabled if any song uses the DPCM delta counter. Only makes sense if DPCM samples
 ; are enabled (FAMISTUDIO_CFG_DPCM_SUPPORT).
 ; More information at: (TODO)
-; FAMISTUDIO_USE_DELTA_COUNTER     = 1
+FAMISTUDIO_USE_DELTA_COUNTER     = 1
 
 ; Must be enabled if your project uses more than 1 bank of DPCM samples.
 ; When using this, you must implement the "famistudio_dpcm_bank_callback" callback 
@@ -214,7 +214,7 @@ FAMISTUDIO_USE_VOLUME_TRACK      = 1
 
 ; Must be enabled if your project uses more than 63 unique DPCM mappings (a mapping is DPCM sample
 ; assigned to a note, with a specific pitch/loop, etc.). Implied when using FAMISTUDIO_USE_DPCM_BANKSWITCHING.
-; FAMISTUDIO_USE_DPCM_EXTENDED_RANGE = 1
+FAMISTUDIO_USE_DPCM_EXTENDED_RANGE = 1
 
 ; Must be enabled if your project uses the "Phase Reset" effect.
 ; FAMISTUDIO_USE_PHASE_RESET = 1

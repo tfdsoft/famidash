@@ -64,7 +64,6 @@ PPU_CTRL_VAR: 		.res 1
 PPU_CTRL_VAR1: 		.res 1
 PPU_MASK_VAR: 		.res 1
 RAND_SEED: 			.res 2
-FT_TEMP: 			.res 3
 
 TEMP: 				.res 11
 SPRID:				.res 1
@@ -233,24 +232,23 @@ detectNTSC:
 
 	jmp _main			;no parameters
 
-	.include "../LIB/neslib.s"
-	.include "../LIB/nesdoug.s"
-	.include "../LIB/nesdash.s"
-	
+	.include "neslib.s"
+	.include "nesdoug.s"
+	.include "nesdash.s"
 	
 		
 .segment "SAMPLES"
 	FAMISTUDIO_DPCM_OFF:
-	.incbin "../MUSIC/EXPORTS/music.dmc"
+	.incbin "music.dmc"
 
 .segment "CODE"
-	.include "../LIB/famistudio_ca65.s"
+	.include "famistudio_ca65.s"
 
 
 .segment "RODATA"
 
-	.include "../MUSIC/EXPORTS/music.s"
-	.include "../MUSIC/EXPORTS/sfx.s"
+	.include "music.s"
+	.include "sfx.s"
 
 
 
@@ -263,4 +261,4 @@ detectNTSC:
 
 .segment "CHARS"
 
-	.incbin "../GRAPHICS/famidash.chr"
+	.incbin "GRAPHICS/famidash.chr"
