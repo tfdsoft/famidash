@@ -2,18 +2,18 @@
 
 ifeq ($(OS),Windows_NT)
 # Windows
-CC65 = ./bin/cc65.exe
-CA65 = ./bin/ca65.exe
-LD65 = ./bin/ld65.exe
+CC65 = ./BIN/cc65.exe
+CA65 = ./BIN/ca65.exe
+LD65 = ./BIN/ld65.exe
 DEL = del
 MKDIR = mkdir
 else ifeq ($(OS),MSDOS)
 # MS-DOS
 # add "set OS=MSDOS" to autoexec
 # DJGPP, GNU fileutils for DJGPP need to be installed
-CC65 = ./bin/cc65d.exe
-CA65 = ./bin/ca65d.exe
-LD65 = ./bin/ld65d.exe
+CC65 = ./BIN/cc65d.exe
+CA65 = ./BIN/ca65d.exe
+LD65 = ./BIN/ld65d.exe
 DEL = del
 MKDIR = mkdir
 else
@@ -33,7 +33,7 @@ define ld65IncDir
 endef
 
 NAME = famidash
-CFG = nrom_32k_vert.cfg
+CFG = CONFIG/nrom_32k_vert.cfg
 OUTDIR = BUILD
 TMPDIR = TMP
 
@@ -61,14 +61,14 @@ $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
 	$(LD65) -C $(CFG) -o $(OUTDIR)/$(NAME).nes $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0.o $(NAME).o nes.lib -Ln $(OUTDIR)/labels.txt --dbgfile $(OUTDIR)/dbg.txt
 	@echo $(NAME).nes created
 
-$(TMPDIR)/crt0.o: crt0.s famidash.chr LIB/*.s MUSIC/EXPORTS/*.s MUSIC/EXPORTS/*.dmc
-	$(CA65) crt0.s -I LIB $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
+$(TMPDIR)/crt0.o: SAUCE/crt0.s GRAPHICS/famidash.chr LIB/*.s MUSIC/EXPORTS/*.s MUSIC/EXPORTS/*.dmc
+	$(CA65) SAUCE/crt0.s -I LIB $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
 
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 	$(CA65) $(call ca65IncDir,LIB) $(TMPDIR)/$(NAME).s -g
 
-$(TMPDIR)/$(NAME).s: $(TMPDIR) $(NAME).c include.h MUSIC/EXPORTS/musicDefines.h gamemode_cube.c gamemode_ship.c gamemode_ball.c Sprites.h famidash.h level_data.c BG/stereomadness_.c
-	$(CC65) -Oirs $(NAME).c --add-source -o $(TMPDIR)/$(NAME).s
+$(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h MUSIC/EXPORTS/musicDefines.h
+	$(CC65) -Oirs SAUCE/$(NAME).c --add-source -o $(TMPDIR)/$(NAME).s
 
 clean:
 ifeq ($(OS),Windows_NT)
