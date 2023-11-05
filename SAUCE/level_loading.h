@@ -44,7 +44,8 @@ void load_first_screen(unsigned char level){
         ++tmp1;
     }
     
-    set_data_pointer(collisionMap[0]);
+
+    set_data_pointer(collisionMap);
     set_mt_pointer(metatiles1);
     for(y=0; ;y+=0x20){
 		for(x=0; ;x+=0x20){

@@ -40,6 +40,8 @@ unsigned short index;
 unsigned char collisionMap[432]; // collision map, for a 16*27 tile area
 unsigned char columnBuffer[27];
 
+const unsigned char * const active_level[] = {collisionMap};
+
 struct player {
 	unsigned short x; // low byte is sub-pixel
 	unsigned short y;

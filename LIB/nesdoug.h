@@ -98,14 +98,14 @@ void __fastcall__ set_mt_pointer(const char * metatiles);
 // max metatiles = 51 (because 51 x 5 = 255)
 
 
-void __fastcall__ buffer_1_mt(int ppu_address, char metatile);
+void __fastcall__ buffer_1_mt(short ppu_address, char metatile);
 // will push 1 metatile and 0 attribute bytes to the vram_buffer
 // make sure to set_vram_buffer(), and clear_vram_buffer(), 
 // and set_mt_pointer() 
 // "metatile" should be 0-50, like the metatile data
 
 
-void __fastcall__ buffer_4_mt(int ppu_address, char index);
+void __fastcall__ buffer_4_mt(short ppu_address, char index);
 // will push 4 metatiles (2x2 box) and 1 attribute byte to the vram_buffer
 // this affects a 32x32 px area of the screen, and pushes 17 bytes to the vram_buffer.
 // make sure to set_vram_buffer(), and clear_vram_buffer(), 
