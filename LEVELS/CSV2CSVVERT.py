@@ -14,7 +14,7 @@ import os
 
 
 filename = sys.argv[1]
-newname = filename[0:-4] + ".c"
+newname = filename[0:-4] + "_vert.csv"
 newname2 = os.path.basename(filename)
 newname2 = newname2[0:-4]
 
@@ -28,16 +28,11 @@ newfile = open(newname, 'w')  # warning, this may overwrite old file !!!!!!!!!!!
 rows = len(your_list)
 columns = len(your_list[0])
 
-if(columns < 16):
-	print("Error. File too small. Use CSV2C.py")
-	exit()
-
 loops = columns  # force int division
 a = 0
 
 j = 0
 for h in range(0, loops):
-	newfile.write("const unsigned char " + newname2 + "_" + str(h) + "[]={")
 	for i in range (0, rows):
 		a = j + h
 		print(str(i) + " - " + str(your_list[i][a]))
@@ -46,17 +41,17 @@ for h in range(0, loops):
 	z = newfile.tell()
 	z = z - 2
 	newfile.seek(z)
-	newfile.write("};\n")
+	newfile.write("\n")
 	
 
-newfile.write("\nconst unsigned char * const " + newname2 + "_list[]={\n")	
-for h in range(0, loops):
-	if(h == loops-1):
-		newfile.write(newname2 + "_" + str(h))
-	else:
-		newfile.write(newname2 + "_" + str(h) + ",")
+# newfile.write("\nconst unsigned char * const " + newname2 + "_list[]={\n")	
+# for h in range(0, loops):
+# 	if(h == loops-1):
+# 		newfile.write(newname2 + "_" + str(h))
+# 	else:
+# 		newfile.write(newname2 + "_" + str(h) + ",")
 	
-newfile.write("\n};\n\n")	
+#newfile.write("\n};\n\n")	
 	
 print("Done.")
 oldfile.close

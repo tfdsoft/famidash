@@ -9,10 +9,13 @@
 #include "../LEVELS/ground0.h"
 #include "../LEVELS/ground.h"
 
+// levels
+#include "../LEVELS/test.h"
+
 
 
 #include "famidash.h"
-#include "level_decomp.c"
+#include "level_decomp.h"
 
 
 

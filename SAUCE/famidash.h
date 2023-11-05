@@ -10,8 +10,10 @@
 // zero-page variables go here
 
 unsigned char i;
+unsigned char run;
+unsigned char value;
 unsigned char tmp1;
-unsigned short tmp2;
+unsigned char tmp2;
 unsigned short tmp3;
 unsigned short tmp4;
 
@@ -33,6 +35,7 @@ unsigned short address;
 
 
 unsigned char collisionMap[432]; // collision map, for a 16*27 tile area
+unsigned char columnBuffer[27];
 
 struct player {
 	unsigned short x; // low byte is sub-pixel
