@@ -10,12 +10,14 @@
 #include "../LEVELS/ground.h"
 
 // levels
-#include "../LEVELS/test.h"
+#include "../LEVELS/leveldata.h"
 
 
 
 #include "famidash.h"
-#include "level_decomp.h"
+#include "Sprites.h"
+#include "metatiles.h"
+#include "level_loading.h"
 
 
 

@@ -2,20 +2,26 @@
 
 void main(){
     ppu_off();
-    pal_bg(paletteDefault);
-    load_ground(0);
-    ppu_on_all();
-    famistudio_music_play(song_stereo_madness_foreverbound);
-    set_scroll_y(0xef);
+    ppu_mask(0x00);
 
+    pal_bg(paletteDefault);
+    pal_spr(paletteDefault);
+    // use the second set of tiles for sprites
+	// both bg and sprites are set to 0 by default
+	bank_spr(1);
+
+    set_vram_buffer(); // do at least once
+
+    load_ground(0);
+    famistudio_music_play(song_stereo_madness_foreverbound);
+    set_scroll_y(0x00);
+    
     init_rld();
-    tmp3 = 0x00;
-    while (!(tmp3 & 0x08)){
-        ppu_wait_nmi();
-        load_next_column(0, (tmp3<<1));
-        load_next_column(0, (tmp3<<1)+1);
-        ++tmp3;
-    }
+    load_first_screen(0);
+
+    ppu_on_all();
+    
+    
     
     
     while (1){
