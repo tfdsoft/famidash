@@ -9,7 +9,15 @@ void main(){
     set_scroll_y(0xef);
 
     init_rld();
-    load_next_column(0, 0);
+    tmp3 = 0x00;
+    while (!(tmp3 & 0x08)){
+        ppu_wait_nmi();
+        load_next_column(0, (tmp3<<1));
+        load_next_column(0, (tmp3<<1)+1);
+        ++tmp3;
+    }
+    
+    
     while (1){
         ppu_wait_nmi();
     }

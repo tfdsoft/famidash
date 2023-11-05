@@ -14,8 +14,8 @@ unsigned char run;
 unsigned char value;
 unsigned char tmp1;
 unsigned char tmp2;
-unsigned short tmp3;
-unsigned short tmp4;
+unsigned char tmp3;
+unsigned char tmp4;
 
 
 
