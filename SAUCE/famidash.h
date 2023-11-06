@@ -12,7 +12,6 @@
 #pragma bss-name(push, "ZEROPAGE")
 // zero-page variables go here
 
-unsigned char rld_i;
 unsigned char rld_j;
 unsigned char rld_tmp;
 unsigned char rld_run;
