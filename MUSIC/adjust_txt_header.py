@@ -3,7 +3,7 @@ OGFTheader = "# FamiTracker text export 0.4.2\n"
 
 if __name__ == "__main__":
     import glob
-    for filename in glob.glob("MUSIC/INTERMEDIATES/*.txt"):
+    for filename in glob.glob("INTERMEDIATES/*.txt"):
         file = open(filename, "rb")
         print(f"Opened file {filename}, ", end="")
         header = file.readline()

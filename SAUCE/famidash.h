@@ -3,6 +3,9 @@
 #define MENU 0x01
 #define GAME 0x02
 
+// physics defines
+#define CUBE_SPEED_X1 0x02C4
+#define PAD_HEIGHT_YELLOW -0x760
 
 
 
@@ -27,20 +30,30 @@ unsigned char tmp4;
 
 #pragma bss-name(push, "BSS")
 // other variables go here
+
+unsigned char collisionMap0[240]; // collision map, for a 16*27 tile area
+unsigned char collisionMap1[192];
+unsigned char columnBuffer[27];
+
+unsigned char rld_column;
+
+unsigned char level;
+
 unsigned char gameState;
-unsigned char a;
 
-
+unsigned short pseudo_scroll_x;
+unsigned short scroll_x;
+unsigned char scroll_y;
+unsigned char scroll_count;
 
 unsigned short address;
 unsigned char x; // room loader code
 unsigned char y;
 unsigned short index;
 
-unsigned char collisionMap[432]; // collision map, for a 16*27 tile area
-unsigned char columnBuffer[27];
 
-const unsigned char * const active_level[] = {collisionMap};
+
+const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
 
 struct player {
 	unsigned short x; // low byte is sub-pixel

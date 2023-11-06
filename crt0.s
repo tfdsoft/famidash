@@ -213,8 +213,8 @@ detectNTSC:
 	ldx #0
 	jsr _set_vram_update
 
-	ldx #<music_data_famidash
-	ldy #>music_data_famidash
+	ldx #<music_data_
+	ldy #>music_data_
 	; lda <NTSC_MODE	not needed since no dual support
 	jsr famistudio_init
 
@@ -242,7 +242,7 @@ detectNTSC:
 
 .segment "CODE"
 	.include "LIB/famistudio_ca65.s"
-
+	
 .segment "RODATA"
 
 	.include "MUSIC/EXPORTS/music.s"
