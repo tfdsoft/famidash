@@ -15,8 +15,8 @@ void main(){
     load_ground(0);
     set_scroll_y(0xEF);
     
-    init_rld();
-    unrle_first_screen(0);
+    init_rld(0);
+    unrle_first_screen();
 
     famistudio_music_play(song_stereo_madness_foreverbound);
 
