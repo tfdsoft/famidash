@@ -29,10 +29,11 @@ void main(){
         ppu_wait_nmi();
         gray_line();
         scroll_x += CUBE_SPEED_X1;
+
         set_scroll_x(high_byte(scroll_x));
         
-        tmp3 = get_frame_count();
-        draw_screen_R(tmp3 & 1);
+        
+        draw_screen_R();
     }
 }
 

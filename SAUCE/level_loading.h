@@ -74,15 +74,18 @@ void unrle_first_screen(unsigned char lvl){ // run-length decode the first scree
 
 
 
-void draw_screen_R(unsigned char nt){
+void draw_screen_R(void){
 	// scrolling to the right, draw metatiles as we go
 	low_byte(pseudo_scroll_x) = scroll_x + 0xF8;
 	
 	tmp1 = (pseudo_scroll_x >> 8);
 	
 	x = pseudo_scroll_x & 0xff;
-	set_data_pointer(active_level[nt]);
-    tmp2 = nt<<1;
+
+	tmp2 = get_frame_count();
+    tmp2 = tmp2 & 1;
+	set_data_pointer(active_level[tmp2]);
+	
 
 	switch(scroll_count){
 		case 0:
@@ -116,7 +119,7 @@ void draw_screen_R(unsigned char nt){
 			break;
 			
 		case 3:
-            if (nt & 1) break;
+            if (tmp2 & 1) break;
 			address = get_ppu_addr(tmp2, x, 0xc0);
 			index = 0xc0 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
