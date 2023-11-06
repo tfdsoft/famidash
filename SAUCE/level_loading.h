@@ -1,5 +1,4 @@
 void init_rld(void){ // reset run-length decoder back to zero
-    rld_i = 0;
     rld_j = 0;
     rld_tmp = 0;
     rld_run = 0;    // amount of tiles to place
@@ -14,13 +13,14 @@ void unrle_next_column(unsigned char level){ // this should explain itself
 	level_data = (unsigned char *) level_list[level];
     while (rld_j < 27) { // level is 27 tiles high, so run for 27 tiles
         columnBuffer[rld_j] = rld_value; // write a value to the column buffer
+        ++rld_j; // increment column buffer write location
 
         --rld_run; // decrement run by 1
-        ++rld_j; // increment column buffer write location
         if (rld_run == 0){
-            ++rld_i; // go to the next rle index in the level data
-            rld_value = *(level_data++);
-			rld_run = *(level_data++);
+            rld_value = *level_data; // go to the next rle index in the level data
+			++level_data;
+			rld_run = *level_data; // go to the next rle index in the level data
+			++level_data;
         }
     }
     
