@@ -38,6 +38,7 @@ unsigned char columnBuffer[27];
 unsigned char rld_column;
 
 unsigned char level;
+unsigned short * level_data;
 
 unsigned char gameState;
 

@@ -4,10 +4,10 @@
   <export format="csv"/>
  </editorsettings>
  <tileset firstgid="1" name="famidash" tilewidth="16" tileheight="16" tilecount="240" columns="16">
-  <image source="../../../famidash (old3)/famidash/gfx/famidash.bmp" width="256" height="240"/>
+  <image source="../../GRAPHICS/famidash.bmp" width="256" height="240"/>
  </tileset>
  <tileset firstgid="241" name="sprites" tilewidth="16" tileheight="16" tilecount="128" columns="16">
-  <image source="../../../famidash (old3)/famidash/gfx/sprites.png" width="256" height="128"/>
+  <image source="../../GRAPHICS/sprites.png" width="256" height="128"/>
  </tileset>
  <layer id="1" width="928" height="27">
   <data encoding="csv">
