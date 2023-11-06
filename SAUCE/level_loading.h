@@ -11,7 +11,7 @@ void init_rld(void){ // reset run-length decoder back to zero
 
 void unrle_next_column(unsigned char level){ // this should explain itself
     rld_j = 0;
-	level_data = level_list[level];
+	level_data = (unsigned char *) level_list[level];
     while (rld_j < 27) { // level is 27 tiles high, so run for 27 tiles
         columnBuffer[rld_j] = rld_value; // write a value to the column buffer
 

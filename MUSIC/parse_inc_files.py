@@ -1,5 +1,7 @@
+import sys
+
 def readFile (file : str) -> list:
-    file = open("EXPORTS/"+file+".inc")
+    file = open(sys.path[0]+"/EXPORTS/"+file+".inc")
     output = []
 
     while (True):
@@ -15,6 +17,6 @@ if __name__ == "__main__":
     output = readFile("music_songlist")
     output += readFile("sfx_sfxlist")
 
-    outfile = open("EXPORTS/musicDefines.h", "w")
+    outfile = open(sys.path[0]+"/EXPORTS/musicDefines.h", "w")
     outfile.write("\n".join(output))
     outfile.close()
