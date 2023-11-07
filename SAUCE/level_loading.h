@@ -7,7 +7,7 @@ void init_rld(unsigned char level){ // reset run-length decoder back to zero
 	level_data = (unsigned char *) level_list[level];
     rld_value = level_data[0]; // set the value and run to the first tile type and length
     rld_run = level_data[1];
-	level_data+=2;
+	++level_data; ++level_data; 
 }
 
 void unrle_next_column(void){ // this should explain itself
@@ -34,6 +34,7 @@ void unrle_next_column(void){ // this should explain itself
         ++rld_j;
     }
     ++rld_column;
+	rld_column &= 0x0F;
 }
 
 
@@ -73,21 +74,27 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 
 
 
+void wait_hang_on_should_i_write_to_the_collision_map(){
+	// I'M BANGING MY HEAD AGAINST THE WALL TRYING TO FIGURE OUT THE MATH FOR THIS
+	// basically, for every two tiles scrolled, write two
+	// new columns to the buffer before drawing 
+}
+
 
 
 void draw_screen_R(void){
 	// scrolling to the right, draw metatiles as we go
-	low_byte(pseudo_scroll_x) = scroll_x + 0xF8;
-	
-	tmp1 = (pseudo_scroll_x >> 8);
+	pseudo_scroll_x = scroll_x + 0xF8;
 	
 	x = pseudo_scroll_x & 0xff;
+
+	wait_hang_on_should_i_write_to_the_collision_map();
 
 	tmp2 = get_frame_count();
     tmp2 = tmp2 & 1;
 	set_data_pointer(active_level[tmp2]);
 	
-
+	
 	switch(scroll_count){
 		case 0:
 			address = get_ppu_addr(tmp2, x, 0);
@@ -120,7 +127,7 @@ void draw_screen_R(void){
 			break;
 			
 		case 3:
-            if (tmp2 & 1) break;
+            if (tmp2 & 2) break;
 			address = get_ppu_addr(tmp2, x, 0xc0);
 			index = 0xc0 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
@@ -130,11 +137,9 @@ void draw_screen_R(void){
 			buffer_4_mt(address, index); // ppu_address, index to the data
             break;
 	}
-
-    set_data_pointer(active_level[1]);
-    tmp2 = 2;
     
 
 	++scroll_count;
 	scroll_count &= 3; //mask off top bits, keep it 0-3
 }
+

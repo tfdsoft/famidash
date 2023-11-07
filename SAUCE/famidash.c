@@ -32,7 +32,6 @@ void main(){
 
         set_scroll_x(high_byte(scroll_x));
         
-        
         draw_screen_R();
     }
 }
