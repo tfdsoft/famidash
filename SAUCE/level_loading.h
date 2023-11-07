@@ -94,45 +94,45 @@ void draw_screen_R(void){
     tmp2 = tmp2 & 1;
 	set_data_pointer(active_level[tmp2]);
 	
-	
+	tmp3 = tmp2 << 1;
 	switch(scroll_count){
 		case 0:
-			address = get_ppu_addr(tmp2, x, 0);
+			address = get_ppu_addr(tmp3, x, 0);
 			index = 0 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
 			
-			address = get_ppu_addr(tmp2, x, 0x20);
+			address = get_ppu_addr(tmp3, x, 0x20);
 			index = 0x20 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
             break;
 			
 		case 1:
-			address = get_ppu_addr(tmp2, x, 0x40);
+			address = get_ppu_addr(tmp3, x, 0x40);
 			index = 0x40 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
 			
-			address = get_ppu_addr(tmp2, x, 0x60);
+			address = get_ppu_addr(tmp3, x, 0x60);
 			index = 0x60 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
 			break;
 			
 		case 2:
-			address = get_ppu_addr(tmp2, x, 0x80);
+			address = get_ppu_addr(tmp3, x, 0x80);
 			index = 0x80 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
 			
-			address = get_ppu_addr(tmp2, x, 0xa0);
+			address = get_ppu_addr(tmp3, x, 0xa0);
 			index = 0xa0 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
 			break;
 			
 		case 3:
-            if (tmp2 & 2) break;
-			address = get_ppu_addr(tmp2, x, 0xc0);
+            if (tmp2 & 1) break;
+			address = get_ppu_addr(tmp3, x, 0xc0);
 			index = 0xc0 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
 			
-			address = get_ppu_addr(tmp2, x, 0xe0);
+			address = get_ppu_addr(tmp3, x, 0xe0);
 			index = 0xe0 + (x >> 4);
 			buffer_4_mt(address, index); // ppu_address, index to the data
             break;
