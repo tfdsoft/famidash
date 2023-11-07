@@ -11,9 +11,9 @@ void main(){
 	bank_spr(1);
 
     set_vram_buffer(); // do at least once
-
+    
+    scroll_y = 0xEF;
     load_ground(0);
-    set_scroll_y(0xEF);
     
     init_rld(0);
     unrle_first_screen();
@@ -27,12 +27,19 @@ void main(){
     
     while (1){
         ppu_wait_nmi();
-        gray_line();
-        scroll_x += CUBE_SPEED_X1;
 
-        set_scroll_x(high_byte(scroll_x));
+        pad = pad_poll(0);
+        pad_new = get_pad_new(0);
+
+        do_the_scroll_thing();
         
+        
+        
+
+        
+
         draw_screen_R();
+        gray_line();
     }
 }
 
@@ -123,7 +130,3 @@ void main(){
 
 
 
-void load_ground(unsigned char id){
-    vram_adr(NAMETABLE_C);
-    vram_unrle(ground[id]);
-}

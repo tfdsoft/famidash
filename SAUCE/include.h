@@ -18,6 +18,7 @@
 #include "Sprites.h"
 #include "metatiles.h"
 #include "level_loading.h"
+#include "scroll.h"
 
 
 
