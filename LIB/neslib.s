@@ -126,15 +126,6 @@ nmi:
 
 	inc <FRAME_CNT1
 	inc <FRAME_CNT2
-	lda <FRAME_CNT2
-	cmp #6
-	bne @skipNtsc
-	lda #0
-	sta <FRAME_CNT2
-
-@skipNtsc:
-
-	jsr famistudio_update
 
 	pla
 	tay

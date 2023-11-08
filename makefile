@@ -58,17 +58,17 @@ $(TMPDIR):
 	$(MKDIR) $(TMPDIR)
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
-	$(LD65) -C $(CFG) -o $(OUTDIR)/$(NAME).nes $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0.o $(NAME).o nes.lib -Ln $(OUTDIR)/labels.txt --dbgfile $(OUTDIR)/dbg.txt
+	$(LD65) -C $(CFG) -o $(OUTDIR)/$(NAME).nes $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0.o $(NAME).o nes.lib --dbgfile $(OUTDIR)/famidash.dbg
 	@echo $(NAME).nes created
 
 $(TMPDIR)/crt0.o: crt0.s GRAPHICS/famidash.chr LIB/*.s MUSIC/EXPORTS/*.s MUSIC/EXPORTS/music.dmc
-	$(CA65) crt0.s -I LIB $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
+	$(CA65) crt0.s -g -I LIB $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
 
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 	$(CA65) $(call ca65IncDir,LIB) $(TMPDIR)/$(NAME).s -g
 
 $(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h LEVELS/*.h LIB/*.h MUSIC/EXPORTS/musicDefines.h
-	$(CC65) -Oirs SAUCE/$(NAME).c --add-source -o $(TMPDIR)/$(NAME).s
+	$(CC65) -Oirs -g SAUCE/$(NAME).c --add-source -o $(TMPDIR)/$(NAME).s
 
 clean:
 ifeq ($(OS),Windows_NT)

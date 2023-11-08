@@ -27,6 +27,7 @@ void main(){
     
     while (1){
         ppu_wait_nmi();
+        famistudio_update();
 
         pad = pad_poll(0);
         pad_new = get_pad_new(0);
