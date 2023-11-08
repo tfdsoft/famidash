@@ -12,10 +12,6 @@
 #pragma bss-name(push, "ZEROPAGE")
 // zero-page variables go here
 
-unsigned char rld_j;
-unsigned char rld_tmp;
-unsigned char rld_run;
-unsigned char rld_value;
 unsigned char tmp1;
 unsigned char tmp2;
 unsigned char tmp3;
@@ -38,7 +34,6 @@ unsigned char columnBuffer[27];     // column buffer, to be pushed to the collis
 unsigned char rld_column;
 
 unsigned char level;
-unsigned char * level_data;
 
 unsigned char gameState;
 

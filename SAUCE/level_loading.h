@@ -3,51 +3,6 @@ void load_ground(unsigned char id){
     vram_unrle(ground[id]);
 }
 
-
-
-void init_rld(unsigned char level){ // reset run-length decoder back to zero
-    rld_j = 0;
-    rld_tmp = 0;
-    rld_run = 0;    // amount of tiles to place
-    rld_value = 0;  // the tile to repeat
-    rld_column = 0;
-	level_data = (unsigned char *) level_list[level];
-    rld_value = level_data[0]; // set the value and run to the first tile type and length
-    rld_run = level_data[1];
-	++level_data; ++level_data; 
-}
-
-
-
-void unrle_next_column(void){ // this should explain itself
-    rld_j = 0;
-    while (rld_j < 27) { // level is 27 tiles high, so run for 27 tiles
-        columnBuffer[rld_j] = rld_value; // write a value to the column buffer
-        ++rld_j; // increment column buffer write location
-
-        --rld_run; // decrement run by 1
-        if (rld_run == 0){
-            rld_value = *level_data; // go to the next rle index in the level data
-			++level_data;
-			rld_run = *level_data; // go to the next rle index in the level data
-			++level_data;
-        }
-    }
-    
-    rld_j = 0;
-    while (rld_j < 27) { // write the column buffer to the collision map
-        rld_tmp = columnBuffer[rld_j];
-        collisionMap0[(rld_j<<4)+rld_column] = rld_tmp;
-        // NEVER use two pointers on the same line.
-        // it will compile to 55 instructions whereas doing the above compiles to just 10
-        ++rld_j;
-    }
-    ++rld_column;
-	rld_column &= 0x0F;
-}
-
-
-
 void unrle_first_screen(void){ // run-length decode the first screen of a level
     tmp1 = 0x00;
     while (!(tmp1 & 0x08)){
