@@ -27,20 +27,13 @@ void main(){
     
     while (1){
         ppu_wait_nmi();
-        famistudio_update();
 
-        pad = pad_poll(0);
-        pad_new = get_pad_new(0);
+        gameState = 0x01;
 
-        do_the_scroll_thing();
-        
-        
-        
-
-        
-
-        draw_screen_R();
-        gray_line();
+		switch (gameState){
+			case 0x01: state_menu(); break;
+			case 0x02: state_game(); break;
+		}
     }
 }
 
