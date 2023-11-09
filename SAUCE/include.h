@@ -26,9 +26,10 @@
 #include "scroll.h"     
 
 
+#include "defines/menutext.h" // menu text. obviously.
 
 // THE GAME STATE DEFINES //
 #include "gamestates/state_menu.h"
+#include "gamestates/state_game.h"
 
 
-#include "defines/menutext.h"
