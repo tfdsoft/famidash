@@ -56,3 +56,67 @@ const unsigned char metatiles1[]={
 	64, 69, 80, 85,  0,
 	64, 69, 80, 85,  0
 };
+
+
+#define COL_DEATH 0x80
+#define COL_ALL 0x40
+const unsigned char is_solid[]={
+
+	// go find famidash.bmp for a reference point
+
+	0,			// the blank tile
+	COL_ALL,	// start of ground tiles
+	COL_ALL,
+	COL_ALL, 
+	COL_ALL, 
+	COL_ALL,
+	COL_ALL,
+	COL_ALL, 
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,	// end of ground tiles
+	0,
+	0,
+	0,
+	
+	COL_ALL,	// default block
+	COL_DEATH,	// big spike
+	COL_DEATH,	// small spike
+	0,			// yellow pad
+	0,			// yellow orb
+	0,			// pink pad
+	0,			// pink orb
+	COL_DEATH,	// ceiling spikes
+	COL_DEATH,	// ground spikes
+	COL_ALL,	// half-slab 2
+	COL_DEATH,	// the other spikes
+	COL_DEATH,
+	COL_DEATH,
+	COL_DEATH,
+	COL_DEATH,
+	COL_DEATH,
+
+	COL_ALL,	// default block 2
+	COL_ALL,	// start of checkerboard blocks
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,	
+	0,
+
+	COL_ALL,
+	COL_ALL,
+	COL_ALL,
+	COL_ALL		// end of checkerboard blocks
+};

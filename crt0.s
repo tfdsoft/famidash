@@ -182,7 +182,7 @@ clearRAM:
 ;	jsr	initlib
 ; removed. this called the CONDES function
 
-	lda #%10000000
+	lda #%10100000
 	sta <PPU_CTRL_VAR
 	sta PPU_CTRL		;enable NMI
 	lda #%00000110

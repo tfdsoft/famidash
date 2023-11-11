@@ -14,8 +14,8 @@ void state_menu(){
 
 	// print menu text
 	vram_adr(NTADR_A(4,4));
-	for(tmp1=0;menutext[tmp1];++tmp1){
-		vram_put(0xA0+menutext[tmp1]);
+	for(tmp1=0;menutext1[tmp1];++tmp1){
+		vram_put(0xA0+menutext1[tmp1]);
 	}
 	vram_adr(NTADR_A(7,26));
 	for(tmp1=0;menutext2[tmp1];++tmp1){
@@ -30,6 +30,7 @@ void state_menu(){
 
 	while (1){
 		ppu_wait_nmi();
+		famistudio_update();
 
 		pad = pad_poll(0); // read the first controller
 		pad_new = get_pad_new(0);

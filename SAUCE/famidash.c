@@ -2,7 +2,9 @@
 
 void main(){
     ppu_off();
+
     ppu_mask(0x00);
+    
 
     pal_bg(paletteDefault);
     pal_spr(paletteDefault);
@@ -22,13 +24,11 @@ void main(){
 
     ppu_on_all();
     
-    
+    gameState = 0x01;
     
     
     while (1){
         ppu_wait_nmi();
-
-        gameState = 0x01;
 
 		switch (gameState){
 			case 0x01: state_menu(); break;
