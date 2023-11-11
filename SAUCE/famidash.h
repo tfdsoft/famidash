@@ -68,7 +68,6 @@ unsigned char temp_room;
 
 unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
 unsigned char collisionMap1[192];
-unsigned char columnBuffer[27];     // column buffer, to be pushed to the collision map
 
 unsigned char rld_column;
 
@@ -76,7 +75,6 @@ unsigned char level;
 
 unsigned char gameState;
 
-unsigned short pseudo_scroll_x;
 unsigned short scroll_x;
 unsigned short scroll_y;
 unsigned char scroll_count;
