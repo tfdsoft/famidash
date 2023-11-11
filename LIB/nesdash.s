@@ -248,11 +248,6 @@ _unrle_next_column:
 shiftBy6Table:
     .byte $00, $40, $80, $C0
 
-draw_screen_R_scroll7:
-    LDA #$00
-    STA _scroll_count
-    RTS
-
 _draw_screen_R:
     ; C code to be ported:
         ; void draw_screen_R(void){
@@ -279,10 +274,6 @@ _draw_screen_R:
         ;     scroll_count &= 7; //mask off top bits, keep it 0-3
         ; }
     
-    LDA _scroll_count
-    CMP #7
-    BPL draw_screen_R_scroll7
-
     LDA _scroll_x+1         ;__ Highbyte of scroll_x
     LSR                     ;
     LSR                     ;   >> 4
@@ -342,15 +333,19 @@ _draw_screen_R:
     LDA _tmp4
     JSR _buffer_4_mt        ; Does not clobber values like C functions do
 
-    INC _scroll_count       ; Doesn't neccessarily need to be at the end
-    ; &=7 not needed since that is excluded at the beginning of the function
-
     ; adding 0x80 to it is just ORA, since it's practically a bitmask
     LDA ptr1                ;   += 0x80
     ORA #$80                ;__
     LDX ptr1+1              ;   Load second address
     JSR pushax              ;__
 
+    INC _scroll_count       ; Doesn't neccessarily need to be at the end
+    LDA _scroll_count       ;
+    CMP #7                  ;
+    BMI :+                  ;
+        TYA                 ; Y = 0 from pushax
+        STA _scroll_count   ;__
+    :
     LDA _tmp4               ;
     ORA #$20                ;__ index += 0x20
     JMP _buffer_4_mt        ;__ Finish off routine by JMP
