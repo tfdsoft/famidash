@@ -38,6 +38,7 @@ void state_menu(){
 		if (pad_new & PAD_START){
 			gameState = 0x02;
 			famistudio_music_stop();
+			famistudio_update();	// to clear the APU registers
 			return;
 		}
 		gray_line();

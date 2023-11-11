@@ -13,14 +13,6 @@ void main(){
 	bank_spr(1);
 
     set_vram_buffer(); // do at least once
-    
-    scroll_y = 0xEF;
-    load_ground(0);
-    
-    init_rld(0);
-    unrle_first_screen();
-
-    famistudio_music_play(song_stereo_madness_foreverbound);
 
     ppu_on_all();
     

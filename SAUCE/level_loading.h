@@ -60,85 +60,23 @@ void draw_screen_R(void){
 
 	wait_hang_on_should_i_write_to_the_collision_map();
 
+	tmp1 = (scroll_count&3)<<6;
 	if (!(scroll_count & 4)){
 		set_data_pointer(active_level[0]);
-		switch(scroll_count & 3){
-			case 0:
-				address = get_ppu_addr(0, x, 0);
-				index = 0 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-			
-				address = get_ppu_addr(0, x, 0x20);
-				index = 0x20 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-	            break;
-			
-			case 1:
-				address = get_ppu_addr(0, x, 0x40);
-				index = 0x40 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-			
-				address = get_ppu_addr(0, x, 0x60);
-				index = 0x60 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-				break;
-			
-			case 2:
-				address = get_ppu_addr(0, x, 0x80);
-				index = 0x80 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-			
-				address = get_ppu_addr(0, x, 0xa0);
-				index = 0xa0 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-				break;
-			
-			case 3:
-				address = get_ppu_addr(0, x, 0xc0);
-				index = 0xc0 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-			
-				address = get_ppu_addr(0, x, 0xe0);
-				index = 0xe0 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-        	    break;
-		}
+		address = get_ppu_addr(0, x, tmp1);
 	} else {
 		set_data_pointer(active_level[1]);
-		switch(scroll_count & 3){
-			case 0:
-				address = get_ppu_addr(2, x, 0);
-				index = 0 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-			
-				address = get_ppu_addr(2, x, 0x20);
-				index = 0x20 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-	            break;
-			
-			case 1:
-				address = get_ppu_addr(2, x, 0x40);
-				index = 0x40 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-			
-				address = get_ppu_addr(2, x, 0x60);
-				index = 0x60 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-				break;
-			
-			case 2:
-				address = get_ppu_addr(2, x, 0x80);
-				index = 0x80 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-			
-				address = get_ppu_addr(2, x, 0xa0);
-				index = 0xa0 + (tmp4);
-				buffer_4_mt(address, index); // ppu_address, index to the data
-				break;
-		}
+		if (scroll_count == 7) {scroll_count = 0; return;}
+		address = get_ppu_addr(2, x, tmp1);
 	}
+
+	index = tmp1 + tmp4;
+	buffer_4_mt(address, index); // ppu_address, index to the data
+
+	address += 0x80;
+	index += 0x20;
+	buffer_4_mt(address, index); // ppu_address, index to the data
 
 	++scroll_count;
 	scroll_count &= 7; //mask off top bits, keep it 0-3
 }
-

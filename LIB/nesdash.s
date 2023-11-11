@@ -183,7 +183,7 @@ _unrle_next_column:
         BNE @FirstLoop
     
     @WriteSetup:
-        ; Set Y to 26-16-1, which is the maximum index
+        ; Set Y to 26-16, which is the maximum index
         LDY #(26-16)
 
         ; Y<<4+rld_column is handled through X

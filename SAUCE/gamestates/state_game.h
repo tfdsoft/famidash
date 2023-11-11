@@ -1,11 +1,13 @@
 void state_game(){
 	ppu_off();
 
-    famistudio_music_play(song_stereo_madness_foreverbound);
+    scroll_y = 0xEF;
+    load_ground(0);
 
 	init_rld(0);
     unrle_first_screen();
 
+    famistudio_music_play(song_stereo_madness_foreverbound);
 
     ppu_on_all();
 
