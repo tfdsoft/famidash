@@ -77,7 +77,7 @@ unsigned char level;
 unsigned char gameState;
 
 unsigned short pseudo_scroll_x;
-unsigned char scroll_x;
+unsigned short scroll_x;
 unsigned short scroll_y;
 unsigned char scroll_count;
 

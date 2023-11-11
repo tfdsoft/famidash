@@ -21,12 +21,9 @@ void state_game(){
             case 0x01: break;
         }
 
-        cube_movement();
-        oam_clear();
-        temp_x = high_byte(player.x);
-	    temp_y = high_byte(player.y);
-        oam_meta_spr(temp_x, temp_y, Cube_0);
+        //cube_movement();
 
+        do_the_scroll_thing();
         draw_screen_R();
         gray_line();
     }
