@@ -61,7 +61,7 @@ void cube_movement(void){
 	Generic.y = high_byte(player.y);
 	Generic.width = CUBE_WIDTH;
 	Generic.height = CUBE_HEIGHT;
-	
+	/*
     if(player.vel_x < 0){
         if(bg_coll_L() ){ // check collision left
             high_byte(player.x) = high_byte(player.x) - eject_L;
@@ -82,6 +82,7 @@ void cube_movement(void){
             }
         }
     }
+	*/
     // skip collision if vel = 0
     
 	

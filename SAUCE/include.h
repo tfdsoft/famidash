@@ -15,7 +15,7 @@
 
 
 #include "../LEVELS/leveldata.h"    // level data goes here
-
+#include "../LEVELS/levellist.h"    // level order goes here
 
 
 #include "famidash.h"   // where everything is declared. don't move this
