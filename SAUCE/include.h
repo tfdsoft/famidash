@@ -20,11 +20,18 @@
 
 #include "famidash.h"   // where everything is declared. don't move this
 
-#include "defines/sprites.h"    // metasprite defines
 #include "defines/metatiles.h"  // metatile defines
-#include "defines/collision.h"  // collision
+#include "defines/sprites.h"    // metasprite defines
+
 #include "level_loading.h"  // goofy ass screen drawing routines
-#include "scroll.h"     
+#include "scroll.h"
+
+#include "functions/draw_sprites.h"  // sproit drawlign
+#include "functions/collision.h"  // collision
+#include "functions/reset_level.h"  // reset the stage
+
+
+
 
 
 #include "defines/menutext.h" // menu text. obviously.

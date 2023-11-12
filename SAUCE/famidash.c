@@ -7,7 +7,7 @@ void main(){
     
 
     pal_bg(paletteDefault);
-    pal_spr(paletteDefault);
+    pal_spr(paletteDefaultSP);
     // use the second set of tiles for sprites
 	// both bg and sprites are set to 0 by default
 	bank_spr(1);

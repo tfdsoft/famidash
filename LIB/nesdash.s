@@ -274,7 +274,9 @@ _draw_screen_R:
         ;     scroll_count &= 7; //mask off top bits, keep it 0-3
         ; }
     
-    LDA _scroll_x+1         ;__ Highbyte of scroll_x
+    LDA _scroll_x           ;__ Highbyte of scroll_x
+    CLC
+    ADC #$F8
     LSR                     ;
     LSR                     ;   >> 4
     LSR                     ;
@@ -321,7 +323,7 @@ _draw_screen_R:
     sta DATA_PTR            ;   set_data_pointer();
     sty DATA_PTR+1          ;__
 
-    LDA _scroll_x+1         ;   X contains the first argument (0 or 2),
+    LDA _scroll_x           ;   X contains the first argument (0 or 2),
     JSR pushax              ;__ A contains the second argument (x)
     LDA tmp1                ;   A now contains the third argument (tmp1)
     JSR _get_ppu_addr       ;__ Get PPU address

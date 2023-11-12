@@ -156,6 +156,8 @@ void cube_movement(void){
 			gravity = 1;
 		}
 	}
+
+	bg_coll_death();
 	do_the_scroll_thing();
 }	
 

@@ -4,7 +4,7 @@ void state_menu(){
 	set_scroll_x(0);
     set_scroll_y(0);
 
-	famistudio_music_play(song_geometry_dash_menu_theme);
+	famistudio_music_play(song_menu_theme);
 
 	// make the entire first nametable use bg palette 3
 	vram_adr(0x23C0);
@@ -38,7 +38,7 @@ void state_menu(){
 		if (pad_new & PAD_START){
 			gameState = 0x02;
 			famistudio_music_stop();
-			famistudio_update();	// to clear the APU registers
+			//famistudio_update();	// to clear the APU registers
 			return;
 		}
 		gray_line();
