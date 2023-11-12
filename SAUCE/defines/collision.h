@@ -4,8 +4,16 @@ char bg_collision_sub(void){
 	coordinates = (temp_x >> 4) + (temp_y & 0xf0);
     // we just need 4 bits each from x and y
 	
-	collision = collisionMap0[coordinates];
+	tmp4 = temp_room&1; // high byte
+    if (tmp4 && coordinates >= 0xc0) return COL_ALL;
+	switch (!tmp4){
+		case 0: 
+            collision = collisionMap0[coordinates];
+		case 1: 
+            collision = collisionMap1[coordinates];
+	}
 	
+    
     return collision;
 }
 
@@ -13,8 +21,9 @@ char bg_collision_sub(void){
 
 char bg_coll_L(void){
     // check 2 points on the left side
-    temp_x = Generic.x;
-    
+    tmp5 = Generic.x + scroll_x;
+    temp_x = (char)tmp5; // low byte
+
     eject_L = temp_x | 0xf0;
 	tmp1 = Generic.y + 2;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
@@ -34,8 +43,9 @@ char bg_coll_L(void){
 
 char bg_coll_R(void){
     // check 2 points on the right side
-	temp_x = Generic.x + Generic.width;
-    
+	tmp5 = Generic.x + scroll_x + Generic.width;
+    temp_x = (char)tmp5; // low byte
+
     eject_R = (temp_x + 1) & 0x0f;
 	tmp1 = Generic.y + 2;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
@@ -55,7 +65,8 @@ char bg_coll_R(void){
 
 char bg_coll_U(void){
     // check 2 points on the top side
-    temp_x = Generic.x;
+    tmp5 = Generic.x + scroll_x;
+    temp_x = (char)tmp5; // low byte
     
 	tmp1 = Generic.y;
 	tmp5 = add_scroll_y(tmp1, scroll_y); 
@@ -64,7 +75,8 @@ char bg_coll_U(void){
     eject_U = temp_y | 0xf0;
     if(bg_collision_sub() ) return 1;
     
-    temp_x = Generic.x + Generic.width;
+    tmp5 = Generic.x + scroll_x + Generic.width;
+    temp_x = (char)tmp5; // low byte
 	temp_x -= 2;
     
     if(bg_collision_sub() ) return 1;
@@ -74,7 +86,8 @@ char bg_coll_U(void){
 
 char bg_coll_D(void){
     // check 2 points on the bottom side
-	temp_x = Generic.x;
+	tmp5 = Generic.x + scroll_x;
+    temp_x = (char)tmp5; // low byte
     
 	tmp1 = Generic.y + Generic.height;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
@@ -83,7 +96,8 @@ char bg_coll_D(void){
     eject_D = (temp_y + 1) & 0x0f;
     if(bg_collision_sub() ) return 1;
     
-    temp_x = Generic.x + Generic.width;
+    tmp5 = Generic.x + scroll_x + Generic.width;
+    temp_x = (char)tmp5; // low byte
 	temp_x -= 2;
     
     if(bg_collision_sub() ) return 1;

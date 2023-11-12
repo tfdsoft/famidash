@@ -4,9 +4,6 @@
 #define GAME 0x02
 
 // uhh something i can get rid of later
-#define MAX_UP 0x6000
-#define MAX_DOWN 0x7000
-#define MIN_SCROLL 1
 
 // physics defines
 #define PAD_HEIGHT_YELLOW -0x760
@@ -14,6 +11,7 @@
 #define CUBE_WIDTH 0x0F
 #define CUBE_HEIGHT 0x0F
 
+#define JUMP_VEL -0x5B0
 #define CUBE_SPEED_X1 0x2C4
 #define CUBE_MAX_FALLSPEED 0x600
 #define CUBE_GRAVITY 0x6C
@@ -92,7 +90,7 @@ struct player {
 	signed short vel_y;
 };
 
-struct player player = {0x0000,0x01d000};
+struct player player = {0x0000,0xb000};
 
 struct Base {
 	unsigned char x;

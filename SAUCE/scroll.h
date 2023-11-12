@@ -1,12 +1,13 @@
 void do_the_scroll_thing(){
-    scroll_x += CUBE_SPEED_X1;
-    set_scroll_x(high_byte(scroll_x));
+    
+	tmp5 = player.x;
+	if (player.x > 0x3000){
+		tmp1 = (player.x - 0x3000) >> 8;
+        if (tmp1 > 3) tmp1 = 3; // max scroll change
+		scroll_x += tmp1;
+		high_byte(player.x) = high_byte(player.x) - tmp1;
+	}
 
-    
-    if (pad & PAD_UP) --scroll_y;
-    if (pad & PAD_DOWN) ++scroll_y;
-    while (scroll_y > 0xEF) --scroll_y;
-    while (scroll_y < 0x10) ++scroll_y;
+    set_scroll_x(scroll_x);
     set_scroll_y(scroll_y);
-    
 }

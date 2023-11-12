@@ -11,21 +11,23 @@ void state_game(){
 
     ppu_on_all();
 
+    gamemode = 0x01;
     while (1){
         
         ppu_wait_nmi();
         famistudio_update();
+        oam_clear();
 
         pad = pad_poll(0); // read the first controller
 		pad_new = get_pad_new(0);
     
         switch (gamemode) {
-            case 0x01: break;
+            case 0x01: cube_movement(); break;
         }
 
-        //cube_movement();
-
-        do_the_scroll_thing();
+        
+        
+        oam_meta_spr(high_byte(player.x),high_byte(player.y)-1,Cube_0);
         draw_screen_R();
         gray_line();
     }

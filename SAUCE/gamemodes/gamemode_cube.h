@@ -1,99 +1,161 @@
 void cube_movement(void){
-	// handle x
+	
+// handle x
+
 	old_x = player.x;
 	
+	player.vel_x = CUBE_SPEED_X1;
+	/*
 	if(pad & PAD_LEFT){
-		player.vel_x = -CUBE_SPEED_X1;
+		direction = LEFT;
+		
+        if(player.vel_x >= DECEL){
+            player.vel_x -= DECEL;
+        }
+        else if(player.vel_x > 0){
+            player.vel_x = 0;
+        }
+		else {
+			player.vel_x -= ACCEL;
+			if(player.vel_x < -MAX_SPEED) player.vel_x = -MAX_SPEED;
+		}
 	}
 	else if (pad & PAD_RIGHT){
-		player.vel_x = CUBE_SPEED_X1;
+		
+		direction = RIGHT;
+
+		if(player.vel_x <= DECEL){
+            player.vel_x += DECEL;
+        }
+        else if(player.vel_x < 0){
+            player.vel_x = 0;
+        }
+		else {
+			player.vel_x += ACCEL;
+			if(player.vel_x >= MAX_SPEED) player.vel_x = MAX_SPEED;
+		}
 	}
 	else { // nothing pressed
-		player.vel_x = 0;
+		if(player.vel_x >= ACCEL) player.vel_x -= ACCEL;
+		else if(player.vel_x < -ACCEL) player.vel_x += ACCEL;
+		else player.vel_x = 0;
 	}
-	
+	*/
 	player.x += player.vel_x;
 	
-	if(player.x > 0xf100) { // too far, don't wrap around
+	if(player.x > 0xf000) { // too far, don't wrap around
         
-        if(old_x >= 0x8000){
-            player.x = 0xf100; // max right
+        if(old_x >= 0xf000){
+            player.x = 0xf000; // max right
         }
         else{
             player.x = 0x0000; // max left
         }
         
+		player.vel_x = 0;
 	} 
 	
+
+
+	Generic.x = high_byte(player.x); // this is much faster than passing a pointer to player
+	Generic.y = high_byte(player.y);
+	Generic.width = CUBE_WIDTH;
+	Generic.height = CUBE_HEIGHT;
 	
-	Generic.x = player.x >> 8; // the collision routine needs an 8 bit value
-	Generic.y = player.y >> 8;
-	Generic.width = 15;
-	Generic.height = 15;
-	
-	if(player.vel_x < 0){ // going left
-		if(bg_coll_L() ){ // check collision left
+    if(player.vel_x < 0){
+        if(bg_coll_L() ){ // check collision left
             high_byte(player.x) = high_byte(player.x) - eject_L;
-            
+            player.vel_x = 0;
+            if(player.x > 0xf000) {
+                // no wrap around
+                player.x = 0xf000;
+            }
         }
-	}
-	else if(player.vel_x > 0){ // going right
-		if(bg_coll_R() ){ // check collision right
+    }
+    else if(player.vel_x > 0){
+        if(bg_coll_R() ){ // check collision right
             high_byte(player.x) = high_byte(player.x) - eject_R;
-            
+            player.vel_x = 0;
+            if(player.x > 0xf000) {
+                // no wrap around
+                player.x = 0x0000;
+            }
         }
-	}
-	// else 0, skip it
+    }
+    // skip collision if vel = 0
+    
 	
-	
-	
-	// handle y
-	old_y = player.y;
+// handle y
 
-	if(pad & PAD_UP){
-		player.vel_y = -CUBE_SPEED_X1;
-	}
-	else if (pad & PAD_DOWN){
-		player.vel_y = CUBE_SPEED_X1;
-	}
-	else { // nothing pressed
-		player.vel_y = 0;
-	}
+// gravity
 
+
+
+	// player.vel_y is signed
+	//if(player.vel_y < 0x400){
+	if(!gravity){
+		if(player.vel_y > CUBE_MAX_FALLSPEED){
+			player.vel_y = CUBE_MAX_FALLSPEED;
+		} else player.vel_y += CUBE_GRAVITY;
+	}
+	else{
+		if(player.vel_y < -CUBE_MAX_FALLSPEED){
+			player.vel_y = -CUBE_MAX_FALLSPEED;
+		} else player.vel_y -= CUBE_GRAVITY;
+	}		
+	//}
+	//else{
+	//	player.vel_y = 0x400; // consistent
+	//}
 	player.y += player.vel_y;
 	
-	if(player.y > 0xe100) { // too far, don't wrap around
-        
-        if(old_y >= 0x8000){
-            player.y = 0xe100; // max down
-        }
-        else{
-            player.y = 0x0000; // max up
-        }
-        
-	} 
+	Generic.x = high_byte(player.x);
+	Generic.y = high_byte(player.y);
 	
-	Generic.x = player.x >> 8; // the collision routine needs an 8 bit value
-	Generic.y = player.y >> 8;
-//	Generic.width = HERO_WIDTH; // already is this
-//	Generic.height = HERO_HEIGHT;
+
+		if(player.vel_y > 0){
+			if(bg_coll_D()){ // check collision below
+			    high_byte(player.y) = high_byte(player.y) - eject_D;
+			    player.vel_y = 0;
+			}
+		}
+		else if(player.vel_y < 0){
+			if(bg_coll_U() ){ // check collision above
+				high_byte(player.y) = high_byte(player.y) - eject_U;
+				player.vel_y = 0;
+			}
+		}
+
 	
-	if(player.vel_y < 0){ // going up
-		if(bg_coll_U() ){ // check collision left
-            high_byte(player.y) = high_byte(player.y) - eject_U;
-            
-        }
+	
+
+	
+	// check collision down a little lower than CUBE
+	Generic.y = high_byte(player.y); // the rest should be the same
+	
+	if (!gravity){
+		if(bg_coll_D2()) {
+    	    if(pad & PAD_A) {
+				player.vel_y = JUMP_VEL; // JUMP
+			}
+		}
+		
+	} else {
+		if(bg_coll_U2()) {
+    	    if(pad & PAD_A) {
+				player.vel_y = JUMP_VEL^0xFFFF; // JUMP
+			}
+		}
 	}
-	else if(player.vel_y > 0){ // going down
-		if(bg_coll_D() ){ // check collision right
-            high_byte(player.y) = high_byte(player.y) - eject_D;
-            
-        }
+
+	if(pad_new & PAD_B) {
+		if(gravity) {
+			gravity = 0;
+		}
+		else {
+			gravity = 1;
+		}
 	}
-	// else 0, skip it
-	
-	
-	
-	// scroll
 	do_the_scroll_thing();
 }	
+
