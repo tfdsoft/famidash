@@ -1,12 +1,17 @@
 char bg_collision_sub(void){
-    if(temp_y >= 0xf0) return 0;
+    // THIS DOESN'T READ FROM THE UPPER COLLISION MAP FSR
+    // I CAN'T FIGURE THIS OUT PLEASE HELP
     
+    
+    
+    if(temp_y >= 0xf0) return 0;
+        
 	coordinates = (temp_x >> 4) + (temp_y & 0xf0);
     // we just need 4 bits each from x and y
 	
-	tmp3 = temp_room&1; // high byte
+    tmp3 = temp_room&1; // high byte
     if (tmp3 && coordinates >= 0xc0) return COL_ALL;
-	switch (tmp3){
+    switch (tmp3){
 		case 0: 
             collision = collisionMap0[coordinates];
 		case 1: 
