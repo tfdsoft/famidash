@@ -113,14 +113,14 @@ void cube_movement(void){
 	Generic.x = high_byte(player.x);
 	Generic.y = high_byte(player.y);
 	
-
-		if(player.vel_y > 0){
+	
+		if(player.vel_y > 0 && !gravity){
 			if(bg_coll_D()){ // check collision below
 			    high_byte(player.y) = high_byte(player.y) - eject_D;
 			    player.vel_y = 0;
 			}
 		}
-		else if(player.vel_y < 0){
+		else if(player.vel_y < 0 && gravity){
 			if(bg_coll_U() ){ // check collision above
 				high_byte(player.y) = high_byte(player.y) - eject_U;
 				player.vel_y = 0;

@@ -14,8 +14,8 @@ void do_the_scroll_thing(){
 		high_byte(player.y) = high_byte(player.y) + tmp1;
 	}
 
-	if (player.y > 0xb400){ // change y scroll (upward)
-		tmp1 = (player.y - 0xb400) >> 8;
+	if (player.y > 0xb100){ // change y scroll (upward)
+		tmp1 = (player.y - 0xb100) >> 8;
 		scroll_y += tmp1;
 		high_byte(player.y) = high_byte(player.y) - tmp1;
 	}

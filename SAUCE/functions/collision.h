@@ -6,7 +6,7 @@ char bg_collision_sub(void){
 	
 	tmp3 = temp_room&1; // high byte
     if (tmp3 && coordinates >= 0xc0) return COL_ALL;
-	switch (!tmp3){
+	switch (tmp3){
 		case 0: 
             collision = collisionMap0[coordinates];
 		case 1: 

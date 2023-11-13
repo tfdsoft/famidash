@@ -1,7 +1,7 @@
 void state_game(){
 	ppu_off();
 
-    scroll_y = 0x00;
+    scroll_y = 0xEF;
     load_ground(0);
 
 	init_rld(level);

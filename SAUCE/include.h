@@ -23,9 +23,8 @@
 #include "defines/metatiles.h"  // metatile defines
 #include "defines/sprites.h"    // metasprite defines
 
-#include "level_loading.h"  // goofy ass screen drawing routines
-#include "scroll.h"
-
+#include "functions/level_loading.h"  // goofy ass screen drawing routines
+#include "functions/scroll.h"
 #include "functions/draw_sprites.h"  // sproit drawlign
 #include "functions/collision.h"  // collision
 #include "functions/reset_level.h"  // reset the stage
