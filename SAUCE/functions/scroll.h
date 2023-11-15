@@ -8,19 +8,22 @@ void do_the_scroll_thing(){
 
 
 
-	if (player.y < 0x3c00){ // change y scroll (upward)
-		tmp1 = (0x3c00 - player.y) >> 8;
-		scroll_y -= tmp1;
-		high_byte(player.y) = high_byte(player.y) + tmp1;
+	if (player.y < 0x4000){ // change y scroll (upward)
+		//tmp1 = (0x3c00 - player.y) >> 8;
+		--scroll_y; //-= tmp1;
+		++high_byte(player.y); //= high_byte(player.y) + tmp1;
 	}
 
-	if (player.y > 0xb100){ // change y scroll (upward)
-		tmp1 = (player.y - 0xb100) >> 8;
-		scroll_y += tmp1;
-		high_byte(player.y) = high_byte(player.y) - tmp1;
+	if (scroll_y < 0x10) {++scroll_y; --high_byte(player.y);}
+
+
+	if (player.y > 0x8000){ // change y scroll (upward)
+		//tmp1 = (player.y - 0xb100) >> 8;
+		++scroll_y; //+= tmp1;
+		--high_byte(player.y); //= high_byte(player.y) - tmp1;
 	}
 
-	
+	if (scroll_y > 0xEF) {--scroll_y; ++high_byte(player.y);}
 
     set_scroll_x(scroll_x);
     set_scroll_y(scroll_y);

@@ -28,6 +28,6 @@ void state_game(){
         oam_clear();
         draw_sprites();
         draw_screen_R();
-        gray_line();
+        //gray_line();
     }
 }
