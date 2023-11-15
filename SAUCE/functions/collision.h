@@ -11,12 +11,10 @@ char bg_collision_sub(void){
 	
     tmp3 = temp_room&1; // high byte
     if (tmp3 && coordinates >= 0xc0) return COL_ALL;
-    switch (tmp3){
-		case 0: 
-            collision = collisionMap0[coordinates];
-		case 1: 
-            collision = collisionMap1[coordinates];
-	}
+    if (tmp3 == 0)
+        collision = collisionMap0[coordinates];
+    else
+        collision = collisionMap1[coordinates];
 	
 
     return is_solid[collision];

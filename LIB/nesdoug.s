@@ -306,8 +306,8 @@ _add_scroll_y:
 	
 @adjust:
 	adc #15 ;carry is set, same as clc/adc #16
-	inc TEMP+1 ;x = high
-	ldx TEMP+1
+	ldx TEMP+1 ;x = high
+	inx
 	rts
 	
 	
