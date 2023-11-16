@@ -11,10 +11,10 @@ char bg_collision_sub(void){
 	
     tmp3 = temp_room&1; // high byte
     if (tmp3 && coordinates >= 0xc0) return COL_ALL;
-    if (tmp3 & 1)
-        collision = collisionMap1[coordinates];
-    else
+    if (tmp3 == 0)
         collision = collisionMap0[coordinates];
+    else
+        collision = collisionMap1[coordinates];
 	
 
     return is_solid[collision];
@@ -118,7 +118,6 @@ char bg_coll_D2(void){
 	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte
     temp_room = tmp5 >> 8; // high byte
-    ++temp_y;
     if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 
     tmp5 = Generic.x + scroll_x + Generic.width;
@@ -140,8 +139,8 @@ char bg_coll_U2(void){
     tmp1 = Generic.y;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte
-    temp_room = tmp5 >> 8; // high byte
     --temp_y;
+    temp_room = tmp5 >> 8; // high byte
     if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 
     tmp5 = Generic.x + scroll_x + Generic.width;
@@ -166,6 +165,7 @@ char bg_coll_death(void) {
 	tmp1 = Generic.y + (Generic.width >> 1);
 	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte
+    temp_room = tmp5 >> 8; // high byte
 	if(bg_collision_sub() ) cube_data = 0x01;
 
 	if(cube_data & 0x01) reset_level();

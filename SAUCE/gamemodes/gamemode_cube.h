@@ -158,7 +158,7 @@ void cube_movement(void){
 		}
 	}
 
-	//bg_coll_death();
+	bg_coll_death();
 	do_the_scroll_thing();
 }	
 
