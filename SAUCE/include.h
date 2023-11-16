@@ -20,7 +20,8 @@
 
 #include "famidash.h"   // where everything is declared. don't move this
 
-#include "defines/metatiles.h"  // metatile defines
+#include "../METATILES/metatiles.h"  // metatile defines
+
 #include "defines/sprites.h"    // metasprite defines
 
 #include "functions/level_loading.h"  // goofy ass screen drawing routines

@@ -21,6 +21,8 @@ void state_game(){
         pad = pad_poll(0); // read the first controller
 		pad_new = get_pad_new(0);
 
+        //if (pad_new & PAD_A) famistudio_sfx_play(0, 0);
+
         switch (gamemode) {
             case 0x01: cube_movement(); break;
             default: break;

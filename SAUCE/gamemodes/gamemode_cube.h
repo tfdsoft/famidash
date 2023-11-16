@@ -127,7 +127,7 @@ void cube_movement(void){
 			}
 		}
 
-	
+	bg_coll_death();
 	
 
 	
@@ -135,16 +135,19 @@ void cube_movement(void){
 	Generic.y = high_byte(player.y); // the rest should be the same
 	
 	if (!gravity){
-		if(bg_coll_D2()) {
-    	    if(pad & PAD_A) {
-				player.vel_y = JUMP_VEL; // JUMP
+		if (player.vel_y >= 0){
+			if(bg_coll_D2()) {
+				if(pad & PAD_A) {
+					player.vel_y = JUMP_VEL; // JUMP
+				}
 			}
 		}
-		
 	} else {
-		if(bg_coll_U2()) {
-    	    if(pad & PAD_A) {
-				player.vel_y = JUMP_VEL^0xFFFF; // JUMP
+		if (player.vel_y <= 0){
+			if(bg_coll_U2()) {
+				if(pad & PAD_A) {
+					player.vel_y = JUMP_VEL^0xFFFF; // JUMP
+				}
 			}
 		}
 	}
@@ -158,7 +161,7 @@ void cube_movement(void){
 		}
 	}
 
-	bg_coll_death();
+	
 	do_the_scroll_thing();
 }	
 

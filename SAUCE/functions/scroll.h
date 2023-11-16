@@ -8,12 +8,12 @@ void do_the_scroll_thing(){
 
 
 
-	if (player.y < 0x6000){ // change y scroll (upward)
+	if (player.y < 0x6000 && (scroll_y > 0x08)){ // change y scroll (upward)
 		tmp1 = (0x6000 - player.y) >> 8;
 		scroll_y -= tmp1;
 		high_byte(player.y) = high_byte(player.y) + tmp1;
 	}
-	while (scroll_y < 0x10) {
+	while (scroll_y < 0x08) {
 		++scroll_y;
 		--high_byte(player.y);
 	}
