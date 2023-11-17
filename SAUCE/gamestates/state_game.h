@@ -7,7 +7,7 @@ void state_game(){
 	init_rld(level);
     unrle_first_screen();
 
-    famistudio_music_play(song_stereo_madness);
+    famistudio_music_play(song_custom_ultimatedestruction);
 
     ppu_on_all();
 
