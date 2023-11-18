@@ -25,8 +25,14 @@ void state_game(){
 
         switch (gamemode) {
             case 0x01: cube_movement(); break;
+            case 0x02: break;
+            case 0x04: break;
+            case 0x08: break;
             default: break;
         }
+        bg_coll_death();
+        do_the_scroll_thing();
+
         oam_clear();
         draw_sprites();
         draw_screen_R();
