@@ -9,11 +9,16 @@
 #include "../MUSIC/EXPORTS/musicDefines.h" // sound driver C defines
 
 
+
+
 // grounds goes here
 #pragma rodata-name (push, "ROM_BANK_00")
 #include "../LEVELS/grounddata.h"
 #include "../LEVELS/groundlist.h"
 #pragma rodata-name (pop)
+
+
+
 
 // banks set inside level data due to banking
 #include "../LEVELS/objdefines.h"   // object defines for easier implementation
@@ -21,14 +26,21 @@
 
 #include "../LEVELS/leveldata.h"    // level data goes here
 
+
+
+
 #pragma rodata-name (push, "RODATA_2")
 #include "../LEVELS/levellist.h"    // level order goes here
 #pragma rodata-name (pop)
 
+
+
+
 #include "famidash.h"   // where everything is declared. don't move this
 
-#include "../METATILES/metatiles.h"  // metatile defines
 
+
+#include "../METATILES/metatiles.h"  // metatile defines
 #include "defines/sprites.h"    // metasprite defines
 
 #include "functions/level_loading.h"  // goofy ass screen drawing routines
