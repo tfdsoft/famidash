@@ -7,7 +7,7 @@ void state_game(){
 	init_rld(level);
     unrle_first_screen();
 
-    song = song_dry_out;
+    song = song_polargeist;
     famistudio_music_play(song);
 
     ppu_on_all();
