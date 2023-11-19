@@ -3,8 +3,6 @@
 #define MENU 0x01
 #define GAME 0x02
 
-// uhh something i can get rid of later
-
 // physics defines
 #define PAD_HEIGHT_YELLOW -0x760
 

@@ -1,7 +1,9 @@
 // GROUND DATA ================================================
+//
 // This is where the RLE data for the different grounds go.
 // See groundlist.h for a tutorial on how to add custom
 // grounds.
+//
 // ============================================================
 const unsigned char ground0[121]={
 0x01,0x00,0x01,0xfe,0x00,0x01,0xfe,0x00,0x01,0xfe,0x00,0x01,0x02,0x0a,0x0b,0x01,

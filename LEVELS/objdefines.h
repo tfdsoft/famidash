@@ -1,4 +1,14 @@
-enum{
+// OBJECT DEFINES =============================================
+//
+// This is where the obj ids are defined. You probably don't
+// want to touch this unless you're planning to add custom
+// objects. I highly advise against doing this, since it strays
+// away from the vision of this project.
+//
+// ============================================================
+
+
+enum{ // yes, i'm fully aware that using enum is bad.
     PORTAL_GAMEMODE_CUBE,
     PORTAL_GAMEMODE_SHIP,
     PORTAL_GRAVITY_DOWN,
