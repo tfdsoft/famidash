@@ -15,7 +15,7 @@
 
 
 const unsigned char * const level_list[] = {
-    stereomadness_,
+    test_,
     };
 
 

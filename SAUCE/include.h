@@ -38,6 +38,8 @@
 
 
 // THE GAME MODE DEFINES //
+#include "functions/x_movement.h"
+
 #include "gamemodes/gamemode_cube.h"
 
 

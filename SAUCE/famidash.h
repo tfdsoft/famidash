@@ -73,11 +73,9 @@ unsigned char level;
 
 unsigned char gameState;
 
-unsigned short scroll_x;
+unsigned long scroll_x; // gotta love massive levels amirite fellas
 unsigned short scroll_y;
 unsigned char scroll_count;
-
-long unsigned int test;
 
 
 

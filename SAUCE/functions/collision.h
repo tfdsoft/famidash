@@ -24,7 +24,7 @@ char bg_collision_sub(void){
 
 char bg_coll_L(void){
     // check 2 points on the left side
-    tmp5 = Generic.x + scroll_x;
+    tmp5 = Generic.x + low2bytes(scroll_x);
     temp_x = (char)tmp5; // low byte
 
     eject_L = temp_x | 0xf0;
@@ -46,7 +46,7 @@ char bg_coll_L(void){
 
 char bg_coll_R(void){
     // check 2 points on the right side
-	tmp5 = Generic.x + scroll_x + Generic.width;
+	tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
     temp_x = (char)tmp5; // low byte
 
     eject_R = (temp_x + 1) & 0x0f;
@@ -68,7 +68,7 @@ char bg_coll_R(void){
 
 char bg_coll_U(void){
     // check 2 points on the top side
-    tmp5 = Generic.x + scroll_x;
+    tmp5 = Generic.x + low2bytes(scroll_x);
     temp_x = (char)tmp5; // low byte
     
 	tmp1 = Generic.y;
@@ -78,7 +78,7 @@ char bg_coll_U(void){
     eject_U = temp_y | 0xf0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
-    tmp5 = Generic.x + scroll_x + Generic.width;
+    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
     temp_x = (char)tmp5; // low byte
     
     if(bg_collision_sub() & COL_ALL) return 1;
@@ -88,7 +88,7 @@ char bg_coll_U(void){
 
 char bg_coll_D(void){
     // check 2 points on the bottom side
-	tmp5 = Generic.x + scroll_x;
+	tmp5 = Generic.x + low2bytes(scroll_x);
     temp_x = (char)tmp5; // low byte
     
 	tmp1 = Generic.y + Generic.height;
@@ -98,7 +98,7 @@ char bg_coll_D(void){
     eject_D = (temp_y + 1) & 0x0f;
     if(bg_collision_sub() & COL_ALL) return 1;
     
-    tmp5 = Generic.x + scroll_x + Generic.width;
+    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
     temp_x = (char)tmp5; // low byte
     
     if(bg_collision_sub() & COL_ALL) return 1;
@@ -111,7 +111,7 @@ char bg_coll_D(void){
 char bg_coll_D2(void){
     // check 2 points on the bottom side
     // a little lower, for jumping
-    tmp5 = Generic.x + scroll_x;
+    tmp5 = Generic.x + low2bytes(scroll_x);
     temp_x = (char)tmp5; // low byte
 
     tmp1 = Generic.y + Generic.height + 2;
@@ -120,7 +120,7 @@ char bg_coll_D2(void){
     temp_room = tmp5 >> 8; // high byte
     if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 
-    tmp5 = Generic.x + scroll_x + Generic.width;
+    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
     temp_x = (char)tmp5; // low byte
     
     if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
@@ -133,7 +133,7 @@ char bg_coll_D2(void){
 char bg_coll_U2(void){
     // check 2 points on the bottom side
     // a little lower, for jumping
-    tmp5 = Generic.x + scroll_x;
+    tmp5 = Generic.x + low2bytes(scroll_x);
     temp_x = (char)tmp5; // low byte
 
     tmp1 = Generic.y - 2;
@@ -143,7 +143,7 @@ char bg_coll_U2(void){
     temp_room = tmp5 >> 8; // high byte
     if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
 
-    tmp5 = Generic.x + scroll_x + Generic.width;
+    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
     temp_x = (char)tmp5; // low byte
     
     if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
@@ -159,7 +159,7 @@ char bg_coll_death(void) {
 
 
 	// middle point collision to kill, since hitboxes don't exist
-	tmp5 = Generic.x + scroll_x + (Generic.width >> 1) - 1;
+	tmp5 = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1) - 1;
 	temp_x = (char)tmp5; // low byte
 
 	tmp1 = Generic.y + (Generic.width >> 1);

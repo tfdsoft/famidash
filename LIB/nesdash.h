@@ -7,3 +7,8 @@
 // Note: sprid removed for speed
 
 void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const unsigned char *data);
+
+
+
+#define low2bytes(a) *((unsigned short*)&a)
+#define high2bytes(a) *((unsigned short*)&a+1)

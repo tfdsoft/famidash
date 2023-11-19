@@ -23,6 +23,8 @@ void state_game(){
 
         if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
 
+
+        x_movement();
         switch (gamemode) {
             case 0x01: cube_movement(); break;
             case 0x02: break;
