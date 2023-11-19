@@ -1,6 +1,7 @@
 ; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
 
-.import _rld_column, _level_list, _collisionMap0, _collisionMap1 ; used by C code
+.import _level_list, _sprite_list, _bank_list
+.import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_count, _scroll_x
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
@@ -23,6 +24,9 @@
     columnBuffer:   .res 27; column buffer, to be pushed to the collision map
 
     current_song_bank: .res 1
+
+    level_data_bank: .res 1
+    ;TODO: sprite_data_bank: .res 1
 
 
 .segment "CODE_2"
@@ -108,21 +112,41 @@ _init_rld:
     ; A has the level ID
 
     ; Get level_data pointer:
-    LDY #>_level_list   ;
-    ASL                 ;   Get high byte,
-    BCC :+              ;   Adjust if level num >= $80
-        INY             ;
-    : STY ptr1+1        ;__ Store high byte
-    LDY #<_level_list   ;   Get and store low byte
-    STY ptr1            ;__
+    LDY #>_level_list   ;   Get high byte of level_list ptr
+    STY ptr1+1          ;__
+    ;TODO: LDY #>_sprite_list  ;   Get high byte of sprite_list ptr
+    ;TODO: STY ptr2+1          ;__
+    LDY #>_bank_list    ;__ Get high byte of bank_list ptr
+    ASL                 ;
+    BCC :+              ;
+        INC ptr1+1      ;   Adjust high bytes if level num >= $80
+        INC ptr2+1      ;
+        INY             ;__
+    : STY ptr3+1        ;__ Store high byte of bank_list ptr
+    LDY #<_level_list   ;
+    STY ptr1            ;
+    ;TODO: LDY #<_sprite_list  ;   Get and store low bytes
+    ;TODO: STY ptr2            ;
+    LDY #<_bank_list    ;
+    STY ptr3            ;__
 
     TAY                 ;__ Get the pointer
 
-    LDA (ptr1),y        ;
-    STA level_data      ;   Load low byte of level data pointer
-    INY                 ;__
+    LDA (ptr1),y        ;   Load low byte of level data pointer
+    STA level_data      ;__
+    ;TODO: LDA (ptr2),y        ;   Load low byte of sprite data pointer
+    ;TODO: STA insert_var_here ;__
+    LDA (ptr3),y        ;   Load level bank
+    STA level_data_bank ;__
+
+    INY                 ;   Now do high bytes
+
     LDA (ptr1),y        ;
     STA level_data+1    ;__ Load high byte of level data pointer
+    ;TODO: LDA (ptr2),y        ;   Load low byte of sprite data pointer
+    ;TODO: STA insert_var_here+1;__
+    ;TODO: LDA (ptr3),y        ;   Load sprite bank
+    ;TODO: STA sprite_data_bank ;__
     
 
     LDY #$00            ;-  For both (zp),y addressing and rld_column
