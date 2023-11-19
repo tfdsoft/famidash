@@ -3,6 +3,7 @@
 
 #include "../LIB/neslib.h"  // common nes library
 #include "../LIB/nesdoug.h" // slightly less common nes library (thanks nesdoug)
+#include "../LIB/mapper.h"  // MMC3 functions
 #include "../LIB/nesdash.h" // custom stuff made specifically for famidash
 #include "../LIB/famistudio_cc65.h" // sound driver
 
