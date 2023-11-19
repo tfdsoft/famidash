@@ -26,7 +26,7 @@
     current_song_bank: .res 1
 
     level_data_bank: .res 1
-    ;TODO: sprite_data_bank: .res 1
+    sprite_data_bank: .res 1
 
 
 .segment "CODE_2"
@@ -145,25 +145,49 @@ _init_rld:
     STA level_data+1    ;__ Load high byte of level data pointer
     ;TODO: LDA (ptr2),y        ;   Load low byte of sprite data pointer
     ;TODO: STA insert_var_here+1;__
-    ;TODO: LDA (ptr3),y        ;   Load sprite bank
-    ;TODO: STA sprite_data_bank ;__
+    TODO: LDA (ptr3),y        ;   Load sprite bank
+    TODO: STA sprite_data_bank ;_
     
 
     LDY #$00            ;-  For both (zp),y addressing and rld_column
     STY _rld_column     ;__ Reset scrolling
-    
+
+    LDA level_data_bank
+    LDX #MMC3_REG_SEL_PRG_BANK_1
+    JSR mmc3_internal_set_bank
+
 
     LDA (level_data),y  ;
     STA rld_value       ;   Load rld_value, ++level_data
     INCW level_data     ;__
 
     LDA (level_data),y  ;
-    STA rld_run         ;   Load rld_run, ++level_data
-    INCW level_data     ;__
+    STA rld_run         ;__ Load rld_run, ++level_data
+    JSR incwlvl_checkC000
 
+    LDA mmc3PRG1Bank                ;
+    LDX #MMC3_REG_SEL_PRG_BANK_1    ;   Reset bank, exit routine
+    JMP mmc3_internal_set_bank      ;__
+
+incwlvl_checkC000:
+    INC level_data
+    BNE :+
+        LDX level_data+1
+        INX
+        CPX #$C0
+        STX level_data+1
+        BNE :+
+        ; switch banks
+        LDX #$A0            ;   Reset memory-mapped ptr
+        STX level_data+1    ;__
+        LDX level_data_bank ;
+        INX                 ;   Increment bank
+        STX level_data_bank ;__
+        TXA                             ;
+        LDX #MMC3_REG_SEL_PRG_BANK_1    ;   Switch the bank
+        JMP mmc3_internal_set_bank      ;__
+    :   
     RTS
-
-
 
 _unrle_next_column:
     ; The C code being ported:
@@ -210,8 +234,8 @@ _unrle_next_column:
         INCW level_data     ;__
 
         LDA (level_data, X) ;
-        STA rld_run         ;   Load rld_run, ++level_data
-        INCW level_data     ;__
+        STA rld_run         ;__ Load rld_run, ++level_data
+        JSR incwlvl_checkC000
 
         LDA rld_value
 
@@ -272,7 +296,9 @@ _unrle_next_column:
     AND #$0F
     STA _rld_column
 
-    RTS
+    LDA mmc3PRG1Bank                ;
+    LDX #MMC3_REG_SEL_PRG_BANK_1    ;   Reset bank, exit routine
+    JMP mmc3_internal_set_bank      ;__
 
 shiftBy6Table:
     .byte $00, $40, $80, $C0
