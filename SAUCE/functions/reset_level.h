@@ -7,7 +7,7 @@ void reset_level(void) {
 	tmp1 = 0;
 	while (tmp1 < 60){
 		ppu_wait_nmi();
-		famistudio_update();
+		music_update();
 		++tmp1;
 		gray_line();
 	}
@@ -25,6 +25,6 @@ void reset_level(void) {
     player.vel_y = 0;
 	cube_data = 0;
 	ppu_on_all();
-	famistudio_music_play(song);
+	music_play(song);
 
 }

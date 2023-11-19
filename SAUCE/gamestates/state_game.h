@@ -8,7 +8,7 @@ void state_game(){
     unrle_first_screen();
 
     song = song_polargeist;
-    famistudio_music_play(song);
+    music_play(song);
 
     ppu_on_all();
 
@@ -16,7 +16,7 @@ void state_game(){
     while (1){
         
         ppu_wait_nmi();
-        famistudio_update();
+        music_update();
         
 
         pad = pad_poll(0); // read the first controller
