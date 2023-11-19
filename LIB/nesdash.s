@@ -145,8 +145,8 @@ _init_rld:
     STA level_data+1    ;__ Load high byte of level data pointer
     ;TODO: LDA (ptr2),y        ;   Load low byte of sprite data pointer
     ;TODO: STA insert_var_here+1;__
-    TODO: LDA (ptr3),y        ;   Load sprite bank
-    TODO: STA sprite_data_bank ;_
+    LDA (ptr3),y        ;   Load sprite bank
+    STA sprite_data_bank ;_
     
 
     LDY #$00            ;-  For both (zp),y addressing and rld_column
