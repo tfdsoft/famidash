@@ -73,10 +73,10 @@ unsigned char level;
 
 unsigned char gameState;
 
-unsigned long scroll_x; // gotta love massive levels amirite fellas
+unsigned long int scroll_x; // gotta love massive levels amirite fellas
 unsigned short scroll_y;
 unsigned char scroll_count;
-
+unsigned char song;
 
 
 const unsigned char * const active_level[] = {collisionMap0,collisionMap1};

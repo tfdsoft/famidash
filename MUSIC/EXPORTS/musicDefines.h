@@ -1,7 +1,12 @@
 #define song_stereo_madness 0
-#define song_custom_ultimatedestruction 1
-#define song_menu_theme 2
-#define song_max 3
+#define song_back_on_track 1
+#define song_polargeist 2
+#define song_dry_out 3
+#define song_base_after_base 4
+#define song_cant_let_go 5
+#define song_jumper 6
+#define song_menu_theme 7
+#define song_max 8
 #define sfx_death 0
 #define sfx_click 1
 #define sfx_max 2
