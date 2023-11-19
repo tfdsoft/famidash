@@ -35,7 +35,7 @@ const unsigned char * const level_list[] = {
     };
 
 const unsigned char * const sprite_list[] = {
-    // no sprite data for now lmfao
+    stereomadness_SP,
 };
 
 const unsigned char bank_list[] = {

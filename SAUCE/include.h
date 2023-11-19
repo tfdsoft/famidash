@@ -16,6 +16,9 @@
 #pragma rodata-name (pop)
 
 // banks set inside level data due to banking
+#include "../LEVELS/objdefines.h"   // object defines for easier implementation
+                                    // stolen from the old repo lol
+
 #include "../LEVELS/leveldata.h"    // level data goes here
 
 #pragma rodata-name (push, "RODATA_2")
