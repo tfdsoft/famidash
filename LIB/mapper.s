@@ -32,6 +32,8 @@
 
 .segment "ZEROPAGE"
     ; Used to track whether a register write was interrupted, so we can try again if needed.
+    ; alexmush comment:
+    ; not anymore, just used for the PRG mode
     mmc3ChrInversionSetting: .res 1
 .segment "BSS"
     mmc3PRG1Bank: .res 1    ;because famistudio updates
