@@ -143,14 +143,11 @@ _init_rld:
     LDA _bank_list,y    ;   Get level data bank
     STA level_data_bank ;__
     
-
-    LDY #$00            ;-  For both (zp),y addressing and rld_column
-    STY _rld_column     ;__ Reset scrolling
-
-    LDA level_data_bank
     LDX #MMC3_REG_SEL_PRG_BANK_1
     JSR mmc3_internal_set_bank
 
+    LDY #$00            ;-  For both (zp),y addressing and rld_column
+    STY _rld_column     ;__ Reset scrolling
 
     LDA (level_data),y  ;
     STA rld_value       ;   Load rld_value, ++level_data
@@ -160,9 +157,7 @@ _init_rld:
     STA rld_run         ;__ Load rld_run, ++level_data
     JSR incwlvl_checkC000
 
-    LDA mmc3PRG1Bank                ;
-    LDX #MMC3_REG_SEL_PRG_BANK_1    ;   Reset bank, exit routine
-    JMP mmc3_internal_set_bank      ;__
+    JMP resetPRG1BankExit
 
 incwlvl_checkC000:
     INC level_data
@@ -209,6 +204,10 @@ _unrle_next_column:
         ;     ++rld_column;
         ; 	rld_column &= 0x0F;
         ; }
+
+    LDA level_data_bank
+    LDX #MMC3_REG_SEL_PRG_BANK_1
+    JSR mmc3_internal_set_bank
     
     LDY #$00
     LDX #$00
@@ -291,9 +290,7 @@ _unrle_next_column:
     AND #$0F
     STA _rld_column
 
-    LDA mmc3PRG1Bank                ;
-    LDX #MMC3_REG_SEL_PRG_BANK_1    ;   Reset bank, exit routine
-    JMP mmc3_internal_set_bank      ;__
+    JMP resetPRG1BankExit
 
 shiftBy6Table:
     .byte $00, $40, $80, $C0
@@ -439,9 +436,7 @@ _music_play:
     PLA
     JSR famistudio_music_play
     
-    LDA mmc3PRG1Bank
-    LDX #MMC3_REG_SEL_PRG_BANK_1
-    JMP mmc3_internal_set_bank
+    JMP resetPRG1BankExit
 
 ; Tables currently generated manually
 
@@ -462,6 +457,7 @@ _music_update:
 
     JSR famistudio_update
 
+resetPRG1BankExit:
     LDA mmc3PRG1Bank
     LDX #MMC3_REG_SEL_PRG_BANK_1
     JMP mmc3_internal_set_bank

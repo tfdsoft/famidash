@@ -3,9 +3,8 @@
 // NOTE: DO *NOT* PUT LEVEL DATA HERE.
 // Level order is defined here, and consists of 3 tables. The 
 // first table specifies the level data pointers, the second -
-// sprite data pointers, and the third one - interleaved ROM
-// banks for both (in order of starting level data bank, 
-// starting sprite data bank). Here is an example:
+// sprite data pointers, and the third one - the ROM bank of 
+// the level data. Here is an example:
 //
 // const unsigned char * const your_moms_house[] = {
 //    level_name_1_, 
@@ -38,8 +37,8 @@ const unsigned char * const sprite_list[] = {
 };
 
 const unsigned char bank_list[] = {
-    0,
-    1
+    1,
+    2
 };
 
 
