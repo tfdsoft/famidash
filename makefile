@@ -33,7 +33,7 @@ define ld65IncDir
 endef
 
 NAME = famidash
-CFG = CONFIG/nrom_32k_vert.cfg
+CFG = CONFIG/mmc3.cfg
 OUTDIR = BUILD
 TMPDIR = TMP
 
@@ -62,7 +62,7 @@ $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
 	@echo $(NAME).nes created
 
 $(TMPDIR)/crt0.o: crt0.s GRAPHICS/famidash.chr LIB/*.s MUSIC/EXPORTS/*.s MUSIC/EXPORTS/music.dmc
-	$(CA65) crt0.s -g -I LIB $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
+	$(CA65) crt0.s -U -g -I LIB $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
 
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 	$(CA65) $(call ca65IncDir,LIB) $(TMPDIR)/$(NAME).s -g

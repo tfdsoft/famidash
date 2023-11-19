@@ -6,8 +6,11 @@
 .import _DATA_PTR
 .import pusha, pushax
 
+.import FIRST_MUSIC_BANK
+
 .export _oam_meta_spr_vflipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
+.export _music_play, _music_update
 
 ;void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const unsigned char *data);
 
@@ -19,8 +22,10 @@
 .segment "BSS"
     columnBuffer:   .res 27; column buffer, to be pushed to the collision map
 
+    current_song_bank: .res 1
 
-.segment "CODE"
+
+.segment "CODE_2"
 
 _oam_meta_spr_vflipped:
 
@@ -352,3 +357,67 @@ _draw_screen_R:
     ORA #$20                ;__ index += 0x20
     JMP _buffer_4_mt        ;__ Finish off routine by JMP
     ; Because i JMPed, the routine is over
+
+
+;void __fastcall__ music_play(unsigned char song);
+_music_play:
+    LDY #$00
+    TSX
+@bank_loop:
+    PHA
+    SEC
+    SBC @music_counts, Y
+    BCC @found_bank
+    INY
+    TXS ;Act as if no PHA happened
+    BCS @bank_loop  ; BRA
+    
+@found_bank:
+    TYA
+    PHA
+    ; No CLC needed as we jumped here with a BCC
+    ADC #<FIRST_MUSIC_BANK
+    LDX #MMC3_REG_SEL_PRG_BANK_1
+    JSR mmc3_internal_set_bank
+    PLA
+    CMP current_song_bank
+    BEQ :+
+    ;If different bank than before reinitalize FS
+        STA current_song_bank
+        TAY
+        LDX @music_data_locations_lo, Y
+        LDA @music_data_locations_hi, Y
+        TAY
+        LDA #$01
+        JSR famistudio_init
+    :
+    PLA
+    JSR famistudio_music_play
+    
+    LDA mmc3PRG1Bank
+    LDX #MMC3_REG_SEL_PRG_BANK_1
+    JMP mmc3_internal_set_bank
+
+; Tables currently generated manually
+
+@music_data_locations_lo:
+.byte <music_data_1, <music_data_2, <music_data_3
+@music_data_locations_hi:
+.byte >music_data_1, >music_data_2, >music_data_3
+@music_counts:
+.byte 6, 18, $FF  ;last bank is marked with an FF to always stop bank picking
+
+; void __fastcall__ music_update (void);
+_music_update:
+    LDA current_song_bank
+    CLC
+    ADC #$09
+    LDX #MMC3_REG_SEL_PRG_BANK_1
+    JSR mmc3_internal_set_bank
+
+    JSR famistudio_update
+
+    LDA mmc3PRG1Bank
+    LDX #MMC3_REG_SEL_PRG_BANK_1
+    JMP mmc3_internal_set_bank
+; Because i JMPed, the routine is over

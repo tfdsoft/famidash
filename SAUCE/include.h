@@ -10,13 +10,17 @@
 
 
 // grounds goes here
+#pragma rodata-name (push, "ROM_BANK_00")
 #include "../LEVELS/ground0.h"
 #include "../LEVELS/ground.h"
+#pragma rodata-name (pop)
 
-
+// banks set inside level data due to banking
 #include "../LEVELS/leveldata.h"    // level data goes here
-#include "../LEVELS/levellist.h"    // level order goes here
 
+#pragma rodata-name (push, "RODATA_2")
+#include "../LEVELS/levellist.h"    // level order goes here
+#pragma rodata-name (pop)
 
 #include "famidash.h"   // where everything is declared. don't move this
 
