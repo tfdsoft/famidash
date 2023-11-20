@@ -47,6 +47,14 @@
         sty MMC3_REG_BANK_DATA
         rts
 
+    _mmc3_pop_prg_bank_1:
+        LDX mmc3PRG1Bank
+        LDA #MMC3_REG_SEL_PRG_BANK_1
+        ora mmc3ChrInversionSetting
+        sta MMC3_REG_BANK_SELECT
+        STX MMC3_REG_BANK_DATA
+        rts
+    .export _mmc3_pop_prg_bank_1
 
     ; Store mirroring value to mmc3 register
     mmc3_set_prg_bank_0:
@@ -58,9 +66,10 @@
     mmc3_set_prg_bank_1:
     _mmc3_set_prg_bank_1:
         STA mmc3PRG1Bank
+    _mmc3_tmp_prg_bank_1:
         ldx #MMC3_REG_SEL_PRG_BANK_1
         jmp mmc3_internal_set_bank
-    .export _mmc3_set_prg_bank_1
+    .export _mmc3_set_prg_bank_1, _mmc3_tmp_prg_bank_1
 
     mmc3_set_2kb_chr_bank_0:
     _mmc3_set_2kb_chr_bank_0:

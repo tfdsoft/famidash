@@ -2,7 +2,7 @@
 
 .import _level_list, _sprite_list, _bank_list
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
-.import _scroll_count, _scroll_x
+.import _scroll_count, _scroll_x, _level_data_bank
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
 .import pusha, pushax
@@ -24,8 +24,6 @@
     columnBuffer:   .res 27; column buffer, to be pushed to the collision map
 
     current_song_bank: .res 1
-
-    level_data_bank: .res 1
 
 .segment "CODE_2"
 
@@ -141,7 +139,7 @@ _init_rld:
 
     LDY tmp1            ;__ Load pointer to bank table
     LDA _bank_list,y    ;   Get level data bank
-    STA level_data_bank ;__
+    STA _level_data_bank;__
     
     LDX #MMC3_REG_SEL_PRG_BANK_1
     JSR mmc3_internal_set_bank
@@ -157,11 +155,12 @@ _init_rld:
     STA rld_run         ;__ Load rld_run, ++level_data
     JSR incwlvl_checkC000
 
-    JMP resetPRG1BankExit
+    JMP _mmc3_pop_prg_bank_1
 
 incwlvl_checkC000:
     INC level_data
     BNE :+
+        STX TEMP
         LDX level_data+1
         INX
         CPX #$C0
@@ -170,12 +169,11 @@ incwlvl_checkC000:
         ; switch banks
         LDX #$A0            ;   Reset memory-mapped ptr
         STX level_data+1    ;__
-        LDX level_data_bank ;
-        INX                 ;   Increment bank
-        STX level_data_bank ;__
-        TXA                             ;
+        INC _level_data_bank ;_ Increment bank
+        LDA _level_data_bank
         LDX #MMC3_REG_SEL_PRG_BANK_1    ;   Switch the bank
-        JMP mmc3_internal_set_bank      ;__
+        JSR mmc3_internal_set_bank      ;__
+        LDX TEMP
     :   
     RTS
 
@@ -205,10 +203,6 @@ _unrle_next_column:
         ; 	rld_column &= 0x0F;
         ; }
 
-    LDA level_data_bank
-    LDX #MMC3_REG_SEL_PRG_BANK_1
-    JSR mmc3_internal_set_bank
-    
     LDY #$00
     LDX #$00
     LDA rld_value
@@ -289,8 +283,7 @@ _unrle_next_column:
     TXA
     AND #$0F
     STA _rld_column
-
-    JMP resetPRG1BankExit
+    RTS
 
 shiftBy6Table:
     .byte $00, $40, $80, $C0
@@ -320,6 +313,11 @@ _draw_screen_R:
         ;     ++scroll_count;
         ;     scroll_count &= 7; //mask off top bits, keep it 0-3
         ; }
+
+
+    LDA _level_data_bank
+    LDX #MMC3_REG_SEL_PRG_BANK_1
+    JSR mmc3_internal_set_bank
     
     LDA _scroll_x           ;__ Highbyte of scroll_x
     CLC
@@ -397,7 +395,8 @@ _draw_screen_R:
     :
     LDA _tmp4               ;
     ORA #$20                ;__ index += 0x20
-    JMP _buffer_4_mt        ;__ Finish off routine by JMP
+    JSR _buffer_4_mt        ;__
+    JMP _mmc3_pop_prg_bank_1 ;__ Finish off routine by JMP
     ; Because i JMPed, the routine is over
 
 
@@ -436,7 +435,7 @@ _music_play:
     PLA
     JSR famistudio_music_play
     
-    JMP resetPRG1BankExit
+    JMP _mmc3_pop_prg_bank_1
 
 ; Tables currently generated manually
 
@@ -457,8 +456,4 @@ _music_update:
 
     JSR famistudio_update
 
-resetPRG1BankExit:
-    LDA mmc3PRG1Bank
-    LDX #MMC3_REG_SEL_PRG_BANK_1
-    JMP mmc3_internal_set_bank
 ; Because i JMPed, the routine is over
