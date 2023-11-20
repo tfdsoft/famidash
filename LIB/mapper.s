@@ -66,6 +66,7 @@
     mmc3_set_prg_bank_1:
     _mmc3_set_prg_bank_1:
         STA mmc3PRG1Bank
+    mmc3_tmp_prg_bank_1:
     _mmc3_tmp_prg_bank_1:
         ldx #MMC3_REG_SEL_PRG_BANK_1
         jmp mmc3_internal_set_bank

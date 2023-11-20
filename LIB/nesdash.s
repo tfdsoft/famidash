@@ -411,7 +411,7 @@ _music_play:
     PHA
     ; No CLC needed as we jumped here with a BCC
     ADC #<FIRST_MUSIC_BANK
-    JSR mmc3_set_prg_bank_1
+    JSR mmc3_tmp_prg_bank_1
     PLA
     CMP current_song_bank
     BEQ :+
