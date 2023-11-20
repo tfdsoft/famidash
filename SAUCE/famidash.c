@@ -16,7 +16,8 @@
 //                    DO. NOT. REMOVE. IT.
 //
 // If you have issues with the repository and the cause is you
-// removing this line, I will not talk to you further.
+// removing this line, the entire team will be informed to not
+// communicate with you further.
 #include "include.h"
 // ============================================================
 
