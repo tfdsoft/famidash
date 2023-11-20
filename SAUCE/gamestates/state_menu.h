@@ -4,7 +4,7 @@ void state_menu(){
 	set_scroll_x(0);
     set_scroll_y(0);
 
-	famistudio_music_play(song_menu_theme);
+	music_play(song_menu_theme);
 
 	// make the entire first nametable use bg palette 3
 	vram_adr(0x23C0);
@@ -30,7 +30,7 @@ void state_menu(){
 
 	while (1){
 		ppu_wait_nmi();
-		famistudio_update();
+		music_update();
 
 		pad = pad_poll(0); // read the first controller
 		pad_new = get_pad_new(0);

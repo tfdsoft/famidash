@@ -3,25 +3,45 @@
 
 #include "../LIB/neslib.h"  // common nes library
 #include "../LIB/nesdoug.h" // slightly less common nes library (thanks nesdoug)
+#include "../LIB/mapper.h"  // MMC3 functions
 #include "../LIB/nesdash.h" // custom stuff made specifically for famidash
 #include "../LIB/famistudio_cc65.h" // sound driver
 
 #include "../MUSIC/EXPORTS/musicDefines.h" // sound driver C defines
 
 
-// grounds goes here
-#include "../LEVELS/ground0.h"
-#include "../LEVELS/ground.h"
 
+
+// grounds goes here
+#pragma rodata-name (push, "LVL_BANK_00")
+#include "../LEVELS/grounddata.h"
+#pragma rodata-name (pop)
+#include "../LEVELS/groundlist.h"
+
+
+
+
+// banks set inside level data due to banking
+#include "../LEVELS/objdefines.h"   // object defines for easier implementation
+                                    // stolen from the old repo lol
 
 #include "../LEVELS/leveldata.h"    // level data goes here
+
+
+
+
+#pragma rodata-name (push, "RODATA_2")
 #include "../LEVELS/levellist.h"    // level order goes here
+#pragma rodata-name (pop)
+
+
 
 
 #include "famidash.h"   // where everything is declared. don't move this
 
-#include "../METATILES/metatiles.h"  // metatile defines
 
+
+#include "../METATILES/metatiles.h"  // metatile defines
 #include "defines/sprites.h"    // metasprite defines
 
 #include "functions/level_loading.h"  // goofy ass screen drawing routines

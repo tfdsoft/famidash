@@ -33,7 +33,7 @@ define ld65IncDir
 endef
 
 NAME = famidash
-CFG = CONFIG/nrom_32k_vert.cfg
+CFG = CONFIG/mmc3.cfg
 OUTDIR = BUILD
 TMPDIR = TMP
 

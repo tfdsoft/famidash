@@ -1,9 +1,6 @@
-
 // game states
 #define MENU 0x01
 #define GAME 0x02
-
-// uhh something i can get rid of later
 
 // physics defines
 #define PAD_HEIGHT_YELLOW -0x760
@@ -70,6 +67,7 @@ unsigned char collisionMap1[192];
 unsigned char rld_column;
 
 unsigned char level;
+unsigned char level_data_bank;
 
 unsigned char gameState;
 

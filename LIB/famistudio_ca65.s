@@ -84,7 +84,7 @@
 
 .define FAMISTUDIO_CA65_ZP_SEGMENT   ZEROPAGE
 .define FAMISTUDIO_CA65_RAM_SEGMENT  BSS
-.define FAMISTUDIO_CA65_CODE_SEGMENT CODE
+.define FAMISTUDIO_CA65_CODE_SEGMENT CODE_2
 
 ;======================================================================================================================
 ; 2) AUDIO EXPANSION CONFIGURATION
@@ -223,7 +223,7 @@ FAMISTUDIO_USE_DELTA_COUNTER     = 1
 
 ; Memory location of the DPCM samples. Must be between $c000 and $ffc0, and a multiple of 64.
 .ifndef FAMISTUDIO_DPCM_OFF
-    FAMISTUDIO_DPCM_OFF = $e7c0
+    FAMISTUDIO_DPCM_OFF = $c000
 .endif
 
 ;======================================================================================================================

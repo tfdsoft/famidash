@@ -1,1 +1,0 @@
-const unsigned char * const ground[] = {ground0};

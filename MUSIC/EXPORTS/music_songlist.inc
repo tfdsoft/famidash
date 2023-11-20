@@ -1,13 +1,25 @@
 song_stereo_madness = 0
 song_back_on_track = 1
 song_polargeist = 2
-song_menu_theme = 3
-song_max = 4
-
-.if SONG_STRINGS
-song_strings:
-.asciiz "Stereo Madness"
-.asciiz "Back on Track"
-.asciiz "Polargeist"
-.asciiz "Menu Theme"
-.endif
+song_dry_out = 3
+song_base_after_base = 4
+song_cant_let_go = 5
+song_jumper = 6
+song_time_machine = 7
+song_cycles = 8
+song_xstep = 9
+song_clutterfunk = 10
+song_theory_of_everything = 11
+song_electroman_adventures = 12
+song_clubstep_ = 13
+song_electrodynamix = 14
+song_hexagon_force = 15
+song_blast_processing = 16
+song_theory_2 = 17
+song_geometrical_dominator = 18
+song_deadlocked = 19
+song_fingerdash = 20
+song_dash = 21
+song_menu_theme = 22
+song_practice = 23
+song_max = 24
