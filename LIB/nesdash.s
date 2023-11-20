@@ -152,16 +152,15 @@ _init_rld:
 
     LDA (level_data),y  ;
     STA rld_run         ;__ Load rld_run, ++level_data
-    JMP incwlvl_checkC000
+    ; JMP incwlvl_checkC000
 
 incwlvl_checkC000:
     INC level_data
     BNE :+
         STX TEMP
+        INC level_data+1
         LDX level_data+1
-        INX
         CPX #$C0
-        STX level_data+1
         BNE :+
         ; switch banks
         LDX #$A0            ;   Reset memory-mapped ptr
