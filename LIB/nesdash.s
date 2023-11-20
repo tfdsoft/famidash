@@ -443,7 +443,7 @@ _music_play:
 _music_update:
     LDA current_song_bank
     CLC
-    ADC #$09
+    ADC #<FIRST_MUSIC_BANK
     LDX #MMC3_REG_SEL_PRG_BANK_1
     JSR mmc3_internal_set_bank
 
