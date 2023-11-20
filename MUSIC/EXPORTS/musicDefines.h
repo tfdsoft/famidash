@@ -22,10 +22,7 @@
 #define song_dash 21
 #define song_menu_theme 22
 #define song_practice 23
-#define song_custom_chaozfantasy 24
-#define song_custom_atthespeedoflight 25
-#define song_custom_ultimatedestruction 26
-#define song_max 27
+#define song_max 24
 #define sfx_death 0
 #define sfx_click 1
 #define sfx_max 2
