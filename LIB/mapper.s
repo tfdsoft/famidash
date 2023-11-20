@@ -124,4 +124,5 @@
         lda #0
         jsr mmc3_set_prg_bank_0
         lda #1
+        sta MMC3_REG_MIRRORING  ; Set mirroring to horizontal
         jmp mmc3_set_prg_bank_1
