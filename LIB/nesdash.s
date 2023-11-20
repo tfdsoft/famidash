@@ -156,7 +156,7 @@ _init_rld:
 
 incwlvl_checkC000:
     INC level_data
-    BNE :+
+    BNE :++
         STX TEMP
         INC level_data+1
         LDX level_data+1
@@ -168,6 +168,7 @@ incwlvl_checkC000:
         INC _level_data_bank ;_ Increment bank
         LDA _level_data_bank
         JSR mmc3_set_prg_bank_1 ;__ Switch the bank
+        :
         LDX TEMP
     :   
     RTS
