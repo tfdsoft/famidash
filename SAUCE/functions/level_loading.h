@@ -7,6 +7,7 @@ void __fastcall__ init_rld(unsigned char level);
 
 /* 
 	This should explain itself
+	Requires the correct PRG1 bank to be set
 	Implemented in asm
 */
 void __fastcall__ unrle_next_column(void);
@@ -18,16 +19,20 @@ void __fastcall__ unrle_next_column(void);
 void __fastcall__ draw_screen_R(void);
 
 void load_ground(unsigned char id){
+	mmc3_tmp_prg_bank_1(0);
     vram_adr(NAMETABLE_C);
     vram_unrle(ground[id]);
+	mmc3_pop_prg_bank_1();
 }
 
 void unrle_first_screen(void){ // run-length decode the first screen of a level
+	mmc3_tmp_prg_bank_1(level_data_bank);
     tmp1 = 0x10;
     while (tmp1 != 0){
         unrle_next_column();
         --tmp1;
     }
+	mmc3_pop_prg_bank_1();
 
     set_data_pointer(active_level[0]);
     set_mt_pointer(metatiles1);

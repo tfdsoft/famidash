@@ -16,3 +16,7 @@ extern void __fastcall__ mmc3_set_1kb_chr_bank_2(unsigned char bank);
 extern void __fastcall__ mmc3_set_1kb_chr_bank_3(unsigned char bank);
 // Store mirroring value to mmc3 register
 extern void __fastcall__ mmc3_set_mirroring(unsigned char mirroring);
+
+extern void __fastcall__ mmc3_tmp_prg_bank_1(unsigned char bank);
+
+extern void __fastcall__ mmc3_pop_prg_bank_1();

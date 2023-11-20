@@ -1,4 +1,3 @@
-
 // game states
 #define MENU 0x01
 #define GAME 0x02
@@ -68,6 +67,7 @@ unsigned char collisionMap1[192];
 unsigned char rld_column;
 
 unsigned char level;
+unsigned char level_data_bank;
 
 unsigned char gameState;
 

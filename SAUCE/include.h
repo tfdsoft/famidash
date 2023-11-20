@@ -15,8 +15,8 @@
 // grounds goes here
 #pragma rodata-name (push, "ROM_BANK_00")
 #include "../LEVELS/grounddata.h"
-#include "../LEVELS/groundlist.h"
 #pragma rodata-name (pop)
+#include "../LEVELS/groundlist.h"
 
 
 
