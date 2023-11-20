@@ -141,8 +141,7 @@ _init_rld:
     LDA _bank_list,y    ;   Get level data bank
     STA _level_data_bank;__
     
-    LDX #MMC3_REG_SEL_PRG_BANK_1
-    JSR mmc3_internal_set_bank
+    JSR mmc3_set_prg_bank_1
 
     LDY #$00            ;-  For both (zp),y addressing and rld_column
     STY _rld_column     ;__ Reset scrolling
@@ -153,9 +152,7 @@ _init_rld:
 
     LDA (level_data),y  ;
     STA rld_run         ;__ Load rld_run, ++level_data
-    JSR incwlvl_checkC000
-
-    JMP _mmc3_pop_prg_bank_1
+    JMP incwlvl_checkC000
 
 incwlvl_checkC000:
     INC level_data
@@ -171,8 +168,7 @@ incwlvl_checkC000:
         STX level_data+1    ;__
         INC _level_data_bank ;_ Increment bank
         LDA _level_data_bank
-        LDX #MMC3_REG_SEL_PRG_BANK_1    ;   Switch the bank
-        JSR mmc3_internal_set_bank      ;__
+        JSR mmc3_set_prg_bank_1 ;__ Switch the bank
         LDX TEMP
     :   
     RTS
@@ -316,8 +312,7 @@ _draw_screen_R:
 
 
     LDA _level_data_bank
-    LDX #MMC3_REG_SEL_PRG_BANK_1
-    JSR mmc3_internal_set_bank
+    JSR mmc3_set_prg_bank_1
     
     LDA _scroll_x           ;__ Highbyte of scroll_x
     CLC
@@ -395,8 +390,7 @@ _draw_screen_R:
     :
     LDA _tmp4               ;
     ORA #$20                ;__ index += 0x20
-    JSR _buffer_4_mt        ;__
-    JMP _mmc3_pop_prg_bank_1 ;__ Finish off routine by JMP
+    JMP _buffer_4_mt        ;__ Finish off routine by JMP
     ; Because i JMPed, the routine is over
 
 
@@ -418,8 +412,7 @@ _music_play:
     PHA
     ; No CLC needed as we jumped here with a BCC
     ADC #<FIRST_MUSIC_BANK
-    LDX #MMC3_REG_SEL_PRG_BANK_1
-    JSR mmc3_internal_set_bank
+    JSR mmc3_set_prg_bank_1
     PLA
     CMP current_song_bank
     BEQ :+
@@ -455,5 +448,6 @@ _music_update:
     JSR mmc3_internal_set_bank
 
     JSR famistudio_update
+    JMP _mmc3_pop_prg_bank_1
 
 ; Because i JMPed, the routine is over
