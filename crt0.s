@@ -250,7 +250,6 @@ detectNTSC:
 	.include "LIB/nesdash.s"
 
 .segment "DMC_BANK_00"
-	FAMISTUDIO_DPCM_OFF:
 	.incbin "MUSIC/EXPORTS/music.dmc"
 
 .include "LIB/famistudio_ca65.s"
@@ -266,6 +265,7 @@ detectNTSC:
 .segment "MUS_BANK_02"
 	.include "MUSIC/EXPORTS/music_3.s"
 
+
 .segment "RODATA_2"
 	.include "MUSIC/EXPORTS/sfx.s"
 
@@ -278,5 +278,4 @@ detectNTSC:
 
 
 .segment "CHARS"
-
 	.incbin "GRAPHICS/famidash.chr"
