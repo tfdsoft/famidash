@@ -13,7 +13,7 @@
 #define CUBE_MAX_FALLSPEED 0x600
 #define CUBE_GRAVITY 0x6B
 #define SHIP_MAX_FALLSPEED 0x300
-
+#define SHIP_GRAVITY 0x35
 
 #pragma bss-name(push, "ZEROPAGE")
 // zero-page variables go here

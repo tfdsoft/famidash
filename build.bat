@@ -1,0 +1,2 @@
+bin\winmake.exe
+pause

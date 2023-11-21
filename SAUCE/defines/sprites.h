@@ -64,58 +64,44 @@ const unsigned char * const CUBE[] = {Cube_0, Cube_1, Cube_2, Cube_3, Cube_4, Cu
 // ship starts here
 const unsigned char Ship_0[]={
 
-	  0,  0,0x0b,0,
-	  8,  0,0x0c,0,
-	  0,  8,0x0d,0,
-	  8,  8,0x0e,0,
+	  0,  0,0x0f,0,
+	  8,  0,0x11,0,
 	0x80
 };
 const unsigned char Ship_1[]={
 
-	  0,  0,0x10,0,
-	  8,  0,0x11,0,
-	  0,  8,0x12,0,
-	  8,  8,0x13,0,
+	  0,  0,0x13,0,
+	  8,  0,0x15,0,
 	0x80
 };
 const unsigned char Ship_2[]={
 
-	  0,  0,0x14,0,
-	  8,  1,0x15,0,
-	  0,  8,0x16,0,
-	  8,  9,0x17,0,
+	  0,- 1,0x17,0,
+	  8,  0,0x19,0,
 	0x80
 };
 const unsigned char Ship_3[]={
 
-	  0,  0,0x14,0,
-	  8,  0,0x15,0,
-	  0,  8,0x16,0,
-	  8,  8,0x17,0,
+	  0,  0,0x17,0,
+	  8,  0,0x19,0,
 	0x80
 };
 const unsigned char Ship_4[]={
 
-	  0,  0,0x14,0,
-	  8,- 1,0x15,0,
-	  0,  8,0x16,0,
-	  8,  7,0x17,0,
+	  0,  0,0x17,0,
+	  8,- 1,0x19,0,
 	0x80
 };
 const unsigned char Ship_5[]={
 
-	  0,  0,0x18,0,
-	  8,  0,0x19,0,
-	  0,  8,0x1a,0,
-	  8,  8,0x1b,0,
+	  0,  0,0x1b,0,
+	  8,  0,0x1d,0,
 	0x80
 };
 const unsigned char Ship_6[]={
 
-	  0,  0,0x1c,0,
-	  8,  0,0x1d,0,
-	  0,  8,0x1e,0,
-	  8,  8,0x1f,0,
+	  0,  0,0x1f,0,
+	  8,  0,0x21,0,
 	0x80
 };
 

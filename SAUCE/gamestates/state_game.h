@@ -7,12 +7,12 @@ void state_game(){
 	init_rld(level);
     unrle_first_screen();
 
-    song = song_polargeist;
+    song = song_stereo_madness;
     music_play(song);
 
     ppu_on_all();
 
-    gamemode = 0x01;
+    gamemode = 0x02;
     while (1){
         
         ppu_wait_nmi();
@@ -25,19 +25,21 @@ void state_game(){
         if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
 
 
-        x_movement(); gray_line();
+        x_movement();
         switch (gamemode) {
             case 0x01: cube_movement(); break;
-            case 0x02: break;
+            case 0x02: ship_movement(); break;
             case 0x04: break;
             case 0x08: break;
             default: break;
-        } gray_line();
-        bg_coll_death(); gray_line();
-        do_the_scroll_thing(); gray_line();
+        } 
+        bg_coll_death(); 
+        do_the_scroll_thing(); 
 
-        oam_clear(); gray_line();
-        draw_sprites(); gray_line();
-        draw_screen_R(); gray_line();
+        oam_clear();
+        draw_sprites();
+        draw_screen_R(); 
+        
+        gray_line();
     }
 }
