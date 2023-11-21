@@ -3,7 +3,7 @@
 ; 
 .define MMC3_REG_BANK_SELECT $8000
 .define MMC3_REG_BANK_DATA $8001
-.define MMC3_REG_MIRRORING $a000
+MMC3_REG_MIRRORING = $a000
 .define MMC3_REG_PRG_RAM_PROTECT $a001
 .define MMC3_REG_IRQ_LATCH $c000
 .define MMC3_REG_IRQ_RELOAD $c001
@@ -12,6 +12,9 @@
 
 .define MMC3_MIRRORING_VERTICAL 0
 .define MMC3_MIRRORING_HORIZONTAL 1
+_MMC3_MIRRORING_VERTICAL = 0
+_MMC3_MIRRORING_HORIZONTAL = 1
+.export _MMC3_MIRRORING_VERTICAL, _MMC3_MIRRORING_HORIZONTAL, MMC3_REG_MIRRORING
 
 .define MMC3_REG_SEL_2KB_CHR_0 %00000000
 .define MMC3_REG_SEL_2KB_CHR_1 %00000001 
@@ -115,11 +118,9 @@
         BNE mmc3_internal_set_bank  ; BRA
     .export _mmc3_set_1kb_chr_bank_3
 
-    mmc3_set_mirroring:
-    _mmc3_set_mirroring:
+    .macro mmc3_set_mirroring
         sta MMC3_REG_MIRRORING
-        rts
-    .export _mmc3_set_mirroring
+    .endmacro
 
     initialize_mapper:
         lda #(MMC3_REG_SEL_CHR_MODE_A | MMC3_REG_SEL_PRG2_8000)

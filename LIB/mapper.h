@@ -14,8 +14,13 @@ void __fastcall__ mmc3_set_1kb_chr_bank_1(unsigned char bank);
 void __fastcall__ mmc3_set_1kb_chr_bank_2(unsigned char bank);
 // Set the fourth 1kb chr bank
 void __fastcall__ mmc3_set_1kb_chr_bank_3(unsigned char bank);
-// Store mirroring value to mmc3 register
-void __fastcall__ mmc3_set_mirroring(unsigned char mirroring);
+
+extern unsigned char MMC3_MIRRORING_VERTICAL;
+extern unsigned char MMC3_MIRRORING_HORIZONTAL;
+
+#define mmc3_set_mirroring(direction); \
+__asm__("LDA #%s", direction); \
+__asm__("STA MMC3_REG_MIRRORING");
 
 void __fastcall__ mmc3_tmp_prg_bank_1(unsigned char bank);
 
