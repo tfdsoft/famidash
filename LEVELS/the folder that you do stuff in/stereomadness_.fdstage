@@ -1,10 +1,10 @@
 const unsigned char stereomadness_[]={
 	// LEVEL HEADER
 	song_stereo_madness,	// Song number
-	0b0,					// Split into chunks? Leave 0 if not split, otherwise set to 1
 	0b1,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
-	0x00,					// unused
+	0x00,					// Background starting color
+	0x00,					// Ground starting color
 	0x00,					// unused
 	0x00,					// unused
 	0x00,					// unused

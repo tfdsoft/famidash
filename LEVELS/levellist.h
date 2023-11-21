@@ -38,7 +38,7 @@ const unsigned char * const sprite_list[] = {
 
 const unsigned char bank_list[] = {
     1,
-    2
+    1,
 };
 
 

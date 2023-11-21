@@ -4,10 +4,11 @@ void state_game(){
     scroll_y = 0xEF;
     load_ground(0);
 
-	init_rld(level);
+
+	init_rld(1);
     unrle_first_screen();
 
-    song = song_stereo_madness;
+    song = song_polargeist;
     music_play(song);
 
     ppu_on_all();
