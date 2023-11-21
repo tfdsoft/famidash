@@ -112,30 +112,31 @@ _init_rld:
 
     LDY #>_level_list   ;   Get high byte of level_list ptr
     STY ptr1+1          ;__
-    ;TODO: LDY #>_sprite_list  ;   Get high byte of sprite_list ptr
+    ;!S LDY #>_sprite_list  ;   Get high byte of sprite_list ptr
     ASL                 ;
     BCC :+              ;
         INC ptr1+1      ;   Adjust high bytes if level num >= $80
-        INY             ;__
-    : STY ptr2+1        ;__ Store high byte of sprite_list ptr
+        ;!S INY             ;__
+    : 
+    ;!S STY ptr2+1        ;__ Store high byte of sprite_list ptr
     LDY #<_level_list   ;
     STY ptr1            ;
-    ;TODO: LDY #<_sprite_list  ;   Get and store low bytes
-    ;TODO: STY ptr2            ;
+    ;!S LDY #<_sprite_list  ;   Get and store low bytes
+    ;!S STY ptr2            ;
 
     TAY                 ;__ Get the pointer
 
     LDA (ptr1),y        ;   Load low byte of level data pointer
     STA level_data      ;__
-    ;TODO: LDA (ptr2),y        ;   Load low byte of sprite data pointer
-    ;TODO: STA insert_var_here ;__
+    ;!S LDA (ptr2),y        ;   Load low byte of sprite data pointer
+    ;!S STA insert_var_here ;__
 
     INY                 ;   Now do high bytes
 
     LDA (ptr1),y        ;
     STA level_data+1    ;__ Load high byte of level data pointer
-    ;TODO: LDA (ptr2),y        ;   Load low byte of sprite data pointer
-    ;TODO: STA insert_var_here+1;__
+    ;!S LDA (ptr2),y        ;   Load low byte of sprite data pointer
+    ;!S STA insert_var_here+1;__
 
     LDY tmp1            ;__ Load pointer to bank table
     LDA _bank_list,y    ;   Get level data bank
