@@ -155,22 +155,19 @@ _init_rld:
     STA rld_run         ;__ Load rld_run, ++level_data
     ; JMP incwlvl_checkC000
 
-incwlvl_checkC000:
+incwlvl_checkC000:  ; clobbers A, and clobbers X with Y if banks are switched
     INC level_data
-    BNE :++
-        STX TEMP
+    BNE :+
         INC level_data+1
-        LDX level_data+1
-        CPX #$C0
+        LDA level_data+1
+        CMP #$C0
         BNE :+
         ; switch banks
         LDX #$A0            ;   Reset memory-mapped ptr
         STX level_data+1    ;__
         INC _level_data_bank ;_ Increment bank
         LDA _level_data_bank
-        JSR mmc3_set_prg_bank_1 ;__ Switch the bank
-        :
-        LDX TEMP
+        JMP mmc3_set_prg_bank_1 ;__ Switch the bank
     :   
     RTS
 
