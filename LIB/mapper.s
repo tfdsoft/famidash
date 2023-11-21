@@ -39,28 +39,28 @@
     mmc3PRG1Bank: .res 1    ;because famistudio updates
 
 .segment "CODE_2"
-    mmc3_internal_set_bank:
-        tay
-        txa
-        ora mmc3ChrInversionSetting
-        sta MMC3_REG_BANK_SELECT
-        sty MMC3_REG_BANK_DATA
-        rts
-
     _mmc3_pop_prg_bank_1:
-        LDX mmc3PRG1Bank
         LDA #MMC3_REG_SEL_PRG_BANK_1
         ora mmc3ChrInversionSetting
         sta MMC3_REG_BANK_SELECT
-        STX MMC3_REG_BANK_DATA
+        LDA mmc3PRG1Bank
+        STA MMC3_REG_BANK_DATA
         rts
     .export _mmc3_pop_prg_bank_1
+
+    mmc3_internal_set_bank:
+        ora mmc3ChrInversionSetting
+        sta MMC3_REG_BANK_SELECT
+        PLA
+        sta MMC3_REG_BANK_DATA
+        rts
 
     ; Store mirroring value to mmc3 register
     mmc3_set_prg_bank_0:
     _mmc3_set_prg_bank_0:
-        ldx #MMC3_REG_SEL_PRG_BANK_0
-        jmp mmc3_internal_set_bank
+        PHA
+        lda #MMC3_REG_SEL_PRG_BANK_0
+        BNE mmc3_internal_set_bank  ; BRA
     .export _mmc3_set_prg_bank_0
 
     mmc3_set_prg_bank_1:
@@ -68,44 +68,51 @@
         STA mmc3PRG1Bank
     mmc3_tmp_prg_bank_1:
     _mmc3_tmp_prg_bank_1:
-        ldx #MMC3_REG_SEL_PRG_BANK_1
-        jmp mmc3_internal_set_bank
+        PHA
+        lda #MMC3_REG_SEL_PRG_BANK_1
+        BNE mmc3_internal_set_bank  ; BRA
     .export _mmc3_set_prg_bank_1, _mmc3_tmp_prg_bank_1
 
     mmc3_set_2kb_chr_bank_0:
     _mmc3_set_2kb_chr_bank_0:
-        ldx #MMC3_REG_SEL_2KB_CHR_0
-        jmp mmc3_internal_set_bank
+        PHA
+        lda #MMC3_REG_SEL_2KB_CHR_0
+        BEQ mmc3_internal_set_bank  ; BRA
     .export _mmc3_set_2kb_chr_bank_0
 
     mmc3_set_2kb_chr_bank_1:
     _mmc3_set_2kb_chr_bank_1:
-        ldx #MMC3_REG_SEL_2KB_CHR_1
-        jmp mmc3_internal_set_bank
+        PHA
+        lda #MMC3_REG_SEL_2KB_CHR_1
+        BNE mmc3_internal_set_bank  ; BRA
     .export _mmc3_set_2kb_chr_bank_1
 
     mmc3_set_1kb_chr_bank_0:
     _mmc3_set_1kb_chr_bank_0:
-        ldx #MMC3_REG_SEL_1KB_CHR_0
-        jmp mmc3_internal_set_bank
+        PHA
+        lda #MMC3_REG_SEL_1KB_CHR_0
+        BNE mmc3_internal_set_bank  ; BRA
     .export _mmc3_set_1kb_chr_bank_0
 
     mmc3_set_1kb_chr_bank_1:
     _mmc3_set_1kb_chr_bank_1:
-        ldx #MMC3_REG_SEL_1KB_CHR_1
-        jmp mmc3_internal_set_bank
+        PHA
+        lda #MMC3_REG_SEL_1KB_CHR_1
+        BNE mmc3_internal_set_bank  ; BRA
     .export _mmc3_set_1kb_chr_bank_1
 
     mmc3_set_1kb_chr_bank_2:
     _mmc3_set_1kb_chr_bank_2:
-        ldx #MMC3_REG_SEL_1KB_CHR_2
-        jmp mmc3_internal_set_bank
+        PHA
+        lda #MMC3_REG_SEL_1KB_CHR_2
+        BNE mmc3_internal_set_bank  ; BRA
     .export _mmc3_set_1kb_chr_bank_2
 
     mmc3_set_1kb_chr_bank_3:
     _mmc3_set_1kb_chr_bank_3:
-        ldx #MMC3_REG_SEL_1KB_CHR_3
-        jmp mmc3_internal_set_bank
+        PHA
+        lda #MMC3_REG_SEL_1KB_CHR_3
+        BNE mmc3_internal_set_bank  ; BRA
     .export _mmc3_set_1kb_chr_bank_3
 
     mmc3_set_mirroring:

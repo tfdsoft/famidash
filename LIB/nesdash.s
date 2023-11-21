@@ -163,8 +163,8 @@ incwlvl_checkC000:  ; clobbers A, and clobbers X with Y if banks are switched
         CMP #$C0
         BNE :+
         ; switch banks
-        LDX #$A0            ;   Reset memory-mapped ptr
-        STX level_data+1    ;__
+        LDA #$A0            ;   Reset memory-mapped ptr
+        STA level_data+1    ;__
         INC _level_data_bank ;_ Increment bank
         LDA _level_data_bank
         JMP mmc3_set_prg_bank_1 ;__ Switch the bank
@@ -442,8 +442,7 @@ _music_update:
     LDA current_song_bank
     CLC
     ADC #<FIRST_MUSIC_BANK
-    LDX #MMC3_REG_SEL_PRG_BANK_1
-    JSR mmc3_internal_set_bank
+    JSR mmc3_tmp_prg_bank_1
 
     JSR famistudio_update
     JMP _mmc3_pop_prg_bank_1

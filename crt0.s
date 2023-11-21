@@ -223,8 +223,7 @@ detectNTSC:
 	jsr _set_vram_update
 
 	LDA #<FIRST_MUSIC_BANK
-    LDX #MMC3_REG_SEL_PRG_BANK_1
-    JSR mmc3_internal_set_bank
+	JSR mmc3_tmp_prg_bank_1
 
 	ldx #<music_data_1
 	ldy #>music_data_1
