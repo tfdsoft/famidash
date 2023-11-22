@@ -63,11 +63,13 @@ unsigned char temp_room;
 
 unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
 unsigned char collisionMap1[192];
+const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
 
 unsigned char rld_column;
 
 unsigned char level;
 unsigned char level_data_bank;
+unsigned char * sprite_data;
 
 unsigned char gameState;
 
@@ -77,7 +79,19 @@ unsigned char scroll_count;
 unsigned char song;
 
 
-const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
+// the funny uh uhhhhh um the uhh sprite storidge
+// Y, X, screen_lowbyte, screen_highbyte, object #, unused, unused, unused
+#define max_loaded_sprites 8
+unsigned char activesprites_y[max_loaded_sprites];
+unsigned char activesprites_x[max_loaded_sprites];
+unsigned short activesprites_screen[max_loaded_sprites];
+unsigned char activesprites_type[max_loaded_sprites];
+
+
+
+
+
+
 
 struct player {
 	unsigned short x; // low byte is sub-pixel

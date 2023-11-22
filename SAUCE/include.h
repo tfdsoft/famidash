@@ -49,7 +49,7 @@
 #include "functions/draw_sprites.h"  // sproit drawlign
 #include "functions/collision.h"  // collision
 #include "functions/reset_level.h"  // reset the stage
-
+#include "functions/sprite_loading.h"
 
 
 
