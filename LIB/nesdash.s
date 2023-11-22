@@ -3,6 +3,8 @@
 .import _level_list, _sprite_list, _bank_list
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_count, _scroll_x, _level_data_bank
+.import _song
+.importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
 .import pusha, pushax
@@ -146,6 +148,47 @@ _init_rld:
 
     LDY #$00            ;-  For both (zp),y addressing and rld_column
     STY _rld_column     ;__ Reset scrolling
+
+    ; Read header
+    LDA (level_data),y  ;
+    STA _song           ;   Song number
+    INCW level_data     ;__
+
+    LDA (level_data),y  ;
+    STA _gamemode       ;   Starting level number
+    ; JSR incwlvl_checkC000
+
+    ; ; LDA (level_data),y  ;
+    ; ; STA ???             ;   Starting speed
+    ; INCW level_data     ;__
+
+    ; ; LDA (level_data),y  ;
+    ; ; STA ???             ;   Starting BG color
+    ; JSR incwlvl_checkC000
+
+    ; ; LDA (level_data),y  ;
+    ; ; STA ???             ;   Starting ground color
+
+    ; ;3 unused bytes + 1 increment
+    ; ; Code for that is just as below, just replace the 6 with 3
+
+    ;ill do 6 unused bytes intead + 1 increment, is faster
+    LDA level_data
+    CLC
+    ADC #6+1
+    STA level_data
+    BCC :++
+        LDX level_data+1
+        INX
+        CPX #$C0
+        BMI :+
+            LDX _level_data_bank+1 ;
+            INX                 ;   1 cycle faster than INC zp : LDA zp
+            TXA                 ;__
+            JSR mmc3_set_prg_bank_1
+            LDX #$C0
+        : STX level_data+1
+    :
 
     LDA (level_data),y  ;
     STA rld_value       ;   Load rld_value, ++level_data

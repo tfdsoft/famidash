@@ -20,7 +20,6 @@ void reset_level(void) {
 	player.x = 0x0000;
 	player.y = 0xb000;
 	gravity = 0x00;
-	gamemode = 0x01;
 	player.vel_x = 0;
     player.vel_y = 0;
 	cube_data = 0;

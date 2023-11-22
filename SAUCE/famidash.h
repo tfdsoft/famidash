@@ -69,7 +69,7 @@ unsigned char rld_column;
 
 unsigned char level;
 unsigned char level_data_bank;
-unsigned char * sprite_data;
+const unsigned char * sprite_data;
 
 unsigned char gameState;
 

@@ -40,8 +40,8 @@ void main(){
     mmc3_set_1kb_chr_bank_2(6);
     mmc3_set_1kb_chr_bank_3(7);
 
-    pal_bg(paletteDefault);
-    pal_spr(paletteDefaultSP);
+    pal_bg((char *)paletteDefault);
+    pal_spr((char *)paletteDefaultSP);
     // use the second set of tiles for sprites
 	// both bg and sprites are set to 0 by default
 	bank_spr(1);

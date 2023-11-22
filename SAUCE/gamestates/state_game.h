@@ -8,12 +8,10 @@ void state_game(){
 	init_rld(1);
     unrle_first_screen();
 
-    song = song_polargeist;
     music_play(song);
 
     ppu_on_all();
 
-    gamemode = 0x02;
     while (1){
         
         ppu_wait_nmi();

@@ -32,8 +32,8 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
         --tmp1;
     }
 
-    set_data_pointer(active_level[0]);
-    set_mt_pointer(metatiles1);
+    set_data_pointer((char *)active_level[0]);
+    set_mt_pointer((char *)metatiles1);
 	#define _y tmp1
 	#define _x tmp2
     for(_y=0; ;_y+=0x20){
@@ -46,7 +46,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	    }
 	    if (_y == 0xe0) break;
     }
-    set_data_pointer(active_level[1]);
+    set_data_pointer((char *)active_level[1]);
     for(_y=0; ;_y+=0x20){
 		for(_x=0; ;_x+=0x20){
 	    	address = get_ppu_addr(2, _x, _y);
