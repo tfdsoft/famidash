@@ -347,8 +347,7 @@ _draw_screen_R:
         ;     address += 0x80;
         ;     index += 0x20;
         ;     buffer_4_mt(address, index); // ppu_address, index to the data
-        ;     ++scroll_count;
-        ;     scroll_count &= 7; //mask off top bits, keep it 0-3
+
         ; }
 
 
@@ -363,6 +362,7 @@ _draw_screen_R:
     LSR                     ;
     LSR                     ;__
     STA _tmp4               ;= _tmp4 = tmp4
+    STA tmp4
     ; wait_hang_on_should_i_write_to_the_collision_map();
         ; The C code being ported:
             ; if ((rld_column == X)){	// assume the X	has already been bitshifted
@@ -385,54 +385,51 @@ _draw_screen_R:
     ADC _tmp4               ;   _tmp4 = index
     STA _tmp4               ;__
 
+    ;!TEMPORARY
+    JMP @End
 
-    LDA #4                  ;
-    BIT _scroll_count       ;   if !(scroll_count&4)
-    BNE :+                  ;__
+    TileWriteLength = (27*2)+2+1
 
-        LDA #<_collisionMap0    ;
-        LDY #>_collisionMap0    ;__ active_level[0]
-        LDX #$00                ;__ First argument of get_ppu_addr
-        BEQ :++
+    ; Writing to nesdoug's VRAM buffer starts here
+    LDY VRAM_INDEX
 
-    :
-        LDA #<_collisionMap1    ;
-        LDY #>_collisionMap1    ;__ active_level[1]
-        LDX #$02                ;__ First argument of get_ppu_addr
+    ; In-house replacement of get_ppu_addr, only counts X
+    ; Address is big-endian
+    LDA tmp4    ;   000xxxx0 - the left tiles of the metatiles
+    ASL         ;__
+    STA VRAM_BUF,Y
 
-    : 
-    sta DATA_PTR            ;   set_data_pointer();
-    sty DATA_PTR+1          ;__
+    ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
+    STA VRAM_BUF+TileWriteLength,Y
 
-    LDA _scroll_x           ;   X contains the first argument (0 or 2),
-    JSR pushax              ;__ A contains the second argument (x)
-    LDA tmp1                ;   A now contains the third argument (tmp1)
-    JSR _get_ppu_addr       ;__ Get PPU address
-    ; A and X now have the pointer for buffer_4_mt
-    STA ptr1
-    STX ptr1+1
-    JSR pushax              ;__ Load first address
+    LDA #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
+    STA VRAM_BUF+1,Y
+    STA VRAM_BUF+TileWriteLength+1,Y
 
-    LDA _tmp4
-    JSR _buffer_4_mt        ; Does not clobber values like C functions do
 
-    ; adding 0x80 to it is just ORA, since it's practically a bitmask
-    LDA ptr1                ;   += 0x80
-    ORA #$80                ;__
-    LDX ptr1+1              ;   Load second address
-    JSR pushax              ;__
+    ; First part of the update: the tiles
+    ; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
+    LDA #(27*2)
+    STA VRAM_BUF+2,Y
+    STA VRAM_BUF+TileWriteLength+2,Y
 
-    INC _scroll_count       ; Doesn't neccessarily need to be at the end
-    LDA _scroll_count       ;
-    CMP #7                  ;
-    BMI :+                  ;
-        TYA                 ; Y = 0 from pushax
-        STA _scroll_count   ;__
-    :
-    LDA _tmp4               ;
-    ORA #$20                ;__ index += 0x20
-    JMP _buffer_4_mt        ;__ Finish off routine by JMP
-    ; Because i JMPed, the routine is over
+    ; The sequence itself:
+
+    ;TODO Use columnBuffer to get the data
+
+    @tilewriteloop:
+        ;TODO Fetch metatile data
+        ;TODO Write to VRAM buffer
+        ;TODO Buffer the attributes in column buffer (???)
+
+    ;TODO new block for the attributes
+
+    @End
+
+    RTS
+        
+
+
 
 
 ;void __fastcall__ music_play(unsigned char song);
