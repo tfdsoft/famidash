@@ -385,10 +385,15 @@ _draw_screen_R:
     ADC _tmp4               ;   _tmp4 = index
     STA _tmp4               ;__
 
-    Offset1 = 0
-    Offset2 = (15*2)+2+1
-    Offset3 = Offset2+((27-15)*2)+2+1
-    Offset4 = Offset3+((27-15)*2)+2+1
+    Size0 = (15*2)+2+1
+    Size1 = Size0
+    Size2 = (12*2)+2+1
+    Size3 = Size2
+
+    Offset0 = 0
+    Offset1 = Size0
+    Offset2 = Size0+Size1
+    Offset3 = Size0+Size2+Size3
     
 
     ; Writing to nesdoug's VRAM buffer starts here
@@ -398,29 +403,29 @@ _draw_screen_R:
     ; Address is big-endian
     LDA tmp4    ;   000xxxx0 - the left tiles of the metatiles
     ASL         ;__
+    STA VRAM_BUF+Offset0+1,X
+    STA VRAM_BUF+Offset2+1,X
+
+    ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
     STA VRAM_BUF+Offset1+1,X
     STA VRAM_BUF+Offset3+1,X
 
-    ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
-    STA VRAM_BUF+Offset2+1,X
-    STA VRAM_BUF+Offset4+1,X
-
     LDA #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
+    STA VRAM_BUF+Offset0,X
     STA VRAM_BUF+Offset1,X
-    STA VRAM_BUF+Offset2,X
     ORA #$08
+    STA VRAM_BUF+Offset2,X
     STA VRAM_BUF+Offset3,X
-    STA VRAM_BUF+Offset4,X
 
 
     ; First part of the update: the tiles
     ; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
     LDA #(15*2)
+    STA VRAM_BUF+Offset0+2,X
     STA VRAM_BUF+Offset1+2,X
-    STA VRAM_BUF+Offset2+2,X
     LDA #(12*2)
+    STA VRAM_BUF+Offset2+2,X
     STA VRAM_BUF+Offset3+2,X
-    STA VRAM_BUF+Offset4+2,X
 
     ; The sequence itself:
 
@@ -443,16 +448,16 @@ _draw_screen_R:
         ; 3 | 4 
 
         LDA (META_PTR2),Y   ;   Tile 1
-        STA VRAM_BUF+Offset1+3,X
+        STA VRAM_BUF+Offset0+3,X
         INY                 ;__
         LDA (META_PTR2),Y   ;   Tile 2
-        STA VRAM_BUF+Offset2+3,X
+        STA VRAM_BUF+Offset1+3,X
         INY                 ;__
         LDA (META_PTR2),Y   ;   Tile 3
-        STA VRAM_BUF+Offset1+4,X
+        STA VRAM_BUF+Offset0+4,X
         INY                 ;__
         LDA (META_PTR2),Y   ;   Tile 4
-        STA VRAM_BUF+Offset2+4,X
+        STA VRAM_BUF+Offset1+4,X
         INY                 ;__
 
         ;Buffer the attributes in column buffer
@@ -472,7 +477,7 @@ _draw_screen_R:
         BNE @tilewriteloop1
 
     LDA #$FF
-    STA VRAM_BUF+Offset3
+    STA VRAM_BUF+Offset2
 
     ;TODO new block for the attributes
 
