@@ -385,15 +385,21 @@ _draw_screen_R:
     ADC _tmp4               ;   _tmp4 = index
     STA _tmp4               ;__
 
-    Size0 = (15*2)+2+1
-    Size1 = Size0
-    Size2 = (12*2)+2+1
-    Size3 = Size2
+    ; Write architecture:
+
+    ; Write 0 updates the upper nametable's left tiles
+    ; Write 1 updates the lower nametable's left tiles
+    ; Write 2 updates the upper nametable's right tiles
+    ; Write 3 updates the lower nametable's right tiles
+
+    SizeHi = (15*2)+2+1
+    SizeLo = (12*2)+2+1
 
     Offset0 = 0
-    Offset1 = Size0
-    Offset2 = Size0+Size1
-    Offset3 = Size0+Size2+Size3
+    Offset1 = SizeHi
+    Offset2 = SizeHi+SizeLo
+    Offset3 = SizeHi+SizeLo+SizeHi
+    Offset4 = SizeHi+SizeLo+SizeHi+SizeLo
     
 
     ; Writing to nesdoug's VRAM buffer starts here
@@ -404,17 +410,17 @@ _draw_screen_R:
     LDA tmp4    ;   000xxxx0 - the left tiles of the metatiles
     ASL         ;__
     STA VRAM_BUF+Offset0+1,X
-    STA VRAM_BUF+Offset2+1,X
+    STA VRAM_BUF+Offset1+1,X
 
     ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
-    STA VRAM_BUF+Offset1+1,X
+    STA VRAM_BUF+Offset2+1,X
     STA VRAM_BUF+Offset3+1,X
 
     LDA #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
     STA VRAM_BUF+Offset0,X
-    STA VRAM_BUF+Offset1,X
-    ORA #$08
     STA VRAM_BUF+Offset2,X
+    ORA #$08        ; 2nd nametable
+    STA VRAM_BUF+Offset1,X
     STA VRAM_BUF+Offset3,X
 
 
@@ -422,15 +428,39 @@ _draw_screen_R:
     ; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
     LDA #(15*2)
     STA VRAM_BUF+Offset0+2,X
-    STA VRAM_BUF+Offset1+2,X
-    LDA #(12*2)
     STA VRAM_BUF+Offset2+2,X
+    LDA #(12*2)
+    STA VRAM_BUF+Offset1+2,X
     STA VRAM_BUF+Offset3+2,X
 
     ; The sequence itself:
-
-    ;TODO Use columnBuffer to get the data
+    
+    ; Load max
+    LDA #15
+    STA tmp2
+    ; Call for left tiles
     LDY #$00
+    JSR @tilewriteloop1
+
+    ; Load new max
+    LDA #27
+    STA tmp2
+    ; Add offset to X
+    TXA
+    CLC
+    ADC #(SizeHi-(15*2))
+    TAX
+    ; Call for right tiles
+    JSR @tilewriteloop1
+
+
+    LDA #$FF
+    STA VRAM_BUF+Offset4
+
+    ;TODO new block for the attributes
+
+    RTS
+        
 
     @tilewriteloop1:
         ;Fetch metatile pointer
@@ -451,13 +481,13 @@ _draw_screen_R:
         STA VRAM_BUF+Offset0+3,X
         INY                 ;__
         LDA (META_PTR2),Y   ;   Tile 2
-        STA VRAM_BUF+Offset1+3,X
+        STA VRAM_BUF+Offset2+3,X
         INY                 ;__
         LDA (META_PTR2),Y   ;   Tile 3
         STA VRAM_BUF+Offset0+4,X
         INY                 ;__
         LDA (META_PTR2),Y   ;   Tile 4
-        STA VRAM_BUF+Offset1+4,X
+        STA VRAM_BUF+Offset2+4,X
         INY                 ;__
 
         ;Buffer the attributes in column buffer
@@ -473,17 +503,9 @@ _draw_screen_R:
         INX
 
         INY
-        CPY #15
+        CPY tmp2
         BNE @tilewriteloop1
-
-    LDA #$FF
-    STA VRAM_BUF+Offset2
-
-    ;TODO new block for the attributes
-
     RTS
-        
-
 
 
 
