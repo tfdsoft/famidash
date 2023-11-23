@@ -184,9 +184,8 @@ _init_rld:
         INX
         CPX #$C0
         BMI :+
-            LDX _level_data_bank+1 ;
-            INX                 ;   1 cycle faster than INC zp : LDA zp
-            TXA                 ;__
+            INC _level_data_bank
+            LDA _level_data_bank
             JSR mmc3_set_prg_bank_1
             LDX #$C0
         : STX level_data+1
@@ -324,35 +323,13 @@ _unrle_next_column:
     STA _rld_column
     RTS
 
+shiftBy4table:
+.byte $00, $10, $20, $30
+.byte $40, $50, $60, $70
+.byte $80, $90, $A0, $B0
+.byte $C0, $D0, $E0, $F0
 
 _draw_screen_R:
-    ; C code to be ported:
-        ; void draw_screen_R(void){
-        ;     //scrolling to the right, draw metatiles as we go
-        ;     pseudo_scroll_x = high_byte(scroll_x) + 0x100;
-        ;     x = pseudo_scroll_x;
-        ;     tmp4 = x >> 4;
-        ;     wait_hang_on_should_i_write_to_the_collision_map();
-        ;     tmp1 = (scroll_count&3)<<6;
-        ;     if (!(scroll_count & 4)){
-        ;         set_data_pointer(active_level[0]);
-        ;         address = get_ppu_addr(0, x, tmp1);
-        ;     } else {
-        ;         set_data_pointer(active_level[1]);
-        ;         if (scroll_count == 7) {scroll_count = 0; return;}
-        ;         address = get_ppu_addr(2, x, tmp1);
-        ;     }
-        ;     index = tmp1 + tmp4;
-        ;     buffer_4_mt(address, index); // ppu_address, index to the data
-        ;     address += 0x80;
-        ;     index += 0x20;
-        ;     buffer_4_mt(address, index); // ppu_address, index to the data
-
-        ; }
-
-
-    LDA _level_data_bank
-    JSR mmc3_set_prg_bank_1
 
     ; Write architecture:
 
@@ -385,13 +362,13 @@ _draw_screen_R:
     @framenot0:
         CPX #$01
         BEQ @frame1
-
-    @attributes:
-        LDA #$00
-        STA scroll_count
-        RTS
+        JMP @attributes
 
     @frame0:
+        ; Switch banks
+        LDA _level_data_bank
+        JSR mmc3_set_prg_bank_1
+
         JSR _unrle_next_column
 
     @frame1:
@@ -473,10 +450,43 @@ _draw_screen_R:
 
         INC scroll_count
 
-
-        ;TODO new block for the attributes
-
         RTS
+
+    @attributes:
+        ; Attribute write architecture:
+
+        ; | Ad|dr |dat|
+        ;   0   1   2
+        ; Addr = VRAM address
+
+        ; 1 byte can theoretically be saved by using a vertical
+        ; sequence of 2 bytes, but this comes at a cost of 23
+        ; cycles per 2 bytes in vblank (80 vs 103), and vlank
+        ; time is not to be wasted
+
+        LDX VRAM_INDEX
+
+        ;TODO:
+        ; 1. Read adjacent upper horizontal values from collision buffer
+        ; 2. read their metatiles' attributes
+        ; 3. OR them with 2 bitshifting
+        ;  if > 15 exit
+        ; 4. Read lower values
+        ; 5. read their metatiles' attributes
+        ; 6. OR them with the upper values'
+        ; 7. store in column buffer
+        ;
+        ;TODO:
+        ; 1. read from column buffer
+        ; 2. get address, paste address, increment address by 8
+        ; 3. get data, paste data
+
+
+        ; Finish off the routine
+        LDA #$00
+        STA scroll_count
+        RTS
+
 
     @tilewriteloop:
             ;Fetch metatile pointer
