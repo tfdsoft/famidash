@@ -329,6 +329,13 @@ shiftBy4table:
 .byte $80, $90, $A0, $B0
 .byte $C0, $D0, $E0, $F0
 
+TileSizeHi = (15*2)+2+1
+TileSizeLo = (12*2)+2+1
+
+TileOff0 = 0
+TileOff1 = 0+TileSizeHi
+TileEndOfFWrite = 0+TileSizeHi+TileSizeLo
+
 _draw_screen_R:
 
     ; Write architecture:
@@ -372,12 +379,7 @@ _draw_screen_R:
         JSR _unrle_next_column
 
     @frame1:
-        SizeHi = (15*2)+2+1
-        SizeLo = (12*2)+2+1
 
-        Offset0 = 0
-        Offset1 = 0+SizeHi
-        EndOfWrite = 0+SizeHi+SizeLo
         
 
         ; Writing to nesdoug's VRAM buffer starts here
@@ -394,21 +396,21 @@ _draw_screen_R:
         BEQ :+
             ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
         :
-        STA VRAM_BUF+Offset0+1,X
-        STA VRAM_BUF+Offset1+1,X
+        STA VRAM_BUF+TileOff0+1,X
+        STA VRAM_BUF+TileOff1+1,X
 
         LDA #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
-        STA VRAM_BUF+Offset0,X
+        STA VRAM_BUF+TileOff0,X
         ORA #$08        ; 2nd nametable
-        STA VRAM_BUF+Offset1,X
+        STA VRAM_BUF+TileOff1,X
 
 
         ; First part of the update: the tiles
         ; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
         LDA #(15*2)
-        STA VRAM_BUF+Offset0+2,X
+        STA VRAM_BUF+TileOff0+2,X
         LDA #(12*2)
-        STA VRAM_BUF+Offset1+2,X
+        STA VRAM_BUF+TileOff1+2,X
 
         ; The sequence itself:
         
@@ -432,7 +434,7 @@ _draw_screen_R:
         ; Add offset to X
         TXA
         CLC
-        ADC #(SizeHi-(15*2))
+        ADC #(TileSizeHi-(15*2))
         TAX
         ; Call for lower tiles
         JSR @tilewriteloop
@@ -440,12 +442,12 @@ _draw_screen_R:
         ; Demarkate end of write
         LDX VRAM_INDEX
         LDA #$FF
-        STA VRAM_BUF+EndOfWrite,X
+        STA VRAM_BUF+TileEndOfFWrite,X
 
         ; Declare this section as taken
         TXA
         CLC
-        ADC #EndOfWrite
+        ADC #TileEndOfFWrite
         STA VRAM_INDEX
 
         INC scroll_count
@@ -508,11 +510,11 @@ _draw_screen_R:
             ; 3 | 4 
 
             LDA (META_PTR2),Y   ;   Tile 1
-            STA VRAM_BUF+Offset0+3,X
+            STA VRAM_BUF+TileOff0+3,X
             INY                 ;__
             INY                 ;__ Tile 2
             LDA (META_PTR2),Y   ;   Tile 3
-            STA VRAM_BUF+Offset0+4,X
+            STA VRAM_BUF+TileOff0+4,X
 
 
             ;Buffer the attributes in column buffer
