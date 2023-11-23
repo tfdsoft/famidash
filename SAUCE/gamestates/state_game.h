@@ -5,10 +5,10 @@ void state_game(){
     load_ground(0);
 
 
-	init_rld(1);
+	init_rld(level);
     unrle_first_screen();
 
-    music_play(song);
+    music_play(level);
 
     ppu_on_all();
 
