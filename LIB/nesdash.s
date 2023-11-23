@@ -441,9 +441,13 @@ _draw_screen_R:
         ; Load max
         LDA #15
         STA tmp2
+        ; Load Y value
+        LDA scroll_count
+        AND #1
+        STA tmp3
         ; Call for upper tiles
         LDY #$00
-        JSR @tilewrite
+        JSR @tilewriteloop
 
         ; Load new max
         LDA #27
@@ -454,7 +458,7 @@ _draw_screen_R:
         ADC #(SizeHi-(15*2))
         TAX
         ; Call for lower tiles
-        JSR @tilewrite
+        JSR @tilewriteloop
 
         ; Demarkate end of write
         LDX VRAM_INDEX
@@ -474,10 +478,7 @@ _draw_screen_R:
 
         RTS
 
-    @tilewrite:
-        LDA scroll_count
-        BNE @tilewriteloop2
-    @tilewriteloop1:
+    @tilewriteloop:
             ;Fetch metatile pointer
             STY tmp1
 
@@ -487,7 +488,7 @@ _draw_screen_R:
                 STA META_VAR    ;   Get new metatile pointer
                 JSR MT_MULT5    ;__
             :
-            LDY #$00
+            LDY tmp3
 
             ;Fetch data, write to buffer
 
@@ -512,45 +513,8 @@ _draw_screen_R:
             LDY tmp1
             INY
             CPY tmp2
-            BNE @tilewriteloop1
+            BNE @tilewriteloop
         RTS
-
-    @tilewriteloop2:
-            ;Fetch metatile pointer
-            STY tmp1
-
-            LDA columnBuffer,Y  ;
-            CMP META_VAR        ;   No need to get metatile pointer for the same metatile
-            BEQ :+              ;__
-                STA META_VAR    ;   Get new metatile pointer
-                JSR MT_MULT5    ;__
-            :
-            LDY #$01
-
-            ;Fetch data, write to buffer
-
-            ;Tile:
-            ; 1 | 2 
-            ;---+---
-            ; 3 | 4 
-
-
-            LDA (META_PTR2),Y   ;   Tile 2
-            STA VRAM_BUF+Offset0+3,X
-            INY                 ;__
-            INY                 ;__ Tile 3
-            LDA (META_PTR2),Y   ;   Tile 4
-            STA VRAM_BUF+Offset0+4,X
-
-            INX
-            INX
-
-            LDY tmp1
-            INY
-            CPY tmp2
-            BNE @tilewriteloop2
-        RTS
-
 
 
 ;void __fastcall__ music_play(unsigned char song);
