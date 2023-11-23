@@ -371,11 +371,11 @@ _draw_screen_R:
             ; }
             ;
         CMP _rld_column
-        BNE :+
-        JSR _unrle_next_column
-        JSR _unrle_next_column
+        BEQ :+
+        RTS
 
     :
+    JSR _unrle_next_column
     LDA _scroll_count       ;   
     AND #3                  ;   Get index for fast <<6 shift
     TAX                     ;__
@@ -385,46 +385,96 @@ _draw_screen_R:
     ADC _tmp4               ;   _tmp4 = index
     STA _tmp4               ;__
 
-    ;!TEMPORARY
-    JMP @End
-
-    TileWriteLength = (27*2)+2+1
+    Offset1 = 0
+    Offset2 = (15*2)+2+1
+    Offset3 = Offset2+((27-15)*2)+2+1
+    Offset4 = Offset3+((27-15)*2)+2+1
+    
 
     ; Writing to nesdoug's VRAM buffer starts here
-    LDY VRAM_INDEX
+    LDX VRAM_INDEX
 
     ; In-house replacement of get_ppu_addr, only counts X
     ; Address is big-endian
     LDA tmp4    ;   000xxxx0 - the left tiles of the metatiles
     ASL         ;__
-    STA VRAM_BUF,Y
+    STA VRAM_BUF+Offset1+1,X
+    STA VRAM_BUF+Offset3+1,X
 
     ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
-    STA VRAM_BUF+TileWriteLength,Y
+    STA VRAM_BUF+Offset2+1,X
+    STA VRAM_BUF+Offset4+1,X
 
     LDA #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
-    STA VRAM_BUF+1,Y
-    STA VRAM_BUF+TileWriteLength+1,Y
+    STA VRAM_BUF+Offset1,X
+    STA VRAM_BUF+Offset2,X
+    ORA #$08
+    STA VRAM_BUF+Offset3,X
+    STA VRAM_BUF+Offset4,X
 
 
     ; First part of the update: the tiles
     ; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
-    LDA #(27*2)
-    STA VRAM_BUF+2,Y
-    STA VRAM_BUF+TileWriteLength+2,Y
+    LDA #(15*2)
+    STA VRAM_BUF+Offset1+2,X
+    STA VRAM_BUF+Offset2+2,X
+    LDA #(12*2)
+    STA VRAM_BUF+Offset3+2,X
+    STA VRAM_BUF+Offset4+2,X
 
     ; The sequence itself:
 
     ;TODO Use columnBuffer to get the data
+    LDY #$00
 
-    @tilewriteloop:
-        ;TODO Fetch metatile data
-        ;TODO Write to VRAM buffer
-        ;TODO Buffer the attributes in column buffer (???)
+    @tilewriteloop1:
+        ;Fetch metatile pointer
+        STY tmp1
+
+        LDA columnBuffer,Y  ;
+        STA META_VAR        ;   Get metatile pointer
+        JSR MT_MULT5        ;__
+
+        ;Fetch data, write to buffer
+
+        ;Tile:
+        ; 1 | 2 
+        ;---+---
+        ; 3 | 4 
+
+        LDA (META_PTR2),Y   ;   Tile 1
+        STA VRAM_BUF+Offset1+3,X
+        INY                 ;__
+        LDA (META_PTR2),Y   ;   Tile 2
+        STA VRAM_BUF+Offset2+3,X
+        INY                 ;__
+        LDA (META_PTR2),Y   ;   Tile 3
+        STA VRAM_BUF+Offset1+4,X
+        INY                 ;__
+        LDA (META_PTR2),Y   ;   Tile 4
+        STA VRAM_BUF+Offset2+4,X
+        INY                 ;__
+
+        ;Buffer the attributes in column buffer
+        LDA #$01
+        BIT _rld_column
+        BEQ :+
+        ; MATH
+        :
+            LDA (META_PTR2),Y
+            LDY tmp1
+            STA columnBuffer,Y
+        INX
+        INX
+
+        INY
+        CPY #15
+        BNE @tilewriteloop1
+
+    LDA #$FF
+    STA VRAM_BUF+Offset3
 
     ;TODO new block for the attributes
-
-    @End
 
     RTS
         
