@@ -8,13 +8,17 @@
 	.import push0,popa,popax,_main,zerobss,copydata
 
 ; Linker generated symbols
-	.import __STACK_START__   ,__STACKSIZE__ ;changed
-	.import __ROM0_START__  ,__ROM0_SIZE__
+	.import __C_STACK_START__, __C_STACK_SIZE__
+	.import __PAL_BUF_START__, __OAM_BUF_START__, __VRAM_BUF_START__
 	.import	__CODE_LOAD__   ,__CODE_RUN__   ,__CODE_SIZE__
 	.import	__RODATA_LOAD__ ,__RODATA_RUN__ ,__RODATA_SIZE__
 
 	.import MAPPER, SUBMAPPER, MIRRORING, PRG_BANK_COUNT, CHR_BANK_COUNT, SRAM, TRAINER, CONSOLE_TYPE, PRG_RAM_COUNT, PRG_NVRAM_COUNT, CHR_RAM_COUNT, CHR_NVRAM_COUNT, CPU_PPU_TIMING, HARDWARE_TYPE, MISC_ROMS, DEF_EXP_DEVICE
 	.import FIRST_MUSIC_BANK
+
+VRAM_BUF=__VRAM_BUF_START__
+OAM_BUF=__OAM_BUF_START__
+PAL_BUF=__PAL_BUF_START__
 
 	.importzp _PAD_STATE, _PAD_STATET ;added
     .include "zeropage.inc"
@@ -36,10 +40,6 @@ PPU_FRAMECNT=$4017
 DMC_FREQ	=$4010
 CTRL_PORT1	=$4016
 CTRL_PORT2	=$4017
-
-OAM_BUF		=$0200
-PAL_BUF		=$01c0
-VRAM_BUF	=$0700
 
 
 
@@ -183,9 +183,9 @@ clearRAM:
     jsr	zerobss
 	jsr	copydata
 
-    lda #<(__STACK_START__+__STACKSIZE__) ;changed
+    lda #<(__C_STACK_START__+__C_STACK_SIZE__) ;changed
     sta	sp
-    lda	#>(__STACK_START__+__STACKSIZE__)
+    lda	#>(__C_STACK_START__+__C_STACK_SIZE__)
     sta	sp+1            ; Set argument stack ptr
 
 ;	jsr	initlib
