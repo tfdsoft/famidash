@@ -2,7 +2,7 @@
 
 .import _level_list, _sprite_list, _bank_list
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
-.import _scroll_count, _scroll_x, _level_data_bank
+.import _scroll_x, _level_data_bank
 .import _song
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
@@ -10,6 +10,7 @@
 .import pusha, pushax
 
 .import FIRST_MUSIC_BANK
+.macpack longbranch
 
 .export _oam_meta_spr_vflipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
@@ -26,6 +27,7 @@
     columnBuffer:   .res 27; column buffer, to be pushed to the collision map
 
     current_song_bank: .res 1
+    scroll_count:   .res 1
 
 .segment "CODE_2"
 
@@ -322,8 +324,6 @@ _unrle_next_column:
     STA _rld_column
     RTS
 
-shiftBy6Table:
-    .byte $00, $40, $80, $C0
 
 _draw_screen_R:
     ; C code to be ported:
@@ -353,6 +353,17 @@ _draw_screen_R:
 
     LDA _level_data_bank
     JSR mmc3_set_prg_bank_1
+
+    ; Write architecture:
+
+    ; Frame 0:
+    ;   Write 0 updates the upper nametable's left tiles
+    ;   Write 1 updates the lower nametable's left tiles
+    ; Frame 1:
+    ;   Write 0 updates the upper nametable's right tiles
+    ;   Write 1 updates the lower nametable's right tiles
+    ; Frame 2:
+    ;TODO attributes, somehow
     
     LDA _scroll_x           ;__ Highbyte of scroll_x
     CLC
@@ -361,151 +372,184 @@ _draw_screen_R:
     LSR                     ;   >> 4
     LSR                     ;
     LSR                     ;__
-    STA _tmp4               ;= _tmp4 = tmp4
     STA tmp4
-    ; wait_hang_on_should_i_write_to_the_collision_map();
-        ; The C code being ported:
-            ; if ((rld_column == X)){	// assume the X	has already been bitshifted
-            ; 	unrle_next_column();
-            ; 	unrle_next_column();
-            ; }
-            ;
-        CMP _rld_column
-        BEQ :+
+
+    LDX scroll_count
+    BNE @framenot0
+
+    LDA tmp4
+    CMP _rld_column         ;   If X == rld column, decompress shit
+    BEQ @frame0
+    RTS
+    
+    @framenot0:
+        CPX #$01
+        BEQ @frame1
+
+    @attributes:
+        LDA #$00
+        STA scroll_count
         RTS
 
-    :
-    JSR _unrle_next_column
-    LDA _scroll_count       ;   
-    AND #3                  ;   Get index for fast <<6 shift
-    TAX                     ;__
-    LDA shiftBy6Table, x    ;   tmp1 = tmp1
-    STA tmp1                ;__
-    CLC                     ;
-    ADC _tmp4               ;   _tmp4 = index
-    STA _tmp4               ;__
+    @frame0:
+        JSR _unrle_next_column
 
-    ; Write architecture:
+    @frame1:
+        SizeHi = (15*2)+2+1
+        SizeLo = (12*2)+2+1
 
-    ; Write 0 updates the upper nametable's left tiles
-    ; Write 1 updates the lower nametable's left tiles
-    ; Write 2 updates the upper nametable's right tiles
-    ; Write 3 updates the lower nametable's right tiles
-
-    SizeHi = (15*2)+2+1
-    SizeLo = (12*2)+2+1
-
-    Offset0 = 0
-    Offset1 = SizeHi
-    Offset2 = SizeHi+SizeLo
-    Offset3 = SizeHi+SizeLo+SizeHi
-    Offset4 = SizeHi+SizeLo+SizeHi+SizeLo
-    
-
-    ; Writing to nesdoug's VRAM buffer starts here
-    LDX VRAM_INDEX
-
-    ; In-house replacement of get_ppu_addr, only counts X
-    ; Address is big-endian
-    LDA tmp4    ;   000xxxx0 - the left tiles of the metatiles
-    ASL         ;__
-    STA VRAM_BUF+Offset0+1,X
-    STA VRAM_BUF+Offset1+1,X
-
-    ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
-    STA VRAM_BUF+Offset2+1,X
-    STA VRAM_BUF+Offset3+1,X
-
-    LDA #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
-    STA VRAM_BUF+Offset0,X
-    STA VRAM_BUF+Offset2,X
-    ORA #$08        ; 2nd nametable
-    STA VRAM_BUF+Offset1,X
-    STA VRAM_BUF+Offset3,X
-
-
-    ; First part of the update: the tiles
-    ; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
-    LDA #(15*2)
-    STA VRAM_BUF+Offset0+2,X
-    STA VRAM_BUF+Offset2+2,X
-    LDA #(12*2)
-    STA VRAM_BUF+Offset1+2,X
-    STA VRAM_BUF+Offset3+2,X
-
-    ; The sequence itself:
-    
-    ; Load max
-    LDA #15
-    STA tmp2
-    ; Call for left tiles
-    LDY #$00
-    JSR @tilewriteloop1
-
-    ; Load new max
-    LDA #27
-    STA tmp2
-    ; Add offset to X
-    TXA
-    CLC
-    ADC #(SizeHi-(15*2))
-    TAX
-    ; Call for right tiles
-    JSR @tilewriteloop1
-
-
-    LDA #$FF
-    STA VRAM_BUF+Offset4
-
-    ;TODO new block for the attributes
-
-    RTS
+        Offset0 = 0
+        Offset1 = 0+SizeHi
+        EndOfWrite = 0+SizeHi+SizeLo
         
 
-    @tilewriteloop1:
-        ;Fetch metatile pointer
-        STY tmp1
+        ; Writing to nesdoug's VRAM buffer starts here
+        LDX VRAM_INDEX
 
-        LDA columnBuffer,Y  ;
-        STA META_VAR        ;   Get metatile pointer
-        JSR MT_MULT5        ;__
-
-        ;Fetch data, write to buffer
-
-        ;Tile:
-        ; 1 | 2 
-        ;---+---
-        ; 3 | 4 
-
-        LDA (META_PTR2),Y   ;   Tile 1
-        STA VRAM_BUF+Offset0+3,X
-        INY                 ;__
-        LDA (META_PTR2),Y   ;   Tile 2
-        STA VRAM_BUF+Offset2+3,X
-        INY                 ;__
-        LDA (META_PTR2),Y   ;   Tile 3
-        STA VRAM_BUF+Offset0+4,X
-        INY                 ;__
-        LDA (META_PTR2),Y   ;   Tile 4
-        STA VRAM_BUF+Offset2+4,X
-        INY                 ;__
-
-        ;Buffer the attributes in column buffer
-        LDA #$01
-        BIT _rld_column
+        ; In-house replacement of get_ppu_addr, only counts X
+        ; Address is big-endian
+        LDY _rld_column ;   000xxxx0 - the left tiles of the metatiles
+        DEY
+        TYA
+        AND #$0F
+        ASL         ;__
+        LDY scroll_count
         BEQ :+
-        ; MATH
+            ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
         :
-            LDA (META_PTR2),Y
-            LDY tmp1
-            STA columnBuffer,Y
-        INX
-        INX
+        STA VRAM_BUF+Offset0+1,X
+        STA VRAM_BUF+Offset1+1,X
 
-        INY
-        CPY tmp2
-        BNE @tilewriteloop1
-    RTS
+        LDA #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
+        STA VRAM_BUF+Offset0,X
+        ORA #$08        ; 2nd nametable
+        STA VRAM_BUF+Offset1,X
+
+
+        ; First part of the update: the tiles
+        ; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
+        LDA #(15*2)
+        STA VRAM_BUF+Offset0+2,X
+        LDA #(12*2)
+        STA VRAM_BUF+Offset1+2,X
+
+        ; The sequence itself:
+        
+        LDA columnBuffer    ;
+        EOR #$FF            ;   Force update pointer
+        STA META_VAR        ;__
+        ; Load max
+        LDA #15
+        STA tmp2
+        ; Call for upper tiles
+        LDY #$00
+        JSR @tilewrite
+
+        ; Load new max
+        LDA #27
+        STA tmp2
+        ; Add offset to X
+        TXA
+        CLC
+        ADC #(SizeHi-(15*2))
+        TAX
+        ; Call for lower tiles
+        JSR @tilewrite
+
+        ; Demarkate end of write
+        LDX VRAM_INDEX
+        LDA #$FF
+        STA VRAM_BUF+EndOfWrite,X
+
+        ; Declare this section as taken
+        TXA
+        CLC
+        ADC #EndOfWrite
+        STA VRAM_INDEX
+
+        INC scroll_count
+
+
+        ;TODO new block for the attributes
+
+        RTS
+
+    @tilewrite:
+        LDA scroll_count
+        BNE @tilewriteloop2
+    @tilewriteloop1:
+            ;Fetch metatile pointer
+            STY tmp1
+
+            LDA columnBuffer,Y  ;
+            CMP META_VAR        ;   No need to get metatile pointer for the same metatile
+            BEQ :+              ;__
+                STA META_VAR    ;   Get new metatile pointer
+                JSR MT_MULT5    ;__
+            :
+            LDY #$00
+
+            ;Fetch data, write to buffer
+
+            ;Tile:
+            ; 1 | 2 
+            ;---+---
+            ; 3 | 4 
+
+            LDA (META_PTR2),Y   ;   Tile 1
+            STA VRAM_BUF+Offset0+3,X
+            INY                 ;__
+            INY                 ;__ Tile 2
+            LDA (META_PTR2),Y   ;   Tile 3
+            STA VRAM_BUF+Offset0+4,X
+
+
+            ;Buffer the attributes in column buffer
+
+            INX
+            INX
+
+            LDY tmp1
+            INY
+            CPY tmp2
+            BNE @tilewriteloop1
+        RTS
+
+    @tilewriteloop2:
+            ;Fetch metatile pointer
+            STY tmp1
+
+            LDA columnBuffer,Y  ;
+            CMP META_VAR        ;   No need to get metatile pointer for the same metatile
+            BEQ :+              ;__
+                STA META_VAR    ;   Get new metatile pointer
+                JSR MT_MULT5    ;__
+            :
+            LDY #$01
+
+            ;Fetch data, write to buffer
+
+            ;Tile:
+            ; 1 | 2 
+            ;---+---
+            ; 3 | 4 
+
+
+            LDA (META_PTR2),Y   ;   Tile 2
+            STA VRAM_BUF+Offset0+3,X
+            INY                 ;__
+            INY                 ;__ Tile 3
+            LDA (META_PTR2),Y   ;   Tile 4
+            STA VRAM_BUF+Offset0+4,X
+
+            INX
+            INX
+
+            LDY tmp1
+            INY
+            CPY tmp2
+            BNE @tilewriteloop2
+        RTS
 
 
 

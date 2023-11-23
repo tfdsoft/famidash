@@ -75,7 +75,6 @@ unsigned char gameState;
 
 unsigned long int scroll_x; // gotta love massive levels amirite fellas
 unsigned short scroll_y;
-unsigned char scroll_count;
 unsigned char song;
 
 
