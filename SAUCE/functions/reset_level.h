@@ -24,6 +24,6 @@ void reset_level(void) {
     player.vel_y = 0;
 	cube_data = 0;
 	ppu_on_all();
-	music_play(level);
+	music_play(song);
 
 }

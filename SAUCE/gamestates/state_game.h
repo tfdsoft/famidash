@@ -8,7 +8,7 @@ void state_game(){
 	init_rld(level);
     unrle_first_screen();
 
-    music_play(level);
+    music_play(song);   // Song set by init_rld
 
     ppu_on_all();
 
