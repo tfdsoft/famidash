@@ -466,17 +466,51 @@ _draw_screen_R:
         ; cycles per 2 bytes in vblank (80 vs 103), and vlank
         ; time is not to be wasted
 
-        LDX VRAM_INDEX
+        ; Get the ptr (I am not bothering with 2 separate loops)
+        LDA #>_collisionMap0
+        STA ptr1+1
+        LDA _rld_column
+        AND #$0E
+        ADC #(<_collisionMap0-1)    ; The carry is set by the CMP used to jump into this routine
+        STA ptr1
+        BCC :+
+            INC ptr1+1
+        :
 
-        ;TODO:
-        ; 1. Read adjacent upper horizontal values from collision buffer
-        ; 2. read their metatiles' attributes
-        ; 3. OR them with 2 bitshifting
-        ;  if > 15 exit
-        ; 4. Read lower values
-        ; 5. read their metatiles' attributes
-        ; 6. OR them with the upper values'
-        ; 7. store in column buffer
+        LDA #8
+        STA tmp1
+
+        LDX #$00
+        
+        ; Force metatile update
+        LDA (ptr1,X)
+        EOR #$FF
+        STA META_VAR
+
+        JSR @attributeLoop1
+
+        ; Last byte has no bottom tiles
+        LDA columnBuffer+7
+        AND #$0F
+        STA columnBuffer+7
+
+        ; Update new maximum
+        LDA #8+6
+        STA tmp1
+
+        ; Update pointer (collisionMap0 is 240 bytes, not 256)
+        LDA ptr1
+        ; The carry is set by the CPX at the end of the loop
+        SBC #$10
+        STA ptr1
+        BCS :+
+            DEC ptr1+1
+        :
+
+        JSR @attributeLoop1
+
+
+
         ;
         ;TODO:
         ; 1. read from column buffer
@@ -487,6 +521,66 @@ _draw_screen_R:
         ; Finish off the routine
         LDA #$00
         STA scroll_count
+        RTS
+
+        @attributeLoop1:
+                ; Read upper left metatile
+                LDY #$00
+                JSR @getAttr
+                STA ptr2
+
+                ; Read lower left metatile (higher chance of being the same, due to RLE)
+                LDY #$10
+                JSR @getAttr
+                STA ptr2+1
+
+                ; Read upper right metatile
+                LDY #$01
+                JSR @getAttr
+                ASL
+                ASL
+                ORA ptr2
+                STA ptr2
+
+                ; Read lower right metatile
+                LDY #$11
+                JSR @getAttr
+                ASL
+                ASL
+                ORA ptr2+1
+                TAY
+                LDA ptr2
+                ORA shiftBy4table,Y
+                STA columnBuffer,X
+
+                ; Increment pointer
+                LDA ptr1
+                ; Last thing affecting carry is the ASL, which
+                ; always shifts 0 into it if the metatile data
+                ; is valid
+                ADC #$20
+                STA ptr1
+                BCC :+
+                    INC ptr1+1
+                :
+
+                INX
+                CPX tmp1
+                BNE @attributeLoop1
+            RTS
+
+    @getAttr:
+        ; Read metatile
+        LDA (ptr1),Y
+        CMP META_VAR
+        BEQ :+
+            STA META_VAR
+            JSR MT_MULT5
+        :
+        LDY #$04
+
+        ; Read its attributes
+        LDA (META_PTR2),Y
         RTS
 
 
