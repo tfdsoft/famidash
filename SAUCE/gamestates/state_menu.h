@@ -26,6 +26,10 @@ void state_menu(){
 		vram_put(0xA0+menutext3[tmp1]);
 	}
 
+
+	level = 0x01;
+
+
 	ppu_on_all();
 
 	while (1){
