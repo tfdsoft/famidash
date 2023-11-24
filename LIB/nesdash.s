@@ -329,12 +329,20 @@ shiftBy4table:
 .byte $80, $90, $A0, $B0
 .byte $C0, $D0, $E0, $F0
 
-TileSizeHi = (15*2)+2+1
-TileSizeLo = (12*2)+2+1
+TileSizeHi  = (15*2)+2+1
+TileSizeLo  = (12*2)+2+1
 
-TileOff0 = 0
-TileOff1 = 0+TileSizeHi
-TileEndOfFWrite = 0+TileSizeHi+TileSizeLo
+TileOff0    = 0
+TileOff1    = 0+TileSizeHi
+TileEnd     = 0+TileSizeHi+TileSizeLo
+
+
+AttrSizeHi  = 8*3
+AttrSizeLo  = 6*3
+
+AttrOff0    = 0
+AttrOff1    = 0+AttrSizeHi
+AttrEnd     = 0+AttrSizeHi+AttrSizeLo
 
 _draw_screen_R:
 
@@ -442,12 +450,12 @@ _draw_screen_R:
         ; Demarkate end of write
         LDX VRAM_INDEX
         LDA #$FF
-        STA VRAM_BUF+TileEndOfFWrite,X
+        STA VRAM_BUF+TileEnd,X
 
         ; Declare this section as taken
         TXA
         CLC
-        ADC #TileEndOfFWrite
+        ADC #TileEnd
         STA VRAM_INDEX
 
         INC scroll_count
@@ -509,65 +517,105 @@ _draw_screen_R:
 
         JSR @attributeLoop1
 
+        ; Get address i
+        
+        LDA _rld_column
+        LSR
+        ORA #$C0
+        
+        ; Store address
+        LDX VRAM_INDEX
+        @addressLoop:
+            ; Low byte
+            STA VRAM_BUF+AttrOff0+1,X
+            STA VRAM_BUF+AttrOff1+1,X
+            TAY
+            ; High byte
+            LDA #$20
+            STA VRAM_BUF+AttrOff0,X
+            ORA #$08
+            STA VRAM_BUF+AttrOff1,X
+            TYA
 
+            INX 
+            INX
+            INX
 
-        ;
-        ;TODO:
-        ; 1. read from column buffer
-        ; 2. get address, paste address, increment address by 8
-        ; 3. get data, paste data
+            CLC
+            ADC #$08
+            BCC @addressLoop
+        
+        LDY #14
 
+        LDA VRAM_INDEX
+        ADC #AttrEnd-1  ; Carry is set by the ADC : BCC
+        STA VRAM_INDEX  ; State that the block is now occupied
+        TAX
 
+        @dataLoop:
+            LDA columnBuffer-1+Y
+            STA VRAM_BUF+AttrEnd-3+2,X
+
+            DEX
+            DEX
+            DEX
+            DEY
+            BNE @dataLoop
+        
         ; Finish off the routine
+        ; X has VRAM_INDEX, mark this block as taken
+        LDA #$FF
+        STA VRAM_BUF+AttrEnd,X
+        ; Reset frame counter
         LDA #$00
         STA scroll_count
         RTS
 
-        @attributeLoop1:
-                ; Read upper left metatile
-                LDY #$00
-                JSR @getAttr
-                STA ptr2
+    @attributeLoop1:
+            ; Read upper left metatile
+            LDY #$00
+            JSR @getAttr
+            STA ptr2
 
-                ; Read lower left metatile (higher chance of being the same, due to RLE)
-                LDY #$10
-                JSR @getAttr
-                STA ptr2+1
+            ; Read lower left metatile (higher chance of being the same, due to RLE)
+            LDY #$10
+            JSR @getAttr
+            STA ptr2+1
 
-                ; Read upper right metatile
-                LDY #$01
-                JSR @getAttr
-                ASL
-                ASL
-                ORA ptr2
-                STA ptr2
+            ; Read upper right metatile
+            LDY #$01
+            JSR @getAttr
+            ASL
+            ASL
+            ORA ptr2
+            STA ptr2
 
-                ; Read lower right metatile
-                LDY #$11
-                JSR @getAttr
-                ASL
-                ASL
-                ORA ptr2+1
-                TAY
-                LDA ptr2
-                ORA shiftBy4table,Y
-                STA columnBuffer,X
+            ; Read lower right metatile
+            LDY #$11
+            JSR @getAttr
+            ASL
+            ASL
+            ORA ptr2+1
+            TAY
+            LDA ptr2
+            ORA shiftBy4table,Y
+            STA columnBuffer,X
 
-                ; Increment pointer
-                LDA ptr1
-                ; Last thing affecting carry is the ASL, which
-                ; always shifts 0 into it if the metatile data
-                ; is valid
-                ADC #$20
-                STA ptr1
-                BCC :+
-                    INC ptr1+1
-                :
+            ; Increment pointer
+            LDA ptr1
+            ; Last thing affecting carry is the ASL, which
+            ; always shifts 0 into it if the metatile data
+            ; is valid
+            ADC #$20
+            STA ptr1
+            BCC :+
+                INC ptr1+1
+            :
 
-                INX
-                CPX tmp1
-                BNE @attributeLoop1
-            RTS
+            INX
+            CPX tmp1
+            BNE @attributeLoop1
+        RTS
 
     @getAttr:
         ; Read metatile
