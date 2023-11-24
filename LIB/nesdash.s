@@ -355,11 +355,11 @@ _draw_screen_R:
     ;   Write 0 updates the upper nametable's right tiles
     ;   Write 1 updates the lower nametable's right tiles
     ; Frame 2:
-    ;TODO attributes, somehow
+    ;   Attributes 
     
     LDA _scroll_x           ;__ Highbyte of scroll_x
     CLC
-    ADC #$F8
+    ADC #$FC
     LSR                     ;
     LSR                     ;   >> 4
     LSR                     ;
@@ -474,10 +474,17 @@ _draw_screen_R:
         ; cycles per 2 bytes in vblank (80 vs 103), and vlank
         ; time is not to be wasted
 
+        ; Decremented rld_column, very useful
+        LDX _rld_column
+        DEX
+        TXA
+        AND #$0F
+        STA ptr3
+
         ; Get the ptr (I am not bothering with 2 separate loops)
         LDA #>_collisionMap0
         STA ptr1+1
-        LDA _rld_column
+        LDA ptr3
         AND #$0E
         ADC #(<_collisionMap0-1)    ; The carry is set by the CMP used to jump into this routine
         STA ptr1
@@ -519,7 +526,7 @@ _draw_screen_R:
 
         ; Get address i
         
-        LDA _rld_column
+        LDA ptr3
         LSR
         ORA #$C0
         
