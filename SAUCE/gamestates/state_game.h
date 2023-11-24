@@ -4,14 +4,14 @@ void state_game(){
     scroll_y = 0xEF;
     load_ground(0);
 
-
-	init_rld(1);
+    level = 0x01;
+	init_rld(level);
     unrle_first_screen();
 
     music_play(song);
 
     ppu_on_all();
-
+    gamemode = 0x02;
     while (1){
         
         ppu_wait_nmi();
