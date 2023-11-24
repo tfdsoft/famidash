@@ -531,7 +531,7 @@ _draw_screen_R:
             STA VRAM_BUF+AttrOff1+1,X
             TAY
             ; High byte
-            LDA #$20
+            LDA #$23
             STA VRAM_BUF+AttrOff0,X
             ORA #$08
             STA VRAM_BUF+AttrOff1,X
@@ -553,8 +553,8 @@ _draw_screen_R:
         TAX
 
         @dataLoop:
-            LDA columnBuffer-1+Y
-            STA VRAM_BUF+AttrEnd-3+2,X
+            LDA columnBuffer-1,Y
+            STA VRAM_BUF-3+2,X
 
             DEX
             DEX
