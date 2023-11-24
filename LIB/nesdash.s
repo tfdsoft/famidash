@@ -2,7 +2,7 @@
 
 .import _level_list, _sprite_list, _bank_list
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
-.import _scroll_count, _scroll_x, _level_data_bank
+.import _scroll_x, _level_data_bank
 .import _song
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
@@ -10,6 +10,7 @@
 .import pusha, pushax
 
 .import FIRST_MUSIC_BANK
+.macpack longbranch
 
 .export _oam_meta_spr_vflipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
@@ -26,6 +27,7 @@
     columnBuffer:   .res 27; column buffer, to be pushed to the collision map
 
     current_song_bank: .res 1
+    scroll_count:   .res 1
 
 .segment "CODE_2"
 
@@ -182,9 +184,8 @@ _init_rld:
         INX
         CPX #$C0
         BMI :+
-            LDX _level_data_bank+1 ;
-            INX                 ;   1 cycle faster than INC zp : LDA zp
-            TXA                 ;__
+            INC _level_data_bank
+            LDA _level_data_bank
             JSR mmc3_set_prg_bank_1
             LDX #$C0
         : STX level_data+1
@@ -322,117 +323,359 @@ _unrle_next_column:
     STA _rld_column
     RTS
 
-shiftBy6Table:
-    .byte $00, $40, $80, $C0
+shiftBy4table:
+.byte $00, $10, $20, $30
+.byte $40, $50, $60, $70
+.byte $80, $90, $A0, $B0
+.byte $C0, $D0, $E0, $F0
+
+TileSizeHi  = (15*2)+2+1
+TileSizeLo  = (12*2)+2+1
+
+TileOff0    = 0
+TileOff1    = 0+TileSizeHi
+TileEnd     = 0+TileSizeHi+TileSizeLo
+
+
+AttrSizeHi  = 8*3
+AttrSizeLo  = 6*3
+
+AttrOff0    = 0
+AttrOff1    = 0+AttrSizeHi
+AttrEnd     = 0+AttrSizeHi+AttrSizeLo
 
 _draw_screen_R:
-    ; C code to be ported:
-        ; void draw_screen_R(void){
-        ;     //scrolling to the right, draw metatiles as we go
-        ;     pseudo_scroll_x = high_byte(scroll_x) + 0x100;
-        ;     x = pseudo_scroll_x;
-        ;     tmp4 = x >> 4;
-        ;     wait_hang_on_should_i_write_to_the_collision_map();
-        ;     tmp1 = (scroll_count&3)<<6;
-        ;     if (!(scroll_count & 4)){
-        ;         set_data_pointer(active_level[0]);
-        ;         address = get_ppu_addr(0, x, tmp1);
-        ;     } else {
-        ;         set_data_pointer(active_level[1]);
-        ;         if (scroll_count == 7) {scroll_count = 0; return;}
-        ;         address = get_ppu_addr(2, x, tmp1);
-        ;     }
-        ;     index = tmp1 + tmp4;
-        ;     buffer_4_mt(address, index); // ppu_address, index to the data
-        ;     address += 0x80;
-        ;     index += 0x20;
-        ;     buffer_4_mt(address, index); // ppu_address, index to the data
-        ;     ++scroll_count;
-        ;     scroll_count &= 7; //mask off top bits, keep it 0-3
-        ; }
 
+    ; Write architecture:
 
-    LDA _level_data_bank
-    JSR mmc3_set_prg_bank_1
+    ; Frame 0:
+    ;   Write 0 updates the upper nametable's left tiles
+    ;   Write 1 updates the lower nametable's left tiles
+    ; Frame 1:
+    ;   Write 0 updates the upper nametable's right tiles
+    ;   Write 1 updates the lower nametable's right tiles
+    ; Frame 2:
+    ;   Attributes 
     
     LDA _scroll_x           ;__ Highbyte of scroll_x
     CLC
-    ADC #$F8
+    ADC #$FC
     LSR                     ;
     LSR                     ;   >> 4
     LSR                     ;
     LSR                     ;__
-    STA _tmp4               ;= _tmp4 = tmp4
-    ; wait_hang_on_should_i_write_to_the_collision_map();
-        ; The C code being ported:
-            ; if ((rld_column == X)){	// assume the X	has already been bitshifted
-            ; 	unrle_next_column();
-            ; 	unrle_next_column();
-            ; }
-            ;
-        CMP _rld_column
-        BNE :+
+    STA tmp4
+
+    LDX scroll_count
+    BNE @framenot0
+
+    LDA tmp4
+    CMP _rld_column         ;   If X == rld column, decompress shit
+    BEQ @frame0
+    RTS
+    
+    @framenot0:
+        CPX #$01
+        BEQ @frame1
+        JMP @attributes
+
+    @frame0:
+        ; Switch banks
+        LDA _level_data_bank
+        JSR mmc3_set_prg_bank_1
+
         JSR _unrle_next_column
-        JSR _unrle_next_column
 
-    :
-    LDA _scroll_count       ;   
-    AND #3                  ;   Get index for fast <<6 shift
-    TAX                     ;__
-    LDA shiftBy6Table, x    ;   tmp1 = tmp1
-    STA tmp1                ;__
-    CLC                     ;
-    ADC _tmp4               ;   _tmp4 = index
-    STA _tmp4               ;__
+    @frame1:
+
+        
+
+        ; Writing to nesdoug's VRAM buffer starts here
+        LDX VRAM_INDEX
+
+        ; In-house replacement of get_ppu_addr, only counts X
+        ; Address is big-endian
+        LDY _rld_column ;   000xxxx0 - the left tiles of the metatiles
+        DEY
+        TYA
+        AND #$0F
+        ASL         ;__
+        LDY scroll_count
+        BEQ :+
+            ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
+        :
+        STA VRAM_BUF+TileOff0+1,X
+        STA VRAM_BUF+TileOff1+1,X
+
+        LDA #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
+        STA VRAM_BUF+TileOff0,X
+        ORA #$08        ; 2nd nametable
+        STA VRAM_BUF+TileOff1,X
 
 
-    LDA #4                  ;
-    BIT _scroll_count       ;   if !(scroll_count&4)
-    BNE :+                  ;__
+        ; First part of the update: the tiles
+        ; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
+        LDA #(15*2)
+        STA VRAM_BUF+TileOff0+2,X
+        LDA #(12*2)
+        STA VRAM_BUF+TileOff1+2,X
 
-        LDA #<_collisionMap0    ;
-        LDY #>_collisionMap0    ;__ active_level[0]
-        LDX #$00                ;__ First argument of get_ppu_addr
-        BEQ :++
+        ; The sequence itself:
+        
+        LDA columnBuffer    ;
+        EOR #$FF            ;   Force update pointer
+        STA META_VAR        ;__
+        ; Load max
+        LDA #15
+        STA tmp2
+        ; Load Y value
+        LDA scroll_count
+        AND #1
+        STA tmp3
+        ; Call for upper tiles
+        LDY #$00
+        JSR @tilewriteloop
 
-    :
-        LDA #<_collisionMap1    ;
-        LDY #>_collisionMap1    ;__ active_level[1]
-        LDX #$02                ;__ First argument of get_ppu_addr
+        ; Load new max
+        LDA #27
+        STA tmp2
+        ; Add offset to X
+        TXA
+        CLC
+        ADC #(TileSizeHi-(15*2))
+        TAX
+        ; Call for lower tiles
+        JSR @tilewriteloop
 
-    : 
-    sta DATA_PTR            ;   set_data_pointer();
-    sty DATA_PTR+1          ;__
+        ; Demarkate end of write
+        LDX VRAM_INDEX
+        LDA #$FF
+        STA VRAM_BUF+TileEnd,X
 
-    LDA _scroll_x           ;   X contains the first argument (0 or 2),
-    JSR pushax              ;__ A contains the second argument (x)
-    LDA tmp1                ;   A now contains the third argument (tmp1)
-    JSR _get_ppu_addr       ;__ Get PPU address
-    ; A and X now have the pointer for buffer_4_mt
-    STA ptr1
-    STX ptr1+1
-    JSR pushax              ;__ Load first address
+        ; Declare this section as taken
+        TXA
+        CLC
+        ADC #TileEnd
+        STA VRAM_INDEX
 
-    LDA _tmp4
-    JSR _buffer_4_mt        ; Does not clobber values like C functions do
+        INC scroll_count
 
-    ; adding 0x80 to it is just ORA, since it's practically a bitmask
-    LDA ptr1                ;   += 0x80
-    ORA #$80                ;__
-    LDX ptr1+1              ;   Load second address
-    JSR pushax              ;__
+        RTS
 
-    INC _scroll_count       ; Doesn't neccessarily need to be at the end
-    LDA _scroll_count       ;
-    CMP #7                  ;
-    BMI :+                  ;
-        TYA                 ; Y = 0 from pushax
-        STA _scroll_count   ;__
-    :
-    LDA _tmp4               ;
-    ORA #$20                ;__ index += 0x20
-    JMP _buffer_4_mt        ;__ Finish off routine by JMP
-    ; Because i JMPed, the routine is over
+    @attributes:
+        ; Attribute write architecture:
+
+        ; | Ad|dr |dat|
+        ;   0   1   2
+        ; Addr = VRAM address
+
+        ; 1 byte can theoretically be saved by using a vertical
+        ; sequence of 2 bytes, but this comes at a cost of 23
+        ; cycles per 2 bytes in vblank (80 vs 103), and vlank
+        ; time is not to be wasted
+
+        ; Decremented rld_column, very useful
+        LDX _rld_column
+        DEX
+        TXA
+        AND #$0F
+        STA ptr3
+
+        ; Get the ptr (I am not bothering with 2 separate loops)
+        LDA #>_collisionMap0
+        STA ptr1+1
+        LDA ptr3
+        AND #$0E
+        ADC #(<_collisionMap0-1)    ; The carry is set by the CMP used to jump into this routine
+        STA ptr1
+        BCC :+
+            INC ptr1+1
+        :
+
+        LDA #8
+        STA tmp1
+
+        LDX #$00
+        
+        ; Force metatile update
+        LDA (ptr1,X)
+        EOR #$FF
+        STA META_VAR
+
+        JSR @attributeLoop1
+
+        ; Last byte has no bottom tiles
+        LDA columnBuffer+7
+        AND #$0F
+        STA columnBuffer+7
+
+        ; Update new maximum
+        LDA #8+6
+        STA tmp1
+
+        ; Update pointer (collisionMap0 is 240 bytes, not 256)
+        LDA ptr1
+        ; The carry is set by the CPX at the end of the loop
+        SBC #$10
+        STA ptr1
+        BCS :+
+            DEC ptr1+1
+        :
+
+        JSR @attributeLoop1
+
+        ; Get address i
+        
+        LDA ptr3
+        LSR
+        ORA #$C0
+        
+        ; Store address
+        LDX VRAM_INDEX
+        @addressLoop:
+            ; Low byte
+            STA VRAM_BUF+AttrOff0+1,X
+            STA VRAM_BUF+AttrOff1+1,X
+            TAY
+            ; High byte
+            LDA #$23
+            STA VRAM_BUF+AttrOff0,X
+            ORA #$08
+            STA VRAM_BUF+AttrOff1,X
+            TYA
+
+            INX 
+            INX
+            INX
+
+            CLC
+            ADC #$08
+            BCC @addressLoop
+        
+        LDY #14
+
+        LDA VRAM_INDEX
+        ADC #AttrEnd-1  ; Carry is set by the ADC : BCC
+        STA VRAM_INDEX  ; State that the block is now occupied
+        TAX
+
+        @dataLoop:
+            LDA columnBuffer-1,Y
+            STA VRAM_BUF-3+2,X
+
+            DEX
+            DEX
+            DEX
+            DEY
+            BNE @dataLoop
+        
+        ; Finish off the routine
+        ; X has VRAM_INDEX, mark this block as taken
+        LDA #$FF
+        STA VRAM_BUF+AttrEnd,X
+        ; Reset frame counter
+        LDA #$00
+        STA scroll_count
+        RTS
+
+    @attributeLoop1:
+            ; Read upper left metatile
+            LDY #$00
+            JSR @getAttr
+            STA ptr2
+
+            ; Read lower left metatile (higher chance of being the same, due to RLE)
+            LDY #$10
+            JSR @getAttr
+            STA ptr2+1
+
+            ; Read upper right metatile
+            LDY #$01
+            JSR @getAttr
+            ASL
+            ASL
+            ORA ptr2
+            STA ptr2
+
+            ; Read lower right metatile
+            LDY #$11
+            JSR @getAttr
+            ASL
+            ASL
+            ORA ptr2+1
+            TAY
+            LDA ptr2
+            ORA shiftBy4table,Y
+            STA columnBuffer,X
+
+            ; Increment pointer
+            LDA ptr1
+            ; Last thing affecting carry is the ASL, which
+            ; always shifts 0 into it if the metatile data
+            ; is valid
+            ADC #$20
+            STA ptr1
+            BCC :+
+                INC ptr1+1
+            :
+
+            INX
+            CPX tmp1
+            BNE @attributeLoop1
+        RTS
+
+    @getAttr:
+        ; Read metatile
+        LDA (ptr1),Y
+        CMP META_VAR
+        BEQ :+
+            STA META_VAR
+            JSR MT_MULT5
+        :
+        LDY #$04
+
+        ; Read its attributes
+        LDA (META_PTR2),Y
+        RTS
+
+
+    @tilewriteloop:
+            ;Fetch metatile pointer
+            STY tmp1
+
+            LDA columnBuffer,Y  ;
+            CMP META_VAR        ;   No need to get metatile pointer for the same metatile
+            BEQ :+              ;__
+                STA META_VAR    ;   Get new metatile pointer
+                JSR MT_MULT5    ;__
+            :
+            LDY tmp3
+
+            ;Fetch data, write to buffer
+
+            ;Tile:
+            ; 1 | 2 
+            ;---+---
+            ; 3 | 4 
+
+            LDA (META_PTR2),Y   ;   Tile 1
+            STA VRAM_BUF+TileOff0+3,X
+            INY                 ;__
+            INY                 ;__ Tile 2
+            LDA (META_PTR2),Y   ;   Tile 3
+            STA VRAM_BUF+TileOff0+4,X
+
+
+            ;Buffer the attributes in column buffer
+
+            INX
+            INX
+
+            LDY tmp1
+            INY
+            CPY tmp2
+            BNE @tilewriteloop
+        RTS
 
 
 ;void __fastcall__ music_play(unsigned char song);

@@ -20,16 +20,18 @@ void ship_movement(void){
 	Generic.y = high_byte(player.y);
 	
 	
-	if(bg_coll_D()){ // check collision below
-	    high_byte(player.y) = high_byte(player.y) - eject_D;
-	    player.vel_y = 0;
+	if(high_byte(player.vel_y) & 0x80){
+		if(bg_coll_U() ){ // check collision above
+			high_byte(player.y) = high_byte(player.y) - eject_U;
+			player.vel_y = 0;
+		}
 	}
-	if(bg_coll_U() ){ // check collision above
-		high_byte(player.y) = high_byte(player.y) - eject_U;
-		player.vel_y = 0;
+	else{
+		if(bg_coll_D()){ // check collision below
+		    high_byte(player.y) = high_byte(player.y) - eject_D;
+		    player.vel_y = 0;
+		}
 	}
-		
-
 
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(player.y); // the rest should be the same
@@ -37,11 +39,9 @@ void ship_movement(void){
 
     if(pad & PAD_A) {
         if (!gravity){
-            player.vel_y -= SHIP_GRAVITY;
-            player.vel_y -= SHIP_GRAVITY;
+            player.vel_y -= SHIP_GRAVITY<<1;
 		} else {
-            player.vel_y += SHIP_GRAVITY;
-            player.vel_y += SHIP_GRAVITY;
+            player.vel_y += SHIP_GRAVITY<<1;
         }
     }
 }	

@@ -3,15 +3,14 @@ void state_game(){
 
     scroll_y = 0xEF;
     load_ground(0);
-
-
-	init_rld(level);
+    level = 0x01;
+	  init_rld(level);
     unrle_first_screen();
 
     music_play(song);   // Song set by init_rld
 
     ppu_on_all();
-
+    gamemode = 0x02;
     while (1){
         
         ppu_wait_nmi();
@@ -19,10 +18,10 @@ void state_game(){
         
 
         pad = pad_poll(0); // read the first controller
-		pad_new = get_pad_new(0);
+		    pad_new = get_pad_new(0);
 
         if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
-
+        if (pad_new & PAD_B) gravity = gravity^0x01;
 
         x_movement();
         switch (gamemode) {

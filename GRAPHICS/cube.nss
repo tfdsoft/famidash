@@ -3,8 +3,8 @@ NSTssTXT
 BtnTiles=1
 BtnChecker=0
 BtnSelTiles=0
-BtnChrBank1=1
-BtnChrBank2=0
+BtnChrBank1=0
+BtnChrBank2=1
 BtnGridAll=1
 BtnGridTile=0
 BtnGridAtr=0
@@ -28,17 +28,17 @@ MenuMetaSprMerge=0
 MenuSaveIncName=1
 MenuSaveIncAttr=1
 MenuSaveRLE=0
-VarTileViewTagBuf=0
+VarTileViewTagBuf=1
 VarBgPalCur=0
 VarPalActive=1
-VarTileActive=209
-VarBankActive=0
+VarTileActive=41
+VarBankActive=4096
 VarPPUMask=0
 VarPPUMaskSet0=0
 VarPPUMaskSet1=0
 VarPPUMaskSet2=0
 VarPPUMaskSet3=0
-VarPalBank=0
+VarPalBank=1
 VarMetaSpriteActive=9
 VarSpriteActive=8
 VarSpriteGridX=64
@@ -53,6 +53,10 @@ VarNameSelectionT=-1
 VarNameSelectionB=26
 VarNameCopyW=2
 VarNameCopyH=4
+VarCHRSelectionL=9
+VarCHRSelectionR=10
+VarCHRSelectionT=2
+VarCHRSelectionB=3
 VarCHRSelectionL=1
 VarCHRSelectionR=2
 VarCHRSelectionT=13
@@ -67,7 +71,7 @@ VarCheckpoint_CHRBanks=4
 VarCheckpoint_CHRBanksUndo=4
 
 
-VarCHRSelected=00[d1]0100[2e]
+VarCHRSelected=00[29]0100[d6]
 
 
 Palette=21010f302101113021282530210f0020000f2a21000f2428000f[3]001424340f1525350f1626360f1727370f1828380f1929390f1a2a3a0f1b2b3b0f1c2c3c
