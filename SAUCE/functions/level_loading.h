@@ -1,3 +1,5 @@
+// prototype
+void init_sprites(void);
 
 /* 
 	Reset run-length decoder back to zero
@@ -25,6 +27,9 @@ void load_ground(unsigned char id){
 }
 
 void unrle_first_screen(void){ // run-length decode the first screen of a level
+
+	init_sprites();
+
 	mmc3_set_prg_bank_1(level_data_bank);
     tmp1 = 0x10;
     while (tmp1 != 0){

@@ -155,11 +155,11 @@ char bg_coll_U2(void){
 
 
 
-char bg_coll_death(void) {
+void bg_coll_death(void) {
 
 
 	// middle point collision to kill, since hitboxes don't exist
-	tmp5 = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1) - 1;
+	tmp5 = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1);
 	temp_x = (char)tmp5; // low byte
 
 	tmp1 = Generic.y + (Generic.width >> 1);
@@ -169,10 +169,10 @@ char bg_coll_death(void) {
 
 	if(bg_collision_sub() ) cube_data = 0x01;
 
-
-	temp_x += 2; // low byte
+    /*
+	temp_x += 1; // low byte
 
     if(bg_collision_sub() ) cube_data = 0x01;
-
+    */
 	if(cube_data & 0x01) reset_level();
 }
