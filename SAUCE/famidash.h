@@ -66,6 +66,7 @@ unsigned char collisionMap1[192];
 const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
 
 unsigned char rld_column;
+unsigned char spr_index;
 
 unsigned char level;
 unsigned char level_data_bank;

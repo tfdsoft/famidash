@@ -1,9 +1,4 @@
 char bg_collision_sub(void){
-    // THIS DOESN'T READ FROM THE UPPER COLLISION MAP FSR
-    // I CAN'T FIGURE THIS OUT PLEASE HELP
-    
-    
-    
     if(temp_y >= 0xf0) return 0;
         
 	coordinates = (temp_x >> 4) + (temp_y & 0xf0);
@@ -68,7 +63,7 @@ char bg_coll_R(void){
 
 char bg_coll_U(void){
     // check 2 points on the top side
-    tmp5 = Generic.x + low2bytes(scroll_x);
+    tmp5 = Generic.x + low2bytes(scroll_x) -1;
     temp_x = (char)tmp5; // low byte
     
 	tmp1 = Generic.y;
@@ -78,7 +73,7 @@ char bg_coll_U(void){
     eject_U = temp_y | 0xf0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
-    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
+    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
     temp_x = (char)tmp5; // low byte
     
     if(bg_collision_sub() & COL_ALL) return 1;
@@ -88,7 +83,7 @@ char bg_coll_U(void){
 
 char bg_coll_D(void){
     // check 2 points on the bottom side
-	tmp5 = Generic.x + low2bytes(scroll_x);
+	tmp5 = Generic.x + low2bytes(scroll_x) -1;
     temp_x = (char)tmp5; // low byte
     
 	tmp1 = Generic.y + Generic.height;
@@ -98,7 +93,7 @@ char bg_coll_D(void){
     eject_D = (temp_y + 1) & 0x0f;
     if(bg_collision_sub() & COL_ALL) return 1;
     
-    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
+    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
     temp_x = (char)tmp5; // low byte
     
     if(bg_collision_sub() & COL_ALL) return 1;
