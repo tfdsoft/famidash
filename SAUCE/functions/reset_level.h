@@ -17,6 +17,7 @@ void reset_level(void) {
     scroll_y = 0xEF;
     init_rld(level);
 	unrle_first_screen();
+	init_sprites();
 	player.x = 0x0000;
 	player.y = 0xb000;
 	gravity = 0x00;

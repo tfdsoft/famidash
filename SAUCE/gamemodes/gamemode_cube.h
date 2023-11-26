@@ -26,7 +26,7 @@ void cube_movement(void){
 			    player.vel_y = 0;
 			}
 		}
-		else if(player.vel_y < 0 && gravity){
+		if(player.vel_y < 0 && gravity){
 			if(bg_coll_U() ){ // check collision above
 				high_byte(player.y) = high_byte(player.y) - eject_U;
 				player.vel_y = 0;
@@ -38,19 +38,19 @@ void cube_movement(void){
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(player.y); // the rest should be the same
 	
-	if (!gravity){
-		if (player.vel_y >= 0){
-			if(bg_coll_D2()) {
-				if(pad & PAD_A) {
-					player.vel_y = JUMP_VEL; // JUMP
-				}
-			}
-		}
-	} else {
+	if (gravity){
 		if (player.vel_y <= 0){
 			if(bg_coll_U2()) {
 				if(pad & PAD_A) {
 					player.vel_y = JUMP_VEL^0xFFFF; // JUMP
+				}
+			}
+		}
+	} else {
+		if (player.vel_y >= 0){
+			if(bg_coll_D2()) {
+				if(pad & PAD_A) {
+					player.vel_y = JUMP_VEL; // JUMP
 				}
 			}
 		}

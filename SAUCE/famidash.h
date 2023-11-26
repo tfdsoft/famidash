@@ -70,7 +70,7 @@ unsigned char spr_index;
 
 unsigned char level;
 unsigned char level_data_bank;
-const unsigned char * sprite_data;
+unsigned char * sprite_data;
 
 unsigned char gameState;
 
@@ -82,7 +82,7 @@ unsigned char song;
 // the funny uh uhhhhh um the uhh sprite storidge
 // Y, X, screen_lowbyte, screen_highbyte, object #, unused, unused, unused
 #define max_loaded_sprites 8
-unsigned char activesprites_y[max_loaded_sprites];
+unsigned short activesprites_y[max_loaded_sprites];
 unsigned char activesprites_x[max_loaded_sprites];
 unsigned short activesprites_screen[max_loaded_sprites];
 unsigned char activesprites_type[max_loaded_sprites];
