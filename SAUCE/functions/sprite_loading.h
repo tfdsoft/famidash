@@ -18,9 +18,23 @@ void init_sprites(void){
     }
 }
 
+
+char get_position(void){
+    tmp5 -= scroll_x;
+    tmp6 -= scroll_y;
+    temp_x = tmp5 & 0xff;
+    temp_y = tmp6 & 0xff;
+    if (high_byte(tmp5) || high_byte(tmp6)) return 0;
+    return 1;
+}
+
 void check_spr_objects(void){
     for (index = 0; index < max_loaded_sprites; ++index){
         tmp5 = (low_byte(activesprites_screen[index]) << 8) + activesprites_x[index];
+        tmp6 = (high_byte(activesprites_y[index]) << 8) + low_byte(activesprites_y[index]);
+        activesprites_active[index] = get_position();
+        activesprites_x[index] = temp_x;
+        low_byte(activesprites_y) = temp_y;
     }
 }
 
@@ -46,6 +60,9 @@ void sprite_collide(){
     for (index = 0; index < max_loaded_sprites; ++index){
         tmp4 = activesprites_type[index];
         Generic2.height = sprite_height_lookup(tmp4);
+
+        Generic2.x = activesprites_x[index];
+        Generic2.y = low_byte(activesprites_y[index]);
 
     }
 }

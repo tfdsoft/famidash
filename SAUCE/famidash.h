@@ -87,6 +87,8 @@ unsigned char activesprites_x[max_loaded_sprites];
 unsigned short activesprites_screen[max_loaded_sprites];
 unsigned char activesprites_type[max_loaded_sprites];
 
+unsigned char activesprites_active[max_loaded_sprites];
+
 
 
 

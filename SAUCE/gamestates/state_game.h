@@ -27,11 +27,13 @@ void state_game(){
         bg_coll_death(); 
         do_the_scroll_thing(); 
 
+        check_spr_objects();
         sprite_collide();
 
         oam_clear();
-        draw_sprites();
         draw_screen_R(); 
+        draw_sprites();
+        
         
         gray_line();
     }
