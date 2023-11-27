@@ -28,24 +28,26 @@ newfile = open(newname, 'w')  # warning, this may overwrite old file !!!!!!!!!!!
 rows = len(your_list)
 columns = len(your_list[0])
 
-newfile.write("// Y_lowbyte, X, screen_lowbyte, screen_highbyte, object #, Y_highbyte, unused, unused\n\n")
+newfile.write("// X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused\n\n	")
 
 for i in range(0, columns):
 	for j in range(0, rows):
 		a = str(your_list[j][i])
 		if (a != "-1"):
-			newfile.write(str(hex(j % 16)) + "0, ") # Y position
 			k = i % 16
-			newfile.write(str(hex(k)) + "0, ")		# X position
+			newfile.write(str(hex(k)) + "0, ")		# X position, low byte
 			k = i // 16
-			newfile.write(str(k) + ", ")			# low byte of screen number
-			k = k // 256
-			newfile.write(str(k) + ", ")			# high byte of screen number
+			newfile.write(str(k) + ", ")			# X position, high byte
+
+			newfile.write(str(hex(j % 16)) + "0, ") # Y position, low byte
+			k = (j % 32) // 16
+			newfile.write(str(k) + ", ")  			# Y position, high byte
+
 			newfile.write("obj"  + a + ", ")		# object id
-			k = (i % 32) // 16
-			newfile.write(str(k) + ", ")  				# vertical screen (0 or 1)
+			
 			newfile.write("0, ")					# unused
-			newfile.write("0, \n")					# unused
+			newfile.write("0, ")					# unused
+			newfile.write("0, \n	")					# unused
 
 newfile.write("TURN_OFF")
 newfile.write("\n\n")			

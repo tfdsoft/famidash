@@ -6,11 +6,11 @@ void init_sprites(void){
         if (sprite_data[spr_index<<3] == TURN_OFF) break;
 
         tmp3 = sprite_data[(spr_index<<3)]; low_byte(activesprites_y[spr_index]) = tmp3; 
-        tmp3 = sprite_data[(spr_index<<3)+1]; activesprites_x[spr_index] = tmp3;
-        tmp3 = sprite_data[(spr_index<<3)+2]; low_byte(activesprites_screen[spr_index]) = tmp3;
-        tmp3 = sprite_data[(spr_index<<3)+3]; high_byte(activesprites_screen[spr_index]) = tmp3;
+        tmp3 = sprite_data[(spr_index<<3)+1]; high_byte(activesprites_y[spr_index]) = tmp3; 
+        tmp3 = sprite_data[(spr_index<<3)+2]; low_byte(activesprites_x[spr_index]) = tmp3;
+        tmp3 = sprite_data[(spr_index<<3)+3]; high_byte(activesprites_x[spr_index]) = tmp3;
         tmp3 = sprite_data[(spr_index<<3)+4]; activesprites_type[spr_index] = tmp3;
-        tmp3 = sprite_data[(spr_index<<3)+5]; high_byte(activesprites_y[spr_index]) = tmp3; 
+        // unused byte 5
         // unused byte 6
         // unused byte 7
         gray_line();
@@ -32,15 +32,13 @@ void check_spr_objects(void){
     for (index = 0; index < max_loaded_sprites; ++index){
         activesprites_active[index] = 0;
         //tmp5 = (low_byte(activesprites_screen[index]) << 8) + activesprites_x[index];
-        low_byte(tmp5) = activesprites_x[index];
-        high_byte(tmp5) = low_byte(activesprites_screen[index]);
+        tmp5 = activesprites_x[index];
         //tmp6 = (high_byte(activesprites_y[index]) << 8) + low_byte(activesprites_y[index]);
-        low_byte(tmp6) = low_byte(activesprites_y[index]);
-        high_byte(tmp6) = high_byte(activesprites_y[index]);
+        tmp6 = activesprites_y[index];
 
         activesprites_active[index] = get_position();
-        activesprites_x[index] = temp_x;
-        low_byte(activesprites_y) = temp_y;
+        low_byte(activesprites_x[index]) = temp_x;
+        low_byte(activesprites_y[index]) = temp_y;
     }
 }
 
