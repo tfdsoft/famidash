@@ -3,15 +3,15 @@ void reset_level(void) {
 	famistudio_music_stop();
 	famistudio_sfx_play(sfx_death, 0);
 
-	
-	tmp1 = 0;
-	while (tmp1 < 60){
-		ppu_wait_nmi();
-		music_update();
-		++tmp1;
-		gray_line();
+	if (cube_data & 1) {
+		tmp1 = 0;
+		while (tmp1 < 60){
+			ppu_wait_nmi();
+			music_update();
+			++tmp1;
+			gray_line();
+		}
 	}
-
 	ppu_off(); // reset the level when you get to this point, and change this later
 	scroll_x = 0;
     scroll_y = 0xEF;
