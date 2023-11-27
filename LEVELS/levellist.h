@@ -34,6 +34,7 @@ const unsigned char * const level_list[] = {
 
 const unsigned char * const sprite_list[] = {
     stereomadness_SP,
+    polargeist_SP
 };
 
 const unsigned char bank_list[] = {
