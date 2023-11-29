@@ -86,6 +86,8 @@ unsigned short activesprites_x[max_loaded_sprites];
 unsigned short activesprites_y[max_loaded_sprites];
 unsigned char activesprites_type[max_loaded_sprites];
 
+unsigned char activesprites_realx[max_loaded_sprites];
+unsigned char activesprites_realy[max_loaded_sprites];
 unsigned char activesprites_active[max_loaded_sprites];
 
 

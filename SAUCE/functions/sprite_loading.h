@@ -15,6 +15,11 @@ void init_sprites(void){
         // unused byte 5
         // unused byte 6
         // unused byte 7
+
+
+        tmp3 = activesprites_x[spr_index]; activesprites_realx[spr_index] = tmp3;
+        tmp3 = activesprites_y[spr_index]; activesprites_realy[spr_index] = tmp3;
+
         gray_line();
         mmc3_pop_prg_bank_1();
         ++spr_index;
@@ -23,12 +28,12 @@ void init_sprites(void){
 
 
 char get_position(void){
-    tmp5 -= low2bytes(scroll_x);
-    tmp6 -= scroll_y;
+    tmp5 -= scroll_x;
+    //tmp6 -= scroll_y;
     temp_x = tmp5 & 0x00ff;
     temp_y = tmp6 & 0x00ff;
     if (high_byte(tmp5)) return 0;
-    if (high_byte(tmp6)) return 0;
+    //if (high_byte(tmp6)) return 0;
     return 1;
 }
 
@@ -42,8 +47,8 @@ void check_spr_objects(void){
         high_byte(tmp6) = high_byte(activesprites_y[index]);
 
         activesprites_active[index] = get_position();
-        low_byte(activesprites_x[index]) = temp_x;
-        low_byte(activesprites_y[index]) = temp_y;
+        activesprites_realx[index] = temp_x;
+        activesprites_realy[index] = temp_y;
     }
 }
 
@@ -54,6 +59,10 @@ void check_spr_objects(void){
 
 
 char sprite_height_lookup(unsigned char type){
+    // portals
+    if (type & 0x07 && !(type & 0xF8)) return 0x2f;
+
+    // triggers
     if (type & 0x30) return 0xff;
 }
 

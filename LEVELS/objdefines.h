@@ -147,14 +147,14 @@ enum{ // yes, i'm fully aware that using enum is bad.
 };
 #define obj0 PORTAL_GAMEMODE_CUBE
 #define obj1 PORTAL_GAMEMODE_SHIP
-#define obj2 PORTAL_GRAVITY_DOWN
-#define obj3 PORTAL_GRAVITY_UP
+#define obj2 NULL
+#define obj3 NULL
 #define obj4 NULL
 #define obj5 NULL
 #define obj6 NULL
 #define obj7 NULL
-#define obj8 NULL
-#define obj9 NULL
+#define obj8 PORTAL_GRAVITY_DOWN
+#define obj9 PORTAL_GRAVITY_UP
 #define obj10 NULL
 #define obj11 NULL
 #define obj12 NULL

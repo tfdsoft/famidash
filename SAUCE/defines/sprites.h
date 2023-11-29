@@ -6,16 +6,12 @@ const unsigned char Cube_0[]={
 	  8,  0,0x03,0|OAM_FLIP_H,
 	0x80
 };
-
-
 const unsigned char Cube_1[]={
 
 	  0,  0,0x05,0,
 	  8,  0,0x05,0|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
-
-
 const unsigned char Cube_2[]={
 
 	- 4,- 3,0x07,0,
@@ -24,8 +20,6 @@ const unsigned char Cube_2[]={
 	 12,  3,0x07,0|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
-
-
 const unsigned char Cube_3[]={
 
 	- 4,  0,0x0b,0,
@@ -34,8 +28,6 @@ const unsigned char Cube_3[]={
 	 12,  0,0x0b,0|OAM_FLIP_H,
 	0x80
 };
-
-
 const unsigned char Cube_4[]={
 
 	- 4,  3,0x07,0|OAM_FLIP_V,
@@ -44,8 +36,6 @@ const unsigned char Cube_4[]={
 	 12,- 3,0x07,0|OAM_FLIP_H,
 	0x80
 };
-
-
 const unsigned char Cube_5[]={
 
 	  0,  0,0x05,0|OAM_FLIP_V,
@@ -184,4 +174,15 @@ const unsigned char Portal_Gravity_Up[]={
 };
 
 
-const unsigned char * const Portals[]={Portal_Gamemode_Cube, Portal_Gamemode_Ship, Portal_Gravity_Down, Portal_Gravity_Up};
+const unsigned char * const Portals[]={
+	Portal_Gamemode_Cube,
+	Portal_Gamemode_Ship, 
+	NULL, // ball
+	NULL, // ufo
+	NULL, // wave
+	NULL, // bobot
+	NULL, // spider
+	NULL, // swing
+	Portal_Gravity_Down,
+	Portal_Gravity_Up
+	};

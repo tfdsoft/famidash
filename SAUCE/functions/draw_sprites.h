@@ -4,9 +4,9 @@ void draw_sprites(void){
 
 	// the level sprites
 	for (index = 0; index < max_loaded_sprites; ++index){
-		temp_y = low_byte(activesprites_y[index]);
+		temp_y = low_byte(activesprites_realy[index]);
 		if (!activesprites_active[index]) continue; 
-		temp_x = low_byte(activesprites_x[index]);
+		temp_x = low_byte(activesprites_realx[index]);
 		if (temp_x == 0) temp_x = 1;
 		if (temp_x > 0xf0) continue;
 		if (temp_y < 0xf0) oam_meta_spr(temp_x, temp_y, Portal_Gamemode_Ship);
