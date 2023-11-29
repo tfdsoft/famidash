@@ -9,9 +9,11 @@ void draw_sprites(void){
 		temp_x = low_byte(activesprites_realx[index]);
 		if (temp_x == 0) temp_x = 1;
 		if (temp_x > 0xf0) continue;
-		if (temp_y < 0xf0) oam_meta_spr(temp_x, temp_y, Portal_Gamemode_Ship);
+		if (temp_y < 0xf0) {
+			tmp3 = activesprites_type[index];
+			oam_meta_spr(temp_x, temp_y-1, Portals[tmp3]);
+		}
 	}
-
 
 
 

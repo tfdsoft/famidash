@@ -43,7 +43,7 @@ for i in range(0, columns):
 			k = (j % 32) // 16
 			newfile.write(str(k) + ", ")  			# Y position, high byte
 
-			newfile.write("obj"  + a + ", ")		# object id
+			newfile.write(a + ", ")		# object id
 			
 			newfile.write("0, ")					# unused
 			newfile.write("0, ")					# unused

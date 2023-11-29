@@ -1,9 +1,7 @@
 void state_game(){
 	ppu_off();
-    level = 0x00;
     load_ground(0);
 	reset_level();
-    gamemode = 0x02;
     while (1){
         
         ppu_wait_nmi();

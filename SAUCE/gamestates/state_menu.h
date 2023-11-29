@@ -16,18 +16,19 @@ void state_menu(){
 	vram_adr(NTADR_A(4,4));
 	for(tmp1=0;menutext1[tmp1];++tmp1){
 		vram_put(0xA0+menutext1[tmp1]);
-	}
-	vram_adr(NTADR_A(7,26));
+	} 
+	vram_adr(NTADR_A(7,24));
 	for(tmp1=0;menutext2[tmp1];++tmp1){
 		vram_put(0xA0+menutext2[tmp1]);
 	}
-	vram_adr(NTADR_A(9,27));
+	vram_adr(NTADR_A(9,25));
 	for(tmp1=0;menutext3[tmp1];++tmp1){
 		vram_put(0xA0+menutext3[tmp1]);
 	}
-
-
-	level = 0x01;
+	vram_adr(NTADR_A(2,27));
+	for(tmp1=0;menutext4[tmp1];++tmp1){
+		vram_put(0xA0+menutext4[tmp1]);
+	}
 
 
 	ppu_on_all();
@@ -41,8 +42,11 @@ void state_menu(){
 
 		if (pad_new & PAD_START){
 			gameState = 0x02;
-			famistudio_music_stop();
-			//famistudio_update();	// to clear the APU registers
+			return;
+		}
+		if (pad_new & PAD_SELECT){
+			level = 0x01;
+			gameState = 0x02;
 			return;
 		}
 		gray_line();

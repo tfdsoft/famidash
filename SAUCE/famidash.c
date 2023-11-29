@@ -57,6 +57,7 @@ void main(){
         ppu_wait_nmi();
 
 		switch (gameState){
+			famistudio_music_stop();
 			case 0x01: state_menu(); break;
 			case 0x02: state_game(); break;
 		}
