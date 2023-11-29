@@ -33,6 +33,6 @@ void state_game(){
         draw_sprites();
         
         
-        gray_line();
+        //gray_line();
     }
 }
