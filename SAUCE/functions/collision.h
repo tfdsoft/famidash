@@ -62,15 +62,15 @@ char bg_coll_R(void){
 }
 
 char bg_coll_U(void){
-    // check 2 points on the top side
-    tmp5 = Generic.x + low2bytes(scroll_x) -1;
+    // check 2 points on the bottom side
+	tmp5 = Generic.x + low2bytes(scroll_x) -1;
     temp_x = (char)tmp5; // low byte
     
 	tmp1 = Generic.y;
-	tmp5 = add_scroll_y(tmp1, scroll_y); 
+	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
-    eject_U = temp_y | 0xf0;
+    eject_U = (temp_y) | 0xf0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
     tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;

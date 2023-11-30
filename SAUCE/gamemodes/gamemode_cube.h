@@ -27,7 +27,7 @@ void cube_movement(void){
 			}
 		}
 		if(player.vel_y < 0 && gravity){
-			if(bg_coll_U() ){ // check collision above
+			if(bg_coll_U()){ // check collision above
 				high_byte(player.y) -= eject_U;
 				player.vel_y = 0;
 			}
