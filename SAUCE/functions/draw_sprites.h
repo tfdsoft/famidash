@@ -4,6 +4,7 @@ void draw_sprites(void){
 
 	// the level sprites
 	for (index = 0; index < max_loaded_sprites; ++index){
+		if (activesprites_active[index] & 0x30) continue;
 		temp_y = low_byte(activesprites_realy[index]);
 		if (!activesprites_active[index]) continue; 
 		temp_x = low_byte(activesprites_realx[index]);
@@ -11,7 +12,7 @@ void draw_sprites(void){
 		if (temp_x > 0xf0) continue;
 		if (temp_y < 0xf0) {
 			tmp3 = activesprites_type[index];
-			oam_meta_spr(temp_x, temp_y-1, Portals[tmp3]);
+			oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3]);
 		}
 	}
 

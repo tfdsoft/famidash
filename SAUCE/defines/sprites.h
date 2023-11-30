@@ -173,16 +173,27 @@ const unsigned char Portal_Gravity_Up[]={
 	0x80
 };
 
+const unsigned char nometa[] = {0x80};
 
-const unsigned char * const Portals[]={
+const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Cube,
 	Portal_Gamemode_Ship, 
-	NULL, // ball
-	NULL, // ufo
-	NULL, // wave
-	NULL, // bobot
-	NULL, // spider
-	NULL, // swing
+	nometa, // ball
+	nometa, // ufo
+	nometa, // wave
+	nometa, // bobot
+	nometa, // spider
+	nometa, // swing
 	Portal_Gravity_Down,
-	Portal_Gravity_Up
+	Portal_Gravity_Up,
+	nometa,
+	nometa,
+	nometa,
+	nometa,
+	nometa,
+	nometa, // end stage trigger
+
+	// start of color triggers
+
+
 	};

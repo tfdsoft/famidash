@@ -22,13 +22,13 @@ void cube_movement(void){
 	
 		if(player.vel_y > 0 && !gravity){
 			if(bg_coll_D()){ // check collision below
-			    high_byte(player.y) = high_byte(player.y) - eject_D;
+			    high_byte(player.y) -= eject_D;
 			    player.vel_y = 0;
 			}
 		}
 		if(player.vel_y < 0 && gravity){
 			if(bg_coll_U() ){ // check collision above
-				high_byte(player.y) = high_byte(player.y) - eject_U;
+				high_byte(player.y) -= eject_U;
 				player.vel_y = 0;
 			}
 		}
