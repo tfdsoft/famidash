@@ -19,4 +19,5 @@ void x_movement(){
 	Generic.height = CUBE_HEIGHT;
 	
 	// no L/R collision required, since that is accounted for with the death script
+
 }
