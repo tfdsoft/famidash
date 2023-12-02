@@ -9,7 +9,7 @@ music_data_1:
 	.word @instruments
 	.word @samples-4
 	.word @song0ch0,@song0ch1,@song0ch2,@song0ch3,@song0ch4,327,273 ; 00 : Stereo Madness
-	.word @song1ch0,@song1ch1,@song1ch2,@song1ch3,@song1ch4,294,245 ; 01 : Back on Track
+	.word @song1ch0,@song1ch1,@song1ch2,@song1ch3,@song1ch4,294,243 ; 01 : Back on Track
 	.word @song2ch0,@song2ch1,@song2ch2,@song2ch3,@song2ch4,333,278 ; 02 : Polargeist
 	.word @song3ch0,@song3ch1,@song3ch2,@song3ch3,@song3ch4,296,247 ; 03 : Dry Out
 	.word @song4ch0,@song4ch1,@song4ch2,@song4ch3,@song4ch4,288,240 ; 04 : Base after Base
