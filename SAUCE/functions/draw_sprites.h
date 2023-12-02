@@ -38,9 +38,4 @@ void draw_sprites(void){
 
 			break;
     }
-
-
-
-
-	
 }

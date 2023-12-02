@@ -19,5 +19,5 @@ void x_movement(){
 	Generic.height = CUBE_HEIGHT;
 	
 	// no L/R collision required, since that is accounted for with the death script
-
+	if (bg_coll_R()) cube_data ^= 0x01; // turns out, this is needed to temporarily fix zipping
 }
