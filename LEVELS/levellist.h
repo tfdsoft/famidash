@@ -30,19 +30,22 @@
 const unsigned char * const level_list[] = {
     stereomadness_,
     backontrack_,
-    polargeist_
+    polargeist_,
+    dryout_
     };
 
 const unsigned char * const sprite_list[] = {
     stereomadness_SP,
     backontrack_SP,
-    polargeist_SP
+    polargeist_SP,
+    dryout_SP
 };
 
 const unsigned char bank_list[] = {
     1,
     2,
-    1
+    1,
+    2
 };
 
 
