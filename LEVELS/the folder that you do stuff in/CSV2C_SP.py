@@ -39,7 +39,11 @@ for i in range(0, columns):
 			k = i // 16
 			newfile.write(str(k) + ", ")			# X position, high byte
 
-			newfile.write(str(hex(j % 16)) + "0, ") # Y position, low byte
+			if (int(a) == 10):
+				newfile.write(str(hex(j % 16)) + "8, ")
+			else:
+				newfile.write(str(hex(j % 16)) + "0, ") # Y position, low byte
+
 			k = (j % 32) // 16
 			newfile.write(str(k) + ", ")  			# Y position, high byte
 

@@ -35,7 +35,7 @@ const unsigned char * const level_list[] = {
 
 const unsigned char * const sprite_list[] = {
     stereomadness_SP,
-    NULL,
+    backontrack_SP,
     polargeist_SP
 };
 

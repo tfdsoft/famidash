@@ -21,7 +21,7 @@ const unsigned char metatiles1[]={
 	209, 211, 255, 255,  1,
 	209, 212, 255, 255,  1,
 	209, 213, 255, 255,  1,
-	209, 214, 255, 255,  1,
+	36, 37, 54, 55,  0,
 	46, 47, 0, 0,  0,
 	0, 0, 54, 55,  0,
 	36, 37, 0, 0,  0,
@@ -83,10 +83,10 @@ const unsigned char is_solid[]={
 	0,			// yellow pad
 	0,			// yellow orb
 	0,			// pink pad
-	0,			// pink orb
+	COL_ALL,	// half-slab with ground spikes
 	COL_DEATH,	// ceiling spikes
 	COL_DEATH,	// ground spikes
-	COL_ALL,	// half-slab 2
+	COL_ALL,	// half-slab
 	COL_DEATH,	// the other spikes
 	COL_DEATH,
 	COL_DEATH,

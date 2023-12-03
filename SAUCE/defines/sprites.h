@@ -109,9 +109,8 @@ const unsigned char Ball[]={
 	0x80
 };
 
+// ================================================================
 
-
-// Portals
 const unsigned char Portal_Gamemode_Cube[]={
 
 	  0,  0,0x25,0,
@@ -173,6 +172,26 @@ const unsigned char Portal_Gravity_Up[]={
 	0x80
 };
 
+// ================================================================
+
+const unsigned char Jump_Orb[]={
+
+	  0,  0,0x45,2,
+	  8,  0,0x45,2|OAM_FLIP_H,
+	  4,  0,0x47,1,
+	0x80
+};
+const unsigned char Jump_Pad[]={
+
+	  0,  0,0x49,1,
+	  8,  0,0x49,1|OAM_FLIP_H,
+	0x80
+};
+
+
+
+
+
 const unsigned char nometa[] = {0x80};
 
 const unsigned char * const Metasprites[]={
@@ -186,8 +205,8 @@ const unsigned char * const Metasprites[]={
 	nometa, // swing
 	Portal_Gravity_Down,
 	Portal_Gravity_Up,
-	nometa,
-	nometa,
+	Jump_Pad,
+	Jump_Orb,
 	nometa,
 	nometa,
 	nometa,
