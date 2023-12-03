@@ -183,8 +183,8 @@ const unsigned char Jump_Orb[]={
 };
 const unsigned char Jump_Pad[]={
 
-	  0,  0,0x49,1,
-	  8,  0,0x49,1|OAM_FLIP_H,
+	  0,- 8,0x49,1,
+	  8,- 8,0x49,1|OAM_FLIP_H,
 	0x80
 };
 
