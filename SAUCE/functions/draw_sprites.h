@@ -18,6 +18,8 @@ void draw_sprites(void){
 			break;
 		case 0x02:
 			cube_rotate = 0x047F - player.vel_y;
+			if (cube_rotate < 0x0000) cube_rotate = 0x0000;
+			if (cube_rotate > 0x08ff) cube_rotate = 0x08ff;
 
 			if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, SHIP[high_byte(cube_rotate)]);
 			else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, SHIP[8-high_byte(cube_rotate)]);
