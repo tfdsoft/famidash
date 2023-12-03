@@ -54,8 +54,7 @@ void check_spr_objects(void){
 
 char sprite_height_lookup(unsigned char type){
     // portals
-    if (type == 0) return 0x2f;
-    if (type & 0x07) return 0x2f;
+    if (type < 0x0A) return 0x2f;
 
     // pads
     if (type == 0x0A) return 0x07; // jump pad
@@ -70,9 +69,12 @@ void sprite_collide_lookup(unsigned char type){
     if (type == 0) gamemode = 0x01;
     if (type & 0x07 && !(type & 0xF8)) gamemode = 0x01<<type;
     switch (type){
-        case 0x0A:
+        case 8: gravity = 0x00; break;
+        case 9: gravity = 0x01; break;
+        case 10:
             if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
             else player.vel_y = PAD_HEIGHT_YELLOW;
+            break;
     }
 }
 
