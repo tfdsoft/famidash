@@ -45,7 +45,7 @@ void state_menu(){
 			return;
 		}
 		if (pad_new & PAD_SELECT){
-			level = 0x04;
+			level = 0x05;
 			gameState = 0x02;
 			return;
 		}
