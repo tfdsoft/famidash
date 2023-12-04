@@ -1,34 +1,43 @@
+void load_next_sprite(void){
+    mmc3_tmp_prg_bank_1(0x0C);
+    if (sprite_data[spr_index<<3] == TURN_OFF) return;
+    tmp3 = sprite_data[(spr_index<<3)+0];  low_byte(activesprites_x[spr_index % max_loaded_sprites]) = tmp3; 
+    tmp3 = sprite_data[(spr_index<<3)+1]; high_byte(activesprites_x[spr_index % max_loaded_sprites]) = tmp3; 
+    tmp3 = sprite_data[(spr_index<<3)+2];  low_byte(activesprites_y[spr_index % max_loaded_sprites]) = tmp3;
+    tmp3 = sprite_data[(spr_index<<3)+3]; high_byte(activesprites_y[spr_index % max_loaded_sprites]) = tmp3;
+    tmp3 = sprite_data[(spr_index<<3)+4]; activesprites_type[spr_index % max_loaded_sprites] = tmp3;
+    // unused byte 5
+    // unused byte 6
+    // unused byte 7
+
+
+    tmp3 = activesprites_x[spr_index]; activesprites_realx[spr_index % max_loaded_sprites] = tmp3;
+    tmp3 = activesprites_y[spr_index]; activesprites_realy[spr_index % max_loaded_sprites] = tmp3;
+
+    gray_line();
+    mmc3_pop_prg_bank_1();
+    ++spr_index;
+}
+
+
+
 void init_sprites(void){
     sprite_data = (unsigned char *) sprite_list[level];
 
     spr_index = 0;
-
-    
     while (spr_index < max_loaded_sprites){
         if (sprite_data[spr_index<<3] == TURN_OFF) break;
-        mmc3_tmp_prg_bank_1(0x0C);
-        tmp3 = sprite_data[(spr_index<<3)+0];  low_byte(activesprites_x[spr_index]) = tmp3; 
-        tmp3 = sprite_data[(spr_index<<3)+1]; high_byte(activesprites_x[spr_index]) = tmp3; 
-        tmp3 = sprite_data[(spr_index<<3)+2];  low_byte(activesprites_y[spr_index]) = tmp3;
-        tmp3 = sprite_data[(spr_index<<3)+3]; high_byte(activesprites_y[spr_index]) = tmp3;
-        tmp3 = sprite_data[(spr_index<<3)+4]; activesprites_type[spr_index] = tmp3;
-        // unused byte 5
-        // unused byte 6
-        // unused byte 7
-
-
-        tmp3 = activesprites_x[spr_index]; activesprites_realx[spr_index] = tmp3;
-        tmp3 = activesprites_y[spr_index]; activesprites_realy[spr_index] = tmp3;
-
-        gray_line();
-        mmc3_pop_prg_bank_1();
-        ++spr_index;
+        load_next_sprite();
     }
 }
 
 
 char get_position(void){
     tmp5 -= scroll_x;
+    if (high_byte(tmp5) == 0xff) {
+        load_next_sprite();
+        return 0;
+    }
     tmp6 -= scroll_y;
     temp_x = tmp5 & 0x00ff;
     temp_y = tmp6 & 0x00ff;
