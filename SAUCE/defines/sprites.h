@@ -210,7 +210,7 @@ const unsigned char * const Metasprites[]={
 	nometa,
 	nometa,
 	nometa,
-	nometa, // end stage trigger
+	Jump_Orb, // end stage trigger
 
 	// start of color triggers
 

@@ -62,6 +62,7 @@ void check_spr_objects(void){
 }
 
 char sprite_height_lookup(unsigned char type){
+    if (type == 0x0f) return 0x7f;
     // portals
     if (type < 0x0A) return 0x2f;
 
@@ -69,21 +70,30 @@ char sprite_height_lookup(unsigned char type){
     if (type == 0x0A) return 0x07; // jump pad
     if (type == 0x0B) return 0x0f; // jump ring
 
+
     // triggers
     if (type & 0x30) return 0xff;
 }
 
 void sprite_collide_lookup(unsigned char type){
     // portals
-    if (type == 0) gamemode = 0x01;
-    if (type & 0x07 && !(type & 0xF8)) gamemode = 0x01<<type;
     switch (type){
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        case 4:
+        case 5:
+        case 6:
+        case 7: gamemode = 0x01<<type; break;
+
         case 8: gravity = 0x00; break;
         case 9: gravity = 0x01; break;
-        case 10:
+        case 0x0A:
             if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
             else player.vel_y = PAD_HEIGHT_YELLOW;
             break;
+        case 0x0F: gameState = 0x01; break;
     }
 }
 
@@ -99,13 +109,13 @@ void sprite_collide(){
         tmp3 = activesprites_active[index];
         if (tmp3){
             tmp4 = activesprites_type[index];
-            Generic2.height = sprite_height_lookup(tmp4);
+            tmp2 = sprite_height_lookup(tmp4);
+            Generic2.height = tmp2;
 
             Generic2.x = activesprites_realx[index];
             Generic2.y = activesprites_realy[index];
             
             if (check_collision(&Generic, &Generic2)) {
-                tmp4 = activesprites_type[index];
                 sprite_collide_lookup(tmp4);
             }
         }

@@ -17,20 +17,14 @@ void state_menu(){
 	for(tmp1=0;menutext1[tmp1];++tmp1){
 		vram_put(0xA0+menutext1[tmp1]);
 	} 
-	vram_adr(NTADR_A(7,24));
+	vram_adr(NTADR_A(2,24));
 	for(tmp1=0;menutext2[tmp1];++tmp1){
 		vram_put(0xA0+menutext2[tmp1]);
 	}
-	vram_adr(NTADR_A(9,25));
-	for(tmp1=0;menutext3[tmp1];++tmp1){
-		vram_put(0xA0+menutext3[tmp1]);
-	}
-	vram_adr(NTADR_A(2,27));
-	for(tmp1=0;menutext4[tmp1];++tmp1){
-		vram_put(0xA0+menutext4[tmp1]);
-	}
 
+	one_vram_buffer(0xD0+level, NTADR_A(29,24));
 
+	oam_clear();
 	ppu_on_all();
 
 	while (1){
@@ -45,9 +39,9 @@ void state_menu(){
 			return;
 		}
 		if (pad_new & PAD_SELECT){
-			level = 0x05;
-			gameState = 0x02;
-			return;
+			++level;
+			one_vram_buffer(0xD0+level, NTADR_A(29,24));
+
 		}
 		gray_line();
 	}

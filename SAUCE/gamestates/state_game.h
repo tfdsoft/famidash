@@ -34,5 +34,6 @@ void state_game(){
         
         
         gray_line();
+        if (gameState != 0x02) return;
     }
 }

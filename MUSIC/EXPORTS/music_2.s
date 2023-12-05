@@ -8,7 +8,7 @@ music_data_2:
 	.byte 17
 	.word @instruments
 	.word @samples-4
-	.word @song0ch0,@song0ch1,@song0ch2,@song0ch3,@song0ch4,358,302 ; 00 : Jumper
+	.word @song0ch0,@song0ch1,@song0ch2,@song0ch3,@song0ch4,358,304 ; 00 : Jumper
 	.word @song1ch0,@song1ch1,@song1ch2,@song1ch3,@song1ch4,292,244 ; 01 : Time Machine
 	.word @song2ch0,@song2ch1,@song2ch2,@song2ch3,@song2ch4,286,238 ; 02 : Cycles
 	.word @song3ch0,@song3ch1,@song3ch2,@song3ch3,@song3ch4,307,256 ; 03 : xStep
