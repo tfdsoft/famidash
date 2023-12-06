@@ -93,7 +93,7 @@ void sprite_collide_lookup(unsigned char type){
             if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
             else player.vel_y = PAD_HEIGHT_YELLOW;
             break;
-        case 0x0F: gameState = 0x01; break;
+        case 0x0F: gameState = 0x01; famistudio_sfx_play(sfx_level_complete, 0); break;
     }
 }
 

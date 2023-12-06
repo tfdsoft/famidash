@@ -96,7 +96,7 @@ const unsigned char Ship_6[]={
 };
 
 
-const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_3, Ship_4, Ship_5, Ship_6, Ship_6};
+const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_4, Ship_5, Ship_6, Ship_6};
 // end ship
 
 

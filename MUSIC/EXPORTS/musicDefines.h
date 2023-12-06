@@ -25,4 +25,5 @@
 #define song_max 24
 #define sfx_death 0
 #define sfx_click 1
-#define sfx_max 2
+#define sfx_level_complete 2
+#define sfx_max 3
