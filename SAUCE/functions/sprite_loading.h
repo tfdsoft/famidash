@@ -14,7 +14,7 @@ void load_next_sprite(void){
     tmp3 = activesprites_x[spr_index]; activesprites_realx[spr_index % max_loaded_sprites] = tmp3;
     tmp3 = activesprites_y[spr_index]; activesprites_realy[spr_index % max_loaded_sprites] = tmp3;
 
-    gray_line();
+    //gray_line();
     mmc3_pop_prg_bank_1();
     ++spr_index;
 }
@@ -62,7 +62,7 @@ void check_spr_objects(void){
 }
 
 char sprite_height_lookup(unsigned char type){
-    if (type == 0x0f) return 0x7f;
+    if (type == 0x0f) return 0x5f;
     // portals
     if (type < 0x0A) return 0x2f;
 
@@ -93,7 +93,11 @@ void sprite_collide_lookup(unsigned char type){
             if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
             else player.vel_y = PAD_HEIGHT_YELLOW;
             break;
-        case 0x0F: gameState = 0x01; famistudio_sfx_play(sfx_level_complete, 0); break;
+        case 0x0F: 
+        gameState = 0x01; 
+        pal_fade_to(4,0);
+        famistudio_sfx_play(sfx_level_complete, 0); 
+        break;
     }
 }
 

@@ -26,7 +26,7 @@ void state_menu(){
 
 	oam_clear();
 	ppu_on_all();
-
+	pal_fade_to(0,4);
 	while (1){
 		ppu_wait_nmi();
 		music_update();
@@ -36,6 +36,7 @@ void state_menu(){
 
 		if (pad_new & PAD_START){
 			gameState = 0x02;
+			pal_fade_to(4,0);
 			return;
 		}
 		if (pad_new & PAD_SELECT){
@@ -43,6 +44,6 @@ void state_menu(){
 			one_vram_buffer(0xD0+level, NTADR_A(29,24));
 
 		}
-		gray_line();
+		//gray_line();
 	}
 }
