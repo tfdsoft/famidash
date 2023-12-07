@@ -1,8 +1,12 @@
-// Y, X, screen_lowbyte, screen_highbyte, object #, unused, unused, unused
+// X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
 
-0x90, 0x10, 4, 0, obj1, 0, 0, 0, 
-0x80, 0x10, 5, 0, obj1, 0, 0, 0, 
-0x00, 0x20, 52, 0, obj0, 0, 0, 0, 
-0x00, 0xf0, 126, 0, obj1, 0, 0, 0, 
-TURN_OFF
+	0xf0, 0, 0x70, 1, 31, 0, 0, 0, 
+	0x60, 1, 0x70, 1, 38, 0, 0, 0, 
+	0x70, 1, 0x70, 1, 39, 0, 0, 0, 
+	0x80, 1, 0x70, 1, 40, 0, 0, 0, 
+	0x90, 1, 0x70, 1, 41, 0, 0, 0, 
+	0xa0, 1, 0x70, 1, 42, 0, 0, 0, 
+	0xb0, 1, 0x70, 1, 43, 0, 0, 0, 
+	0xc0, 1, 0x70, 1, 44, 0, 0, 0, 
+	TURN_OFF
 

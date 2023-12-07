@@ -62,7 +62,6 @@ void check_spr_objects(void){
 }
 
 char sprite_height_lookup(unsigned char type){
-    if (type == 0x0f) return 0x5f;
     // portals
     if (type < 0x0A) return 0x2f;
 
@@ -72,11 +71,26 @@ char sprite_height_lookup(unsigned char type){
 
 
     // triggers
-    if (type & 0x30) return 0xff;
+    if (type == 0x0f) return 0x5f;
+    if (type & 0x30) return 0x5f;
 }
 
 void sprite_collide_lookup(unsigned char type){
     // portals
+    if (type & 0x30){
+        tmp2 = (type & 0x3f)-0x10;
+        if (type & 0xC0){
+            pal_col(6, tmp2);
+            if (tmp2-0x10 & 0xC0) pal_col(5, 0x0f);
+            else pal_col(5, (tmp2-0x10));
+        } else {
+            pal_col(0, tmp2);
+            if (tmp2-0x10 & 0xC0) pal_col(1, 0x0f);
+            else pal_col(1, (tmp2-0x10));
+        }
+        
+    }
+
     switch (type){
         case 0:
         case 1:
@@ -94,10 +108,10 @@ void sprite_collide_lookup(unsigned char type){
             else player.vel_y = PAD_HEIGHT_YELLOW;
             break;
         case 0x0F: 
-        gameState = 0x01; 
-        pal_fade_to(4,0);
-        famistudio_sfx_play(sfx_level_complete, 0); 
-        break;
+            gameState = 0x01; 
+            pal_fade_to(4,0);
+            famistudio_sfx_play(sfx_level_complete, 0); 
+            break;
     }
 }
 

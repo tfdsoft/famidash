@@ -38,7 +38,7 @@ void draw_sprites(void){
 		if (temp_x > 0xf0) continue;
 		if (temp_y < 0xf0) {
 			tmp3 = activesprites_type[index];
-			oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3]);
+			oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x0f]);
 		}
 	}
 }
