@@ -7,7 +7,7 @@ void load_next_sprite(void){
     tmp3 = sprite_data[(spr_index<<3)+3]; high_byte(activesprites_y[spr_index % max_loaded_sprites]) = tmp3;
     tmp3 = sprite_data[(spr_index<<3)+4]; activesprites_type[spr_index % max_loaded_sprites] = tmp3;
     // unused byte 5
-    // unused byte 6
+    // unused byte 6 
     // unused byte 7
 
 

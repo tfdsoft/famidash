@@ -229,7 +229,7 @@ _pal_fade_to:
 	jmp @check_equal
 	
 @fade_loop:	
-	lda #2
+	lda #1
 	jsr _delay ;wait 4 frames
 	
 	lda TEMP+10 ;from

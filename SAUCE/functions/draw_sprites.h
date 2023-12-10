@@ -30,7 +30,7 @@ void draw_sprites(void){
 	
 	// the level sprites
 	for (index = 0; index < max_loaded_sprites; ++index){
-		if (activesprites_active[index] & 0x30) continue;
+		if (activesprites_type[index] & 0x30) continue;
 		temp_y = low_byte(activesprites_realy[index]);
 		if (!activesprites_active[index]) continue; 
 		temp_x = low_byte(activesprites_realx[index]);
