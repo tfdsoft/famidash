@@ -108,9 +108,8 @@ void sprite_collide_lookup(unsigned char type){
             else player.vel_y = PAD_HEIGHT_YELLOW;
             break;
         case 0x0F: 
-            gameState = 0x01; 
-            pal_fade_to(4,0);
-            famistudio_sfx_play(sfx_level_complete, 0); 
+            gameState = 0x03; 
+            pal_fade_to(4,0); 
             break;
     }
 }

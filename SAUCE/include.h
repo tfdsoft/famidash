@@ -15,6 +15,7 @@
 // grounds goes here
 #pragma rodata-name (push, "LVL_BANK_00")
 #include "../LEVELS/grounddata.h"
+#include "./defines/menunametable.h"
 #pragma rodata-name (pop)
 #include "../LEVELS/groundlist.h"
 
@@ -67,6 +68,7 @@
 // THE GAME STATE DEFINES //
 #include "gamestates/state_menu.h"
 #include "gamestates/state_game.h"
+#include "gamestates/state_lvldone.h"
 
 
 

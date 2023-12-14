@@ -33,12 +33,15 @@ void main(){
     ppu_mask(0x00);
 
     // banking for CHR to allocate dierctly
+    /*
     mmc3_set_2kb_chr_bank_0(0);
     mmc3_set_2kb_chr_bank_1(2);
     mmc3_set_1kb_chr_bank_0(4);
     mmc3_set_1kb_chr_bank_1(5);
     mmc3_set_1kb_chr_bank_2(6);
     mmc3_set_1kb_chr_bank_3(7);
+    */
+    
 
     pal_bg((char *)paletteDefault);
     pal_spr((char *)paletteDefaultSP);
@@ -50,16 +53,16 @@ void main(){
 
     ppu_on_all();
     pal_fade_to(4,0);
-    gameState = 0x01;
+    gameState = 0x03;
     
     
     while (1){
         ppu_wait_nmi();
 
 		switch (gameState){
-			famistudio_music_stop();
 			case 0x01: state_menu(); break;
 			case 0x02: state_game(); break;
+            case 0x03: state_lvldone(); break;
 		}
     }
 }

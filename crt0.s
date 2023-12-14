@@ -276,5 +276,7 @@ detectNTSC:
    	.word irq	;$fffe irq / brk
 
 
-.segment "CHARS"
+.segment "CHR_BANK_00"
 	.incbin "GRAPHICS/famidash.chr"
+.segment "CHR_BANK_01"
+	.incbin "GRAPHICS/menus.chr"
