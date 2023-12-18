@@ -43,7 +43,7 @@ void state_game(){
         draw_sprites();
         
         
-        gray_line();
+        //gray_line();
         if (gameState != 0x02) return;
     }
 }

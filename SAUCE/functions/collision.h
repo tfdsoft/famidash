@@ -105,14 +105,21 @@ char bg_coll_D2(void){
 	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte
     temp_room = tmp5 >> 8; // high byte
-    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
+    if(bg_collision_sub() & COL_ALL) {
+        cube_rotate = 0x0080; 
+        cube_data = 0x00;
+        return 1;
+        }
 
     tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
     temp_x = (char)tmp5; // low byte
     
-    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
+    if(bg_collision_sub() & COL_ALL) {
+        cube_rotate = 0x0080; 
+        cube_data = 0x00;
+        return 1;
+        }
     
-	
 
     return 0;
 }
@@ -128,15 +135,22 @@ char bg_coll_U2(void){
     temp_y = (char)tmp5; // low byte
     --temp_y;
     temp_room = tmp5 >> 8; // high byte
-    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
+    if(bg_collision_sub() & COL_ALL) {
+        cube_rotate = 0x0080; 
+        cube_data = 0x00;
+        return 1;
+    }
 
     tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
     temp_x = (char)tmp5; // low byte
     
-    if(bg_collision_sub() & COL_ALL) {cube_rotate = 0x0080; return 1;}
-    
+    if(bg_collision_sub() & COL_ALL) {
+        cube_rotate = 0x0080; 
+        cube_data = 0x00;
+        return 1;
+    }
 	
-
+    
     return 0;
 }
 
