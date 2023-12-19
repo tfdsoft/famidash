@@ -12,6 +12,12 @@ void state_lvldone(){
     vram_unrle(leveldone);
     mmc3_pop_prg_bank_1();
 
+    vram_adr(NTADR_A(6,6));
+	for(tmp1=0;menutext3[tmp1];++tmp1){
+		vram_put(0xA0+menutext3[tmp1]);
+	} 
+
+
     scroll_y = 0xEF;
     set_scroll_x(0);
     set_scroll_y(scroll_y);

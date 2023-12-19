@@ -1,5 +1,8 @@
 void state_game(){
 	ppu_off();
+
+    pal_bg((char *)paletteDefault);
+
     load_ground(0);
 
     mmc3_set_2kb_chr_bank_0(0);

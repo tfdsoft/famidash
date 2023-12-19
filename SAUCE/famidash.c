@@ -53,8 +53,8 @@ void main(){
 
     ppu_on_all();
     pal_fade_to(4,0);
-    gameState = 0x01;
-    
+    gameState = 0x04;
+    level = 0x03;
     
     while (1){
         ppu_wait_nmi();
@@ -63,6 +63,7 @@ void main(){
 			case 0x01: state_menu(); break;
 			case 0x02: state_game(); break;
             case 0x03: state_lvldone(); break;
+            case 0x04: state_demo(); break;
 		}
     }
 }
