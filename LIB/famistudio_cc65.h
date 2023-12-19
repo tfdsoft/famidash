@@ -76,7 +76,7 @@ void __fastcall__ famistudio_music_stop(void);
 
 void __fastcall__ famistudio_update(void);
 
-#ifdef FAMISTUDIO_CFG_SFX_SUPPORT
+
 
 /**
  * ======================================================================================================================
@@ -122,5 +122,5 @@ void __fastcall__ famistudio_sfx_play(unsigned char sfx_index, unsigned char cha
 
 void __fastcall__ famistudio_sfx_sample_play(unsigned char sample_index);
 
-#endif
+
 #endif

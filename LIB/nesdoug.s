@@ -8,7 +8,7 @@
 .export _color_emphasis, _xy_split, _gray_line, _seed_rng
 .export _clear_vram_buffer
 
-.segment "CODE"
+.segment "CODE_2"
 
 
 
@@ -229,7 +229,7 @@ _pal_fade_to:
 	jmp @check_equal
 	
 @fade_loop:	
-	lda #4
+	lda #1
 	jsr _delay ;wait 4 frames
 	
 	lda TEMP+10 ;from
@@ -306,8 +306,8 @@ _add_scroll_y:
 	
 @adjust:
 	adc #15 ;carry is set, same as clc/adc #16
-	inc TEMP+1 ;x = high
-	ldx TEMP+1
+	ldx TEMP+1 ;x = high
+	inx
 	rts
 	
 	
