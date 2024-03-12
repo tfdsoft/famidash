@@ -33,6 +33,7 @@ const unsigned char * const level_list[] = {
     backontrack_,
     polargeist_,
     dryout_,
+    baseafterbase_,
     cantletgo_,
     jumper_,
     
@@ -44,6 +45,7 @@ const unsigned char * const sprite_list[] = {
     backontrack_SP,
     polargeist_SP,
     dryout_SP,
+    baseafterbase_,
     cantletgo_SP,
     jumper_SP,
     
@@ -55,6 +57,7 @@ const unsigned char bank_list[] = {
     1,
     2,
     2,
+    4,
     3,
     3,
 };
