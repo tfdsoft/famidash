@@ -45,7 +45,7 @@ const unsigned char * const sprite_list[] = {
     backontrack_SP,
     polargeist_SP,
     dryout_SP,
-    baseafterbase_,
+    baseafterbase_SP,
     cantletgo_SP,
     jumper_SP,
     
