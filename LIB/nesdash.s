@@ -3,17 +3,19 @@
 .import _level_list, _sprite_list, _bank_list
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_x, _level_data_bank
-.import _song
+.import _song, _level
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
 .import pusha, pushax
+.import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text
 
 .import FIRST_MUSIC_BANK
 .macpack longbranch
 
 .export _oam_meta_spr_vflipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
+.export _refreshmenu
 .export _music_play, _music_update
 
 ;void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const unsigned char *data);
@@ -677,6 +679,98 @@ _draw_screen_R:
             BNE @tilewriteloop
         RTS
 
+
+_refreshmenu:
+	; The C code being "ported":
+		; ppu_off();
+		; vram_adr(NTADR_A(2,25));	
+		; switch (level){
+		; 	case 0x0N:  N = 1..7
+		; 		for(tmp1=0;levelKtext[tmp1];++tmp1){
+		; 			vram_put(0xA0+levelNtext[tmp1]);
+		; 		};
+		; 		break;
+		; }		
+		; ppu_on_all();
+		; return;
+	; Instead of ppu_off/on i do it with the VRAM buffer
+	; like a civilised person
+	LDY VRAM_INDEX
+	;! THE ADDRESS CORRESPONDING TO NTADR_A(2,25) IS
+	;! $24A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
+	;! IT BECOMES $64A2. THIS IS HARDCODED, CHANGE THESE
+	;! LINES IF YOU WANT TO CHANGE THE POSITION OF IT
+	LDA #$64			;
+	STA VRAM_BUF, Y		;   ~ vram_adr(NTADR_A(2,25));
+	LDA #$A2			;
+	STA VRAM_BUF+1, Y	;__
+	LDA #15				;	Const length of 15
+	STA VRAM_BUF+2, Y	;__
+
+	LDX _level					;
+	LDA @string_ptrs_lo-1, X	;   Load low byte of lvl name pointer
+	STA <PTR					;__
+	LDA @string_ptrs_hi-1, X	;   Load high byte of lvl name pointer
+	STA <PTR+1					;__
+	LDA @padding-1, X			;
+	LSR							;	Get left offset
+	TAX							;__
+	ADC #$00					;	Get right offset
+	STA <TEMP+3					;__
+
+	CPX #$00	; Had to do this, very sorry
+	BEQ @main_data
+
+	LDA #$C0	; Space char
+
+	@pad_loop_left:
+		STA VRAM_BUF+3, Y
+		INY
+		DEX
+		BNE @pad_loop_left
+	
+	@main_data:
+	; No need to LDX #$00, as it's either 0 from the prev loop or 0 left padding
+		LDA (<PTR, X)	; Load byte
+
+	@main_data_loop:
+		CLC
+		ADC #$A0
+		STA VRAM_BUF+3, Y
+		INY
+		INCW <PTR
+		LDA (<PTR, X)			;	Load byte
+		BNE @main_data_loop		;__ Continue if not 0
+	
+	LDX <TEMP+3
+	BEQ @end
+
+	LDA #$C0
+
+	@pad_loop_right:
+		STA VRAM_BUF+3, Y
+		INY
+		DEX
+		BNE @pad_loop_right
+	
+	@end:
+	LDA #$FF			;	Finish off the write
+	STA VRAM_BUF+3, Y	;__
+
+	TYA				;
+	CLC				;	Adjust vram index
+	ADC #$03		;
+	STA VRAM_INDEX	;__
+
+	RTS
+
+@string_ptrs_lo:
+    .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text
+@string_ptrs_hi:
+    .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text
+@padding:
+    ; Calculation: 15 - length of string
+    .byte 1, 2, 5, 8, 0, 4, 9
 
 ;void __fastcall__ music_play(unsigned char song);
 _music_play:
