@@ -68,6 +68,7 @@ const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
 unsigned char rld_column;
 unsigned char spr_index;
 
+unsigned char kandotemp;
 unsigned char level;
 unsigned char level_data_bank;
 unsigned char * sprite_data;

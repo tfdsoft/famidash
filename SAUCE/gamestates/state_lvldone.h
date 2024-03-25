@@ -58,11 +58,23 @@ void state_lvldone(){
 
     }
 
+    pal_bg((char *)paletteDefault);
+    pal_spr((char *)paletteDefaultSP);
+    // use the second set of tiles for sprites
+	// both bg and sprites are set to 0 by default
+	bank_spr(1);
+
+    set_vram_buffer(); // do at least once
+
+    ppu_on_all();
+    pal_fade_to(4,0);
+	gameState = 1;
+	return;
 
     
-    while (1){
-        ppu_wait_nmi();
-        music_update();
+//    while (1){
+//        ppu_wait_nmi();
+//        music_update();
 
-    }
+//    }
 }
