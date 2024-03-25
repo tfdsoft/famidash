@@ -62,22 +62,8 @@ void check_spr_objects(void){
 }
 
 char sprite_height_lookup(unsigned char type){
-    // portals
-    if (type < 0x0A) return 0x2f;
 
-    // pads
-    if (type == 0x0A) return 0x07; // jump pad
-    if (type == 0x0B) return 0x0f; // jump ring
-
-
-    // triggers
-    if (type == 0x0f) return 0x5f;
-    if (type & 0x30) return 0x5f;
-}
-
-void sprite_collide_lookup(unsigned char type){
-    // portals
-    if (type & 0x30){
+    if (type & 0x30){				//COLOR TRIGGERS ON LOADING
         tmp2 = (type & 0x3f)-0x10;
         if (type & 0xC0){
             pal_col(6, tmp2);
@@ -90,6 +76,25 @@ void sprite_collide_lookup(unsigned char type){
         }
         
     }
+
+    // portals
+    if (type < 0x0A) return 0x2f;
+
+    // pads
+    if (type == 0x0A) return 0x07; // jump pad
+    if (type == 0x0B) return 0x0f; // jump ring
+
+
+    // triggers
+    if (type == 0x0f) return 0x5f;
+    if (type & 0x30) return 0x5f;
+    
+    
+}
+
+void sprite_collide_lookup(unsigned char type){
+    // portals
+
     if (type == 0x0B && cube_data == 0x02) {
         cube_data = 0x00;
         if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
