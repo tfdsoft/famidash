@@ -1,3 +1,48 @@
+void	refreshmenu(){
+		ppu_off();
+		
+	vram_adr(NTADR_A(2,25));	
+	switch (level){
+		case 0x01: 
+			for(tmp1=0;level1text[tmp1];++tmp1){
+				vram_put(0xA0+level1text[tmp1]);
+			};
+			break;
+		case 0x02: 
+			for(tmp1=0;level2text[tmp1];++tmp1){
+				vram_put(0xA0+level2text[tmp1]);
+			};
+			break;
+		case 0x03: 
+			for(tmp1=0;level3text[tmp1];++tmp1){
+				vram_put(0xA0+level3text[tmp1]);
+			};
+			break;
+		case 0x04: 
+			for(tmp1=0;level4text[tmp1];++tmp1){
+				vram_put(0xA0+level4text[tmp1]);
+			};
+			break;
+		case 0x05: 
+			for(tmp1=0;level5text[tmp1];++tmp1){
+				vram_put(0xA0+level5text[tmp1]);
+			};
+			break;
+		case 0x06: 
+			for(tmp1=0;level6text[tmp1];++tmp1){
+				vram_put(0xA0+level6text[tmp1]);
+			};
+			break;
+		case 0x07: 
+			for(tmp1=0;level7text[tmp1];++tmp1){
+				vram_put(0xA0+level7text[tmp1]);
+			};
+			break;
+	}		
+	ppu_on_all();
+	return;
+}
+
 void state_menu(){
 	ppu_off();
 
@@ -101,7 +146,8 @@ void state_menu(){
 				level = 0x01;
 			}
 			one_vram_buffer(0xD0+level, NTADR_A(29,24));
-			break;
+			refreshmenu();
+		//	break;
 		}
 		if (pad_new & PAD_LEFT){
 			--level;
@@ -109,7 +155,8 @@ void state_menu(){
 				level = 0x07;
 			}
 			one_vram_buffer(0xD0+level, NTADR_A(29,24));
-			break;
+			//break;
+			refreshmenu();
 		}
 		if (pad_new & PAD_RIGHT){
 			++level;
@@ -117,8 +164,12 @@ void state_menu(){
 				level = 0x01;
 			}
 			one_vram_buffer(0xD0+level, NTADR_A(29,24));
-			break;
+			//break;
+			refreshmenu();
 		}
-		//gray_line();
+
+
 	}
 }
+
+
