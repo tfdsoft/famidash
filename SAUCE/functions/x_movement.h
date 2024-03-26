@@ -17,6 +17,10 @@ void x_movement(){
 	Generic.y = high_byte(player.y);
 	Generic.width = CUBE_WIDTH;
 	Generic.height = CUBE_HEIGHT;
+
+	if (player.y < 0x0600){
+		cube_data ^= 0x01;
+	};
 	
 	// no L/R collision required, since that is accounted for with the death script
 	if (bg_coll_R()) cube_data ^= 0x01; // turns out, this is needed to temporarily fix zipping
