@@ -61,6 +61,7 @@
 // THE GAME MODE DEFINES //
 #include "functions/x_movement.h"
 
+#include "gamemodes/gamemode_ball.h"
 #include "gamemodes/gamemode_cube.h"
 #include "gamemodes/gamemode_ship.h"
 
