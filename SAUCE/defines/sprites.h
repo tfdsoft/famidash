@@ -100,15 +100,16 @@ const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_4, Sh
 // end ship
 
 
-const unsigned char Ball[]={
 
-	  0,  0,0x29,0,
-	  8,  0,0x29,0|OAM_FLIP_H,
-	  0,  8,0x29,0|OAM_FLIP_V,
-	  8,  8,0x29,0|OAM_FLIP_H|OAM_FLIP_V,
+
+const unsigned char Ball_0[]={
+
+	  0,  0,0x23,0,
+	  8,  0,0x23,0|OAM_FLIP_H,
 	0x80
 };
 
+const unsigned char * const BALL[]={Ball_0, Ball_0, Ball_0, Ball_0, Ball_0, Ball_0, Ball_0, Ball_0};
 // ================================================================
 
 const unsigned char Portal_Gamemode_Cube[]={

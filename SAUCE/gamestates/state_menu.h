@@ -66,7 +66,7 @@ void state_menu(){
 		}
 		if (pad_new & (PAD_SELECT | PAD_RIGHT)){
 			++level;
-			if (level > 7){
+			if (level > 8){
 				level = 0x01;
 			}
 			one_vram_buffer(0xD0+level, NTADR_A(29,24));
@@ -76,7 +76,7 @@ void state_menu(){
 		if (pad_new & PAD_LEFT){
 			--level;
 			if (level == 0){
-				level = 0x07;
+				level = 0x08;
 			}
 			one_vram_buffer(0xD0+level, NTADR_A(29,24));
 			//break;

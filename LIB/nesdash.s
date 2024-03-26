@@ -8,7 +8,7 @@
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
 .import pusha, pushax
-.import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text
+.import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text
 
 .import FIRST_MUSIC_BANK
 .macpack longbranch
@@ -765,12 +765,12 @@ _refreshmenu:
 	RTS
 
 @string_ptrs_lo:
-    .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text
+    .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text
 @string_ptrs_hi:
-    .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text
+    .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text
 @padding:
     ; Calculation: 15 - length of string
-    .byte 1, 2, 5, 8, 0, 4, 9
+    .byte 1, 2, 5, 8, 0, 4, 9, 9
 
 ;void __fastcall__ music_play(unsigned char song);
 _music_play:

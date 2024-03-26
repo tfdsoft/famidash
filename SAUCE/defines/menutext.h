@@ -13,3 +13,4 @@ const unsigned char level4text[]="DRY OUT";
 const unsigned char level5text[]="BASE AFTER BASE";
 const unsigned char level6text[]="CANT LET GO";
 const unsigned char level7text[]="JUMPER";
+const unsigned char level8text[]="CYCLES";
