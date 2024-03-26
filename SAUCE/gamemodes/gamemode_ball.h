@@ -5,10 +5,10 @@ void ball_movement(void){
 	// player.vel_y is signed
 	//if(player.vel_y < 0x400){
 	if(!gravity){
-		player.vel_y += SHIP_GRAVITY;
+		player.vel_y += CUBE_GRAVITY;
 	}
 	else{
-		player.vel_y -= SHIP_GRAVITY;
+		player.vel_y -= CUBE_GRAVITY;
 	}
 
     if(player.vel_y > CUBE_MAX_FALLSPEED) player.vel_y = CUBE_MAX_FALLSPEED;
