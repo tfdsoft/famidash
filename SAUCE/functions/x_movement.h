@@ -19,7 +19,7 @@ void x_movement(){
 	Generic.height = CUBE_HEIGHT;
 
 	if (player.y < 0x0600){
-		cube_data ^= 0x01;
+		cube_data ^= 0x01;	//DIE if player goes too high
 	};
 	
 	// no L/R collision required, since that is accounted for with the death script
