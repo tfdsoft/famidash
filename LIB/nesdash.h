@@ -32,3 +32,5 @@ void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const un
 
 #define low2bytes(a) *((unsigned short*)&a)
 #define high2bytes(a) *((unsigned short*)&a+1)
+
+#define vram_put(a) POKE(0x2007, a)

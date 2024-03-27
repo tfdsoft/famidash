@@ -209,7 +209,7 @@ void __fastcall__ vram_adr(unsigned int adr);
 
 //put a byte at current vram address, works only when rendering is turned off
 
-void __fastcall__ vram_put(unsigned char n);
+// void __fastcall__ vram_put(unsigned char n);
 
 //fill a block with a byte at current vram address, works only when rendering is turned off
 
