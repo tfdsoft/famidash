@@ -37,7 +37,7 @@ void ball_movement(void){
 	Generic.y = high_byte(player.y); // the rest should be the same
 	
 
-	if ((pad & PAD_A) & (kandotemp2 == 0) & (player.vel_y == 0)){
+	if ((pad & PAD_A) && (kandotemp2 == 0) && (player.vel_y == 0)){
 		gravity ^= 0x01;
 		kandotemp2 = 1;
 	}
