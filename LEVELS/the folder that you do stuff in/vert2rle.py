@@ -24,7 +24,7 @@ newfile = open(newname, 'w')  # warning, this may overwrite old file !!!!!!!!!!!
 
 newfile.write("const unsigned char " + newname2 + "[]={\n	// LEVEL HEADER\n")
 newfile.write("	song_stereo_madness,	// Song number\n")
-newfile.write("	0b1,					// Starting gamemode, leave 1 for cube\n")
+newfile.write("	0x00,					// Starting gamemode, leave 0 for cube\n")
 newfile.write("	0x00,					// Starting speed, unused until 1.7.\n")
 newfile.write("	0x00,					// Background starting color\n")
 newfile.write("	0x00,					// Ground starting color\n")

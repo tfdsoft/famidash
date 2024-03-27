@@ -47,7 +47,7 @@
 const unsigned char stereomadness_[]={
 	// LEVEL HEADER
 	song_stereo_madness,	// Song number
-	0b1,					// Starting gamemode, leave 1 for cube
+	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x00,					// Background starting color
 	0x00,					// Ground starting color
@@ -60,7 +60,7 @@ const unsigned char stereomadness_[]={
 const unsigned char backontrack_[]={
 	// LEVEL HEADER
 	song_back_on_track,		// Song number
-	0b1,					// Starting gamemode, leave 1 for cube
+	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x00,					// Background starting color
 	0x00,					// Ground starting color
@@ -78,7 +78,7 @@ const unsigned char backontrack_split1[]={
 const unsigned char polargeist_[]={
 	// LEVEL HEADER
 	song_polargeist,		// Song number
-	0b1,					// Starting gamemode, leave 1 for cube
+	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x00,					// Background starting color
 	0x00,					// Ground starting color
@@ -91,7 +91,7 @@ const unsigned char polargeist_[]={
 const unsigned char dryout_[]={
 	// LEVEL HEADER
 	song_dry_out,			// Song number
-	0b1,					// Starting gamemode, leave 1 for cube
+	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x00,					// Background starting color
 	0x00,					// Ground starting color
@@ -111,7 +111,7 @@ const unsigned char dryout_split1[]={
 const unsigned char cantletgo_[]={
 	// LEVEL HEADER
 	song_cant_let_go,		// Song number
-	0b1,					// Starting gamemode, leave 1 for cube
+	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x00,					// Background starting color
 	0x00,					// Ground starting color
@@ -126,7 +126,7 @@ const unsigned char cantletgo_[]={
 const unsigned char jumper_[]={
 	// LEVEL HEADER
 	song_jumper,			// Song number
-	0b1,					// Starting gamemode, leave 1 for cube
+	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x00,					// Background starting color
 	0x00,					// Ground starting color
@@ -142,7 +142,7 @@ const unsigned char jumper_[]={
 const unsigned char baseafterbase_[]={
 	// LEVEL HEADER
 	song_base_after_base,			// Song number
-	0b1,					// Starting gamemode, leave 1 for cube
+	0x00,					// Starting gamemode, leave 0 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x00,					// Background starting color
 	0x00,					// Ground starting color
@@ -158,7 +158,7 @@ const unsigned char baseafterbase_[]={
 const unsigned char cycles_[]={
 	// LEVEL HEADER
 	song_cycles,			// Song number
-	0b1,					// Starting gamemode, leave 1 for cube
+	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x00,					// Background starting color
 	0x00,					// Ground starting color

@@ -16,7 +16,7 @@ void draw_sprites(void){
 			else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, CUBE[high_byte(cube_rotate)]);
 
 			break;
-		case 0x02:
+		case 0x01:
 			cube_rotate = 0x0400 - player.vel_y;
 			if (high_byte(cube_rotate) >= 0x08) {
 				cube_rotate = high_byte(cube_rotate) >= 0x80 ? 0x0000 : 0x07FF;
@@ -26,7 +26,7 @@ void draw_sprites(void){
 			else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, SHIP[7-high_byte(cube_rotate)]);
 
 			break;
-		case 0x04:
+		case 0x02:
 			cube_rotate = 0x0400 - player.vel_y;
 			if (high_byte(cube_rotate) >= 0x08) {
 				cube_rotate = high_byte(cube_rotate) >= 0x80 ? 0x0000 : 0x07FF;
