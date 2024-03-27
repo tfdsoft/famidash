@@ -69,6 +69,7 @@ unsigned char rld_column;
 unsigned char spr_index;
 
 unsigned char kandotemp;
+unsigned char kandotemp2;
 unsigned char level;
 unsigned char level_data_bank;
 unsigned char * sprite_data;
