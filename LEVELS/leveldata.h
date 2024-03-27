@@ -332,7 +332,7 @@ const unsigned char dryout_SP[]={
 	TURN_OFF
 };
 const unsigned char cantletgo_SP[]={
-	// X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
+// X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
 
 	0xd0, 3, 0x60, 1, 11, 0, 0, 0, 
 	0x20, 5, 0xa8, 1, 10, 0, 0, 0, 
@@ -363,12 +363,12 @@ const unsigned char cantletgo_SP[]={
 	0xf0, 36, 0x50, 1, 9, 0, 0, 0, 
 	0xd0, 37, 0xe0, 0, 11, 0, 0, 0, 
 	0x40, 38, 0xe0, 0, 11, 0, 0, 0, 
-	0x70, 38, 0x08, 1, 10, 0, 0, 0, 
+	0x70, 38, 0x00, 1, 12, 0, 0, 0, 
 	0xc0, 38, 0x20, 1, 11, 0, 0, 0, 
-	0xd0, 39, 0x78, 0, 10, 0, 0, 0, 
-	0x10, 40, 0xa8, 0, 10, 0, 0, 0, 
-	0x50, 40, 0xe8, 0, 10, 0, 0, 0, 
-	0x90, 40, 0x38, 1, 10, 0, 0, 0, 
+	0xd0, 39, 0x70, 0, 12, 0, 0, 0, 
+	0x10, 40, 0xa0, 0, 12, 0, 0, 0, 
+	0x50, 40, 0xe0, 0, 12, 0, 0, 0, 
+	0x90, 40, 0x30, 1, 12, 0, 0, 0, 
 	0x70, 41, 0x60, 1, 11, 0, 0, 0, 
 	0xe0, 41, 0x50, 1, 11, 0, 0, 0, 
 	0x00, 44, 0x40, 1, 11, 0, 0, 0, 
@@ -380,6 +380,7 @@ const unsigned char cantletgo_SP[]={
 	0x30, 52, 0xf0, 0, 15, 0, 0, 0, 
 	0x30, 52, 0x50, 1, 15, 0, 0, 0, 
 	TURN_OFF
+
 
 };
 const unsigned char jumper_SP[]={
