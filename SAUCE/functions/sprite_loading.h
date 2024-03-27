@@ -83,7 +83,7 @@ char sprite_height_lookup(unsigned char type){
     // pads
     if (type == 0x0A) return 0x07; // jump pad
     if (type == 0x0B) return 0x0f; // jump ring
-
+    if (type == 0x0C) return 0x07; // jump pad Upside Down
 
     // triggers
     if (type == 0x0f) return 0x5f;
@@ -113,6 +113,10 @@ void sprite_collide_lookup(unsigned char type){
         case 8: gravity = 0x00; break;
         case 9: gravity = 0x01; break;
         case 0x0A:
+            if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
+            else player.vel_y = PAD_HEIGHT_YELLOW;
+            break;
+        case 0x0C:
             if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
             else player.vel_y = PAD_HEIGHT_YELLOW;
             break;

@@ -203,6 +203,12 @@ const unsigned char Jump_Pad[]={
 	  8,- 8,0x49,1|OAM_FLIP_H,
 	0x80
 };
+const unsigned char Jump_Pad_U[]={
+
+	  0,- 8,0x49,1|OAM_FLIP_V,
+	  8,- 8,0x49,1|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
 
 
 
@@ -223,7 +229,7 @@ const unsigned char * const Metasprites[]={
 	Portal_Gravity_Up,
 	Jump_Pad,
 	Jump_Orb,
-	nometa,
+	Jump_Pad_U,
 	nometa,
 	nometa,
 	Jump_Orb, // end stage trigger
