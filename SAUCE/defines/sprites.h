@@ -205,8 +205,8 @@ const unsigned char Jump_Pad[]={
 };
 const unsigned char Jump_Pad_U[]={
 
-	  0,- 8,0x45,1|OAM_FLIP_V,
-	  8,- 8,0x45,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,- 0,0x49,1|OAM_FLIP_V,
+	  8,- 0,0x49,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
