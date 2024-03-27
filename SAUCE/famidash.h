@@ -3,7 +3,7 @@
 #define GAME 0x02
 
 // physics defines
-#define PAD_HEIGHT_YELLOW -0x760
+#define PAD_HEIGHT_YELLOW -0x7A0
 
 #define CUBE_WIDTH 0x0F
 #define CUBE_HEIGHT 0x0F
