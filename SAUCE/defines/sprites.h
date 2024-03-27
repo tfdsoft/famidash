@@ -142,6 +142,21 @@ const unsigned char Portal_Gamemode_Ship[]={
 	 16, 32,0x29,1|OAM_FLIP_V,
 	0x80
 };
+const unsigned char Portal_Gamemode_Ball[]={
+
+	  0,  0,0x25,2,
+	  0, 16,0x2b,2,
+	  0, 32,0x25,2|OAM_FLIP_V,
+	  8,  0,0x27,2,
+
+	  8, 16,0x41,2,
+	  8, 32,0x27,2|OAM_FLIP_V,
+	 16,  0,0x29,2,
+	 16, 16,0x2d,2,
+
+	 16, 32,0x29,2|OAM_FLIP_V,
+	0x80
+};
 const unsigned char Portal_Gravity_Down[]={
 
 	  0,  0,0x31,0,
@@ -198,7 +213,7 @@ const unsigned char nometa[] = {0x80};
 const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Cube,
 	Portal_Gamemode_Ship, 
-	nometa, // ball
+	Portal_Gamemode_Ball, // ball
 	nometa, // ufo
 	nometa, // wave
 	nometa, // bobot
