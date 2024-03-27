@@ -38,6 +38,6 @@ void ball_movement(void){
 	
 
     if(pad & PAD_A) {
-	gravity ^= 0x01;
+	if(player.vel_y == 0) gravity ^= 0x01;
     }
 }	
