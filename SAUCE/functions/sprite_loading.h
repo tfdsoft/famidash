@@ -95,7 +95,7 @@ char sprite_height_lookup(unsigned char type){
 void sprite_collide_lookup(){
     // portals
 
-    if (tmp4 == 0x0B && cube_data == 0x02) {
+    if (tmp4 == 0x0B && cube_data == 0x02) {		//orb
         cube_data = 0x00;
         if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
     }
