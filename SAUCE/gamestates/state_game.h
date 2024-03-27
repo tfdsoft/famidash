@@ -1,3 +1,9 @@
+/*
+	Calls the movement routine of the current gamemode
+	Implemented in asm
+*/
+void __fastcall__ movement(void);
+
 void state_game(){
 	ppu_off();
 
@@ -28,13 +34,7 @@ void state_game(){
         if (pad_new & PAD_B) gravity ^= 0x01;			//DEBUG GRAVITY
 
         x_movement();
-        switch (gamemode) {
-            case 0x01: cube_movement(); break;
-            case 0x02: ship_movement(); break;
-            case 0x04: ball_movement(); break;
-            case 0x08: break;
-            default: break;
-        } 
+        movement();
         bg_coll_death(); 
         do_the_scroll_thing(); 
 

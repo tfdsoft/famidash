@@ -92,38 +92,22 @@ char sprite_height_lookup(unsigned char type){
     
 }
 
-void sprite_collide_lookup(unsigned char type){
+void sprite_collide_lookup(){
     // portals
 
-    if (type == 0x0B && cube_data == 0x02) {
+    if (tmp4 == 0x0B && cube_data == 0x02) {
         cube_data = 0x00;
         if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
     }
 
-    switch (type){
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-        case 7: gamemode = 0x01<<type; break;
-
-        case 8: gravity = 0x00; break;
-        case 9: gravity = 0x01; break;
-        case 0x0A:
-            if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
-            else player.vel_y = PAD_HEIGHT_YELLOW;
-            break;
-        case 0x0C:
-            if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
-            else player.vel_y = PAD_HEIGHT_YELLOW;
-            break;
-        case 0x0F: 
-            gameState = 0x03; 
-            pal_fade_to(4,0); 
-            break;
+    if (tmp4 < 8) gamemode = tmp4;
+    else if (tmp4 < 10) gravity = tmp4 - 8;
+    else if (tmp4 == 0x0A || tmp4 == 0x0C) {
+        if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
+        else player.vel_y = PAD_HEIGHT_YELLOW;
+    } else if (tmp4 == 0x0F) {
+        gameState = 0x03; 
+        pal_fade_to(4,0); 
     }
 }
 
@@ -146,7 +130,7 @@ void sprite_collide(){
             Generic2.y = activesprites_realy[index];
             
             if (check_collision(&Generic, &Generic2)) {
-                sprite_collide_lookup(tmp4);
+                sprite_collide_lookup();
             }
         }
     }

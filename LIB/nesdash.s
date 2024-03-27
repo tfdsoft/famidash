@@ -4,6 +4,7 @@
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_x, _level_data_bank
 .import _song, _level
+.import _cube_movement, _ship_movement, _ball_movement
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
@@ -16,6 +17,7 @@
 .export _oam_meta_spr_vflipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
 .export _refreshmenu
+.export _movement
 .export _music_play, _music_update
 
 ;void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const unsigned char *data);
@@ -771,6 +773,45 @@ _refreshmenu:
 @padding:
     ; Calculation: 15 - length of string
     .byte 1, 2, 5, 8, 0, 4, 9, 9
+
+;void __fastcall__ movement(void);
+_movement:
+    ; The C code being "ported":
+        ; switch (gamemode) {
+        ;     case 0x00: cube_movement(); break;
+        ;     case 0x01: ship_movement(); break;
+        ;     case 0x02: ball_movement(); break;
+        ;     case 0x03: break;
+        ;     default: break;
+        ; } 
+
+    ; !WHEN THE AMOUNT OF IMPLEMENTED GAMEMODES EXCEEDS 6 UNCOMMENT THE FOLLOWING CODE:
+    ; !==== CODE START
+        ; LDX _gamemode
+        ; CPX #$03
+        ; BPL @end    
+        ; LDA @jump_table_lo, X
+        ; STA <PTR
+        ; LDA @jump_table_hi, X
+        ; STA <PTR+1
+        ; JMP (PTR)
+
+        ; @end:
+        ;     RTS     ; break;
+
+        ; @jump_table_lo:
+        ;     .byte <_cube_movement, <_ship_movement, <_ball_movement
+        ; @jump_table_hi:
+        ;     .byte >_cube_movement, >_ship_movement, >_ball_movement
+    ; !==== CODE END
+    ; !Currently it takes less cycles to just do the following:
+    LDX _gamemode		; switch (gamemode)
+    jeq _cube_movement	; case 0x00: cube_movement(); break;
+    DEX					; case 0x01:
+    jeq _ship_movement	;	ship_movement(); break;
+    DEX					; case 0x02:
+    jeq _ball_movement	;	ball_movement(); break;
+    RTS					; case 0x03: default: break;
 
 ;void __fastcall__ music_play(unsigned char song);
 _music_play:
