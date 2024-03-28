@@ -58,6 +58,8 @@ unsigned char temp_x;
 unsigned char temp_y;
 unsigned char temp_room;
 
+unsigned char * sprite_data;
+
 #pragma bss-name(pop)
 // other variables go here
 
@@ -72,7 +74,6 @@ unsigned char kandotemp;
 unsigned char kandotemp2;
 unsigned char level;
 unsigned char level_data_bank;
-unsigned char * sprite_data;
 
 unsigned char gameState;
 

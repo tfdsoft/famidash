@@ -15,7 +15,7 @@
 // grounds goes here
 #pragma rodata-name (push, "LVL_BANK_00")
 #include "../LEVELS/grounddata.h"
-#include "./defines/menunametable.h"
+#include "defines/menunametable.h"
 #pragma rodata-name (pop)
 #include "../LEVELS/groundlist.h"
 
