@@ -1,5 +1,5 @@
 /*
-	Refreshes menu entry
+	Refreshes level name & number
 	Implemented in asm
 */
 void __fastcall__ refreshmenu(void);
@@ -46,9 +46,6 @@ void state_menu(){
     mmc3_set_1kb_chr_bank_2(14);
     mmc3_set_1kb_chr_bank_3(15);
 
-
-	one_vram_buffer(0xD0+level, NTADR_A(29,24));
-
 	refreshmenu();
 	oam_clear();
 	ppu_on_all();
@@ -68,19 +65,18 @@ void state_menu(){
 		}
 		if (pad_new & (PAD_SELECT | PAD_RIGHT)){
 			++level;
-			if (level > 8){
-				level = 0x01;
+			if (level > 7){
+				level = 0x00;
 			}
-			one_vram_buffer(0xD0+level, NTADR_A(29,24));
 			refreshmenu();
 		//	break;
 		}
 		if (pad_new & PAD_LEFT){
 			--level;
-			if (level == 0){
-				level = 0x08;
+			if (level == 0xFF){
+				level = 0x07;
 			}
-			one_vram_buffer(0xD0+level, NTADR_A(29,24));
+			
 			//break;
 			refreshmenu();
 		}

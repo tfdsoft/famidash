@@ -54,7 +54,7 @@ void main(){
     ppu_on_all();
     pal_fade_to(4,0);
     gameState = 0x01;
-    level = 0x01;
+    level = 0x00;
     
     while (1){
         ppu_wait_nmi();

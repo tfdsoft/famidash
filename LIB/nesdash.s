@@ -684,6 +684,7 @@ _draw_screen_R:
 
 _refreshmenu:
 	; The C code being "ported":
+		; one_vram_buffer(0xD1+level, NTADR_A(29,24));
 		; ppu_off();
 		; vram_adr(NTADR_A(2,25));	
 		; switch (level){
@@ -698,23 +699,35 @@ _refreshmenu:
 	; Instead of ppu_off/on i do it with the VRAM buffer
 	; like a civilised person
 	LDY VRAM_INDEX
+	;! THE ADDRESS CORRESPONDING TO NTADR_A(29,24) IS
+	;! $231D. THIS IS HARDCODED, CHANGE THESE LINES IF
+	;! YOU WANT TO CHANGE THE POSITION OF IT
+	LDA #$23			;
+	STA VRAM_BUF, Y		;
+	LDA #$1D			;
+	STA VRAM_BUF+1, Y	;	one_vram_buffer(0xD1+level, NTADR_A(29,24));
+	LDA _level			;	(Displays the level number)
+	CLC					;
+	ADC #$D1			;
+	STA VRAM_BUF+2, Y	;__
+
 	;! THE ADDRESS CORRESPONDING TO NTADR_A(2,25) IS
 	;! $24A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
 	;! IT BECOMES $64A2. THIS IS HARDCODED, CHANGE THESE
 	;! LINES IF YOU WANT TO CHANGE THE POSITION OF IT
 	LDA #$64			;
-	STA VRAM_BUF, Y		;   ~ vram_adr(NTADR_A(2,25));
+	STA VRAM_BUF+3, Y	;   ~ vram_adr(NTADR_A(2,25));
 	LDA #$A2			;
-	STA VRAM_BUF+1, Y	;__
+	STA VRAM_BUF+4, Y	;__
 	LDA #15				;	Const length of 15
-	STA VRAM_BUF+2, Y	;__
+	STA VRAM_BUF+5, Y	;__
 
 	LDX _level					;
-	LDA @string_ptrs_lo-1, X	;   Load low byte of lvl name pointer
+	LDA @string_ptrs_lo, X	    ;   Load low byte of lvl name pointer
 	STA <PTR					;__
-	LDA @string_ptrs_hi-1, X	;   Load high byte of lvl name pointer
+	LDA @string_ptrs_hi, X	    ;   Load high byte of lvl name pointer
 	STA <PTR+1					;__
-	LDA @padding-1, X			;
+	LDA @padding, X			    ;
 	LSR							;	Get left offset
 	TAX							;__
 	ADC #$00					;	Get right offset
@@ -726,7 +739,7 @@ _refreshmenu:
 	LDA #$C0	; Space char
 
 	@pad_loop_left:
-		STA VRAM_BUF+3, Y
+		STA VRAM_BUF+6, Y
 		INY
 		DEX
 		BNE @pad_loop_left
@@ -738,7 +751,7 @@ _refreshmenu:
 	@main_data_loop:
 		CLC
 		ADC #$A0
-		STA VRAM_BUF+3, Y
+		STA VRAM_BUF+6, Y
 		INY
 		INCW <PTR
 		LDA (<PTR, X)			;	Load byte
@@ -750,18 +763,18 @@ _refreshmenu:
 	LDA #$C0
 
 	@pad_loop_right:
-		STA VRAM_BUF+3, Y
+		STA VRAM_BUF+6, Y
 		INY
 		DEX
 		BNE @pad_loop_right
 	
 	@end:
 	LDA #$FF			;	Finish off the write
-	STA VRAM_BUF+3, Y	;__
+	STA VRAM_BUF+6, Y	;__
 
 	TYA				;
 	CLC				;	Adjust vram index
-	ADC #$03		;
+	ADC #$06		;
 	STA VRAM_INDEX	;__
 
 	RTS
