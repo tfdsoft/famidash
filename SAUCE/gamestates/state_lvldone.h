@@ -12,16 +12,16 @@ void state_lvldone(){
     vram_unrle(leveldone);
     mmc3_pop_prg_bank_1();
 
-    vram_adr(NTADR_A(6,6));
+    vram_adr(NTADR_A(6,7));
 	for(tmp1=0;menutext3[tmp1];++tmp1){
 		vram_put(0xA0+menutext3[tmp1]);
 	} 
-    vram_adr(NTADR_A(6,8));
+    vram_adr(NTADR_A(6,9));
 	for(tmp1=0;menutext4[tmp1];++tmp1){
 		vram_put(0xA0+menutext4[tmp1]);
 	} 
 
-	one_vram_buffer(0xD0+coins, NTADR_A(12,8));
+	one_vram_buffer(0xD0+coins, NTADR_A(12,9));
 
 
     scroll_y = 0xEF;
