@@ -21,7 +21,36 @@ void state_lvldone(){
 		vram_put(0xA0+menutext4[tmp1]);
 	} 
 
-	one_vram_buffer(0xD0+coins, NTADR_A(12,9));
+
+    vram_adr(NTADR_A(12,9));
+    
+    switch (coins) {
+		case 0x00: {
+			break;
+		}
+		case 0x01: {
+			for(tmp1=0;coins1[tmp1];++tmp1){
+				vram_put(0xA0+coins1[tmp1]);
+			} 
+			break;
+		}
+		case 0x02: {
+			for(tmp1=0;coins2[tmp1];++tmp1){
+				vram_put(0xA0+coins2[tmp1]);
+			} 
+			break;
+		}
+		case 0x03: {
+			for(tmp1=0;coins3[tmp1];++tmp1){
+				vram_put(0xA0+coins3[tmp1]);
+			} 
+			break;
+		}
+		default: break;
+         } 
+
+
+//	one_vram_buffer(0xD0+coins, NTADR_A(12,9));
 
 
     scroll_y = 0xEF;
