@@ -17,7 +17,7 @@ void state_menu(){
 		case 0x01:	break;
 	}
 
-
+	coins = 0;
 	kandotemp = 1;
 	
 	// make the entire first nametable use bg palette 3

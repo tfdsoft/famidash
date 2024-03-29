@@ -16,6 +16,12 @@ void state_lvldone(){
 	for(tmp1=0;menutext3[tmp1];++tmp1){
 		vram_put(0xA0+menutext3[tmp1]);
 	} 
+    vram_adr(NTADR_A(6,8));
+	for(tmp1=0;menutext4[tmp1];++tmp1){
+		vram_put(0xA0+menutext4[tmp1]);
+	} 
+
+	one_vram_buffer(0xD0+coins, NTADR_A(12,8));
 
 
     scroll_y = 0xEF;
@@ -57,6 +63,30 @@ void state_lvldone(){
         set_scroll_y(scroll_y);
 
     }
+
+
+	while (1){
+		ppu_wait_nmi();
+		music_update();
+		pad = pad_poll(0); // read the first controller
+		pad_new = get_pad_new(0);
+
+		if (pad_new & PAD_START){
+			pal_bg((char *)paletteDefault);
+			pal_spr((char *)paletteDefaultSP);
+			// use the second set of tiles for sprites
+			// both bg and sprites are set to 0 by default
+			bank_spr(1);
+
+			set_vram_buffer(); // do at least once
+
+			ppu_on_all();
+			pal_fade_to(4,0);
+			gameState = 1;
+			return;
+		}
+	}
+
 
     pal_bg((char *)paletteDefault);
     pal_spr((char *)paletteDefaultSP);
