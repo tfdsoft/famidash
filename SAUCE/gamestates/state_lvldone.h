@@ -52,6 +52,7 @@ void state_lvldone(){
     for (tmp1 = 0; tmp1 < 7; ++tmp1) {
         ppu_wait_nmi();
         ppu_wait_nmi();
+	music_update();	
         scroll_y -= (0xf0 - scroll_y);
         set_scroll_y(scroll_y);
     }
@@ -59,6 +60,7 @@ void state_lvldone(){
     for (tmp1 = 0; tmp1 < 8; ++tmp1) {
         ppu_wait_nmi();
         ppu_wait_nmi();
+	music_update();	
         scroll_y >>= 1;
         set_scroll_y(scroll_y);
 
