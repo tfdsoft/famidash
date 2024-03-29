@@ -81,7 +81,9 @@ char sprite_height_lookup(unsigned char type){
     }
 
     // portals
-    if (type < 0x0A) return 0x2f;
+    if (type == 0x07) return 0x17; // coin
+
+    if (type < 0x0A) return 0x20;
 
     // pads
     if (type == 0x0A) return 0x07; // jump pad
@@ -103,7 +105,13 @@ void sprite_collide_lookup(){
         if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
     }
 
-    if (tmp4 < 8) gamemode = tmp4;
+    else if (tmp4 == 0x07) {					//coin
+	    coins++;
+	    famistudio_sfx_play(sfx_click, 0);			//test sfx
+	activesprites_type[index] = 0x0E;
+		//we need coin to disappear here
+    }
+    else if (tmp4 < 8) gamemode = tmp4;
     else if (tmp4 < 10) gravity = tmp4 - 8;
     else if (tmp4 == 0x0A || tmp4 == 0x0C) {
         if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;

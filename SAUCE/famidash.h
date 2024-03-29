@@ -31,6 +31,8 @@ unsigned char pad_new;
 unsigned char gamemode;
 unsigned char cube_data;
 signed short cube_rotate;
+unsigned char coins;
+
 
 unsigned char coordinates;
 unsigned char collision;

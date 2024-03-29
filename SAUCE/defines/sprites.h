@@ -188,6 +188,14 @@ const unsigned char Portal_Gravity_Up[]={
 	0x80
 };
 
+const unsigned char Coin_Sprite[]={
+
+	  0,  0,0x45,1,
+	  8,  0,0x45,1|OAM_FLIP_H,
+	  4,  0,0x47,0,
+	0x80
+};
+
 // ================================================================
 
 const unsigned char Jump_Orb[]={
@@ -224,14 +232,14 @@ const unsigned char * const Metasprites[]={
 	nometa, // wave
 	nometa, // bobot
 	nometa, // spider
-	nometa, // swing
+	Coin_Sprite, // swing
 	Portal_Gravity_Down,
 	Portal_Gravity_Up,
 	Jump_Pad,
 	Jump_Orb,
 	Jump_Pad_U,
 	nometa,
-	nometa,
+	nometa,	  //Coin Disappear
 	Jump_Orb, // end stage trigger
 
 	// start of color triggers
