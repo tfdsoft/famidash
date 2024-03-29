@@ -107,9 +107,8 @@ void sprite_collide_lookup(){
 
     else if (tmp4 == 0x07) {					//coin
 	    coins++;
-	    famistudio_sfx_play(sfx_click, 0);			//test sfx
-	activesprites_type[index] = 0x0E;
-		//we need coin to disappear here
+//	    famistudio_sfx_play(sfx_click, 0);			//test sfx
+	activesprites_type[index] = 0x0E;		//make coin disappear here
     }
     else if (tmp4 < 8) gamemode = tmp4;
     else if (tmp4 < 10) gravity = tmp4 - 8;
