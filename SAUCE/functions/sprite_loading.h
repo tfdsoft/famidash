@@ -120,8 +120,8 @@ void sprite_collide_lookup(){
         else player.vel_y = PAD_HEIGHT_YELLOW;
     } 
     else if (tmp4 == 0x0D || tmp4 == 0x0E) {			//gravity pads
-	    gravity ^= 0x01;
-	    player.vel_y = -(player.vel_y);
+	    gravity ^= 0x01;				//flip gravity
+	    player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
     }
     else if (tmp4 == 0x0F) {
         gameState = 0x03; 
