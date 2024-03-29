@@ -89,6 +89,8 @@ char sprite_height_lookup(unsigned char type){
     if (type == 0x0A) return 0x07; // jump pad
     if (type == 0x0B) return 0x0f; // jump ring
     if (type == 0x0C) return 0x07; // jump pad Upside Down
+    if (type == 0x0D) return 0x07; // Gravity Pad
+    if (type == 0x0E) return 0x07; // Gravity Pad Upside Down
 
     // triggers
     if (type == 0x0f) return 0x5f;
@@ -108,14 +110,20 @@ void sprite_collide_lookup(){
     else if (tmp4 == 0x07) {					//coin
 	    coins++;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
-	activesprites_type[index] = 0x0E;		//make coin disappear here
+	activesprites_type[index] = 0x06;		//make coin disappear here
     }
+    else if (tmp4 == 6) ;
     else if (tmp4 < 8) gamemode = tmp4;
     else if (tmp4 < 10) gravity = tmp4 - 8;
     else if (tmp4 == 0x0A || tmp4 == 0x0C) {
         if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
         else player.vel_y = PAD_HEIGHT_YELLOW;
-    } else if (tmp4 == 0x0F) {
+    } 
+    else if (tmp4 == 0x0D || tmp4 == 0x0E) {			//gravity pads
+	    gravity ^= 0x01;
+	    player.vel_y = -(player.vel_y);
+    }
+    else if (tmp4 == 0x0F) {
         gameState = 0x03; 
         pal_fade_to(4,0); 
     }

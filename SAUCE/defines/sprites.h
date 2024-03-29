@@ -218,6 +218,19 @@ const unsigned char Jump_Pad_U[]={
 	0x80
 };
 
+const unsigned char Gravity_Pad[]={
+
+	  0,- 0,0x49,4,
+	  8,- 0,0x49,4|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Gravity_Pad_U[]={
+
+	  0,- 0,0x49,4|OAM_FLIP_V,
+	  8,- 0,0x49,4|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+
 
 
 
@@ -238,8 +251,8 @@ const unsigned char * const Metasprites[]={
 	Jump_Pad,
 	Jump_Orb,
 	Jump_Pad_U,
-	nometa,
-	nometa,	  //Coin Disappear
+	Gravity_Pad,
+	Gravity_Pad_U,	  //Coin Disappear
 	Jump_Orb, // end stage trigger
 
 	// start of color triggers
