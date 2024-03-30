@@ -19,11 +19,11 @@ void x_movement(){
 	Generic.height = CUBE_HEIGHT;
 
 	if (player.y < 0x0600){
-		cube_data ^= 0x01;	//DIE if player goes too high
+		cube_data |= 0x01;	//DIE if player goes too high
 	};
 	
 	// no L/R collision required, since that is accounted for with the death script
 	
-	if (bg_coll_R()) cube_data ^= 0x01; // turns out, this is needed to temporarily fix zipping
-	if (pad_new & PAD_A) cube_data ^= 0x02;
+	if (bg_coll_R()) cube_data |= 0x01; // turns out, this is needed to temporarily fix zipping
+	if (pad_new & PAD_A) cube_data |= 0x02;
 }
