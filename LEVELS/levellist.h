@@ -54,7 +54,7 @@ const unsigned char bank_list[] = {
     1,
     1,
     2,
-    2,
+    7,
     5,
     3,
     4,
