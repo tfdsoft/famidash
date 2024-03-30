@@ -49,8 +49,8 @@ const unsigned char stereomadness_[]={
 	song_stereo_madness,	// Song number
 	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
-	0x00,					// Background starting color
-	0x00,					// Ground starting color
+	0x12,					// Background starting color
+	0x12,					// Ground starting color
 	0x00,					// unused
 	0x00,					// unused
 	0x00,					// unused
@@ -62,8 +62,8 @@ const unsigned char backontrack_[]={
 	song_back_on_track,		// Song number
 	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
-	0x00,					// Background starting color
-	0x00,					// Ground starting color
+	0x14,					// Background starting color
+	0x14,					// Ground starting color
 	0x00,					// unused
 	0x00,					// unused
 	0x00,					// unused
@@ -80,8 +80,8 @@ const unsigned char polargeist_[]={
 	song_polargeist,		// Song number
 	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
-	0x00,					// Background starting color
-	0x00,					// Ground starting color
+	0x1A,					// Background starting color
+	0x1A,					// Ground starting color
 	0x00,					// unused
 	0x00,					// unused
 	0x00,					// unused
@@ -98,8 +98,8 @@ const unsigned char cantletgo_[]={
 	song_cant_let_go,		// Song number
 	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
-	0x00,					// Background starting color
-	0x00,					// Ground starting color
+	0x14,					// Background starting color
+	0x14,					// Ground starting color
 	0x00,					// unused
 	0x00,					// unused
 	0x00,					// unused
@@ -113,8 +113,8 @@ const unsigned char jumper_[]={
 	song_jumper,			// Song number
 	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
-	0x00,					// Background starting color
-	0x00,					// Ground starting color
+	0x13,					// Background starting color
+	0x13,					// Ground starting color
 	0x00,					// unused
 	0x00,					// unused
 	0x00,					// unused
@@ -145,8 +145,8 @@ const unsigned char cycles_[]={
 	song_cycles,			// Song number
 	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
-	0x00,					// Background starting color
-	0x00,					// Ground starting color
+	0x04,					// Background starting color
+	0x14,					// Ground starting color
 	0x00,					// unused
 	0x00,					// unused
 	0x00,					// unused
@@ -160,8 +160,8 @@ const unsigned char dryout_[]={
 	song_dry_out,			// Song number
 	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
-	0x00,					// Background starting color
-	0x00,					// Ground starting color
+	0x16,					// Background starting color
+	0x16,					// Ground starting color
 	0x00,					// unused
 	0x00,					// unused
 	0x00,					// unused
