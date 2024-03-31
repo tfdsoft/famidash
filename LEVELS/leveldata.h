@@ -47,7 +47,7 @@
 const unsigned char stereomadness_[]={
 	// LEVEL HEADER
 	song_stereo_madness,	// Song number
-	0x02,					// Starting gamemode, leave 1 for cube
+	0x00,					// Starting gamemode, leave 1 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x12,					// Background starting color
 	0x12,					// Ground starting color
