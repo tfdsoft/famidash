@@ -8,7 +8,7 @@
 #define CUBE_WIDTH 0x0F
 #define CUBE_HEIGHT 0x0F
 
-#define JUMP_VEL -0x5B0
+#define JUMP_VEL -0x580
 #define CUBE_SPEED_X1 0x2C4
 #define CUBE_MAX_FALLSPEED 0x600
 #define CUBE_GRAVITY 0x6B
