@@ -115,7 +115,7 @@ const unsigned char Ball_1[]={
 	0x80
 };
 
-const unsigned char * const BALL[]={Ball_0, Ball_0, Ball_1, Ball_1, Ball_0, Ball_0, Ball_1, Ball_1};
+const unsigned char * const BALL[]={Ball_0, Ball_1, Ball_0, Ball_1, Ball_0, Ball_1, Ball_0, Ball_1};
 // ================================================================
 
 const unsigned char Portal_Gamemode_Cube[]={
