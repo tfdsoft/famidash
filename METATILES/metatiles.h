@@ -56,6 +56,10 @@ const unsigned char metatiles1[]={
 
 #define COL_DEATH 0x80
 #define COL_ALL 0x40
+//#define COL_TOP 0x20
+//#define COL_BOTTOM 0x10
+//#define COL_DEATH_TOP 0x08
+//#define COL_DEATH_BOTTOM 0x04
 const unsigned char is_solid[]={
 
 	// go find famidash.bmp for a reference point
@@ -63,7 +67,10 @@ const unsigned char is_solid[]={
 	0,			// the blank tile
 	COL_ALL,	// start of ground tiles
 	COL_ALL,
+
+//	COL_BOTTOM, 
 	COL_ALL, 
+
 	COL_ALL, 
 	COL_ALL,
 	COL_ALL,
@@ -75,23 +82,35 @@ const unsigned char is_solid[]={
 	COL_ALL,	// end of ground tiles
 	0,
 	0,
-	0,
+	0,		//16
 	
 	COL_ALL,	// default block
 	COL_DEATH,	// big spike
-	COL_DEATH,	// small spike
+
+	COL_DEATH,	// big spike
+//	COL_DEATH_BOTTOM,	// small spike
+
 	0,			// yellow pad
 	0,			// yellow orb
 	0,			// pink pad
 	COL_ALL,	// half-slab with ground spikes
-	COL_DEATH,	// ceiling spikes
-	COL_DEATH,	// ground spikes
-	COL_ALL,	// half-slab
+
+//	COL_DEATH_TOP,	// ceiling spikes
+//	COL_DEATH_BOTTOM,	// ground spikes
+	COL_DEATH,
+	COL_DEATH,
+
+//	COL_TOP,	// half-slab
+	COL_ALL,
+
 	COL_DEATH,	// the other spikes
 	COL_DEATH,
 	COL_DEATH,
 	COL_DEATH,
+
 	COL_DEATH,
+//	COL_DEATH_TOP,
+
 	COL_DEATH,
 
 	COL_ALL,	// default block 2
