@@ -101,6 +101,28 @@ const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_4, Sh
 
 
 
+const unsigned char COIN_SPRITE[]={
+
+	  0,  0,0x4D,1,
+	  8,  0,0x4D,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char COIN_1[]={
+
+	  0,  0,0x4F,0,
+	  8,  0,0x4F,0|OAM_FLIP_H,
+	0x80
+};
+const unsigned char COIN_2[]={
+
+	  0,  0,0x51,0,
+	  8,  0,0x51,0|OAM_FLIP_H,
+	0x80
+};
+
+
+//const unsigned char * const COIN_SPRITE[]={COIN_0, COIN_1, COIN_2, COIN_1, COIN_0};
+
 
 const unsigned char Ball_0[]={
 
@@ -194,13 +216,7 @@ const unsigned char Portal_Gravity_Up[]={
 	0x80
 };
 
-const unsigned char Coin_Sprite[]={
 
-	  0,  0,0x45,1,
-	  8,  0,0x45,1|OAM_FLIP_H,
-	  4,  0,0x47,0,
-	0x80
-};
 
 // ================================================================
 
@@ -251,7 +267,7 @@ const unsigned char * const Metasprites[]={
 	nometa, // wave
 	nometa, // bobot
 	nometa, // spider
-	Coin_Sprite, // swing
+	COIN_SPRITE, // swing
 	Portal_Gravity_Down,
 	Portal_Gravity_Up,
 	Jump_Pad,
