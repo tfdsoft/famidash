@@ -108,8 +108,14 @@ const unsigned char Ball_0[]={
 	  8,  0,0x23,0|OAM_FLIP_H,
 	0x80
 };
+const unsigned char Ball_1[]={
 
-const unsigned char * const BALL[]={Ball_0, Ball_0, Ball_0, Ball_0, Ball_0, Ball_0, Ball_0, Ball_0};
+	  0,  0,0x55,0,
+	  8,  0,0x55,0|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char * const BALL[]={Ball_0, Ball_0, Ball_1, Ball_1, Ball_0, Ball_0, Ball_1, Ball_1};
 // ================================================================
 
 const unsigned char Portal_Gamemode_Cube[]={
