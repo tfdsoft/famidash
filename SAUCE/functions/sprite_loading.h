@@ -1,4 +1,4 @@
-#define SPR_BANK_00 0x0C
+#define SPR_BANK_00 0x1C
 
 void load_next_sprite(void){
     mmc3_tmp_prg_bank_1(SPR_BANK_00);
