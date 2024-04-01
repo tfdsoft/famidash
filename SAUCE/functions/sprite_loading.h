@@ -118,7 +118,7 @@ void sprite_collide_lookup(){
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make coin disappear here
     }
-    else if (tmp4 == 6) {
+    else if (tmp4 == 6 && cube_data == 0x02) {
         if (gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
         else player.vel_y = PAD_HEIGHT_PINK;
     } 	    
