@@ -68,8 +68,8 @@ void check_spr_objects(void){
 }
 
 char sprite_height_lookup(unsigned char type){
-
-    if (type & 0x30){				//COLOR TRIGGERS ON LOADING
+    if (type == 0xFF) { }
+    else if (type & 0x30){				//COLOR TRIGGERS ON LOADING
         tmp2 = (type & 0x3f)-0x10;
         if (type & 0xC0){
             pal_col(6, tmp2);
@@ -84,14 +84,15 @@ char sprite_height_lookup(unsigned char type){
     }
 
     // portals
+    if (type == 0x06) return 0x0f; // pink jump orb
     if (type == 0x07) return 0x17; // coin
 
     if (type < 0x0A) return 0x20;
 
     // pads
-    if (type == 0x0A) return 0x07; // jump pad
-    if (type == 0x0B) return 0x0f; // jump ring
-    if (type == 0x0C) return 0x07; // jump pad Upside Down
+    if (type == 0x0A) return 0x07; // yellow jump pad
+    if (type == 0x0B) return 0x0f; // yellow jump orb
+    if (type == 0x0C) return 0x07; // yellow jump pad Upside Down
     if (type == 0x0D) return 0x07; // Gravity Pad
     if (type == 0x0E) return 0x07; // Gravity Pad Upside Down
 
@@ -104,8 +105,10 @@ char sprite_height_lookup(unsigned char type){
 
 void sprite_collide_lookup(){
     // portals
-
-    if (tmp4 == 0x0B && cube_data == 0x02) {		//orb
+    if (tmp4 == 0xFF) {	
+    
+    }
+    else if (tmp4 == 0x0B && cube_data == 0x02) {		//orb
         cube_data = 0x00;
         if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
     }
@@ -113,9 +116,12 @@ void sprite_collide_lookup(){
     else if (tmp4 == 0x07) {					//coin
 	    coins++;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
-	activesprites_type[index] = 0x06;		//make coin disappear here
+	activesprites_type[index] = 0xFF;		//make coin disappear here
     }
-    else if (tmp4 == 6) ;
+    else if (tmp4 == 6) {
+        if (gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
+        else player.vel_y = PAD_HEIGHT_PINK;
+    } 	    
     else if (tmp4 < 8) gamemode = tmp4;
     else if (tmp4 < 10) gravity = tmp4 - 8;
     else if (tmp4 == 0x0A || tmp4 == 0x0C) {

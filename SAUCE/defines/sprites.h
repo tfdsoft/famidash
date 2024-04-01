@@ -127,7 +127,7 @@ const unsigned char COIN_3[]={
 };
 
 
-const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_1, COIN_1, COIN_1, COIN_1, COIN_2, COIN_2, COIN_2, COIN_2, COIN_3, COIN_3, COIN_3, COIN_3};
+const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_1, COIN_1, COIN_1, COIN_1, COIN_1, COIN_2, COIN_2, COIN_2, COIN_2, COIN_2, COIN_3, COIN_3, COIN_3, COIN_3, COIN_3};
 
 
 const unsigned char Ball_0[]={
@@ -226,20 +226,29 @@ const unsigned char Portal_Gravity_Up[]={
 
 // ================================================================
 
-const unsigned char Jump_Orb[]={
+const unsigned char Yellow_Jump_Orb[]={
 
 	  0,  0,0x45,2,
 	  8,  0,0x45,2|OAM_FLIP_H,
 	  4,  0,0x47,1,
 	0x80
 };
-const unsigned char Jump_Pad[]={
+
+const unsigned char Pink_Jump_Orb[]={
+
+	  0,  0,0x45,7,
+	  8,  0,0x45,7|OAM_FLIP_H,
+	  4,  0,0x47,7,
+	0x80
+};
+
+const unsigned char Yellow_Jump_Pad[]={
 
 	  0,- 8,0x49,1,
 	  8,- 8,0x49,1|OAM_FLIP_H,
 	0x80
 };
-const unsigned char Jump_Pad_U[]={
+const unsigned char Yellow_Jump_Pad_U[]={
 
 	  0,- 0,0x49,1|OAM_FLIP_V,
 	  8,- 0,0x49,1|OAM_FLIP_H|OAM_FLIP_V,
@@ -272,16 +281,16 @@ const unsigned char * const Metasprites[]={
 	nometa, // ufo
 	nometa, // wave
 	nometa, // bobot
-	nometa, // spider
+	Pink_Jump_Orb, 
 	COIN_SPRITE, // swing
 	Portal_Gravity_Down,
 	Portal_Gravity_Up,
-	Jump_Pad,
-	Jump_Orb,
-	Jump_Pad_U,
+	Yellow_Jump_Pad,
+	Yellow_Jump_Orb,
+	Yellow_Jump_Pad_U,
 	Gravity_Pad,
 	Gravity_Pad_U,	  //Coin Disappear
-	Jump_Orb, // end stage trigger
+	Yellow_Jump_Orb, // end stage trigger
 
 	// start of color triggers
 
