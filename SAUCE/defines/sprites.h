@@ -121,7 +121,7 @@ const unsigned char COIN_2[]={
 };
 
 
-const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_SPRITE, COIN_1, COIN_1, COIN_2, COIN_2, COIN_1, COIN_1};
+const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_1, COIN_1, COIN_1, COIN_1, COIN_2, COIN_2, COIN_2, COIN_2, COIN_1, COIN_1, COIN_1, COIN_1};
 
 
 const unsigned char Ball_0[]={

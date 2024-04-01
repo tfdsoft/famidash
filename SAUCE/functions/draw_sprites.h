@@ -46,7 +46,7 @@ void draw_sprites(void){
 			if (tmp3 == 7) {			//coin
 				oam_meta_spr(temp_x, temp_y-1, COIN_SPRITES[coinframe]);
 				coinframe++;
-				if (coinframe > 7) {coinframe = 0;}
+				if (coinframe > 15) {coinframe = 0;}
 			}
 			else {
 				oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x0f]);
