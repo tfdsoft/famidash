@@ -115,13 +115,13 @@ const unsigned char COIN_1[]={
 };
 const unsigned char COIN_2[]={
 
-	  0,  0,0x51,1,
-	  8,  0,0x51,1|OAM_FLIP_H,
+	  0,  0,0x53,1,
+	  8,  0,0x53,1|OAM_FLIP_H,
 	0x80
 };
 
 
-const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_1, COIN_2, COIN_1, COIN_SPRITE};
+const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_SPRITE, COIN_1, COIN_1, COIN_2, COIN_2, COIN_1, COIN_1};
 
 
 const unsigned char Ball_0[]={

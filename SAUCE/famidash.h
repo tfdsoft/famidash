@@ -74,6 +74,7 @@ unsigned char spr_index;
 
 unsigned char kandotemp;
 unsigned char kandotemp2;
+unsigned char coinframe;
 unsigned char level;
 unsigned char level_data_bank;
 
