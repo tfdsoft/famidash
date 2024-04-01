@@ -74,6 +74,8 @@ const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
 unsigned char rld_column;
 unsigned char spr_index;
 
+unsigned char shuffle_offset;
+unsigned char count;
 unsigned char kandotemp;
 unsigned char kandotemp2;
 unsigned char coinframe;
