@@ -133,7 +133,7 @@ const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_SPRITE, COIN_SPRIT
 const unsigned char Ball_0[]={
 
 	  0,  0,0x23,0,
-	  8,  0,0x53,0|OAM_FLIP_H,
+	  8,  0,0x23,0|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Ball_1[]={
@@ -236,8 +236,8 @@ const unsigned char Yellow_Jump_Orb[]={
 
 const unsigned char Pink_Jump_Orb[]={
 
-	  0,  0,0x45,7,
-	  8,  0,0x45,7|OAM_FLIP_H,
+	  0,  0,0x45,6,
+	  8,  0,0x45,6|OAM_FLIP_H,
 	  4,  0,0x47,7,
 	0x80
 };
@@ -246,6 +246,8 @@ const unsigned char Yellow_Jump_Pad[]={
 
 	  0,- 8,0x49,1,
 	  8,- 8,0x49,1|OAM_FLIP_H,
+	  0,- 8,0x57,6,
+	  8,- 8,0x57,6|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U[]={
