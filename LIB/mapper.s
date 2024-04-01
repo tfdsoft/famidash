@@ -131,7 +131,7 @@ _MMC3_MIRRORING_HORIZONTAL = 1
         lda #%10000000
         sta MMC3_REG_PRG_RAM_PROTECT
 
-        lda #<DMC_BANK          ; Sample bank
+        lda #$1D          ; Sample bank
         jsr mmc3_set_prg_bank_0
         lda #1
         sta MMC3_REG_MIRRORING  ; Set mirroring to horizontal

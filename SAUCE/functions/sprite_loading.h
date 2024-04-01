@@ -1,7 +1,10 @@
-extern int SPRITE_BANK;
+//extern int SPRITE_BANK;
+
+#define SPR_BANK_00 0x1C
+
 
 void load_next_sprite(void){
-    mmc3_tmp_prg_bank_1(SPRITE_BANK);
+    mmc3_tmp_prg_bank_1(SPR_BANK_00);
     if (sprite_data[spr_index<<3] == TURN_OFF) return;
     tmp3 = sprite_data[(spr_index<<3)+0];  low_byte(activesprites_x[spr_index % max_loaded_sprites]) = tmp3; 
     tmp3 = sprite_data[(spr_index<<3)+1]; high_byte(activesprites_x[spr_index % max_loaded_sprites]) = tmp3; 
@@ -24,7 +27,7 @@ void load_next_sprite(void){
 
 
 void init_sprites(void){
-    mmc3_set_prg_bank_1(SPRITE_BANK);
+    mmc3_set_prg_bank_1(SPR_BANK_00);
     sprite_data = (unsigned char *) sprite_list[level];
 
     spr_index = 0;
