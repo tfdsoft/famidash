@@ -8,10 +8,11 @@
 #define CUBE_WIDTH 0x0F
 #define CUBE_HEIGHT 0x0F
 
-#define JUMP_VEL -0x580
+#define JUMP_VEL -0x5B0
 #define CUBE_SPEED_X1 0x2C4
 #define CUBE_MAX_FALLSPEED 0x600
 #define CUBE_GRAVITY 0x6B
+#define BALL_GRAVITY 0x6B
 #define SHIP_MAX_FALLSPEED 0x300
 #define SHIP_GRAVITY 0x35
 
@@ -75,6 +76,7 @@ unsigned char spr_index;
 unsigned char kandotemp;
 unsigned char kandotemp2;
 unsigned char coinframe;
+unsigned char ballframe;
 unsigned char level;
 unsigned char level_data_bank;
 

@@ -5,10 +5,10 @@ void ball_movement(void){
 	// player.vel_y is signed
 	//if(player.vel_y < 0x400){
 	if(!gravity){
-		player.vel_y += CUBE_GRAVITY;
+		player.vel_y += BALL_GRAVITY;
 	}
 	else{
-		player.vel_y -= CUBE_GRAVITY;
+		player.vel_y -= BALL_GRAVITY;
 	}
 
     if(player.vel_y > CUBE_MAX_FALLSPEED) player.vel_y = CUBE_MAX_FALLSPEED;
@@ -42,6 +42,10 @@ void ball_movement(void){
 	if ((pad & PAD_A) && (kandotemp2 == 0) && (player.vel_y == 0)){
 		gravity ^= 0x01;
 		kandotemp2 = 1;
+		switch (gravity){
+			case 0x00: player.vel_y = 0x6F; break;
+			case 0x01: player.vel_y = -0x6F; break;
+			}
 	}
 	if(kandotemp2 == 1){
 		if ((pad & PAD_A) == 0){

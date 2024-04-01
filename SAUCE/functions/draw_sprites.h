@@ -29,7 +29,9 @@ void draw_sprites(void){
 		case 0x02:
 
 			cube_rotate ^= 0x0100;
-			oam_meta_spr(temp_x, high_byte(player.y)-1, BALL[high_byte(cube_rotate)]);
+			oam_meta_spr(temp_x, high_byte(player.y)-1, BALL[ballframe]);
+			ballframe++;
+			if (ballframe > 5) { ballframe = 0; }
 			break;
     }
 	
