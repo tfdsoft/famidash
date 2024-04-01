@@ -110,7 +110,7 @@ const unsigned char COIN_SPRITE[]={
 const unsigned char COIN_1[]={
 
 	  0,  0,0x4F,1,
-	  8,  0,0x4F,1|OAM_FLIP_H,
+	  8,  0,0x51,1,
 	0x80
 };
 const unsigned char COIN_2[]={
@@ -119,15 +119,21 @@ const unsigned char COIN_2[]={
 	  8,  0,0x53,1|OAM_FLIP_H,
 	0x80
 };
+const unsigned char COIN_3[]={
+
+	  0,  0,0x51,1|OAM_FLIP_H,
+	  8,  0,0x4F,1|OAM_FLIP_H,
+	0x80
+};
 
 
-const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_1, COIN_1, COIN_1, COIN_1, COIN_2, COIN_2, COIN_2, COIN_2, COIN_1, COIN_1, COIN_1, COIN_1};
+const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_1, COIN_1, COIN_1, COIN_1, COIN_2, COIN_2, COIN_2, COIN_2, COIN_3, COIN_3, COIN_3, COIN_3};
 
 
 const unsigned char Ball_0[]={
 
 	  0,  0,0x23,0,
-	  8,  0,0x23,0|OAM_FLIP_H,
+	  8,  0,0x53,0|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Ball_1[]={
