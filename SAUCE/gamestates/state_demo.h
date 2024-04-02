@@ -8,12 +8,7 @@ void state_demo(){
     vram_unrle(dem_funnies);
     mmc3_pop_prg_bank_1();
 
-    mmc3_set_2kb_chr_bank_0(8);
-    mmc3_set_2kb_chr_bank_1(10);
-    mmc3_set_1kb_chr_bank_0(12);
-    mmc3_set_1kb_chr_bank_1(13);
-    mmc3_set_1kb_chr_bank_2(14);
-    mmc3_set_1kb_chr_bank_3(15);
+	mmc3_set_8kb_chr(8);
 
 	oam_clear();
 	ppu_on_all();

@@ -25,3 +25,14 @@ __asm__("STA MMC3_REG_MIRRORING");
 void __fastcall__ mmc3_tmp_prg_bank_1(unsigned char bank);
 
 void __fastcall__ mmc3_pop_prg_bank_1();
+
+void __fastcall__ mmc3_set_8kb_chr(unsigned char i) {
+	// bg
+    mmc3_set_1kb_chr_bank_0(i);
+    mmc3_set_1kb_chr_bank_1(i+1);
+    mmc3_set_1kb_chr_bank_2(i+2);
+    mmc3_set_1kb_chr_bank_3(i+3);
+	// sprites
+	mmc3_set_2kb_chr_bank_0(i+4);
+    mmc3_set_2kb_chr_bank_1(i+6);
+}

@@ -125,7 +125,8 @@ _MMC3_MIRRORING_HORIZONTAL = 1
     .endmacro
 
     initialize_mapper:
-        lda #(MMC3_REG_SEL_CHR_MODE_A | MMC3_REG_SEL_PRG2_8000)
+        ; lda #(MMC3_REG_SEL_CHR_MODE_A | MMC3_REG_SEL_PRG2_8000)
+        lda #(MMC3_REG_SEL_CHR_MODE_B | MMC3_REG_SEL_PRG2_8000)
         sta mmc3ChrInversionSetting
 
         lda #%10000000

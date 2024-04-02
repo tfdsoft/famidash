@@ -16,7 +16,7 @@ void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const un
  * [in] song_index : Song index.
  * ======================================================================================================================
  */
- void __fastcall__ music_play(unsigned char song);
+void __fastcall__ music_play(unsigned char song);
 
 /**
  * ======================================================================================================================
@@ -28,7 +28,10 @@ void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const un
  * [in] no input params.
  * ======================================================================================================================
  */
- void __fastcall__ music_update (void);
+void __fastcall__ music_update (void);
+
+extern unsigned char parallax_scroll_column;
+extern unsigned char parallax_scroll_column_start;
 
 #define low2bytes(a) *((unsigned short*)&a)
 #define high2bytes(a) *((unsigned short*)&a+1)

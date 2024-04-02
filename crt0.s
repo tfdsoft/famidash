@@ -276,7 +276,9 @@ detectNTSC:
    	.word irq	;$fffe irq / brk
 
 
-.segment "CHR_BANK_00"
+.segment "CHR"
 	.incbin "GRAPHICS/famidash.chr"
-.segment "CHR_BANK_01"
 	.incbin "GRAPHICS/menus.chr"
+.repeat 48, I
+	.incbin .sprintf("GRAPHICS/parallax/parallax_%d.chr", I)
+.endrepeat
