@@ -25,7 +25,10 @@ void __fastcall__ draw_screen_R_frame2(void);
 
 void load_ground(unsigned char id){
 	mmc3_set_prg_bank_1(0);
+	// render to both nametable c and d
     vram_adr(NAMETABLE_C);
+    vram_unrle(ground[id]);
+    vram_adr(NAMETABLE_D);
     vram_unrle(ground[id]);
 }
 
@@ -49,8 +52,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 
 	mmc3_set_prg_bank_1(level_data_bank);
     set_data_pointer((char *)active_level[0]);
-    set_mt_pointer((char *)metatiles1);
-
+	scroll_x = -1;
     for (i = 0; i < 16; i++) {
         draw_screen_R_frame0();
         flush_vram_update2();
@@ -61,4 +63,5 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
         draw_screen_R_frame2();
         flush_vram_update2();
     }
+	scroll_x = 0;
 }

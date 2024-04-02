@@ -247,6 +247,7 @@ detectNTSC:
 	.include "LIB/neslib.s"
 	.include "LIB/nesdoug.s"
 	.include "LIB/nesdash.s"
+	.include "METATILES/metatiles.s"
 
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music.dmc"

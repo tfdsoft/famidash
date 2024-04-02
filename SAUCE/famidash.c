@@ -30,7 +30,7 @@
 void main(){
     ppu_off();
 
-    ppu_mask(0x00);
+    ppu_mask(0x00 | (1 << 1) | (1 << 2));
 
     // banking for CHR to allocate dierctly
     /*
