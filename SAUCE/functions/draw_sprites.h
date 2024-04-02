@@ -37,20 +37,20 @@ void draw_sprites(void){
 	
 	// the level sprites
 
-	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
+		for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
 
-        shuffle_offset += 11;								//-----------|
-        if (shuffle_offset >= max_loaded_sprites) {					//           |
-          shuffle_offset -= max_loaded_sprites;						//           |
-        }										//           |
-        // the level sprites								//           |
-        for (count = 0; count < max_loaded_sprites; ++count){				//   FLICKER |
-          // and every sprite add another number thats also coprime with 16 AND 11	//           |
-          shuffle_offset += 9;								//           |
-          if (shuffle_offset >= max_loaded_sprites) {					//           |	
-            shuffle_offset -= max_loaded_sprites;					//           |
-          }										//           |
-          index = shuffle_offset;							//-----------|
+//        shuffle_offset += 11;								//-----------|
+//        if (shuffle_offset >= max_loaded_sprites) {					//           |
+//          shuffle_offset -= max_loaded_sprites;						//           |
+//        }										//           |
+//        // the level sprites								//           |
+//        for (count = 0; count < max_loaded_sprites; ++count){				//   FLICKER |
+//          // and every sprite add another number thats also coprime with 16 AND 11	//           |
+//          shuffle_offset += 9;								//           |
+//          if (shuffle_offset >= max_loaded_sprites) {					//           |	
+//            shuffle_offset -= max_loaded_sprites;					//           |
+//          }										//           |
+//          index = shuffle_offset;							//-----------|
 
 		if (activesprites_type[index] & 0x30) continue;
 		temp_y = low_byte(activesprites_realy[index]);
