@@ -262,8 +262,8 @@ const unsigned char Yellow_Jump_Pad_U[]={
 
 const unsigned char Gravity_Pad[]={
 
-	  0,0,0x49,4,
-	  8,0,0x49,4|OAM_FLIP_H,
+	  0,8,0x49,4,
+	  8,8,0x49,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad_U[]={
