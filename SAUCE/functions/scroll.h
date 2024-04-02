@@ -3,9 +3,12 @@ void do_the_scroll_thing(){
 	if (player.x > 0x5000){ // change x scroll
 		tmp1 = (player.x - 0x5000) >> 8;
 		scroll_x += tmp1;
+		parallax_scroll_x += tmp1 ? tmp1 - 1 : 0;
+		if (parallax_scroll_x >= 144) {
+			parallax_scroll_x -= 144;
+		}
 		high_byte(player.x) = high_byte(player.x) - tmp1;
 	}
-
 
 
 	if (player.y < 0x4000 && (scroll_y > 0x08)){ // change y scroll (upward)

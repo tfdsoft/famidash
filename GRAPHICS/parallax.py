@@ -96,27 +96,27 @@ def parallaxify():
     # and generates 32 horizontally scrolled versions of the background
     import os
     curpath = os.path.abspath(os.path.dirname(__file__))
-    box = (0, 0, 128, 32)
     with open(f"{curpath}/parallax.bmp", "rb") as fin:
         orig_img = Image.open(fin)
-        orig_img = orig_img.crop(box)
+        im = orig_img.copy()
+        im = im.resize((128, 32))
+        
         with open(f"{curpath}/parallax/parallax_0.chr", "wb") as fout:
             outdata = b''.join(pilbmp2chr(orig_img))
             fout.write(outdata)
-        for i in range(1, 48):
-            topbox1 = (i, 0, 48, 32)
-            topbox2 = (0, 0, i,  32)
-            botbox1 = (i + 48, 0, 96,     32)
-            botbox2 = (48    , 0, i + 48, 32)
-            top_main_region = orig_img.crop(topbox1)
-            top_crop_region = orig_img.crop(topbox2)
-            bot_main_region = orig_img.crop(botbox1)
-            bot_crop_region = orig_img.crop(botbox2)
-            im = orig_img.copy()
-            im.paste(top_main_region, (0, 0, 48-i, 32))
-            im.paste(top_crop_region, (48-i, 0, 48, 32))
-            im.paste(bot_main_region, (48, 0, 96-i, 32))
-            im.paste(bot_crop_region, (96-i, 0, 96, 32))
+        for i in range(0, 144):
+            # shift the main image over by i pixels
+            shifted = orig_img.crop((144 - i, 0, (144+48) - i, 72))
+            # shifted.save(f"{curpath}/temp/test{i}.png")
+            top_region = shifted.crop((0, 0, 48, 32))
+            mid_region = shifted.crop((0, 32, 48, 64))
+            bot1_region = shifted.crop((0, 64, 24, 72))
+            bot2_region = shifted.crop((24, 64, 48, 72))
+            im.paste(0, (0,0,128,32))
+            im.paste(top_region, (0, 0, 48, 32))
+            im.paste(mid_region, (48, 0, 96, 32))
+            im.paste(bot1_region, (96, 0, 120, 8))
+            im.paste(bot2_region, (96, 8, 120, 16))
             
             with open(f"{curpath}/parallax/parallax_{i}.chr", "wb") as fout:
                 outdata = b''.join(pilbmp2chr(im))

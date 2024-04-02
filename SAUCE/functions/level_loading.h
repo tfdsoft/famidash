@@ -29,6 +29,20 @@ void load_ground(unsigned char id){
     vram_unrle(ground[id]);
 }
 
+void increase_parallax_scroll_column() {
+	// The parallax is a 6 x 9 tile background, and when it repeats
+	// horizontally, we offset the start of the next column by 3
+	// to stagger the repeat
+	parallax_scroll_column++;
+	if (parallax_scroll_column >= 6) {
+		parallax_scroll_column = 0;
+		parallax_scroll_column_start += 3;
+		if (parallax_scroll_column_start >= 9) {
+			parallax_scroll_column_start = 0;
+		}
+	}
+}
+
 void unrle_first_screen(void){ // run-length decode the first screen of a level
 	unsigned char i;
 	init_sprites();
@@ -40,9 +54,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
     for (i = 0; i < 16; i++) {
         draw_screen_R_frame0();
         flush_vram_update2();
-		
-		// scroll_x += 8;
-    	// set_scroll_x(scroll_x);
+
         draw_screen_R_frame1();
         flush_vram_update2();
 		

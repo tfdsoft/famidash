@@ -10,7 +10,7 @@
 .import _DATA_PTR
 .import pusha, pushax
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
-
+.import _increase_parallax_scroll_column
 .import FIRST_MUSIC_BANK
 .macpack longbranch
 
@@ -28,7 +28,7 @@
     rld_run:        .res 1
 
 .segment "BSS"
-    columnBuffer:   .res 27; column buffer, to be pushed to the collision map
+    columnBuffer:   .res 27 * 2 ; column buffer, to be pushed to the collision map
 
     current_song_bank: .res 1
     scroll_count:   .res 1
@@ -355,6 +355,10 @@ AttrEnd     = 0+AttrSizeHi+AttrSizeLo
 
 .proc _draw_screen_R
 
+CurrentRow = tmp1
+LoopCount = tmp2
+ParallaxColumnStart = tmp4
+
 .export _draw_screen_R_frame0 := frame0
 .export _draw_screen_R_frame1 := frame1
 .export _draw_screen_R_frame2 := frame2
@@ -399,8 +403,11 @@ frame0:
         JSR _unrle_next_column
 
 frame1:
-
         
+        jsr _increase_parallax_scroll_column
+
+        LDA parallax_scroll_column_start
+        STA ParallaxColumnStart
 
         ; Writing to nesdoug's VRAM buffer starts here
         LDX VRAM_INDEX
@@ -438,8 +445,8 @@ frame1:
         EOR #$FF            ;   Force update pointer
         STA META_VAR        ;__
         ; Load max
-        LDA #15
-        STA tmp2
+        LDA #15 - 1
+        STA LoopCount
         ; Load Y value
         LDA scroll_count
         AND #1
@@ -449,8 +456,8 @@ frame1:
         JSR tilewriteloop
 
         ; Load new max
-        LDA #27
-        STA tmp2
+        LDA #27 - 1
+        STA LoopCount
         ; Add offset to X
         TXA
         CLC
@@ -504,8 +511,8 @@ frame1:
             INC ptr1+1
         :
 
-        LDA #8
-        STA tmp1
+        LDA #8 - 1
+        STA LoopCount
 
         LDX #$00
         
@@ -522,8 +529,8 @@ frame1:
         STA columnBuffer+7
 
         ; Update new maximum
-        LDA #8+6
-        STA tmp1
+        LDA #8+6 - 1
+        STA LoopCount
 
         ; Update pointer (collisionMap0 is 240 bytes, not 256)
         LDA ptr1
@@ -632,8 +639,8 @@ frame1:
             :
 
             INX
-            CPX tmp1
-            BNE attributeLoop1
+            DEC LoopCount
+            BPL attributeLoop1
         RTS
 
     getAttr:
@@ -653,10 +660,10 @@ frame1:
 
     tilewriteloop:
             ;Fetch metatile pointer
-            STY tmp1
-
+            
+            sty CurrentRow
             LDA columnBuffer,Y  ;
-            ; BEQ parallax_bg_write ; If the "blank space" metatile is being used, load from the parallax instead
+            BEQ parallax_bg_write ; If the "blank space" metatile is being used, load from the parallax instead
             CMP META_VAR        ;   No need to get metatile pointer for the same metatile
             BEQ :+              ;__
                 STA META_VAR    ;   Get new metatile pointer
@@ -678,38 +685,86 @@ frame1:
             LDA (META_PTR2),Y   ;   Tile 3
             STA VRAM_BUF+TileOff0+4,X
 
+            ; Skip over the next two parallax BG tiles
+            lda ParallaxColumnStart
+            clc
+            adc #2
+            cmp #9
+            bcc :+
+                sec
+                sbc #9
+            :
+            sta ParallaxColumnStart
 
             ;Buffer the attributes in column buffer
     NextMetatile:
             INX
             INX
 
-            LDY tmp1
-            INY
-            CPY tmp2
-            BNE tilewriteloop
+            ldy CurrentRow
+            iny
+            DEC LoopCount
+            BPL tilewriteloop
         RTS
     parallax_bg_write:
         ; based on the current scroll value.
-        ; y is the current row, x is the current VRAM_BUF offset
+        ; y is the metatile current row, x is the current VRAM_BUF offset
+        ; tmp4 is the parallax_scroll_column_start value
+        ; which is where in the parallax buffer we are rendering from
 
-        ; if we are drawing the first 
-        cpy #0
+        ldy ParallaxColumnStart
+        cpy #9 - 1
         bne :+
-
+            ; annoyingly when we are drawing the last row we have to do it differently
+            jsr render_last_tile
+            bne write_tile1
         :
-        lda parallax_scroll_column
-        sta tmp4
-
-        ; sty 
+        lda ParallaxBuffer, y
+        clc
+        adc parallax_scroll_column
+    write_tile1:
+        sta VRAM_BUF+TileOff0+3,X
+        iny 
+        cpy #9
+        bcc :+
+            ldy #0
+        :
+        ; Render the second tile
+        cpy #9 - 1
+        bne :+
+            jsr render_last_tile
+            bne write_tile2
+        :
+        lda ParallaxBuffer, y
+        clc
+        adc parallax_scroll_column
+    write_tile2:
+        sta VRAM_BUF+TileOff0+4,X
+        iny 
+        cpy #9
+        bcc :+
+            ldy #0
+        :
+        sty ParallaxColumnStart
 
         jmp NextMetatile
 
-
 ; Column striped parallax data definition
 ; add to the tile for the next row, up to 6.
-@ParallaxBuffer:
-.byte $00, $10, $20, $06, $16, $16, $16, $16, $26
+ParallaxBuffer:
+; The last tile is rendered differently
+.byte $80, $90, $a0, $b0, $86, $96, $a6, $b6
+
+render_last_tile:
+    lda parallax_scroll_column
+    cmp #3
+    bcc :+
+        clc
+        adc #$10 - 3
+    :
+    clc
+    adc #$8c
+    rts
 
 .endproc
 

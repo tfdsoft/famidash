@@ -12,6 +12,7 @@ void state_game(){
     load_ground(0);
 
 	mmc3_set_8kb_chr(0);
+    mmc3_set_1kb_chr_bank_2(16);
     
 	reset_level();
 
@@ -19,6 +20,7 @@ void state_game(){
     while (1){
         
         ppu_wait_nmi();
+        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + 16);
         music_update();
         
 
