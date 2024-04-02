@@ -234,6 +234,13 @@ const unsigned char Yellow_Jump_Orb[]={
 	0x80
 };
 
+const unsigned char Blue_Jump_Orb[]={
+
+//	  0,  0,0x45,6,
+//	  8,  0,0x45,6|OAM_FLIP_H,
+	  4,  0,0x47,4,
+	0x80
+};
 const unsigned char Pink_Jump_Orb[]={
 
 //	  0,  0,0x45,6,
@@ -282,7 +289,7 @@ const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Ball, // ball
 	nometa, // ufo
 	nometa, // wave
-	nometa, // bobot
+	Blue_Jump_Orb, // bobot
 	Pink_Jump_Orb, 
 	COIN_SPRITE, // swing
 	Portal_Gravity_Down,

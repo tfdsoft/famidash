@@ -84,6 +84,7 @@ char sprite_height_lookup(unsigned char type){
     }
 
     // portals
+    if (type == 0x05) return 0x0f; // blue orb
     if (type == 0x06) return 0x0f; // pink jump orb
     if (type == 0x07) return 0x17; // coin
 
@@ -118,6 +119,16 @@ void sprite_collide_lookup(){
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make coin disappear here
     }
+
+    else if (tmp4 == 5)  {
+	    if (cube_data == 2) {			//blue orb
+		cube_data = 0x00;
+		gravity ^= 0x01;
+        if (!gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
+        else player.vel_y = PAD_HEIGHT_YELLOW;
+	    }
+    } 
+
     else if (tmp4 == 6) {
 	if (cube_data == 2) {		//nest it so that the next else-if for tmp4 doesn't trigger
 		cube_data = 0x00;
