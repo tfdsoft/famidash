@@ -37,7 +37,7 @@ const unsigned char * const level_list[] = {
     jumper_,
     timemachine_,
     cycles_,
-    
+    xstep_,
     };
 
 const unsigned char * const sprite_list[] = {
@@ -50,6 +50,7 @@ const unsigned char * const sprite_list[] = {
     jumper_SP,
     timemachine_SP,
     cycles_SP,
+    xstep_SP,
 };
 
 const unsigned char bank_list[] = {
@@ -62,6 +63,7 @@ const unsigned char bank_list[] = {
     4,
     9,
     6,
+    0x0A,
 };
 
 

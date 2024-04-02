@@ -9,7 +9,7 @@
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
 .import pusha, pushax
-.import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text
+.import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 
 .import FIRST_MUSIC_BANK
 .macpack longbranch
@@ -780,12 +780,12 @@ _refreshmenu:
 	RTS
 
 @string_ptrs_lo:
-    .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text
+    .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext
 @string_ptrs_hi:
-    .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text
+    .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext
 @padding:
     ; Calculation: 15 - length of string
-    .byte 1, 2, 5, 8, 0, 4, 9, 3, 9
+    .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10
 
 ;void __fastcall__ movement(void);
 _movement:

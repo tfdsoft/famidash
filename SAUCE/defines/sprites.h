@@ -236,8 +236,6 @@ const unsigned char Yellow_Jump_Orb[]={
 
 const unsigned char Blue_Jump_Orb[]={
 
-//	  0,  0,0x45,6,
-//	  8,  0,0x45,6|OAM_FLIP_H,
 	  4,  0,0x47,4,
 	0x80
 };
@@ -251,29 +249,27 @@ const unsigned char Pink_Jump_Orb[]={
 
 const unsigned char Yellow_Jump_Pad[]={
 
-	  0,- 8,0x49,1,
-	  8,- 8,0x49,1|OAM_FLIP_H,
-//	  0,- 8,0x57,6,
-//	  8,- 8,0x57,6|OAM_FLIP_H,
+	  0,0,0x49,1,
+	  8,0,0x49,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U[]={
 
-	  0,- 0,0x49,1|OAM_FLIP_V,
-	  8,- 0,0x49,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-8,0x49,1|OAM_FLIP_V,
+	  8,-8,0x49,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Gravity_Pad[]={
 
-	  0,- 0,0x49,4,
-	  8,- 0,0x49,4|OAM_FLIP_H,
+	  0,0,0x49,4,
+	  8,0,0x49,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad_U[]={
 
-	  0,- 0,0x49,4|OAM_FLIP_V,
-	  8,- 0,0x49,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-8,0x49,4|OAM_FLIP_V,
+	  8,-8,0x49,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 

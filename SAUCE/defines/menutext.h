@@ -18,3 +18,4 @@ const unsigned char level6text[]="CANT LET GO";
 const unsigned char level7text[]="JUMPER";
 const unsigned char level8text[]="TIME MACHINE";
 const unsigned char level9text[]="CYCLES";
+const unsigned char levelAtext[]="XSTEP";

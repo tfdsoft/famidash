@@ -65,7 +65,7 @@ void state_menu(){
 		}
 		if (pad_new & (PAD_SELECT | PAD_RIGHT)){
 			++level;
-			if (level > 8){
+			if (level > 9){
 				level = 0x00;
 			}
 			refreshmenu();
@@ -74,7 +74,7 @@ void state_menu(){
 		if (pad_new & PAD_LEFT){
 			--level;
 			if (level == 0xFF){
-				level = 0x08;
+				level = 0x09;
 			}
 			
 			//break;
