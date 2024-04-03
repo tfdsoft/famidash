@@ -51,12 +51,12 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	init_sprites();
 
 	mmc3_set_prg_bank_1(level_data_bank);
-    set_data_pointer((char *)active_level[0]);
+	// To get the draw screen R to start in the left nametable, scroll must be negative.
 	scroll_x = -1;
     for (i = 0; i < 16; i++) {
         draw_screen_R_frame0();
         flush_vram_update2();
-
+		
         draw_screen_R_frame1();
         flush_vram_update2();
 		
