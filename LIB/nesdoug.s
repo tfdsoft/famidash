@@ -254,7 +254,7 @@ _pal_fade_to:
 	cmp TEMP+9
 	bne @fade_loop
 	
-@done:	
+dddone:	
 	jsr _ppu_wait_nmi ;do 1 final, make sure the last change goes
 	rts
 	
