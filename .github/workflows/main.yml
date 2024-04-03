@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - uses: ./.github/actions/cache_cc65
-    - name: Set Path
+      - name: Set Path
         run: |
           echo "${{ github.workspace }}/opt/cc65/bin" >> $GITHUB_PATH
       - name: Build the game
