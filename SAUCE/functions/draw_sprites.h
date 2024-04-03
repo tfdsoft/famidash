@@ -2,7 +2,8 @@ void reset_level(void);
 
 void draw_sprites(void){
 
-
+				padframe++;
+				if (padframe > 19) {padframe = 0;}
 	// draw player
     temp_x = high_byte(player.x);
 	if(temp_x > 0xfc) temp_x = 1;
@@ -31,7 +32,7 @@ void draw_sprites(void){
 			cube_rotate ^= 0x0100;
 			oam_meta_spr(temp_x, high_byte(player.y)-1, BALL[ballframe]);
 			ballframe++;
-			if (ballframe > 5) { ballframe = 0; }
+			if (ballframe > 7) { ballframe = 0; }
 			break;
     }
 	
@@ -71,8 +72,6 @@ void draw_sprites(void){
 			else {
 				oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x0f]);
 			}
-				padframe++;
-				if (padframe > 7) {padframe = 0;}
 		}
 	}
 }

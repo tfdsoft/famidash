@@ -143,7 +143,7 @@ const unsigned char Ball_1[]={
 	0x80
 };
 
-const unsigned char * const BALL[]={Ball_0, Ball_0, Ball_0, Ball_1, Ball_1, Ball_1};
+const unsigned char * const BALL[]={Ball_0, Ball_0, Ball_0, Ball_0, Ball_1, Ball_1, Ball_1, Ball_1};
 // ================================================================
 
 const unsigned char Portal_Gamemode_Cube[]={
@@ -272,7 +272,7 @@ const unsigned char Yellow_Jump_Pad4[]={
 	0x80
 };
 
-const unsigned char * const YELLOW_PAD_FRAMES[]={Yellow_Jump_Pad, Yellow_Jump_Pad, Yellow_Jump_Pad2, Yellow_Jump_Pad2, Yellow_Jump_Pad3, Yellow_Jump_Pad3, Yellow_Jump_Pad4, Yellow_Jump_Pad4};
+const unsigned char * const YELLOW_PAD_FRAMES[]={Yellow_Jump_Pad, Yellow_Jump_Pad, Yellow_Jump_Pad,Yellow_Jump_Pad,Yellow_Jump_Pad,Yellow_Jump_Pad2, Yellow_Jump_Pad2, Yellow_Jump_Pad2,Yellow_Jump_Pad2,Yellow_Jump_Pad2,Yellow_Jump_Pad3, Yellow_Jump_Pad3, Yellow_Jump_Pad3,Yellow_Jump_Pad3,Yellow_Jump_Pad3,Yellow_Jump_Pad4, Yellow_Jump_Pad4,Yellow_Jump_Pad4,Yellow_Jump_Pad4,Yellow_Jump_Pad4};
 
 const unsigned char Yellow_Jump_Pad_U[]={
 
