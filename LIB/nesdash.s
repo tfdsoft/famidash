@@ -522,6 +522,7 @@ ParallaxExtent = tmp3
         RTS
 
     attributes:
+NametableAddrHi = tmp1
         ; Attribute write architecture:
 
         ; | Ad|dr |dat|
@@ -554,13 +555,7 @@ ParallaxExtent = tmp3
         LDA #8 - 1
         STA LoopCount
 
-        LDX #$00
-        
-        ; Force metatile update
-        ; LDA (ptr1,X)
-        ; EOR #$FF
-        ; STA META_VAR
-
+        ldx #0
         JSR attributeLoop1
 
         ; Last byte has no bottom tiles
@@ -583,7 +578,14 @@ ParallaxExtent = tmp3
 
         JSR attributeLoop1
 
-        ; Get address i
+        ; Get address hi byte (either left or right side)
+        lda _scroll_x + 1 ; high byte
+        and #%00000001
+        eor #%00000001
+        asl
+        asl
+        ora #$23
+        sta NametableAddrHi
         
         LDA ptr3
         LSR
@@ -597,7 +599,7 @@ ParallaxExtent = tmp3
             STA VRAM_BUF+AttrOff1+1,X
             TAY
             ; High byte
-            LDA #$23
+            lda NametableAddrHi
             STA VRAM_BUF+AttrOff0,X
             ORA #$08
             STA VRAM_BUF+AttrOff1,X
@@ -842,10 +844,10 @@ _refreshmenu:
 	STA VRAM_BUF+2, Y	;__
 
 	;! THE ADDRESS CORRESPONDING TO NTADR_A(2,25) IS
-	;! $24A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
+	;! $20A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
 	;! IT BECOMES $64A2. THIS IS HARDCODED, CHANGE THESE
 	;! LINES IF YOU WANT TO CHANGE THE POSITION OF IT
-	LDA #$64			;
+	LDA #$60			;
 	STA VRAM_BUF+3, Y	;   ~ vram_adr(NTADR_A(2,25));
 	LDA #$A2			;
 	STA VRAM_BUF+4, Y	;__
