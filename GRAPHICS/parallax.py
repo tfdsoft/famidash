@@ -101,9 +101,9 @@ def parallaxify():
         im = orig_img.copy()
         im = im.resize((128, 32))
         
-        with open(f"{curpath}/parallax/parallax_0.chr", "wb") as fout:
-            outdata = b''.join(pilbmp2chr(orig_img))
-            fout.write(outdata)
+        # outdata = b''.join(pilbmp2chr(orig_img))
+        outdata = b''
+        
         for i in range(0, 144):
             # shift the main image over by i pixels
             shifted = orig_img.crop((144 - i, 0, (144+48) - i, 72))
@@ -118,9 +118,10 @@ def parallaxify():
             im.paste(bot1_region, (96, 0, 120, 8))
             im.paste(bot2_region, (96, 8, 120, 16))
             
-            with open(f"{curpath}/parallax/parallax_{i}.chr", "wb") as fout:
-                outdata = b''.join(pilbmp2chr(im))
-                fout.write(outdata)
+            outdata += b''.join(pilbmp2chr(im))
+            
+        with open(f"{curpath}/parallax.chr", "wb") as fout:
+            fout.write(outdata)
 
 
 if __name__ == "__main__":

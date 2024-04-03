@@ -280,6 +280,4 @@ detectNTSC:
 .segment "CHR"
 	.incbin "GRAPHICS/famidash.chr"
 	.incbin "GRAPHICS/menus.chr"
-.repeat 144, I
-	.incbin .sprintf("GRAPHICS/parallax/parallax_%d.chr", I)
-.endrepeat
+	.incbin "GRAPHICS/parallax.chr" ; 144kb
