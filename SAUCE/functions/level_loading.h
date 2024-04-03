@@ -19,49 +19,49 @@ void __fastcall__ unrle_next_column(void);
 	Implemented in asm	
 */
 void __fastcall__ draw_screen_R(void);
+void __fastcall__ draw_screen_R_frame0(void);
+void __fastcall__ draw_screen_R_frame1(void);
+void __fastcall__ draw_screen_R_frame2(void);
 
 void load_ground(unsigned char id){
 	mmc3_set_prg_bank_1(0);
+	// render to both nametable c and d
     vram_adr(NAMETABLE_C);
+    vram_unrle(ground[id]);
+    vram_adr(NAMETABLE_D);
     vram_unrle(ground[id]);
 }
 
-void unrle_first_screen(void){ // run-length decode the first screen of a level
+void increase_parallax_scroll_column() {
+	// The parallax is a 6 x 9 tile background, and when it repeats
+	// horizontally, we offset the start of the next column by 3
+	// to stagger the repeat
+	parallax_scroll_column++;
+	if (parallax_scroll_column >= 6) {
+		parallax_scroll_column = 0;
+		parallax_scroll_column_start += 3;
+		if (parallax_scroll_column_start >= 9) {
+			parallax_scroll_column_start = 0;
+		}
+	}
+}
 
+void unrle_first_screen(void){ // run-length decode the first screen of a level
+	unsigned char i;
 	init_sprites();
 
 	mmc3_set_prg_bank_1(level_data_bank);
-    tmp1 = 0x10;
-    while (tmp1 != 0){
-        unrle_next_column();
-        --tmp1;
-    }
-
     set_data_pointer((char *)active_level[0]);
-    set_mt_pointer((char *)metatiles1);
-	#define _y tmp1
-	#define _x tmp2
-    for(_y=0; ;_y+=0x20){
-		for(_x=0; ;_x+=0x20){
-	    	address = get_ppu_addr(0, _x, _y);
-	    	index = (_y & 0xf0) + (_x >> 4);
-			buffer_4_mt(address, index); // ppu_address, index to the data
-	    	flush_vram_update2();
-	    	if (_x == 0xe0) break;
-	    }
-	    if (_y == 0xe0) break;
+	scroll_x = -1;
+    for (i = 0; i < 16; i++) {
+        draw_screen_R_frame0();
+        flush_vram_update2();
+
+        draw_screen_R_frame1();
+        flush_vram_update2();
+		
+        draw_screen_R_frame2();
+        flush_vram_update2();
     }
-    set_data_pointer((char *)active_level[1]);
-    for(_y=0; ;_y+=0x20){
-		for(_x=0; ;_x+=0x20){
-	    	address = get_ppu_addr(2, _x, _y);
-	    	index = (_y & 0xf0) + (_x >> 4);
-			buffer_4_mt(address, index); // ppu_address, index to the data
-	    	flush_vram_update2();
-	    	if (_x == 0xe0) break;
-	    }
-	    if (_y == 0xa0) break;
-    }
-	#undef _y
-	#undef _x
+	scroll_x = 0;
 }

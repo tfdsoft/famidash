@@ -10,8 +10,11 @@
 .import _DATA_PTR
 .import pusha, pushax
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
-
+.import _increase_parallax_scroll_column
 .import FIRST_MUSIC_BANK
+
+.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
+
 .macpack longbranch
 
 .export _oam_meta_spr_vflipped
@@ -28,10 +31,15 @@
     rld_run:        .res 1
 
 .segment "BSS"
-    columnBuffer:   .res 27; column buffer, to be pushed to the collision map
+    columnBuffer:   .res 15 * 2 ; column buffer, to be pushed to the collision map
 
     current_song_bank: .res 1
     scroll_count:   .res 1
+
+.export _parallax_scroll_column := parallax_scroll_column
+.export _parallax_scroll_column_start := parallax_scroll_column_start
+    parallax_scroll_column: .res 1
+    parallax_scroll_column_start: .res 1
 
 .segment "CODE_2"
 
@@ -348,8 +356,14 @@ AttrOff0    = 0
 AttrOff1    = 0+AttrSizeHi
 AttrEnd     = 0+AttrSizeHi+AttrSizeLo
 
-_draw_screen_R:
+.proc _draw_screen_R
 
+CurrentRow = tmp1
+LoopCount = tmp2
+
+.export _draw_screen_R_frame0 := frame0
+.export _draw_screen_R_frame1 := frame1
+.export _draw_screen_R_frame2 := frame2
     ; Write architecture:
 
     ; Frame 0:
@@ -362,8 +376,6 @@ _draw_screen_R:
     ;   Attributes 
     
     LDA _scroll_x           ;__ Highbyte of scroll_x
-    CLC
-    ADC #$FC
     LSR                     ;
     LSR                     ;   >> 4
     LSR                     ;
@@ -371,28 +383,26 @@ _draw_screen_R:
     STA tmp4
 
     LDX scroll_count
-    BNE @framenot0
+    BNE frame2
 
     LDA tmp4
     CMP _rld_column         ;   If X == rld column, decompress shit
-    BEQ @frame0
+    BEQ frame0
     RTS
     
-    @framenot0:
+frame2:
         CPX #$01
-        BEQ @frame1
-        JMP @attributes
+        BEQ frame1
+        JMP attributes
 
-    @frame0:
+frame0:
         ; Switch banks
         LDA _level_data_bank
         JSR mmc3_set_prg_bank_1
 
         JSR _unrle_next_column
 
-    @frame1:
-
-        
+frame1:
 
         ; Writing to nesdoug's VRAM buffer starts here
         LDX VRAM_INDEX
@@ -411,7 +421,12 @@ _draw_screen_R:
         STA VRAM_BUF+TileOff0+1,X
         STA VRAM_BUF+TileOff1+1,X
 
-        LDA #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
+        lda _scroll_x + 1 ; high byte
+        and #%00000001
+        eor #%00000001
+        asl
+        asl
+        ora #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
         STA VRAM_BUF+TileOff0,X
         ORA #$08        ; 2nd nametable
         STA VRAM_BUF+TileOff1,X
@@ -426,30 +441,70 @@ _draw_screen_R:
 
         ; The sequence itself:
         
-        LDA columnBuffer    ;
-        EOR #$FF            ;   Force update pointer
-        STA META_VAR        ;__
-        ; Load max
-        LDA #15
-        STA tmp2
         ; Load Y value
+        LDY #$00
+        sty CurrentRow
+        ; Load max value
+        LDA #15 - 1
+        STA LoopCount
+        ; Check if doing a left or right hand write
         LDA scroll_count
         AND #1
-        STA tmp3
-        ; Call for upper tiles
-        LDY #$00
-        JSR @tilewriteloop
-
+        beq @LeftWrite
+            ; Right side write
+            ; Call for upper tiles
+            JSR right_tilewriteloop
+            jmp @WriteBottomHalf
+@LeftWrite:
+            JSR left_tilewriteloop
+@WriteBottomHalf:
         ; Load new max
-        LDA #27
-        STA tmp2
+        LDA #12 - 1
+        STA LoopCount
         ; Add offset to X
         TXA
         CLC
         ADC #(TileSizeHi-(15*2))
         TAX
-        ; Call for lower tiles
-        JSR @tilewriteloop
+        
+        LDA scroll_count
+        AND #1
+        beq @LeftWrite2
+            JSR right_tilewriteloop
+            jmp @RenderParallax
+@LeftWrite2:
+            ; Call for lower tiles
+            JSR left_tilewriteloop
+@RenderParallax:
+
+ParallaxBufferStart = tmp1
+ParallaxExtent = tmp3
+        ; Loop through the vram writes and find any $00 tiles and replace them with parallax
+        ; Calculate the end of the parallax column offset
+        ldy parallax_scroll_column
+        lda ParallaxBufferOffset, y
+        sta ParallaxBufferStart
+        clc
+        adc #9
+        sta ParallaxExtent
+
+        lda ParallaxBufferStart
+        clc
+        adc parallax_scroll_column_start
+        tay
+
+        ldx #TileOff0 + TileSizeHi - 1 - (2+1)
+        stx LoopCount
+        ldx #TileOff0
+        jsr RenderParallaxLoop
+
+        ldx #TileSizeLo - 1 - (2+1)
+        stx LoopCount
+        ldx #TileOff1
+        jsr RenderParallaxLoop
+        
+        ; move to the next scroll column for next frame
+        jsr _increase_parallax_scroll_column
 
         ; Demarkate end of write
         LDX VRAM_INDEX
@@ -466,7 +521,8 @@ _draw_screen_R:
 
         RTS
 
-    @attributes:
+    attributes:
+NametableAddrHi = tmp1
         ; Attribute write architecture:
 
         ; | Ad|dr |dat|
@@ -496,17 +552,11 @@ _draw_screen_R:
             INC ptr1+1
         :
 
-        LDA #8
-        STA tmp1
+        LDA #8 - 1
+        STA LoopCount
 
-        LDX #$00
-        
-        ; Force metatile update
-        LDA (ptr1,X)
-        EOR #$FF
-        STA META_VAR
-
-        JSR @attributeLoop1
+        ldx #0
+        JSR attributeLoop1
 
         ; Last byte has no bottom tiles
         LDA columnBuffer+7
@@ -514,8 +564,8 @@ _draw_screen_R:
         STA columnBuffer+7
 
         ; Update new maximum
-        LDA #8+6
-        STA tmp1
+        LDA #8+6 - 1
+        STA LoopCount
 
         ; Update pointer (collisionMap0 is 240 bytes, not 256)
         LDA ptr1
@@ -526,9 +576,16 @@ _draw_screen_R:
             DEC ptr1+1
         :
 
-        JSR @attributeLoop1
+        JSR attributeLoop1
 
-        ; Get address i
+        ; Get address hi byte (either left or right side)
+        lda _scroll_x + 1 ; high byte
+        and #%00000001
+        eor #%00000001
+        asl
+        asl
+        ora #$23
+        sta NametableAddrHi
         
         LDA ptr3
         LSR
@@ -536,13 +593,13 @@ _draw_screen_R:
         
         ; Store address
         LDX VRAM_INDEX
-        @addressLoop:
+        addressLoop:
             ; Low byte
             STA VRAM_BUF+AttrOff0+1,X
             STA VRAM_BUF+AttrOff1+1,X
             TAY
             ; High byte
-            LDA #$23
+            lda NametableAddrHi
             STA VRAM_BUF+AttrOff0,X
             ORA #$08
             STA VRAM_BUF+AttrOff1,X
@@ -554,7 +611,7 @@ _draw_screen_R:
 
             CLC
             ADC #$08
-            BCC @addressLoop
+            BCC addressLoop
         
         LDY #14
 
@@ -563,7 +620,7 @@ _draw_screen_R:
         STA VRAM_INDEX  ; State that the block is now occupied
         TAX
 
-        @dataLoop:
+        dataLoop:
             LDA columnBuffer-1,Y
             STA VRAM_BUF-3+2,X
 
@@ -571,7 +628,7 @@ _draw_screen_R:
             DEX
             DEX
             DEY
-            BNE @dataLoop
+            BNE dataLoop
         
         ; Finish off the routine
         ; X has VRAM_INDEX, mark this block as taken
@@ -582,20 +639,26 @@ _draw_screen_R:
         STA scroll_count
         RTS
 
-    @attributeLoop1:
+    attributeLoop1:
             ; Read upper left metatile
             LDY #$00
-            JSR @getAttr
+            LDA (ptr1),Y
+            tay
+            lda metatiles_attr,y
             STA ptr2
 
             ; Read lower left metatile (higher chance of being the same, due to RLE)
             LDY #$10
-            JSR @getAttr
+            LDA (ptr1),Y
+            tay
+            lda metatiles_attr,y
             STA ptr2+1
 
             ; Read upper right metatile
             LDY #$01
-            JSR @getAttr
+            LDA (ptr1),Y
+            tay
+            lda metatiles_attr,y
             ASL
             ASL
             ORA ptr2
@@ -603,7 +666,9 @@ _draw_screen_R:
 
             ; Read lower right metatile
             LDY #$11
-            JSR @getAttr
+            LDA (ptr1),Y
+            tay
+            lda metatiles_attr,y
             ASL
             ASL
             ORA ptr2+1
@@ -624,63 +689,130 @@ _draw_screen_R:
             :
 
             INX
-            CPX tmp1
-            BNE @attributeLoop1
+            DEC LoopCount
+            BPL attributeLoop1
         RTS
 
-    @getAttr:
-        ; Read metatile
-        LDA (ptr1),Y
-        CMP META_VAR
-        BEQ :+
-            STA META_VAR
-            JSR MT_MULT5
-        :
-        LDY #$04
-
-        ; Read its attributes
-        LDA (META_PTR2),Y
-        RTS
-
-
-    @tilewriteloop:
-            ;Fetch metatile pointer
-            STY tmp1
-
-            LDA columnBuffer,Y  ;
-            CMP META_VAR        ;   No need to get metatile pointer for the same metatile
-            BEQ :+              ;__
-                STA META_VAR    ;   Get new metatile pointer
-                JSR MT_MULT5    ;__
-            :
-            LDY tmp3
-
-            ;Fetch data, write to buffer
-
-            ;Tile:
-            ; 1 | 2 
-            ;---+---
-            ; 3 | 4 
-
-            LDA (META_PTR2),Y   ;   Tile 1
+    right_tilewriteloop:
+            ldy CurrentRow
+            LDA columnBuffer,Y
+            tay
+            ; y is the metatile id
+            lda metatiles_top_right, y
             STA VRAM_BUF+TileOff0+3,X
-            INY                 ;__
-            INY                 ;__ Tile 2
-            LDA (META_PTR2),Y   ;   Tile 3
+            lda metatiles_bot_right, y
             STA VRAM_BUF+TileOff0+4,X
-
-
-            ;Buffer the attributes in column buffer
-
+            
             INX
             INX
+            inc CurrentRow
+            DEC LoopCount
+            BPL right_tilewriteloop
+        rts
+    left_tilewriteloop:
+            ldy CurrentRow
+            LDA columnBuffer,Y
+            tay
+            ; y is the metatile id
+            lda metatiles_top_left, y
+            STA VRAM_BUF+TileOff0+3,X
+            lda metatiles_bot_left, y
+            STA VRAM_BUF+TileOff0+4,X
+            
+            INX
+            INX
+            inc CurrentRow
+            DEC LoopCount
+            BPL left_tilewriteloop
+        rts
+        
+    RenderParallaxLoop:
+            lda VRAM_BUF+TileOff0+3,x
+            bne :+
+                ; empty tile, so replace it with the parallax for this
+                lda ParallaxBuffer, y
+                sta VRAM_BUF+TileOff0+3,x
+            :
+            iny
+            cpy ParallaxExtent
+            bne :+
+                ldy ParallaxBufferStart
+            :
+            inx
+            dec LoopCount
+            bpl RenderParallaxLoop
+        rts
+    ; Before returning, loop again through the vram buffer and write the parallax
+    ; parallax_bg_write:
+    ;     ldx #27 - 1
 
-            LDY tmp1
-            INY
-            CPY tmp2
-            BNE @tilewriteloop
-        RTS
+    ;     ; based on the current scroll value.
+    ;     ; y is the metatile current row, x is the current VRAM_BUF offset
+    ;     ; tmp4 is the parallax_scroll_column_start value
+    ;     ; which is where in the parallax buffer we are rendering from
 
+    ;     ldy ParallaxColumnStart
+    ;     cpy #9 - 1
+    ;     bne :+
+    ;         ; annoyingly when we are drawing the last row we have to do it differently
+    ;         jsr render_last_tile
+    ;         bne write_tile1
+    ;     :
+    ;     lda ParallaxBuffer, y
+    ;     clc
+    ;     adc parallax_scroll_column
+    ; write_tile1:
+    ;     sta VRAM_BUF+TileOff0+3,X
+    ;     iny 
+    ;     cpy #9
+    ;     bcc :+
+    ;         ldy #0
+    ;     :
+    ;     ; Render the second tile
+    ;     cpy #9 - 1
+    ;     bne :+
+    ;         jsr render_last_tile
+    ;         bne write_tile2
+    ;     :
+    ;     lda ParallaxBuffer, y
+    ;     clc
+    ;     adc parallax_scroll_column
+    ; write_tile2:
+    ;     sta VRAM_BUF+TileOff0+4,X
+    ;     iny 
+    ;     cpy #9
+    ;     bcc :+
+    ;         ldy #0
+    ;     :
+    ;     sty ParallaxColumnStart
+
+    ;     jmp NextMetatile
+    ;     RTS
+
+; Column striped parallax data definition
+; add to the tile for the next row, up to 6.
+ParallaxBuffer:
+ParallaxBufferOffset:
+.byte ParallaxBufferCol0 - ParallaxBuffer
+.byte ParallaxBufferCol1 - ParallaxBuffer
+.byte ParallaxBufferCol2 - ParallaxBuffer
+.byte ParallaxBufferCol3 - ParallaxBuffer
+.byte ParallaxBufferCol4 - ParallaxBuffer
+.byte ParallaxBufferCol5 - ParallaxBuffer
+ParallaxBufferCol0:
+.byte $80, $90, $a0, $b0, $86, $96, $a6, $b6, $8c
+ParallaxBufferCol1:
+.byte $81, $91, $a1, $b1, $87, $97, $a7, $b7, $8d
+ParallaxBufferCol2:
+.byte $82, $92, $a2, $b2, $88, $98, $a8, $b8, $8e
+ParallaxBufferCol3:
+.byte $83, $93, $a3, $b3, $89, $99, $a9, $b9, $9c
+ParallaxBufferCol4:
+.byte $84, $94, $a4, $b4, $8a, $9a, $aa, $ba, $9d
+ParallaxBufferCol5:
+.byte $85, $95, $a5, $b5, $8b, $9b, $ab, $bb, $9e
+
+.endproc
 
 _refreshmenu:
 	; The C code being "ported":
@@ -712,10 +844,10 @@ _refreshmenu:
 	STA VRAM_BUF+2, Y	;__
 
 	;! THE ADDRESS CORRESPONDING TO NTADR_A(2,25) IS
-	;! $24A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
+	;! $20A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
 	;! IT BECOMES $64A2. THIS IS HARDCODED, CHANGE THESE
 	;! LINES IF YOU WANT TO CHANGE THE POSITION OF IT
-	LDA #$64			;
+	LDA #$60			;
 	STA VRAM_BUF+3, Y	;   ~ vram_adr(NTADR_A(2,25));
 	LDA #$A2			;
 	STA VRAM_BUF+4, Y	;__

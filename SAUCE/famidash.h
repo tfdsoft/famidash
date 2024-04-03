@@ -36,7 +36,6 @@ signed short cube_rotate;
 unsigned char coins;
 
 
-unsigned char coordinates;
 unsigned char collision;
 unsigned char collision_L;
 unsigned char collision_R;
@@ -86,6 +85,7 @@ unsigned char level_data_bank;
 
 unsigned char gameState;
 
+unsigned char parallax_scroll_x;
 unsigned long int scroll_x; // gotta love massive levels amirite fellas
 unsigned short scroll_y;
 unsigned char song;

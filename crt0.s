@@ -247,6 +247,7 @@ detectNTSC:
 	.include "LIB/neslib.s"
 	.include "LIB/nesdoug.s"
 	.include "LIB/nesdash.s"
+	.include "METATILES/metatiles.s"
 
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music.dmc"
@@ -276,7 +277,7 @@ detectNTSC:
    	.word irq	;$fffe irq / brk
 
 
-.segment "CHR_BANK_00"
+.segment "CHR"
 	.incbin "GRAPHICS/famidash.chr"
-.segment "CHR_BANK_01"
 	.incbin "GRAPHICS/menus.chr"
+	.incbin "GRAPHICS/parallax.chr" ; 144kb

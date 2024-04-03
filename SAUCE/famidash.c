@@ -30,7 +30,7 @@
 void main(){
     ppu_off();
 
-    ppu_mask(0x00);
+    ppu_mask(0x00 | (1 << 1) | (1 << 2));
 
     // banking for CHR to allocate dierctly
     /*
@@ -42,6 +42,7 @@ void main(){
     mmc3_set_1kb_chr_bank_3(7);
     */
     
+	mmc3_set_8kb_chr(8);
 
     pal_bg((char *)paletteDefault);
     pal_spr((char *)paletteDefaultSP);

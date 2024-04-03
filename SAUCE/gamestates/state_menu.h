@@ -38,13 +38,6 @@ void state_menu(){
 		vram_put(0xA0+menutext2[tmp1]);
 	}
 
-	
-	mmc3_set_2kb_chr_bank_0(8);
-    mmc3_set_2kb_chr_bank_1(10);
-    mmc3_set_1kb_chr_bank_0(12);
-    mmc3_set_1kb_chr_bank_1(13);
-    mmc3_set_1kb_chr_bank_2(14);
-    mmc3_set_1kb_chr_bank_3(15);
 
 	refreshmenu();
 	oam_clear();

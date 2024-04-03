@@ -57,12 +57,7 @@ void state_lvldone(){
     set_scroll_x(0);
     set_scroll_y(scroll_y);
 
-    mmc3_set_2kb_chr_bank_0(8);
-    mmc3_set_2kb_chr_bank_1(10);
-    mmc3_set_1kb_chr_bank_0(12);
-    mmc3_set_1kb_chr_bank_1(13);
-    mmc3_set_1kb_chr_bank_2(14);
-    mmc3_set_1kb_chr_bank_3(15);
+	mmc3_set_8kb_chr(8);
 
     
 
