@@ -8,8 +8,6 @@ extern const unsigned char metatiles_bot2[];
 extern const unsigned char metatiles_attr[];
 extern const unsigned char is_solid[];
 
-// METATILE_LIST(EMPTY, BOX_CORNER_BL);
-
 // const unsigned char metatiles1[]={
 	// 0, 0, 0, 0,  0,
 	// 26, 27, 42, 43,  1,
@@ -31,6 +29,7 @@ extern const unsigned char is_solid[];
 	// 32, 33, 48, 49,  0,
 	// 34, 35, 50, 51,  0,
 	// 0, 0, 52, 53,  0,
+
 	// 209, 211, 255, 255,  1,
 	// 209, 212, 255, 255,  1,
 	// 209, 213, 255, 255,  1,
@@ -38,6 +37,7 @@ extern const unsigned char is_solid[];
 	// 46, 47, 0, 0,  0,
 	// 0, 0, 54, 55,  0,
 	// 36, 37, 0, 0,  0,
+
 	// 12, 13, 28, 29,  0,
 	// 44, 45, 60, 61,  0,
 	// 14, 15, 30, 31,  0,
@@ -52,9 +52,11 @@ extern const unsigned char is_solid[];
 	// 66, 71, 82, 87,  0,
 	// 64, 69, 82, 87,  0,
 	// 68, 65, 86, 83,  0,
+
 	// 70, 67, 84, 81,  0,
 	// 66, 71, 80, 85,  0,
 	// 72, 71, 86, 87,  0,
+	
 	// 70, 73, 86, 87,  0,
 	// 70, 71, 86, 89,  0,
 	// 70, 71, 88, 87,  0,
