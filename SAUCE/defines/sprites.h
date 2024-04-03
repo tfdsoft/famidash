@@ -253,6 +253,27 @@ const unsigned char Yellow_Jump_Pad[]={
 	  8,-8,0x87,1|OAM_FLIP_H,
 	0x80
 };
+const unsigned char Yellow_Jump_Pad2[]={
+
+	  0,-8,0x87,1,
+	  8,-8,0x89,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Yellow_Jump_Pad3[]={
+
+	  0,-8,0x89,1,
+	  8,-8,0x8b,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Yellow_Jump_Pad4[]={
+
+	  0,-8,0x8b,1,
+	  8,-8,0x85,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char * const YELLOW_PAD_FRAMES[]={Yellow_Jump_Pad, Yellow_Jump_Pad, Yellow_Jump_Pad2, Yellow_Jump_Pad2, Yellow_Jump_Pad3, Yellow_Jump_Pad3, Yellow_Jump_Pad4, Yellow_Jump_Pad4};
+
 const unsigned char Yellow_Jump_Pad_U[]={
 
 	  0,-0,0x85,1|OAM_FLIP_V,

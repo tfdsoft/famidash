@@ -79,6 +79,7 @@ unsigned char count;
 unsigned char kandotemp;
 unsigned char kandotemp2;
 unsigned char coinframe;
+unsigned char padframe;
 unsigned char ballframe;
 unsigned char level;
 unsigned char level_data_bank;

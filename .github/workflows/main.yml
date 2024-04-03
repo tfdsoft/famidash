@@ -9,8 +9,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Get cc65
-        run: sudo apt install cc65
+      - uses: ./.github/actions/cache_cc65
       - name: Build the game
         run: make
       - name: Upload artifacts

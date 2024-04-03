@@ -65,9 +65,14 @@ void draw_sprites(void){
 				coinframe++;
 				if (coinframe > 19) {coinframe = 0;}
 			}
+			else if (tmp3 == 0x0A) {			//yellow pad
+				oam_meta_spr(temp_x, temp_y-1, YELLOW_PAD_FRAMES[padframe]);
+			}
 			else {
 				oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x0f]);
 			}
+				padframe++;
+				if (padframe > 7) {padframe = 0;}
 		}
 	}
 }
