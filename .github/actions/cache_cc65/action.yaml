@@ -13,13 +13,13 @@ runs:
   using: "composite"
   steps:
       # Cache CC65
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: cache_cc65
         with:
           path: ${{ inputs.cc65Path }}
           key: ${{ runner.os }}-cc65-${{ inputs.cc65Ref }}-${{ hashFiles('.github/actions/cache_cc65/*') }}
       # Checkout CC65
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         if: steps.cache_cc65.outputs.cache-hit != 'true'
         with:
           repository: cc65/cc65
