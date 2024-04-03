@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   build_rom:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     name: Compile ROM
     steps:
       - name: Checkout
