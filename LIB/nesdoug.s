@@ -226,35 +226,35 @@ _pal_fade_to:
 	sta TEMP+9 ;to
 	jsr popa
 	sta TEMP+10 ;from
-	jmp check_equal
+	jmp @check_equal
 	
-fade_loop:	
+@fade_loop:	
 	lda #1
 	jsr _delay ;wait 4 frames
 	
 	lda TEMP+10 ;from
 	cmp TEMP+9 ;to
-	bcs more
+	bcs @more
 	
-less:	
+@less:	
 	clc
 	adc #1
 	sta TEMP+10 ;from
 	jsr _pal_bright
-	jmp check_equal
+	jmp @check_equal
 	
-more:	
+@more:	
 	sec
 	sbc #1
 	sta TEMP+10 ;from
 	jsr _pal_bright
 	
-check_equal:
+@check_equal:
 	lda TEMP+10
 	cmp TEMP+9
-	bne fade_loop
+	bne @fade_loop
 	
-done:	
+@done:	
 	jsr _ppu_wait_nmi ;do 1 final, make sure the last change goes
 	rts
 	
