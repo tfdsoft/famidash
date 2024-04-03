@@ -36,6 +36,8 @@
     current_song_bank: .res 1
     scroll_count:   .res 1
 
+.export _scroll_count := scroll_count
+
 .export _parallax_scroll_column := parallax_scroll_column
 .export _parallax_scroll_column_start := parallax_scroll_column_start
     parallax_scroll_column: .res 1
