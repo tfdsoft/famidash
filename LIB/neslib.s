@@ -334,14 +334,10 @@ _oam_clear:
 
 	ldx #0
 	stx SPRID ; automatically sets sprid to zero
-	lda #$ff
-@1:
-	sta OAM_BUF,x
-	inx
-	inx
-	inx
-	inx
-	bne @1
+	dex
+.repeat 64, I
+	stx OAM_BUF + (I * 4)
+.endrepeat
 	rts
 	
 	

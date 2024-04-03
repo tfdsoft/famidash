@@ -714,6 +714,7 @@ _color_emphasis:
 	and #$1f
 	ora TEMP
 	sta <PPU_MASK_VAR
+	sta PPU_MASK
 	rts
 	
 	

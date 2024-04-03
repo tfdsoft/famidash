@@ -17,7 +17,7 @@ void state_game(){
 	reset_level();
 
 
-    while (1){
+    while (1) {
         
         ppu_wait_nmi();
         mmc3_set_1kb_chr_bank_2(parallax_scroll_x + 16);
@@ -30,17 +30,30 @@ void state_game(){
         //if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
         if (pad_new & PAD_B) gravity ^= 0x01;			//DEBUG GRAVITY
 
+        if (pad_new & PAD_SELECT) DEBUG_MODE = !DEBUG_MODE;
+
+        if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
         x_movement();
         movement();
-        bg_coll_death(); 
+
+        if (invincible_counter == 0) {
+            bg_coll_death();
+        } else {
+            invincible_counter--;
+        }
+
+        if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
         do_the_scroll_thing(); 
 
         check_spr_objects();
         sprite_collide();
 
+        if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
         oam_clear();
         draw_screen_R(); 
         draw_sprites();
+        
+        color_emphasis(0);
         
         
         //gray_line();

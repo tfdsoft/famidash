@@ -86,6 +86,7 @@ unsigned char level_data_bank;
 unsigned char gameState;
 
 unsigned char parallax_scroll_x;
+unsigned char invincible_counter;
 unsigned long int scroll_x; // gotta love massive levels amirite fellas
 unsigned short scroll_y;
 unsigned char song;
@@ -104,6 +105,8 @@ unsigned char activesprites_active[max_loaded_sprites];
 
 
 
+
+unsigned char DEBUG_MODE = 0;
 
 
 
