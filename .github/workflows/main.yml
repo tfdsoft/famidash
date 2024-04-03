@@ -4,13 +4,13 @@ on: [push]
 
 jobs:
   build_rom:
-    runs-on: ubuntu-latest
-    name: Compile rom
+    runs-on: debian-latest
+    name: Compile ROM
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - uses: ./.github/actions/cache_cc65
-      - name: Set Path
+      - name: Set path
         run: |
           echo "${{ github.workspace }}/opt/cc65/bin" >> $GITHUB_PATH
       - name: Build the game
