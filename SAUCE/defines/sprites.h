@@ -287,6 +287,27 @@ const unsigned char Gravity_Pad[]={
 	  8,-0,0x87,4|OAM_FLIP_H,
 	0x80
 };
+const unsigned char Gravity_Pad2[]={
+
+	  0,-0,0x87,4,
+	  8,-0,0x89,4|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Gravity_Pad3[]={
+
+	  0,-0,0x89,4,
+	  8,-0,0x8b,4|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Gravity_Pad4[]={
+
+	  0,-0,0x8b,4,
+	  8,-0,0x85,4|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char * const GRAVITY_PAD_FRAMES[]={Gravity_Pad, Gravity_Pad, Gravity_Pad,Gravity_Pad,Gravity_Pad,Gravity_Pad2, Gravity_Pad2, Gravity_Pad2,Gravity_Pad2,Gravity_Pad2,Gravity_Pad3, Gravity_Pad3, Gravity_Pad3,Gravity_Pad3,Gravity_Pad3,Gravity_Pad4, Gravity_Pad4,Gravity_Pad4,Gravity_Pad4,Gravity_Pad4};
+
 const unsigned char Gravity_Pad_U[]={
 
 	  0, -0,0x85,4|OAM_FLIP_V,
