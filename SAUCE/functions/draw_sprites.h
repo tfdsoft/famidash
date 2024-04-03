@@ -69,8 +69,14 @@ void draw_sprites(void){
 			else if (tmp3 == 0x0A) {			//yellow pad
 				oam_meta_spr(temp_x, temp_y-1, YELLOW_PAD_FRAMES[padframe]);
 			}
-			else if (tmp3 == 0x0D) {			//yellow pad
+			else if (tmp3 == 0x0C) {			//yellow upsidedown pad
+				oam_meta_spr(temp_x, temp_y-1, YELLOW_PAD_U_FRAMES[padframe]);
+			}
+			else if (tmp3 == 0x0D) {			//gravity pad
 				oam_meta_spr(temp_x, temp_y-1, GRAVITY_PAD_FRAMES[padframe]);
+			}
+			else if (tmp3 == 0x0E) {			//gravity upsidedown pad
+				oam_meta_spr(temp_x, temp_y-1, GRAVITY_PAD_U_FRAMES[padframe]);
 			}
 			else {
 				oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x0f]);
