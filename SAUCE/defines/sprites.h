@@ -151,14 +151,14 @@ const unsigned char Portal_Gamemode_Cube[]={
 	  0,  0,0x61,0,
 	  0, 16,0x67,0,
 	  0, 32,0x61,0|OAM_FLIP_V,
-	  8,  0,0x64,0,
+	  8,  0,0x63,0,
 
 	  8, 16,0x7d,0,
-	  8, 32,0x64,0|OAM_FLIP_V,
-	 16,  0,0x66,0,
+	  8, 32,0x63,0|OAM_FLIP_V,
+	 16,  0,0x65,0,
 	 16, 16,0x69,0,
 
-	 16, 32,0x66,0|OAM_FLIP_V,
+	 16, 32,0x65,0|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Ship[]={
@@ -170,10 +170,10 @@ const unsigned char Portal_Gamemode_Ship[]={
 
 	  8, 16,0x7d,1,
 	  8, 32,0x63,1|OAM_FLIP_V,
-	 16,  0,0x66,1,
+	 16,  0,0x65,1,
 	 16, 16,0x69,1,
 
-	 16, 32,0x66,1|OAM_FLIP_V,
+	 16, 32,0x65,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Ball[]={
