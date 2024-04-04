@@ -153,15 +153,15 @@ void sprite_collide_lookup(){
     else if (tmp4 == 0x0D) {			//gravity pads bottom
 	    if (!gravity) { 
 		gravity = 0x01;				//flip gravity
-		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;	
-		else player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
+		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
+		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }
     else if (tmp4 == 0x0E) {			//gravity pads top
 	    if (gravity) { 
 		gravity = 0x00;				//flip gravity
-		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK;	
-		else player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
+		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_BLUE;	
+		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }
 //    else if (tmp4 == 0x0F) {
@@ -173,14 +173,14 @@ void sprite_collide_lookup(){
 	    if (!gravity) { 
 		gravity = 0x01;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
-		else player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
+		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }
     else if (tmp4 == 0xFE) {			//gravity pads top
 	    if (gravity) { 
 		gravity = 0x00;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK;
-		else player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
+		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }    
 }
