@@ -571,7 +571,7 @@ NametableAddrHi = tmp1
 
         ; Update pointer (collisionMap0 is 240 bytes, not 256)
         LDA ptr1
-        ; The carry is set by the CPX at the end of the loop
+        SEC
         SBC #$10
         STA ptr1
         BCS :+
