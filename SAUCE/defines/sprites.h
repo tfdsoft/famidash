@@ -103,26 +103,26 @@ const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_4, Sh
 
 const unsigned char COIN_SPRITE[]={
 
-	  0,  0,0x95,1,
-	  8,  0,0x95,1|OAM_FLIP_H,
+	  0,  0,0xB1,1,
+	  8,  0,0xB1,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_1[]={
 
-	  0,  0,0x97,1,
-	  8,  0,0x99,1,
+	  0,  0,0xB3,1,
+	  8,  0,0xB5,1,
 	0x80
 };
 const unsigned char COIN_2[]={
 
-	  0,  0,0x9B,1,
-	  8,  0,0x9B,1|OAM_FLIP_H,
+	  0,  0,0xB7,1,
+	  8,  0,0xB7,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_3[]={
 
-	  0,  0,0x99,1|OAM_FLIP_H,
-	  8,  0,0x97,1|OAM_FLIP_H,
+	  0,  0,0xB5,1|OAM_FLIP_H,
+	  8,  0,0xB3,1|OAM_FLIP_H,
 	0x80
 };
 
@@ -230,45 +230,45 @@ const unsigned char Yellow_Jump_Orb[]={
 
 //	  0,  0,0x45,2,
 //	  8,  0,0x45,2|OAM_FLIP_H,
-	  4,  0,0x81,1,
+	  4,  0,0xBB,1,
 	0x80
 };
 
 const unsigned char Blue_Jump_Orb[]={
 
-	  4,  0,0x81,4,
+	  4,  0,0xBB,4,
 	0x80
 };
 const unsigned char Pink_Jump_Orb[]={
 
 //	  0,  0,0x45,6,
 //	  8,  0,0x45,6|OAM_FLIP_H,
-	  4,  0,0x81,7,
+	  4,  0,0xBB,7,
 	0x80
 };
 
 const unsigned char Yellow_Jump_Pad[]={
 
-	  0,-8,0x85,1,
-	  8,-8,0x87,1|OAM_FLIP_H,
+	  0,-8,0x99,1,
+	  8,-8,0x9B,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad2[]={
 
-	  0,-8,0x87,1,
-	  8,-8,0x89,1|OAM_FLIP_H,
+	  0,-8,0x9B,1,
+	  8,-8,0x9D,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad3[]={
 
-	  0,-8,0x89,1,
-	  8,-8,0x8b,1|OAM_FLIP_H,
+	  0,-8,0x9D,1,
+	  8,-8,0x9F,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad4[]={
 
-	  0,-8,0x8b,1,
-	  8,-8,0x85,1|OAM_FLIP_H,
+	  0,-8,0x9F,1,
+	  8,-8,0x99,1|OAM_FLIP_H,
 	0x80
 };
 
@@ -276,26 +276,26 @@ const unsigned char * const YELLOW_PAD_FRAMES[]={Yellow_Jump_Pad, Yellow_Jump_Pa
 
 const unsigned char Yellow_Jump_Pad_U[]={
 
-	  0,-0,0x85,1|OAM_FLIP_V,
-	  8,-0,0x87,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x99,1|OAM_FLIP_V,
+	  8,-0,0x9B,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U2[]={
 
-	  0,-0,0x87,1|OAM_FLIP_V,
-	  8,-0,0x89,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x9B,1|OAM_FLIP_V,
+	  8,-0,0x9D,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U3[]={
 
-	  0,-0,0x89,1|OAM_FLIP_V,
-	  8,-0,0x8B,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x9D,1|OAM_FLIP_V,
+	  8,-0,0x9F,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U4[]={
 
-	  0,-0,0x8B,1|OAM_FLIP_V,
-	  8,-0,0x85,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x9F,1|OAM_FLIP_V,
+	  8,-0,0x99,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
@@ -303,26 +303,26 @@ const unsigned char * const YELLOW_PAD_U_FRAMES[]={Yellow_Jump_Pad_U, Yellow_Jum
 
 const unsigned char Gravity_Pad[]={
 
-	  0,-0,0x85,4,
-	  8,-0,0x87,4|OAM_FLIP_H,
+	  0,-0,0x99,4,
+	  8,-0,0x9B,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad2[]={
 
-	  0,-0,0x87,4,
-	  8,-0,0x89,4|OAM_FLIP_H,
+	  0,-0,0x9B,4,
+	  8,-0,0x9D,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad3[]={
 
-	  0,-0,0x89,4,
-	  8,-0,0x8b,4|OAM_FLIP_H,
+	  0,-0,0x9D,4,
+	  8,-0,0x9F,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad4[]={
 
-	  0,-0,0x8b,4,
-	  8,-0,0x85,4|OAM_FLIP_H,
+	  0,-0,0x9F,4,
+	  8,-0,0x99,4|OAM_FLIP_H,
 	0x80
 };
 
@@ -330,26 +330,26 @@ const unsigned char * const GRAVITY_PAD_FRAMES[]={Gravity_Pad, Gravity_Pad, Grav
 
 const unsigned char Gravity_Pad_U[]={
 
-	  0, -0,0x85,4|OAM_FLIP_V,
-	  8, -0,0x87,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0x99,4|OAM_FLIP_V,
+	  8, -0,0x9B,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Gravity_Pad_U2[]={
 
-	  0, -0,0x87,4|OAM_FLIP_V,
-	  8, -0,0x89,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0x9B,4|OAM_FLIP_V,
+	  8, -0,0x9D,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Gravity_Pad_U3[]={
 
-	  0, -0,0x89,4|OAM_FLIP_V,
-	  8, -0,0x8B,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0x9D,4|OAM_FLIP_V,
+	  8, -0,0x9F,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Gravity_Pad_U4[]={
 
-	  0, -0,0x8B,4|OAM_FLIP_V,
-	  8, -0,0x85,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0x9F,4|OAM_FLIP_V,
+	  8, -0,0x99,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
