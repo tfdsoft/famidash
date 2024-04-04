@@ -36,7 +36,7 @@ Metatile "HALF_SLAB",     $24, $25, $00, $00, PAL_0, COL_ALL
 Metatile "RIGHT_SPIKE",     $0c, $ae, $1c, $be, PAL_0, COL_DEATH
 Metatile "DOWN_SPIKE",      $2c, $2d, $bc, $bd, PAL_0, COL_DEATH
 Metatile "LEFT_SPIKE",      $af, $0f, $bf, $1f, PAL_0, COL_DEATH
-Metatile "HALF_RIGHT_SPIKE",$28, $00, $29, $00, PAL_0, COL_DEATH
+Metatile "HALF_RIGHT_SPIKE",$28, $00, $38, $00, PAL_0, COL_DEATH
 Metatile "HALF_DOWN_SPIKE", $26, $27, $00, $00, PAL_0, COL_DEATH
 Metatile "HALF_LEFT_SPIKE", $00, $29, $00, $39, PAL_0, COL_DEATH
 
