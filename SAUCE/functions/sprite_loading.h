@@ -161,7 +161,7 @@ void sprite_collide_lookup(){
 	    if (gravity) { 
 		gravity = 0x00;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_BLUE;	
-		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
+		else player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
 	    }
     }
 //    else if (tmp4 == 0x0F) {
