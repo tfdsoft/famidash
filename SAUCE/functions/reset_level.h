@@ -26,6 +26,17 @@ void reset_level(void) {
     init_rld(level);
     unrle_first_screen();
 
+    // load the starting ground and bg color
+    tmp2 = (level_list[level][3] & 0x3f);
+    pal_col(0, tmp2);
+    if (tmp2-0x10 & 0xC0) pal_col(1, 0x0f);
+    else pal_col(1, (tmp2-0x10));
+
+    tmp2 = (level_list[level][4] & 0x3f);
+    pal_col(6, tmp2);
+    if (tmp2-0x10 & 0xC0) pal_col(5, 0x0f);
+    else pal_col(5, (tmp2-0x10));
+
     init_sprites();
     player.x = 0x0000;
     player.y = 0xb000;

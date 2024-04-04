@@ -62,6 +62,7 @@ unsigned char temp_y;
 unsigned char temp_room;
 
 unsigned char * sprite_data;
+unsigned char* level_data;
 
 #pragma bss-name(pop)
 // other variables go here

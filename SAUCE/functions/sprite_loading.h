@@ -67,9 +67,9 @@ void check_spr_objects(void){
     }
 }
 
-char sprite_height_lookup(unsigned char type){
-    if (type == 0xFF) { }
-    else if (type & 0x30){				//COLOR TRIGGERS ON LOADING
+__fastcall__ char sprite_height_lookup(unsigned char type){
+    if (type == 0xFF) { return 0; }
+    else if ((type & 0x30) != 0){				//COLOR TRIGGERS ON LOADING
         tmp2 = (type & 0x3f)-0x10;
         if (type & 0xC0){
             pal_col(6, tmp2);
@@ -80,7 +80,7 @@ char sprite_height_lookup(unsigned char type){
             if (tmp2-0x10 & 0xC0) pal_col(1, 0x0f);
             else pal_col(1, (tmp2-0x10));
         }
-        
+        return 0x5f;
     }
 
     // portals
@@ -99,9 +99,8 @@ char sprite_height_lookup(unsigned char type){
 
     // triggers
     if (type == 0x0f) return 0x5f;
-    if (type & 0x30) return 0x5f;
     
-    
+    return 0;
 }
 
 void sprite_collide_lookup(){
