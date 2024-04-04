@@ -111,7 +111,8 @@ const unsigned char jumper_[]={
 
 const unsigned char baseafterbase_[]={
 	// LEVEL HEADER
-	song_base_after_base,			// Song number
+//	song_base_after_base,			// Song number
+	song_xstep,			// blanked out
 	0x00,					// Starting gamemode, leave 0 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x11,					// Background starting color
@@ -179,7 +180,8 @@ const unsigned char backontrack_[]={
 
 const unsigned char timemachine_[]={
 	// LEVEL HEADER
-	song_time_machine,	// Song number
+//	song_time_machine,	// Song number
+	song_xstep,			// blanked out
 	0x00,					// Starting gamemode, leave 0 for cube
 	0x00,					// Starting speed, unused until 1.7.
 	0x00,					// Background starting color
