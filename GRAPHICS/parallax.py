@@ -96,32 +96,62 @@ def parallaxify():
     # and generates 32 horizontally scrolled versions of the background
     import os
     curpath = os.path.abspath(os.path.dirname(__file__))
-    with open(f"{curpath}/parallax.bmp", "rb") as fin:
-        orig_img = Image.open(fin)
-        im = orig_img.copy()
-        im = im.resize((128, 32))
+    orig_img = Image.open(f"{curpath}/parallax.bmp")
+    
+    big_spike_up_left = orig_img.crop(tuple([8*x for x in (0, 9, 2, 10)]))
+    big_spike_up_right = orig_img.crop(tuple([8*x for x in (2, 9, 4, 10)]))
+    small_spike_up_left1 = orig_img.crop(tuple([8*x for x in (4, 10, 5, 11)]))
+    small_spike_up_left2 = orig_img.crop(tuple([8*x for x in (5, 10, 6, 11)]))
+    small_spike_up_right1 = orig_img.crop(tuple([8*x for x in (6, 10, 7, 11)]))
+    small_spike_up_right2 = orig_img.crop(tuple([8*x for x in (7, 10, 8, 11)]))
+    big_spike_down_left = orig_img.crop(tuple([8*x for x in (8, 10, 10, 11)]))
+    big_spike_down_right = orig_img.crop(tuple([8*x for x in (10, 10, 12, 11)]))
+    big_spike_right_left = orig_img.crop(tuple([8*x for x in (13, 9, 14, 11)]))
+    big_spike_right_right = orig_img.crop(tuple([8*x for x in (15, 9, 16, 11)]))
+    big_spike_left_left = orig_img.crop(tuple([8*x for x in (16, 9, 17, 11)]))
+    big_spike_left_right = orig_img.crop(tuple([8*x for x in (18, 9, 19, 11)]))
+
+
+
+    im = orig_img.copy()
+    im = im.resize((128, 32))
+    
+    # outdata = b''.join(pilbmp2chr(orig_img))
+    outdata = b''
+    
+    for i in range(0, 144):
+        # shift the main image over by i pixels
+        shifted = orig_img.crop((144 - i, 0, (144+48) - i, 72))
+        # shifted.save(f"{curpath}/temp/test{i}.png")
+        top_region = shifted.crop((0, 0, 48, 32))
+        mid_region = shifted.crop((0, 32, 48, 64))
+        bot1_region = shifted.crop((0, 64, 24, 72))
+        bot2_region = shifted.crop((24, 64, 48, 72))
+        im.paste(0, (0,0,128,32))
+        im.paste(top_region, (0, 0, 48, 32))
+        im.paste(mid_region, (48, 0, 96, 32))
+        im.paste(bot1_region, (96, 0, 120, 8))
+        im.paste(bot2_region, (96, 8, 120, 16))
+        if (i % 2 == 0):
+            im.paste(big_spike_up_left, tuple([8*x for x in (12, 2, 14, 3)]))
+            im.paste(small_spike_up_left1, tuple([8*x for x in (15, 0, 16, 1)]))
+            im.paste(small_spike_up_left2, tuple([8*x for x in (15, 1, 16, 2)]))
+            im.paste(big_spike_down_left, tuple([8*x for x in (12, 3, 14, 4)]))
+            im.paste(big_spike_right_left, tuple([8*x for x in (14, 2, 15, 4)]))
+            im.paste(big_spike_left_left, tuple([8*x for x in (15, 2, 16, 4)]))
+        else:
+            im.paste(big_spike_up_right, tuple([8*x for x in (12, 2, 14, 3)]))
+            im.paste(small_spike_up_right1, tuple([8*x for x in (15, 0, 16, 1)]))
+            im.paste(small_spike_up_right2, tuple([8*x for x in (15, 1, 16, 2)]))
+            im.paste(big_spike_down_right, tuple([8*x for x in (12, 3, 14, 4)]))
+            im.paste(big_spike_right_right, tuple([8*x for x in (14, 2, 15, 4)]))
+            im.paste(big_spike_left_right, tuple([8*x for x in (15, 2, 16, 4)]))
+
         
-        # outdata = b''.join(pilbmp2chr(orig_img))
-        outdata = b''
+        outdata += b''.join(pilbmp2chr(im))
         
-        for i in range(0, 144):
-            # shift the main image over by i pixels
-            shifted = orig_img.crop((144 - i, 0, (144+48) - i, 72))
-            # shifted.save(f"{curpath}/temp/test{i}.png")
-            top_region = shifted.crop((0, 0, 48, 32))
-            mid_region = shifted.crop((0, 32, 48, 64))
-            bot1_region = shifted.crop((0, 64, 24, 72))
-            bot2_region = shifted.crop((24, 64, 48, 72))
-            im.paste(0, (0,0,128,32))
-            im.paste(top_region, (0, 0, 48, 32))
-            im.paste(mid_region, (48, 0, 96, 32))
-            im.paste(bot1_region, (96, 0, 120, 8))
-            im.paste(bot2_region, (96, 8, 120, 16))
-            
-            outdata += b''.join(pilbmp2chr(im))
-            
-        with open(f"{curpath}/parallax.chr", "wb") as fout:
-            fout.write(outdata)
+    with open(f"{curpath}/parallax.chr", "wb") as fout:
+        fout.write(outdata)
 
 
 if __name__ == "__main__":

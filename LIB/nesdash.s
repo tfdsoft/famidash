@@ -23,10 +23,12 @@
 .export _movement
 .export _music_play, _music_update
 
+.importzp _level_data
+level_data = _level_data
+
 ;void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const unsigned char *data);
 
 .segment "ZEROPAGE"
-    level_data:     .res 2
     rld_value:      .res 1
     rld_run:        .res 1
 

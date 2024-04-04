@@ -20,8 +20,8 @@ Metatile "BG14",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 Metatile "BG15",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 
 Metatile "BLOCK",       $20, $21, $30, $31, PAL_0, COL_ALL
-Metatile "SPIKE_UP",    $22, $23, $32, $33, PAL_0, COL_DEATH
-Metatile "SPIKE_HALF",  $00, $00, $34, $35, PAL_0, COL_DEATH
+Metatile "SPIKE_UP",    $ac, $ad, $32, $33, PAL_0, COL_DEATH
+Metatile "SPIKE_HALF",  $00, $00, $8f, $9f, PAL_0, COL_DEATH
 
 Metatile "YELLOW_PAD",    $ff, $ff, $ff, $ff, PAL_1, COL_NONE
 Metatile "YELLOW_ORB",    $ff, $ff, $ff, $ff, PAL_1, COL_NONE
@@ -33,9 +33,9 @@ Metatile "GROUND_SPIKE",  $00, $00, $36, $37, PAL_0, COL_DEATH
 
 Metatile "HALF_SLAB",     $24, $25, $00, $00, PAL_0, COL_ALL
 
-Metatile "RIGHT_SPIKE",     $0c, $0d, $1c, $1d, PAL_0, COL_DEATH
-Metatile "DOWN_SPIKE",      $2c, $2d, $3c, $3d, PAL_0, COL_DEATH
-Metatile "LEFT_SPIKE",      $0e, $0f, $1e, $1f, PAL_0, COL_DEATH
+Metatile "RIGHT_SPIKE",     $0c, $ae, $1c, $be, PAL_0, COL_DEATH
+Metatile "DOWN_SPIKE",      $2c, $2d, $bc, $bd, PAL_0, COL_DEATH
+Metatile "LEFT_SPIKE",      $af, $0f, $bf, $1f, PAL_0, COL_DEATH
 Metatile "HALF_RIGHT_SPIKE",$28, $00, $29, $00, PAL_0, COL_DEATH
 Metatile "HALF_DOWN_SPIKE", $26, $27, $00, $00, PAL_0, COL_DEATH
 Metatile "HALF_LEFT_SPIKE", $00, $29, $00, $39, PAL_0, COL_DEATH
