@@ -7,6 +7,7 @@ void __fastcall__ movement(void);
 void state_game(){
 	ppu_off();
 
+//	mini = 1;
     pal_bg((char *)paletteDefault);
 
     load_ground(0);

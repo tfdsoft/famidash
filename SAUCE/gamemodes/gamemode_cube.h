@@ -4,16 +4,30 @@ void cube_movement(void){
 // gravity
 	// player.vel_y is signed
 	//if(player.vel_y < 0x400){
-	if(!gravity){
-		if(player.vel_y > CUBE_MAX_FALLSPEED){
-			player.vel_y = CUBE_MAX_FALLSPEED;
-		} else player.vel_y += CUBE_GRAVITY;
+	if(!mini){
+		if(!gravity){
+			if(player.vel_y > CUBE_MAX_FALLSPEED){
+				player.vel_y = CUBE_MAX_FALLSPEED;
+			} else player.vel_y += CUBE_GRAVITY;
+		}
+		else{
+			if(player.vel_y < -CUBE_MAX_FALLSPEED){
+				player.vel_y = -CUBE_MAX_FALLSPEED;
+			} else player.vel_y -= CUBE_GRAVITY;
+		}
 	}
-	else{
-		if(player.vel_y < -CUBE_MAX_FALLSPEED){
-			player.vel_y = -CUBE_MAX_FALLSPEED;
-		} else player.vel_y -= CUBE_GRAVITY;
-	}
+	else {
+		if(!gravity){
+			if(player.vel_y > MINI_CUBE_MAX_FALLSPEED){
+				player.vel_y = MINI_CUBE_MAX_FALLSPEED;
+			} else player.vel_y += MINI_CUBE_GRAVITY;
+		}
+		else{
+			if(player.vel_y < -MINI_CUBE_MAX_FALLSPEED){
+				player.vel_y = -MINI_CUBE_MAX_FALLSPEED;
+			} else player.vel_y -= MINI_CUBE_GRAVITY;
+		}
+	}		
 	player.y += player.vel_y;
 	
 	Generic.x = high_byte(player.x);
@@ -42,7 +56,8 @@ void cube_movement(void){
 		if (player.vel_y <= 0){
 			if(bg_coll_U2()) {
 				if(pad & PAD_A) {
-					player.vel_y = JUMP_VEL^0xFFFF; // JUMP
+					if (!mini) player.vel_y = JUMP_VEL^0xFFFF; // JUMP
+					else player.vel_y = MINIJUMP_VEL^0xFFFF; // JUMP
 				}
 			}
 		}
@@ -50,7 +65,8 @@ void cube_movement(void){
 		if (player.vel_y >= 0){
 			if(bg_coll_D2()) {
 				if(pad & PAD_A) {
-					player.vel_y = JUMP_VEL; // JUMP
+					if (!mini) player.vel_y = JUMP_VEL; // JUMP
+					else player.vel_y = MINIJUMP_VEL; // JUMP
 				}
 			}
 		}

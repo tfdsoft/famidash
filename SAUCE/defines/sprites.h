@@ -1,5 +1,15 @@
 // a 16x16 pixel metasprite
 // cube starts here
+const unsigned char Mini_Cube_0[]={
+
+	  0,  0,0x43,0,
+	  8,  0,0x43,0|OAM_FLIP_H,
+	0x80
+	
+};
+	
+const unsigned char * const MINI_CUBE[] = {Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0};
+	
 const unsigned char Cube_0[]={
 
 	  0,  0,0x01,0,

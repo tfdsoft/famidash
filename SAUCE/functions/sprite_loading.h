@@ -189,9 +189,16 @@ void sprite_collide(){
 
     Generic.x = high_byte(player.x);
     Generic.y = high_byte(player.y);
+
+	if (!mini) {
     Generic.width = CUBE_WIDTH;
     Generic.height = CUBE_HEIGHT;
-
+	}
+	
+	else {
+    Generic.width = MINI_CUBE_WIDTH;
+    Generic.height = MINI_CUBE_HEIGHT;
+	}    
     Generic2.width = 0x0f;
     for (index = 0; index < max_loaded_sprites; ++index){
         tmp3 = activesprites_active[index];

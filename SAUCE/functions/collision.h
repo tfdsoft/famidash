@@ -78,7 +78,8 @@ char bg_coll_D(void){
 	tmp5 = Generic.x + low2bytes(scroll_x) -1;
     temp_x = (char)tmp5; // low byte
     
-	tmp1 = Generic.y + Generic.height;
+	if (!mini) tmp1 = Generic.y + Generic.height;
+	else tmp1 = Generic.y + Generic.height+8;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
@@ -101,7 +102,8 @@ char bg_coll_D2(void){
     tmp5 = Generic.x + low2bytes(scroll_x);
     temp_x = (char)tmp5; // low byte
 
-    tmp1 = Generic.y + Generic.height + 2;
+	if (!mini) tmp1 = Generic.y + Generic.height+2;
+	else tmp1 = Generic.y + Generic.height+10;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte
     temp_room = tmp5 >> 8; // high byte
