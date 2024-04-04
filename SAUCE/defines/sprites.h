@@ -375,7 +375,7 @@ const unsigned char * const Metasprites[]={
 	Yellow_Jump_Pad_U,
 	Gravity_Pad,
 	Gravity_Pad_U,	  //Coin Disappear
-	Yellow_Jump_Orb, // end stage trigger
+	nometa, // end stage trigger
 
 	// start of color triggers
 

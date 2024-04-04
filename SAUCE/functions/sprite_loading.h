@@ -102,7 +102,10 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     if (type == 0x0E) return 0x07; // Gravity Pad Upside Down
 
     // triggers
-    if (type == 0x0f) return 0x5f;
+    if (type == 0x0f) {			//end trigger on load
+        gameState = 0x03; 
+        pal_fade_to(4,0); 	    
+    }	   
     
     return 0;
 }
@@ -161,10 +164,10 @@ void sprite_collide_lookup(){
 		else player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
 	    }
     }
-    else if (tmp4 == 0x0F) {
-        gameState = 0x03; 
-        pal_fade_to(4,0); 
-    }
+//    else if (tmp4 == 0x0F) {
+//        gameState = 0x03; 
+//        pal_fade_to(4,0); 
+//    }
     
     else if (tmp4 == 0xFD) {			//gravity pads bottom
 	    if (!gravity) { 
