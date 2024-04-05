@@ -10,7 +10,9 @@ void draw_sprites(void){
 	if(temp_x == 0) temp_x = 1;
 	switch (gamemode){
 		default:
+
 			cube_rotate += CUBE_GRAVITY;
+			if (player.vel_y == 0) cube_rotate = 0;
 			if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
 
 			if (!mini) {
