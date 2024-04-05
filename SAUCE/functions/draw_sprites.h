@@ -60,33 +60,41 @@ void draw_sprites(void){
           }										//           |
           index = shuffle_offset;							//-----------|
 
-		if (activesprites_type[index] & 0x30) continue;
+		if (index < 0xF0) {
+			if (activesprites_type[index] & 0x30) continue;
+		}
 		temp_y = low_byte(activesprites_realy[index]);
 		if (!activesprites_active[index]) continue; 
 		temp_x = low_byte(activesprites_realx[index]);
 		if (temp_x == 0) temp_x = 1;
 		if (temp_x > 0xf0) continue;
 		if (temp_y < 0xf0) {
-			tmp3 = activesprites_type[index];
-			if (tmp3 == 7) {			//coin
-				oam_meta_spr(temp_x, temp_y-1, COIN_SPRITES[coinframe]);
-				coinframe++;
-				if (coinframe > 19) {coinframe = 0;}
-			}
-			else if (tmp3 == 0x0A) {			//yellow pad
-				oam_meta_spr(temp_x, temp_y-1, YELLOW_PAD_FRAMES[padframe]);
-			}
-			else if (tmp3 == 0x0C) {			//yellow upsidedown pad
-				oam_meta_spr(temp_x, temp_y-1, YELLOW_PAD_U_FRAMES[padframe]);
-			}
-			else if (tmp3 == 0x0D) {			//gravity pad
-				oam_meta_spr(temp_x, temp_y-1, GRAVITY_PAD_FRAMES[padframe]);
-			}
-			else if (tmp3 == 0x0E) {			//gravity upsidedown pad
-				oam_meta_spr(temp_x, temp_y-1, GRAVITY_PAD_U_FRAMES[padframe]);
+			if (index == 0xFC) {			//horizontal gravity down portal
+				oam_meta_spr(temp_x, temp_y-1, 	Portal_Gravity_Down_Horizontal_S[0x00]);
 			}
 			else {
-				oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x0f]);
+				tmp3 = activesprites_type[index];
+				if (tmp3 == 7) {			//coin
+					oam_meta_spr(temp_x, temp_y-1, COIN_SPRITES[coinframe]);
+					coinframe++;
+					if (coinframe > 19) {coinframe = 0;}
+				}
+				else if (tmp3 == 0x0A) {			//yellow pad
+					oam_meta_spr(temp_x, temp_y-1, YELLOW_PAD_FRAMES[padframe]);
+				}
+				else if (tmp3 == 0x0C) {			//yellow upsidedown pad
+					oam_meta_spr(temp_x, temp_y-1, YELLOW_PAD_U_FRAMES[padframe]);
+				}
+				else if (tmp3 == 0x0D) {			//gravity pad
+					oam_meta_spr(temp_x, temp_y-1, GRAVITY_PAD_FRAMES[padframe]);
+				}
+				else if (tmp3 == 0x0E) {			//gravity upsidedown pad
+					oam_meta_spr(temp_x, temp_y-1, GRAVITY_PAD_U_FRAMES[padframe]);
+				}
+				
+				else {
+					oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x0f]);
+				}
 			}
 		}
 	}

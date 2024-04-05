@@ -219,10 +219,10 @@ const unsigned char xstep_split1[]={
 const unsigned char stereomadness_SP[]={
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
 
-	0x00, 0, 0x90, 1, 34, 0, 0, 0, 
-	0x00, 0, 0xa0, 1, 98, 0, 0, 0, 
-	0xc0, 3, 0x90, 1, 35, 0, 0, 0, 
-	0xc0, 3, 0xa0, 1, 99, 0, 0, 0, 
+	0x00, 0, 0x90, 1, 146, 0, 0, 0, 
+	0x00, 0, 0xa0, 1, 210, 0, 0, 0, 
+	0xc0, 3, 0x90, 1, 147, 0, 0, 0, 
+	0xc0, 3, 0xa0, 1, 211, 0, 0, 0, 
 	0xb0, 6, 0x70, 1, 36, 0, 0, 0, 
 	0xb0, 6, 0x80, 1, 100, 0, 0, 0, 
 	0x20, 16, 0x50, 1, 35, 0, 0, 0, 
@@ -313,6 +313,7 @@ const unsigned char polargeist_SP[]={
 
 	0x00, 0, 0x60, 1, 42, 0, 0, 0, 
 	0x00, 0, 0x70, 1, 106, 0, 0, 0, 
+	0x80, 0, 0x80, 1, 252, 0, 0, 0, 
 	0x10, 1, 0x90, 1, 11, 0, 0, 0, 
 	0x00, 2, 0x90, 1, 11, 0, 0, 0, 
 	0x00, 3, 0x90, 1, 11, 0, 0, 0, 
@@ -384,6 +385,7 @@ const unsigned char polargeist_SP[]={
 	0x00, 59, 0xf0, 0, 15, 0, 0, 0, 
 	0x00, 59, 0x50, 1, 15, 0, 0, 0, 
 	TURN_OFF
+
 
 };
 const unsigned char dryout_SP[]={

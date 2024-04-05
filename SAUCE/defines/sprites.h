@@ -230,7 +230,25 @@ const unsigned char Portal_Gravity_Up[]={
 	 16, 32,0x91,0|OAM_FLIP_V, 
 	0x80
 };
+const unsigned char Portal_Gravity_Down_Horizontal[]={
 
+	8,0,0xAD,0,
+	16,0,0xAF,0,
+	24,0,0xAf,0|OAM_FLIP_H,
+	32,0,0xAD,0|OAM_FLIP_H,
+
+	  0,  16,0xA1,0,  
+	  8, 16,0xA3,0,  
+	  16, 16,0xA5,0,
+	  24, 16,0xA5,0|OAM_FLIP_H,  
+
+	  32, 16,0xA3,0|OAM_FLIP_H,
+	 40, 16,0xA1,0|OAM_FLIP_H,  
+
+	0x80
+};
+
+const unsigned char * const Portal_Gravity_Down_Horizontal_S[]={Portal_Gravity_Down_Horizontal};
 
 
 // ================================================================
@@ -385,11 +403,8 @@ const unsigned char * const Metasprites[]={
 	Gravity_Pad,
 	Gravity_Pad_U,	  //Coin Disappear
 	nometa, // end stage trigger
-
-	// start of color triggers
-
-
 	};
+
 
 // Animation data
 

@@ -21,15 +21,16 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     if (type == 0xFF) { return 0; }		//disappearing sprite
 
     else if (type == 0xFD || type == 0xFE) return 0x07;	//invisible blue pads
+    else if (type == 0xFC) return 0x0F;	//horizontal down gravity portal
 
-    else if ((type & 0x30) != 0){				//COLOR TRIGGERS ON LOADING
-        tmp2 = (type & 0x3f)-0x10;
+    else if (type & 0x80){				//COLOR TRIGGERS ON LOADING
+        tmp2 = (type & 0xBF)-0x80;
         if (type & 0xC0){
             pal_col(6, tmp2);
 	if (tmp2-0x10 & 0xC0) { pal_col(5, 0x0f); activesprites_type[index] = 0xFF; }		//disappear
             else { pal_col(5, (tmp2-0x10)); activesprites_type[index] = 0xFF; }
-        } else {
             pal_col(0, tmp2);
+        } else {
 	if (tmp2-0x10 & 0xC0) { pal_col(1, 0x0f); activesprites_type[index] = 0xFF; }
             else { pal_col(1, (tmp2-0x10)); activesprites_type[index] = 0xFF; }
         }
