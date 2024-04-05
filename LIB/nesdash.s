@@ -1241,7 +1241,7 @@ check_sprite_loop:
         bne sprite_offscreen
         ; sprite is alive AND onscreen x, so now check the Y position
         lda _activesprites_y, y
-        sec
+        clc ; NOTICE: intentionally subtract 1 extra to position them on the screen better
         sbc _scroll_y
         sta _activesprites_realy, x
         lda _activesprites_y+1, y

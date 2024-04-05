@@ -1,9 +1,6 @@
 void reset_level(void);
 
 void draw_sprites(void){
-
-				padframe++;
-				if (padframe > 19) {padframe = 0;}
 	// draw player
     temp_x = high_byte(player.x);
 	if(temp_x > 0xfc) temp_x = 1;
@@ -68,30 +65,49 @@ void draw_sprites(void){
 		temp_x = low_byte(activesprites_realx[index]);
 		if (temp_x == 0) temp_x = 1;
 		if (temp_x > 0xf0) continue;
+#define animation_frame_count tmp1
+#define animation_frame tmp2
+#define spr_type tmp3
+#define needs_reload tmp4
+#define animation_ptr tmpptr1
+#define animation_data_ptr tmpptr2
 		if (temp_y < 0xf0) {
-				tmp3 = activesprites_type[index];
-				if (tmp3 == 7) {			//coin
-					oam_meta_spr(temp_x, temp_y-1, COIN_SPRITES[coinframe]);
-					coinframe++;
-					if (coinframe > 19) {coinframe = 0;}
-				}
-				else if (tmp3 == 0x0A) {			//yellow pad
-					oam_meta_spr(temp_x, temp_y-1, YELLOW_PAD_FRAMES[padframe]);
-				}
-				else if (tmp3 == 0x0C) {			//yellow upsidedown pad
-					oam_meta_spr(temp_x, temp_y-1, YELLOW_PAD_U_FRAMES[padframe]);
-				}
-				else if (tmp3 == 0x0D) {			//gravity pad
-					oam_meta_spr(temp_x, temp_y-1, GRAVITY_PAD_FRAMES[padframe]);
-				}
-				else if (tmp3 == 0x0E) {			//gravity upsidedown pad
-					oam_meta_spr(temp_x, temp_y-1, GRAVITY_PAD_U_FRAMES[padframe]);
+			needs_reload = 0;
+			spr_type = activesprites_type[index];
+			animation_ptr = (unsigned char*)animation_frame_list[spr_type];
+			// If this sprite has animations, then this pointer will not be null
+			if (animation_ptr) {
+				// Reduce the frame counter by one to see if we need to move to the next frame
+				// If this frame has expired, then move to the next animation frame
+				animation_frame_count = --activesprites_anim_frame_count[index];
+				if (animation_frame_count >= 0x80) {
+					animation_frame = ++activesprites_anim_frame[index];
+					// if the animation frame is past the length, wrap it around back to zero
+					if (animation_frame >= animation_frame_length[spr_type]) {
+						activesprites_anim_frame[index] = animation_frame = 0;
+					}
+					// and then set the animation_frame_count to be reloaded
+					needs_reload = 1;
+				} else {
+					animation_frame = activesprites_anim_frame[index];
 				}
 				
-				else {
-					oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x7f]);
+				// Now load the data for this frame of animation
+				// The fastest way to convince cc65 to read all of the data is to force
+				// it to read all the bytes at once
+				tmplong = ((unsigned long int*)animation_ptr)[animation_frame];
+				if (needs_reload) {
+					activesprites_anim_frame_count[index] = low_byte(tmplong);
 				}
+				// And finally, load the pointer for this animation
+				animation_data_ptr = (unsigned char*)high2bytes(tmplong);
+			} else {
+				animation_data_ptr =  (unsigned char*)Metasprites[spr_type & 0x0f];
+			}
+			oam_meta_spr(temp_x, temp_y, animation_data_ptr);
 		}
 		
 	}
+#undef spr_type
+#undef animation_ptr
 }
