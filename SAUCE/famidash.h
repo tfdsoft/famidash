@@ -5,14 +5,24 @@
 // physics defines
 #define PAD_HEIGHT_YELLOW -0x7A0
 #define PAD_HEIGHT_PINK -0x4A0
+#define PAD_HEIGHT_BLUE -0x46
 
 #define CUBE_WIDTH 0x0F
 #define CUBE_HEIGHT 0x0F
 
+#define MINI_CUBE_WIDTH 0x07
+#define MINI_CUBE_HEIGHT 0x07
+
 #define JUMP_VEL -0x5B0
+#define MINIJUMP_VEL -0x5B0
 #define CUBE_SPEED_X1 0x2C4
+
 #define CUBE_MAX_FALLSPEED 0x600
 #define CUBE_GRAVITY 0x6B
+
+#define MINI_CUBE_MAX_FALLSPEED 0x200
+#define MINI_CUBE_GRAVITY 0x9B
+
 #define BALL_GRAVITY 0x6B
 #define SHIP_MAX_FALLSPEED 0x300
 #define SHIP_GRAVITY 0x35
@@ -47,6 +57,7 @@ unsigned short old_x;
 unsigned short old_y;
 
 unsigned char gravity;
+unsigned char mini;
 unsigned char eject_L; // from the left
 unsigned char eject_R; // remember these from the collision sub routine
 unsigned char eject_D; // from below

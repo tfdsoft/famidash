@@ -68,17 +68,21 @@ void check_spr_objects(void){
 }
 
 __fastcall__ char sprite_height_lookup(unsigned char type){
-    if (type == 0xFF) { return 0; }
+
+    if (type == 0xFF) { return 0; }		//disappearing sprite
+
+    else if (type == 0xFD || type == 0xFE) return 0x07;	//invisible blue pads
+
     else if ((type & 0x30) != 0){				//COLOR TRIGGERS ON LOADING
         tmp2 = (type & 0x3f)-0x10;
         if (type & 0xC0){
             pal_col(6, tmp2);
-            if (tmp2-0x10 & 0xC0) pal_col(5, 0x0f);
-            else pal_col(5, (tmp2-0x10));
+	if (tmp2-0x10 & 0xC0) { pal_col(5, 0x0f); activesprites_type[index] = 0xFF; }		//disappear
+            else { pal_col(5, (tmp2-0x10)); activesprites_type[index] = 0xFF; }
         } else {
             pal_col(0, tmp2);
-            if (tmp2-0x10 & 0xC0) pal_col(1, 0x0f);
-            else pal_col(1, (tmp2-0x10));
+	if (tmp2-0x10 & 0xC0) { pal_col(1, 0x0f); activesprites_type[index] = 0xFF; }
+            else { pal_col(1, (tmp2-0x10)); activesprites_type[index] = 0xFF; }
         }
         return 0x5f;
     }
@@ -98,7 +102,10 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     if (type == 0x0E) return 0x07; // Gravity Pad Upside Down
 
     // triggers
-    if (type == 0x0f) return 0x5f;
+    if (type == 0x0f) {			//end trigger on load
+        gameState = 0x03; 
+        pal_fade_to(4,0); 	    
+    }	   
     
     return 0;
 }
@@ -108,6 +115,8 @@ void sprite_collide_lookup(){
     if (tmp4 == 0xFF) {	
     
     }
+    
+    
     else if (tmp4 == 0x0B && cube_data == 0x02) {		//orb
         cube_data = 0x00;
         if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
@@ -123,8 +132,8 @@ void sprite_collide_lookup(){
 	    if (cube_data == 2) {			//blue orb
 		cube_data = 0x00;
 		gravity ^= 0x01;
-        if (!gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
-        else player.vel_y = PAD_HEIGHT_YELLOW;
+        if (!gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
+        else player.vel_y = PAD_HEIGHT_PINK;
 	    }
     } 
 
@@ -137,35 +146,59 @@ void sprite_collide_lookup(){
     }
     else if (tmp4 < 8) gamemode = tmp4;
     else if (tmp4 < 10) gravity = tmp4 - 8;
-    else if (tmp4 == 0x0A || tmp4 == 0x0C) {
+    else if (tmp4 == 0x0A || tmp4 == 0x0C) {				//yellow pads
         if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
         else player.vel_y = PAD_HEIGHT_YELLOW;
     } 
-    else if (tmp4 == 0x0D) {			//gravity pads
+    else if (tmp4 == 0x0D) {			//gravity pads bottom
 	    if (!gravity) { 
 		gravity = 0x01;				//flip gravity
-		player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
+		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
+		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }
-    else if (tmp4 == 0x0E) {			//gravity pads
+    else if (tmp4 == 0x0E) {			//gravity pads top
 	    if (gravity) { 
 		gravity = 0x00;				//flip gravity
-		player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
+		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_BLUE;	
+		else player.vel_y = -(player.vel_y);		//launch up right away OMGZ IT WORKS
 	    }
     }
-    else if (tmp4 == 0x0F) {
-        gameState = 0x03; 
-        pal_fade_to(4,0); 
+//    else if (tmp4 == 0x0F) {
+//        gameState = 0x03; 
+//        pal_fade_to(4,0); 
+//    }
+    
+    else if (tmp4 == 0xFD) {			//gravity pads bottom
+	    if (!gravity) { 
+		gravity = 0x01;				//flip gravity
+		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
+		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
+	    }
     }
+    else if (tmp4 == 0xFE) {			//gravity pads top
+	    if (gravity) { 
+		gravity = 0x00;				//flip gravity
+		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK;
+		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
+	    }
+    }    
 }
 
 void sprite_collide(){
 
     Generic.x = high_byte(player.x);
     Generic.y = high_byte(player.y);
+
+	if (!mini) {
     Generic.width = CUBE_WIDTH;
     Generic.height = CUBE_HEIGHT;
-
+	}
+	
+	else {
+    Generic.width = MINI_CUBE_WIDTH;
+    Generic.height = MINI_CUBE_HEIGHT;
+	}    
     Generic2.width = 0x0f;
     for (index = 0; index < max_loaded_sprites; ++index){
         tmp3 = activesprites_active[index];
