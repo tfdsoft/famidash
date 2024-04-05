@@ -1,3 +1,6 @@
+
+#include "bg_charmap.h"
+
 const unsigned char menutext1[]="GEOMETRY DASH";
 const unsigned char menutext2[]="PRESS START TO LOAD LEVEL ";
 const unsigned char menutext3[]="PRESS START TO RETURN";
@@ -8,6 +11,8 @@ const unsigned char coins3[]="-O- -O- -O-";
 const unsigned char menubgcolors[]={
     0x00
 };
+
+#include "color1_charmap.h"
 
 const unsigned char level1text[]="STEREO MADNESS";
 const unsigned char level2text[]="BACK ON TRACK";

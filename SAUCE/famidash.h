@@ -27,6 +27,8 @@
 #define SHIP_MAX_FALLSPEED 0x300
 #define SHIP_GRAVITY 0x35
 
+#pragma allow-eager-inline(on)
+
 #pragma bss-name(push, "ZEROPAGE")
 // zero-page variables go here
 
@@ -36,6 +38,8 @@ unsigned char tmp3;
 unsigned char tmp4;
 unsigned short tmp5;
 unsigned short tmp6;
+unsigned short tmpptr1;
+unsigned short tmpptr2;
 
 unsigned char pad;
 unsigned char pad_new;
@@ -110,6 +114,8 @@ unsigned char song;
 unsigned short activesprites_x[max_loaded_sprites];
 unsigned short activesprites_y[max_loaded_sprites];
 unsigned char activesprites_type[max_loaded_sprites];
+unsigned char activesprites_anim_frame[max_loaded_sprites];
+unsigned char activesprites_anim_frame_max[max_loaded_sprites];
 
 unsigned char activesprites_realx[max_loaded_sprites];
 unsigned char activesprites_realy[max_loaded_sprites];
@@ -161,12 +167,9 @@ const unsigned char paletteDefaultSP[16]={
 };
 
 const unsigned char paletteMenu[16] = {
-	0x17,0x0f,0x11,0x30,
+	0x17,0x0f,0x10,0x30,
 	0x17,0x0f,0x2a,0x28,
-	0x17,0x0f,0x16,0x36,
-	0x17,0x0f,0x0f,0x0f
+	0x17,0x0f,0x17,0x27,
+	0x17,0x0f,0x11,0x30
 };
-
-
-
 
