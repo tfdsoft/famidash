@@ -23,7 +23,7 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == 0xFD || type == 0xFE) return 0x07;	//invisible blue pads
     else if (type == 0xFC) return 0x0F;	//horizontal down gravity portal
 
-    else if (type & 0x80){				//COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
+    else if ((type & 0x80) && (type < 0xF0)){				//COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
         tmp2 = (type & 0x3F);						
         if ((type - 0x80) & 0xC0){
             pal_col(6, tmp2);
