@@ -230,7 +230,7 @@ const unsigned char Portal_Gravity_Up[]={
 	 16, 32,0x91,0|OAM_FLIP_V, 
 	0x80
 };
-const unsigned char Portal_Gravity_Down_Horizontal[]={
+const unsigned char Portal_Gravity_Down_Horizontal_Downwards[]={
 
 	8,0,0xAD,0,
 	16,0,0xAF,0,
@@ -247,8 +247,59 @@ const unsigned char Portal_Gravity_Down_Horizontal[]={
 
 	0x80
 };
+const unsigned char Portal_Gravity_Down_Horizontal_Upwards[]={
 
-const unsigned char * const Portal_Gravity_Down_Horizontal_S[]={Portal_Gravity_Down_Horizontal};
+	8,16,0xAD,0|OAM_FLIP_V,
+	16,16,0xAF,0|OAM_FLIP_V,
+	24,16,0xAf,0|OAM_FLIP_V|OAM_FLIP_H,
+	32,16,0xAD,0|OAM_FLIP_V|OAM_FLIP_H,
+
+	  0,  0,0xA1,0|OAM_FLIP_V,  
+	  8, 0,0xA3,0|OAM_FLIP_V,  
+	  16, 0,0xA5,0|OAM_FLIP_V,
+	  24, 0,0xA5,0|OAM_FLIP_V|OAM_FLIP_H,  
+
+	  32, 0,0xA3,0|OAM_FLIP_V|OAM_FLIP_H,
+	 40, 0,0xA1,0|OAM_FLIP_V|OAM_FLIP_H,  
+
+	0x80
+};
+const unsigned char Portal_Gravity_Up_Horizontal_Downwards[]={
+
+	8,0,0xAD,0,
+	16,0,0xAF,0,
+	24,0,0xAf,0|OAM_FLIP_H,
+	32,0,0xAD,0|OAM_FLIP_H,
+
+	  0,  16,0xA1,1,  
+	  8, 16,0xA3,1,  
+	  16, 16,0xA5,1,
+	  24, 16,0xA5,1|OAM_FLIP_H,  
+
+	  32, 16,0xA3,1|OAM_FLIP_H,
+	 40, 16,0xA1,1|OAM_FLIP_H,  
+
+	0x80
+};
+const unsigned char Portal_Gravity_Up_Horizontal_Upwards[]={
+
+	8,16,0xAD,0|OAM_FLIP_V,
+	16,16,0xAF,0|OAM_FLIP_V,
+	24,16,0xAf,0|OAM_FLIP_V|OAM_FLIP_H,
+	32,16,0xAD,0|OAM_FLIP_V|OAM_FLIP_H,
+
+	  0,  0,0xA1,1|OAM_FLIP_V,  
+	  8, 0,0xA3,1|OAM_FLIP_V,  
+	  16, 0,0xA5,1|OAM_FLIP_V,
+	  24, 0,0xA5,1|OAM_FLIP_V|OAM_FLIP_H,  
+
+	  32, 0,0xA3,1|OAM_FLIP_V|OAM_FLIP_H,
+	 40, 0,0xA1,1|OAM_FLIP_V|OAM_FLIP_H,  
+
+	0x80
+};
+
+
 
 
 // ================================================================
@@ -403,6 +454,11 @@ const unsigned char * const Metasprites[]={
 	Gravity_Pad,
 	Gravity_Pad_U,	  //Coin Disappear
 	nometa, // end stage trigger
+
+	Portal_Gravity_Down_Horizontal_Downwards,
+	Portal_Gravity_Down_Horizontal_Upwards,
+	Portal_Gravity_Up_Horizontal_Downwards,
+	Portal_Gravity_Up_Horizontal_Upwards,
 	};
 
 

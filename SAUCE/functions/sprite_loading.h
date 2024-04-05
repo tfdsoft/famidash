@@ -23,9 +23,9 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == 0xFD || type == 0xFE) return 0x07;	//invisible blue pads
     else if (type == 0xFC) return 0x0F;	//horizontal down gravity portal
 
-    else if (type & 0x80){				//COLOR TRIGGERS ON LOADING
-        tmp2 = (type & 0xBF)-0x80;
-        if (type & 0xC0){
+    else if (type & 0x80){				//COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
+        tmp2 = (type & 0x3F);						
+        if ((type - 0x80) & 0xC0){
             pal_col(6, tmp2);
 	if (tmp2-0x10 & 0xC0) { pal_col(5, 0x0f); activesprites_type[index] = 0xFF; }		//disappear
             else { pal_col(5, (tmp2-0x10)); activesprites_type[index] = 0xFF; }
@@ -56,6 +56,8 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
         gameState = 0x03; 
         pal_fade_to(4,0); 	    
     }	   
+
+    if (type >= 0x10 && type <= 13 || type == 0xFB || type == 0xFC ) return 0x17;
     
     return 0;
 }
@@ -66,7 +68,7 @@ void sprite_collide_lookup(){
     
     }
     
-    
+    else if (tmp4 <= 2) gamemode = tmp4;
     else if (tmp4 == 0x0B && cube_data == 0x02) {		//orb
         cube_data = 0x00;
         if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
@@ -94,8 +96,8 @@ void sprite_collide_lookup(){
 		else player.vel_y = PAD_HEIGHT_PINK;
 	}
     }
-    else if (tmp4 < 8) gamemode = tmp4;
-    else if (tmp4 < 10) gravity = tmp4 - 8;
+    else if (tmp4 == 8 || tmp4 == 0x10 || tmp4 == 0x11 || tmp4 == 0xFC) gravity = 0;
+    else if (tmp4 == 9 || tmp4 == 0x12 || tmp4 == 0x13 || tmp4 == 0xFB ) gravity = 1;
     else if (tmp4 == 0x0A || tmp4 == 0x0C) {				//yellow pads
         if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
         else player.vel_y = PAD_HEIGHT_YELLOW;

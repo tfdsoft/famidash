@@ -61,7 +61,7 @@ void draw_sprites(void){
           index = shuffle_offset;							//-----------|
 
 		if (index < 0xF0) {
-			if (activesprites_type[index] & 0x30) continue;
+			if (activesprites_type[index] & 0x80) continue;
 		}
 		temp_y = low_byte(activesprites_realy[index]);
 		if (!activesprites_active[index]) continue; 
@@ -69,10 +69,6 @@ void draw_sprites(void){
 		if (temp_x == 0) temp_x = 1;
 		if (temp_x > 0xf0) continue;
 		if (temp_y < 0xf0) {
-			if (index == 0xFC) {			//horizontal gravity down portal
-				oam_meta_spr(temp_x, temp_y-1, 	Portal_Gravity_Down_Horizontal_S[0x00]);
-			}
-			else {
 				tmp3 = activesprites_type[index];
 				if (tmp3 == 7) {			//coin
 					oam_meta_spr(temp_x, temp_y-1, COIN_SPRITES[coinframe]);
@@ -93,9 +89,9 @@ void draw_sprites(void){
 				}
 				
 				else {
-					oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x0f]);
+					oam_meta_spr(temp_x, temp_y-1, Metasprites[tmp3 & 0x7f]);
 				}
-			}
 		}
+		
 	}
 }
