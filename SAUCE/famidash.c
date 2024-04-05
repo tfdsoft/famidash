@@ -52,8 +52,8 @@ void main(){
 
     set_vram_buffer(); // do at least once
 
-    ppu_on_all();
-    pal_fade_to(4,0);
+    // ppu_on_all();
+    // pal_fade_to(4,0);
     gameState = 0x01;
     level = 0x00;
     
