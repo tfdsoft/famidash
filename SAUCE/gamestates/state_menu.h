@@ -4,12 +4,19 @@
 */
 void __fastcall__ refreshmenu(void);
 
+unsigned char* leveltexts[] = {
+  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext
+};
+unsigned char* levellengths[] = {
+    1, 2, 5, 8, 0, 4, 9, 3, 9, 10
+};
 
 void state_menu(){
 	ppu_off();
-
+    pal_bg((char *)paletteMenu);
 	set_scroll_x(0);
     set_scroll_y(0);
+
 
 
 	switch (kandotemp){
@@ -39,14 +46,16 @@ void state_menu(){
 	}
 
 
-	refreshmenu();
+//	refreshmenu();
 	oam_clear();
+    vram_adr(NAMETABLE_A);
+    vram_unrle(menu);
+	multi_vram_buffer_horz(leveltexts[level],levellengths[level],get_at_addr(0, 16, 14));
 	ppu_on_all();
 	pal_fade_to(0,4);
 	while (1){
 		ppu_wait_nmi();
 		music_update();
-
 		pad = pad_poll(0); // read the first controller
 		pad_new = get_pad_new(0);
 
@@ -61,7 +70,7 @@ void state_menu(){
 			if (level > 9){
 				level = 0x00;
 			}
-			refreshmenu();
+	//		refreshmenu();
 		//	break;
 		}
 		if (pad_new & PAD_LEFT){
@@ -71,7 +80,7 @@ void state_menu(){
 			}
 			
 			//break;
-			refreshmenu();
+		//	refreshmenu();
 		}
 	}
 }
