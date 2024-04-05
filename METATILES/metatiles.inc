@@ -4,7 +4,7 @@ Metatile "EMPTY", $00, $00, $00, $00, PAL_0, COL_NONE
 
 Metatile "BG1",   $1a, $1b, $2a, $2b, PAL_1, COL_ALL
 Metatile "BG2",   $1a, $1b, $1a, $1b, PAL_1, COL_ALL
-Metatile "BG3",   $00, $00, $24, $25, PAL_1, COL_ALL
+Metatile "HALF_SLAB_BOTTOM",   $00, $00, $24, $25, PAL_0, COL_BOTTOM
 
 Metatile "BG4",   $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 Metatile "BG5",   $1b, $1b, $2b, $2b, PAL_1, COL_ALL

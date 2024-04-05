@@ -53,22 +53,22 @@ void cube_movement(void){
 	Generic.y = high_byte(player.y); // the rest should be the same
 	
 	if (gravity){
-		if (player.vel_y <= 0){
-			if(bg_coll_U2()) {
+		if (player.vel_y == 0){
+			//if(bg_coll_U2()) {
 				if(pad & PAD_A) {
 					if (!mini) player.vel_y = JUMP_VEL^0xFFFF; // JUMP
 					else player.vel_y = MINIJUMP_VEL^0xFFFF; // JUMP
 				}
-			}
+			//}
 		}
 	} else {
-		if (player.vel_y >= 0){
-			if(bg_coll_D2()) {
+		if (player.vel_y == 0){
+			//if(bg_coll_D2()) {
 				if(pad & PAD_A) {
 					if (!mini) player.vel_y = JUMP_VEL; // JUMP
 					else player.vel_y = MINIJUMP_VEL; // JUMP
 				}
-			}
+			//}
 		}
 	}
 }	
