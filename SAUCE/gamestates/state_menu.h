@@ -1,15 +1,46 @@
-/*
-	Refreshes level name & number
-	Implemented in asm
-*/
-void __fastcall__ refreshmenu(void);
 
-unsigned char* leveltexts[] = {
+const unsigned char* const leveltexts[] = {
   level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext
 };
-unsigned char* levellengths[] = {
-    1, 2, 5, 8, 0, 4, 9, 3, 9, 10
+
+#define GAME_MENU_TITLE_X_OFFSET 9
+const unsigned char level_text_padding[] = {
+    GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level1text)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level2text)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level3text)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level4text)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level5text)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level6text)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level7text)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level8text)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level9text)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelAtext)) / 2),
 };
+const unsigned char level_text_size[] = {
+    sizeof(level1text) - 1,
+	sizeof(level2text) - 1,
+	sizeof(level3text) - 1,
+	sizeof(level4text) - 1,
+	sizeof(level5text) - 1,
+	sizeof(level6text) - 1,
+	sizeof(level7text) - 1,
+	sizeof(level8text) - 1,
+	sizeof(level9text) - 1,
+	sizeof(levelAtext) - 1,
+};
+
+/*
+	Refreshes level name & number
+*/
+void __fastcall__ refreshmenu(void) {
+	#include "../defines/color1_charmap.h"
+	// Clear out the previous title
+	one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 14));
+	// center this by offseting the write by the padding amount
+	multi_vram_buffer_horz((const char*)leveltexts[level],
+		level_text_size[level],
+		NTADR_A(level_text_padding[level], 14));
+}
 
 void state_menu(){
 	ppu_off();
@@ -46,11 +77,14 @@ void state_menu(){
 	}
 
 
-//	refreshmenu();
 	oam_clear();
+
+	// Expand the data for the menu nametable while the PPU is still off
     vram_adr(NAMETABLE_A);
-    vram_unrle(menu);
-	multi_vram_buffer_horz(leveltexts[level],levellengths[level],get_at_addr(0, 16, 14));
+    vram_unrle(game_main_menu);
+
+	refreshmenu();
+
 	ppu_on_all();
 	pal_fade_to(0,4);
 	while (1){
@@ -70,7 +104,7 @@ void state_menu(){
 			if (level > 9){
 				level = 0x00;
 			}
-	//		refreshmenu();
+			refreshmenu();
 		//	break;
 		}
 		if (pad_new & PAD_LEFT){
@@ -80,7 +114,7 @@ void state_menu(){
 			}
 			
 			//break;
-		//	refreshmenu();
+			refreshmenu();
 		}
 	}
 }

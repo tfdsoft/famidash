@@ -1,7 +1,7 @@
 extern unsigned char scroll_count;
 
 void reset_level(void) {
-    unsigned char i;
+    // unsigned char i;
     famistudio_music_stop();
         coins = 0;
 

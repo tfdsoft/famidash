@@ -19,7 +19,7 @@
 
 .export _oam_meta_spr_vflipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
-.export _refreshmenu
+; .export _refreshmenu
 .export _movement
 .export _music_play, _music_update
 
@@ -113,6 +113,41 @@ _oam_meta_spr_vflipped:
     INCW addr
 .endmacro
 
+
+.export _one_vram_buffer_horz_repeat
+.proc _one_vram_buffer_horz_repeat
+.import popptr1
+	ldy VRAM_INDEX
+	sta VRAM_BUF+1, y
+	txa
+    ora #$40
+WriteHiByte:
+	sta VRAM_BUF, y
+		sty TEMP ;popa uses y
+	jsr popptr1 ; pop two bytes from c stack into ptr1
+		ldy TEMP
+    ; ptr1 lo byte is len, hi byte is character to repeat
+    lda ptr1
+    ora #$80 ; set length + repeat byte
+	sta VRAM_BUF+2, y
+    lda ptr1+1
+	sta VRAM_BUF+3, y
+	lda #$ff ;=NT_UPD_EOF
+	sta VRAM_BUF+4, y
+    tya
+    clc
+    adc #4
+    sta VRAM_INDEX
+	rts
+.endproc
+.export _one_vram_buffer_horz_repeat
+.proc _one_vram_buffer_vert_repeat
+	ldy VRAM_INDEX
+	sta VRAM_BUF+1, y
+	txa
+    ora #$80 ; vertical update
+    jmp _one_vram_buffer_horz_repeat::WriteHiByte
+.endproc
 
 _init_rld:
     ; The C code being ported:
@@ -818,112 +853,112 @@ ParallaxBufferCol5:
 
 .endproc
 
-_refreshmenu:
-	; The C code being "ported":
-		; one_vram_buffer(0xD1+level, NTADR_A(29,24));
-		; ppu_off();
-		; vram_adr(NTADR_A(2,25));	
-		; switch (level){
-		; 	case 0x0N:  N = 1..7
-		; 		for(tmp1=0;levelKtext[tmp1];++tmp1){
-		; 			vram_put(0xA0+levelNtext[tmp1]);
-		; 		};
-		; 		break;
-		; }		
-		; ppu_on_all();
-		; return;
-	; Instead of ppu_off/on i do it with the VRAM buffer
-	; like a civilised person
-	LDY VRAM_INDEX
-	;! THE ADDRESS CORRESPONDING TO NTADR_A(29,24) IS
-	;! $231D. THIS IS HARDCODED, CHANGE THESE LINES IF
-	;! YOU WANT TO CHANGE THE POSITION OF IT
-;	LDA #$23			;
-;	STA VRAM_BUF, Y		;
-;	LDA #$1D			;
-;	STA VRAM_BUF+1, Y	;	one_vram_buffer(0xD1+level, NTADR_A(29,24));
-;	LDA _level			;	(Displays the level number)
-;	CLC					;
-;	ADC #$D1			;
-;	STA VRAM_BUF+2, Y	;__
+; _refreshmenu:
+; 	; The C code being "ported":
+; 		; one_vram_buffer(0xD1+level, NTADR_A(29,24));
+; 		; ppu_off();
+; 		; vram_adr(NTADR_A(2,25));	
+; 		; switch (level){
+; 		; 	case 0x0N:  N = 1..7
+; 		; 		for(tmp1=0;levelKtext[tmp1];++tmp1){
+; 		; 			vram_put(0xA0+levelNtext[tmp1]);
+; 		; 		};
+; 		; 		break;
+; 		; }		
+; 		; ppu_on_all();
+; 		; return;
+; 	; Instead of ppu_off/on i do it with the VRAM buffer
+; 	; like a civilised person
+; 	LDY VRAM_INDEX
+; 	;! THE ADDRESS CORRESPONDING TO NTADR_A(29,24) IS
+; 	;! $231D. THIS IS HARDCODED, CHANGE THESE LINES IF
+; 	;! YOU WANT TO CHANGE THE POSITION OF IT
+; ;	LDA #$23			;
+; ;	STA VRAM_BUF, Y		;
+; ;	LDA #$1D			;
+; ;	STA VRAM_BUF+1, Y	;	one_vram_buffer(0xD1+level, NTADR_A(29,24));
+; ;	LDA _level			;	(Displays the level number)
+; ;	CLC					;
+; ;	ADC #$D1			;
+; ;	STA VRAM_BUF+2, Y	;__
 
-	;! THE ADDRESS CORRESPONDING TO NTADR_A(2,25) IS
-	;! $20A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
-	;! IT BECOMES $64A2. THIS IS HARDCODED, CHANGE THESE
-	;! LINES IF YOU WANT TO CHANGE THE POSITION OF IT
-	LDA #$65			;
-	STA VRAM_BUF, Y	;   ~ vram_adr(NTADR_A(2,25));
-	LDA #$CE			;
-	STA VRAM_BUF+1, Y	;__
-	LDA #15				;	Const length of 15
-	STA VRAM_BUF+2, Y	;__
+; 	;! THE ADDRESS CORRESPONDING TO NTADR_A(2,25) IS
+; 	;! $20A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
+; 	;! IT BECOMES $64A2. THIS IS HARDCODED, CHANGE THESE
+; 	;! LINES IF YOU WANT TO CHANGE THE POSITION OF IT
+; 	LDA #$65			;
+; 	STA VRAM_BUF, Y	;   ~ vram_adr(NTADR_A(2,25));
+; 	LDA #$CE			;
+; 	STA VRAM_BUF+1, Y	;__
+; 	LDA #15				;	Const length of 15
+; 	STA VRAM_BUF+2, Y	;__
 
-	LDX _level					;
-	LDA @string_ptrs_lo, X	    ;   Load low byte of lvl name pointer
-	STA <PTR					;__
-	LDA @string_ptrs_hi, X	    ;   Load high byte of lvl name pointer
-	STA <PTR+1					;__
-	LDA @padding, X			    ;
-	LSR							;	Get left offset
-	TAX							;__
-	ADC #$00					;	Get right offset
-	STA <TEMP+3					;__
+; 	LDX _level					;
+; 	LDA @string_ptrs_lo, X	    ;   Load low byte of lvl name pointer
+; 	STA <PTR					;__
+; 	LDA @string_ptrs_hi, X	    ;   Load high byte of lvl name pointer
+; 	STA <PTR+1					;__
+; 	LDA @padding, X			    ;
+; 	LSR							;	Get left offset
+; 	TAX							;__
+; 	ADC #$00					;	Get right offset
+; 	STA <TEMP+3					;__
 
-	CPX #$00	; Had to do this, very sorry
-	BEQ @main_data
+; 	CPX #$00	; Had to do this, very sorry
+; 	BEQ @main_data
 
-	LDA #$C0	; Space char
+; 	LDA #$C0	; Space char
 
-	@pad_loop_left:
-		STA VRAM_BUF+3, Y
-		INY
-		DEX
-		BNE @pad_loop_left
+; 	@pad_loop_left:
+; 		STA VRAM_BUF+3, Y
+; 		INY
+; 		DEX
+; 		BNE @pad_loop_left
 	
-	@main_data:
-	; No need to LDX #$00, as it's either 0 from the prev loop or 0 left padding
-		LDA (<PTR, X)	; Load byte
+; 	@main_data:
+; 	; No need to LDX #$00, as it's either 0 from the prev loop or 0 left padding
+; 		LDA (<PTR, X)	; Load byte
 
-	@main_data_loop:
-		CLC
-		ADC #$A0
-		STA VRAM_BUF+3, Y
-		INY
-		INCW <PTR
-		LDA (<PTR, X)			;	Load byte
-		BNE @main_data_loop		;__ Continue if not 0
+; 	@main_data_loop:
+; 		CLC
+; 		ADC #$A0
+; 		STA VRAM_BUF+3, Y
+; 		INY
+; 		INCW <PTR
+; 		LDA (<PTR, X)			;	Load byte
+; 		BNE @main_data_loop		;__ Continue if not 0
 	
-	LDX <TEMP+3
-	BEQ @end
+; 	LDX <TEMP+3
+; 	BEQ @end
 
-	LDA #$C0
+; 	LDA #$C0
 
-	@pad_loop_right:
-		STA VRAM_BUF+3, Y
-		INY
-		DEX
-		BNE @pad_loop_right
+; 	@pad_loop_right:
+; 		STA VRAM_BUF+3, Y
+; 		INY
+; 		DEX
+; 		BNE @pad_loop_right
 	
-	@end:
-	LDA #$FF			;	Finish off the write
-	STA VRAM_BUF+3, Y	;__
+; 	@end:
+; 	LDA #$FF			;	Finish off the write
+; 	STA VRAM_BUF+3, Y	;__
 
-	TYA				;
-	CLC				;	Adjust vram index
-	ADC #$06		;
-	STA VRAM_INDEX	;__
+; 	TYA				;
+; 	CLC				;	Adjust vram index
+; 	ADC #$06		;
+; 	STA VRAM_INDEX	;__
 
 
 
-	RTS
+; 	RTS
 
-@string_ptrs_lo:
-    .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext
-@string_ptrs_hi:
-    .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext
-@padding:
-    ; Calculation: 15 - length of string
-    .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10
+; @string_ptrs_lo:
+;     .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext
+; @string_ptrs_hi:
+;     .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext
+; @padding:
+;     ; Calculation: 15 - length of string
+;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10
 
 ;void __fastcall__ movement(void);
 _movement:
@@ -1020,3 +1055,212 @@ _music_update:
     JMP _mmc3_pop_prg_bank_1
 
 ; Because i JMPed, the routine is over
+
+SPR_BANK_00 = $1c
+
+
+;void load_next_sprite(void){
+;    mmc3_tmp_prg_bank_1(SPR_BANK_00);
+;    if (sprite_data[spr_index<<3] == TURN_OFF) return;
+;    tmp3 = sprite_data[(spr_index<<3)+0];  low_byte(activesprites_x[spr_index % max_loaded_sprites]) = tmp3; 
+;    tmp3 = sprite_data[(spr_index<<3)+1]; high_byte(activesprites_x[spr_index % max_loaded_sprites]) = tmp3; 
+;    tmp3 = sprite_data[(spr_index<<3)+2];  low_byte(activesprites_y[spr_index % max_loaded_sprites]) = tmp3;
+;    tmp3 = sprite_data[(spr_index<<3)+3]; high_byte(activesprites_y[spr_index % max_loaded_sprites]) = tmp3;
+;    tmp3 = sprite_data[(spr_index<<3)+4]; activesprites_type[spr_index % max_loaded_sprites] = tmp3;
+;    // unused byte 5
+;    // unused byte 6 
+;    // unused byte 7
+;
+;
+;    tmp3 = activesprites_x[spr_index]; activesprites_realx[spr_index % max_loaded_sprites] = tmp3;
+;    tmp3 = activesprites_y[spr_index]; activesprites_realy[spr_index % max_loaded_sprites] = tmp3;
+;
+;    //gray_line();
+;    mmc3_pop_prg_bank_1();
+;    ++spr_index;
+;}
+
+.import _activesprites_x, _activesprites_y, _activesprites_type
+.import _activesprites_realx, _activesprites_realy
+
+.export _load_next_sprite := load_next_sprite
+.proc load_next_sprite
+.importzp _sprite_data
+.import _spr_index
+SpriteData = ptr1
+SpriteOffset = ptr2
+
+    lda _spr_index
+    cmp #$ff
+    bne :+
+        ; Maximum sprites reached?
+        rts
+    :
+
+    lda #$1c
+    jsr _mmc3_tmp_prg_bank_1
+
+
+    lda #0
+    sta SpriteOffset+1
+
+    ; Sprite data is 8 bytes, so multiply by 8 (16 bit)
+    lda _spr_index
+    asl
+    rol SpriteOffset+1
+    asl
+    rol SpriteOffset+1
+    asl
+    rol SpriteOffset+1
+    sta SpriteOffset
+    ; And also keep the "max sprite id" number in x
+    ; This is premultiplied by two for the word sized x/y fields which come first
+    lda _spr_index
+    and #$0f
+    asl
+    tax
+    
+    ; Copy the pointer used for the sprite data to ZP so we can use (zp), y addressing
+    lda _sprite_data
+    clc
+    adc SpriteOffset
+    sta SpriteData
+    lda _sprite_data+1
+    adc SpriteOffset+1
+    sta SpriteData+1
+
+    ; Now read the data into the sprite
+    
+    ldy #0
+    lda (SpriteData),y
+    iny
+    cmp #$ff ; If we've reached the end of the sprite data exit
+    beq @EarlyExit
+    
+    ; X - 2 bytes
+    sta _activesprites_x,x
+    lda (SpriteData),y
+    iny
+    sta _activesprites_x+1,x
+
+    ; Y - 2 bytes
+    lda (SpriteData),y
+    iny
+    sta _activesprites_y,x
+    lda (SpriteData),y
+    iny
+    sta _activesprites_y+1,x
+
+    ; id - 1 byte
+    ; Since its 1 byte, we want to divide the "pre multiplied" offset by 2
+    txa
+    lsr
+    tax
+    lda (SpriteData),y
+    iny
+    sta _activesprites_type,x
+
+    ; Copy the low bytes for the active sprite here as well.
+    ; Note we couldn't write this eariler when x was multiplied by 2
+    txa
+    asl
+    tay
+    lda _activesprites_x,y
+    sta _activesprites_realx,x
+    lda _activesprites_y,y
+    sta _activesprites_realy,x
+
+    ; Increment to the next sprite index
+    inc _spr_index
+    bne @Exit
+
+@EarlyExit:
+    lda #$ff
+    sta _spr_index
+@Exit:
+    jmp _mmc3_pop_prg_bank_1
+.endproc
+
+
+
+; char get_position(void){
+;     tmp5 -= scroll_x;
+;     if (high_byte(tmp5) == 0xff) {
+;         load_next_sprite();
+;         return 0;
+;     }
+;     tmp6 -= scroll_y;
+;     temp_x = tmp5 & 0x00ff;
+;     temp_y = tmp6 & 0x00ff;
+;     if (high_byte(tmp5)) return 0;
+;     if (high_byte(tmp6)) return 0;
+;     return 1;
+; }
+; void check_spr_objects(void){
+;     for (index = 0; index < max_loaded_sprites; ++index){
+;         activesprites_active[index] = 0;
+;         low_byte(tmp5) = low_byte(activesprites_x[index]);
+;         high_byte(tmp5) = high_byte(activesprites_x[index]);
+;         low_byte(tmp6) = low_byte(activesprites_y[index]);
+;         high_byte(tmp6) = high_byte(activesprites_y[index]);
+;         activesprites_active[index] = get_position();
+;         activesprites_realx[index] = temp_x;
+;         activesprites_realy[index] = temp_y;
+;     }
+; }
+
+.import _activesprites_active, _scroll_x, _scroll_y
+.export _check_spr_objects := check_spr_objects
+.proc check_spr_objects
+    ; for each sprite we want to check to see if its active
+    ; if it is, update its realx/y position
+    ; if its not, attempt to load another sprite
+    ldx #16 - 1
+
+check_sprite_loop:
+        ; X is the current sprite object, y is the premultiplied index for two byte fields
+        txa
+        asl
+        tay
+        ; Load two byte X coord to see if we went offscreen
+        lda _activesprites_x, y
+        sec
+        sbc _scroll_x
+        lda _activesprites_x+1, y
+        sbc _scroll_x+1
+        bpl sprite_alive
+            txa
+            pha
+                jsr load_next_sprite
+            pla
+            tax
+            lda #0
+            jmp write_active
+    sprite_alive:
+        ; Sprite is still alive, so check to see if its on screen
+        bne sprite_offscreen
+        ; sprite is alive AND onscreen x, so now check the Y position
+        lda _activesprites_y, y
+        sec
+        sbc _scroll_y
+        sta _activesprites_realy, x
+        lda _activesprites_y+1, y
+        sbc _scroll_y+1
+        bne sprite_offscreen
+
+        ; totally onscreen so finish updating its scroll position
+        lda _activesprites_x, y
+        sec
+        sbc _scroll_x
+        sta _activesprites_realx, x
+
+        lda #1
+        bne write_active ; unconditional
+sprite_offscreen:
+        lda #0
+write_active:
+        sta _activesprites_active, x
+        dex
+        bpl check_sprite_loop
+    rts
+.endproc

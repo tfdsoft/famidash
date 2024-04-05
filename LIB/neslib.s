@@ -987,6 +987,7 @@ _flush_vram_update2: ;minor changes %
 	iny
 	sta PPU_ADDR
 	lda (NAME_UPD_ADR),y
+	bmi @updRepeatedByte
 	iny
 	tax
 
@@ -1002,6 +1003,23 @@ _flush_vram_update2: ;minor changes %
 	sta PPU_CTRL
 
 	jmp @updName
+
+@updRepeatedByte:
+	and #$7f
+	tax
+	iny
+	lda (NAME_UPD_ADR),y
+	iny
+@updRepeatedByteLoop:
+	sta PPU_DATA
+	dex
+	bne @updRepeatedByteLoop
+	
+	lda <PPU_CTRL_VAR
+	sta PPU_CTRL
+
+	jmp @updName
+
 
 @updDone:
 ;changed to automatically clear these

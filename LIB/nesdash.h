@@ -30,6 +30,13 @@ void __fastcall__ music_play(unsigned char song);
  */
 void __fastcall__ music_update (void);
 
+/**
+ * Update the PPU using the VRAM buffer with a single tile repeated LENGTH number of times.
+ * Length must not be greater than 0x7f!
+ */
+void __fastcall__ one_vram_buffer_horz_repeat(unsigned char data, unsigned char len, int ppu_address);
+void __fastcall__ one_vram_buffer_vert_repeat(unsigned char data, unsigned char len, int ppu_address);
+
 extern unsigned char parallax_scroll_column;
 extern unsigned char parallax_scroll_column_start;
 
@@ -37,3 +44,5 @@ extern unsigned char parallax_scroll_column_start;
 #define high2bytes(a) *((unsigned short*)&a+1)
 
 #define vram_put(a) POKE(0x2007, a)
+
+#define GET_BANK(sym) (__asm__("ldx #0\nlda #<.bank(%v)", sym), __A__)

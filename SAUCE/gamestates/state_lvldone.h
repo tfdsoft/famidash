@@ -57,7 +57,7 @@ void state_lvldone(){
     set_scroll_x(0);
     set_scroll_y(scroll_y);
 
-	mmc3_set_8kb_chr(8);
+	mmc3_set_8kb_chr(12);
 
     
 

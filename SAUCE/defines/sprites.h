@@ -390,3 +390,17 @@ const unsigned char * const Metasprites[]={
 
 
 	};
+
+// Animation data
+
+const unsigned char AnimationFrameCount[] = {
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	4, // COIN_SPRITE
+	4,
+};

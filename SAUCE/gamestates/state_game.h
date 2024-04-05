@@ -4,6 +4,8 @@
 */
 void __fastcall__ movement(void);
 
+extern unsigned char* PARALLAX_CHR;
+
 void state_game(){
 	ppu_off();
 
@@ -21,7 +23,9 @@ void state_game(){
     while (1) {
         
         ppu_wait_nmi();
-        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + 16);
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1);
+        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
         music_update();
         
 
