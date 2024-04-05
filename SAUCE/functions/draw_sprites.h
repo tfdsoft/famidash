@@ -13,9 +13,14 @@ void draw_sprites(void){
 			cube_rotate += CUBE_GRAVITY;
 			if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
 
-			if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, CUBE[high_byte(cube_rotate)]);
-			else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, CUBE[high_byte(cube_rotate)]);
-
+			if (!mini) {
+				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, CUBE[high_byte(cube_rotate)]);
+				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, CUBE[high_byte(cube_rotate)]);
+			}
+			else {
+				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_CUBE[high_byte(cube_rotate)]);
+				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_CUBE[high_byte(cube_rotate)]);				
+			}
 			break;
 		case 0x01:
 			cube_rotate = 0x0400 - player.vel_y;

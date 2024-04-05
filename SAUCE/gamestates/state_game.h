@@ -7,6 +7,7 @@ void __fastcall__ movement(void);
 void state_game(){
 	ppu_off();
 
+//	mini = 1;
     pal_bg((char *)paletteDefault);
 
     load_ground(0);
@@ -56,7 +57,7 @@ void state_game(){
         color_emphasis(0);
         
         
-        //gray_line();
+         if (DEBUG_MODE) gray_line();
         if (gameState != 0x02) return;
     }
 }
