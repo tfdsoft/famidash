@@ -137,8 +137,6 @@ const unsigned char COIN_3[]={
 };
 
 
-const unsigned char * const COIN_SPRITES[]={COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_SPRITE, COIN_1, COIN_1, COIN_1, COIN_1, COIN_1, COIN_2, COIN_2, COIN_2, COIN_2, COIN_2, COIN_3, COIN_3, COIN_3, COIN_3, COIN_3};
-
 
 const unsigned char Ball_0[]={
 
@@ -350,8 +348,6 @@ const unsigned char Yellow_Jump_Pad4[]={
 	0x80
 };
 
-const unsigned char * const YELLOW_PAD_FRAMES[]={Yellow_Jump_Pad, Yellow_Jump_Pad, Yellow_Jump_Pad,Yellow_Jump_Pad,Yellow_Jump_Pad,Yellow_Jump_Pad2, Yellow_Jump_Pad2, Yellow_Jump_Pad2,Yellow_Jump_Pad2,Yellow_Jump_Pad2,Yellow_Jump_Pad3, Yellow_Jump_Pad3, Yellow_Jump_Pad3,Yellow_Jump_Pad3,Yellow_Jump_Pad3,Yellow_Jump_Pad4, Yellow_Jump_Pad4,Yellow_Jump_Pad4,Yellow_Jump_Pad4,Yellow_Jump_Pad4};
-
 const unsigned char Yellow_Jump_Pad_U[]={
 
 	  0,-0,0x99,1|OAM_FLIP_V,
@@ -376,8 +372,6 @@ const unsigned char Yellow_Jump_Pad_U4[]={
 	  8,-0,0x99,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
-
-const unsigned char * const YELLOW_PAD_U_FRAMES[]={Yellow_Jump_Pad_U, Yellow_Jump_Pad_U, Yellow_Jump_Pad_U,Yellow_Jump_Pad_U,Yellow_Jump_Pad_U,Yellow_Jump_Pad_U2, Yellow_Jump_Pad_U2, Yellow_Jump_Pad_U2,Yellow_Jump_Pad_U2,Yellow_Jump_Pad_U2,Yellow_Jump_Pad_U3, Yellow_Jump_Pad_U3, Yellow_Jump_Pad_U3,Yellow_Jump_Pad_U3,Yellow_Jump_Pad_U3,Yellow_Jump_Pad_U4, Yellow_Jump_Pad_U4,Yellow_Jump_Pad_U4,Yellow_Jump_Pad_U4,Yellow_Jump_Pad_U4};
 
 const unsigned char Gravity_Pad[]={
 
@@ -404,8 +398,6 @@ const unsigned char Gravity_Pad4[]={
 	0x80
 };
 
-const unsigned char * const GRAVITY_PAD_FRAMES[]={Gravity_Pad, Gravity_Pad, Gravity_Pad,Gravity_Pad,Gravity_Pad,Gravity_Pad2, Gravity_Pad2, Gravity_Pad2,Gravity_Pad2,Gravity_Pad2,Gravity_Pad3, Gravity_Pad3, Gravity_Pad3,Gravity_Pad3,Gravity_Pad3,Gravity_Pad4, Gravity_Pad4,Gravity_Pad4,Gravity_Pad4,Gravity_Pad4};
-
 const unsigned char Gravity_Pad_U[]={
 
 	  0, -0,0x99,4|OAM_FLIP_V,
@@ -431,9 +423,45 @@ const unsigned char Gravity_Pad_U4[]={
 	0x80
 };
 
-const unsigned char * const GRAVITY_PAD_U_FRAMES[]={Gravity_Pad_U, Gravity_Pad_U, Gravity_Pad_U,Gravity_Pad_U,Gravity_Pad_U,Gravity_Pad_U2, Gravity_Pad_U2, Gravity_Pad_U2,Gravity_Pad_U2,Gravity_Pad_U2,Gravity_Pad_U3, Gravity_Pad_U3, Gravity_Pad_U3,Gravity_Pad_U3,Gravity_Pad_U3,Gravity_Pad_U4, Gravity_Pad_U4,Gravity_Pad_U4,Gravity_Pad_U4,Gravity_Pad_U4};
+struct SpriteFrame {
+	unsigned short frame_count; // use a two byte length value for alignment
+	const unsigned char* ptr;
+};
 
+const struct SpriteFrame COIN_SPRITES[]={
+	{5, COIN_SPRITE},
+	{5, COIN_1},
+	{5, COIN_2},
+	{5, COIN_3},
+};
 
+const struct SpriteFrame YELLOW_PAD_SPRITES[]={
+	{5, Yellow_Jump_Pad},
+	{5, Yellow_Jump_Pad2},
+	{5, Yellow_Jump_Pad3},
+	{5, Yellow_Jump_Pad4},
+};
+
+const struct SpriteFrame YELLOW_PAD_U_SPRITES[]={
+	{5, Yellow_Jump_Pad_U},
+	{5, Yellow_Jump_Pad_U2},
+	{5, Yellow_Jump_Pad_U3},
+	{5, Yellow_Jump_Pad_U4},
+};
+
+const struct SpriteFrame GRAVITY_PAD_SPRITES[]={
+	{5, Gravity_Pad},
+	{5, Gravity_Pad2},
+	{5, Gravity_Pad3},
+	{5, Gravity_Pad4},
+};
+
+const struct SpriteFrame GRAVITY_PAD_U_SPRITES[]={
+	{5, Gravity_Pad_U},
+	{5, Gravity_Pad_U2},
+	{5, Gravity_Pad_U3},
+	{5, Gravity_Pad_U4},
+};
 
 const unsigned char nometa[] = {0x80};
 
@@ -463,8 +491,27 @@ const unsigned char * const Metasprites[]={
 
 
 // Animation data
+const void* animation_frame_list[] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	COIN_SPRITES,
+	NULL, // Portal_Gravity_Down,
+	NULL, // Portal_Gravity_Up,
+	YELLOW_PAD_SPRITES, // Yellow_Jump_Pad,
+	NULL, // Yellow_Jump_Orb,
+	YELLOW_PAD_U_SPRITES, // Yellow_Jump_Pad_U,
+	GRAVITY_PAD_SPRITES, // Gravity_Pad,
+	GRAVITY_PAD_U_SPRITES, // Gravity_Pad_U,	  //Coin Disappear
+	NULL, // nometa, // end stage trigger
+};
 
-const unsigned char AnimationFrameCount[] = {
+// Number of UNIQUE animation frames
+const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
@@ -472,6 +519,13 @@ const unsigned char AnimationFrameCount[] = {
 	0,
 	0,
 	0,
-	4, // COIN_SPRITE
-	4,
+	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	0, // Portal_Gravity_Down,
+	0, // Portal_Gravity_Up,
+	sizeof(YELLOW_PAD_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
+	0, // Yellow_Jump_Orb,
+	sizeof(YELLOW_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad_U,
+	sizeof(GRAVITY_PAD_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad,
+	sizeof(YELLOW_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
+	0, // nometa, // end stage trigger
 };
