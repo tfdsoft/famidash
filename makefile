@@ -68,7 +68,7 @@ $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 	$(CA65) $(call ca65IncDir,LIB) $(TMPDIR)/$(NAME).s -g
 
 $(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h SAUCE/gamestates/*.h SAUCE/gamemodes/*.h SAUCE/defines/*.h SAUCE/functions/*.h METATILES/metatiles.h LEVELS/*.h LIB/*.h MUSIC/EXPORTS/musicDefines.h 
-	$(CC65) -Osir -g SAUCE/$(NAME).c -E --add-source -o $(TMPDIR)/$(NAME).t
+	$(CC65) -Osir -g SAUCE/$(NAME).c -E --add-source -o $(TMPDIR)/$(NAME).c
 	$(CC65) -Osir -g SAUCE/$(NAME).c --add-source -o $(TMPDIR)/$(NAME).s
 
 clean:

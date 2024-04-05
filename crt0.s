@@ -277,7 +277,13 @@ detectNTSC:
    	.word irq	;$fffe irq / brk
 
 
-.segment "CHR"
-	.incbin "GRAPHICS/famidash.chr"
-	.incbin "GRAPHICS/menus.chr"
+.segment "GAMECHR"
+.export _GAME_CHR
+_GAME_CHR:
+	.incbin "GRAPHICS/famidash.chr" ; 8kb
+	.incbin "GRAPHICS/famidash-parallax.chr" ; 4kb
+	.incbin "GRAPHICS/menus.chr"    ; 4kb
+.segment "PARALLAXCHR"
+.export _PARALLAX_CHR
+_PARALLAX_CHR:
 	.incbin "GRAPHICS/parallax.chr" ; 144kb
