@@ -838,25 +838,25 @@ _refreshmenu:
 	;! THE ADDRESS CORRESPONDING TO NTADR_A(29,24) IS
 	;! $231D. THIS IS HARDCODED, CHANGE THESE LINES IF
 	;! YOU WANT TO CHANGE THE POSITION OF IT
-	LDA #$23			;
-	STA VRAM_BUF, Y		;
-	LDA #$1D			;
-	STA VRAM_BUF+1, Y	;	one_vram_buffer(0xD1+level, NTADR_A(29,24));
-	LDA _level			;	(Displays the level number)
-	CLC					;
-	ADC #$D1			;
-	STA VRAM_BUF+2, Y	;__
+;	LDA #$23			;
+;	STA VRAM_BUF, Y		;
+;	LDA #$1D			;
+;	STA VRAM_BUF+1, Y	;	one_vram_buffer(0xD1+level, NTADR_A(29,24));
+;	LDA _level			;	(Displays the level number)
+;	CLC					;
+;	ADC #$D1			;
+;	STA VRAM_BUF+2, Y	;__
 
 	;! THE ADDRESS CORRESPONDING TO NTADR_A(2,25) IS
 	;! $20A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
 	;! IT BECOMES $64A2. THIS IS HARDCODED, CHANGE THESE
 	;! LINES IF YOU WANT TO CHANGE THE POSITION OF IT
-	LDA #$60			;
-	STA VRAM_BUF+3, Y	;   ~ vram_adr(NTADR_A(2,25));
-	LDA #$A2			;
-	STA VRAM_BUF+4, Y	;__
+	LDA #$65			;
+	STA VRAM_BUF, Y	;   ~ vram_adr(NTADR_A(2,25));
+	LDA #$CE			;
+	STA VRAM_BUF+1, Y	;__
 	LDA #15				;	Const length of 15
-	STA VRAM_BUF+5, Y	;__
+	STA VRAM_BUF+2, Y	;__
 
 	LDX _level					;
 	LDA @string_ptrs_lo, X	    ;   Load low byte of lvl name pointer
@@ -875,7 +875,7 @@ _refreshmenu:
 	LDA #$C0	; Space char
 
 	@pad_loop_left:
-		STA VRAM_BUF+6, Y
+		STA VRAM_BUF+3, Y
 		INY
 		DEX
 		BNE @pad_loop_left
@@ -887,7 +887,7 @@ _refreshmenu:
 	@main_data_loop:
 		CLC
 		ADC #$A0
-		STA VRAM_BUF+6, Y
+		STA VRAM_BUF+3, Y
 		INY
 		INCW <PTR
 		LDA (<PTR, X)			;	Load byte
@@ -899,19 +899,21 @@ _refreshmenu:
 	LDA #$C0
 
 	@pad_loop_right:
-		STA VRAM_BUF+6, Y
+		STA VRAM_BUF+3, Y
 		INY
 		DEX
 		BNE @pad_loop_right
 	
 	@end:
 	LDA #$FF			;	Finish off the write
-	STA VRAM_BUF+6, Y	;__
+	STA VRAM_BUF+3, Y	;__
 
 	TYA				;
 	CLC				;	Adjust vram index
 	ADC #$06		;
 	STA VRAM_INDEX	;__
+
+
 
 	RTS
 

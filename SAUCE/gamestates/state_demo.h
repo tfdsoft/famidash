@@ -5,7 +5,7 @@ void state_demo(){
 
     mmc3_tmp_prg_bank_1(0);
     vram_adr(NAMETABLE_A);
-    vram_unrle(dem_funnies);
+//    vram_unrle(dem_funnies);
     mmc3_pop_prg_bank_1();
 
 	mmc3_set_8kb_chr(8);
