@@ -20,6 +20,7 @@ PAL_3 = (3)
 COL_DEATH = (1 << 7)
 COL_ALL   = (1 << 6)
 COL_BOTTOM   = (1 << 5)
+COL_TOP   = (1 << 4)
 COL_NONE  = (0)
 
 

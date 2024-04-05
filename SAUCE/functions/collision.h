@@ -27,6 +27,7 @@ char bg_coll_L(void){
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
+    if(bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_TOP) return 0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
     tmp1 = Generic.y + Generic.height;
@@ -34,6 +35,7 @@ char bg_coll_L(void){
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
+    if(bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_TOP) return 0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
     return 0;
@@ -48,73 +50,106 @@ char bg_coll_R(void){
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
+    if(bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_TOP) return 0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
     return 0;
 }
 
 char bg_coll_U(void){
-    // check 2 points on the bottom side
+	// check 2 points on the bottom side
 	tmp5 = Generic.x + low2bytes(scroll_x) -1;
-    temp_x = (char)tmp5; // low byte
-    
+	temp_x = (char)tmp5; // low byte
+
 	tmp1 = Generic.y-1;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
-    temp_y = (char)tmp5; // low byte
+	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
-    eject_U = temp_y | 0xf0;
-    if(bg_collision_sub() & COL_ALL) return 1;
-    
-    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
-    temp_x = (char)tmp5; // low byte
-    
-    if(bg_collision_sub() & COL_ALL) return 1;
-    
-    return 0;
+	eject_U = temp_y | 0xf0;
+
+	if(!gravity) {
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
+
+		tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
+		temp_x = (char)tmp5; // low byte
+
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
+	}
+	else {
+		if(bg_collision_sub() & COL_TOP) {
+			tmp1 = Generic.y+7;
+			tmp5 = add_scroll_y(tmp1, scroll_y);
+			temp_y = (char)tmp5; // low byte
+			temp_room = tmp5 >> 8; // high byte
+			eject_U = temp_y | 0xf0;			
+			if(bg_collision_sub() & COL_TOP) return 1;
+		}
+		
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
+
+		tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
+		temp_x = (char)tmp5; // low byte
+
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
+	}
+
+	return 0;
+	
 }
 
 char bg_coll_D(void){
-    // check 2 points on the bottom side
+	// check 2 points on the bottom side
 	tmp5 = Generic.x + low2bytes(scroll_x) -1;
-    temp_x = (char)tmp5; // low byte
-    
+	temp_x = (char)tmp5; // low byte
+
 	if (!mini) tmp1 = Generic.y + Generic.height;
 	else tmp1 = Generic.y + Generic.height+8;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
-    temp_y = (char)tmp5; // low byte
+	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
-    eject_D = (temp_y + 1) & 0x0f;
- 
+	eject_D = (temp_y + 1) & 0x0f;
 
- if(bg_collision_sub() & COL_BOTTOM) {
-	if (!mini) tmp1 = Generic.y + (Generic.height/2);
-	else tmp1 = Generic.y + ((Generic.height+8)/2);
-	tmp5 = add_scroll_y(tmp1, scroll_y);
-    temp_y = (char)tmp5; // low byte
-	temp_room = tmp5 >> 8; // high byte
-    eject_D = (temp_y + 1) & 0x0f;	 
- if(bg_collision_sub() & COL_BOTTOM) return 1;
- }
+	if(!gravity) {
+		if(bg_collision_sub() & COL_BOTTOM) {
+			if (!mini) tmp1 = Generic.y + (Generic.height/2);
+			else tmp1 = Generic.y + ((Generic.height+8)/2);
+			tmp5 = add_scroll_y(tmp1, scroll_y);
+			temp_y = (char)tmp5; // low byte
+			temp_room = tmp5 >> 8; // high byte
+			eject_D = (temp_y + 1) & 0x0f;	 
+			if(bg_collision_sub() & COL_BOTTOM) return 1;
+		}
 
 
- if(bg_collision_sub() & COL_ALL) return 1;
-    
-    tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
-    temp_x = (char)tmp5; // low byte
- 
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_TOP) return 1;
 
- if(bg_collision_sub() & COL_BOTTOM) {
-	if (!mini) tmp1 = Generic.y + (Generic.height/2);
-	else tmp1 = Generic.y + ((Generic.height+8)/2);
-	tmp5 = add_scroll_y(tmp1, scroll_y);
-    temp_y = (char)tmp5; // low byte
-	temp_room = tmp5 >> 8; // high byte
-    eject_D = (temp_y + 1) & 0x0f;	 
- if(bg_collision_sub() & COL_BOTTOM) return 1;
- } 
-    if(bg_collision_sub() & COL_ALL) return 1;
-    
-    return 0;
+		tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
+		temp_x = (char)tmp5; // low byte
+
+
+		if(bg_collision_sub() & COL_BOTTOM) {
+			if (!mini) tmp1 = Generic.y + (Generic.height/2);
+			else tmp1 = Generic.y + ((Generic.height+8)/2);
+			tmp5 = add_scroll_y(tmp1, scroll_y);
+			temp_y = (char)tmp5; // low byte
+			temp_room = tmp5 >> 8; // high byte
+			eject_D = (temp_y + 1) & 0x0f;	 
+			if(bg_collision_sub() & COL_BOTTOM) return 1;
+		} 
+		
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_TOP) return 1;
+	
+	}
+	else {
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
+
+		tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
+		temp_x = (char)tmp5; // low byte
+
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
+	}
+	
+	return 0;
 }
 
 
