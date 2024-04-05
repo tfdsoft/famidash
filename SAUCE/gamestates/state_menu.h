@@ -44,6 +44,7 @@ void __fastcall__ refreshmenu(void) {
 
 void state_menu(){
 	ppu_off();
+	pal_bright(0);
     pal_bg((char *)paletteMenu);
 	set_scroll_x(0);
     set_scroll_y(0);
