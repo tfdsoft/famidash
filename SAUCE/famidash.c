@@ -63,7 +63,12 @@ void main(){
 		switch (gameState){
 			case 0x01: state_menu(); break;
 			case 0x02: state_game(); break;
-            case 0x03: state_lvldone(); break;
+            case 0x03: {
+                
+                mmc3_set_prg_bank_1(0);
+                state_lvldone();
+                break;
+            }
             case 0x04: state_demo(); break;
 		}
     }

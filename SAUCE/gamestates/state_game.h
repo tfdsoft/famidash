@@ -5,20 +5,23 @@
 void __fastcall__ movement(void);
 
 extern unsigned char* PARALLAX_CHR;
+unsigned char END_LEVEL_TIMER;
 
 void state_game(){
 	ppu_off();
 
 //	mini = 1;
     pal_bg((char *)paletteDefault);
+    pal_spr((char *)paletteDefaultSP);
 
     load_ground(0);
 
 	mmc3_set_8kb_chr(0);
-    mmc3_set_1kb_chr_bank_2(16);
+    mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));
     
 	reset_level();
 
+    END_LEVEL_TIMER = 0;
 
     while (1) {
         
@@ -36,6 +39,17 @@ void state_game(){
         if (pad_new & PAD_B) gravity ^= 0x01;			//DEBUG GRAVITY
 
         if (pad_new & PAD_SELECT) DEBUG_MODE = !DEBUG_MODE;
+
+        if (pad & PAD_SELECT) {
+            if (++END_LEVEL_TIMER > 60) {
+                END_LEVEL_TIMER = 0;
+                gameState = 3;
+                DEBUG_MODE = 0;
+                famistudio_music_stop();
+            }
+        } else {
+            END_LEVEL_TIMER = 0;
+        }
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
         x_movement();
