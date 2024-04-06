@@ -30,7 +30,7 @@ void state_lvldone() {
 	// Make an a nametable for the chain
     vram_adr(NAMETABLE_A);
 	vram_fill(0xfe, 0x3c0);
-	vram_fill(0x00, 0x38);
+	vram_fill(0x00, 0x3f);
 	// vertical increment: draw the chains
 	vram_inc(1);
     vram_adr(NTADR_A(5, 0));
@@ -42,7 +42,7 @@ void state_lvldone() {
     vram_adr(NAMETABLE_B);
 	vram_inc(0);
 	vram_fill(0xfe, 0x3c0);
-	vram_fill(0x00, 0x38);
+	vram_fill(0x00, 0x3f);
     
 	// Copy the level done screen to the bot left and right nametable
     vram_adr(NAMETABLE_C);
