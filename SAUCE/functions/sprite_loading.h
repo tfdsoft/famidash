@@ -48,29 +48,32 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     }
 
     // portals
-    if (type == 0x00) return 0x2f; // portal
-    if (type == 0x01) return 0x2f; // portal
-    if (type == 0x02) return 0x2f; // portal
-    if (type == 0x05) return 0x0f; // blue orb
-    if (type == 0x06) return 0x0f; // pink jump orb
-    if (type == 0x07) return 0x17; // coin
+    else if (type == 0x00) return 0x2f; // portal
+    else if (type == 0x01) return 0x2f; // portal
+    else if (type == 0x02) return 0x2f; // portal
+    else if (type == 0x03) return 0x2f; // unused portal
+    else if (type == 0x04) return 0x2f; // unused portal
+    else if (type == 0x05) return 0x0f; // blue orb
+    else if (type == 0x06) return 0x0f; // pink jump orb
+    else if (type == 0x07) return 0x17; // coin
 
-    if (type < 0x0A) return 0x2F;
+    else if (type == 0x08) return 0x2F;
+    else if (type == 0x09) return 0x2F;
 
     // pads
-    if (type == 0x0A) return 0x07; // yellow jump pad
-    if (type == 0x0B) return 0x0f; // yellow jump orb
-    if (type == 0x0C) return 0x07; // yellow jump pad Upside Down
-    if (type == 0x0D) return 0x07; // Gravity Pad
-    if (type == 0x0E) return 0x07; // Gravity Pad Upside Down
+    else if (type == 0x0A) return 0x07; // yellow jump pad
+    else if (type == 0x0B) return 0x0f; // yellow jump orb
+    else if (type == 0x0C) return 0x07; // yellow jump pad Upside Down
+    else if (type == 0x0D) return 0x07; // Gravity Pad
+    else if (type == 0x0E) return 0x07; // Gravity Pad Upside Down
 
     // triggers
-    if (type == 0x0f) {			//end trigger on load
+    else if (type == 0x0f) {			//end trigger on load
         gameState = 0x03; 
         pal_fade_to(4,0); 	    
     }	   
 
-    if (type >= 0x10 && type <= 13 || type == 0xFB || type == 0xFC ) return 0x17;
+    else if (type >= 0x10 && type <= 13 || type == 0xFB || type == 0xFC ) return 0x17;
     
     return 0;
 }
