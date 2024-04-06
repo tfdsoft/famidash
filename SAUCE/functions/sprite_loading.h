@@ -64,8 +64,8 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == 0x0A) return 0x07; // yellow jump pad
     else if (type == 0x0B) return 0x0f; // yellow jump orb
     else if (type == 0x0C) return 0x07; // yellow jump pad Upside Down
-    else if (type == 0x0D) return 0x07; // Gravity Pad
-    else if (type == 0x0E) return 0x07; // Gravity Pad Upside Down
+    else if (type == 0x0D) return 0x04; // Gravity Pad
+    else if (type == 0x0E) return 0x04; // Gravity Pad Upside Down
 
     // triggers
     else if (type == 0x0f) {			//end trigger on load
