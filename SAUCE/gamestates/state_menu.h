@@ -57,7 +57,31 @@ void state_menu(){
 		case 0x01:	break;
 	}
 
-	coins = 0;
+	// Enable SRAM write
+	POKE(0xA001, 0x80);
+
+	// Get it? it spells DASH
+	if (SRAM_VALIDATE[0] != 0x0D
+	 || SRAM_VALIDATE[1] != 0x0A
+	 || SRAM_VALIDATE[2] != 0x05
+	 || SRAM_VALIDATE[3] != 0x06) {
+		// set the validation header and then reset coin counts
+		SRAM_VALIDATE[0] = 0x0d;
+		SRAM_VALIDATE[1] = 0x0a;
+		SRAM_VALIDATE[2] = 0x05;
+		SRAM_VALIDATE[3] = 0x06;
+		LEVEL1COINS = 0;
+		LEVEL2COINS = 0;
+		LEVEL3COINS = 0;
+		LEVEL4COINS = 0;
+		LEVEL5COINS = 0;
+		LEVEL6COINS = 0;
+		LEVEL7COINS = 0;
+		LEVEL8COINS = 0;
+		LEVEL9COINS = 0;
+		LEVELACOINS = 0;
+	}
+
 	kandotemp = 1;
 
 	TOTALCOINSONES = 0;
@@ -82,8 +106,8 @@ void state_menu(){
 
 	refreshmenu();
 
-	one_vram_buffer(0xD0+TOTALCOINSTENS, NTADR_A(17,17));
-	one_vram_buffer(0xD0+TOTALCOINSONES, NTADR_A(18,17));
+	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
+	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));
 
 	ppu_on_all();
 	pal_fade_to(0,4);
