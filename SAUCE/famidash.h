@@ -127,6 +127,22 @@ unsigned char activesprites_active[max_loaded_sprites];
 
 unsigned char DEBUG_MODE = 0;
 
+unsigned char TOTALCOINS;
+unsigned char TOTALCOINSTEMP;
+unsigned char TOTALCOINSTENS;
+unsigned char TOTALCOINSONES;
+
+unsigned char LEVEL1COINS;
+unsigned char LEVEL2COINS;
+unsigned char LEVEL3COINS;
+unsigned char LEVEL4COINS;
+unsigned char LEVEL5COINS;
+unsigned char LEVEL6COINS;
+unsigned char LEVEL7COINS;
+unsigned char LEVEL8COINS;
+unsigned char LEVEL9COINS;
+unsigned char LEVELACOINS;
+
 
 
 

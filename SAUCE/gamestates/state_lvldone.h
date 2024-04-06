@@ -61,6 +61,20 @@ void state_lvldone() {
 	
 	tmp1 = 0;
 	tmpptr1 = NULL;
+	
+	switch (level) {
+		case 0x00: LEVEL1COINS = coins; break;
+		case 0x01: LEVEL2COINS = coins; break;
+		case 0x02: LEVEL3COINS = coins; break;
+		case 0x03: LEVEL4COINS = coins; break;
+		case 0x04: LEVEL5COINS = coins; break;
+		case 0x05: LEVEL6COINS = coins; break;
+		case 0x06: LEVEL7COINS = coins; break;
+		case 0x07: LEVEL8COINS = coins; break;
+		case 0x08: LEVEL9COINS = coins; break;
+		case 0x09: LEVELACOINS = coins; break;
+	}
+	
 	if (coins == 0) {
 		tmp1 = sizeof(coins0) - 1;
 		tmpptr1 = (unsigned char*)coins0;
@@ -95,6 +109,9 @@ void state_lvldone() {
 //	one_vram_buffer(0xD0+coins, NTADR_A(12,9));
 
     ppu_on_all();
+
+
+
 
 	while (1) {
 		// Rather hacky, but when doing sprite zero at the bottom of the screen we DON'T 

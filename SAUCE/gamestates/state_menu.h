@@ -40,7 +40,8 @@ void __fastcall__ refreshmenu(void) {
 	multi_vram_buffer_horz((const char*)leveltexts[level],
 		level_text_size[level],
 		NTADR_A(level_text_padding[level], 14));
-}
+
+};
 
 void state_menu(){
 	ppu_off();
@@ -59,6 +60,20 @@ void state_menu(){
 	coins = 0;
 	kandotemp = 1;
 
+	TOTALCOINSONES = 0;
+	TOTALCOINSTENS = 0;
+	TOTALCOINS = LEVEL1COINS + LEVEL2COINS + LEVEL3COINS + LEVEL4COINS + LEVEL5COINS + LEVEL6COINS + LEVEL7COINS + LEVEL8COINS + LEVEL9COINS + LEVELACOINS;
+
+	TOTALCOINSTEMP = TOTALCOINS;
+	
+	while (TOTALCOINSTEMP > 9) {
+		TOTALCOINSTENS = TOTALCOINSTENS + 1;
+		TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
+	}
+	TOTALCOINSONES = TOTALCOINSTEMP;
+	
+		
+
 	oam_clear();
 
 	// Expand the data for the menu nametable while the PPU is still off
@@ -66,6 +81,9 @@ void state_menu(){
     vram_unrle(game_main_menu);
 
 	refreshmenu();
+
+	one_vram_buffer(0xD0+TOTALCOINSTENS, NTADR_A(17,17));
+	one_vram_buffer(0xD0+TOTALCOINSONES, NTADR_A(18,17));
 
 	ppu_on_all();
 	pal_fade_to(0,4);
@@ -83,7 +101,7 @@ void state_menu(){
 		}
 		if (pad_new & (PAD_SELECT | PAD_RIGHT)){
 			++level;
-			if (level > 9){
+			if (level > 8){
 				level = 0x00;
 			}
 			refreshmenu();
@@ -92,7 +110,7 @@ void state_menu(){
 		if (pad_new & PAD_LEFT){
 			--level;
 			if (level == 0xFF){
-				level = 0x09;
+				level = 0x08;
 			}
 			
 			//break;
