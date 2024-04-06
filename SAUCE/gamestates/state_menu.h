@@ -49,7 +49,7 @@ void state_menu(){
 	set_scroll_x(0);
     set_scroll_y(0);
 
-
+	mmc3_set_prg_bank_1(0);
 
 	switch (kandotemp){
 		case 0x00:	music_play(song_menu_theme); break;
@@ -58,25 +58,6 @@ void state_menu(){
 
 	coins = 0;
 	kandotemp = 1;
-	
-	// make the entire first nametable use bg palette 3
-	// vram_adr(NTADR_A(0,0));
-	// vram_fill(0x00, 0x3C0);
-
-	// // vram_adr(0x23C0);
-	// vram_fill(0xFF, 0x40);
-
-
-	// print menu text
-	// vram_adr(NTADR_A(4,4));
-	// for(tmp1=0;tmp1<sizeof(menutext1)-1;++tmp1){
-	// 	vram_put(0xA0+menutext1[tmp1]);
-	// } 
-	// vram_adr(NTADR_A(2,24));
-	// for(tmp1=0;tmp1<sizeof(menutext2)-1;++tmp1){
-	// 	vram_put(0xA0+menutext2[tmp1]);
-	// }
-
 
 	oam_clear();
 

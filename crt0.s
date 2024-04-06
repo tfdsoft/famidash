@@ -4,6 +4,8 @@
 ;REMOVED initlib
 ;this called the CONDES function
 
+.exportzp _VRAM_UPDATE := VRAM_UPDATE
+
     .export _exit,__STARTUP__:absolute=1
 	.import push0,popa,popax,_main,zerobss,copydata
 
