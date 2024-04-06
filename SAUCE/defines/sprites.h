@@ -508,6 +508,11 @@ const void* animation_frame_list[] = {
 	GRAVITY_PAD_SPRITES, // Gravity_Pad,
 	GRAVITY_PAD_U_SPRITES, // Gravity_Pad_U,	  //Coin Disappear
 	NULL, // nometa, // end stage trigger
+	
+	NULL, //horizontal pads
+	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -528,4 +533,9 @@ const unsigned char animation_frame_length[] = {
 	sizeof(GRAVITY_PAD_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad,
 	sizeof(YELLOW_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
 	0, // nometa, // end stage trigger
+	
+	0, //horizontal portals
+	0,
+	0,
+	0,
 };

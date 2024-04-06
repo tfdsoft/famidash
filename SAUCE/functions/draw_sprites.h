@@ -102,7 +102,7 @@ void draw_sprites(void){
 				// And finally, load the pointer for this animation
 				animation_data_ptr = (unsigned char*)high2bytes(tmplong);
 			} else {
-				animation_data_ptr =  (unsigned char*)Metasprites[spr_type & 0x0f];
+				animation_data_ptr =  (unsigned char*)Metasprites[spr_type];
 			}
 			oam_meta_spr(temp_x, temp_y, animation_data_ptr);
 		}
