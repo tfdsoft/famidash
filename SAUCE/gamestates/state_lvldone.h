@@ -61,7 +61,10 @@ void state_lvldone() {
 	
 	tmp1 = 0;
 	tmpptr1 = NULL;
-	if (coins == 1) {
+	if (coins == 0) {
+		tmp1 = sizeof(coins0) - 1;
+		tmpptr1 = (unsigned char*)coins0;
+	} else if (coins == 1) {
 		tmp1 = sizeof(coins1) - 1;
 		tmpptr1 = (unsigned char*)coins1;
 	} else if (coins == 2) {
