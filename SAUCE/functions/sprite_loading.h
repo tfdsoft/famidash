@@ -112,8 +112,8 @@ void sprite_collide_lookup(){
 		else player.vel_y = PAD_HEIGHT_PINK;
 	}
     }
-    else if (tmp4 == 8 || tmp4 == 0x10 || tmp4 == 0x11 || tmp4 == 0xFC) gravity = 0;
-    else if (tmp4 == 9 || tmp4 == 0x12 || tmp4 == 0x13 || tmp4 == 0xFB ) gravity = 1;
+    else if (tmp4 == 8 || tmp4 == 0x10 || tmp4 == 0x11 || tmp4 == 0xFC) { gravity = 0; }//if (player.vel_y < -0x0500) player.vel_y = player.vel_y + CUBE_GRAVITY; }
+    else if (tmp4 == 9 || tmp4 == 0x12 || tmp4 == 0x13 || tmp4 == 0xFB ) { gravity = 1; }//if (player.vel_y > 0x0500) player.vel_y = player.vel_y - CUBE_GRAVITY;  }
     else if (tmp4 == 0x0A || tmp4 == 0x0C) {				//yellow pads
         if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
         else player.vel_y = PAD_HEIGHT_YELLOW;
