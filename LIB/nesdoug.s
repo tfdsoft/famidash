@@ -772,6 +772,9 @@ _xy_split:
 
 	bit PPU_STATUS
 	bvc @4
+.importzp _tmp4
+	lda _tmp4
+	jsr delay_a_27_clocks
 
 	pla
 	sta $2006
@@ -784,6 +787,22 @@ _xy_split:
 	rts	
 	
 
+;;;;;;;;;;;;;;;;;;;;;;;;
+; Delays A clocks + overhead
+; Clobbers A. Preserves X,Y.
+; Time: A+27 clocks (including JSR)
+;;;;;;;;;;;;;;;;;;;;;;;;
+delay_a_27_clocks:
+        sec     
+@L:     sbc #5  
+        bcs @L  ;  6 6 6 6 6  FB FC FD FE FF
+        adc #3  ;  2 2 2 2 2  FE FF 00 01 02
+        bcc @4  ;  3 3 2 2 2  FE FF 00 01 02
+        lsr     ;  - - 2 2 2  -- -- 00 00 01
+        beq @5  ;  - - 3 3 2  -- -- 00 00 01
+@4:     lsr     ;  2 2 - - 2  7F 7F -- -- 00
+@5:     bcs @6  ;  2 3 2 3 2  7F 7F 00 00 00
+@6:     rts     ;
 	
 	
 ;void gray_line(void);
