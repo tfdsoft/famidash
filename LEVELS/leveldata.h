@@ -187,8 +187,8 @@ const unsigned char timemachine_[]={
 	song_xstep,			// blanked out
 	0x00,					// Starting gamemode, leave 0 for cube
 	0x00,					// Starting speed, unused until 1.7.
-	0x00,					// Background starting color
-	0x00,					// Ground starting color
+	0x2a,					// Background starting color
+	0x1a,					// Ground starting color
 	0x00,					// unused
 	0x00,					// unused
 	0x00,					// unused
