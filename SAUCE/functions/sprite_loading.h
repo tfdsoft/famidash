@@ -55,7 +55,7 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     if (type == 0x06) return 0x0f; // pink jump orb
     if (type == 0x07) return 0x17; // coin
 
-    if (type < 0x0A) return 0x20;
+    if (type < 0x0A) return 0x2F;
 
     // pads
     if (type == 0x0A) return 0x07; // yellow jump pad
