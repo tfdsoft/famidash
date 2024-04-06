@@ -44,7 +44,7 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
 			activesprites_type[index] = 0xFF;
 		    }
 		}
-		return 0x5f;
+		return 0x00;
     }
 
     // portals

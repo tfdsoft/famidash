@@ -71,7 +71,9 @@ void draw_sprites(void){
 #define needs_reload tmp4
 #define animation_ptr tmpptr1
 #define animation_data_ptr tmpptr2
-		if (temp_y < 0xf0) {
+		if (activesprites_type[index] > 0x80) {}
+		else {
+			if (temp_y < 0xf0) {
 			needs_reload = 0;
 			spr_type = activesprites_type[index];
 			animation_ptr = (unsigned char*)animation_frame_list[spr_type];
@@ -105,6 +107,7 @@ void draw_sprites(void){
 				animation_data_ptr =  (unsigned char*)Metasprites[spr_type];
 			}
 			oam_meta_spr(temp_x, temp_y, animation_data_ptr);
+			}
 		}
 		
 	}
