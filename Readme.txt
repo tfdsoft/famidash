@@ -10,8 +10,8 @@ Known bugs:
 Credits:
 Project Torch-Carrier: kandowontu
 Levels/Guidance/Testing: Ficus mcHousePlant
-Music: Zenith, ZSide, Jaezu
-Levels/Testing/Bug Fixing: AleFunky
+Music: Zenith, ZSide, jaezu
+Levels/Testing/Bug Fixing: AleFunky, Ficus mcHousePlant
 Code Optimizations: alexmush, jroweboy
 Parallax, Menu and other code: jroweboy
 Graphics: Zside, Ficus mcHousePlant, Zenith, jroweboy
