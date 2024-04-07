@@ -112,6 +112,7 @@ void state_lvldone() {
 
 
 
+	famistudio_sfx_play(sfx_level_complete, 0);
 
 	while (1) {
 		// Rather hacky, but when doing sprite zero at the bottom of the screen we DON'T 
@@ -140,7 +141,7 @@ void state_lvldone() {
 		switch (current_state) {
 		case 0:
 			// Scroll the screen top bar up a bit
-			top_scroll += 1;
+			top_scroll += 2;
 			set_scroll_y(top_scroll);
 			if (top_scroll >= 31) {
 				scroll_y = 256 + 208 - 1;
@@ -149,13 +150,12 @@ void state_lvldone() {
 			break;
 		case 1:
 			// keep scrolling up, but have sprite zero follow now
-			sprite_0_y -= 1;
-			top_scroll += 1;
+			sprite_0_y -= 2;
+			top_scroll += 2;
 			set_scroll_y(top_scroll);
 			// Play the level complete noise
-			if (top_scroll == 115) {
-    			famistudio_sfx_play(sfx_level_complete, 0);
-			}
+			// if (top_scroll == 115) {
+			// }
 			if (top_scroll > 151) {
 				current_state = 2;
 			}
@@ -163,9 +163,9 @@ void state_lvldone() {
 		case 2:
 			// keep scrolling up, but change the scroll split Y
 			// so it starts to "unravel"
-			sprite_0_y -= 1;
-			top_scroll += 1;
-			scroll_y -= 2;
+			sprite_0_y -= 2;
+			top_scroll += 2;
+			scroll_y -= 4;
 			set_scroll_y(top_scroll);
 			if (top_scroll == 240) {
 				set_scroll_x(0);
