@@ -43,7 +43,7 @@ char bg_coll_L(void){
 
 char bg_coll_R(void){
     // check 2 points on the right side
-	tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width -1;
+	tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
     temp_x = (char)tmp5; // low byte
 
 	tmp1 = Generic.y + (Generic.height >> 1);
