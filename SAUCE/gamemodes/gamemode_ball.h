@@ -21,14 +21,14 @@ void ball_movement(void){
 	
 	
 	if(high_byte(player.vel_y) & 0x80){
-		if(bg_coll_U() ){ // check collision above
+		if(bg_coll_U()  && !bg_coll_R() ){ // check collision above
 			high_byte(player.y) = high_byte(player.y) - eject_U;
 			player.vel_y = 0;
 			cube_data = 0;			//fix for orb
 		}
 	}
 	else{
-		if(bg_coll_D()){ // check collision below
+		if(bg_coll_D() && !bg_coll_R() ){ // check collision below
 		    high_byte(player.y) = high_byte(player.y) - eject_D;
 		    player.vel_y = 0;
 			cube_data = 0;		    //fix for orb

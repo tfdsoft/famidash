@@ -117,6 +117,29 @@ void state_menu(){
 		pad = pad_poll(0); // read the first controller
 		pad_new = get_pad_new(0);
 
+		if (pad_new & PAD_SELECT){
+			if (pad & PAD_A){
+				if (pad & PAD_B){
+					LEVEL1COINS = 0;
+					LEVEL2COINS = 0;
+					LEVEL3COINS = 0;
+					LEVEL4COINS = 0;
+					LEVEL5COINS = 0;
+					LEVEL6COINS = 0;
+					LEVEL7COINS = 0;
+					LEVEL8COINS = 0;
+					LEVEL9COINS = 0;
+					LEVELACOINS = 0;					
+					TOTALCOINSONES = 0;
+					TOTALCOINSTENS = 0;
+					one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
+					one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
+					famistudio_sfx_play(sfx_death, 0);
+				}
+			}
+		}
+
+
 		if (pad_new & PAD_START){
 			gameState = 0x02;
 			pal_fade_to(4,0);

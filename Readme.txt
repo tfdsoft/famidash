@@ -12,7 +12,7 @@ Project Torch-Carrier: kandowontu
 Levels/Guidance/Testing: Ficus mcHousePlant
 Music: Zenith, ZSide, Jaezu
 Levels/Testing/Bug Fixing: AleFunky
-Code Optimizations: alexmush
+Code Optimizations: alexmush, jroweboy
 Parallax, Menu and other code: jroweboy
 Graphics: Zside, Ficus mcHousePlant, Zenith, jroweboy
 Original Project Lead and Coder: ZSide
