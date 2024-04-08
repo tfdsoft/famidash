@@ -172,15 +172,17 @@ void sprite_collide_lookup(){
     else if (tmp4 == gravity_down_portal || tmp4 == gravity_down_upwards_portal || tmp4 == gravity_down_downwards_portal || tmp4 == gravity_down_invisible_portal) { 
 	if (gravity) {
 	    gravity = 0; 
-	    if (player.vel_y > -0x0200) player.vel_y = -0x0200; 
-	    else if (player.vel_y > -0x0400) player.vel_y = -0x0400; 
+	 //   if (player.vel_y > -0x0200) player.vel_y = -0x0200; 
+	   // else 
+		   if (player.vel_y > -0x0400) player.vel_y = -0x0400; 
 	}
     }
     else if (tmp4 == gravity_up_portal || tmp4 == gravity_up_upwards_portal || tmp4 == gravity_up_downwards_portal || tmp4 == gravity_up_invisible_portal ) { 
 	if (!gravity) {
 	    gravity = 1; 
-	    if (player.vel_y < 0x0200) player.vel_y = 0x0200; 
-	    else if (player.vel_y > 0x0400) player.vel_y = 0x0400; 
+	    //if (player.vel_y < 0x0200) player.vel_y = 0x0200; 
+//	    else
+		    if (player.vel_y > 0x0400) player.vel_y = 0x0400; 
 	}
     }
 
