@@ -38,7 +38,7 @@ void state_game(){
         //if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
 
 	
-/*
+
         if (pad_new & PAD_B) gravity ^= 0x01;			//DEBUG GRAVITY
 
         if (pad_new & PAD_SELECT) DEBUG_MODE = !DEBUG_MODE;
@@ -53,7 +53,7 @@ void state_game(){
         } else {
             END_LEVEL_TIMER = 0;
         }
-*/
+
         if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
         x_movement();
         movement();

@@ -1,6 +1,10 @@
+#pragma code-name(push, "LVL_BANK_00")
+#pragma data-name(push, "LVL_BANK_00")
+#pragma rodata-name(push, "LVL_BANK_00")
+
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext
+  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext
 };
 
 #define GAME_MENU_TITLE_X_OFFSET 9
@@ -15,6 +19,8 @@ const unsigned char level_text_padding[] = {
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level8text)) / 2),
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level9text)) / 2),
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelAtext)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelBtext)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelCtext)) / 2),
 };
 const unsigned char level_text_size[] = {
     sizeof(level1text) - 1,
@@ -27,6 +33,8 @@ const unsigned char level_text_size[] = {
 	sizeof(level8text) - 1,
 	sizeof(level9text) - 1,
 	sizeof(levelAtext) - 1,
+	sizeof(levelBtext) - 1,
+	sizeof(levelCtext) - 1,
 };
 
 /*
@@ -148,7 +156,7 @@ void state_menu(){
 		}
 		if (pad_new & (PAD_SELECT | PAD_RIGHT)){
 			++level;
-			if (level > 8){
+			if (level > 0x0B){
 				level = 0x00;
 			}
 			refreshmenu();
@@ -157,7 +165,7 @@ void state_menu(){
 		if (pad_new & PAD_LEFT){
 			--level;
 			if (level == 0xFF){
-				level = 0x08;
+				level = 0x0B;
 			}
 			
 			//break;
@@ -167,3 +175,6 @@ void state_menu(){
 }
 
 
+#pragma code-name(pop)
+#pragma data-name(pop) 
+#pragma rodata-name(pop)

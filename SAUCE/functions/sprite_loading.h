@@ -51,7 +51,7 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == 0x00) return 0x2f; // portal
     else if (type == 0x01) return 0x2f; // portal
     else if (type == 0x02) return 0x2f; // portal
-    else if (type == 0x03) return 0x2f; // unused portal
+    else if (type == 0x03) return 0x2f; // portal
     else if (type == 0x04) return 0x2f; // unused portal
     else if (type == 0x05) return 0x0f; // blue orb
     else if (type == 0x06) return 0x0f; // pink jump orb
@@ -84,7 +84,7 @@ void sprite_collide_lookup(){
     
     }
     
-    else if (tmp4 <= 2) gamemode = tmp4;
+    else if (tmp4 <= 3) gamemode = tmp4;			//game mode portals
     else if (tmp4 == 0x0B && cube_data == 0x02) {		//orb
         cube_data = 0x00;
         if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;

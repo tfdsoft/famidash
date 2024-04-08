@@ -38,6 +38,8 @@ const unsigned char * const level_list[] = {
     timemachine_,
     cycles_,
     xstep_,
+    test_,
+    test2_,
     };
 
 const unsigned char * const sprite_list[] = {
@@ -51,6 +53,8 @@ const unsigned char * const sprite_list[] = {
     timemachine_SP,
     cycles_SP,
     xstep_SP,
+    test_SP,
+    test2_SP,
 };
 
 const unsigned char bank_list[] = {
@@ -64,6 +68,8 @@ const unsigned char bank_list[] = {
     9,
     6,
     0x0A,
+    0x0C,
+    0x0D,
 };
 
 

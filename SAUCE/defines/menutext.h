@@ -25,3 +25,5 @@ const unsigned char level7text[]="JUMPER";
 const unsigned char level8text[]="TIME MACHINE";
 const unsigned char level9text[]="CYCLES";
 const unsigned char levelAtext[]="XSTEP";
+const unsigned char levelBtext[]="TEST";
+const unsigned char levelCtext[]="TEST2";

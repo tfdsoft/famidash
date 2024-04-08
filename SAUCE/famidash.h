@@ -13,6 +13,7 @@
 #define MINI_CUBE_WIDTH 0x07
 #define MINI_CUBE_HEIGHT 0x07
 
+#define UFO_JUMP_VEL -0x530
 #define JUMP_VEL -0x5B0
 #define MINIJUMP_VEL -0x5B0
 #define CUBE_SPEED_X1 0x2C4

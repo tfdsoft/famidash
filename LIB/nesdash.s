@@ -4,7 +4,7 @@
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_x, _level_data_bank
 .import _song, _level
-.import _cube_movement, _ship_movement, _ball_movement
+.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
@@ -953,12 +953,12 @@ ParallaxBufferCol5:
 ; 	RTS
 
 ; @string_ptrs_lo:
-;     .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext
+;     .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext, <_levelBtext, <_levelCtext
 ; @string_ptrs_hi:
-;     .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext
+;     .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext, >_levelBtext, >_levelCtext
 ; @padding:
 ;     ; Calculation: 15 - length of string
-;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10
+;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10, 11, 10
 
 ;void __fastcall__ movement(void);
 _movement:
@@ -986,9 +986,9 @@ _movement:
         ;     RTS     ; break;
 
         ; @jump_table_lo:
-        ;     .byte <_cube_movement, <_ship_movement, <_ball_movement
+        ;     .byte <_cube_movement, <_ship_movement, <_ball_movement, <_ufo_movement
         ; @jump_table_hi:
-        ;     .byte >_cube_movement, >_ship_movement, >_ball_movement
+        ;     .byte >_cube_movement, >_ship_movement, >_ball_movement, >_ufo_movement
     ; !==== CODE END
     ; !Currently it takes less cycles to just do the following:
     LDX _gamemode		; switch (gamemode)
@@ -997,7 +997,9 @@ _movement:
     jeq _ship_movement	;	ship_movement(); break;
     DEX					; case 0x02:
     jeq _ball_movement	;	ball_movement(); break;
-    RTS					; case 0x03: default: break;
+    DEX					; case 0x03:
+    jeq _ufo_movement	;	ufo_movement(); break;
+    RTS					; case 0x04: default: break;
 
 ;void __fastcall__ music_play(unsigned char song);
 _music_play:

@@ -9,6 +9,26 @@ const unsigned char Mini_Cube_0[]={
 };
 	
 const unsigned char * const MINI_CUBE[] = {Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0, Mini_Cube_0};
+
+
+
+	
+const unsigned char UFO_0[]={
+
+	  0,  0,0x41,0,
+	  8,  0,0x41,0|OAM_FLIP_H,
+	0x80
+};	
+
+const unsigned char UFO_U_0[]={
+
+	  0,  0,0x41,0|OAM_FLIP_V,
+	  8,  0,0x41,0|OAM_FLIP_V|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char * const UFO[] = {UFO_0};
+const unsigned char * const UFO_U[] = {UFO_U_0};
 	
 const unsigned char Cube_0[]={
 
@@ -197,6 +217,21 @@ const unsigned char Portal_Gamemode_Ball[]={
 	 16, 16,0xCB,2,
 
 	 16, 32,0xC5,2|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Portal_Gamemode_UFO[]={
+
+	  0,  0,0x81,1,
+	  0, 16,0x87,1,
+	  0, 32,0x81,1|OAM_FLIP_V,
+	  8,  0,0x83,1,
+
+	  8, 16,0x89,1,
+	  8, 32,0x83,1|OAM_FLIP_V,
+	 16,  0,0x85,1,
+	 16, 16,0x8B,1,
+
+	 16, 32,0x85,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gravity_Down[]={
@@ -469,7 +504,7 @@ const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Cube,
 	Portal_Gamemode_Ship, 
 	Portal_Gamemode_Ball, // ball
-	nometa, // ufo
+	Portal_Gamemode_UFO, // ufo
 	nometa, // wave
 	Blue_Jump_Orb, // bobot
 	Pink_Jump_Orb, 

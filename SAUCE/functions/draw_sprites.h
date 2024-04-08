@@ -38,6 +38,13 @@ void draw_sprites(void){
 			ballframe++;
 			if (ballframe > 7) { ballframe = 0; }
 			break;
+
+		case 0x03:
+
+			cube_rotate ^= 0x0100;
+			if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, UFO[0]);
+			else oam_meta_spr(temp_x, high_byte(player.y)-1, UFO_U[0]);
+			break;
     }
 	
 	// the level sprites
