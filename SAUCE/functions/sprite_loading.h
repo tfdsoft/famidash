@@ -22,6 +22,9 @@
 #define gravity_down_downwards_portal 		0x11
 #define gravity_up_upwards_portal 		0x12
 #define gravity_up_downwards_portal 		0x13
+#define speed_05_portal		 		0x14
+#define speed_10_portal		 		0x15
+#define speed_20_portal		 		0x16
 #define gravity_up_invisible_portal		0xFB
 #define gravity_down_invisible_portal		0xFC
 #define gravity_pad_down_invisible		0xFD
@@ -87,6 +90,9 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == gravity_down_portal) return 0x2F;
     else if (type == gravity_up_portal) return 0x2F;
 
+    else if (type == speed_05_portal) return 0x1f; // 0.5 speed portal
+    else if (type == speed_10_portal) return 0x1f; // 0.5 speed portal
+    else if (type == speed_20_portal) return 0x1f; // 0.5 speed portal
     // pads
     else if (type == yellow_pad_down) return 0x07; // yellow jump pad
     else if (type == yellow_orb) return 0x0f; // yellow jump orb
@@ -150,6 +156,11 @@ void sprite_collide_lookup(){
 		}
 	} 
     }
+
+	else if (tmp4 == speed_05_portal) speed = 1;
+	else if (tmp4 == speed_10_portal) speed = 0;
+	else if (tmp4 == speed_20_portal) speed = 2;
+	
 
     else if (tmp4 == pink_orb) {
 	if (cube_data == 2) {		//nest it so that the next else-if for tmp4 doesn't trigger

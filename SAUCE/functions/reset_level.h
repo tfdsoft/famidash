@@ -37,6 +37,8 @@ void reset_level(void) {
     if (tmp2-0x10 & 0xC0) pal_col(5, 0x0f);
     else pal_col(5, (tmp2-0x10));
 
+    speed = level_list[level][2];
+
     init_sprites();
     player.x = 0x0000;
     player.y = 0xb000;

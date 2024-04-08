@@ -2,7 +2,11 @@ void x_movement(){
     // handle x
 
 	old_x = player.x;
-	player.x += CUBE_SPEED_X1;
+	switch (speed) {
+		case 0: 	player.x += CUBE_SPEED_X1; break;
+		case 1:		player.x += CUBE_SPEED_X05; break;
+		case 2:		player.x += CUBE_SPEED_X2; break;
+	}
 	
 	if(player.x > 0xf000) { // too far, don't wrap around
         if(old_x >= 0xf000){

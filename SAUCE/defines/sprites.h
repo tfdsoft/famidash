@@ -174,6 +174,30 @@ const unsigned char Ball_1[]={
 const unsigned char * const BALL[]={Ball_0, Ball_0, Ball_0, Ball_0, Ball_1, Ball_1, Ball_1, Ball_1};
 // ================================================================
 
+const unsigned char Speed_05_Portal[]={
+	  0,  0,0x61,1,	
+	  0,  16,0x61,1|OAM_FLIP_V,	
+	  8,  0,0x61,1|OAM_FLIP_V|OAM_FLIP_H,	
+	  8,  16,0x61,1|OAM_FLIP_H,	
+	0x80
+};
+
+const unsigned char Speed_10_Portal[]={
+	  0,  0,0x63,1|OAM_FLIP_H,	
+	  0,  16,0x63,1|OAM_FLIP_H|OAM_FLIP_V,	
+	  8,  0,0x63,1|OAM_FLIP_V,	
+	  8,  16,0x63,1,	
+	0x80
+};
+const unsigned char Speed_20_Portal[]={
+	  0,  0,0x63,1|OAM_FLIP_H,	
+	  0,  16,0x63,1|OAM_FLIP_H|OAM_FLIP_V,	
+	  8,  0,0x63,1|OAM_FLIP_V,	
+	  8,  16,0x63,1,	
+	0x80
+};
+
+
 const unsigned char Portal_Gamemode_Cube[]={
 
 	  0,  0,0xC1,0,
@@ -522,6 +546,9 @@ const unsigned char * const Metasprites[]={
 	Portal_Gravity_Down_Horizontal_Upwards,
 	Portal_Gravity_Up_Horizontal_Downwards,
 	Portal_Gravity_Up_Horizontal_Upwards,
+	Speed_05_Portal,
+	Speed_10_Portal,
+	Speed_20_Portal,
 	};
 
 
@@ -548,6 +575,9 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -570,6 +600,9 @@ const unsigned char animation_frame_length[] = {
 	0, // nometa, // end stage trigger
 	
 	0, //horizontal portals
+	0,
+	0,
+	0,
 	0,
 	0,
 	0,

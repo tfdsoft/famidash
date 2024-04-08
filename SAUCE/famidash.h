@@ -16,7 +16,9 @@
 #define UFO_JUMP_VEL -0x530
 #define JUMP_VEL -0x5B0
 #define MINIJUMP_VEL -0x5B0
+#define CUBE_SPEED_X05 0x162
 #define CUBE_SPEED_X1 0x2C4
+#define CUBE_SPEED_X2 0x588
 
 #define CUBE_MAX_FALLSPEED 0x600
 #define CUBE_GRAVITY 0x6B
@@ -113,6 +115,7 @@ const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
 unsigned char rld_column;
 unsigned char spr_index;
 
+unsigned char speed;
 unsigned char shuffle_offset;
 unsigned char count;
 unsigned char kandotemp;
