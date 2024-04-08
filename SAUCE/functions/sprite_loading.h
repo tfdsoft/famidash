@@ -78,32 +78,60 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     return 0;
 }
 
+
+//attempt to comment
+#define cubemode 	0x00
+#define shipmode 	0x01
+#define ballmode 	0x02
+#define ufomode 	0x03
+#define blueorb 	0x05
+#define coin 		0x07
+#define yelloworb 	0x0B
+#define nosprite	0xFF
+
 void sprite_collide_lookup(){
     // portals
-    if (tmp4 == 0xFF) {	
-    
-    }
+    if (tmp4 == nosprite) { }
     
     else if (tmp4 <= 3) gamemode = tmp4;			//game mode portals
-    else if (tmp4 == 0x0B && cube_data == 0x02) {		//orb
-        cube_data = 0x00;
-        if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
+    else if (tmp4 == yelloworb) {		//yellow orb
+	if (gamemode == cubemode || gamemode == ballmode) {
+		if (cube_data == 2) {					
+			cube_data = 0x00;
+			if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
+		}
+	}
+	else if (gamemode == shipmode || gamemode == ufomode) {
+		if (pad_new & PAD_A) {	
+			cube_data = 0x00;
+			if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
+		}
+	}
     }
-
-    else if (tmp4 == 0x07) {					//coin
+    else if (tmp4 == coin) {					//coin
 	    coins++;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make coin disappear here
     }
 
-    else if (tmp4 == 5)  {
-	    if (cube_data == 2) {			//blue orb
-		cube_data = 0x00;
-		gravity ^= 0x01;
-        if (!gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
-        else player.vel_y = PAD_HEIGHT_PINK;
-	    }
-    } 
+    else if (tmp4 == blueorb)  {				//blue orb
+	if (gamemode == cubemode || gamemode == ballmode) {
+		if (cube_data == 2) {			
+			cube_data = 0x00;
+			gravity ^= 0x01;
+			if (!gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
+			else player.vel_y = PAD_HEIGHT_PINK;
+		}
+	}
+	else if (gamemode == shipmode || gamemode == ufomode) {
+		if (pad_new & PAD_A) {
+			cube_data = 0x00;
+			gravity ^= 0x01;
+			if (!gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
+			else player.vel_y = PAD_HEIGHT_PINK;
+		}
+	} 
+    }
 
     else if (tmp4 == 6) {
 	if (cube_data == 2) {		//nest it so that the next else-if for tmp4 doesn't trigger
