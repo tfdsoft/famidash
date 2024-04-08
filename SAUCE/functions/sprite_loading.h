@@ -80,21 +80,38 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
 
 
 //attempt to comment
-#define cubemode 	0x00
-#define shipmode 	0x01
-#define ballmode 	0x02
-#define ufomode 	0x03
-#define blueorb 	0x05
-#define coin 		0x07
-#define yelloworb 	0x0B
-#define nosprite	0xFF
+#define cubemode 				0x00
+#define shipmode 				0x01
+#define ballmode 				0x02
+#define ufomode 				0x03
+#define unusedmode 				0x04
+#define blue_orb 				0x05
+#define pink_orb 				0x06
+#define coin 					0x07
+#define gravity_down_portal 			0x08
+#define gravity_up_portal 			0x09
+#define yellow_pad_down 			0x0A
+#define yellow_orb 				0x0B
+#define yellow_pad_up	 			0x0C
+#define gravity_pad_down 			0x0D
+#define gravity_pad_up	 			0x0E
+#define level_end_Trigger 			0x0F
+#define gravity_down_upwards_portal 		0x10
+#define gravity_down_downwards_portal 		0x11
+#define gravity_up_upwards_portal 		0x12
+#define gravity_up_downwards_portal 		0x13
+#define gravity_up_invisible_portal		0xFB
+#define gravity_down_invisible_portal		0xFC
+#define gravity_pad_down_invisible		0xFD
+#define gravity_pad_up_invisible		0xFE
+#define nosprite				0xFF
 
 void sprite_collide_lookup(){
     // portals
     if (tmp4 == nosprite) { }
     
     else if (tmp4 <= 3) gamemode = tmp4;			//game mode portals
-    else if (tmp4 == yelloworb) {		//yellow orb
+    else if (tmp4 == yellow_orb) {		//yellow orb
 	if (gamemode == cubemode || gamemode == ballmode) {
 		if (cube_data == 2) {					
 			cube_data = 0x00;
@@ -114,7 +131,7 @@ void sprite_collide_lookup(){
 	activesprites_type[index] = 0xFF;		//make coin disappear here
     }
 
-    else if (tmp4 == blueorb)  {				//blue orb
+    else if (tmp4 == blue_orb)  {				//blue orb
 	if (gamemode == cubemode || gamemode == ballmode) {
 		if (cube_data == 2) {			
 			cube_data = 0x00;
@@ -133,27 +150,27 @@ void sprite_collide_lookup(){
 	} 
     }
 
-    else if (tmp4 == 6) {
+    else if (tmp4 == pink_orb) {
 	if (cube_data == 2) {		//nest it so that the next else-if for tmp4 doesn't trigger
 		cube_data = 0x00;
 		if (gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
 		else player.vel_y = PAD_HEIGHT_PINK;
 	}
     }
-    else if (tmp4 == 8 || tmp4 == 0x10 || tmp4 == 0x11 || tmp4 == 0xFC) { gravity = 0; }//if (player.vel_y < -0x0500) player.vel_y = player.vel_y + CUBE_GRAVITY; }
-    else if (tmp4 == 9 || tmp4 == 0x12 || tmp4 == 0x13 || tmp4 == 0xFB ) { gravity = 1; }//if (player.vel_y > 0x0500) player.vel_y = player.vel_y - CUBE_GRAVITY;  }
-    else if (tmp4 == 0x0A || tmp4 == 0x0C) {				//yellow pads
+    else if (tmp4 == gravity_down_portal || tmp4 == gravity_down_upwards_portal || tmp4 == gravity_down_downwards_portal || tmp4 == gravity_down_invisible_portal) { gravity = 0; }//if (player.vel_y < -0x0500) player.vel_y = player.vel_y + CUBE_GRAVITY; }
+    else if (tmp4 == gravity_up_portal || tmp4 == gravity_up_upwards_portal || tmp4 == gravity_up_downwards_portal || tmp4 == gravity_up_invisible_portal ) { gravity = 1; }//if (player.vel_y > 0x0500) player.vel_y = player.vel_y - CUBE_GRAVITY;  }
+    else if (tmp4 == yellow_pad_down || tmp4 == yellow_pad_up) {				//yellow pads
         if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
         else player.vel_y = PAD_HEIGHT_YELLOW;
     } 
-    else if (tmp4 == 0x0D) {			//gravity pads bottom
+    else if (tmp4 == gravity_pad_down) {			//gravity pads bottom
 	    if (!gravity) { 
 		gravity = 0x01;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
 		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }
-    else if (tmp4 == 0x0E) {			//gravity pads top
+    else if (tmp4 == gravity_pad_up) {			//gravity pads top
 	    if (gravity) { 
 		gravity = 0x00;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_BLUE;	
@@ -165,14 +182,14 @@ void sprite_collide_lookup(){
 //        pal_fade_to(4,0); 
 //    }
     
-    else if (tmp4 == 0xFD) {			//gravity pads bottom
+    else if (tmp4 == gravity_pad_down_invisible) {			//gravity pads bottom
 	    if (!gravity) { 
 		gravity = 0x01;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
 		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }
-    else if (tmp4 == 0xFE) {			//gravity pads top
+    else if (tmp4 == gravity_pad_up_invisible) {			//gravity pads top
 	    if (gravity) { 
 		gravity = 0x00;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK;
