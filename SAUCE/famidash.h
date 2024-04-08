@@ -86,10 +86,6 @@ unsigned char* level_data;
 
 #pragma bss-name(push, "SRAM")
 unsigned char SRAM_VALIDATE[4];
-unsigned char TOTALCOINS;
-unsigned char TOTALCOINSTEMP;
-unsigned char TOTALCOINSTENS;
-unsigned char TOTALCOINSONES;
 
 unsigned char LEVEL1COINS;
 unsigned char LEVEL2COINS;
@@ -104,6 +100,10 @@ unsigned char LEVELACOINS;
 
 #pragma bss-name(pop)
 
+unsigned char TOTALCOINS;
+unsigned char TOTALCOINSTEMP;
+unsigned char TOTALCOINSTENS;
+unsigned char TOTALCOINSONES;
 unsigned char coins;
 
 unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
