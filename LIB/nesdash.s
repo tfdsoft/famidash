@@ -4,7 +4,7 @@
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_x, _level_data_bank
 .import _song, _level
-.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement
+.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
@@ -999,7 +999,9 @@ _movement:
     jeq _ball_movement	;	ball_movement(); break;
     DEX					; case 0x03:
     jeq _ufo_movement	;	ufo_movement(); break;
-    RTS					; case 0x04: default: break;
+    DEX					; case 0x04:
+    jeq _cube_movement	;	robot_movement(); break;
+    RTS					; case 0x05: default: break;
 
 ;void __fastcall__ music_play(unsigned char song);
 _music_play:

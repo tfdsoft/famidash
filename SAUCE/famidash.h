@@ -15,6 +15,7 @@
 
 #define UFO_JUMP_VEL -0x530
 #define JUMP_VEL -0x5B0
+#define ROBOT_JUMP_VEL -0x3B0
 #define MINIJUMP_VEL -0x5B0
 #define CUBE_SPEED_X05 0x162
 #define CUBE_SPEED_X1 0x2C4
@@ -123,6 +124,8 @@ unsigned char kandotemp2;
 unsigned char coinframe;
 unsigned char padframe;
 unsigned char ballframe;
+unsigned char robotframe;
+unsigned char robotjumpmax;
 unsigned char level;
 unsigned char level_data_bank;
 

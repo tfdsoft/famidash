@@ -2,11 +2,11 @@
 #define SPR_BANK_00 0x1C
 
 //attempt to comment
-#define CUBEMODE 				0X00
-#define SHIPMODE 				0X01
-#define BALLMODE 				0X02
-#define UFOMODE 				0X03
-#define UNUSEDMODE 				0X04
+#define CUBE_MODE 				0X00
+#define SHIP_MODE 				0X01
+#define BALL_MODE 				0X02
+#define UFO_MODE 				0X03
+#define ROBOT_MODE 				0X04
 #define BLUE_ORB 				0X05
 #define PINK_ORB 				0X06
 #define COIN 					0X07
@@ -78,10 +78,10 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     }
 
     // portals
-    else if (type == CUBEMODE) return 0x2f; // portal
-    else if (type == SHIPMODE) return 0x2f; // portal
-    else if (type == BALLMODE) return 0x2f; // portal
-    else if (type == UFOMODE) return 0x2f; // portal
+    else if (type == CUBE_MODE) return 0x2f; // portal
+    else if (type == SHIP_MODE) return 0x2f; // portal
+    else if (type == BALL_MODE) return 0x2f; // portal
+    else if (type == UFO_MODE) return 0x2f; // portal
     else if (type == 0x04) return 0x2f; // unused portal
     else if (type == BLUE_ORB) return 0x0f; // blue orb
     else if (type == PINK_ORB) return 0x0f; // pink jump orb
@@ -119,13 +119,13 @@ void sprite_collide_lookup(){
     
     else if (tmp4 <= 3) gamemode = tmp4;			//game mode portals
     else if (tmp4 == YELLOW_ORB) {		//yellow orb
-	if (gamemode == CUBEMODE || gamemode == BALLMODE) {
+	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 		if (cube_data == 2) {					
 			cube_data = 0x00;
 			if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
 		}
 	}
-	else if (gamemode == SHIPMODE || gamemode == UFOMODE) {
+	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
 		if (pad_new & PAD_A) {	
 			cube_data = 0x00;
 			if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
@@ -139,7 +139,7 @@ void sprite_collide_lookup(){
     }
 
     else if (tmp4 == BLUE_ORB)  {				//blue orb
-	if (gamemode == CUBEMODE || gamemode == BALLMODE) {
+	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 		if (cube_data == 2) {			
 			cube_data = 0x00;
 			gravity ^= 0x01;
@@ -147,7 +147,7 @@ void sprite_collide_lookup(){
 			else player.vel_y = PAD_HEIGHT_PINK;
 		}
 	}
-	else if (gamemode == SHIPMODE || gamemode == UFOMODE) {
+	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
 		if (pad_new & PAD_A) {
 			cube_data = 0x00;
 			gravity ^= 0x01;
@@ -174,7 +174,7 @@ void sprite_collide_lookup(){
 	    gravity = 0; 
 	 //   if (player.vel_y > -0x0200) player.vel_y = -0x0200; 
 	   // else 
-		   if (player.vel_y > -0x0400) player.vel_y = -0x0400; 
+		   if (player.vel_y < -0x0400) player.vel_y = -0x0400; 
 	}
     }
     else if (tmp4 == GRAVITY_UP_PORTAL || tmp4 == GRAVITY_UP_UPWARDS_PORTAL || tmp4 == GRAVITY_UP_DOWNWARDS_PORTAL || tmp4 == GRAVITY_UP_INVISIBLE_PORTAL ) { 

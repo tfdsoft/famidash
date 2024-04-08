@@ -66,12 +66,11 @@
 #include "gamemodes/gamemode_cube.h"
 #include "gamemodes/gamemode_ship.h"
 
-
 // THE GAME STATE DEFINES //
 #include "gamestates/state_menu.h"
 #include "gamestates/state_game.h"
 #include "gamestates/state_lvldone.h"
-#include "gamestates/state_demo.h"
+//#include "gamestates/state_demo.h"
 
 
 

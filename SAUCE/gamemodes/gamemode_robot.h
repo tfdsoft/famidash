@@ -1,11 +1,10 @@
-void cube_movement(void){
+void robot_movement(void){
 // handle y
 
 // gravity
 	// player.vel_y is signed
 	//if(player.vel_y < 0x400){
-
-//	if(!mini){
+	if(!mini){
 		if(!gravity){
 			if(player.vel_y > CUBE_MAX_FALLSPEED){
 				player.vel_y = CUBE_MAX_FALLSPEED;
@@ -16,19 +15,19 @@ void cube_movement(void){
 				player.vel_y = -CUBE_MAX_FALLSPEED;
 			} else player.vel_y -= CUBE_GRAVITY;
 		}
-//	}
-//	else {
-//		if(!gravity){
-//			if(player.vel_y > MINI_CUBE_MAX_FALLSPEED){
-//				player.vel_y = MINI_CUBE_MAX_FALLSPEED;
-//			} else player.vel_y += MINI_CUBE_GRAVITY;
-//		}
-//		else{
-//			if(player.vel_y < -MINI_CUBE_MAX_FALLSPEED){
-//				player.vel_y = -MINI_CUBE_MAX_FALLSPEED;
-//			} else player.vel_y -= MINI_CUBE_GRAVITY;
-//		}
-//	}		
+	}
+	else {
+		if(!gravity){
+			if(player.vel_y > MINI_CUBE_MAX_FALLSPEED){
+				player.vel_y = MINI_CUBE_MAX_FALLSPEED;
+			} else player.vel_y += MINI_CUBE_GRAVITY;
+		}
+		else{
+			if(player.vel_y < -MINI_CUBE_MAX_FALLSPEED){
+				player.vel_y = -MINI_CUBE_MAX_FALLSPEED;
+			} else player.vel_y -= MINI_CUBE_GRAVITY;
+		}
+	}		
 	player.y += player.vel_y;
 	
 	Generic.x = high_byte(player.x);
@@ -58,6 +57,7 @@ void cube_movement(void){
 		}
 	}
 
+	
 		if (gamemode == 0 && player.vel_y == 0){
 			//if(bg_coll_D2()) {
 				cube_data = 0;				
@@ -67,36 +67,36 @@ void cube_movement(void){
 					else player.vel_y = MINIJUMP_VEL; // JUMP
 				}
 				else
-					if (!mini) player.vel_y = JUMP_VEL^0xFFFF; // JUMP
-					else player.vel_y = MINIJUMP_VEL^0xFFFF; // JUMP
+					if (!mini) player.vel_y = JUMP_VEL^FFFF; // JUMP
+					else player.vel_y = MINIJUMP_VEL^FFFF; // JUMP
 				}
 				
 			//}
 		}
-		else if (gamemode == 4 && player.vel_y == 0){
+		else if (player.vel_y == 0){
 			cube_data = 0;				
 			if(pad_new & PAD_A) {
 				if (!gravity) {
-					if (!mini) player.vel_y = ROBOT_JUMP_VEL; // JUMP
-					else player.vel_y = ROBOT_JUMP_VEL; // JUMP
+					if (!mini) player.vel_y = JUMP_VEL; // JUMP
+					else player.vel_y = MINIJUMP_VEL; // JUMP
 				}
 				else
-					if (!mini) player.vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
-					else player.vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
+					if (!mini) player.vel_y = JUMP_VEL^FFFF; // JUMP
+					else player.vel_y = MINIJUMP_VEL^FFFF; // JUMP
 				}
-				robotjumpmax = 15;
+				robotjumpmax = 10;
 		}
-		else if (gamemode == 4 && robotjumpmax) {
+		else if (robotjumpmax) {
 				cube_data = 0;
 				robotjumpmax--;
 				if(pad & PAD_A) {
 					if (!gravity) {
-						if (!mini) player.vel_y = ROBOT_JUMP_VEL; // JUMP
-						else player.vel_y = ROBOT_JUMP_VEL; // JUMP
+						if (!mini) player.vel_y = JUMP_VEL; // JUMP
+						else player.vel_y = MINIJUMP_VEL; // JUMP
 					}
 					else
-						if (!mini) player.vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
-						else player.vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
+						if (!mini) player.vel_y = JUMP_VEL^FFFF; // JUMP
+						else player.vel_y = MINIJUMP_VEL^FFFF; // JUMP
 					}
                                 else robotjumpmax = 0;
 			

@@ -174,6 +174,35 @@ const unsigned char Ball_1[]={
 const unsigned char * const BALL[]={Ball_0, Ball_0, Ball_0, Ball_0, Ball_1, Ball_1, Ball_1, Ball_1};
 // ================================================================
 
+const unsigned char Robot_0[]={
+	
+	0,   0, 0x3B,0,
+	8,   0, 0x3D,0,
+	16,   0, 0x3F,0,
+	0x80
+};
+
+const unsigned char Robot_1[]={
+	
+	0,   0, 0x2B,0,
+	8,   0, 0x2D,0,
+	16,   0, 0x2F,0,
+	0x80
+};
+
+const unsigned char Robot_2[]={
+	
+	0,   0, 0x35,0,
+	8,   0, 0x37,0,
+	16,   0, 0x39,0,
+	0x80
+};
+
+const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_0, Robot_0, Robot_0, Robot_0, Robot_2, Robot_2, Robot_2, Robot_2};
+
+
+
+
 const unsigned char Speed_05_Portal[]={
 	  0,  0,0x61,1,	
 	  0,  16,0x61,1|OAM_FLIP_V,	

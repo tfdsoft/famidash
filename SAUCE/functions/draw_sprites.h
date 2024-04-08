@@ -33,7 +33,7 @@ void draw_sprites(void){
 			break;
 		case 0x02:
 
-			cube_rotate ^= 0x0100;
+//			cube_rotate ^= 0x0100;
 			oam_meta_spr(temp_x, high_byte(player.y)-1, BALL[ballframe]);
 			ballframe++;
 			if (ballframe > 7) { ballframe = 0; }
@@ -41,9 +41,17 @@ void draw_sprites(void){
 
 		case 0x03:
 
-			cube_rotate ^= 0x0100;
+//			cube_rotate ^= 0x0100;
 			if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, UFO[0]);
 			else oam_meta_spr(temp_x, high_byte(player.y)-1, UFO_U[0]);
+			break;
+		case 0x04:
+
+//			cube_rotate ^= 0x0100;
+			if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+			else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+			robotframe++;
+			if (robotframe > 15) { robotframe = 0; }
 			break;
     }
 	
