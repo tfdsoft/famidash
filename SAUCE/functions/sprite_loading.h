@@ -2,34 +2,34 @@
 #define SPR_BANK_00 0x1C
 
 //attempt to comment
-#define cubemode 				0x00
-#define shipmode 				0x01
-#define ballmode 				0x02
-#define ufomode 				0x03
-#define unusedmode 				0x04
-#define blue_orb 				0x05
-#define pink_orb 				0x06
-#define coin 					0x07
-#define gravity_down_portal 			0x08
-#define gravity_up_portal 			0x09
-#define yellow_pad_down 			0x0A
-#define yellow_orb 				0x0B
-#define yellow_pad_up	 			0x0C
-#define gravity_pad_down 			0x0D
-#define gravity_pad_up	 			0x0E
-#define level_end_Trigger 			0x0F
-#define gravity_down_upwards_portal 		0x10
-#define gravity_down_downwards_portal 		0x11
-#define gravity_up_upwards_portal 		0x12
-#define gravity_up_downwards_portal 		0x13
-#define speed_05_portal		 		0x14
-#define speed_10_portal		 		0x15
-#define speed_20_portal		 		0x16
-#define gravity_up_invisible_portal		0xFB
-#define gravity_down_invisible_portal		0xFC
-#define gravity_pad_down_invisible		0xFD
-#define gravity_pad_up_invisible		0xFE
-#define nosprite				0xFF
+#define CUBEMODE 				0X00
+#define SHIPMODE 				0X01
+#define BALLMODE 				0X02
+#define UFOMODE 				0X03
+#define UNUSEDMODE 				0X04
+#define BLUE_ORB 				0X05
+#define PINK_ORB 				0X06
+#define COIN 					0X07
+#define GRAVITY_DOWN_PORTAL 			0X08
+#define GRAVITY_UP_PORTAL 			0X09
+#define YELLOW_PAD_DOWN 			0X0A
+#define YELLOW_ORB 				0X0B
+#define YELLOW_PAD_UP	 			0X0C
+#define GRAVITY_PAD_DOWN 			0X0D
+#define GRAVITY_PAD_UP	 			0X0E
+#define LEVEL_END_TRIGGER 			0X0F
+#define GRAVITY_DOWN_UPWARDS_PORTAL 		0X10
+#define GRAVITY_DOWN_DOWNWARDS_PORTAL 		0X11
+#define GRAVITY_UP_UPWARDS_PORTAL 		0X12
+#define GRAVITY_UP_DOWNWARDS_PORTAL 		0X13
+#define SPEED_05_PORTAL		 		0X14
+#define SPEED_10_PORTAL		 		0X15
+#define SPEED_20_PORTAL		 		0X16
+#define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
+#define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
+#define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
+#define GRAVITY_PAD_UP_INVISIBLE		0XFE
+#define NOSPRITE				0XFF
 
 extern void load_next_sprite(void);
 
@@ -78,35 +78,35 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     }
 
     // portals
-    else if (type == cubemode) return 0x2f; // portal
-    else if (type == shipmode) return 0x2f; // portal
-    else if (type == ballmode) return 0x2f; // portal
-    else if (type == ufomode) return 0x2f; // portal
+    else if (type == CUBEMODE) return 0x2f; // portal
+    else if (type == SHIPMODE) return 0x2f; // portal
+    else if (type == BALLMODE) return 0x2f; // portal
+    else if (type == UFOMODE) return 0x2f; // portal
     else if (type == 0x04) return 0x2f; // unused portal
-    else if (type == blue_orb) return 0x0f; // blue orb
-    else if (type == pink_orb) return 0x0f; // pink jump orb
-    else if (type == coin) return 0x17; // coin
+    else if (type == BLUE_ORB) return 0x0f; // blue orb
+    else if (type == PINK_ORB) return 0x0f; // pink jump orb
+    else if (type == COIN) return 0x17; // COIN
 
-    else if (type == gravity_down_portal) return 0x2F;
-    else if (type == gravity_up_portal) return 0x2F;
+    else if (type == GRAVITY_DOWN_PORTAL) return 0x2F;
+    else if (type == GRAVITY_UP_PORTAL) return 0x2F;
 
-    else if (type == speed_05_portal) return 0x1f; // 0.5 speed portal
-    else if (type == speed_10_portal) return 0x1f; // 0.5 speed portal
-    else if (type == speed_20_portal) return 0x1f; // 0.5 speed portal
+    else if (type == SPEED_05_PORTAL) return 0x1f; // 0.5 speed portal
+    else if (type == SPEED_10_PORTAL) return 0x1f; // 0.5 speed portal
+    else if (type == SPEED_20_PORTAL) return 0x1f; // 0.5 speed portal
     // pads
-    else if (type == yellow_pad_down) return 0x07; // yellow jump pad
-    else if (type == yellow_orb) return 0x0f; // yellow jump orb
-    else if (type == yellow_pad_up) return 0x07; // yellow jump pad Upside Down
-    else if (type == gravity_pad_down) return 0x04; // Gravity Pad
-    else if (type == gravity_pad_up) return 0x04; // Gravity Pad Upside Down
+    else if (type == YELLOW_PAD_DOWN) return 0x07; // yellow jump pad
+    else if (type == YELLOW_ORB) return 0x0f; // yellow jump orb
+    else if (type == YELLOW_PAD_UP) return 0x07; // yellow jump pad Upside Down
+    else if (type == GRAVITY_PAD_DOWN) return 0x04; // Gravity Pad
+    else if (type == GRAVITY_PAD_UP) return 0x04; // Gravity Pad Upside Down
 
     // triggers
-    else if (type == level_end_Trigger) {			//end trigger on load
+    else if (type == LEVEL_END_TRIGGER) {			//end trigger on load
         gameState = 0x03; 
         pal_fade_to(4,0); 	    
     }	   
 
-    else if (type == gravity_down_upwards_portal || type == gravity_down_downwards_portal || type == gravity_up_upwards_portal || type == gravity_up_downwards_portal || type == gravity_up_invisible_portal || type == gravity_down_invisible_portal ) return 0x1f;
+    else if (type == GRAVITY_DOWN_UPWARDS_PORTAL || type == GRAVITY_DOWN_DOWNWARDS_PORTAL || type == GRAVITY_UP_UPWARDS_PORTAL || type == GRAVITY_UP_DOWNWARDS_PORTAL || type == GRAVITY_UP_INVISIBLE_PORTAL || type == GRAVITY_DOWN_INVISIBLE_PORTAL ) return 0x1f;
     
     return 0;
 }
@@ -115,31 +115,31 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
 
 void sprite_collide_lookup(){
     // portals
-    if (tmp4 == nosprite) { }
+    if (tmp4 == NOSPRITE) { }
     
     else if (tmp4 <= 3) gamemode = tmp4;			//game mode portals
-    else if (tmp4 == yellow_orb) {		//yellow orb
-	if (gamemode == cubemode || gamemode == ballmode) {
+    else if (tmp4 == YELLOW_ORB) {		//yellow orb
+	if (gamemode == CUBEMODE || gamemode == BALLMODE) {
 		if (cube_data == 2) {					
 			cube_data = 0x00;
 			if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
 		}
 	}
-	else if (gamemode == shipmode || gamemode == ufomode) {
+	else if (gamemode == SHIPMODE || gamemode == UFOMODE) {
 		if (pad_new & PAD_A) {	
 			cube_data = 0x00;
 			if (gravity) player.vel_y = JUMP_VEL^0xFFFF; else player.vel_y = JUMP_VEL;
 		}
 	}
     }
-    else if (tmp4 == coin) {					//coin
+    else if (tmp4 == COIN) {					//COIN
 	    coins++;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
-	activesprites_type[index] = 0xFF;		//make coin disappear here
+	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }
 
-    else if (tmp4 == blue_orb)  {				//blue orb
-	if (gamemode == cubemode || gamemode == ballmode) {
+    else if (tmp4 == BLUE_ORB)  {				//blue orb
+	if (gamemode == CUBEMODE || gamemode == BALLMODE) {
 		if (cube_data == 2) {			
 			cube_data = 0x00;
 			gravity ^= 0x01;
@@ -147,7 +147,7 @@ void sprite_collide_lookup(){
 			else player.vel_y = PAD_HEIGHT_PINK;
 		}
 	}
-	else if (gamemode == shipmode || gamemode == ufomode) {
+	else if (gamemode == SHIPMODE || gamemode == UFOMODE) {
 		if (pad_new & PAD_A) {
 			cube_data = 0x00;
 			gravity ^= 0x01;
@@ -157,19 +157,19 @@ void sprite_collide_lookup(){
 	} 
     }
 
-	else if (tmp4 == speed_05_portal) speed = 1;
-	else if (tmp4 == speed_10_portal) speed = 0;
-	else if (tmp4 == speed_20_portal) speed = 2;
+	else if (tmp4 == SPEED_05_PORTAL) speed = 1;
+	else if (tmp4 == SPEED_10_PORTAL) speed = 0;
+	else if (tmp4 == SPEED_20_PORTAL) speed = 2;
 	
 
-    else if (tmp4 == pink_orb) {
+    else if (tmp4 == PINK_ORB) {
 	if (cube_data == 2) {		//nest it so that the next else-if for tmp4 doesn't trigger
 		cube_data = 0x00;
 		if (gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
 		else player.vel_y = PAD_HEIGHT_PINK;
 	}
     }
-    else if (tmp4 == gravity_down_portal || tmp4 == gravity_down_upwards_portal || tmp4 == gravity_down_downwards_portal || tmp4 == gravity_down_invisible_portal) { 
+    else if (tmp4 == GRAVITY_DOWN_PORTAL || tmp4 == GRAVITY_DOWN_UPWARDS_PORTAL || tmp4 == GRAVITY_DOWN_DOWNWARDS_PORTAL || tmp4 == GRAVITY_DOWN_INVISIBLE_PORTAL) { 
 	if (gravity) {
 	    gravity = 0; 
 	 //   if (player.vel_y > -0x0200) player.vel_y = -0x0200; 
@@ -177,7 +177,7 @@ void sprite_collide_lookup(){
 		   if (player.vel_y > -0x0400) player.vel_y = -0x0400; 
 	}
     }
-    else if (tmp4 == gravity_up_portal || tmp4 == gravity_up_upwards_portal || tmp4 == gravity_up_downwards_portal || tmp4 == gravity_up_invisible_portal ) { 
+    else if (tmp4 == GRAVITY_UP_PORTAL || tmp4 == GRAVITY_UP_UPWARDS_PORTAL || tmp4 == GRAVITY_UP_DOWNWARDS_PORTAL || tmp4 == GRAVITY_UP_INVISIBLE_PORTAL ) { 
 	if (!gravity) {
 	    gravity = 1; 
 	    //if (player.vel_y < 0x0200) player.vel_y = 0x0200; 
@@ -186,18 +186,18 @@ void sprite_collide_lookup(){
 	}
     }
 
-    else if (tmp4 == yellow_pad_down || tmp4 == yellow_pad_up) {				//yellow pads
+    else if (tmp4 == YELLOW_PAD_DOWN || tmp4 == YELLOW_PAD_UP) {				//yellow pads
         if (gravity) player.vel_y = PAD_HEIGHT_YELLOW^0xFFFF;
         else player.vel_y = PAD_HEIGHT_YELLOW;
     } 
-    else if (tmp4 == gravity_pad_down) {			//gravity pads bottom
+    else if (tmp4 == GRAVITY_PAD_DOWN) {			//gravity pads bottom
 	    if (!gravity) { 
 		gravity = 0x01;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
 		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }
-    else if (tmp4 == gravity_pad_up) {			//gravity pads top
+    else if (tmp4 == GRAVITY_PAD_UP) {			//gravity pads top
 	    if (gravity) { 
 		gravity = 0x00;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_BLUE;	
@@ -209,14 +209,14 @@ void sprite_collide_lookup(){
 //        pal_fade_to(4,0); 
 //    }
     
-    else if (tmp4 == gravity_pad_down_invisible) {			//gravity pads bottom
+    else if (tmp4 == GRAVITY_PAD_DOWN_INVISIBLE) {			//gravity pads bottom
 	    if (!gravity) { 
 		gravity = 0x01;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
 		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }
-    else if (tmp4 == gravity_pad_up_invisible) {			//gravity pads top
+    else if (tmp4 == GRAVITY_PAD_UP_INVISIBLE) {			//gravity pads top
 	    if (gravity) { 
 		gravity = 0x00;				//flip gravity
 		if (player.vel_y == 0) player.vel_y = PAD_HEIGHT_PINK;
