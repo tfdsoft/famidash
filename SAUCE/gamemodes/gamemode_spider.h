@@ -44,7 +44,6 @@ void spider_movement(void){
 		if(gravity){
 			if(bg_coll_U() && !bg_coll_R()){ // check collision above
 				high_byte(player.y) -= eject_U;
-				player.vel_y = 0;
 			}
 			if(bg_coll_U())    player.vel_y = 0;
 		}
@@ -63,10 +62,11 @@ void spider_movement(void){
 	if (!gravity) {
 		if(pad_new & PAD_A) {
 			gravity = 1;
-			while (!bg_coll_U() && player.y > 0x650) {
-				player.y += 0x20;
+			while (!bg_coll_U()) {
+				player.y -= 0x700;
+				Generic.y = high_byte(player.y); // the rest should be the same
 			}
-			high_byte(player.y) -= eject_D;
+			high_byte(player.y) -= eject_U;
 			player.vel_y = 0;
 			
 		}
@@ -75,7 +75,13 @@ void spider_movement(void){
 	else {
 		if(pad_new & PAD_A) {
 			gravity = 0;
-				high_byte(player.y) -= CUBE_MAX_FALLSPEED*3;
+			while (!bg_coll_D()) {
+				player.y += 0x700;
+				Generic.y = high_byte(player.y); // the rest should be the same
+			}
+			high_byte(player.y) -= eject_D;
+			player.vel_y = 0;
+
 
 		}
 	}

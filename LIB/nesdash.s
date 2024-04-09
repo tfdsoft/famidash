@@ -1001,7 +1001,9 @@ _movement:
     jeq _ufo_movement	;	ufo_movement(); break;
     DEX					; case 0x04:
     jeq _cube_movement	;	robot_movement(); break;
-    RTS					; case 0x05: default: break;
+    DEX					; case 0x05:
+    jeq _spider_movement	;	spider_movement(); break;
+    RTS					; case 0x06: default: break;
 
 ;void __fastcall__ music_play(unsigned char song);
 _music_play:
