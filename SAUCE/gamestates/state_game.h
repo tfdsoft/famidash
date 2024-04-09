@@ -65,6 +65,7 @@ void state_game(){
         }
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
+	mmc3_set_prg_bank_1(0);
         do_the_scroll_thing(); 
 
 	mmc3_set_prg_bank_1(0);

@@ -4,7 +4,7 @@
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_x, _level_data_bank
 .import _song, _level
-.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement
+.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR

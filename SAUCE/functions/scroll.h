@@ -1,3 +1,8 @@
+#pragma code-name(push, "LVL_BANK_00")
+#pragma data-name(push, "LVL_BANK_00")
+#pragma rodata-name(push, "LVL_BANK_00")
+
+
 void do_the_scroll_thing(){
     
 	if (player.x > 0x5000){ // change x scroll
@@ -36,3 +41,7 @@ void do_the_scroll_thing(){
     set_scroll_x(scroll_x);
     set_scroll_y(scroll_y);
 }
+
+#pragma code-name(pop)
+#pragma data-name(pop) 
+#pragma rodata-name(pop)

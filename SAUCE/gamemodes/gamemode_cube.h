@@ -35,18 +35,17 @@ void cube_movement(void){
 	Generic.y = high_byte(player.y);
 	
 		if(!gravity){
-			if(bg_coll_D() && !bg_coll_R()){ // check collision below
-			    high_byte(player.y) -= eject_D;
-			}
-			if(bg_coll_D())    player.vel_y = 0;
+			if(bg_coll_D()){ // check collision below
+			if(!bg_coll_R())    high_byte(player.y) -= eject_D;
+			player.vel_y = 0;
+		}
 			
 		}
 		if(gravity){
 			if(bg_coll_U() && !bg_coll_R()){ // check collision above
-				high_byte(player.y) -= eject_U;
+				if(!bg_coll_R()) high_byte(player.y) -= eject_U;
 				player.vel_y = 0;
 			}
-			if(bg_coll_U())    player.vel_y = 0;
 		}
 
 	
@@ -75,9 +74,9 @@ void cube_movement(void){
 			
 			}
 	}
-	else if (gamemode == 4 && player.vel_y == 0){
+	else if (gamemode == 4 && (player.vel_y == 0 || player.vel_y == 0x6B)){
 		cube_data = 0;				
-		if((pad_new & PAD_A) && bg_coll_D()) {
+		if(pad_new & PAD_A) {
 			if (!gravity) {
 				if (!mini) player.vel_y = ROBOT_JUMP_VEL; // JUMP
 				else player.vel_y = ROBOT_JUMP_VEL; // JUMP
