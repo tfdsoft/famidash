@@ -1,5 +1,6 @@
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
 
+	0xe0, 0, 0x80, 1, 23, 0, 0, 0, 
 	0xc0, 3, 0x90, 1, 147, 0, 0, 0, 
 	0xc0, 3, 0xa0, 1, 211, 0, 0, 0, 
 	0xb0, 6, 0x90, 1, 148, 0, 0, 0, 

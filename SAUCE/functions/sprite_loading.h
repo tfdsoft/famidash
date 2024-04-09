@@ -25,6 +25,7 @@
 #define SPEED_05_PORTAL		 		0X14
 #define SPEED_10_PORTAL		 		0X15
 #define SPEED_20_PORTAL		 		0X16
+#define SPIDER_MODE		 		0X17
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -86,7 +87,8 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == SHIP_MODE) return 0x2f; // portal
     else if (type == BALL_MODE) return 0x2f; // portal
     else if (type == UFO_MODE) return 0x2f; // portal
-    else if (type == ROBOT_MODE) return 0x2f; // unused portal
+    else if (type == ROBOT_MODE) return 0x2f; // portal
+    else if (type == SPIDER_MODE) return 0x2f; // portal
     else if (type == BLUE_ORB) return 0x0f; // blue orb
     else if (type == PINK_ORB) return 0x0f; // pink jump orb
     else if (type == COIN) return 0x17; // COIN
@@ -125,6 +127,9 @@ void sprite_collide_lookup(){
     if (tmp4 == NOSPRITE) { }
     
     else if (tmp4 <= 4) { gamemode = tmp4; robotjumptime = 0; }			//game mode portals
+    else if (tmp4 == SPIDER_MODE) gamemode = tmp4; 			//game mode portals
+    
+    
     else if (tmp4 == YELLOW_ORB) {		//yellow orb
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 		if (cube_data == 2) {					
@@ -146,7 +151,7 @@ void sprite_collide_lookup(){
     }
 
     else if (tmp4 == BLUE_ORB)  {				//blue orb
-	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
+	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE || gamemode == SPIDER_MODE) {
 		if (cube_data == 2) {			
 			cube_data = 0x00;
 			gravity ^= 0x01;

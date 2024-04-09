@@ -334,6 +334,21 @@ const unsigned char Portal_Gamemode_Robot[]={
 	 16, 32,0x85,6|OAM_FLIP_V,
 	0x80
 };
+const unsigned char Portal_Gamemode_Spider[]={
+
+	  0,  0,0x81,7,
+	  0, 16,0x87,7,
+	  0, 32,0x81,7|OAM_FLIP_V,
+	  8,  0,0x83,7,
+
+	  8, 16,0x89,7,
+	  8, 32,0x83,7|OAM_FLIP_V,
+	 16,  0,0x85,7,
+	 16, 16,0x8B,7,
+
+	 16, 32,0x85,7|OAM_FLIP_V,
+	0x80
+};
 const unsigned char Portal_Gravity_Down[]={
 	  0,  0,0x8d,0,  
 	  0, 16,0x93,0,  
@@ -625,6 +640,7 @@ const unsigned char * const Metasprites[]={
 	Speed_05_Portal,
 	Speed_10_Portal,
 	Speed_20_Portal,
+	Portal_Gamemode_Spider,
 	};
 
 
@@ -654,6 +670,7 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -676,6 +693,7 @@ const unsigned char animation_frame_length[] = {
 	0, // nometa, // end stage trigger
 	
 	0, //horizontal portals
+	0,
 	0,
 	0,
 	0,
