@@ -67,7 +67,9 @@ void state_game(){
         if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
         do_the_scroll_thing(); 
 
+	mmc3_set_prg_bank_1(0);
         check_spr_objects();
+
         sprite_collide();
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);

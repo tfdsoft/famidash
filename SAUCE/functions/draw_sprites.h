@@ -48,11 +48,18 @@ void draw_sprites(void){
 		case 0x04:
 
 //			cube_rotate ^= 0x0100;
-			if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
-			else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
-			robotframe++;
-			if (robotframe > 15) { robotframe = 0; }
-			break;
+			if (player.vel_y == 0 || player.vel_y == CUBE_GRAVITY) {
+				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+				robotframe++;
+				if (robotframe > 19) { robotframe = 0; }
+				break;
+			}
+			else {
+				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
+				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
+				break;
+			}
     }
 	
 	// the level sprites

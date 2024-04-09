@@ -198,10 +198,42 @@ const unsigned char Robot_2[]={
 	0x80
 };
 
-const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_0, Robot_0, Robot_0, Robot_0, Robot_2, Robot_2, Robot_2, Robot_2};
+const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_1, Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2};
+
+const unsigned char Robot_Jump_1[]={
+	
+	4,   0, 0x29,0|OAM_FLIP_V,
+	8,   0, 0x31,0,
+	16,   0, 0x33,0,
+	0x80
+};
+
+const unsigned char Robot_Jump_2[]={
+	
+	0,   0, 0x27,0|OAM_FLIP_V,
+	8,   0, 0x31,0,
+	16,   0, 0x33,0,
+	0x80
+};
+
+const unsigned char Robot_Jump_3[]={
+	
+	0,   0, 0x25,0,
+	8,   0, 0x31,0,
+	16,   0, 0x33,0,
+	0x80
+};
+
+const unsigned char Robot_Jump_4[]={
+	
+	0,   0, 0x25,0|OAM_FLIP_V,
+	8,   0, 0x31,0,
+	16,   0, 0x33,0,
+	0x80
+};
 
 
-
+const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1};
 
 const unsigned char Speed_05_Portal[]={
 	  0,  0,0x61,1,	
@@ -285,6 +317,21 @@ const unsigned char Portal_Gamemode_UFO[]={
 	 16, 16,0x8B,1,
 
 	 16, 32,0x85,1|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Portal_Gamemode_Robot[]={
+
+	  0,  0,0x81,6,
+	  0, 16,0x87,6,
+	  0, 32,0x81,6|OAM_FLIP_V,
+	  8,  0,0x83,6,
+
+	  8, 16,0x89,6,
+	  8, 32,0x83,6|OAM_FLIP_V,
+	 16,  0,0x85,6,
+	 16, 16,0x8B,6,
+
+	 16, 32,0x85,6|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gravity_Down[]={
@@ -558,7 +605,7 @@ const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Ship, 
 	Portal_Gamemode_Ball, // ball
 	Portal_Gamemode_UFO, // ufo
-	nometa, // wave
+	Portal_Gamemode_Robot, // wave
 	Blue_Jump_Orb, // bobot
 	Pink_Jump_Orb, 
 	COIN_SPRITE, // swing

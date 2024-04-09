@@ -84,11 +84,11 @@ void robot_movement(void){
 					if (!mini) player.vel_y = JUMP_VEL^FFFF; // JUMP
 					else player.vel_y = MINIJUMP_VEL^FFFF; // JUMP
 				}
-				robotjumpmax = 10;
+				robotjumptime = 10;
 		}
-		else if (robotjumpmax) {
+		else if (robotjumptime) {
 				cube_data = 0;
-				robotjumpmax--;
+				robotjumptime--;
 				if(pad & PAD_A) {
 					if (!gravity) {
 						if (!mini) player.vel_y = JUMP_VEL; // JUMP
@@ -98,7 +98,7 @@ void robot_movement(void){
 						if (!mini) player.vel_y = JUMP_VEL^FFFF; // JUMP
 						else player.vel_y = MINIJUMP_VEL^FFFF; // JUMP
 					}
-                                else robotjumpmax = 0;
+                                else robotjumptime = 0;
 			
 		}
 }	

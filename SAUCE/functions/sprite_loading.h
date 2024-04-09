@@ -35,6 +35,10 @@ extern void load_next_sprite(void);
 
 extern void check_spr_objects(void);
 
+
+
+
+
 void init_sprites(void){
     mmc3_set_prg_bank_1(SPR_BANK_00);
     sprite_data = (unsigned char *) sprite_list[level];
@@ -82,7 +86,7 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == SHIP_MODE) return 0x2f; // portal
     else if (type == BALL_MODE) return 0x2f; // portal
     else if (type == UFO_MODE) return 0x2f; // portal
-    else if (type == 0x04) return 0x2f; // unused portal
+    else if (type == ROBOT_MODE) return 0x2f; // unused portal
     else if (type == BLUE_ORB) return 0x0f; // blue orb
     else if (type == PINK_ORB) return 0x0f; // pink jump orb
     else if (type == COIN) return 0x17; // COIN
@@ -113,11 +117,14 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
 
 
 
+#pragma code-name(push, "LVL_BANK_00")
+#pragma data-name(push, "LVL_BANK_00")
+#pragma rodata-name(push, "LVL_BANK_00")
 void sprite_collide_lookup(){
     // portals
     if (tmp4 == NOSPRITE) { }
     
-    else if (tmp4 <= 3) gamemode = tmp4;			//game mode portals
+    else if (tmp4 <= 4) { gamemode = tmp4; robotjumptime = 0; }			//game mode portals
     else if (tmp4 == YELLOW_ORB) {		//yellow orb
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 		if (cube_data == 2) {					
@@ -225,6 +232,8 @@ void sprite_collide_lookup(){
     }    
 }
 
+
+
 void sprite_collide(){
 
     Generic.x = high_byte(player.x);
@@ -256,3 +265,7 @@ void sprite_collide(){
         }
     }
 }
+
+#pragma code-name(pop)
+#pragma data-name(pop) 
+#pragma rodata-name(pop)

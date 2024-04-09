@@ -21,6 +21,8 @@
 #define CUBE_SPEED_X1 0x2C4
 #define CUBE_SPEED_X2 0x588
 
+#define ROBOT_JUMP_TIME 12
+
 #define CUBE_MAX_FALLSPEED 0x600
 #define CUBE_GRAVITY 0x6B
 
@@ -125,7 +127,8 @@ unsigned char coinframe;
 unsigned char padframe;
 unsigned char ballframe;
 unsigned char robotframe;
-unsigned char robotjumpmax;
+unsigned char robotjumpframe;
+unsigned char robotjumptime;
 unsigned char level;
 unsigned char level_data_bank;
 
