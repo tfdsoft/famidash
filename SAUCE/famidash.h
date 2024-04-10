@@ -16,7 +16,9 @@
 #define JUMP_VEL -0x5B0
 #define MINI_JUMP_VEL -0x5B0
 #define UFO_JUMP_VEL -0x530
+
 #define ROBOT_JUMP_VEL -0x2B0
+#define MINI_ROBOT_JUMP_VEL -0x2B0
 
 #define CUBE_SPEED_X05 0x162
 #define CUBE_SPEED_X1 0x2C4

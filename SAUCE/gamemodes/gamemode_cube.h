@@ -74,16 +74,16 @@ void cube_movement(void){
 			
 			}
 	}
-	else if (gamemode == 4 && (player.vel_y == 0 || player.vel_y == 0x6B)){
+	else if (gamemode == 4 && (player.vel_y == 0 || player.vel_y == 0x6B || player.vel_y == 0x9B)){
 		cube_data = 0;				
 		if(pad_new & PAD_A) {
 			if (!gravity) {
 				if (!mini) player.vel_y = ROBOT_JUMP_VEL; // JUMP
-				else player.vel_y = ROBOT_JUMP_VEL; // JUMP
+				else player.vel_y = MINI_ROBOT_JUMP_VEL; // JUMP
 			}
 			else {
 				if (!mini) player.vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
-				else player.vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
+				else player.vel_y = MINI_ROBOT_JUMP_VEL^0xFFFF; // JUMP
 			}
 			robotjumptime = ROBOT_JUMP_TIME;
 			robotjumpframe = 1;

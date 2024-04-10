@@ -75,15 +75,27 @@ void draw_sprites(void){
 			
 		case 0x04:
 			if (player.vel_y == 0 || player.vel_y == CUBE_GRAVITY) {
-				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
-				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+				if (!mini) {
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+				}
+				else {
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_ROBOT[robotframe]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_ROBOT[robotframe]);					
+				}
 				robotframe++;
 				if (robotframe > 19) { robotframe = 0; }
 				break;
 			}
 			else {
-				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
-				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
+				if (!mini) {
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
+				}
+				else {
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_ROBOT_JUMP[robotjumpframe]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_ROBOT_JUMP[robotjumpframe]);
+				}
 				break;
 			}
     }
