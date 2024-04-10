@@ -66,4 +66,4 @@ Metatile "ORB_OUTLINE",     $60, $61, $70, $71, PAL_0, COL_NONE
 Metatile "PAD_UP_OUTLINE",  $00, $00, $62, $63, PAL_0, COL_NONE
 Metatile "PAD_DOWN_OUTLINE",$72, $73, $00, $00, PAL_0, COL_NONE
 
-Metatile "POLARGEIST_SPECIAL",  $40, $41, $36, $37, PAL_0, COL_TOP
+Metatile "POLARGEIST_SPECIAL",  $40, $41, $52, $53, PAL_0, COL_TOP
