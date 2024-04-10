@@ -339,17 +339,17 @@ const unsigned char * const MINI_ROBOT_JUMP[]={Mini_Robot_Jump_1, Mini_Robot_Jum
 
 const unsigned char Speed_05_Portal[]={
 	  0,  0,0x61,1,	
+	  8,  0,0x63,1,
 	  0,  16,0x61,1|OAM_FLIP_V,	
-	  8,  0,0x61,1|OAM_FLIP_V|OAM_FLIP_H,	
-	  8,  16,0x61,1|OAM_FLIP_H,	
+	  8,  16,0x63,1|OAM_FLIP_V,	
 	0x80
 };
 
 const unsigned char Speed_10_Portal[]={
-	  0,  0,0x63,1|OAM_FLIP_H,	
-	  0,  16,0x63,1|OAM_FLIP_H|OAM_FLIP_V,	
-	  8,  0,0x63,1|OAM_FLIP_V,	
-	  8,  16,0x63,1,	
+	  0,  0,0x63,0|OAM_FLIP_H,	
+	  8,  0,0x61,0|OAM_FLIP_H,
+	  0,  16,0x63,0|OAM_FLIP_H|OAM_FLIP_V,	
+	  8,  16,0x61,0|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 const unsigned char Speed_20_Portal[]={
