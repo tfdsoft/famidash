@@ -81,7 +81,7 @@ void state_game(){
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement2();
 		mmc3_set_prg_bank_1(0);
-		x_movement2();
+//		x_movement2();
 		sprite_collide();
 	}
         if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);

@@ -144,7 +144,7 @@ void ufo_movement2(void){
 //	}
 
 	
-	if (gravity){
+	if (!gravity){
 			//if(bg_coll_U2()) {
 		//		cube_data = 0;
 				if(pad_new & PAD_A) {

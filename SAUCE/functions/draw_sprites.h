@@ -15,19 +15,96 @@ void draw_sprites(void){
 		switch (gamemode){
 			default:
 
-				cube_rotate += CUBE_GRAVITY;
-				if (player2.vel_y == 0) cube_rotate = 0;
-				if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
+				cube_rotate2 += CUBE_GRAVITY;
+				if (player2.vel_y == 0) cube_rotate2 = 0;
+				if (cube_rotate2 > 0x05FF) cube_rotate2 -= 0x0600;
 
 				if (!mini) {
-					if (!gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, CUBE[high_byte(cube_rotate)]);
-					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, CUBE[high_byte(cube_rotate)]);
+					if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, CUBE2[high_byte(cube_rotate2)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, CUBE2[high_byte(cube_rotate2)]);
 				}
 				else {
-					if (!gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_CUBE[high_byte(cube_rotate)]);
-					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_CUBE[high_byte(cube_rotate)]);				
+					if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_CUBE2[high_byte(cube_rotate2)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_CUBE2[high_byte(cube_rotate2)]);				
 				}
 				break;
+			case 0x01:
+				cube_rotate2 = 0x0400 - player2.vel_y;
+				if (high_byte(cube_rotate2) >= 0x08) {
+					cube_rotate = high_byte(cube_rotate2) >= 0x80 ? 0x0000 : 0x07FF;
+				}
+
+				if (!mini) {
+					if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, SHIP2[high_byte(cube_rotate2)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, SHIP2[7-high_byte(cube_rotate2)]);
+				}
+				else {
+					if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_SHIP2[high_byte(cube_rotate2)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_SHIP2[7-high_byte(cube_rotate2)]);
+				}
+				break;
+				
+			case 0x02:
+				if (!mini) {
+					if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, BALL2[ballframe]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, BALL2[ballframe]);
+					ballframe++;
+					if (ballframe > 7) { ballframe = 0; }
+				}
+				else   {
+					if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_BALL2[ballframe]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_BALL2[ballframe]);
+				}
+				break;
+
+			case 0x03:
+				if (gravity) {
+					if (player2.vel_y == 0 || player2.vel_y == 0x6B) kandotemp4 = 0;
+					else if (player2.vel_y > 0) kandotemp4 = 1;
+					else if (player2.vel_y < 0) kandotemp4 = 2;
+					if (!mini) oam_meta_spr(temp_x, high_byte(player2.y)-1, UFO2[kandotemp4]);
+					else oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_UFO2[kandotemp4]);
+				}
+				else {
+					if (player2.vel_y == 0 || player2.vel_y == -0x6B) kandotemp4 = 0;
+					else if (player2.vel_y > 0) kandotemp4 = 1;
+					else if (player2.vel_y < 0) kandotemp4 = 2;
+			
+					if (!mini) oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, UFO2[kandotemp4]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_UFO2[kandotemp4]);
+				}
+				break;
+				
+			case 0x04:
+				if (player2.vel_y == 0 || player2.vel_y == CUBE_GRAVITY) {
+					if (!mini) {
+						if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, ROBOT2[robotframe2]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, ROBOT2[robotframe2]);
+					}
+					else {
+						if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_ROBOT2[robotframe2]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_ROBOT2[robotframe2]);					
+					}
+					robotframe2++;
+					if (robotframe2 > 19) { robotframe2 = 0; }
+					break;
+				}
+				else {
+					if (!mini) {
+						if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, ROBOT_JUMP2[robotjumpframe2]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, ROBOT_JUMP2[robotjumpframe2]);
+					}
+					else {
+						if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_ROBOT_JUMP2[robotjumpframe2]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_ROBOT_JUMP2[robotjumpframe2]);
+					}
+					break;
+				}
+
+
+
+
+
 		}
 	}
 	
