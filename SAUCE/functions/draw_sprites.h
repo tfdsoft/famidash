@@ -7,98 +7,122 @@ void reset_level(void);
 
 void draw_sprites(void){
 	// draw player
-    temp_x = high_byte(player.x);
-	if(temp_x > 0xfc) temp_x = 1;
-	if(temp_x == 0) temp_x = 1;
-	switch (gamemode){
-		default:
+	if (dual) {
+		temp_x = high_byte(player2.x);
+		if(temp_x > 0xfc) temp_x = 1;
+		if(temp_x == 0) temp_x = 1;
+		switch (gamemode){
+			default:
 
-			cube_rotate += CUBE_GRAVITY;
-			if (player.vel_y == 0) cube_rotate = 0;
-			if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
+				cube_rotate += CUBE_GRAVITY;
+				if (player2.vel_y == 0) cube_rotate = 0;
+				if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
 
-			if (!mini) {
-				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, CUBE[high_byte(cube_rotate)]);
-				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, CUBE[high_byte(cube_rotate)]);
-			}
-			else {
-				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_CUBE[high_byte(cube_rotate)]);
-				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_CUBE[high_byte(cube_rotate)]);				
-			}
-			break;
-		case 0x01:
-			cube_rotate = 0x0400 - player.vel_y;
-			if (high_byte(cube_rotate) >= 0x08) {
-				cube_rotate = high_byte(cube_rotate) >= 0x80 ? 0x0000 : 0x07FF;
-			}
-
-			if (!mini) {
-				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, SHIP[high_byte(cube_rotate)]);
-				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, SHIP[7-high_byte(cube_rotate)]);
-			}
-			else {
-				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_SHIP[high_byte(cube_rotate)]);
-				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_SHIP[7-high_byte(cube_rotate)]);
-			}
-			break;
-			
-		case 0x02:
-			if (!mini) {
-				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, BALL[ballframe]);
-				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, BALL[ballframe]);
-				ballframe++;
-				if (ballframe > 7) { ballframe = 0; }
-			}
-			else   {
-				if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_BALL[ballframe]);
-				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_BALL[ballframe]);
-			}
-			break;
-
-		case 0x03:
-			if (!gravity) {
-				if (player.vel_y == 0 || player.vel_y == 0x6B) kandotemp3 = 0;
-				else if (player.vel_y > 0) kandotemp3 = 1;
-				else if (player.vel_y < 0) kandotemp3 = 2;
-				if (!mini) oam_meta_spr(temp_x, high_byte(player.y)-1, UFO[kandotemp3]);
-				else oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_UFO[kandotemp3]);
-			}
-			else {
-				if (player.vel_y == 0 || player.vel_y == -0x6B) kandotemp3 = 0;
-				else if (player.vel_y > 0) kandotemp3 = 1;
-				else if (player.vel_y < 0) kandotemp3 = 2;
-		
-				if (!mini) oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, UFO[kandotemp3]);
-				else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_UFO[kandotemp3]);
-			}
-			break;
-			
-		case 0x04:
-			if (player.vel_y == 0 || player.vel_y == CUBE_GRAVITY) {
 				if (!mini) {
-					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
-					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, CUBE[high_byte(cube_rotate)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, CUBE[high_byte(cube_rotate)]);
 				}
 				else {
-					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_ROBOT[robotframe]);
-					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_ROBOT[robotframe]);					
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_CUBE[high_byte(cube_rotate)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_CUBE[high_byte(cube_rotate)]);				
 				}
-				robotframe++;
-				if (robotframe > 19) { robotframe = 0; }
 				break;
-			}
-			else {
+		}
+	}
+	
+		temp_x = high_byte(player.x);
+		if(temp_x > 0xfc) temp_x = 1;
+		if(temp_x == 0) temp_x = 1;
+		switch (gamemode){
+			default:
+
+				cube_rotate += CUBE_GRAVITY;
+				if (player.vel_y == 0) cube_rotate = 0;
+				if (cube_rotate > 0x05FF) cube_rotate -= 0x0600;
+
 				if (!mini) {
-					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
-					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, CUBE[high_byte(cube_rotate)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, CUBE[high_byte(cube_rotate)]);
 				}
 				else {
-					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_ROBOT_JUMP[robotjumpframe]);
-					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_ROBOT_JUMP[robotjumpframe]);
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_CUBE[high_byte(cube_rotate)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_CUBE[high_byte(cube_rotate)]);				
 				}
 				break;
-			}
-    }
+			case 0x01:
+				cube_rotate = 0x0400 - player.vel_y;
+				if (high_byte(cube_rotate) >= 0x08) {
+					cube_rotate = high_byte(cube_rotate) >= 0x80 ? 0x0000 : 0x07FF;
+				}
+
+				if (!mini) {
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, SHIP[high_byte(cube_rotate)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, SHIP[7-high_byte(cube_rotate)]);
+				}
+				else {
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_SHIP[high_byte(cube_rotate)]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_SHIP[7-high_byte(cube_rotate)]);
+				}
+				break;
+				
+			case 0x02:
+				if (!mini) {
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, BALL[ballframe]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, BALL[ballframe]);
+					ballframe++;
+					if (ballframe > 7) { ballframe = 0; }
+				}
+				else   {
+					if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_BALL[ballframe]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_BALL[ballframe]);
+				}
+				break;
+
+			case 0x03:
+				if (!gravity) {
+					if (player.vel_y == 0 || player.vel_y == 0x6B) kandotemp3 = 0;
+					else if (player.vel_y > 0) kandotemp3 = 1;
+					else if (player.vel_y < 0) kandotemp3 = 2;
+					if (!mini) oam_meta_spr(temp_x, high_byte(player.y)-1, UFO[kandotemp3]);
+					else oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_UFO[kandotemp3]);
+				}
+				else {
+					if (player.vel_y == 0 || player.vel_y == -0x6B) kandotemp3 = 0;
+					else if (player.vel_y > 0) kandotemp3 = 1;
+					else if (player.vel_y < 0) kandotemp3 = 2;
+			
+					if (!mini) oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, UFO[kandotemp3]);
+					else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_UFO[kandotemp3]);
+				}
+				break;
+				
+			case 0x04:
+				if (player.vel_y == 0 || player.vel_y == CUBE_GRAVITY) {
+					if (!mini) {
+						if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT[robotframe]);
+					}
+					else {
+						if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_ROBOT[robotframe]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_ROBOT[robotframe]);					
+					}
+					robotframe++;
+					if (robotframe > 19) { robotframe = 0; }
+					break;
+				}
+				else {
+					if (!mini) {
+						if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, ROBOT_JUMP[robotjumpframe]);
+					}
+					else {
+						if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_ROBOT_JUMP[robotjumpframe]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_ROBOT_JUMP[robotjumpframe]);
+					}
+					break;
+				}
+	    }
+	
 	
 	// the level sprites
 

@@ -90,6 +90,7 @@ unsigned short index2;
 unsigned char temp_x;
 unsigned char temp_y;
 unsigned char temp_room;
+unsigned char dual;
 
 unsigned char * sprite_data;
 unsigned char* level_data;
@@ -179,6 +180,15 @@ struct player {
 };
 
 struct player player = {0x0000,0xb000};
+
+struct player2 {
+	unsigned short x; // low byte is sub-pixel
+	unsigned short y;
+	signed short vel_x; // speed, signed, low byte is sub-pixel
+	signed short vel_y;
+};
+
+struct player2 player2 = {0x0000,0xb000};
 
 struct Base {
 	unsigned char x;

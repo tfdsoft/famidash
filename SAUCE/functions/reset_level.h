@@ -42,6 +42,8 @@ void reset_level(void) {
     init_sprites();
     player.x = 0x0000;
     player.y = 0xb000;
+    player2.x = 0x0000;
+    player2.y = 0xb000;
     gravity = 0x00;
     player.vel_x = 0;
     player.vel_y = 0;

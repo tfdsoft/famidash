@@ -3,6 +3,7 @@
 	Implemented in asm
 */
 void __fastcall__ movement(void);
+void __fastcall__ movement2(void);
 
 extern unsigned char* PARALLAX_CHR;
 unsigned char END_LEVEL_TIMER;
@@ -57,6 +58,8 @@ void state_game(){
         if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
         x_movement();
         movement();
+
+	if (dual) movement2();
 
         if (invincible_counter == 0) {
             bg_coll_death();
