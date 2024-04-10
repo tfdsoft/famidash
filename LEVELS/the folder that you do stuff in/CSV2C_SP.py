@@ -43,6 +43,8 @@ for i in range(0, columns):
 				newfile.write(str(hex(j % 16)) + "8, ")
 			elif (int(a) == 13):
 				newfile.write(str(hex(j % 16)) + "8, ")
+			elif (int(a) == 253):
+				newfile.write(str(hex(j % 16)) + "8, ")
 			else:
 				newfile.write(str(hex(j % 16)) + "0, ") # Y position, low byte
 
