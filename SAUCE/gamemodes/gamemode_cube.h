@@ -144,6 +144,7 @@ void cube_movement2(void){
 		}
 	}		
 	player2.y += player2.vel_y;
+
 	player2.x = player.x;
 	
 	Generic.x = high_byte(player2.x);

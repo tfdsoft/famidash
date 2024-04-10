@@ -57,9 +57,10 @@ void state_game(){
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
         x_movement();
+	
+	
         movement();
 
-	if (dual) movement2();
 
         if (invincible_counter == 0) {
             bg_coll_death();
@@ -75,7 +76,11 @@ void state_game(){
         check_spr_objects();
 
         sprite_collide();
-
+	if (dual) { 
+		movement2();
+		x_movement2();
+		sprite_collide();
+	}
         if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
         oam_clear();
 

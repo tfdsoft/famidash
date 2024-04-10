@@ -277,6 +277,38 @@ void sprite_collide(){
     }
 }
 
+void sprite_collide2(){
+
+    Generic.x = high_byte(player2.x);
+    Generic.y = high_byte(player2.y);
+
+	if (!mini) {
+    Generic.width = CUBE_WIDTH;
+    Generic.height = CUBE_HEIGHT;
+	}
+	
+	else {
+    Generic.width = MINI_CUBE_WIDTH;
+    Generic.height = MINI_CUBE_HEIGHT;
+	}    
+    Generic2.width = 0x0f;
+    for (index = 0; index < max_loaded_sprites; ++index){
+        tmp3 = activesprites_active[index];
+        if (tmp3){
+            tmp4 = activesprites_type[index];
+            tmp2 = sprite_height_lookup(tmp4);
+            Generic2.height = tmp2;
+
+            Generic2.x = activesprites_realx[index];
+            Generic2.y = activesprites_realy[index];
+            
+            if (check_collision(&Generic, &Generic2)) {
+                sprite_collide_lookup();
+            }
+        }
+    }
+}
+
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)
