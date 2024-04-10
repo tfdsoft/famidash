@@ -4,15 +4,29 @@ void ship_movement(void){
 // gravity
 	// player.vel_y is signed
 	//if(player.vel_y < 0x400){
-	if(!gravity){
-		player.vel_y += SHIP_GRAVITY;
-	}
-	else{
-		player.vel_y -= SHIP_GRAVITY;
-	}
+	if(!mini) {
+		if(!gravity) {
+			player.vel_y += SHIP_GRAVITY;
+		}
+		else {
+			player.vel_y -= SHIP_GRAVITY;
+		}
+		if(player.vel_y > SHIP_MAX_FALLSPEED) player.vel_y = SHIP_MAX_FALLSPEED;
+		if(player.vel_y < -SHIP_MAX_FALLSPEED) player.vel_y = -SHIP_MAX_FALLSPEED;
 
-    if(player.vel_y > SHIP_MAX_FALLSPEED) player.vel_y = SHIP_MAX_FALLSPEED;
-    if(player.vel_y < -SHIP_MAX_FALLSPEED) player.vel_y = -SHIP_MAX_FALLSPEED;
+	}
+	else {
+		if(!gravity) {
+			player.vel_y += MINI_SHIP_GRAVITY;
+		}
+		else {
+			player.vel_y -= MINI_SHIP_GRAVITY;
+		}
+		if(player.vel_y > MINI_SHIP_MAX_FALLSPEED) player.vel_y = MINI_SHIP_MAX_FALLSPEED;
+		if(player.vel_y < -MINI_SHIP_MAX_FALLSPEED) player.vel_y = -MINI_SHIP_MAX_FALLSPEED;
+	}
+		
+		
 
 	player.y += player.vel_y;
 	
@@ -37,11 +51,20 @@ void ship_movement(void){
 	Generic.y = high_byte(player.y); // the rest should be the same
 	
 
-    if(pad & PAD_A) {
-        if (!gravity){
-            player.vel_y -= SHIP_GRAVITY<<1;
-		} else {
-            player.vel_y += SHIP_GRAVITY<<1;
-        }
-    }
-}	
+	if(pad & PAD_A) {
+		if (!mini) {
+			if (!gravity){
+			    player.vel_y -= SHIP_GRAVITY<<1;
+				} else {
+			    player.vel_y += SHIP_GRAVITY<<1;
+			}
+		}
+		else {
+			if (!gravity){
+			    player.vel_y -= MINI_SHIP_GRAVITY<<1;
+				} else {
+			    player.vel_y += MINI_SHIP_GRAVITY<<1;
+			}
+		}
+	}	
+}

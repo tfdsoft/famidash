@@ -63,7 +63,7 @@ void ufo_movement(void){
 				if(pad_new & PAD_A) {
 					//if (!mini) 
 					player.vel_y = 	UFO_JUMP_VEL^0xFFFF; // JUMP
-					//else player.vel_y = MINIJUMP_VEL^0xFFFF; // JUMP
+					//else player.vel_y = MINI_JUMP_VEL^0xFFFF; // JUMP
 				}
 			//}
 	} else {
@@ -72,7 +72,7 @@ void ufo_movement(void){
 				if(pad_new & PAD_A) {
 					//if (!mini) 
 						player.vel_y = 	UFO_JUMP_VEL; // JUMP
-					//else player.vel_y = MINIJUMP_VEL; // JUMP
+					//else player.vel_y = MINI_JUMP_VEL; // JUMP
 				}
 			//}
 	}

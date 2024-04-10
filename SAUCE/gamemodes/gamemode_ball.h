@@ -3,17 +3,29 @@ void ball_movement(void){
 
 // gravity
 	// player.vel_y is signed
-	//if(player.vel_y < 0x400){
-	if(!gravity){
-		player.vel_y += BALL_GRAVITY;
-	}
-	else{
-		player.vel_y -= BALL_GRAVITY;
-	}
 
-    if(player.vel_y > CUBE_MAX_FALLSPEED) player.vel_y = CUBE_MAX_FALLSPEED;
-    if(player.vel_y < -CUBE_MAX_FALLSPEED) player.vel_y = -CUBE_MAX_FALLSPEED;
-
+	if (!mini) {
+		if(!gravity){
+			player.vel_y += BALL_GRAVITY;
+		}
+		else{
+			player.vel_y -= BALL_GRAVITY;
+		}
+		if(player.vel_y > CUBE_MAX_FALLSPEED) player.vel_y = CUBE_MAX_FALLSPEED;
+		if(player.vel_y < -CUBE_MAX_FALLSPEED) player.vel_y = -CUBE_MAX_FALLSPEED;
+	}
+	else {
+		if(!gravity){
+			player.vel_y += MINI_BALL_GRAVITY;
+		}
+		else{
+			player.vel_y -= MINI_BALL_GRAVITY;
+		}
+		if(player.vel_y > CUBE_MAX_FALLSPEED) player.vel_y = MINI_CUBE_MAX_FALLSPEED;
+		if(player.vel_y < -CUBE_MAX_FALLSPEED) player.vel_y = -MINI_CUBE_MAX_FALLSPEED;
+	}
+	
+	
 	player.y += player.vel_y;
 	
 	Generic.x = high_byte(player.x);

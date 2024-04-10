@@ -75,7 +75,9 @@ void state_game(){
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
         oam_clear();
+
         draw_screen_R(); 
+	mmc3_set_prg_bank_1(0);	
         draw_sprites();
         
         color_emphasis(0);
