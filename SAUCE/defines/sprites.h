@@ -627,26 +627,26 @@ const unsigned char Yellow_Jump_Pad_U4[]={
 
 const unsigned char Gravity_Pad[]={
 
-	  0,-0,0x99,4,
-	  8,-0,0x9B,4|OAM_FLIP_H,
+	  0,-8,0x99,4,
+	  8,-8,0x9B,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad2[]={
 
-	  0,-0,0x9B,4,
-	  8,-0,0x9D,4|OAM_FLIP_H,
+	  0,-8,0x9B,4,
+	  8,-8,0x9D,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad3[]={
 
-	  0,-0,0x9D,4,
-	  8,-0,0x9F,4|OAM_FLIP_H,
+	  0,-8,0x9D,4,
+	  8,-8,0x9F,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad4[]={
 
-	  0,-0,0x9F,4,
-	  8,-0,0x99,4|OAM_FLIP_H,
+	  0,-8,0x9F,4,
+	  8,-8,0x99,4|OAM_FLIP_H,
 	0x80
 };
 
