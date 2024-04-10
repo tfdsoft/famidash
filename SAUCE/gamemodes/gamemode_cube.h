@@ -201,17 +201,17 @@ void cube_movement2(void){
 				if (!mini) player2.vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
 				else player2.vel_y = MINI_ROBOT_JUMP_VEL^0xFFFF; // JUMP
 			}
-			robotjumptime2 = ROBOT_JUMP_TIME;
-			robotjumpframe2 = 1;
+			robotjumptime = ROBOT_JUMP_TIME;
+			robotjumpframe = 1;
 		}
 	}
 	
-	else if (gamemode == 4 && robotjumptime2) {
+	else if (gamemode == 4 && robotjumptime) {
 			cube_data = 0;
-			if (robotjumptime2) robotjumptime2--;
+			if (robotjumptime) robotjumptime--;
 			if(pad & PAD_A) {
-				if (robotjumpframe2) robotjumpframe2++;
-				if ( robotjumpframe2 > 3 ) robotjumpframe2 = 3;
+				if (robotjumpframe) robotjumpframe++;
+				if ( robotjumpframe > 3 ) robotjumpframe = 3;
 				if (gravity) {
 					if (!mini) player2.vel_y = ROBOT_JUMP_VEL; // JUMP
 					else player2.vel_y = ROBOT_JUMP_VEL; // JUMP
@@ -221,10 +221,10 @@ void cube_movement2(void){
 					else player2.vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
 				}
 			}
-			else { robotjumptime2 = 0; robotjumpframe2 = 0; }
+			else { robotjumptime = 0; robotjumpframe = 0; }
 	}
 	else if (gamemode == 4 && player2.vel_y != 0){		
-			robotjumpframe2 = 3;
+			robotjumpframe = 3;
 	}
 }	
 

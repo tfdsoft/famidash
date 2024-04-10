@@ -79,7 +79,7 @@ void state_game(){
         sprite_collide();
 	if (dual) { 
 		movement2();
-	mmc3_set_prg_bank_1(0);
+		mmc3_set_prg_bank_1(0);
 		x_movement2();
 		sprite_collide();
 	}
