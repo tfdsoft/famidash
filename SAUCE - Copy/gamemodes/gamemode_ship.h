@@ -1,7 +1,3 @@
-#pragma code-name(push, "LVL_BANK_15")
-#pragma data-name(push, "LVL_BANK_15")
-#pragma rodata-name(push, "LVL_BANK_15")
-
 void ship_movement(void){
 // handle y
 
@@ -144,6 +140,3 @@ void ship_movement2(void){
 		}
 	}	
 }
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)

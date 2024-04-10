@@ -4,7 +4,7 @@
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_x, _level_data_bank
 .import _song, _level, _gravity
-.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _cube_movement2
+.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _cube_movement2, _ship_movement2, _spider_movement2, _ufo_movement2, _ball_movement2
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
@@ -961,6 +961,9 @@ ParallaxBufferCol5:
 ;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10, 11, 10
 
 ;void __fastcall__ movement(void);
+.pushseg
+.segment "LVL_BANK_15"
+
 _movement:
     ; The C code being "ported":
         ; switch (gamemode) {
@@ -1041,16 +1044,18 @@ _movement2:
     DEX					; case 0x01:
     jeq _ship_movement2	;	ship_movement(); break;
     DEX					; case 0x02:
-    jeq _ball_movement	;	ball_movement(); break;
+    jeq _ball_movement2	;	ball_movement(); break;
     DEX					; case 0x03:
-    jeq _ufo_movement	;	ufo_movement(); break;
+    jeq _ufo_movement2	;	ufo_movement(); break;
     DEX					; case 0x04:
-    jeq _cube_movement	;	robot_movement(); break;
+    jeq _cube_movement2	;	robot_movement(); break;
     DEX					; case 0x05:
-    jeq _spider_movement	;	spider_movement(); break;
+    jeq _spider_movement2	;	spider_movement(); break;
 
     RTS					; case 0x06: default: break;
 
+
+.popseg
 ;void __fastcall__ music_play(unsigned char song);
 _music_play:
     LDY #$00

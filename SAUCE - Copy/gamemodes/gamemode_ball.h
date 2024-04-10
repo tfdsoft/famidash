@@ -1,8 +1,3 @@
-#pragma code-name(push, "LVL_BANK_15")
-#pragma data-name(push, "LVL_BANK_15")
-#pragma rodata-name(push, "LVL_BANK_15")
-
-
 void ball_movement(void){
 // handle y
 
@@ -32,7 +27,7 @@ void ball_movement(void){
 	
 	
 	player.y += player.vel_y;
-	player2.x = player.x;
+	
 	Generic.x = high_byte(player.x);
 	Generic.y = high_byte(player.y);
 	
@@ -78,58 +73,58 @@ void ball_movement2(void){
 	// player.vel_y is signed
 
 	if (!mini) {
-		if(gravity){
-			player2.vel_y += BALL_GRAVITY;
+		if(!gravity){
+			player.vel_y += BALL_GRAVITY;
 		}
 		else{
-			player2.vel_y -= BALL_GRAVITY;
+			player.vel_y -= BALL_GRAVITY;
 		}
-		if(player2.vel_y > CUBE_MAX_FALLSPEED) player2.vel_y = CUBE_MAX_FALLSPEED;
-		if(player2.vel_y < -CUBE_MAX_FALLSPEED) player2.vel_y = -CUBE_MAX_FALLSPEED;
+		if(player.vel_y > CUBE_MAX_FALLSPEED) player.vel_y = CUBE_MAX_FALLSPEED;
+		if(player.vel_y < -CUBE_MAX_FALLSPEED) player.vel_y = -CUBE_MAX_FALLSPEED;
 	}
 	else {
-		if(gravity){
-			player2.vel_y += MINI_BALL_GRAVITY;
+		if(!gravity){
+			player.vel_y += MINI_BALL_GRAVITY;
 		}
 		else{
-			player2.vel_y -= MINI_BALL_GRAVITY;
+			player.vel_y -= MINI_BALL_GRAVITY;
 		}
-		if(player2.vel_y > CUBE_MAX_FALLSPEED) player2.vel_y = MINI_CUBE_MAX_FALLSPEED;
-		if(player2.vel_y < -CUBE_MAX_FALLSPEED) player2.vel_y = -MINI_CUBE_MAX_FALLSPEED;
+		if(player.vel_y > CUBE_MAX_FALLSPEED) player.vel_y = MINI_CUBE_MAX_FALLSPEED;
+		if(player.vel_y < -CUBE_MAX_FALLSPEED) player.vel_y = -MINI_CUBE_MAX_FALLSPEED;
 	}
 	
 	
-	player2.y += player2.vel_y;
+	player.y += player.vel_y;
 	
-	Generic.x = high_byte(player2.x);
-	Generic.y = high_byte(player2.y);
+	Generic.x = high_byte(player.x);
+	Generic.y = high_byte(player.y);
 	
 	
-//	if(high_byte(player2.vel_y) & 0x80){
+//	if(high_byte(player.vel_y) & 0x80){
 		if(bg_coll_U()  && !bg_coll_R() ){ // check collision above
-			high_byte(player2.y) = high_byte(player2.y) - eject_U;
-			player2.vel_y = 0;
+			high_byte(player.y) = high_byte(player.y) - eject_U;
+			player.vel_y = 0;
 			cube_data = 0;			//fix for orb
 		}
 //	}
 //	else{
 		if(bg_coll_D() && !bg_coll_R() ){ // check collision below
-		    high_byte(player2.y) = high_byte(player2.y) - eject_D;
-		    player2.vel_y = 0;
+		    high_byte(player.y) = high_byte(player.y) - eject_D;
+		    player.vel_y = 0;
 			cube_data = 0;		    //fix for orb
 		}
 //	}
 
 	// check collision down a little lower than CUBE
-	Generic.y = high_byte(player2.y); // the rest should be the same
+	Generic.y = high_byte(player.y); // the rest should be the same
 	
 
-	if ((pad & PAD_A) && (kandotemp2 == 0) && (player2.vel_y == 0)){
+	if ((pad & PAD_A) && (kandotemp2 == 0) && (player.vel_y == 0)){
 		gravity ^= 0x01;
 		kandotemp2 = 1;
 		switch (gravity){
-			case 0x00: player2.vel_y = 0x6F; break;
-			case 0x01: player2.vel_y = -0x6F; break;
+			case 0x00: player.vel_y = 0x6F; break;
+			case 0x01: player.vel_y = -0x6F; break;
 			}
 	}
 	if(kandotemp2 == 1){
@@ -138,7 +133,3 @@ void ball_movement2(void){
 		}
 	}
 }
-
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)

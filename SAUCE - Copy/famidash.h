@@ -139,9 +139,6 @@ unsigned char ballframe;
 unsigned char robotframe;
 unsigned char robotjumpframe;
 unsigned char robotjumptime;
-unsigned char robotframe2;
-unsigned char robotjumpframe2;
-unsigned char robotjumptime2;
 unsigned char level;
 unsigned char level_data_bank;
 
