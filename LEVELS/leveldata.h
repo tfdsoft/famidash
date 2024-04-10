@@ -1216,10 +1216,11 @@ const unsigned char test_SP[]={
 };	
 
 const unsigned char test2_SP[]={
-// X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
+// X_lowbyte, X_highbyte, Y_// X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
 
 	0xa0, 0, 0x90, 1, 20, 0, 0, 0, 
 	0x20, 1, 0x90, 1, 21, 0, 0, 0, 
+	0x60, 1, 0x90, 1, 24, 0, 0, 0, 
 	0xd0, 2, 0x10, 1, 11, 0, 0, 0, 
 	0xe0, 2, 0x80, 1, 16, 0, 0, 0, 
 	0xf0, 2, 0x80, 1, 252, 0, 0, 0, 
@@ -1261,6 +1262,7 @@ const unsigned char test2_SP[]={
 	0x90, 5, 0x50, 1, 251, 0, 0, 0, 
 	0x50, 6, 0x80, 1, 0, 0, 0, 0, 
 	0x90, 6, 0x90, 1, 20, 0, 0, 0, 
+	0xe0, 6, 0x90, 1, 25, 0, 0, 0, 
 	0x50, 7, 0x90, 1, 21, 0, 0, 0, 
 	0xf0, 7, 0x80, 1, 4, 0, 0, 0, 
 	0x80, 42, 0x60, 1, 15, 0, 0, 0, 

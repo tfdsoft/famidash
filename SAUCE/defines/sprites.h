@@ -360,6 +360,21 @@ const unsigned char Speed_20_Portal[]={
 	0x80
 };
 
+const unsigned char Mini_Portal[]={
+	  0,  0,0xE1,1,	
+	  0,  16,0xE3,1,	
+	  8,  0,0xE1,1|OAM_FLIP_V,	
+	  8,  16,0xE3,1|OAM_FLIP_V,	
+	0x80
+};
+const unsigned char Growth_Portal[]={
+	  0,  0,0xE1,0,	
+	  0,  16,0xE3,0,	
+	  8,  0,0xE1,0|OAM_FLIP_V,	
+	  8,  16,0xE3,0|OAM_FLIP_V,	
+	0x80
+};
+
 
 const unsigned char Portal_Gamemode_Cube[]={
 
@@ -743,6 +758,8 @@ const unsigned char * const Metasprites[]={
 	Speed_10_Portal,
 	Speed_20_Portal,
 	Portal_Gamemode_Spider,
+	Mini_Portal,
+	Growth_Portal,
 	};
 
 
@@ -773,6 +790,8 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -795,6 +814,8 @@ const unsigned char animation_frame_length[] = {
 	0, // nometa, // end stage trigger
 	
 	0, //horizontal portals
+	0,
+	0,
 	0,
 	0,
 	0,

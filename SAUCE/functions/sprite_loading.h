@@ -26,6 +26,8 @@
 #define SPEED_10_PORTAL		 		0X15
 #define SPEED_20_PORTAL		 		0X16
 #define SPIDER_MODE		 		0X17
+#define MINI_PORTAL		 		0X18
+#define GROWTH_PORTAL		 		0X19
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -95,6 +97,8 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
 
     else if (type == GRAVITY_DOWN_PORTAL) return 0x2F;
     else if (type == GRAVITY_UP_PORTAL) return 0x2F;
+    else if (type == MINI_PORTAL) return 0x1F;
+    else if (type == GROWTH_PORTAL) return 0x1F;
 
     else if (type == SPEED_05_PORTAL) return 0x1f; // 0.5 speed portal
     else if (type == SPEED_10_PORTAL) return 0x1f; // 0.5 speed portal
@@ -235,6 +239,8 @@ void sprite_collide_lookup(){
 		else player.vel_y = 0;		//launch up right away OMGZ IT WORKS
 	    }
     }    
+    else if (tmp4 == MINI_PORTAL) mini = 1;
+    else if (tmp4 == GROWTH_PORTAL) mini = 0;
 }
 
 
