@@ -56,6 +56,7 @@ void state_game(){
         }
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
+	mmc3_set_prg_bank_1(0);
         x_movement();
 	
 	
@@ -78,6 +79,7 @@ void state_game(){
         sprite_collide();
 	if (dual) { 
 		movement2();
+	mmc3_set_prg_bank_1(0);
 		x_movement2();
 		sprite_collide();
 	}
