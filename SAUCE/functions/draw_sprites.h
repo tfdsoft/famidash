@@ -7,7 +7,7 @@ void reset_level(void);
 
 
 void draw_sprites(void){
-	dual = 1;
+//	dual = 1;
 	// draw player
 	if (dual) {
 		temp_x = high_byte(player2.x);
