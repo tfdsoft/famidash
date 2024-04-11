@@ -271,7 +271,7 @@ const unsigned char Ship_1[]={
 };
 const unsigned char Ship_2[]={
 
-	  0,- 1,0x15,0,
+	  0,  0,0x15,0,
 	  8,  0,0x17,0,
 	0x80
 };
@@ -345,7 +345,7 @@ const unsigned char Ship2_1[]={
 };
 const unsigned char Ship2_2[]={
 
-	  0,- 1,0x15,1,
+	  0,  0,0x15,1,
 	  8,  0,0x17,1,
 	0x80
 };
