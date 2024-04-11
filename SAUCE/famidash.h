@@ -5,7 +5,7 @@
 // physics defines
 #define PAD_HEIGHT_YELLOW -0x7A0
 #define PAD_HEIGHT_PINK -0x4A0
-#define PAD_HEIGHT_BLUE -0x46
+#define PAD_HEIGHT_BLUE -0x100
 
 #define CUBE_WIDTH 0x0F
 #define CUBE_HEIGHT 0x0F
@@ -30,16 +30,16 @@
 #define MINI_CUBE_MAX_FALLSPEED 0x600
 
 #define CUBE_GRAVITY 0x6B
-#define MINI_CUBE_GRAVITY 0x9B
+#define MINI_CUBE_GRAVITY 0x6F
 
 #define BALL_GRAVITY 0x6B
-#define MINI_BALL_GRAVITY 0x70
+#define MINI_BALL_GRAVITY 0x6F
 
 #define SHIP_MAX_FALLSPEED 0x300
-#define MINI_SHIP_MAX_FALLSPEED 0x500
+#define MINI_SHIP_MAX_FALLSPEED 0x340
 
 #define SHIP_GRAVITY 0x35
-#define MINI_SHIP_GRAVITY 0x45
+#define MINI_SHIP_GRAVITY 0x35
 
 #pragma allow-eager-inline(on)
 

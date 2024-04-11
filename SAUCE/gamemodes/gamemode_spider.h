@@ -65,7 +65,7 @@ void spider_movement(void){
 	}
 
 
-	if ( player.vel_y == 0 || player.vel_y == CUBE_MAX_FALLSPEED || player.vel_y == -CUBE_MAX_FALLSPEED || player.vel_y == MINI_CUBE_MAX_FALLSPEED || player.vel_y == -MINI_CUBE_MAX_FALLSPEED ) {
+	if ( player.vel_y == 0 || player.vel_y == CUBE_MAX_FALLSPEED || player.vel_y == -CUBE_MAX_FALLSPEED ) {
 		if (!gravity) {
 			if(pad_new & PAD_A) {
 				gravity = 1;
@@ -155,8 +155,8 @@ void spider_movement2(void){
 			cube_data = 2;
 		}
 	}
-	if ( player2.vel_y == 0 || player2.vel_y == CUBE_MAX_FALLSPEED || player2.vel_y == -CUBE_MAX_FALLSPEED || player2.vel_y == MINI_CUBE_MAX_FALLSPEED || player2.vel_y == -MINI_CUBE_MAX_FALLSPEED ) {
-		if (gravity) {
+	if ( player2.vel_y == 0 || player2.vel_y == CUBE_MAX_FALLSPEED || player2.vel_y == -CUBE_MAX_FALLSPEED ) {
+		if (!gravity) {
 			if(pad_new & PAD_A) {
 	//			gravity = 1;
 				while (!bg_coll_U()) {

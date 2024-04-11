@@ -77,8 +77,8 @@ void ship_movement2(void){
 // handle y
 
 // gravity
-	// player.vel_y is signed
-	//if(player.vel_y < 0x400){
+	// player2.vel_y is signed
+	//if(player2.vel_y < 0x400){
 	if(!mini) {
 		if(gravity) {
 			player2.vel_y += SHIP_GRAVITY;
@@ -104,7 +104,6 @@ void ship_movement2(void){
 		
 
 	player2.y += player2.vel_y;
-	player2.x = player.x;
 	
 	Generic.x = high_byte(player2.x);
 	Generic.y = high_byte(player2.y);
