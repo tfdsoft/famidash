@@ -64,33 +64,35 @@ void spider_movement(void){
 		}
 	}
 
-	if (!gravity) {
-		if(pad_new & PAD_A) {
-			gravity = 1;
-			while (!bg_coll_U()) {
-				player.y -= 0x700;
-				Generic.y = high_byte(player.y); // the rest should be the same
+
+	if ( player.vel_y == 0 || player.vel_y == CUBE_MAX_FALLSPEED || player.vel_y == -CUBE_MAX_FALLSPEED || player.vel_y == MINI_CUBE_MAX_FALLSPEED || player.vel_y == -MINI_CUBE_MAX_FALLSPEED ) {
+		if (!gravity) {
+			if(pad_new & PAD_A) {
+				gravity = 1;
+				while (!bg_coll_U()) {
+					player.y -= 0x700;
+					Generic.y = high_byte(player.y); // the rest should be the same
+				}
+				high_byte(player.y) -= eject_U;
+				player.vel_y = 0;
+				
 			}
-			high_byte(player.y) -= eject_U;
-			player.vel_y = 0;
-			
 		}
-	}
-	
-	else {
-		if(pad_new & PAD_A) {
-			gravity = 0;
-			while (!bg_coll_D()) {
-				player.y += 0x700;
-				Generic.y = high_byte(player.y); // the rest should be the same
-			}
-			high_byte(player.y) -= eject_D;
-			player.vel_y = 0;
+		
+		else {
+			if(pad_new & PAD_A) {
+				gravity = 0;
+				while (!bg_coll_D()) {
+					player.y += 0x700;
+					Generic.y = high_byte(player.y); // the rest should be the same
+				}
+				high_byte(player.y) -= eject_D;
+				player.vel_y = 0;
 
 
+			}
 		}
 	}
-	
 }	
 
 void spider_movement2(void){
@@ -136,7 +138,7 @@ void spider_movement2(void){
 			if(bg_coll_D())    player2.vel_y = 0;
 			
 		}
-		if(gravity){
+		if(!gravity){
 			if(bg_coll_U() && !bg_coll_R()){ // check collision above
 				high_byte(player2.y) -= eject_U;
 			}
@@ -153,34 +155,34 @@ void spider_movement2(void){
 			cube_data = 2;
 		}
 	}
-
-	if (gravity) {
-		if(pad_new & PAD_A) {
-			gravity = 1;
-			while (!bg_coll_U()) {
-				player2.y -= 0x700;
-				Generic.y = high_byte(player2.y); // the rest should be the same
+	if ( player2.vel_y == 0 || player2.vel_y == CUBE_MAX_FALLSPEED || player2.vel_y == -CUBE_MAX_FALLSPEED || player2.vel_y == MINI_CUBE_MAX_FALLSPEED || player2.vel_y == -MINI_CUBE_MAX_FALLSPEED ) {
+		if (gravity) {
+			if(pad_new & PAD_A) {
+	//			gravity = 1;
+				while (!bg_coll_U()) {
+					player2.y -= 0x700;
+					Generic.y = high_byte(player2.y); // the rest should be the same
+				}
+				high_byte(player2.y) -= eject_U;
+				player2.vel_y = 0;
+				
 			}
-			high_byte(player2.y) -= eject_U;
-			player2.vel_y = 0;
-			
+		}
+		
+		else {
+			if(pad_new & PAD_A) {
+	//			gravity = 0;
+				while (!bg_coll_D()) {
+					player2.y += 0x700;
+					Generic.y = high_byte(player2.y); // the rest should be the same
+				}
+				high_byte(player2.y) -= eject_D;
+				player2.vel_y = 0;
+
+
+			}
 		}
 	}
-	
-	else {
-		if(pad_new & PAD_A) {
-			gravity = 0;
-			while (!bg_coll_D()) {
-				player2.y += 0x700;
-				Generic.y = high_byte(player2.y); // the rest should be the same
-			}
-			high_byte(player2.y) -= eject_D;
-			player2.vel_y = 0;
-
-
-		}
-	}
-	
 }	
 
 #pragma code-name(pop)

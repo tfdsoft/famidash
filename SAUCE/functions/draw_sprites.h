@@ -1,8 +1,9 @@
+#pragma code-name(push, "LVL_BANK_14")
+#pragma data-name(push, "LVL_BANK_14")
+#pragma rodata-name(push, "LVL_BANK_14")
+
 void reset_level(void);
 
-#pragma code-name(push, "LVL_BANK_00")
-#pragma data-name(push, "LVL_BANK_00")
-#pragma rodata-name(push, "LVL_BANK_00")
 
 
 void draw_sprites(void){
@@ -101,10 +102,30 @@ void draw_sprites(void){
 					break;
 				}
 
-
-
-
-
+			case 0x05:
+				if (player2.vel_y == 0 || player2.vel_y == CUBE_GRAVITY) {
+					if (!mini) {
+						if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, SPIDER2[spiderframe2]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, SPIDER2[spiderframe2]);
+					}
+					else {
+						if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_SPIDER2[spiderframe2]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_SPIDER2[spiderframe2]);					
+					}
+					spiderframe2++;
+					if (spiderframe2 > 15) spiderframe2 = 0;
+				}
+				else {
+					if (!mini) {
+						if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, SPIDER_JUMP2[0]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, SPIDER_JUMP2[0]);
+					}
+					else {
+						if (gravity) oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_SPIDER_JUMP2[0]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player2.y)-1, MINI_SPIDER_JUMP2[0]);
+					}						
+				}	
+				break;	
 		}
 	}
 	
@@ -199,6 +220,31 @@ void draw_sprites(void){
 					}
 					break;
 				}
+			case 0x05:
+				if (player.vel_y == 0 || player.vel_y == CUBE_GRAVITY) {
+					if (!mini) {
+						if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, SPIDER[spiderframe]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, SPIDER[spiderframe]);
+					}
+					else {
+						if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_SPIDER[spiderframe]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_SPIDER[spiderframe]);					
+					}
+					spiderframe++;
+					if (spiderframe > 15) spiderframe = 0;
+				}
+				else {
+					if (!mini) {
+						if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, SPIDER_JUMP[0]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, SPIDER_JUMP[0]);
+					}
+					else {
+						if (!gravity) oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_SPIDER_JUMP[0]);
+						else oam_meta_spr_vflipped(temp_x, high_byte(player.y)-1, MINI_SPIDER_JUMP[0]);
+					}						
+				}	
+				break;	
+		
 	    }
 	
 	
@@ -276,6 +322,7 @@ void draw_sprites(void){
 #undef spr_type
 #undef animation_ptr
 }
+
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)

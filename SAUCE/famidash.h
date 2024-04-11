@@ -138,6 +138,8 @@ unsigned char kandotemp4;
 unsigned char coinframe;
 unsigned char padframe;
 unsigned char ballframe;
+unsigned char spiderframe;
+unsigned char spiderframe2;
 unsigned char robotframe;
 unsigned char robotjumpframe;
 unsigned char robotjumptime;

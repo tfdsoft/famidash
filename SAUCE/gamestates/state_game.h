@@ -88,7 +88,7 @@ void state_game(){
         oam_clear();
 
         draw_screen_R(); 
-	mmc3_set_prg_bank_1(0);	
+	mmc3_set_prg_bank_1(0x14);	
         draw_sprites();
         
         color_emphasis(0);
