@@ -59,6 +59,8 @@ long unsigned int tmplong;
 
 unsigned char pad;
 unsigned char pad_new;
+unsigned char pad2;
+unsigned char pad_new2;
 
 unsigned char gamemode;
 unsigned char cube_data;

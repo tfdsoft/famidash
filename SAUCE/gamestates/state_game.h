@@ -36,6 +36,10 @@ void state_game(){
         pad = pad_poll(0); // read the first controller
 	pad_new = get_pad_new(0);
 
+	if (twoplayer) {
+		pad2 = pad_poll(1); // read the second controller
+		pad_new2 = get_pad_new(1);
+	}
         //if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
 
 	
