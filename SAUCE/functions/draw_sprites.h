@@ -8,11 +8,13 @@ void reset_level(void);
 
 void draw_sprites(void){
 //	dual = 1;
+//	twoplayer = 1;
 	// draw player
 	if (dual) {
 		temp_x = high_byte(player2.x);
 		if(temp_x > 0xfc) temp_x = 1;
 		if(temp_x == 0) temp_x = 1;
+		if(twoplayer) gravity ^= 1;
 		switch (gamemode){
 			default:
 
@@ -127,6 +129,7 @@ void draw_sprites(void){
 				}	
 				break;	
 		}
+		if(twoplayer) gravity ^= 1;
 	}
 	
 		temp_x = high_byte(player.x);

@@ -93,6 +93,7 @@ unsigned char temp_x;
 unsigned char temp_y;
 unsigned char temp_room;
 unsigned char dual;
+unsigned char twoplayer;
 
 unsigned char * sprite_data;
 unsigned char* level_data;

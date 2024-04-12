@@ -78,11 +78,13 @@ void state_game(){
 
         sprite_collide();
 	if (dual) { 
+				if(twoplayer) gravity ^= 1;
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement2();
 		mmc3_set_prg_bank_1(0);
 //		x_movement2();
 		sprite_collide2();
+				if(twoplayer) gravity ^= 1;
 	}
         if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
         oam_clear();
