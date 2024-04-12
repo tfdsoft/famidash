@@ -11,6 +11,8 @@ unsigned char END_LEVEL_TIMER;
 void state_game(){
 	ppu_off();
 
+
+
 //	mini = 1;
     pal_bg((char *)paletteDefault);
     pal_spr((char *)paletteDefaultSP);
@@ -39,6 +41,7 @@ void state_game(){
 	if (twoplayer) {
 		pad2 = pad_poll(1); // read the second controller
 		pad_new2 = get_pad_new(1);
+		dual = 1;
 	}
         //if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
 
@@ -67,11 +70,9 @@ void state_game(){
         movement();
 
 
-        if (invincible_counter == 0) {
-            bg_coll_death();
-        } else {
-            invincible_counter--;
-        }
+        if (!invincible_counter) bg_coll_death();
+        else invincible_counter--;
+        
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
 	mmc3_set_prg_bank_1(0);
@@ -82,13 +83,14 @@ void state_game(){
 
         sprite_collide();
 	if (dual) { 
-				if(twoplayer) gravity ^= 1;
+		if (twoplayer) gravity ^= 1;
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement2();
+		if (!invincible_counter)  bg_coll_death();
 		mmc3_set_prg_bank_1(0);
-//		x_movement2();
+		x_movement2();
 		sprite_collide2();
-				if(twoplayer) gravity ^= 1;
+		if (twoplayer) gravity ^= 1;
 	}
         if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
         oam_clear();

@@ -46,10 +46,15 @@ void reset_level(void) {
     player2.y = 0xb000;
     gravity = 0x00;
     mini = 0x00;
+    dual = 0x00;
+    if (twoplayer) dual = 1;
     player.vel_x = 0;
     player.vel_y = 0;
+    player2.vel_x = 0;
+    player2.vel_y = 0;
     invincible_counter = 8;
     cube_data = 0;
+    cube_data2 = 0;
     ppu_on_all();
     pal_fade_to(0,4);
     music_play(song);

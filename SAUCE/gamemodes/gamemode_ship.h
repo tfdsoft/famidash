@@ -126,21 +126,41 @@ void ship_movement2(void){
 	Generic.y = high_byte(player2.y); // the rest should be the same
 	
 
-	if(pad & PAD_A) {
-		if (!mini) {
-			if (gravity){
-			    player2.vel_y -= SHIP_GRAVITY<<1;
-				} else {
-			    player2.vel_y += SHIP_GRAVITY<<1;
+	if (!twoplayer) {
+		if(pad & PAD_A) {
+			if (!mini) {
+				if (gravity){
+				    player2.vel_y -= SHIP_GRAVITY<<1;
+					} else {
+				    player2.vel_y += SHIP_GRAVITY<<1;
+				}
+			}
+			else {
+				if (gravity){
+				    player2.vel_y -= MINI_SHIP_GRAVITY<<1;
+					} else {
+				    player2.vel_y += MINI_SHIP_GRAVITY<<1;
+				}
 			}
 		}
-		else {
-			if (gravity){
-			    player2.vel_y -= MINI_SHIP_GRAVITY<<1;
-				} else {
-			    player2.vel_y += MINI_SHIP_GRAVITY<<1;
+	}
+	else {
+		if(pad2 & PAD_A) {
+			if (!mini) {
+				if (gravity){
+				    player2.vel_y -= SHIP_GRAVITY<<1;
+					} else {
+				    player2.vel_y += SHIP_GRAVITY<<1;
+				}
 			}
-		}
+			else {
+				if (gravity){
+				    player2.vel_y -= MINI_SHIP_GRAVITY<<1;
+					} else {
+				    player2.vel_y += MINI_SHIP_GRAVITY<<1;
+				}
+			}
+		}	
 	}	
 }
 #pragma code-name(pop)

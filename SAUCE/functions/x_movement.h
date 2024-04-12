@@ -63,6 +63,8 @@ void x_movement2(){
 		player2.vel_x = 0;
 	} 
 	
+	player2.x = player.x;
+	
 	Generic.x = high_byte(player2.x); // this is much faster than passing a pointer to player
 	Generic.y = high_byte(player2.y);
 
@@ -84,7 +86,8 @@ void x_movement2(){
 	// no L/R collision required, since that is accounted for with the death script
 	
 	if (bg_coll_R()) cube_data |= 0x01; // turns out, this is needed to temporarily fix zipping
-	if (pad_new & PAD_A) cube_data |= 0x02;
+	if (!twoplayer) { if (pad_new & PAD_A) cube_data2 |= 0x02; }
+	else { if (pad_new2 & PAD_A) cube_data2 |= 0x02; }
 }
 
 #pragma code-name(pop)

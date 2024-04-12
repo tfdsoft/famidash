@@ -64,6 +64,7 @@ unsigned char pad_new2;
 
 unsigned char gamemode;
 unsigned char cube_data;
+unsigned char cube_data2;
 signed short cube_rotate;
 signed short cube_rotate2;
 
@@ -139,6 +140,7 @@ unsigned char kandotemp;
 unsigned char kandotemp2;
 unsigned char kandotemp3;
 unsigned char kandotemp4;
+unsigned char kandotemp5;
 unsigned char coinframe;
 unsigned char padframe;
 unsigned char ballframe;

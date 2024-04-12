@@ -123,20 +123,36 @@ void ball_movement2(void){
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(player2.y); // the rest should be the same
 	
-
-	if ((pad & PAD_A) && (kandotemp2 == 0) && (player2.vel_y == 0)){
-		gravity ^= 0x01;
-		kandotemp2 = 1;
-		switch (gravity){
-			case 0x00: player2.vel_y = 0x6F; break;
-			case 0x01: player2.vel_y = -0x6F; break;
-			}
-	}
-	if(kandotemp2 == 1){
-		if ((pad & PAD_A) == 0){
-			kandotemp2 = 0;			
+	if (!twoplayer) {
+		if ((pad & PAD_A) && (kandotemp5 == 0) && (player2.vel_y == 0)){
+			gravity ^= 0x01;
+			kandotemp5 = 1;
+			switch (gravity){
+				case 0x00: player2.vel_y = 0x6F; break;
+				case 0x01: player2.vel_y = -0x6F; break;
+				}
+		}
+		if(kandotemp5 == 1){
+			if ((pad & PAD_A) == 0){
+				kandotemp5 = 0;			//makes sure the ball doesn't allow you to hold A while changing gravity
+			}					//and instantly change back when it lands while holding the initial A press. You must release A to make this 0.
 		}
 	}
+	else {
+		if ((pad2 & PAD_A) && (kandotemp5 == 0) && (player2.vel_y == 0)){
+			gravity ^= 0x01;
+			kandotemp5 = 1;
+			switch (gravity){
+				case 0x00: player2.vel_y = 0x6F; break;
+				case 0x01: player2.vel_y = -0x6F; break;
+				}
+		}
+		if(kandotemp5 == 1){
+			if ((pad2 & PAD_A) == 0){
+				kandotemp5 = 0;			//makes sure the ball doesn't allow you to hold A while changing gravity
+			}					//and instantly change back when it lands while holding the initial A press. You must release A to make this 0.
+		}
+	}		
 }
 
 #pragma code-name(pop)

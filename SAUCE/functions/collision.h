@@ -144,12 +144,12 @@ char bg_coll_D(void){
 	
 	}
 	else {
-		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_TOP) return 1;
 
 		tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
 		temp_x = (char)tmp5; // low byte
 
-		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_TOP) return 1;
 	}
 	
 	return 0;

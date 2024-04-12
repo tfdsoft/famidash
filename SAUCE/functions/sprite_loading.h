@@ -179,10 +179,17 @@ void sprite_collide_lookup(){
 	
 
     else if (tmp4 == PINK_ORB) {
-	if (cube_data == 2) {		//nest it so that the next else-if for tmp4 doesn't trigger
-		cube_data = 0x00;
-		if (gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF;
-		else player.vel_y = PAD_HEIGHT_PINK;
+	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
+		if (cube_data == 2) {					
+			cube_data = 0x00;
+			if (gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF; else player.vel_y = PAD_HEIGHT_PINK;
+		}
+	}
+	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
+		if (pad_new & PAD_A) {	
+			cube_data = 0x00;
+			if (gravity) player.vel_y = PAD_HEIGHT_PINK^0xFFFF; else player.vel_y = PAD_HEIGHT_PINK;
+		}
 	}
     }
     else if (tmp4 == GRAVITY_DOWN_PORTAL || tmp4 == GRAVITY_DOWN_UPWARDS_PORTAL || tmp4 == GRAVITY_DOWN_DOWNWARDS_PORTAL || tmp4 == GRAVITY_DOWN_INVISIBLE_PORTAL) { 
@@ -254,16 +261,24 @@ void sprite_collide_lookup2(){
     
     else if (tmp4 == YELLOW_ORB) {		//yellow orb
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
-		if (cube_data == 2) {					
-			cube_data = 0x00;
+		if (cube_data2 == 2) {					
+			cube_data2 = 0x00;
 			if (gravity) player2.vel_y = JUMP_VEL^0xFFFF; else player2.vel_y = JUMP_VEL;
 		}
 	}
 	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
-		if (pad_new & PAD_A) {	
-			cube_data = 0x00;
-			if (gravity) player2.vel_y = JUMP_VEL^0xFFFF; else player2.vel_y = JUMP_VEL;
+		if (!twoplayer) {
+			if (pad_new & PAD_A) {	
+				cube_data2 = 0x00;
+				if (gravity) player2.vel_y = JUMP_VEL^0xFFFF; else player2.vel_y = JUMP_VEL;
+			}
 		}
+		else {
+			if (pad_new2 & PAD_A) {	
+				cube_data2 = 0x00;
+				if (gravity) player2.vel_y = JUMP_VEL^0xFFFF; else player2.vel_y = JUMP_VEL;
+			}
+		}			
 	}
     }
     else if (tmp4 == COIN) {					//COIN
@@ -274,20 +289,30 @@ void sprite_collide_lookup2(){
 
     else if (tmp4 == BLUE_ORB)  {				//blue orb
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE || gamemode == SPIDER_MODE) {
-		if (cube_data == 2) {			
-			cube_data = 0x00;
+		if (cube_data2 == 2) {			
+			cube_data2 = 0x00;
 			gravity ^= 0x01;
 			if (!gravity) player2.vel_y = PAD_HEIGHT_BLUE^0xFFFF;
 			else player2.vel_y = PAD_HEIGHT_PINK;
 		}
 	}
 	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
-		if (pad_new & PAD_A) {
-			cube_data = 0x00;
-			gravity ^= 0x01;
-			if (!gravity) player2.vel_y = PAD_HEIGHT_BLUE^0xFFFF;
-			else player2.vel_y = PAD_HEIGHT_PINK;
+		if (!twoplayer) {
+			if (pad_new & PAD_A) {
+				cube_data2 = 0x00;
+				gravity ^= 0x01;
+				if (!gravity) player2.vel_y = PAD_HEIGHT_BLUE^0xFFFF;
+				else player2.vel_y = PAD_HEIGHT_PINK;
+			}
 		}
+		else {
+			if (pad_new2 & PAD_A) {
+				cube_data2 = 0x00;
+				gravity ^= 0x01;
+				if (!gravity) player2.vel_y = PAD_HEIGHT_BLUE^0xFFFF;
+				else player2.vel_y = PAD_HEIGHT_PINK;
+			}
+		}			
 	} 
     }
 
@@ -297,10 +322,25 @@ void sprite_collide_lookup2(){
 	
 
     else if (tmp4 == PINK_ORB) {
-	if (cube_data == 2) {		//nest it so that the next else-if for tmp4 doesn't trigger
-		cube_data = 0x00;
-		if (gravity) player2.vel_y = PAD_HEIGHT_PINK^0xFFFF;
-		else player2.vel_y = PAD_HEIGHT_PINK;
+	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
+		if (cube_data2 == 2) {					
+			cube_data2 = 0x00;
+			if (gravity) player2.vel_y = PAD_HEIGHT_PINK^0xFFFF; else player2.vel_y = PAD_HEIGHT_PINK;
+		}
+	}
+	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
+		if (!twoplayer) {
+			if (pad_new & PAD_A) {	
+				cube_data2 = 0x00;
+				if (gravity) player2.vel_y = PAD_HEIGHT_PINK^0xFFFF; else player2.vel_y = PAD_HEIGHT_PINK;
+			}
+		}
+		else {
+			if (pad_new2 & PAD_A) {	
+				cube_data2 = 0x00;
+				if (gravity) player2.vel_y = PAD_HEIGHT_PINK^0xFFFF; else player2.vel_y = PAD_HEIGHT_PINK;
+			}
+		}			
 	}
     }
     else if (tmp4 == GRAVITY_DOWN_PORTAL || tmp4 == GRAVITY_DOWN_UPWARDS_PORTAL || tmp4 == GRAVITY_DOWN_DOWNWARDS_PORTAL || tmp4 == GRAVITY_DOWN_INVISIBLE_PORTAL) { 

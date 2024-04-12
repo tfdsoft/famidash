@@ -156,38 +156,74 @@ void spider_movement2(void){
 
 	if (player2.vel_y != 0){
 		if(pad_new & PAD_A) {
-			cube_data = 2;
+			cube_data2 = 2;
 		}
 	}
 	if ( player2.vel_y == 0 || player2.vel_y == CUBE_MAX_FALLSPEED || player2.vel_y == -CUBE_MAX_FALLSPEED ) {
-		if (!gravity) {
-			if(pad_new & PAD_A) {
-	//			gravity = 1;
-				while (!bg_coll_U()) {
-					if (!mini) player2.y -= 0x700;
-					else player2.y -= 0x400;
-					Generic.y = high_byte(player2.y); // the rest should be the same
+		if (!twoplayer) {
+			if (!gravity) {
+				if(pad_new & PAD_A) {
+		//			gravity = 1;
+					cube_data2 = 0;
+					while (!bg_coll_U()) {
+						if (!mini) player2.y -= 0x700;
+						else player2.y -= 0x400;
+						Generic.y = high_byte(player2.y); // the rest should be the same
+					}
+					high_byte(player2.y) -= eject_U;
+					player2.vel_y = 0;
+					
 				}
-				high_byte(player2.y) -= eject_U;
-				player2.vel_y = 0;
-				
+			}
+			
+			else {
+				if(pad_new & PAD_A) {
+		//			gravity = 0;
+					cube_data2 = 0;
+					while (!bg_coll_D()) {
+						if (!mini) player2.y += 0x700;
+						else player2.y += 0x400;					
+						Generic.y = high_byte(player2.y); // the rest should be the same
+					}
+					high_byte(player2.y) -= eject_D;
+					player2.vel_y = 0;
+
+
+				}
 			}
 		}
-		
 		else {
-			if(pad_new & PAD_A) {
-	//			gravity = 0;
-				while (!bg_coll_D()) {
-					if (!mini) player2.y += 0x700;
-					else player2.y += 0x400;					
-					Generic.y = high_byte(player2.y); // the rest should be the same
+			if (!gravity) {
+				if(pad_new2 & PAD_A) {
+		//			gravity = 1;
+					cube_data2 = 0;
+					while (!bg_coll_U()) {
+						if (!mini) player2.y -= 0x700;
+						else player2.y -= 0x400;
+						Generic.y = high_byte(player2.y); // the rest should be the same
+					}
+					high_byte(player2.y) -= eject_U;
+					player2.vel_y = 0;
+					
 				}
-				high_byte(player2.y) -= eject_D;
-				player2.vel_y = 0;
-
-
 			}
-		}
+			
+			else {
+				if(pad_new2 & PAD_A) {
+		//			gravity = 0;
+					cube_data2 = 0;
+					while (!bg_coll_D()) {
+						if (!mini) player2.y += 0x700;
+						else player2.y += 0x400;					
+						Generic.y = high_byte(player2.y); // the rest should be the same
+					}
+					high_byte(player2.y) -= eject_D;
+					player2.vel_y = 0;
+
+
+				}
+			}
+		}			
 	}
 }	
 

@@ -143,25 +143,47 @@ void ufo_movement2(void){
 //		}
 //	}
 
-	
-	if (!gravity){
-			//if(bg_coll_U2()) {
-		//		cube_data = 0;
-				if(pad_new & PAD_A) {
-					//if (!mini) 
-					player2.vel_y = 	UFO_JUMP_VEL^0xFFFF; // JUMP
-					//else player2.vel_y = MINI_JUMP_VEL^0xFFFF; // JUMP
-				}
-			//}
-	} else {
-			//if(bg_coll_D2()) {
-			//	cube_data = 0;				
-				if(pad_new & PAD_A) {
-					//if (!mini) 
-						player2.vel_y = 	UFO_JUMP_VEL; // JUMP
-					//else player2.vel_y = MINI_JUMP_VEL; // JUMP
-				}
-			//}
+	if (!twoplayer) {
+		if (!gravity){
+				//if(bg_coll_U2()) {
+			//		cube_data = 0;
+					if(pad_new & PAD_A) {
+						//if (!mini) 
+						player2.vel_y = 	UFO_JUMP_VEL^0xFFFF; // JUMP
+						//else player2.vel_y = MINI_JUMP_VEL^0xFFFF; // JUMP
+					}
+				//}
+		} else {
+				//if(bg_coll_D2()) {
+				//	cube_data = 0;				
+					if(pad_new & PAD_A) {
+						//if (!mini) 
+							player2.vel_y = 	UFO_JUMP_VEL; // JUMP
+						//else player2.vel_y = MINI_JUMP_VEL; // JUMP
+					}
+				//}
+		}
+	}
+	else {
+		if (!gravity){
+				//if(bg_coll_U2()) {
+			//		cube_data = 0;
+					if(pad_new2 & PAD_A) {
+						//if (!mini) 
+						player2.vel_y = 	UFO_JUMP_VEL^0xFFFF; // JUMP
+						//else player2.vel_y = MINI_JUMP_VEL^0xFFFF; // JUMP
+					}
+				//}
+		} else {
+				//if(bg_coll_D2()) {
+				//	cube_data = 0;				
+					if(pad_new2 & PAD_A) {
+						//if (!mini) 
+							player2.vel_y = 	UFO_JUMP_VEL; // JUMP
+						//else player2.vel_y = MINI_JUMP_VEL; // JUMP
+					}
+				//}
+		}	
 	}
 }	
 
