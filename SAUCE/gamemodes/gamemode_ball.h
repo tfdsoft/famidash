@@ -37,20 +37,20 @@ void ball_movement(void){
 	Generic.y = high_byte(player.y);
 	
 	
-//	if(high_byte(player.vel_y) & 0x80){
+	if(high_byte(player.vel_y) & 0x80){
 		if(bg_coll_U()  && !bg_coll_R() ){ // check collision above
 			high_byte(player.y) = high_byte(player.y) - eject_U;
 			player.vel_y = 0;
 			cube_data = 0;			//fix for orb
 		}
-//	}
-//	else{
+	}
+	else{
 		if(bg_coll_D() && !bg_coll_R() ){ // check collision below
 		    high_byte(player.y) = high_byte(player.y) - eject_D;
 		    player.vel_y = 0;
 			cube_data = 0;		    //fix for orb
 		}
-//	}
+	}
 
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(player.y); // the rest should be the same

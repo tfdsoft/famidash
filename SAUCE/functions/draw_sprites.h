@@ -60,14 +60,14 @@ void draw_sprites(void){
 
 			case 0x03:
 				if (gravity) {
-					if (player2.vel_y == 0 || player2.vel_y == 0x6B) kandotemp4 = 0;
+					if (player2.vel_y == 0 || player2.vel_y == CUBE_GRAVITY || player2.vel_y == MINI_CUBE_GRAVITY) kandotemp4 = 0;
 					else if (player2.vel_y > 0) kandotemp4 = 1;
 					else if (player2.vel_y < 0) kandotemp4 = 2;
 					if (!mini) oam_meta_spr(temp_x, high_byte(player2.y)-1, UFO2[kandotemp4]);
 					else oam_meta_spr(temp_x, high_byte(player2.y)-1, MINI_UFO2[kandotemp4]);
 				}
 				else {
-					if (player2.vel_y == 0 || player2.vel_y == -0x6B) kandotemp4 = 0;
+					if (player2.vel_y == 0 || player2.vel_y == -CUBE_GRAVITY || player2.vel_y == -MINI_CUBE_GRAVITY) kandotemp4 = 0;
 					else if (player2.vel_y > 0) kandotemp4 = 1;
 					else if (player2.vel_y < 0) kandotemp4 = 2;
 			
@@ -179,14 +179,14 @@ void draw_sprites(void){
 
 			case 0x03:
 				if (!gravity) {
-					if (player.vel_y == 0 || player.vel_y == 0x6B) kandotemp3 = 0;
+					if (player.vel_y == 0 || player.vel_y == CUBE_GRAVITY || player.vel_y == MINI_CUBE_GRAVITY) kandotemp3 = 0;
 					else if (player.vel_y > 0) kandotemp3 = 1;
 					else if (player.vel_y < 0) kandotemp3 = 2;
 					if (!mini) oam_meta_spr(temp_x, high_byte(player.y)-1, UFO[kandotemp3]);
 					else oam_meta_spr(temp_x, high_byte(player.y)-1, MINI_UFO[kandotemp3]);
 				}
 				else {
-					if (player.vel_y == 0 || player.vel_y == -0x6B) kandotemp3 = 0;
+					if (player.vel_y == 0 || player.vel_y == -CUBE_GRAVITY || player.vel_y == -MINI_CUBE_GRAVITY) kandotemp3 = 0;
 					else if (player.vel_y > 0) kandotemp3 = 1;
 					else if (player.vel_y < 0) kandotemp3 = 2;
 			
