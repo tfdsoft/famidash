@@ -8,7 +8,7 @@ void reset_level(void);
 
 void draw_sprites(void){
 //	dual = 1;
-//	twoplayer = 1;
+	twoplayer = 1;
 	// draw player
 	if (dual) {
 		temp_x = high_byte(player_x[1]);
@@ -22,11 +22,11 @@ void draw_sprites(void){
 				if (cube_rotate[1] > 0x05FF) cube_rotate[1] -= 0x0600;
 
 				if (!mini) {
-					if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, CUBE2[high_byte(cube_rotate[1])]);
+					if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, CUBE2[high_byte(cube_rotate[1])]);
 					else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, CUBE2[high_byte(cube_rotate[1])]);
 				}
 				else {
-					if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_CUBE2[high_byte(cube_rotate[1])]);
+					if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_CUBE2[high_byte(cube_rotate[1])]);
 					else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_CUBE2[high_byte(cube_rotate[1])]);				
 				}
 				break;
@@ -37,30 +37,30 @@ void draw_sprites(void){
 				}
 
 				if (!mini) {
-					if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SHIP2[high_byte(cube_rotate[1])]);
+					if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SHIP2[high_byte(cube_rotate[1])]);
 					else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, SHIP2[7-high_byte(cube_rotate[1])]);
 				}
 				else {
-					if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SHIP2[high_byte(cube_rotate[1])]);
+					if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SHIP2[high_byte(cube_rotate[1])]);
 					else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_SHIP2[7-high_byte(cube_rotate[1])]);
 				}
 				break;
 				
 			case 0x02:
 				if (!mini) {
-					if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, BALL2[ballframe]);
+					if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, BALL2[ballframe]);
 					else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, BALL2[ballframe]);
 				//	ballframe++;
 				//	if (ballframe > 7) { ballframe = 0; }
 				}
 				else   {
-					if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_BALL2[ballframe]);
+					if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_BALL2[ballframe]);
 					else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_BALL2[ballframe]);
 				}
 				break;
 
 			case 0x03:
-				if (player_gravity[1]) {
+				if (!player_gravity[1]) {
 					if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == MINI_CUBE_GRAVITY) kandotemp3[1] = 0;
 					else if (player_vel_y[1] > 0) kandotemp3[1] = 1;
 					else if (player_vel_y[1] < 0) kandotemp3[1] = 2;
@@ -80,11 +80,11 @@ void draw_sprites(void){
 			case 0x04:
 				if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
 					if (!mini) {
-						if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, ROBOT2[robotframe2]);
+						if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, ROBOT2[robotframe2]);
 						else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, ROBOT2[robotframe2]);
 					}
 					else {
-						if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_ROBOT2[robotframe2]);
+						if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_ROBOT2[robotframe2]);
 						else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_ROBOT2[robotframe2]);					
 					}
 					robotframe2++;
@@ -93,11 +93,11 @@ void draw_sprites(void){
 				}
 				else {
 					if (!mini) {
-						if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, ROBOT_JUMP2[robotjumpframe2]);
+						if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, ROBOT_JUMP2[robotjumpframe2]);
 						else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, ROBOT_JUMP2[robotjumpframe2]);
 					}
 					else {
-						if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_ROBOT_JUMP2[robotjumpframe2]);
+						if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_ROBOT_JUMP2[robotjumpframe2]);
 						else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_ROBOT_JUMP2[robotjumpframe2]);
 					}
 					break;
@@ -106,11 +106,11 @@ void draw_sprites(void){
 			case 0x05:
 				if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
 					if (!mini) {
-						if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SPIDER2[spiderframe2]);
+						if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SPIDER2[spiderframe2]);
 						else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, SPIDER2[spiderframe2]);
 					}
 					else {
-						if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SPIDER2[spiderframe2]);
+						if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SPIDER2[spiderframe2]);
 						else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_SPIDER2[spiderframe2]);					
 					}
 					spiderframe2++;
@@ -118,11 +118,11 @@ void draw_sprites(void){
 				}
 				else {
 					if (!mini) {
-						if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SPIDER_JUMP2[0]);
+						if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SPIDER_JUMP2[0]);
 						else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, SPIDER_JUMP2[0]);
 					}
 					else {
-						if (player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SPIDER_JUMP2[0]);
+						if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SPIDER_JUMP2[0]);
 						else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_SPIDER_JUMP2[0]);
 					}						
 				}	

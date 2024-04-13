@@ -42,6 +42,9 @@ void state_game(){
 		pad[1] = pad_poll(1); // read the second controller
 		pad_new[1] = get_pad_new(1);
 		dual = 1;
+		player_gravity[0] = 0x00;
+		if (twoplayer) player_gravity[1] = 0x00;
+		else player_gravity[1] = 0x01;		
 	}
         //if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
 
@@ -85,11 +88,12 @@ void state_game(){
        sprite_collide();
 	if (dual) { 
 		currplayer = 1;
+		player_x[1] = player_x[0];
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement();
 		if (!invincible_counter)  bg_coll_death();
 		mmc3_set_prg_bank_1(0);
-		x_movement();
+//		x_movement();
 		sprite_collide();
 		currplayer = 0;
 	}
