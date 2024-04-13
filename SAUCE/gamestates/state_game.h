@@ -95,6 +95,7 @@ void state_game(){
 		if (!invincible_counter)  bg_coll_death();
 		mmc3_set_prg_bank_1(0);
 //		x_movement();
+        do_the_scroll_thing(); 
 		sprite_collide();
 		currplayer = 0;					//give back focus
 //		if (twoplayer) controllingplayer = 0;		//give back controls
