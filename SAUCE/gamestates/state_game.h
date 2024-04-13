@@ -87,7 +87,8 @@ void state_game(){
 	if (cube_data[1] == 1) reset_level();
        sprite_collide();
 	if (dual) { 
-		currplayer = 1;
+		currplayer = 1;					//take focus
+//		if (twoplayer) controllingplayer = 1;		//take controls
 		player_x[1] = player_x[0];
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement();
@@ -95,7 +96,8 @@ void state_game(){
 		mmc3_set_prg_bank_1(0);
 //		x_movement();
 		sprite_collide();
-		currplayer = 0;
+		currplayer = 0;					//give back focus
+//		if (twoplayer) controllingplayer = 0;		//give back controls
 	}
         if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
         oam_clear();
