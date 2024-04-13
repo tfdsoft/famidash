@@ -57,15 +57,13 @@ unsigned char* tmpptr1;
 unsigned char* tmpptr2;
 long unsigned int tmplong;
 
-unsigned char pad;
-unsigned char pad_new;
-unsigned char pad2;
-unsigned char pad_new2;
+unsigned char pad[2];
+unsigned char pad_new[2];
 
 unsigned char gamemode;
-unsigned char cube_data;
+unsigned char cube_data[2];
 unsigned char cube_data2;
-signed short cube_rotate;
+signed short cube_rotate[2];
 signed short cube_rotate2;
 
 
@@ -80,7 +78,7 @@ unsigned char coordinates;
 unsigned short old_x;
 unsigned short old_y;
 
-unsigned char gravity;
+//unsigned char gravity;
 unsigned char mini;
 unsigned char eject_L; // from the left
 unsigned char eject_R; // remember these from the collision sub routine
@@ -126,6 +124,12 @@ unsigned char TOTALCOINSTENS;
 unsigned char TOTALCOINSONES;
 unsigned char coins;
 
+unsigned short player_x[2];
+unsigned short player_y[2];
+signed short player_vel_x[2];
+signed short player_vel_y[2];
+unsigned short player_gravity[2];
+
 unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
 unsigned char collisionMap1[192];
 const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
@@ -136,17 +140,16 @@ unsigned char spr_index;
 unsigned char speed;
 unsigned char shuffle_offset;
 unsigned char count;
-unsigned char kandotemp;
-unsigned char kandotemp2;
-unsigned char kandotemp3;
-unsigned char kandotemp4;
+unsigned char kandotemp;                                                                                              
+unsigned char kandotemp2[2];
+unsigned char kandotemp3[2];
 unsigned char kandotemp5;
-unsigned char coinframe;
-unsigned char padframe;
-unsigned char ballframe;
+unsigned char currplayer;
+unsigned char controllingplayer;
 unsigned char spiderframe;
 unsigned char spiderframe2;
 unsigned char robotframe;
+unsigned char ballframe;
 unsigned char robotjumpframe;
 unsigned char robotjumptime;
 unsigned char robotframe2;
@@ -185,23 +188,23 @@ unsigned char DEBUG_MODE = 0;
 
 
 
-struct player {
-	unsigned short x; // low byte is sub-pixel
-	unsigned short y;
-	signed short vel_x; // speed, signed, low byte is sub-pixel
-	signed short vel_y;
-};
+//struct player {
+//	unsigned short x; // low byte is sub-pixel
+//	unsigned short y;
+//	signed short vel_x; // speed, signed, low byte is sub-pixel
+//	signed short vel_y;
+//};
 
-struct player player = {0x0000,0xb000};
+//struct player player = {0x0000,0xb000};
 
-struct player2 {
-	unsigned short x; // low byte is sub-pixel
-	unsigned short y;
-	signed short vel_x; // speed, signed, low byte is sub-pixel
-	signed short vel_y;
-};
+//struct player2 {
+//	unsigned short x; // low byte is sub-pixel
+//	unsigned short y;
+//	signed short vel_x; // speed, signed, low byte is sub-pixel
+//	signed short vel_y;
+//};
 
-struct player2 player2 = {0x0000,0xb000};
+//struct player2 player2 = {0x0000,0xb000};
 
 struct Base {
 	unsigned char x;

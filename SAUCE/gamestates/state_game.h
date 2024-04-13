@@ -27,7 +27,7 @@ void state_game(){
     END_LEVEL_TIMER = 0;
 
     while (1) {
-        
+	currplayer = 0;
         ppu_wait_nmi();
         mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0);
         mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1);
@@ -35,23 +35,23 @@ void state_game(){
         music_update();
         
 
-        pad = pad_poll(0); // read the first controller
-	pad_new = get_pad_new(0);
+        pad[0] = pad_poll(0); // read the first controller
+	pad_new[0] = get_pad_new(0);
 
 	if (twoplayer) {
-		pad2 = pad_poll(1); // read the second controller
-		pad_new2 = get_pad_new(1);
+		pad[1] = pad_poll(1); // read the second controller
+		pad_new[1] = get_pad_new(1);
 		dual = 1;
 	}
         //if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
 
 	
 
-        if (pad_new & PAD_B) gravity ^= 0x01;			//DEBUG GRAVITY
+        if (pad_new[0] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 
-        if (pad_new & PAD_SELECT) DEBUG_MODE = !DEBUG_MODE;
+        if (pad_new[0] & PAD_SELECT) DEBUG_MODE = !DEBUG_MODE;
 
-        if (pad & PAD_SELECT) {
+        if (pad[0] & PAD_SELECT) {
             if (++END_LEVEL_TIMER > 60) {
                 END_LEVEL_TIMER = 0;
                 gameState = 3;
@@ -80,17 +80,18 @@ void state_game(){
 
 	mmc3_set_prg_bank_1(0);
         check_spr_objects();
-
-        sprite_collide();
+	if (cube_data[0] == 1) reset_level();
+	if (cube_data[1] == 1) reset_level();
+       sprite_collide();
 	if (dual) { 
-		if (twoplayer) gravity ^= 1;
+		currplayer = 1;
 		mmc3_set_prg_bank_1(GET_BANK(movement));
-		movement2();
+		movement();
 		if (!invincible_counter)  bg_coll_death();
 		mmc3_set_prg_bank_1(0);
-		x_movement2();
-		sprite_collide2();
-		if (twoplayer) gravity ^= 1;
+		x_movement();
+		sprite_collide();
+		currplayer = 0;
 	}
         if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
         oam_clear();

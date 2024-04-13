@@ -5,7 +5,7 @@ void reset_level(void) {
     famistudio_music_stop();
     coins = 0;
 
-    if (cube_data & 1) {
+    if (cube_data[0] & 1) {
         famistudio_sfx_play(sfx_death, 0);
         tmp1 = 0;
         while (tmp1 < 30){
@@ -40,21 +40,25 @@ void reset_level(void) {
     speed = level_list[level][2];
 
     init_sprites();
-    player.x = 0x0000;
-    player.y = 0xb000;
-    player2.x = 0x0000;
-    player2.y = 0xb000;
-    gravity = 0x00;
+    player_x[0] = 0x0000;
+    player_y[0] = 0xb000;
+    player_x[1] = 0x0000;
+    player_y[1] = 0xb000;
+
+    player_gravity[0] = 0x00;
+    if (twoplayer) player_gravity[1] = 0x00;
+    else player_gravity[1] = 0x01;
+
     mini = 0x00;
     dual = 0x00;
     if (twoplayer) dual = 1;
-    player.vel_x = 0;
-    player.vel_y = 0;
-    player2.vel_x = 0;
-    player2.vel_y = 0;
+    player_vel_x[0] = 0;
+    player_vel_y[0] = 0;
+    player_vel_x[1] = 0;
+    player_vel_y[1] = 0;
     invincible_counter = 8;
-    cube_data = 0;
-    cube_data2 = 0;
+    cube_data[0] = 0;
+    cube_data[1] = 0;
     ppu_on_all();
     pal_fade_to(0,4);
     music_play(song);

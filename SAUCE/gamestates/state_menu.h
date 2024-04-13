@@ -140,12 +140,12 @@ void state_menu(){
 	while (1){
 		ppu_wait_nmi();
 		music_update();
-		pad = pad_poll(0); // read the first controller
-		pad_new = get_pad_new(0);
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
 
-		if (pad_new & PAD_SELECT){
-			if (pad & PAD_A){
-				if (pad & PAD_B){
+		if (pad_new[0] & PAD_SELECT){
+			if (pad[0] & PAD_A){
+				if (pad[0] & PAD_B){
 					LEVEL1COINS = 0;
 					LEVEL2COINS = 0;
 					LEVEL3COINS = 0;
@@ -184,13 +184,13 @@ void state_menu(){
 		}
 
 
-		if (pad_new & PAD_START){
+		if (pad_new[0] & PAD_START){
 			gameState = 0x02;
 			pal_fade_to(4,0);
 			kandotemp = 0;
 			return;
 		}
-		if (pad_new & (PAD_SELECT | PAD_RIGHT)){
+		if (pad_new[0] & (PAD_SELECT | PAD_RIGHT)){
 			++level;
 			if (level > 0x0B){
 				level = 0x00;
@@ -198,7 +198,7 @@ void state_menu(){
 			refreshmenu();
 		//	break;
 		}
-		if (pad_new & PAD_LEFT){
+		if (pad_new[0] & PAD_LEFT){
 			--level;
 			if (level == 0xFF){
 				level = 0x0B;

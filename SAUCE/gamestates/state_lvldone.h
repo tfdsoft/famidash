@@ -132,8 +132,8 @@ void state_lvldone() {
 		}
 
  		// read the first controller
-		pad = pad_poll(0);
-		pad_new = get_pad_new(0);
+		pad[0] = pad_poll(0);
+		pad_new[0] = get_pad_new(0);
 		
 		// Move the sprite zero hit to the new location
 		POKE(0x200, sprite_0_y);
@@ -180,7 +180,7 @@ void state_lvldone() {
 			break;
 		case 4:
 
-			if (pad_new & PAD_START){
+			if (pad_new[0] & PAD_START){
 				pal_fade_to(4,0);
 				// pal_bg((char *)paletteDefault);
 				// pal_spr((char *)paletteDefaultSP);
