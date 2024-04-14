@@ -130,7 +130,7 @@ void sprite_collide_lookup(){
     // portals
     if (tmp4 == NOSPRITE) { }
     
-    else if (tmp4 <= 4) { gamemode = tmp4; robotjumptime = 0; }			//game mode portals
+    else if (tmp4 <= 4) { gamemode = tmp4; robotjumptime[currplayer] = 0; }			//game mode portals
     else if (tmp4 == SPIDER_MODE) gamemode = 0x05; 			//game mode portals
     
     
