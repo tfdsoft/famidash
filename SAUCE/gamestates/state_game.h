@@ -52,9 +52,9 @@ void state_game(){
 
 	
 
-        if (pad_new[0] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
+        if (pad_new[controllingplayer] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 
-        if (pad_new[0] & PAD_SELECT) DEBUG_MODE = !DEBUG_MODE;
+        if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] = 0; cube_data[1] = 0; }
 
         if (pad[0] & PAD_SELECT) {
             if (++END_LEVEL_TIMER > 60) {
@@ -75,9 +75,10 @@ void state_game(){
         movement();
 
 
-        if (!invincible_counter) bg_coll_death();
-        else invincible_counter--;
-        
+	if (!DEBUG_MODE) {
+		if (!invincible_counter) bg_coll_death();
+		else invincible_counter--;
+        }
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
 	mmc3_set_prg_bank_1(0);
@@ -85,16 +86,23 @@ void state_game(){
 
 	mmc3_set_prg_bank_1(0);
 //        check_spr_objects();
-	if (cube_data[0] == 1) reset_level();
-	if (cube_data[1] == 1) reset_level();
+	if (!DEBUG_MODE) {
+		if (cube_data[0] == 1) reset_level();
+		if (cube_data[1] == 1) reset_level();
+	}
        sprite_collide();
 	if (dual) { 
 		currplayer = 1;					//take focus
 		if (twoplayer) controllingplayer = 1;		//take controls
 		player_x[1] = player_x[0];
+		if (pad_new[controllingplayer] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
+
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement();
-		if (!invincible_counter)  bg_coll_death();
+		if (!DEBUG_MODE) {
+			if (!invincible_counter) bg_coll_death();
+			else invincible_counter--;
+		}
 		mmc3_set_prg_bank_1(0);
 //		x_movement();
 		do_the_scroll_thing(); 
