@@ -144,6 +144,7 @@ unsigned char kandotemp;
 unsigned char kandotemp2[2];
 unsigned char kandotemp3[2];
 unsigned char kandotemp5;
+unsigned char kandoframecnt;
 unsigned char currplayer;
 unsigned char controllingplayer;
 unsigned char spiderframe;

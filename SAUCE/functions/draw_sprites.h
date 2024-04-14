@@ -4,13 +4,7 @@
 
 void reset_level(void);
 
-
-
-void draw_sprites(void){
-//	dual = 1;
-//	twoplayer = 1;
-	// draw player
-	if (dual) {
+void drawplayertwo() {
 		temp_x = high_byte(player_x[1]);
 		if(temp_x > 0xfc) temp_x = 1;
 		if(temp_x == 0) temp_x = 1;
@@ -18,7 +12,7 @@ void draw_sprites(void){
 			default:
 
 				cube_rotate[1] += CUBE_GRAVITY;
-				if (player_vel_y[1] == 0) cube_rotate[1] = 0;
+				if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == -CUBE_GRAVITY) cube_rotate[1] = 0;
 				if (cube_rotate[1] > 0x05FF) cube_rotate[1] -= 0x0600;
 
 				if (!mini) {
@@ -128,8 +122,10 @@ void draw_sprites(void){
 				}	
 				break;	
 		}
-	}
-	
+}
+
+
+void drawplayerone() {
 		temp_x = high_byte(player_x[0]);
 		if(temp_x > 0xfc) temp_x = 1;
 		if(temp_x == 0) temp_x = 1;
@@ -137,7 +133,7 @@ void draw_sprites(void){
 			default:
 
 				cube_rotate[0] += CUBE_GRAVITY;
-				if (player_vel_y[0] == 0) cube_rotate[0]= 0;
+				if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == -CUBE_GRAVITY) cube_rotate[0]= 0;
 				if (cube_rotate[0]> 0x05FF) cube_rotate[0]-= 0x0600;
 
 				if (!mini) {
@@ -247,7 +243,21 @@ void draw_sprites(void){
 				break;	
 		
 	    }
-	
+}
+
+void draw_sprites(void){
+//	dual = 1;
+//	twoplayer = 1;
+	// draw player
+	if (dual) {
+
+	if (kandoframecnt & 0x01) { drawplayertwo(); drawplayerone(); }
+	else { drawplayerone(); drawplayertwo(); }
+
+
+	}
+
+	else drawplayerone();
 	
 	// the level sprites
 
@@ -323,6 +333,8 @@ void draw_sprites(void){
 #undef spr_type
 #undef animation_ptr
 }
+
+
 
 #pragma code-name(pop)
 #pragma data-name(pop) 

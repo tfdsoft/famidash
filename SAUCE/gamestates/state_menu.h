@@ -135,6 +135,9 @@ void state_menu(){
 	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
 	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));
 
+	cube_rotate[0] = 0;
+	cube_rotate[1] = 0;
+
 	ppu_on_all();
 	pal_fade_to(0,4);
 	while (1){

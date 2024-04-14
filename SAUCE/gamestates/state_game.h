@@ -29,10 +29,11 @@ void state_game(){
 	player_gravity[0] = 0;
 	if (twoplayer) player_gravity[1] = 0x00;
 	else player_gravity[1] = 0x01;		
-
+	kandoframecnt = 0;
 
     while (1) {
 	currplayer = 0;
+	kandoframecnt++;
         ppu_wait_nmi();
         mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0);
         mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1);
