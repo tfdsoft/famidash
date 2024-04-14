@@ -8,6 +8,7 @@ void reset_level(void) {
     if (cube_data[0] & 1) {
         famistudio_sfx_play(sfx_death, 0);
         tmp1 = 0;
+	attempts++;
         while (tmp1 < 30){
             ppu_wait_nmi();
             music_update();

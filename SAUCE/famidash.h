@@ -116,6 +116,17 @@ unsigned char LEVEL8COINS;
 unsigned char LEVEL9COINS;
 unsigned char LEVELACOINS;
 
+unsigned char LEVEL1COMPLETE;
+unsigned char LEVEL2COMPLETE;
+unsigned char LEVEL3COMPLETE;
+unsigned char LEVEL4COMPLETE;
+unsigned char LEVEL5COMPLETE;
+unsigned char LEVEL6COMPLETE;
+unsigned char LEVEL7COMPLETE;
+unsigned char LEVEL8COMPLETE;
+unsigned char LEVEL9COMPLETE;
+unsigned char LEVELACOMPLETE;
+
 #pragma bss-name(pop)
 
 unsigned char TOTALCOINS;
@@ -145,6 +156,7 @@ unsigned char kandotemp2[2];
 unsigned char kandotemp3[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
+unsigned char attempts;
 unsigned char currplayer;
 unsigned char controllingplayer;
 unsigned char spiderframe;

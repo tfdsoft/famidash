@@ -88,6 +88,16 @@ void state_menu(){
 		LEVEL8COINS = 0;
 		LEVEL9COINS = 0;
 		LEVELACOINS = 0;
+		LEVEL1COMPLETE = 0;
+		LEVEL2COMPLETE = 0;
+		LEVEL3COMPLETE = 0;
+		LEVEL4COMPLETE = 0;
+		LEVEL5COMPLETE = 0;
+		LEVEL6COMPLETE = 0;
+		LEVEL7COMPLETE = 0;
+		LEVEL8COMPLETE = 0;
+		LEVEL9COMPLETE = 0;
+		LEVELACOMPLETE = 0;
 		SRAM_VALIDATE[0x0E] = 0;
 		SRAM_VALIDATE[0x0F] = 0;
 		SRAM_VALIDATE[0x10] = 0;
@@ -137,6 +147,7 @@ void state_menu(){
 
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
+	attempts = 0;
 
 	ppu_on_all();
 	pal_fade_to(0,4);
@@ -159,6 +170,16 @@ void state_menu(){
 					LEVEL8COINS = 0;
 					LEVEL9COINS = 0;
 					LEVELACOINS = 0;					
+					LEVEL1COMPLETE = 0;					
+					LEVEL2COMPLETE = 0;					
+					LEVEL3COMPLETE = 0;					
+					LEVEL4COMPLETE = 0;					
+					LEVEL5COMPLETE = 0;					
+					LEVEL6COMPLETE = 0;					
+					LEVEL7COMPLETE = 0;					
+					LEVEL8COMPLETE = 0;					
+					LEVEL9COMPLETE = 0;					
+					LEVELACOMPLETE = 0;					
 					SRAM_VALIDATE[0x0E] = 0;
 					SRAM_VALIDATE[0x0F] = 0;
 					SRAM_VALIDATE[0x10] = 0;
