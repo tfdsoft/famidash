@@ -20,6 +20,6 @@ fork it, change it, push it, open a pr, get it merged (or not).
 - Music: Zenith, ZSide, jaezu
 - Levels/Testing/Bug Fixing: AleFunky, Ficus mcHousePlant
 - Code Optimizations: alexmush, jroweboy
--.Parallax, Menu and other code: jroweboy
+- Parallax, Menu and other code: jroweboy
 - Graphics: Zside, Ficus mcHousePlant, Zenith, jroweboy
 - Original Project Lead and Coder: ZSide
