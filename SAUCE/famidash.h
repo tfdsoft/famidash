@@ -7,6 +7,8 @@
 #define PAD_HEIGHT_PINK -0x4A0
 #define PAD_HEIGHT_BLUE -0x3A0
 
+#define ORB_BALL_HEIGHT_BLUE -0x1A0
+
 #define CUBE_WIDTH 0x0F
 #define CUBE_HEIGHT 0x0F
 

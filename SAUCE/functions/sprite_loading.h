@@ -159,8 +159,13 @@ void sprite_collide_lookup(){
 		if (cube_data[currplayer] == 2) {			
 			cube_data[currplayer] = 0x00;
 			player_gravity[currplayer] ^= 0x01;
-			if (!player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_BLUE^0xFFFF;
-			else player_vel_y[currplayer] = PAD_HEIGHT_PINK;
+			if (gamemode != BALL_MODE) {
+				if (!player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_BLUE^0xFFFF;
+				else player_vel_y[currplayer] = PAD_HEIGHT_BLUE;
+			} else {
+				if (!player_gravity[currplayer]) player_vel_y[currplayer] = ORB_BALL_HEIGHT_BLUE^0xFFFF;
+				else player_vel_y[currplayer] = ORB_BALL_HEIGHT_BLUE;
+			}
 		}
 	}
 	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
@@ -168,7 +173,7 @@ void sprite_collide_lookup(){
 			cube_data[currplayer] = 0x00;
 			player_gravity[currplayer] ^= 0x01;
 			if (!player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_BLUE^0xFFFF;
-			else player_vel_y[currplayer] = PAD_HEIGHT_PINK;
+			else player_vel_y[currplayer] = PAD_HEIGHT_BLUE;
 		}
 	} 
     }
