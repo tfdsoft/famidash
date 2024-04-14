@@ -181,6 +181,10 @@ void state_menu(){
 					famistudio_sfx_play(sfx_death, 0);
 				}
 			}
+		else {
+			famistudio_sfx_play(sfx_click, 0);			
+			twoplayer ^= 1;
+		}
 		}
 
 
@@ -190,7 +194,7 @@ void state_menu(){
 			kandotemp = 0;
 			return;
 		}
-		if (pad_new[0] & (PAD_SELECT | PAD_RIGHT)){
+		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
 			if (level > 0x0B){
 				level = 0x00;

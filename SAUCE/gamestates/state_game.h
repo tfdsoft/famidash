@@ -11,7 +11,7 @@ unsigned char END_LEVEL_TIMER;
 void state_game(){
 	ppu_off();
 
-	twoplayer = 1;
+//	twoplayer = 1;
 
 //	mini = 1;
     pal_bg((char *)paletteDefault);
@@ -90,7 +90,7 @@ void state_game(){
        sprite_collide();
 	if (dual) { 
 		currplayer = 1;					//take focus
-//		if (twoplayer) controllingplayer = 1;		//take controls
+		if (twoplayer) controllingplayer = 1;		//take controls
 		player_x[1] = player_x[0];
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement();
@@ -100,7 +100,7 @@ void state_game(){
 		do_the_scroll_thing(); 
 		sprite_collide();
 		currplayer = 0;					//give back focus
-//		if (twoplayer) controllingplayer = 0;		//give back controls
+		if (twoplayer) controllingplayer = 0;		//give back controls
 	}
 	mmc3_set_prg_bank_1(0);
         check_spr_objects();
