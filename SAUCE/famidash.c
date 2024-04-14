@@ -56,7 +56,11 @@ void main(){
     // pal_fade_to(4,0);
     gameState = 0x01;
     level = 0x00;
-    
+  	player_gravity[0] = 0x00;
+	if (twoplayer) player_gravity[1] = 0x00;
+	else player_gravity[1] = 0x01;	
+
+	
     while (1){
         ppu_wait_nmi();
 
@@ -67,7 +71,10 @@ void main(){
 				break;
 			}
 			case 0x02: {
-					
+  	player_gravity[0] = 0x00;
+//	if (twoplayer)
+		player_gravity[1] = 0x00;
+//	else player_gravity[1] = 0x01;						
 					state_game(); break;
 			}
 			case 0x03: {
