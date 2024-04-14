@@ -5,7 +5,7 @@
 // physics defines
 #define PAD_HEIGHT_YELLOW -0x7A0
 #define PAD_HEIGHT_PINK -0x4A0
-#define PAD_HEIGHT_BLUE -0x100
+#define PAD_HEIGHT_BLUE -0x3A0
 
 #define CUBE_WIDTH 0x0F
 #define CUBE_HEIGHT 0x0F
