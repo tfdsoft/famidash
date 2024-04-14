@@ -78,6 +78,7 @@ char bg_coll_U(void){
 		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
 	}
 	else {
+		if (player_vel_y[currplayer] > 0) return 0;
 		if(bg_collision_sub() & COL_TOP) {
 			tmp1 = Generic.y+7;
 			tmp5 = add_scroll_y(tmp1, scroll_y);
@@ -113,6 +114,7 @@ char bg_coll_D(void){
 	if (!mini) eject_D = (temp_y + 1) & 0x0f;
 
 	if(!player_gravity[currplayer]) {
+		if (player_vel_y[currplayer] < 0) return 0;
 		if(bg_collision_sub() & COL_BOTTOM) {
 			if (!mini) tmp1 = Generic.y + (Generic.height/2);
 			else tmp1 = Generic.y + ((Generic.height+8)/2);
