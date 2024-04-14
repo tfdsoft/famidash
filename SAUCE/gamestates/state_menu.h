@@ -90,7 +90,7 @@ void state_menu(){
 		LEVEL9COINS = 0;
 		LEVELACOINS = 0;
 		tmp2 = 0;
-		while (tmp2 <= 9) {
+		while (tmp2 < 20) {
 			LEVELCOMPLETE[tmp2] = 0;
 			tmp2++;
 		}
@@ -167,7 +167,7 @@ void state_menu(){
 					LEVEL9COINS = 0;
 					LEVELACOINS = 0;					
 					tmp2 = 0;
-					while (tmp2 <= 9) {
+					while (tmp2 < 0x20) {
 						LEVELCOMPLETE[tmp2] = 0;
 						tmp2++;
 					}

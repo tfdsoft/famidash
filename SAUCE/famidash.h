@@ -116,7 +116,7 @@ unsigned char LEVEL8COINS;
 unsigned char LEVEL9COINS;
 unsigned char LEVELACOINS;
 
-unsigned char LEVELCOMPLETE[0x09];
+unsigned char LEVELCOMPLETE[0x20];
 
 #pragma bss-name(pop)
 
