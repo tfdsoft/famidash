@@ -9,6 +9,8 @@ const unsigned char coins0[]="0/3";
 const unsigned char coins1[]="1/3";
 const unsigned char coins2[]="2/3";
 const unsigned char coins3[]="3/3";
+const unsigned char completetext[]="*";
+const unsigned char blanktext[]="*";
 const unsigned char menubgcolors[]={
     0x00
 };

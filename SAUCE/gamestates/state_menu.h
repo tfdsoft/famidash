@@ -48,7 +48,8 @@ void __fastcall__ refreshmenu(void) {
 	multi_vram_buffer_horz((const char*)leveltexts[level],
 		level_text_size[level],
 		NTADR_A(level_text_padding[level], 14));
-
+	if (LEVELCOMPLETE[level]) one_vram_buffer_horz_repeat('*', 1, NTADR_A(16, 15));
+	else one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));
 };
 
 void state_menu(){
@@ -88,16 +89,11 @@ void state_menu(){
 		LEVEL8COINS = 0;
 		LEVEL9COINS = 0;
 		LEVELACOINS = 0;
-		LEVEL1COMPLETE = 0;
-		LEVEL2COMPLETE = 0;
-		LEVEL3COMPLETE = 0;
-		LEVEL4COMPLETE = 0;
-		LEVEL5COMPLETE = 0;
-		LEVEL6COMPLETE = 0;
-		LEVEL7COMPLETE = 0;
-		LEVEL8COMPLETE = 0;
-		LEVEL9COMPLETE = 0;
-		LEVELACOMPLETE = 0;
+		tmp2 = 0;
+		while (tmp2 <= 9) {
+			LEVELCOMPLETE[tmp2] = 0;
+			tmp2++;
+		}
 		SRAM_VALIDATE[0x0E] = 0;
 		SRAM_VALIDATE[0x0F] = 0;
 		SRAM_VALIDATE[0x10] = 0;
@@ -170,16 +166,12 @@ void state_menu(){
 					LEVEL8COINS = 0;
 					LEVEL9COINS = 0;
 					LEVELACOINS = 0;					
-					LEVEL1COMPLETE = 0;					
-					LEVEL2COMPLETE = 0;					
-					LEVEL3COMPLETE = 0;					
-					LEVEL4COMPLETE = 0;					
-					LEVEL5COMPLETE = 0;					
-					LEVEL6COMPLETE = 0;					
-					LEVEL7COMPLETE = 0;					
-					LEVEL8COMPLETE = 0;					
-					LEVEL9COMPLETE = 0;					
-					LEVELACOMPLETE = 0;					
+					tmp2 = 0;
+					while (tmp2 <= 9) {
+						LEVELCOMPLETE[tmp2] = 0;
+						tmp2++;
+					}
+				
 					SRAM_VALIDATE[0x0E] = 0;
 					SRAM_VALIDATE[0x0F] = 0;
 					SRAM_VALIDATE[0x10] = 0;
@@ -203,6 +195,7 @@ void state_menu(){
 					one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
 					one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
 					famistudio_sfx_play(sfx_death, 0);
+					one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));		
 				}
 			}
 		else {

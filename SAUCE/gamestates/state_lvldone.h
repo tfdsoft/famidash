@@ -62,17 +62,19 @@ void state_lvldone() {
 	tmp1 = 0;
 	tmpptr1 = NULL;
 	
+	LEVELCOMPLETE[level] = 1;
+	
 	switch (level) {
-		case 0x00: LEVEL1COMPLETE = 1; if (coins > LEVEL1COINS) LEVEL1COINS = coins; break;
-		case 0x01: LEVEL2COMPLETE = 1; if (coins > LEVEL2COINS) LEVEL2COINS = coins; break;
-		case 0x02: LEVEL3COMPLETE = 1; if (coins > LEVEL3COINS) LEVEL3COINS = coins; break;
-		case 0x03: LEVEL4COMPLETE = 1; if (coins > LEVEL4COINS) LEVEL4COINS = coins; break;
-		case 0x04: LEVEL5COMPLETE = 1; if (coins > LEVEL5COINS) LEVEL5COINS = coins; break;
-		case 0x05: LEVEL6COMPLETE = 1; if (coins > LEVEL6COINS) LEVEL6COINS = coins; break;
-		case 0x06: LEVEL7COMPLETE = 1; if (coins > LEVEL7COINS) LEVEL7COINS = coins; break;
-		case 0x07: LEVEL8COMPLETE = 1; if (coins > LEVEL8COINS) LEVEL8COINS = coins; break;
-		case 0x08: LEVEL9COMPLETE = 1; if (coins > LEVEL9COINS) LEVEL9COINS = coins; break;
-		case 0x09: LEVELACOMPLETE = 1; if (coins > LEVELACOINS) LEVELACOINS = coins; break;
+		case 0x00: if (coins > LEVEL1COINS) LEVEL1COINS = coins; break;
+		case 0x01: if (coins > LEVEL2COINS) LEVEL2COINS = coins; break;
+		case 0x02: if (coins > LEVEL3COINS) LEVEL3COINS = coins; break;
+		case 0x03: if (coins > LEVEL4COINS) LEVEL4COINS = coins; break;
+		case 0x04: if (coins > LEVEL5COINS) LEVEL5COINS = coins; break;
+		case 0x05: if (coins > LEVEL6COINS) LEVEL6COINS = coins; break;
+		case 0x06: if (coins > LEVEL7COINS) LEVEL7COINS = coins; break;
+		case 0x07: if (coins > LEVEL8COINS) LEVEL8COINS = coins; break;
+		case 0x08: if (coins > LEVEL9COINS) LEVEL9COINS = coins; break;
+		case 0x09: if (coins > LEVELACOINS) LEVELACOINS = coins; break;
 	}
 	
 	if (coins == 0) {
