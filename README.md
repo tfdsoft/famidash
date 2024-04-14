@@ -8,22 +8,18 @@ Download nightly builds here: https://nightly.link/famidash/famidash/workflows/m
 
 fork it, change it, push it, open a pr, get it merged (or not).
 
-https://twitter.com/TeamFamidash
+## socials
 
-Credits:
-Project Torch-Carrier/Programmer: kandowontu
+- https://wetdry.world/@famidash
+- https://twitter.com/TeamFamidash
 
-Levels/Guidance/Testing: Ficus mcHousePlant
+## credits
 
-Music: Zenith, ZSide, jaezu
-
-Levels/Testing/Bug Fixing: AleFunky, Ficus mcHousePlant
-
-Code Optimizations: alexmush, jroweboy
-
-Parallax, Menu and other code: jroweboy
-
-Graphics: Zside, Ficus mcHousePlant, Zenith, jroweboy
-
-Original Project Lead and Coder: ZSide
-
+- Project Torch-Carrier/Programmer: kandowontu
+- Levels/Guidance/Testing: Ficus mcHousePlant
+- Music: Zenith, ZSide, jaezu
+- Levels/Testing/Bug Fixing: AleFunky, Ficus mcHousePlant
+- Code Optimizations: alexmush, jroweboy
+- Parallax, Menu and other code: jroweboy
+- Graphics: Zside, Ficus mcHousePlant, Zenith, jroweboy
+- Original Project Lead and Coder: ZSide
