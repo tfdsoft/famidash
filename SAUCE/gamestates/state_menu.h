@@ -122,16 +122,19 @@ void state_menu(){
 		SRAM_VALIDATE[1] = 0x0a;
 		SRAM_VALIDATE[2] = 0x05;
 		SRAM_VALIDATE[3] = 0x06;
-		LEVEL1COINS = 0;
-		LEVEL2COINS = 0;
-		LEVEL3COINS = 0;
-		LEVEL4COINS = 0;
-		LEVEL5COINS = 0;
-		LEVEL6COINS = 0;
-		LEVEL7COINS = 0;
-		LEVEL8COINS = 0;
-		LEVEL9COINS = 0;
-		LEVELACOINS = 0;
+		for (tmp2 = 0; tmp2 < 3; tmp2++) {
+			LEVEL1COINS[tmp2] = 0;
+			LEVEL2COINS[tmp2] = 0;
+			LEVEL3COINS[tmp2] = 0;
+			LEVEL4COINS[tmp2] = 0;
+			LEVEL5COINS[tmp2] = 0;
+			LEVEL6COINS[tmp2] = 0;
+			LEVEL7COINS[tmp2] = 0;
+			LEVEL8COINS[tmp2] = 0;
+			LEVEL9COINS[tmp2] = 0;
+			LEVELACOINS[tmp2] = 0;
+		}
+
 		tmp2 = 0;
 		while (tmp2 < 20) {
 			LEVELCOMPLETE[tmp2] = 0;
@@ -159,11 +162,13 @@ void state_menu(){
 
 	kandotemp = 1;
 	invisible = 0;
-
+	TOTALCOINS = 0;
 	TOTALCOINSONES = 0;
 	TOTALCOINSTENS = 0;
-	TOTALCOINS = LEVEL1COINS + LEVEL2COINS + LEVEL3COINS + LEVEL4COINS + LEVEL5COINS + LEVEL6COINS + LEVEL7COINS + LEVEL8COINS + LEVEL9COINS + LEVELACOINS;
 
+	for (tmp2 = 0; tmp2 < 3; tmp2++) {
+		TOTALCOINS = TOTALCOINS + LEVEL1COINS[tmp2] + LEVEL2COINS[tmp2] + LEVEL3COINS[tmp2] + LEVEL4COINS[tmp2] + LEVEL5COINS[tmp2] + LEVEL6COINS[tmp2] + LEVEL7COINS[tmp2] + LEVEL8COINS[tmp2] + LEVEL9COINS[tmp2] + LEVELACOINS[tmp2];
+	}
 	TOTALCOINSTEMP = TOTALCOINS;
 	
 	while (TOTALCOINSTEMP > 9) {
@@ -224,16 +229,18 @@ void state_menu(){
 		if (pad_new[0] & PAD_SELECT){
 			if (pad[0] & PAD_A){
 				if (pad[0] & PAD_B){
-					LEVEL1COINS = 0;
-					LEVEL2COINS = 0;
-					LEVEL3COINS = 0;
-					LEVEL4COINS = 0;
-					LEVEL5COINS = 0;
-					LEVEL6COINS = 0;
-					LEVEL7COINS = 0;
-					LEVEL8COINS = 0;
-					LEVEL9COINS = 0;
-					LEVELACOINS = 0;					
+					for (tmp2 = 0; tmp2 < 3; tmp2++) {
+						LEVEL1COINS[tmp2] = 0;
+						LEVEL2COINS[tmp2] = 0;
+						LEVEL3COINS[tmp2] = 0;
+						LEVEL4COINS[tmp2] = 0;
+						LEVEL5COINS[tmp2] = 0;
+						LEVEL6COINS[tmp2] = 0;
+						LEVEL7COINS[tmp2] = 0;
+						LEVEL8COINS[tmp2] = 0;
+						LEVEL9COINS[tmp2] = 0;
+						LEVELACOINS[tmp2] = 0;
+					}					
 					tmp2 = 0;
 					while (tmp2 < 0x20) {
 						LEVELCOMPLETE[tmp2] = 0;

@@ -1159,6 +1159,8 @@ const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Spider,
 	Mini_Portal,
 	Growth_Portal,
+	COIN_SPRITE, // swing
+	COIN_SPRITE, // swing
 	};
 
 
@@ -1191,6 +1193,8 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	COIN_SPRITES,
+	COIN_SPRITES,
 };
 
 // Number of UNIQUE animation frames
@@ -1222,4 +1226,6 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
+	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
 };

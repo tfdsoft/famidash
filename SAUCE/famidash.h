@@ -55,6 +55,7 @@ unsigned char tmp3;
 unsigned char tmp4;
 unsigned short tmp5;
 unsigned short tmp6;
+unsigned char tmp7;
 unsigned char* tmpptr1;
 unsigned char* tmpptr2;
 long unsigned int tmplong;
@@ -105,16 +106,16 @@ unsigned char* level_data;
 #pragma bss-name(push, "SRAM")
 unsigned char SRAM_VALIDATE[4];
 
-unsigned char LEVEL1COINS;
-unsigned char LEVEL2COINS;
-unsigned char LEVEL3COINS;
-unsigned char LEVEL4COINS;
-unsigned char LEVEL5COINS;
-unsigned char LEVEL6COINS;
-unsigned char LEVEL7COINS;
-unsigned char LEVEL8COINS;
-unsigned char LEVEL9COINS;
-unsigned char LEVELACOINS;
+unsigned char LEVEL1COINS[3];
+unsigned char LEVEL2COINS[3];
+unsigned char LEVEL3COINS[3];
+unsigned char LEVEL4COINS[3];
+unsigned char LEVEL5COINS[3];
+unsigned char LEVEL6COINS[3];
+unsigned char LEVEL7COINS[3];
+unsigned char LEVEL8COINS[3];
+unsigned char LEVEL9COINS[3];
+unsigned char LEVELACOINS[3];
 
 unsigned char LEVELCOMPLETE[0x20];
 
@@ -143,7 +144,7 @@ unsigned char spr_index;
 unsigned char speed;
 unsigned char shuffle_offset;
 unsigned char count;
-unsigned char coins;
+unsigned char coins[3];
 unsigned char kandotemp;                                                                                              
 unsigned char kandotemp2[2];
 unsigned char kandotemp3[2];

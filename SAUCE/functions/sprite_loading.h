@@ -9,7 +9,7 @@
 #define ROBOT_MODE 				0X04
 #define BLUE_ORB 				0X05
 #define PINK_ORB 				0X06
-#define COIN 					0X07
+#define COIN1 					0X07
 #define GRAVITY_DOWN_PORTAL 			0X08
 #define GRAVITY_UP_PORTAL 			0X09
 #define YELLOW_PAD_DOWN 			0X0A
@@ -28,6 +28,8 @@
 #define SPIDER_MODE		 		0X17
 #define MINI_PORTAL		 		0X18
 #define GROWTH_PORTAL		 		0X19
+#define COIN2					0X1A
+#define COIN3					0X1B
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -93,7 +95,9 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == SPIDER_MODE) return 0x2f; // portal
     else if (type == BLUE_ORB) return 0x0f; // blue orb
     else if (type == PINK_ORB) return 0x0f; // pink jump orb
-    else if (type == COIN) return 0x17; // COIN
+    else if (type == COIN1) return 0x17; // COIN
+    else if (type == COIN2) return 0x17; // COIN
+    else if (type == COIN3) return 0x17; // COIN
 
     else if (type == GRAVITY_DOWN_PORTAL) return 0x2F;
     else if (type == GRAVITY_UP_PORTAL) return 0x2F;
@@ -148,8 +152,20 @@ void sprite_collide_lookup(){
 		}
 	}
     }
-    else if (tmp4 == COIN) {					//COIN
-	    coins++;
+    else if (tmp4 == COIN1) {					//COIN
+	    coins[0]++;
+//	    famistudio_sfx_play(sfx_click, 0);			//test sfx
+	activesprites_type[index] = 0xFF;		//make COIN disappear here
+    }
+
+    else if (tmp4 == COIN2) {					//COIN
+	    coins[1]++;
+//	    famistudio_sfx_play(sfx_click, 0);			//test sfx
+	activesprites_type[index] = 0xFF;		//make COIN disappear here
+    }
+
+    else if (tmp4 == COIN3) {					//COIN
+	    coins[2]++;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }

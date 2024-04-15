@@ -91,34 +91,37 @@ void state_lvldone() {
 	
 	LEVELCOMPLETE[level] = 1;
 	
-	switch (level) {
-		case 0x00: if (coins > LEVEL1COINS) LEVEL1COINS = coins; break;
-		case 0x01: if (coins > LEVEL2COINS) LEVEL2COINS = coins; break;
-		case 0x02: if (coins > LEVEL3COINS) LEVEL3COINS = coins; break;
-		case 0x03: if (coins > LEVEL4COINS) LEVEL4COINS = coins; break;
-		case 0x04: if (coins > LEVEL5COINS) LEVEL5COINS = coins; break;
-		case 0x05: if (coins > LEVEL6COINS) LEVEL6COINS = coins; break;
-		case 0x06: if (coins > LEVEL7COINS) LEVEL7COINS = coins; break;
-		case 0x07: if (coins > LEVEL8COINS) LEVEL8COINS = coins; break;
-		case 0x08: if (coins > LEVEL9COINS) LEVEL9COINS = coins; break;
-		case 0x09: if (coins > LEVELACOINS) LEVELACOINS = coins; break;
+	tmp7 = 0;
+	while (tmp7 < 3) {
+		switch (level) {
+			case 0x00: if (coins[tmp7] > LEVEL1COINS[tmp7]) LEVEL1COINS[tmp7] = coins[tmp7]; break;
+			case 0x01: if (coins[tmp7] > LEVEL2COINS[tmp7]) LEVEL2COINS[tmp7] = coins[tmp7]; break;
+			case 0x02: if (coins[tmp7] > LEVEL3COINS[tmp7]) LEVEL3COINS[tmp7] = coins[tmp7]; break;
+			case 0x03: if (coins[tmp7] > LEVEL4COINS[tmp7]) LEVEL4COINS[tmp7] = coins[tmp7]; break;
+			case 0x04: if (coins[tmp7] > LEVEL5COINS[tmp7]) LEVEL5COINS[tmp7] = coins[tmp7]; break;
+			case 0x05: if (coins[tmp7] > LEVEL6COINS[tmp7]) LEVEL6COINS[tmp7] = coins[tmp7]; break;
+			case 0x06: if (coins[tmp7] > LEVEL7COINS[tmp7]) LEVEL7COINS[tmp7] = coins[tmp7]; break;
+			case 0x07: if (coins[tmp7] > LEVEL8COINS[tmp7]) LEVEL8COINS[tmp7] = coins[tmp7]; break;
+			case 0x08: if (coins[tmp7] > LEVEL9COINS[tmp7]) LEVEL9COINS[tmp7] = coins[tmp7]; break;
+			case 0x09: if (coins[tmp7] > LEVELACOINS[tmp7]) LEVELACOINS[tmp7] = coins[tmp7]; break;
+		}
+		tmp7++;
 	}
 	
-	if (coins == 0) {
+	if ((coins[0] == 0) && (coins[1] == 0) && (coins[2] == 0)) {
 		tmp1 = sizeof(coins0) - 1;
 		tmpptr1 = (unsigned char*)coins0;
-	} else if (coins == 1) {
-		tmp1 = sizeof(coins1) - 1;
-		tmpptr1 = (unsigned char*)coins1;
-	} else if (coins == 2) {
-		tmp1 = sizeof(coins2) - 1;
-		tmpptr1 = (unsigned char*)coins2;
-	} else if (coins == 3) {
+	} else if ((coins[0] == 1) && (coins[1] == 1) && (coins[2] == 1)) {
 		tmp1 = sizeof(coins3) - 1;
 		tmpptr1 = (unsigned char*)coins3;
+	} else if (((coins[0] == 1) && (coins[1] == 1)) || ((coins[0] == 1) && (coins[2] == 1)) || ((coins[1] == 1) && (coins[2] == 1))) {
+		tmp1 = sizeof(coins2) - 1;
+		tmpptr1 = (unsigned char*)coins2;
+	} else if (coins[0] == 1 || coins[1] == 1 || coins[2] == 1) {
+		tmp1 = sizeof(coins1) - 1;
+		tmpptr1 = (unsigned char*)coins1;
 	}
-	if (tmp1)
-		multi_vram_buffer_horz((const char*)tmpptr1,tmp1,NTADR_C(17,18));
+	if (tmp1) multi_vram_buffer_horz((const char*)tmpptr1,tmp1,NTADR_C(17,18));
 	flush_vram_update2();
 
 	// Set the start of the scroll to the top nametable
