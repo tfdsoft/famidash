@@ -33,6 +33,7 @@
 level_data = _level_data
 
 .define CUBE_GRAVITY $6B
+.define MINI_CUBE_GRAVITY $6F
 
 ;void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const unsigned char *data);
 
@@ -1545,8 +1546,125 @@ _drawplayerone:
 		JMP @fin
 
 	@ufo:
+		; Real C code:
+			; 		if (!player_gravity[0]) {
+			; 			if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == MINICUBE_GRAVITY) kandotemp3[0] = 0;
+			; 			else if (player_vel_y[0] > 0) kandotemp3[0] = 1;
+			; 			else if (player_vel_y[0] < 0) kandotemp3[0] = 2;
+			; 		}
+			; 		else {
+			; 			if (player_vel_y[0] == 0 || player_vel_y[0] == -CUBE_GRAVITY || player_vel_y[0] == -MINICUBE_GRAVITY) kandotemp3[0] = 0;
+			; 			else if (player_vel_y[0] > 0) kandotemp3[0] = 1;
+			; 			else if (player_vel_y[0] < 0) kandotemp3[0] = 2;
+			; 		}
+			;	kandotemp3[0] used as index
+		; Modified pseudo C code:
+			;	cmptmp = mini ? MINICUBE_GRAVITY : CUBE_GRAVITY;
+			;	kandotemp3[0] = 1;
+			;	if (0 < highbyte < $80) {}	// do nothing with it
+			;	else if ($80 ≤ highbyte ≤ $FF) {
+			;		kandotemp3[0] = 2;
+			;		if (highbyte == $FF) {
+			;			if (player_gravity[0] != $00) {	
+			;				if (lowbyte == -cmptmp) kandotemp3[0] = 0;
+			;			}
+			;		}
+			;	} else if (highbyte == $00) {
+			;		if (player_gravity[0] == $00) {
+			;			if (lowbyte == cmptmp || lowbyte == 0) kandotemp3[0] = 0;
+			;		}
+			; 	}
+		LDA #<CUBE_GRAVITY	;
+		LDX _mini			;
+		BEQ :+				;	cmptmp = mini ? MINICUBE_GRAVITY : CUBE_GRAVITY;
+			LDA #<MINI_CUBE_GRAVITY
+		: STA tmp1			;__
+
+		LDY #$1				;__	kandotemp3[0] = 1;
+		LDA _player_vel_y+1	;__
+		BEQ :+				;__	else if (highbyte == $00) { // later }
+		BPL @ufo_fin		;__	if (0 < highbyte < $80) {}	// do nothing with it
+			INY				;__	else if ($80 ≤ highbyte ≤ $FF) { kandotemp3[0] = 2;
+			CMP #$FF		;	if (highbyte == $FF) {
+			BNE	@ufo_fin	;__
+			LDA _player_gravity
+			BEQ @ufo_fin	;__	if (player_gravity[0] != $00) {	
+			LDA _player_vel_y
+			CLC				;	if (lowbyte = -cmptmp)
+			ADC tmp1		;
+			BNE	@ufo_fin	;__
+			TAY				;	kandotemp3[0] = 0;
+			JMP @fin		;__
+		:
+		LDX _player_vel_y	;	if (lowbyte == 0) kandotemp3[0] = 0;
+		BEQ :+				;__
+		ORA _player_gravity+0
+		BNE @ufo_fin		;__	if (player_gravity[0] == $00) {
+		CPX tmp1			;__	if (lowbyte == cmptmp)
+		BNE @ufo_fin		;
+		:	DEY				;	kandotemp3[0] = 0;
+		@ufo_fin:			;
+			JMP @fin		;__
 	@robot:
+		; C code:
+			;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
+			;		[index from ROBOT/MINI_ROBOT using robotframe]
+			; 		robotframe++;
+			; 		if (robotframe > 19) { robotframe = 0; }	
+			;	} else {
+			;		[index from ROBOT_JUMP/MINI_ROBOT_JUMP using robotjumpframe]
+			; 	}
+		LDA _player_vel_y+1	;
+		BNE :+++			;
+		LDA _player_vel_y	;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
+		BEQ :+				;
+		CMP #<CUBE_GRAVITY	;
+		BNE :+++			;__
+		:					;
+			LDA _robotframe	;	[load robotframe into Y]
+			TAY				;__
+			CLC				;	robotframe++;
+			ADC #$01		;__
+			CMP #19			;
+			BMI :+			;	if (robotframe > 19) { robotframe = 0; }	
+				LDA #$00	;__
+			:				;
+			STA _robotframe	;__
+			JMP @fin
+		:					;	} else {
+			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
+			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
+			ADC _robotjumpframe
+			TAY				;__
+			JMP @fin
 	@spider:
+		; C code:
+			;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
+			;		[index from SPIDER/MINI_SPIDER using spiderframe]
+			; 		spiderframe++;
+			; 		if (spiderframe > 19) { spiderframe = 0; }	
+			;	} else {
+			;		[use SPIDER_JUMP/MINI_SPIDER_JUMP[0]]
+			; 	}
+		LDA _player_vel_y+1	;
+		BNE :+++			;
+		LDA _player_vel_y	;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
+		BEQ :+				;
+		CMP #<CUBE_GRAVITY	;
+		BNE :+++			;__
+		:					;
+			LDA _spiderframe	;	[load spiderframe into Y]
+			TAY				;__
+			CLC				;	spiderframe++;
+			ADC #$01		;__
+			CMP #15			;
+			BMI :+			;	if (spiderframe > 15) { spiderframe = 0; }	
+				LDA #$00	;__
+			:				;
+			STA spiderframe
+			JMP @fin
+		:					;	} else { SPIDER_JUMP[0] = SPIDER[8]
+			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
 	@fin:
 	
 

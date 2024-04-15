@@ -488,7 +488,17 @@ const unsigned char Robot_2[]={
 	0x80
 };
 
+const unsigned char Robot_Jump_1[]={
+	
+	4,   0, 0x43,0|OAM_FLIP_V,
+	8,   0, 0x31,0,
+	16,   0, 0x33,0,
+	0x80
+};
+
+
 const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_1, Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2};
+const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1};
 
 
 const unsigned char Mini_Robot_0[]={
@@ -509,8 +519,14 @@ const unsigned char Mini_Robot_2[]={
 	0x80
 };
 
+const unsigned char Mini_Robot_Jump_1[]={
+	
+	8,   0, 0x7D,0,
+	0x80
+};
 
 const unsigned char * const MINI_ROBOT[]={Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_1, Mini_Robot_1, Mini_Robot_1, Mini_Robot_1, Mini_Robot_1, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_2, Mini_Robot_2, Mini_Robot_2, Mini_Robot_2, Mini_Robot_2};
+const unsigned char * const MINI_ROBOT_JUMP[]={Mini_Robot_Jump_1, Mini_Robot_Jump_1, Mini_Robot_Jump_1, Mini_Robot_Jump_1, Mini_Robot_Jump_1};
 // ================================================================
 
 const unsigned char Robot2_0[]={
@@ -537,7 +553,16 @@ const unsigned char Robot2_2[]={
 	0x80
 };
 
+const unsigned char Robot_Jump2_1[]={
+	
+	4,   0, 0x43,1|OAM_FLIP_V,
+	8,   0, 0x31,1,
+	16,   0, 0x33,1,
+	0x80
+};
+
 const unsigned char * const ROBOT2[]={Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_1, Robot2_1, Robot2_1, Robot2_1, Robot2_1, Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_2, Robot2_2, Robot2_2, Robot2_2, Robot2_2};
+const unsigned char * const ROBOT_JUMP2[]={Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1};
 
 
 const unsigned char Mini_Robot2_0[]={
@@ -558,42 +583,14 @@ const unsigned char Mini_Robot2_2[]={
 	0x80
 };
 
-
-const unsigned char * const MINI_ROBOT2[]={Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_1, Mini_Robot2_1, Mini_Robot2_1, Mini_Robot2_1, Mini_Robot2_1, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_2, Mini_Robot2_2, Mini_Robot2_2, Mini_Robot2_2, Mini_Robot2_2};
-
-const unsigned char Robot_Jump_1[]={
-	
-	4,   0, 0x43,0|OAM_FLIP_V,
-	8,   0, 0x31,0,
-	16,   0, 0x33,0,
-	0x80
-};
-
-const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1};
-
-const unsigned char Mini_Robot_Jump_1[]={
-	
-	8,   0, 0x7D,0,
-	0x80
-};
-
-const unsigned char * const MINI_ROBOT_JUMP[]={Mini_Robot_Jump_1, Mini_Robot_Jump_1, Mini_Robot_Jump_1, Mini_Robot_Jump_1, Mini_Robot_Jump_1};
-
-const unsigned char Robot_Jump2_1[]={
-	
-	4,   0, 0x43,1|OAM_FLIP_V,
-	8,   0, 0x31,1,
-	16,   0, 0x33,1,
-	0x80
-};
-
-const unsigned char * const ROBOT_JUMP2[]={Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1};
-
 const unsigned char Mini_Robot_Jump2_1[]={
 	
 	8,   0, 0x7D,1,
 	0x80
 };
+
+
+const unsigned char * const MINI_ROBOT2[]={Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_1, Mini_Robot2_1, Mini_Robot2_1, Mini_Robot2_1, Mini_Robot2_1, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_0, Mini_Robot2_2, Mini_Robot2_2, Mini_Robot2_2, Mini_Robot2_2, Mini_Robot2_2};
 
 const unsigned char * const MINI_ROBOT_JUMP2[]={Mini_Robot_Jump2_1, Mini_Robot_Jump2_1, Mini_Robot_Jump2_1, Mini_Robot_Jump2_1, Mini_Robot_Jump2_1};
 
