@@ -1635,7 +1635,7 @@ _drawplayerone:
 			TAY				;__
 			CLC				;	robotframe++;
 			ADC #$01		;__
-			CMP #19			;
+			CMP #20			;
 			BCC :+			;	if (robotframe > 19) { robotframe = 0; }	
 				LDA #$00	;__
 			:				;
@@ -1652,7 +1652,7 @@ _drawplayerone:
 			;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
 			;		[index from SPIDER/MINI_SPIDER using spiderframe]
 			; 		spiderframe++;
-			; 		if (spiderframe > 19) { spiderframe = 0; }	
+			; 		if (spiderframe > 15) { spiderframe = 0; }	
 			;	} else {
 			;		[use SPIDER_JUMP/MINI_SPIDER_JUMP[0]]
 			; 	}
@@ -1667,11 +1667,8 @@ _drawplayerone:
 			TAY				;__
 			CLC				;	spiderframe++;
 			ADC #$01		;__
-			CMP #15			;
-			BCC :+			;	if (spiderframe > 15) { spiderframe = 0; }	
-				LDA #$00	;__
-			:				;
-			STA _spiderframe
+			AND #$0F        ;   if (spiderframe > 15) spiderframe = 0;
+			STA _spiderframe;__
 			JMP @fin
 		:					;	} else { SPIDER_JUMP[0] = SPIDER[8]
 			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
