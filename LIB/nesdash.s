@@ -12,12 +12,6 @@
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column
 .import FIRST_MUSIC_BANK
-.import _player_x, _player_y, _player_gravity, _player_vel_y
-.import _ballframe, _robotframe, _robotjumpframe, _spiderframe
-.importzp _cube_rotate, _mini
-.import _CUBE, _SHIP, _BALL, _ROBOT, _UFO, _SPIDER
-.import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_UFO, _MINI_SPIDER
-
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 
@@ -245,7 +239,7 @@ _init_rld:
         LDX level_data+1
         INX
         CPX #$C0
-        BMI :+
+        BCC :+
             INC _level_data_bank
             LDA _level_data_bank
             JSR mmc3_set_prg_bank_1
@@ -1287,6 +1281,13 @@ write_active:
     rts
 .endproc
 
+.import _player_x, _player_y, _player_gravity, _player_vel_y
+.import _ballframe, _robotframe, _robotjumpframe, _spiderframe
+.importzp _cube_rotate, _mini
+.import _CUBE, _SHIP, _BALL, _ROBOT, _UFO, _SPIDER
+.import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_UFO, _MINI_SPIDER
+.export _drawplayerone
+
 _drawplayerone:
     ; C code to be ported:
 		; temp_x = high_byte(player_x[0]);
@@ -1411,15 +1412,24 @@ _drawplayerone:
 	STX <SCRY			;__
 
     LDA _player_x+1     ;__ temp_x = high_byte(player_x[0]);
-    BEQ :+              ;
+    BNE :+              ;
         LDA #$01        ;   if(temp_x == 0) temp_x = 1;
 		BNE :++			;= BRA
     :                   ;__
     CMP #$FD            ;
-    BMI :+              ;	if(temp_x > 0xfc) temp_x = 1;
+    BCC :+              ;	if(temp_x > 0xfc) temp_x = 1;
         LDA #$01        ;
     :                   ;__
     STA <SCRX			;__ The X of oam_meta_spr is temp_x
+
+
+    lda     sp          ;
+    sec                 ;
+    sbc     #2          ;
+    sta     sp          ;   sp -= 2
+    bcs     :+          ;
+    dec     sp+1        ;__
+    :
 
     ; Set up base pointer for jump tables
     LDA _mini       ;
@@ -1459,7 +1469,7 @@ _drawplayerone:
         ADC _cube_rotate        ;
         STA _cube_rotate        ;   cube_rotate[0] += CUBE_GRAVITY;
         BCC :+                  ;
-            INC _cube_rotate    ;
+            INC _cube_rotate+1  ;
         :                       ;__
 
         LDX _player_vel_y+1		;	if highbyte(player_vel_y) == 0 it's possible that
@@ -1487,7 +1497,7 @@ _drawplayerone:
 		BCC :+					;
 			STA _cube_rotate+1	;
 		:						;__
-		TAY						;__	Y is the index into the table
+		LDY _cube_rotate+1		;__	Y is the index into the table
 		JMP @fin
 	
 	@ship:
@@ -1505,7 +1515,7 @@ _drawplayerone:
 		sbc _player_vel_y+1		;
 		; A has high byte of _cube_rotate
 		CMP	#$08				;	if (high_byte(cube_rotate) >= 0x08) {
-		BMI :++					;__
+		BCC :++					;__
 			CMP #$80			;	if (high_byte(cube_rotate) < 0x80)
 			BCC	:+				;__
 				LDY #$07		;	cube_rotate[0] = 0x07FF
@@ -1626,7 +1636,7 @@ _drawplayerone:
 			CLC				;	robotframe++;
 			ADC #$01		;__
 			CMP #19			;
-			BMI :+			;	if (robotframe > 19) { robotframe = 0; }	
+			BCC :+			;	if (robotframe > 19) { robotframe = 0; }	
 				LDA #$00	;__
 			:				;
 			STA _robotframe	;__
@@ -1658,7 +1668,7 @@ _drawplayerone:
 			CLC				;	spiderframe++;
 			ADC #$01		;__
 			CMP #15			;
-			BMI :+			;	if (spiderframe > 15) { spiderframe = 0; }	
+			BCC :+			;	if (spiderframe > 15) { spiderframe = 0; }	
 				LDA #$00	;__
 			:				;
 			STA _spiderframe

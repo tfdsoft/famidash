@@ -128,7 +128,7 @@ void drawplayertwo() {
 	Draws the first player sprite
 	Implemented in asm
 */
-extern void drawplayerone() {}
+extern void drawplayerone();
 
 void draw_sprites(void){
 //	dual = 1;
