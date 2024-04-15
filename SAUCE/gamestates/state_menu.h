@@ -55,7 +55,7 @@ void __fastcall__ refreshmenu(void) {
 void state_menu(){
 	ppu_off();
 	pal_bright(0);
-    pal_bg((char *)paletteMenu);
+    pal_bg((char *)splashMenu);
 
 	mmc3_set_8kb_chr(12);
 
