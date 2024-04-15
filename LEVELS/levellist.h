@@ -28,8 +28,8 @@
 
 #define EASY 0
 #define NORMAL 1
-#define MEDIUM 2
-#define HARD 3
+#define HARD 2
+#define HARDER 3
 #define INSANE 4
 #define DEMON 5
 
@@ -84,11 +84,11 @@ const unsigned char difficulty_list[] = {
     EASY,
     NORMAL,
     NORMAL,
-    MEDIUM,
-    MEDIUM,
     HARD,
     HARD,
-    HARD,
+    HARDER,
+    HARDER,
+    HARDER,
     INSANE,
     EASY,
     EASY,
