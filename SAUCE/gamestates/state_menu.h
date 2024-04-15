@@ -134,7 +134,31 @@ void state_menu(){
 
 	// Expand the data for the menu nametable while the PPU is still off
     vram_adr(NAMETABLE_A);
-    vram_unrle(game_main_menu);
+    vram_unrle(game_start_screen);
+ 	ppu_on_all();
+	pal_fade_to(0,4);
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+	while (!(pad_new[0] & PAD_START)){
+		ppu_wait_nmi();
+		music_update();
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+	}		
+		
+    
+    
+    
+    
+  	ppu_off();
+	pal_bright(0);
+    pal_bg((char *)paletteMenu);
+	set_scroll_x(0);
+    set_scroll_y(0);  
+    
+    
+     vram_adr(NAMETABLE_A);
+    vram_unrle(game_main_menu);   
 
 	refreshmenu();
 

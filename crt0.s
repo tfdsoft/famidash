@@ -288,6 +288,7 @@ _GAME_CHR:
 	.incbin "GRAPHICS/famidash.chr" ; 8kb
 	.incbin "GRAPHICS/famidash-parallax.chr" ; 4kb
 	.incbin "GRAPHICS/menus.chr"    ; 4kb
+	.incbin "GRAPHICS/levelcomplete.chr"    ; 4kb
 .segment "PARALLAXCHR"
 .export _PARALLAX_CHR
 _PARALLAX_CHR:
