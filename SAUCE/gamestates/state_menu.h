@@ -118,6 +118,7 @@ void state_menu(){
 	}
 
 	kandotemp = 1;
+	invisible = 0;
 
 	TOTALCOINSONES = 0;
 	TOTALCOINSTENS = 0;
@@ -233,11 +234,25 @@ void state_menu(){
 
 
 		if (pad_new[0] & PAD_START){
-			gameState = 0x02;
-			pal_fade_to(4,0);
-			kandotemp = 0;
-			return;
+			if (pad[0] & PAD_A){
+				if (pad[0] & PAD_B){
+					invisible = 1;
+					famistudio_sfx_play(sfx_death, 0);
+					gameState = 0x02;
+					pal_fade_to(4,0);
+					kandotemp = 0;
+					return;
+				}
+			}
+			else {
+				gameState = 0x02;
+				pal_fade_to(4,0);
+				kandotemp = 0;
+				return;
+			}
+			
 		}
+
 		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
 			if (level > 0x0B){

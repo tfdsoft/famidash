@@ -249,16 +249,14 @@ void draw_sprites(void){
 //	dual = 1;
 //	twoplayer = 1;
 	// draw player
-	if (dual) {
 
-	if (kandoframecnt & 0x01) { drawplayertwo(); drawplayerone(); }
-	else { drawplayerone(); drawplayertwo(); }
-
-
+	if (!invisible) {
+		if (dual) {
+			if (kandoframecnt & 0x01) { drawplayertwo(); drawplayerone(); }
+			else { drawplayerone(); drawplayertwo(); }
+		}
+		else drawplayerone();
 	}
-
-	else drawplayerone();
-	
 	// the level sprites
 
 	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
