@@ -26,6 +26,13 @@
 // ============================================================
 // go wild
 
+#define EASY 0
+#define NORMAL 1
+#define MEDIUM 2
+#define HARD 3
+#define INSANE 4
+#define DEMON 5
+
 
 const unsigned char * const level_list[] = {
     stereomadness_,
@@ -70,6 +77,21 @@ const unsigned char bank_list[] = {
     0x0A,
     0x0C,
     0x0D,
+};
+
+const unsigned char difficulty_list[] = {
+    EASY,
+    EASY,
+    NORMAL,
+    NORMAL,
+    MEDIUM,
+    MEDIUM,
+    HARD,
+    HARD,
+    HARD,
+    INSANE,
+    EASY,
+    EASY,
 };
 
 

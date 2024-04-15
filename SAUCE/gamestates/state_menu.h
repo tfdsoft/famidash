@@ -50,6 +50,46 @@ void __fastcall__ refreshmenu(void) {
 		NTADR_A(level_text_padding[level], 14));
 	if (LEVELCOMPLETE[level]) one_vram_buffer_horz_repeat('*', 1, NTADR_A(16, 15));
 	else one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));
+	
+	switch(difficulty_list[level]) {
+		case 0x00:
+			one_vram_buffer_horz_repeat('a', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat('b', 1, NTADR_A(5, 13));
+			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 14));			
+			one_vram_buffer_horz_repeat('d', 1, NTADR_A(5, 14));			
+			break;
+		case 0x01:
+			one_vram_buffer_horz_repeat('e', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat('f', 1, NTADR_A(5, 13));
+			one_vram_buffer_horz_repeat('g', 1, NTADR_A(4, 14));			
+			one_vram_buffer_horz_repeat('h', 1, NTADR_A(5, 14));			
+			break;
+		case 0x02:
+			one_vram_buffer_horz_repeat('i', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat('j', 1, NTADR_A(5, 13));
+			one_vram_buffer_horz_repeat('k', 1, NTADR_A(4, 14));			
+			one_vram_buffer_horz_repeat('l', 1, NTADR_A(5, 14));		
+			break;
+		case 0x03:
+			one_vram_buffer_horz_repeat('m', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat('n', 1, NTADR_A(5, 13));
+			one_vram_buffer_horz_repeat('o', 1, NTADR_A(4, 14));			
+			one_vram_buffer_horz_repeat('p', 1, NTADR_A(5, 14));			
+			break;
+		case 0x04:
+			one_vram_buffer_horz_repeat('q', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat('r', 1, NTADR_A(5, 13));
+			one_vram_buffer_horz_repeat('s', 1, NTADR_A(4, 14));			
+			one_vram_buffer_horz_repeat('t', 1, NTADR_A(5, 14));		
+			break;
+		case 0x05:
+			one_vram_buffer_horz_repeat('u', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat('v', 1, NTADR_A(5, 13));
+			one_vram_buffer_horz_repeat('w', 1, NTADR_A(4, 14));			
+			one_vram_buffer_horz_repeat('x', 1, NTADR_A(5, 14));		
+			break;
+
+	};	
 };
 
 void state_menu(){
