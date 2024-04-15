@@ -56,6 +56,9 @@ void state_menu(){
 	ppu_off();
 	pal_bright(0);
     pal_bg((char *)paletteMenu);
+
+	mmc3_set_8kb_chr(12);
+
 	set_scroll_x(0);
     set_scroll_y(0);
 
