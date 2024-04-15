@@ -92,7 +92,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	}
 	TOTALCOINSONES = TOTALCOINSTEMP;
 
-	if (TOTALCOINSONES == 0 && TOTALCOINSTENS == 0 && TOTALATTEMPTSHUNDREDS == 0 & TOTALATTEMPTSTHOUSANDS >= 10) {
+	if (TOTALATTEMPTSTHOUSANDS >= 10) {
 		multi_vram_buffer_horz((const char*)wtxt,sizeof(wtxt)-1,NTADR_C(15, 15));
 		multi_vram_buffer_horz((const char*)htxt,sizeof(htxt)-1,NTADR_C(16, 15));
 		multi_vram_buffer_horz((const char*)atxt,sizeof(atxt)-1,NTADR_C(17, 15));
