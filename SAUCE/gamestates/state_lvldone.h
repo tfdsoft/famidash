@@ -1,7 +1,5 @@
-
-#pragma bss-name(push, "ZEROPAGE")
 extern volatile unsigned char VRAM_UPDATE;
-#pragma bss-name(pop)
+#pragma zpsym ("VRAM_UPDATE")
 
 #pragma code-name(push, "LVL_BANK_00")
 #pragma data-name(push, "LVL_BANK_00")
