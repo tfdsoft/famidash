@@ -250,12 +250,13 @@ detectNTSC:
 	jmp _main			;no parameters
 
 	.include "LIB/neslib.s"
-	.include "LIB/nesdoug.s"
 	.include "LIB/nesdash.s"
+	.include "LIB/nesdoug.s"
 	.include "METATILES/metatiles.s"
 
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music.dmc"
+	.include "MUSIC/EXPORTS/sfx.s"
 
 .include "LIB/famistudio_ca65.s"
 	
@@ -271,8 +272,7 @@ detectNTSC:
 	.include "MUSIC/EXPORTS/music_3.s"
 
 
-.segment "RODATA_2"
-	.include "MUSIC/EXPORTS/sfx.s"
+; .segment "RODATA_2"
 
 
 .segment "VECTORS"

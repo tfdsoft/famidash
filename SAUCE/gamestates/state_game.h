@@ -118,6 +118,7 @@ void state_game(){
   
   oam_clear();
 
+	mmc3_set_prg_bank_1(0x15);	
         draw_screen_R(); 
 	mmc3_set_prg_bank_1(0x14);	
         draw_sprites();
