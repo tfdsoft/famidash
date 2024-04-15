@@ -24,5 +24,7 @@ fork it, change it, push it, open a pr, get it merged (or not).
 - Graphics: Zside, Ficus mcHousePlant, Zenith, jroweboy
 - Original Project Lead and Coder: ZSide
 - Other code contributors: Alefunky
+ 
 and finally...
+
 - ROBTOP for making GEOMETRY DASH
