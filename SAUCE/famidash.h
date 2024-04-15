@@ -65,7 +65,7 @@ unsigned char pad_new[2];
 unsigned char gamemode;
 unsigned char cube_data[2];
 unsigned char cube_data2;
-signed short cube_rotate[2];
+unsigned short cube_rotate[2];
 signed short cube_rotate2;
 
 

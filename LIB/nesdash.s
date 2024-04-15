@@ -12,6 +12,12 @@
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column
 .import FIRST_MUSIC_BANK
+.import _player_x, _player_y, _player_gravity, _player_vel_y
+.import _ballframe
+.importzp _cube_rotate, _mini
+.import _CUBE, _SHIP, _BALL, _ROBOT, _UFO, _SPIDER
+.import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_UFO, _MINI_SPIDER
+
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 
@@ -25,6 +31,8 @@
 
 .importzp _level_data
 level_data = _level_data
+
+.define CUBE_GRAVITY $6B
 
 ;void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const unsigned char *data);
 
@@ -59,6 +67,8 @@ _oam_meta_spr_vflipped:
     lda (sp),y
     sta <SCRY
     
+oam_met_spr_vflipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCRY respectively
+
     ldx SPRID
 
 @1:
@@ -1275,3 +1285,278 @@ write_active:
         bpl check_sprite_loop
     rts
 .endproc
+
+_drawplayerone:
+    ; C code to be ported:
+		; temp_x = high_byte(player_x[0]);
+		; if(temp_x > 0xfc) temp_x = 1;
+		; if(temp_x == 0) temp_x = 1;
+		; switch (gamemode){
+		; 	default:
+
+		; 		cube_rotate[0] += CUBE_GRAVITY;
+		; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == -CUBE_GRAVITY) cube_rotate[0]= 0;
+		; 		if (high_byte(cube_rotate[0]) > 0x05) high_byte(cube_rotate[0]) -= 0x06;
+
+		; 		if (!mini) {
+		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, CUBE[high_byte(cube_rotate)]);
+		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, CUBE[high_byte(cube_rotate)]);
+		; 		}
+		; 		else {
+		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_CUBE[high_byte(cube_rotate)]);
+		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_CUBE[high_byte(cube_rotate)]);				
+		; 		}
+		; 		break;
+		; 	case 0x01:
+		; 		cube_rotate[0] = 0x0400 - player_vel_y[0];
+		; 		if (high_byte(cube_rotate) >= 0x08) {
+		; 			cube_rotate[0]= high_byte(cube_rotate) >= 0x80 ? 0x0000 : 0x07FF;
+		; 		}
+
+		; 		if (!mini) {
+		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, SHIP[high_byte(cube_rotate)]);
+		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, SHIP[7-high_byte(cube_rotate)]);
+		; 		}
+		; 		else {
+		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_SHIP[high_byte(cube_rotate)]);
+		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_SHIP[7-high_byte(cube_rotate)]);
+		; 		}
+		; 		break;
+				
+		; 	case 0x02:
+		; 		if (!mini) {
+		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, BALL[ballframe]);
+		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, BALL[ballframe]);
+		; 			ballframe++;
+		; 			if (ballframe > 7) { ballframe = 0; }
+		; 		}
+		; 		else   {
+		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_BALL[ballframe]);
+		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_BALL[ballframe]);
+		; 		}
+		; 		break;
+
+		; 	case 0x03:
+		; 		if (!player_gravity[0]) {
+		; 			if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == MINICUBE_GRAVITY) kandotemp3[0] = 0;
+		; 			else if (player_vel_y[0] > 0) kandotemp3[0] = 1;
+		; 			else if (player_vel_y[0] < 0) kandotemp3[0] = 2;
+		; 			if (!mini) oam_meta_spr(temp_x, high_byte(player_y[0])-1, UFO[kandotemp3[0]]);
+		; 			else oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_UFO[kandotemp3[0]]);
+		; 		}
+		; 		else {
+		; 			if (player_vel_y[0] == 0 || player_vel_y[0] == -CUBE_GRAVITY || player_vel_y[0] == -MINICUBE_GRAVITY) kandotemp3[0] = 0;
+		; 			else if (player_vel_y[0] > 0) kandotemp3[0] = 1;
+		; 			else if (player_vel_y[0] < 0) kandotemp3[0] = 2;
+			
+		; 			if (!mini) oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, UFO[kandotemp3[0]]);
+		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_UFO[kandotemp3[0]]);
+		; 		}
+		; 		break;
+				
+		; 	case 0x04:
+		; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
+		; 			if (!mini) {
+		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, ROBOT[robotframe]);
+		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, ROBOT[robotframe]);
+		; 			}
+		; 			else {
+		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_ROBOT[robotframe]);
+		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_ROBOT[robotframe]);					
+		; 			}
+		; 			robotframe++;
+		; 			if (robotframe > 19) { robotframe = 0; }
+		; 			break;
+		; 		}
+		; 		else {
+		; 			if (!mini) {
+		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, ROBOT_JUMP[robotjumpframe]);
+		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, ROBOT_JUMP[robotjumpframe]);
+		; 			}
+		; 			else {
+		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_ROBOT_JUMP[robotjumpframe]);
+		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_ROBOT_JUMP[robotjumpframe]);
+		; 			}
+		; 			break;
+		; 		}
+		; 	case 0x05:
+		; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
+		; 			if (!mini) {
+		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, SPIDER[spiderframe]);
+		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, SPIDER[spiderframe]);
+		; 			}
+		; 			else {
+		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_SPIDER[spiderframe]);
+		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_SPIDER[spiderframe]);					
+		; 			}
+		; 			spiderframe++;
+		; 			if (spiderframe > 15) spiderframe = 0;
+		; 		}
+		; 		else {
+		; 			if (!mini) {
+		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, SPIDER_JUMP[0]);
+		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, SPIDER_JUMP[0]);
+		; 			}
+		; 			else {
+		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_SPIDER_JUMP[0]);
+		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_SPIDER_JUMP[0]);
+		; 			}						
+		; 		}	
+		; 		break;	
+	    ; }
+
+	LDX _player_y+1		;
+	DEX					;	The Y of oam_meta_spr is high_byte(player_y[0])-1
+	STX <SCRY			;__
+
+    LDA _player_x+1     ;__ temp_x = high_byte(player_x[0]);
+    BEQ :+              ;
+        LDA #$01        ;   if(temp_x == 0) temp_x = 1;
+		BNE :++			;= BRA
+    :                   ;__
+    CMP #$FD            ;
+    BMI :+              ;	if(temp_x > 0xfc) temp_x = 1;
+        LDA #$01        ;
+    :                   ;__
+    STA <SCRX			;__ The X of oam_meta_spr is temp_x
+
+    ; Set up base pointer for jump tables
+    LDA _mini       ;
+    BEQ :+          ;   Add 6 if mini mode 
+        LDA #$06    ;   ! Increment this value when new gamemodes added
+    :               ;__
+    CLC             ;   Actual gamemode itself
+    ADC _gamemode   ;__
+    TAX             ;   Get low byte of table ptr
+    LDA @sprite_table_table_lo, X
+    STA ptr1        ;__
+    LDA @sprite_table_table_hi, X
+    STA ptr1+1      ;__ Get high byte of table ptr
+
+    ; The switch 
+    LDX _gamemode
+    DEX         ;   case 0x01: ship shit
+    jeq @ship   ;__
+    DEX         ;   case 0x02: ball shit
+    jeq @ball   ;__
+    DEX         ;   case 0x03: ufo shit
+    jeq @ufo    ;__
+    DEX         ;   case 0x04: robot shit
+    jeq @robot  ;__
+    DEX         ;   case 0x05: spider shit
+    jeq @spider ;__
+    
+    ; default: cube
+    @cube:
+		; C code:
+			; 		cube_rotate[0] += CUBE_GRAVITY;
+			; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == -CUBE_GRAVITY) cube_rotate[0]= 0;
+			; 		if (high_byte(cube_rotate[0]) > 0x05) high_byte(cube_rotate[0]) -= 0x06;
+
+        LDA #<CUBE_GRAVITY     ;
+        CLC                     ;
+        ADC _cube_rotate        ;
+        STA _cube_rotate        ;   cube_rotate[0] += CUBE_GRAVITY;
+        BCC :+                  ;
+            INC _cube_rotate    ;
+        :                       ;__
+
+        LDX _player_vel_y+1		;	if highbyte(player_vel_y) == 0 it's possible that
+		BEQ :+					;__ PVY == 0 or CUBE_GRAVITY
+		DEX						;	if highbyte == 0xFF it's possible that
+		BNE :+++				;__	PVY == -CUBE_GRAVITY
+			LDA _player_vel_y	;	if lowbyte == -CUBE_GRAVITY
+			CMP #<($100 - <CUBE_GRAVITY)
+			BNE :+++			;__
+			BEQ :++				;__ This is a fucking mess
+		:						;__
+		LDA _player_vel_y		;
+		BEQ :+					;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
+		CMP #<CUBE_GRAVITY		;
+		BNE :++					;__
+			LDA #$00			;
+			:					;	cube_rotate[0] = 0
+			STA _cube_rotate+0	;
+			STA _cube_rotate+1	;__
+		:
+
+		LDA _cube_rotate+1		;
+		SEC						;
+		SBC #$06				;	if (high_byte(cube_rotate[0]) > 0x05) high_byte(cube_rotate[0]) -= 0x06;
+		BCC :+					;
+			STA _cube_rotate+1	;
+		:						;__
+		TAY						;__	Y is the index into the table
+		JMP @fin
+	
+	@ship:
+		; C code:
+			; 		cube_rotate[0] = 0x0400 - player_vel_y[0];
+			; 		if (high_byte(cube_rotate) >= 0x08) {
+			; 			cube_rotate[0]= high_byte(cube_rotate) >= 0x80 ? 0x0000 : 0x07FF;
+			; 		}
+		TXA						;(X = 0 as per JEQ)
+		TAY						;
+		sec						;
+		sbc _player_vel_y		;	cube_rotate[0] = 0x0400 - player_vel_y[0];
+		sta _cube_rotate		;	(Mostly generated by cc65 lmao)
+		lda #$04				;
+		sbc _player_vel_y+1		;
+		; A has high byte of _cube_rotate
+		CMP	#$08				;	if (high_byte(cube_rotate) >= 0x08) {
+		BMI :++					;__
+			CMP #$80			;	if (high_byte(cube_rotate) < 0x80)
+			BCC	:+				;__
+				LDY #$07		;	cube_rotate[0] = 0x07FF
+				DEX				;__
+			:					;__	else 0x0000 (Y and X still remain at 0)
+			STX _cube_rotate	;__	Store low byte
+			TYA					;
+		:						;	Store high byte
+		STA	_cube_rotate+1		;__
+		
+		; Frame index is high byte of _cube_rotate if gravity is 0, 
+		;* and 7-high byte if gravity isn't 0
+		LDX _player_gravity+0
+		BEQ :+
+			; 7 - A = -A + 7
+			; -A = (A ^ 0xFF) + 1
+			; 7 - A = (A ^ 0xFF) + 8
+			EOR #$FF
+			CLC
+			ADC #$08
+		:
+		TAY
+		JMP @fin
+
+	@ball:
+		; C code:
+			; if (!mini) {
+			;	[calls to oam] 
+			; 			ballframe++;
+			; 			if (ballframe > 7) { ballframe = 0; }
+			;	}
+		LDA _ballframe	;	Load index
+		TAY				;__
+		CLC				;	ballframe++;
+		ADC #$01		;__
+		AND #$07		;__	if (ballframe > 7) { ballframe = 0; }
+		STA _ballframe	;__
+		JMP @fin
+
+	@ufo:
+	@robot:
+	@spider:
+	@fin:
+	
+
+
+
+
+
+    @sprite_table_table_lo:
+        .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER
+        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER
+    @sprite_table_table_hi:
+        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER
