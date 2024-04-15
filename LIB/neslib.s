@@ -433,7 +433,7 @@ _oam_meta_spr:
 	lda (sp),y
 	sta <SCRY
 
-oam_met_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respectively
+oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respectively
 	
 	ldx SPRID
 

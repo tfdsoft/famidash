@@ -13,7 +13,7 @@
 .import _increase_parallax_scroll_column
 .import FIRST_MUSIC_BANK
 .import _player_x, _player_y, _player_gravity, _player_vel_y
-.import _ballframe
+.import _ballframe, _robotframe, _robotjumpframe, _spiderframe
 .importzp _cube_rotate, _mini
 .import _CUBE, _SHIP, _BALL, _ROBOT, _UFO, _SPIDER
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_UFO, _MINI_SPIDER
@@ -68,7 +68,7 @@ _oam_meta_spr_vflipped:
     lda (sp),y
     sta <SCRY
     
-oam_met_spr_vflipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCRY respectively
+oam_meta_spr_vflipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCRY respectively
 
     ldx SPRID
 
@@ -1454,7 +1454,7 @@ _drawplayerone:
 			; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == -CUBE_GRAVITY) cube_rotate[0]= 0;
 			; 		if (high_byte(cube_rotate[0]) > 0x05) high_byte(cube_rotate[0]) -= 0x06;
 
-        LDA #<CUBE_GRAVITY     ;
+        LDA #<CUBE_GRAVITY		;
         CLC                     ;
         ADC _cube_rotate        ;
         STA _cube_rotate        ;   cube_rotate[0] += CUBE_GRAVITY;
@@ -1661,16 +1661,24 @@ _drawplayerone:
 			BMI :+			;	if (spiderframe > 15) { spiderframe = 0; }	
 				LDA #$00	;__
 			:				;
-			STA spiderframe
+			STA _spiderframe
 			JMP @fin
 		:					;	} else { SPIDER_JUMP[0] = SPIDER[8]
 			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
 	@fin:
-	
-
-
-
-
+		TYA					;
+		ASL					;	Double da index cuz it's a table of shorts
+		TAY					;__
+		LDA (ptr1), Y		;	Load low byte
+		STA <PTR			;__
+		INY					;
+		LDA (ptr1), Y		;	Load high byte
+		STA <PTR+1			;__
+		LDY #$00			;__	THIS IS A MUST
+		LDA _player_gravity	;	if (!player_gravity[0])
+		BNE :+				;__	oam_meta_spr(temp_x, high_byte(player_y[0])-1, [whatever the fuck we set here]);
+			JMP oam_meta_spr_params_set
+		: JMP oam_meta_spr_vflipped_params_set
 
     @sprite_table_table_lo:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER
