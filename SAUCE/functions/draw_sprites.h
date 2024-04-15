@@ -13,7 +13,7 @@ void drawplayertwo() {
 
 				cube_rotate[1] += CUBE_GRAVITY;
 				if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == -CUBE_GRAVITY) cube_rotate[1] = 0;
-				if (cube_rotate[1] > 0x05FF) cube_rotate[1] -= 0x0600;
+				if (high_byte(cube_rotate[1]) > 0x05) high_byte(cube_rotate[1]) -= 0x06;
 
 				if (!mini) {
 					if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, CUBE2[high_byte(cube_rotate[1])]);
@@ -134,7 +134,7 @@ void drawplayerone() {
 
 				cube_rotate[0] += CUBE_GRAVITY;
 				if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == -CUBE_GRAVITY) cube_rotate[0]= 0;
-				if (cube_rotate[0]> 0x05FF) cube_rotate[0]-= 0x0600;
+				if (high_byte(cube_rotate[0]) > 0x05) high_byte(cube_rotate[0]) -= 0x06;
 
 				if (!mini) {
 					if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, CUBE[high_byte(cube_rotate)]);
