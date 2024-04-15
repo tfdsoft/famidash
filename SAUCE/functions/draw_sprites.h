@@ -251,8 +251,8 @@ void draw_sprites(void){
 	// draw player
 	if (dual) {
 
-	if (kandoframecnt & 0x01) { drawplayertwo(); } //drawplayerone(); }
-	else { drawplayerone(); } //drawplayertwo(); }
+	if (kandoframecnt & 0x01) { drawplayertwo(); drawplayerone(); }
+	else { drawplayerone(); drawplayertwo(); }
 
 
 	}
