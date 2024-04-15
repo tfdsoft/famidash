@@ -221,13 +221,13 @@ void sprite_collide_lookup(){
     else if (tmp4 == GRAVITY_PAD_DOWN || tmp4 == GRAVITY_PAD_DOWN_INVISIBLE) {			//gravity pads bottom
 	    if (!player_gravity[currplayer]) { 
 			player_gravity[currplayer] = 0x01;				//flip gravity
-			player_vel_y[currplayer] = PAD_HEIGHT_BLUE^0xFFFF;	
+			player_vel_y[currplayer] = PAD_HEIGHT_BLUE;	
 		}
     }
     else if (tmp4 == GRAVITY_PAD_UP || tmp4 == GRAVITY_PAD_UP_INVISIBLE) {			//gravity pads top
 	    if (player_gravity[currplayer]) { 
 			player_gravity[currplayer] = 0x00;				//flip gravity
-			player_vel_y[currplayer] = PAD_HEIGHT_BLUE;	
+			player_vel_y[currplayer] = PAD_HEIGHT_BLUE^0xFFFF;	
 	    }
     }
 //    else if (tmp4 == 0x0F) {
