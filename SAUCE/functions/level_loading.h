@@ -2,6 +2,10 @@
 void init_sprites(void);
 #include "../defines/bg_charmap.h"
 const unsigned char attemptstex[]="PQQRSTQ"; //ATTEMPT
+const unsigned char wtxt[]="w";
+const unsigned char htxt[]="x";
+const unsigned char atxt[]="y";
+const unsigned char rtxt[]="z";
 /* 
 	Reset run-length decoder back to zero
 	Implemented in asm
@@ -88,8 +92,19 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	}
 	TOTALCOINSONES = TOTALCOINSTEMP;
 
-	if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSTHOUSANDS, NTADR_C(15,15));
-	if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSHUNDREDS, NTADR_C(16,15));
-	if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALCOINSTENS, NTADR_C(17,15));
-	one_vram_buffer(0xf5+TOTALCOINSONES, NTADR_C(18,15));		
+	if (TOTALCOINSONES == 0 && TOTALCOINSTENS == 0 && TOTALATTEMPTSHUNDREDS == 0 & TOTALATTEMPTSTHOUSANDS == 10) {
+		multi_vram_buffer_horz((const char*)wtxt,sizeof(wtxt)-1,NTADR_C(15, 15));
+		multi_vram_buffer_horz((const char*)htxt,sizeof(htxt)-1,NTADR_C(16, 15));
+		multi_vram_buffer_horz((const char*)atxt,sizeof(atxt)-1,NTADR_C(17, 15));
+		multi_vram_buffer_horz((const char*)rtxt,sizeof(rtxt)-1,NTADR_C(18, 15));
+
+
+	}
+
+	else {
+		if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSTHOUSANDS, NTADR_C(15,15));
+		if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSHUNDREDS, NTADR_C(16,15));
+		if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALCOINSTENS, NTADR_C(17,15));
+		one_vram_buffer(0xf5+TOTALCOINSONES, NTADR_C(18,15));		
+	}
 }
