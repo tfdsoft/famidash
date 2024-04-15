@@ -10,10 +10,10 @@ Metatile "BG4",   $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 Metatile "BG5",   $1b, $1b, $2b, $2b, PAL_1, COL_ALL
 Metatile "BG6",   $1b, $1b, $1b, $1b, PAL_1, COL_ALL
 Metatile "BG7",   $20, $21, $30, $31, PAL_0, COL_NONE
-Metatile "MED_SAW_TOP_LEFT",   $4f, $e0, $e3, $e4, PAL_0, COL_DEATH
-Metatile "MED_SAW_TOP_RIGHT",   $e1, $e2, $e5, $e6, PAL_0, COL_DEATH
-Metatile "MED_SAW_BOTTOM_LEFT",  $e7, $e8, $4f, $eb, PAL_0, COL_DEATH
-Metatile "MED_SAW_BOTTOM_RIGHT",  $e9, $ea, $ec, $ed, PAL_0, COL_DEATH
+Metatile "MED_SAW_TOP_LEFT",   $00, $e1, $e4, $e5, PAL_0, COL_DEATH
+Metatile "MED_SAW_TOP_RIGHT",   $e2, $e3, $e6, $e7, PAL_0, COL_DEATH
+Metatile "MED_SAW_BOTTOM_LEFT",  $e8, $e9, $00, $ed, PAL_0, COL_DEATH
+Metatile "MED_SAW_BOTTOM_RIGHT",  $ea, $eb, $ee, $ef, PAL_0, COL_DEATH
 Metatile "BG12",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 Metatile "BG13",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 Metatile "BG14",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
