@@ -1,6 +1,7 @@
 // prototype
 void init_sprites(void);
-
+#include "../defines/bg_charmap.h"
+const unsigned char attemptstex[]="PQQRSTQ"; //ATTEMPT
 /* 
 	Reset run-length decoder back to zero
 	Implemented in asm
@@ -64,4 +65,31 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
         flush_vram_update2();
     }
 	scroll_x = 0;
+	multi_vram_buffer_horz((const char*)attemptstex,sizeof(attemptstex)-1,NTADR_C(7, 15));    	
+	
+	TOTALCOINSONES = 0;
+	TOTALCOINSTENS = 0;
+	TOTALATTEMPTSHUNDREDS = 0;
+	TOTALATTEMPTSTHOUSANDS = 0;
+	
+	TOTALCOINSTEMP = attempts;
+	
+	while (TOTALCOINSTEMP > 9) {
+		TOTALCOINSTENS++;
+		TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
+		if (TOTALCOINSTENS == 10) {
+			TOTALCOINSTENS = 0;
+			TOTALATTEMPTSHUNDREDS++;
+		}
+		if (TOTALATTEMPTSHUNDREDS == 10) {
+			TOTALATTEMPTSHUNDREDS = 0;
+			TOTALATTEMPTSTHOUSANDS++;
+		}
+	}
+	TOTALCOINSONES = TOTALCOINSTEMP;
+
+	if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSTHOUSANDS, NTADR_C(13,15));
+	if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSHUNDREDS, NTADR_C(14,15));
+	if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALCOINSTENS, NTADR_C(15,15));
+	one_vram_buffer(0xf5+TOTALCOINSONES, NTADR_C(16,15));		
 }
