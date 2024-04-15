@@ -58,9 +58,36 @@ void state_lvldone() {
 #include "../defines/bg_charmap.h"
 	multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));
 	multi_vram_buffer_horz((const char*)menutext4,sizeof(menutext4)-1,NTADR_C(8, 18));
+	multi_vram_buffer_horz((const char*)attemptstext,sizeof(attemptstext)-1,NTADR_C(7, 19));
 	
 	tmp1 = 0;
 	tmpptr1 = NULL;
+
+	TOTALCOINSONES = 0;
+	TOTALCOINSTENS = 0;
+	TOTALATTEMPTSHUNDREDS = 0;
+	TOTALATTEMPTSTHOUSANDS = 0;
+	
+	TOTALCOINSTEMP = attempts;
+	
+	while (TOTALCOINSTEMP > 9) {
+		TOTALCOINSTENS++;
+		TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
+		if (TOTALCOINSTENS == 10) {
+			TOTALCOINSTENS = 0;
+			TOTALATTEMPTSHUNDREDS++;
+		}
+		if (TOTALATTEMPTSHUNDREDS == 10) {
+			TOTALATTEMPTSHUNDREDS = 0;
+			TOTALATTEMPTSTHOUSANDS++;
+		}
+	}
+	TOTALCOINSONES = TOTALCOINSTEMP;
+
+	if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xb0+TOTALATTEMPTSTHOUSANDS, NTADR_C(16,19));
+	if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xb0+TOTALATTEMPTSHUNDREDS, NTADR_C(17,19));
+	if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_C(18,19));
+	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_C(19,19));	
 	
 	LEVELCOMPLETE[level] = 1;
 	

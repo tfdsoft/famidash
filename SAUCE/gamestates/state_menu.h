@@ -143,7 +143,7 @@ void state_menu(){
 
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
-	attempts = 0;
+	attempts = 1;
 
 	ppu_on_all();
 	pal_fade_to(0,4);

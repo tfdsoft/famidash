@@ -123,7 +123,9 @@ unsigned char LEVELCOMPLETE[0x20];
 #pragma bss-name(pop)
 
 unsigned char TOTALCOINS;
-unsigned char TOTALCOINSTEMP;
+unsigned long TOTALCOINSTEMP;
+unsigned char TOTALATTEMPTSHUNDREDS;
+unsigned char TOTALATTEMPTSTHOUSANDS;
 unsigned char TOTALCOINSTENS;
 unsigned char TOTALCOINSONES;
 unsigned char coins;
@@ -149,7 +151,7 @@ unsigned char kandotemp2[2];
 unsigned char kandotemp3[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
-unsigned char attempts;
+unsigned long attempts;
 unsigned char currplayer;
 unsigned char controllingplayer;
 unsigned char spiderframe;
