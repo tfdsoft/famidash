@@ -73,7 +73,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	
 	TOTALCOINSONES = 0;
 	TOTALCOINSTENS = 0;
-	TOTALATTEMPTSHUNDREDS = 0;
+	TOTALATTEMPTSHUNDREDS = 0;		////attempts stuff here and below
 	TOTALATTEMPTSTHOUSANDS = 0;
 	
 	TOTALCOINSTEMP = attempts;

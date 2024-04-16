@@ -3,9 +3,7 @@ extern unsigned char scroll_count;
 void reset_level(void) {
     // unsigned char i;
     famistudio_music_stop();
-    coins[0] = 0;
-    coins[1] = 0;
-    coins[2] = 0;
+    coins = 0;
 
     if (cube_data[0] & 1) {
         famistudio_sfx_play(sfx_death, 0);

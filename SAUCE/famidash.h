@@ -44,6 +44,10 @@
 #define SHIP_GRAVITY 0x35
 #define MINI_SHIP_GRAVITY 0x35
 
+#define COIN_1 0x01
+#define COIN_2 0x02
+#define COIN_3 0x04
+
 #pragma allow-eager-inline(on)
 
 #pragma bss-name(push, "ZEROPAGE")
@@ -107,16 +111,10 @@ unsigned char* level_data;
 #pragma bss-name(push, "SRAM")
 unsigned char SRAM_VALIDATE[4];
 
-unsigned char LEVEL1COINS[3];
-unsigned char LEVEL2COINS[3];
-unsigned char LEVEL3COINS[3];
-unsigned char LEVEL4COINS[3];
-unsigned char LEVEL5COINS[3];
-unsigned char LEVEL6COINS[3];
-unsigned char LEVEL7COINS[3];
-unsigned char LEVEL8COINS[3];
-unsigned char LEVEL9COINS[3];
-unsigned char LEVELACOINS[3];
+#define LEVEL_COUNT 0x0C
+unsigned char coin1_obtained[LEVEL_COUNT];
+unsigned char coin2_obtained[LEVEL_COUNT];
+unsigned char coin3_obtained[LEVEL_COUNT];
 
 unsigned char LEVELCOMPLETE[0x20];
 
@@ -145,7 +143,7 @@ unsigned char spr_index;
 unsigned char speed;
 unsigned char shuffle_offset;
 unsigned char count;
-unsigned char coins[3];
+unsigned char coins;
 unsigned char kandotemp;                                                                                              
 unsigned char kandotemp2[2];
 unsigned char kandotemp3[2];

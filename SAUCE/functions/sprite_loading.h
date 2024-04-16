@@ -153,19 +153,19 @@ void sprite_collide_lookup(){
 	}
     }
     else if (tmp4 == COIN1) {					//COIN
-	    coins[0]++;
+	    coins = coins | COIN_1;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }
 
     else if (tmp4 == COIN2) {					//COIN
-	    coins[1]++;
+	    coins = coins | COIN_2;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }
 
     else if (tmp4 == COIN3) {					//COIN
-	    coins[2]++;
+	    coins = coins | COIN_3;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }

@@ -37,6 +37,18 @@ const unsigned char level_text_size[] = {
 	sizeof(levelCtext) - 1,
 };
 
+const char* coin_counter[] = {
+  "___",
+  "^__",
+  "_^_",
+  "^^_",
+  "__^",
+  "^_^",
+  "_^^",
+  "^^^",
+};
+
+
 /*
 	Refreshes level name & number
 */
@@ -48,6 +60,7 @@ void __fastcall__ refreshmenu(void) {
 	multi_vram_buffer_horz((const char*)leveltexts[level],
 		level_text_size[level],
 		NTADR_A(level_text_padding[level], 11));
+
 	if (LEVELCOMPLETE[level]) { one_vram_buffer_horz_repeat('y', 1, NTADR_A(7, 9));
 	one_vram_buffer_horz_repeat('z', 1, NTADR_A(8, 9)); }
 	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9));
@@ -98,110 +111,19 @@ void __fastcall__ refreshmenu(void) {
 	}
 
 	if (tmp8) one_vram_buffer(0xb0+tmp8, NTADR_A(22,9));
-	else one_vram_buffer(0x15C+blubtext, NTADR_A(22,9));
+	else one_vram_buffer(0x42+blubtext, NTADR_A(22,9));
 	one_vram_buffer(0xb0+tmp7, NTADR_A(23,9));
 
 //coin stuff
-	switch (level) {
-		case 0x00: 
-			if (LEVEL1COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVEL1COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVEL1COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x01: 
-			if (LEVEL2COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVEL2COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVEL2COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x02: 
-			if (LEVEL3COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVEL3COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVEL3COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x03: 
-			if (LEVEL4COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVEL4COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVEL4COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x04: 
-			if (LEVEL5COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVEL5COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVEL5COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x05: 
-			if (LEVEL6COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVEL6COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVEL6COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x06: 
-			if (LEVEL7COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVEL7COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVEL7COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x07: 
-			if (LEVEL8COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVEL8COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVEL8COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x08: 
-			if (LEVEL9COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVEL9COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVEL9COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x09: 
-			if (LEVELACOINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			if (LEVELACOINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			if (LEVELACOINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
-			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-			
-		case 0x0A: 
-		case 0x0B:
-		case 0x0C:
-		case 0x0D:
-			one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
-			one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
-			one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
-			break;
-	}
+	coins = 0;
+
+
+// then in the function...
+// combine all three into a single number from 0 - 7 to represent which coins have been grabbed
+		tmp7 = coin1_obtained[level] | (coin2_obtained[level] << 1) | (coin3_obtained[level] << 2);
+// actually draw the coins
+		multi_vram_buffer_horz(coin_counter[tmp7], 3, NTADR_A(22, 12));
+
 };
 
 void state_menu(){
@@ -234,17 +156,10 @@ void state_menu(){
 		SRAM_VALIDATE[1] = 0x0a;
 		SRAM_VALIDATE[2] = 0x05;
 		SRAM_VALIDATE[3] = 0x06;
-		for (tmp2 = 0; tmp2 < 3; tmp2++) {
-			LEVEL1COINS[tmp2] = 0;
-			LEVEL2COINS[tmp2] = 0;
-			LEVEL3COINS[tmp2] = 0;
-			LEVEL4COINS[tmp2] = 0;
-			LEVEL5COINS[tmp2] = 0;
-			LEVEL6COINS[tmp2] = 0;
-			LEVEL7COINS[tmp2] = 0;
-			LEVEL8COINS[tmp2] = 0;
-			LEVEL9COINS[tmp2] = 0;
-			LEVELACOINS[tmp2] = 0;
+		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+			coin1_obtained[tmp2] = 0;
+			coin2_obtained[tmp2] = 0;
+			coin3_obtained[tmp2] = 0;
 		}
 
 		tmp2 = 0;
@@ -278,8 +193,8 @@ void state_menu(){
 	TOTALCOINSONES = 0;
 	TOTALCOINSTENS = 0;
 
-	for (tmp2 = 0; tmp2 < 3; tmp2++) {
-		TOTALCOINS = TOTALCOINS + LEVEL1COINS[tmp2] + LEVEL2COINS[tmp2] + LEVEL3COINS[tmp2] + LEVEL4COINS[tmp2] + LEVEL5COINS[tmp2] + LEVEL6COINS[tmp2] + LEVEL7COINS[tmp2] + LEVEL8COINS[tmp2] + LEVEL9COINS[tmp2] + LEVELACOINS[tmp2];
+	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp3];
 	}
 	TOTALCOINSTEMP = TOTALCOINS;
 	
@@ -341,18 +256,12 @@ void state_menu(){
 		if (pad_new[0] & PAD_SELECT){
 			if (pad[0] & PAD_A){
 				if (pad[0] & PAD_B){
-					for (tmp2 = 0; tmp2 < 3; tmp2++) {
-						LEVEL1COINS[tmp2] = 0;
-						LEVEL2COINS[tmp2] = 0;
-						LEVEL3COINS[tmp2] = 0;
-						LEVEL4COINS[tmp2] = 0;
-						LEVEL5COINS[tmp2] = 0;
-						LEVEL6COINS[tmp2] = 0;
-						LEVEL7COINS[tmp2] = 0;
-						LEVEL8COINS[tmp2] = 0;
-						LEVEL9COINS[tmp2] = 0;
-						LEVELACOINS[tmp2] = 0;
-					}					
+					for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+						coin1_obtained[tmp2] = 0;
+						coin2_obtained[tmp2] = 0;
+						coin3_obtained[tmp2] = 0;
+					}
+							
 					tmp2 = 0;
 					while (tmp2 < 0x20) {
 						LEVELCOMPLETE[tmp2] = 0;
@@ -379,10 +288,10 @@ void state_menu(){
 					SRAM_VALIDATE[0x1F] = 0;
 					TOTALCOINSONES = 0;
 					TOTALCOINSTENS = 0;
-					one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
-					one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
+				//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
+				//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
 					famistudio_sfx_play(sfx_death, 0);
-					one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));		
+				//	one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));		
 				}
 			}
 			else {

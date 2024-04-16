@@ -411,22 +411,48 @@ const unsigned char COIN_SPRITE[]={
 	  8,  0,0xB1,1|OAM_FLIP_H,
 	0x80
 };
-const unsigned char COIN_1[]={
+const unsigned char COIN_1_SPRITE[]={
 
 	  0,  0,0xB3,1,
 	  8,  0,0xB5,1,
 	0x80
 };
-const unsigned char COIN_2[]={
+const unsigned char COIN_2_SPRITE[]={
 
 	  0,  0,0xB7,1,
 	  8,  0,0xB7,1|OAM_FLIP_H,
 	0x80
 };
-const unsigned char COIN_3[]={
+const unsigned char COIN_3_SPRITE[]={
 
 	  0,  0,0xB5,1|OAM_FLIP_H,
 	  8,  0,0xB3,1|OAM_FLIP_H,
+	0x80
+};
+
+
+const unsigned char COIN_SPRITE_X[]={
+
+	  0,  0,0xB1,3,
+	  8,  0,0xB1,3|OAM_FLIP_H,
+	0x80
+};
+const unsigned char COIN_1_X[]={
+
+	  0,  0,0xB3,3,
+	  8,  0,0xB5,3,
+	0x80
+};
+const unsigned char COIN_2_X[]={
+
+	  0,  0,0xB7,3,
+	  8,  0,0xB7,3|OAM_FLIP_H,
+	0x80
+};
+const unsigned char COIN_3_X[]={
+
+	  0,  0,0xB5,3|OAM_FLIP_H,
+	  8,  0,0xB3,3|OAM_FLIP_H,
 	0x80
 };
 
@@ -1096,9 +1122,9 @@ struct SpriteFrame {
 
 const struct SpriteFrame COIN_SPRITES[]={
 	{5, COIN_SPRITE},
-	{5, COIN_1},
-	{5, COIN_2},
-	{5, COIN_3},
+	{5, COIN_1_SPRITE},
+	{5, COIN_2_SPRITE},
+	{5, COIN_3_SPRITE},
 };
 
 const struct SpriteFrame YELLOW_PAD_SPRITES[]={

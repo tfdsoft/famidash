@@ -91,33 +91,21 @@ void state_lvldone() {
 	
 	LEVELCOMPLETE[level] = 1;
 	
-	tmp7 = 0;
-	while (tmp7 < 3) {
-		switch (level) {
-			case 0x00: if (coins[tmp7] > LEVEL1COINS[tmp7]) LEVEL1COINS[tmp7] = coins[tmp7]; break;
-			case 0x01: if (coins[tmp7] > LEVEL2COINS[tmp7]) LEVEL2COINS[tmp7] = coins[tmp7]; break;
-			case 0x02: if (coins[tmp7] > LEVEL3COINS[tmp7]) LEVEL3COINS[tmp7] = coins[tmp7]; break;
-			case 0x03: if (coins[tmp7] > LEVEL4COINS[tmp7]) LEVEL4COINS[tmp7] = coins[tmp7]; break;
-			case 0x04: if (coins[tmp7] > LEVEL5COINS[tmp7]) LEVEL5COINS[tmp7] = coins[tmp7]; break;
-			case 0x05: if (coins[tmp7] > LEVEL6COINS[tmp7]) LEVEL6COINS[tmp7] = coins[tmp7]; break;
-			case 0x06: if (coins[tmp7] > LEVEL7COINS[tmp7]) LEVEL7COINS[tmp7] = coins[tmp7]; break;
-			case 0x07: if (coins[tmp7] > LEVEL8COINS[tmp7]) LEVEL8COINS[tmp7] = coins[tmp7]; break;
-			case 0x08: if (coins[tmp7] > LEVEL9COINS[tmp7]) LEVEL9COINS[tmp7] = coins[tmp7]; break;
-			case 0x09: if (coins[tmp7] > LEVELACOINS[tmp7]) LEVELACOINS[tmp7] = coins[tmp7]; break;
-		}
-		tmp7++;
-	}
+	if (coins & COIN_1) coin1_obtained[level] = 1;
+	if (coins & COIN_2) coin2_obtained[level] = 1;
+	if (coins & COIN_3) coin3_obtained[level] = 1;
+
 	
-	if ((coins[0] == 0) && (coins[1] == 0) && (coins[2] == 0)) {
+	if (!coins) {
 		tmp1 = sizeof(coins0) - 1;
 		tmpptr1 = (unsigned char*)coins0;
-	} else if ((coins[0] == 1) && (coins[1] == 1) && (coins[2] == 1)) {
+	} else if ((coins & 7) == 7) {
 		tmp1 = sizeof(coins3) - 1;
 		tmpptr1 = (unsigned char*)coins3;
-	} else if (((coins[0] == 1) && (coins[1] == 1)) || ((coins[0] == 1) && (coins[2] == 1)) || ((coins[1] == 1) && (coins[2] == 1))) {
+	} else if (((coins & COIN_1) && (coins & COIN_2)) || ((coins & COIN_2) && (coins & COIN_3)) || ((coins & COIN_1) && (coins & COIN_3))) {
 		tmp1 = sizeof(coins2) - 1;
 		tmpptr1 = (unsigned char*)coins2;
-	} else if (coins[0] == 1 || coins[1] == 1 || coins[2] == 1) {
+	} else if (coins & COIN_1 || coins & COIN_2 || coins & COIN_3) {
 		tmp1 = sizeof(coins1) - 1;
 		tmpptr1 = (unsigned char*)coins1;
 	}
