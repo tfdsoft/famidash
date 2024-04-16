@@ -56,6 +56,7 @@ unsigned char tmp4;
 unsigned short tmp5;
 unsigned short tmp6;
 unsigned char tmp7;
+unsigned char tmp8;
 unsigned char* tmpptr1;
 unsigned char* tmpptr2;
 long unsigned int tmplong;

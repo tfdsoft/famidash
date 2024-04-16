@@ -43,53 +43,64 @@ const unsigned char level_text_size[] = {
 void __fastcall__ refreshmenu(void) {
 	#include "../defines/color1_charmap.h"
 	// Clear out the previous title
-	one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 14));
+	one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 11));
 	// center this by offseting the write by the padding amount
 	multi_vram_buffer_horz((const char*)leveltexts[level],
 		level_text_size[level],
-		NTADR_A(level_text_padding[level], 14));
-	if (LEVELCOMPLETE[level]) one_vram_buffer_horz_repeat('*', 1, NTADR_A(16, 15));
-	else one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));
+		NTADR_A(level_text_padding[level], 11));
+	if (LEVELCOMPLETE[level]) { one_vram_buffer_horz_repeat('y', 1, NTADR_A(7, 9));
+	one_vram_buffer_horz_repeat('z', 1, NTADR_A(8, 9)); }
+	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9));
 	
 	switch(difficulty_list[level]) {
 		case 0x00:
-			one_vram_buffer_horz_repeat('a', 1, NTADR_A(4, 13));
-			one_vram_buffer_horz_repeat('b', 1, NTADR_A(5, 13));
-			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 14));			
-			one_vram_buffer_horz_repeat('d', 1, NTADR_A(5, 14));			
+			one_vram_buffer_horz_repeat('a', 1, NTADR_A(7, 10));
+			one_vram_buffer_horz_repeat('b', 1, NTADR_A(8, 10));
+			one_vram_buffer_horz_repeat('c', 1, NTADR_A(7, 11));			
+			one_vram_buffer_horz_repeat('d', 1, NTADR_A(8, 11));			
 			break;
 		case 0x01:
-			one_vram_buffer_horz_repeat('e', 1, NTADR_A(4, 13));
-			one_vram_buffer_horz_repeat('f', 1, NTADR_A(5, 13));
-			one_vram_buffer_horz_repeat('g', 1, NTADR_A(4, 14));			
-			one_vram_buffer_horz_repeat('h', 1, NTADR_A(5, 14));			
+			one_vram_buffer_horz_repeat('e', 1, NTADR_A(7, 10));
+			one_vram_buffer_horz_repeat('f', 1, NTADR_A(8, 10));
+			one_vram_buffer_horz_repeat('g', 1, NTADR_A(7, 11));			
+			one_vram_buffer_horz_repeat('h', 1, NTADR_A(8, 11));			
 			break;
 		case 0x02:
-			one_vram_buffer_horz_repeat('i', 1, NTADR_A(4, 13));
-			one_vram_buffer_horz_repeat('j', 1, NTADR_A(5, 13));
-			one_vram_buffer_horz_repeat('k', 1, NTADR_A(4, 14));			
-			one_vram_buffer_horz_repeat('l', 1, NTADR_A(5, 14));		
+			one_vram_buffer_horz_repeat('i', 1, NTADR_A(7, 10));
+			one_vram_buffer_horz_repeat('j', 1, NTADR_A(8, 10));
+			one_vram_buffer_horz_repeat('k', 1, NTADR_A(7, 11));			
+			one_vram_buffer_horz_repeat('l', 1, NTADR_A(8, 11));		
 			break;
 		case 0x03:
-			one_vram_buffer_horz_repeat('m', 1, NTADR_A(4, 13));
-			one_vram_buffer_horz_repeat('n', 1, NTADR_A(5, 13));
-			one_vram_buffer_horz_repeat('o', 1, NTADR_A(4, 14));			
-			one_vram_buffer_horz_repeat('p', 1, NTADR_A(5, 14));			
+			one_vram_buffer_horz_repeat('m', 1, NTADR_A(7, 10));
+			one_vram_buffer_horz_repeat('n', 1, NTADR_A(8, 10));
+			one_vram_buffer_horz_repeat('o', 1, NTADR_A(7, 11));			
+			one_vram_buffer_horz_repeat('p', 1, NTADR_A(8, 11));			
 			break;
 		case 0x04:
-			one_vram_buffer_horz_repeat('q', 1, NTADR_A(4, 13));
-			one_vram_buffer_horz_repeat('r', 1, NTADR_A(5, 13));
-			one_vram_buffer_horz_repeat('s', 1, NTADR_A(4, 14));			
-			one_vram_buffer_horz_repeat('t', 1, NTADR_A(5, 14));		
+			one_vram_buffer_horz_repeat('q', 1, NTADR_A(7, 10));
+			one_vram_buffer_horz_repeat('r', 1, NTADR_A(8, 10));
+			one_vram_buffer_horz_repeat('s', 1, NTADR_A(7, 11));			
+			one_vram_buffer_horz_repeat('t', 1, NTADR_A(8, 11));		
 			break;
 		case 0x05:
-			one_vram_buffer_horz_repeat('u', 1, NTADR_A(4, 13));
-			one_vram_buffer_horz_repeat('v', 1, NTADR_A(5, 13));
-			one_vram_buffer_horz_repeat('w', 1, NTADR_A(4, 14));			
-			one_vram_buffer_horz_repeat('x', 1, NTADR_A(5, 14));		
+			one_vram_buffer_horz_repeat('u', 1, NTADR_A(7, 10));
+			one_vram_buffer_horz_repeat('v', 1, NTADR_A(8, 10));
+			one_vram_buffer_horz_repeat('w', 1, NTADR_A(7, 11));			
+			one_vram_buffer_horz_repeat('x', 1, NTADR_A(8, 11));		
 			break;
-
 	};	
+	tmp7 = stars_list[level];
+	tmp8 = 0;
+	while (tmp7 > 9) {
+		tmp7 = tmp7 - 10;
+		tmp8++;
+	}
+
+	if (tmp8) one_vram_buffer(0xb0+tmp8, NTADR_A(22,9));
+	else one_vram_buffer(0x15C+blubtext, NTADR_A(22,9));
+	one_vram_buffer(0xb0+tmp7, NTADR_A(23,9));
+
 };
 
 void state_menu(){
@@ -201,7 +212,7 @@ void state_menu(){
     
   	ppu_off();
 	pal_bright(0);
-    pal_bg((char *)paletteMenu);
+//    pal_bg((char *)paletteMenu);
 	set_scroll_x(0);
     set_scroll_y(0);  
     
@@ -273,10 +284,10 @@ void state_menu(){
 					one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));		
 				}
 			}
-		else {
-			famistudio_sfx_play(sfx_click, 0);			
-			twoplayer ^= 1;
-		}
+			else {
+				famistudio_sfx_play(sfx_click, 0);			
+				twoplayer ^= 1;
+			}
 		}
 
 

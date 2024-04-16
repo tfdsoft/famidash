@@ -27,6 +27,7 @@ const unsigned char insanebottom[]="st";
 
 const unsigned char completetext[]="*";
 const unsigned char blanktext[]="*";
+const unsigned char blubtext[]="z";
 
 
 

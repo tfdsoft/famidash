@@ -92,12 +92,12 @@
 #pragma charmap (0x74, 0xA9) // t
 
 #pragma charmap (0x75, 0x9A) // u	demon 
-#pragma charmap (0x76, 0x9B) // v
+#pragma charmap (0x76, 0x9B) // v	
 #pragma charmap (0x77, 0xAA) // w	
 #pragma charmap (0x78, 0xAB) // x	
 
-#pragma charmap (0x79, 0xDE) // y
-#pragma charmap (0x7A, 0xDF) // z
+#pragma charmap (0x79, 0x1C) // y	crown left
+#pragma charmap (0x7A, 0x1D) // z	crown right
 // #pragma charmap (0x7B, 0x7B) // {
 // #pragma charmap (0x7C, 0x7C) // |
 // #pragma charmap (0x7D, 0x7D) // }
