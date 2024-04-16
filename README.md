@@ -12,6 +12,7 @@ fork it, change it, push it, open a pr, get it merged (or not).
 
 - https://wetdry.world/@famidash
 - https://twitter.com/TeamFamidash
+- https://discord.gg/PCbwQaZs8K
 
 ## credits
 
