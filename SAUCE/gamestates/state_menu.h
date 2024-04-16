@@ -101,6 +101,107 @@ void __fastcall__ refreshmenu(void) {
 	else one_vram_buffer(0x15C+blubtext, NTADR_A(22,9));
 	one_vram_buffer(0xb0+tmp7, NTADR_A(23,9));
 
+//coin stuff
+	switch (level) {
+		case 0x00: 
+			if (LEVEL1COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVEL1COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVEL1COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x01: 
+			if (LEVEL2COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVEL2COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVEL2COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x02: 
+			if (LEVEL3COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVEL3COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVEL3COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x03: 
+			if (LEVEL4COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVEL4COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVEL4COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x04: 
+			if (LEVEL5COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVEL5COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVEL5COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x05: 
+			if (LEVEL6COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVEL6COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVEL6COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x06: 
+			if (LEVEL7COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVEL7COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVEL7COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x07: 
+			if (LEVEL8COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVEL8COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVEL8COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x08: 
+			if (LEVEL9COINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVEL9COINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVEL9COINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x09: 
+			if (LEVELACOINS[0] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(22, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			if (LEVELACOINS[1] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(23, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			if (LEVELACOINS[2] == 1) one_vram_buffer_horz_repeat('^', 1, NTADR_A(24, 12));
+			else one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+			
+		case 0x0A: 
+		case 0x0B:
+		case 0x0C:
+		case 0x0D:
+			one_vram_buffer_horz_repeat('_', 1, NTADR_A(22, 12));
+			one_vram_buffer_horz_repeat('_', 1, NTADR_A(23, 12));
+			one_vram_buffer_horz_repeat('_', 1, NTADR_A(24, 12));
+			break;
+	}
 };
 
 void state_menu(){

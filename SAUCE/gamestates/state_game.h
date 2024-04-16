@@ -82,7 +82,7 @@ void state_game(){
         }
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
-	mmc3_set_prg_bank_1(0);
+	mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
         do_the_scroll_thing(); 
 
 	mmc3_set_prg_bank_1(0);
@@ -104,7 +104,7 @@ void state_game(){
 			if (!invincible_counter) bg_coll_death();
 			else invincible_counter--;
 		}
-		mmc3_set_prg_bank_1(0);
+		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
 //		x_movement();
 		do_the_scroll_thing(); 
 		sprite_collide();
