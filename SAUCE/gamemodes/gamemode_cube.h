@@ -59,7 +59,7 @@ void cube_movement(void){
 
 	if (player_vel_y[currplayer] != 0){
 		if(pad_new[controllingplayer] & PAD_A) {
-			cube_data[currplayer] = 2;
+			cube_data[currplayer] |= 2;
 		}
 	}
 
