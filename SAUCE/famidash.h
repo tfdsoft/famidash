@@ -133,7 +133,7 @@ unsigned short player_x[2];
 unsigned short player_y[2];
 signed short player_vel_x[2];
 signed short player_vel_y[2];
-unsigned short player_gravity[2];
+unsigned char player_gravity[2];
 
 unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
 unsigned char collisionMap1[192];
