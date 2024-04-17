@@ -66,6 +66,7 @@ void ball_movement(void){
 	}
 	if(kandotemp2[currplayer] == 1){
 		if ((pad[controllingplayer] & PAD_A) == 0){
+			cube_data[currplayer] &= 1;
 			kandotemp2[currplayer] = 0;			
 		}
 	}

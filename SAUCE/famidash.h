@@ -4,6 +4,7 @@
 
 // physics defines
 #define PAD_HEIGHT_YELLOW -0x7A0
+#define ORB_HEIGHT_YELLOW -0x5B0
 #define PAD_HEIGHT_PINK -0x4A0
 #define PAD_HEIGHT_BLUE -0x3A0
 
@@ -15,7 +16,7 @@
 #define MINI_CUBE_WIDTH 0x07
 #define MINI_CUBE_HEIGHT 0x07
 
-#define JUMP_VEL -0x5B0
+#define JUMP_VEL -0x560
 #define MINI_JUMP_VEL -0x5B0
 #define UFO_JUMP_VEL -0x530
 
