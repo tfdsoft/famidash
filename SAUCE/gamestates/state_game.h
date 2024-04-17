@@ -107,6 +107,7 @@ void state_game(){
 		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
 //		x_movement();
 		do_the_scroll_thing(); 
+		mmc3_set_prg_bank_1(0);
 		sprite_collide();
 		currplayer = 0;					//give back focus
 		if (twoplayer) controllingplayer = 0;		//give back controls
