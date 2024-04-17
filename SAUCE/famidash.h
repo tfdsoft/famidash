@@ -132,7 +132,7 @@ unsigned short player_x[2];
 unsigned short player_y[2];
 signed short player_vel_x[2];
 signed short player_vel_y[2];
-unsigned short player_gravity[2];
+unsigned char player_gravity[2];
 
 unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
 unsigned char collisionMap1[192];
@@ -147,21 +147,17 @@ unsigned char count;
 unsigned char coins;
 unsigned char kandotemp;                                                                                              
 unsigned char kandotemp2[2];
-unsigned char kandotemp3[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
 unsigned char invisible;
 unsigned long attempts;
 unsigned char currplayer;
 unsigned char controllingplayer;
-unsigned char spiderframe;
-unsigned char spiderframe2;
-unsigned char robotframe;
+unsigned char spiderframe[2];
+unsigned char robotframe[2];
 unsigned char ballframe;
-unsigned char robotjumpframe;
+unsigned char robotjumpframe[2];
 unsigned char robotjumptime[2];
-unsigned char robotframe2;
-unsigned char robotjumpframe2;
 unsigned char level;
 unsigned char level_data_bank;
 
