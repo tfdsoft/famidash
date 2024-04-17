@@ -5,7 +5,7 @@ void reset_level(void) {
     famistudio_music_stop();
     coins = 0;
 
-    if (cube_data[0] & 1) {
+    if (cube_data[0] & 1 || cube_data[1] & 1) {
         famistudio_sfx_play(sfx_death, 0);
         tmp1 = 0;
 	attempts++;
