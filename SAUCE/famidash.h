@@ -154,14 +154,11 @@ unsigned char kandoframecnt;
 unsigned long attempts;
 unsigned char currplayer;
 unsigned char controllingplayer;
-unsigned char spiderframe;
-unsigned char spiderframe2;
-unsigned char robotframe;
+unsigned char spiderframe[2];
+unsigned char robotframe[2];
 unsigned char ballframe;
-unsigned char robotjumpframe;
+unsigned char robotjumpframe[2];
 unsigned char robotjumptime[2];
-unsigned char robotframe2;
-unsigned char robotjumpframe2;
 unsigned char level;
 unsigned char level_data_bank;
 
