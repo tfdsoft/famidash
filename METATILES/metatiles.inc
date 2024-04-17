@@ -21,15 +21,15 @@ Metatile "BG15",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 
 Metatile "BLOCK",       $20, $21, $30, $31, PAL_0, COL_ALL
 Metatile "SPIKE_UP",    $ac, $ad, $32, $33, PAL_0, COL_DEATH
-Metatile "SPIKE_HALF",  $00, $00, $8f, $9f, PAL_0, COL_DEATH
+Metatile "SPIKE_HALF",  $00, $00, $8f, $9f, PAL_0, COL_DEATH_BOTTOM
 
 Metatile "TOP_WAVY_BOTTOM_SPIKE",    $7, $7, $36, $37, PAL_0, COL_DEATH
 Metatile "TOP_SPIKE_BOTTOM_WAVY",    $2e, $2f,  $6, $6, PAL_0, COL_DEATH
 Metatile "SLAB_SPIKE",      $24, $25, $34, $35, PAL_0, COL_ALL
 
 Metatile "HALF_PAD_SPIKE",$24, $25, $36, $37, PAL_0, COL_ALL
-Metatile "CEILING_SPIKE", $2e, $2f, $00, $00, PAL_0, COL_DEATH
-Metatile "GROUND_SPIKE",  $00, $00, $36, $37, PAL_0, COL_DEATH
+Metatile "CEILING_SPIKE", $2e, $2f, $00, $00, PAL_0, COL_DEATH_TOP
+Metatile "GROUND_SPIKE",  $00, $00, $36, $37, PAL_0, COL_DEATH_BOTTOM
 
 Metatile "HALF_SLAB",     $24, $25, $00, $00, PAL_0, COL_TOP
 
@@ -37,7 +37,7 @@ Metatile "RIGHT_SPIKE",     $0c, $ae, $1c, $be, PAL_0, COL_DEATH
 Metatile "DOWN_SPIKE",      $2c, $2d, $bc, $bd, PAL_0, COL_DEATH
 Metatile "LEFT_SPIKE",      $af, $0f, $bf, $1f, PAL_0, COL_DEATH
 Metatile "HALF_RIGHT_SPIKE",$28, $00, $38, $00, PAL_0, COL_DEATH
-Metatile "HALF_DOWN_SPIKE", $26, $27, $00, $00, PAL_0, COL_DEATH
+Metatile "HALF_DOWN_SPIKE", $26, $27, $00, $00, PAL_0, COL_DEATH_TOP
 Metatile "HALF_LEFT_SPIKE", $00, $29, $00, $39, PAL_0, COL_DEATH
 
 
@@ -105,8 +105,8 @@ Metatile "XSTEP_BOTTOM_GRAVEL_LEFT", $0, $0, $13, $14, PAL_0, COL_BOTTOM
 Metatile "XSTEP_BOTTOM_GRAVEL_MIDDLE", $0, $0, $14, $14, PAL_0, COL_BOTTOM
 Metatile "XSTEP_BOTTOM_GRAVEL_RIGHT", $0, $0, $14, $15, PAL_0, COL_BOTTOM
 Metatile "XSTEP_BOTTOM_GRAVEL_STANDALONE", $0, $0, $12, $15, PAL_0, COL_DEATH
-Metatile "XSTEP_BOTTOM_WAVE", $0, $0, $6, $6, PAL_0, COL_DEATH
-Metatile "XSTEP_TOP_WAVE", $7, $7, $0, $0, PAL_0, COL_DEATH
+Metatile "XSTEP_BOTTOM_WAVE", $0, $0, $6, $6, PAL_0, COL_DEATH_BOTTOM
+Metatile "XSTEP_TOP_WAVE", $7, $7, $0, $0, PAL_0, COL_DEATH_TOP
 Metatile "XSTEP_RIGHT_STALLAGMITES", $0, $9, $0, $19, PAL_0, COL_DEATH
 Metatile "XSTEP_LEFT_STALLAGMITES", $8, $0, $18, $0, PAL_0, COL_DEATH
 

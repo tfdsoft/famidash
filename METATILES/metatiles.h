@@ -3,6 +3,8 @@
 #define COL_ALL 0x40
 #define COL_BOTTOM 0x20
 #define COL_TOP 0x10
+#define COL_DEATH_BOTTOM 0x08
+#define COL_DEATH_TOP 0x04
 extern const unsigned char metatiles_top1[];
 extern const unsigned char metatiles_top2[];
 extern const unsigned char metatiles_bot1[];
