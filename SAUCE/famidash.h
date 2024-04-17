@@ -64,9 +64,8 @@ unsigned char pad_new[2];
 
 unsigned char gamemode;
 unsigned char cube_data[2];
-unsigned char cube_data2;
+// unsigned char cube_data2;
 unsigned short cube_rotate[2];
-signed short cube_rotate2;
 
 
 
@@ -148,7 +147,6 @@ unsigned char shuffle_offset;
 unsigned char count;
 unsigned char kandotemp;                                                                                              
 unsigned char kandotemp2[2];
-unsigned char kandotemp3[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
 unsigned long attempts;
