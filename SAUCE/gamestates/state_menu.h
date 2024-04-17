@@ -111,7 +111,7 @@ void __fastcall__ refreshmenu(void) {
 	}
 
 	if (tmp8) one_vram_buffer(0xb0+tmp8, NTADR_A(22,9));
-	else one_vram_buffer(0x42+blubtext, NTADR_A(22,9));
+	else one_vram_buffer(0xEC+blubtext, NTADR_A(22,9));
 	one_vram_buffer(0xb0+tmp7, NTADR_A(23,9));
 
 //coin stuff
