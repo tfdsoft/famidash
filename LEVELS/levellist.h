@@ -45,6 +45,7 @@ const unsigned char * const level_list[] = {
     timemachine_,
     cycles_,
     xstep_,
+    clutterfunk_,
     test_,
     test2_,
     };
@@ -60,6 +61,7 @@ const unsigned char * const sprite_list[] = {
     timemachine_SP,
     cycles_SP,
     xstep_SP,
+    clutterfunk_SP,
     test_SP,
     test2_SP,
 };
@@ -75,6 +77,7 @@ const unsigned char bank_list[] = {
     9,
     6,
     0x0A,
+    0x0E, //clutterfunk
     0x0C,
     0x0D,
 };
@@ -89,6 +92,7 @@ const unsigned char difficulty_list[] = {
     HARDER,
     HARDER,
     HARDER,
+    INSANE,
     INSANE,
     EASY,
     EASY,
@@ -105,6 +109,7 @@ const unsigned char stars_list[] = {
 	8,
 	9,
 	10,
+	11,
 	0,
 	0,
 };
