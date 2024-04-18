@@ -1211,8 +1211,8 @@ const unsigned char xstep_SP[]={
 
 
 const unsigned char test_SP[]={
-// X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
 /*
+// X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
 	0x00, 2, 0x50, 1, 128, 0, 0, 0, 
 	0x80, 2, 0x50, 1, 129, 0, 0, 0, 
 	0x00, 3, 0x50, 1, 130, 0, 0, 0, 

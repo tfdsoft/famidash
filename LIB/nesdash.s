@@ -967,7 +967,7 @@ ParallaxBufferCol5:
 
 ;void __fastcall__ movement(void);
 .pushseg
-.segment "EXT_BANK_01"
+.segment "LVL_BANK_15"
 
 _movement:
     ; The C code being "ported":
@@ -1282,7 +1282,7 @@ write_active:
 .endproc
 
 .pushseg
-.segment "EXT_BANK_00"
+.segment "LVL_BANK_14"
 
 .import _player_x, _player_y, _player_gravity, _player_vel_y
 .import _ballframe, _robotframe, _robotjumpframe, _spiderframe
