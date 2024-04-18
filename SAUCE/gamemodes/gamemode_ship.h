@@ -1,6 +1,6 @@
-#pragma code-name(push, "LVL_BANK_15")
-#pragma data-name(push, "LVL_BANK_15")
-#pragma rodata-name(push, "LVL_BANK_15")
+#pragma code-name(push, "EXT_BANK_01")
+#pragma data-name(push, "EXT_BANK_01")
+#pragma rodata-name(push, "EXT_BANK_01")
 
 void ship_movement(void){
 // handle y
