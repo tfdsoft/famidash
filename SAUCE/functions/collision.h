@@ -93,6 +93,11 @@ char bg_coll_U(void){
 	}
 	else {
 		if (player_vel_y[currplayer] > 0) return 0;
+		
+		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
+
+		tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
+		temp_x = (char)tmp5; // low byte
 		if(bg_collision_sub() & COL_TOP || bg_collision_sub() & COL_DEATH_TOP) {
 			if (bg_collision_sub() & COL_DEATH_TOP) tmp1 = Generic.y+12;
 			else tmp1 = Generic.y+7;
@@ -103,11 +108,6 @@ char bg_coll_U(void){
 			if(bg_collision_sub() & COL_DEATH_TOP) cube_data[currplayer] = 1;
 			if(bg_collision_sub() & COL_TOP) return 1;
 		}
-		
-		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
-
-		tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
-		temp_x = (char)tmp5; // low byte
 
 		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
 	}
