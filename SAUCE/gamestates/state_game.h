@@ -30,6 +30,8 @@ void state_game(){
 	if (twoplayer) player_gravity[1] = 0x00;
 	else player_gravity[1] = 0x01;		
 	kandoframecnt = 0;
+	cube_data[0] = 0;
+	cube_data[1] = 0;
 
     while (1) {
 	currplayer = 0;
