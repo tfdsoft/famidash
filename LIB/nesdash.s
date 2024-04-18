@@ -1468,22 +1468,23 @@ _drawplayerone:
 
         LDX _player_vel_y+1		;	if highbyte(player_vel_y) == 0 it's possible that
 		BEQ :+					;__ PVY == 0 or CUBE_GRAVITY
-		DEX						;	if highbyte == 0xFF it's possible that
-		BNE :+++				;__	PVY == -CUBE_GRAVITY
+		INX						;	if highbyte == 0xFF it's possible that
+		BNE @cube_cond_no		;__	PVY == -CUBE_GRAVITY
 			LDA _player_vel_y	;	if lowbyte == -CUBE_GRAVITY
 			CMP #<($100 - <CUBE_GRAVITY)
-			BNE :+++			;__
-			BEQ :++				;__ This is a fucking mess
+			BNE @cube_cond_no	;__
+			BEQ @cube_cond_yes	;__ This is a fucking mess
 		:						;__
 		LDA _player_vel_y		;
-		BEQ :+					;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
+		BEQ @cube_cond_yes_nold	;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
 		CMP #<CUBE_GRAVITY		;
-		BNE :++					;__
+		BNE @cube_cond_no		;__
+		@cube_cond_yes:			;
 			LDA #$00			;
-			:					;	cube_rotate[0] = 0
+		@cube_cond_yes_nold:	;	cube_rotate[1] = 0
 			STA _cube_rotate+0	;
 			STA _cube_rotate+1	;__
-		:
+		@cube_cond_no:
 
 		LDA _cube_rotate+1		;
 		SEC						;
@@ -1879,22 +1880,23 @@ _drawplayertwo:
 
         LDX _player_vel_y+3		;	if highbyte(player_vel_y) == 0 it's possible that
 		BEQ :+					;__ PVY == 0 or CUBE_GRAVITY
-		DEX						;	if highbyte == 0xFF it's possible that
-		BNE :+++				;__	PVY == -CUBE_GRAVITY
+		INX						;	if highbyte == 0xFF it's possible that
+		BNE @cube_cond_no		;__	PVY == -CUBE_GRAVITY
 			LDA _player_vel_y+2	;	if lowbyte == -CUBE_GRAVITY
 			CMP #<($100 - <CUBE_GRAVITY)
-			BNE :+++			;__
-			BEQ :++				;__ This is a fucking mess
+			BNE @cube_cond_no	;__
+			BEQ @cube_cond_yes	;__ This is a fucking mess
 		:						;__
 		LDA _player_vel_y+2		;
-		BEQ :+					;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
+		BEQ @cube_cond_yes_nold	;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
 		CMP #<CUBE_GRAVITY		;
-		BNE :++					;__
+		BNE @cube_cond_no		;__
+		@cube_cond_yes:			;
 			LDA #$00			;
-			:					;	cube_rotate[1] = 0
+		@cube_cond_yes_nold:	;	cube_rotate[1] = 0
 			STA _cube_rotate+2	;
 			STA _cube_rotate+3	;__
-		:
+		@cube_cond_no:
 
 		LDA _cube_rotate+3		;
 		SEC						;

@@ -52,6 +52,7 @@ void init_sprites(void){
     while (spr_index < max_loaded_sprites){
         if (sprite_data[spr_index<<3] == TURN_OFF) break;
         load_next_sprite();
+		if (sprite_data[spr_index<<3 + 1] != 0) activesprites_active[spr_index] = 0;
     }
 }
 
