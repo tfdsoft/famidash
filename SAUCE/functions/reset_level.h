@@ -5,7 +5,7 @@ void reset_level(void) {
     famistudio_music_stop();
     coins = 0;
 
-    if (cube_data[0] & 1 || cube_data[1] & 1) {
+    if (!DEBUG_MODE && (cube_data[0] & 1 || cube_data[1] & 1)) {
         famistudio_sfx_play(sfx_death, 0);
         tmp1 = 0;
 	attempts++;
@@ -26,7 +26,7 @@ void reset_level(void) {
     set_scroll_y(scroll_y);
     init_rld(level);
     unrle_first_screen();
-
+    
     // load the starting ground and bg color
     tmp2 = (level_list[level][3] & 0x3f);
     pal_col(0, tmp2);
@@ -39,8 +39,6 @@ void reset_level(void) {
     else pal_col(5, (tmp2-0x10));
 
     speed = level_list[level][2];
-
-    init_sprites();
     player_x[0] = 0x0000;
     player_y[0] = 0xb000;
     player_x[1] = 0x0000;
