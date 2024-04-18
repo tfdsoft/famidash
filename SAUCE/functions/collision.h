@@ -1,7 +1,8 @@
 char bg_collision_sub(void){
     if(temp_y >= 0xf0) return 0;
         
-	coordinates = (temp_x >> 4) + (temp_y & 0xf0);
+	if (!mini) coordinates = (temp_x >> 4) + (temp_y & 0xf0);
+	else coordinates = (temp_x >> 4) + ((temp_y + 8) & 0xf0);
     // we just need 4 bits each from x and y
 	
     tmp3 = temp_room&1; // high byte
@@ -46,8 +47,9 @@ char bg_coll_R(void){
 	tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
     temp_x = (char)tmp5; // low byte
 
-	if (!mini) tmp1 = Generic.y + (Generic.height >> 1);
-	else tmp1 = Generic.y + Generic.height+3;	
+	//if (!mini) 
+	tmp1 = Generic.y + (Generic.height >> 1);
+	//else tmp1 = Generic.y + Generic.height+3;	
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
@@ -62,12 +64,14 @@ char bg_coll_U(void){
 	tmp5 = Generic.x + low2bytes(scroll_x) -1;
 	temp_x = (char)tmp5; // low byte
 
-	if (!mini) tmp1 = Generic.y-1;
-	else 	tmp1 = Generic.y+7;
+	//if (!mini) 
+	tmp1 = Generic.y-1;
+	//else 	tmp1 = Generic.y+7;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
-	eject_U = temp_y | 0xf0;
+	if (!mini) eject_U = temp_y | 0xf0;
+	else eject_U = temp_y - 4 | 0xf0;
 
 	if(!player_gravity[currplayer]) {
 		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
@@ -117,21 +121,24 @@ char bg_coll_D(void){
 	tmp5 = Generic.x + low2bytes(scroll_x) -1;
 	temp_x = (char)tmp5; // low byte
 
-	if (!mini) tmp1 = Generic.y + Generic.height;
-	else tmp1 = Generic.y + Generic.height+9;
+	//if (!mini) 
+	tmp1 = Generic.y + Generic.height;
+	//else tmp1 = Generic.y + Generic.height+9;
 
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
 	if (!mini) eject_D = (temp_y + 1) & 0x0f;
+	else eject_D = (temp_y - 7) & 0x0f;
 
 	if(!player_gravity[currplayer]) {
 		if (player_vel_y[currplayer] < 0) return 0;
-		if(bg_collision_sub() & COL_BOTTOM) {
+		if((bg_collision_sub() & COL_BOTTOM) && !mini) {
 //			if (bg_collision_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y + ((Generic.height-10)/2);
 			//else 
-				if (!mini) tmp1 = Generic.y + (Generic.height/2);
-			else tmp1 = Generic.y + ((Generic.height+8)/2);
+			//	if (!mini) 
+			tmp1 = Generic.y + (Generic.height/2);
+			//else tmp1 = Generic.y + ((Generic.height+10)/2);
 			if (bg_collision_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y + ((Generic.height-7)/2);
 			tmp5 = add_scroll_y(tmp1, scroll_y);
 			temp_y = (char)tmp5; // low byte
@@ -148,9 +155,10 @@ char bg_coll_D(void){
 
 
 		if(bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_DEATH_BOTTOM) {
-			if (bg_collision_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y + ((Generic.height-7)/2);
-			else if (!mini) tmp1 = Generic.y + (Generic.height/2);
-			else tmp1 = Generic.y + ((Generic.height+8)/2);
+			if (bg_collision_sub() & COL_DEATH_BOTTOM && !mini) tmp1 = Generic.y + ((Generic.height-7)/2);
+//			else if (!mini) tmp1 = Generic.y + (Generic.height/2);
+			else tmp1 = Generic.y + (Generic.height/2);
+//			else tmp1 = Generic.y + ((Generic.height+10)/2);
 			tmp5 = add_scroll_y(tmp1, scroll_y);
 			temp_y = (char)tmp5; // low byte
 			temp_room = tmp5 >> 8; // high byte
@@ -192,10 +200,12 @@ void bg_coll_death(void) {
 
 
 	// middle point collision to kill, since hitboxes don't exist
+//	if (!mini) 
 	tmp5 = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1)-1;
+	//else tmp5 = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1)-4;
 	temp_x = (char)tmp5; // low byte
 
-	if (!mini) tmp1 = Generic.y + (Generic.width >> 1);
+	if (!mini) 	tmp1 = Generic.y + (Generic.width >> 1);
 	else tmp1 = Generic.y + Generic.height;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte

@@ -32,7 +32,10 @@ void state_game(){
 	kandoframecnt = 0;
 	cube_data[0] = 0;
 	cube_data[1] = 0;
-
+    player_x[0] = 0x0000;
+    player_y[0] = 0xb000;
+    player_x[1] = 0x0000;
+    player_y[1] = 0xb000;
     while (1) {
 	currplayer = 0;
 	kandoframecnt++;
@@ -59,6 +62,10 @@ void state_game(){
         if (pad_new[controllingplayer] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] = 0; cube_data[1] = 0; }
+
+	if (pad_new[0] & PAD_START) {
+		mini ^= 1;
+	}
 
         if (pad[0] & PAD_SELECT) {
             if (++END_LEVEL_TIMER > 60) {

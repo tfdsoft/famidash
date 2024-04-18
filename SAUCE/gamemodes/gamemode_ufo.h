@@ -65,18 +65,16 @@ void ufo_movement(void){
 			//if(bg_coll_U2()) {
 		//		cube_data = 0;
 				if(pad_new[controllingplayer] & PAD_A) {
-					//if (!mini) 
-					player_vel_y[currplayer] = 	UFO_JUMP_VEL^0xFFFF; // JUMP
-					//else player_vel_y[currplayer] = MINI_JUMP_VEL^0xFFFF; // JUMP
+					if (!mini) player_vel_y[currplayer] = 	UFO_JUMP_VEL^0xFFFF; // JUMP
+					else player_vel_y[currplayer] = MINI_UFO_JUMP_VEL^0xFFFF; // JUMP
 				}
 			//}
 	} else {
 			//if(bg_coll_D2()) {
 			//	cube_data = 0;				
 				if(pad_new[controllingplayer] & PAD_A) {
-					//if (!mini) 
-						player_vel_y[currplayer] = 	UFO_JUMP_VEL; // JUMP
-					//else player_vel_y[currplayer] = MINI_JUMP_VEL; // JUMP
+					if (!mini) player_vel_y[currplayer] = 	UFO_JUMP_VEL; // JUMP
+					else player_vel_y[currplayer] = MINI_UFO_JUMP_VEL; // JUMP
 				}
 			//}
 	}
