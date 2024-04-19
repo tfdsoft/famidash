@@ -2,25 +2,25 @@
 // cube starts here
 const unsigned char Mini_Cube_0[]={
 
-	  8,  0,0x51,0,
+	  0,  0,0x51,0,
 	0x80
 };
 	
 const unsigned char Mini_Cube_1[]={
 
-	  8,  0,0x53,0,
+	  0,  0,0x53,0,
 	0x80
 };
 	
 const unsigned char Mini_Cube_2[]={
 
-	  8,  0,0x55,0,
+	  0,  0,0x55,0,
 	0x80
 };
 
 const unsigned char Mini_Cube_3[]={
 
-	  8,  8,0x53,0|OAM_FLIP_V,
+	  0,  8,0x53,0|OAM_FLIP_V,
 	0x80
 };
 	
@@ -29,25 +29,25 @@ const unsigned char * const MINI_CUBE[] = {Mini_Cube_0, Mini_Cube_1, Mini_Cube_1
 
 const unsigned char Mini_Cube2_0[]={
 
-	  8,  0,0x51,1,
+	  0,  0,0x51,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_1[]={
 
-	  8,  0,0x53,1,
+	  0,  0,0x53,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_2[]={
 
-	  8,  0,0x55,1,
+	  0,  0,0x55,1,
 	0x80
 };
 
 const unsigned char Mini_Cube2_3[]={
 
-	  8,  8,0x53,1|OAM_FLIP_V,
+	  0,  8,0x53,1|OAM_FLIP_V,
 	0x80
 };
 	
