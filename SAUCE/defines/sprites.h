@@ -2,25 +2,25 @@
 // cube starts here
 const unsigned char Mini_Cube_0[]={
 
-	  0,  0,0x51,0,
+	  0,  -1,0x51,0,
 	0x80
 };
 	
 const unsigned char Mini_Cube_1[]={
 
-	  0,  0,0x53,0,
+	  0,  -1,0x53,0,
 	0x80
 };
 	
 const unsigned char Mini_Cube_2[]={
 
-	  0,  0,0x55,0,
+	  0,  -1,0x55,0,
 	0x80
 };
 
 const unsigned char Mini_Cube_3[]={
 
-	  0,  8,0x53,0|OAM_FLIP_V,
+	  0,  7,0x53,0|OAM_FLIP_V,
 	0x80
 };
 	
@@ -29,25 +29,25 @@ const unsigned char * const MINI_CUBE[] = {Mini_Cube_0, Mini_Cube_1, Mini_Cube_1
 
 const unsigned char Mini_Cube2_0[]={
 
-	  0,  0,0x51,1,
+	  0,  -1,0x51,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_1[]={
 
-	  0,  0,0x53,1,
+	  0,  -1,0x53,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_2[]={
 
-	  0,  0,0x55,1,
+	  0,  -1,0x55,1,
 	0x80
 };
 
 const unsigned char Mini_Cube2_3[]={
 
-	  0,  8,0x53,1|OAM_FLIP_V,
+	  0,  7,0x53,1|OAM_FLIP_V,
 	0x80
 };
 	
@@ -57,7 +57,7 @@ const unsigned char * const MINI_CUBE2[] = {Mini_Cube2_0, Mini_Cube2_1, Mini_Cub
 
 const unsigned char Mini_Ball[]={
 
-	  8,  8,0x4F,0|OAM_FLIP_V,
+	  0,  8,0x4F,0|OAM_FLIP_V,
 	0x80
 };
 
@@ -108,7 +108,7 @@ const unsigned char * const MINI_UFO[] = {MINI_UFO_0, MINI_UFO_U, MINI_UFO_D};
 
 const unsigned char Mini_Ball2[]={
 
-	  8,  8,0x4F,1|OAM_FLIP_V,
+	  0,  8,0x4F,1|OAM_FLIP_V,
 	0x80
 };
 

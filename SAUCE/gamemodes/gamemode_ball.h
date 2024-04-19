@@ -9,26 +9,30 @@ void ball_movement(void){
 // player_gravity[currplayer]
 	// player_vel_y[currplayer] is signed
 
-	if (!mini) {
+	if(!mini){
 		if(!player_gravity[currplayer]){
-			player_vel_y[currplayer] += BALL_GRAVITY;
+			if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED){
+				player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
+			} else player_vel_y[currplayer] += CUBE_GRAVITY;
 		}
 		else{
-			player_vel_y[currplayer] -= BALL_GRAVITY;
+			if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED){
+				player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
+			} else player_vel_y[currplayer] -= CUBE_GRAVITY;
 		}
-		if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
-		if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
 	}
 	else {
 		if(!player_gravity[currplayer]){
-			player_vel_y[currplayer] += MINI_BALL_GRAVITY;
+			if(player_vel_y[currplayer] > MINI_CUBE_MAX_FALLSPEED){
+				player_vel_y[currplayer] = MINI_CUBE_MAX_FALLSPEED;
+			} else player_vel_y[currplayer] += MINI_CUBE_GRAVITY;
 		}
 		else{
-			player_vel_y[currplayer] -= MINI_BALL_GRAVITY;
+			if(player_vel_y[currplayer] < -MINI_CUBE_MAX_FALLSPEED){
+				player_vel_y[currplayer] = -MINI_CUBE_MAX_FALLSPEED;
+			} else player_vel_y[currplayer] -= MINI_CUBE_GRAVITY;
 		}
-		if(player_vel_y[currplayer] > MINI_BALL_MAX_FALLSPEED) player_vel_y[currplayer] = MINI_BALL_MAX_FALLSPEED;
-		if(player_vel_y[currplayer] < -MINI_BALL_MAX_FALLSPEED) player_vel_y[currplayer] = -MINI_BALL_MAX_FALLSPEED;
-	}
+	}	
 	
 	
 	player_y[currplayer] += player_vel_y[currplayer];
@@ -60,7 +64,7 @@ void ball_movement(void){
 
 
 
-	if ((pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && (player_vel_y[currplayer] == 0)){
+	if ((pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && (player_vel_y[currplayer] == 0) && !bg_coll_R()){
 		player_gravity[currplayer] ^= 0x01;
 		kandotemp2[currplayer] = 1;
 		switch (player_gravity[currplayer]){

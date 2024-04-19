@@ -78,7 +78,8 @@ char bg_coll_U(void){
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
 	if (!mini) eject_U = temp_y | 0xf0;
-	else eject_U = temp_y + 16 | 0xf0;
+	else if (gamemode != 1) eject_U = temp_y + 16 | 0xf0;
+	else eject_U = temp_y + 22 | 0xf0;
 
 	if(!player_gravity[currplayer]) {
 		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
@@ -137,7 +138,8 @@ char bg_coll_D(void){
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
 	if (!mini) eject_D = (temp_y + 1) & 0x0f;
-	else eject_D = (temp_y - 9) & 0x0f;
+	else if (!gamemode == 1) eject_D = (temp_y - 9) & 0x0f;
+	else eject_D = (temp_y - 15) & 0x0f;
 
 	if(!player_gravity[currplayer]) {
 		if (player_vel_y[currplayer] < 0) return 0;

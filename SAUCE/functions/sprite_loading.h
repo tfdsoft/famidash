@@ -58,6 +58,19 @@ void init_sprites(void){
 
 __fastcall__ char sprite_height_lookup(unsigned char type){
 
+    if (!mini) {
+	if (type == YELLOW_ORB) return 0x0f; // yellow jump orb
+	else if (type == BLUE_ORB) return 0x0f; // blue orb
+	else if (type == PINK_ORB) return 0x0f; // pink jump orb
+	}
+
+    else {
+	if (type == YELLOW_ORB) return 0x17; // yellow jump orb
+	else if (type == BLUE_ORB) return 0x17; // blue orb
+	else if (type == PINK_ORB) return 0x17; // pink jump orb
+	}
+
+
     if (type == 0xFF) { return 0; }		//disappearing sprite
 
     else if (type == 0xFD || type == 0xFE) return 0x07;	//invisible blue pads
@@ -94,8 +107,6 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == UFO_MODE) return 0x2f; // portal
     else if (type == ROBOT_MODE) return 0x2f; // portal
     else if (type == SPIDER_MODE) return 0x2f; // portal
-    else if (type == BLUE_ORB) return 0x0f; // blue orb
-    else if (type == PINK_ORB) return 0x0f; // pink jump orb
     else if (type == COIN1) return 0x17; // COIN
     else if (type == COIN2) return 0x17; // COIN
     else if (type == COIN3) return 0x17; // COIN
@@ -110,7 +121,6 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == SPEED_20_PORTAL) return 0x1f; // 0.5 speed portal
     // pads
     else if (type == YELLOW_PAD_DOWN) return 0x07; // yellow jump pad
-    else if (type == YELLOW_ORB) return 0x0f; // yellow jump orb
     else if (type == YELLOW_PAD_UP) return 0x07; // yellow jump pad Upside Down
     else if (type == GRAVITY_PAD_DOWN) return 0x04; // Gravity Pad
     else if (type == GRAVITY_PAD_UP) return 0x04; // Gravity Pad Upside Down
@@ -144,7 +154,7 @@ void sprite_collide_lookup(){
 		if (cube_data[currplayer] == 2) {					
 			cube_data[currplayer] &= 0x01;
 			if (!mini) { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW; }
-			else { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_MINI^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_MINI; }
+			else { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_UPSIDE^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_MINI; }
 		}
 	}
 	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
