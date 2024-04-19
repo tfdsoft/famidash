@@ -2,7 +2,7 @@ IT IS NOT RECOMMENDED FOR 2 PEOPLE TO WORK SIMULTANEOUSLY ON THE .dnm, SINCE MER
 
 (to do that you need to export text from both versions of the module, and manually adjust shit until it can be imported back)
 
-DO NOT OPEN THE MODULE IN ANY VERSION NEWER THAN DN-FAMITRACKER 0.4.0.1. THE MODULE WILL BREAK OTHERWISE.
+OPEN THE MODULE IN DN-FT 0.5.0.1 OR NEWER. 0.5.0.0 BREAKS SHIT
 
 .dnm modules are imported into FamiStudio after they're done, so please do not use unsupported by FS effects (full list at https://famistudio.org/doc/import/#famitracker-text-or-binary)
 
@@ -12,7 +12,7 @@ If you worked in Deeznuts-FT:
     1. Copy the song into music.dnm
     2. While still in Dn-FT, export music.dnm as .txt into the INTERMEDIATES folder
     3. Run the adjust_txt_header.py script (run it from the main folder)
-    4. Import *only the song and instruments you have modified* into FamiStudio 4.1.3.
+    4. Import *only the song and instruments you have modified* into FamiStudio 4.2.0.
     5. Hand-correct things that FS gave warnings about.
 
 After this, the same steps apply for everything:
