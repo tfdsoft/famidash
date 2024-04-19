@@ -1,6 +1,6 @@
 import sys
 
-DnFTheader = "# Dn-FamiTracker text export 0.4.0.1\r\n"
+DnFTheader = "# Dn-FamiTracker text export 0."
 OGFTheader = "# FamiTracker text export 0.4.2\n"
 
 if __name__ == "__main__":
@@ -9,7 +9,7 @@ if __name__ == "__main__":
         file = open(filename, "rb")
         print(f"Opened file {filename}, ", end="")
         header = file.readline()
-        if (header.decode("utf-8") == DnFTheader):
+        if (header.decode("utf-8").startswith(DnFTheader)):
             print("header is from Dn-FT, reading the rest of file... ", end="")
             restOfFile = file.read()
             file.close()
