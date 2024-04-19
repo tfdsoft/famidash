@@ -102,8 +102,8 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
 
     else if (type == GRAVITY_DOWN_PORTAL) return 0x2F;
     else if (type == GRAVITY_UP_PORTAL) return 0x2F;
-    else if (type == MINI_PORTAL) return 0x1F;
-    else if (type == GROWTH_PORTAL) return 0x1F;
+    else if (type == MINI_PORTAL) return 0x2F;
+    else if (type == GROWTH_PORTAL) return 0x2F;
 
     else if (type == SPEED_05_PORTAL) return 0x1f; // 0.5 speed portal
     else if (type == SPEED_10_PORTAL) return 0x1f; // 0.5 speed portal

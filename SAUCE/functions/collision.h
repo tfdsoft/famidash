@@ -2,7 +2,7 @@ char bg_collision_sub(void){
     if(temp_y >= 0xf0) return 0;
         
 	if (!mini) coordinates = (temp_x >> 4) + (temp_y & 0xf0);
-	else coordinates = (temp_x >> 4) + ((temp_y + 8) & 0xf0);
+	else coordinates = (temp_x >> 4) + ((temp_y + 6) & 0xf0);
     // we just need 4 bits each from x and y
 	
     tmp3 = temp_room&1; // high byte
@@ -129,7 +129,7 @@ char bg_coll_D(void){
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
 	if (!mini) eject_D = (temp_y + 1) & 0x0f;
-	else eject_D = (temp_y - 7) & 0x0f;
+	else eject_D = (temp_y - 9) & 0x0f;
 
 	if(!player_gravity[currplayer]) {
 		if (player_vel_y[currplayer] < 0) return 0;
