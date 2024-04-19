@@ -26,8 +26,8 @@ void ball_movement(void){
 		else{
 			player_vel_y[currplayer] -= MINI_BALL_GRAVITY;
 		}
-		if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = MINI_CUBE_MAX_FALLSPEED;
-		if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = -MINI_CUBE_MAX_FALLSPEED;
+		if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = MINI_BALL_MAX_FALLSPEED;
+		if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = -MINI_BALL_MAX_FALLSPEED;
 	}
 	
 	
@@ -35,26 +35,30 @@ void ball_movement(void){
 
 	Generic.x = high_byte(player_x[currplayer]);
 	Generic.y = high_byte(player_y[currplayer]);
-	
+
+
+	if (pad[controllingplayer] & PAD_A) cube_data[currplayer] |= 2;	
 	
 	if(high_byte(player_vel_y[currplayer]) & 0x80){
 		if(bg_coll_U()  && !bg_coll_R() ){ // check collision above
 			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U;
 			player_vel_y[currplayer] = 0;
-			cube_data[currplayer] = 0;			//fix for orb
+			cube_data[currplayer] &= 1;			//fix for orb
 		}
 	}
 	else{
 		if(bg_coll_D() && !bg_coll_R() ){ // check collision below
 		    high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_D;
 		    player_vel_y[currplayer] = 0;
-			cube_data[currplayer] = 0;		    //fix for orb
+			cube_data[currplayer] &= 1;		    //fix for orb
 		}
 	}
 
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
 	
+
+
 
 	if ((pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && (player_vel_y[currplayer] == 0)){
 		player_gravity[currplayer] ^= 0x01;
@@ -65,7 +69,7 @@ void ball_movement(void){
 			}
 	}
 	if(kandotemp2[currplayer] == 1){
-		if ((pad[controllingplayer] & PAD_A) == 0){
+		if (!(pad[controllingplayer] & PAD_A)){
 			cube_data[currplayer] &= 1;
 			kandotemp2[currplayer] = 0;			
 		}
