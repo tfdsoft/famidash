@@ -26,8 +26,8 @@ void ball_movement(void){
 		else{
 			player_vel_y[currplayer] -= MINI_BALL_GRAVITY;
 		}
-		if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = MINI_BALL_MAX_FALLSPEED;
-		if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = -MINI_BALL_MAX_FALLSPEED;
+		if(player_vel_y[currplayer] > MINI_BALL_MAX_FALLSPEED) player_vel_y[currplayer] = MINI_BALL_MAX_FALLSPEED;
+		if(player_vel_y[currplayer] < -MINI_BALL_MAX_FALLSPEED) player_vel_y[currplayer] = -MINI_BALL_MAX_FALLSPEED;
 	}
 	
 	
@@ -37,7 +37,7 @@ void ball_movement(void){
 	Generic.y = high_byte(player_y[currplayer]);
 
 
-	if (pad[controllingplayer] & PAD_A) cube_data[currplayer] |= 2;	
+	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 2;	
 	
 	if(high_byte(player_vel_y[currplayer]) & 0x80){
 		if(bg_coll_U()  && !bg_coll_R() ){ // check collision above
