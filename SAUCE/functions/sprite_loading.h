@@ -109,6 +109,9 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == UFO_MODE) return 0x2f; // portal
     else if (type == ROBOT_MODE) return 0x2f; // portal
     else if (type == SPIDER_MODE) return 0x2f; // portal
+    else if (type == COINGOTTEN1) return 0x17; // portal
+    else if (type == COINGOTTEN2) return 0x17; // portal
+    else if (type == COINGOTTEN3) return 0x17; // portal
     else if (type == COIN1) { if (coin1_obtained[level]) { activesprites_type[index] = COINGOTTEN1; }  return 0x17; } // COIN
     else if (type == COIN2) { if (coin2_obtained[level]) { activesprites_type[index] = COINGOTTEN2; }  return 0x17; } // COIN
     else if (type == COIN3) { if (coin3_obtained[level]) { activesprites_type[index] = COINGOTTEN3; }  return 0x17; } // COIN
