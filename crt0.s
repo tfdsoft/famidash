@@ -227,11 +227,11 @@ detectNTSC:
 	ldx #0
 	jsr _set_vram_update
 
-	LDA #<FIRST_MUSIC_BANK
+	LDA #<FIRST_MUSIC_BANK+1
 	JSR mmc3_tmp_prg_bank_1
 
-	ldx #<music_data_1
-	ldy #>music_data_1
+	ldx #<music_data_famidash_music2
+	ldy #>music_data_famidash_music2
 	; lda <NTSC_MODE	not needed since no dual support
 	jsr famistudio_init
 
