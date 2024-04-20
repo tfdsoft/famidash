@@ -33,6 +33,7 @@
 #define COINGOTTEN1				0X1C
 #define COINGOTTEN2				0X1D
 #define COINGOTTEN3				0X1E
+#define YELLOW_ORB_BIGGER			0X1F
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -63,6 +64,7 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
 
     if (!mini) {
 	if (type == YELLOW_ORB) return 0x0f; // yellow jump orb
+	if (type == YELLOW_ORB_BIGGER) return 0x0f; // yellow jump orb
 	else if (type == BLUE_ORB) return 0x0f; // blue orb
 	else if (type == PINK_ORB) return 0x0f; // pink jump orb
 	}
@@ -158,6 +160,21 @@ void sprite_collide_lookup(){
 			cube_data[currplayer] &= 0x01;
 			if (!mini) { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW; }
 			else { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_UPSIDE^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_MINI; }
+		}
+	}
+	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
+		if (pad_new[controllingplayer] & PAD_A) {	
+			cube_data[currplayer] &= 0x01;
+			if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW;
+		}
+	}
+    }    
+    else if (tmp4 == YELLOW_ORB_BIGGER) {		//yellow orb
+	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
+		if (cube_data[currplayer] == 2) {					
+			cube_data[currplayer] &= 0x01;
+			if (!mini) { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW; }
+			else { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_UPSIDE2^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_UPSIDE2; }
 		}
 	}
 	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {

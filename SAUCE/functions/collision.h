@@ -71,9 +71,8 @@ char bg_coll_U(void){
 	tmp5 = Generic.x + low2bytes(scroll_x) -1;
 	temp_x = (char)tmp5; // low byte
 
-	//if (!mini) 
-	tmp1 = Generic.y-1;
-	//else 	tmp1 = Generic.y+7;
+	if (!mini) tmp1 = Generic.y-1;
+	else 	tmp1 = Generic.y-2;
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
@@ -240,6 +239,7 @@ void bg_coll_death(void) {
 		if (!mini) 	tmp1 = Generic.y + (Generic.width >> 1);
 		else {
 			if (gamemode == 5) tmp1 = Generic.y+6 + Generic.width;
+			else if (gamemode == 2 || gamemode == 0) { tmp1 = Generic.y-2 + Generic.width; }
 			else { tmp1 = Generic.y-6 + Generic.width; }
 		}
 	}

@@ -1204,6 +1204,7 @@ const unsigned char * const Metasprites[]={
 	COIN_SPRITE_X, // swing
 	COIN_SPRITE_X, // swing
 	COIN_SPRITE_X, // swing
+	Yellow_Jump_Orb, //bigger jump orb
 	};
 
 
@@ -1241,6 +1242,7 @@ const void* animation_frame_list[] = {
 	COIN_SPRITES_X,
 	COIN_SPRITES_X,
 	COIN_SPRITES_X,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1277,4 +1279,5 @@ const unsigned char animation_frame_length[] = {
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	0,
 };
