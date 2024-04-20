@@ -1,6 +1,3 @@
-
-#define SPR_BANK_00 0x1C
-
 //attempt to comment
 #define CUBE_MODE 				0X00
 #define SHIP_MODE 				0X01
@@ -45,8 +42,8 @@ extern void check_spr_objects(void);
 
 
 void init_sprites(void){
-    mmc3_set_prg_bank_1(SPR_BANK_00);
-    sprite_data = (unsigned char *) sprite_list[level];
+	// Setting up pointers is already done by init_rld()
+    mmc3_set_prg_bank_1(sprite_data_bank);
 
     spr_index = 0;
     while (spr_index < max_loaded_sprites){
