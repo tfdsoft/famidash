@@ -77,9 +77,18 @@ char bg_coll_U(void){
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
-	if (!mini) eject_U = temp_y | 0xf0;
-	else if (gamemode != 1) eject_U = temp_y + 16 | 0xf0;
-	else eject_U = temp_y + 22 | 0xf0;
+
+	if (!player_gravity[currplayer]) {
+		if (!mini) eject_U = temp_y | 0xf0;
+		else if (gamemode != 1) eject_U = temp_y + 16 | 0xf0;
+		else eject_U = temp_y + 22 | 0xf0;
+	}
+	else {
+		if (!mini) eject_U = temp_y | 0xf0;
+		else if (gamemode != 1) eject_U = temp_y + 16 | 0xf0;
+		else eject_U = temp_y + 32 | 0xf0;
+	}
+
 
 	if(!player_gravity[currplayer]) {
 		if(bg_collision_sub() & COL_ALL || bg_collision_sub() & COL_BOTTOM) return 1;
@@ -229,7 +238,10 @@ void bg_coll_death(void) {
 	}
 	else {
 		if (!mini) 	tmp1 = Generic.y + (Generic.width >> 1);
-		else tmp1 = Generic.y+6 + Generic.width;
+		else {
+			if (gamemode == 5) tmp1 = Generic.y+6 + Generic.width;
+			else { tmp1 = Generic.y-6 + Generic.width; }
+		}
 	}
 	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte
