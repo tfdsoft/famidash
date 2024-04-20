@@ -784,16 +784,27 @@ const unsigned char Speed_20_Portal[]={
 
 const unsigned char Mini_Portal[]={
 	  0,  0,0xE1,1,	
-	  0,  16,0xE3,1,	
-	  8,  0,0xE1,1|OAM_FLIP_V,	
-	  8,  16,0xE3,1|OAM_FLIP_V,	
+	  8,  0,0xE3,1,	
+	  16,  0,0x43,1,	
+	  -8,  16,0xE5,1,	
+	  0,  16,0xE7,1,
+	  8,  16,0xE9,1,
+	  0,  32,0xE1,1|OAM_FLIP_V,
+	  8,  32,0xE3,1|OAM_FLIP_V,
+	  16,  32,0x43,1|OAM_FLIP_V,
 	0x80
 };
+
 const unsigned char Growth_Portal[]={
 	  0,  0,0xE1,0,	
-	  0,  16,0xE3,0,	
-	  8,  0,0xE1,0|OAM_FLIP_V,	
-	  8,  16,0xE3,0|OAM_FLIP_V,	
+	  8,  0,0xE3,0,	
+	  16,  0,0x43,0,	
+	  -8,  16,0xE5,0,	
+	  0,  16,0xE7,0,
+	  8,  16,0xE9,0,
+	  0,  32,0xE1,0|OAM_FLIP_V,
+	  8,  32,0xE3,0|OAM_FLIP_V,
+	  16,  32,0x43,0|OAM_FLIP_V,
 	0x80
 };
 
