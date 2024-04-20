@@ -1134,6 +1134,12 @@ const struct SpriteFrame COIN_SPRITES[]={
 	{5, COIN_2_SPRITE},
 	{5, COIN_3_SPRITE},
 };
+const struct SpriteFrame COIN_SPRITES_X[]={
+	{5, COIN_SPRITE_X},
+	{5, COIN_1_X},
+	{5, COIN_2_X},
+	{5, COIN_3_X},
+};
 
 const struct SpriteFrame YELLOW_PAD_SPRITES[]={
 	{5, Yellow_Jump_Pad},
@@ -1195,6 +1201,9 @@ const unsigned char * const Metasprites[]={
 	Growth_Portal,
 	COIN_SPRITE, // swing
 	COIN_SPRITE, // swing
+	COIN_SPRITE_X, // swing
+	COIN_SPRITE_X, // swing
+	COIN_SPRITE_X, // swing
 	};
 
 
@@ -1229,6 +1238,9 @@ const void* animation_frame_list[] = {
 	NULL,
 	COIN_SPRITES,
 	COIN_SPRITES,
+	COIN_SPRITES_X,
+	COIN_SPRITES_X,
+	COIN_SPRITES_X,
 };
 
 // Number of UNIQUE animation frames
@@ -1262,4 +1274,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 };

@@ -30,6 +30,9 @@
 #define GROWTH_PORTAL		 		0X19
 #define COIN2					0X1A
 #define COIN3					0X1B
+#define COINGOTTEN1				0X1C
+#define COINGOTTEN2				0X1D
+#define COINGOTTEN3				0X1E
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -107,9 +110,9 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == UFO_MODE) return 0x2f; // portal
     else if (type == ROBOT_MODE) return 0x2f; // portal
     else if (type == SPIDER_MODE) return 0x2f; // portal
-    else if (type == COIN1) return 0x17; // COIN
-    else if (type == COIN2) return 0x17; // COIN
-    else if (type == COIN3) return 0x17; // COIN
+    else if (type == COIN1) { if (coin1_obtained[level]) { activesprites_type[index] = COINGOTTEN1; }  return 0x17; } // COIN
+    else if (type == COIN2) { if (coin2_obtained[level]) { activesprites_type[index] = COINGOTTEN2; }  return 0x17; } // COIN
+    else if (type == COIN3) { if (coin3_obtained[level]) { activesprites_type[index] = COINGOTTEN3; }  return 0x17; } // COIN
 
     else if (type == GRAVITY_DOWN_PORTAL) return 0x2F;
     else if (type == GRAVITY_UP_PORTAL) return 0x2F;
@@ -164,19 +167,19 @@ void sprite_collide_lookup(){
 		}
 	}
     }
-    else if (tmp4 == COIN1) {					//COIN
+    else if (tmp4 == COIN1 || tmp4 == COINGOTTEN1) {					//COIN
 	    coins = coins | COIN_1;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }
 
-    else if (tmp4 == COIN2) {					//COIN
+    else if (tmp4 == COIN2 || tmp4 == COINGOTTEN2) {					//COIN
 	    coins = coins | COIN_2;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }
 
-    else if (tmp4 == COIN3) {					//COIN
+    else if (tmp4 == COIN3 || tmp4 == COINGOTTEN3) {					//COIN
 	    coins = coins | COIN_3;
 //	    famistudio_sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here

@@ -224,11 +224,11 @@ void bg_coll_death(void) {
 	temp_x = (char)tmp5; // low byte
 
 	if (!player_gravity[currplayer]) {
-		if (!mini) 	tmp1 = Generic.y+6 + (Generic.width >> 1);
+		if (!mini) 	tmp1 = Generic.y + (Generic.width >> 1);
 		else tmp1 = Generic.y-6 + Generic.width;
 	}
 	else {
-		if (!mini) 	tmp1 = Generic.y-6 + (Generic.width >> 1);
+		if (!mini) 	tmp1 = Generic.y + (Generic.width >> 1);
 		else tmp1 = Generic.y+6 + Generic.width;
 	}
 	tmp5 = add_scroll_y(tmp1, scroll_y);
