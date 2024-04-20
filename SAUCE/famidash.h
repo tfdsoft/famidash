@@ -110,7 +110,7 @@ unsigned char dual;
 unsigned char twoplayer;
 
 unsigned char * sprite_data;
-unsigned char* level_data;
+unsigned char * level_data;
 
 #pragma bss-name(pop)
 // other variables go here
@@ -151,7 +151,7 @@ unsigned char speed;
 unsigned char shuffle_offset;
 unsigned char count;
 unsigned char coins;
-unsigned char kandotemp;                                                                                              
+unsigned char kandotemp;
 unsigned char kandotemp2[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
@@ -166,6 +166,7 @@ unsigned char robotjumpframe[2];
 unsigned char robotjumptime[2];
 unsigned char level;
 unsigned char level_data_bank;
+unsigned char sprite_data_bank;
 
 unsigned char gameState;
 

@@ -1,6 +1,6 @@
-#pragma code-name(push, "LVL_BANK_14")
-#pragma data-name(push, "LVL_BANK_14")
-#pragma rodata-name(push, "LVL_BANK_14")
+#pragma code-name(push, "XCD_BANK_00")
+#pragma data-name(push, "XCD_BANK_00")
+#pragma rodata-name(push, "XCD_BANK_00")
 
 void reset_level(void);
 

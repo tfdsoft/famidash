@@ -1,6 +1,6 @@
-#pragma code-name(push, "LVL_BANK_15")
-#pragma data-name(push, "LVL_BANK_15")
-#pragma rodata-name(push, "LVL_BANK_15")
+#pragma code-name(push, "XCD_BANK_01")
+#pragma data-name(push, "XCD_BANK_01")
+#pragma rodata-name(push, "XCD_BANK_01")
 
 
 void ball_movement(void){

@@ -1,8 +1,8 @@
 ; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
 
-.import _level_list, _sprite_list, _bank_list
+.import _level_list, _sprite_list, _level_bank_list, _sprite_bank_list
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
-.import _scroll_x, _level_data_bank
+.import _scroll_x, _level_data_bank, _sprite_data_bank
 .import _song, _level, _gravity
 .import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement
 .importzp _gamemode
@@ -11,7 +11,7 @@
 .import pusha, pushax
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column
-.import FIRST_MUSIC_BANK
+.import FIRST_MUSIC_BANK, FIRST_SPRITE_BANK
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 
@@ -23,8 +23,9 @@
 .export _movement
 .export _music_play, _music_update
 
-.importzp _level_data
+.importzp _level_data, _sprite_data
 level_data = _level_data
+sprite_data = _sprite_data
 
 .define CUBE_GRAVITY $6B
 .define MINI_CUBE_GRAVITY $6F
@@ -172,35 +173,39 @@ _init_rld:
 
     LDY #>_level_list   ;   Get high byte of level_list ptr
     STY ptr1+1          ;__
-    ;!S LDY #>_sprite_list  ;   Get high byte of sprite_list ptr
+    LDY #>_sprite_list  ;   Get high byte of sprite_list ptr
     ASL                 ;
     BCC :+              ;
         INC ptr1+1      ;   Adjust high bytes if level num >= $80
-        ;!S INY             ;__
+        INY             ;__
     : 
-    ;!S STY ptr2+1        ;__ Store high byte of sprite_list ptr
+    STY ptr2+1          ;__ Store high byte of sprite_list ptr
     LDY #<_level_list   ;
     STY ptr1            ;
-    ;!S LDY #<_sprite_list  ;   Get and store low bytes
-    ;!S STY ptr2            ;
+    LDY #<_sprite_list  ;   Get and store low bytes
+    STY ptr2            ;
 
     TAY                 ;__ Get the pointer
 
     LDA (ptr1),y        ;   Load low byte of level data pointer
     STA level_data      ;__
-    ;!S LDA (ptr2),y        ;   Load low byte of sprite data pointer
-    ;!S STA insert_var_here ;__
+    LDA (ptr2),y        ;   Load low byte of sprite data pointer
+    STA sprite_data     ;__
 
     INY                 ;   Now do high bytes
 
     LDA (ptr1),y        ;
     STA level_data+1    ;__ Load high byte of level data pointer
-    ;!S LDA (ptr2),y        ;   Load low byte of sprite data pointer
-    ;!S STA insert_var_here+1;__
+    LDA (ptr2),y        ;   Load low byte of sprite data pointer
+    STA sprite_data+1   ;__
 
-    LDY tmp1            ;__ Load pointer to bank table
-    LDA _bank_list,y    ;   Get level data bank
-    STA _level_data_bank;__
+    LDY tmp1                ;__ Load pointer to bank table
+    LDA _sprite_bank_list,y ;   Get sprite data bank
+    CLC                     ;
+    ADC #<FIRST_SPRITE_BANK ;
+    STA _sprite_data_bank   ;__
+    LDA _level_bank_list,y  ;   Get level data bank
+    STA _level_data_bank    ;__
     
     JSR mmc3_set_prg_bank_1
 
@@ -967,7 +972,7 @@ ParallaxBufferCol5:
 
 ;void __fastcall__ movement(void);
 .pushseg
-.segment "LVL_BANK_15"
+.segment "XCD_BANK_01"
 
 _movement:
     ; The C code being "ported":
@@ -1054,11 +1059,11 @@ _music_play:
 ; Tables currently generated manually
 
 @music_data_locations_lo:
-.byte <music_data_1, <music_data_2, <music_data_3
+.byte <music_data_famidash_music1, <music_data_famidash_music2, <music_data_famidash_music3
 @music_data_locations_hi:
-.byte >music_data_1, >music_data_2, >music_data_3
+.byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3
 @music_counts:
-.byte 6, 18, $FF  ;last bank is marked with an FF to always stop bank picking
+.byte 6, 6, $FF  ;last bank is marked with an FF to always stop bank picking
 
 ; void __fastcall__ music_update (void);
 _music_update:
@@ -1101,7 +1106,6 @@ SPR_BANK_00 = $1c
 
 .export _load_next_sprite := load_next_sprite
 .proc load_next_sprite
-.importzp _sprite_data
 .import _spr_index
 SpriteData = ptr1
 SpriteOffset = ptr2
@@ -1113,8 +1117,11 @@ SpriteOffset = ptr2
         rts
     :
 
-    lda #$1c
-    jsr _mmc3_tmp_prg_bank_1
+    lda mmc3PRG1Bank
+    pha
+
+    lda _sprite_data_bank
+    jsr mmc3_set_prg_bank_1
 
 
     lda #0
@@ -1194,7 +1201,8 @@ SpriteOffset = ptr2
     lda #$ff
     sta _spr_index
 @Exit:
-    jmp _mmc3_pop_prg_bank_1
+    pla
+    jmp mmc3_set_prg_bank_1
 .endproc
 
 
@@ -1282,7 +1290,7 @@ write_active:
 .endproc
 
 .pushseg
-.segment "LVL_BANK_14"
+.segment "XCD_BANK_00"
 
 .import _player_x, _player_y, _player_gravity, _player_vel_y
 .import _ballframe, _robotframe, _robotjumpframe, _spiderframe

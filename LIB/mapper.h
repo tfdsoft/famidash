@@ -22,10 +22,6 @@ void __fastcall__ mmc3_set_1kb_chr_bank_3(unsigned char bank);
 // __asm__("LDA #%s", direction); \
 // __asm__("STA MMC3_REG_MIRRORING");
 
-void __fastcall__ mmc3_tmp_prg_bank_1(unsigned char bank);
-
-void __fastcall__ mmc3_pop_prg_bank_1();
-
 void __fastcall__ mmc3_set_8kb_chr(unsigned char i) {
 	// bg
     mmc3_set_1kb_chr_bank_0(i);

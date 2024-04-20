@@ -71,12 +71,11 @@ MMC3_REG_MIRRORING = $a000
     mmc3_set_prg_bank_1:
     _mmc3_set_prg_bank_1:
         STA mmc3PRG1Bank
-    mmc3_tmp_prg_bank_1:
-    _mmc3_tmp_prg_bank_1:
+    mmc3_tmp_prg_bank_1:    ; ONLY MEANT FOR USE WITH NMI-RELATED TEMPORARY BANKSWITCHING
         PHA
         lda #MMC3_REG_SEL_PRG_BANK_1
         BNE mmc3_internal_set_bank  ; BRA
-    .export _mmc3_set_prg_bank_1, _mmc3_tmp_prg_bank_1
+    .export _mmc3_set_prg_bank_1
 
     mmc3_set_2kb_chr_bank_0:
     _mmc3_set_2kb_chr_bank_0:
