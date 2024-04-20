@@ -63,7 +63,7 @@ void cube_movement(void){
 		}
 	}
 
-	if (gamemode == 0 &&  (player_vel_y[currplayer] == 0 || player_vel_y[currplayer] == CUBE_GRAVITY || player_vel_y[currplayer] == -CUBE_GRAVITY || player_vel_y[currplayer] == MINI_CUBE_GRAVITY || player_vel_y[currplayer] == -MINI_CUBE_GRAVITY)){
+	if (gamemode == 0 && player_vel_y[currplayer] == 0){
 		//if(bg_coll_D2()) {
 			cube_data[currplayer] &= 1;				
 			if(pad[controllingplayer] & PAD_A) {

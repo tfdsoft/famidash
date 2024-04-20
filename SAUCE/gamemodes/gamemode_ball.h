@@ -9,46 +9,52 @@ void ball_movement(void){
 // player_gravity[currplayer]
 	// player_vel_y[currplayer] is signed
 
-	if (!mini) {
+	if(!mini){
 		if(!player_gravity[currplayer]){
-			player_vel_y[currplayer] += BALL_GRAVITY;
+			if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED){
+				player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
+			} else player_vel_y[currplayer] += CUBE_GRAVITY;
 		}
 		else{
-			player_vel_y[currplayer] -= BALL_GRAVITY;
+			if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED){
+				player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
+			} else player_vel_y[currplayer] -= CUBE_GRAVITY;
 		}
-		if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
-		if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
 	}
 	else {
 		if(!player_gravity[currplayer]){
-			player_vel_y[currplayer] += MINI_BALL_GRAVITY;
+			if(player_vel_y[currplayer] > MINI_CUBE_MAX_FALLSPEED){
+				player_vel_y[currplayer] = MINI_CUBE_MAX_FALLSPEED;
+			} else player_vel_y[currplayer] += MINI_CUBE_GRAVITY;
 		}
 		else{
-			player_vel_y[currplayer] -= MINI_BALL_GRAVITY;
+			if(player_vel_y[currplayer] < -MINI_CUBE_MAX_FALLSPEED){
+				player_vel_y[currplayer] = -MINI_CUBE_MAX_FALLSPEED;
+			} else player_vel_y[currplayer] -= MINI_CUBE_GRAVITY;
 		}
-		if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = MINI_CUBE_MAX_FALLSPEED;
-		if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED) player_vel_y[currplayer] = -MINI_CUBE_MAX_FALLSPEED;
-	}
+	}	
 	
 	
 	player_y[currplayer] += player_vel_y[currplayer];
 
 	Generic.x = high_byte(player_x[currplayer]);
 	Generic.y = high_byte(player_y[currplayer]);
-	
+
+
+	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 2;	
 	
 	if(high_byte(player_vel_y[currplayer]) & 0x80){
 		if(bg_coll_U()  && !bg_coll_R() ){ // check collision above
 			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U;
 			player_vel_y[currplayer] = 0;
-			cube_data[currplayer] = 0;			//fix for orb
+			cube_data[currplayer] &= 1;			//fix for orb
 		}
 	}
 	else{
 		if(bg_coll_D() && !bg_coll_R() ){ // check collision below
 		    high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_D;
 		    player_vel_y[currplayer] = 0;
-			cube_data[currplayer] = 0;		    //fix for orb
+			cube_data[currplayer] &= 1;		    //fix for orb
 		}
 	}
 
@@ -56,7 +62,9 @@ void ball_movement(void){
 	Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
 	
 
-	if ((pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && (player_vel_y[currplayer] == 0)){
+
+
+	if ((pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && (player_vel_y[currplayer] == 0) && !bg_coll_R()){
 		player_gravity[currplayer] ^= 0x01;
 		kandotemp2[currplayer] = 1;
 		switch (player_gravity[currplayer]){
@@ -65,7 +73,7 @@ void ball_movement(void){
 			}
 	}
 	if(kandotemp2[currplayer] == 1){
-		if ((pad[controllingplayer] & PAD_A) == 0){
+		if (!(pad[controllingplayer] & PAD_A)){
 			cube_data[currplayer] &= 1;
 			kandotemp2[currplayer] = 0;			
 		}

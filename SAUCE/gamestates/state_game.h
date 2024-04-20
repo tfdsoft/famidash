@@ -61,7 +61,7 @@ void state_game(){
 
         if (pad_new[controllingplayer] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 
-        if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] = 0; cube_data[1] = 0; }
+        if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 
 	if (pad_new[0] & PAD_START) {
 		mini ^= 1;

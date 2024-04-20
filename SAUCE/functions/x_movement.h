@@ -41,7 +41,7 @@ void x_movement(){
 	
 	// no L/R collision required, since that is accounted for with the death script
 	
-	if (bg_coll_R()) cube_data[currplayer] |= 0x01; // turns out, this is needed to temporarily fix zipping
+	if (!mini) { if (bg_coll_R()) cube_data[currplayer] |= 0x01; } // turns out, this is needed to temporarily fix zipping
 	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 0x02;
 }
 

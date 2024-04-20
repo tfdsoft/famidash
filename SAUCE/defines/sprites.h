@@ -2,25 +2,25 @@
 // cube starts here
 const unsigned char Mini_Cube_0[]={
 
-	  8,  0,0x51,0,
+	  0,  -1,0x51,0,
 	0x80
 };
 	
 const unsigned char Mini_Cube_1[]={
 
-	  8,  0,0x53,0,
+	  0,  -1,0x53,0,
 	0x80
 };
 	
 const unsigned char Mini_Cube_2[]={
 
-	  8,  0,0x55,0,
+	  0,  -1,0x55,0,
 	0x80
 };
 
 const unsigned char Mini_Cube_3[]={
 
-	  8,  8,0x53,0|OAM_FLIP_V,
+	  0,  7,0x53,0|OAM_FLIP_V,
 	0x80
 };
 	
@@ -29,25 +29,25 @@ const unsigned char * const MINI_CUBE[] = {Mini_Cube_0, Mini_Cube_1, Mini_Cube_1
 
 const unsigned char Mini_Cube2_0[]={
 
-	  8,  0,0x51,1,
+	  0,  -1,0x51,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_1[]={
 
-	  8,  0,0x53,1,
+	  0,  -1,0x53,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_2[]={
 
-	  8,  0,0x55,1,
+	  0,  -1,0x55,1,
 	0x80
 };
 
 const unsigned char Mini_Cube2_3[]={
 
-	  8,  8,0x53,1|OAM_FLIP_V,
+	  0,  7,0x53,1|OAM_FLIP_V,
 	0x80
 };
 	
@@ -57,7 +57,7 @@ const unsigned char * const MINI_CUBE2[] = {Mini_Cube2_0, Mini_Cube2_1, Mini_Cub
 
 const unsigned char Mini_Ball[]={
 
-	  8,  8,0x4F,0|OAM_FLIP_V,
+	  0,  8,0x4F,0|OAM_FLIP_V,
 	0x80
 };
 
@@ -108,7 +108,7 @@ const unsigned char * const MINI_UFO[] = {MINI_UFO_0, MINI_UFO_U, MINI_UFO_D};
 
 const unsigned char Mini_Ball2[]={
 
-	  8,  8,0x4F,1|OAM_FLIP_V,
+	  0,  8,0x4F,1|OAM_FLIP_V,
 	0x80
 };
 
@@ -1134,6 +1134,12 @@ const struct SpriteFrame COIN_SPRITES[]={
 	{5, COIN_2_SPRITE},
 	{5, COIN_3_SPRITE},
 };
+const struct SpriteFrame COIN_SPRITES_X[]={
+	{5, COIN_SPRITE_X},
+	{5, COIN_1_X},
+	{5, COIN_2_X},
+	{5, COIN_3_X},
+};
 
 const struct SpriteFrame YELLOW_PAD_SPRITES[]={
 	{5, Yellow_Jump_Pad},
@@ -1195,6 +1201,10 @@ const unsigned char * const Metasprites[]={
 	Growth_Portal,
 	COIN_SPRITE, // swing
 	COIN_SPRITE, // swing
+	COIN_SPRITE_X, // swing
+	COIN_SPRITE_X, // swing
+	COIN_SPRITE_X, // swing
+	Yellow_Jump_Orb, //bigger jump orb
 	};
 
 
@@ -1229,6 +1239,10 @@ const void* animation_frame_list[] = {
 	NULL,
 	COIN_SPRITES,
 	COIN_SPRITES,
+	COIN_SPRITES_X,
+	COIN_SPRITES_X,
+	COIN_SPRITES_X,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1262,4 +1276,8 @@ const unsigned char animation_frame_length[] = {
 	0,
 	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	0,
 };
