@@ -30,7 +30,9 @@
 
 #define CUBE_SPEED_X05 0x23B
 #define CUBE_SPEED_X1 0x2C4
-#define CUBE_SPEED_X2 0x370
+#define CUBE_SPEED_X2 0x371
+#define CUBE_SPEED_X3 0x429
+#define CUBE_SPEED_X4 0x51E
 
 #define ROBOT_JUMP_TIME 16
 
