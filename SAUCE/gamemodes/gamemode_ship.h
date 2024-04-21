@@ -40,13 +40,13 @@ void ship_movement(void){
 	
 	if(high_byte(player_vel_y[currplayer]) & 0x80){
 		if(bg_coll_U() && !bg_coll_R() ){ // check collision above
-			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U;
+			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U - 1;
 			player_vel_y[currplayer] = 0;
 		}
 	}
 	else{
 		if(bg_coll_D() && !bg_coll_R() ){ // check collision below
-		    high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_D;
+		    high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_D + 1;
 		    player_vel_y[currplayer] = 0;
 		}
 	}

@@ -229,7 +229,6 @@ void sprite_collide_lookup(){
 	else if (tmp4 == SPEED_05_PORTAL) speed = 1;
 	else if (tmp4 == SPEED_10_PORTAL) speed = 0;
 	else if (tmp4 == SPEED_20_PORTAL) speed = 2;
-	
 
     else if (tmp4 == PINK_ORB) {
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
