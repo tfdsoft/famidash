@@ -78,12 +78,15 @@ void state_game(){
             END_LEVEL_TIMER = 0;
         }
 
-        if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
+    if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
+	
 	mmc3_set_prg_bank_1(0);
-        x_movement();
+    
+	x_movement();
 	
 	mmc3_set_prg_bank_1(GET_BANK(movement));	
-        movement();
+	
+	movement();
 
 
 	if (!DEBUG_MODE) {

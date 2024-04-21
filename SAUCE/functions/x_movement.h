@@ -2,16 +2,20 @@
 #pragma data-name(push, "LVL_BANK_00")
 #pragma rodata-name(push, "LVL_BANK_00")
 
+const unsigned short speed_table[] = {
+	CUBE_SPEED_X1, CUBE_SPEED_X05, CUBE_SPEED_X2
+};
+
+
 void x_movement(){
     // handle x
 
 	old_x = player_x[currplayer];
-	switch (speed) {
-		case 0: 	player_x[currplayer] += CUBE_SPEED_X1; break;
-		case 1:		player_x[currplayer] += CUBE_SPEED_X05; break;
-		case 2:		player_x[currplayer] += CUBE_SPEED_X2; break;
-	}
 	
+
+	player_vel_x[currplayer] = speed_table[speed];
+	player_x[currplayer] += player_vel_x[currplayer];
+
 	if(player_x[currplayer] > 0xf000) { // too far, don't wrap around
         if(old_x >= 0xf000){
             player_x[currplayer] = 0xf000; // max right
