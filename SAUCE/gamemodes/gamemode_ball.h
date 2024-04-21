@@ -13,24 +13,24 @@ void ball_movement(void){
 		if(!player_gravity[currplayer]){
 			if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED){
 				player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
-			} else player_vel_y[currplayer] += CUBE_GRAVITY;
+			} else player_vel_y[currplayer] += BALL_GRAVITY;
 		}
 		else{
 			if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED){
 				player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
-			} else player_vel_y[currplayer] -= CUBE_GRAVITY;
+			} else player_vel_y[currplayer] -= BALL_GRAVITY;
 		}
 	}
 	else {
 		if(!player_gravity[currplayer]){
 			if(player_vel_y[currplayer] > MINI_CUBE_MAX_FALLSPEED){
 				player_vel_y[currplayer] = MINI_CUBE_MAX_FALLSPEED;
-			} else player_vel_y[currplayer] += MINI_CUBE_GRAVITY;
+			} else player_vel_y[currplayer] += MINI_BALL_GRAVITY;
 		}
 		else{
 			if(player_vel_y[currplayer] < -MINI_CUBE_MAX_FALLSPEED){
 				player_vel_y[currplayer] = -MINI_CUBE_MAX_FALLSPEED;
-			} else player_vel_y[currplayer] -= MINI_CUBE_GRAVITY;
+			} else player_vel_y[currplayer] -= MINI_BALL_GRAVITY;
 		}
 	}	
 	

@@ -26,16 +26,13 @@ void do_the_scroll_thing(){
 		--high_byte(player_y[currplayer]);
 	}
 
-
+	
 	if (player_y[currplayer] > 0xA000){ // change y scroll (upward)
 		tmp1 = (player_y[currplayer] - 0xA000) >> 8;
 		scroll_y += tmp1;
-		high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - tmp1;
+		if (scroll_y <= 0xEF) high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - tmp1;
 	}
-	while (scroll_y > 0xEF) {
-		--scroll_y;
-		++high_byte(player_y[currplayer]);
-	}
+	if (scroll_y > 0xEF) scroll_y = 0xEF;
 
 
     set_scroll_x(scroll_x);
