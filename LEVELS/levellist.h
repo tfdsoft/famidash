@@ -95,7 +95,7 @@ const unsigned char sprite_bank_list[] = {
     0,
     0, //clutterfunk
     1,
-    0,
+    1,
 };
 
 const unsigned char difficulty_list[] = {

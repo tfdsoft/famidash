@@ -1278,6 +1278,16 @@ const unsigned char clutterfunk_SP[]={
 
 
 
+//
+//
+//
+//
+// SPRITE BANK 1
+//
+//
+//
+//
+
 #pragma rodata-name ("SPR_BANK_01")
 const unsigned char test_SP[]={
 
