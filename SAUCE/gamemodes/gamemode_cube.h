@@ -1,6 +1,6 @@
-#pragma code-name(push, "LVL_BANK_15")
-#pragma data-name(push, "LVL_BANK_15")
-#pragma rodata-name(push, "LVL_BANK_15")
+#pragma code-name(push, "XCD_BANK_01")
+#pragma data-name(push, "XCD_BANK_01")
+#pragma rodata-name(push, "XCD_BANK_01")
 
 void cube_movement(void){
 // handle y
@@ -63,7 +63,7 @@ void cube_movement(void){
 		}
 	}
 
-	if (gamemode == 0 &&  (player_vel_y[currplayer] == 0 || player_vel_y[currplayer] == CUBE_GRAVITY || player_vel_y[currplayer] == -CUBE_GRAVITY || player_vel_y[currplayer] == MINI_CUBE_GRAVITY || player_vel_y[currplayer] == -MINI_CUBE_GRAVITY)){
+	if (gamemode == 0 && player_vel_y[currplayer] == 0){
 		//if(bg_coll_D2()) {
 			cube_data[currplayer] &= 1;				
 			if(pad[controllingplayer] & PAD_A) {

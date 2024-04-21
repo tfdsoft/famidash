@@ -3,8 +3,12 @@
 #define GAME 0x02
 
 // physics defines
-#define PAD_HEIGHT_YELLOW -0x7A0
+#define ORB_HEIGHT_YELLOW_UPSIDE2 -0x5E0
+#define ORB_HEIGHT_YELLOW_UPSIDE -0x510
 #define ORB_HEIGHT_YELLOW -0x5B0
+#define ORB_HEIGHT_YELLOW_MINI -0x4D0
+#define PAD_HEIGHT_YELLOW -0x7A0
+#define PAD_HEIGHT_YELLOW_MINI -0x5B0
 #define PAD_HEIGHT_PINK -0x4A0
 #define PAD_HEIGHT_BLUE -0x3A0
 
@@ -13,32 +17,35 @@
 #define CUBE_WIDTH 0x0F
 #define CUBE_HEIGHT 0x0F
 
-#define MINI_CUBE_WIDTH 0x07
+#define MINI_CUBE_WIDTH 0x08
 #define MINI_CUBE_HEIGHT 0x07
 
-#define JUMP_VEL -0x560
-#define MINI_JUMP_VEL -0x5B0
+#define JUMP_VEL -0x580
+#define MINI_JUMP_VEL -0x4C0
 #define UFO_JUMP_VEL -0x530
 #define MINI_UFO_JUMP_VEL -0x500
 
 #define ROBOT_JUMP_VEL -0x2B0
 #define MINI_ROBOT_JUMP_VEL -0x2B0
 
-#define CUBE_SPEED_X05 0x162
+#define CUBE_SPEED_X05 0x23B
 #define CUBE_SPEED_X1 0x2C4
-#define CUBE_SPEED_X2 0x588
+#define CUBE_SPEED_X2 0x371
+#define CUBE_SPEED_X3 0x429
+#define CUBE_SPEED_X4 0x51E
 
 #define ROBOT_JUMP_TIME 16
 
 #define CUBE_MAX_FALLSPEED 0x600
-#define MINI_CUBE_MAX_FALLSPEED 0x500
+#define MINI_CUBE_MAX_FALLSPEED 0x410
+#define MINI_BALL_MAX_FALLSPEED 0x410
 #define MINI_UFO_MAX_FALLSPEED 0x500
 
 #define CUBE_GRAVITY 0x6B
-#define MINI_CUBE_GRAVITY 0x6F
+#define MINI_CUBE_GRAVITY 0x6C
 
 #define BALL_GRAVITY 0x6B
-#define MINI_BALL_GRAVITY 0x6F
+#define MINI_BALL_GRAVITY 0x67
 
 #define SHIP_MAX_FALLSPEED 0x300
 #define MINI_SHIP_MAX_FALLSPEED 0x340
@@ -105,7 +112,7 @@ unsigned char dual;
 unsigned char twoplayer;
 
 unsigned char * sprite_data;
-unsigned char* level_data;
+unsigned char * level_data;
 
 #pragma bss-name(pop)
 // other variables go here
@@ -146,7 +153,7 @@ unsigned char speed;
 unsigned char shuffle_offset;
 unsigned char count;
 unsigned char coins;
-unsigned char kandotemp;                                                                                              
+unsigned char kandotemp;
 unsigned char kandotemp2[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
@@ -161,6 +168,7 @@ unsigned char robotjumpframe[2];
 unsigned char robotjumptime[2];
 unsigned char level;
 unsigned char level_data_bank;
+unsigned char sprite_data_bank;
 
 unsigned char gameState;
 

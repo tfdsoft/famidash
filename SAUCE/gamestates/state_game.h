@@ -61,7 +61,7 @@ void state_game(){
 
         if (pad_new[controllingplayer] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 
-        if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] = 0; cube_data[1] = 0; }
+        if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 
 	if (pad_new[0] & PAD_START) {
 		mini ^= 1;
@@ -129,9 +129,9 @@ void state_game(){
   
   oam_clear();
 
-	mmc3_set_prg_bank_1(0x15);	
+	// mmc3_set_prg_bank_1(GET_BANK(draw_screen_R));	
         draw_screen_R(); 
-	mmc3_set_prg_bank_1(0x14);	
+	mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
         draw_sprites();
         
         color_emphasis(0);

@@ -66,7 +66,7 @@ const unsigned char * const sprite_list[] = {
     test2_SP,
 };
 
-const unsigned char bank_list[] = {
+const unsigned char level_bank_list[] = {
     1,
     8,
     2,
@@ -80,6 +80,22 @@ const unsigned char bank_list[] = {
     0x0E, //clutterfunk
     0x0C,
     0x0D,
+};
+
+const unsigned char sprite_bank_list[] = {
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0, //clutterfunk
+    1,
+    1,
 };
 
 const unsigned char difficulty_list[] = {
@@ -113,8 +129,3 @@ const unsigned char stars_list[] = {
 	0,
 	0,
 };
-
-// below here is just extra dev stuff. don't uncomment. //
-
-// const unsigned char * const level_list[] = {test_};
-// const unsigned char * const level_spr[] = {stereomadness_SP};

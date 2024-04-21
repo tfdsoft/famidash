@@ -3,10 +3,11 @@ void state_demo(){
     
     pal_bg((char *)paletteMenu);
 
-    mmc3_tmp_prg_bank_1(0);
-    vram_adr(NAMETABLE_A);
+	// __asm__("LDA mmc3PRG1Bank \nPHA ");
+    // mmc3_set_prg_bank_1(0);
+    // vram_adr(NAMETABLE_A);
 //    vram_unrle(dem_funnies);
-    mmc3_pop_prg_bank_1();
+    // __asm__("PLA \n JSR %v ", mmc3_set_prg_bank_1);
 
 	mmc3_set_8kb_chr(12);
 
