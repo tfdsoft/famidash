@@ -113,7 +113,7 @@ void __fastcall__ refreshmenu(void) {
 	}
 
 	if (tmp8) one_vram_buffer(0xb0+tmp8, NTADR_A(22,9));
-	else one_vram_buffer(0xEC+blubtext, NTADR_A(22,9));
+	else one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 9));
 	one_vram_buffer(0xb0+tmp7, NTADR_A(23,9));
 
 //coin stuff
@@ -145,6 +145,8 @@ void state_menu(){
 		case 0x01:	break;
 	}
 
+	menuselection = 0;
+	#include "../defines/mainmenu_charmap.h"
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
 
@@ -222,6 +224,87 @@ void state_menu(){
 		music_update();
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
+
+		switch (menuselection) {
+			case 0x00: {
+				one_vram_buffer_horz_repeat('a', 1, NTADR_A(15, 11));
+				one_vram_buffer_horz_repeat('b', 1, NTADR_A(16, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(9, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(10, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(21, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(12, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(13, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(18, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(19, 17));
+				break;
+			}
+			case 0x01: {
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(15, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(9, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(10, 11));
+				one_vram_buffer_horz_repeat('a', 1, NTADR_A(21, 11));
+				one_vram_buffer_horz_repeat('b', 1, NTADR_A(22, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(12, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(13, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(18, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(19, 17));
+				break;
+			}
+			case 0x02: {
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(15, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(9, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(10, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(21, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 11));
+				one_vram_buffer_horz_repeat('a', 1, NTADR_A(12, 17));
+				one_vram_buffer_horz_repeat('b', 1, NTADR_A(13, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(18, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(19, 17));
+				break;
+			}
+			case 0x03: {
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(15, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(9, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(10, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(21, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(12, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(13, 17));
+				one_vram_buffer_horz_repeat('a', 1, NTADR_A(18, 17));
+				one_vram_buffer_horz_repeat('b', 1, NTADR_A(19, 17));
+				break;
+			}
+			case 0x04: {
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(15, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 11));
+				one_vram_buffer_horz_repeat('a', 1, NTADR_A(9, 11));
+				one_vram_buffer_horz_repeat('b', 1, NTADR_A(10, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(21, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 11));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(12, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(13, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(18, 17));
+				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(19, 17));
+				break;
+			}
+		};
+
+			if (pad_new[0] & PAD_RIGHT) {
+				if (menuselection == 4) menuselection = 0;
+				else menuselection++;
+			}
+			if (pad_new[0] & PAD_LEFT) {
+				if (menuselection == 0) menuselection = 4;
+				else menuselection--;
+			}
+
+
+
+
 	}		
 		
     
@@ -249,11 +332,14 @@ void state_menu(){
 
 	ppu_on_all();
 	pal_fade_to(0,4);
+	#include "../defines/mainmenu_charmap.h"
 	while (1){
 		ppu_wait_nmi();
 		music_update();
+
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
+
 
 		if (pad_new[0] & PAD_SELECT){
 			if (pad[0] & PAD_A){

@@ -170,6 +170,7 @@ unsigned char robotjumptime[2];
 unsigned char level;
 unsigned char level_data_bank;
 unsigned char sprite_data_bank;
+unsigned char menuselection;
 
 unsigned char gameState;
 
