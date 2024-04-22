@@ -25,7 +25,6 @@ void reset_level(void) {
     scroll_y = 0xEF;
     set_scroll_y(scroll_y);
     init_rld(level);
-    unrle_first_screen();
     
     // load the starting ground and bg color
     tmp2 = (level_list[level][3] & 0x3f);
@@ -58,8 +57,13 @@ void reset_level(void) {
     invincible_counter = 8;
     cube_data[0] = 0;
     cube_data[1] = 0;
+    
+    unrle_first_screen();
+
     ppu_on_all();
     pal_fade_to(0,4);
-    music_play(song);
+    if (!has_practice_point) {
+        music_play(song);
+    }
     
 }

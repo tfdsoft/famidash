@@ -259,5 +259,7 @@ void bg_coll_death(void) {
 	    if(bg_collision_sub() ) cube_data[0] = 0x01;
     
 
-	if(!DEBUG_MODE && cube_data[0] & 0x01) reset_level();
+	if(!DEBUG_MODE && cube_data[0] & 0x01) {
+		reset_level();
+	}
 }

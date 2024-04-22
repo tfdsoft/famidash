@@ -262,6 +262,9 @@ detectNTSC:
 	.incbin "MUSIC/EXPORTS/music.dmc"
 	.include "MUSIC/EXPORTS/sfx.s"
 
+.segment "BSS"
+.export _famistudio_state
+_famistudio_state = *
 .include "LIB/famistudio_ca65.s"
 	
 

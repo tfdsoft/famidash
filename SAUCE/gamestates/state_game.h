@@ -57,9 +57,25 @@ void state_game(){
 	}
         //if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
 
-	
-
-        if (pad_new[controllingplayer] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
+	if (pad_new[controllingplayer] & PAD_B) {
+		// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
+		practice_player_x[0] = player_x[0];
+		practice_player_x[1] = player_x[1];
+		practice_player_y[0] = player_y[0];
+		practice_player_y[1] = player_y[1];
+		practice_player_vel_x[0] = player_vel_x[0];
+		practice_player_vel_x[1] = player_vel_x[1];
+		practice_player_vel_y[0] = player_vel_y[0];
+		practice_player_vel_y[1] = player_vel_y[1];
+		practice_player_gravity[0] = player_gravity[0];
+		practice_player_gravity[1] = player_gravity[1];
+		practice_scroll_x = scroll_x;
+		practice_scroll_y = scroll_y;
+		memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));
+		// practice_parallax_scroll_column = parallax_scroll_column;
+		// practice_parallax_scroll_column_start = parallax_scroll_column_start;
+		has_practice_point = 1;
+	}
 
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 

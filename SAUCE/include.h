@@ -44,7 +44,10 @@
 
 
 #include "../METATILES/metatiles.h"  // metatile defines
+#pragma rodata-name (push, "XCD_BANK_00")
 #include "defines/sprites.h"    // metasprite defines
+#pragma rodata-name (pop)
+
 
 #include "functions/level_loading.h"  // goofy ass screen drawing routines
 #include "functions/scroll.h"

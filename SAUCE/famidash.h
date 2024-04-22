@@ -128,7 +128,13 @@ unsigned char coin3_obtained[LEVEL_COUNT];
 
 unsigned char LEVELCOMPLETE[0x20];
 
+
+unsigned char practice_famistudio_state[0xbf];
+
 #pragma bss-name(pop)
+
+extern unsigned char famistudio_state[0xbf];
+
 
 unsigned char TOTALCOINS;
 unsigned long TOTALCOINSTEMP;
@@ -180,6 +186,16 @@ unsigned long int scroll_x; // gotta love massive levels amirite fellas
 unsigned short scroll_y;
 unsigned char song;
 
+unsigned char has_practice_point = 0;
+unsigned short practice_player_x[2];
+unsigned short practice_player_y[2];
+signed short practice_player_vel_x[2];
+signed short practice_player_vel_y[2];
+unsigned char practice_player_gravity[2];
+unsigned long int practice_scroll_x;
+unsigned short practice_scroll_y;
+unsigned char practice_parallax_scroll_column;
+unsigned char practice_parallax_scroll_column_start;
 
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
