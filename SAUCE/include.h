@@ -26,7 +26,8 @@
 #include "../LEVELS/objdefines.h"   // object defines for easier implementation
                                     // stolen from the old repo lol
 
-#include "../LEVELS/leveldata.h"    // level data goes here
+// levels are exported to asm now
+// #include "../LEVELS/leveldata.h"    // level data goes here
 
 
 

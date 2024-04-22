@@ -33,71 +33,6 @@
 #define INSANE 4
 #define DEMON 5
 
-
-const unsigned char * const level_list[] = {
-    stereomadness_,
-    backontrack_,
-    polargeist_,
-    dryout_,
-    baseafterbase_,
-    cantletgo_,
-    jumper_,
-    timemachine_,
-    cycles_,
-    xstep_,
-    clutterfunk_,
-    test_,
-    test2_,
-    };
-
-const unsigned char * const sprite_list[] = {
-    stereomadness_SP,
-    backontrack_SP,
-    polargeist_SP,
-    dryout_SP,
-    baseafterbase_SP,
-    cantletgo_SP,
-    jumper_SP,
-    timemachine_SP,
-    cycles_SP,
-    xstep_SP,
-    clutterfunk_SP,
-    test_SP,
-    test2_SP,
-};
-
-const unsigned char level_bank_list[] = {
-    1,
-    8,
-    2,
-    7,
-    5,
-    3,
-    4,
-    9,
-    6,
-    0x0A,
-    0x0E, //clutterfunk
-    0x0C,
-    0x0D,
-};
-
-const unsigned char sprite_bank_list[] = {
-    0,
-    0,
-    0,
-    1,
-    0,
-    1,
-    1,
-    0,
-    0,
-    0,
-    0, //clutterfunk
-    1,
-    1,
-};
-
 const unsigned char difficulty_list[] = {
     EASY,
     EASY,
@@ -129,3 +64,74 @@ const unsigned char stars_list[] = {
 	0,
 	0,
 };
+
+// exported from export_levels.py
+
+extern const unsigned char* level_list[];
+extern const unsigned char* sprite_list[];
+extern const unsigned char level_bank_list[];
+extern const unsigned char sprite_bank_list[];
+
+// const unsigned char * const level_list[] = {
+//     stereomadness_,
+//     backontrack_,
+//     polargeist_,
+//     dryout_,
+//     baseafterbase_,
+//     cantletgo_,
+//     jumper_,
+//     timemachine_,
+//     cycles_,
+//     xstep_,
+//     clutterfunk_,
+//     test_,
+//     test2_,
+//     };
+
+// const unsigned char * const sprite_list[] = {
+//     stereomadness_SP,
+//     backontrack_SP,
+//     polargeist_SP,
+//     dryout_SP,
+//     baseafterbase_SP,
+//     cantletgo_SP,
+//     jumper_SP,
+//     timemachine_SP,
+//     cycles_SP,
+//     xstep_SP,
+//     clutterfunk_SP,
+//     test_SP,
+//     test2_SP,
+// };
+
+// const unsigned char level_bank_list[] = {
+//     1,
+//     8,
+//     2,
+//     7,
+//     5,
+//     3,
+//     4,
+//     9,
+//     6,
+//     0x0A,
+//     0x0E, //clutterfunk
+//     0x0C,
+//     0x0D,
+// };
+
+// const unsigned char sprite_bank_list[] = {
+//     0,
+//     0,
+//     0,
+//     1,
+//     0,
+//     1,
+//     1,
+//     0,
+//     0,
+//     0,
+//     0, //clutterfunk
+//     1,
+//     1,
+// };
