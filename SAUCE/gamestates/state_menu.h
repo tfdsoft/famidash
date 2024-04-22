@@ -236,6 +236,9 @@ void state_menu(){
     vram_unrle(game_start_screen);
  	ppu_on_all();
 	pal_fade_to(0,4);
+
+		one_vram_buffer_horz_repeat('a', 1, NTADR_A(15, 11));
+                one_vram_buffer_horz_repeat('b', 1, NTADR_A(16, 11));
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 	while (!(pad_new[0] & PAD_START)){
@@ -249,12 +252,12 @@ void state_menu(){
             if (pad_new[0] & PAD_RIGHT) {
                 if (menuselection == 4) menuselection = 0;
                 else menuselection++;
-                tmp3++;
+                tmp3--;
             }
             if (pad_new[0] & PAD_LEFT) {
                 if (menuselection == 0) menuselection = 4;
                 else menuselection--;
-                tmp3--;
+                tmp3++;
             }
 
             if (tmp3) {    // menu selection incremented

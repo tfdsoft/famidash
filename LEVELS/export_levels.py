@@ -129,7 +129,8 @@ def export_spr(folder: str, levels: Iterable[str]):
                     y_lo = j % 16 * 16 # Y position, low byte
                     if int(a) in [10,13,253]:
                         y_lo += 8
-
+                    if level == "polargeist" and obj_id == 0x0d:
+                        y_lo -= 6
                     k = (j % 32) // 16
                     y_hi = k    # Y position, high byte
 

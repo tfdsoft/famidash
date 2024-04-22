@@ -33,6 +33,8 @@
 #define YELLOW_ORB_BIGGER			0X1F
 #define SPEED_30_PORTAL				0X20
 #define SPEED_40_PORTAL				0X21
+#define DUAL_PORTAL				0X22
+#define SINGLE_PORTAL				0X23
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -111,6 +113,8 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == UFO_MODE) return 0x2f; // portal
     else if (type == ROBOT_MODE) return 0x2f; // portal
     else if (type == SPIDER_MODE) return 0x2f; // portal
+    else if (type == DUAL_PORTAL) return 0x2f; // portal
+    else if (type == SINGLE_PORTAL) return 0x2f; // portal
     else if (type == COINGOTTEN1) return 0x17; // portal
     else if (type == COINGOTTEN2) return 0x17; // portal
     else if (type == COINGOTTEN3) return 0x17; // portal
@@ -306,6 +310,12 @@ void sprite_collide_lookup(){
 //    }
     else if (tmp4 == MINI_PORTAL) mini = 1;
     else if (tmp4 == GROWTH_PORTAL) mini = 0;
+    else if (tmp4 == DUAL_PORTAL) {
+	    dual = 1;
+    }
+    else if (tmp4 == SINGLE_PORTAL) {
+	    dual = 0;
+    }
 }
 
 

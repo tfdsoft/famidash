@@ -955,6 +955,39 @@ const unsigned char Portal_Gravity_Up[]={
 	 16, 32,0x91,0|OAM_FLIP_V, 
 	0x80
 };
+
+
+const unsigned char Portal_Dual[]={
+
+	  0,  0,0xCD,1,
+	  8, 0,0xCF,1,
+	  16, 0,0xD1,1,
+	  0,  16,0xD3,1,
+
+	  8, 16,0xD5,1,
+	  16, 16,0xD7,1,
+	 0,  32,0xCD,1|OAM_FLIP_V,
+	 8, 32,0xCF,1|OAM_FLIP_V,
+
+	 16, 32,0xD1,1|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Portal_Single[]={
+
+	  0,  0,0xCD,0,
+	  8, 0,0xCF,0,
+	  16, 0,0xD1,0,
+	  0,  16,0xD3,0,
+
+	  8, 16,0xD5,0,
+	  16, 16,0xD7,0,
+	 0,  32,0xCD,0|OAM_FLIP_V,
+	 8, 32,0xCF,0|OAM_FLIP_V,
+
+	 16, 32,0xD1,0|OAM_FLIP_V,
+	0x80
+};
+
 const unsigned char Portal_Gravity_Down_Horizontal_Downwards[]={
 
 
@@ -1031,8 +1064,6 @@ const unsigned char Portal_Gravity_Up_Horizontal_Upwards[]={
 
 const unsigned char Yellow_Jump_Orb[]={
 
-//	  0,  0,0x45,2,
-//	  8,  0,0x45,2|OAM_FLIP_H,
 	  4,  0,0xB5,1,
 	0x80
 };
@@ -1044,8 +1075,6 @@ const unsigned char Blue_Jump_Orb[]={
 };
 const unsigned char Pink_Jump_Orb[]={
 
-//	  0,  0,0x45,6,
-//	  8,  0,0x45,6|OAM_FLIP_H,
 	  4,  0,0xB5,7,
 	0x80
 };
@@ -1234,6 +1263,8 @@ const unsigned char * const Metasprites[]={
 	Yellow_Jump_Orb, //bigger jump orb
 	Speed_30_Portal,
 	Speed_40_Portal,
+	Portal_Dual,
+	Portal_Single,
 	};
 
 
@@ -1274,6 +1305,8 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1310,6 +1343,8 @@ const unsigned char animation_frame_length[] = {
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	0,
+	0,
 	0,
 	0,
 	0,

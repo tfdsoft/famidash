@@ -125,7 +125,7 @@ void state_game(){
 		currplayer = 1;					//take focus
 		if (twoplayer) controllingplayer = 1;		//take controls
 		player_x[1] = player_x[0];
-		if (pad_new[controllingplayer] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
+		//if (pad_new[controllingplayer] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement();
