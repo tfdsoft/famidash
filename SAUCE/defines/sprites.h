@@ -775,37 +775,37 @@ const unsigned char Speed_10_Portal[]={
 	0x80
 };
 const unsigned char Speed_20_Portal[]={
-	  0,  0,0x69,0|OAM_FLIP_H,	
-	  8,  0,0x67,0|OAM_FLIP_H,	
-	  16,  0,0x65,0|OAM_FLIP_H,	
-	  0,  16,0x69,0|OAM_FLIP_H|OAM_FLIP_V,	
-	  8,  16,0x67,0|OAM_FLIP_H|OAM_FLIP_V,	
-	  16,  16,0x65,0|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0x6B,0|OAM_FLIP_H,	
+	  8,  0,0x69,0|OAM_FLIP_H,	
+	  16,  0,0x67,0|OAM_FLIP_H,	
+	  24,  0,0x65,0|OAM_FLIP_H,	
+	  0,  16,0x6B,0|OAM_FLIP_H|OAM_FLIP_V,	
+	  8,  16,0x69,0|OAM_FLIP_H|OAM_FLIP_V,	
+	  16,  16,0x67,0|OAM_FLIP_H|OAM_FLIP_V,	
+	  24,  16,0x65,0|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 const unsigned char Speed_30_Portal[]={
-	  0,  0,0x69,3|OAM_FLIP_H,	
-	  8,  0,0x67,3|OAM_FLIP_H,	
-	  16,  0,0x67,3|OAM_FLIP_H,	
-	  24,  0,0x65,3|OAM_FLIP_H,	
-	  0,  16,0x69,3|OAM_FLIP_H|OAM_FLIP_V,	
-	  8,  16,0x67,3|OAM_FLIP_H|OAM_FLIP_V,	
-	  16,  16,0x67,3|OAM_FLIP_H|OAM_FLIP_V,	
-	  24,  16,0x65,3|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0xB9,1,
+	  8,  0,0xBB,1,
+	  16,  0,0xBD,1,
+	  24,  0,0xBF,1,
+	  0,  16,0xB9,1|OAM_FLIP_V,
+	  8,  16,0xBB,1|OAM_FLIP_V,
+	  16,  16,0xBD,1|OAM_FLIP_V,
+	  24,  16,0xBF,1|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Speed_40_Portal[]={
-	  0,  0,0x69,2|OAM_FLIP_H,	
-	  8,  0,0x67,2|OAM_FLIP_H,	
-	  16,  0,0x67,2|OAM_FLIP_H,	
-	  24,  0,0x67,2|OAM_FLIP_H,	
-	  32,  0,0x65,2|OAM_FLIP_H,	
-	  0,  16,0x69,2|OAM_FLIP_H|OAM_FLIP_V,	
-	  8,  16,0x67,2|OAM_FLIP_H|OAM_FLIP_V,	
-	  16,  16,0x67,2|OAM_FLIP_H|OAM_FLIP_V,	
-	  24,  16,0x67,2|OAM_FLIP_H|OAM_FLIP_V,	
-	  32,  16,0x65,2|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0xD9,2,
+	  8,  0,0xDB,2,
+	  16,  0,0xDD,2,
+	  24,  0,0xDF,2,
+	  0,  16,0xD9,2|OAM_FLIP_V,
+	  8,  16,0xDB,2|OAM_FLIP_V,
+	  16,  16,0xDD,2|OAM_FLIP_V,
+	  24,  16,0xDF,2|OAM_FLIP_V,
 	0x80
 };
 
