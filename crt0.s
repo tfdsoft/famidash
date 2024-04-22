@@ -254,6 +254,10 @@ detectNTSC:
 	.include "LIB/nesdoug.s"
 	.include "METATILES/metatiles.s"
 
+	.include "LEVELS/all_level_data.s"
+	.include "LEVELS/all_sprite_data.s"
+	.include "LEVELS/level_header.s"
+	.include "LEVELS/all_level_table.s"
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music.dmc"
 	.include "MUSIC/EXPORTS/sfx.s"

@@ -1,6 +1,6 @@
 ; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
 
-.import _level_list, _sprite_list, _level_bank_list, _sprite_bank_list
+.global _level_list, _sprite_list, _level_bank_list, _sprite_bank_list
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_x, _level_data_bank, _sprite_data_bank
 .import _song, _level, _gravity
@@ -11,7 +11,7 @@
 .import pusha, pushax
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column
-.import FIRST_MUSIC_BANK, FIRST_SPRITE_BANK
+.import FIRST_MUSIC_BANK
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 
@@ -37,7 +37,10 @@ sprite_data = _sprite_data
     rld_run:        .res 1
 
 .segment "BSS"
-    columnBuffer:   .res 15 * 2 ; column buffer, to be pushed to the collision map
+    ; column buffer, to be pushed to the collision map
+    ; 16 metatiles in the top screen 
+    ; 11 metatiles in the bot screen
+    columnBuffer:   .res 16 + 11
 
     current_song_bank: .res 1
     scroll_count:   .res 1
@@ -119,6 +122,13 @@ oam_meta_spr_vflipped_params_set: ; Put &data into PTR, X and Y into SCRX and SC
     INCW addr
 .endmacro
 
+.macro incw_check addr
+    INC addr
+    BNE :+
+        jsr incwlvl_checkC000
+:
+.endmacro
+
 
 .export _one_vram_buffer_horz_repeat
 .proc _one_vram_buffer_horz_repeat
@@ -146,7 +156,7 @@ WriteHiByte:
     sta VRAM_INDEX
 	rts
 .endproc
-.export _one_vram_buffer_horz_repeat
+.export _one_vram_buffer_vert_repeat
 .proc _one_vram_buffer_vert_repeat
 	ldy VRAM_INDEX
 	sta VRAM_BUF+1, y
@@ -201,8 +211,8 @@ _init_rld:
 
     LDY tmp1                ;__ Load pointer to bank table
     LDA _sprite_bank_list,y ;   Get sprite data bank
-    CLC                     ;
-    ADC #<FIRST_SPRITE_BANK ;
+    ; CLC                     ;
+    ; ADC #<FIRST_SPRITE_BANK ;
     STA _sprite_data_bank   ;__
     LDA _level_bank_list,y  ;   Get level data bank
     STA _level_data_bank    ;__
@@ -232,13 +242,10 @@ _init_rld:
     ; ; LDA (level_data),y  ;
     ; ; STA ???             ;   Starting ground color
 
-    ; ;3 unused bytes + 1 increment
-    ; ; Code for that is just as below, just replace the 6 with 3
-
-    ;ill do 6 unused bytes intead + 1 increment, is faster
+    ;ill do 3 unused bytes intead + 1 increment, is faster
     LDA level_data
     CLC
-    ADC #6+1
+    ADC #3+1
     STA level_data
     BCC :++
         LDX level_data+1
@@ -252,137 +259,104 @@ _init_rld:
         : STX level_data+1
     :
 
+SetupNextRLEByte:
+    LDA (level_data),y  ;
+    bmi single_rle_byte
+    STA rld_run         ;__ Load rld_run, ++level_data
+    incw_check level_data     ;__
+
     LDA (level_data),y  ;
     STA rld_value       ;   Load rld_value, ++level_data
-    INCW level_data     ;__
-
-    LDA (level_data),y  ;
-    STA rld_run         ;__ Load rld_run, ++level_data
     ; JMP incwlvl_checkC000
 
-incwlvl_checkC000:  ; clobbers A, and clobbers X with Y if banks are switched
     INC level_data
     BNE :+
+incwlvl_checkC000:  ; clobbers A
         INC level_data+1
-        LDA level_data+1
-        CMP #$C0
-        BNE :+
-        ; switch banks
-        LDA #$A0            ;   Reset memory-mapped ptr
-        STA level_data+1    ;__
-        INC _level_data_bank ;_ Increment bank
-        LDA _level_data_bank
-        JMP mmc3_set_prg_bank_1 ;__ Switch the bank
+        bit level_data+1
+        ; since the high byte will only be $Ax or $Bx, when bit 6 is set then its rolled over to $c0
+        bvc :+
+        pha 
+            ; switch banks
+            LDA #$A0            ;   Reset memory-mapped ptr
+            STA level_data+1    ;__
+            INC _level_data_bank ;_ Increment bank
+            LDA _level_data_bank
+            jsr mmc3_set_prg_bank_1 ;__ Switch the bank
+        pla
     :   
     RTS
+single_rle_byte:
+    and #$7f
+    sta rld_value
+    lda #0
+    sta rld_run
+    incw_check level_data
+    rts
+
 
 _unrle_next_column:
-    ; The C code being ported:
-        ; void unrle_next_column(void){ // this should explain itself
-        ;     y = 0;
-        ;     while (y < 27) { // level is 27 tiles high, so run for 27 tiles
-        ;         columnBuffer[y] = rld_value; // write a value to the column buffer
-        ;         ++y; // increment column buffer write location
-        ;         --rld_run; // decrement run by 1
-        ;         if (rld_run == 0){
-        ;             rld_value = *level_data; // go to the next rle index in the level data
-        ; 			++level_data;
-        ; 			rld_run = *level_data; // go to the next rle index in the level data
-        ; 			++level_data;
-        ;         }
-        ;     }
-        ;     y = 0;
-        ;     while (y < 27) { // write the column buffer to the collision map
-        ;         collisionMap0[(y<<4)+rld_column] = columnBuffer[y];
-        ;         // NEVER use two pointers on the same line.
-        ;         // it will compile to 55 instructions whereas doing the above compiles to just 10
-        ;         ++y;
-        ;     }
-        ;     ++rld_column;
-        ; 	rld_column &= 0x0F;
-        ; }
 
-    LDY #$00
-    LDX #$00
-    LDA rld_value
+    ; Count up to zero to remove a cmp instruction
+    ldx #<-27
+    ldy #$00
+    lda rld_value
 
     @FirstLoop:
-        STA columnBuffer, Y
-        DEC rld_run
-        BEQ @UpdateValueRun
-        INY
-        CPY #27
-        BNE @FirstLoop
-        BEQ @WriteSetup ; Guaranteed jump
+        sta columnBuffer - ($100 - 27), x
+        dec rld_run
+        bmi @UpdateValueRun
+        inx 
+        bmi @FirstLoop
+        bpl @WriteSetup ; Guaranteed jump
     
     @UpdateValueRun:
-        LDA (level_data, X) ;
-        STA rld_value       ;   Load rld_value, ++level_data
-        INCW level_data     ;__
+        ; if bit 7 of the byte is set, then its a run of length 1
+        ; otherwise this is a length < 127 byte and we need to read another
+        lda (level_data), y
+        bmi @SingleByteRun
+        sta rld_run               ;__ Load rld_run, ++level_data
+        incw_check level_data     ;__
 
-        LDA (level_data, X) ;
-        STA rld_run         ;__ Load rld_run, ++level_data
-        JSR incwlvl_checkC000
+        lda (level_data), y       ;
+        sta rld_value             ;   Load rld_value, ++level_data
+        incw_check level_data
 
-        LDA rld_value
-
-        INY
-        CPY #27
-        BNE @FirstLoop
+        lda rld_value
+        inx 
+        bmi @FirstLoop
+        bpl @WriteSetup ; Unconditional
     
+    @SingleByteRun:
+        and #$7f
+        sta rld_value
+        ; y = 0
+        sty rld_run
+        incw_check level_data
+        inx 
+        bmi @FirstLoop
+        ; and then fallthrough to copying to the collision map
+
     @WriteSetup:
-        ; Set Y to 26-16, which is the maximum index
-        LDY #(26-16)
 
-        ; Y<<4+rld_column is handled through X
-        LDA _rld_column
-        ; The last opcode affecting the carry is the CPY, which cleared the carry when
-        ; Y reached 27. Therefore the carry is set, needing a -1       
-        ADC #<(26<<4)-1  ; The low byte due to 26<<4 being $1A0
-        TAX
+    ; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
+    ; roughly twice the size for much more perf. We'll want this function to be fast when we
+    ; do practice mode so we can quickly reload to the middle of levels
+    ldx _rld_column
+    .repeat 16, I
+    lda columnBuffer + I
+    sta _collisionMap0 + I * 16, x
+    .endrepeat
+    .repeat 11, I
+    lda columnBuffer+16 + I
+    sta _collisionMap0+$100 + I * 16, x
+    .endrepeat
 
-        ; The ADC clears the carry, and it needs to be set for the subtraction in the
-        ; loop to work (i found no way around this, even with SBC)
-        SEC
-
-    @FirstWriteLoop:
-        LDA columnBuffer+16, Y        ; Get columnBuffer[y]
-        STA _collisionMap0+$100, X ; Store into collisionMap[(y<<4)+rld_column]
-
-        ; None of the opcodes in this loop affect carry, except for the SBC,
-        ; and the SBC always leaves the carry set unless it underflows below 0,
-        ; at which point you exit the loop
-        TXA
-        SBC #$10
-        TAX
-
-        DEY
-        BCS @FirstWriteLoop ; If the carry is clear, a borrow occured in the SBC, indicating an underflow
-    
-    ; Set Y to 15
-    LDY #15
-
-    ; X is already at the correct value, but the carry isn't
-    SEC
-    
-    @SecondWriteLoop:
-        LDA columnBuffer, Y
-        STA _collisionMap0, X
-
-        ; Check first loop for why no SEC
-        TXA
-        SBC #$10
-        TAX
-
-        DEY
-        BCS @SecondWriteLoop
-
-    ; X contains rld_column in the low nybble, so just increment it
-    INX
-    TXA
-    AND #$0F
-    STA _rld_column
-    RTS
+    inx
+    txa
+    and #$0F
+    sta _rld_column
+    rts
 
 shiftBy4table:
 .byte $00, $10, $20, $30
@@ -1127,15 +1101,19 @@ SpriteOffset = ptr2
     lda #0
     sta SpriteOffset+1
 
-    ; Sprite data is 8 bytes, so multiply by 8 (16 bit)
+    ; Sprite data is 5 bytes, so multiply by 5 (16 bit)
     lda _spr_index
     asl
     rol SpriteOffset+1
     asl
     rol SpriteOffset+1
-    asl
-    rol SpriteOffset+1
     sta SpriteOffset
+    clc
+    adc _spr_index
+    sta SpriteOffset
+    bcc :+
+        inc SpriteOffset+1
+    :
     ; And also keep the "max sprite id" number in x
     ; This is premultiplied by two for the word sized x/y fields which come first
     lda _spr_index
