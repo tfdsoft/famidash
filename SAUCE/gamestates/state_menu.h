@@ -2,6 +2,25 @@
 #pragma data-name(push, "LVL_BANK_00")
 #pragma rodata-name(push, "LVL_BANK_00")
 
+const unsigned char loNTAddrTable[]={
+    NTADR_A(9, 11)&0xFF,    // -1 = 4
+    NTADR_A(15, 11)&0xFF,   // 0
+    NTADR_A(21, 11)&0xFF,   // 1 
+    NTADR_A(12, 17)&0xFF,   // 2
+    NTADR_A(18, 17)&0xFF,   // 3
+    NTADR_A(9, 11)&0xFF,    // 4
+    NTADR_A(15, 11)&0xFF    // 5 = 0
+};
+
+const unsigned char hiNTAddrTable[]={
+    (NTADR_A(9, 11)>>8)&0xFF,   // -1 = 4
+    (NTADR_A(15, 11)>>8)&0xFF,  // 0
+    (NTADR_A(21, 11)>>8)&0xFF,  // 1
+    (NTADR_A(12, 17)>>8)&0xFF,  // 2
+    (NTADR_A(18, 17)>>8)&0xFF,  // 3
+    (NTADR_A(9, 11)>>8)&0xFF,   // 4
+    (NTADR_A(15, 11)>>8)&0xFF   // 5 = 0
+};
 
 const unsigned char* const leveltexts[] = {
   level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext, levelDtext
@@ -225,83 +244,28 @@ void state_menu(){
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		switch (menuselection) {
-			case 0x00: {
-				one_vram_buffer_horz_repeat('a', 1, NTADR_A(15, 11));
-				one_vram_buffer_horz_repeat('b', 1, NTADR_A(16, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(9, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(10, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(21, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(12, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(13, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(18, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(19, 17));
-				break;
-			}
-			case 0x01: {
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(15, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(9, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(10, 11));
-				one_vram_buffer_horz_repeat('a', 1, NTADR_A(21, 11));
-				one_vram_buffer_horz_repeat('b', 1, NTADR_A(22, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(12, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(13, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(18, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(19, 17));
-				break;
-			}
-			case 0x02: {
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(15, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(9, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(10, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(21, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 11));
-				one_vram_buffer_horz_repeat('a', 1, NTADR_A(12, 17));
-				one_vram_buffer_horz_repeat('b', 1, NTADR_A(13, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(18, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(19, 17));
-				break;
-			}
-			case 0x03: {
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(15, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(9, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(10, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(21, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(12, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(13, 17));
-				one_vram_buffer_horz_repeat('a', 1, NTADR_A(18, 17));
-				one_vram_buffer_horz_repeat('b', 1, NTADR_A(19, 17));
-				break;
-			}
-			case 0x04: {
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(15, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 11));
-				one_vram_buffer_horz_repeat('a', 1, NTADR_A(9, 11));
-				one_vram_buffer_horz_repeat('b', 1, NTADR_A(10, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(21, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 11));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(12, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(13, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(18, 17));
-				one_vram_buffer_horz_repeat(' ', 1, NTADR_A(19, 17));
-				break;
-			}
-		};
+            tmp3 = 0; 
+            
+            if (pad_new[0] & PAD_RIGHT) {
+                if (menuselection == 4) menuselection = 0;
+                else menuselection++;
+                tmp3++;
+            }
+            if (pad_new[0] & PAD_LEFT) {
+                if (menuselection == 0) menuselection = 4;
+                else menuselection--;
+                tmp3--;
+            }
 
-			if (pad_new[0] & PAD_RIGHT) {
-				if (menuselection == 4) menuselection = 0;
-				else menuselection++;
-			}
-			if (pad_new[0] & PAD_LEFT) {
-				if (menuselection == 0) menuselection = 4;
-				else menuselection--;
-			}
+            if (tmp3) {    // menu selection incremented
+                tmp4 = menuselection; ++tmp4;
+                one_vram_buffer_horz_repeat('a', 1, loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8));
+                one_vram_buffer_horz_repeat('b', 1, (loNTAddrTable[tmp4]+1)|(hiNTAddrTable[tmp4]<<8));
 
+                tmp4 += tmp3;   // Get the old index
+                one_vram_buffer_horz_repeat(' ', 1, loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8));
+                one_vram_buffer_horz_repeat(' ', 1, (loNTAddrTable[tmp4]+1)|(hiNTAddrTable[tmp4]<<8));
+            }
 
 
 

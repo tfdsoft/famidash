@@ -248,15 +248,13 @@ void bg_coll_death(void) {
     temp_room = tmp5 >> 8; // high byte
 
 
-//	if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) { }
-  //  else 
-	  if(bg_collision_sub() ) cube_data[0] = 0x01;
+	if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) { }
+    else if(bg_collision_sub() ) cube_data[0] = 0x01;
 
     
 	++temp_x; // low byte
-	//if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) { }
-    //else 
-	    if(bg_collision_sub() ) cube_data[0] = 0x01;
+	if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) { }
+    else if(bg_collision_sub() ) cube_data[0] = 0x01;
     
 
 	if(!DEBUG_MODE && cube_data[0] & 0x01) {

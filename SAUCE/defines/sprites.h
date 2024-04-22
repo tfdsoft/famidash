@@ -407,52 +407,52 @@ const unsigned char * const MINI_SHIP2[] = {Mini_Ship2_0, Mini_Ship2_0, Mini_Shi
 
 const unsigned char COIN_SPRITE[]={
 
-	  0,  0,0xB1,1,
-	  8,  0,0xB1,1|OAM_FLIP_H,
+	  0,  0,0xAB,1,
+	  8,  0,0xAB,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_1_SPRITE[]={
 
-	  0,  0,0xB3,1,
-	  8,  0,0xB5,1,
+	  0,  0,0xAD,1,
+	  8,  0,0xAF,1,
 	0x80
 };
 const unsigned char COIN_2_SPRITE[]={
 
-	  0,  0,0xB7,1,
-	  8,  0,0xB7,1|OAM_FLIP_H,
+	  0,  0,0xB1,1,
+	  8,  0,0xB1,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_3_SPRITE[]={
 
-	  0,  0,0xB5,1|OAM_FLIP_H,
-	  8,  0,0xB3,1|OAM_FLIP_H,
+	  0,  0,0xAF,1|OAM_FLIP_H,
+	  8,  0,0xAD,1|OAM_FLIP_H,
 	0x80
 };
 
 
 const unsigned char COIN_SPRITE_X[]={
 
-	  0,  0,0xB1,3,
-	  8,  0,0xB1,3|OAM_FLIP_H,
+	  0,  0,0xAB,3,
+	  8,  0,0xAB,3|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_1_X[]={
 
-	  0,  0,0xB3,3,
-	  8,  0,0xB5,3,
+	  0,  0,0xAD,3,
+	  8,  0,0xAF,3,
 	0x80
 };
 const unsigned char COIN_2_X[]={
 
-	  0,  0,0xB7,3,
-	  8,  0,0xB7,3|OAM_FLIP_H,
+	  0,  0,0xB1,3,
+	  8,  0,0xB1,3|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_3_X[]={
 
-	  0,  0,0xB5,3|OAM_FLIP_H,
-	  8,  0,0xB3,3|OAM_FLIP_H,
+	  0,  0,0xAF,3|OAM_FLIP_H,
+	  8,  0,0xAD,3|OAM_FLIP_H,
 	0x80
 };
 
@@ -965,10 +965,10 @@ const unsigned char Portal_Gravity_Down_Horizontal_Downwards[]={
 
 	  32, 16,0xA3,0|OAM_FLIP_H,
 	 40, 16,0xA1,0|OAM_FLIP_H,  
-	8,0,0xAD,0,
-	16,0,0xAF,0,
-	24,0,0xAf,0|OAM_FLIP_H,
-	32,0,0xAD,0|OAM_FLIP_H,
+	8,0,0xA7,0,
+	16,0,0xA9,0,
+	24,0,0xA9,0|OAM_FLIP_H,
+	32,0,0xA7,0|OAM_FLIP_H,
 
 	0x80
 };
@@ -983,10 +983,10 @@ const unsigned char Portal_Gravity_Down_Horizontal_Upwards[]={
 	  32, 0,0xA3,0|OAM_FLIP_V|OAM_FLIP_H,
 	 40, 0,0xA1,0|OAM_FLIP_V|OAM_FLIP_H,  
 
-	8,16,0xAD,0|OAM_FLIP_V,
-	16,16,0xAF,0|OAM_FLIP_V,
-	24,16,0xAf,0|OAM_FLIP_V|OAM_FLIP_H,
-	32,16,0xAD,0|OAM_FLIP_V|OAM_FLIP_H,
+	8,16,0xA7,0|OAM_FLIP_V,
+	16,16,0xA9,0|OAM_FLIP_V,
+	24,16,0xA9,0|OAM_FLIP_V|OAM_FLIP_H,
+	32,16,0xA7,0|OAM_FLIP_V|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Portal_Gravity_Up_Horizontal_Downwards[]={
@@ -999,19 +999,19 @@ const unsigned char Portal_Gravity_Up_Horizontal_Downwards[]={
 
 	  32, 16,0xA3,1|OAM_FLIP_H,
 	 40, 16,0xA1,1|OAM_FLIP_H,  
-	8,0,0xAD,0,
-	16,0,0xAF,0,
-	24,0,0xAf,0|OAM_FLIP_H,
-	32,0,0xAD,0|OAM_FLIP_H,
+	8,0,0xA7,0,
+	16,0,0xA9,0,
+	24,0,0xA9,0|OAM_FLIP_H,
+	32,0,0xA7,0|OAM_FLIP_H,
 
 	0x80
 };
 const unsigned char Portal_Gravity_Up_Horizontal_Upwards[]={
 
-	8,16,0xAD,0|OAM_FLIP_V,
-	16,16,0xAF,0|OAM_FLIP_V,
-	24,16,0xAf,0|OAM_FLIP_V|OAM_FLIP_H,
-	32,16,0xAD,0|OAM_FLIP_V|OAM_FLIP_H,
+	8,16,0xA7,0|OAM_FLIP_V,
+	16,16,0xA9,0|OAM_FLIP_V,
+	24,16,0xA9,0|OAM_FLIP_V|OAM_FLIP_H,
+	32,16,0xA7,0|OAM_FLIP_V|OAM_FLIP_H,
 
 	  0,  0,0xA1,1|OAM_FLIP_V,  
 	  8, 0,0xA3,1|OAM_FLIP_V,  
@@ -1033,20 +1033,20 @@ const unsigned char Yellow_Jump_Orb[]={
 
 //	  0,  0,0x45,2,
 //	  8,  0,0x45,2|OAM_FLIP_H,
-	  4,  0,0xBB,1,
+	  4,  0,0xB3,1,
 	0x80
 };
 
 const unsigned char Blue_Jump_Orb[]={
 
-	  4,  0,0xBB,4,
+	  4,  0,0xB3,4,
 	0x80
 };
 const unsigned char Pink_Jump_Orb[]={
 
 //	  0,  0,0x45,6,
 //	  8,  0,0x45,6|OAM_FLIP_H,
-	  4,  0,0xBB,7,
+	  4,  0,0xB3,7,
 	0x80
 };
 
