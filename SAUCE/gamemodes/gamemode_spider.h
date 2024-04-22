@@ -72,8 +72,8 @@ void spider_movement(void){
 			if(pad_new[controllingplayer] & PAD_A) {
 				player_gravity[currplayer] = 1;
 				while (!bg_coll_U()) {
-					if (!mini) player_y[currplayer] -= 0x700;
-					else player_y[currplayer] -= 0x400;
+					if (!mini) player_y[currplayer] -= 0xC00;
+					else player_y[currplayer] -= 0xC00;
 					Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
 				}
 				if (!mini) high_byte(player_y[currplayer]) -= eject_U;
@@ -87,8 +87,8 @@ void spider_movement(void){
 			if(pad_new[controllingplayer] & PAD_A) {
 				player_gravity[currplayer] = 0;
 				while (!bg_coll_D()) {
-					if (!mini) player_y[currplayer] += 0x700;
-					else player_y[currplayer] += 0x400;
+					if (!mini) player_y[currplayer] += 0xC00;
+					else player_y[currplayer] += 0xC00;
 					Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
 				}
 				if (!mini) high_byte(player_y[currplayer]) -= eject_D;

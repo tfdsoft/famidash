@@ -31,6 +31,8 @@
 #define COINGOTTEN2				0X1D
 #define COINGOTTEN3				0X1E
 #define YELLOW_ORB_BIGGER			0X1F
+#define SPEED_30_PORTAL				0X20
+#define SPEED_40_PORTAL				0X21
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -124,6 +126,8 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == SPEED_05_PORTAL) return 0x1f; // 0.5 speed portal
     else if (type == SPEED_10_PORTAL) return 0x1f; // 0.5 speed portal
     else if (type == SPEED_20_PORTAL) return 0x1f; // 0.5 speed portal
+    else if (type == SPEED_30_PORTAL) return 0x1f; // 0.5 speed portal
+    else if (type == SPEED_40_PORTAL) return 0x1f; // 0.5 speed portal
     // pads
     else if (type == YELLOW_PAD_DOWN) return 0x07; // yellow jump pad
     else if (type == YELLOW_PAD_UP) return 0x07; // yellow jump pad Upside Down
@@ -229,6 +233,8 @@ void sprite_collide_lookup(){
 	else if (tmp4 == SPEED_05_PORTAL) speed = 1;
 	else if (tmp4 == SPEED_10_PORTAL) speed = 0;
 	else if (tmp4 == SPEED_20_PORTAL) speed = 2;
+	else if (tmp4 == SPEED_30_PORTAL) speed = 3;
+	else if (tmp4 == SPEED_40_PORTAL) speed = 4;
 
     else if (tmp4 == PINK_ORB) {
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {

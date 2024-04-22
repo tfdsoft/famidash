@@ -3,7 +3,7 @@
 #pragma rodata-name(push, "LVL_BANK_00")
 
 const unsigned short speed_table[] = {
-	CUBE_SPEED_X1, CUBE_SPEED_X05, CUBE_SPEED_X2
+	CUBE_SPEED_X1, CUBE_SPEED_X05, CUBE_SPEED_X2, CUBE_SPEED_X3, CUBE_SPEED_X4
 };
 
 
