@@ -57,6 +57,9 @@ void state_game(){
 	}
         //if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
 
+	if (pad_new[controllingplayer] & PAD_UP) player_gravity[currplayer] ^= 0x01;
+
+
 	if (pad_new[controllingplayer] & PAD_B) {
 		// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 		practice_player_x[0] = player_x[0];
@@ -127,7 +130,7 @@ void state_game(){
 		currplayer = 1;					//take focus
 		if (twoplayer) controllingplayer = 1;		//take controls
 		player_x[1] = player_x[0];
-		//if (pad_new[controllingplayer] & PAD_B) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
+		if (pad_new[controllingplayer] & PAD_UP) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement();
