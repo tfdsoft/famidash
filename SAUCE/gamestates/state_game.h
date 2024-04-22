@@ -69,6 +69,8 @@ void state_game(){
 		practice_player_vel_y[1] = player_vel_y[1];
 		practice_player_gravity[0] = player_gravity[0];
 		practice_player_gravity[1] = player_gravity[1];
+		practice_player_gamemode = gamemode;
+		practice_mini = mini;
 		practice_scroll_x = scroll_x;
 		practice_scroll_y = scroll_y;
 		memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));

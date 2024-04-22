@@ -55,6 +55,9 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	unsigned char i;
 	init_sprites();
 
+	cube_data[0] = 0;
+	cube_data[1] = 0;
+
 	mmc3_set_prg_bank_1(level_data_bank);
 
 	// If practice mode has set a scroll position to restart from, run the unrle function
@@ -74,6 +77,8 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		player_x[1] = practice_player_x[1];
 		player_y[0] = practice_player_y[0];
 		player_y[1] = practice_player_y[1];
+		gamemode = practice_player_gamemode;
+		mini = practice_mini;
 		player_vel_x[0] = practice_player_vel_x[0];
 		player_vel_x[1] = practice_player_vel_x[1];
 		player_vel_y[0] = practice_player_vel_y[0];

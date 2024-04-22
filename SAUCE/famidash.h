@@ -3,8 +3,8 @@
 #define GAME 0x02
 
 // physics defines
-#define ORB_HEIGHT_YELLOW_UPSIDE2 -0x5E0
-#define ORB_HEIGHT_YELLOW_UPSIDE -0x510
+#define ORB_HEIGHT_YELLOW_UPSIDE2 -0x5B0
+#define ORB_HEIGHT_YELLOW_UPSIDE -0x4E0
 #define ORB_HEIGHT_YELLOW -0x5B0
 #define ORB_HEIGHT_YELLOW_MINI -0x4D0
 #define PAD_HEIGHT_YELLOW -0x7A0
@@ -189,6 +189,8 @@ unsigned char song;
 unsigned char has_practice_point = 0;
 unsigned short practice_player_x[2];
 unsigned short practice_player_y[2];
+unsigned char practice_player_gamemode;
+unsigned char practice_mini;
 signed short practice_player_vel_x[2];
 signed short practice_player_vel_y[2];
 unsigned char practice_player_gravity[2];

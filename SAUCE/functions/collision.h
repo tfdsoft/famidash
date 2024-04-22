@@ -165,7 +165,7 @@ char bg_coll_D(void){
 			//	if (!mini) 
 			tmp1 = Generic.y + (Generic.height/2);
 			//else tmp1 = Generic.y + ((Generic.height+10)/2);
-			if (bg_collision_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y + ((Generic.height-7)/2);
+			if (bg_collision_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y + ((Generic.height-27)/2);
 			tmp5 = add_scroll_y(tmp1, scroll_y);
 			temp_y = (char)tmp5; // low byte
 			temp_room = tmp5 >> 8; // high byte
@@ -181,7 +181,7 @@ char bg_coll_D(void){
 
 
 		if(bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_DEATH_BOTTOM) {
-			if (bg_collision_sub() & COL_DEATH_BOTTOM && !mini) tmp1 = Generic.y + ((Generic.height-7)/2);
+			if (bg_collision_sub() & COL_DEATH_BOTTOM && !mini) tmp1 = Generic.y + ((Generic.height-27)/2);
 //			else if (!mini) tmp1 = Generic.y + (Generic.height/2);
 			else tmp1 = Generic.y + (Generic.height/2);
 //			else tmp1 = Generic.y + ((Generic.height+10)/2);
@@ -248,12 +248,26 @@ void bg_coll_death(void) {
     temp_room = tmp5 >> 8; // high byte
 
 
-	if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) { }
+	if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) {
+			if (bg_collision_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y-14 + Generic.width;
+			else tmp1 = Generic.y+14 + Generic.width;
+			tmp5 = add_scroll_y(tmp1, scroll_y);
+			temp_y = (char)tmp5; // low byte
+			temp_room = tmp5 >> 8; // high byte
+			if(bg_collision_sub() ) cube_data[0] = 0x01;
+		}
     else if(bg_collision_sub() ) cube_data[0] = 0x01;
 
     
 	++temp_x; // low byte
-	if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) { }
+	if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) { 
+			if (bg_collision_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y-14 + Generic.width;
+			else tmp1 = Generic.y+14 + Generic.width;
+			tmp5 = add_scroll_y(tmp1, scroll_y);
+			temp_y = (char)tmp5; // low byte
+			temp_room = tmp5 >> 8; // high byte
+			if(bg_collision_sub() ) cube_data[0] = 0x01;	
+	}
     else if(bg_collision_sub() ) cube_data[0] = 0x01;
     
 
