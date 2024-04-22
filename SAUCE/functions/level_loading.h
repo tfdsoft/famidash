@@ -50,7 +50,7 @@ void increase_parallax_scroll_column() {
 		}
 	}
 }
-
+extern unsigned char scroll_count;
 void unrle_first_screen(void){ // run-length decode the first screen of a level
 	unsigned char i;
 	init_sprites();
@@ -62,9 +62,13 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	if (has_practice_point) {
 		parallax_scroll_column = 0;
 		parallax_scroll_column_start = 0;
+		scroll_count = 0;
+		scroll_x = practice_scroll_x - 256;
+		scroll_y = practice_scroll_y;
 		for (i = 0; i < practice_scroll_x >> 4; i++) {
 			unrle_next_column();
 			increase_parallax_scroll_column();
+			scroll_count = !scroll_count;
 		}
 		player_x[0] = practice_player_x[0];
 		player_x[1] = practice_player_x[1];
@@ -76,29 +80,25 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		player_vel_y[1] = practice_player_vel_y[1];
 		player_gravity[0] = practice_player_gravity[0];
 		player_gravity[1] = practice_player_gravity[1];
-		scroll_x = practice_scroll_x;
-		scroll_y = practice_scroll_y;
 		
 		memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
-    	set_scroll_x(scroll_x);
-		set_scroll_y(scroll_y);
 	} else {
 		// To get the draw screen R to start in the left nametable, scroll must be negative.
-		scroll_x = -1;
+		scroll_x = -256;
 	}
 
-    for (i = 0; i < 16; i++) {
-        draw_screen_R_frame0();
-        flush_vram_update2();
-		
-        draw_screen_R_frame1();
-        flush_vram_update2();
-		
-        draw_screen_R_frame2();
-        flush_vram_update2();
-    }
+	// Draw the nametable starting from where the scroll is set
+	i = 0;
+    do {
+		draw_screen_R();
+		flush_vram_update2();
+		scroll_x += 1;
+		i++;
+	} while (i != 0);
+
+	set_scroll_x(scroll_x);
+	set_scroll_y(scroll_y);
 	if (!has_practice_point) {
-		scroll_x = 0;
 		multi_vram_buffer_horz((const char*)attemptstex,sizeof(attemptstex)-1,NTADR_C(7, 15));
 		
 		TOTALCOINSONES = 0;
