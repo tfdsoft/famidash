@@ -1033,20 +1033,20 @@ const unsigned char Yellow_Jump_Orb[]={
 
 //	  0,  0,0x45,2,
 //	  8,  0,0x45,2|OAM_FLIP_H,
-	  4,  0,0xB3,1,
+	  4,  0,0xB5,1,
 	0x80
 };
 
 const unsigned char Blue_Jump_Orb[]={
 
-	  4,  0,0xB3,4,
+	  4,  0,0xB5,4,
 	0x80
 };
 const unsigned char Pink_Jump_Orb[]={
 
 //	  0,  0,0x45,6,
 //	  8,  0,0x45,6|OAM_FLIP_H,
-	  4,  0,0xB3,7,
+	  4,  0,0xB5,7,
 	0x80
 };
 
