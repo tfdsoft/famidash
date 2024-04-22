@@ -56,8 +56,37 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	init_sprites();
 
 	mmc3_set_prg_bank_1(level_data_bank);
-	// To get the draw screen R to start in the left nametable, scroll must be negative.
-	scroll_x = -1;
+
+	// If practice mode has set a scroll position to restart from, run the unrle function
+	// over and over until it catches up
+	if (has_practice_point) {
+		parallax_scroll_column = 0;
+		parallax_scroll_column_start = 0;
+		for (i = 0; i < practice_scroll_x >> 4; i++) {
+			unrle_next_column();
+			increase_parallax_scroll_column();
+		}
+		player_x[0] = practice_player_x[0];
+		player_x[1] = practice_player_x[1];
+		player_y[0] = practice_player_y[0];
+		player_y[1] = practice_player_y[1];
+		player_vel_x[0] = practice_player_vel_x[0];
+		player_vel_x[1] = practice_player_vel_x[1];
+		player_vel_y[0] = practice_player_vel_y[0];
+		player_vel_y[1] = practice_player_vel_y[1];
+		player_gravity[0] = practice_player_gravity[0];
+		player_gravity[1] = practice_player_gravity[1];
+		scroll_x = practice_scroll_x;
+		scroll_y = practice_scroll_y;
+		
+		memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
+    	set_scroll_x(scroll_x);
+		set_scroll_y(scroll_y);
+	} else {
+		// To get the draw screen R to start in the left nametable, scroll must be negative.
+		scroll_x = -1;
+	}
+
     for (i = 0; i < 16; i++) {
         draw_screen_R_frame0();
         flush_vram_update2();
@@ -68,43 +97,45 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
         draw_screen_R_frame2();
         flush_vram_update2();
     }
-	scroll_x = 0;
-	multi_vram_buffer_horz((const char*)attemptstex,sizeof(attemptstex)-1,NTADR_C(7, 15));    	
-	
-	TOTALCOINSONES = 0;
-	TOTALCOINSTENS = 0;
-	TOTALATTEMPTSHUNDREDS = 0;		////attempts stuff here and below
-	TOTALATTEMPTSTHOUSANDS = 0;
-	
-	TOTALCOINSTEMP = attempts;
-	
-	while (TOTALCOINSTEMP > 9) {
-		TOTALCOINSTENS++;
-		TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
-		if (TOTALCOINSTENS == 10) {
-			TOTALCOINSTENS = 0;
-			TOTALATTEMPTSHUNDREDS++;
+	if (!has_practice_point) {
+		scroll_x = 0;
+		multi_vram_buffer_horz((const char*)attemptstex,sizeof(attemptstex)-1,NTADR_C(7, 15));
+		
+		TOTALCOINSONES = 0;
+		TOTALCOINSTENS = 0;
+		TOTALATTEMPTSHUNDREDS = 0;		////attempts stuff here and below
+		TOTALATTEMPTSTHOUSANDS = 0;
+		
+		TOTALCOINSTEMP = attempts;
+		
+		while (TOTALCOINSTEMP > 9) {
+			TOTALCOINSTENS++;
+			TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
+			if (TOTALCOINSTENS == 10) {
+				TOTALCOINSTENS = 0;
+				TOTALATTEMPTSHUNDREDS++;
+			}
+			if (TOTALATTEMPTSHUNDREDS == 10) {
+				TOTALATTEMPTSHUNDREDS = 0;
+				TOTALATTEMPTSTHOUSANDS++;
+			}
 		}
-		if (TOTALATTEMPTSHUNDREDS == 10) {
-			TOTALATTEMPTSHUNDREDS = 0;
-			TOTALATTEMPTSTHOUSANDS++;
+		TOTALCOINSONES = TOTALCOINSTEMP;
+
+		if (TOTALATTEMPTSTHOUSANDS >= 10) {
+			multi_vram_buffer_horz((const char*)wtxt,sizeof(wtxt)-1,NTADR_C(15, 15));
+			multi_vram_buffer_horz((const char*)htxt,sizeof(htxt)-1,NTADR_C(16, 15));
+			multi_vram_buffer_horz((const char*)atxt,sizeof(atxt)-1,NTADR_C(17, 15));
+			multi_vram_buffer_horz((const char*)rtxt,sizeof(rtxt)-1,NTADR_C(18, 15));
+
+
 		}
-	}
-	TOTALCOINSONES = TOTALCOINSTEMP;
 
-	if (TOTALATTEMPTSTHOUSANDS >= 10) {
-		multi_vram_buffer_horz((const char*)wtxt,sizeof(wtxt)-1,NTADR_C(15, 15));
-		multi_vram_buffer_horz((const char*)htxt,sizeof(htxt)-1,NTADR_C(16, 15));
-		multi_vram_buffer_horz((const char*)atxt,sizeof(atxt)-1,NTADR_C(17, 15));
-		multi_vram_buffer_horz((const char*)rtxt,sizeof(rtxt)-1,NTADR_C(18, 15));
-
-
-	}
-
-	else {
-		if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSTHOUSANDS, NTADR_C(15,15));
-		if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSHUNDREDS, NTADR_C(16,15));
-		if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALCOINSTENS, NTADR_C(17,15));
-		one_vram_buffer(0xf5+TOTALCOINSONES, NTADR_C(18,15));		
+		else {
+			if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSTHOUSANDS, NTADR_C(15,15));
+			if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSHUNDREDS, NTADR_C(16,15));
+			if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALCOINSTENS, NTADR_C(17,15));
+			one_vram_buffer(0xf5+TOTALCOINSONES, NTADR_C(18,15));		
+		}
 	}
 }
