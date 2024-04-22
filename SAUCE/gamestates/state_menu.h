@@ -376,6 +376,11 @@ void state_menu(){
 			
 		}
 
+		if (pad_new[0] & (PAD_B)){
+			state_menu();
+		}
+			
+			
 		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
 			if (level > 0x0C){
