@@ -135,8 +135,8 @@ sprite_data_polargeist:
   .byte $c0,$26,$80,$01,$0b
   .byte $00,$29,$68,$01,$0a
   .byte $f0,$2a,$80,$01,$0b
-  .byte $40,$2c,$a8,$01,$0d
-  .byte $a0,$2c,$9a,$00,$10
+  .byte $40,$2c,$a2,$01,$0d
+  .byte $a0,$2c,$a0,$00,$10
   .byte $b0,$2c,$a0,$00,$fc
   .byte $c0,$2c,$a0,$00,$fc
   .byte $c0,$2c,$a0,$01,$91
@@ -993,9 +993,9 @@ sprite_data_clutterfunk:
   .byte $60,$1a,$50,$01,$95
   .byte $90,$1a,$50,$01,$85
   .byte $c0,$1a,$70,$01,$95
-  .byte $e0,$1a,$70,$01,$10
-  .byte $f0,$1a,$70,$01,$fc
-  .byte $00,$1b,$70,$01,$fc
+  .byte $e0,$1a,$68,$01,$10
+  .byte $f0,$1a,$68,$01,$fc
+  .byte $00,$1b,$68,$01,$fc
   .byte $50,$1b,$a0,$01,$85
   .byte $90,$1b,$60,$01,$93
   .byte $90,$1b,$90,$01,$05

@@ -117,6 +117,8 @@ def export_spr(folder: str, levels: Iterable[str]):
         level_data = []
         rows = len(lines)
         columns = len(lines[0])
+        count1 = 0
+        count2 = 0
         for i in range(0, columns):
             for j in range(0, rows):
                 a = str(lines[j][i])
@@ -129,12 +131,25 @@ def export_spr(folder: str, levels: Iterable[str]):
                     y_lo = j % 16 * 16 # Y position, low byte
                     if int(a) in [10,13,253]:
                         y_lo += 8
-                    if level == "polargeist" and obj_id == 0x0d:
-                        y_lo -= 6
+             
                     k = (j % 32) // 16
                     y_hi = k    # Y position, high byte
 
                     obj_id = int(a)	# object id
+
+                    if level == "polargeist" and obj_id == 0x0d:
+                        y_lo -= 6
+                    if level == "clutterfunk" and obj_id == 0x10:
+                        count1 += 1
+                        if count1 == 2:
+                            y_lo -= 8
+                    if level == "clutterfunk" and obj_id == 0xfc:
+                        count2 += 1
+                        if count2 == 3:
+                           y_lo -= 8                     
+                        elif count2 == 4:
+                           y_lo -= 8                     
+                           
                     level_data.append([x_lo, x_hi, y_lo, y_hi, obj_id])
                     # newfile.write("0, ")					# unused
                     # newfile.write("0, ")					# unused
