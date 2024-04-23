@@ -1090,39 +1090,12 @@ SpriteOffset = ptr2
     lda _sprite_data_bank
     jsr mmc3_set_prg_bank_1
 
-
-    ; lda #0
-    ; sta SpriteOffset+1
-
-    ; ; Sprite data is 5 bytes, so multiply by 5 (16 bit)
-    ; lda _spr_index
-    ; asl
-    ; rol SpriteOffset+1
-    ; asl
-    ; rol SpriteOffset+1
-    ; sta SpriteOffset
-    ; clc
-    ; adc _spr_index
-    ; sta SpriteOffset
-    ; bcc :+
-    ;     inc SpriteOffset+1
-    ; :
-
     ; And also keep the "max sprite id" number in x
     ; This is premultiplied by two for the word sized x/y fields which come first
     lda _spr_index
     and #$0f
     asl
     tax
-    
-    ; ; Copy the pointer used for the sprite data to ZP so we can use (zp), y addressing
-    ; lda _sprite_data
-    ; clc
-    ; adc SpriteOffset
-    ; sta SpriteData
-    ; lda _sprite_data+1
-    ; adc SpriteOffset+1
-    ; sta SpriteData+1
 
     ; Now read the data into the sprite
     
@@ -1172,6 +1145,8 @@ SpriteOffset = ptr2
     sta _activesprites_realx,x
     lda _activesprites_y,y
     sta _activesprites_realy,x
+
+    INC _spr_index
 
 @Exit:
     pla
