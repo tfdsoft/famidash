@@ -51,7 +51,7 @@ char bg_coll_L(void){
 
 char bg_coll_R(void){
     // check 2 points on the right side
-	tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width +1;
+	tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width -2;
     temp_x = (char)tmp5; // low byte
 
 	//if (!mini) 
@@ -232,18 +232,19 @@ void bg_coll_death(void) {
 	//else tmp5 = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1)-4;
 	temp_x = (char)tmp5; // low byte
 
-	if (!player_gravity[currplayer]) {
-		if (!mini) 	tmp1 = Generic.y + (Generic.width >> 1);
-		else tmp1 = Generic.y-6 + Generic.width;
-	}
-	else {
-		if (!mini) 	tmp1 = Generic.y + (Generic.width >> 1);
-		else {
-			if (gamemode == 5) tmp1 = Generic.y+6 + Generic.width;
-			else if (gamemode == 2 || gamemode == 0) { tmp1 = Generic.y-2 + Generic.width; }
-			else { tmp1 = Generic.y-6 + Generic.width; }
-		}
-	}
+//	if (!player_gravity[currplayer]) {
+//		if (!mini) 	tmp1 = Generic.y + (Generic.width >> 1);
+//		else tmp1 = Generic.y-6 + Generic.width;
+//	}
+//	else {
+//		if (!mini) 
+			tmp1 = Generic.y + (Generic.width >> 1);
+//		else {
+//			if (gamemode == 5) tmp1 = Generic.y+6 + Generic.width;
+//			else if (gamemode == 2 || gamemode == 0) { tmp1 = Generic.y-2 + Generic.width; }
+//			else { tmp1 = Generic.y-2 + Generic.width; }
+//		}
+//	}
 	tmp5 = add_scroll_y(tmp1, scroll_y);
     temp_y = (char)tmp5; // low byte
     temp_room = tmp5 >> 8; // high byte
