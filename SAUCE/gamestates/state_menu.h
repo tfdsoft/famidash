@@ -263,12 +263,14 @@ void state_menu(){
 
             if (tmp3) {    // menu selection incremented
                 tmp4 = menuselection; ++tmp4;
-                one_vram_buffer_horz_repeat('a', 1, loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8));
-                one_vram_buffer_horz_repeat('b', 1, (loNTAddrTable[tmp4]+1)|(hiNTAddrTable[tmp4]<<8));
+				tmp5 = loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8);
+                one_vram_buffer_horz_repeat('a', 1, tmp5);
+                one_vram_buffer_horz_repeat('b', 1, (((tmp5&0xFF)+1)&0xFF)|(tmp5&0xFF00));	// tells cc65 to not check overflow
 
                 tmp4 += tmp3;   // Get the old index
-                one_vram_buffer_horz_repeat(' ', 1, loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8));
-                one_vram_buffer_horz_repeat(' ', 1, (loNTAddrTable[tmp4]+1)|(hiNTAddrTable[tmp4]<<8));
+				tmp5 = loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8);
+                one_vram_buffer_horz_repeat(' ', 1, tmp5);
+                one_vram_buffer_horz_repeat(' ', 1, (((tmp5&0xFF)+1)&0xFF)|(tmp5&0xFF00));	// tells cc65 to not check overflow
             }
 
 

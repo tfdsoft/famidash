@@ -13,7 +13,7 @@ void x_movement(){
 	old_x = player_x[currplayer];
 	
 
-	player_vel_x[currplayer] = speed_table[speed];
+	player_vel_x[currplayer] = speed_table[speed & 0x7F];
 	player_x[currplayer] += player_vel_x[currplayer];
 
 	if(player_x[currplayer] > 0xf000) { // too far, don't wrap around
