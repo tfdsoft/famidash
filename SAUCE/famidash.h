@@ -75,6 +75,9 @@ unsigned char* tmpptr1;
 unsigned char* tmpptr2;
 long unsigned int tmplong;
 
+#pragma zpsym("tmpptr1")
+#pragma zpsym("tmpptr2")
+
 unsigned char pad[2];
 unsigned char pad_new[2];
 
@@ -114,6 +117,9 @@ unsigned char twoplayer;
 
 unsigned char * sprite_data;
 unsigned char * level_data;
+
+#pragma zpsym("sprite_data")
+#pragma zpsym("level_data")
 
 #pragma bss-name(pop)
 // other variables go here

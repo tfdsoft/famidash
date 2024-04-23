@@ -1084,13 +1084,6 @@ SPR_BANK_00 = $1c
 SpriteData = ptr1
 SpriteOffset = ptr2
 
-    lda _spr_index
-    cmp #$ff
-    bne :+
-        ; Maximum sprites reached?
-        rts
-    :
-
     lda mmc3PRG1Bank
     pha
 
@@ -1098,22 +1091,23 @@ SpriteOffset = ptr2
     jsr mmc3_set_prg_bank_1
 
 
-    lda #0
-    sta SpriteOffset+1
+    ; lda #0
+    ; sta SpriteOffset+1
 
-    ; Sprite data is 5 bytes, so multiply by 5 (16 bit)
-    lda _spr_index
-    asl
-    rol SpriteOffset+1
-    asl
-    rol SpriteOffset+1
-    sta SpriteOffset
-    clc
-    adc _spr_index
-    sta SpriteOffset
-    bcc :+
-        inc SpriteOffset+1
-    :
+    ; ; Sprite data is 5 bytes, so multiply by 5 (16 bit)
+    ; lda _spr_index
+    ; asl
+    ; rol SpriteOffset+1
+    ; asl
+    ; rol SpriteOffset+1
+    ; sta SpriteOffset
+    ; clc
+    ; adc _spr_index
+    ; sta SpriteOffset
+    ; bcc :+
+    ;     inc SpriteOffset+1
+    ; :
+
     ; And also keep the "max sprite id" number in x
     ; This is premultiplied by two for the word sized x/y fields which come first
     lda _spr_index
@@ -1121,34 +1115,32 @@ SpriteOffset = ptr2
     asl
     tax
     
-    ; Copy the pointer used for the sprite data to ZP so we can use (zp), y addressing
-    lda _sprite_data
-    clc
-    adc SpriteOffset
-    sta SpriteData
-    lda _sprite_data+1
-    adc SpriteOffset+1
-    sta SpriteData+1
+    ; ; Copy the pointer used for the sprite data to ZP so we can use (zp), y addressing
+    ; lda _sprite_data
+    ; clc
+    ; adc SpriteOffset
+    ; sta SpriteData
+    ; lda _sprite_data+1
+    ; adc SpriteOffset+1
+    ; sta SpriteData+1
 
     ; Now read the data into the sprite
     
     ldy #0
-    lda (SpriteData),y
+    lda (_sprite_data),y
     iny
-    cmp #$ff ; If we've reached the end of the sprite data exit
-    beq @EarlyExit
     
     ; X - 2 bytes
     sta _activesprites_x,x
-    lda (SpriteData),y
+    lda (_sprite_data),y
     iny
     sta _activesprites_x+1,x
 
     ; Y - 2 bytes
-    lda (SpriteData),y
+    lda (_sprite_data),y
     iny
     sta _activesprites_y,x
-    lda (SpriteData),y
+    lda (_sprite_data),y
     iny
     sta _activesprites_y+1,x
 
@@ -1157,9 +1149,19 @@ SpriteOffset = ptr2
     txa
     lsr
     tax
-    lda (SpriteData),y
-    iny
+    lda (_sprite_data),y
+    ;   no iny, as we ain't using y anymore
     sta _activesprites_type,x
+
+    ; Increment to the next sprite index - 
+    ; Add the 5 back to the pointer
+    LDA #$05
+    CLC
+    ADC _sprite_data
+    STA _sprite_data
+    BCC :+
+        INC _sprite_data+1
+    :
 
     ; Copy the low bytes for the active sprite here as well.
     ; Note we couldn't write this eariler when x was multiplied by 2
@@ -1171,13 +1173,6 @@ SpriteOffset = ptr2
     lda _activesprites_y,y
     sta _activesprites_realy,x
 
-    ; Increment to the next sprite index
-    inc _spr_index
-    bne @Exit
-
-@EarlyExit:
-    lda #$ff
-    sta _spr_index
 @Exit:
     pla
     jmp mmc3_set_prg_bank_1
