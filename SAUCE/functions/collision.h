@@ -190,7 +190,7 @@ char bg_coll_D(void){
 			temp_y = (char)tmp5; // low byte
 			temp_room = tmp5 >> 8; // high byte
 			eject_D = (temp_y + 1) & 0x0f;	 
-			if(bg_collision_sub() & COL_DEATH_BOTTOM) cube_data[currplayer] = 1;
+//			if(bg_collision_sub() & COL_DEATH_BOTTOM) cube_data[currplayer] = 1;
 			if(bg_collision_sub() & COL_BOTTOM) return 1;
 		} 
 		
@@ -258,6 +258,8 @@ void bg_coll_death(void) {
 			temp_room = tmp5 >> 8; // high byte
 			if(bg_collision_sub() ) cube_data[0] = 0x01;
 		}
+    else if(bg_collision_sub() & COL_BOTTOM && !player_gravity[currplayer]) { }
+    else if(bg_collision_sub() & COL_TOP && player_gravity[currplayer]) { }
     else if(bg_collision_sub() ) cube_data[0] = 0x01;
 
     
@@ -270,6 +272,8 @@ void bg_coll_death(void) {
 			temp_room = tmp5 >> 8; // high byte
 			if(bg_collision_sub() ) cube_data[0] = 0x01;	
 	}
+    else if(bg_collision_sub() & COL_BOTTOM && !player_gravity[currplayer]) { }
+    else if(bg_collision_sub() & COL_TOP && player_gravity[currplayer]) { }
     else if(bg_collision_sub() ) cube_data[0] = 0x01;
     
 

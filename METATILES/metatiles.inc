@@ -126,7 +126,7 @@ Metatile "BLACK_BOTTOM_RIGHT_DOT", $10, $10, $10, $d5, PAL_0, COL_ALL
 Metatile "BLACK_BOTTOM_LEFT_DOT", $10, $10, $d4, $10, PAL_0, COL_ALL
 Metatile "BLACK_LEFT_RIGHT", $c0, $c1, $c0, $c1, PAL_0, COL_ALL
 Metatile "BLACK_TOP_BOTTOM", $d0, $d0, $d1, $d1, PAL_0, COL_ALL
-Metatile "BLACK_NONE", $10, $10, $10, $10, PAL_0, COL_ALL
+Metatile "BLACK_NONE", $10, $10, $10, $10, PAL_0, COL_NONE
 
 Metatile "BLACK_TOP_LEFT_RIGHT", $c2, $c3, $c0, $c1, PAL_0, COL_ALL
 Metatile "BLACK_TOP_RIGHT_BOTTOM", $d0, $c3, $d1, $d3, PAL_0, COL_ALL
