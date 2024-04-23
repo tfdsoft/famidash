@@ -53,6 +53,7 @@ void increase_parallax_scroll_column() {
 extern unsigned char scroll_count;
 void unrle_first_screen(void){ // run-length decode the first screen of a level
 	unsigned char i;
+	unsigned int ii;
 	init_sprites();
 
 	cube_data[0] = 0;
@@ -68,7 +69,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		scroll_count = 0;
 		scroll_x = practice_scroll_x - 256;
 		scroll_y = practice_scroll_y;
-		for (i = 0; i < practice_scroll_x >> 4; i++) {
+		for (ii = 0; ii < practice_scroll_x >> 4; ii++) {
 			unrle_next_column();
 			increase_parallax_scroll_column();
 			scroll_count = !scroll_count;

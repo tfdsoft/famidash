@@ -165,6 +165,7 @@ void state_menu(){
 	}
 
 	menuselection = 0;
+	has_practice_point = 0;
 	#include "../defines/mainmenu_charmap.h"
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
