@@ -78,6 +78,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		player_x[1] = practice_player_x[1];
 		player_y[0] = practice_player_y[0];
 		player_y[1] = practice_player_y[1];
+		long_temp_x = high_byte(practice_player_x[0]);
 		gamemode = practice_player_gamemode;
 		mini = practice_mini;
 		player_vel_x[0] = practice_player_vel_x[0];

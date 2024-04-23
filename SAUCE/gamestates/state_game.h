@@ -63,6 +63,7 @@ void state_game(){
 	if (pad_new[controllingplayer] & PAD_B) {
 		// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 		practice_player_x[0] = player_x[0];
+		long_temp_x = high_byte(player_x[0]);
 		practice_player_x[1] = player_x[1];
 		practice_player_y[0] = player_y[0];
 		practice_player_y[1] = player_y[1];
