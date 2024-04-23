@@ -313,8 +313,10 @@ void sprite_collide_lookup(){
     else if (tmp4 == MINI_PORTAL) mini = 1;
     else if (tmp4 == GROWTH_PORTAL) mini = 0;
     else if (tmp4 == DUAL_PORTAL) {
-	    dual = 1;
+	    
+	   dual = 1;
 	    if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1; }
+	else { player_x[1] = player_x[0]; player_y[1] = player_y[0]; player_gravity[1] = player_gravity[0] ^ 1; }
     }
     else if (tmp4 == SINGLE_PORTAL) {
 	    if (!twoplayer) dual = 0;
