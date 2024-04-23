@@ -207,6 +207,7 @@ void levelselection() {
 
 		if (pad_new[0] & (PAD_B)){
 			state_menu();
+			return;
 		}
 			
 			
@@ -302,6 +303,7 @@ void settings() {
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
 			state_menu();
+			return;
 		}
 
 	}
@@ -456,11 +458,11 @@ void state_menu() {
 
 	}		
 	switch (menuselection) {
-		case 0x00: levelselection(); break;
-		case 0x01: state_menu(); break;
-		case 0x02: state_menu(); break;
-		case 0x03: settings(); break;
-		case 0x04: state_menu(); break;
+		case 0x00: levelselection(); return; break;
+		case 0x01: state_menu(); return; break;
+		case 0x02: state_menu(); return; break;
+		case 0x03: settings(); return; break;
+		case 0x04: state_menu(); return; break;
 			
 	};
   
