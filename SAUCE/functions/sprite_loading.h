@@ -133,8 +133,8 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == SPEED_30_PORTAL) return 0x1f; // 0.5 speed portal
     else if (type == SPEED_40_PORTAL) return 0x1f; // 0.5 speed portal
     // pads
-    else if (type == YELLOW_PAD_DOWN) return 0x07; // yellow jump pad
-    else if (type == YELLOW_PAD_UP) return 0x07; // yellow jump pad Upside Down
+    else if (type == YELLOW_PAD_DOWN) return 0x02; // yellow jump pad
+    else if (type == YELLOW_PAD_UP) return 0x02; // yellow jump pad Upside Down
     else if (type == GRAVITY_PAD_DOWN) return 0x04; // Gravity Pad
     else if (type == GRAVITY_PAD_UP) return 0x04; // Gravity Pad Upside Down
 
