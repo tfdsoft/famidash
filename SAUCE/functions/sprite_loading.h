@@ -53,6 +53,8 @@ void init_sprites(void){
 	// Setting up pointers is already done by init_rld()
     mmc3_set_prg_bank_1(sprite_data_bank);
 
+	for (tmp4 = max_loaded_sprites-1; tmp4 != 0; --tmp4) activesprites_type[tmp4] = 0xFF;
+
     spr_index = 0;
     while (spr_index < max_loaded_sprites){
         if (sprite_data[0] == TURN_OFF) break;

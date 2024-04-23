@@ -1,9 +1,9 @@
 ; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
 
-.global _level_list, _sprite_list, _level_bank_list, _sprite_bank_list
+.global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_x, _level_data_bank, _sprite_data_bank
-.import _song, _level, _gravity
+.import _song, _level, _gravity, _speed
 .import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
@@ -179,42 +179,20 @@ _init_rld:
     ; A has the level ID
 
     ; Get pointers:
-    STA tmp1            ;__ Store pointer for bank table
-
-    LDY #>_level_list   ;   Get high byte of level_list ptr
-    STY ptr1+1          ;__
-    LDY #>_sprite_list  ;   Get high byte of sprite_list ptr
-    ASL                 ;
-    BCC :+              ;
-        INC ptr1+1      ;   Adjust high bytes if level num >= $80
-        INY             ;__
-    : 
-    STY ptr2+1          ;__ Store high byte of sprite_list ptr
-    LDY #<_level_list   ;
-    STY ptr1            ;
-    LDY #<_sprite_list  ;   Get and store low bytes
-    STY ptr2            ;
-
-    TAY                 ;__ Get the pointer
-
-    LDA (ptr1),y        ;   Load low byte of level data pointer
-    STA level_data      ;__
-    LDA (ptr2),y        ;   Load low byte of sprite data pointer
-    STA sprite_data     ;__
-
-    INY                 ;   Now do high bytes
-
-    LDA (ptr1),y        ;
-    STA level_data+1    ;__ Load high byte of level data pointer
-    LDA (ptr2),y        ;   Load low byte of sprite data pointer
-    STA sprite_data+1   ;__
-
-    LDY tmp1                ;__ Load pointer to bank table
-    LDA _sprite_bank_list,y ;   Get sprite data bank
+    TAY		                ;__ Load pointer to tables
+	LDA _sprite_list_lo,y	;
+	STA _sprite_data+0		;__	Get low pointer to sprite data 
+	LDA _sprite_list_hi,y	;
+	STA _sprite_data+1		;__	Get high pointer to sprite data 
+    LDA _sprite_list_bank,y ;   Get sprite data bank
     ; CLC                     ;
     ; ADC #<FIRST_SPRITE_BANK ;
     STA _sprite_data_bank   ;__
-    LDA _level_bank_list,y  ;   Get level data bank
+	LDA _level_list_lo,y	;
+	STA _level_data+0		;__	Get low pointer to level data 
+	LDA _level_list_hi,y	;
+	STA _level_data+1		;__	Get high pointer to level data 
+    LDA _level_list_bank,y  ;   Get level data bank
     STA _level_data_bank    ;__
     
     JSR mmc3_set_prg_bank_1
@@ -225,39 +203,42 @@ _init_rld:
     ; Read header
     LDA (level_data),y  ;
     STA _song           ;   Song number
-    INCW level_data     ;__
+    incw_check level_data
 
     LDA (level_data),y  ;
     STA _gamemode       ;   Starting level number
-    ; JSR incwlvl_checkC000
+    incw_check level_data
 
-    ; ; LDA (level_data),y  ;
-    ; ; STA ???             ;   Starting speed
-    ; INCW level_data     ;__
+    LDA (level_data),y  ;
+    STA _speed          ;   Starting speed
+    incw_check level_data
 
-    ; ; LDA (level_data),y  ;
-    ; ; STA ???             ;   Starting BG color
-    ; JSR incwlvl_checkC000
+    LDA (level_data),y  ;	Starting BG color
+	AND #$3F			;	Store normal color (pal_col(0, tmp2))
+    STA PAL_BUF+0       ;__ 
+    SEC                 ;	A = faded OG color (A - 10)
+    SBC #$10            ;__
+	BPL :+				;
+		LDA #$0F		;	if (faded color invalid) color = $0F (canonical black)
+	:					;__
+	STA PAL_BUF+1		;__	Store faded color (pal_col(1, tmp2-0x10 or 0x0F))
+    incw_check level_data
 
-    ; ; LDA (level_data),y  ;
-    ; ; STA ???             ;   Starting ground color
+	LDA (level_data),y  ;	Starting ground color
+	AND #$3F			;	Store normal color (pal_col(6, tmp2))
+    STA PAL_BUF+6       ;__ 
+    SEC                 ;	A = faded OG color (A - 10)
+    SBC #$10            ;__
+	BPL :+				;
+		LDA #$0F		;	if (faded color invalid) color = $0F (canonical black)
+	:					;__
+	STA PAL_BUF+5		;__	Store faded color (pal_col(5, tmp2-0x10 or 0x0F))
+    incw_check level_data
 
-    ;ill do 3 unused bytes intead + 1 increment, is faster
-    LDA level_data
-    CLC
-    ADC #3+1
-    STA level_data
-    BCC :++
-        LDX level_data+1
-        INX
-        CPX #$C0
-        BCC :+
-            INC _level_data_bank
-            LDA _level_data_bank
-            JSR mmc3_set_prg_bank_1
-            LDX #$C0
-        : STX level_data+1
-    :
+	LDA <PAL_UPDATE		;__ Yes, we do need to update the palette
+	CLC
+	ADC #$04
+	STA <PAL_UPDATE
 
 SetupNextRLEByte:
     LDA (level_data),y  ;
@@ -1093,7 +1074,6 @@ SpriteOffset = ptr2
     ; And also keep the "max sprite id" number in x
     ; This is premultiplied by two for the word sized x/y fields which come first
     lda _spr_index
-    and #$0f
     asl
     tax
 
@@ -1146,7 +1126,11 @@ SpriteOffset = ptr2
     lda _activesprites_y,y
     sta _activesprites_realy,x
 
-    INC _spr_index
+    ; Increment the _spr_index and and it with #$0F
+    INY 
+    TYA
+    AND #$0F
+    STA _spr_index
 
 @Exit:
     pla

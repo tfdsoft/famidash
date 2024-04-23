@@ -62,10 +62,10 @@ $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
 	@echo $(NAME).nes created
 
 $(TMPDIR)/crt0.o: crt0.s GRAPHICS/*.chr LIB/*.s LEVELS/*.s METATILES/*.s METATILES/*.inc MUSIC/EXPORTS/*.s MUSIC/EXPORTS/music.dmc
-	$(CA65) crt0.s -g -I LIB $(call ca65IncDir,MUSIC/EXPORTS) $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
+	$(CA65) crt0.s --cpu 6502X -g -I LIB $(call ca65IncDir,MUSIC/EXPORTS) $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
 
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
-	$(CA65) $(call ca65IncDir,LIB) $(TMPDIR)/$(NAME).s -g
+	$(CA65) --cpu 6502X $(call ca65IncDir,LIB) $(TMPDIR)/$(NAME).s -g 
 
 $(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h SAUCE/gamestates/*.h SAUCE/gamemodes/*.h SAUCE/defines/*.h SAUCE/functions/*.h METATILES/metatiles.h LEVELS/*.h LIB/*.h MUSIC/EXPORTS/musicDefines.h 
 	$(CC65) -Osir -g SAUCE/$(NAME).c -E --add-source -o $(TMPDIR)/$(NAME).c
