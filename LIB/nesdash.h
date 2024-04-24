@@ -46,3 +46,19 @@ extern unsigned char parallax_scroll_column_start;
 #define vram_put(a) POKE(0x2007, a)
 
 #define GET_BANK(sym) (__asm__("ldx #0\nlda #<.bank(%v)", sym), __A__)
+
+// add byte with No Overflow Check
+#define addNOC_b(a, b) (((a & 0xFF)+b)&0xFF)
+// add word with No Overflow Check beyond the 16 bits
+#define addNOC_w(a, b) (((a & 0xFFFF)+b)&0xFFFF)
+
+// add to the low byte of a word, not overflowing into high
+#define addloNOC(a, b) (addNOC_b(a, b))|(a & 0xFF00)
+
+// subtract byte with No Overflow Check
+#define subNOC_b(a, b) (((a & 0xFF)-b)&0xFF)
+// subtract word with No Overflow Check beyond the 16 bits
+#define subNOC_w(a, b) (((a & 0xFFFF)-b)&0xFFFF)
+
+// subtract from the low byte of a word, not overflowing into high
+#define subloNOC(a, b) (subNOC_b(a, b))|(a & 0xFF00)
