@@ -1018,7 +1018,7 @@ _music_play:
 @music_data_locations_hi:
 .byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3
 @music_counts:
-.byte 6, 6, $FF  ;last bank is marked with an FF to always stop bank picking
+.byte 5, 7, $FF  ;last bank is marked with an FF to always stop bank picking
 
 ; void __fastcall__ music_update (void);
 _music_update:

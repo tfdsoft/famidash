@@ -94,25 +94,21 @@ __fastcall__ char sprite_height_lookup(){
 		    pal_col(6, tmp2);
 		    if (tmp2-0x10 & 0xC0) { 
 			pal_col(5, 0x0f); 
-			activesprites_type[index] = 0xFF; 
 		    } else { 
 			pal_col(5, (tmp2-0x10)); 
-			activesprites_type[index] = 0xFF; 
 		    }
 		} else {
 		    pal_col(0, tmp2);
 		    if (tmp2-0x10 & 0xC0) { 
 			pal_col(1, 0x0f); 
-			activesprites_type[index] = 0xFF; 
 		    } else { 
 			pal_col(1, (tmp2-0x10)); 
-			activesprites_type[index] = 0xFF;
 		    }
 		}
+		activesprites_type[index] = 0xFF; 
 		return 0x00;
     }
-
-	if (type >= CUBE_MODE && type <= ROBOT_MODE) return 0x2F;	// Portals
+	else if (type >= CUBE_MODE && type <= ROBOT_MODE) return 0x2F;	// Portals
 	else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
 	else if (
 		(type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) || // Speed portals
