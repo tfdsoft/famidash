@@ -1,5 +1,14 @@
 // a 16x16 pixel metasprite
 // cube starts here
+
+const unsigned char Practice_Diamond[]={
+
+	  0,  0,0xB7,0,
+	0x80
+};
+
+const unsigned char * const Practice_Sprites[] = {Practice_Diamond};
+
 const unsigned char Mini_Cube_0[]={
 
 	  0,  -1,0x51,0,

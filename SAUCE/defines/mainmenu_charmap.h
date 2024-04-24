@@ -66,10 +66,10 @@
 // #pragma charmap (0x5E, 0x5E) // ^
 // #pragma charmap (0x5F, 0x5F) // _
 // #pragma charmap (0x60, 0x60) // `
-#pragma charmap (0x61, 0x5E) // a
-#pragma charmap (0x62, 0x5F) // b
-#pragma charmap (0x63, 0xD3) // c
-#pragma charmap (0x64, 0xD4) // d
+#pragma charmap (0x61, 0x5E) // a		//cursor for main menu
+#pragma charmap (0x62, 0x5F) // b		//cursor for main menu
+#pragma charmap (0x63, 0x6F) // c		//cursor for settings screen
+#pragma charmap (0x64, 0x7F) // d		//cursor for settings screen
 #pragma charmap (0x65, 0xD5) // e
 #pragma charmap (0x66, 0xD6) // f
 #pragma charmap (0x67, 0xD7) // g

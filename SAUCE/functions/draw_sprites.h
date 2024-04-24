@@ -27,6 +27,16 @@ void draw_sprites(void){
 
 	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
 
+	if (has_practice_point) {
+		
+		if (long_temp_x > 10) { 
+				long_temp_x--;
+				long_temp_x--;
+				oam_meta_spr(long_temp_x, high_byte(practice_player_y[currplayer])-1, Practice_Sprites[0]);
+		}
+		else if (long_temp_x < 10) { }
+	}
+
         shuffle_offset += 11;								//-----------|
         if (shuffle_offset >= max_loaded_sprites) {					//           |
           shuffle_offset -= max_loaded_sprites;						//           |

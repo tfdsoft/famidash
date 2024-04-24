@@ -147,7 +147,209 @@ void __fastcall__ refreshmenu(void) {
 
 };
 
-void state_menu(){
+void state_menu();
+void levelselection() {
+  
+    
+    
+  	ppu_off();
+	pal_bright(0);
+//    pal_bg((char *)paletteMenu);
+	set_scroll_x(0);
+    set_scroll_y(0);  
+    
+    
+     vram_adr(NAMETABLE_A);
+    vram_unrle(game_main_menu);   
+
+	refreshmenu();
+
+//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
+//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));
+
+	cube_rotate[0] = 0;
+	cube_rotate[1] = 0;
+	attempts = 1;
+
+	ppu_on_all();
+	pal_fade_to(0,4);
+	#include "../defines/mainmenu_charmap.h"
+	while (1){
+		ppu_wait_nmi();
+		music_update();
+
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+
+
+
+
+
+		if (pad_new[0] & PAD_START){
+			if (pad[0] & PAD_A){
+				if (pad[0] & PAD_B){
+					invisible = 1;
+					famistudio_sfx_play(sfx_death, 0);
+					gameState = 0x02;
+					pal_fade_to(4,0);
+					kandotemp = 0;
+					return;
+				}
+			}
+			else {
+				gameState = 0x02;
+				pal_fade_to(4,0);
+				kandotemp = 0;
+				return;
+			}
+			
+		}
+
+		if (pad_new[0] & (PAD_B)){
+			state_menu();
+			return;
+		}
+			
+			
+		if (pad_new[0] & (PAD_RIGHT)){
+			++level;
+			if (level > 0x0C){
+				level = 0x00;
+			}
+			refreshmenu();
+		//	break;
+		}
+		if (pad_new[0] & PAD_LEFT){
+			--level;
+			if (level == 0xFF){
+				level = 0x0C;
+			}
+			
+			//break;
+			refreshmenu();
+		}
+	}	
+
+}
+
+
+
+
+
+
+
+
+
+void settings() {
+	ppu_off();
+	pal_bg((char *)paletteMenu);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(settingsscreen);   	
+	#include "../defines/mainmenu_charmap.h"
+	ppu_on_all();
+	while (1) {
+		ppu_wait_nmi();
+		music_update();
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+/*		
+		if (pad_new[0] & PAD_SELECT){
+			if (pad[0] & PAD_A){
+				if (pad[0] & PAD_B){
+					for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+						coin1_obtained[tmp2] = 0;
+						coin2_obtained[tmp2] = 0;
+						coin3_obtained[tmp2] = 0;
+					}
+							
+					tmp2 = 0;
+					while (tmp2 < 0x20) {
+						LEVELCOMPLETE[tmp2] = 0;
+						tmp2++;
+					}
+				
+					SRAM_VALIDATE[0x0E] = 0;
+					SRAM_VALIDATE[0x0F] = 0;
+					SRAM_VALIDATE[0x10] = 0;
+					SRAM_VALIDATE[0x11] = 0;
+					SRAM_VALIDATE[0x12] = 0;
+					SRAM_VALIDATE[0x13] = 0;
+					SRAM_VALIDATE[0x14] = 0;
+					SRAM_VALIDATE[0x15] = 0;
+					SRAM_VALIDATE[0x16] = 0;
+					SRAM_VALIDATE[0x17] = 0;
+					SRAM_VALIDATE[0x18] = 0;
+					SRAM_VALIDATE[0x19] = 0;
+					SRAM_VALIDATE[0x1A] = 0;
+					SRAM_VALIDATE[0x1B] = 0;
+					SRAM_VALIDATE[0x1C] = 0;
+					SRAM_VALIDATE[0x1D] = 0;
+					SRAM_VALIDATE[0x1E] = 0;
+					SRAM_VALIDATE[0x1F] = 0;
+					TOTALCOINSONES = 0;
+					TOTALCOINSTENS = 0;
+				//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
+				//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
+					famistudio_sfx_play(sfx_death, 0);
+				//	one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));		
+				}
+			}
+			else {
+				famistudio_sfx_play(sfx_click, 0);			
+				twoplayer ^= 1;
+			}
+		}
+*/		
+		if (settingvalue == 0) {
+			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 8));
+			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 9));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 17));
+		}		
+		else if (settingvalue == 1) {
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 9));
+			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 12));
+			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 17));
+		}		
+		else if (settingvalue == 2) {
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 9));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 16));
+			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 17));
+		}		
+
+		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
+			if (settingvalue == 2) { settingvalue = 0; }
+			else settingvalue++;
+		}
+
+		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
+			if (settingvalue == 0) { settingvalue = 2; }
+			else settingvalue--;
+		}
+
+
+		if (pad_new[0] & PAD_B) {
+			tmp3--;			
+			state_menu();
+			return;
+		}
+
+	}
+}
+
+
+
+
+
+void state_menu() {
 	ppu_off();
 	pal_bright(0);
     pal_bg((char *)splashMenu);
@@ -164,7 +366,7 @@ void state_menu(){
 		case 0x01:	break;
 	}
 
-	menuselection = 0;
+
 	has_practice_point = 0;
 	#include "../defines/mainmenu_charmap.h"
 	// Enable SRAM write
@@ -237,9 +439,26 @@ void state_menu(){
     vram_unrle(game_start_screen);
  	ppu_on_all();
 	pal_fade_to(0,4);
-
-		one_vram_buffer_horz_repeat('a', 1, NTADR_A(15, 11));
-                one_vram_buffer_horz_repeat('b', 1, NTADR_A(16, 11));
+		if (menuselection == 0) {
+			one_vram_buffer_horz_repeat('a', 1, NTADR_A(15, 11));
+			one_vram_buffer_horz_repeat('b', 1, NTADR_A(16, 11));
+		}
+		else if (menuselection == 1) {
+			one_vram_buffer_horz_repeat('a', 1, NTADR_A(21, 11));
+			one_vram_buffer_horz_repeat('b', 1, NTADR_A(22, 11));
+		}
+		else if (menuselection == 2) {
+			one_vram_buffer_horz_repeat('a', 1, NTADR_A(12, 17));
+			one_vram_buffer_horz_repeat('b', 1, NTADR_A(13, 17));
+		}
+		else if (menuselection == 3) {
+			one_vram_buffer_horz_repeat('a', 1, NTADR_A(18, 17));
+			one_vram_buffer_horz_repeat('b', 1, NTADR_A(19, 17));
+		}
+		else if (menuselection == 4) {
+			one_vram_buffer_horz_repeat('a', 1, NTADR_A(9, 11));
+			one_vram_buffer_horz_repeat('b', 1, NTADR_A(10, 11));
+		}
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 	while (!(pad_new[0] & PAD_START)){
@@ -276,133 +495,17 @@ void state_menu(){
 
 
 	}		
-		
-    
-    
-    
-    
-  	ppu_off();
-	pal_bright(0);
-//    pal_bg((char *)paletteMenu);
-	set_scroll_x(0);
-    set_scroll_y(0);  
-    
-    
-     vram_adr(NAMETABLE_A);
-    vram_unrle(game_main_menu);   
-
-	refreshmenu();
-
-//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
-//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));
-
-	cube_rotate[0] = 0;
-	cube_rotate[1] = 0;
-	attempts = 1;
-
-	ppu_on_all();
-	pal_fade_to(0,4);
-	#include "../defines/mainmenu_charmap.h"
-	while (1){
-		ppu_wait_nmi();
-		music_update();
-
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
-
-		if (pad_new[0] & PAD_SELECT){
-			if (pad[0] & PAD_A){
-				if (pad[0] & PAD_B){
-					for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-						coin1_obtained[tmp2] = 0;
-						coin2_obtained[tmp2] = 0;
-						coin3_obtained[tmp2] = 0;
-					}
-							
-					tmp2 = 0;
-					while (tmp2 < 0x20) {
-						LEVELCOMPLETE[tmp2] = 0;
-						tmp2++;
-					}
-				
-					SRAM_VALIDATE[0x0E] = 0;
-					SRAM_VALIDATE[0x0F] = 0;
-					SRAM_VALIDATE[0x10] = 0;
-					SRAM_VALIDATE[0x11] = 0;
-					SRAM_VALIDATE[0x12] = 0;
-					SRAM_VALIDATE[0x13] = 0;
-					SRAM_VALIDATE[0x14] = 0;
-					SRAM_VALIDATE[0x15] = 0;
-					SRAM_VALIDATE[0x16] = 0;
-					SRAM_VALIDATE[0x17] = 0;
-					SRAM_VALIDATE[0x18] = 0;
-					SRAM_VALIDATE[0x19] = 0;
-					SRAM_VALIDATE[0x1A] = 0;
-					SRAM_VALIDATE[0x1B] = 0;
-					SRAM_VALIDATE[0x1C] = 0;
-					SRAM_VALIDATE[0x1D] = 0;
-					SRAM_VALIDATE[0x1E] = 0;
-					SRAM_VALIDATE[0x1F] = 0;
-					TOTALCOINSONES = 0;
-					TOTALCOINSTENS = 0;
-				//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
-				//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
-					famistudio_sfx_play(sfx_death, 0);
-				//	one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));		
-				}
-			}
-			else {
-				famistudio_sfx_play(sfx_click, 0);			
-				twoplayer ^= 1;
-			}
-		}
-
-
-		if (pad_new[0] & PAD_START){
-			if (pad[0] & PAD_A){
-				if (pad[0] & PAD_B){
-					invisible = 1;
-					famistudio_sfx_play(sfx_death, 0);
-					gameState = 0x02;
-					pal_fade_to(4,0);
-					kandotemp = 0;
-					return;
-				}
-			}
-			else {
-				gameState = 0x02;
-				pal_fade_to(4,0);
-				kandotemp = 0;
-				return;
-			}
+	switch (menuselection) {
+		case 0x00: levelselection(); return; break;
+		case 0x01: settingvalue = 0; settings(); return; break;
+		case 0x02: state_menu(); return; break;
+		case 0x03: state_menu(); return; break;
+		case 0x04: state_menu(); return; break;
 			
-		}
-
-		if (pad_new[0] & (PAD_B)){
-			state_menu();
-		}
-			
-			
-		if (pad_new[0] & (PAD_RIGHT)){
-			++level;
-			if (level > 0x0C){
-				level = 0x00;
-			}
-			refreshmenu();
-		//	break;
-		}
-		if (pad_new[0] & PAD_LEFT){
-			--level;
-			if (level == 0xFF){
-				level = 0x0C;
-			}
-			
-			//break;
-			refreshmenu();
-		}
-	}
+	};
+  
 }
+
 
 
 #pragma code-name(pop)

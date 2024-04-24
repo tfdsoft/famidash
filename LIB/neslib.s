@@ -445,11 +445,20 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 	iny
 	clc
 	adc <SCRX
+	bcc @fuck_yes
+	cpx #$00
+	beq @fuck_yes	; no idea why I need to do this
+	lda #$f8
+	iny
+	clc
+	bcc @hell_yes
+	@fuck_yes:
 	sta OAM_BUF+3,x
 	lda (PTR),y		;y offset
 	iny
 	clc
 	adc <SCRY
+	@hell_yes:
 	sta OAM_BUF+0,x
 	lda (PTR),y		;tile
 	iny

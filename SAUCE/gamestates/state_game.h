@@ -63,6 +63,7 @@ void state_game(){
 	if (pad_new[controllingplayer] & PAD_B) {
 		// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 		practice_player_x[0] = player_x[0];
+		long_temp_x = high_byte(player_x[0]);
 		practice_player_x[1] = player_x[1];
 		practice_player_y[0] = player_y[0];
 		practice_player_y[1] = player_y[1];
@@ -119,7 +120,7 @@ void state_game(){
 	mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
         do_the_scroll_thing(); 
 
-	mmc3_set_prg_bank_1(0);
+	mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 //        check_spr_objects();
 	if (!DEBUG_MODE) {
 		if (cube_data[0] == 1) reset_level();
@@ -141,7 +142,7 @@ void state_game(){
 		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
 //		x_movement();
 		do_the_scroll_thing2(); 
-		mmc3_set_prg_bank_1(0);
+		mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 		sprite_collide();
 		currplayer = 0;					//give back focus
 		if (twoplayer) controllingplayer = 0;		//give back controls

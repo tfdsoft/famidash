@@ -10,7 +10,7 @@
 #define PAD_HEIGHT_YELLOW -0x7A0
 #define PAD_HEIGHT_YELLOW_MINI -0x5B0
 #define PAD_HEIGHT_BALL_YELLOW -0x6A0
-#define PAD_HEIGHT_PINK -0x4A0
+#define PAD_HEIGHT_PINK -0x2B0
 #define PAD_HEIGHT_BLUE -0x3A0
 
 #define ORB_BALL_HEIGHT_BLUE -0x1A0
@@ -22,7 +22,7 @@
 #define MINI_CUBE_HEIGHT 0x07
 
 #define JUMP_VEL -0x580
-#define MINI_JUMP_VEL -0x4C0
+#define MINI_JUMP_VEL -0x4D0
 #define UFO_JUMP_VEL -0x530
 #define MINI_UFO_JUMP_VEL -0x500
 
@@ -43,7 +43,7 @@
 #define MINI_UFO_MAX_FALLSPEED 0x500
 
 #define CUBE_GRAVITY 0x6B
-#define MINI_CUBE_GRAVITY 0x6C
+#define MINI_CUBE_GRAVITY 0x6F
 
 #define BALL_GRAVITY 0x6B
 #define MINI_BALL_GRAVITY 0x67
@@ -161,6 +161,7 @@ const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
 
 unsigned char rld_column;
 unsigned char spr_index;
+unsigned char long_temp_x;
 
 unsigned char speed;
 unsigned char shuffle_offset;
@@ -183,6 +184,7 @@ unsigned char level;
 unsigned char level_data_bank;
 unsigned char sprite_data_bank;
 unsigned char menuselection;
+unsigned char settingvalue;
 
 unsigned char gameState;
 

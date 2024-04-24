@@ -67,6 +67,7 @@ void main(){
 		switch (gameState){
 			case 0x01: {
 				mmc3_set_prg_bank_1(0);
+				menuselection = 0;
 				state_menu(); 
 				break;
 			}

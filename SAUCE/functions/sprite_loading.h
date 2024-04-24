@@ -135,8 +135,8 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
     else if (type == SPEED_30_PORTAL) return 0x1f; // 0.5 speed portal
     else if (type == SPEED_40_PORTAL) return 0x1f; // 0.5 speed portal
     // pads
-    else if (type == YELLOW_PAD_DOWN) return 0x07; // yellow jump pad
-    else if (type == YELLOW_PAD_UP) return 0x07; // yellow jump pad Upside Down
+    else if (type == YELLOW_PAD_DOWN) return 0x02; // yellow jump pad
+    else if (type == YELLOW_PAD_UP) return 0x02; // yellow jump pad Upside Down
     else if (type == GRAVITY_PAD_DOWN) return 0x04; // Gravity Pad
     else if (type == GRAVITY_PAD_UP) return 0x04; // Gravity Pad Upside Down
 
@@ -153,9 +153,9 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
 
 
 
-#pragma code-name(push, "LVL_BANK_00")
-#pragma data-name(push, "LVL_BANK_00")
-#pragma rodata-name(push, "LVL_BANK_00")
+#pragma code-name(push, "XCD_BANK_00")
+#pragma data-name(push, "XCD_BANK_00")
+#pragma rodata-name(push, "XCD_BANK_00")
 void sprite_collide_lookup(){
     // portals
     if (tmp4 == NOSPRITE) { }
@@ -261,7 +261,7 @@ void sprite_collide_lookup(){
 	    player_gravity[currplayer] = 0; 
 	 //   if (player_vel_y[currplayer] > -0x0200) player_vel_y[currplayer] = -0x0200; 
 	   // else 
-		   if (player_vel_y[currplayer] < -0x0300) player_vel_y[currplayer] = -0x0300; 
+		   if (player_vel_y[currplayer] < -0x0290) player_vel_y[currplayer] = -0x0290; 
 	if (mini && tmp4 == GRAVITY_DOWN_PORTAL)  high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_D - 3;
 	}
     }
@@ -270,7 +270,7 @@ void sprite_collide_lookup(){
 	    player_gravity[currplayer] = 1; 
 	    //if (player_vel_y[currplayer] < 0x0200) player_vel_y[currplayer] = 0x0200; 
 //	    else
-		    if (player_vel_y[currplayer] > 0x0300) player_vel_y[currplayer] = 0x0300; 
+		    if (player_vel_y[currplayer] > 0x0290) player_vel_y[currplayer] = 0x0290; 
 	if (mini && tmp4 == GRAVITY_UP_PORTAL)  high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U + 3;
 	}
     }
@@ -315,8 +315,10 @@ void sprite_collide_lookup(){
     else if (tmp4 == MINI_PORTAL) mini = 1;
     else if (tmp4 == GROWTH_PORTAL) mini = 0;
     else if (tmp4 == DUAL_PORTAL) {
-	    dual = 1;
+	    
+	   dual = 1;
 	    if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1; }
+	else { player_x[1] = player_x[0]; player_y[1] = player_y[0]; player_gravity[1] = player_gravity[0] ^ 1; }
     }
     else if (tmp4 == SINGLE_PORTAL) {
 	    if (!twoplayer) dual = 0;
@@ -328,7 +330,7 @@ void sprite_collide_lookup(){
 
 void sprite_collide(){
 
-    Generic.x = high_byte(player_x[currplayer]);
+    Generic.x = high_byte(player_x[currplayer]) + 1;
     Generic.y = high_byte(player_y[currplayer]);
 
 	if (!mini) {
