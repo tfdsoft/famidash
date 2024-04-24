@@ -151,9 +151,9 @@ __fastcall__ char sprite_height_lookup(unsigned char type){
 
 
 
-#pragma code-name(push, "LVL_BANK_00")
-#pragma data-name(push, "LVL_BANK_00")
-#pragma rodata-name(push, "LVL_BANK_00")
+#pragma code-name(push, "XCD_BANK_00")
+#pragma data-name(push, "XCD_BANK_00")
+#pragma rodata-name(push, "XCD_BANK_00")
 void sprite_collide_lookup(){
     // portals
     if (tmp4 == NOSPRITE) { }
@@ -328,7 +328,7 @@ void sprite_collide_lookup(){
 
 void sprite_collide(){
 
-    Generic.x = high_byte(player_x[currplayer]);
+    Generic.x = high_byte(player_x[currplayer]) + 1;
     Generic.y = high_byte(player_y[currplayer]);
 
 	if (!mini) {

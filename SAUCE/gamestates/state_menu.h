@@ -245,6 +245,7 @@ void settings() {
 	pal_bg((char *)paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingsscreen);   	
+	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
 	while (1) {
 		ppu_wait_nmi();
@@ -299,7 +300,42 @@ void settings() {
 			}
 		}
 */		
-		
+		if (settingvalue == 0) {
+			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 8));
+			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 9));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 17));
+		}		
+		else if (settingvalue == 1) {
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 9));
+			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 12));
+			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 17));
+		}		
+		else if (settingvalue == 2) {
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 9));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 13));
+			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 16));
+			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 17));
+		}		
+
+		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
+			if (settingvalue == 2) { settingvalue = 0; }
+			else settingvalue++;
+		}
+
+		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
+			if (settingvalue == 0) { settingvalue = 2; }
+			else settingvalue--;
+		}
+
+
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
 			state_menu();
@@ -459,7 +495,7 @@ void state_menu() {
 	}		
 	switch (menuselection) {
 		case 0x00: levelselection(); return; break;
-		case 0x01: settings(); return; break;
+		case 0x01: settingvalue = 0; settings(); return; break;
 		case 0x02: state_menu(); return; break;
 		case 0x03: state_menu(); return; break;
 		case 0x04: state_menu(); return; break;

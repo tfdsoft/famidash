@@ -120,7 +120,7 @@ void state_game(){
 	mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
         do_the_scroll_thing(); 
 
-	mmc3_set_prg_bank_1(0);
+	mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 //        check_spr_objects();
 	if (!DEBUG_MODE) {
 		if (cube_data[0] == 1) reset_level();
@@ -142,7 +142,7 @@ void state_game(){
 		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
 //		x_movement();
 		do_the_scroll_thing2(); 
-		mmc3_set_prg_bank_1(0);
+		mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 		sprite_collide();
 		currplayer = 0;					//give back focus
 		if (twoplayer) controllingplayer = 0;		//give back controls

@@ -178,6 +178,7 @@ unsigned char level;
 unsigned char level_data_bank;
 unsigned char sprite_data_bank;
 unsigned char menuselection;
+unsigned char settingvalue;
 
 unsigned char gameState;
 
