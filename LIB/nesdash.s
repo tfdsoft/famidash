@@ -1081,6 +1081,8 @@ SpriteOffset = ptr2
     
     ldy #0
     lda (_sprite_data),y
+    cmp #$ff
+    beq @Exit
     iny
     
     ; X - 2 bytes

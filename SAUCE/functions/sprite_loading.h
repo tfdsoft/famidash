@@ -163,8 +163,6 @@ __fastcall__ char sprite_height_lookup(){
 		case LEVEL_END_TRIGGER:
 			gameState = 0x03; 
         	pal_fade_to(4,0);
-
-
 	}
     return 0;
 
