@@ -232,12 +232,14 @@ void levelselection() {
 
 
 void settings() {
+	pal_fade_to(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingsscreen);   	
 	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
+	pal_fade_to(0,4);
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
@@ -354,8 +356,8 @@ void settings() {
 
 
 void state_menu() {
+	pal_fade_to(4,0);
 	ppu_off();
-	pal_bright(0);
     pal_bg((char *)splashMenu);
 
 	mmc3_set_8kb_chr(12);
