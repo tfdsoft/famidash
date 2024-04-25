@@ -46,7 +46,7 @@ void cube_movement(void){
 		}
 	} else {
 		if(bg_coll_U() && !bg_coll_R()){ // check collision above
-			high_byte(player_y[currplayer]) -= eject_U + 1;
+			high_byte(player_y[currplayer]) -= eject_U;
 			low_byte(player_y[currplayer]) = 0;
 			player_vel_y[currplayer] = 0;
 		}
