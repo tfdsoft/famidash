@@ -352,8 +352,8 @@ void settings() {
 
 
 void state_menu() {
+	pal_fade_to(4,0);
 	ppu_off();
-	pal_bright(0);
     pal_bg((char *)splashMenu);
 
 	mmc3_set_8kb_chr(12);
