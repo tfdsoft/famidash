@@ -110,7 +110,7 @@ unsigned char temp_x;
 unsigned char temp_y;
 unsigned char temp_room;
 unsigned char dual;
-unsigned char twoplayer;
+
 
 unsigned char * sprite_data;
 unsigned char * level_data;
@@ -126,12 +126,17 @@ unsigned char coin1_obtained[LEVEL_COUNT];
 unsigned char coin2_obtained[LEVEL_COUNT];
 unsigned char coin3_obtained[LEVEL_COUNT];
 
-unsigned char LEVELCOMPLETE[0x20];
+unsigned char LEVELCOMPLETE[LEVEL_COUNT];
 
+unsigned char invisible;
+unsigned char PRACTICE_ENABLED;
+unsigned char twoplayer;
 
 unsigned char practice_famistudio_state[0xbf];
 
 #pragma bss-name(pop)
+
+
 
 extern unsigned char famistudio_state[0xbf];
 
@@ -165,7 +170,6 @@ unsigned char kandotemp;
 unsigned char kandotemp2[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
-unsigned char invisible;
 unsigned long attempts;
 unsigned char currplayer;
 unsigned char controllingplayer;

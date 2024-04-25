@@ -60,7 +60,7 @@ void state_game(){
 	if (pad_new[controllingplayer] & PAD_UP) player_gravity[currplayer] ^= 0x01;
 
 
-	if (pad_new[controllingplayer] & PAD_B) {
+	if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
 		// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 		practice_player_x[0] = player_x[0];
 		long_temp_x = high_byte(player_x[0]);
@@ -162,7 +162,7 @@ void state_game(){
         color_emphasis(0);
         
         
-         if (DEBUG_MODE) gray_line();
+  //       if (DEBUG_MODE) gray_line();
         if (gameState != 0x02) return;
     }
 }

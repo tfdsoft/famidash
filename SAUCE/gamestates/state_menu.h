@@ -186,23 +186,10 @@ void levelselection() {
 
 
 		if (pad_new[0] & PAD_START){
-			if (pad[0] & PAD_A){
-				if (pad[0] & PAD_B){
-					invisible = 1;
-					famistudio_sfx_play(sfx_death, 0);
-					gameState = 0x02;
-					pal_fade_to(4,0);
-					kandotemp = 0;
-					return;
-				}
-			}
-			else {
-				gameState = 0x02;
-				pal_fade_to(4,0);
-				kandotemp = 0;
-				return;
-			}
-			
+			gameState = 0x02;
+			pal_fade_to(4,0);
+			kandotemp = 0;
+			return;
 		}
 
 		if (pad_new[0] & (PAD_B)){
@@ -302,28 +289,28 @@ void settings() {
 */		
 		if (settingvalue == 0) {
 			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 9));
 			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 13));
 			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 17));
 		}		
 		else if (settingvalue == 1) {
 			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 9));
 			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 13));
 			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 17));
 		}		
 		else if (settingvalue == 2) {
 			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 9));
 			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 13));
 			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 16));
-			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 17));
 		}		
+
+		if (twoplayer) 	one_vram_buffer_horz_repeat('d', 1, NTADR_A(6, 8));
+		else 	one_vram_buffer_horz_repeat('e', 1, NTADR_A(6, 8));
+
+		if (invisible) 	one_vram_buffer_horz_repeat('d', 1, NTADR_A(6, 12));
+		else 	one_vram_buffer_horz_repeat('e', 1, NTADR_A(6, 12));
+
+		if (PRACTICE_ENABLED) 	one_vram_buffer_horz_repeat('d', 1, NTADR_A(6, 16));
+		else 	one_vram_buffer_horz_repeat('e', 1, NTADR_A(6, 16));
 
 		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
 			if (settingvalue == 2) { settingvalue = 0; }
@@ -335,9 +322,22 @@ void settings() {
 			else settingvalue--;
 		}
 
-
+		if (pad_new[0] & PAD_START) {
+			switch (settingvalue) {
+				case 0x00: twoplayer ^= 1; break;
+				case 0x01: invisible ^= 1; break;
+				case 0x02: PRACTICE_ENABLED ^= 1; break;
+			};
+		}
+			
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(6, 8));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(6, 12));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(6, 16));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
+			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
 			state_menu();
 			return;
 		}
@@ -414,7 +414,7 @@ void state_menu() {
 	}
 
 	kandotemp = 1;
-	invisible = 0;
+//	invisible = 0;
 	TOTALCOINS = 0;
 	TOTALCOINSONES = 0;
 	TOTALCOINSTENS = 0;
