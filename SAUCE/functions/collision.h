@@ -3,11 +3,11 @@ char bg_collision_sub(void){
         
 
 	if (!player_gravity[currplayer]) {
-		if (!mini) coordinates = (temp_x >> 4) + (temp_y & 0xf0);
+		if (!mini) coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
 		else coordinates = (temp_x >> 4) + ((temp_y + 6) & 0xf0);
 	}
 	else {
-		if (!mini) coordinates = (temp_x >> 4) + (temp_y & 0xf0);
+		if (!mini) coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
 		else coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
 	}
     // we just need 4 bits each from x and y
@@ -61,7 +61,7 @@ char bg_coll_R(void){
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
     if(bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_TOP) return 0;
-    if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) return 1;
+    if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) return 0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
     return 0;
@@ -136,7 +136,7 @@ char bg_coll_U(void){
 
 char bg_coll_D(void){
 	// check 2 points on the bottom side
-	tmp5 = Generic.x + low2bytes(scroll_x) -1;
+	tmp5 = Generic.x + low2bytes(scroll_x);
 	temp_x = (char)tmp5; // low byte
 
 	//if (!mini) 
@@ -151,7 +151,7 @@ char bg_coll_D(void){
 	else eject_D = (temp_y - 15) & 0x0f;
 
 	if(!player_gravity[currplayer]) {
-		if (player_vel_y[currplayer] < 0) return 0;
+//		if (player_vel_y[currplayer] < 0) return 0;
 		if (mini) { 
 			tmp1 = Generic.y + (Generic.height+2/2);
 			tmp5 = add_scroll_y(tmp1, scroll_y);
@@ -258,9 +258,7 @@ void bg_coll_death(void) {
 			temp_room = tmp5 >> 8; // high byte
 			if(bg_collision_sub() ) cube_data[0] = 0x01;
 		}
-    else if(bg_collision_sub() & COL_BOTTOM && !player_gravity[currplayer]) { }
-    else if(bg_collision_sub() & COL_TOP && player_gravity[currplayer]) { }
-    else if(bg_collision_sub() ) cube_data[0] = 0x01;
+	else if(bg_collision_sub() ) cube_data[0] = 0x01;
 
     
 	++temp_x; // low byte
@@ -272,9 +270,7 @@ void bg_coll_death(void) {
 			temp_room = tmp5 >> 8; // high byte
 			if(bg_collision_sub() ) cube_data[0] = 0x01;	
 	}
-    else if(bg_collision_sub() & COL_BOTTOM && !player_gravity[currplayer]) { }
-    else if(bg_collision_sub() & COL_TOP && player_gravity[currplayer]) { }
-    else if(bg_collision_sub() ) cube_data[0] = 0x01;
+	else if(bg_collision_sub() ) cube_data[0] = 0x01;
     
 
 	if(!DEBUG_MODE && cube_data[0] & 0x01) {
