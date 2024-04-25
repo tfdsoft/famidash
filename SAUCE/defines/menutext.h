@@ -50,3 +50,5 @@ const unsigned char levelAtext[]="XSTEP";
 const unsigned char levelBtext[]="CLUTTERFUNK";
 const unsigned char levelCtext[]="TEST";
 const unsigned char levelDtext[]="TEST2";
+const unsigned char levelEtext[]="TEST3";
+const unsigned char levelFtext[]="TEST4";

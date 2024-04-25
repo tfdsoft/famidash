@@ -23,7 +23,7 @@ const unsigned char hiNTAddrTable[]={
 };
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext, levelDtext
+  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext, levelDtext, levelEtext, levelFtext
 };
 
 #define GAME_MENU_TITLE_X_OFFSET 9
@@ -41,6 +41,8 @@ const unsigned char level_text_padding[] = {
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelBtext)) / 2),
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelCtext)) / 2),
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelDtext)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelEtext)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelFtext)) / 2),
 };
 const unsigned char level_text_size[] = {
     sizeof(level1text) - 1,
@@ -56,6 +58,8 @@ const unsigned char level_text_size[] = {
 	sizeof(levelBtext) - 1,
 	sizeof(levelCtext) - 1,
 	sizeof(levelDtext) - 1,
+	sizeof(levelEtext) - 1,
+	sizeof(levelFtext) - 1,
 };
 
 const char* coin_counter[] = {
@@ -200,7 +204,7 @@ void levelselection() {
 			
 		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
-			if (level > 0x0C){
+			if (level > 0x0E){
 				level = 0x00;
 			}
 			refreshmenu();
@@ -209,7 +213,7 @@ void levelselection() {
 		if (pad_new[0] & PAD_LEFT){
 			--level;
 			if (level == 0xFF){
-				level = 0x0C;
+				level = 0x0E;
 			}
 			
 			//break;

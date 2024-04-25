@@ -19,6 +19,8 @@ _level_list:
   .word (level_data_clutterfunk)
   .word (level_data_test)
   .word (level_data_test2)
+  .word (level_data_test3)
+  .word (level_data_test4)
 
 _sprite_list:
   .word (sprite_data_stereomadness)
@@ -34,6 +36,8 @@ _sprite_list:
   .word (sprite_data_clutterfunk)
   .word (sprite_data_test)
   .word (sprite_data_test2)
+  .word (sprite_data_test3)
+  .word (sprite_data_test4)
 
 _level_bank_list:
   .byte .lobyte(.bank(level_data_stereomadness))
@@ -49,6 +53,8 @@ _level_bank_list:
   .byte .lobyte(.bank(level_data_clutterfunk))
   .byte .lobyte(.bank(level_data_test))
   .byte .lobyte(.bank(level_data_test2))
+  .byte .lobyte(.bank(level_data_test3))
+  .byte .lobyte(.bank(level_data_test4))
 
 _sprite_bank_list:
   .byte .lobyte(.bank(sprite_data_stereomadness))
@@ -64,3 +70,5 @@ _sprite_bank_list:
   .byte .lobyte(.bank(sprite_data_clutterfunk))
   .byte .lobyte(.bank(sprite_data_test))
   .byte .lobyte(.bank(sprite_data_test2))
+  .byte .lobyte(.bank(sprite_data_test3))
+  .byte .lobyte(.bank(sprite_data_test4))

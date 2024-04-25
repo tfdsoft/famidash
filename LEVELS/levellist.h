@@ -47,6 +47,8 @@ const unsigned char difficulty_list[] = {
     INSANE,
     EASY,
     EASY,
+    EASY,
+    EASY,
 };
 
 const unsigned char stars_list[] = {
@@ -61,6 +63,8 @@ const unsigned char stars_list[] = {
 	9,
 	10,
 	11,
+	0,
+	0,
 	0,
 	0,
 };
