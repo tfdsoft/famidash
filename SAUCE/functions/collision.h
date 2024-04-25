@@ -151,7 +151,7 @@ char bg_coll_D(void){
 	else eject_D = (temp_y - 15) & 0x0f;
 
 	if(!player_gravity[currplayer]) {
-//		if (player_vel_y[currplayer] < 0) return 0;
+		if (player_vel_y[currplayer] < 0) return 0;
 		if (mini) { 
 			tmp1 = Generic.y + (Generic.height+2/2);
 			tmp5 = add_scroll_y(tmp1, scroll_y);
