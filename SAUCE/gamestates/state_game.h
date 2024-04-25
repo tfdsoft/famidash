@@ -94,7 +94,7 @@ void state_game(){
 			if (pad_new[0] & PAD_SELECT) { 	gameState = 1; levelselection(); return; }
 		}
 		famistudio_music_pause(0);
-		famistudio_update();
+		//famistudio_update();
 	}
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 

@@ -54,7 +54,7 @@ void reset_level(void) {
     player_vel_y[0] = 0;
     player_vel_x[1] = 0;
     player_vel_y[1] = 0;
-    invincible_counter = 8;
+    if (!has_practice_point)    invincible_counter = 8;
     cube_data[0] = 0;
     cube_data[1] = 0;
     
