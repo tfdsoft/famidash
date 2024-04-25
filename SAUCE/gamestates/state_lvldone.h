@@ -204,6 +204,7 @@ void state_lvldone() {
 				// pal_spr((char *)paletteDefaultSP);
 
 				gameState = 1;
+				levelselection();
 				return;
 			}
 			break;

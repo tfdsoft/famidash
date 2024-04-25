@@ -83,9 +83,22 @@ void state_game(){
 		has_practice_point = 1;
 	}
 
+	if (pad_new[0] & PAD_START) {
+		pad_new[0] = 0;
+		famistudio_music_pause(1);
+		famistudio_update();
+		while (!(pad_new[0] & PAD_START)) {
+			ppu_wait_nmi();
+			pad[0] = pad_poll(0); // read the second controller
+			pad_new[0] = get_pad_new(0);	
+			if (pad_new[0] & PAD_SELECT) { 	gameState = 1; levelselection(); return; }
+		}
+		famistudio_music_pause(0);
+		famistudio_update();
+	}
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 
-	if (pad_new[0] & PAD_START) {
+	if (pad_new[0] & PAD_DOWN) {
 		mini ^= 1;
 	}
 
