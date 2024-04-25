@@ -322,7 +322,7 @@ void settings() {
 			else settingvalue--;
 		}
 
-		if (pad_new[0] & PAD_START) {
+		if (pad_new[0] & PAD_START || pad_new[0] & PAD_A) {
 			switch (settingvalue) {
 				case 0x00: twoplayer ^= 1; break;
 				case 0x01: invisible ^= 1; break;
