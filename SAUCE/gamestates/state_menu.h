@@ -294,29 +294,29 @@ void settings() {
 		}
 */		
 		if (settingvalue == 0) {
-			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
+			one_vram_buffer('c', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
 		}		
 		else if (settingvalue == 1) {
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer('c', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
 		}		
 		else if (settingvalue == 2) {
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 16));
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer('c', NTADR_A(4, 16));
 		}		
 
-		if (twoplayer) 	one_vram_buffer_horz_repeat('d', 1, NTADR_A(6, 8));
-		else 	one_vram_buffer_horz_repeat('e', 1, NTADR_A(6, 8));
+		if (twoplayer) 	one_vram_buffer('d', NTADR_A(6, 8));
+		else 	one_vram_buffer('e', NTADR_A(6, 8));
 
-		if (invisible) 	one_vram_buffer_horz_repeat('d', 1, NTADR_A(6, 12));
-		else 	one_vram_buffer_horz_repeat('e', 1, NTADR_A(6, 12));
+		if (invisible) 	one_vram_buffer('d', NTADR_A(6, 12));
+		else 	one_vram_buffer('e', NTADR_A(6, 12));
 
-		if (PRACTICE_ENABLED) 	one_vram_buffer_horz_repeat('d', 1, NTADR_A(6, 16));
-		else 	one_vram_buffer_horz_repeat('e', 1, NTADR_A(6, 16));
+		if (PRACTICE_ENABLED) 	one_vram_buffer('d', NTADR_A(6, 16));
+		else 	one_vram_buffer('e', NTADR_A(6, 16));
 
 		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
 			if (settingvalue == 2) { settingvalue = 0; }
@@ -338,12 +338,12 @@ void settings() {
 			
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(6, 8));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(6, 12));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(6, 16));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
+			one_vram_buffer(' ', NTADR_A(6, 8));
+			one_vram_buffer(' ', NTADR_A(6, 12));
+			one_vram_buffer(' ', NTADR_A(6, 16));
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
 			state_menu();
 			return;
 		}
