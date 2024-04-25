@@ -937,12 +937,12 @@ ParallaxBufferCol5:
 ; 	RTS
 
 ; @string_ptrs_lo:
-;     .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext, <_levelBtext, <_levelCtext, <_levelDtext
+;     .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext, <_levelBtext, <_levelCtext, <_levelDtext, <_levelEtext, <_levelFtext
 ; @string_ptrs_hi:
-;     .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext, >_levelBtext, >_levelCtext, >_levelDtext
+;     .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext, >_levelBtext, >_levelCtext, >_levelDtext, >_levelEtext, >_levelFtext
 ; @padding:
 ;     ; Calculation: 15 - length of string
-;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10, 3, 11, 10
+;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10, 3, 11, 10, 10, 10
 
 ;void __fastcall__ movement(void);
 .pushseg
