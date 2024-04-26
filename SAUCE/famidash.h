@@ -52,7 +52,7 @@
 #define MINI_SHIP_MAX_FALLSPEED 0x340
 
 #define SHIP_GRAVITY 0x35
-#define MINI_SHIP_GRAVITY 0x35
+#define MINI_SHIP_GRAVITY 0x30
 
 #define COIN_1 0x01
 #define COIN_2 0x02

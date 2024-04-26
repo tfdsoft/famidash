@@ -61,7 +61,8 @@ char bg_coll_R(void){
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
     if(bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_TOP) return 0;
-    if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) return 0;
+    if(bg_collision_sub() & COL_DEATH_TOP) return 1;
+    if(bg_collision_sub() & COL_DEATH_BOTTOM) return 0;
     if(bg_collision_sub() & COL_ALL) return 1;
     
     return 0;
@@ -117,7 +118,7 @@ char bg_coll_U(void){
 		temp_x = (char)tmp5; // low byte
 
 		if(bg_collision_sub() & COL_TOP || bg_collision_sub() & COL_DEATH_TOP) {
-			if (bg_collision_sub() & COL_DEATH_TOP) tmp1 = Generic.y+12;
+			if (bg_collision_sub() & COL_DEATH_TOP) tmp1 = Generic.y+7;
 			else tmp1 = Generic.y+7;
 			tmp5 = add_scroll_y(tmp1, scroll_y);
 			temp_y = (char)tmp5; // low byte
