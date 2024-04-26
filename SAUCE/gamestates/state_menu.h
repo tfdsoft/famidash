@@ -154,8 +154,9 @@ void __fastcall__ refreshmenu(void) {
 void state_menu();
 void levelselection() {
   
-    
-    
+	famistudio_music_pause(1);
+	music_update();
+	pal_fade_to(4,0);
   	ppu_off();
 	pal_bright(0);
 //    pal_bg((char *)paletteMenu);
@@ -176,6 +177,7 @@ void levelselection() {
 	attempts = 1;
 
 	ppu_on_all();
+	famistudio_music_pause(0);
 	pal_fade_to(0,4);
 	#include "../defines/mainmenu_charmap.h"
 	while (1){
@@ -190,6 +192,12 @@ void levelselection() {
 
 
 		if (pad_new[0] & PAD_START){
+			famistudio_sfx_play(sfx_start_level, 0);
+			famistudio_music_stop();
+			for (tmp1 = 0; tmp1 < 30; tmp1++){
+				ppu_wait_nmi();
+				music_update();
+			}
 			gameState = 0x02;
 			pal_fade_to(4,0);
 			kandotemp = 0;
@@ -204,6 +212,7 @@ void levelselection() {
 			
 		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
+			famistudio_sfx_play(sfx_select, 0);
 			if (level > 0x0E){
 				level = 0x00;
 			}
@@ -212,6 +221,7 @@ void levelselection() {
 		}
 		if (pad_new[0] & PAD_LEFT){
 			--level;
+			famistudio_sfx_play(sfx_select, 0); 
 			if (level == 0xFF){
 				level = 0x0E;
 			}
@@ -227,6 +237,9 @@ void levelselection() {
 
 
 void bgmtest() {
+	famistudio_music_stop();
+	music_update();
+	kandotemp=0;
 	pal_fade_to(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
@@ -265,6 +278,8 @@ void bgmtest() {
 
 
 void settings() {
+	famistudio_music_pause(1);
+	music_update();
 	pal_fade_to(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
@@ -273,6 +288,7 @@ void settings() {
 	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
 	pal_fade_to(0,4);
+	famistudio_music_pause(0);
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
@@ -353,12 +369,12 @@ void settings() {
 
 		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
 			if (settingvalue == 2) { settingvalue = 0; }
-			else settingvalue++;
+			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
 			if (settingvalue == 0) { settingvalue = 2; }
-			else settingvalue--;
+			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & PAD_START || pad_new[0] & PAD_A) {
@@ -389,6 +405,8 @@ void settings() {
 
 
 void state_menu() {
+	famistudio_music_pause(1);
+	music_update();
 	pal_fade_to(4,0);
 	ppu_off();
     pal_bg((char *)splashMenu);
@@ -479,6 +497,7 @@ void state_menu() {
     vram_adr(NAMETABLE_A);
     vram_unrle(game_start_screen);
  	ppu_on_all();
+	famistudio_music_pause(0);
 	pal_fade_to(0,4);
 		if (menuselection == 0) {
 			one_vram_buffer_horz_repeat('a', 1, NTADR_A(15, 11));
@@ -536,9 +555,9 @@ void state_menu() {
 	}		
 	switch (menuselection) {
 		case 0x00: levelselection(); return; break;
-		case 0x01: settingvalue = 0; settings(); return; break;
+		case 0x01: state_menu(); return; break;
 		case 0x02: bgmtest(); return; break;
-		case 0x03: state_menu(); return; break;
+		case 0x03: settingvalue = 0; settings(); return; break;
 		case 0x04: state_menu(); return; break;
 			
 	};
