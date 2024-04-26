@@ -23,7 +23,7 @@ const unsigned char hiNTAddrTable[]={
 };
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext, levelDtext
+  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext, levelDtext, levelEtext, levelFtext
 };
 
 #define GAME_MENU_TITLE_X_OFFSET 9
@@ -41,6 +41,8 @@ const unsigned char level_text_padding[] = {
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelBtext)) / 2),
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelCtext)) / 2),
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelDtext)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelEtext)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelFtext)) / 2),
 };
 const unsigned char level_text_size[] = {
     sizeof(level1text) - 1,
@@ -56,6 +58,8 @@ const unsigned char level_text_size[] = {
 	sizeof(levelBtext) - 1,
 	sizeof(levelCtext) - 1,
 	sizeof(levelDtext) - 1,
+	sizeof(levelEtext) - 1,
+	sizeof(levelFtext) - 1,
 };
 
 const char* coin_counter[] = {
@@ -150,8 +154,9 @@ void __fastcall__ refreshmenu(void) {
 void state_menu();
 void levelselection() {
   
-    
-    
+	famistudio_music_pause(1);
+	music_update();
+	pal_fade_to(4,0);
   	ppu_off();
 	pal_bright(0);
 //    pal_bg((char *)paletteMenu);
@@ -172,6 +177,7 @@ void levelselection() {
 	attempts = 1;
 
 	ppu_on_all();
+	famistudio_music_pause(0);
 	pal_fade_to(0,4);
 	#include "../defines/mainmenu_charmap.h"
 	while (1){
@@ -186,23 +192,16 @@ void levelselection() {
 
 
 		if (pad_new[0] & PAD_START){
-			if (pad[0] & PAD_A){
-				if (pad[0] & PAD_B){
-					invisible = 1;
-					famistudio_sfx_play(sfx_death, 0);
-					gameState = 0x02;
-					pal_fade_to(4,0);
-					kandotemp = 0;
-					return;
-				}
+			famistudio_sfx_play(sfx_start_level, 0);
+			famistudio_music_stop();
+			for (tmp1 = 0; tmp1 < 30; tmp1++){
+				ppu_wait_nmi();
+				music_update();
 			}
-			else {
-				gameState = 0x02;
-				pal_fade_to(4,0);
-				kandotemp = 0;
-				return;
-			}
-			
+			gameState = 0x02;
+			pal_fade_to(4,0);
+			kandotemp = 0;
+			return;
 		}
 
 		if (pad_new[0] & (PAD_B)){
@@ -213,7 +212,8 @@ void levelselection() {
 			
 		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
-			if (level > 0x0C){
+			famistudio_sfx_play(sfx_select, 0);
+			if (level > 0x0E){
 				level = 0x00;
 			}
 			refreshmenu();
@@ -221,8 +221,9 @@ void levelselection() {
 		}
 		if (pad_new[0] & PAD_LEFT){
 			--level;
+			famistudio_sfx_play(sfx_select, 0); 
 			if (level == 0xFF){
-				level = 0x0C;
+				level = 0x0E;
 			}
 			
 			//break;
@@ -235,18 +236,136 @@ void levelselection() {
 
 
 
+void bgmtest() {
+	famistudio_music_stop();
+	music_update();
+	kandotemp=0;
+	pal_fade_to(4,0);
+	ppu_off();
+	pal_bg((char *)paletteMenu);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(bgmtestscreen);   	
+	#include "../defines/mainmenu_charmap.h"
+	ppu_on_all();
+	pal_fade_to(0,4);
+	while (1) {
+		ppu_wait_nmi();
+		music_update();
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+		if (settingvalue == 0) {
+			one_vram_buffer('c', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
+		}		
+		else if (settingvalue == 1) {
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer('c', NTADR_A(11, 14));
+		}
+		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
+		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
+		if (pad_new[0] & PAD_B) {
+			tmp3--;			
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
+			//state_menu();
+			return;
+		}
+	}
+}
 
 
+
+
+
+void funsettings() {
+	famistudio_music_pause(1);
+	music_update();
+	pal_fade_to(4,0);
+	ppu_off();
+	pal_bg((char *)paletteMenu);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(funsettingscreen);   	
+	#include "../defines/mainmenu_charmap.h"
+	ppu_on_all();
+	pal_fade_to(0,4);
+	famistudio_music_pause(0);
+	while (1) {
+		ppu_wait_nmi();
+		music_update();
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+		if (settingvalue == 0) {
+			one_vram_buffer('c', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
+		}		
+		else if (settingvalue == 1) {
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer('c', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
+		}		
+		else if (settingvalue == 2) {
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer('c', NTADR_A(4, 16));
+		}		
+
+		if (twoplayer) 	one_vram_buffer('d', NTADR_A(6, 8));
+		else 	one_vram_buffer('e', NTADR_A(6, 8));
+
+		if (invisible) 	one_vram_buffer('d', NTADR_A(6, 12));
+		else 	one_vram_buffer('e', NTADR_A(6, 12));
+
+		if (PRACTICE_ENABLED) 	one_vram_buffer('d', NTADR_A(6, 16));
+		else 	one_vram_buffer('e', NTADR_A(6, 16));
+
+		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
+			if (settingvalue == 2) { settingvalue = 0; }
+			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
+		}
+
+		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
+			if (settingvalue == 0) { settingvalue = 2; }
+			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
+		}
+
+		if (pad_new[0] & PAD_START || pad_new[0] & PAD_A) {
+			switch (settingvalue) {
+				case 0x00: twoplayer ^= 1; break;
+				case 0x01: invisible ^= 1; break;
+				case 0x02: PRACTICE_ENABLED ^= 1; break;
+			};
+		}
+			
+		if (pad_new[0] & PAD_B) {
+			tmp3--;			
+			one_vram_buffer(' ', NTADR_A(6, 8));
+			one_vram_buffer(' ', NTADR_A(6, 12));
+			one_vram_buffer(' ', NTADR_A(6, 16));
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
+			//state_menu();
+			return;
+		}
+
+	}
+}
 
 
 
 void settings() {
+	famistudio_music_pause(1);
+	music_update();
+	pal_fade_to(4,0);
 	ppu_off();
-	pal_bg((char *)paletteMenu);
+	pal_bg((char *)paletteSettings);
 	vram_adr(NAMETABLE_A);
-	vram_unrle(settingsscreen);   	
+	vram_unrle(settingscreen);   	
 	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
+	pal_fade_to(0,4);
+	famistudio_music_pause(0);
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
@@ -300,45 +419,100 @@ void settings() {
 			}
 		}
 */		
+
 		if (settingvalue == 0) {
-			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 9));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 13));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 17));
+			one_vram_buffer('c', NTADR_A(4, 7));
+			one_vram_buffer(' ', NTADR_A(4, 9));
+			one_vram_buffer(' ', NTADR_A(4, 11));
+			one_vram_buffer(' ', NTADR_A(4, 13));
 		}		
 		else if (settingvalue == 1) {
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 9));
-			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 13));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 16));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 17));
+			one_vram_buffer(' ', NTADR_A(4, 7));
+			one_vram_buffer('c', NTADR_A(4, 9));
+			one_vram_buffer(' ', NTADR_A(4, 11));
+			one_vram_buffer(' ', NTADR_A(4, 13));
 		}		
 		else if (settingvalue == 2) {
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 8));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 9));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 12));
-			one_vram_buffer_horz_repeat(' ', 1, NTADR_A(4, 13));
-			one_vram_buffer_horz_repeat('c', 1, NTADR_A(4, 16));
-			one_vram_buffer_horz_repeat('d', 1, NTADR_A(4, 17));
+			one_vram_buffer(' ', NTADR_A(4, 7));
+			one_vram_buffer(' ', NTADR_A(4, 9));
+			one_vram_buffer('c', NTADR_A(4, 11));
+			one_vram_buffer(' ', NTADR_A(4, 13));
+		}		
+		else if (settingvalue == 3) {
+			one_vram_buffer(' ', NTADR_A(4, 7));
+			one_vram_buffer(' ', NTADR_A(4, 9));
+			one_vram_buffer(' ', NTADR_A(4, 11));
+			one_vram_buffer('c', NTADR_A(4, 13));
 		}		
 
+		if (oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 7));
+		else if(!oneptwoplayer) one_vram_buffer('f', NTADR_A(26, 7));
+
+		if (deathsound) one_vram_buffer('g', NTADR_A(26, 9));
+		else if(!deathsound) one_vram_buffer('f', NTADR_A(26, 9));
+
+		if (jumpsound) one_vram_buffer('g', NTADR_A(26, 11));
+		else if(!jumpsound) one_vram_buffer('f', NTADR_A(26, 11));
+
 		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
-			if (settingvalue == 2) { settingvalue = 0; }
-			else settingvalue++;
+			if (settingvalue == 3) { settingvalue = 0; famistudio_sfx_play(sfx_select, 0); }
+			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
-			if (settingvalue == 0) { settingvalue = 2; }
-			else settingvalue--;
+			if (settingvalue == 0) { settingvalue = 3; famistudio_sfx_play(sfx_select, 0); }
+			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
+		}
+		
+		if (pad_new[0] & PAD_A || pad_new[0] & PAD_START) {
+			if (settingvalue == 0) oneptwoplayer ^= 1;
+			else if (settingvalue == 1) deathsound ^= 1;
+			else if (settingvalue == 2) jumpsound ^= 1;
+			else if (settingvalue == 3) { 
+					for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+						coin1_obtained[tmp2] = 0;
+						coin2_obtained[tmp2] = 0;
+						coin3_obtained[tmp2] = 0;
+					}
+							
+					tmp2 = 0;
+					while (tmp2 < 0x20) {
+						LEVELCOMPLETE[tmp2] = 0;
+						tmp2++;
+					}
+				
+					SRAM_VALIDATE[0x0E] = 0;
+					SRAM_VALIDATE[0x0F] = 0;
+					SRAM_VALIDATE[0x10] = 0;
+					SRAM_VALIDATE[0x11] = 0;
+					SRAM_VALIDATE[0x12] = 0;
+					SRAM_VALIDATE[0x13] = 0;
+					SRAM_VALIDATE[0x14] = 0;
+					SRAM_VALIDATE[0x15] = 0;
+					SRAM_VALIDATE[0x16] = 0;
+					SRAM_VALIDATE[0x17] = 0;
+					SRAM_VALIDATE[0x18] = 0;
+					SRAM_VALIDATE[0x19] = 0;
+					SRAM_VALIDATE[0x1A] = 0;
+					SRAM_VALIDATE[0x1B] = 0;
+					SRAM_VALIDATE[0x1C] = 0;
+					SRAM_VALIDATE[0x1D] = 0;
+					SRAM_VALIDATE[0x1E] = 0;
+					SRAM_VALIDATE[0x1F] = 0;
+					TOTALCOINSONES = 0;
+					TOTALCOINSTENS = 0;
+					deathsound = 1;
+				//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
+				//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
+					famistudio_sfx_play(sfx_death, 0);
+				//	one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));					
+			}
 		}
 
 
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
-			state_menu();
+			//state_menu();
 			return;
 		}
 
@@ -350,8 +524,10 @@ void settings() {
 
 
 void state_menu() {
+	famistudio_music_pause(1);
+	music_update();
+	pal_fade_to(4,0);
 	ppu_off();
-	pal_bright(0);
     pal_bg((char *)splashMenu);
 
 	mmc3_set_8kb_chr(12);
@@ -366,8 +542,10 @@ void state_menu() {
 		case 0x01:	break;
 	}
 
-
+	settingvalue = 0;
+	
 	has_practice_point = 0;
+	
 	#include "../defines/mainmenu_charmap.h"
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
@@ -375,13 +553,13 @@ void state_menu() {
 	// Get it? it spells DASH
 	if (SRAM_VALIDATE[0] != 0x0D
 	 || SRAM_VALIDATE[1] != 0x0A
-	 || SRAM_VALIDATE[2] != 0x05
-	 || SRAM_VALIDATE[3] != 0x06) {
+	 || SRAM_VALIDATE[2] != 0x01
+	 || SRAM_VALIDATE[3] != 0x01) {
 		// set the validation header and then reset coin counts
 		SRAM_VALIDATE[0] = 0x0d;
 		SRAM_VALIDATE[1] = 0x0a;
-		SRAM_VALIDATE[2] = 0x05;
-		SRAM_VALIDATE[3] = 0x06;
+		SRAM_VALIDATE[2] = 0x01;
+		SRAM_VALIDATE[3] = 0x01;
 		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
 			coin1_obtained[tmp2] = 0;
 			coin2_obtained[tmp2] = 0;
@@ -411,10 +589,14 @@ void state_menu() {
 		SRAM_VALIDATE[0x1D] = 0;
 		SRAM_VALIDATE[0x1E] = 0;
 		SRAM_VALIDATE[0x1F] = 0;
+		deathsound = 1;
+		jumpsound = 0;
+		twoplayer = 0;
+		oneptwoplayer = 0;
 	}
 
 	kandotemp = 1;
-	invisible = 0;
+//	invisible = 0;
 	TOTALCOINS = 0;
 	TOTALCOINSONES = 0;
 	TOTALCOINSTENS = 0;
@@ -438,6 +620,7 @@ void state_menu() {
     vram_adr(NAMETABLE_A);
     vram_unrle(game_start_screen);
  	ppu_on_all();
+	famistudio_music_pause(0);
 	pal_fade_to(0,4);
 		if (menuselection == 0) {
 			one_vram_buffer_horz_repeat('a', 1, NTADR_A(15, 11));
@@ -497,9 +680,9 @@ void state_menu() {
 	}		
 	switch (menuselection) {
 		case 0x00: levelselection(); return; break;
-		case 0x01: settingvalue = 0; settings(); return; break;
-		case 0x02: state_menu(); return; break;
-		case 0x03: state_menu(); return; break;
+		case 0x01: settingvalue = 0; funsettings(); return; break;
+		case 0x02: bgmtest(); return; break;
+		case 0x03: settingvalue = 0; settings(); return; break;
 		case 0x04: state_menu(); return; break;
 			
 	};

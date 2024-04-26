@@ -15,7 +15,9 @@ SET all_levels= ^
     xstep ^
     clutterfunk ^
     test ^
-    test2
+    test2 ^
+    test3 ^
+    test4 ^
 
 
 echo Exporting everything %all_levels%

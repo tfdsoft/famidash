@@ -21,7 +21,7 @@
 #define MINI_CUBE_WIDTH 0x08
 #define MINI_CUBE_HEIGHT 0x07
 
-#define JUMP_VEL -0x580
+#define JUMP_VEL -0x590
 #define MINI_JUMP_VEL -0x4D0
 #define UFO_JUMP_VEL -0x530
 #define MINI_UFO_JUMP_VEL -0x500
@@ -52,7 +52,7 @@
 #define MINI_SHIP_MAX_FALLSPEED 0x340
 
 #define SHIP_GRAVITY 0x35
-#define MINI_SHIP_GRAVITY 0x35
+#define MINI_SHIP_GRAVITY 0x30
 
 #define COIN_1 0x01
 #define COIN_2 0x02
@@ -74,6 +74,9 @@ unsigned char tmp8;
 unsigned char* tmpptr1;
 unsigned char* tmpptr2;
 long unsigned int tmplong;
+unsigned char selectedbgm;
+unsigned char selectedsfx;
+
 
 #pragma zpsym("tmpptr1")
 #pragma zpsym("tmpptr2")
@@ -92,7 +95,6 @@ unsigned char collision_L;
 unsigned char collision_R;
 unsigned char collision_U;
 unsigned char collision_D;
-unsigned char coordinates;
 
 unsigned short old_x;
 unsigned short old_y;
@@ -113,7 +115,7 @@ unsigned char temp_x;
 unsigned char temp_y;
 unsigned char temp_room;
 unsigned char dual;
-unsigned char twoplayer;
+
 
 unsigned char * sprite_data;
 unsigned char * level_data;
@@ -127,17 +129,25 @@ unsigned char * level_data;
 #pragma bss-name(push, "SRAM")
 unsigned char SRAM_VALIDATE[4];
 
-#define LEVEL_COUNT 0x0D
+#define LEVEL_COUNT 0x0F
 unsigned char coin1_obtained[LEVEL_COUNT];
 unsigned char coin2_obtained[LEVEL_COUNT];
 unsigned char coin3_obtained[LEVEL_COUNT];
 
-unsigned char LEVELCOMPLETE[0x20];
+unsigned char LEVELCOMPLETE[LEVEL_COUNT];
 
+unsigned char invisible;
+unsigned char PRACTICE_ENABLED;
+unsigned char twoplayer;
+unsigned char oneptwoplayer;
+unsigned char deathsound;
+unsigned char jumpsound;
 
 unsigned char practice_famistudio_state[0xbf];
 
 #pragma bss-name(pop)
+
+
 
 extern unsigned char famistudio_state[0xbf];
 
@@ -171,7 +181,6 @@ unsigned char kandotemp;
 unsigned char kandotemp2[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
-unsigned char invisible;
 unsigned long attempts;
 unsigned char currplayer;
 unsigned char controllingplayer;
@@ -199,6 +208,8 @@ unsigned short practice_player_x[2];
 unsigned short practice_player_y[2];
 unsigned char practice_player_gamemode;
 unsigned char practice_mini;
+unsigned char practice_dual;
+unsigned char practice_speed;
 signed short practice_player_vel_x[2];
 signed short practice_player_vel_y[2];
 unsigned char practice_player_gravity[2];
@@ -278,6 +289,12 @@ const unsigned char paletteMenu[16] = {
 	0x17,0x0f,0x10,0x30,
 	0x17,0x0f,0x2a,0x28,
 	0x17,0x0f,0x17,0x27,
+	0x17,0x0f,0x11,0x30
+};
+const unsigned char paletteSettings[16] = {
+	0x17,0x0f,0x10,0x30,
+	0x17,0x0f,0x2a,0x28,
+	0x17,0x0F,0x16,0x26,
 	0x17,0x0f,0x11,0x30
 };
 

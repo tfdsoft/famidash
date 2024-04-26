@@ -6,7 +6,7 @@ void reset_level(void) {
     coins = 0;
 
     if (!DEBUG_MODE && (cube_data[0] & 1 || cube_data[1] & 1)) {
-        famistudio_sfx_play(sfx_death, 0);
+        if (deathsound) famistudio_sfx_play(sfx_death, 0);
         tmp1 = 0;
 	attempts++;
         while (tmp1 < 30){
@@ -42,7 +42,7 @@ void reset_level(void) {
     player_vel_y[0] = 0;
     player_vel_x[1] = 0;
     player_vel_y[1] = 0;
-    invincible_counter = 8;
+    if (!has_practice_point)    invincible_counter = 8;
     cube_data[0] = 0;
     cube_data[1] = 0;
     

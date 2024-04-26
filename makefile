@@ -62,7 +62,7 @@ $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
 	@echo $(NAME).nes created
 
 $(TMPDIR)/crt0.o: crt0.s GRAPHICS/*.chr LIB/*.s LEVELS/*.s METATILES/*.s METATILES/*.inc MUSIC/EXPORTS/*.s MUSIC/EXPORTS/music.dmc
-	$(CA65) crt0.s --cpu 6502X -g -I LIB $(call ca65IncDir,MUSIC/EXPORTS) $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
+	$(CA65) crt0.s --cpu 6502X -g -I LIB $(call ca65IncDir,MUSIC/EXPORTS) -o $(TMPDIR)/crt0.o
 
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 	$(CA65) --cpu 6502X $(call ca65IncDir,LIB) $(TMPDIR)/$(NAME).s -g 

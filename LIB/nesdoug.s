@@ -230,7 +230,7 @@ _pal_fade_to:
 	
 @fade_loop:	
 	lda #1
-	jsr _delay ;wait 4 frames
+	jsr _delay ;wait 1 frames
 	
 	lda TEMP+10 ;from
 	cmp TEMP+9 ;to

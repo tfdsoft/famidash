@@ -918,12 +918,12 @@ ParallaxBufferCol5:
 ; 	RTS
 
 ; @string_ptrs_lo:
-;     .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext, <_levelBtext, <_levelCtext, <_levelDtext
+;     .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext, <_levelBtext, <_levelCtext, <_levelDtext, <_levelEtext, <_levelFtext
 ; @string_ptrs_hi:
-;     .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext, >_levelBtext, >_levelCtext, >_levelDtext
+;     .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext, >_levelBtext, >_levelCtext, >_levelDtext, >_levelEtext, >_levelFtext
 ; @padding:
 ;     ; Calculation: 15 - length of string
-;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10, 3, 11, 10
+;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10, 3, 11, 10, 10, 10
 
 ;void __fastcall__ movement(void);
 .pushseg
@@ -2031,5 +2031,62 @@ _drawplayertwo:
 	@sprite_table_table_hi:
 		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2
 		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2
+
+.popseg
+
+.pushseg 
+.segment "CODE"
+
+.importzp _temp_x, _temp_y, _temp_room, _collision
+.export _bg_collision_sub
+_bg_collision_sub:
+    ; C code:
+        ; if(temp_y >= 0xf0) return 0;
+        ; coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
+        ; // we just need 4 bits each from x and y
+        ; tmp3 = temp_room&1; //high byte
+        ; if (tmp3 && coordinates >= 0xc0) return COL_ALL;
+        ; if (tmp3 == 0)
+        ;     collision = collisionMap0[coordinates];
+        ; else
+        ;     collision = collisionMap1[coordinates];
+        ; return is_solid[collision];
+    LDA _temp_y     ;
+    CMP #$F0        ;   if(temp_y >= 0xf0) return 0;
+    BCS @Return0	;__
+    AND #$F0        ;	temp_y & 0xF0
+    STA tmp1        ;__
+	LDA _temp_x		;
+	LSR				;
+	LSR				;	temp_x >> 4
+	LSR				;
+	LSR				;__
+	ORA tmp1		;	coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
+	TAX				;__
+
+	LDA _temp_room	;	tmp3 = temp_room&1;
+	AND #$01		;__
+	BNE @Room1		;__
+	LDA _collisionMap0,X	; collision = collisionMap0[coordinates];
+	JMP @BothRooms
+
+	@Room1:
+	; "tmp3" is 1, check for coordinates >= $C0
+	CPX #$C0			;	if (tmp3 && coordinates >= 0xc0) return COL_ALL;
+	BCS @ReturnColAll	;__
+	LDA _collisionMap1,X	; collision = collisionMap0[coordinates];
+	@BothRooms:
+	STA _collision	;
+	TAX				;__
+	LDA _is_solid,X	;	return is_solid[collision];
+	RTS				;__
+
+	@Return0:
+	LDA #$00
+	RTS
+
+	@ReturnColAll:
+	LDA #$40
+	RTS
 
 .popseg

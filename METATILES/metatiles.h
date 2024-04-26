@@ -5,6 +5,8 @@
 #define COL_TOP 0x10
 #define COL_DEATH_BOTTOM 0x08
 #define COL_DEATH_TOP 0x04
+#define COL_DEATH_LEFT 0x02
+#define COL_DEATH_RIGHT 0x01
 extern const unsigned char metatiles_top1[];
 extern const unsigned char metatiles_top2[];
 extern const unsigned char metatiles_bot1[];

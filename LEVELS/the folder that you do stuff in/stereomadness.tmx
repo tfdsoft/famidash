@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="903" height="27" tilewidth="16" tileheight="16" infinite="0" nextlayerid="4" nextobjectid="1">
  <editorsettings>
-  <export target="stereomadness.csv" format="csv"/>
+  <export format="csv"/>
  </editorsettings>
  <tileset firstgid="1" name="famidash" tilewidth="16" tileheight="16" tilecount="240" columns="16">
   <image source="../../GRAPHICS/famidash.bmp" width="256" height="240"/>
