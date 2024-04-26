@@ -11,25 +11,25 @@ const unsigned char * const Practice_Sprites[] = {Practice_Diamond};
 
 const unsigned char Mini_Cube_0[]={
 
-	  0,  -6,0x51,0,
+	  0,  -5,0x51,0,
 	0x80
 };
 	
 const unsigned char Mini_Cube_1[]={
 
-	  0,  -6,0x53,0,
+	  0,  -5,0x53,0,
 	0x80
 };
 	
 const unsigned char Mini_Cube_2[]={
 
-	  0,  -6,0x55,0,
+	  0,  -5,0x55,0,
 	0x80
 };
 
 const unsigned char Mini_Cube_3[]={
 
-	  0,  2,0x53,0|OAM_FLIP_V,
+	  0,  3,0x53,0|OAM_FLIP_V,
 	0x80
 };
 	
@@ -38,25 +38,25 @@ const unsigned char * const MINI_CUBE[] = {Mini_Cube_0, Mini_Cube_1, Mini_Cube_1
 
 const unsigned char Mini_Cube2_0[]={
 
-	  0,  -6,0x51,1,
+	  0,  -5,0x51,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_1[]={
 
-	  0,  -6,0x53,1,
+	  0,  -5,0x53,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_2[]={
 
-	  0,  -6,0x55,1,
+	  0,  -5,0x55,1,
 	0x80
 };
 
 const unsigned char Mini_Cube2_3[]={
 
-	  0,  2,0x53,1|OAM_FLIP_V,
+	  0,  3,0x53,1|OAM_FLIP_V,
 	0x80
 };
 	
