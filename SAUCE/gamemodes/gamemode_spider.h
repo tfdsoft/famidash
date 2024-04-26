@@ -39,21 +39,41 @@ void spider_movement(void){
 	Generic.x = high_byte(player_x[currplayer]);
 	
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
-	if (player_gravity[currplayer]) {
-		Generic.y = high_byte(player_y[currplayer]) - 1;
-	} else {
-		Generic.y = high_byte(player_y[currplayer]) +  1;
-	}
+	Generic.y = high_byte(player_y[currplayer]);
 	
 	if(!player_gravity[currplayer]){
 		if(bg_coll_D()){ // check collision below
-			high_byte(player_y[currplayer]) -= eject_D - 1;
+			high_byte(player_y[currplayer]) -= eject_D;
 			player_vel_y[currplayer] = 0;
+
+			if(pad_new[controllingplayer] & PAD_A) {
+				player_gravity[currplayer] = 1;
+				do {
+					player_y[currplayer] -= 0x800;
+					Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
+				} while (!bg_coll_U());
+				high_byte(player_y[currplayer]) -= eject_U;
+				player_vel_y[currplayer] = 0;
+			}
 		}
 	} else {
 		if(bg_coll_U()){ // check collision above
-			high_byte(player_y[currplayer]) -= eject_U + 1;
+			high_byte(player_y[currplayer]) -= eject_U;
 			player_vel_y[currplayer] = 0;
+
+			if(pad_new[controllingplayer] & PAD_A) {
+				player_gravity[currplayer] = 0;
+				do {
+					player_y[currplayer] += 0x800;
+					Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
+				} while (!bg_coll_D());
+
+				high_byte(player_y[currplayer]) -= eject_D;
+				
+				player_vel_y[currplayer] = 0;
+
+
+			}
 		} 
 	}
 
@@ -63,40 +83,6 @@ void spider_movement(void){
 	if (player_vel_y[currplayer] != 0){
 		if(pad_new[controllingplayer] & PAD_A) {
 			cube_data[currplayer] |= 2;
-		}
-	}
-
-
-	if ( player_vel_y[currplayer] == 0 || player_vel_y[currplayer] == CUBE_MAX_FALLSPEED || player_vel_y[currplayer] == -CUBE_MAX_FALLSPEED ) {
-		if (!player_gravity[currplayer]) {
-			if(pad_new[controllingplayer] & PAD_A) {
-				player_gravity[currplayer] = 1;
-				while (!bg_coll_U()) {
-					if (!mini) player_y[currplayer] -= 0xC00;
-					else player_y[currplayer] -= 0xC00;
-					Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
-				}
-				if (!mini) high_byte(player_y[currplayer]) -= eject_U;
-				else high_byte(player_y[currplayer]) -= eject_U*3;
-				player_vel_y[currplayer] = 0;
-				
-			}
-		}
-		
-		else {
-			if(pad_new[controllingplayer] & PAD_A) {
-				player_gravity[currplayer] = 0;
-				while (!bg_coll_D()) {
-					if (!mini) player_y[currplayer] += 0xC00;
-					else player_y[currplayer] += 0xC00;
-					Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
-				}
-				if (!mini) high_byte(player_y[currplayer]) -= eject_D;
-				else high_byte(player_y[currplayer]) -= eject_D*3;
-				player_vel_y[currplayer] = 0;
-
-
-			}
 		}
 	}
 }	
