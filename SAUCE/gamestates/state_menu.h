@@ -501,6 +501,7 @@ void settings() {
 					SRAM_VALIDATE[0x1F] = 0;
 					TOTALCOINSONES = 0;
 					TOTALCOINSTENS = 0;
+					deathsound = 1;
 				//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
 				//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
 					famistudio_sfx_play(sfx_death, 0);
