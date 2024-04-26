@@ -227,6 +227,9 @@ void levelselection() {
 
 
 void bgmtest() {
+	famistudio_music_stop();
+	music_update();
+	kandotemp=0;
 	pal_fade_to(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
