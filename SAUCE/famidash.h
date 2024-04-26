@@ -133,6 +133,9 @@ unsigned char LEVELCOMPLETE[LEVEL_COUNT];
 unsigned char invisible;
 unsigned char PRACTICE_ENABLED;
 unsigned char twoplayer;
+unsigned char oneptwoplayer;
+unsigned char deathsound;
+unsigned char jumpsound;
 
 unsigned char practice_famistudio_state[0xbf];
 

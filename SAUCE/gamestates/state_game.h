@@ -50,14 +50,24 @@ void state_game(){
         pad[0] = pad_poll(0); // read the first controller
 	pad_new[0] = get_pad_new(0);
 
-	if (twoplayer) {
+	if (oneptwoplayer && twoplayer) {
+		pad[1] = pad[0] << 4; // read the second controller
+		pad_new[1] = pad_new[0] << 4;
+		dual = 1;
+	}
+	else if (twoplayer) {
 		pad[1] = pad_poll(1); // read the second controller
 		pad_new[1] = get_pad_new(1);
 		dual = 1;
 	}
-        //if (pad_new & PAD_A) famistudio_sfx_play(sfx_click, 0);
+   	
+	if (jumpsound) {
+		if (pad_new[0] & PAD_A) {
+			famistudio_sfx_play(sfx_click, 0);
+		}
+	}
 
-	if (pad_new[controllingplayer] & PAD_UP) player_gravity[currplayer] ^= 0x01;
+	if (pad[controllingplayer] & PAD_SELECT && pad_new[controllingplayer] & PAD_UP) player_gravity[currplayer] ^= 0x01;
 
 
 	if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
