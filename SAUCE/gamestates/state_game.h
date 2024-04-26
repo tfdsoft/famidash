@@ -89,13 +89,21 @@ void state_game(){
 		pad_new[0] = 0;
 		famistudio_music_pause(1);
 		famistudio_update();
+//		ppu_off();
+//	mmc3_set_8kb_chr(16);
+//	vram_adr(NAMETABLE_B);
+//	vram_unrle(pausescreen); 	
+		ppu_on_all();
 		while (!(pad_new[0] & PAD_START)) {
-			ppu_wait_nmi();
+		//	ppu_wait_nmi();
 			pad[0] = pad_poll(0); // read the second controller
 			pad_new[0] = get_pad_new(0);	
-			if (pad_new[0] & PAD_SELECT) { gameState = 1; levelselection(); return; }
+			if (pad_new[0] & PAD_SELECT) { gameState = 1; return; }
 		}
 		famistudio_music_pause(0);
+//		ppu_off();
+//		mmc3_set_8kb_chr(0);
+//		ppu_on_all();
 		//famistudio_update();
 	}
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
@@ -127,9 +135,10 @@ void state_game(){
 
 
 	if (!DEBUG_MODE) {
-		if (!invincible_counter) bg_coll_death();
-		else invincible_counter--;
+		if (dual) { if (!invincible_counter && (kandoframecnt & 0x01)) bg_coll_death(); }
+		else if (!invincible_counter) bg_coll_death();
         }
+		if (invincible_counter) invincible_counter--;
 
         if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
 	mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
@@ -151,8 +160,7 @@ void state_game(){
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement();
 		if (!DEBUG_MODE) {
-			if (!invincible_counter) bg_coll_death();
-			else invincible_counter--;
+			if (!invincible_counter && !(kandoframecnt & 0x01)) bg_coll_death();
 		}
 		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
 //		x_movement();

@@ -269,7 +269,7 @@ void settings() {
 	ppu_off();
 	pal_bg((char *)paletteMenu);
 	vram_adr(NAMETABLE_A);
-	vram_unrle(settingsscreen);   	
+	vram_unrle(funsettingscreen);   	
 	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
 	pal_fade_to(0,4);
