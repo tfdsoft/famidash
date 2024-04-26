@@ -46,12 +46,12 @@ void spider_movement(void){
 	}
 	
 	if(!player_gravity[currplayer]){
-		if(bg_coll_D() && !bg_coll_R()){ // check collision below
+		if(bg_coll_D()){ // check collision below
 			high_byte(player_y[currplayer]) -= eject_D - 1;
 			player_vel_y[currplayer] = 0;
 		}
 	} else {
-		if(bg_coll_U() && !bg_coll_R()){ // check collision above
+		if(bg_coll_U()){ // check collision above
 			high_byte(player_y[currplayer]) -= eject_U + 1;
 			player_vel_y[currplayer] = 0;
 		} 
