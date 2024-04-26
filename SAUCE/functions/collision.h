@@ -31,9 +31,9 @@ char bg_coll_R(void){
     		temp_x = (char)tmp5; // low byte
 			tmp5 = temp_y & 0x0f;
 			if(bg_collision_sub() & COL_DEATH_TOP) {
-				return tmp5 < 0x04;
+				return tmp5 < 0x08;
 			} else if (rep_bg_col_sub() & COL_DEATH_BOTTOM) {
-				return tmp5 >= 0x0c;
+				return tmp5 >= 0x08;
 			}
 		}
 
