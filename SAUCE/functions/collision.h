@@ -33,10 +33,10 @@ char bg_coll_R(void){
 			} else if (rpt_bg_col_sub() & COL_DEATH_BOTTOM) {
 				return tmp5 >= 0x08;
 			}
-		} else if (rep_bg_col_sub() & COL_DEATH_RIGHT) {
+		} else if (rpt_bg_col_sub() & COL_DEATH_RIGHT) {
 			tmp5 = temp_x & 0x0f;
 			if (tmp5 < 0x08) return 0;
-		} else if (rep_bg_col_sub() & COL_DEATH_LEFT) {
+		} else if (rpt_bg_col_sub() & COL_DEATH_LEFT) {
 			tmp5 = temp_x & 0x0f;
 			if (tmp5 >= 0x08) return 0;
 		}
@@ -93,13 +93,13 @@ char bg_coll_U(void){
 				}
 				return 1;
 			}
-		} else if (rep_bg_col_sub() & COL_DEATH_RIGHT) {
+		} else if (rpt_bg_col_sub() & COL_DEATH_RIGHT) {
 			tmp5 = temp_x & 0x0f;
 			if (tmp5 < 0x0A) {
 				tmp5 = temp_y & 0x0f;
 				if (tmp5 >= 0x06 && tmp5 < 0x0A) cube_data[currplayer] = 1;
 			};
-		} else if (rep_bg_col_sub() & COL_DEATH_LEFT) {
+		} else if (rpt_bg_col_sub() & COL_DEATH_LEFT) {
 			tmp5 = temp_x & 0x0f;
 			if (tmp5 >= 0x04) {return 0;
 				tmp5 = temp_y & 0x0f;
@@ -156,13 +156,13 @@ char bg_coll_D(void){
 				}
 				return 1;
 			}
-		} else if (rep_bg_col_sub() & COL_DEATH_RIGHT) {
+		} else if (rpt_bg_col_sub() & COL_DEATH_RIGHT) {
 			tmp5 = temp_x & 0x0f;
 			if (tmp5 < 0x0A) {
 				tmp5 = temp_y & 0x0f;
 				if (tmp5 >= 0x06 && tmp5 < 0x0A) cube_data[currplayer] = 1;
 			};
-		} else if (rep_bg_col_sub() & COL_DEATH_LEFT) {
+		} else if (rpt_bg_col_sub() & COL_DEATH_LEFT) {
 			tmp5 = temp_x & 0x0f;
 			if (tmp5 >= 0x04) {return 0;
 				tmp5 = temp_y & 0x0f;
@@ -214,10 +214,10 @@ void bg_coll_death(void) {
 			temp_room = high_byte(tmp5);
 			if(bg_collision_sub() ) cube_data[0] = 0x01;
 		}
-	else if(!player_gravity[currplayer] && rep_bg_col_sub() & COL_BOTTOM) { }
-	else if(player_gravity[currplayer] && rep_bg_col_sub() & COL_TOP) { }
-	else if(rep_bg_col_sub() & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
-	else if(rep_bg_col_sub() ) cube_data[0] = 0x01;
+	else if(!player_gravity[currplayer] && rpt_bg_col_sub() & COL_BOTTOM) { }
+	else if(player_gravity[currplayer] && rpt_bg_col_sub() & COL_TOP) { }
+	else if(rpt_bg_col_sub() & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
+	else if(rpt_bg_col_sub() ) cube_data[0] = 0x01;
 
 
     
@@ -230,10 +230,10 @@ void bg_coll_death(void) {
 			temp_room = high_byte(tmp5);
 			if(bg_collision_sub() ) cube_data[0] = 0x01;	
 	}
-	else if(!player_gravity[currplayer] && rep_bg_col_sub() & COL_BOTTOM) { }
-	else if(player_gravity[currplayer] && rep_bg_col_sub() & COL_TOP) { }
-	else if(rep_bg_col_sub() & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
-	else if(rep_bg_col_sub() ) cube_data[0] = 0x01;
+	else if(!player_gravity[currplayer] && rpt_bg_col_sub() & COL_BOTTOM) { }
+	else if(player_gravity[currplayer] && rpt_bg_col_sub() & COL_TOP) { }
+	else if(rpt_bg_col_sub() & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
+	else if(rpt_bg_col_sub() ) cube_data[0] = 0x01;
 
     
 
