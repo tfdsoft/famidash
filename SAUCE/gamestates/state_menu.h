@@ -192,6 +192,12 @@ void levelselection() {
 
 
 		if (pad_new[0] & PAD_START){
+			famistudio_sfx_play(sfx_start_level, 0);
+			famistudio_music_stop();
+			for (tmp1 = 0; tmp1 < 30; tmp1++){
+				ppu_wait_nmi();
+				music_update();
+			}
 			gameState = 0x02;
 			pal_fade_to(4,0);
 			kandotemp = 0;
@@ -206,6 +212,7 @@ void levelselection() {
 			
 		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
+			famistudio_sfx_play(sfx_select, 0);
 			if (level > 0x0E){
 				level = 0x00;
 			}
@@ -214,6 +221,7 @@ void levelselection() {
 		}
 		if (pad_new[0] & PAD_LEFT){
 			--level;
+			famistudio_sfx_play(sfx_select, 0); 
 			if (level == 0xFF){
 				level = 0x0E;
 			}
@@ -361,12 +369,12 @@ void settings() {
 
 		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
 			if (settingvalue == 2) { settingvalue = 0; }
-			else settingvalue++;
+			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
 			if (settingvalue == 0) { settingvalue = 2; }
-			else settingvalue--;
+			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & PAD_START || pad_new[0] & PAD_A) {

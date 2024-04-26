@@ -201,7 +201,7 @@ void state_lvldone() {
 			if (pad_new[0] & PAD_START){
 				// pal_bg((char *)paletteDefault);
 				// pal_spr((char *)paletteDefaultSP);
-
+				famistudio_sfx_play(sfx_exit_level, 0);
 				gameState = 1;
 //				levelselection();
 				return;
