@@ -18,7 +18,7 @@ char bg_collision_sub(void){
 
 char bg_coll_R(void){
     // check 2 points on the right side
-	tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width - 4;
+	tmp5 = Generic.x + low2bytes(scroll_x) + Generic.width;
     temp_x = (char)tmp5; // low byte
 
 	tmp1 = Generic.y + Generic.height - 6;
