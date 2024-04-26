@@ -154,8 +154,9 @@ void __fastcall__ refreshmenu(void) {
 void state_menu();
 void levelselection() {
   
-    
-    
+	famistudio_music_pause(1);
+	music_update();
+	pal_fade_to(4,0);
   	ppu_off();
 	pal_bright(0);
 //    pal_bg((char *)paletteMenu);
@@ -176,6 +177,7 @@ void levelselection() {
 	attempts = 1;
 
 	ppu_on_all();
+	famistudio_music_pause(0);
 	pal_fade_to(0,4);
 	#include "../defines/mainmenu_charmap.h"
 	while (1){
@@ -268,6 +270,8 @@ void bgmtest() {
 
 
 void settings() {
+	famistudio_music_pause(1);
+	music_update();
 	pal_fade_to(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
@@ -276,6 +280,7 @@ void settings() {
 	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
 	pal_fade_to(0,4);
+	famistudio_music_pause(0);
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
@@ -392,6 +397,8 @@ void settings() {
 
 
 void state_menu() {
+	famistudio_music_pause(1);
+	music_update();
 	pal_fade_to(4,0);
 	ppu_off();
     pal_bg((char *)splashMenu);
@@ -482,6 +489,7 @@ void state_menu() {
     vram_adr(NAMETABLE_A);
     vram_unrle(game_start_screen);
  	ppu_on_all();
+	famistudio_music_pause(0);
 	pal_fade_to(0,4);
 		if (menuselection == 0) {
 			one_vram_buffer_horz_repeat('a', 1, NTADR_A(15, 11));
@@ -539,9 +547,9 @@ void state_menu() {
 	}		
 	switch (menuselection) {
 		case 0x00: levelselection(); return; break;
-		case 0x01: settingvalue = 0; settings(); return; break;
+		case 0x01: state_menu(); return; break;
 		case 0x02: bgmtest(); return; break;
-		case 0x03: state_menu(); return; break;
+		case 0x03: settingvalue = 0; settings(); return; break;
 		case 0x04: state_menu(); return; break;
 			
 	};
