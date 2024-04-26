@@ -254,7 +254,7 @@ void bgmtest() {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
-			state_menu();
+			//state_menu();
 			return;
 		}
 	}
@@ -377,7 +377,7 @@ void settings() {
 			one_vram_buffer(' ', NTADR_A(4, 8));
 			one_vram_buffer(' ', NTADR_A(4, 12));
 			one_vram_buffer(' ', NTADR_A(4, 16));
-			state_menu();
+			//state_menu();
 			return;
 		}
 
