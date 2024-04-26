@@ -202,9 +202,9 @@ void state_lvldone() {
 				// pal_bg((char *)paletteDefault);
 				// pal_spr((char *)paletteDefaultSP);
 				famistudio_sfx_play(sfx_exit_level, 0);
+				music_update();
 				gameState = 1;
 //				levelselection();
-				return;
 			}
 			break;
 		}
