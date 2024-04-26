@@ -15,4 +15,10 @@
 #define sfx_death 0
 #define sfx_click 1
 #define sfx_level_complete 2
-#define sfx_max 3
+#define sfx_coin 3
+#define sfx_orbs 4
+#define sfx_diamonds 5
+#define sfx_exit_level 6
+#define sfx_start_level 7
+#define sfx_select 8
+#define sfx_max 9
