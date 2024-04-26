@@ -1129,8 +1129,8 @@ SpriteOffset = ptr2
     sta _activesprites_realy,x
 
     ; Increment the _spr_index and and it with #$0F
-    INY 
-    TYA
+    INX
+    TXA
     AND #$0F
     STA _spr_index
 

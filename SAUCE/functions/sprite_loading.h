@@ -56,11 +56,11 @@ void init_sprites(void){
 	for (tmp4 = max_loaded_sprites-1; tmp4 != 0; --tmp4) activesprites_type[tmp4] = 0xFF;
 
     spr_index = 0;
-    while (spr_index < max_loaded_sprites){
+    do {
         if (sprite_data[0] == TURN_OFF) break;
         load_next_sprite();
 		if (sprite_data[1-5] != 0) activesprites_active[spr_index] = 0;
-    }
+    } while (spr_index != 0);
 }
 
 __fastcall__ char sprite_height_lookup(){
