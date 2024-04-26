@@ -199,7 +199,6 @@ void state_lvldone() {
 		case 4:
 
 			if (pad_new[0] & PAD_START){
-				pal_fade_to(4,0);
 				// pal_bg((char *)paletteDefault);
 				// pal_spr((char *)paletteDefaultSP);
 
