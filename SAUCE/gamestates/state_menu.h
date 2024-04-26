@@ -226,6 +226,43 @@ void levelselection() {
 
 
 
+void bgmtest() {
+	pal_fade_to(4,0);
+	ppu_off();
+	pal_bg((char *)paletteMenu);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(bgmtestscreen);   	
+	#include "../defines/mainmenu_charmap.h"
+	ppu_on_all();
+	pal_fade_to(0,4);
+	while (1) {
+		ppu_wait_nmi();
+		music_update();
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+		if (settingvalue == 0) {
+			one_vram_buffer('c', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
+		}		
+		else if (settingvalue == 1) {
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer('c', NTADR_A(11, 14));
+		}
+		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
+		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
+		if (pad_new[0] & PAD_B) {
+			tmp3--;			
+			one_vram_buffer(' ', NTADR_A(6, 8));
+			one_vram_buffer(' ', NTADR_A(6, 12));
+			one_vram_buffer(' ', NTADR_A(6, 16));
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
+			state_menu();
+			return;
+		}
+	}
+}
 
 
 
@@ -372,8 +409,10 @@ void state_menu() {
 		case 0x01:	break;
 	}
 
-
+	settingvalue = 0;
+	
 	has_practice_point = 0;
+	
 	#include "../defines/mainmenu_charmap.h"
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
@@ -502,7 +541,7 @@ void state_menu() {
 	switch (menuselection) {
 		case 0x00: levelselection(); return; break;
 		case 0x01: settingvalue = 0; settings(); return; break;
-		case 0x02: state_menu(); return; break;
+		case 0x02: bgmtest(); return; break;
 		case 0x03: state_menu(); return; break;
 		case 0x04: state_menu(); return; break;
 			

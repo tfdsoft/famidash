@@ -74,6 +74,9 @@ unsigned char tmp8;
 unsigned char* tmpptr1;
 unsigned char* tmpptr2;
 long unsigned int tmplong;
+unsigned char selectedbgm;
+unsigned char selectedsfx;
+
 
 unsigned char pad[2];
 unsigned char pad_new[2];
