@@ -252,12 +252,8 @@ void bgmtest() {
 		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
-			one_vram_buffer(' ', NTADR_A(6, 8));
-			one_vram_buffer(' ', NTADR_A(6, 12));
-			one_vram_buffer(' ', NTADR_A(6, 16));
-			one_vram_buffer(' ', NTADR_A(4, 8));
-			one_vram_buffer(' ', NTADR_A(4, 12));
-			one_vram_buffer(' ', NTADR_A(4, 16));
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
 			state_menu();
 			return;
 		}
