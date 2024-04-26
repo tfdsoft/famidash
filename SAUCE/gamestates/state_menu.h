@@ -393,7 +393,7 @@ void settings() {
 					SRAM_VALIDATE[0x11] = 0;
 					SRAM_VALIDATE[0x12] = 0;
 					SRAM_VALIDATE[0x13] = 0;
-					SRAM_VALIDATE[0x14] = 0;
+					SRAM_VALIDATE[0x1levelselection();4] = 0;
 					SRAM_VALIDATE[0x15] = 0;
 					SRAM_VALIDATE[0x16] = 0;
 					SRAM_VALIDATE[0x17] = 0;

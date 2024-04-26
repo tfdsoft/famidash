@@ -98,7 +98,11 @@ void state_game(){
 		//	ppu_wait_nmi();
 			pad[0] = pad_poll(0); // read the second controller
 			pad_new[0] = get_pad_new(0);	
-			if (pad_new[0] & PAD_SELECT) { gameState = 1; return; }
+			if (pad_new[0] & PAD_SELECT) { gameState = 1; 
+				famistudio_sfx_play(sfx_exit_level,0);
+				music_update();
+				return;
+			}
 		}
 		famistudio_music_pause(0);
 //		ppu_off();

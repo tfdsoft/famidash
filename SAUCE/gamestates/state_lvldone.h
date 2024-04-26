@@ -204,7 +204,8 @@ void state_lvldone() {
 				famistudio_sfx_play(sfx_exit_level, 0);
 				music_update();
 				gameState = 1;
-//				levelselection();
+				menuselection = 0;
+				return;
 			}
 			break;
 		}
