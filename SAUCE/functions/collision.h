@@ -1,20 +1,10 @@
-char bg_collision_sub(void){
-    if(temp_y >= 0xf0) return 0;
-    
-	coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
-	
-    // we just need 4 bits each from x and y
-	
-    tmp3 = temp_room&1; // high byte
-    if (tmp3 && coordinates >= 0xc0) return COL_ALL;
-    if (tmp3 == 0)
-        collision = collisionMap0[coordinates];
-    else
-        collision = collisionMap1[coordinates];
-	
+/* 
+	Gets the collision of the current tile
+	Implemented in asm
+*/
+__fastcall__ char bg_collision_sub(void);
 
-    return is_solid[collision];
-}
+#define rep_bg_col_sub() (__asm__("ldx #0\nLDY %v\nLDA %v,Y", collision, is_solid), __A__)
 
 char bg_coll_R(void){
     // check 2 points on the right side
@@ -29,10 +19,10 @@ char bg_coll_R(void){
 		if(bg_collision_sub() & COL_BOTTOM) {
 			tmp5 = temp_y & 0x08;
 			if (tmp5) return 1;
-		} else if (bg_collision_sub() & COL_TOP) {
+		} else if (rep_bg_col_sub() & COL_TOP) {
 			tmp5 = temp_y & 0x08;
 			if (!tmp5) return 1;
-		} else if(bg_collision_sub() & COL_ALL) return 1;
+		} else if(rep_bg_col_sub() & COL_ALL) return 1;
 
 		tmp5 = add_scroll_y(Generic.y + 6, scroll_y);
 		temp_y = (char)tmp5; // low byte
@@ -57,11 +47,11 @@ char bg_coll_U(void){
 	
 	for (tmp1 = 0; tmp1 < 2; tmp1++) {
 		if(bg_collision_sub() & COL_ALL) return 1;
-		else if (bg_collision_sub() & COL_TOP || bg_collision_sub() & COL_DEATH_TOP) {
+		else if (rep_bg_col_sub() & (COL_TOP | COL_DEATH_TOP)) {
 			tmp5 = temp_y & 0x0f;	
 			eject_U = (temp_y) | 0xf8;	 
 			if (tmp5 < 0x08) {
-				if (bg_collision_sub() & COL_DEATH_TOP) {
+				if (rep_bg_col_sub() & COL_DEATH_TOP) {
 					if (tmp5 < 0x04) {
 						cube_data[currplayer] = 1;
 					} else {
@@ -70,11 +60,11 @@ char bg_coll_U(void){
 				}
 				return 1;
 			}
-		} else if (bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_DEATH_BOTTOM) {
+		} else if (rep_bg_col_sub() & (COL_BOTTOM | COL_DEATH_BOTTOM)) {
 			tmp5 = temp_y & 0x0f;
 			eject_U = (temp_y) | 0xf8;	 
 			if (tmp5 >= 0x08) {
-				if (bg_collision_sub() & COL_DEATH_BOTTOM) {
+				if (rep_bg_col_sub() & COL_DEATH_BOTTOM) {
 					if (tmp5 >= 0x0c) {
 						cube_data[currplayer] = 1;
 					} else {
@@ -107,11 +97,11 @@ char bg_coll_D(void){
 
 	for (tmp1 = 0; tmp1 < 2; tmp1++) {
 		if(bg_collision_sub() & COL_ALL) return 1;
-		else if (bg_collision_sub() & COL_TOP || bg_collision_sub() & COL_DEATH_TOP) {
+		else if (rep_bg_col_sub() & (COL_TOP | COL_DEATH_TOP)) {
 			tmp5 = temp_y & 0x0f;	
 			eject_D = (temp_y) & 0x07;
 			if (tmp5 < 0x08) {
-				if (bg_collision_sub() & COL_DEATH_TOP) {
+				if (rep_bg_col_sub() & COL_DEATH_TOP) {
 					if (tmp5 < 0x04) {
 						cube_data[currplayer] = 1;
 					} else {
@@ -120,11 +110,11 @@ char bg_coll_D(void){
 				}
 				return 1;
 			}
-		} else if (bg_collision_sub() & COL_BOTTOM || bg_collision_sub() & COL_DEATH_BOTTOM) {
+		} else if (rep_bg_col_sub() & (COL_BOTTOM | COL_DEATH_BOTTOM)) {
 			tmp5 = temp_y & 0x0f;
 			eject_D = (temp_y) & 0x07;
 			if (tmp5 >= 0x08) {
-				if (bg_collision_sub() & COL_DEATH_BOTTOM) {
+				if (rep_bg_col_sub() & COL_DEATH_BOTTOM) {
 					if (tmp5 >= 0x0c) {
 						if (high_byte(player_x[currplayer]) < 0x10) return 0;
 						cube_data[currplayer] = 1;
@@ -174,32 +164,32 @@ void bg_coll_death(void) {
     temp_room = tmp5 >> 8; // high byte
 
 
-	if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) {
-			if (bg_collision_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y-14 + Generic.width;
+	if(bg_collision_sub() & (COL_DEATH_BOTTOM | COL_DEATH_TOP)) {
+			if (rep_bg_col_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y-14 + Generic.width;
 			else tmp1 = Generic.y+12 + Generic.width;
 			tmp5 = add_scroll_y(tmp1, scroll_y);
 			temp_y = (char)tmp5; // low byte
 			temp_room = tmp5 >> 8; // high byte
 			if(bg_collision_sub() ) cube_data[0] = 0x01;
 		}
-	else if(!player_gravity[currplayer] && bg_collision_sub() & COL_BOTTOM) { }
-	else if(player_gravity[currplayer] && bg_collision_sub() & COL_TOP) { }
-	else if(bg_collision_sub() ) cube_data[0] = 0x01;
+	else if(!player_gravity[currplayer] && rep_bg_col_sub() & COL_BOTTOM) { }
+	else if(player_gravity[currplayer] && rep_bg_col_sub() & COL_TOP) { }
+	else if(rep_bg_col_sub() ) cube_data[0] = 0x01;
 
     
 	++temp_x; // low byte
-	if(bg_collision_sub() & COL_DEATH_BOTTOM || bg_collision_sub() & COL_DEATH_TOP) { 
-			if (bg_collision_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y-14 + Generic.width;
+	if(bg_collision_sub() & (COL_DEATH_BOTTOM | COL_DEATH_TOP)) { 
+			if (rep_bg_col_sub() & COL_DEATH_BOTTOM) tmp1 = Generic.y-14 + Generic.width;
 			else tmp1 = Generic.y+12 + Generic.width;
 			tmp5 = add_scroll_y(tmp1, scroll_y);
 			temp_y = (char)tmp5; // low byte
 			temp_room = tmp5 >> 8; // high byte
 			if(bg_collision_sub() ) cube_data[0] = 0x01;	
 	}
-	else if(!player_gravity[currplayer] && bg_collision_sub() & COL_BOTTOM) { }
-	else if(player_gravity[currplayer] && bg_collision_sub() & COL_TOP) { }
+	else if(!player_gravity[currplayer] && rep_bg_col_sub() & COL_BOTTOM) { }
+	else if(player_gravity[currplayer] && rep_bg_col_sub() & COL_TOP) { }
 
-	else if(bg_collision_sub() ) cube_data[0] = 0x01;
+	else if(rep_bg_col_sub() ) cube_data[0] = 0x01;
     
 
 	if(!DEBUG_MODE && cube_data[0] & 0x01) {

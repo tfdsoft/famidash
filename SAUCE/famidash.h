@@ -92,7 +92,6 @@ unsigned char collision_L;
 unsigned char collision_R;
 unsigned char collision_U;
 unsigned char collision_D;
-unsigned char coordinates;
 
 unsigned short old_x;
 unsigned short old_y;
