@@ -95,7 +95,7 @@ void draw_sprites(void){
 					activesprites_anim_frame_count[index] = low_byte(tmplong);
 				}
 				// And finally, load the pointer for this animation
-				animation_data_ptr = (unsigned char*)high2bytes(tmplong);
+				animation_data_ptr = (unsigned char*)high_word(tmplong);
 			} else {
 				animation_data_ptr =  (unsigned char*)Metasprites[spr_type];
 			}

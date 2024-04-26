@@ -59,7 +59,7 @@ void init_sprites(void){
     do {
         if (sprite_data[0] == TURN_OFF) break;
         load_next_sprite();
-		if (sprite_data[1-5] != 0) activesprites_active[spr_index] = 0;
+		if (idx16_hi_NOC(activesprites_x, spr_index) != 0) activesprites_active[spr_index] = 0;
     } while (spr_index != 0);
 }
 

@@ -40,8 +40,8 @@ void __fastcall__ one_vram_buffer_vert_repeat(unsigned char data, unsigned char 
 extern unsigned char parallax_scroll_column;
 extern unsigned char parallax_scroll_column_start;
 
-#define low2bytes(a) *((unsigned short*)&a)
-#define high2bytes(a) *((unsigned short*)&a+1)
+#define low_word(a) *((unsigned short*)&a)
+#define high_word(a) *((unsigned short*)&a+1)
 
 #define vram_put(a) POKE(0x2007, a)
 
@@ -62,3 +62,11 @@ extern unsigned char parallax_scroll_column_start;
 
 // subtract from the low byte of a word, not overflowing into high
 #define subloNOC(a, b) (subNOC_b(a, b))|(a & 0xFF00)
+
+// get specific byte from a word array
+#define idx16_lo(arr, idx) (*((char *)arr+((idx<<1)|1)))
+#define idx16_hi(arr, idx) (*((char *)arr+((idx<<1)|1)))
+
+// same as above but idx < 128
+#define idx16_lo_NOC(arr, idx) (*((char *)arr+(((idx<<1)&0xFF)|1)))
+#define idx16_hi_NOC(arr, idx) (*((char *)arr+(((idx<<1)&0xFF)|1)))

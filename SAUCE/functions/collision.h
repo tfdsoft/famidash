@@ -8,7 +8,7 @@ __fastcall__ char bg_collision_sub(void);
 
 char bg_coll_R(void){
     // check 2 points on the right side
-	temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
 
 	tmp1 = Generic.y + Generic.height - 6;
 	if (mini) {
@@ -26,7 +26,7 @@ char bg_coll_R(void){
 			if (!tmp5) return 1;
 		} else if(rpt_bg_col_sub() & COL_ALL) return 1;
 		else if(mini) {
-			temp_x = Generic.x + low2bytes(scroll_x); // automatically only the low byte
+			temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 			tmp5 = temp_y & 0x0f;
 			if(bg_collision_sub() & COL_DEATH_TOP) {
 				return tmp5 < 0x08;
@@ -52,7 +52,7 @@ char bg_coll_R(void){
 char bg_coll_U(void){
 	if (player_vel_y[currplayer] > 0) return 0;
 	
-	temp_x = Generic.x + low2bytes(scroll_x); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
 	tmp1 = Generic.y;
 	
@@ -107,7 +107,7 @@ char bg_coll_U(void){
 			}
 		}
 
-		temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
 	}	
 	return 0;
 	
@@ -116,7 +116,7 @@ char bg_coll_U(void){
 char bg_coll_D(void){
 	if (player_vel_y[currplayer] < 0) return 0;
 	 // check 2 points on the right side
-	temp_x = Generic.x + low2bytes(scroll_x); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
 	tmp1 = Generic.y + Generic.height;
 	if (mini) {
@@ -170,7 +170,7 @@ char bg_coll_D(void){
 			}
 		}
 
-		temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
 	}	
 	return 0;
 }
@@ -185,8 +185,8 @@ void bg_coll_death(void) {
 
 	// middle point collision to kill, since hitboxes don't exist
 //	if (!mini) 
-	temp_x = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1)-1; // automatically only the low byte
-	//else tmp5 = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1)-4;
+	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1)-1; // automatically only the low byte
+	//else tmp5 = Generic.x + low_word(scroll_x) + (Generic.width >> 1)-4;
 
 //	if (!player_gravity[currplayer]) {
 //		if (!mini) 	tmp1 = Generic.y + (Generic.width >> 1);
