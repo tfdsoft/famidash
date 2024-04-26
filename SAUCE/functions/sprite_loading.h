@@ -357,6 +357,13 @@ void sprite_collide(){
             }
         }
     }
+	if (!mini) {
+    	Generic.height = CUBE_HEIGHT;
+	}
+	
+	else {
+    	Generic.height = MINI_CUBE_HEIGHT;
+	}    
 }
 
 
