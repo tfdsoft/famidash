@@ -12,6 +12,9 @@ char bg_coll_R(void){
     temp_x = (char)tmp5; // low byte
 
 	tmp1 = Generic.y + Generic.height - 6;
+	if (mini) {
+		tmp1 = Generic.y + ((0x10 - Generic.height) >> 1);	
+	}
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
@@ -23,6 +26,16 @@ char bg_coll_R(void){
 			tmp5 = temp_y & 0x08;
 			if (!tmp5) return 1;
 		} else if(rep_bg_col_sub() & COL_ALL) return 1;
+		else if(mini) {
+			tmp5 = Generic.x + low2bytes(scroll_x) ;
+    		temp_x = (char)tmp5; // low byte
+			tmp5 = temp_y & 0x0f;
+			if(bg_collision_sub() & COL_DEATH_TOP) {
+				return tmp5 < 0x08;
+			} else if (rep_bg_col_sub() & COL_DEATH_BOTTOM) {
+				return tmp5 >= 0x08;
+			}
+		}
 
 		tmp5 = add_scroll_y(Generic.y + 6, scroll_y);
 		temp_y = (char)tmp5; // low byte
@@ -40,10 +53,15 @@ char bg_coll_U(void){
 
 
 	tmp1 = Generic.y;
+	
+	if (mini) {
+		tmp1 += (0x10 - Generic.height) >> 1;	
+	}
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte
 	eject_U = (temp_y) | 0xf0;	 
+	
 	
 	for (tmp1 = 0; tmp1 < 2; tmp1++) {
 		if(bg_collision_sub() & COL_ALL) return 1;
@@ -89,7 +107,9 @@ char bg_coll_D(void){
     temp_x = (char)tmp5; // low byte
 
 	tmp1 = Generic.y + Generic.height;
-	if (mini) tmp1 += 8;
+	if (mini) {
+		tmp1 += (0x10 - Generic.height) >> 1;	
+	}
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = (char)tmp5; // low byte
 	temp_room = tmp5 >> 8; // high byte

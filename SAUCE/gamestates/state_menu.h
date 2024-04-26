@@ -277,7 +277,7 @@ void bgmtest() {
 
 
 
-void settings() {
+void funsettings() {
 	famistudio_music_pause(1);
 	music_update();
 	pal_fade_to(4,0);
@@ -285,6 +285,83 @@ void settings() {
 	pal_bg((char *)paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(funsettingscreen);   	
+	#include "../defines/mainmenu_charmap.h"
+	ppu_on_all();
+	pal_fade_to(0,4);
+	famistudio_music_pause(0);
+	while (1) {
+		ppu_wait_nmi();
+		music_update();
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+		if (settingvalue == 0) {
+			one_vram_buffer('c', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
+		}		
+		else if (settingvalue == 1) {
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer('c', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
+		}		
+		else if (settingvalue == 2) {
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer('c', NTADR_A(4, 16));
+		}		
+
+		if (twoplayer) 	one_vram_buffer('d', NTADR_A(6, 8));
+		else 	one_vram_buffer('e', NTADR_A(6, 8));
+
+		if (invisible) 	one_vram_buffer('d', NTADR_A(6, 12));
+		else 	one_vram_buffer('e', NTADR_A(6, 12));
+
+		if (PRACTICE_ENABLED) 	one_vram_buffer('d', NTADR_A(6, 16));
+		else 	one_vram_buffer('e', NTADR_A(6, 16));
+
+		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
+			if (settingvalue == 2) { settingvalue = 0; }
+			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
+		}
+
+		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
+			if (settingvalue == 0) { settingvalue = 2; }
+			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
+		}
+
+		if (pad_new[0] & PAD_START || pad_new[0] & PAD_A) {
+			switch (settingvalue) {
+				case 0x00: twoplayer ^= 1; break;
+				case 0x01: invisible ^= 1; break;
+				case 0x02: PRACTICE_ENABLED ^= 1; break;
+			};
+		}
+			
+		if (pad_new[0] & PAD_B) {
+			tmp3--;			
+			one_vram_buffer(' ', NTADR_A(6, 8));
+			one_vram_buffer(' ', NTADR_A(6, 12));
+			one_vram_buffer(' ', NTADR_A(6, 16));
+			one_vram_buffer(' ', NTADR_A(4, 8));
+			one_vram_buffer(' ', NTADR_A(4, 12));
+			one_vram_buffer(' ', NTADR_A(4, 16));
+			//state_menu();
+			return;
+		}
+
+	}
+}
+
+
+
+void settings() {
+	famistudio_music_pause(1);
+	music_update();
+	pal_fade_to(4,0);
+	ppu_off();
+	pal_bg((char *)paletteSettings);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(settingscreen);   	
 	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
 	pal_fade_to(0,4);
@@ -342,57 +419,44 @@ void settings() {
 			}
 		}
 */		
+
 		if (settingvalue == 0) {
-			one_vram_buffer('c', NTADR_A(4, 8));
-			one_vram_buffer(' ', NTADR_A(4, 12));
-			one_vram_buffer(' ', NTADR_A(4, 16));
+			one_vram_buffer('c', NTADR_A(4, 7));
+			one_vram_buffer(' ', NTADR_A(4, 9));
+			one_vram_buffer(' ', NTADR_A(4, 11));
+			one_vram_buffer(' ', NTADR_A(4, 13));
 		}		
 		else if (settingvalue == 1) {
-			one_vram_buffer(' ', NTADR_A(4, 8));
-			one_vram_buffer('c', NTADR_A(4, 12));
-			one_vram_buffer(' ', NTADR_A(4, 16));
+			one_vram_buffer(' ', NTADR_A(4, 7));
+			one_vram_buffer('c', NTADR_A(4, 9));
+			one_vram_buffer(' ', NTADR_A(4, 11));
+			one_vram_buffer(' ', NTADR_A(4, 13));
 		}		
 		else if (settingvalue == 2) {
-			one_vram_buffer(' ', NTADR_A(4, 8));
-			one_vram_buffer(' ', NTADR_A(4, 12));
-			one_vram_buffer('c', NTADR_A(4, 16));
+			one_vram_buffer(' ', NTADR_A(4, 7));
+			one_vram_buffer(' ', NTADR_A(4, 9));
+			one_vram_buffer('c', NTADR_A(4, 11));
+			one_vram_buffer(' ', NTADR_A(4, 13));
+		}		
+		else if (settingvalue == 3) {
+			one_vram_buffer(' ', NTADR_A(4, 7));
+			one_vram_buffer(' ', NTADR_A(4, 9));
+			one_vram_buffer(' ', NTADR_A(4, 11));
+			one_vram_buffer('c', NTADR_A(4, 13));
 		}		
 
-		if (twoplayer) 	one_vram_buffer('d', NTADR_A(6, 8));
-		else 	one_vram_buffer('e', NTADR_A(6, 8));
-
-		if (invisible) 	one_vram_buffer('d', NTADR_A(6, 12));
-		else 	one_vram_buffer('e', NTADR_A(6, 12));
-
-		if (PRACTICE_ENABLED) 	one_vram_buffer('d', NTADR_A(6, 16));
-		else 	one_vram_buffer('e', NTADR_A(6, 16));
-
 		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
-			if (settingvalue == 2) { settingvalue = 0; }
+			if (settingvalue == 3) { settingvalue = 0; famistudio_sfx_play(sfx_select, 0); }
 			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
-			if (settingvalue == 0) { settingvalue = 2; }
+			if (settingvalue == 0) { settingvalue = 3; famistudio_sfx_play(sfx_select, 0); }
 			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
 		}
-
-		if (pad_new[0] & PAD_START || pad_new[0] & PAD_A) {
-			switch (settingvalue) {
-				case 0x00: twoplayer ^= 1; break;
-				case 0x01: invisible ^= 1; break;
-				case 0x02: PRACTICE_ENABLED ^= 1; break;
-			};
-		}
-			
+		
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
-			one_vram_buffer(' ', NTADR_A(6, 8));
-			one_vram_buffer(' ', NTADR_A(6, 12));
-			one_vram_buffer(' ', NTADR_A(6, 16));
-			one_vram_buffer(' ', NTADR_A(4, 8));
-			one_vram_buffer(' ', NTADR_A(4, 12));
-			one_vram_buffer(' ', NTADR_A(4, 16));
 			//state_menu();
 			return;
 		}
@@ -555,7 +619,7 @@ void state_menu() {
 	}		
 	switch (menuselection) {
 		case 0x00: levelselection(); return; break;
-		case 0x01: state_menu(); return; break;
+		case 0x01: settingvalue = 0; funsettings(); return; break;
 		case 0x02: bgmtest(); return; break;
 		case 0x03: settingvalue = 0; settings(); return; break;
 		case 0x04: state_menu(); return; break;
