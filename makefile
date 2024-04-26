@@ -48,7 +48,7 @@ MUSIC/EXPORTS/musicDefines.h: MUSIC/EXPORTS/*.inc
 ifeq ($(OS),Windows_NT)
 else ifeq ($(OS),MSDOS)
 else
-		python3 MUSIC/parse_inc_files.py
+		python3 MUSIC/parse_fs_files.py
 endif
 
 $(OUTDIR):

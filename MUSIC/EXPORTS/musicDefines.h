@@ -21,4 +21,3 @@
 #define sfx_exit_level 6
 #define sfx_start_level 7
 #define sfx_select 8
-#define sfx_max 9
