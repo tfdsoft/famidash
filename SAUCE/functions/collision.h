@@ -33,6 +33,12 @@ char bg_coll_R(void){
 			} else if (rpt_bg_col_sub() & COL_DEATH_BOTTOM) {
 				return tmp5 >= 0x08;
 			}
+		} else if (rpt_bg_col_sub() & COL_DEATH_RIGHT) {
+			tmp5 = temp_x & 0x0f;
+			if (tmp5 < 0x08) return 0;
+		} else if (rpt_bg_col_sub() & COL_DEATH_LEFT) {
+			tmp5 = temp_x & 0x0f;
+			if (tmp5 >= 0x08) return 0;
 		}
 
 		tmp5 = add_scroll_y(Generic.y + 6, scroll_y);
@@ -87,6 +93,18 @@ char bg_coll_U(void){
 				}
 				return 1;
 			}
+		} else if (rpt_bg_col_sub() & COL_DEATH_RIGHT) {
+			tmp5 = temp_x & 0x0f;
+			if (tmp5 < 0x0A) {
+				tmp5 = temp_y & 0x0f;
+				if (tmp5 >= 0x06 && tmp5 < 0x0A) cube_data[currplayer] = 1;
+			};
+		} else if (rpt_bg_col_sub() & COL_DEATH_LEFT) {
+			tmp5 = temp_x & 0x0f;
+			if (tmp5 >= 0x04) {return 0;
+				tmp5 = temp_y & 0x0f;
+				if (tmp5 >= 0x06 && tmp5 < 0x0A) cube_data[currplayer] = 1;
+			}
 		}
 
 		temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
@@ -138,6 +156,18 @@ char bg_coll_D(void){
 				}
 				return 1;
 			}
+		} else if (rpt_bg_col_sub() & COL_DEATH_RIGHT) {
+			tmp5 = temp_x & 0x0f;
+			if (tmp5 < 0x0A) {
+				tmp5 = temp_y & 0x0f;
+				if (tmp5 >= 0x06 && tmp5 < 0x0A) cube_data[currplayer] = 1;
+			};
+		} else if (rpt_bg_col_sub() & COL_DEATH_LEFT) {
+			tmp5 = temp_x & 0x0f;
+			if (tmp5 >= 0x04) {return 0;
+				tmp5 = temp_y & 0x0f;
+				if (tmp5 >= 0x06 && tmp5 < 0x0A) cube_data[currplayer] = 1;
+			}
 		}
 
 		temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
@@ -186,7 +216,9 @@ void bg_coll_death(void) {
 		}
 	else if(!player_gravity[currplayer] && rpt_bg_col_sub() & COL_BOTTOM) { }
 	else if(player_gravity[currplayer] && rpt_bg_col_sub() & COL_TOP) { }
+	else if(rpt_bg_col_sub() & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
 	else if(rpt_bg_col_sub() ) cube_data[0] = 0x01;
+
 
     
 	++temp_x; // low byte
@@ -200,8 +232,9 @@ void bg_coll_death(void) {
 	}
 	else if(!player_gravity[currplayer] && rpt_bg_col_sub() & COL_BOTTOM) { }
 	else if(player_gravity[currplayer] && rpt_bg_col_sub() & COL_TOP) { }
-
+	else if(rpt_bg_col_sub() & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
 	else if(rpt_bg_col_sub() ) cube_data[0] = 0x01;
+
     
 
 	if(!DEBUG_MODE && cube_data[0] & 0x01) {
