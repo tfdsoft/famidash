@@ -30,7 +30,7 @@ MenuSaveIncAttr=1
 MenuSaveRLE=1
 VarTileViewTagBuf=0
 VarBgPalCur=0
-VarPalActive=3
+VarPalActive=0
 VarTileActive=19
 VarBankActive=0
 VarPPUMask=0
@@ -94,13 +94,13 @@ NameCopy=27262728292a2b2c2d2021222e2f212235363738393a3b3c3d3031323e3f31324546474
 NameUndo=ff[88]202122232425262728292223222b2c[2]ff[10]3031323334353637383932333a3b3c3dff[10]40ff424344454647484942434a4b4c[2]ff[b0]54555657ff[2]50515253ff[2]54555657ff[10]64656667ff[2]60616263ff[2]58595a5bff[10]74757677ff[2]70717273ff[2]68696a77ff[10]84858687ff[2]80818283ff[2]84858687ff[54]7879ff[4]7a7bff[18]8889ff[4]8a8bff[4c]1011[7]1011[7]1011[7]1011[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]
 
 
-AttrTable=55[28]f0[8]ff[8]0f[8]
+AttrTable=55[10]05[8]55[8]50[8]ff[10]0f[8]
 
 
 AttrCopy=01[30]00[10]
 
 
-AttrUndo=55[28]00[18]
+AttrUndo=55[10]05[6]55[a]50[8]ff[10]0f[8]
 
 
 MetaSprites=ff[10000]
@@ -180,7 +180,7 @@ MetaSpriteBankName=session
 FilterCHR=0
 FilterName=4
 FileNameCHR=
-FileNameName=Z:\home\sniper\Documents\family pc games\newfamidash\newfamidash\SAUCE\defines\ok so basically level complete
+FileNameName=Z:\home\sniper\Documents\family pc games\newfamidash\newfamidash\SAUCE\defines\ok so basically level complete.h
 FileNamePal=
 FileNameMetaSpriteBank=
 FileNameTileProps=
