@@ -261,7 +261,6 @@ void sprite_collide_lookup(){
 	 //   if (player_vel_y[currplayer] > -0x0200) player_vel_y[currplayer] = -0x0200; 
 	   // else 
 		   if (player_vel_y[currplayer] < -0x0290) player_vel_y[currplayer] = -0x0290; 
-	if (mini && tmp4 == GRAVITY_DOWN_PORTAL)  high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_D - 3;
 	}
     }
     else if (tmp4 == GRAVITY_UP_PORTAL || tmp4 == GRAVITY_UP_UPWARDS_PORTAL || tmp4 == GRAVITY_UP_DOWNWARDS_PORTAL || tmp4 == GRAVITY_UP_INVISIBLE_PORTAL ) { 
@@ -270,7 +269,6 @@ void sprite_collide_lookup(){
 	    //if (player_vel_y[currplayer] < 0x0200) player_vel_y[currplayer] = 0x0200; 
 //	    else
 		    if (player_vel_y[currplayer] > 0x0290) player_vel_y[currplayer] = 0x0290; 
-	if (mini && tmp4 == GRAVITY_UP_PORTAL)  high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U + 3;
 	}
     }
 
