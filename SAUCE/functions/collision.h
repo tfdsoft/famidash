@@ -246,7 +246,7 @@ void bg_coll_death(void) {
 	else if(player_gravity[currplayer] && tmp3 & COL_TOP) { }
 	else if(tmp3 & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
 	else {
-		if (!platformer && tmp3 & COL_ALL) { 
+		if (tmp3 & COL_ALL) { 
 			if (player_gravity[currplayer]) {
 				if (player_vel_y[currplayer] > 0) {
 					cube_data[0] = 0x01; 
