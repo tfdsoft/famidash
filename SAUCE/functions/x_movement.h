@@ -51,7 +51,7 @@ void x_movement(){
 	
 	// no L/R collision required, since that is accounted for with the death script
 	if (high_byte(player_x[currplayer]) > 0x10) {
-		bg_coll_L(); // do left collision since we need to check for spikes at the left of the player (fixes standing on spikes)
+		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
 		if (bg_coll_R()) {
 			if (!platformer) {cube_data[currplayer] |= 0x01; }
 			else {player_vel_x[currplayer] = 0; }

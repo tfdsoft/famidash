@@ -36,6 +36,25 @@ char bg_coll_L(void){
     
     return 0;
 }
+
+char bg_coll_floor_spikes(void){ // used just for checking ground spikes on the floor
+	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
+
+	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : (Generic.height - 8));
+
+	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
+
+	tmp3 = bg_collision_sub();
+	if(tmp3 & COL_DEATH_TOP) {
+		if (!(temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
+		else return 0;										// else nothing
+	} else if (tmp3 & COL_DEATH_BOTTOM) {
+		if ((temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block ≥ 8px, die
+		else return 0;									// else nothing
+	}
+
+    return 0;
+}
 char bg_coll_R(void){
     // check 2 points on the right side
 	temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
