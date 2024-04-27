@@ -1,6 +1,6 @@
-#pragma code-name(push, "LVL_BANK_00")
-#pragma data-name(push, "LVL_BANK_00")
-#pragma rodata-name(push, "LVL_BANK_00")
+#pragma code-name(push, "XCD_BANK_00")
+#pragma data-name(push, "XCD_BANK_00")
+#pragma rodata-name(push, "XCD_BANK_00")
 
 const unsigned short speed_table[] = {
 	CUBE_SPEED_X1, CUBE_SPEED_X05, CUBE_SPEED_X2, CUBE_SPEED_X3, CUBE_SPEED_X4
@@ -12,10 +12,19 @@ void x_movement(){
 
 	old_x = player_x[currplayer];
 	
+	if (!platformer) {
+		player_vel_x[currplayer] = speed_table[speed];
+		player_x[currplayer] += player_vel_x[currplayer];
+	}
 
-	player_vel_x[currplayer] = speed_table[speed];
-	player_x[currplayer] += player_vel_x[currplayer];
-
+	else {
+		player_vel_x[currplayer] = speed_table[speed];
+		if (pad[currplayer] & PAD_RIGHT) player_x[currplayer] += player_vel_x[currplayer];
+		if (pad[currplayer] & PAD_LEFT) player_x[currplayer] -= player_vel_x[currplayer];
+	}
+	
+	
+	
 	if(player_x[currplayer] > 0xf000) { // too far, don't wrap around
         if(old_x >= 0xf000){
             player_x[currplayer] = 0xf000; // max right

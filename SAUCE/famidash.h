@@ -136,6 +136,7 @@ unsigned char twoplayer;
 unsigned char oneptwoplayer;
 unsigned char deathsound;
 unsigned char jumpsound;
+unsigned char platformer;
 
 unsigned char practice_famistudio_state[0xbf];
 

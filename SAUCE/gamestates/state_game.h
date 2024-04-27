@@ -50,6 +50,8 @@ void state_game(){
         pad[0] = pad_poll(0); // read the first controller
 	pad_new[0] = get_pad_new(0);
 
+	if (platformer) twoplayer = 0;
+
 	if (oneptwoplayer && twoplayer) {
 		pad[1] = pad[0] << 4; // read the second controller
 		pad_new[1] = pad_new[0] << 4;
@@ -135,7 +137,7 @@ void state_game(){
 
     if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
 	
-	mmc3_set_prg_bank_1(0);
+	mmc3_set_prg_bank_1(GET_BANK(x_movement));
     
 	x_movement();
 	
@@ -164,7 +166,7 @@ void state_game(){
 	if (dual) { 
 		currplayer = 1;					//take focus
 		if (twoplayer) controllingplayer = 1;		//take controls
-		player_x[1] = player_x[0];
+		if (!platformer) player_x[1] = player_x[0];
 		if (pad_new[controllingplayer] & PAD_UP) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 
 		mmc3_set_prg_bank_1(GET_BANK(movement));
