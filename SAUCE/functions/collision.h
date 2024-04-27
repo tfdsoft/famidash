@@ -6,6 +6,44 @@ __fastcall__ char bg_collision_sub(void);
 
 #define rpt_bg_col_sub() (__asm__("ldx #0\nLDY %v\nLDA %v,Y", collision, is_solid), __A__)
 
+char bg_coll_L(void){
+    // check 2 points on the right side
+	temp_x = Generic.x + low2bytes(scroll_x); // automatically only the low byte
+
+	tmp1 = Generic.y + Generic.height - 8;
+	if (mini) {
+		tmp1 = Generic.y + ((0x10 - Generic.height) >> 1);	
+	}
+	tmp5 = add_scroll_y(tmp1, scroll_y);
+	temp_y = low_byte(tmp5);
+	temp_room = high_byte(tmp5);
+
+	if(bg_collision_sub() & COL_BOTTOM) {
+		tmp5 = temp_y & 0x08;
+		if (tmp5) return 1;
+	} else if (rpt_bg_col_sub() & COL_TOP) {
+		tmp5 = temp_y & 0x08;
+		if (!tmp5) return 1;
+	} else if(rpt_bg_col_sub() & COL_ALL) return 1;
+	else if(mini) {
+		temp_x = Generic.x + low2bytes(scroll_x); // automatically only the low byte
+		tmp5 = temp_y & 0x0f;
+		if(bg_collision_sub() & COL_DEATH_TOP) {
+			return tmp5 < 0x08;
+		} else if (rpt_bg_col_sub() & COL_DEATH_BOTTOM) {
+			return tmp5 >= 0x08;
+		}
+	} else if (rpt_bg_col_sub() & COL_DEATH_RIGHT) {
+		tmp5 = temp_x & 0x0f;
+		if (tmp5 < 0x08) return 0;
+	} else if (rpt_bg_col_sub() & COL_DEATH_LEFT) {
+		tmp5 = temp_x & 0x0f;
+		if (tmp5 >= 0x08) return 0;
+	}
+
+    
+    return 0;
+}
 char bg_coll_R(void){
     // check 2 points on the right side
 	temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
@@ -213,7 +251,10 @@ void bg_coll_death(void) {
 	else if(!player_gravity[currplayer] && rpt_bg_col_sub() & COL_BOTTOM) { }
 	else if(player_gravity[currplayer] && rpt_bg_col_sub() & COL_TOP) { }
 	else if(rpt_bg_col_sub() & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
-	else if(rpt_bg_col_sub() ) cube_data[0] = 0x01;
+	else {
+		if (!platformer) { if(rpt_bg_col_sub() ) cube_data[0] = 0x01; }
+		else { if(rpt_bg_col_sub() & COL_DEATH) cube_data[0] = 0x01; }
+	}
 
 
     
@@ -224,14 +265,17 @@ void bg_coll_death(void) {
 			tmp5 = add_scroll_y(tmp1, scroll_y);
 			temp_y = low_byte(tmp5);
 			temp_room = high_byte(tmp5);
-			if(bg_collision_sub() ) cube_data[0] = 0x01;	
+		if (!platformer) { if(rpt_bg_col_sub() ) cube_data[0] = 0x01; }
+		else { if(rpt_bg_col_sub() & COL_DEATH) cube_data[0] = 0x01; }
+
 	}
 	else if(!player_gravity[currplayer] && rpt_bg_col_sub() & COL_BOTTOM) { }
 	else if(player_gravity[currplayer] && rpt_bg_col_sub() & COL_TOP) { }
 	else if(rpt_bg_col_sub() & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
-	else if(rpt_bg_col_sub() ) cube_data[0] = 0x01;
-
-    
+	else {
+		if (!platformer) { if(rpt_bg_col_sub() ) cube_data[0] = 0x01; }
+		else { if(rpt_bg_col_sub() & COL_DEATH) cube_data[0] = 0x01; }
+	}    
 
 	if(!DEBUG_MODE && cube_data[0] & 0x01) {
 		reset_level();

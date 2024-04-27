@@ -19,8 +19,8 @@ void x_movement(){
 
 	else {
 		player_vel_x[currplayer] = speed_table[speed];
-		if (pad[currplayer] & PAD_RIGHT) player_x[currplayer] += player_vel_x[currplayer];
-		if (pad[currplayer] & PAD_LEFT) player_x[currplayer] -= player_vel_x[currplayer];
+		if ((pad[currplayer] & PAD_RIGHT) && !bg_coll_R()) player_x[currplayer] += player_vel_x[currplayer];
+		if (pad[currplayer] & PAD_LEFT && !bg_coll_L()) player_x[currplayer] -= player_vel_x[currplayer];
 	}
 	
 	
@@ -54,7 +54,8 @@ void x_movement(){
 	
 	// no L/R collision required, since that is accounted for with the death script
 	
-	if (high_byte(player_x[currplayer]) > 0x10 && bg_coll_R()) cube_data[currplayer] |= 0x01; // turns out, this is needed to temporarily fix zipping
+	if (!platformer) {if (high_byte(player_x[currplayer]) > 0x10 && bg_coll_R()) cube_data[currplayer] |= 0x01; }// turns out, this is needed to temporarily fix zipping
+	else {if (high_byte(player_x[currplayer]) > 0x10 && bg_coll_R()) player_vel_x[currplayer] = 0; }// turns out, this is needed to temporarily fix zipping
 	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 0x02;
 }
 
