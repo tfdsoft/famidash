@@ -12,6 +12,7 @@
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column
 .import FIRST_MUSIC_BANK
+.import _auto_fs_updates
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 
@@ -52,7 +53,7 @@ sprite_data = _sprite_data
     parallax_scroll_column: .res 1
     parallax_scroll_column_start: .res 1
 
-.segment "CODE_2"
+.segment "CODE"
 
 _oam_meta_spr_vflipped:
 
@@ -129,6 +130,7 @@ oam_meta_spr_vflipped_params_set: ; Put &data into PTR, X and Y into SCRX and SC
 :
 .endmacro
 
+.segment "CODE_2"
 
 .export _one_vram_buffer_horz_repeat
 .proc _one_vram_buffer_horz_repeat
