@@ -234,7 +234,7 @@ FAMISTUDIO_USE_DELTA_COUNTER     = 1
 ; FAMISTUDIO_USE_INSTRUMENT_EXTENDED_RANGE = 1
 
 ; Must be enabled if your project uses the "Phase Reset" effect.
-; FAMISTUDIO_USE_PHASE_RESET = 1
+FAMISTUDIO_USE_PHASE_RESET = 1
 
 ; Must be enabled if your project uses the FDS expansion and at least one instrument with FDS Auto-Mod enabled.
 ; FAMISTUDIO_USE_FDS_AUTOMOD  = 1

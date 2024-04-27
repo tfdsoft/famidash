@@ -8,11 +8,12 @@ __fastcall__ char bg_collision_sub(void);
 
 char bg_coll_L(void){
     // check 2 points on the right side
-	temp_x = Generic.x + low2bytes(scroll_x); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
-	tmp1 = Generic.y + Generic.height - 8;
 	if (mini) {
 		tmp1 = Generic.y + ((0x10 - Generic.height) >> 1);	
+	} else {
+		tmp1 = Generic.y + Generic.height - 8;
 	}
 	tmp5 = add_scroll_y(tmp1, scroll_y);
 	temp_y = low_byte(tmp5);
@@ -20,26 +21,21 @@ char bg_coll_L(void){
 
 	tmp3 = bg_collision_sub();
 	if(tmp3 & COL_BOTTOM) {
-		tmp2 = temp_y & 0x08;
-		if (tmp2) return 1;
+		if (temp_y & 0x08) return 1;		// If Y pos inside block ≥ 8px
 	} else if (tmp3 & COL_TOP) {
-		tmp2 = temp_y & 0x08;
-		if (!tmp2) return 1;
-	} else if(tmp3 & COL_ALL) return 1;
-	else if (tmp3 & COL_DEATH_RIGHT) {
-		tmp2 = temp_x & 0x0f;
-		if (tmp2 < 0x08) return 0;
+		if (!(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
+	} else if(tmp3 & COL_ALL) {
+		return 1;
+	} else if (tmp3 & COL_DEATH_RIGHT) {
+		if (!(temp_x & 0x08)) return 0;		// If X pos inside block < 8px
 	} else if (tmp3 & COL_DEATH_LEFT) {
-		tmp2 = temp_x & 0x0f;
-		if (tmp2 >= 0x08) return 0;
+		if ((temp_x & 0x08)) return 0;		// If X pos inside block ≥ 8px
 	} else if(tmp3 & COL_DEATH_TOP) {
-		tmp2 = temp_y & 0x0f;
-		if (tmp2 < 0x08) cube_data[currplayer] = 1;
-		else return 0;
+		if (!(temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
+		else return 0;										// else nothing
 	} else if (tmp3 & COL_DEATH_BOTTOM) {
-		tmp2 = temp_y & 0x0f;
-		if (tmp2 >= 0x08) cube_data[currplayer] = 1;
-		else return 0;
+		if ((temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block ≥ 8px, die
+		else return 0;									// else nothing
 	}
 
     
@@ -47,7 +43,7 @@ char bg_coll_L(void){
 }
 char bg_coll_R(void){
     // check 2 points on the right side
-	temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
 
 	tmp1 = Generic.y + Generic.height - 8;
 	if (mini) {
@@ -59,29 +55,22 @@ char bg_coll_R(void){
 
 	tmp3 = bg_collision_sub();
 	if(tmp3 & COL_BOTTOM) {
-		tmp2 = temp_y & 0x08;
-		if (tmp2) return 1;
+		if (temp_y & 0x08) return 1;		// If Y pos inside block ≥ 8px
 	} else if (tmp3 & COL_TOP) {
-		tmp2 = temp_y & 0x08;
-		if (!tmp2) return 1;
-	} else if(tmp3 & COL_ALL) return 1;		
-	else if (tmp3 & COL_DEATH_RIGHT) {
-		tmp2 = temp_x & 0x0f;
-		if (tmp2 < 0x08) return 0;
+		if (!(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
+	} else if(tmp3 & COL_ALL) {
+		return 1;		
+	} else if (tmp3 & COL_DEATH_RIGHT) {
+		if (!(temp_x & 0x08)) return 0;		// If X pos inside block < 8px
 	} else if (tmp3 & COL_DEATH_LEFT) {
-		tmp2 = temp_x & 0x0f;
-		if (tmp2 >= 0x08) return 0;
+		if ((temp_x & 0x08)) return 0;		// If X pos inside block ≥ 8px
 	} else if(tmp3 & COL_DEATH_TOP) {
-		tmp2 = temp_x & 0x0f;
-		if (tmp2 < 0x06) return 0;
-		tmp2 = temp_y & 0x0f;
-		if (tmp2 < 0x08) cube_data[currplayer] = 1;
+		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+		if (!(temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
 		else return 0;
 	} else if (tmp3 & COL_DEATH_BOTTOM) {
-		tmp2 = temp_x & 0x0f;
-		if (tmp2 < 0x06) return 0;
-		tmp2 = temp_y & 0x0f;
-		if (tmp2 >= 0x08) cube_data[currplayer] = 1;
+		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+		if ((temp_y & 0x08)) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
 		else return 0;
 	}
 
@@ -92,7 +81,7 @@ char bg_coll_R(void){
 char bg_coll_U(void){
 	if (player_vel_y[currplayer] > 0) return 0;
 	
-	temp_x = Generic.x + low2bytes(scroll_x); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
 	tmp1 = Generic.y;
 	
@@ -148,7 +137,7 @@ char bg_coll_U(void){
 			}
 		}
 
-		temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
 	}	
 	return 0;
 	
@@ -157,7 +146,7 @@ char bg_coll_U(void){
 char bg_coll_D(void){
 	if (player_vel_y[currplayer] < 0) return 0;
 	 // check 2 points on the right side
-	temp_x = Generic.x + low2bytes(scroll_x); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
 	tmp1 = Generic.y + Generic.height;
 	if (mini) {
@@ -212,7 +201,7 @@ char bg_coll_D(void){
 			}
 		}
 
-		temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
 	}	
 	return 0;
 }
@@ -227,7 +216,7 @@ void bg_coll_death(void) {
 
 	// middle point collision to kill, since hitboxes don't exist
 
-	temp_x = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1)-1; // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1)-1; // automatically only the low byte
 
 	tmp1 = Generic.y + (Generic.width >> 1);
 

@@ -53,101 +53,116 @@ void init_sprites(void){
 	// Setting up pointers is already done by init_rld()
     mmc3_set_prg_bank_1(sprite_data_bank);
 
+	for (tmp4 = max_loaded_sprites-1; tmp4 != 0; --tmp4) activesprites_type[tmp4] = 0xFF;
+
     spr_index = 0;
-    while (spr_index < max_loaded_sprites){
-        if (sprite_data[spr_index*5] == TURN_OFF) break;
-		load_next_sprite();
-		if (sprite_data[(spr_index - 1)*5 + 1] != 0) activesprites_active[spr_index - 1] = 0;
-		
-    }
+    do {
+        if (sprite_data[0] == TURN_OFF) break;
+        load_next_sprite();
+		if (idx16_hi_NOC(activesprites_x, spr_index) != 0) activesprites_active[spr_index] = 0;
+    } while (spr_index != 0);
 }
 
-__fastcall__ char sprite_height_lookup(unsigned char type){
+__fastcall__ char sprite_height_lookup(){
+
+	#define type tmp4
 
     if (!mini) {
-	if (type == YELLOW_ORB) return 0x0f; // yellow jump orb
-	if (type == YELLOW_ORB_BIGGER) return 0x0f; // yellow jump orb
-	else if (type == BLUE_ORB) return 0x0f; // blue orb
-	else if (type == PINK_ORB) return 0x0f; // pink jump orb
+		switch(type) {
+			case YELLOW_ORB:
+			case YELLOW_ORB_BIGGER:
+			case BLUE_ORB:
+			case PINK_ORB:
+				return 0x0f;
+				
+		}
 	}
 
     else {
-	if (type == YELLOW_ORB) return 0x17; // yellow jump orb
-	else if (type == BLUE_ORB) return 0x17; // blue orb
-	else if (type == PINK_ORB) return 0x17; // pink jump orb
+		switch(type) {
+			case YELLOW_ORB:
+			case BLUE_ORB:
+			case PINK_ORB:
+				return 0x17;
+				
+		}
 	}
 
-
-    if (type == 0xFF) { return 0; }		//disappearing sprite
-
-    else if (type == 0xFD || type == 0xFE) return 0x07;	//invisible blue pads
-    else if (type == 0xFC || type == 0xFB) return 0x0F;	//horizontal down gravity portal
-
-    else if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
+    if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
 		tmp2 = (type & 0x3F);                        
 		if (type >= 0xC0){
 		    pal_col(6, tmp2);
 		    if (tmp2-0x10 & 0xC0) { 
 			pal_col(5, 0x0f); 
-			activesprites_type[index] = 0xFF; 
 		    } else { 
 			pal_col(5, (tmp2-0x10)); 
-			activesprites_type[index] = 0xFF; 
 		    }
 		} else {
 		    pal_col(0, tmp2);
 		    if (tmp2-0x10 & 0xC0) { 
 			pal_col(1, 0x0f); 
-			activesprites_type[index] = 0xFF; 
 		    } else { 
 			pal_col(1, (tmp2-0x10)); 
-			activesprites_type[index] = 0xFF;
 		    }
 		}
+		activesprites_type[index] = 0xFF; 
 		return 0x00;
     }
+	else if (type >= CUBE_MODE && type <= ROBOT_MODE) return 0x2F;	// Portals
+	else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
+	else if (
+		(type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) || // Speed portals
+		(type >= GRAVITY_DOWN_UPWARDS_PORTAL && type <= GRAVITY_UP_DOWNWARDS_PORTAL))	// Gravity portals
+		return 0x1F;	
 
-    // portals
-    else if (type == CUBE_MODE) return 0x2f; // portal
-    else if (type == SHIP_MODE) return 0x2f; // portal
-    else if (type == BALL_MODE) return 0x2f; // portal
-    else if (type == UFO_MODE) return 0x2f; // portal
-    else if (type == ROBOT_MODE) return 0x2f; // portal
-    else if (type == SPIDER_MODE) return 0x2f; // portal
-    else if (type == DUAL_PORTAL) return 0x2f; // portal
-    else if (type == SINGLE_PORTAL) return 0x2f; // portal
-    else if (type == COINGOTTEN1) return 0x17; // portal
-    else if (type == COINGOTTEN2) return 0x17; // portal
-    else if (type == COINGOTTEN3) return 0x17; // portal
-    else if (type == COIN1) { if (coin1_obtained[level]) { activesprites_type[index] = COINGOTTEN1; }  return 0x17; } // COIN
-    else if (type == COIN2) { if (coin2_obtained[level]) { activesprites_type[index] = COINGOTTEN2; }  return 0x17; } // COIN
-    else if (type == COIN3) { if (coin3_obtained[level]) { activesprites_type[index] = COINGOTTEN3; }  return 0x17; } // COIN
-
-    else if (type == GRAVITY_DOWN_PORTAL) return 0x2F;
-    else if (type == GRAVITY_UP_PORTAL) return 0x2F;
-    else if (type == MINI_PORTAL) return 0x2F;
-    else if (type == GROWTH_PORTAL) return 0x2F;
-
-    else if (type == SPEED_05_PORTAL) return 0x1f; // 0.5 speed portal
-    else if (type == SPEED_10_PORTAL) return 0x1f; // 0.5 speed portal
-    else if (type == SPEED_20_PORTAL) return 0x1f; // 0.5 speed portal
-    else if (type == SPEED_30_PORTAL) return 0x1f; // 0.5 speed portal
-    else if (type == SPEED_40_PORTAL) return 0x1f; // 0.5 speed portal
-    // pads
-    else if (type == YELLOW_PAD_DOWN) return 0x02; // yellow jump pad
-    else if (type == YELLOW_PAD_UP) return 0x02; // yellow jump pad Upside Down
-    else if (type == GRAVITY_PAD_DOWN) return 0x04; // Gravity Pad
-    else if (type == GRAVITY_PAD_UP) return 0x04; // Gravity Pad Upside Down
-
-    // triggers
-    else if (type == LEVEL_END_TRIGGER) {			//end trigger on load
-        gameState = 0x03; 
-        pal_fade_to(4,0); 	    
-    }	   
-
-    else if (type == GRAVITY_DOWN_UPWARDS_PORTAL || type == GRAVITY_DOWN_DOWNWARDS_PORTAL || type == GRAVITY_UP_UPWARDS_PORTAL || type == GRAVITY_UP_DOWNWARDS_PORTAL || type == GRAVITY_UP_INVISIBLE_PORTAL || type == GRAVITY_DOWN_INVISIBLE_PORTAL ) return 0x1f;
-    
+	switch(type) {
+		case NOSPRITE:
+			return 0;
+		case GRAVITY_PAD_DOWN_INVISIBLE:
+		case GRAVITY_PAD_UP_INVISIBLE:
+			return 0x07;
+		case GRAVITY_UP_INVISIBLE_PORTAL:
+		case GRAVITY_DOWN_INVISIBLE_PORTAL:
+			return 0x0F;
+		case SPIDER_MODE:
+		case SINGLE_PORTAL:
+		case DUAL_PORTAL:
+		case GRAVITY_DOWN_PORTAL:
+		case GRAVITY_UP_PORTAL:
+		case MINI_PORTAL:
+		case GROWTH_PORTAL:
+			return 0x2f;
+		case COIN1:
+			if (coin1_obtained[level]) {
+				activesprites_type[index] = COINGOTTEN1;
+			}
+			return 0x17; 
+		case COIN2:
+			if (coin2_obtained[level]) {
+				activesprites_type[index] = COINGOTTEN2;
+			}
+			return 0x17; 
+		case COIN3:
+			if (coin3_obtained[level]) {
+				activesprites_type[index] = COINGOTTEN3;
+			}
+			return 0x17; 
+		case SPEED_30_PORTAL:
+		case SPEED_40_PORTAL:
+			return 0x1F;
+		case YELLOW_PAD_DOWN:
+		case YELLOW_PAD_UP:
+			return 0x02;
+		case GRAVITY_PAD_DOWN:
+		case GRAVITY_PAD_UP:
+			return 0x04;
+		case LEVEL_END_TRIGGER:
+			gameState = 0x03; 
+        	pal_fade_to(4,0);
+	}
     return 0;
+
+	#undef type
 }
 
 
@@ -344,7 +359,7 @@ void sprite_collide(){
         tmp3 = activesprites_active[index];
         if (tmp3){
             tmp4 = activesprites_type[index];
-            tmp2 = sprite_height_lookup(tmp4);
+            tmp2 = sprite_height_lookup();	// uses tmp4
             Generic2.height = tmp2;
 
             Generic2.x = activesprites_realx[index];

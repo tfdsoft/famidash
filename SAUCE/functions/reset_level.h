@@ -25,19 +25,7 @@ void reset_level(void) {
     scroll_y = 0xEF;
     set_scroll_y(scroll_y);
     init_rld(level);
-    
-    // load the starting ground and bg color
-    tmp2 = (level_list[level][3] & 0x3f);
-    pal_col(0, tmp2);
-    if (tmp2-0x10 & 0xC0) pal_col(1, 0x0f);
-    else pal_col(1, (tmp2-0x10));
 
-    tmp2 = (level_list[level][4] & 0x3f);
-    pal_col(6, tmp2);
-    if (tmp2-0x10 & 0xC0) pal_col(5, 0x0f);
-    else pal_col(5, (tmp2-0x10));
-
-    speed = level_list[level][2];
     player_x[0] = 0x0000;
     player_y[0] = 0xb000;
     player_x[1] = 0x0000;
