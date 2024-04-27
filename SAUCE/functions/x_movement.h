@@ -13,18 +13,15 @@ void x_movement(){
 	old_x = player_x[currplayer];
 	
 	if (!platformer) {
-		player_vel_x[currplayer] = speed_table[speed];
+		player_vel_x[currplayer] = speed_table[speed & 0x7F];
 		player_x[currplayer] += player_vel_x[currplayer];
+	} else {
+		player_vel_x[currplayer] = speed_table[speed & 0x7F];
+		// leave the col calls first so it executes and checks against spike collision
+		if (!bg_coll_R() && (pad[currplayer] & PAD_RIGHT)) player_x[currplayer] += player_vel_x[currplayer];
+		if (!bg_coll_L() && pad[currplayer] & PAD_LEFT && player_x[currplayer] > 0x0A00) player_x[currplayer] -= player_vel_x[currplayer];
 	}
 
-	else {
-		player_vel_x[currplayer] = speed_table[speed];
-		if ((pad[currplayer] & PAD_RIGHT) && !bg_coll_R()) player_x[currplayer] += player_vel_x[currplayer];
-		if (pad[currplayer] & PAD_LEFT && !bg_coll_L()) player_x[currplayer] -= player_vel_x[currplayer];
-	}
-	
-	
-	
 	if(player_x[currplayer] > 0xf000) { // too far, don't wrap around
         if(old_x >= 0xf000){
             player_x[currplayer] = 0xf000; // max right

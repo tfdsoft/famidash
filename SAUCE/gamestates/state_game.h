@@ -170,7 +170,9 @@ void state_game(){
 	if (dual) { 
 		currplayer = 1;					//take focus
 		if (twoplayer) controllingplayer = 1;		//take controls
-		if (!platformer) player_x[1] = player_x[0];
+		if (dual && platformer && !twoplayer) player_x[1] = player_x[0];
+		else if (dual && !platformer) player_x[1] = player_x[0];
+
 		if (pad_new[controllingplayer] & PAD_UP) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 
 		mmc3_set_prg_bank_1(GET_BANK(movement));
