@@ -113,16 +113,14 @@ char bg_coll_U(void){
 				return 1;
 			}
 		} else if (tmp3 & COL_DEATH_RIGHT) {
-			tmp2 = temp_x & 0x0f;
-			if (tmp2 < 0x0A) {
+			if ((temp_x & 0x0f) < 0x04) {
 				tmp2 = temp_y & 0x0f;
-				if (tmp2 >= 0x06 && tmp2 < 0x0A) cube_data[currplayer] = 1;
+				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			};
 		} else if (tmp3 & COL_DEATH_LEFT) {
-			tmp2 = temp_x & 0x0f;
-			if (tmp2 >= 0x04) {return 0;
+			if ((temp_x & 0x0f) >= 0x0c) {
 				tmp2 = temp_y & 0x0f;
-				if (tmp2 >= 0x06 && tmp2 < 0x0A) cube_data[currplayer] = 1;
+				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			}
 		}
 
@@ -175,14 +173,14 @@ char bg_coll_D(void){
 				return 1;
 			}
 		} else if (tmp3 & COL_DEATH_RIGHT) {
-			if ((temp_x & 0x0f) < 0x0A) {
+			if ((temp_x & 0x0f) < 0x04) {
 				tmp2 = temp_y & 0x0f;
-				if (tmp2 >= 0x06 && tmp2 < 0x0A) cube_data[currplayer] = 1;
+				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			};
 		} else if (tmp3 & COL_DEATH_LEFT) {
-			if ((temp_x & 0x0f) >= 0x04) {
+			if ((temp_x & 0x0f) >= 0x0c) {
 				tmp2 = temp_y & 0x0f;
-				if (tmp2 >= 0x06 && tmp2 < 0x0A) cube_data[currplayer] = 1;
+				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			}
 		}
 
