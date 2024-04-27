@@ -70,6 +70,7 @@
 #include "gamemodes/gamemode_cube.h"
 #include "gamemodes/gamemode_ship.h"
 #include "gamemodes/gamemode_spider.h"
+#include "gamemodes/gamemode_wave.h"
 
 // THE GAME STATE DEFINES //
 #include "gamestates/state_menu.h"
