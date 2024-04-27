@@ -10,11 +10,8 @@ char bg_coll_L(void){
     // check 2 points on the right side
 	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
-	if (mini) {
-		tmp1 = Generic.y + ((0x10 - Generic.height) >> 1);	
-	} else {
-		tmp1 = Generic.y + Generic.height - 8;
-	}
+	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : (Generic.y + Generic.height - 8));
+
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
 	tmp3 = bg_collision_sub();
@@ -43,10 +40,8 @@ char bg_coll_R(void){
     // check 2 points on the right side
 	temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
 
-	tmp1 = Generic.y + Generic.height - 8;
-	if (mini) {
-		tmp1 = Generic.y + ((0x10 - Generic.height) >> 1);	
-	}
+	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : (Generic.height - 8));
+
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
 	tmp3 = bg_collision_sub();
@@ -82,7 +77,7 @@ char bg_coll_U(void){
 	tmp1 = Generic.y;
 	
 	if (mini) {
-		tmp1 += (0x10 - Generic.height) >> 1;	
+		tmp1 += byte(0x10 - Generic.height) >> 1;	
 	}
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 	eject_U = (temp_y) | 0xf0;	 
@@ -144,7 +139,7 @@ char bg_coll_D(void){
 
 	tmp1 = Generic.y + Generic.height;
 	if (mini) {
-		tmp1 += (0x10 - Generic.height) >> 1;	
+		tmp1 += byte(0x10 - Generic.height) >> 1;	
 	}
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 	eject_D = (temp_y) & 0x0f;

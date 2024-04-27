@@ -47,30 +47,35 @@ extern unsigned char parallax_scroll_column_start;
 
 #define GET_BANK(sym) (__asm__("ldx #0\nlda #<.bank(%v)", sym), __A__)
 
+// limit stuff to certain amounts
+#define byte(x) (((x)&0xFF))
+#define word(x) (((x)&0xFFFF))
+
 // add byte with No Overflow Check
-#define addNOC_b(a, b) (((a & 0xFF)+b)&0xFF)
+#define addNOC_b(a, b) byte(byte(a)+b)
 // add word with No Overflow Check beyond the 16 bits
-#define addNOC_w(a, b) (((a & 0xFFFF)+b)&0xFFFF)
+#define addNOC_w(a, b) word(word(a)+b)
 
 // add to the low byte of a word, not overflowing into high
 #define addloNOC(a, b) (addNOC_b(a, b))|(a & 0xFF00)
 
 // subtract byte with No Overflow Check
-#define subNOC_b(a, b) (((a & 0xFF)-b)&0xFF)
+#define subNOC_b(a, b) byte(byte(a)-b)
 // subtract word with No Overflow Check beyond the 16 bits
-#define subNOC_w(a, b) (((a & 0xFFFF)-b)&0xFFFF)
+#define subNOC_w(a, b) word(word(a)-b)
 
 // subtract from the low byte of a word, not overflowing into high
 #define subloNOC(a, b) (subNOC_b(a, b))|(a & 0xFF00)
 
 // get specific byte from a word array
-#define idx16_lo(arr, idx) (*((char *)arr+((idx<<1)|1)))
+#define idx16_lo(arr, idx) (*((char *)arr+((idx<<1))))
 #define idx16_hi(arr, idx) (*((char *)arr+((idx<<1)|1)))
 
 // same as above but idx < 128
-#define idx16_lo_NOC(arr, idx) (*((char *)arr+(((idx<<1)&0xFF)|1)))
+#define idx16_lo_NOC(arr, idx) (*((char *)arr+(((idx<<1)&0xFF))))
 #define idx16_hi_NOC(arr, idx) (*((char *)arr+(((idx<<1)&0xFF)|1)))
 
+// store a word's high and low bytes into separate places
 #define storeWordSeparately(word, low, high) \
                             (__AX__ = word, \
                             __asm__("STA %v", low), \
