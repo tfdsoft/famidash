@@ -23,6 +23,8 @@ COL_BOTTOM   = (1 << 5)
 COL_TOP   = (1 << 4)
 COL_DEATH_BOTTOM   = (1 << 3)
 COL_DEATH_TOP   = (1 << 2)
+COL_DEATH_LEFT   = (1 << 1)
+COL_DEATH_RIGHT   = (1)
 COL_NONE  = (0)
 
 

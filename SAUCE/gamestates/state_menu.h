@@ -371,6 +371,7 @@ void settings() {
 		music_update();
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
+
 /*		
 		if (pad_new[0] & PAD_SELECT){
 			if (pad[0] & PAD_A){
@@ -393,7 +394,7 @@ void settings() {
 					SRAM_VALIDATE[0x11] = 0;
 					SRAM_VALIDATE[0x12] = 0;
 					SRAM_VALIDATE[0x13] = 0;
-					SRAM_VALIDATE[0x1levelselection();4] = 0;
+					SRAM_VALIDATE[0x14] = 0;
 					SRAM_VALIDATE[0x15] = 0;
 					SRAM_VALIDATE[0x16] = 0;
 					SRAM_VALIDATE[0x17] = 0;
@@ -425,36 +426,109 @@ void settings() {
 			one_vram_buffer(' ', NTADR_A(4, 9));
 			one_vram_buffer(' ', NTADR_A(4, 11));
 			one_vram_buffer(' ', NTADR_A(4, 13));
+			one_vram_buffer(' ', NTADR_A(4, 15));
 		}		
 		else if (settingvalue == 1) {
 			one_vram_buffer(' ', NTADR_A(4, 7));
 			one_vram_buffer('c', NTADR_A(4, 9));
 			one_vram_buffer(' ', NTADR_A(4, 11));
 			one_vram_buffer(' ', NTADR_A(4, 13));
+			one_vram_buffer(' ', NTADR_A(4, 15));
 		}		
 		else if (settingvalue == 2) {
 			one_vram_buffer(' ', NTADR_A(4, 7));
 			one_vram_buffer(' ', NTADR_A(4, 9));
 			one_vram_buffer('c', NTADR_A(4, 11));
 			one_vram_buffer(' ', NTADR_A(4, 13));
+			one_vram_buffer(' ', NTADR_A(4, 15));
 		}		
 		else if (settingvalue == 3) {
 			one_vram_buffer(' ', NTADR_A(4, 7));
 			one_vram_buffer(' ', NTADR_A(4, 9));
 			one_vram_buffer(' ', NTADR_A(4, 11));
 			one_vram_buffer('c', NTADR_A(4, 13));
+			one_vram_buffer(' ', NTADR_A(4, 15));
+		}		
+		else if (settingvalue == 4) {
+			one_vram_buffer(' ', NTADR_A(4, 7));
+			one_vram_buffer(' ', NTADR_A(4, 9));
+			one_vram_buffer(' ', NTADR_A(4, 11));
+			one_vram_buffer(' ', NTADR_A(4, 13));
+			one_vram_buffer('c', NTADR_A(4, 15));
 		}		
 
+		if (oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 7));
+		else if(!oneptwoplayer) one_vram_buffer('f', NTADR_A(26, 7));
+
+		if (deathsound) one_vram_buffer('g', NTADR_A(26, 9));
+		else if(!deathsound) one_vram_buffer('f', NTADR_A(26, 9));
+
+		if (jumpsound) one_vram_buffer('g', NTADR_A(26, 11));
+		else if(!jumpsound) one_vram_buffer('f', NTADR_A(26, 11));
+
+		if (platformer) one_vram_buffer('g', NTADR_A(26, 13));
+		else if(!platformer) one_vram_buffer('f', NTADR_A(26, 13));
+
 		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
-			if (settingvalue == 3) { settingvalue = 0; famistudio_sfx_play(sfx_select, 0); }
+			if (settingvalue == 4) { settingvalue = 0; famistudio_sfx_play(sfx_select, 0); }
 			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
-			if (settingvalue == 0) { settingvalue = 3; famistudio_sfx_play(sfx_select, 0); }
+			if (settingvalue == 0) { settingvalue = 4; famistudio_sfx_play(sfx_select, 0); }
 			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
 		}
 		
+		if (pad_new[0] & PAD_A || pad_new[0] & PAD_START) {
+			if (settingvalue == 0) oneptwoplayer ^= 1;
+			else if (settingvalue == 1) deathsound ^= 1;
+			else if (settingvalue == 2) jumpsound ^= 1;
+			else if (settingvalue == 3) platformer ^= 1;
+			else if (settingvalue == 4) { 
+					if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
+						for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+							coin1_obtained[tmp2] = 0;
+							coin2_obtained[tmp2] = 0;
+							coin3_obtained[tmp2] = 0;
+						}
+								
+						tmp2 = 0;
+						while (tmp2 < 0x20) {
+							LEVELCOMPLETE[tmp2] = 0;
+							tmp2++;
+						}
+					
+						SRAM_VALIDATE[0x0E] = 0;
+						SRAM_VALIDATE[0x0F] = 0;
+						SRAM_VALIDATE[0x10] = 0;
+						SRAM_VALIDATE[0x11] = 0;
+						SRAM_VALIDATE[0x12] = 0;
+						SRAM_VALIDATE[0x13] = 0;
+						SRAM_VALIDATE[0x14] = 0;
+						SRAM_VALIDATE[0x15] = 0;
+						SRAM_VALIDATE[0x16] = 0;
+						SRAM_VALIDATE[0x17] = 0;
+						SRAM_VALIDATE[0x18] = 0;
+						SRAM_VALIDATE[0x19] = 0;
+						SRAM_VALIDATE[0x1A] = 0;
+						SRAM_VALIDATE[0x1B] = 0;
+						SRAM_VALIDATE[0x1C] = 0;
+						SRAM_VALIDATE[0x1D] = 0;
+						SRAM_VALIDATE[0x1E] = 0;
+						SRAM_VALIDATE[0x1F] = 0;
+						TOTALCOINSONES = 0;
+						TOTALCOINSTENS = 0;
+						deathsound = 1;
+					//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
+					//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
+						famistudio_sfx_play(sfx_death, 0);
+					//	one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));					
+					}
+			}
+		}
+		if (platformer) twoplayer = 0;		
+		if (twoplayer) platformer = 0;		
+
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
 			//state_menu();
@@ -498,13 +572,13 @@ void state_menu() {
 	// Get it? it spells DASH
 	if (SRAM_VALIDATE[0] != 0x0D
 	 || SRAM_VALIDATE[1] != 0x0A
-	 || SRAM_VALIDATE[2] != 0x05
-	 || SRAM_VALIDATE[3] != 0x06) {
+	 || SRAM_VALIDATE[2] != 0x01
+	 || SRAM_VALIDATE[3] != 0x01) {
 		// set the validation header and then reset coin counts
 		SRAM_VALIDATE[0] = 0x0d;
 		SRAM_VALIDATE[1] = 0x0a;
-		SRAM_VALIDATE[2] = 0x05;
-		SRAM_VALIDATE[3] = 0x06;
+		SRAM_VALIDATE[2] = 0x01;
+		SRAM_VALIDATE[3] = 0x01;
 		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
 			coin1_obtained[tmp2] = 0;
 			coin2_obtained[tmp2] = 0;
@@ -534,6 +608,10 @@ void state_menu() {
 		SRAM_VALIDATE[0x1D] = 0;
 		SRAM_VALIDATE[0x1E] = 0;
 		SRAM_VALIDATE[0x1F] = 0;
+		deathsound = 1;
+		jumpsound = 0;
+		twoplayer = 0;
+		oneptwoplayer = 0;
 	}
 
 	kandotemp = 1;
