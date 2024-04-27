@@ -43,7 +43,7 @@ char bg_coll_L(void){
 }
 char bg_coll_R(void){
     // check 2 points on the right side
-	temp_x = Generic.x + low2bytes(scroll_x) + Generic.width; // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
 
 	tmp1 = Generic.y + Generic.height - 8;
 	if (mini) {
@@ -216,7 +216,7 @@ void bg_coll_death(void) {
 
 	// middle point collision to kill, since hitboxes don't exist
 
-	temp_x = Generic.x + low2bytes(scroll_x) + (Generic.width >> 1)-1; // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1)-1; // automatically only the low byte
 
 	tmp1 = Generic.y + (Generic.width >> 1);
 
