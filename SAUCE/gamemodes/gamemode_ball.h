@@ -46,11 +46,8 @@ void ball_movement(void){
 		Generic.y = high_byte(player_y[currplayer]) + 1;
 	}
 
-
-
 	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 2;	
 
-	
 	if(high_byte(player_vel_y[currplayer]) & 0x80){
 		if(bg_coll_U()){ // check collision above
 			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U - 1;
@@ -66,10 +63,7 @@ void ball_movement(void){
 		}
 	}
 
-	// check collision down a little lower than CUBE
-	Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
-
-	if ((pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && (player_vel_y[currplayer] == 0) && !bg_coll_R()){
+	if (!bg_coll_R() && (pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && (player_vel_y[currplayer] == 0)){
 		player_gravity[currplayer] ^= 0x01;
 		kandotemp2[currplayer] = 1;
 		switch (player_gravity[currplayer]){
