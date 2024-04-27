@@ -629,11 +629,13 @@ void state_menu() {
                 if (menuselection == 4) menuselection = 0;
                 else menuselection++;
                 tmp3--;
+				famistudio_sfx_play(sfx_select, 0);
             }
             if (pad_new[0] & PAD_LEFT) {
                 if (menuselection == 0) menuselection = 4;
                 else menuselection--;
                 tmp3++;
+				famistudio_sfx_play(sfx_select, 0);
             }
 
             if (tmp3) {    // menu selection incremented
