@@ -50,9 +50,13 @@ void x_movement(){
 	};
 	
 	// no L/R collision required, since that is accounted for with the death script
-	
-	if (!platformer) {if (high_byte(player_x[currplayer]) > 0x10 && bg_coll_R()) cube_data[currplayer] |= 0x01; }// turns out, this is needed to temporarily fix zipping
-	else {if (high_byte(player_x[currplayer]) > 0x10 && bg_coll_R()) player_vel_x[currplayer] = 0; }// turns out, this is needed to temporarily fix zipping
+	if (high_byte(player_x[currplayer]) > 0x10) {
+		bg_coll_L(); // do left collision since we need to check for spikes at the left of the player (fixes standing on spikes)
+		if (bg_coll_R()) {
+			if (!platformer) {cube_data[currplayer] |= 0x01; }
+			else {player_vel_x[currplayer] = 0; }
+		}
+	}
 	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 0x02;
 }
 
