@@ -34,7 +34,7 @@ void cube_movement(void){
 		}
 	}		
 	player_y[currplayer] += player_vel_y[currplayer];
-	if (dual) player_x[1] = player_x[0];
+	if (dual && !platformer) player_x[1] = player_x[0];
 	Generic.x = high_byte(player_x[currplayer]);
 	Generic.y = high_byte(player_y[currplayer]);
 	
@@ -51,8 +51,6 @@ void cube_movement(void){
 			player_vel_y[currplayer] = 0;
 		}
 	}
-
-	
 
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(player_y[currplayer]); // the rest should be the same

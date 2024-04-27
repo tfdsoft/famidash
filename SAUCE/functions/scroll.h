@@ -1,6 +1,6 @@
-#pragma code-name(push, "XCD_BANK_01")
-#pragma data-name(push, "XCD_BANK_01")
-#pragma rodata-name(push, "XCD_BANK_01")
+#pragma code-name(push, "XCD_BANK_02")
+#pragma data-name(push, "XCD_BANK_02")
+#pragma rodata-name(push, "XCD_BANK_02")
 
 
 void do_the_scroll_thing(){

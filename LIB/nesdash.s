@@ -4,7 +4,7 @@
 .import _rld_column, _collisionMap0, _collisionMap1 ; used by C code
 .import _scroll_x, _level_data_bank, _sprite_data_bank
 .import _song, _level, _gravity, _speed
-.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement
+.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _wave_movement
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
@@ -971,6 +971,8 @@ _movement:
     jeq _cube_movement	;	robot_movement(); break;
     DEX					; case 0x05:
     jeq _spider_movement	;	spider_movement(); break;
+    DEX
+    jeq _wave_movement
     RTS					; case 0x06: default: break;
 
 
@@ -1392,6 +1394,8 @@ _drawplayerone:
     jeq @robot  ;__
     DEX         ;   case 0x05: spider shit
     jeq @spider ;__
+    dex
+    jeq	@ship
     
     ; default: cube
     @cube:

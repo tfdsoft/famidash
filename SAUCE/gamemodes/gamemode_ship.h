@@ -40,7 +40,7 @@ void ship_movement(void){
 	
 	if(high_byte(player_vel_y[currplayer]) & 0x80){
 		if(bg_coll_U()){ // check collision above
-			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U;
+			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U - 1;
 			player_vel_y[currplayer] = 0;
 		}
 	}

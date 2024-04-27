@@ -39,7 +39,11 @@ void spider_movement(void){
 	Generic.x = high_byte(player_x[currplayer]);
 	
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
-	Generic.y = high_byte(player_y[currplayer]);
+	if (player_gravity[currplayer]) {
+		Generic.y = high_byte(player_y[currplayer]) - 2;
+	} else {
+		Generic.y = high_byte(player_y[currplayer]) + 1;
+	}
 	
 	if(!player_gravity[currplayer]){
 		if(bg_coll_D()){ // check collision below
@@ -58,7 +62,7 @@ void spider_movement(void){
 		}
 	} else {
 		if(bg_coll_U()){ // check collision above
-			high_byte(player_y[currplayer]) -= eject_U;
+			high_byte(player_y[currplayer]) -= eject_U + 1;
 			player_vel_y[currplayer] = 0;
 
 			if(pad_new[controllingplayer] & PAD_A) {
