@@ -86,46 +86,46 @@ void __fastcall__ refreshmenu(void) {
 		level_text_size[level],
 		NTADR_A(level_text_padding[level], 11));
 
-	if (LEVELCOMPLETE[level]) { one_vram_buffer_horz_repeat('y', 1, NTADR_A(7, 9));
-	one_vram_buffer_horz_repeat('z', 1, NTADR_A(8, 9)); }
+	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9));
+	one_vram_buffer('z', NTADR_A(8, 9)); }
 	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9));
 	
 	switch(difficulty_list[level]) {
 		case 0x00:
-			one_vram_buffer_horz_repeat('a', 1, NTADR_A(7, 10));
-			one_vram_buffer_horz_repeat('b', 1, NTADR_A(8, 10));
-			one_vram_buffer_horz_repeat('c', 1, NTADR_A(7, 11));			
-			one_vram_buffer_horz_repeat('d', 1, NTADR_A(8, 11));			
+			one_vram_buffer('a', NTADR_A(7, 10));
+			one_vram_buffer('b', NTADR_A(8, 10));
+			one_vram_buffer('c', NTADR_A(7, 11));			
+			one_vram_buffer('d', NTADR_A(8, 11));			
 			break;
 		case 0x01:
-			one_vram_buffer_horz_repeat('e', 1, NTADR_A(7, 10));
-			one_vram_buffer_horz_repeat('f', 1, NTADR_A(8, 10));
-			one_vram_buffer_horz_repeat('g', 1, NTADR_A(7, 11));			
-			one_vram_buffer_horz_repeat('h', 1, NTADR_A(8, 11));			
+			one_vram_buffer('e', NTADR_A(7, 10));
+			one_vram_buffer('f', NTADR_A(8, 10));
+			one_vram_buffer('g', NTADR_A(7, 11));			
+			one_vram_buffer('h', NTADR_A(8, 11));			
 			break;
 		case 0x02:
-			one_vram_buffer_horz_repeat('i', 1, NTADR_A(7, 10));
-			one_vram_buffer_horz_repeat('j', 1, NTADR_A(8, 10));
-			one_vram_buffer_horz_repeat('k', 1, NTADR_A(7, 11));			
-			one_vram_buffer_horz_repeat('l', 1, NTADR_A(8, 11));		
+			one_vram_buffer('i', NTADR_A(7, 10));
+			one_vram_buffer('j', NTADR_A(8, 10));
+			one_vram_buffer('k', NTADR_A(7, 11));			
+			one_vram_buffer('l', NTADR_A(8, 11));		
 			break;
 		case 0x03:
-			one_vram_buffer_horz_repeat('m', 1, NTADR_A(7, 10));
-			one_vram_buffer_horz_repeat('n', 1, NTADR_A(8, 10));
-			one_vram_buffer_horz_repeat('o', 1, NTADR_A(7, 11));			
-			one_vram_buffer_horz_repeat('p', 1, NTADR_A(8, 11));			
+			one_vram_buffer('m', NTADR_A(7, 10));
+			one_vram_buffer('n', NTADR_A(8, 10));
+			one_vram_buffer('o', NTADR_A(7, 11));			
+			one_vram_buffer('p', NTADR_A(8, 11));			
 			break;
 		case 0x04:
-			one_vram_buffer_horz_repeat('q', 1, NTADR_A(7, 10));
-			one_vram_buffer_horz_repeat('r', 1, NTADR_A(8, 10));
-			one_vram_buffer_horz_repeat('s', 1, NTADR_A(7, 11));			
-			one_vram_buffer_horz_repeat('t', 1, NTADR_A(8, 11));		
+			one_vram_buffer('q', NTADR_A(7, 10));
+			one_vram_buffer('r', NTADR_A(8, 10));
+			one_vram_buffer('s', NTADR_A(7, 11));			
+			one_vram_buffer('t', NTADR_A(8, 11));		
 			break;
 		case 0x05:
-			one_vram_buffer_horz_repeat('u', 1, NTADR_A(7, 10));
-			one_vram_buffer_horz_repeat('v', 1, NTADR_A(8, 10));
-			one_vram_buffer_horz_repeat('w', 1, NTADR_A(7, 11));			
-			one_vram_buffer_horz_repeat('x', 1, NTADR_A(8, 11));		
+			one_vram_buffer('u', NTADR_A(7, 10));
+			one_vram_buffer('v', NTADR_A(8, 10));
+			one_vram_buffer('w', NTADR_A(7, 11));			
+			one_vram_buffer('x', NTADR_A(8, 11));		
 			break;
 	};	
 	tmp7 = stars_list[level];
@@ -136,7 +136,7 @@ void __fastcall__ refreshmenu(void) {
 	}
 
 	if (tmp8) one_vram_buffer(0xb0+tmp8, NTADR_A(22,9));
-	else one_vram_buffer_horz_repeat(' ', 1, NTADR_A(22, 9));
+	else one_vram_buffer(' ', NTADR_A(22, 9));
 	one_vram_buffer(0xb0+tmp7, NTADR_A(23,9));
 
 //coin stuff
@@ -641,26 +641,10 @@ void state_menu() {
  	ppu_on_all();
 	famistudio_music_pause(0);
 	pal_fade_to(0,4);
-		if (menuselection == 0) {
-			one_vram_buffer_horz_repeat('a', 1, NTADR_A(15, 11));
-			one_vram_buffer_horz_repeat('b', 1, NTADR_A(16, 11));
-		}
-		else if (menuselection == 1) {
-			one_vram_buffer_horz_repeat('a', 1, NTADR_A(21, 11));
-			one_vram_buffer_horz_repeat('b', 1, NTADR_A(22, 11));
-		}
-		else if (menuselection == 2) {
-			one_vram_buffer_horz_repeat('a', 1, NTADR_A(12, 17));
-			one_vram_buffer_horz_repeat('b', 1, NTADR_A(13, 17));
-		}
-		else if (menuselection == 3) {
-			one_vram_buffer_horz_repeat('a', 1, NTADR_A(18, 17));
-			one_vram_buffer_horz_repeat('b', 1, NTADR_A(19, 17));
-		}
-		else if (menuselection == 4) {
-			one_vram_buffer_horz_repeat('a', 1, NTADR_A(9, 11));
-			one_vram_buffer_horz_repeat('b', 1, NTADR_A(10, 11));
-		}
+		tmp4 = menuselection; ++tmp4;
+		tmp5 = loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8);
+		one_vram_buffer('a', tmp5);
+		one_vram_buffer('b', addloNOC(tmp5, 1));
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 	while (!(pad_new[0] & PAD_START)){
@@ -685,13 +669,13 @@ void state_menu() {
             if (tmp3) {    // menu selection incremented
                 tmp4 = menuselection; ++tmp4;
 				tmp5 = loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8);
-                one_vram_buffer_horz_repeat('a', 1, tmp5);
-                one_vram_buffer_horz_repeat('b', 1, addloNOC(tmp5, 1));
+                one_vram_buffer('a', tmp5);
+                one_vram_buffer('b', addloNOC(tmp5, 1));
 
                 tmp4 += tmp3;   // Get the old index
 				tmp5 = loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8);
-                one_vram_buffer_horz_repeat(' ', 1, tmp5);
-                one_vram_buffer_horz_repeat(' ', 1, addloNOC(tmp5, 1));
+                one_vram_buffer(' ', tmp5);
+                one_vram_buffer(' ', addloNOC(tmp5, 1));
             }
 
 
