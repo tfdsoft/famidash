@@ -15,9 +15,7 @@ char bg_coll_L(void){
 	} else {
 		tmp1 = Generic.y + Generic.height - 8;
 	}
-	tmp5 = add_scroll_y(tmp1, scroll_y);
-	temp_y = low_byte(tmp5);
-	temp_room = high_byte(tmp5);
+	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
 	tmp3 = bg_collision_sub();
 	if(tmp3 & COL_BOTTOM) {
@@ -49,9 +47,7 @@ char bg_coll_R(void){
 	if (mini) {
 		tmp1 = Generic.y + ((0x10 - Generic.height) >> 1);	
 	}
-	tmp5 = add_scroll_y(tmp1, scroll_y);
-	temp_y = low_byte(tmp5);
-	temp_room = high_byte(tmp5);
+	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
 	tmp3 = bg_collision_sub();
 	if(tmp3 & COL_BOTTOM) {
@@ -88,9 +84,7 @@ char bg_coll_U(void){
 	if (mini) {
 		tmp1 += (0x10 - Generic.height) >> 1;	
 	}
-	tmp5 = add_scroll_y(tmp1, scroll_y);
-	temp_y = low_byte(tmp5);
-	temp_room = high_byte(tmp5);
+	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 	eject_U = (temp_y) | 0xf0;	 
 	
 	
@@ -152,9 +146,7 @@ char bg_coll_D(void){
 	if (mini) {
 		tmp1 += (0x10 - Generic.height) >> 1;	
 	}
-	tmp5 = add_scroll_y(tmp1, scroll_y);
-	temp_y = low_byte(tmp5);
-	temp_room = high_byte(tmp5);
+	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 	eject_D = (temp_y) & 0x0f;
 
 	for (tmp1 = 0; tmp1 < 2; tmp1++) {
@@ -188,14 +180,12 @@ char bg_coll_D(void){
 				return 1;
 			}
 		} else if (tmp3 & COL_DEATH_RIGHT) {
-			tmp2 = temp_x & 0x0f;
-			if (tmp2 < 0x0A) {
+			if ((temp_x & 0x0f) < 0x0A) {
 				tmp2 = temp_y & 0x0f;
 				if (tmp2 >= 0x06 && tmp2 < 0x0A) cube_data[currplayer] = 1;
 			};
 		} else if (tmp3 & COL_DEATH_LEFT) {
-			tmp2 = temp_x & 0x0f;
-			if (tmp2 >= 0x04) {
+			if ((temp_x & 0x0f) >= 0x04) {
 				tmp2 = temp_y & 0x0f;
 				if (tmp2 >= 0x06 && tmp2 < 0x0A) cube_data[currplayer] = 1;
 			}
@@ -220,9 +210,7 @@ void bg_coll_death(void) {
 
 	tmp1 = Generic.y + (Generic.width >> 1);
 
-	tmp5 = add_scroll_y(tmp1, scroll_y);
-    temp_y = low_byte(tmp5);
-    temp_room = high_byte(tmp5);
+	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
 	tmp3 = bg_collision_sub();
 	if (tmp3 & COL_DEATH_TOP) {

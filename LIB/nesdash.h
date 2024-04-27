@@ -70,3 +70,8 @@ extern unsigned char parallax_scroll_column_start;
 // same as above but idx < 128
 #define idx16_lo_NOC(arr, idx) (*((char *)arr+(((idx<<1)&0xFF)|1)))
 #define idx16_hi_NOC(arr, idx) (*((char *)arr+(((idx<<1)&0xFF)|1)))
+
+#define storeWordSeparately(word, low, high) \
+                            (__AX__ = word, \
+                            __asm__("STA %v", low), \
+                            __asm__("STX %v", high))
