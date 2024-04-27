@@ -1,30 +1,30 @@
-# Famidash
+# famidash
 
-A work-in-progress demake of Geometry Dash for the NES/Famicom using the MMC3 mapper.
+A work-in-progress demake of Geometry Dash for the NES using the MMC3 mapper.
 
 Download nightly builds here: https://nightly.link/famidash/famidash/workflows/main/main/famidash.nes.zip
 
-## How to contribute
+## contributing
 
-Fork the repository, change it, push it, open a pull request, get it merged (or not).
+fork it, change it, push it, open a PR, get it merged (or not).
 
-## Socials
+## socials
 
 - https://wetdry.world/@famidash
 - https://twitter.com/TeamFamidash
 - https://discord.gg/PCbwQaZs8K
 
-## Credits
+## credits
 
 |contributor|role (in no particular order)|
 |---|---|
-|[kandowontu](https://github.com/kandowontu)|plProject torch carrier, lead developer, maintainer|
-|[AleFunky](https://github.com/PinguLinux)|Levels, testing, bugfixes, other code|
-|[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|Levels, guidance, testing, bugfixes, graphics|
-|[alexmush](https://github.com/ADM228)|Code optimisation|
-|[jroweboy](https://github.com/jroweboy)|Graphics, code optimisation, parallax, menu, etc.|
-|[Zenith](https://github.com/ZenithNeko)|Music, graphics|
-|[jaezu](https://github.com/jaezudev)|Maintainer|
-|[Zephyrside](https://github.com/zephyrside)|Original lead developer, project creator, music, graphics|
+|[kandowontu](https://github.com/kandowontu)|project torch carrier, lead developer, maintainer|
+|[AleFunky](https://github.com/PinguLinux)|levels, testing, bugfixes, other code|
+|[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
+|[alexmush](https://github.com/ADM228)|code optimisation|
+|[jroweboy](https://github.com/jroweboy)|graphics, code optimisation, parallax, menu, etc.|
+|[Zenith](https://github.com/ZenithNeko)|music, graphics|
+|[jaezu](https://github.com/jaezudev)|maintainer, ~~music~~|
+|[Zephyrside](https://github.com/zephyrside)|original lead developer, project creator, music, graphics|
 
-Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
+shoutouts to RobTop for making all of this possible by creating Geometry Dash in the first place. hope this silly project of ours is able to pay justice to your masterpiece.
