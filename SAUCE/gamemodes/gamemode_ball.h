@@ -41,9 +41,9 @@ void ball_movement(void){
 
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
 	if (player_gravity[currplayer]) {
-		Generic.y = high_byte(player_y[currplayer]) - 1;
+		Generic.y = high_byte(player_y[currplayer]) - 2;
 	} else {
-		Generic.y = high_byte(player_y[currplayer]) +  1;
+		Generic.y = high_byte(player_y[currplayer]) + 1;
 	}
 
 
@@ -53,14 +53,14 @@ void ball_movement(void){
 	
 	if(high_byte(player_vel_y[currplayer]) & 0x80){
 		if(bg_coll_U()){ // check collision above
-			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U;
+			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U - 1;
 			player_vel_y[currplayer] = 0;
 			cube_data[currplayer] &= 1;			//fix for orb
 		}
 	}
 	else{
 		if(bg_coll_D()){ // check collision below
-		    high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_D + 1;
+		    high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_D;
 		    player_vel_y[currplayer] = 0;
 			cube_data[currplayer] &= 1;		    //fix for orb
 		}
