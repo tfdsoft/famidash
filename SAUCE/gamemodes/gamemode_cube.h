@@ -52,8 +52,6 @@ void cube_movement(void){
 		}
 	}
 
-	
-
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
 
