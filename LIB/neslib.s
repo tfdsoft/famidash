@@ -127,6 +127,11 @@ nmi:
 	inc <FRAME_CNT1
 	inc <FRAME_CNT2
 
+	lda _auto_fs_updates
+	beq :+
+	jsr _music_update
+	:
+
 	pla
 	tay
 	pla

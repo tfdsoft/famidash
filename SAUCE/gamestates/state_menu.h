@@ -90,44 +90,52 @@ void __fastcall__ refreshmenu(void) {
 	one_vram_buffer('z', NTADR_A(8, 9)); }
 	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9));
 	
-	switch(difficulty_list[level]) {
-		case 0x00:
-			one_vram_buffer('a', NTADR_A(7, 10));
-			one_vram_buffer('b', NTADR_A(8, 10));
-			one_vram_buffer('c', NTADR_A(7, 11));			
-			one_vram_buffer('d', NTADR_A(8, 11));			
-			break;
-		case 0x01:
-			one_vram_buffer('e', NTADR_A(7, 10));
-			one_vram_buffer('f', NTADR_A(8, 10));
-			one_vram_buffer('g', NTADR_A(7, 11));			
-			one_vram_buffer('h', NTADR_A(8, 11));			
-			break;
-		case 0x02:
-			one_vram_buffer('i', NTADR_A(7, 10));
-			one_vram_buffer('j', NTADR_A(8, 10));
-			one_vram_buffer('k', NTADR_A(7, 11));			
-			one_vram_buffer('l', NTADR_A(8, 11));		
-			break;
-		case 0x03:
-			one_vram_buffer('m', NTADR_A(7, 10));
-			one_vram_buffer('n', NTADR_A(8, 10));
-			one_vram_buffer('o', NTADR_A(7, 11));			
-			one_vram_buffer('p', NTADR_A(8, 11));			
-			break;
-		case 0x04:
-			one_vram_buffer('q', NTADR_A(7, 10));
-			one_vram_buffer('r', NTADR_A(8, 10));
-			one_vram_buffer('s', NTADR_A(7, 11));			
-			one_vram_buffer('t', NTADR_A(8, 11));		
-			break;
-		case 0x05:
-			one_vram_buffer('u', NTADR_A(7, 10));
-			one_vram_buffer('v', NTADR_A(8, 10));
-			one_vram_buffer('w', NTADR_A(7, 11));			
-			one_vram_buffer('x', NTADR_A(8, 11));		
-			break;
-	};	
+	// switch(difficulty_list[level]) {
+	// 	case 0x00:
+	// 		one_vram_buffer('a', NTADR_A(7, 10));
+	// 		one_vram_buffer('b', NTADR_A(8, 10));
+	// 		one_vram_buffer('c', NTADR_A(7, 11));			
+	// 		one_vram_buffer('d', NTADR_A(8, 11));			
+	// 		break;
+	// 	case 0x01:
+	// 		one_vram_buffer('e', NTADR_A(7, 10));
+	// 		one_vram_buffer('f', NTADR_A(8, 10));
+	// 		one_vram_buffer('g', NTADR_A(7, 11));			
+	// 		one_vram_buffer('h', NTADR_A(8, 11));			
+	// 		break;
+	// 	case 0x02:
+	// 		one_vram_buffer('i', NTADR_A(7, 10));
+	// 		one_vram_buffer('j', NTADR_A(8, 10));
+	// 		one_vram_buffer('k', NTADR_A(7, 11));			
+	// 		one_vram_buffer('l', NTADR_A(8, 11));		
+	// 		break;
+	// 	case 0x03:
+	// 		one_vram_buffer('m', NTADR_A(7, 10));
+	// 		one_vram_buffer('n', NTADR_A(8, 10));
+	// 		one_vram_buffer('o', NTADR_A(7, 11));			
+	// 		one_vram_buffer('p', NTADR_A(8, 11));			
+	// 		break;
+	// 	case 0x04:
+	// 		one_vram_buffer('q', NTADR_A(7, 10));
+	// 		one_vram_buffer('r', NTADR_A(8, 10));
+	// 		one_vram_buffer('s', NTADR_A(7, 11));			
+	// 		one_vram_buffer('t', NTADR_A(8, 11));		
+	// 		break;
+	// 	case 0x05:
+	// 		one_vram_buffer('u', NTADR_A(7, 10));
+	// 		one_vram_buffer('v', NTADR_A(8, 10));
+	// 		one_vram_buffer('w', NTADR_A(7, 11));			
+	// 		one_vram_buffer('x', NTADR_A(8, 11));		
+	// 		break;
+	// };	
+	{	// write the difficulty
+		tmp1 = (difficulty_list[level] << 1) + 'a';
+		one_vram_buffer(tmp1, NTADR_A(7, 10));
+		one_vram_buffer(++tmp1, NTADR_A(8, 10));
+		tmp1 += byte('c' - 'a' - 1);
+		one_vram_buffer(tmp1, NTADR_A(7, 11));
+		one_vram_buffer(++tmp1, NTADR_A(8, 11));
+	}
 	tmp7 = stars_list[level];
 	tmp8 = 0;
 	while (tmp7 > 9) {
@@ -154,9 +162,7 @@ void __fastcall__ refreshmenu(void) {
 void state_menu();
 void levelselection() {
   
-	famistudio_music_pause(1);
-	music_update();
-	pal_fade_to(4,0);
+	pal_fade_to_withmusic(4,0);
   	ppu_off();
 	pal_bright(0);
 //    pal_bg((char *)paletteMenu);
@@ -177,8 +183,7 @@ void levelselection() {
 	attempts = 1;
 
 	ppu_on_all();
-	famistudio_music_pause(0);
-	pal_fade_to(0,4);
+	pal_fade_to_withmusic(0,4);
 	#include "../defines/mainmenu_charmap.h"
 	while (1){
 		ppu_wait_nmi();
@@ -278,58 +283,50 @@ void bgmtest() {
 
 
 void funsettings() {
-	famistudio_music_pause(1);
-	music_update();
-	pal_fade_to(4,0);
+	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
 	vram_adr(NAMETABLE_A);
-	vram_unrle(funsettingscreen);   	
+	vram_unrle(funsettingscreen);   
 	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
-	pal_fade_to(0,4);
-	famistudio_music_pause(0);
+	one_vram_buffer('c', NTADR_A(4, 8));	// settingvalue is set to 0 by default	
+	pal_fade_to_withmusic(0,4);
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
-		if (settingvalue == 0) {
-			one_vram_buffer('c', NTADR_A(4, 8));
-			one_vram_buffer(' ', NTADR_A(4, 12));
-			one_vram_buffer(' ', NTADR_A(4, 16));
-		}		
-		else if (settingvalue == 1) {
-			one_vram_buffer(' ', NTADR_A(4, 8));
-			one_vram_buffer('c', NTADR_A(4, 12));
-			one_vram_buffer(' ', NTADR_A(4, 16));
-		}		
-		else if (settingvalue == 2) {
-			one_vram_buffer(' ', NTADR_A(4, 8));
-			one_vram_buffer(' ', NTADR_A(4, 12));
-			one_vram_buffer('c', NTADR_A(4, 16));
-		}		
 
-		if (twoplayer) 	one_vram_buffer('d', NTADR_A(6, 8));
-		else 	one_vram_buffer('e', NTADR_A(6, 8));
+		if (twoplayer) 	one_vram_buffer('d', NTADR_A(6, 8));	// believe it or not, 
+		else 	one_vram_buffer('e', NTADR_A(6, 8));	// this is auto optimized by cc65
 
-		if (invisible) 	one_vram_buffer('d', NTADR_A(6, 12));
-		else 	one_vram_buffer('e', NTADR_A(6, 12));
+		if (invisible) 	one_vram_buffer('d', NTADR_A(6, 12));	// believe it or not, 
+		else 	one_vram_buffer('e', NTADR_A(6, 12));	// this is auto optimized by cc65
 
-		if (PRACTICE_ENABLED) 	one_vram_buffer('d', NTADR_A(6, 16));
-		else 	one_vram_buffer('e', NTADR_A(6, 16));
+		if (PRACTICE_ENABLED) 	one_vram_buffer('d', NTADR_A(6, 16));	// believe it or not, 
+		else 	one_vram_buffer('e', NTADR_A(6, 16));	// this is auto optimized by cc65
 
-		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
+		tmp1 = settingvalue;
+
+		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
 			if (settingvalue == 2) { settingvalue = 0; }
 			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
-		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
+		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
 			if (settingvalue == 0) { settingvalue = 2; }
 			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
-		if (pad_new[0] & PAD_START || pad_new[0] & PAD_A) {
+		if (tmp1 != settingvalue) {
+			// NTADR_A = (NAMETABLE_A|(((y)<<5)|(x)))
+			// (tmp1 * 4) << 5 = tmp1<<7 = (tmp1<<8)>>1
+			one_vram_buffer(' ', NTADR_A(4, 8)+((tmp1<<8)>>1));
+			one_vram_buffer('c', NTADR_A(4, 8)+((settingvalue<<8)>>1));
+		}
+
+		if (pad_new[0] & (PAD_START | PAD_A)) {
 			switch (settingvalue) {
 				case 0x00: twoplayer ^= 1; break;
 				case 0x01: invisible ^= 1; break;
@@ -339,9 +336,9 @@ void funsettings() {
 			
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
-			one_vram_buffer(' ', NTADR_A(6, 8));
-			one_vram_buffer(' ', NTADR_A(6, 12));
-			one_vram_buffer(' ', NTADR_A(6, 16));
+			// one_vram_buffer(' ', NTADR_A(6, 8));
+			// one_vram_buffer(' ', NTADR_A(6, 12));
+			// one_vram_buffer(' ', NTADR_A(6, 16));
 			one_vram_buffer(' ', NTADR_A(4, 8));
 			one_vram_buffer(' ', NTADR_A(4, 12));
 			one_vram_buffer(' ', NTADR_A(4, 16));
@@ -355,17 +352,15 @@ void funsettings() {
 
 
 void settings() {
-	famistudio_music_pause(1);
-	music_update();
-	pal_fade_to(4,0);
+	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg((char *)paletteSettings);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingscreen);   	
 	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
-	pal_fade_to(0,4);
-	famistudio_music_pause(0);
+	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 beforehand
+	pal_fade_to_withmusic(0,4);
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
@@ -420,71 +415,48 @@ void settings() {
 			}
 		}
 */		
-
-		if (settingvalue == 0) {
-			one_vram_buffer('c', NTADR_A(4, 7));
-			one_vram_buffer(' ', NTADR_A(4, 9));
-			one_vram_buffer(' ', NTADR_A(4, 11));
-			one_vram_buffer(' ', NTADR_A(4, 13));
-			one_vram_buffer(' ', NTADR_A(4, 15));
-		}		
-		else if (settingvalue == 1) {
-			one_vram_buffer(' ', NTADR_A(4, 7));
-			one_vram_buffer('c', NTADR_A(4, 9));
-			one_vram_buffer(' ', NTADR_A(4, 11));
-			one_vram_buffer(' ', NTADR_A(4, 13));
-			one_vram_buffer(' ', NTADR_A(4, 15));
-		}		
-		else if (settingvalue == 2) {
-			one_vram_buffer(' ', NTADR_A(4, 7));
-			one_vram_buffer(' ', NTADR_A(4, 9));
-			one_vram_buffer('c', NTADR_A(4, 11));
-			one_vram_buffer(' ', NTADR_A(4, 13));
-			one_vram_buffer(' ', NTADR_A(4, 15));
-		}		
-		else if (settingvalue == 3) {
-			one_vram_buffer(' ', NTADR_A(4, 7));
-			one_vram_buffer(' ', NTADR_A(4, 9));
-			one_vram_buffer(' ', NTADR_A(4, 11));
-			one_vram_buffer('c', NTADR_A(4, 13));
-			one_vram_buffer(' ', NTADR_A(4, 15));
-		}		
-		else if (settingvalue == 4) {
-			one_vram_buffer(' ', NTADR_A(4, 7));
-			one_vram_buffer(' ', NTADR_A(4, 9));
-			one_vram_buffer(' ', NTADR_A(4, 11));
-			one_vram_buffer(' ', NTADR_A(4, 13));
-			one_vram_buffer('c', NTADR_A(4, 15));
-		}		
-
 		if (oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 7));
-		else if(!oneptwoplayer) one_vram_buffer('f', NTADR_A(26, 7));
+		else one_vram_buffer('f', NTADR_A(26, 7));
 
 		if (deathsound) one_vram_buffer('g', NTADR_A(26, 9));
-		else if(!deathsound) one_vram_buffer('f', NTADR_A(26, 9));
+		else one_vram_buffer('f', NTADR_A(26, 9));
 
 		if (jumpsound) one_vram_buffer('g', NTADR_A(26, 11));
-		else if(!jumpsound) one_vram_buffer('f', NTADR_A(26, 11));
+		else one_vram_buffer('f', NTADR_A(26, 11));
 
 		if (platformer) one_vram_buffer('g', NTADR_A(26, 13));
-		else if(!platformer) one_vram_buffer('f', NTADR_A(26, 13));
+		else one_vram_buffer('f', NTADR_A(26, 13));
 
-		if (pad_new[0] & PAD_RIGHT || pad_new[0] & PAD_DOWN) {
+		tmp1 = settingvalue;
+
+		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
 			if (settingvalue == 4) { settingvalue = 0; famistudio_sfx_play(sfx_select, 0); }
 			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
 		}
 
-		if (pad_new[0] & PAD_LEFT || pad_new[0] & PAD_UP) {
+		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
 			if (settingvalue == 0) { settingvalue = 4; famistudio_sfx_play(sfx_select, 0); }
 			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
 		}
+
+		if (tmp1 != settingvalue) {
+			// NTADR_A = (NAMETABLE_A|(((y)<<5)|(x)))
+			// (tmp1 * 2) << 5 = tmp1<<6 = (tmp1<<8)>>2
+			one_vram_buffer(' ', NTADR_A(4, 7)+((tmp1<<8)>>2));
+			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
+		}
 		
-		if (pad_new[0] & PAD_A || pad_new[0] & PAD_START) {
-			if (settingvalue == 0) oneptwoplayer ^= 1;
-			else if (settingvalue == 1) deathsound ^= 1;
-			else if (settingvalue == 2) jumpsound ^= 1;
-			else if (settingvalue == 3) platformer ^= 1;
-			else if (settingvalue == 4) { 
+		if (pad_new[0] & (PAD_A | PAD_START)) {
+			switch (settingvalue) {
+				case 0:
+					oneptwoplayer ^= 1; break;
+				case 1:
+					deathsound ^= 1; break;
+				case 2:
+					jumpsound ^= 1; break;
+				case 3:
+					platformer ^= 1; break;
+				case 4:
 					if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
 						for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
 							coin1_obtained[tmp2] = 0;
@@ -524,6 +496,7 @@ void settings() {
 						famistudio_sfx_play(sfx_death, 0);
 					//	one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));					
 					}
+					break;
 			}
 		}
 		if (platformer) twoplayer = 0;		
@@ -543,9 +516,7 @@ void settings() {
 
 
 void state_menu() {
-	famistudio_music_pause(1);
-	music_update();
-	pal_fade_to(4,0);
+	pal_fade_to_withmusic(4,0);
 	ppu_off();
     pal_bg((char *)splashMenu);
 
@@ -639,8 +610,7 @@ void state_menu() {
     vram_adr(NAMETABLE_A);
     vram_unrle(game_start_screen);
  	ppu_on_all();
-	famistudio_music_pause(0);
-	pal_fade_to(0,4);
+	pal_fade_to_withmusic(0,4);
 		tmp4 = menuselection; ++tmp4;
 		tmp5 = loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8);
 		one_vram_buffer('a', tmp5);
