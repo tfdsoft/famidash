@@ -495,7 +495,7 @@ sprite_data_timemachine:
   .byte $d0,$2a,$a0,$00,$fc
   .byte $e0,$2a,$a0,$00,$1b
   .byte $00,$2b,$c0,$00,$06
-  .byte $40,$2b,$d0,$00,$06
+  .byte $40,$2b,$e0,$00,$06
   .byte $30,$2c,$a8,$01,$0a
   .byte $00,$2d,$90,$01,$93
   .byte $00,$2d,$a0,$01,$c3
@@ -1252,5 +1252,6 @@ sprite_data_test3:
 sprite_data_test4:
   .byte $80,$00,$a8,$01,$0a
   .byte $b0,$00,$70,$01,$24
+  .byte $d0,$02,$50,$01,$09
   .byte $ff
 
