@@ -37,14 +37,13 @@ void state_game(){
     player_x[1] = 0x0000;
     player_y[1] = 0xb000;
     while (1) {
-	currplayer = 0;
-
 	{
-		player_x_curr = player_x[currplayer & 0x7F];
-		player_y_curr = player_y[currplayer & 0x7F];
-		player_vel_x_curr = player_vel_x[currplayer & 0x7F];
-		player_vel_y_curr = player_vel_y[currplayer & 0x7F];
-		player_gravity_curr = player_gravity[currplayer];
+		currplayer = 0;
+		player_x_curr = player_x[0];
+		player_y_curr = player_y[0];
+		player_vel_x_curr = player_vel_x[0];
+		player_vel_y_curr = player_vel_y[0];
+		player_gravity_curr = player_gravity[0];
 	}
 
 
@@ -79,7 +78,7 @@ void state_game(){
 		}
 	}
 
-	if (pad[controllingplayer] & PAD_SELECT && pad_new[controllingplayer] & PAD_UP) player_gravity[currplayer] ^= 0x01;
+	if (pad[controllingplayer] & PAD_SELECT && pad_new[controllingplayer] & PAD_UP) player_gravity_curr ^= 0x01;
 
 
 	if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
@@ -172,6 +171,15 @@ void state_game(){
 
 	mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 //        check_spr_objects();
+
+	{
+		player_x[0] = player_x_curr;
+		player_y[0] = player_y_curr;
+		player_vel_x[0] = player_vel_x_curr;
+		player_vel_y[0] = player_vel_y_curr;
+		player_gravity[0] = player_gravity_curr;
+	}
+
 	if (!DEBUG_MODE) {
 		if (cube_data[0] == 1) reset_level();
 		if (cube_data[1] == 1) reset_level();
@@ -179,11 +187,20 @@ void state_game(){
        sprite_collide();
 	if (dual) { 
 		currplayer = 1;					//take focus
+
 		if (twoplayer) controllingplayer = 1;		//take controls
 		if (dual && platformer && !twoplayer) player_x[1] = player_x[0];
 		else if (dual && !platformer) player_x[1] = player_x[0];
 
-		if (pad_new[controllingplayer] & PAD_UP) player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
+		{	
+			player_x_curr = player_x[1];
+			player_y_curr = player_y[1];
+			player_vel_x_curr = player_vel_x[1];
+			player_vel_y_curr = player_vel_y[1];
+			player_gravity_curr = player_gravity[1];
+		}
+
+		if (pad_new[controllingplayer] & PAD_UP) player_gravity_curr ^= 0x01;			//DEBUG GRAVITY
 
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement();
@@ -197,6 +214,13 @@ void state_game(){
 		sprite_collide();
 		currplayer = 0;					//give back focus
 		if (twoplayer) controllingplayer = 0;		//give back controls
+		{
+			player_x[1] = player_x_curr;
+			player_y[1] = player_y_curr;
+			player_vel_x[1] = player_vel_x_curr;
+			player_vel_y[1] = player_vel_y_curr;
+			player_gravity[1] = player_gravity_curr;
+		}
 	}
 	mmc3_set_prg_bank_1(0);
         check_spr_objects();

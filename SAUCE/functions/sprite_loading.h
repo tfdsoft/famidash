@@ -173,14 +173,14 @@ void sprite_collide_lookup(){
 		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 			if (cube_data[currplayer] == 2) {					
 				cube_data[currplayer] &= 0x01;
-				if (!mini) { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW; }
-				else { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_UPSIDE^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_MINI; }
+				if (!mini) { if (player_gravity_curr) player_vel_y_curr = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y_curr = ORB_HEIGHT_YELLOW; }
+				else { if (player_gravity_curr) player_vel_y_curr = ORB_HEIGHT_YELLOW_UPSIDE^0xFFFF; else player_vel_y_curr = ORB_HEIGHT_YELLOW_MINI; }
 			}
 		}
 		else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
 			if (pad_new[controllingplayer] & PAD_A) {	
 				cube_data[currplayer] &= 0x01;
-				if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW;
+				if (player_gravity_curr) player_vel_y_curr = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y_curr = ORB_HEIGHT_YELLOW;
 			}
 		}
     }    
@@ -188,14 +188,14 @@ void sprite_collide_lookup(){
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 		if (cube_data[currplayer] == 2) {					
 			cube_data[currplayer] &= 0x01;
-			if (!mini) { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW; }
-			else { if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_UPSIDE2^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW_UPSIDE2; }
+			if (!mini) { if (player_gravity_curr) player_vel_y_curr = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y_curr = ORB_HEIGHT_YELLOW; }
+			else { if (player_gravity_curr) player_vel_y_curr = ORB_HEIGHT_YELLOW_UPSIDE2^0xFFFF; else player_vel_y_curr = ORB_HEIGHT_YELLOW_UPSIDE2; }
 		}
 	}
 	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
 		if (pad_new[controllingplayer] & PAD_A) {	
 			cube_data[currplayer] &= 0x01;
-			if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_YELLOW;
+			if (player_gravity_curr) player_vel_y_curr = ORB_HEIGHT_YELLOW^0xFFFF; else player_vel_y_curr = ORB_HEIGHT_YELLOW;
 		}
 	}
     }
@@ -221,22 +221,22 @@ void sprite_collide_lookup(){
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE || gamemode == SPIDER_MODE) {
 		if (cube_data[currplayer] == 2) {			
 			cube_data[currplayer] &= 0x01;
-			player_gravity[currplayer] ^= 0x01;
+			player_gravity_curr ^= 0x01;
 			if (gamemode != BALL_MODE) {
-				if (!player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_BLUE^0xFFFF;
-				else player_vel_y[currplayer] = PAD_HEIGHT_BLUE;
+				if (!player_gravity_curr) player_vel_y_curr = PAD_HEIGHT_BLUE^0xFFFF;
+				else player_vel_y_curr = PAD_HEIGHT_BLUE;
 			} else {
-				if (!player_gravity[currplayer]) player_vel_y[currplayer] = ORB_BALL_HEIGHT_BLUE^0xFFFF;
-				else player_vel_y[currplayer] = ORB_BALL_HEIGHT_BLUE;
+				if (!player_gravity_curr) player_vel_y_curr = ORB_BALL_HEIGHT_BLUE^0xFFFF;
+				else player_vel_y_curr = ORB_BALL_HEIGHT_BLUE;
 			}
 		}
 	}
 	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
 		if (pad_new[controllingplayer] & PAD_A) {
 			cube_data[currplayer] &= 0x01;
-			player_gravity[currplayer] ^= 0x01;
-			if (!player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_BLUE^0xFFFF;
-			else player_vel_y[currplayer] = PAD_HEIGHT_BLUE;
+			player_gravity_curr ^= 0x01;
+			if (!player_gravity_curr) player_vel_y_curr = PAD_HEIGHT_BLUE^0xFFFF;
+			else player_vel_y_curr = PAD_HEIGHT_BLUE;
 		}
 	} 
     }
@@ -251,64 +251,64 @@ void sprite_collide_lookup(){
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 		if (cube_data[currplayer] == 2) {					
 			cube_data[currplayer] &= 0x01;
-			if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_PINK^0xFFFF; else player_vel_y[currplayer] = PAD_HEIGHT_PINK;
+			if (player_gravity_curr) player_vel_y_curr = PAD_HEIGHT_PINK^0xFFFF; else player_vel_y_curr = PAD_HEIGHT_PINK;
 		}
 	}
 	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
 		if (pad_new[controllingplayer] & PAD_A) {	
 			cube_data[currplayer] &= 0x01;
-			if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_PINK^0xFFFF; else player_vel_y[currplayer] = PAD_HEIGHT_PINK;
+			if (player_gravity_curr) player_vel_y_curr = PAD_HEIGHT_PINK^0xFFFF; else player_vel_y_curr = PAD_HEIGHT_PINK;
 		}
 	}
     }
     else if (tmp4 == GRAVITY_DOWN_PORTAL || tmp4 == GRAVITY_DOWN_UPWARDS_PORTAL || tmp4 == GRAVITY_DOWN_DOWNWARDS_PORTAL || tmp4 == GRAVITY_DOWN_INVISIBLE_PORTAL) { 
-	if (player_gravity[currplayer]) {
-	    player_gravity[currplayer] = 0; 
-	 //   if (player_vel_y[currplayer] > -0x0200) player_vel_y[currplayer] = -0x0200; 
+	if (player_gravity_curr) {
+	    player_gravity_curr = 0; 
+	 //   if (player_vel_y_curr > -0x0200) player_vel_y_curr = -0x0200; 
 	   // else 
-		   if (player_vel_y[currplayer] < -0x0290) player_vel_y[currplayer] = -0x0290; 
+		   if (player_vel_y_curr < -0x0290) player_vel_y_curr = -0x0290; 
 	}
     }
     else if (tmp4 == GRAVITY_UP_PORTAL || tmp4 == GRAVITY_UP_UPWARDS_PORTAL || tmp4 == GRAVITY_UP_DOWNWARDS_PORTAL || tmp4 == GRAVITY_UP_INVISIBLE_PORTAL ) { 
-	if (!player_gravity[currplayer]) {
-	    player_gravity[currplayer] = 1; 
-	    //if (player_vel_y[currplayer] < 0x0200) player_vel_y[currplayer] = 0x0200; 
+	if (!player_gravity_curr) {
+	    player_gravity_curr = 1; 
+	    //if (player_vel_y_curr < 0x0200) player_vel_y_curr = 0x0200; 
 //	    else
-		    if (player_vel_y[currplayer] > 0x0290) player_vel_y[currplayer] = 0x0290; 
+		    if (player_vel_y_curr > 0x0290) player_vel_y_curr = 0x0290; 
 	}
     }
 
     else if (tmp4 == YELLOW_PAD_DOWN || tmp4 == YELLOW_PAD_UP) {				//yellow pads
 		if (gamemode == BALL_MODE) {
 			if (!mini) {
-				if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_BALL_YELLOW^0xFFFF;
-				else player_vel_y[currplayer] = PAD_HEIGHT_BALL_YELLOW;
+				if (player_gravity_curr) player_vel_y_curr = PAD_HEIGHT_BALL_YELLOW^0xFFFF;
+				else player_vel_y_curr = PAD_HEIGHT_BALL_YELLOW;
 			}
 			else {
-				if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_YELLOW_MINI^0xFFFF;
-				else player_vel_y[currplayer] = PAD_HEIGHT_YELLOW_MINI;
+				if (player_gravity_curr) player_vel_y_curr = PAD_HEIGHT_YELLOW_MINI^0xFFFF;
+				else player_vel_y_curr = PAD_HEIGHT_YELLOW_MINI;
 			}
 		} else {
 			if (!mini) {
-				if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_YELLOW^0xFFFF;
-				else player_vel_y[currplayer] = PAD_HEIGHT_YELLOW;
+				if (player_gravity_curr) player_vel_y_curr = PAD_HEIGHT_YELLOW^0xFFFF;
+				else player_vel_y_curr = PAD_HEIGHT_YELLOW;
 			}
 			else {
-				if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_YELLOW_MINI^0xFFFF;
-				else player_vel_y[currplayer] = PAD_HEIGHT_YELLOW_MINI;
+				if (player_gravity_curr) player_vel_y_curr = PAD_HEIGHT_YELLOW_MINI^0xFFFF;
+				else player_vel_y_curr = PAD_HEIGHT_YELLOW_MINI;
 			}
 		}
     } 
     else if (tmp4 == GRAVITY_PAD_DOWN || tmp4 == GRAVITY_PAD_DOWN_INVISIBLE) {			//gravity pads bottom
-	    if (!player_gravity[currplayer]) { 
-			player_gravity[currplayer] = 0x01;				//flip gravity
-			player_vel_y[currplayer] = PAD_HEIGHT_BLUE;	
+	    if (!player_gravity_curr) { 
+			player_gravity_curr = 0x01;				//flip gravity
+			player_vel_y_curr = PAD_HEIGHT_BLUE;	
 		}
     }
     else if (tmp4 == GRAVITY_PAD_UP || tmp4 == GRAVITY_PAD_UP_INVISIBLE) {			//gravity pads top
-	    if (player_gravity[currplayer]) { 
-			player_gravity[currplayer] = 0x00;				//flip gravity
-			player_vel_y[currplayer] = PAD_HEIGHT_BLUE^0xFFFF;	
+	    if (player_gravity_curr) { 
+			player_gravity_curr = 0x00;				//flip gravity
+			player_vel_y_curr = PAD_HEIGHT_BLUE^0xFFFF;	
 	    }
     }
 //    else if (tmp4 == 0x0F) {
@@ -333,8 +333,8 @@ void sprite_collide_lookup(){
 
 void sprite_collide(){
 
-    Generic.x = high_byte(player_x[currplayer]) + 1;
-    Generic.y = high_byte(player_y[currplayer]);
+    Generic.x = high_byte(player_x_curr) + 1;
+    Generic.y = high_byte(player_y_curr);
 
 	if (!mini) {
     Generic.width = CUBE_WIDTH;
