@@ -34,16 +34,24 @@ void x_movement(){
 	Generic.x = high_byte(player_x[currplayer]); // this is much faster than passing a pointer to player
 	Generic.y = high_byte(player_y[currplayer]);
 
-
-	if (!mini) {
-    Generic.width = CUBE_WIDTH;
-    Generic.height = CUBE_HEIGHT;
+	if (gamemode == 0x06) { // wave
+		if (mini) {
+			Generic.width = MINI_WAVE_WIDTH;
+			Generic.height = MINI_WAVE_HEIGHT;
+		} else {
+			Generic.width = WAVE_WIDTH;
+			Generic.height = WAVE_HEIGHT;
+		}
+	} else {
+		if (!mini) {
+			Generic.width = CUBE_WIDTH;
+			Generic.height = CUBE_HEIGHT;
+		} else {
+			Generic.width = MINI_CUBE_WIDTH;
+			Generic.height = MINI_CUBE_HEIGHT;
+		}   
 	}
-	
-	else {
-    Generic.width = MINI_CUBE_WIDTH;
-    Generic.height = MINI_CUBE_HEIGHT;
-	}   
+
 
 	if (player_y[currplayer] < 0x0600){
 		cube_data[currplayer] |= 0x01;	//DIE if player goes too high
