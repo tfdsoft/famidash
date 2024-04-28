@@ -41,7 +41,7 @@ char bg_coll_floor_spikes(void){ // used just for checking ground spikes on the 
 	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
 	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : (
-		(player_gravity[currplayer]) ? 3 : (Generic.height - 3)
+		(player_gravity_curr) ? 3 : (Generic.height - 3)
 	));
 
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
