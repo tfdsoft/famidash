@@ -68,25 +68,13 @@ __fastcall__ char sprite_height_lookup(){
 
 	#define type tmp4
 
-    if (!mini) {
-		switch(type) {
-			case YELLOW_ORB:
-			case YELLOW_ORB_BIGGER:
-			case BLUE_ORB:
-			case PINK_ORB:
-				return 0x0f;
-				
-		}
-	}
-
-    else {
-		switch(type) {
-			case YELLOW_ORB:
-			case BLUE_ORB:
-			case PINK_ORB:
-				return 0x17;
-				
-		}
+	switch(type) {
+		case YELLOW_ORB:
+		case YELLOW_ORB_BIGGER:
+		case BLUE_ORB:
+		case PINK_ORB:
+			return 0x0f;
+			
 	}
 
     if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
