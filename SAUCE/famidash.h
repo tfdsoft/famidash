@@ -21,6 +21,12 @@
 #define MINI_CUBE_WIDTH 0x08
 #define MINI_CUBE_HEIGHT 0x07
 
+#define WAVE_WIDTH 0x08
+#define WAVE_HEIGHT 0x06
+
+#define MINI_WAVE_WIDTH 0x04
+#define MINI_WAVE_HEIGHT 0x06
+
 #define JUMP_VEL -0x590
 #define MINI_JUMP_VEL -0x4D0
 #define UFO_JUMP_VEL -0x530
