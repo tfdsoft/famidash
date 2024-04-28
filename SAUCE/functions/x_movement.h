@@ -10,29 +10,29 @@ const unsigned short speed_table[] = {
 void x_movement(){
     // handle x
 
-	old_x = player_x[currplayer];
+	old_x = player_x_curr;
 	
 	if (!platformer) {
-		player_vel_x[currplayer] = speed_table[speed & 0x7F];
-		player_x[currplayer] += player_vel_x[currplayer];
+		player_vel_x_curr = speed_table[speed & 0x7F];
+		player_x_curr += player_vel_x_curr;
 	} else {
-		player_vel_x[currplayer] = speed_table[speed & 0x7F];
+		player_vel_x_curr = speed_table[speed & 0x7F];
 		// leave the col calls first so it executes and checks against spike collision
-		if (!bg_coll_R() && (pad[currplayer] & PAD_RIGHT)) player_x[currplayer] += player_vel_x[currplayer];
-		if (!bg_coll_L() && pad[currplayer] & PAD_LEFT && player_x[currplayer] > 0x0F00) player_x[currplayer] -= player_vel_x[currplayer];
+		if (!bg_coll_R() && (pad[currplayer] & PAD_RIGHT)) player_x_curr += player_vel_x_curr;
+		if (!bg_coll_L() && pad[currplayer] & PAD_LEFT && player_x_curr > 0x0F00) player_x_curr -= player_vel_x_curr;
 	}
 
-	if(player_x[currplayer] > 0xf000) { // too far, don't wrap around
+	if(player_x_curr > 0xf000) { // too far, don't wrap around
         if(old_x >= 0xf000){
-            player_x[currplayer] = 0xf000; // max right
+            player_x_curr = 0xf000; // max right
         }else{
-            player_x[currplayer] = 0x0000; // max left
+            player_x_curr = 0x0000; // max left
         }
-		player_vel_x[currplayer] = 0;
+		player_vel_x_curr = 0;
 	} 
 	
-	Generic.x = high_byte(player_x[currplayer]); // this is much faster than passing a pointer to player
-	Generic.y = high_byte(player_y[currplayer]);
+	Generic.x = high_byte(player_x_curr); // this is much faster than passing a pointer to player
+	Generic.y = high_byte(player_y_curr);
 
 	if (gamemode == 0x06) { // wave
 		if (mini) {
@@ -53,16 +53,16 @@ void x_movement(){
 	}
 
 
-	if (player_y[currplayer] < 0x0600){
+	if (player_vel_y_curr < 0x0600){
 		cube_data[currplayer] |= 0x01;	//DIE if player goes too high
 	};
 	
 	// no L/R collision required, since that is accounted for with the death script
-	if (high_byte(player_x[currplayer]) > 0x10) {
+	if (high_byte(player_x_curr) > 0x10) {
 		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
 		if (bg_coll_R()) {
 			if (!platformer) {cube_data[currplayer] |= 0x01; }
-			else {player_vel_x[currplayer] = 0; }
+			else {player_vel_x_curr = 0; }
 		}
 	}
 	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 0x02;

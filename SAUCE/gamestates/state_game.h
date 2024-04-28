@@ -38,6 +38,16 @@ void state_game(){
     player_y[1] = 0xb000;
     while (1) {
 	currplayer = 0;
+
+	{
+		player_x_curr = player_x[currplayer & 0x7F];
+		player_y_curr = player_y[currplayer & 0x7F];
+		player_vel_x_curr = player_vel_x[currplayer & 0x7F];
+		player_vel_y_curr = player_vel_y[currplayer & 0x7F];
+		player_gravity_curr = player_gravity[currplayer];
+	}
+
+
 	kandoframecnt++;
         ppu_wait_nmi();
         mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0);
