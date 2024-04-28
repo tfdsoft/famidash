@@ -74,6 +74,7 @@ const char* coin_counter[] = {
 };
 
 
+
 /*
 	Refreshes level name & number
 */
@@ -129,12 +130,18 @@ void __fastcall__ refreshmenu(void) {
 	// 		break;
 	// };	
 	{	// write the difficulty
+		tmp1 = (difficulty_list[level] << 1);
+		pal_col(0x0a, difficulty_pal[tmp1]);
+		pal_col(0x0b, difficulty_pal[tmp1+1]);
+		
 		tmp1 = (difficulty_list[level] << 1) + 'a';
 		one_vram_buffer(tmp1, NTADR_A(7, 10));
 		one_vram_buffer(++tmp1, NTADR_A(8, 10));
 		tmp1 += byte('c' - 'a' - 1);
 		one_vram_buffer(tmp1, NTADR_A(7, 11));
 		one_vram_buffer(++tmp1, NTADR_A(8, 11));
+		
+
 	}
 	tmp7 = stars_list[level];
 	tmp8 = 0;
