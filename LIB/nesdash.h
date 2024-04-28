@@ -72,8 +72,8 @@ extern unsigned char parallax_scroll_column_start;
 #define idx16_hi(arr, idx) (*((char *)(arr+1)+((idx<<1))))
 
 // same as above but idx < 128
-#define idx16_lo_NOC(arr, idx) (*((const char *)arr+(byte(idx<<1))))
-#define idx16_hi_NOC(arr, idx) (*(((const char *)(arr)+1)+(byte(idx<<1))))
+#define idx16_lo_NOC(arr, idx) (*((char *)arr+(byte(idx<<1))))
+#define idx16_hi_NOC(arr, idx) (*(((char *)(arr)+1)+(byte(idx<<1))))
 
 // store a word's high and low bytes into separate places
 #define storeWordSeparately(word, low, high) \
@@ -82,3 +82,12 @@ extern unsigned char parallax_scroll_column_start;
                             __asm__("STX %v", high))
 
 #define pal_fade_to_withmusic(from, to) (auto_fs_updates = 1, pal_fade_to(from, to), auto_fs_updates = 0)
+
+// Yes i had to actually fucking use inline asm to get this to run fast
+#define store_short_arr_NOC(arr, idx, word) ( \
+    __A__ = idx<<1, \
+    __asm__("tay"), \
+    __A__ = low_byte(word), \
+    __asm__("sta %v,y", arr), \
+    __A__ = high_byte(word), \
+    __asm__("sta %v+1, y", arr))

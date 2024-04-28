@@ -82,6 +82,7 @@ unsigned char* tmpptr2;
 long unsigned int tmplong;
 unsigned char selectedbgm;
 unsigned char selectedsfx;
+unsigned char currplayer;
 
 
 #pragma zpsym("tmpptr1")
@@ -189,7 +190,6 @@ unsigned char kandotemp2[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
 unsigned long attempts;
-unsigned char currplayer;
 unsigned char controllingplayer;
 unsigned char spiderframe[2];
 unsigned char robotframe[2];

@@ -180,7 +180,7 @@ void state_game(){
 		if (!DEBUG_MODE) {
 			if (!invincible_counter && !(kandoframecnt & 0x01)) bg_coll_death();
 		}
-		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
+		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing2));
 //		x_movement();
 		do_the_scroll_thing2(); 
 		mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
