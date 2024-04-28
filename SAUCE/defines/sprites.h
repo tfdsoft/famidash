@@ -72,6 +72,125 @@ const unsigned char Mini_Ball[]={
 
 const unsigned char * const MINI_BALL[]={Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball};
 	
+const unsigned char WAVE_0[]={
+
+	  0,  0,0x73,0,
+	  8,  0,0x75,0,
+	0x80
+};		
+
+const unsigned char WAVE_1[]={
+
+	  0,  0,0x6F,0,
+	  8,  0,0x71,0,
+	0x80
+};	
+const unsigned char WAVE_2[]={
+
+	  0,  0,0x6B,0,
+	  8,  0,0x6D,0,
+	0x80
+};		
+	
+
+const unsigned char WAVE_5[]={
+
+	  0,  0,0x6F,0|OAM_FLIP_V,
+	  8,  0,0x71,0|OAM_FLIP_V,
+	0x80
+};	
+
+const unsigned char WAVE_6[]={
+
+	  0,  0,0x73,0|OAM_FLIP_V,
+	  8,  0,0x75,0|OAM_FLIP_V,
+	0x80
+};		
+
+
+
+const unsigned char * const WAVE[] = {WAVE_0, WAVE_0, WAVE_1, WAVE_2, WAVE_2, WAVE_5, WAVE_6, WAVE_6};	
+const unsigned char WAVE2_0[]={
+
+	  0,  0,0x73,1,
+	  8,  0,0x75,1,
+	0x80
+};		
+
+const unsigned char WAVE2_1[]={
+
+	  0,  0,0x6F,1,
+	  8,  0,0x71,1,
+	0x80
+};	
+const unsigned char WAVE2_2[]={
+
+	  0,  0,0x6B,1,
+	  8,  0,0x6D,1,
+	0x80
+};		
+	
+
+const unsigned char WAVE2_5[]={
+
+	  0,  0,0x6F,1|OAM_FLIP_V,
+	  8,  0,0x71,1|OAM_FLIP_V,
+	0x80
+};	
+
+const unsigned char WAVE2_6[]={
+
+	  0,  0,0x73,1|OAM_FLIP_V,
+	  8,  0,0x75,1|OAM_FLIP_V,
+	0x80
+};		
+
+
+
+const unsigned char * const WAVE2[] = {WAVE2_0, WAVE2_0, WAVE2_1, WAVE2_2, WAVE2_2, WAVE2_5, WAVE2_6, WAVE2_6};
+
+const unsigned char MINI_WAVE_0[]={
+
+	  8,  -6,0x29,0|OAM_FLIP_V,
+	0x80
+};
+const unsigned char MINI_WAVE_2[]={
+
+	  8,  -6,0x27,0,
+	0x80
+};
+const unsigned char MINI_WAVE_6[]={
+
+	  8,  -6,0x29,0,
+	0x80
+};
+
+
+
+const unsigned char * const MINI_WAVE[] = {MINI_WAVE_0, MINI_WAVE_0, MINI_WAVE_0, MINI_WAVE_2, MINI_WAVE_2, MINI_WAVE_6, MINI_WAVE_6, MINI_WAVE_6};
+
+
+
+const unsigned char MINI_WAVE2_0[]={
+
+	  8,  -6,0x29,1|OAM_FLIP_V,
+	0x80
+};
+const unsigned char MINI_WAVE2_2[]={
+
+	  8,  -6,0x27,1,
+	0x80
+};
+const unsigned char MINI_WAVE2_6[]={
+
+	  8,  -6,0x29,1,
+	0x80
+};
+
+
+const unsigned char * const MINI_WAVE2[] = {MINI_WAVE2_0, MINI_WAVE2_0, MINI_WAVE2_0, MINI_WAVE2_2, MINI_WAVE2_2, MINI_WAVE2_6, MINI_WAVE2_6, MINI_WAVE2_6};
+
+
 const unsigned char UFO_0[]={
 
 	  0,  0,0x41,0,
@@ -933,6 +1052,21 @@ const unsigned char Portal_Gamemode_Spider[]={
 	 16, 32,0x85,7|OAM_FLIP_V,
 	0x80
 };
+const unsigned char Portal_Gamemode_Wave[]={
+
+	  0,  0,0x81,0,
+	  0, 16,0x87,0,
+	  0, 32,0x81,0|OAM_FLIP_V,
+	  8,  0,0x83,0,
+
+	  8, 16,0x89,0,
+	  8, 32,0x83,0|OAM_FLIP_V,
+	 16,  0,0x85,0,
+	 16, 16,0x8B,0,
+
+	 16, 32,0x85,0|OAM_FLIP_V,
+	0x80
+};
 const unsigned char Portal_Gravity_Down[]={
 	  0,  0,0x8d,0,  
 	  0, 16,0x93,0,  
@@ -1272,6 +1406,7 @@ const unsigned char * const Metasprites[]={
 	Speed_40_Portal,
 	Portal_Dual,
 	Portal_Single,
+	Portal_Gamemode_Wave,
 	};
 
 
@@ -1314,6 +1449,7 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1350,6 +1486,7 @@ const unsigned char animation_frame_length[] = {
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
+	0,
 	0,
 	0,
 	0,
