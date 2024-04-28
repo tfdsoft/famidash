@@ -9,33 +9,37 @@ void ball_movement(void){
 // player_gravity[currplayer]
 	// player_vel_y[currplayer] is signed
 
+	#define player_vel_y_currplayer (short)tmp5
+	#define uplayer_vel_y_currplayer tmp5
+	uplayer_vel_y_currplayer = player_vel_y[currplayer];
+
 	if(!mini){
 		if(!player_gravity[currplayer]){
-			if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED){
-				player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
-			} else player_vel_y[currplayer] += BALL_GRAVITY;
+			if(player_vel_y_currplayer > CUBE_MAX_FALLSPEED){
+				uplayer_vel_y_currplayer = CUBE_MAX_FALLSPEED;
+			} else uplayer_vel_y_currplayer += BALL_GRAVITY;
 		}
 		else{
-			if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED){
-				player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
-			} else player_vel_y[currplayer] -= BALL_GRAVITY;
+			if(player_vel_y_currplayer < -CUBE_MAX_FALLSPEED){
+				uplayer_vel_y_currplayer = -CUBE_MAX_FALLSPEED;
+			} else uplayer_vel_y_currplayer -= BALL_GRAVITY;
 		}
 	}
 	else {
 		if(!player_gravity[currplayer]){
-			if(player_vel_y[currplayer] > MINI_CUBE_MAX_FALLSPEED){
-				player_vel_y[currplayer] = MINI_CUBE_MAX_FALLSPEED;
-			} else player_vel_y[currplayer] += MINI_BALL_GRAVITY;
+			if(player_vel_y_currplayer > MINI_CUBE_MAX_FALLSPEED){
+				uplayer_vel_y_currplayer = MINI_CUBE_MAX_FALLSPEED;
+			} else uplayer_vel_y_currplayer += MINI_BALL_GRAVITY;
 		}
 		else{
-			if(player_vel_y[currplayer] < -MINI_CUBE_MAX_FALLSPEED){
-				player_vel_y[currplayer] = -MINI_CUBE_MAX_FALLSPEED;
-			} else player_vel_y[currplayer] -= MINI_BALL_GRAVITY;
+			if(player_vel_y_currplayer < -MINI_CUBE_MAX_FALLSPEED){
+				uplayer_vel_y_currplayer = -MINI_CUBE_MAX_FALLSPEED;
+			} else uplayer_vel_y_currplayer -= MINI_BALL_GRAVITY;
 		}
 	}	
 	
 	
-	player_y[currplayer] += player_vel_y[currplayer];
+	player_y[currplayer] += player_vel_y_currplayer;
 
 	Generic.x = high_byte(player_x[currplayer]);
 
@@ -48,27 +52,27 @@ void ball_movement(void){
 
 	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 2;	
 
-	if(high_byte(player_vel_y[currplayer]) & 0x80){
+	if(high_byte(uplayer_vel_y_currplayer) & 0x80){
 		if(bg_coll_U()){ // check collision above
 			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_U;
-			player_vel_y[currplayer] = 0;
+			uplayer_vel_y_currplayer = 0;
 			cube_data[currplayer] &= 1;			//fix for orb
 		}
 	}
 	else{
 		if(bg_coll_D()){ // check collision below
 		    high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - eject_D;
-		    player_vel_y[currplayer] = 0;
+		    uplayer_vel_y_currplayer = 0;
 			cube_data[currplayer] &= 1;		    //fix for orb
 		}
 	}
 
-	if ((pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && player_vel_y[currplayer] == 0){
+	if ((pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && player_vel_y_currplayer == 0){
 		player_gravity[currplayer] ^= 0x01;
 		kandotemp2[currplayer] = 1;
 		switch (player_gravity[currplayer]){
-			case 0x00: player_vel_y[currplayer] = 0x6F; break;
-			case 0x01: player_vel_y[currplayer] = -0x6F; break;
+			case 0x00: uplayer_vel_y_currplayer = 0x6F; break;
+			case 0x01: uplayer_vel_y_currplayer = -0x6F; break;
 		}
 	}
 	if(kandotemp2[currplayer] == 1){
@@ -77,6 +81,9 @@ void ball_movement(void){
 			kandotemp2[currplayer] = 0;			
 		}
 	}
+
+	player_vel_y[currplayer] = player_vel_y_currplayer;
+	#undef player_vel_y_currplayer
 }
 
 

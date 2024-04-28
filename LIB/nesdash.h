@@ -69,11 +69,11 @@ extern unsigned char parallax_scroll_column_start;
 
 // get specific byte from a word array
 #define idx16_lo(arr, idx) (*((char *)arr+((idx<<1))))
-#define idx16_hi(arr, idx) (*((char *)arr+((idx<<1)|1)))
+#define idx16_hi(arr, idx) (*((char *)(arr+1)+((idx<<1))))
 
 // same as above but idx < 128
-#define idx16_lo_NOC(arr, idx) (*((char *)arr+(((idx<<1)&0xFF))))
-#define idx16_hi_NOC(arr, idx) (*((char *)arr+(((idx<<1)&0xFF)|1)))
+#define idx16_lo_NOC(arr, idx) (*((const char *)arr+(byte(idx<<1))))
+#define idx16_hi_NOC(arr, idx) (*(((const char *)(arr)+1)+(byte(idx<<1))))
 
 // store a word's high and low bytes into separate places
 #define storeWordSeparately(word, low, high) \
