@@ -27,13 +27,17 @@ void reset_level(void) {
     init_rld(level);
 
     player_x[0] = 0x0000;
-    player_y[0] = 0xb000;
     player_x[1] = 0x0000;
+    player_x_curr = 0x0000;
+    player_y[0] = 0xb000;
     player_y[1] = 0xb000;
+    player_y_curr = 0xb000;
 
     player_gravity[0] = 0x00;
     if (twoplayer) player_gravity[1] = 0x00;
     else player_gravity[1] = 0x01;
+
+    player_gravity_curr = player_gravity[currplayer];
 
     mini = 0x00;
     dual = 0x00;
@@ -42,6 +46,8 @@ void reset_level(void) {
     player_vel_y[0] = 0;
     player_vel_x[1] = 0;
     player_vel_y[1] = 0;
+    player_vel_x_curr = 0;
+    player_vel_y_curr = 0;
     if (!has_practice_point)    invincible_counter = 8;
     cube_data[0] = 0;
     cube_data[1] = 0;

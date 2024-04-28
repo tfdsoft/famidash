@@ -169,7 +169,6 @@ void state_game(){
 	mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
         do_the_scroll_thing(); 
 
-	mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 //        check_spr_objects();
 
 	{
@@ -184,7 +183,8 @@ void state_game(){
 		if (cube_data[0] == 1) reset_level();
 		if (cube_data[1] == 1) reset_level();
 	}
-       sprite_collide();
+	mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
+	sprite_collide();
 	if (dual) { 
 		currplayer = 1;					//take focus
 
