@@ -1251,6 +1251,6 @@ sprite_data_test3:
   .byte $ff
 sprite_data_test4:
   .byte $80,$00,$a8,$01,$0a
-  .byte $40,$01,$80,$01,$02
+  .byte $b0,$00,$70,$01,$24
   .byte $ff
 
