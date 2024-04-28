@@ -6,6 +6,7 @@ Download nightly builds here: https://nightly.link/famidash/famidash/workflows/m
 
 ## contributing
 fork it, change it, push it, open a PR, get it merged (or not).
+
 *zephyrside recommends working on the game using vscode on linux*
 
 ## socials
