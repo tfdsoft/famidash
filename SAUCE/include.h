@@ -44,6 +44,7 @@
 
 
 #include "../METATILES/metatiles.h"  // metatile defines
+#include "../METATILES/metatiles2.h"  // metatile defines
 #pragma rodata-name (push, "XCD_BANK_00")
 #include "defines/sprites.h"    // metasprite defines
 #pragma rodata-name (pop)

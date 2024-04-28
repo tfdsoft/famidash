@@ -253,6 +253,7 @@ detectNTSC:
 	.include "LIB/nesdash.s"
 	.include "LIB/nesdoug.s"
 	.include "METATILES/metatiles.s"
+	.include "METATILES/metatiles2.s"
 
 	.include "LEVELS/all_level_data.s"
 	.include "LEVELS/all_sprite_data.s"
