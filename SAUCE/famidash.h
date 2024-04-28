@@ -203,6 +203,7 @@ unsigned char invincible_counter;
 unsigned long int scroll_x; // gotta love massive levels amirite fellas
 unsigned short scroll_y;
 unsigned char song;
+unsigned char auto_fs_updates;
 
 unsigned char has_practice_point = 0;
 unsigned short practice_player_x[2];

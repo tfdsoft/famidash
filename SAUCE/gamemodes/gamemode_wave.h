@@ -10,24 +10,24 @@ void wave_movement(void){
 			if(!player_gravity[currplayer]){
 				if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED){
 					player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
-				} else player_vel_y[currplayer] = CUBE_MAX_FALLSPEED/4;
+				} else player_vel_y[currplayer] = CUBE_MAX_FALLSPEED/2;
 			}
 			else{
 				if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED){
 					player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
-				} else player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED/4;
+				} else player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED/2;
 			}
 		}
 		else {
 			if(!player_gravity[currplayer]){
-				if(player_vel_y[currplayer] > MINI_CUBE_MAX_FALLSPEED){
-					player_vel_y[currplayer] = MINI_CUBE_MAX_FALLSPEED;
-				} else player_vel_y[currplayer] = MINI_CUBE_MAX_FALLSPEED/4;
+				if(player_vel_y[currplayer] > CUBE_MAX_FALLSPEED){
+					player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
+				} else player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
 			}
 			else{
-				if(player_vel_y[currplayer] < -MINI_CUBE_MAX_FALLSPEED){
-					player_vel_y[currplayer] = -MINI_CUBE_MAX_FALLSPEED;
-				} else player_vel_y[currplayer] = -MINI_CUBE_MAX_FALLSPEED/4;
+				if(player_vel_y[currplayer] < -CUBE_MAX_FALLSPEED){
+					player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
+				} else player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
 			}
 		}		
 	}
@@ -46,7 +46,8 @@ void wave_movement(void){
 
 			if(pad[controllingplayer] & PAD_A) {
 				//player_gravity[currplayer] = 1;
-					player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED/4;
+					if (mini) player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED;
+					else player_vel_y[currplayer] = -CUBE_MAX_FALLSPEED/2;
 				//	Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
 	//			high_byte(player_y[currplayer]) -= eject_U;
 	//			player_vel_y[currplayer] = 0;
@@ -59,8 +60,8 @@ void wave_movement(void){
 
 			if(pad[controllingplayer] & PAD_A) {
 //				player_gravity[currplayer] = 0;
-
-					player_vel_y[currplayer] = CUBE_MAX_FALLSPEED/4;
+					if (mini) player_vel_y[currplayer] = CUBE_MAX_FALLSPEED;
+					else player_vel_y[currplayer] = CUBE_MAX_FALLSPEED/2;
 				//	Generic.y = high_byte(player_y[currplayer]); // the rest should be the same
 
 		//		high_byte(player_y[currplayer]) -= eject_D;

@@ -35,6 +35,7 @@
 #define SPEED_40_PORTAL				0X21
 #define DUAL_PORTAL				0X22
 #define SINGLE_PORTAL				0X23
+#define WAVE_MODE				0X24
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -130,6 +131,7 @@ __fastcall__ char sprite_height_lookup(){
 		case GRAVITY_DOWN_PORTAL:
 		case GRAVITY_UP_PORTAL:
 		case MINI_PORTAL:
+		case WAVE_MODE:
 		case GROWTH_PORTAL:
 			return 0x2f;
 		case COIN1:
@@ -176,6 +178,7 @@ void sprite_collide_lookup(){
     
     else if (tmp4 <= 4) { gamemode = tmp4; robotjumptime[currplayer] = 0; }			//game mode portals
     else if (tmp4 == SPIDER_MODE) gamemode = 0x05; 			//game mode portals
+    else if (tmp4 == WAVE_MODE) gamemode = 0x06; 			//game mode portals
     
     
     else if (tmp4 == YELLOW_ORB) {		//yellow orb

@@ -19,7 +19,7 @@ void x_movement(){
 		player_vel_x[currplayer] = speed_table[speed & 0x7F];
 		// leave the col calls first so it executes and checks against spike collision
 		if (!bg_coll_R() && (pad[currplayer] & PAD_RIGHT)) player_x[currplayer] += player_vel_x[currplayer];
-		if (!bg_coll_L() && pad[currplayer] & PAD_LEFT && player_x[currplayer] > 0x0A00) player_x[currplayer] -= player_vel_x[currplayer];
+		if (!bg_coll_L() && pad[currplayer] & PAD_LEFT && player_x[currplayer] > 0x0F00) player_x[currplayer] -= player_vel_x[currplayer];
 	}
 
 	if(player_x[currplayer] > 0xf000) { // too far, don't wrap around
@@ -50,10 +50,15 @@ void x_movement(){
 	};
 	
 	// no L/R collision required, since that is accounted for with the death script
-	
-	if (!platformer) {if (high_byte(player_x[currplayer]) > 0x10 && bg_coll_R()) cube_data[currplayer] |= 0x01; }// turns out, this is needed to temporarily fix zipping
-	else {if (high_byte(player_x[currplayer]) > 0x10 && bg_coll_R()) player_vel_x[currplayer] = 0; }// turns out, this is needed to temporarily fix zipping
+	if (high_byte(player_x[currplayer]) > 0x10) {
+		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
+		if (bg_coll_R()) {
+			if (!platformer) {cube_data[currplayer] |= 0x01; }
+			else {player_vel_x[currplayer] = 0; }
+		}
+	}
 	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 0x02;
+	else if (!(pad[controllingplayer] & PAD_A)) cube_data[currplayer] &= 1;
 }
 
 #pragma code-name(pop)

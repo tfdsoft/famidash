@@ -60,6 +60,7 @@ void main(){
 	if (twoplayer) player_gravity[1] = 0x00;
 	else player_gravity[1] = 0x01;	
 
+	auto_fs_updates = 0;
 	
     while (1){
         ppu_wait_nmi();
