@@ -260,13 +260,13 @@ void sprite_collide_lookup(){
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 		if (cube_data[currplayer] == 2) {					
 			cube_data[currplayer] &= 0x01;
-			if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_PINK^0xFFFF; else player_vel_y[currplayer] = PAD_HEIGHT_PINK;
+			if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_PINK^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_PINK;
 		}
 	}
 	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
 		if (pad_new[controllingplayer] & PAD_A) {	
 			cube_data[currplayer] &= 0x01;
-			if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_PINK^0xFFFF; else player_vel_y[currplayer] = PAD_HEIGHT_PINK;
+			if (player_gravity[currplayer]) player_vel_y[currplayer] = ORB_HEIGHT_PINK^0xFFFF; else player_vel_y[currplayer] = ORB_HEIGHT_PINK;
 		}
 	}
     }
