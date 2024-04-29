@@ -89,6 +89,18 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		player_vel_y[1] = practice_player_vel_y[1];
 		player_gravity[0] = practice_player_gravity[0];
 		player_gravity[1] = practice_player_gravity[1];
+
+		__A__ = currplayer<<1;
+		__asm__("tay");
+		#define quick_ld(to, from) __asm__("lda %v,y\n sta %v\n lda %v+1,y\n sta %v+1", from, to, from, to)
+		
+		quick_ld(currplayer_x, player_x);
+		quick_ld(currplayer_y, player_y);
+		quick_ld(currplayer_vel_x, player_vel_x);
+		quick_ld(currplayer_vel_y, player_vel_y);
+
+		#undef quick_ld
+		currplayer_gravity = player_gravity[currplayer];
 		
 		memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
 	} else {
