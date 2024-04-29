@@ -3,7 +3,7 @@
 
 .export _set_vram_buffer, _multi_vram_buffer_horz, _multi_vram_buffer_vert, _one_vram_buffer
 .export _get_pad_new, _get_frame_count
-.export _check_collision, _pal_fade_to, _set_scroll_x, _set_scroll_y, _add_scroll_y, _sub_scroll_y
+.export _check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, _add_scroll_y, _sub_scroll_y
 .export  _get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt, _buffer_1_mt
 .export _color_emphasis, _xy_split, _gray_line, _seed_rng
 .export _clear_vram_buffer
@@ -220,11 +220,12 @@ _check_collision:
 
 	
 	
-	
-;void __fastcall__ pal_fade_to(unsigned char from, unsigned char to);	
-_pal_fade_to:
-	sta TEMP+9 ;to
-	jsr popa
+;the public pal_fade_to is called via a macro that loads one of the args into X
+;void __fastcall__ _pal_fade_to(unsigned short from_to);	
+__pal_fade_to:
+	; sta TEMP+9 ;to
+	; jsr popa
+	stx TEMP+9	;to
 	sta TEMP+10 ;from
 	jmp @check_equal
 	

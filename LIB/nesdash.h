@@ -94,7 +94,7 @@ extern unsigned char parallax_scroll_column_start;
                             __asm__("STA %v", low), \
                             __asm__("STX %v", high))
 
-#define pal_fade_to_withmusic(from, to) (auto_fs_updates = 1, pal_fade_to(from, to), auto_fs_updates = 0)
+#define pal_fade_to_withmusic(from, to) (++auto_fs_updates, pal_fade_to(from, to), auto_fs_updates = 0)
 
 // Yes i had to actually fucking use inline asm to get this to run fast
 #define store_short_arr_NOC(arr, idx, word) ( \
