@@ -251,19 +251,19 @@ void bg_coll_death(void) {
 		if (tmp3 & COL_ALL && gamemode != 0x06) {  // wave
 			if (player_gravity[currplayer]) {
 				if (player_vel_y[currplayer] > 0) {
-					cube_data[0] = 0x01; 
+					cube_data[currplayer] = 0x01; 
 				}
 			} else {
 				if (player_vel_y[currplayer] < 0) {
-					cube_data[0] = 0x01; 
+					cube_data[currplayer] = 0x01; 
 				}
 			}
 
 		}
-		else if(tmp3 & COL_DEATH) cube_data[0] = 0x01;
+		else if(tmp3 & COL_DEATH) cube_data[currplayer] = 0x01;
 	}
 
-	if(!DEBUG_MODE && cube_data[0] & 0x01) {
+	if(!DEBUG_MODE && cube_data[currplayer] & 0x01) {
 		reset_level();
 	}
 }
