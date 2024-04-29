@@ -237,10 +237,7 @@ _init_rld:
 	STA PAL_BUF+5		;__	Store faded color (pal_col(5, tmp2-0x10 or 0x0F))
     incw_check level_data
 
-	LDA <PAL_UPDATE		;__ Yes, we do need to update the palette
-	CLC
-	ADC #$04
-	STA <PAL_UPDATE
+	INC <PAL_UPDATE		;__ Yes, we do need to update the palette
 
 SetupNextRLEByte:
     LDA (level_data),y  ;
