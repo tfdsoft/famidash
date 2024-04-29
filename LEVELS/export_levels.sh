@@ -11,6 +11,7 @@ all_levels="
             cycles\
             xstep\
             clutterfunk\
+            theoryofeverything\
             test\
             test2\
             test3\

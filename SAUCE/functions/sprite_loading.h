@@ -36,6 +36,8 @@
 #define DUAL_PORTAL				0X22
 #define SINGLE_PORTAL				0X23
 #define WAVE_MODE				0X24
+#define PINK_PAD_DOWN				0X25
+#define PINK_PAD_UP				0X26
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -97,7 +99,7 @@ __fastcall__ char sprite_height_lookup(){
 		activesprites_type[index] = 0xFF; 
 		return 0x00;
     }
-	else if (type >= CUBE_MODE && type <= ROBOT_MODE) return 0x2F;	// Portals
+//	else if (type >= CUBE_MODE && type <= ROBOT_MODE) return 0x2F;	// Portals
 	else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
 	else if (
 		(type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) || // Speed portals
@@ -113,6 +115,11 @@ __fastcall__ char sprite_height_lookup(){
 		case GRAVITY_UP_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_INVISIBLE_PORTAL:
 			return 0x0F;
+		case CUBE_MODE:
+		case SHIP_MODE:
+		case BALL_MODE:
+		case ROBOT_MODE:
+		case UFO_MODE:
 		case SPIDER_MODE:
 		case SINGLE_PORTAL:
 		case DUAL_PORTAL:
@@ -142,10 +149,12 @@ __fastcall__ char sprite_height_lookup(){
 			return 0x1F;
 		case YELLOW_PAD_DOWN:
 		case YELLOW_PAD_UP:
-			return 0x02;
+		case PINK_PAD_UP:
+		case PINK_PAD_DOWN:
 		case GRAVITY_PAD_DOWN:
 		case GRAVITY_PAD_UP:
-			return 0x04;
+			return 0x02;
+//			return 0x04;
 		case LEVEL_END_TRIGGER:
 			gameState = 0x03; 
         	pal_fade_to(4,0);
@@ -298,6 +307,16 @@ void sprite_collide_lookup(){
 				else player_vel_y[currplayer] = PAD_HEIGHT_YELLOW_MINI;
 			}
 		}
+    } 
+    else if (tmp4 == PINK_PAD_DOWN || tmp4 == PINK_PAD_UP) {				//yellow pads
+	if (!mini) {
+		if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_PINK^0xFFFF;
+		else player_vel_y[currplayer] = PAD_HEIGHT_PINK;
+	}
+	else {
+		if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_PINK_MINI^0xFFFF;
+		else player_vel_y[currplayer] = PAD_HEIGHT_PINK_MINI;
+	}
     } 
     else if (tmp4 == GRAVITY_PAD_DOWN || tmp4 == GRAVITY_PAD_DOWN_INVISIBLE) {			//gravity pads bottom
 	    if (!player_gravity[currplayer]) { 

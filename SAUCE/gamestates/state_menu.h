@@ -23,7 +23,7 @@ const unsigned char hiNTAddrTable[]={
 };
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext, levelDtext, levelEtext, levelFtext
+  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext, levelDtext, levelEtext, levelFtext, level10text
 };
 
 #define GAME_MENU_TITLE_X_OFFSET 9
@@ -43,6 +43,7 @@ const unsigned char level_text_padding[] = {
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelDtext)) / 2),
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelEtext)) / 2),
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelFtext)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level10text)) / 2),
 };
 const unsigned char level_text_size[] = {
     sizeof(level1text) - 1,
@@ -60,6 +61,7 @@ const unsigned char level_text_size[] = {
 	sizeof(levelDtext) - 1,
 	sizeof(levelEtext) - 1,
 	sizeof(levelFtext) - 1,
+	sizeof(level10text) - 1,
 };
 
 const char* coin_counter[] = {
@@ -225,7 +227,7 @@ void levelselection() {
 		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
 			famistudio_sfx_play(sfx_select, 0);
-			if (level > 0x0E){
+			if (level > 0x0F){
 				level = 0x00;
 			}
 			refreshmenu();
@@ -235,7 +237,7 @@ void levelselection() {
 			--level;
 			famistudio_sfx_play(sfx_select, 0); 
 			if (level == 0xFF){
-				level = 0x0E;
+				level = 0x0F;
 			}
 			
 			//break;
