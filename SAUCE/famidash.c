@@ -84,7 +84,7 @@ void main(){
 				state_lvldone();
 				break;
 			}
-		//	case 0x04: state_demo(); break;
+			case 0x04: state_demo(); break;
 		}
     }
 }

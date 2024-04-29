@@ -262,7 +262,6 @@ void levelselection() {
 		}
 
 		if (pad_new[0] & (PAD_B)){
-			state_menu();
 			return;
 		}
 			
@@ -324,7 +323,6 @@ void bgmtest() {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
-			//state_menu();
 			return;
 		}
 	}
@@ -394,7 +392,6 @@ void funsettings() {
 			one_vram_buffer(' ', NTADR_A(4, 8));
 			one_vram_buffer(' ', NTADR_A(4, 12));
 			one_vram_buffer(' ', NTADR_A(4, 16));
-			//state_menu();
 			return;
 		}
 
@@ -555,8 +552,7 @@ void settings() {
 		if (twoplayer) platformer = 0;		
 
 		if (pad_new[0] & PAD_B) {
-			tmp3--;			
-			//state_menu();
+			tmp3--;
 			return;
 		}
 
@@ -662,7 +658,7 @@ void state_menu() {
     vram_adr(NAMETABLE_A);
     vram_unrle(game_start_screen);
 
-	multi_vram_buffer_horz("BETA BUILD", 10, NTADR_A(2,2));
+	if (FLAG_BETA_BUILD == 1) multi_vram_buffer_horz("BETA BUILD", 10, NTADR_A(2,2));
  	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 		tmp4 = menuselection; ++tmp4;
