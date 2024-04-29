@@ -32,7 +32,7 @@ if ("--only-diff" in sys.argv):
 old = readDbgFile("TMP/famidash")
 new = readDbgFile("BUILD/famidash")
 
-maxsize = max([len(i[0]) for i in old.items()])
+maxsize = max([len(i[0]) for i in old.items() if (showall or (i[1] - new[i[0]] != 0))])
 
 diff = 0
 
