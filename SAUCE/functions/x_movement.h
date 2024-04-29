@@ -57,14 +57,6 @@ void x_movement(){
 		cube_data[currplayer] |= 0x01;	//DIE if player goes too high
 	};
 	
-	// no L/R collision required, since that is accounted for with the death script
-	if (high_byte(currplayer_x) > 0x10) {
-		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
-		if (bg_coll_R()) {
-			if (!platformer) {cube_data[currplayer] |= 0x01; }
-			else {currplayer_vel_x = 0; }
-		}
-	}
 	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 0x02;
 	else if (!(pad[controllingplayer] & PAD_A)) cube_data[currplayer] &= 1;
 }

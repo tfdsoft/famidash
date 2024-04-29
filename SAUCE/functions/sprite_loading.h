@@ -310,12 +310,12 @@ void sprite_collide_lookup(){
     } 
     else if (tmp4 == PINK_PAD_DOWN || tmp4 == PINK_PAD_UP) {				//yellow pads
 	if (!mini) {
-		if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_PINK^0xFFFF;
-		else player_vel_y[currplayer] = PAD_HEIGHT_PINK;
+		if (currplayer_gravity) currplayer_vel_y = PAD_HEIGHT_PINK^0xFFFF;
+		else currplayer_vel_y = PAD_HEIGHT_PINK;
 	}
 	else {
-		if (player_gravity[currplayer]) player_vel_y[currplayer] = PAD_HEIGHT_PINK_MINI^0xFFFF;
-		else player_vel_y[currplayer] = PAD_HEIGHT_PINK_MINI;
+		if (currplayer_gravity) currplayer_vel_y = PAD_HEIGHT_PINK_MINI^0xFFFF;
+		else currplayer_vel_y = PAD_HEIGHT_PINK_MINI;
 	}
     } 
     else if (tmp4 == GRAVITY_PAD_DOWN || tmp4 == GRAVITY_PAD_DOWN_INVISIBLE) {			//gravity pads bottom

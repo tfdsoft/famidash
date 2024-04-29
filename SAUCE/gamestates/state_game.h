@@ -143,7 +143,15 @@ void state_game(){
 		
 		mmc3_set_prg_bank_1(GET_BANK(x_movement));
 		x_movement();
-		
+	
+		// no L/R collision required, since that is accounted for with the death script
+		if (high_byte(currplayer_x) > 0x10) {
+			bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
+			if (bg_coll_R()) {
+				if (!platformer) {cube_data[currplayer] |= 0x01; }
+				else {currplayer_vel_x = 0; }
+			}
+		}	
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		movement();
 
@@ -196,14 +204,27 @@ void state_game(){
 
 			mmc3_set_prg_bank_1(GET_BANK(movement));
 			movement();
+
 			if (!DEBUG_MODE) {
 				if (!invincible_counter && !(kandoframecnt & 0x01)) bg_coll_death();
 			}
+
 			mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing2));
 			// x_movement();
-			do_the_scroll_thing2(); 
+			// no L/R collision required, since that is accounted for with the death script
+			if (high_byte(currplayer_x) > 0x10) {
+				bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
+				if (bg_coll_R()) {
+					if (!platformer) {cube_data[currplayer] |= 0x01; }
+					else {currplayer_vel_x = 0; }
+				}
+			}
+
+			do_the_scroll_thing2();
+
 			mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 			sprite_collide();
+			
 			currplayer = 0;					//give back focus
 			if (twoplayer) controllingplayer = 0;		//give back controls
 			{
