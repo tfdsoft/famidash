@@ -17,6 +17,6 @@ assignees: ''
 
 
 **Emulator(please complete the following information):**
- - Device: [e.g. PC, Phone]
- - Emulator [e.g. RetroArch, Mesen]
+ - Device: [e.g. PC, Phone]:
+ - Emulator [e.g. RetroArch, Mesen]:
  - Core [ONLY if you use RetroArch]:
