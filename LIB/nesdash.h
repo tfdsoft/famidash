@@ -104,3 +104,10 @@ extern unsigned char parallax_scroll_column_start;
     __asm__("sta %v,y", arr), \
     __A__ = high_byte(word), \
     __asm__("sta %v+1, y", arr))
+
+// set palette color, index 0..31
+// completely inlines and replaces neslib's
+extern unsigned char PAL_UPDATE;
+extern char PAL_BUF[32];
+#pragma zpsym("PAL_UPDATE")
+#define pal_col(index, color) (PAL_BUF[index&0x1F] = color, ++PAL_UPDATE)

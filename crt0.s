@@ -7,6 +7,7 @@
 .exportzp _VRAM_UPDATE := VRAM_UPDATE
 
     .export _exit,__STARTUP__:absolute=1
+	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE
 	.import push0,popa,popax,_main,zerobss,copydata
 
 ; Linker generated symbols
