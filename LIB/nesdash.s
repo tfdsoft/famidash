@@ -22,7 +22,7 @@
 .export _init_rld, _unrle_next_column, _draw_screen_R
 ; .export _refreshmenu
 .export _movement
-.export _music_play, _music_update
+.export _music_play, _sfx_play, _music_update
 
 .importzp _level_data, _sprite_data
 level_data = _level_data
@@ -962,7 +962,12 @@ ParallaxBufferCol5:
 .popseg
 
 ;void __fastcall__ music_play(unsigned char song);
+.import _musicoff
 .proc _music_play
+    ldx	_musicoff
+    beq	start
+    rts
+start:
     LDY #$00
     TSX
 bank_loop:
@@ -1005,8 +1010,21 @@ music_data_locations_hi:
 .byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3
 music_counts:
 .byte 5, 7, $FF  ;last bank is marked with an FF to always stop bank picking
-
 .endproc
+
+; void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
+.import _sfxoff
+.proc _sfx_play
+        tax
+        jsr popa
+        ldy	_sfxoff
+        bne end
+        jmp famistudio_sfx_play
+
+    end:
+        rts
+.endproc
+
 ; void __fastcall__ music_update (void);
 .proc _music_update
     LDA current_song_bank
