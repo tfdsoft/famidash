@@ -10,29 +10,29 @@ const unsigned short speed_table[] = {
 void x_movement(){
     // handle x
 
-	old_x = player_x[currplayer];
+	old_x = currplayer_x;
 	
 	if (!platformer) {
-		player_vel_x[currplayer] = speed_table[speed & 0x7F];
-		player_x[currplayer] += player_vel_x[currplayer];
+		currplayer_vel_x = speed_table[speed & 0x7F];
+		currplayer_x += currplayer_vel_x;
 	} else {
-		player_vel_x[currplayer] = speed_table[speed & 0x7F];
+		currplayer_vel_x = speed_table[speed & 0x7F];
 		// leave the col calls first so it executes and checks against spike collision
-		if (!bg_coll_R() && (pad[currplayer] & PAD_RIGHT)) player_x[currplayer] += player_vel_x[currplayer];
-		if (!bg_coll_L() && pad[currplayer] & PAD_LEFT && player_x[currplayer] > 0x0F00) player_x[currplayer] -= player_vel_x[currplayer];
+		if (!bg_coll_R() && (pad[currplayer] & PAD_RIGHT)) currplayer_x += currplayer_vel_x;
+		if (!bg_coll_L() && pad[currplayer] & PAD_LEFT && currplayer_x > 0x0F00) currplayer_x -= currplayer_vel_x;
 	}
 
-	if(player_x[currplayer] > 0xf000) { // too far, don't wrap around
+	if(currplayer_x > 0xf000) { // too far, don't wrap around
         if(old_x >= 0xf000){
-            player_x[currplayer] = 0xf000; // max right
+            currplayer_x = 0xf000; // max right
         }else{
-            player_x[currplayer] = 0x0000; // max left
+            currplayer_x = 0x0000; // max left
         }
-		player_vel_x[currplayer] = 0;
+		currplayer_vel_x = 0;
 	} 
 	
-	Generic.x = high_byte(player_x[currplayer]); // this is much faster than passing a pointer to player
-	Generic.y = high_byte(player_y[currplayer]);
+	Generic.x = high_byte(currplayer_x); // this is much faster than passing a pointer to player
+	Generic.y = high_byte(currplayer_y);
 
 	if (gamemode == 0x06) { // wave
 		if (mini) {
@@ -53,11 +53,10 @@ void x_movement(){
 	}
 
 
-	if (player_y[currplayer] < 0x0600){
+	if (currplayer_y < 0x0600){
 		cube_data[currplayer] |= 0x01;	//DIE if player goes too high
 	};
 	
-
 	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 0x02;
 	else if (!(pad[controllingplayer] & PAD_A)) cube_data[currplayer] &= 1;
 }

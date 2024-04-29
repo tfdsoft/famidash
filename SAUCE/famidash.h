@@ -85,9 +85,14 @@ long unsigned int tmplong;
 unsigned char selectedbgm;
 unsigned char selectedsfx;
 
-
 #pragma zpsym("tmpptr1")
 #pragma zpsym("tmpptr2")
+
+unsigned short currplayer_x;
+unsigned short currplayer_y;
+signed short currplayer_vel_x;
+signed short currplayer_vel_y;
+unsigned char currplayer_gravity;
 
 unsigned char pad[2];
 unsigned char pad_new[2];
@@ -186,12 +191,12 @@ unsigned char speed;
 unsigned char shuffle_offset;
 unsigned char count;
 unsigned char coins;
+unsigned char currplayer;
 unsigned char kandotemp;
 unsigned char kandotemp2[2];
 unsigned char kandotemp5;
 unsigned char kandoframecnt;
 unsigned long attempts;
-unsigned char currplayer;
 unsigned char controllingplayer;
 unsigned char spiderframe[2];
 unsigned char robotframe[2];

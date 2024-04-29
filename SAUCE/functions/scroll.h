@@ -5,51 +5,51 @@
 
 void do_the_scroll_thing(){
     
-	if (player_x[currplayer] > 0x5000){ // change x scroll
-		tmp1 = (player_x[currplayer] - 0x5000) >> 8;
+	if (currplayer_x > 0x5000){ // change x scroll
+		tmp1 = MSB(currplayer_x - 0x5000);
 		scroll_x += tmp1;
 		parallax_scroll_x += tmp1 ? tmp1 - 1 : 0;
 		if (parallax_scroll_x >= 144) {
 			parallax_scroll_x -= 144;
 		}
-		high_byte(player_x[currplayer]) = high_byte(player_x[currplayer]) - tmp1;
+		high_byte(currplayer_x) = high_byte(currplayer_x) - tmp1;
 	}
 
 	if (!dual) {
-		if (player_y[currplayer] < 0x4000 && (scroll_y > 0x08)){ // change y scroll (upward)
-			tmp1 = (0x4000 - player_y[currplayer]) >> 8;
+		if (currplayer_y < 0x4000 && (scroll_y > 0x08)){ // change y scroll (upward)
+			tmp1 = MSB(0x4000 - currplayer_y);
 			scroll_y -= tmp1;
-			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) + tmp1;
+			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
 		}
 		while (scroll_y < 0x08) {
 			++scroll_y;
-			--high_byte(player_y[currplayer]);
+			--high_byte(currplayer_y);
 		}
 
 		
-		if (player_y[currplayer] > 0xA000){ // change y scroll (upward)
-			tmp1 = (player_y[currplayer] - 0xA000) >> 8;
+		if (currplayer_y > 0xA000){ // change y scroll (upward)
+			tmp1 = MSB(currplayer_y - 0xA000);
 			scroll_y += tmp1;
-			if (scroll_y <= 0xEF) high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - tmp1;
+			if (scroll_y <= 0xEF) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
 		}
 		if (scroll_y > 0xEF) scroll_y = 0xEF;
 	}
 	else {
-		if (player_y[currplayer] < 0x0700 && (scroll_y > 0x08)){ // change y scroll (upward)
-			tmp1 = (0x0700 - player_y[currplayer]) >> 8;
+		if (currplayer_y < 0x0700 && (scroll_y > 0x08)){ // change y scroll (upward)
+			tmp1 = MSB(0x0700 - currplayer_y);
 			scroll_y -= tmp1;
-			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) + tmp1;
+			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
 		}
 		while (scroll_y < 0x08) {
 			++scroll_y;
-			--high_byte(player_y[currplayer]);
+			--high_byte(currplayer_y);
 		}
 
 		
-		if (player_y[currplayer] > 0xF000){ // change y scroll (upward)
-			tmp1 = (player_y[currplayer] - 0xF000) >> 8;
+		if (currplayer_y > 0xF000){ // change y scroll (upward)
+			tmp1 = MSB(currplayer_y - 0xF000);
 			scroll_y += tmp1;
-			if (scroll_y <= 0xEF) high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - tmp1;
+			if (scroll_y <= 0xEF) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
 		}
 		if (scroll_y > 0xEF) scroll_y = 0xEF;
 	}
@@ -59,53 +59,54 @@ void do_the_scroll_thing(){
     set_scroll_y(scroll_y);
 }
 void do_the_scroll_thing2(){
+
     
-	if (player_x[currplayer] > 0x5000){ // change x scroll
-		tmp1 = (player_x[currplayer] - 0x5000) >> 8;
+	if (currplayer_x > 0x5000){ // change x scroll
+		tmp1 = MSB(currplayer_x - 0x5000);
 		scroll_x += tmp1;
 		parallax_scroll_x += tmp1 ? tmp1 - 1 : 0;
 		if (parallax_scroll_x >= 144) {
 			parallax_scroll_x -= 144;
 		}
-		high_byte(player_x[currplayer]) = high_byte(player_x[currplayer]) - tmp1;
+		high_byte(currplayer_x) = high_byte(currplayer_x) - tmp1;
 	}
 
 
 	if (!dual) {
-		if (player_y[currplayer] < 0x4000 && (scroll_y > 0x08)){ // change y scroll (upward)
-			tmp1 = (0x4000 - player_y[currplayer]) >> 8;
+		if (currplayer_y < 0x4000 && (scroll_y > 0x08)){ // change y scroll (upward)
+			tmp1 = MSB(0x4000 - currplayer_y);
 			scroll_y -= tmp1;
-			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) + tmp1;
+			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
 		}
 		while (scroll_y < 0x08) {
 			++scroll_y;
-			--high_byte(player_y[currplayer]);
+			--high_byte(currplayer_y);
 		}
 
 		
-		if (player_y[currplayer] > 0xA000){ // change y scroll (upward)
-			tmp1 = (player_y[currplayer] - 0xA000) >> 8;
+		if (currplayer_y > 0xA000){ // change y scroll (upward)
+			tmp1 = MSB(currplayer_y - 0xA000);
 			scroll_y += tmp1;
-			if (scroll_y <= 0xEF) high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - tmp1;
+			if (scroll_y <= 0xEF) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
 		}
 		if (scroll_y > 0xEF) scroll_y = 0xEF;
 	}
 	else {
-		if (player_y[currplayer] < 0x0700 && (scroll_y > 0x08)){ // change y scroll (upward)
-			tmp1 = (0x0700 - player_y[currplayer]) >> 8;
+		if (currplayer_y < 0x0700 && (scroll_y > 0x08)){ // change y scroll (upward)
+			tmp1 = MSB(0x0700 - currplayer_y);
 			scroll_y -= tmp1;
-			high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) + tmp1;
+			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
 		}
 		while (scroll_y < 0x08) {
 			++scroll_y;
-			--high_byte(player_y[currplayer]);
+			--high_byte(currplayer_y);
 		}
 
 		
-		if (player_y[currplayer] > 0xF000){ // change y scroll (upward)
-			tmp1 = (player_y[currplayer] - 0xF000) >> 8;
+		if (currplayer_y > 0xF000){ // change y scroll (upward)
+			tmp1 = MSB(currplayer_y - 0xF000);
 			scroll_y += tmp1;
-			if (scroll_y <= 0xEF) high_byte(player_y[currplayer]) = high_byte(player_y[currplayer]) - tmp1;
+			if (scroll_y <= 0xEF) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
 		}
 		if (scroll_y > 0xEF) scroll_y = 0xEF;
 	}
@@ -113,6 +114,7 @@ void do_the_scroll_thing2(){
 
     set_scroll_x(scroll_x);
  //   set_scroll_y(scroll_y);
+
 }
 
 #pragma code-name(pop)
