@@ -931,7 +931,7 @@ ParallaxBufferCol5:
 .pushseg
 .segment "XCD_BANK_01"
 
-_movement:
+.proc _movement
     ; The C code being "ported":
         ; switch (gamemode) {
         ;     case 0x00: cube_movement(); break;
@@ -941,58 +941,40 @@ _movement:
         ;     default: break;
         ; } 
 
-    ; !WHEN THE AMOUNT OF IMPLEMENTED GAMEMODES EXCEEDS 6 UNCOMMENT THE FOLLOWING CODE:
-    ; !==== CODE START
-        ; LDX _gamemode
-        ; CPX #$03
-        ; BPL @end    
-        ; LDA @jump_table_lo, X
-        ; STA <PTR
-        ; LDA @jump_table_hi, X
-        ; STA <PTR+1
-        ; JMP (PTR)
+        LDX _gamemode
+        CPX #$07
+        BPL end    
+        LDA jump_table_lo, X
+        STA <PTR
+        LDA jump_table_hi, X
+        STA <PTR+1
+        JMP (PTR)
 
-        ; @end:
-        ;     RTS     ; break;
+        end:
+            RTS     ; break;
 
-        ; @jump_table_lo:
-        ;     .byte <_cube_movement, <_ship_movement, <_ball_movement, <_ufo_movement
-        ; @jump_table_hi:
-        ;     .byte >_cube_movement, >_ship_movement, >_ball_movement, >_ufo_movement
-    ; !==== CODE END
-    ; !Currently it takes less cycles to just do the following:
-    LDX _gamemode		; switch (gamemode)
-    jeq _cube_movement	; case 0x00: cube_movement(); break;
-    DEX					; case 0x01:
-    jeq _ship_movement	;	ship_movement(); break;
-    DEX					; case 0x02:
-    jeq _ball_movement	;	ball_movement(); break;
-    DEX					; case 0x03:
-    jeq _ufo_movement	;	ufo_movement(); break;
-    DEX					; case 0x04:
-    jeq _cube_movement	;	robot_movement(); break;
-    DEX					; case 0x05:
-    jeq _spider_movement	;	spider_movement(); break;
-    DEX
-    jeq _wave_movement
-    RTS					; case 0x06: default: break;
+        jump_table_lo:
+            .byte <_cube_movement, <_ship_movement, <_ball_movement, <_ufo_movement, <_cube_movement, <_spider_movement, <_wave_movement
+        jump_table_hi:
+            .byte >_cube_movement, >_ship_movement, >_ball_movement, >_ufo_movement, >_cube_movement, >_spider_movement, >_wave_movement
 
-
+.endproc
 .popseg
+
 ;void __fastcall__ music_play(unsigned char song);
-_music_play:
+.proc _music_play
     LDY #$00
     TSX
-@bank_loop:
+bank_loop:
     PHA
     SEC
-    SBC @music_counts, Y
-    BCC @found_bank
+    SBC music_counts, Y
+    BCC found_bank
     INY
     TXS ;Act as if no PHA happened
-    BCS @bank_loop  ; BRA
+    BCS bank_loop  ; BRA
     
-@found_bank:
+found_bank:
     TYA
     PHA
     ; No CLC needed as we jumped here with a BCC
@@ -1004,8 +986,8 @@ _music_play:
     ;If different bank than before reinitalize FS
         STA current_song_bank
         TAY
-        LDX @music_data_locations_lo, Y
-        LDA @music_data_locations_hi, Y
+        LDX music_data_locations_lo, Y
+        LDA music_data_locations_hi, Y
         TAY
         LDA #$01
         JSR famistudio_init
@@ -1017,15 +999,16 @@ _music_play:
 
 ; Tables currently generated manually
 
-@music_data_locations_lo:
+music_data_locations_lo:
 .byte <music_data_famidash_music1, <music_data_famidash_music2, <music_data_famidash_music3
-@music_data_locations_hi:
+music_data_locations_hi:
 .byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3
-@music_counts:
+music_counts:
 .byte 5, 7, $FF  ;last bank is marked with an FF to always stop bank picking
 
+.endproc
 ; void __fastcall__ music_update (void);
-_music_update:
+.proc _music_update
     LDA current_song_bank
     CLC
     ADC #<FIRST_MUSIC_BANK
@@ -1033,10 +1016,8 @@ _music_update:
 
     JSR famistudio_update
     JMP _mmc3_pop_prg_bank_1
-
+.endproc
 ; Because i JMPed, the routine is over
-
-SPR_BANK_00 = $1c
 
 
 ;void load_next_sprite(void){
@@ -1237,7 +1218,7 @@ write_active:
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_UFO, _MINI_SPIDER, _MINI_WAVE
 .export _drawplayerone
 
-_drawplayerone:
+.proc _drawplayerone
     ; C code to be ported:
 		; temp_x = high_byte(player_x[0]);
 		; if(temp_x > 0xfc) temp_x = 1;
@@ -1379,28 +1360,28 @@ _drawplayerone:
     CLC             ;   Actual gamemode itself
     ADC _gamemode   ;__
     TAX             ;   Get low byte of table ptr
-    LDA @sprite_table_table_lo, X
+    LDA sprite_table_table_lo, X
     STA ptr1        ;__
-    LDA @sprite_table_table_hi, X
+    LDA sprite_table_table_hi, X
     STA ptr1+1      ;__ Get high byte of table ptr
 
     ; The switch 
     LDX _gamemode
     DEX         ;   case 0x01: ship shit
-    jeq @ship   ;__
+    jeq ship   ;__
     DEX         ;   case 0x02: ball shit
-    jeq @ball   ;__
+    jeq ball   ;__
     DEX         ;   case 0x03: ufo shit
-    jeq @ufo    ;__
+    jeq ufo    ;__
     DEX         ;   case 0x04: robot shit
-    jeq @robot  ;__
+    jeq robot  ;__
     DEX         ;   case 0x05: spider shit
-    jeq @spider ;__
+    jeq spider ;__
     dex
-    jeq	@wave
+    jeq	wave
     
     ; default: cube
-    @cube:
+    cube:
 		; C code:
 			; 		cube_rotate[0] += CUBE_GRAVITY;
 			; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == -CUBE_GRAVITY) cube_rotate[0]= 0;
@@ -1417,22 +1398,22 @@ _drawplayerone:
         LDX _player_vel_y+1		;	if highbyte(player_vel_y) == 0 it's possible that
 		BEQ :+					;__ PVY == 0 or CUBE_GRAVITY
 		INX						;	if highbyte == 0xFF it's possible that
-		BNE @cube_cond_no		;__	PVY == -CUBE_GRAVITY
+		BNE @cond_no		    ;__	PVY == -CUBE_GRAVITY
 			LDA _player_vel_y	;	if lowbyte == -CUBE_GRAVITY
 			CMP #<($100 - <CUBE_GRAVITY)
-			BNE @cube_cond_no	;__
-			BEQ @cube_cond_yes	;__ This is a fucking mess
+			BNE @cond_no	    ;__
+			BEQ @cond_yes	    ;__ This is a fucking mess
 		:						;__
 		LDA _player_vel_y		;
-		BEQ @cube_cond_yes_nold	;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
+		BEQ @cond_yes_nold	    ;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
 		CMP #<CUBE_GRAVITY		;
-		BNE @cube_cond_no		;__
-		@cube_cond_yes:			;
+		BNE @cond_no		    ;__
+		@cond_yes:			    ;
 			LDA #$00			;
-		@cube_cond_yes_nold:	;	cube_rotate[1] = 0
+		@cond_yes_nold:	        ;	cube_rotate[1] = 0
 			STA _cube_rotate+0	;
 			STA _cube_rotate+1	;__
-		@cube_cond_no:
+		@cond_no:
 
 		LDA _cube_rotate+1		;
 		SEC						;
@@ -1441,9 +1422,9 @@ _drawplayerone:
 			STA _cube_rotate+1	;
 		:						;__
 		LDY _cube_rotate+1		;__	Y is the index into the table
-		JMP @fin
+		JMP fin
 	
-	@ship:
+	ship:
 		; C code:
 			; 		cube_rotate[0] = 0x0400 - player_vel_y[0];
 			; 		if (high_byte(cube_rotate) >= 0x08) {
@@ -1481,9 +1462,9 @@ _drawplayerone:
 			ADC #$08
 		:
 		TAY
-		JMP @fin
+		JMP fin
 
-	@ball:
+	ball:
 		; C code:
 			; if (!mini) {
 			;	[calls to oam] 
@@ -1496,9 +1477,9 @@ _drawplayerone:
 		ADC #$01		;__
 		AND #$07		;__	if (ballframe > 7) { ballframe = 0; }
 		STA _ballframe	;__
-		JMP @fin
+		JMP fin
 
-	@ufo:
+	ufo:
 		; Real C code:
 			; 		if (!player_gravity[0]) {
 			; 			if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == MINICUBE_GRAVITY) kandotemp3[0] = 0;
@@ -1536,29 +1517,29 @@ _drawplayerone:
 		LDY #$1				;__	kandotemp3[0] = 1;
 		LDA _player_vel_y+1	;__
 		BEQ :+				;__	else if (highbyte == $00) { // later }
-		BPL @ufo_fin		;__	if (0 < highbyte < $80) {}	// do nothing with it
+		BPL @fin	    	;__	if (0 < highbyte < $80) {}	// do nothing with it
 			INY				;__	else if ($80 ≤ highbyte ≤ $FF) { kandotemp3[0] = 2;
 			CMP #$FF		;	if (highbyte == $FF) {
-			BNE	@ufo_fin	;__
+			BNE	@fin	    ;__
 			LDA _player_gravity
-			BEQ @ufo_fin	;__	if (player_gravity[0] != $00) {	
+			BEQ @fin	    ;__	if (player_gravity[0] != $00) {	
 			LDA _player_vel_y
 			CLC				;	if (lowbyte = -cmptmp)
 			ADC tmp1		;
-			BNE	@ufo_fin	;__
+			BNE	@fin	    ;__
 			TAY				;	kandotemp3[0] = 0;
-			JMP @fin		;__
+			JMP fin		;__
 		:
 		LDX _player_vel_y	;	if (lowbyte == 0) kandotemp3[0] = 0;
 		BEQ :+				;__
 		ORA _player_gravity+0
-		BNE @ufo_fin		;__	if (player_gravity[0] == $00) {
+		BNE @fin	    	;__	if (player_gravity[0] == $00) {
 		CPX tmp1			;__	if (lowbyte == cmptmp)
-		BNE @ufo_fin		;
+		BNE @fin	    	;
 		:	DEY				;	kandotemp3[0] = 0;
-		@ufo_fin:			;
-			JMP @fin		;__
-	@robot:
+		@fin:   			;
+			JMP fin		;__
+	robot:
 		; C code:
 			;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
 			;		[index from ROBOT/MINI_ROBOT using robotframe[0]]
@@ -1583,14 +1564,14 @@ _drawplayerone:
 				LDA #$00	;__
 			:				;
 			STA _robotframe	;__
-			JMP @fin
+			JMP fin
 		:					;	} else {
 			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe
 			TAY				;__
-			JMP @fin
-	@spider:
+			JMP fin
+	spider:
 		; C code:
 			;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
 			;		[index from SPIDER/MINI_SPIDER using spiderframe[0]]
@@ -1612,12 +1593,12 @@ _drawplayerone:
 			ADC #$01		;__
 			AND #$0F        ;   if (spiderframe[0] > 15) spiderframe[0] = 0;
 			STA _spiderframe;__
-			JMP @fin
+			JMP fin
 		:					;	} else { SPIDER_JUMP[0] = SPIDER[8]
 			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
-			JMP @fin
+			JMP fin
 
-	@wave:
+	wave:
 		; C code:
 			; 		cube_rotate[0] = 0x0400 - player_vel_y[0];
 			; 		if (high_byte(cube_rotate) >= 0x08) {
@@ -1655,13 +1636,13 @@ _drawplayerone:
 			ADC #$08
 		:
 		TAY
-		JMP @fin
+		JMP fin
 
 
 
-	@fin:
+	fin:
         LDX #$00
-    @common:
+    common:
 		TYA					;
 		ASL					;	Double da index cuz it's a table of shorts
 		TAY					;__
@@ -1683,19 +1664,20 @@ _drawplayerone:
 			JMP oam_meta_spr_params_set
 		: JMP oam_meta_spr_vflipped_params_set
 
-    @sprite_table_table_lo:
+    sprite_table_table_lo:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE
         .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE
-    @sprite_table_table_hi:
+    sprite_table_table_hi:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER, >_WAVE
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE
-	drawplayer_common := @common
+.endproc
+drawplayer_common := _drawplayerone::common
 
 .import _CUBE2, _SHIP2, _BALL2, _ROBOT2, _UFO2, _SPIDER2, _WAVE2
 .import _MINI_CUBE2, _MINI_SHIP2, _MINI_BALL2, _MINI_ROBOT2, _MINI_UFO2, _MINI_SPIDER2, _MINI_WAVE2
 .export _drawplayertwo
 
-_drawplayertwo:
+.proc _drawplayertwo
     ; C code:
         ; temp_x = high_byte(player_x[1]);
         ; if(temp_x > 0xfc) temp_x = 1;
@@ -1837,28 +1819,28 @@ _drawplayertwo:
     CLC             ;   Actual gamemode itself
     ADC _gamemode   ;__
     TAX             ;   Get low byte of table ptr
-    LDA @sprite_table_table_lo, X
+    LDA sprite_table_table_lo, X
     STA ptr1        ;__
-    LDA @sprite_table_table_hi, X
+    LDA sprite_table_table_hi, X
     STA ptr1+1      ;__ Get high byte of table ptr
 
     ; The switch 
     LDX _gamemode
     DEX         ;   case 0x01: ship shit
-    jeq @ship   ;__
+    jeq ship   ;__
     DEX         ;   case 0x02: ball shit
-    jeq @ball   ;__
+    jeq ball   ;__
     DEX         ;   case 0x03: ufo shit
-    jeq @ufo    ;__
+    jeq ufo    ;__
     DEX         ;   case 0x04: robot shit
-    jeq @robot  ;__
+    jeq robot  ;__
     DEX         ;   case 0x05: spider shit
-    jeq @spider ;__
+    jeq spider ;__
     DEX         ;   case 0x05: spider shit
-    jeq @wave ;__
+    jeq wave ;__
     
     ; default: cube
-    @cube:
+    cube:
 		; C code:
 			; 		cube_rotate[1] += CUBE_GRAVITY;
 			; 		if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == -CUBE_GRAVITY) cube_rotate[1]= 0;
@@ -1875,22 +1857,22 @@ _drawplayertwo:
         LDX _player_vel_y+3		;	if highbyte(player_vel_y) == 0 it's possible that
 		BEQ :+					;__ PVY == 0 or CUBE_GRAVITY
 		INX						;	if highbyte == 0xFF it's possible that
-		BNE @cube_cond_no		;__	PVY == -CUBE_GRAVITY
+		BNE @cond_no		    ;__	PVY == -CUBE_GRAVITY
 			LDA _player_vel_y+2	;	if lowbyte == -CUBE_GRAVITY
 			CMP #<($100 - <CUBE_GRAVITY)
-			BNE @cube_cond_no	;__
-			BEQ @cube_cond_yes	;__ This is a fucking mess
+			BNE @cond_no	    ;__
+			BEQ @cond_yes   	;__ This is a fucking mess
 		:						;__
 		LDA _player_vel_y+2		;
-		BEQ @cube_cond_yes_nold	;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
+		BEQ @cond_yes_nold	    ;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
 		CMP #<CUBE_GRAVITY		;
-		BNE @cube_cond_no		;__
-		@cube_cond_yes:			;
+		BNE @cond_no		    ;__
+		@cond_yes:		    	;
 			LDA #$00			;
-		@cube_cond_yes_nold:	;	cube_rotate[1] = 0
+		@cond_yes_nold:	        ;	cube_rotate[1] = 0
 			STA _cube_rotate+2	;
 			STA _cube_rotate+3	;__
-		@cube_cond_no:
+		@cond_no:
 
 		LDA _cube_rotate+3		;
 		SEC						;
@@ -1899,9 +1881,9 @@ _drawplayertwo:
 			STA _cube_rotate+3	;
 		:						;__
 		LDY _cube_rotate+3		;__	Y is the index into the table
-		JMP @fin
+		JMP fin
 	
-	@ship:
+	ship:
 		; C code:
 			; 		cube_rotate[1] = 0x0400 - player_vel_y[1];
 			; 		if (high_byte(cube_rotate) >= 0x08) {
@@ -1939,9 +1921,9 @@ _drawplayertwo:
 			ADC #$08
 		:
 		TAY
-		JMP @fin
+		JMP fin
 
-	@ball:
+	ball:
 		; C code:
 			; if (!mini) {
 			;	[calls to oam] 
@@ -1955,9 +1937,9 @@ _drawplayertwo:
 		; AND #$07		;__	if (ballframe > 7) { ballframe = 0; }
 		; STA _ballframe	;__
 		LDY _ballframe
-		JMP @fin
+		JMP fin
 
-	@ufo:
+	ufo:
 		; Real C code:
 			; 		if (!player_gravity[1]) {
 			; 			if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == MINICUBE_GRAVITY) kandotemp3[1] = 0;
@@ -1995,29 +1977,29 @@ _drawplayertwo:
 		LDY #$1				;__	kandotemp3[1] = 1;
 		LDA _player_vel_y+3	;__
 		BEQ :+				;__	else if (highbyte == $00) { // later }
-		BPL @ufo_fin		;__	if (0 < highbyte < $80) {}	// do nothing with it
+		BPL @fin		    ;__	if (0 < highbyte < $80) {}	// do nothing with it
 			INY				;__	else if ($80 ≤ highbyte ≤ $FF) { kandotemp3[1] = 2;
 			CMP #$FF		;	if (highbyte == $FF) {
-			BNE	@ufo_fin	;__
+			BNE	@fin    	;__
 			LDA _player_gravity+1
-			BEQ @ufo_fin	;__	if (player_gravity[1] != $00) {	
+			BEQ @fin    	;__	if (player_gravity[1] != $00) {	
 			LDA _player_vel_y+2
 			CLC				;	if (lowbyte = -cmptmp)
 			ADC tmp1		;
-			BNE	@ufo_fin	;__
+			BNE	@fin	    ;__
 			TAY				;	kandotemp3[1] = 0;
-			JMP @fin		;__
+			JMP fin		    ;__
 		:
 		LDX _player_vel_y+2	;	if (lowbyte == 0) kandotemp3[1] = 0;
 		BEQ :+				;__
 		ORA _player_gravity+1
-		BNE @ufo_fin		;__	if (player_gravity[1] == $00) {
+		BNE @fin		    ;__	if (player_gravity[1] == $00) {
 		CPX tmp1			;__	if (lowbyte == cmptmp)
-		BNE @ufo_fin		;
+		BNE @fin		    ;
 		:	DEY				;	kandotemp3[1] = 0;
-		@ufo_fin:			;
-			JMP @fin		;__
-	@robot:
+		@fin:		    	;
+			JMP fin	    	;__
+	robot:
 		; C code:
 			;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
 			;		[index from ROBOT/MINI_ROBOT using robotframe[1]]
@@ -2042,14 +2024,14 @@ _drawplayertwo:
 				LDA #$00	;__
 			:				;
 			STA _robotframe+1;__
-			JMP @fin
+			JMP fin
 		:					;	} else {
 			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe+1
 			TAY				;__
-			JMP @fin
-	@spider:
+			JMP fin
+	spider:
 		; C code:
 			;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
 			;		[index from SPIDER/MINI_SPIDER using spiderframe[1]]
@@ -2071,11 +2053,11 @@ _drawplayertwo:
 			ADC #$01		;__
 			AND #$0F        ;   if (spiderframe[1] > 15) spiderframe[1] = 0;
 			STA _spiderframe+1;__
-			JMP @fin
+			JMP fin
 		:					;	} else { SPIDER_JUMP[0] = SPIDER[8]
 			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
-			JMP @fin
-	@wave:
+			JMP fin
+	wave:
 		; C code:
 			; 		cube_rotate[1] = 0x0400 - player_vel_y[1];
 			; 		if (high_byte(cube_rotate) >= 0x08) {
@@ -2113,20 +2095,21 @@ _drawplayertwo:
 			ADC #$08
 		:
 		TAY
-		; JMP @fin
+		; JMP fin
 
 
 
-	@fin:
+	fin:
         LDX #$01
 		JMP drawplayer_common
-	@sprite_table_table_lo:
+	sprite_table_table_lo:
 		.byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT2, <_SPIDER2, <_WAVE2
 		.byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2
-	@sprite_table_table_hi:
+	sprite_table_table_hi:
 		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2, >_WAVE2
 		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2
 
+.endproc
 .popseg
 
 .pushseg 
@@ -2134,7 +2117,7 @@ _drawplayertwo:
 
 .importzp _temp_x, _temp_y, _temp_room, _collision
 .export _bg_collision_sub
-_bg_collision_sub:
+.proc _bg_collision_sub
     ; C code:
         ; if(temp_y >= 0xf0) return 0;
         ; coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
@@ -2148,7 +2131,7 @@ _bg_collision_sub:
         ; return is_solid[collision];
     LDA _temp_y     ;
     CMP #$F0        ;   if(temp_y >= 0xf0) return 0;
-    BCS @Return0	;__
+    BCS Return0	;__
     AND #$F0        ;	temp_y & 0xF0
     STA tmp1        ;__
 	LDA _temp_x		;
@@ -2161,27 +2144,29 @@ _bg_collision_sub:
 
 	LDA _temp_room	;	tmp3 = temp_room&1;
 	AND #$01		;__
-	BNE @Room1		;__
+	BNE Room1		;__
 	LDA _collisionMap0,X	; collision = collisionMap0[coordinates];
-	JMP @BothRooms
+	JMP BothRooms
 
-	@Room1:
+	Room1:
 	; "tmp3" is 1, check for coordinates >= $C0
 	CPX #$C0			;	if (tmp3 && coordinates >= 0xc0) return COL_ALL;
-	BCS @ReturnColAll	;__
+	BCS ReturnColAll	;__
 	LDA _collisionMap1,X	; collision = collisionMap0[coordinates];
-	@BothRooms:
+	BothRooms:
 	STA _collision	;
 	TAX				;__
 	LDA _is_solid,X	;	return is_solid[collision];
 	RTS				;__
 
-	@Return0:
+	Return0:
 	LDA #$00
 	RTS
 
-	@ReturnColAll:
+	ReturnColAll:
 	LDA #$40
 	RTS
+
+.endproc
 
 .popseg

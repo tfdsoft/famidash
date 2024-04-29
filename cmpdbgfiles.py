@@ -28,6 +28,10 @@ showall = 1
 if ("--only-diff" in sys.argv):
 	showall = 0
 
+quote = ""
+if ("--md" in sys.argv):
+	quote = "`"
+
 # print("start")
 old = readDbgFile("TMP/famidash")
 new = readDbgFile("BUILD/famidash")
@@ -42,7 +46,7 @@ for i in old.items():
 	if (thisdiff != 0 or showall) :
 		padding = " " * (maxsize - len(i[0]))
 		signpadding = " " if thisdiff > 0 else ""
-		print(f"{i[0]}:{padding} {i[1]}\t→ {newsize}" + ((f"\t - diff: {signpadding}{thisdiff}") if thisdiff != 0 else ""))
+		print(f"{quote}{i[0]}:{padding} {i[1]}\t→ {newsize}" + ((f"\t - diff: {signpadding}{thisdiff}") if thisdiff != 0 else "") + quote)
 	diff += thisdiff
 
-print("\n\nTotal size reduction: "+str(diff)+" bytes")
+print("\nTotal size reduction: "+str(diff)+" bytes")

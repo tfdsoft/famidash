@@ -661,6 +661,8 @@ void state_menu() {
 	// Expand the data for the menu nametable while the PPU is still off
     vram_adr(NAMETABLE_A);
     vram_unrle(game_start_screen);
+
+	multi_vram_buffer_horz("BETA BUILD", 10, NTADR_A(2,2));
  	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 		tmp4 = menuselection; ++tmp4;
