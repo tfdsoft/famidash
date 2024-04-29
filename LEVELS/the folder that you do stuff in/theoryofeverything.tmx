@@ -2,7 +2,7 @@
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="855" height="27" tilewidth="16" tileheight="16" infinite="0" nextlayerid="3" nextobjectid="1">
  <editorsettings>
   <chunksize width="16" height="27"/>
-  <export target="famidash-ca5f1635fcc06ac281fbf997b29057b01bcb104d/famidash-ca5f1635fcc06ac281fbf997b29057b01bcb104d/LEVELS/the folder that you do stuff in/backontrack.csv" format="csv"/>
+  <export target="theoryofeverything.csv" format="csv"/>
  </editorsettings>
  <tileset firstgid="1" name="famidash" tilewidth="16" tileheight="16" tilecount="240" columns="16">
   <image source="../../GRAPHICS/famidash.bmp" width="256" height="240"/>

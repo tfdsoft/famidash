@@ -1269,6 +1269,55 @@ const unsigned char Yellow_Jump_Pad_U4[]={
 	  8,-0,0x99,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
+const unsigned char Pink_Jump_Pad[]={
+
+	  0,-8,0x99,3,
+	  8,-8,0x9B,3|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Pink_Jump_Pad2[]={
+
+	  0,-8,0x9B,3,
+	  8,-8,0x9D,3|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Pink_Jump_Pad3[]={
+
+	  0,-8,0x9D,3,
+	  8,-8,0x9F,3|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Pink_Jump_Pad4[]={
+
+	  0,-8,0x9F,3,
+	  8,-8,0x99,3|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Pink_Jump_Pad_U[]={
+
+	  0,-0,0x99,3|OAM_FLIP_V,
+	  8,-0,0x9B,3|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Pink_Jump_Pad_U2[]={
+
+	  0,-0,0x9B,3|OAM_FLIP_V,
+	  8,-0,0x9D,3|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Pink_Jump_Pad_U3[]={
+
+	  0,-0,0x9D,3|OAM_FLIP_V,
+	  8,-0,0x9F,3|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Pink_Jump_Pad_U4[]={
+
+	  0,-0,0x9F,3|OAM_FLIP_V,
+	  8,-0,0x99,3|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
 
 const unsigned char Gravity_Pad[]={
 
@@ -1351,6 +1400,19 @@ const struct SpriteFrame YELLOW_PAD_U_SPRITES[]={
 	{5, Yellow_Jump_Pad_U3},
 	{5, Yellow_Jump_Pad_U4},
 };
+const struct SpriteFrame PINK_PAD_SPRITES[]={
+	{5, Pink_Jump_Pad},
+	{5, Pink_Jump_Pad2},
+	{5, Pink_Jump_Pad3},
+	{5, Pink_Jump_Pad4},
+};
+
+const struct SpriteFrame PINK_PAD_U_SPRITES[]={
+	{5, Pink_Jump_Pad_U},
+	{5, Pink_Jump_Pad_U2},
+	{5, Pink_Jump_Pad_U3},
+	{5, Pink_Jump_Pad_U4},
+};
 
 const struct SpriteFrame GRAVITY_PAD_SPRITES[]={
 	{5, Gravity_Pad},
@@ -1407,6 +1469,8 @@ const unsigned char * const Metasprites[]={
 	Portal_Dual,
 	Portal_Single,
 	Portal_Gamemode_Wave,
+	Pink_Jump_Pad,
+	Pink_Jump_Pad_U,
 	};
 
 
@@ -1450,6 +1514,8 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	PINK_PAD_SPRITES, // Pink_Jump_Pad,	
+	PINK_PAD_U_SPRITES, // Pink_Jump_Pad,	
 };
 
 // Number of UNIQUE animation frames
@@ -1468,7 +1534,7 @@ const unsigned char animation_frame_length[] = {
 	0, // Yellow_Jump_Orb,
 	sizeof(YELLOW_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad_U,
 	sizeof(GRAVITY_PAD_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad,
-	sizeof(YELLOW_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
+	sizeof(GRAVITY_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
 	0, // nometa, // end stage trigger
 	
 	0, //horizontal portals
@@ -1492,4 +1558,6 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
+	sizeof(PINK_PAD_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad,
+	sizeof(PINK_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
 };
