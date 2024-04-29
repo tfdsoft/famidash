@@ -240,7 +240,7 @@ void sprite_collide_lookup(){
 			}
 		}
 	}
-	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
+	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
 		if (pad_new[controllingplayer] & PAD_A) {
 			cube_data[currplayer] &= 0x01;
 			currplayer_gravity ^= 0x01;
@@ -263,7 +263,7 @@ void sprite_collide_lookup(){
 			if (currplayer_gravity) currplayer_vel_y = ORB_HEIGHT_PINK^0xFFFF; else currplayer_vel_y = ORB_HEIGHT_PINK;
 		}
 	}
-	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
+	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
 		if (pad_new[controllingplayer] & PAD_A) {	
 			cube_data[currplayer] &= 0x01;
 			if (currplayer_gravity) currplayer_vel_y = ORB_HEIGHT_PINK^0xFFFF; else currplayer_vel_y = ORB_HEIGHT_PINK;

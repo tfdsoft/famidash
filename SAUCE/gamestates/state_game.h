@@ -194,8 +194,8 @@ void state_game(){
 			currplayer = 1;					//take focus
 
 			if (twoplayer) controllingplayer = 1;		//take controls
-			if (dual && platformer && !twoplayer) player_x[1] = player_x[0];
-			else if (dual && !platformer) player_x[1] = player_x[0];
+			if (dual && platformer && !twoplayer) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
+			else if (dual && !platformer) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
 
 			{	
 				currplayer_x = player_x[1];
