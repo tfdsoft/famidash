@@ -330,6 +330,51 @@ void bgmtest() {
 
 
 
+void customize_screen() {
+	kandotemp=0;
+	pal_fade_to(4,0);
+	ppu_off();
+	pal_bg((char *)paletteMenu);
+	mmc3_set_8kb_chr(20);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(customizescreen);   	
+	#include "../defines/mainmenu_charmap.h"
+
+	TOTALCOINS = 0;
+	TOTALCOINSONES = 0;
+	TOTALCOINSTENS = 0;
+
+	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+	}
+	TOTALCOINSTEMP = TOTALCOINS;
+	
+	while (TOTALCOINSTEMP > 9) {
+		TOTALCOINSTENS = TOTALCOINSTENS + 1;
+		TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
+	}
+	TOTALCOINSONES = TOTALCOINSTEMP;
+
+	ppu_on_all();
+	pal_fade_to(0,4);
+	while (1) {
+		ppu_wait_nmi();
+		music_update();
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+
+		if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
+		one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
+
+		if (pad_new[0] & PAD_B || pad_new[0] & PAD_START) {
+			tmp3--;			
+			return;
+		}
+	}
+}
+
+
+
 
 
 void funsettings() {
@@ -643,7 +688,7 @@ void state_menu() {
 	TOTALCOINSTENS = 0;
 
 	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp3];
+		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
 	}
 	TOTALCOINSTEMP = TOTALCOINS;
 	
@@ -711,7 +756,7 @@ void state_menu() {
 		case 0x01: settingvalue = 0; funsettings(); return; break;
 		case 0x02: bgmtest(); return; break;
 		case 0x03: settingvalue = 0; settings(); return; break;
-		case 0x04: state_menu(); return; break;
+		case 0x04: settingvalue = 0; customize_screen(); return; break;
 			
 	};
   
