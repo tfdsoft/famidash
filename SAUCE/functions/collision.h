@@ -41,7 +41,7 @@ char bg_coll_floor_spikes(void){ // used just for checking ground spikes on the 
 	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
 	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : (
-		(player_gravity_curr) ? 3 : (Generic.height - 3)
+		(currplayer_gravity) ? 3 : (Generic.height - 3)
 	));
 
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
@@ -91,7 +91,7 @@ char bg_coll_R(void){
 }
 
 char bg_coll_U(void){
-	if (player_vel_y_curr > 0) return 0;
+	if (currplayer_vel_y > 0) return 0;
 	
 	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
@@ -152,7 +152,7 @@ char bg_coll_U(void){
 }
 
 char bg_coll_D(void){
-	if (player_vel_y_curr < 0) return 0;
+	if (currplayer_vel_y < 0) return 0;
 	 // check 2 points on the right side
 	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
@@ -185,7 +185,7 @@ char bg_coll_D(void){
 			if (tmp2 >= 0x08) {
 				if (tmp3 & COL_DEATH_BOTTOM) {
 					if (tmp2 >= 0x0c) {
-						if (high_byte(player_x_curr) < 0x10) return 0;
+						if (high_byte(currplayer_x) < 0x10) return 0;
 						cube_data[currplayer] = 1;
 					} else {
 						return 0;
@@ -244,17 +244,17 @@ void bg_coll_death(void) {
 				cube_data[currplayer] = 1;
 		}
 	}
-	else if(!player_gravity_curr && tmp3 & COL_BOTTOM) { }
-	else if(player_gravity_curr && tmp3 & COL_TOP) { }
+	else if(!currplayer_gravity && tmp3 & COL_BOTTOM) { }
+	else if(currplayer_gravity && tmp3 & COL_TOP) { }
 	else if(tmp3 & (COL_DEATH_RIGHT | COL_DEATH_LEFT)) { }
 	else {
 		if (tmp3 & COL_ALL && gamemode != 0x06) {  // wave
-			if (player_gravity_curr) {
-				if (player_vel_y_curr > 0) {
+			if (currplayer_gravity) {
+				if (currplayer_vel_y > 0) {
 					cube_data[0] = 0x01; 
 				}
 			} else {
-				if (player_vel_y_curr < 0) {
+				if (currplayer_vel_y < 0) {
 					cube_data[0] = 0x01; 
 				}
 			}

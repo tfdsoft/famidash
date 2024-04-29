@@ -88,11 +88,11 @@ unsigned char selectedsfx;
 #pragma zpsym("tmpptr1")
 #pragma zpsym("tmpptr2")
 
-unsigned short player_x_curr;
-unsigned short player_y_curr;
-signed short player_vel_x_curr;
-signed short player_vel_y_curr;
-unsigned char player_gravity_curr;
+unsigned short currplayer_x;
+unsigned short currplayer_y;
+signed short currplayer_vel_x;
+signed short currplayer_vel_y;
+unsigned char currplayer_gravity;
 
 unsigned char pad[2];
 unsigned char pad_new[2];

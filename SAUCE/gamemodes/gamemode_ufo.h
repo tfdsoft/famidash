@@ -5,79 +5,79 @@
 void ufo_movement(void){
 // handle y
 
-// player_gravity_curr
-	// player_vel_y_curr is signed
-	//if(player_vel_y_curr < 0x400){
+// currplayer_gravity
+	// currplayer_vel_y is signed
+	//if(currplayer_vel_y < 0x400){
 	if(!mini){
-		if(!player_gravity_curr){
-			if(player_vel_y_curr > CUBE_MAX_FALLSPEED){
-				player_vel_y_curr = CUBE_MAX_FALLSPEED;
-			} else player_vel_y_curr += CUBE_GRAVITY;
+		if(!currplayer_gravity){
+			if(currplayer_vel_y > CUBE_MAX_FALLSPEED){
+				currplayer_vel_y = CUBE_MAX_FALLSPEED;
+			} else currplayer_vel_y += CUBE_GRAVITY;
 		}
 		else{
-			if(player_vel_y_curr < -CUBE_MAX_FALLSPEED){
-				player_vel_y_curr = -CUBE_MAX_FALLSPEED;
-			} else player_vel_y_curr -= CUBE_GRAVITY;
+			if(currplayer_vel_y < -CUBE_MAX_FALLSPEED){
+				currplayer_vel_y = -CUBE_MAX_FALLSPEED;
+			} else currplayer_vel_y -= CUBE_GRAVITY;
 		}
 	}
 	else {
-		if(!player_gravity_curr){
-			if(player_vel_y_curr > MINI_UFO_MAX_FALLSPEED){
-				player_vel_y_curr = MINI_UFO_MAX_FALLSPEED;
-			} else player_vel_y_curr += MINI_CUBE_GRAVITY;
+		if(!currplayer_gravity){
+			if(currplayer_vel_y > MINI_UFO_MAX_FALLSPEED){
+				currplayer_vel_y = MINI_UFO_MAX_FALLSPEED;
+			} else currplayer_vel_y += MINI_CUBE_GRAVITY;
 		}
 		else{
-			if(player_vel_y_curr < -MINI_UFO_MAX_FALLSPEED){
-				player_vel_y_curr = -MINI_UFO_MAX_FALLSPEED;
-			} else player_vel_y_curr -= MINI_CUBE_GRAVITY;
+			if(currplayer_vel_y < -MINI_UFO_MAX_FALLSPEED){
+				currplayer_vel_y = -MINI_UFO_MAX_FALLSPEED;
+			} else currplayer_vel_y -= MINI_CUBE_GRAVITY;
 		}
 	}		
-	player_y_curr += player_vel_y_curr;
-	Generic.x = high_byte(player_x_curr);
-	Generic.y = high_byte(player_y_curr);
+	currplayer_y += currplayer_vel_y;
+	Generic.x = high_byte(currplayer_x);
+	Generic.y = high_byte(currplayer_y);
 	if (mini) {
-		if (high_byte(player_vel_y_curr)) Generic.y -= 1;
+		if (high_byte(currplayer_vel_y)) Generic.y -= 1;
 		else Generic.y += 1;
 	}
 	
-	if(high_byte(player_vel_y_curr) & 0x80){
+	if(high_byte(currplayer_vel_y) & 0x80){
 		if(bg_coll_U()){ // check collision above
-			high_byte(player_y_curr) -= eject_U + 1;
-			player_vel_y_curr = 0;
+			high_byte(currplayer_y) -= eject_U + 1;
+			currplayer_vel_y = 0;
 		}
 	} else {
 		if(bg_coll_D()){ // check collision below
-			high_byte(player_y_curr) -= eject_D - 1;
-			player_vel_y_curr = 0;
+			high_byte(currplayer_y) -= eject_D - 1;
+			currplayer_vel_y = 0;
 		}
 	}
 
 	
 
 	// check collision down a little lower than CUBE
-	Generic.y = high_byte(player_y_curr); // the rest should be the same
+	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
-//	if (player_vel_y_curr != 0){
+//	if (currplayer_vel_y != 0){
 //		if(pad_new[controllingplayer] & PAD_A) {
 //			cube_data = 2;
 //		}
 //	}
 
 	
-	if (player_gravity_curr){
+	if (currplayer_gravity){
 			//if(bg_coll_U2()) {
 		//		cube_data = 0;
 				if(pad_new[controllingplayer] & PAD_A) {
-					if (!mini) player_vel_y_curr = 	UFO_JUMP_VEL^0xFFFF; // JUMP
-					else player_vel_y_curr = MINI_UFO_JUMP_VEL^0xFFFF; // JUMP
+					if (!mini) currplayer_vel_y = 	UFO_JUMP_VEL^0xFFFF; // JUMP
+					else currplayer_vel_y = MINI_UFO_JUMP_VEL^0xFFFF; // JUMP
 				}
 			//}
 	} else {
 			//if(bg_coll_D2()) {
 			//	cube_data = 0;				
 				if(pad_new[controllingplayer] & PAD_A) {
-					if (!mini) player_vel_y_curr = 	UFO_JUMP_VEL; // JUMP
-					else player_vel_y_curr = MINI_UFO_JUMP_VEL; // JUMP
+					if (!mini) currplayer_vel_y = 	UFO_JUMP_VEL; // JUMP
+					else currplayer_vel_y = MINI_UFO_JUMP_VEL; // JUMP
 				}
 			//}
 	}
