@@ -293,9 +293,24 @@ _famistudio_state = *
 .export _GAME_CHR
 _GAME_CHR:
 	.incbin "GRAPHICS/famidash.chr" ; 8kb
-	.incbin "GRAPHICS/famidash-parallax.chr" ; 4kb
-	.incbin "GRAPHICS/menus.chr"    ; 4kb
-	.incbin "GRAPHICS/levelcomplete.chr"    ; 4kb
+;    .incbin "GRAPHICS/bankmain.chr" ; 1kb
+ ;   .incbin "GRAPHICS/bankgamemodes1.chr" ; 1kb
+  ;  .incbin "GRAPHICS/bankmain.chr" ; 1kb
+;    .incbin "GRAPHICS/bankgamemodes2.chr" ; 1kb
+ ;   .incbin "GRAPHICS/bankmain.chr" ; 1kb
+  ;  .incbin "GRAPHICS/bankgamemodes3.chr" ; 1kb
+;    .incbin "GRAPHICS/bankmain.chr" ; 1kb
+ ;   .incbin "GRAPHICS/bankgamemodes4.chr" ; 1kb
+  ;  .incbin "GRAPHICS/bankmain.chr" ;1kb
+;    .incbin "GRAPHICS/bankmini.chr" ; 1kb
+ ;   .incbin "GRAPHICS/bankmain.chr" ; 1kb
+  ;  .incbin "GRAPHICS/bankmini2.chr" ; 1kb
+;    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+ ;   .incbin "GRAPHICS/bankblank.chr" ; 1kb
+
+    .incbin "GRAPHICS/famidash-parallax.chr" ; 4kb
+    .incbin "GRAPHICS/menus.chr"    ; 4kb
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb
 .segment "PARALLAXCHR"
 .export _PARALLAX_CHR
 _PARALLAX_CHR:
