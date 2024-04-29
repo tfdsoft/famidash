@@ -173,6 +173,8 @@ unsigned char TOTALATTEMPTSHUNDREDS;
 unsigned char TOTALATTEMPTSTHOUSANDS;
 unsigned char TOTALCOINSTENS;
 unsigned char TOTALCOINSONES;
+unsigned char TOTALSTARSONES;
+unsigned char TOTALSTARSTENS;
 
 
 unsigned short player_x[2];
