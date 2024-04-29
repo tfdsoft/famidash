@@ -1516,13 +1516,6 @@ ldx #0
 ;======================================================================================================================
 
 famistudio_music_play:
-    jsr pusha
-    lda	_musicoff
-    beq	@continue
-    jsr	popa
-    rts
-@continue:
-    jsr	popa
     @tmp = famistudio_r0
     @song_list_ptr = famistudio_ptr0
     @temp_env_ptr  = famistudio_ptr1
@@ -6579,14 +6572,6 @@ famistudio_sfx_clear_channel:
 
 famistudio_sfx_play:
 
-    jsr	pusha
-    lda _sfxoff
-    beq	@cont
-    jsr popa
-    rts
-    
-@cont:
-    jsr	popa
     @effect_data_ptr = famistudio_ptr0
 
     asl a
@@ -7601,7 +7586,7 @@ famistudio_rhythm_lut:
 .if FAMISTUDIO_CFG_C_BINDINGS
 
 ; Required to fetch the extra parameter from the C stack
-.import popa, _musicoff, _sfxoff
+.import popa
 
 .export _famistudio_init
 _famistudio_init:

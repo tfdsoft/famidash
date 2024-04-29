@@ -31,6 +31,19 @@ void __fastcall__ music_play(unsigned char song);
 void __fastcall__ music_update (void);
 
 /**
+ * ======================================================================================================================
+ * famistudio_sfx_play (public)
+ * 
+ * Plays a sound effect.
+ * 
+ * [in] sfx_index: Sound effect index (0...127)
+ * [in] channel: Offset of sound effect channel, should be FAMISTUDIO_SFX_CH0..FAMISTUDIO_SFX_CH3
+ * ======================================================================================================================
+ */
+
+void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
+
+/**
  * Update the PPU using the VRAM buffer with a single tile repeated LENGTH number of times.
  * Length must not be greater than 0x7f!
  */

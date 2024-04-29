@@ -249,7 +249,7 @@ void levelselection() {
 
 
 		if (pad_new[0] & PAD_START){
-			famistudio_sfx_play(sfx_start_level, 0);
+			sfx_play(sfx_start_level, 0);
 			famistudio_music_stop();
 			for (tmp1 = 0; tmp1 < 30; tmp1++){
 				ppu_wait_nmi();
@@ -268,7 +268,7 @@ void levelselection() {
 			
 		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
-			famistudio_sfx_play(sfx_select, 0);
+			sfx_play(sfx_select, 0);
 			if (level > 0x0F){
 				level = 0x00;
 			}
@@ -277,7 +277,7 @@ void levelselection() {
 		}
 		if (pad_new[0] & PAD_LEFT){
 			--level;
-			famistudio_sfx_play(sfx_select, 0); 
+			sfx_play(sfx_select, 0); 
 			if (level == 0xFF){
 				level = 0x0F;
 			}
@@ -416,12 +416,12 @@ void funsettings() {
 
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
 			if (settingvalue == 2) { settingvalue = 0; }
-			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
+			else { settingvalue++; sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
 			if (settingvalue == 0) { settingvalue = 2; }
-			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
+			else { settingvalue--; sfx_play(sfx_select, 0);  }
 		}
 
 		if (tmp1 != settingvalue) {
@@ -509,12 +509,12 @@ void settings() {
 					TOTALCOINSTENS = 0;
 				//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
 				//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
-					famistudio_sfx_play(sfx_death, 0);
+					sfx_play(sfx_death, 0);
 				//	one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));		
 				}
 			}
 			else {
-				famistudio_sfx_play(sfx_click, 0);			
+				sfx_play(sfx_click, 0);			
 				twoplayer ^= 1;
 			}
 		}
@@ -534,13 +534,13 @@ void settings() {
 		tmp1 = settingvalue;
 
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 4) { settingvalue = 0; famistudio_sfx_play(sfx_select, 0); }
-			else { settingvalue++; famistudio_sfx_play(sfx_select, 0);  }
+			if (settingvalue == 4) { settingvalue = 0; sfx_play(sfx_select, 0); }
+			else { settingvalue++; sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 4; famistudio_sfx_play(sfx_select, 0); }
-			else { settingvalue--; famistudio_sfx_play(sfx_select, 0);  }
+			if (settingvalue == 0) { settingvalue = 4; sfx_play(sfx_select, 0); }
+			else { settingvalue--; sfx_play(sfx_select, 0);  }
 		}
 
 		if (tmp1 != settingvalue) {
@@ -557,7 +557,7 @@ void settings() {
 				case 1:
 					sfxoff ^= 1; break;
 				case 2:
-					musicoff ^= 1; if (musicoff) { famistudio_music_stop(); music_update; } else { music_play(song_menu_theme); } break;
+					musicoff ^= 1; if (musicoff) { famistudio_music_stop(); music_update(); } else { music_play(song_menu_theme); } break;
 				case 3:
 					jumpsound ^= 1; break;
 				case 4:
@@ -598,7 +598,7 @@ void settings() {
 						sfxoff = 0;
 					//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
 					//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
-						famistudio_sfx_play(sfx_death, 0);
+						sfx_play(sfx_death, 0);
 						music_play(song_menu_theme);
 					//	one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));					
 					}
@@ -737,13 +737,13 @@ void state_menu() {
                 if (menuselection == 4) menuselection = 0;
                 else menuselection++;
                 tmp3--;
-				famistudio_sfx_play(sfx_select, 0);
+				sfx_play(sfx_select, 0);
             }
             if (pad_new[0] & PAD_LEFT) {
                 if (menuselection == 0) menuselection = 4;
                 else menuselection--;
                 tmp3++;
-				famistudio_sfx_play(sfx_select, 0);
+				sfx_play(sfx_select, 0);
             }
 
             if (tmp3) {    // menu selection incremented
