@@ -25,6 +25,9 @@ const unsigned char hiNTAddrTable[]={
 const unsigned char* const leveltexts[] = {
   level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext, levelDtext, levelEtext, levelFtext, level10text
 };
+const unsigned char* const leveltexts2[] = {
+  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2
+};
 
 #define GAME_MENU_TITLE_X_OFFSET 9
 const unsigned char level_text_padding[] = {
@@ -45,6 +48,24 @@ const unsigned char level_text_padding[] = {
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelFtext)) / 2),
 	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level10text)) / 2),
 };
+const unsigned char level_text_padding2[] = {
+    GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level1text2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level2text2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level3text2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level4text2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level5text2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level6text2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level7text2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level8text2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level9text2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelAtext2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelBtext2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelCtext2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelDtext2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelEtext2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelFtext2)) / 2),
+	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level10text2)) / 2),
+};
 const unsigned char level_text_size[] = {
     sizeof(level1text) - 1,
 	sizeof(level2text) - 1,
@@ -62,6 +83,24 @@ const unsigned char level_text_size[] = {
 	sizeof(levelEtext) - 1,
 	sizeof(levelFtext) - 1,
 	sizeof(level10text) - 1,
+};
+const unsigned char level_text_size2[] = {
+    sizeof(level1text2) - 1,
+	sizeof(level2text2) - 1,
+	sizeof(level3text2) - 1,
+	sizeof(level4text2) - 1,
+	sizeof(level5text2) - 1,
+	sizeof(level6text2) - 1,
+	sizeof(level7text2) - 1,
+	sizeof(level8text2) - 1,
+	sizeof(level9text2) - 1,
+	sizeof(levelAtext2) - 1,
+	sizeof(levelBtext2) - 1,
+	sizeof(levelCtext2) - 1,
+	sizeof(levelDtext2) - 1,
+	sizeof(levelEtext2) - 1,
+	sizeof(levelFtext2) - 1,
+	sizeof(level10text2) - 1,
 };
 
 const char* coin_counter[] = {
@@ -87,7 +126,11 @@ void __fastcall__ refreshmenu(void) {
 	// center this by offseting the write by the padding amount
 	multi_vram_buffer_horz((const char*)leveltexts[level],
 		level_text_size[level],
-		NTADR_A(level_text_padding[level], 11));
+		NTADR_A(level_text_padding[level], 10));
+
+	multi_vram_buffer_horz((const char*)leveltexts2[level],
+		level_text_size2[level],
+		NTADR_A(level_text_padding2[level], 11));
 
 	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9));
 	one_vram_buffer('z', NTADR_A(8, 9)); }
