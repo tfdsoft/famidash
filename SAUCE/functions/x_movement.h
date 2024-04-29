@@ -19,7 +19,7 @@ void x_movement(){
 		currplayer_vel_x = speed_table[speed & 0x7F];
 		// leave the col calls first so it executes and checks against spike collision
 		if (!bg_coll_R() && (pad[currplayer] & PAD_RIGHT)) currplayer_x += currplayer_vel_x;
-		if (!bg_coll_L() && pad[currplayer] & PAD_LEFT && currplayer_x > 0x0F00) currplayer_x -= currplayer_vel_x;
+		if (!bg_coll_L() && pad[currplayer] & PAD_LEFT && currplayer_x > 0x1000) currplayer_x -= currplayer_vel_x;
 	}
 
 	if(currplayer_x > 0xf000) { // too far, don't wrap around

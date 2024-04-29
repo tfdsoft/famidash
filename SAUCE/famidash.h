@@ -150,12 +150,13 @@ unsigned char coin3_obtained[LEVEL_COUNT];
 unsigned char LEVELCOMPLETE[LEVEL_COUNT];
 
 unsigned char invisible;
-unsigned char PRACTICE_ENABLED;
+unsigned char PRACTICE_ENABLED = 1;
 unsigned char twoplayer;
 unsigned char oneptwoplayer;
-unsigned char deathsound;
 unsigned char jumpsound;
 unsigned char platformer;
+unsigned char musicoff;
+unsigned char sfxoff;
 
 unsigned char practice_famistudio_state[0xbf];
 
@@ -172,6 +173,7 @@ unsigned char TOTALATTEMPTSHUNDREDS;
 unsigned char TOTALATTEMPTSTHOUSANDS;
 unsigned char TOTALCOINSTENS;
 unsigned char TOTALCOINSONES;
+
 
 unsigned short player_x[2];
 unsigned short player_y[2];

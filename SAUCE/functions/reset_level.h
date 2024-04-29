@@ -6,7 +6,7 @@ void reset_level(void) {
     coins = 0;
 
     if (!DEBUG_MODE && (cube_data[0] & 1 || cube_data[1] & 1)) {
-        if (deathsound) famistudio_sfx_play(sfx_death, 0);
+        famistudio_sfx_play(sfx_death, 0);
         tmp1 = 0;
 	attempts++;
         while (tmp1 < 30){
