@@ -42,9 +42,9 @@ void state_game(){
 
     while (1) {
 	    
-	    pal_col(0x13,color2);
-	    pal_col(0x11,color3);
-	    pal_col(0x12,color1);
+	    pal_col(0x1F,color2);
+	    pal_col(0x1D,color3);
+	    pal_col(0x1E,color1);
 		// {	// done in reset_level and after storing player 1
 		// 	currplayer_x = player_x[0];
 		// 	currplayer_y = player_y[0];
