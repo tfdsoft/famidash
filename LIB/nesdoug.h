@@ -44,7 +44,8 @@ unsigned char __fastcall__ check_collision(void * object1, void * object2);
 // the struct can be bigger than 4 bytes, as long as the first 4 bytes are X, Y, width, height
 
 
-void __fastcall__ pal_fade_to(unsigned char from, unsigned char to);
+void __fastcall__ _pal_fade_to(unsigned short from_to);
+#define pal_fade_to(from, to) _pal_fade_to((to<<8)|byte(from))
 // adapted from Shiru's "Chase" game code
 // values must be 0-8, 0 = all black, 8 = all white, 4 = normal
 

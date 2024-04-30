@@ -32,7 +32,7 @@ void __fastcall__ pal_spr(const char *data);
 
 //set a palette entry, index is 0..31
 
-void __fastcall__ pal_col(unsigned char index,unsigned char color);
+// void __fastcall__ pal_col(unsigned char index,unsigned char color);
 
 //reset palette to $0f
 

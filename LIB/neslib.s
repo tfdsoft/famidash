@@ -12,7 +12,7 @@
 
 
 
-	.export _pal_all,_pal_bg,_pal_spr,_pal_col,_pal_clear
+	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
 	.export _pal_bright,_pal_spr_bright,_pal_bg_bright
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
 	.export _oam_clear,_oam_size,_oam_spr,_oam_meta_spr,_oam_hide_rest
@@ -200,17 +200,27 @@ _pal_spr:
 
 ;void __fastcall__ pal_col(unsigned char index,unsigned char color);
 
-_pal_col:
+; _pal_col:
 
-	sta <PTR
-	jsr popa
-	and #$1f
-	tax
-	lda <PTR
-	sta PAL_BUF,x
-	inc <PAL_UPDATE
-	rts
+; 	sta <PTR
+; 	jsr popa
+; 	and #$1f
+; 	tax
+; 	lda <PTR
+; 	sta PAL_BUF,x
+; 	inc <PAL_UPDATE
+; 	rts
 
+; this is faster
+
+;void __fastcall__ _pal_col(unsigned short data);
+
+; __pal_col:
+; 	sta PAL_BUF,x
+; 	inc <PAL_UPDATE
+; 	rts
+
+; and then this is inlined
 
 
 ;void __fastcall__ pal_clear(void);
