@@ -1041,17 +1041,17 @@ const unsigned char Portal_Gamemode_Robot[]={
 };
 const unsigned char Portal_Gamemode_Spider[]={
 
-	  0,  0,0x81,7,
-	  0, 16,0x87,7,
-	  0, 32,0x81,7|OAM_FLIP_V,
-	  8,  0,0x83,7,
+	  0,  0,0xC1,1,
+	  0, 16,0xC7,1,
+	  0, 32,0xC1,1|OAM_FLIP_V,
+	  8,  0,0xC3,1,
 
-	  8, 16,0x89,7,
-	  8, 32,0x83,7|OAM_FLIP_V,
-	 16,  0,0x85,7,
-	 16, 16,0x8B,7,
+	  8, 16,0xC9,1,
+	  8, 32,0xC3,1|OAM_FLIP_V,
+	 16,  0,0xC5,1,
+	 16, 16,0xCB,1,
 
-	 16, 32,0x85,7|OAM_FLIP_V,
+	 16, 32,0xC5,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Wave[]={
