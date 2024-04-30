@@ -57,18 +57,10 @@ void state_game(){
         ppu_wait_nmi();
 
 	if (level == 0x0B) {
-		if (parallax_scroll_x & 1) {
-			mmc3_set_1kb_chr_bank_0(12 + 0);
-			mmc3_set_1kb_chr_bank_1(12 + 1);
-			mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-			mmc3_set_1kb_chr_bank_3(12 + 3);
-		}
-		else {
-			mmc3_set_1kb_chr_bank_0(20 + 0);
-			mmc3_set_1kb_chr_bank_1(20 + 1);
-			mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-			mmc3_set_1kb_chr_bank_3(20 + 3);
-		}
+		mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0 + 12);
+		mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1 + 12);
+		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3 + 12);
 	}
 	else {
 		mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0);

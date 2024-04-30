@@ -293,28 +293,13 @@ _famistudio_state = *
 .segment "GAMECHR"
 .export _GAME_CHR
 _GAME_CHR:
-	.incbin "GRAPHICS/famidash.chr" ; 8kb
-;    .incbin "GRAPHICS/bankmain.chr" ; 1kb
- ;   .incbin "GRAPHICS/bankgamemodes1.chr" ; 1kb
-  ;  .incbin "GRAPHICS/bankmain.chr" ; 1kb
-;    .incbin "GRAPHICS/bankgamemodes2.chr" ; 1kb
- ;   .incbin "GRAPHICS/bankmain.chr" ; 1kb
-  ;  .incbin "GRAPHICS/bankgamemodes3.chr" ; 1kb
-;    .incbin "GRAPHICS/bankmain.chr" ; 1kb
- ;   .incbin "GRAPHICS/bankgamemodes4.chr" ; 1kb
-  ;  .incbin "GRAPHICS/bankmain.chr" ;1kb
-;    .incbin "GRAPHICS/bankmini.chr" ; 1kb
- ;   .incbin "GRAPHICS/bankmain.chr" ; 1kb
-  ;  .incbin "GRAPHICS/bankmini2.chr" ; 1kb
-;    .incbin "GRAPHICS/bankportals.chr" ; 1kb
- ;   .incbin "GRAPHICS/bankblank.chr" ; 1kb
-
-    .incbin "GRAPHICS/famidash-parallax.chr" ; 4kb
-    .incbin "GRAPHICS/famidash2.chr" ; 8kb
-    .incbin "GRAPHICS/famidash-parallax2.chr" ; 4kb
-    .incbin "GRAPHICS/menus.chr"    ; 4kb
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb
+    .incbin "GRAPHICS/famidash.chr" ; 8kb		//default (0)
+    .incbin "GRAPHICS/famidash-parallax.chr" ; 4kb	//default (8)
+    .incbin "GRAPHICS/famidash2.chr" ; 8kb		//theory of everything (12)
+    .incbin "GRAPHICS/famidash-parallax2.chr" ; 4kb	//theory of everything (20)
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (24)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (28)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (32)
 .segment "PARALLAXCHR"
 .export _PARALLAX_CHR
 _PARALLAX_CHR:
