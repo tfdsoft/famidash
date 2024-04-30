@@ -101,7 +101,7 @@ void setdefaultoptions() {
 		SRAM_VALIDATE[0] = 0x0d;
 		SRAM_VALIDATE[1] = 0x0a;
 		SRAM_VALIDATE[2] = 0x01;
-		SRAM_VALIDATE[3] = 0x03;
+		SRAM_VALIDATE[3] = 0x04;
 		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
 			coin1_obtained[tmp2] = 0;
 			coin2_obtained[tmp2] = 0;
@@ -109,7 +109,7 @@ void setdefaultoptions() {
 		}
 
 		tmp2 = 0;
-		while (tmp2 < 20) {
+		while (tmp2 <= LEVEL_COUNT) {
 			LEVELCOMPLETE[tmp2] = 0;
 			tmp2++;
 		}
@@ -136,6 +136,8 @@ void setdefaultoptions() {
 		jumpsound = 0;
 		twoplayer = 0;
 		oneptwoplayer = 0;
+		platformer = 0;
+		invisible = 0;
 		color1 = 0x2A;
 		color2 = 0X21;		
 		color3 = 0x0F;

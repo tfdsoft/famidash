@@ -142,7 +142,7 @@ unsigned char * level_data;
 #pragma bss-name(push, "SRAM")
 unsigned char SRAM_VALIDATE[4];
 
-#define LEVEL_COUNT 0x0F
+#define LEVEL_COUNT 0x10
 unsigned char coin1_obtained[LEVEL_COUNT];
 unsigned char coin2_obtained[LEVEL_COUNT];
 unsigned char coin3_obtained[LEVEL_COUNT];

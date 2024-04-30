@@ -209,19 +209,19 @@ void sprite_collide_lookup(){
 	}
     }
     else if (tmp4 == COIN1 || tmp4 == COINGOTTEN1) {					//COIN
-	    coins = coins | COIN_1;
+	    coins |= COIN_1;
 //	    sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }
 
     else if (tmp4 == COIN2 || tmp4 == COINGOTTEN2) {					//COIN
-	    coins = coins | COIN_2;
+	    coins |= COIN_2;
 //	    sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }
 
     else if (tmp4 == COIN3 || tmp4 == COINGOTTEN3) {					//COIN
-	    coins = coins | COIN_3;
+	    coins |= COIN_3;
 //	    sfx_play(sfx_click, 0);			//test sfx
 	activesprites_type[index] = 0xFF;		//make COIN disappear here
     }

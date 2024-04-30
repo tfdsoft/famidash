@@ -269,7 +269,7 @@ void levelselection() {
 		if (pad_new[0] & (PAD_RIGHT)){
 			++level;
 			sfx_play(sfx_select, 0);
-			if (level > 0x0F){
+			if (level >= LEVEL_COUNT){
 				level = 0x00;
 			}
 			refreshmenu();
@@ -279,7 +279,7 @@ void levelselection() {
 			--level;
 			sfx_play(sfx_select, 0); 
 			if (level == 0xFF){
-				level = 0x0F;
+				level = LEVEL_COUNT-1;
 			}
 			
 			//break;
@@ -697,7 +697,7 @@ void state_menu() {
 	if (SRAM_VALIDATE[0] != 0x0D
 	 || SRAM_VALIDATE[1] != 0x0A
 	 || SRAM_VALIDATE[2] != 0x01
-	 || SRAM_VALIDATE[3] != 0x03) {
+	 || SRAM_VALIDATE[3] != 0x04) {
 		// set the validation header and then reset coin counts
 	setdefaultoptions();
 
