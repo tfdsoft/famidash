@@ -67,7 +67,7 @@ void main(){
 
 		switch (gameState){
 			case 0x01: {
-				mmc3_set_prg_bank_1(0);
+				mmc3_set_prg_bank_1(GET_BANK(state_menu));
 				menuselection = 0;
 				state_menu(); 
 				break;
@@ -96,3 +96,48 @@ void main(){
 // I like making my code super readable by outsiders, and I
 // felt like this was the best way to do it.
 // ============================================================
+
+void setdefaultoptions() {
+		SRAM_VALIDATE[0] = 0x0d;
+		SRAM_VALIDATE[1] = 0x0a;
+		SRAM_VALIDATE[2] = 0x01;
+		SRAM_VALIDATE[3] = 0x02;
+		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+			coin1_obtained[tmp2] = 0;
+			coin2_obtained[tmp2] = 0;
+			coin3_obtained[tmp2] = 0;
+		}
+
+		tmp2 = 0;
+		while (tmp2 < 20) {
+			LEVELCOMPLETE[tmp2] = 0;
+			tmp2++;
+		}
+		SRAM_VALIDATE[0x0E] = 0;
+		SRAM_VALIDATE[0x0F] = 0;
+		SRAM_VALIDATE[0x10] = 0;
+		SRAM_VALIDATE[0x11] = 0;
+		SRAM_VALIDATE[0x12] = 0;
+		SRAM_VALIDATE[0x13] = 0;
+		SRAM_VALIDATE[0x14] = 0;
+		SRAM_VALIDATE[0x15] = 0;
+		SRAM_VALIDATE[0x16] = 0;
+		SRAM_VALIDATE[0x17] = 0;
+		SRAM_VALIDATE[0x18] = 0;
+		SRAM_VALIDATE[0x19] = 0;
+		SRAM_VALIDATE[0x1A] = 0;
+		SRAM_VALIDATE[0x1B] = 0;
+		SRAM_VALIDATE[0x1C] = 0;
+		SRAM_VALIDATE[0x1D] = 0;
+		SRAM_VALIDATE[0x1E] = 0;
+		SRAM_VALIDATE[0x1F] = 0;
+		musicoff = 0;
+		sfxoff = 0;
+		jumpsound = 0;
+		twoplayer = 0;
+		oneptwoplayer = 0;
+		color1 = 0x2A;
+		color2 = 0X21;		
+		color3 = 0x0F;
+		return;
+}

@@ -41,6 +41,10 @@ void state_game(){
 	kandoframecnt = 0;
 
     while (1) {
+	    
+	    pal_col(0x13,color2);
+	    pal_col(0x11,color3);
+	    pal_col(0x12,color1);
 		// {	// done in reset_level and after storing player 1
 		// 	currplayer_x = player_x[0];
 		// 	currplayer_y = player_y[0];
@@ -258,3 +262,4 @@ void state_game(){
         if (gameState != 0x02) return;
     }
 }
+

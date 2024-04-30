@@ -73,8 +73,8 @@
 #pragma charmap (0x65, 0xFE) // e 		//black space
 #pragma charmap (0x66, 0x0F) // f		//not enabled
 #pragma charmap (0x67, 0x8F) // g		//enabled
-#pragma charmap (0x68, 0xD8) // h
-#pragma charmap (0x69, 0xD9) // i
+#pragma charmap (0x68, 0x5F) // h           //customize arrow
+#pragma charmap (0x69, 0x6F) // i           //customize arrow
 #pragma charmap (0x6A, 0xDA) // j
 #pragma charmap (0x6B, 0xDB) // k
 #pragma charmap (0x6C, 0xDC) // l

@@ -293,17 +293,17 @@ void levelselection() {
 
 
 void bgmtest() {
-	famistudio_music_stop();
-	music_update();
-	kandotemp=0;
-	pal_fade_to(4,0);
-	ppu_off();
-	pal_bg((char *)paletteMenu);
-	vram_adr(NAMETABLE_A);
-	vram_unrle(bgmtestscreen);   	
-	#include "../defines/mainmenu_charmap.h"
-	ppu_on_all();
-	pal_fade_to(0,4);
+//	famistudio_music_stop();
+//	music_update();
+//	kandotemp=0;
+//	pal_fade_to(4,0);
+//	ppu_off();
+//	pal_bg((char *)paletteMenu);
+//	vram_adr(NAMETABLE_A);
+//	vram_unrle(bgmtestscreen);   	
+//	#include "../defines/mainmenu_charmap.h"
+//	ppu_on_all();
+//	pal_fade_to(0,4);
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
@@ -320,7 +320,7 @@ void bgmtest() {
 		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
 		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
 		if (pad_new[0] & PAD_B) {
-			tmp3--;			
+//			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
 			return;
@@ -367,6 +367,11 @@ void customize_screen() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
+
+		pal_col(0x0a,color1);
+		pal_col(0x0b,color2);
+		pal_col(0x09,color3);
+
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
@@ -375,6 +380,47 @@ void customize_screen() {
 
 		if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
 		one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
+
+
+	if (settingvalue == 0) {
+		one_vram_buffer('h', NTADR_A(5, 14));		
+		one_vram_buffer('i', NTADR_A(5, 15));		
+		one_vram_buffer(' ', NTADR_A(14, 14));		
+		one_vram_buffer(' ', NTADR_A(14, 15));		
+		one_vram_buffer(' ', NTADR_A(23, 14));		
+		one_vram_buffer(' ', NTADR_A(23, 15));		
+		if (pad_new[0] & PAD_UP) { color1++; if (color1 > 0x3F) color1 = 0; }
+		if (pad_new[0] & PAD_DOWN) { if (color1 == 0) {color1 = 0x31;} else color1--; }
+	}
+	else if (settingvalue == 1) {
+		one_vram_buffer(' ', NTADR_A(5, 14));		
+		one_vram_buffer(' ', NTADR_A(5, 15));		
+		one_vram_buffer('h', NTADR_A(14, 14));		
+		one_vram_buffer('i', NTADR_A(14, 15));		
+		one_vram_buffer(' ', NTADR_A(23, 14));		
+		one_vram_buffer(' ', NTADR_A(23, 15));		
+		if (pad_new[0] & PAD_UP) { color2++; if (color2 > 0x3F) color2 = 0; }
+		if (pad_new[0] & PAD_DOWN) { if (color2 == 0) {color2 = 0x31;} else color2--; }
+	}
+	else if (settingvalue == 2) {
+		one_vram_buffer(' ', NTADR_A(5, 14));		
+		one_vram_buffer(' ', NTADR_A(5, 15));		
+		one_vram_buffer(' ', NTADR_A(14, 14));		
+		one_vram_buffer(' ', NTADR_A(14, 15));		
+		one_vram_buffer('h', NTADR_A(23, 14));		
+		one_vram_buffer('i', NTADR_A(23, 15));		
+		if (pad_new[0] & PAD_UP) { color3++; if (color3 > 0x3F) color3 = 0; }
+		if (pad_new[0] & PAD_DOWN) { if (color3 == 0) {color3 = 0x31;} else color3--; }
+	}
+
+	if (pad_new[0] & PAD_RIGHT) {
+		settingvalue++;
+		if (settingvalue == 3) settingvalue = 0;
+	}
+	if (pad_new[0] & PAD_LEFT) {
+		if (settingvalue == 0) settingvalue = 2;
+		else settingvalue--;
+	}
 
 		if (pad_new[0] & PAD_B || pad_new[0] & PAD_START) {
 			tmp3--;			
@@ -562,40 +608,7 @@ void settings() {
 					jumpsound ^= 1; break;
 				case 4:
 					if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
-						for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-							coin1_obtained[tmp2] = 0;
-							coin2_obtained[tmp2] = 0;
-							coin3_obtained[tmp2] = 0;
-						}
-								
-						tmp2 = 0;
-						while (tmp2 < 0x20) {
-							LEVELCOMPLETE[tmp2] = 0;
-							tmp2++;
-						}
-					
-						SRAM_VALIDATE[0x0E] = 0;
-						SRAM_VALIDATE[0x0F] = 0;
-						SRAM_VALIDATE[0x10] = 0;
-						SRAM_VALIDATE[0x11] = 0;
-						SRAM_VALIDATE[0x12] = 0;
-						SRAM_VALIDATE[0x13] = 0;
-						SRAM_VALIDATE[0x14] = 0;
-						SRAM_VALIDATE[0x15] = 0;
-						SRAM_VALIDATE[0x16] = 0;
-						SRAM_VALIDATE[0x17] = 0;
-						SRAM_VALIDATE[0x18] = 0;
-						SRAM_VALIDATE[0x19] = 0;
-						SRAM_VALIDATE[0x1A] = 0;
-						SRAM_VALIDATE[0x1B] = 0;
-						SRAM_VALIDATE[0x1C] = 0;
-						SRAM_VALIDATE[0x1D] = 0;
-						SRAM_VALIDATE[0x1E] = 0;
-						SRAM_VALIDATE[0x1F] = 0;
-						TOTALCOINSONES = 0;
-						TOTALCOINSTENS = 0;
-						musicoff = 0;
-						sfxoff = 0;
+					setdefaultoptions();
 					//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
 					//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
 						sfx_play(sfx_death, 0);
@@ -630,7 +643,7 @@ void state_menu() {
 	set_scroll_x(0);
     set_scroll_y(0);
 
-	mmc3_set_prg_bank_1(0);
+	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
 	switch (kandotemp){
 		case 0x00:	music_play(song_menu_theme); break;
@@ -651,44 +664,8 @@ void state_menu() {
 	 || SRAM_VALIDATE[2] != 0x01
 	 || SRAM_VALIDATE[3] != 0x02) {
 		// set the validation header and then reset coin counts
-		SRAM_VALIDATE[0] = 0x0d;
-		SRAM_VALIDATE[1] = 0x0a;
-		SRAM_VALIDATE[2] = 0x01;
-		SRAM_VALIDATE[3] = 0x02;
-		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-			coin1_obtained[tmp2] = 0;
-			coin2_obtained[tmp2] = 0;
-			coin3_obtained[tmp2] = 0;
-		}
+	setdefaultoptions();
 
-		tmp2 = 0;
-		while (tmp2 < 20) {
-			LEVELCOMPLETE[tmp2] = 0;
-			tmp2++;
-		}
-		SRAM_VALIDATE[0x0E] = 0;
-		SRAM_VALIDATE[0x0F] = 0;
-		SRAM_VALIDATE[0x10] = 0;
-		SRAM_VALIDATE[0x11] = 0;
-		SRAM_VALIDATE[0x12] = 0;
-		SRAM_VALIDATE[0x13] = 0;
-		SRAM_VALIDATE[0x14] = 0;
-		SRAM_VALIDATE[0x15] = 0;
-		SRAM_VALIDATE[0x16] = 0;
-		SRAM_VALIDATE[0x17] = 0;
-		SRAM_VALIDATE[0x18] = 0;
-		SRAM_VALIDATE[0x19] = 0;
-		SRAM_VALIDATE[0x1A] = 0;
-		SRAM_VALIDATE[0x1B] = 0;
-		SRAM_VALIDATE[0x1C] = 0;
-		SRAM_VALIDATE[0x1D] = 0;
-		SRAM_VALIDATE[0x1E] = 0;
-		SRAM_VALIDATE[0x1F] = 0;
-		musicoff = 0;
-		sfxoff = 0;
-		jumpsound = 0;
-		twoplayer = 0;
-		oneptwoplayer = 0;
 	}
 
 	kandotemp = 1;

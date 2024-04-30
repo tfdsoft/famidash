@@ -6,6 +6,7 @@ const unsigned char wtxt[]="w";
 const unsigned char htxt[]="x";
 const unsigned char atxt[]="y";
 const unsigned char rtxt[]="z";
+void setdefaultoptions();
 /* 
 	Reset run-length decoder back to zero
 	Implemented in asm

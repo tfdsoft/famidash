@@ -158,6 +158,11 @@ unsigned char platformer;
 unsigned char musicoff;
 unsigned char sfxoff;
 
+unsigned char color1;
+unsigned char color2;
+unsigned char color3;
+
+
 unsigned char practice_famistudio_state[0xbf];
 
 #pragma bss-name(pop)
@@ -249,7 +254,6 @@ signed char activesprites_anim_frame_count[max_loaded_sprites];
 unsigned char activesprites_realx[max_loaded_sprites];
 unsigned char activesprites_realy[max_loaded_sprites];
 unsigned char activesprites_active[max_loaded_sprites];
-
 
 
 
