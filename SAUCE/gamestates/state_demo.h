@@ -9,7 +9,7 @@ void state_demo(){
 //    vram_unrle(dem_funnies);
     // __asm__("PLA \n JSR %v ", mmc3_set_prg_bank_1);
 
-	mmc3_set_8kb_chr(12);
+	mmc3_set_8kb_chr(24);
 
 	oam_clear();
 	ppu_on_all();

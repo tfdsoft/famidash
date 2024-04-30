@@ -310,6 +310,8 @@ _GAME_CHR:
  ;   .incbin "GRAPHICS/bankblank.chr" ; 1kb
 
     .incbin "GRAPHICS/famidash-parallax.chr" ; 4kb
+    .incbin "GRAPHICS/famidash2.chr" ; 8kb
+    .incbin "GRAPHICS/famidash-parallax2.chr" ; 4kb
     .incbin "GRAPHICS/menus.chr"    ; 4kb
     .incbin "GRAPHICS/menuicons.chr"    ; 4kb
     .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb
