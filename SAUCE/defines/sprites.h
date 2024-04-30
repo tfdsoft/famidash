@@ -924,14 +924,16 @@ const unsigned char Speed_30_Portal[]={
 };
 
 const unsigned char Speed_40_Portal[]={
-	  0,  0,0xD9,2,
-	  8,  0,0xDB,2,
-	  16,  0,0xDD,2,
-	  24,  0,0xDF,2,
-	  0,  16,0xD9,2|OAM_FLIP_V,
-	  8,  16,0xDB,2|OAM_FLIP_V,
-	  16,  16,0xDD,2|OAM_FLIP_V,
-	  24,  16,0xDF,2|OAM_FLIP_V,
+	  0,  0,0xB9,2,
+	  8,  0,0xBB,2,
+	  16,  0,0xBD,2,
+	  24,  0,0xBD,2,
+	  32,  0,0xBF,2,
+	  0,  16,0xB9,2|OAM_FLIP_V,
+	  8,  16,0xBB,2|OAM_FLIP_V,
+	  16,  16,0xBD,2|OAM_FLIP_V,
+	  24,  16,0xBD,2|OAM_FLIP_V,
+	  32,  16,0xBF,2|OAM_FLIP_V,
 	0x80
 };
 
@@ -1216,7 +1218,7 @@ const unsigned char Blue_Jump_Orb[]={
 };
 const unsigned char Pink_Jump_Orb[]={
 
-	  4,  0,0xB5,7,
+	  4,  0,0xB3,1,
 	0x80
 };
 
@@ -1271,51 +1273,51 @@ const unsigned char Yellow_Jump_Pad_U4[]={
 };
 const unsigned char Pink_Jump_Pad[]={
 
-	  0,-8,0x99,3,
-	  8,-8,0x9B,3|OAM_FLIP_H,
+	  0,-8,0xD9,1,
+	  8,-8,0xDB,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Pink_Jump_Pad2[]={
 
-	  0,-8,0x9B,3,
-	  8,-8,0x9D,3|OAM_FLIP_H,
+	  0,-8,0xDB,1,
+	  8,-8,0xDD,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Pink_Jump_Pad3[]={
 
-	  0,-8,0x9D,3,
-	  8,-8,0x9F,3|OAM_FLIP_H,
+	  0,-8,0xDD,1,
+	  8,-8,0xDF,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Pink_Jump_Pad4[]={
 
-	  0,-8,0x9F,3,
-	  8,-8,0x99,3|OAM_FLIP_H,
+	  0,-8,0xDF,1,
+	  8,-8,0xD9,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Pink_Jump_Pad_U[]={
 
-	  0,-0,0x99,3|OAM_FLIP_V,
-	  8,-0,0x9B,3|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0xD9,1|OAM_FLIP_V,
+	  8,-0,0xDB,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Pink_Jump_Pad_U2[]={
 
-	  0,-0,0x9B,3|OAM_FLIP_V,
-	  8,-0,0x9D,3|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0xDB,1|OAM_FLIP_V,
+	  8,-0,0xDD,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Pink_Jump_Pad_U3[]={
 
-	  0,-0,0x9D,3|OAM_FLIP_V,
-	  8,-0,0x9F,3|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0xDD,1|OAM_FLIP_V,
+	  8,-0,0xDF,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Pink_Jump_Pad_U4[]={
 
-	  0,-0,0x9F,3|OAM_FLIP_V,
-	  8,-0,0x99,3|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0xDF,1|OAM_FLIP_V,
+	  8,-0,0xD9,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
