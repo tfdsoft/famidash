@@ -26,9 +26,9 @@ void reset_level(void) {
     set_scroll_y(scroll_y);
     init_rld(level);
 
-    player_x[0] = 0x0000;
-    player_x[1] = 0x0000;
-    currplayer_x = 0x0000;
+    if (!platformer) {player_x[0] = 0x0000;    player_x[1] = 0x0000; currplayer_x = 0x0000;}
+    else {player_x[0] = 0x1110;    player_x[1] = 0x1110; currplayer_x = 0x1110;}
+    
     player_y[0] = 0xb000;
     player_y[1] = 0xb000;
     currplayer_y = 0xb000;
