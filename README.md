@@ -14,7 +14,7 @@ Fork it, change it, push it, open a PR, get it merged (or not).
 - https://twitter.com/TeamFamidash
 - https://discord.gg/PCbwQaZs8K
 
-## Credits
+## Credits (Core contributors only)
 |contributor|role (in no particular order)|
 |---|---|
 |[kandowontu](https://github.com/kandowontu)|Project torch carrier, lead developer, maintainer|
@@ -25,6 +25,6 @@ Fork it, change it, push it, open a PR, get it merged (or not).
 |[Zenith](https://github.com/ZenithNeko)|Music, graphics|
 |[jaezu](https://github.com/jaezudev)|Maintainer|
 |[Zephyrside](https://github.com/zephyrside)|Original lead developer, project creator, coding, music, graphics|
-|[LNLenost](https://github.com/LNLenost)|Tester|
+|Aquamarine|Music
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
