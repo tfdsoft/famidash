@@ -1,4 +1,5 @@
 extern unsigned char scroll_count;
+extern unsigned char* PARALLAX_CHR;
 
 void reset_level(void) {
     // unsigned char i;
@@ -16,6 +17,7 @@ void reset_level(void) {
             //gray_line();
         }
     }
+    mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));    
     pal_fade_to(4,0);
     oam_clear();
     ppu_off(); // reset the level when you get to this point, and change this later
