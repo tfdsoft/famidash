@@ -309,20 +309,20 @@ void bgmtest() {
 		music_update();
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
-		if (settingvalue == 0) {
-			one_vram_buffer('c', NTADR_A(11, 7));
-			one_vram_buffer(' ', NTADR_A(11, 14));
-		}		
-		else if (settingvalue == 1) {
-			one_vram_buffer(' ', NTADR_A(11, 7));
-			one_vram_buffer('c', NTADR_A(11, 14));
-		}
-		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
-		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
+//		if (settingvalue == 0) {
+//			one_vram_buffer('c', NTADR_A(11, 7));
+//			one_vram_buffer(' ', NTADR_A(11, 14));
+//		}		
+//		else if (settingvalue == 1) {
+//			one_vram_buffer(' ', NTADR_A(11, 7));
+//			one_vram_buffer('c', NTADR_A(11, 14));
+//		}
+//		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
+//		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
 		if (pad_new[0] & PAD_B) {
 //			tmp3--;			
-			one_vram_buffer(' ', NTADR_A(11, 7));
-			one_vram_buffer(' ', NTADR_A(11, 14));
+//			one_vram_buffer(' ', NTADR_A(11, 7));
+//			one_vram_buffer(' ', NTADR_A(11, 14));
 			return;
 		}
 	}
@@ -389,8 +389,19 @@ void customize_screen() {
 		one_vram_buffer(' ', NTADR_A(14, 15));		
 		one_vram_buffer(' ', NTADR_A(23, 14));		
 		one_vram_buffer(' ', NTADR_A(23, 15));		
-		if (pad_new[0] & PAD_UP) { color1++; if (color1 > 0x3F) color1 = 0; }
-		if (pad_new[0] & PAD_DOWN) { if (color1 == 0) {color1 = 0x31;} else color1--; }
+		if (pad_new[0] & PAD_UP) { color1++; 
+			if (color1 == 0x0D || color1 == 0x0E ) color1 = 0x0F;
+			if (color1 == 0x1D || color1 == 0x1E || color1 == 0x1F ) color1 = 0x20;
+			if (color1 == 0x2E || color1 == 0x2F ) color1 = 0x30;
+			if (color1 == 0x3E || color1 == 0x3F ) color1 = 0x00;
+		}		
+		if (pad_new[0] & PAD_DOWN) { 
+			if (color1 == 0) {color1 = 0x3D;} 
+			color1--;
+			if (color1 == 0x0D || color1 == 0x0E ) color1 = 0x0C;
+			if (color1 == 0x1D || color1 == 0x1E || color1 == 0x1F ) color1 = 0x1C;
+			if (color1 == 0x2E || color1 == 0x2F ) color1 = 0x2C;
+		}
 	}
 	else if (settingvalue == 1) {
 		one_vram_buffer(' ', NTADR_A(5, 14));		
@@ -399,8 +410,19 @@ void customize_screen() {
 		one_vram_buffer('i', NTADR_A(14, 15));		
 		one_vram_buffer(' ', NTADR_A(23, 14));		
 		one_vram_buffer(' ', NTADR_A(23, 15));		
-		if (pad_new[0] & PAD_UP) { color2++; if (color2 > 0x3F) color2 = 0; }
-		if (pad_new[0] & PAD_DOWN) { if (color2 == 0) {color2 = 0x31;} else color2--; }
+		if (pad_new[0] & PAD_UP) { color2++; 
+			if (color2 == 0x0D || color2 == 0x0E ) color2 = 0x0F;
+			if (color2 == 0x1D || color2 == 0x1E || color2 == 0x1F ) color2 = 0x20;
+			if (color2 == 0x2E || color2 == 0x2F ) color2 = 0x30;
+			if (color2 == 0x3E || color2 == 0x3F ) color2 = 0x00;
+		}		
+		if (pad_new[0] & PAD_DOWN) { 
+			if (color2 == 0) {color2 = 0x3D;} 
+			color2--;
+			if (color2 == 0x0D || color2 == 0x0E ) color2 = 0x0C;
+			if (color2 == 0x1D || color2 == 0x1E || color2 == 0x1F ) color2 = 0x1C;
+			if (color2 == 0x2E || color2 == 0x2F ) color2 = 0x2C;
+		}
 	}
 	else if (settingvalue == 2) {
 		one_vram_buffer(' ', NTADR_A(5, 14));		
@@ -409,8 +431,19 @@ void customize_screen() {
 		one_vram_buffer(' ', NTADR_A(14, 15));		
 		one_vram_buffer('h', NTADR_A(23, 14));		
 		one_vram_buffer('i', NTADR_A(23, 15));		
-		if (pad_new[0] & PAD_UP) { color3++; if (color3 > 0x3F) color3 = 0; }
-		if (pad_new[0] & PAD_DOWN) { if (color3 == 0) {color3 = 0x31;} else color3--; }
+		if (pad_new[0] & PAD_UP) { color3++; 
+			if (color3 == 0x0D || color3 == 0x0E ) color3 = 0x0F;
+			if (color3 == 0x1D || color3 == 0x1E || color3 == 0x1F ) color3 = 0x20;
+			if (color3 == 0x2E || color3 == 0x2F ) color3 = 0x30;
+			if (color3 == 0x3E || color3 == 0x3F ) color3 = 0x00;
+		}		
+		if (pad_new[0] & PAD_DOWN) { 
+			if (color3 == 0) {color3 = 0x3D;} 
+			color3--;
+			if (color3 == 0x0D || color3 == 0x0E ) color3 = 0x0C;
+			if (color3 == 0x1D || color3 == 0x1E || color3 == 0x1F ) color3 = 0x1C;
+			if (color3 == 0x2E || color3 == 0x2F ) color3 = 0x2C;
+		}
 	}
 
 	if (pad_new[0] & PAD_RIGHT) {
