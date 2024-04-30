@@ -337,7 +337,7 @@ void customize_screen() {
 	pal_fade_to(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
-	mmc3_set_8kb_chr(20);
+	mmc3_set_8kb_chr(16);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
 	#include "../defines/mainmenu_charmap.h"
