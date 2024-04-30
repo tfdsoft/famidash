@@ -101,7 +101,7 @@ void setdefaultoptions() {
 		SRAM_VALIDATE[0] = 0x0d;
 		SRAM_VALIDATE[1] = 0x0a;
 		SRAM_VALIDATE[2] = 0x01;
-		SRAM_VALIDATE[3] = 0x02;
+		SRAM_VALIDATE[3] = 0x03;
 		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
 			coin1_obtained[tmp2] = 0;
 			coin2_obtained[tmp2] = 0;

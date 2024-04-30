@@ -662,7 +662,7 @@ void state_menu() {
 	if (SRAM_VALIDATE[0] != 0x0D
 	 || SRAM_VALIDATE[1] != 0x0A
 	 || SRAM_VALIDATE[2] != 0x01
-	 || SRAM_VALIDATE[3] != 0x02) {
+	 || SRAM_VALIDATE[3] != 0x03) {
 		// set the validation header and then reset coin counts
 	setdefaultoptions();
 
