@@ -3,7 +3,7 @@
 
 const unsigned char Practice_Diamond[]={
 
-	  0,  0,0xB7,3,
+	  0,  0,0x57,0,
 	0x80
 };
 
@@ -288,13 +288,13 @@ const unsigned char * const MINI_UFO2[] = {MINI_UFO2_0, MINI_UFO2_U, MINI_UFO2_D
 const unsigned char Cube_0[]={
 
 	  0,  0,0x01,3,
-	  8,  0,0x01,3|OAM_FLIP_H,
+	  8,  0,0x03,3,
 	0x80
 };
 const unsigned char Cube_1[]={
 
-	  0,  0,0x03,3,
-	  8,  0,0x03,3|OAM_FLIP_H|OAM_FLIP_V,
+	  0,  0,0x05,3,
+	  8,  0,0x07,3,
 	0x80
 };
 const unsigned char Cube_2[]={
@@ -535,52 +535,52 @@ const unsigned char * const MINI_SHIP2[] = {Mini_Ship2_0, Mini_Ship2_0, Mini_Shi
 
 const unsigned char COIN_SPRITE[]={
 
-	  0,  0,0xAB,1,
-	  8,  0,0xAB,1|OAM_FLIP_H,
+	  0,  0,0xAD,1,
+	  8,  0,0xAD,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_1_SPRITE[]={
 
-	  0,  0,0xAD,1,
-	  8,  0,0xAF,1,
+	  0,  0,0xAF,1,
+	  8,  0,0xB1,1,
 	0x80
 };
 const unsigned char COIN_2_SPRITE[]={
 
-	  0,  0,0xB1,1,
-	  8,  0,0xB1,1|OAM_FLIP_H,
+	  0,  0,0xB3,1,
+	  8,  0,0xB3,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_3_SPRITE[]={
 
-	  0,  0,0xAF,1|OAM_FLIP_H,
-	  8,  0,0xAD,1|OAM_FLIP_H,
+	  0,  0,0xB1,1|OAM_FLIP_H,
+	  8,  0,0xAF,1|OAM_FLIP_H,
 	0x80
 };
 
 
 const unsigned char COIN_SPRITE_X[]={
 
-	  0,  0,0xAB,3,
-	  8,  0,0xAB,3|OAM_FLIP_H,
+	  0,  0,0xB9,1,
+	  8,  0,0xB9,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_1_X[]={
 
-	  0,  0,0xAD,3,
-	  8,  0,0xAF,3,
+	  0,  0,0xBB,1,
+	  8,  0,0xBD,1,
 	0x80
 };
 const unsigned char COIN_2_X[]={
 
-	  0,  0,0xB1,3,
-	  8,  0,0xB1,3|OAM_FLIP_H,
+	  0,  0,0xBF,1,
+	  8,  0,0xBF,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_3_X[]={
 
-	  0,  0,0xAF,3|OAM_FLIP_H,
-	  8,  0,0xAD,3|OAM_FLIP_H,
+	  0,  0,0xBD,1|OAM_FLIP_H,
+	  8,  0,0xBB,1|OAM_FLIP_H,
 	0x80
 };
 
@@ -620,13 +620,21 @@ const unsigned char * const BALL2[]={Ball2_0, Ball2_0, Ball2_0, Ball2_0, Ball2_1
 
 const unsigned char Robot_0[]={
 	
-	0,   0, 0x3B,3,
-	8,   0, 0x3D,3,
-	16,   0, 0x3F,3,
+	0,   0, 0x21,3,
+	8,   0, 0x23,3,
+	16,   0, 0x25,3,
 	0x80
 };
 
-const unsigned char Robot_1[]={
+const unsigned char Robot_1[]={//Also jumping frame - Ficus
+	
+	0,   0, 0xFF,3,//UNUSED - Ficus
+	8,   0, 0x27,3,
+	16,   0, 0x29,3,
+	0x80
+};
+
+const unsigned char Robot_2[]={
 	
 	0,   0, 0x2B,3,
 	8,   0, 0x2D,3,
@@ -634,19 +642,11 @@ const unsigned char Robot_1[]={
 	0x80
 };
 
-const unsigned char Robot_2[]={
+const unsigned char Robot_Jump_1[]={//Did 4th walk frame here - Ficus
 	
-	0,   0, 0x35,3,
-	8,   0, 0x37,3,
-	16,   0, 0x39,3,
-	0x80
-};
-
-const unsigned char Robot_Jump_1[]={
-	
-	4,   0, 0x43,3|OAM_FLIP_V,
-	8,   0, 0x31,3,
-	16,   0, 0x33,3,
+	0,   0, 0x31,3,//No longer a jet, but the leftmost part of the sprite - Ficus
+	8,   0, 0x33,3,
+	16,   0, 0x35,3,
 	0x80
 };
 
@@ -685,13 +685,21 @@ const unsigned char * const MINI_ROBOT_JUMP[]={Mini_Robot_Jump_1, Mini_Robot_Jum
 
 const unsigned char Robot2_0[]={
 	
-	0,   0, 0x3B,1,
-	8,   0, 0x3D,1,
-	16,   0, 0x3F,1,
+	0,   0, 0x21,1,
+	8,   0, 0x23,1,
+	16,   0, 0x25,1,
 	0x80
 };
 
 const unsigned char Robot2_1[]={
+	
+	0,   0, 0xff,1,
+	8,   0, 0x27,1,
+	16,   0, 0x29,1,
+	0x80
+};
+
+const unsigned char Robot2_2[]={
 	
 	0,   0, 0x2B,1,
 	8,   0, 0x2D,1,
@@ -699,19 +707,11 @@ const unsigned char Robot2_1[]={
 	0x80
 };
 
-const unsigned char Robot2_2[]={
-	
-	0,   0, 0x35,1,
-	8,   0, 0x37,1,
-	16,   0, 0x39,1,
-	0x80
-};
-
 const unsigned char Robot_Jump2_1[]={
 	
-	4,   0, 0x43,1|OAM_FLIP_V,
-	8,   0, 0x31,1,
-	16,   0, 0x33,1,
+	4,   0, 0x31,1|OAM_FLIP_V,
+	8,   0, 0x33,1,
+	16,   0, 0x35,1,
 	0x80
 };
 
@@ -888,314 +888,314 @@ const unsigned char * const MINI_SPIDER_JUMP2[]={Mini_Spider2_3};
 
 
 const unsigned char Speed_05_Portal[]={
-	  0,  0,0x61,1,	
-	  8,  0,0x63,1,
-	  0,  16,0x61,1|OAM_FLIP_V,	
-	  8,  16,0x63,1|OAM_FLIP_V,	
+	  0,  0,0xA3,1|OAM_FLIP_H,	
+	  8,  0,0xA1,1|OAM_FLIP_H,
+	  0,  16,0xA3,1|OAM_FLIP_H|OAM_FLIP_V,	
+	  8,  16,0xA1,1|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
 const unsigned char Speed_10_Portal[]={
-	  0,  0,0x63,0|OAM_FLIP_H,	
-	  8,  0,0x61,0|OAM_FLIP_H,
-	  0,  16,0x63,0|OAM_FLIP_H|OAM_FLIP_V,	
-	  8,  16,0x61,0|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0xA1,0,
+	  8,  0,0xA3,0,
+	  0,  16,0xA1,0|OAM_FLIP_V,	
+	  8,  16,0xA3,0|OAM_FLIP_V,	
 	0x80
 };
 const unsigned char Speed_20_Portal[]={
-	  0,  0,0x69,0|OAM_FLIP_H,	
-	  8,  0,0x67,0|OAM_FLIP_H,	
-	  16,  0,0x65,0|OAM_FLIP_H,	
-	  0,  16,0x69,0|OAM_FLIP_H|OAM_FLIP_V,	
-	  8,  16,0x67,0|OAM_FLIP_H|OAM_FLIP_V,	
-	  16,  16,0x65,0|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0xA5,0,	
+	  8,  0,0xA7,0,	
+	  8,  0,0xA5,0,
+	  16,  0,0xA7,0,	  
+	  0,  16,0xA5,0|OAM_FLIP_V,	
+	  8,  16,0xA7,0|OAM_FLIP_V,	
+	  8,  16,0xA5,0|OAM_FLIP_V,	
+	  16,  16,0xA7,0|OAM_FLIP_V,	
 	0x80
 };
 const unsigned char Speed_30_Portal[]={
-	  0,  0,0xB9,1,
-	  8,  0,0xBB,1,
-	  16,  0,0xBD,1,
-	  24,  0,0xBF,1,
-	  0,  16,0xB9,1|OAM_FLIP_V,
-	  8,  16,0xBB,1|OAM_FLIP_V,
-	  16,  16,0xBD,1|OAM_FLIP_V,
-	  24,  16,0xBF,1|OAM_FLIP_V,
+	  0,  0,0xA9,1,
+	  8,  0,0xAB,1,
+	  6,  0,0xA9,1,
+	  14,  0,0xAB,1,
+	  12,  0,0xA9,1,
+	  20,  0,0xAB,1,
+	  0,  16,0xA9,1|OAM_FLIP_V,
+	  8,  16,0xAB,1|OAM_FLIP_V,
+	  6,  16,0xA9,1|OAM_FLIP_V,
+	  14,  16,0xAB,1|OAM_FLIP_V,
+	  12,	16,0xA9,1|OAM_FLIP_V,
+	  20,  16,0xAB,1|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Speed_40_Portal[]={
-	  0,  0,0xB9,2,
-	  8,  0,0xBB,2,
-	  16,  0,0xBD,2,
-	  24,  0,0xBD,2,
-	  32,  0,0xBF,2,
-	  0,  16,0xB9,2|OAM_FLIP_V,
-	  8,  16,0xBB,2|OAM_FLIP_V,
-	  16,  16,0xBD,2|OAM_FLIP_V,
-	  24,  16,0xBD,2|OAM_FLIP_V,
-	  32,  16,0xBF,2|OAM_FLIP_V,
+	  0,  0,0x9F,2,
+	  5,  0,0x9F,2,
+	  10,  0,0x9F,2,
+	  15,  0,0x9F,2,
+	  0,  16,0x9F,2|OAM_FLIP_V,
+	  5,  16,0x9F,2|OAM_FLIP_V,
+	  10,  16,0x9F,2|OAM_FLIP_V,
+	  15,  16,0x9F,2|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Mini_Portal[]={
-	  0,  0,0xE1,1,	
-	  8,  0,0xE3,1,	
-	  16,  0,0x43,1,	
-	  -8,  16,0xE5,1,	
-	  0,  16,0xE7,1,
-	  8,  16,0xE9,1,
-	  0,  32,0xE1,1|OAM_FLIP_V,
-	  8,  32,0xE3,1|OAM_FLIP_V,
-	  16,  32,0x43,1|OAM_FLIP_V,
+	  0,  0,0x81,1,	
+	  8,  0,0x83,1,	
+	  -8,  16,0x85,1,	
+	  0,  16,0x87,1,
+	  8,  16,0x89,1,
+	  0,  32,0x81,1|OAM_FLIP_V,
+	  8,  32,0x83,1|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Growth_Portal[]={
-	  0,  0,0xE1,0,	
-	  8,  0,0xE3,0,	
-	  16,  0,0x43,0,	
-	  -8,  16,0xE5,0,	
-	  0,  16,0xE7,0,
-	  8,  16,0xE9,0,
-	  0,  32,0xE1,0|OAM_FLIP_V,
-	  8,  32,0xE3,0|OAM_FLIP_V,
-	  16,  32,0x43,0|OAM_FLIP_V,
+	  0,  0,0x81,0,	
+	  8,  0,0x83,0,	
+	  -8,  16,0x85,0,	
+	  0,  16,0x87,0,
+	  8,  16,0x89,0,
+	  0,  32,0x81,0|OAM_FLIP_V,
+	  8,  32,0x83,0|OAM_FLIP_V,
 	0x80
 };
 
 
 const unsigned char Portal_Gamemode_Cube[]={
 
-	  0,  0,0xC1,0,
-	  0, 16,0xC7,0,
-	  0, 32,0xC1,0|OAM_FLIP_V,
-	  8,  0,0xC3,0,
+	  0,  0,0x41,0,
+	  0, 16,0x47,0,
+	  0, 32,0x41,0|OAM_FLIP_V,
+	  8,  0,0x43,0,
 
-	  8, 16,0xc9,0,
-	  8, 32,0xC3,0|OAM_FLIP_V,
-	 16,  0,0xC5,0,
-	 16, 16,0xCB,0,
+	  8, 16,0x49,0,
+	  8, 32,0x43,0|OAM_FLIP_V,
+	 16,  0,0x45,0,
+	 16, 16,0x4B,0,
 
-	 16, 32,0xC5,0|OAM_FLIP_V,
+	 16, 32,0x45,0|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Ship[]={
 
-	  0,  0,0xC1,1,
-	  0, 16,0xC7,1,
-	  0, 32,0xC1,1|OAM_FLIP_V,
-	  8,  0,0xC3,1,
+	  0,  0,0x41,1,
+	  0, 16,0x47,1,
+	  0, 32,0x41,1|OAM_FLIP_V,
+	  8,  0,0x43,1,
 
-	  8, 16,0xC9,1,
-	  8, 32,0xC3,1|OAM_FLIP_V,
-	 16,  0,0xC5,1,
-	 16, 16,0xCB,1,
+	  8, 16,0x49,1,
+	  8, 32,0x43,1|OAM_FLIP_V,
+	 16,  0,0x45,1,
+	 16, 16,0x4B,1,
 
-	 16, 32,0xC5,1|OAM_FLIP_V,
+	 16, 32,0x45,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Ball[]={
 
-	  0,  0,0xC1,2,
-	  0, 16,0xC7,2,
-	  0, 32,0xC1,2|OAM_FLIP_V,
-	  8,  0,0xC3,2,
+	  0,  0,0x41,2,
+	  0, 16,0x47,2,
+	  0, 32,0x41,2|OAM_FLIP_V,
+	  8,  0,0x43,2,
 
-	  8, 16,0xC9,2,
-	  8, 32,0xC3,2|OAM_FLIP_V,
-	 16,  0,0xC5,2,
-	 16, 16,0xCB,2,
+	  8, 16,0x49,2,
+	  8, 32,0x43,2|OAM_FLIP_V,
+	 16,  0,0x45,2,
+	 16, 16,0x4B,2,
 
-	 16, 32,0xC5,2|OAM_FLIP_V,
+	 16, 32,0x45,2|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_UFO[]={
 
-	  0,  0,0x81,1,
-	  0, 16,0x87,1,
-	  0, 32,0x81,1|OAM_FLIP_V,
-	  8,  0,0x83,1,
+	  0,  0,0x61,1,
+	  0, 16,0x67,1,
+	  0, 32,0x61,1|OAM_FLIP_V,
+	  8,  0,0x63,1,
 
-	  8, 16,0x89,1,
-	  8, 32,0x83,1|OAM_FLIP_V,
-	 16,  0,0x85,1,
-	 16, 16,0x8B,1,
+	  8, 16,0x69,1,
+	  8, 32,0x63,1|OAM_FLIP_V,
+	 16,  0,0x65,1,
+	 16, 16,0x6B,1,
 
-	 16, 32,0x85,1|OAM_FLIP_V,
+	 16, 32,0x65,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Robot[]={
 
-	  0,  0,0x81,6,
-	  0, 16,0x87,6,
-	  0, 32,0x81,6|OAM_FLIP_V,
-	  8,  0,0x83,6,
+	  0,  0,0x61,2,
+	  0, 16,0x67,2,
+	  0, 32,0x61,2|OAM_FLIP_V,
+	  8,  0,0x63,2,
 
-	  8, 16,0x89,6,
-	  8, 32,0x83,6|OAM_FLIP_V,
-	 16,  0,0x85,6,
-	 16, 16,0x8B,6,
+	  8, 16,0x69,2,
+	  8, 32,0x63,2|OAM_FLIP_V,
+	 16,  0,0x65,2,
+	 16, 16,0x6B,2,
 
-	 16, 32,0x85,6|OAM_FLIP_V,
+	 16, 32,0x65,2|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Spider[]={
 
-	  0,  0,0xC1,1,
-	  0, 16,0xC7,1,
-	  0, 32,0xC1,1|OAM_FLIP_V,
-	  8,  0,0xC3,1,
+	  0,  0,0x41,1,
+	  0, 16,0x47,1,
+	  0, 32,0x41,1|OAM_FLIP_V,
+	  8,  0,0x43,1,
 
-	  8, 16,0xC9,1,
-	  8, 32,0xC3,1|OAM_FLIP_V,
-	 16,  0,0xC5,1,
-	 16, 16,0xCB,1,
+	  8, 16,0x49,1,
+	  8, 32,0x43,1|OAM_FLIP_V,
+	 16,  0,0x45,1,
+	 16, 16,0x4B,1,
 
-	 16, 32,0xC5,1|OAM_FLIP_V,
+	 16, 32,0x45,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Wave[]={
 
-	  0,  0,0x81,0,
-	  0, 16,0x87,0,
-	  0, 32,0x81,0|OAM_FLIP_V,
-	  8,  0,0x83,0,
+	  0,  0,0x61,0,
+	  0, 16,0x67,0,
+	  0, 32,0x61,0|OAM_FLIP_V,
+	  8,  0,0x63,0,
 
-	  8, 16,0x89,0,
-	  8, 32,0x83,0|OAM_FLIP_V,
-	 16,  0,0x85,0,
-	 16, 16,0x8B,0,
+	  8, 16,0x69,0,
+	  8, 32,0x63,0|OAM_FLIP_V,
+	 16,  0,0x65,0,
+	 16, 16,0x6B,0,
 
-	 16, 32,0x85,0|OAM_FLIP_V,
+	 16, 32,0x65,0|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gravity_Down[]={
-	  0,  0,0x8d,0,  
-	  0, 16,0x93,0,  
-	  0, 32,0x8d,0|OAM_FLIP_V, 
-	  8,  0,0x8f,0,  
+	  0,  0,0x6D,0,  
+	  0, 16,0x73,0,  
+	  0, 32,0x6D,0|OAM_FLIP_V, 
+	  8,  0,0x6F,0,  
 
-	  8, 16,0x95,0,
-	  8, 32,0x8f,0|OAM_FLIP_V,  
-	 16,  0,0x91,0,  
-	 16, 16,0x97,0, 
+	  8, 16,0x75,0,
+	  8, 32,0x6F,0|OAM_FLIP_V,  
+	 16,  0,0x71,0,  
+	 16, 16,0x77,0, 
 
-	 16, 32,0x91,0|OAM_FLIP_V, 
+	 16, 32,0x71,0|OAM_FLIP_V, 
 	0x80
 };
 const unsigned char Portal_Gravity_Up[]={
 
-	  0,  0,0x8d,1,  
-	  0, 16,0x93,1,  
-	  0, 32,0x8d,1|OAM_FLIP_V, 
-	  8,  0,0x8f,1,  
+	  0,  0,0x6D,1,  
+	  0, 16,0x73,1,  
+	  0, 32,0x6D,1|OAM_FLIP_V, 
+	  8,  0,0x6F,1,  
 
-	  8, 16,0x95,1,
-	  8, 32,0x8f,1|OAM_FLIP_V,  
-	 16,  0,0x91,0,  
-	 16, 16,0x97,0, 
+	  8, 16,0x75,1,
+	  8, 32,0x6F,1|OAM_FLIP_V,  
+	 16,  0,0x71,1,  
+	 16, 16,0x77,1, 
 
-	 16, 32,0x91,0|OAM_FLIP_V, 
+	 16, 32,0x71,1|OAM_FLIP_V, 
 	0x80
 };
 
 
 const unsigned char Portal_Dual[]={
 
-	  0,  0,0xCD,1,
-	  8, 0,0xCF,1,
-	  16, 0,0xD1,1,
-	  0,  16,0xD3,1,
+	  0,  0,0x8B,1,
+	  8, 0,0x8D,1,
+	  16, 0,0x8F,1,
+	  0,  16,0x91,1,
 
-	  8, 16,0xD5,1,
-	  16, 16,0xD7,1,
-	 0,  32,0xCD,1|OAM_FLIP_V,
-	 8, 32,0xCF,1|OAM_FLIP_V,
+	  8, 16,0x93,1,
+	  16, 16,0x95,1,
+	 0,  32,0x8B,1|OAM_FLIP_V,
+	 8, 32,0x8D,1|OAM_FLIP_V,
 
-	 16, 32,0xD1,1|OAM_FLIP_V,
+	 16, 32,0x8F,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Single[]={
 
-	  0,  0,0xCD,0,
-	  8, 0,0xCF,0,
-	  16, 0,0xD1,0,
-	  0,  16,0xD3,0,
+	  0,  0,0x8B,0,
+	  8, 0,0x8D,0,
+	  16, 0,0x8F,0,
+	  0,  16,0x91,0,
 
-	  8, 16,0xD5,0,
-	  16, 16,0xD7,0,
-	 0,  32,0xCD,0|OAM_FLIP_V,
-	 8, 32,0xCF,0|OAM_FLIP_V,
+	  8, 16,0x93,0,
+	  16, 16,0x95,0,
+	  0,  32,0x8B,0|OAM_FLIP_V,
+	  8, 32,0x8D,0|OAM_FLIP_V,
 
-	 16, 32,0xD1,0|OAM_FLIP_V,
+	 16, 32,0x8F,0|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Portal_Gravity_Down_Horizontal_Downwards[]={
 
 
-	  0,  16,0xA1,0,  
-	  8, 16,0xA3,0,  
-	  16, 16,0xA5,0,
-	  24, 16,0xA5,0|OAM_FLIP_H,  
+	  0,  16,0x4D,0,  
+	  8, 16,0x4F,0,  
+	  16, 16,0x51,0,
+	  24, 16,0x51,0|OAM_FLIP_H,  
 
-	  32, 16,0xA3,0|OAM_FLIP_H,
-	 40, 16,0xA1,0|OAM_FLIP_H,  
-	8,0,0xA7,0,
-	16,0,0xA9,0,
-	24,0,0xA9,0|OAM_FLIP_H,
-	32,0,0xA7,0|OAM_FLIP_H,
+	  32, 16,0x4F,0|OAM_FLIP_H,
+	 40, 16,0x4D,0|OAM_FLIP_H,  
+     8,0,0x53,0,
+	16,0,0x55,0,
+	24,0,0x55,0|OAM_FLIP_H,
+	32,0,0x53,0|OAM_FLIP_H,
 
 	0x80
 };
 const unsigned char Portal_Gravity_Down_Horizontal_Upwards[]={
 
 
-	  0,  0,0xA1,0|OAM_FLIP_V,  
-	  8, 0,0xA3,0|OAM_FLIP_V,  
-	  16, 0,0xA5,0|OAM_FLIP_V,
-	  24, 0,0xA5,0|OAM_FLIP_V|OAM_FLIP_H,  
+	  0,  0,0x4D,0|OAM_FLIP_V,  
+	  8, 0,0x4F,0|OAM_FLIP_V,  
+	  16, 0,0x51,0|OAM_FLIP_V,
+	  24, 0,0x51,0|OAM_FLIP_V|OAM_FLIP_H,  
 
-	  32, 0,0xA3,0|OAM_FLIP_V|OAM_FLIP_H,
-	 40, 0,0xA1,0|OAM_FLIP_V|OAM_FLIP_H,  
+	  32, 0,0x4F,0|OAM_FLIP_V|OAM_FLIP_H,
+	 40, 0,0x4D,0|OAM_FLIP_V|OAM_FLIP_H,  
 
-	8,16,0xA7,0|OAM_FLIP_V,
-	16,16,0xA9,0|OAM_FLIP_V,
-	24,16,0xA9,0|OAM_FLIP_V|OAM_FLIP_H,
-	32,16,0xA7,0|OAM_FLIP_V|OAM_FLIP_H,
+	8,16,0x53,0|OAM_FLIP_V,
+	16,16,0x55,0|OAM_FLIP_V,
+	24,16,0x55,0|OAM_FLIP_V|OAM_FLIP_H,
+	32,16,0x53,0|OAM_FLIP_V|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Portal_Gravity_Up_Horizontal_Downwards[]={
 
 
-	  0,  16,0xA1,1,  
-	  8, 16,0xA3,1,  
-	  16, 16,0xA5,1,
-	  24, 16,0xA5,1|OAM_FLIP_H,  
+	  0,  16,0x4D,1,  
+	  8, 16,0x4F,1,  
+	  16, 16,0x51,1,
+	  24, 16,0x51,1|OAM_FLIP_H,  
 
-	  32, 16,0xA3,1|OAM_FLIP_H,
-	 40, 16,0xA1,1|OAM_FLIP_H,  
-	8,0,0xA7,0,
-	16,0,0xA9,0,
-	24,0,0xA9,0|OAM_FLIP_H,
-	32,0,0xA7,0|OAM_FLIP_H,
+	  32, 16,0x4F,1|OAM_FLIP_H,
+	 40, 16,0x4D,1|OAM_FLIP_H,  
+     8,0,0x53,1,
+	16,0,0x55,1,
+	24,0,0x55,1|OAM_FLIP_H,
+	32,0,0x53,1|OAM_FLIP_H,
 
 	0x80
 };
 const unsigned char Portal_Gravity_Up_Horizontal_Upwards[]={
 
-	8,16,0xA7,0|OAM_FLIP_V,
-	16,16,0xA9,0|OAM_FLIP_V,
-	24,16,0xA9,0|OAM_FLIP_V|OAM_FLIP_H,
-	32,16,0xA7,0|OAM_FLIP_V|OAM_FLIP_H,
+	8,16,0x53,0|OAM_FLIP_V,
+	16,16,0x55,0|OAM_FLIP_V,
+	24,16,0x55,0|OAM_FLIP_V|OAM_FLIP_H,
+	32,16,0x53,0|OAM_FLIP_V|OAM_FLIP_H,
 
-	  0,  0,0xA1,1|OAM_FLIP_V,  
-	  8, 0,0xA3,1|OAM_FLIP_V,  
-	  16, 0,0xA5,1|OAM_FLIP_V,
-	  24, 0,0xA5,1|OAM_FLIP_V|OAM_FLIP_H,  
+	  0,  0,0x4D,1|OAM_FLIP_V,  
+	  8, 0,0x4F,1|OAM_FLIP_V,  
+	  16, 0,0x51,1|OAM_FLIP_V,
+	  24, 0,0x51,1|OAM_FLIP_V|OAM_FLIP_H,  
 
-	  32, 0,0xA3,1|OAM_FLIP_V|OAM_FLIP_H,
-	 40, 0,0xA1,1|OAM_FLIP_V|OAM_FLIP_H,  
+	  32, 0,0x4F,1|OAM_FLIP_V|OAM_FLIP_H,
+	 40, 0,0x4D,1|OAM_FLIP_V|OAM_FLIP_H,  
 
 	0x80
 };
@@ -1207,167 +1207,167 @@ const unsigned char Portal_Gravity_Up_Horizontal_Upwards[]={
 
 const unsigned char Yellow_Jump_Orb[]={
 
-	  4,  0,0xB5,1,
+	  4,  0,0xB7,1,
 	0x80
 };
 
 const unsigned char Blue_Jump_Orb[]={
 
-	  4,  0,0xB5,4,
+	  4,  0,0xB7,4,
 	0x80
 };
 const unsigned char Pink_Jump_Orb[]={
 
-	  4,  0,0xB3,1,
+	  4,  0,0xB5,1,
 	0x80
 };
 
 const unsigned char Yellow_Jump_Pad[]={
 
-	  0,-8,0x99,1,
-	  8,-8,0x9B,1|OAM_FLIP_H,
+	  0,-8,0x79,1,
+	  8,-8,0x7B,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad2[]={
 
-	  0,-8,0x9B,1,
-	  8,-8,0x9D,1|OAM_FLIP_H,
+	  0,-8,0x7B,1,
+	  8,-8,0x7D,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad3[]={
 
-	  0,-8,0x9D,1,
-	  8,-8,0x9F,1|OAM_FLIP_H,
+	  0,-8,0x7D,1,
+	  8,-8,0x7F,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad4[]={
 
-	  0,-8,0x9F,1,
-	  8,-8,0x99,1|OAM_FLIP_H,
+	  0,-8,0x7F,1,
+	  8,-8,0x79,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Yellow_Jump_Pad_U[]={
 
-	  0,-0,0x99,1|OAM_FLIP_V,
-	  8,-0,0x9B,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x79,1|OAM_FLIP_V,
+	  8,-0,0x7B,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U2[]={
 
-	  0,-0,0x9B,1|OAM_FLIP_V,
-	  8,-0,0x9D,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x7B,1|OAM_FLIP_V,
+	  8,-0,0x7D,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U3[]={
 
-	  0,-0,0x9D,1|OAM_FLIP_V,
-	  8,-0,0x9F,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x7D,1|OAM_FLIP_V,
+	  8,-0,0x7F,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U4[]={
 
-	  0,-0,0x9F,1|OAM_FLIP_V,
-	  8,-0,0x99,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x7F,1|OAM_FLIP_V,
+	  8,-0,0x79,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Pink_Jump_Pad[]={
 
-	  0,-8,0xD9,1,
-	  8,-8,0xDB,1|OAM_FLIP_H,
+	  0,-8,0x59,1,
+	  8,-8,0x5B,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Pink_Jump_Pad2[]={
 
-	  0,-8,0xDB,1,
-	  8,-8,0xDD,1|OAM_FLIP_H,
+	  0,-8,0x5B,1,
+	  8,-8,0x5D,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Pink_Jump_Pad3[]={
 
-	  0,-8,0xDD,1,
-	  8,-8,0xDF,1|OAM_FLIP_H,
+	  0,-8,0x5D,1,
+	  8,-8,0x5F,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Pink_Jump_Pad4[]={
 
-	  0,-8,0xDF,1,
-	  8,-8,0xD9,1|OAM_FLIP_H,
+	  0,-8,0x5F,1,
+	  8,-8,0x59,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Pink_Jump_Pad_U[]={
 
-	  0,-0,0xD9,1|OAM_FLIP_V,
-	  8,-0,0xDB,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x59,1|OAM_FLIP_V,
+	  8,-0,0x5B,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Pink_Jump_Pad_U2[]={
 
-	  0,-0,0xDB,1|OAM_FLIP_V,
-	  8,-0,0xDD,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x5B,1|OAM_FLIP_V,
+	  8,-0,0x5D,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Pink_Jump_Pad_U3[]={
 
-	  0,-0,0xDD,1|OAM_FLIP_V,
-	  8,-0,0xDF,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x5D,1|OAM_FLIP_V,
+	  8,-0,0x5F,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Pink_Jump_Pad_U4[]={
 
-	  0,-0,0xDF,1|OAM_FLIP_V,
-	  8,-0,0xD9,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0x5F,1|OAM_FLIP_V,
+	  8,-0,0x59,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Gravity_Pad[]={
 
-	  0,-8,0x99,4,
-	  8,-8,0x9B,4|OAM_FLIP_H,
+	  0,-8,0x79,4,
+	  8,-8,0x7B,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad2[]={
 
-	  0,-8,0x9B,4,
-	  8,-8,0x9D,4|OAM_FLIP_H,
+	  0,-8,0x7B,4,
+	  8,-8,0x7D,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad3[]={
 
-	  0,-8,0x9D,4,
-	  8,-8,0x9F,4|OAM_FLIP_H,
+	  0,-8,0x7D,4,
+	  8,-8,0x7F,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad4[]={
 
-	  0,-8,0x9F,4,
-	  8,-8,0x99,4|OAM_FLIP_H,
+	  0,-8,0x7F,4,
+	  8,-8,0x79,4|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Gravity_Pad_U[]={
 
-	  0, -0,0x99,4|OAM_FLIP_V,
-	  8, -0,0x9B,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0x79,4|OAM_FLIP_V,
+	  8, -0,0x7B,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Gravity_Pad_U2[]={
 
-	  0, -0,0x9B,4|OAM_FLIP_V,
-	  8, -0,0x9D,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0x7B,4|OAM_FLIP_V,
+	  8, -0,0x7D,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Gravity_Pad_U3[]={
 
-	  0, -0,0x9D,4|OAM_FLIP_V,
-	  8, -0,0x9F,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0x7D,4|OAM_FLIP_V,
+	  8, -0,0x7F,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Gravity_Pad_U4[]={
 
-	  0, -0,0x9F,4|OAM_FLIP_V,
-	  8, -0,0x99,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0x7F,4|OAM_FLIP_V,
+	  8, -0,0x79,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 

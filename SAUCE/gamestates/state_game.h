@@ -71,7 +71,7 @@ void state_game(){
 	
 	if (mini) mmc3_set_2kb_chr_bank_0(28);
 	else if (gamemode == 0) mmc3_set_2kb_chr_bank_0(24);
-	else if (gamemode == 1 || gamemode == 5 || gamemode == 6) mmc3_set_2kb_chr_bank_0(26);
+	else if (gamemode == 1 || gamemode == 4 || gamemode == 5) mmc3_set_2kb_chr_bank_0(26);
 	else mmc3_set_2kb_chr_bank_0(28);
 	mmc3_set_2kb_chr_bank_1(30);
 	
