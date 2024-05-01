@@ -756,32 +756,32 @@ const unsigned char * const MINI_ROBOT_JUMP2[]={Mini_Robot_Jump2_1, Mini_Robot_J
 
 const unsigned char Spider_0[]={
 	
-	0,   0, 0xEB,3,
-	8,   0, 0xED,3,
-	16,   0, 0xEF,3,
+	0,   0, 0x15,3,
+	8,   0, 0x17,3,
+	16,   0, 0x19,3,
 	0x80
 };
 
 const unsigned char Spider_1[]={
 	
-	0,   0, 0xF1,3,
-	8,   0, 0xF3,3,
-	16,   0, 0xF5,3,
+	0,   0, 0x1B,3,
+	8,   0, 0x1D,3,
+	16,   0, 0x1F,3,
 	0x80
 };
 
 const unsigned char Spider_2[]={
 	
-	0,   0, 0xF7,3,
-	8,   0, 0xF9,3,
-	16,   0, 0xFB,3,
+	0,   0, 0x37,3,
+	8,   0, 0x39,3,
+	16,   0, 0x3B,3,
 	0x80
 };
 const unsigned char Spider_3[]={
 	
-	0,   0, 0x43,3,
-	8,   0, 0xFD,3,
-	16,   0, 0xFF,3,
+//	0,   0, 0x43,3,
+	8,   0, 0x3D,3,
+	16,   0, 0x3F,3,
 	0x80
 };
 
@@ -793,32 +793,32 @@ const unsigned char * const SPIDER_JUMP[]={Spider_3};
 
 const unsigned char Spider2_0[]={
 	
-	0,   0, 0xEB,1,
-	8,   0, 0xED,1,
-	16,   0, 0xEF,1,
+	0,   0, 0x15,1,
+	8,   0, 0x17,1,
+	16,   0, 0x19,1,
 	0x80
 };
 
 const unsigned char Spider2_1[]={
 	
-	0,   0, 0xF1,1,
-	8,   0, 0xF3,1,
-	16,   0, 0xF5,1,
+	0,   0, 0x1B,1,
+	8,   0, 0x1D,1,
+	16,   0, 0x1F,1,
 	0x80
 };
 
 const unsigned char Spider2_2[]={
 	
-	0,   0, 0xF7,1,
-	8,   0, 0xF9,1,
-	16,   0, 0xFB,1,
+	0,   0, 0x37,1,
+	8,   0, 0x39,1,
+	16,   0, 0x3B,1,
 	0x80
 };
 const unsigned char Spider2_3[]={
 	
-	0,   0, 0x43,1,
-	8,   0, 0xFD,1,
-	16,   0, 0xFF,1,
+//	0,   0, 0x43,1,
+	8,   0, 0x3D,1,
+	16,   0, 0x3F,1,
 	0x80
 };
 
