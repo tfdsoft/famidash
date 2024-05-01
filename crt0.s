@@ -297,9 +297,20 @@ _GAME_CHR:
     .incbin "GRAPHICS/famidash-parallax.chr" ; 4kb	//default (8)
     .incbin "GRAPHICS/famidash2.chr" ; 8kb		//theory of everything (12)
     .incbin "GRAPHICS/famidash-parallax2.chr" ; 4kb	//theory of everything (20)
-    .incbin "GRAPHICS/menus.chr"    ; 4kb (24)
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (28)
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (32)
+    .incbin "GRAPHICS/bankicon00.chr" ; 1kb (24)
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (26)
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesB.chr" ; 1kb (28)
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb (30)
+    .incbin "GRAPHICS/bankblank.chr" ; 1kb
+
+
+
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (32)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (36)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (40)
 .segment "PARALLAXCHR"
 .export _PARALLAX_CHR
 _PARALLAX_CHR:

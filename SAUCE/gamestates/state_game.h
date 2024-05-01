@@ -68,6 +68,12 @@ void state_game(){
 		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
 		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3);
 	}
+	
+	if (gamemode == 0) mmc3_set_2kb_chr_bank_0(24);
+	else if (gamemode == 1 || gamemode == 5 || gamemode == 6) mmc3_set_2kb_chr_bank_0(26);
+	else mmc3_set_2kb_chr_bank_0(28);
+	mmc3_set_2kb_chr_bank_1(30);
+	
         music_update();
         
 
