@@ -70,7 +70,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		scroll_count = 0;
 		scroll_x = practice_scroll_x - 256;
 		scroll_y = practice_scroll_y;
-		for (ii = 0; ii < practice_scroll_x >> 4; ii++) {
+		for (ii = 0; ii <= practice_scroll_x >> 4; ii++) {
 			unrle_next_column();
 			increase_parallax_scroll_column();
 			scroll_count = !scroll_count;
