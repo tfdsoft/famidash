@@ -298,12 +298,12 @@ _GAME_CHR:
     .incbin "GRAPHICS/famidash2.chr" ; 8kb		//theory of everything (12)
     .incbin "GRAPHICS/famidash-parallax2.chr" ; 4kb	//theory of everything (20)
     .incbin "GRAPHICS/bankicon00.chr" ; 1kb (24)
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (26)
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .incbin "GRAPHICS/bankgamemodesB.chr" ; 1kb (28)
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb (30)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (30)
     .incbin "GRAPHICS/bankblank.chr" ; 1kb
 
 
