@@ -103,7 +103,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		#undef quick_ld
 		currplayer_gravity = player_gravity[currplayer];
 		
-		memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
+	//	memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
 	} else {
 		// To get the draw screen R to start in the left nametable, scroll must be negative.
 		scroll_x = -256;

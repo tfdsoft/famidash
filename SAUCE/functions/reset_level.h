@@ -3,7 +3,7 @@ extern unsigned char* PARALLAX_CHR;
 
 void reset_level(void) {
     // unsigned char i;
-    famistudio_music_stop();
+    if (!has_practice_point) famistudio_music_stop();
     coins = 0;
 
     if (!DEBUG_MODE && (cube_data[0] & 1 || cube_data[1] & 1)) {

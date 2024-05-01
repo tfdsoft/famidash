@@ -105,6 +105,7 @@ void state_game(){
 
 		if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
 			// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
+			if (!has_practice_point) music_play(song_practice);
 			practice_player_x[0] = player_x[0];
 			long_temp_x = high_byte(player_x[0]);
 			practice_player_x[1] = player_x[1];
@@ -122,7 +123,7 @@ void state_game(){
 			practice_speed = speed;
 			practice_scroll_x = scroll_x;
 			practice_scroll_y = scroll_y;
-			memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));
+		//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));
 			// practice_parallax_scroll_column = parallax_scroll_column;
 			// practice_parallax_scroll_column_start = parallax_scroll_column_start;
 			has_practice_point = 1;

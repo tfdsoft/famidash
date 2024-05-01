@@ -167,13 +167,13 @@ unsigned char color2;
 unsigned char color3;
 
 
-unsigned char practice_famistudio_state[0xbf];
+//unsigned char practice_famistudio_state[0xbf];
 
 #pragma bss-name(pop)
 
 
 
-extern unsigned char famistudio_state[0xbf];
+//extern unsigned char famistudio_state[0xbf];
 
 
 unsigned char TOTALCOINS;
