@@ -98,10 +98,11 @@ void state_game(){
 		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3);
 	}
 	
-	if (mini) mmc3_set_2kb_chr_bank_0(28);
-	else if (gamemode == 0 || gamemode == 1) mmc3_set_2kb_chr_bank_0(24);
-	else if (gamemode == 4 || gamemode == 5) mmc3_set_2kb_chr_bank_0(26);
-	else mmc3_set_2kb_chr_bank_0(28);
+	if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(28);
+	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(24);
+	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(24);
+	else mmc3_set_2kb_chr_bank_0(26);
+//	else mmc3_set_2kb_chr_bank_0(28);
 	mmc3_set_2kb_chr_bank_1(30);
 	
         music_update();
