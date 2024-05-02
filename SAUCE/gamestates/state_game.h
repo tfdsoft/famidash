@@ -123,8 +123,6 @@ void state_game(){
 			practice_speed = speed;
 			practice_scroll_x = scroll_x;
 			practice_scroll_y = scroll_y;
-			practice_bg_color = lastbgcolor;
-			practice_g_color = lastgcolor;
 			practice_bg_color_type = lastbgcolortype;
 			practice_g_color_type = lastgcolortype;
 		//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));

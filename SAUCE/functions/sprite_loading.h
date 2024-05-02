@@ -88,7 +88,6 @@ __fastcall__ char sprite_height_lookup(){
 		    } else { 
 			pal_col(5, (tmp2-0x10)); 
 		    }
-			lastgcolor = tmp2;
 			lastgcolortype = type;
 		} else {
 		    pal_col(0, tmp2);
@@ -97,7 +96,6 @@ __fastcall__ char sprite_height_lookup(){
 		    } else { 
 			pal_col(1, (tmp2-0x10)); 
 		    }
-			lastbgcolor = tmp2;
 			lastbgcolortype = type;
 		}
 		activesprites_type[index] = 0xFF; 
