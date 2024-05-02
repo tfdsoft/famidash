@@ -170,6 +170,8 @@ unsigned char color3;
 unsigned char discomode;
 
 //unsigned char practice_famistudio_state[0xbf];
+unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
+unsigned char collisionMap1[192];
 
 #pragma bss-name(pop)
 
@@ -194,9 +196,6 @@ signed short player_vel_x[2];
 signed short player_vel_y[2];
 unsigned char player_gravity[2];
 
-unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
-unsigned char collisionMap1[192];
-const unsigned char * const active_level[] = {collisionMap0,collisionMap1};
 
 unsigned char rld_column;
 unsigned char spr_index;

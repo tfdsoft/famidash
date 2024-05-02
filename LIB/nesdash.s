@@ -18,7 +18,7 @@
 
 .macpack longbranch
 
-.export _oam_meta_spr_vflipped
+.export _oam_meta_spr_flipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
 ; .export _refreshmenu
 .export _movement
@@ -31,7 +31,7 @@ sprite_data = _sprite_data
 .define CUBE_GRAVITY $6B
 .define MINI_CUBE_GRAVITY $6F
 
-;void __fastcall__ oam_meta_spr_vflipped(unsigned char x,unsigned char y,const unsigned char *data);
+;void __fastcall__ oam_meta_spr_flipped(unsigned char x,unsigned char y,const unsigned char *data);
 
 .segment "ZEROPAGE"
     rld_value:      .res 1
@@ -55,19 +55,24 @@ sprite_data = _sprite_data
 
 .segment "CODE"
 
-_oam_meta_spr_vflipped:
+_oam_meta_spr_flipped:
 
     sta <PTR
     stx <PTR+1
 
-    ldy #1      ;2 popa calls replacement, performed in reversed order
+    .define FLIP TEMP+2
+
+    ldy #2      ;3 popa calls replacement, performed in reversed order
+    lda (sp),y
+    dey
+    sta <FLIP
     lda (sp),y
     dey
     sta <SCRX
     lda (sp),y
     sta <SCRY
     
-oam_meta_spr_vflipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCRY respectively
+oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCRY respectively
 
     ldx SPRID
 
@@ -78,12 +83,21 @@ oam_meta_spr_vflipped_params_set: ; Put &data into PTR, X and Y into SCRX and SC
     beq @2
     iny
     clc
+    BIT <FLIP   ;   Check for bit 6 (HFLIP)
+    BVC :+      ;__
+    EOR #$FF    ;   If HLIPd, then two's complement
+    SEC         ;__
+    :           ;
     adc <SCRX
     sta OAM_BUF+3,x
     lda (PTR),y     ;y offset
-    iny
-    eor #$FF
+    INY
     clc
+    BIT <FLIP   ;   Check for bit 7 (VFLIP)
+    BPL :+      ;__
+    EOR #$FF    ;   If VLIPd, then two's complement
+    SEC         ;__
+    :           ;
     adc <SCRY
     sta OAM_BUF+0,x
     lda (PTR),y     ;tile
@@ -91,7 +105,7 @@ oam_meta_spr_vflipped_params_set: ; Put &data into PTR, X and Y into SCRX and SC
     sta OAM_BUF+1,x
     lda (PTR),y     ;attribute
     iny
-    EOR #$80        ; invert Y flip
+    EOR <FLIP
     sta OAM_BUF+2,x
     inx
     inx
@@ -102,10 +116,10 @@ oam_meta_spr_vflipped_params_set: ; Put &data into PTR, X and Y into SCRX and SC
 @2:
 
     lda <sp
-    adc #1          ;carry is always set here, so it adds 2
+    adc #2          ;carry is always set here, so it adds 3
     sta <sp
-    bcc @3
-    inc <sp+1
+    ; bcc @3    
+    ; inc <sp+1 ; lmao our stack is 32 bytes
 
 @3:
 
@@ -1247,11 +1261,11 @@ write_active:
 
 		; 		if (!mini) {
 		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, CUBE[high_byte(cube_rotate)]);
-		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, CUBE[high_byte(cube_rotate)]);
+		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, CUBE[high_byte(cube_rotate)]);
 		; 		}
 		; 		else {
 		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_CUBE[high_byte(cube_rotate)]);
-		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_CUBE[high_byte(cube_rotate)]);				
+		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_CUBE[high_byte(cube_rotate)]);				
 		; 		}
 		; 		break;
 		; 	case 0x01:
@@ -1262,24 +1276,24 @@ write_active:
 
 		; 		if (!mini) {
 		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, SHIP[high_byte(cube_rotate)]);
-		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, SHIP[7-high_byte(cube_rotate)]);
+		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, SHIP[7-high_byte(cube_rotate)]);
 		; 		}
 		; 		else {
 		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_SHIP[high_byte(cube_rotate)]);
-		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_SHIP[7-high_byte(cube_rotate)]);
+		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_SHIP[7-high_byte(cube_rotate)]);
 		; 		}
 		; 		break;
 				
 		; 	case 0x02:
 		; 		if (!mini) {
 		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, BALL[ballframe]);
-		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, BALL[ballframe]);
+		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, BALL[ballframe]);
 		; 			ballframe++;
 		; 			if (ballframe > 7) { ballframe = 0; }
 		; 		}
 		; 		else   {
 		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_BALL[ballframe]);
-		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_BALL[ballframe]);
+		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_BALL[ballframe]);
 		; 		}
 		; 		break;
 
@@ -1296,8 +1310,8 @@ write_active:
 		; 			else if (player_vel_y[0] > 0) kandotemp3[0] = 1;
 		; 			else if (player_vel_y[0] < 0) kandotemp3[0] = 2;
 			
-		; 			if (!mini) oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, UFO[kandotemp3[0]]);
-		; 			else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_UFO[kandotemp3[0]]);
+		; 			if (!mini) oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, UFO[kandotemp3[0]]);
+		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_UFO[kandotemp3[0]]);
 		; 		}
 		; 		break;
 				
@@ -1305,11 +1319,11 @@ write_active:
 		; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
 		; 			if (!mini) {
 		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, ROBOT[robotframe[0]]);
-		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, ROBOT[robotframe[0]]);
+		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, ROBOT[robotframe[0]]);
 		; 			}
 		; 			else {
 		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_ROBOT[robotframe[0]]);
-		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_ROBOT[robotframe[0]]);					
+		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_ROBOT[robotframe[0]]);					
 		; 			}
 		; 			robotframe[0]++;
 		; 			if (robotframe[0] > 19) { robotframe[0] = 0; }
@@ -1318,11 +1332,11 @@ write_active:
 		; 		else {
 		; 			if (!mini) {
 		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, ROBOT_JUMP[robotjumpframe[0]]);
-		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, ROBOT_JUMP[robotjumpframe[0]]);
+		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, ROBOT_JUMP[robotjumpframe[0]]);
 		; 			}
 		; 			else {
 		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_ROBOT_JUMP[robotjumpframe[0]]);
-		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_ROBOT_JUMP[robotjumpframe[0]]);
+		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_ROBOT_JUMP[robotjumpframe[0]]);
 		; 			}
 		; 			break;
 		; 		}
@@ -1330,11 +1344,11 @@ write_active:
 		; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
 		; 			if (!mini) {
 		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, SPIDER[spiderframe[0]]);
-		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, SPIDER[spiderframe[0]]);
+		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, SPIDER[spiderframe[0]]);
 		; 			}
 		; 			else {
 		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_SPIDER[spiderframe[0]]);
-		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_SPIDER[spiderframe[0]]);					
+		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_SPIDER[spiderframe[0]]);					
 		; 			}
 		; 			spiderframe[0]++;
 		; 			if (spiderframe[0] > 15) spiderframe[0] = 0;
@@ -1342,15 +1356,20 @@ write_active:
 		; 		else {
 		; 			if (!mini) {
 		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, SPIDER_JUMP[0]);
-		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, SPIDER_JUMP[0]);
+		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, SPIDER_JUMP[0]);
 		; 			}
 		; 			else {
 		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_SPIDER_JUMP[0]);
-		; 				else oam_meta_spr_vflipped(temp_x, high_byte(player_y[0])-1, MINI_SPIDER_JUMP[0]);
+		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_SPIDER_JUMP[0]);
 		; 			}						
 		; 		}	
 		; 		break;	
 	    ; }
+
+    LDA _player_gravity+0
+    BEQ :+
+        LDA #$80
+    : STA <FLIP
 
 	LDX _player_y+1		;
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[0])-1
@@ -1663,21 +1682,18 @@ write_active:
 		TAY					;__
         lda     sp          ;
         sec                 ;
-        sbc     #2          ;
-        sta     sp          ;   sp -= 2
-        bcs     :+          ;
-        dec     sp+1        ;__
-        :
+        sbc     #3          ;
+        sta     sp          ;__ sp -= 2
+        ; bcs     :+          ; lmao our stack is 32 bytes
+        ; dec     sp+1        ;__
+        ; :
 		LDA (ptr1), Y		;	Load low byte
 		STA <PTR			;__
 		INY					;
 		LDA (ptr1), Y		;	Load high byte
 		STA <PTR+1			;__
-		LDY #$00			;__	THIS IS A MUST
-		LDA _player_gravity, X	;	if (!player_gravity[0])
-		BNE :+				;__	oam_meta_spr(temp_x, high_byte(player_y[0])-1, [whatever the fuck we set here]);
-			JMP oam_meta_spr_params_set
-		: JMP oam_meta_spr_vflipped_params_set
+		LDY #$00			;__	THIS IS A MUST	
+		JMP oam_meta_spr_flipped_params_set ;__	oam_meta_spr(temp_x, high_byte(player_y[0])-1, [whatever the fuck we set here]);
 
     sprite_table_table_lo:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE
@@ -1706,11 +1722,11 @@ drawplayer_common := _drawplayerone::common
 
         ;         if (!mini) {
         ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, CUBE2[high_byte(cube_rotate[1])]);
-        ;             else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, CUBE2[high_byte(cube_rotate[1])]);
+        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, CUBE2[high_byte(cube_rotate[1])]);
         ;         }
         ;         else {
         ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_CUBE2[high_byte(cube_rotate[1])]);
-        ;             else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_CUBE2[high_byte(cube_rotate[1])]);				
+        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_CUBE2[high_byte(cube_rotate[1])]);				
         ;         }
         ;         break;
         ;     case 0x01:
@@ -1721,24 +1737,24 @@ drawplayer_common := _drawplayerone::common
 
         ;         if (!mini) {
         ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SHIP2[high_byte(cube_rotate[1])]);
-        ;             else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, SHIP2[7-high_byte(cube_rotate[1])]);
+        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, SHIP2[7-high_byte(cube_rotate[1])]);
         ;         }
         ;         else {
         ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SHIP2[high_byte(cube_rotate[1])]);
-        ;             else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_SHIP2[7-high_byte(cube_rotate[1])]);
+        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_SHIP2[7-high_byte(cube_rotate[1])]);
         ;         }
         ;         break;
                 
         ;     case 0x02:
         ;         if (!mini) {
         ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, BALL2[ballframe]);
-        ;             else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, BALL2[ballframe]);
+        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, BALL2[ballframe]);
         ;         //	ballframe++;
         ;         //	if (ballframe > 7) { ballframe = 0; }
         ;         }
         ;         else   {
         ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_BALL2[ballframe]);
-        ;             else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_BALL2[ballframe]);
+        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_BALL2[ballframe]);
         ;         }
         ;         break;
 
@@ -1755,8 +1771,8 @@ drawplayer_common := _drawplayerone::common
         ;             else if (player_vel_y[1] > 0) kandotemp3[1] = 1;
         ;             else if (player_vel_y[1] < 0) kandotemp3[1] = 2;
             
-        ;             if (!mini) oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, UFO2[kandotemp3[1]]);
-        ;             else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_UFO2[kandotemp3[1]]);
+        ;             if (!mini) oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, UFO2[kandotemp3[1]]);
+        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_UFO2[kandotemp3[1]]);
         ;         }
         ;         break;
                 
@@ -1764,11 +1780,11 @@ drawplayer_common := _drawplayerone::common
         ;         if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
         ;             if (!mini) {
         ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, ROBOT2[robotframe[1]]);
-        ;                 else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, ROBOT2[robotframe[1]]);
+        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, ROBOT2[robotframe[1]]);
         ;             }
         ;             else {
         ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_ROBOT2[robotframe[1]]);
-        ;                 else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_ROBOT2[robotframe[1]]);					
+        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_ROBOT2[robotframe[1]]);					
         ;             }
         ;             robotframe[1]++;
         ;             if (robotframe[1] > 19) { robotframe[1] = 0; }
@@ -1777,11 +1793,11 @@ drawplayer_common := _drawplayerone::common
         ;         else {
         ;             if (!mini) {
         ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, ROBOT_JUMP2[robotjumpframe[1]]);
-        ;                 else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, ROBOT_JUMP2[robotjumpframe[1]]);
+        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, ROBOT_JUMP2[robotjumpframe[1]]);
         ;             }
         ;             else {
         ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_ROBOT_JUMP2[robotjumpframe[1]]);
-        ;                 else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_ROBOT_JUMP2[robotjumpframe[1]]);
+        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_ROBOT_JUMP2[robotjumpframe[1]]);
         ;             }
         ;             break;
         ;         }
@@ -1790,11 +1806,11 @@ drawplayer_common := _drawplayerone::common
         ;         if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
         ;             if (!mini) {
         ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SPIDER2[spiderframe[1]]);
-        ;                 else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, SPIDER2[spiderframe[1]]);
+        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, SPIDER2[spiderframe[1]]);
         ;             }
         ;             else {
         ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SPIDER2[spiderframe[1]]);
-        ;                 else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_SPIDER2[spiderframe[1]]);					
+        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_SPIDER2[spiderframe[1]]);					
         ;             }
         ;             spiderframe[1]++;
         ;             if (spiderframe[1] > 15) spiderframe[1] = 0;
@@ -1802,15 +1818,20 @@ drawplayer_common := _drawplayerone::common
         ;         else {
         ;             if (!mini) {
         ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SPIDER_JUMP2[0]);
-        ;                 else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, SPIDER_JUMP2[0]);
+        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, SPIDER_JUMP2[0]);
         ;             }
         ;             else {
         ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SPIDER_JUMP2[0]);
-        ;                 else oam_meta_spr_vflipped(temp_x, high_byte(player_y[1])-1, MINI_SPIDER_JUMP2[0]);
+        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_SPIDER_JUMP2[0]);
         ;             }						
         ;         }	
         ;         break;	
         ; }
+    LDA _player_gravity+1
+    BEQ :+
+        LDA #$80
+    : STA <FLIP
+
     LDX _player_y+3		;
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[1])-1
 	STX <SCRY			;__
@@ -2115,7 +2136,6 @@ drawplayer_common := _drawplayerone::common
 
 
 	fin:
-        LDX #$01
 		JMP drawplayer_common
 	sprite_table_table_lo:
 		.byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT2, <_SPIDER2, <_WAVE2
