@@ -52,6 +52,16 @@ extern void check_spr_objects(void);
 
 
 
+void maketmp2(){
+	tmp2 = rand8();
+	if (color3 == 0x0D || color3 == 0x0E ) color3 = 0x0C;
+	if (color3 == 0x1D || color3 == 0x1E || color3 == 0x1F ) color3 = 0x1C;
+	if (color3 == 0x2E || color3 == 0x2F ) color3 = 0x2C;			
+	if (color3 == 0x3E || color3 == 0x3F ) color3 = 0x2C;			
+	return;
+}
+
+
 void init_sprites(void){
 	// Setting up pointers is already done by init_rld()
     mmc3_set_prg_bank_1(sprite_data_bank);
@@ -80,7 +90,11 @@ __fastcall__ char sprite_height_lookup(){
 	}
 
     if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
-		tmp2 = (type & 0x3F);                        
+		if (!discomode) tmp2 = (type & 0x3F);                        
+		else { 
+			return 0x00;
+		}
+			
 		if (type >= 0xC0){
 		    pal_col(6, tmp2);
 		    if (tmp2-0x10 & 0xC0) { 

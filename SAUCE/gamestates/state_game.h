@@ -41,10 +41,39 @@ void state_game(){
 	kandoframecnt = 0;
 
     while (1) {
-	    
-	    pal_col(0x1F,color2);
-	    pal_col(0x1D,color3);
-	    pal_col(0x1E,color1);
+	    if (discomode && !(kandoframecnt & 0x0F)) {
+		    maketmp2();
+		pal_col(0x1F,tmp2);
+		    maketmp2();
+		pal_col(0x1E,tmp2);
+		    maketmp2();
+		pal_col(0x1D,tmp2);
+
+		   tmp3 = rand8();
+		   if (tmp3 < 0x80) tmp3 += 0x80;
+		   else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+		tmp2 = (tmp3 & 0x3F);  		    
+		if (tmp3 >= 0xC0){
+		    pal_col(6, tmp2);
+		    if (tmp2-0x10 & 0xC0) { 
+			pal_col(5, 0x0f); 
+		    } else { 
+			pal_col(5, (tmp2-0x10)); 
+		    }
+		} else {
+		    pal_col(0, tmp2);
+		    if (tmp2-0x10 & 0xC0) { 
+			pal_col(1, 0x0f); 
+		    } else { 
+			pal_col(1, (tmp2-0x10)); 
+		    }
+		}		    
+	    }
+	    else if (!discomode) {
+		pal_col(0x1F,color2);
+		pal_col(0x1D,color3);
+		pal_col(0x1E,color1);
+	    }
 		// {	// done in reset_level and after storing player 1
 		// 	currplayer_x = player_x[0];
 		// 	currplayer_y = player_y[0];

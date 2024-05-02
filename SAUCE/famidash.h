@@ -166,6 +166,7 @@ unsigned char color1;
 unsigned char color2;
 unsigned char color3;
 
+unsigned char discomode;
 
 //unsigned char practice_famistudio_state[0xbf];
 
