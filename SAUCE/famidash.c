@@ -141,5 +141,6 @@ void setdefaultoptions() {
 		color1 = 0x2A;
 		color2 = 0X21;		
 		color3 = 0x0F;
+		discomode = 0;
 		return;
 }
