@@ -262,7 +262,8 @@ unsigned char activesprites_active[max_loaded_sprites];
 
 
 unsigned char DEBUG_MODE = 0;
-
+unsigned char lastgcolor;
+unsigned char lastbgcolor;
 
 
 

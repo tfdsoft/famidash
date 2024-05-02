@@ -87,12 +87,13 @@ void state_lvldone() {
 	if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_C(18,19));
 	one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_C(19,19));	
 	
-	LEVELCOMPLETE[level] = 1;
-	
-	if (coins & COIN_1) coin1_obtained[level] = 1;
-	if (coins & COIN_2) coin2_obtained[level] = 1;
-	if (coins & COIN_3) coin3_obtained[level] = 1;
-
+	if (!has_practice_point) {
+		LEVELCOMPLETE[level] = 1;
+		
+		if (coins & COIN_1) coin1_obtained[level] = 1;
+		if (coins & COIN_2) coin2_obtained[level] = 1;
+		if (coins & COIN_3) coin3_obtained[level] = 1;
+	}
 	
 	if (!coins) {
 		tmp1 = sizeof(coins0) - 1;

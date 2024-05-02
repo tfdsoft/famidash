@@ -209,21 +209,21 @@ void sprite_collide_lookup(){
 	}
     }
     else if (tmp4 == COIN1 || tmp4 == COINGOTTEN1) {					//COIN
-	    coins |= COIN_1;
+	    if (!has_practice_point) { coins |= COIN_1;
 //	    sfx_play(sfx_click, 0);			//test sfx
-	activesprites_type[index] = 0xFF;		//make COIN disappear here
+	    activesprites_type[index] = 0xFF; }		//make COIN disappear here
     }
 
     else if (tmp4 == COIN2 || tmp4 == COINGOTTEN2) {					//COIN
-	    coins |= COIN_2;
+	    if (!has_practice_point) { coins |= COIN_2;
 //	    sfx_play(sfx_click, 0);			//test sfx
-	activesprites_type[index] = 0xFF;		//make COIN disappear here
+	    activesprites_type[index] = 0xFF; }		//make COIN disappear here
     }
 
     else if (tmp4 == COIN3 || tmp4 == COINGOTTEN3) {					//COIN
-	    coins |= COIN_3;
+	    if (!has_practice_point) { coins |= COIN_3;
 //	    sfx_play(sfx_click, 0);			//test sfx
-	activesprites_type[index] = 0xFF;		//make COIN disappear here
+	    activesprites_type[index] = 0xFF; }		//make COIN disappear here
     }
 
     else if (tmp4 == BLUE_ORB)  {				//blue orb
