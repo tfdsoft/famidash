@@ -245,6 +245,10 @@ unsigned long int practice_scroll_x;
 unsigned short practice_scroll_y;
 unsigned char practice_parallax_scroll_column;
 unsigned char practice_parallax_scroll_column_start;
+unsigned char practice_g_color;
+unsigned char practice_bg_color;
+unsigned char practice_g_color_type;
+unsigned char practice_bg_color_type;
 
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
@@ -264,6 +268,8 @@ unsigned char activesprites_active[max_loaded_sprites];
 unsigned char DEBUG_MODE = 0;
 unsigned char lastgcolor;
 unsigned char lastbgcolor;
+unsigned char lastgcolortype;
+unsigned char lastbgcolortype;
 
 
 

@@ -55,7 +55,45 @@ void reset_level(void) {
     cube_data[1] = 0;
     
     unrle_first_screen();
+    if (has_practice_point) {
+	    tmp3 = practice_bg_color_type;
+	    
+			tmp2 = (tmp3 & 0x3F);                        
+			if (tmp3 >= 0xC0){
+			    pal_col(6, tmp2);
+			    if (tmp2-0x10 & 0xC0) { 
+				pal_col(5, 0x0f); 
+			    } else { 
+				pal_col(5, (tmp2-0x10)); 
+			    }
+			} else {
+			    pal_col(0, tmp2);
+			    if (tmp2-0x10 & 0xC0) { 
+				pal_col(1, 0x0f); 
+			    } else { 
+				pal_col(1, (tmp2-0x10)); 
+			    }
+			}    
 
+	    tmp3 = practice_g_color_type;
+	    
+			tmp2 = (tmp3 & 0x3F);                        
+			if (tmp3 >= 0xC0){
+			    pal_col(6, tmp2);
+			    if (tmp2-0x10 & 0xC0) { 
+				pal_col(5, 0x0f); 
+			    } else { 
+				pal_col(5, (tmp2-0x10)); 
+			    }
+			} else {
+			    pal_col(0, tmp2);
+			    if (tmp2-0x10 & 0xC0) { 
+				pal_col(1, 0x0f); 
+			    } else { 
+				pal_col(1, (tmp2-0x10)); 
+			    }
+			}    
+    }
     ppu_on_all();
     pal_fade_to(0,4);
     if (!has_practice_point) {
