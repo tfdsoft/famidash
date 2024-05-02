@@ -473,28 +473,11 @@ void funsettings() {
 	ppu_off();
 	pal_bg((char *)paletteMenu);
 	vram_adr(NAMETABLE_A);
-	//vram_unrle(funsettingscreen); 
-	vram_unrle(blankmenu);  
+	vram_unrle(funsettingscreen);   
 	#include "../defines/mainmenu_charmap.h"
-	multi_vram_buffer_horz("LOCK ON CUSTOM LEVELS ", 22, NTADR_A(5,13));
-	multi_vram_buffer_horz("ARE NOT SUPPORTED IN  ", 22, NTADR_A(5,14));
-	multi_vram_buffer_horz("THIS BUILD            ", 22, NTADR_A(5,15));
 	ppu_on_all();
+	one_vram_buffer('c', NTADR_A(4, 8));	// settingvalue is set to 0 by default	
 	pal_fade_to_withmusic(0,4);
-	while (1){
-		ppu_wait_nmi();
-		music_update();
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-		if (pad[0] & PAD_B){
-			return;
-		}
-	}
-	//one_vram_buffer('c', NTADR_A(4, 8));	// settingvalue is set to 0 by default
-	/*
-	
-
-	
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
@@ -549,7 +532,6 @@ void funsettings() {
 		}
 
 	}
-	*/	
 }
 
 
