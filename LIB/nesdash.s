@@ -1245,6 +1245,27 @@ write_active:
 .importzp _cube_rotate, _mini
 .import _CUBE, _SHIP, _BALL, _ROBOT, _UFO, _SPIDER, _WAVE
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_UFO, _MINI_SPIDER, _MINI_WAVE
+
+drawcube_rounding_table:
+		.byte 0, 256-1, 256-2, 3, 2, 1
+		.byte 0, 256-1, 256-2, 3, 2, 1	; doubling it simplifies the routine
+
+drawcube_sprite_table:
+		; Bits 6-7: FLIP
+		; Bits 0-2: actual idx
+		.define NOFLIP $00
+		.define H_FLIP $40
+		.define V_FLIP $80
+		.define HVFLIP $C0
+		.byte NOFLIP|0, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
+		.byte NOFLIP|6, V_FLIP|5, V_FLIP|4, V_FLIP|3, V_FLIP|2, V_FLIP|1
+		.byte HVFLIP|0, HVFLIP|1, HVFLIP|2, HVFLIP|3, HVFLIP|4, HVFLIP|5
+		.byte HVFLIP|6, H_FLIP|5, H_FLIP|4, H_FLIP|3, H_FLIP|2, H_FLIP|1
+		.undef NOFLIP
+		.undef H_FLIP
+		.undef V_FLIP
+		.undef HVFLIP
+
 .export _drawplayerone
 
 .proc _drawplayerone
@@ -1416,15 +1437,12 @@ write_active:
     
     ; default: cube
     cube:
-		; New shit:
-            ; high(cube_rotate) & 0x7F = 0..11
-            ; high bit is 12 +
-            ; if (high bit) FLIP = C0
-            ; if & 0x7F > 6 FLIP ^= HFLIP, idx = 12 - idx
 		; C code:
 			; 		cube_rotate[0] += CUBE_GRAVITY;
-			; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == -CUBE_GRAVITY) cube_rotate[0]= 0;
-			; 		if (high_byte(cube_rotate[0]) > 0x05) high_byte(cube_rotate[0]) -= 0x06;
+			; 		if (player_vel_y[0] == 0) cube_rotate[0] = round to the nearest 90°;
+			; 		cap the mf at 24
+		@rounding_table = drawcube_rounding_table
+		@sprite_table = drawcube_sprite_table
 
         LDA #<CUBE_GRAVITY		;
         CLC                     ;
@@ -1434,70 +1452,39 @@ write_active:
             INC _cube_rotate+1  ;
         :                       ;__
 
-		LDX _cube_rotate+1
-		LDA @unified_table, X
-		STA tmp1
+		LDA _player_vel_y+1		;	if player_vel_y == 0
+		ORA _player_vel_y+0		;
+		BNE @no_round			;__
+			STA _cube_rotate+0	;__ low_byte = 0
+			LAX _cube_rotate+1	;	LAX abs is apparently stable
+			SEC					;
+			SBC #12				;	Limit table idx to 0..12
+			BCC :+				;
+				TAX				;	
+				CLC				;
+			:					;__
+			LDA _cube_rotate+1	;	Round the cube rotation
+			ADC @rounding_table, X
+			STA _cube_rotate+1	;__
+
+		@no_round:
+		LAX _cube_rotate+1		;
+		SEC						;
+		SBC #24					;
+		BCC :+					;	Cap the rotation at 23
+			STA _cube_rotate+1	;
+			TAX					;
+		:						;__
+
+		LDA @sprite_table, X
+		TAX
 		AND #$C0
 		STA <FLIP
-
-		LDX _player_vel_y+1		;	if highbyte(player_vel_y) == 0 it's possible that
-		BEQ :+					;__ PVY == 0 or CUBE_GRAVITY
-		INX						;	if highbyte == 0xFF it's possible that
-		BNE @cond_no		    ;__	PVY == -CUBE_GRAVITY
-			LDA _player_vel_y	;	if lowbyte == -CUBE_GRAVITY
-			CMP #<($100 - <CUBE_GRAVITY)
-			BNE @cond_no	    ;__
-			BEQ @cond_yes	    ;__ This is a fucking mess
-		:						;__
-		LDA _player_vel_y		;
-		BEQ @cond_yes_nold	    ;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
-		CMP #<CUBE_GRAVITY		;
-		BNE @cond_no		    ;__
-		@cond_yes:			    ;
-			LDA #$00			;
-		@cond_yes_nold:	        ;	cube_rotate[1] = 0
-			STA _cube_rotate+0	;
-			LDA _cube_rotate+1
-			SBC #$0C
-			BPL :+
-				LDA _cube_rotate+1
-			: SBC #$06
-			BPL :+
-				LDA _cube_rotate+1
-			:
-		@cond_no:
-
-		LDA _cube_rotate+1		;
-		SEC						;
-		SBC #$06				;	if (high_byte(cube_rotate[0]) > 0x05) high_byte(cube_rotate[0]) -= 0x06;
-		BCC :+					;
-			STA _cube_rotate+1	;
-		:						;__
-		LDY _cube_rotate+1		;__	Y is the index into the table
+		TXA
+		AND #$07
+		TAY
 		JMP fin
 
-		@unified_table:
-		; Bits 6-7: FLIP
-		; Bits 3-5: offset to round with + 2
-		; Bits 0-2: actual idx
-		.define NOFLIP $00
-		.define H_FLIP $40
-		.define V_FLIP $80
-		.define HVFLIP $C0
-		.byte NOFLIP|0|(($00-$00+2)<<3), NOFLIP|1|(($00-$01+2)<<3), NOFLIP|2|(($00-$02+2)<<3)
-		.byte NOFLIP|3|(($06-$03+2)<<3), NOFLIP|4|(($06-$04+2)<<3), NOFLIP|5|(($06-$05+2)<<3)
-		.byte NOFLIP|6|(($06-$06+2)<<3), V_FLIP|5|(($06-$07+2)<<3), V_FLIP|4|(($06-$08+2)<<3)
-		.byte V_FLIP|3|(($0C-$09+2)<<3), V_FLIP|2|(($0C-$0A+2)<<3), V_FLIP|1|(($0C-$0B+2)<<3)
-		.byte HVFLIP|0|(($0C-$0C+2)<<3), HVFLIP|1|(($0C-$0D+2)<<3), HVFLIP|2|(($0C-$0E+2)<<3)
-		.byte HVFLIP|3|(($12-$0F+2)<<3), HVFLIP|4|(($12-$10+2)<<3), HVFLIP|5|(($12-$11+2)<<3)
-		.byte HVFLIP|6|(($12-$12+2)<<3), H_FLIP|5|(($12-$13+2)<<3), H_FLIP|4|(($12-$14+2)<<3)
-		.byte H_FLIP|3|(($18-$15+2)<<3), H_FLIP|2|(($18-$16+2)<<3), H_FLIP|1|(($18-$17+2)<<3)
-		.undef NOFLIP
-		.undef H_FLIP
-		.undef V_FLIP
-		.undef HVFLIP
-
-	
 	ship:
 		; C code:
 			; 		cube_rotate[0] = 0x0400 - player_vel_y[0];
@@ -1916,52 +1903,54 @@ drawplayer_common := _drawplayerone::common
     
     ; default: cube
     cube:
-        ; New shit:
-            ; high(cube_rotate) & 0x7F = 0..11
-            ; high bit is 12 +
-            ; if (high bit) FLIP = C0
-            ; if & 0x7F > 6 FLIP ^= HFLIP, idx = 12 - idx
-		; C code:
-			; 		cube_rotate[1] += CUBE_GRAVITY;
-			; 		if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == -CUBE_GRAVITY) cube_rotate[1]= 0;
-			; 		if (high_byte(cube_rotate[1]) > 0x05) high_byte(cube_rotate[1]) -= 0x06;
+        ; C code:
+			; 		cube_rotate[0] += CUBE_GRAVITY;
+			; 		if (player_vel_y[0] == 0) cube_rotate[0] = round to the nearest 90°;
+			; 		cap the mf at 24
+		@rounding_table = drawcube_rounding_table
+		@sprite_table = drawcube_sprite_table
 
         LDA #<CUBE_GRAVITY		;
         CLC                     ;
         ADC _cube_rotate+2      ;
-        STA _cube_rotate+2      ;   cube_rotate[1] += CUBE_GRAVITY;
+        STA _cube_rotate+2      ;   cube_rotate[0] += CUBE_GRAVITY;
         BCC :+                  ;
             INC _cube_rotate+3  ;
         :                       ;__
 
-        LDX _player_vel_y+3		;	if highbyte(player_vel_y) == 0 it's possible that
-		BEQ :+					;__ PVY == 0 or CUBE_GRAVITY
-		INX						;	if highbyte == 0xFF it's possible that
-		BNE @cond_no		    ;__	PVY == -CUBE_GRAVITY
-			LDA _player_vel_y+2	;	if lowbyte == -CUBE_GRAVITY
-			CMP #<($100 - <CUBE_GRAVITY)
-			BNE @cond_no	    ;__
-			BEQ @cond_yes   	;__ This is a fucking mess
-		:						;__
-		LDA _player_vel_y+2		;
-		BEQ @cond_yes_nold	    ;	if highbyte == 0x00 and lowbyte == CUBE_GRAVITY or 0x00
-		CMP #<CUBE_GRAVITY		;
-		BNE @cond_no		    ;__
-		@cond_yes:		    	;
-			LDA #$00			;
-		@cond_yes_nold:	        ;	cube_rotate[1] = 0
-			STA _cube_rotate+2	;
+		LDA _player_vel_y+3		;	if player_vel_y == 0
+		ORA _player_vel_y+2		;
+		BNE @no_round			;__
+			STA _cube_rotate+2	;__ low_byte = 0
+			LAX _cube_rotate+3	;	LAX abs is apparently stable
+			SEC					;
+			SBC #12				;	Limit table idx to 0..12
+			BCC :+				;
+				TAX				;	
+				CLC				;
+			:					;__
+			LDA _cube_rotate+3	;	Round the cube rotation
+			ADC @rounding_table, X
 			STA _cube_rotate+3	;__
-		@cond_no:
 
-		LDA _cube_rotate+3		;
+		@no_round:
+		LAX _cube_rotate+3		;
 		SEC						;
-		SBC #$06				;	if (high_byte(cube_rotate[1]) > 0x05) high_byte(cube_rotate[1]) -= 0x06;
-		BCC :+					;
+		SBC #24					;
+		BCC :+					;	Cap the rotation at 23
 			STA _cube_rotate+3	;
+			TAX					;
 		:						;__
-		LDY _cube_rotate+3		;__	Y is the index into the table
-		JMP drawplayer_common	
+
+		LDA @sprite_table, X
+		TAX
+		AND #$C0
+		STA <FLIP
+		TXA
+		AND #$07
+		TAY
+		JMP drawplayer_common
+
 	ship:
 		; C code:
 			; 		cube_rotate[1] = 0x0400 - player_vel_y[1];
