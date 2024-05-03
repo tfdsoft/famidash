@@ -1416,6 +1416,11 @@ write_active:
     
     ; default: cube
     cube:
+		; New shit:
+            ; high(cube_rotate) & 0x7F = 0..11
+            ; high bit is 12 +
+            ; if (high bit) FLIP = C0
+            ; if & 0x7F > 6 FLIP ^= HFLIP, idx = 12 - idx
 		; C code:
 			; 		cube_rotate[0] += CUBE_GRAVITY;
 			; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == -CUBE_GRAVITY) cube_rotate[0]= 0;
@@ -1429,7 +1434,13 @@ write_active:
             INC _cube_rotate+1  ;
         :                       ;__
 
-        LDX _player_vel_y+1		;	if highbyte(player_vel_y) == 0 it's possible that
+		LDX _cube_rotate+1
+		LDA @unified_table, X
+		STA tmp1
+		AND #$C0
+		STA <FLIP
+
+		LDX _player_vel_y+1		;	if highbyte(player_vel_y) == 0 it's possible that
 		BEQ :+					;__ PVY == 0 or CUBE_GRAVITY
 		INX						;	if highbyte == 0xFF it's possible that
 		BNE @cond_no		    ;__	PVY == -CUBE_GRAVITY
@@ -1446,7 +1457,14 @@ write_active:
 			LDA #$00			;
 		@cond_yes_nold:	        ;	cube_rotate[1] = 0
 			STA _cube_rotate+0	;
-			STA _cube_rotate+1	;__
+			LDA _cube_rotate+1
+			SBC #$0C
+			BPL :+
+				LDA _cube_rotate+1
+			: SBC #$06
+			BPL :+
+				LDA _cube_rotate+1
+			:
 		@cond_no:
 
 		LDA _cube_rotate+1		;
@@ -1457,6 +1475,28 @@ write_active:
 		:						;__
 		LDY _cube_rotate+1		;__	Y is the index into the table
 		JMP fin
+
+		@unified_table:
+		; Bits 6-7: FLIP
+		; Bits 3-5: offset to round with + 2
+		; Bits 0-2: actual idx
+		.define NOFLIP $00
+		.define H_FLIP $40
+		.define V_FLIP $80
+		.define HVFLIP $C0
+		.byte NOFLIP|0|(($00-$00+2)<<3), NOFLIP|1|(($00-$01+2)<<3), NOFLIP|2|(($00-$02+2)<<3)
+		.byte NOFLIP|3|(($06-$03+2)<<3), NOFLIP|4|(($06-$04+2)<<3), NOFLIP|5|(($06-$05+2)<<3)
+		.byte NOFLIP|6|(($06-$06+2)<<3), V_FLIP|5|(($06-$07+2)<<3), V_FLIP|4|(($06-$08+2)<<3)
+		.byte V_FLIP|3|(($0C-$09+2)<<3), V_FLIP|2|(($0C-$0A+2)<<3), V_FLIP|1|(($0C-$0B+2)<<3)
+		.byte HVFLIP|0|(($0C-$0C+2)<<3), HVFLIP|1|(($0C-$0D+2)<<3), HVFLIP|2|(($0C-$0E+2)<<3)
+		.byte HVFLIP|3|(($12-$0F+2)<<3), HVFLIP|4|(($12-$10+2)<<3), HVFLIP|5|(($12-$11+2)<<3)
+		.byte HVFLIP|6|(($12-$12+2)<<3), H_FLIP|5|(($12-$13+2)<<3), H_FLIP|4|(($12-$14+2)<<3)
+		.byte H_FLIP|3|(($18-$15+2)<<3), H_FLIP|2|(($18-$16+2)<<3), H_FLIP|1|(($18-$17+2)<<3)
+		.undef NOFLIP
+		.undef H_FLIP
+		.undef V_FLIP
+		.undef HVFLIP
+
 	
 	ship:
 		; C code:
@@ -1675,7 +1715,6 @@ write_active:
 
 
 	fin:
-        LDX #$00
     common:
 		TYA					;
 		ASL					;	Double da index cuz it's a table of shorts
@@ -1877,6 +1916,11 @@ drawplayer_common := _drawplayerone::common
     
     ; default: cube
     cube:
+        ; New shit:
+            ; high(cube_rotate) & 0x7F = 0..11
+            ; high bit is 12 +
+            ; if (high bit) FLIP = C0
+            ; if & 0x7F > 6 FLIP ^= HFLIP, idx = 12 - idx
 		; C code:
 			; 		cube_rotate[1] += CUBE_GRAVITY;
 			; 		if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == -CUBE_GRAVITY) cube_rotate[1]= 0;
@@ -1917,8 +1961,7 @@ drawplayer_common := _drawplayerone::common
 			STA _cube_rotate+3	;
 		:						;__
 		LDY _cube_rotate+3		;__	Y is the index into the table
-		JMP fin
-	
+		JMP drawplayer_common	
 	ship:
 		; C code:
 			; 		cube_rotate[1] = 0x0400 - player_vel_y[1];
@@ -1957,8 +2000,7 @@ drawplayer_common := _drawplayerone::common
 			ADC #$08
 		:
 		TAY
-		JMP fin
-
+		JMP drawplayer_common
 	ball:
 		; C code:
 			; if (!mini) {
@@ -1973,8 +2015,7 @@ drawplayer_common := _drawplayerone::common
 		; AND #$07		;__	if (ballframe > 7) { ballframe = 0; }
 		; STA _ballframe	;__
 		LDY _ballframe
-		JMP fin
-
+		JMP drawplayer_common
 	ufo:
 		; Real C code:
 			; 		if (!player_gravity[1]) {
@@ -2024,7 +2065,7 @@ drawplayer_common := _drawplayerone::common
 			ADC tmp1		;
 			BNE	@fin	    ;__
 			TAY				;	kandotemp3[1] = 0;
-			JMP fin		    ;__
+			JMP drawplayer_common	    ;__
 		:
 		LDX _player_vel_y+2	;	if (lowbyte == 0) kandotemp3[1] = 0;
 		BEQ :+				;__
@@ -2034,7 +2075,7 @@ drawplayer_common := _drawplayerone::common
 		BNE @fin		    ;
 		:	DEY				;	kandotemp3[1] = 0;
 		@fin:		    	;
-			JMP fin	    	;__
+			JMP drawplayer_common    	;__
 	robot:
 		; C code:
 			;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
@@ -2060,13 +2101,13 @@ drawplayer_common := _drawplayerone::common
 				LDA #$00	;__
 			:				;
 			STA _robotframe+1;__
-			JMP fin
+			JMP drawplayer_common
 		:					;	} else {
 			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe+1
 			TAY				;__
-			JMP fin
+			JMP drawplayer_common
 	spider:
 		; C code:
 			;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
@@ -2089,10 +2130,10 @@ drawplayer_common := _drawplayerone::common
 			ADC #$01		;__
 			AND #$0F        ;   if (spiderframe[1] > 15) spiderframe[1] = 0;
 			STA _spiderframe+1;__
-			JMP fin
+			JMP drawplayer_common
 		:					;	} else { SPIDER_JUMP[0] = SPIDER[8]
 			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
-			JMP fin
+			JMP drawplayer_common
 	wave:
 		; C code:
 			; 		cube_rotate[1] = 0x0400 - player_vel_y[1];
@@ -2131,11 +2172,6 @@ drawplayer_common := _drawplayerone::common
 			ADC #$08
 		:
 		TAY
-		; JMP fin
-
-
-
-	fin:
 		JMP drawplayer_common
 	sprite_table_table_lo:
 		.byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT2, <_SPIDER2, <_WAVE2
