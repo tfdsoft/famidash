@@ -1278,123 +1278,6 @@ drawplayer_center_offsets:
 .export _drawplayerone
 
 .proc _drawplayerone
-    ; C code to be ported:
-		; temp_x = high_byte(player_x[0]);
-		; if(temp_x > 0xfc) temp_x = 1;
-		; if(temp_x == 0) temp_x = 1;
-		; switch (gamemode){
-		; 	default:
-
-		; 		cube_rotate[0] += CUBE_GRAVITY;
-		; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == -CUBE_GRAVITY) cube_rotate[0]= 0;
-		; 		if (high_byte(cube_rotate[0]) > 0x05) high_byte(cube_rotate[0]) -= 0x06;
-
-		; 		if (!mini) {
-		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, CUBE[high_byte(cube_rotate)]);
-		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, CUBE[high_byte(cube_rotate)]);
-		; 		}
-		; 		else {
-		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_CUBE[high_byte(cube_rotate)]);
-		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_CUBE[high_byte(cube_rotate)]);				
-		; 		}
-		; 		break;
-		; 	case 0x01:
-		; 		cube_rotate[0] = 0x0400 - player_vel_y[0];
-		; 		if (high_byte(cube_rotate) >= 0x08) {
-		; 			cube_rotate[0]= high_byte(cube_rotate) >= 0x80 ? 0x0000 : 0x07FF;
-		; 		}
-
-		; 		if (!mini) {
-		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, SHIP[high_byte(cube_rotate)]);
-		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, SHIP[7-high_byte(cube_rotate)]);
-		; 		}
-		; 		else {
-		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_SHIP[high_byte(cube_rotate)]);
-		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_SHIP[7-high_byte(cube_rotate)]);
-		; 		}
-		; 		break;
-				
-		; 	case 0x02:
-		; 		if (!mini) {
-		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, BALL[ballframe]);
-		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, BALL[ballframe]);
-		; 			ballframe++;
-		; 			if (ballframe > 7) { ballframe = 0; }
-		; 		}
-		; 		else   {
-		; 			if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_BALL[ballframe]);
-		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_BALL[ballframe]);
-		; 		}
-		; 		break;
-
-		; 	case 0x03:
-		; 		if (!player_gravity[0]) {
-		; 			if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == MINICUBE_GRAVITY) kandotemp3[0] = 0;
-		; 			else if (player_vel_y[0] > 0) kandotemp3[0] = 1;
-		; 			else if (player_vel_y[0] < 0) kandotemp3[0] = 2;
-		; 			if (!mini) oam_meta_spr(temp_x, high_byte(player_y[0])-1, UFO[kandotemp3[0]]);
-		; 			else oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_UFO[kandotemp3[0]]);
-		; 		}
-		; 		else {
-		; 			if (player_vel_y[0] == 0 || player_vel_y[0] == -CUBE_GRAVITY || player_vel_y[0] == -MINICUBE_GRAVITY) kandotemp3[0] = 0;
-		; 			else if (player_vel_y[0] > 0) kandotemp3[0] = 1;
-		; 			else if (player_vel_y[0] < 0) kandotemp3[0] = 2;
-			
-		; 			if (!mini) oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, UFO[kandotemp3[0]]);
-		; 			else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_UFO[kandotemp3[0]]);
-		; 		}
-		; 		break;
-				
-		; 	case 0x04:
-		; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
-		; 			if (!mini) {
-		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, ROBOT[robotframe[0]]);
-		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, ROBOT[robotframe[0]]);
-		; 			}
-		; 			else {
-		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_ROBOT[robotframe[0]]);
-		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_ROBOT[robotframe[0]]);					
-		; 			}
-		; 			robotframe[0]++;
-		; 			if (robotframe[0] > 19) { robotframe[0] = 0; }
-		; 			break;
-		; 		}
-		; 		else {
-		; 			if (!mini) {
-		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, ROBOT_JUMP[robotjumpframe[0]]);
-		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, ROBOT_JUMP[robotjumpframe[0]]);
-		; 			}
-		; 			else {
-		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_ROBOT_JUMP[robotjumpframe[0]]);
-		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_ROBOT_JUMP[robotjumpframe[0]]);
-		; 			}
-		; 			break;
-		; 		}
-		; 	case 0x05:
-		; 		if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
-		; 			if (!mini) {
-		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, SPIDER[spiderframe[0]]);
-		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, SPIDER[spiderframe[0]]);
-		; 			}
-		; 			else {
-		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_SPIDER[spiderframe[0]]);
-		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_SPIDER[spiderframe[0]]);					
-		; 			}
-		; 			spiderframe[0]++;
-		; 			if (spiderframe[0] > 15) spiderframe[0] = 0;
-		; 		}
-		; 		else {
-		; 			if (!mini) {
-		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, SPIDER_JUMP[0]);
-		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, SPIDER_JUMP[0]);
-		; 			}
-		; 			else {
-		; 				if (!player_gravity[0]) oam_meta_spr(temp_x, high_byte(player_y[0])-1, MINI_SPIDER_JUMP[0]);
-		; 				else oam_meta_spr_flipped(temp_x, high_byte(player_y[0])-1, MINI_SPIDER_JUMP[0]);
-		; 			}						
-		; 		}	
-		; 		break;	
-	    ; }
 
     LDA _player_gravity+0
     BEQ :+
@@ -1571,66 +1454,38 @@ drawplayer_center_offsets:
 	ufo:
 		; Real C code:
 			; 		if (!player_gravity[0]) {
-			; 			if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY || player_vel_y[0] == MINICUBE_GRAVITY) kandotemp3[0] = 0;
+			; 			if (player_vel_y[0] == 0) kandotemp3[0] = 0;
 			; 			else if (player_vel_y[0] > 0) kandotemp3[0] = 1;
 			; 			else if (player_vel_y[0] < 0) kandotemp3[0] = 2;
 			; 		}
 			; 		else {
-			; 			if (player_vel_y[0] == 0 || player_vel_y[0] == -CUBE_GRAVITY || player_vel_y[0] == -MINICUBE_GRAVITY) kandotemp3[0] = 0;
+			; 			if (player_vel_y[0] == 0) kandotemp3[0] = 0;
 			; 			else if (player_vel_y[0] > 0) kandotemp3[0] = 1;
 			; 			else if (player_vel_y[0] < 0) kandotemp3[0] = 2;
 			; 		}
 			;	kandotemp3[0] used as index
 		; Modified pseudo C code:
-			;	cmptmp = mini ? MINICUBE_GRAVITY : CUBE_GRAVITY;
 			;	kandotemp3[0] = 1;
 			;	if (0 < highbyte < $80) {}	// do nothing with it
 			;	else if ($80 ≤ highbyte ≤ $FF) {
 			;		kandotemp3[0] = 2;
-			;		if (highbyte == $FF) {
-			;			if (player_gravity[0] != $00) {	
-			;				if (lowbyte == -cmptmp) kandotemp3[0] = 0;
-			;			}
-			;		}
 			;	} else if (highbyte == $00) {
-			;		if (player_gravity[0] == $00) {
-			;			if (lowbyte == cmptmp || lowbyte == 0) kandotemp3[0] = 0;
-			;		}
+			;		if (lowbyte == 0) kandotemp3[0] = 0;
 			; 	}
-		LDA #<CUBE_GRAVITY	;
-		LDX _mini			;
-		BEQ :+				;	cmptmp = mini ? MINICUBE_GRAVITY : CUBE_GRAVITY;
-			LDA #<MINI_CUBE_GRAVITY
-		: STA tmp1			;__
-
 		LDY #$1				;__	kandotemp3[0] = 1;
 		LDA _player_vel_y+1	;__
 		BEQ :+				;__	else if (highbyte == $00) { // later }
-		BPL @fin	    	;__	if (0 < highbyte < $80) {}	// do nothing with it
-			INY				;__	else if ($80 ≤ highbyte ≤ $FF) { kandotemp3[0] = 2;
-			CMP #$FF		;	if (highbyte == $FF) {
-			BNE	@fin	    ;__
-			LDA _player_gravity
-			BEQ @fin	    ;__	if (player_gravity[0] != $00) {	
-			LDA _player_vel_y
-			CLC				;	if (lowbyte = -cmptmp)
-			ADC tmp1		;
-			BNE	@fin	    ;__
-			TAY				;	kandotemp3[0] = 0;
-			JMP fin		;__
+		BPL fin	    		;__	if (0 < highbyte < $80) {}	// do nothing with it
+			INY				;__	else if ($80 ≤ highbyte ≤ $FF) { kandotemp3[0] = 2; }
+			JMP fin			;__
 		:
-		LDX _player_vel_y	;	if (lowbyte == 0) kandotemp3[0] = 0;
-		BEQ :+				;__
-		ORA _player_gravity+0
-		BNE @fin	    	;__	if (player_gravity[0] == $00) {
-		CPX tmp1			;__	if (lowbyte == cmptmp)
-		BNE @fin	    	;
-		:	DEY				;	kandotemp3[0] = 0;
-		@fin:   			;
-			JMP fin		;__
+		ORA _player_vel_y	;	if (player_vel_y == 0)
+		BNE fin				;__
+		DEY					;	kandotemp3[0] = 0;
+		JMP fin				;__
 	robot:
 		; C code:
-			;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
+			;	if (player_vel_y[0] == 0) {
 			;		[index from ROBOT/MINI_ROBOT using robotframe[0]]
 			; 		robotframe[0]++;
 			; 		if (robotframe[0] > 19) { robotframe[0] = 0; }	
@@ -1638,23 +1493,18 @@ drawplayer_center_offsets:
 			;		[index from ROBOT_JUMP/MINI_ROBOT_JUMP using robotjumpframe[0]]
 			; 	}
 		LDA _player_vel_y+1	;
-		BNE :+++			;
-		LDA _player_vel_y	;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
-		BEQ :+				;
-		CMP #<CUBE_GRAVITY	;
-		BNE :+++			;__
-		:					;
-			LDA _robotframe	;	[load robotframe[0] into Y]
-			TAY				;__
-			CLC				;	robotframe[0]++;
-			ADC #$01		;__
+		ORA _player_vel_y	;	if (player_vel_y[0] == 0) {
+		BNE @jump			;__
+			LDY _robotframe	;	[load robotframe[0] into Y]
+			SEC				;	robotframe[0]++; (A is 0, so set the carry and bam)
+			ADC _robotframe	;__
 			CMP #20			;
 			BCC :+			;	if (robotframe[0] > 19) { robotframe[0] = 0; }	
 				LDA #$00	;__
 			:				;
 			STA _robotframe	;__
 			JMP fin
-		:					;	} else {
+		@jump:				;	} else {
 			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe
@@ -1662,7 +1512,7 @@ drawplayer_center_offsets:
 			JMP fin
 	spider:
 		; C code:
-			;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
+			;	if (player_vel_y[0] == 0 ) {
 			;		[index from SPIDER/MINI_SPIDER using spiderframe[0]]
 			; 		spiderframe[0]++;
 			; 		if (spiderframe[0] > 15) { spiderframe[0] = 0; }	
@@ -1670,20 +1520,15 @@ drawplayer_center_offsets:
 			;		[use SPIDER_JUMP/MINI_SPIDER_JUMP[0]]
 			; 	}
 		LDA _player_vel_y+1	;
-		BNE :++		    	;
-		LDA _player_vel_y	;	if (player_vel_y[0] == 0 || player_vel_y[0] == CUBE_GRAVITY) {
-		BEQ :+				;
-		CMP #<CUBE_GRAVITY	;
-		BNE :++		    	;__
-		:					;
-			LDA _spiderframe	;	[load spiderframe[0] into Y]
-			TAY				;__
-			CLC				;	spiderframe[0]++;
-			ADC #$01		;__
+		ORA _player_vel_y	;	if (player_vel_y[0] == 0) {
+		BNE @jump			;
+			LDY _spiderframe	;	[load spiderframe[0] into Y]
+			SEC				;	spiderframe[0]++; (A is 0, so set the carry and bam)
+			ADC _spiderframe ;__
 			AND #$0F        ;   if (spiderframe[0] > 15) spiderframe[0] = 0;
 			STA _spiderframe;__
 			JMP fin
-		:					;	} else { SPIDER_JUMP[0] = SPIDER[8]
+		@jump:				;	} else { SPIDER_JUMP[0] = SPIDER[8]
 			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
 			JMP fin
 
@@ -1772,124 +1617,7 @@ drawplayer_common := _drawplayerone::common
 .export _drawplayertwo
 
 .proc _drawplayertwo
-    ; C code:
-        ; temp_x = high_byte(player_x[1]);
-        ; if(temp_x > 0xfc) temp_x = 1;
-        ; if(temp_x == 0) temp_x = 1;
-        ; switch (gamemode){
-        ;     default:
 
-        ;         cube_rotate[1] += CUBE_GRAVITY;
-        ;         if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == -CUBE_GRAVITY) cube_rotate[1] = 0;
-        ;         if (high_byte(cube_rotate[1]) > 0x05) high_byte(cube_rotate[1]) -= 0x06;
-
-        ;         if (!mini) {
-        ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, CUBE2[high_byte(cube_rotate[1])]);
-        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, CUBE2[high_byte(cube_rotate[1])]);
-        ;         }
-        ;         else {
-        ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_CUBE2[high_byte(cube_rotate[1])]);
-        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_CUBE2[high_byte(cube_rotate[1])]);				
-        ;         }
-        ;         break;
-        ;     case 0x01:
-        ;         cube_rotate[1] = 0x0400 - player_vel_y[1];
-        ;         if (high_byte(cube_rotate[1]) >= 0x08) {
-        ;             cube_rotate[1] = high_byte(cube_rotate[1]) >= 0x80 ? 0x0000 : 0x07FF;
-        ;         }
-
-        ;         if (!mini) {
-        ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SHIP2[high_byte(cube_rotate[1])]);
-        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, SHIP2[7-high_byte(cube_rotate[1])]);
-        ;         }
-        ;         else {
-        ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SHIP2[high_byte(cube_rotate[1])]);
-        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_SHIP2[7-high_byte(cube_rotate[1])]);
-        ;         }
-        ;         break;
-                
-        ;     case 0x02:
-        ;         if (!mini) {
-        ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, BALL2[ballframe]);
-        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, BALL2[ballframe]);
-        ;         //	ballframe++;
-        ;         //	if (ballframe > 7) { ballframe = 0; }
-        ;         }
-        ;         else   {
-        ;             if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_BALL2[ballframe]);
-        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_BALL2[ballframe]);
-        ;         }
-        ;         break;
-
-        ;     case 0x03:
-        ;         if (!player_gravity[1]) {
-        ;             if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == MINI_CUBE_GRAVITY) kandotemp3[1] = 0;
-        ;             else if (player_vel_y[1] > 0) kandotemp3[1] = 1;
-        ;             else if (player_vel_y[1] < 0) kandotemp3[1] = 2;
-        ;             if (!mini) oam_meta_spr(temp_x, high_byte(player_y[1])-1, UFO2[kandotemp3[1]]);
-        ;             else oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_UFO2[kandotemp3[1]]);
-        ;         }
-        ;         else {
-        ;             if (player_vel_y[1] == 0 || player_vel_y[1] == -CUBE_GRAVITY || player_vel_y[1] == -MINI_CUBE_GRAVITY) kandotemp3[1] = 0;
-        ;             else if (player_vel_y[1] > 0) kandotemp3[1] = 1;
-        ;             else if (player_vel_y[1] < 0) kandotemp3[1] = 2;
-            
-        ;             if (!mini) oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, UFO2[kandotemp3[1]]);
-        ;             else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_UFO2[kandotemp3[1]]);
-        ;         }
-        ;         break;
-                
-        ;     case 0x04:
-        ;         if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
-        ;             if (!mini) {
-        ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, ROBOT2[robotframe[1]]);
-        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, ROBOT2[robotframe[1]]);
-        ;             }
-        ;             else {
-        ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_ROBOT2[robotframe[1]]);
-        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_ROBOT2[robotframe[1]]);					
-        ;             }
-        ;             robotframe[1]++;
-        ;             if (robotframe[1] > 19) { robotframe[1] = 0; }
-        ;             break;
-        ;         }
-        ;         else {
-        ;             if (!mini) {
-        ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, ROBOT_JUMP2[robotjumpframe[1]]);
-        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, ROBOT_JUMP2[robotjumpframe[1]]);
-        ;             }
-        ;             else {
-        ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_ROBOT_JUMP2[robotjumpframe[1]]);
-        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_ROBOT_JUMP2[robotjumpframe[1]]);
-        ;             }
-        ;             break;
-        ;         }
-
-        ;     case 0x05:
-        ;         if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
-        ;             if (!mini) {
-        ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SPIDER2[spiderframe[1]]);
-        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, SPIDER2[spiderframe[1]]);
-        ;             }
-        ;             else {
-        ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SPIDER2[spiderframe[1]]);
-        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_SPIDER2[spiderframe[1]]);					
-        ;             }
-        ;             spiderframe[1]++;
-        ;             if (spiderframe[1] > 15) spiderframe[1] = 0;
-        ;         }
-        ;         else {
-        ;             if (!mini) {
-        ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, SPIDER_JUMP2[0]);
-        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, SPIDER_JUMP2[0]);
-        ;             }
-        ;             else {
-        ;                 if (!player_gravity[1]) oam_meta_spr(temp_x, high_byte(player_y[1])-1, MINI_SPIDER_JUMP2[0]);
-        ;                 else oam_meta_spr_flipped(temp_x, high_byte(player_y[1])-1, MINI_SPIDER_JUMP2[0]);
-        ;             }						
-        ;         }	
-        ;         break;	
-        ; }
     LDA _player_gravity+1
     BEQ :+
         LDA #$80
@@ -1901,7 +1629,7 @@ drawplayer_common := _drawplayerone::common
 
     ; Set up base pointer for jump tables
     LDA _mini       ;
-    BEQ :+          ;   Add 6 if mini mode 
+    BEQ :+          ;   Add 7 if mini mode 
         LDA #$07    ;   ! Increment this value when new gamemodes added
     :               ;__
     CLC             ;   Actual gamemode itself
@@ -2054,70 +1782,44 @@ drawplayer_common := _drawplayerone::common
 		; LDA _ballframe	;	Load index
 		; TAY				;__
 		; CLC				;	ballframe++;
-		; ADC #$01		;__
-		; AND #$07		;__	if (ballframe > 7) { ballframe = 0; }
+		; ADC #$01			;__
+		; AND #$07			;__	if (ballframe > 7) { ballframe = 0; }
 		; STA _ballframe	;__
 		LDY _ballframe
 		JMP drawplayer_common
 	ufo:
 		; Real C code:
 			; 		if (!player_gravity[1]) {
-			; 			if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY || player_vel_y[1] == MINICUBE_GRAVITY) kandotemp3[1] = 0;
+			; 			if (player_vel_y[1] == 0) kandotemp3[1] = 0;
 			; 			else if (player_vel_y[1] > 0) kandotemp3[1] = 1;
 			; 			else if (player_vel_y[1] < 0) kandotemp3[1] = 2;
 			; 		}
 			; 		else {
-			; 			if (player_vel_y[1] == 0 || player_vel_y[1] == -CUBE_GRAVITY || player_vel_y[1] == -MINICUBE_GRAVITY) kandotemp3[1] = 0;
+			; 			if (player_vel_y[1] == 0) kandotemp3[1] = 0;
 			; 			else if (player_vel_y[1] > 0) kandotemp3[1] = 1;
 			; 			else if (player_vel_y[1] < 0) kandotemp3[1] = 2;
 			; 		}
 			;	kandotemp3[1] used as index
 		; Modified pseudo C code:
-			;	cmptmp = mini ? MINICUBE_GRAVITY : CUBE_GRAVITY;
 			;	kandotemp3[1] = 1;
 			;	if (0 < highbyte < $80) {}	// do nothing with it
 			;	else if ($80 ≤ highbyte ≤ $FF) {
 			;		kandotemp3[1] = 2;
-			;		if (highbyte == $FF) {
-			;			if (player_gravity[1] != $00) {	
-			;				if (lowbyte == -cmptmp) kandotemp3[1] = 0;
-			;			}
-			;		}
 			;	} else if (highbyte == $00) {
-			;		if (player_gravity[1] == $00) {
-			;			if (lowbyte == cmptmp || lowbyte == 0) kandotemp3[1] = 0;
-			;		}
+			;		if (lowbyte == 0) kandotemp3[1] = 0;
 			; 	}
-		LDA #<CUBE_GRAVITY	;
-		LDX _mini			;
-		BEQ :+				;	cmptmp = mini ? MINICUBE_GRAVITY : CUBE_GRAVITY;
-			LDA #<MINI_CUBE_GRAVITY
-		: STA tmp1			;__
 
 		LDY #$1				;__	kandotemp3[1] = 1;
 		LDA _player_vel_y+3	;__
 		BEQ :+				;__	else if (highbyte == $00) { // later }
 		BPL @fin		    ;__	if (0 < highbyte < $80) {}	// do nothing with it
-			INY				;__	else if ($80 ≤ highbyte ≤ $FF) { kandotemp3[1] = 2;
-			CMP #$FF		;	if (highbyte == $FF) {
-			BNE	@fin    	;__
-			LDA _player_gravity+1
-			BEQ @fin    	;__	if (player_gravity[1] != $00) {	
-			LDA _player_vel_y+2
-			CLC				;	if (lowbyte = -cmptmp)
-			ADC tmp1		;
-			BNE	@fin	    ;__
-			TAY				;	kandotemp3[1] = 0;
+			INY				;__	else if ($80 ≤ highbyte ≤ $FF) { kandotemp3[1] = 2; }
 			JMP drawplayer_common	    ;__
 		:
-		LDX _player_vel_y+2	;	if (lowbyte == 0) kandotemp3[1] = 0;
-		BEQ :+				;__
-		ORA _player_gravity+1
-		BNE @fin		    ;__	if (player_gravity[1] == $00) {
-		CPX tmp1			;__	if (lowbyte == cmptmp)
-		BNE @fin		    ;
-		:	DEY				;	kandotemp3[1] = 0;
-		@fin:		    	;
+		ORA _player_vel_y+2	;	if (lowbyte == 0) kandotemp3[1] = 0;
+		BNE @fin			;
+			DEY				;	kandotemp3[1] = 0;
+		@fin:
 			JMP drawplayer_common    	;__
 	robot:
 		; C code:
@@ -2129,23 +1831,18 @@ drawplayer_common := _drawplayerone::common
 			;		[index from ROBOT_JUMP/MINI_ROBOT_JUMP using robotjumpframe[1]]
 			; 	}
 		LDA _player_vel_y+3	;
-		BNE :+++			;
-		LDA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
-		BEQ :+				;
-		CMP #<CUBE_GRAVITY	;
-		BNE :+++			;__
-		:					;
-			LDA _robotframe+1;	[load robotframe[1] into Y]
-			TAY				;__
-			CLC				;	robotframe[1]++;
-			ADC #$01		;__
+		ORA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
+		BNE @jump			;
+			LDY _robotframe+1;	[load robotframe[1] into Y] (A is 0, so set the carry and bam)
+			SEC				;	robotframe[1]++;
+			ADC _robotframe	;__
 			CMP #20			;
 			BCC :+			;	if (robotframe[1] > 19) { robotframe[1] = 0; }	
 				LDA #$00	;__
 			:				;
 			STA _robotframe+1;__
 			JMP drawplayer_common
-		:					;	} else {
+		@jump:				;	} else {
 			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe+1
@@ -2161,20 +1858,15 @@ drawplayer_common := _drawplayerone::common
 			;		[use SPIDER_JUMP/MINI_SPIDER_JUMP[0]]
 			; 	}
 		LDA _player_vel_y+3	;
-		BNE :++		    	;
-		LDA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
-		BEQ :+				;
-		CMP #<CUBE_GRAVITY	;
-		BNE :++		    	;__
-		:					;
-			LDA _spiderframe+1;	[load spiderframe[1] into Y]
-			TAY				;__
-			CLC				;	spiderframe[1]++;
-			ADC #$01		;__
+		ORA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
+		BNE @jump	    	;__
+			LDY _spiderframe+1;	[load spiderframe[1] into Y] 
+			SEC				;	spiderframe[1]++; (A is 0, so set the carry and bam)
+			ADC _spiderframe+1;__
 			AND #$0F        ;   if (spiderframe[1] > 15) spiderframe[1] = 0;
 			STA _spiderframe+1;__
 			JMP drawplayer_common
-		:					;	} else { SPIDER_JUMP[0] = SPIDER[8]
+		@jump:				;	} else { SPIDER_JUMP[0] = SPIDER[8]
 			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
 			JMP drawplayer_common
 	wave:
