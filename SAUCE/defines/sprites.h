@@ -534,52 +534,52 @@ const unsigned char * const MINI_SHIP2[] = {Mini_Ship2_0, Mini_Ship2_0, Mini_Shi
 
 const unsigned char COIN_SPRITE[]={
 
-	  0,  0,0xAD,1,
-	  8,  0,0xAD,1|OAM_FLIP_H,
+	  0,  0,0xAF,1,
+	  8,  0,0xAF,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_1_SPRITE[]={
 
-	  0,  0,0xAF,1,
-	  8,  0,0xB1,1,
+	  0,  0,0xB1,1,
+	  8,  0,0xB3,1,
 	0x80
 };
 const unsigned char COIN_2_SPRITE[]={
 
-	  0,  0,0xB3,1,
-	  8,  0,0xB3,1|OAM_FLIP_H,
+	  0,  0,0xB5,1,
+	  8,  0,0xB5,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_3_SPRITE[]={
 
-	  0,  0,0xB1,1|OAM_FLIP_H,
-	  8,  0,0xAF,1|OAM_FLIP_H,
+	  0,  0,0xB3,1|OAM_FLIP_H,
+	  8,  0,0xB1,1|OAM_FLIP_H,
 	0x80
 };
 
 
 const unsigned char COIN_SPRITE_X[]={
 
-	  0,  0,0xB9,1,
-	  8,  0,0xB9,1|OAM_FLIP_H,
+	  0,  0,0xC1,1,
+	  8,  0,0xC1,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_1_X[]={
 
-	  0,  0,0xBB,1,
-	  8,  0,0xBD,1,
+	  0,  0,0xC3,1,
+	  8,  0,0xC5,1,
 	0x80
 };
 const unsigned char COIN_2_X[]={
 
-	  0,  0,0xBF,1,
-	  8,  0,0xBF,1|OAM_FLIP_H,
+	  0,  0,0xC7,1,
+	  8,  0,0xC7,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char COIN_3_X[]={
 
-	  0,  0,0xBD,1|OAM_FLIP_H,
-	  8,  0,0xBB,1|OAM_FLIP_H,
+	  0,  0,0xC5,1|OAM_FLIP_H,
+	  8,  0,0xC3,1|OAM_FLIP_H,
 	0x80
 };
 
@@ -1206,7 +1206,27 @@ const unsigned char Portal_Gravity_Up_Horizontal_Upwards[]={
 
 const unsigned char Yellow_Jump_Orb[]={
 
-	  4,  0,0xB7,1,
+	  0,  0,0x99,1,
+	  8,  0,0x9B,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Yellow_Jump_Orb2[]={
+
+	  0,  0,0x9B,1,
+	  8,  0,0x9D,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Yellow_Jump_Orb3[]={
+
+	  0,  0,0x9D,1,
+	  8,  0,0x9F,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Yellow_Jump_Orb4[]={
+
+	  0,  0,0x9F,1,
+	  8,  0,0x99,1|OAM_FLIP_H,
 	0x80
 };
 
@@ -1428,6 +1448,12 @@ const struct SpriteFrame GRAVITY_PAD_U_SPRITES[]={
 	{5, Gravity_Pad_U3},
 	{5, Gravity_Pad_U4},
 };
+const struct SpriteFrame YELLOW_ORB_SPRITES[]={
+	{5, Yellow_Jump_Orb},
+	{5, Yellow_Jump_Orb2},
+	{5, Yellow_Jump_Orb3},
+	{5, Yellow_Jump_Orb4},
+};
 
 const unsigned char nometa[] = {0x80};
 
@@ -1488,7 +1514,7 @@ const void* animation_frame_list[] = {
 	NULL, // Portal_Gravity_Down,
 	NULL, // Portal_Gravity_Up,
 	YELLOW_PAD_SPRITES, // Yellow_Jump_Pad,
-	NULL, // Yellow_Jump_Orb,
+	YELLOW_ORB_SPRITES, // Yellow_Jump_Orb,
 	YELLOW_PAD_U_SPRITES, // Yellow_Jump_Pad_U,
 	GRAVITY_PAD_SPRITES, // Gravity_Pad,
 	GRAVITY_PAD_U_SPRITES, // Gravity_Pad_U,	  //Coin Disappear
@@ -1532,7 +1558,7 @@ const unsigned char animation_frame_length[] = {
 	0, // Portal_Gravity_Down,
 	0, // Portal_Gravity_Up,
 	sizeof(YELLOW_PAD_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
-	0, // Yellow_Jump_Orb,
+	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
 	sizeof(YELLOW_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad_U,
 	sizeof(GRAVITY_PAD_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad,
 	sizeof(GRAVITY_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear

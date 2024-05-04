@@ -18,7 +18,7 @@ void reset_level(void) {
         }
     }
     mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));    
-    pal_fade_to(4,0);
+    pal_fade_to_withmusic(4,0);
     oam_clear();
     ppu_off(); // reset the level when you get to this point, and change this later
     scroll_x = 0;
@@ -97,7 +97,7 @@ void reset_level(void) {
 			}    
     }
     ppu_on_all();
-    pal_fade_to(0,4);
+    pal_fade_to_withmusic(0,4);
     if (!has_practice_point) {
         music_play(song);
     }

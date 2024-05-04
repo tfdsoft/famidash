@@ -61,6 +61,16 @@ void main(){
 	else player_gravity[1] = 0x01;	
 
 	auto_fs_updates = 0;
+
+	// Get it? it spells DASH
+	if (SRAM_VALIDATE[0] != 0x0D
+	 || SRAM_VALIDATE[1] != 0x0A
+	 || SRAM_VALIDATE[2] != 0x01
+	 || SRAM_VALIDATE[3] != 0x04) {
+		// set the validation header and then reset coin counts
+	setdefaultoptions();
+
+	}
 	
     while (1){
         ppu_wait_nmi();
