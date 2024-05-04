@@ -165,21 +165,25 @@ void state_game(){
 			pad_new[0] = 0;
 			famistudio_music_pause(1);
 			famistudio_update();
+			color_emphasis(COL_EMP_DARK);
 			// ppu_off();
 			// mmc3_set_8kb_chr(16);
 			// vram_adr(NAMETABLE_B);
 			// vram_unrle(pausescreen); 	
 			ppu_on_all();
 			while (!(pad_new[0] & PAD_START)) {
+				
 				// ppu_wait_nmi();
 				pad[0] = pad_poll(0); // read the second controller
 				pad_new[0] = get_pad_new(0);	
 				if (pad_new[0] & PAD_SELECT) { gameState = 1; 
 					sfx_play(sfx_exit_level,0);
 					music_update();
+					color_emphasis(COL_EMP_NORMAL);
 					return;
 				}
 			}
+			color_emphasis(COL_EMP_NORMAL);
 			famistudio_music_pause(0);
 			// ppu_off();
 			// mmc3_set_8kb_chr(0);
