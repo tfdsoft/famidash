@@ -86,6 +86,7 @@ oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCR
     BIT <FLIP   ;   Check for bit 6 (HFLIP)
     BVC :+      ;__
     EOR #$FF    ;   If HLIPd, then two's complement
+	ADC #($100 - 8)	; Carry is clear
     SEC         ;__
     :           ;
     adc <SCRX
@@ -96,6 +97,7 @@ oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCR
     BIT <FLIP   ;   Check for bit 7 (VFLIP)
     BPL :+      ;__
     EOR #$FF    ;   If VLIPd, then two's complement
+	; ADC #($100 - 16)	; Carry is clear, Y is -16'd because of us using 8x16 mode
     SEC         ;__
     :           ;
     adc <SCRY
@@ -1247,24 +1249,31 @@ write_active:
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_UFO, _MINI_SPIDER, _MINI_WAVE
 
 drawcube_rounding_table:
-		.byte 0, 256-1, 256-2, 3, 2, 1
-		.byte 0, 256-1, 256-2, 3, 2, 1	; doubling it simplifies the routine
+	.byte 0, <-1, <-2, 3, 2, 1
+	.byte 0, <-1, <-2, 3, 2, 1	; doubling it simplifies the routine
+	.byte <-24
 
 drawcube_sprite_table:
-		; Bits 6-7: FLIP
-		; Bits 0-2: actual idx
-		.define NOFLIP $00
-		.define H_FLIP $40
-		.define V_FLIP $80
-		.define HVFLIP $C0
-		.byte NOFLIP|0, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
-		.byte NOFLIP|6, V_FLIP|5, V_FLIP|4, V_FLIP|3, V_FLIP|2, V_FLIP|1
-		.byte HVFLIP|0, HVFLIP|1, HVFLIP|2, HVFLIP|3, HVFLIP|4, HVFLIP|5
-		.byte HVFLIP|6, H_FLIP|5, H_FLIP|4, H_FLIP|3, H_FLIP|2, H_FLIP|1
-		.undef NOFLIP
-		.undef H_FLIP
-		.undef V_FLIP
-		.undef HVFLIP
+	; Bits 6-7: FLIP
+	; Bits 0-2: actual idx
+	.define NOFLIP $00
+	.define H_FLIP $40
+	.define V_FLIP $80
+	.define HVFLIP $C0
+	.byte NOFLIP|0, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
+	.byte NOFLIP|6, V_FLIP|5, V_FLIP|4, V_FLIP|3, V_FLIP|2, V_FLIP|1
+	.byte HVFLIP|0, HVFLIP|1, HVFLIP|2, HVFLIP|3, HVFLIP|4, HVFLIP|5
+	.byte HVFLIP|6, H_FLIP|5, H_FLIP|4, H_FLIP|3, H_FLIP|2, H_FLIP|1
+	.undef NOFLIP
+	.undef H_FLIP
+	.undef V_FLIP
+	.undef HVFLIP
+
+
+drawplayer_center_offsets:
+	;		Cub	Shp	Bal	UFO	RBT	SPI	Wav
+	.byte	8,	8,	8,	8,	12,	12,	8	; normal size
+	.byte	4,	12,	4,	12,	12,	12,	12	; mini 
 
 .export _drawplayerone
 
@@ -1396,20 +1405,9 @@ drawcube_sprite_table:
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[0])-1
 	STX <SCRY			;__
 
-    LDA _player_x+1     ;__ temp_x = high_byte(player_x[0]);
-    BNE :+              ;
-        LDA #$01        ;   if(temp_x == 0) temp_x = 1;
-		BNE :++			;= BRA
-    :                   ;__
-    CMP #$FD            ;
-    BCC :+              ;	if(temp_x > 0xfc) temp_x = 1;
-        LDA #$01        ;
-    :                   ;__
-    STA <SCRX			;__ The X of oam_meta_spr is temp_x
-
     ; Set up base pointer for jump tables
     LDA _mini       ;
-    BEQ :+          ;   Add 6 if mini mode 
+    BEQ :+          ;   Add 7 if mini mode 
         LDA #$07    ;   ! Increment this value when new gamemodes added
     :               ;__
     CLC             ;   Actual gamemode itself
@@ -1419,6 +1417,19 @@ drawcube_sprite_table:
     STA ptr1        ;__
     LDA sprite_table_table_hi, X
     STA ptr1+1      ;__ Get high byte of table ptr
+
+    LDY _player_x+1     ;__ temp_x = high_byte(player_x[0]);
+	; The condition if is temp_x == 0 or is > 0xfc,
+	; this can be expressed as (temp_x - 1) > 0xfb
+	DEY					;
+	CPX #$FC            ;
+	BCC :+              ;	if(temp_x-1 > 0xfb) temp_x = 1;
+		LDY #$00        ;
+	:                   ;__
+	TYA
+	SEC		; I decremented the Y, this is getting back at it
+	ADC drawplayer_center_offsets, X
+    STA <SCRX			;__ The X of oam_meta_spr is temp_x
 
     ; The switch 
     LDX _gamemode
@@ -1479,7 +1490,9 @@ drawcube_sprite_table:
 			:					;__
 			LDA _cube_rotate+1	;	Round the cube rotation
 			ADC @rounding_table, X
-			STA _cube_rotate+1	;__
+			STA _cube_rotate+1	;
+            TAX                 ;__
+            JMP @no_cap
 
 		@no_round:
 		LAX _cube_rotate+1		;
@@ -1490,6 +1503,7 @@ drawcube_sprite_table:
 			TAX					;
 		:						;__
 
+        @no_cap:
 		LDA @sprite_table, X
 		TAX
 		AND #$C0
@@ -1720,6 +1734,15 @@ drawcube_sprite_table:
 		TYA					;
 		ASL					;	Double da index cuz it's a table of shorts
 		TAY					;__
+
+		; ; CENTERING DEBUGGING ONLY
+		; lda <FRAME_CNT1
+		; and #$01
+		; beq :+
+		; 	lda #$40
+		; : eor <FLIP
+		; sta <FLIP
+
         lda     sp          ;
         sec                 ;
         sbc     #3          ;
@@ -1876,17 +1899,6 @@ drawplayer_common := _drawplayerone::common
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[1])-1
 	STX <SCRY			;__
 
-    LDA _player_x+3     ;__ temp_x = high_byte(player_x[1]);
-    BNE :+              ;
-        LDA #$01        ;   if(temp_x == 0) temp_x = 1;
-		BNE :++			;= BRA
-    :                   ;__
-    CMP #$FD            ;
-    BCC :+              ;	if(temp_x > 0xfc) temp_x = 1;
-        LDA #$01        ;
-    :                   ;__
-    STA <SCRX			;__ The X of oam_meta_spr is temp_x
-
     ; Set up base pointer for jump tables
     LDA _mini       ;
     BEQ :+          ;   Add 6 if mini mode 
@@ -1899,6 +1911,19 @@ drawplayer_common := _drawplayerone::common
     STA ptr1        ;__
     LDA sprite_table_table_hi, X
     STA ptr1+1      ;__ Get high byte of table ptr
+
+	LDY _player_x+3     ;__ temp_x = high_byte(player_x[1]);
+	; The condition if is temp_x == 0 or is > 0xfc,
+	; this can be expressed as (temp_x - 1) > 0xfb
+	DEY					;
+	CPX #$FC            ;
+	BCC :+              ;	if(temp_x-1 > 0xfb) temp_x = 1;
+		LDY #$00        ;
+	:                   ;__
+	TYA
+	SEC		; I decremented the Y, this is getting back at it
+	ADC drawplayer_center_offsets, X
+    STA <SCRX			;__ The X of oam_meta_spr is temp_x
 
     ; The switch 
     LDX _gamemode
