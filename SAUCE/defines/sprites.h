@@ -1612,6 +1612,8 @@ const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Wave,
 	Pink_Jump_Pad,
 	Pink_Jump_Pad_U,
+	Green_Jump_Orb,
+	Red_Jump_Orb,
 	};
 
 
@@ -1657,6 +1659,8 @@ const void* animation_frame_list[] = {
 	NULL,
 	PINK_PAD_SPRITES, // Pink_Jump_Pad,	
 	PINK_PAD_U_SPRITES, // Pink_Jump_Pad,	
+	GREEN_ORB_SPRITES,
+	RED_ORB_SPRITES,
 };
 
 // Number of UNIQUE animation frames
@@ -1701,4 +1705,6 @@ const unsigned char animation_frame_length[] = {
 	0,
 	sizeof(PINK_PAD_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad,
 	sizeof(PINK_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
+	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
+	sizeof(RED_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
 };

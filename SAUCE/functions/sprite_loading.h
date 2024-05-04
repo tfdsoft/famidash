@@ -38,6 +38,8 @@
 #define WAVE_MODE				0X24
 #define PINK_PAD_DOWN				0X25
 #define PINK_PAD_UP				0X26
+#define GREEN_ORB				0X27
+#define RED_ORB					0X28
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -85,6 +87,8 @@ __fastcall__ char sprite_height_lookup(){
 		case YELLOW_ORB_BIGGER:
 		case BLUE_ORB:
 		case PINK_ORB:
+		case GREEN_ORB:
+		case RED_ORB:
 			return 0x0f;
 			
 	}
@@ -283,6 +287,38 @@ void sprite_collide_lookup(){
 		if (pad_new[controllingplayer] & PAD_A) {	
 			cube_data[currplayer] &= 0x01;
 			if (currplayer_gravity) currplayer_vel_y = ORB_HEIGHT_PINK^0xFFFF; else currplayer_vel_y = ORB_HEIGHT_PINK;
+		}
+	}
+    }
+    else if (tmp4 == RED_ORB) {
+	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
+		if (cube_data[currplayer] == 2) {					
+			cube_data[currplayer] &= 0x01;
+			if (currplayer_gravity) currplayer_vel_y = ORB_HEIGHT_RED^0xFFFF; else currplayer_vel_y = ORB_HEIGHT_RED;
+		}
+	}
+	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
+		if (pad_new[controllingplayer] & PAD_A) {	
+			cube_data[currplayer] &= 0x01;
+			if (currplayer_gravity) currplayer_vel_y = ORB_HEIGHT_RED^0xFFFF; else currplayer_vel_y = ORB_HEIGHT_RED;
+		}
+	}
+    }
+    else if (tmp4 == GREEN_ORB) {
+	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
+		if (cube_data[currplayer] == 2) {					
+			cube_data[currplayer] &= 0x01;
+			currplayer_gravity ^= 0x01;
+			if (currplayer_gravity && currplayer_vel_y < 0x530) currplayer_vel_y = 0x530;
+			else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
+		}
+	}
+	else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
+		if (pad_new[controllingplayer] & PAD_A) {	
+			cube_data[currplayer] &= 0x01;
+			currplayer_gravity ^= 0x01;
+			if (currplayer_gravity && currplayer_vel_y < 0x530) currplayer_vel_y = 0x530;
+			else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
 		}
 	}
     }
