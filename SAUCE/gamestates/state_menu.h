@@ -334,7 +334,7 @@ void bgmtest() {
 
 void customize_screen() {
 	kandotemp=0;
-	pal_fade_to(4,0);
+	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
 	mmc3_set_8kb_chr(36);
@@ -365,7 +365,7 @@ void customize_screen() {
 	}
 
 	ppu_on_all();
-	pal_fade_to(0,4);
+	pal_fade_to_withmusic(0,4);
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
