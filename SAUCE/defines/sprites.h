@@ -929,14 +929,14 @@ const unsigned char Speed_30_Portal[]={
 };
 
 const unsigned char Speed_40_Portal[]={
-	  0,  0,0x9F,2,
-	  5,  0,0x9F,2,
-	  10,  0,0x9F,2,
-	  15,  0,0x9F,2,
-	  0,  16,0x9F,2|OAM_FLIP_V,
-	  5,  16,0x9F,2|OAM_FLIP_V,
-	  10,  16,0x9F,2|OAM_FLIP_V,
-	  15,  16,0x9F,2|OAM_FLIP_V,
+	  0,  0,0xAD,2,
+	  5,  0,0xAD,2,
+	  10,  0,0xAD,2,
+	  15,  0,0xAD,2,
+	  0,  16,0xAD,2|OAM_FLIP_V,
+	  5,  16,0xAD,2|OAM_FLIP_V,
+	  10,  16,0xAD,2|OAM_FLIP_V,
+	  15,  16,0xAD,2|OAM_FLIP_V,
 	0x80
 };
 
