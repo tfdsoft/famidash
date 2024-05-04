@@ -20,7 +20,7 @@ Fork it, change it, push it, open a PR, get it merged (or not).
 |[kandowontu](https://github.com/kandowontu)|Project torch carrier, lead developer, maintainer|
 |[AleFunky](https://github.com/PinguLinux)|Levels, testing, bugfixes, collision and other code|
 |[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|Levels, guidance, testing, bugfixes, graphics|
-|[alexmush](https://github.com/ADM228)|Code optimisation|
+|[alexmush](https://github.com/ADM228)|Core Code programmer, Code optimisation|
 |[jroweboy](https://github.com/jroweboy)|Graphics, code optimisation, parallax, menu, etc.|
 |[Zenith](https://github.com/ZenithNeko)|Music, graphics|
 |[jaezu](https://github.com/jaezudev)|Maintainer|
