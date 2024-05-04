@@ -38,6 +38,8 @@ char bg_coll_L(void){
 }
 
 char bg_coll_floor_spikes(void){ // used just for checking ground spikes on the floor
+	if (currplayer_vel_y != 0) return 0;
+	
 	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
 	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : (
@@ -113,7 +115,11 @@ char bg_coll_U(void){
 			if (tmp2 < 0x08) {
 				if (tmp3 & COL_DEATH_TOP) {
 					if (tmp2 < 0x04) {
-						cube_data[currplayer] = 1;
+						tmp2 = temp_x & 0x0f;
+				
+						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+							cube_data[currplayer] = 1;
+						} else return 0;
 					} else {
 						return 0;
 					}
@@ -126,7 +132,11 @@ char bg_coll_U(void){
 			if (tmp2 >= 0x08) {
 				if (tmp3 & COL_DEATH_BOTTOM) {
 					if (tmp2 >= 0x0c) {
-						cube_data[currplayer] = 1;
+						tmp2 = temp_x & 0x0f;
+				
+						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+							cube_data[currplayer] = 1;
+						} else return 0;
 					} else {
 						return 0;
 					}
@@ -172,7 +182,11 @@ char bg_coll_D(void){
 			if (tmp2 < 0x08) {
 				if (tmp3 & COL_DEATH_TOP) {
 					if (tmp2 < 0x04) {
-						cube_data[currplayer] = 1;
+						tmp2 = temp_x & 0x0f;
+				
+						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+							cube_data[currplayer] = 1;
+						} else return 0;
 					} else {
 						return 0;
 					}
@@ -186,7 +200,11 @@ char bg_coll_D(void){
 				if (tmp3 & COL_DEATH_BOTTOM) {
 					if (tmp2 >= 0x0c) {
 						if (high_byte(currplayer_x) < 0x10) return 0;
-						cube_data[currplayer] = 1;
+						tmp2 = temp_x & 0x0f;
+				
+						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+							cube_data[currplayer] = 1;
+						} else return 0;
 					} else {
 						return 0;
 					}
