@@ -1332,42 +1332,20 @@ drawplayer_center_offsets:
     ; default: cube
     cube:
 		; C code:
-			; 		cube_rotate[0] += CUBE_GRAVITY;
 			; 		if (player_vel_y[0] == 0) cube_rotate[0] = round to the nearest 90°;
-			; 		cap the mf at 24
+			; 		else cube_rotate[0] += player_gravity[0] ? -CUBE_GRAVITY : CUBE_GRAVITY;
+			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
 		@sprite_table = drawcube_sprite_table
 
-		LDA _cube_rotate
-		CLC
-
-		LDX _player_gravity+0
-		BNE @invertedAddition
-
-        ADC #<CUBE_GRAVITY      ;
-        STA _cube_rotate        ;
-        BCC @rounding_check		;   cube_rotate[0] += CUBE_GRAVITY;
-            INC _cube_rotate+1  ;
-			BCS @rounding_check ;__
-
-		@invertedAddition:
-		SBC #<CUBE_GRAVITY-1	; 	
-		STA _cube_rotate		;
-		BCS @rounding_check		;	cube_rotate[0] -= CUBE_GRAVITY;
-			DEC _cube_rotate+1	;
-			BPL @rounding_check	;__
-			LDA #23				;	Cap at 0
-			STA _cube_rotate+1	;__
-
-		@rounding_check:
 		LDA _player_vel_y+1		;	if player_vel_y == 0
 		ORA _player_vel_y+0		;
 		BNE @no_round			;__
 			STA _cube_rotate+0	;__ low_byte = 0
 			LAX _cube_rotate+1	;	LAX abs is apparently stable
 			SEC					;
-			SBC #12				;	Limit table idx to 0..12
-			BCC :+				;
+			SBC #12				;
+			BCC :+				;	Limit table idx to 0..12
 				TAX				;	
 				CLC				;
 			:					;__
@@ -1375,26 +1353,46 @@ drawplayer_center_offsets:
 			ADC @rounding_table, X
 			STA _cube_rotate+1	;
             TAX                 ;__
-            JMP @no_cap
+            JMP @fin_nold
 
 		@no_round:
-		LAX _cube_rotate+1		;
-		SEC						;
-		SBC #24					;
-		BCC :+					;	Cap the rotation at 23
-			STA _cube_rotate+1	;
-			TAX					;
-		:						;__
+		LDA _cube_rotate
+		CLC
 
-        @no_cap:
-		LDA @sprite_table, X
-		TAX
-		AND #$C0
-		STA <FLIP
-		TXA
-		AND #$07
-		TAY
-		JMP fin
+		LDX _player_gravity+0
+		BNE @subtract
+
+			ADC #<CUBE_GRAVITY      ;
+			STA _cube_rotate        ;
+			BCC @fin				;   cube_rotate[0] += CUBE_GRAVITY;
+				LDX _cube_rotate+1	;
+				INX					;__
+				CPX #24				;
+				BCC :+				;	Cap at 24
+					LDX #00			;
+				: STX _cube_rotate+1;__
+				JMP @fin_nold
+
+		@subtract:
+			SBC #<CUBE_GRAVITY-1	; 	
+			STA _cube_rotate		;
+			BCS @fin				;	cube_rotate[0] -= CUBE_GRAVITY;
+				DEC _cube_rotate+1	;
+				BPL @fin			;__
+				LDA #23				;	Cap at 0
+				STA _cube_rotate+1	;__
+
+		@fin:
+			LDX _cube_rotate+1
+        @fin_nold:
+			LDA @sprite_table, X
+			TAX
+			AND #$C0
+			STA <FLIP
+			TXA
+			AND #$07
+			TAY
+			JMP fin
 
 	ship:
 		; C code:
@@ -1671,34 +1669,11 @@ drawplayer_common := _drawplayerone::common
     ; default: cube
     cube:
         ; C code:
-			; 		cube_rotate[0] += CUBE_GRAVITY;
-			; 		if (player_vel_y[0] == 0) cube_rotate[0] = round to the nearest 90°;
-			; 		cap the mf at 24
+			; 		if (player_vel_y[1] == 0) cube_rotate[1] = round to the nearest 90°;
+			; 		else cube_rotate[1] += player_gravity[1] ? -CUBE_GRAVITY : CUBE_GRAVITY;
+			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
 		@sprite_table = drawcube_sprite_table
-
-		LDA _cube_rotate+2
-		CLC
-
-		LDX _player_gravity+1
-		BNE @invertedAddition
-
-        ADC #<CUBE_GRAVITY      ;
-        STA _cube_rotate+2      ;
-        BCC @rounding_check		;   cube_rotate[0] += CUBE_GRAVITY;
-            INC _cube_rotate+3  ;
-			BCS @rounding_check ;__
-
-		@invertedAddition:
-		SBC #<CUBE_GRAVITY-1	; 	
-		STA _cube_rotate+2		;
-		BCS @rounding_check		;	cube_rotate[0] -= CUBE_GRAVITY;
-			DEC _cube_rotate+3	;
-			BPL @rounding_check	;__
-			LDA #23				;	Cap at 0
-			STA _cube_rotate+3	;__
-
-		@rounding_check:
 
 		LDA _player_vel_y+3		;	if player_vel_y == 0
 		ORA _player_vel_y+2		;
@@ -1706,32 +1681,55 @@ drawplayer_common := _drawplayerone::common
 			STA _cube_rotate+2	;__ low_byte = 0
 			LAX _cube_rotate+3	;	LAX abs is apparently stable
 			SEC					;
-			SBC #12				;	Limit table idx to 0..12
-			BCC :+				;
+			SBC #12				;
+			BCC :+				;	Limit table idx to 0..12
 				TAX				;	
 				CLC				;
 			:					;__
 			LDA _cube_rotate+3	;	Round the cube rotation
 			ADC @rounding_table, X
-			STA _cube_rotate+3	;__
+			STA _cube_rotate+3	;
+            TAX                 ;__
+            JMP @fin_nold
 
 		@no_round:
-		LAX _cube_rotate+3		;
-		SEC						;
-		SBC #24					;
-		BCC :+					;	Cap the rotation at 23
-			STA _cube_rotate+3	;
-			TAX					;
-		:						;__
+		LDA _cube_rotate+2
+		CLC
 
-		LDA @sprite_table, X
-		TAX
-		AND #$C0
-		STA <FLIP
-		TXA
-		AND #$07
-		TAY
-		JMP drawplayer_common
+		LDX _player_gravity+1
+		BNE @subtract
+
+			ADC #<CUBE_GRAVITY      ;
+			STA _cube_rotate+2		;
+			BCC @fin				;   cube_rotate[0] += CUBE_GRAVITY;
+				LDX _cube_rotate+3	;
+				INX					;__
+				CPX #24				;
+				BCC :+				;	Cap at 24
+					LDX #00			;
+				: STX _cube_rotate+3;__
+				JMP @fin_nold
+
+		@subtract:
+			SBC #<CUBE_GRAVITY-1	; 	
+			STA _cube_rotate+2		;
+			BCS @fin				;	cube_rotate[0] -= CUBE_GRAVITY;
+				DEC _cube_rotate+3	;
+				BPL @fin			;__
+				LDA #23				;	Cap at 0
+				STA _cube_rotate+3	;__
+
+		@fin:
+			LDX _cube_rotate+3
+        @fin_nold:
+			LDA @sprite_table, X
+			TAX
+			AND #$C0
+			STA <FLIP
+			TXA
+			AND #$07
+			TAY
+			JMP drawplayer_common
 
 	ship:
 		; C code:
