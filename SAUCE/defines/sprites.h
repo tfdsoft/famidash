@@ -1232,12 +1232,100 @@ const unsigned char Yellow_Jump_Orb4[]={
 
 const unsigned char Blue_Jump_Orb[]={
 
-	  4,  0,0xB7,4,
+	  0,  0,0x99,0,
+	  8,  0,0x9B,0|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Blue_Jump_Orb2[]={
+
+	  0,  0,0x9B,0,
+	  8,  0,0x9D,0|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Blue_Jump_Orb3[]={
+
+	  0,  0,0x9D,0,
+	  8,  0,0x9F,0|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Blue_Jump_Orb4[]={
+
+	  0,  0,0x9F,0,
+	  8,  0,0x99,0|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Pink_Jump_Orb[]={
 
-	  4,  0,0xB5,1,
+	  0,  0,0xB9,1,
+	  8,  0,0xBB,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Pink_Jump_Orb2[]={
+
+	  0,  0,0xBB,1,
+	  8,  0,0xBD,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Pink_Jump_Orb3[]={
+
+	  0,  0,0xBD,1,
+	  8,  0,0xBF,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Pink_Jump_Orb4[]={
+
+	  0,  0,0xBF,1,
+	  8,  0,0xB9,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Green_Jump_Orb[]={
+
+	  0,  0,0xB9,0,
+	  8,  0,0xBB,0|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Green_Jump_Orb2[]={
+
+	  0,  0,0xBB,0,
+	  8,  0,0xBD,0|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Green_Jump_Orb3[]={
+
+	  0,  0,0xBD,0,
+	  8,  0,0xBF,0|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Green_Jump_Orb4[]={
+
+	  0,  0,0xBF,0,
+	  8,  0,0xB9,0|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Red_Jump_Orb[]={
+
+	  0,  0,0xB9,2,
+	  8,  0,0xBB,2|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Red_Jump_Orb2[]={
+
+	  0,  0,0xBB,2,
+	  8,  0,0xBD,2|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Red_Jump_Orb3[]={
+
+	  0,  0,0xBD,2,
+	  8,  0,0xBF,2|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Red_Jump_Orb4[]={
+
+	  0,  0,0xBF,2,
+	  8,  0,0xB9,2|OAM_FLIP_H,
 	0x80
 };
 
@@ -1454,6 +1542,32 @@ const struct SpriteFrame YELLOW_ORB_SPRITES[]={
 	{5, Yellow_Jump_Orb3},
 	{5, Yellow_Jump_Orb4},
 };
+const struct SpriteFrame BLUE_ORB_SPRITES[]={
+	{5, Blue_Jump_Orb},
+	{5, Blue_Jump_Orb2},
+	{5, Blue_Jump_Orb3},
+	{5, Blue_Jump_Orb4},
+};
+const struct SpriteFrame PINK_ORB_SPRITES[]={
+	{5, Pink_Jump_Orb},
+	{5, Pink_Jump_Orb2},
+	{5, Pink_Jump_Orb3},
+	{5, Pink_Jump_Orb4},
+};
+
+const struct SpriteFrame GREEN_ORB_SPRITES[]={
+	{5, Green_Jump_Orb},
+	{5, Green_Jump_Orb2},
+	{5, Green_Jump_Orb3},
+	{5, Green_Jump_Orb4},
+};
+
+const struct SpriteFrame RED_ORB_SPRITES[]={
+	{5, Red_Jump_Orb},
+	{5, Red_Jump_Orb2},
+	{5, Red_Jump_Orb3},
+	{5, Red_Jump_Orb4},
+};
 
 const unsigned char nometa[] = {0x80};
 
@@ -1508,8 +1622,8 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
-	NULL,
-	NULL,
+	BLUE_ORB_SPRITES,
+	PINK_ORB_SPRITES,
 	COIN_SPRITES,
 	NULL, // Portal_Gravity_Down,
 	NULL, // Portal_Gravity_Up,
@@ -1535,7 +1649,7 @@ const void* animation_frame_list[] = {
 	COIN_SPRITES_X,
 	COIN_SPRITES_X,
 	COIN_SPRITES_X,
-	NULL,
+	YELLOW_ORB_SPRITES,
 	NULL,
 	NULL,
 	NULL,
@@ -1552,8 +1666,8 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	0,
-	0,
+	sizeof(BLUE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
+	sizeof(PINK_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
 	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	0, // Portal_Gravity_Down,
 	0, // Portal_Gravity_Up,
@@ -1579,7 +1693,7 @@ const unsigned char animation_frame_length[] = {
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
-	0,
+	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
 	0,
 	0,
 	0,
