@@ -90,6 +90,8 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		player_vel_y[1] = practice_player_vel_y[1];
 		player_gravity[0] = practice_player_gravity[0];
 		player_gravity[1] = practice_player_gravity[1];
+		cube_rotate[0] = practice_cube_rotate[0];
+		cube_rotate[1] = practice_cube_rotate[1];
 
 		__A__ = currplayer<<1;
 		__asm__("tay");

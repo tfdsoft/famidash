@@ -239,6 +239,7 @@ unsigned char practice_player_gamemode;
 unsigned char practice_mini;
 unsigned char practice_dual;
 unsigned char practice_speed;
+unsigned short practice_cube_rotate[2];
 signed short practice_player_vel_x[2];
 signed short practice_player_vel_y[2];
 unsigned char practice_player_gravity[2];

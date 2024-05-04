@@ -50,9 +50,11 @@ void reset_level(void) {
     player_vel_y[1] = 0;
     currplayer_vel_x = 0;
     currplayer_vel_y = 0;
-    if (!has_practice_point)    invincible_counter = 8;
     cube_data[0] = 0;
     cube_data[1] = 0;
+    cube_rotate[0] = 0;
+    cube_rotate[1] = 0;
+    if (!has_practice_point)    invincible_counter = 8;
     
     unrle_first_screen();
     if (has_practice_point) {

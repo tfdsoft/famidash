@@ -147,6 +147,8 @@ void state_game(){
 			practice_player_vel_y[1] = player_vel_y[1];
 			practice_player_gravity[0] = player_gravity[0];
 			practice_player_gravity[1] = player_gravity[1];
+			practice_cube_rotate[0] = cube_rotate[0];
+			practice_cube_rotate[1] = cube_rotate[1];
 			practice_player_gamemode = gamemode;
 			practice_mini = mini;
 			practice_dual = dual;
