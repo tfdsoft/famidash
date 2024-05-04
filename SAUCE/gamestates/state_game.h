@@ -166,6 +166,7 @@ void state_game(){
 			famistudio_music_pause(1);
 			famistudio_update();
 			color_emphasis(COL_EMP_DARK);
+			pal_bright(3);
 			// ppu_off();
 			// mmc3_set_8kb_chr(16);
 			// vram_adr(NAMETABLE_B);
@@ -184,6 +185,7 @@ void state_game(){
 				}
 			}
 			color_emphasis(COL_EMP_NORMAL);
+			pal_bright(4);
 			famistudio_music_pause(0);
 			// ppu_off();
 			// mmc3_set_8kb_chr(0);
