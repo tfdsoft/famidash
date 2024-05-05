@@ -1478,62 +1478,52 @@ const unsigned char Gravity_Pad_U4[]={
 	0x80
 };
 
-const unsigned char Big_Long_Light[]={
-
-	  4, 0,0xC9,0,
-	0x80
-};	
-
-
-const unsigned char Big_Long_Light_Top[]={
-
-	  4, 0,0xCB,0,
-	0x80
-};	
-
-const unsigned char Small_Long_Light[]={
-
-	  4, 0,0xCD,0,
-	0x80
-};	
-
-const unsigned char Small_Long_Light_Top[]={
-
-	  4, 0,0xCF,0,
-	0x80
-};	
-
-
-const unsigned char Black_Base_Light_Post[]={
-
-	  4, 0,0xD1,0,
-	0x80
-};	
-
-
-const unsigned char Black_Base_Big_Light[]={
+const unsigned char Short_Light[]={
 
 	  4, 0,0xD3,0,
 	0x80
 };	
-
-const unsigned char Black_Base_Small_Light[]={
+const unsigned char Short_Light2[]={
 
 	  4, 0,0xD5,0,
 	0x80
 };	
 
+
+const unsigned char Medium_Light[]={
+
+	  4, 0,0xD1,0,
+	  4, -16,0xCB,0,
+	0x80
+};	
+const unsigned char Medium_Light2[]={
+
+	  4, 0,0xD1,0,
+	  4, -16,0xCF,0,
+	0x80
+};	
+
+const unsigned char Long_Light[]={
+
+	  4, 0,0xD1,0,
+	  4, -16,0xC9,0,
+	0x80
+};	
+const unsigned char Long_Light2[]={
+
+	  4, 0,0xD1,0,
+	  4, -16,0xCD,0,
+	0x80
+};	
+
+
 const unsigned char Chain[]={
 
 	  4, 0,0xD7,0,
+	  4, -16,0xD9,0,
 	0x80
 };	
 
-const unsigned char Chain_Top[]={
-
-	  4, 0,0xD9,0,
-	0x80
-};	
 
 const unsigned char BG_Spike_Group1[]={
 
@@ -1560,6 +1550,11 @@ const unsigned char BG_Spike_Group4[]={
 const unsigned char Big_Diamond[]={
 
 	  0, 0,0xE3,0,
+	  8, 0,0xE3,0|OAM_FLIP_H,
+	0x80
+};	
+const unsigned char Right_Half_Diamond[]={
+
 	  8, 0,0xE3,0|OAM_FLIP_H,
 	0x80
 };	
@@ -1680,6 +1675,19 @@ const struct SpriteFrame RED_ORB_SPRITES[]={
 	{5, Red_Jump_Orb3},
 	{5, Red_Jump_Orb4},
 };
+const struct SpriteFrame SHORT_LIGHT_SPRITES[]={
+	{5, Short_Light},
+	{5, Short_Light2},
+};
+const struct SpriteFrame MEDIUM_LIGHT_SPRITES[]={
+	{5, Medium_Light},
+	{5, Medium_Light2},
+};
+const struct SpriteFrame LONG_LIGHT_SPRITES[]={
+	{5, Long_Light},
+	{5, Long_Light2},
+};
+
 
 const unsigned char nometa[] = {0x80};
 
@@ -1717,6 +1725,7 @@ const unsigned char * const Metasprites[]={
 	COIN_SPRITE_X, // swing
 	COIN_SPRITE_X, // swing
 	Yellow_Jump_Orb, //bigger jump orb
+
 	Speed_30_Portal,
 	Speed_40_Portal,
 	Portal_Dual,
@@ -1726,20 +1735,17 @@ const unsigned char * const Metasprites[]={
 	Pink_Jump_Pad_U,
 	Green_Jump_Orb,
 	Red_Jump_Orb,
-	Big_Long_Light,
-	Big_Long_Light_Top,
-	Small_Long_Light,
-	Small_Long_Light_Top,
-	Black_Base_Light_Post,
-	Black_Base_Big_Light,
-	Black_Base_Small_Light,
+	Yellow_Jump_Orb, //littler jump orb
+	Long_Light,
+	Medium_Light,
+	Short_Light,
 	Chain,
-	Chain_Top,
 	BG_Spike_Group1,
 	BG_Spike_Group2,
 	BG_Spike_Group3,
 	BG_Spike_Group4,
 	Big_Diamond,
+	Right_Half_Diamond,
 	Question_Mark,
 	Exclamation_Mark,
 	Right_Arrow,
@@ -1782,6 +1788,7 @@ const void* animation_frame_list[] = {
 	COIN_SPRITES_X,
 	COIN_SPRITES_X,
 	YELLOW_ORB_SPRITES,
+	
 	NULL,
 	NULL,
 	NULL,
@@ -1791,12 +1798,10 @@ const void* animation_frame_list[] = {
 	PINK_PAD_U_SPRITES, // Pink_Jump_Pad,	
 	GREEN_ORB_SPRITES,
 	RED_ORB_SPRITES,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
+	YELLOW_ORB_SPRITES,
+	LONG_LIGHT_SPRITES,
+	MEDIUM_LIGHT_SPRITES,
+	SHORT_LIGHT_SPRITES,
 	NULL,
 	NULL,
 	NULL,
@@ -1846,6 +1851,7 @@ const unsigned char animation_frame_length[] = {
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
+
 	0,
 	0,
 	0,
@@ -1855,13 +1861,10 @@ const unsigned char animation_frame_length[] = {
 	sizeof(PINK_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
 	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
 	sizeof(RED_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
+	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
+	sizeof(LONG_LIGHT_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
+	sizeof(MEDIUM_LIGHT_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
+	sizeof(SHORT_LIGHT_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
 	0,
 	0,
 	0,
