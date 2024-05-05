@@ -394,15 +394,16 @@ void customize_screen() {
 		if (pad_new[0] & PAD_UP) { color1++; 
 			if (color1 == 0x0D || color1 == 0x0E ) color1 = 0x0F;
 			if (color1 == 0x1D || color1 == 0x1E || color1 == 0x1F ) color1 = 0x20;
-			if (color1 == 0x2E || color1 == 0x2F ) color1 = 0x30;
-			if (color1 == 0x3E || color1 == 0x3F ) color1 = 0x00;
+			if (color1 == 0x2D || color1 == 0x2E || color1 == 0x2F ) color1 = 0x30;
+			if (color1 == 0x3D || color1 == 0x3E || color1 == 0x3F ) color1 = 0x00;
 		}		
 		if (pad_new[0] & PAD_DOWN) { 
 			if (color1 == 0) {color1 = 0x3D;} 
 			color1--;
 			if (color1 == 0x0D || color1 == 0x0E ) color1 = 0x0C;
 			if (color1 == 0x1D || color1 == 0x1E || color1 == 0x1F ) color1 = 0x1C;
-			if (color1 == 0x2E || color1 == 0x2F ) color1 = 0x2C;
+			if (color1 == 0x2D || color1 == 0x2E || color1 == 0x2F ) color1 = 0x2C;
+			if (color1 == 0x3D || color1 == 0x3E || color1 == 0x3F ) color1 = 0x3C;
 		}
 	}
 	else if (settingvalue == 1) {
@@ -415,15 +416,16 @@ void customize_screen() {
 		if (pad_new[0] & PAD_UP) { color2++; 
 			if (color2 == 0x0D || color2 == 0x0E ) color2 = 0x0F;
 			if (color2 == 0x1D || color2 == 0x1E || color2 == 0x1F ) color2 = 0x20;
-			if (color2 == 0x2E || color2 == 0x2F ) color2 = 0x30;
-			if (color2 == 0x3E || color2 == 0x3F ) color2 = 0x00;
+			if (color2 == 0x2D || color2 == 0x2E || color2 == 0x2F ) color2 = 0x30;
+			if (color2 == 0x3D || color2 == 0x3E || color2 == 0x3F ) color2 = 0x00;
 		}		
 		if (pad_new[0] & PAD_DOWN) { 
 			if (color2 == 0) {color2 = 0x3D;} 
 			color2--;
 			if (color2 == 0x0D || color2 == 0x0E ) color2 = 0x0C;
 			if (color2 == 0x1D || color2 == 0x1E || color2 == 0x1F ) color2 = 0x1C;
-			if (color2 == 0x2E || color2 == 0x2F ) color2 = 0x2C;
+			if (color2 == 0x2D || color2 == 0x2E || color2 == 0x2F ) color2 = 0x2C;
+			if (color2 == 0x3D || color2 == 0x3E || color2 == 0x3F ) color2 = 0x3C;
 		}
 	}
 	else if (settingvalue == 2) {
@@ -436,15 +438,16 @@ void customize_screen() {
 		if (pad_new[0] & PAD_UP) { color3++; 
 			if (color3 == 0x0D || color3 == 0x0E ) color3 = 0x0F;
 			if (color3 == 0x1D || color3 == 0x1E || color3 == 0x1F ) color3 = 0x20;
-			if (color3 == 0x2E || color3 == 0x2F ) color3 = 0x30;
-			if (color3 == 0x3E || color3 == 0x3F ) color3 = 0x00;
+			if (color3 == 0x2D || color3 == 0x2E || color3 == 0x2F ) color3 = 0x30;
+			if (color3 == 0x3D || color3 == 0x3E || color3 == 0x3F ) color3 = 0x00;
 		}		
 		if (pad_new[0] & PAD_DOWN) { 
 			if (color3 == 0) {color3 = 0x3D;} 
 			color3--;
 			if (color3 == 0x0D || color3 == 0x0E ) color3 = 0x0C;
 			if (color3 == 0x1D || color3 == 0x1E || color3 == 0x1F ) color3 = 0x1C;
-			if (color3 == 0x2E || color3 == 0x2F ) color3 = 0x2C;
+			if (color3 == 0x2D || color3 == 0x2E || color3 == 0x2F ) color3 = 0x2C;
+			if (color3 == 0x3D || color3 == 0x3E || color3 == 0x3F ) color3 = 0x3C;
 		}
 	}
 
