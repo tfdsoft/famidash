@@ -1535,13 +1535,24 @@ const unsigned char Chain_Top[]={
 	0x80
 };	
 
-const unsigned char Spike_Group[]={
+const unsigned char BG_Spike_Group1[]={
 
 	  0, 0,0xDB,0,
-	  8, 0,0xDD,0,
-	  16, 0,0xDF,0,
-	  24, 0,0xE1,0,
+	0x80
+};	
+const unsigned char BG_Spike_Group2[]={
 
+	  0, 0,0xDD,0,
+	0x80
+};	
+const unsigned char BG_Spike_Group3[]={
+
+	  0, 0,0xDF,0,
+	0x80
+};	
+const unsigned char BG_Spike_Group4[]={
+
+	  0, 0,0xE1,0,
 	0x80
 };	
 
@@ -1724,7 +1735,10 @@ const unsigned char * const Metasprites[]={
 	Black_Base_Small_Light,
 	Chain,
 	Chain_Top,
-	Spike_Group,
+	BG_Spike_Group1,
+	BG_Spike_Group2,
+	BG_Spike_Group3,
+	BG_Spike_Group4,
 	Big_Diamond,
 	Question_Mark,
 	Exclamation_Mark,
@@ -1792,6 +1806,9 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1838,6 +1855,9 @@ const unsigned char animation_frame_length[] = {
 	sizeof(PINK_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
 	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
 	sizeof(RED_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
+	0,
+	0,
+	0,
 	0,
 	0,
 	0,
