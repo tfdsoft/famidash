@@ -1676,16 +1676,16 @@ const struct SpriteFrame RED_ORB_SPRITES[]={
 	{5, Red_Jump_Orb4},
 };
 const struct SpriteFrame SHORT_LIGHT_SPRITES[]={
-	{5, Short_Light},
-	{5, Short_Light2},
+	{14, Short_Light},
+	{14, Short_Light2},
 };
 const struct SpriteFrame MEDIUM_LIGHT_SPRITES[]={
-	{5, Medium_Light},
-	{5, Medium_Light2},
+	{14, Medium_Light},
+	{14, Medium_Light2},
 };
 const struct SpriteFrame LONG_LIGHT_SPRITES[]={
-	{5, Long_Light},
-	{5, Long_Light2},
+	{14, Long_Light},
+	{14, Long_Light2},
 };
 
 
