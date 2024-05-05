@@ -1480,39 +1480,39 @@ const unsigned char Gravity_Pad_U4[]={
 
 const unsigned char Short_Light[]={
 
-	  4, 0,0xD3,0,
+	  4, 0,0xD3,3,
 	0x80
 };	
 const unsigned char Short_Light2[]={
 
-	  4, 0,0xD5,0,
+	  4, 0,0xD5,3,
 	0x80
 };	
 
 
 const unsigned char Medium_Light[]={
 
-	  4, 0,0xD1,0,
-	  4, -16,0xCB,0,
+	  4, 0,0xD1,3,
+	  4, -16,0xCB,3,
 	0x80
 };	
 const unsigned char Medium_Light2[]={
 
-	  4, 0,0xD1,0,
-	  4, -16,0xCF,0,
+	  4, 0,0xD1,3,
+	  4, -16,0xCF,3,
 	0x80
 };	
 
 const unsigned char Long_Light[]={
 
-	  4, 0,0xD1,0,
-	  4, -16,0xC9,0,
+	  4, 0,0xD1,3,
+	  4, -16,0xC9,3,
 	0x80
 };	
 const unsigned char Long_Light2[]={
 
-	  4, 0,0xD1,0,
-	  4, -16,0xCD,0,
+	  4, 0,0xD1,3,
+	  4, -16,0xCD,3,
 	0x80
 };	
 
