@@ -342,27 +342,27 @@ void customize_screen() {
 	vram_unrle(customizescreen);   	
 	#include "../defines/mainmenu_charmap.h"
 
-	TOTALCOINS = 0;
-	TOTALCOINSONES = 0;
-	TOTALCOINSTENS = 0;
-	TOTALSTARSONES = 0;
-	TOTALSTARSTENS = 0;
-
-	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
-		if (LEVELCOMPLETE[tmp2]) TOTALSTARSONES += stars_list[tmp2];
-	}
-	TOTALCOINSTEMP = TOTALCOINS;
-	
-	while (TOTALCOINSTEMP > 9) {
-		TOTALCOINSTENS = TOTALCOINSTENS + 1;
-		TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
-	}
-	TOTALCOINSONES = TOTALCOINSTEMP;
-	while (TOTALSTARSONES > 9) {
-		TOTALSTARSTENS = TOTALSTARSTENS + 1;
-		TOTALSTARSONES = TOTALSTARSONES - 10;
-	}
+//	TOTALCOINS = 0;
+//	TOTALCOINSONES = 0;
+//	TOTALCOINSTENS = 0;
+//	TOTALSTARSONES = 0;
+//	TOTALSTARSTENS = 0;
+//
+//	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+//		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+//		if (LEVELCOMPLETE[tmp2]) TOTALSTARSONES += stars_list[tmp2];
+//	}
+//	TOTALCOINSTEMP = TOTALCOINS;
+//	
+//	while (TOTALCOINSTEMP > 9) {
+//		TOTALCOINSTENS = TOTALCOINSTENS + 1;
+//		TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
+//	}
+//	TOTALCOINSONES = TOTALCOINSTEMP;
+//	while (TOTALSTARSONES > 9) {
+//		TOTALSTARSTENS = TOTALSTARSTENS + 1;
+//		TOTALSTARSONES = TOTALSTARSONES - 10;
+//	}
 
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
@@ -377,11 +377,11 @@ void customize_screen() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
-		one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
+//		if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
+//		one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
 
-		if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
-		one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
+//		if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
+//		one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
 
 
 	if (settingvalue == 0) {
