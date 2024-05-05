@@ -237,6 +237,7 @@ void sprite_collide_lookup(){
 				else { if (currplayer_gravity) currplayer_vel_y = mini_heights[gamemode]; else currplayer_vel_y = mini_heights[gamemode]^0xFFFF;; }
 			}
 		}
+	if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
     }    
     else if (tmp4 == YELLOW_ORB_BIGGER) {		//yellow orb
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
@@ -253,6 +254,7 @@ void sprite_collide_lookup(){
 			else { if (currplayer_gravity) currplayer_vel_y = ORB_HEIGHT_YELLOW_UPSIDE2^0xFFFF; else currplayer_vel_y = ORB_HEIGHT_YELLOW_UPSIDE2; }
 		}
 	}
+	if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
     }
     else if (tmp4 == COIN1 || tmp4 == COINGOTTEN1) {					//COIN
 	    if (!has_practice_point) { coins |= COIN_1;
@@ -294,6 +296,7 @@ void sprite_collide_lookup(){
 			else currplayer_vel_y = PAD_HEIGHT_BLUE;
 		}
 	} 
+	if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
     }
 
 	else if (tmp4 == SPEED_05_PORTAL) speed = 1;
@@ -317,6 +320,7 @@ void sprite_collide_lookup(){
 			else { if (currplayer_gravity) currplayer_vel_y = mini_heights[(gamemode | pink_orb) & 0x7f]; else currplayer_vel_y = mini_heights[(gamemode | pink_orb) & 0x7f]^0xFFFF;; }
 		}
 	}
+	if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
     }
     else if (tmp4 == RED_ORB) {
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
@@ -333,6 +337,7 @@ void sprite_collide_lookup(){
 			else { if (currplayer_gravity) currplayer_vel_y = mini_heights[(gamemode | red_orb) & 0x7f]; else currplayer_vel_y = mini_heights[(gamemode | red_orb) & 0x7f]^0xFFFF;; }
 		}
 	}
+	if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
     }
     else if (tmp4 == GREEN_ORB) {
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
@@ -351,6 +356,7 @@ void sprite_collide_lookup(){
 			else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
 		}
 	}
+	if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1; 
     }
     else if (tmp4 == GRAVITY_DOWN_PORTAL || tmp4 == GRAVITY_DOWN_UPWARDS_PORTAL || tmp4 == GRAVITY_DOWN_DOWNWARDS_PORTAL || tmp4 == GRAVITY_DOWN_INVISIBLE_PORTAL) { 
 	if (currplayer_gravity) {
