@@ -1478,6 +1478,107 @@ const unsigned char Gravity_Pad_U4[]={
 	0x80
 };
 
+const unsigned char Big_Long_Light[]={
+
+	  4, 0,0xC9,0,
+	0x80
+};	
+
+
+const unsigned char Big_Long_Light_Top[]={
+
+	  4, 0,0xCB,0,
+	0x80
+};	
+
+const unsigned char Small_Long_Light[]={
+
+	  4, 0,0xCD,0,
+	0x80
+};	
+
+const unsigned char Small_Long_Light_Top[]={
+
+	  4, 0,0xCF,0,
+	0x80
+};	
+
+
+const unsigned char Black_Base_Light_Post[]={
+
+	  4, 0,0xD1,0,
+	0x80
+};	
+
+
+const unsigned char Black_Base_Big_Light[]={
+
+	  4, 0,0xD3,0,
+	0x80
+};	
+
+const unsigned char Black_Base_Small_Light[]={
+
+	  4, 0,0xD5,0,
+	0x80
+};	
+
+const unsigned char Chain[]={
+
+	  4, 0,0xD7,0,
+	0x80
+};	
+
+const unsigned char Chain_Top[]={
+
+	  4, 0,0xD9,0,
+	0x80
+};	
+
+const unsigned char Spike_Group[]={
+
+	  0, 0,0xDB,0,
+	  8, 0,0xDD,0,
+	  16, 0,0xDF,0,
+	  24, 0,0xE1,0,
+
+	0x80
+};	
+
+
+const unsigned char Big_Diamond[]={
+
+	  0, 0,0xE3,0,
+	  8, 0,0xE3,0|OAM_FLIP_H,
+	0x80
+};	
+
+
+const unsigned char Question_Mark[]={
+
+	  4, 0,0xE5,0,
+	0x80
+};	
+const unsigned char Exclamation_Mark[]={
+
+	  4, 0,0xE7,0,
+	0x80
+};	
+
+
+const unsigned char Right_Arrow[]={
+
+	  0, 0,0xE9,0,
+	  8, 0,0xEB,0,
+	0x80
+};	
+
+const unsigned char Big_X[]={
+
+	  0, 0,0xED,0,
+	  8, 0,0xED,0|OAM_FLIP_H,
+	0x80
+};	
 struct SpriteFrame {
 	unsigned short frame_count; // use a two byte length value for alignment
 	const unsigned char* ptr;
@@ -1614,6 +1715,21 @@ const unsigned char * const Metasprites[]={
 	Pink_Jump_Pad_U,
 	Green_Jump_Orb,
 	Red_Jump_Orb,
+	Big_Long_Light,
+	Big_Long_Light_Top,
+	Small_Long_Light,
+	Small_Long_Light_Top,
+	Black_Base_Light_Post,
+	Black_Base_Big_Light,
+	Black_Base_Small_Light,
+	Chain,
+	Chain_Top,
+	Spike_Group,
+	Big_Diamond,
+	Question_Mark,
+	Exclamation_Mark,
+	Right_Arrow,
+	Big_X,
 	};
 
 
@@ -1661,6 +1777,21 @@ const void* animation_frame_list[] = {
 	PINK_PAD_U_SPRITES, // Pink_Jump_Pad,	
 	GREEN_ORB_SPRITES,
 	RED_ORB_SPRITES,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1707,4 +1838,19 @@ const unsigned char animation_frame_length[] = {
 	sizeof(PINK_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
 	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
 	sizeof(RED_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
 };
