@@ -343,27 +343,22 @@ void customize_screen() {
 	vram_unrle(customizescreen);   	
 	#include "../defines/mainmenu_charmap.h"
 
-//	TOTALCOINS = 0;
-//	TOTALCOINSONES = 0;
-//	TOTALCOINSTENS = 0;
-//	TOTALSTARSONES = 0;
-//	TOTALSTARSTENS = 0;
-//
-//	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-//		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
-//		if (LEVELCOMPLETE[tmp2]) TOTALSTARSONES += stars_list[tmp2];
-//	}
-//	TOTALCOINSTEMP = TOTALCOINS;
-//	
-//	while (TOTALCOINSTEMP > 9) {
-//		TOTALCOINSTENS = TOTALCOINSTENS + 1;
-//		TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
-//	}
-//	TOTALCOINSONES = TOTALCOINSTEMP;
-//	while (TOTALSTARSONES > 9) {
-//		TOTALSTARSTENS = TOTALSTARSTENS + 1;
-//		TOTALSTARSONES = TOTALSTARSONES - 10;
-//	}
+	TOTALCOINS = 0;
+	TOTALCOINSONES = 0;
+	TOTALCOINSTENS = 0;
+	TOTALSTARSONES = 0;
+	TOTALSTARSTENS = 0;
+
+	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+		if (LEVELCOMPLETE[tmp2]) TOTALSTARSONES += stars_list[tmp2];
+	}
+	TOTALCOINSONES = TOTALCOINS;
+	
+	while (TOTALSTARSONES > 9) {
+		TOTALSTARSTENS = TOTALSTARSTENS + 1;
+		TOTALSTARSONES = TOTALSTARSONES - 10;
+	}
 
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
@@ -378,11 +373,11 @@ void customize_screen() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-//		if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
-//		one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
+		if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
+		one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
 
-//		if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
-//		one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
+		if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
+		one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
 
 
 	if (settingvalue == 0) {
@@ -556,54 +551,6 @@ void settings() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-/*		
-		if (pad_new[0] & PAD_SELECT){
-			if (pad[0] & PAD_A){
-				if (pad[0] & PAD_B){
-					for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-						coin1_obtained[tmp2] = 0;
-						coin2_obtained[tmp2] = 0;
-						coin3_obtained[tmp2] = 0;
-					}
-							
-					tmp2 = 0;
-					while (tmp2 < 0x20) {
-						LEVELCOMPLETE[tmp2] = 0;
-						tmp2++;
-					}
-				
-					SRAM_VALIDATE[0x0E] = 0;
-					SRAM_VALIDATE[0x0F] = 0;
-					SRAM_VALIDATE[0x10] = 0;
-					SRAM_VALIDATE[0x11] = 0;
-					SRAM_VALIDATE[0x12] = 0;
-					SRAM_VALIDATE[0x13] = 0;
-					SRAM_VALIDATE[0x14] = 0;
-					SRAM_VALIDATE[0x15] = 0;
-					SRAM_VALIDATE[0x16] = 0;
-					SRAM_VALIDATE[0x17] = 0;
-					SRAM_VALIDATE[0x18] = 0;
-					SRAM_VALIDATE[0x19] = 0;
-					SRAM_VALIDATE[0x1A] = 0;
-					SRAM_VALIDATE[0x1B] = 0;
-					SRAM_VALIDATE[0x1C] = 0;
-					SRAM_VALIDATE[0x1D] = 0;
-					SRAM_VALIDATE[0x1E] = 0;
-					SRAM_VALIDATE[0x1F] = 0;
-					TOTALCOINSONES = 0;
-					TOTALCOINSTENS = 0;
-				//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
-				//	one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));					
-					sfx_play(sfx_death, 0);
-				//	one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));		
-				}
-			}
-			else {
-				sfx_play(sfx_click, 0);			
-				twoplayer ^= 1;
-			}
-		}
-*/		
 		if (oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 7));
 		else one_vram_buffer('f', NTADR_A(26, 7));
 
@@ -696,16 +643,6 @@ void state_menu() {
 	#include "../defines/mainmenu_charmap.h"
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
-
-	// Get it? it spells DASH
-	if (SRAM_VALIDATE[0] != 0x0D
-	 || SRAM_VALIDATE[1] != 0x0A
-	 || SRAM_VALIDATE[2] != 0x01
-	 || SRAM_VALIDATE[3] != 0x04) {
-		// set the validation header and then reset coin counts
-	setdefaultoptions();
-
-	}
 
 	kandotemp = 1;
 //	invisible = 0;

@@ -154,6 +154,8 @@ unsigned char platformer;
 unsigned char musicoff;
 unsigned char sfxoff;
 
+unsigned char icon;
+
 unsigned char color1;
 unsigned char color2;
 unsigned char color3;
