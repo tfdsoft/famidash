@@ -244,9 +244,10 @@ void levelselection() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
+		if (twoplayer) one_vram_buffer('d', NTADR_A(31, 2));
+		else one_vram_buffer('e', NTADR_A(31, 2));
 
-
-
+		if (pad_new[0] & PAD_UP) twoplayer ^= 0x01;
 
 		if (pad_new[0] & PAD_START){
 			sfx_play(sfx_start_level, 0);
@@ -479,7 +480,7 @@ void funsettings() {
 	vram_unrle(funsettingscreen);   
 	#include "../defines/mainmenu_charmap.h"
 	ppu_on_all();
-	one_vram_buffer('c', NTADR_A(4, 8));	// settingvalue is set to 0 by default	
+	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 by default	
 	pal_fade_to_withmusic(0,4);
 	while (1) {
 		ppu_wait_nmi();
@@ -487,14 +488,14 @@ void funsettings() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		if (twoplayer) 	one_vram_buffer('d', NTADR_A(6, 8));	// believe it or not, 
-		else 	one_vram_buffer('e', NTADR_A(6, 8));	// this is auto optimized by cc65
+		if (invisible) 	one_vram_buffer('g', NTADR_A(26, 7));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 7));	// this is auto optimized by cc65
 
-		if (invisible) 	one_vram_buffer('d', NTADR_A(6, 12));	// believe it or not, 
-		else 	one_vram_buffer('e', NTADR_A(6, 12));	// this is auto optimized by cc65
+		if (platformer) 	one_vram_buffer('g', NTADR_A(26, 9));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 9));	// this is auto optimized by cc65
 
-		if (platformer) 	one_vram_buffer('d', NTADR_A(6, 16));	// believe it or not, 
-		else 	one_vram_buffer('e', NTADR_A(6, 16));	// this is auto optimized by cc65
+		if (discomode) 	one_vram_buffer('g', NTADR_A(26, 11));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 11));	// this is auto optimized by cc65
 
 		tmp1 = settingvalue;
 
@@ -510,16 +511,16 @@ void funsettings() {
 
 		if (tmp1 != settingvalue) {
 			// NTADR_A = (NAMETABLE_A|(((y)<<5)|(x)))
-			// (tmp1 * 4) << 5 = tmp1<<7 = (tmp1<<8)>>1
-			one_vram_buffer(' ', NTADR_A(4, 8)+((tmp1<<8)>>1));
-			one_vram_buffer('c', NTADR_A(4, 8)+((settingvalue<<8)>>1));
+			// (tmp1 * 2) << 5 = tmp1<<6 = (tmp1<<8)>>2
+			one_vram_buffer(' ', NTADR_A(4, 7)+((tmp1<<8)>>2));
+			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
 		}
 
 		if (pad_new[0] & (PAD_START | PAD_A)) {
 			switch (settingvalue) {
-				case 0x00: twoplayer ^= 1; break;
-				case 0x01: invisible ^= 1; break;
-				case 0x02: platformer ^= 1; break;
+				case 0x00: invisible ^= 1; break;
+				case 0x01: platformer ^= 1; break;
+				case 0x02: discomode ^= 1; break;
 			};
 		}
 			
@@ -528,9 +529,9 @@ void funsettings() {
 			// one_vram_buffer(' ', NTADR_A(6, 8));
 			// one_vram_buffer(' ', NTADR_A(6, 12));
 			// one_vram_buffer(' ', NTADR_A(6, 16));
-			one_vram_buffer(' ', NTADR_A(4, 8));
-			one_vram_buffer(' ', NTADR_A(4, 12));
-			one_vram_buffer(' ', NTADR_A(4, 16));
+			//one_vram_buffer(' ', NTADR_A(4, 8));
+			//one_vram_buffer(' ', NTADR_A(4, 12));
+			//one_vram_buffer(' ', NTADR_A(4, 16));
 			return;
 		}
 
