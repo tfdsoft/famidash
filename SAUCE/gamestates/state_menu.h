@@ -349,7 +349,7 @@ void customize_screen() {
 	TOTALSTARSONES = 0;
 	TOTALSTARSTENS = 0;
 
-	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+	for (tmp2 = 0; tmp2 < LEVEL_COUNT; tmp2++) {
 		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
 		if (LEVELCOMPLETE[tmp2]) TOTALSTARSONES += stars_list[tmp2];
 	}
@@ -707,22 +707,7 @@ void state_menu() {
 
 	kandotemp = 1;
 //	invisible = 0;
-	TOTALCOINS = 0;
-	TOTALCOINSONES = 0;
-	TOTALCOINSTENS = 0;
-
-	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
-	}
-	TOTALCOINSTEMP = TOTALCOINS;
 	
-	while (TOTALCOINSTEMP > 9) {
-		TOTALCOINSTENS = TOTALCOINSTENS + 1;
-		TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
-	}
-	TOTALCOINSONES = TOTALCOINSTEMP;
-	
-		
 
 	oam_clear();
 
