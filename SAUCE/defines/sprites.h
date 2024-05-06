@@ -1480,78 +1480,49 @@ const unsigned char Gravity_Pad_U4[]={
 
 const unsigned char Short_Light[]={
 
-	  4, 0,0xD3,3,
+	  4, 0,0xCD,3,
 	0x80
 };	
-const unsigned char Short_Light2[]={
-
-	  4, 0,0xD5,3,
-	0x80
-};	
+	
 
 const unsigned char Short_Light_U[]={
 
-	  4, 0,0xD3,3|OAM_FLIP_V,
+	  4, 0,0xCD,3|OAM_FLIP_V,
 	0x80
 };	
-const unsigned char Short_Light_U2[]={
 
-	  4, 0,0xD5,3|OAM_FLIP_V,
-	0x80
-};	
 
 
 const unsigned char Medium_Light[]={
 
-	  4, 0,0xD1,3,
+	  4, 0,0xCF,3,
 	  4, -16,0xCB,3,
 	0x80
 };	
-const unsigned char Medium_Light2[]={
 
-	  4, 0,0xD1,3,
-	  4, -16,0xCF,3,
-	0x80
-};	
 
 const unsigned char Medium_Light_U[]={
 
-	  4, 0,0xD1,3|OAM_FLIP_V,
+	  4, 0,0xCF,3|OAM_FLIP_V,
 	  4, -16,0xCB,3|OAM_FLIP_V,
-	0x80
-};	
-const unsigned char Medium_Light_U2[]={
-
-	  4, 0,0xD1,3|OAM_FLIP_V,
-	  4, -16,0xCF,3|OAM_FLIP_V,
 	0x80
 };	
 
 const unsigned char Long_Light[]={
 
-	  4, 0,0xD1,3,
+	  4, 0,0xCF,3,
 	  4, -16,0xC9,3,
 	0x80
 };	
-const unsigned char Long_Light2[]={
 
-	  4, 0,0xD1,3,
-	  4, -16,0xCD,3,
-	0x80
-};	
 
 const unsigned char Long_Light_U[]={
 
-	  4, 0,0xD1,3|OAM_FLIP_V,
+	  4, 0,0xCF,3|OAM_FLIP_V,
 	  4, -16,0xC9,3|OAM_FLIP_V,
 	0x80
 };	
-const unsigned char Long_Light_U2[]={
 
-	  4, 0,0xD1,3|OAM_FLIP_V,
-	  4, -16,0xCD,3|OAM_FLIP_V,
-	0x80
-};	
 
 
 const unsigned char Chain[]={
@@ -1723,31 +1694,6 @@ const struct SpriteFrame RED_ORB_SPRITES[]={
 	{5, Red_Jump_Orb3},
 	{5, Red_Jump_Orb4},
 };
-const struct SpriteFrame SHORT_LIGHT_SPRITES[]={
-	{14, Short_Light},
-	{14, Short_Light2},
-};
-const struct SpriteFrame MEDIUM_LIGHT_SPRITES[]={
-	{14, Medium_Light},
-	{14, Medium_Light2},
-};
-const struct SpriteFrame LONG_LIGHT_SPRITES[]={
-	{14, Long_Light},
-	{14, Long_Light2},
-};
-
-const struct SpriteFrame SHORT_LIGHT_U_SPRITES[]={
-	{14, Short_Light_U},
-	{14, Short_Light_U2},
-};
-const struct SpriteFrame MEDIUM_LIGHT_U_SPRITES[]={
-	{14, Medium_Light_U},
-	{14, Medium_Light_U2},
-};
-const struct SpriteFrame LONG_LIGHT_U_SPRITES[]={
-	{14, Long_Light_U},
-	{14, Long_Light_U2},
-};
 
 
 const unsigned char nometa[] = {0x80};
@@ -1867,9 +1813,9 @@ const void* animation_frame_list[] = {
 	GREEN_ORB_SPRITES,
 	RED_ORB_SPRITES,
 	YELLOW_ORB_SPRITES,
-	LONG_LIGHT_SPRITES,
-	MEDIUM_LIGHT_SPRITES,
-	SHORT_LIGHT_SPRITES,
+	NULL,
+	NULL,
+	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -1884,9 +1830,9 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
-	LONG_LIGHT_U_SPRITES,
-	MEDIUM_LIGHT_U_SPRITES,
-	SHORT_LIGHT_U_SPRITES,	
+	NULL,
+	NULL,
+	NULL,	
 	NULL,
 };
 
@@ -1936,9 +1882,9 @@ const unsigned char animation_frame_length[] = {
 	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
 	sizeof(RED_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
 	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
-	sizeof(LONG_LIGHT_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
-	sizeof(MEDIUM_LIGHT_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
-	sizeof(SHORT_LIGHT_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
+	0,
+	0,
+	0,
 	0,
 	0,
 	0,
@@ -1953,8 +1899,9 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	sizeof(LONG_LIGHT_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
-	sizeof(MEDIUM_LIGHT_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
-	sizeof(SHORT_LIGHT_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,		
+		
+	0,
+	0,
+	0,
 	0,
 };

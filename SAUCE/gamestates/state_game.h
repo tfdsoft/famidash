@@ -39,7 +39,7 @@ void state_game(){
     END_LEVEL_TIMER = 0;
 
 	kandoframecnt = 0;
-
+	mmc3_set_2kb_chr_bank_1(30);
     while (1) {
 	    if (discomode && !(kandoframecnt & 0x0F)) {
 		    maketmp2();
@@ -103,8 +103,11 @@ void state_game(){
 	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(24);
 	else mmc3_set_2kb_chr_bank_0(26);
 //	else mmc3_set_2kb_chr_bank_0(28);
-	mmc3_set_2kb_chr_bank_1(30);
-	
+//
+	if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);
+	else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(30);
+
+
         music_update();
         
 
