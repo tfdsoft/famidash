@@ -290,6 +290,7 @@ _famistudio_state = *
    	.word irq	;$fffe irq / brk
 
 
+
 .segment "GAMECHR"
 .export _GAME_CHR
 _GAME_CHR:

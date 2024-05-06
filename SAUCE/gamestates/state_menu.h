@@ -387,6 +387,8 @@ void customize_screen() {
 		one_vram_buffer(' ', NTADR_A(14, 15));		
 		one_vram_buffer(' ', NTADR_A(23, 14));		
 		one_vram_buffer(' ', NTADR_A(23, 15));		
+		one_vram_buffer(' ', NTADR_A(14, 8));		
+		one_vram_buffer(' ', NTADR_A(14, 9));		
 		if (pad_new[0] & PAD_UP) { color1++; 
 			if (color1 == 0x0D || color1 == 0x0E ) color1 = 0x0F;
 			if (color1 == 0x1D || color1 == 0x1E || color1 == 0x1F ) color1 = 0x20;
@@ -409,6 +411,8 @@ void customize_screen() {
 		one_vram_buffer('i', NTADR_A(14, 15));		
 		one_vram_buffer(' ', NTADR_A(23, 14));		
 		one_vram_buffer(' ', NTADR_A(23, 15));		
+		one_vram_buffer(' ', NTADR_A(14, 8));		
+		one_vram_buffer(' ', NTADR_A(14, 9));		
 		if (pad_new[0] & PAD_UP) { color2++; 
 			if (color2 == 0x0D || color2 == 0x0E ) color2 = 0x0F;
 			if (color2 == 0x1D || color2 == 0x1E || color2 == 0x1F ) color2 = 0x20;
@@ -430,7 +434,9 @@ void customize_screen() {
 		one_vram_buffer(' ', NTADR_A(14, 14));		
 		one_vram_buffer(' ', NTADR_A(14, 15));		
 		one_vram_buffer('h', NTADR_A(23, 14));		
-		one_vram_buffer('i', NTADR_A(23, 15));		
+		one_vram_buffer('i', NTADR_A(23, 15));	
+		one_vram_buffer(' ', NTADR_A(14, 8));		
+		one_vram_buffer(' ', NTADR_A(14, 9));		
 		if (pad_new[0] & PAD_UP) { color3++; 
 			if (color3 == 0x0D || color3 == 0x0E ) color3 = 0x0F;
 			if (color3 == 0x1D || color3 == 0x1E || color3 == 0x1F ) color3 = 0x20;
@@ -446,13 +452,34 @@ void customize_screen() {
 			if (color3 == 0x3D || color3 == 0x3E || color3 == 0x3F ) color3 = 0x3C;
 		}
 	}
+	else if (settingvalue == 3) {
+		one_vram_buffer(' ', NTADR_A(5, 14));		
+		one_vram_buffer(' ', NTADR_A(5, 15));		
+		one_vram_buffer(' ', NTADR_A(14, 14));		
+		one_vram_buffer(' ', NTADR_A(14, 15));		
+		one_vram_buffer(' ', NTADR_A(23, 14));		
+		one_vram_buffer(' ', NTADR_A(23, 15));	
+		one_vram_buffer('h', NTADR_A(14, 8));		
+		one_vram_buffer('i', NTADR_A(14, 9));		
+
+	if (pad_new[0] & PAD_UP) {
+		icon++;
+		if (icon > MAX_ICONS) icon = 0;
+	}
+	if (pad_new[0] & PAD_DOWN) {
+		if (icon == 0) icon = MAX_ICONS;
+		else icon--;
+	}
+
+
+	}
 
 	if (pad_new[0] & PAD_RIGHT) {
 		settingvalue++;
-		if (settingvalue == 3) settingvalue = 0;
+		if (settingvalue == 4) settingvalue = 0;
 	}
 	if (pad_new[0] & PAD_LEFT) {
-		if (settingvalue == 0) settingvalue = 2;
+		if (settingvalue == 0) settingvalue = 3;
 		else settingvalue--;
 	}
 

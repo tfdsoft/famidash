@@ -2,6 +2,9 @@
 #define MENU 0x01
 #define GAME 0x02
 
+
+#define MAX_ICONS 4 //total icons
+
 // physics defines
 #define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580
 #define PAD_HEIGHT_BLUE -0x3A0
