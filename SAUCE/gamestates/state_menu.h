@@ -1,6 +1,6 @@
-#pragma code-name(push, "LVL_BANK_00")
-#pragma data-name(push, "LVL_BANK_00")
-#pragma rodata-name(push, "LVL_BANK_00")
+#pragma code-name(push, "XCD_BANK_02")
+#pragma data-name(push, "XCD_BANK_02")
+#pragma rodata-name(push, "XCD_BANK_02")
 
 const unsigned char loNTAddrTable[]={
     NTADR_A(9, 11)&0xFF,    // -1 = 4

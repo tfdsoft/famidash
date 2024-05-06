@@ -90,7 +90,7 @@ void main(){
 				state_game(); break;
 			}
 			case 0x03: {
-				mmc3_set_prg_bank_1(0);
+				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
 				state_lvldone();
 				break;
 			}
