@@ -1489,6 +1489,17 @@ const unsigned char Short_Light2[]={
 	0x80
 };	
 
+const unsigned char Short_Light_U[]={
+
+	  4, 0,0xD3,3|OAM_FLIP_V,
+	0x80
+};	
+const unsigned char Short_Light_U2[]={
+
+	  4, 0,0xD5,3|OAM_FLIP_V,
+	0x80
+};	
+
 
 const unsigned char Medium_Light[]={
 
@@ -1500,6 +1511,19 @@ const unsigned char Medium_Light2[]={
 
 	  4, 0,0xD1,3,
 	  4, -16,0xCF,3,
+	0x80
+};	
+
+const unsigned char Medium_Light_U[]={
+
+	  4, 0,0xD1,3|OAM_FLIP_V,
+	  4, -16,0xCB,3|OAM_FLIP_V,
+	0x80
+};	
+const unsigned char Medium_Light_U2[]={
+
+	  4, 0,0xD1,3|OAM_FLIP_V,
+	  4, -16,0xCF,3|OAM_FLIP_V,
 	0x80
 };	
 
@@ -1516,73 +1540,97 @@ const unsigned char Long_Light2[]={
 	0x80
 };	
 
+const unsigned char Long_Light_U[]={
+
+	  4, 0,0xD1,3|OAM_FLIP_V,
+	  4, -16,0xC9,3|OAM_FLIP_V,
+	0x80
+};	
+const unsigned char Long_Light_U2[]={
+
+	  4, 0,0xD1,3|OAM_FLIP_V,
+	  4, -16,0xCD,3|OAM_FLIP_V,
+	0x80
+};	
+
 
 const unsigned char Chain[]={
 
-	  4, 0,0xD7,0,
-	  4, -16,0xD9,0,
+	  4, 0,0xD7,3,
+	  4, -16,0xD9,3,
+	0x80
+};	
+
+const unsigned char Chain_U[]={
+
+	  4, -16,0xD7,3|OAM_FLIP_V,
+	  4, 0,0xD9,3|OAM_FLIP_V,
 	0x80
 };	
 
 
 const unsigned char BG_Spike_Group1[]={
 
-	  0, 0,0xDB,0,
+	  0, -4,0xDB,3,
+	  8, -4,0xDD,3,
 	0x80
 };	
 const unsigned char BG_Spike_Group2[]={
 
-	  0, 0,0xDD,0,
+	  0, 4,0xDB,3|OAM_FLIP_V,
+	  8, 4,0xDD,3|OAM_FLIP_V,
 	0x80
 };	
 const unsigned char BG_Spike_Group3[]={
 
-	  0, 0,0xDF,0,
+	  0, -4,0xDF,3,
+	  8, -4,0xE1,3,
 	0x80
 };	
 const unsigned char BG_Spike_Group4[]={
 
-	  0, 0,0xE1,0,
+	  0, 4,0xDF,3|OAM_FLIP_V,
+	  8, 4,0xE1,3|OAM_FLIP_V,
 	0x80
 };	
 
 
 const unsigned char Big_Diamond[]={
 
-	  0, 0,0xE3,0,
-	  8, 0,0xE3,0|OAM_FLIP_H,
+	  0, 0,0xE3,3,
+	  8, 0,0xE3,3|OAM_FLIP_H,
 	0x80
 };	
 const unsigned char Right_Half_Diamond[]={
 
-	  8, 0,0xE3,0|OAM_FLIP_H,
+	  8, 0,0xE3,3|OAM_FLIP_H,
 	0x80
 };	
 
 
 const unsigned char Question_Mark[]={
 
-	  4, 0,0xE5,0,
+	  4, 0,0xE5,3,
 	0x80
 };	
 const unsigned char Exclamation_Mark[]={
 
-	  4, 0,0xE7,0,
+	  4, 0,0xE7,3,
 	0x80
 };	
 
 
 const unsigned char Right_Arrow[]={
 
-	  0, 0,0xE9,0,
-	  8, 0,0xEB,0,
+	  0, 0,0xE9,3,
+	  8, 0,0xEB,3,
 	0x80
 };	
 
 const unsigned char Big_X[]={
 
-	  0, 0,0xED,0,
-	  8, 0,0xED,0|OAM_FLIP_H,
+	  0, 0,0xED,3,
+	  8, 0,0xED,3|OAM_FLIP_H,
 	0x80
 };	
 struct SpriteFrame {
@@ -1688,6 +1736,19 @@ const struct SpriteFrame LONG_LIGHT_SPRITES[]={
 	{14, Long_Light2},
 };
 
+const struct SpriteFrame SHORT_LIGHT_U_SPRITES[]={
+	{14, Short_Light_U},
+	{14, Short_Light_U2},
+};
+const struct SpriteFrame MEDIUM_LIGHT_U_SPRITES[]={
+	{14, Medium_Light_U},
+	{14, Medium_Light_U2},
+};
+const struct SpriteFrame LONG_LIGHT_U_SPRITES[]={
+	{14, Long_Light_U},
+	{14, Long_Light_U2},
+};
+
 
 const unsigned char nometa[] = {0x80};
 
@@ -1742,6 +1803,7 @@ const unsigned char * const Metasprites[]={
 	Chain,
 	BG_Spike_Group1,
 	BG_Spike_Group2,
+
 	BG_Spike_Group3,
 	BG_Spike_Group4,
 	Big_Diamond,
@@ -1750,6 +1812,12 @@ const unsigned char * const Metasprites[]={
 	Exclamation_Mark,
 	Right_Arrow,
 	Big_X,
+	nometa,
+	nometa,
+	Long_Light_U,
+	Medium_Light_U,
+	Short_Light_U,
+	Chain_U,	
 	};
 
 
@@ -1805,6 +1873,7 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+
 	NULL,
 	NULL,
 	NULL,
@@ -1813,6 +1882,11 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
+	LONG_LIGHT_U_SPRITES,
+	MEDIUM_LIGHT_U_SPRITES,
+	SHORT_LIGHT_U_SPRITES,	
 	NULL,
 };
 
@@ -1868,6 +1942,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
+
 	0,
 	0,
 	0,
@@ -1875,5 +1950,11 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
+	0,
+	0,
+	0,
+	sizeof(LONG_LIGHT_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
+	sizeof(MEDIUM_LIGHT_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
+	sizeof(SHORT_LIGHT_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,		
 	0,
 };

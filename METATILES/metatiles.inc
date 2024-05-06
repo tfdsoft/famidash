@@ -6,7 +6,7 @@ Metatile "BG1",   $1a, $1b, $2a, $2b, PAL_1, COL_ALL
 Metatile "BG2",   $1a, $1b, $1a, $1b, PAL_1, COL_ALL
 Metatile "HALF_SLAB_BOTTOM",   $00, $00, $24, $25, PAL_0, COL_BOTTOM
 
-Metatile "BG4",   $ff, $ff, $ff, $ff, PAL_1, COL_ALL
+Metatile "SMALL_SAW_BOTTOM_HALF",   $74, $79, $00, $00, PAL_1, COL_DEATH_TOP
 Metatile "BG5",   $1b, $1b, $2b, $2b, PAL_1, COL_ALL
 Metatile "BG6",   $1b, $1b, $1b, $1b, PAL_1, COL_ALL
 Metatile "BG7",   $20, $21, $30, $31, PAL_0, COL_NONE
@@ -14,8 +14,8 @@ Metatile "MED_SAW_TOP_LEFT",   $00, $e1, $e4, $e5, PAL_0, COL_DEATH_BOTTOM
 Metatile "MED_SAW_TOP_RIGHT",   $e2, $e3, $e6, $e7, PAL_0, COL_DEATH_BOTTOM
 Metatile "MED_SAW_BOTTOM_LEFT",  $e8, $e9, $00, $ed, PAL_0, COL_DEATH_TOP
 Metatile "MED_SAW_BOTTOM_RIGHT",  $ea, $eb, $ee, $ef, PAL_0, COL_DEATH_TOP
-Metatile "BG12",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
-Metatile "BG13",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
+Metatile "BOTTOM_GREEN_SPIKES",  $AC, $AD, $BC, $BD, PAL_1, COL_NONE
+Metatile "TOP_GREEN_SPIKES",  $AE, $AF, $BE, $BF, PAL_1, COL_NONE
 Metatile "BG14",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 Metatile "BG15",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 
@@ -143,4 +143,4 @@ Metatile "BIG_SAW_BOTTOM_MIDDLE", $66, $67, $76, $77, PAL_0, COL_DEATH
 Metatile "BIG_SAW_BOTTOM_RIGHT", $68, $69, $78, $00, PAL_0, COL_DEATH_TOP
 Metatile "SMALL_SAW", $4a, $4f, $74, $79, PAL_0, COL_DEATH
 Metatile "GLASS_SQUARE", $3a, $3b, $3e, $3f, PAL_0, COL_ALL
-Metatile "SMALL_SAW_BOTTOM_HALF", $00, $00, $4a, $4f, PAL_0, COL_DEATH_BOTTOM
+Metatile "SMALL_SAW_TOP_HALF", $00, $00, $4a, $4f, PAL_0, COL_DEATH_BOTTOM
