@@ -10,7 +10,7 @@
 .import _DATA_PTR
 .import pusha, pushax
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
-.import _increase_parallax_scroll_column
+.import _increase_parallax_scroll_column, _icon
 .import FIRST_MUSIC_BANK
 .import _auto_fs_updates
 
@@ -1269,6 +1269,22 @@ drawcube_sprite_table:
 	.undef V_FLIP
 	.undef HVFLIP
 
+drawcube_sprite_way:
+	; Bits 6-7: FLIP
+	; Bits 0-2: actual idx
+	.define NOFLIP $00
+	.define H_FLIP $40
+	.define V_FLIP $80
+	.define HVFLIP $C0
+	.byte NOFLIP|0, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
+	.byte NOFLIP|6, H_FLIP|5, H_FLIP|4, H_FLIP|3, H_FLIP|2, H_FLIP|1
+	.byte H_FLIP|0, HVFLIP|1, HVFLIP|2, HVFLIP|3, HVFLIP|4, HVFLIP|5
+	.byte V_FLIP|6, V_FLIP|5, V_FLIP|4, V_FLIP|3, V_FLIP|2, V_FLIP|1
+	.undef NOFLIP
+	.undef H_FLIP
+	.undef V_FLIP
+	.undef HVFLIP
+
 
 drawplayer_center_offsets:
 	;	Cub	Shp	Bal	UFO	RBT	SPI	Wav
@@ -1336,7 +1352,6 @@ drawplayer_center_offsets:
 			; 		else cube_rotate[0] += player_gravity[0] ? -CUBE_GRAVITY : CUBE_GRAVITY;
 			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
-		@sprite_table = drawcube_sprite_table
 
 		LDA _player_vel_y+1		;	if player_vel_y == 0
 		ORA _player_vel_y+0		;
@@ -1385,7 +1400,14 @@ drawplayer_center_offsets:
 		@fin:
 			LDX _cube_rotate+1
         @fin_nold:
-			LDA @sprite_table, X
+			LDA _icon
+			cmp #2
+			bne	@norm
+			LDA drawcube_sprite_way, X
+			jmp @don
+		@norm:
+			LDA drawcube_sprite_table, X
+		@don:
 			TAX
 			AND #$C0
 			STA <FLIP
@@ -1673,7 +1695,6 @@ drawplayer_common := _drawplayerone::common
 			; 		else cube_rotate[1] += player_gravity[1] ? -CUBE_GRAVITY : CUBE_GRAVITY;
 			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
-		@sprite_table = drawcube_sprite_table
 
 		LDA _player_vel_y+3		;	if player_vel_y == 0
 		ORA _player_vel_y+2		;
@@ -1722,7 +1743,14 @@ drawplayer_common := _drawplayerone::common
 		@fin:
 			LDX _cube_rotate+3
         @fin_nold:
-			LDA @sprite_table, X
+			LDA _icon
+			cmp #2
+			bne	@norm
+			LDA drawcube_sprite_way, X
+			jmp @don
+		@norm:
+			LDA drawcube_sprite_table, X
+		@don:
 			TAX
 			AND #$C0
 			STA <FLIP
