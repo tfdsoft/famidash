@@ -21,7 +21,7 @@ music_data_famidash_music2:
 	.word @song2ch2
 	.word @song2ch3
 	.word @song2ch4
-	.word 358,298
+	.word 358,302
 ; 03 : Time Machine
 	.word @song3ch0
 	.word @song3ch1
