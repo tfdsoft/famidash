@@ -681,7 +681,7 @@ void state_menu() {
 	set_scroll_x(0);
     set_scroll_y(0);
 
-	mmc3_set_prg_bank_1(GET_BANK(state_menu));
+//	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
 	switch (kandotemp){
 		case 0x00:	music_play(song_menu_theme); break;
