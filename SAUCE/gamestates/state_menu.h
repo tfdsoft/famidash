@@ -338,10 +338,10 @@ void customize_screen() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
-	mmc3_set_8kb_chr(38);
+	mmc3_set_8kb_chr(46);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
-	#include "../defines/mainmenu_charmap.h"
+	#include "../defines/mainmenu_customize.h"
 
 	TOTALCOINS = 0;
 	TOTALCOINSONES = 0;
@@ -378,6 +378,40 @@ void customize_screen() {
 
 		if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
 		one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
+
+	switch (icon){
+		case 0x00: 
+			one_vram_buffer('a', NTADR_A(15, 8));		
+			one_vram_buffer('b', NTADR_A(16, 8));		
+			one_vram_buffer('c', NTADR_A(15, 9));		
+			one_vram_buffer('d', NTADR_A(16, 9));		
+			break;
+		case 0x01: 
+			one_vram_buffer('e', NTADR_A(15, 8));		
+			one_vram_buffer('f', NTADR_A(16, 8));		
+			one_vram_buffer('g', NTADR_A(15, 9));		
+			one_vram_buffer('j', NTADR_A(16, 9));		
+			break;
+		case 0x02: 
+			one_vram_buffer('k', NTADR_A(15, 8));		
+			one_vram_buffer('l', NTADR_A(16, 8));		
+			one_vram_buffer('m', NTADR_A(15, 9));		
+			one_vram_buffer('n', NTADR_A(16, 9));		
+			break;
+		case 0x03: 
+			one_vram_buffer('o', NTADR_A(15, 8));		
+			one_vram_buffer('p', NTADR_A(16, 8));		
+			one_vram_buffer('q', NTADR_A(15, 9));		
+			one_vram_buffer('r', NTADR_A(16, 9));		
+			break;
+		case 0x04: 
+			one_vram_buffer('s', NTADR_A(15, 8));		
+			one_vram_buffer('t', NTADR_A(16, 8));		
+			one_vram_buffer('u', NTADR_A(15, 9));		
+			one_vram_buffer('v', NTADR_A(16, 9));		
+			break;
+	}
+
 
 
 	if (settingvalue == 0) {
@@ -464,10 +498,10 @@ void customize_screen() {
 
 	if (pad_new[0] & PAD_UP) {
 		icon++;
-		if (icon > MAX_ICONS) icon = 0;
+		if (icon > (MAX_ICONS - 1)) icon = 0;
 	}
 	if (pad_new[0] & PAD_DOWN) {
-		if (icon == 0) icon = MAX_ICONS;
+		if (icon == 0) icon = MAX_ICONS - 1;
 		else icon--;
 	}
 
@@ -651,7 +685,7 @@ void state_menu() {
 	ppu_off();
     pal_bg((char *)splashMenu);
 
-	mmc3_set_8kb_chr(34);
+	mmc3_set_8kb_chr(42);
 
 	set_scroll_x(0);
     set_scroll_y(0);

@@ -42,7 +42,7 @@ void main(){
     mmc3_set_1kb_chr_bank_3(7);
     */
     
-	mmc3_set_8kb_chr(34);
+	mmc3_set_8kb_chr(42);
 
     pal_bg((char *)paletteDefault);
     pal_spr((char *)paletteDefaultSP);

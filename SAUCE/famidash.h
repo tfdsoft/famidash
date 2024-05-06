@@ -3,7 +3,7 @@
 #define GAME 0x02
 
 
-#define MAX_ICONS 4 //total icons
+#define MAX_ICONS 5 //total icons
 
 // physics defines
 #define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580
@@ -266,7 +266,7 @@ unsigned char activesprites_active[max_loaded_sprites];
 unsigned char DEBUG_MODE = 0;
 unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
-
+unsigned char iconbank;
 
 
 //struct player {

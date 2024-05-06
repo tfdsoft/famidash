@@ -40,6 +40,14 @@ void state_game(){
 
 	kandoframecnt = 0;
 	mmc3_set_2kb_chr_bank_1(30);
+	
+	switch (icon){
+		case 0x00: iconbank = 24; break;
+		case 0x01: iconbank = 34; break;
+		case 0x02: iconbank = 36; break;
+		case 0x03: iconbank = 38; break;
+		case 0x04: iconbank = 40; break;
+	}
     while (1) {
 	    if (discomode && !(kandoframecnt & 0x0F)) {
 		    maketmp2();
@@ -99,8 +107,8 @@ void state_game(){
 	}
 	
 	if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(28);
-	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(24);
-	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(24);
+	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
+	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
 	else mmc3_set_2kb_chr_bank_0(26);
 //	else mmc3_set_2kb_chr_bank_0(28);
 //
