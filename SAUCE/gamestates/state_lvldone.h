@@ -5,6 +5,8 @@ extern volatile unsigned char VRAM_UPDATE;
 #pragma data-name(push, "LVL_BANK_00")
 #pragma rodata-name(push, "LVL_BANK_00")
 
+#include "defines/menunametable2.h"
+
 void state_lvldone() {
 #define current_state tmp2
 #define sprite_0_y tmp3
