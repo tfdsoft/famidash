@@ -12,7 +12,7 @@ void x_movement(){
 
 	old_x = currplayer_x;
 	
-	if (!platformer) {
+	if (!(options & platformer)) {
 		currplayer_vel_x = speed_table[speed & 0x7F];
 		currplayer_x += currplayer_vel_x;
 	} else {

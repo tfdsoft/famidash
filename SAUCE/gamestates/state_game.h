@@ -10,7 +10,7 @@ void x_movement_coll() {
 	if (high_byte(currplayer_x) > 0x10) {
 		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
 		if (bg_coll_R()) {
-			if (!platformer) {cube_data[currplayer] |= 0x01; }
+			if (!(options & platformer)) {cube_data[currplayer] |= 0x01; }
 			else {currplayer_vel_x = 0; }
 		}
 	}	
@@ -136,9 +136,9 @@ void state_game(){
         pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		if (platformer) twoplayer = 0;
+		if (options & platformer) twoplayer = 0;
 
-		if (oneptwoplayer && twoplayer) {
+		if ((options & oneptwoplayer) && twoplayer) {
 			pad[1] = pad[0] << 4; // read the second controller
 			pad_new[1] = pad_new[0] << 4;
 			dual = 1;
@@ -149,7 +149,7 @@ void state_game(){
 			dual = 1;
 		}
 		
-		if (jumpsound) {
+		if (options & jumpsound) {
 			if (pad_new[0] & PAD_A) {
 				sfx_play(sfx_click, 0);
 			}
@@ -294,8 +294,8 @@ void state_game(){
 			currplayer = 1;					//take focus
 
 			if (twoplayer) controllingplayer = 1;		//take controls
-			if (dual && platformer && !twoplayer) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
-			else if (dual && !platformer) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
+			if (dual && (options & platformer) && !twoplayer) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
+			else if (dual && !(options & platformer)) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
 
 			{	
 				currplayer_x = player_x[1];

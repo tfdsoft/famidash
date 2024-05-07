@@ -565,7 +565,7 @@ void funsettings() {
 		if (invisible) 	one_vram_buffer('g', NTADR_A(26, 7));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 7));	// this is auto optimized by cc65
 
-		if (platformer) 	one_vram_buffer('g', NTADR_A(26, 9));	// believe it or not, 
+		if ((options & platformer)) 	one_vram_buffer('g', NTADR_A(26, 9));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 9));	// this is auto optimized by cc65
 
 		if (discomode) 	one_vram_buffer('g', NTADR_A(26, 11));	// believe it or not, 
@@ -593,7 +593,7 @@ void funsettings() {
 		if (pad_new[0] & (PAD_START | PAD_A)) {
 			switch (settingvalue) {
 				case 0x00: invisible ^= 1; break;
-				case 0x01: platformer ^= 1; break;
+				case 0x01: options ^= platformer; break;
 				case 0x02: discomode ^= 1; break;
 			};
 		}
@@ -630,16 +630,16 @@ void settings() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		if (oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 7));
+		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 7));
 		else one_vram_buffer('f', NTADR_A(26, 7));
 
-		if (sfxoff) one_vram_buffer('f', NTADR_A(26, 9));
+		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, 9));
 		else one_vram_buffer('g', NTADR_A(26, 9));
 
-		if (musicoff) one_vram_buffer('f', NTADR_A(26, 11));
+		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, 11));
 		else one_vram_buffer('g', NTADR_A(26, 11));
 
-		if (jumpsound) one_vram_buffer('g', NTADR_A(26, 13));
+		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, 13));
 		else one_vram_buffer('f', NTADR_A(26, 13));
 
 		tmp1 = settingvalue;
@@ -663,15 +663,17 @@ void settings() {
 		
 		if (pad_new[0] & (PAD_A | PAD_START)) {
 			switch (settingvalue) {
-				case 0:
-					oneptwoplayer ^= 1; break;
-				case 1:
-					sfxoff ^= 1; break;
-				case 2:
-					musicoff ^= 1; if (musicoff) { famistudio_music_stop(); music_update(); } else { music_play(song_menu_theme); } break;
-				case 3:
-					jumpsound ^= 1; break;
+				case 0: // oneptwoplayer
+					options ^= oneptwoplayer; break;
+				case 1: // sfxoff
+					options ^= sfxoff; break;
+				case 2: // musicoff
+					options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(song_menu_theme); } break;
+				case 3: // jumpsound
+					options ^= jumpsound; break;
 				case 4:
+					
+				case 5:
 					if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
 					setdefaultoptions();
 					//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
@@ -683,8 +685,8 @@ void settings() {
 					break;
 			}
 		}
-		if (platformer) twoplayer = 0;		
-		if (twoplayer) platformer = 0;		
+		if (options & platformer) twoplayer = 0;		
+		if (twoplayer) options &= platformer^0xff;		
 
 		if (pad_new[0] & PAD_B) {
 			tmp3--;
