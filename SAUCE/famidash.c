@@ -42,7 +42,7 @@ void main(){
     mmc3_set_1kb_chr_bank_3(7);
     */
     
-	mmc3_set_8kb_chr(34);
+	mmc3_set_8kb_chr(42);
 
     pal_bg((char *)paletteDefault);
     pal_spr((char *)paletteDefaultSP);
@@ -66,7 +66,7 @@ void main(){
 	if (SRAM_VALIDATE[0] != 0x0D
 	 || SRAM_VALIDATE[1] != 0x0A
 	 || SRAM_VALIDATE[2] != 0x01
-	 || SRAM_VALIDATE[3] != 0x04) {
+	 || SRAM_VALIDATE[3] != 0x05) {
 		// set the validation header and then reset coin counts
 	setdefaultoptions();
 
@@ -111,7 +111,7 @@ void setdefaultoptions() {
 		SRAM_VALIDATE[0] = 0x0d;
 		SRAM_VALIDATE[1] = 0x0a;
 		SRAM_VALIDATE[2] = 0x01;
-		SRAM_VALIDATE[3] = 0x04;
+		SRAM_VALIDATE[3] = 0x05;
 		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
 			coin1_obtained[tmp2] = 0;
 			coin2_obtained[tmp2] = 0;
@@ -152,5 +152,6 @@ void setdefaultoptions() {
 		color2 = 0X21;		
 		color3 = 0x0F;
 		discomode = 0;
+		icon = 0;
 		return;
 }

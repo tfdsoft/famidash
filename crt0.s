@@ -290,6 +290,7 @@ _famistudio_state = *
    	.word irq	;$fffe irq / brk
 
 
+
 .segment "GAMECHR"
 .export _GAME_CHR
 _GAME_CHR:
@@ -309,11 +310,19 @@ _GAME_CHR:
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (32)
     .incbin "GRAPHICS/bankblank2.chr" ; 1kb
 
+    .incbin "GRAPHICS/bankicon01.chr" ; 1kb (34)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankicon02.chr" ; 1kb (36)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankicon03.chr" ; 1kb (38)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankicon04.chr" ; 1kb (40)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
 
-    .incbin "GRAPHICS/menus.chr"    ; 4kb (34)
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (38)
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (42)
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (42)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (46)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (50)
 .segment "PARALLAXCHR"
 .export _PARALLAX_CHR
 _PARALLAX_CHR:

@@ -40,6 +40,16 @@ void state_game(){
 
 	kandoframecnt = 0;
 	mmc3_set_2kb_chr_bank_1(30);
+	
+	switch (icon){
+		case 0x00: iconbank = 24; break;
+		case 0x01: iconbank = 34; break;
+		case 0x02: iconbank = 36; break;
+		case 0x03: iconbank = 38; break;
+		case 0x04: iconbank = 40; break;
+	}
+		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
+		pal_col(0x0B,color1);   //palette 2 set to player color
     while (1) {
 	    if (discomode && !(kandoframecnt & 0x0F)) {
 		    maketmp2();
@@ -64,8 +74,10 @@ void state_game(){
 		    pal_col(0, tmp2);
 		    if (tmp2-0x10 & 0xC0) { 
 			pal_col(1, 0x0f); 
+			pal_col(9, 0x0f); 
 		    } else { 
 			pal_col(1, (tmp2-0x10)); 
+			pal_col(9, (tmp2-0x10)); 
 		    }
 		}		    
 	    }
@@ -73,7 +85,13 @@ void state_game(){
 		pal_col(0x1F,color2);
 		pal_col(0x1D,color3);
 		pal_col(0x1E,color1);
+
+
 	    }
+
+
+
+
 		// {	// done in reset_level and after storing player 1
 		// 	currplayer_x = player_x[0];
 		// 	currplayer_y = player_y[0];
@@ -99,8 +117,8 @@ void state_game(){
 	}
 	
 	if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(28);
-	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(24);
-	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(24);
+	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
+	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
 	else mmc3_set_2kb_chr_bank_0(26);
 //	else mmc3_set_2kb_chr_bank_0(28);
 //

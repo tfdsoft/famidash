@@ -20,5 +20,5 @@
 #define sfx_diamonds 5
 #define sfx_exit_level 6
 #define sfx_start_level 7
-#define sfx_select 8
+#define sfx_select 0xFF
 #define sfx_max 9

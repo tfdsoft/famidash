@@ -5,6 +5,8 @@ extern volatile unsigned char VRAM_UPDATE;
 #pragma data-name(push, "LVL_BANK_00")
 #pragma rodata-name(push, "LVL_BANK_00")
 
+#include "defines/menunametable2.h"
+
 void state_lvldone() {
 #define current_state tmp2
 #define sprite_0_y tmp3
@@ -23,7 +25,7 @@ void state_lvldone() {
     pal_bg((char *)paletteMenu);
     pal_spr((char *)paletteMenu);
 
-	mmc3_set_8kb_chr(42);
+	mmc3_set_8kb_chr(50);
 
 	// Make an a nametable for the chain
     vram_adr(NAMETABLE_A);

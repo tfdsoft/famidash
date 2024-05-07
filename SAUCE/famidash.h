@@ -2,6 +2,9 @@
 #define MENU 0x01
 #define GAME 0x02
 
+
+#define MAX_ICONS 5 //total icons
+
 // physics defines
 #define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580
 #define PAD_HEIGHT_BLUE -0x3A0
@@ -154,6 +157,8 @@ unsigned char platformer;
 unsigned char musicoff;
 unsigned char sfxoff;
 
+unsigned char icon;
+
 unsigned char color1;
 unsigned char color2;
 unsigned char color3;
@@ -261,7 +266,7 @@ unsigned char activesprites_active[max_loaded_sprites];
 unsigned char DEBUG_MODE = 0;
 unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
-
+unsigned char iconbank;
 
 
 //struct player {

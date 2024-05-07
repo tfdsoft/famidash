@@ -18,7 +18,7 @@ Fork it, change it, push it, open a PR, get it merged (or not).
 |contributor|role (in no particular order)|
 |---|---|
 |[kandowontu](https://github.com/kandowontu)|Project torch carrier, lead developer, maintainer|
-|[AleFunky](https://github.com/PinguLinux)|Levels, testing, bugfixes, collision and other code|
+|[AleFunky](https://github.com/PinguLinux)|Core Code programmer, Levels, testing, bugfixes|
 |[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|Levels, guidance, testing, bugfixes, graphics|
 |[alexmush](https://github.com/ADM228)|Core Code programmer, Code optimisation|
 |[jroweboy](https://github.com/jroweboy)|Graphics, code optimisation, parallax, menu, etc.|
