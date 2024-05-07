@@ -292,6 +292,8 @@ unsigned char original_bg_palette_color_0;
 unsigned char original_bg_palette_color_1;
 unsigned char original_bg_palette_color_2;
 
+unsigned char current_transition_timer_length;
+
 
 //struct player {
 //	unsigned short x; // low byte is sub-pixel
