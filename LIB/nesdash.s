@@ -978,7 +978,7 @@ ParallaxBufferCol5:
 ;void __fastcall__ music_play(unsigned char song);
 .import _options
 .proc _music_play  
-    bit _options ; sets carry to bit 7 of _options without affecting a  
+    bit _options ; sets N flag to bit 7 of _options without affecting a  
     bpl musicon
     rts  
 musicon:  
