@@ -977,19 +977,12 @@ ParallaxBufferCol5:
 
 ;void __fastcall__ music_play(unsigned char song);
 .import _options
-.proc _music_play
-    pha
-    ldx _options
-    txa
-    and #$08
-    tax
-    beq start
-    pla
-    rts
-start:
-    pla
-    LDY #$00
-    TSX
+.proc _music_play  
+    bit _options ; sets carry to bit 7 of _options without affecting a  
+    bvc start  
+    rts  
+start:  
+    LDY #$00  
 bank_loop:
     PHA
     SEC
@@ -1034,27 +1027,14 @@ music_counts:
 
 ; void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
 .import _options
-.proc _sfx_play
-    tax
-    jsr popa
-	pha
-	tya
-	pha
-    ldy	_options
-    tya
-    and #$10
-    tay
-    bne end
-	pla
-	tay
-	pla
-    jmp famistudio_sfx_play
-
-    end:
-	pla
-	tay
-	pla
-        rts
+.proc _sfx_play  
+    bit _options ; bit 6 is copied to the overflow flag  
+    bvc play  
+    rts  
+play:  
+    tax  
+    jsr popa  
+    jmp famistudio_sfx_play  
 .endproc
 
 ; void __fastcall__ music_update (void);

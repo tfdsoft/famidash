@@ -162,8 +162,8 @@ unsigned char options;
 #define oneptwoplayer 0x01
 #define jumpsound 0x02
 #define platformer 0x04
-#define musicoff 0x08
-#define sfxoff 0x10
+#define musicoff 0x80
+#define sfxoff 0x40
 
 
 
