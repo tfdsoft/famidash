@@ -49,6 +49,7 @@ void state_game(){
 		case 0x04: iconbank = 40; break;
 	}
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
+		pal_col(0x0B,color1);   //palette 2 set to player color
     while (1) {
 	    if (discomode && !(kandoframecnt & 0x0F)) {
 		    maketmp2();
@@ -88,7 +89,6 @@ void state_game(){
 
 	    }
 
-		pal_col(0x0B,color1);   //palette 2 set to player color
 
 
 
