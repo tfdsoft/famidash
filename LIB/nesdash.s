@@ -1028,12 +1028,13 @@ music_counts:
 ; void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
 .import _options
 .proc _sfx_play  
+    tax
+    jsr popa
+
     bit _options ; bit 6 is copied to the overflow flag  
     bvc play  
     rts  
-play:  
-    tax  
-    jsr popa  
+play:    
     jmp famistudio_sfx_play  
 .endproc
 
