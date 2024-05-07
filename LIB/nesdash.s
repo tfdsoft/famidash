@@ -979,9 +979,9 @@ ParallaxBufferCol5:
 .import _options
 .proc _music_play  
     bit _options ; sets carry to bit 7 of _options without affecting a  
-    bvc start  
+    bpl musicon
     rts  
-start:  
+musicon:  
     LDY #$00  
 bank_loop:
     PHA
@@ -991,7 +991,6 @@ bank_loop:
     INY
     TXS ;Act as if no PHA happened
     BCS bank_loop  ; BRA
-    
 found_bank:
     TYA
     PHA
