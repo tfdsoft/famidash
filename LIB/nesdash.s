@@ -240,6 +240,7 @@ _init_rld:
 		LDA #$0F		;	if (faded color invalid) color = $0F (canonical black)
 	:					;__
 	STA PAL_BUF+1		;__	Store faded color (pal_col(1, tmp2-0x10 or 0x0F))
+	STA PAL_BUF+9		;__	Store faded color (pal_col(1, tmp2-0x10 or 0x0F))
     incw_check level_data
 
 	LDA (level_data),y  ;	Starting ground color
