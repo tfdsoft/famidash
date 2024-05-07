@@ -107,7 +107,7 @@ __fastcall__ char sprite_height_lookup(){
             pal_col(5, tmp3);
             pal_col(6, tmp2);
             lastgcolortype = type;
-            gnd_palette_transition_timer = 4;
+            gnd_palette_transition_timer = current_transition_timer_length;
         } else {
             original_bg_palette_idx_0 = 0;
             original_bg_palette_idx_1 = 1;
@@ -119,12 +119,17 @@ __fastcall__ char sprite_height_lookup(){
             pal_col(1, tmp3);
             pal_col(9, tmp3);
             lastbgcolortype = type;
-            bg_palette_transition_timer = 4;
+            bg_palette_transition_timer = current_transition_timer_length;
         }
         activesprites_type[index] = 0xFF; 
         return 0x00;
     }
 //	else if (type >= CUBE_MODE && type <= ROBOT_MODE) return 0x2F;	// Portals
+    else if (type == 0xFA) {
+	    current_transition_timer_length = 20 - ((low_byte(Generic2.y)>>3));
+    }
+
+
     else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
     else if (
         (type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) || // Speed portals
@@ -488,6 +493,7 @@ void sprite_collide(){
         tmp3 = activesprites_active[index];
         if (tmp3){
             tmp4 = activesprites_type[index];
+            Generic2.y = activesprites_realy[index];
             tmp2 = sprite_height_lookup();	// uses tmp4
             Generic2.height = tmp2;
 

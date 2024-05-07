@@ -34,6 +34,7 @@ void state_game(){
     mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));
     
 	currplayer = 0;
+	current_transition_timer_length = 4;
 	reset_level();
 
     END_LEVEL_TIMER = 0;
