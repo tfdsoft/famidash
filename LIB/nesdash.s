@@ -976,9 +976,12 @@ ParallaxBufferCol5:
 .popseg
 
 ;void __fastcall__ music_play(unsigned char song);
-.import _musicoff
+.import _options
 .proc _music_play
-    ldx	_musicoff
+    ldx	_options
+    txa
+    and #$08
+    tax
     beq	start
     rts
 start:
@@ -1027,11 +1030,14 @@ music_counts:
 .endproc
 
 ; void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
-.import _sfxoff
+.import _options
 .proc _sfx_play
         tax
         jsr popa
-        ldy	_sfxoff
+        ldy	_options
+        tya
+        and #$10
+        tay
         bne end
         jmp famistudio_sfx_play
 

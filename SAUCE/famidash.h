@@ -151,11 +151,21 @@ unsigned char LEVELCOMPLETE[LEVEL_COUNT];
 unsigned char invisible;
 unsigned char PRACTICE_ENABLED = 1;
 unsigned char twoplayer;
-unsigned char oneptwoplayer;
-unsigned char jumpsound;
-unsigned char platformer;
-unsigned char musicoff;
-unsigned char sfxoff;
+
+/* memory optimization */
+//unsigned char oneptwoplayer;
+//unsigned char jumpsound;
+//unsigned char platformer;
+//unsigned char musicoff;
+//unsigned char sfxoff;
+unsigned char options;
+#define oneptwoplayer 0x01
+#define jumpsound 0x02
+#define platformer 0x04
+#define musicoff 0x08
+#define sfxoff 0x10
+
+
 
 unsigned char icon;
 
@@ -334,3 +344,7 @@ const unsigned char splashMenu[16] = {
     0x11,0x0f,0x11,0x27,
     0x11,0x0f,0x11,0x30
 };
+
+
+
+

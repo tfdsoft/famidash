@@ -23,7 +23,7 @@ void state_demo(){
 		if (pad_new & PAD_START){
 			gameState = 0x02;
 			pal_fade_to(4,0);
-			return;
+			return; 
 		}
 	}
 }
