@@ -111,8 +111,10 @@ __fastcall__ char sprite_height_lookup(){
 		    pal_col(0, tmp2);
 		    if (tmp2-0x10 & 0xC0) { 
 			pal_col(1, 0x0f); 
+			pal_col(9, 0x0f); 
 		    } else { 
 			pal_col(1, (tmp2-0x10)); 
+			pal_col(9, (tmp2-0x10)); 
 		    }
 			lastbgcolortype = type;
 		}
