@@ -983,6 +983,7 @@ ParallaxBufferCol5:
     rts  
 musicon:  
     LDY #$00  
+    tsx
 bank_loop:
     PHA
     SEC
