@@ -107,7 +107,7 @@ __fastcall__ char sprite_height_lookup(){
             pal_col(5, tmp3);
             pal_col(6, tmp2);
             lastgcolortype = type;
-            gnd_palette_transition_timer = 16;
+            gnd_palette_transition_timer = 4;
         } else {
             original_bg_palette_idx_0 = 0;
             original_bg_palette_idx_1 = 1;
@@ -119,7 +119,7 @@ __fastcall__ char sprite_height_lookup(){
             pal_col(1, tmp3);
             pal_col(9, tmp3);
             lastbgcolortype = type;
-            bg_palette_transition_timer = 16;
+            bg_palette_transition_timer = 4;
         }
         activesprites_type[index] = 0xFF; 
         return 0x00;
