@@ -48,6 +48,9 @@ void state_game(){
 		case 0x02: iconbank = 36; break;
 		case 0x03: iconbank = 38; break;
 		case 0x04: iconbank = 40; break;
+		case 0x05: iconbank = 42; break;
+		case 0x06: iconbank = 44; break;
+		case 0x07: iconbank = 46; break;
 	}
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 		pal_col(0x0B,color1);   //palette 2 set to player color

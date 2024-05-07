@@ -3,7 +3,7 @@
 #define GAME 0x02
 
 
-#define MAX_ICONS 5 //total icons
+#define MAX_ICONS 8 //total icons
 
 // physics defines
 #define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580
