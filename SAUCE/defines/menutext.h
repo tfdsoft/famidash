@@ -37,7 +37,7 @@ const unsigned char menubgcolors[]={
 
 #include "color1_charmap.h"
 
-const unsigned char level1text[]="                ";
+const unsigned char level1text[]="STEREO ";
 const unsigned char level2text[]="                ";
 const unsigned char level3text[]="                ";
 const unsigned char level4text[]="                ";
@@ -54,7 +54,7 @@ const unsigned char levelEtext[]="                ";
 const unsigned char levelFtext[]="                ";
 const unsigned char level10text[]="                ";
 
-const unsigned char level1text2[]="STEREO MADNESS";
+const unsigned char level1text2[]="MADNESS";
 const unsigned char level2text2[]="BACK ON TRACK";
 const unsigned char level3text2[]="POLARGEIST";
 const unsigned char level4text2[]="DRY OUT";

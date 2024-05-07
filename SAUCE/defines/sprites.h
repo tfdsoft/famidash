@@ -1491,6 +1491,12 @@ const unsigned char Short_Light_U[]={
 	0x80
 };	
 
+const unsigned char Short_Light_U_Up_8_Pixels[]={
+
+	  4, 0,0xCD,3|OAM_FLIP_V,
+	0x80
+};	
+
 
 
 const unsigned char Medium_Light[]={
@@ -1522,6 +1528,49 @@ const unsigned char Long_Light_U[]={
 	  4, -16,0xC9,3|OAM_FLIP_V,
 	0x80
 };	
+
+const unsigned char Short_Light_Left[]={
+	 0, -4,0xF3,3,
+	 8, -4,0xF1,3,
+	0x80
+};
+
+const unsigned char Short_Light_Right[]={
+	 8, -4,0xF3,3|OAM_FLIP_H,
+	 0, -4,0xF1,3|OAM_FLIP_H,
+	0x80
+};
+
+
+const unsigned char Medium_Light_Left[]={
+	 0, -4,0xF5,3,
+	 8, -4,0xF7,3,
+	 16, -4,0xF1,3,
+	0x80
+};
+
+const unsigned char Medium_Light_Right[]={
+	 0, -4,0xF1,3|OAM_FLIP_H,
+	 8, -4,0xF7,3|OAM_FLIP_H,
+	 16, -4,0xF5,3|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Long_Light_Left[]={
+	 0, -4,0xF5,3,
+	 8, -4,0xF7,3,
+	 16, -4,0xEF,3,
+	 24, -4,0xF1,3,
+	0x80
+};
+
+const unsigned char Long_Light_Right[]={
+	 0, -4,0xF1,3|OAM_FLIP_H,
+	 8, -4,0xEF,3|OAM_FLIP_H,
+	 16, -4,0xF7,3|OAM_FLIP_H,
+	 24, -4,0xF5,3|OAM_FLIP_H,
+	0x80
+};
 
 
 
@@ -1758,12 +1807,17 @@ const unsigned char * const Metasprites[]={
 	Exclamation_Mark,
 	Right_Arrow,
 	Big_X,
-	nometa,
-	nometa,
+	Short_Light_Right,
+	Short_Light_Left,
 	Long_Light_U,
 	Medium_Light_U,
 	Short_Light_U,
-	Chain_U,	
+	Chain_U,
+	Medium_Light_Right,
+	Medium_Light_Left,
+	Long_Light_Right,
+	Long_Light_Left,
+	Short_Light_U_Up_8_Pixels,
 	};
 
 
@@ -1834,6 +1888,12 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,	
 	NULL,
+	NULL,
+	NULL,
+	
+	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1899,8 +1959,13 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-		
 	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+
 	0,
 	0,
 	0,
