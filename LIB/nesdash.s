@@ -1035,19 +1035,25 @@ music_counts:
 ; void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
 .import _options
 .proc _sfx_play
-        tax
-        jsr popa
-        pha
-        ldy	_options
-        tya
-        and #$10
-        tay
-        bne end
-        pla
-        jmp famistudio_sfx_play
+    tax
+    jsr popa
+	pha
+	tya
+	pha
+    ldy	_options
+    tya
+    and #$10
+    tay
+    bne end
+	pla
+	tay
+	pla
+    jmp famistudio_sfx_play
 
     end:
-        pla
+	pla
+	tay
+	pla
         rts
 .endproc
 
