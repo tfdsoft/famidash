@@ -126,7 +126,8 @@ __fastcall__ char sprite_height_lookup(){
     }
 //	else if (type >= CUBE_MODE && type <= ROBOT_MODE) return 0x2F;	// Portals
     else if (type == 0xFA) {
-	    current_transition_timer_length = 20 - ((low_byte(Generic2.y)>>3));
+		current_transition_timer_length = ((0xb0 - low_byte(Generic2.y)) >> 3) & 0x1e; // force it to be even
+		activesprites_type[index] = 0xFF;
     }
 
 
@@ -493,12 +494,14 @@ void sprite_collide(){
         tmp3 = activesprites_active[index];
         if (tmp3){
             tmp4 = activesprites_type[index];
-            Generic2.y = activesprites_realy[index];
-            tmp2 = sprite_height_lookup();	// uses tmp4
-            Generic2.height = tmp2;
 
             Generic2.x = activesprites_realx[index];
             Generic2.y = activesprites_realy[index];
+
+            tmp2 = sprite_height_lookup();	// uses tmp4
+            Generic2.height = tmp2;
+
+
             
             if (check_collision(&Generic, &Generic2)) {
                 sprite_collide_lookup();

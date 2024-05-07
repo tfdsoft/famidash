@@ -7,7 +7,6 @@ sprite_data_stereomadness:
   .byte $60,$03,$80,$01,$2b
   .byte $90,$03,$a0,$01,$2e
   .byte $a0,$03,$70,$01,$2b
-  .byte $b0,$03,$a0,$01,$fa
   .byte $c0,$03,$90,$01,$93
   .byte $c0,$03,$a0,$01,$d3
   .byte $00,$06,$a0,$01,$30
