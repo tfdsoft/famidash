@@ -978,13 +978,16 @@ ParallaxBufferCol5:
 ;void __fastcall__ music_play(unsigned char song);
 .import _options
 .proc _music_play
-    ldx	_options
+    pha
+    ldx _options
     txa
     and #$08
     tax
-    beq	start
+    beq start
+    pla
     rts
 start:
+    pla
     LDY #$00
     TSX
 bank_loop:
@@ -1034,14 +1037,17 @@ music_counts:
 .proc _sfx_play
         tax
         jsr popa
+        pha
         ldy	_options
         tya
         and #$10
         tay
         bne end
+        pla
         jmp famistudio_sfx_play
 
     end:
+        pla
         rts
 .endproc
 
