@@ -178,10 +178,24 @@ void state_game(){
 			practice_scroll_y = scroll_y;
 			practice_bg_color_type = lastbgcolortype;
 			practice_g_color_type = lastgcolortype;
+			gnd_palette_transition_timer = 0;
+			bg_palette_transition_timer = 0;
 		//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));
 			// practice_parallax_scroll_column = parallax_scroll_column;
 			// practice_parallax_scroll_column_start = parallax_scroll_column_start;
 			has_practice_point = 1;
+		}
+
+		if (gnd_palette_transition_timer > 0) {
+			gnd_palette_transition_timer--;
+			swapbyte(PAL_BUF[original_gnd_palette_idx_0], original_gnd_palette_color_0);
+			swapbyte(PAL_BUF[original_gnd_palette_idx_1], original_gnd_palette_color_1);
+		}
+		if (bg_palette_transition_timer > 0) {
+			bg_palette_transition_timer--;
+			swapbyte(PAL_BUF[original_bg_palette_idx_0], original_bg_palette_color_0);
+			swapbyte(PAL_BUF[original_bg_palette_idx_1], original_bg_palette_color_1);
+			swapbyte(PAL_BUF[original_bg_palette_idx_2], original_bg_palette_color_2);
 		}
 
 		if (pad_new[0] & PAD_START) {

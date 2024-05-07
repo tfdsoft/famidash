@@ -68,7 +68,7 @@ void main(){
 	 || SRAM_VALIDATE[2] != 0x01
 	 || SRAM_VALIDATE[3] != 0x05) {
 		// set the validation header and then reset coin counts
-	setdefaultoptions();
+		setdefaultoptions();
 
 	}
 	
