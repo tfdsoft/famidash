@@ -58,7 +58,7 @@ const unsigned char difficulty_list[] = {
     EASY,
     EASY,
     EASY,
-    EASY,
+    DEMON,
 };
 
 const unsigned char stars_list[] = {
