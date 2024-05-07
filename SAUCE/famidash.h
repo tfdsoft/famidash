@@ -268,6 +268,20 @@ unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
 unsigned char iconbank;
 
+unsigned char gnd_palette_transition_timer;
+unsigned char original_gnd_palette_idx_0;
+unsigned char original_gnd_palette_idx_1;
+unsigned char original_gnd_palette_color_0;
+unsigned char original_gnd_palette_color_1;
+
+unsigned char bg_palette_transition_timer;
+unsigned char original_bg_palette_idx_0;
+unsigned char original_bg_palette_idx_1;
+unsigned char original_bg_palette_idx_2;
+unsigned char original_bg_palette_color_0;
+unsigned char original_bg_palette_color_1;
+unsigned char original_bg_palette_color_2;
+
 
 //struct player {
 //	unsigned short x; // low byte is sub-pixel

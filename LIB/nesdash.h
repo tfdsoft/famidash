@@ -110,4 +110,12 @@ extern unsigned char parallax_scroll_column_start;
 extern unsigned char PAL_UPDATE;
 extern char PAL_BUF[32];
 #pragma zpsym("PAL_UPDATE")
-#define pal_col(index, color) (PAL_BUF[index&0x1F] = color, ++PAL_UPDATE)
+#define pal_col(index, color) do { PAL_BUF[index&0x1F] = (color); ++PAL_UPDATE; } while(0);
+
+#define swapbyte(a, b) do { \
+  __A__ = (a); \
+  __asm__("pha"); \
+  (a) = (b); \
+  __asm__("pla"); \
+  (b) = __A__; \
+} while(0);
