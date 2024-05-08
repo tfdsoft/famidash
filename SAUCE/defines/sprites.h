@@ -1491,13 +1491,6 @@ const unsigned char Short_Light_U[]={
 	0x80
 };	
 
-const unsigned char Short_Light_U_Up_8_Pixels[]={
-
-	  4, 0,0xCD,3|OAM_FLIP_V,
-	0x80
-};	
-
-
 
 const unsigned char Medium_Light[]={
 
@@ -1510,7 +1503,7 @@ const unsigned char Medium_Light[]={
 const unsigned char Medium_Light_U[]={
 
 	  4, 0,0xCF,3|OAM_FLIP_V,
-	  4, -16,0xCB,3|OAM_FLIP_V,
+	  4, 16,0xCB,3|OAM_FLIP_V,
 	0x80
 };	
 
@@ -1525,7 +1518,7 @@ const unsigned char Long_Light[]={
 const unsigned char Long_Light_U[]={
 
 	  4, 0,0xCF,3|OAM_FLIP_V,
-	  4, -16,0xC9,3|OAM_FLIP_V,
+	  4, 16,0xC9,3|OAM_FLIP_V,
 	0x80
 };	
 
@@ -1817,7 +1810,8 @@ const unsigned char * const Metasprites[]={
 	Medium_Light_Left,
 	Long_Light_Right,
 	Long_Light_Left,
-	Short_Light_U_Up_8_Pixels,
+	Short_Light_U,
+	Chain_U,
 	};
 
 
@@ -1894,6 +1888,7 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1966,6 +1961,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 
+	0,
 	0,
 	0,
 	0,
