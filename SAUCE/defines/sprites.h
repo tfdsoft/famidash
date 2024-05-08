@@ -1576,8 +1576,8 @@ const unsigned char Chain[]={
 
 const unsigned char Chain_U[]={
 
-	  4, -16,0xD7,3|OAM_FLIP_V,
-	  4, 0,0xD9,3|OAM_FLIP_V,
+	  4, 16,0xD9,3|OAM_FLIP_V,
+	  4, 0,0xD7,3|OAM_FLIP_V,
 	0x80
 };	
 
