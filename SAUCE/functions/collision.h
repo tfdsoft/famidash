@@ -48,13 +48,18 @@ char bg_coll_floor_spikes(void){ // used just for checking ground spikes on the 
 
 	tmp3 = bg_collision_sub();
 	if(tmp3 == COL_DEATH_TOP) {
-		if (!(temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
+		if (!(temp_y & 0x08)) {								// If Y pos inside block < 8px, die
+			tmp2 = temp_x & 0x0f;
+			if (tmp2 < 0x0c) {								// If X pos even insider, die even more
+				cube_data[currplayer] = 1;						
+			}
+		}
 		else return 0;										// else nothing
 	} else if (tmp3 == COL_DEATH_BOTTOM) {
-		if ((temp_y & 0x08)) {
+		if ((temp_y & 0x08)) {								// If Y pos inside block ≥ 8px, die
 			tmp2 = temp_x & 0x0f;
-			if (tmp2 < 0x0c) {
-				cube_data[currplayer] = 1;						// If Y pos inside block ≥ 8px, die
+			if (tmp2 < 0x0c) {								// If X pos even insider, die even more
+				cube_data[currplayer] = 1;						
 			}
 		}
 		else return 0;										// else nothing
