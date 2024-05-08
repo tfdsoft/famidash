@@ -46,9 +46,9 @@ const unsigned short songtime[] = {
 	5160, //stereo madness
 	4900, //back on track
 	5465, //polargeist
-	15000, //dryout
+	4940, //dryout
 	15000, //base after base
-	15000, //cant let go
+	4900, //cant let go
 	15000, //jumper
 	15000, //time machine
 	15000, //cycles
