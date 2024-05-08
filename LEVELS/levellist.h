@@ -54,8 +54,8 @@ const unsigned short songtime[] = {
 	15000, //cycles
 	15000, //xstep
 	15000, //clutterfunk
-	15000, //menu
-	15000, //practice
+	14000, //menu
+	14000, //practice
 };
 
 
