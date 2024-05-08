@@ -71,14 +71,13 @@ void main(){
 		setdefaultoptions();
 
 	}
-	
+	menuselection = 0;	
     while (1){
         ppu_wait_nmi();
 
 		switch (gameState){
 			case 0x01: {
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
-				menuselection = 0;
 				state_menu(); 
 				break;
 			}
