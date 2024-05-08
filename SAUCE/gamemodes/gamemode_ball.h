@@ -77,8 +77,6 @@ void ball_movement(void){
 			kandotemp2[currplayer] = 0;			
 		}
 	}
-
-	currplayer_vel_y = currplayer_vel_y;
 }
 
 

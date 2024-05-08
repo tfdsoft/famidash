@@ -1996,7 +1996,7 @@ drawplayer_common := _drawplayerone::common
 	RTS
 
 	ReturnColAll:
-	LDA #$40
+	LDA #$07       ; return COL_ALL
 	RTS
 
 .endproc
