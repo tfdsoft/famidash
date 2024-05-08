@@ -311,7 +311,7 @@ void sprite_collide_lookup() {
         mini = 0;
         return;
     case DUAL_PORTAL:
-        dual = 0;
+        dual = 1;
         if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1; }
         else { player_x[1] = player_x[0]; player_y[1] = player_y[0]; player_gravity[1] = player_gravity[0] ^ 1; }
         return;
