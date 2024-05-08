@@ -365,6 +365,7 @@ sprite_data_backontrack:
   .byte $e0,$2a,$90,$01,$2d
   .byte $e0,$2a,$a0,$01,$30
   .byte $10,$2b,$90,$01,$2d
+  .byte $30,$2b,$a0,$01,$2e
   .byte $50,$2b,$98,$01,$42
   .byte $90,$2b,$88,$01,$42
   .byte $b0,$2b,$a0,$01,$2e
@@ -372,10 +373,7 @@ sprite_data_backontrack:
   .byte $d0,$2b,$60,$01,$2d
   .byte $d0,$2b,$78,$01,$42
   .byte $e0,$2b,$20,$01,$2d
-  .byte $10,$2c,$a0,$01,$2e
-  .byte $20,$2c,$a0,$01,$30
-  .byte $30,$2c,$a0,$01,$30
-  .byte $50,$2c,$a0,$01,$2e
+  .byte $10,$2c,$a0,$01,$30
   .byte $60,$2c,$60,$01,$2d
   .byte $60,$2c,$78,$01,$42
   .byte $70,$2c,$90,$01,$1b
@@ -404,8 +402,8 @@ sprite_data_backontrack:
   .byte $60,$33,$a0,$01,$30
   .byte $e0,$33,$90,$01,$2b
   .byte $f0,$33,$98,$01,$0a
-  .byte $50,$35,$f0,$00,$0f
-  .byte $50,$35,$50,$01,$0f
+  .byte $d0,$34,$f0,$00,$0f
+  .byte $d0,$34,$50,$01,$0f
   .byte $ff
 .segment "SPR_BANK_00"
 sprite_data_polargeist:
