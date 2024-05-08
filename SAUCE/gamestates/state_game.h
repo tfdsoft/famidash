@@ -253,11 +253,13 @@ void state_game(){
 		if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
 		
 		mmc3_set_prg_bank_1(GET_BANK(x_movement));
+		
 		x_movement();
-	
-		x_movement_coll();
 
+		x_movement_coll();
+	
 		mmc3_set_prg_bank_1(GET_BANK(movement));
+		
 		movement();
 
 

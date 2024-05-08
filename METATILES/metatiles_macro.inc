@@ -17,15 +17,15 @@ PAL_1 = (1)
 PAL_2 = (2)
 PAL_3 = (3)
 
-COL_DEATH = (1 << 7)
-COL_ALL   = (1 << 6)
-COL_BOTTOM   = (1 << 5)
-COL_TOP   = (1 << 4)
-COL_DEATH_BOTTOM   = (1 << 3)
-COL_DEATH_TOP   = (1 << 2)
-COL_DEATH_LEFT   = (1 << 1)
-COL_DEATH_RIGHT   = (1)
-COL_NONE  = (0)
+COL_DEATH = 8
+COL_ALL   = 7
+COL_BOTTOM   = 6
+COL_TOP   = 5
+COL_DEATH_BOTTOM   = 4
+COL_DEATH_TOP   = 3
+COL_DEATH_LEFT   = 2
+COL_DEATH_RIGHT   = 1
+COL_NONE  = 0
 
 
 .macro MetatileReserve name
