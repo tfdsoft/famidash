@@ -256,8 +256,8 @@ void state_game(){
             END_LEVEL_TIMER = 0;
         }
 
-		if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
-		
+		//if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
+		if (DEBUG_MODE) gray_line();
 		mmc3_set_prg_bank_1(GET_BANK(x_movement));
 		
 		x_movement();
@@ -275,8 +275,8 @@ void state_game(){
 		}
 		if (invincible_counter) invincible_counter--;
 
-		if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
-
+		//if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
+		if (DEBUG_MODE) gray_line();
 		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
 		do_the_scroll_thing(); 
 
@@ -350,8 +350,8 @@ void state_game(){
 		// mmc3_set_prg_bank_1(GET_BANK(check_spr_objects));	// it's in a const bank
         check_spr_objects();
 
-        if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
-  
+//        if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
+	if (DEBUG_MODE) gray_line();  
   		oam_clear();
 
 		// mmc3_set_prg_bank_1(GET_BANK(draw_screen_R)); // it's in a const bank
@@ -359,10 +359,10 @@ void state_game(){
 		mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
         draw_sprites();
         
-        color_emphasis(0);
+ //       color_emphasis(0);
         
         
-        // if (DEBUG_MODE) gray_line();
+        if (DEBUG_MODE) gray_line();
         if (gameState != 0x02) return;
     }
 }
