@@ -296,6 +296,8 @@ unsigned char original_bg_palette_color_2;
 unsigned char current_transition_timer_length;
 */
 
+unsigned char kandowatchesyousleep;
+
 unsigned short songtimer;
 
 //struct player {

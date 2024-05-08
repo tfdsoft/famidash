@@ -44,8 +44,8 @@ const unsigned char difficulty_pal[] ={
 
 const unsigned short songtime[] = {
 	5160, //stereo madness
-	15000, //back on track
-	15000, //polargeist
+	4900, //back on track
+	5465, //polargeist
 	15000, //dryout
 	15000, //base after base
 	15000, //cant let go

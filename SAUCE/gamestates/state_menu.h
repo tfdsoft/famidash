@@ -263,6 +263,7 @@ void levelselection() {
 		}
 
 		if (pad_new[0] & (PAD_B)){
+			kandowatchesyousleep = 0;
 			return;
 		}
 			
@@ -334,7 +335,6 @@ void bgmtest() {
 
 
 void customize_screen() {
-	kandotemp=0;
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
@@ -722,6 +722,8 @@ void state_menu() {
 	set_scroll_x(0);
     set_scroll_y(0);
 
+	kandowatchesyousleep = 0;
+
 //	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
 	switch (kandotemp){
@@ -801,7 +803,7 @@ void state_menu() {
 
 	}		
 	switch (menuselection) {
-		case 0x00: levelselection(); return; break;
+		case 0x00: kandowatchesyousleep = 1; levelselection(); return; break;
 		case 0x01: settingvalue = 0; funsettings(); return; break;
 		case 0x02: bgmtest(); return; break;
 		case 0x03: settingvalue = 0; settings(); return; break;

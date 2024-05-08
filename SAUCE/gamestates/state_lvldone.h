@@ -208,6 +208,7 @@ void state_lvldone() {
 				music_update();
 				gameState = 1;
 				menuselection = 0;
+				kandowatchesyousleep = 1;
 				return;
 			}
 			break;
