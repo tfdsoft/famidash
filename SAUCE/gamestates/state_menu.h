@@ -247,7 +247,7 @@ void levelselection() {
 		if (twoplayer) one_vram_buffer('d', NTADR_A(31, 2));
 		else one_vram_buffer('e', NTADR_A(31, 2));
 
-		if (pad_new[0] & PAD_UP) { twoplayer ^= 0x01; sfx_play(sfx_death, 0); }
+		if (pad_new[0] & PAD_UP) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
 		if (pad_new[0] & PAD_START){
 			sfx_play(sfx_start_level, 0);
