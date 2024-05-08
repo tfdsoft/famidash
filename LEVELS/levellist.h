@@ -26,12 +26,12 @@
 // ============================================================
 // go wild
 
-#define EASY 0
-#define NORMAL 1
-#define HARD 2
-#define HARDER 3
-#define INSANE 4
-#define DEMON 5
+#define	EASY 0
+#define	NORMAL 1
+#define	HARD 2
+#define	HARDER 3
+#define	INSANE 4
+#define	DEMON 5
 
 const unsigned char difficulty_pal[] ={
 	0x21, 0x06, // easy
@@ -41,6 +41,24 @@ const unsigned char difficulty_pal[] ={
     0x24, 0x06, // insane
     0x16, 0x30 // KING DEDEdemon
 };
+
+const unsigned short songtime[] = {
+	5160, //stereo madness
+	15000, //back on track
+	15000, //polargeist
+	15000, //dryout
+	15000, //base after base
+	15000, //cant let go
+	15000, //jumper
+	15000, //time machine
+	15000, //cycles
+	15000, //xstep
+	15000, //clutterfunk
+	15000, //menu
+	15000, //practice
+};
+
+
 
 const unsigned char difficulty_list[] = {
     EASY,

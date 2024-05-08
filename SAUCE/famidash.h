@@ -278,6 +278,7 @@ unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
 unsigned char iconbank;
 
+/*
 unsigned char gnd_palette_transition_timer;
 unsigned char original_gnd_palette_idx_0;
 unsigned char original_gnd_palette_idx_1;
@@ -293,7 +294,9 @@ unsigned char original_bg_palette_color_1;
 unsigned char original_bg_palette_color_2;
 
 unsigned char current_transition_timer_length;
+*/
 
+unsigned short songtimer;
 
 //struct player {
 //	unsigned short x; // low byte is sub-pixel

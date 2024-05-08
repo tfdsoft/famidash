@@ -92,7 +92,7 @@ __fastcall__ char sprite_height_lookup(){
             return 0x0f;
             
     }
-
+/*			color fading code
     if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
         if (!discomode) tmp2 = (type & 0x3F);                        
         else { 
@@ -129,7 +129,34 @@ __fastcall__ char sprite_height_lookup(){
 		current_transition_timer_length = ((0xb0 - low_byte(Generic2.y)) >> 3) & 0x1e; // force it to be even
 		activesprites_type[index] = 0xFF;
     }
+*/
 
+    if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
+		if (!discomode) tmp2 = (type & 0x3F);                        
+		else { 
+			return 0x00;
+		}
+			
+		if (type >= 0xC0){
+		    pal_col(6, tmp2);
+		    if (tmp2-0x10 & 0xC0) { 
+			pal_col(5, 0x0f); 
+		    } else { 
+			pal_col(5, (tmp2-0x10)); 
+		    }
+			lastgcolortype = type;
+		} else {
+		    pal_col(0, tmp2);
+		    if (tmp2-0x10 & 0xC0) { 
+			pal_col(1, 0x0f); 
+		    } else { 
+			pal_col(1, (tmp2-0x10)); 
+		    }
+			lastbgcolortype = type;
+		}
+		activesprites_type[index] = 0xFF; 
+		return 0x00;
+    }
 
     else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
     else if (

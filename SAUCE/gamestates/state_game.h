@@ -34,11 +34,11 @@ void state_game(){
     mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));
     
 	currplayer = 0;
-	current_transition_timer_length = 0;
+//	current_transition_timer_length = 0;
 	reset_level();
 
     END_LEVEL_TIMER = 0;
-
+    songtimer = 0;
 	kandoframecnt = 0;
 	mmc3_set_2kb_chr_bank_1(30);
 	
@@ -55,6 +55,11 @@ void state_game(){
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 		pal_col(0x0B,color1);   //palette 2 set to player color
     while (1) {
+	if (platformer) {
+		songtimer++;
+		if (songtimer > songtime[song] ) { songtimer = 0; music_play(song); }
+
+	}		    
 	    if (discomode && !(kandoframecnt & 0x0F)) {
 		    maketmp2();
 		pal_col(0x1F,tmp2);
@@ -182,14 +187,13 @@ void state_game(){
 			practice_scroll_y = scroll_y;
 			practice_bg_color_type = lastbgcolortype;
 			practice_g_color_type = lastgcolortype;
-			gnd_palette_transition_timer = 0;
-			bg_palette_transition_timer = 0;
-		//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));
-			// practice_parallax_scroll_column = parallax_scroll_column;
-			// practice_parallax_scroll_column_start = parallax_scroll_column_start;
+		//	gnd_palette_transition_timer = 0;		palete fade code
+		//	bg_palette_transition_timer = 0;		palette fade code
+
+		//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));	unneeded because of practice music
 			has_practice_point = 1;
 		}
-
+/* palette fade code
 		if (gnd_palette_transition_timer > 0) {
 			gnd_palette_transition_timer--;
 			swapbyte(PAL_BUF[original_gnd_palette_idx_0], original_gnd_palette_color_0);
@@ -201,7 +205,7 @@ void state_game(){
 			swapbyte(PAL_BUF[original_bg_palette_idx_1], original_bg_palette_color_1);
 			swapbyte(PAL_BUF[original_bg_palette_idx_2], original_bg_palette_color_2);
 		}
-
+*/
 		if (pad_new[0] & PAD_START) {
 			pad_new[0] = 0;
 			famistudio_music_pause(1);
