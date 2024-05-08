@@ -173,8 +173,6 @@ sprite_data_stereomadness:
   .byte $20,$31,$20,$01,$3c
   .byte $20,$31,$90,$01,$2c
   .byte $60,$31,$a0,$01,$2e
-  .byte $90,$31,$10,$01,$31
-  .byte $a0,$31,$10,$01,$31
   .byte $b0,$31,$90,$01,$2c
   .byte $40,$32,$20,$01,$3c
   .byte $40,$32,$90,$01,$2c
@@ -214,8 +212,8 @@ sprite_data_stereomadness:
   .byte $00,$37,$30,$01,$41
   .byte $00,$37,$80,$01,$41
   .byte $00,$37,$90,$01,$39
-  .byte $50,$38,$f0,$00,$0f
-  .byte $50,$38,$50,$01,$0f
+  .byte $d0,$37,$f0,$00,$0f
+  .byte $d0,$37,$50,$01,$0f
   .byte $ff
 .segment "SPR_BANK_00"
 sprite_data_backontrack:
