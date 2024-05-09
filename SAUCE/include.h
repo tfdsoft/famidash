@@ -15,7 +15,7 @@
 
 
 // grounds goes here
-#pragma rodata-name (push, "XCD_BANK_02")
+#pragma rodata-name (push, "XCD_BANK_03")
 #include "defines/menunametable.h"
 #pragma rodata-name (pop)
 #pragma rodata-name (push, "LVL_BANK_00")

@@ -1,6 +1,6 @@
-#pragma code-name(push, "XCD_BANK_02")
-#pragma data-name(push, "XCD_BANK_02")
-#pragma rodata-name(push, "XCD_BANK_02")
+#pragma code-name(push, "XCD_BANK_03")
+#pragma data-name(push, "XCD_BANK_03")
+#pragma rodata-name(push, "XCD_BANK_03")
 
 const unsigned char loNTAddrTable[]={
     NTADR_A(9, 11)&0xFF,    // -1 = 4
@@ -295,7 +295,7 @@ void levelselection() {
 
 
 void bgmtest() {
-	/*
+	
   	famistudio_music_stop();
   	music_update();
 	kandotemp=0;
@@ -312,6 +312,10 @@ void bgmtest() {
 		music_update();
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
+
+		one_vram_buffer(' '-1, NTADR_A(14, 10));
+		one_vram_buffer(0xb0+song, NTADR_A(15,10));
+
 		if (settingvalue == 0) {
 			one_vram_buffer('c', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
@@ -322,6 +326,10 @@ void bgmtest() {
 		}
 		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
 		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
+		if (pad_new[0] & PAD_RIGHT && settingvalue == 0) { song++; if (song == song_max) {song = 0;} }
+		if (pad_new[0] & PAD_LEFT && settingvalue == 0) { if (song == 0) {song = song_max - 1;} else song--; }
+//		if (pad_new[0] & PAD_RIGHT && settingvalue == 1) sfx ++;
+		if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A) && settingvalue == 0) music_play(song);
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
@@ -329,7 +337,7 @@ void bgmtest() {
 			return;
 		}
 	}
-	*/
+	
 }
 
 
