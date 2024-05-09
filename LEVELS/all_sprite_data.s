@@ -908,7 +908,6 @@ sprite_data_baseafterbase:
   .byte $80,$0b,$a0,$01,$2e
   .byte $a8,$0b,$70,$01,$3e
   .byte $a8,$0b,$80,$01,$3e
-  .byte $a8,$0b,$90,$01,$3e
   .byte $10,$0c,$68,$01,$0a
   .byte $30,$0c,$90,$01,$07
   .byte $30,$0c,$a8,$01,$0a
