@@ -247,7 +247,7 @@ void levelselection() {
 		if (twoplayer) one_vram_buffer('d', NTADR_A(31, 2));
 		else one_vram_buffer('e', NTADR_A(31, 2));
 
-		if (pad_new[0] & PAD_UP) twoplayer ^= 0x01;
+		if (pad_new[0] & PAD_UP) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
 		if (pad_new[0] & PAD_START){
 			sfx_play(sfx_start_level, 0);
@@ -263,6 +263,7 @@ void levelselection() {
 		}
 
 		if (pad_new[0] & (PAD_B)){
+			kandowatchesyousleep = 0;
 			return;
 		}
 			
@@ -334,11 +335,10 @@ void bgmtest() {
 
 
 void customize_screen() {
-	kandotemp=0;
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
-	mmc3_set_8kb_chr(52);
+	mmc3_set_8kb_chr(56);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
 	#include "../defines/mainmenu_customize.h"
@@ -427,6 +427,18 @@ void customize_screen() {
 			one_vram_buffer('F', NTADR_A(16, 8));		
 			one_vram_buffer('G', NTADR_A(15, 9));		
 			one_vram_buffer('H', NTADR_A(16, 9));		
+			break;
+		case 0x08: 
+			one_vram_buffer('I', NTADR_A(15, 8));		
+			one_vram_buffer('J', NTADR_A(16, 8));		
+			one_vram_buffer('K', NTADR_A(15, 9));		
+			one_vram_buffer('L', NTADR_A(16, 9));		
+			break;
+		case 0x09: 
+			one_vram_buffer('M', NTADR_A(15, 8));		
+			one_vram_buffer('N', NTADR_A(16, 8));		
+			one_vram_buffer('O', NTADR_A(15, 9));		
+			one_vram_buffer('P', NTADR_A(16, 9));		
 			break;
 	}
 
@@ -705,10 +717,12 @@ void state_menu() {
 	ppu_off();
     pal_bg((char *)splashMenu);
 
-	mmc3_set_8kb_chr(48);
+	mmc3_set_8kb_chr(52);
 
 	set_scroll_x(0);
     set_scroll_y(0);
+
+	kandowatchesyousleep = 0;
 
 //	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
@@ -789,7 +803,7 @@ void state_menu() {
 
 	}		
 	switch (menuselection) {
-		case 0x00: levelselection(); return; break;
+		case 0x00: kandowatchesyousleep = 1; levelselection(); return; break;
 		case 0x01: settingvalue = 0; funsettings(); return; break;
 		case 0x02: bgmtest(); return; break;
 		case 0x03: settingvalue = 0; settings(); return; break;

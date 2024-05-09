@@ -42,7 +42,7 @@ void main(){
     mmc3_set_1kb_chr_bank_3(7);
     */
     
-	mmc3_set_8kb_chr(48);
+	mmc3_set_8kb_chr(52);
 
     pal_bg((char *)paletteDefault);
     pal_spr((char *)paletteDefaultSP);
@@ -71,16 +71,45 @@ void main(){
 		setdefaultoptions();
 
 	}
-	
+	menuselection = 0;	
     while (1){
         ppu_wait_nmi();
 
 		switch (gameState){
 			case 0x01: {
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
-				menuselection = 0;
-				state_menu(); 
-				break;
+				if (!kandowatchesyousleep) state_menu();
+				else {
+					pal_fade_to_withmusic(4,0);
+					ppu_off();
+					pal_bg((char *)splashMenu);
+					mmc3_set_8kb_chr(52);
+
+					set_scroll_x(0);
+					set_scroll_y(0);
+
+					kandowatchesyousleep = 1;
+
+					//	mmc3_set_prg_bank_1(GET_BANK(state_menu));
+
+					switch (kandotemp){
+						case 0x00:	music_play(song_menu_theme); break;
+						case 0x01:	break;
+					}
+
+					settingvalue = 0;
+
+					has_practice_point = 0;
+
+					#include "./defines/mainmenu_charmap.h"
+					// Enable SRAM write
+					POKE(0xA001, 0x80);
+
+					oam_clear();	
+
+					levelselection();
+				}
+					break;
 			}
 			case 0x02: {
   				player_gravity[0] = 0x00;

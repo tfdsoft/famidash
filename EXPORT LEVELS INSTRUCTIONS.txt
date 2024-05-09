@@ -1,7 +1,7 @@
 How to convert levels:
-Open in tiled - make sure you have the sprites and bgs loaded properly
-Export as - save in level editor folder
-LEVEL_SP.CSV - drag onto CSV2C_SP.PY - exports LEVEL_SP.C - import to second part of leveldata.h
-LEVEL_.CSV - drag onto CSV_verticalifier.py to make a .VERT file
-Drag VERT file to vert2rle.py to make .fdstage file
-open .fdstage file - that is your data for the first section of leveldata.h
+Open in tiled - make sure you have the sprites and tiles on the correct layers
+Export - This will save in "the folder that you do stuff in"
+Go back a folder and run export_levels.bat - This will compile all the levels into their data folders.
+Go back another folder and run build.bat. All the level updates should be in the game
+
+	- Ficus - May 8, 2024

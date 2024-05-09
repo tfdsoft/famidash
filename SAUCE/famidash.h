@@ -3,7 +3,7 @@
 #define GAME 0x02
 
 
-#define MAX_ICONS 8 //total icons
+#define MAX_ICONS 10 //total icons
 
 // physics defines
 #define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580
@@ -278,6 +278,7 @@ unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
 unsigned char iconbank;
 
+/*
 unsigned char gnd_palette_transition_timer;
 unsigned char original_gnd_palette_idx_0;
 unsigned char original_gnd_palette_idx_1;
@@ -293,7 +294,11 @@ unsigned char original_bg_palette_color_1;
 unsigned char original_bg_palette_color_2;
 
 unsigned char current_transition_timer_length;
+*/
 
+unsigned char kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
+
+unsigned short songtimer;
 
 //struct player {
 //	unsigned short x; // low byte is sub-pixel

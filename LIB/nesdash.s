@@ -8,7 +8,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
 .import _DATA_PTR
-.import pusha, pushax
+.import pusha, pushax, _lastgcolortype, _lastbgcolortype
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column, _icon
 .import FIRST_MUSIC_BANK
@@ -234,6 +234,7 @@ _init_rld:
     LDA (level_data),y  ;	Starting BG color
 	AND #$3F			;	Store normal color (pal_col(0, tmp2))
     STA PAL_BUF+0       ;__ 
+    STA _lastbgcolortype
     SEC                 ;	A = faded OG color (A - 10)
     SBC #$10            ;__
 	BPL :+				;
@@ -246,6 +247,7 @@ _init_rld:
 	LDA (level_data),y  ;	Starting ground color
 	AND #$3F			;	Store normal color (pal_col(6, tmp2))
     STA PAL_BUF+6       ;__ 
+	STA	_lastgcolortype
     SEC                 ;	A = faded OG color (A - 10)
     SBC #$10            ;__
 	BPL :+				;
