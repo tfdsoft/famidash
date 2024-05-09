@@ -296,7 +296,7 @@ unsigned char original_bg_palette_color_2;
 unsigned char current_transition_timer_length;
 */
 
-unsigned char kandowatchesyousleep;
+unsigned char kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 
 unsigned short songtimer;
 
