@@ -1,15 +1,15 @@
-asdf# Famidash
-A work-in-progress demake of Geometry Dash for the NES using the MMC3 mapper.
+# Famidash
+Famidash is a work-in-progress demake of Geometry Dash for the NES/Famicom using the MMC3 mapper.
 
 ## Development builds
-Download nightly builds here: https://nightly.link/famidash/famidash/workflows/main/main/famidash.nes.zip
+You can download nightly builds here: https://nightly.link/famidash/famidash/workflows/main/main/famidash.nes.zip
 
 ## Contributing
-Fork it, change it, push it, open a PR, get it merged (or not).
+Fork the repository, change it, push it, open a pull request, and hope for it to get merged.
 
 *(zephyrside recommends working on the game using vscode on linux)*
 
-## Socials
+## Our socials
 - https://wetdry.world/@famidash
 - https://twitter.com/TeamFamidash
 - https://discord.gg/PCbwQaZs8K
