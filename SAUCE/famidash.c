@@ -170,13 +170,14 @@ void setdefaultoptions() {
 		SRAM_VALIDATE[0x1D] = 0;
 		SRAM_VALIDATE[0x1E] = 0;
 		SRAM_VALIDATE[0x1F] = 0;
+		twoplayer = 0;
 		//musicoff = 0;
 		//sfxoff = 0;
 		//jumpsound = 0;
-		twoplayer = 0;
 		//oneptwoplayer = 0;
 		//platformer = 0;
-		options = 0;
+		options = 0; 
+
 
 		invisible = 0;
 		color1 = 0x2A;
