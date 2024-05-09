@@ -34,11 +34,11 @@
 // #pragma charmap (0x3E, 0x3E) // >
 // #pragma charmap (0x3F, 0x3F) // ?
 // #pragma charmap (0x40, 0x40) // @
-#pragma charmap (0x41, 0x2C) // A // icon6
+#pragma charmap (0x41, 0x2C) // A 
 #pragma charmap (0x42, 0x2D) // B
 #pragma charmap (0x43, 0x3C) // C
 #pragma charmap (0x44, 0x3D) // D
-#pragma charmap (0x45, 0x2E) // E //icon7
+#pragma charmap (0x45, 0x2E) // E 
 #pragma charmap (0x46, 0x2F) // F
 #pragma charmap (0x47, 0x3E) // G
 #pragma charmap (0x48, 0x3F) // H
@@ -71,34 +71,33 @@
 #pragma charmap (0x63, 0x30) // c		//icon0
 #pragma charmap (0x64, 0x31) // d		//icon0
 
-#pragma charmap (0x65, 0x22) // e 		//icon1
-#pragma charmap (0x66, 0x23) // f		//icon1
-#pragma charmap (0x67, 0x32) // g		//icon1
+#pragma charmap (0x65, 0x22) // e 		
+#pragma charmap (0x66, 0x5F) // f		//customize arrow
+#pragma charmap (0x67, 0x6F) // g		//customize arrow
+#pragma charmap (0x68, 0x5E) // h           	//customize arrow
+#pragma charmap (0x69, 0x6E) // i           	//customize arrow
 
-#pragma charmap (0x68, 0x5F) // h           	//customize arrow
-#pragma charmap (0x69, 0x6F) // i           	//customize arrow
+#pragma charmap (0x6A, 0x33) // j		
 
-#pragma charmap (0x6A, 0x33) // j		//icon1
+#pragma charmap (0x6B, 0x24) // k		
+#pragma charmap (0x6C, 0x25) // l		
+#pragma charmap (0x6D, 0x34) // m		
+#pragma charmap (0x6E, 0x35) // n		
 
-#pragma charmap (0x6B, 0x24) // k		//icon2
-#pragma charmap (0x6C, 0x25) // l		//icon2
-#pragma charmap (0x6D, 0x34) // m		//icon2
-#pragma charmap (0x6E, 0x35) // n		//icon2
+#pragma charmap (0x6F, 0x26) // o		
+#pragma charmap (0x70, 0x27) // p		
+#pragma charmap (0x71, 0x36) // q		
+#pragma charmap (0x72, 0x37) // r		
 
-#pragma charmap (0x6F, 0x26) // o		//icon3
-#pragma charmap (0x70, 0x27) // p		//icon3
-#pragma charmap (0x71, 0x36) // q		//icon3
-#pragma charmap (0x72, 0x37) // r		//icon3
-
-#pragma charmap (0x73, 0x28) // s		//icon4
+#pragma charmap (0x73, 0x28) // s		
 #pragma charmap (0x74, 0x29) // t
 #pragma charmap (0x75, 0x38) // u
-#pragma charmap (0x76, 0x39) // v		//icon4
+#pragma charmap (0x76, 0x39) // v		
 
-#pragma charmap (0x77, 0x2A) // w		//icon5
+#pragma charmap (0x77, 0x2A) // w		
 #pragma charmap (0x78, 0x2B) // x
 #pragma charmap (0x79, 0x3A) // y
-#pragma charmap (0x7A, 0x3B) // z		//icon5
+#pragma charmap (0x7A, 0x3B) // z		
 // #pragma charmap (0x7B, 0x7B) // {
 // #pragma charmap (0x7C, 0x7C) // |
 // #pragma charmap (0x7D, 0x7D) // }

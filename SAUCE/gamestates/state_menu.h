@@ -387,46 +387,46 @@ void customize_screen() {
 			one_vram_buffer('d', NTADR_A(16, 9));		
 			break;
 		case 0x01: 
-			one_vram_buffer('e', NTADR_A(15, 8));		
-			one_vram_buffer('f', NTADR_A(16, 8));		
-			one_vram_buffer('g', NTADR_A(15, 9));		
-			one_vram_buffer('j', NTADR_A(16, 9));		
+			one_vram_buffer('a' + 0x02, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x02, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x02, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x02, NTADR_A(16, 9));		
 			break;
 		case 0x02: 
-			one_vram_buffer('k', NTADR_A(15, 8));		
-			one_vram_buffer('l', NTADR_A(16, 8));		
-			one_vram_buffer('m', NTADR_A(15, 9));		
-			one_vram_buffer('n', NTADR_A(16, 9));		
+			one_vram_buffer('a' + 0x04, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x04, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x04, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x04, NTADR_A(16, 9));		
 			break;
 		case 0x03: 
-			one_vram_buffer('o', NTADR_A(15, 8));		
-			one_vram_buffer('p', NTADR_A(16, 8));		
-			one_vram_buffer('q', NTADR_A(15, 9));		
-			one_vram_buffer('r', NTADR_A(16, 9));		
+			one_vram_buffer('a' + 0x06, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x06, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x06, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x06, NTADR_A(16, 9));		
 			break;
 		case 0x04: 
-			one_vram_buffer('s', NTADR_A(15, 8));		
-			one_vram_buffer('t', NTADR_A(16, 8));		
-			one_vram_buffer('u', NTADR_A(15, 9));		
-			one_vram_buffer('v', NTADR_A(16, 9));		
+			one_vram_buffer('a' + 0x08, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x08, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x08, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x08, NTADR_A(16, 9));		
 			break;
 		case 0x05: 
-			one_vram_buffer('w', NTADR_A(15, 8));		
-			one_vram_buffer('x', NTADR_A(16, 8));		
-			one_vram_buffer('y', NTADR_A(15, 9));		
-			one_vram_buffer('z', NTADR_A(16, 9));		
+			one_vram_buffer('a' + 0x0A, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x0A, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x0A, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x0A, NTADR_A(16, 9));		
 			break;
 		case 0x06: 
-			one_vram_buffer('A', NTADR_A(15, 8));		
-			one_vram_buffer('B', NTADR_A(16, 8));		
-			one_vram_buffer('C', NTADR_A(15, 9));		
-			one_vram_buffer('D', NTADR_A(16, 9));		
+			one_vram_buffer('a' + 0x0C, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x0C, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x0C, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x0C, NTADR_A(16, 9));		
 			break;
 		case 0x07: 
-			one_vram_buffer('E', NTADR_A(15, 8));		
-			one_vram_buffer('F', NTADR_A(16, 8));		
-			one_vram_buffer('G', NTADR_A(15, 9));		
-			one_vram_buffer('H', NTADR_A(16, 9));		
+			one_vram_buffer('a' + 0x0E, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x0E, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x0E, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x0E, NTADR_A(16, 9));		
 			break;
 		case 0x08: 
 			one_vram_buffer('I', NTADR_A(15, 8));		
@@ -445,14 +445,25 @@ void customize_screen() {
 
 
 	if (settingvalue == 0) {
-		one_vram_buffer('h', NTADR_A(5, 14));		
-		one_vram_buffer('i', NTADR_A(5, 15));		
-		one_vram_buffer(' ', NTADR_A(14, 14));		
-		one_vram_buffer(' ', NTADR_A(14, 15));		
-		one_vram_buffer(' ', NTADR_A(23, 14));		
-		one_vram_buffer(' ', NTADR_A(23, 15));		
-		one_vram_buffer(' ', NTADR_A(14, 8));		
-		one_vram_buffer(' ', NTADR_A(14, 9));		
+		one_vram_buffer('h', NTADR_A(4, 14));		
+		one_vram_buffer('i', NTADR_A(4, 15));	
+		one_vram_buffer('f', NTADR_A(9, 14));		
+		one_vram_buffer('g', NTADR_A(9, 15));		
+
+		one_vram_buffer(' ', NTADR_A(13, 14));		
+		one_vram_buffer(' ', NTADR_A(13, 15));	
+		one_vram_buffer(' ', NTADR_A(18, 14));		
+		one_vram_buffer(' ', NTADR_A(18, 15));		
+
+		one_vram_buffer(' ', NTADR_A(22, 14));		
+		one_vram_buffer(' ', NTADR_A(22, 15));	
+		one_vram_buffer(' ', NTADR_A(27, 14));		
+		one_vram_buffer(' ', NTADR_A(27, 15));		
+
+		one_vram_buffer(' ', NTADR_A(13, 8));		
+		one_vram_buffer(' ', NTADR_A(13, 9));
+		one_vram_buffer(' ', NTADR_A(18, 8));		
+		one_vram_buffer(' ', NTADR_A(18, 9));		
 		if (pad_new[0] & PAD_UP) { color1++; 
 			if (color1 == 0x0D || color1 == 0x0E ) color1 = 0x0F;
 			if (color1 == 0x1D || color1 == 0x1E || color1 == 0x1F ) color1 = 0x20;
@@ -469,14 +480,25 @@ void customize_screen() {
 		}
 	}
 	else if (settingvalue == 1) {
-		one_vram_buffer(' ', NTADR_A(5, 14));		
-		one_vram_buffer(' ', NTADR_A(5, 15));		
-		one_vram_buffer('h', NTADR_A(14, 14));		
-		one_vram_buffer('i', NTADR_A(14, 15));		
-		one_vram_buffer(' ', NTADR_A(23, 14));		
-		one_vram_buffer(' ', NTADR_A(23, 15));		
-		one_vram_buffer(' ', NTADR_A(14, 8));		
-		one_vram_buffer(' ', NTADR_A(14, 9));		
+		one_vram_buffer(' ', NTADR_A(4, 14));		
+		one_vram_buffer(' ', NTADR_A(4, 15));	
+		one_vram_buffer(' ', NTADR_A(9, 14));		
+		one_vram_buffer(' ', NTADR_A(9, 15));		
+
+		one_vram_buffer('h', NTADR_A(13, 14));		
+		one_vram_buffer('i', NTADR_A(13, 15));	
+		one_vram_buffer('f', NTADR_A(18, 14));		
+		one_vram_buffer('g', NTADR_A(18, 15));		
+
+		one_vram_buffer(' ', NTADR_A(22, 14));		
+		one_vram_buffer(' ', NTADR_A(22, 15));	
+		one_vram_buffer(' ', NTADR_A(27, 14));		
+		one_vram_buffer(' ', NTADR_A(27, 15));		
+
+		one_vram_buffer(' ', NTADR_A(13, 8));		
+		one_vram_buffer(' ', NTADR_A(13, 9));
+		one_vram_buffer(' ', NTADR_A(18, 8));		
+		one_vram_buffer(' ', NTADR_A(18, 9));			
 		if (pad_new[0] & PAD_UP) { color2++; 
 			if (color2 == 0x0D || color2 == 0x0E ) color2 = 0x0F;
 			if (color2 == 0x1D || color2 == 0x1E || color2 == 0x1F ) color2 = 0x20;
@@ -493,14 +515,25 @@ void customize_screen() {
 		}
 	}
 	else if (settingvalue == 2) {
-		one_vram_buffer(' ', NTADR_A(5, 14));		
-		one_vram_buffer(' ', NTADR_A(5, 15));		
-		one_vram_buffer(' ', NTADR_A(14, 14));		
-		one_vram_buffer(' ', NTADR_A(14, 15));		
-		one_vram_buffer('h', NTADR_A(23, 14));		
-		one_vram_buffer('i', NTADR_A(23, 15));	
-		one_vram_buffer(' ', NTADR_A(14, 8));		
-		one_vram_buffer(' ', NTADR_A(14, 9));		
+		one_vram_buffer(' ', NTADR_A(4, 14));		
+		one_vram_buffer(' ', NTADR_A(4, 15));	
+		one_vram_buffer(' ', NTADR_A(9, 14));		
+		one_vram_buffer(' ', NTADR_A(9, 15));		
+
+		one_vram_buffer(' ', NTADR_A(13, 14));		
+		one_vram_buffer(' ', NTADR_A(13, 15));	
+		one_vram_buffer(' ', NTADR_A(18, 14));		
+		one_vram_buffer(' ', NTADR_A(18, 15));		
+
+		one_vram_buffer('h', NTADR_A(22, 14));		
+		one_vram_buffer('i', NTADR_A(22, 15));	
+		one_vram_buffer('f', NTADR_A(27, 14));		
+		one_vram_buffer('g', NTADR_A(27, 15));		
+
+		one_vram_buffer(' ', NTADR_A(13, 8));		
+		one_vram_buffer(' ', NTADR_A(13, 9));
+		one_vram_buffer(' ', NTADR_A(18, 8));		
+		one_vram_buffer(' ', NTADR_A(18, 9));			
 		if (pad_new[0] & PAD_UP) { color3++; 
 			if (color3 == 0x0D || color3 == 0x0E ) color3 = 0x0F;
 			if (color3 == 0x1D || color3 == 0x1E || color3 == 0x1F ) color3 = 0x20;
@@ -517,14 +550,25 @@ void customize_screen() {
 		}
 	}
 	else if (settingvalue == 3) {
-		one_vram_buffer(' ', NTADR_A(5, 14));		
-		one_vram_buffer(' ', NTADR_A(5, 15));		
-		one_vram_buffer(' ', NTADR_A(14, 14));		
-		one_vram_buffer(' ', NTADR_A(14, 15));		
-		one_vram_buffer(' ', NTADR_A(23, 14));		
-		one_vram_buffer(' ', NTADR_A(23, 15));	
-		one_vram_buffer('h', NTADR_A(14, 8));		
-		one_vram_buffer('i', NTADR_A(14, 9));		
+		one_vram_buffer(' ', NTADR_A(4, 14));		
+		one_vram_buffer(' ', NTADR_A(4, 15));	
+		one_vram_buffer(' ', NTADR_A(9, 14));		
+		one_vram_buffer(' ', NTADR_A(9, 15));		
+
+		one_vram_buffer(' ', NTADR_A(13, 14));		
+		one_vram_buffer(' ', NTADR_A(13, 15));	
+		one_vram_buffer(' ', NTADR_A(18, 14));		
+		one_vram_buffer(' ', NTADR_A(18, 15));		
+
+		one_vram_buffer(' ', NTADR_A(22, 14));		
+		one_vram_buffer(' ', NTADR_A(22, 15));	
+		one_vram_buffer(' ', NTADR_A(27, 14));		
+		one_vram_buffer(' ', NTADR_A(27, 15));		
+
+		one_vram_buffer('h', NTADR_A(13, 8));		
+		one_vram_buffer('i', NTADR_A(13, 9));
+		one_vram_buffer('f', NTADR_A(18, 8));		
+		one_vram_buffer('g', NTADR_A(18, 9));			
 
 	if (pad_new[0] & PAD_UP) {
 		icon++;
@@ -807,7 +851,7 @@ void state_menu() {
 		case 0x01: settingvalue = 0; funsettings(); return; break;
 		case 0x02: bgmtest(); return; break;
 		case 0x03: settingvalue = 0; settings(); return; break;
-		case 0x04: settingvalue = 0; customize_screen(); return; break;
+		case 0x04: settingvalue = 3; customize_screen(); return; break;
 			
 	};
   
