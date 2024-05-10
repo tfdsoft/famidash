@@ -262,7 +262,7 @@ void state_game(){
 		
 		x_movement();
 
-		if (!(kandoframecnt & 0x01)) x_movement_coll();
+		x_movement_coll();
 	
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		
@@ -324,7 +324,7 @@ void state_game(){
 
 			mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing2));
 			// x_movement();
-			if ((kandoframecnt & 0x01)) x_movement_coll();
+			x_movement_coll();
 
 			do_the_scroll_thing2();
 
