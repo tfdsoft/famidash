@@ -96,7 +96,7 @@ clutterfunk_speed       = $00
 clutterfunk_bg_color    = $16
 clutterfunk_grnd_color  = $06
 
-theoryofeverything_song_number = song_xstep
+theoryofeverything_song_number = song_theory_of_everything
 theoryofeverything_game_mode   = $00
 theoryofeverything_speed       = $00
 theoryofeverything_bg_color    = $04

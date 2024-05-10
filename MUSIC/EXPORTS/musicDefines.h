@@ -10,8 +10,13 @@
 #define song_xstep 9
 #define song_clutterfunk 10
 #define song_menu_theme 11
-#define song_practice 12
-#define song_max 13
+#define song_theory_of_everything 12
+#define song_deadlocked 13
+#define song_chaoz_fantasy 14
+#define song_ultimate_destruction 15
+#define song_every_end 16
+#define song_practice 17
+#define song_max 18
 #define sfx_death 0
 #define sfx_click 1
 #define sfx_level_complete 2
