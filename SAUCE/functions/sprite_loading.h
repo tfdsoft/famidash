@@ -148,7 +148,7 @@ __fastcall__ char sprite_height_lookup(){
 	case 0x42:
 	case 0x43:
 		if (twoplayer) activesprites_type[index] = 0xFF; 
-		break;
+		return 0;
             
     }
 /*			color fading code
