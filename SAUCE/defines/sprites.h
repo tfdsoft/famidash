@@ -1812,6 +1812,7 @@ const unsigned char * const Metasprites[]={
 	Long_Light_Left,
 	Short_Light_U,
 	Chain_U,
+	nometa,
 	};
 
 
@@ -1889,6 +1890,7 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1961,6 +1963,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 
+	0,
 	0,
 	0,
 	0,

@@ -15,8 +15,8 @@ void ship_movement(void){
 		else {
 			currplayer_vel_y -= SHIP_GRAVITY;
 		}
-		if(currplayer_vel_y > SHIP_MAX_FALLSPEED) currplayer_vel_y = SHIP_MAX_FALLSPEED;
-		if(currplayer_vel_y < -SHIP_MAX_FALLSPEED) currplayer_vel_y = -SHIP_MAX_FALLSPEED;
+		if(currplayer_vel_y > SHIP_MAX_FALLSPEED) currplayer_vel_y += -SHIP_GRAVITY;
+		if(currplayer_vel_y < -SHIP_MAX_FALLSPEED) currplayer_vel_y -= -SHIP_GRAVITY;
 
 	}
 	else {
@@ -26,8 +26,8 @@ void ship_movement(void){
 		else {
 			currplayer_vel_y -= MINI_SHIP_GRAVITY;
 		}
-		if(currplayer_vel_y > MINI_SHIP_MAX_FALLSPEED) currplayer_vel_y = MINI_SHIP_MAX_FALLSPEED;
-		if(currplayer_vel_y < -MINI_SHIP_MAX_FALLSPEED) currplayer_vel_y = -MINI_SHIP_MAX_FALLSPEED;
+		if(currplayer_vel_y > MINI_SHIP_MAX_FALLSPEED) currplayer_vel_y += -MINI_SHIP_GRAVITY;
+		if(currplayer_vel_y < -MINI_SHIP_MAX_FALLSPEED) currplayer_vel_y -= -MINI_SHIP_GRAVITY;
 	}
 		
 		

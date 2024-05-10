@@ -40,6 +40,35 @@
 #define PINK_PAD_UP				0X26
 #define GREEN_ORB				0X27
 #define RED_ORB					0X28
+#define YELLOW_JUMP_ORB_SMALLER			0x29
+#define LONG_LIGHT				0x2A
+#define MEDIUM_LIGHT				0x2B
+#define SHORT_LIGHT				0x2C
+#define CHAIN					0x2D
+#define BG_SPIKE_GROUP1				0x2E
+#define BG_SPIKE_GROUP2				0x2F
+#define BG_SPIKE_GROUP3				0x30
+#define BG_SPIKE_GROUP4				0x31
+#define BIG_DIAMOND				0x32
+#define RIGHT_HALF_DIAMOND			0x33
+#define QUESTION_MARK				0x34
+#define EXCLAMATION_MARK			0x35
+#define RIGHT_ARROW				0x36
+#define BIG_X					0x37
+#define SHORT_LIGHT_RIGHT			0x38
+#define SHORT_LIGHT_LEFT			0x39
+#define LONG_LIGHT_U				0x3A
+#define MEDIUM_LIGHT_U				0x3B
+#define SHORT_LIGHT_U				0x3C
+#define CHAIN_U					0x3D
+#define MEDIUM_LIGHT_RIGHT			0x3E
+#define MEDIUM_LIGHT_LEFT			0x3F
+#define LONG_LIGHT_RIGHT			0x40
+#define LONG_LIGHT_LEFT				0x41
+#define SHORT_LIGHT_U_8_PIXELS			0x42
+#define CHAIN_U_8_PIXELS			0x43
+#define BLACK_ORB			0x44
+
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -88,8 +117,38 @@ __fastcall__ char sprite_height_lookup(){
         case BLUE_ORB:
         case PINK_ORB:
         case GREEN_ORB:
+        case BLACK_ORB:
         case RED_ORB:
             return 0x0f;
+
+	case 0x2A:
+	case 0x2B:
+	case 0x2C:
+	case 0x2D:
+	case 0x2E:
+	case 0x2F:
+	case 0x30:
+	case 0x31:
+	case 0x32:
+	case 0x33:
+	case 0x34:
+	case 0x35:
+	case 0x36:
+	case 0x37:
+	case 0x38:
+	case 0x39:
+	case 0x3A:
+	case 0x3B:
+	case 0x3C:
+	case 0x3D:
+	case 0x3E:
+	case 0x3F:
+	case 0x40:
+	case 0x41:
+	case 0x42:
+	case 0x43:
+		if (twoplayer) activesprites_type[index] = 0xFF; 
+		break;
             
     }
 /*			color fading code
@@ -230,6 +289,7 @@ __fastcall__ char sprite_height_lookup(){
 #define pink_pad   0x03 << 3
 #define red_orb    0x04 << 3
 #define ylw_bigger 0x05 << 3
+#define black_orb 0x06 << 3
 
 const short heights[] = {
 //  cube   ship   ball    ufo   robot  spider  wave  unused
@@ -239,6 +299,7 @@ const short heights[] = {
     0x4A0, 0x4A0, 0x4A0, 0x500, 0x4A0, 0x4A0, 0x000, 0x000, // pink pad
     0xA50, 0x500, 0x500, 0x500, 0x7A0, 0x500, 0x000, 0x000, // red orb
     0x590, 0x590, 0x4C0, 0x590, 0x590, 0x590, 0x000, 0x000, // yellow orb bigger
+   -0x1190, -0x1190, -0x1170, -0x1190, -0x1190, -0x1190, -0x000, -0x000, // black orb
 };
 
 const short mini_heights[] = {
@@ -248,7 +309,8 @@ const short mini_heights[] = {
 	0x350, 0x4D0, 0x500, 0x4D0, 0x4D0, 0x4D0, 0x000, 0x000, // pink orb
 	0x350, 0x4A0, 0x4A0, 0x500, 0x4A0, 0x4A0, 0x000, 0x000, // pink pad
 	0x750, 0x500, 0x500, 0x500, 0x7A0, 0x500, 0x000, 0x000, // red orb
-	0x590, 0x590, 0x570, 0x590, 0x590, 0x590, 0x000, 0x000, // yellow orb bigger	
+        0x590, 0x590, 0x5C0, 0x590, 0x590, 0x590, 0x000, 0x000, // yellow orb bigger
+       -0x1190, -0x1190, -0x1170, -0x1190, -0x1190, -0x1190, -0x000, -0x000, // black orb
 };
 
 
@@ -481,6 +543,15 @@ void sprite_collide_lookup() {
         }
         return;
 
+    case BLACK_ORB:
+        table_offset = black_orb;
+        if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
+            sprite_gamemode_main();
+        } else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
+            sprite_gamemode_controller_check();
+        }
+        return;
+
     case RED_ORB:
         table_offset = red_orb;
         if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
@@ -499,6 +570,7 @@ void sprite_collide_lookup() {
         }
         return;
     }
+    
 }
 
 #undef table_offset

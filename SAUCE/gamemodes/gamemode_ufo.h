@@ -11,24 +11,24 @@ void ufo_movement(void){
 	if(!mini){
 		if(!currplayer_gravity){
 			if(currplayer_vel_y > UFO_MAX_FALLSPEED){
-				currplayer_vel_y = UFO_MAX_FALLSPEED;
+				currplayer_vel_y += -UFO_GRAVITY;
 			} else currplayer_vel_y += UFO_GRAVITY;
 		}
 		else{
 			if(currplayer_vel_y < -UFO_MAX_FALLSPEED){
-				currplayer_vel_y = -UFO_MAX_FALLSPEED;
+				currplayer_vel_y -= -UFO_GRAVITY;
 			} else currplayer_vel_y -= UFO_GRAVITY;
 		}
 	}
 	else {
 		if(!currplayer_gravity){
 			if(currplayer_vel_y > MINI_UFO_MAX_FALLSPEED){
-				currplayer_vel_y = MINI_UFO_MAX_FALLSPEED;
+				currplayer_vel_y += -MINI_UFO_GRAVITY;
 			} else currplayer_vel_y += MINI_UFO_GRAVITY;
 		}
 		else{
 			if(currplayer_vel_y < -MINI_UFO_MAX_FALLSPEED){
-				currplayer_vel_y = -MINI_UFO_MAX_FALLSPEED;
+				currplayer_vel_y -= -MINI_UFO_GRAVITY;
 			} else currplayer_vel_y -= MINI_UFO_GRAVITY;
 		}
 	}		

@@ -12,24 +12,24 @@ void cube_movement(void){
 	if(!mini){
 		if(!currplayer_gravity){
 			if(currplayer_vel_y > CUBE_MAX_FALLSPEED){
-				currplayer_vel_y = CUBE_MAX_FALLSPEED;
+				currplayer_vel_y += -CUBE_GRAVITY;
 			} else currplayer_vel_y += CUBE_GRAVITY;
 		}
 		else{
 			if(currplayer_vel_y < -CUBE_MAX_FALLSPEED){
-				currplayer_vel_y = -CUBE_MAX_FALLSPEED;
+				currplayer_vel_y -= -CUBE_GRAVITY;
 			} else currplayer_vel_y -= CUBE_GRAVITY;
 		}
 	}
 	else {
 		if(!currplayer_gravity){
 			if(currplayer_vel_y > MINI_CUBE_MAX_FALLSPEED){
-				currplayer_vel_y = MINI_CUBE_MAX_FALLSPEED;
+				currplayer_vel_y += -MINI_CUBE_GRAVITY;
 			} else currplayer_vel_y += MINI_CUBE_GRAVITY;
 		}
 		else{
 			if(currplayer_vel_y < -MINI_CUBE_MAX_FALLSPEED){
-				currplayer_vel_y = -MINI_CUBE_MAX_FALLSPEED;
+				currplayer_vel_y -= -MINI_CUBE_GRAVITY;
 			} else currplayer_vel_y -= MINI_CUBE_GRAVITY;
 		}
 	}		
