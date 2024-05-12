@@ -21,10 +21,10 @@ char bg_coll_L(void){
 		if (!(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
 	} else if(tmp3 == COL_ALL) {
 		return 1;
-	} else if (tmp3 == COL_DEATH_RIGHT) {
-		if (!(temp_x & 0x08)) return 0;		// If X pos inside block < 8px
 	} else if (tmp3 == COL_DEATH_LEFT) {
-		if ((temp_x & 0x08)) return 0;		// If X pos inside block ≥ 8px
+		if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1;		// If X pos inside block < 8px, die
+	} else if (tmp3 == COL_DEATH_RIGHT) {
+		if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;		// If X pos inside block ≥ 10px, die
 	} else if(tmp3 == COL_DEATH_TOP) {
 		if (!(temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
 		else return 0;										// else nothing
@@ -40,29 +40,28 @@ char bg_coll_L(void){
 char bg_coll_floor_spikes(void){ // used just for checking ground spikes on the floor
 	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
-	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : (
-		(currplayer_gravity) ? 0 : (Generic.height - 1)
-	));
-
+	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 4);
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
-	tmp3 = bg_collision_sub();
-	if(tmp3 == COL_DEATH_TOP) {
-		if (!(temp_y & 0x08)) {								// If Y pos inside block < 8px, die
-			tmp2 = temp_x & 0x0f;
-			if (tmp2 < 0x0c) {								// If X pos even insider, die even more
-				cube_data[currplayer] = 1;						
-			}
+	for (tmp8 = mini; tmp8 < 2; tmp8++) {
+		tmp3 = bg_collision_sub();
+		if(tmp3 == COL_DEATH_TOP) {
+			if (!(temp_y & 0x08)) {								// If Y pos inside block < 8px, die
+				tmp2 = temp_x & 0x0f;
+				if (tmp2 < 0x0c) {								// If X pos even insider, die even more
+					cube_data[currplayer] = 1;						
+				}
+			}													// else nothing
+		} else if (tmp3 == COL_DEATH_BOTTOM) {
+			if ((temp_y & 0x08)) {								// If Y pos inside block ≥ 8px, die
+				tmp2 = temp_x & 0x0f;
+				if (tmp2 < 0x0c) {								// If X pos even insider, die even more
+					cube_data[currplayer] = 1;						
+				}
+			}								// else nothing
 		}
-		else return 0;										// else nothing
-	} else if (tmp3 == COL_DEATH_BOTTOM) {
-		if ((temp_y & 0x08)) {								// If Y pos inside block ≥ 8px, die
-			tmp2 = temp_x & 0x0f;
-			if (tmp2 < 0x0c) {								// If X pos even insider, die even more
-				cube_data[currplayer] = 1;						
-			}
-		}
-		else return 0;										// else nothing
+		tmp1 = Generic.y + Generic.height - 4;
+		storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 	}
 
     return 0;
@@ -82,10 +81,10 @@ char bg_coll_R(void){
 		if (!(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
 	} else if(tmp3 == COL_ALL) {
 		return 1;		
-	} else if (tmp3 == COL_DEATH_RIGHT) {
-		if (!(temp_x & 0x08)) return 0;		// If X pos inside block < 8px
 	} else if (tmp3 == COL_DEATH_LEFT) {
-		if ((temp_x & 0x08)) return 0;		// If X pos inside block ≥ 8px
+		if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1;		// If X pos inside block < 8px, die
+	} else if (tmp3 == COL_DEATH_RIGHT) {
+		if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;		// If X pos inside block ≥ 10px, die
 	} else if(tmp3 == COL_DEATH_TOP) {
 		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
 		if (!(temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
@@ -151,13 +150,13 @@ char bg_coll_U(void){
 				}
 				return 1;
 			}
-		} else if (tmp3 == COL_DEATH_RIGHT) {
-			if ((temp_x & 0x0f) < 0x04) {
+		} else if (tmp3 == COL_DEATH_LEFT) {
+			if ((temp_x & 0x0f) < 0x06) {
 				tmp2 = temp_y & 0x0f;
 				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			};
-		} else if (tmp3 == COL_DEATH_LEFT) {
-			if ((temp_x & 0x0f) >= 0x0c) {
+		} else if (tmp3 == COL_DEATH_RIGHT) {
+			if ((temp_x & 0x0f) >= 0x0a) {
 				tmp2 = temp_y & 0x0f;
 				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			}
@@ -219,13 +218,13 @@ char bg_coll_D(void){
 				}
 				return 1;
 			}
-		} else if (tmp3 == COL_DEATH_RIGHT) {
-			if ((temp_x & 0x0f) < 0x04) {
+		} else if (tmp3 == COL_DEATH_LEFT) {
+			if ((temp_x & 0x0f) < 0x06) {
 				tmp2 = temp_y & 0x0f;
 				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			};
-		} else if (tmp3 == COL_DEATH_LEFT) {
-			if ((temp_x & 0x0f) >= 0x0c) {
+		} else if (tmp3 == COL_DEATH_RIGHT) {
+			if ((temp_x & 0x0f) >= 0x0a) {
 				tmp2 = temp_y & 0x0f;
 				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			}

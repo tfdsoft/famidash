@@ -70,6 +70,7 @@ void ball_movement(void){
 			case 0x00: currplayer_vel_y = 0x6F; break;
 			case 0x01: currplayer_vel_y = -0x6F; break;
 		}
+		bg_coll_floor_spikes();
 	}
 	if(kandotemp2[currplayer] == 1){
 		if (!(pad[controllingplayer] & PAD_A)){

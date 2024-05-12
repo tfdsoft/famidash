@@ -258,15 +258,16 @@ void state_game(){
 
 		//if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
 		if (DEBUG_MODE) gray_line();
+
+		mmc3_set_prg_bank_1(GET_BANK(movement));
+		
+		movement();
+		
 		mmc3_set_prg_bank_1(GET_BANK(x_movement));
 		
 		x_movement();
 
 		x_movement_coll();
-	
-		mmc3_set_prg_bank_1(GET_BANK(movement));
-		
-		movement();
 
 
 		if (!DEBUG_MODE && !invincible_counter) {
