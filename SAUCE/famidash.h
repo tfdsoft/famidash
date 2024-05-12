@@ -277,6 +277,7 @@ unsigned char DEBUG_MODE = 0;
 unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
 unsigned char iconbank;
+unsigned char kandowavewalk;
 
 /*
 unsigned char gnd_palette_transition_timer;

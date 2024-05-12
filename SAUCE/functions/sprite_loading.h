@@ -69,6 +69,7 @@
 #define CHAIN_U_8_PIXELS			0x43
 #define BLACK_ORB			0x44
 
+#define D_BLOCK					0xFA
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
 #define GRAVITY_DOWN_INVISIBLE_PORTAL		0XFC
 #define GRAVITY_PAD_DOWN_INVISIBLE		0XFD
@@ -119,6 +120,7 @@ __fastcall__ char sprite_height_lookup(){
         case GREEN_ORB:
         case BLACK_ORB:
         case RED_ORB:
+        case D_BLOCK:
             return 0x0f;
 
 	case 0x2A:
@@ -377,8 +379,11 @@ static void sprite_gamemode_controller_check() {
 }
 
 void sprite_collide_lookup() {
+
+
     switch (collided) {
     // Portal game mode switches
+    case D_BLOCK: kandowavewalk = 1; return;
     case CUBE_MODE:
     case SHIP_MODE:
     case BALL_MODE:
@@ -607,6 +612,7 @@ void sprite_collide(){
             if (check_collision(&Generic, &Generic2)) {
                 sprite_collide_lookup();
             }
+	    else kandowavewalk = 0;
         }
     }
     if (!mini) {
