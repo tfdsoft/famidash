@@ -346,7 +346,7 @@ void customize_screen() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg((char *)paletteMenu);
-	mmc3_set_8kb_chr(56);
+	mmc3_set_8kb_chr(62);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
 	#include "../defines/mainmenu_customize.h"
@@ -437,16 +437,34 @@ void customize_screen() {
 			one_vram_buffer('d' + 0x0E, NTADR_A(16, 9));		
 			break;
 		case 0x08: 
-			one_vram_buffer('I', NTADR_A(15, 8));		
-			one_vram_buffer('J', NTADR_A(16, 8));		
-			one_vram_buffer('K', NTADR_A(15, 9));		
-			one_vram_buffer('L', NTADR_A(16, 9));		
+			one_vram_buffer('a' + 0x20, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x20, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x20, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x20, NTADR_A(16, 9));		
 			break;
 		case 0x09: 
 			one_vram_buffer('M', NTADR_A(15, 8));		
 			one_vram_buffer('N', NTADR_A(16, 8));		
 			one_vram_buffer('O', NTADR_A(15, 9));		
 			one_vram_buffer('P', NTADR_A(16, 9));		
+			break;
+		case 0x0A: 
+			one_vram_buffer('a' + 0x24, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x24, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x24, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x24, NTADR_A(16, 9));		
+			break;
+		case 0x0B: 
+			one_vram_buffer('a' + 0x26, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x26, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x26, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x26, NTADR_A(16, 9));		
+			break;
+		case 0x0C: 
+			one_vram_buffer('a' + 0x40, NTADR_A(15, 8));		
+			one_vram_buffer('b' + 0x40, NTADR_A(16, 8));		
+			one_vram_buffer('c' + 0x40, NTADR_A(15, 9));		
+			one_vram_buffer('d' + 0x40, NTADR_A(16, 9));		
 			break;
 	}
 
@@ -769,7 +787,7 @@ void state_menu() {
 	ppu_off();
     pal_bg((char *)splashMenu);
 
-	mmc3_set_8kb_chr(52);
+	mmc3_set_8kb_chr(58);
 
 	set_scroll_x(0);
     set_scroll_y(0);
