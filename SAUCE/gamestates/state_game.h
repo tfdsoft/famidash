@@ -57,7 +57,7 @@ void state_game(){
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 		pal_col(0x0B,color1);   //palette 2 set to player color
     while (1) {
-	if (platformer && !has_practice_point) {
+	if ((options & platformer) && !has_practice_point) {
 		songtimer++;
 		if (songtimer > songtime[song] ) { songtimer = 0; music_play(song); }
 
