@@ -64,7 +64,11 @@ void state_game(){
 		player_old_posx[tmp2] = 0;
 		player_old_posy[tmp2] = 0;
 	}
-
+	    if (!discomode) {
+		pal_col(0x1F,color2);
+		pal_col(0x1D,color3);
+		pal_col(0x1E,color1);
+	    }
     while (1) {
 	if ((options & platformer) && !has_practice_point) {
 		songtimer++;
@@ -72,7 +76,7 @@ void state_game(){
 
 	}		    
 
-	if (trails) {
+	if (trails || gamemode == 6) {
 		if (!(kandoframecnt & 0x03)) {
 			player_old_posx[7] = high_byte(player_x[0]) - 0x20;
 			player_old_posx[6] = high_byte(player_x[0]) - 0x1C;
@@ -123,13 +127,7 @@ void state_game(){
 		    }
 		}		    
 	    }
-	    else if (!discomode) {
-		pal_col(0x1F,color2);
-		pal_col(0x1D,color3);
-		pal_col(0x1E,color1);
 
-
-	    }
 
 
 

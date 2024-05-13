@@ -37,7 +37,7 @@ void draw_sprites(void){
 		else if (long_temp_x < 10) { }
 	}
 
-	if (trails) {
+	if (trails || gamemode == 6) {
 		oam_meta_spr(player_old_posx[7], player_old_posy[7], Trail_Circle[0]);
 		oam_meta_spr(player_old_posx[6], player_old_posy[6], Trail_Circle[0]);
 		oam_meta_spr(player_old_posx[5], player_old_posy[5], Trail_Circle[0]);
