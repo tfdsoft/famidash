@@ -36,7 +36,14 @@ void draw_sprites(void){
 		}
 		else if (long_temp_x < 10) { }
 	}
-
+	oam_meta_spr(player_old_posx[7], player_old_posy[7], Practice_Sprites[0]);
+	oam_meta_spr(player_old_posx[6], player_old_posy[6], Practice_Sprites[0]);
+	oam_meta_spr(player_old_posx[5], player_old_posy[5], Practice_Sprites[0]);
+	oam_meta_spr(player_old_posx[4], player_old_posy[4], Practice_Sprites[0]);
+	oam_meta_spr(player_old_posx[3], player_old_posy[3], Practice_Sprites[0]);
+	oam_meta_spr(player_old_posx[2], player_old_posy[2], Practice_Sprites[0]);
+	oam_meta_spr(player_old_posx[1], player_old_posy[1], Practice_Sprites[0]);
+	oam_meta_spr(player_old_posx[0], player_old_posy[0], Practice_Sprites[0]);
         shuffle_offset += 11;								//-----------|
         if (shuffle_offset >= max_loaded_sprites) {					//           |
           shuffle_offset -= max_loaded_sprites;						//           |

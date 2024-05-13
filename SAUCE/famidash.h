@@ -278,6 +278,11 @@ unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
 unsigned char iconbank;
 unsigned char kandowavewalk;
+unsigned char trails;
+
+
+unsigned char player_old_posx[8];
+unsigned char player_old_posy[8];
 
 /*
 unsigned char gnd_palette_transition_timer;
