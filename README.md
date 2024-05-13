@@ -25,6 +25,28 @@ Fork it, change it, push it, open a PR, get it merged (or not).
 |[Zenith](https://github.com/ZenithNeko)|Music, graphics|
 |[jaezu](https://github.com/jaezudev)|Maintainer|
 |[Zephyrside](https://github.com/zephyrside)|Original lead developer, project creator, coding, music, graphics|
-|Aquamarine|Music
+
+## Musicians
+|Aquamarine|
+|vikrinox|
+
+## Graphics/Icons
+|AdryanLucas096|
+|Zee_Scott|
+
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
+
+Original Musician Credits (covers):
+ForeverBound	Stereo Madness	
+DJVI	Back On Track	
+Step	Polargeist	
+DJVI	Dry Out	
+DJVI	Base After Base	
+DJVI	Can't Let Go	NOTE: Known as "Cant Let Go" in game
+Waterflame	Jumper	Castle Crashers
+Waterflame	Time Machine	
+DJVI	Cycles	
+DJVI	xStep	
+Waterflame	Clutterfunk	
+Dj-Nate	Theory Of Everything
