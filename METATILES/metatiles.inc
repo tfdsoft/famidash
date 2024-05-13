@@ -16,7 +16,7 @@ Metatile "MED_SAW_BOTTOM_LEFT",  $e8, $e9, $00, $ed, PAL_0, COL_DEATH_TOP
 Metatile "MED_SAW_BOTTOM_RIGHT",  $ea, $eb, $ee, $ef, PAL_0, COL_DEATH_TOP
 Metatile "BOTTOM_GREEN_SPIKES",  $AC, $AD, $BC, $BD, PAL_2, COL_DEATH_BOTTOM
 Metatile "TOP_GREEN_SPIKES",  $AE, $AF, $BE, $BF, PAL_2, COL_DEATH_TOP
-Metatile "BG14",  $46, $47, $36, $37, PAL_0, COL_BOTTOM
+Metatile "BG14",  $46, $47, $36, $37, PAL_0, COL_DEATH_BOTTOM
 Metatile "BG15",  $ff, $ff, $ff, $ff, PAL_1, COL_ALL
 
 Metatile "BLOCK",       $20, $21, $30, $31, PAL_0, COL_ALL
