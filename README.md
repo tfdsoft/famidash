@@ -27,12 +27,12 @@ Fork it, change it, push it, open a PR, get it merged (or not).
 |[Zephyrside](https://github.com/zephyrside)|Original lead developer, project creator, coding, music, graphics|
 
 ## Musicians
-|Aquamarine|
-|vikrinox|
+|Aquamarine|Music|
+|[vikrinox](https://github.com/Vickerinox)|Music|
 
 ## Graphics/Icons
-|AdryanLucas096|
-|Zee_Scott|
+|AdryanLucas096|Icons/Graphics|
+|Zee_Scott|Icons|
 
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
