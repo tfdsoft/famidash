@@ -38,14 +38,14 @@ void draw_sprites(void){
 	}
 
 	if (trails || gamemode == 6) {
-		oam_meta_spr(player_old_posx[7], player_old_posy[7], Trail_Circle[0]);
-		oam_meta_spr(player_old_posx[6], player_old_posy[6], Trail_Circle[0]);
-		oam_meta_spr(player_old_posx[5], player_old_posy[5], Trail_Circle[0]);
-		oam_meta_spr(player_old_posx[4], player_old_posy[4], Trail_Circle[0]);
-		oam_meta_spr(player_old_posx[3], player_old_posy[3], Trail_Circle[0]);
-		oam_meta_spr(player_old_posx[2], player_old_posy[2], Trail_Circle[0]);
-		oam_meta_spr(player_old_posx[1], player_old_posy[1], Trail_Circle[0]);
-		oam_meta_spr(player_old_posx[0], player_old_posy[0], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x20, player_old_posy[7], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x1C, player_old_posy[6], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x18, player_old_posy[5], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x14, player_old_posy[4], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x10, player_old_posy[3], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0xC, player_old_posy[2], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x8, player_old_posy[1], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x4, player_old_posy[0], Trail_Circle[0]);
 	}
 
         shuffle_offset += 11;								//-----------|

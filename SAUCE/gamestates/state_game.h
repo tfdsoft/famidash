@@ -61,7 +61,6 @@ void state_game(){
 		pal_col(0x0B,color1);   //palette 2 set to player color
 
 	for (tmp2 = 0; tmp2 < 8; tmp2++) {
-		player_old_posx[tmp2] = 0;
 		player_old_posy[tmp2] = 0;
 	}
 	    if (!discomode) {
@@ -78,15 +77,6 @@ void state_game(){
 
 	if (trails || gamemode == 6) {
 		if (!(kandoframecnt & 0x03)) {
-			player_old_posx[7] = high_byte(player_x[0]) - 0x20;
-			player_old_posx[6] = high_byte(player_x[0]) - 0x1C;
-			player_old_posx[5] = high_byte(player_x[0]) - 0x18;
-			player_old_posx[4] = high_byte(player_x[0]) - 0x14;
-			player_old_posx[3] = high_byte(player_x[0]) - 0x10;
-			player_old_posx[2] = high_byte(player_x[0]) - 0xC;
-			player_old_posx[1] = high_byte(player_x[0]) - 0x8;
-			player_old_posx[0] = high_byte(player_x[0]) - 0x4;
-
 			player_old_posy[7] = player_old_posy[6];
 			player_old_posy[6] = player_old_posy[5];
 			player_old_posy[5] = player_old_posy[4];

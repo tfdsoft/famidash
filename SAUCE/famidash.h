@@ -280,8 +280,6 @@ unsigned char iconbank;
 unsigned char kandowavewalk;
 unsigned char trails;
 
-
-unsigned char player_old_posx[8];
 unsigned char player_old_posy[8];
 
 /*
