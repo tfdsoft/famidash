@@ -35,6 +35,6 @@ Fork it, change it, push it, open a PR, get it merged (or not).
 |[vikrinox](https://github.com/Vickerinox)|music|
 |AdryanLucas096|icons, graphics|
 |Zee_Scott|icons|
-
+|[StudsX](https://github.com/smbhacks)|ASM|
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
