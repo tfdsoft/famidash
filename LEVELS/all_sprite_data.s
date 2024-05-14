@@ -1726,7 +1726,7 @@ sprite_data_xstep:
   .byte $70,$1f,$a0,$01,$ea
   .byte $90,$1f,$d0,$00,$05
   .byte $90,$1f,$98,$01,$0a
-  .byte $d0,$1f,$30,$01,$1b
+  .byte $c0,$1f,$30,$01,$1b
   .byte $d0,$1f,$90,$01,$9b
   .byte $d0,$1f,$a0,$01,$db
   .byte $e0,$1f,$70,$01,$0b

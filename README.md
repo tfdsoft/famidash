@@ -1,30 +1,40 @@
-asdf# Famidash
+# Famidash
 A work-in-progress demake of Geometry Dash for the NES using the MMC3 mapper.
 
-## Development builds
-Download nightly builds here: https://nightly.link/famidash/famidash/workflows/main/main/famidash.nes.zip
+## development builds
+You can find nightly dev builds in the Actions tab. Alternatively you can download them here: https://nightly.link/famidash/famidash/workflows/main/main/famidash.nes.zip
 
-## Contributing
+## contributing
+``TODO proper guide``
+
 Fork it, change it, push it, open a PR, get it merged (or not).
 
 *(zephyrside recommends working on the game using vscode on linux)*
 
-## Socials
+## socials
 - https://wetdry.world/@famidash
 - https://twitter.com/TeamFamidash
 - https://discord.gg/PCbwQaZs8K
 
-## Credits (Core contributors only)
+## credits (core team only)
 |contributor|role (in no particular order)|
 |---|---|
-|[kandowontu](https://github.com/kandowontu)|Project torch carrier, lead developer, maintainer|
-|[AleFunky](https://github.com/PinguLinux)|Core Code programmer, Levels, testing, bugfixes|
-|[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|Levels, guidance, testing, bugfixes, graphics|
-|[alexmush](https://github.com/ADM228)|Core Code programmer, Code optimisation|
-|[jroweboy](https://github.com/jroweboy)|Graphics, code optimisation, parallax, menu, etc.|
-|[Zenith](https://github.com/ZenithNeko)|Music, graphics|
-|[jaezu](https://github.com/jaezudev)|Maintainer|
-|[Zephyrside](https://github.com/zephyrside)|Original lead developer, project creator, coding, music, graphics|
-|Aquamarine|Music
+|[kandowontu](https://github.com/kandowontu)|project torch carrier, lead developer, maintainer|
+|[AleFunky](https://github.com/PinguLinux)|core code, levels, testing, bugfixes|
+|[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
+|[alexmush](https://github.com/ADM228)|code, code optimisation|
+|[jroweboy](https://github.com/jroweboy)|graphics, code optimisation, parallax, menu, etc.|
+|[Zenith](https://github.com/ZenithNeko)|music, graphics|
+|[jaezu](https://github.com/jaezudev)|maintainer|
+|[Zephyrside](https://github.com/zephyrside)|original lead developer, project creator, coding, music, graphics|
+
+## additional staff
+|contributor|role (in no particular order)|
+|---|---|
+|Aquamarine|music|
+|[vikrinox](https://github.com/Vickerinox)|music|
+|AdryanLucas096|icons, graphics|
+|Zee_Scott|icons|
+
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.

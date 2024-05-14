@@ -3,7 +3,7 @@
 #define GAME 0x02
 
 
-#define MAX_ICONS 10 //total icons
+#define MAX_ICONS 13 //total icons
 
 // physics defines
 #define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580
@@ -278,6 +278,9 @@ unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
 unsigned char iconbank;
 unsigned char kandowavewalk;
+unsigned char trails;
+
+unsigned char player_old_posy[8];
 
 /*
 unsigned char gnd_palette_transition_timer;

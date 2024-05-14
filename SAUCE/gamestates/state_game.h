@@ -53,15 +53,40 @@ void state_game(){
 		case 0x07: iconbank = 46; break;
 		case 0x08: iconbank = 48; break;
 		case 0x09: iconbank = 50; break;
+		case 0x0A: iconbank = 52; break;
+		case 0x0B: iconbank = 54; break;
+		case 0x0C: iconbank = 56; break;
 	}
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 		pal_col(0x0B,color1);   //palette 2 set to player color
+
+	for (tmp2 = 0; tmp2 < 8; tmp2++) {
+		player_old_posy[tmp2] = 0;
+	}
+	    if (!discomode) {
+		pal_col(0x1F,color2);
+		pal_col(0x1D,color3);
+		pal_col(0x1E,color1);
+	    }
     while (1) {
-	if (platformer && !has_practice_point) {
+	if ((options & platformer) && !has_practice_point) {
 		songtimer++;
 		if (songtimer > songtime[song] ) { songtimer = 0; music_play(song); }
 
 	}		    
+
+	if (trails || gamemode == 6) {
+		if (!(kandoframecnt & 0x03)) {
+			player_old_posy[7] = player_old_posy[6];
+			player_old_posy[6] = player_old_posy[5];
+			player_old_posy[5] = player_old_posy[4];
+			player_old_posy[4] = player_old_posy[3];
+			player_old_posy[3] = player_old_posy[2];
+			player_old_posy[2] = player_old_posy[1];
+			player_old_posy[1] = player_old_posy[0];
+			player_old_posy[0] = high_byte(player_y[0]);
+		}
+	}
 	    if (discomode && !(kandoframecnt & 0x0F)) {
 		    maketmp2();
 		pal_col(0x1F,tmp2);
@@ -92,13 +117,7 @@ void state_game(){
 		    }
 		}		    
 	    }
-	    else if (!discomode) {
-		pal_col(0x1F,color2);
-		pal_col(0x1D,color3);
-		pal_col(0x1E,color1);
 
-
-	    }
 
 
 

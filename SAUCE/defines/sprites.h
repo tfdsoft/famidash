@@ -9,6 +9,14 @@ const unsigned char Practice_Diamond[]={
 
 const unsigned char * const Practice_Sprites[] = {Practice_Diamond};
 
+const unsigned char Trail_Circ[]={
+
+	  0,  -4,0xF9,3,
+	0x80
+};
+
+const unsigned char * const Trail_Circle[] = {Trail_Circ};
+
 const unsigned char Mini_Cube_0[]={
 
 	-4,  -5,0x35,3,
