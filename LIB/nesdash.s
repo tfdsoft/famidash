@@ -6,7 +6,7 @@
 .import _song, _level, _gravity, _speed
 .import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _wave_movement
 .importzp _gamemode
-.importzp _tmp1, _tmp2, _tmp3, _tmp4  ; C-safe temp storage
+.importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8  ; C-safe temp storage
 .import _DATA_PTR
 .import pusha, pushax, _lastgcolortype, _lastbgcolortype
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
@@ -2001,6 +2001,64 @@ drawplayer_common := _drawplayerone::common
 	LDA #$07       ; return COL_ALL
 	RTS
 
+.endproc
+
+.export _playPCM
+.proc _playPCM
+PCM_ptr = _tmp6
+    ;enable DMC but disable DPCM
+    lda #%00000000
+    sta $4010
+    lda #%00001011
+    sta $4015
+    lda #0
+    sta $4013
+    lda #%00011011
+    sta $4015
+    ; mute sqs+noi
+    lda #$30
+    sta $400c
+    lda #%00110000
+    sta $4000
+    sta $4004
+    ;init pcm
+    lda #<GeometryDashPCM
+    sta PCM_ptr
+    ldx #<.bank(GeometryDashPCM)
+    ldy #0
+
+    ;play pcm
+@RestartPtr:
+    lda #>$a000
+    sta PCM_ptr+1
+@LoadBank:
+	txa
+    jsr mmc3_tmp_prg_bank_1
+    inx
+@LoadSample:
+    jsr BurnCycles
+    lda (PCM_ptr),y
+    beq @DoneWithPCM
+    sta $4011
+    iny
+    bne @LoadSample
+    inc PCM_ptr+1
+    lda PCM_ptr+1
+    cmp #>($a000+$2000)
+    bcc @LoadSample
+    jmp @RestartPtr
+@DoneWithPCM:
+    jsr _mmc3_pop_prg_bank_1
+    lda #%00011111
+    sta $4015
+    rts
+
+BurnCycles:
+    php
+    plp
+    php
+    plp
+    rts
 .endproc
 
 .popseg
