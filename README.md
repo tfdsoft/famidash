@@ -1,22 +1,22 @@
 # Famidash
 A work-in-progress demake of Geometry Dash for the NES using the MMC3 mapper.
 
-## development builds
-You can find nightly dev builds in the Actions tab. Alternatively you can download them here: https://nightly.link/famidash/famidash/workflows/main/main/famidash.nes.zip
+## Development builds
+You can find dev builds in the Actions tab. Alternatively you can download them here: https://nightly.link/famidash/famidash/workflows/main/main/famidash.nes.zip
 
-## contributing
+## Contributing
 ``TODO proper guide``
 
 Fork it, change it, push it, open a PR, get it merged (or not).
 
 *(zephyrside recommends working on the game using vscode on linux)*
 
-## socials
+## Socials
 - https://wetdry.world/@famidash
 - https://twitter.com/TeamFamidash
 - https://discord.gg/PCbwQaZs8K
 
-## credits (core team only)
+## Credits (core team only)
 |contributor|role (in no particular order)|
 |---|---|
 |[kandowontu](https://github.com/kandowontu)|project torch carrier, lead developer, maintainer|
@@ -28,7 +28,7 @@ Fork it, change it, push it, open a PR, get it merged (or not).
 |[jaezu](https://github.com/jaezudev)|maintainer|
 |[Zephyrside](https://github.com/zephyrside)|original lead developer, project creator, coding, music, graphics|
 
-## additional staff
+## Additional staff
 |contributor|role (in no particular order)|
 |---|---|
 |Aquamarine|music|
