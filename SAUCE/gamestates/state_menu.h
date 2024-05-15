@@ -676,7 +676,11 @@ void funsettings() {
 			switch (settingvalue) {
 				case 0x00: invisible ^= 1; break;
 				case 0x01: options ^= platformer; break;
-				case 0x02: discomode ^= 1; break;
+				case 0x02: {
+
+					discomode ^= 1; break;
+
+				}
 			};
 		}
 			
