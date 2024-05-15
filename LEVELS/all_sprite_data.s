@@ -2171,10 +2171,18 @@ sprite_data_theoryofeverything:
   .byte $ff
 .segment "SPR_BANK_01"
 sprite_data_test:
+  .byte $b0,$00,$70,$01,$45
   .byte $30,$01,$90,$01,$28
+  .byte $70,$01,$80,$01,$46
   .byte $80,$01,$40,$01,$27
   .byte $a0,$01,$a0,$01,$2a
   .byte $c0,$01,$40,$01,$27
+  .byte $d0,$01,$50,$01,$f9
+  .byte $d0,$01,$60,$01,$f9
+  .byte $d0,$01,$70,$01,$f9
+  .byte $d0,$01,$80,$01,$f9
+  .byte $d0,$01,$90,$01,$f9
+  .byte $d0,$01,$a0,$01,$f9
   .byte $00,$02,$50,$01,$80
   .byte $00,$02,$70,$01,$3a
   .byte $30,$02,$40,$01,$44

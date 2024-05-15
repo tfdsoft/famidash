@@ -25,7 +25,7 @@ void x_movement(){
 	if(currplayer_x > 0xf000) { // too far, don't wrap around
         if(old_x >= 0xf000){
             currplayer_x = 0xf000; // max right
-        }else{
+        } else{
             currplayer_x = 0x0000; // max left
         }
 		currplayer_vel_x = 0;
@@ -55,9 +55,9 @@ void x_movement(){
 
 	if (currplayer_y < 0x0600){
 		cube_data[currplayer] |= 0x01;	//DIE if player goes too high
-	};
+	}
 	
-	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 0x02;
+
 	else if (!(pad[controllingplayer] & PAD_A)) cube_data[currplayer] &= 1;
 }
 

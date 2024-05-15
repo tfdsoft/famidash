@@ -9,34 +9,39 @@ void ball_movement(void){
 	// currplayer_gravity
 	// currplayer_vel_y is signed
 
-	if(!mini){
-		if(!currplayer_gravity){
-			if(currplayer_vel_y > BALL_MAX_FALLSPEED){
-				currplayer_vel_y += -BALL_GRAVITY;
-			} else currplayer_vel_y += BALL_GRAVITY;
-		}
-		else{
-			if(currplayer_vel_y < -BALL_MAX_FALLSPEED){
-				currplayer_vel_y -= -BALL_GRAVITY;
-			} else currplayer_vel_y -= BALL_GRAVITY;
-		}
-	}
-	else {
-		if(!currplayer_gravity){
-			if(currplayer_vel_y > MINI_BALL_MAX_FALLSPEED){
-				currplayer_vel_y += -MINI_BALL_GRAVITY;
-			} else currplayer_vel_y += MINI_BALL_GRAVITY;
-		}
-		else{
-			if(currplayer_vel_y < -MINI_BALL_MAX_FALLSPEED){
-				currplayer_vel_y -= -MINI_BALL_GRAVITY;
-			} else currplayer_vel_y -= MINI_BALL_GRAVITY;
-		}
-	}	
-	
-	
-	currplayer_y += currplayer_vel_y;
+	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) cube_data[currplayer] |= 0x02;
 
+	if (!dashing[currplayer]) {
+		if(!mini){
+			if(!currplayer_gravity){
+				if(currplayer_vel_y > BALL_MAX_FALLSPEED){
+					currplayer_vel_y += -BALL_GRAVITY;
+				} else currplayer_vel_y += BALL_GRAVITY;
+			}
+			else{
+				if(currplayer_vel_y < -BALL_MAX_FALLSPEED){
+					currplayer_vel_y -= -BALL_GRAVITY;
+				} else currplayer_vel_y -= BALL_GRAVITY;
+			}
+		}
+		else {
+			if(!currplayer_gravity){
+				if(currplayer_vel_y > MINI_BALL_MAX_FALLSPEED){
+					currplayer_vel_y += -MINI_BALL_GRAVITY;
+				} else currplayer_vel_y += MINI_BALL_GRAVITY;
+			}
+			else{
+				if(currplayer_vel_y < -MINI_BALL_MAX_FALLSPEED){
+					currplayer_vel_y -= -MINI_BALL_GRAVITY;
+				} else currplayer_vel_y -= MINI_BALL_GRAVITY;
+			}
+		}	
+		
+		
+		currplayer_y += currplayer_vel_y;
+	}
+	else currplayer_vel_y = 1;
+	
 	Generic.x = high_byte(currplayer_x);
 
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame

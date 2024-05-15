@@ -9,31 +9,36 @@ void cube_movement(void){
 	// currplayer_vel_y is signed
 	//if(currplayer_vel_y < 0x400){
 
-	if(!mini){
-		if(!currplayer_gravity){
-			if(currplayer_vel_y > CUBE_MAX_FALLSPEED){
-				currplayer_vel_y += -CUBE_GRAVITY;
-			} else currplayer_vel_y += CUBE_GRAVITY;
+	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) cube_data[currplayer] |= 0x02;
+
+	if (!dashing[currplayer]) {
+		if(!mini){
+			if(!currplayer_gravity){
+				if(currplayer_vel_y > CUBE_MAX_FALLSPEED){
+					currplayer_vel_y += -CUBE_GRAVITY;
+				} else currplayer_vel_y += CUBE_GRAVITY;
+			}
+			else{
+				if(currplayer_vel_y < -CUBE_MAX_FALLSPEED){
+					currplayer_vel_y -= -CUBE_GRAVITY;
+				} else currplayer_vel_y -= CUBE_GRAVITY;
+			}
 		}
-		else{
-			if(currplayer_vel_y < -CUBE_MAX_FALLSPEED){
-				currplayer_vel_y -= -CUBE_GRAVITY;
-			} else currplayer_vel_y -= CUBE_GRAVITY;
-		}
+		else {
+			if(!currplayer_gravity){
+				if(currplayer_vel_y > MINI_CUBE_MAX_FALLSPEED){
+					currplayer_vel_y += -MINI_CUBE_GRAVITY;
+				} else currplayer_vel_y += MINI_CUBE_GRAVITY;
+			}
+			else{
+				if(currplayer_vel_y < -MINI_CUBE_MAX_FALLSPEED){
+					currplayer_vel_y -= -MINI_CUBE_GRAVITY;
+				} else currplayer_vel_y -= MINI_CUBE_GRAVITY;
+			}
+		}		
+		currplayer_y += currplayer_vel_y;
 	}
-	else {
-		if(!currplayer_gravity){
-			if(currplayer_vel_y > MINI_CUBE_MAX_FALLSPEED){
-				currplayer_vel_y += -MINI_CUBE_GRAVITY;
-			} else currplayer_vel_y += MINI_CUBE_GRAVITY;
-		}
-		else{
-			if(currplayer_vel_y < -MINI_CUBE_MAX_FALLSPEED){
-				currplayer_vel_y -= -MINI_CUBE_GRAVITY;
-			} else currplayer_vel_y -= MINI_CUBE_GRAVITY;
-		}
-	}		
-	currplayer_y += currplayer_vel_y;
+	else currplayer_vel_y = 1;
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 	
@@ -54,13 +59,13 @@ void cube_movement(void){
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
-	if (currplayer_vel_y != 0){
-		if(pad_new[controllingplayer] & PAD_A) {
-			cube_data[currplayer] |= 2;
-		}
-	}
+//	if (currplayer_vel_y != 0){
+//		if(pad_new[controllingplayer] & PAD_A) {
+//			cube_data[currplayer] |= 2;
+//		}
+//	}
 
-	if (gamemode == 0 && currplayer_vel_y == 0){
+	if (gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0){
 		//if(bg_coll_D2()) {
 			cube_data[currplayer] &= 1;				
 			if(pad[controllingplayer] & PAD_A) {

@@ -238,6 +238,8 @@ unsigned short scroll_y;
 unsigned char song;
 unsigned char auto_fs_updates;
 
+unsigned char dashing[2];
+
 unsigned char has_practice_point = 0;
 unsigned short practice_player_x[2];
 unsigned short practice_player_y[2];
@@ -278,7 +280,7 @@ unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
 unsigned char iconbank;
 unsigned char kandowavewalk;
-unsigned char trails = 1;
+unsigned char trails;
 
 unsigned char player_old_posy[8];
 unsigned char asdftemp;
