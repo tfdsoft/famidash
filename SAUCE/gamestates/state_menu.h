@@ -724,15 +724,21 @@ void settings() {
 		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, 13));
 		else one_vram_buffer('f', NTADR_A(26, 13));
 
+		if (decorations) one_vram_buffer('g', NTADR_A(26, 15));
+		else one_vram_buffer('f', NTADR_A(26, 15));
+
+		if (trails) one_vram_buffer('g', NTADR_A(26, 17));
+		else one_vram_buffer('f', NTADR_A(26, 17));
+
 		tmp1 = settingvalue;
 
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 4) { settingvalue = 0; sfx_play(sfx_select, 0); }
+			if (settingvalue == 6) { settingvalue = 0; sfx_play(sfx_select, 0); }
 			else { settingvalue++; sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 4; sfx_play(sfx_select, 0); }
+			if (settingvalue == 0) { settingvalue = 6; sfx_play(sfx_select, 0); }
 			else { settingvalue--; sfx_play(sfx_select, 0);  }
 		}
 
@@ -754,8 +760,10 @@ void settings() {
 				case 3: // jumpsound
 					options ^= jumpsound; break;
 				case 4:
-					
+					decorations ^= 1; break;
 				case 5:
+					trails ^= 1; break;					
+				case 6:
 					if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
 					setdefaultoptions();
 					//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));

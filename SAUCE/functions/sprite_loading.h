@@ -155,7 +155,7 @@ __fastcall__ char sprite_height_lookup(){
 	case 0x41:
 	case 0x42:
 	case 0x43:
-		if (twoplayer) activesprites_type[index] = 0xFF; 
+		if (twoplayer || !decorations) activesprites_type[index] = 0xFF; 
 		return 0;
             
     }

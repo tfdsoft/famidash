@@ -175,6 +175,10 @@ unsigned char color3;
 
 unsigned char discomode;
 
+unsigned char trails;
+
+unsigned char decorations;
+
 //unsigned char practice_famistudio_state[0xbf];
 unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
 unsigned char collisionMap1[192];
@@ -280,7 +284,6 @@ unsigned char lastgcolortype;
 unsigned char lastbgcolortype;
 unsigned char iconbank;
 unsigned char kandowavewalk;
-unsigned char trails;
 
 unsigned char player_old_posy[8];
 unsigned char asdftemp;
