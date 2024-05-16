@@ -69,11 +69,11 @@ void state_game(){
 		pal_col(0x1E,color1);
 	    }
 	    else {
-		if (discomode & 0x02) discorefreshrate = 0x0F;
-		else if (discomode & 0x04) discorefreshrate = 0x07;
-		else if (discomode & 0x08) discorefreshrate = 0x03;
-		else if (discomode & 0x10) discorefreshrate = 0x01;
-		else if (discomode & 0x01) discorefreshrate = 0x1F;
+		if (discomode & 0x02) discorefreshrate = 0x1F;
+		else if (discomode & 0x04) discorefreshrate = 0x0F;
+		else if (discomode & 0x08) discorefreshrate = 0x07;
+		else if (discomode & 0x10) discorefreshrate = 0x03;
+		else if (discomode & 0x01) discorefreshrate = 0x3F;
 	}
     while (1) {
 
