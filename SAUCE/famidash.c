@@ -123,6 +123,11 @@ void main(){
 				state_lvldone();
 				break;
 			}
+			case 0x04: {
+				mmc3_set_prg_bank_1(GET_BANK(bgmtest));
+				bgmtest();
+				break;
+			}
 			//case 0x04: state_demo(); break;
 		}
     }

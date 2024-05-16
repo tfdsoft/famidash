@@ -857,7 +857,7 @@ void state_menu() {
 	switch (menuselection) {
 		case 0x00: kandowatchesyousleep = 1; playPCM(); levelselection(); return;
 		case 0x01: settingvalue = 0; funsettings(); return;
-		case 0x02: return; //bgmtest(); return;
+		case 0x02: gameState = 4; return;
 		case 0x03: settingvalue = 0; settings(); return;
 		case 0x04: settingvalue = 3; customize_screen(); return;
 			
