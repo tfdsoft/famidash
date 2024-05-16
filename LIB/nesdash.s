@@ -2041,7 +2041,7 @@ Bank:
     lda #>$a000
     sta PCM_ptr+1
 @LoadBank:
-	txa
+    txa
     jsr mmc3_tmp_prg_bank_1
     inx
 @LoadSample:
