@@ -5,7 +5,6 @@ extern volatile unsigned char VRAM_UPDATE;
 #pragma data-name(push, "LVL_BANK_00")
 #pragma rodata-name(push, "LVL_BANK_00")
 
-#include "defines/menunametable2.h"
 
 void state_lvldone() {
 #define current_state tmp2
@@ -220,6 +219,55 @@ void state_lvldone() {
 #undef delay_timer
 #undef top_scroll
 }
+
+
+void bgmtest() {
+	
+  	famistudio_music_stop();
+  	music_update();
+	kandotemp=0;
+	pal_fade_to(4,0);
+	ppu_off();
+	pal_bg((char *)paletteMenu);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(bgmtestscreen);   	
+	#include "../defines/mainmenu_charmap.h"
+	ppu_on_all();
+	pal_fade_to(0,4);
+	while (1) {
+		ppu_wait_nmi();
+		music_update();
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
+
+		one_vram_buffer(' '-1, NTADR_A(14, 10));
+		one_vram_buffer(0xb0+song, NTADR_A(15,10));
+
+		if (settingvalue == 0) {
+			one_vram_buffer('c', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
+		}		
+		else if (settingvalue == 1) {
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer('c', NTADR_A(11, 14));
+		}
+		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
+		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
+		if (pad_new[0] & PAD_RIGHT && settingvalue == 0) { song++; if (song == song_max) {song = 0;} }
+		if (pad_new[0] & PAD_LEFT && settingvalue == 0) { if (song == 0) {song = song_max - 1;} else song--; }
+//		if (pad_new[0] & PAD_RIGHT && settingvalue == 1) sfx ++;
+		if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A) && settingvalue == 0) music_play(song);
+		if (pad_new[0] & PAD_B) {
+			tmp3--;			
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
+			gameState = 1;
+			return;
+		}
+	}
+	
+}
+
 
 #pragma code-name(pop)
 #pragma data-name(pop) 

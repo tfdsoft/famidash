@@ -1212,6 +1212,22 @@ const unsigned char Portal_Gravity_Up_Horizontal_Upwards[]={
 
 // ================================================================
 
+const unsigned char Dash_Orb[]={
+
+	  0,  0,0xD1,0,
+	  8,  0,0xD3,0,
+	0x80
+};
+
+const unsigned char Dash_Gravity_Orb[]={
+
+	  0,  0,0xD1,1,
+	  8,  0,0xD3,1,
+	0x80
+};
+
+
+
 const unsigned char Yellow_Jump_Orb[]={
 
 	  0,  0,0x99,1,
@@ -1821,6 +1837,8 @@ const unsigned char * const Metasprites[]={
 	Short_Light_U,
 	Chain_U,
 	nometa,
+	Dash_Orb,
+	Dash_Gravity_Orb,
 	};
 
 
@@ -1899,6 +1917,8 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -1971,6 +1991,8 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 
+	0,
+	0,
 	0,
 	0,
 	0,

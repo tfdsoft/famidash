@@ -50,6 +50,8 @@ void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
 void __fastcall__ one_vram_buffer_horz_repeat(unsigned char data, unsigned char len, int ppu_address);
 void __fastcall__ one_vram_buffer_vert_repeat(unsigned char data, unsigned char len, int ppu_address);
 
+void __fastcall__ playPCM();
+
 extern unsigned char parallax_scroll_column;
 extern unsigned char parallax_scroll_column_start;
 

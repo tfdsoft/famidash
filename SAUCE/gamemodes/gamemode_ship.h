@@ -8,32 +8,34 @@ void ship_movement(void){
 // currplayer_gravity
 	// currplayer_vel_y is signed
 	//if(currplayer_vel_y < 0x400){
-	if(!mini) {
-		if(!currplayer_gravity) {
-			currplayer_vel_y += SHIP_GRAVITY;
+	if (!dashing[currplayer]) {
+		if(!mini) {
+			if(!currplayer_gravity) {
+				currplayer_vel_y += SHIP_GRAVITY;
+			}
+			else {
+				currplayer_vel_y -= SHIP_GRAVITY;
+			}
+			if(currplayer_vel_y > SHIP_MAX_FALLSPEED) currplayer_vel_y += -SHIP_GRAVITY;
+			if(currplayer_vel_y < -SHIP_MAX_FALLSPEED) currplayer_vel_y -= -SHIP_GRAVITY;
+
 		}
 		else {
-			currplayer_vel_y -= SHIP_GRAVITY;
+			if(!currplayer_gravity) {
+				currplayer_vel_y += MINI_SHIP_GRAVITY;
+			}
+			else {
+				currplayer_vel_y -= MINI_SHIP_GRAVITY;
+			}
+			if(currplayer_vel_y > MINI_SHIP_MAX_FALLSPEED) currplayer_vel_y += -MINI_SHIP_GRAVITY;
+			if(currplayer_vel_y < -MINI_SHIP_MAX_FALLSPEED) currplayer_vel_y -= -MINI_SHIP_GRAVITY;
 		}
-		if(currplayer_vel_y > SHIP_MAX_FALLSPEED) currplayer_vel_y += -SHIP_GRAVITY;
-		if(currplayer_vel_y < -SHIP_MAX_FALLSPEED) currplayer_vel_y -= -SHIP_GRAVITY;
+			
+			
 
-	}
-	else {
-		if(!currplayer_gravity) {
-			currplayer_vel_y += MINI_SHIP_GRAVITY;
-		}
-		else {
-			currplayer_vel_y -= MINI_SHIP_GRAVITY;
-		}
-		if(currplayer_vel_y > MINI_SHIP_MAX_FALLSPEED) currplayer_vel_y += -MINI_SHIP_GRAVITY;
-		if(currplayer_vel_y < -MINI_SHIP_MAX_FALLSPEED) currplayer_vel_y -= -MINI_SHIP_GRAVITY;
-	}
-		
-		
-
-	currplayer_y += currplayer_vel_y;
-	
+		currplayer_y += currplayer_vel_y;
+	}	
+	else currplayer_vel_y = 1;
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 	if (mini) {

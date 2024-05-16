@@ -8,31 +8,34 @@ void ufo_movement(void){
 // currplayer_gravity
 	// currplayer_vel_y is signed
 	//if(currplayer_vel_y < 0x400){
-	if(!mini){
-		if(!currplayer_gravity){
-			if(currplayer_vel_y > UFO_MAX_FALLSPEED){
-				currplayer_vel_y += -UFO_GRAVITY;
-			} else currplayer_vel_y += UFO_GRAVITY;
+	if (!dashing[currplayer]) {
+		if(!mini){
+			if(!currplayer_gravity){
+				if(currplayer_vel_y > UFO_MAX_FALLSPEED){
+					currplayer_vel_y += -UFO_GRAVITY;
+				} else currplayer_vel_y += UFO_GRAVITY;
+			}
+			else{
+				if(currplayer_vel_y < -UFO_MAX_FALLSPEED){
+					currplayer_vel_y -= -UFO_GRAVITY;
+				} else currplayer_vel_y -= UFO_GRAVITY;
+			}
 		}
-		else{
-			if(currplayer_vel_y < -UFO_MAX_FALLSPEED){
-				currplayer_vel_y -= -UFO_GRAVITY;
-			} else currplayer_vel_y -= UFO_GRAVITY;
-		}
+		else {
+			if(!currplayer_gravity){
+				if(currplayer_vel_y > MINI_UFO_MAX_FALLSPEED){
+					currplayer_vel_y += -MINI_UFO_GRAVITY;
+				} else currplayer_vel_y += MINI_UFO_GRAVITY;
+			}
+			else{
+				if(currplayer_vel_y < -MINI_UFO_MAX_FALLSPEED){
+					currplayer_vel_y -= -MINI_UFO_GRAVITY;
+				} else currplayer_vel_y -= MINI_UFO_GRAVITY;
+			}
+		}		
+		currplayer_y += currplayer_vel_y;
 	}
-	else {
-		if(!currplayer_gravity){
-			if(currplayer_vel_y > MINI_UFO_MAX_FALLSPEED){
-				currplayer_vel_y += -MINI_UFO_GRAVITY;
-			} else currplayer_vel_y += MINI_UFO_GRAVITY;
-		}
-		else{
-			if(currplayer_vel_y < -MINI_UFO_MAX_FALLSPEED){
-				currplayer_vel_y -= -MINI_UFO_GRAVITY;
-			} else currplayer_vel_y -= MINI_UFO_GRAVITY;
-		}
-	}		
-	currplayer_y += currplayer_vel_y;
+	else currplayer_vel_y = 1;
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 	if (mini) {

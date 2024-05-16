@@ -8,7 +8,7 @@
 
 
 // set to 1 if compiling beta builds; else set to 0
-#define FLAG_BETA_BUILD 0
+#define FLAG_BETA_BUILD 1
 
 // major version number !!DOES NOT WORK IF FLAG_BETA_BUILD IS SET!!
 #define FLAG_MAJ_VER '0'

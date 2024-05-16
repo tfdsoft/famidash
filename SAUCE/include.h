@@ -19,6 +19,7 @@
 #include "defines/menunametable.h"
 #pragma rodata-name (pop)
 #pragma rodata-name (push, "LVL_BANK_00")
+#include "defines/menunametable2.h"
 #include "../LEVELS/grounddata.h"
 #pragma rodata-name (pop)
 #include "../LEVELS/groundlist.h"
@@ -50,15 +51,15 @@
 #include "../METATILES/metatiles.h"  // metatile defines
 #pragma rodata-name (push, "XCD_BANK_00")
 #include "defines/sprites.h"    // metasprite defines
+#include "functions/sprite_loading.h"		//I cant believe that worked -kando 5-14
 #pragma rodata-name (pop)
 
 
+#include "functions/draw_sprites.h"  // sproit drawlign
 #include "functions/level_loading.h"  // goofy ass screen drawing routines
 #include "functions/scroll.h"
-#include "functions/draw_sprites.h"  // sproit drawlign
 #include "functions/collision.h"  // collision
 #include "functions/reset_level.h"  // reset the stage
-#include "functions/sprite_loading.h"
 
 
 

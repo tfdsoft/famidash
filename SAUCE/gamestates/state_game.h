@@ -68,7 +68,16 @@ void state_game(){
 		pal_col(0x1D,color3);
 		pal_col(0x1E,color1);
 	    }
+	    else {
+		if (discomode & 0x02) discorefreshrate = 0x1F;
+		else if (discomode & 0x04) discorefreshrate = 0x0F;
+		else if (discomode & 0x08) discorefreshrate = 0x07;
+		else if (discomode & 0x10) discorefreshrate = 0x03;
+		else if (discomode & 0x01) discorefreshrate = 0x3F;
+	}
     while (1) {
+
+
 	if ((options & platformer) && !has_practice_point) {
 		songtimer++;
 		if (songtimer > songtime[song] ) { songtimer = 0; music_play(song); }
@@ -87,7 +96,7 @@ void state_game(){
 			player_old_posy[0] = high_byte(player_y[0]);
 		}
 	}
-	    if (discomode && !(kandoframecnt & 0x0F)) {
+	    if (discomode && !(kandoframecnt & discorefreshrate)) {
 		    maketmp2();
 		pal_col(0x1F,tmp2);
 		    maketmp2();
@@ -162,6 +171,8 @@ void state_game(){
         pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
+		if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
+
 		if (options & platformer) twoplayer = 0;
 
 		if ((options & oneptwoplayer) && twoplayer) {
@@ -180,6 +191,8 @@ void state_game(){
 				sfx_play(sfx_click, 0);
 			}
 		}
+
+
 
 		if (pad[controllingplayer] & PAD_SELECT && pad_new[controllingplayer] & PAD_UP) currplayer_gravity ^= 0x01;
 
@@ -320,7 +333,7 @@ void state_game(){
 
 		if (dual) { 
 			currplayer = 1;					//take focus
-
+			if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
 			if (twoplayer) controllingplayer = 1;		//take controls
 			if (dual && (options & platformer) && !twoplayer) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
 			else if (dual && !(options & platformer)) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
