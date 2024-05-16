@@ -212,6 +212,7 @@ void __fastcall__ refreshmenu(void) {
 };
 
 void state_menu();
+//void bgmtest();
 void levelselection() {
   
 	pal_fade_to_withmusic(4,0);
@@ -294,51 +295,6 @@ void levelselection() {
 
 
 
-void bgmtest() {
-	
-  	famistudio_music_stop();
-  	music_update();
-	kandotemp=0;
-	pal_fade_to(4,0);
-	ppu_off();
-	pal_bg((char *)paletteMenu);
-	vram_adr(NAMETABLE_A);
-	vram_unrle(bgmtestscreen);   	
-	#include "../defines/mainmenu_charmap.h"
-	ppu_on_all();
-	pal_fade_to(0,4);
-	while (1) {
-		ppu_wait_nmi();
-		music_update();
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
-		one_vram_buffer(' '-1, NTADR_A(14, 10));
-		one_vram_buffer(0xb0+song, NTADR_A(15,10));
-
-		if (settingvalue == 0) {
-			one_vram_buffer('c', NTADR_A(11, 7));
-			one_vram_buffer(' ', NTADR_A(11, 14));
-		}		
-		else if (settingvalue == 1) {
-			one_vram_buffer(' ', NTADR_A(11, 7));
-			one_vram_buffer('c', NTADR_A(11, 14));
-		}
-		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
-		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
-		if (pad_new[0] & PAD_RIGHT && settingvalue == 0) { song++; if (song == song_max) {song = 0;} }
-		if (pad_new[0] & PAD_LEFT && settingvalue == 0) { if (song == 0) {song = song_max - 1;} else song--; }
-//		if (pad_new[0] & PAD_RIGHT && settingvalue == 1) sfx ++;
-		if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A) && settingvalue == 0) music_play(song);
-		if (pad_new[0] & PAD_B) {
-			tmp3--;			
-			one_vram_buffer(' ', NTADR_A(11, 7));
-			one_vram_buffer(' ', NTADR_A(11, 14));
-			return;
-		}
-	}
-	
-}
 
 
 
@@ -672,13 +628,27 @@ void funsettings() {
 			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
 		}
 
+		if (discomode & 0x02) { one_vram_buffer('2' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (discomode & 0x04) { one_vram_buffer('3' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (discomode & 0x08) { one_vram_buffer('4' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (discomode & 0x10) { one_vram_buffer('5' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (discomode & 0x01) { one_vram_buffer('1' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (!discomode) { one_vram_buffer(' '-0x01, NTADR_A(25, 12)); one_vram_buffer(' '-0x01, NTADR_A(26, 12)); }
+
 		if (pad_new[0] & (PAD_START | PAD_A)) {
 			switch (settingvalue) {
 				case 0x00: invisible ^= 1; break;
 				case 0x01: options ^= platformer; break;
 				case 0x02: {
 
-					discomode ^= 1; break;
+					if (!discomode) { discomode = 1; one_vram_buffer('1' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X', NTADR_A(26, 12)); }
+					else if (discomode & 0x10) { discomode = 0; one_vram_buffer(' ', NTADR_A(25, 12)); one_vram_buffer(' ', NTADR_A(26, 12)); }
+					else if (discomode == 1) { discomode = 1 + 0x02; one_vram_buffer('2' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X', NTADR_A(26, 12)); }
+					else {
+						discomode &= 0xFE; discomode = discomode << 1; discomode |= 1; 
+
+					}
+				
 
 				}
 			};
@@ -887,7 +857,7 @@ void state_menu() {
 	switch (menuselection) {
 		case 0x00: kandowatchesyousleep = 1; playPCM(); levelselection(); return;
 		case 0x01: settingvalue = 0; funsettings(); return;
-		case 0x02: bgmtest(); return;
+		case 0x02: return; //bgmtest(); return;
 		case 0x03: settingvalue = 0; settings(); return;
 		case 0x04: settingvalue = 3; customize_screen(); return;
 			
@@ -896,7 +866,53 @@ void state_menu() {
 }
 
 
+/*
+void bgmtest() {
+	
+  	famistudio_music_stop();
+  	music_update();
+	kandotemp=0;
+	pal_fade_to(4,0);
+	ppu_off();
+	pal_bg((char *)paletteMenu);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(bgmtestscreen);   	
+	#include "../defines/mainmenu_charmap.h"
+	ppu_on_all();
+	pal_fade_to(0,4);
+	while (1) {
+		ppu_wait_nmi();
+		music_update();
+		pad[0] = pad_poll(0); // read the first controller
+		pad_new[0] = get_pad_new(0);
 
+		one_vram_buffer(' '-1, NTADR_A(14, 10));
+		one_vram_buffer(0xb0+song, NTADR_A(15,10));
+
+		if (settingvalue == 0) {
+			one_vram_buffer('c', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
+		}		
+		else if (settingvalue == 1) {
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer('c', NTADR_A(11, 14));
+		}
+		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
+		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
+		if (pad_new[0] & PAD_RIGHT && settingvalue == 0) { song++; if (song == song_max) {song = 0;} }
+		if (pad_new[0] & PAD_LEFT && settingvalue == 0) { if (song == 0) {song = song_max - 1;} else song--; }
+//		if (pad_new[0] & PAD_RIGHT && settingvalue == 1) sfx ++;
+		if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A) && settingvalue == 0) music_play(song);
+		if (pad_new[0] & PAD_B) {
+			tmp3--;			
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
+			return;
+		}
+	}
+	
+}
+*/
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)

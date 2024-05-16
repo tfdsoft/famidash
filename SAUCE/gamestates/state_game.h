@@ -68,6 +68,13 @@ void state_game(){
 		pal_col(0x1D,color3);
 		pal_col(0x1E,color1);
 	    }
+	    else {
+		if (discomode & 0x02) discorefreshrate = 0x0F;
+		else if (discomode & 0x04) discorefreshrate = 0x07;
+		else if (discomode & 0x08) discorefreshrate = 0x03;
+		else if (discomode & 0x10) discorefreshrate = 0x01;
+		else if (discomode & 0x01) discorefreshrate = 0x1F;
+	}
     while (1) {
 
 
@@ -89,7 +96,7 @@ void state_game(){
 			player_old_posy[0] = high_byte(player_y[0]);
 		}
 	}
-	    if (discomode && !(kandoframecnt & 0x0F)) {
+	    if (discomode && !(kandoframecnt & discorefreshrate)) {
 		    maketmp2();
 		pal_col(0x1F,tmp2);
 		    maketmp2();
