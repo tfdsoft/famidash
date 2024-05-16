@@ -7,7 +7,9 @@ You can find nightly dev builds in the Actions tab. Alternatively you can downlo
 ## contributing
 ``TODO proper guide``
 
-Fork it, change it, push it, open a PR, get it merged (or not).
+Here are some instructions for specifically contributing to [levels](LEVELS/EXPORT%20LEVELS%20INSTRUCTIONS.txt) and [music](MUSIC/README.txt).
+
+The general principle is: fork it, change it, push it, open a PR, get it merged (or not).
 
 *(zephyrside recommends working on the game using vscode on linux)*
 

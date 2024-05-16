@@ -1,6 +1,10 @@
+To add / edit music, edit MODULES/music_master.dnm in Dn-FamiTracker 0.5.0.2; it's also possible to add music via FamiStudio 4.2.0 in the MODULES/music_master.fms file.
+
 IT IS NOT RECOMMENDED FOR 2 PEOPLE TO WORK SIMULTANEOUSLY ON THE .dnm, SINCE MERGING THAT IS ONE HELL OF A HASSLE.
 
 (to do that you need to export text from both versions of the module, and manually adjust shit until it can be imported back)
+
+You can, however, add new songs easily in FamiStudio to merge 2 diverging branches.
 
 OPEN THE MODULE IN DN-FT 0.5.0.1 OR NEWER. 0.5.0.0 BREAKS SHIT
 
