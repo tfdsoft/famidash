@@ -855,7 +855,7 @@ void state_menu() {
 
 
 	}		
-	tmp7 = rand8() & 63;
+	tmp7 = rand8() & 127;
 	switch (menuselection) {
 		case 0x00: kandowatchesyousleep = 1; if(!tmp7) whichpcm = 1; else whichpcm = 0; playPCM(); levelselection(); return;
 		case 0x01: settingvalue = 0; funsettings(); return;
