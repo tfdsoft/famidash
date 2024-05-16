@@ -10,7 +10,7 @@
 .import _DATA_PTR
 .import pusha, pushax, _lastgcolortype, _lastbgcolortype
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
-.import _increase_parallax_scroll_column, _icon
+.import _increase_parallax_scroll_column, _icon, _whichpcm
 .import FIRST_MUSIC_BANK
 .import _auto_fs_updates
 
@@ -2022,10 +2022,19 @@ PCM_ptr = _tmp6
     sta $4000
     sta $4004
     ;init pcm
-    lda #<GeometryDashPCM
-    sta PCM_ptr
-    ldx #<.bank(GeometryDashPCM)
-    ldy #0
+;    lda #<GeometryDashPCM
+ ;   sta PCM_ptr
+ ;   ldx #<.bank(GeometryDashPCM)
+ 
+Bank:
+.byte <.bank(GeometryDashPCMA)
+.byte <.bank(GeometryDashPCMB)
+
+	ldy _whichpcm
+	lda Bank,y
+	tax
+
+	ldy #0
 
     ;play pcm
 @RestartPtr:
@@ -2036,7 +2045,24 @@ PCM_ptr = _tmp6
     jsr mmc3_tmp_prg_bank_1
     inx
 @LoadSample:
+    lda _whichpcm
+    beq	@noburn
     jsr BurnCycles
+    jsr BurnCycles
+    jsr BurnCycles
+    jsr BurnCycles
+    jsr BurnCycles
+    jsr BurnCycles
+    jsr BurnCycles
+@noburn:
+    php
+    plp
+    lda #00
+    lda #00
+    lda #00
+    lda #00
+    lda #00
+	
     lda (PCM_ptr),y
     beq @DoneWithPCM
     sta $4011

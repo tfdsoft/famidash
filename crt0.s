@@ -279,7 +279,7 @@ GeometryDashPCMA:
 
 .segment "PCM_BANK_B"
 GeometryDashPCMB:
-	.incbin "MUSIC/PCM/fire2.pcm"
+	.incbin "MUSIC/PCM/fire.pcm"
 	.byte $00
 
 .segment "MUS_BANK_00"
@@ -309,7 +309,7 @@ _GAME_CHR:
     .incbin "GRAPHICS/famidash2.chr" ; 8kb		//theory of everything (12)
     .incbin "GRAPHICS/famidash-parallax2.chr" ; 4kb	//theory of everything (20)
     
-    .incbin "GRAPHICS/bankicon00.chr" ; 1kb (24)
+    .incbin "GRAPHICS/3D.chr" ; 1kb (24)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (26)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb

@@ -819,6 +819,7 @@ void state_menu() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 	while (!(pad_new[0] & PAD_START)){
+		rand8();
 		ppu_wait_nmi();
 		music_update();
 		pad[0] = pad_poll(0); // read the first controller
@@ -855,7 +856,7 @@ void state_menu() {
 
 	}		
 	switch (menuselection) {
-		case 0x00: kandowatchesyousleep = 1; playPCM(); levelselection(); return;
+		case 0x00: kandowatchesyousleep = 1; if(!(rand8() & 0x31)) whichpcm = 1; playPCM(); levelselection(); return;
 		case 0x01: settingvalue = 0; funsettings(); return;
 		case 0x02: gameState = 4; return;
 		case 0x03: settingvalue = 0; settings(); return;
