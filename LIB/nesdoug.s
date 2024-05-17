@@ -419,201 +419,201 @@ _set_mt_pointer:
 	
 ;void __fastcall__ buffer_4_mt(int ppu_address, char index);
 _buffer_4_mt:
-	;a is the index into the data, get 4 metatiles
+; 	;a is the index into the data, get 4 metatiles
 
-	and #$ee ;sanitize, x and y should be even
-	tay
-	lda (DATA_PTR), y
-	sta TEMP+2
-	iny
-	lda (DATA_PTR), y
-	sta TEMP+3
-		tya
-		clc
-		adc #15
-			cmp #$f0 ;too far, data set only 240 bytes
-			bcs @skip
-		tay
-	lda (DATA_PTR), y
-	sta TEMP+4
-	iny
-	lda (DATA_PTR), y
-	sta TEMP+5
-@skip:	
-;metatiles are in TEMP+2 - TEMP+5 now
+; 	and #$ee ;sanitize, x and y should be even
+; 	tay
+; 	lda (DATA_PTR), y
+; 	sta TEMP+2
+; 	iny
+; 	lda (DATA_PTR), y
+; 	sta TEMP+3
+; 		tya
+; 		clc
+; 		adc #15
+; 			cmp #$f0 ;too far, data set only 240 bytes
+; 			bcs @skip
+; 		tay
+; 	lda (DATA_PTR), y
+; 	sta TEMP+4
+; 	iny
+; 	lda (DATA_PTR), y
+; 	sta TEMP+5
+; @skip:	
+; ;metatiles are in TEMP+2 - TEMP+5 now
 
-	jsr popax ;ppu address
-	and #$9c ;sanitize, should be top left
-	sta TEMP+7
-	stx TEMP+8 ;save for later, ppu_address
+; 	jsr popax ;ppu address
+; 	and #$9c ;sanitize, should be top left
+; 	sta TEMP+7
+; 	stx TEMP+8 ;save for later, ppu_address
 	
-	sta TEMP
-	txa
-	ora #$40	;NT_UPD_HORZ
-	sta TEMP+1
+; 	sta TEMP
+; 	txa
+; 	ora #$40	;NT_UPD_HORZ
+; 	sta TEMP+1
 	
-;buffer the ppu_address
+; ;buffer the ppu_address
 
-	lda #0
-	sta TEMP+6 ;loop count, index to the metatiles
-	ldx VRAM_INDEX
-@loop:	
-	lda TEMP ;low byte
-	sta VRAM_BUF+1, x
-	lda TEMP+1 ;high byte
-	sta VRAM_BUF,x
-	jsr @sub1 ;adds $20 to the address for next time
+; 	lda #0
+; 	sta TEMP+6 ;loop count, index to the metatiles
+; 	ldx VRAM_INDEX
+; @loop:	
+; 	lda TEMP ;low byte
+; 	sta VRAM_BUF+1, x
+; 	lda TEMP+1 ;high byte
+; 	sta VRAM_BUF,x
+; 	jsr @sub1 ;adds $20 to the address for next time
 	
-		lda #4 ;tell the system 4 bytes in a row
-		sta VRAM_BUF+2,x
-		sta VRAM_BUF+9,x ;loops twice, so, it does this twice
+; 		lda #4 ;tell the system 4 bytes in a row
+; 		sta VRAM_BUF+2,x
+; 		sta VRAM_BUF+9,x ;loops twice, so, it does this twice
 		
-	jsr @sub2 ;set pointer to the metatile and y
+; 	jsr @sub2 ;set pointer to the metatile and y
 	
-	lda (META_PTR2), y
-	sta VRAM_BUF+3,x ;		buffer the 4 tiles
-	iny
-	lda (META_PTR2), y
-	sta VRAM_BUF+4,x
-	iny
-	lda (META_PTR2), y
-	sta VRAM_BUF+10,x
-	iny
-	lda (META_PTR2), y
-	sta VRAM_BUF+11,x
-	jsr @sub4 ;get attrib bits, shift into place
+; 	lda (META_PTR2), y
+; 	sta VRAM_BUF+3,x ;		buffer the 4 tiles
+; 	iny
+; 	lda (META_PTR2), y
+; 	sta VRAM_BUF+4,x
+; 	iny
+; 	lda (META_PTR2), y
+; 	sta VRAM_BUF+10,x
+; 	iny
+; 	lda (META_PTR2), y
+; 	sta VRAM_BUF+11,x
+; 	jsr @sub4 ;get attrib bits, shift into place
 	
-;same, but for right side	
-	lda TEMP ;low byte ppu address, again
-	sta VRAM_BUF+8,x
-	lda TEMP+1 ;high byte
-	sta VRAM_BUF+7,x
-	jsr @sub1
+; ;same, but for right side	
+; 	lda TEMP ;low byte ppu address, again
+; 	sta VRAM_BUF+8,x
+; 	lda TEMP+1 ;high byte
+; 	sta VRAM_BUF+7,x
+; 	jsr @sub1
 	
-	inc TEMP+6 ;count and index
-	jsr @sub2 ;set pointer to the metatile and y
+; 	inc TEMP+6 ;count and index
+; 	jsr @sub2 ;set pointer to the metatile and y
 	
-	lda (META_PTR2), y
-	sta VRAM_BUF+5,x ;		buffer the 4 tiles
-	iny
-	lda (META_PTR2), y
-	sta VRAM_BUF+6,x
-	iny
-	lda (META_PTR2), y
-	sta VRAM_BUF+12,x
-	iny
-	lda (META_PTR2), y
-	sta VRAM_BUF+13,x
-	jsr @sub4
+; 	lda (META_PTR2), y
+; 	sta VRAM_BUF+5,x ;		buffer the 4 tiles
+; 	iny
+; 	lda (META_PTR2), y
+; 	sta VRAM_BUF+6,x
+; 	iny
+; 	lda (META_PTR2), y
+; 	sta VRAM_BUF+12,x
+; 	iny
+; 	lda (META_PTR2), y
+; 	sta VRAM_BUF+13,x
+; 	jsr @sub4
 	
-	txa ;adjust the vram index to the next set
-	clc
-	adc #14
-	tax
+; 	txa ;adjust the vram index to the next set
+; 	clc
+; 	adc #14
+; 	tax
 	
-	jsr @sub3 ;check if lowest y on screen, skip the la
-	bne @loop_done
+; 	jsr @sub3 ;check if lowest y on screen, skip the la
+; 	bne @loop_done
 
-	inc TEMP+6
-	ldy TEMP+6
-	cpy #4
-	bcc @loop
+; 	inc TEMP+6
+; 	ldy TEMP+6
+; 	cpy #4
+; 	bcc @loop
 	
-@loop_done:	
+; @loop_done:	
 	
 	
 	
-;now push 1 attribute byte to the vram buffer
-;first, shift the bits to get an attribute address
-;we stored the original at TEMP+7,8, 8 is high byte
-;a bunch of bit shifting to get 3 bits from x and 3 y
-	lsr TEMP+8 ;high byte
-	ror TEMP+7
-	lsr TEMP+8
-	ror TEMP+7
-	lda TEMP+7
-	pha ;save
-	and #7 ;just the x bits
-	sta TEMP
-	pla
-	lsr a ;just the y bits
-	lsr a
-	and #$f8
-	ora #$c0
-	ora TEMP
-	sta TEMP ;low byte
-;now high byte	
-	lda TEMP+8
-	asl a
-	asl a
-	ora #$23
-	sta TEMP+1 ;high byte, and the low byte is in TEMP
-
-	
-;finally, push it all to the vram_buffer as a single byte
-	lda TEMP+1 ;high byte
-	sta VRAM_BUF,x
-	inx
-	lda TEMP ;low byte
-	sta VRAM_BUF,x
-	inx
-	lda TEMP+10
-	sta VRAM_BUF,x
-	inx
-	lda #$ff ;=NT_UPD_EOF
-	sta VRAM_BUF,x
-	stx VRAM_INDEX
-	rts
+; ;now push 1 attribute byte to the vram buffer
+; ;first, shift the bits to get an attribute address
+; ;we stored the original at TEMP+7,8, 8 is high byte
+; ;a bunch of bit shifting to get 3 bits from x and 3 y
+; 	lsr TEMP+8 ;high byte
+; 	ror TEMP+7
+; 	lsr TEMP+8
+; 	ror TEMP+7
+; 	lda TEMP+7
+; 	pha ;save
+; 	and #7 ;just the x bits
+; 	sta TEMP
+; 	pla
+; 	lsr a ;just the y bits
+; 	lsr a
+; 	and #$f8
+; 	ora #$c0
+; 	ora TEMP
+; 	sta TEMP ;low byte
+; ;now high byte	
+; 	lda TEMP+8
+; 	asl a
+; 	asl a
+; 	ora #$23
+; 	sta TEMP+1 ;high byte, and the low byte is in TEMP
 
 	
-@sub1:	;add $20 is a 1 down on the screen
-	tay ;high byte
-	lda TEMP
-	clc
-	adc #$20
-	sta TEMP
-	bcc @sub1b
-	iny
-@sub1b:
-	sty TEMP+1
-	rts
+; ;finally, push it all to the vram_buffer as a single byte
+; 	lda TEMP+1 ;high byte
+; 	sta VRAM_BUF,x
+; 	inx
+; 	lda TEMP ;low byte
+; 	sta VRAM_BUF,x
+; 	inx
+; 	lda TEMP+10
+; 	sta VRAM_BUF,x
+; 	inx
+; 	lda #$ff ;=NT_UPD_EOF
+; 	sta VRAM_BUF,x
+; 	stx VRAM_INDEX
+; 	rts
+
+	
+; @sub1:	;add $20 is a 1 down on the screen
+; 	tay ;high byte
+; 	lda TEMP
+; 	clc
+; 	adc #$20
+; 	sta TEMP
+; 	bcc @sub1b
+; 	iny
+; @sub1b:
+; 	sty TEMP+1
+; 	rts
 	
 	
-@sub2:	;get the next metatile offset
-	ldy TEMP+6
-	lda TEMP+2, y ;metatile temp copied to +2,+3,+5,and +6
-	sta META_VAR
-	jmp MT_MULT5 ;multiply 5 and set y
-;	rts
+; @sub2:	;get the next metatile offset
+; 	ldy TEMP+6
+; 	lda TEMP+2, y ;metatile temp copied to +2,+3,+5,and +6
+; 	sta META_VAR
+; 	jmp MT_MULT5 ;multiply 5 and set y
+; ;	rts
 	
 
-@sub3: ;check make sure we're not at the lowest y and overflowing
-	ldy #0 ;x is forbidden
-	lda TEMP+8 ;high byte
-	and #$03
-	cmp #$03
-	bne @not_overflow
-	lda TEMP+7
-	cmp #$80 ;last row of mt
-	bcc @not_overflow
-	iny
-	lsr TEMP+10 ;make sure the attrib bits in correct position
-	lsr TEMP+10
-	lsr TEMP+10
-	lsr TEMP+10
-@not_overflow:
-	tya ;set flag
-	rts
+; @sub3: ;check make sure we're not at the lowest y and overflowing
+; 	ldy #0 ;x is forbidden
+; 	lda TEMP+8 ;high byte
+; 	and #$03
+; 	cmp #$03
+; 	bne @not_overflow
+; 	lda TEMP+7
+; 	cmp #$80 ;last row of mt
+; 	bcc @not_overflow
+; 	iny
+; 	lsr TEMP+10 ;make sure the attrib bits in correct position
+; 	lsr TEMP+10
+; 	lsr TEMP+10
+; 	lsr TEMP+10
+; @not_overflow:
+; 	tya ;set flag
+; 	rts
 	
 	
-@sub4: ;get attrib bits, roll them in place
-	iny
-	lda (META_PTR2), y ;5th byte = attribute
-	and #3 ;just need 2 bits
-	ror a ;bit to carry
-	ror TEMP+10 ;shift carry in
-	ror a ;bit to carry
-	ror TEMP+10 ;roll the a.t. bits in the high 2 bits
+; @sub4: ;get attrib bits, roll them in place
+; 	iny
+; 	lda (META_PTR2), y ;5th byte = attribute
+; 	and #3 ;just need 2 bits
+; 	ror a ;bit to carry
+; 	ror TEMP+10 ;shift carry in
+; 	ror a ;bit to carry
+; 	ror TEMP+10 ;roll the a.t. bits in the high 2 bits
 	rts
 	
 	

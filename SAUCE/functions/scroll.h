@@ -14,46 +14,72 @@ void do_the_scroll_thing(){
 		}
 		high_byte(currplayer_x) = high_byte(currplayer_x) - tmp1;
 	}
+	if (gamemode != 1) {
+		if (!dual) {
+			if (currplayer_y < 0x4000 && (scroll_y > 0x08)){ // change y scroll (upward)
+				tmp1 = MSB(0x4000 - currplayer_y);
+				scroll_y -= tmp1;
+				high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
+			}
+			while (scroll_y < 0x08) {
+				++scroll_y;
+				--high_byte(currplayer_y);
+			}
 
-	if (!dual) {
-		if (currplayer_y < 0x4000 && (scroll_y > 0x08)){ // change y scroll (upward)
-			tmp1 = MSB(0x4000 - currplayer_y);
-			scroll_y -= tmp1;
-			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
+			
+			if (currplayer_y > 0xA000){ // change y scroll (upward)
+				tmp1 = MSB(currplayer_y - 0xA000);
+				scroll_y += tmp1;
+				if (scroll_y <= 0xEF) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
+			}
+			if (scroll_y > 0xEF) scroll_y = 0xEF;
 		}
-		while (scroll_y < 0x08) {
-			++scroll_y;
-			--high_byte(currplayer_y);
-		}
+		else {
+			if (currplayer_y < 0x0700 && (scroll_y > 0x08)){ // change y scroll (upward)
+				tmp1 = MSB(0x0700 - currplayer_y);
+				scroll_y -= tmp1;
+				high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
+			}
+			while (scroll_y < 0x08) {
+				++scroll_y;
+				--high_byte(currplayer_y);
+			}
 
-		
-		if (currplayer_y > 0xA000){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xA000);
-			scroll_y += tmp1;
-			if (scroll_y <= 0xEF) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
+			
+			if (currplayer_y > 0xF000){ // change y scroll (upward)
+				tmp1 = MSB(currplayer_y - 0xF000);
+				scroll_y += tmp1;
+				if (scroll_y <= 0xEF) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
+			}
+			if (scroll_y > 0xEF) scroll_y = 0xEF;
 		}
-		if (scroll_y > 0xEF) scroll_y = 0xEF;
 	}
-	else {
-		if (currplayer_y < 0x0700 && (scroll_y > 0x08)){ // change y scroll (upward)
-			tmp1 = MSB(0x0700 - currplayer_y);
-			scroll_y -= tmp1;
-			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
-		}
-		while (scroll_y < 0x08) {
-			++scroll_y;
-			--high_byte(currplayer_y);
-		}
 
-		
-		if (currplayer_y > 0xF000){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xF000);
-			scroll_y += tmp1;
-			if (scroll_y <= 0xEF) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-		}
-		if (scroll_y > 0xEF) scroll_y = 0xEF;
+
+	else {			//ship stuff
+			if (target_scroll_y > 0x0120) {
+				target_scroll_y--;
+				target_scroll_y--;
+				++scroll_y; --high_byte(currplayer_y);
+				++scroll_y; --high_byte(currplayer_y);
+			}
+			if (target_scroll_y < 0x110) {
+				target_scroll_y++;
+				target_scroll_y++;
+				--scroll_y; ++high_byte(currplayer_y);
+				--scroll_y; ++high_byte(currplayer_y);
+			}
+			while (scroll_y < 0x08) {
+				++scroll_y;
+				--high_byte(currplayer_y);
+			}
+			while (scroll_y > 0xEF) {
+				--scroll_y;
+				++high_byte(currplayer_y);
+			}
+
+
 	}
-
 
     set_scroll_x(scroll_x);
     set_scroll_y(scroll_y);

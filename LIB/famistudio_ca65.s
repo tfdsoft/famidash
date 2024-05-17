@@ -188,7 +188,7 @@ FAMISTUDIO_USE_VOLUME_TRACK      = 1
 
 ; Must be enabled if any song uses slides on the volume track. Volume track must be enabled too.
 ; More information at: https://famistudio.org/doc/pianoroll/#editing-volume-tracks-effects
-; FAMISTUDIO_USE_VOLUME_SLIDES     = 1
+FAMISTUDIO_USE_VOLUME_SLIDES     = 1
 
 ; Must be enabled if any song uses the pitch track. The pitch track allows manipulating the pitch at the track level
 ; independently from instruments.

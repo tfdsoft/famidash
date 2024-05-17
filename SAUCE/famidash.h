@@ -239,6 +239,7 @@ unsigned char parallax_scroll_x;
 unsigned char invincible_counter;
 unsigned long int scroll_x; // gotta love massive levels amirite fellas
 unsigned short scroll_y;
+unsigned short target_scroll_y;
 unsigned char song;
 unsigned char auto_fs_updates;
 
