@@ -408,12 +408,15 @@ void sprite_collide_lookup() {
     case S_BLOCK: dashing[currplayer] = 0; return;
     case D_BLOCK: kandowavewalk = 1; return;
     case CUBE_MODE:
-    case SHIP_MODE:
     case BALL_MODE:
     case UFO_MODE:
     case ROBOT_MODE:
         gamemode = collided;
         robotjumptime[currplayer] = 0;
+    case SHIP_MODE:
+        gamemode = collided;
+	robotjumptime[currplayer] = 0;
+	target_scroll_y = currplayer_y;
         // fallthrough
     case NOSPRITE:
         return;
