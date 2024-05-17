@@ -59,10 +59,14 @@ void do_the_scroll_thing(){
 	else {			//ship stuff
 			if (target_scroll_y > 0x0120) {
 				target_scroll_y--;
+				target_scroll_y--;
+				++scroll_y; --high_byte(currplayer_y);
 				++scroll_y; --high_byte(currplayer_y);
 			}
 			if (target_scroll_y < 0x110) {
 				target_scroll_y++;
+				target_scroll_y++;
+				--scroll_y; ++high_byte(currplayer_y);
 				--scroll_y; ++high_byte(currplayer_y);
 			}
 			while (scroll_y < 0x08) {
