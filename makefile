@@ -44,13 +44,6 @@ default: $(OUTDIR)/$(NAME).nes
 
 #target: dependencies
 
-MUSIC/EXPORTS/musicDefines.h: MUSIC/EXPORTS/*.inc
-ifeq ($(OS),Windows_NT)
-else ifeq ($(OS),MSDOS)
-else
-		python3 MUSIC/parse_fs_files.py
-endif
-
 $(OUTDIR):
 	$(MKDIR) $(OUTDIR)
 
