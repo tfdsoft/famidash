@@ -55,10 +55,10 @@ void do_the_scroll_thing(){
 		}
 	}
 
-
+/*
 	else {			//ship stuff
-			if (target_scroll_y < 0x4000 && (scroll_y > 0x08)){ // change y scroll (upward)
-				tmp1 = MSB(0x4000 - target_scroll_y);
+			if (target_scroll_y < 0x0800 && (scroll_y > 0x08)){ // change y scroll (upward)
+				tmp1 = MSB(0x0800 - target_scroll_y);
 				scroll_y -= tmp1;
 				high_byte(target_scroll_y) = high_byte(target_scroll_y) + tmp1;
 				high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
@@ -77,7 +77,7 @@ void do_the_scroll_thing(){
 			}
 			if (scroll_y > 0xEF) scroll_y = 0xEF;
 	}
-
+*/
     set_scroll_x(scroll_x);
     set_scroll_y(scroll_y);
 }
