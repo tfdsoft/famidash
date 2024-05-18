@@ -649,7 +649,6 @@ void sprite_collide(){
             if (check_collision(&Generic, &Generic2)) {
                 sprite_collide_lookup();
             }
-	    else kandowavewalk = 0;
         }
     }
     if (!mini) {
