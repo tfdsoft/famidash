@@ -5,7 +5,8 @@
 //in order x offset, y offset, tile, attribute
 //x=128 is end of a meta sprite
 // Note: sprid removed for speed
-void __fastcall__ oam_meta_spr_flipped(unsigned char flip,unsigned char x,unsigned char y,const unsigned char *data);
+void __fastcall__ _oam_meta_spr_flipped(unsigned long args);
+#define oam_meta_spr_flipped(flip, x, y, data)(xargs[0] = flip, storeBytesToSreg(x, y), __AX__ = (unsigned int)data, _oam_meta_spr_flipped(__EAX__))
 
 /**
  * ======================================================================================================================
@@ -41,24 +42,30 @@ void __fastcall__ music_update (void);
  * ======================================================================================================================
  */
 
-void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
+void __fastcall__ _sfx_play(unsigned int args);
+#define sfx_play(sfx_index, channel) (__AX__ = (unsigned int)(byte(channel))<<8|sfx_index, _sfx_play(__AX__))
 
 /**
  * Update the PPU using the VRAM buffer with a single tile repeated LENGTH number of times.
  * Length must not be greater than 0x7f!
  */
-void __fastcall__ one_vram_buffer_horz_repeat(unsigned char data, unsigned char len, int ppu_address);
-void __fastcall__ one_vram_buffer_vert_repeat(unsigned char data, unsigned char len, int ppu_address);
+void __fastcall__ _one_vram_buffer_repeat(unsigned long args);
+#define one_vram_buffer_horz_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _one_vram_buffer_repeat(__EAX__))
+#define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_VERT, _one_vram_buffer_repeat(__EAX__))
 
 void __fastcall__ _draw_padded_text(unsigned long args);
 #define draw_padded_text(len, total_len, ppu_address) \
-(__AX__ = (len<<8)|(total_len<<0), __EAX__<<=16, __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text(__EAX__))
+(storeBytesToSreg(total_len, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _draw_padded_text(__EAX__))
 #define draw_padded_text_setAddr(data, len, total_len, ppu_address) (tmpptr1 = (void *)data, draw_padded_text(len, total_len, ppu_address))
 
 void __fastcall__ playPCM();
 
 extern unsigned char parallax_scroll_column;
 extern unsigned char parallax_scroll_column_start;
+
+extern unsigned char xargs[4];
+#pragma zpsym("xargs")
+#define wxargs ((unsigned short * const)xargs)
 
 #define low_word(a) *((unsigned short*)&a)
 #define high_word(a) *((unsigned short*)&a+1)
@@ -127,3 +134,7 @@ extern char PAL_BUF[32];
   __asm__("pla"); \
   (b) = __A__; \
 } while(0);
+
+#define storeWordToSreg(word) (__AX__ = word, __EAX__<<=16)
+#define storeBytesToSreg(a, b) (__AX__ = (byte(b)<<8)|byte(a), __EAX__<<=16)
+#define storeByteToSreg(byte) (__A__ = byte, __asm__("sta sreg+0"))
