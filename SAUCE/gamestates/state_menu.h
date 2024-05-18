@@ -66,7 +66,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(level10text2) - 1,
 };
 
-const char* coin_counter[] = {
+const char* const coin_counter[] = {
   "___",
   "^__",
   "_^_",
@@ -163,9 +163,9 @@ void __fastcall__ refreshmenu(void) {
 
 // then in the function...
 // combine all three into a single number from 0 - 7 to represent which coins have been grabbed
-		tmp7 = coin1_obtained[level] | (coin2_obtained[level] << 1) | (coin3_obtained[level] << 2);
+		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
 // actually draw the coins
-		multi_vram_buffer_horz(coin_counter[tmp7], 3, NTADR_A(22, 12));
+		multi_vram_buffer_horz(coin_counter[tmp7 & 0x7F], 3, NTADR_A(22, 12));
 
 };
 
