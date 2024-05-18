@@ -59,7 +59,8 @@ if (len(maxstrsize) == 0):
 	print("No entries found, exiting")
 	exit(0)
 maxstrsize = max(maxstrsize)
-maxnumsize = max([len(str(i[1])) for i in old.items() if (showall or (i[1] - new[i[0]] != 0))])
+maxoldnumsize = max([len(str(i[1])) for i in old.items() if (showall or (i[1] - new[i[0]] != 0))])
+maxnewnumsize = max([len(str(i[1])) for i in old.items() if (showall or (i[1] - new[i[0]] != 0))])
 
 diff = 0
 
@@ -69,8 +70,9 @@ for i in old.items():
 	if (thisdiff != 0 or showall) :
 		padding = " " * (maxstrsize - len(i[0]))
 		signpadding = " " if thisdiff > 0 else ""
-		numpadding = " " * (maxnumsize - len(str(i[1])))
-		print(f"{quote}{i[0]}:{padding} {i[1]}{numpadding} → {newsize}" + ((f"{numpadding} - diff: {signpadding}{thisdiff}") if thisdiff != 0 else "") + quote)
+		oldnumpadding = " " * (maxoldnumsize - len(str(i[1])))
+		newnumpadding = " " * (maxnewnumsize - len(str(newsize)))
+		print(f"{quote}{i[0]}:{padding} {i[1]}{oldnumpadding} → {newsize}" + ((f"{newnumpadding} - diff: {signpadding}{thisdiff}") if thisdiff != 0 else "") + quote)
 	diff += thisdiff
 
 print("\nTotal size reduction: "+str(diff)+" bytes")
