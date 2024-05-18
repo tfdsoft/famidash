@@ -1998,7 +1998,7 @@ drawplayer_common := _drawplayerone::common
 	RTS
 
 	ReturnColAll:
-	LDA #$07       ; return COL_ALL
+	LDA #$09       ; return COL_FLOOR_CEIL
 	RTS
 
 .endproc

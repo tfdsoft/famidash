@@ -17,6 +17,7 @@ PAL_1 = (1)
 PAL_2 = (2)
 PAL_3 = (3)
 
+COL_FLOOR_CEIL = 9
 COL_DEATH = 8
 COL_ALL   = 7
 COL_BOTTOM   = 6
