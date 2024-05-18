@@ -1,7 +1,7 @@
 ;written by Doug Fraker
 ;version 1.3, 10/31/2022
 
-.export _set_vram_buffer, _multi_vram_buffer_horz, _multi_vram_buffer_vert, _one_vram_buffer
+.export _set_vram_buffer, _multi_vram_buffer_horz, _multi_vram_buffer_vert, __one_vram_buffer
 .export _get_pad_new, _get_frame_count
 .export __check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y
 .export  __get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt, _buffer_1_mt
@@ -81,16 +81,16 @@ _multi_vram_buffer_vert:
 	
 
 ;void one_vram_buffer(unsigned char data, int ppu_address);
-_one_vram_buffer:
+__one_vram_buffer:
+	; ax = ppu_address
+	; sreg[0] = data
 	ldy VRAM_INDEX
 	sta VRAM_BUF+1, y
 	txa
 	sta VRAM_BUF, y
 	iny
 	iny
-		sty <TEMP ;popa uses y
-	jsr popa
-		ldy <TEMP
+	lda sreg
 	sta VRAM_BUF, y
 	iny
 	lda #$ff ;=NT_UPD_EOF

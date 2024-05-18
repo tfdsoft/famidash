@@ -14,7 +14,8 @@ void set_vram_buffer(void);
 // this can be undone by set_vram_update(NULL)
 
 
-void __fastcall__ one_vram_buffer(unsigned char data, int ppu_address);
+void __fastcall__ _one_vram_buffer(unsigned long args);
+#define one_vram_buffer(data, ppu_address) (loadByteInSreg(data), __AX__ = ppu_address, _one_vram_buffer(__EAX__))
 // to push a single byte write to the vram_buffer
 
 
