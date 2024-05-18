@@ -205,7 +205,7 @@ void __fastcall__ flush_vram_update(const unsigned char *buf);
 
 //set vram pointer to write operations if you need to write some data to vram
 
-void __fastcall__ vram_adr(unsigned int adr);
+// void __fastcall__ vram_adr(unsigned int adr);
 
 //put a byte at current vram address, works only when rendering is turned off
 

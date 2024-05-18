@@ -58,6 +58,7 @@ extern unsigned char parallax_scroll_column_start;
 #define low_word(a) *((unsigned short*)&a)
 #define high_word(a) *((unsigned short*)&a+1)
 
+#define vram_adr(a) (POKE(0x2006, MSB(a)), POKE(0x2006, LSB(a)))
 #define vram_put(a) POKE(0x2007, a)
 
 #define GET_BANK(sym) (__asm__("ldx #0\nlda #<.bank(%v)", sym), __A__)

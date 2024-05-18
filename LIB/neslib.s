@@ -22,7 +22,7 @@
 	.export _vram_read,_vram_write
 	.export _pad_poll,_pad_trigger,_pad_state
 	.export _rand8,_rand16,_set_rand
-	.export _vram_adr,_vram_fill,_vram_inc,_vram_unrle
+	.export _vram_fill,_vram_inc,_vram_unrle
 	.export _set_vram_update,_flush_vram_update
 	.export _memcpy,_memfill,_delay
 	
@@ -1061,12 +1061,12 @@ _flush_vram_update2: ;minor changes %
 	
 ;void __fastcall__ vram_adr(unsigned int adr);
 
-_vram_adr:
+; _vram_adr:
 
-	stx PPU_ADDR
-	sta PPU_ADDR
+; 	stx PPU_ADDR
+; 	sta PPU_ADDR
 
-	rts
+; 	rts
 
 
 
