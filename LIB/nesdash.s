@@ -20,7 +20,6 @@
 
 .export _oam_meta_spr_flipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
-; .export _refreshmenu
 .export _movement
 .export _music_play, _sfx_play, _music_update
 
@@ -836,112 +835,87 @@ ParallaxBufferCol5:
 
 .endproc
 
-; _refreshmenu:
-; 	; The C code being "ported":
-; 		; one_vram_buffer(0xD1+level, NTADR_A(29,24));
-; 		; ppu_off();
-; 		; vram_adr(NTADR_A(2,25));	
-; 		; switch (level){
-; 		; 	case 0x0N:  N = 1..7
-; 		; 		for(tmp1=0;levelKtext[tmp1];++tmp1){
-; 		; 			vram_put(0xA0+levelNtext[tmp1]);
-; 		; 		};
-; 		; 		break;
-; 		; }		
-; 		; ppu_on_all();
-; 		; return;
-; 	; Instead of ppu_off/on i do it with the VRAM buffer
-; 	; like a civilised person
-; 	LDY VRAM_INDEX
-; 	;! THE ADDRESS CORRESPONDING TO NTADR_A(29,24) IS
-; 	;! $231D. THIS IS HARDCODED, CHANGE THESE LINES IF
-; 	;! YOU WANT TO CHANGE THE POSITION OF IT
-; ;	LDA #$23			;
-; ;	STA VRAM_BUF, Y		;
-; ;	LDA #$1D			;
-; ;	STA VRAM_BUF+1, Y	;	one_vram_buffer(0xD1+level, NTADR_A(29,24));
-; ;	LDA _level			;	(Displays the level number)
-; ;	CLC					;
-; ;	ADC #$D1			;
-; ;	STA VRAM_BUF+2, Y	;__
+.importzp _tmpptr1
+.export __draw_padded_text
+; uses tmpptr1 for data pointer for string
+; and a single long argument for the rest:
+; (textLength<<24)|(totalLength<<16)|(vram_ptr)
+; use a macro to do this shit
+.proc __draw_padded_text
+	; The C code being "ported":
+		; one_vram_buffer_horz_repeat(' ', totalLength, addr);
+		; multi_vram_buffer_horz(data, txtLen, padded_addr);
+	; Instead of ppu_off/on i do it with the VRAM buffer
+	; like a civilised person
 
-; 	;! THE ADDRESS CORRESPONDING TO NTADR_A(2,25) IS
-; 	;! $20A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
-; 	;! IT BECOMES $64A2. THIS IS HARDCODED, CHANGE THESE
-; 	;! LINES IF YOU WANT TO CHANGE THE POSITION OF IT
-; 	LDA #$65			;
-; 	STA VRAM_BUF, Y	;   ~ vram_adr(NTADR_A(2,25));
-; 	LDA #$CE			;
-; 	STA VRAM_BUF+1, Y	;__
-; 	LDA #15				;	Const length of 15
-; 	STA VRAM_BUF+2, Y	;__
+    .define spaceChr $FE
+	.define dataPtr _tmpptr1
+	.define totalLength sreg+0
+	.define textLength sreg+1
 
-; 	LDX _level					;
-; 	LDA @string_ptrs_lo, X	    ;   Load low byte of lvl name pointer
-; 	STA <PTR					;__
-; 	LDA @string_ptrs_hi, X	    ;   Load high byte of lvl name pointer
-; 	STA <PTR+1					;__
-; 	LDA @padding, X			    ;
-; 	LSR							;	Get left offset
-; 	TAX							;__
-; 	ADC #$00					;	Get right offset
-; 	STA <TEMP+3					;__
+	; AX = vramPtr
+	LDY VRAM_INDEX
+	STA VRAM_BUF+1, Y	;
+	TXA					;	vram pointer
+	STA VRAM_BUF, Y		;__
+	LDA totalLength		;	total length
+	STA VRAM_BUF+2, Y	;__
 
-; 	CPX #$00	; Had to do this, very sorry
-; 	BEQ @main_data
+	SEC					;   Total padding
+	SBC textLength		;__
+	LSR					;	Get left offset
+	STA tmp1			;__
+	ADC #$00			;	Get right offset
+	TAY					;__
 
-; 	LDA #$C0	; Space char
+	LDA totalLength
+	ADC	VRAM_INDEX		;	Carry is guaranteed to be clear by LSR : ADC #$00
+	; If carry is still set, we have big problems
+	; BCS some shit to do
+	TAX
+    ADC #$03
+    STA VRAM_INDEX
 
-; 	@pad_loop_left:
-; 		STA VRAM_BUF+3, Y
-; 		INY
-; 		DEX
-; 		BNE @pad_loop_left
-	
-; 	@main_data:
-; 	; No need to LDX #$00, as it's either 0 from the prev loop or 0 left padding
-; 		LDA (<PTR, X)	; Load byte
+	LDA #$FF			;	Finish off the write
+	STA VRAM_BUF+3, X	;__
 
-; 	@main_data_loop:
-; 		CLC
-; 		ADC #$A0
-; 		STA VRAM_BUF+3, Y
-; 		INY
-; 		INCW <PTR
-; 		LDA (<PTR, X)			;	Load byte
-; 		BNE @main_data_loop		;__ Continue if not 0
-	
-; 	LDX <TEMP+3
-; 	BEQ @end
+	CPY #$00	; Had to do this, very sorry
+	BEQ main_data
 
-; 	LDA #$C0
+	LDA #spaceChr
 
-; 	@pad_loop_right:
-; 		STA VRAM_BUF+3, Y
-; 		INY
-; 		DEX
-; 		BNE @pad_loop_right
-	
-; 	@end:
-; 	LDA #$FF			;	Finish off the write
-; 	STA VRAM_BUF+3, Y	;__
+	pad_loop_right:
+		STA VRAM_BUF+2, X
+		DEX
+		DEY
+		BNE pad_loop_right
+		
+	main_data:
+		LDY textLength
+		DEY
 
-; 	TYA				;
-; 	CLC				;	Adjust vram index
-; 	ADC #$06		;
-; 	STA VRAM_INDEX	;__
+	main_data_loop:
+		LDA (<dataPtr), Y
+		STA VRAM_BUF+2, X
+		DEX
+		DEY
+		BPL main_data_loop
 
+	LDY tmp1	;	Pad left amount
+	BEQ fin		;__
 
+	LDA #spaceChr
 
-; 	RTS
+	pad_loop_left:
+		STA VRAM_BUF+2, X
+		DEX
+		DEY
+		BNE pad_loop_left
 
-; @string_ptrs_lo:
-;     .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext, <_levelBtext, <_levelCtext, <_levelDtext, <_levelEtext, <_levelFtext
-; @string_ptrs_hi:
-;     .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext, >_levelBtext, >_levelCtext, >_levelDtext, >_levelEtext, >_levelFtext
-; @padding:
-;     ; Calculation: 15 - length of string
-;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10, 3, 11, 10, 10, 10
+	fin:
+		RTS
+
+.endproc
 
 ;void __fastcall__ movement(void);
 .pushseg

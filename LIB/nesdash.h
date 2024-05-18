@@ -50,6 +50,11 @@ void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
 void __fastcall__ one_vram_buffer_horz_repeat(unsigned char data, unsigned char len, int ppu_address);
 void __fastcall__ one_vram_buffer_vert_repeat(unsigned char data, unsigned char len, int ppu_address);
 
+void __fastcall__ _draw_padded_text(unsigned long args);
+#define draw_padded_text(len, total_len, ppu_address) \
+(__AX__ = (len<<8)|(total_len<<0), __EAX__<<=16, __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text(__EAX__))
+#define draw_padded_text_setAddr(data, len, total_len, ppu_address) (tmpptr1 = (void *)data, draw_padded_text(len, total_len, ppu_address))
+
 void __fastcall__ playPCM();
 
 extern unsigned char parallax_scroll_column;

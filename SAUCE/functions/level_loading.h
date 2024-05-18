@@ -33,9 +33,9 @@ void load_ground(unsigned char id){
 	mmc3_set_prg_bank_1(0);
 	// render to both nametable c and d
     vram_adr(NAMETABLE_C);
-    vram_unrle(ground[id]);
+    vram_unrle(ground[id & 0x7F]);
     vram_adr(NAMETABLE_D);
-    vram_unrle(ground[id]);
+    vram_unrle(ground[id & 0x7F]);
 }
 
 void increase_parallax_scroll_column() {
