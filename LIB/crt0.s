@@ -248,10 +248,17 @@ detectNTSC:
 	jsr famistudio_sfx_init
 
 	lda $60FE
+	beq @fallback
 	sta <RAND_SEED
 	lda $60FF
+	beq @fallback
 	sta <RAND_SEED+1
-
+        bne @done
+@fallback:
+	lda #$FD
+	sta <RAND_SEED
+	sta <RAND_SEED+1
+@done:
 	lda #0
 	sta PPU_SCROLL
 	sta PPU_SCROLL
