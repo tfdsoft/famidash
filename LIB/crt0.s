@@ -17,7 +17,7 @@
 	.import	__RODATA_LOAD__ ,__RODATA_RUN__ ,__RODATA_SIZE__
 
 	.import MAPPER, SUBMAPPER, MIRRORING, PRG_BANK_COUNT, CHR_BANK_COUNT, SRAM, TRAINER, CONSOLE_TYPE, PRG_RAM_COUNT, PRG_NVRAM_COUNT, CHR_RAM_COUNT, CHR_NVRAM_COUNT, CPU_PPU_TIMING, HARDWARE_TYPE, MISC_ROMS, DEF_EXP_DEVICE
-	.import FIRST_MUSIC_BANK, DMC_BANK
+	.import FIRST_MUSIC_BANK, DMC_BANK, _SRAM_VALIDATE
 
 VRAM_BUF=__VRAM_BUF_START__
 OAM_BUF=__OAM_BUF_START__
@@ -120,6 +120,13 @@ META_VAR:			.res 1
 
 start:
 _exit:
+    lda #$80
+    sta $A001
+    lda $00
+    sta $60FE
+    lda $01
+    sta $60FF
+
 
     sei
 	cld
@@ -240,8 +247,9 @@ detectNTSC:
 	ldy #>sounds
 	jsr famistudio_sfx_init
 
-	lda #$fd
+	lda $60FE
 	sta <RAND_SEED
+	lda $60FF
 	sta <RAND_SEED+1
 
 	lda #0
