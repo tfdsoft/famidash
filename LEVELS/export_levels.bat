@@ -26,4 +26,3 @@ export_levels.py --folder "the folder that you do stuff in" %all_levels%
 
 echo Export finished.
 pause
-exit
