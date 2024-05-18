@@ -228,7 +228,7 @@ void __fastcall__ _vram_read(unsigned long args);
 
 //write a block to current address of vram, works only when rendering is turned off
 
-void __fastcall__ _vram_write(const void *src,unsigned int size);
+void __fastcall__ _vram_write(unsigned long args);
 #define vram_write(src, size)(loadWordInSreg(src), __AX__ = size, _vram_write(__EAX__))
 
 //unpack RLE data to current address of vram, mostly used for nametables
@@ -239,11 +239,13 @@ void __fastcall__ vram_unrle(const void *data);
 
 //like a normal memcpy, but does not return anything
 
-void __fastcall__ memcpy(void *dst,const void *src,unsigned int len);
+void __fastcall__ _memcpy(unsigned long args);
+#define memcpy(dst, src, len) (wxargs[0] = (unsigned int)dst, loadWordInSreg((unsigned int)src), __AX__ = len, _memcpy(__EAX__))
 
 //like memset, but does not return anything
 
-void __fastcall__ memfill(void *dst,unsigned char value,unsigned int len);
+void __fastcall__ _memfill(unsigned long args);
+#define memfill(dst, val, len) (wxargs[0] = (unsigned int)dst, loadWordInSreg((unsigned int)len), __A__ = val, _memfill(__EAX__))
 
 //delay for N frames
 

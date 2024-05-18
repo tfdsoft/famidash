@@ -64,6 +64,10 @@ void __fastcall__ playPCM();
 extern unsigned char parallax_scroll_column;
 extern unsigned char parallax_scroll_column_start;
 
+extern unsigned char xargs[4];
+#pragma zpsym("xargs")
+#define wxargs ((unsigned short * const)xargs)
+
 #define low_word(a) *((unsigned short*)&a)
 #define high_word(a) *((unsigned short*)&a+1)
 

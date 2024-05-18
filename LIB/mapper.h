@@ -22,13 +22,17 @@ void __fastcall__ mmc3_set_1kb_chr_bank_3(unsigned char bank);
 // __asm__("LDA #%s", direction); \
 // __asm__("STA MMC3_REG_MIRRORING");
 
-void __fastcall__ mmc3_set_8kb_chr(unsigned char i) {
-	// bg
-    mmc3_set_1kb_chr_bank_0(i);
-    mmc3_set_1kb_chr_bank_1(i+1);
-    mmc3_set_1kb_chr_bank_2(i+2);
-    mmc3_set_1kb_chr_bank_3(i+3);
+extern unsigned char xargs[4];
+
+void _mmc3_set_8kb_chr() {
+    // bg
+    mmc3_set_1kb_chr_bank_0(xargs[0]);
+    mmc3_set_1kb_chr_bank_1(++xargs[0]);
+    mmc3_set_1kb_chr_bank_2(++xargs[0]);
+    mmc3_set_1kb_chr_bank_3(++xargs[0]);
 	// sprites
-	mmc3_set_2kb_chr_bank_0(i+4);
-    mmc3_set_2kb_chr_bank_1(i+6);
+	mmc3_set_2kb_chr_bank_0(xargs[0]+2);
+    mmc3_set_2kb_chr_bank_1(xargs[0]+4);
 }
+
+#define mmc3_set_8kb_chr(bank) (xargs[0] = bank, _mmc3_set_8kb_chr())

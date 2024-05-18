@@ -100,8 +100,6 @@ unsigned char gamemode;
 unsigned char cube_data[2];
 unsigned short cube_rotate[2];
 
-
-
 unsigned char collision;
 unsigned char collision_L;
 unsigned char collision_R;

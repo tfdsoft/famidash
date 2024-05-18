@@ -24,7 +24,7 @@
 	.export _rand8,_rand16,_set_rand
 	.export __vram_fill,_vram_inc,_vram_unrle
 	.export _set_vram_update,_flush_vram_update
-	.export _memcpy,_memfill,_delay
+	.export __memcpy,__memfill,_delay
 	
 	.export _flush_vram_update2, _oam_set, _oam_get
 
@@ -1146,16 +1146,14 @@ _vram_inc:
 
 ;void __fastcall__ memcpy(void *dst,void *src,unsigned int len);
 
-_memcpy:
+__memcpy:
+
+	; AX = len
+	; sreg = src
+	; xargs[0:1] = dst
 
 	sta <LEN
 	stx <LEN+1
-	jsr popax
-	sta <SRC
-	stx <SRC+1
-	jsr popax
-	sta <DST
-	stx <DST+1
 
 	ldx #0
 
@@ -1165,8 +1163,8 @@ _memcpy:
 	beq @2
 	jsr @3
 	dec <LEN+1
-	inc <SRC+1
-	inc <DST+1
+	inc sreg+1
+	inc xargs+1
 	jmp @1
 
 @2:
@@ -1180,8 +1178,8 @@ _memcpy:
 
 @4:
 
-	lda (SRC),y
-	sta (DST),y
+	lda (sreg),y
+	sta (xargs),y
 	iny
 	dex
 	bne @4
@@ -1194,45 +1192,41 @@ _memcpy:
 
 ;void __fastcall__ memfill(void *dst,unsigned char value,unsigned int len);
 
-_memfill:
+__memfill:
 
-	sta <LEN
-	stx <LEN+1
-	jsr popa
-	sta <TEMP
-	jsr popax
-	sta <DST
-	stx <DST+1
+	; A = value
+	; sreg = len
+	; xargs[0:1] = dst
 
 	ldx #0
 
-@1:
+@hi_loop:
 
-	lda <LEN+1
-	beq @2
-	jsr @3
-	dec <LEN+1
-	inc <DST+1
-	jmp @1
+	cpx sreg+1	; x is always 0 at this point
+	beq @lo_start
+	jsr @fill_start
+	dec sreg+1
+	inc xargs+1
+	jmp @hi_loop
 
-@2:
+@lo_start:
 
-	ldx <LEN
-	beq @5
+	ldx sreg
+	beq @end
 
-@3:
+@fill_start:
 
 	ldy #0
 	lda <TEMP
 
-@4:
+@fill_loop:
 
-	sta (DST),y
+	sta (xargs),y
 	iny
 	dex
-	bne @4
+	bne @fill_loop
 
-@5:
+@end:
 
 	rts
 

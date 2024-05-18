@@ -7,7 +7,7 @@
 .exportzp _VRAM_UPDATE := VRAM_UPDATE
 
     .export _exit,__STARTUP__:absolute=1
-	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE
+	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
 	.import push0,popa,popax,_main,zerobss,copydata
 
 ; Linker generated symbols
@@ -95,6 +95,8 @@ META_PTR:			.res 2
 META_PTR2:			.res 2
 DATA_PTR:			.res 2
 META_VAR:			.res 1
+
+xargs:				.res 4
 
 ;
 ; NES 2.0 header
