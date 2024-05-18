@@ -15,14 +15,14 @@
 	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
 	.export _pal_bright,_pal_spr_bright,_pal_bg_bright
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
-	.export _oam_clear,_oam_size,_oam_spr,_oam_meta_spr,_oam_hide_rest
+	.export _oam_clear,_oam_size,__oam_spr,__oam_meta_spr,_oam_hide_rest
 	.export _ppu_wait_frame,_ppu_wait_nmi
-	.export _scroll,_split
+	.export __scroll,_split
 	.export _bank_spr,_bank_bg
-	.export _vram_read,_vram_write
+	.export __vram_read,__vram_write
 	.export _pad_poll,_pad_trigger,_pad_state
 	.export _rand8,_rand16,_set_rand
-	.export _vram_fill,_vram_inc,_vram_unrle
+	.export __vram_fill,_vram_inc,_vram_unrle
 	.export _set_vram_update,_flush_vram_update
 	.export _memcpy,_memfill,_delay
 	
@@ -400,32 +400,24 @@ _oam_size:
 ;void __fastcall__ oam_spr(unsigned char x,unsigned char y,unsigned char chrnum,unsigned char attr);
 ;sprid removed
 
-_oam_spr:
+__oam_spr:
+	; a = attr
+	; x = chrnum
+	; sreg[0] = x
+	; sreg[1] = y
 
-	ldx SPRID
-	;a = chrnum
-	sta OAM_BUF+2,x
+	ldy SPRID
+	;a = attr
+	sta OAM_BUF+2,y
 
-	ldy #0		;3 popa calls replacement
-	lda (sp),y
-	iny
-	sta OAM_BUF+1,x
-	lda (sp),y
-	iny
-	sta OAM_BUF+0,x
-	lda (sp),y
-	sta OAM_BUF+3,x
+	txa	; tile
+	sta OAM_BUF+1,y
+	lda sreg+1	; y
+	sta OAM_BUF+0,y
+	lda sreg+0	; x
+	sta OAM_BUF+3,y
 
-	lda <sp
-	clc
-	adc #3 ;4
-	sta <sp
-	; bcc @1
-	; inc <sp+1	; lmao our stack is 32 bytes
-
-@1:
-
-	txa
+	tya
 	clc
 	adc #4
 	sta SPRID
@@ -436,17 +428,21 @@ _oam_spr:
 ;void __fastcall__ oam_meta_spr(unsigned char x,unsigned char y,const unsigned char *data);
 ;sprid removed
 
-_oam_meta_spr:
+__oam_meta_spr:
+	; AX = data
+	; sreg[0] = x
+	; sreg[1] = y
 
 	sta <PTR
 	stx <PTR+1
 
-	ldy #1		;2 popa calls replacement, performed in reversed order
-	lda (sp),y
-	dey
-	sta <SCRX
-	lda (sp),y
-	sta <SCRY
+	; ldy #1		;2 popa calls replacement, performed in reversed order
+	; lda (sp),y
+	; dey
+	; sta <SCRX
+	; lda (sp),y
+	; sta <SCRY
+	ldy #0
 
 oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respectively
 	
@@ -459,7 +455,7 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 	beq @2
 	iny
 	clc
-	adc <SCRX
+	adc sreg+0	; x
 	bcc @fuck_yes
 	cpx #$00
 	beq @fuck_yes	; no idea why I need to do this
@@ -472,7 +468,7 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 	lda (PTR),y		;y offset
 	iny
 	clc
-	adc <SCRY
+	adc sreg+1	; y
 	@hell_yes:
 	sta OAM_BUF+0,x
 	lda (PTR),y		;tile
@@ -622,9 +618,11 @@ _vram_unrle:
 
 
 
-;void __fastcall__ scroll(unsigned int x,unsigned int y);
+;void __fastcall__ _scroll(unsigned int x,unsigned int y);
 
-_scroll:
+__scroll:
+	; ax = y
+	; sreg = x
 
 	sta <TEMP
 
@@ -649,9 +647,9 @@ _scroll:
 
 @2:
 
-	jsr popax
+	lda sreg
 	sta <SCROLL_X
-	txa
+	lda sreg+1
 	and #$01
 	ora <TEMP
 	sta <TEMP
@@ -737,14 +735,17 @@ _bank_bg:
 
 ;void __fastcall__ vram_read(unsigned char *dst,unsigned int size);
 
-_vram_read:
+__vram_read:
+
+	; ax = size
+	; sreg = dst
 
 	sta <TEMP
 	stx <TEMP+1
 
-	jsr popax
-	sta <TEMP+2
-	stx <TEMP+3
+	; jsr popax
+	; sta sreg
+	; stx sreg+1
 
 	lda PPU_DATA
 
@@ -753,10 +754,10 @@ _vram_read:
 @1:
 
 	lda PPU_DATA
-	sta (TEMP+2),y
-	inc <TEMP+2
+	sta (sreg),y
+	inc sreg
 	bne @2
-	inc <TEMP+3
+	inc sreg+1
 
 @2:
 
@@ -777,24 +778,26 @@ _vram_read:
 
 ;void __fastcall__ vram_write(unsigned char *src,unsigned int size);
 
-_vram_write:
+__vram_write:
+	; ax = size
+	; sreg = src
 
 	sta <TEMP
 	stx <TEMP+1
 
-	jsr popax
-	sta <TEMP+2
-	stx <TEMP+3
+	; jsr popax
+	; sta <sreg
+	; stx <sreg+1
 
 	ldy #0
 
 @1:
 
-	lda (TEMP+2),y
+	lda (sreg),y
 	sta PPU_DATA
-	inc <TEMP+2
+	inc <sreg
 	bne @2
-	inc <TEMP+3
+	inc <sreg+1
 
 @2:
 
@@ -1082,26 +1085,30 @@ _flush_vram_update2: ;minor changes %
 
 ;void __fastcall__ vram_fill(unsigned char n,unsigned int len);
 
-_vram_fill:
+__vram_fill:
+	; a = n
+	; x = hi(len)
+	; sreg[0] = lo(len) 
 
-	sta <LEN
-	stx <LEN+1
-	jsr popa
-	ldx <LEN+1
+	; sta <LEN
+	; stx <LEN+1
+	; jsr popa
+	; ldx <LEN+1
+	cpx #0
 	beq @2
-	ldx #0
+	ldy #0
 
 @1:
 
 	sta PPU_DATA
-	dex
+	dey
 	bne @1
-	dec <LEN+1
+	dex
 	bne @1
 
 @2:
 
-	ldx <LEN
+	ldx sreg
 	beq @4
 
 @3:

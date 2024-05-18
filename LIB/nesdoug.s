@@ -296,9 +296,6 @@ _set_scroll_y:
 ;int __fastcall__ add_scroll_y(unsigned char add, unsigned int scroll);
 __add_scroll_y:
 	; sreg[0] = add, AX = scroll
-	; sta TEMP
-	; stx TEMP+1 ;x = high
-	; jsr popa
 	clc
 	adc sreg+0
 	bcs @adjust
