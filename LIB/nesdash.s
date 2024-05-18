@@ -21,7 +21,7 @@
 .export _oam_meta_spr_flipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
 .export _movement
-.export _music_play, _sfx_play, _music_update
+.export _music_play, __sfx_play, _music_update
 
 .importzp _level_data, _sprite_data
 level_data = _level_data
@@ -147,23 +147,22 @@ oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCR
 
 .segment "CODE_2"
 
-.export _one_vram_buffer_horz_repeat
-.proc _one_vram_buffer_horz_repeat
-.import popptr1
+.export __one_vram_buffer_horz_repeat
+.proc __one_vram_buffer_horz_repeat
+	; ax = ppu_address
+	; sreg[0] = data
+	; sreg[1] = len
 	ldy VRAM_INDEX
 	sta VRAM_BUF+1, y
 	txa
     ora #$40
 WriteHiByte:
 	sta VRAM_BUF, y
-		sty TEMP ;popa uses y
-	jsr popptr1 ; pop two bytes from c stack into ptr1
-		ldy TEMP
     ; ptr1 lo byte is len, hi byte is character to repeat
-    lda ptr1
+    lda sreg+1
     ora #$80 ; set length + repeat byte
 	sta VRAM_BUF+2, y
-    lda ptr1+1
+    lda sreg+0
 	sta VRAM_BUF+3, y
 	lda #$ff ;=NT_UPD_EOF
 	sta VRAM_BUF+4, y
@@ -173,13 +172,13 @@ WriteHiByte:
     sta VRAM_INDEX
 	rts
 .endproc
-.export _one_vram_buffer_vert_repeat
-.proc _one_vram_buffer_vert_repeat
+.export __one_vram_buffer_vert_repeat
+.proc __one_vram_buffer_vert_repeat
 	ldy VRAM_INDEX
 	sta VRAM_BUF+1, y
 	txa
     ora #$80 ; vertical update
-    jmp _one_vram_buffer_horz_repeat::WriteHiByte
+    jmp __one_vram_buffer_horz_repeat::WriteHiByte
 .endproc
 
 _init_rld:
@@ -1003,9 +1002,9 @@ music_counts:
 
 ; void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
 .import _options
-.proc _sfx_play  
-    tax
-    jsr popa
+.proc __sfx_play  
+    ; x = sfx
+	; a = channel
 
     bit _options ; bit 6 is copied to the overflow flag  
     bvc play  

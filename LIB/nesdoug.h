@@ -40,7 +40,7 @@ unsigned char __fastcall__ get_frame_count(void);
 // use this internal value to time events, this ticks up every frame
 
 unsigned char __fastcall__ _check_collision(unsigned long args);
-#define check_collision(object1, object2) (loadWordInSreg(object1), __AX__ = (unsigned int)object2, _check_collision(__EAX__))
+#define check_collision(object1, object2) (loadWordInSreg((unsigned int)object1), __AX__ = (unsigned int)object2, _check_collision(__EAX__))
 // expects an object (struct) where the first 4 bytes are X, Y, width, height
 // you will probably have to pass the address of the object like &object
 // the struct can be bigger than 4 bytes, as long as the first 4 bytes are X, Y, width, height
@@ -105,7 +105,8 @@ void __fastcall__ set_mt_pointer(const char * metatiles);
 // max metatiles = 51 (because 51 x 5 = 255)
 
 
-void __fastcall__ buffer_1_mt(short ppu_address, char metatile);
+void __fastcall__ _buffer_1_mt(unsigned long args);
+#define buffer_1_mt(ppu_address, index) (loadByteInSreg(index), __AX__ = ppu_address, _buffer_1_mt(__EAX__))
 // will push 1 metatile and 0 attribute bytes to the vram_buffer
 // make sure to set_vram_buffer(), and clear_vram_buffer(), 
 // and set_mt_pointer() 

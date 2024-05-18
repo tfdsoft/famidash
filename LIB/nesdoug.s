@@ -4,7 +4,7 @@
 .export _set_vram_buffer, _multi_vram_buffer_horz, _multi_vram_buffer_vert, __one_vram_buffer
 .export _get_pad_new, _get_frame_count
 .export __check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y
-.export  __get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt, _buffer_1_mt
+.export  __get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt, __buffer_1_mt
 .export _color_emphasis, __xy_split, _gray_line, _seed_rng
 .export _clear_vram_buffer
 
@@ -614,8 +614,8 @@ _buffer_4_mt:
 	
 	
 ;void __fastcall__ buffer_1_mt(int ppu_address, char metatile);
-_buffer_1_mt:
-	;which metatile, in sreg[0]
+__buffer_1_mt:
+	; which metatile, in sreg[0]
 	; AX = ppu_address
 
 	ldy sreg+0
