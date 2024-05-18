@@ -38,9 +38,21 @@ if ("--scope" in sys.argv):
 if ("--seg" in sys.argv or "-s" in sys.argv):
 	check = "seg"
 
+showNewOrRemoved = 0
+if ("--update" in sys.argv or "-u" in sys.argv):
+	showNewOrRemoved = 1
+
 # print("start")
 old = readDbgFile("TMP/famidash", check)
 new = readDbgFile("BUILD/famidash", check)
+
+if (showNewOrRemoved):
+	for i in old.items():
+		if i[0] not in new.keys():
+			new[i[0]] = 0
+	for i in new.items():
+		if i[0] not in old.keys():
+			old[i[0]] = 0
 
 maxstrsize = [len(i[0]) for i in old.items() if (showall or (i[1] - new[i[0]] != 0))]
 if (len(maxstrsize) == 0):
