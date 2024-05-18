@@ -1,7 +1,7 @@
 ;written by Doug Fraker
 ;version 1.3, 10/31/2022
 
-.export _set_vram_buffer, _multi_vram_buffer_horz, _multi_vram_buffer_vert, __one_vram_buffer
+.export _set_vram_buffer, __multi_vram_buffer, __one_vram_buffer
 .export _get_pad_new, _get_frame_count
 .export __check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y
 .export  __get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt, __buffer_1_mt
@@ -27,59 +27,39 @@ _set_vram_buffer:
 
 	
 ;void multi_vram_buffer_horz(char * data, unsigned char len, int ppu_address);
-_multi_vram_buffer_horz:
-	;note PTR = TEMP and TEMP+1
+;void multi_vram_buffer_vert(char * data, unsigned char len, int ppu_address);
+__multi_vram_buffer:
+	; XA (A IS HIGH!!) = ppu_address (A OR'd with corresponding value)
+	; xargs[0] = len
+	; sreg = data
 
 	ldy VRAM_INDEX
-	sta VRAM_BUF+1, y
-	txa
-	clc
-	adc #$40 ; NT_UPD_HORZ
 	sta VRAM_BUF, y
+	txa
+	sta VRAM_BUF+1, y
 	
 _multi_vram_buffer_common:
-	jsr popa ;len
-		sta TEMP+3 ;loop count
-		ldy VRAM_INDEX
-		sta VRAM_BUF+2, y
-	jsr popax ;pointer to data
-		sta <PTR
-		stx <PTR+1
-	ldx VRAM_INDEX ;need y for source, x is for dest and for vram_index
-		inx
-		inx
-		inx
-		
+	lda xargs+0
+	sta VRAM_BUF+2, y
+	;need y for source, x is for dest and for vram_index
+	ldx VRAM_INDEX
+	inx
+	inx
+	inx
+
 	ldy #0
 @loop:
-	lda (PTR), y
+	lda (sreg), y
 	sta VRAM_BUF, x
 	inx
 	iny
-	cpy TEMP+3
+	cpy xargs+0
 	bne @loop
 	lda #$ff ;=NT_UPD_EOF
 	sta VRAM_BUF, x
 	stx VRAM_INDEX
 	rts
 	
-	
-	
-
-;void multi_vram_buffer_vert(char * data, unsigned char len, int ppu_address);
-_multi_vram_buffer_vert:
-	ldy VRAM_INDEX
-	sta VRAM_BUF+1, y
-	txa
-	clc
-	adc #$80 ; NT_UPD_VERT
-	sta VRAM_BUF, y
-	
-	jmp _multi_vram_buffer_common
-	
-	
-	
-
 ;void one_vram_buffer(unsigned char data, int ppu_address);
 __one_vram_buffer:
 	; ax = ppu_address

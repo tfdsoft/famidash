@@ -436,12 +436,6 @@ __oam_meta_spr:
 	sta <PTR
 	stx <PTR+1
 
-	; ldy #1		;2 popa calls replacement, performed in reversed order
-	; lda (sp),y
-	; dey
-	; sta <SCRX
-	; lda (sp),y
-	; sta <SCRY
 	ldy #0
 
 oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respectively

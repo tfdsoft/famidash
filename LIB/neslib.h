@@ -100,7 +100,7 @@ void __fastcall__ oam_size(unsigned char size);
 // Note: sprid removed for speed
 
 void __fastcall__ _oam_spr(unsigned long args);
-#define oam_spr(x, y, chrnum, attr)(loadBytesInSreg(x, y), __AX__ = (chrnum<<8)|attr, _oam_spr(__EAX__))
+#define oam_spr(x, y, chrnum, attr)(storeBytesToSreg(x, y), __AX__ = (chrnum<<8)|attr, _oam_spr(__EAX__))
 
 
 //set metasprite in OAM buffer (normal)
@@ -110,7 +110,7 @@ void __fastcall__ _oam_spr(unsigned long args);
 // Note: sprid removed for speed
 
 void __fastcall__ _oam_meta_spr(unsigned long args);
-#define oam_meta_spr(x, y, data)(loadBytesInSreg(x, y), __AX__ = (unsigned int)data, _oam_meta_spr(__EAX__))
+#define oam_meta_spr(x, y, data)(storeBytesToSreg(x, y), __AX__ = (unsigned int)data, _oam_meta_spr(__EAX__))
 
 //hide all remaining sprites from given offset
 // Note: sprid removed for speed
@@ -148,7 +148,7 @@ unsigned char __fastcall__ pad_state(unsigned char pad);
 //it is always applied at beginning of a TV frame, not at the function call
 
 void __fastcall__ _scroll(unsigned long args);
-#define scroll(x, y) (loadWordInSreg(x), __AX__ = y, _scroll(__EAX__))
+#define scroll(x, y) (storeWordToSreg(x), __AX__ = y, _scroll(__EAX__))
 
 //set scroll after screen split invoked by the sprite 0 hit
 //warning: all CPU time between the function call and the actual split point will be wasted!
@@ -215,7 +215,7 @@ void __fastcall__ flush_vram_update(const unsigned char *buf);
 //fill a block with a byte at current vram address, works only when rendering is turned off
 
 void __fastcall__ _vram_fill(unsigned long args);
-#define vram_fill(n, len) (loadByteInSreg(byte(LSB(len))), __AX__ = (byte(MSB(len)) << 8) | byte(n), _vram_fill(__EAX__))
+#define vram_fill(n, len) (storeByteToSreg(byte(LSB(len))), __AX__ = (byte(MSB(len)) << 8) | byte(n), _vram_fill(__EAX__))
 
 //set vram autoincrement, 0 for +1 and not 0 for +32
 
@@ -224,12 +224,12 @@ void __fastcall__ vram_inc(unsigned char n);
 //read a block from current address of vram, works only when rendering is turned off
 
 void __fastcall__ _vram_read(unsigned long args);
-#define vram_read(dst, size)(loadWordInSreg(dst), __AX__ = size, _vram_read(__EAX__))
+#define vram_read(dst, size)(storeWordToSreg(dst), __AX__ = size, _vram_read(__EAX__))
 
 //write a block to current address of vram, works only when rendering is turned off
 
 void __fastcall__ _vram_write(unsigned long args);
-#define vram_write(src, size)(loadWordInSreg(src), __AX__ = size, _vram_write(__EAX__))
+#define vram_write(src, size)(storeWordToSreg(src), __AX__ = size, _vram_write(__EAX__))
 
 //unpack RLE data to current address of vram, mostly used for nametables
 
@@ -240,12 +240,12 @@ void __fastcall__ vram_unrle(const void *data);
 //like a normal memcpy, but does not return anything
 
 void __fastcall__ _memcpy(unsigned long args);
-#define memcpy(dst, src, len) (wxargs[0] = (unsigned int)dst, loadWordInSreg((unsigned int)src), __AX__ = len, _memcpy(__EAX__))
+#define memcpy(dst, src, len) (wxargs[0] = (unsigned int)dst, storeWordToSreg((unsigned int)src), __AX__ = len, _memcpy(__EAX__))
 
 //like memset, but does not return anything
 
 void __fastcall__ _memfill(unsigned long args);
-#define memfill(dst, val, len) (wxargs[0] = (unsigned int)dst, loadWordInSreg((unsigned int)len), __A__ = val, _memfill(__EAX__))
+#define memfill(dst, val, len) (wxargs[0] = (unsigned int)dst, storeWordToSreg((unsigned int)len), __A__ = val, _memfill(__EAX__))
 
 //delay for N frames
 

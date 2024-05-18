@@ -15,15 +15,14 @@ void set_vram_buffer(void);
 
 
 void __fastcall__ _one_vram_buffer(unsigned long args);
-#define one_vram_buffer(data, ppu_address) (loadByteInSreg(data), __AX__ = ppu_address, _one_vram_buffer(__EAX__))
+#define one_vram_buffer(data, ppu_address) (storeByteToSreg(data), __AX__ = ppu_address, _one_vram_buffer(__EAX__))
 // to push a single byte write to the vram_buffer
 
+void __fastcall__ _multi_vram_buffer(unsigned long args);
 
-void __fastcall__ multi_vram_buffer_horz(const char * data, unsigned char len, int ppu_address);
+#define multi_vram_buffer_horz(data, len, ppu_address) (xargs[0] = len, storeWordToSreg((unsigned int)data), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _multi_vram_buffer(__EAX__))
 // to push multiple writes as one sequential horizontal write to the vram_buffer
-
-
-void __fastcall__ multi_vram_buffer_vert(const char * data, unsigned char len, int ppu_address);
+#define multi_vram_buffer_vert(data, len, ppu_address) (xargs[0] = len, storeWordToSreg((unsigned int)data), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_VERT, _multi_vram_buffer(__EAX__))
 // to push multiple writes as one sequential vertical write to the vram_buffer
 
 
@@ -40,7 +39,7 @@ unsigned char __fastcall__ get_frame_count(void);
 // use this internal value to time events, this ticks up every frame
 
 unsigned char __fastcall__ _check_collision(unsigned long args);
-#define check_collision(object1, object2) (loadWordInSreg((unsigned int)object1), __AX__ = (unsigned int)object2, _check_collision(__EAX__))
+#define check_collision(object1, object2) (storeWordToSreg((unsigned int)object1), __AX__ = (unsigned int)object2, _check_collision(__EAX__))
 // expects an object (struct) where the first 4 bytes are X, Y, width, height
 // you will probably have to pass the address of the object like &object
 // the struct can be bigger than 4 bytes, as long as the first 4 bytes are X, Y, width, height
@@ -64,25 +63,25 @@ void __fastcall__ set_scroll_y(unsigned int y);
 
 
 int __fastcall__ _add_scroll_y(unsigned long args);
-#define add_scroll_y(add, scroll) (loadByteInSreg(add), __AX__ = scroll, _add_scroll_y(__EAX__))
+#define add_scroll_y(add, scroll) (storeByteToSreg(add), __AX__ = scroll, _add_scroll_y(__EAX__))
 // add a value to y scroll, keep the low byte in the 0-0xef range
 // returns y scroll, which will have to be passed to set_scroll_y
 
 
 int __fastcall__ _sub_scroll_y(unsigned long args);
-#define sub_scroll_y(sub, scroll) (loadByteInSreg(sub), __AX__ = scroll, _sub_scroll_y(__EAX__))
+#define sub_scroll_y(sub, scroll) (storeByteToSreg(sub), __AX__ = scroll, _sub_scroll_y(__EAX__))
 // subtract a value from y scroll, keep the low byte in the 0-0xef range
 // returns y scroll, which will have to be passed to set_scroll_y
 
 
 int __fastcall__ _get_ppu_addr(unsigned long args);
-#define get_ppu_addr(nt, x, y) (loadByteInSreg(nt), __AX__ = (x<<8)|y, _get_ppu_addr(__EAX__))
+#define get_ppu_addr(nt, x, y) (storeByteToSreg(nt), __AX__ = (x<<8)|y, _get_ppu_addr(__EAX__))
 // gets a ppu address from x and y coordinates (in pixels)
 // x is screen pixels 0-255, y is screen pixels 0-239, nt is nametable 0-3
 
 
 int __fastcall__ _get_at_addr(unsigned long args);
-#define get_at_addr(nt, x, y) (loadByteInSreg(nt), __AX__ = (x<<8)|y, _get_at_addr(__EAX__))
+#define get_at_addr(nt, x, y) (storeByteToSreg(nt), __AX__ = (x<<8)|y, _get_at_addr(__EAX__))
 // gets a ppu address in the attribute table from x and y coordinates (in pixels)
 // x is screen pixels 0-255, y is screen pixels 0-239, nt is nametable 0-3
 
@@ -106,7 +105,7 @@ void __fastcall__ set_mt_pointer(const char * metatiles);
 
 
 void __fastcall__ _buffer_1_mt(unsigned long args);
-#define buffer_1_mt(ppu_address, index) (loadByteInSreg(index), __AX__ = ppu_address, _buffer_1_mt(__EAX__))
+#define buffer_1_mt(ppu_address, index) (storeByteToSreg(index), __AX__ = ppu_address, _buffer_1_mt(__EAX__))
 // will push 1 metatile and 0 attribute bytes to the vram_buffer
 // make sure to set_vram_buffer(), and clear_vram_buffer(), 
 // and set_mt_pointer() 
@@ -140,7 +139,7 @@ void __fastcall__ color_emphasis(char color);
 
 
 void __fastcall__ _xy_split(unsigned long args);
-#define xy_split(x, y) (loadWordInSreg(x), __AX__ = y, _xy_split(__EAX__))
+#define xy_split(x, y) (storeWordToSreg(x), __AX__ = y, _xy_split(__EAX__))
 // a version of split that actually changes the y scroll midscreen
 // requires a sprite zero hit, or will crash
 

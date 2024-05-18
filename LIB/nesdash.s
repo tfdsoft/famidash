@@ -18,7 +18,7 @@
 
 .macpack longbranch
 
-.export _oam_meta_spr_flipped
+.export __oam_meta_spr_flipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
 .export _movement
 .export _music_play, __sfx_play, _music_update
@@ -54,26 +54,16 @@ sprite_data = _sprite_data
 
 .segment "CODE"
 
-_oam_meta_spr_flipped:
-
-    sta <PTR
-    stx <PTR+1
-
-    .define FLIP TEMP+2
-
-    ldy #2      ;3 popa calls replacement, performed in reversed order
-    lda (sp),y
-    dey
-    sta <FLIP
-    lda (sp),y
-    dey
-    sta <SCRX
-    lda (sp),y
-    sta <SCRY
-    
-oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCRY respectively
+__oam_meta_spr_flipped:
+	; AX = data
+	; sreg[0] = x
+	; sreg[1] = y
+    ; xargs[0] = flip
+	sta <PTR
+	stx <PTR+1
 
     ldx SPRID
+	ldy #0
 
 @1:
 
@@ -82,31 +72,31 @@ oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCR
     beq @2
     iny
     clc
-    BIT <FLIP   ;   Check for bit 6 (HFLIP)
+    BIT xargs+0 ;   Check for bit 6 (HFLIP)
     BVC :+      ;__
     EOR #$FF    ;   If HLIPd, then two's complement
 	ADC #($100 - 8)	; Carry is clear
     SEC         ;__
     :           ;
-    adc <SCRX
+    adc sreg+0
     sta OAM_BUF+3,x
     lda (PTR),y     ;y offset
     INY
     clc
-    BIT <FLIP   ;   Check for bit 7 (VFLIP)
+    BIT xargs+0 ;   Check for bit 7 (VFLIP)
     BPL :+      ;__
     EOR #$FF    ;   If VLIPd, then two's complement
 	; ADC #($100 - 16)	; Carry is clear, Y is -16'd because of us using 8x16 mode
     SEC         ;__
     :           ;
-    adc <SCRY
+    adc sreg+1
     sta OAM_BUF+0,x
     lda (PTR),y     ;tile
     iny
     sta OAM_BUF+1,x
     lda (PTR),y     ;attribute
     iny
-    EOR <FLIP
+    EOR xargs+0
     sta OAM_BUF+2,x
     inx
     inx
@@ -115,14 +105,6 @@ oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCR
     jmp @1
 
 @2:
-
-    lda <sp
-    adc #2          ;carry is always set here, so it adds 3
-    sta <sp
-    ; bcc @3    
-    ; inc <sp+1 ; lmao our stack is 32 bytes
-
-@3:
 
     stx SPRID
     rts
@@ -1273,11 +1255,11 @@ drawplayer_center_offsets:
     LDA _player_gravity+0
     BEQ :+
         LDA #$80
-    : STA <FLIP
+    : STA xargs+0
 
 	LDX _player_y+1		;
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[0])-1
-	STX <SCRY			;__
+	STX sreg+1			;__
 
     ; Set up base pointer for jump tables
     LDA _mini       ;
@@ -1303,7 +1285,7 @@ drawplayer_center_offsets:
 	TYA
 	SEC		; I decremented the Y, this is getting back at it
 	ADC drawplayer_center_offsets, X
-    STA <SCRX			;__ The X of oam_meta_spr is temp_x
+    STA sreg+0			;__ The X of oam_meta_spr is temp_x
 
     ; The switch 
     LDX _gamemode
@@ -1385,7 +1367,7 @@ drawplayer_center_offsets:
 		@don:
 			TAX
 			AND #$C0
-			STA <FLIP
+			STA xargs+0	; flip setting
 			TXA
 			AND #$07
 			TAY
@@ -1580,23 +1562,17 @@ drawplayer_center_offsets:
 		; and #$01
 		; beq :+
 		; 	lda #$40
-		; : eor <FLIP
-		; sta <FLIP
+		; : eor xargs+0
+		; sta xargs+0
 
-        lda     sp          ;
-        sec                 ;
-        sbc     #3          ;
-        sta     sp          ;__ sp -= 2
-        ; bcs     :+          ; lmao our stack is 32 bytes
-        ; dec     sp+1        ;__
-        ; :
+
 		LDA (ptr1), Y		;	Load low byte
-		STA <PTR			;__
+		PHA					;__
 		INY					;
 		LDA (ptr1), Y		;	Load high byte
-		STA <PTR+1			;__
-		LDY #$00			;__	THIS IS A MUST	
-		JMP oam_meta_spr_flipped_params_set ;__	oam_meta_spr(temp_x, high_byte(player_y[0])-1, [whatever the fuck we set here]);
+		TAX					;__
+		PLA
+		JMP __oam_meta_spr_flipped ;__	oam_meta_spr(temp_x, high_byte(player_y[0])-1, [whatever the fuck we set here]);
 
     sprite_table_table_lo:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE
@@ -1616,11 +1592,11 @@ drawplayer_common := _drawplayerone::common
     LDA _player_gravity+1
     BEQ :+
         LDA #$80
-    : STA <FLIP
+    : STA xargs+0	; flip
 
     LDX _player_y+3		;
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[1])-1
-	STX <SCRY			;__
+	STX sreg+1			;__
 
     ; Set up base pointer for jump tables
     LDA _mini       ;
@@ -1646,7 +1622,7 @@ drawplayer_common := _drawplayerone::common
 	TYA
 	SEC		; I decremented the Y, this is getting back at it
 	ADC drawplayer_center_offsets, X
-    STA <SCRX			;__ The X of oam_meta_spr is temp_x
+    STA sreg+0			;__ The X of oam_meta_spr is temp_x
 
     ; The switch 
     LDX _gamemode
@@ -1728,7 +1704,7 @@ drawplayer_common := _drawplayerone::common
 		@don:
 			TAX
 			AND #$C0
-			STA <FLIP
+			STA xargs+0
 			TXA
 			AND #$07
 			TAY
