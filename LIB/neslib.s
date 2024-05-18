@@ -28,7 +28,7 @@
 	
 	.export _flush_vram_update2, _oam_set, _oam_get
 
-
+	.segment "NESLIB"
 
 ;NMI handler
 

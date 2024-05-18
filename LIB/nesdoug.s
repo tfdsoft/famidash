@@ -8,7 +8,7 @@
 .export _color_emphasis, _xy_split, _gray_line, _seed_rng
 .export _clear_vram_buffer
 
-.segment "CODE_2"
+.segment "NESDOUG"
 
 
 
