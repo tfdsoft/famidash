@@ -49,15 +49,13 @@ void __fastcall__ _sfx_play(unsigned int args);
  * Update the PPU using the VRAM buffer with a single tile repeated LENGTH number of times.
  * Length must not be greater than 0x7f!
  */
-void __fastcall__ _one_vram_buffer_horz_repeat(unsigned long args);
-#define one_vram_buffer_horz_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __AX__ = ppu_address, _one_vram_buffer_horz_repeat(__EAX__))
-
-void __fastcall__ _one_vram_buffer_vert_repeat(unsigned char data, unsigned char len, int ppu_address);
-#define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __AX__ = ppu_address, _one_vram_buffer_vert_repeat(__EAX__))
+void __fastcall__ _one_vram_buffer_repeat(unsigned long args);
+#define one_vram_buffer_horz_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _one_vram_buffer_repeat(__EAX__))
+#define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_VERT, _one_vram_buffer_repeat(__EAX__))
 
 void __fastcall__ _draw_padded_text(unsigned long args);
 #define draw_padded_text(len, total_len, ppu_address) \
-(storeBytesToSreg(total_len, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text(__EAX__))
+(storeBytesToSreg(total_len, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _draw_padded_text(__EAX__))
 #define draw_padded_text_setAddr(data, len, total_len, ppu_address) (tmpptr1 = (void *)data, draw_padded_text(len, total_len, ppu_address))
 
 void __fastcall__ playPCM();

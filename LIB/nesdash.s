@@ -129,17 +129,15 @@ __oam_meta_spr_flipped:
 
 .segment "CODE_2"
 
-.export __one_vram_buffer_horz_repeat
-.proc __one_vram_buffer_horz_repeat
-	; ax = ppu_address
+.export __one_vram_buffer_repeat
+.proc __one_vram_buffer_repeat
+	; xa = ppu_address
 	; sreg[0] = data
 	; sreg[1] = len
 	ldy VRAM_INDEX
-	sta VRAM_BUF+1, y
-	txa
-    ora #$40
-WriteHiByte:
 	sta VRAM_BUF, y
+	txa
+	sta VRAM_BUF+1, y
     ; ptr1 lo byte is len, hi byte is character to repeat
     lda sreg+1
     ora #$80 ; set length + repeat byte
@@ -153,14 +151,6 @@ WriteHiByte:
     adc #4
     sta VRAM_INDEX
 	rts
-.endproc
-.export __one_vram_buffer_vert_repeat
-.proc __one_vram_buffer_vert_repeat
-	ldy VRAM_INDEX
-	sta VRAM_BUF+1, y
-	txa
-    ora #$80 ; vertical update
-    jmp __one_vram_buffer_horz_repeat::WriteHiByte
 .endproc
 
 _init_rld:
@@ -834,11 +824,11 @@ ParallaxBufferCol5:
 	.define totalLength sreg+0
 	.define textLength sreg+1
 
-	; AX = vramPtr
+	; XA = vramPtr
 	LDY VRAM_INDEX
-	STA VRAM_BUF+1, Y	;
+	STA VRAM_BUF, Y	;
 	TXA					;	vram pointer
-	STA VRAM_BUF, Y		;__
+	STA VRAM_BUF+1, Y	;__
 	LDA totalLength		;	total length
 	STA VRAM_BUF+2, Y	;__
 
