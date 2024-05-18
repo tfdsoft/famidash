@@ -25,8 +25,8 @@ void state_game(){
 //	twoplayer = 1;
 
 //	mini = 1;
-    pal_bg((char *)paletteDefault);
-    pal_spr((char *)paletteDefaultSP);
+    pal_bg(paletteDefault);
+    pal_spr(paletteDefaultSP);
 
     load_ground(0);
 

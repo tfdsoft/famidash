@@ -20,15 +20,15 @@
 
 //set bg and spr palettes, data is 32 bytes array
 
-void __fastcall__ pal_all(const char *data);
+void __fastcall__ pal_all(const void *data);
 
 //set bg palette only, data is 16 bytes array
 
-void __fastcall__ pal_bg(const char *data);
+void __fastcall__ pal_bg(const void *data);
 
 //set spr palette only, data is 16 bytes array
 
-void __fastcall__ pal_spr(const char *data);
+void __fastcall__ pal_spr(const void *data);
 
 //set a palette entry, index is 0..31
 
@@ -221,21 +221,21 @@ void __fastcall__ vram_inc(unsigned char n);
 
 //read a block from current address of vram, works only when rendering is turned off
 
-void __fastcall__ vram_read(unsigned char *dst,unsigned int size);
+void __fastcall__ vram_read(void *dst,unsigned int size);
 
 //write a block to current address of vram, works only when rendering is turned off
 
-void __fastcall__ vram_write(const unsigned char *src,unsigned int size);
+void __fastcall__ vram_write(const void *src,unsigned int size);
 
 //unpack RLE data to current address of vram, mostly used for nametables
 
-void __fastcall__ vram_unrle(const unsigned char *data);
+void __fastcall__ vram_unrle(const void *data);
 
 
 
 //like a normal memcpy, but does not return anything
 
-void __fastcall__ memcpy(void *dst,void *src,unsigned int len);
+void __fastcall__ memcpy(void *dst,const void *src,unsigned int len);
 
 //like memset, but does not return anything
 

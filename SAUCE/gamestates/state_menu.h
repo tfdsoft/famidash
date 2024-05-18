@@ -218,7 +218,7 @@ void levelselection() {
 	pal_fade_to_withmusic(4,0);
   	ppu_off();
 	pal_bright(0);
-//    pal_bg((char *)paletteMenu);
+//    pal_bg(paletteMenu);
 	set_scroll_x(0);
     set_scroll_y(0);  
     
@@ -301,7 +301,7 @@ void levelselection() {
 void customize_screen() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
-	pal_bg((char *)paletteMenu);
+	pal_bg(paletteMenu);
 	mmc3_set_8kb_chr(62);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
@@ -587,7 +587,7 @@ void customize_screen() {
 void funsettings() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
-	pal_bg((char *)paletteMenu);
+	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(funsettingscreen);   
 	#include "../defines/mainmenu_charmap.h"
@@ -673,7 +673,7 @@ void funsettings() {
 void settings() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
-	pal_bg((char *)paletteSettings);
+	pal_bg(paletteSettings);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingscreen);   	
 	#include "../defines/mainmenu_charmap.h"
@@ -767,7 +767,7 @@ void settings() {
 void state_menu() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
-    pal_bg((char *)splashMenu);
+    pal_bg(splashMenu);
 
 	mmc3_set_8kb_chr(58);
 
@@ -876,7 +876,7 @@ void bgmtest() {
 	kandotemp=0;
 	pal_fade_to(4,0);
 	ppu_off();
-	pal_bg((char *)paletteMenu);
+	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(bgmtestscreen);   	
 	#include "../defines/mainmenu_charmap.h"

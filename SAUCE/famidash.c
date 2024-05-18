@@ -44,8 +44,8 @@ void main(){
     
 	mmc3_set_8kb_chr(58);
 
-    pal_bg((char *)paletteDefault);
-    pal_spr((char *)paletteDefaultSP);
+    pal_bg(paletteDefault);
+    pal_spr(paletteDefaultSP);
     // use the second set of tiles for sprites
 	// both bg and sprites are set to 0 by default
 	bank_spr(1);
@@ -82,7 +82,7 @@ void main(){
 				else {
 					pal_fade_to_withmusic(4,0);
 					ppu_off();
-					pal_bg((char *)splashMenu);
+					pal_bg(splashMenu);
 					mmc3_set_8kb_chr(58);
 
 					set_scroll_x(0);
