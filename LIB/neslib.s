@@ -1211,7 +1211,6 @@ __memfill:
 @fill_start:
 
 	ldy #0
-	lda <TEMP
 
 @fill_loop:
 
