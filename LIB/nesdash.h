@@ -127,3 +127,6 @@ extern char PAL_BUF[32];
   __asm__("pla"); \
   (b) = __A__; \
 } while(0);
+
+#define loadWordInSreg(word) (__AX__ = word, __EAX__<<=16)
+#define loadByteInSreg(byte) (__A__ = byte, __asm__("sta sreg+0"))

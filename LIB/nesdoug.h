@@ -38,7 +38,8 @@ unsigned char __fastcall__ get_pad_new(unsigned char pad);
 unsigned char __fastcall__ get_frame_count(void);
 // use this internal value to time events, this ticks up every frame
 
-unsigned char __fastcall__ check_collision(void * object1, void * object2);
+unsigned char __fastcall__ _check_collision(unsigned long args);
+#define check_collision(object1, object2) (loadWordInSreg(object1), __AX__ = (unsigned int)object2, _check_collision(__EAX__))
 // expects an object (struct) where the first 4 bytes are X, Y, width, height
 // you will probably have to pass the address of the object like &object
 // the struct can be bigger than 4 bytes, as long as the first 4 bytes are X, Y, width, height
@@ -61,22 +62,26 @@ void __fastcall__ set_scroll_y(unsigned int y);
 // which aligns it with sprites, which are shifted down 1 pixel
 
 
-int __fastcall__ add_scroll_y(unsigned char add, unsigned int scroll);
+int __fastcall__ _add_scroll_y(unsigned long args);
+#define add_scroll_y(add, scroll) (loadByteInSreg(add), __AX__ = scroll, _add_scroll_y(__EAX__))
 // add a value to y scroll, keep the low byte in the 0-0xef range
 // returns y scroll, which will have to be passed to set_scroll_y
 
 
-int __fastcall__ sub_scroll_y(unsigned char sub, unsigned int scroll);
+int __fastcall__ _sub_scroll_y(unsigned long args);
+#define sub_scroll_y(sub, scroll) (loadByteInSreg(sub), __AX__ = scroll, _sub_scroll_y(__EAX__))
 // subtract a value from y scroll, keep the low byte in the 0-0xef range
 // returns y scroll, which will have to be passed to set_scroll_y
 
 
-int __fastcall__ get_ppu_addr(char nt, char x, char y);
+int __fastcall__ _get_ppu_addr(unsigned long args);
+#define get_ppu_addr(nt, x, y) (loadByteInSreg(nt), __AX__ = (x<<8)|y, _get_ppu_addr(__EAX__))
 // gets a ppu address from x and y coordinates (in pixels)
 // x is screen pixels 0-255, y is screen pixels 0-239, nt is nametable 0-3
 
 
-int __fastcall__ get_at_addr(char nt, char x, char y);
+int __fastcall__ _get_at_addr(unsigned long args);
+#define get_at_addr(nt, x, y) (loadByteInSreg(nt), __AX__ = (x<<8)|y, _get_at_addr(__EAX__))
 // gets a ppu address in the attribute table from x and y coordinates (in pixels)
 // x is screen pixels 0-255, y is screen pixels 0-239, nt is nametable 0-3
 
@@ -132,7 +137,8 @@ void __fastcall__ color_emphasis(char color);
 #define COL_EMP_DARK 0xe0
 
 
-void __fastcall__ xy_split(unsigned int x, unsigned int y);
+void __fastcall__ _xy_split(unsigned long args);
+#define xy_split(x, y) (loadWordInSreg(x), __AX__ = y, _xy_split(__EAX__))
 // a version of split that actually changes the y scroll midscreen
 // requires a sprite zero hit, or will crash
 
