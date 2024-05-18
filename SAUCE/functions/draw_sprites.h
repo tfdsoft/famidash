@@ -80,7 +80,7 @@ void draw_sprites(void){
 			if (temp_y < 0xf0) {
 			needs_reload = 0;
 			spr_type = activesprites_type[index];
-			animation_ptr = (unsigned char*)animation_frame_list[spr_type];
+			animation_ptr = (unsigned char * const)animation_frame_list[spr_type];
 			// If this sprite has animations, then this pointer will not be null
 			if (animation_ptr) {
 				// Reduce the frame counter by one to see if we need to move to the next frame

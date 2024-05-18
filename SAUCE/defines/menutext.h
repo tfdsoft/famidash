@@ -39,20 +39,8 @@ const unsigned char menubgcolors[]={
 
 const unsigned char level1text[]="STEREO ";
 const unsigned char level2text[]="BACK ON";
-const unsigned char level3text[]="                ";
-const unsigned char level4text[]="                ";
 const unsigned char level5text[]="BASE AFTER";
-const unsigned char level6text[]="                ";
-const unsigned char level7text[]="                ";
-const unsigned char level8text[]="                ";
-const unsigned char level9text[]="                ";
-const unsigned char levelAtext[]="                ";
-const unsigned char levelBtext[]="                ";
 const unsigned char levelCtext[]="THEORY OF";
-const unsigned char levelDtext[]="                ";
-const unsigned char levelEtext[]="                ";
-const unsigned char levelFtext[]="                ";
-const unsigned char level10text[]="                ";
 
 const unsigned char level1text2[]="MADNESS";
 const unsigned char level2text2[]="TRACK";

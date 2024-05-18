@@ -43,7 +43,7 @@ METATILES_COUNT .set METATILES_COUNT + 1
 .ident(.sprintf("METATILE_%d_AT", (METATILES_COUNT))) = (<at)
 .ident(.sprintf("METATILE_%d_CL", (METATILES_COUNT))) = (<cl)
 
-.out .sprintf("METATILE_%s = $%02x", name, METATILES_COUNT)
+; .out .sprintf("METATILE_%s = $%02x", name, METATILES_COUNT)
 MetatileReserve .sprintf("%s", name)
 
 .endmacro
