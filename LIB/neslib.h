@@ -240,12 +240,12 @@ void __fastcall__ vram_unrle(const void *data);
 //like a normal memcpy, but does not return anything
 
 void __fastcall__ _memcpy(unsigned long args);
-#define memcpy(dst, src, len) (wxargs[0] = (unsigned int)dst, storeWordToSreg((unsigned int)src), __AX__ = len, _memcpy(__EAX__))
+#define memcpy(dst, src, len) (pxargs[0] = dst, storeWordToSreg((unsigned int)src), __AX__ = len, _memcpy(__EAX__))
 
 //like memset, but does not return anything
 
 void __fastcall__ _memfill(unsigned long args);
-#define memfill(dst, val, len) (wxargs[0] = (unsigned int)dst, storeWordToSreg((unsigned int)len), __A__ = val, _memfill(__EAX__))
+#define memfill(dst, val, len) (pxargs[0] = dst, storeWordToSreg((unsigned int)len), __A__ = val, _memfill(__EAX__))
 
 //delay for N frames
 
