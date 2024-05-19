@@ -23,10 +23,10 @@ const unsigned char hiNTAddrTable[]={
 };
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, NULL, NULL, NULL, NULL
+  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, level18text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 };
 const unsigned char* const leveltexts2[] = {
-  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2
+  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2, level12text2, level13text2, level14text2, level15text2, level16text2, level17text2, level18text2, level19text2, level1Atext2, level1Btext2, level1Ctext2, level1Dtext2, level1Etext2, level1Ftext2, level20text2, level21text2, level22text2, level23text2, level24text2, level25text2, level26text2, level27text2, level28text2, level29text2, level2Atext2, level2Btext2, level2Ctext2, level2Dtext2, level2Etext2, level2Ftext2,
 };
 
 const unsigned char level_text_size[] = {
@@ -42,6 +42,37 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	sizeof(levelCtext) - 1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	sizeof(level18text) - 1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
 	0,
 	0,
 	0,
@@ -64,6 +95,37 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelEtext2) - 1,
 	sizeof(levelFtext2) - 1,
 	sizeof(level10text2) - 1,
+	sizeof(level11text2) - 1,
+	sizeof(level12text2) - 1,
+	sizeof(level13text2) - 1,
+	sizeof(level14text2) - 1,
+	sizeof(level15text2) - 1,
+	sizeof(level16text2) - 1,
+	sizeof(level17text2) - 1,
+	sizeof(level18text2) - 1,
+	sizeof(level19text2) - 1,
+	sizeof(level1Atext2) - 1,
+	sizeof(level1Btext2) - 1,
+	sizeof(level1Ctext2) - 1,
+	sizeof(level1Dtext2) - 1,
+	sizeof(level1Etext2) - 1,
+	sizeof(level1Ftext2) - 1,
+	sizeof(level20text2) - 1,
+	sizeof(level21text2) - 1,
+	sizeof(level22text2) - 1,
+	sizeof(level23text2) - 1,
+	sizeof(level24text2) - 1,
+	sizeof(level25text2) - 1,
+	sizeof(level26text2) - 1,
+	sizeof(level27text2) - 1,
+	sizeof(level28text2) - 1,
+	sizeof(level29text2) - 1,
+	sizeof(level2Atext2) - 1,
+	sizeof(level2Btext2) - 1,
+	sizeof(level2Ctext2) - 1,
+	sizeof(level2Dtext2) - 1,
+	sizeof(level2Etext2) - 1,
+	sizeof(level2Ftext2) - 1,
 };
 
 const char* const coin_counter[] = {
