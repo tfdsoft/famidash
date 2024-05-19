@@ -479,14 +479,6 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 
 @2:
 
-	lda <sp
-	adc #1 ;2			;carry is always set here, so it adds 2
-	sta <sp
-	; bcc @3
-	; inc <sp+1	; lmao our stack is 32 bytes
-
-@3:
-
 	stx SPRID
 	rts
 
