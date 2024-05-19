@@ -128,7 +128,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(level2Ftext2) - 1,
 };
 
-const char* const coin_counter[] = {
+const char coin_counter[][3] = {
   "___",
   "^__",
   "_^_",
@@ -226,8 +226,9 @@ void __fastcall__ refreshmenu(void) {
 // then in the function...
 // combine all three into a single number from 0 - 7 to represent which coins have been grabbed
 		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
+		tmp7 = byte(tmp7<<1) + tmp7;
 // actually draw the coins
-		multi_vram_buffer_horz(coin_counter[tmp7 & 0x7F], 3, NTADR_A(22, 12));
+		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12));
 
 };
 
@@ -781,8 +782,13 @@ void settings() {
 }
 
 
+#include "../defines/mainmenu_charmap.h"
 
-
+#if FLAG_BETA_BUILD
+const unsigned char ver[] = "BETA BUILD";
+#else
+const unsigned char ver[] = "VER";
+#endif
 
 void state_menu() {
 	pal_fade_to_withmusic(4,0);
@@ -807,7 +813,6 @@ void state_menu() {
 	
 	has_practice_point = 0;
 	
-	#include "../defines/mainmenu_charmap.h"
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
 
@@ -822,9 +827,8 @@ void state_menu() {
     vram_unrle(game_start_screen);
 
 	#ifdef FLAG_ENABLE_VER_NUM
-		if (FLAG_BETA_BUILD) multi_vram_buffer_horz("BETA BUILD", 10, NTADR_A(2,2));
-		else {
-			multi_vram_buffer_horz("VER", 3, NTADR_A(2,2));
+		multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(2,2));
+		if (!FLAG_BETA_BUILD) {
 			one_vram_buffer(FLAG_MAJ_VER, NTADR_A(6,2));
 			one_vram_buffer(0x18, NTADR_A(7,2)); // dot
 			one_vram_buffer(FLAG_MIN_VER, NTADR_A(8,2));
