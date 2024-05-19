@@ -806,40 +806,34 @@ ParallaxBufferCol5:
 
 .endproc
 
-.importzp _tmpptr1
 .export __draw_padded_text
-; uses tmpptr1 for data pointer for string
-; and a single long argument for the rest:
-; (textLength<<24)|(totalLength<<16)|(vram_ptr)
-; use a macro to do this shit
+; void __fastcall__ draw_padded_text(const void * data, unsigned char len, unsigned char total_len, unsigned int ppu_address)
 .proc __draw_padded_text
-	; The C code being "ported":
-		; one_vram_buffer_horz_repeat(' ', totalLength, addr);
-		; multi_vram_buffer_horz(data, txtLen, padded_addr);
-	; Instead of ppu_off/on i do it with the VRAM buffer
-	; like a civilised person
+	; XA = ppu_address
+	; sreg[0] = total_len
+	; sreg[1] = len
+	; xargs[0:1] = data
 
-    .define spaceChr $FE
-	.define dataPtr _tmpptr1
-	.define totalLength sreg+0
-	.define textLength sreg+1
+	.define spaceChr $FE
+	.define data xargs+0
+	.define total_len sreg+0
+	.define len sreg+1
 
-	; XA = vramPtr
 	LDY VRAM_INDEX
 	STA VRAM_BUF, Y	;
 	TXA					;	vram pointer
 	STA VRAM_BUF+1, Y	;__
-	LDA totalLength		;	total length
+	LDA total_len		;	total length
 	STA VRAM_BUF+2, Y	;__
 
 	SEC					;   Total padding
-	SBC textLength		;__
+	SBC len				;__
 	LSR					;	Get left offset
 	STA tmp1			;__
 	ADC #$00			;	Get right offset
 	TAY					;__
 
-	LDA totalLength
+	LDA total_len
 	ADC	VRAM_INDEX		;	Carry is guaranteed to be clear by LSR : ADC #$00
 	; If carry is still set, we have big problems
 	; BCS some shit to do
@@ -862,11 +856,11 @@ ParallaxBufferCol5:
 		BNE pad_loop_right
 		
 	main_data:
-		LDY textLength
+		LDY len
 		DEY
 
 	main_data_loop:
-		LDA (<dataPtr), Y
+		LDA (<data), Y
 		STA VRAM_BUF+2, X
 		DEX
 		DEY

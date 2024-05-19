@@ -84,11 +84,11 @@ const char* const coin_counter[] = {
 */
 void __fastcall__ refreshmenu(void) {
 	#include "../defines/color1_charmap.h"
-	tmpptr1 = (void *)leveltexts[level & 0x7F];
-	if (tmpptr1) draw_padded_text(level_text_size[level], 17, NTADR_A(8, 10));
+	__A__ = idx16_hi_NOC(leveltexts, level);
+	if (__A__) draw_padded_text(leveltexts[level & 0x7F], level_text_size[level], 17, NTADR_A(8, 10));
 	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10));
 	// if (leveltexts2[level]) // always true
-	draw_padded_text_setAddr(leveltexts2[level & 0x7F], level_text_size2[level], 17, NTADR_A(8, 11));
+	draw_padded_text(leveltexts2[level & 0x7F], level_text_size2[level], 17, NTADR_A(8, 11));
 
 	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9));
 	one_vram_buffer('z', NTADR_A(8, 9)); }

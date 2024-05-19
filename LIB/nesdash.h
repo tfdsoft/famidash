@@ -1,5 +1,16 @@
 // Custom functions implemented specifically for famidash (some are totally not stolen from famitower)
 
+// replacements for C stack
+
+extern unsigned char xargs[4];
+#pragma zpsym("xargs")
+#define wxargs ((unsigned short * const)xargs)
+#define pxargs ((const void ** const)xargs)
+
+#define storeWordToSreg(word) (__AX__ = word, __EAX__<<=16)
+#define storeBytesToSreg(a, b) (__AX__ = (byte(b)<<8)|byte(a), __EAX__<<=16)
+#define storeByteToSreg(byte) (__A__ = byte, __asm__("sta sreg+0"))
+
 //set metasprite in OAM buffer (vertically flipped)
 //meta sprite is a const unsigned char array, it contains four bytes per sprite
 //in order x offset, y offset, tile, attribute
@@ -54,18 +65,13 @@ void __fastcall__ _one_vram_buffer_repeat(unsigned long args);
 #define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_VERT, _one_vram_buffer_repeat(__EAX__))
 
 void __fastcall__ _draw_padded_text(unsigned long args);
-#define draw_padded_text(len, total_len, ppu_address) \
-(storeBytesToSreg(total_len, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _draw_padded_text(__EAX__))
-#define draw_padded_text_setAddr(data, len, total_len, ppu_address) (tmpptr1 = (void *)data, draw_padded_text(len, total_len, ppu_address))
+#define draw_padded_text(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _draw_padded_text(__EAX__))
 
 void __fastcall__ playPCM();
 
 extern unsigned char parallax_scroll_column;
 extern unsigned char parallax_scroll_column_start;
 
-extern unsigned char xargs[4];
-#pragma zpsym("xargs")
-#define wxargs ((unsigned short * const)xargs)
 
 #define low_word(a) *((unsigned short*)&a)
 #define high_word(a) *((unsigned short*)&a+1)
@@ -96,12 +102,12 @@ extern unsigned char xargs[4];
 #define subloNOC(a, b) (subNOC_b(a, b))|(a & 0xFF00)
 
 // get specific byte from a word array
-#define idx16_lo(arr, idx) (*((char *)arr+((idx<<1))))
-#define idx16_hi(arr, idx) (*((char *)(arr+1)+((idx<<1))))
+#define idx16_lo(arr, idx) (*(((char * const)arr)+((idx<<1))))
+#define idx16_hi(arr, idx) (*(((char * const)(arr+1))+((idx<<1))))
 
 // same as above but idx < 128
-#define idx16_lo_NOC(arr, idx) (*((char *)arr+(byte(idx<<1))))
-#define idx16_hi_NOC(arr, idx) (*(((char *)(arr)+1)+(byte(idx<<1))))
+#define idx16_lo_NOC(arr, idx) (__A__ = idx<<1, __asm__("tay\n lda %v, y", arr), __A__)
+#define idx16_hi_NOC(arr, idx) (__A__ = idx<<1, __asm__("tay\n lda %v+1, y", arr), __A__)
 
 // store a word's high and low bytes into separate places
 #define storeWordSeparately(word, low, high) \
@@ -115,9 +121,9 @@ extern unsigned char xargs[4];
 #define store_short_arr_NOC(arr, idx, word) ( \
     __A__ = idx<<1, \
     __asm__("tay"), \
-    __A__ = low_byte(word), \
+    __A__ = LSB(word), \
     __asm__("sta %v,y", arr), \
-    __A__ = high_byte(word), \
+    __A__ = MSB(word), \
     __asm__("sta %v+1, y", arr))
 
 // set palette color, index 0..31
@@ -134,7 +140,3 @@ extern char PAL_BUF[32];
   __asm__("pla"); \
   (b) = __A__; \
 } while(0);
-
-#define storeWordToSreg(word) (__AX__ = word, __EAX__<<=16)
-#define storeBytesToSreg(a, b) (__AX__ = (byte(b)<<8)|byte(a), __EAX__<<=16)
-#define storeByteToSreg(byte) (__A__ = byte, __asm__("sta sreg+0"))
