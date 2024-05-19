@@ -53,7 +53,7 @@ void x_movement(){
 	}
 
 
-	if (currplayer_y < 0x0600){
+	if (currplayer_y < 0x0600 && scroll_y = 0x08){
 		cube_data[currplayer] |= 0x01;	//DIE if player goes too high
 	}
 	
