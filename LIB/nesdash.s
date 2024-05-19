@@ -10,7 +10,7 @@
 .import _DATA_PTR
 .import pusha, pushax, _lastgcolortype, _lastbgcolortype
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
-.import _increase_parallax_scroll_column, _icon, _whichpcm
+.import _increase_parallax_scroll_column, _icon
 .import FIRST_MUSIC_BANK
 .import _auto_fs_updates
 
@@ -1262,7 +1262,7 @@ drawplayer_center_offsets:
 	; The condition if is temp_x == 0 or is > 0xfc,
 	; this can be expressed as (temp_x - 1) > 0xfb
 	DEY					;
-	CPX #$FC            ;
+	CPY #$FC            ;
 	BCC :+              ;	if(temp_x-1 > 0xfb) temp_x = 1;
 		LDY #$00        ;
 	:                   ;__
@@ -1599,7 +1599,7 @@ drawplayer_common := _drawplayerone::common
 	; The condition if is temp_x == 0 or is > 0xfc,
 	; this can be expressed as (temp_x - 1) > 0xfb
 	DEY					;
-	CPX #$FC            ;
+	CPY #$FC            ;
 	BCC :+              ;	if(temp_x-1 > 0xfb) temp_x = 1;
 		LDY #$00        ;
 	:                   ;__
@@ -1939,6 +1939,11 @@ drawplayer_common := _drawplayerone::common
 .export _playPCM
 .proc _playPCM
 PCM_ptr = _tmp6
+    ; select PCM
+	tay
+    sta tmp1
+	ldx Bank,y
+
     ;enable DMC but disable DPCM
     lda #%00000000
     sta $4010
@@ -1958,16 +1963,7 @@ PCM_ptr = _tmp6
 ;    lda #<GeometryDashPCM
  ;   sta PCM_ptr
  ;   ldx #<.bank(GeometryDashPCM)
- 
-Bank:
-.byte <.bank(GeometryDashPCMA)
-.byte <.bank(GeometryDashPCMB)
-
-	ldy _whichpcm
-	lda Bank,y
-	tax
-
-	ldy #0
+ 	ldy #0
 
     ;play pcm
 @RestartPtr:
@@ -1978,7 +1974,7 @@ Bank:
     jsr mmc3_tmp_prg_bank_1
     inx
 @LoadSample:
-    lda _whichpcm
+    lda tmp1
     beq	@noburn
     jsr BurnCycles
     jsr BurnCycles
@@ -2018,6 +2014,10 @@ BurnCycles:
     php
     plp
     rts
+
+Bank:
+    .byte <.bank(GeometryDashPCMA)
+    .byte <.bank(GeometryDashPCMB)
 .endproc
 
 .popseg
