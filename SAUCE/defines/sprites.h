@@ -1,5 +1,46 @@
 // a 16x16 pixel metasprite
 // cube starts here... lies
+
+
+const unsigned char Explode_1[]={
+
+	  0,  0,0x1D,1,
+	  8,  0,0x1D,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Explode_2[]={
+
+	  0,  0,0xFB,1,
+	  8,  0,0xFB,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Explode_3[]={
+
+	  0,  0,0x1F,1,
+	  8,  0,0x1F,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Explode_4[]={
+
+	  0,  0,0xFD,1,
+	  8,  0,0xFD,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Explode_5[]={
+
+	  0,  0,0xFF,1,
+	  8,  0,0xFF,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char * const Explode_Sprites[] = {Explode_1,Explode_1,Explode_2,Explode_2,Explode_3,Explode_3,Explode_4,Explode_4,Explode_5,Explode_5};
+
+
+
 const unsigned char Practice_Diamond[]={
 
 	  0,  0,0x57,0,

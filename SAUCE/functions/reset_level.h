@@ -7,13 +7,18 @@ void reset_level(void) {
     coins = 0;
 
     if (!DEBUG_MODE && (cube_data[0] & 1 || cube_data[1] & 1)) {
+	robotjumpframe[0] = 0;
+
         sfx_play(sfx_death, 0);
         tmp1 = 0;
 	attempts++;
         while (tmp1 < 30){
             ppu_wait_nmi();
             music_update();
+    oam_clear();	
+	oam_meta_spr(high_byte(player_x[0]), high_byte(player_y[0])-1, Explode_Sprites[robotjumpframe[0]]);
             ++tmp1;
+	    if (robotjumpframe[0] < 10) ++robotjumpframe[0];
             //gray_line();
         }
     }
