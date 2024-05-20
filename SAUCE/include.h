@@ -56,6 +56,9 @@
 #pragma rodata-name (push, "XCD_BANK_03")
 #include "defines/menutext.h" // menu text. obviously.
 #pragma rodata-name (pop)
+#pragma rodata-name (push, "LVL_BANK_00")
+#include "defines/menutext2.h" // menu text. obviously.
+#pragma rodata-name (pop)
 
 
 #include "functions/draw_sprites.h"  // sproit drawlign
