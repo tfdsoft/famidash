@@ -42,16 +42,16 @@ const unsigned char difficulty_pal[] ={
     0x16, 0x30 // KING DEDEdemon
 };
 
-const unsigned short songtime[] = {
+const unsigned short songtime[] = {	//for looping in practice mode
 	5160, //stereo madness
 	4900, //back on track
 	5465, //polargeist
-	15000, //dryout
+	4940, //dryout
 	15000, //base after base
-	15000, //cant let go
-	15000, //jumper
+	4900, //cant let go
+	5285, //jumper
 	15000, //time machine
-	15000, //cycles
+	5240, //cycles
 	15000, //xstep
 	15000, //clutterfunk
 	14000, //menu
