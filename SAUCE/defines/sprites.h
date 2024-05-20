@@ -1608,19 +1608,15 @@ const unsigned char Medium_Light_Right[]={
 	0x80
 };
 
-const unsigned char Long_Light_Left[]={
-	 0, -4,0xF5,3,
-	 8, -4,0xF7,3,
-	 16, -4,0xEF,3,
-	 24, -4,0xF1,3,
+const unsigned char Long_Light_Left[]={//now medium upright light shifted down 8px
+	  4, 8,0xCF,3,
+	  4, -8,0xCB,3,
 	0x80
 };
 
-const unsigned char Long_Light_Right[]={
-	 0, -4,0xF1,3|OAM_FLIP_H,
-	 8, -4,0xEF,3|OAM_FLIP_H,
-	 16, -4,0xF7,3|OAM_FLIP_H,
-	 24, -4,0xF5,3|OAM_FLIP_H,
+const unsigned char Long_Light_Right[]={//now upright chain shifted down 8px
+	  20, 8,0xD7,3,
+	  20, -8,0xD9,3,
 	0x80
 };
 
