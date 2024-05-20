@@ -1,7 +1,4 @@
 // a 16x16 pixel metasprite
-// cube starts here... lies
-
-
 const unsigned char Explode_1[]={
 
 	  0,  0,0x1D,3,
