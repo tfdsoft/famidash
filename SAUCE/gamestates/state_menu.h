@@ -23,66 +23,60 @@ const unsigned char hiNTAddrTable[]={
 };
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, level3text, level4text, level5text, level6text, level7text, level8text, level9text, levelAtext, levelBtext, levelCtext, levelDtext, levelEtext, levelFtext, level10text
+  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, level18text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 };
 const unsigned char* const leveltexts2[] = {
-  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2
+  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2, level12text2, level13text2, level14text2, level15text2, level16text2, level17text2, level18text2, level19text2, level1Atext2, level1Btext2, level1Ctext2, level1Dtext2, level1Etext2, level1Ftext2, level20text2, level21text2, level22text2, level23text2, level24text2, level25text2, level26text2, level27text2, level28text2, level29text2, level2Atext2, level2Btext2, level2Ctext2, level2Dtext2, level2Etext2, level2Ftext2,
 };
 
-#define GAME_MENU_TITLE_X_OFFSET 9
-const unsigned char level_text_padding[] = {
-    GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level1text)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level2text)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level3text)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level4text)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level5text)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level6text)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level7text)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level8text)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level9text)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelAtext)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelBtext)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelCtext)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelDtext)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelEtext)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelFtext)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level10text)) / 2),
-};
-const unsigned char level_text_padding2[] = {
-    GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level1text2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level2text2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level3text2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level4text2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level5text2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level6text2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level7text2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level8text2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level9text2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelAtext2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelBtext2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelCtext2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelDtext2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelEtext2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(levelFtext2)) / 2),
-	GAME_MENU_TITLE_X_OFFSET + ((17 - sizeof(level10text2)) / 2),
-};
 const unsigned char level_text_size[] = {
     sizeof(level1text) - 1,
 	sizeof(level2text) - 1,
-	sizeof(level3text) - 1,
-	sizeof(level4text) - 1,
+	0,
+	0,
 	sizeof(level5text) - 1,
-	sizeof(level6text) - 1,
-	sizeof(level7text) - 1,
-	sizeof(level8text) - 1,
-	sizeof(level9text) - 1,
-	sizeof(levelAtext) - 1,
-	sizeof(levelBtext) - 1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
 	sizeof(levelCtext) - 1,
-	sizeof(levelDtext) - 1,
-	sizeof(levelEtext) - 1,
-	sizeof(levelFtext) - 1,
-	sizeof(level10text) - 1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	sizeof(level18text) - 1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
 };
 const unsigned char level_text_size2[] = {
     sizeof(level1text2) - 1,
@@ -101,9 +95,40 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelEtext2) - 1,
 	sizeof(levelFtext2) - 1,
 	sizeof(level10text2) - 1,
+	sizeof(level11text2) - 1,
+	sizeof(level12text2) - 1,
+	sizeof(level13text2) - 1,
+	sizeof(level14text2) - 1,
+	sizeof(level15text2) - 1,
+	sizeof(level16text2) - 1,
+	sizeof(level17text2) - 1,
+	sizeof(level18text2) - 1,
+	sizeof(level19text2) - 1,
+	sizeof(level1Atext2) - 1,
+	sizeof(level1Btext2) - 1,
+	sizeof(level1Ctext2) - 1,
+	sizeof(level1Dtext2) - 1,
+	sizeof(level1Etext2) - 1,
+	sizeof(level1Ftext2) - 1,
+	sizeof(level20text2) - 1,
+	sizeof(level21text2) - 1,
+	sizeof(level22text2) - 1,
+	sizeof(level23text2) - 1,
+	sizeof(level24text2) - 1,
+	sizeof(level25text2) - 1,
+	sizeof(level26text2) - 1,
+	sizeof(level27text2) - 1,
+	sizeof(level28text2) - 1,
+	sizeof(level29text2) - 1,
+	sizeof(level2Atext2) - 1,
+	sizeof(level2Btext2) - 1,
+	sizeof(level2Ctext2) - 1,
+	sizeof(level2Dtext2) - 1,
+	sizeof(level2Etext2) - 1,
+	sizeof(level2Ftext2) - 1,
 };
 
-const char* coin_counter[] = {
+const char coin_counter[][3] = {
   "___",
   "^__",
   "_^_",
@@ -121,16 +146,11 @@ const char* coin_counter[] = {
 */
 void __fastcall__ refreshmenu(void) {
 	#include "../defines/color1_charmap.h"
-	// Clear out the previous title
-	one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 11));
-	// center this by offseting the write by the padding amount
-	multi_vram_buffer_horz((const char*)leveltexts[level],
-		level_text_size[level],
-		NTADR_A(level_text_padding[level], 10));
-
-	multi_vram_buffer_horz((const char*)leveltexts2[level],
-		level_text_size2[level],
-		NTADR_A(level_text_padding2[level], 11));
+	__A__ = idx16_hi_NOC(leveltexts, level);
+	if (__A__) draw_padded_text(leveltexts[level & 0x7F], level_text_size[level], 17, NTADR_A(8, 10));
+	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10));
+	// if (leveltexts2[level]) // always true
+	draw_padded_text(leveltexts2[level & 0x7F], level_text_size2[level], 17, NTADR_A(8, 11));
 
 	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9));
 	one_vram_buffer('z', NTADR_A(8, 9)); }
@@ -195,19 +215,35 @@ void __fastcall__ refreshmenu(void) {
 		tmp8++;
 	}
 
-	if (tmp8) one_vram_buffer(0xb0+tmp8, NTADR_A(22,9));
+	if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(22, 9));
 	else one_vram_buffer(' ', NTADR_A(22, 9));
-	one_vram_buffer(0xb0+tmp7, NTADR_A(23,9));
-
+	one_vram_buffer('0'+tmp7, NTADR_A(23, 9));
+//palette stuff
+	pal_col(0,colors_list[level]);
+//	pal_col(0x1,colors_list[level]);
+//	pal_col(0x2,colors_list[level]);
+//	pal_col(0x3,colors_list[level]);
+//	pal_col(0x4,colors_list[level]);
+//	pal_col(0x5,colors_list[level]);
+//	pal_col(0x6,colors_list[level]);
+//	pal_col(0x7,colors_list[level]);
+//	pal_col(0x8,colors_list[level]);
+//	pal_col(0x9,colors_list[level]);
+//	pal_col(0xA,colors_list[level]);
+//	pal_col(0xB,colors_list[level]);
+//	pal_col(0xC,colors_list[level]);
+//	pal_col(0xD,colors_list[level]);
+	pal_col(0xE,colors_list[level]);
 //coin stuff
 	coins = 0;
 
 
 // then in the function...
 // combine all three into a single number from 0 - 7 to represent which coins have been grabbed
-		tmp7 = coin1_obtained[level] | (coin2_obtained[level] << 1) | (coin3_obtained[level] << 2);
+		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
+		tmp7 = byte(tmp7<<1) + tmp7;
 // actually draw the coins
-		multi_vram_buffer_horz(coin_counter[tmp7], 3, NTADR_A(22, 12));
+		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12));
 
 };
 
@@ -218,7 +254,7 @@ void levelselection() {
 	pal_fade_to_withmusic(4,0);
   	ppu_off();
 	pal_bright(0);
-//    pal_bg((char *)paletteMenu);
+//    pal_bg(paletteMenu);
 	set_scroll_x(0);
     set_scroll_y(0);  
     
@@ -301,7 +337,7 @@ void levelselection() {
 void customize_screen() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
-	pal_bg((char *)paletteMenu);
+	pal_bg(paletteMenu);
 	mmc3_set_8kb_chr(62);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
@@ -587,7 +623,7 @@ void customize_screen() {
 void funsettings() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
-	pal_bg((char *)paletteMenu);
+	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(funsettingscreen);   
 	#include "../defines/mainmenu_charmap.h"
@@ -673,7 +709,7 @@ void funsettings() {
 void settings() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
-	pal_bg((char *)paletteSettings);
+	pal_bg(paletteSettings);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingscreen);   	
 	#include "../defines/mainmenu_charmap.h"
@@ -761,13 +797,18 @@ void settings() {
 }
 
 
+#include "../defines/mainmenu_charmap.h"
 
-
+#if FLAG_BETA_BUILD
+const unsigned char ver[] = "BETA BUILD";
+#else
+const unsigned char ver[] = "VER";
+#endif
 
 void state_menu() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
-    pal_bg((char *)splashMenu);
+    pal_bg(splashMenu);
 
 	mmc3_set_8kb_chr(58);
 
@@ -787,7 +828,6 @@ void state_menu() {
 	
 	has_practice_point = 0;
 	
-	#include "../defines/mainmenu_charmap.h"
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
 
@@ -802,9 +842,8 @@ void state_menu() {
     vram_unrle(game_start_screen);
 
 	#ifdef FLAG_ENABLE_VER_NUM
-		if (FLAG_BETA_BUILD) multi_vram_buffer_horz("BETA BUILD", 10, NTADR_A(2,2));
-		else {
-			multi_vram_buffer_horz("VER", 3, NTADR_A(2,2));
+		multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(2,2));
+		if (!FLAG_BETA_BUILD) {
 			one_vram_buffer(FLAG_MAJ_VER, NTADR_A(6,2));
 			one_vram_buffer(0x18, NTADR_A(7,2)); // dot
 			one_vram_buffer(FLAG_MIN_VER, NTADR_A(8,2));
@@ -857,7 +896,7 @@ void state_menu() {
 	}		
 	tmp7 = rand8() & 127;
 	switch (menuselection) {
-		case 0x00: kandowatchesyousleep = 1; if(!tmp7) whichpcm = 1; else whichpcm = 0; playPCM(); levelselection(); return;
+		case 0x00: kandowatchesyousleep = 1; if(!tmp7) __A__ = 1; else __A__ = 0; playPCM(__A__); levelselection(); return;
 		case 0x01: settingvalue = 0; funsettings(); return;
 		case 0x02: gameState = 4; return;
 		case 0x03: settingvalue = 0; settings(); return;
@@ -876,7 +915,7 @@ void bgmtest() {
 	kandotemp=0;
 	pal_fade_to(4,0);
 	ppu_off();
-	pal_bg((char *)paletteMenu);
+	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(bgmtestscreen);   	
 	#include "../defines/mainmenu_charmap.h"

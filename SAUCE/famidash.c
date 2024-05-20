@@ -44,8 +44,8 @@ void main(){
     
 	mmc3_set_8kb_chr(58);
 
-    pal_bg((char *)paletteDefault);
-    pal_spr((char *)paletteDefaultSP);
+    pal_bg(paletteDefault);
+    pal_spr(paletteDefaultSP);
     // use the second set of tiles for sprites
 	// both bg and sprites are set to 0 by default
 	bank_spr(1);
@@ -82,7 +82,7 @@ void main(){
 				else {
 					pal_fade_to_withmusic(4,0);
 					ppu_off();
-					pal_bg((char *)splashMenu);
+					pal_bg(splashMenu);
 					mmc3_set_8kb_chr(58);
 
 					set_scroll_x(0);
@@ -150,31 +150,9 @@ void setdefaultoptions() {
 			coin1_obtained[tmp2] = 0;
 			coin2_obtained[tmp2] = 0;
 			coin3_obtained[tmp2] = 0;
-		}
-
-		tmp2 = 0;
-		while (tmp2 <= LEVEL_COUNT) {
 			LEVELCOMPLETE[tmp2] = 0;
-			tmp2++;
 		}
-		SRAM_VALIDATE[0x0E] = 0;
-		SRAM_VALIDATE[0x0F] = 0;
-		SRAM_VALIDATE[0x10] = 0;
-		SRAM_VALIDATE[0x11] = 0;
-		SRAM_VALIDATE[0x12] = 0;
-		SRAM_VALIDATE[0x13] = 0;
-		SRAM_VALIDATE[0x14] = 0;
-		SRAM_VALIDATE[0x15] = 0;
-		SRAM_VALIDATE[0x16] = 0;
-		SRAM_VALIDATE[0x17] = 0;
-		SRAM_VALIDATE[0x18] = 0;
-		SRAM_VALIDATE[0x19] = 0;
-		SRAM_VALIDATE[0x1A] = 0;
-		SRAM_VALIDATE[0x1B] = 0;
-		SRAM_VALIDATE[0x1C] = 0;
-		SRAM_VALIDATE[0x1D] = 0;
-		SRAM_VALIDATE[0x1E] = 0;
-		SRAM_VALIDATE[0x1F] = 0;
+		memfill(SRAM_VALIDATE+0x0E, 0, 0x1F-(0x0E - 1));
 		twoplayer = 0;
 		//musicoff = 0;
 		//sfxoff = 0;

@@ -25,8 +25,8 @@ void state_game(){
 //	twoplayer = 1;
 
 //	mini = 1;
-    pal_bg((char *)paletteDefault);
-    pal_spr((char *)paletteDefaultSP);
+    pal_bg(paletteDefault);
+    pal_spr(paletteDefaultSP);
 
     load_ground(0);
 
@@ -352,7 +352,7 @@ void state_game(){
 			movement();
 
 			if (!DEBUG_MODE) {
-				if (!invincible_counter && !(kandoframecnt & 0x01)) bg_coll_death();
+				if (!invincible_counter) bg_coll_death();
 			}
 
 			mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing2));
@@ -363,7 +363,9 @@ void state_game(){
 
 			mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 			if ((kandoframecnt & 0x01)) sprite_collide();
-
+			if(!DEBUG_MODE && cube_data[1] & 0x01) {
+				reset_level();
+			}
 			currplayer = 0;					//give back focus
 			if (twoplayer) controllingplayer = 0;		//give back controls
 			{

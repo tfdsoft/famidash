@@ -10,7 +10,7 @@
 .import _DATA_PTR
 .import pusha, pushax, _lastgcolortype, _lastbgcolortype
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
-.import _increase_parallax_scroll_column, _icon, _whichpcm
+.import _increase_parallax_scroll_column, _icon
 .import FIRST_MUSIC_BANK
 .import _auto_fs_updates
 
@@ -18,11 +18,10 @@
 
 .macpack longbranch
 
-.export _oam_meta_spr_flipped
+.export __oam_meta_spr_flipped
 .export _init_rld, _unrle_next_column, _draw_screen_R
-; .export _refreshmenu
 .export _movement
-.export _music_play, _sfx_play, _music_update
+.export _music_play, __sfx_play, _music_update
 
 .importzp _level_data, _sprite_data
 level_data = _level_data
@@ -55,26 +54,16 @@ sprite_data = _sprite_data
 
 .segment "CODE"
 
-_oam_meta_spr_flipped:
-
-    sta <PTR
-    stx <PTR+1
-
-    .define FLIP TEMP+2
-
-    ldy #2      ;3 popa calls replacement, performed in reversed order
-    lda (sp),y
-    dey
-    sta <FLIP
-    lda (sp),y
-    dey
-    sta <SCRX
-    lda (sp),y
-    sta <SCRY
-    
-oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCRY respectively
+__oam_meta_spr_flipped:
+	; AX = data
+	; sreg[0] = x
+	; sreg[1] = y
+    ; xargs[0] = flip
+	sta <PTR
+	stx <PTR+1
 
     ldx SPRID
+	ldy #0
 
 @1:
 
@@ -83,31 +72,31 @@ oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCR
     beq @2
     iny
     clc
-    BIT <FLIP   ;   Check for bit 6 (HFLIP)
+    BIT xargs+0 ;   Check for bit 6 (HFLIP)
     BVC :+      ;__
     EOR #$FF    ;   If HLIPd, then two's complement
 	ADC #($100 - 8)	; Carry is clear
     SEC         ;__
     :           ;
-    adc <SCRX
+    adc sreg+0
     sta OAM_BUF+3,x
     lda (PTR),y     ;y offset
     INY
     clc
-    BIT <FLIP   ;   Check for bit 7 (VFLIP)
+    BIT xargs+0 ;   Check for bit 7 (VFLIP)
     BPL :+      ;__
     EOR #$FF    ;   If VLIPd, then two's complement
 	; ADC #($100 - 16)	; Carry is clear, Y is -16'd because of us using 8x16 mode
     SEC         ;__
     :           ;
-    adc <SCRY
+    adc sreg+1
     sta OAM_BUF+0,x
     lda (PTR),y     ;tile
     iny
     sta OAM_BUF+1,x
     lda (PTR),y     ;attribute
     iny
-    EOR <FLIP
+    EOR xargs+0
     sta OAM_BUF+2,x
     inx
     inx
@@ -116,14 +105,6 @@ oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCR
     jmp @1
 
 @2:
-
-    lda <sp
-    adc #2          ;carry is always set here, so it adds 3
-    sta <sp
-    ; bcc @3    
-    ; inc <sp+1 ; lmao our stack is 32 bytes
-
-@3:
 
     stx SPRID
     rts
@@ -148,23 +129,20 @@ oam_meta_spr_flipped_params_set: ; Put &data into PTR, X and Y into SCRX and SCR
 
 .segment "CODE_2"
 
-.export _one_vram_buffer_horz_repeat
-.proc _one_vram_buffer_horz_repeat
-.import popptr1
+.export __one_vram_buffer_repeat
+.proc __one_vram_buffer_repeat
+	; xa = ppu_address
+	; sreg[0] = data
+	; sreg[1] = len
 	ldy VRAM_INDEX
-	sta VRAM_BUF+1, y
-	txa
-    ora #$40
-WriteHiByte:
 	sta VRAM_BUF, y
-		sty TEMP ;popa uses y
-	jsr popptr1 ; pop two bytes from c stack into ptr1
-		ldy TEMP
+	txa
+	sta VRAM_BUF+1, y
     ; ptr1 lo byte is len, hi byte is character to repeat
-    lda ptr1
+    lda sreg+1
     ora #$80 ; set length + repeat byte
 	sta VRAM_BUF+2, y
-    lda ptr1+1
+    lda sreg+0
 	sta VRAM_BUF+3, y
 	lda #$ff ;=NT_UPD_EOF
 	sta VRAM_BUF+4, y
@@ -173,14 +151,6 @@ WriteHiByte:
     adc #4
     sta VRAM_INDEX
 	rts
-.endproc
-.export _one_vram_buffer_vert_repeat
-.proc _one_vram_buffer_vert_repeat
-	ldy VRAM_INDEX
-	sta VRAM_BUF+1, y
-	txa
-    ora #$80 ; vertical update
-    jmp _one_vram_buffer_horz_repeat::WriteHiByte
 .endproc
 
 _init_rld:
@@ -836,112 +806,81 @@ ParallaxBufferCol5:
 
 .endproc
 
-; _refreshmenu:
-; 	; The C code being "ported":
-; 		; one_vram_buffer(0xD1+level, NTADR_A(29,24));
-; 		; ppu_off();
-; 		; vram_adr(NTADR_A(2,25));	
-; 		; switch (level){
-; 		; 	case 0x0N:  N = 1..7
-; 		; 		for(tmp1=0;levelKtext[tmp1];++tmp1){
-; 		; 			vram_put(0xA0+levelNtext[tmp1]);
-; 		; 		};
-; 		; 		break;
-; 		; }		
-; 		; ppu_on_all();
-; 		; return;
-; 	; Instead of ppu_off/on i do it with the VRAM buffer
-; 	; like a civilised person
-; 	LDY VRAM_INDEX
-; 	;! THE ADDRESS CORRESPONDING TO NTADR_A(29,24) IS
-; 	;! $231D. THIS IS HARDCODED, CHANGE THESE LINES IF
-; 	;! YOU WANT TO CHANGE THE POSITION OF IT
-; ;	LDA #$23			;
-; ;	STA VRAM_BUF, Y		;
-; ;	LDA #$1D			;
-; ;	STA VRAM_BUF+1, Y	;	one_vram_buffer(0xD1+level, NTADR_A(29,24));
-; ;	LDA _level			;	(Displays the level number)
-; ;	CLC					;
-; ;	ADC #$D1			;
-; ;	STA VRAM_BUF+2, Y	;__
+.export __draw_padded_text
+; void __fastcall__ draw_padded_text(const void * data, unsigned char len, unsigned char total_len, unsigned int ppu_address)
+.proc __draw_padded_text
+	; XA = ppu_address
+	; sreg[0] = total_len
+	; sreg[1] = len
+	; xargs[0:1] = data
 
-; 	;! THE ADDRESS CORRESPONDING TO NTADR_A(2,25) IS
-; 	;! $20A2, AND OR'D WITH THE HORIZONTAL UPDATE FLAG
-; 	;! IT BECOMES $64A2. THIS IS HARDCODED, CHANGE THESE
-; 	;! LINES IF YOU WANT TO CHANGE THE POSITION OF IT
-; 	LDA #$65			;
-; 	STA VRAM_BUF, Y	;   ~ vram_adr(NTADR_A(2,25));
-; 	LDA #$CE			;
-; 	STA VRAM_BUF+1, Y	;__
-; 	LDA #15				;	Const length of 15
-; 	STA VRAM_BUF+2, Y	;__
+	.define spaceChr $FE
+	.define data xargs+0
+	.define total_len sreg+0
+	.define len sreg+1
 
-; 	LDX _level					;
-; 	LDA @string_ptrs_lo, X	    ;   Load low byte of lvl name pointer
-; 	STA <PTR					;__
-; 	LDA @string_ptrs_hi, X	    ;   Load high byte of lvl name pointer
-; 	STA <PTR+1					;__
-; 	LDA @padding, X			    ;
-; 	LSR							;	Get left offset
-; 	TAX							;__
-; 	ADC #$00					;	Get right offset
-; 	STA <TEMP+3					;__
+	LDY VRAM_INDEX
+	STA VRAM_BUF, Y	;
+	TXA					;	vram pointer
+	STA VRAM_BUF+1, Y	;__
+	LDA total_len		;	total length
+	STA VRAM_BUF+2, Y	;__
 
-; 	CPX #$00	; Had to do this, very sorry
-; 	BEQ @main_data
+	SEC					;   Total padding
+	SBC len				;__
+	LSR					;	Get left offset
+	STA tmp1			;__
+	ADC #$00			;	Get right offset
+	TAY					;__
 
-; 	LDA #$C0	; Space char
+	LDA total_len
+	ADC	VRAM_INDEX		;	Carry is guaranteed to be clear by LSR : ADC #$00
+	; If carry is still set, we have big problems
+	; BCS some shit to do
+	TAX
+    ADC #$03
+    STA VRAM_INDEX
 
-; 	@pad_loop_left:
-; 		STA VRAM_BUF+3, Y
-; 		INY
-; 		DEX
-; 		BNE @pad_loop_left
-	
-; 	@main_data:
-; 	; No need to LDX #$00, as it's either 0 from the prev loop or 0 left padding
-; 		LDA (<PTR, X)	; Load byte
+	LDA #$FF			;	Finish off the write
+	STA VRAM_BUF+3, X	;__
 
-; 	@main_data_loop:
-; 		CLC
-; 		ADC #$A0
-; 		STA VRAM_BUF+3, Y
-; 		INY
-; 		INCW <PTR
-; 		LDA (<PTR, X)			;	Load byte
-; 		BNE @main_data_loop		;__ Continue if not 0
-	
-; 	LDX <TEMP+3
-; 	BEQ @end
+	CPY #$00	; Had to do this, very sorry
+	BEQ main_data
 
-; 	LDA #$C0
+	LDA #spaceChr
 
-; 	@pad_loop_right:
-; 		STA VRAM_BUF+3, Y
-; 		INY
-; 		DEX
-; 		BNE @pad_loop_right
-	
-; 	@end:
-; 	LDA #$FF			;	Finish off the write
-; 	STA VRAM_BUF+3, Y	;__
+	pad_loop_right:
+		STA VRAM_BUF+2, X
+		DEX
+		DEY
+		BNE pad_loop_right
+		
+	main_data:
+		LDY len
+		DEY
 
-; 	TYA				;
-; 	CLC				;	Adjust vram index
-; 	ADC #$06		;
-; 	STA VRAM_INDEX	;__
+	main_data_loop:
+		LDA (<data), Y
+		STA VRAM_BUF+2, X
+		DEX
+		DEY
+		BPL main_data_loop
 
+	LDY tmp1	;	Pad left amount
+	BEQ fin		;__
 
+	LDA #spaceChr
 
-; 	RTS
+	pad_loop_left:
+		STA VRAM_BUF+2, X
+		DEX
+		DEY
+		BNE pad_loop_left
 
-; @string_ptrs_lo:
-;     .byte <_level1text, <_level2text, <_level3text, <_level4text, <_level5text, <_level6text, <_level7text, <_level8text, <_level9text, <_levelAtext, <_levelBtext, <_levelCtext, <_levelDtext, <_levelEtext, <_levelFtext
-; @string_ptrs_hi:
-;     .byte >_level1text, >_level2text, >_level3text, >_level4text, >_level5text, >_level6text, >_level7text, >_level8text, >_level9text, >_levelAtext, >_levelBtext, >_levelCtext, >_levelDtext, >_levelEtext, >_levelFtext
-; @padding:
-;     ; Calculation: 15 - length of string
-;     .byte 1, 2, 5, 8, 0, 4, 9, 3, 9, 10, 3, 11, 10, 10, 10
+	fin:
+		RTS
+
+.endproc
 
 ;void __fastcall__ movement(void);
 .pushseg
@@ -1029,9 +968,9 @@ music_counts:
 
 ; void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
 .import _options
-.proc _sfx_play  
-    tax
-    jsr popa
+.proc __sfx_play  
+    ; x = sfx
+	; a = channel
 
     bit _options ; bit 6 is copied to the overflow flag  
     bvc play  
@@ -1289,7 +1228,7 @@ drawcube_sprite_way:
 
 
 drawplayer_center_offsets:
-	;	Cub	Shp	Bal	UFO	RBT	SPI	Wav
+	;		Cub	Shp	Bal	UFO	RBT	SPI	Wav
 	.byte	8,	8,	8,	8,	12,	12,	8	; normal size
 	.byte	4,	12,	4,	12,	12,	12,	12	; mini 
 
@@ -1300,11 +1239,11 @@ drawplayer_center_offsets:
     LDA _player_gravity+0
     BEQ :+
         LDA #$80
-    : STA <FLIP
+    : STA xargs+0
 
 	LDX _player_y+1		;
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[0])-1
-	STX <SCRY			;__
+	STX sreg+1			;__
 
     ; Set up base pointer for jump tables
     LDA _mini       ;
@@ -1323,14 +1262,14 @@ drawplayer_center_offsets:
 	; The condition if is temp_x == 0 or is > 0xfc,
 	; this can be expressed as (temp_x - 1) > 0xfb
 	DEY					;
-	CPX #$FC            ;
+	CPY #$FC            ;
 	BCC :+              ;	if(temp_x-1 > 0xfb) temp_x = 1;
 		LDY #$00        ;
 	:                   ;__
 	TYA
 	SEC		; I decremented the Y, this is getting back at it
 	ADC drawplayer_center_offsets, X
-    STA <SCRX			;__ The X of oam_meta_spr is temp_x
+    STA sreg+0			;__ The X of oam_meta_spr is temp_x
 
     ; The switch 
     LDX _gamemode
@@ -1412,7 +1351,7 @@ drawplayer_center_offsets:
 		@don:
 			TAX
 			AND #$C0
-			STA <FLIP
+			STA xargs+0	; flip setting
 			TXA
 			AND #$07
 			TAY
@@ -1607,23 +1546,17 @@ drawplayer_center_offsets:
 		; and #$01
 		; beq :+
 		; 	lda #$40
-		; : eor <FLIP
-		; sta <FLIP
+		; : eor xargs+0
+		; sta xargs+0
 
-        lda     sp          ;
-        sec                 ;
-        sbc     #3          ;
-        sta     sp          ;__ sp -= 2
-        ; bcs     :+          ; lmao our stack is 32 bytes
-        ; dec     sp+1        ;__
-        ; :
+
 		LDA (ptr1), Y		;	Load low byte
-		STA <PTR			;__
+		PHA					;__
 		INY					;
 		LDA (ptr1), Y		;	Load high byte
-		STA <PTR+1			;__
-		LDY #$00			;__	THIS IS A MUST	
-		JMP oam_meta_spr_flipped_params_set ;__	oam_meta_spr(temp_x, high_byte(player_y[0])-1, [whatever the fuck we set here]);
+		TAX					;__
+		PLA
+		JMP __oam_meta_spr_flipped ;__	oam_meta_spr(temp_x, high_byte(player_y[0])-1, [whatever the fuck we set here]);
 
     sprite_table_table_lo:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE
@@ -1643,11 +1576,11 @@ drawplayer_common := _drawplayerone::common
     LDA _player_gravity+1
     BEQ :+
         LDA #$80
-    : STA <FLIP
+    : STA xargs+0	; flip
 
     LDX _player_y+3		;
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[1])-1
-	STX <SCRY			;__
+	STX sreg+1			;__
 
     ; Set up base pointer for jump tables
     LDA _mini       ;
@@ -1666,14 +1599,14 @@ drawplayer_common := _drawplayerone::common
 	; The condition if is temp_x == 0 or is > 0xfc,
 	; this can be expressed as (temp_x - 1) > 0xfb
 	DEY					;
-	CPX #$FC            ;
+	CPY #$FC            ;
 	BCC :+              ;	if(temp_x-1 > 0xfb) temp_x = 1;
 		LDY #$00        ;
 	:                   ;__
 	TYA
 	SEC		; I decremented the Y, this is getting back at it
 	ADC drawplayer_center_offsets, X
-    STA <SCRX			;__ The X of oam_meta_spr is temp_x
+    STA sreg+0			;__ The X of oam_meta_spr is temp_x
 
     ; The switch 
     LDX _gamemode
@@ -1755,7 +1688,7 @@ drawplayer_common := _drawplayerone::common
 		@don:
 			TAX
 			AND #$C0
-			STA <FLIP
+			STA xargs+0
 			TXA
 			AND #$07
 			TAY
@@ -1998,7 +1931,7 @@ drawplayer_common := _drawplayerone::common
 	RTS
 
 	ReturnColAll:
-	LDA #$07       ; return COL_ALL
+	LDA #$09       ; return COL_FLOOR_CEIL
 	RTS
 
 .endproc
@@ -2006,6 +1939,11 @@ drawplayer_common := _drawplayerone::common
 .export _playPCM
 .proc _playPCM
 PCM_ptr = _tmp6
+    ; select PCM
+	tay
+    sta tmp1
+	ldx Bank,y
+
     ;enable DMC but disable DPCM
     lda #%00000000
     sta $4010
@@ -2025,16 +1963,7 @@ PCM_ptr = _tmp6
 ;    lda #<GeometryDashPCM
  ;   sta PCM_ptr
  ;   ldx #<.bank(GeometryDashPCM)
- 
-Bank:
-.byte <.bank(GeometryDashPCMA)
-.byte <.bank(GeometryDashPCMB)
-
-	ldy _whichpcm
-	lda Bank,y
-	tax
-
-	ldy #0
+ 	ldy #0
 
     ;play pcm
 @RestartPtr:
@@ -2045,7 +1974,7 @@ Bank:
     jsr mmc3_tmp_prg_bank_1
     inx
 @LoadSample:
-    lda _whichpcm
+    lda tmp1
     beq	@noburn
     jsr BurnCycles
     jsr BurnCycles
@@ -2085,6 +2014,10 @@ BurnCycles:
     php
     plp
     rts
+
+Bank:
+    .byte <.bank(GeometryDashPCMA)
+    .byte <.bank(GeometryDashPCMB)
 .endproc
 
 .popseg

@@ -2,13 +2,13 @@
 
 Metatile "EMPTY", $00, $00, $00, $00, PAL_0, COL_NONE
 
-Metatile "BG1",   $1a, $1b, $2a, $2b, PAL_1, COL_ALL
-Metatile "BG2",   $1a, $1b, $1a, $1b, PAL_1, COL_ALL
+Metatile "BG1",   $1a, $1b, $2a, $2b, PAL_1, COL_FLOOR_CEIL
+Metatile "BG2",   $1a, $1b, $1a, $1b, PAL_1, COL_FLOOR_CEIL
 Metatile "HALF_SLAB_BOTTOM",   $00, $00, $24, $25, PAL_0, COL_BOTTOM
 
 Metatile "SMALL_SAW_BOTTOM_HALF",   $74, $79, $00, $00, PAL_1, COL_DEATH_TOP
-Metatile "BG5",   $1b, $1b, $2b, $2b, PAL_1, COL_ALL
-Metatile "BG6",   $1b, $1b, $1b, $1b, PAL_1, COL_ALL
+Metatile "BG5",   $1b, $1b, $2b, $2b, PAL_1, COL_FLOOR_CEIL
+Metatile "BG6",   $1b, $1b, $1b, $1b, PAL_1, COL_FLOOR_CEIL
 Metatile "BG7",   $20, $21, $30, $31, PAL_0, COL_NONE
 Metatile "MED_SAW_TOP_LEFT",   $00, $e1, $e4, $e5, PAL_0, COL_DEATH_BOTTOM
 Metatile "MED_SAW_TOP_RIGHT",   $e2, $e3, $e6, $e7, PAL_0, COL_DEATH_BOTTOM

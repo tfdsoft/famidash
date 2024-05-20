@@ -20,15 +20,15 @@
 
 //set bg and spr palettes, data is 32 bytes array
 
-void __fastcall__ pal_all(const char *data);
+void __fastcall__ pal_all(const void *data);
 
 //set bg palette only, data is 16 bytes array
 
-void __fastcall__ pal_bg(const char *data);
+void __fastcall__ pal_bg(const void *data);
 
 //set spr palette only, data is 16 bytes array
 
-void __fastcall__ pal_spr(const char *data);
+void __fastcall__ pal_spr(const void *data);
 
 //set a palette entry, index is 0..31
 
@@ -99,8 +99,8 @@ void __fastcall__ oam_size(unsigned char size);
 //set sprite in OAM buffer, chrnum is tile, attr is attribute
 // Note: sprid removed for speed
 
-void __fastcall__ oam_spr(unsigned char x,unsigned char y,unsigned char chrnum,unsigned char attr);
-
+void __fastcall__ _oam_spr(unsigned long args);
+#define oam_spr(x, y, chrnum, attr)(storeBytesToSreg(x, y), __AX__ = (chrnum<<8)|attr, _oam_spr(__EAX__))
 
 
 //set metasprite in OAM buffer (normal)
@@ -109,8 +109,8 @@ void __fastcall__ oam_spr(unsigned char x,unsigned char y,unsigned char chrnum,u
 //x=128 is end of a meta sprite
 // Note: sprid removed for speed
 
-void __fastcall__ oam_meta_spr(unsigned char x,unsigned char y,const unsigned char *data);
-
+void __fastcall__ _oam_meta_spr(unsigned long args);
+#define oam_meta_spr(x, y, data)(storeBytesToSreg(x, y), __AX__ = (unsigned int)data, _oam_meta_spr(__EAX__))
 
 //hide all remaining sprites from given offset
 // Note: sprid removed for speed
@@ -147,7 +147,8 @@ unsigned char __fastcall__ pad_state(unsigned char pad);
 //set scroll, including the top bits
 //it is always applied at beginning of a TV frame, not at the function call
 
-void __fastcall__ scroll(unsigned int x,unsigned int y);
+void __fastcall__ _scroll(unsigned long args);
+#define scroll(x, y) (storeWordToSreg(x), __AX__ = y, _scroll(__EAX__))
 
 //set scroll after screen split invoked by the sprite 0 hit
 //warning: all CPU time between the function call and the actual split point will be wasted!
@@ -205,7 +206,7 @@ void __fastcall__ flush_vram_update(const unsigned char *buf);
 
 //set vram pointer to write operations if you need to write some data to vram
 
-void __fastcall__ vram_adr(unsigned int adr);
+// void __fastcall__ vram_adr(unsigned int adr);
 
 //put a byte at current vram address, works only when rendering is turned off
 
@@ -213,7 +214,8 @@ void __fastcall__ vram_adr(unsigned int adr);
 
 //fill a block with a byte at current vram address, works only when rendering is turned off
 
-void __fastcall__ vram_fill(unsigned char n,unsigned int len);
+void __fastcall__ _vram_fill(unsigned long args);
+#define vram_fill(n, len) (storeByteToSreg(byte(LSB(len))), __AX__ = (byte(MSB(len)) << 8) | byte(n), _vram_fill(__EAX__))
 
 //set vram autoincrement, 0 for +1 and not 0 for +32
 
@@ -221,25 +223,29 @@ void __fastcall__ vram_inc(unsigned char n);
 
 //read a block from current address of vram, works only when rendering is turned off
 
-void __fastcall__ vram_read(unsigned char *dst,unsigned int size);
+void __fastcall__ _vram_read(unsigned long args);
+#define vram_read(dst, size)(storeWordToSreg(dst), __AX__ = size, _vram_read(__EAX__))
 
 //write a block to current address of vram, works only when rendering is turned off
 
-void __fastcall__ vram_write(const unsigned char *src,unsigned int size);
+void __fastcall__ _vram_write(unsigned long args);
+#define vram_write(src, size)(storeWordToSreg(src), __AX__ = size, _vram_write(__EAX__))
 
 //unpack RLE data to current address of vram, mostly used for nametables
 
-void __fastcall__ vram_unrle(const unsigned char *data);
+void __fastcall__ vram_unrle(const void *data);
 
 
 
 //like a normal memcpy, but does not return anything
 
-void __fastcall__ memcpy(void *dst,void *src,unsigned int len);
+void __fastcall__ _memcpy(unsigned long args);
+#define memcpy(dst, src, len) (pxargs[0] = dst, storeWordToSreg((unsigned int)src), __AX__ = len, _memcpy(__EAX__))
 
 //like memset, but does not return anything
 
-void __fastcall__ memfill(void *dst,unsigned char value,unsigned int len);
+void __fastcall__ _memfill(unsigned long args);
+#define memfill(dst, val, len) (pxargs[0] = dst, storeWordToSreg((unsigned int)len), __A__ = val, _memfill(__EAX__))
 
 //delay for N frames
 

@@ -43,7 +43,7 @@
 #define MINI_UFO_MAX_FALLSPEED 0x350
 #define CUBE_MAX_FALLSPEED 0x600
 #define BALL_MAX_FALLSPEED 0x570
-#define MINI_CUBE_MAX_FALLSPEED 0x410
+#define MINI_CUBE_MAX_FALLSPEED 0x600
 #define MINI_BALL_MAX_FALLSPEED 0x410
 
 #define CUBE_GRAVITY 0x6B
@@ -99,8 +99,6 @@ unsigned char pad_new[2];
 unsigned char gamemode;
 unsigned char cube_data[2];
 unsigned short cube_rotate[2];
-
-
 
 unsigned char collision;
 unsigned char collision_L;
@@ -289,7 +287,6 @@ unsigned char kandowavewalk;
 unsigned char player_old_posy[8];
 unsigned char asdftemp;
 unsigned char discorefreshrate;
-unsigned char whichpcm;
 /*
 unsigned char gnd_palette_transition_timer;
 unsigned char original_gnd_palette_idx_0;

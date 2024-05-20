@@ -21,8 +21,8 @@ void state_lvldone() {
 	// Set palettes back to natural colors since we aren't fading back in
 	pal_bright(4);
 
-    pal_bg((char *)paletteMenu);
-    pal_spr((char *)paletteMenu);
+    pal_bg(paletteMenu);
+    pal_spr(paletteMenu);
 
 	mmc3_set_8kb_chr(66);
 
@@ -201,8 +201,8 @@ void state_lvldone() {
 		case 4:
 
 			if (pad_new[0] & PAD_START){
-				// pal_bg((char *)paletteDefault);
-				// pal_spr((char *)paletteDefaultSP);
+				// pal_bg(paletteDefault);
+				// pal_spr(paletteDefaultSP);
 				sfx_play(sfx_exit_level, 0);
 				music_update();
 				gameState = 1;
@@ -228,7 +228,7 @@ void bgmtest() {
 	kandotemp=0;
 	pal_fade_to(4,0);
 	ppu_off();
-	pal_bg((char *)paletteMenu);
+	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(bgmtestscreen);   	
 	#include "../defines/mainmenu_charmap.h"

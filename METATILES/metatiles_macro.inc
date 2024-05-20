@@ -17,6 +17,7 @@ PAL_1 = (1)
 PAL_2 = (2)
 PAL_3 = (3)
 
+COL_FLOOR_CEIL = 9
 COL_DEATH = 8
 COL_ALL   = 7
 COL_BOTTOM   = 6
@@ -42,7 +43,7 @@ METATILES_COUNT .set METATILES_COUNT + 1
 .ident(.sprintf("METATILE_%d_AT", (METATILES_COUNT))) = (<at)
 .ident(.sprintf("METATILE_%d_CL", (METATILES_COUNT))) = (<cl)
 
-.out .sprintf("METATILE_%s = $%02x", name, METATILES_COUNT)
+; .out .sprintf("METATILE_%s = $%02x", name, METATILES_COUNT)
 MetatileReserve .sprintf("%s", name)
 
 .endmacro

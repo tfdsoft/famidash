@@ -1,7 +1,7 @@
 void state_demo(){
     ppu_off();
     
-    pal_bg((char *)paletteMenu);
+    pal_bg(paletteMenu);
 
 	// __asm__("LDA mmc3PRG1Bank \nPHA ");
     // mmc3_set_prg_bank_1(0);

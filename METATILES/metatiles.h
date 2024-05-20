@@ -1,3 +1,4 @@
+#define COL_FLOOR_CEIL 0x09
 #define COL_DEATH 0x08
 #define COL_ALL 0x07
 #define COL_BOTTOM 0x06

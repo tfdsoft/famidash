@@ -1,14 +1,14 @@
 ;written by Doug Fraker
 ;version 1.3, 10/31/2022
 
-.export _set_vram_buffer, _multi_vram_buffer_horz, _multi_vram_buffer_vert, _one_vram_buffer
+.export _set_vram_buffer, __multi_vram_buffer, __one_vram_buffer
 .export _get_pad_new, _get_frame_count
-.export _check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, _add_scroll_y, _sub_scroll_y
-.export  _get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt, _buffer_1_mt
-.export _color_emphasis, _xy_split, _gray_line, _seed_rng
+.export __check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y
+.export  __get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt, __buffer_1_mt
+.export _color_emphasis, __xy_split, _gray_line, _seed_rng
 .export _clear_vram_buffer
 
-.segment "CODE_2"
+.segment "NESDOUG"
 
 
 
@@ -27,70 +27,50 @@ _set_vram_buffer:
 
 	
 ;void multi_vram_buffer_horz(char * data, unsigned char len, int ppu_address);
-_multi_vram_buffer_horz:
-	;note PTR = TEMP and TEMP+1
+;void multi_vram_buffer_vert(char * data, unsigned char len, int ppu_address);
+__multi_vram_buffer:
+	; XA (A IS HIGH!!) = ppu_address (A OR'd with corresponding value)
+	; xargs[0] = len
+	; sreg = data
 
 	ldy VRAM_INDEX
-	sta VRAM_BUF+1, y
-	txa
-	clc
-	adc #$40 ; NT_UPD_HORZ
 	sta VRAM_BUF, y
+	txa
+	sta VRAM_BUF+1, y
 	
 _multi_vram_buffer_common:
-	jsr popa ;len
-		sta TEMP+3 ;loop count
-		ldy VRAM_INDEX
-		sta VRAM_BUF+2, y
-	jsr popax ;pointer to data
-		sta <PTR
-		stx <PTR+1
-	ldx VRAM_INDEX ;need y for source, x is for dest and for vram_index
-		inx
-		inx
-		inx
-		
+	lda xargs+0
+	sta VRAM_BUF+2, y
+	;need y for source, x is for dest and for vram_index
+	ldx VRAM_INDEX
+	inx
+	inx
+	inx
+
 	ldy #0
 @loop:
-	lda (PTR), y
+	lda (sreg), y
 	sta VRAM_BUF, x
 	inx
 	iny
-	cpy TEMP+3
+	cpy xargs+0
 	bne @loop
 	lda #$ff ;=NT_UPD_EOF
 	sta VRAM_BUF, x
 	stx VRAM_INDEX
 	rts
 	
-	
-	
-
-;void multi_vram_buffer_vert(char * data, unsigned char len, int ppu_address);
-_multi_vram_buffer_vert:
-	ldy VRAM_INDEX
-	sta VRAM_BUF+1, y
-	txa
-	clc
-	adc #$80 ; NT_UPD_VERT
-	sta VRAM_BUF, y
-	
-	jmp _multi_vram_buffer_common
-	
-	
-	
-
 ;void one_vram_buffer(unsigned char data, int ppu_address);
-_one_vram_buffer:
+__one_vram_buffer:
+	; ax = ppu_address
+	; sreg[0] = data
 	ldy VRAM_INDEX
 	sta VRAM_BUF+1, y
 	txa
 	sta VRAM_BUF, y
 	iny
 	iny
-		sty <TEMP ;popa uses y
-	jsr popa
-		ldy <TEMP
+	lda sreg
 	sta VRAM_BUF, y
 	iny
 	lda #$ff ;=NT_UPD_EOF
@@ -131,7 +111,7 @@ _get_frame_count:
 PTR2 = TEMP+2 ;and TEMP+3
 
 ;unsigned char __fastcall__ check_collision(void * object1, void * object2);
-_check_collision:
+__check_collision:
 	; sprite object collision code
 	; this would work with any size struct, as long as the first 4 bytes are...
 	; x, y, width, height
@@ -139,21 +119,21 @@ _check_collision:
 
 	sta PTR
 	stx PTR+1 ;set up a pointer to the first object
-	jsr popax
-	sta PTR2
-	stx PTR2+1 ;set up a pointer to the second object
+	; jsr popax
+	; sta sreg
+	; stx sreg+1 ;set up a pointer to the second object
 	
 
 	ldy #0
 	lda (PTR),y
 	sta TEMP+4  	;X 1
-	lda (PTR2), y
+	lda (sreg), y
 	sta TEMP+6		;X 2
 	iny
 	iny
 	lda (PTR),y
 	sta TEMP+5 		;width1
-	lda (PTR2), y
+	lda (sreg), y
 	sta TEMP+7		;width2
 
 	
@@ -180,13 +160,13 @@ _check_collision:
 	ldy #1
 	lda (PTR),y
 	sta TEMP+4  	;Y 1
-	lda (PTR2), y
+	lda (sreg), y
 	sta TEMP+6		;Y 2
 	iny
 	iny
 	lda (PTR),y
 	sta TEMP+5 		;height1
-	lda (PTR2), y
+	lda (sreg), y
 	sta TEMP+7		;height2
 
 ;see if they are colliding y
@@ -294,12 +274,10 @@ _set_scroll_y:
 	
 	
 ;int __fastcall__ add_scroll_y(unsigned char add, unsigned int scroll);
-_add_scroll_y:
-	sta TEMP
-	stx TEMP+1 ;x = high
-	jsr popa
+__add_scroll_y:
+	; sreg[0] = add, AX = scroll
 	clc
-	adc TEMP
+	adc sreg+0
 	bcs @adjust
 	cmp #$f0
 	bcs @adjust
@@ -307,7 +285,6 @@ _add_scroll_y:
 	
 @adjust:
 	adc #15 ;carry is set, same as clc/adc #16
-	ldx TEMP+1 ;x = high
 	inx
 	rts
 	
@@ -315,33 +292,29 @@ _add_scroll_y:
 	
 	
 ;int __fastcall__ sub_scroll_y(unsigned char sub, unsigned int scroll);
-_sub_scroll_y:
+__sub_scroll_y:
+	; sreg[0] = sub, AX = scroll
 	;is a in range?
 	cmp #$f0
 	bcc @ok
 	lda #$00
 @ok:
-	sta TEMP
-	stx TEMP+1 ;x = high
-	jsr popa
-	sta TEMP+2
-	lda TEMP
 	sec
-	sbc TEMP+2
+	sbc sreg
 	bcc @adjust
 	rts
 	
 @adjust:
 	sbc #15 ;carry is clear, same as sec/sbc #16
-	dec TEMP+1 ;x = high
-	ldx TEMP+1
+	dex ;x = high
 	rts
 	
 	
 	
 	
 ;int __fastcall__ get_ppu_addr(char nt, char x, char y);	
-_get_ppu_addr:	
+__get_ppu_addr:	
+	; a = y, x = x, sreg[0] = nt
 	and #$f8 ;y bits
 	ldx #0
 	stx TEMP+1
@@ -351,14 +324,14 @@ _get_ppu_addr:
 	rol TEMP+1
 	sta TEMP
 	
-	jsr popa ;x bits
+	txa ;x bits
 	lsr a
 	lsr a
 	lsr a
 	ora TEMP
 	sta TEMP
 	
-	jsr popa ;nt 0-3
+	lda sreg+0 ;nt 0-3
 	and #3
 	asl a
 	asl a
@@ -373,10 +346,11 @@ _get_ppu_addr:
 	
 ;int __fastcall__ get_at_addr(char nt, char x, char y);
 _get_at_addr:
+	; a = y, x = x, sreg[0] = nt
 	and #$e0
 	sta TEMP
 	
-	jsr popa
+	txa
 	and #$e0
 	lsr a
 	lsr a
@@ -387,7 +361,7 @@ _get_at_addr:
 	ora #$c0
 	sta TEMP
 	
-	jsr popa
+	lda sreg
 	and #3
 	asl a
 	asl a
@@ -620,12 +594,14 @@ _buffer_4_mt:
 	
 	
 ;void __fastcall__ buffer_1_mt(int ppu_address, char metatile);
-_buffer_1_mt:
-	;which metatile, in A
+__buffer_1_mt:
+	; which metatile, in sreg[0]
+	; AX = ppu_address
 
-	sta META_VAR
+	ldy sreg+0
+	sty META_VAR
 	
-	jsr popax ;get ppu address
+	; jsr popax ;get ppu address
 	and #$de ;sanitize, should be even x and y
 	sta TEMP
 	txa
@@ -722,7 +698,7 @@ _color_emphasis:
 	
 	
 ;void __fastcall__ xy_split(unsigned int x, unsigned int y);
-_xy_split:
+__xy_split:
 	;Nametable number << 2 (that is: $00, $04, $08, or $0C) to $2006
 	;Y to $2005
 	;X to $2005
@@ -730,9 +706,9 @@ _xy_split:
 
 	sta <TEMP+2 ;y low
 	stx <TEMP+3
-	jsr popax
-	sta <TEMP ;x low
-	stx <TEMP+1
+	; jsr popax
+	; sta sreg+0 ;x low
+	; stx sreg+1
 	
 ;push to stack in reverse order	
 	lda <TEMP+2 ;low y
@@ -740,14 +716,14 @@ _xy_split:
 	asl a
 	asl a
 	sta <TEMP+4
-	lda <TEMP ;low x
+	lda sreg+0 ;low x
 	lsr a
 	lsr a
 	lsr a
 	ora <TEMP+4
 	pha
 	
-	lda <TEMP ;low x
+	lda sreg+0 ;low x
 	pha
 	
 	lda <TEMP+2 ;low y
@@ -757,7 +733,7 @@ _xy_split:
 	and #$01
 	asl a
 	sta <TEMP+4
-	lda <TEMP+1 ;x high
+	lda sreg+1 ;x high
 	and #$01
 	ora <TEMP+4
 	asl a
