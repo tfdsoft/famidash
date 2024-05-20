@@ -218,7 +218,22 @@ void __fastcall__ refreshmenu(void) {
 	if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(22, 9));
 	else one_vram_buffer(' ', NTADR_A(22, 9));
 	one_vram_buffer('0'+tmp7, NTADR_A(23, 9));
-
+//palette stuff
+	pal_col(0,colors_list[level]);
+//	pal_col(0x1,colors_list[level]);
+//	pal_col(0x2,colors_list[level]);
+//	pal_col(0x3,colors_list[level]);
+//	pal_col(0x4,colors_list[level]);
+//	pal_col(0x5,colors_list[level]);
+//	pal_col(0x6,colors_list[level]);
+//	pal_col(0x7,colors_list[level]);
+//	pal_col(0x8,colors_list[level]);
+//	pal_col(0x9,colors_list[level]);
+//	pal_col(0xA,colors_list[level]);
+//	pal_col(0xB,colors_list[level]);
+//	pal_col(0xC,colors_list[level]);
+//	pal_col(0xD,colors_list[level]);
+	pal_col(0xE,colors_list[level]);
 //coin stuff
 	coins = 0;
 

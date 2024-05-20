@@ -97,7 +97,24 @@ const unsigned char stars_list[] = {
 	0,
 	0,
 };
-
+const unsigned char colors_list[] = {
+	0x12,
+	0x14,
+	0x15,
+	0x16,
+	0x17,
+	0x28,
+	0x2A,
+	0x2C,
+	0x11,
+	0x00,
+	0x00,
+	0x00,
+	0x00,
+	0x00,
+	0x00,
+	0x00,
+};
 // exported from export_levels.py
 
 extern const unsigned char* level_list[];

@@ -280,7 +280,7 @@ void bg_coll_death(void) {
 		else if(tmp3 == COL_DEATH) cube_data[currplayer] = 0x01;
 	}
 
-	if(!DEBUG_MODE && cube_data[currplayer] & 0x01) {
+	if(!DEBUG_MODE && cube_data[0] & 0x01) {
 		reset_level();
 	}
 }

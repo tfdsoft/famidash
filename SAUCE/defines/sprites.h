@@ -37,7 +37,7 @@ const unsigned char Explode_5[]={
 	0x80
 };
 
-const unsigned char * const Explode_Sprites[] = {Explode_1,Explode_1,Explode_2,Explode_2,Explode_3,Explode_3,Explode_4,Explode_4,Explode_5,Explode_5};
+const unsigned char * const Explode_Sprites[] = {Explode_1,Explode_1,Explode_1,Explode_1,Explode_2,Explode_2,Explode_2,Explode_2,Explode_3,Explode_3,Explode_3,Explode_3,Explode_4,Explode_4,Explode_4,Explode_4,Explode_5,Explode_5,Explode_5,Explode_5};
 
 
 

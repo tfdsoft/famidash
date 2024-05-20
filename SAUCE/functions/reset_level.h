@@ -6,7 +6,7 @@ void reset_level(void) {
     if (!has_practice_point) famistudio_music_stop();
     coins = 0;
 
-    if (!DEBUG_MODE && (cube_data[0] & 1 || cube_data[1] & 1)) {
+    if (!DEBUG_MODE && cube_data[0] & 1) {
 	robotjumpframe[0] = 0;
 
         sfx_play(sfx_death, 0);
@@ -16,9 +16,25 @@ void reset_level(void) {
             ppu_wait_nmi();
             music_update();
     oam_clear();	
-	oam_meta_spr(high_byte(player_x[0]), high_byte(player_y[0])-1, Explode_Sprites[robotjumpframe[0]]);
+	oam_meta_spr(high_byte(currplayer_x), high_byte(currplayer_y)-1, Explode_Sprites[robotjumpframe[0]]);
             ++tmp1;
-	    if (robotjumpframe[0] < 10) ++robotjumpframe[0];
+	    if (robotjumpframe[0] < 20) ++robotjumpframe[0];
+            //gray_line();
+        }
+    }
+    else if (!DEBUG_MODE && cube_data[1] & 1) {
+	robotjumpframe[1] = 0;
+
+        sfx_play(sfx_death, 0);
+        tmp1 = 0;
+	attempts++;
+        while (tmp1 < 30){
+		ppu_wait_nmi();
+		music_update();
+		oam_clear();	
+	oam_meta_spr(high_byte(currplayer_x), high_byte(currplayer_y)-1, Explode_Sprites[robotjumpframe[1]]);
+		++tmp1;
+		if (robotjumpframe[1] < 20) ++robotjumpframe[1];
             //gray_line();
         }
     }
