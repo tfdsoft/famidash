@@ -22,7 +22,7 @@ SET all_levels= ^
 
 
 echo Exporting everything %all_levels%
-export_levels.py --folder "the folder that you do stuff in" %all_levels%
+export_levels.py --folder "LEVEL DATA" %all_levels%
 
 echo Export finished.
 pause

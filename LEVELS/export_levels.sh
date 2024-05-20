@@ -19,7 +19,7 @@ all_levels="
             "
 
 echo Exporting everything ${all_levels}
-python3 export_levels.py --folder "the folder that you do stuff in" ${all_levels}
+python3 export_levels.py --folder "LEVEL DATA" ${all_levels}
 
 echo Export finished.
 
