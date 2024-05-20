@@ -81,15 +81,15 @@ const unsigned char * const MINI_BALL[]={Mini_Ball, Mini_Ball, Mini_Ball, Mini_B
 	
 const unsigned char WAVE_0[]={//DOWN
 
-	 -8,  0,0x3A,3,
-	  0,  0,0x3C,3,
+	 -8,  0,0x3B,3,
+	  0,  0,0x3D,3,
 	0x80
 };		
 
 const unsigned char WAVE_1[]={//SLIGHT DOWN
 
-	 -8,  0,0x3B,3,
-	  0,  0,0x3D,3,
+	 -8,  0,0x37,3,
+	  0,  0,0x39,3,
 	0x80
 };	
 const unsigned char WAVE_2[]={//FLAT
@@ -100,53 +100,53 @@ const unsigned char WAVE_2[]={//FLAT
 };	
 const unsigned char WAVE_5[]={//SLIGHT UP
 
-	 -8,  0,0x3B,3|OAM_FLIP_V,
-	  0,  0,0x3D,3|OAM_FLIP_V,
+	 -8,  0,0x37,3|OAM_FLIP_V,
+	  0,  0,0x39,3|OAM_FLIP_V,
 	0x80
 };	
 
 const unsigned char WAVE_6[]={//UP
 
-	 -8,  0,0x3A,3|OAM_FLIP_V,
-	  0,  0,0x3C,3|OAM_FLIP_V,
+	 -8,  0,0x3B,3|OAM_FLIP_V,
+	  0,  0,0x3D,3|OAM_FLIP_V,
 	0x80
 };		
 
 
 
-const unsigned char * const WAVE[] = {WAVE_0, WAVE_0, WAVE_1, WAVE_2, WAVE_2, WAVE_5, WAVE_6, WAVE_6};	
-const unsigned char WAVE2_0[]={
+const unsigned char * const WAVE[] = {WAVE_0, WAVE_0, WAVE_1, WAVE_2, WAVE_2, WAVE_5, WAVE_6, WAVE_6};
+
+const unsigned char WAVE2_0[]={//DOWN
+
+	 -8,  0,0x3B,1,
+	  0,  0,0x3D,1,
+	0x80
+};		
+
+const unsigned char WAVE2_1[]={//SLIGHT DOWN
 
 	 -8,  0,0x37,1,
 	  0,  0,0x39,1,
 	0x80
-};		
-
-const unsigned char WAVE2_1[]={
-
-	 -8,  0,0x1B,1,
-	  0,  0,0x1D,1,
-	0x80
 };	
-const unsigned char WAVE2_2[]={
+const unsigned char WAVE2_2[]={//FLAT
 
 	 -8,  0,0x17,1,
 	  0,  0,0x19,1,
 	0x80
 };		
 	
-
-const unsigned char WAVE2_5[]={
-
-	 -8,  0,0x1B,1|OAM_FLIP_V,
-	  0,  0,0x1D,1|OAM_FLIP_V,
-	0x80
-};	
-
-const unsigned char WAVE2_6[]={
+const unsigned char WAVE2_5[]={//SLIGHT UP
 
 	 -8,  0,0x37,1|OAM_FLIP_V,
 	  0,  0,0x39,1|OAM_FLIP_V,
+	0x80
+};	
+
+const unsigned char WAVE2_6[]={//UP
+
+	 -8,  0,0x3B,1|OAM_FLIP_V,
+	  0,  0,0x3D,1|OAM_FLIP_V,
 	0x80
 };		
 
