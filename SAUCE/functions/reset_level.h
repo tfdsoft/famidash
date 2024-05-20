@@ -16,7 +16,7 @@ void reset_level(void) {
             ppu_wait_nmi();
             music_update();
     oam_clear();	
-	oam_meta_spr(high_byte(currplayer_x), high_byte(currplayer_y)-1, Explode_Sprites[robotjumpframe[0]]);
+	oam_meta_spr(high_byte(currplayer_x)-2, high_byte(currplayer_y)-2, Explode_Sprites[robotjumpframe[0]]);
             ++tmp1;
 	    if (robotjumpframe[0] < 20) ++robotjumpframe[0];
             //gray_line();
