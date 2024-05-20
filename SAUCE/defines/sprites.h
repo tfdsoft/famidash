@@ -1,6 +1,5 @@
 // a 16x16 pixel metasprite
-// cube starts here
-
+// cube starts here... lies
 const unsigned char Practice_Diamond[]={
 
 	  0,  0,0x57,0,
@@ -80,38 +79,36 @@ const unsigned char Mini_Ball[]={
 
 const unsigned char * const MINI_BALL[]={Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball, Mini_Ball};
 	
-const unsigned char WAVE_0[]={
+const unsigned char WAVE_0[]={//DOWN
 
-	 -8,  0,0x37,3,
-	  0,  0,0x39,3,
+	 -8,  0,0x3A,3,
+	  0,  0,0x3C,3,
 	0x80
 };		
 
-const unsigned char WAVE_1[]={
+const unsigned char WAVE_1[]={//SLIGHT DOWN
 
-	 -8,  0,0x1B,3,
-	  0,  0,0x1D,3,
+	 -8,  0,0x3B,3,
+	  0,  0,0x3D,3,
 	0x80
 };	
-const unsigned char WAVE_2[]={
+const unsigned char WAVE_2[]={//FLAT
 
 	 -8,  0,0x17,3,
 	  0,  0,0x19,3,
 	0x80
-};		
-	
+};	
+const unsigned char WAVE_5[]={//SLIGHT UP
 
-const unsigned char WAVE_5[]={
-
-	 -8,  0,0x1B,3|OAM_FLIP_V,
-	  0,  0,0x1D,3|OAM_FLIP_V,
+	 -8,  0,0x3B,3|OAM_FLIP_V,
+	  0,  0,0x3D,3|OAM_FLIP_V,
 	0x80
 };	
 
-const unsigned char WAVE_6[]={
+const unsigned char WAVE_6[]={//UP
 
-	 -8,  0,0x37,3|OAM_FLIP_V,
-	  0,  0,0x39,3|OAM_FLIP_V,
+	 -8,  0,0x3A,3|OAM_FLIP_V,
+	  0,  0,0x3C,3|OAM_FLIP_V,
 	0x80
 };		
 
@@ -226,17 +223,17 @@ const unsigned char * const UFO[] = {UFO_0, UFO_U, UFO_D};
 	
 const unsigned char MINI_UFO_0[]={
 
-	 -4,  -5,0x21,3,
+	 -4,  -5,0x19,3,
 	0x80
 };		
 const unsigned char MINI_UFO_U[]={
 
-	 -4,  -5,0x21,3|OAM_FLIP_H,
+	 -4,  -5,0x19,3,
 	0x80
 };		
 const unsigned char MINI_UFO_D[]={
 
-	 -4,  -5,0x21,3,
+	 -4,  -5,0x19,3,
 	0x80
 };	
 
@@ -277,17 +274,17 @@ const unsigned char * const UFO2[] = {UFO2_0, UFO2_U, UFO2_D};
 	
 const unsigned char MINI_UFO2_0[]={
 
-	 -4,  -5,0x21,1,
+	 -4,  -5,0x19,1,
 	0x80
 };		
 const unsigned char MINI_UFO2_U[]={
 
-	 -4,  -5,0x21,1|OAM_FLIP_H,
+	 -4,  -5,0x19,1|OAM_FLIP_H,
 	0x80
 };		
 const unsigned char MINI_UFO2_D[]={
 
-	 -4,  -5,0x21,1,
+	 -4,  -5,0x19,1,
 	0x80
 };	
 
@@ -595,14 +592,14 @@ const unsigned char COIN_3_X[]={
 
 const unsigned char Ball_0[]={
 
-	 -8,  0,0x3B,3,
-	  0,  0,0x3B,3|OAM_FLIP_H,
+	 -8,  0,0x1B,3,
+	  0,  0,0x1B,3|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Ball_1[]={
 
-	 -8,  0,0x3D,3,
-	  0,  0,0x3D,3|OAM_FLIP_H,
+	 -8,  0,0x3F,3,
+	  0,  0,0x3F,3|OAM_FLIP_H,
 	0x80
 };
 
@@ -611,14 +608,14 @@ const unsigned char * const BALL[]={Ball_0, Ball_0, Ball_0, Ball_0, Ball_1, Ball
 
 const unsigned char Ball2_0[]={
 
-	 -8,  0,0x3B,1,
-	  0,  0,0x3B,1|OAM_FLIP_H,
+	 -8,  0,0x1B,1,
+	  0,  0,0x1B,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Ball2_1[]={
 
-	 -8,  0,0x3D,1,
-	  0,  0,0x3D,1|OAM_FLIP_H,
+	 -8,  0,0x3F,1,
+	  0,  0,0x3F,1|OAM_FLIP_H,
 	0x80
 };
 
@@ -837,25 +834,25 @@ const unsigned char * const SPIDER_JUMP2[]={Spider2_3};
 
 const unsigned char Mini_Spider_0[]={
 
-	 -4,  -4,0x19,3,
+	 -4,  -4,0x21,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_1[]={
 
-	 -4,  -4,0x1B,3,
+	 -4,  -4,0x23,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_2[]={
 
-	 -4,  -4,0x1D,3,
+	 -4,  -4,0x25,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_3[]={
 
-	 -4,  -4,0x1F,3,
+	 -4,  -4,0x27,3,
 	0x80
 };
 
@@ -865,25 +862,25 @@ const unsigned char * const MINI_SPIDER_JUMP[]={Mini_Spider_3};
 
 const unsigned char Mini_Spider2_0[]={
 
-	 -4,  -4,0x19,1,
+	 -4,  -4,0x21,1,
 	0x80
 };
 
 const unsigned char Mini_Spider2_1[]={
 
-	 -4,  -4,0x1B,1,
+	 -4,  -4,0x23,1,
 	0x80
 };
 
 const unsigned char Mini_Spider2_2[]={
 
-	 -4,  -4,0x1D,1,
+	 -4,  -4,0x25,1,
 	0x80
 };
 
 const unsigned char Mini_Spider2_3[]={
 
-	 -4,  -4,0x1F,1,
+	 -4,  -4,0x27,1,
 	0x80
 };
 
