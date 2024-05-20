@@ -1,39 +1,36 @@
 // a 16x16 pixel metasprite
-// cube starts here... lies
-
-
 const unsigned char Explode_1[]={
 
-	  0,  0,0x1D,1,
-	  8,  0,0x1D,1|OAM_FLIP_H,
+	  0,  0,0x1D,3,
+	  8,  0,0x1D,3|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
 const unsigned char Explode_2[]={
 
-	  0,  0,0xFB,1,
-	  8,  0,0xFB,1|OAM_FLIP_H,
+	  0,  0,0xFB,3,
+	  8,  0,0xFB,3|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
 const unsigned char Explode_3[]={
 
-	  0,  0,0x1F,1,
-	  8,  0,0x1F,1|OAM_FLIP_H,
+	  0,  0,0x1F,3,
+	  8,  0,0x1F,3|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
 const unsigned char Explode_4[]={
 
-	  0,  0,0xFD,1,
-	  8,  0,0xFD,1|OAM_FLIP_H,
+	  0,  0,0xFD,3,
+	  8,  0,0xFD,3|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
 const unsigned char Explode_5[]={
 
-	  0,  0,0xFF,1,
-	  8,  0,0xFF,1|OAM_FLIP_H,
+	  0,  0,0xFF,3,
+	  8,  0,0xFF,3|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
