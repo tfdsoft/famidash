@@ -37,16 +37,6 @@ void draw_sprites(void){
 		else if (long_temp_x < 10) { }
 	}
 
-	if (trails || gamemode == 6) {
-		oam_meta_spr(high_byte(player_x[0]) - 0x20, player_old_posy[7], Trail_Circle[0]);
-		oam_meta_spr(high_byte(player_x[0]) - 0x1C, player_old_posy[6], Trail_Circle[0]);
-		oam_meta_spr(high_byte(player_x[0]) - 0x18, player_old_posy[5], Trail_Circle[0]);
-		oam_meta_spr(high_byte(player_x[0]) - 0x14, player_old_posy[4], Trail_Circle[0]);
-		oam_meta_spr(high_byte(player_x[0]) - 0x10, player_old_posy[3], Trail_Circle[0]);
-		oam_meta_spr(high_byte(player_x[0]) - 0xC, player_old_posy[2], Trail_Circle[0]);
-		oam_meta_spr(high_byte(player_x[0]) - 0x8, player_old_posy[1], Trail_Circle[0]);
-		oam_meta_spr(high_byte(player_x[0]) - 0x4, player_old_posy[0], Trail_Circle[0]);
-	}
 
         shuffle_offset += 11;								//-----------|
         if (shuffle_offset >= max_loaded_sprites) {					//           |
@@ -114,6 +104,16 @@ void draw_sprites(void){
 			}
 		}
 		
+	}
+	if (trails || gamemode == 6) {
+		oam_meta_spr(high_byte(player_x[0]) - 0x20, player_old_posy[7], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x1C, player_old_posy[6], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x18, player_old_posy[5], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x14, player_old_posy[4], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x10, player_old_posy[3], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0xC, player_old_posy[2], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x8, player_old_posy[1], Trail_Circle[0]);
+		oam_meta_spr(high_byte(player_x[0]) - 0x4, player_old_posy[0], Trail_Circle[0]);
 	}
 #undef spr_type
 #undef animation_ptr

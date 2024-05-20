@@ -363,9 +363,9 @@ void state_game(){
 
 			mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 			if ((kandoframecnt & 0x01)) sprite_collide();
-		if(!DEBUG_MODE && cube_data[1] & 0x01) {
-			reset_level();
-		}
+			if(!DEBUG_MODE && cube_data[1] & 0x01) {
+				reset_level();
+			}
 			currplayer = 0;					//give back focus
 			if (twoplayer) controllingplayer = 0;		//give back controls
 			{

@@ -57,7 +57,7 @@
 #include "defines/menutext.h" // menu text. obviously.
 #pragma rodata-name (pop)
 #pragma rodata-name (push, "LVL_BANK_00")
-#include "defines/menutext2.h" // menu text. obviously.
+#include "defines/menutext2.h" // end level text, not obviously.
 #pragma rodata-name (pop)
 
 
