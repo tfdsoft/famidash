@@ -325,7 +325,7 @@ void customize_screen() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg(paletteMenu);
-	mmc3_set_8kb_chr(62);
+	mmc3_set_8kb_chr(66);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
 	#include "../defines/mainmenu_customize.h"
@@ -799,7 +799,7 @@ void state_menu() {
 	ppu_off();
     pal_bg(splashMenu);
 
-	mmc3_set_8kb_chr(58);
+	mmc3_set_8kb_chr(62);
 
 	set_scroll_x(0);
     set_scroll_y(0);
