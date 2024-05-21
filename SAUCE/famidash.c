@@ -42,7 +42,7 @@ void main(){
     mmc3_set_1kb_chr_bank_3(7);
     */
     
-	mmc3_set_8kb_chr(62);
+	mmc3_set_8kb_chr(64);
 
     pal_bg(paletteDefault);
     pal_spr(paletteDefaultSP);
@@ -83,7 +83,7 @@ void main(){
 					pal_fade_to_withmusic(4,0);
 					ppu_off();
 					pal_bg(splashMenu);
-					mmc3_set_8kb_chr(62);
+					mmc3_set_8kb_chr(64);
 
 					set_scroll_x(0);
 					set_scroll_y(0);
