@@ -1,9 +1,13 @@
+#define MENUBANK 66
+#define MENUICONBANK 70
+#define LEVELCOMPLETEBANK 74
+
 // game states
 #define MENU 0x01
 #define GAME 0x02
 
 
-#define MAX_ICONS 13 //total icons
+#define MAX_ICONS 14 //total icons
 
 // physics defines
 #define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580

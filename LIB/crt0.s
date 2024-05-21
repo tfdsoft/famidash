@@ -366,11 +366,14 @@ _GAME_CHR:
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .incbin "GRAPHICS/bankicon0C.chr" ; 1kb (62)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankicon0D.chr" ; 1kb (64)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
 
-    .incbin "GRAPHICS/menus.chr"    ; 4kb (64)
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (68)
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (72)
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (66)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (70)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (74)
+
 .segment "PARALLAXCHR"
 .export _PARALLAX_CHR
 _PARALLAX_CHR:
