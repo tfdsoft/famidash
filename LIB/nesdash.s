@@ -1415,12 +1415,22 @@ drawplayer_center_offsets:
 			; 			ballframe++;
 			; 			if (ballframe > 7) { ballframe = 0; }
 			;	}
+		LDA _options
+		and #$04  ;platformer
+		beq	@ball2
+		lda _player_vel_x
+		bne @ball2
+		lda #0
+		ldy #0
+		beq @donball
+	@ball2:
 		LDA _ballframe	;	Load index
 		TAY				;__
 		CLC				;	ballframe++;
 		ADC #$01		;__
 		AND #$07		;__	if (ballframe > 7) { ballframe = 0; }
 		STA _ballframe	;__
+	@donball:
 		JMP fin
 
 	ufo:
@@ -1508,6 +1518,18 @@ drawplayer_center_offsets:
 		LDA _player_vel_y+1	;
 		ORA _player_vel_y	;	if (player_vel_y[0] == 0) {
 		BNE @jump			;
+			LDA _options
+			and #$04
+			beq	@cont1
+			LDA _player_vel_x
+			bne @cont1
+			lda #0
+			sta _spiderframe
+			ldy #0
+			jmp fin
+			
+		@cont1:
+			LDA #0
 			LDY _spiderframe	;	[load spiderframe[0] into Y]
 			SEC				;	spiderframe[0]++; (A is 0, so set the carry and bam)
 			ADC _spiderframe ;__
@@ -1777,6 +1799,15 @@ drawplayer_common := _drawplayerone::common
 		; ADC #$01			;__
 		; AND #$07			;__	if (ballframe > 7) { ballframe = 0; }
 		; STA _ballframe	;__
+		lda _options
+		and #$04
+		beq	@continue
+		lda _player_vel_x
+		bne @continue
+		lda #0
+		ldy #0
+		jmp drawplayer_common
+	@continue:
 		LDY _ballframe
 		JMP drawplayer_common
 	ufo:
@@ -1824,15 +1855,27 @@ drawplayer_common := _drawplayerone::common
 			; 	}
 		LDA _player_vel_y+3	;
 		ORA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
-		BNE @jump			;
-			LDY _robotframe+1;	[load robotframe[1] into Y] (A is 0, so set the carry and bam)
-			SEC				;	robotframe[1]++;
+			LDA _options
+			and #$04
+			beq	@cont1
+			LDA _player_vel_x+2
+			bne @cont1
+			lda #0
+			sta _robotframe
+			ldy #0
+			jmp @fini
+			
+		@cont1:
+			LDA #0
+			LDY _robotframe	;	[load robotframe[0] into Y]
+			SEC				;	robotframe[0]++; (A is 0, so set the carry and bam)
 			ADC _robotframe	;__
 			CMP #20			;
-			BCC :+			;	if (robotframe[1] > 19) { robotframe[1] = 0; }	
+			BCC @hur			;	if (robotframe[0] > 19) { robotframe[0] = 0; }	
 				LDA #$00	;__
-			:				;
-			STA _robotframe+1;__
+			@hur:				;
+			STA _robotframe	;__
+		@fini:
 			JMP drawplayer_common
 		@jump:				;	} else {
 			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
@@ -1852,6 +1895,18 @@ drawplayer_common := _drawplayerone::common
 		LDA _player_vel_y+3	;
 		ORA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
 		BNE @jump	    	;__
+			LDA _options
+			and #$04
+			beq	@cont1
+			LDA _player_vel_x
+			bne @cont1
+			lda #0
+			sta _spiderframe
+			ldy #0
+			jmp drawplayer_common
+			
+		@cont1:
+			LDA #0
 			LDY _spiderframe+1;	[load spiderframe[1] into Y] 
 			SEC				;	spiderframe[1]++; (A is 0, so set the carry and bam)
 			ADC _spiderframe+1;__
@@ -1906,7 +1961,12 @@ drawplayer_common := _drawplayerone::common
 	sprite_table_table_hi:
 		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2, >_WAVE2
 		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2
-
+    sprite_table_table_lo2:
+        .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT_ALT, <_SPIDER, <_WAVE
+        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE
+    sprite_table_table_hi2:
+        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER, >_WAVE
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE
 .endproc
 .popseg
 
