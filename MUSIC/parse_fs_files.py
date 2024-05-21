@@ -66,6 +66,6 @@ if __name__ == "__main__":
         prefix = filename[len(sys.path[0]+"/EXPORTS/music_"):-2]
         print(prefix)
     # import binpacking
-    # data = [3943, 1938, 1389, 1974, 3805, 1038, 841, 1133, 3315, 1498, 1570, 880, 1309, 642]
-    # bins = binpacking.to_constant_volume(data, 8192-600)
+    # data = [5298, 1038, 841, 642, 1938, 1466, 3669, 3957, 1389, 1309, 1133, 1974, 2831, 1570]
+    # bins = binpacking.to_constant_volume(data, 8192-700)
     # print("===== list\n",data,"\n",bins)

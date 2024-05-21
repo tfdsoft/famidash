@@ -963,7 +963,7 @@ music_data_locations_lo:
 music_data_locations_hi:
 .byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3, >music_data_famidash_music4
 music_counts:
-.byte 2, 3, 5, $FF  ;last bank is marked with an FF to always stop bank picking
+.byte 2, 3, 3, $FF  ;last bank is marked with an FF to always stop bank picking
 .endproc
 
 ; void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
