@@ -220,19 +220,6 @@ void __fastcall__ refreshmenu(void) {
 	one_vram_buffer('0'+tmp7, NTADR_A(23, 9));
 //palette stuff
 	pal_col(0,colors_list[level]);
-//	pal_col(0x1,colors_list[level]);
-//	pal_col(0x2,colors_list[level]);
-//	pal_col(0x3,colors_list[level]);
-//	pal_col(0x4,colors_list[level]);
-//	pal_col(0x5,colors_list[level]);
-//	pal_col(0x6,colors_list[level]);
-//	pal_col(0x7,colors_list[level]);
-//	pal_col(0x8,colors_list[level]);
-//	pal_col(0x9,colors_list[level]);
-//	pal_col(0xA,colors_list[level]);
-//	pal_col(0xB,colors_list[level]);
-//	pal_col(0xC,colors_list[level]);
-//	pal_col(0xD,colors_list[level]);
 	pal_col(0xE,colors_list[level]);
 //coin stuff
 	coins = 0;
@@ -338,7 +325,7 @@ void customize_screen() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg(paletteMenu);
-	mmc3_set_8kb_chr(62);
+	mmc3_set_8kb_chr(66);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
 	#include "../defines/mainmenu_customize.h"
@@ -496,6 +483,7 @@ void customize_screen() {
 			if (color1 == 0x2D || color1 == 0x2E || color1 == 0x2F ) color1 = 0x2C;
 			if (color1 == 0x3D || color1 == 0x3E || color1 == 0x3F ) color1 = 0x3C;
 		}
+		if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) color1 = 0x0D;		
 	}
 	else if (settingvalue == 1) {
 		one_vram_buffer(' ', NTADR_A(4, 14));		
@@ -531,6 +519,7 @@ void customize_screen() {
 			if (color2 == 0x2D || color2 == 0x2E || color2 == 0x2F ) color2 = 0x2C;
 			if (color2 == 0x3D || color2 == 0x3E || color2 == 0x3F ) color2 = 0x3C;
 		}
+		if (pad[0] & PAD_SELECT && pad_new[0] & PAD_A) color2 = 0x0D;
 	}
 	else if (settingvalue == 2) {
 		one_vram_buffer(' ', NTADR_A(4, 14));		
@@ -566,6 +555,7 @@ void customize_screen() {
 			if (color3 == 0x2D || color3 == 0x2E || color3 == 0x2F ) color3 = 0x2C;
 			if (color3 == 0x3D || color3 == 0x3E || color3 == 0x3F ) color3 = 0x3C;
 		}
+		if (pad[0] & PAD_SELECT && pad_new[0] & PAD_A) color3 = 0x0D;
 	}
 	else if (settingvalue == 3) {
 		one_vram_buffer(' ', NTADR_A(4, 14));		
@@ -588,15 +578,14 @@ void customize_screen() {
 		one_vram_buffer('f', NTADR_A(18, 8));		
 		one_vram_buffer('g', NTADR_A(18, 9));			
 
-	if (pad_new[0] & PAD_UP) {
-		icon++;
-		if (icon > (MAX_ICONS - 1)) icon = 0;
-	}
-	if (pad_new[0] & PAD_DOWN) {
-		if (icon == 0) icon = MAX_ICONS - 1;
-		else icon--;
-	}
-
+		if (pad_new[0] & PAD_UP) {
+			icon++;
+			if (icon > (MAX_ICONS - 1)) icon = 0;
+		}
+		if (pad_new[0] & PAD_DOWN) {
+			if (icon == 0) icon = MAX_ICONS - 1;
+			else icon--;
+		}
 
 	}
 
@@ -810,7 +799,7 @@ void state_menu() {
 	ppu_off();
     pal_bg(splashMenu);
 
-	mmc3_set_8kb_chr(58);
+	mmc3_set_8kb_chr(62);
 
 	set_scroll_x(0);
     set_scroll_y(0);

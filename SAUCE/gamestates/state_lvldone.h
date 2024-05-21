@@ -24,7 +24,7 @@ void state_lvldone() {
     pal_bg(paletteMenu);
     pal_spr(paletteMenu);
 
-	mmc3_set_8kb_chr(66);
+	mmc3_set_8kb_chr(70);
 
 	// Make an a nametable for the chain
     vram_adr(NAMETABLE_A);

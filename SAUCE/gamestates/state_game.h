@@ -44,18 +44,18 @@ void state_game(){
 	
 	switch (icon){
 		case 0x00: iconbank = 24; break;
-		case 0x01: iconbank = 34; break;
-		case 0x02: iconbank = 36; break;
-		case 0x03: iconbank = 38; break;
-		case 0x04: iconbank = 40; break;
-		case 0x05: iconbank = 42; break;
-		case 0x06: iconbank = 44; break;
-		case 0x07: iconbank = 46; break;
-		case 0x08: iconbank = 48; break;
-		case 0x09: iconbank = 50; break;
-		case 0x0A: iconbank = 52; break;
-		case 0x0B: iconbank = 54; break;
-		case 0x0C: iconbank = 56; break;
+		case 0x01: iconbank = 38; break;
+		case 0x02: iconbank = 40; break;
+		case 0x03: iconbank = 42; break;
+		case 0x04: iconbank = 44; break;
+		case 0x05: iconbank = 46; break;
+		case 0x06: iconbank = 48; break;
+		case 0x07: iconbank = 50; break;
+		case 0x08: iconbank = 52; break;
+		case 0x09: iconbank = 54; break;
+		case 0x0A: iconbank = 56; break;
+		case 0x0B: iconbank = 58; break;
+		case 0x0C: iconbank = 60; break;
 	}
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 		pal_col(0x0B,color1);   //palette 2 set to player color
@@ -75,8 +75,18 @@ void state_game(){
 		else if (discomode & 0x10) discorefreshrate = 0x03;
 		else if (discomode & 0x01) discorefreshrate = 0x3F;
 	}
+	
+	
     while (1) {
 
+	if (level == 0x09 || level == 0x0A || level == 0x0B) {									//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(36);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(34);		// DECO PULSE
+	}											//
+	else {											//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(30);		//
+	}											//
 
 	if ((options & platformer) && !has_practice_point) {
 		songtimer++;
@@ -142,7 +152,7 @@ void state_game(){
 		kandoframecnt++;
         ppu_wait_nmi();
 
-	if (level == 0x0B) {
+	if (level == 0x0B || level == 0x0A || level == 0x09) {
 		mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0 + 12);
 		mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1 + 12);
 		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
@@ -161,8 +171,7 @@ void state_game(){
 	else mmc3_set_2kb_chr_bank_0(26);
 //	else mmc3_set_2kb_chr_bank_0(28);
 //
-	if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);
-	else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(30);
+
 
 
         music_update();
