@@ -675,6 +675,13 @@ const unsigned char Robot_1[]={//Also jumping frame - Ficus
 	  4,   1, 0x09,3,
 	0x80
 };
+const unsigned char Robot_1_Alt[]={//Also jumping frame - Ficus
+	
+	-12,   1, 0x07,3,//UNUSED - Ficus
+	 -4,   1, 0x09,3,
+	  4,   1, 0xFF,3,
+	0x80
+};
 
 const unsigned char Robot_2[]={
 	
@@ -694,6 +701,7 @@ const unsigned char Robot_Jump_1[]={//Did 4th walk frame here - Ficus
 
 
 const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_1, Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2};
+const unsigned char * const ROBOT_ALT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2};
 const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1};
 
 
