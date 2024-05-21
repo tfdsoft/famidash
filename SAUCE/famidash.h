@@ -287,6 +287,7 @@ unsigned char kandowavewalk;
 unsigned char player_old_posy[8];
 unsigned char asdftemp;
 unsigned char discorefreshrate;
+unsigned char mario_mode;
 /*
 unsigned char gnd_palette_transition_timer;
 unsigned char original_gnd_palette_idx_0;
