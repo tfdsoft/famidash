@@ -6,7 +6,7 @@ Metatile "BG1",   $1A, $1B, $2A, $2B, PAL_1, COL_FLOOR_CEIL
 Metatile "BG2",   $1A, $1B, $1A, $1B, PAL_1, COL_FLOOR_CEIL
 Metatile "HALF_SLAB_BOTTOM",   $00, $00, $24, $25, PAL_0, COL_BOTTOM
 
-Metatile "SMALL_SAW_BOTTOM_HALF",   $74, $79, $00, $00, PAL_1, COL_DEATH_TOP
+Metatile "SMALL_SAW_BOTTOM_HALF",   $74, $79, $00, $00, PAL_0, COL_DEATH_TOP
 Metatile "BG5",   $1B, $1B, $2B, $2B, PAL_1, COL_FLOOR_CEIL
 Metatile "BG6",   $1B, $1B, $1B, $1B, PAL_1, COL_FLOOR_CEIL
 Metatile "CYCLES_SPECIAL",   $20, $21, $30, $31, PAL_0, COL_NONE
