@@ -70,6 +70,7 @@
 #define BLACK_ORB				0x44
 #define DASH_ORB				0x45
 #define DASH_GRAVITY_ORB			0x46
+#define BG_SPIKE_GROUP2_UP8			0x47
 
 #define S_BLOCK					0xF9
 #define D_BLOCK					0xFA

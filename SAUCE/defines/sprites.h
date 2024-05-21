@@ -1870,6 +1870,7 @@ const unsigned char * const Metasprites[]={
 	nometa,
 	Dash_Orb,
 	Dash_Gravity_Orb,
+	BG_Spike_Group2,
 	};
 
 
@@ -1950,6 +1951,7 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -2022,6 +2024,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 
+	0,
 	0,
 	0,
 	0,
