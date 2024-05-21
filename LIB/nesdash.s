@@ -8,7 +8,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8  ; C-safe temp storage
 .import _DATA_PTR
-.import pusha, pushax, _lastgcolortype, _lastbgcolortype
+.import pusha, pushax, _lastgcolortype, _lastbgcolortype, _player_vel_x
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column, _icon
 .import FIRST_MUSIC_BANK
@@ -1436,13 +1436,14 @@ drawplayer_center_offsets:
 		LDY #$1				;__	kandotemp3[0] = 1;
 		LDA _player_vel_y+1	;__
 		BEQ :+				;__	else if (highbyte == $00) { // later }
-		BPL fin	    		;__	if (0 < highbyte < $80) {}	// do nothing with it
+		BPL @go	    		;__	if (0 < highbyte < $80) {}	// do nothing with it
 			INY				;__	else if ($80 ≤ highbyte ≤ $FF) { kandotemp3[0] = 2; }
 			JMP fin			;__
 		:
 		ORA _player_vel_y	;	if (player_vel_y == 0)
-		BNE fin				;__
+		BNE @go				;__
 		DEY					;	kandotemp3[0] = 0;
+	@go:
 		JMP fin				;__
 	robot:
 		; C code:
@@ -1453,17 +1454,30 @@ drawplayer_center_offsets:
 			;	} else {
 			;		[index from ROBOT_JUMP/MINI_ROBOT_JUMP using robotjumpframe[0]]
 			; 	}
-		LDA _player_vel_y+1	;
-		ORA _player_vel_y	;	if (player_vel_y[0] == 0) {
-		BNE @jump			;__
+			LDA _player_vel_y+1	;
+			ORA _player_vel_y	;	if (player_vel_y[0] == 0) {
+			BNE @jump			;__
+			LDA _options
+			and #$04
+			beq	@cont1
+			LDA _player_vel_x
+			bne @cont1
+			lda #0
+			sta _robotframe
+			ldy #0
+			jmp @fini
+			
+		@cont1:
+			LDA #0
 			LDY _robotframe	;	[load robotframe[0] into Y]
 			SEC				;	robotframe[0]++; (A is 0, so set the carry and bam)
 			ADC _robotframe	;__
 			CMP #20			;
-			BCC :+			;	if (robotframe[0] > 19) { robotframe[0] = 0; }	
+			BCC @hur			;	if (robotframe[0] > 19) { robotframe[0] = 0; }	
 				LDA #$00	;__
-			:				;
+			@hur:				;
 			STA _robotframe	;__
+		@fini:
 			JMP fin
 		@jump:				;	} else {
 			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
