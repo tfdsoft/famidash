@@ -181,7 +181,7 @@ unsigned char trails;
 
 unsigned char decorations;
 
-unsigned char mario_mode;
+//unsigned char mario_mode;
 //unsigned char practice_famistudio_state[0xbf];
 unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
 unsigned char collisionMap1[192];

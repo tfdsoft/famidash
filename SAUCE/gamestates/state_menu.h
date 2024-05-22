@@ -637,21 +637,18 @@ void funsettings() {
 		if ((options & platformer)) 	one_vram_buffer('g', NTADR_A(26, 9));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 9));	// this is auto optimized by cc65
 
-		if (mario_mode) 	one_vram_buffer('g', NTADR_A(26, 11));	// believe it or not, 
+		if (discomode) 	one_vram_buffer('g', NTADR_A(26, 11));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 11));	// this is auto optimized by cc65
-
-		if (discomode) 	one_vram_buffer('g', NTADR_A(26, 13));	// believe it or not, 
-		else 	one_vram_buffer('f', NTADR_A(26, 13));	// this is auto optimized by cc65
 
 		tmp1 = settingvalue;
 
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 3) { settingvalue = 0; }
+			if (settingvalue == 2) { settingvalue = 0; }
 			else { settingvalue++; sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 3; }
+			if (settingvalue == 0) { settingvalue = 2; }
 			else { settingvalue--; sfx_play(sfx_select, 0);  }
 		}
 
@@ -662,26 +659,28 @@ void funsettings() {
 			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
 		}
 
-		if (discomode & 0x02) { one_vram_buffer('2' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (discomode & 0x04) { one_vram_buffer('3' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (discomode & 0x08) { one_vram_buffer('4' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (discomode & 0x10) { one_vram_buffer('5' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (discomode & 0x01) { one_vram_buffer('1' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (!discomode) { one_vram_buffer(' '-0x01, NTADR_A(25, 14)); one_vram_buffer(' '-0x01, NTADR_A(26, 14)); }
+		if (discomode & 0x02) { one_vram_buffer('2' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (discomode & 0x04) { one_vram_buffer('3' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (discomode & 0x08) { one_vram_buffer('4' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (discomode & 0x10) { one_vram_buffer('5' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (discomode & 0x01) { one_vram_buffer('1' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X'-0x1B, NTADR_A(26, 12)); }
+		else if (!discomode) { one_vram_buffer(' '-0x01, NTADR_A(25, 12)); one_vram_buffer(' '-0x01, NTADR_A(26, 12)); }
 
 		if (pad_new[0] & (PAD_START | PAD_A)) {
 			switch (settingvalue) {
 				case 0x00: invisible ^= 1; break;
 				case 0x01: options ^= platformer; break;
-				case 0x02: mario_mode ^= 1; break;
-				case 0x03: {
-					if (!discomode) { discomode = 1; one_vram_buffer('1' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
-					else if (discomode & 0x10) { discomode = 0; one_vram_buffer(' ', NTADR_A(25, 14)); one_vram_buffer(' ', NTADR_A(26, 14)); }
-					else if (discomode == 1) { discomode = 1 + 0x02; one_vram_buffer('2' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
+				case 0x02: {
+
+					if (!discomode) { discomode = 1; one_vram_buffer('1' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X', NTADR_A(26, 12)); }
+					else if (discomode & 0x10) { discomode = 0; one_vram_buffer(' ', NTADR_A(25, 12)); one_vram_buffer(' ', NTADR_A(26, 12)); }
+					else if (discomode == 1) { discomode = 1 + 0x02; one_vram_buffer('2' - 0x20, NTADR_A(25, 12)); one_vram_buffer('X', NTADR_A(26, 12)); }
 					else {
 						discomode &= 0xFE; discomode = discomode << 1; discomode |= 1; 
+
 					}
-				break;
+				
+
 				}
 			};
 		}

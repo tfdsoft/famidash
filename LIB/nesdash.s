@@ -1254,20 +1254,20 @@ drawplayer_center_offsets:
     ADC _gamemode   ;__
     TAX             ;   Get low byte of table ptr
 
-    LDA _mario_mode
-    beq @regulartable
-    LDA sprite_table_table_lo2, X
-    STA ptr1        ;__
-    LDA sprite_table_table_hi2, X
-    STA ptr1+1      ;__ Get high byte of table ptr
-    jmp @donetable    
+;    LDA _mario_mode
+ ;   beq @regulartable
+  ;  LDA sprite_table_table_lo2, X
+;    STA ptr1        ;__
+;    LDA sprite_table_table_hi2, X
+;    STA ptr1+1      ;__ Get high byte of table ptr
+;    jmp @donetable    
     
-   @regulartable:
+;   @regulartable:
     LDA sprite_table_table_lo, X
     STA ptr1        ;__
     LDA sprite_table_table_hi, X
     STA ptr1+1      ;__ Get high byte of table ptr
-   @donetable:
+;   @donetable:
 
     LDY _player_x+1     ;__ temp_x = high_byte(player_x[0]);
 	; The condition if is temp_x == 0 or is > 0xfc,

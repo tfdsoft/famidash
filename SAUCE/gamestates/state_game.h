@@ -80,7 +80,7 @@ void state_game(){
 	
     while (1) {
 
-	if (mario_mode) { if (gamemode == 0) gamemode = 4; }
+//	if (mario_mode) { if (gamemode == 0) gamemode = 4; }
 
 	if (level == 0x09 || level == 0x0A || level == 0x0B) {									//
 		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(38);		//
@@ -172,8 +172,9 @@ void state_game(){
 	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
 	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
 	else { 
-		if (!mario_mode) mmc3_set_2kb_chr_bank_0(26);
-		else mmc3_set_2kb_chr_bank_0(28);
+	//	if (!mario_mode) mmc3_set_2kb_chr_bank_0(26);
+	//	else 
+		mmc3_set_2kb_chr_bank_0(28);
 	}
 //	else mmc3_set_2kb_chr_bank_0(28);
 //
