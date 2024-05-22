@@ -44,19 +44,19 @@ void state_game(){
 	
 	switch (icon){
 		case 0x00: iconbank = 24; break;
-		case 0x01: iconbank = 40; break;
-		case 0x02: iconbank = 42; break;
-		case 0x03: iconbank = 44; break;
-		case 0x04: iconbank = 46; break;
-		case 0x05: iconbank = 48; break;
-		case 0x06: iconbank = 50; break;
-		case 0x07: iconbank = 52; break;
-		case 0x08: iconbank = 54; break;
-		case 0x09: iconbank = 56; break;
-		case 0x0A: iconbank = 58; break;
-		case 0x0B: iconbank = 60; break;
-		case 0x0C: iconbank = 62; break;
-		case 0x0D: iconbank = 64; break;
+		case 0x01: iconbank = 42; break;
+		case 0x02: iconbank = 44; break;
+		case 0x03: iconbank = 46; break;
+		case 0x04: iconbank = 48; break;
+		case 0x05: iconbank = 50; break;
+		case 0x06: iconbank = 52; break;
+		case 0x07: iconbank = 54; break;
+		case 0x08: iconbank = 56; break;
+		case 0x09: iconbank = 58; break;
+		case 0x0A: iconbank = 60; break;
+		case 0x0B: iconbank = 62; break;
+		case 0x0C: iconbank = 64; break;
+		case 0x0D: iconbank = 66; break;
 	}
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 		pal_col(0x0B,color1);   //palette 2 set to player color
@@ -168,10 +168,8 @@ void state_game(){
 		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3);
 	}
 	
-	if (mini && gamemode != 0 && !mario_mode) mmc3_set_2kb_chr_bank_0(30);
-	else if (mini && gamemode == 4 && mario_mode) mmc3_set_2kb_chr_bank_0(40);
+	if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(30);
 	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
-	else if ((gamemode == 0 || gamemode == 1 || gamemode == 3) && mario_mode) mmc3_set_2kb_chr_bank_0(40);
 	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
 	else { 
 		if (!mario_mode) mmc3_set_2kb_chr_bank_0(26);
