@@ -8,7 +8,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8  ; C-safe temp storage
 .import _DATA_PTR
-.import pusha, pushax, _lastgcolortype, _lastbgcolortype, _player_vel_x, _mario_mode, _ROBOT_ALT, _MINI_ROBOT_ALT
+.import pusha, pushax, _lastgcolortype, _lastbgcolortype, _player_vel_x, _ROBOT_ALT, _MINI_ROBOT_ALT
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column, _icon
 .import FIRST_MUSIC_BANK

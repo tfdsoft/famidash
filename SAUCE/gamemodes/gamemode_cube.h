@@ -80,7 +80,8 @@ void cube_movement(void){
 			
 			}
 	}
-	else if (gamemode == 4 && !mario_mode && (currplayer_vel_y == 0)){
+//	else if (gamemode == 4 && !mario_mode && (currplayer_vel_y == 0)){
+	else if (gamemode == 4 && (currplayer_vel_y == 0)){
 		cube_data[currplayer] &= 1;				
 		if(pad_new[controllingplayer] & PAD_A) {
 			if (!currplayer_gravity) {
@@ -95,7 +96,7 @@ void cube_movement(void){
 			robotjumpframe[0] = 1;
 		}
 	}
-	
+/*	
 	else if (gamemode == 4 && mario_mode && (currplayer_vel_y == 0)){
 		cube_data[currplayer] &= 1;				
 		if(pad[controllingplayer] & PAD_A) {
@@ -111,7 +112,7 @@ void cube_movement(void){
 			robotjumpframe[0] = 1;
 		}
 	}
-	
+*/	
 	else if (gamemode == 4 && robotjumptime[currplayer]) {
 			cube_data[currplayer] = 0;
 			if (robotjumptime[currplayer]) robotjumptime[currplayer]--;
