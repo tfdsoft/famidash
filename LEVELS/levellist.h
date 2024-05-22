@@ -56,6 +56,7 @@ const unsigned short songtime[] = {	//for looping in practice mode
 	15000, //clutterfunk
 	14000, //menu
 	14000, //practice
+	14000, //practice
 };
 
 
