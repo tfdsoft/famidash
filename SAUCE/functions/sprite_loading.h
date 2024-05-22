@@ -409,6 +409,9 @@ void sprite_collide_lookup() {
     case S_BLOCK: dashing[currplayer] = 0; return;
     case D_BLOCK: kandowavewalk = 1; return;
     case CUBE_MODE:
+        if (!mario_mode) gamemode = 0;
+	else gamemode = 4;
+        return;    
     case BALL_MODE:
     case UFO_MODE:
     case ROBOT_MODE:
