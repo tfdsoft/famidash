@@ -168,8 +168,10 @@ void state_game(){
 		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3);
 	}
 	
-	if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(30);
+	if (mini && gamemode != 0 && !mario_mode) mmc3_set_2kb_chr_bank_0(30);
+	else if (mini && gamemode == 4 && mario_mode) mmc3_set_2kb_chr_bank_0(40);
 	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
+	else if ((gamemode == 0 || gamemode == 1 || gamemode == 3) && mario_mode) mmc3_set_2kb_chr_bank_0(40);
 	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
 	else { 
 		if (!mario_mode) mmc3_set_2kb_chr_bank_0(26);

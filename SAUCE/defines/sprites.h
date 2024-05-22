@@ -732,6 +732,33 @@ const unsigned char Mini_Robot_Jump_1[]={
 const unsigned char * const MINI_ROBOT[]={Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_1, Mini_Robot_1, Mini_Robot_1, Mini_Robot_1, Mini_Robot_1, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_0, Mini_Robot_2, Mini_Robot_2, Mini_Robot_2, Mini_Robot_2, Mini_Robot_2};
 const unsigned char * const MINI_ROBOT_JUMP[]={Mini_Robot_Jump_1, Mini_Robot_Jump_1, Mini_Robot_Jump_1, Mini_Robot_Jump_1, Mini_Robot_Jump_1};
 // ================================================================
+const unsigned char Mini_Robot_ALT_0[]={
+	
+	-4,   -5, 0x35,3,
+	0x80
+};
+
+const unsigned char Mini_Robot_ALT_1[]={
+	
+	-4,   -5, 0x37,3,
+	0x80
+};
+
+const unsigned char Mini_Robot_ALT_2[]={
+	
+	-4,   -5, 0x39,3,
+	0x80
+};
+
+const unsigned char Mini_Robot_Jump_ALT_1[]={
+	
+	-4,   -5, 0x3D,3,
+	0x80
+};//also mini robot 3rd animation frame - Ficus
+
+const unsigned char * const MINI_ROBOT_ALT[]={Mini_Robot_ALT_0, Mini_Robot_ALT_0, Mini_Robot_ALT_0, Mini_Robot_ALT_0, Mini_Robot_ALT_0, Mini_Robot_ALT_1, Mini_Robot_ALT_1, Mini_Robot_ALT_1, Mini_Robot_ALT_1, Mini_Robot_ALT_1, Mini_Robot_ALT_0, Mini_Robot_ALT_0, Mini_Robot_ALT_0, Mini_Robot_ALT_0, Mini_Robot_ALT_0, Mini_Robot_ALT_2, Mini_Robot_ALT_2, Mini_Robot_ALT_2, Mini_Robot_ALT_2, Mini_Robot_ALT_2};
+const unsigned char * const MINI_ROBOT_JUMP_ALT[]={Mini_Robot_Jump_ALT_1, Mini_Robot_Jump_ALT_1, Mini_Robot_Jump_ALT_1, Mini_Robot_Jump_ALT_1, Mini_Robot_Jump_ALT_1};
+// ================================================================
 
 const unsigned char Robot2_0[]={
 	

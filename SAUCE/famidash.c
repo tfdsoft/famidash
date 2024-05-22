@@ -66,7 +66,7 @@ void main(){
 	if (SRAM_VALIDATE[0] != 0x0D
 	 || SRAM_VALIDATE[1] != 0x0A
 	 || SRAM_VALIDATE[2] != 0x01
-	 || SRAM_VALIDATE[3] != 0x07) {
+	 || SRAM_VALIDATE[3] != 0x08) {
 		// set the validation header and then reset coin counts
 		setdefaultoptions();
 
@@ -145,7 +145,7 @@ void setdefaultoptions() {
 		SRAM_VALIDATE[0] = 0x0d;
 		SRAM_VALIDATE[1] = 0x0a;
 		SRAM_VALIDATE[2] = 0x01;
-		SRAM_VALIDATE[3] = 0x07;
+		SRAM_VALIDATE[3] = 0x08;
 		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
 			coin1_obtained[tmp2] = 0;
 			coin2_obtained[tmp2] = 0;
