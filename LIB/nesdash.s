@@ -1566,7 +1566,21 @@ drawplayer_center_offsets:
 		:						;	Store high byte
 		STA	_cube_rotate+1		;__
 		
-		; Frame index is high byte of _cube_rotate if gravity is 0, 
+        ; Fix for speed greater than x3 being mirrored
+        LDY _player_vel_x+1
+        CPY #$04
+        BCC :+
+            ; 7 - A = -A + 7
+			; -A = (A ^ 0xFF) + 1
+			; 7 - A = (A ^ 0xFF) + 8
+            LDY _mini
+            BNE :+
+			EOR #$FF
+			CLC
+			ADC #$08
+        :
+
+        ; Frame index is high byte of _cube_rotate if gravity is 0, 
 		;* and 7-high byte if gravity isn't 0
 		LDX _player_gravity+0
 		BEQ :+
