@@ -251,7 +251,6 @@ uint32_t scroll_x; // gotta love massive levels amirite fellas
 uint16_t scroll_y;
 uint16_t target_scroll_y;
 uint8_t song;
-uint8_t auto_fs_updates;
 
 uint8_t dashing[2];
 
