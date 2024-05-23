@@ -1,6 +1,6 @@
-#define MENUBANK 68
-#define MENUICONBANK 72
-#define LEVELCOMPLETEBANK 76
+#define MENUBANK 70
+#define MENUICONBANK 74
+#define LEVELCOMPLETEBANK 78
 
 // game states
 #define MENU 0x01

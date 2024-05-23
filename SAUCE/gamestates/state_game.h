@@ -44,19 +44,19 @@ void state_game(){
 	
 	switch (icon){
 		case 0x00: iconbank = 24; break;
-		case 0x01: iconbank = 42; break;
-		case 0x02: iconbank = 44; break;
-		case 0x03: iconbank = 46; break;
-		case 0x04: iconbank = 48; break;
-		case 0x05: iconbank = 50; break;
-		case 0x06: iconbank = 52; break;
-		case 0x07: iconbank = 54; break;
-		case 0x08: iconbank = 56; break;
-		case 0x09: iconbank = 58; break;
-		case 0x0A: iconbank = 60; break;
-		case 0x0B: iconbank = 62; break;
-		case 0x0C: iconbank = 64; break;
-		case 0x0D: iconbank = 66; break;
+		case 0x01: iconbank = 44; break;
+		case 0x02: iconbank = 46; break;
+		case 0x03: iconbank = 48; break;
+		case 0x04: iconbank = 50; break;
+		case 0x05: iconbank = 52; break;
+		case 0x06: iconbank = 54; break;
+		case 0x07: iconbank = 56; break;
+		case 0x08: iconbank = 58; break;
+		case 0x09: iconbank = 60; break;
+		case 0x0A: iconbank = 62; break;
+		case 0x0B: iconbank = 64; break;
+		case 0x0C: iconbank = 66; break;
+		case 0x0D: iconbank = 68; break;
 	}
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 		pal_col(0x0B,color1);   //palette 2 set to player color
@@ -83,12 +83,12 @@ void state_game(){
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
 	if (level == 0x09 || level == 0x0A || level == 0x0B) {									//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(38);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(36);		// DECO PULSE
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(40);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(38);		// DECO PULSE
 	}											//
 	else {											//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(34);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(32);		//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(36);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(34);		//
 	}											//
 
 	if ((options & platformer) && !has_practice_point) {
@@ -175,9 +175,9 @@ void state_game(){
 		else mmc3_set_2kb_chr_bank_0(26);
 	}
 	else {
-		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(30);
-		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
-		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
+		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(32);
+		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(42);
+		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(42);
 		else mmc3_set_2kb_chr_bank_0(28);
 	}
 //	else mmc3_set_2kb_chr_bank_0(28);
