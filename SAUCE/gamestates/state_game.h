@@ -317,6 +317,7 @@ void state_game(){
 
 		x_movement_coll();
 
+		sprite_collide();
 
 		if (!DEBUG_MODE && !invincible_counter) {
 			if ((dual && (kandoframecnt & 0x01)) || !dual)
@@ -337,7 +338,6 @@ void state_game(){
 		}
 
 		mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
-		if (((twoplayer) && !(kandoframecnt & 0x01)) || !twoplayer) sprite_collide();
 		{	// always store it back for practice mode
 			player_x[0] = currplayer_x;
 			player_y[0] = currplayer_y;
@@ -378,7 +378,7 @@ void state_game(){
 			do_the_scroll_thing2();
 
 			mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
-			if ((kandoframecnt & 0x01)) sprite_collide();
+			sprite_collide();
 			if(!DEBUG_MODE && cube_data[1] & 0x01) {
 				reset_level();
 			}
