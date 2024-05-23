@@ -8,9 +8,9 @@ __fastcall__ char bg_collision_sub(void);
 
 char bg_coll_L(void){
     // check 2 points on the right side
-	temp_x = Generic.x + low_word(scroll_x) - (platformer ? 2 : 0); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) - (platformer ? 3 : 0); // automatically only the low byte
 
-	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : (Generic.height - 8));
+	tmp1 = Generic.y + (byte(0x10 - Generic.height) >> 1) + (mini ? 4 : (Generic.height >> 1));
 
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
@@ -20,17 +20,19 @@ char bg_coll_L(void){
 	} else if (tmp3 == COL_TOP) {
 		if (!(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
 	} else if(tmp3 == COL_ALL) {
-		return 1;
+		return 1;		
 	} else if (tmp3 == COL_DEATH_LEFT) {
 		if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1;		// If X pos inside block < 8px, die
 	} else if (tmp3 == COL_DEATH_RIGHT) {
 		if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;		// If X pos inside block ≥ 10px, die
 	} else if(tmp3 == COL_DEATH_TOP) {
+		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
 		if (!(temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
-		else return 0;										// else nothing
+		else return 0;
 	} else if (tmp3 == COL_DEATH_BOTTOM) {
-		if ((temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block ≥ 8px, die
-		else return 0;									// else nothing
+		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+		if ((temp_y & 0x08)) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
+		else return 0;
 	}
 
     
