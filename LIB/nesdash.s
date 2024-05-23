@@ -8,7 +8,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8  ; C-safe temp storage
 .import _DATA_PTR
-.import pusha, pushax, _lastgcolortype, _lastbgcolortype, _player_vel_x, _ROBOT_ALT, _MINI_ROBOT_ALT
+.import pusha, pushax, _lastgcolortype, _lastbgcolortype, _player_vel_x, _retro_mode, _ROBOT_ALT, _MINI_ROBOT_ALT
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column, _icon
 .import FIRST_MUSIC_BANK
@@ -1254,20 +1254,20 @@ drawplayer_center_offsets:
     ADC _gamemode   ;__
     TAX             ;   Get low byte of table ptr
 
-;    LDA _mario_mode
- ;   beq @regulartable
-  ;  LDA sprite_table_table_lo2, X
-;    STA ptr1        ;__
-;    LDA sprite_table_table_hi2, X
-;    STA ptr1+1      ;__ Get high byte of table ptr
-;    jmp @donetable    
+    LDA _retro_mode
+    beq @regulartable
+    LDA sprite_table_table_lo2, X
+    STA ptr1        ;__
+    LDA sprite_table_table_hi2, X
+    STA ptr1+1      ;__ Get high byte of table ptr
+    jmp @donetable    
     
-;   @regulartable:
+   @regulartable:
     LDA sprite_table_table_lo, X
     STA ptr1        ;__
     LDA sprite_table_table_hi, X
     STA ptr1+1      ;__ Get high byte of table ptr
-;   @donetable:
+   @donetable:
 
     LDY _player_x+1     ;__ temp_x = high_byte(player_x[0]);
 	; The condition if is temp_x == 0 or is > 0xfc,
@@ -1643,11 +1643,25 @@ drawplayer_common := _drawplayerone::common
     CLC             ;   Actual gamemode itself
     ADC _gamemode   ;__
     TAX             ;   Get low byte of table ptr
+
+
+
+    LDA _retro_mode
+    beq @regulartable
+    LDA sprite_table_table_lo2, X
+    STA ptr1        ;__
+    LDA sprite_table_table_hi2, X
+    STA ptr1+1      ;__ Get high byte of table ptr
+    jmp @donetable    
+    
+   @regulartable:
     LDA sprite_table_table_lo, X
     STA ptr1        ;__
     LDA sprite_table_table_hi, X
     STA ptr1+1      ;__ Get high byte of table ptr
-
+   @donetable:
+   
+   
 	LDY _player_x+3     ;__ temp_x = high_byte(player_x[1]);
 	; The condition if is temp_x == 0 or is > 0xfc,
 	; this can be expressed as (temp_x - 1) > 0xfb
