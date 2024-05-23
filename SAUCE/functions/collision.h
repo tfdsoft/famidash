@@ -8,7 +8,7 @@ __fastcall__ char bg_collision_sub(void);
 
 char bg_coll_L(void){
     // check 2 points on the right side
-	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) - (platformer ? 2 : 0); // automatically only the low byte
 
 	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : (Generic.height - 8));
 
@@ -68,7 +68,7 @@ char bg_coll_floor_spikes(void){ // used just for checking ground spikes on the 
 }
 char bg_coll_R(void){
     // check 2 points on the right side
-	temp_x = Generic.x + low_word(scroll_x) + Generic.width; // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + Generic.width + (platformer ? 3 : 0); // automatically only the low byte
 
 	tmp1 = Generic.y + (byte(0x10 - Generic.height) >> 1) + (mini ? 4 : (Generic.height >> 1));
 
