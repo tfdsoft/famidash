@@ -27,10 +27,13 @@ void wave_movement(void){
 		currplayer_y += currplayer_vel_y;
 	}	
 	else player_vel_y[currplayer] = 1;
+	
+	
+
 	Generic.x = high_byte(currplayer_x);
 	
-	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
-	Generic.y = high_byte(currplayer_y);
+	// this literally offsets the collision down 2 pixel for the vel reset to happen every frame instead of each other frame
+	Generic.y = high_byte(currplayer_y) + ((high_byte(currplayer_vel_y) & 0x80) ? 2 : -2);
 	
 	
 	
