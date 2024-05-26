@@ -111,10 +111,10 @@ const unsigned char colors_list[] = {
 	0x12,
 	0x14,
 	0x15,
-	0x04,
 	0x05,
 	0x06,
 	0x07,
+	0x08,
 };
 // exported from export_levels.py
 
