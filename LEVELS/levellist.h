@@ -39,7 +39,7 @@ const unsigned char difficulty_pal[] ={
     0x28, 0x30, // hard
 	0x16, 0x30, // harder
     0x24, 0x06, // insane
-    0x16, 0x30 // KING DEDEdemon
+    0x16, 0x30 // demon
 };
 
 const unsigned short songtime[] = {	//for looping in practice mode
