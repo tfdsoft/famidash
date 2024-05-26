@@ -10,27 +10,31 @@
 level_data = _level_data
 sprite_data = _sprite_data
 
+.define gamemode_count 8
+
+; 1 makes some code slightly faster, 0 makes it work on famiclones
+.define use_illegal_opcodes 1
+
 .segment "ZEROPAGE"
-    rld_value:      .res 1
-    rld_run:        .res 1
+	rld_value:      .res 1
+	rld_run:        .res 1
 
 .segment "BSS"
-    ; column buffer, to be pushed to the collision map
-    ; 16 metatiles in the top screen 
-    ; 11 metatiles in the bot screen
-    columnBuffer:   .res 16 + 11
+	; column buffer, to be pushed to the collision map
+	; 16 metatiles in the top screen 
+	; 11 metatiles in the bot screen
+	columnBuffer:		.res 16 + 11
 
-    current_song_bank:	.res 1
-    scroll_count:		.res 1
-    auto_fs_updates:	.res 1
+	current_song_bank:	.res 1
+	scroll_count:		.res 1
+	auto_fs_updates:	.res 1
+	parallax_scroll_column: .res 1
+	parallax_scroll_column_start: .res 1
 
 .export _scroll_count := scroll_count
 .export _auto_fs_updates := auto_fs_updates
-
 .export _parallax_scroll_column := parallax_scroll_column
 .export _parallax_scroll_column_start := parallax_scroll_column_start
-    parallax_scroll_column: .res 1
-    parallax_scroll_column_start: .res 1
 
 .segment "XCD_BANK_00"
 
@@ -1277,8 +1281,8 @@ drawplayer_center_offsets:
 
     ; Set up base pointer for jump tables
     LDA _mini       ;
-    BEQ :+          ;   Add 7 if mini mode 
-        LDA #$08    ;   ! Increment this value when new gamemodes added
+    BEQ :+          ;   Add 8 if mini mode 
+        LDA #gamemode_count
     :               ;__
     CLC             ;   Actual gamemode itself
     ADC _gamemode   ;__
@@ -1343,8 +1347,13 @@ drawplayer_center_offsets:
 		ORA _player_vel_y+0		;
 		BNE @no_round		    ;__
         @round:	    
-			STA _cube_rotate+0	;__ low_byte = 0
-			LAX _cube_rotate+1	;	LAX abs is apparently stable
+			STA	_cube_rotate+0	;__ low_byte = 0
+			.if use_illegal_opcodes
+				LAX _cube_rotate+1	;	LAX abs is apparently stable
+			.else
+				LDA _cube_rotate+1
+				TAX
+			.endif
 			SEC					;
 			SBC #12				;
 			BCC :+				;	Limit table idx to 0..12
@@ -1690,8 +1699,8 @@ drawplayer_common := _drawplayerone::common
 
     ; Set up base pointer for jump tables
     LDA _mini       ;
-    BEQ :+          ;   Add 7 if mini mode 
-        LDA #$08    ;   ! Increment this value when new gamemodes added
+    BEQ :+          ;   Add 8 if mini mode 
+        LDA #gamemode_count
     :               ;__
     CLC             ;   Actual gamemode itself
     ADC _gamemode   ;__
@@ -1756,8 +1765,13 @@ drawplayer_common := _drawplayerone::common
 		LDA _player_vel_y+3		;	if player_vel_y == 0
 		ORA _player_vel_y+2		;
 		BNE @no_round			;__
-			STA _cube_rotate+2	;__ low_byte = 0
-			LAX _cube_rotate+3	;	LAX abs is apparently stable
+			STA	_cube_rotate+2	;__ low_byte = 0
+			.if use_illegal_opcodes
+				LAX _cube_rotate+3	;	LAX abs is apparently stable
+			.else
+				LDA _cube_rotate+3	;
+				TAX
+			.endif
 			SEC					;
 			SBC #12				;
 			BCC :+				;	Limit table idx to 0..12
