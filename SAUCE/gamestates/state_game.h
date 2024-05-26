@@ -155,7 +155,7 @@ void state_game(){
 		kandoframecnt++;
         ppu_wait_nmi();
 
-	if (level == 0x0C || level == 0x0B || level == 0x0A || level == 0x09) {
+	if (level == 0x0C || level == 0x0B || level == 0x0A) {
 		mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0 + 12);
 		mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1 + 12);
 		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
@@ -166,6 +166,9 @@ void state_game(){
 		mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1);
 		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
 		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3);
+	}
+	if (level == 0x09) {
+		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3 + 12);
 	}
 
 	if (!retro_mode) {
