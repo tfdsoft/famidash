@@ -74,9 +74,9 @@ const unsigned char difficulty_list[] = {
     INSANE,
     INSANE,
     INSANE,
-    EASY,
-    EASY,
-    EASY,
+    DEMON,
+    DEMON,
+    DEMON,
     DEMON,
 };
 
@@ -111,10 +111,10 @@ const unsigned char colors_list[] = {
 	0x12,
 	0x14,
 	0x15,
-	0x00,
-	0x00,
-	0x00,
-	0x00,
+	0x05,
+	0x06,
+	0x07,
+	0x08,
 };
 // exported from export_levels.py
 
