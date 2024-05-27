@@ -70,20 +70,20 @@ test_grnd_color  = $0F
 test2_song_number = song_practice
 test2_game_mode   = $00
 test2_speed       = $00
-test2_bg_color    = $1A
-test2_grnd_color  = $2A
+test2_bg_color    = $2A
+test2_grnd_color  = $1A
 
 test3_song_number = song_practice
 test3_game_mode   = $00
 test3_speed       = $00
-test3_bg_color    = $06
-test3_grnd_color  = $16
+test3_bg_color    = $16
+test3_grnd_color  = $06
 
 test4_song_number = song_practice
 test4_game_mode   = $00
 test4_speed       = $00
-test4_bg_color    = $02
-test4_grnd_color  = $12
+test4_bg_color    = $12
+test4_grnd_color  = $02
 
 clutterfunk_song_number = song_clutterfunk
 clutterfunk_game_mode   = $00

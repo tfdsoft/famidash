@@ -3155,12 +3155,14 @@ sprite_data_theoryofeverything:
 .segment "SPR_BANK_02"
 sprite_data_test:
   .byte $00,$02,$50,$01,$80
-  .byte $30,$02,$80,$01,$2e
-  .byte $50,$02,$80,$01,$30
+  .byte $30,$02,$80,$01,$30
   .byte $80,$02,$50,$01,$81
   .byte $b0,$02,$80,$01,$30
   .byte $d0,$02,$80,$01,$2e
   .byte $00,$03,$50,$01,$82
+  .byte $30,$03,$90,$01,$30
+  .byte $50,$03,$60,$01,$2e
+  .byte $50,$03,$90,$01,$2e
   .byte $80,$03,$50,$01,$83
   .byte $00,$04,$50,$01,$84
   .byte $80,$04,$50,$01,$85
@@ -3269,12 +3271,6 @@ sprite_data_test2:
   .byte $ff
 .segment "SPR_BANK_02"
 sprite_data_test3:
-  .byte $30,$00,$80,$01,$02
-  .byte $60,$00,$a8,$01,$0a
-  .byte $a0,$00,$90,$01,$0b
-  .byte $20,$01,$80,$01,$18
-  .byte $50,$01,$a8,$01,$0a
-  .byte $80,$01,$90,$01,$0b
   .byte $ff
 .segment "SPR_BANK_02"
 sprite_data_test4:

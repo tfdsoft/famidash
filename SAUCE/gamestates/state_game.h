@@ -82,7 +82,7 @@ void state_game(){
 
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
-	if (level == 0x09 || level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D) {									//
+	if (level == 0x09 || level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {									//
 		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(40);		//
 		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(38);		// DECO PULSE
 	}											//
@@ -155,22 +155,24 @@ void state_game(){
 		kandoframecnt++;
         ppu_wait_nmi();
 
-	if (level == 0x0D || level == 0x0C || level == 0x0B || level == 0x0A) {
-		mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0 + 12);
-		mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1 + 12);
-		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3 + 12);
-	}
-	else {
-		mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0);
-		mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1);
-		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3);
-	}
-	if (level == 0x09) {
-		mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3 + 12);
-	}
-
+	 if (level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0 + 12);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1 + 12);
+        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3 + 12);
+    }
+    else if (level == 0x09) {
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0 + 12);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1);
+        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3 + 12);
+    }
+    else {
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1);
+        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3);
+    }
 	if (!retro_mode) {
 		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(30);
 		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
