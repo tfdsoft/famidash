@@ -898,7 +898,20 @@ ParallaxBufferCol5:
 
         LDX _gamemode
         CPX #$07
-        BPL end    
+        BPL end
+	lda _retro_mode
+	beq @no1
+	lda _gamemode
+	cmp #1
+	bne	@no1
+        LDA #<_ufo_movement
+        STA <PTR
+        LDA #>_ufo_movement
+        STA <PTR+1
+        JMP (PTR)	
+	
+	
+   @no1:
         LDA jump_table_lo, X
         STA <PTR
         LDA jump_table_hi, X
