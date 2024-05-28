@@ -256,7 +256,7 @@ void levelselection() {
 
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
-	attempts = 1;
+	attempts = 0;
 
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);

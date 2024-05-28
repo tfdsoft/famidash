@@ -36,7 +36,13 @@ const unsigned char Explode_5[]={
 
 const unsigned char * const Explode_Sprites[] = {Explode_1,Explode_1,Explode_1,Explode_1,Explode_2,Explode_2,Explode_2,Explode_2,Explode_3,Explode_3,Explode_3,Explode_3,Explode_4,Explode_4,Explode_4,Explode_4,Explode_5,Explode_5,Explode_5,Explode_5};
 
+const unsigned char ExplodeR_1[]={
 
+	  0,  0,0x1D,3,
+	  8,  0,0x1F,3,
+	0x80
+};
+const unsigned char * const ExplodeR_Sprites[] = {ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1};
 
 const unsigned char Practice_Diamond[]={
 
@@ -1996,8 +2002,8 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	sizeof(BLUE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
-	sizeof(PINK_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
+	sizeof(BLUE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
+	sizeof(PINK_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
 	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	0, // Portal_Gravity_Down,
 	0, // Portal_Gravity_Up,
@@ -2023,7 +2029,7 @@ const unsigned char animation_frame_length[] = {
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
-	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
+	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
 
 	0,
 	0,
@@ -2032,9 +2038,9 @@ const unsigned char animation_frame_length[] = {
 	0,
 	sizeof(PINK_PAD_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad,
 	sizeof(PINK_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
-	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
-	sizeof(RED_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,	
-	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,,
+	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
+	sizeof(RED_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,	
+	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
 	0,
 	0,
 	0,
