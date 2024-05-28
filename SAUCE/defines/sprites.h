@@ -1650,8 +1650,8 @@ const unsigned char Medium_Light_Right[]={
 };
 
 const unsigned char Long_Light_Left[]={//now medium upwards chain shifted down 8px
-	  4, 8,0xD7,3,
-	  4, -8,0xD9,3,
+	  4, 8,0xD5,3,
+	  4, -8,0xD7,3,
 	0x80
 };
 
@@ -1660,78 +1660,75 @@ const unsigned char Long_Light_Right[]={//now upwards lamp shifted down 8px
 	0x80
 };
 
-
-
 const unsigned char Chain[]={
 
-	  4, 0,0xD7,3,
-	  4, -16,0xD9,3,
+	  4, 0,0xD5,3,
+	  4, -16,0xD7,3,
 	0x80
 };	
 
 const unsigned char Chain_U[]={
 
-	  4, 16,0xD9,3|OAM_FLIP_V,
-	  4, 0,0xD7,3|OAM_FLIP_V,
+	  4, 16,0xD7,3|OAM_FLIP_V,
+	  4, 0,0xD5,3|OAM_FLIP_V,
 	0x80
 };	
 
-
 const unsigned char BG_Spike_Group1[]={
 
-	  0, -4,0xDB,3,
-	  8, -4,0xDD,3,
+	  0, -4,0xD9,3,
+	  8, -4,0xDB,3,
 	0x80
 };	
 const unsigned char BG_Spike_Group2[]={
 
-	  0, 4,0xDB,3|OAM_FLIP_V,
-	  8, 4,0xDD,3|OAM_FLIP_V,
+	  0, 4,0xD9,3|OAM_FLIP_V,
+	  8, 4,0xDB,3|OAM_FLIP_V,
 	0x80
 };	
 const unsigned char BG_Spike_Group3[]={
 
-	  0, -4,0xDF,3,
-	  8, -4,0xE1,3,
+	  0, -4,0xDD,3,
+	  8, -4,0xDF,3,
 	0x80
 };	
 const unsigned char BG_Spike_Group4[]={
 
-	  0, 4,0xDF,3|OAM_FLIP_V,
-	  8, 4,0xE1,3|OAM_FLIP_V,
+	  0, 4,0xDD,3|OAM_FLIP_V,
+	  8, 4,0xDF,3|OAM_FLIP_V,
 	0x80
 };	
 
 
 const unsigned char Big_Diamond[]={
 
-	  0, 0,0xE3,3,
-	  8, 0,0xE3,3|OAM_FLIP_H,
+	  0, 0,0xE1,3,
+	  8, 0,0xE1,3|OAM_FLIP_H,
 	0x80
 };	
 const unsigned char Right_Half_Diamond[]={
 
-	  8, 0,0xE3,3|OAM_FLIP_H,
+	  8, 0,0xE1,3|OAM_FLIP_H,
 	0x80
 };	
 
 
 const unsigned char Question_Mark[]={
 
-	  4, 0,0xE5,3,
+	  4, 0,0xE3,3,
 	0x80
 };	
 const unsigned char Exclamation_Mark[]={
 
-	  4, 0,0xE7,3,
+	  4, 0,0xE5,3,
 	0x80
 };	
 
 
-const unsigned char Right_Arrow[]={
+const unsigned char Star[]={
 
-	  0, 0,0xE9,3,
-	  8, 0,0xEB,3,
+	  0, 0,0xE7,3,
+	  8, 0,0xE7,3|OAM_FLIP_H,
 	0x80
 };	
 
@@ -1741,6 +1738,27 @@ const unsigned char Big_X[]={
 	  8, 0,0xED,3|OAM_FLIP_H,
 	0x80
 };	
+
+const unsigned char Diamond_Shifted_Right[]={
+
+	  8, 0,0xE1,3,
+	  16, 0,0xE1,3|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Pulsing_Ball[]={
+
+	  8, 8,0xF9,3,
+	0x80
+};
+
+const unsigned char Music_Note[]={
+
+	  0, 0,0xE9,3,
+	  8, 0,0xE9,3,
+	0x80
+};	
+
 struct SpriteFrame {
 	unsigned short frame_count; // use a two byte length value for alignment
 	const unsigned char* ptr;
@@ -1893,7 +1911,7 @@ const unsigned char * const Metasprites[]={
 	Right_Half_Diamond,
 	Question_Mark,
 	Exclamation_Mark,
-	Right_Arrow,
+	Star,
 	Big_X,
 	Short_Light_Right,
 	Short_Light_Left,
@@ -1903,14 +1921,18 @@ const unsigned char * const Metasprites[]={
 	Chain_U,
 	Medium_Light_Right,
 	Medium_Light_Left,
-	Long_Light_Right,
-	Long_Light_Left,
+	
+	Long_Light_Right, //short light shifted down 8px
+	Long_Light_Left, //chain shifted down 8px
 	Short_Light_U,
 	Chain_U,
 	nometa,
 	Dash_Orb,
 	Dash_Gravity_Orb,
 	BG_Spike_Group2,
+	Diamond_Shifted_Right,
+	Pulsing_Ball,
+	Music_Note,
 	};
 
 
@@ -1984,6 +2006,9 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	
+	NULL,
+	NULL,
+	NULL,
 	NULL,
 	NULL,
 	NULL,
