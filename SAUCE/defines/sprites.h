@@ -1649,15 +1649,14 @@ const unsigned char Medium_Light_Right[]={
 	0x80
 };
 
-const unsigned char Long_Light_Left[]={//now medium upright light shifted down 8px
-	  4, 8,0xCF,3,
-	  4, -8,0xCB,3,
+const unsigned char Long_Light_Left[]={//now medium upwards chain shifted down 8px
+	  4, 8,0xD7,3,
+	  4, -8,0xD9,3,
 	0x80
 };
 
-const unsigned char Long_Light_Right[]={//now upright chain shifted down 8px
-	  20, 8,0xD7,3,
-	  20, -8,0xD9,3,
+const unsigned char Long_Light_Right[]={//now upwards lamp shifted down 8px
+	  20, 8,0xCD,3,
 	0x80
 };
 
