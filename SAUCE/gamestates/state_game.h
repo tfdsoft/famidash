@@ -242,36 +242,7 @@ void state_game(){
 		if (pad[controllingplayer] & PAD_SELECT && pad_new[controllingplayer] & PAD_UP) currplayer_gravity ^= 0x01;
 
 
-		if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
-			// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
-			if (!has_practice_point) music_play(song_practice);
-			practice_player_x[0] = player_x[0];
-			long_temp_x = high_byte(player_x[0]);
-			practice_player_x[1] = player_x[1];
-			practice_player_y[0] = player_y[0];
-			practice_player_y[1] = player_y[1];
-			practice_player_vel_x[0] = player_vel_x[0];
-			practice_player_vel_x[1] = player_vel_x[1];
-			practice_player_vel_y[0] = player_vel_y[0];
-			practice_player_vel_y[1] = player_vel_y[1];
-			practice_player_gravity[0] = player_gravity[0];
-			practice_player_gravity[1] = player_gravity[1];
-			practice_cube_rotate[0] = cube_rotate[0];
-			practice_cube_rotate[1] = cube_rotate[1];
-			practice_player_gamemode = gamemode;
-			practice_mini = mini;
-			practice_dual = dual;
-			practice_speed = speed;
-			practice_scroll_x = scroll_x;
-			practice_scroll_y = scroll_y;
-			practice_bg_color_type = lastbgcolortype;
-			practice_g_color_type = lastgcolortype;
-		//	gnd_palette_transition_timer = 0;		palete fade code
-		//	bg_palette_transition_timer = 0;		palette fade code
 
-		//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));	unneeded because of practice music
-			has_practice_point = 1;
-		}
 /* palette fade code
 		if (gnd_palette_transition_timer > 0) {
 			gnd_palette_transition_timer--;
@@ -301,6 +272,37 @@ void state_game(){
 				// ppu_wait_nmi();
 				pad[0] = pad_poll(0); // read the second controller
 				pad_new[0] = get_pad_new(0);	
+				if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
+			// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
+					if (!has_practice_point) music_play(song_practice);
+					practice_player_x[0] = player_x[0];
+					long_temp_x = high_byte(player_x[0]);
+					practice_player_x[1] = player_x[1];
+					practice_player_y[0] = player_y[0];
+					practice_player_y[1] = player_y[1];
+					practice_player_vel_x[0] = player_vel_x[0];
+					practice_player_vel_x[1] = player_vel_x[1];
+					practice_player_vel_y[0] = player_vel_y[0];
+					practice_player_vel_y[1] = player_vel_y[1];
+					practice_player_gravity[0] = player_gravity[0];
+					practice_player_gravity[1] = player_gravity[1];
+					practice_cube_rotate[0] = cube_rotate[0];
+					practice_cube_rotate[1] = cube_rotate[1];
+					practice_player_gamemode = gamemode;
+					practice_mini = mini;
+					practice_dual = dual;
+					practice_speed = speed;
+					practice_scroll_x = scroll_x;
+					practice_scroll_y = scroll_y;
+					practice_bg_color_type = lastbgcolortype;
+					practice_g_color_type = lastgcolortype;
+				//	gnd_palette_transition_timer = 0;		palete fade code
+				//	bg_palette_transition_timer = 0;		palette fade code
+
+				//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));	unneeded because of practice music
+					has_practice_point = 1;
+					pad_new[0] = PAD_START;
+		}
 				if (pad_new[0] & PAD_SELECT) { gameState = 1; 
 					sfx_play(sfx_exit_level,0);
 					music_update();
