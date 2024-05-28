@@ -20,6 +20,25 @@ extern unsigned char* PARALLAX_CHR;
 unsigned char END_LEVEL_TIMER;
 
 void state_game(){
+    if (level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + 2);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + 6);
+        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + 8);
+    }
+    else if (level == 0x09) {
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + 2);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + 4);
+        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + 8);
+    }
+    else {
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + 0);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + 4);
+        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + 8);
+
+    }	
 	ppu_off();
 
 //	twoplayer = 1;
@@ -30,8 +49,8 @@ void state_game(){
 
     load_ground(0);
 
-	mmc3_set_8kb_chr(0);
-    mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));
+//	mmc3_set_8kb_chr(0);
+//    mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));
     
 	currplayer = 0;
 //	current_transition_timer_length = 0;
@@ -40,23 +59,23 @@ void state_game(){
     END_LEVEL_TIMER = 0;
     songtimer = 0;
 	kandoframecnt = 0;
-	mmc3_set_2kb_chr_bank_1(32);
+//	mmc3_set_2kb_chr_bank_1(18);
 	
 	switch (icon){
-		case 0x00: iconbank = 24; break;
-		case 0x01: iconbank = 44; break;
-		case 0x02: iconbank = 46; break;
-		case 0x03: iconbank = 48; break;
-		case 0x04: iconbank = 50; break;
-		case 0x05: iconbank = 52; break;
-		case 0x06: iconbank = 54; break;
-		case 0x07: iconbank = 56; break;
-		case 0x08: iconbank = 58; break;
-		case 0x09: iconbank = 60; break;
-		case 0x0A: iconbank = 62; break;
-		case 0x0B: iconbank = 64; break;
-		case 0x0C: iconbank = 66; break;
-		case 0x0D: iconbank = 68; break;
+		case 0x00: iconbank = 10; break;
+		case 0x01: iconbank = 30; break;
+		case 0x02: iconbank = 32; break;
+		case 0x03: iconbank = 34; break;
+		case 0x04: iconbank = 36; break;
+		case 0x05: iconbank = 38; break;
+		case 0x06: iconbank = 40; break;
+		case 0x07: iconbank = 42; break;
+		case 0x08: iconbank = 44; break;
+		case 0x09: iconbank = 46; break;
+		case 0x0A: iconbank = 48; break;
+		case 0x0B: iconbank = 50; break;
+		case 0x0C: iconbank = 52; break;
+		case 0x0D: iconbank = 54; break;
 	}
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 		pal_col(0x0B,color1);   //palette 2 set to player color
@@ -77,18 +96,18 @@ void state_game(){
 		else if (discomode & 0x01) discorefreshrate = 0x3F;
 	}
 	
-	
+
     while (1) {
 
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
 	if (level == 0x09 || level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {									//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(40);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(38);		// DECO PULSE
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(26);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(24);		// DECO PULSE
 	}											//
 	else {											//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(36);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(34);		//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(22);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(20);		//
 	}											//
 
 	if ((options & platformer) && !has_practice_point) {
@@ -155,35 +174,36 @@ void state_game(){
 		kandoframecnt++;
         ppu_wait_nmi();
 
-	 if (level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {
-        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0 + 12);
-        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1 + 12);
+    if (level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + 2);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + 6);
         mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3 + 12);
+        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + 8);
     }
     else if (level == 0x09) {
-        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0 + 12);
-        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1);
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + 2);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + 4);
         mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3 + 12);
+        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + 8);
     }
     else {
-        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) * 8 + 0);
-        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) * 8 + 1);
+        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + 0);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + 4);
         mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) * 8 + 3);
-    }
+        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + 8);
+
+    }	
 	if (!retro_mode) {
-		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(30);
+		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(16);
 		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
 		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
-		else mmc3_set_2kb_chr_bank_0(26);
+		else mmc3_set_2kb_chr_bank_0(12);
 	}
 	else {
-		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(32);
-		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(42);
-		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(42);
-		else mmc3_set_2kb_chr_bank_0(28);
+		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(18);
+		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(28);
+		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(28);
+		else mmc3_set_2kb_chr_bank_0(14);
 	}
 //	else mmc3_set_2kb_chr_bank_0(28);
 //
