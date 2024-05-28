@@ -291,8 +291,9 @@ void levelselection() {
 			return;
 		}
 			
+		if (pad_new[0] & PAD_RIGHT && pad_new[0] & PAD_LEFT) {}
 			
-		if (pad_new[0] & (PAD_RIGHT)){
+		else if (pad_new[0] & (PAD_RIGHT)){
 			++level;
 			sfx_play(sfx_select, 0);
 			if (level >= LEVEL_COUNT){
@@ -301,7 +302,7 @@ void levelselection() {
 			refreshmenu();
 		//	break;
 		}
-		if (pad_new[0] & PAD_LEFT){
+		else if (pad_new[0] & PAD_LEFT){
 			--level;
 			sfx_play(sfx_select, 0); 
 			if (level == 0xFF){
