@@ -1217,17 +1217,17 @@ const unsigned char Portal_Single[]={
 const unsigned char Portal_Gravity_Down_Horizontal_Downwards[]={
 
 
-	  0,  16,0x4D,0,  
-	  8, 16,0x4F,0,  
-	  16, 16,0x51,0,
-	  24, 16,0x51,0|OAM_FLIP_H,  
+	  0,  0,0x4D,0,  
+	  8, 0,0x4F,0,  
+	  16, 0,0x51,0,
+	  24, 0,0x51,0|OAM_FLIP_H,  
 
-	  32, 16,0x4F,0|OAM_FLIP_H,
-	 40, 16,0x4D,0|OAM_FLIP_H,  
-     8,0,0x53,0,
-	16,0,0x55,0,
-	24,0,0x55,0|OAM_FLIP_H,
-	32,0,0x53,0|OAM_FLIP_H,
+	  32, 0,0x4F,0|OAM_FLIP_H,
+	 40, 0,0x4D,0|OAM_FLIP_H,  
+     8,-16,0x53,0,
+	16,-16,0x55,0,
+	24,-16,0x55,0|OAM_FLIP_H,
+	32,-16,0x53,0|OAM_FLIP_H,
 
 	0x80
 };
@@ -1251,17 +1251,17 @@ const unsigned char Portal_Gravity_Down_Horizontal_Upwards[]={
 const unsigned char Portal_Gravity_Up_Horizontal_Downwards[]={
 
 
-	  0,  16,0x4D,1,  
-	  8, 16,0x4F,1,  
-	  16, 16,0x51,1,
-	  24, 16,0x51,1|OAM_FLIP_H,  
+	  0,  0,0x4D,1,  
+	  8, 0,0x4F,1,  
+	  16, 0,0x51,1,
+	  24, 0,0x51,1|OAM_FLIP_H,  
 
-	  32, 16,0x4F,1|OAM_FLIP_H,
-	 40, 16,0x4D,1|OAM_FLIP_H,  
-     8,0,0x53,1,
-	16,0,0x55,1,
-	24,0,0x55,1|OAM_FLIP_H,
-	32,0,0x53,1|OAM_FLIP_H,
+	  32, 0,0x4F,1|OAM_FLIP_H,
+	 40, 0,0x4D,1|OAM_FLIP_H,  
+     8,-16,0x53,1,
+	16,-16,0x55,1,
+	24,-16,0x55,1|OAM_FLIP_H,
+	32,-16,0x53,1|OAM_FLIP_H,
 
 	0x80
 };
