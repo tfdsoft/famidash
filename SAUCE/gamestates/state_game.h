@@ -60,34 +60,20 @@ void state_game(){
 	kandoframecnt = 0;
 //	mmc3_set_2kb_chr_bank_1(18);
 	
-	switch (icon){
-		case 0x00: iconbank = 12; break;
-		case 0x01: iconbank = 32; break;
-		case 0x02: iconbank = 34; break;
-		case 0x03: iconbank = 36; break;
-		case 0x04: iconbank = 38; break;
-		case 0x05: iconbank = 40; break;
-		case 0x06: iconbank = 42; break;
-		case 0x07: iconbank = 44; break;
-		case 0x08: iconbank = 46; break;
-		case 0x09: iconbank = 48; break;
-		case 0x0A: iconbank = 50; break;
-		case 0x0B: iconbank = 52; break;
-		case 0x0C: iconbank = 54; break;
-		case 0x0D: iconbank = 56; break;
-	}
-		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
-		pal_col(0x0B,color1);   //palette 2 set to player color
+	iconbank = iconBankTable[icon];
+
+	pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
+	pal_col(0x0B,color1);   //palette 2 set to player color
 
 	for (tmp2 = 0; tmp2 < 8; tmp2++) {
 		player_old_posy[tmp2] = 0;
 	}
-	    if (!discomode) {
+	if (!discomode) {
 		pal_col(0x1F,color2);
 		pal_col(0x1D,color3);
 		pal_col(0x1E,color1);
-	    }
-	    else {
+	}
+	else {
 		if (discomode & 0x02) discorefreshrate = 0x1F;
 		else if (discomode & 0x04) discorefreshrate = 0x0F;
 		else if (discomode & 0x08) discorefreshrate = 0x07;
