@@ -1759,6 +1759,47 @@ const unsigned char Music_Note[]={
 	0x80
 };	
 
+
+const unsigned char Small_Spike_Top[]={
+
+	  0, 0,0xB7,3|OAM_FLIP_V,
+	  8, 0,0xB7,3|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};	
+
+const unsigned char Small_Spike_Bottom[]={
+
+	  0, 0,0xB7,3,
+	  8, 0,0xB7,3|OAM_FLIP_H,
+	0x80
+};	
+
+const unsigned char Big_Spike_Top[]={
+
+	  0, 0,0x97,3|OAM_FLIP_V,
+	  8, 0,0x97,3|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};	
+
+const unsigned char Big_Spike_Bottom[]={
+
+	  0, 0,0x97,3,
+	  8, 0,0x97,3|OAM_FLIP_H,
+	0x80
+};	
+
+
+
+
+
+
+
+
+
+
+
+
+
 struct SpriteFrame {
 	unsigned short frame_count; // use a two byte length value for alignment
 	const unsigned char* ptr;
@@ -1933,6 +1974,10 @@ const unsigned char * const Metasprites[]={
 	Diamond_Shifted_Right,
 	Pulsing_Ball,
 	Music_Note,
+	Big_Spike_Bottom,
+	Small_Spike_Bottom,
+	Big_Spike_Top,
+	Small_Spike_Top,
 	};
 
 
@@ -2017,6 +2062,10 @@ const void* animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -2089,6 +2138,13 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
 	0,
 	0,
 	0,
