@@ -1755,7 +1755,7 @@ const unsigned char Pulsing_Ball[]={
 const unsigned char Music_Note[]={
 
 	  0, 0,0xE9,3,
-	  8, 0,0xE9,3,
+	  8, 0,0xEB,3,
 	0x80
 };	
 
