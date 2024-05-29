@@ -137,7 +137,7 @@ def export_spr(folder: str, levels: Iterable[str]):
                     x_hi = k	  # X position, high byte
 
                     y_lo = j % 16 * 16 # Y position, low byte
-                    if int(a) in [10,13,37,253]: # ADJUST HEIGHT FOR BOTTOM PADS
+                    if int(a) in [10,13,37,76,253]: # ADJUST HEIGHT FOR BOTTOM PADS
                         y_lo += 8
              
                     k = (j % 32) // 16
@@ -157,11 +157,7 @@ def export_spr(folder: str, levels: Iterable[str]):
                            y_lo -= 8                     
                         elif count2 == 4:
                            y_lo -= 8                     
-                    if obj_id == 0x42:
-                        y_lo -= 8
-                    elif obj_id == 0x43:
-                        y_lo -= 8
-                    elif obj_id == 0x47:
+                    if int(a) in [0x42,0x43,0x47,0x4E]:
                         y_lo -= 8
                     level_data.append([x_lo, x_hi, y_lo, y_hi, obj_id])
                     # newfile.write("0, ")					# unused

@@ -71,6 +71,13 @@
 #define DASH_ORB				0x45
 #define DASH_GRAVITY_ORB			0x46
 #define BG_SPIKE_GROUP2_UP8			0x47
+#define DIAMOND_SHIFTED_			0x48
+#define PULSE_ORB				0x49
+#define MUSIC_NOTE				0x4A
+#define BIG_SPIKE_BOTTOM			0x4B
+#define SMALL_SPIKE_BOTTOM			0x4C
+#define BIG_SPIKE_TOP				0x4D
+#define SMALL_SPIKE_TOP				0x4E
 
 #define S_BLOCK					0xF9
 #define D_BLOCK					0xFA
@@ -128,6 +135,10 @@ __fastcall__ char sprite_height_lookup(){
         case RED_ORB:
         case D_BLOCK:
         case S_BLOCK:
+	case BIG_SPIKE_BOTTOM:
+	case BIG_SPIKE_TOP:
+	case SMALL_SPIKE_BOTTOM:
+	case SMALL_SPIKE_TOP:
             return 0x0f;
 
 	case 0x2A:
@@ -156,6 +167,10 @@ __fastcall__ char sprite_height_lookup(){
 	case 0x41:
 	case 0x42:
 	case 0x43:
+	case 0x47:
+	case 0x48:
+	case 0x49:
+	case 0x4A:
 		if (twoplayer || !decorations) activesprites_type[index] = 0xFF; 
 		return 0;
             
@@ -405,6 +420,13 @@ void sprite_collide_lookup() {
 
 
     switch (collided) {
+
+    case BIG_SPIKE_BOTTOM:
+    case BIG_SPIKE_TOP:
+    case SMALL_SPIKE_BOTTOM:
+    case SMALL_SPIKE_TOP:
+	cube_data[currplayer] |= 0x01; return;
+    
     // Portal game mode switches
     case S_BLOCK: dashing[currplayer] = 0; return;
     case D_BLOCK: kandowavewalk = 1; return;
