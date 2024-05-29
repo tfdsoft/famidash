@@ -329,7 +329,8 @@ _GAME_CHR:
     .incbin "GRAPHICS/SpikesB.chr" ; (2)
     .incbin "GRAPHICS/BlocksA.chr" ; (4)
     .incbin "GRAPHICS/BlocksB.chr" ; (6)
-    .incbin "GRAPHICS/SawbladesA.chr" ; (8)
+    .incbin "GRAPHICS/BlocksC.chr" ; (8)
+    .incbin "GRAPHICS/SawbladesA.chr" ; (10)
    
     .incbin "GRAPHICS/bankicon00.chr" ; 1kb (10)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb

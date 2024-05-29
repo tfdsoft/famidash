@@ -28,7 +28,7 @@ void state_game(){
     }
     else if (level == 0x09) {
         mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + SPIKESB);
-        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + BLOCKSA);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + BLOCKSC);
         mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
         mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + SAWBLADESA);
     }
@@ -61,20 +61,20 @@ void state_game(){
 //	mmc3_set_2kb_chr_bank_1(18);
 	
 	switch (icon){
-		case 0x00: iconbank = 10; break;
-		case 0x01: iconbank = 30; break;
-		case 0x02: iconbank = 32; break;
-		case 0x03: iconbank = 34; break;
-		case 0x04: iconbank = 36; break;
-		case 0x05: iconbank = 38; break;
-		case 0x06: iconbank = 40; break;
-		case 0x07: iconbank = 42; break;
-		case 0x08: iconbank = 44; break;
-		case 0x09: iconbank = 46; break;
-		case 0x0A: iconbank = 48; break;
-		case 0x0B: iconbank = 50; break;
-		case 0x0C: iconbank = 52; break;
-		case 0x0D: iconbank = 54; break;
+		case 0x00: iconbank = 12; break;
+		case 0x01: iconbank = 32; break;
+		case 0x02: iconbank = 34; break;
+		case 0x03: iconbank = 36; break;
+		case 0x04: iconbank = 38; break;
+		case 0x05: iconbank = 40; break;
+		case 0x06: iconbank = 42; break;
+		case 0x07: iconbank = 44; break;
+		case 0x08: iconbank = 46; break;
+		case 0x09: iconbank = 48; break;
+		case 0x0A: iconbank = 50; break;
+		case 0x0B: iconbank = 52; break;
+		case 0x0C: iconbank = 54; break;
+		case 0x0D: iconbank = 56; break;
 	}
 		pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 		pal_col(0x0B,color1);   //palette 2 set to player color
@@ -101,12 +101,12 @@ void state_game(){
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
 	if (level == 0x09 || level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {									//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(26);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(24);		// DECO PULSE
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(28);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(26);		// DECO PULSE
 	}											//
 	else {											//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(22);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(20);		//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(24);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(22);		//
 	}											//
 
 	if ((options & platformer) && !has_practice_point) {
@@ -181,7 +181,7 @@ void state_game(){
     }
     else if (level == 0x09) {
         mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + SPIKESB);
-        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + BLOCKSA);
+        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + BLOCKSC);
         mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
         mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + SAWBLADESA);
     }
@@ -192,16 +192,16 @@ void state_game(){
         mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + SAWBLADESA);
     }	
 	if (!retro_mode) {
-		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(16);
+		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(18);
 		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
 		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
-		else mmc3_set_2kb_chr_bank_0(12);
+		else mmc3_set_2kb_chr_bank_0(14);
 	}
 	else {
-		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(18);
-		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(28);
-		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(28);
-		else mmc3_set_2kb_chr_bank_0(14);
+		if (mini && gamemode != 0) mmc3_set_2kb_chr_bank_0(20);
+		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(30);
+		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(30);
+		else mmc3_set_2kb_chr_bank_0(16);
 	}
 //	else mmc3_set_2kb_chr_bank_0(28);
 //
