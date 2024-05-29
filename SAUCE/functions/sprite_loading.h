@@ -137,10 +137,10 @@ __fastcall__ char sprite_height_lookup(){
         case S_BLOCK:
 	case BIG_SPIKE_BOTTOM:
 	case BIG_SPIKE_TOP:
+            return 0x0f;
 	case SMALL_SPIKE_BOTTOM:
 	case SMALL_SPIKE_TOP:
-            return 0x0f;
-
+	    return 0x07;
 	case 0x2A:
 	case 0x2B:
 	case 0x2C:
