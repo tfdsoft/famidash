@@ -257,6 +257,7 @@ __fastcall__ char sprite_height_lookup(){
         case GRAVITY_PAD_UP_INVISIBLE:
             return 0x07;
         case GRAVITY_UP_INVISIBLE_PORTAL:
+            return 0x01;
         case GRAVITY_DOWN_INVISIBLE_PORTAL:
             return 0x0F;
         case CUBE_MODE:
