@@ -246,9 +246,10 @@ __fastcall__ char sprite_height_lookup(){
     else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
     else if (
         (type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) || // Speed portals
-        (type >= GRAVITY_DOWN_UPWARDS_PORTAL && type <= GRAVITY_UP_DOWNWARDS_PORTAL))	// Gravity portals
+        (type == GRAVITY_DOWN_DOWNWARDS_PORTAL || type == GRAVITY_UP_DOWNWARDS_PORTAL))	// Gravity portals
         return 0x1F;	
-
+    else if ((type == GRAVITY_DOWN_UPWARDS_PORTAL || type == GRAVITY_UP_UPWARDS_PORTAL))	// Gravity portals
+	return 0x01;
     switch(type) {
         case NOSPRITE:
             return 0;
