@@ -3,6 +3,10 @@
 
 #include "../BUILD_FLAGS.h" 
 
+// C standard library 
+#include "stdint.h"	// defines for standard types
+
+// asm standard library
 #include "../LIB/neslib.h"  // common nes library
 #include "../LIB/nesdoug.h" // slightly less common nes library (thanks nesdoug)
 #include "../LIB/mapper.h"  // MMC3 functions
