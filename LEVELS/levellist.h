@@ -67,7 +67,7 @@ const unsigned short songtime[] = {	//for looping in practice mode
 	14000, //practice
 };
 
-const unsigned short spike_set[] = {
+const unsigned char spike_set[] = {
 	SPIKESA, //stereo madness
 	SPIKESA, //back on track
 	SPIKESA, //polargeist
@@ -86,7 +86,7 @@ const unsigned short spike_set[] = {
 	SPIKESB, //test4
 };
 
-const unsigned short block_set[] = {
+const unsigned char block_set[] = {
 	BLOCKSA, //stereo madness
 	BLOCKSA, //back on track
 	BLOCKSA, //polargeist
@@ -105,7 +105,7 @@ const unsigned short block_set[] = {
 	BLOCKSB, //test4
 };
 
-const unsigned short saw_set[] = {
+const unsigned char saw_set[] = {
 	SAWBLADESA, //stereo madness
 	SAWBLADESA, //back on track
 	SAWBLADESA, //polargeist
