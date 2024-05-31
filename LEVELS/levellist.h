@@ -33,6 +33,14 @@
 #define	INSANE 4
 #define	DEMON 5
 
+
+#define SPIKESA 0
+#define SPIKESB 2
+#define BLOCKSA 4
+#define BLOCKSB 6
+#define BLOCKSC 8
+#define SAWBLADESA 10
+
 const unsigned char difficulty_pal[] ={
 	0x21, 0x06, // easy
     0x2A, 0x30, // normal
@@ -59,6 +67,62 @@ const unsigned short songtime[] = {	//for looping in practice mode
 	14000, //practice
 };
 
+const unsigned short spike_set[] = {
+	SPIKESA, //stereo madness
+	SPIKESA, //back on track
+	SPIKESA, //polargeist
+	SPIKESA, //dryout
+	SPIKESA, //base after base
+	SPIKESA, //cant let go
+	SPIKESA, //jumper
+	SPIKESA, //time machine
+	SPIKESA, //cycles
+	SPIKESB, //xstep
+	SPIKESB, //clutterfunk
+	SPIKESB, //theory of everything
+	SPIKESB, //test1
+	SPIKESB, //test2
+	SPIKESB, //test3
+	SPIKESB, //test4
+};
+
+const unsigned short block_set[] = {
+	BLOCKSA, //stereo madness
+	BLOCKSA, //back on track
+	BLOCKSA, //polargeist
+	BLOCKSA, //dryout
+	BLOCKSA, //base after base
+	BLOCKSA, //cant let go
+	BLOCKSA, //jumper
+	BLOCKSA, //time machine
+	BLOCKSA, //cycles
+	BLOCKSC, //xstep
+	BLOCKSB, //clutterfunk
+	BLOCKSB, //theory of everything
+	BLOCKSB, //test1
+	BLOCKSB, //test2
+	BLOCKSB, //test3
+	BLOCKSB, //test4
+};
+
+const unsigned short saw_set[] = {
+	SAWBLADESA, //stereo madness
+	SAWBLADESA, //back on track
+	SAWBLADESA, //polargeist
+	SAWBLADESA, //dryout
+	SAWBLADESA, //base after base
+	SAWBLADESA, //cant let go
+	SAWBLADESA, //jumper
+	SAWBLADESA, //time machine
+	SAWBLADESA, //cycles
+	SAWBLADESA, //xstep
+	SAWBLADESA, //clutterfunk
+	SAWBLADESA, //theory of everything
+	SAWBLADESA, //test1
+	SAWBLADESA, //test2
+	SAWBLADESA, //test3
+	SAWBLADESA, //test4
+};
 
 
 const unsigned char difficulty_list[] = {
