@@ -21,10 +21,10 @@ unsigned char END_LEVEL_TIMER;
 
 void state_game(){
 
-        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + spike_set[level]);
-        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + block_set[level]);	//tile graphics
+        mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
+        mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
         mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + saw_set[level]);
+        mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
 
     ppu_off();
 
@@ -147,10 +147,10 @@ void state_game(){
 		kandoframecnt++;
         ppu_wait_nmi();
 
-        mmc3_set_1kb_chr_bank_0((parallax_scroll_x & 1) + spike_set[level]);
-        mmc3_set_1kb_chr_bank_1((parallax_scroll_x & 1) + block_set[level]);	//tile graphics
+        mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
+        mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
         mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-        mmc3_set_1kb_chr_bank_3((parallax_scroll_x & 1) + saw_set[level]);
+        mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
 	if (!retro_mode) {
 		if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(18);
 		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
