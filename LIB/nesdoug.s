@@ -13,7 +13,7 @@
 
 
 
-;void set_vram_buffer(void)
+;void set_vram_buffer()
 _set_vram_buffer:
 	ldx #$ff
 	stx VRAM_BUF
@@ -81,7 +81,7 @@ __one_vram_buffer:
 	
 	
 	
-;void clear_vram_buffer(void);	
+;void clear_vram_buffer();	
 _clear_vram_buffer:
 	lda #0
 	sta VRAM_INDEX
@@ -102,7 +102,7 @@ _get_pad_new:
 	
 	
 	
-;uint8_t __fastcall__ get_frame_count(void);	
+;uint8_t __fastcall__ get_frame_count();	
 _get_frame_count:
 	lda <FRAME_CNT1
 	ldx #0
@@ -784,7 +784,7 @@ delay_a_27_clocks:
 @6:     rts     ;
 	
 	
-;void gray_line(void);
+;void gray_line();
 _gray_line:
 	lda <PPU_MASK_VAR
 	and #$1f ;no color emphasis bits
@@ -813,7 +813,7 @@ _gray_line:
 	
 	
 	
-;void seed_rng(void);
+;void seed_rng();
 _seed_rng:
 	lda <FRAME_CNT1
 	sta <RAND_SEED

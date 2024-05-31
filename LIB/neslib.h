@@ -32,11 +32,11 @@ void __fastcall__ pal_spr(const void *data);
 
 //set a palette entry, index is 0..31
 
-// void __fastcall__ pal_col(uint8_t index,uint8_t color);
+// void __fastcall__ pal_col(uint8_t index, uint8_t color);
 
 //reset palette to $0f
 
-void __fastcall__ pal_clear(void);
+void __fastcall__ pal_clear();
 
 //set virtual bright both for sprites and background, 0 is black, 4 is normal, 8 is white
 
@@ -54,27 +54,27 @@ void __fastcall__ pal_bg_bright(uint8_t bright);
 
 //wait actual TV frame, 50hz for PAL, 60hz for NTSC
 
-void __fastcall__ ppu_wait_nmi(void);
+void __fastcall__ ppu_wait_nmi();
 
 //wait virtual frame, it is always 50hz, frame-to-frame in PAL, frameskip in NTSC
 //don't use this one
-void __fastcall__ ppu_wait_frame(void);
+void __fastcall__ ppu_wait_frame();
 
 //turn off rendering, nmi still enabled when rendering is disabled
 
-void __fastcall__ ppu_off(void);
+void __fastcall__ ppu_off();
 
 //turn on bg, spr
 
-void __fastcall__ ppu_on_all(void);
+void __fastcall__ ppu_on_all();
 
 //turn on bg only
 
-void __fastcall__ ppu_on_bg(void);
+void __fastcall__ ppu_on_bg();
 
 //turn on spr only
 
-void __fastcall__ ppu_on_spr(void);
+void __fastcall__ ppu_on_spr();
 
 //set PPU_MASK directly
 
@@ -82,14 +82,14 @@ void __fastcall__ ppu_mask(uint8_t mask);
 
 //get current video system, 0 for PAL, not 0 for NTSC
 
-uint8_t __fastcall__ ppu_system(void);
+uint8_t __fastcall__ ppu_system();
 
 
 
 //clear OAM buffer, all the sprites are hidden
 // Note: changed. Now also changes sprid (index to buffer) to zero
 
-void __fastcall__ oam_clear(void);
+void __fastcall__ oam_clear();
 
 
 //set sprite display mode, 0 for 8x8 sprites, 1 for 8x16 sprites
@@ -115,7 +115,7 @@ void __fastcall__ _oam_meta_spr(uint32_t args);
 //hide all remaining sprites from given offset
 // Note: sprid removed for speed
 // Now also changes sprid (index to buffer) to zero
-void __fastcall__ oam_hide_rest(void);
+void __fastcall__ oam_hide_rest();
 
 
 // to manually change the sprid (index to sprite buffer)
@@ -126,7 +126,7 @@ void __fastcall__ oam_set(uint8_t index);
 
 // returns the sprid (index to the sprite buffer)
 
-uint8_t __fastcall__ oam_get(void);
+uint8_t __fastcall__ oam_get();
 
 
 //poll controller and return flags like PAD_LEFT etc, input is pad number (0 or 1)
@@ -171,8 +171,8 @@ void __fastcall__ bank_bg(uint8_t n);
 
 //get random number 0..255 or 0..65535
 
-uint8_t __fastcall__ rand8(void);
-uint16_t  __fastcall__ rand16(void);
+uint8_t __fastcall__ rand8();
+uint16_t  __fastcall__ rand16();
 
 //set random seed
 

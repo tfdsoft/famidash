@@ -198,7 +198,7 @@ _pal_spr:
 
 
 
-;void __fastcall__ pal_col(uint8_t index,uint8_t color);
+;void __fastcall__ pal_col(uint8_t index, uint8_t color);
 
 ; _pal_col:
 
@@ -223,7 +223,7 @@ _pal_spr:
 ; and then this is inlined
 
 
-;void __fastcall__ pal_clear(void);
+;void __fastcall__ pal_clear();
 
 _pal_clear:
 
@@ -279,7 +279,7 @@ _pal_bright:
 
 
 
-;void __fastcall__ ppu_off(void);
+;void __fastcall__ ppu_off();
 
 _ppu_off:
 
@@ -290,7 +290,7 @@ _ppu_off:
 
 
 
-;void __fastcall__ ppu_on_all(void);
+;void __fastcall__ ppu_on_all();
 
 _ppu_on_all:
 
@@ -304,7 +304,7 @@ ppu_onoff:
 
 
 
-;void __fastcall__ ppu_on_bg(void);
+;void __fastcall__ ppu_on_bg();
 
 _ppu_on_bg:
 
@@ -314,7 +314,7 @@ _ppu_on_bg:
 
 
 
-;void __fastcall__ ppu_on_spr(void);
+;void __fastcall__ ppu_on_spr();
 
 _ppu_on_spr:
 
@@ -333,7 +333,7 @@ _ppu_mask:
 
 
 
-;uint8_t __fastcall__ ppu_system(void);
+;uint8_t __fastcall__ ppu_system();
 
 _ppu_system:
 
@@ -343,7 +343,7 @@ _ppu_system:
 
 
 
-;void __fastcall__ oam_clear(void);
+;void __fastcall__ oam_clear();
 
 _oam_clear:
 
@@ -366,7 +366,7 @@ _oam_set:
 	rts
 	
 	
-;uint8_t __fastcall__ oam_get(void);	
+;uint8_t __fastcall__ oam_get();	
 ;returns the sprid
 
 _oam_get:
@@ -397,7 +397,7 @@ _oam_size:
 
 
 
-;void __fastcall__ oam_spr(uint8_t x,uint8_t y,uint8_t chrnum,uint8_t attr);
+;void __fastcall__ oam_spr(uint8_t x, uint8_t y, uint8_t chrnum, uint8_t attr);
 ;sprid removed
 
 __oam_spr:
@@ -425,7 +425,7 @@ __oam_spr:
 
 
 
-;void __fastcall__ oam_meta_spr(uint8_t x,uint8_t y,const uint8_t *data);
+;void __fastcall__ oam_meta_spr(uint8_t x, uint8_t y,const uint8_t *data);
 ;sprid removed
 
 __oam_meta_spr:
@@ -484,7 +484,7 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 
 
 
-;void __fastcall__ oam_hide_rest(void);
+;void __fastcall__ oam_hide_rest();
 ;sprid removed
 
 _oam_hide_rest:
@@ -506,7 +506,7 @@ _oam_hide_rest:
 
 
 
-;void __fastcall__ ppu_wait_frame(void);
+;void __fastcall__ ppu_wait_frame();
 
 _ppu_wait_frame:
 
@@ -533,7 +533,7 @@ _ppu_wait_frame:
 
 
 
-;void __fastcall__ ppu_wait_nmi(void);
+;void __fastcall__ ppu_wait_nmi();
 
 _ppu_wait_nmi:
 
@@ -604,7 +604,7 @@ _vram_unrle:
 
 
 
-;void __fastcall__ _scroll(uint16_t x,uint16_t y);
+;void __fastcall__ _scroll(uint16_t x, uint16_t y);
 
 __scroll:
 	; ax = y
@@ -719,7 +719,7 @@ _bank_bg:
 
 
 
-;void __fastcall__ vram_read(void *dst,uint16_t size);
+;void __fastcall__ vram_read(void *dst, uint16_t size);
 
 __vram_read:
 
@@ -762,7 +762,7 @@ __vram_read:
 
 
 
-;void __fastcall__ vram_write(void *src,uint16_t size);
+;void __fastcall__ vram_write(void *src, uint16_t size);
 
 __vram_write:
 	; ax = size
@@ -874,7 +874,7 @@ _pad_state:
 
 
 
-;uint8_t __fastcall__ rand8(void);
+;uint8_t __fastcall__ rand8();
 ;Galois random generator, found somewhere
 ;out: A random number 0..255
 
@@ -912,7 +912,7 @@ _rand8:
 
 
 
-;uint16_t __fastcall__ rand16(void);
+;uint16_t __fastcall__ rand16();
 
 _rand16:
 
@@ -1069,7 +1069,7 @@ _flush_vram_update2: ;minor changes %
 
 
 
-;void __fastcall__ vram_fill(uint8_t n,uint16_t len);
+;void __fastcall__ vram_fill(uint8_t n, uint16_t len);
 
 __vram_fill:
 	; a = n
@@ -1130,7 +1130,7 @@ _vram_inc:
 
 
 
-;void __fastcall__ memcpy(void *dst,void *src,uint16_t len);
+;void __fastcall__ memcpy(void *dst, void *src, uint16_t len);
 
 __memcpy:
 
@@ -1176,7 +1176,7 @@ __memcpy:
 
 
 
-;void __fastcall__ memfill(void *dst,uint8_t value,uint16_t len);
+;void __fastcall__ memfill(void *dst, uint8_t value, uint16_t len);
 
 __memfill:
 
