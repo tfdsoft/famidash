@@ -469,6 +469,145 @@ const unsigned char Ship_6[]={
 const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_2, Ship_5, Ship_6, Ship_6};
 // end ship
 
+// swing starts here
+const unsigned char Swing_0[]={
+
+	 -8,  0,0x39,3,
+	  0,  0,0x3B,3,
+	0x80
+};
+const unsigned char Swing_1[]={
+
+	 -8,  0,0x35,3,
+	  0,  0,0x37,3,
+	0x80
+};
+const unsigned char Swing_2[]={
+
+	 -8,  0,0x31,3,
+	  0,  0,0x33,3,
+	0x80
+};
+
+const unsigned char Swing_5[]={
+
+	 -8,  0,0x35,3|OAM_FLIP_V,
+	  0,  0,0x37,3|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Swing_6[]={
+
+	 -8,  0,0x39,3|OAM_FLIP_V,
+	  0,  0,0x3B,3|OAM_FLIP_V,
+	0x80
+};
+
+
+const unsigned char * const SWING[] = {Swing_0, Swing_0, Swing_1, Swing_2, Swing_2, Swing_5, Swing_6, Swing_6};
+const unsigned char Swing2_0[]={
+
+	 -8,  0,0x39,1,
+	  0,  0,0x3B,1,
+	0x80
+};
+const unsigned char Swing2_1[]={
+
+	 -8,  0,0x35,1,
+	  0,  0,0x37,1,
+	0x80
+};
+const unsigned char Swing2_2[]={
+
+	 -8,  0,0x31,1,
+	  0,  0,0x33,1,
+	0x80
+};
+
+const unsigned char Swing2_5[]={
+
+	 -8,  0,0x35,1|OAM_FLIP_V,
+	  0,  0,0x37,1|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Swing2_6[]={
+
+	 -8,  0,0x39,1|OAM_FLIP_V,
+	  0,  0,0x3B,1|OAM_FLIP_V,
+	0x80
+};
+
+
+const unsigned char * const SWING2[] = {Swing2_0, Swing2_0, Swing2_1, Swing2_2, Swing2_2, Swing2_5, Swing2_6, Swing2_6};
+// end swing
+// mini swing
+const unsigned char Mini_Swing_0[]={
+
+	 -4,  -5,0x1B,3,
+	0x80
+};
+
+const unsigned char Mini_Swing_1[]={
+
+	 -4,  -5,0x1B,3,
+	0x80
+};
+
+const unsigned char Mini_Swing_2[]={
+
+	 -4,  -5,0x3F,3,
+	0x80
+};
+
+
+const unsigned char Mini_Swing_5[]={
+
+	 -4,  -5,0x3D,3,
+	0x80
+};
+
+const unsigned char Mini_Swing_6[]={
+
+	 -4,  -5,0x3D,3,
+	0x80
+};
+
+
+const unsigned char * const MINI_SWING[] = {Mini_Swing_0, Mini_Swing_0, Mini_Swing_1, Mini_Swing_2, Mini_Swing_2, Mini_Swing_5, Mini_Swing_6, Mini_Swing_6};
+const unsigned char Mini_Swing2_0[]={
+
+	 -4,  -5,0x1B,1,
+	0x80
+};
+
+const unsigned char Mini_Swing2_1[]={
+
+	 -4,  -5,0x1B,1,
+	0x80
+};
+
+const unsigned char Mini_Swing2_2[]={
+
+	 -4,  -5,0x3F,1,
+	0x80
+};
+
+
+const unsigned char Mini_Swing2_5[]={
+
+	 -4,  -5,0x3D,1,
+	0x80
+};
+
+const unsigned char Mini_Swing2_6[]={
+
+	 -4,  -5,0x3D,1,
+	0x80
+};
+
+
+const unsigned char * const MINI_SWING2[] = {Mini_Swing2_0, Mini_Swing2_0, Mini_Swing_1, Mini_Swing2_2, Mini_Swing2_2, Mini_Swing2_5, Mini_Swing2_6, Mini_Swing2_6};
+// end mini swing
+
 const unsigned char Mini_Ship_0[]={
 
 	 -4,  -5,0x01,3,
