@@ -30,7 +30,7 @@ sprite_data = _sprite_data
 .define CUBE_GRAVITY $6B
 .define MINI_CUBE_GRAVITY $6F
 
-;void __fastcall__ oam_meta_spr_flipped(unsigned char x,unsigned char y,const unsigned char *data);
+;void __fastcall__ oam_meta_spr_flipped(uint8_t x,uint8_t y,const void *data);
 
 .segment "ZEROPAGE"
     rld_value:      .res 1
@@ -156,9 +156,9 @@ __oam_meta_spr_flipped:
 _init_rld:
     ; The C code being ported:
         ;
-        ; void init_rld(unsigned char level){ // reset run-length decoder back to zero
+        ; void init_rld(uint8_t level){ // reset run-length decoder back to zero
         ;     rld_column = 0;
-        ; 	level_data = (unsigned char *) level_list[level];
+        ; 	level_data = (uint8_t *) level_list[level];
         ;     rld_value = level_data[0]; // set the value and run to the first tile type and length
         ;     rld_run = level_data[1];
         ; 	++level_data; ++level_data; 
@@ -807,7 +807,7 @@ ParallaxBufferCol5:
 .endproc
 
 .export __draw_padded_text
-; void __fastcall__ draw_padded_text(const void * data, unsigned char len, unsigned char total_len, unsigned int ppu_address)
+; void __fastcall__ draw_padded_text(const void * data, uint8_t len, uint8_t total_len, uintptr_t ppu_address)
 .proc __draw_padded_text
 	; XA = ppu_address
 	; sreg[0] = total_len
@@ -929,7 +929,7 @@ ParallaxBufferCol5:
 .endproc
 .popseg
 
-;void __fastcall__ music_play(unsigned char song);
+;void __fastcall__ music_play(uint8_t song);
 .import _options
 .proc _music_play  
     bit _options ; sets N flag to bit 7 of _options without affecting a  
@@ -979,7 +979,7 @@ music_counts:
 .byte 2, 3, 3, $FF  ;last bank is marked with an FF to always stop bank picking
 .endproc
 
-; void __fastcall__ sfx_play(unsigned char sfx_index, unsigned char channel);
+; void __fastcall__ sfx_play(uint8_t sfx_index, uint8_t channel);
 .import _options
 .proc __sfx_play  
     ; x = sfx

@@ -26,8 +26,8 @@ _set_vram_buffer:
 	
 
 	
-;void multi_vram_buffer_horz(char * data, unsigned char len, int ppu_address);
-;void multi_vram_buffer_vert(char * data, unsigned char len, int ppu_address);
+;void multi_vram_buffer_horz(void * data, uint8_t len, uint16_t ppu_address);
+;void multi_vram_buffer_vert(void * data, uint8_t len, uint16_t ppu_address);
 __multi_vram_buffer:
 	; XA (A IS HIGH!!) = ppu_address (A OR'd with corresponding value)
 	; xargs[0] = len
@@ -60,7 +60,7 @@ _multi_vram_buffer_common:
 	stx VRAM_INDEX
 	rts
 	
-;void one_vram_buffer(unsigned char data, int ppu_address);
+;void one_vram_buffer(uint8_t data, uint16_t ppu_address);
 __one_vram_buffer:
 	; ax = ppu_address
 	; sreg[0] = data
@@ -92,7 +92,7 @@ _clear_vram_buffer:
 	
 	
 	
-;unsigned char __fastcall__ get_pad_new(unsigned char pad);	
+;uint8_t __fastcall__ get_pad_new(uint8_t pad);	
 _get_pad_new:
 	tay
 	lda <PAD_STATET,y
@@ -102,7 +102,7 @@ _get_pad_new:
 	
 	
 	
-;unsigned char __fastcall__ get_frame_count(void);	
+;uint8_t __fastcall__ get_frame_count(void);	
 _get_frame_count:
 	lda <FRAME_CNT1
 	ldx #0
@@ -110,7 +110,7 @@ _get_frame_count:
 	
 PTR2 = TEMP+2 ;and TEMP+3
 
-;unsigned char __fastcall__ check_collision(void * object1, void * object2);
+;uint8_t __fastcall__ check_collision(void * object1, void * object2);
 __check_collision:
 	; sprite object collision code
 	; this would work with any size struct, as long as the first 4 bytes are...
@@ -200,9 +200,11 @@ __check_collision:
 
 	
 	
-;the public pal_fade_to is called via a macro that loads one of the args into X
-;void __fastcall__ _pal_fade_to(unsigned short from_to);	
+;void __fastcall__ _pal_fade_to(uint8_t from, uint8_t to);	
 __pal_fade_to:
+	; A = from
+	; X = to
+
 	; sta TEMP+9 ;to
 	; jsr popa
 	stx TEMP+9	;to
@@ -242,7 +244,7 @@ __pal_fade_to:
 	
 	
 	
-;void __fastcall__ set_scroll_x(unsigned int x);	
+;void __fastcall__ set_scroll_x(uint16_t x);	
 _set_scroll_x:
 	sta <SCROLL_X
 	txa
@@ -257,7 +259,7 @@ _set_scroll_x:
 	
 	
 	
-;void __fastcall__ set_scroll_y(unsigned int y);	
+;void __fastcall__ set_scroll_y(uint16_t y);	
 _set_scroll_y:
 	sta <SCROLL_Y
 	txa
@@ -273,7 +275,7 @@ _set_scroll_y:
 	
 	
 	
-;int __fastcall__ add_scroll_y(unsigned char add, unsigned int scroll);
+;uint16_t __fastcall__ add_scroll_y(uint8_t add, uint16_t scroll);
 __add_scroll_y:
 	; sreg[0] = add, AX = scroll
 	clc
@@ -291,7 +293,7 @@ __add_scroll_y:
 	
 	
 	
-;int __fastcall__ sub_scroll_y(unsigned char sub, unsigned int scroll);
+;uint16_t __fastcall__ sub_scroll_y(uint8_t sub, uint16_t scroll);
 __sub_scroll_y:
 	; sreg[0] = sub, AX = scroll
 	;is a in range?
@@ -312,7 +314,7 @@ __sub_scroll_y:
 	
 	
 	
-;int __fastcall__ get_ppu_addr(char nt, char x, char y);	
+;uint16_t __fastcall__ get_ppu_addr(uint8_t nt, uint8_t x, uint8_t y);	
 __get_ppu_addr:	
 	; a = y, x = x, sreg[0] = nt
 	and #$f8 ;y bits
@@ -344,7 +346,7 @@ __get_ppu_addr:
 	
 
 	
-;int __fastcall__ get_at_addr(char nt, char x, char y);
+;uint16_t __fastcall__ get_at_addr(uint8_t nt, uint8_t x, uint8_t y);
 _get_at_addr:
 	; a = y, x = x, sreg[0] = nt
 	and #$e0
@@ -373,7 +375,7 @@ _get_at_addr:
 	
 	
 
-;void __fastcall__ set_data_pointer(const char * data);
+;void __fastcall__ set_data_pointer(const void * data);
 _set_data_pointer:
 	sta DATA_PTR
 	stx DATA_PTR+1
@@ -382,7 +384,7 @@ _set_data_pointer:
 	
 	
 	
-;void __fastcall__ set_mt_pointer(const char * metatiles);	
+;void __fastcall__ set_mt_pointer(const void * metatiles);	
 _set_mt_pointer:
 	sta META_PTR
 	stx META_PTR+1
@@ -391,7 +393,7 @@ _set_mt_pointer:
 	
 	
 	
-;void __fastcall__ buffer_4_mt(int ppu_address, char index);
+;void __fastcall__ buffer_4_mt(uint16_t ppu_address, uint8_t index);
 _buffer_4_mt:
 ; 	;a is the index into the data, get 4 metatiles
 
@@ -593,7 +595,7 @@ _buffer_4_mt:
 	
 	
 	
-;void __fastcall__ buffer_1_mt(int ppu_address, char metatile);
+;void __fastcall__ buffer_1_mt(uint16_t ppu_address, uint8_t metatile);
 __buffer_1_mt:
 	; which metatile, in sreg[0]
 	; AX = ppu_address
@@ -682,7 +684,7 @@ MT_MULT5:
 	
 	
 	
-;void __fastcall__ color_emphasis(char color);	
+;void __fastcall__ color_emphasis(uint8_t color);	
 _color_emphasis:
 	;a = bits 1110 0000
 	and #$e0 ;sanitize
@@ -697,7 +699,7 @@ _color_emphasis:
 	
 	
 	
-;void __fastcall__ xy_split(unsigned int x, unsigned int y);
+;void __fastcall__ xy_split(uint16_t x, uint16_t y);
 __xy_split:
 	;Nametable number << 2 (that is: $00, $04, $08, or $0C) to $2006
 	;Y to $2005

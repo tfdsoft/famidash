@@ -2,9 +2,9 @@
 
 // replacements for C stack
 
-extern unsigned char xargs[4];
+extern uint8_t xargs[4];
 #pragma zpsym("xargs")
-#define wxargs ((unsigned short * const)xargs)
+#define wxargs ((uint16_t * const)xargs)
 #define pxargs ((const void ** const)xargs)
 
 #define storeWordToSreg(word) (__AX__ = word, __EAX__<<=16)
@@ -12,12 +12,12 @@ extern unsigned char xargs[4];
 #define storeByteToSreg(byte) (__A__ = byte, __asm__("sta sreg+0"))
 
 //set metasprite in OAM buffer (vertically flipped)
-//meta sprite is a const unsigned char array, it contains four bytes per sprite
+//meta sprite is a const uint8_t array, it contains four bytes per sprite
 //in order x offset, y offset, tile, attribute
 //x=128 is end of a meta sprite
 // Note: sprid removed for speed
-void __fastcall__ _oam_meta_spr_flipped(unsigned long args);
-#define oam_meta_spr_flipped(flip, x, y, data)(xargs[0] = flip, storeBytesToSreg(x, y), __AX__ = (unsigned int)data, _oam_meta_spr_flipped(__EAX__))
+void __fastcall__ _oam_meta_spr_flipped(uint32_t args);
+#define oam_meta_spr_flipped(flip, x, y, data)(xargs[0] = flip, storeBytesToSreg(x, y), __AX__ = (uintptr_t)data, _oam_meta_spr_flipped(__EAX__))
 
 /**
  * ======================================================================================================================
@@ -28,7 +28,7 @@ void __fastcall__ _oam_meta_spr_flipped(unsigned long args);
  * [in] song_index : Song index.
  * ======================================================================================================================
  */
-void __fastcall__ music_play(unsigned char song);
+void __fastcall__ music_play(uint8_t song);
 
 /**
  * ======================================================================================================================
@@ -53,28 +53,28 @@ void __fastcall__ music_update (void);
  * ======================================================================================================================
  */
 
-void __fastcall__ _sfx_play(unsigned int args);
-#define sfx_play(sfx_index, channel) (__AX__ = (unsigned int)(byte(channel))<<8|sfx_index, _sfx_play(__AX__))
+void __fastcall__ _sfx_play(uint16_t args);
+#define sfx_play(sfx_index, channel) (__AX__ = (uint16_t)(byte(channel))<<8|sfx_index, _sfx_play(__AX__))
 
 /**
  * Update the PPU using the VRAM buffer with a single tile repeated LENGTH number of times.
  * Length must not be greater than 0x7f!
  */
-void __fastcall__ _one_vram_buffer_repeat(unsigned long args);
+void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
 #define one_vram_buffer_horz_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _one_vram_buffer_repeat(__EAX__))
 #define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_VERT, _one_vram_buffer_repeat(__EAX__))
 
-void __fastcall__ _draw_padded_text(unsigned long args);
+void __fastcall__ _draw_padded_text(uint32_t args);
 #define draw_padded_text(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _draw_padded_text(__EAX__))
 
 void __fastcall__ playPCM();
 
-extern unsigned char parallax_scroll_column;
-extern unsigned char parallax_scroll_column_start;
+extern uint8_t parallax_scroll_column;
+extern uint8_t parallax_scroll_column_start;
 
 
-#define low_word(a) *((unsigned short*)&a)
-#define high_word(a) *((unsigned short*)&a+1)
+#define low_word(a) *((uint16_t*)&a)
+#define high_word(a) *((uint16_t*)&a+1)
 
 #define vram_adr(a) (POKE(0x2006, MSB(a)), POKE(0x2006, LSB(a)))
 #define vram_put(a) POKE(0x2007, a)
@@ -102,8 +102,8 @@ extern unsigned char parallax_scroll_column_start;
 #define subloNOC(a, b) (subNOC_b(a, b))|(a & 0xFF00)
 
 // get specific byte from a word array
-#define idx16_lo(arr, idx) (*(((char * const)arr)+((idx<<1))))
-#define idx16_hi(arr, idx) (*(((char * const)(arr+1))+((idx<<1))))
+#define idx16_lo(arr, idx) (*(((uint8_t * const)arr)+((idx<<1))))
+#define idx16_hi(arr, idx) (*(((uint8_t * const)(arr+1))+((idx<<1))))
 
 // same as above but idx < 128
 #define idx16_lo_NOC(arr, idx) (__A__ = idx<<1, __asm__("tay\n lda %v, y", arr), __A__)
@@ -128,8 +128,8 @@ extern unsigned char parallax_scroll_column_start;
 
 // set palette color, index 0..31
 // completely inlines and replaces neslib's
-extern unsigned char PAL_UPDATE;
-extern char PAL_BUF[32];
+extern uint8_t PAL_UPDATE;
+extern uint8_t PAL_BUF[32];
 #pragma zpsym("PAL_UPDATE")
 #define pal_col(index, color) do { PAL_BUF[index&0x1F] = (color); ++PAL_UPDATE; } while(0);
 

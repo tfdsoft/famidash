@@ -144,7 +144,7 @@ irq:
 
 
 
-;void __fastcall__ pal_all(const char *data);
+;void __fastcall__ pal_all(const void *data);
 
 _pal_all:
 
@@ -174,7 +174,7 @@ pal_copy:
 
 
 
-;void __fastcall__ pal_bg(const char *data);
+;void __fastcall__ pal_bg(const void *data);
 
 _pal_bg:
 
@@ -186,7 +186,7 @@ _pal_bg:
 
 
 
-;void __fastcall__ pal_spr(const char *data);
+;void __fastcall__ pal_spr(const void *data);
 
 _pal_spr:
 
@@ -198,7 +198,7 @@ _pal_spr:
 
 
 
-;void __fastcall__ pal_col(unsigned char index,unsigned char color);
+;void __fastcall__ pal_col(uint8_t index,uint8_t color);
 
 ; _pal_col:
 
@@ -213,7 +213,7 @@ _pal_spr:
 
 ; this is faster
 
-;void __fastcall__ _pal_col(unsigned short data);
+;void __fastcall__ _pal_col(uint16_t data);
 
 ; __pal_col:
 ; 	sta PAL_BUF,x
@@ -241,7 +241,7 @@ _pal_clear:
 
 
 
-;void __fastcall__ pal_spr_bright(unsigned char bright);
+;void __fastcall__ pal_spr_bright(uint8_t bright);
 
 _pal_spr_bright:
 
@@ -255,7 +255,7 @@ _pal_spr_bright:
 
 
 
-;void __fastcall__ pal_bg_bright(unsigned char bright);
+;void __fastcall__ pal_bg_bright(uint8_t bright);
 
 _pal_bg_bright:
 
@@ -269,7 +269,7 @@ _pal_bg_bright:
 
 
 
-;void __fastcall__ pal_bright(unsigned char bright);
+;void __fastcall__ pal_bright(uint8_t bright);
 
 _pal_bright:
 
@@ -324,7 +324,7 @@ _ppu_on_spr:
 
 
 
-;void __fastcall__ ppu_mask(unsigned char mask);
+;void __fastcall__ ppu_mask(uint8_t mask);
 
 _ppu_mask:
 
@@ -333,7 +333,7 @@ _ppu_mask:
 
 
 
-;unsigned char __fastcall__ ppu_system(void);
+;uint8_t __fastcall__ ppu_system(void);
 
 _ppu_system:
 
@@ -356,7 +356,7 @@ _oam_clear:
 	rts
 	
 	
-;void __fastcall__ oam_set(unsigned char index);	
+;void __fastcall__ oam_set(uint8_t index);	
 ;to manually set the position
 ;a = sprid
 
@@ -366,7 +366,7 @@ _oam_set:
 	rts
 	
 	
-;unsigned char __fastcall__ oam_get(void);	
+;uint8_t __fastcall__ oam_get(void);	
 ;returns the sprid
 
 _oam_get:
@@ -377,7 +377,7 @@ _oam_get:
 
 
 
-;void __fastcall__ oam_size(unsigned char size);
+;void __fastcall__ oam_size(uint8_t size);
 
 _oam_size:
 
@@ -397,7 +397,7 @@ _oam_size:
 
 
 
-;void __fastcall__ oam_spr(unsigned char x,unsigned char y,unsigned char chrnum,unsigned char attr);
+;void __fastcall__ oam_spr(uint8_t x,uint8_t y,uint8_t chrnum,uint8_t attr);
 ;sprid removed
 
 __oam_spr:
@@ -425,7 +425,7 @@ __oam_spr:
 
 
 
-;void __fastcall__ oam_meta_spr(unsigned char x,unsigned char y,const unsigned char *data);
+;void __fastcall__ oam_meta_spr(uint8_t x,uint8_t y,const uint8_t *data);
 ;sprid removed
 
 __oam_meta_spr:
@@ -548,7 +548,7 @@ _ppu_wait_nmi:
 
 
 
-;void __fastcall__ vram_unrle(const unsigned char *data);
+;void __fastcall__ vram_unrle(const void *data);
 
 _vram_unrle:
 
@@ -604,7 +604,7 @@ _vram_unrle:
 
 
 
-;void __fastcall__ _scroll(unsigned int x,unsigned int y);
+;void __fastcall__ _scroll(uint16_t x,uint16_t y);
 
 __scroll:
 	; ax = y
@@ -647,7 +647,7 @@ __scroll:
 
 
 
-;;void __fastcall__ split(unsigned int x);
+;;void __fastcall__ split(uint16_t x);
 ;minor changes %%
 _split:
 
@@ -682,7 +682,7 @@ _split:
 
 
 
-;void __fastcall__ bank_spr(unsigned char n);
+;void __fastcall__ bank_spr(uint8_t n);
 
 _bank_spr:
 
@@ -700,7 +700,7 @@ _bank_spr:
 
 
 
-;void __fastcall__ bank_bg(unsigned char n);
+;void __fastcall__ bank_bg(uint8_t n);
 
 _bank_bg:
 
@@ -719,7 +719,7 @@ _bank_bg:
 
 
 
-;void __fastcall__ vram_read(unsigned char *dst,unsigned int size);
+;void __fastcall__ vram_read(void *dst,uint16_t size);
 
 __vram_read:
 
@@ -762,7 +762,7 @@ __vram_read:
 
 
 
-;void __fastcall__ vram_write(unsigned char *src,unsigned int size);
+;void __fastcall__ vram_write(void *src,uint16_t size);
 
 __vram_write:
 	; ax = size
@@ -800,7 +800,7 @@ __vram_write:
 
 	rts
 
-;unsigned char __fastcall__ pad_poll(unsigned char pad);
+;uint8_t __fastcall__ pad_poll(uint8_t pad);
 
 _pad_poll:
 
@@ -849,7 +849,7 @@ _pad_poll:
 
 
 
-;unsigned char __fastcall__ pad_trigger(unsigned char pad);
+;uint8_t __fastcall__ pad_trigger(uint8_t pad);
 
 _pad_trigger:
 
@@ -863,7 +863,7 @@ _pad_trigger:
 
 
 
-;unsigned char __fastcall__ pad_state(unsigned char pad);
+;uint8_t __fastcall__ pad_state(uint8_t pad);
 
 _pad_state:
 
@@ -874,7 +874,7 @@ _pad_state:
 
 
 
-;unsigned char __fastcall__ rand8(void);
+;uint8_t __fastcall__ rand8(void);
 ;Galois random generator, found somewhere
 ;out: A random number 0..255
 
@@ -912,7 +912,7 @@ _rand8:
 
 
 
-;unsigned int __fastcall__ rand16(void);
+;uint16_t __fastcall__ rand16(void);
 
 _rand16:
 
@@ -923,7 +923,7 @@ _rand16:
 	rts
 
 
-;void __fastcall__ set_rand(unsigned char seed);
+;void __fastcall__ set_rand(uint8_t seed);
 
 _set_rand:
 
@@ -934,7 +934,7 @@ _set_rand:
 
 
 
-;void __fastcall__ set_vram_update(unsigned char *buf);
+;void __fastcall__ set_vram_update(void *buf);
 
 _set_vram_update:
 
@@ -947,7 +947,7 @@ _set_vram_update:
 
 
 
-;void __fastcall__ flush_vram_update(unsigned char *buf);
+;void __fastcall__ flush_vram_update(void *buf);
 
 _flush_vram_update:
 
@@ -1048,7 +1048,7 @@ _flush_vram_update2: ;minor changes %
 	
 	
 	
-;void __fastcall__ vram_adr(unsigned int adr);
+;void __fastcall__ vram_adr(uintptr_t adr);
 
 ; _vram_adr:
 
@@ -1059,7 +1059,7 @@ _flush_vram_update2: ;minor changes %
 
 
 
-;void __fastcall__ vram_put(unsigned char n);
+;void __fastcall__ vram_put(uint8_t n);
 
 ; _vram_put:
 
@@ -1069,7 +1069,7 @@ _flush_vram_update2: ;minor changes %
 
 
 
-;void __fastcall__ vram_fill(unsigned char n,unsigned int len);
+;void __fastcall__ vram_fill(uint8_t n,uint16_t len);
 
 __vram_fill:
 	; a = n
@@ -1109,7 +1109,7 @@ __vram_fill:
 
 
 
-;void __fastcall__ vram_inc(unsigned char n);
+;void __fastcall__ vram_inc(uint8_t n);
 
 _vram_inc:
 
@@ -1130,7 +1130,7 @@ _vram_inc:
 
 
 
-;void __fastcall__ memcpy(void *dst,void *src,unsigned int len);
+;void __fastcall__ memcpy(void *dst,void *src,uint16_t len);
 
 __memcpy:
 
@@ -1176,7 +1176,7 @@ __memcpy:
 
 
 
-;void __fastcall__ memfill(void *dst,unsigned char value,unsigned int len);
+;void __fastcall__ memfill(void *dst,uint8_t value,uint16_t len);
 
 __memfill:
 
@@ -1217,7 +1217,7 @@ __memfill:
 
 
 
-;void __fastcall__ delay(unsigned char frames);
+;void __fastcall__ delay(uint8_t frames);
 
 _delay:
 
