@@ -4,7 +4,7 @@
 #include "../BUILD_FLAGS.h" 
 
 // C standard library 
-#include "stdint.h"	// defines for standard types
+#include "../LIB/stdint.h"	// defines for standard types
 
 // asm standard library
 #include "../LIB/neslib.h"  // common nes library
