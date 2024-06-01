@@ -936,30 +936,25 @@ ParallaxBufferCol5:
     bpl musicon
     rts  
 musicon:  
-    LDY #$00  
+    LDY #<FIRST_MUSIC_BANK
     tsx
 bank_loop:
     PHA
     SEC
-    SBC music_counts, Y
+    SBC music_counts-FIRST_MUSIC_BANK, Y
     BCC found_bank
     INY
     TXS ;Act as if no PHA happened
     BCS bank_loop  ; BRA
 found_bank:
     TYA
-    PHA
-    ; No CLC needed as we jumped here with a BCC
-    ADC #<FIRST_MUSIC_BANK
     JSR mmc3_tmp_prg_bank_1
-    PLA
-    CMP current_song_bank
+    CPY current_song_bank
     BEQ :+
     ;If different bank than before reinitalize FS
-        STA current_song_bank
-        TAY
-        LDX music_data_locations_lo, Y
-        LDA music_data_locations_hi, Y
+        STY	current_song_bank
+        LDX music_data_locations_lo-FIRST_MUSIC_BANK, Y
+        LDA	music_data_locations_hi-FIRST_MUSIC_BANK, Y
         TAY
         LDA #$01
         JSR famistudio_init
@@ -995,10 +990,7 @@ play:
 ; void __fastcall__ music_update (void);
 .proc _music_update
     LDA current_song_bank
-    CLC
-    ADC #<FIRST_MUSIC_BANK
     JSR mmc3_tmp_prg_bank_1
-
     JSR famistudio_update
     JMP _mmc3_pop_prg_bank_1
 .endproc
