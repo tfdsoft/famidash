@@ -27,11 +27,11 @@ char bg_coll_L(void){
 		if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;		// If X pos inside block ≥ 10px, die
 	} else if(tmp3 == COL_DEATH_TOP) {
 		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-		if (!(temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
+		if (((temp_y & 0x0f) < 0x04)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
 		else return 0;
 	} else if (tmp3 == COL_DEATH_BOTTOM) {
 		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-		if ((temp_y & 0x08)) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
+		if ((temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
 		else return 0;
 	}
 
@@ -89,11 +89,11 @@ char bg_coll_R(void){
 		if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;		// If X pos inside block ≥ 10px, die
 	} else if(tmp3 == COL_DEATH_TOP) {
 		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-		if (!(temp_y & 0x08)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
+		if ((temp_y & 0x0f) < 0x04) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
 		else return 0;
 	} else if (tmp3 == COL_DEATH_BOTTOM) {
 		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-		if ((temp_y & 0x08)) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
+		if ((temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
 		else return 0;
 	}
 
@@ -144,12 +144,9 @@ char bg_coll_U(void){
 				
 						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
 							cube_data[currplayer] = 1;
-						} else return 0;
-					} else {
-						return 0;
+						}
 					}
-				}
-				return 1;
+				} else return 1;
 			}
 		} else if (tmp3 == COL_BOTTOM || tmp3 == COL_DEATH_BOTTOM) {
 			tmp2 = temp_y & 0x0f;
@@ -161,12 +158,9 @@ char bg_coll_U(void){
 				
 						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
 							cube_data[currplayer] = 1;
-						} else return 0;
-					} else {
-						return 0;
+						}
 					}
-				}
-				return 1;
+				} else return 1;
 			}
 		} 
 		if (common_checks()) return 1;
@@ -200,12 +194,9 @@ char bg_coll_D(void){
 				
 						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
 							cube_data[currplayer] = 1;
-						} else return 0;
-					} else {
-						return 0;
+						}
 					}
-				}
-				return 1;
+				} else return 1;
 			}
 		} else if (tmp3 == COL_BOTTOM || tmp3 ==  COL_DEATH_BOTTOM) {
 			tmp2 = temp_y & 0x0f;
@@ -218,12 +209,9 @@ char bg_coll_D(void){
 				
 						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
 							cube_data[currplayer] = 1;
-						} else return 0;
-					} else {
-						return 0;
+						}
 					}
-				}
-				return 1;
+				} else return 1;
 			}
 		} 
 		if (common_checks()) return 1;
