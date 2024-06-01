@@ -331,12 +331,13 @@ void state_game(){
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		
 		movement();
-		
-		mmc3_set_prg_bank_1(GET_BANK(x_movement));
-		
-		x_movement();
+
 		mmc3_set_prg_bank_1(GET_BANK(x_movement_coll));
 		x_movement_coll();
+		
+		mmc3_set_prg_bank_1(GET_BANK(x_movement));
+		x_movement();
+		
 		mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 		sprite_collide();
 
