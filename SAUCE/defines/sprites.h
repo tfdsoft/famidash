@@ -43,6 +43,50 @@ const unsigned char ExplodeR_1[]={
 	0x80
 };
 const unsigned char * const ExplodeR_Sprites[] = {ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1};
+const unsigned char Explode2_1[]={
+
+	  0,  0,0x1D,1,
+	  8,  0,0x1D,1|OAM_FLIP_H|OAM_FLIP_V,	
+	0x80
+};
+
+const unsigned char Explode2_2[]={
+
+	  0,  0,0xFB,1,
+	  8,  0,0xFB,1|OAM_FLIP_H|OAM_FLIP_V,	
+	0x80
+};
+
+const unsigned char Explode2_3[]={
+
+	  0,  0,0x1F,1,
+	  8,  0,0x1F,1|OAM_FLIP_H|OAM_FLIP_V,	
+	0x80
+};
+
+const unsigned char Explode2_4[]={
+
+	  0,  0,0xFD,1,
+	  8,  0,0xFD,1|OAM_FLIP_H|OAM_FLIP_V,	
+	0x80
+};
+
+const unsigned char Explode2_5[]={
+
+	  0,  0,0xFF,1,
+	  8,  0,0xFF,1|OAM_FLIP_H|OAM_FLIP_V,	
+	0x80
+};
+
+const unsigned char * const Explode_Sprites2[] = {Explode2_1,Explode2_1,Explode2_1,Explode2_1,Explode2_2,Explode2_2,Explode2_2,Explode2_2,Explode2_3,Explode2_3,Explode2_3,Explode2_3,Explode2_4,Explode2_4,Explode2_4,Explode2_4,Explode2_5,Explode2_5,Explode2_5,Explode2_5};
+
+const unsigned char ExplodeR2_1[]={
+
+	  0,  0,0x1D,1,
+	  8,  0,0x1F,1,
+	0x80
+};
+const unsigned char * const ExplodeR_Sprites2[] = {ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1,ExplodeR2_1};
 
 const unsigned char Practice_Diamond[]={
 

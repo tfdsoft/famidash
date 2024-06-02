@@ -354,10 +354,7 @@ void state_game(){
 
 		check_spr_objects();
 
-		if (!DEBUG_MODE) {
-			if (cube_data[0] == 1) reset_level();
-			if (cube_data[1] == 1) reset_level();
-		}
+
 
 		mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 		{	// always store it back for practice mode
@@ -368,7 +365,10 @@ void state_game(){
 			player_gravity[0] = currplayer_gravity;
 		}
 
-
+		if (!DEBUG_MODE) {
+			if (cube_data[0] == 1) reset_level();
+		}
+		
 		if (dual) { 
 			currplayer = 1;					//take focus
 			if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
@@ -401,9 +401,9 @@ void state_game(){
 
 			mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
 			sprite_collide();
-			if(!DEBUG_MODE && cube_data[1] & 0x01) {
-				reset_level();
-			}
+	//		if(!DEBUG_MODE && cube_data[1] & 0x01) {
+	//			reset_level();
+	//		}
 			currplayer = 0;					//give back focus
 			if (twoplayer) controllingplayer = 0;		//give back controls
 			{
@@ -436,6 +436,9 @@ void state_game(){
         
         
         if (DEBUG_MODE) gray_line();
+		if (!DEBUG_MODE) {
+			if (cube_data[1] == 1) reset_level();
+		}
         if (gameState != 0x02) return;
     }
 }
