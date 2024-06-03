@@ -104,8 +104,8 @@ void __fastcall__ set_mt_pointer(const void * metatiles);
 // max metatiles = 51 (because 51 x 5 = 255)
 
 
-void __fastcall__ _buffer_1_mt(uint32_t args);
-#define buffer_1_mt(ppu_address, index) (storeByteToSreg(index), __AX__ = ppu_address, _buffer_1_mt(__EAX__))
+//void __fastcall__ _buffer_1_mt(uint32_t args);
+//#define buffer_1_mt(ppu_address, index) (storeByteToSreg(index), __AX__ = ppu_address, _buffer_1_mt(__EAX__))
 // will push 1 metatile and 0 attribute bytes to the vram_buffer
 // make sure to set_vram_buffer(), and clear_vram_buffer(), 
 // and set_mt_pointer() 

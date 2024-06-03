@@ -189,6 +189,7 @@ unsigned char trails;
 unsigned char decorations;
 
 unsigned char retro_mode;
+unsigned char achievements[20];
 //unsigned char practice_famistudio_state[0xbf];
 unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
 unsigned char collisionMap1[192];

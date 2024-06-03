@@ -4,7 +4,7 @@
 .export _set_vram_buffer, __multi_vram_buffer, __one_vram_buffer
 .export _get_pad_new, _get_frame_count
 .export __check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y
-.export  __get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt, __buffer_1_mt
+.export  __get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt
 .export _color_emphasis, __xy_split, _gray_line, _seed_rng
 .export _clear_vram_buffer
 
@@ -596,60 +596,60 @@ _buffer_4_mt:
 	
 	
 ;void __fastcall__ buffer_1_mt(uint16_t ppu_address, uint8_t metatile);
-__buffer_1_mt:
-	; which metatile, in sreg[0]
+;__buffer_1_mt:
+	;; which metatile, in sreg[0]
 	; AX = ppu_address
 
-	ldy sreg+0
-	sty META_VAR
+;	ldy sreg+0
+	;sty META_VAR
 	
 	; jsr popax ;get ppu address
-	and #$de ;sanitize, should be even x and y
-	sta TEMP
-	txa
-	ora #$40 ;NT_UPD_HORZ
-	sta TEMP+1
-	
-	ldx VRAM_INDEX	
-	lda TEMP				;ppu address
-	sta VRAM_BUF+1,x
-		clc
-		adc #$20 ;shouldn't be rollover
-	sta VRAM_BUF+6,x	
-	
-	lda TEMP+1
-	sta VRAM_BUF,x
-	sta VRAM_BUF+5,x
-	
-	lda #2 ;tell the system 2 bytes in a row
-	sta VRAM_BUF+2,x
-	sta VRAM_BUF+7,x
-	
-	lda META_VAR ;which metatile
-	jsr MT_MULT5 ;multiply 5 and set y
-
-	lda (META_PTR2), y ;tile
-	sta VRAM_BUF+3,x
-	iny
-	lda (META_PTR2), y ;tile
-	sta VRAM_BUF+4,x
-	iny
-	lda (META_PTR2), y ;tile
-	sta VRAM_BUF+8,x
-	iny
-	lda (META_PTR2), y ;tile
-	sta VRAM_BUF+9,x
-	
-	txa
-	clc
-	adc #10
-	sta VRAM_INDEX
-	tax
-	lda #$ff ;=NT_UPD_EOF
-	sta VRAM_BUF,x
-	rts
-	
-	
+;	and #$de ;sanitize, should be even x and y
+;	sta TEMP
+;	txa
+;	ora #$40 ;NT_UPD_HORZ
+;	sta TEMP+1
+;	
+;	ldx VRAM_INDEX	
+;	lda TEMP				;ppu address
+;	sta VRAM_BUF+1,x
+;		clc
+;		adc #$20 ;shouldn't be rollover
+;	sta VRAM_BUF+6,x	
+;	
+;	lda TEMP+1
+;	sta VRAM_BUF,x
+;	sta VRAM_BUF+5,x
+;	
+;	lda #2 ;tell the system 2 bytes in a row
+;	sta VRAM_BUF+2,x
+;	sta VRAM_BUF+7,x
+;	
+;	lda META_VAR ;which metatile
+;	jsr MT_MULT5 ;multiply 5 and set y
+;
+;	lda (META_PTR2), y ;tile
+;	sta VRAM_BUF+3,x
+;	iny
+;	lda (META_PTR2), y ;tile
+;	sta VRAM_BUF+4,x
+;	iny
+;	lda (META_PTR2), y ;tile
+;	sta VRAM_BUF+8,x
+;	iny
+;	lda (META_PTR2), y ;tile
+;	sta VRAM_BUF+9,x
+;	
+;	txa
+;	clc
+;	adc #10
+;	sta VRAM_INDEX
+;	tax
+;	lda #$ff ;=NT_UPD_EOF
+;	sta VRAM_BUF,x
+;	rts
+;	
+;	
 	
 MT_MULT5:
 ;multiply metatile value (8 bit) by 5

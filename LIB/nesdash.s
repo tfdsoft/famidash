@@ -52,7 +52,7 @@ sprite_data = _sprite_data
     parallax_scroll_column: .res 1
     parallax_scroll_column_start: .res 1
 
-.segment "CODE"
+.segment "CODE_2"
 
 __oam_meta_spr_flipped:
 	; AX = data
