@@ -55,6 +55,7 @@ extern unsigned char scroll_count;
 void unrle_first_screen(void){ // run-length decode the first screen of a level
 	unsigned char i;
 	unsigned int ii;
+	mmc3_set_prg_bank_1(GET_BANK(init_sprites));
 	init_sprites();
 
 	cube_data[0] = 0;

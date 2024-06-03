@@ -339,11 +339,11 @@ const short mini_heights[] = {
    -0x1190,-0x1190,-0x1170,-0x1190,-0x1190,-0x1190, 0x000, 0x000, // black orb
 };
 
-
-
 #pragma code-name(push, "XCD_BANK_00")
 #pragma data-name(push, "XCD_BANK_00")
 #pragma rodata-name(push, "XCD_BANK_00")
+
+
 
 #define table_offset tmp3
 #define collided tmp4

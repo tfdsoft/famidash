@@ -12,7 +12,7 @@
 .import _level1text, _level2text, _level3text, _level4text, _level5text, _level6text, _level7text, _level8text, _level9text, _levelAtext
 .import _increase_parallax_scroll_column, _icon
 .import FIRST_MUSIC_BANK
-.import _auto_fs_updates
+.import _auto_fs_updates, _no_parallax
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 
@@ -719,6 +719,8 @@ NametableAddrHi = tmp1
         rts
         
     RenderParallaxLoop:
+	    lda _no_parallax
+	    bne @nopar
             lda VRAM_BUF+TileOff0+3,x
             bne :+
                 ; empty tile, so replace it with the parallax for this
@@ -733,7 +735,8 @@ NametableAddrHi = tmp1
             inx
             dec LoopCount
             bpl RenderParallaxLoop
-        rts
+	@nopar:
+            rts
     ; Before returning, loop again through the vram buffer and write the parallax
     ; parallax_bg_write:
     ;     ldx #27 - 1

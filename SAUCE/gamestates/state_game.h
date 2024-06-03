@@ -23,11 +23,18 @@ unsigned char END_LEVEL_TIMER;
 
 void state_game(){
 
+	if (!no_parallax) {
         mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
         mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
         mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
         mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
-
+	}
+	else {
+       mmc3_set_1kb_chr_bank_0(spike_set[level]);
+        mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
+        mmc3_set_1kb_chr_bank_2(parallax_scroll_x);
+        mmc3_set_1kb_chr_bank_3(saw_set[level]);
+	}
     ppu_off();
 
 //	twoplayer = 1;
@@ -148,11 +155,18 @@ void state_game(){
 
 		kandoframecnt++;
         ppu_wait_nmi();
-
-        mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
-        mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
-        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-        mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
+	if (!no_parallax) {
+		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
+		mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
+		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+		mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
+	}
+//	else {
+  //     mmc3_set_1kb_chr_bank_0(spike_set[level]);
+    //    mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
+ //       mmc3_set_1kb_chr_bank_2(parallax_scroll_x);
+   //     mmc3_set_1kb_chr_bank_3(saw_set[level]);
+	//}
 	if (!retro_mode) {
 		if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(18);
 		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);

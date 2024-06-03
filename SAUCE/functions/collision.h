@@ -274,3 +274,4 @@ void bg_coll_death(void) {
 //		reset_level();
 //	}
 }
+
