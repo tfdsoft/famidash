@@ -101,7 +101,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //theory of everything
 	BLOCKSB, //test1
 	BLOCKSB, //test2
-	BLOCKSB, //test3
+	BLOCKSC, //test3
 	BLOCKSB, //test4
 };
 
