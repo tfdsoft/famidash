@@ -3191,6 +3191,8 @@ sprite_data_test3:
   .byte $00,$06,$40,$01,$13
   .byte $10,$06,$40,$01,$fb
   .byte $20,$06,$40,$01,$fb
+  .byte $50,$06,$30,$01,$30
+  .byte $50,$06,$50,$01,$31
   .byte $ff
 .segment "SPR_BANK_02"
 sprite_data_test4:
