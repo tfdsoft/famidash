@@ -1,6 +1,6 @@
-#define MENUBANK 58
-#define MENUICONBANK 62
-#define LEVELCOMPLETEBANK 66
+#define MENUBANK 60
+#define MENUICONBANK 64
+#define LEVELCOMPLETEBANK 68
 
 #define SPIKESA 0
 #define SPIKESB 2
@@ -8,6 +8,7 @@
 #define BLOCKSB 6
 #define BLOCKSC 8
 #define SAWBLADESA 10
+#define SLOPESA 12
 
 // game states
 #define MENU 0x01

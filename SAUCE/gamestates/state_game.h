@@ -32,7 +32,7 @@ void state_game(){
 	else {
        mmc3_set_1kb_chr_bank_0(spike_set[level]);
         mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
-        mmc3_set_1kb_chr_bank_2(parallax_scroll_x);
+        mmc3_set_1kb_chr_bank_2(SLOPESA);
         mmc3_set_1kb_chr_bank_3(saw_set[level]);
 	}
     ppu_off();
@@ -84,12 +84,12 @@ void state_game(){
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
 	if (level == 0x09 || level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {									//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(28);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(26);		// DECO PULSE
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(30);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(28);		// DECO PULSE
 	}											//
 	else {											//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(24);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(22);		//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(26);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(24);		//
 	}											//
 
 	if ((options & platformer) && !has_practice_point) {
