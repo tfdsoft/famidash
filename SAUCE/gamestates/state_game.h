@@ -168,16 +168,16 @@ void state_game(){
    //     mmc3_set_1kb_chr_bank_3(saw_set[level]);
 	//}
 	if (!retro_mode) {
-		if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(18);
+		if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(20);
 		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
 		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
-		else mmc3_set_2kb_chr_bank_0(14);
+		else mmc3_set_2kb_chr_bank_0(16);
 	}
 	else {
-		if (mini && gamemode != 0 || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(20);
-		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(30);
-		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(30);
-		else mmc3_set_2kb_chr_bank_0(16);
+		if (mini && gamemode != 0 || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
+		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(32);
+		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(32);
+		else mmc3_set_2kb_chr_bank_0(18);
 	}
 //	else mmc3_set_2kb_chr_bank_0(28);
 //
