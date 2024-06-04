@@ -1931,7 +1931,7 @@ const unsigned char Diamond_Shifted_Right[]={
 
 const unsigned char Pulsing_Ball[]={
 
-	  8, 8,0xF9,3,
+	  4, -4,0xF9,3,
 	0x80
 };
 
