@@ -1196,7 +1196,7 @@ write_active:
 .importzp _cube_rotate, _mini
 .import _CUBE, _SHIP, _BALL, _ROBOT, _UFO, _SPIDER, _WAVE, _SWING
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_UFO, _MINI_SPIDER, _MINI_WAVE, _MINI_SWING
-
+.importzp _cube_data, _slope_frames
 drawcube_rounding_table:
 	.byte 0, <-1, <-2, 3, 2, 1
 	.byte 0, <-1, <-2, 3, 2, 1	; doubling it simplifies the routine
@@ -1243,6 +1243,18 @@ drawplayer_center_offsets:
 .export _drawplayerone
 
 .proc _drawplayerone
+
+    LDX _cube_data
+    LDA _slope_frames
+    BEQ :+
+        TXA
+        ORA #%10000000
+        BNE @skipClearBit
+    :
+        TXA
+        AND #%01111111
+    @skipClearBit:
+    sta _cube_data
 
     LDA _player_gravity+0
     BEQ :+
@@ -1315,9 +1327,12 @@ drawplayer_center_offsets:
 			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
 
+        BIT _cube_data
+        BMI @round
 		LDA _player_vel_y+1		;	if player_vel_y == 0
 		ORA _player_vel_y+0		;
-		BNE @no_round			;__
+		BNE @no_round		    ;__
+        @round:	    
 			STA _cube_rotate+0	;__ low_byte = 0
 			LAX _cube_rotate+1	;	LAX abs is apparently stable
 			SEC					;
@@ -1328,8 +1343,12 @@ drawplayer_center_offsets:
 			:					;__
 			LDA _cube_rotate+1	;	Round the cube rotation
 			ADC @rounding_table, X
-			STA _cube_rotate+1	;
-            TAX                 ;__
+			BIT _cube_data
+            BPL :+
+                CLC
+                ADC #$03
+            : STA _cube_rotate+1
+            TAX
             JMP @fin_nold
 
 		@no_round:

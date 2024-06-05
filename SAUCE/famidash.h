@@ -137,7 +137,7 @@ unsigned char temp_x;
 unsigned char temp_y;
 unsigned char temp_room;
 unsigned char dual;
-
+signed char slope_frames;
 
 unsigned char * sprite_data;
 unsigned char * level_data;

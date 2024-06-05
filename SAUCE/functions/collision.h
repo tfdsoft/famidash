@@ -183,41 +183,74 @@ char bg_coll_D(void){
 
 	for (tmp1 = 0; tmp1 < 2; tmp1++) {
 		tmp3 = bg_collision_sub();
-		if (tmp3 == COL_ALL) return 1;
-		else if (tmp3 == COL_TOP || tmp3 == COL_DEATH_TOP) {
-			tmp2 = temp_y & 0x0f;	
-			eject_D = (temp_y) & 0x07;
-			if (tmp2 < 0x08) {
-				if (tmp3 == COL_DEATH_TOP) {
-					if (tmp2 < 0x04) {
-						tmp2 = temp_x & 0x0f;
-				
-						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
-							cube_data[currplayer] = 1;
+		switch (tmp3) {
+			case COL_ALL:
+				return 1;
+			case COL_TOP:
+			case COL_DEATH_TOP: 
+				tmp2 = temp_y & 0x0f;	
+				eject_D = (temp_y) & 0x07;
+				if (tmp2 < 0x08) {
+					if (tmp3 == COL_DEATH_TOP) {
+						if (tmp2 < 0x04) {
+							tmp2 = temp_x & 0x0f;
+					
+							if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+								cube_data[currplayer] = 1;
+							}
 						}
-					}
-				} else return 1;
-			}
-		} else if (tmp3 == COL_BOTTOM || tmp3 ==  COL_DEATH_BOTTOM) {
-			tmp2 = temp_y & 0x0f;
-			eject_D = (temp_y) & 0x07;
-			if (tmp2 >= 0x08) {
-				if (tmp3 == COL_DEATH_BOTTOM) {
-					if (tmp2 >= 0x0c) {
-						if (high_byte(currplayer_x) < 0x10) return 0;
-						tmp2 = temp_x & 0x0f;
-				
-						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
-							cube_data[currplayer] = 1;
+					} else return 1;
+				}
+				break;
+			case COL_BOTTOM:
+			case COL_DEATH_BOTTOM:
+				tmp2 = temp_y & 0x0f;
+				eject_D = (temp_y) & 0x07;
+				if (tmp2 >= 0x08) {
+					if (tmp3 == COL_DEATH_BOTTOM) {
+						if (tmp2 >= 0x0c) {
+							if (high_byte(currplayer_x) < 0x10) return 0;
+							tmp2 = temp_x & 0x0f;
+					
+							if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+								cube_data[currplayer] = 1;
+							}
 						}
-					}
-				} else return 1;
-			}
+					} else return 1;
+				}
+				break;
 		} 
+		
 		if (common_checks()) return 1;
 
 		temp_x += Generic.width; // automatically only the low byte
 	}	
+
+	// Slopes
+	
+	tmp1 = Generic.y + Generic.height - 1;
+	if (mini) {
+		tmp1 += byte(0x10 - Generic.height) >> 1;	
+	}
+	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
+	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1); // middle of the cube
+
+	tmp3 = bg_collision_sub(); // do again but this time in the center of the cube
+	switch (tmp3) {
+		case COL_SLOPE_UR:
+			tmp2 = temp_x & 0x0f;
+			tmp4 = temp_y & 0x0f;
+
+			tmp7 = (0x0f - tmp2) & 0x0f;
+			if (tmp4 >= tmp7) {
+				eject_D = ((temp_y) & 0x0f) - tmp7;
+				slope_frames = 2; //signal BG_COLL_R to not check stuff
+				return 1;
+			} 
+			return 0;
+		break;
+	}
+	
 	return 0;
 }
 
