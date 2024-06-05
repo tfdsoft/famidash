@@ -13,6 +13,7 @@
 .import _increase_parallax_scroll_column, _icon
 .import FIRST_MUSIC_BANK
 .import _auto_fs_updates, _no_parallax
+.import callptr4
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 
@@ -2099,9 +2100,29 @@ drawplayer_common := _drawplayerone::common
 
 .endproc
 
+.export crossPRGBankJump
+.proc crossPRGBankJump
+	; AX = address of function
+	; Y = bank of function
+	STA ptr4
+	STX ptr4+1
+	LDA mmc3PRG1Bank
+	PHA
+	TYA
+	JSR mmc3_set_prg_bank_1
+	LDA ptr3
+	LDX ptr3+1
+	JSR callptr4
+	STA ptr3
+	STX ptr3+1
+	PLA
+	JMP mmc3_set_prg_bank_1
+.endproc
+
+.segment "XCD_BANK_01"
 .export _playPCM
 .proc _playPCM
-PCM_ptr = _tmp6
+PCM_ptr = ptr1
     ; select PCM
 	tay
     sta tmp1
@@ -2113,6 +2134,7 @@ PCM_ptr = _tmp6
     lda #%00001011
     sta $4015
     lda #0
+	sta PCM_ptr
     sta $4013
     lda #%00011011
     sta $4015
@@ -2130,11 +2152,11 @@ PCM_ptr = _tmp6
 
     ;play pcm
 @RestartPtr:
-    lda #>$a000
+    lda #>$C000
     sta PCM_ptr+1
 @LoadBank:
     txa
-    jsr mmc3_tmp_prg_bank_1
+    jsr mmc3_set_prg_bank_0
     inx
 @LoadSample:
     lda tmp1
@@ -2149,11 +2171,9 @@ PCM_ptr = _tmp6
 @noburn:
     php
     plp
-    lda #00
-    lda #00
-    lda #00
-    lda #00
-    lda #00
+    php
+	plp
+	bit PCM_ptr
 	
     lda (PCM_ptr),y
     beq @DoneWithPCM
@@ -2162,14 +2182,14 @@ PCM_ptr = _tmp6
     bne @LoadSample
     inc PCM_ptr+1
     lda PCM_ptr+1
-    cmp #>($a000+$2000)
+    cmp #>($c000+$2000)
     bcc @LoadSample
     jmp @RestartPtr
 @DoneWithPCM:
-    jsr _mmc3_pop_prg_bank_1
     lda #%00011111
     sta $4015
-    rts
+    lda #<DMC_BANK
+	jmp mmc3_set_prg_bank_0
 
 BurnCycles:
     php
