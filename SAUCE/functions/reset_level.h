@@ -34,7 +34,7 @@ void reset_level(void) {
     }
 
     attempts++;
-    mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));    
+    if (!no_parallax) mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));    
     pal_fade_to_withmusic(4,0);
     oam_clear();
     ppu_off(); // reset the level when you get to this point, and change this later

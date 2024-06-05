@@ -22,6 +22,9 @@ extern unsigned char* PARALLAX_CHR;
 unsigned char END_LEVEL_TIMER;
 
 void state_game(){
+	if (level == 0x0E) no_parallax = 1;
+	else no_parallax = 0;
+
 
 	if (!no_parallax) {
         mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
