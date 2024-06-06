@@ -92,8 +92,24 @@ extern void load_next_sprite(void);
 extern void check_spr_objects(void);
 
 
-
-
+const unsigned char OUTLINES[]={
+	0x30,
+	0x11,
+	0x12,
+	0x13,
+	0x14,
+	0x15,
+	0x16,
+	0x27,
+	0x28,
+	0x29,
+	0x2A,
+	0x2B,
+	0x2C,
+	0x21,
+	0x17,
+	0x0F
+};
 
 void maketmp2(){
     tmp2 = rand8();
@@ -214,7 +230,15 @@ __fastcall__ char sprite_height_lookup(){
     }
 */
 
-    if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
+    if ((type >= 0xB0) && (type <= 0xBF)) {
+		tmp7 = 0xB0 - type;
+		    pal_col(3, OUTLINES[tmp7]);
+		    pal_col(7, OUTLINES[tmp7]);
+		    //activesprites_type[index] = 0xFF; 
+		    return 0x00;
+    }
+
+    else if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
 		if (!discomode) tmp2 = (type & 0x3F);                        
 		else { 
 			return 0x00;

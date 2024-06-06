@@ -31,16 +31,16 @@ void state_game(){
 
 
 	if (!no_parallax) {
-        mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
-        mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
-        mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-        mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
+		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
+		mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
+		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+		mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
 	}
 	else {
-       mmc3_set_1kb_chr_bank_0(spike_set[level]);
-        mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
-        mmc3_set_1kb_chr_bank_2(SLOPESA);
-        mmc3_set_1kb_chr_bank_3(saw_set[level]);
+		mmc3_set_1kb_chr_bank_0(spike_set[level]);
+		mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
+		mmc3_set_1kb_chr_bank_2(SLOPESA);
+		mmc3_set_1kb_chr_bank_3(saw_set[level]);
 	}
     ppu_off();
 
@@ -78,15 +78,18 @@ void state_game(){
 		pal_col(0x1E,color1);
 	}
 	else {
-		if (discomode & 0x02) discorefreshrate = 0x1F;
-		else if (discomode & 0x04) discorefreshrate = 0x0F;
-		else if (discomode & 0x08) discorefreshrate = 0x07;
-		else if (discomode & 0x10) discorefreshrate = 0x03;
-		else if (discomode & 0x01) discorefreshrate = 0x3F;
+		switch (discomode) {
+			case 0x02: discorefreshrate = 0x1F; break;
+			case 0x04: discorefreshrate = 0x0F; break;
+			case 0x08: discorefreshrate = 0x07; break;
+			case 0x10: discorefreshrate = 0x03; break;
+			case 0x01: discorefreshrate = 0x3F; break;
+		};
 	}
 	
 
     while (1) {
+
 
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
@@ -347,7 +350,7 @@ void state_game(){
         }
 
 		//if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
-		if (DEBUG_MODE) gray_line();
+//		if (DEBUG_MODE) gray_line();
 
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		
@@ -369,7 +372,7 @@ void state_game(){
 		if (invincible_counter) invincible_counter--;
 
 		//if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
-		if (DEBUG_MODE) gray_line();
+//		if (DEBUG_MODE) gray_line();
 		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
 		do_the_scroll_thing(); 
 
@@ -445,7 +448,7 @@ void state_game(){
         check_spr_objects();
 
 //        if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
-	if (DEBUG_MODE) gray_line();  
+//	if (DEBUG_MODE) gray_line();  
   		oam_clear();
 
 		// mmc3_set_prg_bank_1(GET_BANK(draw_screen_R)); // it's in a const bank
