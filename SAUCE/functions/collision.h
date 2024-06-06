@@ -238,6 +238,7 @@ char bg_coll_D(void){
 	tmp3 = bg_collision_sub(); // do again but this time in the center of the cube
 	switch (tmp3) {
 		case COL_SLOPE_UR:
+/*
 			tmp2 = temp_x & 0x0f;
 			tmp4 = temp_y & 0x0f;
 
@@ -248,6 +249,7 @@ char bg_coll_D(void){
 				return 1;
 			} 
 			return 0;
+*/
 		break;
 	}
 	
