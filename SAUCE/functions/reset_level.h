@@ -52,6 +52,9 @@ void reset_level(void) {
     player_y[1] = 0xb000;
     currplayer_y = 0xb000;
 
+    outline_color = 0x30;
+
+
     player_gravity[0] = 0x00;
     if (twoplayer) player_gravity[1] = 0x00;
     else player_gravity[1] = 0x01;
