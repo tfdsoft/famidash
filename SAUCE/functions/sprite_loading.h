@@ -231,10 +231,8 @@ __fastcall__ char sprite_height_lookup(){
 */
 
     if ((type >= 0xB0) && (type <= 0xBF)) {
-		tmp7 = 0xB0 - type;
-		    pal_col(3, OUTLINES[tmp7]);
-		    pal_col(7, OUTLINES[tmp7]);
-		    //activesprites_type[index] = 0xFF; 
+		outline_color = 0xB0 - type;
+		    activesprites_type[index] = 0xFF; 
 		    return 0x00;
     }
 

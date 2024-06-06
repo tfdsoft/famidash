@@ -94,17 +94,23 @@ char bg_coll_R(void){
 
 
 char common_checks(void) {
-	if (tmp3 == COL_DEATH_LEFT) {
+	switch (tmp3) {
+		case COL_DEATH_LEFT:
 		if ((temp_x & 0x0f) < 0x06) {
 			tmp2 = temp_y & 0x0f;
 			if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 		}
-	} else if (tmp3 == COL_DEATH_RIGHT) {
+		break;
+	
+	
+	
+	case COL_DEATH_RIGHT:
 		if ((temp_x & 0x0f) >= 0x0a) {
 			tmp2 = temp_y & 0x0f;
 			if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 		}
-	} else if (tmp3 == COL_FLOOR_CEIL) {
+		break;
+	case COL_FLOOR_CEIL:
 		kandowavewalk = 1;
 		return 1;
 	}
@@ -237,7 +243,7 @@ char bg_coll_D(void){
 	tmp3 = bg_collision_sub(); // do again but this time in the center of the cube
 	switch (tmp3) {
 		case COL_SLOPE_UR:
-
+/*
 			tmp2 = temp_x & 0x0f;
 			tmp4 = temp_y & 0x0f;
 
@@ -248,7 +254,7 @@ char bg_coll_D(void){
 				return 1;
 			} 
 			return 0;
-
+*/
 		break;
 	}
 	

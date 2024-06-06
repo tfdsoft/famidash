@@ -302,6 +302,7 @@ unsigned char player_old_posy[8];
 unsigned char asdftemp;
 unsigned char discorefreshrate;
 unsigned char no_parallax;
+unsigned char outline_color;
 /*
 unsigned char gnd_palette_transition_timer;
 unsigned char original_gnd_palette_idx_0;

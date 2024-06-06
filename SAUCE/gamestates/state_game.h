@@ -28,7 +28,8 @@ unsigned char END_LEVEL_TIMER;
 void state_game(){
 	if (level == 0x0E) no_parallax = 1;
 	else no_parallax = 0;
-
+	
+	outline_color = 0x30;
 
 	if (!no_parallax) {
 		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
@@ -90,6 +91,8 @@ void state_game(){
 
     while (1) {
 
+	pal_col(3,outline_color);
+	pal_col(7,outline_color);
 
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
