@@ -53,7 +53,7 @@ sprite_data = _sprite_data
     parallax_scroll_column: .res 1
     parallax_scroll_column_start: .res 1
 
-.segment "CODE_2"
+.segment "XCD_BANK_00"
 
 __oam_meta_spr_flipped:
 	; AX = data
@@ -2044,7 +2044,7 @@ drawplayer_common := _drawplayerone::common
 .popseg
 
 .pushseg 
-.segment "CODE"
+.segment "CODE_2"
 
 .importzp _temp_x, _temp_y, _temp_room, _collision
 .export _bg_collision_sub
