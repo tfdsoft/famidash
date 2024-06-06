@@ -1,6 +1,6 @@
 // prototype
 void init_sprites(void);
-#include "../defines/bg_charmap.h"
+#include "defines/bg_charmap.h"
 const unsigned char attemptstex[]="PQQRSTQ"; //ATTEMPT
 const unsigned char wtxt[]="w";
 const unsigned char htxt[]="x";

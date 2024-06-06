@@ -1,19 +1,21 @@
 // you probably shouldn't change anything  //
 // here unless you know what you're doing. //
 
-#include "../BUILD_FLAGS.h" 
+#include "BUILD_FLAGS.h" 
 
 // C standard library 
-#include "../LIB/stdint.h"	// defines for standard types
+#include "stdint.h"	// defines for standard types
+#include "stddef.h"	// more defines for standard types
+#include "nonstdint.h"
 
 // asm standard library
-#include "../LIB/neslib.h"  // common nes library
-#include "../LIB/nesdoug.h" // slightly less common nes library (thanks nesdoug)
-#include "../LIB/mapper.h"  // MMC3 functions
-#include "../LIB/nesdash.h" // custom stuff made specifically for famidash
-#include "../LIB/famistudio_cc65.h" // sound driver
+#include "neslib.h"  // common nes library
+#include "nesdoug.h" // slightly less common nes library (thanks nesdoug)
+#include "mapper.h"  // MMC3 functions
+#include "nesdash.h" // custom stuff made specifically for famidash
+#include "famistudio_cc65.h" // sound driver
 
-#include "../MUSIC/EXPORTS/musicDefines.h" // sound driver C defines
+#include "MUSIC/EXPORTS/musicDefines.h" // sound driver C defines
 
 
 
@@ -24,25 +26,25 @@
 #pragma rodata-name (pop)
 #pragma rodata-name (push, "LVL_BANK_00")
 #include "defines/menunametable2.h"
-#include "../LEVELS/grounddata.h"
+#include "LEVELS/grounddata.h"
 #pragma rodata-name (pop)
-#include "../LEVELS/groundlist.h"
+#include "LEVELS/groundlist.h"
 
 
 
 
 // banks set inside level data due to banking
-#include "../LEVELS/objdefines.h"   // object defines for easier implementation
+#include "LEVELS/objdefines.h"   // object defines for easier implementation
                                     // stolen from the old repo lol
 
 // levels are exported to asm now
-// #include "../LEVELS/leveldata.h"    // level data goes here
+// #include "LEVELS/leveldata.h"    // level data goes here
 
 
 
 
 #pragma rodata-name (push, "RODATA_2")
-#include "../LEVELS/levellist.h"    // level order goes here
+#include "LEVELS/levellist.h"    // level order goes here
 #pragma rodata-name (pop)
 
 
@@ -52,7 +54,7 @@
 
 
 
-#include "../METATILES/metatiles.h"  // metatile defines
+#include "METATILES/metatiles.h"  // metatile defines
 #pragma rodata-name (push, "XCD_BANK_00")
 #include "defines/sprites.h"    // metasprite defines
 #include "functions/sprite_loading.h"		//I cant believe that worked -kando 5-14

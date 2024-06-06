@@ -145,7 +145,7 @@ const char coin_counter[][3] = {
 	Refreshes level name & number
 */
 void __fastcall__ refreshmenu(void) {
-	#include "../defines/color1_charmap.h"
+	#include "defines/color1_charmap.h"
 	__A__ = idx16_hi_NOC(leveltexts, level);
 	if (__A__) draw_padded_text(leveltexts[level & 0x7F], level_text_size[level], 17, NTADR_A(8, 10));
 	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10));
@@ -260,7 +260,7 @@ void levelselection() {
 
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
-	#include "../defines/mainmenu_charmap.h"
+	#include "defines/mainmenu_charmap.h"
 	while (1){
 		ppu_wait_nmi();
 		music_update();
@@ -329,7 +329,7 @@ void customize_screen() {
 	mmc3_set_8kb_chr(MENUICONBANK);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
-	#include "../defines/mainmenu_customize.h"
+	#include "defines/mainmenu_customize.h"
 
 	TOTALCOINS = 0;
 	TOTALCOINSONES = 0;
@@ -622,7 +622,7 @@ void funsettings() {
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(funsettingscreen);   
-	#include "../defines/mainmenu_charmap.h"
+	#include "defines/mainmenu_charmap.h"
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 by default	
 	pal_fade_to_withmusic(0,4);
@@ -709,7 +709,7 @@ void settings() {
 	pal_bg(paletteSettings);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingscreen);   	
-	#include "../defines/mainmenu_charmap.h"
+	#include "defines/mainmenu_charmap.h"
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 beforehand
 	pal_fade_to_withmusic(0,4);
@@ -794,7 +794,7 @@ void settings() {
 }
 
 
-#include "../defines/mainmenu_charmap.h"
+#include "defines/mainmenu_charmap.h"
 
 #if FLAG_BETA_BUILD
 const unsigned char ver[] = "BETA BUILD";
@@ -915,7 +915,7 @@ void bgmtest() {
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(bgmtestscreen);   	
-	#include "../defines/mainmenu_charmap.h"
+	#include "defines/mainmenu_charmap.h"
 	ppu_on_all();
 	pal_fade_to(0,4);
 	while (1) {

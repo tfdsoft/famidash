@@ -279,7 +279,7 @@ void __fastcall__ delay(uint8_t frames);
 #define NAMETABLE_C		0x2800
 #define NAMETABLE_D		0x2c00
 
-#define NULL			0
+// #define NULL			0
 #define TRUE			1
 #define FALSE			0
 

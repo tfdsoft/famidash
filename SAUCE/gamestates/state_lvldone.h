@@ -54,7 +54,7 @@ void state_lvldone() {
     vram_adr(NAMETABLE_D);
     vram_unrle(leveldone);
 
-#include "../defines/endlevel_charmap.h"
+#include "defines/endlevel_charmap.h"
 	multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));
 	multi_vram_buffer_horz((const char*)menutext4,sizeof(menutext4)-1,NTADR_C(8, 18));
 	multi_vram_buffer_horz((const char*)attemptstext,sizeof(attemptstext)-1,NTADR_C(7, 19));
@@ -231,7 +231,7 @@ void bgmtest() {
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(bgmtestscreen);   	
-	#include "../defines/mainmenu_charmap.h"
+	#include "defines/mainmenu_charmap.h"
 	ppu_on_all();
 	pal_fade_to(0,4);
 	while (1) {
