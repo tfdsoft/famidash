@@ -82,65 +82,63 @@
 #pragma bss-name(push, "ZEROPAGE")
 // zero-page variables go here
 
-unsigned char tmp1;
-unsigned char tmp2;
-unsigned char tmp3;
-unsigned char tmp4;
-unsigned short tmp5;
-unsigned short tmp6;
-unsigned char tmp7;
-unsigned char tmp8;
-unsigned char* tmpptr1;
-unsigned char* tmpptr2;
-long unsigned int tmplong;
-unsigned char selectedbgm;
-unsigned char selectedsfx;
+uint8_t tmp1;
+uint8_t tmp2;
+uint8_t tmp3;
+uint8_t tmp4;
+uint16_t tmp5;
+uint16_t tmp6;
+uint8_t tmp7;
+uint8_t tmp8;
+uint8_t* tmpptr1;
+uint8_t* tmpptr2;
+uint32_t tmplong;
+uint8_t selectedbgm;
+uint8_t selectedsfx;
 
 #pragma zpsym("tmpptr1")
 #pragma zpsym("tmpptr2")
 
-unsigned short currplayer_x;
-unsigned short currplayer_y;
-signed short currplayer_vel_x;
-signed short currplayer_vel_y;
-unsigned char currplayer_gravity;
+uint16_t currplayer_x;
+uint16_t currplayer_y;
+int16_t currplayer_vel_x;
+int16_t currplayer_vel_y;
+uint8_t currplayer_gravity;
 
-unsigned char pad[2];
-unsigned char pad_new[2];
+uint8_t pad[2];
+uint8_t pad_new[2];
 
-unsigned char gamemode;
-unsigned char cube_data[2];
-unsigned short cube_rotate[2];
+uint8_t gamemode;
+uint8_t cube_data[2];
+uint16_t cube_rotate[2];
 
-unsigned char collision;
-unsigned char collision_L;
-unsigned char collision_R;
-unsigned char collision_U;
-unsigned char collision_D;
+uint8_t collision;
+uint8_t collision_L;
+uint8_t collision_R;
+uint8_t collision_U;
+uint8_t collision_D;
 
-unsigned short old_x;
-unsigned short old_y;
+uint16_t old_x;
+uint16_t old_y;
 
-//unsigned char gravity;
-unsigned char mini;
-unsigned char eject_L; // from the left
-unsigned char eject_R; // remember these from the collision sub routine
-unsigned char eject_D; // from below
-unsigned char eject_U; // from up
+uint8_t mini;
+uint8_t eject_L; // from the left
+uint8_t eject_R; // remember these from the collision sub routine
+uint8_t eject_D; // from below
+uint8_t eject_U; // from up
 
-unsigned short address;
-unsigned char x; // room loader code
-unsigned char y;
-unsigned char index;
-unsigned short index2;
-unsigned char temp_x;
-unsigned char temp_y;
-unsigned char temp_room;
-unsigned char dual;
-signed char slope_frames;
+uintptr_t address;
+uint8_t x; // room loader code
+uint8_t y;
+uint8_t index;
+uint8_t temp_x;
+uint8_t temp_y;
+uint8_t temp_room;
+uint8_t dual;
+int8_t slope_frames;
 
-unsigned char * sprite_data;
-unsigned char * level_data;
+uint8_t * sprite_data;
+uint8_t * level_data;
 
 #pragma zpsym("sprite_data")
 #pragma zpsym("level_data")
@@ -149,26 +147,26 @@ unsigned char * level_data;
 // other variables go here
 
 #pragma bss-name(push, "SRAM")
-unsigned char SRAM_VALIDATE[4];
+uint8_t SRAM_VALIDATE[4];
 
 #define LEVEL_COUNT 0x10
-unsigned char coin1_obtained[LEVEL_COUNT];
-unsigned char coin2_obtained[LEVEL_COUNT];
-unsigned char coin3_obtained[LEVEL_COUNT];
+uint8_t coin1_obtained[LEVEL_COUNT];
+uint8_t coin2_obtained[LEVEL_COUNT];
+uint8_t coin3_obtained[LEVEL_COUNT];
 
-unsigned char LEVELCOMPLETE[LEVEL_COUNT];
+uint8_t LEVELCOMPLETE[LEVEL_COUNT];
 
-unsigned char invisible;
-unsigned char PRACTICE_ENABLED = 1;
-unsigned char twoplayer;
+uint8_t invisible;
+uint8_t PRACTICE_ENABLED = 1;
+uint8_t twoplayer;
 
 /* memory optimization */
-//unsigned char oneptwoplayer;
-//unsigned char jumpsound;
-//unsigned char platformer;
-//unsigned char musicoff;
-//unsigned char sfxoff;
-unsigned char options;
+//uint8_t oneptwoplayer;
+//uint8_t jumpsound;
+//uint8_t platformer;
+//uint8_t musicoff;
+//uint8_t sfxoff;
+uint8_t options;
 #define oneptwoplayer 0x01
 #define jumpsound 0x02
 #define platformer 0x04
@@ -177,105 +175,105 @@ unsigned char options;
 #define musicoff 0x80
 
 
-unsigned char icon;
+uint8_t icon;
 
-unsigned char color1;
-unsigned char color2;
-unsigned char color3;
+uint8_t color1;
+uint8_t color2;
+uint8_t color3;
 
-unsigned char discomode;
+uint8_t discomode;
 
-unsigned char trails;
+uint8_t trails;
 
-unsigned char decorations;
+uint8_t decorations;
 
-unsigned char retro_mode;
-unsigned char achievements[20];
-//unsigned char practice_famistudio_state[0xbf];
-unsigned char collisionMap0[240];   // collision map, for a 16*27 tile area
-unsigned char collisionMap1[192];
+uint8_t retro_mode;
+uint8_t achievements[20];
+//uint8_t practice_famistudio_state[0xbf];
+uint8_t collisionMap0[240];   // collision map, for a 16*27 tile area
+uint8_t collisionMap1[192];
 
 #pragma bss-name(pop)
 
 
 
-//extern unsigned char famistudio_state[0xbf];
+//extern uint8_t famistudio_state[0xbf];
 
 
-unsigned char TOTALCOINS;
-unsigned long TOTALCOINSTEMP;
-unsigned char TOTALATTEMPTSHUNDREDS;
-unsigned char TOTALATTEMPTSTHOUSANDS;
-unsigned char TOTALCOINSTENS;
-unsigned char TOTALCOINSONES;
-unsigned char TOTALSTARSONES;
-unsigned char TOTALSTARSTENS;
+uint8_t TOTALCOINS;
+uint32_t TOTALCOINSTEMP;
+uint8_t TOTALATTEMPTSHUNDREDS;
+uint8_t TOTALATTEMPTSTHOUSANDS;
+uint8_t TOTALCOINSTENS;
+uint8_t TOTALCOINSONES;
+uint8_t TOTALSTARSONES;
+uint8_t TOTALSTARSTENS;
 
 
-unsigned short player_x[2];
-unsigned short player_y[2];
-signed short player_vel_x[2];
-signed short player_vel_y[2];
-unsigned char player_gravity[2];
+uint16_t player_x[2];
+uint16_t player_y[2];
+int16_t player_vel_x[2];
+int16_t player_vel_y[2];
+uint8_t player_gravity[2];
 
 
-unsigned char rld_column;
-unsigned char spr_index;
-unsigned char long_temp_x;
+uint8_t rld_column;
+uint8_t spr_index;
+uint8_t long_temp_x;
 
-unsigned char speed;
-unsigned char shuffle_offset;
-unsigned char count;
-unsigned char coins;
-unsigned char currplayer;
-unsigned char kandotemp;
-unsigned char kandotemp2[2];
-unsigned char kandotemp5;
-unsigned char kandoframecnt;
-unsigned long attempts;
-unsigned char controllingplayer;
-unsigned char spiderframe[2];
-unsigned char robotframe[2];
-unsigned char ballframe;
-unsigned char robotjumpframe[2];
-unsigned char robotjumptime[2];
-unsigned char level;
-unsigned char level_data_bank;
-unsigned char sprite_data_bank;
-unsigned char menuselection;
-unsigned char settingvalue;
+uint8_t speed;
+uint8_t shuffle_offset;
+uint8_t count;
+uint8_t coins;
+uint8_t currplayer;
+uint8_t kandotemp;
+uint8_t kandotemp2[2];
+uint8_t kandotemp5;
+uint8_t kandoframecnt;
+uint32_t attempts;
+uint8_t controllingplayer;
+uint8_t spiderframe[2];
+uint8_t robotframe[2];
+uint8_t ballframe;
+uint8_t robotjumpframe[2];
+uint8_t robotjumptime[2];
+uint8_t level;
+uint8_t level_data_bank;
+uint8_t sprite_data_bank;
+uint8_t menuselection;
+uint8_t settingvalue;
 
-unsigned char gameState;
+uint8_t gameState;
 
-unsigned char parallax_scroll_x;
-unsigned char invincible_counter;
-unsigned long int scroll_x; // gotta love massive levels amirite fellas
-unsigned short scroll_y;
-unsigned short target_scroll_y;
-unsigned char song;
-unsigned char auto_fs_updates;
+uint8_t parallax_scroll_x;
+uint8_t invincible_counter;
+uint32_t scroll_x; // gotta love massive levels amirite fellas
+uint16_t scroll_y;
+uint16_t target_scroll_y;
+uint8_t song;
+uint8_t auto_fs_updates;
 
-unsigned char dashing[2];
+uint8_t dashing[2];
 
-unsigned char has_practice_point = 0;
-unsigned short practice_player_x[2];
-unsigned short practice_player_y[2];
-unsigned char practice_player_gamemode;
-unsigned char practice_mini;
-unsigned char practice_dual;
-unsigned char practice_speed;
-unsigned short practice_cube_rotate[2];
-signed short practice_player_vel_x[2];
-signed short practice_player_vel_y[2];
-unsigned char practice_player_gravity[2];
-unsigned long int practice_scroll_x;
-unsigned short practice_scroll_y;
-unsigned char practice_parallax_scroll_column;
-unsigned char practice_parallax_scroll_column_start;
-unsigned char practice_g_color;
-unsigned char practice_bg_color;
-unsigned char practice_g_color_type;
-unsigned char practice_bg_color_type;
+uint8_t has_practice_point = 0;
+uint16_t practice_player_x[2];
+uint16_t practice_player_y[2];
+uint8_t practice_player_gamemode;
+uint8_t practice_mini;
+uint8_t practice_dual;
+uint8_t practice_speed;
+uint16_t practice_cube_rotate[2];
+int16_t practice_player_vel_x[2];
+int16_t practice_player_vel_y[2];
+uint8_t practice_player_gravity[2];
+uint32_t practice_scroll_x;
+uint16_t practice_scroll_y;
+uint8_t practice_parallax_scroll_column;
+uint8_t practice_parallax_scroll_column_start;
+uint8_t practice_g_color;
+uint8_t practice_bg_color;
+uint8_t practice_g_color_type;
+uint8_t practice_bg_color_type;
 
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
@@ -292,62 +290,61 @@ uint8_t activesprites_active[max_loaded_sprites];
 
 
 
-unsigned char DEBUG_MODE = 0;
-unsigned char lastgcolortype;
-unsigned char lastbgcolortype;
-unsigned char iconbank;
-unsigned char kandowavewalk;
+uint8_t DEBUG_MODE = 0;
+uint8_t lastgcolortype;
+uint8_t lastbgcolortype;
+uint8_t iconbank;
+uint8_t kandowavewalk;
 
-unsigned char player_old_posy[8];
-unsigned char asdftemp;
-unsigned char discorefreshrate;
-unsigned char no_parallax;
-unsigned char outline_color;
+uint8_t player_old_posy[8];
+uint8_t discorefreshrate;
+uint8_t no_parallax;
+uint8_t outline_color;
 /*
-unsigned char gnd_palette_transition_timer;
-unsigned char original_gnd_palette_idx_0;
-unsigned char original_gnd_palette_idx_1;
-unsigned char original_gnd_palette_color_0;
-unsigned char original_gnd_palette_color_1;
+uint8_t gnd_palette_transition_timer;
+uint8_t original_gnd_palette_idx_0;
+uint8_t original_gnd_palette_idx_1;
+uint8_t original_gnd_palette_color_0;
+uint8_t original_gnd_palette_color_1;
 
-unsigned char bg_palette_transition_timer;
-unsigned char original_bg_palette_idx_0;
-unsigned char original_bg_palette_idx_1;
-unsigned char original_bg_palette_idx_2;
-unsigned char original_bg_palette_color_0;
-unsigned char original_bg_palette_color_1;
-unsigned char original_bg_palette_color_2;
+uint8_t bg_palette_transition_timer;
+uint8_t original_bg_palette_idx_0;
+uint8_t original_bg_palette_idx_1;
+uint8_t original_bg_palette_idx_2;
+uint8_t original_bg_palette_color_0;
+uint8_t original_bg_palette_color_1;
+uint8_t original_bg_palette_color_2;
 
-unsigned char current_transition_timer_length;
+uint8_t current_transition_timer_length;
 */
 
-unsigned char kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
+uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 
-unsigned short songtimer;
+uint16_t songtimer;
 
 //struct player {
-//	unsigned short x; // low byte is sub-pixel
-//	unsigned short y;
-//	signed short vel_x; // speed, signed, low byte is sub-pixel
-//	signed short vel_y;
+//	uint16_t x; // low byte is sub-pixel
+//	uint16_t y;
+//	int16_t vel_x; // speed, signed, low byte is sub-pixel
+//	int16_t vel_y;
 //};
 
 //struct player player = {0x0000,0xb000};
 
 //struct player2 {
-//	unsigned short x; // low byte is sub-pixel
-//	unsigned short y;
-//	signed short vel_x; // speed, signed, low byte is sub-pixel
-//	signed short vel_y;
+//	uint16_t x; // low byte is sub-pixel
+//	uint16_t y;
+//	int16_t vel_x; // speed, signed, low byte is sub-pixel
+//	int16_t vel_y;
 //};
 
 //struct player2 player2 = {0x0000,0xb000};
 
 struct Base {
-	unsigned char x;
-	unsigned char y;
-	unsigned char width;
-	unsigned char height;
+	uint8_t x;
+	uint8_t y;
+	uint8_t width;
+	uint8_t height;
 };
 
 struct Base Generic;
@@ -357,41 +354,41 @@ struct Base Generic2;
 
 
 
-const unsigned char paletteDefault[16] = {
+const uint8_t paletteDefault[16] = {
     0x11,0x0c,0x0f,0x30,	// palette 0, used for level tiles
 	0x00,0x01,0x11,0x30,	// palette 1, used for ground
 	0x00,0x88,0x14,0x30,	// palette 2, UNUSED
 	0x00,0x0f,0x00,0x30 	// palette 3, used for text
 };
 
-const unsigned char paletteDefaultSP[16]={
+const uint8_t paletteDefaultSP[16]={
 	0x00,0x0f,0x2a,0x21,
 	0x00,0x0f,0x24,0x28,
 	0x00,0x0f,0x16,0x30,
 	0x00,0x0f,0x2a,0x21,
 };
 
-const unsigned char paletteMenu[16] = {
+const uint8_t paletteMenu[16] = {
 	0x17,0x0f,0x10,0x30,
 	0x17,0x0f,0x2a,0x28,
 	0x17,0x0f,0x17,0x27,
 	0x17,0x0f,0x11,0x30
 };
-const unsigned char paletteSettings[16] = {
+const uint8_t paletteSettings[16] = {
 	0x17,0x0f,0x10,0x30,
 	0x17,0x0f,0x2a,0x28,
 	0x17,0x0F,0x16,0x26,
 	0x17,0x0f,0x11,0x30
 };
 
-const unsigned char splashMenu[16] = {
+const uint8_t splashMenu[16] = {
     0x11,0x0f,0x10,0x30,
     0x11,0x0f,0x2a,0x28,
     0x11,0x0f,0x11,0x27,
     0x11,0x0f,0x11,0x30
 };
 
-const unsigned char iconBankTable[] = {
+const uint8_t iconBankTable[] = {
 	14, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58
 };
 
