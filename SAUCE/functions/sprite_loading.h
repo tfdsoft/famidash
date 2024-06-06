@@ -181,7 +181,7 @@ char sprite_height_lookup(){
 */
 
     if ((type >= 0xB0) && (type <= 0xBF)) {
-		outline_color = 0xB0 - type;
+		    outline_color = OUTLINES[0xB0 - type];
 		    activesprites_type[index] = 0xFF; 
 		    return 0x00;
     }
