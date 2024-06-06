@@ -15,26 +15,22 @@ char bg_coll_L(void){
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
 	tmp3 = bg_collision_sub();
-	if(tmp3 == COL_BOTTOM) {
-		if (temp_y & 0x08) return 1;		// If Y pos inside block ≥ 8px
-	} else if (tmp3 == COL_TOP) {
-		if (!(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
-	} else if(tmp3 == COL_ALL) {
-		return 1;		
-	} else if (tmp3 == COL_DEATH_LEFT) {
-		if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1;		// If X pos inside block < 8px, die
-	} else if (tmp3 == COL_DEATH_RIGHT) {
-		if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;		// If X pos inside block ≥ 10px, die
-	} else if(tmp3 == COL_DEATH_TOP) {
-		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-		if (((temp_y & 0x0f) < 0x04)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
-		else return 0;
-	} else if (tmp3 == COL_DEATH_BOTTOM) {
-		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-		if ((temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
-		else return 0;
-	}
-
+	switch (tmp3) {
+		case COL_BOTTOM: if (temp_y & 0x08) return 1;	break;	// If Y pos inside block ≥ 8px
+		case COL_TOP: if (!(temp_y & 0x08)) return 1;	break;	// If Y pos inside block < 8px
+		case COL_ALL:	return 1;		
+		case COL_DEATH_LEFT:	if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1;	break;	// If X pos inside block < 8px, die
+		case COL_DEATH_RIGHT: 	if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;	break;	// If X pos inside block ≥ 10px, die
+		case COL_DEATH_TOP:
+			if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+			if (((temp_y & 0x0f) < 0x04)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
+			else return 0;
+		case COL_DEATH_BOTTOM:
+			if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+			if ((temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
+			else return 0;
+		
+	};
     
     return 0;
 }
@@ -77,26 +73,21 @@ char bg_coll_R(void){
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
 	tmp3 = bg_collision_sub();
-	if(tmp3 == COL_BOTTOM) {
-		if (temp_y & 0x08) return 1;		// If Y pos inside block ≥ 8px
-	} else if (tmp3 == COL_TOP) {
-		if (!(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
-	} else if(tmp3 == COL_ALL) {
-		return 1;		
-	} else if (tmp3 == COL_DEATH_LEFT) {
-		if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1;		// If X pos inside block < 8px, die
-	} else if (tmp3 == COL_DEATH_RIGHT) {
-		if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;		// If X pos inside block ≥ 10px, die
-	} else if(tmp3 == COL_DEATH_TOP) {
-		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-		if ((temp_y & 0x0f) < 0x04) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
-		else return 0;
-	} else if (tmp3 == COL_DEATH_BOTTOM) {
-		if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-		if ((temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
-		else return 0;
-	}
-
+	switch (tmp3) {
+		case COL_BOTTOM: if (temp_y & 0x08) return 1;	break;	// If Y pos inside block ≥ 8px
+		case COL_TOP: if (!(temp_y & 0x08)) return 1;	break;	// If Y pos inside block < 8px
+		case COL_ALL: return 1;		
+		case COL_DEATH_LEFT: if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1; break;		// If X pos inside block < 8px, die
+		case COL_DEATH_RIGHT: if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;	break;	// If X pos inside block ≥ 10px, die
+		case COL_DEATH_TOP:
+			if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+			if ((temp_y & 0x0f) < 0x04) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
+			else return 0;
+		case COL_DEATH_BOTTOM:
+			if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+			if ((temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
+			else return 0;
+	};
     
     return 0;
 }
@@ -133,8 +124,12 @@ char bg_coll_U(void){
 	
 	for (tmp1 = 0; tmp1 < 2; tmp1++) {
 		tmp3 = bg_collision_sub();
-		if (tmp3 == COL_ALL) return 1;
-		else if (tmp3 == COL_TOP || tmp3 == COL_DEATH_TOP) {
+		switch (tmp3) {
+		
+			case COL_ALL: return 1;
+			
+		case COL_TOP:
+		case COL_DEATH_TOP:
 			tmp2 = temp_y & 0x0f;	
 			eject_U = (temp_y) | 0xf8;	 
 			if (tmp2 < 0x08) {
@@ -148,7 +143,10 @@ char bg_coll_U(void){
 					}
 				} else return 1;
 			}
-		} else if (tmp3 == COL_BOTTOM || tmp3 == COL_DEATH_BOTTOM) {
+		break;
+		
+		case COL_BOTTOM:
+		case COL_DEATH_BOTTOM:
 			tmp2 = temp_y & 0x0f;
 			eject_U = (temp_y) | 0xf8;	 
 			if (tmp2 >= 0x08) {
@@ -162,7 +160,8 @@ char bg_coll_U(void){
 					}
 				} else return 1;
 			}
-		} 
+			break;
+		};		
 		if (common_checks()) return 1;
 
 		temp_x += Generic.width; // automatically only the low byte
@@ -238,7 +237,7 @@ char bg_coll_D(void){
 	tmp3 = bg_collision_sub(); // do again but this time in the center of the cube
 	switch (tmp3) {
 		case COL_SLOPE_UR:
-/*
+
 			tmp2 = temp_x & 0x0f;
 			tmp4 = temp_y & 0x0f;
 
@@ -249,7 +248,7 @@ char bg_coll_D(void){
 				return 1;
 			} 
 			return 0;
-*/
+
 		break;
 	}
 	
