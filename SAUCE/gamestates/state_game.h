@@ -16,7 +16,7 @@ void x_movement_coll() {
 	if (high_byte(currplayer_x) > 0x10) {
 		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
 		if (bg_coll_R()) {
-			if (!(options & platformer)) {cube_data[currplayer] |= 0x01; }
+			if (!(options & platformer)) {uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);}
 			else {currplayer_vel_x = 0; }
 		}
 	}	

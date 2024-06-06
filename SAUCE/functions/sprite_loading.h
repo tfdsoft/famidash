@@ -209,7 +209,7 @@ char sprite_height_lookup(){
 		    }
 			lastbgcolortype = type;
 		}
-		activesprites_type[low_byte(index)] = 0xFF; 
+		activesprites_type[index] = 0xFF; 
 		return 0;
     }
 
@@ -217,7 +217,7 @@ char sprite_height_lookup(){
     else if (type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) // Speed portals
         return 0x1F;	
     else if ((type >= 0x2A && type <= 0x43) || (type >= 0x47 && type <= 0x4A)) {    // Decorations
-        if (twoplayer || !decorations) activesprites_type[low_byte(index)] = 0xFF; 
+        if (twoplayer || !decorations) activesprites_type[index] = 0xFF; 
 		return 0;
     }
 
@@ -266,17 +266,17 @@ char sprite_height_lookup(){
             return 0x2f;
         case COIN1:
             if (coin1_obtained[level]) {
-                activesprites_type[low_byte(index)] = COINGOTTEN1;
+                activesprites_type[index] = COINGOTTEN1;
             }
             return 0x17; 
         case COIN2:
             if (coin2_obtained[level]) {
-                activesprites_type[low_byte(index)] = COINGOTTEN2;
+                activesprites_type[index] = COINGOTTEN2;
             }
             return 0x17; 
         case COIN3:
             if (coin3_obtained[level]) {
-                activesprites_type[low_byte(index)] = COINGOTTEN3;
+                activesprites_type[index] = COINGOTTEN3;
             }
             return 0x17; 
         case SPEED_30_PORTAL:
@@ -389,7 +389,7 @@ static void sprite_gamemode_main() {
 
 static void sprite_gamemode_controller_check() {
     if (pad_new[controllingplayer] & PAD_A) {	
-        cube_data[currplayer] &= 0x01;
+        uint8_store(cube_data, currplayer, cube_data[currplayer] & 0x01);
         if (collided == BLUE_ORB) {
             currplayer_gravity ^= 0x01;
             currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
@@ -419,7 +419,7 @@ void sprite_collide_lookup() {
     case BIG_SPIKE_TOP:
     case SMALL_SPIKE_BOTTOM:
     case SMALL_SPIKE_TOP:
-	cube_data[currplayer] |= 0x01; return;
+		uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x01); return;
     
     // Portal game mode switches
     case S_BLOCK: dashing[currplayer] = 0; return;
@@ -437,7 +437,7 @@ void sprite_collide_lookup() {
     case SHIP_MODE:
         gamemode = collided;
 	robotjumptime[currplayer] = 0;
-	target_scroll_y = activesprites_y[index];
+	target_scroll_y = activesprites_y[index & 0x7F];
 //	return;
         // fallthrough
     case NOSPRITE:

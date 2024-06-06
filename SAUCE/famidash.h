@@ -131,7 +131,7 @@ unsigned char eject_U; // from up
 unsigned short address;
 unsigned char x; // room loader code
 unsigned char y;
-unsigned short index;
+unsigned char index;
 unsigned short index2;
 unsigned char temp_x;
 unsigned char temp_y;
@@ -280,15 +280,15 @@ unsigned char practice_bg_color_type;
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
 #define max_loaded_sprites 16
-unsigned short activesprites_x[max_loaded_sprites];
-unsigned short activesprites_y[max_loaded_sprites];
-unsigned char activesprites_type[max_loaded_sprites];
-unsigned char activesprites_anim_frame[max_loaded_sprites];
-signed char activesprites_anim_frame_count[max_loaded_sprites];
+uint16_t activesprites_x[max_loaded_sprites];
+uint16_t activesprites_y[max_loaded_sprites];
+uint8_t activesprites_type[max_loaded_sprites];
+uint8_t activesprites_anim_frame[max_loaded_sprites];
+int8_t activesprites_anim_frame_count[max_loaded_sprites];
 
-unsigned char activesprites_realx[max_loaded_sprites];
-unsigned char activesprites_realy[max_loaded_sprites];
-unsigned char activesprites_active[max_loaded_sprites];
+uint8_t activesprites_realx[max_loaded_sprites];
+uint8_t activesprites_realy[max_loaded_sprites];
+uint8_t activesprites_active[max_loaded_sprites];
 
 
 

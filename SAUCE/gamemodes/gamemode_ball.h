@@ -9,7 +9,7 @@ void ball_movement(void){
 	// currplayer_gravity
 	// currplayer_vel_y is signed
 
-	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) cube_data[currplayer] |= 0x02;
+	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
 	if (!dashing[currplayer]) {
 		if(!mini){
@@ -51,20 +51,20 @@ void ball_movement(void){
 		Generic.y = high_byte(currplayer_y) + 1;
 	}
 
-	if (pad_new[controllingplayer] & PAD_A) cube_data[currplayer] |= 2;	
+	if (pad_new[controllingplayer] & PAD_A) uint8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
 
 	if(high_byte(currplayer_vel_y) & 0x80){
 		if(bg_coll_U()){ // check collision above
 			high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U;
 			currplayer_vel_y = 0;
-			cube_data[currplayer] &= 1;			//fix for orb
+			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);			//fix for orb
 		}
 	}
 	else{
 		if(bg_coll_D()){ // check collision below
 		    high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
 		    currplayer_vel_y = 0;
-			cube_data[currplayer] &= 1;		    //fix for orb
+			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);		    //fix for orb
 		}
 	}
 
@@ -82,7 +82,7 @@ void ball_movement(void){
 		}
 		if(kandotemp2[currplayer] == 1){
 			if (!(pad[controllingplayer] & PAD_A)){
-				cube_data[currplayer] &= 1;
+				uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 				kandotemp2[currplayer] = 0;			
 			}
 		}

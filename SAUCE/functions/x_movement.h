@@ -69,11 +69,11 @@ void x_movement(){
 
 
 	if (currplayer_y < 0x0600 && scroll_y == 0x08){
-		cube_data[currplayer] |= 0x01;	//DIE if player goes too high
+		uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 	}
 	
 
-	else if (!(pad[controllingplayer] & PAD_A)) cube_data[currplayer] &= 1;
+	else if (!(pad[controllingplayer] & PAD_A)) uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 }
 
 #pragma code-name(pop)

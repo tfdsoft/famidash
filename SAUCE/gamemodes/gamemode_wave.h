@@ -41,14 +41,14 @@ void wave_movement(void){
 		if(bg_coll_U() && kandowavewalk){ // check collision above
 			high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U;
 			currplayer_vel_y = 0;
-			cube_data[currplayer] &= 1;			
+			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);			
 		}
 	}
 	else{
 		if(bg_coll_D() && kandowavewalk){ // check collision below
 			high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
 			currplayer_vel_y = 0;
-			cube_data[currplayer] &= 1;		    
+			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);		    
 		}
 	}
 	kandowavewalk = 0;
@@ -58,7 +58,7 @@ void wave_movement(void){
 
 	if (currplayer_vel_y != 0){
 		if(pad_new[controllingplayer] & PAD_A) {
-			cube_data[currplayer] |= 2;
+			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 		}
 	}
 }	

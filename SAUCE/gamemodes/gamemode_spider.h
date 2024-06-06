@@ -87,7 +87,7 @@ void spider_movement(void){
 
 	if (currplayer_vel_y != 0){
 		if(pad_new[controllingplayer] & PAD_A) {
-			cube_data[currplayer] |= 2;
+			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 		}
 	}
 }	

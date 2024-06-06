@@ -109,6 +109,35 @@ extern uint8_t parallax_scroll_column_start;
 #define idx16_lo_NOC(arr, idx) (__A__ = idx<<1, __asm__("tay\n lda %v, y", arr), __A__)
 #define idx16_hi_NOC(arr, idx) (__A__ = idx<<1, __asm__("tay\n lda %v+1, y", arr), __A__)
 
+#define uint8_dec(arr, idx) ( \
+	__AX__ = idx << 8, \
+	__asm__("dec %v,x", arr), \
+	__asm__("lda %v,x", arr), \
+	__A__ \
+)
+
+#define uint8_inc(arr, idx) ( \
+	__AX__ = idx << 8, \
+	__asm__("inc %v,x", arr), \
+	__asm__("lda %v,x", arr), \
+	__A__ \
+)
+
+#define uint8_store(arr, idx, val) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__A__ = val, \
+	__asm__("sta %v, y", arr))
+
+// Yes i had to actually fucking use inline asm to get this to run fast
+#define uint16_store_NOC(arr, idx, word) ( \
+    __A__ = idx<<1, \
+    __asm__("tay"), \
+    __A__ = LSB(word), \
+    __asm__("sta %v,y", arr), \
+    __A__ = MSB(word), \
+    __asm__("sta %v+1, y", arr))
+
 // store a word's high and low bytes into separate places
 #define storeWordSeparately(word, low, high) \
                             (__AX__ = word, \
@@ -116,15 +145,6 @@ extern uint8_t parallax_scroll_column_start;
                             __asm__("STX %v", high))
 
 #define pal_fade_to_withmusic(from, to) (++auto_fs_updates, pal_fade_to(from, to), auto_fs_updates = 0)
-
-// Yes i had to actually fucking use inline asm to get this to run fast
-#define store_short_arr_NOC(arr, idx, word) ( \
-    __A__ = idx<<1, \
-    __asm__("tay"), \
-    __A__ = LSB(word), \
-    __asm__("sta %v,y", arr), \
-    __A__ = MSB(word), \
-    __asm__("sta %v+1, y", arr))
 
 // set palette color, index 0..31
 // completely inlines and replaces neslib's
