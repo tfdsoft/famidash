@@ -59,7 +59,7 @@ Metatile "CHECKERBOARD_19",  $40, $45, $50, $55, PAL_0, COL_ALL
 Metatile "ORB_OUTLINE",     $AC, $AD, $BC, $BD, PAL_0, COL_NONE
 Metatile "PAD_UP_OUTLINE",  $00, $00, $AE, $AF, PAL_0, COL_NONE
 Metatile "PAD_DOWN_OUTLINE",$BE, $BF, $00, $00, PAL_0, COL_NONE
-Metatile "UNUSED",    $05, $15, $F0, $FF, PAL_0, COL_ALL
+Metatile "UNUSED",    $FF, $FF, $FF, $FF, PAL_0, COL_ALL
 Metatile "DOUBLE_WAVY_PLATFORM_LEFT", $02, $03, $12, $13, PAL_0, COL_ALL
 Metatile "DOUBLE_WAVY_PLATFORM_MIDDLE", $03, $03, $13, $13, PAL_0, COL_ALL
 Metatile "DOUBLE_WAVY_PLATFORM_RIGHT", $03, $04, $13, $14, PAL_0, COL_ALL
@@ -145,8 +145,8 @@ Metatile "CLOUD_LEFT", $6A, $6B, $7A, $7B, PAL_2, COL_DEATH_BOTTOM
 Metatile "CLOUD_LEFT_TOP", $4E, $4F, $5E, $5F, PAL_2, COL_DEATH_TOP
 Metatile "CLOUD_RIGHT", $4A, $4B, $5A, $5B, PAL_2, COL_DEATH_BOTTOM
 Metatile "CLOUD_RIGHT_TOP", $4C, $4D, $5C, $5D, PAL_2, COL_DEATH_TOP
-Metatile "BLANK1", $FF, $FF, $FF, $FF, PAL_0, COL_NONE
-Metatile "BLANK2", $FF, $FF, $FF, $FF, PAL_0, COL_NONE
+Metatile "GROUND_EDGE_TOP",    $0A, $0B, $1A, $1B, PAL_1, COL_FLOOR_CEIL
+Metatile "GROUND_TOP",    $0B, $0B, $1B, $1B, PAL_1, COL_FLOOR_CEIL
 Metatile "BLANK3", $FF, $FF, $FF, $FF, PAL_0, COL_NONE
 Metatile "BLANK4", $FF, $FF, $FF, $FF, PAL_0, COL_NONE
 Metatile "BLANK5", $FF, $FF, $FF, $FF, PAL_0, COL_NONE
