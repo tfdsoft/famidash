@@ -205,7 +205,11 @@ _init_rld:
     LDA (level_data),y  ;	Starting BG color
 	AND #$3F			;	Store normal color (pal_col(0, tmp2))
     STA PAL_BUF+0       ;__ 
+    ldx _lastbgcolortype
+    cpx #$ff
+    bne @noset
     STA _lastbgcolortype
+@noset:
     SEC                 ;	A = faded OG color (A - 10)
     SBC #$10            ;__
 	BPL :+				;
@@ -218,7 +222,11 @@ _init_rld:
 	LDA (level_data),y  ;	Starting ground color
 	AND #$3F			;	Store normal color (pal_col(6, tmp2))
     STA PAL_BUF+6       ;__ 
+	ldx _lastgcolortype
+	cpx #$ff
+	bne @noset2
 	STA	_lastgcolortype
+@noset2:
     SEC                 ;	A = faded OG color (A - 10)
     SBC #$10            ;__
 	BPL :+				;

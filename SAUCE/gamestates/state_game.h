@@ -31,6 +31,9 @@ void state_game(){
 	
 	outline_color = 0x30;
 
+	lastgcolortype = 0xFF;
+	lastbgcolortype = 0xFF;
+
 	if (!no_parallax) {
 		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
 		mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
