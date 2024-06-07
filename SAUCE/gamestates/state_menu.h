@@ -54,29 +54,6 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	sizeof(level18text) - 1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
 };
 const unsigned char level_text_size2[] = {
     sizeof(level1text2) - 1,
@@ -155,45 +132,7 @@ void __fastcall__ refreshmenu(void) {
 	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9));
 	one_vram_buffer('z', NTADR_A(8, 9)); }
 	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9));
-	
-	// switch(difficulty_list[level]) {
-	// 	case 0x00:
-	// 		one_vram_buffer('a', NTADR_A(7, 10));
-	// 		one_vram_buffer('b', NTADR_A(8, 10));
-	// 		one_vram_buffer('c', NTADR_A(7, 11));			
-	// 		one_vram_buffer('d', NTADR_A(8, 11));			
-	// 		break;
-	// 	case 0x01:
-	// 		one_vram_buffer('e', NTADR_A(7, 10));
-	// 		one_vram_buffer('f', NTADR_A(8, 10));
-	// 		one_vram_buffer('g', NTADR_A(7, 11));			
-	// 		one_vram_buffer('h', NTADR_A(8, 11));			
-	// 		break;
-	// 	case 0x02:
-	// 		one_vram_buffer('i', NTADR_A(7, 10));
-	// 		one_vram_buffer('j', NTADR_A(8, 10));
-	// 		one_vram_buffer('k', NTADR_A(7, 11));			
-	// 		one_vram_buffer('l', NTADR_A(8, 11));		
-	// 		break;
-	// 	case 0x03:
-	// 		one_vram_buffer('m', NTADR_A(7, 10));
-	// 		one_vram_buffer('n', NTADR_A(8, 10));
-	// 		one_vram_buffer('o', NTADR_A(7, 11));			
-	// 		one_vram_buffer('p', NTADR_A(8, 11));			
-	// 		break;
-	// 	case 0x04:
-	// 		one_vram_buffer('q', NTADR_A(7, 10));
-	// 		one_vram_buffer('r', NTADR_A(8, 10));
-	// 		one_vram_buffer('s', NTADR_A(7, 11));			
-	// 		one_vram_buffer('t', NTADR_A(8, 11));		
-	// 		break;
-	// 	case 0x05:
-	// 		one_vram_buffer('u', NTADR_A(7, 10));
-	// 		one_vram_buffer('v', NTADR_A(8, 10));
-	// 		one_vram_buffer('w', NTADR_A(7, 11));			
-	// 		one_vram_buffer('x', NTADR_A(8, 11));		
-	// 		break;
-	// };	
+
 	{	// write the difficulty
 		tmp1 = (difficulty_list[level] << 1);
 		pal_col(0x0a, difficulty_pal[tmp1]);
@@ -271,7 +210,7 @@ void levelselection() {
 		if (twoplayer) one_vram_buffer('d', NTADR_A(31, 2));
 		else one_vram_buffer('e', NTADR_A(31, 2));
 
-		if (pad_new[0] & PAD_UP) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
+		if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
 		if (pad_new[0] & PAD_START){
 			sfx_play(sfx_start_level, 0);
