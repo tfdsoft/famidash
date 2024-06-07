@@ -137,6 +137,8 @@ uint8_t temp_room;
 uint8_t dual;
 int8_t slope_frames;
 
+uint8_t slope_type;
+uint8_t was_on_slope_counter;
 uint8_t * sprite_data;
 uint8_t * level_data;
 

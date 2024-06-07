@@ -1,5 +1,7 @@
+#define COL_SLOPE_LD 0x0c
+#define COL_SLOPE_RD 0x0b
 
-#define COL_SLOPE_UR 0x0a
+#define COL_SLOPE_SUPPORT 0x0a
 
 #define COL_FLOOR_CEIL 0x09
 #define COL_DEATH 0x08
