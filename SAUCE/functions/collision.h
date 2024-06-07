@@ -263,7 +263,7 @@ char bg_coll_U(void){
 		tmp8 = temp_y | 0xf0;	 
 		
 		
-		for (tmp2 = 0; tmp2 < 2; tmp2++) {
+		for (tmp9 = 0; tmp9 < 2; tmp9++) {
 			tmp3 = bg_collision_sub();
 			
 			if (bg_coll_return_U()) return 1;
@@ -287,7 +287,7 @@ char bg_coll_D(void){
 		storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
 
-		for (tmp2 = 0; tmp2 < 2; tmp2++) {
+		for (tmp9 = 0; tmp9 < 2; tmp9++) {
 			tmp3 = bg_collision_sub(); // do again but this time in the center of the cube
 			if(bg_coll_return_slope_D()) return 1;
 			temp_x += Generic.width; // automatically only the low byte
@@ -303,7 +303,7 @@ char bg_coll_D(void){
 		storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 		tmp8 = (temp_y) & 0x0f;
 
-		for (tmp2 = 0; tmp2 < 2; tmp2++) {
+		for (tmp9 = 0; tmp9 < 2; tmp9++) {
 			tmp3 = bg_collision_sub();
 			
 			if (bg_coll_return_D()) return 1;
