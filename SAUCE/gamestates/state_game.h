@@ -77,9 +77,9 @@ void state_game(){
 		player_old_posy[tmp2] = 0;
 	}
 	if (!discomode) {
-		pal_col(0x1F,color2);
 		pal_col(0x1D,color3);
 		pal_col(0x1E,color1);
+		pal_col(0x1F,color2);
 	}
 	else {
 		switch (discomode) {
@@ -127,35 +127,35 @@ void state_game(){
 		}
 	}
 	    if (discomode && !(kandoframecnt & discorefreshrate)) {
-		    maketmp2();
-		pal_col(0x1F,tmp2);
-		    maketmp2();
-		pal_col(0x1E,tmp2);
-		    maketmp2();
-		pal_col(0x1D,tmp2);
+			maketmp2();
+			pal_col(0x1F,tmp2);
+			maketmp2();
+			pal_col(0x1E,tmp2);
+			maketmp2();
+			pal_col(0x1D,tmp2);
 
-		   tmp3 = rand8();
-		   if (tmp3 < 0x80) tmp3 += 0x80;
-		   else if (tmp3 >= 0xF0) tmp3 -= 0x80;
-		tmp2 = (tmp3 & 0x3F);  		    
-		if (tmp3 >= 0xC0){
-		    pal_col(6, tmp2);
-		    if (tmp2-0x10 & 0xC0) { 
-			pal_col(5, 0x0f); 
-		    } else { 
-			pal_col(5, (tmp2-0x10)); 
-		    }
-		} else {
-		    pal_col(0, tmp2);
-		    if (tmp2-0x10 & 0xC0) { 
-			pal_col(1, 0x0f); 
-			pal_col(9, 0x0f); 
-		    } else { 
-			pal_col(1, (tmp2-0x10)); 
-			pal_col(9, (tmp2-0x10)); 
-		    }
-		}		    
-	    }
+			tmp3 = rand8();
+			if (tmp3 < 0x80) tmp3 += 0x80;
+			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+			tmp2 = (tmp3 & 0x3F);  		    
+			if (tmp3 >= 0xC0){
+				pal_col(6, tmp2);
+				if (tmp2-0x10 & 0xC0) { 
+					pal_col(5, 0x0f); 
+				} else { 
+					pal_col(5, (tmp2-0x10)); 
+				}
+			} else {
+				pal_col(0, tmp2);
+				if (tmp2-0x10 & 0xC0) { 
+					pal_col(1, 0x0f); 
+					pal_col(9, 0x0f); 
+				} else { 
+					pal_col(1, (tmp2-0x10)); 
+					pal_col(9, (tmp2-0x10)); 
+				}
+			}
+		}
 
 
 

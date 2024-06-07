@@ -179,9 +179,11 @@ uint8_t options;
 
 uint8_t icon;
 
-uint8_t color1;
-uint8_t color2;
-uint8_t color3;
+uint8_t icon_colors[3];
+
+#define color1 icon_colors[0]
+#define color2 icon_colors[1]
+#define color3 icon_colors[2]
 
 uint8_t discomode;
 

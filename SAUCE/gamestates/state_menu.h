@@ -243,6 +243,28 @@ static const uint8_t iconTable[] = {
 	0, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x20, ('M'-'a'), 0x24, 0x26, 0x40, 0x42
 };
 
+void updateColors() {
+	if (pad_new[0] & PAD_UP) {
+		if (uint8_inc(icon_colors, settingvalue) & 0x30) {
+			if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
+				uint8_store(icon_colors, settingvalue, (icon_colors[settingvalue] + 0x10) & 0x30);
+		} else {
+			if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
+				icon_colors[settingvalue] = 0x0F;
+		}
+	}
+	if (pad_new[0] & PAD_DOWN) { 
+		if (uint8_dec(icon_colors, settingvalue) & 0x30) {
+			if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
+				uint8_store(icon_colors, settingvalue, (icon_colors[settingvalue] & 0x30) | 0x0C);
+		} else {
+			if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
+				icon_colors[settingvalue] = 0x0C;
+		}
+	}
+	if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) icon_colors[settingvalue] = 0x0D;	
+}
+
 void customize_screen() {
 	settingvalue = 3; 
 	pal_fade_to_withmusic(4,0);
@@ -268,6 +290,16 @@ void customize_screen() {
 		TOTALSTARSTENS = TOTALSTARSTENS + 1;
 		TOTALSTARSONES = TOTALSTARSONES - 10;
 	}
+	if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
+	one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
+
+	if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
+	one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
+
+	one_vram_buffer('h', NTADR_A(13, 8));		
+	one_vram_buffer('i', NTADR_A(13, 9));
+	one_vram_buffer('f', NTADR_A(18, 8));
+	one_vram_buffer('g', NTADR_A(18, 9));
 
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
@@ -284,67 +316,13 @@ void customize_screen() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
-		one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
-
-		if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
-		one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
-
 		tmp1 = iconTable[icon] + 'a';
 		one_vram_buffer(tmp1, NTADR_A(15, 8));		
 		one_vram_buffer(++tmp1, NTADR_A(16, 8));		
 		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(15, 9));		
 		one_vram_buffer(++tmp1, NTADR_A(16, 9));		
 
-		if (settingvalue == 0) {
-			if (pad_new[0] & PAD_UP) {
-				if (++color1 & 0x30) {
-					if ((uint8_t)(color1 & 0x0F) >= 0x0D) color1 = (color1 + 0x10) & 0x30;
-				} else {
-					if (((color1 - 0x0D) & 0xFE) == 0) color1 = 0x0F;	// if color == 0x0D or 0x0E
-				}
-			}
-			if (pad_new[0] & PAD_DOWN) { 
-				if (--color1 & 0x30) {
-					if ((uint8_t)(color1 & 0x0F) >= 0x0D) color1 = (color1 & 0x30) | 0x0C;
-				} else {
-					if (((color1 - 0x0D) & 0xFE) == 0) color1 = 0x0C;	// if color == 0x0D or 0x0E
-				}
-			}
-			if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) color1 = 0x0D;		
-		} else if (settingvalue == 1) {		
-			if (pad_new[0] & PAD_UP) {
-				if (++color2 & 0x30) {
-					if ((uint8_t)(color2 & 0x0F) >= 0x0D) color2 = (color2 + 0x10) & 0x30;
-				} else {
-					if (((color2 - 0x0D) & 0xFE) == 0) color2 = 0x0F;	// if color == 0x0D or 0x0E
-				}
-			}
-			if (pad_new[0] & PAD_DOWN) { 
-				if (--color2 & 0x30) {
-					if ((uint8_t)(color2 & 0x0F) >= 0x0D) color2 = (color2 & 0x30) | 0x0C;
-				} else {
-					if (((color2 - 0x0D) & 0xFE) == 0) color2 = 0x0C;	// if color == 0x0D or 0x0E
-				}
-			}
-			if (pad[0] & PAD_SELECT && pad_new[0] & PAD_A) color2 = 0x0D;
-		} else if (settingvalue == 2) {		
-			if (pad_new[0] & PAD_UP) {
-				if (++color3 & 0x30) {
-					if ((uint8_t)(color3 & 0x0F) >= 0x0D) color3 = (color3 + 0x10) & 0x30;
-				} else {
-					if (((color3 - 0x0D) & 0xFE) == 0) color3 = 0x0F;	// if color == 0x0D or 0x0E
-				}
-			}
-			if (pad_new[0] & PAD_DOWN) { 
-				if (--color3 & 0x30) {
-					if ((uint8_t)(color3 & 0x0F) >= 0x0D) color3 = (color3 & 0x30) | 0x0C;
-				} else {
-					if (((color3 - 0x0D) & 0xFE) == 0) color3 = 0x0C;	// if color == 0x0D or 0x0E
-				}
-			}
-			if (pad[0] & PAD_SELECT && pad_new[0] & PAD_A) color3 = 0x0D;
-		} else if (settingvalue == 3) {
+		if (settingvalue == 3) {
 			if (pad_new[0] & PAD_UP) {
 				icon++;
 				if (icon > (MAX_ICONS - 1)) icon = 0;
@@ -353,8 +331,7 @@ void customize_screen() {
 				if (icon == 0) icon = MAX_ICONS - 1;
 				else icon--;
 			}
-
-		}
+		} else updateColors();
 
 		if (pad_new[0] & PAD_RIGHT) {
 			settingvalue++;
