@@ -1,5 +1,3 @@
 @echo off
-cd LEVELS
-call export_levels.bat
-cd..
+call LEVELS\export_levels.bat
 call build.bat
