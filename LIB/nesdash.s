@@ -44,77 +44,83 @@ sprite_data = _sprite_data
 	; AX = data
 	; sreg[0] = x
 	; sreg[1] = y
-    ; xargs[0] = flip
+	; xargs[0] = flip
 	sta <PTR
 	stx <PTR+1
 
-    ldx SPRID
+	ldx SPRID
 	ldy #0
 
 loop:
 
-    lda (PTR),y     ;x offset
-    cmp #$80
-    beq end
-    iny
-    clc
-    BIT xargs+0 ;   Check for bit 6 (HFLIP)
-    BVC :+      ;__
-    EOR #$FF    ;   If HLIPd, then two's complement
+	lda (PTR),y     ;x offset
+	cmp #$80
+	beq end
+	iny
+	clc
+	BIT xargs+0 ;	Check for bit 6 (HFLIP)
+	BVC :+		;__
+	EOR #$FF	;	If HLIPd, then two's complement
 	ADC #($100 - 8)	; Carry is clear
-    SEC         ;__
-    :           ;
-    adc sreg+0
-    sta OAM_BUF+3,x
-    lda (PTR),y     ;y offset
-    INY
-    clc
-    BIT xargs+0 ;   Check for bit 7 (VFLIP)
-    BPL :+      ;__
-    EOR #$FF    ;   If VLIPd, then two's complement
+	SEC			;__
+	:			;
+	adc sreg+0
+	sta OAM_BUF+3,x
+	lda (PTR),y     ;y offset
+	INY
+	clc
+	BIT xargs+0	;	Check for bit 7 (VFLIP)
+	BPL :+		;__
+	EOR #$FF	;   If VLIPd, then two's complement
 	; ADC #($100 - 16)	; Carry is clear, Y is -16'd because of us using 8x16 mode
-    SEC         ;__
-    :           ;
-    adc sreg+1
-    sta OAM_BUF+0,x
-    lda (PTR),y     ;tile
-    iny
-    sta OAM_BUF+1,x
-    lda (PTR),y     ;attribute
-    iny
-    EOR xargs+0
-    sta OAM_BUF+2,x
-    inx
-    inx
-    inx
-    inx
-    jmp loop
+	SEC			;__
+	:			;
+	adc sreg+1
+	sta OAM_BUF+0,x
+	lda (PTR),y     ;tile
+	iny
+	sta OAM_BUF+1,x
+	lda (PTR),y     ;attribute
+	iny
+	EOR xargs+0
+	sta OAM_BUF+2,x
+	inx
+	inx
+	inx
+	inx
+	jmp loop
 
 end:
 
-    stx SPRID
-    rts
+	stx SPRID
+	rts
 .endproc
 
 .macro INCW addr
-    INC addr
-    BNE :+
-        INC addr+1
+	INC addr
+	BNE :+
+		INC addr+1
 :
 .endmacro
 
 .macro incw addr
-    INCW addr
+	INCW addr
 .endmacro
 
 .macro incw_check addr
-    INC addr
-    BNE :+
-        jsr incwlvl_checkC000
+	INC addr
+	BNE :+
+		jsr incwlvl_checkC000
 :
 .endmacro
 
 .segment "CODE_2"
+
+shiftBy4table:
+	.byte $00, $10, $20, $30
+	.byte $40, $50, $60, $70
+	.byte $80, $90, $A0, $B0
+	.byte $C0, $D0, $E0, $F0
 
 .export __one_vram_buffer_repeat
 .proc __one_vram_buffer_repeat
@@ -125,18 +131,18 @@ end:
 	sta VRAM_BUF, y
 	txa
 	sta VRAM_BUF+1, y
-    ; ptr1 lo byte is len, hi byte is character to repeat
-    lda sreg+1
-    ora #$80 ; set length + repeat byte
+	; ptr1 lo byte is len, hi byte is character to repeat
+	lda sreg+1
+	ora #$80 ; set length + repeat byte
 	sta VRAM_BUF+2, y
-    lda sreg+0
+	lda sreg+0
 	sta VRAM_BUF+3, y
 	lda #$ff ;=NT_UPD_EOF
 	sta VRAM_BUF+4, y
-    tya
-    clc
-    adc #4
-    sta VRAM_INDEX
+	tya
+	clc
+	adc #4
+	sta VRAM_INDEX
 	rts
 .endproc
 
@@ -147,193 +153,176 @@ end:
 .import _level_data_bank, _sprite_data_bank
 .export _init_rld
 _init_rld:
-    ; The C code being ported:
-        ;
-        ; void init_rld(uint8_t level){ // reset run-length decoder back to zero
-        ;     rld_column = 0;
-        ; 	level_data = (uint8_t *) level_list[level];
-        ;     rld_value = level_data[0]; // set the value and run to the first tile type and length
-        ;     rld_run = level_data[1];
-        ; 	++level_data; ++level_data; 
-        ; }
+	; A - the level ID
 
-    ; A has the level ID
-
-    ; Get pointers:
-    TAY		                ;__ Load pointer to tables
+	; Get pointers:
+	TAY						;__ Load pointer to tables
 	LDA _sprite_list_lo,y	;
 	STA _sprite_data+0		;__	Get low pointer to sprite data 
 	LDA _sprite_list_hi,y	;
 	STA _sprite_data+1		;__	Get high pointer to sprite data 
-    LDA _sprite_list_bank,y ;   Get sprite data bank
-    ; CLC                     ;
-    ; ADC #<FIRST_SPRITE_BANK ;
-    STA _sprite_data_bank   ;__
+	LDA _sprite_list_bank,y	;   Get sprite data bank
+	; CLC                     ;
+	; ADC #<FIRST_SPRITE_BANK ;
+	STA _sprite_data_bank	;__
 	LDA _level_list_lo,y	;
 	STA _level_data+0		;__	Get low pointer to level data 
 	LDA _level_list_hi,y	;
 	STA _level_data+1		;__	Get high pointer to level data 
-    LDA _level_list_bank,y  ;   Get level data bank
-    STA _level_data_bank    ;__
-    
-    JSR mmc3_set_prg_bank_1
+	LDA _level_list_bank,y	;   Get level data bank
+	STA _level_data_bank	;__
+	
+	JSR mmc3_set_prg_bank_1
 
-    LDY #$00            ;-  For both (zp),y addressing and rld_column
-    STY _rld_column     ;__ Reset scrolling
+	LDY #$00			;-  For both (zp),y addressing and rld_column
+	STY _rld_column		;__ Reset scrolling
 
-    ; Read header
-    LDA (level_data),y  ;
-    STA _song           ;   Song number
-    incw_check level_data
+	; Read header
+	LDA (level_data),y	;
+	STA _song			;   Song number
+	incw_check level_data
 
-    LDA (level_data),y  ;
-    STA _gamemode       ;   Starting level number
-    incw_check level_data
+	LDA (level_data),y	;
+	STA _gamemode		;   Starting level number
+	incw_check level_data
 
-    LDA (level_data),y  ;
-    STA _speed          ;   Starting speed
-    incw_check level_data
+	LDA (level_data),y	;
+	STA _speed			;   Starting speed
+	incw_check level_data
 
-    LDA (level_data),y  ;	Starting BG color
+	LDA (level_data),y	;	Starting BG color
 	AND #$3F			;	Store normal color (pal_col(0, tmp2))
-    STA PAL_BUF+0       ;__ 
-    ldx _lastbgcolortype
-    cpx #$ff
-    bne @noset
-    STA _lastbgcolortype
+	STA PAL_BUF+0		;__ 
+	ldx _lastbgcolortype
+	cpx #$ff
+	bne @noset
+	STA _lastbgcolortype
 @noset:
-    SEC                 ;	A = faded OG color (A - 10)
-    SBC #$10            ;__
+	SEC					;	A = faded OG color (A - 10)
+	SBC #$10			;__
 	BPL :+				;
 		LDA #$0F		;	if (faded color invalid) color = $0F (canonical black)
 	:					;__
 	STA PAL_BUF+1		;__	Store faded color (pal_col(1, tmp2-0x10 or 0x0F))
 	STA PAL_BUF+9		;__	Store faded color (pal_col(1, tmp2-0x10 or 0x0F))
-    incw_check level_data
+	incw_check level_data
 
-	LDA (level_data),y  ;	Starting ground color
+	LDA (level_data),y	;	Starting ground color
 	AND #$3F			;	Store normal color (pal_col(6, tmp2))
-    STA PAL_BUF+6       ;__ 
+	STA PAL_BUF+6		;__ 
 	ldx _lastgcolortype
 	cpx #$ff
 	bne @noset2
 	STA	_lastgcolortype
 @noset2:
-    SEC                 ;	A = faded OG color (A - 10)
-    SBC #$10            ;__
+	SEC					;	A = faded OG color (A - 10)
+	SBC #$10			;__
 	BPL :+				;
 		LDA #$0F		;	if (faded color invalid) color = $0F (canonical black)
 	:					;__
 	STA PAL_BUF+5		;__	Store faded color (pal_col(5, tmp2-0x10 or 0x0F))
-    incw_check level_data
+	incw_check level_data
 
 	INC <PAL_UPDATE		;__ Yes, we do need to update the palette
 
 SetupNextRLEByte:
-    LDA (level_data),y  ;
-    bmi single_rle_byte
-    STA rld_run         ;__ Load rld_run, ++level_data
-    incw_check level_data     ;__
+    LDA (level_data),y	;
+    bmi single_rle_byte	;	Load rld_run, ++level_data
+    STA rld_run			;__ 
+    incw_check level_data	;__
 
-    LDA (level_data),y  ;
-    STA rld_value       ;   Load rld_value, ++level_data
+    LDA (level_data),y	;
+    STA rld_value		;   Load rld_value, ++level_data
     ; JMP incwlvl_checkC000
 
     INC level_data
     BNE :+
 incwlvl_checkC000:  ; clobbers A
-        INC level_data+1
-        bit level_data+1
-        ; since the high byte will only be $Ax or $Bx, when bit 6 is set then its rolled over to $c0
-        bvc :+
-        pha 
-            ; switch banks
-            LDA #$A0            ;   Reset memory-mapped ptr
-            STA level_data+1    ;__
-            INC _level_data_bank ;_ Increment bank
-            LDA _level_data_bank
-            jsr mmc3_set_prg_bank_1 ;__ Switch the bank
-        pla
-    :   
-    RTS
+		INC level_data+1
+		bit level_data+1
+		; since the high byte will only be $Ax or $Bx, when bit 6 is set then its rolled over to $c0
+		bvc :+
+		pha 
+			; switch banks
+			LDA #$A0            ;   Reset memory-mapped ptr
+			STA level_data+1    ;__
+			INC _level_data_bank ;_ Increment bank
+			LDA _level_data_bank
+			jsr mmc3_set_prg_bank_1 ;__ Switch the bank
+		pla
+	:   
+	RTS
 single_rle_byte:
-    and #$7f
-    sta rld_value
-    lda #0
-    sta rld_run
-    incw_check level_data
-    rts
+	and #$7f
+	sta rld_value
+	lda #0
+	sta rld_run
+	incw_check level_data
+	rts
 
 .export _unrle_next_column
 _unrle_next_column:
 
-    ; Count up to zero to remove a cmp instruction
-    ldx #<-27
-    ldy #$00
-    lda rld_value
+	; Count up to zero to remove a cmp instruction
+	ldx #<-27
+	ldy #$00
+	lda rld_value
 
-    @FirstLoop:
-        sta columnBuffer - ($100 - 27), x
-        dec rld_run
-        bmi @UpdateValueRun
-        inx 
-        bmi @FirstLoop
-        bpl @WriteSetup ; Guaranteed jump
-    
-    @UpdateValueRun:
-        ; if bit 7 of the byte is set, then its a run of length 1
-        ; otherwise this is a length < 127 byte and we need to read another
-        lda (level_data), y
-        bmi @SingleByteRun
-        sta rld_run               ;__ Load rld_run, ++level_data
-        incw_check level_data     ;__
+	@FirstLoop:
+		sta columnBuffer - ($100 - 27), x
+		dec rld_run
+		bmi @UpdateValueRun
+		inx 
+		bmi @FirstLoop
+		bpl @WriteSetup ; Guaranteed jump
+	
+	@UpdateValueRun:
+		; if bit 7 of the byte is set, then its a run of length 1
+		; otherwise this is a length < 127 byte and we need to read another
+		lda (level_data), y
+		bmi @SingleByteRun
+		sta rld_run               ;__ Load rld_run, ++level_data
+		incw_check level_data     ;__
 
-        lda (level_data), y       ;
-        sta rld_value             ;   Load rld_value, ++level_data
-        incw_check level_data
+		lda (level_data), y       ;
+		sta rld_value             ;   Load rld_value, ++level_data
+		incw_check level_data
 
-        lda rld_value
-        inx 
-        bmi @FirstLoop
-        bpl @WriteSetup ; Unconditional
-    
-    @SingleByteRun:
-        and #$7f
-        sta rld_value
-        ; y = 0
-        sty rld_run
-        incw_check level_data
-        inx 
-        bmi @FirstLoop
-        ; and then fallthrough to copying to the collision map
+		lda rld_value
+		inx 
+		bmi @FirstLoop
+		bpl @WriteSetup ; Unconditional
+	
+	@SingleByteRun:
+		and #$7f
+		sta rld_value
+		; y = 0
+		sty rld_run
+		incw_check level_data
+		inx 
+		bmi @FirstLoop
+		; and then fallthrough to copying to the collision map
 
-    @WriteSetup:
+	@WriteSetup:
 
-    ; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
-    ; roughly twice the size for much more perf. We'll want this function to be fast when we
-    ; do practice mode so we can quickly reload to the middle of levels
-    ldx _rld_column
-    .repeat 16, I
-    lda columnBuffer + I
-    sta _collisionMap0 + I * 16, x
-    .endrepeat
-    .repeat 11, I
-    lda columnBuffer+16 + I
-    sta _collisionMap0+$100 + I * 16, x
-    .endrepeat
+	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
+	; roughly twice the size for much more perf. We'll want this function to be fast when we
+	; do practice mode so we can quickly reload to the middle of levels
+	ldx _rld_column
+	.repeat 16, I
+	lda columnBuffer + I
+	sta _collisionMap0 + I * 16, x
+	.endrepeat
+	.repeat 11, I
+	lda columnBuffer+16 + I
+	sta _collisionMap0+$100 + I * 16, x
+	.endrepeat
 
-    inx
-    txa
-    and #$0F
-    sta _rld_column
-    rts
-
-shiftBy4table:
-.byte $00, $10, $20, $30
-.byte $40, $50, $60, $70
-.byte $80, $90, $A0, $B0
-.byte $C0, $D0, $E0, $F0
-
+	inx
+	txa
+	and #$0F
+	sta _rld_column
+	rts
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 .import _increase_parallax_scroll_column
@@ -341,327 +330,327 @@ shiftBy4table:
 .export _draw_screen_R
 .proc _draw_screen_R
 
-    TileSizeHi  = (15*2)+2+1
-    TileSizeLo  = (12*2)+2+1
+	TileSizeHi  = (15*2)+2+1
+	TileSizeLo  = (12*2)+2+1
 
-    TileOff0    = 0
-    TileOff1    = 0+TileSizeHi
-    TileEnd     = 0+TileSizeHi+TileSizeLo
+	TileOff0    = 0
+	TileOff1    = 0+TileSizeHi
+	TileEnd     = 0+TileSizeHi+TileSizeLo
 
-    AttrSizeHi  = 8*3
-    AttrSizeLo  = 6*3
+	AttrSizeHi  = 8*3
+	AttrSizeLo  = 6*3
 
-    AttrOff0    = 0
-    AttrOff1    = 0+AttrSizeHi
-    AttrEnd     = 0+AttrSizeHi+AttrSizeLo
+	AttrOff0    = 0
+	AttrOff1    = 0+AttrSizeHi
+	AttrEnd     = 0+AttrSizeHi+AttrSizeLo
 
-    CurrentRow = tmp1
-    LoopCount = tmp2
+	CurrentRow = tmp1
+	LoopCount = tmp2
 
-    .export _draw_screen_R_frame0 := frame0
-    .export _draw_screen_R_frame1 := frame1
-    .export _draw_screen_R_frame2 := frame2
-    ; Write architecture:
+	.export _draw_screen_R_frame0 := frame0
+	.export _draw_screen_R_frame1 := frame1
+	.export _draw_screen_R_frame2 := frame2
+	; Write architecture:
 
-    ; Frame 0:
-    ;   Write 0 updates the upper nametable's left tiles
-    ;   Write 1 updates the lower nametable's left tiles
-    ; Frame 1:
-    ;   Write 0 updates the upper nametable's right tiles
-    ;   Write 1 updates the lower nametable's right tiles
-    ; Frame 2:
-    ;   Attributes 
-    
-    LDA _scroll_x           ;__ Highbyte of scroll_x
-    LSR                     ;
-    LSR                     ;   >> 4
-    LSR                     ;
-    LSR                     ;__
-    STA tmp4
+	; Frame 0:
+	;   Write 0 updates the upper nametable's left tiles
+	;   Write 1 updates the lower nametable's left tiles
+	; Frame 1:
+	;   Write 0 updates the upper nametable's right tiles
+	;   Write 1 updates the lower nametable's right tiles
+	; Frame 2:
+	;   Attributes 
+	
+	LDA _scroll_x			;__ Highbyte of scroll_x
+	LSR						;
+	LSR						;   >> 4
+	LSR						;
+	LSR						;__
+	STA tmp4
 
-    LDX scroll_count
-    BNE frame2
+	LDX scroll_count
+	BNE frame2
 
-    LDA tmp4
-    CMP _rld_column         ;   If X == rld column, decompress shit
-    BEQ frame0
-    RTS
+	LDA tmp4
+	CMP _rld_column			;   If X == rld column, decompress shit
+	BEQ frame0
+	RTS
     
 frame2:
-        CPX #$01
-        BEQ frame1
-        JMP attributes
+		CPX #$01
+		BEQ frame1
+		JMP attributes
 
 frame0:
-        ; Switch banks
-        LDA _level_data_bank
-        JSR mmc3_set_prg_bank_1
+		; Switch banks
+		LDA _level_data_bank
+		JSR mmc3_set_prg_bank_1
 
-        JSR _unrle_next_column
+		JSR _unrle_next_column
 
 frame1:
 
-        ; Writing to nesdoug's VRAM buffer starts here
-        LDX VRAM_INDEX
+		; Writing to nesdoug's VRAM buffer starts here
+		LDX VRAM_INDEX
 
-        ; In-house replacement of get_ppu_addr, only counts X
-        ; Address is big-endian
-        LDY _rld_column ;   000xxxx0 - the left tiles of the metatiles
-        DEY
-        TYA
-        AND #$0F
-        ASL         ;__
-        LDY scroll_count
-        BEQ :+
-            ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
-        :
-        STA VRAM_BUF+TileOff0+1,X
-        STA VRAM_BUF+TileOff1+1,X
+		; In-house replacement of get_ppu_addr, only counts X
+		; Address is big-endian
+		LDY _rld_column ;   000xxxx0 - the left tiles of the metatiles
+		DEY
+		TYA
+		AND #$0F
+		ASL         ;__
+		LDY scroll_count
+		BEQ :+
+			ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
+		:
+		STA VRAM_BUF+TileOff0+1,X
+		STA VRAM_BUF+TileOff1+1,X
 
-        lda _scroll_x + 1 ; high byte
-        and #%00000001
-        eor #%00000001
-        asl
-        asl
-        ora #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
-        STA VRAM_BUF+TileOff0,X
-        ORA #$08        ; 2nd nametable
-        STA VRAM_BUF+TileOff1,X
+		lda _scroll_x + 1 ; high byte
+		and #%00000001
+		eor #%00000001
+		asl
+		asl
+		ora #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
+		STA VRAM_BUF+TileOff0,X
+		ORA #$08        ; 2nd nametable
+		STA VRAM_BUF+TileOff1,X
 
 
-        ; First part of the update: the tiles
-        ; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
-        LDA #(15*2)
-        STA VRAM_BUF+TileOff0+2,X
-        LDA #(12*2)
-        STA VRAM_BUF+TileOff1+2,X
+		; First part of the update: the tiles
+		; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
+		LDA #(15*2)
+		STA VRAM_BUF+TileOff0+2,X
+		LDA #(12*2)
+		STA VRAM_BUF+TileOff1+2,X
 
-        ; The sequence itself:
-        
-        ; Load Y value
-        LDY #$00
-        sty CurrentRow
-        ; Load max value
-        LDA #15 - 1
-        STA LoopCount
-        ; Check if doing a left or right hand write
-        LDA scroll_count
-        AND #1
-        beq @LeftWrite
-            ; Right side write
-            ; Call for upper tiles
-            JSR right_tilewriteloop
-            jmp @WriteBottomHalf
+		; The sequence itself:
+		
+		; Load Y value
+		LDY #$00
+		sty CurrentRow
+		; Load max value
+		LDA #15 - 1
+		STA LoopCount
+		; Check if doing a left or right hand write
+		LDA scroll_count
+		AND #1
+		beq @LeftWrite
+			; Right side write
+			; Call for upper tiles
+			JSR right_tilewriteloop
+			jmp @WriteBottomHalf
 @LeftWrite:
-            JSR left_tilewriteloop
+			JSR left_tilewriteloop
 @WriteBottomHalf:
-        ; Load new max
-        LDA #12 - 1
-        STA LoopCount
-        ; Add offset to X
-        TXA
-        CLC
-        ADC #(TileSizeHi-(15*2))
-        TAX
-        
-        LDA scroll_count
-        AND #1
-        beq @LeftWrite2
-            JSR right_tilewriteloop
-            jmp @RenderParallax
+		; Load new max
+		LDA #12 - 1
+		STA LoopCount
+		; Add offset to X
+		TXA
+		CLC
+		ADC #(TileSizeHi-(15*2))
+		TAX
+		
+		LDA scroll_count
+		AND #1
+		beq @LeftWrite2
+			JSR right_tilewriteloop
+			jmp @RenderParallax
 @LeftWrite2:
-            ; Call for lower tiles
-            JSR left_tilewriteloop
+			; Call for lower tiles
+			JSR left_tilewriteloop
 @RenderParallax:
 
 ParallaxBufferStart = tmp1
 ParallaxExtent = tmp3
-        ; Loop through the vram writes and find any $00 tiles and replace them with parallax
-        ; Calculate the end of the parallax column offset
-        ldy parallax_scroll_column
-        lda ParallaxBufferOffset, y
-        sta ParallaxBufferStart
-        clc
-        adc #9
-        sta ParallaxExtent
+		; Loop through the vram writes and find any $00 tiles and replace them with parallax
+		; Calculate the end of the parallax column offset
+		ldy parallax_scroll_column
+		lda ParallaxBufferOffset, y
+		sta ParallaxBufferStart
+		clc
+		adc #9
+		sta ParallaxExtent
 
-        lda ParallaxBufferStart
-        clc
-        adc parallax_scroll_column_start
-        tay
+		lda ParallaxBufferStart
+		clc
+		adc parallax_scroll_column_start
+		tay
 
-        ldx #TileOff0 + TileSizeHi - 1 - (2+1)
-        stx LoopCount
-        ldx #TileOff0
-        jsr RenderParallaxLoop
+		ldx #TileOff0 + TileSizeHi - 1 - (2+1)
+		stx LoopCount
+		ldx #TileOff0
+		jsr RenderParallaxLoop
 
-        ldx #TileSizeLo - 1 - (2+1)
-        stx LoopCount
-        ldx #TileOff1
-        jsr RenderParallaxLoop
-        
-        ; move to the next scroll column for next frame
-        jsr _increase_parallax_scroll_column
+		ldx #TileSizeLo - 1 - (2+1)
+		stx LoopCount
+		ldx #TileOff1
+		jsr RenderParallaxLoop
+		
+		; move to the next scroll column for next frame
+		jsr _increase_parallax_scroll_column
 
-        ; Demarkate end of write
-        LDX VRAM_INDEX
-        LDA #$FF
-        STA VRAM_BUF+TileEnd,X
+		; Demarkate end of write
+		LDX VRAM_INDEX
+		LDA #$FF
+		STA VRAM_BUF+TileEnd,X
 
-        ; Declare this section as taken
-        TXA
-        CLC
-        ADC #TileEnd
-        STA VRAM_INDEX
+		; Declare this section as taken
+		TXA
+		CLC
+		ADC #TileEnd
+		STA VRAM_INDEX
 
-        INC scroll_count
+		INC scroll_count
 
-        RTS
+		RTS
 
-    attributes:
+	attributes:
 NametableAddrHi = tmp1
-        ; Attribute write architecture:
+		; Attribute write architecture:
 
-        ; | Ad|dr |dat|
-        ;   0   1   2
-        ; Addr = VRAM address
+		; | Ad|dr |dat|
+		;   0   1   2
+		; Addr = VRAM address
 
-        ; 1 byte can theoretically be saved by using a vertical
-        ; sequence of 2 bytes, but this comes at a cost of 23
-        ; cycles per 2 bytes in vblank (80 vs 103), and vlank
-        ; time is not to be wasted
+		; 1 byte can theoretically be saved by using a vertical
+		; sequence of 2 bytes, but this comes at a cost of 23
+		; cycles per 2 bytes in vblank (80 vs 103), and vlank
+		; time is not to be wasted
 
-        ; Decremented rld_column, very useful
-        LDX _rld_column
-        DEX
-        TXA
-        AND #$0F
-        STA ptr3
+		; Decremented rld_column, very useful
+		LDX _rld_column
+		DEX
+		TXA
+		AND #$0F
+		STA ptr3
 
-        ; Get the ptr (I am not bothering with 2 separate loops)
-        LDA #>_collisionMap0
-        STA ptr1+1
-        LDA ptr3
-        AND #$0E
-        ADC #(<_collisionMap0-1)    ; The carry is set by the CMP used to jump into this routine
-        STA ptr1
-        BCC :+
-            INC ptr1+1
-        :
+		; Get the ptr (I am not bothering with 2 separate loops)
+		LDA #>_collisionMap0
+		STA ptr1+1
+		LDA ptr3
+		AND #$0E
+		ADC #(<_collisionMap0-1)    ; The carry is set by the CMP used to jump into this routine
+		STA ptr1
+		BCC :+
+			INC ptr1+1
+		:
 
-        LDA #8 - 1
+		LDA #8 - 1
 		LDX #0
 		STX ptr2+1
-        JSR attributeSetup
+		JSR attributeSetup
 
-        ; Last byte has no bottom tiles
-        LDA columnBuffer+7
-        AND #$0F
-        STA columnBuffer+7
+		; Last byte has no bottom tiles
+		LDA columnBuffer+7
+		AND #$0F
+		STA columnBuffer+7
 
-        ; Update new maximum
-        ; Update pointer (collisionMap0 is 240 bytes, not 256)
-        LDA ptr1
-        SEC
-        SBC #$10
-        STA ptr1
-        BCS :+
-            DEC ptr1+1
-        :
+		; Update new maximum
+		; Update pointer (collisionMap0 is 240 bytes, not 256)
+		LDA ptr1
+		SEC
+		SBC #$10
+		STA ptr1
+		BCS :+
+			DEC ptr1+1
+		:
 
-        LDA #8+6 - 1
-        JSR attributeSetup
+		LDA #8+6 - 1
+		JSR attributeSetup
 
-        ; Get address hi byte (either left or right side)
-        lda _scroll_x + 1 ; high byte
-        and #%00000001
-        eor #%00000001
-        asl
-        asl
-        ora #$23
-        sta NametableAddrHi
-        
-        LDA ptr3
-        LSR
-        ORA #$C0
-        
-        ; Store address
-        LDX VRAM_INDEX
-        addressLoop:
-            ; Low byte
-            STA VRAM_BUF+AttrOff0+1,X
-            STA VRAM_BUF+AttrOff1+1,X
-            TAY
-            ; High byte
-            lda NametableAddrHi
-            STA VRAM_BUF+AttrOff0,X
-            ORA #$08
-            STA VRAM_BUF+AttrOff1,X
-            TYA
+		; Get address hi byte (either left or right side)
+		lda _scroll_x + 1 ; high byte
+		and #%00000001
+		eor #%00000001
+		asl
+		asl
+		ora #$23
+		sta NametableAddrHi
+		
+		LDA ptr3
+		LSR
+		ORA #$C0
+		
+		; Store address
+		LDX VRAM_INDEX
+		addressLoop:
+			; Low byte
+			STA VRAM_BUF+AttrOff0+1,X
+			STA VRAM_BUF+AttrOff1+1,X
+			TAY
+			; High byte
+			lda NametableAddrHi
+			STA VRAM_BUF+AttrOff0,X
+			ORA #$08
+			STA VRAM_BUF+AttrOff1,X
+			TYA
 
-            INX 
-            INX
-            INX
+			INX 
+			INX
+			INX
 
-            CLC
-            ADC #$08
-            BCC addressLoop
-        
-        LDY #14
+			CLC
+			ADC #$08
+			BCC addressLoop
+		
+		LDY #14
 
-        LDA VRAM_INDEX
-        ADC #AttrEnd-1  ; Carry is set by the ADC : BCC
-        STA VRAM_INDEX  ; State that the block is now occupied
-        TAX
+		LDA VRAM_INDEX
+		ADC #AttrEnd-1  ; Carry is set by the ADC : BCC
+		STA VRAM_INDEX  ; State that the block is now occupied
+		TAX
 
-        dataLoop:
-            LDA columnBuffer-1,Y
-            STA VRAM_BUF-3+2,X
+		dataLoop:
+			LDA columnBuffer-1,Y
+			STA VRAM_BUF-3+2,X
 
-            DEX
-            DEX
-            DEX
-            DEY
-            BNE dataLoop
-        
-        ; Finish off the routine
-        ; X has VRAM_INDEX, mark this block as taken
-        LDA #$FF
-        STA VRAM_BUF+AttrEnd,X
-        ; Reset frame counter
-        LDA #$00
-        STA scroll_count
-        RTS
+			DEX
+			DEX
+			DEX
+			DEY
+			BNE dataLoop
+		
+		; Finish off the routine
+		; X has VRAM_INDEX, mark this block as taken
+		LDA #$FF
+		STA VRAM_BUF+AttrEnd,X
+		; Reset frame counter
+		LDA #$00
+		STA scroll_count
+		RTS
 
 	attributeSetup:
 		STA LoopCount
 
-    	attributeLoop1:
-            ; Read lower right metatile
-            LDY #$11
-            LDA (ptr1),Y
-            tax
-            ; Read lower left metatile
+		attributeLoop1:
+			; Read lower right metatile
+			LDY #$11
+			LDA (ptr1),Y
+			tax
+			; Read lower left metatile
 			dey
 			LDA (ptr1), Y
 			tay
 			; Get their attributes
-            lda metatiles_attr,x	; Lower right
+			lda metatiles_attr,x	; Lower right
 			ASL
 			ASL
 			ora metatiles_attr,y	; Lower left
-            STA ptr2
+			STA ptr2
 
-            ; Read upper right metatile
-            LDY #$01
-            LDA (ptr1),Y
-            tax
+			; Read upper right metatile
+			LDY #$01
+			LDA (ptr1),Y
+			tax
 			; Read upper left metatile
 			dey
 			LDA (ptr1), Y
 			tay
 			; Get their attributes
-            lda metatiles_attr,x	; Upper right
+			lda metatiles_attr,x	; Upper right
 			ASL
 			ASL
 			ora metatiles_attr,y	; Upper left
@@ -672,120 +661,120 @@ NametableAddrHi = tmp1
 			LDX ptr2+1
 			STA columnBuffer,X
 
-            ; Increment pointer
-            LDA ptr1
-            ; Last thing affecting carry is the ASL, which
-            ; always shifts 0 into it if the metatile data
-            ; is valid
-            ADC #$20
-            STA ptr1
-            BCC :+
-                INC ptr1+1
-            :
+			; Increment pointer
+			LDA ptr1
+			; Last thing affecting carry is the ASL, which
+			; always shifts 0 into it if the metatile data
+			; is valid
+			ADC #$20
+			STA ptr1
+			BCC :+
+				INC ptr1+1
+			:
 
-            INC ptr2+1
-            DEC LoopCount
-            BPL attributeLoop1
-        RTS
+			INC ptr2+1
+			DEC LoopCount
+			BPL attributeLoop1
+		RTS
 
-    right_tilewriteloop:
-            ldy CurrentRow
-            LDA columnBuffer,Y
-            tay
-            ; y is the metatile id
-            lda metatiles_top_right, y
-            STA VRAM_BUF+TileOff0+3,X
-            lda metatiles_bot_right, y
-            STA VRAM_BUF+TileOff0+4,X
-            
-            INX
-            INX
-            inc CurrentRow
-            DEC LoopCount
-            BPL right_tilewriteloop
-        rts
-    left_tilewriteloop:
-            ldy CurrentRow
-            LDA columnBuffer,Y
-            tay
-            ; y is the metatile id
-            lda metatiles_top_left, y
-            STA VRAM_BUF+TileOff0+3,X
-            lda metatiles_bot_left, y
-            STA VRAM_BUF+TileOff0+4,X
-            
-            INX
-            INX
-            inc CurrentRow
-            DEC LoopCount
-            BPL left_tilewriteloop
-        rts
-        
-    RenderParallaxLoop:
-	    lda _no_parallax
-	    bne @nopar
-            lda VRAM_BUF+TileOff0+3,x
-            bne :+
-                ; empty tile, so replace it with the parallax for this
-                lda ParallaxBuffer, y
-                sta VRAM_BUF+TileOff0+3,x
-            :
-            iny
-            cpy ParallaxExtent
-            bne :+
-                ldy ParallaxBufferStart
-            :
-            inx
-            dec LoopCount
-            bpl RenderParallaxLoop
+	right_tilewriteloop:
+			ldy CurrentRow
+			LDA columnBuffer,Y
+			tay
+			; y is the metatile id
+			lda metatiles_top_right, y
+			STA VRAM_BUF+TileOff0+3,X
+			lda metatiles_bot_right, y
+			STA VRAM_BUF+TileOff0+4,X
+			
+			INX
+			INX
+			inc CurrentRow
+			DEC LoopCount
+			BPL right_tilewriteloop
+		rts
+	left_tilewriteloop:
+			ldy CurrentRow
+			LDA columnBuffer,Y
+			tay
+			; y is the metatile id
+			lda metatiles_top_left, y
+			STA VRAM_BUF+TileOff0+3,X
+			lda metatiles_bot_left, y
+			STA VRAM_BUF+TileOff0+4,X
+			
+			INX
+			INX
+			inc CurrentRow
+			DEC LoopCount
+			BPL left_tilewriteloop
+		rts
+		
+	RenderParallaxLoop:
+		lda _no_parallax
+		bne @nopar
+			lda VRAM_BUF+TileOff0+3,x
+			bne :+
+				; empty tile, so replace it with the parallax for this
+				lda ParallaxBuffer, y
+				sta VRAM_BUF+TileOff0+3,x
+			:
+			iny
+			cpy ParallaxExtent
+			bne :+
+				ldy ParallaxBufferStart
+			:
+			inx
+			dec LoopCount
+			bpl RenderParallaxLoop
 	@nopar:
-            rts
-    ; Before returning, loop again through the vram buffer and write the parallax
-    ; parallax_bg_write:
-    ;     ldx #27 - 1
+			rts
+	; Before returning, loop again through the vram buffer and write the parallax
+	; parallax_bg_write:
+	;     ldx #27 - 1
 
-    ;     ; based on the current scroll value.
-    ;     ; y is the metatile current row, x is the current VRAM_BUF offset
-    ;     ; tmp4 is the parallax_scroll_column_start value
-    ;     ; which is where in the parallax buffer we are rendering from
+	;     ; based on the current scroll value.
+	;     ; y is the metatile current row, x is the current VRAM_BUF offset
+	;     ; tmp4 is the parallax_scroll_column_start value
+	;     ; which is where in the parallax buffer we are rendering from
 
-    ;     ldy ParallaxColumnStart
-    ;     cpy #9 - 1
-    ;     bne :+
-    ;         ; annoyingly when we are drawing the last row we have to do it differently
-    ;         jsr render_last_tile
-    ;         bne write_tile1
-    ;     :
-    ;     lda ParallaxBuffer, y
-    ;     clc
-    ;     adc parallax_scroll_column
-    ; write_tile1:
-    ;     sta VRAM_BUF+TileOff0+3,X
-    ;     iny 
-    ;     cpy #9
-    ;     bcc :+
-    ;         ldy #0
-    ;     :
-    ;     ; Render the second tile
-    ;     cpy #9 - 1
-    ;     bne :+
-    ;         jsr render_last_tile
-    ;         bne write_tile2
-    ;     :
-    ;     lda ParallaxBuffer, y
-    ;     clc
-    ;     adc parallax_scroll_column
-    ; write_tile2:
-    ;     sta VRAM_BUF+TileOff0+4,X
-    ;     iny 
-    ;     cpy #9
-    ;     bcc :+
-    ;         ldy #0
-    ;     :
-    ;     sty ParallaxColumnStart
+	;     ldy ParallaxColumnStart
+	;     cpy #9 - 1
+	;     bne :+
+	;         ; annoyingly when we are drawing the last row we have to do it differently
+	;         jsr render_last_tile
+	;         bne write_tile1
+	;     :
+	;     lda ParallaxBuffer, y
+	;     clc
+	;     adc parallax_scroll_column
+	; write_tile1:
+	;     sta VRAM_BUF+TileOff0+3,X
+	;     iny 
+	;     cpy #9
+	;     bcc :+
+	;         ldy #0
+	;     :
+	;     ; Render the second tile
+	;     cpy #9 - 1
+	;     bne :+
+	;         jsr render_last_tile
+	;         bne write_tile2
+	;     :
+	;     lda ParallaxBuffer, y
+	;     clc
+	;     adc parallax_scroll_column
+	; write_tile2:
+	;     sta VRAM_BUF+TileOff0+4,X
+	;     iny 
+	;     cpy #9
+	;     bcc :+
+	;         ldy #0
+	;     :
+	;     sty ParallaxColumnStart
 
-    ;     jmp NextMetatile
-    ;     RTS
+	;     jmp NextMetatile
+	;     RTS
 
 ; Column striped parallax data definition
 ; add to the tile for the next row, up to 6.
@@ -832,7 +821,7 @@ ParallaxBufferCol5:
 	LDA total_len		;	total length
 	STA VRAM_BUF+2, Y	;__
 
-	SEC					;   Total padding
+	SEC					;	Total padding
 	SBC len				;__
 	LSR					;	Get left offset
 	STA tmp1			;__
@@ -844,8 +833,8 @@ ParallaxBufferCol5:
 	; If carry is still set, we have big problems
 	; BCS some shit to do
 	TAX
-    ADC #$03
-    STA VRAM_INDEX
+	ADC #$03
+	STA VRAM_INDEX
 
 	LDA #$FF			;	Finish off the write
 	STA VRAM_BUF+3, X	;__
@@ -897,44 +886,35 @@ ParallaxBufferCol5:
 .import _retro_mode
 .export _movement
 .proc _movement
-    ; The C code being "ported":
-        ; switch (gamemode) {
-        ;     case 0x00: cube_movement(); break;
-        ;     case 0x01: ship_movement(); break;
-        ;     case 0x02: ball_movement(); break;
-        ;     case 0x03: break;
-        ;     default: break;
-        ; } 
-
-        LDX _gamemode
-        CPX #$08
-        BPL end
+	LDX _gamemode
+	CPX #$08
+	BPL end
 	lda _retro_mode
 	beq @no1
 	lda _gamemode
 	cmp #1
 	bne	@no1
-        LDA #<_ufo_movement
-        STA <PTR
-        LDA #>_ufo_movement
-        STA <PTR+1
-        JMP (PTR)	
+		; LDA #<_ufo_movement
+		; STA <PTR
+		; LDA #>_ufo_movement
+		; STA <PTR+1
+		; JMP (PTR)	
+		JMP _ufo_movement
 	
-	
-   @no1:
-        LDA jump_table_lo, X
-        STA <PTR
-        LDA jump_table_hi, X
-        STA <PTR+1
-        JMP (PTR)
+	@no1:
+		LDA jump_table_lo, X
+		STA <PTR
+		LDA jump_table_hi, X
+		STA <PTR+1
+		JMP (PTR)
 
-        end:
-            RTS     ; break;
+	end:
+		RTS     ; break;
 
-        jump_table_lo:
-            .byte <_cube_movement, <_ship_movement, <_ball_movement, <_ufo_movement, <_cube_movement, <_spider_movement, <_wave_movement, <_ball_movement
-        jump_table_hi:
-            .byte >_cube_movement, >_ship_movement, >_ball_movement, >_ufo_movement, >_cube_movement, >_spider_movement, >_wave_movement, >_ball_movement
+	jump_table_lo:
+		.byte <_cube_movement, <_ship_movement, <_ball_movement, <_ufo_movement, <_cube_movement, <_spider_movement, <_wave_movement, <_ball_movement
+	jump_table_hi:
+		.byte >_cube_movement, >_ship_movement, >_ball_movement, >_ufo_movement, >_cube_movement, >_spider_movement, >_wave_movement, >_ball_movement
 
 .endproc
 .popseg
@@ -943,7 +923,7 @@ ParallaxBufferCol5:
 .import _options, FIRST_MUSIC_BANK
 .export _music_play
 .proc _music_play  
-    bit _options ; sets N flag to bit 7 of _options without affecting a  
+    bit _options ; sets N flag to bit 7 of _options without affecting A  
     bpl musicon
     rts  
 musicon:  
@@ -1258,52 +1238,52 @@ drawplayer_center_offsets:
 
 .proc _drawplayerone
 
-    LDX _cube_data
-    LDA _slope_frames
-    BEQ :+
-        TXA
-        ORA #%10000000
-        BNE @skipClearBit
-    :
-        TXA
-        AND #%01111111
-    @skipClearBit:
-    sta _cube_data
+	LDX _cube_data
+	LDA _slope_frames
+	BEQ :+
+		TXA
+		ORA #%10000000
+		BNE @skipClearBit
+	:
+		TXA
+		AND #%01111111
+	@skipClearBit:
+	sta _cube_data
 
-    LDA _player_gravity+0
-    BEQ :+
-        LDA #$80
-    : STA xargs+0
+	LDA _player_gravity+0
+	BEQ :+
+		LDA #$80
+	: STA xargs+0
 
 	LDX _player_y+1		;
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[0])-1
 	STX sreg+1			;__
 
-    ; Set up base pointer for jump tables
-    LDA _mini       ;
-    BEQ :+          ;   Add 8 if mini mode 
-        LDA #gamemode_count
-    :               ;__
-    CLC             ;   Actual gamemode itself
-    ADC _gamemode   ;__
-    TAX             ;   Get low byte of table ptr
+	; Set up base pointer for jump tables
+	LDA _mini       ;
+	BEQ :+          ;   Add 8 if mini mode 
+		LDA #gamemode_count
+	:               ;__
+	CLC             ;   Actual gamemode itself
+	ADC _gamemode   ;__
+	TAX             ;   Get low byte of table ptr
 
-    LDA _retro_mode
-    beq @regulartable
-    LDA sprite_table_table_lo2, X
-    STA ptr1        ;__
-    LDA sprite_table_table_hi2, X
-    STA ptr1+1      ;__ Get high byte of table ptr
-    jmp @donetable    
-    
-   @regulartable:
-    LDA sprite_table_table_lo, X
-    STA ptr1        ;__
-    LDA sprite_table_table_hi, X
-    STA ptr1+1      ;__ Get high byte of table ptr
-   @donetable:
+	LDA _retro_mode
+	beq @regulartable
+		LDA sprite_table_table_lo2, X
+		STA ptr1        ;__
+		LDA sprite_table_table_hi2, X
+		STA ptr1+1      ;__ Get high byte of table ptr
+		jmp @donetable    
+	
+	@regulartable:
+		LDA sprite_table_table_lo, X
+		STA ptr1        ;__
+		LDA sprite_table_table_hi, X
+		STA ptr1+1      ;__ Get high byte of table ptr
+	@donetable:
 
-    LDY _player_x+1     ;__ temp_x = high_byte(player_x[0]);
+	LDY _player_x+1     ;__ temp_x = high_byte(player_x[0]);
 	; The condition if is temp_x == 0 or is > 0xfc,
 	; this can be expressed as (temp_x - 1) > 0xfb
 	DEY					;
@@ -1314,26 +1294,26 @@ drawplayer_center_offsets:
 	TYA
 	SEC		; I decremented the Y, this is getting back at it
 	ADC drawplayer_center_offsets, X
-    STA sreg+0			;__ The X of oam_meta_spr is temp_x
+	STA sreg+0			;__ The X of oam_meta_spr is temp_x
 
-    ; The switch 
-    LDX _gamemode
-    DEX         ;   case 0x01: ship shit
-    jeq ship   ;__
-    DEX         ;   case 0x02: ball shit
-    jeq ball   ;__
-    DEX         ;   case 0x03: ufo shit
-    jeq ufo    ;__
-    DEX         ;   case 0x04: robot shit
-    jeq robot  ;__
-    DEX         ;   case 0x05: spider shit
-    jeq spider ;__
-    dex
-    jeq	wave
-    dex
-    jeq	ship
-    
-    ; default: cube
+	; The switch 
+	LDX _gamemode
+	DEX			;	case 0x01: ship shit
+	jeq ship	;__
+	DEX			;	case 0x02: ball shit
+	jeq ball	;__
+	DEX			;	case 0x03: ufo shit
+	jeq ufo		;__
+	DEX			;	case 0x04: robot shit
+	jeq robot	;__
+	DEX			;	case 0x05: spider shit
+	jeq spider	;__
+	dex			;	case 0x06: wave shit
+	jeq	wave	;__	
+	dex			;	case 0x07: swing shit
+	jeq	ship	;__
+	
+	; default: cube
     cube:
 		; C code:
 			; 		if (player_vel_y[0] == 0) cube_rotate[0] = round to the nearest 90°;
@@ -1688,42 +1668,42 @@ drawplayer_common := _drawplayerone::common
 
 .proc _drawplayertwo
 
-    LDA _player_gravity+1
-    BEQ :+
-        LDA #$80
-    : STA xargs+0	; flip
+	LDA _player_gravity+1
+	BEQ :+
+		LDA #$80
+	: STA xargs+0	; flip
 
-    LDX _player_y+3		;
+	LDX _player_y+3		;
 	DEX					;	The Y of oam_meta_spr is high_byte(player_y[1])-1
 	STX sreg+1			;__
 
-    ; Set up base pointer for jump tables
-    LDA _mini       ;
-    BEQ :+          ;   Add 8 if mini mode 
-        LDA #gamemode_count
-    :               ;__
-    CLC             ;   Actual gamemode itself
-    ADC _gamemode   ;__
-    TAX             ;   Get low byte of table ptr
+	; Set up base pointer for jump tables
+	LDA _mini       ;
+	BEQ :+          ;   Add 8 if mini mode 
+		LDA #gamemode_count
+	:               ;__
+	CLC             ;   Actual gamemode itself
+	ADC _gamemode   ;__
+	TAX             ;   Get low byte of table ptr
 
 
 
-    LDA _retro_mode
-    beq @regulartable
-    LDA sprite_table_table_lo2, X
-    STA ptr1        ;__
-    LDA sprite_table_table_hi2, X
-    STA ptr1+1      ;__ Get high byte of table ptr
-    jmp @donetable    
-    
-   @regulartable:
-    LDA sprite_table_table_lo, X
-    STA ptr1        ;__
-    LDA sprite_table_table_hi, X
-    STA ptr1+1      ;__ Get high byte of table ptr
-   @donetable:
-   
-   
+	LDA _retro_mode
+	beq @regulartable
+		LDA sprite_table_table_lo2, X
+		STA ptr1        ;__
+		LDA sprite_table_table_hi2, X
+		STA ptr1+1      ;__ Get high byte of table ptr
+		jmp @donetable    
+	
+	@regulartable:
+		LDA sprite_table_table_lo, X
+		STA ptr1        ;__
+		LDA sprite_table_table_hi, X
+		STA ptr1+1      ;__ Get high byte of table ptr
+	@donetable:
+
+
 	LDY _player_x+3     ;__ temp_x = high_byte(player_x[1]);
 	; The condition if is temp_x == 0 or is > 0xfc,
 	; this can be expressed as (temp_x - 1) > 0xfb
@@ -1735,25 +1715,25 @@ drawplayer_common := _drawplayerone::common
 	TYA
 	SEC		; I decremented the Y, this is getting back at it
 	ADC drawplayer_center_offsets, X
-    STA sreg+0			;__ The X of oam_meta_spr is temp_x
+	STA sreg+0			;__ The X of oam_meta_spr is temp_x
 
-    ; The switch 
-    LDX _gamemode
-    DEX         ;   case 0x01: ship shit
-    jeq ship   ;__
-    DEX         ;   case 0x02: ball shit
-    jeq ball   ;__
-    DEX         ;   case 0x03: ufo shit
-    jeq ufo    ;__
-    DEX         ;   case 0x04: robot shit
-    jeq robot  ;__
-    DEX         ;   case 0x05: spider shit
-    jeq spider ;__
-    DEX         ;   case 0x05: spider shit
-    jeq wave ;__
-    DEX         ;   case 0x05: spider shit
-    jeq ship ;__
-    
+	; The switch 
+	LDX _gamemode
+	DEX			;	case 0x01: ship shit
+	jeq ship	;__
+	DEX			;	case 0x02: ball shit
+	jeq ball	;__
+	DEX			;	case 0x03: ufo shit
+	jeq ufo		;__
+	DEX			;	case 0x04: robot shit
+	jeq robot	;__
+	DEX			;	case 0x05: spider shit
+	jeq spider	;__
+	dex			;	case 0x06: wave shit
+	jeq	wave	;__	
+	dex			;	case 0x07: swing shit
+	jeq	ship	;__
+
     ; default: cube
     cube:
         ; C code:
@@ -1781,8 +1761,8 @@ drawplayer_common := _drawplayerone::common
 			LDA _cube_rotate+3	;	Round the cube rotation
 			ADC @rounding_table, X
 			STA _cube_rotate+3	;
-            TAX                 ;__
-            JMP @fin_nold
+			TAX					;__
+			JMP @fin_nold
 
 		@no_round:
 		LDA _cube_rotate+2
