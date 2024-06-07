@@ -1230,8 +1230,7 @@ write_active:
 .importzp _cube_rotate, _mini
 .import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_WAVE, _MINI_SWING
-.importzp _cube_data, _slope_frames
-
+.importzp _cube_data, _slope_frames, _slope_type
 drawcube_rounding_table:
 	.byte 0, <-1, <-2, 3, 2, 1
 	.byte 0, <-1, <-2, 3, 2, 1	; doubling it simplifies the routine
@@ -1279,17 +1278,18 @@ drawplayer_center_offsets:
 
 .proc _drawplayerone
 
-	LDX _cube_data
-	LDA _slope_frames
-	BEQ :+
-		TXA
-		ORA #%10000000
-		BNE @skipClearBit
-	:
-		TXA
-		AND #%01111111
-	@skipClearBit:
-	sta _cube_data
+    LDX _cube_data
+    LDA _slope_frames
+    ORA _slope_type
+    BEQ :+
+        TXA
+        ORA #%10000000
+        BNE @skipClearBit
+    :
+        TXA
+        AND #%01111111
+    @skipClearBit:
+    sta _cube_data
 
 	LDA _player_gravity+0
 	BEQ :+
@@ -1379,11 +1379,13 @@ drawplayer_center_offsets:
 			:					;__
 			LDA _cube_rotate+1	;	Round the cube rotation
 			ADC @rounding_table, X
+            STA _cube_rotate+1
 			BIT _cube_data
             BPL :+
+                LDY _slope_type
                 CLC
-                ADC #$03
-            : STA _cube_rotate+1
+                ADC rounding_slope_table-1, y
+            : 
             TAX
             JMP @fin_nold
 
@@ -1696,6 +1698,9 @@ drawplayer_center_offsets:
     sprite_table_table_hi2:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER, >_WAVE, >_SWING
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING
+
+    rounding_slope_table:
+        .byte $03, $09
 .endproc
 drawplayer_common := _drawplayerone::common
 

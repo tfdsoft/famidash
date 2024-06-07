@@ -358,6 +358,10 @@ void state_game(){
 		//if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
 //		if (DEBUG_MODE) gray_line();
 
+		if (was_on_slope_counter) {
+			was_on_slope_counter--;
+		} else slope_type = 0;
+
 		mmc3_set_prg_bank_1(GET_BANK(movement));
 		
 		movement();
