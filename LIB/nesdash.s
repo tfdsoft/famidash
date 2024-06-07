@@ -2114,26 +2114,28 @@ drawplayer_common := _drawplayerone::common
 	LDA _temp_room	;	tmp3 = temp_room&1;
 	AND #$01		;__
 	BNE Room1		;__
-	LDA _collisionMap0,X	; collision = collisionMap0[coordinates];
+	LDA _collisionMap0,X
 	JMP BothRooms
 
 	Room1:
 	; "tmp3" is 1, check for coordinates >= $C0
 	CPX #$C0			;	if (tmp3 && coordinates >= 0xc0) return COL_ALL;
 	BCS ReturnColAll	;__
-	LDA _collisionMap1,X	; collision = collisionMap0[coordinates];
+	LDA _collisionMap1,X
 	BothRooms:
-	STA _collision	;
 	TAX				;__
 	LDA _is_solid,X	;	return is_solid[collision];
+	STA _collision	;
 	RTS				;__
 
 	Return0:
 	LDA #$00
+	sta _collision
 	RTS
 
 	ReturnColAll:
 	LDA #$09       ; return COL_FLOOR_CEIL
+	sta _collision
 	RTS
 
 .endproc
