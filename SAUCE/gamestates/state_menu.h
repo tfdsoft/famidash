@@ -2,24 +2,24 @@
 #pragma data-name(push, "XCD_BANK_03")
 #pragma rodata-name(push, "XCD_BANK_03")
 
-const unsigned char loNTAddrTable[]={
-    NTADR_A(9, 11)&0xFF,    // -1 = 4
-    NTADR_A(15, 11)&0xFF,   // 0
-    NTADR_A(21, 11)&0xFF,   // 1 
-    NTADR_A(12, 17)&0xFF,   // 2
-    NTADR_A(18, 17)&0xFF,   // 3
-    NTADR_A(9, 11)&0xFF,    // 4
-    NTADR_A(15, 11)&0xFF    // 5 = 0
+const unsigned char loNTAddrTableTitleScreen[]={
+    LSB(NTADR_A(9, 11)),	// -1 = 4
+    LSB(NTADR_A(15, 11)),	// 0
+    LSB(NTADR_A(21, 11)),	// 1 
+    LSB(NTADR_A(12, 17)),	// 2
+    LSB(NTADR_A(18, 17)),	// 3
+    LSB(NTADR_A(9, 11)),	// 4
+    LSB(NTADR_A(15, 11))	// 5 = 0
 };
 
-const unsigned char hiNTAddrTable[]={
-    (NTADR_A(9, 11)>>8)&0xFF,   // -1 = 4
-    (NTADR_A(15, 11)>>8)&0xFF,  // 0
-    (NTADR_A(21, 11)>>8)&0xFF,  // 1
-    (NTADR_A(12, 17)>>8)&0xFF,  // 2
-    (NTADR_A(18, 17)>>8)&0xFF,  // 3
-    (NTADR_A(9, 11)>>8)&0xFF,   // 4
-    (NTADR_A(15, 11)>>8)&0xFF   // 5 = 0
+const unsigned char hiNTAddrTableTitleScreen[]={
+    MSB(NTADR_A(9, 11)),	// -1 = 4
+    MSB(NTADR_A(15, 11)),	// 0
+    MSB(NTADR_A(21, 11)),	// 1
+    MSB(NTADR_A(12, 17)),	// 2
+    MSB(NTADR_A(18, 17)),	// 3
+    MSB(NTADR_A(9, 11)),	// 4
+    MSB(NTADR_A(15, 11))	// 5 = 0
 };
 
 const unsigned char* const leveltexts[] = {
@@ -219,10 +219,28 @@ void levelselection() {
 }
 
 
+// static const uint8_t loNTAddrTableCustomizeScreen[] = {
+// 	LSB(NTADR_A(13, 8)),		// -1 = 3
+// 	LSB(NTADR_A(4, 14)),		// 0
+// 	LSB(NTADR_A(13, 14)),		// 1
+// 	LSB(NTADR_A(22, 14)),		// 2
+// 	LSB(NTADR_A(13, 8)),		// 3
+// 	LSB(NTADR_A(4, 14))			// 4 = 0
+// }
 
+// static const uint8_t hiNTAddrTableCustomizeScreen[] = {
+// 	MSB(NTADR_A(13, 8)),		// -1 = 3
+// 	MSB(NTADR_A(4, 14)),		// 0
+// 	MSB(NTADR_A(13, 14)),		// 1
+// 	MSB(NTADR_A(22, 14)),		// 2
+// 	MSB(NTADR_A(13, 8)),		// 3
+// 	MSB(NTADR_A(4, 14))			// 4 = 0
+// }
 
-
-
+#include "defines/mainmenu_customize.h"
+static const uint8_t iconTable[] = {
+	0, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x20, ('M'-'a'), 0x24, 0x26, 0x40, 0x42
+};
 
 void customize_screen() {
 	pal_fade_to_withmusic(4,0);
@@ -231,7 +249,6 @@ void customize_screen() {
 	mmc3_set_8kb_chr(MENUICONBANK);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
-	#include "defines/mainmenu_customize.h"
 
 	TOTALCOINS = 0;
 	TOTALCOINSONES = 0;
@@ -269,94 +286,11 @@ void customize_screen() {
 		if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
 		one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
 
-	switch (icon){
-		case 0x00: 
-			one_vram_buffer('a', NTADR_A(15, 8));		
-			one_vram_buffer('b', NTADR_A(16, 8));		
-			one_vram_buffer('c', NTADR_A(15, 9));		
-			one_vram_buffer('d', NTADR_A(16, 9));		
-			break;
-		case 0x01: 
-			one_vram_buffer('a' + 0x02, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x02, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x02, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x02, NTADR_A(16, 9));		
-			break;
-		case 0x02: 
-			one_vram_buffer('a' + 0x04, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x04, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x04, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x04, NTADR_A(16, 9));		
-			break;
-		case 0x03: 
-			one_vram_buffer('a' + 0x06, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x06, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x06, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x06, NTADR_A(16, 9));		
-			break;
-		case 0x04: 
-			one_vram_buffer('a' + 0x08, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x08, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x08, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x08, NTADR_A(16, 9));		
-			break;
-		case 0x05: 
-			one_vram_buffer('a' + 0x0A, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x0A, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x0A, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x0A, NTADR_A(16, 9));		
-			break;
-		case 0x06: 
-			one_vram_buffer('a' + 0x0C, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x0C, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x0C, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x0C, NTADR_A(16, 9));		
-			break;
-		case 0x07: 
-			one_vram_buffer('a' + 0x0E, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x0E, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x0E, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x0E, NTADR_A(16, 9));		
-			break;
-		case 0x08: 
-			one_vram_buffer('a' + 0x20, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x20, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x20, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x20, NTADR_A(16, 9));		
-			break;
-		case 0x09: 
-			one_vram_buffer('M', NTADR_A(15, 8));		
-			one_vram_buffer('N', NTADR_A(16, 8));		
-			one_vram_buffer('O', NTADR_A(15, 9));		
-			one_vram_buffer('P', NTADR_A(16, 9));		
-			break;
-		case 0x0A: 
-			one_vram_buffer('a' + 0x24, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x24, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x24, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x24, NTADR_A(16, 9));		
-			break;
-		case 0x0B: 
-			one_vram_buffer('a' + 0x26, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x26, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x26, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x26, NTADR_A(16, 9));		
-			break;
-		case 0x0C: 
-			one_vram_buffer('a' + 0x40, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x40, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x40, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x40, NTADR_A(16, 9));		
-			break;
-		case 0x0D: 
-			one_vram_buffer('a' + 0x42, NTADR_A(15, 8));		
-			one_vram_buffer('b' + 0x42, NTADR_A(16, 8));		
-			one_vram_buffer('c' + 0x42, NTADR_A(15, 9));		
-			one_vram_buffer('d' + 0x42, NTADR_A(16, 9));		
-			break;
-	}
-
-
+		tmp1 = iconTable[icon];
+		one_vram_buffer('a' + tmp1, NTADR_A(15, 8));		
+		one_vram_buffer('b' + tmp1, NTADR_A(16, 8));		
+		one_vram_buffer('c' + tmp1, NTADR_A(15, 9));		
+		one_vram_buffer('d' + tmp1, NTADR_A(16, 9));		
 
 	if (settingvalue == 0) {
 		one_vram_buffer('h', NTADR_A(4, 14));		
@@ -756,7 +690,7 @@ void state_menu() {
  	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 		tmp4 = menuselection; ++tmp4;
-		tmp5 = loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8);
+		tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
 		one_vram_buffer('a', tmp5);
 		one_vram_buffer('b', addloNOC(tmp5, 1));
 		pad[0] = pad_poll(0); // read the first controller
@@ -783,17 +717,17 @@ void state_menu() {
 				sfx_play(sfx_select, 0);
             }
 
-            if (tmp3) {    // menu selection incremented
-                tmp4 = menuselection; ++tmp4;
-				tmp5 = loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8);
-                one_vram_buffer('a', tmp5);
-                one_vram_buffer('b', addloNOC(tmp5, 1));
+			if (tmp3) {    // menu selection incremented
+				tmp4 = menuselection; ++tmp4;
+				tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
+				one_vram_buffer('a', tmp5);
+				one_vram_buffer('b', addloNOC(tmp5, 1));
 
-                tmp4 += tmp3;   // Get the old index
-				tmp5 = loNTAddrTable[tmp4]|(hiNTAddrTable[tmp4]<<8);
-                one_vram_buffer(' ', tmp5);
-                one_vram_buffer(' ', addloNOC(tmp5, 1));
-            }
+				tmp4 += tmp3;   // Get the old index
+				tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
+				one_vram_buffer(' ', tmp5);
+				one_vram_buffer(' ', addloNOC(tmp5, 1));
+			}
 
 
 
