@@ -85,6 +85,16 @@ extern uint8_t parallax_scroll_column_start;
 #define byte(x) (((x)&0xFF))
 #define word(x) (((x)&0xFFFF))
 
+// redefined from neslib
+
+#define LSB(x)	((byte(x)))
+#define MSB(x)	((byte(x>>8)))
+#define SB3(x)	((byte(x##L>>16)))
+#define SB4(x)	((byte(x##L>>24)))
+
+#define LSW(x)	((word(x)))
+#define MSW(x)	((word((x##L)>>16)))
+
 // add byte with No Overflow Check
 #define addNOC_b(a, b) byte(byte(a)+b)
 // add word with No Overflow Check beyond the 16 bits

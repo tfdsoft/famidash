@@ -261,7 +261,7 @@ single_rle_byte:
 	rts
 
 .export _unrle_next_column
-_unrle_next_column:
+.proc _unrle_next_column
 
 	; Count up to zero to remove a cmp instruction
 	ldx #<-27
@@ -305,24 +305,25 @@ _unrle_next_column:
 
 	@WriteSetup:
 
-	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
-	; roughly twice the size for much more perf. We'll want this function to be fast when we
-	; do practice mode so we can quickly reload to the middle of levels
-	ldx _rld_column
-	.repeat 16, I
-	lda columnBuffer + I
-	sta _collisionMap0 + I * 16, x
-	.endrepeat
-	.repeat 11, I
-	lda columnBuffer+16 + I
-	sta _collisionMap0+$100 + I * 16, x
-	.endrepeat
+		; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
+		; roughly twice the size for much more perf. We'll want this function to be fast when we
+		; do practice mode so we can quickly reload to the middle of levels
+		ldx _rld_column
+		.repeat 16, I
+		lda columnBuffer + I
+		sta _collisionMap0 + I * 16, x
+		.endrepeat
+		.repeat 11, I
+		lda columnBuffer+16 + I
+		sta _collisionMap0+$100 + I * 16, x
+		.endrepeat
 
 	inx
 	txa
 	and #$0F
 	sta _rld_column
 	rts
+.endproc
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 .import _increase_parallax_scroll_column
