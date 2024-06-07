@@ -19,15 +19,15 @@ char bg_coll_L(void){
 		case COL_BOTTOM: if (temp_y & 0x08) return 1;	break;	// If Y pos inside block ≥ 8px
 		case COL_TOP: if (!(temp_y & 0x08)) return 1;	break;	// If Y pos inside block < 8px
 		case COL_ALL:	return 1;		
-		case COL_DEATH_LEFT:	if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1;	break;	// If X pos inside block < 8px, die
-		case COL_DEATH_RIGHT: 	if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;	break;	// If X pos inside block ≥ 10px, die
+		case COL_DEATH_LEFT:	if ((uint8_t)(temp_x & 0x0f) < 0x04) cube_data[currplayer] = 1;	break;	// If X pos inside block < 4px, die
+		case COL_DEATH_RIGHT: 	if ((uint8_t)(temp_x & 0x0f) >= 0x0c) cube_data[currplayer] = 1;	break;	// If X pos inside block ≥ 12px, die
 		case COL_DEATH_TOP:
-			if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-			if (((temp_y & 0x0f) < 0x04)) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
+			if ((uint8_t)(temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+			if ((uint8_t)(temp_y & 0x0f) < 0x04) cube_data[currplayer] = 1;	// If Y pos inside block < 4px, die
 			else return 0;
 		case COL_DEATH_BOTTOM:
-			if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-			if ((temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
+			if ((uint8_t)(temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+			if ((uint8_t)(temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
 			else return 0;
 		
 	};
@@ -44,16 +44,14 @@ char bg_coll_floor_spikes(void){ // used just for checking ground spikes on the 
 	for (tmp8 = mini; tmp8 < 2; tmp8++) {
 		tmp3 = bg_collision_sub();
 		if(tmp3 == COL_DEATH_TOP) {
-			if (!(temp_y & 0x08)) {								// If Y pos inside block < 8px, die
-				tmp2 = temp_x & 0x0f;
-				if (tmp2 < 0x0c) {								// If X pos even insider, die even more
+			if (!(temp_y & 0x08)) {							// If Y pos inside block < 8px, die
+				if ((uint8_t)(temp_x & 0x0f) < 0x0c) {		// If X pos even insider, die even more
 					cube_data[currplayer] = 1;						
 				}
-			}													// else nothing
+			}								// else nothing
 		} else if (tmp3 == COL_DEATH_BOTTOM) {
-			if ((temp_y & 0x08)) {								// If Y pos inside block ≥ 8px, die
-				tmp2 = temp_x & 0x0f;
-				if (tmp2 < 0x0c) {								// If X pos even insider, die even more
+			if ((temp_y & 0x08)) {							// If Y pos inside block ≥ 8px, die
+				if ((uint8_t)(temp_x & 0x0f) < 0x0c) {		// If X pos even insider, die even more
 					cube_data[currplayer] = 1;						
 				}
 			}								// else nothing
@@ -77,15 +75,15 @@ char bg_coll_R(void){
 		case COL_BOTTOM: if (temp_y & 0x08) return 1;	break;	// If Y pos inside block ≥ 8px
 		case COL_TOP: if (!(temp_y & 0x08)) return 1;	break;	// If Y pos inside block < 8px
 		case COL_ALL: return 1;		
-		case COL_DEATH_LEFT: if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1; break;		// If X pos inside block < 8px, die
-		case COL_DEATH_RIGHT: if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;	break;	// If X pos inside block ≥ 10px, die
+		case COL_DEATH_LEFT: if ((uint8_t)(temp_x & 0x0f) < 0x04) cube_data[currplayer] = 1; break;		// If X pos inside block < 4px, die
+		case COL_DEATH_RIGHT: if ((uint8_t)(temp_x & 0x0f) >= 0x0c) cube_data[currplayer] = 1;	break;	// If X pos inside block ≥ 12px, die
 		case COL_DEATH_TOP:
-			if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-			if ((temp_y & 0x0f) < 0x04) cube_data[currplayer] = 1;	// If Y pos inside block < 8px, die
+			if ((uint8_t)(temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+			if ((uint8_t)(temp_y & 0x0f) < 0x04) cube_data[currplayer] = 1;	// If Y pos inside block < 4px, die
 			else return 0;
 		case COL_DEATH_BOTTOM:
-			if ((temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
-			if ((temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
+			if ((uint8_t)(temp_x & 0x0f) < 0x06) return 0;	// If X pos inside block < 6px, collide
+			if ((uint8_t)(temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 12px, die
 			else return 0;
 	};
     
@@ -96,16 +94,13 @@ char bg_coll_R(void){
 char common_checks(void) {
 	switch (tmp3) {
 		case COL_DEATH_LEFT:
-		if ((temp_x & 0x0f) < 0x06) {
+		if ((uint8_t)(temp_x & 0x0f) < 0x06) {
 			tmp2 = temp_y & 0x0f;
 			if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 		}
 		break;
-	
-	
-	
 	case COL_DEATH_RIGHT:
-		if ((temp_x & 0x0f) >= 0x0a) {
+		if ((uint8_t)(temp_x & 0x0f) >= 0x0a) {
 			tmp2 = temp_y & 0x0f;
 			if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 		}
@@ -132,7 +127,7 @@ char bg_coll_U(void){
 		tmp3 = bg_collision_sub();
 		switch (tmp3) {
 		
-			case COL_ALL: return 1;
+		case COL_ALL: return 1;
 			
 		case COL_TOP:
 		case COL_DEATH_TOP:
@@ -141,9 +136,8 @@ char bg_coll_U(void){
 			if (tmp2 < 0x08) {
 				if (tmp3 == COL_DEATH_TOP) {
 					if (tmp2 < 0x04) {
-						tmp2 = temp_x & 0x0f;
-				
-						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+						// if ((temp_x & 0x0f) >= 0x04 && (temp_x & 0x0f) < 0x0c) {
+						if (!((temp_x - 0x04) & 0x08)) {
 							cube_data[currplayer] = 1;
 						}
 					}
@@ -158,9 +152,8 @@ char bg_coll_U(void){
 			if (tmp2 >= 0x08) {
 				if (tmp3 == COL_DEATH_BOTTOM) {
 					if (tmp2 >= 0x0c) {
-						tmp2 = temp_x & 0x0f;
-				
-						if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+						// if ((temp_x & 0x0f) >= 0x04 && (temp_x & 0x0f) < 0x0c) {
+						if (!((temp_x - 0x04) & 0x08)) {
 							cube_data[currplayer] = 1;
 						}
 					}
@@ -198,9 +191,8 @@ char bg_coll_D(void){
 				if (tmp2 < 0x08) {
 					if (tmp3 == COL_DEATH_TOP) {
 						if (tmp2 < 0x04) {
-							tmp2 = temp_x & 0x0f;
-					
-							if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+							// if ((temp_x & 0x0f) >= 0x04 && (temp_x & 0x0f) < 0x0c) {
+							if (!((temp_x - 0x04) & 0x08)) {
 								cube_data[currplayer] = 1;
 							}
 						}
@@ -215,9 +207,8 @@ char bg_coll_D(void){
 					if (tmp3 == COL_DEATH_BOTTOM) {
 						if (tmp2 >= 0x0c) {
 							if (high_byte(currplayer_x) < 0x10) return 0;
-							tmp2 = temp_x & 0x0f;
-					
-							if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+							// if ((temp_x & 0x0f) >= 0x04 && (temp_x & 0x0f) < 0x0c) {
+							if (!((temp_x - 0x04) & 0x08)) {
 								cube_data[currplayer] = 1;
 							}
 						}
