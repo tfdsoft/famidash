@@ -23,10 +23,10 @@ const unsigned char hiNTAddrTable[]={
 };
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, level18text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, NULL, NULL, NULL, NULL, NULL
 };
 const unsigned char* const leveltexts2[] = {
-  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2, level12text2, level13text2, level14text2, level15text2, level16text2, level17text2, level18text2, level19text2, level1Atext2, level1Btext2, level1Ctext2, level1Dtext2, level1Etext2, level1Ftext2, level20text2, level21text2, level22text2, level23text2, level24text2, level25text2, level26text2, level27text2, level28text2, level29text2, level2Atext2, level2Btext2, level2Ctext2, level2Dtext2, level2Etext2, level2Ftext2,
+  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2
 };
 
 const unsigned char level_text_size[] = {
@@ -47,13 +47,6 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	sizeof(level18text) - 1,
 };
 const unsigned char level_text_size2[] = {
     sizeof(level1text2) - 1,
@@ -73,36 +66,6 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelFtext2) - 1,
 	sizeof(level10text2) - 1,
 	sizeof(level11text2) - 1,
-	sizeof(level12text2) - 1,
-	sizeof(level13text2) - 1,
-	sizeof(level14text2) - 1,
-	sizeof(level15text2) - 1,
-	sizeof(level16text2) - 1,
-	sizeof(level17text2) - 1,
-	sizeof(level18text2) - 1,
-	sizeof(level19text2) - 1,
-	sizeof(level1Atext2) - 1,
-	sizeof(level1Btext2) - 1,
-	sizeof(level1Ctext2) - 1,
-	sizeof(level1Dtext2) - 1,
-	sizeof(level1Etext2) - 1,
-	sizeof(level1Ftext2) - 1,
-	sizeof(level20text2) - 1,
-	sizeof(level21text2) - 1,
-	sizeof(level22text2) - 1,
-	sizeof(level23text2) - 1,
-	sizeof(level24text2) - 1,
-	sizeof(level25text2) - 1,
-	sizeof(level26text2) - 1,
-	sizeof(level27text2) - 1,
-	sizeof(level28text2) - 1,
-	sizeof(level29text2) - 1,
-	sizeof(level2Atext2) - 1,
-	sizeof(level2Btext2) - 1,
-	sizeof(level2Ctext2) - 1,
-	sizeof(level2Dtext2) - 1,
-	sizeof(level2Etext2) - 1,
-	sizeof(level2Ftext2) - 1,
 };
 
 const char coin_counter[][3] = {
@@ -210,7 +173,7 @@ void levelselection() {
 		if (twoplayer) one_vram_buffer('d', NTADR_A(31, 2));
 		else one_vram_buffer('e', NTADR_A(31, 2));
 
-		if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
+//		if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
 		if (pad_new[0] & PAD_START){
 			sfx_play(sfx_start_level, 0);
@@ -658,33 +621,36 @@ void settings() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 7));
+		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 7));
 		else one_vram_buffer('f', NTADR_A(26, 7));
 
-		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, 9));
-		else one_vram_buffer('g', NTADR_A(26, 9));
+		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 9));
+		else one_vram_buffer('f', NTADR_A(26, 9));
 
-		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, 11));
+		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, 11));
 		else one_vram_buffer('g', NTADR_A(26, 11));
 
-		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, 13));
-		else one_vram_buffer('f', NTADR_A(26, 13));
+		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, 13));
+		else one_vram_buffer('g', NTADR_A(26, 13));
 
-		if (decorations) one_vram_buffer('g', NTADR_A(26, 15));
+		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, 15));
 		else one_vram_buffer('f', NTADR_A(26, 15));
 
-		if (trails) one_vram_buffer('g', NTADR_A(26, 17));
+		if (decorations) one_vram_buffer('g', NTADR_A(26, 17));
 		else one_vram_buffer('f', NTADR_A(26, 17));
+
+		if (trails) one_vram_buffer('g', NTADR_A(26, 19));
+		else one_vram_buffer('f', NTADR_A(26, 19));
 
 		tmp1 = settingvalue;
 
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 6) { settingvalue = 0; sfx_play(sfx_select, 0); }
+			if (settingvalue == 7) { settingvalue = 0; sfx_play(sfx_select, 0); }
 			else { settingvalue++; sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 6; sfx_play(sfx_select, 0); }
+			if (settingvalue == 0) { settingvalue = 7; sfx_play(sfx_select, 0); }
 			else { settingvalue--; sfx_play(sfx_select, 0);  }
 		}
 
@@ -698,18 +664,20 @@ void settings() {
 		if (pad_new[0] & (PAD_A | PAD_START)) {
 			switch (settingvalue) {
 				case 0: // oneptwoplayer
+					twoplayer ^= 1; break;
+				case 1: // oneptwoplayer
 					options ^= oneptwoplayer; break;
-				case 1: // sfxoff
+				case 2: // sfxoff
 					options ^= sfxoff; break;
-				case 2: // musicoff
+				case 3: // musicoff
 					options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(song_menu_theme); } break;
-				case 3: // jumpsound
+				case 4: // jumpsound
 					options ^= jumpsound; break;
-				case 4:
-					decorations ^= 1; break;
 				case 5:
-					trails ^= 1; break;					
+					decorations ^= 1; break;
 				case 6:
+					trails ^= 1; break;					
+				case 7:
 					if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
 					setdefaultoptions();
 					//	one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
