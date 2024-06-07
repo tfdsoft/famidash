@@ -195,6 +195,78 @@ void state_lvldone() {
 			break;
 		case 3:
 			// Draw the level stat text
+			//achievements
+			TOTALCOINS = 0;
+			TOTALSTARS = 0;
+
+			for (tmp2 = 0; tmp2 < LEVEL_COUNT; tmp2++) {
+				TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+				if (LEVELCOMPLETE[tmp2]) TOTALSTARS += stars_list[tmp2];
+			}
+
+			for (tmp2 = 0; tmp2 <= 10; tmp2++) {
+				if (!achievements[tmp2]) {
+					if (LEVELCOMPLETE[tmp2]) {
+						achievements[tmp2] = 1;
+						switch (tmp2) {
+							case 0:
+							case 1:
+							case 2:
+							case 3:			//display achievements here
+							case 4:
+							case 5:
+							case 6:
+							case 7:
+							case 8:
+							case 9:
+							case 10: break;
+						};
+					}
+				}
+			}
+
+			if (!achievements[11]) {
+				if (TOTALCOINS >= 10) {
+					achievements[11] = 1;
+					//display text here
+				}
+			}
+
+			if (!achievements[12]) {
+				if (TOTALCOINS >= 20) {
+					achievements[13] = 1;
+					//display text here
+				}
+			}
+				
+			
+			if (!achievements[13]) {
+				if (TOTALCOINS >= 30) {
+					achievements[13] = 1;
+					//display text here
+				}
+			}
+				
+			
+			if (!achievements[14]) {
+				
+			}
+			if (!achievements[15]) {
+				
+			}
+			if (!achievements[16]) {
+				
+			}
+			if (!achievements[17]) {
+				
+			}
+			if (!achievements[18]) {
+				
+			}
+			if (!achievements[19]) {
+				
+			}
+
 			current_state = 4;
 
 			break;
