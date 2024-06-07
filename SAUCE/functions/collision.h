@@ -19,18 +19,26 @@ char bg_coll_sides(void) {
 		case COL_ALL: 
 			return 1;		
 		case COL_DEATH_LEFT: 
-			if (((temp_x & 0x0f) < 0x04)) cube_data[currplayer] = 1; 	// If X pos inside block < 8px, die
+			// if ((uint8_t)(temp_x & 0x0f) < 0x04)
+			if (!(temp_x & 0x0C))
+				cube_data[currplayer] = 1;	// If X pos inside block < 4px, die
 			break;														
 		case COL_DEATH_RIGHT: 
-			if (((temp_x & 0x0f) >= 0x0c)) cube_data[currplayer] = 1;	// If X pos inside block ≥ 10px, die
+			if ((uint8_t)(temp_x & 0x0f) >= 0x0c)
+				cube_data[currplayer] = 1;	// If X pos inside block ≥ 12px, die
 			break;	
 		case COL_DEATH_TOP:
-			if ((temp_x & 0x0f) < 0x06) return 0;						// If X pos inside block < 6px, collide
-			if ((temp_y & 0x0f) < 0x04) cube_data[currplayer] = 1;		// If Y pos inside block < 8px, die
+			if ((uint8_t)(temp_x & 0x0f) < 0x06)
+				return 0;					// If X pos inside block < 6px, collide
+			// if ((uint8_t)(temp_y & 0x0f) < 0x04)
+			if (!(temp_y & 0x0C))
+				cube_data[currplayer] = 1;	// If Y pos inside block < 4px, die
 			break;
 		case COL_DEATH_BOTTOM:
-			if ((temp_x & 0x0f) < 0x06) return 0;						// If X pos inside block < 6px, collide
-			if ((temp_y & 0x0f) >= 0x0c) cube_data[currplayer] = 1;		// If Y pos inside block ≥ 8px, die
+			if ((uint8_t)(temp_x & 0x0f) < 0x06)
+				return 0;					// If X pos inside block < 6px, collide
+			if ((uint8_t)(temp_y & 0x0f) >= 0x0c)
+				cube_data[currplayer] = 1;	// If Y pos inside block ≥ 12px, die
 	};
 	return 0;
 }
@@ -101,10 +109,12 @@ char bg_coll_U_D_checks(void) {
 		case COL_TOP:
 		case COL_DEATH_TOP:
 			tmp2 = temp_y & 0x0f;	
-			tmp8 = (temp_y) & 0x07;	 
-			if (tmp2 < 0x08) {
+			tmp8 = tmp2 & 0x07;	 
+			// if (tmp2 < 0x08) {
+			if (tmp8 == tmp2) {
 				if (tmp3 == COL_DEATH_TOP) {
-					if (tmp2 < 0x04) {
+					// if (tmp2 < 0x04) {
+					if (!(tmp2 & 0x0C)) {
 						// if ((temp_x & 0x0f) >= 0x04 && (temp_x & 0x0f) < 0x0c) {
 						if (!((temp_x - 0x04) & 0x08)) {
 							cube_data[currplayer] = 1;
@@ -116,8 +126,9 @@ char bg_coll_U_D_checks(void) {
 		case COL_BOTTOM:
 		case COL_DEATH_BOTTOM:
 			tmp2 = temp_y & 0x0f;
-			tmp8 = (temp_y) & 0x07;	 
-			if (tmp2 >= 0x08) {
+			tmp8 = tmp2 & 0x07;	 
+			// if (tmp2 >= 0x08) {
+			if (tmp8 != tmp2) {
 				if (tmp3 == COL_DEATH_BOTTOM) {
 					if (tmp2 >= 0x0c) {
 						// if ((temp_x & 0x0f) >= 0x04 && (temp_x & 0x0f) < 0x0c) {
@@ -129,13 +140,13 @@ char bg_coll_U_D_checks(void) {
 			}
 			break;
 		case COL_DEATH_LEFT:
-			if ((temp_x & 0x0f) < 0x06) {
+			if ((uint8_t)(temp_x & 0x0f) < 0x06) {
 				tmp2 = temp_y & 0x0f;
 				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			}
 			break;
 		case COL_DEATH_RIGHT:
-			if ((temp_x & 0x0f) >= 0x0a) {
+			if ((uint8_t)(temp_x & 0x0f) >= 0x0a) {
 				tmp2 = temp_y & 0x0f;
 				if (tmp2 >= 0x06 && tmp2 < 0x09) cube_data[currplayer] = 1;
 			}
@@ -158,7 +169,7 @@ char bg_coll_U_D_checks(void) {
 char bg_coll_slope(void) {	
 	switch (tmp3) {
 		case COL_SLOPE_SUPPORT:
-			tmp8 = (temp_y + ((currplayer_gravity) ? -1 : 1));
+			tmp8 = (temp_y + (currplayer_gravity ? -1 : 1));
 			if (!(slope_type & 1)) {
 				tmp8 += (currplayer_gravity ? -8 : 8);
 			}
@@ -167,12 +178,12 @@ char bg_coll_slope(void) {
 			was_on_slope_counter = 2;
 			return 1;
 		case COL_SLOPE_RD:
-			tmp7 = temp_x & 0x0f;
+			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = temp_y & 0x0f;
 
-			tmp7 = (0x0f - tmp7);
-			if (tmp4 >= (tmp7 - 3)) {
-				tmp8 = ((temp_y) & 0x0f) - tmp7;
+			// if (tmp4 >= (tmp7 - 3)) {
+			if ((uint8_t)(tmp4 + 3) >= tmp7) {
+				tmp8 = tmp4 - tmp7;
 				if (pad[controllingplayer] & PAD_A) {
 					slope_frames = 0;
 				} else {
@@ -184,12 +195,12 @@ char bg_coll_slope(void) {
 			} 
 			break;
 		case COL_SLOPE_LD:
-			tmp7 = 0x10 - ((temp_x) & 0x0f);
+			tmp7 = 0x0f - 0x10 + (temp_x & 0x0f);	// = 0x0f - (0x10 - (temp_x & 0x0f))
 			tmp4 = temp_y & 0x0f;
 
-			tmp7 = (0x0f - tmp7);
-			if (tmp4 >= (tmp7 - 3)) {
-				tmp8 = ((temp_y) & 0x0f) - tmp7 - 5;
+			// if (tmp4 >= (tmp7 - 3)) {
+			if ((uint8_t)(tmp4 + 3) >= tmp7) {
+				tmp8 = tmp4 - tmp7 - 5;
 				slope_type = SLOPE_45DEG_DOWN;
 				was_on_slope_counter = 2;
 				return 1;
@@ -249,7 +260,7 @@ char bg_coll_U(void){
 		tmp1 = Generic.y + (mini ? byte(0x10 - Generic.height) >> 1 : 0);
 		
 		storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
-		tmp8 = (temp_y) | 0xf0;	 
+		tmp8 = temp_y | 0xf0;	 
 		
 		
 		for (tmp2 = 0; tmp2 < 2; tmp2++) {
@@ -318,17 +329,19 @@ void bg_coll_death(void) {
 
 	tmp3 = bg_collision_sub();
 	if (tmp3 == COL_DEATH_TOP) {
-		tmp2 = temp_y & 0x0f;	
 		eject_D = (temp_y) & 0x07;
-		if (tmp2 < 0x04) {
+		// tmp2 = temp_y & 0x0f;	
+		// if (tmp2 < 0x04) {
+		if (!(temp_y & 0x0C)) {
 			tmp2 = temp_x & 0x0f;
 			if (tmp2 > 0x06 && tmp2 < 0x0a)
 				cube_data[currplayer] = 1;
 		}
 	} else if (tmp3 == COL_DEATH_BOTTOM) {
-		tmp2 = temp_y & 0x0f;
 		eject_D = (temp_y) & 0x07;
-		if (tmp2 >= 0x0c) {
+		// tmp2 = temp_y & 0x0f;
+		// if (tmp2 >= 0x0c) {
+		if ((temp_y & 0x0C) == 0x0C) {
 			tmp2 = temp_x & 0x0f;
 			if (tmp2 > 0x06 && tmp2 < 0x0a)
 				cube_data[currplayer] = 1;
