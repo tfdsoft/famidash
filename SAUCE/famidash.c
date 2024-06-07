@@ -32,16 +32,6 @@ void main(){
 
     ppu_mask(0x00 | (1 << 1) | (1 << 2));
 
-    // banking for CHR to allocate dierctly
-    /*
-    mmc3_set_2kb_chr_bank_0(0);
-    mmc3_set_2kb_chr_bank_1(2);
-    mmc3_set_1kb_chr_bank_0(4);
-    mmc3_set_1kb_chr_bank_1(5);
-    mmc3_set_1kb_chr_bank_2(6);
-    mmc3_set_1kb_chr_bank_3(7);
-    */
-    
 	mmc3_set_8kb_chr(MENUBANK);
 
     pal_bg(paletteDefault);
@@ -54,13 +44,11 @@ void main(){
 
     // ppu_on_all();
     // pal_fade_to(4,0);
-    gameState = 0x01;
-    level = 0x00;
-  	player_gravity[0] = 0x00;
-	if (twoplayer) player_gravity[1] = 0x00;
-	else player_gravity[1] = 0x01;	
 
-	auto_fs_updates = 0;
+	// These are done at init time
+    // gameState = 0x01;
+    // level = 0x00;
+	// auto_fs_updates = 0;
 
 	// Get it? it spells DASH
 	if (SRAM_VALIDATE[0] != 0x0D
@@ -71,7 +59,6 @@ void main(){
 		setdefaultoptions();
 
 	}
-	menuselection = 0;	
     while (1){
         ppu_wait_nmi();
 

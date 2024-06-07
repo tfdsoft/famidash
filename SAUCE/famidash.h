@@ -242,13 +242,13 @@ uint8_t robotframe[2];
 uint8_t ballframe;
 uint8_t robotjumpframe[2];
 uint8_t robotjumptime[2];
-uint8_t level;
+uint8_t level; // = 0x00;
 uint8_t level_data_bank;
 uint8_t sprite_data_bank;
-uint8_t menuselection;
+uint8_t menuselection; // = 0x00;
 uint8_t settingvalue;
 
-uint8_t gameState;
+uint8_t gameState = 0x01;
 
 uint8_t parallax_scroll_x;
 uint8_t invincible_counter;
@@ -259,7 +259,7 @@ uint8_t song;
 
 uint8_t dashing[2];
 
-uint8_t has_practice_point = 0;
+uint8_t has_practice_point; // = 0;
 uint16_t practice_player_x[2];
 uint16_t practice_player_y[2];
 uint8_t practice_player_gamemode;
@@ -294,7 +294,7 @@ uint8_t activesprites_active[max_loaded_sprites];
 
 
 
-uint8_t DEBUG_MODE = 0;
+uint8_t DEBUG_MODE; // = 0;
 uint8_t lastgcolortype;
 uint8_t lastbgcolortype;
 uint8_t iconbank;

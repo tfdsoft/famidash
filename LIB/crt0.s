@@ -195,16 +195,15 @@ clearRAM:
 
 	jsr initialize_mapper
 
-    jsr	zerobss
-	jsr	copydata
+    ; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
+	jsr	copydata	; Sets all the initial values of variables
 
     lda #<(__C_STACK_START__+__C_STACK_SIZE__) ;changed
     sta	sp
     lda	#>(__C_STACK_START__+__C_STACK_SIZE__)
     sta	sp+1            ; Set argument stack ptr
 
-;	jsr	initlib
-; removed. this called the CONDES function
+	; jsr	initlib	; removed. this called the CONDES function
 
 	lda #%10100000
 	sta <PPU_CTRL_VAR
