@@ -84,10 +84,15 @@ loop:
 	iny
 	EOR xargs+0
 	sta OAM_BUF+2,x
-	inx
-	inx
-	inx
-	inx
+	.if use_illegal_opcodes
+		txa			;	aka X += 4
+		axs #<-4	;__
+	.else
+		inx
+		inx
+		inx
+		inx
+	.endif
 	jmp loop
 
 end:
@@ -319,9 +324,14 @@ single_rle_byte:
 		.endrepeat
 
 	inx
-	txa
-	and #$0F
-	sta _rld_column
+	.if use_illegal_opcodes
+		lda #$0F
+		sax _rld_column
+	.else
+		txa
+		and #$0F
+		sta _rld_column
+	.endif
 	rts
 .endproc
 
@@ -441,7 +451,7 @@ frame1:
 			; Right side write
 			; Call for upper tiles
 			JSR right_tilewriteloop
-			jmp @WriteBottomHalf
+			BMI @WriteBottomHalf	; The loop keeps looping via a BPL, therefore a BMI = BRA
 @LeftWrite:
 			JSR left_tilewriteloop
 @WriteBottomHalf:
@@ -458,7 +468,7 @@ frame1:
 		AND #1
 		beq @LeftWrite2
 			JSR right_tilewriteloop
-			jmp @RenderParallax
+			BMI @RenderParallax	; The loop keeps looping via a BPL, therefore a BMI = BRA
 @LeftWrite2:
 			; Call for lower tiles
 			JSR left_tilewriteloop
@@ -499,10 +509,16 @@ ParallaxExtent = tmp3
 		STA VRAM_BUF+TileEnd,X
 
 		; Declare this section as taken
-		TXA
-		CLC
-		ADC #TileEnd
-		STA VRAM_INDEX
+		.if use_illegal_opcodes
+			; A is already #$FF
+			AXS #<-TileEnd
+			STX VRAM_INDEX
+		.else
+			TXA
+			CLC
+			ADC #TileEnd
+			STA	VRAM_INDEX
+		.endif
 
 		INC scroll_count
 
@@ -524,9 +540,14 @@ NametableAddrHi = tmp1
 		; Decremented rld_column, very useful
 		LDX _rld_column
 		DEX
-		TXA
-		AND #$0F
-		STA ptr3
+		.if use_illegal_opcodes
+			LDA #$0F
+			SAX ptr3
+		.else
+			TXA
+			AND #$0F
+			STA ptr3
+		.endif
 
 		; Get the ptr (I am not bothering with 2 separate loops)
 		LDA #>_collisionMap0
@@ -577,6 +598,7 @@ NametableAddrHi = tmp1
 		
 		; Store address
 		LDX VRAM_INDEX
+		CLC
 		addressLoop:
 			; Low byte
 			STA VRAM_BUF+AttrOff0+1,X
@@ -593,7 +615,7 @@ NametableAddrHi = tmp1
 			INX
 			INX
 
-			CLC
+			; C is cleared by BCC
 			ADC #$08
 			BCC addressLoop
 		
@@ -608,9 +630,14 @@ NametableAddrHi = tmp1
 			LDA columnBuffer-1,Y
 			STA VRAM_BUF-3+2,X
 
-			DEX
-			DEX
-			DEX
+			.if use_illegal_opcodes
+				TXA
+				AXS #3
+			.else
+				DEX
+				DEX
+				DEX
+			.endif
 			DEY
 			BNE dataLoop
 		
@@ -629,8 +656,12 @@ NametableAddrHi = tmp1
 		attributeLoop1:
 			; Read lower right metatile
 			LDY #$11
-			LDA (ptr1),Y
-			tax
+			.if use_illegal_opcodes
+				lax (ptr1),y
+			.else
+				LDA	(ptr1),Y
+				tax
+			.endif
 			; Read lower left metatile
 			dey
 			LDA (ptr1), Y
@@ -644,8 +675,12 @@ NametableAddrHi = tmp1
 
 			; Read upper right metatile
 			LDY #$01
-			LDA (ptr1),Y
-			tax
+			.if use_illegal_opcodes
+				lax (ptr1),y
+			.else
+				LDA	(ptr1),Y
+				tax
+			.endif
 			; Read upper left metatile
 			dey
 			LDA (ptr1), Y
@@ -780,25 +815,25 @@ NametableAddrHi = tmp1
 ; Column striped parallax data definition
 ; add to the tile for the next row, up to 6.
 ParallaxBuffer:
-ParallaxBufferOffset:
-.byte ParallaxBufferCol0 - ParallaxBuffer
-.byte ParallaxBufferCol1 - ParallaxBuffer
-.byte ParallaxBufferCol2 - ParallaxBuffer
-.byte ParallaxBufferCol3 - ParallaxBuffer
-.byte ParallaxBufferCol4 - ParallaxBuffer
-.byte ParallaxBufferCol5 - ParallaxBuffer
-ParallaxBufferCol0:
-.byte $80, $90, $a0, $b0, $86, $96, $a6, $b6, $8c
-ParallaxBufferCol1:
-.byte $81, $91, $a1, $b1, $87, $97, $a7, $b7, $8d
-ParallaxBufferCol2:
-.byte $82, $92, $a2, $b2, $88, $98, $a8, $b8, $8e
-ParallaxBufferCol3:
-.byte $83, $93, $a3, $b3, $89, $99, $a9, $b9, $9c
-ParallaxBufferCol4:
-.byte $84, $94, $a4, $b4, $8a, $9a, $aa, $ba, $9d
-ParallaxBufferCol5:
-.byte $85, $95, $a5, $b5, $8b, $9b, $ab, $bb, $9e
+	ParallaxBufferOffset:
+		.byte ParallaxBufferCol0 - ParallaxBuffer
+		.byte ParallaxBufferCol1 - ParallaxBuffer
+		.byte ParallaxBufferCol2 - ParallaxBuffer
+		.byte ParallaxBufferCol3 - ParallaxBuffer
+		.byte ParallaxBufferCol4 - ParallaxBuffer
+		.byte ParallaxBufferCol5 - ParallaxBuffer
+	ParallaxBufferCol0:
+		.byte $80, $90, $a0, $b0, $86, $96, $a6, $b6, $8c
+	ParallaxBufferCol1:
+		.byte $81, $91, $a1, $b1, $87, $97, $a7, $b7, $8d
+	ParallaxBufferCol2:
+		.byte $82, $92, $a2, $b2, $88, $98, $a8, $b8, $8e
+	ParallaxBufferCol3:
+		.byte $83, $93, $a3, $b3, $89, $99, $a9, $b9, $9c
+	ParallaxBufferCol4:
+		.byte $84, $94, $a4, $b4, $8a, $9a, $aa, $ba, $9d
+	ParallaxBufferCol5:
+		.byte $85, $95, $a5, $b5, $8b, $9b, $ab, $bb, $9e
 
 .endproc
 
@@ -1086,9 +1121,14 @@ SpriteOffset = ptr2
 
     ; Increment the _spr_index and and it with #$0F
     INX
-    TXA
-    AND #$0F
-    STA _spr_index
+	.if use_illegal_opcodes
+		LDA #$0F
+		SAX _spr_index
+	.else
+		TXA
+		AND #$0F
+		STA _spr_index
+	.endif
 
 @Exit:
     pla
