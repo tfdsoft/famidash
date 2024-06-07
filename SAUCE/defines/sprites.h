@@ -2135,7 +2135,7 @@ const unsigned char * const Metasprites[]={
 
 
 // Animation data
-const void* animation_frame_list[] = {
+const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
