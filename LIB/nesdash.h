@@ -173,15 +173,7 @@ extern uint8_t PAL_BUF[32];
 } while(0);
 
 // For more than 16 bits use extra macros and shit
-// Naming convention: crossPRGBankJump<bitsIn>_<bitsOut>
-#define crossPRGBankJump0_0(sym) ( __asm__("lda #<%v \n ldx #>%v \n ldy #<.bank(%v) \n jsr crossPRGBankJump ", sym, sym, sym))
-#define crossPRGBankJump8_0(sym, args) (__A__ = args, __asm__("sta ptr3 "), crossPRGBankJump0_0(sym))
-#define crossPRGBankJump16_0(sym, args) (__AX__ = args, __asm__("sta ptr3 \n stx ptr3+1"), crossPRGBankJump0_0(sym))
-
-#define crossPRGBankJump0_8(sym) (crossPRGBankJump0_0(sym), __asm__("lda ptr3 "), __A__)
-#define crossPRGBankJump8_8(sym, args) (crossPRGBankJump8_0(sym, args), __asm__("lda ptr3 "), __A__)
-#define crossPRGBankJump16_8(sym, args) (crossPRGBankJump16_0(sym, args), __asm__("lda ptr3 "), __A__)
-
-#define crossPRGBankJump0_16(sym) (crossPRGBankJump0_0(sym), __asm__("lda ptr3 \n ldx ptr3+1"), __AX__)
-#define crossPRGBankJump8_16(sym, args) (crossPRGBankJump8_0(sym, args), __asm__("lda ptr3 \n ldx ptr3+1"), __AX__)
-#define crossPRGBankJump16_16(sym, args) (crossPRGBankJump16_0(sym, args), __asm__("lda ptr3 \n ldx ptr3+1"), __AX__)
+// Naming convention: crossPRGBankJump<bitsIn>
+#define crossPRGBankJump0(sym, args) (__asm__("lda #<%v \n ldx #>%v \n ldy #<.bank(%v) \n jsr crossPRGBankJump ", sym, sym, sym), __asm__("lda ptr3 \n ldx ptr3+1"), __AX__)
+#define crossPRGBankJump8(sym, args) (__A__ = args, __asm__("sta ptr3 "), crossPRGBankJump0(sym, args))
+#define crossPRGBankJump16(sym, args) (__AX__ = args, __asm__("sta ptr3 \n stx ptr3+1"),crossPRGBankJump0(sym, args))

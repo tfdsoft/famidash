@@ -101,7 +101,7 @@ void main(){
 
 					has_practice_point = 0;
 
-					#include "./defines/mainmenu_charmap.h"
+					#include "defines/mainmenu_charmap.h"
 					// Enable SRAM write
 					POKE(0xA001, 0x80);
 

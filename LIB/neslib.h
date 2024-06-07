@@ -289,7 +289,8 @@ void __fastcall__ delay(uint8_t frames);
 
 //macro to calculate nametable address from X,Y in compile time
 
-#define NTADR_A(x,y) 	(NAMETABLE_A|(((y)<<5)|(x)))
-#define NTADR_B(x,y) 	(NAMETABLE_B|(((y)<<5)|(x)))
-#define NTADR_C(x,y) 	(NAMETABLE_C|(((y)<<5)|(x)))
-#define NTADR_D(x,y) 	(NAMETABLE_D|(((y)<<5)|(x)))
+#define VRAM_OFF(x,y)	(((y)<<5)|(x))
+#define NTADR_A(x,y) 	(NAMETABLE_A|VRAM_OFF(x,y))
+#define NTADR_B(x,y) 	(NAMETABLE_B|VRAM_OFF(x,y))
+#define NTADR_C(x,y) 	(NAMETABLE_C|VRAM_OFF(x,y))
+#define NTADR_D(x,y) 	(NAMETABLE_D|VRAM_OFF(x,y))
