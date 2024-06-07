@@ -2131,10 +2131,11 @@ drawplayer_common := _drawplayerone::common
 .export _playPCM
 .proc _playPCM
 PCM_ptr = ptr1
-    ; select PCM
+    ; A = Sample
 	tay
+	lda SampleRate, y
     sta tmp1
-	ldx Bank,y
+	ldx Bank, y
 
     ;enable DMC but disable DPCM
     lda #%00000000
@@ -2167,21 +2168,21 @@ PCM_ptr = ptr1
     jsr mmc3_set_prg_bank_0
     inx
 @LoadSample:
-    lda tmp1
-    beq	@noburn
-    jsr BurnCycles
-    jsr BurnCycles
-    jsr BurnCycles
-    jsr BurnCycles
-    jsr BurnCycles
-    jsr BurnCycles
-    jsr BurnCycles
-@noburn:
-    php
-    plp
-    php
-	plp
-	bit PCM_ptr
+    lda tmp1	; 3
+	sec			; 2
+@Delay:
+	sbc #1		;	5n cycles
+	bcs @Delay	;__
+	; 	beq	@noburn	; 2/3
+	; 7x jsr BurnCycles	; 26
+	; @noburn:
+	; 	php			;
+	; 	plp			;
+	; 	php			;	17
+	; 	plp			;
+	; 	bit PCM_ptr	;__
+	;	old code: if smp == 0 - 22 cycles, if not - 204 cycles
+	;	new: 
 	
     lda (PCM_ptr),y
     beq @DoneWithPCM
@@ -2199,16 +2200,20 @@ PCM_ptr = ptr1
     lda #<DMC_BANK
 	jmp mmc3_set_prg_bank_0
 
-BurnCycles:
-    php
-    plp
-    php
-    plp
-    rts
+; BurnCycles:	; 6 for JSR
+;     php	;	7
+;     plp	;__
+;     php	;	7
+;     plp	;__
+;     rts	;	6
 
 Bank:
     .byte <.bank(GeometryDashPCMA)
     .byte <.bank(GeometryDashPCMB)
+
+SampleRate:
+	.byte 3		;(22-5+1)/5-1
+	.byte 39	;(204-5+1)/5-1
 .endproc
 
 .popseg
