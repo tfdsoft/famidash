@@ -90,6 +90,7 @@ uint16_t tmp5;
 uint16_t tmp6;
 uint8_t tmp7;
 uint8_t tmp8;
+uint8_t tmp9;
 uint8_t* tmpptr1;
 uint8_t* tmpptr2;
 uint32_t tmplong;
