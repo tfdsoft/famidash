@@ -1266,22 +1266,18 @@ drawplayer_center_offsets:
 	:               ;__
 	CLC             ;   Actual gamemode itself
 	ADC _gamemode   ;__
-	TAX             ;   Get low byte of table ptr
-
-	LDA _retro_mode
-	beq @regulartable
-		LDA sprite_table_table_lo2, X
-		STA ptr1        ;__
-		LDA sprite_table_table_hi2, X
-		STA ptr1+1      ;__ Get high byte of table ptr
-		jmp @donetable    
-	
-	@regulartable:
-		LDA sprite_table_table_lo, X
-		STA ptr1        ;__
-		LDA sprite_table_table_hi, X
-		STA ptr1+1      ;__ Get high byte of table ptr
-	@donetable:
+	PHA
+	LDX _retro_mode
+	BEQ :+
+		ADC #gamemode_count*2	; ain't no way the last one overflowed
+	:
+	TAX
+	LDA sprite_table_table_lo, X
+	STA ptr1		;__	Get low byte of table ptr
+	LDA sprite_table_table_hi, X
+	STA ptr1+1		;__ Get high byte of table ptr
+	PLA				;	Get pure gamemode number
+	TAX				;__
 
 	LDY _player_x+1     ;__ temp_x = high_byte(player_x[0]);
 	; The condition if is temp_x == 0 or is > 0xfc,
@@ -1650,12 +1646,12 @@ drawplayer_center_offsets:
     sprite_table_table_lo:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE, <_SWING
         .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING
-    sprite_table_table_hi:
-        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER, >_WAVE, >_SWING
-        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING
     sprite_table_table_lo2:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT_ALT, <_SPIDER, <_WAVE, <_SWING
         .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING
+    sprite_table_table_hi:
+        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER, >_WAVE, >_SWING
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING
     sprite_table_table_hi2:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER, >_WAVE, >_SWING
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING
@@ -1684,25 +1680,18 @@ drawplayer_common := _drawplayerone::common
 	:               ;__
 	CLC             ;   Actual gamemode itself
 	ADC _gamemode   ;__
-	TAX             ;   Get low byte of table ptr
-
-
-
-	LDA _retro_mode
-	beq @regulartable
-		LDA sprite_table_table_lo2, X
-		STA ptr1        ;__
-		LDA sprite_table_table_hi2, X
-		STA ptr1+1      ;__ Get high byte of table ptr
-		jmp @donetable    
-	
-	@regulartable:
-		LDA sprite_table_table_lo, X
-		STA ptr1        ;__
-		LDA sprite_table_table_hi, X
-		STA ptr1+1      ;__ Get high byte of table ptr
-	@donetable:
-
+	PHA
+	LDX _retro_mode
+	BEQ :+
+		ADC #gamemode_count*2	; ain't no way the last one overflowed
+	:
+	TAX
+	LDA sprite_table_table_lo, X
+	STA ptr1		;__	Get low byte of table ptr
+	LDA sprite_table_table_hi, X
+	STA ptr1+1		;__ Get high byte of table ptr
+	PLA				;	Get pure gamemode number
+	TAX				;__
 
 	LDY _player_x+3     ;__ temp_x = high_byte(player_x[1]);
 	; The condition if is temp_x == 0 or is > 0xfc,
@@ -2034,12 +2023,12 @@ drawplayer_common := _drawplayerone::common
 	sprite_table_table_lo:
 		.byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT2, <_SPIDER2, <_WAVE2, <_SWING2
 		.byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2
-	sprite_table_table_hi:
-		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2, >_WAVE2, >_SWING2
-		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2
     sprite_table_table_lo2:
         .byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT_ALT, <_SPIDER,2 <_WAVE2, <_SWING2
         .byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2
+	sprite_table_table_hi:
+		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2, >_WAVE2, >_SWING2
+		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2
     sprite_table_table_hi2:
         .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT, >_SPIDER2, >_WAVE2, >_SWING2
         .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2
