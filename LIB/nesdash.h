@@ -119,6 +119,13 @@ extern uint8_t parallax_scroll_column_start;
 #define idx16_lo_NOC(arr, idx) (__A__ = idx<<1, __asm__("tay\n lda %v, y", arr), __A__)
 #define idx16_hi_NOC(arr, idx) (__A__ = idx<<1, __asm__("tay\n lda %v+1, y", arr), __A__)
 
+#define uint8_load(arr, idx) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__asm__("ldx #0 \n lda %v, y", arr), \
+	__A__ \
+)
+
 #define uint8_dec(arr, idx) ( \
 	__AX__ = idx << 8, \
 	__asm__("dec %v,x", arr), \

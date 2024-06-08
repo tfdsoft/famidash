@@ -72,9 +72,9 @@ void draw_sprites(void){
 			if (temp_y < 0xf0) {
 			needs_reload = 0;
 			spr_type = activesprites_type[index];
-			animation_ptr = (unsigned char * const)animation_frame_list[spr_type];
+			animation_ptr = (const unsigned char * const)animation_frame_list[spr_type & 0x7F];
 			// If this sprite has animations, then this pointer will not be null
-			if (animation_ptr) {
+			if (high_byte(animation_ptr)) {
 				// Reduce the frame counter by one to see if we need to move to the next frame
 				// If this frame has expired, then move to the next animation frame
 				animation_frame_count = uint8_dec(activesprites_anim_frame_count, index);
@@ -101,7 +101,7 @@ void draw_sprites(void){
 				// And finally, load the pointer for this animation
 				animation_data_ptr = (unsigned char*)high_word(tmplong);
 			} else {
-				animation_data_ptr =  (unsigned char*)Metasprites[spr_type];
+				animation_data_ptr =  (unsigned char*)Metasprites[spr_type & 0x7F];
 			}
 			oam_meta_spr(temp_x, temp_y, animation_data_ptr);
 			}

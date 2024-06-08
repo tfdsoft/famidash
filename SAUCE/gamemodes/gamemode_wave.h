@@ -26,7 +26,7 @@ void wave_movement(void){
 
 		currplayer_y += currplayer_vel_y;
 	}	
-	else player_vel_y[currplayer] = 1;
+	else currplayer_vel_y = 1;
 	
 	
 

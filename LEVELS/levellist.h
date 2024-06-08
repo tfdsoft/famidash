@@ -41,13 +41,22 @@
 #define BLOCKSC 8
 #define SAWBLADESA 10
 
-const unsigned char difficulty_pal[] ={
-	0x21, 0x06, // easy
-    0x2A, 0x30, // normal
-    0x28, 0x30, // hard
-	0x16, 0x30, // harder
-    0x24, 0x06, // insane
-    0x16, 0x30 // demon
+const uint8_t difficulty_pal_A[] ={
+	0x21,	// easy
+	0x2A,	// normal
+	0x28,	// hard
+	0x16,	// harder
+	0x24,	// insane
+	0x16,	// demon
+};
+
+const uint8_t difficulty_pal_B[] ={
+	0x06,	// easy
+	0x30,	// normal
+	0x30,	// hard
+	0x30,	// harder
+	0x06,	// insane
+	0x30,	// demon
 };
 
 const unsigned short songtime[] = {	//for looping in practice mode

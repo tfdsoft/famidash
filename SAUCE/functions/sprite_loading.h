@@ -184,7 +184,7 @@ char sprite_height_lookup(){
 */
 
     if ((type >= 0xB0) && (type <= 0xBF)) {
-		    outline_color = OUTLINES[0xB0 - type];
+		    outline_color = uint8_load(OUTLINES, type & 0x0F);
 		    activesprites_type[index] = 0xFF; 
 		    return 0x00;
     }
@@ -349,9 +349,9 @@ static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
     __asm__("asl");
     __asm__("tay");
     if (mini) {
-        __AX__ = (asm ("lda %v,y", mini_heights),asm ("ldx %v+1,y", mini_heights),__AX__);
+        __AX__ = (__asm__ ("lda %v,y", mini_heights), __asm__ ("ldx %v+1,y", mini_heights),__AX__);
     } else {
-        __AX__ = (asm ("lda %v,y", heights),asm ("ldx %v+1,y", heights),__AX__);
+        __AX__ = (__asm__ ("lda %v,y", heights),__asm__ ("ldx %v+1,y", heights),__AX__);
     }
     // Use y here for the conditional, otherwise the compiler overwrites A
     __asm__("ldy %v", currplayer_gravity), __asm__("bne %g", jumpNoGravityAdjust);

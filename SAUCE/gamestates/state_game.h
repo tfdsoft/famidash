@@ -110,7 +110,8 @@ void state_game(){
 
 	if ((options & platformer) && !has_practice_point) {
 		songtimer++;
-		if (songtimer > songtime[song] ) { songtimer = 0; music_play(song); }
+		// DANGER ALERT
+		if ( songtimer > songtime[song & 0x7F] ) { songtimer = 0; music_play(song); }
 
 	}		    
 

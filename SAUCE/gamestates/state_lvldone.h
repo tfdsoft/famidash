@@ -200,7 +200,14 @@ void state_lvldone() {
 			TOTALSTARS = 0;
 
 			for (tmp2 = 0; tmp2 < LEVEL_COUNT; tmp2++) {
-				TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+				// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+				__A__ = tmp2; __asm__("tay");
+				__A__ = TOTALCOINS;
+				__asm__("clc \n adc %v, y", coin1_obtained);
+				__asm__("clc \n adc %v, y", coin2_obtained);
+				__asm__("clc \n adc %v, y", coin3_obtained);
+				TOTALCOINS = __A__;
+				
 				if (LEVELCOMPLETE[tmp2]) TOTALSTARS += stars_list[tmp2];
 			}
 

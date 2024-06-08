@@ -97,11 +97,11 @@ void __fastcall__ refreshmenu(void) {
 	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9));
 
 	{	// write the difficulty
-		tmp1 = (difficulty_list[level] << 1);
-		pal_col(0x0a, difficulty_pal[tmp1]);
-		pal_col(0x0b, difficulty_pal[++tmp1]);
+		tmp1 = difficulty_list[level];
+		pal_col(0x0a, difficulty_pal_A[tmp1]);
+		pal_col(0x0b, difficulty_pal_B[tmp1]);
 		
-		tmp1 = (difficulty_list[level] << 1) + 'a';
+		tmp1 = (tmp1 << 1) + 'a';
 		one_vram_buffer(tmp1, NTADR_A(7, 10));
 		one_vram_buffer(++tmp1, NTADR_A(8, 10));
 		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(7, 11));
@@ -281,7 +281,13 @@ void customize_screen() {
 	TOTALSTARSTENS = 0;
 
 	for (tmp2 = 0; tmp2 < LEVEL_COUNT; tmp2++) {
-		TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+		// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+		__A__ = tmp2; __asm__("tay");
+		__A__ = TOTALCOINS;
+		__asm__("clc \n adc %v, y", coin1_obtained);
+		__asm__("clc \n adc %v, y", coin2_obtained);
+		__asm__("clc \n adc %v, y", coin3_obtained);
+		TOTALCOINS = __A__;
 		if (LEVELCOMPLETE[tmp2]) TOTALSTARSONES += stars_list[tmp2];
 	}
 	TOTALCOINSONES = TOTALCOINS;
