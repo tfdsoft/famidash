@@ -91,6 +91,8 @@ uint8_t __fastcall__ ppu_system();
 
 void __fastcall__ oam_clear();
 
+void __fastcall__ oam_clear_player();
+
 
 //set sprite display mode, 0 for 8x8 sprites, 1 for 8x16 sprites
 
