@@ -15,7 +15,7 @@
 	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
 	.export _pal_bright,_pal_spr_bright,_pal_bg_bright
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
-	.export _oam_clear,_oam_size,__oam_spr,__oam_meta_spr,_oam_hide_rest
+	.export _oam_clear,_oam_clear_player,_oam_size,__oam_spr,__oam_meta_spr,_oam_hide_rest
 	.export _ppu_wait_frame,_ppu_wait_nmi
 	.export __scroll,_split
 	.export _bank_spr,_bank_bg
@@ -355,7 +355,15 @@ _oam_clear:
 .endrepeat
 	rts
 	
-	
+;void __fastcall__ oam_clear_player();
+
+_oam_clear_player:
+	ldx #0
+	stx SPRID ; automatically sets sprid to zero
+	dex
+	stx OAM_BUF+0
+	stx OAM_BUF+4
+	rts
 ;void __fastcall__ oam_set(uint8_t index);	
 ;to manually set the position
 ;a = sprid

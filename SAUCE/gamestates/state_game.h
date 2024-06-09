@@ -400,9 +400,6 @@ void state_game(){
 			player_gravity[0] = currplayer_gravity;
 		}
 
-		if (!DEBUG_MODE) {
-			if (cube_data[0] == 1) reset_level();
-		}
 		
 		if (dual) { 
 			currplayer = 1;					//take focus
@@ -472,7 +469,7 @@ void state_game(){
         
         if (DEBUG_MODE) gray_line();
 		if (!DEBUG_MODE) {
-			if (cube_data[1] == 1) reset_level();
+			if (cube_data[0] == 1 || cube_data[1] == 1) reset_level();
 		}
         if (gameState != 0x02) return;
     }

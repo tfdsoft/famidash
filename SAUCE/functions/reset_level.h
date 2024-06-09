@@ -12,12 +12,14 @@ void reset_level(void) {
 		sfx_play(sfx_death, 0);
 		while (tmp1 < 30){
 			ppu_wait_nmi();
-			music_update();
-			oam_clear();	
-			if (!retro_mode) oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, Explode_Sprites[robotjumpframe[0]]);
-			else oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, ExplodeR_Sprites[robotjumpframe[0]]);
+			oam_clear_player();
+			
+			if (robotjumpframe[0] < 20) {
+				if (!retro_mode) oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, Explode_Sprites[robotjumpframe[0]]);
+				else oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, ExplodeR_Sprites[robotjumpframe[0]]);
+				++robotjumpframe[0];
+			}
 			++tmp1;
-			if (robotjumpframe[0] < 20) ++robotjumpframe[0];
         }
     }
     else if (!DEBUG_MODE && (cube_data[1] & 1)) {
@@ -25,14 +27,16 @@ void reset_level(void) {
 		while (tmp1 < 30){
 			ppu_wait_nmi();
 			music_update();
-			oam_clear();	
-			if (!retro_mode) oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, Explode_Sprites2[robotjumpframe[0]]);
-			else oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, ExplodeR_Sprites2[robotjumpframe[0]]);
+			oam_clear_player();	
+			if (robotjumpframe[0] < 20) {
+				if (!retro_mode) oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, Explode_Sprites2[robotjumpframe[0]]);
+				else oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, ExplodeR_Sprites2[robotjumpframe[0]]);
+				
+				++robotjumpframe[0];
+			}
 			++tmp1;
-			if (robotjumpframe[0] < 20) ++robotjumpframe[0];
 		}
     }
-
     attempts++;
     if (!no_parallax) mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));    
     pal_fade_to_withmusic(4,0);
