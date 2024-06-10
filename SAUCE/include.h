@@ -43,7 +43,7 @@
 
 
 
-#pragma rodata-name (push, "RODATA_2")
+#pragma rodata-name (push, "RODATA")
 #include "LEVELS/levellist.h"    // level order goes here
 #pragma rodata-name (pop)
 
