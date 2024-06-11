@@ -138,6 +138,7 @@ void __fastcall__ color_emphasis(uint8_t color);
 #define COL_EMP_RED 0x20
 #define COL_EMP_NORMAL 0x00
 #define COL_EMP_DARK 0xe0
+#define COL_EMP_GREY 0x01
 
 
 void __fastcall__ _xy_split(uint32_t args);

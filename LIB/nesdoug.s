@@ -695,7 +695,7 @@ MT_MULT5:
 ;void __fastcall__ color_emphasis(uint8_t color);	
 _color_emphasis:
 	;a = bits 1110 0000
-	and #$e0 ;sanitize
+	and #$e1 ;sanitize
 	sta TEMP
 	lda <PPU_MASK_VAR
 	and #$1f

@@ -635,6 +635,8 @@ void state_menu() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
+		if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) color_emphasis(COL_EMP_GREY);
+
 		tmp3 = 0;
 		
 		if (pad_new[0] & PAD_RIGHT) {
@@ -662,6 +664,7 @@ void state_menu() {
 			one_vram_buffer(' ', addloNOC(tmp5, 1));
 		}
 	}		
+
 	tmp7 = rand8() & 255;
 	switch (menuselection) {
 		case 0x00: kandowatchesyousleep = 1; if(!tmp7) __A__ = 1; else __A__ = 0; crossPRGBankJump8(playPCM, __A__); levelselection(); return;
