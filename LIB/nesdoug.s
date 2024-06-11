@@ -291,7 +291,15 @@ __add_scroll_y:
 	rts
 	
 	
-	
+;uint16_t __fastcall__ sub_scroll_y_ext(uint16_t sub, uint16_t scroll);
+__sub_scroll_y_ext:
+	; sreg[0] = sub lo, sreg[1] = sub high
+	; XA = scroll
+	sec
+	sbc sreg+1
+	sta sreg+1
+	txa
+	ldx sreg+1
 	
 ;uint16_t __fastcall__ sub_scroll_y(uint8_t sub, uint16_t scroll);
 __sub_scroll_y:
@@ -302,7 +310,7 @@ __sub_scroll_y:
 	lda #$00
 @ok:
 	sec
-	sbc sreg
+	sbc sreg+0
 	bcc @adjust
 	rts
 	
