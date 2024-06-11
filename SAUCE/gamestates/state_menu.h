@@ -322,12 +322,19 @@ void customize_screen() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		tmp1 = iconTable[icon] + 'a';
-		one_vram_buffer(tmp1, NTADR_A(15, 8));		
-		one_vram_buffer(++tmp1, NTADR_A(16, 8));		
-		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(15, 9));		
-		one_vram_buffer(++tmp1, NTADR_A(16, 9));		
-
+		if (!retro_mode) {
+			tmp1 = iconTable[icon] + 'a';
+			one_vram_buffer(tmp1, NTADR_A(15, 8));		
+			one_vram_buffer(++tmp1, NTADR_A(16, 8));		
+			one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(15, 9));		
+			one_vram_buffer(++tmp1, NTADR_A(16, 9));		
+		}
+		else {
+			one_vram_buffer('a'+0x6A, NTADR_A(15,8));			
+			one_vram_buffer('b'+0x6A, NTADR_A(16,8));			
+			one_vram_buffer('c'+0x6A, NTADR_A(15,9));			
+			one_vram_buffer('d'+0x6A, NTADR_A(16,9));			
+		}
 		if (settingvalue == 3) {
 			if (pad_new[0] & PAD_UP) {
 				icon++;
