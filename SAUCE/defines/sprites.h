@@ -133,7 +133,7 @@ const unsigned char Trail_Circ[]={
 	0x80
 };
 
-const unsigned char * const Trail_Circle[] = {Trail_Circ};
+// const unsigned char * const Trail_Circle[] = {Trail_Circ};
 
 const unsigned char Mini_Cube_0[]={
 

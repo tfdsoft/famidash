@@ -128,21 +128,27 @@ void draw_sprites(void){
 	if (trails || gamemode == 6) {
 		tmp6 = currplayer_vel_x << 1;
 		tmp5 = player_x[0] - tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[1] - high_byte(scroll_y), Trail_Circle[0]);
+		// todo: 
+		// have a variable storing the old scroll y
+		// find the difference using sub_scroll_y_ext
+		// add that difference to the old_posy every frame
+		// profit motherfuckers
+
+		oam_meta_spr(high_byte(tmp5), player_old_posy[1], Trail_Circ);
 		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[2] - high_byte(scroll_y), Trail_Circle[0]);
+		oam_meta_spr(high_byte(tmp5), player_old_posy[2], Trail_Circ);
 		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[3] - high_byte(scroll_y), Trail_Circle[0]);
+		oam_meta_spr(high_byte(tmp5), player_old_posy[3], Trail_Circ);
 		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[4] - high_byte(scroll_y), Trail_Circle[0]);
+		oam_meta_spr(high_byte(tmp5), player_old_posy[4], Trail_Circ);
 		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[5] - high_byte(scroll_y), Trail_Circle[0]);
+		oam_meta_spr(high_byte(tmp5), player_old_posy[5], Trail_Circ);
 		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[6] - high_byte(scroll_y), Trail_Circle[0]);
+		oam_meta_spr(high_byte(tmp5), player_old_posy[6], Trail_Circ);
 		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[7] - high_byte(scroll_y), Trail_Circle[0]);
+		oam_meta_spr(high_byte(tmp5), player_old_posy[7], Trail_Circ);
 		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[8] - high_byte(scroll_y), Trail_Circle[0]);
+		oam_meta_spr(high_byte(tmp5), player_old_posy[8], Trail_Circ);
 	}
 #undef spr_type
 #undef animation_ptr
