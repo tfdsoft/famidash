@@ -655,7 +655,7 @@ void state_menu() {
 			one_vram_buffer(' ', addloNOC(tmp5, 1));
 		}
 	}		
-	tmp7 = rand8() & 127;
+	tmp7 = rand8() & 256;
 	switch (menuselection) {
 		case 0x00: kandowatchesyousleep = 1; if(!tmp7) __A__ = 1; else __A__ = 0; crossPRGBankJump8(playPCM, __A__); levelselection(); return;
 		case 0x01: funsettings(); return;
