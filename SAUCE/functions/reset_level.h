@@ -12,6 +12,7 @@ void reset_level(void) {
 		sfx_play(sfx_death, 0);
 		while (tmp1 < 30){
 			ppu_wait_nmi();
+			music_update();
 			oam_clear_player();
 			
 			if (robotjumpframe[0] < 20) {
