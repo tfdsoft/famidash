@@ -38,7 +38,7 @@ const unsigned char * const Explode_Sprites[] = {Explode_1,Explode_1,Explode_1,E
 
 const unsigned char ExplodeR_1[]={
 
-	  0,  0,0x1D,3,
+	  0,  0,0x1F,3|OAM_FLIP_H,
 	  8,  0,0x1F,3,
 	0x80
 };
