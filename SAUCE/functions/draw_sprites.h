@@ -38,6 +38,23 @@ void draw_sprites(void){
 		// else if (long_temp_x < 10) {}
 	}
 
+	if (jimsheatballalive[0]) {
+			oam_meta_spr(jimsheatballx[0], jimsheatbally[0], Heat_Ball_Sprites[jimsheatballframe[0]]);		
+			jimsheatballframe[0]++;
+			if (jimsheatballframe[0] == 20) jimsheatballframe[0] = 0;
+			jimsheatballx[0]++;
+			if (jimsheatballx[0] == 0xFF) jimsheatballalive[0] = 0;
+	}
+
+	if (jimsheatballalive[1]) {
+			oam_meta_spr(jimsheatballx[1], jimsheatbally[1], Heat_Ball_Sprites[jimsheatballframe[1]]);		
+			jimsheatballframe[1]++;
+			if (jimsheatballframe[1] == 20) jimsheatballframe[1] = 0;
+			jimsheatballx[1]++;
+			if (jimsheatballx[1] == 0xFF) jimsheatballalive[1] = 0;
+		
+	}
+
 	// The flickering motherfucker, by jrowe
 	shuffle_offset += 11;
 	if (shuffle_offset >= max_loaded_sprites) {

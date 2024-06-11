@@ -65,6 +65,8 @@ void reset_level(void) {
 
     outline_color = 0x30;
 
+    jimsheatballalive[0] = 0;
+    jimsheatballalive[1] = 0;
 
     player_gravity[0] = 0x00;
     player_gravity[1] = twoplayer ? 0x00 : 0x01;

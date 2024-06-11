@@ -193,6 +193,10 @@ uint8_t decorations;
 
 uint8_t retro_mode;
 uint8_t achievements[20];
+
+//uint8_t greyscale_mode;
+
+
 //uint8_t practice_famistudio_state[0xbf];
 uint8_t collisionMap0[240];   // collision map, for a 16*27 tile area
 uint8_t collisionMap1[192];
@@ -299,6 +303,11 @@ uint8_t lastgcolortype;
 uint8_t lastbgcolortype;
 uint8_t iconbank;
 uint8_t kandowavewalk;
+
+uint8_t jimsheatballalive[2]; //jims heatball shit
+uint8_t jimsheatballx[2]; //jims heatball shit
+uint8_t jimsheatbally[2];
+uint8_t jimsheatballframe[2];
 
 uint8_t player_old_posy[8];
 uint8_t discorefreshrate;

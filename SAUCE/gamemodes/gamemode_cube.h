@@ -132,6 +132,26 @@ void cube_movement(void){
 	else if (gamemode == 4 && currplayer_vel_y != 0){		
 			robotjumpframe[0] = 3;
 	}
+	
+//jim's shit
+	if (retro_mode) {
+		if (pad_new[currplayer] & PAD_B && !has_practice_point) {
+			if (!jimsheatballalive[0]) {
+				jimsheatballalive[0] = 1;
+				jimsheatballx[0] = high_byte(old_x);
+				jimsheatbally[0] = high_byte(player_y[0]);
+				jimsheatballframe[0] = 0;
+			}
+			else if (!jimsheatballalive[1]) {
+				jimsheatballalive[1] = 1;
+				jimsheatballx[1] = high_byte(old_x);
+				jimsheatbally[1] = high_byte(player_y[0]);
+				jimsheatballframe[1] = 0;
+			}
+
+		}
+	}
+// done with jims shit	
 }	
 
 #pragma code-name(pop)

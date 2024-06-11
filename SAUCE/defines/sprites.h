@@ -1,4 +1,33 @@
 // a 16x16 pixel metasprite
+const unsigned char Heat_Ball_1[]={
+
+	  0,  0,0x1D,3,
+	0x80
+};
+
+const unsigned char Heat_Ball_2[]={
+
+	  0,  0,0x1D,3|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Heat_Ball_3[]={
+
+	  0,  8,0x1D,3|OAM_FLIP_V,
+	0x80
+};
+
+const unsigned char Heat_Ball_4[]={
+
+	  0,  8,0x1D,3|OAM_FLIP_V|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char * const Heat_Ball_Sprites[] = {Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4};
+
+
+
+
 const unsigned char Explode_1[]={
 
 	  0,  0,0x1D,3,
@@ -43,6 +72,8 @@ const unsigned char ExplodeR_1[]={
 	0x80
 };
 const unsigned char * const ExplodeR_Sprites[] = {ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1,ExplodeR_1};
+
+
 const unsigned char Explode2_1[]={
 
 	  0,  0,0x1D,1,
