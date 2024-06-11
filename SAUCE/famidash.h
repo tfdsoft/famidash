@@ -309,7 +309,7 @@ uint8_t jimsheatballx[2]; //jims heatball shit
 uint8_t jimsheatbally[2];
 uint8_t jimsheatballframe[2];
 
-uint8_t player_old_posy[8];
+uint8_t player_old_posy[9];
 uint8_t discorefreshrate;
 uint8_t no_parallax;
 uint8_t outline_color;
