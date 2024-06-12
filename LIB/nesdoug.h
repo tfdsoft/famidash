@@ -71,7 +71,7 @@ uint16_t __fastcall__ _add_scroll_y(uint32_t args);
 uint16_t __fastcall__ _sub_scroll_y(uint32_t args);
 uint16_t __fastcall__ _sub_scroll_y_ext(uint32_t args);
 #define sub_scroll_y(sub, scroll) (storeByteToSreg(sub), __AX__ = scroll, _sub_scroll_y(__EAX__))
-#define sub_scroll_y_ext(sub, scroll) (storeWordToSreg(sub), __AX__ = scroll, _sub_scroll_y_ext(__EAX__))
+#define sub_scroll_y_ext(sub, scroll) (storeWordToSreg(sub), __A__ = LSB(scroll), __AX__<<=8, __AX__ |= MSB(scroll), _sub_scroll_y_ext(__EAX__))
 // subtract a value from y scroll, keep the low byte in the 0-0xef range
 // returns y scroll, which will have to be passed to set_scroll_y
 
@@ -92,13 +92,13 @@ uint16_t __fastcall__ _get_at_addr(uint32_t args);
 // nesdoug.com
 
 
-void __fastcall__ set_data_pointer(const void * data);
+// void __fastcall__ set_data_pointer(const void * data);
 // for the metatile system, pass it the addresses of the room data
 // room data should be exactly 240 bytes (16x15)
 // each byte represents a 16x16 px block of the screen
 
 
-void __fastcall__ set_mt_pointer(const void * metatiles);
+// void __fastcall__ set_mt_pointer(const void * metatiles);
 // for the metatile system, pass it the addresses of the metatile data
 // a metatile is a 16x16 px block
 // metatiles is variable length, 5 bytes per metatile...
@@ -114,7 +114,7 @@ void __fastcall__ set_mt_pointer(const void * metatiles);
 // "metatile" should be 0-50, like the metatile data
 
 
-void __fastcall__ buffer_4_mt(uintptr_t ppu_address, uint8_t index);
+// void __fastcall__ buffer_4_mt(uintptr_t ppu_address, uint8_t index);
 // will push 4 metatiles (2x2 box) and 1 attribute byte to the vram_buffer
 // this affects a 32x32 px area of the screen, and pushes 17 bytes to the vram_buffer.
 // make sure to set_vram_buffer(), and clear_vram_buffer(), 

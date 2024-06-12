@@ -4,7 +4,8 @@
 .export _set_vram_buffer, __multi_vram_buffer, __one_vram_buffer
 .export _get_pad_new, _get_frame_count
 .export __check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y
-.export  __get_ppu_addr, _get_at_addr, _set_data_pointer, _set_mt_pointer, _buffer_4_mt
+.export  __get_ppu_addr, _get_at_addr
+; .export _set_data_pointer, _set_mt_pointer, _buffer_1_mt, _buffer_4_mt
 .export _color_emphasis, __xy_split, _gray_line, _seed_rng
 .export _clear_vram_buffer
 
@@ -383,26 +384,26 @@ _get_at_addr:
 	
 	
 
-;void __fastcall__ set_data_pointer(const void * data);
-_set_data_pointer:
-	sta DATA_PTR
-	stx DATA_PTR+1
-	rts
+; ;void __fastcall__ set_data_pointer(const void * data);
+; _set_data_pointer:
+; 	sta DATA_PTR
+; 	stx DATA_PTR+1
+; 	rts
 
 	
 	
 	
-;void __fastcall__ set_mt_pointer(const void * metatiles);	
-_set_mt_pointer:
-	sta META_PTR
-	stx META_PTR+1
-	rts
+; ;void __fastcall__ set_mt_pointer(const void * metatiles);	
+; _set_mt_pointer:
+; 	sta META_PTR
+; 	stx META_PTR+1
+; 	rts
 	
 	
 	
 	
 ;void __fastcall__ buffer_4_mt(uint16_t ppu_address, uint8_t index);
-_buffer_4_mt:
+; _buffer_4_mt:
 ; 	;a is the index into the data, get 4 metatiles
 
 ; 	and #$ee ;sanitize, x and y should be even
@@ -659,35 +660,35 @@ _buffer_4_mt:
 ;	
 ;	
 	
-MT_MULT5:
-;multiply metatile value (8 bit) by 5
-;and add to pointer (16 bit)
-;mt var should be in META_VAR and in A register
-;x is forbidden
+; MT_MULT5:
+; ;multiply metatile value (8 bit) by 5
+; ;and add to pointer (16 bit)
+; ;mt var should be in META_VAR and in A register
+; ;x is forbidden
 
-	ldy #0
-	sty META_PTR2+1 ;zero the high byte
-	asl a ;x2
-	rol META_PTR2+1
-	asl a ;x4
-	rol META_PTR2+1
-	clc
-	adc META_VAR
-	bcc @1
-	inc META_PTR2+1
-@1:
-	clc
-	adc META_PTR
-	bcc @2
-	inc META_PTR2+1
-@2:
-	sta META_PTR2 ;set low byte
-	lda META_PTR2+1
-	clc
-	adc META_PTR+1 
-	sta META_PTR2+1 ;set high byte
-	ldy #0
-	rts
+; 	ldy #0
+; 	sty META_PTR2+1 ;zero the high byte
+; 	asl a ;x2
+; 	rol META_PTR2+1
+; 	asl a ;x4
+; 	rol META_PTR2+1
+; 	clc
+; 	adc META_VAR
+; 	bcc @1
+; 	inc META_PTR2+1
+; @1:
+; 	clc
+; 	adc META_PTR
+; 	bcc @2
+; 	inc META_PTR2+1
+; @2:
+; 	sta META_PTR2 ;set low byte
+; 	lda META_PTR2+1
+; 	clc
+; 	adc META_PTR+1 
+; 	sta META_PTR2+1 ;set high byte
+; 	ldy #0
+; 	rts
 	
 	
 	
