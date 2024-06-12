@@ -3249,6 +3249,7 @@ sprite_data_theoryofeverything:
 .segment "SPR_BANK_02"
 sprite_data_test:
   .byte $f0,$00,$70,$01,$18
+  .byte $f0,$00,$80,$01,$14
   .byte $00,$02,$50,$01,$80
   .byte $80,$02,$50,$01,$81
   .byte $00,$03,$50,$01,$82
