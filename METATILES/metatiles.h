@@ -1,3 +1,13 @@
+
+#define COL_TOP_RIGHT_BOTTOM_LEFT 0x27
+#define COL_TOP_LEFT_BOTTOM_RIGHT 0x26
+#define COL_RIGHT 0x25
+#define COL_LEFT 0x24
+#define COL_DOWN_RIGHT 0x23
+#define COL_DOWN_LEFT 0x22
+#define COL_UP_RIGHT 0x21
+#define COL_UP_LEFT 0x20
+
 #define COL_SLOPE_LD 0x0c
 #define COL_SLOPE_RD 0x0b
 
