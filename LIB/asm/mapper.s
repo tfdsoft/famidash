@@ -4,7 +4,7 @@
 .define MMC3_REG_BANK_SELECT $8000
 .define MMC3_REG_BANK_DATA $8001
 MMC3_REG_MIRRORING = $a000
-.define MMC3_REG_PRG_RAM_PROTECT $a001
+MMC3_REG_PRG_RAM_PROTECT = $a001
 .define MMC3_REG_IRQ_LATCH $c000
 .define MMC3_REG_IRQ_RELOAD $c001
 .define MMC3_REG_IRQ_DISABLE $e000
@@ -126,8 +126,8 @@ MMC3_REG_MIRRORING = $a000
         lda #(MMC3_REG_SEL_CHR_MODE_B | MMC3_REG_SEL_PRG2_8000)
         sta mmc3ChrInversionSetting
 
-        lda #%10000000
-        sta MMC3_REG_PRG_RAM_PROTECT
+		; lda #%10000000
+		; sta MMC3_REG_PRG_RAM_PROTECT
 
         lda #<DMC_BANK          ; Sample bank
         jsr mmc3_set_prg_bank_0

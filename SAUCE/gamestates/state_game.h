@@ -54,6 +54,7 @@ void state_game(){
     pal_bg(paletteDefault);
     pal_spr(paletteDefaultSP);
 
+	mmc3_set_prg_bank_1(GET_BANK(load_ground));
     load_ground(0);
 
 //	mmc3_set_8kb_chr(0);

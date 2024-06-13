@@ -12,8 +12,11 @@ sprite_data = _sprite_data
 
 .define gamemode_count 8
 
-; 1 makes some code slightly faster, 0 makes it work on famiclones
-.define use_illegal_opcodes 1
+.ifndef USE_ILLEGAL_OPCODES
+.define USE_ILLEGAL_OPCODES 0
+.endif
+
+.define use_illegal_opcodes ::USE_ILLEGAL_OPCODES
 
 .segment "ZEROPAGE"
 	rld_value:      .res 1
@@ -21,9 +24,10 @@ sprite_data = _sprite_data
 
 .segment "BSS"
 	; column buffer, to be pushed to the collision map
-	; 16 metatiles in the top screen 
-	; 11 metatiles in the bot screen
-	columnBuffer:		.res 16 + 11
+	; 15 metatiles in the top screen 
+	; 12 metatiles in the bot screen
+	; 3 metatiles in the ground
+	columnBuffer:		.res 15 + 12 + 3
 
 	current_song_bank:	.res 1
 	scroll_count:		.res 1
@@ -314,12 +318,16 @@ single_rle_byte:
 		; do practice mode so we can quickly reload to the middle of levels
 		ldx _rld_column
 		.repeat 15, I
-		lda columnBuffer + I
-		sta collMap0 + I * 16, x
+			lda columnBuffer + I
+			sta collMap0 + I * 16, x
 		.endrepeat
 		.repeat 12, I
-		lda columnBuffer+15 + I
-		sta collMap1 + I * 16, x
+			lda columnBuffer+15 + I
+			sta collMap1 + I * 16, x
+		.endrepeat
+		.repeat 3, I
+			lda ground + I * 16, x
+			sta columnBuffer+15+12+I
 		.endrepeat
 
 	inx
@@ -341,14 +349,14 @@ single_rle_byte:
 .proc _draw_screen_R
 
 	TileSizeHi  = (15*2)+2+1
-	TileSizeLo  = (12*2)+2+1
+	TileSizeLo  = (15*2)+2+1
 
 	TileOff0    = 0
 	TileOff1    = 0+TileSizeHi
 	TileEnd     = 0+TileSizeHi+TileSizeLo
 
 	AttrSizeHi  = 8*3
-	AttrSizeLo  = 6*3
+	AttrSizeLo  = 8*3
 
 	AttrOff0    = 0
 	AttrOff1    = 0+AttrSizeHi
@@ -432,7 +440,6 @@ frame1:
 		; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
 		LDA #(15*2)
 		STA VRAM_BUF+TileOff0+2,X
-		LDA #(12*2)
 		STA VRAM_BUF+TileOff1+2,X
 
 		; The sequence itself:
@@ -455,13 +462,18 @@ frame1:
 			JSR left_tilewriteloop
 @WriteBottomHalf:
 		; Load new max
-		LDA #12 - 1
+		LDA #15 - 1
 		STA LoopCount
 		; Add offset to X
-		TXA
-		CLC
-		ADC #(TileSizeHi-(15*2))
-		TAX
+		.if use_illegal_opcodes
+			TXA
+			AXS #<-(TileSizeHi-(15*2))
+		.else
+			TXA
+			CLC
+			ADC #(TileSizeHi-(15*2))
+			TAX
+		.endif
 		
 		LDA scroll_count
 		AND #1
@@ -561,13 +573,10 @@ NametableAddrHi = tmp1
 		STX ptr2+1
 		JSR attributeSetup
 
-		; Last byte has no bottom tiles
-		LDA columnBuffer+7
-		AND #$0F
-		STA columnBuffer+7
+		INC ptr1+1
 
 		; Update new maximum
-		LDA #8+6 - 1
+		LDA #8 - 1
 		JSR attributeSetup
 
 		; Get address hi byte (either left or right side)
@@ -606,7 +615,7 @@ NametableAddrHi = tmp1
 			ADC #$08
 			BCC addressLoop
 		
-		LDY #14
+		LDY #16
 
 		LDA VRAM_INDEX
 		ADC #AttrEnd-1  ; Carry is set by the ADC : BCC
@@ -629,7 +638,7 @@ NametableAddrHi = tmp1
 			BNE dataLoop
 		
 		; Finish off the routine
-		; X has VRAM_INDEX, mark this block as taken
+		; X has the original VRAM_INDEX, mark this block as taken
 		LDA #$FF
 		STA VRAM_BUF+AttrEnd,X
 		; Reset frame counter
@@ -691,9 +700,9 @@ NametableAddrHi = tmp1
 			; is valid
 			ADC #$20
 			STA ptr1
-			BCC :+
-				INC ptr1+1
-			:
+			; BCC :+
+			; 	INC ptr1+1
+			; :
 
 			INC ptr2+1
 			DEC LoopCount
@@ -823,6 +832,64 @@ ParallaxBuffer:
 		.byte $85, $95, $a5, $b5, $8b, $9b, $ab, $bb, $9e
 
 .endproc
+
+.pushseg
+.segment "LVL_BANK_00"
+
+.import _ground
+.export _load_ground
+.proc _load_ground
+	;A = ground num
+	ASL						;
+	TAX						;
+	LDA	#$00				;
+	TAY						;	ptr1 = ground[id]
+	JSR	mmc3_set_prg_bank_1	;	mmc3_set_prg_bank_1(0)
+	LDA _ground, X			;	Y = 0
+	STA ptr1				;
+	LDA _ground+1, X		;
+	STA ptr1+1				;__
+	LDX #<-48				;__	X = idx @ collmap data, count up to 0
+
+	ground_ptr = ground-($100-48)
+
+	; there's a max of 48 bytes of data to fill, 
+	; the rle worst case is 96 bytes long,
+	; therefore not needing to check for an overflow
+
+	loop:
+		LDA (ptr1),y		;
+		bmi single_rle_byte	;	Run
+		STA tmp1			;
+		iny					;__
+
+		LDA (ptr1),y		;	Value
+		iny					;__
+
+		STY tmp2
+		LDY tmp1
+	mult_loop:
+		STA ground_ptr, X
+		INX
+		BEQ fin
+		DEY
+		BPL mult_loop
+		LDY tmp2
+		BNE loop	; Physically cannot be not 0
+
+	single_rle_byte:
+		AND #$7F
+		STA ground_ptr, X
+		INY
+		INX
+		BNE loop
+
+	fin:
+		RTS
+
+.endproc
+
+.popseg
 
 .export __draw_padded_text
 ; void __fastcall__ draw_padded_text(const void * data, uint8_t len, uint8_t total_len, uintptr_t ppu_address)
@@ -2074,20 +2141,12 @@ drawplayer_common := _drawplayerone::common
 .importzp _temp_x, _temp_y, _temp_room, _collision
 .export _bg_collision_sub
 .proc _bg_collision_sub
-    ; C code:
-        ; if(temp_y >= 0xf0) return 0;
-        ; coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
-        ; // we just need 4 bits each from x and y
-        ; tmp3 = temp_room&1; //high byte
-        ; if (tmp3 && coordinates >= 0xc0) return COL_ALL;
-        ; if (tmp3 == 0)
-        ;     collision = collisionMap0[coordinates];
-        ; else
-        ;     collision = collisionMap1[coordinates];
-        ; return is_solid[collision];
+    ; Returns collision block indexed by
+	; temp_x for X
+	; temp_room and y for Y
     LDA _temp_y     ;
     CMP #$F0        ;   if(temp_y >= 0xf0) return 0;
-    BCS Return0	;__
+    BCS Return0		;__
     AND #$F0        ;	temp_y & 0xF0
     STA tmp1        ;__
 	LDA _temp_x		;
@@ -2096,32 +2155,27 @@ drawplayer_common := _drawplayerone::common
 	LSR				;
 	LSR				;__
 	ORA tmp1		;	coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
-	TAX				;__
+	TAY				;__
 
 	LDA _temp_room	;	tmp3 = temp_room&1;
 	AND #$01		;__
-	BNE Room1		;__
-	LDA collMap0,X
-	JMP BothRooms
+	ORA #>collMap0
+	STA ptr1+1
+	LDA #$00
+	STA ptr1
 
-	Room1:
-	; "tmp3" is 1, check for coordinates >= $C0
-	CPX #$C0			;	if (tmp3 && coordinates >= 0xc0) return COL_ALL;
-	BCS ReturnColAll	;__
-	LDA collMap1,X
-	BothRooms:
-	TAX				;__
+	.if use_illegal_opcodes
+		LAX (ptr1),Y
+	.else
+		LDA (ptr1),Y
+		TAX
+	.endif
 	LDA metatiles_coll,X	;	return is_solid[collision];
 	STA _collision	;
 	RTS				;__
 
 	Return0:
 	LDA #$00
-	sta _collision
-	RTS
-
-	ReturnColAll:
-	LDA #$09       ; return COL_FLOOR_CEIL
 	sta _collision
 	RTS
 
