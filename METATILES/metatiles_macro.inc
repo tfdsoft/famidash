@@ -2,8 +2,8 @@
 .ifndef __METATILE_P_INC
 __METATILE_P_INC = 1
 
-.ifndef PRINT_METATILES
-.define PRINT_METATILES 0
+.ifndef _PRINT_METATILES
+.define _PRINT_METATILES 0
 .endif
 
 .global metatiles_top_left
@@ -61,7 +61,7 @@ METATILES_COUNT .set METATILES_COUNT + 1
 .ident(.sprintf("METATILE_%d_AT", (METATILES_COUNT))) = (<at)
 .ident(.sprintf("METATILE_%d_CL", (METATILES_COUNT))) = (<cl)
 
-.if PRINT_METATILES
+.if _PRINT_METATILES
 	.out .sprintf("METATILE_%s = $%02x", name, METATILES_COUNT)
 .endif
 MetatileReserve .sprintf("%s", name)
