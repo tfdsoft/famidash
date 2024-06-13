@@ -6,7 +6,7 @@
 .export _metatiles_bot_left := metatiles_bot_left
 .export _metatiles_bot_right := metatiles_bot_right
 .export _metatiles_attr := metatiles_attr
-.export _is_solid := metatiles_coll
+.export _metatiles_coll := metatiles_coll
 
 metatiles_top_left:
 .repeat METATILES_COUNT, I

@@ -10,8 +10,11 @@ def convertCFileToS(filename : str, outfilename : str):
 		if len(split) == 0:
 			outfile.write("\n")
 		elif split[0] == "#define":
-			split[0] = ".define"
-			outfile.write(" ".join(split) + "\n")
+			if len(split) >= 3 and (" ".join(split[2:])).isnumeric():
+				outfile.write(f"{split[1]} = " + " ".join(split[2:]) + "\n")
+			else:
+				split[0] = ".define"
+				outfile.write(" ".join(split) + "\n")
 		elif split[0].startswith("//"):
 			split[0] = ";" + split[0][2:]
 			outfile.write(" ".join(split) + "\n")
