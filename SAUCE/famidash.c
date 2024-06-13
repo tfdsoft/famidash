@@ -156,6 +156,7 @@ void setdefaultoptions() {
 		discomode = 0;
 		icon = 0;
 		trails = 0;
+		retro_mode = 0;
 		decorations = 1;
 		for (tmp2 = 0; tmp2 < 20; tmp2++) {
 			achievements[tmp2] = 0;
