@@ -115,7 +115,7 @@ void state_game(){
 
 	}		    
 
-	if (trails || gamemode == 6) {
+	if (trails || forced_trails || gamemode == 6) {
 		if (!(kandoframecnt & 0x01)) {
 			player_old_posy[8] = player_old_posy[7];
 			player_old_posy[7] = player_old_posy[6];

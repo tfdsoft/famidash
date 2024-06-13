@@ -125,7 +125,7 @@ void draw_sprites(void){
 		}
 		
 	}
-	if (trails || gamemode == 6) {
+	if (forced_trails || trails || gamemode == 6) {
 		tmp6 = currplayer_vel_x << 1;
 		tmp5 = player_x[0] - tmp6;
 		// todo: 

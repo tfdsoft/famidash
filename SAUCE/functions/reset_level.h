@@ -86,6 +86,7 @@ void reset_level(void) {
     cube_data[1] = 0;
     cube_rotate[0] = 0;
     cube_rotate[1] = 0;
+    forced_trails = 0;
 	for (tmp2 = 0; tmp2 < 8; tmp2++) {
 		player_old_posy[tmp2] = 0;
 	}

@@ -81,6 +81,9 @@
 #define BIG_SPIKE_TOP				0x4D
 #define SMALL_SPIKE_TOP				0x4E
 
+
+#define FORCED_TRAILS_ON			0xF0
+#define FORCED_TRAILS_OFF			0xF1
 #define S_BLOCK					0xF9
 #define D_BLOCK					0xFA
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
@@ -227,9 +230,17 @@ char sprite_height_lookup(){
     switch(type) {
         case NOSPRITE:
             return 0;
-		case SMALL_SPIKE_BOTTOM:
-		case SMALL_SPIKE_TOP:
-	    	return 0x07;
+	case SMALL_SPIKE_BOTTOM:
+	case SMALL_SPIKE_TOP:
+	    return 0x07;
+	case FORCED_TRAILS_ON:
+	    forced_trails = 1;
+	    activesprites_type[index] = 0xFF;
+	    return 0x00;
+	case FORCED_TRAILS_OFF:
+	    forced_trails = 0;
+	    activesprites_type[index] = 0xFF;
+	    return 0x00;
         case GRAVITY_PAD_DOWN_INVISIBLE:
         case GRAVITY_PAD_UP_INVISIBLE:
             return 0x07;
