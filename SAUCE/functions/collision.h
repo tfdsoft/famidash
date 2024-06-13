@@ -152,7 +152,7 @@ char bg_coll_R() {
     // check 2 points on the right side
 	temp_x = Generic.x + low_word(scroll_x) + Generic.width + (platformer ? 3 : 0); // automatically only the low byte
 
-	tmp1 = Generic.y + (Generic.height >> 1) + (mini ? (currplayer_gravity ? 3 : -3) : 0);
+	tmp1 = Generic.y + (Generic.height >> 1) + ((mini && !(gamemode == BALL_MODE)) ? (currplayer_gravity ? 3 : -3) : 0);
 
 	if (slope_frames > 0) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
 		tmp1 -= 8;
