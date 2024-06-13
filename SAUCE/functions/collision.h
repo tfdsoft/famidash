@@ -55,7 +55,7 @@ char bg_coll_sides() {
 	tmp8
 */
 void bg_coll_floor_spikes() { // used just for checking ground spikes on the floor
-	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1); // automatically only the low byte
 
 	__A__ = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 4);
 	storeWordSeparately(add_scroll_y(__A__, scroll_y), temp_y, temp_room);
@@ -152,7 +152,7 @@ char bg_coll_R() {
     // check 2 points on the right side
 	temp_x = Generic.x + low_word(scroll_x) + Generic.width + (platformer ? 3 : 0); // automatically only the low byte
 
-	tmp1 = Generic.y + (byte(0x10 - Generic.height) >> 1) + (mini ? (currplayer_gravity ? 3 : -3) : (Generic.height >> 1));
+	tmp1 = Generic.y + (Generic.height >> 1) + (mini ? (currplayer_gravity ? 3 : -3) : 0);
 
 	if (slope_frames > 0) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
 		tmp1 -= 8;
@@ -384,10 +384,9 @@ char bg_coll_U() {
 		__A__ = Generic.y + (mini ? byte(0x10 - Generic.height) >> 1 : 0);
 		
 		storeWordSeparately(add_scroll_y(__A__, scroll_y), temp_y, temp_room);
-		tmp8 = temp_y | 0xf0;	 
-		
 		
 		for (tmp4 = 0; tmp4 < 3; tmp4++) {
+			tmp8 = (temp_y) & 0x0f;
 			bg_collision_sub();
 			
 			// Clobbers 1, 2, 8
@@ -430,9 +429,9 @@ char bg_coll_D() {
 		__A__ = Generic.y + Generic.height + (mini ? byte(0x10 - Generic.height) >> 1 : 0);
 
 		storeWordSeparately(add_scroll_y(__A__, scroll_y), temp_y, temp_room);
-		tmp8 = (temp_y) & 0x0f;
 
 		for (tmp4 = 0; tmp4 < 3; tmp4++) {
+			tmp8 = (temp_y) & 0x0f;
 			bg_collision_sub();
 			
 			// Clobbers 1, 2, 8
