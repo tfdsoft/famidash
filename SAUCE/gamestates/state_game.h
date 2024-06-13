@@ -74,7 +74,7 @@ void state_game(){
 	pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 	pal_col(0x0B,color1);   //palette 2 set to player color
 
-	for (tmp2 = 0; tmp2 < 8; tmp2++) {
+	for (tmp2 = 0; tmp2 < 9; tmp2++) {
 		player_old_posy[tmp2] = 0;
 	}
 	if (!discomode) {
@@ -118,15 +118,18 @@ void state_game(){
 
 	if (trails || forced_trails || gamemode == 6) {
 		if (!(kandoframecnt & 0x01)) {
-			player_old_posy[8] = player_old_posy[7];
-			player_old_posy[7] = player_old_posy[6];
-			player_old_posy[6] = player_old_posy[5];
-			player_old_posy[5] = player_old_posy[4];
-			player_old_posy[4] = player_old_posy[3];
-			player_old_posy[3] = player_old_posy[2];
-			player_old_posy[2] = player_old_posy[1];
-			player_old_posy[1] = player_old_posy[0];
-			player_old_posy[0] = high_byte(player_y[0]);
+			
+			sub_scroll_y_ext(tmp6, old_scroll_y);
+			player_old_posy[8] = player_old_posy[7] + high_byte(tmp6);
+			player_old_posy[7] = player_old_posy[6] + high_byte(tmp6);
+			player_old_posy[6] = player_old_posy[5] + high_byte(tmp6);
+			player_old_posy[5] = player_old_posy[4] + high_byte(tmp6);
+			player_old_posy[4] = player_old_posy[3] + high_byte(tmp6);
+			player_old_posy[3] = player_old_posy[2] + high_byte(tmp6);
+			player_old_posy[2] = player_old_posy[1] + high_byte(tmp6);
+			player_old_posy[1] = player_old_posy[0] + high_byte(tmp6);
+			player_old_posy[0] = high_byte(player_y[0]) + high_byte(tmp6);
+			
 		}
 	}
 	    if (discomode && !(kandoframecnt & discorefreshrate)) {

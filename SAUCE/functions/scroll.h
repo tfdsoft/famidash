@@ -4,7 +4,7 @@
 
 
 void do_the_scroll_thing(){
-    
+    old_scroll_y = scroll_y;
 	if (currplayer_x > 0x5000){ // change x scroll
 		tmp1 = MSB(currplayer_x - 0x5000);
 		scroll_x += tmp1;

@@ -3,7 +3,7 @@
 
 .export _set_vram_buffer, __multi_vram_buffer, __one_vram_buffer
 .export _get_pad_new, _get_frame_count
-.export __check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y
+.export __check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y, __sub_scroll_y_ext
 .export  __get_ppu_addr, _get_at_addr
 ; .export _set_data_pointer, _set_mt_pointer, _buffer_1_mt, _buffer_4_mt
 .export _color_emphasis, __xy_split, _gray_line, _seed_rng
