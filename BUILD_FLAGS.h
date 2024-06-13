@@ -17,4 +17,4 @@
 #define FLAG_MIN_VER '5'
 
 // set to 1 to enable metatile printing
-#define PRINT_METATILES 1
+// #define PRINT_METATILES 1
