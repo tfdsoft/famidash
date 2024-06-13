@@ -15,3 +15,6 @@
 
 // minor version number !!DOES NOT WORK IF FLAG_BETA_BUILD IS SET!!
 #define FLAG_MIN_VER '5'
+
+// set to 1 to enable metatile printing
+#define PRINT_METATILES 1

@@ -3,6 +3,7 @@
 
 ;REMOVED initlib
 ;this called the CONDES function
+.include "BUILD_FLAGS.s"
 
 .exportzp _VRAM_UPDATE := VRAM_UPDATE
 
@@ -23,9 +24,8 @@ VRAM_BUF=__VRAM_BUF_START__
 OAM_BUF=__OAM_BUF_START__
 PAL_BUF=__PAL_BUF_START__
 
-	.importzp _PAD_STATE, _PAD_STATET ;added
-    .include "zeropage.inc"
-
+.importzp _PAD_STATE, _PAD_STATET ;added
+.include "zeropage.inc"
 
 
 

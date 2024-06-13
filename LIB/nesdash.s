@@ -2111,7 +2111,7 @@ drawplayer_common := _drawplayerone::common
 	LDA collMap1,X
 	BothRooms:
 	TAX				;__
-	LDA _is_solid,X	;	return is_solid[collision];
+	LDA metatiles_coll,X	;	return is_solid[collision];
 	STA _collision	;
 	RTS				;__
 
