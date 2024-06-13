@@ -9,7 +9,7 @@
 
     .export _exit,__STARTUP__:absolute=1
 	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
-	.import push0,popa,popax,_main,zerobss,copydata
+	.import push0,popa,popax,_main,copydata
 
 ; Linker generated symbols
 	.import __C_STACK_START__, __C_STACK_SIZE__
@@ -121,8 +121,8 @@ xargs:				.res 4
 
 start:
 _exit:
-    jsr initialize_mapper
-
+	lda #%10000000					;	Stolen from initialize_mapper
+	sta MMC3_REG_PRG_RAM_PROTECT	;__
     lda $00
     sta $7FFE
     lda $01
@@ -193,6 +193,8 @@ clearRAM:
 	jsr _pal_bright
 	jsr _pal_clear
 	jsr _oam_clear
+
+	jsr initialize_mapper
 
     ; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
 	jsr	copydata	; Sets all the initial values of variables
@@ -310,7 +312,8 @@ GeometryDashPCMB:
 .segment "COLLMAP0"
 	collMap0:		.res 16*15
 .segment "COLLMAP1"
-	collMap1:		.res 16*15
+	collMap1:		.res 16*12
+	ground:			.res 16*3
 
 .segment "VECTORS"
 
