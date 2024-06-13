@@ -12,11 +12,11 @@ sprite_data = _sprite_data
 
 .define gamemode_count 8
 
-.ifndef USE_ILLEGAL_OPCODES
-.define USE_ILLEGAL_OPCODES 0
+.ifndef _USE_ILLEGAL_OPCODES
+.define _USE_ILLEGAL_OPCODES 0
 .endif
 
-.define use_illegal_opcodes ::USE_ILLEGAL_OPCODES
+.define USE_ILLEGAL_OPCODES ::_USE_ILLEGAL_OPCODES
 
 .segment "ZEROPAGE"
 	rld_value:      .res 1
@@ -88,7 +88,7 @@ loop:
 	iny
 	EOR xargs+0
 	sta OAM_BUF+2,x
-	.if use_illegal_opcodes
+	.if USE_ILLEGAL_OPCODES
 		txa			;	aka X += 4
 		axs #<-4	;__
 	.else
@@ -331,7 +331,7 @@ single_rle_byte:
 		.endrepeat
 
 	inx
-	.if use_illegal_opcodes
+	.if USE_ILLEGAL_OPCODES
 		lda #$0F
 		sax _rld_column
 	.else
@@ -465,7 +465,7 @@ frame1:
 		LDA #15 - 1
 		STA LoopCount
 		; Add offset to X
-		.if use_illegal_opcodes
+		.if USE_ILLEGAL_OPCODES
 			TXA
 			AXS #<-(TileSizeHi-(15*2))
 		.else
@@ -520,7 +520,7 @@ ParallaxExtent = tmp3
 		STA VRAM_BUF+TileEnd,X
 
 		; Declare this section as taken
-		.if use_illegal_opcodes
+		.if USE_ILLEGAL_OPCODES
 			; A is already #$FF
 			AXS #<-TileEnd
 			STX VRAM_INDEX
@@ -551,7 +551,7 @@ NametableAddrHi = tmp1
 		; Decremented rld_column, very useful
 		LDX _rld_column
 		DEX
-		.if use_illegal_opcodes
+		.if USE_ILLEGAL_OPCODES
 			LDA #$0F
 			SAX ptr3
 		.else
@@ -626,7 +626,7 @@ NametableAddrHi = tmp1
 			LDA columnBuffer-1,Y
 			STA VRAM_BUF-3+2,X
 
-			.if use_illegal_opcodes
+			.if USE_ILLEGAL_OPCODES
 				TXA
 				AXS #3
 			.else
@@ -652,7 +652,7 @@ NametableAddrHi = tmp1
 		attributeLoop1:
 			; Read lower right metatile
 			LDY #$11
-			.if use_illegal_opcodes
+			.if USE_ILLEGAL_OPCODES
 				lax (ptr1),y
 			.else
 				LDA	(ptr1),Y
@@ -671,7 +671,7 @@ NametableAddrHi = tmp1
 
 			; Read upper right metatile
 			LDY #$01
-			.if use_illegal_opcodes
+			.if USE_ILLEGAL_OPCODES
 				lax (ptr1),y
 			.else
 				LDA	(ptr1),Y
@@ -1175,7 +1175,7 @@ SpriteOffset = ptr2
 
     ; Increment the _spr_index and and it with #$0F
     INX
-	.if use_illegal_opcodes
+	.if USE_ILLEGAL_OPCODES
 		LDA #$0F
 		SAX _spr_index
 	.else
@@ -1419,7 +1419,7 @@ drawplayer_center_offsets:
 		BNE @no_round		    ;__
         @round:	    
 			STA	_cube_rotate+0	;__ low_byte = 0
-			.if use_illegal_opcodes
+			.if USE_ILLEGAL_OPCODES
 				LAX _cube_rotate+1	;	LAX abs is apparently stable
 			.else
 				LDA _cube_rotate+1
@@ -1835,7 +1835,7 @@ drawplayer_common := _drawplayerone::common
 		ORA _player_vel_y+2		;
 		BNE @no_round			;__
 			STA	_cube_rotate+2	;__ low_byte = 0
-			.if use_illegal_opcodes
+			.if USE_ILLEGAL_OPCODES
 				LAX _cube_rotate+3	;	LAX abs is apparently stable
 			.else
 				LDA _cube_rotate+3	;
@@ -2164,7 +2164,7 @@ drawplayer_common := _drawplayerone::common
 	LDA #$00
 	STA ptr1
 
-	.if use_illegal_opcodes
+	.if USE_ILLEGAL_OPCODES
 		LAX (ptr1),Y
 	.else
 		LDA (ptr1),Y
