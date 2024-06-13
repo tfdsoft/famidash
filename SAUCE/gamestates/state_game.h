@@ -118,18 +118,19 @@ void state_game(){
 
 	if (trails || forced_trails || gamemode == 6) {
 		if (!(kandoframecnt & 0x01)) {
-			
-			sub_scroll_y_ext(tmp6, old_scroll_y);
-			player_old_posy[8] = player_old_posy[7] + high_byte(tmp6);
-			player_old_posy[7] = player_old_posy[6] + high_byte(tmp6);
-			player_old_posy[6] = player_old_posy[5] + high_byte(tmp6);
-			player_old_posy[5] = player_old_posy[4] + high_byte(tmp6);
-			player_old_posy[4] = player_old_posy[3] + high_byte(tmp6);
-			player_old_posy[3] = player_old_posy[2] + high_byte(tmp6);
-			player_old_posy[2] = player_old_posy[1] + high_byte(tmp6);
-			player_old_posy[1] = player_old_posy[0] + high_byte(tmp6);
-			player_old_posy[0] = high_byte(player_y[0]) + high_byte(tmp6);
-			
+			if (old_scroll_y >= scroll_y) {
+				tmp6 = sub_scroll_y_ext(scroll_y, old_scroll_y);
+			} else {
+				tmp6 = sub_scroll_y_ext(old_scroll_y, scroll_y);
+				tmp6 ^= 0xFFFF; tmp6++;
+			}
+			for (tmp3 = 7; !(tmp3 & 0x80); tmp3--) {
+				tmp5 = player_old_posy[tmp3] + tmp6;
+				if (high_byte(tmp5) != 0) low_byte(tmp5) = 0;
+				(&player_old_posy[1])[tmp3] = tmp5;
+			}
+			player_old_posy[0] = high_byte(player_y[0]);
+		    old_scroll_y = scroll_y;
 		}
 	}
 	    if (discomode && !(kandoframecnt & discorefreshrate)) {
