@@ -198,8 +198,6 @@ uint8_t achievements[20];
 
 
 //uint8_t practice_famistudio_state[0xbf];
-uint8_t collisionMap0[240];   // collision map, for a 16*27 tile area
-uint8_t collisionMap1[192];
 
 #pragma bss-name(pop)
 

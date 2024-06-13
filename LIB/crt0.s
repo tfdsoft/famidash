@@ -117,8 +117,6 @@ xargs:				.res 4
     .byte <(CHR_RAM_COUNT | (CHR_NVRAM_COUNT << 4))
     .byte <CPU_PPU_TIMING, <HARDWARE_TYPE, <MISC_ROMS, <DEF_EXP_DEVICE
 
-.include "mapper.s"
-
 .segment "STARTUP"
 
 start:
@@ -267,9 +265,10 @@ detectNTSC:
 
 	jmp _main			;no parameters
 
-	.include "LIB/neslib.s"
-	.include "LIB/nesdash.s"
-	.include "LIB/nesdoug.s"
+	.include "mapper.s"
+	.include "neslib.s"
+	.include "nesdash.s"
+	.include "nesdoug.s"
 	.include "METATILES/metatiles.s"
 
 	.include "LEVELS/all_level_data.s"
@@ -308,6 +307,10 @@ GeometryDashPCMB:
 .segment "MUS_BANK_03"
 	.include "MUSIC/EXPORTS/music_4.s"
 
+.segment "COLLMAP0"
+	collMap0:		.res 16*15
+.segment "COLLMAP1"
+	collMap1:		.res 16*15
 
 .segment "VECTORS"
 
