@@ -475,7 +475,9 @@ void state_game(){
         
         if (DEBUG_MODE) gray_line();
 		if (!DEBUG_MODE) {
-			if (cube_data[0] == 1 || cube_data[1] == 1) reset_level();
+			if (high_byte(player_x[0]) > 0x20) {
+				if (cube_data[0] == 1 || cube_data[1] == 1) reset_level();
+			} else cube_data[0] = cube_data[1] = 0;
 		}
         if (gameState != 0x02) return;
     }

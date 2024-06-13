@@ -161,7 +161,6 @@ char bg_coll_R() {
 
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
-
 	bg_collision_sub();
 	
 	return bg_coll_sides() || bg_coll_mini_blocks();
