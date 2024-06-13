@@ -2,7 +2,7 @@
 void init_sprites(void);
 #include "defines/bg_charmap.h"
 const unsigned char attempttext[]="PQQRSTQ"; //ATTEMPT
-const unsigned char whartxt[]="wxyz";	// WHAR
+//const unsigned char whartxt[]="wxyz";	// WHAR
 void setdefaultoptions();
 /* 
 	Reset run-length decoder back to zero
@@ -145,15 +145,15 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		}
 		TOTALCOINSONES = TOTALCOINSTEMP;
 
-		if (TOTALATTEMPTSTHOUSANDS >= 10)
-			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
-
-		else {
+//		if (TOTALATTEMPTSTHOUSANDS >= 10)
+//			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
+//
+//		else {
 			if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSTHOUSANDS, NTADR_C(15,15));
 			if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSHUNDREDS, NTADR_C(16,15));
 			if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALCOINSTENS, NTADR_C(17,15));
 			one_vram_buffer(0xf5+TOTALCOINSONES, NTADR_C(18,15));		
-		}
+//		}
 	}
 	#undef i
 }
