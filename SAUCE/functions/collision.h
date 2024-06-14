@@ -74,11 +74,10 @@ void bg_coll_spikes() {
 			}								// else nothing
 			break;
 		case COL_DEATH:	
-			tmp2 = (uint8_t)(temp_x & 0x0f);
-			if (tmp2 >= 0x06 && tmp2 < 0x0a) {
-				tmp2 = (uint8_t)(temp_y & 0x0f);
-
-				if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+			tmp2 = (uint8_t)(temp_y & 0x0f);
+			if (tmp2 >= 0x04 && tmp2 < 0x0c) {
+				tmp2 = (uint8_t)(temp_x & 0x0f);
+				if (tmp2 >= 0x03 && tmp2 < 0x09) {
 					cube_data[currplayer] = 0x01;
 				}
 			}
@@ -181,14 +180,11 @@ char bg_side_coll_common() {
 
 	storeWordSeparately(add_scroll_y(__A__, scroll_y), temp_y, temp_room);
 
-	if (slope_frames > 0) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
-		tmp1 -= (currplayer_gravity ? 8 : -8);
-		slope_frames -= 1;
-	}
-
 	bg_collision_sub();
 	
 	bg_coll_spikes();
+
+	temp_x = tmp2;
 
 	__A__ = Generic.y + (byte(0x10 - Generic.height) >> 1) + ((mini && (gamemode == CUBE_MODE || gamemode == ROBOT_MODE)) ? (currplayer_gravity ? 3 : -3) : (Generic.height >> 1));
 
@@ -206,7 +202,8 @@ char bg_side_coll_common() {
 char bg_coll_R() {
     // check 2 points on the right side
 	temp_x = Generic.x + low_word(scroll_x) + Generic.width + (platformer ? 3 : 0); // automatically only the low byte
-
+	tmp2 = temp_x;
+	temp_x -= 3;
 	return bg_side_coll_common();
 }
 
@@ -217,7 +214,8 @@ char bg_coll_R() {
 char bg_coll_L() {
     // check 2 points on the left side
 	temp_x = Generic.x + low_word(scroll_x) - (platformer ? 3 : 0); // automatically only the low byte
-	
+	tmp2 = temp_x;
+	temp_x += 3;
 	return bg_side_coll_common();
 }
 
