@@ -2149,7 +2149,7 @@ drawplayer_common := _drawplayerone::common
 .popseg
 
 .pushseg 
-.segment "CODE"
+.segment "CODE_2"
 
 .importzp _temp_x, _temp_y, _temp_room, _collision
 .export _bg_collision_sub
