@@ -1,5 +1,5 @@
 # Family Computer Geometry Dash
-### (Famidash)
+## about
 
 A work-in-progress demake of Geometry Dash for the NES using the MMC3 mapper.
 
