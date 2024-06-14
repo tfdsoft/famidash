@@ -21,6 +21,7 @@ _level_list_lo:
   .byte .lobyte(level_data_test2)
   .byte .lobyte(level_data_test3)
   .byte .lobyte(level_data_test4)
+  .byte .lobyte(level_data_danger)
 
 _level_list_hi:
   .byte .hibyte(level_data_stereomadness)
@@ -39,6 +40,7 @@ _level_list_hi:
   .byte .hibyte(level_data_test2)
   .byte .hibyte(level_data_test3)
   .byte .hibyte(level_data_test4)
+  .byte .hibyte(level_data_danger)
 
 _level_list_bank:
   .byte .lobyte(.bank(level_data_stereomadness))
@@ -57,6 +59,7 @@ _level_list_bank:
   .byte .lobyte(.bank(level_data_test2))
   .byte .lobyte(.bank(level_data_test3))
   .byte .lobyte(.bank(level_data_test4))
+  .byte .lobyte(.bank(level_data_danger))
 
 _sprite_list_lo:
   .byte .lobyte(sprite_data_stereomadness)
@@ -75,6 +78,7 @@ _sprite_list_lo:
   .byte .lobyte(sprite_data_test2)
   .byte .lobyte(sprite_data_test3)
   .byte .lobyte(sprite_data_test4)
+  .byte .lobyte(sprite_data_danger)
 
 _sprite_list_hi:
   .byte .hibyte(sprite_data_stereomadness)
@@ -93,6 +97,7 @@ _sprite_list_hi:
   .byte .hibyte(sprite_data_test2)
   .byte .hibyte(sprite_data_test3)
   .byte .hibyte(sprite_data_test4)
+  .byte .hibyte(sprite_data_danger)
 
 _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_stereomadness))
@@ -111,3 +116,4 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_test2))
   .byte .lobyte(.bank(sprite_data_test3))
   .byte .lobyte(.bank(sprite_data_test4))
+  .byte .lobyte(.bank(sprite_data_danger))

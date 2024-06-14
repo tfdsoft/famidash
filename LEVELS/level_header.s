@@ -98,7 +98,7 @@ theoryofeverything_bg_color    = $0F
 theoryofeverything_grnd_color  = $04
 
 danger_song_number = song_menu_theme
-danger_game_mode   = $06
-danger_speed       = $01
+danger_game_mode   = $22
+danger_speed       = $24
 danger_bg_color    = $0F
 danger_grnd_color  = $13
