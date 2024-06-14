@@ -23,7 +23,7 @@ SET all_levels= ^
 
 
 echo Exporting everything %all_levels%
-%ownpath%export_levels.py --folder "%ownpath%LEVEL DATA" %all_levels%
+python %ownpath%export_levels.py --folder "%ownpath%LEVEL DATA" %all_levels%
 
 echo Export finished.
 pause
