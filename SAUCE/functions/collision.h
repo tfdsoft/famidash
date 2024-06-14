@@ -62,19 +62,37 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 
 	for (tmp8 = mini; tmp8 < 2; tmp8++) {
 		bg_collision_sub();
-		if(collision == COL_DEATH_TOP) {
-			if (!(temp_y & 0x08)) {							// If Y pos inside block < 8px, die
-				if ((uint8_t)(temp_x & 0x0f) < 0x0c) {		// If X pos even insider, die even more
+		switch (collision) {
+			case COL_DEATH_TOP:
+				if (!(temp_y & 0x08)) {							// If Y pos inside block < 8px, die
+					if ((uint8_t)(temp_x & 0x0f) < 0x0c) {		// If X pos even insider, die even more
+						cube_data[currplayer] = 1;						
+					}
+				}		
+				break;
+			case COL_DEATH_BOTTOM:
+				if ((temp_y & 0x08)) {							// If Y pos inside block ≥ 8px, die
+					if ((uint8_t)(temp_x & 0x0f) < 0x0c) {		// If X pos even insider, die even more
+						cube_data[currplayer] = 1;						
+					}
+				}								// else nothing
+				break;
+			case COL_DOWN_LEFT_SPIKE:
+				tmp2 = temp_y & 0x0f;	
+				tmp8 = tmp2 & 0x07;	 
+				if (tmp2 >= 0x08 && ((uint8_t)(temp_x & 0x0f) < 0x08)) {
 					cube_data[currplayer] = 1;						
 				}
-			}								// else nothing
-		} else if (collision == COL_DEATH_BOTTOM) {
-			if ((temp_y & 0x08)) {							// If Y pos inside block ≥ 8px, die
-				if ((uint8_t)(temp_x & 0x0f) < 0x0c) {		// If X pos even insider, die even more
+				break;
+			case COL_DOWN_RIGHT_SPIKE:
+				tmp2 = temp_y & 0x0f;	
+				tmp8 = tmp2 & 0x07;	 
+				if (tmp2 >= 0x08 && ((uint8_t)(temp_x & 0x0f) >= 0x08)) {
 					cube_data[currplayer] = 1;						
 				}
-			}								// else nothing
-		}
+				break;
+		};
+			
 		__A__ = Generic.y + Generic.height - 4;
 		storeWordSeparately(add_scroll_y(__A__, scroll_y), temp_y, temp_room);
 	}
@@ -460,16 +478,19 @@ void bg_coll_death() {
 	storeWordSeparately(add_scroll_y(__A__, scroll_y), temp_y, temp_room);
 
 	bg_collision_sub();
-	if (collision == COL_DEATH_TOP) {
-		eject_D = (temp_y) & 0x07;
-		// tmp2 = temp_y & 0x0f;	
-		// if (tmp2 < 0x04) {
-		if (!(temp_y & 0x0C)) {
-			tmp2 = temp_x & 0x0f;
-			if (tmp2 > 0x06 && tmp2 < 0x0a)
-				cube_data[currplayer] = 1;
-		}
-	} else if (collision == COL_DEATH_BOTTOM) {
+	
+	switch (collision) {
+		case COL_DEATH_TOP:
+			eject_D = (temp_y) & 0x07;
+			// tmp2 = temp_y & 0x0f;	
+			// if (tmp2 < 0x04) {
+			if (!(temp_y & 0x0C)) {
+				tmp2 = temp_x & 0x0f;
+				if (tmp2 > 0x06 && tmp2 < 0x0a)
+					cube_data[currplayer] = 1;
+			}
+			break;
+		case COL_DEATH_BOTTOM:
 		eject_D = (temp_y) & 0x07;
 		// tmp2 = temp_y & 0x0f;
 		// if (tmp2 >= 0x0c) {
@@ -478,8 +499,9 @@ void bg_coll_death() {
 			if (tmp2 > 0x06 && tmp2 < 0x0a)
 				cube_data[currplayer] = 1;
 		}
-	}
-	else if(!currplayer_gravity && collision == COL_BOTTOM) { }
+		break;
+	};
+	if(!currplayer_gravity && collision == COL_BOTTOM) { }
 	else if(currplayer_gravity && collision == COL_TOP) { }
 	else if(collision == COL_DEATH_RIGHT || collision == COL_DEATH_LEFT) { }
 	else if(collision >= COL_UP_LEFT && collision <= COL_TOP_RIGHT_BOTTOM_LEFT) {

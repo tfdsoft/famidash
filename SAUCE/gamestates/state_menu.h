@@ -335,7 +335,7 @@ void customize_screen() {
 			one_vram_buffer('c'+0x6A, NTADR_A(15,9));			
 			one_vram_buffer('d'+0x6A, NTADR_A(16,9));			
 		}
-		if (settingvalue == 3) {
+		if (settingvalue == 3 && !retro_mode) {
 			if (pad_new[0] & PAD_UP) {
 				icon++;
 				if (icon > (MAX_ICONS - 1)) icon = 0;
