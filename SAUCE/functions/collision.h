@@ -181,6 +181,11 @@ char bg_side_coll_common() {
 
 	storeWordSeparately(add_scroll_y(__A__, scroll_y), temp_y, temp_room);
 
+	if (slope_frames > 0) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
+		tmp1 -= (currplayer_gravity ? 8 : -8);
+		slope_frames -= 1;
+	}
+
 	bg_collision_sub();
 	
 	bg_coll_spikes();
