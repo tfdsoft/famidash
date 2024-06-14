@@ -282,7 +282,7 @@ single_rle_byte:
 		bmi @UpdateValueRun
 		inx 
 		bmi @FirstLoop
-		bpl @WriteSetup ; Guaranteed jump
+		bpl @End ; Guaranteed jump
 	
 	@UpdateValueRun:
 		; if bit 7 of the byte is set, then its a run of length 1
@@ -299,7 +299,7 @@ single_rle_byte:
 		lda rld_value
 		inx 
 		bmi @FirstLoop
-		bpl @WriteSetup ; Unconditional
+		bpl @End ; Unconditional
 	
 	@SingleByteRun:
 		and #$7f
@@ -311,25 +311,8 @@ single_rle_byte:
 		bmi @FirstLoop
 		; and then fallthrough to copying to the collision map
 
-	@WriteSetup:
-
-		; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
-		; roughly twice the size for much more perf. We'll want this function to be fast when we
-		; do practice mode so we can quickly reload to the middle of levels
-		ldx _rld_column
-		.repeat 15, I
-			lda columnBuffer + I
-			sta collMap0 + I * 16, x
-		.endrepeat
-		.repeat 12, I
-			lda columnBuffer+15 + I
-			sta collMap1 + I * 16, x
-		.endrepeat
-		.repeat 3, I
-			lda ground + I * 16, x
-			sta columnBuffer+15+12+I
-		.endrepeat
-
+	@End:
+	ldx _rld_column
 	inx
 	.if USE_ILLEGAL_OPCODES
 		lda #$0F
@@ -340,6 +323,36 @@ single_rle_byte:
 		sta _rld_column
 	.endif
 	rts
+.endproc
+
+.export writeToCollisionMap
+.proc writeToCollisionMap
+	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
+	; roughly twice the size for much more perf. We'll want this function to be fast when we
+	; do practice mode so we can quickly reload to the middle of levels
+	ldx _rld_column
+	.if USE_ILLEGAL_OPCODES
+		dex
+		lda #$0F
+		axs #0
+	.else
+		dex
+		txa
+		and #$0F
+		tax
+	.endif
+	.repeat 15, I
+		lda columnBuffer + I
+		sta collMap0 + I * 16, x
+	.endrepeat
+	.repeat 12, I
+		lda columnBuffer+15 + I
+		sta collMap1 + I * 16, x
+	.endrepeat
+	.repeat 3, I
+		lda ground + I * 16, x
+		sta columnBuffer+15+12+I
+	.endrepeat
 .endproc
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
@@ -405,7 +418,7 @@ frame0:
 		JSR mmc3_set_prg_bank_1
 
 		JSR _unrle_next_column
-
+		JSR writeToCollisionMap
 frame1:
 
 		; Writing to nesdoug's VRAM buffer starts here
@@ -2136,7 +2149,7 @@ drawplayer_common := _drawplayerone::common
 .popseg
 
 .pushseg 
-.segment "CODE_2"
+.segment "CODE"
 
 .importzp _temp_x, _temp_y, _temp_room, _collision
 .export _bg_collision_sub
