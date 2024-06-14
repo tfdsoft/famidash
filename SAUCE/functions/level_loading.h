@@ -63,14 +63,14 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	if (has_practice_point) {
 		parallax_scroll_column = 0;
 		parallax_scroll_column_start = 0;
-		scroll_count = 0;
 		scroll_x = practice_scroll_x - 256;
 		scroll_y = practice_scroll_y;
-		for (ii = 0; ii <= practice_scroll_x >> 4; ii++) {
+		ii = practice_scroll_x >> 4, ii++;
+		do {
 			unrle_next_column();
 			increase_parallax_scroll_column();
-			scroll_count = !scroll_count;
-		}
+			ii--;
+		} while (ii != 0);
 		player_x[0] = practice_player_x[0];
 		player_x[1] = practice_player_x[1];
 		player_y[0] = practice_player_y[0];
