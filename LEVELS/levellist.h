@@ -32,6 +32,7 @@
 #define	HARDER 3
 #define	INSANE 4
 #define	DEMON 5
+#define	DANGER 6
 
 
 #define SPIKESA 0
@@ -48,6 +49,7 @@ const uint8_t difficulty_pal_A[] ={
 	0x16,	// harder
 	0x24,	// insane
 	0x16,	// demon
+	0x13,	// danger
 };
 
 const uint8_t difficulty_pal_B[] ={
@@ -57,6 +59,7 @@ const uint8_t difficulty_pal_B[] ={
 	0x30,	// harder
 	0x06,	// insane
 	0x30,	// demon
+	0x21,	// danger
 };
 
 const unsigned short songtime[] = {	//for looping in practice mode
@@ -93,6 +96,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //test2
 	SPIKESB, //test3
 	SPIKESB, //test4
+	SAWBLADESA, //danger
 };
 
 const unsigned char block_set[] = {
@@ -110,8 +114,9 @@ const unsigned char block_set[] = {
 	BLOCKSB, //theory of everything
 	BLOCKSB, //test1
 	BLOCKSB, //test2
-	BLOCKSC, //test3
-	BLOCKSB, //test4
+	BLOCKSB, //test3
+	BLOCKSC, //test4
+	SAWBLADESA, //danger
 };
 
 const unsigned char saw_set[] = {
@@ -131,6 +136,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //test2
 	SAWBLADESA, //test3
 	SAWBLADESA, //test4
+	SAWBLADESA, //danger
 };
 
 
@@ -151,6 +157,7 @@ const unsigned char difficulty_list[] = {
     DEMON,
     DEMON,
     DEMON,
+	DANGER,
 };
 
 const unsigned char stars_list[] = {
@@ -170,6 +177,7 @@ const unsigned char stars_list[] = {
 	0,
 	0,
 	0,
+	69,
 };
 const unsigned char colors_list[] = {
 	0x12,
@@ -188,6 +196,7 @@ const unsigned char colors_list[] = {
 	0x06,
 	0x07,
 	0x08,
+	0x0F,
 };
 // exported from export_levels.py
 

@@ -26,7 +26,7 @@ extern unsigned char* PARALLAX_CHR;
 unsigned char END_LEVEL_TIMER;
 
 void state_game(){
-	if (level == 0x0E) no_parallax = 1;
+	if (level == 0x0F) no_parallax = 1;
 	else no_parallax = 0;
 	
 	outline_color = 0x30;

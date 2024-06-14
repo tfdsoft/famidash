@@ -23,7 +23,7 @@ const uint8_t hiNTAddrTableTitleScreen[]={
 };
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, NULL, NULL, NULL, NULL, NULL
+  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, NULL, NULL, NULL, NULL, level11text
 };
 const unsigned char* const leveltexts2[] = {
   level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2
@@ -46,7 +46,7 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
-	0,
+	sizeof(level11text) - 1,
 };
 const unsigned char level_text_size2[] = {
     sizeof(level1text2) - 1,
