@@ -7,6 +7,7 @@ CA65 = ./BIN/ca65.exe
 LD65 = ./BIN/ld65.exe
 DEL = del
 MKDIR = mkdir
+PYTHON = python
 else ifeq ($(OS),MSDOS)
 # MS-DOS
 # add "set OS=MSDOS" to autoexec
@@ -16,6 +17,7 @@ CA65 = ./BIN/ca65d.exe
 LD65 = ./BIN/ld65d.exe
 DEL = del
 MKDIR = mkdir
+PYTHON = python
 else
 # Ubuntu/Debian
 CC65 = cc65
@@ -23,6 +25,7 @@ CA65 = ca65
 LD65 = ld65
 DEL = rm
 MKDIR = mkdir
+PYTHON = python3
 endif
 
 define cc65IncDir
@@ -64,7 +67,7 @@ $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 	$(CA65) --cpu 6502X $(call ca65IncDir,LIB/asm) $(TMPDIR)/$(NAME).s -g 
 
 $(TMPDIR)/BUILD_FLAGS.s: BUILD_FLAGS.h defines_to_asm.py
-	python defines_to_asm.py
+	$(PYTHON) defines_to_asm.py
 
 $(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h SAUCE/gamestates/*.h SAUCE/gamemodes/*.h SAUCE/defines/*.h SAUCE/functions/*.h METATILES/metatiles.h LEVELS/*.h LIB/headers/*.h MUSIC/EXPORTS/musicDefines.h 
 	$(CC65) -Osir -g SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) -E --add-source -o $(TMPDIR)/$(NAME).c
