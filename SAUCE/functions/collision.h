@@ -500,10 +500,16 @@ void bg_coll_death() {
 				cube_data[currplayer] = 1;
 		}
 		break;
+		case COL_DEATH_RIGHT:
+		case COL_DEATH_LEFT: break;
+		case COL_DEATH:	
+			cube_data[currplayer] = 0x01;
+			break;
 	};
+
 	if(!currplayer_gravity && collision == COL_BOTTOM) { }
 	else if(currplayer_gravity && collision == COL_TOP) { }
-	else if(collision == COL_DEATH_RIGHT || collision == COL_DEATH_LEFT) { }
+
 	else if(collision >= COL_UP_LEFT && collision <= COL_TOP_RIGHT_BOTTOM_LEFT) {
 		if (bg_coll_mini_blocks()) cube_data[currplayer] = 0x01; 
 	}
@@ -520,7 +526,7 @@ void bg_coll_death() {
 			}
 
 		}
-		else if(collision == COL_DEATH) cube_data[currplayer] = 0x01;
+		
 	}
 
 //	if(!DEBUG_MODE && cube_data[0] & 0x01) {
