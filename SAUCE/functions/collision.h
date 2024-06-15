@@ -227,9 +227,14 @@ char bg_coll_mini_blocks() {
 
 */
 char bg_side_coll_common() {
-	__A__ = Generic.y + (Generic.height >> 1);
+	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + (Generic.height >> 1);
 
-	storeWordSeparately(add_scroll_y(__A__, scroll_y), temp_y, temp_room);
+	if (slope_frames > 0) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
+		tmp1 -= (currplayer_gravity ? 8 : -8);
+		slope_frames -= 1;
+	}
+
+	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
 	bg_collision_sub();
 	
