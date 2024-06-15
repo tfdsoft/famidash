@@ -12,7 +12,8 @@
 #define song_jumper 11
 #define song_dry_out 12
 #define song_cant_let_go 13
-#define song_max 14
+#define song_endgame 14
+#define song_max 15
 #define sfx_death 0
 #define sfx_click 1
 #define sfx_level_complete 2

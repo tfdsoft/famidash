@@ -52,5 +52,5 @@ const unsigned char levelCtext2[]="UNFINISHED";
 const unsigned char levelDtext2[]="TEST";
 const unsigned char levelEtext2[]="TEST2";
 const unsigned char levelFtext2[]="TEST3";
-const unsigned char level10text2[]="TEST4";
+const unsigned char level10text2[]="DECODE";
 const unsigned char level11text2[]="THE SAFE LEVELS";

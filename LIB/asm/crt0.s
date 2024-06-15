@@ -308,6 +308,8 @@ GeometryDashPCMB:
 	.include "MUSIC/EXPORTS/music_3.s"
 .segment "MUS_BANK_03"
 	.include "MUSIC/EXPORTS/music_4.s"
+.segment "MUS_BANK_04"
+	.include "MUSIC/EXPORTS/music_5.s"
 
 .segment "COLLMAP0"
 	collMap0:		.res 16*15

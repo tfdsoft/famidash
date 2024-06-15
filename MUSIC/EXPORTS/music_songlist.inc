@@ -12,4 +12,5 @@ song_theory_of_everything = 10
 song_jumper = 11
 song_dry_out = 12
 song_cant_let_go = 13
-song_max = 14
+song_endgame = 14
+song_max = 15
