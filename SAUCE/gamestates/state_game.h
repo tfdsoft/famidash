@@ -6,9 +6,26 @@ void __fastcall__ movement(void);
 void __fastcall__ movement2(void);
 
 void x_movement_coll() {
+	if (slope_frames) {
+		slope_frames -= 1;
+	}
 	if (slope_frames == 1 && currplayer_vel_y != 0) {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
-		currplayer_vel_y = -0x380;
+		switch (slope_type) {
+			case SLOPE_22DEG_DOWN:
+			case SLOPE_22DEG_UP:
+				tmp5 = currplayer_vel_x >> 2;
+				break;
+			case SLOPE_45DEG_DOWN:
+			case SLOPE_45DEG_UP:
+				tmp5 = currplayer_vel_x >> 1;
+				break;
+			case SLOPE_66DEG_DOWN:
+			case SLOPE_66DEG_UP:
+				tmp5 = (currplayer_vel_x >> 1); 
+				tmp5 = (tmp5 >> 1) + tmp5;	
+		}
+		currplayer_vel_y = tmp5;
 	}
 	
 	Generic.x = high_byte(currplayer_x);
