@@ -3,7 +3,7 @@
 
 .export _set_vram_buffer, __multi_vram_buffer, __one_vram_buffer
 .export _get_pad_new, _get_frame_count
-.export __check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y, __sub_scroll_y_ext
+.export _check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y, __sub_scroll_y_ext
 .export  __get_ppu_addr, _get_at_addr
 ; .export _set_data_pointer, _set_mt_pointer, _buffer_1_mt, _buffer_4_mt
 .export _color_emphasis, __xy_split, _gray_line, _seed_rng
@@ -111,81 +111,83 @@ _get_frame_count:
 	
 PTR2 = TEMP+2 ;and TEMP+3
 
+.import _Generic, _Generic2
 ;uint8_t __fastcall__ check_collision(void * object1, void * object2);
-__check_collision:
+; __check_collision:
+_check_collision:
 	; sprite object collision code
 	; this would work with any size struct, as long as the first 4 bytes are...
 	; x, y, width, height
 	; note PTR is the same as TEMP and TEMP+1
 
-	sta PTR
-	stx PTR+1 ;set up a pointer to the first object
+	; sta PTR
+	; stx PTR+1 ;set up a pointer to the first object
 	; jsr popax
 	; sta sreg
 	; stx sreg+1 ;set up a pointer to the second object
 	
 
-	ldy #0
-	lda (PTR),y
-	sta TEMP+4  	;X 1
-	lda (sreg), y
-	sta TEMP+6		;X 2
-	iny
-	iny
-	lda (PTR),y
-	sta TEMP+5 		;width1
-	lda (sreg), y
-	sta TEMP+7		;width2
+	; ldy #0
+	; lda (PTR),y
+	; sta TEMP+4  	;X 1
+	; lda (sreg), y
+	; sta TEMP+6		;X 2
+	; iny
+	; iny
+	; lda (PTR),y
+	; sta TEMP+5 		;width1
+	; lda (sreg), y
+	; sta TEMP+7		;width2
 
 	
 ;see if they are colliding x
 	
 ;first check if obj1 R (obj1 x + width) < obj2 L
 	
-	lda TEMP+4 ;X 1
+	lda _Generic+0	; X 1
 	clc
-	adc TEMP+5 ;width 1
-	cmp TEMP+6 ;X 2
+	adc _Generic+2 ;width 1
+	cmp _Generic2+0 ;X 2
 	bcc @no
 	
 ;now check if obj1 L > obj2 R (obj2 x + width)
 
-	lda TEMP+6 ;X 2
+	lda _Generic2+0 ;X 2
 	clc
-	adc TEMP+7 ;width 2
-	cmp TEMP+4 ;X 1
+	adc _Generic2+2 ;width 2
+	cmp _Generic+0 ;X 1
 	bcc @no
 
 
 ;repeat process with y
-	ldy #1
-	lda (PTR),y
-	sta TEMP+4  	;Y 1
-	lda (sreg), y
-	sta TEMP+6		;Y 2
-	iny
-	iny
-	lda (PTR),y
-	sta TEMP+5 		;height1
-	lda (sreg), y
-	sta TEMP+7		;height2
+	; ldy #1
+	; lda (PTR),y
+	; sta TEMP+4  		;Y 1
+	; lda (sreg), y
+	; sta TEMP+6		;Y 2
+	; iny
+	; iny
+	; lda (PTR),y
+	; sta TEMP+5 		;height1
+	; lda (sreg), y
+	; sta TEMP+7		;height2
 
 ;see if they are colliding y
 	
 ;first check if obj1 Bottom (obj1 y + height) < obj2 Top
 	
-	lda TEMP+4 ;Y 1
+	lda _Generic+1 ;Y 1
 	clc
-	adc TEMP+5 ;height 1
-	cmp TEMP+6 ;Y 2
+	adc _Generic+3 ;height 1
+	cmp _Generic2+1 ;Y 2
 	bcc @no
 	
 ;now check if obj1 Top > obj2 Bottom (obj2 y + height)
 
-	lda TEMP+6 ;Y 2
+	lda _Generic2+1 ;Y 2
 	clc
-	adc TEMP+7 ;height 2
-	cmp TEMP+4 ;Y 1
+	adc _Generic2+3 ;height 2
+	cmp _Generic+1 ;Y 1
 	bcc @no
 
 

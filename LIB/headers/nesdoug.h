@@ -38,11 +38,13 @@ uint8_t __fastcall__ get_pad_new(uint8_t pad);
 uint8_t __fastcall__ get_frame_count();
 // use this internal value to time events, this ticks up every frame
 
-uint8_t __fastcall__ _check_collision(uint32_t args);
-#define check_collision(object1, object2) (storeWordToSreg((uintptr_t)object1), __AX__ = (uintptr_t)object2, _check_collision(__EAX__))
+// uint8_t __fastcall__ _check_collision(uint32_t args);
+// #define check_collision(object1, object2) (storeWordToSreg((uintptr_t)object1), __AX__ = (uintptr_t)object2, _check_collision(__EAX__))
+uint8_t __fastcall__ check_collision();
 // expects an object (struct) where the first 4 bytes are X, Y, width, height
 // you will probably have to pass the address of the object like &object
 // the struct can be bigger than 4 bytes, as long as the first 4 bytes are X, Y, width, height
+// EDITED to use Generic1 and Generic2 specifically
 
 
 void __fastcall__ _pal_fade_to(uint16_t from_to);
