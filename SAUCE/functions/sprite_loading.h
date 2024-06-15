@@ -374,7 +374,7 @@ jumpNoGravityAdjust:
 static void sprite_gamemode_main() {
     if (pad[controllingplayer] & PAD_A) {	
 	    if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
-	    if (cube_data[currplayer] == 2) {
+	    if (cube_data[currplayer] & 2) {
 		cube_data[currplayer] = 0;
 		if (collided == BLUE_ORB) {
 		    currplayer_gravity ^= 0x01;
