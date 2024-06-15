@@ -8,29 +8,29 @@ void setdefaultoptions();
 	Reset run-length decoder back to zero
 	Implemented in asm
 */
-void __fastcall__ init_rld(unsigned char level);
+void __fastcall__ init_rld(uint8_t level);
 
 /* 
 	This should explain itself
 	Requires the correct PRG1 bank to be set
 	Implemented in asm
 */
-void __fastcall__ unrle_next_column(void);
+void __fastcall__ unrle_next_column();
 
 /* 
 	Scrolling to the right, draw metatiles as we go
 	Implemented in asm	
 */
-void __fastcall__ draw_screen_R(void);
-void __fastcall__ draw_screen_R_frame0(void);
-void __fastcall__ draw_screen_R_frame1(void);
-void __fastcall__ draw_screen_R_frame2(void);
+void __fastcall__ draw_screen_R();
+void __fastcall__ draw_screen_R_frame0();
+void __fastcall__ draw_screen_R_frame1();
+void __fastcall__ draw_screen_R_frame2();
 
 /*
 	Load ground tiles into collision map
 	Implemented in asm
 */
-void __fastcall__ load_ground(unsigned char id);
+void __fastcall__ load_ground(uint8_t id);
 
 void increase_parallax_scroll_column() {
 	// The parallax is a 6 x 9 tile background, and when it repeats
@@ -45,6 +45,9 @@ void increase_parallax_scroll_column() {
 		}
 	}
 }
+
+#pragma code-name(push, "CODE_2")
+
 extern unsigned char scroll_count;
 void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// register unsigned char i;
@@ -109,6 +112,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 
 	// Draw the nametable starting from where the scroll is set
 	i = 0;
+	mmc3_set_prg_bank_1(GET_BANK(draw_screen_R));
     do {
 		draw_screen_R();
 		flush_vram_update2();
@@ -154,3 +158,5 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	}
 	#undef i
 }
+
+#pragma code-name(pop)

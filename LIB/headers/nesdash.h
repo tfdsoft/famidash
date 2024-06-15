@@ -67,7 +67,7 @@ void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
 void __fastcall__ _draw_padded_text(uint32_t args);
 #define draw_padded_text(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _draw_padded_text(__EAX__))
 
-void __fastcall__ playPCM();
+void __fastcall__ playPCM(uint8_t sample);
 
 extern uint8_t parallax_scroll_column;
 extern uint8_t parallax_scroll_column_start;
