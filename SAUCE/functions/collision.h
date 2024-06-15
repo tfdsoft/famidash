@@ -235,8 +235,7 @@ char bg_side_coll_common() {
 	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + (Generic.height >> 1);
 
 	if (slope_frames > 0) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
-		tmp1 -= (currplayer_gravity ? 8 : -8);
-		slope_frames -= 1;
+		tmp1 -= (currplayer_gravity ? 4 : -4);
 	}
 
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
