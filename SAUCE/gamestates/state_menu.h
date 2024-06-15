@@ -667,7 +667,7 @@ void state_menu() {
 
 	tmp7 = rand8() & 255;
 	switch (menuselection) {
-		case 0x00: kandowatchesyousleep = 1; if(!tmp7) __A__ = 1; else __A__ = 0; crossPRGBankJump8(playPCM, __A__); levelselection(); return;
+		case 0x00: kandowatchesyousleep = 1; if(!tmp7) crossPRGBankJump8(playPCM, 1); else crossPRGBankJump8(playPCM, 0);  levelselection(); return;
 		case 0x01: funsettings(); return;
 		case 0x02: gameState = 4; return;
 		case 0x03: settings(); return;

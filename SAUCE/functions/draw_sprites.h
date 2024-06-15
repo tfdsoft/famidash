@@ -89,7 +89,7 @@ void draw_sprites(void){
 			if (temp_y < 0xf0) {
 			needs_reload = 0;
 			spr_type = activesprites_type[index];
-			animation_ptr = (const unsigned char * const)animation_frame_list[spr_type & 0x7F];
+			animation_ptr = (unsigned char *)animation_frame_list[spr_type & 0x7F];
 			// If this sprite has animations, then this pointer will not be null
 			if (high_byte(animation_ptr)) {
 				// Reduce the frame counter by one to see if we need to move to the next frame
@@ -128,11 +128,6 @@ void draw_sprites(void){
 	if (forced_trails || trails || gamemode == 6) {
 		tmp6 = currplayer_vel_x << 1;
 		tmp5 = player_x[0] - tmp6;
-		// todo: 
-		// have a variable storing the old scroll y
-		// find the difference using sub_scroll_y_ext
-		// add that difference to the old_posy every frame
-		// profit motherfuckers
 
 		oam_meta_spr(high_byte(tmp5), player_old_posy[1], Trail_Circ);
 		tmp5 -= tmp6;
