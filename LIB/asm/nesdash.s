@@ -85,6 +85,15 @@ sprite_data = _sprite_data
 .export _parallax_scroll_column := parallax_scroll_column
 .export _parallax_scroll_column_start := parallax_scroll_column_start
 
+; Standard for function declaration here:
+; C function name
+; .segment declaration
+; [ <empty line>
+; imports ]
+; <empty line>
+; .export declaration
+; the function itself
+
 ; void __fastcall__ oam_meta_spr_flipped(uint8_t x,uint8_t y,const void *data);
 .segment "XCD_BANK_00"
 
