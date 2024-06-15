@@ -84,6 +84,30 @@ void bg_coll_spikes() {
 					cube_data[currplayer] = 0x01;
 				}
 			}
+			break;
+		case COL_LEFT_SPIKE_BLOCK:
+		case COL_BOTTOM_LEFT_SPIKE:
+			if (!(temp_y & 0x08)) {
+				tmp2 = (uint8_t)(temp_x & 0x0f);
+				if (tmp2 >= 0x02 && tmp2 < 0x06)
+					cube_data[currplayer] = 1;						
+			}
+			break;
+		case COL_RIGHT_SPIKE_BLOCK:
+		case COL_BOTTOM_RIGHT_SPIKE:
+			if (!(temp_y & 0x08)) {
+				tmp2 = (uint8_t)(temp_x & 0x0f);
+				if (tmp2 >= 0x0a && tmp2 < 0x0d)
+					cube_data[currplayer] = 1;											
+			}
+			break;
+		case COL_BOTTOM_SPIKES:
+			if (!(temp_y & 0x08)) {
+				tmp2 = (uint8_t)(temp_x & 0x07);
+				if (tmp2 >= 0x02 && tmp2 < 0x06)
+					cube_data[currplayer] = 1;						
+			}
+			break;
 	}
 }
 
@@ -127,6 +151,7 @@ char bg_coll_mini_blocks() {
 			}
 			break;
 		case COL_DOWN_LEFT:
+		case COL_LEFT_SPIKE_BLOCK:
 			tmp2 = temp_y & 0x0f;	
 			tmp8 = tmp2 & 0x07;	 
 			if (tmp2 >= 0x08 && ((uint8_t)(temp_x & 0x0f) < 0x08)) {
@@ -134,9 +159,29 @@ char bg_coll_mini_blocks() {
 			}
 			break;
 		case COL_DOWN_RIGHT:
+		case COL_RIGHT_SPIKE_BLOCK:
 			tmp2 = temp_y & 0x0f;	
 			tmp8 = tmp2 & 0x07;	 
 			if (tmp2 >= 0x08 && ((uint8_t)(temp_x & 0x0f) >= 0x08)) {
+				return 1;
+			}
+			break;
+		case COL_BOTTOM_LEFT_SPIKE:
+		case COL_BOTTOM_RIGHT_SPIKE:
+		case COL_BOTTOM_SPIKES:
+		case COL_BOTTOM:
+			tmp2 = temp_y & 0x0f;
+			tmp8 = tmp2 & 0x07;	 
+			// if (tmp2 >= 0x08) {
+			if (tmp8 != tmp2) {
+				return 1;
+			}
+			break;
+		case COL_TOP:
+			tmp2 = temp_y & 0x0f;
+			tmp8 = tmp2 & 0x07;	 
+			// if (tmp2 >= 0x08) {
+			if (tmp8 == tmp2) {
 				return 1;
 			}
 			break;
@@ -224,7 +269,6 @@ char bg_coll_U_D_checks() {
 	switch (collision) {
 		case COL_ALL: 
 			return 1;
-		case COL_TOP:
 		case COL_DEATH_TOP:
 			tmp2 = temp_y & 0x0f;	
 			tmp8 = tmp2 & 0x07;	 
@@ -241,7 +285,6 @@ char bg_coll_U_D_checks() {
 				} else return 1;
 			}
 			break;
-		case COL_BOTTOM:
 		case COL_DEATH_BOTTOM:
 			tmp2 = temp_y & 0x0f;
 			tmp8 = tmp2 & 0x07;	 
