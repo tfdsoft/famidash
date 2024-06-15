@@ -682,7 +682,7 @@ void sprite_collide(){
 
 
             
-            if (check_collision(&Generic, &Generic2)) {
+            if (check_collision()) {
                 sprite_collide_lookup();
             }
         }
