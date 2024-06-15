@@ -115,7 +115,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //test1
 	BLOCKSB, //test2
 	BLOCKSB, //test3
-	BLOCKSC, //test4
+	BLOCKSB, //test4
 	SAWBLADESA, //danger
 };
 
