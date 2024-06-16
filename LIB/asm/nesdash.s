@@ -18,6 +18,51 @@ sprite_data = _sprite_data
 
 .define USE_ILLEGAL_OPCODES ::_USE_ILLEGAL_OPCODES
 
+.macro INCW addr
+	INC addr
+	BNE :+
+		INC addr+1
+:
+.endmacro
+
+.macro incw addr
+	INCW addr
+.endmacro
+
+.macro incw_check addr
+	INC addr
+	BNE :+
+		jsr incwlvl_checkC000
+:
+.endmacro
+
+; You get your arguments back in ptr3
+.macro crossPRGBankJSR inArgCount, routine, bank
+	.ifblank routine
+		.error "Have to supply routine and argument count for crossPRGBankJSR"
+	.endif
+
+	.ifnblank bank
+		LDY bank
+	.else
+		LDY #^routine
+	.endif
+
+	.ifnblank inArgCount
+		.if inArgCount >= 2
+			STX ptr3+1
+		.endif
+		.if inArgCount >= 1
+			STA ptr3
+		.endif
+	.endif
+
+	LDA #<routine
+	LDX #>routine
+	jsr crossPRGBankJump
+.endmacro
+
+
 .segment "ZEROPAGE"
 	rld_value:      .res 1
 	rld_run:        .res 1
@@ -40,9 +85,18 @@ sprite_data = _sprite_data
 .export _parallax_scroll_column := parallax_scroll_column
 .export _parallax_scroll_column_start := parallax_scroll_column_start
 
+; Standard for function declaration here:
+; C function name
+; .segment declaration
+; [ <empty line>
+; imports ]
+; <empty line>
+; .export declaration
+; the function itself
+
+; void __fastcall__ oam_meta_spr_flipped(uint8_t x,uint8_t y,const void *data);
 .segment "XCD_BANK_00"
 
-;void __fastcall__ oam_meta_spr_flipped(uint8_t x,uint8_t y,const void *data);
 .export __oam_meta_spr_flipped
 .proc __oam_meta_spr_flipped
 	; AX = data
@@ -105,24 +159,6 @@ end:
 	rts
 .endproc
 
-.macro INCW addr
-	INC addr
-	BNE :+
-		INC addr+1
-:
-.endmacro
-
-.macro incw addr
-	INCW addr
-.endmacro
-
-.macro incw_check addr
-	INC addr
-	BNE :+
-		jsr incwlvl_checkC000
-:
-.endmacro
-
 .segment "CODE_2"
 
 shiftBy4table:
@@ -155,10 +191,14 @@ shiftBy4table:
 	rts
 .endproc
 
+; void __fastcall__ init_rld(uint8_t level);
+.segment "CODE_2"
+
 .global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
 .import _song, _speed, _lastgcolortype, _lastbgcolortype
 .import _rld_column
 .import _level_data_bank, _sprite_data_bank
+
 .export _init_rld
 _init_rld:
 	; A - the level ID
@@ -268,6 +308,9 @@ single_rle_byte:
 	incw_check level_data
 	rts
 
+; void unrle_next_column();
+.segment "CODE_2"
+
 .export _unrle_next_column
 .proc _unrle_next_column
 
@@ -325,11 +368,12 @@ single_rle_byte:
 	rts
 .endproc
 
-.export writeToCollisionMap
+
+.segment "XCD_BANK_01"
+
 .proc writeToCollisionMap
 	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
-	; roughly twice the size for much more perf. We'll want this function to be fast when we
-	; do practice mode so we can quickly reload to the middle of levels
+	; roughly twice the size for much more perf. ill probably make it back to loop
 	ldx _rld_column
 	.if USE_ILLEGAL_OPCODES
 		dex
@@ -355,9 +399,13 @@ single_rle_byte:
 	.endrepeat
 .endproc
 
+; void draw_screen_R();
+.segment "XCD_BANK_01"
+
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 .import _increase_parallax_scroll_column
 .import _no_parallax
+
 .export _draw_screen_R
 .proc _draw_screen_R
 
@@ -414,10 +462,7 @@ frame2:
 
 frame0:
 		; Switch banks
-		LDA _level_data_bank
-		JSR mmc3_set_prg_bank_1
-
-		JSR _unrle_next_column
+		crossPRGBankJSR ,_unrle_next_column,_level_data_bank
 		JSR writeToCollisionMap
 frame1:
 
@@ -846,10 +891,11 @@ ParallaxBuffer:
 
 .endproc
 
-.pushseg
+; void __fastcall__ load_ground(uint8_t id);
 .segment "LVL_BANK_00"
 
 .import _ground
+
 .export _load_ground
 .proc _load_ground
 	;A = ground num
@@ -902,10 +948,10 @@ ParallaxBuffer:
 
 .endproc
 
-.popseg
+; void __fastcall__ draw_padded_text(const void * data, uint8_t len, uint8_t total_len, uintptr_t ppu_address)
+.segment "CODE_2"
 
 .export __draw_padded_text
-; void __fastcall__ draw_padded_text(const void * data, uint8_t len, uint8_t total_len, uintptr_t ppu_address)
 .proc __draw_padded_text
 	; XA = ppu_address
 	; sreg[0] = total_len
@@ -981,12 +1027,12 @@ ParallaxBuffer:
 .endproc
 
 
-;void __fastcall__ movement(void);
-.pushseg
+; void movement();
 .segment "XCD_BANK_01"
 
 .import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _wave_movement
 .import _retro_mode
+
 .export _movement
 .proc _movement
 	LDX _gamemode
@@ -1020,10 +1066,12 @@ ParallaxBuffer:
 		.byte >_cube_movement, >_ship_movement, >_ball_movement, >_ufo_movement, >_cube_movement, >_spider_movement, >_wave_movement, >_ball_movement
 
 .endproc
-.popseg
 
-;void __fastcall__ music_play(uint8_t song);
+; void __fastcall__ music_play(uint8_t song);
+.segment "CODE_2"
+
 .import _options, FIRST_MUSIC_BANK
+
 .export _music_play
 .proc _music_play  
     bit _options ; sets N flag to bit 7 of _options without affecting A  
@@ -1069,7 +1117,10 @@ music_counts:
 .endproc
 
 ; void __fastcall__ sfx_play(uint8_t sfx_index, uint8_t channel);
+.segment "CODE_2"
+
 .import _options
+
 .export __sfx_play
 .proc __sfx_play  
     ; x = sfx
@@ -1082,7 +1133,9 @@ play:
     jmp famistudio_sfx_play  
 .endproc
 
-; void __fastcall__ music_update (void);
+; void music_update();
+.segment "CODE_2"
+
 .export _music_update
 .proc _music_update
     LDA current_song_bank
@@ -1093,26 +1146,8 @@ play:
 ; Because i JMPed, the routine is over
 
 
-;void load_next_sprite(void){
-;    mmc3_tmp_prg_bank_1(SPR_BANK_00);
-;    if (sprite_data[spr_index<<3] == TURN_OFF) return;
-;    tmp3 = sprite_data[(spr_index<<3)+0];  low_byte(activesprites_x[spr_index % max_loaded_sprites]) = tmp3; 
-;    tmp3 = sprite_data[(spr_index<<3)+1]; high_byte(activesprites_x[spr_index % max_loaded_sprites]) = tmp3; 
-;    tmp3 = sprite_data[(spr_index<<3)+2];  low_byte(activesprites_y[spr_index % max_loaded_sprites]) = tmp3;
-;    tmp3 = sprite_data[(spr_index<<3)+3]; high_byte(activesprites_y[spr_index % max_loaded_sprites]) = tmp3;
-;    tmp3 = sprite_data[(spr_index<<3)+4]; activesprites_type[spr_index % max_loaded_sprites] = tmp3;
-;    // unused byte 5
-;    // unused byte 6 
-;    // unused byte 7
-;
-;
-;    tmp3 = activesprites_x[spr_index]; activesprites_realx[spr_index % max_loaded_sprites] = tmp3;
-;    tmp3 = activesprites_y[spr_index]; activesprites_realy[spr_index % max_loaded_sprites] = tmp3;
-;
-;    //gray_line();
-;    mmc3_pop_prg_bank_1();
-;    ++spr_index;
-;}
+; void load_next_sprite();
+.segment "CODE_2"
 
 .import _activesprites_x, _activesprites_y, _activesprites_type
 .import _activesprites_realx, _activesprites_realy
@@ -1203,34 +1238,11 @@ SpriteOffset = ptr2
 .endproc
 
 
-
-; char get_position(void){
-;     tmp5 -= scroll_x;
-;     if (high_byte(tmp5) == 0xff) {
-;         load_next_sprite();
-;         return 0;
-;     }
-;     tmp6 -= scroll_y;
-;     temp_x = tmp5 & 0x00ff;
-;     temp_y = tmp6 & 0x00ff;
-;     if (high_byte(tmp5)) return 0;
-;     if (high_byte(tmp6)) return 0;
-;     return 1;
-; }
-; void check_spr_objects(void){
-;     for (index = 0; index < max_loaded_sprites; ++index){
-;         activesprites_active[index] = 0;
-;         low_byte(tmp5) = low_byte(activesprites_x[index]);
-;         high_byte(tmp5) = high_byte(activesprites_x[index]);
-;         low_byte(tmp6) = low_byte(activesprites_y[index]);
-;         high_byte(tmp6) = high_byte(activesprites_y[index]);
-;         activesprites_active[index] = get_position();
-;         activesprites_realx[index] = temp_x;
-;         activesprites_realy[index] = temp_y;
-;     }
-; }
+; void check_spr_objects();
+.segment "CODE_2"
 
 .import _activesprites_active, _scroll_x, _scroll_y
+
 .export _check_spr_objects := check_spr_objects
 .proc check_spr_objects
     ; for each sprite we want to check to see if its active
@@ -1286,7 +1298,6 @@ write_active:
     rts
 .endproc
 
-.pushseg
 .segment "XCD_BANK_00"
 
 .define CUBE_GRAVITY $6B
@@ -1341,8 +1352,10 @@ drawplayer_center_offsets:
 	.byte	8,	8,	8,	8,	12,	12,	8,	8; normal size
 	.byte	4,	12,	4,	12,	12,	12,	12,	12; mini 
 
-.export _drawplayerone
+; void drawplayerone();
+.segment "XCD_BANK_00"
 
+.export _drawplayerone
 .proc _drawplayerone
 
     LDX _cube_data
@@ -1771,10 +1784,13 @@ drawplayer_center_offsets:
 .endproc
 drawplayer_common := _drawplayerone::common
 
+; void drawplayertwo();
+.segment "XCD_BANK_00"
+
 .import _CUBE2, _SHIP2, _BALL2, _ROBOT2, _UFO2, _SPIDER2, _WAVE2, _SWING2
 .import _MINI_CUBE2, _MINI_SHIP2, _MINI_BALL2, _MINI_ROBOT2, _MINI_UFO2, _MINI_SPIDER2, _MINI_WAVE2, _MINI_SWING2
-.export _drawplayertwo
 
+.export _drawplayertwo
 .proc _drawplayertwo
 
 	LDA _player_gravity+1
@@ -2146,12 +2162,12 @@ drawplayer_common := _drawplayerone::common
         .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT, >_SPIDER2, >_WAVE2, >_SWING2
         .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2
 .endproc
-.popseg
 
-.pushseg 
+; char bg_collision_sub();
 .segment "CODE_2"
 
 .importzp _temp_x, _temp_y, _temp_room, _collision
+
 .export _bg_collision_sub
 .proc _bg_collision_sub
     ; Returns collision block indexed by
@@ -2194,6 +2210,8 @@ drawplayer_common := _drawplayerone::common
 
 .endproc
 
+.segment "CODE_2"
+
 .export crossPRGBankJump
 .proc crossPRGBankJump
 	; AX = address of function
@@ -2213,7 +2231,9 @@ drawplayer_common := _drawplayerone::common
 	JMP mmc3_set_prg_bank_1
 .endproc
 
+; void __fastcall__ playPCM(uint8_t sample);
 .segment "XCD_BANK_01"
+
 .export _playPCM
 .proc _playPCM
 PCM_ptr = ptr1
@@ -2225,20 +2245,20 @@ PCM_ptr = ptr1
 
     ;enable DMC but disable DPCM
     lda #%00000000
-    sta $4010
+    sta FAMISTUDIO_APU_DMC_FREQ
     lda #%00001011
-    sta $4015
+    sta FAMISTUDIO_APU_SND_CHN
     lda #0
 	sta PCM_ptr
-    sta $4013
+    sta FAMISTUDIO_APU_DMC_LEN
     lda #%00011011
-    sta $4015
+    sta FAMISTUDIO_APU_SND_CHN
     ; mute sqs+noi
     lda #$30
-    sta $400c
+    sta FAMISTUDIO_APU_NOISE_VOL
     lda #%00110000
-    sta $4000
-    sta $4004
+    sta FAMISTUDIO_APU_PL1_VOL
+    sta FAMISTUDIO_APU_PL2_VOL
     ;init pcm
 ;    lda #<GeometryDashPCM
  ;   sta PCM_ptr
@@ -2282,7 +2302,7 @@ PCM_ptr = ptr1
     jmp @RestartPtr
 @DoneWithPCM:
     lda #%00011111
-    sta $4015
+    sta FAMISTUDIO_APU_SND_CHN
     lda #<DMC_BANK
 	jmp mmc3_set_prg_bank_0
 
@@ -2301,5 +2321,3 @@ SampleRate:
 	.byte 3		;(22-5+1)/5-1
 	.byte 39	;(204-5+1)/5-1
 .endproc
-
-.popseg
