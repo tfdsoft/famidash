@@ -234,6 +234,10 @@ char bg_coll_mini_blocks() {
 char bg_side_coll_common() {
 	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + (Generic.height >> 1);
 
+	if (mini && (gamemode == CUBE_MODE || gamemode == ROBOT_MODE)) {
+		tmp1 += (currplayer ? 2 : -2);
+	}
+	
 	if (slope_frames > 0) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
 		tmp1 -= (currplayer_gravity ? 4 : -4);
 	}
