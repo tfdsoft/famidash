@@ -432,6 +432,20 @@ char bg_coll_return_slope_U () {
 	Recursively clobbers:
 	tmp1, tmp2, tmp4, tmp7, tmp8
 */
+
+#define COLL_CHECK_BOTTOM \
+			tmp8 = (temp_y) & 0x0f; \
+			bg_collision_sub(); \
+			bg_coll_spikes(); \
+			if (bg_coll_return_D()) return 1; 
+
+#define COLL_CHECK_TOP \
+			tmp8 = (temp_y) & 0x0f; \
+			bg_collision_sub(); \
+			bg_coll_spikes(); \
+			if (bg_coll_return_U()) return 1; 
+
+
 char bg_coll_U() {
 	if (currplayer_vel_y > 0x00) return 0;
 	
@@ -464,17 +478,15 @@ char bg_coll_U() {
 				scroll_y
 			), temp_y, temp_room);
 		
-		for (tmp4 = 0; tmp4 < 3; tmp4++) {
-			tmp8 = (temp_y) & 0x0f;
-			bg_collision_sub();
+		COLL_CHECK_TOP
+		
+		temp_x += Generic.width >> 1; // automatically only the low byte
 
-			bg_coll_spikes();
-			
-			// Clobbers 1, 2, 8
-			if (bg_coll_return_U()) return 1;
+		COLL_CHECK_TOP
 
-			temp_x += Generic.width >> 1; // automatically only the low byte
-		}	
+		temp_x += 0x10 - (Generic.width >> 1); // automatically only the low byte
+
+		COLL_CHECK_TOP
 	}
 	return 0;
 	
@@ -516,17 +528,15 @@ char bg_coll_D() {
 				scroll_y
 			), temp_y, temp_room);
 
-		for (tmp4 = 0; tmp4 < 3; tmp4++) {
-			tmp8 = (temp_y) & 0x0f;
-			bg_collision_sub();
-			
-			bg_coll_spikes();
+		COLL_CHECK_BOTTOM
+		
+		temp_x += Generic.width >> 1; // automatically only the low byte
 
-			// Clobbers 1, 2, 8
-			if (bg_coll_return_D()) return 1;
+		COLL_CHECK_BOTTOM
 
-			temp_x += Generic.width >> 1; // automatically only the low byte
-		}	
+		temp_x += 0x10 - (Generic.width >> 1); // automatically only the low byte
+
+		COLL_CHECK_BOTTOM
 	}
 
 	return 0;
