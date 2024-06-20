@@ -40,7 +40,8 @@
 #define BLOCKSA 4
 #define BLOCKSB 6
 #define BLOCKSC 8
-#define SAWBLADESA 10
+#define BLOCKSD 10
+#define SAWBLADESA 12
 
 const uint8_t difficulty_pal_A[] ={
 	0x21,	// easy
@@ -110,7 +111,7 @@ const unsigned char block_set[] = {
 	BLOCKSA, //time machine
 	BLOCKSA, //cycles
 	BLOCKSC, //xstep
-	BLOCKSB, //clutterfunk
+	BLOCKSD, //clutterfunk
 	BLOCKSB, //theory of everything
 	BLOCKSB, //test1
 	BLOCKSB, //test2
