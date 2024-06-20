@@ -119,12 +119,12 @@ void state_game(){
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
 	if (level == 0x09 || level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {									//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(30);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(28);		// DECO PULSE
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(30);		// DECO PULSE
 	}											//
 	else {											//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(26);		//
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(24);		//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(28);		//
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(26);		//
 	}											//
 
 	if ((options & platformer) && !has_practice_point) {
@@ -209,16 +209,16 @@ void state_game(){
    //     mmc3_set_1kb_chr_bank_3(saw_set[level]);
 	//}
 	if (!retro_mode) {
-		if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(20);
+		if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
 		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
 		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
-		else mmc3_set_2kb_chr_bank_0(16);
+		else mmc3_set_2kb_chr_bank_0(18);
 	}
 	else {
-		if (mini && gamemode != 0 || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
-		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(32);
-		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(32);
-		else mmc3_set_2kb_chr_bank_0(18);
+		if (mini && gamemode != 0 || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(24);
+		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(34);
+		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(34);
+		else mmc3_set_2kb_chr_bank_0(20);
 	}
 //	else mmc3_set_2kb_chr_bank_0(28);
 //
