@@ -135,6 +135,12 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 			), temp_y, temp_room);
 	}
 
+	storeWordSeparately(
+		add_scroll_y(
+			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 3),
+			scroll_y
+		), temp_y, temp_room);
+
 	temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
 
 	for (tmp8 = 0; tmp8 < 2; tmp8++) {
