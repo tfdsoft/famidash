@@ -1,14 +1,15 @@
-#define MENUBANK 60
-#define MENUICONBANK 64
-#define LEVELCOMPLETEBANK 68
+#define MENUBANK 62
+#define MENUICONBANK 66
+#define LEVELCOMPLETEBANK 70
 
 #define SPIKESA 0
 #define SPIKESB 2
 #define BLOCKSA 4
 #define BLOCKSB 6
 #define BLOCKSC 8
-#define SAWBLADESA 10
-#define SLOPESA 12
+#define BLOCKSD 10
+#define SAWBLADESA 12
+#define SLOPESA 14
 
 // game states
 #define MENU 0x01
@@ -403,6 +404,6 @@ const uint8_t splashMenu[16] = {
 };
 
 const uint8_t iconBankTable[] = {
-	14, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58
+	16, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60
 };
 

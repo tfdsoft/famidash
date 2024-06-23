@@ -116,11 +116,11 @@ void bg_coll_spikes() {
 	tmp8
 */
 void bg_coll_floor_spikes() { // used just for checking ground spikes on the floor
-	temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1); // automatically only the low byte
 
 	storeWordSeparately(
 		add_scroll_y(
-			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 1),
+			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 3),
 			scroll_y
 		), temp_y, temp_room);
 
@@ -131,7 +131,26 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 			
 		storeWordSeparately(
 			add_scroll_y(
-				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 1, scroll_y
+				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 3, scroll_y
+			), temp_y, temp_room);
+	}
+
+	storeWordSeparately(
+		add_scroll_y(
+			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 3),
+			scroll_y
+		), temp_y, temp_room);
+
+	temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
+
+	for (tmp8 = 0; tmp8 < 2; tmp8++) {
+		bg_collision_sub();
+	
+		bg_coll_spikes();
+			
+		storeWordSeparately(
+			add_scroll_y(
+				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 3, scroll_y
 			), temp_y, temp_room);
 	}
 }

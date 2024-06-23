@@ -338,63 +338,64 @@ _GAME_CHR:
     .incbin "GRAPHICS/BlocksA.chr" ; (4)
     .incbin "GRAPHICS/BlocksB.chr" ; (6)
     .incbin "GRAPHICS/BlocksC.chr" ; (8)
-    .incbin "GRAPHICS/SawbladesA.chr" ; (10)
-    .incbin "GRAPHICS/slopesA.chr" ; (12)
+    .incbin "GRAPHICS/BlocksD.chr" ; (10)
+    .incbin "GRAPHICS/SawbladesA.chr" ; (12)
+    .incbin "GRAPHICS/slopesA.chr" ; (14)
     .incbin "GRAPHICS/slopesA.chr" ; ()
    
-    .incbin "GRAPHICS/bankicon00.chr" ; 1kb (14)
+    .incbin "GRAPHICS/bankicon00.chr" ; 1kb (16)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (16)
+    .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (18)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesAretro.chr" ; 1kb (18)
+    .incbin "GRAPHICS/bankgamemodesAretro.chr" ; 1kb (20)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesB.chr" ; 1kb (20)
+    .incbin "GRAPHICS/bankgamemodesB.chr" ; 1kb (22)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesBretro.chr" ; 1kb (22)
+    .incbin "GRAPHICS/bankgamemodesBretro.chr" ; 1kb (24)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (24) 
-    .incbin "GRAPHICS/bankblank.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (26) 
-    .incbin "GRAPHICS/bankblank2.chr" ; 1kb
+    .incbin "GRAPHICS/bankblank.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (28) 
-    .incbin "GRAPHICS/bankblankcloud.chr" ; 1kb
+    .incbin "GRAPHICS/bankblank2.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (30) 
+    .incbin "GRAPHICS/bankblankcloud.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (32) 
     .incbin "GRAPHICS/bankblankcloud2.chr" ; 1kb
 
-    .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (32) 
+    .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (34) 
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
-    .incbin "GRAPHICS/bankicon01.chr" ; 1kb (34) 
+    .incbin "GRAPHICS/bankicon01.chr" ; 1kb (36) 
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon02.chr" ; 1kb (36)
+    .incbin "GRAPHICS/bankicon02.chr" ; 1kb (38)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon03.chr" ; 1kb (38)
+    .incbin "GRAPHICS/bankicon03.chr" ; 1kb (40)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon04.chr" ; 1kb (40)
+    .incbin "GRAPHICS/bankicon04.chr" ; 1kb (42)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon05.chr" ; 1kb (42)
+    .incbin "GRAPHICS/bankicon05.chr" ; 1kb (44)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon06.chr" ; 1kb (44)
+    .incbin "GRAPHICS/bankicon06.chr" ; 1kb (46)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon07.chr" ; 1kb (46)
+    .incbin "GRAPHICS/bankicon07.chr" ; 1kb (48)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon08.chr" ; 1kb (48)
+    .incbin "GRAPHICS/bankicon08.chr" ; 1kb (50)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon09.chr" ; 1kb (50)
+    .incbin "GRAPHICS/bankicon09.chr" ; 1kb (52)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0A.chr" ; 1kb (52)
+    .incbin "GRAPHICS/bankicon0A.chr" ; 1kb (54)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0B.chr" ; 1kb (54)
+    .incbin "GRAPHICS/bankicon0B.chr" ; 1kb (56)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0C.chr" ; 1kb (56)
+    .incbin "GRAPHICS/bankicon0C.chr" ; 1kb (58)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0D.chr" ; 1kb (58)
+    .incbin "GRAPHICS/bankicon0D.chr" ; 1kb (60)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
 
-    .incbin "GRAPHICS/menus.chr"    ; 4kb (60)
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (64)
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (68)
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (62)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (66)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (70)
 
 .segment "PARALLAXCHR"
 .export _PARALLAX_CHR
