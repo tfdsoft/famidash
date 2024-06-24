@@ -344,7 +344,7 @@ void customize_screen() {
 				if (icon == 0) icon = MAX_ICONS - 1;
 				else icon--;
 			}
-		} else updateColors();
+		} else if (settingvalue != 3) updateColors();
 
 		if (pad_new[0] & PAD_RIGHT) {
 			settingvalue++;
