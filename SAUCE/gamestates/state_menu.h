@@ -413,16 +413,19 @@ void funsettings() {
 
 		if (discomode) 	one_vram_buffer('g', NTADR_A(26, 13));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 13));	// this is auto optimized by cc65
+		
+		if (gameboy_mode) 	one_vram_buffer('g', NTADR_A(26, 16));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 16));	// this is auto optimized by cc65
 
 		tmp1 = settingvalue;
 
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 3) { settingvalue = 0; }
+			if (settingvalue == 4) { settingvalue = 0; }
 			else { settingvalue++; sfx_play(sfx_select, 0);  }
 		}
 
 		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 3; }
+			if (settingvalue == 0) { settingvalue = 4; }
 			else { settingvalue--; sfx_play(sfx_select, 0);  }
 		}
 
@@ -445,15 +448,20 @@ void funsettings() {
 				case 0x00: invisible ^= 1; break;
 				case 0x01: options ^= platformer; break;
 				case 0x02: retro_mode ^= 1; break;
-				case 0x03: {
+				case 0x03: 
 					if (!discomode) { discomode = 1; one_vram_buffer('1' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
 					else if (discomode & 0x10) { discomode = 0; one_vram_buffer(' ', NTADR_A(25, 14)); one_vram_buffer(' ', NTADR_A(26, 14)); }
 					else if (discomode == 1) { discomode = 1 + 0x02; one_vram_buffer('2' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
 					else {
 						discomode &= 0xFE; discomode = discomode << 1; discomode |= 1; 
 					}
-				break;
-				}
+					break;
+				case 0x04: if (!gameboy_mode) { gameboy_mode = 1;   color_emphasis(COL_EMP_GREY); }
+					   else if (gameboy_mode) { gameboy_mode = 0; color_emphasis(COL_EMP_NORMAL); }
+					   break;
+					
+				
+				
 			};
 		}
 			
@@ -637,7 +645,7 @@ void state_menu() {
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
+		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 
 		tmp3 = 0;
 		
