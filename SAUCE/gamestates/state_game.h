@@ -113,9 +113,6 @@ void state_game(){
 
     while (1) {
 
-	if (gameboy_mode == 1) color_emphasis(COL_EMP_GREY);
-
-
 	pal_col(3,outline_color);
 	pal_col(7,outline_color);
 
