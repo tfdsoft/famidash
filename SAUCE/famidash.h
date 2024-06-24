@@ -193,6 +193,8 @@ uint8_t trails;
 uint8_t decorations;
 
 uint8_t retro_mode;
+uint8_t palette_cycle_mode;
+uint8_t gameboy_mode;
 uint8_t achievements[20];
 
 //uint8_t greyscale_mode;
