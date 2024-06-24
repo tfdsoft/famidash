@@ -2164,7 +2164,7 @@ drawplayer_common := _drawplayerone::common
 .endproc
 
 ; char bg_collision_sub();
-.segment "CODE_2"
+.segment "CODE"
 
 .importzp _temp_x, _temp_y, _temp_room, _collision
 
