@@ -62,6 +62,8 @@ void main(){
     while (1){
         ppu_wait_nmi();
 
+	if (gameboy_mode == 1) color_emphasis(COL_EMP_GREY);
+
 		switch (gameState){
 			case 0x01: {
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
