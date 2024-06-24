@@ -151,7 +151,7 @@ void setdefaultoptions() {
 
 		invisible = 0;
 		color1 = 0x2A;
-		color2 = 0X21;		
+		color2 = 0X2C;		
 		color3 = 0x0F;
 		discomode = 0;
 		icon = 0;
