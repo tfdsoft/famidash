@@ -40,7 +40,7 @@
 #define PINK_PAD_UP				0X26
 #define GREEN_ORB				0X27
 #define RED_ORB					0X28
-#define YELLOW_JUMP_ORB_SMALLER			0x29
+#define YELLOW_ORB_SMALLER			0x29
 #define DECO_START              0x2A
 #define LONG_LIGHT				0x2A
 #define MEDIUM_LIGHT				0x2B
@@ -246,6 +246,7 @@ char sprite_height_lookup(){
             return 0x07;
 		case YELLOW_ORB:
         case YELLOW_ORB_BIGGER:
+	case YELLOW_ORB_SMALLER:
         case BLUE_ORB:
         case PINK_ORB:
         case GREEN_ORB:
@@ -322,6 +323,7 @@ char sprite_height_lookup(){
 #define red_orb    0x04 << 3
 #define ylw_bigger 0x05 << 3
 #define black_orb  0x06 << 3
+#define ylw_smaller 0x07 << 3
 
 const short heights[] = {
 //  cube    ship    ball     ufo    robot   spider  wave   unused
@@ -332,6 +334,7 @@ const short heights[] = {
     0xA50,  0x500,  0x500,  0x500,  0xA50,  0x500,  0x000, 0x000, // red orb
     0x590,  0x590,  0x4C0,  0x590,  0x590,  0x590,  0x000, 0x000, // yellow orb bigger
    -0x1190,-0x1190,-0x1170,-0x1190,-0x1190,-0x1190, 0x000, 0x000, // black orb
+    0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
 };
 
 const short mini_heights[] = {
@@ -343,6 +346,7 @@ const short mini_heights[] = {
 	0x750,  0x500,  0x500,  0x500,  0x750,  0x500,  0x000, 0x000, // red orb
     0x590,  0x590,  0x560,  0x590,  0x590,  0x590,  0x000, 0x000, // yellow orb bigger
    -0x1190,-0x1190,-0x1170,-0x1190,-0x1190,-0x1190, 0x000, 0x000, // black orb
+        0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
 };
 
 #pragma code-name(push, "XCD_BANK_00")
@@ -597,6 +601,14 @@ void sprite_collide_lookup() {
 
     case YELLOW_ORB_BIGGER:
         table_offset = ylw_bigger;
+        if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
+            sprite_gamemode_main();
+        } else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
+            sprite_gamemode_controller_check();
+        }
+        return;
+    case YELLOW_ORB_SMALLER:
+        table_offset = ylw_smaller;
         if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
             sprite_gamemode_main();
         } else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
