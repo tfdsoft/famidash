@@ -16,6 +16,7 @@ SET all_levels= ^
     xstep ^
     clutterfunk ^
     theoryofeverything ^
+    decode ^
     test ^
     test2 ^
     test3 ^

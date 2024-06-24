@@ -152,7 +152,7 @@ uint8_t * level_data;
 #pragma bss-name(push, "SRAM")
 uint8_t SRAM_VALIDATE[4];
 
-#define LEVEL_COUNT 0x10
+#define LEVEL_COUNT 0x11
 uint8_t coin1_obtained[LEVEL_COUNT];
 uint8_t coin2_obtained[LEVEL_COUNT];
 uint8_t coin3_obtained[LEVEL_COUNT];

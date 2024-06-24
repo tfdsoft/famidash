@@ -61,6 +61,13 @@ xstep_speed       = $00
 xstep_bg_color    = $1C
 xstep_grnd_color  = $0C
 
+
+decode_song_number = song_endgame
+decode_game_mode   = $00
+decode_speed       = $00
+decode_bg_color    = $12
+decode_grnd_color  = $02
+
 test_song_number = song_practice
 test_game_mode   = $00
 test_speed       = $00
