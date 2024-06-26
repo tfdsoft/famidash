@@ -6,7 +6,7 @@ void __fastcall__ movement(void);
 void __fastcall__ movement2(void);
 
 void x_movement_coll() {
-	if (slope_frames == 1) {
+	if (slope_type && !slope_frames) {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
 		switch (slope_type) {
 			case SLOPE_22DEG_DOWN:
@@ -22,7 +22,11 @@ void x_movement_coll() {
 				tmp5 = (currplayer_vel_x >> 1); 
 				tmp5 = (tmp5 >> 1) + tmp5;	
 		}
-		currplayer_vel_y = tmp5;
+		if (currplayer_gravity) {
+			currplayer_vel_y = tmp5 + 0x200;
+		} else {
+			currplayer_vel_y = (tmp5 + 0x200)^0xFFFF;
+		}
 	}
 	if (slope_frames) {
 		slope_frames -= 1;
