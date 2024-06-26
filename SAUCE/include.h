@@ -72,7 +72,7 @@
 #include "functions/scroll.h"
 #include "functions/collision.h"  // collision
 #include "functions/reset_level.h"  // reset the stage
-
+#include "functions/chr_loading.h"  // bad chr loading routine
 
 
 

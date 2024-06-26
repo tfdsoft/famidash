@@ -36,3 +36,6 @@ void _mmc3_set_8kb_chr() {
 }
 
 #define mmc3_set_8kb_chr(bank) (xargs[0] = bank, _mmc3_set_8kb_chr())
+
+void __fastcall__ mmc3_tmp_prg_bank_1(unsigned char bank);
+void __fastcall__ mmc3_pop_prg_bank_1();

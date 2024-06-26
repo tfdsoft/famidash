@@ -1,7 +1,6 @@
 // Custom functions implemented specifically for famidash (some are totally not stolen from famitower)
 
 // replacements for C stack
-extern const unsigned char CHR_MENU[];
 
 extern uint8_t xargs[4];
 #pragma zpsym("xargs")

@@ -286,10 +286,19 @@ detectNTSC:
 _famistudio_state = *
 .include "famistudio_ca65.s"
 
+
+
+; chr bank shenanigans
+
 .segment "CHR_BANK_00"
-.export _CHR_MENU
-_CHR_MENU:
-	.incbin "GRAPHICS/new_chr/menu.chr"
+.export _CHR_MENU_GLOBAL
+_CHR_MENU_GLOBAL:
+	.incbin "GRAPHICS/new_chr/menu.chr" ; (512 bytes)
+
+
+
+
+; end of chr bank shenanigans
 
 .segment "PCM_BANK"
 GeometryDashPCMA:

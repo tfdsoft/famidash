@@ -1,16 +1,22 @@
-uint8_t* PPU_ADDR = (uint8_t*)0x2006;
-uint8_t* PPU_DATA = (uint8_t*)0x2007;
+#define FIRST_CHR_BANK 32
 
-void verybadchrload(uint8_t* data, uint16_t bytes){
+extern const unsigned char CHR_MENU_GLOBAL[];
+
+void verybadchrload(uint8_t* data, uint8_t bytes, uint8_t where){
     
+    mmc3_tmp_prg_bank_1(FIRST_CHR_BANK); // THIS DOES NOT EXIST IN THE C SPACE FSR //
     // womp womp, here we go iguess
 
     // start at the beginning
-    *PPU_ADDR = high_byte(data);
-    *PPU_ADDR = low_byte(data);
+    POKE(0x2006, where);
+    POKE(0x2006, 0x00);
 
-    for(tmp5 = 0; tmp5 < bytes; tmp5++){
+    tmp6 = (bytes << 8);
+    for(tmp5 = 0; tmp5 < tmp6; tmp5++){
         tmp1 = data[tmp5];
-        *PPU_DATA = tmp1;
+        POKE(0x2007, data);
     }
+
+
+    mmc3_pop_prg_bank_1();
 }
