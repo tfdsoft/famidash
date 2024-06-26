@@ -346,7 +346,7 @@ const short mini_heights[] = {
 	0x750,  0x500,  0x500,  0x500,  0x750,  0x500,  0x000, 0x000, // red orb
     0x590,  0x590,  0x560,  0x590,  0x590,  0x590,  0x000, 0x000, // yellow orb bigger
    -0x1190,-0x1190,-0x1170,-0x1190,-0x1190,-0x1190, 0x000, 0x000, // black orb
-        0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
+    0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
 };
 
 #pragma code-name(push, "XCD_BANK_00")
@@ -512,7 +512,7 @@ void sprite_collide_lookup() {
     case COINGOTTEN1:
         if (!has_practice_point) {
             coins |= COIN_1;
-//	        sfx_play(sfx_click, 0);
+	        sfx_play(sfx_coin, 0);
             activesprites_type[index] = 0xFF;
         }
         return;
@@ -520,7 +520,7 @@ void sprite_collide_lookup() {
     case COINGOTTEN2:
         if (!has_practice_point) {
             coins |= COIN_2;
-//	        sfx_play(sfx_click, 0);
+	        sfx_play(sfx_coin, 0);
             activesprites_type[index] = 0xFF;
         }
         return;
@@ -528,7 +528,7 @@ void sprite_collide_lookup() {
     case COINGOTTEN3:
         if (!has_practice_point) {
             coins |= COIN_3;
-//	        sfx_play(sfx_click, 0);
+	        sfx_play(sfx_coin, 0);
             activesprites_type[index] = 0xFF;
         }
         return;
