@@ -38,7 +38,7 @@
 
 #define JUMP_VEL -0x590
 #define MINI_JUMP_VEL -0x4D0
-#define UFO_JUMP_VEL -0x3E0
+#define UFO_JUMP_VEL -0x3B0
 #define MINI_UFO_JUMP_VEL -0x380
 
 #define ROBOT_JUMP_VEL -0x2B0
