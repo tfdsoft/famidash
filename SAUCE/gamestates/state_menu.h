@@ -593,7 +593,7 @@ void state_menu() {
 
 	//mmc3_set_8kb_chr(MENUBANK);
 	mmc3_set_8kb_chr(0);
-	verybadchrload(CHR_MENU, 4096);
+	verybadchrload(&CHR_MENU, 4096);
 
 	set_scroll_x(0);
     set_scroll_y(0);
