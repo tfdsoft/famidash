@@ -63,7 +63,7 @@ void bg_coll_spikes() {
 		case COL_DEATH_TOP:
 			if ((uint8_t)(temp_y & 0x0f) < 0x04) {			
 				tmp2 = (uint8_t)(temp_x & 0x0f);				// If Y pos inside block < 8px, die
-				if (tmp2 >= 0x06 && tmp2 < 0x0a) {		// If X pos even insider, die even more
+				if (tmp2 >= 0x04 && tmp2 < 0x0c) {		// If X pos even insider, die even more
 					cube_data[currplayer] = 1;						
 				}
 			}		
@@ -71,7 +71,7 @@ void bg_coll_spikes() {
 		case COL_DEATH_BOTTOM:
 			if ((uint8_t)(temp_y & 0x0f) > 0x0c) {							// If Y pos inside block ≥ 8px, die
 				tmp2 = (uint8_t)(temp_x & 0x0f);				// If Y pos inside block < 8px, die
-				if (tmp2 >= 0x06 && tmp2 < 0x0a) {		// If X pos even insider, die even more
+				if (tmp2 >= 0x04 && tmp2 < 0x0c) {		// If X pos even insider, die even more
 					cube_data[currplayer] = 1;						
 				}
 			}								// else nothing
@@ -134,6 +134,17 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 3, scroll_y
 			), temp_y, temp_room);
 	}
+
+	// Check middle of cube
+
+	storeWordSeparately(
+		add_scroll_y(
+			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + (Generic.height >> 1), scroll_y
+		), temp_y, temp_room);
+
+	bg_collision_sub();
+
+	bg_coll_spikes();
 
 	storeWordSeparately(
 		add_scroll_y(
