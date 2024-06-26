@@ -34,6 +34,27 @@ char bg_coll_sides() {
 */
 void bg_coll_spikes() {
 	switch (collision) {
+		case COL_UP_LEFT_SPIKE:
+			if (!(temp_y & 0x08)) {
+				tmp2 = (uint8_t)(temp_x & 0x0f);
+				if (tmp2 >= 0x02 && tmp2 < 0x06)
+					cube_data[currplayer] = 1;						
+			}
+			break;
+		case COL_UP_RIGHT_SPIKE:
+			if (!(temp_y & 0x08)) {
+				tmp2 = (uint8_t)(temp_x & 0x0f);
+				if (tmp2 >= 0x0a && tmp2 < 0x0d)
+					cube_data[currplayer] = 1;						
+			}
+			break;
+		case COL_UP_BOTH_SPIKES:
+			if (!(temp_y & 0x08)) {
+				tmp2 = (uint8_t)(temp_x & 0x07);
+				if (tmp2 >= 0x02 && tmp2 < 0x06)
+					cube_data[currplayer] = 1;						
+			}
+			break;
 		case COL_DOWN_LEFT_SPIKE:
 			if ((temp_y & 0x08)) {
 				tmp2 = (uint8_t)(temp_x & 0x0f);
@@ -45,6 +66,13 @@ void bg_coll_spikes() {
 			if ((temp_y & 0x08)) {
 				tmp2 = (uint8_t)(temp_x & 0x0f);
 				if (tmp2 >= 0x0a && tmp2 < 0x0d)
+					cube_data[currplayer] = 1;						
+			}
+			break;
+		case COL_DOWN_BOTH_SPIKES:
+			if ((temp_y & 0x08)) {
+				tmp2 = (uint8_t)(temp_x & 0x07);
+				if (tmp2 >= 0x02 && tmp2 < 0x06)
 					cube_data[currplayer] = 1;						
 			}
 			break;
