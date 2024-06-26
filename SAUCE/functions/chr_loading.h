@@ -1,10 +1,17 @@
 #define FIRST_CHR_BANK 32
 
+extern void mmc3_tmp_prg_bank_1();
 extern const unsigned char CHR_MENU_GLOBAL[];
 
+
+
+
+// data: name of the array
+// bytes: amount of bytes to write x256
+// where: which 256 byte segment to write to
 void verybadchrload(uint8_t* data, uint8_t bytes, uint8_t where){
     
-    mmc3_tmp_prg_bank_1(FIRST_CHR_BANK); // THIS DOES NOT EXIST IN THE C SPACE FSR //
+    mmc3_tmp_prg_bank_1(FIRST_CHR_BANK);
     // womp womp, here we go iguess
 
     // start at the beginning
@@ -14,7 +21,7 @@ void verybadchrload(uint8_t* data, uint8_t bytes, uint8_t where){
     tmp6 = (bytes << 8);
     for(tmp5 = 0; tmp5 < tmp6; tmp5++){
         tmp1 = data[tmp5];
-        POKE(0x2007, data);
+        POKE(0x2007, tmp1);
     }
 
 

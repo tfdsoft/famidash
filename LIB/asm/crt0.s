@@ -293,7 +293,7 @@ _famistudio_state = *
 .segment "CHR_BANK_00"
 .export _CHR_MENU_GLOBAL
 _CHR_MENU_GLOBAL:
-	.incbin "GRAPHICS/new_chr/menu.chr" ; (512 bytes)
+	.incbin "GRAPHICS/new_chr/menu.chr" ; (4kb)
 
 
 

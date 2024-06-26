@@ -57,8 +57,10 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
     _mmc3_set_prg_bank_1:
         STA mmc3PRG1Bank
     mmc3_tmp_prg_bank_1:    ; ONLY MEANT FOR USE WITH NMI-RELATED TEMPORARY BANKSWITCHING
+    _mmc3_tmp_prg_bank_1:
         PHA
         lda #MMC3_REG_SEL_PRG_BANK_1
+    .export _mmc3_tmp_prg_bank_1
     mmc3_internal_set_bank:
         ora mmc3ChrInversionSetting
         sta MMC3_REG_BANK_SELECT
