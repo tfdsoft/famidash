@@ -16,7 +16,7 @@
 // Since the carts are gonna be multiregion and famiclones have
 // issues supporting illegal opcodes, this should be disabled
 // for actual cart releases
-#define USE_ILLEGAL_OPCODES 1
+#define USE_ILLEGAL_OPCODES 0
 
 // set to 1 to enable metatile printing
 // #define PRINT_METATILES 1

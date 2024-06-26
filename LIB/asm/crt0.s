@@ -285,9 +285,7 @@ detectNTSC:
 .export _famistudio_state
 _famistudio_state = *
 .include "famistudio_ca65.s"
-
-.segment "CHR_BANK_00"
-	.incbin "GRAPHICS/new_chr/menu.chr"
+	
 
 .segment "PCM_BANK"
 GeometryDashPCMA:
