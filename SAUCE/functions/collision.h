@@ -361,7 +361,7 @@ char bg_coll_slope() {
 				tmp8 += (currplayer_gravity ? -8 : 8);
 			}
 			tmp8 &= 0x0f;
-			slope_frames = 2;
+			slope_frames = 1;
 			was_on_slope_counter = 2;
 			return 1;
 		case COL_SLOPE_RD:
@@ -373,8 +373,9 @@ char bg_coll_slope() {
 				tmp8 = tmp4 - tmp7;
 				if (pad[controllingplayer] & PAD_A) {
 					slope_frames = 0;
+					slope_type = 0;
 				} else {
-					slope_frames = 2; //signal BG_COLL_R to not check stuff
+					slope_frames = 1; //signal BG_COLL_R to not check stuff
 					slope_type = SLOPE_45DEG_UP;
 					was_on_slope_counter = 2;
 				}
