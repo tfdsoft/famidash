@@ -287,6 +287,8 @@ _famistudio_state = *
 .include "famistudio_ca65.s"
 
 .segment "CHR_BANK_00"
+.export _CHR_MENU
+_CHR_MENU:
 	.incbin "GRAPHICS/new_chr/menu.chr"
 
 .segment "PCM_BANK"
