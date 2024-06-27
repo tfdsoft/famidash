@@ -1,0 +1,8 @@
+These menus are not compiled into the game, and are used for refrence and editing.
+
+To get a menu update in-game, export the nametable as a C header WITH RLE C packing
+enabled, and copy the data MINUS THE BRACKETS AND NAME) in the .h file into
+SAUCE/defines/menunametable.h under the cooresponding menu. DO NOT CHANGE THE MENU NAMES,
+add a comment (//comment) beside the old name with the new one if you need to
+
+	- FicusmcHouseplant - Jun 25/26, 2024
