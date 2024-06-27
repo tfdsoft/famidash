@@ -121,18 +121,18 @@ void __fastcall__ refreshmenu(void) {
 	if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(22, 9));
 	else one_vram_buffer(' ', NTADR_A(22, 9));
 	one_vram_buffer('0'+tmp7, NTADR_A(23, 9));
-//palette stuff
+	//palette stuff
 	pal_col(0,colors_list[level]);
 	pal_col(0xE,colors_list[level]);
-//coin stuff
+	//coin stuff
 	coins = 0;
 
 
-// then in the function...
-// combine all three into a single number from 0 - 7 to represent which coins have been grabbed
+	// then in the function...
+	// combine all three into a single number from 0 - 7 to represent which coins have been grabbed
 		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
 		tmp7 = byte(tmp7<<1) + tmp7;
-// actually draw the coins
+	// actually draw the coins
 		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12));
 
 };
@@ -607,7 +607,7 @@ void state_menu() {
 
 	kandowatchesyousleep = 0;
 
-//	mmc3_set_prg_bank_1(GET_BANK(state_menu));
+	//	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
 	switch (kandotemp){
 		case 0x00:	music_play(song_menu_theme); break;
@@ -622,7 +622,7 @@ void state_menu() {
 	POKE(0xA001, 0x80);
 
 	kandotemp = 1;
-//	invisible = 0;
+	//	invisible = 0;
 	
 
 	oam_clear();
@@ -732,7 +732,7 @@ void bgmtest() {
 		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
 		if (pad_new[0] & PAD_RIGHT && settingvalue == 0) { song++; if (song == song_max) {song = 0;} }
 		if (pad_new[0] & PAD_LEFT && settingvalue == 0) { if (song == 0) {song = song_max - 1;} else song--; }
-//		if (pad_new[0] & PAD_RIGHT && settingvalue == 1) sfx ++;
+	//		if (pad_new[0] & PAD_RIGHT && settingvalue == 1) sfx ++;
 		if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A) && settingvalue == 0) music_play(song);
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
