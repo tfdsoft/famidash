@@ -96,8 +96,8 @@
 #pragma charmap (0x77, 0xAA) // w	
 #pragma charmap (0x78, 0xAB) // x	
 
-#pragma charmap (0x79, 0x1C) // y	crown left
-#pragma charmap (0x7A, 0x1D) // z	crown right
+#pragma charmap (0x79, 0x4E) // y	crown left
+#pragma charmap (0x7A, 0x4F) // z	crown right
 // #pragma charmap (0x7B, 0x7B) // {
 // #pragma charmap (0x7C, 0x7C) // |
 // #pragma charmap (0x7D, 0x7D) // }

@@ -1,6 +1,6 @@
-#define MENUBANK 62
-#define MENUICONBANK 66
-#define LEVELCOMPLETEBANK 70
+#define MENUBANK 66
+#define MENUICONBANK 70
+#define LEVELCOMPLETEBANK 74
 
 #define SPIKESA 0
 #define SPIKESB 2
@@ -406,6 +406,6 @@ const uint8_t splashMenu[16] = { //MAIN MENU
 };
 
 const uint8_t iconBankTable[] = {
-	16, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60
+	16, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64
 };
 
