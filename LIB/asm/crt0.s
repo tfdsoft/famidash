@@ -291,14 +291,16 @@ _famistudio_state = *
 ; chr bank shenanigans
 
 .segment "CHR_BANK_00"
-.export _CHR_MENU_GLOBAL
 _CHR_MENU_GLOBAL:
-	.incbin "GRAPHICS/new_chr/menu.chr" ; (4kb)
-
-
-
+	.incbin "GRAPHICS/new_chr/menu_global.chr" ; (512)
+	.export _CHR_MENU_GLOBAL
+_CHR_MENU_LOGOBUTTONS:
+	.incbin "GRAPHICS/new_chr/menu_logobuttons.chr" ; (768)
+	.export _CHR_MENU_LOGOBUTTONS
 
 ; end of chr bank shenanigans
+
+
 
 .segment "PCM_BANK"
 GeometryDashPCMA:
