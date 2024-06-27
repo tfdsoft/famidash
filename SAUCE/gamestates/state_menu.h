@@ -264,7 +264,7 @@ void updateColors() {
 				icon_colors[settingvalue] = 0x0C;
 		}
 	}
-	if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) icon_colors[settingvalue] = 0x0D;	
+	//if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) icon_colors[settingvalue] = 0x0D;	
 }
 
 void customize_screen() {
