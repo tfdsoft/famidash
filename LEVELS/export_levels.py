@@ -21,6 +21,8 @@ def vertical_rle_with_single_tile(lines):
 	run_length = 1
 	for strtile in column_tiles[1:]:
 		tile = int(strtile)
+		if (tile == -1):
+			tile = 0
 		if current_run == tile and run_length < 0x80:
 			run_length += 1
 		else:
