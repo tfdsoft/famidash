@@ -295,8 +295,11 @@ _CHR_MENU_GLOBAL:
 	.incbin "GRAPHICS/new_chr/menu_global.chr" ; (512)
 	.export _CHR_MENU_GLOBAL
 _CHR_MENU_LOGOBUTTONS:
-	.incbin "GRAPHICS/new_chr/menu_logobuttons.chr" ; (768)
+	.incbin "GRAPHICS/new_chr/menu_logobuttons.chr" ; (1536)
 	.export _CHR_MENU_LOGOBUTTONS
+_CHR_MENU_DIFFICULTIES:
+	.incbin "GRAPHICS/new_chr/menu_difficulties.chr" ; (512)
+	.export _CHR_MENU_DIFFICULTIES
 
 ; end of chr bank shenanigans
 

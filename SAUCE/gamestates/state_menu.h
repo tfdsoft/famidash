@@ -146,7 +146,12 @@ void levelselection() {
   
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
+	mmc3_set_8kb_chr(0);
+	verybadchrload(CHR_MENU_DIFFICULTIES, 2, 14);
+
+
 	pal_bright(0);
+
 	// pal_bg(paletteMenu);
 	set_scroll_x(0);
 	set_scroll_y(0);  
@@ -593,7 +598,9 @@ void state_menu() {
 
 	//mmc3_set_8kb_chr(MENUBANK);
 	mmc3_set_8kb_chr(0);
-	verybadchrload(CHR_MENU_GLOBAL, 16, 0);
+	verybadchrload(CHR_MENU_GLOBAL, 2, 0);
+	verybadchrload(CHR_MENU_LOGOBUTTONS, 6, 2);
+	
 
 	set_scroll_x(0);
     set_scroll_y(0);
@@ -636,8 +643,8 @@ void state_menu() {
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;
 	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-	one_vram_buffer('a', tmp5);
-	one_vram_buffer('b', addloNOC(tmp5, 1));
+	one_vram_buffer(0x2E, tmp5);
+	one_vram_buffer(0x2F, addloNOC(tmp5, 1));
 	pad[0] = pad_poll(0); // read the first controller
 	pad_new[0] = get_pad_new(0);
 	while (!(pad_new[0] & PAD_START)){
@@ -667,13 +674,13 @@ void state_menu() {
 		if (tmp3) {    // menu selection incremented
 			tmp4 = menuselection; ++tmp4;
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-			one_vram_buffer('a', tmp5);
-			one_vram_buffer('b', addloNOC(tmp5, 1));
+			one_vram_buffer(0x2E, tmp5);
+			one_vram_buffer(0x2F, addloNOC(tmp5, 1));
 
 			tmp4 += tmp3;   // Get the old index
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-			one_vram_buffer(' ', tmp5);
-			one_vram_buffer(' ', addloNOC(tmp5, 1));
+			one_vram_buffer(0x00, tmp5);
+			one_vram_buffer(0x00, addloNOC(tmp5, 1));
 		}
 	}		
 

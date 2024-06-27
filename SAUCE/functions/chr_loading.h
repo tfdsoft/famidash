@@ -1,7 +1,9 @@
 #define FIRST_CHR_BANK 32
 
 extern void mmc3_tmp_prg_bank_1();
-extern const unsigned char CHR_MENU_GLOBAL[];
+extern unsigned char CHR_MENU_GLOBAL[];
+extern unsigned char CHR_MENU_LOGOBUTTONS[];
+extern unsigned char CHR_MENU_DIFFICULTIES[];
 
 
 
