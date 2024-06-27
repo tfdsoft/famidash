@@ -451,7 +451,7 @@ void funsettings() {
 				case 0x03: 
 					if (!discomode) { discomode = 1; one_vram_buffer('1' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
 					else if (discomode & 0x10) { discomode = 0; one_vram_buffer(' ', NTADR_A(25, 14)); one_vram_buffer(' ', NTADR_A(26, 14)); }
-					else if (discomode == 1) { discomode = 1 + 0x02; one_vram_buffer('2' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
+					else if (discomode == 1) { discomode = 1 + 0x01; one_vram_buffer('2' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
 					else {
 						discomode &= 0xFE; discomode = discomode << 1; discomode |= 1; 
 					}
