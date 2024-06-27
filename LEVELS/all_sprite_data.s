@@ -3426,9 +3426,12 @@ sprite_data_decode:
   .byte $10,$19,$d0,$00,$8f
   .byte $a0,$19,$e0,$00,$10
   .byte $b0,$19,$e0,$00,$fc
+  .byte $c0,$19,$b0,$00,$20
   .byte $c0,$19,$d0,$00,$20
   .byte $c0,$19,$e0,$00,$fc
-  .byte $d0,$19,$d0,$00,$00
+  .byte $c0,$19,$f0,$00,$20
+  .byte $d0,$19,$b0,$00,$00
+  .byte $d0,$19,$e0,$00,$00
   .byte $b0,$1a,$90,$00,$a1
   .byte $c0,$1a,$90,$00,$a2
   .byte $d0,$1a,$90,$00,$a3
@@ -3714,8 +3717,8 @@ sprite_data_decode:
   .byte $00,$33,$a8,$01,$0a
   .byte $70,$34,$38,$01,$0a
   .byte $80,$34,$38,$01,$0a
-  .byte $10,$35,$80,$01,$0f
-  .byte $20,$35,$80,$01,$0f
+  .byte $a0,$35,$d0,$00,$0f
+  .byte $a0,$35,$80,$01,$0f
   .byte $ff
 .segment "SPR_BANK_02"
 sprite_data_test:
