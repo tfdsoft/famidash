@@ -101,7 +101,7 @@ def export_bg(folder: str, levels: Iterable[str]):
             # if the next level ends past this one, then set the remaining bytes for the next bank
             print(f"filled_bytes {filled_bytes} next_level_offset {next_level_offset} remaining_bytes {remaining_bytes}")
             filled_bytes = next_level_offset
-            if 0x2000 < next_level_offset:
+            if 0x2000 <= next_level_offset:
                 remaining_bytes = next_level_offset - 0x2000
         current_bank += 1
 
