@@ -31,8 +31,7 @@ void draw_sprites(void){
 	if (has_practice_point) {
 		
 		if (long_temp_x > 10) { 
-			long_temp_x--;
-			long_temp_x--;
+			long_temp_x -= 2;
 			oam_meta_spr(long_temp_x, idx16_hi_NOC(practice_player_y, currplayer)-1, Practice_Sprites[0]);
 		}
 		// else if (long_temp_x < 10) {}
@@ -129,21 +128,14 @@ void draw_sprites(void){
 		tmp6 = currplayer_vel_x << 1;
 		tmp5 = player_x[0] - tmp6;
 
-		oam_meta_spr(high_byte(tmp5), player_old_posy[1], Trail_Circ);
-		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[2], Trail_Circ);
-		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[3], Trail_Circ);
-		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[4], Trail_Circ);
-		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[5], Trail_Circ);
-		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[6], Trail_Circ);
-		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[7], Trail_Circ);
-		tmp5 -= tmp6;
-		oam_meta_spr(high_byte(tmp5), player_old_posy[8], Trail_Circ);
+		tmp1 = 8;
+
+		do {
+			oam_meta_spr(high_byte(tmp5), uint8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
+			tmp5 = tmp5 - tmp6;
+			tmp1--;
+		} while (tmp1 != 0);
+
 	}
 #undef spr_type
 #undef animation_ptr
