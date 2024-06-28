@@ -226,9 +226,6 @@ char sprite_height_lookup(){
 	switch(type) {
 		case NOSPRITE:
 			return 0;
-		case SMALL_SPIKE_BOTTOM:
-		case SMALL_SPIKE_TOP:
-			return 0x07;
 		case FORCED_TRAILS_ON:
 			forced_trails = 1;
 			activesprites_type[index] = 0xFF;
@@ -252,9 +249,6 @@ char sprite_height_lookup(){
 		case RED_ORB:
 		case D_BLOCK:
 		case S_BLOCK:
-		case BIG_SPIKE_BOTTOM:
-		case BIG_SPIKE_TOP:
-			return 0x0f;
 		case GRAVITY_UP_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_UPWARDS_PORTAL:
@@ -430,11 +424,6 @@ void sprite_collide_lookup() {
 
 	switch (collided) {
 
-	case BIG_SPIKE_BOTTOM:
-	case BIG_SPIKE_TOP:
-	case SMALL_SPIKE_BOTTOM:
-	case SMALL_SPIKE_TOP:
-		uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x01); return;
 	
 	// Portal game mode switches
 	case S_BLOCK: dashing[currplayer] = 0; return;
