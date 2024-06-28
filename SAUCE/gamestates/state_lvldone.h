@@ -12,9 +12,12 @@ void state_lvldone() {
 #define delay_spr_0 tmp4
 #define delay_timer tmpptr1
 #define top_scroll scroll_x
+	pal_bright(0);
     ppu_off();
+	
 	mmc3_set_8kb_chr(0);
 	verybadchrload(CHR_MENU_GLOBAL, 2, 0);
+	verybadchrload(CHR_MENU_LOGOBUTTONS, 6, 2);
 
 	delay_spr_0 = 0x20;
 
@@ -26,7 +29,7 @@ void state_lvldone() {
     pal_bg(paletteMenu);
     pal_spr(paletteMenu);
 
-	mmc3_set_8kb_chr(LEVELCOMPLETEBANK);
+	//mmc3_set_8kb_chr(LEVELCOMPLETEBANK);
 
 	// Make an a nametable for the chain
     vram_adr(NAMETABLE_A);
