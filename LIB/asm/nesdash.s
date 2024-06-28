@@ -2,7 +2,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8  ; C-safe temp storage
 .import pusha, pushax, callptr4
-.import _scroll_x
+.import _scroll_x, _discomode
 
 .macpack longbranch
 
@@ -238,6 +238,8 @@ _init_rld:
 	STA _speed			;   Starting speed
 	incw_check level_data
 
+	LDA _discomode
+	BNE @noset
 	LDA (level_data),y	;	Starting BG color
 	AND #$3F			;	Store normal color (pal_col(0, tmp2))
 	STA PAL_BUF+0		;__ 
