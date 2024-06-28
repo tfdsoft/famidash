@@ -5,6 +5,36 @@
 void __fastcall__ movement(void);
 void __fastcall__ movement2(void);
 
+const uint8_t G_Table[]={
+	0x11,
+	0x12,
+	0x13,
+	0x14,
+	0x15,
+	0x16,
+	0x17,
+	0x18,
+	0x19,
+	0x1A,
+	0x1B,
+	0x1C
+};
+
+const uint8_t BG_Table[]={
+	0x21,
+	0x22,
+	0x23,
+	0x24,
+	0x25,
+	0x26,
+	0x27,
+	0x28,
+	0x29,
+	0x2A,
+	0x2B,
+	0x2C
+};
+
 void x_movement_coll() {
 	if (slope_type && !slope_frames) {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
@@ -159,6 +189,10 @@ void state_game(){
 		}
 	}
 	    if (discomode && !(kandoframecnt & discorefreshrate)) {
+
+
+
+/*   old disco mode stuff
 			maketmp2();
 			pal_col(0x1F,tmp2);
 			maketmp2();
@@ -166,7 +200,10 @@ void state_game(){
 			maketmp2();
 			pal_col(0x1D,tmp2);
 
+
 			tmp3 = rand8();
+
+
 			if (tmp3 < 0x80) tmp3 += 0x80;
 			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
 			tmp2 = (tmp3 & 0x3F);  		    
@@ -187,6 +224,38 @@ void state_game(){
 					pal_col(9, (tmp2-0x10)); 
 				}
 			}
+*/
+			
+//   new disco mode stuff
+
+			tmp3 = 0x80 + G_Table[discoframe];
+			
+			if (tmp3 < 0x80) tmp3 += 0x80;
+			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+			tmp2 = (tmp3 & 0x3F);  		    
+				pal_col(0, tmp2);
+				if (tmp2-0x10 & 0xC0) { 
+					pal_col(1, 0x0f); 
+					pal_col(9, 0x0f); 
+				} else { 
+					pal_col(1, (tmp2-0x10)); 
+					pal_col(9, (tmp2-0x10)); 
+				}
+		
+			tmp3 = 0xC0 + BG_Table[discoframe];
+			
+			if (tmp3 < 0x80) tmp3 += 0x80;
+			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+			tmp2 = (tmp3 & 0x3F);  		    
+				pal_col(6, tmp2);
+				if (tmp2-0x10 & 0xC0) { 
+					pal_col(5, 0x0f); 
+				} else { 
+					pal_col(5, (tmp2-0x10)); 
+				}
+			discoframe++;
+			if (discoframe == 12) discoframe = 0;
+
 		}
 
 
