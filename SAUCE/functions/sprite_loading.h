@@ -76,11 +76,7 @@
 #define DIAMOND_SHIFTED_			0x48
 #define PULSE_ORB				0x49
 #define MUSIC_NOTE				0x4A
-#define BIG_SPIKE_BOTTOM			0x4B
-#define SMALL_SPIKE_BOTTOM			0x4C
-#define BIG_SPIKE_TOP				0x4D
-#define SMALL_SPIKE_TOP				0x4E
-
+#define SWING_MODE				0x4B
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -277,6 +273,7 @@ char sprite_height_lookup(){
 		case GRAVITY_UP_PORTAL:
 		case MINI_PORTAL:
 		case WAVE_MODE:
+		case SWING_MODE:
 		case GROWTH_PORTAL:
 			return 0x2f;
 		case COIN1:
@@ -465,6 +462,9 @@ void sprite_collide_lookup() {
 		return;
 	case WAVE_MODE:
 		gamemode = 6;
+		return;
+	case SWING_MODE:
+		gamemode = 7;
 		return;
 	case MINI_PORTAL:
 		mini = 1;

@@ -1339,16 +1339,31 @@ const unsigned char Portal_Gamemode_Robot[]={
 const unsigned char Portal_Gamemode_Spider[]={
 
 	  0,  0,0x41,1,
-	  0, 16,0x47,1,
+	  0, 16,0xF5,1,
 	  0, 32,0x41,1|OAM_FLIP_V,
 	  8,  0,0x43,1,
 
-	  8, 16,0x49,1,
+	  8, 16,0xF7,1,
 	  8, 32,0x43,1|OAM_FLIP_V,
 	 16,  0,0x45,1,
-	 16, 16,0x4B,1,
+	 16, 16,0xF9,1,
 
 	 16, 32,0x45,1|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Portal_Gamemode_Swing[]={
+
+	  0,  0,0x61,1,
+	  0, 16,0xEF,1,
+	  0, 32,0x61,1|OAM_FLIP_V,
+	  8,  0,0x63,1,
+
+	  8, 16,0xF1,1,
+	  8, 32,0x63,1|OAM_FLIP_V,
+	 16,  0,0x65,1,
+	 16, 16,0xF3,1,
+
+	 16, 32,0x65,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Wave[]={
@@ -2162,6 +2177,7 @@ const unsigned char * const Metasprites[]={
 	Diamond_Shifted_Right,
 	Pulsing_Ball,
 	Music_Note,
+	Portal_Gamemode_Swing,
 	};
 
 
@@ -2246,6 +2262,7 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -2318,6 +2335,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 
+	0,
 	0,
 	0,
 	0,
