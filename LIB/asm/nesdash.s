@@ -247,19 +247,23 @@ _init_rld:
 	cpx #$ff
 	bne @noset
 	STA _lastbgcolortype
-@noset:
 	SEC					;	A = faded OG color (A - 10)
 	SBC #$10			;__
 	BPL :+				;
 		LDA #$0F		;	if (faded color invalid) color = $0F (canonical black)
-	:					;__
+	:
+					;__
 	STA PAL_BUF+1		;__	Store faded color (pal_col(1, tmp2-0x10 or 0x0F))
 	STA PAL_BUF+9		;__	Store faded color (pal_col(1, tmp2-0x10 or 0x0F))
+@noset:
 	incw_check level_data
 
+	LDA _discomode
+	bne @nonono
 	LDA (level_data),y	;	Starting ground color
 	AND #$3F			;	Store normal color (pal_col(6, tmp2))
 	STA PAL_BUF+6		;__ 
+@nonono:
 	ldx _lastgcolortype
 	cpx #$ff
 	bne @noset2
