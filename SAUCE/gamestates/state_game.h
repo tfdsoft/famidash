@@ -5,7 +5,7 @@
 void __fastcall__ movement(void);
 void __fastcall__ movement2(void);
 
-const uint8_t G_Table[]={
+const uint8_t BG_Table[]={
 	0x11,
 	0x12,
 	0x13,
@@ -20,7 +20,7 @@ const uint8_t G_Table[]={
 	0x1C
 };
 
-const uint8_t BG_Table[]={
+const uint8_t G_Table[]={
 	0x21,
 	0x22,
 	0x23,
@@ -156,11 +156,17 @@ void state_game(){
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
 	if (level == 0x09 || level == 0x0A || level == 0x0B || level == 0x0C || level == 0x0D || level == 0x0E) {									//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);		//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);		//  BANKBLANKCLOUD
 		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(30);		// DECO PULSE
 	}											//
+	else if (level == 0x0F || level == 0x10) {
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(36);		//  BANKBLANKCLOUD
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(34);		// DECO PULSE
+		
+
+	}
 	else {											//
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(28);		//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(28);		//  BANKBLANK
 		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(26);		//
 	}											//
 
