@@ -453,7 +453,7 @@ void funsettings() {
 					else if (discomode & 0x10) { discomode = 0; one_vram_buffer(' ', NTADR_A(25, 14)); one_vram_buffer(' ', NTADR_A(26, 14)); }
 					else if (discomode == 1) { discomode = 1 + 0x01; one_vram_buffer('2' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
 					else {
-						discomode &= 0xFE; discomode = discomode << 1; discomode |= 1; 
+						discomode = discomode << 1;
 					}
 					break;
 				case 0x04: if (!gameboy_mode) { gameboy_mode = 1;   color_emphasis(COL_EMP_GREY); }
