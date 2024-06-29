@@ -4,8 +4,8 @@ extern void mmc3_tmp_prg_bank_1();
 extern unsigned char CHR_MENU_GLOBAL[];
 extern unsigned char CHR_MENU_LOGOBUTTONS[];
 extern unsigned char CHR_MENU_DIFFICULTIES[];
-
-
+extern unsigned char CHR_PUSAB_TRANSBG[];
+extern unsigned char CHR_PUSAB_BLACKBG[];
 
 
 // data: name of the array

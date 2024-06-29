@@ -315,7 +315,7 @@ void bgmtest() {
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(bgmtestscreen);   	
-	#include "defines/mainmenu_charmap.h"
+	#include "defines/bg_charmap.h"
 	ppu_on_all();
 	pal_fade_to(0,4);
 	while (1) {

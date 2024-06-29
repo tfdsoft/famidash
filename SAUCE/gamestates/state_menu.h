@@ -581,7 +581,7 @@ void settings() {
 }
 
 
-#include "defines/mainmenu_charmap.h"
+#include "defines/bg_charmap.h"
 
 #ifdef FLAG_ENABLE_VER_NUM
 	#if FLAG_BETA_BUILD
@@ -600,6 +600,7 @@ void state_menu() {
 	mmc3_set_8kb_chr(0);
 	verybadchrload(CHR_MENU_GLOBAL, 2, 0);
 	verybadchrload(CHR_MENU_LOGOBUTTONS, 6, 2);
+	verybadchrload(CHR_PUSAB_TRANSBG, 3, 8);
 	
 
 	set_scroll_x(0);

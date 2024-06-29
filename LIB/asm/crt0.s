@@ -300,6 +300,12 @@ _CHR_MENU_LOGOBUTTONS:
 _CHR_MENU_DIFFICULTIES:
 	.incbin "GRAPHICS/new_chr/menu_difficulties.chr" ; (512)
 	.export _CHR_MENU_DIFFICULTIES
+_CHR_PUSAB_TRANSBG:
+	.incbin "GRAPHICS/new_chr/pusab_transbg.chr" ; (768)
+	.export _CHR_PUSAB_TRANSBG
+_CHR_PUSAB_BLACKBG:
+	.incbin "GRAPHICS/new_chr/pusab_blackbg.chr" ; (768)
+	.export _CHR_PUSAB_BLACKBG
 
 ; end of chr bank shenanigans
 
