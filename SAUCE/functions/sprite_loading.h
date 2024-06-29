@@ -134,7 +134,7 @@ void init_sprites(void){
 	do {
 		if (sprite_data[0] == TURN_OFF) break;
 		load_next_sprite();
-		if (idx16_hi_NOC(activesprites_x, spr_index) != 0) activesprites_active[spr_index] = 0;
+		if (activesprites_x_hi[spr_index] != 0) activesprites_active[spr_index] = 0;
 	} while (spr_index != 0);
 }
 
@@ -489,7 +489,7 @@ void sprite_collide_lookup() {
 		return;    
 
 	case SHIP_MODE:
-		target_scroll_y = activesprites_y[index & 0x7F];
+		target_scroll_y = uint16SepArrLoad(activesprites_y, index);
 		//intentional leak
 	case BALL_MODE:
 	case UFO_MODE:

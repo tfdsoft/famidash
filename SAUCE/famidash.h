@@ -292,8 +292,10 @@ uint8_t practice_bg_color_type;
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
 #define max_loaded_sprites 16
-uint16_t activesprites_x[max_loaded_sprites];
-uint16_t activesprites_y[max_loaded_sprites];
+uint8_t activesprites_x_lo[max_loaded_sprites];
+uint8_t activesprites_x_hi[max_loaded_sprites];
+uint8_t activesprites_y_lo[max_loaded_sprites];
+uint8_t activesprites_y_hi[max_loaded_sprites];
 uint8_t activesprites_type[max_loaded_sprites];
 uint8_t activesprites_anim_frame[max_loaded_sprites];
 int8_t activesprites_anim_frame_count[max_loaded_sprites];

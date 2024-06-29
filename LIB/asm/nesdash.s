@@ -1157,7 +1157,9 @@ play:
 ; void load_next_sprite();
 .segment "CODE_2"
 
-.import _activesprites_x, _activesprites_y, _activesprites_type
+.import _activesprites_x_lo, _activesprites_x_hi
+.import _activesprites_y_lo, _activesprites_y_hi
+.import _activesprites_type
 .import _activesprites_realx, _activesprites_realy
 
 .export _load_next_sprite := load_next_sprite
@@ -1174,9 +1176,7 @@ SpriteOffset = ptr2
 
     ; And also keep the "max sprite id" number in x
     ; This is premultiplied by two for the word sized x/y fields which come first
-    lda _spr_index
-    asl
-    tax
+    ldx _spr_index
 
     ; Now read the data into the sprite
     
@@ -1187,24 +1187,22 @@ SpriteOffset = ptr2
     iny
     
     ; X - 2 bytes
-    sta _activesprites_x,x
+    sta _activesprites_x_lo,x
+	sta _activesprites_realx,x
     lda (_sprite_data),y
     iny
-    sta _activesprites_x+1,x
+    sta _activesprites_x_hi,x
 
     ; Y - 2 bytes
     lda (_sprite_data),y
     iny
-    sta _activesprites_y,x
+    sta _activesprites_y_lo,x
+	sta _activesprites_realy,x
     lda (_sprite_data),y
     iny
-    sta _activesprites_y+1,x
+    sta _activesprites_y_hi,x
 
     ; id - 1 byte
-    ; Since its 1 byte, we want to divide the "pre multiplied" offset by 2
-    txa
-    lsr
-    tax
     lda (_sprite_data),y
     ;   no iny, as we ain't using y anymore
     sta _activesprites_type,x
@@ -1218,16 +1216,6 @@ SpriteOffset = ptr2
     BCC :+
         INC _sprite_data+1
     :
-
-    ; Copy the low bytes for the active sprite here as well.
-    ; Note we couldn't write this eariler when x was multiplied by 2
-    txa
-    asl
-    tay
-    lda _activesprites_x,y
-    sta _activesprites_realx,x
-    lda _activesprites_y,y
-    sta _activesprites_realy,x
 
     ; Increment the _spr_index and and it with #$0F
     INX
@@ -1259,15 +1247,12 @@ SpriteOffset = ptr2
     ldx #16 - 1
 
 check_sprite_loop:
-        ; X is the current sprite object, y is the premultiplied index for two byte fields
-        txa
-        asl
-        tay
+        ; X is the current sprite object
         ; Load two byte X coord to see if we went offscreen
-        lda _activesprites_x, y
+        lda _activesprites_x_lo, x
         sec
         sbc _scroll_x
-        lda _activesprites_x+1, y
+        lda _activesprites_x_hi, x
         sbc _scroll_x+1
         bpl sprite_alive
             txa
@@ -1281,16 +1266,16 @@ check_sprite_loop:
         ; Sprite is still alive, so check to see if its on screen
         bne sprite_offscreen
         ; sprite is alive AND onscreen x, so now check the Y position
-        lda _activesprites_y, y
+        lda _activesprites_y_lo, x
         clc ; NOTICE: intentionally subtract 1 extra to position them on the screen better
         sbc _scroll_y
         sta _activesprites_realy, x
-        lda _activesprites_y+1, y
+        lda _activesprites_y_hi, x
         sbc _scroll_y+1
         bne sprite_offscreen
 
         ; totally onscreen so finish updating its scroll position
-        lda _activesprites_x, y
+        lda _activesprites_x_lo, x
         sec
         sbc _scroll_x
         sta _activesprites_realx, x
