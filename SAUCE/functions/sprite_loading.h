@@ -82,6 +82,7 @@
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
+#define H_BLOCK					0xF8
 #define S_BLOCK					0xF9
 #define D_BLOCK					0xFA
 #define GRAVITY_UP_INVISIBLE_PORTAL		0XFB
@@ -253,6 +254,7 @@ char sprite_height_lookup(){
 		case RED_ORB:
 		case D_BLOCK:
 		case S_BLOCK:
+		case H_BLOCK:
 			return 0x0f;
 		case GRAVITY_UP_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_INVISIBLE_PORTAL:
@@ -463,6 +465,7 @@ void sprite_collide_lookup() {
 	
 	// Portal game mode switches
 	case S_BLOCK: dashing[currplayer] = 0; return;
+	case H_BLOCK: hblocked[currplayer] = 1; return;
 	case D_BLOCK: kandowavewalk = 1; return;
 	case CUBE_MODE:
 		if (!retro_mode) gamemode = 0;

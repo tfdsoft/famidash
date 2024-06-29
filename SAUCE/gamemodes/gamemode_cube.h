@@ -44,20 +44,20 @@ void cube_movement(void){
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 	
-	if(!currplayer_gravity){
+	if(!currplayer_gravity || (currplayer_gravity && hblocked[currplayer])){
 		if(bg_coll_D()){ // check collision below
 			high_byte(currplayer_y) -= eject_D;
 			low_byte(currplayer_y) = 0;
 			currplayer_vel_y = 0;
 		}
-	} else {
+	} if (currplayer_gravity || (!currplayer_gravity && hblocked[currplayer])) {
 		if(bg_coll_U()){ // check collision above
 			high_byte(currplayer_y) -= eject_U;
 			low_byte(currplayer_y) = 0;
 			currplayer_vel_y = 0;
 		}
 	}
-
+	hblocked[currplayer] = 0;
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
