@@ -57,7 +57,6 @@ void cube_movement(void){
 			currplayer_vel_y = 0;
 		}
 	}
-	hblocked[currplayer] = 0;
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
@@ -67,7 +66,7 @@ void cube_movement(void){
 //		}
 //	}
 
-	if (gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0){
+	if (gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0 && !hblocked[currplayer]){
 		//if(bg_coll_D2()) {
 			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
 			if(pad[controllingplayer] & PAD_A) {
@@ -82,7 +81,7 @@ void cube_movement(void){
 			
 			}
 	}
-	else if (gamemode == 4 && !retro_mode && (currplayer_vel_y == 0)){
+	else if (gamemode == 4 && !retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer]){
 		uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
 		if(pad_new[controllingplayer] & PAD_A) {
 			if (!currplayer_gravity) {
@@ -98,7 +97,7 @@ void cube_movement(void){
 		}
 	}
 	
-	else if (gamemode == 4 && retro_mode && (currplayer_vel_y == 0)){
+	else if (gamemode == 4 && retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer]){
 		uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
 		if(pad[controllingplayer] & PAD_A) {
 			if (!currplayer_gravity) {
@@ -114,7 +113,7 @@ void cube_movement(void){
 		}
 	}
 	
-	else if (gamemode == 4 && robotjumptime[currplayer]) {
+	else if (gamemode == 4 && robotjumptime[currplayer] && !hblocked[currplayer]) {
 			cube_data[currplayer] = 0;
 			if (robotjumptime[currplayer]) uint8_dec(robotjumptime, currplayer); 
 			if(pad[controllingplayer] & PAD_A) {
@@ -135,6 +134,7 @@ void cube_movement(void){
 			robotjumpframe[0] = 3;
 	}
 	
+	hblocked[currplayer] = 0;
 //jim's shit
 	if (retro_mode) {
 		if (pad_new[currplayer] & PAD_B && !has_practice_point) {
