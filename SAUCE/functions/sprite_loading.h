@@ -183,8 +183,10 @@ char sprite_height_lookup(){
 	}
 
 	else if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
-				if (!discomode) tmp2 = (type & 0x3F);                        
-				else return 0x00;
+				if (discomode) return 0;
+					
+				tmp2 = (type & 0x3F);                        
+				
 						
 				if (type >= 0xC0){
 					pal_col(6, tmp2);
@@ -193,7 +195,7 @@ char sprite_height_lookup(){
 					} else { 
 							pal_col(5, (tmp2-0x10)); 
 					}
-						lastgcolortype = type;
+					lastgcolortype = type;
 				} else {
 					pal_col(0, tmp2);
 					if (tmp2-0x10 & 0xC0) { 
@@ -203,7 +205,7 @@ char sprite_height_lookup(){
 							pal_col(1, (tmp2-0x10)); 
 							pal_col(9, (tmp2-0x10)); 
 					}
-						lastbgcolortype = type;
+					lastbgcolortype = type;
 				}
 				activesprites_type[index] = 0xFF; 
 				return 0;
@@ -211,7 +213,9 @@ char sprite_height_lookup(){
 
 	else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
 	else if (type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) // Speed portals
-		return 0x1F;	
+		return 0x1F;
+	else if (type >= CUBE_MODE && type <= ROBOT_MODE) // Player portals
+		return 0x2F;	
 	else if ((type >= 0x2A && type <= 0x43) || (type >= 0x47 && type <= 0x4A)) {    // Decorations
 		if (twoplayer || !decorations) activesprites_type[index] = 0xFF; 
 				return 0;
@@ -254,11 +258,7 @@ char sprite_height_lookup(){
 		case GRAVITY_UP_UPWARDS_PORTAL:
 			return 0x01;
 //            return 0x0F;
-		case CUBE_MODE:
-		case SHIP_MODE:
-		case BALL_MODE:
-		case ROBOT_MODE:
-		case UFO_MODE:
+
 		case SPIDER_MODE:
 		case SINGLE_PORTAL:
 		case DUAL_PORTAL:
@@ -458,6 +458,8 @@ void sprite_collide_lookup() {
 
 	switch (collided) {
 
+	case NOSPRITE:
+		return;
 	
 	// Portal game mode switches
 	case S_BLOCK: dashing[currplayer] = 0; return;
@@ -481,8 +483,6 @@ void sprite_collide_lookup() {
 		// fallthrough
 	case TELEPORT_PORTAL_ENTER:
 		currplayer_y = teleport_output;
-		return;
-	case NOSPRITE:
 		return;
 	case SPIDER_MODE:
 		gamemode = 5;
@@ -700,15 +700,15 @@ void sprite_collide(){
 	Generic.x = high_byte(currplayer_x) + 1;
 	Generic.y = high_byte(currplayer_y);
 
-	if (!mini) {
-		Generic.width = CUBE_WIDTH;
-		Generic.height = CUBE_HEIGHT;
-	}
-	
-	else {
-		Generic.width = MINI_CUBE_WIDTH;
-		Generic.height = MINI_CUBE_HEIGHT;
-	}    
+	switch (mini) {
+		case 0:
+			Generic.width = CUBE_WIDTH;
+			Generic.height = CUBE_HEIGHT;
+			break;
+		case 1:
+			Generic.width = MINI_CUBE_WIDTH;
+			Generic.height = MINI_CUBE_HEIGHT;
+	};    
 	Generic2.width = 0x0f;
 	for (index = 0; index < max_loaded_sprites; ++index){
 		tmp3 = activesprites_active[index];
@@ -728,6 +728,7 @@ void sprite_collide(){
 			}
 		}
 	}
+
 	if (!mini) {
 		Generic.height = CUBE_HEIGHT;
 	}
