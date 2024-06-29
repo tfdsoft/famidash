@@ -256,6 +256,8 @@ uint8_t settingvalue;
 
 uint8_t gameState = 0x01;
 
+uint16_t teleport_output;
+
 uint8_t parallax_scroll_x;
 uint8_t invincible_counter;
 uint32_t scroll_x; // gotta love massive levels amirite fellas

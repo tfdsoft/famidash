@@ -79,6 +79,8 @@
 #define SWING_MODE				0x4B
 #define DASH_ORB_45DEG_UP			0x4C
 #define DASH_GRAVITY_ORB_45DEG_UP		0x4D
+#define TELEPORT_PORTAL_ENTER			0x4E
+#define TELEPORT_PORTAL_EXIT			0x4F
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -240,7 +242,8 @@ char sprite_height_lookup(){
 		case GRAVITY_PAD_DOWN_INVISIBLE:
 		case GRAVITY_PAD_UP_INVISIBLE:
 			return 0x07;
-				case YELLOW_ORB:
+
+		case YELLOW_ORB:
 		case YELLOW_ORB_BIGGER:
 		case YELLOW_ORB_SMALLER:
 		case BLUE_ORB:
@@ -276,6 +279,10 @@ char sprite_height_lookup(){
 		case WAVE_MODE:
 		case SWING_MODE:
 		case GROWTH_PORTAL:
+		case TELEPORT_PORTAL_ENTER:
+			return 0x2f;
+		case TELEPORT_PORTAL_EXIT:
+			teleport_output = activesprites_y[index];
 			return 0x2f;
 		case COIN1:
 			if (coin1_obtained[level]) {
@@ -483,6 +490,9 @@ void sprite_collide_lookup() {
 		target_scroll_y = activesprites_y[index & 0x7F];
 //	return;
 		// fallthrough
+	case TELEPORT_PORTAL_ENTER:
+		currplayer_y = teleport_output;
+		return;
 	case NOSPRITE:
 		return;
 	case SPIDER_MODE:
