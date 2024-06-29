@@ -373,54 +373,85 @@ static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 
 static void sprite_gamemode_main() {
 	if (pad[controllingplayer] & PAD_A) {	
-			if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
-			if (cube_data[currplayer] & 2) {
-				cube_data[currplayer] = 0;
-				if (collided == BLUE_ORB) {
-					currplayer_gravity ^= 0x01;
-					if (gamemode != BALL_MODE) {
-						currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
-					} else {
-						currplayer_vel_y = (!currplayer_gravity) ? ORB_BALL_HEIGHT_BLUE^0xFFFF : ORB_BALL_HEIGHT_BLUE;
-					}
-				} else if (collided == GREEN_ORB) {
-					currplayer_gravity ^= 0x01;
-					if (currplayer_gravity && currplayer_vel_y < 0x530) currplayer_vel_y = 0x530;
-					else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
-				} else if (collided == DASH_ORB) {
-						currplayer_vel_y = 1;
-						dashing[currplayer] = 1;
-				} else if (collided == DASH_GRAVITY_ORB) {
-						currplayer_vel_y = 1;
-						dashing[currplayer] = 1;
-						if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
+		if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
+		if (cube_data[currplayer] & 2) {
+			cube_data[currplayer] = 0;
+
+			switch (collided) {
+			case BLUE_ORB:
+				currplayer_gravity ^= 0x01;
+				if (gamemode != BALL_MODE) {
+					currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
 				} else {
-					currplayer_vel_y = sprite_gamemode_y_adjust();
+					currplayer_vel_y = (!currplayer_gravity) ? ORB_BALL_HEIGHT_BLUE^0xFFFF : ORB_BALL_HEIGHT_BLUE;
 				}
-			}
+				break;
+			case GREEN_ORB:
+				currplayer_gravity ^= 0x01;
+				if (currplayer_gravity && currplayer_vel_y < 0x530) currplayer_vel_y = 0x530;
+				else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
+				break;
+			case DASH_ORB:
+				currplayer_vel_y = 1;
+				dashing[currplayer] = 1;
+				break;
+			case DASH_GRAVITY_ORB:
+				currplayer_vel_y = 1;
+				dashing[currplayer] = 1;
+				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
+				break;
+			case DASH_ORB_45DEG_UP:
+				currplayer_vel_y = currplayer_vel_x;
+				dashing[currplayer] = 2;
+				break;
+			case DASH_GRAVITY_ORB_45DEG_UP:
+				currplayer_vel_y = currplayer_vel_x;
+				dashing[currplayer] = 2;
+				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
+				break;
+			default:
+				currplayer_vel_y = sprite_gamemode_y_adjust();
+				//break;
+			};
 		}
+	}
 }
 
 static void sprite_gamemode_controller_check() {
 	if (pad_new[controllingplayer] & PAD_A) {	
 		uint8_store(cube_data, currplayer, cube_data[currplayer] & 0x01);
-		if (collided == BLUE_ORB) {
+		switch (collided) {
+		case BLUE_ORB:
 			currplayer_gravity ^= 0x01;
 			currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
-		} else if (collided == GREEN_ORB) {
+			break;
+		case GREEN_ORB:
 			currplayer_gravity ^= 0x01;
 			if (currplayer_gravity && currplayer_vel_y < 0x530) currplayer_vel_y = 0x530;
 			else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
-		} else if (collided == DASH_ORB) {
-				currplayer_vel_y = 0;
-				dashing[currplayer] = 1;
-		} else if (collided == DASH_GRAVITY_ORB) {
-				currplayer_vel_y = 0;
-				dashing[currplayer] = 1;
-				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
-		} else {
+			break;
+		case DASH_ORB:
+			currplayer_vel_y = 0;
+			dashing[currplayer] = 1;
+			break;
+		case DASH_GRAVITY_ORB:
+			currplayer_vel_y = 0;
+			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+			dashing[currplayer] = 1;
+			break;
+		case DASH_ORB_45DEG_UP:
+			currplayer_vel_y = -currplayer_vel_x;
+			dashing[currplayer] = 2;
+			break;
+		case DASH_GRAVITY_ORB_45DEG_UP:
+			currplayer_vel_y = -currplayer_vel_x;
+			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+			dashing[currplayer] = 2;
+			break;			
+		default:
 			currplayer_vel_y = sprite_gamemode_y_adjust();
-		}
+			//break;
+		};
 	}
 }
 
@@ -575,6 +606,8 @@ void sprite_collide_lookup() {
 	// collided with an orb
 	case DASH_ORB:
 	case DASH_GRAVITY_ORB:
+	case DASH_ORB_45DEG_UP:
+	case DASH_GRAVITY_ORB_45DEG_UP:
  //       table_offset = 0;
 		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 			sprite_gamemode_main();

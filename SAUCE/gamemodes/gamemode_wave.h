@@ -26,7 +26,9 @@ void wave_movement(void){
 
 		currplayer_y += currplayer_vel_y;
 	}	
+	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
 	else currplayer_vel_y = 1;
+
 	
 	
 

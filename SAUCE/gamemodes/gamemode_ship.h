@@ -35,7 +35,9 @@ void ship_movement(void){
 
 		currplayer_y += currplayer_vel_y;
 	}	
+	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
 	else currplayer_vel_y = 1;
+
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 	if (mini) {
