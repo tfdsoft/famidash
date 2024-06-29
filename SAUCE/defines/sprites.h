@@ -1346,7 +1346,7 @@ const unsigned char Portal_Gamemode_Spider[]={
 	  8, 16,0xF7,1,
 	  8, 32,0x43,1|OAM_FLIP_V,
 	 16,  0,0x45,1,
-	 16, 16,0xF9,1,
+	 16, 16,0xCB,1,
 
 	 16, 32,0x45,1|OAM_FLIP_V,
 	0x80
