@@ -41,7 +41,7 @@
 #define GREEN_ORB				0X27
 #define RED_ORB					0X28
 #define YELLOW_ORB_SMALLER			0x29
-#define DECO_START              0x2A
+#define DECO_START				0x2A
 #define LONG_LIGHT				0x2A
 #define MEDIUM_LIGHT				0x2B
 #define SHORT_LIGHT				0x2C
@@ -68,7 +68,7 @@
 #define LONG_LIGHT_LEFT				0x41
 #define SHORT_LIGHT_U_8_PIXELS			0x42
 #define CHAIN_U_8_PIXELS			0x43
-#define DECO_END                0x43
+#define DECO_END				0x43
 #define BLACK_ORB				0x44
 #define DASH_ORB				0x45
 #define DASH_GRAVITY_ORB			0x46
