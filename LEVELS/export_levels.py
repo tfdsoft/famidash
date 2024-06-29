@@ -167,7 +167,7 @@ def export_spr(folder: str, levels: Iterable[str]):
 							y_lo -= 8                     
 						elif count2 == 4:
 							y_lo -= 8                     
-					if int(a) in [0x42,0x43,0x47,0x4E]:
+					if int(a) in [0x42,0x43,0x47]:
 						y_lo -= 8
 					level_data.append([x_lo, x_hi, y_lo, y_hi, obj_id])
 					# newfile.write("0, ")					# unused

@@ -1260,6 +1260,36 @@ const unsigned char Growth_Portal[]={
 	0x80
 };
 
+const unsigned char Teleport_Portal_Enter[]={
+
+	  0,  0,0xD5,0,
+	  0, 16,0xDB,0,
+	  0, 32,0xD5,0|OAM_FLIP_V,
+	  8,  0,0xD7,0,
+
+	  8, 16,0xDD,0,
+	  8, 32,0xD7,0|OAM_FLIP_V,
+	 16,  0,0xD9,0,
+	 16, 16,0xDF,0,
+
+	 16, 32,0xD9,0|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Teleport_Portal_Exit[]={
+
+	 0,  0,0xD9,1|OAM_FLIP_H,
+	 0, 16,0xDF,1|OAM_FLIP_H,
+
+	 0, 32,0xD9,1|OAM_FLIP_H|OAM_FLIP_V,
+	  8,  0,0xD7,1|OAM_FLIP_H,
+
+	  8, 16,0xDD,1|OAM_FLIP_H,
+	  8, 32,0xD7,1|OAM_FLIP_H|OAM_FLIP_V,
+	  16,  0,0xD5,1|OAM_FLIP_H,
+	  16, 16,0xDB,1|OAM_FLIP_H,
+	  16, 32,0xD5,1|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
 
 const unsigned char Portal_Gamemode_Cube[]={
 
@@ -2193,7 +2223,9 @@ const unsigned char * const Metasprites[]={
 	Music_Note,
 	Portal_Gamemode_Swing,
 	Dash_Orb_45Deg_UP,
-	Dash_Gravity_Orb_45Deg_UP
+	Dash_Gravity_Orb_45Deg_UP,
+	Teleport_Portal_Enter,
+	Teleport_Portal_Exit
 	};
 
 
@@ -2281,6 +2313,8 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -2353,6 +2387,8 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 
+	0,
+	0,
 	0,
 	0,
 	0,
