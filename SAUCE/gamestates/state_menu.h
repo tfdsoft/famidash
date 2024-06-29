@@ -141,12 +141,13 @@ void state_menu();
 //void bgmtest();
 
 
-#include "defines/mainmenu_charmap.h"
+#include "defines/color1_charmap.h"
 void levelselection() {
   
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	mmc3_set_8kb_chr(0);
+	verybadchrload(CHR_PUSAB_BLACKBG, 3, 11);
 	verybadchrload(CHR_MENU_DIFFICULTIES, 2, 14);
 
 
