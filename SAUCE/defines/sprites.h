@@ -1531,6 +1531,20 @@ const unsigned char Dash_Gravity_Orb[]={
 	0x80
 };
 
+const unsigned char Dash_Orb_45Deg_UP[]={
+
+	  0,  0,0xCD,0,
+	  8,  0,0xCF,0,
+	0x80
+};
+
+const unsigned char Dash_Gravity_Orb_45Deg_UP[]={
+
+	  0,  0,0xCD,1,
+	  8,  0,0xCF,1,
+	0x80
+};
+
 
 
 const unsigned char Yellow_Jump_Orb[]={
@@ -2178,6 +2192,8 @@ const unsigned char * const Metasprites[]={
 	Pulsing_Ball,
 	Music_Note,
 	Portal_Gamemode_Swing,
+	Dash_Orb_45Deg_UP,
+	Dash_Gravity_Orb_45Deg_UP
 	};
 
 
@@ -2263,6 +2279,8 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -2335,6 +2353,8 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 
+	0,
+	0,
 	0,
 	0,
 	0,

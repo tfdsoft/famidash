@@ -77,6 +77,8 @@
 #define PULSE_ORB				0x49
 #define MUSIC_NOTE				0x4A
 #define SWING_MODE				0x4B
+#define DASH_ORB_45DEG_UP			0x4C
+#define DASH_GRAVITY_ORB_45DEG_UP		0x4D
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -246,6 +248,8 @@ char sprite_height_lookup(){
 		case BLACK_ORB:
 		case DASH_ORB:
 		case DASH_GRAVITY_ORB:
+		case DASH_ORB_45DEG_UP:
+		case DASH_GRAVITY_ORB_45DEG_UP:
 		case RED_ORB:
 		case D_BLOCK:
 		case S_BLOCK:
