@@ -117,17 +117,6 @@ const unsigned char OUTLINES[]={
 		0x0F
 };
 
-void maketmp2(){
-	tmp2 = rand8();
-	if (tmp2 & 0x30) {
-				if ((uint8_t)(tmp2 & 0x0F) >= 0x0D)
-						tmp2 = (tmp2 & 0x30) | 0x0C;
-		} else {
-				if (((tmp2 - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
-						tmp2 = 0x0C;
-		}		
-	return;
-}
 
 
 void init_sprites(void){
