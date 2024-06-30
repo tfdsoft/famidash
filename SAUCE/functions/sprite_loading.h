@@ -81,6 +81,8 @@
 #define DASH_GRAVITY_ORB_45DEG_UP		0x4D
 #define TELEPORT_PORTAL_ENTER			0x4E
 #define TELEPORT_PORTAL_EXIT			0x4F
+#define DASH_ORB_45DEG_DOWN			0x50
+#define DASH_GRAVITY_ORB_45DEG_DOWN		0x51
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -247,6 +249,8 @@ char sprite_height_lookup(){
 		case DASH_GRAVITY_ORB:
 		case DASH_ORB_45DEG_UP:
 		case DASH_GRAVITY_ORB_45DEG_UP:
+		case DASH_ORB_45DEG_DOWN:
+		case DASH_GRAVITY_ORB_45DEG_DOWN:
 		case RED_ORB:
 		case D_BLOCK:
 		case S_BLOCK:
@@ -390,21 +394,30 @@ static void sprite_gamemode_main() {
 				else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
 				break;
 			case DASH_ORB:
-				currplayer_vel_y = 1;
+				currplayer_vel_y = 0;
 				dashing[currplayer] = 1;
 				break;
 			case DASH_GRAVITY_ORB:
-				currplayer_vel_y = 1;
+				currplayer_vel_y = 0;
 				dashing[currplayer] = 1;
 				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
 				break;
 			case DASH_ORB_45DEG_UP:
-				currplayer_vel_y = currplayer_vel_x;
+				currplayer_vel_y = -currplayer_vel_x;
 				dashing[currplayer] = 2;
 				break;
 			case DASH_GRAVITY_ORB_45DEG_UP:
-				currplayer_vel_y = currplayer_vel_x;
+				currplayer_vel_y = -currplayer_vel_x;
 				dashing[currplayer] = 2;
+				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
+				break;
+			case DASH_ORB_45DEG_DOWN:
+				currplayer_vel_y = currplayer_vel_x;
+				dashing[currplayer] = 3;
+				break;
+			case DASH_GRAVITY_ORB_45DEG_DOWN:
+				currplayer_vel_y = currplayer_vel_x;
+				dashing[currplayer] = 3;
 				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
 				break;
 			default:
@@ -428,23 +441,26 @@ static void sprite_gamemode_controller_check() {
 			if (currplayer_gravity && currplayer_vel_y < 0x530) currplayer_vel_y = 0x530;
 			else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
 			break;
+		case DASH_GRAVITY_ORB:
+			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+			//intentional leak
 		case DASH_ORB:
 			currplayer_vel_y = 0;
 			dashing[currplayer] = 1;
 			break;
-		case DASH_GRAVITY_ORB:
-			currplayer_vel_y = 0;
+		case DASH_GRAVITY_ORB_45DEG_UP:
 			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
-			dashing[currplayer] = 1;
-			break;
+			//intentional leak
 		case DASH_ORB_45DEG_UP:
 			currplayer_vel_y = -currplayer_vel_x;
 			dashing[currplayer] = 2;
-			break;
-		case DASH_GRAVITY_ORB_45DEG_UP:
-			currplayer_vel_y = -currplayer_vel_x;
+			break;	
+		case DASH_GRAVITY_ORB_45DEG_DOWN:
 			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
-			dashing[currplayer] = 2;
+			//intentional leak
+		case DASH_ORB_45DEG_DOWN:
+			currplayer_vel_y = currplayer_vel_x;
+			dashing[currplayer] = 3;
 			break;			
 		default:
 			currplayer_vel_y = sprite_gamemode_y_adjust();
@@ -469,16 +485,15 @@ void sprite_collide_lookup() {
 		if (!retro_mode) gamemode = 0;
 		else gamemode = 4;
 		return;    
+
+	case SHIP_MODE:
+		target_scroll_y = activesprites_y[index & 0x7F];
+		//intentional leak
 	case BALL_MODE:
 	case UFO_MODE:
 	case ROBOT_MODE:
 		gamemode = collided;
 		robotjumptime[currplayer] = 0;
-		return;
-	case SHIP_MODE:
-		gamemode = collided;
-		robotjumptime[currplayer] = 0;
-		target_scroll_y = activesprites_y[index & 0x7F];
 		return;
 	case TELEPORT_PORTAL_ENTER:
 		high_byte(currplayer_y) = teleport_output;
@@ -605,89 +620,53 @@ void sprite_collide_lookup() {
 		return;
 
 	// collided with an orb
-	case DASH_ORB:
-	case DASH_GRAVITY_ORB:
-	case DASH_ORB_45DEG_UP:
-	case DASH_GRAVITY_ORB_45DEG_UP:
- //       table_offset = 0;
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
-			sprite_gamemode_main();
-		} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
-			sprite_gamemode_controller_check();
-		}
-		return;
+
 
 
 	case YELLOW_ORB:
 		table_offset = 0;
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
-			sprite_gamemode_main();
-		} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
-			sprite_gamemode_controller_check();
-		}
-		return;
+		//intentional leak
+	case DASH_ORB:
+	case DASH_GRAVITY_ORB:
+	case DASH_ORB_45DEG_UP:
+	case DASH_GRAVITY_ORB_45DEG_UP:
+	case DASH_ORB_45DEG_DOWN:
+	case DASH_GRAVITY_ORB_45DEG_DOWN:
+	case BLUE_ORB:
+		break;
 
 	case YELLOW_ORB_BIGGER:
 		table_offset = ylw_bigger;
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
-			sprite_gamemode_main();
-		} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
-			sprite_gamemode_controller_check();
-		}
-		return;
+		break;
 	case YELLOW_ORB_SMALLER:
 		table_offset = ylw_smaller;
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
-			sprite_gamemode_main();
-		} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
-			sprite_gamemode_controller_check();
-		}
-		return;
-
-	case BLUE_ORB:
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE || gamemode == SPIDER_MODE) {
-			sprite_gamemode_main();
-		} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
-			sprite_gamemode_controller_check();
-		}
-		return;
+		break;
 
 	case PINK_ORB:
 		table_offset = pink_orb;
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
-			sprite_gamemode_main();
-		} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
-			sprite_gamemode_controller_check();
-		}
-		return;
+		break;
 
 	case BLACK_ORB:
 		table_offset = black_orb;
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
-			sprite_gamemode_main();
-		} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
-			sprite_gamemode_controller_check();
-		}
-		return;
+		break;
 
 	case RED_ORB:
 		table_offset = red_orb;
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
-			sprite_gamemode_main();
-		} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
-			sprite_gamemode_controller_check();
-		}
-		return;
+		break;
 	
 	case GREEN_ORB:
 		table_offset = red_orb;
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
-			sprite_gamemode_main();
-		} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE || gamemode == WAVE_MODE) {
-			sprite_gamemode_controller_check();
-		}
+		break;
+	default:
 		return;
+	};
+	
+	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
+		sprite_gamemode_main();
+	} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
+		sprite_gamemode_controller_check();
 	}
+	return;
 	
 }
 
