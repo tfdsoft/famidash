@@ -1574,6 +1574,19 @@ const unsigned char Dash_Gravity_Orb_45Deg_UP[]={
 	  8,  0,0xCF,1,
 	0x80
 };
+const unsigned char Dash_Orb_45Deg_DOWN[]={
+
+	  0,  0,0xCD,0|OAM_FLIP_V,
+	  8,  0,0xCF,0|OAM_FLIP_V,
+	0x80
+};
+
+const unsigned char Dash_Gravity_Orb_45Deg_DOWN[]={
+
+	  0,  0,0xCD,1|OAM_FLIP_V,
+	  8,  0,0xCF,1|OAM_FLIP_V,
+	0x80
+};
 
 
 
@@ -2225,7 +2238,10 @@ const unsigned char * const Metasprites[]={
 	Dash_Orb_45Deg_UP,
 	Dash_Gravity_Orb_45Deg_UP,
 	Teleport_Portal_Enter,
-	Teleport_Portal_Exit
+	Teleport_Portal_Exit,
+	Dash_Orb_45Deg_DOWN,
+	Dash_Gravity_Orb_45Deg_DOWN
+	
 	};
 
 
@@ -2315,6 +2331,8 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -2387,6 +2405,8 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 
+	0,
+	0,
 	0,
 	0,
 	0,
