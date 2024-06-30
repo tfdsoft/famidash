@@ -88,6 +88,7 @@
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
+#define J_BLOCK					0xF7
 #define H_BLOCK					0xF8
 #define S_BLOCK					0xF9
 #define D_BLOCK					0xFA
@@ -257,11 +258,20 @@ char sprite_height_lookup(){
 		case D_BLOCK:
 		case S_BLOCK:
 		case H_BLOCK:
+		case J_BLOCK:
 			return 0x0f;
 		case GRAVITY_UP_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_UPWARDS_PORTAL:
 		case GRAVITY_UP_UPWARDS_PORTAL:
+		case YELLOW_PAD_DOWN:
+		case YELLOW_PAD_UP:
+		case PINK_PAD_UP:
+		case PINK_PAD_DOWN:
+		case RED_PAD_UP:
+		case RED_PAD_DOWN:
+		case GRAVITY_PAD_DOWN:
+		case GRAVITY_PAD_UP:
 			return 0x01;
 //            return 0x0F;
 
@@ -299,16 +309,6 @@ char sprite_height_lookup(){
 		case GRAVITY_DOWN_DOWNWARDS_PORTAL:
 		case GRAVITY_UP_DOWNWARDS_PORTAL:
 			return 0x1F;
-		case YELLOW_PAD_DOWN:
-		case YELLOW_PAD_UP:
-		case PINK_PAD_UP:
-		case PINK_PAD_DOWN:
-		case RED_PAD_UP:
-		case RED_PAD_DOWN:
-		case GRAVITY_PAD_DOWN:
-		case GRAVITY_PAD_UP:
-			return 0x02;
-//			return 0x04;
 		case LEVEL_END_TRIGGER:
 			gameState = 0x03; 
 			
@@ -481,6 +481,7 @@ void sprite_collide_lookup() {
 	// Portal game mode switches
 	case S_BLOCK: dashing[currplayer] = 0; return;
 	case H_BLOCK: hblocked[currplayer] = 1; return;
+	case J_BLOCK: jblocked[currplayer] = 1; return;
 	case D_BLOCK: kandowavewalk = 1; return;
 	case CUBE_MODE:
 		if (!retro_mode) gamemode = 0;
