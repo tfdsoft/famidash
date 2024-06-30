@@ -271,7 +271,7 @@ char sprite_height_lookup(){
 		case TELEPORT_PORTAL_ENTER:
 			return 0x2f;
 		case TELEPORT_PORTAL_EXIT:
-			teleport_output = activesprites_y[index];
+			teleport_output = activesprites_realy[index];
 			return 0x2f;
 		case COIN1:
 			if (coin1_obtained[level]) {
@@ -481,7 +481,7 @@ void sprite_collide_lookup() {
 		target_scroll_y = activesprites_y[index & 0x7F];
 		return;
 	case TELEPORT_PORTAL_ENTER:
-		currplayer_y = teleport_output;
+		high_byte(currplayer_y) = teleport_output;
 		return;
 	case SPIDER_MODE:
 		gamemode = 5;
