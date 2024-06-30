@@ -81,8 +81,8 @@ decode_grnd_color  = $02
 test_song_number = song_practice
 test_game_mode   = $00
 test_speed       = $00
-test_bg_color    = $00
-test_grnd_color  = $00
+test_bg_color    = $0F
+test_grnd_color  = $0F
 
 test2_song_number = song_practice
 test2_game_mode   = $00
