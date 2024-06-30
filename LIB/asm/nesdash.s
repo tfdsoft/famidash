@@ -1082,6 +1082,19 @@ ParallaxBuffer:
 
 .export _music_play
 .proc _music_play  
+
+	; CONFIGURATION:
+	; If the following value is set and valid, it will be used
+	; as the pointer to famistudio_init in all banks. If it
+	; isn't, then music_pointers_lo, hi and song count tables
+	; are needed for proper operation.
+	constInitPtr = $A000
+
+	.ifndef constInitPtr
+		constInitPtr = 0
+	.endif
+	useConstInitPtr = (constInitPtr >= $6000)
+
     bit _options ; sets N flag to bit 7 of _options without affecting A  
     bpl musicon
     rts  
@@ -1103,9 +1116,14 @@ found_bank:
     BEQ :+
     ;If different bank than before reinitalize FS
         STY	current_song_bank
-        LDX music_data_locations_lo-FIRST_MUSIC_BANK, Y
-        LDA	music_data_locations_hi-FIRST_MUSIC_BANK, Y
-        TAY
+		.if useConstInitPtr
+			LDX #<constInitPtr
+			LDY #>constInitPtr
+		.else
+			LDX music_data_locations_lo-FIRST_MUSIC_BANK, Y
+			LDA	music_data_locations_hi-FIRST_MUSIC_BANK, Y
+			TAY
+		.endif
         LDA #$01
         JSR famistudio_init
     :
@@ -1116,12 +1134,15 @@ found_bank:
 
 ; Tables currently generated manually
 
+.if .not(useConstInitPtr)
 music_data_locations_lo:
-.byte <music_data_famidash_music1, <music_data_famidash_music2, <music_data_famidash_music3,  <music_data_famidash_music4, <music_data_famidash_music5
+	.out "shit"
+	.byte <music_data_famidash_music1, <music_data_famidash_music2, <music_data_famidash_music3, <music_data_famidash_music4, <music_data_famidash_music5
 music_data_locations_hi:
-.byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3, >music_data_famidash_music4, >music_data_famidash_music5
+	.byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3, >music_data_famidash_music4, >music_data_famidash_music5
+.endif
 music_counts:
-.byte 2, 3, 3, 6, $FF  ;last bank is marked with an FF to always stop bank picking
+	.byte 2, 3, 3, 6, $FF  ;last bank is marked with an FF to always stop bank picking
 .endproc
 
 ; void __fastcall__ sfx_play(uint8_t sfx_index, uint8_t channel);
