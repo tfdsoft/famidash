@@ -479,8 +479,7 @@ void sprite_collide_lookup() {
 		gamemode = collided;
 		robotjumptime[currplayer] = 0;
 		target_scroll_y = activesprites_y[index & 0x7F];
-//	return;
-		// fallthrough
+		return;
 	case TELEPORT_PORTAL_ENTER:
 		currplayer_y = teleport_output;
 		return;
