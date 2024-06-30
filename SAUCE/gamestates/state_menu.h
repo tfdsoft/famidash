@@ -142,12 +142,7 @@ void __fastcall__ refreshmenu(void) {
 		
 
 	}
-	tmp7 = stars_list[level];
-	tmp8 = 0;
-	while (tmp7 > 9) {
-		tmp7 = tmp7 - 10;
-		tmp8++;
-	}
+	storeWordSeparately(hexToDec(stars_list[level]), tmp7, tmp8);
 
 	if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(22, 9));
 	else one_vram_buffer(' ', NTADR_A(22, 9));
@@ -325,10 +320,8 @@ void customize_screen() {
 	}
 	TOTALCOINSONES = TOTALCOINS;
 	
-	while (TOTALSTARSONES > 9) {
-		TOTALSTARSTENS = TOTALSTARSTENS + 1;
-		TOTALSTARSONES = TOTALSTARSONES - 10;
-	}
+	storeWordSeparately(hexToDec(TOTALSTARSONES), TOTALSTARSONES, TOTALSTARSTENS);
+
 	if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
 	one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
 

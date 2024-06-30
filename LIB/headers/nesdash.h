@@ -69,6 +69,8 @@ void __fastcall__ _draw_padded_text(uint32_t args);
 
 void __fastcall__ playPCM(uint8_t sample);
 
+uint32_t __fastcall__ hexToDec (uint16_t input);
+
 extern uint8_t parallax_scroll_column;
 extern uint8_t parallax_scroll_column_start;
 

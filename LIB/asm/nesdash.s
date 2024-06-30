@@ -2335,3 +2335,53 @@ SampleRate:
 	.byte 3		;(22-5+1)/5-1
 	.byte 39	;(204-5+1)/5-1
 .endproc
+
+
+; uint32_t hexToDec (uint16_t input)
+.segment "CODE_2"
+
+.export _hexToDec
+.proc _hexToDec
+	; AX = input
+	; AX:sreg:xargs[0] = output
+
+	; Step 1. loop over X and add 256
+	start:
+		INX			; for BEQ ending condition
+		STX tmp1
+		LDY #0		; for storing when overflows
+		STY sreg+0
+		STY sreg+1
+		STY xargs+0
+	
+	clr_x_loop:
+		LDX #0
+	loop:
+		SEC
+		SBC #10
+		BCS :+
+			DEC tmp1
+			BEQ end
+		:
+		INX
+		CPX #10
+		BNE loop	; carry is always clear
+
+		INC sreg+0
+		CPX sreg+0	; if 10 == out[2]
+		BNE clr_x_loop
+		STY sreg+0
+
+		INC sreg+1
+		CPX sreg+1	; if 10 == out[3]
+		BNE clr_x_loop
+		STY sreg+1
+
+		INC xargs+0
+		BNE clr_x_loop	; BRA
+
+	end:
+		; Carry is clear
+		ADC #10
+		RTS
+.endproc

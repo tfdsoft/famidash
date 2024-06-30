@@ -132,34 +132,16 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	if (!has_practice_point) {
 		multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(7, 15));
 		
-		TOTALCOINSONES = 0;
-		TOTALCOINSTENS = 0;
-		TOTALATTEMPTSHUNDREDS = 0;		////attempts stuff here and below
-		TOTALATTEMPTSTHOUSANDS = 0;
-		
-		TOTALCOINSTEMP = attempts;
-		
-		while (TOTALCOINSTEMP > 9) {
-			TOTALCOINSTENS++;
-			TOTALCOINSTEMP = TOTALCOINSTEMP - 10;
-			if (TOTALCOINSTENS == 10) {
-				TOTALCOINSTENS = 0;
-				TOTALATTEMPTSHUNDREDS++;
-			}
-			if (TOTALATTEMPTSHUNDREDS == 10) {
-				TOTALATTEMPTSHUNDREDS = 0;
-				TOTALATTEMPTSTHOUSANDS++;
-			}
-		}
-		TOTALCOINSONES = TOTALCOINSTEMP;
+		storeWordSeparately(hexToDec(attempts), TOTALCOINSONES, TOTALCOINSTENS);
+		storeWordSeparately(__EAX__>>16, TOTALATTEMPTSHUNDREDS, TOTALATTEMPTSTHOUSANDS); 
 
 //		if (TOTALATTEMPTSTHOUSANDS >= 10)
 //			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
 //
 //		else {
 			if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSTHOUSANDS, NTADR_C(15,15));
-			if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSHUNDREDS, NTADR_C(16,15));
-			if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALCOINSTENS, NTADR_C(17,15));
+			if (TOTALATTEMPTSHUNDREDS | TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSHUNDREDS, NTADR_C(16,15));
+			if (TOTALATTEMPTSHUNDREDS | TOTALCOINSTENS | TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALCOINSTENS, NTADR_C(17,15));
 			one_vram_buffer(0xf5+TOTALCOINSONES, NTADR_C(18,15));		
 //		}
 	}
