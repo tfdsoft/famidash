@@ -83,6 +83,8 @@
 #define TELEPORT_PORTAL_EXIT			0x4F
 #define DASH_ORB_45DEG_DOWN			0x50
 #define DASH_GRAVITY_ORB_45DEG_DOWN		0x51
+#define RED_PAD_DOWN				0x52
+#define RED_PAD_UP				0x53
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -263,6 +265,9 @@ char sprite_height_lookup(){
 			return 0x01;
 //            return 0x0F;
 
+		case TELEPORT_PORTAL_EXIT:
+			teleport_output = activesprites_realy[index] + 0x10;
+			//intentional leak
 		case SPIDER_MODE:
 		case SINGLE_PORTAL:
 		case DUAL_PORTAL:
@@ -273,9 +278,6 @@ char sprite_height_lookup(){
 		case SWING_MODE:
 		case GROWTH_PORTAL:
 		case TELEPORT_PORTAL_ENTER:
-			return 0x2f;
-		case TELEPORT_PORTAL_EXIT:
-			teleport_output = activesprites_realy[index] + 0x10;
 			return 0x2f;
 		case COIN1:
 			if (coin1_obtained[level]) {
@@ -301,6 +303,8 @@ char sprite_height_lookup(){
 		case YELLOW_PAD_UP:
 		case PINK_PAD_UP:
 		case PINK_PAD_DOWN:
+		case RED_PAD_UP:
+		case RED_PAD_DOWN:
 		case GRAVITY_PAD_DOWN:
 		case GRAVITY_PAD_UP:
 			return 0x02;
@@ -322,6 +326,7 @@ char sprite_height_lookup(){
 #define ylw_bigger 0x05 << 3
 #define black_orb  0x06 << 3
 #define ylw_smaller 0x07 << 3
+#define red_pad 0x08 << 3
 
 const short heights[] = {
 //  cube    ship    ball     ufo    robot   spider  wave   unused
@@ -329,10 +334,11 @@ const short heights[] = {
 	0x7A0,  0x390,  0x4E2,  0x500,  0x7A0,  0x500,  0x000, 0x000, // yellow pad
 	0x3D0,  0x590,  0x3C0,  0x590,  0x450,  0x590,  0x000, 0x000, // pink orb
 	0x530,  0x510,  0x510,  0x510,  0x510,  0x510,  0x000, 0x000, // pink pad
-	0xA50,  0x500,  0x500,  0x500,  0xA50,  0x500,  0x000, 0x000, // red orb
+	0x950,  0x700,  0x600,  0x950,  0x950,  0x500,  0x000, 0x000, // red orb
 	0x590,  0x590,  0x4C0,  0x590,  0x590,  0x590,  0x000, 0x000, // yellow orb bigger
    -0x1190,-0x1190,-0x1170,-0x1190,-0x1190,-0x1190, 0x000, 0x000, // black orb
 	0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
+	0x950,  0x700,  0x600,  0x950,  0x950,  0x500,  0x000, 0x000, // red pad	
 };
 
 const short mini_heights[] = {
@@ -341,10 +347,11 @@ const short mini_heights[] = {
 	0x5B0,  0x500,  0x4C0,  0x500,  0x5B0,  0x500,  0x000, 0x000, // yellow pad
 	0x350,  0x4D0,  0x500,  0x4D0,  0x350,  0x4D0,  0x000, 0x000, // pink orb
 	0x350,  0x4A0,  0x4A0,  0x500,  0x350,  0x4A0,  0x000, 0x000, // pink pad
-	0x750,  0x500,  0x500,  0x500,  0x750,  0x500,  0x000, 0x000, // red orb
+	0x950,  0x700,  0x600,  0x950,  0x950,  0x500,  0x000, 0x000, // red orb
 	0x590,  0x590,  0x560,  0x590,  0x590,  0x590,  0x000, 0x000, // yellow orb bigger
    -0x1190,-0x1190,-0x1170,-0x1190,-0x1190,-0x1190, 0x000, 0x000, // black orb
 	0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
+	0x950,  0x700,  0x600,  0x950,  0x950,  0x500,  0x000, 0x000, // red pad	
 };
 
 #pragma code-name(push, "XCD_BANK_00")
@@ -393,32 +400,26 @@ static void sprite_gamemode_main() {
 				if (currplayer_gravity && currplayer_vel_y < 0x530) currplayer_vel_y = 0x530;
 				else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
 				break;
+			case DASH_GRAVITY_ORB:
+				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
+				//intentional leak
 			case DASH_ORB:
 				currplayer_vel_y = 0;
 				dashing[currplayer] = 1;
 				break;
-			case DASH_GRAVITY_ORB:
-				currplayer_vel_y = 0;
-				dashing[currplayer] = 1;
+			case DASH_GRAVITY_ORB_45DEG_UP:
 				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
-				break;
+				//intentional leak
 			case DASH_ORB_45DEG_UP:
 				currplayer_vel_y = -currplayer_vel_x;
 				dashing[currplayer] = 2;
 				break;
-			case DASH_GRAVITY_ORB_45DEG_UP:
-				currplayer_vel_y = -currplayer_vel_x;
-				dashing[currplayer] = 2;
+			case DASH_GRAVITY_ORB_45DEG_DOWN:
 				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
-				break;
+				//intentional leak
 			case DASH_ORB_45DEG_DOWN:
 				currplayer_vel_y = currplayer_vel_x;
 				dashing[currplayer] = 3;
-				break;
-			case DASH_GRAVITY_ORB_45DEG_DOWN:
-				currplayer_vel_y = currplayer_vel_x;
-				dashing[currplayer] = 3;
-				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
 				break;
 			default:
 				currplayer_vel_y = sprite_gamemode_y_adjust();
@@ -600,6 +601,11 @@ void sprite_collide_lookup() {
 	case PINK_PAD_DOWN:
 	case PINK_PAD_UP:
 		table_offset = pink_pad;
+		currplayer_vel_y = sprite_gamemode_y_adjust();
+		return;
+	case RED_PAD_DOWN:
+	case RED_PAD_UP:
+		table_offset = red_pad;
 		currplayer_vel_y = sprite_gamemode_y_adjust();
 		return;
 

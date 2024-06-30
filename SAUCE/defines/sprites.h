@@ -1788,6 +1788,30 @@ const unsigned char Pink_Jump_Pad4[]={
 	  8,-8,0x59,1|OAM_FLIP_H,
 	0x80
 };
+const unsigned char Red_Jump_Pad[]={
+
+	  0,-8,0x59,2,
+	  8,-8,0x5B,2|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Red_Jump_Pad2[]={
+
+	  0,-8,0x5B,2,
+	  8,-8,0x5D,2|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Red_Jump_Pad3[]={
+
+	  0,-8,0x5D,2,
+	  8,-8,0x5F,2|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Red_Jump_Pad4[]={
+
+	  0,-8,0x5F,2,
+	  8,-8,0x59,2|OAM_FLIP_H,
+	0x80
+};
 
 const unsigned char Pink_Jump_Pad_U[]={
 
@@ -1811,6 +1835,31 @@ const unsigned char Pink_Jump_Pad_U4[]={
 
 	  0,-0,0x5F,1|OAM_FLIP_V,
 	  8,-0,0x59,1|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+
+const unsigned char Red_Jump_Pad_U[]={
+
+	  0,-0,0x59,2|OAM_FLIP_V,
+	  8,-0,0x5B,2|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Red_Jump_Pad_U2[]={
+
+	  0,-0,0x5B,2|OAM_FLIP_V,
+	  8,-0,0x5D,2|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Red_Jump_Pad_U3[]={
+
+	  0,-0,0x5D,2|OAM_FLIP_V,
+	  8,-0,0x5F,2|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Red_Jump_Pad_U4[]={
+
+	  0,-0,0x5F,2|OAM_FLIP_V,
+	  8,-0,0x59,2|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
@@ -2097,6 +2146,18 @@ const struct SpriteFrame PINK_PAD_SPRITES[]={
 	{5, Pink_Jump_Pad3},
 	{5, Pink_Jump_Pad4},
 };
+const struct SpriteFrame RED_PAD_SPRITES[]={
+	{5, Red_Jump_Pad},
+	{5, Red_Jump_Pad2},
+	{5, Red_Jump_Pad3},
+	{5, Red_Jump_Pad4},
+};
+const struct SpriteFrame RED_PAD_U_SPRITES[]={
+	{5, Red_Jump_Pad_U},
+	{5, Red_Jump_Pad_U2},
+	{5, Red_Jump_Pad_U3},
+	{5, Red_Jump_Pad_U4},
+};
 
 const struct SpriteFrame PINK_PAD_U_SPRITES[]={
 	{5, Pink_Jump_Pad_U},
@@ -2240,7 +2301,9 @@ const unsigned char * const Metasprites[]={
 	Teleport_Portal_Enter,
 	Teleport_Portal_Exit,
 	Dash_Orb_45Deg_DOWN,
-	Dash_Gravity_Orb_45Deg_DOWN
+	Dash_Gravity_Orb_45Deg_DOWN,
+	Red_Jump_Pad,
+	Red_Jump_Pad_U
 	
 	};
 
@@ -2333,6 +2396,8 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	RED_PAD_SPRITES,
+	RED_PAD_U_SPRITES
 };
 
 // Number of UNIQUE animation frames
@@ -2423,4 +2488,6 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
+	sizeof(RED_PAD_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	sizeof(RED_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 };
