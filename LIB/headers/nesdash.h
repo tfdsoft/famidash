@@ -69,6 +69,7 @@ void __fastcall__ _draw_padded_text(uint32_t args);
 
 void __fastcall__ playPCM(uint8_t sample);
 
+// Outputs 5 digits in 5 bytes - __EAX__ and xargs[0]
 uint32_t __fastcall__ hexToDec (uint16_t input);
 
 extern uint8_t parallax_scroll_column;

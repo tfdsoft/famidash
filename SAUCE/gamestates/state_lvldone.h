@@ -223,7 +223,7 @@ void state_lvldone() {
 
 			if (!achievements[12]) {
 				if (TOTALCOINS >= 20) {
-					achievements[13] = 1;
+					achievements[12] = 1;
 					//display text here
 				}
 			}
