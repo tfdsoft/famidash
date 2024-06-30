@@ -1,7 +1,6 @@
-// Custom functions implemented specifically for famidash (some are totally not stolen from famitower)
+// Custom functions and macros implemented specifically for famidash
 
 // replacements for C stack
-
 extern uint8_t xargs[4];
 #pragma zpsym("xargs")
 #define wxargs ((uint16_t * const)xargs)
@@ -11,70 +10,95 @@ extern uint8_t xargs[4];
 #define storeBytesToSreg(a, b) (__AX__ = (byte(b)<<8)|byte(a), __EAX__<<=16)
 #define storeByteToSreg(byte) (__A__ = byte, __asm__("sta sreg+0"))
 
-//set metasprite in OAM buffer (vertically flipped)
-//meta sprite is a const uint8_t array, it contains four bytes per sprite
-//in order x offset, y offset, tile, attribute
-//x=128 is end of a meta sprite
-// Note: sprid removed for speed
-void __fastcall__ _oam_meta_spr_flipped(uint32_t args);
+/**
+ * @brief set metasprite in OAM buffer (horizontally and/or vertically flipped, depending on flip parameter)
+ * @param flip
+ * @param x
+ * @param y
+ * @param data meta sprite is a const uint8_t array, it contains four bytes per sprite - in order x offset, y offset, tile, attribute; x=128 is end of a meta sprite
+ * @note sprid removed for speed
+ */
 #define oam_meta_spr_flipped(flip, x, y, data)(xargs[0] = flip, storeBytesToSreg(x, y), __AX__ = (uintptr_t)data, _oam_meta_spr_flipped(__EAX__))
+void __fastcall__ _oam_meta_spr_flipped(uint32_t args);
 
 /**
- * ======================================================================================================================
- * famistudio_music_play (public)
- * 
- * Plays a song from and loads the music data according to the bank.
- * 
- * [in] song_index : Song index.
- * ======================================================================================================================
+ * @name famistudio_music_play
+ *
+ * @brief Plays a song from and loads the music data according to the bank.
+ *
+ * @param song Song index.
+ *
  */
 void __fastcall__ music_play(uint8_t song);
 
 /**
- * ======================================================================================================================
- * famistudio_update (public)
+ * @brief Main update function, should be called once per frame, ideally at the end of NMI.
+ * Will update the tempo, advance the song if needed, update instrument and apply any change to the APU registers.
  * 
- * Main update function, should be called once per frame, ideally at the end of NMI. Will update the tempo, advance
- * the song if needed, update instrument and apply any change to the APU registers.
- * 
- * [in] no input params.
- * ======================================================================================================================
  */
 void __fastcall__ music_update();
 
 /**
- * ======================================================================================================================
- * famistudio_sfx_play (public)
+ * @brief Plays a sound effect.
  * 
- * Plays a sound effect.
- * 
- * [in] sfx_index: Sound effect index (0...127)
- * [in] channel: Offset of sound effect channel, should be FAMISTUDIO_SFX_CH0..FAMISTUDIO_SFX_CH3
- * ======================================================================================================================
+ * @param sfx_index Sound effect index (0...127)
+ * @param channel Offset of sound effect channel, should be FAMISTUDIO_SFX_CH0..FAMISTUDIO_SFX_CH3
+ *
  */
-
-void __fastcall__ _sfx_play(uint16_t args);
 #define sfx_play(sfx_index, channel) (__AX__ = (uint16_t)(byte(channel))<<8|sfx_index, _sfx_play(__AX__))
+void __fastcall__ _sfx_play(uint16_t args);
 
 /**
- * Update the PPU using the VRAM buffer with a single tile repeated LENGTH number of times.
- * Length must not be greater than 0x7f!
+ * @name one_vram_buffer_repeat
+ *
+ * @brief Update the PPU using the VRAM buffer with a single tile repeated @c len number of times.
+ *
+ * @param data The byte to repeat.
+ * @param len The amount of times to repeat the byte.
+ * @param ppu_address The PPU address to put the repeated byte at.
+ *
+ * @note @c len must not be greater than 0x7F!
  */
-void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
+///@{
+/**
+ * @brief Repeat a single tile horizontally.
+ */
 #define one_vram_buffer_horz_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _one_vram_buffer_repeat(__EAX__))
+/**
+ * @brief Repeat a single tile vertically.
+ */
 #define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_VERT, _one_vram_buffer_repeat(__EAX__))
+///@}
+void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
 
-void __fastcall__ _draw_padded_text(uint32_t args);
+/**
+ * @brief Draw a string, padded to be in the center of a block.
+ *
+ * @param data The string to center.
+ * @param len The length of the string.
+ * @param total_len The length of the block to center it in.
+ * @param ppu_address The PPU address to put it at.
+ */
 #define draw_padded_text(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _draw_padded_text(__EAX__))
+void __fastcall__ _draw_padded_text(uint32_t args);
 
+/**
+ * @brief Play a raw PCM sample. Hangs the game until done.
+ *
+ * @note Sample parameters (offset, bank, sample rate) are specified in tables inside the routine and found by the @c sample parameter. 
+ *
+ * @param sample The sample to play.
+ */
 void __fastcall__ playPCM(uint8_t sample);
 
-// Outputs 5 digits in 5 bytes - __EAX__ and xargs[0]
+/**
+ * @brief Convert a 16-bit number to 5 decimal digits.
+ *
+ * @param input The number to convert to decimal.
+ *
+ * @retval Returns the 4 low digits of the result in @c __EAX___, and the 5th byte is returned in @c xargs[0].
+ */
 uint32_t __fastcall__ hexToDec (uint16_t input);
-
-extern uint8_t parallax_scroll_column;
-extern uint8_t parallax_scroll_column_start;
-
 
 #define low_word(a) *((uint16_t*)&a)
 #define high_word(a) *((uint16_t*)&a+1)
