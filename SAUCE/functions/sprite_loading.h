@@ -271,7 +271,7 @@ char sprite_height_lookup(){
 		case TELEPORT_PORTAL_ENTER:
 			return 0x2f;
 		case TELEPORT_PORTAL_EXIT:
-			teleport_output = activesprites_realy[index];
+			teleport_output = activesprites_realy[index] + 0x10;
 			return 0x2f;
 		case COIN1:
 			if (coin1_obtained[level]) {
