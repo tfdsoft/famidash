@@ -340,6 +340,7 @@ void bgmtest() {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
+			kandotemp = 1;
 			gameState = 1;
 			return;
 		}
