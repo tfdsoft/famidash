@@ -401,21 +401,21 @@ static void sprite_gamemode_main() {
 				else if (!currplayer_gravity && currplayer_vel_y > -0x530) currplayer_vel_y = -0x530;
 				break;
 			case DASH_GRAVITY_ORB:
-				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
+				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
 				//intentional leak
 			case DASH_ORB:
 				currplayer_vel_y = 0;
 				dashing[currplayer] = 1;
 				break;
 			case DASH_GRAVITY_ORB_45DEG_UP:
-				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
+				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
 				//intentional leak
 			case DASH_ORB_45DEG_UP:
 				currplayer_vel_y = -currplayer_vel_x;
 				dashing[currplayer] = 2;
 				break;
 			case DASH_GRAVITY_ORB_45DEG_DOWN:
-				if (pad_new[currplayer] & PAD_A) currplayer_gravity ^= 0x01;	//reverse gravity
+				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
 				//intentional leak
 			case DASH_ORB_45DEG_DOWN:
 				currplayer_vel_y = currplayer_vel_x;
