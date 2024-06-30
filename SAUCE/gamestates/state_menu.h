@@ -669,8 +669,8 @@ void state_menu() {
 	one_vram_buffer('b', addloNOC(tmp5, 1));
 	pad[0] = pad_poll(0); // read the first controller
 	pad_new[0] = get_pad_new(0);
+	kandoframecnt = 0;
 	while (!(pad_new[0] & PAD_START)){
-		kandoframecnt++;
 		rand8();
 		ppu_wait_nmi();
 		music_update();
@@ -707,6 +707,7 @@ void state_menu() {
 			discoframe++;
 			if (discoframe == 12) discoframe = 0;
 		}
+		kandoframecnt++;
 
 		tmp3 = 0;
 		
