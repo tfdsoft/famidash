@@ -272,7 +272,7 @@ char sprite_height_lookup(){
 		case RED_PAD_DOWN:
 		case GRAVITY_PAD_DOWN:
 		case GRAVITY_PAD_UP:
-			return 0x01;
+			return 0x02;
 //            return 0x0F;
 
 		case TELEPORT_PORTAL_EXIT:
