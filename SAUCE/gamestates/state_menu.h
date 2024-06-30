@@ -678,7 +678,7 @@ void state_menu() {
 		pad_new[0] = get_pad_new(0);
 
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
-		if (!(kandoframecnt & 255)) {
+		if (!(kandoframecnt & 127)) {
 			tmp3 = 0x80 + BG_Table2[discoframe];
 			
 			if (tmp3 < 0x80) tmp3 += 0x80;
