@@ -3736,7 +3736,7 @@ sprite_data_test:
 .segment "SPR_BANK_02"
 sprite_data_test2:
   .byte $60,$00,$88,$01,$0a
-  .byte $70,$00,$30,$01,$4f
+  .byte $70,$00,$d0,$00,$4f
   .byte $70,$00,$68,$01,$0a
   .byte $80,$00,$48,$01,$0a
   .byte $80,$00,$80,$01,$4e
