@@ -2,6 +2,37 @@
 #pragma data-name(push, "XCD_BANK_03")
 #pragma rodata-name(push, "XCD_BANK_03")
 
+const uint8_t BG_Table2[]={
+	0x11,
+	0x12,
+	0x13,
+	0x14,
+	0x15,
+	0x16,
+	0x17,
+	0x18,
+	0x19,
+	0x1A,
+	0x1B,
+	0x1C
+};
+
+const uint8_t G_Table2[]={
+	0x21,
+	0x22,
+	0x23,
+	0x24,
+	0x25,
+	0x26,
+	0x27,
+	0x28,
+	0x29,
+	0x2A,
+	0x2B,
+	0x2C
+};
+
+
 const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
     LSB(NTADR_A(15, 11)),	// 0
@@ -639,6 +670,7 @@ void state_menu() {
 	pad[0] = pad_poll(0); // read the first controller
 	pad_new[0] = get_pad_new(0);
 	while (!(pad_new[0] & PAD_START)){
+		kandoframecnt++;
 		rand8();
 		ppu_wait_nmi();
 		music_update();
@@ -646,6 +678,35 @@ void state_menu() {
 		pad_new[0] = get_pad_new(0);
 
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
+		if (!(kandoframecnt & 255)) {
+			tmp3 = 0x80 + G_Table2[discoframe];
+			
+			if (tmp3 < 0x80) tmp3 += 0x80;
+			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+			tmp2 = (tmp3 & 0x3F);  		    
+				pal_col(0, tmp2);
+				if (tmp2-0x10 & 0xC0) { 
+//					pal_col(1, 0x0f); 
+//					pal_col(9, 0x0f); 
+				} else { 
+//					pal_col(1, (tmp2-0x10)); 
+//					pal_col(9, (tmp2-0x10)); 
+				}
+		
+			tmp3 = 0xC0 + BG_Table2[discoframe];
+			
+			if (tmp3 < 0x80) tmp3 += 0x80;
+			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+			tmp2 = (tmp3 & 0x3F);  		    
+			//	pal_col(6, tmp2);
+				if (tmp2-0x10 & 0xC0) { 
+				//	pal_col(5, 0x0f); 
+				} else { 
+				//	pal_col(5, (tmp2-0x10)); 
+				}
+			discoframe++;
+			if (discoframe == 12) discoframe = 0;
+		}
 
 		tmp3 = 0;
 		
