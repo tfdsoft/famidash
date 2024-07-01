@@ -295,7 +295,7 @@ SetupNextRLEByte:
 
     INC level_data
     BNE :+
-incwlvl_checkC000:  ; clobbers A
+incwlvl_checkC000:  ; clobbers nothing
 		INC level_data+1
 		bit level_data+1
 		; since the high byte will only be $Ax or $Bx, when bit 6 is set then its rolled over to $c0
@@ -378,6 +378,172 @@ single_rle_byte:
 	rts
 .endproc
 
+; void __fastcall__ dummy_unrle_columns(uint16_t columns);
+.segment "CODE"
+
+.import umul8x16r24m
+
+.export _dummy_unrle_columns
+.proc _dummy_unrle_columns
+	columnCount = tmp2
+	start:
+		inx			;
+		stx tmp1	;	Increment for the BEQ ending condition
+		.if USE_ILLEGAL_OPCODES
+			ldx #$0F
+			sax _rld_column
+		.else
+			and #$0F
+			sta _rld_column
+		.endif
+		tax			;
+		inx			;__
+		
+		lda #<-27	; this will be a variable later on
+		eor #$FF	;
+		tay			;	2's complement
+		iny			;
+		sty columnCount	;__
+
+		ldy #0
+
+		sec
+	decLoop:
+		lda rld_run
+		sbc columnCount
+		dex
+		bne :+
+			dec tmp1
+			beq end
+		:
+		sta rld_run
+		bcs decLoop
+		; fallthru
+
+	loadNewData:
+		lda (level_data), y	; value or run
+		bmi @single
+			pha
+			incw_check level_data
+			lda (level_data), y
+			sta rld_value
+			incw_check level_data
+			pla
+			sec
+			adc rld_run
+			sta rld_run
+			bcc loadNewData
+			bcs decLoop	; = bra
+		
+		@single:
+			and #$7F
+			sta rld_value
+			incw_check level_data
+			inc rld_run
+			bne loadNewData
+			beq decLoop ; = bra
+
+	end:
+		rts
+.endproc
+
+.proc legacy_dummy_unrle_columns
+	lastType = tmp1	; 0 = group of bytes, FF = single byte
+	mulIn0 = ptr3
+	mulIn1 = ptr1
+	mulRes0 = ptr1
+	mulRes1 = ptr1+1
+	mulRes2 = sreg
+	start:
+		; Multiply columns by level height
+		sta mulIn0
+		stx mulIn0+1
+		and #$0F
+		sta _rld_column
+		lda #27
+		sta mulIn1
+		jsr umul8x16r24m
+		; result now in ptr1:sreg[0],
+		; y = 0 
+
+		; inc mulRes0		;__	increment to load that one extra byte
+		inc mulRes1		;	increment for beq ending condition
+		inc mulRes2		;__
+
+		lda mulRes0
+		sec	; to compensate for the increment commented out above
+		sbc rld_run
+		sta mulRes0
+		bcs loop
+		
+		dec mulRes1
+		bne loop
+		
+		dec mulRes2
+		beq end_early
+		
+		bne loop	; bra
+
+	loop_inc:
+		incw_check level_data
+	loop:
+		lda (level_data),y	; either single-run value or run
+		bmi single_byte
+
+		sta rld_run
+		eor #$FF
+		clc	; subtract 1 extra (by not adding the 1 in 2's complement)
+		adc mulRes0
+		sta mulRes0
+		bcs :+
+			dec mulRes1
+			bne :+
+			dec mulRes2
+			beq end_multi
+		:
+		incw_check level_data
+		
+		jmp loop_inc
+
+	single_byte:
+		dec mulRes0
+		ldx mulRes0
+		inx	; less bytes then cpx #$ff
+		bne loop_inc
+		dec mulRes1
+		bne loop_inc
+		dec mulRes2
+		bne loop_inc
+
+	end_single:
+		and #$7F
+		sta rld_value
+		sty rld_run	; y is still 0
+		rts
+
+	end_multi:
+		iny 
+		lda (level_data), y
+		sta rld_value
+		dey
+		; the remaining rld_run is 2's complement of (mulRes0 - 1)
+	end_early:
+		dec mulRes0
+		lda mulRes0
+		eor #$FF
+		cmp rld_run
+		bne @later
+			incw_check level_data
+			incw_check level_data
+		@later:
+		sta rld_run
+		rts
+
+; 6654 cycles elapsed @ $8A columns in
+.endproc
+
+
+
 
 .segment "XCD_BANK_01"
 
@@ -438,7 +604,7 @@ single_rle_byte:
 
 	.export _draw_screen_R_frame0 := frame0
 	.export _draw_screen_R_frame1 := frame1
-	.export _draw_screen_R_frame2 := frame2
+	.export _draw_screen_R_frame2 := attributes
 	; Write architecture:
 
 	; Frame 0:

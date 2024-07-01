@@ -19,18 +19,25 @@ void __fastcall__ unrle_next_column();
 
 /* 
 	Scrolling to the right, draw metatiles as we go
+	Returns 1 if it actually did anything
 	Implemented in asm	
 */
-void __fastcall__ draw_screen_R();
-void __fastcall__ draw_screen_R_frame0();
-void __fastcall__ draw_screen_R_frame1();
-void __fastcall__ draw_screen_R_frame2();
+char __fastcall__ draw_screen_R();
+char __fastcall__ draw_screen_R_frame0();
+char __fastcall__ draw_screen_R_frame1();
+char __fastcall__ draw_screen_R_frame2();
 
 /*
 	Load ground tiles into collision map
 	Implemented in asm
 */
 void __fastcall__ load_ground(uint8_t id);
+
+/*
+	Dummy unrle columns, way faster
+	Implemented in asm
+*/
+void __fastcall__ dummy_unrle_columns(uint16_t columns);
 
 void increase_parallax_scroll_column() {
 	// The parallax is a 6 x 9 tile background, and when it repeats
@@ -68,9 +75,9 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		parallax_scroll_column_start = 0;
 		scroll_x = practice_scroll_x - 256;
 		scroll_y = practice_scroll_y;
-		ii = practice_scroll_x >> 4, ii++;
+		ii = practice_scroll_x >> 4;
+		dummy_unrle_columns(++ii);
 		do {
-			unrle_next_column();
 			increase_parallax_scroll_column();
 			ii--;
 		} while (ii != 0);
@@ -114,18 +121,11 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	i = 0;
 	mmc3_set_prg_bank_1(GET_BANK(draw_screen_R));
     do {
-		draw_screen_R();
-		flush_vram_update2();
-		scroll_x++;
-		draw_screen_R();
-		flush_vram_update2();
-		scroll_x++;
-		draw_screen_R();
-		flush_vram_update2();
+		if (draw_screen_R()) flush_vram_update2();	// if draw_screen_r did anything, flush vram
 		i++;
-		scroll_x += 16-2;
-		if (i & 1) music_update();	// it takes about 29k cycles for exactly 2 of these subloops, aka 1 frame
-	} while (i != 16);
+		low_word(scroll_x) += 1; do_if_z_set({high_word(scroll_x) += 1;});
+		if (!(i & 0x1F)) music_update();	// it takes about 29k cycles for exactly 2 of these subloops, aka 1 frame
+	} while (i != 0);
 
 	set_scroll_x(scroll_x);
 	set_scroll_y(scroll_y);
