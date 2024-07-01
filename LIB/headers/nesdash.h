@@ -221,4 +221,37 @@ extern uint8_t PAL_BUF[32];
 
 #define uint16SepArrLoad(sym, idx) (__A__ = idx, __asm__("tay \n lda %v, y \n ldx %v, y", sym##_lo, sym##_hi), __AX__)
 
+// holy fuck i am a genius
+#define do_if_flag_common(func, opcode) do { \
+__asm__("j" opcode " %s", __LINE__); \
+do func while(0); \
+ __asm__("%s:", __LINE__); \
+} while(0)
+
+#define do_if_c_set(func) do_if_flag_common(func, "cc")
+#define do_if_c_clr(func) do_if_flag_common(func, "cs")
+#define do_if_z_set(func) do_if_flag_common(func, "eq")
+#define do_if_z_clr(func) do_if_flag_common(func, "ne")
+#define do_if_v_set(func) do_if_flag_common(func, "vc")
+#define do_if_v_clr(func) do_if_flag_common(func, "vs")
+#define do_if_n_set(func) do_if_flag_common(func, "mi")
+#define do_if_n_clr(func) do_if_flag_common(func, "pl")
+
+// aliases
+#define do_if_equal(func) do_if_z_set(func)
+#define do_if_zero(func) do_if_z_set(func)
+#define do_if_not_equal(func) do_if_z_clr(func)
+#define do_if_not_zero(func) do_if_z_clr(func)
+#define do_if_carry(func) do_if_c_set(func)
+#define do_if_borrow(func) do_if_c_clr(func)
+#define do_if_negative(func) do_if_n_set(func)
+#define do_if_bit7_set(func) do_if_n_set(func)
+#define do_if_positive(func) do_if_n_clr(func) 
+#define do_if_bit7_clr(func) do_if_n_clr(func)
+
+#define do_if_bit7_set_mem(val, func) __A__ = val; do_if_bit7_set(func)
+#define do_if_bit7_clr_mem(val, func) __A__ = val; do_if_bit7_clr(func)
+#define do_if_bit6_set_mem(val, func) __asm__("BIT %v", val); do_if_v_set(func)
+#define do_if_bit6_clr_mem(val, func) __asm__("BIT %v", val); do_if_v_clr(func)
+
 #define fc_mic_poll() (PEEK(0x4016) & 0x04)
