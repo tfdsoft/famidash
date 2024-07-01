@@ -3970,16 +3970,13 @@ sprite_data_test3:
   .byte $ff
 .segment "SPR_BANK_02"
 sprite_data_test4:
-  .byte $00,$01,$80,$00,$0e
-  .byte $60,$01,$90,$00,$18
-  .byte $a0,$01,$50,$01,$4d
-  .byte $10,$03,$f0,$00,$50
-  .byte $80,$03,$f0,$00,$51
-  .byte $80,$09,$20,$00,$0f
-  .byte $80,$09,$70,$00,$0f
-  .byte $80,$09,$c0,$00,$0f
-  .byte $80,$09,$10,$01,$0f
-  .byte $80,$09,$60,$01,$0f
+  .byte $70,$00,$80,$01,$45
+  .byte $10,$01,$80,$01,$4d
+  .byte $d0,$01,$10,$01,$4b
+  .byte $b0,$03,$80,$01,$4f
+  .byte $c0,$03,$00,$01,$4e
+  .byte $c0,$28,$50,$00,$0f
+  .byte $c0,$28,$60,$01,$0f
   .byte $ff
 .segment "SPR_BANK_02"
 sprite_data_danger:

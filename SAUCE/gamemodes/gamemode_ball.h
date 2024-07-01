@@ -12,6 +12,21 @@ void ball_movement(void){
 	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
 	if (!dashing[currplayer]) {
+		if (gamemode == 7) {
+			if(!currplayer_gravity){
+				if(currplayer_vel_y > SWING_MAX_FALLSPEED){
+					currplayer_vel_y += -SWING_GRAVITY;
+				} else currplayer_vel_y += SWING_GRAVITY;
+			}
+			else{
+				if(currplayer_vel_y < -SWING_MAX_FALLSPEED){
+					currplayer_vel_y -= -SWING_GRAVITY;
+				} else currplayer_vel_y -= SWING_GRAVITY;
+			}
+		}
+	else {		
+
+
 		if(!mini){
 			if(!currplayer_gravity){
 				if(currplayer_vel_y > BALL_MAX_FALLSPEED){
@@ -36,7 +51,7 @@ void ball_movement(void){
 				} else currplayer_vel_y -= MINI_BALL_GRAVITY;
 			}
 		}	
-		
+	}
 		
 		currplayer_y += currplayer_vel_y;
 	}
