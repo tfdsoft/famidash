@@ -379,75 +379,12 @@ single_rle_byte:
 .endproc
 
 ; void __fastcall__ dummy_unrle_columns(uint16_t columns);
-.segment "CODE"
+.segment "CODE_2"
 
 .import umul8x16r24m
 
 .export _dummy_unrle_columns
 .proc _dummy_unrle_columns
-	columnCount = tmp2
-	start:
-		inx			;
-		stx tmp1	;	Increment for the BEQ ending condition
-		.if USE_ILLEGAL_OPCODES
-			ldx #$0F
-			sax _rld_column
-		.else
-			and #$0F
-			sta _rld_column
-		.endif
-		tax			;
-		inx			;__
-		
-		lda #<-27	; this will be a variable later on
-		eor #$FF	;
-		tay			;	2's complement
-		iny			;
-		sty columnCount	;__
-
-		ldy #0
-
-		sec
-	decLoop:
-		lda rld_run
-		sbc columnCount
-		dex
-		bne :+
-			dec tmp1
-			beq end
-		:
-		sta rld_run
-		bcs decLoop
-		; fallthru
-
-	loadNewData:
-		lda (level_data), y	; value or run
-		bmi @single
-			pha
-			incw_check level_data
-			lda (level_data), y
-			sta rld_value
-			incw_check level_data
-			pla
-			sec
-			adc rld_run
-			sta rld_run
-			bcc loadNewData
-			bcs decLoop	; = bra
-		
-		@single:
-			and #$7F
-			sta rld_value
-			incw_check level_data
-			inc rld_run
-			bne loadNewData
-			beq decLoop ; = bra
-
-	end:
-		rts
-.endproc
-
-.proc legacy_dummy_unrle_columns
 	lastType = tmp1	; 0 = group of bytes, FF = single byte
 	mulIn0 = ptr3
 	mulIn1 = ptr1
@@ -466,13 +403,12 @@ single_rle_byte:
 		; result now in ptr1:sreg[0],
 		; y = 0 
 
-		; inc mulRes0		;__	increment to load that one extra byte
 		inc mulRes1		;	increment for beq ending condition
 		inc mulRes2		;__
 
 		lda mulRes0
-		sec	; to compensate for the increment commented out above
-		sbc rld_run
+		clc				;	Subtract 1 extra, rld_run after all
+		sbc rld_run		;__
 		sta mulRes0
 		bcs loop
 		
@@ -482,61 +418,54 @@ single_rle_byte:
 		dec mulRes2
 		beq end_early
 		
-		bne loop	; bra
-
-	loop_inc:
-		incw_check level_data
 	loop:
 		lda (level_data),y	; either single-run value or run
 		bmi single_byte
 
-		sta rld_run
-		eor #$FF
-		clc	; subtract 1 extra (by not adding the 1 in 2's complement)
-		adc mulRes0
-		sta mulRes0
-		bcs :+
-			dec mulRes1
-			bne :+
-			dec mulRes2
-			beq end_multi
-		:
 		incw_check level_data
-		
-		jmp loop_inc
+		sta rld_run
+		lda (level_data),y	; value
+		tax
+		incw_check level_data
+
+		lda mulRes0
+		clc	; subtract 1 extra
+		sbc rld_run
+		sta mulRes0
+		bcs loop
+
+		dec mulRes1
+		bne loop
+	
+		dec mulRes2
+		bne loop	; = BRA
+
+	end_multi:
+		stx rld_value
+		; the remaining rld_run is 2's complement of (mulRes0 - 1)
+	end_early:
+		lda mulRes0
+		eor #$FF
+		sta rld_run
+		rts
+
 
 	single_byte:
+		incw_check level_data
+
 		dec mulRes0
 		ldx mulRes0
 		inx	; less bytes then cpx #$ff
-		bne loop_inc
+		bne loop
 		dec mulRes1
-		bne loop_inc
+		bne loop
 		dec mulRes2
-		bne loop_inc
+		bne loop
 
 	end_single:
 		and #$7F
 		sta rld_value
 		sty rld_run	; y is still 0
-		rts
-
-	end_multi:
-		iny 
-		lda (level_data), y
-		sta rld_value
-		dey
-		; the remaining rld_run is 2's complement of (mulRes0 - 1)
-	end_early:
-		dec mulRes0
-		lda mulRes0
-		eor #$FF
-		cmp rld_run
-		bne @later
-			incw_check level_data
-			incw_check level_data
-		@later:
-		sta rld_run
 		rts
 
 ; 6654 cycles elapsed @ $8A columns in

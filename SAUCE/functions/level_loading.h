@@ -123,7 +123,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
     do {
 		if (draw_screen_R()) flush_vram_update2();	// if draw_screen_r did anything, flush vram
 		i++;
-		low_word(scroll_x) += 1; do_if_z_set({high_word(scroll_x) += 1;});
+		uint32_inc(scroll_x);
 		if (!(i & 0x1F)) music_update();	// it takes about 29k cycles for exactly 2 of these subloops, aka 1 frame
 	} while (i != 0);
 
