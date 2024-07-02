@@ -558,6 +558,8 @@ single_rle_byte:
 	LDA tmp4
 	CMP _rld_column			;   If X == rld column, decompress shit
 	BEQ frame0
+
+	TXA	; It would've branched if it was not 0
 	RTS
     
 frame2:
@@ -696,6 +698,8 @@ ParallaxExtent = tmp3
 
 		INC scroll_count
 
+		LDA #1
+		LDX #0
 		RTS
 
 	attributes:
@@ -805,8 +809,10 @@ NametableAddrHi = tmp1
 		LDA #$FF
 		STA VRAM_BUF+AttrEnd,X
 		; Reset frame counter
-		LDA #$00
-		STA scroll_count
+		LDX #$00
+		STX scroll_count
+
+		LDA #$01
 		RTS
 
 	attributeSetup:

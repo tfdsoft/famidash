@@ -79,6 +79,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		dummy_unrle_columns(++ii);
 		do {
 			increase_parallax_scroll_column();
+			increase_parallax_scroll_column();
 			ii--;
 		} while (ii != 0);
 		player_x[0] = practice_player_x[0];
