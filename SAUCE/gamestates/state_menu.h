@@ -583,7 +583,11 @@ void settings() {
 
 
 #include "defines/bg_charmap.h"
-
+const char funny_moment[][0x0E] = {
+	{"AAAAAAAAAAAAAAA"},
+	{"the funnies"},
+	{"get phucking real"}
+};
 #ifdef FLAG_ENABLE_VER_NUM
 	#if FLAG_BETA_BUILD
 		const unsigned char ver[] = "BETA BUILD";
@@ -591,6 +595,7 @@ void settings() {
 		const unsigned char ver[] = "VER";
 	#endif
 #endif
+//like this
 
 void state_menu() {
 	pal_fade_to_withmusic(4,0);
@@ -641,6 +646,8 @@ void state_menu() {
 			one_vram_buffer(FLAG_MIN_VER, NTADR_A(8,2));
 		}
 	#endif
+
+	multi_vram_buffer_horz(funny_moment[0], sizeof(funny_moment[0]), NTADR_A(0,4));
  	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;
