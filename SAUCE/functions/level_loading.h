@@ -53,35 +53,11 @@ void increase_parallax_scroll_column() {
 	}
 }
 
-#pragma code-name(push, "CODE_2")
+#pragma code-name(push, "XCD_BANK_01")
 
-extern unsigned char scroll_count;
-void unrle_first_screen(void){ // run-length decode the first screen of a level
-	// register unsigned char i;
-	#define i (*((uint8_t *)&ii))
-	register uint16_t ii;
-	mmc3_set_prg_bank_1(GET_BANK(init_sprites));
-	init_sprites();
-
-	cube_data[0] = 0;
-	cube_data[1] = 0;
-
-	mmc3_set_prg_bank_1(level_data_bank);
-
-	// If practice mode has set a scroll position to restart from, run the unrle function
-	// over and over until it catches up
-	if (has_practice_point) {
-		parallax_scroll_column = 0;
-		parallax_scroll_column_start = 0;
+void restore_practice_state() {
 		scroll_x = practice_scroll_x - 256;
 		scroll_y = practice_scroll_y;
-		ii = practice_scroll_x >> 4;
-		dummy_unrle_columns(++ii);
-		do {
-			increase_parallax_scroll_column();
-			increase_parallax_scroll_column();
-			ii--;
-		} while (ii != 0);
 		player_x[0] = practice_player_x[0];
 		player_x[1] = practice_player_x[1];
 		player_y[0] = practice_player_y[0];
@@ -111,6 +87,46 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 
 		#undef quick_ld
 		currplayer_gravity = player_gravity[currplayer];
+}
+
+
+#pragma code-name("CODE_2")
+extern unsigned char scroll_count;
+void unrle_first_screen(void){ // run-length decode the first screen of a level
+	// register unsigned char i;
+	#define i (*((uint8_t *)&ii))
+	register uint16_t ii;
+	mmc3_set_prg_bank_1(GET_BANK(init_sprites));
+	init_sprites();
+
+	cube_data[0] = 0;
+	cube_data[1] = 0;
+
+	mmc3_set_prg_bank_1(level_data_bank);
+
+	// If practice mode has set a scroll position to restart from, run the unrle function
+	// over and over until it catches up
+	if (has_practice_point) {
+		ii = practice_scroll_x >> 4;
+		dummy_unrle_columns(++ii);
+
+		__A__ = -(6 * (9 / 3) / 2); __asm__("tay \n sty %v", parallax_scroll_column);
+		do {
+			parallax_scroll_column++;
+			if (parallax_scroll_column == 0) {
+				__asm__("sty %v", parallax_scroll_column);
+			}
+			ii--;
+		} while (ii != 0);
+		parallax_scroll_column_start = -3;
+		do {
+			parallax_scroll_column_start += 3;
+			parallax_scroll_column += 3;
+		} while ((int8_t)parallax_scroll_column < 0);
+		parallax_scroll_column <<= 1;
+
+		mmc3_set_prg_bank_1(GET_BANK(restore_practice_state));
+		restore_practice_state();
 		
 	//	memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
 	} else {

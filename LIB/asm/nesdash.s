@@ -1174,19 +1174,18 @@ ParallaxBuffer:
 		JMP _ufo_movement
 	
 	@no1:
-		LDA jump_table_lo, X
-		STA <PTR
 		LDA jump_table_hi, X
-		STA <PTR+1
-		JMP (PTR)
+		PHA
+		LDA jump_table_lo, X
+		PHA
 
 	end:
-		RTS     ; break;
+		RTS     ; break or use the RTS trick
 
 	jump_table_lo:
-		.byte <_cube_movement, <_ship_movement, <_ball_movement, <_ufo_movement, <_cube_movement, <_spider_movement, <_wave_movement, <_ball_movement
+		.byte <(_cube_movement-1), <(_ship_movement-1), <(_ball_movement-1), <(_ufo_movement-1), <(_cube_movement-1), <(_spider_movement-1), <(_wave_movement-1), <(_ball_movement-1)
 	jump_table_hi:
-		.byte >_cube_movement, >_ship_movement, >_ball_movement, >_ufo_movement, >_cube_movement, >_spider_movement, >_wave_movement, >_ball_movement
+		.byte >(_cube_movement-1), >(_ship_movement-1), >(_ball_movement-1), >(_ufo_movement-1), >(_cube_movement-1), >(_spider_movement-1), >(_wave_movement-1), >(_ball_movement-1)
 
 .endproc
 
