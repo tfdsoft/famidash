@@ -357,9 +357,9 @@ _GAME_CHR:
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (32) 
     .incbin "GRAPHICS/bankblankcloud2.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (34) 
-    .incbin "GRAPHICS/bankblank3.chr" ; 1kb
+    .incbin "GRAPHICS/bankblankfingerdash.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (36) 
-    .incbin "GRAPHICS/bankblank3-2.chr" ; 1kb
+    .incbin "GRAPHICS/bankblankfingerdash2.chr" ; 1kb
 
     .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (38) 
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
