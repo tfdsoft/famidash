@@ -958,7 +958,7 @@ ParallaxBuffer:
 	; sreg[1] = len
 	; xargs[0:1] = data
 
-	.define spaceChr $FE
+	.define spaceChr $01
 	.define data xargs+0
 	.define total_len sreg+0
 	.define len sreg+1

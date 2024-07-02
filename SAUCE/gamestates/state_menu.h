@@ -70,6 +70,8 @@ const unsigned char level_text_size2[] = {
 	sizeof(level12text2) - 1,
 };
 
+
+#include "defines/color1_charmap.h"
 const char coin_counter[][3] = {
   "___",
   "^__",
@@ -94,19 +96,20 @@ void __fastcall__ refreshmenu(void) {
 	// if (leveltexts2[level]) // always true
 	draw_padded_text(leveltexts2[level & 0x7F], level_text_size2[level], 17, NTADR_A(8, 11));
 
-	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9));
-	one_vram_buffer('z', NTADR_A(8, 9)); }
-	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9));
+	if (LEVELCOMPLETE[level]) { 
+		one_vram_buffer('y', NTADR_A(7, 9));
+		one_vram_buffer('z', NTADR_A(8, 9)); 
+	} else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9));
 
 	{	// write the difficulty
 		tmp1 = difficulty_list[level];
 		pal_col(0x0a, difficulty_pal_A[tmp1]);
 		pal_col(0x0b, difficulty_pal_B[tmp1]);
 		
-		tmp1 = (tmp1 << 1) + 'a';
+		tmp1 = (tmp1 << 1) + 0xE0;
 		one_vram_buffer(tmp1, NTADR_A(7, 10));
 		one_vram_buffer(++tmp1, NTADR_A(8, 10));
-		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(7, 11));
+		one_vram_buffer((tmp1 += 0x0F), NTADR_A(7, 11));
 		one_vram_buffer(++tmp1, NTADR_A(8, 11));
 		
 
