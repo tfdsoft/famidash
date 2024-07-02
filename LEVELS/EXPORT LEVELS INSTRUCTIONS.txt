@@ -1,8 +1,8 @@
 How to export and update levels:
 
-Open in tiled - make sure you have the sprites and tiles on the correct layers
-Export - This will save in "the folder that you do stuff in"
+Open in tiled - make sure you have the sprites and tiles on the correct layers.
+Export - This will save in "the folder that you do stuff in".
 Go back a folder and run export_levels.bat - This will compile all the levels into their data folders.
-Go back another folder and run build.bat. All the level updates should be in the game
+Go back another folder and run build.bat. All the level updates should be in the game.
 
 	- FicusmcHouseplant - May 8, 2024
