@@ -1,3 +1,5 @@
+// Defines
+
 #define MENUBANK 66
 #define MENUICONBANK 70
 #define LEVELCOMPLETEBANK 74
@@ -80,10 +82,9 @@
 #define COIN_2 0x02
 #define COIN_3 0x04
 
-#pragma allow-eager-inline(on)
 
+// Zeropage variables
 #pragma bss-name(push, "ZEROPAGE")
-// zero-page variables go here
 
 uint8_t tmp1;
 uint8_t tmp2;
@@ -148,10 +149,10 @@ uint8_t * level_data;
 #pragma zpsym("sprite_data")
 #pragma zpsym("level_data")
 
-#pragma bss-name(pop)
-// other variables go here
 
-#pragma bss-name(push, "SRAM")
+// SRAM
+
+#pragma bss-name("SRAM")
 uint8_t SRAM_VALIDATE[4];
 
 #define LEVEL_COUNT 0x11
@@ -201,15 +202,14 @@ uint8_t achievements[20];
 
 //uint8_t greyscale_mode;
 
-
 //uint8_t practice_famistudio_state[0xbf];
 
-#pragma bss-name(pop)
+// Regular NES RAM
 
 
+#pragma bss-name("BSS")
 
 //extern uint8_t famistudio_state[0xbf];
-
 
 uint8_t TOTALCOINS;
 uint8_t TOTALATTEMPTSHUNDREDS;
@@ -379,7 +379,7 @@ struct Base Generic2;
 
 
 
-
+// Palette declarations for some reason
 
 const uint8_t paletteDefault[16] = {
     0x11,0x01,0x0F,0x30,	// palette 0, used for level tiles
