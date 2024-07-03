@@ -420,8 +420,8 @@ char bg_coll_slope() {
 
 			break;	
 		case COL_SLOPE_RD66:
-			tmp7 = ((temp_x & 0x0f) ^ 0x0f) << 2;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = temp_y & 0x0f;
+			tmp7 = ((temp_x & 0x0f) ^ 0x0f) >> 1;	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = temp_y & 0x0f << 1;
 			slope_type = SLOPE_66DEG_UP;
 			// if (tmp4 >= (tmp7 - 3)) {
 
