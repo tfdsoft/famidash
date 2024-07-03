@@ -7,6 +7,9 @@ extern unsigned char CHR_MENU_DIFFICULTIES[];
 extern unsigned char CHR_PUSAB_TRANSBG[];
 extern unsigned char CHR_PUSAB_BLACKBG[];
 
+extern unsigned char CHR_INGAME_GLOBAL[];
+extern unsigned char CHR_INGAME_TILESET_CHECKERBOARD[];
+
 
 // data: name of the array
 // bytes: amount of bytes to write x256

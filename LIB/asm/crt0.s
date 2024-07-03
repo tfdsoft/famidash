@@ -307,6 +307,13 @@ _CHR_PUSAB_BLACKBG:
 	.incbin "GRAPHICS/new_chr/pusab_blackbg.chr" ; (768)
 	.export _CHR_PUSAB_BLACKBG
 
+_CHR_INGAME_GLOBAL:
+	.incbin "GRAPHICS/new_chr/ingame_global.chr" ; (1024)
+	.export _CHR_INGAME_GLOBAL
+_CHR_INGAME_TILESET_CHECKERBOARD:
+	.incbin "GRAPHICS/new_chr/ingame_tileset_checkerboard.chr" ; (1024)
+	.export _CHR_INGAME_TILESET_CHECKERBOARD
+
 ; end of chr bank shenanigans
 
 

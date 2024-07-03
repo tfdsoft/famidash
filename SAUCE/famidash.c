@@ -70,7 +70,7 @@ void main(){
 					pal_fade_to_withmusic(4,0);
 					ppu_off();
 					pal_bg(splashMenu);
-					mmc3_set_8kb_chr(MENUBANK);
+					mmc3_set_8kb_chr(0);
 
 					set_scroll_x(0);
 					set_scroll_y(0);
@@ -79,10 +79,7 @@ void main(){
 
 					//	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-					switch (kandotemp){
-						case 0x00:	music_play(song_menu_theme); break;
-						case 0x01:	break;
-					}
+					if (kandotemp) music_play(song_menu_theme);
 
 					settingvalue = 0;
 

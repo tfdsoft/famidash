@@ -150,6 +150,9 @@ void levelselection() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	mmc3_set_8kb_chr(0);
+	verybadchrload(CHR_MENU_GLOBAL, 2, 0);
+	verybadchrload(CHR_MENU_LOGOBUTTONS, 6, 2);
+	verybadchrload(CHR_PUSAB_TRANSBG, 3, 8);
 	verybadchrload(CHR_PUSAB_BLACKBG, 3, 11);
 	verybadchrload(CHR_MENU_DIFFICULTIES, 2, 14);
 
@@ -194,7 +197,7 @@ void levelselection() {
 				music_update();
 			}
 			gameState = 0x02;
-			pal_fade_to(4,0);
+			pal_fade_to_withmusic(4,0);
 			kandotemp = 0;
 			return;
 		}
@@ -586,10 +589,8 @@ void settings() {
 
 
 #include "defines/bg_charmap.h"
-const char funny_moment[][0x0E] = {
-	{"AAAAAAAAAAAAAAA"},
-	{"the funnies"},
-	{"get phucking real"}
+const char funny_moment[][0x10] = {
+	{"AAAAAAAAAAAAAAAA"}
 };
 #ifdef FLAG_ENABLE_VER_NUM
 	#if FLAG_BETA_BUILD
