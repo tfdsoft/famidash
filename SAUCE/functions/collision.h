@@ -198,6 +198,7 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 	tmp2, tmp8
 */
 char bg_coll_mini_blocks() {
+	
 	switch (collision) {
 		case COL_UP_LEFT:
 			tmp2 = temp_y & 0x0f;	
@@ -279,6 +280,7 @@ char bg_coll_mini_blocks() {
 			}
 			break;
 	}
+	
 	return 0;
 }
 
@@ -406,38 +408,23 @@ char bg_coll_slope() {
 		case COL_SLOPE_RD45:
 			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = temp_y & 0x0f;
-
+			slope_type = SLOPE_45DEG_UP;
 			// if (tmp4 >= (tmp7 - 3)) {
-			if ((uint8_t)(tmp4 + 3) >= tmp7) {
-				tmp8 = tmp4 - tmp7;
-				if (pad[controllingplayer] & PAD_A) {
-					slope_frames = 0;
-					slope_type = 0;
-				} else {
-					slope_frames = 1; //signal BG_COLL_R to not check stuff
-					slope_type = SLOPE_45DEG_UP;
-					was_on_slope_counter = 2;
-				}
-				return 1;
-			} 
+
 			break;
 		case COL_SLOPE_RD22:
 			tmp7 = ((temp_x & 0x0f) ^ 0x0f) >> 1;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = temp_y-40 & 0x0f;
-
+			slope_type = SLOPE_22DEG_UP;
 			// if (tmp4 >= (tmp7 - 3)) {
-			if ((uint8_t)(tmp4 + 3) >= tmp7) {
-				tmp8 = tmp4 - tmp7;
-				if (pad[controllingplayer] & PAD_A) {
-					slope_frames = 0;
-					slope_type = 0;
-				} else {
-					slope_frames = 1; //signal BG_COLL_R to not check stuff
-					slope_type = SLOPE_22DEG_UP;
-					was_on_slope_counter = 4;
-				}
-				return 1;
-			} 
+
+			break;	
+		case COL_SLOPE_RD66:
+			tmp7 = ((temp_x & 0x0f) ^ 0x0f) << 2;	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = temp_y & 0x0f;
+			slope_type = SLOPE_66DEG_UP;
+			// if (tmp4 >= (tmp7 - 3)) {
+
 			break;			
 		case COL_SLOPE_LD45:
 //			tmp7 = 0x0f - 0x10 + (temp_x & 0x0f);	// = 0x0f - (0x10 - (temp_x & 0x0f))
@@ -452,6 +439,19 @@ char bg_coll_slope() {
 //			} 
 			break;
 	}
+			if (collision >= 0x0b && collision <= 0x0e) {		//common slope shit
+				if ((uint8_t)(tmp4 + 3) >= tmp7) {
+					tmp8 = tmp4 - tmp7;
+					if (pad[controllingplayer] & PAD_A) {
+						slope_frames = 0;
+						slope_type = 0;
+					} else {
+						slope_frames = 1; //signal BG_COLL_R to not check stuff
+						was_on_slope_counter = 2;
+					}
+					return 1;
+				} 	
+			}
 	return 0;
 }
 
