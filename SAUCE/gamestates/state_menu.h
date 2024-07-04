@@ -157,6 +157,7 @@ void levelselection() {
 	verybadchrload(CHR_MENU_DIFFICULTIES, 2, 14);
 
 
+	if (kandotemp == 0) music_play(song_menu_theme);
 	pal_bright(0);
 
 	// pal_bg(paletteMenu);
@@ -203,6 +204,7 @@ void levelselection() {
 		}
 
 		if (pad_new[0] & (PAD_B)){
+			kandotemp = 1;
 			kandowatchesyousleep = 0;
 			return;
 		}
@@ -620,10 +622,7 @@ void state_menu() {
 
 	//	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-	switch (kandotemp){
-		case 0x00:	music_play(song_menu_theme); break;
-		case 0x01:	break;
-	}
+	if (kandotemp == 0) music_play(song_menu_theme);
 
 	settingvalue = 0;
 	
