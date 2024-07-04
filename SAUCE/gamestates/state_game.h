@@ -67,6 +67,8 @@ void state_game(){
 		mmc3_set_8kb_chr(0);
 	//}
     ppu_off();
+	verybadchrload(0x0000,32,0);
+
 	verybadchrload(CHR_INGAME_GLOBAL,4,0);
 	verybadchrload(CHR_INGAME_TILESET_CHECKERBOARD,2,4);
 
@@ -303,7 +305,7 @@ void state_game(){
 			famistudio_music_pause(1);
 			famistudio_update();
 			color_emphasis(COL_EMP_DARK);
-			pal_bright(3);
+			//pal_bright(3);
 			// ppu_off();
 			// mmc3_set_8kb_chr(16);
 			// vram_adr(NAMETABLE_B);
@@ -349,6 +351,7 @@ void state_game(){
 					sfx_play(sfx_exit_level,0);
 					music_update();
 					color_emphasis(COL_EMP_NORMAL);
+					kandotemp = 0;
 					return;
 				}
 			}
