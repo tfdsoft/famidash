@@ -307,6 +307,13 @@ _CHR_PUSAB_BLACKBG:
 	.incbin "GRAPHICS/new_chr/pusab_blackbg.chr" ; (768)
 	.export _CHR_PUSAB_BLACKBG
 
+_CHR_CUSTOMIZE_BORDERS:
+	.incbin "GRAPHICS/new_chr/customize_borders.chr" ; (256)
+	.export _CHR_CUSTOMIZE_BORDERS
+_CHR_CUSTOMIZE_MISC:
+	.incbin "GRAPHICS/new_chr/customize_misc.chr" ; (512)
+	.export _CHR_CUSTOMIZE_MISC
+
 _CHR_INGAME_GLOBAL:
 	.incbin "GRAPHICS/new_chr/ingame_global.chr" ; (1024)
 	.export _CHR_INGAME_GLOBAL
@@ -314,7 +321,15 @@ _CHR_INGAME_TILESET_CHECKERBOARD:
 	.incbin "GRAPHICS/new_chr/ingame_tileset_checkerboard.chr" ; (1024)
 	.export _CHR_INGAME_TILESET_CHECKERBOARD
 
+
+.segment "CHR_BANK_04" ; ICONS
+_CHR_CUSTOMIZE_ICONS:
+	.incbin "GRAPHICS/new_chr/customize_icons.chr" ; (4096)
+	.export _CHR_CUSTOMIZE_ICONS
+
 ; end of chr bank shenanigans
+
+
 
 
 

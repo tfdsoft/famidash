@@ -237,26 +237,17 @@ void levelselection() {
 
 #include "defines/mainmenu_customize.h"
 
-const uint8_t loNTAddrTableCustomizeScreen[] = {
-	LSB(NTADR_A(13, 8)),		// -1 = 3
-	LSB(NTADR_A(4, 14)),		// 0
-	LSB(NTADR_A(13, 14)),		// 1
-	LSB(NTADR_A(22, 14)),		// 2
-	LSB(NTADR_A(13, 8)),		// 3
-	LSB(NTADR_A(4, 14))			// 4 = 0
+const uint8_t CustomizeScreen_pos[] = {
+	96, 191,	// 0
+	160, 191,	// 1
+	128, 207,	// 2
 };
 
-const uint8_t hiNTAddrTableCustomizeScreen[] = {
-	MSB(NTADR_A(13, 8)),		// -1 = 3
-	MSB(NTADR_A(4, 14)),		// 0
-	MSB(NTADR_A(13, 14)),		// 1
-	MSB(NTADR_A(22, 14)),		// 2
-	MSB(NTADR_A(13, 8)),		// 3
-	MSB(NTADR_A(4, 14))			// 4 = 0
-};
-
-static const uint8_t iconTable[] = {
-	0, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x20, ('M'-'a'), 0x24, 0x26, 0x40, 0x42
+static const uint16_t colNumUpdates_table[] = {
+	NTADR_A(10,25),
+	NTADR_A(18,25),
+	NTADR_A(14,27)
+	
 };
 
 void updateColors() {
@@ -278,17 +269,35 @@ void updateColors() {
 				icon_colors[settingvalue] = 0x0C;
 		}
 	}
-	if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) icon_colors[settingvalue] = 0x0D;	
+	if ((pad[1] & (PAD_LEFT))) icon_colors[settingvalue] = 0x0D;
+
+	one_vram_buffer(0x80+((icon_colors[settingvalue]&0xf0)>>4), colNumUpdates_table[settingvalue]);
+	one_vram_buffer(0x80+(icon_colors[settingvalue]&0x0f), colNumUpdates_table[settingvalue]+1);
 }
 
 void customize_screen() {
-	settingvalue = 3; 
+	settingvalue = 0; 
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg(paletteMenu);
-	mmc3_set_8kb_chr(MENUICONBANK);
+	pal_col(0x00, 0x00);
+
+	pal_col(0x11, 0x00);// set sprite palette 0
+	pal_col(0x12, 0x10);
+	pal_col(0x13, 0x30);
+	
+
+
+	mmc3_set_8kb_chr(0);
+	verybadchrload(CHR_MENU_GLOBAL, 2, 0);
+	verybadchrload(CHR_CUSTOMIZE_BORDERS, 1, 2);
+	verybadchrload(CHR_CUSTOMIZE_MISC, 2, 14);
+
+
+
+
 	vram_adr(NAMETABLE_A);
-	vram_unrle(customizescreen);   	
+	vram_unrle(customizescreen);
 
 	TOTALCOINS = 0;
 	TOTALCOINSONES = 0;
@@ -312,11 +321,11 @@ void customize_screen() {
 		TOTALSTARSTENS = TOTALSTARSTENS + 1;
 		TOTALSTARSONES = TOTALSTARSONES - 10;
 	}
-	if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
-	one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
+	if (TOTALCOINSTENS) one_vram_buffer(0x80+TOTALCOINSTENS, NTADR_A(28,5));
+	one_vram_buffer(0x80+TOTALCOINSONES, NTADR_A(29,5));	
 
-	if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
-	one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
+	if (TOTALSTARSTENS) one_vram_buffer(0x80+TOTALSTARSTENS, NTADR_A(28,4));
+	one_vram_buffer(0x80+TOTALSTARSONES, NTADR_A(29,4));	
 
 	one_vram_buffer('h', NTADR_A(13, 8));		
 	one_vram_buffer('i', NTADR_A(13, 9));
@@ -329,69 +338,52 @@ void customize_screen() {
 		tmp3 = 0;
 
 		ppu_wait_nmi();
+		oam_clear();
 		music_update();
 
-		pal_col(0x0a,color1);
-		pal_col(0x0b,color2);
+		pal_col(0x0A,color1);
+		pal_col(0x0B,color2);
 		pal_col(0x09,color3);
 
 		pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
 
-		if (!retro_mode) {
-			tmp1 = iconTable[icon] + 'a';
-			one_vram_buffer(tmp1, NTADR_A(15, 8));		
-			one_vram_buffer(++tmp1, NTADR_A(16, 8));		
-			one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(15, 9));		
-			one_vram_buffer(++tmp1, NTADR_A(16, 9));		
-		}
-		else {
-			one_vram_buffer('a'+0x6A, NTADR_A(15,8));			
-			one_vram_buffer('b'+0x6A, NTADR_A(16,8));			
-			one_vram_buffer('c'+0x6A, NTADR_A(15,9));			
-			one_vram_buffer('d'+0x6A, NTADR_A(16,9));			
-		}
-		if (settingvalue == 3 && !retro_mode) {
-			if (pad_new[0] & PAD_UP) {
-				icon++;
-				if (icon > (MAX_ICONS - 1)) icon = 0;
-			}
-			if (pad_new[0] & PAD_DOWN) {
-				if (icon == 0) icon = MAX_ICONS - 1;
-				else icon--;
-			}
-		} else if (settingvalue != 3) updateColors();
+		//if (settingvalue == 3 && !retro_mode) {
+		//	if (pad_new[0] & PAD_UP) {
+		//		icon++;
+		//		if (icon > (MAX_ICONS - 1)) icon = 0;
+		//	}
+		//	if (pad_new[0] & PAD_DOWN) {
+		//		if (icon == 0) icon = MAX_ICONS - 1;
+		//		else icon--;
+		//	}
+		//} else 
+		if (settingvalue != 3) updateColors();
 
 		if (pad_new[0] & PAD_RIGHT) {
 			settingvalue++;
-			if (settingvalue == 4) settingvalue = 0;
+			if (settingvalue == 3) settingvalue = 0;
 			tmp3--;
 		}
 		if (pad_new[0] & PAD_LEFT) {
-			if (settingvalue == 0) settingvalue = 3;
+			if (settingvalue == 0) settingvalue = 2;
 			else settingvalue--;
 			tmp3++;
 		}
 
-		if (tmp3) {
-			tmp4 = settingvalue; ++tmp4;
-			tmp5 = loNTAddrTableCustomizeScreen[tmp4]|(hiNTAddrTableCustomizeScreen[tmp4]<<8);
-			one_vram_buffer('h', tmp5);		
-			one_vram_buffer('i', tmp5 + VRAM_OFF(0, 1));
-			one_vram_buffer('f', tmp5 = addloNOC(tmp5, VRAM_OFF(5, 0)));
-			one_vram_buffer('g', tmp5 + VRAM_OFF(0, 1));
+		// write the sprites for the selection
+			oam_spr(CustomizeScreen_pos[(settingvalue<<1)], CustomizeScreen_pos[(settingvalue<<1)+1], 0xEC, 0);
+			oam_spr(CustomizeScreen_pos[(settingvalue<<1)]+8, CustomizeScreen_pos[(settingvalue<<1)+1], 0xEC, 0|OAM_FLIP_H);
 
-			tmp4 += tmp3;   // Get the old index
-			tmp5 = loNTAddrTableCustomizeScreen[tmp4]|(hiNTAddrTableCustomizeScreen[tmp4]<<8);
-			one_vram_buffer(' ', tmp5);		
-			one_vram_buffer(' ', tmp5 + VRAM_OFF(0, 1));
-			one_vram_buffer(' ', tmp5 = addloNOC(tmp5, VRAM_OFF(5, 0)));
-			one_vram_buffer(' ', tmp5 + VRAM_OFF(0, 1));
-		}
+
+
+		
 
 		if (pad_new[0] & PAD_B || pad_new[0] & PAD_START) {
 			return;
 		}
+		
+		
 	}
 }
 
