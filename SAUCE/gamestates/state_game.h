@@ -310,8 +310,7 @@ void state_game(){
         music_update();
         
 
-        pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
+        pad_poll(0); // read the first controller
 
 		if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
 
@@ -323,8 +322,7 @@ void state_game(){
 			dual = 1;
 		}
 		else if (twoplayer) {
-			pad[1] = pad_poll(1); // read the second controller
-			pad_new[1] = get_pad_new(1);
+			pad_poll(1); // read the second controller
 			dual = 1;
 		}
 		
@@ -397,8 +395,7 @@ void state_game(){
 			while (!(pad_new[0] & PAD_START)) {
 				
 				// ppu_wait_nmi();
-				pad[0] = pad_poll(0); // read the second controller
-				pad_new[0] = get_pad_new(0);	
+				pad_poll(0); // read the second controller
 				if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
 			// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 					if (!has_practice_point) music_play(song_practice);

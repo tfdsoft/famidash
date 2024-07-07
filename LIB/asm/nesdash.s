@@ -84,6 +84,8 @@ sprite_data = _sprite_data
 .export _auto_fs_updates := auto_fs_updates
 .export _parallax_scroll_column := parallax_scroll_column
 .export _parallax_scroll_column_start := parallax_scroll_column_start
+.export _pad = PAD_STATEP
+.export _pad_new = PAD_STATET
 
 ; Standard for function declaration here:
 ; C function name

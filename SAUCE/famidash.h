@@ -109,8 +109,11 @@ int16_t currplayer_vel_x;
 int16_t currplayer_vel_y;
 uint8_t currplayer_gravity;
 
-uint8_t pad[2];
-uint8_t pad_new[2];
+extern uint8_t pad[2];
+extern uint8_t pad_new[2];
+
+#pragma zpsym("pad")
+#pragma zpsym("pad_new")
 
 uint8_t gamemode;
 uint8_t cube_data[2];
