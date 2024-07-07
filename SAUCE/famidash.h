@@ -415,6 +415,9 @@ const uint8_t splashMenu[16] = { //MAIN MENU
     0x11,0x0F,0x11,0x30
 };
 
+
+
+
 const uint8_t iconBankTable[] = {
 	16, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64
 };

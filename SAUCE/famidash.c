@@ -115,7 +115,7 @@ void main(){
 				bgmtest();
 				break;
 			}
-			//case 0x04: state_demo(); break;
+			//default: state_demo(); break;
 		}
     }
 }
