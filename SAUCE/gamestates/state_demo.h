@@ -1,3 +1,7 @@
+#pragma code-name(push, "XCD_BANK_03")
+#pragma data-name(push, "XCD_BANK_03") 
+#pragma rodata-name(push, "XCD_BANK_03")
+
 const unsigned char Credits[314]={
 	0x01,0xfe,0x01,0x3f,0xff,0x01,0x47,0x20,0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,
 	0x29,0x22,0x23,0x22,0x2b,0x2c,0x2c,0xff,0x01,0x0f,0x30,0x31,0x32,0x33,0x34,0x35,
@@ -45,9 +49,15 @@ const unsigned char palette_Credits[16]={ 0x11,0x0f,0x10,0x30,0x11,0x0f,0x2a,0x3
 
 void state_demo(){
     ppu_off();
+	pal_bright(0);
+
     
     pal_bg(palette_Credits);
-	mmc3_set_prg_bank_1(0); // where the credits nametable is
+	
+	if (tmp2) {
+		gameState = 0x01;
+		return;
+	}
 
 
 	vram_adr(NAMETABLE_A);
@@ -61,21 +71,36 @@ void state_demo(){
 //    vram_unrle(dem_funnies);
     // __asm__("PLA \n JSR %v ", mmc3_set_prg_bank_1);
 
-	mmc3_set_8kb_chr(24);
-
 	oam_clear();
+	mmc3_set_8kb_chr(MENUBANK);
 	ppu_on_all();
+	ppu_wait_nmi();
+
 	pal_fade_to(0,4);
-	while (1){
+	tmp1 = 0;
+	do {
 		ppu_wait_nmi();
-
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
-		if (pad_new[0] & PAD_START){
-			gameState = 0x01;
-			pal_fade_to(4,0);
-			return; 
-		}
-	}
+		tmp1++;
+	} while (tmp1 != 0);
+	tmp1 = 0;
+	do {
+		ppu_wait_nmi();
+		tmp1++;
+		set_scroll_x(tmp1<<2);
+		
+	} while (tmp1 < 64);
+	tmp1 = 0;
+	set_scroll_x(256);
+	do {
+		ppu_wait_nmi();
+		tmp1++;
+	} while (tmp1 != 0);
+	
+	gameState = 0x01;
+	return; 
+		
 }
+
+#pragma code-name(pop)
+#pragma data-name(pop) 
+#pragma rodata-name(pop)

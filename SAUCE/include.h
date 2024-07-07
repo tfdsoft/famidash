@@ -95,7 +95,7 @@
 #include "gamestates/state_lvldone.h"
 #pragma rodata-name (push, "XCD_BANK_02")
 #include "gamestates/state_demo.h"
-#pragma rodata-name (pop)
+
 
 
 
