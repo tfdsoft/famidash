@@ -51,14 +51,7 @@ void main(){
 	// auto_fs_updates = 0;
 
 	// Get it? it spells DASH
-	if (SRAM_VALIDATE[0] != 0x0D
-	 || SRAM_VALIDATE[1] != 0x0A
-	 || SRAM_VALIDATE[2] != 0x05
-	 || SRAM_VALIDATE[3] != 0x20) {
-		// set the validation header and then reset coin counts
-		setdefaultoptions();
 
-	}
 	gameState = 0x00;
     while (1){
         ppu_wait_nmi();
@@ -119,6 +112,14 @@ void main(){
 			default: {
 				mmc3_set_prg_bank_1(GET_BANK(state_demo));
 				state_demo();
+	if (SRAM_VALIDATE[0] != 0x0D
+	 || SRAM_VALIDATE[1] != 0x0A
+	 || SRAM_VALIDATE[2] != 0x05
+	 || SRAM_VALIDATE[3] != 0x20) {
+		// set the validation header and then reset coin counts
+		setdefaultoptions();
+
+	}
 				break;
 			}
 		}

@@ -81,7 +81,7 @@ void state_demo(){
 	do {
        pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
-		if (pad_new[0]) { gameState = 0x01; return; }		
+		if (pad_new[0] && SRAM_VALIDATE[3] == 0x20) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
@@ -89,7 +89,7 @@ void state_demo(){
 	do {
         pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
-		if (pad_new[0]) { gameState = 0x01; return; }
+		if (pad_new[0] && SRAM_VALIDATE[3] == 0x20) { gameState = 0x01; return; }
 		ppu_wait_nmi();
 		tmp1++;
 		set_scroll_x(tmp1<<2);
@@ -100,7 +100,7 @@ void state_demo(){
 	do {
         pad[0] = pad_poll(0); // read the first controller
 		pad_new[0] = get_pad_new(0);
-		if (pad_new[0]) { gameState = 0x01; return; }
+		if (pad_new[0] && SRAM_VALIDATE[3] == 0x20) { gameState = 0x01; return; }
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
