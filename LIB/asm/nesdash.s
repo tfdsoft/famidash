@@ -2387,3 +2387,20 @@ SampleRate:
 		ADC #10
 		RTS
 .endproc
+
+
+
+; void pad_poll_both();
+.segment "CODE_2"
+
+.export _pad_poll_both
+.proc _pad_poll_both
+	LDA #0
+	jsr _pad_poll
+	; returns 0 in X, but LDA #1 is faster anyway
+	LDA #1
+	jsr _pad_poll
+	; returns 0 in X, return nothing
+	txa
+	rts
+.endproc
