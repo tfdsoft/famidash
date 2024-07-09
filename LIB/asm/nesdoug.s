@@ -2,7 +2,7 @@
 ;version 1.3, 10/31/2022
 
 .export _set_vram_buffer, __multi_vram_buffer, __one_vram_buffer
-.export _get_pad_new, _get_frame_count
+.export _get_frame_count ;_get_pad_new
 .export _check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y, __sub_scroll_y_ext
 .export  __get_ppu_addr, _get_at_addr
 ; .export _set_data_pointer, _set_mt_pointer, _buffer_1_mt, _buffer_4_mt
@@ -93,12 +93,12 @@ _clear_vram_buffer:
 	
 	
 	
-;uint8_t __fastcall__ get_pad_new(uint8_t pad);	
-_get_pad_new:
-	tay
-	lda <PAD_STATET,y
-	ldx #0
-	rts
+; ;uint8_t __fastcall__ get_pad_new(uint8_t pad);	
+; _get_pad_new:
+; 	tay
+; 	lda <PAD_STATET,y
+; 	ldx #0
+; 	rts
 	
 	
 	

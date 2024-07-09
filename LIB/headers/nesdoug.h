@@ -30,7 +30,7 @@ void clear_vram_buffer();
 // resets the vram buffer, if you need to undo something, like for a scene change
 
 
-uint8_t __fastcall__ get_pad_new(uint8_t pad);
+// uint8_t __fastcall__ get_pad_new(uint8_t pad);
 // pad 0 or 1, use AFTER pad_poll() to get the trigger / new button presses
 // more efficient than pad_trigger, which runs the entire pad_poll code again
 

@@ -100,6 +100,13 @@ void __fastcall__ playPCM(uint8_t sample);
  */
 uint32_t __fastcall__ hexToDec (uint16_t input);
 
+/**
+ * @brief Poll both controllers
+ *
+ * @note Stores the states in @c pad and @c pad_new automatically.
+ */
+void pad_poll_both();
+
 #define low_word(a) *((uint16_t*)&a)
 #define high_word(a) *((uint16_t*)&a+1)
 
@@ -213,3 +220,5 @@ extern uint8_t PAL_BUF[32];
 #define crossPRGBankJump16(sym, args) (__AX__ = args, __asm__("sta ptr3 \n stx ptr3+1"),crossPRGBankJump0(sym, args))
 
 #define uint16SepArrLoad(sym, idx) (__A__ = idx, __asm__("tay \n lda %v, y \n ldx %v, y", sym##_lo, sym##_hi), __AX__)
+
+#define fc_mic_poll() (PEEK(0x4016) & 0x04)

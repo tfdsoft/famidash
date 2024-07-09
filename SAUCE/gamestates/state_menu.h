@@ -195,9 +195,7 @@ void levelselection() {
 		ppu_wait_nmi();
 		music_update();
 
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
+		pad_poll(0); // read the first controller
 		if (twoplayer) one_vram_buffer('d', NTADR_A(31, 2));
 		else one_vram_buffer('e', NTADR_A(31, 2));
 
@@ -345,9 +343,8 @@ void customize_screen() {
 		pal_col(0x0b,color2);
 		pal_col(0x09,color3);
 
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
+		pad_poll(0); // read the first controller
+		
 		if (!retro_mode) {
 			tmp1 = iconTable[icon] + 'a';
 			one_vram_buffer(tmp1, NTADR_A(15, 8));		
@@ -423,9 +420,8 @@ void funsettings() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
+		pad_poll(0); // read the first controller
+		
 		if (invisible) 	one_vram_buffer('g', NTADR_A(26, 7));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 7));	// this is auto optimized by cc65
 
@@ -518,9 +514,8 @@ void settings() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
+		pad_poll(0); // read the first controller
+		
 		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 7));
 		else one_vram_buffer('f', NTADR_A(26, 7));
 
@@ -602,13 +597,7 @@ void settings() {
 
 #include "defines/mainmenu_charmap.h"
 
-#ifdef FLAG_ENABLE_VER_NUM
-	#if FLAG_BETA_BUILD
-		const unsigned char ver[] = "BETA BUILD";
-	#else
-		const unsigned char ver[] = "VER";
-	#endif
-#endif
+
 
 void state_menu() {
 	pal_fade_to_withmusic(4,0);
@@ -646,30 +635,21 @@ void state_menu() {
     vram_adr(NAMETABLE_A);
     vram_unrle(game_start_screen);
 
-	#ifdef FLAG_ENABLE_VER_NUM
-		multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(2,2));
-		if (!FLAG_BETA_BUILD) {
-			one_vram_buffer(FLAG_MAJ_VER, NTADR_A(6,2));
-			one_vram_buffer(0x18, NTADR_A(7,2)); // dot
-			one_vram_buffer(FLAG_MIN_VER, NTADR_A(8,2));
-		}
-	#endif
+	
  	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;
 	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
 	one_vram_buffer('a', tmp5);
 	one_vram_buffer('b', addloNOC(tmp5, 1));
-	pad[0] = pad_poll(0); // read the first controller
-	pad_new[0] = get_pad_new(0);
-	kandoframecnt = 0;
+	pad_poll(0); // read the first controller
+		kandoframecnt = 0;
 	while (!(pad_new[0] & PAD_START)){
 		rand8();
 		ppu_wait_nmi();
 		music_update();
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
+		pad_poll(0); // read the first controller
+		
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 		if (!(kandoframecnt & 127)) {
 			tmp3 = 0x80 + BG_Table2[discoframe];
@@ -760,9 +740,8 @@ void bgmtest() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
+		pad_poll(0); // read the first controller
+		
 		one_vram_buffer(' '-1, NTADR_A(14, 10));
 		one_vram_buffer(0xb0+song, NTADR_A(15,10));
 

@@ -134,9 +134,7 @@ void state_lvldone() {
 		}
 
  		// read the first controller
-		pad[0] = pad_poll(0);
-		pad_new[0] = get_pad_new(0);
-		
+		pad_poll(0);
 		// Move the sprite zero hit to the new location
 		POKE(0x200, sprite_0_y);
 
@@ -298,9 +296,8 @@ void bgmtest() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
-		pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-
+		pad_poll(0); // read the first controller
+		
 		one_vram_buffer(' '-1, NTADR_A(14, 10));
 		one_vram_buffer(0xb0+song, NTADR_A(15,10));
 

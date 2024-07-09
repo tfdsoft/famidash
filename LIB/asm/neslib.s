@@ -20,7 +20,7 @@
 	.export __scroll,_split
 	.export _bank_spr,_bank_bg
 	.export __vram_read,__vram_write
-	.export _pad_poll,_pad_trigger,_pad_state
+	.export _pad_poll ;,_pad_trigger,_pad_state
 	.export _rand8,_rand16,_set_rand
 	.export __vram_fill,_vram_inc,_vram_unrle
 	.export _set_vram_update,_flush_vram_update
@@ -857,28 +857,28 @@ _pad_poll:
 
 
 
-;uint8_t __fastcall__ pad_trigger(uint8_t pad);
+; ;uint8_t __fastcall__ pad_trigger(uint8_t pad);
 
-_pad_trigger:
+; _pad_trigger:
 
-	pha
-	jsr _pad_poll
-	pla
-	tax
-	lda <PAD_STATET,x
-	ldx #0
-	rts
+; 	pha
+; 	jsr _pad_poll
+; 	pla
+; 	tax
+; 	lda <PAD_STATET,x
+; 	ldx #0
+; 	rts
 
 
 
-;uint8_t __fastcall__ pad_state(uint8_t pad);
+; ;uint8_t __fastcall__ pad_state(uint8_t pad);
 
-_pad_state:
+; _pad_state:
 
-	tax
-	lda <PAD_STATE,x
-	ldx #0
-	rts
+; 	tax
+; 	lda <PAD_STATE,x
+; 	ldx #0
+; 	rts
 
 
 

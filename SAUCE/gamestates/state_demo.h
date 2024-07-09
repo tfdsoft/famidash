@@ -45,6 +45,17 @@ const unsigned char Credits2[294]={
 	0xe2,0xef,0xf3,0xf3,0xff,0xf4,0xe8,0xe5,0xed,0xe5,0xff,0x01,0x60,0xfe,0x01,0x3f,
 	0x00,0x01,0x3e,0x00,0x01,0x00
 };
+
+#include "defines/mainmenu_charmap.h"
+
+#ifdef FLAG_ENABLE_VER_NUM
+	#if FLAG_BETA_BUILD
+		const unsigned char ver[] = "BETA BUILD";
+	#else
+		const unsigned char ver[] = "VER";
+	#endif
+#endif
+
 const unsigned char palette_Credits[16]={ 0x11,0x0f,0x10,0x30,0x11,0x0f,0x2a,0x39,0x11,0x28,0x17,0x0f,0x11,0x0f,0x0f,0x0f };
 
 void state_demo(){
@@ -65,6 +76,14 @@ void state_demo(){
 	vram_adr(NAMETABLE_B);
 	vram_unrle(Credits2);
 
+	#ifdef FLAG_ENABLE_VER_NUM
+		multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(20,27));
+		if (!FLAG_BETA_BUILD) {
+			one_vram_buffer(FLAG_MAJ_VER, NTADR_A(24,27));
+			one_vram_buffer(0x18, NTADR_A(25,27)); // dot
+			one_vram_buffer(FLAG_MIN_VER, NTADR_A(26,27));
+		}
+	#endif
 	// __asm__("LDA mmc3PRG1Bank \nPHA ");
     // mmc3_set_prg_bank_1(0);
     // vram_adr(NAMETABLE_A);
@@ -78,18 +97,24 @@ void state_demo(){
 
 	pal_fade_to(0,4);
 	tmp1 = 0;
+
+	POKE(0x4015, 0b00010000);
+	/*
+	while (1) {
+		POKE(0x4011, fc_mic_poll()<<4);
+	}
+	*/
+	
 	do {
-       pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-		if ((pad_new[0] || pad_new[1]) && SRAM_VALIDATE[3] == 0x20) { gameState = 0x01; return; }		
+       	pad_poll_both();
+		if (SRAM_VALIDATE[3] == 0x20 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
 	tmp1 = 0;
 	do {
-        pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-		if ((pad_new[0] || pad_new[1]) && SRAM_VALIDATE[3] == 0x20) { gameState = 0x01; return; }		
+        pad_poll_both();
+		if (SRAM_VALIDATE[3] == 0x20 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 		set_scroll_x(tmp1<<2);
@@ -98,16 +123,15 @@ void state_demo(){
 	tmp1 = 0;
 	set_scroll_x(256);
 	do {
-        pad[0] = pad_poll(0); // read the first controller
-		pad_new[0] = get_pad_new(0);
-		if ((pad_new[0] || pad_new[1]) && SRAM_VALIDATE[3] == 0x20) { gameState = 0x01; return; }		
+        pad_poll_both();
+		if (SRAM_VALIDATE[3] == 0x20 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
 	
 	gameState = 0x01;
 	return; 
-		
+	
 }
 
 #pragma code-name(pop)

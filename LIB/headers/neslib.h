@@ -139,11 +139,11 @@ uint8_t __fastcall__ pad_poll(uint8_t pad);
 //if you need to poll the pad in both normal and trigger mode, poll it in the
 //trigger mode for first, then use pad_state
 
-uint8_t __fastcall__ pad_trigger(uint8_t pad);
+// uint8_t __fastcall__ pad_trigger(uint8_t pad);
 
 //get previous pad state without polling ports
 
-uint8_t __fastcall__ pad_state(uint8_t pad);
+// uint8_t __fastcall__ pad_state(uint8_t pad);
 
 
 //set scroll, including the top bits

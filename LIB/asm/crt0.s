@@ -175,7 +175,7 @@ clearVRAM:
 
 clearRAM:
     txa
-    ldy _tmp2
+    ldy <_tmp2
 @1:
     sta $000,x
     sta $100,x
@@ -190,7 +190,7 @@ clearRAM:
     inx
     bne @1
 
-    sty _tmp2
+    sty <_tmp2
 
 	lda #4
 	jsr _pal_bright
