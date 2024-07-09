@@ -37,7 +37,8 @@ void x_movement(){
 	Generic.y = high_byte(currplayer_y);
 
 	if (!(options & platformer)) {
-		currplayer_x += currplayer_vel_x;
+		if (pad[0] & PAD_UP) currplayer_x -= currplayer_vel_x;
+		else currplayer_x += currplayer_vel_x;
 	} else {
 		// leave the col calls first so it executes and checks against spike collision
 		tmp7 = bg_coll_R();
