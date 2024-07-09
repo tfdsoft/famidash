@@ -597,13 +597,7 @@ void settings() {
 
 #include "defines/mainmenu_charmap.h"
 
-#ifdef FLAG_ENABLE_VER_NUM
-	#if FLAG_BETA_BUILD
-		const unsigned char ver[] = "BETA BUILD";
-	#else
-		const unsigned char ver[] = "VER";
-	#endif
-#endif
+
 
 void state_menu() {
 	pal_fade_to_withmusic(4,0);
@@ -641,14 +635,7 @@ void state_menu() {
     vram_adr(NAMETABLE_A);
     vram_unrle(game_start_screen);
 
-	#ifdef FLAG_ENABLE_VER_NUM
-		multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(2,2));
-		if (!FLAG_BETA_BUILD) {
-			one_vram_buffer(FLAG_MAJ_VER, NTADR_A(6,2));
-			one_vram_buffer(0x18, NTADR_A(7,2)); // dot
-			one_vram_buffer(FLAG_MIN_VER, NTADR_A(8,2));
-		}
-	#endif
+	
  	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;

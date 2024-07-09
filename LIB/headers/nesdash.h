@@ -221,4 +221,4 @@ extern uint8_t PAL_BUF[32];
 
 #define uint16SepArrLoad(sym, idx) (__A__ = idx, __asm__("tay \n lda %v, y \n ldx %v, y", sym##_lo, sym##_hi), __AX__)
 
-#define fc_mic_poll() (PEEK(0x4016) & 4)
+#define fc_mic_poll() (PEEK(0x4016) & 0x04)
