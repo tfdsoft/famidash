@@ -88,6 +88,11 @@
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
+#define PLAYER_TRAILS_ON			0xF2
+#define PLAYER_TRAILS_OFF			0xF3
+#define SLOWMODE_ON				0xF4
+#define SLOWMODE_OFF				0xF5
+
 #define F_BLOCK					0xF6
 #define J_BLOCK					0xF7
 #define H_BLOCK					0xF8
@@ -216,7 +221,8 @@ char sprite_height_lookup(){
 				activesprites_type[index] = 0xFF; 
 				return 0;
 	}
-
+	else if (type == SLOWMODE_ON) { slowmode = 1; activesprites_type[index] = 0xFF; return 0; }
+	else if (type == SLOWMODE_OFF) { slowmode = 0;activesprites_type[index] = 0xFF; return 0; }
 	else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
 	else if (type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) // Speed portals
 		return 0x1F;

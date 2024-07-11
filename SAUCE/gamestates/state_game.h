@@ -146,7 +146,7 @@ void state_game(){
 	
 
     while (1) {
-
+	
 	if (gameboy_mode == 1) color_emphasis(COL_EMP_GREY);
 
 
@@ -278,6 +278,10 @@ void state_game(){
 
 		kandoframecnt++;
         ppu_wait_nmi();
+        music_update();
+	if (slowmode && (kandoframecnt & 1)) { }
+	else {
+	
 	if (!no_parallax) {
 		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
 		mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
@@ -307,7 +311,6 @@ void state_game(){
 
 
 
-        music_update();
         
 
         pad_poll(0); // read the first controller
@@ -568,11 +571,7 @@ void state_game(){
         draw_sprites();
         
  //       color_emphasis(0);
-        for (tmp2 = 0; tmp2 < 2; tmp2++) {
-		fblocked[tmp2] = 0;
-		jblocked[tmp2] = 0;
-		hblocked[tmp2] = 0;
-    }
+
         if (DEBUG_MODE) gray_line();
 		if (!DEBUG_MODE) {
 			if (high_byte(player_x[0]) > 0x20) {
@@ -580,6 +579,7 @@ void state_game(){
 			} else cube_data[0] = cube_data[1] = 0;
 		}
         if (gameState != 0x02) return;
+    }
     }
 }
 
