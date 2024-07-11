@@ -277,11 +277,11 @@ void state_game(){
 		// }
 
 		kandoframecnt++;
-        ppu_wait_nmi();
         music_update();
-	if (slowmode && (kandoframecnt & 1)) { }
+	if (slowmode && (kandoframecnt & 1)) { ppu_wait_nmi(); }
 	else {
 	
+        ppu_wait_nmi();
 	if (!no_parallax) {
 		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
 		mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
@@ -559,6 +559,7 @@ void state_game(){
 			}
 		}
 		// mmc3_set_prg_bank_1(GET_BANK(check_spr_objects));	// it's in a const bank
+	}
         check_spr_objects();
 
 //        if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
@@ -580,6 +581,6 @@ void state_game(){
 		}
         if (gameState != 0x02) return;
     }
-    }
+    
 }
 
