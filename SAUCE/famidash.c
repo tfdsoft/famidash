@@ -115,7 +115,7 @@ void main(){
 	if (SRAM_VALIDATE[0] != 0x0D
 	 || SRAM_VALIDATE[1] != 0x0A
 	 || SRAM_VALIDATE[2] != 0x05
-	 || SRAM_VALIDATE[3] != 0x20) {
+	 || SRAM_VALIDATE[3] != 0x21) {
 		// set the validation header and then reset coin counts
 		setdefaultoptions();
 
@@ -138,7 +138,7 @@ void setdefaultoptions() {
 		SRAM_VALIDATE[0] = 0x0d;
 		SRAM_VALIDATE[1] = 0x0a;
 		SRAM_VALIDATE[2] = 0x05;
-		SRAM_VALIDATE[3] = 0x20;
+		SRAM_VALIDATE[3] = 0x21;
 		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
 			coin1_obtained[tmp2] = 0;
 			coin2_obtained[tmp2] = 0;
@@ -166,6 +166,7 @@ void setdefaultoptions() {
 		palette_cycle_mode = 0;
 		gameboy_mode = 0;
 		decorations = 1;
+		invisblocks = 0;
 		for (tmp2 = 0; tmp2 < 20; tmp2++) {
 			achievements[tmp2] = 0;
 		}

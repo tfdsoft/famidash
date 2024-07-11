@@ -107,14 +107,14 @@ void state_demo(){
 	
 	do {
        	pad_poll_both();
-		if (SRAM_VALIDATE[3] == 0x20 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
+		if (SRAM_VALIDATE[3] == 0x21 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
 	tmp1 = 0;
 	do {
         pad_poll_both();
-		if (SRAM_VALIDATE[3] == 0x20 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
+		if (SRAM_VALIDATE[3] == 0x21 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 		set_scroll_x(tmp1<<2);
@@ -124,7 +124,7 @@ void state_demo(){
 	set_scroll_x(256);
 	do {
         pad_poll_both();
-		if (SRAM_VALIDATE[3] == 0x20 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
+		if (SRAM_VALIDATE[3] == 0x21 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);

@@ -2,7 +2,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8  ; C-safe temp storage
 .import pusha, pushax, callptr4
-.import _scroll_x, _discomode
+.import _scroll_x, _discomode, _invisblocks
 
 .macpack longbranch
 
@@ -779,7 +779,13 @@ NametableAddrHi = tmp1
 
 	right_tilewriteloop:
 			ldy CurrentRow
+			lda _invisblocks
+			beq @norm
+			lda #0
+			beq @done
+			@norm:
 			LDA columnBuffer,Y
+			@done:
 			tay
 			; y is the metatile id
 			lda metatiles_top_right, y
@@ -795,7 +801,13 @@ NametableAddrHi = tmp1
 		rts
 	left_tilewriteloop:
 			ldy CurrentRow
+			lda _invisblocks
+			beq @norm2
+			lda #0
+			beq @done2
+			@norm2:
 			LDA columnBuffer,Y
+			@done2:
 			tay
 			; y is the metatile id
 			lda metatiles_top_left, y
