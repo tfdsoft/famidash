@@ -232,12 +232,12 @@ do func while(0); \
 
 #define do_if_c_set(func) do_if_flag_common(func, "cc")
 #define do_if_c_clr(func) do_if_flag_common(func, "cs")
-#define do_if_z_set(func) do_if_flag_common(func, "eq")
-#define do_if_z_clr(func) do_if_flag_common(func, "ne")
+#define do_if_z_set(func) do_if_flag_common(func, "ne")
+#define do_if_z_clr(func) do_if_flag_common(func, "eq")
 #define do_if_v_set(func) do_if_flag_common(func, "vc")
 #define do_if_v_clr(func) do_if_flag_common(func, "vs")
-#define do_if_n_set(func) do_if_flag_common(func, "mi")
-#define do_if_n_clr(func) do_if_flag_common(func, "pl")
+#define do_if_n_set(func) do_if_flag_common(func, "pl")
+#define do_if_n_clr(func) do_if_flag_common(func, "mi")
 
 // aliases
 #define do_if_equal(func) do_if_z_set(func)

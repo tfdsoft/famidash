@@ -56,7 +56,7 @@ void increase_parallax_scroll_column() {
 #pragma code-name(push, "XCD_BANK_01")
 
 void restore_practice_state() {
-		scroll_x = practice_scroll_x - 256;
+		scroll_x = practice_scroll_x - (256 + 16);
 		scroll_y = practice_scroll_y;
 		player_x[0] = practice_player_x[0];
 		player_x[1] = practice_player_x[1];
@@ -108,7 +108,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// over and over until it catches up
 	if (has_practice_point) {
 		ii = practice_scroll_x >> 4;
-		dummy_unrle_columns(++ii);
+		dummy_unrle_columns(ii);
 
 		__A__ = -(6 * (9 / 3) / 2); __asm__("tay \n sty %v", parallax_scroll_column);
 		do {
@@ -119,24 +119,37 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 			ii--;
 		} while (ii != 0);
 		parallax_scroll_column_start = -3;
-		do {
-			parallax_scroll_column_start += 3;
-			parallax_scroll_column += 3;
-		} while ((int8_t)parallax_scroll_column < 0);
+		__asm__("ldy #3");
+		unrle_first_screen_addition_loop:
+			__asm__("tya ");
+			parallax_scroll_column_start += __A__;
+			__asm__("tya ");
+			parallax_scroll_column += __A__;
+			__asm__("bmi %g", unrle_first_screen_addition_loop);
 		parallax_scroll_column <<= 1;
 
 		mmc3_set_prg_bank_1(GET_BANK(restore_practice_state));
 		restore_practice_state();
+
+		mmc3_set_prg_bank_1(GET_BANK(draw_screen_R));
+		// Draw the nametable starting from where the scroll is set
+		i = -16;
+		do {
+			if (draw_screen_R()) flush_vram_update2();	// if draw_screen_r did anything, flush vram
+			i++;
+			uint32_inc(scroll_x);
+		} while (i != 0);
+		music_update();
 		
 	//	memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
 	} else {
 		// To get the draw screen R to start in the left nametable, scroll must be negative.
 		low_word(scroll_x) = LSW(-256); high_word(scroll_x) = MSW(-256);
+		mmc3_set_prg_bank_1(GET_BANK(draw_screen_R));
+		i = 0;
 	}
 
 	// Draw the nametable starting from where the scroll is set
-	i = 0;
-	mmc3_set_prg_bank_1(GET_BANK(draw_screen_R));
     do {
 		if (draw_screen_R()) flush_vram_update2();	// if draw_screen_r did anything, flush vram
 		i++;
