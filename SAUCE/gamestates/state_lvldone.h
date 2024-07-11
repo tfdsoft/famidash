@@ -6,6 +6,20 @@ extern volatile unsigned char VRAM_UPDATE;
 #pragma rodata-name(push, "LVL_BANK_00")
 
 
+void checkcointimer(){
+	if (tmp1 == 1){
+		famistudio_sfx_play(sfx_coin,0);
+		tmp1 = 50;
+	}
+}
+void checkcoinproceed(){
+	if (tmp1 == 0 || tmp1 == 30) {
+		tmp2++;
+		tmp1 = 1;
+	}
+}
+
+
 void state_lvldone() {
 #define current_state tmp2
 #define sprite_0_y tmp3
@@ -78,7 +92,7 @@ void state_lvldone() {
 		if (coins & COIN_3) coin3_obtained[level] = 1;
 	}
 	
-	/*
+	
 	if (!coins) {
 		tmp1 = sizeof(coins0) - 1;
 		tmpptr1 = (unsigned char*)coins0;
@@ -92,8 +106,8 @@ void state_lvldone() {
 		tmp1 = sizeof(coins1) - 1;
 		tmpptr1 = (unsigned char*)coins1;
 	}
-	*/
-	if (tmp1) multi_vram_buffer_horz((const char*)tmpptr1,tmp1,NTADR_C(17,18));
+	 
+	//if (tmp1) multi_vram_buffer_horz((const char*)tmpptr1,tmp1,NTADR_C(17,18));
 	flush_vram_update2();
 
 	// Set the start of the scroll to the top nametable
@@ -257,9 +271,42 @@ void state_lvldone() {
 			}
 
 			current_state = 4;
-
+			tmp1 = 1;
 			break;
-		case 4:
+		case 4: // coin 1
+			if (coins & COIN_1){
+				one_vram_buffer(0x90, NTADR_C(11,18));
+				one_vram_buffer(0x91, NTADR_C(12,18));
+				one_vram_buffer(0xA0, NTADR_C(11,19));
+				one_vram_buffer(0xA1, NTADR_C(12,19));
+				checkcointimer();
+			}
+			tmp1--;
+			checkcoinproceed();
+			break;
+		case 5: // coin 2
+			if (coins & COIN_2){
+				one_vram_buffer(0x90, NTADR_C(15,18));
+				one_vram_buffer(0x91, NTADR_C(16,18));
+				one_vram_buffer(0xA0, NTADR_C(15,19));
+				one_vram_buffer(0xA1, NTADR_C(16,19));
+				checkcointimer();
+			}
+			tmp1--;
+			checkcoinproceed();
+			break;
+		case 6: // coin 3
+			if (coins & COIN_3){
+				one_vram_buffer(0x90, NTADR_C(19,18));
+				one_vram_buffer(0x91, NTADR_C(20,18));
+				one_vram_buffer(0xA0, NTADR_C(19,19));
+				one_vram_buffer(0xA1, NTADR_C(20,19));
+				checkcointimer();
+			}
+			tmp1--;
+			checkcoinproceed();
+			break;
+		case 7:
 
 			if (pad_new[0] & PAD_START){
 				// pal_bg(paletteDefault);
