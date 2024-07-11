@@ -1,4 +1,4 @@
-import sys
+import sys, argparse
 
 def readDbgFile (filename : str, check : str) -> dict:
 	file = open(sys.path[0]+"/"+filename+".dbg")
@@ -24,23 +24,20 @@ def readDbgFile (filename : str, check : str) -> dict:
 	file.close()
 	return outdict
 
-showall = 1
-if ("--only-diff" in sys.argv or "--diff-only" in sys.argv or "-d" in sys.argv):
-	showall = 0
+parser = argparse.ArgumentParser()
+parser.add_argument("-d", "--only-diff", "--diff-only", help="Only show the differences between the .dbg files", action="store_false", default=True)
+parser.add_argument("-m", "--markdown-mode", "--md", help="Enable markdown code quotes around individual entries", action="store_true")
+parser.add_argument("-e", "--entry-type", help="The type of entries to include", default="scope", choices=["scope", "seg"])
+parser.add_argument("-u", "--update", help="Include new or removed entries between .dbg files", action="store_true")
+args = parser.parse_args()
 
-quote = ""
-if ("--md" in sys.argv or "-m" in sys.argv):
-	quote = "`"
+showall = args.only_diff
 
-check = "scope"
-if ("--scope" in sys.argv):
-	check = "scope"
-if ("--seg" in sys.argv or "-s" in sys.argv):
-	check = "seg"
+quote = "`" if args.markdown_mode else ""
 
-showNewOrRemoved = 0
-if ("--update" in sys.argv or "-u" in sys.argv):
-	showNewOrRemoved = 1
+check = args.entry_type
+
+showNewOrRemoved = args.update
 
 # print("start")
 old = readDbgFile("TMP/famidash", check)
