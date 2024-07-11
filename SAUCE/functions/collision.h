@@ -413,30 +413,30 @@ char bg_coll_slope() {
 
 			break;
 		case COL_SLOPE_RD22:
-//			tmp7 = ((temp_x & 0x0f) ^ 0x0f) >> 1;	// = 0x0F - (temp_x & 0x0F)
-//			tmp4 = temp_y-40 & 0x0f;
-//			slope_type = SLOPE_22DEG_UP;
+			tmp7 = ((temp_x & 0x0f) ^ 0x0f) >> 1;	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = temp_y-40 & 0x0f;
+			slope_type = SLOPE_22DEG_UP;
 			// if (tmp4 >= (tmp7 - 3)) {
 
 			break;	
 		case COL_SLOPE_RD66:
-//			tmp7 = ((temp_x & 0x0f) ^ 0x0f) >> 1;	// = 0x0F - (temp_x & 0x0F)
-//			tmp4 = temp_y & 0x0f << 1;
-//			slope_type = SLOPE_66DEG_UP;
+			tmp7 = ((temp_x & 0x0f) ^ 0x0f) >> 1;	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = temp_y & 0x0f << 1;
+			slope_type = SLOPE_66DEG_UP;
 			// if (tmp4 >= (tmp7 - 3)) {
 
 			break;			
 		case COL_SLOPE_LD45:
-//			tmp7 = 0x0f - 0x10 + (temp_x & 0x0f);	// = 0x0f - (0x10 - (temp_x & 0x0f))
-//			tmp4 = temp_y & 0x0f;
+			tmp7 = 0x0f - 0x10 + (temp_x & 0x0f);	// = 0x0f - (0x10 - (temp_x & 0x0f))
+			tmp4 = temp_y & 0x0f;
 
 			// if (tmp4 >= (tmp7 - 3)) {
-//			if ((uint8_t)(tmp4 + 3) >= tmp7) {
-//				tmp8 = tmp4 - tmp7 - 5;
-//				slope_type = SLOPE_45DEG_DOWN;
+			if ((uint8_t)(tmp4 + 3) >= tmp7) {
+				tmp8 = tmp4 - tmp7 - 5;
+				slope_type = SLOPE_45DEG_DOWN;
 			//	was_on_slope_counter = 2;
-//				return 1;
-//			} 
+				return 1;
+			} 
 			break;
 	}
 			if (collision >= 0x0b && collision <= 0x0e) {		//common slope shit
