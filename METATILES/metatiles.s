@@ -8,6 +8,8 @@
 .export _metatiles_attr := metatiles_attr
 .export _metatiles_coll := metatiles_coll
 
+.segment "XCD_BANK_01"	; same one as draw_screen_R, where they are used
+
 metatiles_top_left:
 .repeat METATILES_COUNT, I
   .byte .ident(.sprintf("METATILE_%d_TL", I))
@@ -32,6 +34,8 @@ metatiles_attr:
 .repeat METATILES_COUNT, I
   .byte .ident(.sprintf("METATILE_%d_AT", I))
 .endrepeat
+
+.segment "RODATA_2"
 
 metatiles_coll:
 .repeat METATILES_COUNT, I

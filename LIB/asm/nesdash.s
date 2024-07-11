@@ -161,13 +161,15 @@ end:
 	rts
 .endproc
 
-.segment "CODE_2"
+.segment "RODATA_2"
 
 shiftBy4table:
 	.byte $00, $10, $20, $30
 	.byte $40, $50, $60, $70
 	.byte $80, $90, $A0, $B0
 	.byte $C0, $D0, $E0, $F0
+
+.segment "CODE_2"
 
 .export __one_vram_buffer_repeat
 .proc __one_vram_buffer_repeat
@@ -544,166 +546,169 @@ single_rle_byte:
 	;   Write 1 updates the lower nametable's right tiles
 	; Frame 2:
 	;   Attributes 
-	
-	LDA _scroll_x			;__ Highbyte of scroll_x
-	LSR						;
-	LSR						;   >> 4
-	LSR						;
-	LSR						;__
-	STA tmp4
 
-	LDX scroll_count
-	BNE frame2
+	start:
+		
+		LDA _scroll_x			;__ Highbyte of scroll_x
+		LSR						;
+		LSR						;   >> 4
+		LSR						;
+		LSR						;__
+		STA tmp4
 
-	LDA tmp4
-	CMP _rld_column			;   If X == rld column, decompress shit
-	BEQ frame0
+		LDX scroll_count
+		BNE frame2
 
-	TXA	; It would've branched if it was not 0
-	RTS
+		LDA tmp4
+		CMP _rld_column			;   If X == rld column, decompress shit
+		BEQ frame0
+
+		TXA	; It would've branched if it was not 0
+		RTS
     
-frame2:
+	frame2:
 		CPX #$01
 		BEQ frame1
 		JMP attributes
 
-frame0:
+	frame0:
 		; Switch banks
 		crossPRGBankJSR ,_unrle_next_column,_level_data_bank
 		JSR writeToCollisionMap
-frame1:
 
-		; Writing to nesdoug's VRAM buffer starts here
-		LDX VRAM_INDEX
+	frame1:
 
-		; In-house replacement of get_ppu_addr, only counts X
-		; Address is big-endian
-		LDY _rld_column ;   000xxxx0 - the left tiles of the metatiles
-		DEY
-		TYA
-		AND #$0F
-		ASL         ;__
-		LDY scroll_count
-		BEQ :+
-			ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
-		:
-		STA VRAM_BUF+TileOff0+1,X
-		STA VRAM_BUF+TileOff1+1,X
+			; Writing to nesdoug's VRAM buffer starts here
+			LDX VRAM_INDEX
 
-		lda _scroll_x + 1 ; high byte
-		and #%00000001
-		eor #%00000001
-		asl
-		asl
-		ora #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
-		STA VRAM_BUF+TileOff0,X
-		ORA #$08        ; 2nd nametable
-		STA VRAM_BUF+TileOff1,X
+			; In-house replacement of get_ppu_addr, only counts X
+			; Address is big-endian
+			LDY _rld_column ;   000xxxx0 - the left tiles of the metatiles
+			DEY
+			TYA
+			AND #$0F
+			ASL         ;__
+			LDY scroll_count
+			BEQ :+
+				ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
+			:
+			STA VRAM_BUF+TileOff0+1,X
+			STA VRAM_BUF+TileOff1+1,X
+
+			lda _scroll_x + 1 ; high byte
+			and #%00000001
+			eor #%00000001
+			asl
+			asl
+			ora #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
+			STA VRAM_BUF+TileOff0,X
+			ORA #$08        ; 2nd nametable
+			STA VRAM_BUF+TileOff1,X
 
 
-		; First part of the update: the tiles
-		; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
-		LDA #(15*2)
-		STA VRAM_BUF+TileOff0+2,X
-		STA VRAM_BUF+TileOff1+2,X
+			; First part of the update: the tiles
+			; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
+			LDA #(15*2)
+			STA VRAM_BUF+TileOff0+2,X
+			STA VRAM_BUF+TileOff1+2,X
 
-		; The sequence itself:
-		
-		; Load Y value
-		LDY #$00
-		sty CurrentRow
-		; Load max value
-		LDA #15 - 1
-		STA LoopCount
-		; Check if doing a left or right hand write
-		LDA scroll_count
-		AND #1
-		beq @LeftWrite
-			; Right side write
-			; Call for upper tiles
-			JSR right_tilewriteloop
-			BMI @WriteBottomHalf	; The loop keeps looping via a BPL, therefore a BMI = BRA
-@LeftWrite:
-			JSR left_tilewriteloop
-@WriteBottomHalf:
-		; Load new max
-		LDA #15 - 1
-		STA LoopCount
-		; Add offset to X
-		.if USE_ILLEGAL_OPCODES
-			TXA
-			AXS #<-(TileSizeHi-(15*2))
-		.else
-			TXA
-			CLC
-			ADC #(TileSizeHi-(15*2))
-			TAX
-		.endif
-		
-		LDA scroll_count
-		AND #1
-		beq @LeftWrite2
-			JSR right_tilewriteloop
-			BMI @RenderParallax	; The loop keeps looping via a BPL, therefore a BMI = BRA
-@LeftWrite2:
-			; Call for lower tiles
-			JSR left_tilewriteloop
-@RenderParallax:
+			; The sequence itself:
+			
+			; Load Y value
+			LDY #$00
+			sty CurrentRow
+			; Load max value
+			LDA #15 - 1
+			STA LoopCount
+			; Check if doing a left or right hand write
+			LDA scroll_count
+			AND #1
+			beq @LeftWrite
+				; Right side write
+				; Call for upper tiles
+				JSR right_tilewriteloop
+				BMI @WriteBottomHalf	; The loop keeps looping via a BPL, therefore a BMI = BRA
+			@LeftWrite:
+				JSR left_tilewriteloop
+		@WriteBottomHalf:
+			; Load new max
+			LDA #15 - 1
+			STA LoopCount
+			; Add offset to X
+			.if USE_ILLEGAL_OPCODES
+				TXA
+				AXS #<-(TileSizeHi-(15*2))
+			.else
+				TXA
+				CLC
+				ADC #(TileSizeHi-(15*2))
+				TAX
+			.endif
+			
+			LDA scroll_count
+			AND #1
+			beq @LeftWrite2
+				JSR right_tilewriteloop
+				BMI @RenderParallax	; The loop keeps looping via a BPL, therefore a BMI = BRA
+			@LeftWrite2:
+				; Call for lower tiles
+				JSR left_tilewriteloop
+		@RenderParallax:
 
-ParallaxBufferStart = tmp1
-ParallaxExtent = tmp3
-		; Loop through the vram writes and find any $00 tiles and replace them with parallax
-		; Calculate the end of the parallax column offset
-		ldy parallax_scroll_column
-		lda ParallaxBufferOffset, y
-		sta ParallaxBufferStart
-		clc
-		adc #9
-		sta ParallaxExtent
+			ParallaxBufferStart = tmp1
+			ParallaxExtent = tmp3
+			; Loop through the vram writes and find any $00 tiles and replace them with parallax
+			; Calculate the end of the parallax column offset
+			ldy parallax_scroll_column
+			lda ParallaxBufferOffset, y
+			sta ParallaxBufferStart
+			clc
+			adc #9
+			sta ParallaxExtent
 
-		lda ParallaxBufferStart
-		clc
-		adc parallax_scroll_column_start
-		tay
+			lda ParallaxBufferStart
+			clc
+			adc parallax_scroll_column_start
+			tay
 
-		ldx #TileOff0 + TileSizeHi - 1 - (2+1)
-		stx LoopCount
-		ldx #TileOff0
-		jsr RenderParallaxLoop
+			ldx #TileOff0 + TileSizeHi - 1 - (2+1)
+			stx LoopCount
+			ldx #TileOff0
+			jsr RenderParallaxLoop
 
-		ldx #TileSizeLo - 1 - (2+1)
-		stx LoopCount
-		ldx #TileOff1
-		jsr RenderParallaxLoop
-		
-		; move to the next scroll column for next frame
-		jsr _increase_parallax_scroll_column
+			ldx #TileSizeLo - 1 - (2+1)
+			stx LoopCount
+			ldx #TileOff1
+			jsr RenderParallaxLoop
+			
+			; move to the next scroll column for next frame
+			jsr _increase_parallax_scroll_column
 
-		; Demarkate end of write
-		LDX VRAM_INDEX
-		LDA #$FF
-		STA VRAM_BUF+TileEnd,X
+			; Demarkate end of write
+			LDX VRAM_INDEX
+			LDA #$FF
+			STA VRAM_BUF+TileEnd,X
 
-		; Declare this section as taken
-		.if USE_ILLEGAL_OPCODES
-			; A is already #$FF
-			AXS #<-TileEnd
-			STX VRAM_INDEX
-		.else
-			TXA
-			CLC
-			ADC #TileEnd
-			STA	VRAM_INDEX
-		.endif
+			; Declare this section as taken
+			.if USE_ILLEGAL_OPCODES
+				; A is already #$FF
+				AXS #<-TileEnd
+				STX VRAM_INDEX
+			.else
+				TXA
+				CLC
+				ADC #TileEnd
+				STA	VRAM_INDEX
+			.endif
 
-		INC scroll_count
+			INC scroll_count
 
-		LDA #1
-		LDX #0
-		RTS
+			LDA #1
+			LDX #0
+			RTS
 
 	attributes:
-NametableAddrHi = tmp1
+		NametableAddrHi = tmp1
 		; Attribute write architecture:
 
 		; | Ad|dr |dat|
@@ -942,52 +947,6 @@ NametableAddrHi = tmp1
 			bpl RenderParallaxLoop
 	@nopar:
 			rts
-	; Before returning, loop again through the vram buffer and write the parallax
-	; parallax_bg_write:
-	;     ldx #27 - 1
-
-	;     ; based on the current scroll value.
-	;     ; y is the metatile current row, x is the current VRAM_BUF offset
-	;     ; tmp4 is the parallax_scroll_column_start value
-	;     ; which is where in the parallax buffer we are rendering from
-
-	;     ldy ParallaxColumnStart
-	;     cpy #9 - 1
-	;     bne :+
-	;         ; annoyingly when we are drawing the last row we have to do it differently
-	;         jsr render_last_tile
-	;         bne write_tile1
-	;     :
-	;     lda ParallaxBuffer, y
-	;     clc
-	;     adc parallax_scroll_column
-	; write_tile1:
-	;     sta VRAM_BUF+TileOff0+3,X
-	;     iny 
-	;     cpy #9
-	;     bcc :+
-	;         ldy #0
-	;     :
-	;     ; Render the second tile
-	;     cpy #9 - 1
-	;     bne :+
-	;         jsr render_last_tile
-	;         bne write_tile2
-	;     :
-	;     lda ParallaxBuffer, y
-	;     clc
-	;     adc parallax_scroll_column
-	; write_tile2:
-	;     sta VRAM_BUF+TileOff0+4,X
-	;     iny 
-	;     cpy #9
-	;     bcc :+
-	;         ldy #0
-	;     :
-	;     sty ParallaxColumnStart
-
-	;     jmp NextMetatile
-	;     RTS
 
 ; Column striped parallax data definition
 ; add to the tile for the next row, up to 6.
