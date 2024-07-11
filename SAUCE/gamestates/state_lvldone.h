@@ -42,22 +42,22 @@ void state_lvldone() {
 	vram_inc(0);
 	vram_fill(0xfe, 0x3c0);
 	vram_fill(0x00, 0x3f);
-    
+
 	// Copy the level done screen to the bot left and right nametable
     vram_adr(NAMETABLE_C);
     vram_unrle(leveldone);
 
 	// Change the text attributes for the press to return
-    vram_adr(0x2be1);
-	vram_fill(0xff, 0x6);
+    //vram_adr(0x2be1);
+	//vram_fill(0xff, 0x6);
 
     vram_adr(NAMETABLE_D);
     vram_unrle(leveldone);
 
-#include "defines/endlevel_charmap.h"
-	multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));
-	multi_vram_buffer_horz((const char*)menutext4,sizeof(menutext4)-1,NTADR_C(8, 18));
-	multi_vram_buffer_horz((const char*)attemptstext,sizeof(attemptstext)-1,NTADR_C(7, 19));
+	#include "defines/endlevel_charmap.h"
+	//multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));
+	//multi_vram_buffer_horz((const char*)menutext4,sizeof(menutext4)-1,NTADR_C(8, 18));
+	//multi_vram_buffer_horz((const char*)attemptstext,sizeof(attemptstext)-1,NTADR_C(7, 19));
 	
 	tmp1 = 0;
 	tmpptr1 = NULL;
@@ -65,10 +65,10 @@ void state_lvldone() {
 	storeWordSeparately(hexToDec(attempts), TOTALCOINSONES, TOTALCOINSTENS);
 	storeWordSeparately(__EAX__>>16, TOTALATTEMPTSHUNDREDS, TOTALATTEMPTSTHOUSANDS); 
 
-	if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALATTEMPTSTHOUSANDS, NTADR_C(16,19));
-	if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALATTEMPTSHUNDREDS, NTADR_C(17,19));
-	if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_C(18,19));
-	one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_C(19,19));	
+	if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALATTEMPTSTHOUSANDS, NTADR_C(18,13));
+	if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALATTEMPTSHUNDREDS, NTADR_C(19,13));
+	if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_C(20,13));
+	one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_C(21,13));	
 	
 	if (!has_practice_point) {
 		LEVELCOMPLETE[level] = 1;
@@ -78,6 +78,7 @@ void state_lvldone() {
 		if (coins & COIN_3) coin3_obtained[level] = 1;
 	}
 	
+	/*
 	if (!coins) {
 		tmp1 = sizeof(coins0) - 1;
 		tmpptr1 = (unsigned char*)coins0;
@@ -91,6 +92,7 @@ void state_lvldone() {
 		tmp1 = sizeof(coins1) - 1;
 		tmpptr1 = (unsigned char*)coins1;
 	}
+	*/
 	if (tmp1) multi_vram_buffer_horz((const char*)tmpptr1,tmp1,NTADR_C(17,18));
 	flush_vram_update2();
 
@@ -130,7 +132,7 @@ void state_lvldone() {
 
 		// wait for sprite zero hit
 		if (current_state > 0 && current_state < 3) {
-			xy_split(0x100, scroll_y);
+			xy_split(0, scroll_y);
 		}
 
  		// read the first controller
