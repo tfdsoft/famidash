@@ -4,8 +4,6 @@
 
 .segment "SPR_BANK_00"
 sprite_data_stereomadness:
-  .byte $b0,$01,$90,$01,$f2
-  .byte $90,$02,$90,$01,$f3
   .byte $20,$03,$90,$01,$2b
   .byte $50,$03,$a0,$01,$30
   .byte $60,$03,$80,$01,$2b
