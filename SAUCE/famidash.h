@@ -253,6 +253,7 @@ uint8_t robotjumpframe[2];
 uint8_t robotjumptime[2];
 uint8_t hblocked[2];
 uint8_t jblocked[2];
+uint8_t fblocked[2];
 uint8_t level; // = 0x00;
 uint8_t level_data_bank;
 uint8_t sprite_data_bank;

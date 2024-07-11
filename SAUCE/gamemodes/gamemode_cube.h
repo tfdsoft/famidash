@@ -45,17 +45,19 @@ void cube_movement(void){
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 	
-	if(!currplayer_gravity || (currplayer_gravity && hblocked[currplayer])){
+	if(!currplayer_gravity || (currplayer_gravity && hblocked[currplayer]) || (currplayer_gravity && fblocked[currplayer])){
 		if(bg_coll_D()){ // check collision below
 			high_byte(currplayer_y) -= eject_D;
 			low_byte(currplayer_y) = 0;
 			currplayer_vel_y = 0;
+			if (fblocked[currplayer]) currplayer_gravity = 0;
 		}
-	} if (currplayer_gravity || (!currplayer_gravity && hblocked[currplayer])) {
+	} if (currplayer_gravity || (!currplayer_gravity && hblocked[currplayer]) || (!currplayer_gravity && fblocked[currplayer])) {
 		if(bg_coll_U()){ // check collision above
 			high_byte(currplayer_y) -= eject_U;
 			low_byte(currplayer_y) = 0;
 			currplayer_vel_y = 0;
+			if (fblocked[currplayer]) currplayer_gravity = 1;			
 		}
 	}
 	// check collision down a little lower than CUBE
@@ -70,7 +72,7 @@ void cube_movement(void){
 	if (gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0){		//cube
 		//if(bg_coll_D2()) {
 			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
-			if(pad[controllingplayer] & PAD_A && !jblocked[currplayer]) {			//no jblock - hold A to buffer jump
+			if(pad[controllingplayer] & PAD_A && (!jblocked[currplayer] && !fblocked[currplayer])) {			//no jblock - hold A to buffer jump
 				if (!currplayer_gravity) {
 					if (!mini) currplayer_vel_y = JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL; // JUMP
@@ -81,7 +83,7 @@ void cube_movement(void){
 				}
 			
 			}
-			else if(pad_new[controllingplayer] & PAD_A && jblocked[currplayer]) {		//jblock making you release and press A again to jump
+			else if(pad_new[controllingplayer] & PAD_A && (jblocked[currplayer] || fblocked[currplayer])) {		//jblock making you release and press A again to jump
 				if (!currplayer_gravity) {
 					if (!mini) currplayer_vel_y = JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL; // JUMP
@@ -169,7 +171,7 @@ void cube_movement(void){
 	else if (gamemode == 4 && currplayer_vel_y != 0){		
 			robotjumpframe[0] = 3;
 	}
-	
+	fblocked[currplayer] = 0;
 	hblocked[currplayer] = 0;
 	jblocked[currplayer] = 0;
 //jim's shit

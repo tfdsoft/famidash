@@ -568,8 +568,11 @@ void state_game(){
         draw_sprites();
         
  //       color_emphasis(0);
-        
-        
+        for (tmp2 = 0; tmp2 < 2; tmp2++) {
+		fblocked[tmp2] = 0;
+		jblocked[tmp2] = 0;
+		hblocked[tmp2] = 0;
+    }
         if (DEBUG_MODE) gray_line();
 		if (!DEBUG_MODE) {
 			if (high_byte(player_x[0]) > 0x20) {

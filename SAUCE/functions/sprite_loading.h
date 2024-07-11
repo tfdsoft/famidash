@@ -88,6 +88,7 @@
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
+#define F_BLOCK					0xF6
 #define J_BLOCK					0xF7
 #define H_BLOCK					0xF8
 #define S_BLOCK					0xF9
@@ -259,6 +260,7 @@ char sprite_height_lookup(){
 		case S_BLOCK:
 		case H_BLOCK:
 		case J_BLOCK:
+		case F_BLOCK:
 			return 0x0f;
 		case GRAVITY_UP_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_INVISIBLE_PORTAL:
@@ -483,6 +485,7 @@ void sprite_collide_lookup() {
 	case H_BLOCK: hblocked[currplayer] = 1; return;
 	case J_BLOCK: jblocked[currplayer] = 1; return;
 	case D_BLOCK: kandowavewalk = 1; return;
+	case F_BLOCK: fblocked[currplayer] = 1; return;
 	case CUBE_MODE:
 		if (!retro_mode) gamemode = 0;
 		else gamemode = 4;
