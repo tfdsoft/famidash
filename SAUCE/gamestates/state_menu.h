@@ -434,7 +434,7 @@ void funsettings() {
 		if (discomode) 	one_vram_buffer('g', NTADR_A(26, 13));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 13));	// this is auto optimized by cc65
 		
-		if (gameboy_mode) 	one_vram_buffer('g', NTADR_A(26, 16));	// believe it or not, 
+		if (invisblocks) 	one_vram_buffer('g', NTADR_A(26, 16));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 16));	// this is auto optimized by cc65
 
 		tmp1 = settingvalue;
@@ -476,8 +476,8 @@ void funsettings() {
 						discomode = discomode << 1;
 					}
 					break;
-				case 0x04: if (!gameboy_mode) { gameboy_mode = 1;   color_emphasis(COL_EMP_GREY); }
-					   else if (gameboy_mode) { gameboy_mode = 0; color_emphasis(COL_EMP_NORMAL); }
+				case 0x04: if (!invisblocks) { invisblocks = 1;  }
+					   else if (invisblocks) { invisblocks = 0;  }
 					   break;
 					
 				

@@ -27,7 +27,7 @@ void draw_sprites(void){
 	// the level sprites
 
 	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
-
+	if (!invisblocks) {
 	if (has_practice_point) {
 		
 		if (long_temp_x > 10) { 
@@ -136,6 +136,7 @@ void draw_sprites(void){
 			tmp1--;
 		} while (tmp1 != 0);
 
+	}
 	}
 #undef spr_type
 #undef animation_ptr
