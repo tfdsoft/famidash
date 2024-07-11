@@ -67,10 +67,10 @@ void cube_movement(void){
 //		}
 //	}
 
-	if (gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0 && !hblocked[currplayer]){
+	if (gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0){		//cube
 		//if(bg_coll_D2()) {
 			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
-			if(pad[controllingplayer] & PAD_A && !jblocked[currplayer]) {
+			if(pad[controllingplayer] & PAD_A && !jblocked[currplayer]) {			//no jblock - hold A to buffer jump
 				if (!currplayer_gravity) {
 					if (!mini) currplayer_vel_y = JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL; // JUMP
@@ -81,7 +81,7 @@ void cube_movement(void){
 				}
 			
 			}
-			else if(pad_new[controllingplayer] & PAD_A && jblocked[currplayer]) {
+			else if(pad_new[controllingplayer] & PAD_A && jblocked[currplayer]) {		//jblock making you release and press A again to jump
 				if (!currplayer_gravity) {
 					if (!mini) currplayer_vel_y = JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL; // JUMP
@@ -93,7 +93,7 @@ void cube_movement(void){
 			
 			}
 	}
-	else if (gamemode == 4 && !retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer]){
+	else if (gamemode == 4 && !retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer]){		//robot
 		uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
 		if(pad_new[controllingplayer] & PAD_A) {
 			if (!currplayer_gravity) {
@@ -109,7 +109,7 @@ void cube_movement(void){
 		}
 	}
 	
-	else if (gamemode == 4 && retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer]){
+	else if (gamemode == 4 && retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer]){		//jim
 		uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
 		if(pad[controllingplayer] & PAD_A && !jblocked[currplayer]) {
 			if (!currplayer_gravity) {
