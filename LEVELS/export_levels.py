@@ -146,6 +146,14 @@ def export_spr(folder: str, levels: Iterable[str]):
 					k = i // 16
 					x_hi = k	  # X position, high byte
 
+					if x_lo > 0xFF:
+						x_lo -= 0x0100
+						x_hi += 0x01
+                    
+					if x_lo < 0:
+						x_lo += 0x0100
+						x_hi -= 0x01
+
 					y_lo = j % 16 * 16 # Y position, low byte
 					if int(a) in [10,13,37,76,82,253]: # ADJUST HEIGHT FOR BOTTOM PADS
 						y_lo += 8
