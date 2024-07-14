@@ -264,7 +264,7 @@ const uint8_t hiNTAddrTableCustomizeScreen[] = {
 };
 
 static const uint8_t iconTable[] = {
-	0, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x20, ('M'-'a'), 0x24, 0x26, 0x40, 0x42
+	0, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x20, 0x22, 0x24, 0x26, 0x40, 0x42
 };
 
 void updateColors() {
@@ -432,8 +432,8 @@ void funsettings() {
 		if (discomode) 	one_vram_buffer('g', NTADR_A(26, 13));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 13));	// this is auto optimized by cc65
 		
-		if (invisblocks) 	one_vram_buffer('g', NTADR_A(26, 16));	// believe it or not, 
-		else 	one_vram_buffer('f', NTADR_A(26, 16));	// this is auto optimized by cc65
+		if (invisblocks) 	one_vram_buffer('g', NTADR_A(26, 15));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 15));	// this is auto optimized by cc65
 
 		tmp1 = settingvalue;
 
@@ -454,12 +454,13 @@ void funsettings() {
 			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
 		}
 
-		if (discomode & 0x02) { one_vram_buffer('2' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (discomode & 0x04) { one_vram_buffer('3' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (discomode & 0x08) { one_vram_buffer('4' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (discomode & 0x10) { one_vram_buffer('5' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (discomode & 0x01) { one_vram_buffer('1' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X'-0x1B, NTADR_A(26, 14)); }
-		else if (!discomode) { one_vram_buffer(' '-0x01, NTADR_A(25, 14)); one_vram_buffer(' '-0x01, NTADR_A(26, 14)); }
+		one_vram_buffer('X'-0x1B, NTADR_A(26, 13));
+		if (discomode & 0x02) { one_vram_buffer('2' - 0x20, NTADR_A(25, 13)); }
+		else if (discomode & 0x04) { one_vram_buffer('3' - 0x20, NTADR_A(25, 13));}
+		else if (discomode & 0x08) { one_vram_buffer('4' - 0x20, NTADR_A(25, 13));}
+		else if (discomode & 0x10) { one_vram_buffer('5' - 0x20, NTADR_A(25, 13));}
+		else if (discomode & 0x01) { one_vram_buffer('1' - 0x20, NTADR_A(25, 13));}
+		else { one_vram_buffer(' '-0x01, NTADR_A(25, 13)); one_vram_buffer(0x0F, NTADR_A(26, 13)); }
 
 		if (pad_new[0] & (PAD_START | PAD_A)) {
 			switch (settingvalue) {
@@ -467,19 +468,14 @@ void funsettings() {
 				case 0x01: options ^= platformer; break;
 				case 0x02: retro_mode ^= 1; break;
 				case 0x03: 
-					if (!discomode) { discomode = 1; one_vram_buffer('1' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
-					else if (discomode & 0x10) { discomode = 0; one_vram_buffer(' ', NTADR_A(25, 14)); one_vram_buffer(' ', NTADR_A(26, 14)); }
-					else if (discomode == 1) { discomode = 1 + 0x01; one_vram_buffer('2' - 0x20, NTADR_A(25, 14)); one_vram_buffer('X', NTADR_A(26, 14)); }
+					if (discomode & 0x10) discomode = 0;
 					else {
 						discomode = discomode << 1;
+						if (discomode == 0) ++discomode;
 					}
-					break;
-				case 0x04: if (!invisblocks) { invisblocks = 1;  }
-					   else if (invisblocks) { invisblocks = 0;  }
-					   break;
 					
-				
-				
+					break;
+				case 0x04: invisblocks ^= 1; break;
 			};
 		}
 			

@@ -184,7 +184,7 @@ void state_game(){
 		pal_col(3,outline_color);
 		pal_col(7,outline_color);
 
-		//if (retro_mode) { if (gamemode == 0) gamemode = 4; }
+		if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
 		if (level == 0x09 || level == 0x0A || level == 0x0B || level == 0x0C) {									//
 			if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);		//  BANKBLANKCLOUD
