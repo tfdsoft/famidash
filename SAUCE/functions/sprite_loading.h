@@ -488,21 +488,21 @@ void sprite_collide_lookup() {
 		return;
 	
 	// Portal game mode switches
-	case S_BLOCK: dashing[currplayer] = 0; return;
-	case H_BLOCK: hblocked[currplayer] = 1; return;
-	case J_BLOCK: jblocked[currplayer] = 1; return;
-	case D_BLOCK: kandowavewalk = 1; return;
-	case F_BLOCK: fblocked[currplayer] = 1; return;
-	case CUBE_MODE:
+	//case S_BLOCK: dashing[currplayer] = 0; return;
+	//case H_BLOCK: hblocked[currplayer] = 1; return;
+	//case J_BLOCK: jblocked[currplayer] = 1; return;
+	//case D_BLOCK: kandowavewalk = 1; return;
+	//case F_BLOCK: fblocked[currplayer] = 1; return;
+	//case CUBE_MODE:
 		if (retro_mode) gamemode = 4;
 		else gamemode = 0;
 		return;    
 
 	case SHIP_MODE:
-		target_scroll_y = uint16SepArrLoad(activesprites_y, index);
-		//intentional leak
 	case BALL_MODE:
 	case UFO_MODE:
+		target_scroll_y = uint16SepArrLoad(activesprites_y, index);
+		target_scroll_y -= 0x10;
 	case ROBOT_MODE:
 		gamemode = collided;
 		robotjumptime[currplayer] = 0;
@@ -565,7 +565,7 @@ void sprite_collide_lookup() {
 	case COINGOTTEN1:
 		if (!has_practice_point) {
 			coins |= COIN_1;
-//	        sfx_play(sfx_click, 0);
+	        sfx_play(sfx_coin, 0);
 			activesprites_type[index] = 0xFF;
 		}
 		return;
@@ -573,7 +573,7 @@ void sprite_collide_lookup() {
 	case COINGOTTEN2:
 		if (!has_practice_point) {
 			coins |= COIN_2;
-//	        sfx_play(sfx_click, 0);
+	        sfx_play(sfx_coin, 0);
 			activesprites_type[index] = 0xFF;
 		}
 		return;
@@ -581,7 +581,7 @@ void sprite_collide_lookup() {
 	case COINGOTTEN3:
 		if (!has_practice_point) {
 			coins |= COIN_3;
-//	        sfx_play(sfx_click, 0);
+	        sfx_play(sfx_coin, 0);
 			activesprites_type[index] = 0xFF;
 		}
 		return;

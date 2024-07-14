@@ -196,10 +196,13 @@ void levelselection() {
 		music_update();
 
 		pad_poll(0); // read the first controller
-		if (twoplayer) one_vram_buffer('d', NTADR_A(31, 2));
-		else one_vram_buffer('e', NTADR_A(31, 2));
 
-		// if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
+
+		// no longer required because of the menu option
+		//if (twoplayer) one_vram_buffer('d', NTADR_A(31, 2));
+		//else one_vram_buffer('e', NTADR_A(31, 2));
+
+		//if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
 		if (pad_new[0] & PAD_START){
 			sfx_play(sfx_start_level, 0);
