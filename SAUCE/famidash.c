@@ -34,8 +34,8 @@ void main(){
 
 	mmc3_set_8kb_chr(MENUBANK);
 
-    pal_bg(paletteDefault);
-    pal_spr(paletteDefaultSP);
+    //pal_bg(paletteDefault);
+    //pal_spr(paletteDefaultSP);
     // use the second set of tiles for sprites
 	// both bg and sprites are set to 0 by default
 	bank_spr(1);
@@ -94,9 +94,7 @@ void main(){
 			}
 			case 0x02: {
   				player_gravity[0] = 0x00;
-				//	if (twoplayer)
-				player_gravity[1] = 0x00;
-				//	else player_gravity[1] = 0x01;						
+				player_gravity[1] = 0x00;					
 				state_game(); break;
 			}
 			case 0x03: {

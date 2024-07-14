@@ -177,7 +177,7 @@ clearRAM:
     txa
     ldy <_tmp2
 @1:
-    sta $000,x
+    sta $00,x
     sta $100,x
     sta $200,x
     sta $300,x
