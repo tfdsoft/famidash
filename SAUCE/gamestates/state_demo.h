@@ -50,9 +50,9 @@ const unsigned char Credits2[294]={
 
 #ifdef FLAG_ENABLE_VER_NUM
 	#if FLAG_BETA_BUILD
-		const unsigned char ver[] = "BETA BUILD";
+		const unsigned char ver[] = "DEMO";
 	#else
-		const unsigned char ver[] = "VER";
+		const unsigned char ver[] = " VER";
 	#endif
 #endif
 
@@ -76,14 +76,14 @@ void state_demo(){
 	vram_adr(NAMETABLE_B);
 	vram_unrle(Credits2);
 
-	#ifdef FLAG_ENABLE_VER_NUM
-		multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(20,27));
-		if (!FLAG_BETA_BUILD) {
-			one_vram_buffer(FLAG_MAJ_VER, NTADR_A(24,27));
-			one_vram_buffer(0x18, NTADR_A(25,27)); // dot
-			one_vram_buffer(FLAG_MIN_VER, NTADR_A(26,27));
-		}
-	#endif
+	
+	multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(20,27));
+	one_vram_buffer(FLAG_MAJ_VER, NTADR_A(25,27));
+	if (!FLAG_BETA_BUILD) {
+		one_vram_buffer(0x18, NTADR_A(26,27)); // dot
+		one_vram_buffer(FLAG_MIN_VER, NTADR_A(27,27));
+	}
+	
 	// __asm__("LDA mmc3PRG1Bank \nPHA ");
     // mmc3_set_prg_bank_1(0);
     // vram_adr(NAMETABLE_A);
