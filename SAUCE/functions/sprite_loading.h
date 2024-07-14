@@ -493,7 +493,7 @@ void sprite_collide_lookup() {
 	//case J_BLOCK: jblocked[currplayer] = 1; return;
 	//case D_BLOCK: kandowavewalk = 1; return;
 	//case F_BLOCK: fblocked[currplayer] = 1; return;
-	//case CUBE_MODE:
+	case CUBE_MODE:
 		if (retro_mode) gamemode = 4;
 		else gamemode = 0;
 		return;    
