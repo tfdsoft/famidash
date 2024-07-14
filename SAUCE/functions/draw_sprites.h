@@ -27,7 +27,7 @@ void draw_sprites(void){
 	// the level sprites
 
 	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
-	//if (invisblocks) return;
+	if (invisblocks) return;
 
 	if (has_practice_point) {
 		
