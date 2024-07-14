@@ -36,6 +36,8 @@ void state_lvldone() {
 	pal_bright(4);
 
     pal_bg(paletteMenu);
+	pal_col(0x0A,0x2A);
+	pal_col(0x0B,0x21);
     pal_spr(paletteMenu);
 
 	mmc3_set_8kb_chr(LEVELCOMPLETEBANK);
@@ -62,8 +64,8 @@ void state_lvldone() {
     vram_unrle(leveldone);
 
 	// Change the text attributes for the press to return
-    //vram_adr(0x2be1);
-	//vram_fill(0xff, 0x6);
+    vram_adr(0x2be1);
+	vram_fill(0xff, 0x6);
 
     vram_adr(NAMETABLE_D);
     vram_unrle(leveldone);
@@ -131,6 +133,7 @@ void state_lvldone() {
 
 
 	sfx_play(sfx_level_complete, 0);
+	menuselection = 1;
 
 	while (1) {
 		// Rather hacky, but when doing sprite zero at the bottom of the screen we DON'T 
@@ -146,7 +149,7 @@ void state_lvldone() {
 
 		// wait for sprite zero hit
 		if (current_state > 0 && current_state < 3) {
-			xy_split(0, scroll_y);
+			xy_split(0x100, scroll_y);
 		}
 
  		// read the first controller
@@ -307,16 +310,37 @@ void state_lvldone() {
 			checkcoinproceed();
 			break;
 		case 7:
-
+			if (pad_new[0] & PAD_LEFT) menuselection ^= 1;
+			if (pad_new[0] & PAD_RIGHT) menuselection ^= 1;
 			if (pad_new[0] & PAD_START){
-				// pal_bg(paletteDefault);
-				// pal_spr(paletteDefaultSP);
-				sfx_play(sfx_exit_level, 0);
-				music_update();
-				gameState = 1;
-				menuselection = 0;
-				kandowatchesyousleep = 1;
-				return;
+				if (menuselection) {
+					
+					sfx_play(sfx_exit_level, 0);
+					music_update();
+					gameState = 1;
+					menuselection = 0;
+					kandowatchesyousleep = 1;
+					return;
+				} else {
+					
+					sfx_play(sfx_start_level, 0);
+					gameState = 2;
+					pal_fade_to_withmusic(4,0);
+					return;
+				}
+			}
+
+
+			if (menuselection) {
+				one_vram_buffer(' ', NTADR_C(8,23));
+				one_vram_buffer(' ', NTADR_C(9,23));
+				one_vram_buffer(0x94, NTADR_C(22,23));
+				one_vram_buffer(0x95, NTADR_C(23,23));
+			} else {
+				one_vram_buffer(0x94, NTADR_C(8,23));
+				one_vram_buffer(0x95, NTADR_C(9,23));
+				one_vram_buffer(' ', NTADR_C(22,23));
+				one_vram_buffer(' ', NTADR_C(23,23));
 			}
 			break;
 		}
