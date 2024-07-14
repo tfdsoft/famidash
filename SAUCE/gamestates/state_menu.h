@@ -223,7 +223,6 @@ void levelselection() {
 			
 		else if (pad_new[0] & (PAD_RIGHT)){
 			++level;
-			sfx_play(sfx_select, 0);
 			if (level >= LEVEL_COUNT){
 				level = 0x00;
 			}
@@ -232,7 +231,6 @@ void levelselection() {
 		}
 		else if (pad_new[0] & PAD_LEFT){
 			--level;
-			sfx_play(sfx_select, 0); 
 			if (level == 0xFF){
 				level = LEVEL_COUNT-1;
 			}
@@ -441,12 +439,12 @@ void funsettings() {
 
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
 			if (settingvalue == 4) { settingvalue = 0; }
-			else { settingvalue++; sfx_play(sfx_select, 0);  }
+			else { settingvalue++;  }
 		}
 
 		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
 			if (settingvalue == 0) { settingvalue = 4; }
-			else { settingvalue--; sfx_play(sfx_select, 0);  }
+			else { settingvalue--;  }
 		}
 
 		if (tmp1 != settingvalue) {
@@ -540,13 +538,13 @@ void settings() {
 		tmp1 = settingvalue;
 
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 7) { settingvalue = 0; sfx_play(sfx_select, 0); }
-			else { settingvalue++; sfx_play(sfx_select, 0);  }
+			if (settingvalue == 7) { settingvalue = 0;  }
+			else { settingvalue++;   }
 		}
 
 		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 7; sfx_play(sfx_select, 0); }
-			else { settingvalue--; sfx_play(sfx_select, 0);  }
+			if (settingvalue == 0) { settingvalue = 7;  }
+			else { settingvalue--;   }
 		}
 
 		if (tmp1 != settingvalue) {
@@ -688,13 +686,11 @@ void state_menu() {
 			if (menuselection == 4) menuselection = 0;
 			else menuselection++;
 			tmp3--;
-			sfx_play(sfx_select, 0);
 		}
 		if (pad_new[0] & PAD_LEFT) {
 			if (menuselection == 0) menuselection = 4;
 			else menuselection--;
 			tmp3++;
-			sfx_play(sfx_select, 0);
 		}
 
 		if (tmp3) {    // menu selection incremented
