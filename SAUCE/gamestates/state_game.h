@@ -428,13 +428,13 @@ void state_game(){
 			// ppu_on_all();
 			// famistudio_update();
 		}
-        if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
+//        if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 
-		if (pad_new[0] & PAD_DOWN) {
-			mini ^= 1;
-		}
+//		if (pad_new[0] & PAD_DOWN) {
+//			mini ^= 1;
+//		}
 
-        if (pad[0] & PAD_SELECT) {
+  /*      if (pad[0] & PAD_SELECT) {
             if (++END_LEVEL_TIMER > 60) {
                 END_LEVEL_TIMER = 0;
                 gameState = 3;
@@ -442,8 +442,9 @@ void state_game(){
                 famistudio_music_stop();
             }
         } else {
+		*/
             END_LEVEL_TIMER = 0;
-        }
+        //}
 
 		//if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
 //		if (DEBUG_MODE) gray_line();
@@ -505,7 +506,7 @@ void state_game(){
 				currplayer_gravity = player_gravity[1];
 			}
 
-			if (pad_new[controllingplayer] & PAD_UP) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
+		//	if (pad_new[controllingplayer] & PAD_UP) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
 
 			mmc3_set_prg_bank_1(GET_BANK(movement));
 			movement();
