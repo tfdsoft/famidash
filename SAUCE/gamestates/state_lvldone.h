@@ -330,7 +330,9 @@ void state_lvldone() {
 
 
 void bgmtest() {
-	
+	#define sfx tmp4
+	sfx = 0;
+
   	famistudio_music_stop();
   	music_update();
 	kandotemp=0;
@@ -343,27 +345,35 @@ void bgmtest() {
 	ppu_on_all();
 	pal_fade_to(0,4);
 	while (1) {
+		
 		ppu_wait_nmi();
 		music_update();
 		pad_poll(0); // read the first controller
 		
 		one_vram_buffer(' '-1, NTADR_A(14, 10));
 		one_vram_buffer(0xb0+song, NTADR_A(15,10));
+		one_vram_buffer(' '-1, NTADR_A(14, 17));
+		one_vram_buffer(0xb0+sfx, NTADR_A(15,17));
 
 		if (settingvalue == 0) {
 			one_vram_buffer('c', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
+			if (pad_new[0] & PAD_RIGHT) { song++; if (song == song_max) {song = 0;} }
+			if (pad_new[0] & PAD_LEFT) { if (song == 0) {song = song_max - 1;} else song--; }
+			if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A)) music_play(song);
 		}		
 		else if (settingvalue == 1) {
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer('c', NTADR_A(11, 14));
+			if (pad_new[0] & PAD_RIGHT) { sfx++; if (sfx == sfx_max) {sfx= 0;} };
+			if (pad_new[0] & PAD_LEFT) { if (sfx == 0) {sfx = sfx_max - 1;} else sfx--; }
+			if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A)) famistudio_sfx_play(sfx, 0);
 		}
+
 		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
 		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
-		if (pad_new[0] & PAD_RIGHT && settingvalue == 0) { song++; if (song == song_max) {song = 0;} }
-		if (pad_new[0] & PAD_LEFT && settingvalue == 0) { if (song == 0) {song = song_max - 1;} else song--; }
-//		if (pad_new[0] & PAD_RIGHT && settingvalue == 1) sfx ++;
-		if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A) && settingvalue == 0) music_play(song);
+		
+				
 		if (pad_new[0] & PAD_B) {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
@@ -373,7 +383,7 @@ void bgmtest() {
 			return;
 		}
 	}
-	
+#undef sfx
 }
 
 

@@ -158,12 +158,12 @@ uint8_t * level_data;
 #pragma bss-name("SRAM")
 uint8_t SRAM_VALIDATE[4];
 
-#define LEVEL_COUNT 0x11
-uint8_t coin1_obtained[LEVEL_COUNT];
-uint8_t coin2_obtained[LEVEL_COUNT];
-uint8_t coin3_obtained[LEVEL_COUNT];
+#define LEVEL_COUNT 0x0A
+uint8_t coin1_obtained[0x40];
+uint8_t coin2_obtained[0x40];
+uint8_t coin3_obtained[0x40];
 
-uint8_t LEVELCOMPLETE[LEVEL_COUNT];
+uint8_t LEVELCOMPLETE[0x40];
 
 uint8_t invisible;
 uint8_t PRACTICE_ENABLED = 1;
@@ -201,7 +201,7 @@ uint8_t decorations;
 uint8_t retro_mode;
 uint8_t palette_cycle_mode;
 uint8_t gameboy_mode;
-uint8_t achievements[20];
+uint8_t achievements[0x20];
 uint8_t invisblocks;
 
 //uint8_t greyscale_mode;
