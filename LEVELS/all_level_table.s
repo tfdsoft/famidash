@@ -123,3 +123,43 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_test3))
   .byte .lobyte(.bank(sprite_data_test4))
   .byte .lobyte(.bank(sprite_data_danger))
+
+_level_lengths_lo:
+  .byte .lobyte($037F)		; stereomadness
+  .byte .lobyte($034F)		; backontrack
+  .byte .lobyte($03A7)		; polargeist
+  .byte .lobyte($034B)		; dryout
+  .byte .lobyte($0365)		; baseafterbase
+  .byte .lobyte($0343)		; cantletgo
+  .byte .lobyte($0381)		; jumper
+  .byte .lobyte($03E6)		; timemachine
+  .byte .lobyte($0337)		; cycles
+  .byte .lobyte($034A)		; xstep
+  .byte .lobyte($03F2)		; clutterfunk
+  .byte .lobyte($0357)		; theoryofeverything
+  .byte .lobyte($035D)		; decode
+  .byte .lobyte($035D)		; test
+  .byte .lobyte($02AA)		; test2
+  .byte .lobyte($015E)		; test3
+  .byte .lobyte($009A)		; test4
+  .byte .lobyte($0020)		; danger
+
+_level_lengths_hi:
+  .byte .hibyte($037F)		; stereomadness
+  .byte .hibyte($034F)		; backontrack
+  .byte .hibyte($03A7)		; polargeist
+  .byte .hibyte($034B)		; dryout
+  .byte .hibyte($0365)		; baseafterbase
+  .byte .hibyte($0343)		; cantletgo
+  .byte .hibyte($0381)		; jumper
+  .byte .hibyte($03E6)		; timemachine
+  .byte .hibyte($0337)		; cycles
+  .byte .hibyte($034A)		; xstep
+  .byte .hibyte($03F2)		; clutterfunk
+  .byte .hibyte($0357)		; theoryofeverything
+  .byte .hibyte($035D)		; decode
+  .byte .hibyte($035D)		; test
+  .byte .hibyte($02AA)		; test2
+  .byte .hibyte($015E)		; test3
+  .byte .hibyte($009A)		; test4
+  .byte .hibyte($0020)		; danger
