@@ -46,8 +46,8 @@ void draw_sprites(void){
 	}
 
 	
-	jimsheatballframe[0] == 20 ? jimsheatballframe[0] = 0 : jimsheatballframe[0]++;
-	jimsheatballframe[1] == 20 ? jimsheatballframe[1] = 0 : jimsheatballframe[1]++;
+	if (jimsheatballalive[0]) jimsheatballframe[0] == 20 ? jimsheatballframe[0] = 0 : jimsheatballframe[0]++;
+	if (jimsheatballalive[1]) jimsheatballframe[1] == 20 ? jimsheatballframe[1] = 0 : jimsheatballframe[1]++;
 
 	jimsheatballx[0] == 0xFF ? jimsheatballalive[0] = 0 : jimsheatballx[0]++;
 	jimsheatballx[1] == 0xFF ? jimsheatballalive[1] = 0 : jimsheatballx[1]++;
