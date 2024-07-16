@@ -45,24 +45,24 @@ _level_list_hi:
   .byte .hibyte(level_data_danger)
 
 _level_list_bank:
-  .byte .lobyte(.bank(level_data_stereomadness))
-  .byte .lobyte(.bank(level_data_backontrack))
-  .byte .lobyte(.bank(level_data_polargeist))
-  .byte .lobyte(.bank(level_data_dryout))
-  .byte .lobyte(.bank(level_data_baseafterbase))
-  .byte .lobyte(.bank(level_data_cantletgo))
-  .byte .lobyte(.bank(level_data_jumper))
-  .byte .lobyte(.bank(level_data_timemachine))
-  .byte .lobyte(.bank(level_data_cycles))
-  .byte .lobyte(.bank(level_data_xstep))
-  .byte .lobyte(.bank(level_data_clutterfunk))
-  .byte .lobyte(.bank(level_data_theoryofeverything))
-  .byte .lobyte(.bank(level_data_decode))
-  .byte .lobyte(.bank(level_data_test))
-  .byte .lobyte(.bank(level_data_test2))
-  .byte .lobyte(.bank(level_data_test3))
-  .byte .lobyte(.bank(level_data_test4))
-  .byte .lobyte(.bank(level_data_danger))
+  .byte .bankbyte((level_data_stereomadness))
+  .byte .bankbyte((level_data_backontrack))
+  .byte .bankbyte((level_data_polargeist))
+  .byte .bankbyte((level_data_dryout))
+  .byte .bankbyte((level_data_baseafterbase))
+  .byte .bankbyte((level_data_cantletgo))
+  .byte .bankbyte((level_data_jumper))
+  .byte .bankbyte((level_data_timemachine))
+  .byte .bankbyte((level_data_cycles))
+  .byte .bankbyte((level_data_xstep))
+  .byte .bankbyte((level_data_clutterfunk))
+  .byte .bankbyte((level_data_theoryofeverything))
+  .byte .bankbyte((level_data_decode))
+  .byte .bankbyte((level_data_test))
+  .byte .bankbyte((level_data_test2))
+  .byte .bankbyte((level_data_test3))
+  .byte .bankbyte((level_data_test4))
+  .byte .bankbyte((level_data_danger))
 
 _sprite_list_lo:
   .byte .lobyte(sprite_data_stereomadness)
@@ -105,61 +105,91 @@ _sprite_list_hi:
   .byte .hibyte(sprite_data_danger)
 
 _sprite_list_bank:
-  .byte .lobyte(.bank(sprite_data_stereomadness))
-  .byte .lobyte(.bank(sprite_data_backontrack))
-  .byte .lobyte(.bank(sprite_data_polargeist))
-  .byte .lobyte(.bank(sprite_data_dryout))
-  .byte .lobyte(.bank(sprite_data_baseafterbase))
-  .byte .lobyte(.bank(sprite_data_cantletgo))
-  .byte .lobyte(.bank(sprite_data_jumper))
-  .byte .lobyte(.bank(sprite_data_timemachine))
-  .byte .lobyte(.bank(sprite_data_cycles))
-  .byte .lobyte(.bank(sprite_data_xstep))
-  .byte .lobyte(.bank(sprite_data_clutterfunk))
-  .byte .lobyte(.bank(sprite_data_theoryofeverything))
-  .byte .lobyte(.bank(sprite_data_decode))
-  .byte .lobyte(.bank(sprite_data_test))
-  .byte .lobyte(.bank(sprite_data_test2))
-  .byte .lobyte(.bank(sprite_data_test3))
-  .byte .lobyte(.bank(sprite_data_test4))
-  .byte .lobyte(.bank(sprite_data_danger))
+  .byte .bankbyte((sprite_data_stereomadness))
+  .byte .bankbyte((sprite_data_backontrack))
+  .byte .bankbyte((sprite_data_polargeist))
+  .byte .bankbyte((sprite_data_dryout))
+  .byte .bankbyte((sprite_data_baseafterbase))
+  .byte .bankbyte((sprite_data_cantletgo))
+  .byte .bankbyte((sprite_data_jumper))
+  .byte .bankbyte((sprite_data_timemachine))
+  .byte .bankbyte((sprite_data_cycles))
+  .byte .bankbyte((sprite_data_xstep))
+  .byte .bankbyte((sprite_data_clutterfunk))
+  .byte .bankbyte((sprite_data_theoryofeverything))
+  .byte .bankbyte((sprite_data_decode))
+  .byte .bankbyte((sprite_data_test))
+  .byte .bankbyte((sprite_data_test2))
+  .byte .bankbyte((sprite_data_test3))
+  .byte .bankbyte((sprite_data_test4))
+  .byte .bankbyte((sprite_data_danger))
+
+MID_LEVEL_LENGTHS_ENABLED = 0
+HIGH_LEVEL_LENGTHS_ENABLED = 0
 
 _level_lengths_lo:
-  .byte .lobyte($037F)		; stereomadness
-  .byte .lobyte($034F)		; backontrack
-  .byte .lobyte($03A7)		; polargeist
-  .byte .lobyte($034B)		; dryout
-  .byte .lobyte($0365)		; baseafterbase
-  .byte .lobyte($0343)		; cantletgo
-  .byte .lobyte($0381)		; jumper
-  .byte .lobyte($03E6)		; timemachine
-  .byte .lobyte($0337)		; cycles
-  .byte .lobyte($034A)		; xstep
-  .byte .lobyte($03F2)		; clutterfunk
-  .byte .lobyte($0357)		; theoryofeverything
-  .byte .lobyte($035D)		; decode
-  .byte .lobyte($035D)		; test
-  .byte .lobyte($02AA)		; test2
-  .byte .lobyte($015E)		; test3
-  .byte .lobyte($009A)		; test4
-  .byte .lobyte($0020)		; danger
+  .byte .lobyte($00008F)		; stereomadness
+  .byte .lobyte($000088)		; backontrack
+  .byte .lobyte($000096)		; polargeist
+  .byte .lobyte($000087)		; dryout
+  .byte .lobyte($00008B)		; baseafterbase
+  .byte .lobyte($000086)		; cantletgo
+  .byte .lobyte($000090)		; jumper
+  .byte .lobyte($0000A0)		; timemachine
+  .byte .lobyte($000084)		; cycles
+  .byte .lobyte($000087)		; xstep
+  .byte .lobyte($0000A2)		; clutterfunk
+  .byte .lobyte($000089)		; theoryofeverything
+  .byte .lobyte($00008A)		; decode
+  .byte .lobyte($00008A)		; test
+  .byte .lobyte($00006D)		; test2
+  .byte .lobyte($000038)		; test3
+  .byte .lobyte($000019)		; test4
+  .byte .lobyte($000005)		; danger
+
+.if MID_LEVEL_LENGTHS_ENABLED
+
+_level_lengths_md:
+  .byte .hibyte($00008F)		; stereomadness
+  .byte .hibyte($000088)		; backontrack
+  .byte .hibyte($000096)		; polargeist
+  .byte .hibyte($000087)		; dryout
+  .byte .hibyte($00008B)		; baseafterbase
+  .byte .hibyte($000086)		; cantletgo
+  .byte .hibyte($000090)		; jumper
+  .byte .hibyte($0000A0)		; timemachine
+  .byte .hibyte($000084)		; cycles
+  .byte .hibyte($000087)		; xstep
+  .byte .hibyte($0000A2)		; clutterfunk
+  .byte .hibyte($000089)		; theoryofeverything
+  .byte .hibyte($00008A)		; decode
+  .byte .hibyte($00008A)		; test
+  .byte .hibyte($00006D)		; test2
+  .byte .hibyte($000038)		; test3
+  .byte .hibyte($000019)		; test4
+  .byte .hibyte($000005)		; danger
+
+.if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-  .byte .hibyte($037F)		; stereomadness
-  .byte .hibyte($034F)		; backontrack
-  .byte .hibyte($03A7)		; polargeist
-  .byte .hibyte($034B)		; dryout
-  .byte .hibyte($0365)		; baseafterbase
-  .byte .hibyte($0343)		; cantletgo
-  .byte .hibyte($0381)		; jumper
-  .byte .hibyte($03E6)		; timemachine
-  .byte .hibyte($0337)		; cycles
-  .byte .hibyte($034A)		; xstep
-  .byte .hibyte($03F2)		; clutterfunk
-  .byte .hibyte($0357)		; theoryofeverything
-  .byte .hibyte($035D)		; decode
-  .byte .hibyte($035D)		; test
-  .byte .hibyte($02AA)		; test2
-  .byte .hibyte($015E)		; test3
-  .byte .hibyte($009A)		; test4
-  .byte .hibyte($0020)		; danger
+  .byte .bankbyte($00008F)		; stereomadness
+  .byte .bankbyte($000088)		; backontrack
+  .byte .bankbyte($000096)		; polargeist
+  .byte .bankbyte($000087)		; dryout
+  .byte .bankbyte($00008B)		; baseafterbase
+  .byte .bankbyte($000086)		; cantletgo
+  .byte .bankbyte($000090)		; jumper
+  .byte .bankbyte($0000A0)		; timemachine
+  .byte .bankbyte($000084)		; cycles
+  .byte .bankbyte($000087)		; xstep
+  .byte .bankbyte($0000A2)		; clutterfunk
+  .byte .bankbyte($000089)		; theoryofeverything
+  .byte .bankbyte($00008A)		; decode
+  .byte .bankbyte($00008A)		; test
+  .byte .bankbyte($00006D)		; test2
+  .byte .bankbyte($000038)		; test3
+  .byte .bankbyte($000019)		; test4
+  .byte .bankbyte($000005)		; danger
+
+.endif
+.endif
