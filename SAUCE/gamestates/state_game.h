@@ -95,32 +95,7 @@ void x_movement_coll() {
 extern unsigned char* PARALLAX_CHR;
 unsigned char END_LEVEL_TIMER;
 
-void reset_game_vars(){
-	if (!has_practice_point) music_play(song_practice);
-	practice_player_x[0] = player_x[0];
-	long_temp_x = high_byte(player_x[0]);
-	practice_player_x[1] = player_x[1];
-	practice_player_y[0] = player_y[0];
-	practice_player_y[1] = player_y[1];
-	practice_player_vel_x[0] = player_vel_x[0];
-	practice_player_vel_x[1] = player_vel_x[1];
-	practice_player_vel_y[0] = player_vel_y[0];
-	practice_player_vel_y[1] = player_vel_y[1];
-	practice_player_gravity[0] = player_gravity[0];
-	practice_player_gravity[1] = player_gravity[1];
-	practice_cube_rotate[0] = cube_rotate[0];
-	practice_cube_rotate[1] = cube_rotate[1];
-	practice_player_gamemode = gamemode;
-	practice_mini = mini;
-	practice_dual = dual;
-	practice_speed = speed;
-	practice_scroll_x = scroll_x;
-	practice_scroll_y = scroll_y;
-	practice_bg_color_type = lastbgcolortype;
-	practice_g_color_type = lastgcolortype;
-//	gnd_palette_transition_timer = 0;		//palete fade code
-//	bg_palette_transition_timer = 0;		//palette fade code
-}
+
 
 
 void state_game(){
@@ -161,7 +136,7 @@ void state_game(){
 //    mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));
     
 	currplayer = 0;
-	current_transition_timer_length = 4;
+	current_transition_timer_length = 2;
 	reset_level();
 
     END_LEVEL_TIMER = 0;
@@ -177,20 +152,21 @@ void state_game(){
 	for (tmp2 = 0; tmp2 < 9; tmp2++) {
 		player_old_posy[tmp2] = 0;
 	}
-	if (!discomode) {
-		pal_col(0x1D,color3);
-		pal_col(0x1E,color1);
-		pal_col(0x1F,color2);
-	}
-	else {
-		switch (discomode) {
-			case 0x01: discorefreshrate = 0x3F; break;
-			case 0x02: discorefreshrate = 0x1F; break;
-			case 0x04: discorefreshrate = 0x0F; break;
-			case 0x08: discorefreshrate = 0x07; break;
-			case 0x10: discorefreshrate = 0x03; break;
-		};
-	}
+	
+	switch (discomode) {
+		default: 
+			pal_col(0x1D,color3);
+			pal_col(0x1E,color1);
+			pal_col(0x1F,color2);
+			break;
+		case 0x01: discorefreshrate = 0x3F; break;
+		case 0x02: discorefreshrate = 0x1F; break;
+		case 0x04: discorefreshrate = 0x0F; break;
+		case 0x08: discorefreshrate = 0x07; break;
+		case 0x10: discorefreshrate = 0x03; break;
+		
+	};
+	
 	
 
     while (1) {
@@ -380,30 +356,25 @@ void state_game(){
 
 		if (pad[controllingplayer] & PAD_SELECT && pad_new[controllingplayer] & PAD_UP) currplayer_gravity ^= 0x01;
 
-				if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED && has_practice_point) {
+		if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED && has_practice_point) {
 			// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 					
-					reset_game_vars();
+			mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
+			reset_game_vars();
 
-				//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));	unneeded because of practice music
-					has_practice_point = 1;
+			//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));	unneeded because of practice music
+			has_practice_point = 1;
 		}
 
 
-/*
+
 	// palette fade code
-		if (gnd_palette_transition_timer > 0) {
-			gnd_palette_transition_timer--;
-			swapbyte(PAL_BUF[original_gnd_palette_idx_0], original_gnd_palette_color_0);
-			swapbyte(PAL_BUF[original_gnd_palette_idx_1], original_gnd_palette_color_1);
-		}
-		if (bg_palette_transition_timer > 0) {
-			bg_palette_transition_timer--;
-			swapbyte(PAL_BUF[original_bg_palette_idx_0], original_bg_palette_color_0);
-			swapbyte(PAL_BUF[original_bg_palette_idx_1], original_bg_palette_color_1);
-			swapbyte(PAL_BUF[original_bg_palette_idx_2], original_bg_palette_color_2);
-		}
-*/
+		//__asm__("LDA mmc3PRG1Bank \n PHA");
+		mmc3_set_prg_bank_1(GET_BANK(check_fade_timer));
+		check_fade_timer();
+		//(__asm__("PLA"), mmc3_set_prg_bank_1(__A__));
+		
+
 		if (pad_new[0] & PAD_START) {
 			pad_new[0] = 0;
 			famistudio_music_pause(1);

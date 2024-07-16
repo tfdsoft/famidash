@@ -66,7 +66,8 @@
 #include "defines/menutext2.h" // end level text, not obviously.
 #pragma rodata-name (pop)
 
-
+#include "functions/fade_timer.h"
+#include "functions/reset_game_vars.h"
 #include "functions/draw_sprites.h"  // sproit drawlign
 #include "functions/level_loading.h"  // goofy ass screen drawing routines
 #include "functions/scroll.h"
