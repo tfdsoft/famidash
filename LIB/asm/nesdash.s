@@ -1440,7 +1440,7 @@ drawplayer_center_offsets:
 	.byte	4,	12,	4,	12,	12,	12,	12,	12; mini 
 
 ; void drawplayerone();
-.segment "XCD_BANK_00"
+.segment "CODE_2"
 
 .export _drawplayerone
 .proc _drawplayerone

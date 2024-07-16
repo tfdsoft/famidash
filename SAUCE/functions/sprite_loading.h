@@ -501,8 +501,8 @@ void sprite_collide_lookup() {
 	case SHIP_MODE:
 	case BALL_MODE:
 	case UFO_MODE:
-		target_scroll_y = uint16SepArrLoad(activesprites_y, index);
-		target_scroll_y -= 0x10;
+		target_scroll_y = uint16SepArrLoad(activesprites_y, index) - 0x10;
+//		target_scroll_y -= 0x10;
 	case ROBOT_MODE:
 		gamemode = collided;
 		robotjumptime[currplayer] = 0;
@@ -543,8 +543,6 @@ void sprite_collide_lookup() {
 	case GRAVITY_DOWN_INVISIBLE_PORTAL:  
 		if (currplayer_gravity) {
 			currplayer_gravity = 0; 
-		//   if (currplayer_vel_y > -0x0200) currplayer_vel_y = -0x0200; 
-		// else 
 			if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
 		}
 		return;
@@ -680,7 +678,7 @@ void sprite_collide_lookup() {
 	
 	if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE) {
 		sprite_gamemode_main();
-	} else if (gamemode == SHIP_MODE || gamemode == UFO_MODE) {
+	} else {
 		sprite_gamemode_controller_check();
 	}
 	return;
@@ -695,16 +693,11 @@ void sprite_collide(){
 	Generic.x = high_byte(currplayer_x) + 1;
 	Generic.y = high_byte(currplayer_y);
 
-	switch (mini) {
-		case 0:
-			Generic.width = CUBE_WIDTH;
-			Generic.height = CUBE_HEIGHT;
-			break;
-		case 1:
-			Generic.width = MINI_CUBE_WIDTH;
-			Generic.height = MINI_CUBE_HEIGHT;
-	};    
+	Generic.width = mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
+	Generic.height = mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
+
 	Generic2.width = 0x0f;
+
 	for (index = 0; index < max_loaded_sprites; ++index){
 		tmp3 = activesprites_active[index];
 		if (tmp3){
@@ -724,13 +717,7 @@ void sprite_collide(){
 		}
 	}
 
-	if (!mini) {
-		Generic.height = CUBE_HEIGHT;
-	}
-	
-	else {
-		Generic.height = MINI_CUBE_HEIGHT;
-	}
+	Generic.height = mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
 }
 
 

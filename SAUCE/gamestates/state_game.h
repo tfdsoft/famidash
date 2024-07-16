@@ -114,7 +114,7 @@ void state_game(){
 	
 	outline_color = 0x30;
 
-	lastgcolortype = 0xFF;
+//	lastgcolortype = 0xFF;
 	lastbgcolortype = 0xFF;
 
 	if (!no_parallax) {
@@ -167,11 +167,11 @@ void state_game(){
 	}
 	else {
 		switch (discomode) {
+			case 0x01: discorefreshrate = 0x3F; break;
 			case 0x02: discorefreshrate = 0x1F; break;
 			case 0x04: discorefreshrate = 0x0F; break;
 			case 0x08: discorefreshrate = 0x07; break;
 			case 0x10: discorefreshrate = 0x03; break;
-			case 0x01: discorefreshrate = 0x3F; break;
 		};
 	}
 	
@@ -265,8 +265,6 @@ void state_game(){
 
 			tmp3 = G_Table[discoframe] + 0x80;
 			
-			if (tmp3 < 0x80) tmp3 += 0x80;
-			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
 			tmp2 = (tmp3 & 0x3F);  		    
 				pal_col(0, tmp2);
 				if (tmp2-0x10 & 0xC0) { 
@@ -279,8 +277,6 @@ void state_game(){
 		
 			tmp3 = 0xC0 + BG_Table[discoframe];
 			
-			if (tmp3 < 0x80) tmp3 += 0x80;
-			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
 			tmp2 = (tmp3 & 0x3F);  		    
 				pal_col(6, tmp2);
 				if (tmp2-0x10 & 0xC0) { 
@@ -306,12 +302,11 @@ void state_game(){
 		// }
 
 		kandoframecnt++;
-        music_update();
+		music_update();
 		if (slowmode && (kandoframecnt & 1)) { ppu_wait_nmi(); }
 		else {
-		
 			ppu_wait_nmi();
-		if (!no_parallax) {
+			if (!no_parallax) {
 			mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
 			mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
 			mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
@@ -403,22 +398,20 @@ void state_game(){
 			ppu_on_all();
 			while (!(pad_new[0] & PAD_START)) {
 				
-				// ppu_wait_nmi();
 				pad_poll(0); // read the second controller
 				if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
-			// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
-				
-				reset_game_vars();
-
-				//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));	unneeded because of practice music
+					reset_game_vars();
 					has_practice_point = 1;
 					pad_new[0] = PAD_START;
-		}
+				}
 				if (pad_new[0] & PAD_SELECT) { gameState = 1; 
 					sfx_play(sfx_exit_level,0);
 					music_update();
 					color_emphasis(COL_EMP_NORMAL);
 					return;
+				}
+				if ((pad_new[0] & PAD_A) && DEBUG_MODE) {
+					gamemode == 7 ? gamemode = 0 : gamemode++;
 				}
 			}
 			color_emphasis(COL_EMP_NORMAL);
