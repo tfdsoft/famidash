@@ -106,8 +106,8 @@ void reset_game_vars(){
 
 
 void state_game(){
-	//if (level == 0x10 || level == 0x0C || level == 0x0D) no_parallax = 1;
-	//else no_parallax = 0;
+	if (level == 0x10 || level == 0x0C || level == 0x0D) no_parallax = 1;
+	else no_parallax = 0;
 	// above lines not needed for demo 5
 
 	//no_parallax = 0;

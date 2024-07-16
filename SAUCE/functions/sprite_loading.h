@@ -488,11 +488,11 @@ void sprite_collide_lookup() {
 		return;
 	
 	// Portal game mode switches
-	//case S_BLOCK: dashing[currplayer] = 0; return;
-	//case H_BLOCK: hblocked[currplayer] = 1; return;
-	//case J_BLOCK: jblocked[currplayer] = 1; return;
-	//case D_BLOCK: kandowavewalk = 1; return;
-	//case F_BLOCK: fblocked[currplayer] = 1; return;
+	case S_BLOCK: dashing[currplayer] = 0; return;
+	case H_BLOCK: hblocked[currplayer] = 1; return;
+	case J_BLOCK: jblocked[currplayer] = 1; return;
+	case D_BLOCK: kandowavewalk = 1; return;
+	case F_BLOCK: fblocked[currplayer] = 1; return;
 	case CUBE_MODE:
 		if (retro_mode) gamemode = 4;
 		else gamemode = 0;
