@@ -35,6 +35,24 @@ const uint8_t G_Table[]={
 	0x2C
 };
 
+#define stereo_madness  
+#define back_on_track  1
+#define polargeist  2
+#define dryout  3
+#define base_after_base  4
+#define cant_let_go  5
+#define jumper  6
+#define time_machine  7
+#define cycles  8
+#define xstep  9
+#define clutterfunk  0x0A
+#define theory_of_everything  0x0B
+#define decode  0x0C
+#define test  0x0D
+#define test2  0x0E
+#define test3  0x0F
+#define test4  0X10
+
 void x_movement_coll() {
 	if (slope_type && !slope_frames) {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
@@ -106,7 +124,7 @@ void reset_game_vars(){
 
 
 void state_game(){
-	if (level == 0x10 || level == 0x0C || level == 0x0D) no_parallax = 1;
+	if (level == decode || level == test || level == test4) no_parallax = 1;
 	else no_parallax = 0;
 
 	//no_parallax = 0;
@@ -185,17 +203,17 @@ void state_game(){
 
 		if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
-		if (level == 0x09 || level == 0x0A || level == 0x0B || level == 0x0C) {									//
+		if (level == xstep || level == clutterfunk || level == theory_of_everything || level == decode) {									//
 			if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);		//  BANKBLANKCLOUD
 			else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(30);		// DECO PULSE
 		}											//
-		else if (level == 0x0D ||level == 0x0E || level == 0x0F || level == 0x10) {
+		else if (level == test ||level == test2 || level == test3 || level == test4) {
 			if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(36);		//  BANKBLANK3 EXTRA PORTALS
-			else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(34);		// DECO PULSE
+			else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(34);		// NO DECO
 		} 
 		else { 											//
 			if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(28);		//  BANKBLANK
-			else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(26);		//
+			else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(26);		//   DECO PULSE
 		}											//
 
 		if ((options & platformer) && !has_practice_point) {
