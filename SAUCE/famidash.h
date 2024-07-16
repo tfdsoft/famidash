@@ -334,13 +334,13 @@ uint8_t no_parallax;
 uint8_t outline_color;
 uint8_t forced_trails;
 
-uint8_t gnd_palette_transition_timer;
+//uint8_t gnd_palette_transition_timer;
 uint8_t original_gnd_palette_idx_0;
 uint8_t original_gnd_palette_idx_1;
 uint8_t original_gnd_palette_color_0;
 uint8_t original_gnd_palette_color_1;
 
-uint8_t bg_palette_transition_timer;
+//uint8_t bg_palette_transition_timer;
 uint8_t original_bg_palette_idx_0;
 uint8_t original_bg_palette_idx_1;
 uint8_t original_bg_palette_idx_2;

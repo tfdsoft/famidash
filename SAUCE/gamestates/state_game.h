@@ -100,8 +100,8 @@ void reset_game_vars(){
 	practice_scroll_y = scroll_y;
 	practice_bg_color_type = lastbgcolortype;
 	practice_g_color_type = lastgcolortype;
-	gnd_palette_transition_timer = 0;		//palete fade code
-	bg_palette_transition_timer = 0;		//palette fade code
+//	gnd_palette_transition_timer = 0;		//palete fade code
+//	bg_palette_transition_timer = 0;		//palette fade code
 }
 
 
@@ -373,6 +373,7 @@ void state_game(){
 		}
 
 
+/*
 	// palette fade code
 		if (gnd_palette_transition_timer > 0) {
 			gnd_palette_transition_timer--;
@@ -385,7 +386,7 @@ void state_game(){
 			swapbyte(PAL_BUF[original_bg_palette_idx_1], original_bg_palette_color_1);
 			swapbyte(PAL_BUF[original_bg_palette_idx_2], original_bg_palette_color_2);
 		}
-
+*/
 		if (pad_new[0] & PAD_START) {
 			pad_new[0] = 0;
 			famistudio_music_pause(1);
@@ -410,8 +411,19 @@ void state_game(){
 					color_emphasis(COL_EMP_NORMAL);
 					return;
 				}
-				if ((pad_new[0] & PAD_A) && DEBUG_MODE) {
+				if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
 					gamemode == 7 ? gamemode = 0 : gamemode++;
+					ppu_off();
+					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
+					if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
+					else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
+					else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
+					else mmc3_set_2kb_chr_bank_0(18);
+					oam_clear();
+					drawplayerone();
+					mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
+					draw_sprites();
+					ppu_on_all();
 				}
 			}
 			color_emphasis(COL_EMP_NORMAL);
