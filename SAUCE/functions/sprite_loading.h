@@ -383,9 +383,8 @@ static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 		__AX__ = (__asm__ ("lda %v,y", heights),__asm__ ("ldx %v+1,y", heights),__AX__);
 	}
 	// Use y here for the conditional, otherwise the compiler overwrites A
-	__asm__("ldy %v", currplayer_gravity), __asm__("bne %g", jumpNoGravityAdjust);
-		__AX__ ^= 0xffff;
-	jumpNoGravityAdjust:
+	__asm__("ldy %v", currplayer_gravity); 
+	do_if_zero({__AX__ ^= 0xffff; __AX__ += 1;});
 	return __AX__;
 }
 
