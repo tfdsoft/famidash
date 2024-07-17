@@ -124,8 +124,8 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_test4))
   .byte .lobyte(.bank(sprite_data_danger))
 
-MID_LEVEL_LENGTHS_ENABLED = 0
-HIGH_LEVEL_LENGTHS_ENABLED = 0
+.define MID_LEVEL_LENGTHS_ENABLED 0
+.define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
   .byte .lobyte($000090)		; stereomadness
