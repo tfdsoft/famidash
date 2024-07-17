@@ -257,8 +257,8 @@ _sprite_list_hi:
 _sprite_list_bank:
 {sprite_list_bank}
 
-MID_LEVEL_LENGTHS_ENABLED = {"1" if mid_widths_enabled else "0"}
-HIGH_LEVEL_LENGTHS_ENABLED = {"1" if hi_widths_enabled else "0"}
+.define MID_LEVEL_LENGTHS_ENABLED {"1" if mid_widths_enabled else "0"}
+.define HIGH_LEVEL_LENGTHS_ENABLED {"1" if hi_widths_enabled else "0"}
 
 _level_lengths_lo:
 {level_lengths_lo}

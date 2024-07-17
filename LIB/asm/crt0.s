@@ -265,16 +265,17 @@ detectNTSC:
 
 	jmp _main			;no parameters
 
-	.include "mapper.s"
-	.include "neslib.s"
-	.include "nesdash.s"
-	.include "nesdoug.s"
 	.include "METATILES/metatiles.s"
 
 	.include "LEVELS/all_level_data.s"
 	.include "LEVELS/all_sprite_data.s"
 	.include "LEVELS/level_header.s"
 	.include "LEVELS/all_level_table.s"
+	
+	.include "mapper.s"
+	.include "neslib.s"
+	.include "nesdash.s"
+	.include "nesdoug.s"
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music.dmc"
 	.include "MUSIC/EXPORTS/sfx.s"

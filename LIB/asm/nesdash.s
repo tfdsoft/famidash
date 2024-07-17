@@ -2498,58 +2498,82 @@ SampleRate:
 		LDY	_level
 		LDA	_level_lengths_lo, Y
 		STA levelLengthLo
-		; .if MID_LEVEL_LENGTHS_ENABLED
-		; 	LDA	_level_lengths_md, Y
-		; 	STA levelLengthMd
-		; 	.if HIGH_LEVEL_LENGTHS_ENABLED
-		; 		LDA	_level_lengths_hi, Y
-		; 		STA levelLengthHi
-		; 	.endif
-		; .endif
+		.if MID_LEVEL_LENGTHS_ENABLED
+			LDA _level_lengths_md, Y
+			STA levelLengthMd
+		.endif
+		.if HIGH_LEVEL_LENGTHS_ENABLED
+			LDA _level_lengths_hi, Y
+			STA levelLengthHi
+		.endif
 
 		LDY #$FF
-		; .if HIGH_LEVEL_LENGTHS_ENABLED
-		; 	STY percentage
-		; .endif
+		.if MID_LEVEL_LENGTHS_ENABLED
+			STY percentage
+		.endif
 
 		LDA _scroll_x+3
 		STA sreg+1
 		LDA _scroll_x+2
 		STA sreg+0
 		LDX _scroll_x+1
-		LDA _scroll_x+0
+		.if MID_LEVEL_LENGTHS_ENABLED
+			LDY _scroll_x+0
+		.else
+			LDA _scroll_x+0
+		.endif
 
 		INC sreg+1
-		; .if .not(HIGH_LEVEL_LENGTHS_ENABLED)
+		.if .not(HIGH_LEVEL_LENGTHS_ENABLED)
 			INC sreg+0
-		; .endif
-		; .if .not(MID_LEVEL_LENGTHS_ENABLED)
+		.endif
+		.if .not(MID_LEVEL_LENGTHS_ENABLED)
 			INX
-		; .endif
+		.endif
 
 	loop_sec:
-		; TYA
+		.if MID_LEVEL_LENGTHS_ENABLED
+			TYA
+		.endif
 		SEC
 	loop:
-		; .if HIGH_LEVEL_LENGTHS_ENABLED
-		; 	INC percentage
-		; .else
+		.if MID_LEVEL_LENGTHS_ENABLED
+			INC percentage
+		.else
 			INY
-		; .endif
+		.endif
 		SBC	levelLengthLo
 		BCS loop
 
-		; TAY
-		DEX
-		BNE loop_sec
+		.if MID_LEVEL_LENGTHS_ENABLED
+			TAY
+			TXA
+			SBC levelLengthMd
+			TAX
+			BCS loop_sec
+		.else
+			DEX
+			BNE loop_sec
+		.endif
 
-		DEC	sreg+0
-		BNE loop_sec
+		.if HIGH_LEVEL_LENGTHS_ENABLED
+				LDA sreg+0
+			SBC levelLengthHi
+			STA sreg+0
+			BNE loop_sec
+		.else
+			DEC	sreg+0
+			BNE loop_sec
+		.endif
 
 		DEC sreg+1
 		BNE loop_sec
 
 	fin:
+
+		.if MID_LEVEL_LENGTHS_ENABLED
+			LDY percentage
+		.endif
 
 		CPY #99			;
 		BCC :+			;	Cap at 99
