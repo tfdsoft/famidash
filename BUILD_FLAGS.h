@@ -20,3 +20,7 @@
 
 // set to 1 to enable metatile printing
 // #define PRINT_METATILES 1
+
+
+// save file version. increment by 1 if the SRAM memory layout changes.
+#define FLAG_SAVE_VER 0x03

@@ -186,9 +186,7 @@ uint8_t options;
 #define sfxoff 0x40
 #define musicoff 0x80
 
-
 uint8_t icon;
-
 uint8_t icon_colors[3];
 
 #define color1 icon_colors[0]
@@ -196,24 +194,28 @@ uint8_t icon_colors[3];
 #define color3 icon_colors[2]
 
 uint8_t discomode;
-
 uint8_t trails;
-
 uint8_t decorations;
-
 uint8_t retro_mode;
 uint8_t palette_cycle_mode;
 uint8_t gameboy_mode;
-uint8_t achievements[0x20];
 uint8_t invisblocks;
+
+#define LEVEL_COUNT 0x11
+uint8_t coin1_obtained[0x40];
+uint8_t coin2_obtained[0x40];
+uint8_t coin3_obtained[0x40];
+
+uint8_t LEVELCOMPLETE[0x40];
+uint8_t achievements[0x20];
 
 //uint8_t greyscale_mode;
 
 //uint8_t practice_famistudio_state[0xbf];
 
+
+
 // Regular NES RAM
-
-
 #pragma bss-name("BSS")
 
 //extern uint8_t famistudio_state[0xbf];

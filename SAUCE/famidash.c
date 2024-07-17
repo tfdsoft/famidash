@@ -50,7 +50,7 @@ void main(){
     // level = 0x00;
 	// auto_fs_updates = 0;
 
-	// Get it? it spells DASH
+	
 
 	gameState = 0x00;
     while (1){
@@ -73,18 +73,14 @@ void main(){
 
 					//	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-					switch (kandotemp){
-						case 0x00:	music_play(song_menu_theme); break;
-						case 0x01:	break;
-					}
+					if (kandotemp == 0) music_play(song_menu_theme);
 
 					settingvalue = 0;
 
 					has_practice_point = 0;
 
 					#include "defines/mainmenu_charmap.h"
-					// Enable SRAM write
-					POKE(0xA001, 0x80);
+					
 
 					oam_clear();	
 
@@ -107,17 +103,15 @@ void main(){
 				bgmtest();
 				break;
 			}
+			case 0x05: {
+				mmc3_set_prg_bank_1(GET_BANK(state_savefile_validate));
+				state_savefile_validate();
+				break;
+			}
 			default: {
 				mmc3_set_prg_bank_1(GET_BANK(state_demo));
 				state_demo();
-	if (SRAM_VALIDATE[0] != 0x0D
-	 || SRAM_VALIDATE[1] != 0x0A
-	 || SRAM_VALIDATE[2] != 0x05
-	 || SRAM_VALIDATE[3] != 0x21) {
-		// set the validation header and then reset coin counts
-		setdefaultoptions();
-
-	}
+				
 				break;
 			}
 		}
@@ -133,42 +127,41 @@ void main(){
 // ============================================================
 
 void setdefaultoptions() {
-		SRAM_VALIDATE[0] = 0x0d;
-		SRAM_VALIDATE[1] = 0x0a;
-		SRAM_VALIDATE[2] = 0x05;
-		SRAM_VALIDATE[3] = 0x21;
-		for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-			coin1_obtained[tmp2] = 0;
-			coin2_obtained[tmp2] = 0;
-			coin3_obtained[tmp2] = 0;
-			LEVELCOMPLETE[tmp2] = 0;
-			level_completeness_normal[tmp2] = 0;
-			level_completeness_practice[tmp2] = 0;
-		}
-		memfill(SRAM_VALIDATE+0x0E, 0, 0x1F-(0x0E - 1));
-		twoplayer = 0;
-		//musicoff = 0;
-		//sfxoff = 0;
-		//jumpsound = 0;
-		//oneptwoplayer = 0;
-		//platformer = 0;
-		options = 0; 
+	// Enable SRAM write
+	POKE(0xA001, 0x80);
+
+	memfill(0x6000, 0, 0x2000);
+	SRAM_VALIDATE[0] = 0x13;
+	SRAM_VALIDATE[1] = 0x37;
+	SRAM_VALIDATE[2] = FLAG_SAVE_VER;
+	SRAM_VALIDATE[3] = 0x21;
+	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
+		coin1_obtained[tmp2] = 0;
+		coin2_obtained[tmp2] = 0;
+		coin3_obtained[tmp2] = 0;
+		LEVELCOMPLETE[tmp2] = 0;
+	}
+	
+	//twoplayer = 0;
+	//musicoff = 0;
+	//sfxoff = 0;
+	//jumpsound = 0;
+	//oneptwoplayer = 0;
+	//platformer = 0;
+	//options = 0; 
 
 
-		invisible = 0;
-		color1 = 0x2A;
-		color2 = 0X2C;		
-		color3 = 0x0F;
-		discomode = 0;
-		icon = 0;
-		trails = 0;
-		retro_mode = 0;
-		palette_cycle_mode = 0;
-		gameboy_mode = 0;
-		decorations = 1;
-		invisblocks = 0;
-		for (tmp2 = 0; tmp2 < 20; tmp2++) {
-			achievements[tmp2] = 0;
-		}
-		return;
+	//invisible = 0;
+	color1 = 0x2A;
+	color2 = 0X2C;		
+	color3 = 0x0F;
+	//discomode = 0;
+	//icon = 0;
+	//trails = 0;
+	//retro_mode = 0;
+	//palette_cycle_mode = 0;
+	//gameboy_mode = 0;
+	decorations = 1;
+	//invisblocks = 0;
+	return;
 }

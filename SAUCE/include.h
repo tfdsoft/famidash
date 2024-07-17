@@ -91,13 +91,8 @@
 #include "gamemodes/gamemode_wave.h"
 
 // THE GAME STATE DEFINES //
+#include "gamestates/state_savefile_validate.h"
 #include "gamestates/state_menu.h"
 #include "gamestates/state_game.h"
 #include "gamestates/state_lvldone.h"
 #include "gamestates/state_demo.h"
-
-
-
-
-
-
