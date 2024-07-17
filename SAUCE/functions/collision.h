@@ -397,61 +397,74 @@ char bg_coll_U_D_checks() {
 char bg_coll_slope() {	
 	switch (collision) {
 		case COL_SLOPE_SUPPORT:
-			tmp8 = (temp_y + (currplayer_gravity ? -1 : 1));
-			if (!(slope_type & 1)) {
-				tmp8 += (currplayer_gravity ? -8 : 8);
+			if (slope_type) {
+				if (pad[controllingplayer] & PAD_A) {
+					slope_frames = 0;
+					slope_type = 0;
+				} else {
+					slope_frames = 1; //signal BG_COLL_R to not check stuff
+					was_on_slope_counter = 2;
+				}
+				return 1;
 			}
-			tmp8 &= 0x0f;
-			slope_frames = 1;
-			was_on_slope_counter = 2;
-			return 1;
+			else return 0;
 		case COL_SLOPE_RD45:
 			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = temp_y & 0x0f;
 			slope_type = SLOPE_45DEG_UP;
-			// if (tmp4 >= (tmp7 - 3)) {
 
 			break;
-		case COL_SLOPE_RD22:
-			tmp7 = ((temp_x & 0x0f) ^ 0x0f) >> 1;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = temp_y-40 & 0x0f;
+		case COL_SLOPE_RD22_TOP:
+			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = ((temp_y) & 0x0e) | 0x1;
+
 			slope_type = SLOPE_22DEG_UP;
-			// if (tmp4 >= (tmp7 - 3)) {
+			break;	
+			
+		case COL_SLOPE_RD22_BOT:
+			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = (temp_y) & 0x0f;
+		
+			slope_type = SLOPE_22DEG_UP;
+			break;
+		case COL_SLOPE_RD66_TOP:
+			if ((temp_x & 0x0f) < 0x08) return 0;
+			tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = ((temp_y) & 0x0f);
+			slope_type = SLOPE_66DEG_UP;
 
 			break;	
-		case COL_SLOPE_RD66:
-			tmp7 = ((temp_x & 0x0f) ^ 0x0f) >> 1;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = temp_y & 0x0f << 1;
-			slope_type = SLOPE_66DEG_UP;
-			// if (tmp4 >= (tmp7 - 3)) {
+		case COL_SLOPE_RD66_BOT:
+			if ((temp_x & 0x0f) >= 0x08) return 1;
+			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = ((temp_y) & 0x0f);
 
+			slope_type = SLOPE_66DEG_UP;
 			break;			
 		case COL_SLOPE_LD45:
-			tmp7 = 0x0f - 0x10 + (temp_x & 0x0f);	// = 0x0f - (0x10 - (temp_x & 0x0f))
+			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0f - (0x10 - (temp_x & 0x0f))
 			tmp4 = temp_y & 0x0f;
 
-			// if (tmp4 >= (tmp7 - 3)) {
-			if ((uint8_t)(tmp4 + 3) >= tmp7) {
-				tmp8 = tmp4 - tmp7 - 5;
-				slope_type = SLOPE_45DEG_DOWN;
-			//	was_on_slope_counter = 2;
-				return 1;
-			} 
+			slope_type = SLOPE_45DEG_DOWN;
 			break;
+		default:
+			return 0;
 	}
-			if (collision >= 0x0b && collision <= 0x0e) {		//common slope shit
-				if ((uint8_t)(tmp4 + 3) >= tmp7) {
-					tmp8 = tmp4 - tmp7;
-					if (pad[controllingplayer] & PAD_A) {
-						slope_frames = 0;
-						slope_type = 0;
-					} else {
-						slope_frames = 1; //signal BG_COLL_R to not check stuff
-						was_on_slope_counter = 2;
-					}
-					return 1;
-				} 	
-			}
+
+	if ((uint8_t)(tmp4 + 3) >= tmp7) {
+		tmp8 = tmp4 - tmp7 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
+		if (pad[controllingplayer] & PAD_A) {
+			slope_frames = 0;
+			slope_type = 0;
+		} else {
+			slope_frames = 1; //signal BG_COLL_R to not check stuff
+			was_on_slope_counter = 2;
+		}
+		return 1;
+	} else if (!was_on_slope_counter) {
+		slope_type = 0;
+	}
+	
 	return 0;
 }
 
@@ -524,7 +537,6 @@ char bg_coll_return_slope_U () {
 
 
 char bg_coll_U() {
-	if (currplayer_vel_y > 0x00) return 0;
 	
 	// Slopes
 
@@ -545,6 +557,8 @@ char bg_coll_U() {
 			temp_x += Generic.width; // automatically only the low byte
 		}			
 	}
+
+	if (currplayer_vel_y > 0x00) return 0;
 
 	if (!slope_frames) {
 		temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
@@ -576,7 +590,6 @@ char bg_coll_U() {
 	tmp1, tmp2, tmp4, tmp7, tmp8
 */
 char bg_coll_D() {
-	if (currplayer_vel_y < 0x00) return 0;
 
 	// Slopes
 	if (high_byte(currplayer_x) >= 0x10) {
@@ -594,6 +607,8 @@ char bg_coll_D() {
 			temp_x += Generic.width; // automatically only the low byte
 		}			
 	}
+	
+	if (currplayer_vel_y < 0x00) return 0;
 
 	if (!slope_frames) {
 		// check 2 points on the right side
