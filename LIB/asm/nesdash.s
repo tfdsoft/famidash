@@ -2523,11 +2523,12 @@ SampleRate:
 			LDA _scroll_x+0
 		.endif
 
+		; Adjust for BEQ ending condition
 		INC sreg+1
-		.if .not(HIGH_LEVEL_LENGTHS_ENABLED)
+		.if !HIGH_LEVEL_LENGTHS_ENABLED
 			INC sreg+0
 		.endif
-		.if .not(MID_LEVEL_LENGTHS_ENABLED)
+		.if !MID_LEVEL_LENGTHS_ENABLED
 			INX
 		.endif
 
@@ -2557,10 +2558,10 @@ SampleRate:
 		.endif
 
 		.if HIGH_LEVEL_LENGTHS_ENABLED
-				LDA sreg+0
+			LDA sreg+0
 			SBC levelLengthHi
 			STA sreg+0
-			BNE loop_sec
+			BCS loop_sec
 		.else
 			DEC	sreg+0
 			BNE loop_sec
