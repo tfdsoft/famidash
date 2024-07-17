@@ -165,6 +165,9 @@ uint8_t coin3_obtained[0x40];
 
 uint8_t LEVELCOMPLETE[0x40];
 
+uint8_t level_completeness_normal[0x40];
+uint8_t level_completeness_practice[0x40];
+
 uint8_t invisible;
 uint8_t PRACTICE_ENABLED = 1;
 uint8_t twoplayer;

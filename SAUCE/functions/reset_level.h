@@ -9,6 +9,7 @@ void reset_level(void) {
     robotjumpframe[0] = 0;
     tmp1 = 0;
     if (!DEBUG_MODE && (cube_data[0] & 1)) {
+		update_level_completeness();
 		sfx_play(sfx_death, 0);
 		while (tmp1 < 30){
 			ppu_wait_nmi();
@@ -24,6 +25,7 @@ void reset_level(void) {
         }
     }
     else if (!DEBUG_MODE && (cube_data[1] & 1)) {
+		update_level_completeness();
 		sfx_play(sfx_death, 0);
 		while (tmp1 < 30){
 			ppu_wait_nmi();
