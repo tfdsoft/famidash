@@ -4,6 +4,7 @@ import csv
 import pathlib
 import itertools
 import sys
+import math
 from collections.abc import Iterable
 
 own_path = pathlib.Path(sys.path[0]).resolve()
@@ -49,7 +50,7 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple[Iterable[int]]:
 		lines = []
 		with open(f"{folder}/{level}_.csv") as f:
 			lines = list(csv.reader(f))
-		level_widths.append(round(len(lines[0]) * 16 / 100))	# the width of the level in tiles
+		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
 		rle_data = vertical_rle_with_single_tile(lines)
 		header = [
 			f"{level}_song_number",

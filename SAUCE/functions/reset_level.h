@@ -7,11 +7,11 @@ void reset_level(void) {
     coins = 0;
 
     robotjumpframe[0] = 0;
-    tmp1 = 0;
+    tmp1 = 30;
     if (!DEBUG_MODE && (cube_data[0] & 1)) {
 		update_level_completeness();
 		sfx_play(sfx_death, 0);
-		while (tmp1 < 30){
+		while (tmp1 != 0){
 			ppu_wait_nmi();
 			music_update();
 			oam_clear_player();
@@ -21,13 +21,13 @@ void reset_level(void) {
 				else oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, ExplodeR_Sprites[robotjumpframe[0]]);
 				++robotjumpframe[0];
 			}
-			++tmp1;
+			--tmp1;
         }
     }
     else if (!DEBUG_MODE && (cube_data[1] & 1)) {
 		update_level_completeness();
 		sfx_play(sfx_death, 0);
-		while (tmp1 < 30){
+		while (tmp1 != 0){
 			ppu_wait_nmi();
 			music_update();
 			oam_clear_player();	
@@ -37,7 +37,7 @@ void reset_level(void) {
 				
 				++robotjumpframe[0];
 			}
-			++tmp1;
+			--tmp1;
 		}
     }
     attempts++;

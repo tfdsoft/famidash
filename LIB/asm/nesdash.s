@@ -2481,11 +2481,13 @@ SampleRate:
 ; void update_level_completeness();
 .segment "CODE_2"
 
-.import _level
-.import _level_completeness_normal, _level_completeness_practice
+.import _level, _has_practice_point
+.import _level_completeness_normal
 
 .export _update_level_completeness
 .proc _update_level_completeness
+	levelsInTable = $40
+
 	levelLengthLo = ptr1+0
 	levelLengthMd = ptr1+1
 	levelLengthHi = tmp1
@@ -2547,8 +2549,26 @@ SampleRate:
 		DEC sreg+1
 		BNE loop_sec
 
-		BRK	; tmp ofc
+	fin:
 
+		CPY #99			;
+		BCC :+			;	Cap at 99
+			LDY #99		;	100% is reserved for complete levels only
+		:				;__
 
+		LDA _has_practice_point	;
+		BEQ :+					;
+			LDA #levelsInTable	;	Calculate whether to store 
+		:						;	the new completeness in the
+		CLC						;	normal or practice table
+		ADC _level				;
+		TAX						;__
+
+		TYA						;
+		CMP _level_completeness_normal, X
+		BCC :+					;	Update value if bigger than last one
+			STA _level_completeness_normal, X
+		:						;__
+		RTS
 
 .endproc
