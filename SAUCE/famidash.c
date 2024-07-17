@@ -142,6 +142,8 @@ void setdefaultoptions() {
 			coin2_obtained[tmp2] = 0;
 			coin3_obtained[tmp2] = 0;
 			LEVELCOMPLETE[tmp2] = 0;
+			level_completeness_normal[tmp2] = 0;
+			level_completeness_practice[tmp2] = 0;
 		}
 		memfill(SRAM_VALIDATE+0x0E, 0, 0x1F-(0x0E - 1));
 		twoplayer = 0;

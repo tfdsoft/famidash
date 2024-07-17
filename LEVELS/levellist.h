@@ -217,6 +217,3 @@ extern const unsigned char level_list_bank[];
 extern const unsigned char sprite_list_lo[];
 extern const unsigned char sprite_list_hi[];
 extern const unsigned char sprite_list_bank[];
-extern const unsigned char level_lengths_lo[];
-extern const unsigned char level_lengths_md[];
-extern const unsigned char level_lengths_hi[];

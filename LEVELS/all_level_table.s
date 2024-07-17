@@ -128,11 +128,11 @@ MID_LEVEL_LENGTHS_ENABLED = 0
 HIGH_LEVEL_LENGTHS_ENABLED = 0
 
 _level_lengths_lo:
-  .byte .lobyte($00008F)		; stereomadness
+  .byte .lobyte($000090)		; stereomadness
   .byte .lobyte($000088)		; backontrack
   .byte .lobyte($000096)		; polargeist
   .byte .lobyte($000087)		; dryout
-  .byte .lobyte($00008B)		; baseafterbase
+  .byte .lobyte($00008C)		; baseafterbase
   .byte .lobyte($000086)		; cantletgo
   .byte .lobyte($000090)		; jumper
   .byte .lobyte($0000A0)		; timemachine
@@ -142,19 +142,19 @@ _level_lengths_lo:
   .byte .lobyte($000089)		; theoryofeverything
   .byte .lobyte($00008A)		; decode
   .byte .lobyte($00008A)		; test
-  .byte .lobyte($00006D)		; test2
+  .byte .lobyte($00006E)		; test2
   .byte .lobyte($000038)		; test3
   .byte .lobyte($000019)		; test4
-  .byte .lobyte($000005)		; danger
+  .byte .lobyte($000006)		; danger
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
-  .byte .hibyte($00008F)		; stereomadness
+  .byte .hibyte($000090)		; stereomadness
   .byte .hibyte($000088)		; backontrack
   .byte .hibyte($000096)		; polargeist
   .byte .hibyte($000087)		; dryout
-  .byte .hibyte($00008B)		; baseafterbase
+  .byte .hibyte($00008C)		; baseafterbase
   .byte .hibyte($000086)		; cantletgo
   .byte .hibyte($000090)		; jumper
   .byte .hibyte($0000A0)		; timemachine
@@ -164,19 +164,19 @@ _level_lengths_md:
   .byte .hibyte($000089)		; theoryofeverything
   .byte .hibyte($00008A)		; decode
   .byte .hibyte($00008A)		; test
-  .byte .hibyte($00006D)		; test2
+  .byte .hibyte($00006E)		; test2
   .byte .hibyte($000038)		; test3
   .byte .hibyte($000019)		; test4
-  .byte .hibyte($000005)		; danger
+  .byte .hibyte($000006)		; danger
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-  .byte .bankbyte($00008F)		; stereomadness
+  .byte .bankbyte($000090)		; stereomadness
   .byte .bankbyte($000088)		; backontrack
   .byte .bankbyte($000096)		; polargeist
   .byte .bankbyte($000087)		; dryout
-  .byte .bankbyte($00008B)		; baseafterbase
+  .byte .bankbyte($00008C)		; baseafterbase
   .byte .bankbyte($000086)		; cantletgo
   .byte .bankbyte($000090)		; jumper
   .byte .bankbyte($0000A0)		; timemachine
@@ -186,10 +186,10 @@ _level_lengths_hi:
   .byte .bankbyte($000089)		; theoryofeverything
   .byte .bankbyte($00008A)		; decode
   .byte .bankbyte($00008A)		; test
-  .byte .bankbyte($00006D)		; test2
+  .byte .bankbyte($00006E)		; test2
   .byte .bankbyte($000038)		; test3
   .byte .bankbyte($000019)		; test4
-  .byte .bankbyte($000005)		; danger
+  .byte .bankbyte($000006)		; danger
 
 .endif
 .endif
