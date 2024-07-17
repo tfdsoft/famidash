@@ -113,8 +113,12 @@ const char coin_counter[][3] = {
 };
 
 
-
 #include "defines/color1_charmap.h"
+
+const char oneHundredPercent[3] = {
+	"100"
+};
+
 /*
 	Refreshes level name & number
 */
@@ -142,23 +146,55 @@ void __fastcall__ refreshmenu(void) {
 		
 
 	}
-	storeWordSeparately(hexToDec(stars_list[level]), tmp7, tmp8);
+	// Star count stuff
+		storeWordSeparately(hexToDec(stars_list[level]), tmp7, tmp8);
+		
+		if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(22, 9));
+		else one_vram_buffer(' ', NTADR_A(22, 9));
 
-	if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(22, 9));
-	else one_vram_buffer(' ', NTADR_A(22, 9));
-	one_vram_buffer('0'+tmp7, NTADR_A(23, 9));
-//palette stuff
-	pal_col(0,colors_list[level]);
-	pal_col(0xE,colors_list[level]);
-//coin stuff
-	coins = 0;
+		one_vram_buffer('0'+tmp7, NTADR_A(23, 9));
+
+	
+	// Normal level completeness stuff
+		if (level_completeness_normal[level] >= 100) {
+			multi_vram_buffer_horz(oneHundredPercent, sizeof(oneHundredPercent), NTADR_A(14, 16));
+		} else {
+			storeWordSeparately(hexToDec(level_completeness_normal[level]), tmp7, tmp8);
+
+			one_vram_buffer(' ', NTADR_A(14, 16));
+
+			if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(15, 16));
+			else one_vram_buffer(' ', NTADR_A(15, 16));
+
+			one_vram_buffer('0'+tmp7, NTADR_A(16, 16));
+		}
+
+	// Practice level completeness stuff
+		if (level_completeness_practice[level] >= 100) {
+			multi_vram_buffer_horz(oneHundredPercent, sizeof(oneHundredPercent), NTADR_A(14, 19));
+		} else {
+			storeWordSeparately(hexToDec(level_completeness_practice[level]), tmp7, tmp8);
+
+			one_vram_buffer(' ', NTADR_A(14, 19));
+
+			if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(15, 19));
+			else one_vram_buffer(' ', NTADR_A(15, 19));
+
+			one_vram_buffer('0'+tmp7, NTADR_A(16, 19));
+		}
+
+	//palette stuff
+		pal_col(0,colors_list[level]);
+		pal_col(0xE,colors_list[level]);
+	//coin stuff
+		coins = 0;
 
 
-// then in the function...
-// combine all three into a single number from 0 - 7 to represent which coins have been grabbed
+	// then in the function...
+	// combine all three into a single number from 0 - 7 to represent which coins have been grabbed
 		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
 		tmp7 = byte(tmp7<<1) + tmp7;
-// actually draw the coins
+	// actually draw the coins
 		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12));
 
 };
