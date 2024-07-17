@@ -107,6 +107,13 @@ uint32_t __fastcall__ hexToDec (uint16_t input);
  */
 void pad_poll_both();
 
+/**
+ * @brief Update the level completeness percentages
+ *
+ * @note Automatically accounts for the current level number
+ */
+void update_level_completeness();
+
 #define low_word(a) *((uint16_t*)&a)
 #define high_word(a) *((uint16_t*)&a+1)
 

@@ -220,9 +220,9 @@ def main():
 		sprite_list_hi = '\n'.join(
 			[f"  .byte .hibyte(sprite_data_{x})" for x in levels])
 		level_list_bank = '\n'.join(
-			[f"  .byte .bankbyte(level_data_{x})" for x in levels])
+			[f"  .byte .lobyte(.bank(level_data_{x}))" for x in levels])
 		sprite_list_bank = '\n'.join(
-			[f"  .byte .bankbyte(sprite_data_{x})" for x in levels])
+			[f"  .byte .lobyte(.bank(sprite_data_{x}))" for x in levels])
 		level_lengths_lo = "\n".join(
 			[f"  .byte .lobyte(${bg_exp_data[0][x]:06X})\t\t; {levels[x]}" 
 				for x in range(len(levels))])

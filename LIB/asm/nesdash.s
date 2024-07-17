@@ -2,7 +2,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8  ; C-safe temp storage
 .import pusha, pushax, callptr4
-.import _scroll_x, _discomode, _invisblocks
+.import _scroll_x
 
 .macpack longbranch
 
@@ -202,6 +202,7 @@ shiftBy4table:
 .import _song, _speed, _lastgcolortype, _lastbgcolortype
 .import _rld_column
 .import _level_data_bank, _sprite_data_bank
+.import _discomode
 
 .export _init_rld
 _init_rld:
@@ -511,7 +512,7 @@ single_rle_byte:
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 .import _increase_parallax_scroll_column
-.import _no_parallax
+.import _no_parallax, _invisblocks
 
 .export _draw_screen_R
 .proc _draw_screen_R
@@ -1118,8 +1119,8 @@ ParallaxBuffer:
 .export _movement
 .proc _movement
 	LDX _gamemode
-	CPX #$08
-	BPL end
+	CPX #<gamemode_count
+	BCS end
 	lda _retro_mode
 	beq @no1
 	lda _gamemode
@@ -2474,4 +2475,80 @@ SampleRate:
 	; returns 0 in X, return nothing
 	txa
 	rts
+.endproc
+
+
+; void update_level_completeness();
+.segment "CODE_2"
+
+.import _level
+.import _level_completeness_normal, _level_completeness_practice
+
+.export _update_level_completeness
+.proc _update_level_completeness
+	levelLengthLo = ptr1+0
+	levelLengthMd = ptr1+1
+	levelLengthHi = tmp1
+
+	percentage = tmp2
+
+	start:
+		LDY	_level
+		LDA	_level_lengths_lo, Y
+		STA levelLengthLo
+		; .if MID_LEVEL_LENGTHS_ENABLED
+		; 	LDA	_level_lengths_md, Y
+		; 	STA levelLengthMd
+		; 	.if HIGH_LEVEL_LENGTHS_ENABLED
+		; 		LDA	_level_lengths_hi, Y
+		; 		STA levelLengthHi
+		; 	.endif
+		; .endif
+
+		LDY #$FF
+		; .if HIGH_LEVEL_LENGTHS_ENABLED
+		; 	STY percentage
+		; .endif
+
+		LDA _scroll_x+3
+		STA sreg+1
+		LDA _scroll_x+2
+		STA sreg+0
+		LDX _scroll_x+1
+		LDA _scroll_x+0
+
+		INC sreg+1
+		; .if .not(HIGH_LEVEL_LENGTHS_ENABLED)
+			INC sreg+0
+		; .endif
+		; .if .not(MID_LEVEL_LENGTHS_ENABLED)
+			INX
+		; .endif
+
+	loop_sec:
+		; TYA
+		SEC
+	loop:
+		; .if HIGH_LEVEL_LENGTHS_ENABLED
+		; 	INC percentage
+		; .else
+			INY
+		; .endif
+		SBC	levelLengthLo
+		BCS loop
+
+		; TAY
+		DEX
+		BNE loop_sec
+
+		DEC	sreg+0
+		BNE loop_sec
+
+		DEC sreg+1
+		BNE loop_sec
+
+		BRK	; tmp ofc
+
+
+
 .endproc
