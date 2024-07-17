@@ -92,6 +92,10 @@ void state_lvldone() {
 		if (coins & COIN_1) coin1_obtained[level] = 1;
 		if (coins & COIN_2) coin2_obtained[level] = 1;
 		if (coins & COIN_3) coin3_obtained[level] = 1;
+
+		level_completeness_normal[level] = 100;
+	} else {
+		level_completeness_practice[level] = 100;
 	}
 	
 	
