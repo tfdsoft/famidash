@@ -130,18 +130,18 @@ void setdefaultoptions() {
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
 
+	// fill with zeros
 	memfill(0x6000, 0, 0x2000);
+
+	// set the first four bytes; LEET, save version, and 21.
+	// if none of these are what is expected, the game will tell you
 	SRAM_VALIDATE[0] = 0x13;
 	SRAM_VALIDATE[1] = 0x37;
 	SRAM_VALIDATE[2] = FLAG_SAVE_VER;
 	SRAM_VALIDATE[3] = 0x21;
-	for (tmp2 = 0; tmp2 <= LEVEL_COUNT; tmp2++) {
-		coin1_obtained[tmp2] = 0;
-		coin2_obtained[tmp2] = 0;
-		coin3_obtained[tmp2] = 0;
-		LEVELCOMPLETE[tmp2] = 0;
-	}
 	
+	// only non-zero values need to be set here
+
 	//twoplayer = 0;
 	//musicoff = 0;
 	//sfxoff = 0;
