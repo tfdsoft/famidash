@@ -107,7 +107,7 @@ void state_demo(){
 	
 	do {
        	pad_poll_both();
-		if (SRAM_VALIDATE[0] == 0xDA && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
+		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
