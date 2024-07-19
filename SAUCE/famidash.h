@@ -325,7 +325,7 @@ uint8_t DEBUG_MODE; // = 0;
 uint8_t lastgcolortype;
 uint8_t lastbgcolortype;
 uint8_t iconbank;
-uint8_t kandowavewalk;
+uint8_t dblocked[2];
 
 uint8_t jimsheatballalive[2]; //jims heatball shit
 uint8_t jimsheatballx[2]; //jims heatball shit

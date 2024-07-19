@@ -87,6 +87,8 @@
 #define RED_PAD_UP				0x53
 #define SPIDER_ORB_UP				0x54
 #define SPIDER_ORB_DOWN				0x55
+#define SPIDER_PAD_UP				0x56
+#define SPIDER_PAD_DOWN				0x57
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -287,6 +289,8 @@ char sprite_height_lookup(){
 		case RED_PAD_DOWN:
 		case GRAVITY_PAD_DOWN:
 		case GRAVITY_PAD_UP:
+		case SPIDER_PAD_UP:
+		case SPIDER_PAD_DOWN:
 			return 0x02;
 //            return 0x0F;
 
@@ -496,7 +500,7 @@ void sprite_collide_lookup() {
 	case S_BLOCK: dashing[currplayer] = 0; return;
 	case H_BLOCK: hblocked[currplayer] = 1; return;
 	case J_BLOCK: jblocked[currplayer] = 1; return;
-	case D_BLOCK: kandowavewalk = 1; return;
+	case D_BLOCK: dblocked[currplayer] = 1; return;
 	case F_BLOCK: fblocked[currplayer] = 1; return;
 	case CUBE_MODE:
 		if (retro_mode) gamemode = 4;
@@ -506,7 +510,7 @@ void sprite_collide_lookup() {
 	case SHIP_MODE:
 	case BALL_MODE:
 	case UFO_MODE:
-		target_scroll_y = uint16SepArrLoad(activesprites_y, index) - 0x10;
+		target_scroll_y = uint16SepArrLoad(activesprites_y, index) - 0x10; //unused now
 //		target_scroll_y -= 0x10;
 	case ROBOT_MODE:
 		gamemode = collided;
@@ -568,7 +572,7 @@ void sprite_collide_lookup() {
 	case COINGOTTEN1:
 		if (!has_practice_point) {
 			coins |= COIN_1;
-	        sfx_play(sfx_coin, 0);
+	//        sfx_play(sfx_coin, 0);
 			activesprites_type[index] = 0xFF;
 		}
 		return;
@@ -576,7 +580,7 @@ void sprite_collide_lookup() {
 	case COINGOTTEN2:
 		if (!has_practice_point) {
 			coins |= COIN_2;
-	        sfx_play(sfx_coin, 0);
+	  //      sfx_play(sfx_coin, 0);
 			activesprites_type[index] = 0xFF;
 		}
 		return;
@@ -584,7 +588,7 @@ void sprite_collide_lookup() {
 	case COINGOTTEN3:
 		if (!has_practice_point) {
 			coins |= COIN_3;
-	        sfx_play(sfx_coin, 0);
+	    //    sfx_play(sfx_coin, 0);
 			activesprites_type[index] = 0xFF;
 		}
 		return;
@@ -608,32 +612,34 @@ void sprite_collide_lookup() {
 
 	case SPIDER_ORB_UP:
 		if (pad_new[currplayer] & PAD_A) {
+	case SPIDER_PAD_UP:
 			high_byte(currplayer_y) -= eject_D;
 			currplayer_vel_y = 0;
-				currplayer_gravity = 1;
-				do {
-					high_byte(currplayer_y) -= 0x04;
-					Generic.y = high_byte(currplayer_y); // the rest should be the same
-				} while (!bg_coll_U());
-				high_byte(currplayer_y) -= eject_U;
-				currplayer_vel_y = 0;	
-				orbed[currplayer] = 1;
+			currplayer_gravity = 1;
+			do {
+				high_byte(currplayer_y) -= 0x04;
+				Generic.y = high_byte(currplayer_y); // the rest should be the same
+			} while (!bg_coll_U());
+			high_byte(currplayer_y) -= eject_U;
+			currplayer_vel_y = 0;	
+			orbed[currplayer] = 1;
 		}
 		return;
 	case SPIDER_ORB_DOWN:
 		if (pad_new[currplayer] & PAD_A) {	
-					high_byte(currplayer_y) -= eject_U + 1;
+	case SPIDER_PAD_DOWN:
+			high_byte(currplayer_y) -= eject_U + 1;
 			currplayer_vel_y = 0;
-				currplayer_gravity = 0;
-				do {
-					high_byte(currplayer_y) += 0x04;
-					Generic.y = high_byte(currplayer_y); // the rest should be the same
-				} while (!bg_coll_D());
+			currplayer_gravity = 0;
+			do {
+				high_byte(currplayer_y) += 0x04;
+				Generic.y = high_byte(currplayer_y); // the rest should be the same
+			} while (!bg_coll_D());
 
-				high_byte(currplayer_y) -= eject_D;
-				
-				currplayer_vel_y = 0;
-				orbed[currplayer] = 1;
+			high_byte(currplayer_y) -= eject_D;
+			
+			currplayer_vel_y = 0;
+			orbed[currplayer] = 1;
 		}
 		return;
 

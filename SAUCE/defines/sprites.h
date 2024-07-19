@@ -1927,6 +1927,20 @@ const unsigned char Gravity_Pad_U4[]={
 	0x80
 };
 
+const unsigned char Spider_Pad_Up[]={
+
+	  0, -0,0xE1,1,
+	  8, -0,0xE1,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Spider_Pad_Down[]={
+
+	  0, -0,0xE1,1|OAM_FLIP_V,
+	  8, -0,0xE1,1|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+
 const unsigned char Short_Light[]={
 
 	  4, 0,0xCD,3,
@@ -2319,7 +2333,9 @@ const unsigned char * const Metasprites[]={
 	Red_Jump_Pad,
 	Red_Jump_Pad_U,
 	Spider_Orb_UP,
-	Spider_Orb_DOWN
+	Spider_Orb_DOWN,
+	Spider_Pad_Up,
+	Spider_Pad_Down
 	
 	};
 
@@ -2415,6 +2431,8 @@ const void* const animation_frame_list[] = {
 	RED_PAD_SPRITES,
 	RED_PAD_U_SPRITES,
 	NULL,
+	NULL,
+	NULL,
 	NULL
 };
 
@@ -2508,6 +2526,8 @@ const unsigned char animation_frame_length[] = {
 	0,
 	sizeof(RED_PAD_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	sizeof(RED_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	0,
+	0,
 	0,
 	0,
 };

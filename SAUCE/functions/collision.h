@@ -374,7 +374,7 @@ char bg_coll_U_D_checks() {
 			}
 			break;
 		case COL_FLOOR_CEIL:
-			kandowavewalk = 1;
+			dblocked[currplayer] = 1;
 			return 1;
 	}
 
