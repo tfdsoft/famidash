@@ -85,6 +85,8 @@
 #define DASH_GRAVITY_ORB_45DEG_DOWN		0x51
 #define RED_PAD_DOWN				0x52
 #define RED_PAD_UP				0x53
+#define SPIDER_ORB_UP				0x54
+#define SPIDER_ORB_DOWN				0x55
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -108,6 +110,8 @@ extern void load_next_sprite(void);
 
 extern void check_spr_objects(void);
 
+extern char bg_coll_U();
+extern char bg_coll_D();
 
 const unsigned char OUTLINES[]={
 		0x30,
@@ -268,6 +272,8 @@ char sprite_height_lookup(){
 		case H_BLOCK:
 		case J_BLOCK:
 		case F_BLOCK:
+		case SPIDER_ORB_UP:
+		case SPIDER_ORB_DOWN:
 			return 0x0f;
 		case GRAVITY_UP_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_INVISIBLE_PORTAL:
@@ -598,6 +604,33 @@ void sprite_collide_lookup() {
 		return;
 	case SPEED_40_PORTAL:
 		speed = 4;
+		return;
+
+	case SPIDER_ORB_UP:
+		if (pad_new[currplayer] & PAD_A) {
+				currplayer_gravity = 1;
+				do {
+					high_byte(currplayer_y) -= 0x04;
+					Generic.y = high_byte(currplayer_y); // the rest should be the same
+				} while (!bg_coll_U());
+				high_byte(currplayer_y) -= eject_U;
+				currplayer_vel_y = 0;	
+				pad[currplayer] = 0;
+		}
+		return;
+	case SPIDER_ORB_DOWN:
+		if (pad_new[currplayer] & PAD_A) {	
+				currplayer_gravity = 0;
+				do {
+					high_byte(currplayer_y) += 0x04;
+					Generic.y = high_byte(currplayer_y); // the rest should be the same
+				} while (!bg_coll_D());
+
+				high_byte(currplayer_y) -= eject_D;
+				
+				currplayer_vel_y = 0;
+				pad[currplayer] = 0;
+		}
 		return;
 
 	// collided with a pad

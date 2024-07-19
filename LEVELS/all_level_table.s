@@ -141,7 +141,7 @@ _level_lengths_lo:
   .byte .lobyte($0000A2)		; clutterfunk
   .byte .lobyte($000089)		; theoryofeverything
   .byte .lobyte($00008A)		; decode
-  .byte .lobyte($00008A)		; test
+  .byte .lobyte($000080)		; test
   .byte .lobyte($00006E)		; test2
   .byte .lobyte($000038)		; test3
   .byte .lobyte($000019)		; test4
@@ -163,7 +163,7 @@ _level_lengths_md:
   .byte .hibyte($0000A2)		; clutterfunk
   .byte .hibyte($000089)		; theoryofeverything
   .byte .hibyte($00008A)		; decode
-  .byte .hibyte($00008A)		; test
+  .byte .hibyte($000080)		; test
   .byte .hibyte($00006E)		; test2
   .byte .hibyte($000038)		; test3
   .byte .hibyte($000019)		; test4
@@ -185,7 +185,7 @@ _level_lengths_hi:
   .byte .bankbyte($0000A2)		; clutterfunk
   .byte .bankbyte($000089)		; theoryofeverything
   .byte .bankbyte($00008A)		; decode
-  .byte .bankbyte($00008A)		; test
+  .byte .bankbyte($000080)		; test
   .byte .bankbyte($00006E)		; test2
   .byte .bankbyte($000038)		; test3
   .byte .bankbyte($000019)		; test4

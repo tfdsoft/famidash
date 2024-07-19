@@ -1574,6 +1574,20 @@ const unsigned char Dash_Gravity_Orb_45Deg_UP[]={
 	  8,  0,0xCF,1,
 	0x80
 };
+
+const unsigned char Spider_Orb_UP[]={
+
+	  0,  0,0xC9,1,
+	  8,  0,0xCB,1,
+	0x80
+};
+
+const unsigned char Spider_Orb_DOWN[]={
+
+	  0,  0,0xC9,1|OAM_FLIP_V,
+	  8,  0,0xCB,1|OAM_FLIP_V,
+	0x80
+};
 const unsigned char Dash_Orb_45Deg_DOWN[]={
 
 	  0,  0,0xCD,0|OAM_FLIP_V,
@@ -2303,7 +2317,9 @@ const unsigned char * const Metasprites[]={
 	Dash_Orb_45Deg_DOWN,
 	Dash_Gravity_Orb_45Deg_DOWN,
 	Red_Jump_Pad,
-	Red_Jump_Pad_U
+	Red_Jump_Pad_U,
+	Spider_Orb_UP,
+	Spider_Orb_DOWN
 	
 	};
 
@@ -2397,7 +2413,9 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	RED_PAD_SPRITES,
-	RED_PAD_U_SPRITES
+	RED_PAD_U_SPRITES,
+	NULL,
+	NULL
 };
 
 // Number of UNIQUE animation frames
@@ -2490,4 +2508,6 @@ const unsigned char animation_frame_length[] = {
 	0,
 	sizeof(RED_PAD_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	sizeof(RED_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	0,
+	0,
 };
