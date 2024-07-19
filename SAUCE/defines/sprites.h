@@ -1369,14 +1369,14 @@ const unsigned char Portal_Gamemode_Robot[]={
 const unsigned char Portal_Gamemode_Spider[]={
 
 	  0,  0,0x41,1,
-	  0, 16,0xF5,1,
+	  0, 16,0xF3,1,
 	  0, 32,0x41,1|OAM_FLIP_V,
 	  8,  0,0x43,1,
 
-	  8, 16,0xF7,1,
+	  8, 16,0xF5,1,
 	  8, 32,0x43,1|OAM_FLIP_V,
 	 16,  0,0x45,1,
-	 16, 16,0xCB,1,
+	 16, 16,0xF7,1,
 
 	 16, 32,0x45,1|OAM_FLIP_V,
 	0x80
@@ -1384,14 +1384,14 @@ const unsigned char Portal_Gamemode_Spider[]={
 const unsigned char Portal_Gamemode_Swing[]={
 
 	  0,  0,0x61,1,
-	  0, 16,0xEF,1,
+	  0, 16,0xED,1,
 	  0, 32,0x61,1|OAM_FLIP_V,
 	  8,  0,0x63,1,
 
-	  8, 16,0xF1,1,
+	  8, 16,0xEF,1,
 	  8, 32,0x63,1|OAM_FLIP_V,
 	 16,  0,0x65,1,
-	 16, 16,0xF3,1,
+	 16, 16,0xF1,1,
 
 	 16, 32,0x65,1|OAM_FLIP_V,
 	0x80
