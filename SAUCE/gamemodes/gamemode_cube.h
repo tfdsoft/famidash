@@ -72,7 +72,7 @@ void cube_movement(void){
 	if (gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0){		//cube
 		//if(bg_coll_D2()) {
 			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
-			if(pad[controllingplayer] & PAD_A && (!jblocked[currplayer] && !fblocked[currplayer])) {			//no jblock - hold A to buffer jump
+			if(pad[controllingplayer] & PAD_A && (!jblocked[currplayer] && !fblocked[currplayer] && !hblocked[currplayer])) {			//no jblock - hold A to buffer jump
 				if (!currplayer_gravity) {
 					if (!mini) currplayer_vel_y = JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL; // JUMP
