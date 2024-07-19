@@ -608,6 +608,8 @@ void sprite_collide_lookup() {
 
 	case SPIDER_ORB_UP:
 		if (pad_new[currplayer] & PAD_A) {
+			high_byte(currplayer_y) -= eject_D;
+			currplayer_vel_y = 0;
 				currplayer_gravity = 1;
 				do {
 					high_byte(currplayer_y) -= 0x04;
@@ -620,6 +622,8 @@ void sprite_collide_lookup() {
 		return;
 	case SPIDER_ORB_DOWN:
 		if (pad_new[currplayer] & PAD_A) {	
+					high_byte(currplayer_y) -= eject_U + 1;
+			currplayer_vel_y = 0;
 				currplayer_gravity = 0;
 				do {
 					high_byte(currplayer_y) += 0x04;
