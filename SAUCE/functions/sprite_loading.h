@@ -617,7 +617,7 @@ void sprite_collide_lookup() {
 				} while (!bg_coll_U());
 				high_byte(currplayer_y) -= eject_U;
 				currplayer_vel_y = 0;	
-				pad[currplayer] = 0;
+				orbed[currplayer] = 1;
 		}
 		return;
 	case SPIDER_ORB_DOWN:
@@ -633,7 +633,7 @@ void sprite_collide_lookup() {
 				high_byte(currplayer_y) -= eject_D;
 				
 				currplayer_vel_y = 0;
-				pad[currplayer] = 0;
+				orbed[currplayer] = 1;
 		}
 		return;
 
