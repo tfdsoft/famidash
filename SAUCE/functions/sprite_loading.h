@@ -153,7 +153,7 @@ void init_sprites(void){
 char sprite_height_lookup(){
 
 	#define type tmp4
-
+/*
 	//	color fading code
 	if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
 		if (!discomode) tmp2 = (type & 0x3F);                        
@@ -186,8 +186,6 @@ char sprite_height_lookup(){
 		activesprites_type[index] = 0xFF; 
 		return 0x00;
 	}
-//	else if (type >= CUBE_MODE && type <= ROBOT_MODE) return 0x2F;	// Portals
-	/*
 	else if (type == 0xFA) {
 				current_transition_timer_length = ((0xb0 - low_byte(Generic2.y)) >> 3) & 0x1e; // force it to be even
 				activesprites_type[index] = 0xFF;
