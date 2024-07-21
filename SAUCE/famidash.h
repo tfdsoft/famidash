@@ -1,8 +1,8 @@
 // Defines
 
-#define MENUBANK 66
-#define MENUICONBANK 70
-#define LEVELCOMPLETEBANK 74
+#define MENUBANK 68
+#define MENUICONBANK 72
+#define LEVELCOMPLETEBANK 76
 
 #define SPIKESA 0
 #define SPIKESB 2
