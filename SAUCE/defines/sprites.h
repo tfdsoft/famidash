@@ -1,4 +1,5 @@
 // a 16x16 pixel metasprite
+/*
 const unsigned char Heat_Ball_1[]={
 
 	  0,  0,0x1D,3,
@@ -24,7 +25,7 @@ const unsigned char Heat_Ball_4[]={
 };
 
 const unsigned char * const Heat_Ball_Sprites[] = {Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4};
-
+*/
 
 
 
@@ -1381,6 +1382,21 @@ const unsigned char Portal_Gamemode_Spider[]={
 	 16, 32,0x45,1|OAM_FLIP_V,
 	0x80
 };
+const unsigned char Portal_Gamemode_Ninja[]={
+
+	  0,  0,0x41,0,
+	  0, 16,0xF3,0,
+	  0, 32,0x41,0|OAM_FLIP_V,
+	  8,  0,0x43,0,
+
+	  8, 16,0xF5,0,
+	  8, 32,0x43,0|OAM_FLIP_V,
+	 16,  0,0x45,0,
+	 16, 16,0xF7,0,
+
+	 16, 32,0x45,0|OAM_FLIP_V,
+	0x80
+};
 const unsigned char Portal_Gamemode_Swing[]={
 
 	  0,  0,0x61,1,
@@ -2387,7 +2403,8 @@ const unsigned char * const Metasprites[]={
 	Spider_Orb_UP,
 	Spider_Orb_DOWN,
 	Spider_Pad_Up,
-	Spider_Pad_Down
+	Spider_Pad_Down,
+	Portal_Gamemode_Ninja
 	
 	};
 
@@ -2485,7 +2502,8 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	SPIDER_PAD_UP_SPRITES,
-	SPIDER_PAD_DOWN_SPRITES
+	SPIDER_PAD_DOWN_SPRITES,
+	NULL
 };
 
 // Number of UNIQUE animation frames
@@ -2582,4 +2600,5 @@ const unsigned char animation_frame_length[] = {
 	0,
 	sizeof(SPIDER_PAD_UP_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	sizeof(SPIDER_PAD_DOWN_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	0,
 };

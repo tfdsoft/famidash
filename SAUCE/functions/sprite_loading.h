@@ -89,6 +89,7 @@
 #define SPIDER_ORB_DOWN				0x55
 #define SPIDER_PAD_UP				0x56
 #define SPIDER_PAD_DOWN				0x57
+#define NINJA_MODE				0x58
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -304,6 +305,7 @@ char sprite_height_lookup(){
 		case MINI_PORTAL:
 		case WAVE_MODE:
 		case SWING_MODE:
+		case NINJA_MODE:
 		case GROWTH_PORTAL:
 		case TELEPORT_PORTAL_ENTER:
 			return 0x2f;
@@ -526,6 +528,9 @@ void sprite_collide_lookup() {
 		return;
 	case SWING_MODE:
 		gamemode = 7;
+		return;
+	case NINJA_MODE:
+		gamemode = 8;
 		return;
 	case MINI_PORTAL:
 		mini = 1;
