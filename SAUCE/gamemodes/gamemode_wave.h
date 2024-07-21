@@ -21,6 +21,10 @@ void wave_movement(void){
 				currplayer_vel_y = currplayer_vel_x << 1;
 			}
 		}		
+
+		if (slope_type) {
+			currplayer_vel_y = 0;
+		}
 		
 		if (pad[controllingplayer] & PAD_A) currplayer_vel_y = -currplayer_vel_y;
 
@@ -62,7 +66,6 @@ void wave_movement(void){
 			}
 		}
 	}
-	dblocked[currplayer] = 0;
 
 
 	Generic.y = high_byte(currplayer_y);
