@@ -1929,29 +1929,29 @@ const unsigned char Gravity_Pad_U4[]={
 
 const unsigned char Spider_Pad_Up[]={
 
-	  0, -0,0xE1,1,
-	  8, -0,0xE3,1|OAM_FLIP_H,
+	  0, -8,0xE1,1,
+	  8, -8,0xE3,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Pad_Up2[]={
 
-	  0, -0,0xE3,1,
-	  8, -0,0xE5,1|OAM_FLIP_H,
+	  0, -8,0xE3,1,
+	  8, -8,0xE5,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Pad_Up3[]={
 
-	  0, -0,0xE5,1,
-	  8, -0,0xE7,1|OAM_FLIP_H,
+	  0, -8,0xE5,1,
+	  8, -8,0xE7,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Pad_Up4[]={
 
-	  0, -0,0xE7,1,
-	  8, -0,0xE1,1|OAM_FLIP_H,
+	  0, -8,0xE7,1,
+	  8, -8,0xE1,1|OAM_FLIP_H,
 	0x80
 };
 
