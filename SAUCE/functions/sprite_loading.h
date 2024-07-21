@@ -512,7 +512,7 @@ void sprite_collide_lookup() {
 //		target_scroll_y -= 0x10;
 	case ROBOT_MODE:
 		gamemode = collided;
-		robotjumptime[currplayer] = 0;
+		//robotjumptime[currplayer] = 0;
 		return;
 	case TELEPORT_PORTAL_ENTER:
 		high_byte(currplayer_y) = teleport_output;

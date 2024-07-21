@@ -1434,6 +1434,22 @@ drawcube_sprite_way:
 	.undef V_FLIP
 	.undef HVFLIP
 
+drawcube_sprite_none:
+	; Bits 6-7: FLIP
+	; Bits 0-2: actual idx
+	.define NOFLIP $00
+	.define H_FLIP $40
+	.define V_FLIP $80
+	.define HVFLIP $C0
+	.byte NOFLIP|0, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
+	.byte NOFLIP|6, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
+	.byte NOFLIP|6, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
+	.byte NOFLIP|6, NOFLIP|1, NOFLIP|2, NOFLIP|3, NOFLIP|4, NOFLIP|5
+	.undef NOFLIP
+	.undef H_FLIP
+	.undef V_FLIP
+	.undef HVFLIP
+
 
 drawplayer_center_offsets:
 	;		Cub	Shp	Bal	UFO	RBT	SPI	Wav
@@ -1589,6 +1605,10 @@ drawplayer_center_offsets:
 		@fin:
 			LDX _cube_rotate+1
         @fin_nold:
+			LDA _gamemode
+			cmp #8
+			beq @noflip
+
 			LDA _icon
 			cmp #2
 			bne	@norm
@@ -1596,6 +1616,11 @@ drawplayer_center_offsets:
 			jmp @don
 		@norm:
 			LDA drawcube_sprite_table, X
+			jmp @don
+		@noflip:
+			LDA drawcube_sprite_none, X
+			;jmp @don
+			
 		@don:
 			TAX
 			AND #$C0
