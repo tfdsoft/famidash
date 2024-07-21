@@ -1,3 +1,6 @@
+#pragma data-name(push, "XCD_BANK_00")
+#pragma rodata-name(push, "XCD_BANK_00")
+
 //attempt to comment
 #define CUBE_MODE 				0X00
 #define SHIP_MODE 				0X01
@@ -137,7 +140,7 @@ const unsigned char OUTLINES[]={
 
 
 
-void init_sprites(void){
+void init_sprites(void){	// required to be in a fixed bank
 	// Setting up pointers is already done by init_rld()
 	mmc3_set_prg_bank_1(sprite_data_bank);
 
@@ -150,6 +153,8 @@ void init_sprites(void){
 		if (activesprites_x_hi[spr_index] != 0) activesprites_active[spr_index] = 0;
 	} while (spr_index != 0);
 }
+
+#pragma code-name(push, "XCD_BANK_00")
 
 char sprite_height_lookup(){
 
@@ -373,12 +378,6 @@ const short mini_heights[] = {
 	0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
 	0x950,  0x700,  0x600,  0x950,  0x950,  0x500,  0x000, 0x000, // red pad	
 };
-
-#pragma code-name(push, "XCD_BANK_00")
-#pragma data-name(push, "XCD_BANK_00")
-#pragma rodata-name(push, "XCD_BANK_00")
-
-
 
 #define table_offset tmp3
 #define collided tmp4

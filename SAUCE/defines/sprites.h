@@ -1,3 +1,5 @@
+#pragma rodata-name (push, "XCD_BANK_04")
+
 // a 16x16 pixel metasprite
 
 const unsigned char Heat_Ball_1[]={
@@ -2602,3 +2604,5 @@ const unsigned char animation_frame_length[] = {
 	sizeof(SPIDER_PAD_DOWN_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	0,
 };
+
+#pragma rodata-name (pop)

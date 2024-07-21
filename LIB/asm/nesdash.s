@@ -99,7 +99,7 @@ sprite_data = _sprite_data
 ; the function itself
 
 ; void __fastcall__ oam_meta_spr_flipped(uint8_t x,uint8_t y,const void *data);
-.segment "XCD_BANK_00"
+.segment "XCD_BANK_04"
 
 .export __oam_meta_spr_flipped
 .proc __oam_meta_spr_flipped
@@ -1388,7 +1388,7 @@ write_active:
     rts
 .endproc
 
-.segment "XCD_BANK_00"
+.segment "XCD_BANK_04"
 
 .define CUBE_GRAVITY $6B
 .define MINI_CUBE_GRAVITY $6F
@@ -1902,7 +1902,7 @@ drawplayer_center_offsets:
 drawplayer_common := _drawplayerone::common
 
 ; void drawplayertwo();
-.segment "XCD_BANK_00"
+.segment "XCD_BANK_04"
 
 .import _CUBE2, _SHIP2, _BALL2, _ROBOT2, _UFO2, _SPIDER2, _WAVE2, _SWING2
 .import _MINI_CUBE2, _MINI_SHIP2, _MINI_BALL2, _MINI_ROBOT2, _MINI_UFO2, _MINI_SPIDER2, _MINI_WAVE2, _MINI_SWING2

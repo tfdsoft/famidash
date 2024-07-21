@@ -55,11 +55,10 @@
 
 
 #include "METATILES/metatiles.h"  // metatile defines
-#pragma rodata-name (push, "XCD_BANK_00")
 #include "defines/sprites.h"    // metasprite defines
-#include "functions/sprite_loading.h"		//I cant believe that worked -kando 5-14
+#include "functions/sprite_loading.h"
 
-#pragma rodata-name ("XCD_BANK_03")
+#pragma rodata-name (push, "XCD_BANK_03")
 #include "defines/menutext.h" // menu text. obviously.
 
 #pragma rodata-name ("LVL_BANK_00")
