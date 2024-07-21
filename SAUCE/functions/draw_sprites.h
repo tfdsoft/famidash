@@ -131,7 +131,7 @@ void draw_sprites(void){
 		tmp1 = 8;
 
 		do {
-			if((((tmp1-1)>>1)+PEEK(0x01))&1) oam_meta_spr(high_byte(tmp5), uint8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
+			oam_meta_spr(high_byte(tmp5), uint8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
 			tmp5 = tmp5 - tmp6;
 			tmp1--;
 		} while (tmp1 > 0);
