@@ -53,6 +53,11 @@ nmi:
 	lda #0
 	sta <VRAM_UPDATE
 
+	lda <PPU_MASK_VAR
+	and #%11100111		;	Disable BG and sprites
+	ora #%11100000		;	Enable dark emphasis
+	sta PPU_MASK
+
 	lda #>OAM_BUF		;update OAM
 	sta PPU_OAM_DMA
 
