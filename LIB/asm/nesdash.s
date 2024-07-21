@@ -79,11 +79,13 @@ sprite_data = _sprite_data
 	auto_fs_updates:	.res 1
 	parallax_scroll_column: .res 1
 	parallax_scroll_column_start: .res 1
+	hexToDecOutputBuffer: .res 5
 
 .export _scroll_count := scroll_count
 .export _auto_fs_updates := auto_fs_updates
 .export _parallax_scroll_column := parallax_scroll_column
 .export _parallax_scroll_column_start := parallax_scroll_column_start
+.export _hexToDecOutputBuffer := hexToDecOutputBuffer
 .export _pad = PAD_STATEP
 .export _pad_new = PAD_STATET
 
@@ -1041,10 +1043,10 @@ ParallaxBuffer:
 	; sreg[1] = len
 	; xargs[0:1] = data
 
-	.define spaceChr $FE
-	.define data xargs+0
-	.define total_len sreg+0
-	.define len sreg+1
+	spaceChr = $FE
+	data = xargs+0
+	total_len = sreg+0
+	len = sreg+1
 
 	LDY VRAM_INDEX
 	STA VRAM_BUF, Y	;
@@ -2440,22 +2442,23 @@ SampleRate:
 .endproc
 
 
-; uint32_t hexToDec (uint16_t input)
+; uint16_t hexToDec (uint16_t input)
 .segment "CODE_2"
 
 .export _hexToDec
 .proc _hexToDec
 	; AX = input
-	; AX:sreg:xargs[0] = output
+	; hexToDecOutputBuffer = output
+	; AX = duplicate output
 
 	; Step 1. loop over X and add 256
 	start:
 		INX			; for BEQ ending condition
 		STX tmp1
 		LDY #0		; for storing when overflows
-		STY sreg+0
-		STY sreg+1
-		STY xargs+0
+		STY hexToDecOutputBuffer+2
+		STY hexToDecOutputBuffer+3
+		STY hexToDecOutputBuffer+4
 	
 	clr_x_loop:
 		LDX #0
@@ -2470,26 +2473,95 @@ SampleRate:
 		CPX #10
 		BNE loop	; carry is always clear
 
-		INC sreg+0
-		CPX sreg+0	; if 10 == out[2]
+		INC hexToDecOutputBuffer+2
+		CPX hexToDecOutputBuffer+2	; if 10 == out[2]
 		BNE clr_x_loop
-		STY sreg+0
+		STY hexToDecOutputBuffer+2
 
-		INC sreg+1
-		CPX sreg+1	; if 10 == out[3]
+		INC hexToDecOutputBuffer+3
+		CPX hexToDecOutputBuffer+3	; if 10 == out[3]
 		BNE clr_x_loop
-		STY sreg+1
+		STY hexToDecOutputBuffer+3
 
-		INC xargs+0
+		INC hexToDecOutputBuffer+4
 		BNE clr_x_loop	; BRA
 
 	end:
 		; Carry is clear
 		ADC #10
+		STA hexToDecOutputBuffer+0
+		STX hexToDecOutputBuffer+1
 		RTS
 .endproc
 
 
+
+; void printDecimal (uintptr_t vram_adr, uint16_t value, uint8_t digits, uint8_t zeroChr, uint8_t spaceChr)
+.segment "CODE_2"
+
+.export __printDecimal
+.proc __printDecimal
+	; XA = vram_adr
+	; sreg = value
+	; xargs[0] = digits
+	; xargs[1] = zeroChr
+	; xargs[2] = spaceChr
+	value = sreg
+	digits = xargs+0
+	zeroChr = xargs+1
+	spaceChr = xargs+2
+
+	start:
+		LDY VRAM_INDEX
+		STA VRAM_BUF, Y		;
+		TXA					;	VRAM pointer
+		STA VRAM_BUF+1, Y	;__
+		LDA digits			;	Length
+		STA VRAM_BUF+2, Y	;__
+		CLC					;
+		ADC VRAM_INDEX		;	Update VRAM index
+		ADC #3				;__
+		PHA					;
+		TAY					;
+		LDA #$FF			;	Mark section as taken
+		STA VRAM_BUF, Y		;__
+
+		LDA value			;
+		LDX value+1			;	Convert to decimal
+		JSR _hexToDec		;__
+
+		LDY VRAM_INDEX
+
+		LDX digits
+		DEX
+		BEQ numberLoop
+
+	spaceLoop:
+		LDA hexToDecOutputBuffer, X
+		BNE numberStart
+		LDA spaceChr
+		STA VRAM_BUF+3, Y
+		INY
+		DEX
+		BNE spaceLoop
+
+		; Fallthrough on the last digit
+	numberLoop:
+		LDA hexToDecOutputBuffer, X
+	numberStart:
+		CLC
+		ADC zeroChr
+		STA VRAM_BUF+3, Y
+		INY
+		DEX
+		BPL numberLoop
+
+	end:
+		PLA
+		STA VRAM_INDEX
+		RTS
+
+.endproc
 
 ; void pad_poll_both();
 .segment "CODE_2"

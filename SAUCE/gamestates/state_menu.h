@@ -115,10 +115,6 @@ const char coin_counter[][3] = {
 
 #include "defines/color1_charmap.h"
 
-const char oneHundredPercent[3] = {
-	"100"
-};
-
 /*
 	Refreshes level name & number
 */
@@ -147,41 +143,14 @@ void __fastcall__ refreshmenu(void) {
 
 	}
 	// Star count stuff
-		storeWordSeparately(hexToDec(stars_list[level]), tmp7, tmp8);
-		
-		if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(22, 9));
-		else one_vram_buffer(' ', NTADR_A(22, 9));
-
-		one_vram_buffer('0'+tmp7, NTADR_A(23, 9));
+		printDecimal(stars_list[level], 2, '0', ' ', NTADR_A(22, 9));
 
 	
 	// Normal level completeness stuff
-		if (level_completeness_normal[level] >= 100) {
-			multi_vram_buffer_horz(oneHundredPercent, sizeof(oneHundredPercent), NTADR_A(14, 16));
-		} else {
-			storeWordSeparately(hexToDec(level_completeness_normal[level]), tmp7, tmp8);
-
-			one_vram_buffer(' ', NTADR_A(14, 16));
-
-			if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(15, 16));
-			else one_vram_buffer(' ', NTADR_A(15, 16));
-
-			one_vram_buffer('0'+tmp7, NTADR_A(16, 16));
-		}
+		printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16));
 
 	// Practice level completeness stuff
-		if (level_completeness_practice[level] >= 100) {
-			multi_vram_buffer_horz(oneHundredPercent, sizeof(oneHundredPercent), NTADR_A(14, 19));
-		} else {
-			storeWordSeparately(hexToDec(level_completeness_practice[level]), tmp7, tmp8);
-
-			one_vram_buffer(' ', NTADR_A(14, 19));
-
-			if (tmp8) one_vram_buffer('0'+tmp8, NTADR_A(15, 19));
-			else one_vram_buffer(' ', NTADR_A(15, 19));
-
-			one_vram_buffer('0'+tmp7, NTADR_A(16, 19));
-		}
+		printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19));
 
 	//palette stuff
 		pal_col(0,colors_list[level]);
@@ -338,10 +307,7 @@ void customize_screen() {
 	vram_unrle(customizescreen);   	
 
 	TOTALCOINS = 0;
-	TOTALCOINSONES = 0;
-	TOTALCOINSTENS = 0;
-	TOTALSTARSONES = 0;
-	TOTALSTARSTENS = 0;
+	TOTALSTARS = 0;
 
 	for (tmp2 = 0; tmp2 < LEVEL_COUNT; tmp2++) {
 		// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
@@ -351,17 +317,11 @@ void customize_screen() {
 		__asm__("clc \n adc %v, y", coin2_obtained);
 		__asm__("clc \n adc %v, y", coin3_obtained);
 		TOTALCOINS = __A__;
-		if (LEVELCOMPLETE[tmp2]) TOTALSTARSONES += stars_list[tmp2];
+		if (LEVELCOMPLETE[tmp2]) TOTALSTARS += stars_list[tmp2];
 	}
-	TOTALCOINSONES = TOTALCOINS;
-	
-	storeWordSeparately(hexToDec(TOTALSTARSONES), TOTALSTARSONES, TOTALSTARSTENS);
 
-	if (TOTALCOINSTENS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_A(16,19));
-	one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_A(17,19));	
-
-	if (TOTALSTARSTENS) one_vram_buffer(0xd0+TOTALSTARSTENS, NTADR_A(18,21));
-	one_vram_buffer(0xd0+TOTALSTARSONES, NTADR_A(19,21));	
+	printDecimal(TOTALCOINS, 2, 0xD0, 0xFF, NTADR_A(16,19));
+	printDecimal(TOTALSTARS, 2, 0xD0, 0xFF, NTADR_A(18,21));
 
 	one_vram_buffer('h', NTADR_A(13, 8));		
 	one_vram_buffer('i', NTADR_A(13, 9));
