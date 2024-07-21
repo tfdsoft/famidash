@@ -435,9 +435,9 @@ void state_game(){
 	if (kandokidshack != 9) kandokidshack = 0;
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 
-		if (pad_new[0] & PAD_DOWN) {
-			mini ^= 1;
-		}
+	if (pad_new[0] & PAD_DOWN && DEBUG_MODE) {
+		mini ^= 1;
+	}
 
         if (pad[0] & PAD_SELECT) {
             if (++END_LEVEL_TIMER > 60) {
