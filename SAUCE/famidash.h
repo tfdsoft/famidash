@@ -1,5 +1,6 @@
 // Defines
 
+#define NINJABANK 66
 #define MENUBANK 68
 #define MENUICONBANK 72
 #define LEVELCOMPLETEBANK 76
