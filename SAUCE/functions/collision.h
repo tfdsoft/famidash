@@ -308,7 +308,17 @@ char bg_side_coll_common() {
 	
 	bg_coll_spikes();
 
-	return bg_coll_sides() || bg_coll_mini_blocks() || ((gamemode == 6) ? bg_coll_slope() : 0);
+	if (gamemode == 6) {
+		if (bg_coll_slope()) {
+			if (!dblocked[currplayer]) {
+				cube_data[currplayer] |= 1;
+			}
+		}	
+		
+	}
+	dblocked[currplayer] = 0;
+
+	return bg_coll_sides() || bg_coll_mini_blocks();
 }
 
 /*
