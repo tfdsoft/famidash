@@ -4,6 +4,7 @@
 
 
 void wave_movement(void){
+
 	if (!dashing[currplayer]) {
 		if(!mini){
 			if(currplayer_gravity){
@@ -20,30 +21,28 @@ void wave_movement(void){
 			else{
 				currplayer_vel_y = currplayer_vel_x << 1;
 			}
-		}		
+		}	
 
-		if (slope_type) {
-			currplayer_vel_y = 0;
-		}
-		
 		if (pad[controllingplayer] & PAD_A) currplayer_vel_y = -currplayer_vel_y;
 
-		currplayer_y += currplayer_vel_y;
+		if (!slope_frames && !was_on_slope_counter) {
+			currplayer_y += currplayer_vel_y;
+		} else {
+			currplayer_vel_y = 0;
+		}
+
 	}	
 	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
 	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
 	else currplayer_vel_y = 1;
 
-	
-	
-
 	Generic.x = high_byte(currplayer_x);
 	
 	// this literally offsets the collision down 2 pixel for the vel reset to happen every frame instead of each other frame
-	Generic.y = high_byte(currplayer_y) + ((high_byte(currplayer_vel_y) & 0x80) ? 2 : -2);
+	Generic.y = high_byte(currplayer_y);
 	
 	
-	
+
 	if(high_byte(currplayer_vel_y) & 0x80){
 		if (bg_coll_U()) {
 			if(dblocked[currplayer]){ // check collision above
@@ -67,10 +66,9 @@ void wave_movement(void){
 		}
 	}
 
-
 	Generic.y = high_byte(currplayer_y);
 
-	if (currplayer_vel_y != 0){
+	if (currplayer_vel_y != 0 && !slope_type){
 		if(pad_new[controllingplayer] & PAD_A) {
 			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 		}

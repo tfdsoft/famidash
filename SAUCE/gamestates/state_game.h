@@ -54,7 +54,7 @@ const uint8_t G_Table[]={
 #define test4  0X10
 
 void x_movement_coll() {
-	if (slope_type && !slope_frames) {
+	if (slope_type && !slope_frames && gamemode != 6) {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
 		switch (slope_type) {
 			case SLOPE_22DEG_DOWN:
