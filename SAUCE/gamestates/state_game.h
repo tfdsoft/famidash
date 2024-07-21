@@ -416,6 +416,7 @@ void state_game(){
 					if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
 					else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
 					else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
+					else if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
 					else mmc3_set_2kb_chr_bank_0(18);
 					oam_clear();
 					drawplayerone();
