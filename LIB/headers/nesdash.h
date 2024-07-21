@@ -96,9 +96,21 @@ void __fastcall__ playPCM(uint8_t sample);
  *
  * @param input The number to convert to decimal.
  *
- * @retval Returns the 4 low digits of the result in @c __EAX___, and the 5th byte is returned in @c xargs[0].
+ * @retval Returns the result @c hexToDecOutputBuffer, and the lowest 2 bytes are also in @c __AX__.
  */
-uint32_t __fastcall__ hexToDec (uint16_t input);
+uint16_t __fastcall__ hexToDec (uint16_t input);
+
+/**
+ * @brief Convert a 16-bit number to decimal and print it to the VRAM buffer.
+ *
+ * @param value The value to print.
+ * @param digits The amount of digits to print - values 1..5 are valid.
+ * @param zeroChr The '0' character in the current context - will add the numbers to it.
+ * @param spaceChr The ' ' character in the current context - will be printed for the leftmost unused digits.
+ * @param vram_adr The VRAM address of the leftmost digit.
+ */
+#define printDecimal(value, digits, zeroChr, spaceChr, vram_adr) (storeWordToSreg(value), xargs[0] = digits, xargs[1] = zeroChr, xargs[2] = spaceChr, __A__ = LSB(vram_adr), __AX__<<=8, __AX__ |= MSB(vram_adr)|NT_UPD_HORZ, _printDecimal(__EAX__))
+void _printDecimal (uint32_t args);
 
 /**
  * @brief Poll both controllers

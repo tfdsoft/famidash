@@ -162,17 +162,22 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	if (!has_practice_point) {
 		multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(7, 15));
 		
-		storeWordSeparately(hexToDec(attempts), TOTALCOINSONES, TOTALCOINSTENS);
-		storeWordSeparately(__EAX__>>16, TOTALATTEMPTSHUNDREDS, TOTALATTEMPTSTHOUSANDS); 
+		hexToDec(attempts);
 
 //		if (TOTALATTEMPTSTHOUSANDS >= 10)
 //			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
 //
 //		else {
-			if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSTHOUSANDS, NTADR_C(15,15));
-			if (TOTALATTEMPTSHUNDREDS | TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALATTEMPTSHUNDREDS, NTADR_C(16,15));
-			if (TOTALATTEMPTSHUNDREDS | TOTALCOINSTENS | TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xf5+TOTALCOINSTENS, NTADR_C(17,15));
-			one_vram_buffer(0xf5+TOTALCOINSONES, NTADR_C(18,15));		
+			if (hexToDecOutputBuffer[3])
+				one_vram_buffer(0xf5+hexToDecOutputBuffer[3], NTADR_C(15,15));
+
+			if (hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2])
+				one_vram_buffer(0xf5+hexToDecOutputBuffer[2], NTADR_C(16,15));
+
+			if (hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1])
+				one_vram_buffer(0xf5+hexToDecOutputBuffer[1], NTADR_C(17,15));
+
+			one_vram_buffer(0xf5+hexToDecOutputBuffer[0], NTADR_C(18,15));		
 //		}
 	}
 	#undef i
