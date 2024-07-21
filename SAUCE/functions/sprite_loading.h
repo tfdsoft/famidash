@@ -166,7 +166,7 @@ char sprite_height_lookup(){
 		else { 
 			return 0x00;
 		}
-		tmp3 = (tmp2-0x10 & 0xC0) ? 0x0f : (tmp2-0x10);
+		tmp3 = oneShadeDarker(tmp2);
 		if (type >= 0xC0) {
 			original_gnd_palette_idx_0 = 5;
 			original_gnd_palette_idx_1 = 6;
@@ -212,21 +212,12 @@ char sprite_height_lookup(){
 						
 				if (type >= 0xC0){
 					pal_col(6, tmp2);
-					if (tmp2-0x10 & 0xC0) { 
-							pal_col(5, 0x0f); 
-					} else { 
-							pal_col(5, (tmp2-0x10)); 
-					}
+					pal_col(5, oneShadeDarker(tmp2)); 
 					lastgcolortype = type;
 				} else {
 					pal_col(0, tmp2);
-					if (tmp2-0x10 & 0xC0) { 
-							pal_col(1, 0x0f); 
-							pal_col(9, 0x0f); 
-					} else { 
-							pal_col(1, (tmp2-0x10)); 
-							pal_col(9, (tmp2-0x10)); 
-					}
+					pal_col(1, oneShadeDarker(tmp2)); 
+					pal_col(9, oneShadeDarker(tmp2)); 
 					lastbgcolortype = type;
 				}
 				activesprites_type[index] = 0xFF; 

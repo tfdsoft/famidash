@@ -226,6 +226,11 @@ extern uint8_t PAL_BUF[32];
 #pragma zpsym("PAL_UPDATE")
 #define pal_col(index, color) do { PAL_BUF[index&0x1F] = (color); ++PAL_UPDATE; } while(0);
 
+// Uses the neslib table
+// Normal shade is 4, range is 0..8
+#define colBrightness(color, brightness) (__A__ = color, __asm__("tay"), __asm__("lda palBrightTable%s, y", brightness), __A__)
+#define oneShadeDarker(color) colBrightness(color, 3)
+
 #define swapbyte(a, b) do { \
   __A__ = (a); \
   __asm__("pha"); \

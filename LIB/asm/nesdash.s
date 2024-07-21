@@ -255,17 +255,12 @@ _init_rld:
 	bne @noset
 	STA _lastbgcolortype
 @noset:
-	SEC					;	A = faded OG color (A - 10)
-	SBC #$10			;__
-	BPL :+				;
-		LDA #$0F		;	if (faded color invalid) color = $0F (canonical black)
-	:					;__
-	tax
+	TAX
 	lda _discomode
 	bne @nostore
-	txa
-	STA PAL_BUF+1		;__	Store faded color (pal_col(1, tmp2-0x10 or 0x0F))
-	STA PAL_BUF+9		;__	Store faded color (pal_col(1, tmp2-0x10 or 0x0F))
+	LDA palBrightTable3, X
+	STA PAL_BUF+1		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
+	STA PAL_BUF+9		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
 @nostore:
 	txa
 	incw_check level_data
@@ -278,12 +273,9 @@ _init_rld:
 	bne @noset2
 	STA	_lastgcolortype
 @noset2:
-	SEC					;	A = faded OG color (A - 10)
-	SBC #$10			;__
-	BPL :+				;
-		LDA #$0F		;	if (faded color invalid) color = $0F (canonical black)
-	:					;__
-	STA PAL_BUF+5		;__	Store faded color (pal_col(5, tmp2-0x10 or 0x0F))
+	TAX
+	LDA palBrightTable3, X
+	STA PAL_BUF+5		;__	Store faded color (pal_col(5, oneShadeDarker(tmp2)))
 	incw_check level_data
 
 	INC <PAL_UPDATE		;__ Yes, we do need to update the palette

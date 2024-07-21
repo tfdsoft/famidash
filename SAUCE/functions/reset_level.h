@@ -103,20 +103,11 @@ void reset_level(void) {
 			tmp2 = (tmp3 & 0x3F);                        
 			if (tmp3 >= 0xC0){
 			    pal_col(6, tmp2);
-			    if (tmp2-0x10 & 0xC0) { 
-				    pal_col(5, 0x0f); 
-			    } else { 
-				    pal_col(5, (tmp2-0x10)); 
-			    }
+				pal_col(5, oneShadeDarker(tmp2)); 
 			} else {
 			    pal_col(0, tmp2);
-			    if (tmp2-0x10 & 0xC0) { 
-				    pal_col(1, 0x0f); 
-				    pal_col(9, 0x0f); 
-			    } else { 
-				    pal_col(1, (tmp2-0x10)); 
-				    pal_col(9, (tmp2-0x10)); 
-			    }
+				pal_col(1, oneShadeDarker(tmp2)); 
+				pal_col(9, oneShadeDarker(tmp2)); 
 			}    
 
 	    tmp3 = practice_g_color_type;
@@ -124,20 +115,11 @@ void reset_level(void) {
 			tmp2 = (tmp3 & 0x3F);                        
 			if (tmp3 >= 0xC0){
 			    pal_col(6, tmp2);
-			    if (tmp2-0x10 & 0xC0) { 
-				    pal_col(5, 0x0f); 
-			    } else { 
-				    pal_col(5, (tmp2-0x10)); 
-			    }
+				pal_col(5, oneShadeDarker(tmp2)); 
 			} else {
 			    pal_col(0, tmp2);
-			    if (tmp2-0x10 & 0xC0) { 
-				    pal_col(1, 0x0f); 
-				    pal_col(9, 0x0f); 
-			    } else { 
-				    pal_col(1, (tmp2-0x10)); 
-				    pal_col(9, (tmp2-0x10)); 
-			    }
+				pal_col(1, oneShadeDarker(tmp2)); 
+				pal_col(9, oneShadeDarker(tmp2)); 
 			}    
     }
     if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));

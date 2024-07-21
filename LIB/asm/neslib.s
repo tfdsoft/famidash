@@ -1272,5 +1272,6 @@ palBrightTable8:
 	.byte $30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30
 	.byte $30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30,$30
 
-;;	.include "famitone.s"
-; included in crt0.s
+.repeat 9, I
+.export .ident(.sprintf("palBrightTable%d", I))
+.endrepeat

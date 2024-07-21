@@ -651,13 +651,8 @@ void state_menu() {
 			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
 			tmp2 = (tmp3 & 0x3F);  		    
 				pal_col(0, tmp2);
-				if (tmp2-0x10 & 0xC0) { 
-//					pal_col(1, 0x0f); 
-//					pal_col(9, 0x0f); 
-				} else { 
-//					pal_col(1, (tmp2-0x10)); 
-//					pal_col(9, (tmp2-0x10)); 
-				}
+				// pal_col(1, oneShadeDarker(tmp2)); 
+				// pal_col(9, oneShadeDarker(tmp2)); 
 		
 			tmp3 = 0xC0 + BG_Table2[discoframe];
 			
@@ -665,11 +660,7 @@ void state_menu() {
 			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
 			tmp2 = (tmp3 & 0x3F);  		    
 			//	pal_col(6, tmp2);
-				if (tmp2-0x10 & 0xC0) { 
-				//	pal_col(5, 0x0f); 
-				} else { 
-				//	pal_col(5, (tmp2-0x10)); 
-				}
+			//	pal_col(5, oneShadeDarker(tmp2)); 
 			discoframe++;
 			if (discoframe == 12) discoframe = 0;
 		}
