@@ -41,17 +41,25 @@ void wave_movement(void){
 	
 	
 	if(high_byte(currplayer_vel_y) & 0x80){
-		if(bg_coll_U() && dblocked[currplayer]){ // check collision above
-			high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U;
-			currplayer_vel_y = 0;
-			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);			
+		if (bg_coll_U()) {
+			if(dblocked[currplayer]){ // check collision above
+				high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U;
+				currplayer_vel_y = 0;
+				uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);			
+			} else {
+				uint8_store(cube_data, currplayer, cube_data[currplayer] | 1);		
+			}
 		}
 	}
 	else{
-		if(bg_coll_D() && dblocked[currplayer]){ // check collision below
-			high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
-			currplayer_vel_y = 0;
-			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);		    
+		if(bg_coll_D()){ // check collision below
+			if (dblocked[currplayer]) {
+				high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
+				currplayer_vel_y = 0;
+				uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);		    
+			} else {
+				uint8_store(cube_data, currplayer, cube_data[currplayer] | 1);		
+			}
 		}
 	}
 	dblocked[currplayer] = 0;
