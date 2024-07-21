@@ -222,14 +222,7 @@ uint8_t achievements[0x20];
 //extern uint8_t famistudio_state[0xbf];
 
 uint8_t TOTALCOINS;
-uint8_t TOTALATTEMPTSHUNDREDS;
-uint8_t TOTALATTEMPTSTHOUSANDS;
-uint8_t TOTALCOINSTENS;
-uint8_t TOTALCOINSONES;
 uint8_t TOTALSTARS;
-uint8_t TOTALSTARSONES;
-uint8_t TOTALSTARSTENS;
-
 
 uint16_t player_x[2];
 uint16_t player_y[2];
@@ -364,6 +357,8 @@ uint8_t current_transition_timer_length;
 uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 
 uint16_t songtimer;
+
+extern volatile uint8_t hexToDecOutputBuffer[5];
 
 //struct player {
 //	uint16_t x; // low byte is sub-pixel

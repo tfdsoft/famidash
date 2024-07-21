@@ -78,13 +78,7 @@ void state_lvldone() {
 	tmp1 = 0;
 	tmpptr1 = NULL;
 
-	storeWordSeparately(hexToDec(attempts), TOTALCOINSONES, TOTALCOINSTENS);
-	storeWordSeparately(__EAX__>>16, TOTALATTEMPTSHUNDREDS, TOTALATTEMPTSTHOUSANDS); 
-
-	if (TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALATTEMPTSTHOUSANDS, NTADR_C(18,13));
-	if (TOTALATTEMPTSHUNDREDS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALATTEMPTSHUNDREDS, NTADR_C(19,13));
-	if (TOTALATTEMPTSHUNDREDS || TOTALCOINSTENS || TOTALATTEMPTSTHOUSANDS) one_vram_buffer(0xd0+TOTALCOINSTENS, NTADR_C(20,13));
-	one_vram_buffer(0xd0+TOTALCOINSONES, NTADR_C(21,13));	
+	printDecimal(attempts, 5, 0xD0, 0xFF, NTADR_C(18,13));
 	
 	if (!has_practice_point) {
 		LEVELCOMPLETE[level] = 1;
