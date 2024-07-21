@@ -408,12 +408,12 @@ char bg_coll_slope() {
 	switch (collision) {
 		case COL_SLOPE_SUPPORT:
 			if (slope_type) {
-				if (pad[controllingplayer] & PAD_A) {
+				if (pad[controllingplayer] & PAD_A && gamemode != 6) {
 					slope_frames = 0;
 					slope_type = 0;
 				} else {
-					slope_frames = (gamemode == 6 ? 2 : 1); //signal BG_COLL_R to not check stuff
-					was_on_slope_counter = (gamemode == 6 ? 2 : 1);
+					slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
+					was_on_slope_counter = (gamemode == 6 ? 6 : 1);
 				}
 				return 1;
 			}
@@ -463,12 +463,12 @@ char bg_coll_slope() {
 
 	if ((uint8_t)(tmp4 + 3) >= tmp7) {
 		tmp8 = tmp4 - tmp7 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
-		if (pad[controllingplayer] & PAD_A) {
+		if (pad[controllingplayer] & PAD_A && gamemode != 6) {
 			slope_frames = 0;
 			slope_type = 0;
 		} else {
-			slope_frames = 2; //signal BG_COLL_R to not check stuff
-			was_on_slope_counter = (gamemode == 6 ? 3 : 2);
+			slope_frames = (gamemode == 6 ? 3 : 2); //signal BG_COLL_R to not check stuff
+			was_on_slope_counter = (gamemode == 6 ? 6 : 2);
 		}
 		return 1;
 	} else if (!was_on_slope_counter) {
