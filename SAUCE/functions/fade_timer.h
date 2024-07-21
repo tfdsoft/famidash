@@ -1,6 +1,6 @@
-#pragma code-name(push, "XCD_BANK_00")
-#pragma data-name(push, "XCD_BANK_00")
-#pragma rodata-name(push, "XCD_BANK_00")
+#pragma code-name(push, "XCD_BANK_01")
+#pragma data-name(push, "XCD_BANK_01")
+#pragma rodata-name(push, "XCD_BANK_01")
 
 void check_fade_timer(){
 /*    if (gnd_palette_transition_timer > 0) {
