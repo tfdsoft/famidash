@@ -37,7 +37,7 @@ void draw_sprites(void){
 		}
 		// else if (long_temp_x < 10) {}
 	}
-/*
+
 	if (jimsheatballalive[0]) {
 		oam_meta_spr(jimsheatballx[0], jimsheatbally[0], Heat_Ball_Sprites[jimsheatballframe[0]]);		
 		jimsheatballframe[0] == 20 ? jimsheatballframe[0] = 0 : jimsheatballframe[0]++;
@@ -48,7 +48,7 @@ void draw_sprites(void){
 		jimsheatballframe[1] == 20 ? jimsheatballframe[1] = 0 : jimsheatballframe[1]++;
 		jimsheatballx[1] == 0xFF ? jimsheatballalive[1] = 0 : jimsheatballx[1]++;
 	}
-*/
+
 	
 
 

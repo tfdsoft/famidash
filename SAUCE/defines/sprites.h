@@ -1,5 +1,5 @@
 // a 16x16 pixel metasprite
-/*
+
 const unsigned char Heat_Ball_1[]={
 
 	  0,  0,0x1D,3,
@@ -25,7 +25,7 @@ const unsigned char Heat_Ball_4[]={
 };
 
 const unsigned char * const Heat_Ball_Sprites[] = {Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4};
-*/
+
 
 
 
