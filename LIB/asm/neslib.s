@@ -389,16 +389,14 @@ _oam_get:
 
 _oam_size:
 
-	asl a
-	asl a
-	asl a
-	asl a
-	asl a
-	and #$20
-	sta <TEMP
+	and #1
+	php
 	lda <PPU_CTRL_VAR
-	and #$df
-	ora <TEMP
+	and #%11011111
+	plp
+	beq :+
+		ora #%00100000
+	:
 	sta <PPU_CTRL_VAR
 
 	rts
@@ -694,14 +692,14 @@ _split:
 
 _bank_spr:
 
-	and #$01
-	asl a
-	asl a
-	asl a
-	sta <TEMP
+	and #1
+	php
 	lda <PPU_CTRL_VAR
 	and #%11110111
-	ora <TEMP
+	plp
+	beq :+
+		ora #%00001000
+	:
 	sta <PPU_CTRL_VAR
 
 	rts
@@ -712,15 +710,14 @@ _bank_spr:
 
 _bank_bg:
 
-	and #$01
-	asl a
-	asl a
-	asl a
-	asl a
-	sta <TEMP
+	and #1
+	php
 	lda <PPU_CTRL_VAR
 	and #%11101111
-	ora <TEMP
+	plp
+	beq :+
+		ora #%00010000
+	:
 	sta <PPU_CTRL_VAR
 
 	rts
