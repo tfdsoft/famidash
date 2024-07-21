@@ -306,17 +306,17 @@ char bg_side_coll_common() {
 
 	bg_collision_sub();
 	
-	bg_coll_spikes();
-
 	if (gamemode == 6) {
 		if (bg_coll_slope()) {
 			if (!dblocked[currplayer]) {
 				cube_data[currplayer] |= 1;
+			} else {		
+				dblocked[currplayer] = 0;
 			}
 		}	
-		
 	}
-	dblocked[currplayer] = 0;
+
+	bg_coll_spikes();
 
 	return bg_coll_sides() || bg_coll_mini_blocks();
 }
@@ -412,8 +412,8 @@ char bg_coll_slope() {
 					slope_frames = 0;
 					slope_type = 0;
 				} else {
-					slope_frames = 1; //signal BG_COLL_R to not check stuff
-					was_on_slope_counter = 2;
+					slope_frames = (gamemode == 6 ? 2 : 1); //signal BG_COLL_R to not check stuff
+					was_on_slope_counter = (gamemode == 6 ? 2 : 1);
 				}
 				return 1;
 			}
@@ -467,8 +467,8 @@ char bg_coll_slope() {
 			slope_frames = 0;
 			slope_type = 0;
 		} else {
-			slope_frames = 1; //signal BG_COLL_R to not check stuff
-			was_on_slope_counter = 2;
+			slope_frames = 2; //signal BG_COLL_R to not check stuff
+			was_on_slope_counter = (gamemode == 6 ? 3 : 2);
 		}
 		return 1;
 	} else if (!was_on_slope_counter) {
