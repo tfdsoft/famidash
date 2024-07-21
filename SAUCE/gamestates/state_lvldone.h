@@ -78,7 +78,7 @@ void state_lvldone() {
 	tmp1 = 0;
 	tmpptr1 = NULL;
 
-	printDecimal(attempts, 5, 0xD0, 0xFF, NTADR_C(17,13));
+	printDecimal(attempts, 5, 0xD0, 0xFF, NTADR_C(18,13));
 	
 	if (!has_practice_point) {
 		LEVELCOMPLETE[level] = 1;
