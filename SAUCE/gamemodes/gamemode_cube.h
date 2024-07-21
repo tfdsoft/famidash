@@ -69,13 +69,14 @@ void cube_movement(void){
 //		}
 //	}
 
-	if ((gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0) || (gamemode == 0 && (kandokidshack == 9 && dashing[currplayer] == 0))){		//cube
+	if ((gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0) || (gamemode == 0 && (kandokidshack == 9 && dashing[currplayer] == 0)) || gamemode == 8){		//cube
 		//if(bg_coll_D2()) {
 			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
 			if (orbed[currplayer]) {
 				if (!(pad[controllingplayer] & PAD_A)) orbed[currplayer] = 0;
 			}
-			if(pad[controllingplayer] & PAD_A && (!jblocked[currplayer] && !fblocked[currplayer] && !hblocked[currplayer] && !kandokidshack)) {			//no jblock - hold A to buffer jump
+			if (gamemode == 8 && currplayer_vel_y == 0) ninjajumps[currplayer] = 3; //ninja jump reset
+			if(pad[controllingplayer] & PAD_A && (!jblocked[currplayer] && !fblocked[currplayer] && !hblocked[currplayer] && !kandokidshack && gamemode == 0)) {			//no jblock - hold A to buffer jump
 				if (!orbed[currplayer]) {
 					if (!currplayer_gravity) {
 						if (!mini) currplayer_vel_y = JUMP_VEL; // JUMP
@@ -88,7 +89,7 @@ void cube_movement(void){
 				}
 			
 			}
-			else if(pad_new[controllingplayer] & PAD_A && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack)) {		//jblock making you release and press A again to jump
+			else if(pad_new[controllingplayer] & PAD_A && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack || (gamemode == 8 && ninjajumps[currplayer]))) {		//jblock making you release and press A again to jump
 				if (!currplayer_gravity) {
 					if (!mini) currplayer_vel_y = JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL; // JUMP
@@ -97,6 +98,7 @@ void cube_movement(void){
 					if (!mini) currplayer_vel_y = JUMP_VEL^0xFFFF; // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL^0xFFFF; // JUMP
 				}
+				if (gamemode == 8) { ninjajumps[currplayer]--; }
 			
 			}
 	}

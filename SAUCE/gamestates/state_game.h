@@ -173,7 +173,6 @@ void state_game(){
 	
 	//if (gameboy_mode == 1) color_emphasis(COL_EMP_GREY);
 
-
 		pal_col(3,outline_color);
 		pal_col(7,outline_color);
 
@@ -409,7 +408,7 @@ void state_game(){
 					kandokidshack++;
 				}
 				else if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
-					gamemode == 7 ? gamemode = 0 : gamemode++;
+					gamemode == 8 ? gamemode = 0 : gamemode++;
 					ppu_off();
 					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
 					if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);

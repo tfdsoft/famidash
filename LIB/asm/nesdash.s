@@ -10,7 +10,7 @@
 level_data = _level_data
 sprite_data = _sprite_data
 
-.define gamemode_count 8
+.define gamemode_count 9
 
 .ifndef _USE_ILLEGAL_OPCODES
 .define _USE_ILLEGAL_OPCODES 0
@@ -1143,9 +1143,9 @@ ParallaxBuffer:
 		RTS     ; break or use the RTS trick
 
 	jump_table_lo:
-		.byte <(_cube_movement-1), <(_ship_movement-1), <(_ball_movement-1), <(_ufo_movement-1), <(_cube_movement-1), <(_spider_movement-1), <(_wave_movement-1), <(_ball_movement-1)
+		.byte <(_cube_movement-1), <(_ship_movement-1), <(_ball_movement-1), <(_ufo_movement-1), <(_cube_movement-1), <(_spider_movement-1), <(_wave_movement-1), <(_ball_movement-1), <(_cube_movement-1)
 	jump_table_hi:
-		.byte >(_cube_movement-1), >(_ship_movement-1), >(_ball_movement-1), >(_ufo_movement-1), >(_cube_movement-1), >(_spider_movement-1), >(_wave_movement-1), >(_ball_movement-1)
+		.byte >(_cube_movement-1), >(_ship_movement-1), >(_ball_movement-1), >(_ufo_movement-1), >(_cube_movement-1), >(_spider_movement-1), >(_wave_movement-1), >(_ball_movement-1), >(_cube_movement-1)
 
 .endproc
 
@@ -1517,6 +1517,8 @@ drawplayer_center_offsets:
 	jeq	wave	;__	
 	dex			;	case 0x07: swing shit
 	jeq	ship	;__
+	dex			;	case 0x08: NINJA
+	jeq	cube	;__
 	
 	; default: cube
     cube:
@@ -1939,6 +1941,8 @@ drawplayer_common := _drawplayerone::common
 	jeq	wave	;__	
 	dex			;	case 0x07: swing shit
 	jeq	ship	;__
+	dex			;	case 0x08: NINJA
+	jeq	cube	;__
 
     ; default: cube
     cube:
