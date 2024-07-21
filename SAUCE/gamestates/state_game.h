@@ -413,6 +413,12 @@ void state_game(){
 					draw_sprites();
 					ppu_on_all();
 				}
+				if ((pad_new[0] & PAD_RIGHT) && DEBUG_MODE) {
+					speed == 4 ? speed = 0 : speed++;
+				}
+				if ((pad_new[0] & PAD_LEFT) && DEBUG_MODE) {
+					speed == 0 ? speed = 4 : speed--;
+				}
 			}
 			color_emphasis(COL_EMP_NORMAL);
 			famistudio_music_pause(0);
