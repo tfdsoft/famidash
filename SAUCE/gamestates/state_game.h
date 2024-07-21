@@ -390,6 +390,7 @@ void state_game(){
 				
 				pad_poll(0); // read the second controller
 				if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
+					mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
 					reset_game_vars();
 					has_practice_point = 1;
 					pad_new[0] = PAD_START;
