@@ -1930,54 +1930,54 @@ const unsigned char Gravity_Pad_U4[]={
 const unsigned char Spider_Pad_Up[]={
 
 	  0, -0,0xE1,1,
-	  8, -0,0xE1,1|OAM_FLIP_H,
+	  8, -0,0xE3,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Pad_Up2[]={
 
 	  0, -0,0xE3,1,
-	  8, -0,0xE3,1|OAM_FLIP_H,
+	  8, -0,0xE5,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Pad_Up3[]={
 
 	  0, -0,0xE5,1,
-	  8, -0,0xE5,1|OAM_FLIP_H,
+	  8, -0,0xE7,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Pad_Up4[]={
 
 	  0, -0,0xE7,1,
-	  8, -0,0xE7,1|OAM_FLIP_H,
+	  8, -0,0xE1,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Pad_Down[]={
 
 	  0, -0,0xE1,1|OAM_FLIP_V,
-	  8, -0,0xE1,1|OAM_FLIP_H|OAM_FLIP_V,
+	  8, -0,0xE3,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Spider_Pad_Down2[]={
 
 	  0, -0,0xE3,1|OAM_FLIP_V,
-	  8, -0,0xE3,1|OAM_FLIP_H|OAM_FLIP_V,
+	  8, -0,0xE5,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Spider_Pad_Down3[]={
 
 	  0, -0,0xE5,1|OAM_FLIP_V,
-	  8, -0,0xE5,1|OAM_FLIP_H|OAM_FLIP_V,
+	  8, -0,0xE7,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Spider_Pad_Down4[]={
 
 	  0, -0,0xE7,1|OAM_FLIP_V,
-	  8, -0,0xE7,1|OAM_FLIP_H|OAM_FLIP_V,
+	  8, -0,0xE9,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
