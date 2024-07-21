@@ -241,6 +241,8 @@ uint8_t rld_column;
 uint8_t spr_index;
 uint8_t long_temp_x;
 
+uint8_t kandokidshack;
+
 uint8_t orbed[2];
 uint8_t speed;
 uint8_t shuffle_offset;

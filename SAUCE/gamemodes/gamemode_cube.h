@@ -69,13 +69,13 @@ void cube_movement(void){
 //		}
 //	}
 
-	if (gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0){		//cube
+	if ((gamemode == 0 && currplayer_vel_y == 0 && dashing[currplayer] == 0) || (gamemode == 0 && (kandokidshack == 9 && dashing[currplayer] == 0))){		//cube
 		//if(bg_coll_D2()) {
 			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
 			if (orbed[currplayer]) {
 				if (!(pad[controllingplayer] & PAD_A)) orbed[currplayer] = 0;
 			}
-			if(pad[controllingplayer] & PAD_A && (!jblocked[currplayer] && !fblocked[currplayer] && !hblocked[currplayer])) {			//no jblock - hold A to buffer jump
+			if(pad[controllingplayer] & PAD_A && (!jblocked[currplayer] && !fblocked[currplayer] && !hblocked[currplayer] && !kandokidshack)) {			//no jblock - hold A to buffer jump
 				if (!orbed[currplayer]) {
 					if (!currplayer_gravity) {
 						if (!mini) currplayer_vel_y = JUMP_VEL; // JUMP
@@ -88,7 +88,7 @@ void cube_movement(void){
 				}
 			
 			}
-			else if(pad_new[controllingplayer] & PAD_A && (jblocked[currplayer] || fblocked[currplayer])) {		//jblock making you release and press A again to jump
+			else if(pad_new[controllingplayer] & PAD_A && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack)) {		//jblock making you release and press A again to jump
 				if (!currplayer_gravity) {
 					if (!mini) currplayer_vel_y = JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL; // JUMP
@@ -100,7 +100,7 @@ void cube_movement(void){
 			
 			}
 	}
-	else if (gamemode == 4 && !retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer]){		//robot
+	else if ((gamemode == 4 && !retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0) || (gamemode == 4 && dashing[currplayer] == 0 && kandokidshack == 9)){		//robot
 		uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
 		if(pad_new[controllingplayer] & PAD_A) {
 			if (!currplayer_gravity) {
@@ -116,7 +116,7 @@ void cube_movement(void){
 		}
 	}
 	
-	else if (gamemode == 4 && retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer]){		//jim
+	else if (gamemode == 4 && retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0){		//jim
 		uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
 		if(pad[controllingplayer] & PAD_A && !jblocked[currplayer]) {
 			if (!currplayer_gravity) {

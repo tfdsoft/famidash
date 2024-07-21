@@ -399,7 +399,16 @@ void state_game(){
 					color_emphasis(COL_EMP_NORMAL);
 					return;
 				}
-				if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
+				if ((pad_new[0] & PAD_RIGHT) && DEBUG_MODE) {
+					speed == 4 ? speed = 0 : speed++;
+				}
+				if ((pad_new[0] & PAD_LEFT) && DEBUG_MODE) {
+					speed == 0 ? speed = 4 : speed--;
+				}
+				if ((pad[0] & PAD_DOWN) && (pad_new[0] & PAD_A)) {
+					kandokidshack++;
+				}
+				else if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
 					gamemode == 7 ? gamemode = 0 : gamemode++;
 					ppu_off();
 					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
@@ -413,12 +422,6 @@ void state_game(){
 					draw_sprites();
 					ppu_on_all();
 				}
-				if ((pad_new[0] & PAD_RIGHT) && DEBUG_MODE) {
-					speed == 4 ? speed = 0 : speed++;
-				}
-				if ((pad_new[0] & PAD_LEFT) && DEBUG_MODE) {
-					speed == 0 ? speed = 4 : speed--;
-				}
 			}
 			color_emphasis(COL_EMP_NORMAL);
 			famistudio_music_pause(0);
@@ -427,6 +430,7 @@ void state_game(){
 			// ppu_on_all();
 			// famistudio_update();
 		}
+	if (kandokidshack != 9) kandokidshack = 0;
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 
 		if (pad_new[0] & PAD_DOWN) {
