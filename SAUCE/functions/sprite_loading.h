@@ -570,7 +570,7 @@ void sprite_collide_lookup() {
 	case COINGOTTEN1:
 		if (!has_practice_point) {
 			coins |= COIN_1;
-	//        sfx_play(sfx_coin, 0);
+	        sfx_play(sfx_coin, 0);
 			activesprites_type[index] = 0xFF;
 		}
 		return;
@@ -578,7 +578,7 @@ void sprite_collide_lookup() {
 	case COINGOTTEN2:
 		if (!has_practice_point) {
 			coins |= COIN_2;
-	  //      sfx_play(sfx_coin, 0);
+	       sfx_play(sfx_coin, 0);
 			activesprites_type[index] = 0xFF;
 		}
 		return;
@@ -586,7 +586,7 @@ void sprite_collide_lookup() {
 	case COINGOTTEN3:
 		if (!has_practice_point) {
 			coins |= COIN_3;
-	    //    sfx_play(sfx_coin, 0);
+	        sfx_play(sfx_coin, 0);
 			activesprites_type[index] = 0xFF;
 		}
 		return;
