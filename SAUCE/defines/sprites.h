@@ -1578,14 +1578,14 @@ const unsigned char Dash_Gravity_Orb_45Deg_UP[]={
 const unsigned char Spider_Orb_UP[]={
 
 	  0,  0,0xC9,1,
-	  8,  0,0xCB,1,
+	  8,  0,0xC9,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Orb_DOWN[]={
 
 	  0,  0,0xC9,1|OAM_FLIP_V,
-	  8,  0,0xCB,1|OAM_FLIP_V,
+	  8,  0,0xC9,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Dash_Orb_45Deg_DOWN[]={
@@ -1934,10 +1934,50 @@ const unsigned char Spider_Pad_Up[]={
 	0x80
 };
 
+const unsigned char Spider_Pad_Up2[]={
+
+	  0, -0,0xE3,1,
+	  8, -0,0xE3,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Spider_Pad_Up3[]={
+
+	  0, -0,0xE5,1,
+	  8, -0,0xE5,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Spider_Pad_Up4[]={
+
+	  0, -0,0xE7,1,
+	  8, -0,0xE7,1|OAM_FLIP_H,
+	0x80
+};
+
 const unsigned char Spider_Pad_Down[]={
 
 	  0, -0,0xE1,1|OAM_FLIP_V,
 	  8, -0,0xE1,1|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+
+const unsigned char Spider_Pad_Down2[]={
+
+	  0, -0,0xE3,1|OAM_FLIP_V,
+	  8, -0,0xE3,1|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Spider_Pad_Down3[]={
+
+	  0, -0,0xE5,1|OAM_FLIP_V,
+	  8, -0,0xE5,1|OAM_FLIP_H|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Spider_Pad_Down4[]={
+
+	  0, -0,0xE7,1|OAM_FLIP_V,
+	  8, -0,0xE7,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
@@ -2173,6 +2213,18 @@ const struct SpriteFrame PINK_PAD_SPRITES[]={
 	{5, Pink_Jump_Pad2},
 	{5, Pink_Jump_Pad3},
 	{5, Pink_Jump_Pad4},
+};
+const struct SpriteFrame SPIDER_PAD_UP_SPRITES[]={
+	{5, Spider_Pad_Up},
+	{5, Spider_Pad_Up2},
+	{5, Spider_Pad_Up3},
+	{5, Spider_Pad_Up4},
+};
+const struct SpriteFrame SPIDER_PAD_DOWN_SPRITES[]={
+	{5, Spider_Pad_Down},
+	{5, Spider_Pad_Down2},
+	{5, Spider_Pad_Down3},
+	{5, Spider_Pad_Down4},
 };
 const struct SpriteFrame RED_PAD_SPRITES[]={
 	{5, Red_Jump_Pad},
@@ -2432,8 +2484,8 @@ const void* const animation_frame_list[] = {
 	RED_PAD_U_SPRITES,
 	NULL,
 	NULL,
-	NULL,
-	NULL
+	SPIDER_PAD_UP_SPRITES,
+	SPIDER_PAD_DOWN_SPRITES
 };
 
 // Number of UNIQUE animation frames
@@ -2528,6 +2580,6 @@ const unsigned char animation_frame_length[] = {
 	sizeof(RED_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	0,
 	0,
-	0,
-	0,
+	sizeof(SPIDER_PAD_UP_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	sizeof(SPIDER_PAD_DOWN_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 };
