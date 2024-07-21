@@ -284,7 +284,7 @@ char bg_coll_mini_blocks() {
 	return 0;
 }
 
-
+char bg_coll_slope();
 
 /*
 	Clobbers:
@@ -308,7 +308,7 @@ char bg_side_coll_common() {
 	
 	bg_coll_spikes();
 
-	return bg_coll_sides() || bg_coll_mini_blocks();
+	return bg_coll_sides() || bg_coll_mini_blocks() || ((gamemode == 6) ? bg_coll_slope() : 0);
 }
 
 /*
