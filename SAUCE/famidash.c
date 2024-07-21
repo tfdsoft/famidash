@@ -131,7 +131,7 @@ void setdefaultoptions() {
 	POKE(0xA001, 0x80);
 
 	// fill with zeros
-	memfill(0x6000, 0, 0x2000);
+	memfill((uint8_t *)0x6000, 0, 0x2000);
 
 	// set the first four bytes; LEET, save version, and 21.
 	// if none of these are what is expected, the game will tell you

@@ -41,7 +41,6 @@ void reset_level(void) {
 		}
     }
     attempts++;
-    if (!no_parallax) mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));    
     pal_fade_to_withmusic(4,0);
     oam_clear();
     ppu_off(); // reset the level when you get to this point, and change this later
@@ -141,6 +140,7 @@ void reset_level(void) {
 			    }
 			}    
     }
+    if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
     ppu_on_all();
     pal_fade_to_withmusic(0,4);
     if (!has_practice_point) {
