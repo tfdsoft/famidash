@@ -402,6 +402,7 @@ void state_game(){
 					else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
 					else mmc3_set_2kb_chr_bank_0(18);
 					oam_clear();
+					mmc3_set_prg_bank_1(GET_BANK(drawplayerone));	
 					drawplayerone();
 					mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
 					draw_sprites();
