@@ -310,10 +310,9 @@ char bg_side_coll_common() {
 		if (bg_coll_slope()) {
 			if (!dblocked[currplayer]) {
 				cube_data[currplayer] |= 1;
-			} else {		
-				dblocked[currplayer] = 0;
-			}
+			} 
 		}	
+		dblocked[currplayer] = 0;
 	}
 
 	bg_coll_spikes();

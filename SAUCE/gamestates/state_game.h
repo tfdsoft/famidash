@@ -542,6 +542,7 @@ void state_game(){
 		mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
         draw_sprites();
         
+	
  //       color_emphasis(0);
 
         if (DEBUG_MODE) gray_line();

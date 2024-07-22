@@ -73,6 +73,7 @@ void wave_movement(void){
 			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 		}
 	}
+	
 }	
 
 #pragma code-name(pop)
