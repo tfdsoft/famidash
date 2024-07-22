@@ -293,17 +293,17 @@ void state_game(){
 	//     mmc3_set_1kb_chr_bank_3(saw_set[level]);
 		//}
 		if (!retro_mode) {
-			if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
+			if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
+			else if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
 			else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
 			else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
-			else if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
 			else mmc3_set_2kb_chr_bank_0(18);
 		}
 		else {
-			if (mini && gamemode != 0 || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(24);
+			if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);			
+			else if (mini && gamemode != 0 || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(24);
 			else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(38);
 			else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(38);
-			else if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);			
 			else mmc3_set_2kb_chr_bank_0(20);
 		}
 	//	else mmc3_set_2kb_chr_bank_0(28);
@@ -396,10 +396,10 @@ void state_game(){
 					gamemode == 8 ? gamemode = 0 : gamemode++;
 					ppu_off();
 					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
-					if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
+					if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
+					else if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
 					else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
 					else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
-					else if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
 					else mmc3_set_2kb_chr_bank_0(18);
 					oam_clear();
 					drawplayerone();

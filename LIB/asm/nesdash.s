@@ -1447,8 +1447,8 @@ drawcube_sprite_none:
 
 drawplayer_center_offsets:
 	;		Cub	Shp	Bal	UFO	RBT	SPI	Wav
-	.byte	8,	8,	8,	8,	12,	12,	8,	8; normal size
-	.byte	4,	12,	4,	12,	12,	12,	12,	12; mini 
+	.byte	8,	8,	8,	8,	12,	12,	8,	8,	8,	8; normal size
+	.byte	4,	12,	4,	12,	12,	12,	12,	12,	12,	12; mini 
 
 ; void drawplayerone();
 .segment "XCD_BANK_04"
