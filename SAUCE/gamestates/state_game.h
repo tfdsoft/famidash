@@ -172,7 +172,7 @@ void state_game(){
     while (1) {
 	
 	//if (gameboy_mode == 1) color_emphasis(COL_EMP_GREY);
-
+		if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = iconBankTable[icon]; }
 		pal_col(3,outline_color);
 		pal_col(7,outline_color);
 
@@ -392,6 +392,9 @@ void state_game(){
 				if ((pad[0] & PAD_DOWN) && (pad_new[0] & PAD_A)) {
 					kandokidshack++;
 				}
+				else if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_A)) {
+					kandokidshack2++;
+				}
 				else if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
 					gamemode == 8 ? gamemode = 0 : gamemode++;
 					ppu_off();
@@ -417,6 +420,7 @@ void state_game(){
 			// famistudio_update();
 		}
 	if (kandokidshack != 9) kandokidshack = 0;
+	if (kandokidshack2 != 7) kandokidshack2 = 0;
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 
 	if (pad_new[0] & PAD_DOWN && DEBUG_MODE) {
