@@ -538,6 +538,7 @@ void sprite_collide_lookup() {
 	case TELEPORT_SQUARE_ENTER:
 		if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {
 			currplayer_vel_y = 0;
+			orbed[currplayer] = 1;
 			cube_data[currplayer] &= 1;
 	case TELEPORT_PORTAL_ENTER:
 			high_byte(currplayer_y) = teleport_output;
