@@ -371,7 +371,11 @@ void state_game(){
 			while (!(pad_new[0] & PAD_START)) {
 				
 				pad_poll(0); // read the second controller
-				if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
+				if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_B)) {
+					kandokidshack3++;
+				}
+
+				else if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
 					mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
 					reset_game_vars();
 					has_practice_point = 1;
@@ -420,6 +424,8 @@ void state_game(){
 			// famistudio_update();
 			if (kandokidshack != 9) kandokidshack = 0;
 			if (kandokidshack2 != 7) kandokidshack2 = 0;
+			if (kandokidshack3 != 5) kandokidshack3 = 0;
+			else if (kandokidshack3 == 5) DEBUG_MODE = !DEBUG_MODE;
 		}
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }		//THE BIG DEBUG - DISABLE BEFORE RELEASE
 

@@ -237,6 +237,7 @@ uint8_t long_temp_x;
 
 uint8_t kandokidshack;
 uint8_t kandokidshack2;
+uint8_t kandokidshack3;
 
 uint8_t orbed[2];
 uint8_t speed;
