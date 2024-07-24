@@ -536,8 +536,9 @@ void sprite_collide_lookup() {
 		//robotjumptime[currplayer] = 0;
 		return;
 	case TELEPORT_SQUARE_ENTER:
-		if (pad_new[controllingplayer] & PAD_A) {
+		if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {
 			currplayer_vel_y = 0;
+			cube_data[currplayer] &= 1;
 	case TELEPORT_PORTAL_ENTER:
 			high_byte(currplayer_y) = teleport_output;
 		}
@@ -637,7 +638,8 @@ void sprite_collide_lookup() {
 		return;
 
 	case SPIDER_ORB_UP:
-		if (pad_new[currplayer] & PAD_A) {
+		if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {
+			cube_data[currplayer] &= 1;
 	case SPIDER_PAD_UP:
 			high_byte(currplayer_y) -= eject_D;
 			currplayer_vel_y = 0;
@@ -652,7 +654,8 @@ void sprite_collide_lookup() {
 		}
 		return;
 	case SPIDER_ORB_DOWN:
-		if (pad_new[currplayer] & PAD_A) {	
+		if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {	
+			cube_data[currplayer] &= 1;
 	case SPIDER_PAD_DOWN:
 			high_byte(currplayer_y) -= eject_U + 1;
 			currplayer_vel_y = 0;
