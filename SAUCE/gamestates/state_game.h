@@ -424,8 +424,8 @@ void state_game(){
 			// famistudio_update();
 			if (kandokidshack != 9) kandokidshack = 0;
 			if (kandokidshack2 != 7) kandokidshack2 = 0;
-			if (kandokidshack3 != 5) kandokidshack3 = 0;
-			else if (kandokidshack3 == 5) DEBUG_MODE = !DEBUG_MODE;
+			if (kandokidshack3 != 12) kandokidshack3 = 0;
+			else if (kandokidshack3 == 12) DEBUG_MODE = !DEBUG_MODE;
 		}
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }		//THE BIG DEBUG - DISABLE BEFORE RELEASE
 
