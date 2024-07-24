@@ -14,7 +14,12 @@ void x_movement(){
 	
 	currplayer_vel_x = speed_table[speed & 0x7F];
 	
-	if (dashing[currplayer] == 4) {	return; }
+	if (dashing[currplayer] == 4) {	
+		if (currplayer_y < 0x0600 && scroll_y == 0x08){
+			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
+		}
+		return; 
+	}
 
 	if (gamemode == 0x06) { // wave
 		if (mini) {
