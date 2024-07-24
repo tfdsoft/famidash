@@ -426,7 +426,7 @@ char bg_coll_slope() {
 					slope_type = 0;
 				} else {
 					slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
-					was_on_slope_counter = (gamemode == 6 ? 6 : 1);
+					was_on_slope_counter = (gamemode == 6 ? 6 : 2);
 				}
 				return 1;
 			}
@@ -481,7 +481,7 @@ char bg_coll_slope() {
 			slope_frames = 0;
 			slope_type = 0;
 		} else {
-			slope_frames = (gamemode == 6 ? 3 : 2); //signal BG_COLL_R to not check stuff
+			slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
 			was_on_slope_counter = (gamemode == 6 ? 6 : 2);
 		}
 		return 1;
