@@ -272,7 +272,7 @@ const uint8_t hiNTAddrTableCustomizeScreen[] = {
 };
 
 static const uint8_t iconTable[] = {
-	0, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x20, 0x22, 0x24, 0x26, 0x40, 0x42
+	0, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x20, 0x22, 0x24, 0x26, 0x40, 0x42, 0x44, 0x46, 0x48, 0x4A, 0x60, 0x62, 0x64, 0x66, 0x68, 0x6A
 };
 
 void updateColors() {
@@ -350,10 +350,10 @@ void customize_screen() {
 			one_vram_buffer(++tmp1, NTADR_A(16, 9));		
 		}
 		else {
-			one_vram_buffer('a'+0x6A, NTADR_A(15,8));			
-			one_vram_buffer('b'+0x6A, NTADR_A(16,8));			
-			one_vram_buffer('c'+0x6A, NTADR_A(15,9));			
-			one_vram_buffer('d'+0x6A, NTADR_A(16,9));			
+			one_vram_buffer('a'+0x6C, NTADR_A(15,8));			
+			one_vram_buffer('b'+0x6C, NTADR_A(16,8));			
+			one_vram_buffer('c'+0x6C, NTADR_A(15,9));			
+			one_vram_buffer('d'+0x6C, NTADR_A(16,9));			
 		}
 		if (settingvalue == 3 && !retro_mode) {
 			if (pad_new[0] & PAD_UP) {

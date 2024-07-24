@@ -394,14 +394,37 @@ _GAME_CHR:
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .incbin "GRAPHICS/bankicon0D.chr" ; 1kb (64)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-
-    .incbin "GRAPHICS/banktriangle.chr" ; 1kb (66)
+    .incbin "GRAPHICS/bankicon0E.chr" ; 1kb (66)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankicon0F.chr" ; 1kb (68)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "fan icon collection/CONTEST WINNERS/contest1.chr" ; 1kb (70)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "fan icon collection/CONTEST WINNERS/contest2.chr" ; 1kb (72)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "fan icon collection/CONTEST WINNERS/contest3.chr" ; 1kb (74)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "fan icon collection/CONTEST WINNERS/contest4.chr" ; 1kb (76)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "fan icon collection/CONTEST WINNERS/contest5.chr" ; 1kb (78)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "fan icon collection/CONTEST WINNERS/contest6.chr" ; 1kb (80)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "fan icon collection/CONTEST WINNERS/contest7.chr" ; 1kb (82)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "fan icon collection/CONTEST WINNERS/contest8.chr" ; 1kb (84)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
 
-    .incbin "GRAPHICS/menus.chr"    ; 4kb (68)
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (72)
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (76)
+
+
+    .incbin "GRAPHICS/banktriangle.chr" ; 1kb (86)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+
+
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (88)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (92)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (96)
 
 .segment "PARALLAXCHR"
 .export _PARALLAX_CHR
