@@ -14,6 +14,7 @@ void x_movement(){
 	
 	currplayer_vel_x = speed_table[speed & 0x7F];
 	
+	if (dashing[currplayer] == 4) {	return; }
 
 	if (gamemode == 0x06) { // wave
 		if (mini) {
