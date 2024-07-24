@@ -402,8 +402,8 @@ static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 static void sprite_gamemode_main() {
 	if (pad[controllingplayer] & PAD_A) {	
 		if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
-		if (cube_data[currplayer] & 2) {
-			cube_data[currplayer] = 0;
+		if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {
+			cube_data[currplayer] &= 1;
 
 			switch (collided) {
 			case BLUE_ORB:
