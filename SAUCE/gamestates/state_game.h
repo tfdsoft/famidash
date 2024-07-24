@@ -418,9 +418,9 @@ void state_game(){
 			// mmc3_set_8kb_chr(0);
 			// ppu_on_all();
 			// famistudio_update();
+			if (kandokidshack != 9) kandokidshack = 0;
+			if (kandokidshack2 != 7) kandokidshack2 = 0;
 		}
-	if (kandokidshack != 9) kandokidshack = 0;
-	if (kandokidshack2 != 7) kandokidshack2 = 0;
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }
 
 	if (pad_new[0] & PAD_DOWN && DEBUG_MODE) {
