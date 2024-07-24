@@ -1973,8 +1973,8 @@ const unsigned char Gravity_Pad_U4[]={
 
 const unsigned char Teleport_Square_Enter[]={
 
-	  0, 0,0xE9,3,
-	  8, 0,0xE9,3|OAM_FLIP_H,
+	  0, 0,0xEB,0,
+	  8, 0,0xEB,0|OAM_FLIP_H,
 	0x80
 };
 
