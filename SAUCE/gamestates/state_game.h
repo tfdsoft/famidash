@@ -337,7 +337,7 @@ void state_game(){
 
 
 
-		if (pad[controllingplayer] & PAD_UP && DEBUG_MODE) currplayer_gravity ^= 0x01;
+		if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE) currplayer_gravity ^= 0x01;
 
 		if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED && has_practice_point) {
 			// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
