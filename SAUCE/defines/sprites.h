@@ -550,14 +550,14 @@ const unsigned char * const SHIP[] = {Ship_0, Ship_0, Ship_1, Ship_2, Ship_2, Sh
 // swing starts here
 const unsigned char Swing_0[]={
 
-	 -8,  0,0x39,3,
-	  0,  0,0x3B,3,
+	 -8,  0,0x39,3|OAM_FLIP_V,
+	  0,  0,0x3B,3|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Swing_1[]={
 
-	 -8,  0,0x35,3,
-	  0,  0,0x37,3,
+	 -8,  0,0x35,3|OAM_FLIP_V,
+	  0,  0,0x37,3|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Swing_2[]={
@@ -569,19 +569,19 @@ const unsigned char Swing_2[]={
 
 const unsigned char Swing_5[]={
 
-	 -8,  0,0x35,3|OAM_FLIP_V,
-	  0,  0,0x37,3|OAM_FLIP_V,
+	 -8,  0,0x35,3,
+	  0,  0,0x37,3,
 	0x80
 };
 const unsigned char Swing_6[]={
 
-	 -8,  0,0x39,3|OAM_FLIP_V,
-	  0,  0,0x3B,3|OAM_FLIP_V,
+	 -8,  0,0x39,3,
+	  0,  0,0x3B,3,
 	0x80
 };
 
 
-const unsigned char * const SWING[] = {Swing_0, Swing_0, Swing_1, Swing_2, Swing_2, Swing_5, Swing_6, Swing_6};
+const unsigned char * const SWING[] = {Swing_6, Swing_0, Swing_1, Swing_2, Swing_2, Swing_5, Swing_6, Swing_0};
 const unsigned char Swing2_0[]={
 
 	 -8,  0,0x39,1,
