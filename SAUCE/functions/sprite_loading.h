@@ -96,6 +96,7 @@
 #define TELEPORT_SQUARE_ENTER			0x59
 #define TELEPORT_SQUARE_EXIT			0x5A
 #define DASH_ORB_UPWARDS			0x5B
+#define DASH_GRAVITY_ORB_UPWARDS		0x5B
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -266,6 +267,7 @@ char sprite_height_lookup(){
 		case DASH_ORB:
 		case DASH_GRAVITY_ORB:
 		case DASH_ORB_UPWARDS:
+		case DASH_GRAVITY_ORB_UPWARDS:
 		case DASH_ORB_45DEG_UP:
 		case DASH_GRAVITY_ORB_45DEG_UP:
 		case DASH_ORB_45DEG_DOWN:
@@ -438,6 +440,9 @@ static void sprite_gamemode_main() {
 				currplayer_vel_y = currplayer_vel_x;
 				dashing[currplayer] = 3;
 				break;
+			case DASH_GRAVITY_ORB_UPWARDS:
+				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+				//intentional leak
 			case DASH_ORB_UPWARDS:
 				currplayer_vel_y = currplayer_vel_x;
 				currplayer_vel_x = 0;
@@ -485,6 +490,9 @@ static void sprite_gamemode_controller_check() {
 			currplayer_vel_y = currplayer_vel_x;
 			dashing[currplayer] = 3;
 			break;		
+		case DASH_GRAVITY_ORB_UPWARDS:
+			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+			//intentional leak
 		case DASH_ORB_UPWARDS:
 			currplayer_vel_y = currplayer_vel_x;
 			currplayer_vel_x = 0;
@@ -704,6 +712,7 @@ void sprite_collide_lookup() {
 	case DASH_ORB:
 	case DASH_GRAVITY_ORB:
 	case DASH_ORB_UPWARDS:
+	case DASH_GRAVITY_ORB_UPWARDS:
 	case DASH_ORB_45DEG_UP:
 	case DASH_GRAVITY_ORB_45DEG_UP:
 	case DASH_ORB_45DEG_DOWN:
