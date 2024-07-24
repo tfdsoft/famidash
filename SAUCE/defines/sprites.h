@@ -1945,6 +1945,19 @@ const unsigned char Gravity_Pad_U4[]={
 	0x80
 };
 
+const unsigned char Teleport_Square_Enter[]={
+
+	  0, 0,0xE9,3,
+	  8, 0,0xE9,3|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Teleport_Square_Exit[]={
+
+	  0, 0,0xEB,1,
+	  8, 0,0xEB,1|OAM_FLIP_H,
+	0x80
+};
 const unsigned char Spider_Pad_Up[]={
 
 	  0, -8,0xE1,1,
@@ -2406,7 +2419,9 @@ const unsigned char * const Metasprites[]={
 	Spider_Orb_DOWN,
 	Spider_Pad_Up,
 	Spider_Pad_Down,
-	Portal_Gamemode_Ninja
+	Portal_Gamemode_Ninja,
+	Teleport_Square_Enter,
+	Teleport_Square_Exit
 	
 	};
 
@@ -2505,7 +2520,9 @@ const void* const animation_frame_list[] = {
 	NULL,
 	SPIDER_PAD_UP_SPRITES,
 	SPIDER_PAD_DOWN_SPRITES,
-	NULL
+	NULL,
+	NULL,
+	NULL,
 };
 
 // Number of UNIQUE animation frames
@@ -2602,6 +2619,8 @@ const unsigned char animation_frame_length[] = {
 	0,
 	sizeof(SPIDER_PAD_UP_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	sizeof(SPIDER_PAD_DOWN_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	0,
+	0,
 	0,
 };
 

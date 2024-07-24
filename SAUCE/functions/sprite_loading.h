@@ -93,6 +93,8 @@
 #define SPIDER_PAD_UP				0x56
 #define SPIDER_PAD_DOWN				0x57
 #define NINJA_MODE				0x58
+#define TELEPORT_SQUARE_ENTER			0x59
+#define TELEPORT_SQUARE_EXIT			0x5A
 
 #define FORCED_TRAILS_ON			0xF0
 #define FORCED_TRAILS_OFF			0xF1
@@ -250,6 +252,9 @@ char sprite_height_lookup(){
 		case GRAVITY_PAD_UP_INVISIBLE:
 			return 0x07;
 
+		case TELEPORT_SQUARE_EXIT:
+			teleport_output = activesprites_realy[index];
+			//intentional leak
 		case YELLOW_ORB:
 		case YELLOW_ORB_BIGGER:
 		case YELLOW_ORB_SMALLER:
@@ -271,7 +276,9 @@ char sprite_height_lookup(){
 		case F_BLOCK:
 		case SPIDER_ORB_UP:
 		case SPIDER_ORB_DOWN:
+		case TELEPORT_SQUARE_ENTER:
 			return 0x0f;
+
 		case GRAVITY_UP_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_INVISIBLE_PORTAL:
 		case GRAVITY_DOWN_UPWARDS_PORTAL:
@@ -483,6 +490,8 @@ void sprite_collide_lookup() {
 
 	switch (collided) {
 
+	case TELEPORT_PORTAL_EXIT:
+	case TELEPORT_SQUARE_EXIT:
 	case NOSPRITE:
 		return;
 	
@@ -506,8 +515,12 @@ void sprite_collide_lookup() {
 		gamemode = collided;
 		//robotjumptime[currplayer] = 0;
 		return;
+	case TELEPORT_SQUARE_ENTER:
+		if (pad_new[controllingplayer] & PAD_A) {
+			currplayer_vel_y = 0;
 	case TELEPORT_PORTAL_ENTER:
-		high_byte(currplayer_y) = teleport_output;
+			high_byte(currplayer_y) = teleport_output;
+		}
 		return;
 	case SPIDER_MODE:
 		gamemode = 5;
