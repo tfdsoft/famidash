@@ -17,4 +17,5 @@ song_chaozfantasy = 15
 song_everyend = 16
 song_ultimatedestruction = 17
 song_deadlocked = 18
-song_max = 19
+song_electroman = 19
+song_max = 20

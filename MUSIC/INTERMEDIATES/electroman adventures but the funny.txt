@@ -1,4 +1,4 @@
-# Dn-FamiTracker text export 0.5.0.2
+# FamiTracker text export 0.4.2
 # Module version 0450
 
 # INFO block

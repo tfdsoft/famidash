@@ -17,7 +17,8 @@
 #define song_everyend 16
 #define song_ultimatedestruction 17
 #define song_deadlocked 18
-#define song_max 19
+#define song_electroman 19
+#define song_max 20
 #define sfx_death 0
 #define sfx_click 1
 #define sfx_level_complete 2
