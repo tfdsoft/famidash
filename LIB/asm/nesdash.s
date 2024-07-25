@@ -1210,7 +1210,7 @@ music_data_locations_hi:
 	.byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3, >music_data_famidash_music4, >music_data_famidash_music5
 .endif
 music_counts:
-	.byte 2, 3, 3, 6, $FF  ;last bank is marked with an FF to always stop bank picking
+	.byte 2, 3, 3, 6, 5, $FF  ;last bank is marked with an FF to always stop bank picking
 .endproc
 
 ; void __fastcall__ sfx_play(uint8_t sfx_index, uint8_t channel);

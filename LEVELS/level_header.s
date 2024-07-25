@@ -90,7 +90,7 @@ test2_speed       = $00
 test2_bg_color    = $2A
 test2_grnd_color  = $1A
 
-test3_song_number = song_practice
+test3_song_number = song_electroman
 test3_game_mode   = $00
 test3_speed       = $00
 test3_bg_color    = $16
