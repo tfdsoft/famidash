@@ -47,11 +47,12 @@ const uint8_t G_Table[]={
 #define xstep  9
 #define clutterfunk  0x0A
 #define theory_of_everything  0x0B
-#define decode  0x0C
-#define test  0x0D
-#define test2  0x0E
-#define test3  0x0F
-#define test4  0X10
+#define electroman_adventures  0x0C
+#define decode  0x0D
+#define test  0x0E
+#define test2  0x0F
+#define test3  0x10
+#define test4  0X11
 
 void x_movement_coll() {
 	if (slope_type && !slope_frames && gamemode != 6) {
@@ -178,7 +179,7 @@ void state_game(){
 
 		if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
-		if (level == xstep || level == clutterfunk || level == theory_of_everything || level == decode || level == test3) {									//
+		if (level == xstep || level == clutterfunk || level == theory_of_everything || level == decode || level == test3 || level == electroman_adventures) {									//
 			if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);		//  BANKBLANKCLOUD
 			else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(30);		// DECO PULSE
 		}											//

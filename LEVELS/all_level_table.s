@@ -17,6 +17,7 @@ _level_list_lo:
   .byte .lobyte(level_data_xstep)
   .byte .lobyte(level_data_clutterfunk)
   .byte .lobyte(level_data_theoryofeverything)
+  .byte .lobyte(level_data_electroman)
   .byte .lobyte(level_data_decode)
   .byte .lobyte(level_data_test)
   .byte .lobyte(level_data_test2)
@@ -37,6 +38,7 @@ _level_list_hi:
   .byte .hibyte(level_data_xstep)
   .byte .hibyte(level_data_clutterfunk)
   .byte .hibyte(level_data_theoryofeverything)
+  .byte .hibyte(level_data_electroman)
   .byte .hibyte(level_data_decode)
   .byte .hibyte(level_data_test)
   .byte .hibyte(level_data_test2)
@@ -57,6 +59,7 @@ _level_list_bank:
   .byte .lobyte(.bank(level_data_xstep))
   .byte .lobyte(.bank(level_data_clutterfunk))
   .byte .lobyte(.bank(level_data_theoryofeverything))
+  .byte .lobyte(.bank(level_data_electroman))
   .byte .lobyte(.bank(level_data_decode))
   .byte .lobyte(.bank(level_data_test))
   .byte .lobyte(.bank(level_data_test2))
@@ -77,6 +80,7 @@ _sprite_list_lo:
   .byte .lobyte(sprite_data_xstep)
   .byte .lobyte(sprite_data_clutterfunk)
   .byte .lobyte(sprite_data_theoryofeverything)
+  .byte .lobyte(sprite_data_electroman)
   .byte .lobyte(sprite_data_decode)
   .byte .lobyte(sprite_data_test)
   .byte .lobyte(sprite_data_test2)
@@ -97,6 +101,7 @@ _sprite_list_hi:
   .byte .hibyte(sprite_data_xstep)
   .byte .hibyte(sprite_data_clutterfunk)
   .byte .hibyte(sprite_data_theoryofeverything)
+  .byte .hibyte(sprite_data_electroman)
   .byte .hibyte(sprite_data_decode)
   .byte .hibyte(sprite_data_test)
   .byte .hibyte(sprite_data_test2)
@@ -117,6 +122,7 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_xstep))
   .byte .lobyte(.bank(sprite_data_clutterfunk))
   .byte .lobyte(.bank(sprite_data_theoryofeverything))
+  .byte .lobyte(.bank(sprite_data_electroman))
   .byte .lobyte(.bank(sprite_data_decode))
   .byte .lobyte(.bank(sprite_data_test))
   .byte .lobyte(.bank(sprite_data_test2))
@@ -140,6 +146,7 @@ _level_lengths_lo:
   .byte .lobyte($000087)		; xstep
   .byte .lobyte($0000A2)		; clutterfunk
   .byte .lobyte($000089)		; theoryofeverything
+  .byte .lobyte($00008D)		; electroman
   .byte .lobyte($00008A)		; decode
   .byte .lobyte($000080)		; test
   .byte .lobyte($00006E)		; test2
@@ -162,6 +169,7 @@ _level_lengths_md:
   .byte .hibyte($000087)		; xstep
   .byte .hibyte($0000A2)		; clutterfunk
   .byte .hibyte($000089)		; theoryofeverything
+  .byte .hibyte($00008D)		; electroman
   .byte .hibyte($00008A)		; decode
   .byte .hibyte($000080)		; test
   .byte .hibyte($00006E)		; test2
@@ -184,6 +192,7 @@ _level_lengths_hi:
   .byte .bankbyte($000087)		; xstep
   .byte .bankbyte($0000A2)		; clutterfunk
   .byte .bankbyte($000089)		; theoryofeverything
+  .byte .bankbyte($00008D)		; electroman
   .byte .bankbyte($00008A)		; decode
   .byte .bankbyte($000080)		; test
   .byte .bankbyte($00006E)		; test2

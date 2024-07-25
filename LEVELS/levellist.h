@@ -76,6 +76,7 @@ const unsigned short songtime[] = {	//for looping in practice mode
 	15000, //xstep
 	15000, //clutterfunk
 	15000, //TOE
+	15000, //Electroman
 	15000, //decode
 	15000, //t1
 	15000, //t2
@@ -97,6 +98,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //xstep
 	SPIKESB, //clutterfunk
 	SPIKESB, //theory of everything
+	SPIKESB, //electroman
 	SPIKESB, //decode
 	SPIKESB, //test1
 	SPIKESB, //test2
@@ -118,6 +120,7 @@ const unsigned char block_set[] = {
 	BLOCKSC, //xstep
 	BLOCKSD, //clutterfunk
 	BLOCKSB, //theory of everything
+	BLOCKSB, //electroman
 	BLOCKSB, //decode
 	BLOCKSC, //test1
 	BLOCKSB, //test2
@@ -139,6 +142,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //xstep
 	SAWBLADESA, //clutterfunk
 	SAWBLADESA, //theory of everything
+	SAWBLADESA, //electroman
 	SAWBLADESA, //decode
 	SAWBLADESA, //test1
 	SAWBLADESA, //test2
@@ -158,6 +162,7 @@ const unsigned char difficulty_list[] = {
     HARDER,
     HARDER,
     HARDER,
+    INSANE,
     INSANE,
     INSANE,
     INSANE,
@@ -183,6 +188,7 @@ const unsigned char stars_list[] = {
 	11,
 	12,
 	10,
+	10,
 	0,
 	0,
 	0,
@@ -201,6 +207,7 @@ const unsigned char colors_list[] = {
 	0x11,
 	0x12,
 	0x14,
+	0x15,
 	0x15,
 	0x15,
 	0x05,

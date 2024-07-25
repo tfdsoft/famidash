@@ -78,6 +78,12 @@ decode_speed       = $00
 decode_bg_color    = $12
 decode_grnd_color  = $02
 
+electroman_song_number = song_electroman
+electroman_game_mode   = $00
+electroman_speed       = $00
+electroman_bg_color    = $0F
+electroman_grnd_color  = $0F
+
 test_song_number = song_practice
 test_game_mode   = $00
 test_speed       = $00
