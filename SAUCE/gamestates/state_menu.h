@@ -31,7 +31,7 @@ const uint8_t G_Table2[]={
 	0x2B,
 	0x2C
 };
-
+void state_demo();
 
 const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
@@ -689,6 +689,11 @@ void state_menu() {
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
 			one_vram_buffer(' ', tmp5);
 			one_vram_buffer(' ', addloNOC(tmp5, 1));
+		}
+		if (pad_new[0] & PAD_SELECT) {
+				tmp2 = 0;
+				gameState = 0;
+				return;
 		}
 	}		
 
