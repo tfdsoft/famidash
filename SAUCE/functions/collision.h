@@ -331,6 +331,7 @@ char bg_side_coll_common() {
 			} 
 		}	
 		dblocked[currplayer] = 0;
+		if (was_on_slope_counter) return 0;
 	}
 
 	bg_coll_spikes();

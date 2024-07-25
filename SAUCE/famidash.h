@@ -33,8 +33,8 @@
 #define MINI_CUBE_WIDTH 0x08
 #define MINI_CUBE_HEIGHT 0x07
 
-#define WAVE_WIDTH 0x01
-#define WAVE_HEIGHT 0x01
+#define WAVE_WIDTH 0x03
+#define WAVE_HEIGHT 0x03
 
 #define MINI_WAVE_WIDTH 0x01
 #define MINI_WAVE_HEIGHT 0x01
