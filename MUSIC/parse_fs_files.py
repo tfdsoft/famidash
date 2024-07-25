@@ -55,6 +55,7 @@ if __name__ == "__main__":
         count = incrIncFile(open(filename), outfileC, outfileAsm, count)
         # os.remove(filename)
     outfileC.write(f"#define song_max {count}")
+    outfileC.write("\n")
     outfileC.write("\n".join(readIncFile("sfx_sfxlist")))
     outfileC.close()
     outfileAsm.write(f"song_max = {count}")
