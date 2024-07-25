@@ -464,6 +464,7 @@ static void sprite_gamemode_main() {
 				currplayer_vel_y = sprite_gamemode_y_adjust();
 				//break;
 			};
+		activesprites_activated[index]++;				
 		}
 	}
 }
@@ -522,12 +523,13 @@ static void sprite_gamemode_controller_check() {
 			currplayer_vel_y = sprite_gamemode_y_adjust();
 			//break;
 		};
+	activesprites_activated[index]++;	
 	}
 }
 
 void sprite_collide_lookup() {
 
-
+	if (!activesprites_activated[index]) {
 	switch (collided) {
 
 	case TELEPORT_PORTAL_EXIT:
@@ -562,6 +564,7 @@ void sprite_collide_lookup() {
 			cube_data[currplayer] &= 1;
 	case TELEPORT_PORTAL_ENTER:
 			high_byte(currplayer_y) = teleport_output;
+			activesprites_activated[index]++;
 		}
 		return;
 	case SPIDER_MODE:
@@ -602,6 +605,7 @@ void sprite_collide_lookup() {
 			currplayer_gravity = 0; 
 			if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
 		}
+		activesprites_activated[index]++;
 		return;
 	case GRAVITY_UP_PORTAL:
 	case GRAVITY_UP_UPWARDS_PORTAL:
@@ -613,6 +617,7 @@ void sprite_collide_lookup() {
 	//	    else
 				if (currplayer_vel_y > 0x0290) currplayer_vel_y = 0x0290; 
 		}
+		activesprites_activated[index]++;		
 		return;
 
 	// collided with coin
@@ -672,6 +677,7 @@ void sprite_collide_lookup() {
 			high_byte(currplayer_y) -= eject_U;
 			currplayer_vel_y = 0;	
 			orbed[currplayer] = 1;
+			activesprites_activated[index]++;
 		}
 		return;
 	case SPIDER_ORB_DOWN:
@@ -690,6 +696,7 @@ void sprite_collide_lookup() {
 			
 			currplayer_vel_y = 0;
 			orbed[currplayer] = 1;
+			activesprites_activated[index]++;
 		}
 		return;
 
@@ -698,16 +705,19 @@ void sprite_collide_lookup() {
 	case YELLOW_PAD_UP:
 		table_offset = yellow_pad;
 		currplayer_vel_y = sprite_gamemode_y_adjust();
+		activesprites_activated[index]++;		
 		return;
 	case PINK_PAD_DOWN:
 	case PINK_PAD_UP:
 		table_offset = pink_pad;
 		currplayer_vel_y = sprite_gamemode_y_adjust();
+		activesprites_activated[index]++;		
 		return;
 	case RED_PAD_DOWN:
 	case RED_PAD_UP:
 		table_offset = red_pad;
 		currplayer_vel_y = sprite_gamemode_y_adjust();
+		activesprites_activated[index]++;		
 		return;
 
 	case GRAVITY_PAD_DOWN:
@@ -716,6 +726,7 @@ void sprite_collide_lookup() {
 			currplayer_gravity = 0x01;				//flip gravity
 			currplayer_vel_y = PAD_HEIGHT_BLUE;	
 		}
+		activesprites_activated[index]++;		
 		return;
 	
 	case GRAVITY_PAD_UP:
@@ -724,6 +735,7 @@ void sprite_collide_lookup() {
 			currplayer_gravity = 0x00;				//flip gravity
 			currplayer_vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
 		}
+		activesprites_activated[index]++;		
 		return;
 
 	// collided with an orb
@@ -777,8 +789,9 @@ void sprite_collide_lookup() {
 	} else {
 		sprite_gamemode_controller_check();
 	}
-	return;
 	
+	return;
+	}
 }
 
 #undef table_offset

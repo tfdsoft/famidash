@@ -317,6 +317,7 @@ int8_t activesprites_anim_frame_count[max_loaded_sprites];
 uint8_t activesprites_realx[max_loaded_sprites];
 uint8_t activesprites_realy[max_loaded_sprites];
 uint8_t activesprites_active[max_loaded_sprites];
+uint8_t activesprites_activated[max_loaded_sprites];
 
 
 

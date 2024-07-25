@@ -1248,7 +1248,7 @@ play:
 
 .import _activesprites_x_lo, _activesprites_x_hi
 .import _activesprites_y_lo, _activesprites_y_hi
-.import _activesprites_type
+.import _activesprites_type, _activesprites_activated
 .import _activesprites_realx, _activesprites_realy
 
 .export _load_next_sprite := load_next_sprite
@@ -1295,6 +1295,9 @@ SpriteOffset = ptr2
     lda (_sprite_data),y
     ;   no iny, as we ain't using y anymore
     sta _activesprites_type,x
+    
+    lda #0
+    sta _activesprites_activated,x
 
     ; Increment to the next sprite index - 
     ; Add the 5 back to the pointer
