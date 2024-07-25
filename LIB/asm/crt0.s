@@ -418,17 +418,19 @@ _GAME_CHR:
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .incbin "fan icon collection/CONTEST WINNERS/contest9.chr" ; 1kb (86)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
-
-
-
-
-    .incbin "GRAPHICS/banktriangle.chr" ; 1kb (88)
+    .incbin "fan icon collection/CONTEST WINNERS/contestA.chr" ; 1kb (88)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
 
-    .incbin "GRAPHICS/menus.chr"    ; 4kb (90)
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (94)
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (98)
+
+
+    .incbin "GRAPHICS/banktriangle.chr" ; 1kb (90)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+
+
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (92)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (96)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (100)
 
 .segment "PARALLAXCHR"
 .export _PARALLAX_CHR

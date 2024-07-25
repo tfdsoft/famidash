@@ -1,9 +1,9 @@
 // Defines
 
-#define NINJABANK 88
-#define MENUBANK 90
-#define MENUICONBANK 94
-#define LEVELCOMPLETEBANK 98
+#define NINJABANK 90
+#define MENUBANK 92
+#define MENUICONBANK 96
+#define LEVELCOMPLETEBANK 100
 
 #define SPIKESA 0
 #define SPIKESB 2
@@ -19,7 +19,7 @@
 #define GAME 0x02
 
 
-#define MAX_ICONS 25 //total icons
+#define MAX_ICONS 26 //total icons
 
 // physics defines
 #define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580
@@ -432,6 +432,6 @@ const uint8_t splashMenu[16] = { //MAIN MENU
 
 
 const uint8_t iconBankTable[] = {
-	16, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86
+	16, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88
 };
 
