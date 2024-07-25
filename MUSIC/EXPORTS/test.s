@@ -7,7 +7,7 @@
 music_data_famidash_music:
 	.byte 2
 	.word @instruments
-	.word @samples-5
+	.word @samples-4
 ; 00 : Menu Theme
 	.word @song0ch0
 	.word @song0ch1
@@ -90,19 +90,19 @@ music_data_famidash_music:
 	.byte $00,$c8,$c8,$c7,$c6,$c6,$c5,$c5,$c4,$c4,$c3,$02,$c2,$06,$c1,$07,$c0,$00,$10
 
 @samples:
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$07,$40,$01 ; 00 fdbass C (Pitch:7)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$09,$40,$01 ; 01 fdbass C (Pitch:9)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0a,$40,$01 ; 02 fdbass C (Pitch:10)
-	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$08,$40,$01 ; 03 fdbass C# (Pitch:8)
-	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$09,$40,$01 ; 04 fdbass C# (Pitch:9)
-	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0a,$40,$01 ; 05 fdbass C# (Pitch:10)
-	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0b,$40,$01 ; 06 fdbass C# (Pitch:11)
-	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0c,$40,$01 ; 07 fdbass C# (Pitch:12)
-	.byte $24+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$07,$40,$01 ; 08 fdbass D (Pitch:7)
-	.byte $24+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$08,$40,$01 ; 09 fdbass D (Pitch:8)
-	.byte $24+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0a,$40,$01 ; 0a fdbass D (Pitch:10)
-	.byte $11+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0e,$40,$00 ; 0b fdkick (Pitch:14)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$41,$0f,$40,$00 ; 0c snare (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$07,$40 ; 00 fdbass C (Pitch:7)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$09,$40 ; 01 fdbass C (Pitch:9)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0a,$40 ; 02 fdbass C (Pitch:10)
+	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$08,$40 ; 03 fdbass C# (Pitch:8)
+	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$09,$40 ; 04 fdbass C# (Pitch:9)
+	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0a,$40 ; 05 fdbass C# (Pitch:10)
+	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0b,$40 ; 06 fdbass C# (Pitch:11)
+	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0c,$40 ; 07 fdbass C# (Pitch:12)
+	.byte $24+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$07,$40 ; 08 fdbass D (Pitch:7)
+	.byte $24+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$08,$40 ; 09 fdbass D (Pitch:8)
+	.byte $24+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0a,$40 ; 0a fdbass D (Pitch:10)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0e,$40 ; 0b fdkick (Pitch:14)
+	.byte $36+.lobyte(FAMISTUDIO_DPCM_PTR),$41,$0f,$40 ; 0c snare (Pitch:15)
 
 @song0ch0:
 	.byte $46, $06
