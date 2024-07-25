@@ -72,10 +72,10 @@
 #pragma charmap (0x64, 0x31) // d		//icon0
 
 #pragma charmap (0x65, 0x22) // e 		
-#pragma charmap (0x66, 0x5F) // f		//customize arrow
-#pragma charmap (0x67, 0x6F) // g		//customize arrow
-#pragma charmap (0x68, 0x5E) // h           	//customize arrow
-#pragma charmap (0x69, 0x6E) // i           	//customize arrow
+#pragma charmap (0x66, 0x4F) // f		//customize arrow
+#pragma charmap (0x67, 0x5F) // g		//customize arrow
+#pragma charmap (0x68, 0x4E) // h           	//customize arrow
+#pragma charmap (0x69, 0x5E) // i           	//customize arrow
 
 #pragma charmap (0x6A, 0x33) // j		
 
