@@ -71,10 +71,12 @@ void x_movement_coll() {
 				tmp5 = (currplayer_vel_x >> 1); 
 				tmp5 = (tmp5 >> 1) + tmp5;	
 		}
-		if (currplayer_gravity) {
-			currplayer_vel_y = tmp5 + 0x200;
-		} else {
-			currplayer_vel_y = (tmp5 + 0x200)^0xFFFF;
+		if (slope_type & 1) {
+			if (currplayer_gravity) {
+				currplayer_vel_y = tmp5 + 0x200;
+			} else {
+				currplayer_vel_y = (tmp5 + 0x200)^0xFFFF;
+			}
 		}
 	}
 	if (slope_frames) {

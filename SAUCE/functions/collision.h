@@ -467,7 +467,7 @@ char bg_coll_slope() {
 		case COL_SLOPE_LD45:
 			if (gamemode == 6) break;
 			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0f - (0x10 - (temp_x & 0x0f))
-			tmp4 = (temp_y & 0x0f) >> 1;
+			tmp4 = -(temp_y & 0X0f) >> 1;
 
 			slope_type = SLOPE_45DEG_DOWN;
 			break;
