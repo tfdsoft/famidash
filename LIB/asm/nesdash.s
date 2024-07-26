@@ -1210,8 +1210,17 @@ music_data_locations_hi:
 	.byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3, >music_data_famidash_music4, >music_data_famidash_music5
 .endif
 music_counts:
-	.byte 2, 3, 3, 6, 5, $FF  ;last bank is marked with an FF to always stop bank picking
+	.byte 2, 2, 3, 5, $FF  ;last bank is marked with an FF to always stop bank picking
 .endproc
+
+.segment "CODE_2"
+
+.proc famistudio_dpcm_bank_callback
+	clc
+	adc #<FIRST_DMC_BANK
+	jmp mmc3_set_prg_bank_0
+.endproc
+
 
 ; void __fastcall__ sfx_play(uint8_t sfx_index, uint8_t channel);
 .segment "CODE_2"
@@ -2419,7 +2428,7 @@ PCM_ptr = ptr1
 @DoneWithPCM:
     lda #%00011111
     sta FAMISTUDIO_APU_SND_CHN
-    lda #<DMC_BANK
+    lda #<FIRST_DMC_BANK
 	jmp mmc3_set_prg_bank_0
 
 ; BurnCycles:	; 6 for JSR
@@ -2693,5 +2702,77 @@ SampleRate:
 			STA _level_completeness_normal, X
 		:						;__
 		RTS
+
+.endproc
+
+; [not used in C]
+.segment "CODE_2"
+
+.import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK__
+.import	__SFX_LOAD__,	__SFX_RUN__,	__SFX_SIZE__,	__SFX_LOAD_BANK__
+
+.global copydata
+.proc copydata
+
+	seg_count = 2
+
+	current_area = tmp1
+	current_bank = tmp2
+
+	src = sreg
+	dest = xargs+0
+
+	start:
+		lda	#0
+		sta	current_bank
+		ldy	#<seg_count
+
+	loop:
+		lda	load_lo-1,	y
+		sta	src+0
+		lda	load_hi-1,	y
+		sta	src+1
+		
+		lda	run_lo-1,	y
+		sta	dest+0
+		lda	run_hi-1,	y
+		sta	dest+1
+
+		lda	bank-1,	y
+		beq	@no_bankswitch
+			cmp	current_bank
+			beq	@no_bankswitch
+				jsr	mmc3_tmp_prg_bank_1	; only allowed because this is run on init
+				sta	current_bank
+		@no_bankswitch:
+
+		lda	size_lo-1,	y
+		ldx	size_hi-1,	y
+		sty	current_area
+		jsr	__memcpy
+
+		ldy	current_area
+		dey
+		bne	loop
+
+	rts
+
+load_lo:
+	.byte	<__DATA_LOAD__,	<__SFX_LOAD__
+load_hi:
+	.byte	>__DATA_LOAD__,	>__SFX_LOAD__
+
+run_lo:
+	.byte	<__DATA_RUN__,	<__SFX_RUN__
+run_hi:
+	.byte	>__DATA_RUN__,	>__SFX_RUN__
+
+size_lo:
+	.byte	<__DATA_SIZE__,	<__SFX_SIZE__
+size_hi:
+	.byte	>__DATA_SIZE__,	>__SFX_SIZE__
+
+bank:
+	.byte	<__DATA_LOAD_BANK__,	<__SFX_LOAD_BANK__
 
 .endproc
