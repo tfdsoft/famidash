@@ -453,14 +453,14 @@ char bg_coll_slope() {
 			break;
 		case COL_SLOPE_LD22_TOP:
 			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0e) | 0x1;
+			tmp4 = ((temp_y) & 0x0e) >> 1;
 
 			slope_type = SLOPE_22DEG_DOWN;
 			break;	
 	
 		case COL_SLOPE_LD22_BOT:
 			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y) & 0x0f;
+			tmp4 = (temp_y) & 0x0f >> 1;
 		
 			slope_type = SLOPE_22DEG_DOWN;
 			break;
@@ -479,14 +479,14 @@ char bg_coll_slope() {
 			slope_type = SLOPE_66DEG_UP;
 			break;	
 		case COL_SLOPE_LD66_BOT:
-			if ((temp_x & 0x0f) < 0x08) return 0;
+			if ((temp_x & 0x0f) >= 0x08) return 1;
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f);
 			slope_type = SLOPE_66DEG_DOWN;
 
 			break;	
 		case COL_SLOPE_LD66_TOP:
-			if ((temp_x & 0x0f) >= 0x08) return 1;
+			if ((temp_x & 0x0f) < 0x08) return 0;
 			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f);
 
