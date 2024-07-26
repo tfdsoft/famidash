@@ -45,7 +45,7 @@ FRAMERATE       0
 EXPANSION       0
 VIBRATO         1
 SPLIT           32
-PLAYBACKRATE    0 16639
+PLAYBACKRATE    16639 16639
 
 # SEQUENCES block
 MACRO       0   0  -1  -1   0 : 3 6 5 5 4 4 3 3 3 2 2 2 1 1 1 0
