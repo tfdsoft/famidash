@@ -30,7 +30,7 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
 .define MMC3_REG_SEL_PRG2_C000 %00000000
 .define MMC3_REG_SEL_PRG2_8000 %01000000
 
-.import DMC_BANK
+.import FIRST_DMC_BANK
 
 ; Values for which banks to load
 .define MMC3_REG_CONTROL_DEFAULT #%11100
@@ -129,8 +129,6 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
 		; lda #%10000000
 		; sta MMC3_REG_PRG_RAM_PROTECT
 
-        lda #<DMC_BANK          ; Sample bank
-        jsr mmc3_set_prg_bank_0
         lda #1
         sta MMC3_REG_MIRRORING  ; Set mirroring to horizontal
         jmp mmc3_set_prg_bank_1

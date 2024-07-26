@@ -72,13 +72,13 @@ theoryofeverything_speed       = $00
 theoryofeverything_bg_color    = $0F
 theoryofeverything_grnd_color  = $04
 
-decode_song_number = song_endgame
+decode_song_number = song_custom_endgame
 decode_game_mode   = $00
 decode_speed       = $00
 decode_bg_color    = $12
 decode_grnd_color  = $02
 
-electroman_song_number = song_electroman
+electroman_song_number = song_electroman_adventures
 electroman_game_mode   = $00
 electroman_speed       = $00
 electroman_bg_color    = $0F
@@ -96,7 +96,7 @@ test2_speed       = $00
 test2_bg_color    = $2A
 test2_grnd_color  = $1A
 
-test3_song_number = song_electroman
+test3_song_number = song_electroman_adventures
 test3_game_mode   = $00
 test3_speed       = $00
 test3_bg_color    = $16

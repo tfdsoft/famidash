@@ -147,7 +147,7 @@ FAMISTUDIO_CFG_SFX_SUPPORT   = 1
 FAMISTUDIO_CFG_SFX_STREAMS   = 1
 
 ; Blaarg's smooth vibrato technique. Eliminates phase resets ("pops") on square channels. 
-; FAMISTUDIO_CFG_SMOOTH_VIBRATO = 1 
+FAMISTUDIO_CFG_SMOOTH_VIBRATO = 1 
 
 ; Enables DPCM playback support.
 FAMISTUDIO_CFG_DPCM_SUPPORT   = 1
@@ -223,7 +223,7 @@ FAMISTUDIO_USE_DELTA_COUNTER     = 1
 ; Must be enabled if your project uses more than 1 bank of DPCM samples.
 ; When using this, you must implement the "famistudio_dpcm_bank_callback" callback 
 ; and switch to the correct bank every time a sample is played.
-; FAMISTUDIO_USE_DPCM_BANKSWITCHING = 1
+FAMISTUDIO_USE_DPCM_BANKSWITCHING = 1
 
 ; Must be enabled if your project uses more than 63 unique DPCM mappings (a mapping is DPCM sample
 ; assigned to a note, with a specific pitch/loop, etc.). Implied when using FAMISTUDIO_USE_DPCM_BANKSWITCHING.
