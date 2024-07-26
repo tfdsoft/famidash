@@ -43,6 +43,9 @@ if __name__ == "__main__":
             idxs = ",".join([str(names.index(j[1])) for j in bins[i]])
             print(f"dotnet path/FamiStudio.dll famidash/MUSIC/MODULES/music_master.fms famistudio-asm-export famidash/MUSIC/EXPORTS/music_{i+1}.s -famistudio-asm-format:ca65 -famistudio-asm-generate-list -export-songs:{dpcmidx},{idxs}")
 
+        print("Bank lengths table:")
+        print(f"\t.byte{', '.join([len(i) for i in bins[:-1]])}, $FF ;last bank is marked with an FF to always stop bank picking")
+
 
 
 

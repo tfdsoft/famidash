@@ -9,7 +9,7 @@
 
     .export _exit,__STARTUP__:absolute=1
 	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
-	.import push0,popa,popax,_main,copydata
+	.import push0,popa,popax,_main
 
 ; Linker generated symbols
 	.import __C_STACK_START__, __C_STACK_SIZE__
@@ -18,7 +18,7 @@
 	.import	__RODATA_LOAD__ ,__RODATA_RUN__ ,__RODATA_SIZE__
 
 	.import MAPPER, SUBMAPPER, MIRRORING, PRG_BANK_COUNT, CHR_BANK_COUNT, SRAM, TRAINER, CONSOLE_TYPE, PRG_RAM_COUNT, PRG_NVRAM_COUNT, CHR_RAM_COUNT, CHR_NVRAM_COUNT, CPU_PPU_TIMING, HARDWARE_TYPE, MISC_ROMS, DEF_EXP_DEVICE
-	.import FIRST_MUSIC_BANK, DMC_BANK, _SRAM_VALIDATE
+	.import FIRST_MUSIC_BANK, FIRST_DMC_BANK, _SRAM_VALIDATE
 
 VRAM_BUF=__VRAM_BUF_START__
 OAM_BUF=__OAM_BUF_START__
@@ -277,8 +277,9 @@ detectNTSC:
 	.include "nesdash.s"
 	.include "nesdoug.s"
 .segment "DMC_BANK_00"
-	.incbin "MUSIC/EXPORTS/music.dmc"
-	.include "MUSIC/EXPORTS/sfx.s"
+	.incbin "MUSIC/EXPORTS/music_bank0.dmc"
+.segment "DMC_BANK_01"
+	.incbin "MUSIC/EXPORTS/music_bank1.dmc"
 
 .segment "BSS"
 .export _famistudio_state
@@ -309,8 +310,9 @@ GeometryDashPCMB:
 	.include "MUSIC/EXPORTS/music_4.s"
 .segment "MUS_BANK_04"
 	.include "MUSIC/EXPORTS/music_5.s"
-.segment "MUS_BANK_05"
-	.include "MUSIC/EXPORTS/music_6.s"
+
+.segment "SFX"
+	.include "MUSIC/EXPORTS/sfx.s"
 
 .segment "COLLMAP0"
 	collMap0:		.res 16*15
