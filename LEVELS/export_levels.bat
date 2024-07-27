@@ -16,8 +16,6 @@ SET all_levels= ^
     xstep ^
     clutterfunk ^
     theoryofeverything ^
-    electroman ^
-    decode ^
     test ^
     test2 ^
     test3 ^
