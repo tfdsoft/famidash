@@ -1342,18 +1342,20 @@ early_exit:
 
 check_sprite_loop:
         ; X is the current sprite object
-        ; Load two byte X coord to see if we went offscreen
-        lda _activesprites_x_lo, x
-        sec
-        sbc _scroll_x
-        lda _activesprites_x_hi, x
-        sbc _scroll_x+1
+		lda _activesprites_type, x	;	If the sprite (e.g. color triggers)
+		cmp #$ff					;	has been marked as "complete",
+		beq sprite_dead				;__
+		
+        lda _activesprites_x_lo, x	;
+        sec							;	Or the sprite has
+        sbc _scroll_x				;	went offscreen,
+        lda _activesprites_x_hi, x	;
+        sbc _scroll_x+1				;__
         bpl sprite_alive
-            txa
-            pha
-                jsr load_next_sprite	; very convenient - we just stored the slot in A
-            pla
-            tax
+
+	sprite_dead:					;__	Load a new one in its place
+            txa						;	Takes the "slot" argument in A
+			jsr load_next_sprite	;__	But also preserves the X
             lda #0
             jmp write_active
     sprite_alive:
