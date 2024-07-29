@@ -338,7 +338,7 @@ void state_game(){
 
 
 
-		if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE) currplayer_gravity ^= 0x01;
+		if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE)
 
 		if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED && has_practice_point) {
 			// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
@@ -430,6 +430,10 @@ void state_game(){
 		}
         if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }		//THE BIG DEBUG - DISABLE BEFORE RELEASE
 
+	if (pad_new[0] & PAD_UP && DEBUG_MODE) {
+		currplayer_gravity ^= 0x01;
+	}
+	
 	if (pad_new[0] & PAD_DOWN && DEBUG_MODE) {
 		mini ^= 1;
 	}
