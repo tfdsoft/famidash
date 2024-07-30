@@ -71,6 +71,8 @@
 #define BALL_MAX_FALLSPEED 0x600
 #define SWING_GRAVITY 0x38
 #define SWING_MAX_FALLSPEED 0x4D0
+#define MINI_SWING_GRAVITY 0x38
+#define MINI_SWING_MAX_FALLSPEED 0x4D0
 #define MINI_BALL_GRAVITY 0x57
 #define MINI_BALL_MAX_FALLSPEED 0x600
 
@@ -96,6 +98,11 @@ uint16_t tmp5;
 uint16_t tmp6;
 uint8_t tmp7;
 uint8_t tmp8;
+uint8_t tmp9;
+int16_t tmpa;
+int16_t tmpb;
+int16_t tmpc;
+int16_t tmpd;
 uint8_t* tmpptr1;
 uint8_t* tmpptr2;
 uint32_t tmplong;

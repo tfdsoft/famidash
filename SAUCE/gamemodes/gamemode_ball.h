@@ -11,55 +11,25 @@ void ball_movement(void){
 
 	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
-	if (!dashing[currplayer]) {
-		if (gamemode == 7) {
-			if(!currplayer_gravity){
-				if(currplayer_vel_y > SWING_MAX_FALLSPEED){
-					currplayer_vel_y += -SWING_GRAVITY;
-				} else currplayer_vel_y += SWING_GRAVITY;
-			}
-			else{
-				if(currplayer_vel_y < -SWING_MAX_FALLSPEED){
-					currplayer_vel_y -= -SWING_GRAVITY;
-				} else currplayer_vel_y -= SWING_GRAVITY;
-			}
-		}
+	if (gamemode == 7) {
+		tmpa = SWING_MAX_FALLSPEED;
+		tmpb = MINI_SWING_MAX_FALLSPEED;
+		tmpc = SWING_GRAVITY;
+		tmpd = MINI_SWING_GRAVITY;
+
+		common_gravity_routine();
+	}
+	
 	else {		
 
 
-		if(!mini){
-			if(!currplayer_gravity){
-				if(currplayer_vel_y > BALL_MAX_FALLSPEED){
-					currplayer_vel_y += -BALL_GRAVITY;
-				} else currplayer_vel_y += BALL_GRAVITY;
-			}
-			else{
-				if(currplayer_vel_y < -BALL_MAX_FALLSPEED){
-					currplayer_vel_y -= -BALL_GRAVITY;
-				} else currplayer_vel_y -= BALL_GRAVITY;
-			}
-		}
-		else {
-			if(!currplayer_gravity){
-				if(currplayer_vel_y > MINI_BALL_MAX_FALLSPEED){
-					currplayer_vel_y += -MINI_BALL_GRAVITY;
-				} else currplayer_vel_y += MINI_BALL_GRAVITY;
-			}
-			else{
-				if(currplayer_vel_y < -MINI_BALL_MAX_FALLSPEED){
-					currplayer_vel_y -= -MINI_BALL_GRAVITY;
-				} else currplayer_vel_y -= MINI_BALL_GRAVITY;
-			}
-		}	
+		tmpa = BALL_MAX_FALLSPEED;
+		tmpb = MINI_BALL_MAX_FALLSPEED;
+		tmpc = BALL_GRAVITY;
+		tmpd = MINI_BALL_GRAVITY;
+
+		common_gravity_routine();
 	}
-		
-		currplayer_y += currplayer_vel_y;
-	}
-	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
-	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }
-	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
-	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else currplayer_vel_y = 1;
 	
 	Generic.x = high_byte(currplayer_x);
 

@@ -2,44 +2,23 @@
 #pragma data-name(push, "XCD_BANK_01")
 #pragma rodata-name(push, "XCD_BANK_01")
 
+void common_gravity_routine();
+
 void ufo_movement(void){
 // handle y
 
 // currplayer_gravity
 	// currplayer_vel_y is signed
 	//if(currplayer_vel_y < 0x400){
-	if (!dashing[currplayer]) {
-		if(!mini){
-			if(!currplayer_gravity){
-				if(currplayer_vel_y > UFO_MAX_FALLSPEED){
-					currplayer_vel_y += -UFO_GRAVITY;
-				} else currplayer_vel_y += UFO_GRAVITY;
-			}
-			else{
-				if(currplayer_vel_y < -UFO_MAX_FALLSPEED){
-					currplayer_vel_y -= -UFO_GRAVITY;
-				} else currplayer_vel_y -= UFO_GRAVITY;
-			}
-		}
-		else {
-			if(!currplayer_gravity){
-				if(currplayer_vel_y > MINI_UFO_MAX_FALLSPEED){
-					currplayer_vel_y += -MINI_UFO_GRAVITY;
-				} else currplayer_vel_y += MINI_UFO_GRAVITY;
-			}
-			else{
-				if(currplayer_vel_y < -MINI_UFO_MAX_FALLSPEED){
-					currplayer_vel_y -= -MINI_UFO_GRAVITY;
-				} else currplayer_vel_y -= MINI_UFO_GRAVITY;
-			}
-		}		
-		currplayer_y += currplayer_vel_y;
-	}
-	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
-	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
-	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else currplayer_vel_y = 1;
+
+
+	tmpa = UFO_MAX_FALLSPEED;
+	tmpb = MINI_UFO_MAX_FALLSPEED;
+	tmpc = UFO_GRAVITY;
+	tmpd = MINI_UFO_GRAVITY;
+
+	common_gravity_routine();
+
 
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
@@ -90,6 +69,34 @@ void ufo_movement(void){
 			//}
 	}
 }	
+
+
+//tmp8 - large max fallspeed
+//tmp9 - mini max fallspeed
+//tmpa - large gravity
+//tmpb - mini gravity
+
+void common_gravity_routine(void) {
+	if (!dashing[currplayer]) {
+		if(!currplayer_gravity){
+			if(currplayer_vel_y > (!mini ? tmpa : tmpb)){
+				currplayer_vel_y += (!mini ? -tmpc : -tmpd);
+			} else currplayer_vel_y += (!mini ? tmpc : tmpd);
+		}
+		else{
+			if(currplayer_vel_y < (!mini ? -tmpa : -tmpb)){
+				currplayer_vel_y -= (!mini ? -tmpc : -tmpd);
+			} else currplayer_vel_y -= (!mini ? tmpc : tmpd);
+		}
+		currplayer_y += currplayer_vel_y;
+	}
+	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
+	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
+	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else currplayer_vel_y = 1;
+}	
+
 
 #pragma code-name(pop)
 #pragma data-name(pop) 
