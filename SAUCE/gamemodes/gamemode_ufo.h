@@ -12,10 +12,10 @@ void ufo_movement(void){
 	//if(currplayer_vel_y < 0x400){
 
 
-	tmpa = UFO_MAX_FALLSPEED;
-	tmpb = MINI_UFO_MAX_FALLSPEED;
-	tmpc = UFO_GRAVITY;
-	tmpd = MINI_UFO_GRAVITY;
+	max_fallspeed_big = UFO_MAX_FALLSPEED;
+	max_fallspeed_mini = MINI_UFO_MAX_FALLSPEED;
+	gravity_big = UFO_GRAVITY;
+	gravity_mini = MINI_UFO_GRAVITY;
 
 	common_gravity_routine();
 
@@ -73,20 +73,20 @@ void ufo_movement(void){
 
 //tmp8 - large max fallspeed
 //tmp9 - mini max fallspeed
-//tmpa - large gravity
-//tmpb - mini gravity
+//max_fallspeed_big - large gravity
+//max_fallspeed_mini - mini gravity
 
 void common_gravity_routine(void) {
 	if (!dashing[currplayer]) {
 		if(!currplayer_gravity){
-			if(currplayer_vel_y > (!mini ? tmpa : tmpb)){
-				currplayer_vel_y += (!mini ? -tmpc : -tmpd);
-			} else currplayer_vel_y += (!mini ? tmpc : tmpd);
+			if(currplayer_vel_y > (!mini ? max_fallspeed_big : max_fallspeed_mini)){
+				currplayer_vel_y += (!mini ? -gravity_big : -gravity_mini);
+			} else currplayer_vel_y += (!mini ? gravity_big : gravity_mini);
 		}
 		else{
-			if(currplayer_vel_y < (!mini ? -tmpa : -tmpb)){
-				currplayer_vel_y -= (!mini ? -tmpc : -tmpd);
-			} else currplayer_vel_y -= (!mini ? tmpc : tmpd);
+			if(currplayer_vel_y < (!mini ? -max_fallspeed_big : -max_fallspeed_mini)){
+				currplayer_vel_y -= (!mini ? -gravity_big : -gravity_mini);
+			} else currplayer_vel_y -= (!mini ? gravity_big : gravity_mini);
 		}
 		currplayer_y += currplayer_vel_y;
 	}

@@ -11,10 +11,10 @@ void cube_movement(void){
 
 	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
-	tmpa = CUBE_MAX_FALLSPEED;
-	tmpb = MINI_CUBE_MAX_FALLSPEED;
-	tmpc = CUBE_GRAVITY;
-	tmpd = MINI_CUBE_GRAVITY;
+	max_fallspeed_big = CUBE_MAX_FALLSPEED;
+	max_fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;
+	gravity_big = CUBE_GRAVITY;
+	gravity_mini = MINI_CUBE_GRAVITY;
 
 	common_gravity_routine();
 

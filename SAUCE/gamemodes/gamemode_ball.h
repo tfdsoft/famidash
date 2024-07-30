@@ -12,10 +12,10 @@ void ball_movement(void){
 	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
 	if (gamemode == 7) {
-		tmpa = SWING_MAX_FALLSPEED;
-		tmpb = MINI_SWING_MAX_FALLSPEED;
-		tmpc = SWING_GRAVITY;
-		tmpd = MINI_SWING_GRAVITY;
+		max_fallspeed_big = SWING_MAX_FALLSPEED;
+		max_fallspeed_mini = MINI_SWING_MAX_FALLSPEED;
+		gravity_big = SWING_GRAVITY;
+		gravity_mini = MINI_SWING_GRAVITY;
 
 		common_gravity_routine();
 	}
@@ -23,10 +23,10 @@ void ball_movement(void){
 	else {		
 
 
-		tmpa = BALL_MAX_FALLSPEED;
-		tmpb = MINI_BALL_MAX_FALLSPEED;
-		tmpc = BALL_GRAVITY;
-		tmpd = MINI_BALL_GRAVITY;
+		max_fallspeed_big = BALL_MAX_FALLSPEED;
+		max_fallspeed_mini = MINI_BALL_MAX_FALLSPEED;
+		gravity_big = BALL_GRAVITY;
+		gravity_mini = MINI_BALL_GRAVITY;
 
 		common_gravity_routine();
 	}
