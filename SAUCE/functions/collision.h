@@ -412,6 +412,10 @@ char bg_coll_U_D_checks() {
 #define SLOPE_66DEG_UP 		5
 #define SLOPE_66DEG_DOWN 	6
 
+char xtable[] = {
+	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
+};
+
 /*
 	Clobbers:
 	tmp4, tmp7
@@ -432,6 +436,12 @@ char bg_coll_slope() {
 				return 1;
 			}
 			else return 0;
+		case COL_SLOPE_RU45:
+			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = temp_y & 0x0f;
+			slope_type = SLOPE_45DEG_UP;
+
+			break;
 		case COL_SLOPE_RD45:
 			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = temp_y & 0x0f;
@@ -493,29 +503,50 @@ char bg_coll_slope() {
 			slope_type = SLOPE_66DEG_DOWN;
 			break;			
 		case COL_SLOPE_LD45:
-			if (gamemode == 6) break;
-			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0f - (0x10 - (temp_x & 0x0f))
-			tmp4 = (-(temp_y & 0X0f) >> 1);
-
-			slope_type = SLOPE_45DEG_DOWN;
-			break;
+			if (gamemode == 6) return 0;
+			tmp7 = (temp_x & 0x0f);	// = 0x0f - (0x10 - (temp_x & 0x0f))
+			tmp4 = (temp_y & 0x0f);
+			
+			if (tmp4 >= tmp7) {
+				slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
+				was_on_slope_counter = (gamemode == 6 ? 6 : 2);
+				slope_type = SLOPE_45DEG_DOWN;
+				tmp8 = tmp4 - tmp7 - 3;
+				return 1;
+			} else return 0;
 		default:
 			return 0;
 	}
-
-	if ((uint8_t)(tmp4 + 3) >= tmp7) {
-		tmp8 = tmp4 - tmp7 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
-		if (pad[controllingplayer] & PAD_A && gamemode != 6) {
-			slope_frames = 0;
-			slope_type = 0;
-		} else {
-			slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
-			was_on_slope_counter = (gamemode == 6 ? 6 : 2);
+	if (currplayer_gravity) {
+		if ((uint8_t)(tmp4) < tmp7) {
+				tmp8 = tmp7 - tmp4 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
+				if (pad[controllingplayer] & PAD_A && gamemode != 6) {
+					slope_frames = 0;
+					slope_type = 0;
+				} else {
+					slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
+					was_on_slope_counter = (gamemode == 6 ? 6 : 2);
+				}
+				return 1;
+			} else if (!was_on_slope_counter) {
+				slope_type = 0;
 		}
-		return 1;
-	} else if (!was_on_slope_counter) {
-		slope_type = 0;
+	} else {
+		if ((uint8_t)(tmp4) >= tmp7) {
+				tmp8 = tmp4 - tmp7 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
+				if (pad[controllingplayer] & PAD_A && gamemode != 6) {
+					slope_frames = 0;
+					slope_type = 0;
+				} else {
+					slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
+					was_on_slope_counter = (gamemode == 6 ? 6 : 2);
+				}
+				return 1;
+			} else if (!was_on_slope_counter) {
+				slope_type = 0;
+		}
 	}
+	
 	
 	return 0;
 }
@@ -564,7 +595,7 @@ char bg_coll_return_slope_D () {
 */
 char bg_coll_return_slope_U () {
 	tmp1 = bg_coll_slope();
-	eject_U = tmp8 | 0xf0;
+	eject_U = -tmp8;
 	return tmp1;
 }
 
