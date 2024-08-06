@@ -142,12 +142,12 @@ void draw_sprites(void){
 		tmpA = player_x[0];
 		tmpB = player_y[0];
 
-		high_byte(player_x[0]) -= 16;
+		high_byte(player_x[0]) -= 8;
 		high_byte(player_y[0]) = player_old_posy[3];
 
 		drawplayerone();
 		
-		high_byte(player_x[0]) -= 16;
+		high_byte(player_x[0]) -= 8;
 		high_byte(player_y[0]) = player_old_posy[6];
 
 		drawplayerone();
