@@ -176,6 +176,7 @@ void state_menu();
 
 #include "defines/mainmenu_charmap.h"
 void levelselection() {
+	
   
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
@@ -611,13 +612,9 @@ void state_menu() {
 
 //	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-	switch (kandotemp){
-		case 0x00:	music_play(song_menu_theme); break;
-		case 0x01:	break;
-	}
+	if (kandotemp == 0) music_play(song_menu_theme);
 
 	settingvalue = 0;
-	
 	has_practice_point = 0;
 	
 	// Enable SRAM write
@@ -698,6 +695,10 @@ void state_menu() {
 		if (pad_new[0] & PAD_SELECT) {
 				tmp2 = 0;
 				gameState = 0;
+				famistudio_music_stop();
+				music_update();
+				kandotemp = 0;
+				ppu_wait_nmi();
 				return;
 		}
 	}		
