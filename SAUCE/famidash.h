@@ -99,6 +99,8 @@ uint16_t tmp6;
 uint8_t tmp7;
 uint8_t tmp8;
 uint8_t tmp9;
+uint16_t tmpA;
+uint16_t tmpB;
 int16_t max_fallspeed_big;
 int16_t max_fallspeed_mini;
 int16_t gravity_big;

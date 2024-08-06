@@ -244,10 +244,15 @@ char sprite_height_lookup(){
 	switch(type) {
 		case NOSPRITE:
 			return 0;
+		case PLAYER_TRAILS_ON:
+			forced_trails = 2;
+			activesprites_type[index] = 0xFF;
+			return 0x00;
 		case FORCED_TRAILS_ON:
 			forced_trails = 1;
 			activesprites_type[index] = 0xFF;
 			return 0x00;
+		case PLAYER_TRAILS_OFF:
 		case FORCED_TRAILS_OFF:
 			forced_trails = 0;
 			activesprites_type[index] = 0xFF;
