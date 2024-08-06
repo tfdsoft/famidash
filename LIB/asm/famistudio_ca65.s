@@ -1603,7 +1603,7 @@ famistudio_music_play:
 
 .if FAMISTUDIO_USE_FAMITRACKER_TEMPO
     lda famistudio_pal_adjust
-    beq @pal
+    ;beq @pal
     iny
     iny
 @pal:

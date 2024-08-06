@@ -1192,7 +1192,7 @@ found_bank:
 			LDA	music_data_locations_hi-FIRST_MUSIC_BANK, Y
 			TAY
 		.endif
-        LDA #$01
+        LDA <NTSC_MODE
         JSR famistudio_init
     :
     PLA
