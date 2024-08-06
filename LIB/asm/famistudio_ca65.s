@@ -6532,7 +6532,7 @@ famistudio_sfx_init:
     ldy #0
     
 .if FAMISTUDIO_DUAL_SUPPORT
-    lda famistudio_pal_adjust ; Add 2 to the sound list pointer for PAL
+    lda NTSC_MODE ; Add 2 to the sound list pointer for PAL
     bne @ntsc
     iny
     iny
