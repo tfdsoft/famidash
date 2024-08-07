@@ -369,6 +369,7 @@ char bg_coll_L() {
 char bg_coll_U_D_checks() {
 	switch (collision) {
 		case COL_ALL: 
+			if (slope_type && !(slope_type & 1)) return 0;
 			return 1;
 		case COL_DEATH_TOP:
 			tmp2 = temp_y & 0x0f;	
@@ -433,16 +434,17 @@ char bg_coll_slope() {
 					slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
 					was_on_slope_counter = (gamemode == 6 ? 6 : 2);
 				}
-
+			
+				tmp8 = (temp_y) & 0x0f;
 				switch (slope_type) {
 					case SLOPE_45DEG_UP:
-						tmp8 = 4;
+						tmp8 += 2;
 						break;
 					case SLOPE_22DEG_UP:
-						tmp8 = 2;
+						tmp8 += 1;
 						break;
 					case SLOPE_66DEG_UP:
-						tmp8 = 8;
+						tmp8 += 3;
 						break;
 						
 					case SLOPE_45DEG_DOWN:
@@ -454,9 +456,21 @@ char bg_coll_slope() {
 				return 1;
 			}
 			else return 0;
-		case COL_SLOPE_RU45:
+		case COL_SLOPE_LU45:
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = temp_y & 0x0f;
+			tmp4 = (temp_y & 0x0f) ^ 0x0f;
+			slope_type = SLOPE_45DEG_DOWN;
+
+			if (tmp4 >= tmp7 - 3) {
+				slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
+				was_on_slope_counter = (gamemode == 6 ? 6 : 2);
+				tmp8 = tmp4 - tmp7 - 3;
+				return 1;
+			} else return 0;
+			break;
+		case COL_SLOPE_RU45:
+			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+			tmp4 = (temp_y & 0x0f) ^ 0x0f;
 			slope_type = SLOPE_45DEG_UP;
 
 			break;
@@ -480,18 +494,30 @@ char bg_coll_slope() {
 			slope_type = SLOPE_22DEG_UP;
 			break;
 		case COL_SLOPE_LD22_TOP:
-			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0e) >> 1;
-
-			slope_type = SLOPE_22DEG_DOWN;
-			break;	
+			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+			tmp5 = (temp_y & 0x0f);
+			tmp4 = xtable[8 + tmp7 >> 1];
+			
+			if (tmp5 >= tmp4) {
+				slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
+				was_on_slope_counter = (gamemode == 6 ? 6 : 2);
+				slope_type = SLOPE_22DEG_DOWN;
+				tmp8 = tmp5 - tmp4 - 5;
+				return 1;
+			} else return 0;
 	
 		case COL_SLOPE_LD22_BOT:
-			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y) & 0x0f >> 1;
+			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+			tmp5 = (temp_y & 0x0f);
+			tmp4 = xtable[tmp7 >> 1];
 		
-			slope_type = SLOPE_22DEG_DOWN;
-			break;
+			if (tmp5 >= tmp4) {
+				slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
+				was_on_slope_counter = (gamemode == 6 ? 6 : 2);
+				slope_type = SLOPE_22DEG_DOWN;
+				tmp8 = tmp5 - tmp4 - 5;
+				return 1;
+			} else return 0;
 		case COL_SLOPE_RD66_TOP:
 			if ((temp_x & 0x0f) < 0x08) return 0;
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
@@ -535,34 +561,19 @@ char bg_coll_slope() {
 		default:
 			return 0;
 	}
-	if (currplayer_gravity) {
-		if ((uint8_t)(tmp4) < tmp7) {
-				tmp8 = tmp7 - tmp4 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
-				if (pad[controllingplayer] & PAD_A && gamemode != 6) {
-					slope_frames = 0;
-					slope_type = 0;
-				} else {
-					slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
-					was_on_slope_counter = (gamemode == 6 ? 6 : 2);
-				}
-				return 1;
-			} else if (!was_on_slope_counter) {
+	if ((uint8_t)(tmp4) >= tmp7) {
+			tmp8 = tmp4 - tmp7 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
+			
+			if (pad[controllingplayer] & PAD_A && gamemode != 6) {
+				slope_frames = 0;
 				slope_type = 0;
-		}
-	} else {
-		if ((uint8_t)(tmp4) >= tmp7) {
-				tmp8 = tmp4 - tmp7 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
-				if (pad[controllingplayer] & PAD_A && gamemode != 6) {
-					slope_frames = 0;
-					slope_type = 0;
-				} else {
-					slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
-					was_on_slope_counter = (gamemode == 6 ? 6 : 2);
-				}
-				return 1;
-			} else if (!was_on_slope_counter) {
-				slope_type = 0;
-		}
+			} else {
+				slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
+				was_on_slope_counter = (gamemode == 6 ? 6 : 2);
+			}
+			return 1;
+	} else if (!was_on_slope_counter) {
+			slope_type = 0;
 	}
 	
 	
@@ -655,7 +666,7 @@ char bg_coll_U() {
 	if (high_byte(currplayer_x) >= 0x10) {
 		storeWordSeparately(
 			add_scroll_y(
-				Generic.y + 2 + (mini ? byte(0x10 - Generic.height) >> 1 : 0),
+				Generic.y + (byte(0x10 - Generic.height) >> 1) + 2,
 				scroll_y
 			), temp_y, temp_room);
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
