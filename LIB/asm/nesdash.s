@@ -1900,7 +1900,9 @@ drawplayer_center_offsets:
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE
 
     rounding_slope_table:
-        .byte $03, $09, $0a, $08, $08, $09
+		;     45^  45v  22^  22v  66^  66v  nothing
+        .byte $03, $09, $0a, $08, $08, $09, $00, $00
+		.byte $03, $09, $1a, $16, $17, $1a 		;upsidedown
 .endproc
 drawplayer_common := _drawplayerone::common
 
