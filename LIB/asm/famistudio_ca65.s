@@ -122,7 +122,7 @@
 ; Nintendo MMC5 (2 extra squares, extra DPCM not supported)
 ; FAMISTUDIO_EXP_MMC5          = 1 
 
-; Sunsoft S5B (2 extra squares, advanced features not supported.)
+; Sunsoft S5B (3 extra squares, advanced features not supported.)
 ; FAMISTUDIO_EXP_S5B           = 1 
 
 ; Famicom Disk System (extra wavetable channel)

@@ -29,9 +29,7 @@
 // debug lmao
 void main(){
     ppu_off();
-
     ppu_mask(0x00 | (1 << 1) | (1 << 2));
-
 	mmc3_set_8kb_chr(MENUBANK);
 
     //pal_bg(paletteDefault);
@@ -63,16 +61,14 @@ void main(){
 					pal_fade_to_withmusic(4,0);
 					ppu_off();
 					pal_bg(splashMenu);
-					mmc3_set_8kb_chr(MENUBANK);
 					kandowatchesyousleep = 1;
 
 					if (kandotemp == 0) music_play(song_menu_theme);
 					has_practice_point = 0;
 					#include "defines/mainmenu_charmap.h"
-						
 					levelselection();
 				}
-					break;
+				break;
 			}
 			case 0x02: {
   				player_gravity[0] = 0x00;

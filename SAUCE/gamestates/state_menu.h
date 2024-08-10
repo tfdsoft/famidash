@@ -155,8 +155,9 @@ void __fastcall__ refreshmenu(void) {
 		printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19));
 
 	//palette stuff
-		pal_col(0,colors_list[level]);
-		pal_col(0xE,colors_list[level]);
+		tmp3 = level % 9;
+		pal_col(0,colors_list[tmp3]);
+		pal_col(0xE,colors_list[tmp3]);
 	//coin stuff
 		coins = 0;
 
@@ -231,9 +232,8 @@ void levelselection() {
 			return;
 		}
 			
-		if (pad_new[0] & PAD_RIGHT && pad_new[0] & PAD_LEFT) {}
 			
-		else if (pad_new[0] & (PAD_RIGHT)){
+		if (pad_new[0] & PAD_RIGHT){
 			++level;
 			if (level >= LEVEL_COUNT){
 				level = 0x00;
@@ -241,7 +241,7 @@ void levelselection() {
 			refreshmenu();
 		//	break;
 		}
-		else if (pad_new[0] & PAD_LEFT){
+		if (pad_new[0] & PAD_LEFT){
 			--level;
 			if (level == 0xFF){
 				level = LEVEL_COUNT-1;
@@ -440,12 +440,12 @@ void funsettings() {
 
 		tmp1 = settingvalue;
 
-		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
+		if (pad_new[0] & PAD_DOWN) {
 			if (settingvalue == 4) { settingvalue = 0; }
 			else { settingvalue++;  }
 		}
 
-		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
+		if (pad_new[0] & PAD_UP) {
 			if (settingvalue == 0) { settingvalue = 4; }
 			else { settingvalue--;  }
 		}
