@@ -178,7 +178,7 @@ void state_menu();
 #include "defines/mainmenu_charmap.h"
 void levelselection() {
 	
-  
+	mmc3_set_8kb_chr(MENUBANK);
 	pal_fade_to_withmusic(4,0);
 	oam_clear();
 	ppu_off();
