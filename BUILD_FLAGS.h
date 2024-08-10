@@ -1,26 +1,60 @@
-// Version number stuff
+// BUILD FLAGS ================================================
+//
+// Change how the game compiles with this one simple trick!
+// assembly programmers HATE this!
+//
+// ============================================================
 
-// uncomment to enable the version number on the title screen
+
+
+// VERSION NUMBER STUFF =======================================
+//
+// These change how the version number is displayed.
+//
+//
+// Enable Version Number
+// uncomment to enable the version number on the credits screen
+// you can ignore everything below this if disabled.
 #define FLAG_ENABLE_VER_NUM
-
-// set to 1 if compiling demo/beta builds; else set to 0
+//
+// Beta Build
+// set to 1 if compiling demo/beta builds; otherwise set to 0.
 #define FLAG_BETA_BUILD 1
-
-// major version number. set if releasing a demo/beta.
+//
+// Major Version Number 
+// set if releasing a demo/beta.
 #define FLAG_MAJ_VER '5'
-
-// minor version number. disabled if FLAG_BETA_BUILD is set.
+//
+// Minor Version Number
+// increment by 1 for officially released patches.
+// does nothing if FLAG_BETA_BUILD is set.
 #define FLAG_MIN_VER '0'
+// ============================================================
 
-// Set to 1 to make some code in nesdash.s slightly faster.
-// Since the carts are gonna be multiregion and famiclones have
-// issues supporting illegal opcodes, this should be disabled
-// for physical cart releases
+
+
+// OPTIMIZATION SETTINGS ======================================
+// 
+// Use Illegal Opcodes
+// set this to 1 to speed up some code in nesdash.h.
+// we do not recommend turning this on if testing on
+// real hardware.
 #define USE_ILLEGAL_OPCODES 0
+//
+// Print Metatiles When Compiling
+// set to 1 to display metatile data when compiling via the
+// command line.
+#define PRINT_METATILES 0
+// ============================================================
 
-// set to 1 to enable metatile printing
-// #define PRINT_METATILES 1
 
 
-// save file version. increment by 1 if the SRAM memory layout changes.
+// ADVANCED SETTINGS ==========================================
+//
+// !! ONLY CHANGE IF YOU KNOW WHAT YOU'RE DOING !!
+//
+//
+// Save File Version
+// increase by 1 if SRAM values are added or deleted. 
 #define FLAG_SAVE_VER 0x02
+// ============================================================
