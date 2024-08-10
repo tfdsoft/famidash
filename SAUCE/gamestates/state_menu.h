@@ -179,6 +179,7 @@ void levelselection() {
 	
   
 	pal_fade_to_withmusic(4,0);
+	oam_clear();
 	ppu_off();
 	pal_bright(0);
 	// pal_bg(paletteMenu);
@@ -488,6 +489,7 @@ void funsettings() {
 			//one_vram_buffer(' ', NTADR_A(4, 8));
 			//one_vram_buffer(' ', NTADR_A(4, 12));
 			//one_vram_buffer(' ', NTADR_A(4, 16));
+			gameState = last_gameState;
 			return;
 		}
 
@@ -641,6 +643,7 @@ void state_menu() {
 
 	
  	ppu_on_all();
+	
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;
 	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
@@ -717,12 +720,11 @@ void state_menu() {
 	set_scroll_y(0);
 	set_scroll_x(0);
 	ppu_wait_nmi();
-	tmp7 = rand8() & 255;
+	tmp7 = rand8() & 7;
 	switch (menuselection) {
 		case 0x00: kandowatchesyousleep = 1; 
-			
 			if(!tmp7) crossPRGBankJump8(playPCM, 1); else crossPRGBankJump8(playPCM, 0);  levelselection(); return;
-		case 0x01: funsettings(); return;
+		case 0x01: sfx_play(sfx_invalid, 0); return;
 		case 0x02: gameState = 4; return;
 		case 0x03: settings(); return;
 		case 0x04: customize_screen(); return;

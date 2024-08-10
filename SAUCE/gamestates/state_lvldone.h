@@ -352,20 +352,23 @@ void state_lvldone() {
 
 
 void bgmtest() {
+	song = 0;
 	#define sfx tmp4
 	sfx = 0;
+
+	settingvalue = 0;
 
   	famistudio_music_stop();
   	music_update();
 	kandotemp=0;
-	pal_fade_to(4,0);
+	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(bgmtestscreen);   	
 	#include "defines/mainmenu_charmap.h"
 	ppu_on_all();
-	pal_fade_to(0,4);
+	pal_fade_to_withmusic(0,4);
 	while (1) {
 		
 		ppu_wait_nmi();
@@ -382,14 +385,14 @@ void bgmtest() {
 			one_vram_buffer(' ', NTADR_A(11, 15));
 			if (pad_new[0] & PAD_RIGHT) { song++; if (song == song_max) {song = 0;} }
 			if (pad_new[0] & PAD_LEFT) { if (song == 0) {song = song_max - 1;} else song--; }
-			if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A)) music_play(song);
+			if (pad_new[0] & PAD_A) music_play(song);
 		}		
 		else if (settingvalue == 1) {
 			one_vram_buffer(' ', NTADR_A(11, 8));
 			one_vram_buffer('c', NTADR_A(11, 15));
 			if (pad_new[0] & PAD_RIGHT) { sfx++; if (sfx == sfx_max) {sfx= 0;} };
 			if (pad_new[0] & PAD_LEFT) { if (sfx == 0) {sfx = sfx_max - 1;} else sfx--; }
-			if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A)) famistudio_sfx_play(sfx, 0);
+			if (pad_new[0] & PAD_A) famistudio_sfx_play(sfx, 0);
 		}
 
 		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
@@ -403,6 +406,25 @@ void bgmtest() {
 			kandotemp = 1;
 			gameState = 1;
 			return;
+		}
+
+
+		
+		// sound test codes
+		if (pad_new[0] & PAD_START) {
+			last_gameState = gameState;
+			sfx_play(sfx_achievement_get, 0);
+
+			// bgm 9 & sfx 2
+			if (song == 9 && sfx == 2) {
+				gameState = 0xF0; // fun settings gamestate
+				return;
+			}
+
+			// this is quite literally the greatest hack ever
+			// since sfx doesn't update until the next frame i can just
+			// overwrite the success sfx with the invalid one
+			sfx_play(sfx_invalid, 0);
 		}
 	}
 	#undef sfx

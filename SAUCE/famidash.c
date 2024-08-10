@@ -55,7 +55,6 @@ void main(){
 	gameState = 0x00;
     while (1){
         ppu_wait_nmi();
-
 		switch (gameState){
 			case 0x01: {
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
@@ -65,16 +64,12 @@ void main(){
 					ppu_off();
 					pal_bg(splashMenu);
 					mmc3_set_8kb_chr(MENUBANK);
-
-					set_scroll_x(0);
-					set_scroll_y(0);
-
 					kandowatchesyousleep = 1;
 
 					if (kandotemp == 0) music_play(song_menu_theme);
 					has_practice_point = 0;
 					#include "defines/mainmenu_charmap.h"
-					oam_clear();	
+						
 					levelselection();
 				}
 					break;
@@ -82,7 +77,8 @@ void main(){
 			case 0x02: {
   				player_gravity[0] = 0x00;
 				player_gravity[1] = 0x00;					
-				state_game(); break;
+				state_game();
+				break;
 			}
 			case 0x03: {
 				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
@@ -99,10 +95,22 @@ void main(){
 				state_savefile_validate();
 				break;
 			}
+			case 0x06: {
+				mmc3_set_prg_bank_1(GET_BANK(state_savefile_editor));
+				state_savefile_editor();
+				break;
+			}
+
+
+			case 0xF0: {
+				mmc3_set_prg_bank_1(GET_BANK(funsettings));
+				funsettings();
+				break;
+			}
+
 			default: {
 				mmc3_set_prg_bank_1(GET_BANK(state_demo));
 				state_demo();
-				
 				break;
 			}
 		}

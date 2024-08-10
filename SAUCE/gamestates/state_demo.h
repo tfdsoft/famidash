@@ -87,7 +87,7 @@ void state_demo(){
 	// __asm__("LDA mmc3PRG1Bank \nPHA ");
     // mmc3_set_prg_bank_1(0);
     // vram_adr(NAMETABLE_A);
-//    vram_unrle(dem_funnies);
+	//    vram_unrle(dem_funnies);
     // __asm__("PLA \n JSR %v ", mmc3_set_prg_bank_1);
 
 	oam_clear();

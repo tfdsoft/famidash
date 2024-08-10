@@ -229,6 +229,8 @@ uint8_t achievements[0x20];
 // Regular NES RAM
 #pragma bss-name("BSS")
 
+uint8_t last_gameState;
+
 //extern uint8_t famistudio_state[0xbf];
 
 uint8_t TOTALCOINS;
