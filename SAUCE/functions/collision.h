@@ -158,6 +158,19 @@ void bg_coll_spikes() {
 	}
 }
 
+void spike_check() {
+	for (tmp8 = 0; tmp8 < 2; tmp8++) {
+		bg_collision_sub();
+	
+		bg_coll_spikes();
+			
+		storeWordSeparately(
+			add_scroll_y(
+				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 3, scroll_y
+			), temp_y, temp_room);
+	}
+}
+
 /*
 	Clobbers:
 	tmp8
@@ -201,16 +214,7 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 
 	temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
 
-	for (tmp8 = 0; tmp8 < 2; tmp8++) {
-		bg_collision_sub();
-
-		bg_coll_spikes();
-
-		storeWordSeparately(
-			add_scroll_y(
-				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 3, scroll_y
-			), temp_y, temp_room);
-	}
+	spike_check();
 
 	temp_x -= (Generic.width >> 1); // automatically only the low byte
 
@@ -219,16 +223,7 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 3), scroll_y
 		), temp_y, temp_room);
 
-	for (tmp8 = 0; tmp8 < 2; tmp8++) {
-		bg_collision_sub();
-	
-		bg_coll_spikes();
-			
-		storeWordSeparately(
-			add_scroll_y(
-				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 3, scroll_y
-			), temp_y, temp_room);
-	}
+	spike_check();
 }
 /*
 	Clobbers:
@@ -451,9 +446,12 @@ char slope_LX22_stuff() {
 char bg_coll_slope() {	
 	tmp8 = (temp_y) & 0x0f;
 	switch (collision) {
-
 		// 45 degrees
-		
+		case COL_ALL:
+			if (was_on_slope_counter && gamemode == 6) {
+				high_byte(currplayer_y) -= (currplayer_gravity ? -2 : 2);
+			}
+			return 0;
 		case COL_SLOPE_LU45:
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y & 0x0f) ^ 0x0f;
