@@ -350,6 +350,9 @@ void state_lvldone() {
 	#undef top_scroll
 }
 
+#include "defines/bg_charmap.h"
+const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
+
 
 void bgmtest() {
 	song = 0;
@@ -414,17 +417,23 @@ void bgmtest() {
 		if (pad_new[0] & PAD_START) {
 			last_gameState = gameState;
 			sfx_play(sfx_achievement_get, 0);
+			tmp3 = 1;
 
 			// bgm 9 & sfx 2
-			if (song == 9 && sfx == 2) {
+			if (song == 0x9 && sfx == 0x2) {
 				gameState = 0xF0; // fun settings gamestate
 				return;
+			}
+			if (song == 0xB && sfx == 0x7) {
+				multi_vram_buffer_horz(TEXT_debug_mode, sizeof(TEXT_debug_mode)-1, NTADR_A(7,26));
+				options |= debugtoggle;
+				tmp3--;
 			}
 
 			// this is quite literally the greatest hack ever
 			// since sfx doesn't update until the next frame i can just
 			// overwrite the success sfx with the invalid one
-			sfx_play(sfx_invalid, 0);
+			if (tmp3) sfx_play(sfx_invalid, 0);
 		}
 	}
 	#undef sfx

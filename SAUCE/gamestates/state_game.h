@@ -175,7 +175,7 @@ void state_game(){
     while (1) {
 	
 	//if (gameboy_mode == 1) color_emphasis(COL_EMP_GREY);
-		if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = iconBankTable[icon]; }
+		//if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = iconBankTable[icon]; }
 		pal_col(3,outline_color);
 		pal_col(7,outline_color);
 
@@ -370,10 +370,10 @@ void state_game(){
 			// mmc3_set_8kb_chr(16);
 			// vram_adr(NAMETABLE_B);
 			// vram_unrle(pausescreen); 	
-			ppu_on_all();
+			// ppu_on_all();
 			while (!(pad_new[0] & PAD_START)) {
 				
-				pad_poll(0); // read the second controller
+				pad_poll(0); // read the first controller
 				if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_B)) {
 					kandokidshack3++;
 				}
@@ -402,22 +402,22 @@ void state_game(){
 				else if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_A)) {
 					kandokidshack2++;
 				}
-				else if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
-					gamemode == 8 ? gamemode = 0 : gamemode++;
-					ppu_off();
-					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
-					if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
-					else if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
-					else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
-					else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
-					else mmc3_set_2kb_chr_bank_0(18);
-					oam_clear();
-					mmc3_set_prg_bank_1(GET_BANK(drawplayerone));	
-					drawplayerone();
-					mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
-					draw_sprites();
-					ppu_on_all();
-				}
+				//else if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
+				//	gamemode == 8 ? gamemode = 0 : gamemode++;
+				//	ppu_off();
+				//	//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
+				//	if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
+				//	else if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
+				//	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
+				//	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
+				//	else mmc3_set_2kb_chr_bank_0(18);
+				//	oam_clear();
+				//	mmc3_set_prg_bank_1(GET_BANK(drawplayerone));	
+				//	drawplayerone();
+				//	mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
+				//	draw_sprites();
+				//	ppu_on_all();
+				//}
 			}
 			color_emphasis(COL_EMP_NORMAL);
 			famistudio_music_pause(0);
@@ -430,7 +430,13 @@ void state_game(){
 			if (kandokidshack3 != 12) kandokidshack3 = 0;
 			else if (kandokidshack3 == 12) DEBUG_MODE = !DEBUG_MODE;
 		}
-        if (pad_new[0] & PAD_SELECT) { DEBUG_MODE = !DEBUG_MODE; cube_data[0] &= 2; cube_data[1] &= 2; }		//THE BIG DEBUG - DISABLE BEFORE RELEASE
+		if (options & debugtoggle)
+        	if (pad_new[0] & PAD_SELECT) //THE BIG DEBUG - DISABLE BEFORE RELEASE
+			{ 
+				DEBUG_MODE = !DEBUG_MODE; 
+				cube_data[0] &= 2; 
+				cube_data[1] &= 2; 
+			}		
 
 	if (pad_new[0] & PAD_UP && DEBUG_MODE) {
 		currplayer_gravity ^= 0x01;

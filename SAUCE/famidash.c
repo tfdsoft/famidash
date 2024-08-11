@@ -32,6 +32,9 @@ void main(){
     ppu_mask(0x00 | (1 << 1) | (1 << 2));
 	mmc3_set_8kb_chr(MENUBANK);
 
+	// disable debug mode toggle
+	options &= debugtoggle^0xFF;
+
     //pal_bg(paletteDefault);
     //pal_spr(paletteDefaultSP);
     // use the second set of tiles for sprites
@@ -48,7 +51,7 @@ void main(){
     // level = 0x00;
 	// auto_fs_updates = 0;
 
-	
+	kandotemp = 1;
 
 	gameState = 0x00;
     while (1){
@@ -63,7 +66,7 @@ void main(){
 					pal_bg(splashMenu);
 					kandowatchesyousleep = 1;
 
-					if (kandotemp == 0) music_play(song_menu_theme);
+					//
 					has_practice_point = 0;
 					#include "defines/mainmenu_charmap.h"
 					levelselection();

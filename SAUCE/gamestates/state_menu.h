@@ -199,6 +199,9 @@ void levelselection() {
 	cube_rotate[1] = 0;
 	attempts = 0;
 
+	if (kandotemp == 0) music_play(song_menu_theme);
+	kandotemp = 0;
+
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 	while (1){
@@ -616,7 +619,7 @@ void state_menu() {
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 //	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-	if (kandotemp == 0) music_play(song_menu_theme);
+	if (kandotemp == 1) music_play(song_menu_theme);
 
 	settingvalue = 0;
 	has_practice_point = 0;
