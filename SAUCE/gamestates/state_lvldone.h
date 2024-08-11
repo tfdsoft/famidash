@@ -64,8 +64,9 @@ void state_lvldone() {
     vram_unrle(leveldone);
 
 	// Change the text attributes for the press to return
-    vram_adr(0x2be1);
-	vram_fill(0xff, 0x6);
+	// no longer required
+    //vram_adr(0x2be1);
+	//vram_fill(0xff, 0x6);
 
     vram_adr(NAMETABLE_D);
     vram_unrle(leveldone);
@@ -318,6 +319,7 @@ void state_lvldone() {
 					gameState = 1;
 					menuselection = 0;
 					kandowatchesyousleep = 1;
+					kandotemp = 0;
 					return;
 				} else {
 					

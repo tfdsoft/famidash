@@ -71,8 +71,8 @@ void state_savefile_validate(){
         multi_vram_buffer_horz("IS MISSING OR", 13, NTADR_A(17,4));
         multi_vram_buffer_horz("CORRUPT", 7, NTADR_A(2,5));
 
-        multi_vram_buffer_horz("A: CREATE NEW SAVE", 18, NTADR_A(2,8));
-        multi_vram_buffer_horz("B: LOAD ANYWAY", 14, NTADR_A(2,9));
+        multi_vram_buffer_horz(TEXT_a_createnew, sizeof(TEXT_a_createnew)-1, NTADR_A(2,8));
+        multi_vram_buffer_horz(TEXT_b_load, sizeof(TEXT_b_load)-1, NTADR_A(2,9));
         
         ppu_on_all();
         pal_fade_to(0,4);

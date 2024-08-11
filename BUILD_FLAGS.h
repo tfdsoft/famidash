@@ -19,11 +19,11 @@
 //
 // Beta Build
 // set to 1 if compiling demo/beta builds; otherwise set to 0.
-#define FLAG_BETA_BUILD 1
+#define FLAG_BETA_BUILD 0
 //
 // Major Version Number 
 // set if releasing a demo/beta.
-#define FLAG_MAJ_VER '5'
+#define FLAG_MAJ_VER '1'
 //
 // Minor Version Number
 // increment by 1 for officially released patches.

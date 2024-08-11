@@ -200,7 +200,7 @@ void levelselection() {
 	attempts = 0;
 
 	if (kandotemp == 0) music_play(song_menu_theme);
-	kandotemp = 0;
+	kandotemp = 1;
 
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
@@ -309,6 +309,7 @@ void customize_screen() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
 	pal_bg(paletteMenu);
+	pal_col(0x00, 0x00);
 	mmc3_set_8kb_chr(MENUICONBANK);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
@@ -327,8 +328,9 @@ void customize_screen() {
 		if (LEVELCOMPLETE[tmp2]) TOTALSTARS += stars_list[tmp2];
 	}
 
-	printDecimal(TOTALCOINS, 2, 0xD0, 0xFF, NTADR_A(16,19));
-	printDecimal(TOTALSTARS, 2, 0xD0, 0xFF, NTADR_A(18,21));
+	
+	printDecimal(TOTALSTARS, 2, 0xD0, 0xFF, NTADR_A(26,4));
+	printDecimal(TOTALCOINS, 2, 0xD0, 0xFF, NTADR_A(26,5));
 
 	one_vram_buffer('h', NTADR_A(13, 8));		
 	one_vram_buffer('i', NTADR_A(13, 9));
@@ -400,7 +402,7 @@ void customize_screen() {
 			one_vram_buffer(' ', tmp5 + VRAM_OFF(0, 1));
 		}
 
-		if (pad_new[0] & PAD_B || pad_new[0] & PAD_START) {
+		if (pad_new[0] & PAD_B) {
 			return;
 		}
 	}
@@ -619,7 +621,8 @@ void state_menu() {
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 //	mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-	if (kandotemp == 1) music_play(song_menu_theme);
+	if (kandotemp == 0) music_play(song_menu_theme);
+	kandotemp = 1;
 
 	settingvalue = 0;
 	has_practice_point = 0;

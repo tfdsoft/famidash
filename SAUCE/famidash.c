@@ -51,7 +51,7 @@ void main(){
     // level = 0x00;
 	// auto_fs_updates = 0;
 
-	kandotemp = 1;
+	kandotemp = 0;
 
 	gameState = 0x00;
     while (1){
