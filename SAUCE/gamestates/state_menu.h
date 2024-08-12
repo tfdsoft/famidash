@@ -606,6 +606,11 @@ void settings() {
 const char palsystem[] = "FOR PAL SYSTEMS";
 #define NTSC_SYS PEEK(0x00)
 
+
+
+
+
+
 void state_menu() {
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
@@ -619,7 +624,7 @@ void state_menu() {
 	kandowatchesyousleep = 0;
 
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
-//	mmc3_set_prg_bank_1(GET_BANK(state_menu));
+	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
 	if (kandotemp == 0) music_play(song_menu_theme);
 	kandotemp = 1;
@@ -631,7 +636,7 @@ void state_menu() {
 	POKE(0xA001, 0x80);
 
 	kandotemp = 1;
-//	invisible = 0;
+	//invisible = 0;
 	
 
 	oam_clear();

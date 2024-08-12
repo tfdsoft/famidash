@@ -212,6 +212,9 @@ default_array: ;just an eof terminator
 
     
 irq:
+    rti
+
+    ;; temporarily disable irq
     pha
     txa
     pha
@@ -228,7 +231,7 @@ irq:
     pla
     tax
     pla
-    rti
+    
     
     
 ;format
