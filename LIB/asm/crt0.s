@@ -255,7 +255,7 @@ detectNTSC:
 	lda $60FF
 	beq @fallback
 	sta <RAND_SEED+1
-        bne @done
+    bne @done
 @fallback:
 	lda #$FD
 	sta <RAND_SEED
@@ -264,6 +264,8 @@ detectNTSC:
 	lda #0
 	sta PPU_SCROLL
 	sta PPU_SCROLL
+
+    cli
 
 	jmp _main			;no parameters
 

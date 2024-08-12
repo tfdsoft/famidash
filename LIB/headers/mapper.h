@@ -22,6 +22,7 @@ void __fastcall__ mmc3_set_1kb_chr_bank_3(unsigned char bank);
 // __asm__("LDA #%s", direction); \
 // __asm__("STA MMC3_REG_MIRRORING");
 
+
 extern unsigned char xargs[4];
 
 void _mmc3_set_8kb_chr() {
@@ -38,9 +39,13 @@ void _mmc3_set_8kb_chr() {
 #define mmc3_set_8kb_chr(bank) (xargs[0] = bank, _mmc3_set_8kb_chr())
 
 
+
+
+extern uint8_t irqTable[16];
+
 // Turns off MMC3 irqs, and changes the array pointer
 // to point to a default 0xff
-void disable_irq(void);
+void mmc3_disable_irq(void);
 
 
 // This points an array to the IRQ system 
@@ -59,3 +64,29 @@ uint8_t is_irq_done(void);
 
 // quick and easily write an irq table in ROM to the irq table in SRAM
 void write_irq_table(uint8_t * data);
+//#define write_irq_table(data) (__AX__ = data)
+
+void write_irq_table_frombuffer(void);
+void write_irq_table_tobuffer(uint8_t byte, uint8_t offset){
+    POKE(irqTable[offset], byte);
+};
+
+
+#define irqtable_ppuctrl 0xf0
+#define irqtable_ppustatus 0xf1
+
+#define irqtable_hscroll 0xf5
+#define irqtable_ppuaddr 0xf6
+
+#define irqtable_chr0 0xf7
+#define irqtable_chr1 0xf8
+#define irqtable_chr2 0xf9
+#define irqtable_chr3 0xfa
+#define irqtable_chr4 0xfb
+#define irqtable_chr5 0xfc
+
+#define irqtable_wait 0xfd
+#define irqtable_timedwait 0xfe
+#define irqtable_end 0xff
+
+

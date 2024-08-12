@@ -39,6 +39,10 @@ nmi:
 	tya
 	pha
 
+	lda #0
+    sta mmc3IRQTableIndex
+    sta mmc3IRQJoever
+
 	lda <PPU_MASK_VAR	;if rendering is disabled, do not access the VRAM at all
 	and #%00011000
 	bne @renderingOn
@@ -123,6 +127,10 @@ nmi:
 
 	lda <PPU_CTRL_VAR
 	sta PPU_CTRL
+
+	jsr irq_parser ; needs to happen inside v-blank... 
+                   ; so goes before the music
+            ; but, if screen is off this should be skipped
 
 @skipAll:
 

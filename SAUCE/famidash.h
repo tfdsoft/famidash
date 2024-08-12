@@ -226,7 +226,7 @@ uint8_t achievements[0x20];
 //uint8_t practice_famistudio_state[0xbf];
 
 
-extern uint8_t irqTable[32];
+
 // Regular NES RAM
 #pragma bss-name("BSS")
 

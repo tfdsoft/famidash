@@ -49,8 +49,10 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
 
 
 .segment "IRQ_T"
-    irqTable:   .res 16
-   
+    _irqTableBuf:   .res 16
+    _irqTable:   .res 16
+    .export _irqTable
+
 .segment "CODE_2"
     _mmc3_pop_prg_bank_1:
         LDA #MMC3_REG_SEL_PRG_BANK_1
@@ -142,11 +144,15 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
         jmp mmc3_set_prg_bank_1
 
 
+
     mmc3_disable_irq:
     _mmc3_disable_irq:
         sta $e000 ;any value
-        lda #<irqTable
-        ldx #>irqTable
+        lda #$ff
+        sta _irqTable
+        lda #<_irqTable
+        ldx #>_irqTable
+        
         ; fall through to setting the pointer
     .export _mmc3_disable_irq
     set_irq_ptr:
@@ -154,8 +160,8 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
         ;ax = pointer
         sta mmc3IRQTablePtr
         stx mmc3IRQTablePtr+1
-        lda #$ff    ; set the first byte of the irq table to $ff
-        sta irqTable; just to be on the safe side
+        ;lda #$ff    ; set the first byte of the irq table to $ff
+        ;sta _irqTable; just to be on the safe side
         rts
     .export _set_irq_ptr
 
@@ -167,11 +173,7 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
     .export _is_irq_done
 
 
-
-
-
     irq:
-        ;; temporarily disable irq
         pha
         txa
         pha
@@ -333,13 +335,46 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
         ; as a failsafe in the event that the table is
         ; not fully written to or read from
         lda #$ff
-        sta irqTable+$10
-        sta irqTable+$11
+        sta _irqTable+$10
+        sta _irqTable+$11
+
+        ldy #0
+    @loop:
+        lda (mmc3IRQTablePtr), y
+        sta _irqTable, y
+        iny
+
+        cpy #$10
+        beq @done
+
+        cmp #$ff
+        bne @loop
+
+    @done:
+        ; set mmc3IRQTablePtr back to what it was
+        lda #<_irqTable
+        ldx #>_irqTable
+        jsr set_irq_ptr
+
+        rts
+    .export _write_irq_table
+
+
+
+    write_irq_table_frombuffer:
+    _write_irq_table_frombuffer:
+
+        ; write two bytes ahead in SRAM (unused space)
+        ; as a failsafe in the event that the table is
+        ; not fully written to or read from
+        lda #$ff
+        sta _irqTable+$10
+        sta _irqTable+$11
         
         ldy #$f0
     @loop:
-        lda (mmc3IRQTablePtr), y
-        sta irqTable-$f0, y
+        lda _irqTableBuf-$f0, y
+        sta _irqTable-$f0, y
         iny
 
         beq @done
@@ -348,9 +383,15 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
         bne @loop
 
     @done:
-        ; set mmc3IRQTablePtr back to what it was
-        lda #<irqTable
-        ldx #>irqTable
-        jsr set_irq_ptr
-
         rts
+    .export _write_irq_table_frombuffer
+
+
+
+    ;write_irq_table_tobuffer:
+    ;_write_irq_table_tobuffer:
+    ;    ; a = byte
+    ;    ; x = offset
+    ;    sta _irqTable, x
+    ;    rts
+    ;.export _write_irq_table_tobuffer

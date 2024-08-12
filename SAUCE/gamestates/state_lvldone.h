@@ -360,13 +360,12 @@ void bgmtest() {
 	song = 0;
 	#define sfx tmp4
 	sfx = 0;
-
 	settingvalue = 0;
-
   	famistudio_music_stop();
   	music_update();
 	kandotemp=0;
 	pal_fade_to_withmusic(4,0);
+	mmc3_disable_irq();
 	ppu_off();
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);

@@ -180,6 +180,7 @@ void levelselection() {
 	
 	mmc3_set_8kb_chr(MENUBANK);
 	pal_fade_to_withmusic(4,0);
+	mmc3_disable_irq();
 	oam_clear();
 	ppu_off();
 	pal_bright(0);
@@ -305,8 +306,10 @@ void updateColors() {
 }
 
 void customize_screen() {
+	
 	settingvalue = 3; 
 	pal_fade_to_withmusic(4,0);
+	mmc3_disable_irq();
 	ppu_off();
 	pal_bg(paletteMenu);
 	pal_col(0x00, 0x00);
@@ -505,8 +508,10 @@ void funsettings() {
 #include "defines/mainmenu_charmap.h"
 
 void settings() {
+	
 	settingvalue = 0; 
 	pal_fade_to_withmusic(4,0);
+	mmc3_disable_irq();
 	ppu_off();
 	pal_bg(paletteSettings);
 	vram_adr(NAMETABLE_A);
@@ -608,21 +613,28 @@ const char palsystem[] = "FOR PAL SYSTEMS";
 
 
 
+
 const uint8_t menu_irq_table[] = {
-	
+	177,
+	irqtable_hscroll, 0x00,
 
-
-	0xff // always end with 0xff
+	irqtable_end // always end with 0xff
 };
-
-
 void state_menu() {
 	pal_fade_to_withmusic(4,0);
+	mmc3_disable_irq();
+	
 	ppu_off();
     pal_bg(splashMenu);
 
 	mmc3_set_8kb_chr(MENUBANK);
 
+	POKE(irqTable[0], 0xFF);
+	write_irq_table(menu_irq_table);
+	irqTable[2] = low_byte(tmp8); 
+	set_irq_ptr(irqTable);
+	
+	
 	set_scroll_x(0);
     set_scroll_y(0);
 
@@ -639,6 +651,9 @@ void state_menu() {
 	
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
+
+
+	
 
 	kandotemp = 1;
 	//invisible = 0;
@@ -730,13 +745,13 @@ void state_menu() {
 				ppu_wait_nmi();
 				return;
 		}
-		tmp8 += CUBE_SPEED_X05>>8;
-		
+		low_byte(tmp8) += CUBE_SPEED_X05>>8;
+		irqTable[2] = low_byte(tmp8); 
 	}	
 	set_scroll_y(0);
 	set_scroll_x(0);
 	ppu_wait_nmi();
-	tmp7 = rand8() & 7;
+	tmp7 = rand8() & 127;
 	switch (menuselection) {
 		case 0x00: kandowatchesyousleep = 1; 
 			if(!tmp7) crossPRGBankJump8(playPCM, 1); else crossPRGBankJump8(playPCM, 0);  levelselection(); return;
