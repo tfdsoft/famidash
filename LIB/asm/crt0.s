@@ -121,6 +121,14 @@ xargs:				.res 4
 
 start:
 _exit:
+	lda #%10000000					;	Stolen from initialize_mapper
+	sta MMC3_REG_PRG_RAM_PROTECT	;__
+    lda $00
+    sta $7FFE
+    lda $01
+    sta $7FFF
+
+
     sei
 	cld
 	ldx #$40
@@ -131,19 +139,6 @@ _exit:
     stx PPU_MASK
     stx DMC_FREQ
     stx PPU_CTRL		;no NMI
-    
-	lda #%10000000					;	Stolen from initialize_mapper
-	sta MMC3_REG_PRG_RAM_PROTECT	;__
-    lda $00
-    sta $7FFE
-    lda $01
-    sta $7FFF
-
-    lda #$ff
-    sta irqTable
-    jsr _disable_irq ;disable mmc3 IRQ
-
-    
 
 initPPU:
     bit PPU_STATUS
@@ -279,22 +274,19 @@ detectNTSC:
 	.include "LEVELS/all_level_table.s"
 	
 	.include "mapper.s"
-    .include "mapper_irq.s"
 	.include "neslib.s"
 	.include "nesdash.s"
 	.include "nesdoug.s"
-
+    .include "mapper_irq.s"
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music_bank0.dmc"
 .segment "DMC_BANK_01"
 	.incbin "MUSIC/EXPORTS/music_bank1.dmc"
 
 .segment "BSS"
-    .export _famistudio_state
-    _famistudio_state = *
-    .include "famistudio_ca65.s"
-
-
+.export _famistudio_state
+_famistudio_state = *
+.include "famistudio_ca65.s"
 	
 
 .segment "PCM_BANK"
@@ -329,9 +321,6 @@ GeometryDashPCMB:
 .segment "COLLMAP1"
 	collMap1:		.res 16*12
 	ground:			.res 16*3
-
-.segment "IRQ_T"
-    irqTable:       .res 32
 
 .segment "VECTORS"
 

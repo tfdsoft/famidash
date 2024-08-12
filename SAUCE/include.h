@@ -12,7 +12,7 @@
 #include "neslib.h"  // common nes library
 #include "nesdoug.h" // slightly less common nes library (thanks nesdoug)
 #include "mapper.h"  // MMC3 functions
-#include "mapper_irq.h" // MMC3 IRQ functions
+// #include "mapper_irq.h" // MMC3 IRQ functions
 #include "nesdash.h" // custom stuff made specifically for famidash
 #include "famistudio_cc65.h" // sound driver
 

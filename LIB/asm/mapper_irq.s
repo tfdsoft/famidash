@@ -211,26 +211,26 @@ default_array: ;just an eof terminator
 
 
     
-irq:
-    rti
+;irq:
+;    rti
 
     ;; temporarily disable irq
-    pha
-    txa
-    pha
-    tya
-    pha
-    
-    sta $e000    ; disable mmc3 irq
-                ; any value will do
-    
-    jsr irq_parser
-    
-    pla
-    tay
-    pla
-    tax
-    pla
+;    pha
+;    txa
+;    pha
+;    tya
+;    pha
+;    
+;    sta $e000    ; disable mmc3 irq
+;                ; any value will do
+;    
+;    jsr irq_parser
+;    
+;    pla
+;    tay
+;    pla
+;    tax
+;    pla
     
     
     
