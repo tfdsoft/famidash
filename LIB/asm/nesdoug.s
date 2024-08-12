@@ -30,14 +30,14 @@ _set_vram_buffer:
 ;void multi_vram_buffer_horz(void * data, uint8_t len, uint16_t ppu_address);
 ;void multi_vram_buffer_vert(void * data, uint8_t len, uint16_t ppu_address);
 __multi_vram_buffer:
-	; XA (A IS HIGH!!) = ppu_address (A OR'd with corresponding value)
+	; AX = ppu_address (X OR'd with corresponding value beforehand)
 	; xargs[0] = len
 	; sreg = data
 
 	ldy VRAM_INDEX
-	sta VRAM_BUF, y
-	txa
 	sta VRAM_BUF+1, y
+	txa
+	sta VRAM_BUF+0, y
 	
 _multi_vram_buffer_common:
 	lda xargs+0
@@ -68,7 +68,7 @@ __one_vram_buffer:
 	ldy VRAM_INDEX
 	sta VRAM_BUF+1, y
 	txa
-	sta VRAM_BUF, y
+	sta VRAM_BUF+0, y
 	iny
 	iny
 	lda sreg

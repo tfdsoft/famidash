@@ -63,11 +63,11 @@ void __fastcall__ _sfx_play(uint16_t args);
 /**
  * @brief Repeat a single tile horizontally.
  */
-#define one_vram_buffer_horz_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _one_vram_buffer_repeat(__EAX__))
+#define one_vram_buffer_horz_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _one_vram_buffer_repeat(__EAX__))
 /**
  * @brief Repeat a single tile vertically.
  */
-#define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_VERT, _one_vram_buffer_repeat(__EAX__))
+#define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __AX__ = ppu_address|(NT_UPD_VERT<<8) _one_vram_buffer_repeat(__EAX__))
 ///@}
 void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
 
@@ -79,7 +79,7 @@ void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
  * @param total_len The length of the block to center it in.
  * @param ppu_address The PPU address to put it at.
  */
-#define draw_padded_text(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __A__ = LSB(ppu_address), __AX__<<=8, __AX__ |= MSB(ppu_address)|NT_UPD_HORZ, _draw_padded_text(__EAX__))
+#define draw_padded_text(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text(__EAX__))
 void __fastcall__ _draw_padded_text(uint32_t args);
 
 /**
@@ -107,9 +107,9 @@ uint16_t __fastcall__ hexToDec (uint16_t input);
  * @param digits The amount of digits to print - values 1..5 are valid.
  * @param zeroChr The '0' character in the current context - will add the numbers to it.
  * @param spaceChr The ' ' character in the current context - will be printed for the leftmost unused digits.
- * @param vram_adr The VRAM address of the leftmost digit.
+ * @param ppu_address The VRAM address of the leftmost digit.
  */
-#define printDecimal(value, digits, zeroChr, spaceChr, vram_adr) (storeWordToSreg(value), xargs[0] = digits, xargs[1] = zeroChr, xargs[2] = spaceChr, __A__ = LSB(vram_adr), __AX__<<=8, __AX__ |= MSB(vram_adr)|NT_UPD_HORZ, _printDecimal(__EAX__))
+#define printDecimal(value, digits, zeroChr, spaceChr, ppu_address) (storeWordToSreg(value), xargs[0] = digits, xargs[1] = zeroChr, xargs[2] = spaceChr, __AX__ = ppu_address|(NT_UPD_HORZ<<8), _printDecimal(__EAX__))
 void _printDecimal (uint32_t args);
 
 /**

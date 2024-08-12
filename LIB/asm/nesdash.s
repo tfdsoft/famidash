@@ -175,13 +175,13 @@ shiftBy4table:
 
 .export __one_vram_buffer_repeat
 .proc __one_vram_buffer_repeat
-	; xa = ppu_address
+	; ax = ppu_address
 	; sreg[0] = data
 	; sreg[1] = len
 	ldy VRAM_INDEX
-	sta VRAM_BUF, y
-	txa
 	sta VRAM_BUF+1, y
+	txa
+	sta VRAM_BUF+0, y
 	; ptr1 lo byte is len, hi byte is character to repeat
 	lda sreg+1
 	ora #$80 ; set length + repeat byte
@@ -1030,7 +1030,7 @@ ParallaxBuffer:
 
 .export __draw_padded_text
 .proc __draw_padded_text
-	; XA = ppu_address
+	; AX = ppu_address
 	; sreg[0] = total_len
 	; sreg[1] = len
 	; xargs[0:1] = data
@@ -1041,9 +1041,9 @@ ParallaxBuffer:
 	len = sreg+1
 
 	LDY VRAM_INDEX
-	STA VRAM_BUF, Y	;
+	STA VRAM_BUF+1, Y	;
 	TXA					;	vram pointer
-	STA VRAM_BUF+1, Y	;__
+	STA VRAM_BUF+0, Y	;__
 	LDA total_len		;	total length
 	STA VRAM_BUF+2, Y	;__
 
@@ -2501,12 +2501,12 @@ SampleRate:
 
 
 
-; void printDecimal (uintptr_t vram_adr, uint16_t value, uint8_t digits, uint8_t zeroChr, uint8_t spaceChr)
+; void printDecimal (uintptr_t ppu_address, uint16_t value, uint8_t digits, uint8_t zeroChr, uint8_t spaceChr)
 .segment "CODE_2"
 
 .export __printDecimal
 .proc __printDecimal
-	; XA = vram_adr
+	; AX = ppu_address
 	; sreg = value
 	; xargs[0] = digits
 	; xargs[1] = zeroChr
@@ -2518,9 +2518,9 @@ SampleRate:
 
 	start:
 		LDY VRAM_INDEX
-		STA VRAM_BUF, Y		;
+		STA VRAM_BUF+1, Y	;
 		TXA					;	VRAM pointer
-		STA VRAM_BUF+1, Y	;__
+		STA VRAM_BUF+0, Y	;__
 		LDA digits			;	Length
 		STA VRAM_BUF+2, Y	;__
 		CLC					;
