@@ -274,18 +274,22 @@ detectNTSC:
 	.include "LEVELS/all_level_table.s"
 	
 	.include "mapper.s"
+    .include "mapper_irq.s"
 	.include "neslib.s"
 	.include "nesdash.s"
 	.include "nesdoug.s"
+
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music_bank0.dmc"
 .segment "DMC_BANK_01"
 	.incbin "MUSIC/EXPORTS/music_bank1.dmc"
 
 .segment "BSS"
-.export _famistudio_state
-_famistudio_state = *
-.include "famistudio_ca65.s"
+    .export _famistudio_state
+    _famistudio_state = *
+    .include "famistudio_ca65.s"
+
+
 	
 
 .segment "PCM_BANK"
