@@ -36,3 +36,26 @@ void _mmc3_set_8kb_chr() {
 }
 
 #define mmc3_set_8kb_chr(bank) (xargs[0] = bank, _mmc3_set_8kb_chr())
+
+
+// Turns off MMC3 irqs, and changes the array pointer
+// to point to a default 0xff
+void disable_irq(void);
+
+
+// This points an array to the IRQ system 
+// Also turns ON the system
+void set_irq_ptr(uint8_t * address);
+
+
+// Check if it's safe to write to the irq array
+// returns 0xff if done, zero if not done
+// if the irq pointer is pointing to 0xff it is
+// safe to edit.
+uint8_t is_irq_done(void);
+
+
+
+
+// quick and easily write an irq table in ROM to the irq table in SRAM
+void write_irq_table(uint8_t * data);

@@ -142,9 +142,10 @@ nmi:
 	pla
 	tax
 	pla
+	rti
 
-irq: ;OLD IRQ LABEL; NOW FILLED BY mapper_irq.s
-    rti
+;irq: ;OLD IRQ LABEL; NOW FILLED BY mapper_irq.s
+;    rti
 
 
 

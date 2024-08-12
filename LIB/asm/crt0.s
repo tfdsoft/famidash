@@ -99,6 +99,7 @@ VRAM_INDEX:			.res 1
 
 xargs:				.res 4
 
+ 
 ;
 ; NES 2.0 header
 ;
@@ -277,7 +278,7 @@ detectNTSC:
 	.include "neslib.s"
 	.include "nesdash.s"
 	.include "nesdoug.s"
-    .include "mapper_irq.s"
+    
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music_bank0.dmc"
 .segment "DMC_BANK_01"

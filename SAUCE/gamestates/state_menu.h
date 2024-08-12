@@ -608,7 +608,12 @@ const char palsystem[] = "FOR PAL SYSTEMS";
 
 
 
+const uint8_t menu_irq_table[] = {
+	
 
+
+	0xff // always end with 0xff
+};
 
 
 void state_menu() {
@@ -641,10 +646,10 @@ void state_menu() {
 
 	oam_clear();
 
-	POKE(0x200, 175);
-	POKE(0x201, 0x02); // Use the second tile in the BG side which is pure black
-	POKE(0x202, 0b00100000); // second palette
-	POKE(0x203, 0x00);
+	//POKE(0x200, 175);
+	//POKE(0x201, 0x02); // Use the second tile in the BG side which is pure black
+	//POKE(0x202, 0b00100000); // second palette
+	//POKE(0x203, 0x00);
 	
 	// Expand the data for the menu nametable while the PPU is still off
     vram_adr(NAMETABLE_A);
@@ -726,7 +731,7 @@ void state_menu() {
 				return;
 		}
 		tmp8 += CUBE_SPEED_X05>>8;
-		xy_split(tmp8,176);
+		
 	}	
 	set_scroll_y(0);
 	set_scroll_x(0);
