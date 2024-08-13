@@ -298,3 +298,6 @@ do func while(0); \
 #define do_if_bit6_clr_mem(val, func) __asm__("BIT %v", val); do_if_v_clr(func)
 
 #define fc_mic_poll() (PEEK(0x4016) & 0x04)
+
+#define sec_adc(a, b) (__A__ = (a), __asm__("sec \nadc %v", b), __A__)
+#define clc_sbc(a, b) (__A__ = (a), __asm__("clc \nsbc %v", b), __A__)

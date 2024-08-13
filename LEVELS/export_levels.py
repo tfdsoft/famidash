@@ -58,6 +58,7 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple[Iterable[int]]:
 			f"{level}_speed",
 			f"{level}_bg_color",
 			f"{level}_grnd_color",
+			f"{len(lines)}\t; {level} height",
 		]
 		all_data += header
 		all_data += rle_data
@@ -91,8 +92,8 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple[Iterable[int]]:
 				out_str += f"  .byte {bank[filled_bytes]}\n"
 				remaining_bytes -= 1
 				filled_bytes += 1
-				if remaining_bytes == -5:
-					next_level_offset = filled_bytes + level_lengths[current_level] - 5
+				if remaining_bytes == -6:
+					next_level_offset = filled_bytes + level_lengths[current_level] - 6
 					current_level += 1
 					remaining_bytes = 0
 
@@ -133,6 +134,7 @@ def export_spr(folder: str, levels: Iterable[str]):
 		level_data = []
 		rows = len(lines)
 		columns = len(lines[0])
+		rowOffset = 57 - rows
 		count1 = 0
 		count2 = 0
 		for i in range(0, columns):
@@ -140,7 +142,7 @@ def export_spr(folder: str, levels: Iterable[str]):
 				a = str(lines[j][i])
 				if (a != "-1"):
 					x = i * 16		# x coordinate
-					y = j * 16		# y coordinate
+					y = (rowOffset + j) * 16		# y coordinate
 					obj_id = int(a)	# object id
 					
 					if obj_id == 0x3E: #right medium post
