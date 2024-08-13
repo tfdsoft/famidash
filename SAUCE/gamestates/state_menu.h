@@ -614,8 +614,8 @@ const char palsystem[] = "FOR PAL SYSTEMS";
 
 
 
-const uint8_t menu_irq_table[] = {
-	177,
+const uint8_t menu_irq_table[16] = {
+	180,
 	irqtable_hscroll, 0x00,
 
 	irqtable_end // always end with 0xff
@@ -753,8 +753,15 @@ void state_menu() {
 	ppu_wait_nmi();
 	tmp7 = rand8() & 127;
 	switch (menuselection) {
-		case 0x00: kandowatchesyousleep = 1; 
-			if(!tmp7) crossPRGBankJump8(playPCM, 1); else crossPRGBankJump8(playPCM, 0);  levelselection(); return;
+		case 0x00:
+			POKE(0x2005, 0x00);
+			POKE(0x2005, 0x00);
+			mmc3_disable_irq(); // reset scroll before playing
+			kandowatchesyousleep = 1; 
+			if(!tmp7) crossPRGBankJump8(playPCM, 1); 
+			else crossPRGBankJump8(playPCM, 0);  
+			levelselection(); 
+			return;
 		case 0x01: sfx_play(sfx_invalid, 0); return;
 		case 0x02: gameState = 4; return;
 		case 0x03: settings(); return;
