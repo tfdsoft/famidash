@@ -41,10 +41,10 @@ void _mmc3_set_8kb_chr() {
 
 
 
-extern uint8_t irqTable[16];
+extern uint8_t irqTable[32];
+extern uint8_t irqTableIdx;
 
-// Turns off MMC3 irqs, and changes the array pointer
-// to point to a default 0xff
+// Turns off MMC3 irqs and resets the irqTableIdx
 void mmc3_disable_irq(void);
 
 
@@ -64,12 +64,12 @@ uint8_t is_irq_done(void);
 
 // quick and easily write an irq table in ROM to the irq table in SRAM
 void write_irq_table(uint8_t * data);
-//#define write_irq_table(data) (__AX__ = data)
 
-void write_irq_table_frombuffer(void);
-void write_irq_table_tobuffer(uint8_t byte, uint8_t offset){
-    POKE(irqTable[offset], byte);
-};
+// edit bytes in the table. useful for scrolling.
+void edit_irq_table(uint8_t byte, uint8_t offset){
+    if(irqTableIdx < 0x20) irqTable[offset] = byte;
+}
+
 
 
 #define irqtable_ppuctrl 0xf0

@@ -139,7 +139,7 @@ void state_game(){
 //    mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));
     
 	currplayer = 0;
-	current_transition_timer_length = 2;
+	current_transition_timer_length = 0;
 	reset_level();
 
     END_LEVEL_TIMER = 0;
@@ -323,8 +323,8 @@ void state_game(){
 		if (options & platformer) twoplayer = 0;
 
 		if ((options & oneptwoplayer) && twoplayer) {
-			pad[1] = pad[0] << 4; // read the second controller
-			pad_new[1] = pad_new[0] << 4;
+			pad[1] = pad[0]<<1; // read the second controller
+			pad_new[1] = pad_new[0]<<1;
 			dual = 1;
 		}
 		else if (twoplayer) {

@@ -45,12 +45,12 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
     mmc3IRQJoever:      .res 1
     mmc3_8000:          .res 1
 .segment "BSS"
-    mmc3PRG1Bank: .res 1    ;because famistudio updates
-
+    mmc3PRG1Bank:   .res 1    ;because famistudio updates
+    _irqTableIdx:   .res 1
+    .export _irqTableIdx
 
 .segment "IRQ_T"
-    _irqTableBuf:   .res 16
-    _irqTable:   .res 16
+    _irqTable:   .res 32
     .export _irqTable
 
 .segment "CODE_2"
@@ -148,11 +148,12 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
     mmc3_disable_irq:
     _mmc3_disable_irq:
         sta $e000 ;any value
+        ldy #0
+        sty _irqTableIdx
         lda #$ff
         sta _irqTable
         lda #<_irqTable
         ldx #>_irqTable
-        
         ; fall through to setting the pointer
     .export _mmc3_disable_irq
     set_irq_ptr:
@@ -335,8 +336,8 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
         ; as a failsafe in the event that the table is
         ; not fully written to or read from
         lda #$ff
-        sta _irqTable+$10
-        sta _irqTable+$11
+        sta _irqTable+$20
+        sta _irqTable+$21
 
         ldy #0
     @loop:
@@ -344,7 +345,7 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
         sta _irqTable, y
         iny
 
-        cpy #$10
+        cpy #$20
         beq @done
 
         cmp #$ff
@@ -360,38 +361,20 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
     .export _write_irq_table
 
 
-
-    write_irq_table_frombuffer:
-    _write_irq_table_frombuffer:
-
-        ; write two bytes ahead in SRAM (unused space)
-        ; as a failsafe in the event that the table is
-        ; not fully written to or read from
-        lda #$ff
-        sta _irqTable+$10
-        sta _irqTable+$11
-        
-        ldy #$f0
-    @loop:
-        lda _irqTableBuf-$f0, y
-        sta _irqTable-$f0, y
-        iny
-
-        beq @done
-
-        cmp #$ff
-        bne @loop
-
-    @done:
-        rts
-    .export _write_irq_table_frombuffer
-
-
-
-    ;write_irq_table_tobuffer:
-    ;_write_irq_table_tobuffer:
+    ;edit_irq_table:
+    ;_edit_irq_table:
     ;    ; a = byte
     ;    ; x = offset
-    ;    sta _irqTable, x
+    ;
+    ;    ; increment the counter
+    ;    ldy _irqTableIdx
+    ;    cpy #$20
+    ;    bcs @joever ; is the counter >=$20?
+    ;    iny
+    ;    sty _irqTableIdx
+    ;    
+    ;    sta _irqTable, x ; if not, add the byte
+    ;@joever:
     ;    rts
-    ;.export _write_irq_table_tobuffer
+    ;.export _edit_irq_table
+    

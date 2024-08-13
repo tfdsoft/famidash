@@ -631,7 +631,7 @@ void state_menu() {
 
 	POKE(irqTable[0], 0xFF);
 	write_irq_table(menu_irq_table);
-	irqTable[2] = low_byte(tmp8); 
+	//edit_irq_table(2, low_byte(tmp8));
 	set_irq_ptr(irqTable);
 	
 	
@@ -746,7 +746,7 @@ void state_menu() {
 				return;
 		}
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
-		irqTable[2] = low_byte(tmp8); 
+		edit_irq_table(low_byte(tmp8), 2); 
 	}	
 	set_scroll_y(0);
 	set_scroll_x(0);

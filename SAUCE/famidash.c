@@ -127,9 +127,16 @@ void main(){
 void setdefaultoptions() {
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
+	
 
+	color_emphasis(COL_EMP_DARK);
+	mmc3_disable_irq();
 	// fill with zeros
 	memfill((uint8_t *)0x6000, 0, 0x2000);
+	edit_irq_table(0xff,0);
+	sfx_play(sfx_death, 0);
+
+	color_emphasis(COL_EMP_NORMAL);
 
 	// set the first four bytes; LEET, save version, and 21.
 	// if none of these are what is expected, the game will tell you
