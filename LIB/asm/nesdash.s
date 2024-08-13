@@ -1236,7 +1236,18 @@ music_counts:
     bvc play  
     rts  
 play:    
-    jmp famistudio_sfx_play  
+	tay
+
+	lda	mmc3PRG1Bank
+	pha
+	lda #<.bank(sounds)
+    jsr mmc3_set_prg_bank_1
+
+	tya
+    jsr famistudio_sfx_play
+
+	pla
+	jsr mmc3_set_prg_bank_1
 .endproc
 
 ; void music_update();
@@ -2363,7 +2374,13 @@ drawplayer_common := _drawplayerone::common
 PCM_ptr = ptr1
     ; A = Sample
 	tay
-	lda SampleRate, y
+	ldx	NTSC_MODE
+	bne :+
+		clc
+		adc #(SampleRate_PAL-SampleRate_NTSC)
+	:
+	tax
+	lda SampleRate_NTSC, x
     sta tmp1
 	ldx Bank, y
 
@@ -2441,9 +2458,12 @@ Bank:
     .byte <.bank(GeometryDashPCMA)
     .byte <.bank(GeometryDashPCMB)
 
-SampleRate:
+SampleRate_NTSC:	; Also applies to Dendy, as it is derived from the CPU speed
 	.byte 3		;(22-5+1)/5-1
-	.byte 39	;(204-5+1)/5-1
+	.byte 43	;((NTSC Clock / 8000)-5+1)/5-1
+SampleRate_PAL:
+	.byte 2
+	.byte 40	;((PAL Clock / 8000)-5+1)/5-1
 .endproc
 
 
@@ -2708,12 +2728,11 @@ SampleRate:
 .segment "CODE_2"
 
 .import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK__
-.import	__SFX_LOAD__,	__SFX_RUN__,	__SFX_SIZE__,	__SFX_LOAD_BANK__
 
 .global copydata
 .proc copydata
 
-	seg_count = 2
+	seg_count = 1
 
 	current_area = tmp1
 	current_bank = tmp2
@@ -2757,22 +2776,22 @@ SampleRate:
 	rts
 
 load_lo:
-	.byte	<__DATA_LOAD__ ;,	<__SFX_LOAD__
+	.byte	<__DATA_LOAD__
 load_hi:
-	.byte	>__DATA_LOAD__ ;,	>__SFX_LOAD__
+	.byte	>__DATA_LOAD__
 
 run_lo:
-	.byte	<__DATA_RUN__ ;,	<__SFX_RUN__
+	.byte	<__DATA_RUN__
 run_hi:
-	.byte	>__DATA_RUN__ ;,	>__SFX_RUN__
+	.byte	>__DATA_RUN__
 
 size_lo:
-	.byte	<__DATA_SIZE__ ;,	<__SFX_SIZE__
+	.byte	<__DATA_SIZE__
 size_hi:
-	.byte	>__DATA_SIZE__ ;,	>__SFX_SIZE__
+	.byte	>__DATA_SIZE__
 
 bank:
-	.byte	<__DATA_LOAD_BANK__ ;,	<__SFX_LOAD_BANK__
+	.byte	<__DATA_LOAD_BANK__
 
 .endproc
 

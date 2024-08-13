@@ -1618,7 +1618,13 @@ famistudio_music_play:
 
 .if FAMISTUDIO_USE_FAMITRACKER_TEMPO
     lda famistudio_pal_adjust
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+.if 0   ;*  ORIGINAL BEGIN
+    beq @pal
+.endif  ;*  ORIGINAL END
+;*  MODIFIED
     ;beq @pal
+;!!! FAMISTUDIO DRIVER MODIFICATION END
     iny
     iny
 @pal:
@@ -4350,9 +4356,11 @@ famistudio_update:
 
 ;----------------------------------------------------------------------------------------------------------------------
 .if FAMISTUDIO_CFG_SFX_SUPPORT
-
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+;*  MODIFIED
     LDA #<.bank(sounds)
     JSR mmc3_tmp_prg_bank_1
+;!!! FAMISTUDIO DRIVER MODIFICATION END
 
     ; Process all sound effect streams
     .if FAMISTUDIO_CFG_SFX_STREAMS > 0
@@ -6532,7 +6540,7 @@ famistudio_sfx_init:
     ldy #0
     
 .if FAMISTUDIO_DUAL_SUPPORT
-    lda NTSC_MODE ; Add 2 to the sound list pointer for PAL
+    lda famistudio_pal_adjust ; Add 2 to the sound list pointer for PAL
     bne @ntsc
     iny
     iny
@@ -6595,11 +6603,6 @@ famistudio_sfx_play:
     asl a
     tay
 
-    ; - CUSTOM CODE -
-    lda #<.bank(sounds)
-    jsr mmc3_tmp_prg_bank_1
-    ; ---------------
-
     jsr famistudio_sfx_clear_channel ; Stops the effect if it plays
 
     lda famistudio_sfx_addr_lo
@@ -6613,12 +6616,7 @@ famistudio_sfx_play:
     lda (@effect_data_ptr),y
     sta famistudio_sfx_ptr_hi,x ; This write enables the effect
 
-    ; - CUSTOM CODE -
-    jmp _mmc3_pop_prg_bank_1
-    ; ---------------
-    ; --- THE OLD ---
     rts
-    ; ---------------
 
 ;======================================================================================================================
 ; FAMISTUDIO_SFX_UPDATE (internal)
