@@ -1409,7 +1409,7 @@ end:
 .import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _retro_mode, _icon
 .importzp _cube_rotate, _mini
 .import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING
-.import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_WAVE, _MINI_SWING
+.import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING
 .importzp _cube_data, _slope_frames, _slope_type
 drawcube_rounding_table:
 	.byte 0, <-1, <-2, 3, 2, 1
@@ -1902,13 +1902,13 @@ drawplayer_center_offsets:
         .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE
     sprite_table_table_lo2:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT_ALT, <_SPIDER, <_WAVE, <_SWING, <_CUBE
-        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT_ALT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE
+        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL_ALT, <_MINI_UFO, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE
     sprite_table_table_hi:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER, >_WAVE, >_SWING, >_CUBE
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE
     sprite_table_table_hi2:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER, >_WAVE, >_SWING, >_CUBE
-        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE
 
     rounding_slope_table:
 		;     45^  45v  22^  22v  66^  66v  nothing
