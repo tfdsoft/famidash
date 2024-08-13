@@ -195,7 +195,7 @@ const unsigned char * const MINI_CUBE2[] = {Mini_Cube2_0, Mini_Cube2_1, Mini_Cub
 
 const unsigned char Mini_Ball[]={
 
-	 -4,  4,0x0B,3|OAM_FLIP_V,
+	-12,  4,0x0B,3|OAM_FLIP_V,
 	0x80
 };
 
