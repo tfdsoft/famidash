@@ -79,7 +79,7 @@ void state_lvldone() {
 	tmp1 = 0;
 	tmpptr1 = NULL;
 
-	printDecimal(attempts, 5, 0xD0, 0xFF, NTADR_C(18,13));
+	display_attempt_counter(0xD0, NTADR_C(25, 13));	// Same bank as this
 	
 	if (!has_practice_point) {
 		LEVELCOMPLETE[level] = 1;

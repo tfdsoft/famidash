@@ -2775,3 +2775,121 @@ bank:
 	.byte	<__DATA_LOAD_BANK__ ;,	<__SFX_LOAD_BANK__
 
 .endproc
+
+
+; void increment_attempt_count();
+.segment "XCD_BANK_01"
+
+.import _attemptCounter
+
+.export _increment_attempt_count
+.proc _increment_attempt_count
+	; This can be totally made into a generic routine, just ping @alexmush (but itll be less optimized)
+	ldy #10	; the number limit
+	lda #0	; store if overflows
+		
+	inc _attemptCounter+0	;	attemptCounter[0]++;
+	cpy _attemptCounter+0	;	if (10 == attemptCounter[0]) {
+	bne finish				;		(Note the Yoda notation, sorta reflects the cpy)
+	sta _attemptCounter+0	;__		attemptCounter[0] = 0;
+
+	inc _attemptCounter+1	;		attemptCounter[1]++;
+	cpy _attemptCounter+1	;		if (10 == attemptCounter[1]) {
+	bne finish				;			attemptCounter[2] = 0;
+	sta _attemptCounter+1	;__	and so on until digit 7
+
+	inc _attemptCounter+2
+	cpy _attemptCounter+2
+	bne finish
+	sta _attemptCounter+2
+	
+	inc _attemptCounter+3
+	cpy _attemptCounter+3
+	bne finish
+	sta _attemptCounter+3
+
+	inc _attemptCounter+4
+	cpy _attemptCounter+4
+	bne finish
+	sta _attemptCounter+4
+
+	inc _attemptCounter+5
+	cpy _attemptCounter+5
+	bne finish
+	sta _attemptCounter+5
+
+	inc _attemptCounter+6	; No checks here lmao (can be added tho)
+	
+	finish:
+	rts
+.endproc
+
+
+; void display_attempt_counter (uint8_t zeroChr, uintptr_t ppu_address);
+.segment "LVL_BANK_00"	; Same as state_lvldone	
+
+.import _attemptCounter
+
+.export __display_attempt_counter
+.proc __display_attempt_counter
+	; AX = ppu_address
+	; sreg[0] = zeroChr
+	zeroChr = sreg
+
+	start:
+		pha		; temp storage
+		ldy #7	; size of _attemptCounter
+
+	numsize_loop:
+		dey
+		beq	use_one_vram_buffer	; If Y decrements to 0, we are just printing the last digit
+		lda	_attemptCounter, y
+		beq	numsize_loop
+
+		; now we have the (amount of digits to print - 1) in Y
+	vram_write_header:
+		sty	tmp1
+
+		txa					;
+		ora	#$40			;	NT_UPD_HORZ
+		ldx	VRAM_INDEX		;
+		sta	VRAM_BUF+0,	x	;	Calculate the vram address of the leftmost digit
+		pla					;	and store in the buffer
+		sec					;
+		sbc	tmp1			;
+		sta	VRAM_BUF+1,	x	;__
+		iny					;
+		tya					;	The amount of bytes needs to be incremented
+		sta	VRAM_BUF+2,	x	;__
+
+		clc
+	vram_write_main:
+		lda	_attemptCounter-1, y
+		; clc should not be needed as the writes SHOULD NOT overflow
+		adc	zeroChr
+		sta	VRAM_BUF+3,	x
+		inx
+		dey
+		bne vram_write_main
+
+	vram_write_finish:
+		lda	#$FF
+		sta	VRAM_BUF+3,	x
+		txa
+		clc
+		adc	#3
+		sta	VRAM_INDEX
+		rts
+
+	use_one_vram_buffer:
+		lda	_attemptCounter+0
+		clc
+		adc	zeroChr
+		sta	sreg	; doesn't matter, it's not used anymore anyway
+
+		; X has remained the same high byte of PPU address
+		; A has to be recovered rq
+		pla
+
+		jmp	__one_vram_buffer
+.endproc

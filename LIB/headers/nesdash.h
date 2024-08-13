@@ -126,6 +126,19 @@ void pad_poll_both();
  */
 void update_level_completeness();
 
+/**
+ * @brief Increment the attempt counter
+ */
+void increment_attempt_count();
+/**
+ * @brief Display the attempt counter (right-aligned, variable size)
+ *
+ * @param zeroChr The character ID to add to get tiles 0..9
+ * @param ppu_address The PPU address of the *rightmost* digit
+ */
+#define display_attempt_counter(zeroChr, ppu_address) (storeByteToSreg(zeroChr), __AX__ = ppu_address, _display_attempt_counter(__EAX__))
+void _display_attempt_counter (uint32_t args);
+
 #define low_word(a) *((uint16_t*)&a)
 #define high_word(a) *((uint16_t*)&a+1)
 

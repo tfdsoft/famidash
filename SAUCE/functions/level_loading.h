@@ -59,9 +59,9 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// register unsigned char i;
 	#define i (*((uint8_t *)&ii))
 	register uint16_t ii;
-	mmc3_set_prg_bank_1(GET_BANK(init_sprites));
 	init_sprites();
-
+	mmc3_set_prg_bank_1(GET_BANK(increment_attempt_count));
+	increment_attempt_count();
 	cube_data[0] = 0;
 	cube_data[1] = 0;
 
@@ -126,27 +126,16 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	set_scroll_x(scroll_x);
 	set_scroll_y(scroll_y);
 	if (!has_practice_point) {
-		multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(7, 15));
-		
-		hexToDec(attempts);
-
+		multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(6, 15));
+	
 //		if (TOTALATTEMPTSTHOUSANDS >= 10)
 //			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
 //
 //		else {
-			if (hexToDecOutputBuffer[3])
-				one_vram_buffer(0xf5+hexToDecOutputBuffer[3], NTADR_C(15,15));
-
-			if (hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2])
-				one_vram_buffer(0xf5+hexToDecOutputBuffer[2], NTADR_C(16,15));
-
-			if (hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1])
-				one_vram_buffer(0xf5+hexToDecOutputBuffer[1], NTADR_C(17,15));
-
-			one_vram_buffer(0xf5+hexToDecOutputBuffer[0], NTADR_C(18,15));		
-//		}
+			mmc3_set_prg_bank_1(GET_BANK(_display_attempt_counter));
+			display_attempt_counter(0xF5, NTADR_C(20, 15));
 	}
-	#undef i
+	
 }
 
 #pragma code-name(pop)

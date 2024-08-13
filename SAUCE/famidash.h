@@ -261,7 +261,6 @@ uint8_t kandotemp;
 uint8_t kandotemp2[2];
 uint8_t kandotemp5;
 uint8_t kandoframecnt;
-uint32_t attempts;
 uint8_t controllingplayer;
 uint8_t spiderframe[2];
 uint8_t robotframe[2];
@@ -350,6 +349,9 @@ uint8_t discoframe;
 uint8_t no_parallax;
 uint8_t outline_color;
 uint8_t forced_trails;
+
+uint8_t attemptCounter[7];
+
 
 uint8_t gnd_palette_transition_timer;
 uint8_t original_gnd_palette_idx_0;

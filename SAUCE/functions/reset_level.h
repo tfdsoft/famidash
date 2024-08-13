@@ -40,7 +40,6 @@ void reset_level(void) {
 			--tmp1;
 		}
     }
-    attempts++;
     pal_fade_to_withmusic(4,0);
     oam_clear();
     ppu_off(); // reset the level when you get to this point, and change this later
