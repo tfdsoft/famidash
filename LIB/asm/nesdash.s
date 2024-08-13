@@ -1902,13 +1902,13 @@ drawplayer_center_offsets:
         .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE
     sprite_table_table_lo2:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT_ALT, <_SPIDER, <_WAVE, <_SWING, <_CUBE
-        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE
+        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT_ALT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE
     sprite_table_table_hi:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER, >_WAVE, >_SWING, >_CUBE
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE
     sprite_table_table_hi2:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER, >_WAVE, >_SWING, >_CUBE
-        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE
 
     rounding_slope_table:
 		;     45^  45v  22^  22v  66^  66v  nothing
@@ -2288,14 +2288,14 @@ drawplayer_common := _drawplayerone::common
 		.byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT2, <_SPIDER2, <_WAVE2, <_SWING2, <_CUBE2
 		.byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2, <_MINI_CUBE2
     sprite_table_table_lo2:
-        .byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT_ALT, <_SPIDER,2 <_WAVE2, <_SWING2, <_CUBE2
-        .byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2, <_MINI_CUBE2
+        .byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT_ALT, <_SPIDER2, <_WAVE2, <_SWING2, <_CUBE2
+        .byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT_ALT, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2, <_MINI_CUBE2
 	sprite_table_table_hi:
 		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2, >_WAVE2, >_SWING2, <_CUBE2
 		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2, <_MINI_CUBE2
     sprite_table_table_hi2:
         .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT, >_SPIDER2, >_WAVE2, >_SWING2, <_CUBE2
-        .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2, <_MINI_CUBE2
+        .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2, <_MINI_CUBE2
 .endproc
 
 ; char bg_collision_sub();
