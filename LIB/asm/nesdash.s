@@ -72,7 +72,7 @@ sprite_data = _sprite_data
 	; 15 metatiles in the top screen 
 	; 12 metatiles in the bot screen
 	; 3 metatiles in the ground
-	columnBuffer:		.res 15 + 12 + 3
+	columnBuffer:		.res 15 + 15 + 15 + 12 + 3
 
 	current_song_bank:	.res 1
 	scroll_count:		.res 1
@@ -81,11 +81,20 @@ sprite_data = _sprite_data
 	parallax_scroll_column_start: .res 1
 	hexToDecOutputBuffer: .res 5
 
+	extceil:			.res 1
+	rld_load_value:		.res 1
+	min_scroll_y:		.res 2
+
+	seam_scroll_y:		.res 2
+ 
+
 .export _scroll_count := scroll_count
 .export _auto_fs_updates := auto_fs_updates
 .export _parallax_scroll_column := parallax_scroll_column
 .export _parallax_scroll_column_start := parallax_scroll_column_start
 .export _hexToDecOutputBuffer := hexToDecOutputBuffer
+.export _extceil := extceil
+.export _min_scroll_y := min_scroll_y
 .export _pad = PAD_STATEP
 .export _pad_new = PAD_STATET
 
@@ -276,9 +285,44 @@ _init_rld:
 	TAX
 	LDA palBrightTable3, X
 	STA PAL_BUF+5		;__	Store faded color (pal_col(5, oneShadeDarker(tmp2)))
+	INC <PAL_UPDATE		;__ Yes, we do need to update the palette
+
 	incw_check level_data
 
-	INC <PAL_UPDATE		;__ Yes, we do need to update the palette
+	.if USE_ILLEGAL_OPCODES
+		lax (level_data),y
+	.else
+		LDA	(level_data),y
+		TAX
+	.endif
+	EOR #$FF			;
+	CLC					;	Level height
+	ADC #$01			;
+	STA rld_load_value	;__
+
+	LDA	#$01			;- (to automatically shift out 1)
+	CPX	#27+1			;	Extceil flag
+	ROR					;
+	STA	extceil			;__
+
+	@min_scroll_y_calc:
+		LDA	#$00			;
+		STA	min_scroll_y+1	;__
+		
+		TXA					;
+	@min_scroll_y_loop:
+		; SEC done by LDA #$80, and looping
+		SBC	#15				;__
+		BCC	@min_scroll_y_fin
+		INC	min_scroll_y+1
+		TAX
+		BCS	@min_scroll_y_loop	; = BRA
+	@min_scroll_y_fin:
+		LDA	shiftBy4table, X
+		ORA #$08
+		STA min_scroll_y
+
+	incw_check level_data
 
 SetupNextRLEByte:
     LDA (level_data),y	;
@@ -322,12 +366,12 @@ single_rle_byte:
 .proc _unrle_next_column
 
 	; Count up to zero to remove a cmp instruction
-	ldx #<-27
+	ldx rld_load_value
 	ldy #$00
 	lda rld_value
 
 	@FirstLoop:
-		sta columnBuffer - ($100 - 27), x
+		sta columnBuffer - ($100 - (15 + 15 + 15 + 12)), x
 		dec rld_run
 		bmi @UpdateValueRun
 		inx 
@@ -487,18 +531,38 @@ single_rle_byte:
 		and #$0F
 		tax
 	.endif
-	.repeat 15, I
-		lda columnBuffer + I
-		sta collMap0 + I * 16, x
-	.endrepeat
-	.repeat 12, I
-		lda columnBuffer+15 + I
-		sta collMap1 + I * 16, x
-	.endrepeat
-	.repeat 3, I
-		lda ground + I * 16, x
-		sta columnBuffer+15+12+I
-	.endrepeat
+	ldy rld_load_value
+	cpy #<-(15+15+12)
+	bcs write_collmap1
+		.repeat 15, I
+			lda columnBuffer+(15*0) + I
+			sta collMap0 + I * 16, x
+		.endrepeat
+	write_collmap1:
+	cpy #<-(15+12)
+	bcs write_collmap2
+		.repeat 15, I
+			lda columnBuffer+(15*1) + I
+			sta collMap1 + I * 16, x
+		.endrepeat
+	write_collmap2:
+	cpy #<-(12)
+	bcs write_collmap3
+		.repeat 15, I
+			lda columnBuffer+(15*2) + I
+			sta collMap2 + I * 16, x
+		.endrepeat
+	write_collmap3:
+		.repeat 12, I
+			lda columnBuffer+(15*3) + I
+			sta collMap3 + I * 16, x
+		.endrepeat
+	write_ground:
+		.repeat 3, I
+			lda ground + I * 16, x
+			sta columnBuffer+(15*3)+12+I
+		.endrepeat
+	rts
 .endproc
 
 ; void draw_screen_R();
@@ -527,6 +591,7 @@ single_rle_byte:
 
 	CurrentRow = tmp1
 	LoopCount = tmp2
+	SeamValue = ptr3+1
 
 	.export _draw_screen_R_frame0 := frame0
 	.export _draw_screen_R_frame1 := frame1
@@ -571,7 +636,76 @@ single_rle_byte:
 		crossPRGBankJSR ,_unrle_next_column,_level_data_bank
 		JSR writeToCollisionMap
 
+		; Seam position:
+		; Y ≥	| Y <	| A		| B		|
+		; 	0	|  $78	|	0	|	1	|
+		;  $78	| $178	|  0/2	|	1	|
+		; $178	| $278	|	2	|  1/3	|
+		; $278	| $2F0	|	2	|	3	|
+		; $10 is added to Y at all F0 boundaries but the edge
+
+		; Get seam position for attributes
+		; Seampos = (((Y-$78)>>4)&$FE)<<4 = (Y-78)&$FFE0 
+		LDX	_scroll_y+1
+		LDA	_scroll_y
+		SEC
+		SBC	#$78	;
+		BCS	:+		;	AX = scroll_y - $78
+			DEX		;__
+		:
+		CPX	#$02	;
+		BCC	:+		;	if X == 2 or -1 (aka no seam)
+			INX
+			TXA
+			.if USE_ILLEGAL_OPCODES
+				AXS #$7C	; = ORX #$84
+			.else
+				ORA #$84
+				TAX
+			.endif
+		:			;__
+		STA	seam_scroll_y
+		STX seam_scroll_y+1
+
+		JMP :+
+
+		; Total seam scroll system:
+		; High byte	| Seam screen	| A		| B		|
+		;	00		|		00		|  0/2	|	1	|
+		;	01		|		01		|	2	|  1/3	|
+		;	84		|	There isn't	|	0	| 	1	|
+		;	87		|	There isn't	|	2	|	3	|
+		;	No seam can be distinguished by bits 7 or 2
+		;	First nametable's data can be distinguished by bit 0
+
 	frame1:
+
+		LDA seam_scroll_y
+		LDX seam_scroll_y+1
+
+		:
+
+		; Load seam value
+		CPX #$80	; Put last bit of X into carry
+		BCS :+	; Skip everything if no seam
+			LSR
+			LSR
+			LSR
+			AND #$0E
+			ORA shiftBy4table, X	; X can only be 0 or 1
+			STA SeamValue
+			JMP :++
+		:	
+		STX SeamValue
+		:
+
+		; Load initial column buffer index
+		TXA
+		AND #$01
+		BEQ :+
+			LDA #15+15
+		:
+		STA CurrentRow
 
 			; Writing to nesdoug's VRAM buffer starts here
 			LDX VRAM_INDEX
@@ -609,9 +743,6 @@ single_rle_byte:
 
 			; The sequence itself:
 			
-			; Load Y value
-			LDY #$00
-			sty CurrentRow
 			; Load max value
 			LDA #15 - 1
 			STA LoopCount
@@ -727,24 +858,45 @@ single_rle_byte:
 			STA ptr3
 		.endif
 
+		; Seam pos for attributes:
+		; <seam_scroll_y & $E0 | >seam_scroll_y & 1 
+		LDA seam_scroll_y
+		AND #$E0
+		STA SeamValue
+		LDA seam_scroll_y+1
+		AND #$05	; add bit 2 to not use if no seam
+		ORA SeamValue
+		STA SeamValue
+
 		; Get the ptr (I am not bothering with 2 separate loops)
-		LDA #>collMap0
+		AND #$01		;	Bit 1 is directly from >seam_scroll_y
+		ASL				;	For values 0 or 84 load collmap 0
+		ORA #>collMap0	;__	For values 1 or 87 load collmap 2
 		STA ptr1+1
 		LDA ptr3
 		AND #$0E
 		; ADC #<(collMap0-1) ; the low byte is 0
 		STA ptr1
 
-		LDA #8 - 1
 		LDX #0
-		STX ptr2+1
-		JSR attributeSetup
+		STX ColumnBufferIdx
+		JSR attributeCalc
 
-		INC ptr1+1
+		; Update pointer
+		; If there is a seam, we are switching from collmap 2
+		; to 1 -> DEC (also update the seamvalue here)
+		; If there isn't, we are either switching
+		; from 0 to 1 or from 2 to 3 -> INC
+		BIT seam_scroll_y+1
+		BMI :+
+		DEC	ptr1+1
+			DEC SeamValue
+			BNE	:++	; = BRA
+		:
+			INC ptr1+1
+		:
 
-		; Update new maximum
-		LDA #8 - 1
-		JSR attributeSetup
+		JSR attributeCalc
 
 		; Get address hi byte (either left or right side)
 		lda _scroll_x + 1 ; high byte
@@ -815,10 +967,14 @@ single_rle_byte:
 		LDA #$01
 		RTS
 
-	attributeSetup:
+	attributeCalc:
+		tmp5 = ptr2
+		ColumnBufferIdx = ptr2+1
+
+		LDA #8 - 1
 		STA LoopCount
 
-		attributeLoop1:
+		attributeLoop:
 			; Read lower right metatile
 			LDY #$11
 			.if USE_ILLEGAL_OPCODES
@@ -836,7 +992,7 @@ single_rle_byte:
 			ASL
 			ASL
 			ora metatiles_attr,y	; Lower left
-			STA ptr2
+			STA tmp5
 
 			; Read upper right metatile
 			LDY #$01
@@ -857,25 +1013,25 @@ single_rle_byte:
 			ora metatiles_attr,y	; Upper left
 
 			; Combine
-			LDY ptr2	; Y has the lower metatile attrs, will shift by 4
+			LDY tmp5	; Y has the lower metatile attrs, will shift by 4
 			ORA shiftBy4table,Y
-			LDX ptr2+1
+			LDX tmp5+1
 			STA columnBuffer,X
 
 			; Increment pointer
-			LDA ptr1
-			; Last thing affecting carry is the ASL, which
-			; always shifts 0 into it if the metatile data
-			; is valid
+			LDA	ptr1
+			CMP SeamValue
+			BNE :+
+				INC ptr1+1
+				INC ptr1+1
+			:
+			CLC
 			ADC #$20
-			STA ptr1
-			; BCC :+
-			; 	INC ptr1+1
-			; :
+			STA	ptr1
 
-			INC ptr2+1
+			INC ColumnBufferIdx
 			DEC LoopCount
-			BPL attributeLoop1
+			BPL attributeLoop
 		RTS
 
 	right_tilewriteloop:
@@ -896,7 +1052,13 @@ single_rle_byte:
 			
 			INX
 			INX
-			inc CurrentRow
+			LDA CurrentRow
+			CMP SeamValue
+			SEC
+			BNE :+
+				ADC #15+15-1
+			: ADC #0
+            STA CurrentRow
 			DEC LoopCount
 			BPL right_tilewriteloop
 		rts
@@ -918,7 +1080,13 @@ single_rle_byte:
 			
 			INX
 			INX
-			inc CurrentRow
+			LDA CurrentRow
+			CMP SeamValue
+			SEC
+			BNE :+
+				ADC #15+15-1
+			: ADC #0
+            STA CurrentRow
 			DEC LoopCount
 			BPL left_tilewriteloop
 		rts
@@ -1405,6 +1573,27 @@ early_exit:
 	rts
 .endproc
 
+; uint16_t calculate_linear_scroll_y();
+.segment "CODE_2"
+
+.export _calculate_linear_scroll_y
+.proc _calculate_linear_scroll_y
+	LDY _scroll_y+1
+	INY
+	LDA _scroll_y
+	LDX #0
+	CLC
+	loop:
+		DEY
+		BEQ end
+		ADC #$F0
+		BCC loop
+			INX
+			CLC
+			BCC loop
+	end:
+	RTS
+.endproc
 
 ; void check_spr_objects();
 .segment "CODE_2"
@@ -1413,6 +1602,7 @@ early_exit:
 
 .export _check_spr_objects := check_spr_objects
 .proc check_spr_objects
+	realScrollY = ptr1
 	; save current bank
     lda mmc3PRG1Bank
     pha
@@ -1420,6 +1610,10 @@ early_exit:
 	; load sprite data bank
     lda _sprite_data_bank
     jsr mmc3_set_prg_bank_1
+
+	jsr _calculate_linear_scroll_y
+	sta realScrollY
+	stx realScrollY+1
 
     ; for each sprite we want to check to see if its active
     ; if it is, update its realx/y position
@@ -1450,10 +1644,10 @@ check_sprite_loop:
         ; sprite is alive AND onscreen x, so now check the Y position
         lda _activesprites_y_lo, x
         clc ; NOTICE: intentionally subtract 1 extra to position them on the screen better
-        sbc _scroll_y
+        sbc realScrollY
         sta _activesprites_realy, x
         lda _activesprites_y_hi, x
-        sbc _scroll_y+1
+        sbc realScrollY+1
         bne sprite_offscreen
 
         ; totally onscreen so finish updating its scroll position
@@ -2396,8 +2590,8 @@ drawplayer_common := _drawplayerone::common
 	ORA tmp1		;	coordinates = (temp_x >> 4) + ((temp_y) & 0xf0);
 	TAY				;__
 
-	LDA _temp_room	;	tmp3 = temp_room&1;
-	AND #$01		;__
+	LDA _temp_room	;	tmp3 = temp_room&3;
+	AND #$03		;__
 	ORA #>collMap0
 	STA ptr1+1
 	LDA #$00

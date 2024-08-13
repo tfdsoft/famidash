@@ -177,16 +177,18 @@ clearVRAM:
 clearRAM:
     txa
 @1:
-    sta $00,x
-    sta $0100,x
-    sta $0200,x
-    sta $0300,x
-    sta $0400,x
-    sta $0500,x
-    sta $0600,x
-    sta $0700,x
-	sta $6000,x
-	sta $6100,x
+    sta $00,x   ;
+    sta $0100,x ;
+    sta $0200,x ;
+    sta $0300,x ;   Clear regular NES RAM
+    sta $0400,x ;
+    sta $0500,x ;
+    sta $0600,x ;
+    sta $0700,x ;__
+	sta $6000,x ;
+	sta $6100,x ;   Clear the collision map space
+    sta $6200,x ;
+	sta $6300,x ;__
     inx
     bne @1
 
@@ -330,7 +332,11 @@ GeometryDashPCMB:
 .segment "COLLMAP0"
 	collMap0:		.res 16*15
 .segment "COLLMAP1"
-	collMap1:		.res 16*12
+	collMap1:		.res 16*15
+.segment "COLLMAP2"
+    collMap2:       .res 16*15
+.segment "COLLMAP3"
+    collMap3:       .res 16*12
 	ground:			.res 16*3
 
 .segment "VECTORS"
