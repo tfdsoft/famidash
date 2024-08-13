@@ -731,7 +731,7 @@ char bg_coll_U() {
 		
 		storeWordSeparately(
 			add_scroll_y(
-				Generic.y + (mini ? byte(0x10 - Generic.height) >> 1 : 0),
+				Generic.y + (mini ? byte(0x10 - Generic.height) >> 1 : 0) + 1,
 				scroll_y
 			), temp_y, temp_room);
 		
