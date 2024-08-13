@@ -140,25 +140,25 @@ const unsigned char Trail_Circ[]={
 
 const unsigned char Mini_Cube_0[]={
 
-	-4,  -5,0x35,3,
+	-4,  -4,0x35,3,
 	0x80
 };
 	
 const unsigned char Mini_Cube_1[]={
 
-	-4,  -5,0x37,3,
+	-4,  -4,0x37,3,
 	0x80
 };
 	
 const unsigned char Mini_Cube_2[]={
 
-	-4,  -5,0x39,3,
+	-4,  -4,0x39,3,
 	0x80
 };
 
 const unsigned char Mini_Cube_3[]={
 
-	-4,  -5,0x3B,3,
+	-4,  -4,0x3B,3,
 	0x80
 };//Full 360 mini frames need to be added here - Ficus
 	
@@ -167,25 +167,25 @@ const unsigned char * const MINI_CUBE[] = {Mini_Cube_0, Mini_Cube_1, Mini_Cube_1
 
 const unsigned char Mini_Cube2_0[]={
 
-	-4,  -5,0x35,1,
+	-4,  -4,0x35,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_1[]={
 
-	-4,  -5,0x37,1,
+	-4,  -4,0x37,1,
 	0x80
 };
 	
 const unsigned char Mini_Cube2_2[]={
 
-	-4,  -5,0x39,1,
+	-4,  -4,0x39,1,
 	0x80
 };
 
 const unsigned char Mini_Cube2_3[]={
 
-	-4,  -5,0x3B,1,
+	-4,  -4,0x3B,1,
 	0x80
 };//Full 360 mini frames need to be added here too - Ficus
 	
@@ -345,17 +345,17 @@ const unsigned char * const UFO[] = {UFO_0, UFO_U, UFO_D};
 	
 const unsigned char MINI_UFO_0[]={
 
-	 -4,  -5,0x19,3,
+	 -4,  -4,0x19,3,
 	0x80
 };		
 const unsigned char MINI_UFO_U[]={
 
-	 -4,  -5,0x19,3,
+	 -4,  -4,0x19,3,
 	0x80
 };		
 const unsigned char MINI_UFO_D[]={
 
-	 -4,  -5,0x19,3,
+	 -4,  -4,0x19,3,
 	0x80
 };	
 
@@ -396,17 +396,17 @@ const unsigned char * const UFO2[] = {UFO2_0, UFO2_U, UFO2_D};
 	
 const unsigned char MINI_UFO2_0[]={
 
-	 -4,  -5,0x19,1,
+	 -4,  -4,0x19,1,
 	0x80
 };		
 const unsigned char MINI_UFO2_U[]={
 
-	 -4,  -5,0x19,1|OAM_FLIP_H,
+	 -4,  -4,0x19,1|OAM_FLIP_H,
 	0x80
 };		
 const unsigned char MINI_UFO2_D[]={
 
-	 -4,  -5,0x19,1,
+	 -4,  -4,0x19,1,
 	0x80
 };	
 
@@ -620,32 +620,32 @@ const unsigned char * const SWING2[] = {Swing2_0, Swing2_0, Swing2_1, Swing2_2, 
 // mini swing
 const unsigned char Mini_Swing_0[]={
 
-	 -4,  -5,0x1B,3,
+	 -4,  -4,0x1B,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_1[]={
 
-	 -4,  -5,0x1B,3,
+	 -4,  -4,0x1B,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_2[]={
 
-	 -4,  -5,0x3F,3,
+	 -4,  -4,0x3F,3,
 	0x80
 };
 
 
 const unsigned char Mini_Swing_5[]={
 
-	 -4,  -5,0x3D,3,
+	 -4,  -4,0x3D,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_6[]={
 
-	 -4,  -5,0x3D,3,
+	 -4,  -4,0x3D,3,
 	0x80
 };
 
@@ -653,32 +653,32 @@ const unsigned char Mini_Swing_6[]={
 const unsigned char * const MINI_SWING[] = {Mini_Swing_0, Mini_Swing_0, Mini_Swing_1, Mini_Swing_2, Mini_Swing_2, Mini_Swing_5, Mini_Swing_6, Mini_Swing_6};
 const unsigned char Mini_Swing2_0[]={
 
-	 -4,  -5,0x1B,1,
+	 -4,  -4,0x1B,1,
 	0x80
 };
 
 const unsigned char Mini_Swing2_1[]={
 
-	 -4,  -5,0x1B,1,
+	 -4,  -4,0x1B,1,
 	0x80
 };
 
 const unsigned char Mini_Swing2_2[]={
 
-	 -4,  -5,0x3F,1,
+	 -4,  -4,0x3F,1,
 	0x80
 };
 
 
 const unsigned char Mini_Swing2_5[]={
 
-	 -4,  -5,0x3D,1,
+	 -4,  -4,0x3D,1,
 	0x80
 };
 
 const unsigned char Mini_Swing2_6[]={
 
-	 -4,  -5,0x3D,1,
+	 -4,  -4,0x3D,1,
 	0x80
 };
 
@@ -688,32 +688,32 @@ const unsigned char * const MINI_SWING2[] = {Mini_Swing2_0, Mini_Swing2_0, Mini_
 
 const unsigned char Mini_Ship_0[]={
 
-	 -4,  -5,0x01,3,
+	 -4,  -4,0x01,3,
 	0x80
 };
 
 const unsigned char Mini_Ship_1[]={
 
-	 -4,  -5,0x03,3,
+	 -4,  -4,0x03,3,
 	0x80
 };
 
 const unsigned char Mini_Ship_2[]={
 
-	 -4,  -5,0x05,3,
+	 -4,  -4,0x05,3,
 	0x80
 };
 
 
 const unsigned char Mini_Ship_5[]={
 
-	 -4,  -5,0x07,3,
+	 -4,  -4,0x07,3,
 	0x80
 };
 
 const unsigned char Mini_Ship_6[]={
 
-	 -4,  -5,0x09,3,
+	 -4,  -4,0x09,3,
 	0x80
 };
 
@@ -762,32 +762,32 @@ const unsigned char * const SHIP2[] = {Ship2_0, Ship2_0, Ship2_1, Ship2_2, Ship2
 
 const unsigned char Mini_Ship2_0[]={
 
-	 -4,  -5,0x01,1,
+	 -4,  -4,0x01,1,
 	0x80
 };
 
 const unsigned char Mini_Ship2_1[]={
 
-	 -4,  -5,0x03,1,
+	 -4,  -4,0x03,1,
 	0x80
 };
 
 const unsigned char Mini_Ship2_2[]={
 
-	 -4,  -5,0x05,1,
+	 -4,  -4,0x05,1,
 	0x80
 };
 
 
 const unsigned char Mini_Ship2_5[]={
 
-	 -4,  -5,0x07,1,
+	 -4,  -4,0x07,1,
 	0x80
 };
 
 const unsigned char Mini_Ship2_6[]={
 
-	 -4,  -5,0x09,1,
+	 -4,  -4,0x09,1,
 	0x80
 };
 
@@ -930,25 +930,25 @@ const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump
 
 const unsigned char Mini_Robot_0[]={
 	
-	-4,   -5, 0x13,3,
+	-4,   -4, 0x13,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_1[]={
 	
-	-4,   -5, 0x15,3,
+	-4,   -4, 0x15,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_2[]={
 	
-	-4,   -5, 0x17,3,
+	-4,   -4, 0x17,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump_1[]={
 	
-	-4,   -5, 0x15,3,
+	-4,   -4, 0x15,3,
 	0x80
 };//also mini robot 3rd animation frame - Ficus
 
@@ -957,25 +957,25 @@ const unsigned char * const MINI_ROBOT_JUMP[]={Mini_Robot_Jump_1, Mini_Robot_Jum
 // ================================================================
 const unsigned char Mini_Robot_ALT_0[]={
 	
-	-4,   -5, 0x35,3,
+	-4,   -4, 0x35,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_ALT_1[]={
 	
-	-4,   -5, 0x37,3,
+	-4,   -4, 0x37,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_ALT_2[]={
 	
-	-4,   -5, 0x39,3,
+	-4,   -4, 0x39,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump_ALT_1[]={
 	
-	-4,   -5, 0x3D,3,
+	-4,   -4, 0x3D,3,
 	0x80
 };//also mini robot 3rd animation frame - Ficus
 
@@ -1021,25 +1021,25 @@ const unsigned char * const ROBOT_JUMP2[]={Robot_Jump2_1, Robot_Jump2_1, Robot_J
 
 const unsigned char Mini_Robot2_0[]={
 	
-	-4,   -5, 0x13,1,
+	-4,   -4, 0x13,1,
 	0x80
 };
 
 const unsigned char Mini_Robot2_1[]={
 	
-	-4,   -5, 0x15,1,
+	-4,   -4, 0x15,1,
 	0x80
 };
 
 const unsigned char Mini_Robot2_2[]={
 	
-	-4,   -5, 0x17,1,
+	-4,   -4, 0x17,1,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump2_1[]={
 	
-	-4,   -5, 0x15,1,
+	-4,   -4, 0x15,1,
 	0x80
 };
 
