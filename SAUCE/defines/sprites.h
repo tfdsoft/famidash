@@ -656,8 +656,41 @@ const unsigned char Mini_Swing_6[]={
 	0x80
 };
 
-
 const unsigned char * const MINI_SWING[] = {Mini_Swing_0, Mini_Swing_0, Mini_Swing_1, Mini_Swing_2, Mini_Swing_2, Mini_Swing_5, Mini_Swing_6, Mini_Swing_6};
+
+const unsigned char Mini_Swing_0_ALT[]={
+
+	 -12,  -4,0x1B,3,
+	0x80
+};
+
+const unsigned char Mini_Swing_1_ALT[]={
+
+	 -12,  -4,0x1B,3,
+	0x80
+};
+
+const unsigned char Mini_Swing_2_ALT[]={
+
+	 -12,  -4,0x3F,3,
+	0x80
+};
+
+
+const unsigned char Mini_Swing_5_ALT[]={
+
+	 -12,  -4,0x3D,3,
+	0x80
+};
+
+const unsigned char Mini_Swing_6_ALT[]={
+
+	 -12,  -4,0x3D,3,
+	0x80
+};
+
+const unsigned char * const MINI_SWING_ALT[] = {Mini_Swing_0_ALT, Mini_Swing_0_ALT, Mini_Swing_1_ALT, Mini_Swing_2_ALT, Mini_Swing_2_ALT, Mini_Swing_5_ALT, Mini_Swing_6_ALT, Mini_Swing_6_ALT};
+
 const unsigned char Mini_Swing2_0[]={
 
 	 -4,  -4,0x1B,1,
