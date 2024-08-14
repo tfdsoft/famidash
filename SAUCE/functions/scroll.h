@@ -40,6 +40,8 @@ void do_the_scroll_thing(){
 				scroll_y -= tmp1;
 				high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
 			}
+			// currplayer -= sub_scroll_y_ext(min_scroll_y, scroll_y);
+			// scroll_y = min_scroll_y;
 			while (scroll_y < min_scroll_y) {
 				++scroll_y;
 				--high_byte(currplayer_y);
@@ -59,6 +61,8 @@ void do_the_scroll_thing(){
 				scroll_y = sub_scroll_y(tmp1, scroll_y);
 				high_byte(currplayer_y) += tmp1;
 			}
+			// currplayer -= sub_scroll_y_ext(min_scroll_y, scroll_y);
+			// scroll_y = min_scroll_y;
 			while (scroll_y < min_scroll_y) {
 				++scroll_y;
 				--high_byte(currplayer_y);
@@ -123,6 +127,8 @@ void do_the_scroll_thing2(){
 			scroll_y = sub_scroll_y(tmp1, scroll_y);
 			high_byte(currplayer_y) += tmp1;
 		}
+		// currplayer -= sub_scroll_y_ext(min_scroll_y, scroll_y);
+		// scroll_y = min_scroll_y;
 		while (scroll_y < min_scroll_y) {
 			++scroll_y;
 			--high_byte(currplayer_y);
@@ -144,6 +150,8 @@ void do_the_scroll_thing2(){
 			high_byte(currplayer_y) += tmp1;
 		}
 		// TODO: boundary according to extceil flag
+		// currplayer -= sub_scroll_y_ext(min_scroll_y, scroll_y);
+		// scroll_y = min_scroll_y;
 		while (scroll_y < min_scroll_y) {
 			++scroll_y;
 			--high_byte(currplayer_y);
