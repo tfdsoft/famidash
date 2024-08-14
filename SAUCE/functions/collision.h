@@ -813,7 +813,7 @@ void bg_coll_death() {
 
 	storeWordSeparately(
 		add_scroll_y(
-			Generic.y + (Generic.width >> 1),
+			Generic.y + (Generic.height >> 1) + (mini ? byte(0x10 - Generic.height) >> 1 : 0),
 			scroll_y
 		), temp_y, temp_room);
 
