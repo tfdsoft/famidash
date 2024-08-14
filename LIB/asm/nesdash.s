@@ -309,9 +309,12 @@ _init_rld:
 		LDA	#$00			;
 		STA	min_scroll_y+1	;__
 		
-		TXA					;
+		TXA						;
+		EOR	#$FF				;	Get 57 - level height
+		; SEC done by LDA #$01	;	aka the highest row
+		ADC #<(1+57-1)			;__
+		SEC
 	@min_scroll_y_loop:
-		; SEC done by LDA #$80, and looping
 		SBC	#15				;__
 		BCC	@min_scroll_y_fin
 		INC	min_scroll_y+1
