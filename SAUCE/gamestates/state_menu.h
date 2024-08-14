@@ -183,8 +183,7 @@ void state_menu();
 const uint8_t lvlselect_irq_table[] = {
 	31,
 	irqtable_hscroll, 0x00, // item 0x02 gets modified every frame
-	150,
-	irqtable_hscroll, 0x00,
+	149,
 	irqtable_hscroll, 0x00,
 
 	irqtable_end // always end with 0xff
@@ -242,7 +241,7 @@ void levelselection() {
 		if (tmp4) edit_irq_table(high_byte(tmp8),2);
 		else edit_irq_table(low_byte(tmp8),2);
 
-		//if (PEEK(0x01) & 1) 
+		if ((PEEK(0x01) & 1)) 
 			low_byte(tmp8) >>= 1;
 		high_byte(tmp8) = low_byte(tmp8)^0xff;
 
