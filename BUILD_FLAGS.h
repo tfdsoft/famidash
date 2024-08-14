@@ -59,8 +59,12 @@
 // Speed up parts of the game with these flag(s).
 //
 // Use Illegal Opcodes
-// set to 1 to speed up some code in the nesdash library.
-// incompatible with clone consoles and some emulators.
+// set this to 1 to *slightly* speed up some code in nesdash.s.
+// real Famicoms/NESs should have no problems executing code
+// with such opcodes, but clone CPUs in Famiclones such as
+// Dendy as well as some emulators do not execute those
+// reliably, therefore we advise to have it turned off for
+// maximum hardware compatibility.
 #define USE_ILLEGAL_OPCODES 0
 // ============================================================
 
@@ -71,5 +75,5 @@
 //
 // Save File Version
 // increase by 1 if SRAM values are added, changed or deleted.
-#define FLAG_SAVE_VER 0x03
+#define FLAG_SAVE_VER 0x04
 // ============================================================
