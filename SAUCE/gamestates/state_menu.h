@@ -121,15 +121,18 @@ const char coin_counter[][3] = {
 	Refreshes level name & number
 */
 void __fastcall__ refreshmenu(void) {
+	tmp5 = ((level&1)<<10);
+	set_scroll_x(((level-tmp4)&1)<<8);
+	
 	__A__ = idx16_hi_NOC(leveltexts, level);
-	if (__A__) draw_padded_text(leveltexts[level & 0x7F], level_text_size[level], 17, NTADR_A(8, 10));
-	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10));
+	if (__A__) draw_padded_text(leveltexts[level & 0x7F], level_text_size[level], 17, NTADR_A(8, 10)+tmp5);
+	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10)+tmp5);
 	// if (leveltexts2[level]) // always true
-	draw_padded_text(leveltexts2[level & 0x7F], level_text_size2[level], 17, NTADR_A(8, 11));
+	draw_padded_text(leveltexts2[level & 0x7F], level_text_size2[level], 17, NTADR_A(8, 11)+tmp5);
 
-	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9));
-	one_vram_buffer('z', NTADR_A(8, 9)); }
-	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9));
+	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9)+tmp5);
+	one_vram_buffer('z', NTADR_A(8, 9)+tmp5); }
+	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9)+tmp5);
 
 	{	// write the difficulty
 		tmp1 = difficulty_list[level];
@@ -137,22 +140,22 @@ void __fastcall__ refreshmenu(void) {
 		pal_col(0x0b, difficulty_pal_B[tmp1]);
 		
 		tmp1 = (tmp1 << 1) + 'a';
-		one_vram_buffer(tmp1, NTADR_A(7, 10));
-		one_vram_buffer(++tmp1, NTADR_A(8, 10));
-		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(7, 11));
-		one_vram_buffer(++tmp1, NTADR_A(8, 11));
+		one_vram_buffer(tmp1, NTADR_A(7, 10)+tmp5);
+		one_vram_buffer(++tmp1, NTADR_A(8, 10)+tmp5);
+		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(7, 11)+tmp5);
+		one_vram_buffer(++tmp1, NTADR_A(8, 11)+tmp5);
 		
 
 	}
 	// Star count stuff
-		printDecimal(stars_list[level], 2, '0', ' ', NTADR_A(22, 9));
+		printDecimal(stars_list[level], 2, '0', ' ', NTADR_A(22, 9)+tmp5);
 
 	
 	// Normal level completeness stuff
-		printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16));
+		printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);
 
 	// Practice level completeness stuff
-		printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19));
+		printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19)+tmp5);
 
 	//palette stuff
 		tmp3 = level % 9;
@@ -167,7 +170,7 @@ void __fastcall__ refreshmenu(void) {
 		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
 		tmp7 = byte(tmp7<<1) + tmp7;
 	// actually draw the coins
-		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12));
+		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12)+tmp5);
 
 };
 
@@ -176,11 +179,25 @@ void state_menu();
 
 
 #include "defines/mainmenu_charmap.h"
+
+const uint8_t lvlselect_irq_table[] = {
+	31,
+	irqtable_hscroll, 0x00, // item 0x02 gets modified every frame
+	150,
+	irqtable_hscroll, 0x00,
+	irqtable_hscroll, 0x00,
+
+	irqtable_end // always end with 0xff
+};
 void levelselection() {
 	
 	mmc3_set_8kb_chr(MENUBANK);
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
+
+	write_irq_table(lvlselect_irq_table);
+	set_irq_ptr(irqTable);
+
 	oam_clear();
 	ppu_off();
 	pal_bright(0);
@@ -189,11 +206,17 @@ void levelselection() {
 	set_scroll_y(0);  
 	
 	vram_adr(NAMETABLE_A);
-	vram_unrle(game_main_menu);   
+	vram_unrle(game_main_menu); 
+	vram_adr(NAMETABLE_B);
+	vram_unrle(game_main_menu);
 
 	memfill(attemptCounter, 0, sizeof(attemptCounter));
 
+	tmp8 = 0xff00;
+	edit_irq_table(high_byte(tmp8),2);
+	tmp4 = 1;
 	refreshmenu();
+	
 
 	// one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
 	// one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));
@@ -205,12 +228,23 @@ void levelselection() {
 	kandotemp = 1;
 
 	ppu_on_all();
+	ppu_wait_nmi();
+	ppu_wait_nmi();
 	pal_fade_to_withmusic(0,4);
+	
 	while (1){
 		ppu_wait_nmi();
 		music_update();
 
 		pad_poll(0); // read the first controller
+
+		// scroll
+		if (tmp4) edit_irq_table(high_byte(tmp8),2);
+		else edit_irq_table(low_byte(tmp8),2);
+
+		//if (PEEK(0x01) & 1) 
+			low_byte(tmp8) >>= 1;
+		high_byte(tmp8) = low_byte(tmp8)^0xff;
 
 
 		// no longer required because of the menu option
@@ -240,16 +274,22 @@ void levelselection() {
 			
 		if (pad_new[0] & PAD_RIGHT){
 			++level;
+			low_byte(tmp8) = 0xff;
+			tmp4 = 1;
 			if (level >= LEVEL_COUNT){
 				level = 0x00;
+				
 			}
 			refreshmenu();
 		//	break;
 		}
 		if (pad_new[0] & PAD_LEFT){
 			--level;
+			low_byte(tmp8) = 0xff;
+			tmp4 = 0;
 			if (level == 0xFF){
 				level = LEVEL_COUNT-1;
+				
 			}
 			
 			//break;
@@ -615,7 +655,7 @@ const char palsystem[] = "FOR PAL SYSTEMS";
 
 
 
-const uint8_t menu_irq_table[16] = {
+const uint8_t menu_irq_table[] = {
 	180,
 	irqtable_hscroll, 0x00,
 

@@ -105,6 +105,7 @@ void state_game(){
 	if (level == decode || level == test || level == test4) no_parallax = 1;
 	else no_parallax = 0;
 
+	mmc3_disable_irq();
 	//no_parallax = 0;
 	
 	outline_color = 0x30;
