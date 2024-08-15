@@ -132,7 +132,7 @@ void state_demo(){
 		tmp1++;
 	} while (tmp1 != 0);
 	
-	gameState = 0x05; // validate save file before starting
+	gameState = 0x01; // validate save file before starting
 	return; 
 	
 }

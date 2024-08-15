@@ -226,7 +226,7 @@ uint8_t achievements[0x20];
 //uint8_t practice_famistudio_state[0xbf];
 
 
-
+#define poweroffcheck SRAM_VALIDATE[3]
 // Regular NES RAM
 #pragma bss-name("BSS")
 

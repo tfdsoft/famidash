@@ -661,6 +661,7 @@ const uint8_t menu_irq_table[] = {
 	irqtable_end // always end with 0xff
 };
 void state_menu() {
+	poweroffcheck = 0xff;
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
 	
@@ -787,6 +788,12 @@ void state_menu() {
 		}
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
 		edit_irq_table(low_byte(tmp8), 2); 
+
+
+		if (pad_new[0] & PAD_B) {
+			gameState = 0xFE;
+			return;
+		}
 	}	
 	set_scroll_y(0);
 	set_scroll_x(0);

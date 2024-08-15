@@ -51,9 +51,13 @@ void main(){
     // level = 0x00;
 	// auto_fs_updates = 0;
 
+	//mmc3_set_prg_bank_1(GET_BANK(playPCM));
+	//playPCM(0);
+
+
 	kandotemp = 0;
 
-	gameState = 0x00;
+	gameState = 0x05;
     while (1){
         ppu_wait_nmi();
 		switch (gameState){
@@ -107,6 +111,11 @@ void main(){
 				break;
 			}
 
+			case 0xFE: {
+				mmc3_set_prg_bank_1(GET_BANK(state_exit));
+				state_exit();
+				break;
+			}
 			default: {
 				mmc3_set_prg_bank_1(GET_BANK(state_demo));
 				state_demo();
@@ -134,16 +143,15 @@ void setdefaultoptions() {
 	// fill with zeros
 	memfill((uint8_t *)0x6000, 0, 0x2000);
 	edit_irq_table(0xff,0);
-	sfx_play(sfx_death, 0);
+	//sfx_play(sfx_death, 0);
 
 	color_emphasis(COL_EMP_NORMAL);
 
-	// set the first four bytes; LEET, save version, and 21.
+	// set the first three bytes; LEET, and save version.
 	// if none of these are what is expected, the game will tell you
 	SRAM_VALIDATE[0] = 0x13;
 	SRAM_VALIDATE[1] = 0x37;
 	SRAM_VALIDATE[2] = FLAG_SAVE_VER;
-	SRAM_VALIDATE[3] = 0x21;
 	
 	// only non-zero values need to be set here
 
