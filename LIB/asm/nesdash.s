@@ -642,8 +642,8 @@ single_rle_byte:
 		; Seam position:
 		; Y ≥	| Y <	| A		| B		|
 		; 	0	|  $78	|	0	|	1	|
-		;  $78	| $178	|  0/2	|	1	|
-		; $178	| $278	|	2	|  1/3	|
+		;  $78	| $178	|  2/0	|	1	|
+		; $178	| $278	|	2	|  3/1	|
 		; $278	| $2F0	|	2	|	3	|
 		; $10 is added to Y at all F0 boundaries but the edge
 
@@ -654,6 +654,7 @@ single_rle_byte:
 		SEC
 		SBC	#$78	;
 		BCS	:+		;	AX = scroll_y - $78
+			SBC #$10-1;	(with valid scroll_y coordinates)
 			DEX		;__
 		:
 		CPX	#$02	;
@@ -674,8 +675,8 @@ single_rle_byte:
 
 		; Total seam scroll system:
 		; High byte	| Seam screen	| A		| B		|
-		;	00		|		00		|  0/2	|	1	|
-		;	01		|		01		|	2	|  1/3	|
+		;	00		|		00		|  2/0	|	1	|
+		;	01		|		01		|	2	|  3/1	|
 		;	84		|	There isn't	|	0	| 	1	|
 		;	87		|	There isn't	|	2	|	3	|
 		;	No seam can be distinguished by bits 7 or 2
@@ -688,27 +689,27 @@ single_rle_byte:
 
 		:
 
-		; Load seam value
-		CPX #$80	; Put last bit of X into carry
-		BCS :+	; Skip everything if no seam
-			LSR
-			LSR
-			LSR
-			AND #$0E
-			ORA shiftBy4table, X	; X can only be 0 or 1
-			STA SeamValue
-			JMP :++
-		:	
-		STX SeamValue
-		:
+		LDY	#15+15	;__	Load the starting nametable into Y
 
-		; Load initial column buffer index
-		TXA
-		AND #$01
-		BEQ :+
-			LDA #15+15
+		CPX #$80	;__	Put last bit of X into carry
+		BCS :+		;__	If there is a seam, calculate its position in metatiles
+			LSR					;
+			LSR					;	Divide by 16, get index 
+			LSR					;	inside screen in metatiles
+			LSR					;__
+			CLC					;	Add 0 or 15, since scroll_y is nonlinear
+			ADC SeamTable, X	;__
+			ADC #30				;__	If the carry was set then something got fucked
+			STA SeamValue
+
+			BCC :++		; = BRA, unless the additions got fucked
+		:			;	If there is no seam, store an invalid value
+			STX SeamValue
+			CPX	#$84	;
+			BNE	:+		;	If the starting screen is 0, load into Y
+				LDY #0	;__
 		:
-		STA CurrentRow
+		STY	CurrentRow
 
 			; Writing to nesdoug's VRAM buffer starts here
 			LDX VRAM_INDEX
@@ -773,7 +774,9 @@ single_rle_byte:
 				ADC #(TileSizeHi-(15*2))
 				TAX
 			.endif
-			
+
+			; No need to do anything for the screen, as it always increments
+
 			LDA scroll_count
 			AND #1
 			beq @LeftWrite2
@@ -871,33 +874,29 @@ single_rle_byte:
 		ORA SeamValue
 		STA SeamValue
 
-		; Get the ptr (I am not bothering with 2 separate loops)
-		AND #$01		;	Bit 1 is directly from >seam_scroll_y
-		ASL				;	For values 0 or 84 load collmap 0
-		ORA #>collMap0	;__	For values 1 or 87 load collmap 2
-		STA ptr1+1
-		LDA ptr3
-		AND #$0E
+		LDY	#>collMap2		;__	Get the default value
+		AND #$05			;	Bits 0 and 2 are directly from >seam_scroll_y
+		CMP	#$04			;	For value $84 start at screen 0, otherwise screen 2
+		BNE	:+				;
+			LDY	#>collMap0	;	Get high byte of starting value
+		:					;	(the screen)
+		STY	ptr1+1			;__
+
+		LDA ptr3			;
+		AND #$0E			;	Get column (w/o highest bit cuz attributes)
 		; ADC #<(collMap0-1) ; the low byte is 0
-		STA ptr1
+		STA ptr1			;__
+		EOR	SeamValue		;	The only overlapping bit is bit 2,
+		STA	SeamValue		;__	if it's invalid the seam won't be drawn
 
 		LDX #0
 		STX ColumnBufferIdx
 		JSR attributeCalc
 
-		; Update pointer
-		; If there is a seam, we are switching from collmap 2
-		; to 1 -> DEC (also update the seamvalue here)
-		; If there isn't, we are either switching
-		; from 0 to 1 or from 2 to 3 -> INC
-		BIT seam_scroll_y+1
-		BMI :+
-		DEC	ptr1+1
-			DEC SeamValue
-			BNE	:++	; = BRA
-		:
-			INC ptr1+1
-		:
+		; Increment screen (we always increment)
+		INC ptr1+1
+
+		DEC	SeamValue
 
 		JSR attributeCalc
 
@@ -1025,8 +1024,8 @@ single_rle_byte:
 			LDA	ptr1
 			CMP SeamValue
 			BNE :+
-				INC ptr1+1
-				INC ptr1+1
+				DEC ptr1+1
+				DEC ptr1+1
 			:
 			CLC
 			ADC #$20
@@ -1057,10 +1056,10 @@ single_rle_byte:
 			INX
 			LDA CurrentRow
 			CMP SeamValue
-			SEC
-			BNE :+
-				ADC #15+15-1
-			: ADC #0
+			SEC		; Does not reset the Zero flag
+			BNE :+	; If the seam doesn't match up, dont subtract
+				SBC	#30	; Carry still set after this (or invalid otherwise)
+			: ADC #0 ; Adds a 1
             STA CurrentRow
 			DEC LoopCount
 			BPL right_tilewriteloop
@@ -1085,10 +1084,10 @@ single_rle_byte:
 			INX
 			LDA CurrentRow
 			CMP SeamValue
-			SEC
-			BNE :+
-				ADC #15+15-1
-			: ADC #0
+			SEC		; Does not reset the Zero flag
+			BNE :+	; If the seam doesn't match up, dont subtract
+				SBC	#30	; Carry still set after this (or invalid otherwise)
+			: ADC #0 ; Adds a 1
             STA CurrentRow
 			DEC LoopCount
 			BPL left_tilewriteloop
@@ -1136,6 +1135,9 @@ ParallaxBuffer:
 		.byte $84, $94, $a4, $b4, $8a, $9a, $aa, $ba, $9d
 	ParallaxBufferCol5:
 		.byte $85, $95, $a5, $b5, $8b, $9b, $ab, $bb, $9e
+
+SeamTable:
+	.byte 0, 15
 
 .endproc
 
