@@ -57,7 +57,7 @@ const unsigned char Credits2[354]={
 #include "defines/mainmenu_charmap.h"
 
 #ifdef FLAG_ENABLE_VER_NUM
-	#if FLAG_BETA_BUILD
+	#ifdef FLAG_BETA_BUILD
 		const unsigned char ver[] = "DEMO";
 	#else
 		const unsigned char ver[] = " VER";
@@ -84,10 +84,10 @@ void state_demo(){
 	
 	multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(21,27));
 	one_vram_buffer(FLAG_MAJ_VER, NTADR_A(26,27));
-	if (!FLAG_BETA_BUILD) {
+	#ifdef FLAG_BETA_BUILD
 		one_vram_buffer(0x18, NTADR_A(27,27)); // dot
 		one_vram_buffer(FLAG_MIN_VER, NTADR_A(28,27));
-	}
+	#endif
 	
 	// __asm__("LDA mmc3PRG1Bank \nPHA ");
     // mmc3_set_prg_bank_1(0);
