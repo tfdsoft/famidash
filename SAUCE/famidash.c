@@ -141,7 +141,7 @@ void setdefaultoptions() {
 	color_emphasis(COL_EMP_DARK);
 	mmc3_disable_irq();
 	// fill with zeros
-	memfill((uint8_t *)0x6000, 0, 0x2000);
+	memfill((uint8_t *)0x6000, 0, 0x1FFE);
 	edit_irq_table(0xff,0);
 	//sfx_play(sfx_death, 0);
 

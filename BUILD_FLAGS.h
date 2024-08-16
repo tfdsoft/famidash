@@ -7,6 +7,16 @@
 
 
 
+// DEBUGGING FEATURES =========================================
+//
+// Enable Test Levels
+// uncomment to enable every level id. will break after TEST4.
+#define FLAG_ENABLE_TEST_LEVELS
+//
+// ============================================================
+
+
+
 // VERSION NUMBER STUFF =======================================
 //
 // These change how the version number is displayed.

@@ -150,7 +150,12 @@ void __fastcall__ refreshmenu(void) {
 	// Star count stuff
 		printDecimal(stars_list[level], 2, '0', ' ', NTADR_A(22, 9)+tmp5);
 
-	
+	// level number
+	#ifdef FLAG_ENABLE_TEST_LEVELS
+		printDecimal(level, 3, '0', ' ', NTADR_A(29, 2));
+		printDecimal(level, 3, '0', ' ', NTADR_B(29, 2));
+	#endif
+
 	// Normal level completeness stuff
 		printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);
 
@@ -360,7 +365,12 @@ void customize_screen() {
 	TOTALCOINS = 0;
 	TOTALSTARS = 0;
 
-	for (tmp2 = 0; tmp2 < LEVEL_COUNT; tmp2++) {
+	#ifdef FLAG_ENABLE_TEST_LEVELS
+	for (tmp2 = 0; tmp2 < 255; tmp2++)
+	#else
+	for (tmp2 = 0; tmp2 < LEVEL_COUNT; tmp2++) 
+	#endif
+	{
 		// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
 		__A__ = tmp2; __asm__("tay");
 		__A__ = TOTALCOINS;
@@ -623,11 +633,7 @@ void settings() {
 				case 7:
 					if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
 						setdefaultoptions();
-						// one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
-						// one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));
-						// music_play(song_menu_theme);
-						//famistudio_sfx_play(sfx_death, 0);
-						// one_vram_buffer_horz_repeat(' ', 1, NTADR_A(16, 15));					
+						__asm__("JMP ($FFFC)");	// restart the game lmao	
 					}
 					break;
 			}
@@ -670,10 +676,7 @@ void state_menu() {
 
 	mmc3_set_8kb_chr(MENUBANK);
 
-	POKE(irqTable[0], 0xFF);
-	write_irq_table(menu_irq_table);
-	//edit_irq_table(2, low_byte(tmp8));
-	set_irq_ptr(irqTable);
+	
 	
 	
 	set_scroll_x(0);
@@ -693,7 +696,10 @@ void state_menu() {
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
 
-
+	write_irq_table(menu_irq_table);
+	//edit_irq_table(2, low_byte(tmp8));
+	set_irq_ptr(irqTable);
+	tmp8 = 0;
 	
 
 	kandotemp = 1;

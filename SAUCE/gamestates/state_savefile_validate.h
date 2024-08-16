@@ -44,7 +44,6 @@ void state_savefile_validate(){
     // startup
     
     mmc3_disable_irq();
-    pal_fade_to(4,0);
     ppu_off();
     pal_bg(splashMenu);
     pal_col(0x00,0x0f);
@@ -94,6 +93,7 @@ void state_savefile_validate(){
     
     // if poweroff check is not zero //
     if (poweroffcheck) {
+        ppu_off();
         clear_nametable_a();
         multi_vram_buffer_horz(TEXT_exitgame3, sizeof(TEXT_exitgame3)-1, NTADR_A(2,13));
         multi_vram_buffer_horz(TEXT_exitgame4, sizeof(TEXT_exitgame4)-1, NTADR_A(6,14));
@@ -103,10 +103,12 @@ void state_savefile_validate(){
         do {
             ppu_wait_nmi();
             pad_poll_both();
-            if (pad[0] & PAD_B) break;
+            if (pad_new[0] & PAD_B) break;
 
         } while (1);
     }
+    pal_bright(3);
+    pal_fade_to(3,0);
     gameState = 0x00;
     return;
 }
