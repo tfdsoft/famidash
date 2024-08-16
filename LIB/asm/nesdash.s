@@ -578,540 +578,539 @@ single_rle_byte:
 .export _draw_screen_R
 .proc _draw_screen_R
 
-	TileSizeHi  = (15*2)+2+1
-	TileSizeLo  = (15*2)+2+1
+TileWriteSize	= (15*2)+2+1
 
-	TileOff0    = 0
-	TileOff1    = 0+TileSizeHi
-	TileEnd     = 0+TileSizeHi+TileSizeLo
+TileOff0		= 0
+TileOff1		= 0+TileWriteSize
+TileEnd			= 0+TileWriteSize+TileWriteSize
 
-	AttrSizeHi  = 8*3
-	AttrSizeLo  = 8*3
+AttrWriteSize	= 8*3
 
-	AttrOff0    = 0
-	AttrOff1    = 0+AttrSizeHi
-	AttrEnd     = 0+AttrSizeHi+AttrSizeLo
+AttrOff0		= 0
+AttrOff1		= 0+AttrWriteSize
+AttrEnd			= 0+AttrWriteSize+AttrWriteSize
 
-	CurrentRow = tmp1
-	LoopCount = tmp2
-	SeamValue = ptr3+1
+CurrentRow = tmp1
+LoopCount = tmp2
+SeamValue = ptr3+1
 
-	.export _draw_screen_R_frame0 := frame0
-	.export _draw_screen_R_frame1 := frame1
-	.export _draw_screen_R_frame2 := attributes
-	; Write architecture:
+attributeCalc_tmp5 = ptr2
+attributeCalc_ColumnBufferIdx = ptr2+1
 
-	; Frame 0:
-	;   Write 0 updates the upper nametable's left tiles
-	;   Write 1 updates the lower nametable's left tiles
-	; Frame 1:
-	;   Write 0 updates the upper nametable's right tiles
-	;   Write 1 updates the lower nametable's right tiles
-	; Frame 2:
-	;   Attributes 
+.export _draw_screen_R_frame0 := frame0
+.export _draw_screen_R_frame1 := frame1
+.export _draw_screen_R_frame2 := attributes
+; Write architecture:
 
-	start:
-		
-		LDA _scroll_x			;__ Highbyte of scroll_x
-		LSR						;
-		LSR						;   >> 4
-		LSR						;
-		LSR						;__
-		STA tmp4
+; Frame 0:
+;   Write 0 updates the upper nametable's left tiles
+;   Write 1 updates the lower nametable's left tiles
+; Frame 1:
+;   Write 0 updates the upper nametable's right tiles
+;   Write 1 updates the lower nametable's right tiles
+; Frame 2:
+;   Attributes 
 
-		LDX scroll_count
-		BNE frame2
+start:
+	
+	LDA _scroll_x			;__ Highbyte of scroll_x
+	LSR						;
+	LSR						;   >> 4
+	LSR						;
+	LSR						;__
+	STA tmp4
 
-		LDA tmp4
-		CMP _rld_column			;   If X == rld column, decompress shit
-		BEQ frame0
+	LDX scroll_count
+	BNE frame2
 
-		TXA	; It would've branched if it was not 0
-		RTS
-    
-	frame2:
-		CPX #$01
-		BEQ frame1
-		JMP attributes
+	LDA tmp4
+	CMP _rld_column			;   If X == rld column, decompress shit
+	BEQ frame0
 
-	frame0:
-		; Switch banks
-		crossPRGBankJSR ,_unrle_next_column,_level_data_bank
-		JSR writeToCollisionMap
+	TXA	; It would've branched if it was not 0
+	RTS
 
-		; Seam position:
-		; Y ≥	| Y <	| A		| B		|
-		; 	0	|  $78	|	0	|	1	|
-		;  $78	| $178	|  2/0	|	1	|
-		; $178	| $278	|	2	|  3/1	|
-		; $278	| $2F0	|	2	|	3	|
-		; $10 is added to Y at all F0 boundaries but the edge
+frame2:
+	CPX #$01
+	BEQ frame1
+	JMP attributes
 
-		; Get seam position for attributes
-		; Seampos = (((Y-$78)>>4)&$FE)<<4 = (Y-78)&$FFE0 
-		LDX	_scroll_y+1
-		LDA	_scroll_y
-		SEC
-		SBC	#$78	;
-		BCS	:+		;	AX = scroll_y - $78
-			SBC #$10-1;	(with valid scroll_y coordinates)
-			DEX		;__
-		:
-		CPX	#$02	;
-		BCC	:+		;	if X == 2 or -1 (aka no seam)
-			INX
-			TXA
-			.if USE_ILLEGAL_OPCODES
-				AXS #$7C	; = ORX #$84
-			.else
-				ORA #$84
-				TAX
-			.endif
-		:			;__
-		STA	seam_scroll_y
-		STX seam_scroll_y+1
+frame0:
+	; Switch banks
+	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
+	JSR writeToCollisionMap
 
-		JMP :+
+	; Seam position:
+	; Y ≥	| Y <	| A		| B		|
+	; 	0	|  $78	|	0	|	1	|
+	;  $78	| $178	|  2/0	|	1	|
+	; $178	| $278	|	2	|  3/1	|
+	; $278	| $2F0	|	2	|	3	|
+	; $10 is added to Y at all F0 boundaries but the edge
 
-		; Total seam scroll system:
-		; High byte	| Seam screen	| A		| B		|
-		;	00		|		00		|  2/0	|	1	|
-		;	01		|		01		|	2	|  3/1	|
-		;	84		|	There isn't	|	0	| 	1	|
-		;	87		|	There isn't	|	2	|	3	|
-		;	No seam can be distinguished by bits 7 or 2
-		;	First nametable's data can be distinguished by bit 0
-
-	frame1:
-
-		LDA seam_scroll_y
-		LDX seam_scroll_y+1
-
-		:
-
-		LDY	#15+15	;__	Load the starting nametable into Y
-
-		CPX #$80	;__	Put last bit of X into carry
-		BCS :+		;__	If there is a seam, calculate its position in metatiles
-			LSR					;
-			LSR					;	Divide by 16, get index 
-			LSR					;	inside screen in metatiles
-			LSR					;__
-			CLC					;	Add 0 or 15, since scroll_y is nonlinear
-			ADC SeamTable, X	;__
-			ADC #30				;__	If the carry was set then something got fucked
-			STA SeamValue
-
-			BCC :++		; = BRA, unless the additions got fucked
-		:			;	If there is no seam, store an invalid value
-			STX SeamValue
-			CPX	#$84	;
-			BNE	:+		;	If the starting screen is 0, load into Y
-				LDY #0	;__
-		:
-		STY	CurrentRow
-
-			; Writing to nesdoug's VRAM buffer starts here
-			LDX VRAM_INDEX
-
-			; In-house replacement of get_ppu_addr, only counts X
-			; Address is big-endian
-			LDY _rld_column ;   000xxxx0 - the left tiles of the metatiles
-			DEY
-			TYA
-			AND #$0F
-			ASL         ;__
-			LDY scroll_count
-			BEQ :+
-				ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
-			:
-			STA VRAM_BUF+TileOff0+1,X
-			STA VRAM_BUF+TileOff1+1,X
-
-			lda _scroll_x + 1 ; high byte
-			and #%00000001
-			eor #%00000001
-			asl
-			asl
-			ora #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
-			STA VRAM_BUF+TileOff0,X
-			ORA #$08        ; 2nd nametable
-			STA VRAM_BUF+TileOff1,X
-
-
-			; First part of the update: the tiles
-			; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
-			LDA #(15*2)
-			STA VRAM_BUF+TileOff0+2,X
-			STA VRAM_BUF+TileOff1+2,X
-
-			; The sequence itself:
-			
-			; Load max value
-			LDA #15 - 1
-			STA LoopCount
-			; Check if doing a left or right hand write
-			LDA scroll_count
-			AND #1
-			beq @LeftWrite
-				; Right side write
-				; Call for upper tiles
-				JSR right_tilewriteloop
-				BMI @WriteBottomHalf	; The loop keeps looping via a BPL, therefore a BMI = BRA
-			@LeftWrite:
-				JSR left_tilewriteloop
-		@WriteBottomHalf:
-			; Load new max
-			LDA #15 - 1
-			STA LoopCount
-			; Add offset to X
-			.if USE_ILLEGAL_OPCODES
-				TXA
-				AXS #<-(TileSizeHi-(15*2))
-			.else
-				TXA
-				CLC
-				ADC #(TileSizeHi-(15*2))
-				TAX
-			.endif
-
-			; No need to do anything for the screen, as it always increments
-
-			LDA scroll_count
-			AND #1
-			beq @LeftWrite2
-				JSR right_tilewriteloop
-				BMI @RenderParallax	; The loop keeps looping via a BPL, therefore a BMI = BRA
-			@LeftWrite2:
-				; Call for lower tiles
-				JSR left_tilewriteloop
-		@RenderParallax:
-
-			ParallaxBufferStart = tmp1
-			ParallaxExtent = tmp3
-			; Loop through the vram writes and find any $00 tiles and replace them with parallax
-			; Calculate the end of the parallax column offset
-			ldy parallax_scroll_column
-			lda ParallaxBufferOffset, y
-			sta ParallaxBufferStart
-			clc
-			adc #9
-			sta ParallaxExtent
-
-			lda ParallaxBufferStart
-			clc
-			adc parallax_scroll_column_start
-			tay
-
-			ldx #TileOff0 + TileSizeHi - 1 - (2+1)
-			stx LoopCount
-			ldx #TileOff0
-			jsr RenderParallaxLoop
-
-			ldx #TileSizeLo - 1 - (2+1)
-			stx LoopCount
-			ldx #TileOff1
-			jsr RenderParallaxLoop
-			
-			; move to the next scroll column for next frame
-			jsr _increase_parallax_scroll_column
-
-			; Demarkate end of write
-			LDX VRAM_INDEX
-			LDA #$FF
-			STA VRAM_BUF+TileEnd,X
-
-			; Declare this section as taken
-			.if USE_ILLEGAL_OPCODES
-				; A is already #$FF
-				AXS #<-TileEnd
-				STX VRAM_INDEX
-			.else
-				TXA
-				CLC
-				ADC #TileEnd
-				STA	VRAM_INDEX
-			.endif
-
-			INC scroll_count
-
-			LDA #1
-			LDX #0
-			RTS
-
-	attributes:
-		NametableAddrHi = tmp1
-		; Attribute write architecture:
-
-		; | Ad|dr |dat|
-		;   0   1   2
-		; Addr = VRAM address
-
-		; 1 byte can theoretically be saved by using a vertical
-		; sequence of 2 bytes, but this comes at a cost of 23
-		; cycles per 2 bytes in vblank (80 vs 103), and vlank
-		; time is not to be wasted
-
-		; Decremented rld_column, very useful
-		LDX _rld_column
-		DEX
+	; Get seam position for attributes
+	; Seampos = (((Y-$78)>>4)&$FE)<<4 = (Y-78)&$FFE0 
+	LDX	_scroll_y+1
+	LDA	_scroll_y
+	SEC
+	SBC	#$78	;
+	BCS	:+		;	AX = scroll_y - $78
+		SBC #$10-1;	(with valid scroll_y coordinates)
+		DEX		;__
+	:
+	CPX	#$02	;
+	BCC	:+		;	if X == 2 or -1 (aka no seam)
+		INX
+		TXA
 		.if USE_ILLEGAL_OPCODES
-			LDA #$0F
-			SAX ptr3
+			AXS #$7C	; = ORX #$84
 		.else
-			TXA
-			AND #$0F
-			STA ptr3
+			ORA #$84
+			TAX
 		.endif
+	:			;__
+	STA	seam_scroll_y
+	STX seam_scroll_y+1
 
-		; Seam pos for attributes:
-		; <seam_scroll_y & $E0 | >seam_scroll_y & 1 
-		LDA seam_scroll_y
-		AND #$E0
+	JMP :+
+
+	; Total seam scroll system:
+	; High byte	| Seam screen	| A		| B		|
+	;	00		|		00		|  2/0	|	1	|
+	;	01		|		01		|	2	|  3/1	|
+	;	84		|	There isn't	|	0	| 	1	|
+	;	87		|	There isn't	|	2	|	3	|
+	;	No seam can be distinguished by bits 7 or 2
+	;	First nametable's data can be distinguished by bit 0
+
+frame1:
+
+	LDA seam_scroll_y
+	LDX seam_scroll_y+1
+
+	:
+
+	LDY	#15+15	;__	Load the starting nametable into Y
+
+	CPX #$80	;__	Put last bit of X into carry
+	BCS :+		;__	If there is a seam, calculate its position in metatiles
+		LSR					;
+		LSR					;	Divide by 16, get index 
+		LSR					;	inside screen in metatiles
+		LSR					;__
+		CLC					;	Add 0 or 15, since scroll_y is nonlinear
+		ADC SeamTable, X	;__
+		ADC #30				;__	If the carry was set then something got fucked
 		STA SeamValue
-		LDA seam_scroll_y+1
-		AND #$05	; add bit 2 to not use if no seam
-		ORA SeamValue
-		STA SeamValue
 
-		LDY	#>collMap2		;__	Get the default value
-		AND #$05			;	Bits 0 and 2 are directly from >seam_scroll_y
-		CMP	#$04			;	For value $84 start at screen 0, otherwise screen 2
-		BNE	:+				;
-			LDY	#>collMap0	;	Get high byte of starting value
-		:					;	(the screen)
-		STY	ptr1+1			;__
+		BCC :++		; = BRA, unless the additions got fucked
+	:			;	If there is no seam, store an invalid value
+		STX SeamValue
+		CPX	#$84	;
+		BNE	:+		;	If the starting screen is 0, load into Y
+			LDY #0	;__
+	:
+	STY	CurrentRow
 
-		LDA ptr3			;
-		AND #$0E			;	Get column (w/o highest bit cuz attributes)
-		; ADC #<(collMap0-1) ; the low byte is 0
-		STA ptr1			;__
-		EOR	SeamValue		;	The only overlapping bit is bit 2,
-		STA	SeamValue		;__	if it's invalid the seam won't be drawn
+	; Writing to nesdoug's VRAM buffer starts here
+	LDX VRAM_INDEX
 
-		LDX #0
-		STX ColumnBufferIdx
-		JSR attributeCalc
+	; In-house replacement of get_ppu_addr, only counts X
+	; Address is big-endian
+	LDY _rld_column ;   000xxxx0 - the left tiles of the metatiles
+	DEY
+	TYA
+	AND #$0F
+	ASL         ;__
+	LDY scroll_count
+	BEQ :+
+		ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
+	:
+	STA VRAM_BUF+TileOff0+1,X
+	STA VRAM_BUF+TileOff1+1,X
 
-		; Increment screen (we always increment)
-		INC ptr1+1
+	; Get nametable
+	lda _scroll_x + 1 ; high byte
+	and #%00000001
+	eor #%00000001
+	asl
+	asl
+	ora #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
+	STA VRAM_BUF+TileOff0,X
+	ORA #$08        ; 2nd nametable
+	STA VRAM_BUF+TileOff1,X
 
-		DEC	SeamValue
 
-		JSR attributeCalc
+	; First part of the update: the tiles
+	; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
+	LDA #(15*2)
+	STA VRAM_BUF+TileOff0+2,X
+	STA VRAM_BUF+TileOff1+2,X
 
-		; Get address hi byte (either left or right side)
-		lda _scroll_x + 1 ; high byte
-		and #%00000001
-		eor #%00000001
-		asl
-		asl
-		ora #$23
-		sta NametableAddrHi
-		
-		LDA ptr3
-		LSR
-		ORA #$C0
-		
-		; Store address
-		LDX VRAM_INDEX
+	; The sequence itself:
+	
+	; Load max value
+	LDA #15 - 1
+	STA LoopCount
+	; Check if doing a left or right hand write
+	LDA scroll_count
+	AND #1
+	beq @LeftWrite
+		; Right side write
+		; Call for upper tiles
+		JSR right_tilewriteloop
+		BMI @WriteBottomHalf	; The loop keeps looping via a BPL, therefore a BMI = BRA
+	@LeftWrite:
+		JSR left_tilewriteloop
+@WriteBottomHalf:
+	; Load new max
+	LDA #15 - 1
+	STA LoopCount
+	; Add offset to X
+	.if USE_ILLEGAL_OPCODES
+		TXA
+		AXS #<-(TileWriteSize-(15*2))
+	.else
+		TXA
 		CLC
-		addressLoop:
-			; Low byte
-			STA VRAM_BUF+AttrOff0+1,X
-			STA VRAM_BUF+AttrOff1+1,X
-			TAY
-			; High byte
-			lda NametableAddrHi
-			STA VRAM_BUF+AttrOff0,X
-			ORA #$08
-			STA VRAM_BUF+AttrOff1,X
-			TYA
-
-			INX 
-			INX
-			INX
-
-			; C is cleared by BCC
-			ADC #$08
-			BCC addressLoop
-		
-		LDY #16
-
-		LDA VRAM_INDEX
-		ADC #AttrEnd-1  ; Carry is set by the ADC : BCC
-		STA VRAM_INDEX  ; State that the block is now occupied
+		ADC #(TileWriteSize-(15*2))
 		TAX
+	.endif
 
-		dataLoop:
-			LDA columnBuffer-1,Y
-			STA VRAM_BUF-3+2,X
+	; No need to do anything for the screen, as it always increments
 
-			.if USE_ILLEGAL_OPCODES
-				TXA
-				AXS #3
-			.else
-				DEX
-				DEX
-				DEX
-			.endif
-			DEY
-			BNE dataLoop
+	LDA scroll_count
+	AND #1
+	beq @LeftWrite2
+		JSR right_tilewriteloop
+		BMI @RenderParallax	; The loop keeps looping via a BPL, therefore a BMI = BRA
+	@LeftWrite2:
+		; Call for lower tiles
+		JSR left_tilewriteloop
+@RenderParallax:
+
+	ParallaxBufferStart = tmp1
+	ParallaxExtent = tmp3
+	; Loop through the vram writes and find any $00 tiles and replace them with parallax
+	; Calculate the end of the parallax column offset
+	ldy parallax_scroll_column
+	lda ParallaxBufferOffset, y
+	sta ParallaxBufferStart
+	clc
+	adc #9
+	sta ParallaxExtent
+
+	lda ParallaxBufferStart
+	clc
+	adc parallax_scroll_column_start
+	tay
+
+	ldx #TileOff0 + TileWriteSize - 1 - (2+1)
+	stx LoopCount
+	ldx #TileOff0
+	jsr RenderParallaxLoop
+
+	ldx #TileWriteSize - 1 - (2+1)
+	stx LoopCount
+	ldx #TileOff1
+	jsr RenderParallaxLoop
+	
+	; move to the next scroll column for next frame
+	jsr _increase_parallax_scroll_column
+
+	; Demarkate end of write
+	LDX VRAM_INDEX
+	LDA #$FF
+	STA VRAM_BUF+TileEnd,X
+
+	; Declare this section as taken
+	.if USE_ILLEGAL_OPCODES
+		; A is already #$FF
+		AXS #<-TileEnd
+		STX VRAM_INDEX
+	.else
+		TXA
+		CLC
+		ADC #TileEnd
+		STA	VRAM_INDEX
+	.endif
+
+	INC scroll_count
+
+	LDA #1
+	LDX #0
+	RTS
+
+right_tilewriteloop:
+		ldy CurrentRow
+		lda _invisblocks
+		beq @norm
+		lda #0
+		beq @done
+		@norm:
+		LDA columnBuffer,Y
+		@done:
+		tay
+		; y is the metatile id
+		lda metatiles_top_right, y
+		STA VRAM_BUF+TileOff0+3,X
+		lda metatiles_bot_right, y
+		STA VRAM_BUF+TileOff0+4,X
 		
-		; Finish off the routine
-		; X has the original VRAM_INDEX, mark this block as taken
-		LDA #$FF
-		STA VRAM_BUF+AttrEnd,X
-		; Reset frame counter
-		LDX #$00
-		STX scroll_count
-
-		LDA #$01
-		RTS
-
-	attributeCalc:
-		tmp5 = ptr2
-		ColumnBufferIdx = ptr2+1
-
-		LDA #8 - 1
-		STA LoopCount
-
-		attributeLoop:
-			; Read lower right metatile
-			LDY #$11
-			.if USE_ILLEGAL_OPCODES
-				lax (ptr1),y
-			.else
-				LDA	(ptr1),Y
-				tax
-			.endif
-			; Read lower left metatile
-			dey
-			LDA (ptr1), Y
-			tay
-			; Get their attributes
-			lda metatiles_attr,x	; Lower right
-			ASL
-			ASL
-			ora metatiles_attr,y	; Lower left
-			STA tmp5
-
-			; Read upper right metatile
-			LDY #$01
-			.if USE_ILLEGAL_OPCODES
-				lax (ptr1),y
-			.else
-				LDA	(ptr1),Y
-				tax
-			.endif
-			; Read upper left metatile
-			dey
-			LDA (ptr1), Y
-			tay
-			; Get their attributes
-			lda metatiles_attr,x	; Upper right
-			ASL
-			ASL
-			ora metatiles_attr,y	; Upper left
-
-			; Combine
-			LDY tmp5	; Y has the lower metatile attrs, will shift by 4
-			ORA shiftBy4table,Y
-			LDX tmp5+1
-			STA columnBuffer,X
-
-			; Increment pointer
-			LDA	ptr1
-			CMP SeamValue
-			BNE :+
-				DEC ptr1+1
-				DEC ptr1+1
-			:
-			CLC
-			ADC #$20
-			STA	ptr1
-
-			INC ColumnBufferIdx
-			DEC LoopCount
-			BPL attributeLoop
-		RTS
-
-	right_tilewriteloop:
-			ldy CurrentRow
-			lda _invisblocks
-			beq @norm
-			lda #0
-			beq @done
-			@norm:
-			LDA columnBuffer,Y
-			@done:
-			tay
-			; y is the metatile id
-			lda metatiles_top_right, y
-			STA VRAM_BUF+TileOff0+3,X
-			lda metatiles_bot_right, y
-			STA VRAM_BUF+TileOff0+4,X
-			
-			INX
-			INX
-			LDA CurrentRow
-			CMP SeamValue
-			SEC		; Does not reset the Zero flag
-			BNE :+	; If the seam doesn't match up, dont subtract
-				SBC	#30	; Carry still set after this (or invalid otherwise)
-			: ADC #0 ; Adds a 1
-            STA CurrentRow
-			DEC LoopCount
-			BPL right_tilewriteloop
-		rts
-	left_tilewriteloop:
-			ldy CurrentRow
-			lda _invisblocks
-			beq @norm2
-			lda #0
-			beq @done2
-			@norm2:
-			LDA columnBuffer,Y
-			@done2:
-			tay
-			; y is the metatile id
-			lda metatiles_top_left, y
-			STA VRAM_BUF+TileOff0+3,X
-			lda metatiles_bot_left, y
-			STA VRAM_BUF+TileOff0+4,X
-			
-			INX
-			INX
-			LDA CurrentRow
-			CMP SeamValue
-			SEC		; Does not reset the Zero flag
-			BNE :+	; If the seam doesn't match up, dont subtract
-				SBC	#30	; Carry still set after this (or invalid otherwise)
-			: ADC #0 ; Adds a 1
-            STA CurrentRow
-			DEC LoopCount
-			BPL left_tilewriteloop
-		rts
+		INX
+		INX
+		LDA CurrentRow
+		CMP SeamValue
+		SEC		; Does not reset the Zero flag
+		BNE :+	; If the seam doesn't match up, dont subtract
+			SBC	#30	; Carry still set after this (or invalid otherwise)
+		: ADC #0 ; Adds a 1
+		STA CurrentRow
+		DEC LoopCount
+		BPL right_tilewriteloop
+	rts
+left_tilewriteloop:
+		ldy CurrentRow
+		lda _invisblocks
+		beq @norm2
+		lda #0
+		beq @done2
+		@norm2:
+		LDA columnBuffer,Y
+		@done2:
+		tay
+		; y is the metatile id
+		lda metatiles_top_left, y
+		STA VRAM_BUF+TileOff0+3,X
+		lda metatiles_bot_left, y
+		STA VRAM_BUF+TileOff0+4,X
 		
-	RenderParallaxLoop:
-		lda _no_parallax
-		bne @nopar
-			lda VRAM_BUF+TileOff0+3,x
-			bne :+
-				; empty tile, so replace it with the parallax for this
-				lda ParallaxBuffer, y
-				sta VRAM_BUF+TileOff0+3,x
-			:
-			iny
-			cpy ParallaxExtent
-			bne :+
-				ldy ParallaxBufferStart
-			:
-			inx
-			dec LoopCount
-			bpl RenderParallaxLoop
-	@nopar:
-			rts
+		INX
+		INX
+		LDA CurrentRow
+		CMP SeamValue
+		SEC		; Does not reset the Zero flag
+		BNE :+	; If the seam doesn't match up, dont subtract
+			SBC	#30	; Carry still set after this (or invalid otherwise)
+		: ADC #0 ; Adds a 1
+		STA CurrentRow
+		DEC LoopCount
+		BPL left_tilewriteloop
+	rts
+
+attributes:
+	NametableAddrHi = tmp1
+	; Attribute write architecture:
+
+	; | Ad|dr |dat|
+	;   0   1   2
+	; Addr = VRAM address
+
+	; 1 byte can theoretically be saved by using a vertical
+	; sequence of 2 bytes, but this comes at a cost of 23
+	; cycles per 2 bytes in vblank (80 vs 103), and vlank
+	; time is not to be wasted
+
+	; Decremented rld_column, very useful
+	LDX _rld_column
+	DEX
+	.if USE_ILLEGAL_OPCODES
+		LDA #$0F
+		SAX ptr3
+	.else
+		TXA
+		AND #$0F
+		STA ptr3
+	.endif
+
+	; Seam pos for attributes:
+	; ( <seam_scroll_y & $E0 | >seam_scroll_y & 5) ^ column
+	LDA seam_scroll_y
+	AND #$E0
+	STA SeamValue
+	LDA seam_scroll_y+1
+	AND #$05	; add bit 2 to not use if no seam
+	ORA SeamValue
+	STA SeamValue
+
+	LDY	#>collMap2		;__	Get the default value
+	AND #$05			;	Bits 0 and 2 are directly from >seam_scroll_y
+	CMP	#$04			;	For value $84 start at screen 0, otherwise screen 2
+	BNE	:+				;
+		LDY	#>collMap0	;	Get high byte of starting value
+	:					;	(the screen)
+	STY	ptr1+1			;__
+
+	LDA ptr3			;
+	AND #$0E			;	Get column (w/o highest bit cuz attributes)
+	; ADC #<(collMap0-1) ; the low byte is 0
+	STA ptr1			;__
+	EOR	SeamValue		;	The only overlapping bit is bit 2,
+	STA	SeamValue		;__	if it's invalid the seam won't be drawn
+
+	LDX #0
+	STX attributeCalc_ColumnBufferIdx
+	JSR attributeCalc
+
+	; Increment screen (we always increment)
+	INC ptr1+1
+
+	DEC	SeamValue
+
+	JSR attributeCalc
+
+	; Get address hi byte (either left or right side)
+	lda _scroll_x + 1 ; high byte
+	and #%00000001
+	eor #%00000001
+	asl
+	asl
+	ora #$23
+	sta NametableAddrHi
+	
+	LDA ptr3
+	LSR
+	ORA #$C0
+	
+	; Store address
+	LDX VRAM_INDEX
+	CLC
+	addressLoop:
+		; Low byte
+		STA VRAM_BUF+AttrOff0+1,X
+		STA VRAM_BUF+AttrOff1+1,X
+		TAY
+		; High byte
+		lda NametableAddrHi
+		STA VRAM_BUF+AttrOff0,X
+		ORA #$08
+		STA VRAM_BUF+AttrOff1,X
+		TYA
+
+		INX 
+		INX
+		INX
+
+		; C is cleared by BCC
+		ADC #$08
+		BCC addressLoop
+	
+	LDY #16
+
+	LDA VRAM_INDEX
+	ADC #AttrEnd-1  ; Carry is set by the ADC : BCC
+	STA VRAM_INDEX  ; State that the block is now occupied
+	TAX
+
+	dataLoop:
+		LDA columnBuffer-1,Y
+		STA VRAM_BUF-3+2,X
+
+		.if USE_ILLEGAL_OPCODES
+			TXA
+			AXS #3
+		.else
+			DEX
+			DEX
+			DEX
+		.endif
+		DEY
+		BNE dataLoop
+	
+	; Finish off the routine
+	; X has the original VRAM_INDEX, mark this block as taken
+	LDA #$FF
+	STA VRAM_BUF+AttrEnd,X
+	; Reset frame counter
+	LDX #$00
+	STX scroll_count
+
+	LDA #$01
+	RTS
+
+attributeCalc:
+	LDA #8 - 1
+	STA LoopCount
+
+	attributeLoop:
+		; Read lower right metatile
+		LDY #$11
+		.if USE_ILLEGAL_OPCODES
+			lax (ptr1),y
+		.else
+			LDA	(ptr1),Y
+			tax
+		.endif
+		; Read lower left metatile
+		dey
+		LDA (ptr1), Y
+		tay
+		; Get their attributes
+		lda metatiles_attr,x	; Lower right
+		ASL
+		ASL
+		ora metatiles_attr,y	; Lower left
+		STA attributeCalc_tmp5
+
+		; Read upper right metatile
+		LDY #$01
+		.if USE_ILLEGAL_OPCODES
+			lax (ptr1),y
+		.else
+			LDA	(ptr1),Y
+			tax
+		.endif
+		; Read upper left metatile
+		dey
+		LDA (ptr1), Y
+		tay
+		; Get their attributes
+		lda metatiles_attr,x	; Upper right
+		ASL
+		ASL
+		ora metatiles_attr,y	; Upper left
+
+		; Combine
+		LDY attributeCalc_tmp5	; Y has the lower metatile attrs, will shift by 4
+		ORA shiftBy4table,Y
+		LDX attributeCalc_ColumnBufferIdx
+		STA columnBuffer,X
+
+		; Increment pointer
+		LDA	ptr1
+		CMP SeamValue
+		BNE :+
+			DEC ptr1+1
+			DEC ptr1+1
+		:
+		CLC
+		ADC #$20
+		STA	ptr1
+
+		INC attributeCalc_ColumnBufferIdx
+		DEC LoopCount
+		BPL attributeLoop
+	RTS
+	
+RenderParallaxLoop:
+	lda _no_parallax
+	bne @nopar
+		lda VRAM_BUF+TileOff0+3,x
+		bne :+
+			; empty tile, so replace it with the parallax for this
+			lda ParallaxBuffer, y
+			sta VRAM_BUF+TileOff0+3,x
+		:
+		iny
+		cpy ParallaxExtent
+		bne :+
+			ldy ParallaxBufferStart
+		:
+		inx
+		dec LoopCount
+		bpl RenderParallaxLoop
+@nopar:
+		rts
 
 ; Column striped parallax data definition
 ; add to the tile for the next row, up to 6.
