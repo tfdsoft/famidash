@@ -2,10 +2,6 @@
 #pragma data-name(push, "XCD_BANK_02")
 #pragma rodata-name(push, "XCD_BANK_02")
 
-extern unsigned short min_scroll_y;
-
-// TODO: compensated increments
-
 void do_the_scroll_thing(){
 	if (high_byte(currplayer_x) > MSB(0x5000)){ // change x scroll
 		tmp1 = MSB(currplayer_x - 0x5000);
@@ -37,15 +33,10 @@ void do_the_scroll_thing(){
 		if (!dual) {
 			if (currplayer_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
 				tmp1 = MSB(0x4000 - currplayer_y);
-				scroll_y -= tmp1;
+				scroll_y = sub_scroll_y(tmp1, scroll_y);
 				high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
 			}
-			// currplayer -= sub_scroll_y_ext(min_scroll_y, scroll_y);
-			// scroll_y = min_scroll_y;
-			while (scroll_y < min_scroll_y) {
-				++scroll_y;
-				--high_byte(currplayer_y);
-			}
+			cap_scroll_y_at_top();
 
 			
 			if (high_byte(currplayer_y) >= MSB(0xA000)){ // change y scroll (upward)
@@ -61,12 +52,7 @@ void do_the_scroll_thing(){
 				scroll_y = sub_scroll_y(tmp1, scroll_y);
 				high_byte(currplayer_y) += tmp1;
 			}
-			// currplayer -= sub_scroll_y_ext(min_scroll_y, scroll_y);
-			// scroll_y = min_scroll_y;
-			while (scroll_y < min_scroll_y) {
-				++scroll_y;
-				--high_byte(currplayer_y);
-			}
+			cap_scroll_y_at_top();
 
 			
 			if (high_byte(currplayer_y) >= MSB(0xF000)){ // change y scroll (upward)
@@ -92,11 +78,11 @@ void do_the_scroll_thing(){
 				--scroll_y; ++high_byte(currplayer_y);
 				--scroll_y; ++high_byte(currplayer_y);
 			}
-			while (scroll_y < 0x08) {
+			while (scroll_y < min_scroll_y) {
 				++scroll_y;
 				--high_byte(currplayer_y);
 			}
-			while (scroll_y > 0xEF) {
+			while (scroll_y > 0x2EF) {
 				--scroll_y;
 				++high_byte(currplayer_y);
 			}
@@ -127,12 +113,7 @@ void do_the_scroll_thing2(){
 			scroll_y = sub_scroll_y(tmp1, scroll_y);
 			high_byte(currplayer_y) += tmp1;
 		}
-		// currplayer -= sub_scroll_y_ext(min_scroll_y, scroll_y);
-		// scroll_y = min_scroll_y;
-		while (scroll_y < min_scroll_y) {
-			++scroll_y;
-			--high_byte(currplayer_y);
-		}
+		cap_scroll_y_at_top();
 
 		
 		if (high_byte(currplayer_y) >= MSB(0xA000)){ // change y scroll (upward)
@@ -143,19 +124,12 @@ void do_the_scroll_thing2(){
 		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF; // 2F0 overflows into 300 (add_scroll_y)
 	}
 	else {
-		// TODO: boundary according to extceil flag
 		if (currplayer_y < 0x0700 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
 			tmp1 = MSB(0x0700 - currplayer_y);
 			scroll_y = sub_scroll_y(tmp1, scroll_y);
 			high_byte(currplayer_y) += tmp1;
 		}
-		// TODO: boundary according to extceil flag
-		// currplayer -= sub_scroll_y_ext(min_scroll_y, scroll_y);
-		// scroll_y = min_scroll_y;
-		while (scroll_y < min_scroll_y) {
-			++scroll_y;
-			--high_byte(currplayer_y);
-		}
+		cap_scroll_y_at_top();
 
 		
 		if (high_byte(currplayer_y) >= MSB(0xF000)){ // change y scroll (upward)

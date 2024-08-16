@@ -75,7 +75,7 @@ uint16_t __fastcall__ _sub_scroll_y_ext(uint32_t args);
 #define sub_scroll_y(sub, scroll) (storeByteToSreg(sub), __AX__ = scroll, _sub_scroll_y(__EAX__))
 #define sub_scroll_y_ext(sub, scroll) (storeWordToSreg(sub), __A__ = LSB(scroll), __AX__<<=8, __AX__ |= MSB(scroll), _sub_scroll_y_ext(__EAX__))
 // subtract a value from y scroll, keep the low byte in the 0-0xef range
-// returns y scroll, which will have to be passed to set_scroll_y
+// returns y scroll, which will have to be passed to set_scroll_y or calculate_linear_scroll_y
 
 
 uint16_t __fastcall__ _get_ppu_addr(uint32_t args);

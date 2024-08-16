@@ -1577,14 +1577,16 @@ early_exit:
 	rts
 .endproc
 
-; uint16_t calculate_linear_scroll_y();
+; uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
 .segment "CODE_2"
 
 .export _calculate_linear_scroll_y
 .proc _calculate_linear_scroll_y
-	LDY _scroll_y+1
-	INY
-	LDA _scroll_y
+	; AX = input, AX = output
+	; clobbers tmp1
+	STX tmp1
+	LDY	tmp1
+	INY	; for the BEQ ending condition
 	LDX #0
 	CLC
 	loop:
@@ -1598,6 +1600,44 @@ early_exit:
 	end:
 	RTS
 .endproc
+
+; void cap_scroll_y_at_top();
+.segment "CODE_2"
+
+.importzp _currplayer_y
+.import _scroll_y
+
+.export _cap_scroll_y_at_top
+.proc _cap_scroll_y_at_top
+check:
+	lda     _scroll_y		;
+	cmp     _min_scroll_y	;	if (scroll_y < min_scroll_y)
+	lda     _scroll_y+1		;
+	sbc     _min_scroll_y+1	;__
+	bcc     doit
+	rts
+
+doit:
+	; compensate currplayer_y
+	lda     _scroll_y
+	ldx     _scroll_y+1
+	sta     sreg
+	stx     sreg+1
+	ldx     _min_scroll_y	;
+	lda     _min_scroll_y+1	;	scroll_y = min_scroll_y
+	stx     _scroll_y		;
+	sta     _scroll_y+1		;__
+	jsr     __sub_scroll_y_ext
+	jsr     _calculate_linear_scroll_y
+	eor     #$FF
+	sec
+	adc     _currplayer_y+1
+	sta     _currplayer_y+1
+	; we can't do anything with the high byte of the diff anyway
+
+	rts
+.endproc
+
 
 ; void check_spr_objects();
 .segment "CODE_2"
@@ -1615,6 +1655,8 @@ early_exit:
     lda _sprite_data_bank
     jsr mmc3_set_prg_bank_1
 
+	lda	_scroll_y
+	ldx	_scroll_y+1
 	jsr _calculate_linear_scroll_y
 	sta realScrollY
 	stx realScrollY+1

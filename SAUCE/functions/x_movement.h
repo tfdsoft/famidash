@@ -15,7 +15,7 @@ void x_movement(){
 	currplayer_vel_x = speed_table[speed & 0x7F];
 	
 	if (dashing[currplayer] == 4 || dashing[currplayer] == 5) {	
-		if (currplayer_y < 0x0600 && scroll_y == 0x08){
+		if (currplayer_y < 0x0600 && scroll_y == min_scroll_y){
 			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 		}
 		return; 
@@ -75,7 +75,7 @@ void x_movement(){
 	} 
 
 
-	if (currplayer_y < 0x0600 && scroll_y == 0x08){
+	if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
 		uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 	}
 	

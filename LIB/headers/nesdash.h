@@ -22,33 +22,6 @@ extern uint8_t xargs[4];
 void __fastcall__ _oam_meta_spr_flipped(uint32_t args);
 
 /**
- * @name famistudio_music_play
- *
- * @brief Plays a song from and loads the music data according to the bank.
- *
- * @param song Song index.
- *
- */
-void __fastcall__ music_play(uint8_t song);
-
-/**
- * @brief Main update function, should be called once per frame, ideally at the end of NMI.
- * Will update the tempo, advance the song if needed, update instrument and apply any change to the APU registers.
- * 
- */
-void __fastcall__ music_update();
-
-/**
- * @brief Plays a sound effect.
- * 
- * @param sfx_index Sound effect index (0...127)
- * @param channel Offset of sound effect channel, should be FAMISTUDIO_SFX_CH0..FAMISTUDIO_SFX_CH3
- *
- */
-#define sfx_play(sfx_index, channel) (__AX__ = (uint16_t)(byte(channel))<<8|sfx_index, _sfx_play(__AX__))
-void __fastcall__ _sfx_play(uint16_t args);
-
-/**
  * @name one_vram_buffer_repeat
  *
  * @brief Update the PPU using the VRAM buffer with a single tile repeated @c len number of times.
@@ -83,6 +56,47 @@ void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
 #define draw_padded_text2(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text2(__EAX__))
 void __fastcall__ _draw_padded_text(uint32_t args);
 void __fastcall__ _draw_padded_text2(uint32_t args);
+
+/**
+ * @name famistudio_music_play
+ *
+ * @brief Plays a song from and loads the music data according to the bank.
+ *
+ * @param song Song index.
+ *
+ */
+void __fastcall__ music_play(uint8_t song);
+
+/**
+ * @brief Plays a sound effect.
+ * 
+ * @param sfx_index Sound effect index (0...127)
+ * @param channel Offset of sound effect channel, should be FAMISTUDIO_SFX_CH0..FAMISTUDIO_SFX_CH3
+ *
+ */
+#define sfx_play(sfx_index, channel) (__AX__ = (uint16_t)(byte(channel))<<8|sfx_index, _sfx_play(__AX__))
+void __fastcall__ _sfx_play(uint16_t args);
+
+/**
+ * @brief Main update function, should be called once per frame, ideally at the end of NMI.
+ * Will update the tempo, advance the song if needed, update instrument and apply any change to the APU registers.
+ * 
+ */
+void __fastcall__ music_update();
+
+/**
+ * @brief Converts a number from scroll_y pixels to linear pixels.
+ *
+ * @param nonlinearScroll The number in scroll_y pixels to convert.
+ *
+ * @retval The number in linear pixels.
+ */
+uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
+
+/**
+ * @brief Caps the Y scroll at min_scroll_y
+ */
+void cap_scroll_y_at_top();
 
 /**
  * @brief Play a raw PCM sample. Hangs the game until done.

@@ -406,6 +406,8 @@ uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu 
 
 uint16_t songtimer;
 
+extern unsigned short min_scroll_y;
+
 extern volatile uint8_t hexToDecOutputBuffer[5];
 
 //struct player {
