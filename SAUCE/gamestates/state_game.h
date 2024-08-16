@@ -54,6 +54,9 @@ const uint8_t G_Table[]={
 #define test3  0x10
 #define test4  0X11
 
+
+void set_player_banks();
+
 void x_movement_coll() {
 	if (slope_type && !slope_frames && gamemode != 6) {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
@@ -296,20 +299,12 @@ void state_game(){
 	//       mmc3_set_1kb_chr_bank_2(parallax_scroll_x);
 	//     mmc3_set_1kb_chr_bank_3(saw_set[level]);
 		//}
-		if (!retro_mode) {
-			if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
-			else if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
-			else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
-			else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
-			else mmc3_set_2kb_chr_bank_0(18);
-		}
-		else {
-			if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);			
-			else if (mini && gamemode != 0 || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(24);
-			else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(38);
-			else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(38);
-			else mmc3_set_2kb_chr_bank_0(20);
-		}
+
+
+
+			set_player_banks();
+
+
 	//	else mmc3_set_2kb_chr_bank_0(28);
 	//
 
@@ -361,7 +356,8 @@ void state_game(){
 		check_fade_timer();
 		//(__asm__("PLA"), mmc3_set_prg_bank_1(__A__));
 		
-
+		kandokidshack3 = 0;
+		
 		if (pad_new[0] & PAD_START) {
 			pad_new[0] = 0;
 			famistudio_music_pause(1);
@@ -403,22 +399,18 @@ void state_game(){
 				else if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_A)) {
 					kandokidshack2++;
 				}
-				//else if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
-				//	gamemode == 8 ? gamemode = 0 : gamemode++;
-				//	ppu_off();
-				//	//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
-				//	if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
-				//	else if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(22);
-				//	else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank);
-				//	else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank);
-				//	else mmc3_set_2kb_chr_bank_0(18);
-				//	oam_clear();
-				//	mmc3_set_prg_bank_1(GET_BANK(drawplayerone));	
-				//	drawplayerone();
-				//	mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
-				//	draw_sprites();
-				//	ppu_on_all();
-				//}
+				else if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
+					gamemode == 7 ? gamemode = 0 : gamemode++;
+					ppu_off();
+					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
+					set_player_banks();
+					oam_clear();
+					mmc3_set_prg_bank_1(GET_BANK(drawplayerone));	
+					drawplayerone();
+					mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
+					draw_sprites();
+					ppu_on_all();
+				}
 			}
 			color_emphasis(COL_EMP_NORMAL);
 			famistudio_music_pause(0);
@@ -581,3 +573,19 @@ void state_game(){
     
 }
 
+
+void set_player_banks() {
+		if (!retro_mode) {
+			iconbank1 = 18; iconbank2 = 22; iconbank3 = iconbank;
+		}
+		else {
+			iconbank1 = 20; iconbank2 = 24; iconbank3 = 38;
+		}
+		
+	//	if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
+		if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(iconbank2);
+		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank3);
+		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank3);
+		else mmc3_set_2kb_chr_bank_0(iconbank1);
+
+}	
