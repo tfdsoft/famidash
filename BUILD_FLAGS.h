@@ -5,6 +5,9 @@
 //
 // ============================================================
 
+// kandos additional features
+
+#define FLAG_KANDO_FUN_STUFF 1
 
 
 // DEBUGGING FEATURES =========================================
