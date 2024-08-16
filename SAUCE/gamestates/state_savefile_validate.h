@@ -145,8 +145,18 @@ void state_exit(){
     ppu_on_all();
     do {
         ppu_wait_nmi();
+        pad_poll_both();
         // wait for system power off
+        if (pad_new[0] & PAD_B) break;
     } while (1);
+    kandotemp = 0;
+    poweroffcheck = 0xff;
+    gameState = 0x01;
+
+    // Enable SRAM write
+	POKE(0xA001, 0x80);
+
+    return;
 }
 
 
