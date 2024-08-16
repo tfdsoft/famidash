@@ -187,9 +187,9 @@ void state_game(){
 		if (trails || forced_trails || gamemode == 6) {
 			if (!(kandoframecnt & 0x01)) {
 				if (old_scroll_y >= scroll_y) {
-					tmp6 = sub_scroll_y_ext(scroll_y, old_scroll_y);
+					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(scroll_y, old_scroll_y));
 				} else {
-					tmp6 = sub_scroll_y_ext(old_scroll_y, scroll_y);
+					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(old_scroll_y, scroll_y));
 					tmp6 ^= 0xFFFF; tmp6++;
 				}
 				for (tmp3 = 7; !(tmp3 & 0x80); tmp3--) {

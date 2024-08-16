@@ -296,6 +296,9 @@ __add_scroll_y:
 	
 ;uint16_t __fastcall__ sub_scroll_y_ext(uint16_t sub, uint16_t scroll);
 __sub_scroll_y_ext:
+	; This might seem in reverse order, but the X is decremented at the end
+	; of sub_scroll_y if it overflows, therefore the carry doesn't matter
+
 	; sreg[0] = sub lo, sreg[1] = sub high
 	; XA = scroll
 	sec
@@ -303,6 +306,7 @@ __sub_scroll_y_ext:
 	sta sreg+1
 	txa
 	ldx sreg+1
+	; the carry is set below
 	
 ;uint16_t __fastcall__ sub_scroll_y(uint8_t sub, uint16_t scroll);
 __sub_scroll_y:
@@ -315,7 +319,7 @@ __sub_scroll_y:
 	sec
 	sbc sreg+0
 	bcc @adjust
-	rts
+	rts	; the carry is set at the end
 	
 @adjust:
 	sbc #15 ;carry is clear, same as sec/sbc #16
