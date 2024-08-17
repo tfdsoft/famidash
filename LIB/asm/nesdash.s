@@ -512,7 +512,6 @@ single_rle_byte:
 		sty rld_run	; y is still 0
 		rts
 
-; 6654 cycles elapsed @ $8A columns in
 .endproc
 
 
@@ -568,77 +567,16 @@ single_rle_byte:
 	rts
 .endproc
 
-; void draw_screen_R();
-.segment "XCD_BANK_01"
 
-.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
-.import _increase_parallax_scroll_column
-.import _no_parallax, _invisblocks
+; [Not used in C]
+.segment "XCD_BANK_01"	; Has to be the same as draw_screen_R and _UD
 
-.export _draw_screen_R
-.proc _draw_screen_R
+.import _scroll_y
 
-TileWriteSize	= (15*2)+2+1
-
-TileOff0		= 0
-TileOff1		= 0+TileWriteSize
-TileEnd			= 0+TileWriteSize+TileWriteSize
-
-AttrWriteSize	= 8*3
-
-AttrOff0		= 0
-AttrOff1		= 0+AttrWriteSize
-AttrEnd			= 0+AttrWriteSize+AttrWriteSize
-
-CurrentRow = tmp1
-LoopCount = tmp2
-SeamValue = ptr3+1
-
-attributeCalc_tmp5 = ptr2
-attributeCalc_ColumnBufferIdx = ptr2+1
-
-.export _draw_screen_R_frame0 := frame0
-.export _draw_screen_R_frame1 := frame1
-.export _draw_screen_R_frame2 := attributes
-; Write architecture:
-
-; Frame 0:
-;   Write 0 updates the upper nametable's left tiles
-;   Write 1 updates the lower nametable's left tiles
-; Frame 1:
-;   Write 0 updates the upper nametable's right tiles
-;   Write 1 updates the lower nametable's right tiles
-; Frame 2:
-;   Attributes 
-
-start:
-	
-	LDA _scroll_x			;__ Highbyte of scroll_x
-	LSR						;
-	LSR						;   >> 4
-	LSR						;
-	LSR						;__
-	STA tmp4
-
-	LDX scroll_count
-	BNE frame2
-
-	LDA tmp4
-	CMP _rld_column			;   If X == rld column, decompress shit
-	BEQ frame0
-
-	TXA	; It would've branched if it was not 0
-	RTS
-
-frame2:
-	CPX #$01
-	BEQ frame1
-	JMP attributes
-
-frame0:
-	; Switch banks
-	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
-	JSR writeToCollisionMap
+.export get_seam_scroll_y
+.proc get_seam_scroll_y
+	; No inputs
+	; Returns seam_scroll_y in AX
 
 	; Seam position:
 	; Y ≥	| Y <	| A		| B		|
@@ -672,16 +610,89 @@ frame0:
 	STA	seam_scroll_y
 	STX seam_scroll_y+1
 
-	JMP :+
+	RTS
 
-	; Total seam scroll system:
+	; Total seam system:
 	; High byte	| Seam screen	| A		| B		|
 	;	00		|		00		|  2/0	|	1	|
 	;	01		|		01		|	2	|  3/1	|
 	;	84		|	There isn't	|	0	| 	1	|
 	;	87		|	There isn't	|	2	|	3	|
 	;	No seam can be distinguished by bits 7 or 2
-	;	First nametable's data can be distinguished by bit 0
+.endproc
+
+
+; void draw_screen_R();
+.segment "XCD_BANK_01"
+
+.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
+.import _increase_parallax_scroll_column
+.import _no_parallax, _invisblocks
+
+.export _draw_screen_R
+.proc _draw_screen_R
+
+TileWriteSize	= (15*2)+2+1
+
+TileOff0		= 0
+TileOff1		= 0+TileWriteSize
+TileEnd			= 0+TileWriteSize+TileWriteSize
+
+AttrWriteSize	= 8*3
+
+AttrOff0		= 0
+AttrOff1		= 0+AttrWriteSize
+AttrEnd			= 0+AttrWriteSize+AttrWriteSize
+
+CurrentRow = tmp1
+LoopCount = tmp2
+SeamValue = ptr3+1
+
+attributeCalc_tmp5 = ptr2
+attributeCalc_ColumnBufferIdx = ptr2+1
+
+; Write architecture:
+
+; Frame 0:
+;   Write 0 updates the upper nametable's left tiles
+;   Write 1 updates the lower nametable's left tiles
+; Frame 1:
+;   Write 0 updates the upper nametable's right tiles
+;   Write 1 updates the lower nametable's right tiles
+; Frame 2:
+;   Attributes
+
+start:
+	
+	LDA _scroll_x			;__ Highbyte of scroll_x
+	LSR						;
+	LSR						;   >> 4
+	LSR						;
+	LSR						;__
+	STA tmp4
+
+	LDX scroll_count
+	BNE frame2
+
+	LDA tmp4
+	CMP _rld_column			;   If X == rld column, decompress shit
+	BEQ frame0
+
+	TXA	; It would've branched if it was not 0
+	RTS
+
+frame2:
+	CPX #$01
+	BEQ frame1
+	JMP attributes
+
+frame0:
+	; Switch banks
+	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
+	JSR writeToCollisionMap
+	JSR	get_seam_scroll_y
+
+	JMP :+
 
 frame1:
 
@@ -3039,7 +3050,7 @@ SampleRate_PAL:
 
 .endproc
 
-; [not used in C]
+; [Not used in C]
 .segment "CODE_2"
 
 .import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK__
