@@ -180,7 +180,7 @@ uint8_t SRAM_VALIDATE[4];
 #ifdef FLAG_ENABLE_TEST_LEVELS
 	#define LEVEL_COUNT 256
 #else
-	#define LEVEL_COUNT 11
+	#define LEVEL_COUNT 18
 #endif
 uint8_t coin1_obtained[0x40];
 uint8_t coin2_obtained[0x40];
