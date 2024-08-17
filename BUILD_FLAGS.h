@@ -21,7 +21,7 @@
 //
 // Enable Test Levels
 // uncomment to enable every level id. will break after TEST4.
-#define FLAG_ENABLE_TEST_LEVELS
+// #define FLAG_ENABLE_TEST_LEVELS
 //
 // Print Metatiles When Compiling
 // set to 1 to display metatile data when compiling via the
