@@ -11,6 +11,8 @@ void cube_movement(void){
 	// currplayer_vel_y is signed
 	//if(currplayer_vel_y < 0x400){
 
+	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
+
 	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
 	fallspeed_big = CUBE_MAX_FALLSPEED;
