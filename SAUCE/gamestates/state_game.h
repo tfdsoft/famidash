@@ -586,8 +586,8 @@ void set_player_banks() {
 			iconbank1 = 20; iconbank2 = 24; iconbank3 = 38;
 		}
 		
-	//	if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
-		if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(iconbank2);
+		if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
+		else if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(iconbank2);
 		else if (mini && gamemode == 0) mmc3_set_2kb_chr_bank_0(iconbank3);
 		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank3);
 		else mmc3_set_2kb_chr_bank_0(iconbank1);
