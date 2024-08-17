@@ -380,8 +380,8 @@ uint8_t original_bg_palette_color_2;
 uint8_t current_transition_timer_length;
 
 #ifdef FLAG_KANDO_FUN_STUFF
-uint8_t target_x_scroll_stop;
-uint8_t curr_x_scroll_stop;
+uint16_t target_x_scroll_stop;
+uint16_t curr_x_scroll_stop;
 uint8_t disco_sprites;
 uint8_t tallmode;
 uint8_t longmode;
