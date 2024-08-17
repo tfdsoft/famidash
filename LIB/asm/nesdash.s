@@ -672,13 +672,13 @@ start:
 	STA tmp4
 
 	LDX scroll_count
-	BNE frame2
+	BPL frame2
 
 	LDA tmp4
 	CMP _rld_column			;   If X == rld column, decompress shit
 	BEQ frame0
 
-	TXA	; It would've branched if it was not 0
+	LDA #0
 	RTS
 
 frame2:
@@ -687,6 +687,8 @@ frame2:
 	JMP attributes
 
 frame0:
+	LDA #0
+	STA scroll_count
 	; Switch banks
 	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
 	JSR writeToCollisionMap
@@ -1033,7 +1035,7 @@ attributes:
 	LDA #$FF
 	STA VRAM_BUF+AttrEnd,X
 	; Reset frame counter
-	LDX #$00
+	LDX #$80
 	STX scroll_count
 
 	LDA #$01
