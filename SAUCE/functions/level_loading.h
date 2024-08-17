@@ -62,6 +62,8 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	init_sprites();
 	mmc3_set_prg_bank_1(GET_BANK(increment_attempt_count));
 	increment_attempt_count();
+	coins = 0;
+	outline_color = 0x30;	
 	cube_data[0] = 0;
 	cube_data[1] = 0;
 

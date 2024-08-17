@@ -1,7 +1,9 @@
 #pragma code-name(push, "XCD_BANK_01")
 #pragma data-name(push, "XCD_BANK_01")
 #pragma rodata-name(push, "XCD_BANK_01")
-
+void x_movement_coll();
+void common_gravity_routine();
+void cube_eject();
 void cube_movement(void){
 // handle y
 
@@ -11,15 +13,19 @@ void cube_movement(void){
 
 	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
-	max_fallspeed_big = CUBE_MAX_FALLSPEED;
-	max_fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;
+	fallspeed_big = CUBE_MAX_FALLSPEED;
+	fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;
 	gravity_big = CUBE_GRAVITY;
 	gravity_mini = MINI_CUBE_GRAVITY;
-
 	common_gravity_routine();
+
+	
+
+
 
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
+	
 	
 	if(!currplayer_gravity || (currplayer_gravity && hblocked[currplayer]) || (currplayer_gravity && fblocked[currplayer])){
 		if(bg_coll_D()){ // check collision below
@@ -36,7 +42,39 @@ void cube_movement(void){
 			if (fblocked[currplayer]) currplayer_gravity = 1;			
 		}
 	}
+	
+
+	if (bigboi) {
+		Generic.x += 15;
+
+		cube_eject();
+
+		Generic.y -= 15;
+
+		cube_eject();
+		
+		Generic.x -= 15;
+		
+		cube_eject();
+	}
+
+	else {
+		if (longmode) {
+
+			Generic.x += 15;
+			
+			cube_eject();
+		}
+		
+		if (tallmode) {
+			Generic.x = high_byte(currplayer_x);
+			Generic.y -= 15;
+			
+			cube_eject();
+		}		
+	}	
 	// check collision down a little lower than CUBE
+	Generic.x = high_byte(currplayer_x); // the rest should be the same
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
 //	if (currplayer_vel_y != 0){
@@ -160,23 +198,123 @@ void cube_movement(void){
 //jim's shit
 	if (retro_mode) {
 		if (pad_new[currplayer] & PAD_B && !has_practice_point) {
-			if (!jimsheatballalive[0]) {
-				jimsheatballalive[0] = 1;
-				jimsheatballx[0] = high_byte(old_x);
-				jimsheatbally[0] = high_byte(player_y[0]);
-				jimsheatballframe[0] = 0;
-			}
-			else if (!jimsheatballalive[1]) {
-				jimsheatballalive[1] = 1;
-				jimsheatballx[1] = high_byte(old_x);
-				jimsheatbally[1] = high_byte(player_y[0]);
-				jimsheatballframe[1] = 0;
+			for (tmp9 = 0; tmp9 < MAX_FIREBALLS; tmp9++) {
+				if (!jimsheatballalive[tmp9]) {
+					jimsheatballalive[tmp9] = 1;
+					if (pad[controllingplayer] & PAD_UP) jimsheatball_vel_y[tmp9] = (JIMSHEATBALL_JUMP_VEL / 4) * 7;
+					else jimsheatball_vel_y[tmp9] = JIMSHEATBALL_JUMP_VEL;
+					jimsheatballx[tmp9] = high_byte(old_x);
+					high_byte(jimsheatbally[tmp9]) = high_byte(player_y[0]);
+					jimsheatballframe[tmp9] = 0;
+					break;
+				}
 			}
 
 		}
 	}
 // done with jims shit	
+// jims heat bomb:
+	player_x[currplayer] = currplayer_x;
+	player_y[currplayer] = currplayer_y;
+	player_vel_x[currplayer] = currplayer_vel_x;
+	player_vel_y[currplayer] = currplayer_vel_y;
+	player_gravity[currplayer] = currplayer_gravity;
+
+	for (tmp9 = 0; tmp9 < MAX_FIREBALLS; tmp9++) {
+	
+		if (jimsheatballalive[tmp9]) {
+
+				
+			currplayer_x = jimsheatballx[tmp9];
+			currplayer_y = jimsheatbally[tmp9];
+			currplayer_vel_x = jimsheatball_vel_x[tmp9];
+			currplayer_vel_y = jimsheatball_vel_y[tmp9];
+			currplayer_gravity = 0;
+
+			if(currplayer_vel_y > JIMSHEATBALL_MAX_FALLSPEED){
+				currplayer_vel_y += -JIMSHEATBALL_GRAVITY;
+			} else currplayer_vel_y += JIMSHEATBALL_GRAVITY;
+			currplayer_y += currplayer_vel_y;
+			
+			Generic.x = high_byte(currplayer_x);
+			Generic.y = high_byte(currplayer_y);
+			
+
+		//	x_movement_coll();
+			if(bg_coll_D()){ // check collision below
+			    high_byte(currplayer_y) -= eject_D;
+			    low_byte(currplayer_y) = 0;
+			    currplayer_vel_y = JIMSHEATBALL_JUMP_VEL;
+			}
+
+			if (cube_data[currplayer] & 1) { cube_data[currplayer] &= 2; }
+			jimsheatballx[tmp9] = currplayer_x;
+			jimsheatbally[tmp9] = currplayer_y;
+			jimsheatball_vel_x[tmp9] = currplayer_vel_x;
+			jimsheatball_vel_y[tmp9] = currplayer_vel_y;
+		}	
+	}
+	currplayer_x = player_x[currplayer];
+	currplayer_y = player_y[currplayer];
+	currplayer_vel_x = player_vel_x[currplayer];
+	currplayer_vel_y = player_vel_y[currplayer];
+	currplayer_gravity = player_gravity[currplayer];
+	
+	Generic.x = high_byte(currplayer_x);
+	Generic.y = high_byte(currplayer_y);
 }	
+
+
+void common_gravity_routine(void) {
+	if (!dashing[currplayer]) {
+		if(!currplayer_gravity ? (currplayer_vel_y > (!mini ? fallspeed_big : fallspeed_mini)) : (currplayer_vel_y < (!mini ? -fallspeed_big : -fallspeed_mini))){
+				switch (gravity_mod) {
+					case 0: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big : gravity_big) : (!currplayer_gravity ? -gravity_mini : gravity_mini); break;
+					case 1: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big/3 : gravity_big/3) : (!currplayer_gravity ? -gravity_mini/3 : gravity_mini/3); break;
+					case 2: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big/2 : gravity_big/2) : (!currplayer_gravity ? -gravity_mini/2 : gravity_mini/2); break;
+					case 3: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big/3*2 : gravity_big/3*2) : (!currplayer_gravity ? -gravity_mini/3*2 : gravity_mini/3*2); break;
+					case 4: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big*2 : gravity_big*2) : (!currplayer_gravity ? -gravity_mini*2 : gravity_mini*2); break;
+				};
+		}
+		else {
+				switch (gravity_mod) {
+					case 0: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big : gravity_big) : (currplayer_gravity ? -gravity_mini : gravity_mini); break;
+					case 1: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big/3 : gravity_big/3) : (currplayer_gravity ? -gravity_mini/3 : gravity_mini/3); break;
+					case 2: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big/2 : gravity_big/2) : (currplayer_gravity ? -gravity_mini/2 : gravity_mini/2); break;
+					case 3: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big/3*2 : gravity_big/3*2) : (currplayer_gravity ? -gravity_mini/3*2 : gravity_mini/3*2); break;
+					case 4: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big*2 : gravity_big*2) : (currplayer_gravity ? -gravity_mini*2 : gravity_mini*2); break;
+				};
+		}
+		currplayer_y += currplayer_vel_y;
+	}
+	
+	
+	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
+	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
+	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else currplayer_vel_y = 1;
+}
+
+
+void cube_eject() {
+		if(!currplayer_gravity || (currplayer_gravity && hblocked[currplayer]) || (currplayer_gravity && fblocked[currplayer])){
+			if(bg_coll_D()){ // check collision below
+				high_byte(currplayer_y) -= eject_D;
+				low_byte(currplayer_y) = 0;
+				currplayer_vel_y = 0;
+				if (fblocked[currplayer]) currplayer_gravity = 0;
+			}
+		} if (currplayer_gravity || (!currplayer_gravity && hblocked[currplayer]) || (!currplayer_gravity && fblocked[currplayer])) {
+			if(bg_coll_U()){ // check collision above
+				high_byte(currplayer_y) -= eject_U;
+				low_byte(currplayer_y) = 0;
+				currplayer_vel_y = 0;
+				if (fblocked[currplayer]) currplayer_gravity = 1;			
+			}
+		}	
+}		
+
 
 #pragma code-name(pop)
 #pragma data-name(pop) 

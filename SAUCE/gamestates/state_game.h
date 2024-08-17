@@ -400,7 +400,11 @@ void state_game(){
 					kandokidshack2++;
 				}
 				else if ((pad_new[0] & PAD_A) && DEBUG_MODE && !retro_mode) {
+#ifdef FLAG_KANDO_FUN_STUFF
+					gamemode == 8 ? gamemode = 0 : gamemode++;
+#else
 					gamemode == 7 ? gamemode = 0 : gamemode++;
+#endif			
 					ppu_off();
 					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
 					set_player_banks();

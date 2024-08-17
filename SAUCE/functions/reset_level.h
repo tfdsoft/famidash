@@ -64,11 +64,14 @@ void reset_level(void) {
     player_y[1] = 0xb000;
     currplayer_y = 0xb000;
 
-    outline_color = 0x30;
+    
 
-    jimsheatballalive[0] = 0;
-    jimsheatballalive[1] = 0;
+    for (tmp9 = 0; tmp9 < MAX_FIREBALLS; tmp9++) {
 
+	jimsheatballalive[tmp9] = 0;
+    }
+
+    gravity_mod = 0;
     player_gravity[0] = 0x00;
     player_gravity[1] = twoplayer ? 0x00 : 0x01;
 
@@ -80,6 +83,7 @@ void reset_level(void) {
     player_vel_y[0] = 0;
     player_vel_x[1] = 0;
     player_vel_y[1] = 0;
+    disco_sprites = 0;
     target_scroll_y = 0x0180;
     currplayer_vel_x = 0;
     currplayer_vel_y = 0;
@@ -88,6 +92,13 @@ void reset_level(void) {
     cube_rotate[0] = 0;
     cube_rotate[1] = 0;
     forced_trails = 0;
+#ifdef FLAG_KANDO_FUN_STUFF
+    tallmode = 0;
+    longmode = 0;
+    bigboi = 0;
+    curr_x_scroll_stop = 0x5000;
+    target_x_scroll_stop = 0x5000;
+#endif
     discoframe = 0;
 	for (tmp2 = 0; tmp2 < 9; tmp2++) {
 		player_old_posy[tmp2] = 0;

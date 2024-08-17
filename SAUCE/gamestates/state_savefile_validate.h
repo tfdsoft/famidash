@@ -1,6 +1,6 @@
-#pragma code-name(push, "XCD_BANK_04")
-#pragma data-name(push, "XCD_BANK_04") 
-#pragma rodata-name(push, "XCD_BANK_04")
+#pragma code-name(push, "XCD_BANK_02")
+#pragma data-name(push, "XCD_BANK_02") 
+#pragma rodata-name(push, "XCD_BANK_02")
 
 #include "defines/bg_charmap.h"
 const char TEXT_iamgoingtocommitseveralwarcrimesifcc65doesntstopbeingapieceofshit[] = "YOUR SAVE FILE";

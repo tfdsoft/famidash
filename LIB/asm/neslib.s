@@ -17,7 +17,7 @@
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
 	.export _oam_clear,_oam_clear_player,_oam_size,__oam_spr,__oam_meta_spr,_oam_hide_rest
 	.export _ppu_wait_frame,_ppu_wait_nmi
-	.export __scroll,_split
+	.export __scroll,_split,_newrand
 	.export _bank_spr,_bank_bg
 	.export __vram_read,__vram_write
 	.export _pad_poll ;,_pad_trigger,_pad_state
@@ -895,6 +895,24 @@ _pad_poll:
 ;uint8_t __fastcall__ rand8();
 ;Galois random generator, found somewhere
 ;out: A random number 0..255
+
+
+_newrand:
+	ldy #8
+	lda RAND_SEED+0
+:
+	asl
+	rol RAND_SEED+1
+	rol RAND_SEED+2
+	rol RAND_SEED+3
+	bcc :+
+	eor #$C5
+:
+	dey
+	bne :--
+	sta RAND_SEED+0
+	cmp #0
+	rts
 
 rand1:
 

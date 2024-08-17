@@ -82,6 +82,10 @@
 #define SHIP_GRAVITY 0x30
 #define MINI_SHIP_GRAVITY 0x2C
 
+#define JIMSHEATBALL_MAX_FALLSPEED 0x300
+#define JIMSHEATBALL_GRAVITY 0x34
+#define JIMSHEATBALL_JUMP_VEL -0x390
+
 #define COIN_1 0x01
 #define COIN_2 0x02
 #define COIN_3 0x04
@@ -101,8 +105,8 @@ uint8_t tmp8;
 uint8_t tmp9;
 uint16_t tmpA;
 uint16_t tmpB;
-int16_t max_fallspeed_big;
-int16_t max_fallspeed_mini;
+int16_t fallspeed_big;
+int16_t fallspeed_mini;
 int16_t gravity_big;
 int16_t gravity_mini;
 uint8_t iconbank1;
@@ -220,7 +224,7 @@ uint8_t retro_mode;
 uint8_t palette_cycle_mode;
 uint8_t gameboy_mode;
 uint8_t invisblocks;
-
+uint8_t cam_seesaw;
 
 
 //uint8_t greyscale_mode;
@@ -261,6 +265,7 @@ uint8_t coins;
 uint8_t currplayer;
 uint8_t kandotemp;
 uint8_t kandotemp2[2];
+uint8_t kandotemp3;
 uint8_t kandotemp5;
 uint8_t kandoframecnt;
 uint8_t controllingplayer;
@@ -339,11 +344,14 @@ uint8_t lastbgcolortype;
 uint8_t iconbank;
 uint8_t dblocked[2];
 
-uint8_t jimsheatballalive[2]; //jims heatball shit
-uint8_t jimsheatballx[2]; //jims heatball shit
-uint8_t jimsheatbally[2];
-uint8_t jimsheatballframe[2];
-int16_t jimsheatballvel_y[2];
+#define MAX_FIREBALLS 20
+
+uint8_t jimsheatballalive[MAX_FIREBALLS]; //jims heatball shit
+uint16_t jimsheatballx[MAX_FIREBALLS]; //jims heatball shit
+uint16_t jimsheatbally[MAX_FIREBALLS];
+int16_t jimsheatball_vel_x[MAX_FIREBALLS];
+int16_t jimsheatball_vel_y[MAX_FIREBALLS];
+uint8_t jimsheatballframe[MAX_FIREBALLS];
 
 uint8_t player_old_posy[9];
 uint8_t discorefreshrate;
@@ -371,6 +379,15 @@ uint8_t original_bg_palette_color_2;
 
 uint8_t current_transition_timer_length;
 
+#ifdef FLAG_KANDO_FUN_STUFF
+uint8_t target_x_scroll_stop;
+uint8_t curr_x_scroll_stop;
+uint8_t disco_sprites;
+uint8_t tallmode;
+uint8_t longmode;
+uint8_t bigboi;
+uint8_t gravity_mod;
+#endif
 
 uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 

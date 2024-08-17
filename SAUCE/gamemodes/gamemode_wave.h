@@ -2,17 +2,13 @@
 #pragma data-name(push, "XCD_BANK_01")
 #pragma rodata-name(push, "XCD_BANK_01")
 
-
+void wave_eject();
 void wave_movement(void){
 
 	if (!dashing[currplayer]) {
-		if(currplayer_gravity){
-			currplayer_vel_y = !mini ? -currplayer_vel_x : -(currplayer_vel_x << 1);
-		}
-		else{
-			currplayer_vel_y = !mini ? currplayer_vel_x : currplayer_vel_x << 1;
-		}
-
+		
+		currplayer_vel_y = !mini ? (currplayer_gravity ? -currplayer_vel_x : currplayer_vel_x) : (currplayer_gravity ? -(currplayer_vel_x << 1) : (currplayer_vel_x << 1));
+		
 		if (pad[controllingplayer] & PAD_A) currplayer_vel_y = -currplayer_vel_y;
 
 		if (!slope_frames && !was_on_slope_counter) {
@@ -35,6 +31,43 @@ void wave_movement(void){
 	
 	
 
+	wave_eject();
+	
+	if (bigboi) {
+		Generic.y -= 15;
+		wave_eject();		
+		Generic.x += 15;
+		wave_eject();		
+		Generic.y += 15;
+		wave_eject();		
+	}
+	
+	else {
+		if (longmode) {
+			Generic.x += 15;
+			wave_eject();				
+		}
+		if (tallmode) {
+			Generic.x = high_byte(currplayer_x);
+			Generic.y -= 15;
+			wave_eject();				
+		}
+	}
+
+	Generic.x = high_byte(currplayer_x);
+	Generic.y = high_byte(currplayer_y);
+
+	if (currplayer_vel_y != 0 && !slope_type){
+		if(pad_new[controllingplayer] & PAD_A) {
+			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+		}
+	}
+	
+}	
+
+
+
+void wave_eject() {
 	if(high_byte(currplayer_vel_y) & 0x80){
 		if (bg_coll_U()) {
 			if(dblocked[currplayer]){ // check collision above
@@ -57,17 +90,7 @@ void wave_movement(void){
 			}
 		}
 	}
-
-	Generic.y = high_byte(currplayer_y);
-
-	if (currplayer_vel_y != 0 && !slope_type){
-		if(pad_new[controllingplayer] & PAD_A) {
-			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
-		}
-	}
-	
 }	
-
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)

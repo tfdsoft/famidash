@@ -4,8 +4,18 @@
 
 
 void do_the_scroll_thing(){
-	if (currplayer_x > 0x5000){ // change x scroll
-		tmp1 = MSB(currplayer_x - 0x5000);
+
+		
+	if (cam_seesaw == 1 && curr_x_scroll_stop < 0xD000) target_x_scroll_stop = 0xD000;
+	else if (cam_seesaw == 1 && curr_x_scroll_stop >= 0xD000) cam_seesaw = 2;
+	else if (cam_seesaw == 2 && curr_x_scroll_stop > 0x1000) target_x_scroll_stop = 0x1000;
+	else if (cam_seesaw == 2 && curr_x_scroll_stop <= 0x1000) cam_seesaw = 1;
+	
+	if (curr_x_scroll_stop < target_x_scroll_stop) curr_x_scroll_stop += 0x80;
+	else if (curr_x_scroll_stop > target_x_scroll_stop) curr_x_scroll_stop -= 0x80;		
+
+	if (currplayer_x > curr_x_scroll_stop){ // change x scroll
+		tmp1 = MSB(currplayer_x - curr_x_scroll_stop);
 		scroll_x += tmp1;
 		parallax_scroll_x += tmp1 ? tmp1 - 1 : 0;
 		if (parallax_scroll_x >= 144) {
@@ -24,6 +34,12 @@ void do_the_scroll_thing(){
 		}
 		high_byte(currplayer_x) = high_byte(currplayer_x) + tmp1;
 	}
+
+
+	
+	
+	
+	
 //	if (gamemode != 5) {
 		if (!dual) {
 			if (currplayer_y < 0x4000 && (scroll_y > 0x08)){ // change y scroll (upward)
@@ -97,8 +113,8 @@ void do_the_scroll_thing(){
 void do_the_scroll_thing2(){
 
     
-	if (currplayer_x > 0x5000){ // change x scroll
-		tmp1 = MSB(currplayer_x - 0x5000);
+	if (currplayer_x > curr_x_scroll_stop){ // change x scroll
+		tmp1 = MSB(currplayer_x - curr_x_scroll_stop);
 		scroll_x += tmp1;
 		parallax_scroll_x += tmp1 ? tmp1 - 1 : 0;
 		if (parallax_scroll_x >= 144) {

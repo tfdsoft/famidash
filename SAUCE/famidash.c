@@ -176,5 +176,6 @@ void setdefaultoptions() {
 	//gameboy_mode = 0;
 	decorations = 1;
 	//invisblocks = 0;
+	cam_seesaw = 0;
 	return;
 }

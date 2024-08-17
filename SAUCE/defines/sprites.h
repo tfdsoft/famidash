@@ -1252,29 +1252,29 @@ const unsigned char * const MINI_SPIDER_JUMP2[]={Mini_Spider2_3};
 
 
 const unsigned char Speed_05_Portal[]={
-	  0,  0,0xA3,1|OAM_FLIP_H,	
-	  8,  0,0xA1,1|OAM_FLIP_H,
-	  0,  16,0xA3,1|OAM_FLIP_H|OAM_FLIP_V,	
-	  8,  16,0xA1,1|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0xA1,1|OAM_FLIP_V,
+	  8,  0,0xA1,1|OAM_FLIP_H,	
+	  0,  13,0xA1,1,	
+	  8,  13,0xA1,1|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
 const unsigned char Speed_10_Portal[]={
 	  0,  0,0xA1,0,
-	  8,  0,0xA3,0,
-	  0,  16,0xA1,0|OAM_FLIP_V,	
-	  8,  16,0xA3,0|OAM_FLIP_V,	
+	  8,  0,0xA1,0|OAM_FLIP_H|OAM_FLIP_V,
+	  0,  13,0xA1,0|OAM_FLIP_V,	
+	  8,  13,0xA1,0|OAM_FLIP_H,	
 	0x80
 };
 const unsigned char Speed_20_Portal[]={
-	  0,  0,0xA5,0,	
-	  8,  0,0xA7,0,	
-	  8,  0,0xA5,0,
-	  16,  0,0xA7,0,	  
-	  0,  16,0xA5,0|OAM_FLIP_V,	
-	  8,  16,0xA7,0|OAM_FLIP_V,	
-	  8,  16,0xA5,0|OAM_FLIP_V,	
-	  16,  16,0xA7,0|OAM_FLIP_V,	
+	  0,  0,0xA9,0,	
+	  5,  0,0xA9,0|OAM_FLIP_H|OAM_FLIP_V,	
+	  6,  0,0xA9,0,	  
+	  11,  0,0xA9,0|OAM_FLIP_H|OAM_FLIP_V,	  
+	  0,  13,0xA9,0|OAM_FLIP_V,	
+	  5,  13,0xA9,0|OAM_FLIP_H,	
+	  6,  13,0xA9,0|OAM_FLIP_V,	
+	  11,  13,0xA9,0|OAM_FLIP_H,	
 	0x80
 };
 const unsigned char Speed_30_Portal[]={
@@ -1324,6 +1324,60 @@ const unsigned char Growth_Portal[]={
 	  8,  16,0x89,0,
 	  0,  32,0x81,0|OAM_FLIP_V,
 	  8,  32,0x83,0|OAM_FLIP_V,
+	0x80
+};
+
+const unsigned char Gravity_2x_Portal[]={
+	  0,  0,0x81,3,	
+	  8,  0,0x83,3,	
+	  -8,  16,0x85,3,	
+	  0,  16,0x87,3,
+	  8,  16,0x89,3,
+	  0,  32,0x81,3|OAM_FLIP_V,
+	  8,  32,0x83,3|OAM_FLIP_V,
+	0x80
+};
+
+const unsigned char Gravity_12_Portal[]={
+	  0,  0,0xA3,3,	
+	  8,  0,0xA7,3,	
+	  -8,  16,0xFF,3,	
+	  0,  16,0x97,3,
+	  8,  16,0xB7,3,
+	  0,  32,0xA3,3|OAM_FLIP_V,
+	  8,  32,0xA7,3|OAM_FLIP_V,
+	0x80
+};
+const unsigned char Gravity_1x_Portal[]={
+	  8,  0,0xA3,3|OAM_FLIP_H,	
+	  0,  0,0xA7,3|OAM_FLIP_H,	
+	  //-8,  16,0xFF,3|OAM_FLIP_H,	
+	  8,  16,0x97,3|OAM_FLIP_H,
+	  0,  16,0xB7,3|OAM_FLIP_H,
+	  8,  32,0xA3,3|OAM_FLIP_V|OAM_FLIP_H,
+	  0,  32,0xA7,3|OAM_FLIP_V|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char Gravity_23_Portal[]={
+	  0,  0,0xA3,0,	
+	  8,  0,0xA7,0,	
+	  -8,  16,0xFF,0,	
+	  0,  16,0x97,0,
+	  8,  16,0xB7,0,
+	  0,  32,0xA3,0|OAM_FLIP_V,
+	  8,  32,0xA7,0|OAM_FLIP_V,
+	0x80
+};
+
+const unsigned char Gravity_13_Portal[]={
+	  0,  0,0xA3,1,	
+	  8,  0,0xA7,1,	
+	  -8,  16,0xFF,1,	
+	  0,  16,0x97,1,
+	  8,  16,0xB7,1,
+	  0,  32,0xA3,1|OAM_FLIP_V,
+	  8,  32,0xA7,1|OAM_FLIP_V,
 	0x80
 };
 
@@ -1554,6 +1608,134 @@ const unsigned char Portal_Single[]={
 	 16, 32,0x8F,0|OAM_FLIP_V,
 	0x80
 };
+const unsigned char Tallboy_Portal[]={
+
+	  0,  0,0x8B,3,
+	  8, 0,0x8D,3,
+	  16, 0,0x8F,3,
+	  0,  16,0x91,3,
+
+	  8, 16,0x93,3,
+	  16, 16,0x95,3,
+	  0,  32,0x8B,3|OAM_FLIP_V,
+	  8, 32,0x8D,3|OAM_FLIP_V,
+
+	 16, 32,0x8F,3|OAM_FLIP_V,
+	0x80
+};
+
+
+
+const unsigned char Longboy_Portal[]={
+
+	  0,  0,0x66,1,
+	  8, 0,0x68,1,
+	  16, 0,0x6A,1,
+	  0,  16,0x76,1,
+
+	  8, 16,0x78,1,
+	  16, 16,0x7A,1,
+	 0,  32,0x66,1|OAM_FLIP_V,
+	 8, 32,0x68,1|OAM_FLIP_V,
+
+	 16, 32,0x6A,1|OAM_FLIP_V,
+	0x80
+};
+
+const unsigned char Bigboy_Portal[]={
+
+	  0,  0,0x66,0,
+	  8, 0,0x68,0,
+	  16, 0,0x6A,0,
+	  0,  16,0x76,0,
+
+	  8, 16,0x78,0,
+	  16, 16,0x7A,0,
+	 0,  32,0x66,0|OAM_FLIP_V,
+	 8, 32,0x68,0|OAM_FLIP_V,
+
+	 16, 32,0x6A,0|OAM_FLIP_V,
+	0x80
+};
+
+const unsigned char Teleport_Portal_Horizontal_Upwards_Enter[]={
+
+
+	  0,  0,0x9C,0|OAM_FLIP_H,  
+	  8, 0,0x8E,0|OAM_FLIP_H,  
+	  16, 0,0x8C,0|OAM_FLIP_H,
+	  24, 0,0x8C,0,  
+
+	32, 0,0x8E,0,
+	40, 0,0x9C,0,  
+	0,8,0xE7,0|OAM_FLIP_H,
+	8,8,0xE5,0|OAM_FLIP_H,
+	16,8,0xE3,0|OAM_FLIP_H,
+	24,8,0xE3,0,
+	32,8,0xE5,0,
+	40,8,0xE7,0,
+
+	0x80
+};
+
+const unsigned char Teleport_Portal_Horizontal_Upwards_Exit[]={
+
+
+	  0,  0,0x9C,1|OAM_FLIP_H,  
+	  8, 0,0x8E,1|OAM_FLIP_H,  
+	  16, 0,0x8C,1|OAM_FLIP_H,
+	  24, 0,0x8C,1,  
+
+	32, 0,0x8E,1,
+	40,0,0x9C,1,  
+	0,8,0xE7,1|OAM_FLIP_H,
+	8,8,0xE5,1|OAM_FLIP_H,
+	16,8,0xE3,1|OAM_FLIP_H,
+	24,8,0xE3,1,
+	32,8,0xE5,1,
+	40,8,0xE7,1,
+
+	0x80
+};
+
+const unsigned char Teleport_Portal_Horizontal_Downwards_Enter[]={
+
+
+	  0,  0,0x9C,0|OAM_FLIP_H|OAM_FLIP_V,  
+	  8, 0,0x8E,0|OAM_FLIP_H|OAM_FLIP_V,  
+	  16, 0,0x8C,0|OAM_FLIP_H|OAM_FLIP_V,
+	  24, 0,0x8C,0|OAM_FLIP_V,  
+
+	32, 0,0x8E,0|OAM_FLIP_V,
+	40, 0,0x9C,0|OAM_FLIP_V,  
+	0,-8,0xE7,0|OAM_FLIP_H|OAM_FLIP_V,
+	8,-8,0xE5,0|OAM_FLIP_H|OAM_FLIP_V,
+	16,-8,0xE3,0|OAM_FLIP_H|OAM_FLIP_V,
+	24,-8,0xE3,0|OAM_FLIP_V,
+	32,-8,0xE5,0|OAM_FLIP_V,
+	40,-8,0xE7,0|OAM_FLIP_V,
+
+	0x80
+};
+const unsigned char Teleport_Portal_Horizontal_Downwards_Exit[]={
+
+
+	  0,  0,0x9C,1|OAM_FLIP_H|OAM_FLIP_V,  
+	  8, 0,0x8E,1|OAM_FLIP_H|OAM_FLIP_V,  
+	  16, 0,0x8C,1|OAM_FLIP_H|OAM_FLIP_V,
+	  24, 0,0x8C,1|OAM_FLIP_V,  
+
+	32, 0,0x8E,1|OAM_FLIP_V,
+	40, 0,0x9C,1|OAM_FLIP_V,  
+	0,-8,0xE7,1|OAM_FLIP_H|OAM_FLIP_V,
+	8,-8,0xE5,1|OAM_FLIP_H|OAM_FLIP_V,
+	16,-8,0xE3,1|OAM_FLIP_H|OAM_FLIP_V,
+	24,-8,0xE3,1|OAM_FLIP_V,
+	32,-8,0xE5,1|OAM_FLIP_V,
+	40,-8,0xE7,1|OAM_FLIP_V,
+
+	0x80
+};
 
 const unsigned char Portal_Gravity_Down_Horizontal_Downwards[]={
 
@@ -1633,6 +1815,13 @@ const unsigned char Dash_Orb[]={
 
 	  0,  0,0xD1,0,
 	  8,  0,0xD3,0,
+	0x80
+};
+
+const unsigned char Black_Orb[]={
+
+	  0,  0,0xA5,0,
+	  8,  0,0xA5,0|OAM_FLIP_H,
 	0x80
 };
 
@@ -1910,6 +2099,40 @@ const unsigned char Pink_Jump_Pad4[]={
 	  8,-8,0x59,1|OAM_FLIP_H,
 	0x80
 };
+const unsigned char Green_Jump_Pad[]={
+
+	  0,8,0x59,0|OAM_FLIP_V,
+	  8,8,0x5B,0|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-8,0x59,0,
+	  8,-8,0x5B,0|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Green_Jump_Pad2[]={
+
+	  0,8,0x5B,0|OAM_FLIP_V,
+	  8,8,0x5D,0|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-8,0x5B,0,
+	  8,-8,0x5D,0|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Green_Jump_Pad3[]={
+
+	  0,8,0x5D,0|OAM_FLIP_V,
+	  8,8,0x5F,0|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-8,0x5D,0,
+	  8,-8,0x5F,0|OAM_FLIP_H,
+	  
+	0x80
+};
+const unsigned char Green_Jump_Pad4[]={
+
+	  0,8,0x5F,0|OAM_FLIP_V,
+	  8,8,0x59,0|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-8,0x5F,0,
+	  8,-8,0x59,0|OAM_FLIP_H,
+	  
+	0x80
+};
 const unsigned char Red_Jump_Pad[]={
 
 	  0,-8,0x59,2,
@@ -2051,7 +2274,7 @@ const unsigned char Teleport_Square_Exit[]={
 const unsigned char Spider_Pad_Up[]={
 
 	  0, -8,0xE1,1,
-	  8, -8,0xE3,1|OAM_FLIP_H,
+	  8, -8,0xE1,1|OAM_FLIP_H,
 	0x80
 };
 
@@ -2079,7 +2302,7 @@ const unsigned char Spider_Pad_Up4[]={
 const unsigned char Spider_Pad_Down[]={
 
 	  0, -0,0xE1,1|OAM_FLIP_V,
-	  8, -0,0xE3,1|OAM_FLIP_H|OAM_FLIP_V,
+	  8, -0,0xE1,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
@@ -2367,6 +2590,13 @@ const struct SpriteFrame PINK_PAD_U_SPRITES[]={
 	{5, Pink_Jump_Pad_U4},
 };
 
+const struct SpriteFrame GREEN_PAD_SPRITES[]={
+	{5, Green_Jump_Pad},
+	{5, Green_Jump_Pad2},
+	{5, Green_Jump_Pad3},
+	{5, Green_Jump_Pad4},
+};
+
 const struct SpriteFrame GRAVITY_PAD_SPRITES[]={
 	{5, Gravity_Pad},
 	{5, Gravity_Pad2},
@@ -2411,6 +2641,17 @@ const struct SpriteFrame RED_ORB_SPRITES[]={
 	{5, Red_Jump_Orb2},
 	{5, Red_Jump_Orb3},
 	{5, Red_Jump_Orb4},
+};
+
+const struct SpriteFrame RANDOM_GAMEMODE_PORTAL[]={
+	{10, Portal_Gamemode_Cube},
+	{10, Portal_Gamemode_Ship},
+	{10, Portal_Gamemode_Ball},
+	{10, Portal_Gamemode_UFO},
+	{10, Portal_Gamemode_Robot},
+	{10, Portal_Gamemode_Spider},
+	{10, Portal_Gamemode_Wave},
+	{10, Portal_Gamemode_Swing},
 };
 
 
@@ -2489,7 +2730,7 @@ const unsigned char * const Metasprites[]={
 	Long_Light_Left, //chain shifted down 8px
 	Short_Light_U,
 	Chain_U,
-	nometa,
+	Black_Orb,
 	Dash_Orb,
 	Dash_Gravity_Orb,
 	BG_Spike_Group2,
@@ -2516,7 +2757,20 @@ const unsigned char * const Metasprites[]={
 	Dash_Gravity_Orb_Upwards,
 	Dash_Orb_Downwards,
 	Dash_Gravity_Orb_Downwards,
-	
+	Gravity_13_Portal,
+	Gravity_12_Portal,
+	Gravity_23_Portal,
+	Gravity_2x_Portal,
+	Gravity_1x_Portal,
+	Portal_Gamemode_Cube,
+	Green_Jump_Pad,
+	Teleport_Portal_Horizontal_Upwards_Enter,
+	Teleport_Portal_Horizontal_Downwards_Exit,
+	Teleport_Portal_Horizontal_Downwards_Enter,
+	Teleport_Portal_Horizontal_Upwards_Exit,
+	Tallboy_Portal,
+	Longboy_Portal,
+	Bigboy_Portal,
 	};
 
 
@@ -2612,8 +2866,6 @@ const void* const animation_frame_list[] = {
 	RED_PAD_U_SPRITES,
 	NULL,
 	NULL,
-	SPIDER_PAD_UP_SPRITES,
-	SPIDER_PAD_DOWN_SPRITES,
 	NULL,
 	NULL,
 	NULL,
@@ -2621,6 +2873,24 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	RANDOM_GAMEMODE_PORTAL,
+	GREEN_PAD_SPRITES,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	
+	
 };
 
 // Number of UNIQUE animation frames
@@ -2715,8 +2985,22 @@ const unsigned char animation_frame_length[] = {
 	sizeof(RED_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	0,
 	0,
-	sizeof(SPIDER_PAD_UP_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
-	sizeof(SPIDER_PAD_DOWN_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	sizeof(RANDOM_GAMEMODE_PORTAL) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	sizeof(GREEN_PAD_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	0,
 	0,
 	0,
