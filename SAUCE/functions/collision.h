@@ -839,13 +839,13 @@ void bg_coll_death() {
 void commonly_used_store() {
 		storeWordSeparately(
 			add_scroll_y(
-				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 3, scroll_y
+				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 1, scroll_y
 			), temp_y, temp_room);
 }			
 void commonly_stored_routine_2() {
 	storeWordSeparately(
 		add_scroll_y(
-			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 3),
+			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 1),
 			scroll_y
 		), temp_y, temp_room);
 }		
