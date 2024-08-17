@@ -142,7 +142,10 @@ if args.entry_type == "bank":
 			newer[i] = 0
 		new[cfg[i]] += newer[i]
 
-maxstrsize = [len(i[0]) for i in new.items() if (showall or (old[i[0]] - i[1] != 0))]
+if (compare):
+	maxstrsize = [len(i[0]) for i in new.items() if (showall or (old[i[0]] - i[1] != 0))]
+else:
+	maxstrsize = [len(i[0]) for i in new.items()]
 if (len(maxstrsize) == 0):
 	print("No entries found, exiting")
 	exit(0)
