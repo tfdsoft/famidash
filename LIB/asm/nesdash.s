@@ -577,7 +577,11 @@ single_rle_byte:
 .proc get_seam_scroll_y
 	; No inputs
 	; Returns seam_scroll_y in AX
+start:
+	BIT	extceil
+	BPL	noSeam
 
+yesSeam:
 	; Seam position:
 	; Y ≥	| Y <	| A		| B		|
 	; 	0	|  $78	|	0	|	1	|
@@ -610,6 +614,13 @@ single_rle_byte:
 	STA	seam_scroll_y
 	STX seam_scroll_y+1
 
+	RTS
+
+noSeam:
+	; The level's ceiling ≤ 27 blocks, no need for a seam
+	LDX #$87
+	STX	seam_scroll_y
+	STX	seam_scroll_y+1
 	RTS
 
 	; Total seam system:
