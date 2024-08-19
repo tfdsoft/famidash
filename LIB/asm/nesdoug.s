@@ -701,7 +701,7 @@ _color_emphasis:
 	and #$e1 ;sanitize
 	sta TEMP
 	lda <PPU_MASK_VAR
-	and #$1f
+	and #$1e
 	ora TEMP
 	sta <PPU_MASK_VAR
 	sta PPU_MASK

@@ -491,7 +491,7 @@ void funsettings() {
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(funsettingscreen);   
-	kandotemp4 = 0;
+	//kandotemp4 = 0;
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 by default	
 	pal_fade_to_withmusic(0,4);
@@ -577,8 +577,7 @@ void funsettings() {
 			//one_vram_buffer(' ', NTADR_A(4, 8));
 			//one_vram_buffer(' ', NTADR_A(4, 12));
 			//one_vram_buffer(' ', NTADR_A(4, 16));
-			if (kandotemp4 && !gameboy_mode) { __asm__ ("jmp ($fffc)"); }
-			else gameState = last_gameState;
+			gameState = last_gameState;
 			return;
 		}
 
