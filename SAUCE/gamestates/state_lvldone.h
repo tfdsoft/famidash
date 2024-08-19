@@ -358,9 +358,84 @@ void state_lvldone() {
 	#undef delay_timer
 	#undef top_scroll
 }
+const unsigned char xlevel1text[]="STEREO ";
+const unsigned char xlevel2text[]="BACK ON";
+const unsigned char xlevel5text[]="BASE AFTER";
+const unsigned char xlevelCtext[]="THEORY OF";
+const unsigned char xlevelDtext[]="ELECTROMAN";
+
+const unsigned char xlevel1text2[]="MADNESS";
+const unsigned char xlevel2text2[]="TRACK";
+const unsigned char xlevel3text2[]="POLARGEIST";
+const unsigned char xlevel4text2[]="DRY OUT";
+const unsigned char xlevel5text2[]="BASE";
+const unsigned char xlevel6text2[]="CANT LET GO";
+const unsigned char xlevel7text2[]="JUMPER";
+const unsigned char xlevel8text2[]="TIME MACHINE";
+const unsigned char xlevel9text2[]="CYCLES";
+const unsigned char xlevelAtext2[]="XSTEP";
+const unsigned char xlevelBtext2[]="CLUTTERFUNK";
+const unsigned char xlevelCtext2[]="EVERYTHING";
+const unsigned char xlevelDtext2[]="ADVENTURES";
+const unsigned char xlevelEtext2[]="DECODE";
+const unsigned char practicetext2[]="PRACTICE";
+const unsigned char testformenu2[]="MENU";
+const unsigned char everyendtext2[]="EVERY END";
+
+
+const unsigned char* const xbgmtexts1[] = {
+	0, 0, 0, 0, 0, xlevelDtext, 0, xlevel2text, xlevel5text, xlevel1text, xlevelCtext, 0, 0, 0, 0, 0, 0
+};
+
+const unsigned char* const xbgmtexts2[] = {
+	xlevelBtext2, xlevelEtext2, practicetext2, xlevel8text2, xlevel3text2, xlevelDtext2, xlevel9text2, xlevel2text2, xlevel5text2, xlevel1text2, xlevelCtext2, testformenu2, xlevelAtext2, everyendtext2, xlevel7text2, xlevel4text2, xlevel6text2
+};
+
+const unsigned char xbgmtext2_size[] = {
+	sizeof(xlevelBtext2) - 1,
+	sizeof(xlevelEtext2) - 1,
+	sizeof(practicetext2) - 1,
+	sizeof(xlevel8text2) - 1,
+	sizeof(xlevel3text2) - 1,
+	sizeof(xlevelDtext2) - 1,	
+	sizeof(xlevel9text2) - 1,	
+	sizeof(xlevel2text2) - 1,	
+	sizeof(xlevel5text2) - 1,	
+	sizeof(xlevel1text2) - 1,	
+	sizeof(xlevelCtext2) - 1,	
+	sizeof(testformenu2) - 1,	
+	sizeof(xlevelAtext2) - 1,	
+	sizeof(everyendtext2) - 1,	
+	sizeof(xlevel7text2) - 1,	
+	sizeof(xlevel4text2) - 1,	
+	sizeof(xlevel6text2) - 1,	
+};
+const unsigned char xbgmtext1_size[] = {
+	0,
+	0,
+	0,
+	0,
+	0,
+	sizeof(xlevelDtext) - 1,	
+	0,
+	sizeof(xlevel2text) - 1,	
+	sizeof(xlevel5text) - 1,	
+	sizeof(xlevel1text) - 1,	
+	sizeof(xlevelCtext) - 1,	
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+};
+
+
+
 
 #include "defines/bg_charmap.h"
 const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
+#include "defines/mainmenu_charmap.h"
 
 
 void bgmtest() {
@@ -386,8 +461,13 @@ void bgmtest() {
 		music_update();
 		pad_poll(0); // read the first controller
 		
-		one_vram_buffer(' ', NTADR_A(14, 10));
-		one_vram_buffer(0xd0+song, NTADR_A(15,10));
+	__A__ = idx16_hi_NOC(xbgmtexts1, song);
+	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 10));
+	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(7, 10));
+	__A__ = idx16_hi_NOC(xbgmtexts2, song);
+	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 17, NTADR_A(7, 11));
+	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(7, 11));
+
 		one_vram_buffer(' ', NTADR_A(14, 17));
 		one_vram_buffer(0xd0+sfx, NTADR_A(15,17));
 

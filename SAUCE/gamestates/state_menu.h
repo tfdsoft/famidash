@@ -77,7 +77,6 @@ const unsigned char gameboy_text_size[] = {
 };
 
 
-
 const unsigned char level_text_size[] = {
     sizeof(level1text) - 1,
 	sizeof(level2text) - 1,
