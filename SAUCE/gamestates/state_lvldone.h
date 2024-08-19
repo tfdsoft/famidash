@@ -383,6 +383,51 @@ const unsigned char testformenu2[]="MENU";
 const unsigned char everyendtext2[]="EVERY END";
 
 
+
+const unsigned char sfxtext0[]="DEATH";
+const unsigned char sfxtext1[]="CLICK";
+const unsigned char sfxtext2[]="LEVEL COMPLETE";
+const unsigned char sfxtext3[]="COIN";
+const unsigned char sfxtext4[]="CHEST OPEN";
+const unsigned char sfxtext5[]="ORBS";
+const unsigned char sfxtext6[]="DIAMONDS";
+const unsigned char sfxtext7[]="EXIT LEVEL";
+const unsigned char sfxtext8[]="START LEVEL";
+const unsigned char sfxtext9[]="INVALID";
+const unsigned char sfxtextA[]="ACHIEVEMENT GET";
+
+
+#define sfx_death 0
+#define sfx_click 1
+#define sfx_level_complete 2
+#define sfx_coin 3
+#define sfx_chest_open 4
+#define sfx_orbs 5
+#define sfx_diamonds 6
+#define sfx_exit_level 7
+#define sfx_start_level 8
+#define sfx_invalid 9
+#define sfx_achievement_get 10
+
+const unsigned char* const sfxtexts[] = {
+	sfxtext0, sfxtext1, sfxtext2, sfxtext3, sfxtext4, sfxtext5, sfxtext6, sfxtext7, sfxtext8, sfxtext9, sfxtextA
+};
+
+const unsigned char sfxtexts_size[] = {
+	sizeof(sfxtext0) - 1,
+	sizeof(sfxtext1) - 1,
+	sizeof(sfxtext2) - 1,
+	sizeof(sfxtext3) - 1,
+	sizeof(sfxtext4) - 1,
+	sizeof(sfxtext5) - 1,
+	sizeof(sfxtext6) - 1,
+	sizeof(sfxtext7) - 1,
+	sizeof(sfxtext8) - 1,
+	sizeof(sfxtext9) - 1,
+	sizeof(sfxtextA) - 1
+};
+
+
 const unsigned char* const xbgmtexts1[] = {
 	0, 0, 0, 0, 0, xlevelDtext, 0, xlevel2text, xlevel5text, xlevel1text, xlevelCtext, 0, 0, 0, 0, 0, 0
 };
@@ -467,10 +512,10 @@ void bgmtest() {
 	__A__ = idx16_hi_NOC(xbgmtexts2, song);
 	if (__A__) draw_padded_text2(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 17, NTADR_A(7, 11));
 	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(7, 11));
+	
+	draw_padded_text2(sfxtexts[sfx & 0x7F], sfxtexts_size[sfx], 17, NTADR_A(7, 18));
 
-		one_vram_buffer(' ', NTADR_A(14, 17));
-		one_vram_buffer(0xd0+sfx, NTADR_A(15,17));
-
+	
 		if (settingvalue == 0) {
 			one_vram_buffer('c', NTADR_A(11, 8));
 			one_vram_buffer(' ', NTADR_A(11, 15));
@@ -483,7 +528,7 @@ void bgmtest() {
 			one_vram_buffer('c', NTADR_A(11, 15));
 			if (pad_new[0] & PAD_RIGHT) { sfx++; if (sfx == sfx_max) {sfx= 0;} };
 			if (pad_new[0] & PAD_LEFT) { if (sfx == 0) {sfx = sfx_max - 1;} else sfx--; }
-			if (pad_new[0] & PAD_A) famistudio_sfx_play(sfx, 0);
+			if (pad_new[0] & PAD_A) sfx_play(sfx, 0);
 		}
 
 		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
