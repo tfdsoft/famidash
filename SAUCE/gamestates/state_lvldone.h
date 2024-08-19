@@ -435,7 +435,7 @@ const unsigned char xbgmtext1_size[] = {
 
 #include "defines/bg_charmap.h"
 const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
-#include "defines/mainmenu_charmap.h"
+#include "defines/mainmenu_charmap3.h"
 
 
 void bgmtest() {
@@ -462,10 +462,10 @@ void bgmtest() {
 		pad_poll(0); // read the first controller
 		
 	__A__ = idx16_hi_NOC(xbgmtexts1, song);
-	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 10));
+	if (__A__) draw_padded_text2(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 10));
 	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(7, 10));
 	__A__ = idx16_hi_NOC(xbgmtexts2, song);
-	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 17, NTADR_A(7, 11));
+	if (__A__) draw_padded_text2(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 17, NTADR_A(7, 11));
 	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(7, 11));
 
 		one_vram_buffer(' ', NTADR_A(14, 17));

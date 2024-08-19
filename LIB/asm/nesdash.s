@@ -1103,6 +1103,81 @@ ParallaxBuffer:
 
 .endproc
 
+.export __draw_padded_text2
+.proc __draw_padded_text2
+	; AX = ppu_address
+	; sreg[0] = total_len
+	; sreg[1] = len
+	; xargs[0:1] = data
+
+	spaceChr = $FF
+	data = xargs+0
+	total_len = sreg+0
+	len = sreg+1
+
+	LDY VRAM_INDEX
+	STA VRAM_BUF+1, Y	;
+	TXA					;	vram pointer
+	STA VRAM_BUF+0, Y	;__
+	LDA total_len		;	total length
+	STA VRAM_BUF+2, Y	;__
+
+	SEC					;	Total padding
+	SBC len				;__
+	LSR					;	Get left offset
+	STA tmp1			;__
+	ADC #$00			;	Get right offset
+	TAY					;__
+
+	LDA total_len
+	ADC	VRAM_INDEX		;	Carry is guaranteed to be clear by LSR : ADC #$00
+	; If carry is still set, we have big problems
+	; BCS some shit to do
+	TAX
+	ADC #$03
+	STA VRAM_INDEX
+
+	LDA #$FF			;	Finish off the write
+	STA VRAM_BUF+3, X	;__
+
+	CPY #$00	; Had to do this, very sorry
+	BEQ main_data
+
+	LDA #spaceChr
+
+	pad_loop_right:
+		STA VRAM_BUF+2, X
+		DEX
+		DEY
+		BNE pad_loop_right
+		
+	main_data:
+		LDY len
+		DEY
+
+	main_data_loop:
+		LDA (<data), Y
+		STA VRAM_BUF+2, X
+		DEX
+		DEY
+		BPL main_data_loop
+
+	LDY tmp1	;	Pad left amount
+	BEQ fin		;__
+
+	LDA #spaceChr
+
+	pad_loop_left:
+		STA VRAM_BUF+2, X
+		DEX
+		DEY
+		BNE pad_loop_left
+
+	fin:
+		RTS
+
+.endproc
+
 
 ; void movement();
 .segment "XCD_BANK_01"
