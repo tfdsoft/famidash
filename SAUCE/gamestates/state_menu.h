@@ -627,7 +627,8 @@ void settings() {
 		if (decorations) one_vram_buffer('g', NTADR_A(26, 17));
 		else one_vram_buffer('f', NTADR_A(26, 17));
 
-		if (trails) one_vram_buffer('g', NTADR_A(26, 19));
+		if (trails == 1) one_vram_buffer('g', NTADR_A(26, 19));
+		else if (trails == 2) one_vram_buffer('*', NTADR_A(26, 19));
 		else one_vram_buffer('f', NTADR_A(26, 19));
 
 		tmp1 = settingvalue;
@@ -664,7 +665,7 @@ void settings() {
 				case 5:
 					decorations ^= 1; break;
 				case 6:
-					trails ^= 1; break;					
+					trails = trails == 2 ? 0 : trails + 1; break;					
 				case 7:
 					if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
 						setdefaultoptions();
