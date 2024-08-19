@@ -396,19 +396,6 @@ const unsigned char sfxtext8[]="START LEVEL";
 const unsigned char sfxtext9[]="INVALID";
 const unsigned char sfxtextA[]="ACHIEVEMENT GET";
 
-
-#define sfx_death 0
-#define sfx_click 1
-#define sfx_level_complete 2
-#define sfx_coin 3
-#define sfx_chest_open 4
-#define sfx_orbs 5
-#define sfx_diamonds 6
-#define sfx_exit_level 7
-#define sfx_start_level 8
-#define sfx_invalid 9
-#define sfx_achievement_get 10
-
 const unsigned char* const sfxtexts[] = {
 	sfxtext0, sfxtext1, sfxtext2, sfxtext3, sfxtext4, sfxtext5, sfxtext6, sfxtext7, sfxtext8, sfxtext9, sfxtextA
 };
