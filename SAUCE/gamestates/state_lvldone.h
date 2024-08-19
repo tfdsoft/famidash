@@ -331,6 +331,8 @@ void state_lvldone() {
 					sfx_play(sfx_start_level, 0);
 					gameState = 2;
 					pal_fade_to_withmusic(4,0);
+					memfill(attemptCounter, 0, sizeof(attemptCounter));
+					coins = 0;
 					return;
 				}
 			}
