@@ -57,3 +57,12 @@ const unsigned char level10text2[]="TEST2";
 const unsigned char level11text2[]="TEST3";
 const unsigned char level12text2[]="TEST4";
 const unsigned char level13text2[]="THE SAFE LEVELS";
+
+const unsigned char gameboytext1[]="  GREY";
+const unsigned char gameboytext2[]="   RED";
+const unsigned char gameboytext3[]=" GREEN";
+const unsigned char gameboytext4[]="  BLUE";
+const unsigned char gameboytext5[]="YELLOW";
+const unsigned char gameboytext6[]="PURPLE";
+const unsigned char gameboytext7[]="  CYAN";
+const unsigned char gameboytext8[]="  DARK";

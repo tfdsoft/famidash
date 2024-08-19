@@ -135,6 +135,9 @@ void flush_vram_update2();
 void __fastcall__ color_emphasis(uint8_t color);
 // change the PPU's color emphasis bits
 
+#define COL_EMP_PURPLE 0xA0
+#define COL_EMP_CYAN 0xC0
+#define COL_EMP_YELLOW 0x60
 #define COL_EMP_BLUE 0x80
 #define COL_EMP_GREEN 0x40
 #define COL_EMP_RED 0x20

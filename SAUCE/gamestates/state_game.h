@@ -57,6 +57,7 @@ const uint8_t G_Table[]={
 
 void runthecolls();
 void set_player_banks();
+void gameboy_check();
 
 void x_movement_coll() {
 	if (slope_type && !slope_frames && gamemode != 6) {
@@ -330,8 +331,8 @@ void state_game(){
 
 	// palette fade code
 		//__asm__("LDA mmc3PRG1Bank \n PHA");
-		mmc3_set_prg_bank_1(GET_BANK(check_fade_timer));
-		check_fade_timer();
+		//mmc3_set_prg_bank_1(GET_BANK(check_fade_timer));
+		//check_fade_timer();
 		//(__asm__("PLA"), mmc3_set_prg_bank_1(__A__));
 		
 		kandokidshack3 = 0;
@@ -362,7 +363,8 @@ void state_game(){
 				if (pad_new[0] & PAD_SELECT) { gameState = 1; 
 					sfx_play(sfx_exit_level,0);
 					music_update();
-					color_emphasis(COL_EMP_NORMAL);
+				//	color_emphasis(COL_EMP_NORMAL);
+					crossPRGBankJump0(gameboy_check, 0);
 					return;
 				}
 				if ((pad_new[0] & PAD_RIGHT) && DEBUG_MODE) {
@@ -394,7 +396,8 @@ void state_game(){
 					ppu_on_all();
 				}
 			}
-			color_emphasis(COL_EMP_NORMAL);
+		//	color_emphasis(COL_EMP_NORMAL);
+			crossPRGBankJump0(gameboy_check, 0);
 			famistudio_music_pause(0);
 			// ppu_off();
 			// mmc3_set_8kb_chr(0);
@@ -645,3 +648,5 @@ void set_tile_banks() {
 		mmc3_set_1kb_chr_bank_3(saw_set[level]);
 	}
 }	
+
+		

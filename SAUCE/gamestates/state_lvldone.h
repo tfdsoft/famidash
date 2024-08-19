@@ -448,6 +448,18 @@ void bgmtest() {
 }
 
 
+void gameboy_check() {
+		if (gameboy_mode == 0) color_emphasis(COL_EMP_NORMAL);
+		else if (gameboy_mode == 1) color_emphasis(COL_EMP_GREY);
+		else if (gameboy_mode == 2) { color_emphasis(COL_EMP_NORMAL); color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_RED); }
+		else if (gameboy_mode == 3) { color_emphasis(COL_EMP_NORMAL); color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
+		else if (gameboy_mode == 4) { color_emphasis(COL_EMP_NORMAL); color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_BLUE); }
+		else if (gameboy_mode == 5) { color_emphasis(COL_EMP_NORMAL); color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_YELLOW); }
+		else if (gameboy_mode == 6) { color_emphasis(COL_EMP_NORMAL); color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_PURPLE); }
+		else if (gameboy_mode == 7) { color_emphasis(COL_EMP_NORMAL); color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_CYAN); }
+		else if (gameboy_mode == 8) { color_emphasis(COL_EMP_NORMAL); color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_DARK); }
+}
+
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)

@@ -266,6 +266,7 @@ uint8_t currplayer;
 uint8_t kandotemp;
 uint8_t kandotemp2[2];
 uint8_t kandotemp3;
+uint8_t kandotemp4;
 uint8_t kandotemp5;
 uint8_t kandoframecnt;
 uint8_t controllingplayer;

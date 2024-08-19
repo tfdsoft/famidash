@@ -60,6 +60,24 @@ const unsigned char* const leveltexts2[] = {
   level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2, level12text2, level13text2
 };
 
+const unsigned char* const gameboytexts[] = {
+	0, gameboytext1, gameboytext2, gameboytext3, gameboytext4, gameboytext5, gameboytext6, gameboytext7, gameboytext8
+};
+
+const unsigned char gameboy_text_size[] = {
+	0,
+	sizeof(gameboytext1) - 1,
+	sizeof(gameboytext2) - 1,
+	sizeof(gameboytext3) - 1,
+	sizeof(gameboytext4) - 1,
+	sizeof(gameboytext5) - 1,
+	sizeof(gameboytext6) - 1,
+	sizeof(gameboytext7) - 1,
+	sizeof(gameboytext8) - 1
+};
+
+
+
 const unsigned char level_text_size[] = {
     sizeof(level1text) - 1,
 	sizeof(level2text) - 1,
@@ -178,7 +196,7 @@ void __fastcall__ refreshmenu(void) {
 		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12)+tmp5);
 
 };
-
+void gameboy_check();
 void state_menu();
 //void bgmtest();
 
@@ -473,6 +491,7 @@ void funsettings() {
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(funsettingscreen);   
+	kandotemp4 = 0;
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 by default	
 	pal_fade_to_withmusic(0,4);
@@ -498,16 +517,22 @@ void funsettings() {
 		
 		if (cam_seesaw) 	one_vram_buffer('g', NTADR_A(26, 17));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 17));	// this is auto optimized by cc65
+		
+		__A__ = idx16_hi_NOC(gameboytexts, gameboy_mode);
+		if (__A__) { draw_padded_text(gameboytexts[gameboy_mode & 0x7F], gameboy_text_size[gameboy_mode], 8, NTADR_A(19, 19)); 	one_vram_buffer('g', NTADR_A(26, 19));	}// believe it or not, 
+		else { one_vram_buffer_horz_repeat('$', 8, NTADR_A(19, 19)); one_vram_buffer('f', NTADR_A(26, 19)); }
+
+
 
 		tmp1 = settingvalue;
 
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 5) { settingvalue = 0; }
+			if (settingvalue == 6) { settingvalue = 0; }
 			else { settingvalue++;  }
 		}
 
 		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 5; }
+			if (settingvalue == 0) { settingvalue = 6; }
 			else { settingvalue--;  }
 		}
 
@@ -541,6 +566,7 @@ void funsettings() {
 					break;
 				case 0x04: invisblocks ^= 1; break;
 				case 0x05: cam_seesaw = (cam_seesaw > 0 ? 0 : 1); break;
+				case 0x06: gameboy_mode = (gameboy_mode == 8 ? 0 : gameboy_mode + 1);
 			};
 		}
 			
@@ -551,9 +577,14 @@ void funsettings() {
 			//one_vram_buffer(' ', NTADR_A(4, 8));
 			//one_vram_buffer(' ', NTADR_A(4, 12));
 			//one_vram_buffer(' ', NTADR_A(4, 16));
-			gameState = last_gameState;
+			if (kandotemp4 && !gameboy_mode) { __asm__ ("jmp ($fffc)"); }
+			else gameState = last_gameState;
 			return;
 		}
+
+		crossPRGBankJump0(gameboy_check, 0);
+
+		if (gameboy_mode) kandotemp4 = 1;
 
 	}
 }
