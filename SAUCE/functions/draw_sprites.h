@@ -138,7 +138,7 @@ void draw_sprites(void){
 		} while (tmp1 > 0);
 
 	}
-	if ((forced_trails == 2) && !dual && !twoplayer) {
+	if ((forced_trails == 2 || trails == 2) && !dual && !twoplayer) {
 
 		tmpA = player_x[0];
 		tmpB = player_y[0];
@@ -150,39 +150,6 @@ void draw_sprites(void){
 		
 		high_byte(player_x[0]) -= 8;
 		high_byte(player_y[0]) = player_old_posy[6];
-
-		drawplayerone();
-		
-		player_x[0] = tmpA;
-		player_y[0] = tmpB;
-	}
-	else if ((trails == 2) && !dual && !twoplayer) {
-
-		tmpA = player_x[0];
-		tmpB = player_y[0];
-
-		high_byte(player_x[0]) -= 8;
-		high_byte(player_y[0]) = player_old_posy[0];
-
-		drawplayerone();
-		
-		high_byte(player_x[0]) -= 8;
-		high_byte(player_y[0]) = player_old_posy[2];
-
-		drawplayerone();
-
-		high_byte(player_x[0]) -= 8;
-		high_byte(player_y[0]) = player_old_posy[4];
-
-		drawplayerone();
-
-		high_byte(player_x[0]) -= 8;
-		high_byte(player_y[0]) = player_old_posy[6];
-
-		drawplayerone();
-
-		high_byte(player_x[0]) -= 8;
-		high_byte(player_y[0]) = player_old_posy[8];
 
 		drawplayerone();
 		
