@@ -358,89 +358,89 @@ void state_lvldone() {
 	#undef delay_timer
 	#undef top_scroll
 }
-const unsigned char xlevel1text[]="STEREO ";
-const unsigned char xlevel2text[]="BACK ON";
-const unsigned char xlevel5text[]="BASE AFTER";
-const unsigned char xlevelCtext[]="THEORY OF";
-const unsigned char xlevelDtext[]="ELECTROMAN";
+const unsigned char TEXT_xlevel1text[]="STEREO ";
+const unsigned char TEXT_xlevel2text[]="BACK ON";
+const unsigned char TEXT_xlevel5text[]="BASE AFTER";
+const unsigned char TEXT_xlevelCtext[]="THEORY OF";
+const unsigned char TEXT_xlevelDtext[]="ELECTROMAN";
 
-const unsigned char xlevel1text2[]="MADNESS";
-const unsigned char xlevel2text2[]="TRACK";
-const unsigned char xlevel3text2[]="POLARGEIST";
-const unsigned char xlevel4text2[]="DRY OUT";
-const unsigned char xlevel5text2[]="BASE";
-const unsigned char xlevel6text2[]="CANT LET GO";
-const unsigned char xlevel7text2[]="JUMPER";
-const unsigned char xlevel8text2[]="TIME MACHINE";
-const unsigned char xlevel9text2[]="CYCLES";
-const unsigned char xlevelAtext2[]="XSTEP";
-const unsigned char xlevelBtext2[]="CLUTTERFUNK";
-const unsigned char xlevelCtext2[]="EVERYTHING";
-const unsigned char xlevelDtext2[]="ADVENTURES";
-const unsigned char xlevelEtext2[]="DECODE";
-const unsigned char practicetext2[]="PRACTICE";
-const unsigned char testformenu2[]="MENU";
-const unsigned char everyendtext2[]="EVERY END";
+const unsigned char TEXT_xlevel1text2[]="MADNESS";
+const unsigned char TEXT_xlevel2text2[]="TRACK";
+const unsigned char TEXT_xlevel3text2[]="POLARGEIST";
+const unsigned char TEXT_xlevel4text2[]="DRY OUT";
+const unsigned char TEXT_xlevel5text2[]="BASE";
+const unsigned char TEXT_xlevel6text2[]="CANT LET GO";
+const unsigned char TEXT_xlevel7text2[]="JUMPER";
+const unsigned char TEXT_xlevel8text2[]="TIME MACHINE";
+const unsigned char TEXT_xlevel9text2[]="CYCLES";
+const unsigned char TEXT_xlevelAtext2[]="XSTEP";
+const unsigned char TEXT_xlevelBtext2[]="CLUTTERFUNK";
+const unsigned char TEXT_xlevelCtext2[]="EVERYTHING";
+const unsigned char TEXT_xlevelDtext2[]="ADVENTURES";
+const unsigned char TEXT_xlevelEtext2[]="DECODE";
+const unsigned char TEXT_practicetext2[]="PRACTICE";
+const unsigned char TEXT_testformenu2[]="MENU";
+const unsigned char TEXT_everyendtext2[]="EVERY END";
 
 
 
-const unsigned char sfxtext0[]="DEATH";
-const unsigned char sfxtext1[]="CLICK";
-const unsigned char sfxtext2[]="LEVEL COMPLETE";
-const unsigned char sfxtext3[]="COIN";
-const unsigned char sfxtext4[]="CHEST OPEN";
-const unsigned char sfxtext5[]="ORBS";
-const unsigned char sfxtext6[]="DIAMONDS";
-const unsigned char sfxtext7[]="EXIT LEVEL";
-const unsigned char sfxtext8[]="START LEVEL";
-const unsigned char sfxtext9[]="INVALID";
-const unsigned char sfxtextA[]="ACHIEVEMENT GET";
+const unsigned char TEXT_sfxtext0[]="DEATH";
+const unsigned char TEXT_sfxtext1[]="CLICK";
+const unsigned char TEXT_sfxtext2[]="LEVEL COMPLETE";
+const unsigned char TEXT_sfxtext3[]="COIN";
+const unsigned char TEXT_sfxtext4[]="CHEST OPEN";
+const unsigned char TEXT_sfxtext5[]="ORBS";
+const unsigned char TEXT_sfxtext6[]="DIAMONDS";
+const unsigned char TEXT_sfxtext7[]="EXIT LEVEL";
+const unsigned char TEXT_sfxtext8[]="START LEVEL";
+const unsigned char TEXT_sfxtext9[]="INVALID";
+const unsigned char TEXT_sfxtextA[]="ACHIEVEMENT GET";
 
 const unsigned char* const sfxtexts[] = {
-	sfxtext0, sfxtext1, sfxtext2, sfxtext3, sfxtext4, sfxtext5, sfxtext6, sfxtext7, sfxtext8, sfxtext9, sfxtextA
+	TEXT_sfxtext0, TEXT_sfxtext1, TEXT_sfxtext2, TEXT_sfxtext3, TEXT_sfxtext4, TEXT_sfxtext5, TEXT_sfxtext6, TEXT_sfxtext7, TEXT_sfxtext8, TEXT_sfxtext9, TEXT_sfxtextA
 };
 
 const unsigned char sfxtexts_size[] = {
-	sizeof(sfxtext0) - 1,
-	sizeof(sfxtext1) - 1,
-	sizeof(sfxtext2) - 1,
-	sizeof(sfxtext3) - 1,
-	sizeof(sfxtext4) - 1,
-	sizeof(sfxtext5) - 1,
-	sizeof(sfxtext6) - 1,
-	sizeof(sfxtext7) - 1,
-	sizeof(sfxtext8) - 1,
-	sizeof(sfxtext9) - 1,
-	sizeof(sfxtextA) - 1
+	sizeof(TEXT_sfxtext0) - 1,
+	sizeof(TEXT_sfxtext1) - 1,
+	sizeof(TEXT_sfxtext2) - 1,
+	sizeof(TEXT_sfxtext3) - 1,
+	sizeof(TEXT_sfxtext4) - 1,
+	sizeof(TEXT_sfxtext5) - 1,
+	sizeof(TEXT_sfxtext6) - 1,
+	sizeof(TEXT_sfxtext7) - 1,
+	sizeof(TEXT_sfxtext8) - 1,
+	sizeof(TEXT_sfxtext9) - 1,
+	sizeof(TEXT_sfxtextA) - 1
 };
 
 
 const unsigned char* const xbgmtexts1[] = {
-	0, 0, 0, 0, 0, xlevelDtext, 0, xlevel2text, xlevel5text, xlevel1text, xlevelCtext, 0, 0, 0, 0, 0, 0
+	0, 0, 0, 0, 0, TEXT_xlevelDtext, 0, TEXT_xlevel2text, TEXT_xlevel5text, TEXT_xlevel1text, TEXT_xlevelCtext, 0, 0, 0, 0, 0, 0
 };
 
 const unsigned char* const xbgmtexts2[] = {
-	xlevelBtext2, xlevelEtext2, practicetext2, xlevel8text2, xlevel3text2, xlevelDtext2, xlevel9text2, xlevel2text2, xlevel5text2, xlevel1text2, xlevelCtext2, testformenu2, xlevelAtext2, everyendtext2, xlevel7text2, xlevel4text2, xlevel6text2
+	TEXT_xlevelBtext2, TEXT_xlevelEtext2, TEXT_practicetext2, TEXT_xlevel8text2, TEXT_xlevel3text2, TEXT_xlevelDtext2, TEXT_xlevel9text2, TEXT_xlevel2text2, TEXT_xlevel5text2, TEXT_xlevel1text2, TEXT_xlevelCtext2, TEXT_testformenu2, TEXT_xlevelAtext2, TEXT_everyendtext2, TEXT_xlevel7text2, TEXT_xlevel4text2, TEXT_xlevel6text2
 };
 
 const unsigned char xbgmtext2_size[] = {
-	sizeof(xlevelBtext2) - 1,
-	sizeof(xlevelEtext2) - 1,
-	sizeof(practicetext2) - 1,
-	sizeof(xlevel8text2) - 1,
-	sizeof(xlevel3text2) - 1,
-	sizeof(xlevelDtext2) - 1,	
-	sizeof(xlevel9text2) - 1,	
-	sizeof(xlevel2text2) - 1,	
-	sizeof(xlevel5text2) - 1,	
-	sizeof(xlevel1text2) - 1,	
-	sizeof(xlevelCtext2) - 1,	
-	sizeof(testformenu2) - 1,	
-	sizeof(xlevelAtext2) - 1,	
-	sizeof(everyendtext2) - 1,	
-	sizeof(xlevel7text2) - 1,	
-	sizeof(xlevel4text2) - 1,	
-	sizeof(xlevel6text2) - 1,	
+	sizeof(TEXT_xlevelBtext2) - 1,
+	sizeof(TEXT_xlevelEtext2) - 1,
+	sizeof(TEXT_practicetext2) - 1,
+	sizeof(TEXT_xlevel8text2) - 1,
+	sizeof(TEXT_xlevel3text2) - 1,
+	sizeof(TEXT_xlevelDtext2) - 1,	
+	sizeof(TEXT_xlevel9text2) - 1,	
+	sizeof(TEXT_xlevel2text2) - 1,	
+	sizeof(TEXT_xlevel5text2) - 1,	
+	sizeof(TEXT_xlevel1text2) - 1,	
+	sizeof(TEXT_xlevelCtext2) - 1,	
+	sizeof(TEXT_testformenu2) - 1,	
+	sizeof(TEXT_xlevelAtext2) - 1,	
+	sizeof(TEXT_everyendtext2) - 1,	
+	sizeof(TEXT_xlevel7text2) - 1,	
+	sizeof(TEXT_xlevel4text2) - 1,	
+	sizeof(TEXT_xlevel6text2) - 1,	
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -448,12 +448,12 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	0,
-	sizeof(xlevelDtext) - 1,	
+	sizeof(TEXT_xlevelDtext) - 1,	
 	0,
-	sizeof(xlevel2text) - 1,	
-	sizeof(xlevel5text) - 1,	
-	sizeof(xlevel1text) - 1,	
-	sizeof(xlevelCtext) - 1,	
+	sizeof(TEXT_xlevel2text) - 1,	
+	sizeof(TEXT_xlevel5text) - 1,	
+	sizeof(TEXT_xlevel1text) - 1,	
+	sizeof(TEXT_xlevelCtext) - 1,	
 	0,
 	0,
 	0,
