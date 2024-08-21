@@ -43,6 +43,10 @@
 #define BLOCKSD 10
 #define SAWBLADESA 12
 
+#define DECO1 26
+#define DECOCLOUD 30
+#define EXTRASPRITES1 34
+
 const uint8_t difficulty_pal_A[] ={
 	0x21,	// easy
 	0x2A,	// normal
@@ -61,6 +65,27 @@ const uint8_t difficulty_pal_B[] ={
 	0x06,	// insane
 	0x30,	// demon
 	0x21,	// danger
+};
+
+const unsigned short DECOTYPE[] = {
+	DECO1,
+	DECO1,
+	DECO1,
+	DECO1,
+	DECO1,
+	DECO1,
+	DECO1,
+	DECO1,
+	DECO1,
+	DECOCLOUD,
+	DECOCLOUD,
+	DECOCLOUD,
+	DECOCLOUD,
+	DECOCLOUD,
+	EXTRASPRITES1,
+	EXTRASPRITES1,
+	DECOCLOUD,
+	EXTRASPRITES1,
 };
 
 const unsigned short songtime[] = {	//for looping in practice mode

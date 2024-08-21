@@ -177,18 +177,8 @@ void state_game(){
 
 
 
-		if (level == xstep || level == clutterfunk || level == theory_of_everything || level == decode || level == test3 || level == electroman_adventures) {									//
-			if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(32);		//  BANKBLANKCLOUD
-			else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(30);		// DECO PULSE
-		}											//
-		else if (level == test ||level == test2 || level == test4) {
-			if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(36);		//  BANKBLANK3 EXTRA PORTALS
-			else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(34);		// NO DECO
-		} 
-		else { 											//
-			if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(28);		//  BANKBLANK
-			else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(26);		//   DECO PULSE
-		}											//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(DECOTYPE[level] + 2);		//DECO
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(DECOTYPE[level]);		//OR ADDITIONAL SPRITES									//
 
 		if ((options & platformer) && !has_practice_point) {
 			songtimer++;
