@@ -429,9 +429,7 @@ void state_game(){
 			was_on_slope_counter--;
 		} else slope_type = 0;
 
-		mmc3_set_prg_bank_1(GET_BANK(movement));
-		
-		movement();
+		crossPRGBankJump0(movement,0);
 
 		kandotemp3 = 0;
 
@@ -441,30 +439,30 @@ void state_game(){
 				
 #ifdef FLAG_KANDO_FUN_STUFF		
 		if (bigboi && !(kandoframecnt & 1) ) {
-				high_byte(player_x[0]) += 15;
-				high_byte(currplayer_x) += 15;
+			high_byte(player_x[0]) += 15;
+			high_byte(currplayer_x) += 15;
 
-				runthecolls();
-				
-				high_byte(player_x[0]) -= 15;
-				high_byte(currplayer_x) -= 15;
-
-				high_byte(player_y[0]) -= 15;
-				high_byte(currplayer_y) -= 15;
-
+			runthecolls();
 			
-				runthecolls();
+			high_byte(player_x[0]) -= 15;
+			high_byte(currplayer_x) -= 15;
 
-				high_byte(player_x[0]) += 15;
-				high_byte(currplayer_x) += 15;
+			high_byte(player_y[0]) -= 15;
+			high_byte(currplayer_y) -= 15;
 
-				runthecolls();
+		
+			runthecolls();
 
-				high_byte(player_x[0]) -= 15;
-				high_byte(currplayer_x) -= 15;
+			high_byte(player_x[0]) += 15;
+			high_byte(currplayer_x) += 15;
 
-				high_byte(player_y[0]) += 15;
-				high_byte(currplayer_y) += 15;
+			runthecolls();
+
+			high_byte(player_x[0]) -= 15;
+			high_byte(currplayer_x) -= 15;
+
+			high_byte(player_y[0]) += 15;
+			high_byte(currplayer_y) += 15;
 
 		}			
 			
@@ -528,17 +526,17 @@ void state_game(){
 
 			if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
 
-			mmc3_set_prg_bank_1(GET_BANK(movement));
-			movement();
+			crossPRGBankJump0(movement,0);
+
 
 			runthecolls();
-			mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing2));
-			do_the_scroll_thing2();
-	//		if(!DEBUG_MODE && cube_data[1] & 0x01) {
-	//			reset_level();
-	//		}
+
+			crossPRGBankJump0(do_the_scroll_thing2,0);
+
 			currplayer = 0;					//give back focus
+
 			if (twoplayer) controllingplayer = 0;		//give back controls
+
 			{
 				player_x[1] = currplayer_x;
 				player_y[1] = currplayer_y;
@@ -553,12 +551,9 @@ void state_game(){
 				currplayer_gravity = player_gravity[0];
 			}
 		}
-		// mmc3_set_prg_bank_1(GET_BANK(check_spr_objects));	// it's in a const bank
 	}
         check_spr_objects();
 
-//        if (DEBUG_MODE) color_emphasis(COL_EMP_GREEN);
-//	if (DEBUG_MODE) gray_line();  
   		oam_clear();
 
 		mmc3_set_prg_bank_1(GET_BANK(draw_screen_R));
@@ -582,23 +577,20 @@ void state_game(){
 
 void runthecolls() {
 	if (!kandotemp3) {
-		mmc3_set_prg_bank_1(GET_BANK(x_movement_coll));
-		x_movement_coll();
 
-		mmc3_set_prg_bank_1(GET_BANK(x_movement));
-		x_movement();
+		crossPRGBankJump0(x_movement_coll,0);
 
-		mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
-		sprite_collide();
+		crossPRGBankJump0(x_movement,0);
+
+		crossPRGBankJump0(sprite_collide,0);
 
 	}	
 		
 	else if (!(kandoframecnt & 1)) {
-		mmc3_set_prg_bank_1(GET_BANK(sprite_collide));
-		sprite_collide();
+		crossPRGBankJump0(sprite_collide,0);
 	}
 	if (!DEBUG_MODE && !invincible_counter) {
-		bg_coll_death();
+		crossPRGBankJump0(bg_coll_death,0);
 	}
 }				
 
