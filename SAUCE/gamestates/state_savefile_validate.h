@@ -103,7 +103,7 @@ void state_savefile_validate(){
         do {
             ppu_wait_nmi();
             pad_poll_both();
-            if (pad_new[0] & PAD_B) break;
+            if (pad_new[0]) break;
 
         } while (1);
     }

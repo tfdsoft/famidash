@@ -96,9 +96,9 @@ void reset_level(void) {
     tallmode = 0;
     longmode = 0;
     bigboi = 0;
+#endif
     curr_x_scroll_stop = 0x5000;
     target_x_scroll_stop = 0x5000;
-#endif
     discoframe = 0;
 	for (tmp2 = 0; tmp2 < 9; tmp2++) {
 		player_old_posy[tmp2] = 0;
@@ -111,26 +111,15 @@ void reset_level(void) {
 	    tmp3 = practice_bg_color_type;
 	    
 			tmp2 = (tmp3 & 0x3F);                        
-			if (tmp3 >= 0xC0){
-			    pal_col(6, tmp2);
-				pal_col(5, oneShadeDarker(tmp2)); 
-			} else {
-			    pal_col(0, tmp2);
-				pal_col(1, oneShadeDarker(tmp2)); 
-				pal_col(9, oneShadeDarker(tmp2)); 
-			}    
+			pal_col(0, tmp2);
+			pal_col(1, oneShadeDarker(tmp2)); 
+			pal_col(9, oneShadeDarker(tmp2)); 
 
 	    tmp3 = practice_g_color_type;
 	    
 			tmp2 = (tmp3 & 0x3F);                        
-			if (tmp3 >= 0xC0){
+
 			    pal_col(6, tmp2);
-				pal_col(5, oneShadeDarker(tmp2)); 
-			} else {
-			    pal_col(0, tmp2);
-				pal_col(1, oneShadeDarker(tmp2)); 
-				pal_col(9, oneShadeDarker(tmp2)); 
-			}    
     }
     if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
     ppu_on_all();

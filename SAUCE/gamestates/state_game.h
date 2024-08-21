@@ -115,7 +115,7 @@ void state_game(){
 	
 	outline_color = 0x30;
 
-//	lastgcolortype = 0xFF;
+	lastgcolortype = 0xFF;
 	lastbgcolortype = 0xFF;
 
 	set_tile_banks();
@@ -317,15 +317,15 @@ void state_game(){
 
 		if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE)
 
-		if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED && has_practice_point) {
+
 			// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
 					
-			mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
-			reset_game_vars();
+			//mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
+			
 
 			//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));	unneeded because of practice music
-			has_practice_point = 1;
-		}
+			//has_practice_point = 1;
+		
 
 
 
@@ -415,6 +415,8 @@ void state_game(){
 				cube_data[0] &= 2; 
 				cube_data[1] &= 2; 
 			}		
+
+	if ((pad_new[controllingplayer] & PAD_B) && has_practice_point) crossPRGBankJump0(reset_game_vars,0);
 
 	if (pad_new[0] & PAD_UP && DEBUG_MODE) {
 		currplayer_gravity ^= 0x01;
