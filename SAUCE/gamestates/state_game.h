@@ -128,20 +128,17 @@ void state_game(){
     pal_bg(paletteDefault);
     pal_spr(paletteDefaultSP);
 
-	mmc3_set_prg_bank_1(GET_BANK(load_ground));
-    load_ground(0);
+	crossPRGBankJump8(load_ground,0);
 
-//	mmc3_set_8kb_chr(0);
-//    mmc3_set_1kb_chr_bank_2(GET_BANK(PARALLAX_CHR));
     
 	currplayer = 0;
 	current_transition_timer_length = 0;
 	reset_level();
 
-    END_LEVEL_TIMER = 0;
-    songtimer = 0;
+	END_LEVEL_TIMER = 0;
+	songtimer = 0;
 	kandoframecnt = 0;
-//	mmc3_set_2kb_chr_bank_1(18);
+
 	
 	iconbank = iconBankTable[icon];
 
@@ -170,7 +167,6 @@ void state_game(){
 
     while (1) {
 		
-	//if (gameboy_mode == 1) color_emphasis(COL_EMP_GREY);
 		if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = iconBankTable[icon]; }
 		pal_col(3,outline_color);
 		pal_col(7,outline_color);
@@ -379,8 +375,7 @@ void state_game(){
 					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
 					set_player_banks();
 					oam_clear();
-					mmc3_set_prg_bank_1(GET_BANK(drawplayerone));	
-					drawplayerone();
+					crossPRGBankJump0(drawplayerone,0);
 					mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
 					draw_sprites();
 					ppu_on_all();
@@ -500,10 +495,7 @@ void state_game(){
 #endif
 		if (invincible_counter) invincible_counter--;
 
-		//if (DEBUG_MODE) color_emphasis(COL_EMP_RED);
-//		if (DEBUG_MODE) gray_line();
-		mmc3_set_prg_bank_1(GET_BANK(do_the_scroll_thing));
-		do_the_scroll_thing(); 
+		crossPRGBankJump0(do_the_scroll_thing,0);
 
 		check_spr_objects();
 
