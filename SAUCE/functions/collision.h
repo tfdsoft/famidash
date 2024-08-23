@@ -376,13 +376,7 @@ char bg_coll_U_D_checks() {
 	switch (collision) {
 		case COL_ALL: 
 			if (was_on_slope_counter) return 0;
-			else {
-				if (gamemode == 6) { // wave
-					tmp2 = temp_x & 0x0f;
-					if (tmp2 >= 0x08) return 0;
-				}
-			}
-			return 1;
+			else return 1;
 		case COL_DEATH_TOP:
 			tmp2 = temp_y & 0x0f;	
 			tmp8 = tmp2 & 0x07;	 
@@ -420,7 +414,7 @@ void set_slope_stuff() {
 }
 
 char slope_LX22_stuff(char type) {
-	if ((uint8_t)tmp5 >= tmp4 + (gamemode == 6 ? -3 : 2)) {
+	if ((uint8_t)tmp5 >= tmp4 + (gamemode == 6 ? 8 : 2)) {
 		set_slope_stuff();
 		slope_type = type;
 		tmp8 = tmp5 - tmp4 - 5;
@@ -449,7 +443,7 @@ char bg_coll_slope() {
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y & 0x0f) ^ 0x0f;
 
-			if ((uint8_t)tmp4 >= tmp7 - (gamemode == 6 ? -3 : 3)) {
+			if ((uint8_t)tmp4 >= tmp7 - (gamemode == 6 ? -5 : 3)) {
 				set_slope_stuff();
 				slope_type = SLOPE_45DEG_DOWN_UD;
 				tmp8 = tmp4 - tmp7 - 3;
@@ -731,7 +725,7 @@ char bg_coll_U() {
 	if (currplayer_vel_y > 0x00) return 0;
 
 	if (!slope_frames) {
-		temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + (gamemode == 6 ? 4 : 0); // automatically only the low byte
 		
 		storeWordSeparately(
 			add_scroll_y(
@@ -782,7 +776,7 @@ char bg_coll_D() {
 
 	if (!slope_frames) {
 		// check 2 points on the right side
-		temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + (gamemode == 6 ? 4 : 0); // automatically only the low byte
 
 		storeWordSeparately(
 			add_scroll_y(
