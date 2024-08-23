@@ -35,10 +35,10 @@ void tmp20f();
 char bg_coll_sides() {
 	switch (collision) {
 		case COL_BOTTOM: 
-			if (temp_y & 0x08) return 1;		// If Y pos inside block ≥ 8px
+			if ((uint8_t)(temp_y & 0x08)) return 1;		// If Y pos inside block ≥ 8px
 			break;
 		case COL_TOP: 
-			if (!(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
+			if (!(uint8_t)(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
 			break;
 		case COL_ALL: 
 			return 1;		
@@ -59,42 +59,42 @@ char bg_coll_sides() {
 void bg_coll_spikes() {
 	switch (collision) {
 		case COL_UP_LEFT_SPIKE:
-			if (!(temp_y & 0x08)) {
+			if (!(uint8_t)(temp_y & 0x08)) {
 				tmp20f();
 				if (tmp2 >= 0x02 && tmp2 < 0x06)
 					break;
 			}
 			return;
 		case COL_UP_RIGHT_SPIKE:
-			if (!(temp_y & 0x08)) {
+			if (!(uint8_t)(temp_y & 0x08)) {
 				tmp20f();
 				if (tmp2 >= 0x0a && tmp2 < 0x0d)
 					break;
 			}
 			return;
 		case COL_UP_BOTH_SPIKES:
-			if (!(temp_y & 0x08)) {
+			if (!(uint8_t)(temp_y & 0x08)) {
 				tmp2 = (uint8_t)(temp_x & 0x07);
 				if (tmp2 >= 0x02 && tmp2 < 0x06)
 					break;
 			}
 			return;
 		case COL_DOWN_LEFT_SPIKE:
-			if ((temp_y & 0x08)) {
+			if ((uint8_t)(temp_y & 0x08)) {
 				tmp20f();
 				if (tmp2 >= 0x02 && tmp2 < 0x06)
 					break;
 			}
 			return;
 		case COL_DOWN_RIGHT_SPIKE:
-			if ((temp_y & 0x08)) {
+			if ((uint8_t)(temp_y & 0x08)) {
 				tmp20f();
 				if (tmp2 >= 0x0a && tmp2 < 0x0d)
 					break;
 			}
 			return;
 		case COL_DOWN_BOTH_SPIKES:
-			if ((temp_y & 0x08)) {
+			if ((uint8_t)(temp_y & 0x08)) {
 				tmp2 = (uint8_t)(temp_x & 0x07);
 				if (tmp2 >= 0x02 && tmp2 < 0x06)
 					break;
@@ -139,7 +139,7 @@ void bg_coll_spikes() {
 			return;
 		case COL_LEFT_SPIKE_BLOCK:
 		case COL_BOTTOM_LEFT_SPIKE:
-			if (!(temp_y & 0x08)) {
+			if (!(uint8_t)(temp_y & 0x08)) {
 				tmp20f();
 				if (tmp2 >= 0x02 && tmp2 < 0x06)
 					break;
@@ -147,14 +147,14 @@ void bg_coll_spikes() {
 			return;
 		case COL_RIGHT_SPIKE_BLOCK:
 		case COL_BOTTOM_RIGHT_SPIKE:
-			if (!(temp_y & 0x08)) {
+			if (!(uint8_t)(temp_y & 0x08)) {
 				tmp20f();
 				if (tmp2 >= 0x0a && tmp2 < 0x0d)
 					break;
 			}
 			return;
 		case COL_BOTTOM_SPIKES:
-			if (!(temp_y & 0x08)) {
+			if (!(uint8_t)(temp_y & 0x08)) {
 				tmp2 = (uint8_t)(temp_x & 0x07);
 				if (tmp2 >= 0x02 && tmp2 < 0x06)
 					break;
@@ -225,14 +225,14 @@ char bg_coll_mini_blocks() {
 	
 	switch (collision) {
 		case COL_UP_LEFT:
-			tmp2 = temp_y & 0x0f;	
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
 			tmp8 = tmp2 & 0x07;	 
 			if (tmp2 < 0x08 && ((uint8_t)(temp_x & 0x0f) < 0x08)) {
 				return 1;
 			}
 			break;
 		case COL_UP_RIGHT:
-			tmp2 = temp_y & 0x0f;	
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
 			tmp8 = tmp2 & 0x07;	 
 			if (tmp2 < 0x08 && ((uint8_t)(temp_x & 0x0f) >= 0x08)) {
 				return 1;
@@ -240,7 +240,7 @@ char bg_coll_mini_blocks() {
 			break;
 		case COL_DOWN_LEFT:
 		case COL_LEFT_SPIKE_BLOCK:
-			tmp2 = temp_y & 0x0f;	
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
 			tmp8 = tmp2 & 0x07;	 
 			if (tmp2 >= 0x08 && ((uint8_t)(temp_x & 0x0f) < 0x08)) {
 				return 1;
@@ -248,7 +248,7 @@ char bg_coll_mini_blocks() {
 			break;
 		case COL_DOWN_RIGHT:
 		case COL_RIGHT_SPIKE_BLOCK:
-			tmp2 = temp_y & 0x0f;	
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
 			tmp8 = tmp2 & 0x07;	 
 			if (tmp2 >= 0x08 && ((uint8_t)(temp_x & 0x0f) >= 0x08)) {
 				return 1;
@@ -258,7 +258,7 @@ char bg_coll_mini_blocks() {
 		case COL_BOTTOM_RIGHT_SPIKE:
 		case COL_BOTTOM_SPIKES:
 		case COL_BOTTOM:
-			tmp2 = temp_y & 0x0f;
+			tmp2 = (uint8_t)(temp_y & 0x0f);
 			tmp8 = tmp2 & 0x07;	 
 			// if (tmp2 >= 0x08) {
 			if (tmp8 != tmp2) {
@@ -266,7 +266,7 @@ char bg_coll_mini_blocks() {
 			}
 			break;
 		case COL_TOP:
-			tmp2 = temp_y & 0x0f;
+			tmp2 = (uint8_t)(temp_y & 0x0f);
 			tmp8 = tmp2 & 0x07;	 
 			// if (tmp2 >= 0x08) {
 			if (tmp8 == tmp2) {
@@ -286,7 +286,7 @@ char bg_coll_mini_blocks() {
 			}
 			break;
 		case COL_TOP_LEFT_BOTTOM_RIGHT:
-			tmp2 = temp_y & 0x0f;	
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
 			tmp8 = tmp2 & 0x07;	 
 			if ((uint8_t)(temp_x & 0x0f) < 0x08) {
 				if (tmp2 < 0x08) return 1;
@@ -295,7 +295,7 @@ char bg_coll_mini_blocks() {
 			}
 			break;
 		case COL_TOP_RIGHT_BOTTOM_LEFT:
-			tmp2 = temp_y & 0x0f;	
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
 			tmp8 = tmp2 & 0x07;	 
 			if ((uint8_t)(temp_x & 0x0f) < 0x08) {
 				if (tmp2 >= 0x08) return 1;
@@ -376,7 +376,13 @@ char bg_coll_U_D_checks() {
 	switch (collision) {
 		case COL_ALL: 
 			if (was_on_slope_counter) return 0;
-			else return 1;
+			else {
+				if (gamemode == 6) { // wave
+					tmp2 = temp_x & 0x0f;
+					if (tmp2 >= 0x08) return 0;
+				}
+			}
+			return 1;
 		case COL_DEATH_TOP:
 			tmp2 = temp_y & 0x0f;	
 			tmp8 = tmp2 & 0x07;	 
@@ -408,19 +414,15 @@ char bg_coll_U_D_checks() {
 	return 0;
 }
 
-char xtable[] = {
-	0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f
-};
-
 void set_slope_stuff() {
 	slope_frames = (gamemode == 6 ? 3 : 2); //signal BG_COLL_R to not check stuff
 	was_on_slope_counter = (gamemode == 6 ? 6 : 4);
 }
 
-char slope_LX22_stuff() {
-	if ((uint8_t)tmp5 >= tmp4 + 2) {
+char slope_LX22_stuff(char type) {
+	if ((uint8_t)tmp5 >= tmp4 + (gamemode == 6 ? -3 : 2)) {
 		set_slope_stuff();
-		slope_type = SLOPE_22DEG_DOWN_UD;
+		slope_type = type;
 		tmp8 = tmp5 - tmp4 - 5;
 		return 1;
 	} else return 0;
@@ -436,22 +438,24 @@ char bg_coll_slope() {
 	switch (collision) {
 
 		// 45 degrees
+
 		case COL_ALL:
 			if (was_on_slope_counter && gamemode == 6) {
 				high_byte(currplayer_y) -= (currplayer_gravity ? -2 : 2);
 			}
 			return 0;		
+
 		case COL_SLOPE_LU45:
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y & 0x0f) ^ 0x0f;
 
-			if ((uint8_t)tmp4 >= tmp7 - 3) {
+			if ((uint8_t)tmp4 >= tmp7 - (gamemode == 6 ? -3 : 3)) {
 				set_slope_stuff();
 				slope_type = SLOPE_45DEG_DOWN_UD;
 				tmp8 = tmp4 - tmp7 - 3;
 				return 1;
 			} else return 0;
-			break;
+
 		case COL_SLOPE_LD45:
 			if (gamemode == 6) return 0;
 			tmp7 = (temp_x & 0x0f);	// = 0x0f - (0x10 - (temp_x & 0x0f))
@@ -463,17 +467,19 @@ char bg_coll_slope() {
 				tmp8 = tmp4 - tmp7 - 3;
 				return 1;
 			} else return 0;
+
 		case COL_SLOPE_RU45:
 			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y & 0x0f) ^ 0x0f;
-			slope_type = SLOPE_45DEG_UP_UD;
 
+			slope_type = SLOPE_45DEG_UP_UD;
 			break;
+
 		case COL_SLOPE_RD45:
 			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = temp_y & 0x0f;
-			slope_type = SLOPE_45DEG_UP;
 
+			slope_type = SLOPE_45DEG_UP;
 			break;
 		
 		// 22 degrees
@@ -484,6 +490,7 @@ char bg_coll_slope() {
 
 			slope_type = SLOPE_22DEG_UP_UD;
 			break;
+
 		case COL_SLOPE_RU22_LEFT:
 			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
@@ -497,6 +504,7 @@ char bg_coll_slope() {
 
 			slope_type = SLOPE_22DEG_UP;
 			break;	
+
 		case COL_SLOPE_RD22_RIGHT:
 			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y) & 0x0f;
@@ -507,30 +515,30 @@ char bg_coll_slope() {
 		case COL_SLOPE_LU22_RIGHT:
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp5 = (temp_y & 0x0f) ^ 0x0f;
-			tmp4 = xtable[(tmp7 >> 1) | 8];
+			tmp4 = (tmp7 >> 1) | 8;
 			
-			return slope_LX22_stuff();
+			return slope_LX22_stuff(SLOPE_22DEG_DOWN_UD);
 	
 		case COL_SLOPE_LU22_LEFT:
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp5 = (temp_y & 0x0f) ^ 0x0f;
-			tmp4 = xtable[tmp7 >> 1];
+			tmp4 = tmp7 >> 1;
 		
-			return slope_LX22_stuff();
+			return slope_LX22_stuff(SLOPE_22DEG_DOWN_UD);
 
 		case COL_SLOPE_LD22_RIGHT:
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp5 = (temp_y & 0x0f);
-			tmp4 = xtable[(tmp7 >> 1) | 8];
+			tmp4 = (tmp7 >> 1) | 8;
 			
-			return slope_LX22_stuff();
+			return slope_LX22_stuff(SLOPE_22DEG_DOWN);
 	
 		case COL_SLOPE_LD22_LEFT:
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp5 = (temp_y & 0x0f);
-			tmp4 = xtable[tmp7 >> 1];
+			tmp4 = tmp7 >> 1;
 		
-			return slope_LX22_stuff();
+			return slope_LX22_stuff(SLOPE_22DEG_DOWN);
 		
 		// 66 degrees
 
@@ -538,9 +546,10 @@ char bg_coll_slope() {
 			if ((uint8_t)(temp_x & 0x0f) < 0x08) return 0;
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f);
-			slope_type = SLOPE_66DEG_UP;
 
+			slope_type = SLOPE_66DEG_UP;
 			break;	
+
 		case COL_SLOPE_RD66_BOT:
 			if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 1;
 			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
@@ -548,6 +557,7 @@ char bg_coll_slope() {
 
 			slope_type = SLOPE_66DEG_UP;
 			break;	
+			
 		case COL_SLOPE_LD66_TOP:
 			if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 0;
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
@@ -555,10 +565,12 @@ char bg_coll_slope() {
 
 			slope_type = SLOPE_66DEG_DOWN;
 			break;		
+
 		case COL_SLOPE_LD66_BOT:
 			if ((uint8_t)(temp_x & 0x0f) < 0x08) return 1;
 			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f);
+
 			slope_type = SLOPE_66DEG_DOWN;
 			break;	
 
@@ -566,9 +578,10 @@ char bg_coll_slope() {
 			if ((uint8_t)(temp_x & 0x0f) < 0x08) return 0;
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
-			slope_type = SLOPE_66DEG_UP_UD;
 
+			slope_type = SLOPE_66DEG_UP_UD;
 			break;	
+
 		case COL_SLOPE_RU66_BOT:
 			if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 1;
 			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
@@ -576,6 +589,7 @@ char bg_coll_slope() {
 
 			slope_type = SLOPE_66DEG_UP_UD;
 			break;	
+
 		case COL_SLOPE_LU66_TOP:
 			if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 0;
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
@@ -583,10 +597,12 @@ char bg_coll_slope() {
 
 			slope_type = SLOPE_66DEG_DOWN_UD;
 			break;		
+
 		case COL_SLOPE_LU66_BOT:
 			if ((uint8_t)(temp_x & 0x0f) < 0x08) return 1;
 			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
+
 			slope_type = SLOPE_66DEG_DOWN_UD;
 			break;	
 			
@@ -607,7 +623,6 @@ char bg_coll_slope() {
 	} else if (!was_on_slope_counter) {
 			slope_type = 0;
 	}
-	
 	
 	return 0;
 }
