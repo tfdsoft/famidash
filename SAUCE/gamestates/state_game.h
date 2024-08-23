@@ -186,10 +186,10 @@ void state_game(){
 
 		if (trails || forced_trails || gamemode == 6) {
 			if (!(kandoframecnt & 0x01)) {
-				if (old_scroll_y >= scroll_y) {
-					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(scroll_y, old_scroll_y));
+				if (old_trail_scroll_y >= scroll_y) {
+					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(scroll_y, old_trail_scroll_y));
 				} else {
-					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(old_scroll_y, scroll_y));
+					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(old_trail_scroll_y, scroll_y));
 					tmp6 ^= 0xFFFF; tmp6++;
 				}
 				for (tmp3 = 7; !(tmp3 & 0x80); tmp3--) {
@@ -198,7 +198,7 @@ void state_game(){
 					(&player_old_posy[1])[tmp3] = tmp5;
 				}
 				player_old_posy[0] = high_byte(player_y[0]);
-				old_scroll_y = scroll_y;
+				old_trail_scroll_y = scroll_y;
 			}
 		}
 	    if (discomode && !(kandoframecnt & discorefreshrate)) {

@@ -23,9 +23,6 @@ void __fastcall__ unrle_next_column();
 	Implemented in asm	
 */
 char __fastcall__ draw_screen_R();
-char __fastcall__ draw_screen_R_frame0();
-char __fastcall__ draw_screen_R_frame1();
-char __fastcall__ draw_screen_R_frame2();
 
 /*
 	Load ground tiles into collision map
