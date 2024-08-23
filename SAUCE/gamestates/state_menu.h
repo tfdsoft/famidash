@@ -254,6 +254,7 @@ void levelselection() {
 	pal_fade_to_withmusic(0,4);
 	
 	while (1){
+		newrand();
 		ppu_wait_nmi();
 		music_update();
 
@@ -767,7 +768,7 @@ void state_menu() {
 		ppu_wait_nmi();
 		music_update();
 		pad_poll(0); // read the first controller
-
+		newrand();
 		
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 		if (!(kandoframecnt & 127)) {

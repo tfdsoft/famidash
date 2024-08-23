@@ -166,7 +166,7 @@ void state_game(){
 	
 
     while (1) {
-		
+		newrand();
 		if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = iconBankTable[icon]; }
 		pal_col(3,outline_color);
 		pal_col(7,outline_color);
