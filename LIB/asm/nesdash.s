@@ -69,32 +69,41 @@ sprite_data = _sprite_data
 
 .segment "BSS"
 	; column buffer, to be pushed to the collision map
-	; 15 metatiles in the top screen 
-	; 12 metatiles in the bot screen
+	; 15 metatiles in the top 3 screens 
+	; 12 metatiles in the bottom screen
 	; 3 metatiles in the ground
 	columnBuffer:		.res 15 + 15 + 15 + 12 + 3
 
-	current_song_bank:	.res 1
-	scroll_count:		.res 1
-	auto_fs_updates:	.res 1
-	parallax_scroll_column: .res 1
-	parallax_scroll_column_start: .res 1
-	hexToDecOutputBuffer: .res 5
-
+	; variables related to the vertical seam / level height
 	extceil:			.res 1
 	rld_load_value:		.res 1
 	min_scroll_y:		.res 2
 
+	; variables related to both the above and below
+	old_draw_scroll_y:	.res 2
 	seam_scroll_y:		.res 2
+	
+	; variables related to draw_screen_XXX
+	scroll_count:		.res 1
+	parallax_scroll_column: .res 1
+	parallax_scroll_column_start: .res 1
+
+	current_song_bank:	.res 1
+	auto_fs_updates:	.res 1
+
+	hexToDecOutputBuffer: .res 5
  
 
-.export _scroll_count := scroll_count
-.export _auto_fs_updates := auto_fs_updates
-.export _parallax_scroll_column := parallax_scroll_column
-.export _parallax_scroll_column_start := parallax_scroll_column_start
-.export _hexToDecOutputBuffer := hexToDecOutputBuffer
 .export _extceil := extceil
 .export _min_scroll_y := min_scroll_y
+
+.export _scroll_count := scroll_count
+.export _parallax_scroll_column := parallax_scroll_column
+.export _parallax_scroll_column_start := parallax_scroll_column_start
+
+.export _auto_fs_updates := auto_fs_updates
+.export _hexToDecOutputBuffer := hexToDecOutputBuffer
+
 .export _pad = PAD_STATEP
 .export _pad_new = PAD_STATET
 
@@ -517,7 +526,7 @@ single_rle_byte:
 
 
 
-.segment "XCD_BANK_01"
+.segment "XCD_BANK_01"	; dep of: _draw_screen_R
 
 .proc writeToCollisionMap
 	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
@@ -569,7 +578,7 @@ single_rle_byte:
 
 
 ; [Not used in C]
-.segment "XCD_BANK_01"	; Has to be the same as draw_screen_R and _UD
+.segment "XCD_BANK_01"	; dep of: _draw_screen_R, _draw_screen_UD
 
 .import _scroll_y
 
@@ -610,6 +619,7 @@ yesSeam:
 			ORA #$84
 			TAX
 		.endif
+		LDA	#0	;	Gotta make the behavior consistent
 	:			;__
 	STA	seam_scroll_y
 	STX seam_scroll_y+1
@@ -633,7 +643,7 @@ noSeam:
 .endproc
 
 
-; void draw_screen_R();
+; char draw_screen_R();
 .segment "XCD_BANK_01"
 
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
@@ -674,22 +684,19 @@ attributeCalc_ColumnBufferIdx = ptr2+1
 ;   Attributes
 
 start:
-	
+	LDX scroll_count
+	BPL frame2
+
 	LDA _scroll_x			;__ Highbyte of scroll_x
 	LSR						;
 	LSR						;   >> 4
 	LSR						;
 	LSR						;__
-	STA tmp4
-
-	LDX scroll_count
-	BPL frame2
-
-	LDA tmp4
 	CMP _rld_column			;   If X == rld column, decompress shit
 	BEQ frame0
 
 	LDA #0
+	TAX
 	RTS
 
 frame2:
@@ -1049,7 +1056,8 @@ attributes:
 	LDX #$80
 	STX scroll_count
 
-	LDA #$01
+	LDX #0
+	LDA #1
 	RTS
 
 attributeCalc:

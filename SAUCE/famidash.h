@@ -308,7 +308,7 @@ uint8_t parallax_scroll_x;
 uint8_t invincible_counter;
 uint32_t scroll_x; // gotta love massive levels amirite fellas
 uint16_t scroll_y;
-uint16_t old_scroll_y;
+uint16_t old_trail_scroll_y;
 uint16_t target_scroll_y;
 uint8_t song;
 
