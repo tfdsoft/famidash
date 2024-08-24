@@ -200,7 +200,7 @@ void state_lvldone() {
 			#ifdef FLAG_ENABLE_TEST_LEVELS
 			for (tmp2 = 0; tmp2 < 255; tmp2++)
 			#else
-			for (tmp2 = 0; tmp2 < LEVEL_COUNT; tmp2++) 
+			for (tmp2 = 0; tmp2 < LEVEL_COUNT2; tmp2++) 
 			#endif
 			{
 				// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
