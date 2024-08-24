@@ -93,11 +93,19 @@ parser.add_argument("-d", "--only-diff", "--diff-only", help="Only show the diff
 parser.add_argument("-m", "--markdown-mode", "--md", help="Enable markdown code quotes around individual entries", action="store_true")
 parser.add_argument("-e", "--entry-type", help="The type of entries to include", default="scope", choices=["scope", "seg", "bank"])
 parser.add_argument("-c", "--compare", help="Compare the current BUILD/famidash.dbg file to an older version of the famidash.dbg file")
+parser.add_argument("-s", "--sort", help="Sorting options", default="declaration", choices=
+					["declaration", "d", "alphabetical", "a", "size-increasing", "si", "size-decreasing", "sd"])
 args = parser.parse_args()
 
 showall = args.only_diff
 
 quote = "`" if args.markdown_mode else ""
+
+sortalg = args.sort
+
+conversion = {"declaration" : "d", "alphabetical" : "a", "size-increasing" : "si", "size-decreasing" : "sd"}
+if sortalg in conversion.keys():
+	sortalg = conversion[sortalg]
 
 check = args.entry_type
 if check == "bank":
@@ -156,7 +164,11 @@ if compare:
 	maxoldnumsize = max([len(str(i[1])) for i in old.items() if (showall or (i[1] - new[i[0]] != 0))])
 	diff = 0
 
-	for i in old.items():
+	items = list(old.items())
+	if sortalg != "d":
+		items.sort(key = lambda x : (x[0].strip("_")[0] if sortalg == "a" else x[1]), reverse = sortalg == "sd")
+
+	for i in items:
 		newsize = new[i[0]]
 		thisdiff = (i[1] - newsize)
 		if (thisdiff != 0 or showall) :
@@ -170,7 +182,12 @@ if compare:
 	print("\nTotal size reduction: "+str(diff)+" bytes")
 
 else:
-	for i in new.items():
+	items = list(new.items())
+	if sortalg != "d":
+		items.sort(key = lambda x : (x[0].strip("_")[0] if sortalg == "a" else x[1]), reverse = sortalg == "sd")
+
+
+	for i in items:
 		size = i[1]
 		padding = " " * (maxstrsize - len(i[0]))
 		print(f"{quote}{i[0]}:{padding} {size}{quote}")
