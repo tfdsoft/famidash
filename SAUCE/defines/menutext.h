@@ -36,7 +36,7 @@ const unsigned char level2text[]="BACK ON";
 const unsigned char level5text[]="BASE AFTER";
 const unsigned char levelCtext[]="THEORY OF";
 const unsigned char levelDtext[]="ELECTROMAN";
-const unsigned char level13text[]="GO BACK TO";
+const unsigned char level14text[]="GO BACK TO";
 
 const unsigned char level1text2[]="MADNESS";
 const unsigned char level2text2[]="TRACK";
@@ -52,11 +52,12 @@ const unsigned char levelBtext2[]="CLUTTERFUNK";
 const unsigned char levelCtext2[]="UNFINISHED";
 const unsigned char levelDtext2[]="ADVENTURES";
 const unsigned char levelEtext2[]="DECODE";
-const unsigned char levelFtext2[]="TEST";
-const unsigned char level10text2[]="TEST2";
-const unsigned char level11text2[]="TEST3";
-const unsigned char level12text2[]="TEST4";
-const unsigned char level13text2[]="THE SAFE LEVELS";
+const unsigned char levelFtext2[]="LUCKY DRAW";
+const unsigned char level10text2[]="TEST";
+const unsigned char level11text2[]="TEST2";
+const unsigned char level12text2[]="TEST3";
+const unsigned char level13text2[]="TEST4";
+const unsigned char level14text2[]="THE SAFE LEVELS";
 
 const unsigned char gameboytext1[]="  GREY";
 const unsigned char gameboytext2[]="   RED";

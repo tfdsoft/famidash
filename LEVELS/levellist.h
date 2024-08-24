@@ -78,10 +78,11 @@ const unsigned short DECOTYPE[] = {
 	DECO1,
 	DECO1,
 	DECOCLOUD,
+	DECOCLOUD, //clutterfunk
 	DECOCLOUD,
 	DECOCLOUD,
 	DECOCLOUD,
-	DECOCLOUD,
+	DECOCLOUD, //lucky draw
 	EXTRASPRITES1,
 	EXTRASPRITES1,
 	DECOCLOUD,
@@ -102,12 +103,12 @@ const unsigned short songtime[] = {	//for looping in practice mode
 	15000, //clutterfunk
 	15000, //TOE
 	15000, //Electroman
+	15000, //lucky draw
 	15000, //decode
 	15000, //t1
 	15000, //t2
 	14000, //t3
 	14000, //t4
-	14000, //danger
 };
 
 const unsigned char spike_set[] = {
@@ -125,6 +126,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //theory of everything
 	SPIKESB, //electroman
 	SPIKESB, //decode
+	SPIKESB, //lucky draw
 	SPIKESB, //test1
 	SPIKESB, //test2
 	SPIKESB, //test3
@@ -147,6 +149,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //theory of everything
 	BLOCKSB, //electroman
 	BLOCKSB, //decode
+	BLOCKSB, //lucky draw
 	BLOCKSC, //test1
 	BLOCKSB, //test2
 	BLOCKSB, //test3
@@ -169,6 +172,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //theory of everything
 	SAWBLADESA, //electroman
 	SAWBLADESA, //decode
+	SAWBLADESA, //lucky draw
 	SAWBLADESA, //test1
 	SAWBLADESA, //test2
 	SAWBLADESA, //test3
@@ -191,12 +195,13 @@ const unsigned char difficulty_list[] = {
     INSANE,
     INSANE,
     INSANE,
+    DEMON, //decode
+    DEMON, //lucky draw
     DEMON,
     DEMON,
     DEMON,
     DEMON,
-    DEMON,
-DANGER,
+    DANGER,
 };
 
 const unsigned char stars_list[] = {
@@ -212,6 +217,7 @@ const unsigned char stars_list[] = {
 	10,
 	11,
 	12,
+	10,
 	10,
 	10,
 	0,

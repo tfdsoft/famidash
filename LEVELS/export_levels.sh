@@ -17,6 +17,7 @@ all_levels="
             theoryofeverything\
             electroman\
 			decode\
+			luckydraw\
             test\
             test2\
             test3\

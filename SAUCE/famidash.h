@@ -180,8 +180,16 @@ uint8_t SRAM_VALIDATE[4];
 #ifdef FLAG_ENABLE_TEST_LEVELS
 	#define LEVEL_COUNT 256
 #else
-	#define LEVEL_COUNT 18
+	#define LEVEL_COUNT 13
 #endif
+
+#ifdef FLAG_ENABLE_TEST_LEVELS
+	#define LEVEL_COUNT2 256
+#else
+	#define LEVEL_COUNT2 19
+#endif
+
+
 uint8_t coin1_obtained[0x40];
 uint8_t coin2_obtained[0x40];
 uint8_t coin3_obtained[0x40];
@@ -289,6 +297,9 @@ uint8_t settingvalue;
 uint8_t gameState = 0x01;
 
 uint8_t teleport_output;
+
+uint8_t normalorcommlevels;
+
 
 extern uint8_t parallax_scroll_column;
 extern uint8_t parallax_scroll_column_start;

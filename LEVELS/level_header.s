@@ -113,3 +113,9 @@ danger_game_mode   = $22
 danger_speed       = $24
 danger_bg_color    = $07
 danger_grnd_color  = $17
+
+luckydraw_song_number = song_custom_everyend
+luckydraw_game_mode   = $00
+luckydraw_speed       = $00
+luckydraw_bg_color    = $0F
+luckydraw_grnd_color  = $0F

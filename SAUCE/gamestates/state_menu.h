@@ -54,10 +54,10 @@ const uint8_t hiNTAddrTableTitleScreen[]={
 };
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, NULL, NULL, NULL, NULL, level13text
+  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, NULL, NULL, NULL, NULL, NULL, level14text
 };
 const unsigned char* const leveltexts2[] = {
-  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2, level12text2, level13text2
+  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2, level12text2, level13text2, level14text2
 };
 
 const unsigned char* const gameboytexts[] = {
@@ -96,7 +96,8 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
-	sizeof(level13text) - 1,
+	0,
+	sizeof(level14text) - 1,
 };
 const unsigned char level_text_size2[] = {
     sizeof(level1text2) - 1,
@@ -118,6 +119,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(level11text2) - 1,
 	sizeof(level12text2) - 1,
 	sizeof(level13text2) - 1,
+	sizeof(level14text2) - 1,
 };
 
 const char coin_counter[][3] = {
@@ -211,6 +213,8 @@ const uint8_t lvlselect_irq_table[] = {
 	irqtable_end // always end with 0xff
 };
 void levelselection() {
+
+	if (normalorcommlevels) level = LEVEL_COUNT;
 	
 	mmc3_set_8kb_chr(MENUBANK);
 	pal_fade_to_withmusic(4,0);
@@ -298,9 +302,16 @@ void levelselection() {
 			++level;
 			low_byte(tmp8) = 0xff;
 			tmp4 = 1;
-			if (level >= LEVEL_COUNT){
-				level = 0x00;
-				
+			if (!normalorcommlevels) {
+				if (level >= LEVEL_COUNT){
+					level = 0x00;
+					
+				}
+			}
+			else {
+				if (level >= LEVEL_COUNT2){
+					level = LEVEL_COUNT;
+				}
 			}
 			refreshmenu();
 		//	break;
@@ -309,11 +320,15 @@ void levelselection() {
 			--level;
 			low_byte(tmp8) = 0xff;
 			tmp4 = 0;
-			if (level == 0xFF){
-				level = LEVEL_COUNT-1;
-				
+			if (!normalorcommlevels) {
+				if (level == 0xFF){
+					level = LEVEL_COUNT-1;
+					
+				}
 			}
-			
+			else {
+				if (level < LEVEL_COUNT) level = LEVEL_COUNT2 - 1;
+			}
 			//break;
 			refreshmenu();
 		}
@@ -846,11 +861,21 @@ void state_menu() {
 			POKE(0x2005, 0x00);
 			mmc3_disable_irq(); // reset scroll before playing
 			kandowatchesyousleep = 1; 
+			normalorcommlevels = 0;			
 			if(!tmp7) crossPRGBankJump8(playPCM, 1); 
 			else crossPRGBankJump8(playPCM, 0);  
 			levelselection(); 
 			return;
-		case 0x01: sfx_play(sfx_invalid, 0); return;
+		case 0x01: //sfx_play(sfx_invalid, 0); return;
+			POKE(0x2005, 0x00);
+			POKE(0x2005, 0x00);
+			mmc3_disable_irq(); // reset scroll before playing
+			kandowatchesyousleep = 1; 
+			normalorcommlevels = 1;
+			if(!tmp7) crossPRGBankJump8(playPCM, 1); 
+			else crossPRGBankJump8(playPCM, 0);  
+			levelselection(); 
+			return;		
 		case 0x02: gameState = 4; return;
 		case 0x03: settings(); return;
 		case 0x04: customize_screen(); return;

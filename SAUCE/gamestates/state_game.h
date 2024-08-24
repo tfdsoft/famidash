@@ -50,10 +50,11 @@ const uint8_t G_Table[]={
 #define theory_of_everything  0x0B
 #define electroman_adventures  0x0C
 #define decode  0x0D
-#define test  0x0E
-#define test2  0x0F
-#define test3  0x10
-#define test4  0X11
+#define luckydraw  0x0E
+#define test  0x0F
+#define test2  0x10
+#define test3  0x11
+#define test4  0X12
 
 void runthecolls();
 void set_player_banks();
