@@ -526,7 +526,7 @@ single_rle_byte:
 
 
 
-.segment "XCD_BANK_01"	; dep of: _draw_screen_R
+.segment "XCD_BANK_01"	; dep of: _draw_screen
 
 .proc writeToCollisionMap
 	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
@@ -578,7 +578,7 @@ single_rle_byte:
 
 
 ; [Not used in C]
-.segment "XCD_BANK_01"	; dep of: _draw_screen_R, _draw_screen_UD
+.segment "XCD_BANK_01"	; dep of: _draw_screen
 
 .import _scroll_y
 
@@ -643,34 +643,13 @@ noSeam:
 .endproc
 
 
-; char draw_screen_R();
+; char draw_screen();
 .segment "XCD_BANK_01"
 
-.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
-.import _increase_parallax_scroll_column
-.import _no_parallax, _invisblocks
+.global dsrt_fr1O : zp
 
-.export _draw_screen_R
-.proc _draw_screen_R
-
-TileWriteSize	= (15*2)+2+1
-
-TileOff0		= 0
-TileOff1		= 0+TileWriteSize
-TileEnd			= 0+TileWriteSize+TileWriteSize
-
-AttrWriteSize	= 8*3
-
-AttrOff0		= 0
-AttrOff1		= 0+AttrWriteSize
-AttrEnd			= 0+AttrWriteSize+AttrWriteSize
-
-CurrentRow = tmp1
-LoopCount = tmp2
-SeamValue = ptr3+1
-
-attributeCalc_tmp5 = ptr2
-attributeCalc_ColumnBufferIdx = ptr2+1
+.export _draw_screen
+.proc _draw_screen
 
 ; Write architecture:
 
@@ -684,25 +663,46 @@ attributeCalc_ColumnBufferIdx = ptr2+1
 ;   Attributes
 
 start:
-	LDX scroll_count
-	BPL frame2
+	LDX scroll_count		;	If something is being drawn, continue
+	BNE switch				;__
 
-	LDA _scroll_x			;__ Highbyte of scroll_x
+	LDA _scroll_x			;
 	LSR						;
-	LSR						;   >> 4
+	LSR						;	If X == rld column and we are free,
+	LSR						;	start drawing the right edge
 	LSR						;
-	LSR						;__
-	CMP _rld_column			;   If X == rld column, decompress shit
-	BEQ frame0
+	CMP _rld_column			;
+	beq draw_screen_R_tiles
 
 	LDA #0
 	TAX
 	RTS
 
-frame2:
-	CPX #$01
-	BEQ frame1
-	JMP attributes
+switch:
+	DEX									;	if scroll_count == 1, do frame 1
+	beq	draw_screen_R_tiles+dsrt_fr1O	;__	of drawing the right edge (right tile halves)
+	DEX									;	if scroll_count == 2, do frame 2
+	jeq	draw_screen_R_attributes		;__ of drawing the right edge (attributes)
+
+
+; [Subroutine]
+.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
+.import _increase_parallax_scroll_column
+.import _no_parallax, _invisblocks
+
+.proc draw_screen_R_tiles
+
+	TileWriteSize	= (15*2)+2+1
+
+	TileOff0		= 0
+	TileOff1		= 0+TileWriteSize
+	TileEnd			= 0+TileWriteSize+TileWriteSize
+
+	CurrentRow = tmp1
+	LoopCount = tmp2
+	SeamValue = ptr3+1
+
+	
 
 frame0:
 	LDA #0
@@ -710,16 +710,26 @@ frame0:
 	; Switch banks
 	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
 	JSR writeToCollisionMap
-	JSR	get_seam_scroll_y
 
-	JMP :+
+	; seam_scroll_y will not be calculated here anymore, only on UD
+	; temporary code to make it work temporarily
+	LDA #$00
+	LDX #$87
+
+	STA seam_scroll_y
+	STX seam_scroll_y+1
 
 frame1:
 
+	; thanks ca65, very cool
+	.if (frame1 - frame0) < 256
+		.exportzp dsrt_fr1O = <(frame1 - frame0)
+	.else
+		.error "too far"
+	.endif
+
 	LDA seam_scroll_y
 	LDX seam_scroll_y+1
-
-	:
 
 	LDY	#15+15	;__	Load the starting nametable into Y
 
@@ -900,6 +910,7 @@ right_tilewriteloop:
 		DEC LoopCount
 		BPL right_tilewriteloop
 	rts
+
 left_tilewriteloop:
 		ldy CurrentRow
 		lda _invisblocks
@@ -928,9 +939,72 @@ left_tilewriteloop:
 		DEC LoopCount
 		BPL left_tilewriteloop
 	rts
+		
+RenderParallaxLoop:
+	lda _no_parallax
+	bne @nopar
+		lda VRAM_BUF+TileOff0+3,x
+		bne :+
+			; empty tile, so replace it with the parallax for this
+			lda ParallaxBuffer, y
+			sta VRAM_BUF+TileOff0+3,x
+		:
+		iny
+		cpy ParallaxExtent
+		bne :+
+			ldy ParallaxBufferStart
+		:
+		inx
+		dec LoopCount
+		bpl RenderParallaxLoop
+@nopar:
+		rts
 
-attributes:
+; Column striped parallax data definition
+; add to the tile for the next row, up to 6.
+ParallaxBuffer:
+	ParallaxBufferOffset:
+		.byte ParallaxBufferCol0 - ParallaxBuffer
+		.byte ParallaxBufferCol1 - ParallaxBuffer
+		.byte ParallaxBufferCol2 - ParallaxBuffer
+		.byte ParallaxBufferCol3 - ParallaxBuffer
+		.byte ParallaxBufferCol4 - ParallaxBuffer
+		.byte ParallaxBufferCol5 - ParallaxBuffer
+	ParallaxBufferCol0:
+		.byte $80, $90, $a0, $b0, $86, $96, $a6, $b6, $8c
+	ParallaxBufferCol1:
+		.byte $81, $91, $a1, $b1, $87, $97, $a7, $b7, $8d
+	ParallaxBufferCol2:
+		.byte $82, $92, $a2, $b2, $88, $98, $a8, $b8, $8e
+	ParallaxBufferCol3:
+		.byte $83, $93, $a3, $b3, $89, $99, $a9, $b9, $9c
+	ParallaxBufferCol4:
+		.byte $84, $94, $a4, $b4, $8a, $9a, $aa, $ba, $9d
+	ParallaxBufferCol5:
+		.byte $85, $95, $a5, $b5, $8b, $9b, $ab, $bb, $9e
+
+SeamTable:
+	.byte 0, 15
+.endproc
+
+; [Subroutine]
+.global metatiles_attr
+.import _no_parallax, _invisblocks
+
+.export draw_screen_R_attributes
+.proc draw_screen_R_attributes
+	AttrWriteSize	= 3*8
+
+	AttrOff0		= 0
+	AttrOff1		= 0+AttrWriteSize
+	AttrEnd			= 0+AttrWriteSize+AttrWriteSize
+
+	tmp5 = ptr2
+	ColumnBufferIdx = ptr2+1
+
 	NametableAddrHi = tmp1
+	LoopCount = tmp2
+	SeamValue = ptr3+1
 	; Attribute write architecture:
 
 	; | Ad|dr |dat|
@@ -980,7 +1054,7 @@ attributes:
 	STA	SeamValue		;__	if it's invalid the seam won't be drawn
 
 	LDX #0
-	STX attributeCalc_ColumnBufferIdx
+	STX ColumnBufferIdx
 	JSR attributeCalc
 
 	; Increment screen (we always increment)
@@ -1053,10 +1127,9 @@ attributes:
 	LDA #$FF
 	STA VRAM_BUF+AttrEnd,X
 	; Reset frame counter
-	LDX #$80
+	LDX #0
 	STX scroll_count
 
-	LDX #0
 	LDA #1
 	RTS
 
@@ -1082,7 +1155,7 @@ attributeCalc:
 		ASL
 		ASL
 		ora metatiles_attr,y	; Lower left
-		STA attributeCalc_tmp5
+		STA tmp5
 
 		; Read upper right metatile
 		LDY #$01
@@ -1103,9 +1176,9 @@ attributeCalc:
 		ora metatiles_attr,y	; Upper left
 
 		; Combine
-		LDY attributeCalc_tmp5	; Y has the lower metatile attrs, will shift by 4
+		LDY tmp5	; Y has the lower metatile attrs, will shift by 4
 		ORA shiftBy4table,Y
-		LDX attributeCalc_ColumnBufferIdx
+		LDX ColumnBufferIdx
 		STA columnBuffer,X
 
 		; Increment pointer
@@ -1119,58 +1192,49 @@ attributeCalc:
 		ADC #$20
 		STA	ptr1
 
-		INC attributeCalc_ColumnBufferIdx
+		INC ColumnBufferIdx
 		DEC LoopCount
 		BPL attributeLoop
 	RTS
-	
-RenderParallaxLoop:
-	lda _no_parallax
-	bne @nopar
-		lda VRAM_BUF+TileOff0+3,x
-		bne :+
-			; empty tile, so replace it with the parallax for this
-			lda ParallaxBuffer, y
-			sta VRAM_BUF+TileOff0+3,x
-		:
-		iny
-		cpy ParallaxExtent
-		bne :+
-			ldy ParallaxBufferStart
-		:
-		inx
-		dec LoopCount
-		bpl RenderParallaxLoop
-@nopar:
-		rts
-
-; Column striped parallax data definition
-; add to the tile for the next row, up to 6.
-ParallaxBuffer:
-	ParallaxBufferOffset:
-		.byte ParallaxBufferCol0 - ParallaxBuffer
-		.byte ParallaxBufferCol1 - ParallaxBuffer
-		.byte ParallaxBufferCol2 - ParallaxBuffer
-		.byte ParallaxBufferCol3 - ParallaxBuffer
-		.byte ParallaxBufferCol4 - ParallaxBuffer
-		.byte ParallaxBufferCol5 - ParallaxBuffer
-	ParallaxBufferCol0:
-		.byte $80, $90, $a0, $b0, $86, $96, $a6, $b6, $8c
-	ParallaxBufferCol1:
-		.byte $81, $91, $a1, $b1, $87, $97, $a7, $b7, $8d
-	ParallaxBufferCol2:
-		.byte $82, $92, $a2, $b2, $88, $98, $a8, $b8, $8e
-	ParallaxBufferCol3:
-		.byte $83, $93, $a3, $b3, $89, $99, $a9, $b9, $9c
-	ParallaxBufferCol4:
-		.byte $84, $94, $a4, $b4, $8a, $9a, $aa, $ba, $9d
-	ParallaxBufferCol5:
-		.byte $85, $95, $a5, $b5, $8b, $9b, $ab, $bb, $9e
-
-SeamTable:
-	.byte 0, 15
+.endproc
 
 .endproc
+
+
+; char draw_screen_UD();
+.segment "XCD_BANK_01"
+
+.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
+.import _no_parallax, _invisblocks
+
+.export _draw_screen_UD
+.proc _draw_screen_UD
+TileWriteSize = (16*2)+2+1
+
+start:
+	LDX	_invisblocks
+	BNE	skipall
+
+	LDX	scroll_count
+	BMI	really_do_start
+
+skipall:
+	LDA #0
+	TAX
+	RTS
+
+really_do_start:
+	LDA	seam_scroll_y+1	;
+	AND #<~$84			;
+	STA	ptr1+1			;	Buffer the raw old seam_scroll_y
+	LDA	seam_scroll_y	;
+	STA	ptr1			;__
+
+	JSR get_seam_scroll_y
+
+
+.endproc
+
 
 ; void __fastcall__ load_ground(uint8_t id);
 .segment "LVL_BANK_00"

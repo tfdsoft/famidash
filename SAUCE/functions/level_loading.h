@@ -22,7 +22,7 @@ void __fastcall__ unrle_next_column();
 	Returns 1 if it actually did anything
 	Implemented in asm	
 */
-char __fastcall__ draw_screen_R();
+char __fastcall__ draw_screen();
 
 /*
 	Load ground tiles into collision map
@@ -93,11 +93,11 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		mmc3_set_prg_bank_1(GET_BANK(restore_practice_state));
 		restore_practice_state();
 
-		mmc3_set_prg_bank_1(GET_BANK(draw_screen_R));
+		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
 		// Draw the nametable starting from where the scroll is set
 		i = -16;
 		do {
-			if (draw_screen_R()) flush_vram_update2();	// if draw_screen_r did anything, flush vram
+			if (draw_screen()) flush_vram_update2();	// if draw_screen did anything, flush vram
 			i++;
 			uint32_inc(scroll_x);
 		} while (i != 0);
@@ -110,13 +110,13 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		parallax_scroll_x = 0;
 		parallax_scroll_column = 0;
 		parallax_scroll_column_start = 0;
-		mmc3_set_prg_bank_1(GET_BANK(draw_screen_R));
+		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
 		i = 0;
 	}
 
 	// Draw the nametable starting from where the scroll is set
     do {
-		if (draw_screen_R()) flush_vram_update2();	// if draw_screen_r did anything, flush vram
+		if (draw_screen()) flush_vram_update2();	// if draw_screen did anything, flush vram
 		i++;
 		uint32_inc(scroll_x);
 		if (!(i & 0x1F)) music_update();	// it takes about 29k cycles for exactly 2 of these subloops, aka 1 frame
