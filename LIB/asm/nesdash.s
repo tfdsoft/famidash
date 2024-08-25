@@ -2535,10 +2535,10 @@ Bank:
 
 SampleRate_NTSC:	; Also applies to Dendy, as it is derived from the CPU speed
 	.byte 3		;(22-5+1)/5-1
-	.byte 40	;((NTSC Clock / 8000)-5+1)/5-1
+	.byte 43	;((NTSC Clock / 8000)-5+1)/5-1
 SampleRate_PAL:
 	.byte 2
-	.byte 37	;((PAL Clock / 8000)-5+1)/5-1
+	.byte 40	;((PAL Clock / 8000)-5+1)/5-1
 .endproc
 
 
