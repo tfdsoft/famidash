@@ -45,8 +45,9 @@ void reset_level(void) {
     ppu_off(); // reset the level when you get to this point, and change this later
     scroll_x = 0;
     scroll_count = 0;
-    set_scroll_x(scroll_x);
     scroll_y = 0x2EF;
+    seam_scroll_y = (0x2EF - 0x78); // [temp]
+    set_scroll_x(scroll_x);
     set_scroll_y(scroll_y);
     init_rld(level);
 

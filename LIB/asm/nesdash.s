@@ -83,7 +83,7 @@ sprite_data = _sprite_data
 	old_draw_scroll_y:	.res 2
 	seam_scroll_y:		.res 2
 	
-	; variables related to draw_screen_XXX
+	; variables related to draw_screen
 	scroll_count:		.res 1
 	parallax_scroll_column: .res 1
 	parallax_scroll_column_start: .res 1
@@ -96,6 +96,7 @@ sprite_data = _sprite_data
 
 .export _extceil := extceil
 .export _min_scroll_y := min_scroll_y
+.export	_seam_scroll_y := seam_scroll_y
 
 .export _scroll_count := scroll_count
 .export _parallax_scroll_column := parallax_scroll_column
@@ -659,15 +660,28 @@ start:
 	LSR						;	start drawing the right edge
 	LSR						;
 	CMP _rld_column			;
-	beq draw_screen_R_tiles
+	BEQ draw_screen_R_tiles	;__
 
-	LDA #0
-	TAX
-	RTS
+	;
+	;	The scroll_count is 0, but we don't have the right edge to update
+	;	That means it is time to start updating the vertical scrolling seam
+	;__
+
+	LDA	extceil						;	If the ceiling is extended
+	EOR	#$80						;	and blocks are visible
+	ORA	_invisblocks				;	update vertical seam tiles
+	BEQ	jmpto_draw_screen_UD_tiles	;__	
+
+	LDA	#0		;
+	TAX			;	Otherwise return 0
+	RTS			;__
+
+jmpto_draw_screen_UD_tiles:
+	JMP draw_screen_UD_tiles
 
 switch:
 	DEX									;	if scroll_count == 1, do frame 1
-	beq	draw_screen_R_tiles+dsrt_fr1O	;__	of drawing the right edge (right tile halves)
+	BEQ	draw_screen_R_tiles+dsrt_fr1O	;__	of drawing the right edge (right tile halves)
 	DEX									;	if scroll_count == 2, do frame 2
 	jeq	draw_screen_R_attributes		;__ of drawing the right edge (attributes)
 
@@ -697,15 +711,6 @@ frame0:
 	; Switch banks
 	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
 	JSR writeToCollisionMap
-
-	; seam_scroll_y will not be calculated here anymore, only on UD
-	; temporary code to make it work temporarily
-	LDA	#$F0
-	LDX	#$02
-
-	STA seam_scroll_y
-	STX seam_scroll_y+1
-
 frame1:
 
 	; thanks ca65, very cool
@@ -982,7 +987,6 @@ SeamTable:
 .global metatiles_attr
 .import _no_parallax, _invisblocks
 
-.export draw_screen_R_attributes
 .proc draw_screen_R_attributes
 	AttrWriteSize	= 3*8
 
@@ -1189,40 +1193,71 @@ attributeCalc:
 	RTS
 .endproc
 
-.endproc
 
-
-; char draw_screen_UD();
-.segment "XCD_BANK_01"
-
-.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
+; [Subroutine]
+.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
 .import _no_parallax, _invisblocks
+.import _scroll_y
 
-.export _draw_screen_UD
-.proc _draw_screen_UD
+.export draw_screen_UD_tiles
+.proc draw_screen_UD_tiles
 TileWriteSize = (16*2)+2+1
 
 start:
-	LDX	_invisblocks
-	BNE	skipall
+	LDA	_scroll_y				;
+	SEC							;
+	SBC	old_draw_scroll_y		;
+	STA	tmp1					;	XY = scroll_y - old_draw_scroll_y
+	LDA	_scroll_y+1				;
+	SBC	old_draw_scroll_y+1		;
+	TAY							;__
 
-	LDX	scroll_count
-	BMI	really_do_start
+	ORA	tmp1
+	BNE	calc_new_seam_pos
 
-skipall:
-	LDA #0
-	TAX
+	RTS		;__	Both A and X are 0
+
+calc_new_seam_pos:
+	LDA	#$10
+	STA	sreg+0
+	LDA	seam_scroll_y
+	LDX	seam_scroll_y+1
+	CPY	#$00	;	Puts carry into X
+	BMI	@up		;__
+		JSR	__add_scroll_y		;__	Calculate new seam position
+		JSR	calc_diff			;__	Calculate difference
+		CMP	#$38				;
+		TAX						;	If the difference is less than
+		SBC	#$00				;	($78 - $40), we went too far
+		BCS	start_writing		;__
+	@ret0:		;
+		LDA #0	;	Return 0
+		TAX		;	(nothing was done)
+		RTS		;__
+	@up:
+		JSR	__sub_scroll_y		;__	Calculate new seam position
+		JSR	calc_diff			;__	Calculate difference
+		CMP	#$B8				;
+		TAX						;	If the difference is more than
+		SBC	#$00				;	($78 + $40), we went too far
+		BCS	@ret0				;__
+start_writing:
+	LDA	ptr1
+	STA	seam_scroll_y
+	LDA	ptr1+1
+	STA	seam_scroll_y+1
+	; 2 scenarios: one write 32 tiles long, or 4 writes, 16-x and x tiles long each (thanks jrowe screen extension)
 	RTS
 
-really_do_start:
-	LDA	seam_scroll_y+1	;
-	AND #<~$84			;
-	STA	ptr1+1			;	Buffer the raw old seam_scroll_y
-	LDA	seam_scroll_y	;
-	STA	ptr1			;__
-
-	JSR get_seam_scroll_y
-
+calc_diff:
+	STA	ptr1+0				;	Store new seam position
+	STX	ptr1+1				;__
+	STA	sreg+0				;
+	STX	sreg+1				;	Calculate the difference 
+	LDX	_scroll_y			;	between scroll_y and seam position
+	LDA	_scroll_y+1			;	(doesn't need to be linearized due to its indended range)
+	JMP	__sub_scroll_y_ext	;__
+.endproc
 
 .endproc
 
