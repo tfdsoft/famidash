@@ -597,30 +597,16 @@ yesSeam:
 	;  $78	| $178	|  2/0	|	1	|
 	; $178	| $278	|	2	|  3/1	|
 	; $278	| $2F0	|	2	|	3	|
-	; $10 is added to Y at all F0 boundaries but the edge
 
-	; Get seam position for attributes
-	; Seampos = (((Y-$78)>>4)&$FE)<<4 = (Y-78)&$FFE0 
-	LDX	_scroll_y+1
+	; Get seam position
 	LDA	_scroll_y
+	LDX	_scroll_y+1
 	SEC
 	SBC	#$78	;
 	BCS	:+		;	AX = scroll_y - $78
 		SBC #$10-1;	(with valid scroll_y coordinates)
 		DEX		;__
 	:
-	CPX	#$02	;
-	BCC	:+		;	if X == 2 or -1 (aka no seam)
-		INX
-		TXA
-		.if USE_ILLEGAL_OPCODES
-			AXS #$7C	; = ORX #$84
-		.else
-			ORA #$84
-			TAX
-		.endif
-		LDA	#0	;	Gotta make the behavior consistent
-	:			;__
 	STA	seam_scroll_y
 	STX seam_scroll_y+1
 
@@ -628,18 +614,19 @@ yesSeam:
 
 noSeam:
 	; The level's ceiling ≤ 27 blocks, no need for a seam
-	LDX #$87
-	STX	seam_scroll_y
+	LDA	#$78
+	LDX #$02
+	STA	seam_scroll_y
 	STX	seam_scroll_y+1
 	RTS
 
 	; Total seam system:
 	; High byte	| Seam screen	| A		| B		|
+	;	FF		|	There isn't	|	0	| 	1	|
 	;	00		|		00		|  2/0	|	1	|
 	;	01		|		01		|	2	|  3/1	|
-	;	84		|	There isn't	|	0	| 	1	|
-	;	87		|	There isn't	|	2	|	3	|
-	;	No seam can be distinguished by bits 7 or 2
+	;	02		|	There isn't	|	2	|	3	|
+	;	No seam can be distinguished by high byte >= 02 or bit 1
 .endproc
 
 
@@ -713,8 +700,8 @@ frame0:
 
 	; seam_scroll_y will not be calculated here anymore, only on UD
 	; temporary code to make it work temporarily
-	LDA #$00
-	LDX #$87
+	LDA	#$F0
+	LDX	#$02
 
 	STA seam_scroll_y
 	STX seam_scroll_y+1
@@ -728,13 +715,16 @@ frame1:
 		.error "too far"
 	.endif
 
+calc_seam_pos:
+
 	LDA seam_scroll_y
 	LDX seam_scroll_y+1
 
 	LDY	#15+15	;__	Load the starting nametable into Y
 
-	CPX #$80	;__	Put last bit of X into carry
-	BCS :+		;__	If there is a seam, calculate its position in metatiles
+	CPX #$02	;	If there is a seam,
+	BCS @noseam	;__	calculate its position in metatiles
+	@yesseam:
 		LSR					;
 		LSR					;	Divide by 16, get index 
 		LSR					;	inside screen in metatiles
@@ -743,16 +733,17 @@ frame1:
 		ADC SeamTable, X	;__
 		ADC #30				;__	If the carry was set then something got fucked
 		STA SeamValue
+		BCC @fin	; = BRA, unless the additions got fucked
 
-		BCC :++		; = BRA, unless the additions got fucked
-	:			;	If there is no seam, store an invalid value
+	@noseam:		;__	If there is no seam, store an invalid value
 		STX SeamValue
-		CPX	#$84	;
-		BNE	:+		;	If the starting screen is 0, load into Y
+		CPX	#$FF	;
+		BNE	@fin	;	If the starting screen is 0, load into Y
 			LDY #0	;__
-	:
-	STY	CurrentRow
+	@fin:
+		STY	CurrentRow
 
+write_start:
 	; Writing to nesdoug's VRAM buffer starts here
 	LDX VRAM_INDEX
 
@@ -1034,13 +1025,13 @@ SeamTable:
 	AND #$E0
 	STA SeamValue
 	LDA seam_scroll_y+1
-	AND #$05	; add bit 2 to not use if no seam
+	AND #$03	; add bit 1 to not use if no seam
 	ORA SeamValue
 	STA SeamValue
 
 	LDY	#>collMap2		;__	Get the default value
-	AND #$05			;	Bits 0 and 2 are directly from >seam_scroll_y
-	CMP	#$04			;	For value $84 start at screen 0, otherwise screen 2
+	AND #$03			;	Bits 0 and 1 are directly from >seam_scroll_y
+	CMP	#$03			;	For value $FF start at screen 0, otherwise screen 2
 	BNE	:+				;
 		LDY	#>collMap0	;	Get high byte of starting value
 	:					;	(the screen)
@@ -1050,7 +1041,7 @@ SeamTable:
 	AND #$0E			;	Get column (w/o highest bit cuz attributes)
 	; ADC #<(collMap0-1) ; the low byte is 0
 	STA ptr1			;__
-	EOR	SeamValue		;	The only overlapping bit is bit 2,
+	EOR	SeamValue		;	The only overlapping bit is bit 1,
 	STA	SeamValue		;__	if it's invalid the seam won't be drawn
 
 	LDX #0
