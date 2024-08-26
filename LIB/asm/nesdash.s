@@ -769,10 +769,8 @@ write_start:
 	; Get nametable
 	lda _scroll_x + 1 ; high byte
 	and #%00000001
-	eor #%00000001
-	asl
-	asl
-	ora #($20+$80)  ; 0th nametable + NT_UPDATE_VERT
+	tay
+	lda	ntAddrHiTbl,y
 	STA VRAM_BUF+TileOff0,X
 	ORA #$08        ; 2nd nametable
 	STA VRAM_BUF+TileOff1,X
@@ -981,6 +979,9 @@ ParallaxBuffer:
 
 SeamTable:
 	.byte 0, 15
+
+ntAddrHiTbl:
+	.byte	$24|$80,	$20|$80
 .endproc
 
 ; [Subroutine]
@@ -1060,12 +1061,10 @@ SeamTable:
 	JSR attributeCalc
 
 	; Get address hi byte (either left or right side)
-	lda _scroll_x + 1 ; high byte
-	and #%00000001
-	eor #%00000001
-	asl
-	asl
-	ora #$23
+	lda _scroll_x + 1 	; high byte
+	and #%00000001		;
+	tay					;	5 cycles, 6 bytes
+	lda	ntAddrHiTbl, Y	;__
 	sta NametableAddrHi
 	
 	LDA ptr3
@@ -1191,6 +1190,9 @@ attributeCalc:
 		DEC LoopCount
 		BPL attributeLoop
 	RTS
+
+ntAddrHiTbl:
+	.byte	$27,	$23
 .endproc
 
 
