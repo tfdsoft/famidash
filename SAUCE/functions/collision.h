@@ -132,7 +132,7 @@ void bg_coll_spikes() {
 			tmp2 = (uint8_t)(temp_y & 0x0f);
 			if (tmp2 >= 0x04 && tmp2 < 0x0c) {
 				tmp20f();
-				if (tmp2 >= 0x03 && tmp2 < 0x09) {
+				if (tmp2 >= 0x04 && tmp2 < 0x09) {
 					break;
 				}
 			}
@@ -172,7 +172,7 @@ void bg_coll_spikes() {
 void bg_coll_floor_spikes() { // used just for checking ground spikes on the floor
 	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1); // automatically only the low byte
 
-		commonly_stored_routine_2();
+	commonly_stored_routine_2();
 
 	for (tmp8 = 0; tmp8 < 2; tmp8++) {
 		bg_collision_sub();
@@ -848,13 +848,13 @@ void bg_coll_death() {
 void commonly_used_store() {
 		storeWordSeparately(
 			add_scroll_y(
-				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 1, scroll_y
+				Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + Generic.height - 2, scroll_y
 			), temp_y, temp_room);
 }			
 void commonly_stored_routine_2() {
 	storeWordSeparately(
 		add_scroll_y(
-			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 1),
+			Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 2),
 			scroll_y
 		), temp_y, temp_room);
 }		
