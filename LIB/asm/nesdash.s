@@ -1203,156 +1203,174 @@ ntAddrHiTbl:
 
 .export draw_screen_UD_tiles
 .proc draw_screen_UD_tiles
-TileWriteSize = (16*4)+2+1
+	scroll_direction = tmp1
+	column_idx = tmp2
+	loop_count = tmp3
 
-start:
-	LDA	_scroll_y				;
-	SEC							;
-	SBC	old_draw_scroll_y		;
-	STA	tmp1					;	XY = scroll_y - old_draw_scroll_y
-	LDA	_scroll_y+1				;
-	SBC	old_draw_scroll_y+1		;
-	TAY							;__
+	new_seam_pos = ptr1
+	this_seam_pos = ptr2
+	collmap_ptr = ptr3
 
-	ORA	tmp1
-	BNE	calc_new_seam_pos
+	TileWriteSize = (16*4)+2+1
 
-	TAX		;	A is 0
-	RTS		;__
+	start:
+		LDA	_scroll_y				;
+		SEC							;
+		SBC	old_draw_scroll_y		;
+		STA	tmp1					;	XY = scroll_y - old_draw_scroll_y
+		LDA	_scroll_y+1				;
+		SBC	old_draw_scroll_y+1		;
+		TAY							;__
 
-calc_new_seam_pos:
-	@start:
-		LDA	#$10
-		STA	sreg+0
-		LDA	seam_scroll_y
-		LDX	seam_scroll_y+1
-		CPY	#$00	;	Puts carry into X
-		BMI	@up		;__
-	
-	@down:
-		JSR	__add_scroll_y		;__	Calculate new seam position
-		JSR	@calc_diff			;__	Calculate difference
-		CMP	#$38				;
-		TXA						;	If the difference is less than
-		SBC	#$00				;	($78 - $40), we went too far
-		BCS	@fin				;__
-	
-	@ret0:		;
-		LDA	#0	;	Return 0
-		TAX		;	(nothing was done)
+		ORA	tmp1
+		BNE	calc_new_seam_pos
+
+		TAX		;	A is 0
 		RTS		;__
-	
-	@calc_diff:	;__	[Subroutine]
-		STA	ptr1+0				;	Store new seam position
-		STX	ptr1+1				;__
-		STA	sreg+0				;
-		STX	sreg+1				;	Calculate the difference 
-		LDX	_scroll_y			;	between scroll_y and seam position
-		LDA	_scroll_y+1			;	(doesn't need to be linearized due to its indended range)
-		JMP	__sub_scroll_y_ext	;__
-	
-	@up:
-		JSR	__sub_scroll_y		;__	Calculate new seam position
-		JSR	@calc_diff			;__	Calculate difference
-		CMP	#$B8				;
-		TXA						;	If the difference is more than
-		SBC	#$00				;	($78 + $40), we went too far
-		BCS	@ret0				;__
-	
-	@fin:
-		LDA	_scroll_y
-		LDY	_scroll_y+1
-		STA	old_draw_scroll_y
-		STY	old_draw_scroll_y+1
 
-		LDA	ptr1
-		LDY	ptr1+1
-		STA	seam_scroll_y
-		STY	seam_scroll_y+1
-		CPY	#$02				;	If no seam, exit early
-		BCS	@ret0				;__
+	calc_new_seam_pos:
+		@start:
+			LDA	#$10
+			STA	sreg+0
+			LDA	seam_scroll_y
+			LDX	seam_scroll_y+1
+			CPY	#$00	;	Puts carry into X
+			BMI	@up		;__
+		
+		@down:
+			JSR	__add_scroll_y		;__	Calculate new seam position
+			STA	this_seam_pos+0		;	Store new seam position
+			STX	this_seam_pos+1		;__
+			JSR	@calc_diff			;__	Calculate difference
+			CMP	#$38				;
+			TXA						;	If the difference is less than
+			LDX	#2					;	($78 - $40), we went too far
+			SBC	#$00				;	Also load the scrolling direction offset
+			BCS	@fin				;__
+		
+		@ret0:		;
+			LDA	#0	;	Return 0
+			TAX		;	(nothing was done)
+			RTS		;__
+		
+		@calc_diff:	;__	[Subroutine]
+			STA	new_seam_pos		;	Store new seam position
+			STX	new_seam_pos+1		;__
+			STA	sreg+0				;
+			STX	sreg+1				;	Calculate the difference 
+			LDX	_scroll_y			;	between scroll_y and seam position
+			LDA	_scroll_y+1			;	(doesn't need to be linearized due to its indended range)
+			JMP	__sub_scroll_y_ext	;__
+		
+		@up:
+			STA	this_seam_pos+0		;	Store old seam position
+			STX	this_seam_pos+1		;__
+			JSR	__sub_scroll_y		;__	Calculate new seam position
+			JSR	@calc_diff			;__	Calculate difference
+			CMP	#$B8				;
+			TXA						;	If the difference is more than
+			LDX	#0					;	($78 + $40), we went too far
+			SBC	#$00				;	Also load scrolling direction offset
+			BCS	@ret0				;__
+		
+		@fin:
+			STX	scroll_direction
 
-start_writing:
-	
+			LDA	_scroll_y
+			LDY	_scroll_y+1
+			STA	old_draw_scroll_y
+			STY	old_draw_scroll_y+1
 
-	
-	; 2 scenarios: one write 32 tiles long, or 4 writes, 16-x and x tiles long each (thanks jrowe screen extension)
-	; Currently only the first one is implemented, くそくらえ
+			LDA	new_seam_pos
+			LDY	new_seam_pos+1
+			STA	seam_scroll_y
+			STY	seam_scroll_y+1
 
-	@get_collmap_ptr:
-		;	YA contains	the seam_scroll_y, Carry is clear
-		AND	#$F0			;	Get low byte
-		STA	ptr1			;__	(none of these affect the carry)
-		TYA					;
-		ADC	#>collMap0		;	Get high byte
-		STA	ptr1+1			;__
+			LDY	this_seam_pos+1
+			CPY	#$02				;	If no seam, exit early
+			BCS	@ret0				;__
 
-	LDX	VRAM_INDEX
-	@shift_addr:
-		LDA	seam_scroll_y	;
-		AND	#$F8			;__	Get bits: hhll l000
-		ASL					;	Double 8-bit left shift
-		ADC	#$80			;	to shift the mm bits to the high byte
-		ROL					;__	to get lll0 00hh
-	@store_low:
-		TAY					;__	Tmp storage
-		AND	#$E0			;	Store the low byte for X=0
-		STA	VRAM_BUF+1,	X	;__
-	@store_high:
-		LDA	_scroll_x+1		;	Thanks jroweboy
-		LSR					;__
-		TYA					;	These don't affect carry
-		AND	#$03			;__
-		BCS	:+				;	Get X of nametable
-			ORA	#$04		;__
-		:	ORA	#$20|$40	;__	Get valid nametable addr with horizontal seq update
-		LDY	seam_scroll_y+1	;
-		BEQ	:+				;	Get Y of nametable
-			ORA	#$08		;__
-		:	STA	VRAM_BUF+0,X;__	Store the high byte of nametable addr
-	@store_length:
-		LDA	#64				;	Store length
-		STA	VRAM_BUF+2,	X	;__
-	@store_finish:
-		LDA	#$FF
-		STA	VRAM_BUF+TileWriteSize,	X
+	start_writing:
+		
 
-writingLoopSingle:
-	ColumnIdx = tmp1
-	LoopCount = tmp2
-	@start:
-		LDA	#$00
-		STA	ColumnIdx
-		LDA	#$10
-		STA	LoopCount
-	@loop:
-		LDY	ColumnIdx	;
-		LDA	(ptr1),	Y	;	Get metatile
-		TAY				;__
+		
+		; 2 scenarios: one write 32 tiles long, or 4 writes, 16-x and x tiles long each (thanks jrowe screen extension)
+		; Currently only the first one is implemented, くそくらえ
 
-		LDA	metatiles_top_left,	Y	;
-		STA	VRAM_BUF+3+0,	X		;
-		LDA	metatiles_top_right,Y	;
-		STA	VRAM_BUF+3+1,	X		;	Get and store the tiles
-		LDA	metatiles_bot_left,	Y	;	into the VRAM buffer
-		STA	VRAM_BUF+3+32,	X		;
-		LDA	metatiles_bot_right,Y	;
-		STA	VRAM_BUF+3+33,	X		;__
+		@get_collmap_ptr:
+			;	Y contains the >seam_scroll_y, Carry is clear
+			LDA this_seam_pos	;
+			AND	#$F0			;	Get low byte
+			STA	collmap_ptr		;__	(none of these affect the carry)
+			TYA					;
+			ADC	scroll_direction;
+			ORA	#>collMap0		;	Get high byte
+			STA	collmap_ptr+1	;__
 
-		INX
-		INX
-		INC	ColumnIdx
-		DEC	LoopCount
-		BNE	@loop
+		LDX	VRAM_INDEX
+		@shift_addr:
+			LDA	this_seam_pos	;
+			AND	#$F8			;__	Get bits: hhll l000
+			ASL					;	Double 8-bit left shift
+			ADC	#$80			;	to shift the mm bits to the high byte
+			ROL					;__	to get lll0 00hh
+		@store_low:
+			TAY					;__	Tmp storage
+			AND	#$E0			;	Store the low byte for X=0
+			STA	VRAM_BUF+1,	X	;__
+		@store_high:
+			LDA	_scroll_x+1		;	Thanks jroweboy
+			LSR					;__
+			TYA					;	These don't affect carry
+			AND	#$03			;__
+			BCS	:+				;	Get X of nametable
+				ORA	#$04		;__
+			:	ORA	#$20|$40	;__	Get valid nametable addr with horizontal seq update
+			LDY	this_seam_pos+1	;
+			BEQ	:+				;	Get Y of nametable
+				ORA	#$08		;__
+			:	STA	VRAM_BUF+0,X;__	Store the high byte of nametable addr
+		@store_length:
+			LDA	#64				;	Store length
+			STA	VRAM_BUF+2,	X	;__
+		@store_finish:
+			LDA	#$FF
+			STA	VRAM_BUF+TileWriteSize,	X
 
-	LDA	VRAM_INDEX
-	CLC
-	ADC	#TileWriteSize
-	STA	VRAM_INDEX
+	writingLoopSingle:
+		@start:
+			LDA	#$00
+			STA	column_idx
+			LDA	#$10
+			STA	loop_count
+		@loop:
+			LDY	column_idx			;
+			LDA	(collmap_ptr),	Y	;	Get metatile
+			TAY						;__
 
-	; TODO: parallax lmao
+			LDA	metatiles_top_left,	Y	;
+			STA	VRAM_BUF+3+0,	X		;
+			LDA	metatiles_top_right,Y	;
+			STA	VRAM_BUF+3+1,	X		;	Get and store the tiles
+			LDA	metatiles_bot_left,	Y	;	into the VRAM buffer
+			STA	VRAM_BUF+3+32,	X		;
+			LDA	metatiles_bot_right,Y	;
+			STA	VRAM_BUF+3+33,	X		;__
 
-	RTS
+			INX
+			INX
+			INC	column_idx
+			DEC	loop_count
+			BNE	@loop
+
+		LDA	VRAM_INDEX
+		CLC
+		ADC	#TileWriteSize
+		STA	VRAM_INDEX
+
+		; TODO: parallax lmao
+
+		RTS
 
 .endproc
 
