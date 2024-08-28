@@ -258,8 +258,6 @@ int16_t player_vel_x[2];
 int16_t player_vel_y[2];
 uint8_t player_gravity[2];
 
-
-uint8_t rld_column;
 uint8_t long_temp_x;
 
 uint8_t kandokidshack;
