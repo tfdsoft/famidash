@@ -856,22 +856,15 @@ void state_menu() {
 	ppu_wait_nmi();
 	tmp7 = rand8() & 1;
 	switch (menuselection) {
+		normalorcommlevels = 1;		
 		case 0x00:
+			normalorcommlevels = 0;
+			// fall through lmao
+		case 0x01: 
 			POKE(0x2005, 0x00);
 			POKE(0x2005, 0x00);
 			mmc3_disable_irq(); // reset scroll before playing
 			kandowatchesyousleep = 1; 
-			normalorcommlevels = 0;			
-			if(!tmp7) crossPRGBankJump8(playPCM, 1); 
-			else crossPRGBankJump8(playPCM, 0);  
-			levelselection(); 
-			return;
-		case 0x01: //sfx_play(sfx_invalid, 0); return;
-			POKE(0x2005, 0x00);
-			POKE(0x2005, 0x00);
-			mmc3_disable_irq(); // reset scroll before playing
-			kandowatchesyousleep = 1; 
-			normalorcommlevels = 1;
 			if(!tmp7) crossPRGBankJump8(playPCM, 1); 
 			else crossPRGBankJump8(playPCM, 0);  
 			levelselection(); 
