@@ -24,7 +24,7 @@ The general principle is: fork it, change it, push it, open a PR, get it merged 
 ## socials
 
 - https://wetdry.world/@famidash
-- https://twitter.com/TeamFamidash
+- https://twitter.com/TFDSoft
 - https://discord.gg/PCbwQaZs8K
 
 ## credits (core team only)
