@@ -361,20 +361,19 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
     .export _write_irq_table
 
 
-    ;edit_irq_table:
-    ;_edit_irq_table:
-    ;    ; a = byte
-    ;    ; x = offset
-    ;
-    ;    ; increment the counter
-    ;    ldy _irqTableIdx
-    ;    cpy #$20
-    ;    bcs @joever ; is the counter >=$20?
-    ;    iny
-    ;    sty _irqTableIdx
-    ;    
-    ;    sta _irqTable, x ; if not, add the byte
-    ;@joever:
-    ;    rts
-    ;.export _edit_irq_table
+.segment "CODE"
+    edit_irq_table:
+    __edit_irq_table:
+       ; a = byte
+       ; x = offset
+    
+       ; increment the counter
+       ldy _irqTableIdx
+       cpy #$20
+       bcs @joever ; is the counter >=$20?
+      
+       sta _irqTable, x ; if not, add the byte
+    @joever:
+       rts
+    .export __edit_irq_table
     
