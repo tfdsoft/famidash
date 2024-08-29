@@ -1,4 +1,4 @@
-extern unsigned char scroll_count;
+extern unsigned char drawing_frame;
 extern unsigned char* PARALLAX_CHR;
 
 void reset_level(void) {
@@ -44,7 +44,7 @@ void reset_level(void) {
     oam_clear();
     ppu_off(); // reset the level when you get to this point, and change this later
     scroll_x = 0;
-    scroll_count = 0;
+    drawing_frame = 0;
     scroll_y = 0x2EF;
     seam_scroll_y = (0x2EF - 0x78); // [temp]
     set_scroll_x(scroll_x);

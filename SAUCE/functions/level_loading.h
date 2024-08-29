@@ -51,7 +51,7 @@ void increase_parallax_scroll_column() {
 }
 
 #pragma code-name(push, "CODE_2")
-extern unsigned char scroll_count;
+extern unsigned char drawing_frame;
 void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// register unsigned char i;
 	#define i (*((uint8_t *)&ii))

@@ -85,7 +85,7 @@ sprite_data = _sprite_data
 	
 	; variables related to draw_screen
 	rld_column:			.res 1
-	scroll_count:		.res 1
+	drawing_frame:		.res 1
 	parallax_scroll_column: .res 1
 	parallax_scroll_column_start: .res 1
 
@@ -99,7 +99,7 @@ sprite_data = _sprite_data
 .export _min_scroll_y := min_scroll_y
 .export	_seam_scroll_y := seam_scroll_y
 
-.export _scroll_count := scroll_count
+.export _drawing_frame := drawing_frame
 .export _parallax_scroll_column := parallax_scroll_column
 .export _parallax_scroll_column_start := parallax_scroll_column_start
 
@@ -650,8 +650,15 @@ noSeam:
 ; Frame 2:
 ;   Attributes
 
+	frame_free = 0
+	frame_R_tile_1 = 1
+	frame_R_attr = 2
+	frame_UD_tiles_separate_1 = 3
+	frame_UD_attr_unified = 4
+	frame_UD_attr_separate = 5
+
 start:
-	LDX scroll_count		;	If something is being drawn, continue
+	LDX drawing_frame		;	If something is being drawn, continue
 	BNE switch				;__
 
 	LDA _scroll_x			;
@@ -663,7 +670,7 @@ start:
 	BEQ draw_screen_R_tiles	;__
 
 	;
-	;	The scroll_count is 0, but we don't have the right edge to update
+	;	The drawing_frame is 0, but we don't have the right edge to update
 	;	That means it is time to start updating the vertical scrolling seam
 	;__
 
@@ -680,11 +687,11 @@ jmpto_draw_screen_UD_tiles:
 	JMP draw_screen_UD_tiles_frame0
 
 switch:
-	DEX									;	if scroll_count == 1, do frame 1
+	DEX									;	if drawing_frame == 1, do frame 1
 	BEQ	draw_screen_R_tiles+dsrt_fr1O	;__	of drawing the right edge (right tile halves)
-	DEX									;	if scroll_count == 2, do frame 2
+	DEX									;	if drawing_frame == 2, do frame 2
 	jeq	draw_screen_R_attributes		;__ of drawing the right edge (attributes)
-	DEX									;	if scroll_count == 3, do frame 1
+	DEX									;	if drawing_frame == 3, do frame 1
 	jeq	draw_screen_UD_tiles_frame1		;__	of drawing the up/down tiles (copy the lower tiles)
 
 
@@ -708,8 +715,8 @@ switch:
 	
 
 frame0:
-	LDA #0
-	STA scroll_count
+	LDA #frame_free
+	STA drawing_frame
 	; Switch banks
 	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
 	JSR writeToCollisionMap
@@ -761,7 +768,7 @@ write_start:
 	TYA
 	AND #$0F
 	ASL         ;__
-	LDY scroll_count
+	LDY drawing_frame
 	BEQ :+
 		ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
 	:
@@ -790,7 +797,7 @@ write_start:
 	LDA #15 - 1
 	STA LoopCount
 	; Check if doing a left or right hand write
-	LDA scroll_count
+	LDA drawing_frame
 	AND #1
 	beq @LeftWrite
 		; Right side write
@@ -816,7 +823,7 @@ write_start:
 
 	; No need to do anything for the screen, as it always increments
 
-	LDA scroll_count
+	LDA drawing_frame
 	AND #1
 	beq @LeftWrite2
 		JSR right_tilewriteloop
@@ -872,7 +879,7 @@ write_start:
 		STA	VRAM_INDEX
 	.endif
 
-	INC scroll_count
+	INC drawing_frame
 
 	LDA #1
 	LDX #0
@@ -1123,8 +1130,8 @@ ntAddrHiTbl:
 	LDA #$FF
 	STA VRAM_BUF+AttrEnd,X
 	; Reset frame counter
-	LDX #0
-	STX scroll_count
+	LDX #frame_free
+	STX drawing_frame
 
 	LDA #1
 	RTS
@@ -1482,8 +1489,8 @@ ntAddrHiTbl:
 			BCC	@loop_AC	;__	Last carry instruction was ASL rld_column, which shifted out a 0
 
 		@fin:
-			LDA	#3
-			STA	scroll_count
+			LDA	#frame_UD_tiles_separate_1
+			STA	drawing_frame
 
 			; Current X is pointing at the last element - 3
 			INX
@@ -1530,8 +1537,8 @@ ntAddrHiTbl:
 		STA	VRAM_BUF+Separate2WritesSize, X
 
 		LDA	#1
-		LDX	#0
-		STX	scroll_count
+		LDX	#frame_free
+		STX	drawing_frame
 		RTS
 .endproc
 
