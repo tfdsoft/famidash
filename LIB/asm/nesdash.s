@@ -527,7 +527,7 @@ single_rle_byte:
 
 
 
-.segment "XCD_BANK_01"	; dep of: _draw_screen
+.segment "XCD_BANK_02"	; dep of: _draw_screen
 
 .proc writeToCollisionMap
 	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
@@ -579,7 +579,7 @@ single_rle_byte:
 
 
 ; [Not used in C]
-.segment "XCD_BANK_01"	; dep of: _draw_screen
+.segment "XCD_BANK_02"	; dep of: _draw_screen
 
 .import _scroll_y
 
@@ -632,7 +632,7 @@ noSeam:
 
 
 ; char draw_screen();
-.segment "XCD_BANK_01"
+.segment "XCD_BANK_02"
 
 .global dsrt_fr1O : zp
 

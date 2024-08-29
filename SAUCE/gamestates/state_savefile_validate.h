@@ -10,6 +10,9 @@ const char TEXT_new[] = "NEW";
 const char TEXT_old[] = "OLD";
 const char TEXT_version[] = "VERSION";
 
+const char TEXT_ismissingor[] = "IS MISSING OR";
+const char TEXT_corrupt[] = "CORRUPT";
+
 const char TEXT_a_createnew[] = "A: CREATE NEW SAVE";
 const char TEXT_b_load[] = "B: LOAD ANYWAY";
 
@@ -79,8 +82,8 @@ void state_savefile_validate(){
     if (SRAM_VALIDATE[0] != 0x13 || SRAM_VALIDATE[1] != 0x37 || SRAM_VALIDATE[2] != FLAG_SAVE_VER) {
         clear_nametable_a();
         savefile_display();
-        multi_vram_buffer_horz("IS MISSING OR", 13, NTADR_A(17,4));
-        multi_vram_buffer_horz("CORRUPT", 7, NTADR_A(2,5));
+        multi_vram_buffer_horz(TEXT_ismissingor, 13, NTADR_A(17,4));
+        multi_vram_buffer_horz(TEXT_corrupt, 7, NTADR_A(2,5));
 
         multi_vram_buffer_horz(TEXT_a_createnew, sizeof(TEXT_a_createnew)-1, NTADR_A(2,8));
         multi_vram_buffer_horz(TEXT_b_load, sizeof(TEXT_b_load)-1, NTADR_A(2,9));
