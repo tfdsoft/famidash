@@ -166,7 +166,7 @@ if compare:
 
 	items = list(old.items())
 	if sortalg != "d":
-		items.sort(key = lambda x : (x[0].strip("_")[0] if sortalg == "a" else x[1]), reverse = sortalg == "sd")
+		items.sort(key = lambda x : (x[0].strip("_") if sortalg == "a" else x[1]), reverse = sortalg == "sd")
 
 	for i in items:
 		newsize = new[i[0]]
@@ -184,7 +184,7 @@ if compare:
 else:
 	items = list(new.items())
 	if sortalg != "d":
-		items.sort(key = lambda x : (x[0].strip("_")[0] if sortalg == "a" else x[1]), reverse = sortalg == "sd")
+		items.sort(key = lambda x : (x[0].strip("_") if sortalg == "a" else x[1]), reverse = sortalg == "sd")
 
 
 	for i in items:
