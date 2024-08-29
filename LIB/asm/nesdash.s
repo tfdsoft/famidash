@@ -677,13 +677,15 @@ start:
 	RTS			;__
 
 jmpto_draw_screen_UD_tiles:
-	JMP draw_screen_UD_tiles
+	JMP draw_screen_UD_tiles_frame0
 
 switch:
 	DEX									;	if scroll_count == 1, do frame 1
 	BEQ	draw_screen_R_tiles+dsrt_fr1O	;__	of drawing the right edge (right tile halves)
 	DEX									;	if scroll_count == 2, do frame 2
 	jeq	draw_screen_R_attributes		;__ of drawing the right edge (attributes)
+	DEX									;	if scroll_count == 3, do frame 1
+	jeq	draw_screen_UD_tiles_frame1		;__	of drawing the up/down tiles (copy the lower tiles)
 
 
 ; [Subroutine]
@@ -1201,8 +1203,7 @@ ntAddrHiTbl:
 .import _no_parallax, _invisblocks
 .import _scroll_y
 
-.export draw_screen_UD_tiles
-.proc draw_screen_UD_tiles
+.proc draw_screen_UD_tiles_frame0
 	scroll_direction = tmp1
 	column_idx = tmp2
 	loop_count = tmp3
@@ -1213,11 +1214,11 @@ ntAddrHiTbl:
 
 	UnifiedTileWriteSize = (16*4)+2+1
 	Separate2WritesSize = (16*2)+((2+1)*2)	; Contains 32 tiles in total, in 2 writes
-	SepWrAOff = 0
-	SepWrBOff = 3
-	SepWrCOff = Separate2WritesSize
-	SepWrDOff = Separate2WritesSize+3
-	SepWriEnd = Separate2WritesSize+Separate2WritesSize
+	SepWrABuf = VRAM_BUF+0
+	SepWrBBuf = VRAM_BUF+3
+	SepWrCBuf = VRAM_BUF+Separate2WritesSize+0
+	SepWrDBuf = VRAM_BUF+Separate2WritesSize+3
+	SepWriEnd = Separate2WritesSize
 
 	start:
 		LDA	_scroll_y				;
@@ -1384,6 +1385,7 @@ ntAddrHiTbl:
 	write_separate:
 		;	Write architecture:
 		;	Wr:	| Wr. A (32-X)	| Wr. B (X)	| Wr. C (32-X)	| Wr. D (X)	|
+		;	Loc:|		VRAM buffer			|		Column buffer		|
 		;	NT:	|	NT. A/C		|	NT. B/D	|	NT. A/C		|	NT. B/D	|
 		;	Tile|			Upper			|			Lower			|
 		;	X:	|		X		|	  0		|		X		|	  0		|
@@ -1401,9 +1403,9 @@ ntAddrHiTbl:
 			LSR					;
 			ORA	rld_column		;	Add the X
 			ASL					;__
-			STA	VRAM_BUF+SepWrAOff+1,X	;__	Store write A
-			ORA	#$20					;	Get and
-			STA	VRAM_BUF+SepWrCOff+1,X	;__	store write C
+			STA	SepWrABuf+1,X	;__	Store write A
+			ORA	#$20			;	Get and
+			STA	SepWrCBuf+1,X	;__	store write C
 		@store_high:
 			LDA	_scroll_x+1		;	Thanks jroweboy
 			LSR					;__
@@ -1416,19 +1418,16 @@ ntAddrHiTbl:
 			BEQ	:+				;	Get Y of nametable
 				ORA	#$08		;__
 			:	PHA				;__	Push high byte of nametable addr for writes B & D
-			STA VRAM_BUF+SepWrAOff,X	;	Store the high byte
-			STA	VRAM_BUF+SepWrCOff,X	;__
+			STA SepWrABuf,	X	;	Store the high byte
+			STA	SepWrCBuf,	X	;__
 		@store_length:
-			LDA	#16			;
-			SEC				;
-			SBC	rld_column	;	Get length for writes A & C
-			STA	loop_count	;	Store as a counter to check for writes B & D
-			ASL				;__
-			STA	VRAM_BUF+SepWrAOff+2,X	;	Store it
-			STA	VRAM_BUF+SepWrCOff+2,X	;__
-		@store_finish:
-			LDA	#$FF
-			STA	VRAM_BUF+SepWriEnd,	X
+			LDA	#16				;
+			SEC					;
+			SBC	rld_column		;	Get length for writes A & C
+			STA	loop_count		;	Store as a counter to check for writes B & D
+			ASL					;__
+			STA	SepWrABuf+2,X	;	Store it
+			STA	SepWrCBuf+2,X	;__
 	write_separate_loop:
 		@setup_first_loop:
 			LDA	rld_column
@@ -1439,13 +1438,13 @@ ntAddrHiTbl:
 			TAY						;__
 
 			LDA	metatiles_top_left,	Y	;
-			STA	VRAM_BUF+3+SepWrAOff+0,X;
+			STA	SepWrABuf+3+0,	X		;
 			LDA	metatiles_top_right,Y	;
-			STA	VRAM_BUF+3+SepWrAOff+1,X;	Get and store the tiles
+			STA	SepWrABuf+3+1,	X		;	Get and store the tiles
 			LDA	metatiles_bot_left,	Y	;	into the VRAM buffer
-			STA	VRAM_BUF+3+SepWrCOff+0,X;
+			STA	SepWrCBuf+3+0,	X		;
 			LDA	metatiles_bot_right,Y	;
-			STA	VRAM_BUF+3+SepWrCOff+1,X;__
+			STA	SepWrCBuf+3+1,	X		;__
 
 			INX
 			INX
@@ -1460,21 +1459,21 @@ ntAddrHiTbl:
 			LDA	#$00
 			STA	column_idx
 
-			LDA	rld_column	;	Update loop count
-			STA	loop_count	;__
-			ASL							;
-			STA	VRAM_BUF+SepWrBOff+2,X	;	Store the length
-			STA	VRAM_BUF+SepWrDOff+2,X	;__
+			LDA	rld_column		;	Update loop count
+			STA	loop_count		;__
+			ASL					;
+			STA	SepWrBBuf+2,X	;	Store the length
+			STA	SepWrDBuf+2,X	;__
 
-			PLA				;	Invert the high byte's
-			EOR	#$04		;__	X of the nametable
-			STA	VRAM_BUF+SepWrBOff+0,X	;	Store the high nametable byte
-			STA	VRAM_BUF+SepWrDOff+0,X	;__
+			PLA					;	Invert the high byte's
+			EOR	#$04			;__	X of the nametable
+			STA	SepWrBBuf+0,X	;	Store the high nametable byte
+			STA	SepWrDBuf+0,X	;__
 
-			PLA							;
-			STA	VRAM_BUF+SepWrBOff+1,X	;	Store the low nametable byte
-			ORA	#$20					;
-			STA	VRAM_BUF+SepWrDOff+1,X	;__
+			PLA					;
+			STA	SepWrBBuf+1,X	;	Store the low nametable byte
+			ORA	#$20			;
+			STA	SepWrDBuf+1,X	;__
 
 			INX
 			INX
@@ -1483,11 +1482,57 @@ ntAddrHiTbl:
 			BCC	@loop_AC	;__	Last carry instruction was ASL rld_column, which shifted out a 0
 
 		@fin:
+			LDA	#3
+			STA	scroll_count
+
+			; Current X is pointing at the last element - 3
+			INX
+			INX
+			INX
+			STX	VRAM_INDEX
+			LDY	#Separate2WritesSize
+		@transfer_loop:
+			DEX
+			LDA	SepWrCBuf,	X
+			STA	columnBuffer-1,	Y
+			DEY
+			BNE	@transfer_loop
+
+			LDA	#$FF
+			STA	VRAM_BUF+Separate2WritesSize,	X
+
 			LDA	#1
 			LDX	#0
 			RTS
 
 
+.endproc
+
+
+.proc draw_screen_UD_tiles_frame1
+	Separate2WritesSize = (16*2)+((2+1)*2)	; Contains 32 tiles in total, in 2 writes
+	@start:
+		LDA	VRAM_INDEX
+		CLC
+		ADC	#Separate2WritesSize
+		STA	VRAM_INDEX
+		TAX
+
+		LDY	#Separate2WritesSize
+	@loop:
+		DEX
+		LDA	columnBuffer-1,	Y
+		STA	VRAM_BUF,	X
+		DEY
+		BNE	@loop
+	@fin:
+		LDA	#$FF
+		STA	VRAM_BUF+Separate2WritesSize, X
+
+		LDA	#1
+		LDX	#0
+		STX	scroll_count
+		RTS
 .endproc
 
 .endproc
