@@ -864,7 +864,7 @@ void tmp20f() {
 }
 
 void commonly_used_death_check() {
-	if ((temp_x & 0x0f) >= 0x04 && (temp_x & 0x0f) < 0x09) {
+	if ((uint8_t)(temp_x & 0x0f) >= 0x04 && (uint8_t)(temp_x & 0x0f) < 0x09) {
 		cube_data[currplayer] = 1;
 	}
 }					
