@@ -2,36 +2,6 @@
 #pragma data-name(push, "XCD_BANK_02") 
 #pragma rodata-name(push, "XCD_BANK_02")
 
-#include "defines/bg_charmap.h"
-const char TEXT_iamgoingtocommitseveralwarcrimesifcc65doesntstopbeingapieceofshit[] = "YOUR SAVE FILE";
-
-const char TEXT_isfora[] = "IS FOR A";
-const char TEXT_new[] = "NEW";
-const char TEXT_old[] = "OLD";
-const char TEXT_version[] = "VERSION";
-
-const char TEXT_ismissingor[] = "IS MISSING OR";
-const char TEXT_corrupt[] = "CORRUPT";
-
-const char TEXT_a_createnew[] = "A: CREATE NEW SAVE";
-const char TEXT_b_load[] = "B: LOAD ANYWAY";
-
-const char TEXT_exitgame1[] = "IT IS NOW SAFE TO TURN OFF";
-const char TEXT_exitgame2[] = "YOUR SYSTEM";
-const char TEXT_exitgame3[] = "PLEASE PRESS B ON THE TITLE";
-const char TEXT_exitgame4[] = "BEFORE POWERING OFF";
-
-void savefile_display(){
-    multi_vram_buffer_horz(TEXT_iamgoingtocommitseveralwarcrimesifcc65doesntstopbeingapieceofshit, sizeof(TEXT_iamgoingtocommitseveralwarcrimesifcc65doesntstopbeingapieceofshit)-1, NTADR_A(2,4));
-}
-
-void clear_nametable_a(){
-    vram_adr(NTADR_A(0,0));
-    vram_fill(0xFF, 0x3C0);
-    vram_adr(NTADR_A(0,30));
-    vram_fill(0x00, 0x40);
-}
-
 void savefile_reset_check_loop(){
     do {
         pad_poll_both();
@@ -48,46 +18,28 @@ void state_savefile_validate(){
     
     mmc3_disable_irq();
     ppu_off();
-    pal_bg(splashMenu);
-    pal_col(0x00,0x0f);
-    pal_col(0x02, 0x10);
     set_scroll_x(0);
     ppu_wait_nmi();
-    pal_bright(4);
+    pal_bright(0);
 
 
 
     // if save file version is incorrect //
     if ((SRAM_VALIDATE[2] != FLAG_SAVE_VER) && SRAM_VALIDATE[2] != 0x00) {
-        clear_nametable_a();
-        savefile_display();
-        multi_vram_buffer_horz(TEXT_isfora, sizeof(TEXT_isfora)-1, NTADR_A(17,4));
-        multi_vram_buffer_horz("ER", 2, NTADR_A(5,5));
-        if (SRAM_VALIDATE[2] > FLAG_SAVE_VER) multi_vram_buffer_horz(TEXT_new, sizeof(TEXT_new)-1, NTADR_A(2,5));
-        else {
-            one_vram_buffer('N', NTADR_A(25,4));
-            multi_vram_buffer_horz(TEXT_old, sizeof(TEXT_old)-1, NTADR_A(2,5));
-        }
-        multi_vram_buffer_horz(TEXT_version, sizeof(TEXT_version)-1, NTADR_A(8,5));
-
-        multi_vram_buffer_horz(TEXT_a_createnew, sizeof(TEXT_a_createnew)-1, NTADR_A(2,8));
-        multi_vram_buffer_horz(TEXT_b_load, sizeof(TEXT_b_load)-1, NTADR_A(2,9));
-
+        if (SRAM_VALIDATE[2] > FLAG_SAVE_VER) include_nested_dialog_string(dialogBox_newer);
+        else include_nested_dialog_string(dialogBox_nolder);
+        include_nested_dialog_string(dialogBox_wrongSaveFileVersion);
+        draw_dialog_box(dialogBox_saveIssues);
         ppu_on_all();
+        pal_fade_to(0,4);
 
         savefile_reset_check_loop();
     }
 
     // if header is wrong //
     if (SRAM_VALIDATE[0] != 0x13 || SRAM_VALIDATE[1] != 0x37 || SRAM_VALIDATE[2] != FLAG_SAVE_VER) {
-        clear_nametable_a();
-        savefile_display();
-        multi_vram_buffer_horz(TEXT_ismissingor, 13, NTADR_A(17,4));
-        multi_vram_buffer_horz(TEXT_corrupt, 7, NTADR_A(2,5));
-
-        multi_vram_buffer_horz(TEXT_a_createnew, sizeof(TEXT_a_createnew)-1, NTADR_A(2,8));
-        multi_vram_buffer_horz(TEXT_b_load, sizeof(TEXT_b_load)-1, NTADR_A(2,9));
-        
+        include_nested_dialog_string(dialogBox_saveFileMissingCorrupt);
+        draw_dialog_box(dialogBox_saveIssues);
         ppu_on_all();
         pal_fade_to(0,4);
         
