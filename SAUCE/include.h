@@ -48,6 +48,7 @@
 #include "LEVELS/levellist.h"    // level order goes here
 #pragma rodata-name (pop)
 
+#include "defines/dialogbox.h"
 
 
 

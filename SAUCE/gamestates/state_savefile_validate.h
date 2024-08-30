@@ -97,11 +97,10 @@ void state_savefile_validate(){
     // if poweroff check is not zero //
     if (poweroffcheck) {
         ppu_off();
-        clear_nametable_a();
-        multi_vram_buffer_horz(TEXT_exitgame3, sizeof(TEXT_exitgame3)-1, NTADR_A(2,13));
-        multi_vram_buffer_horz(TEXT_exitgame4, sizeof(TEXT_exitgame4)-1, NTADR_A(6,14));
-        multi_vram_buffer_horz(TEXT_exitgame2, sizeof(TEXT_exitgame2)-1, NTADR_A(10,15));
+        pal_bright(0);
+        draw_dialog_box(dialogBox_pleasePressB);
         ppu_on_all();
+        pal_fade_to(0,4);
 
         do {
             ppu_wait_nmi();

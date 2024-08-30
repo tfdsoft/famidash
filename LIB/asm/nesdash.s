@@ -3633,3 +3633,150 @@ bank:
 
 		jmp	__one_vram_buffer
 .endproc
+
+
+; void draw_dialog_box(const char * data);
+.segment "XCD_BANK_02"
+
+.import popax	; Unfortunately
+.import _paletteSettings
+.import _dialogbox_base_nametable
+
+.export _draw_dialog_box
+.proc _draw_dialog_box
+	dataPtr = ptr1
+	vramPtr = ptr2
+
+start:
+	sta	dataPtr						;	Store the data pointer
+	stx	dataPtr+1					;__
+
+	ldy	#$20						;
+	sty	PPU_ADDR					;
+	ldy	#$00						;
+	sty	PPU_ADDR					;	Unrle the base dialog box to nametable A
+	lda	#<_dialogbox_base_nametable	;
+	ldx	#>_dialogbox_base_nametable	;
+	jsr	_vram_unrle					;__
+
+	lda	#<_paletteSettings			;
+	ldx	#>_paletteSettings			;	Load the correct palette
+	jsr	_pal_bg						;__
+
+	lda	#$20
+	sta	vramPtr+1
+	sta	PPU_ADDR
+	lda	#$C5
+	sta	vramPtr
+	sta	PPU_ADDR
+
+	ldy	dataPtr
+	lda	#$00
+	sta	dataPtr
+
+get_symbol:
+	lda	(dataPtr),	y
+	iny
+	bne :+
+		inc	dataPtr+1
+	:
+	cmp	#$10
+	bcc	control_code
+regular_symbol:
+	sta	PPU_DATA
+	inc	vramPtr
+	bne	get_symbol
+	inc	vramPtr+1
+	bne	get_symbol	; = BRA
+
+control_code:
+	cmp	#$0A	;	\n - newline
+	beq	newline	;__
+	cmp	#$09	;	\t - skip some chars forward
+	jeq	space	;__
+	cmp	#$08	;	\b - fill line with black space 
+	jeq	black_line
+	cmp	#$07	;	\a - include a substring
+	jeq	recurse
+	rts
+
+newline:
+	lda	vramPtr
+	ldx	vramPtr+1
+	adc	#$20-1		;__	Carry is set
+	and	#$E0
+	ora	#$05
+	sta	vramPtr
+	bcc	:+
+		inx
+		stx	vramPtr+1
+	:
+	stx	PPU_ADDR
+	sta	PPU_ADDR
+	bne	get_symbol
+
+space:
+	lda	(dataPtr), y	;
+	iny
+	bne	:+
+		inc	dataPtr
+	:
+	
+	ldx	vramPtr+1
+
+	clc
+	adc	vramPtr
+	bcc	:+
+		inx
+		stx	vramPtr+1
+	:
+	stx	PPU_ADDR
+	sta	vramPtr
+	sta	PPU_ADDR
+	jmp	get_symbol
+
+black_line:
+	ldx	vramPtr+1
+	lda	vramPtr
+	and	#$E0
+	ora	#$05
+	sta	vramPtr
+
+	stx	PPU_ADDR
+	sta	PPU_ADDR
+
+	ldx	#22
+	lda	#$FE
+
+	@loop:
+		sta	PPU_DATA
+		dex
+		bne	@loop
+
+	ldx	vramPtr+1
+	lda	vramPtr
+	stx	PPU_ADDR
+	sta	PPU_ADDR
+	jmp	get_symbol
+
+recurse:
+	lda	dataPtr+1	;
+	pha				;	Push the old data
+	tya				;	to hardware stack
+	pha				;__
+
+	jsr	popax		;	Pop the new
+	tay				;	data from
+	stx	dataPtr+1	;__	software stack
+
+	jsr	get_symbol
+
+	pla				;
+	tay				;	Pop the old data
+	pla				;	from hardware stack
+	sta	dataPtr+1	;__
+
+	jmp	get_symbol
+
+	
+.endproc
