@@ -470,8 +470,6 @@ const unsigned char xbgmtext1_size[] = {
 
 #include "defines/bg_charmap.h"
 const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
-#include "defines/mainmenu_charmap3.h"
-
 
 void bgmtest() {
 	song = 0;
