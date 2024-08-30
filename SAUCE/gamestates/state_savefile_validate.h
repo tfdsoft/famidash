@@ -98,6 +98,7 @@ void state_savefile_validate(){
     if (poweroffcheck) {
         ppu_off();
         pal_bright(0);
+        include_nested_dialog_string(dialogBox_saveFileSafetyHeader);
         draw_dialog_box(dialogBox_pleasePressB);
         ppu_on_all();
         pal_fade_to(0,4);
@@ -119,34 +120,23 @@ void state_savefile_validate(){
 
 void state_exit(){
     poweroffcheck = 0x00;
+
+    pal_fade_to(4, 0);
+    mmc3_disable_irq();
     // Disable SRAM write
 	POKE(0xA001, 0xC0);
-
     ppu_off();
-    pal_bg(splashMenu);
-    
-    pal_bright(0);
-    mmc3_disable_irq();
-
-    vram_adr(NTADR_A(0,0));
-    vram_fill(0xff, 0x3C0);
-    vram_fill(0x00, 0x40);
 
     famistudio_music_stop();
     music_update();
 
-    pal_col(0x00, 0x0f);
-    pal_col(0x02, 0x10);
-    
-
-    
-    multi_vram_buffer_horz(TEXT_exitgame1, sizeof(TEXT_exitgame1)-1, NTADR_A(3,14));
-    multi_vram_buffer_horz(TEXT_exitgame2, sizeof(TEXT_exitgame2)-1, NTADR_A(10,15));
+    include_nested_dialog_string(dialogBox_saveFileSafetyHeader);
+    draw_dialog_box(dialogBox_itIsNowSafe);
 
     set_scroll_x(0);
     set_scroll_y(0);
-    pal_bright(4);
     ppu_on_all();
+    pal_fade_to(0, 4);
     do {
         ppu_wait_nmi();
         pad_poll_both();

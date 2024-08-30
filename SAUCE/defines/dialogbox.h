@@ -21,7 +21,7 @@ const unsigned char dialogbox_base_nametable[240]={ // The base nametable for th
 #include "dialogbox_charmap.h"
 
 void draw_dialog_box(const char * data);
-#define include_nested_string(data) (__AX__ = data, __asm__("jsr pushax "))
+#define include_nested_dialog_string(data) (__AX__ = data, __asm__("jsr pushax "))
 
 // Horz size: 22
 
@@ -47,6 +47,9 @@ void draw_dialog_box(const char * data);
     \0 (automatically done by cc65) - End of string
 */ 
 
-const char dialogBox_pleasePressB[] = "\b\t\5SAVE\t\4FILE\n\n  please press b on\n\n   the title screen\n\n  before powering off\n\n\t\5your system\n\n\n\n  [$$$$$$$$$$$$$$$$]\n  $PRESS$ANY$BUTTON$\n  $$$TO$$CONTINUE$$$\n  {$$$$$$$$$$$$$$$$}";
+const char dialogBox_saveFileSafetyHeader[] = "$$SAVE$$FILE$$SAFETY$$\n\n";
+const char dialogBox_pleasePressB[] = "\a  please press b on\n\n   the title screen\n\n  before powering off\n\n\t\5your system\n\n\n\n\b  [\t\20]  \n  $PRESS$ANY$BUTTON$\n  $$$TO$$CONTINUE$$$\n\b  {\t\20}  ";
+const char dialogBox_itIsNowSafe[] = "\a\n  it is now safe to\n\n turn off your system\n\n\n\n\n\n\b  [\t\20]  \n  $$$$PRESS$B$TO$$$$\n  $$$$GO$BACK$TO$$$$\n  $THE$TITLE$SCREEN$\n\b  {\t\20}  ";
 
+#include "no_remap_charmap.h"
 #pragma rodata-name (pop)
