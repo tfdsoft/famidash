@@ -266,26 +266,23 @@ void cube_movement(void){
 }	
 
 
-void common_gravity_routine(void) {
+void common_gravity_routine() {
+	register int16_t tempvel;
+	register uint8_t temp_gr;
 	if (!dashing[currplayer]) {
-		if(!currplayer_gravity ? (currplayer_vel_y > (!mini ? fallspeed_big : fallspeed_mini)) : (currplayer_vel_y < (!mini ? -fallspeed_big : -fallspeed_mini))){
-				switch (gravity_mod) {
-					case 0: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big : gravity_big) : (!currplayer_gravity ? -gravity_mini : gravity_mini); break;
-					case 1: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big/3 : gravity_big/3) : (!currplayer_gravity ? -gravity_mini/3 : gravity_mini/3); break;
-					case 2: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big/2 : gravity_big/2) : (!currplayer_gravity ? -gravity_mini/2 : gravity_mini/2); break;
-					case 3: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big/3*2 : gravity_big/3*2) : (!currplayer_gravity ? -gravity_mini/3*2 : gravity_mini/3*2); break;
-					case 4: currplayer_vel_y += !mini ? (!currplayer_gravity ? -gravity_big*2 : gravity_big*2) : (!currplayer_gravity ? -gravity_mini*2 : gravity_mini*2); break;
-				};
+		temp_gr = currplayer_gravity;
+		if(!currplayer_gravity ? ((!mini ? fallspeed_big : fallspeed_mini) < currplayer_vel_y) : (-(!mini ? fallspeed_big : fallspeed_mini) > currplayer_vel_y)){
+			temp_gr = !temp_gr; 
 		}
-		else {
-				switch (gravity_mod) {
-					case 0: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big : gravity_big) : (currplayer_gravity ? -gravity_mini : gravity_mini); break;
-					case 1: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big/3 : gravity_big/3) : (currplayer_gravity ? -gravity_mini/3 : gravity_mini/3); break;
-					case 2: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big/2 : gravity_big/2) : (currplayer_gravity ? -gravity_mini/2 : gravity_mini/2); break;
-					case 3: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big/3*2 : gravity_big/3*2) : (currplayer_gravity ? -gravity_mini/3*2 : gravity_mini/3*2); break;
-					case 4: currplayer_vel_y += !mini ? (currplayer_gravity ? -gravity_big*2 : gravity_big*2) : (currplayer_gravity ? -gravity_mini*2 : gravity_mini*2); break;
-				};
-		}
+		tempvel = !mini ? (temp_gr ? -gravity_big : gravity_big) : (temp_gr ? -gravity_mini : gravity_mini);
+			switch (gravity_mod) {
+				case 0: break;
+				case 1: tempvel /= 3; break;
+				case 2: __AX__ = (tempvel); __AX__ /= 2; tempvel = __AX__; break;
+				case 3: tempvel = (tempvel / 3 * 2); break;
+				case 4: tempvel *= 2; break;
+			};
+		currplayer_vel_y += tempvel;
 		currplayer_y += currplayer_vel_y;
 	}
 	
