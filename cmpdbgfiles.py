@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys, argparse, pathlib
 
 def readDbgFile (filename : str, check : str) -> dict:

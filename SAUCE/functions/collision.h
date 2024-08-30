@@ -413,14 +413,15 @@ void set_slope_stuff() {
 	was_on_slope_counter = (gamemode == 6 ? 6 : 4);
 }
 
-char slope_LX22_stuff(char type) {
-	if ((uint8_t)tmp5 >= tmp4 + (gamemode == 6 ? 8 : 2)) {
+char _slope_LX22_stuff() {
+	if ((uint8_t)(tmp4 + (gamemode == 6 ? 8 : 2)) <= (uint8_t)tmp5) {
 		set_slope_stuff();
-		slope_type = type;
+		slope_type = xargs[0];
 		tmp8 = tmp5 - tmp4 - 5;
 		return 1;
 	} else return 0;
 }
+#define slope_LX22_stuff(type) (xargs[0] = type, _slope_LX22_stuff())
 /*
 	Clobbers:
 	tmp4, tmp7
