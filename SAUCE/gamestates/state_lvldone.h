@@ -185,7 +185,10 @@ void state_lvldone() {
 			top_scroll += 2;
 			scroll_y -= 4;
 			set_scroll_y(top_scroll);
-			if (top_scroll == 240) {
+			if (
+				(__A__ = fourth_byte(top_scroll) | third_byte(top_scroll),
+				__A__ |= high_byte(top_scroll),
+				__A__ == 0) && low_byte(top_scroll) == 240) {
 				set_scroll_x(0);
 				set_scroll_y(0x100);
 				current_state = 3;

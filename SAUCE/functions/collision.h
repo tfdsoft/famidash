@@ -333,7 +333,7 @@ char bg_side_coll_common() {
 	if (gamemode == 6) {
 		if (bg_coll_slope()) {
 			if (!dblocked[currplayer]) {
-				cube_data[currplayer] |= 1;
+				uint8_store(cube_data, currplayer, cube_data[currplayer] | 1);
 			} 
 		}	
 		dblocked[currplayer] = 0;
@@ -444,7 +444,7 @@ char bg_coll_slope() {
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y & 0x0f) ^ 0x0f;
 
-			if ((uint8_t)tmp4 >= tmp7 - (gamemode == 6 ? -5 : 3)) {
+			if ((uint8_t)((gamemode == 6 ? 5 : -3) + tmp7) <= (uint8_t)tmp4) {
 				set_slope_stuff();
 				slope_type = SLOPE_45DEG_DOWN_UD;
 				tmp8 = tmp4 - tmp7 - 3;
@@ -740,7 +740,7 @@ char bg_coll_U() {
 
 		COLL_CHECK_TOP
 
-		temp_x += 0x10 - (Generic.width >> 1); // automatically only the low byte
+		temp_x += 0x10; temp_x -= (Generic.width >> 1); // automatically only the low byte
 
 		COLL_CHECK_TOP
 	}
@@ -791,7 +791,7 @@ char bg_coll_D() {
 
 		COLL_CHECK_BOTTOM
 
-		temp_x += 0x10 - (Generic.width >> 1); // automatically only the low byte
+		temp_x += 0x10; temp_x -= (Generic.width >> 1); // automatically only the low byte
 
 		COLL_CHECK_BOTTOM
 	}

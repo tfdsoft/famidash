@@ -17,8 +17,8 @@ void reset_level(void) {
 			oam_clear_player();
 			
 			if (robotjumpframe[0] < 20) {
-				if (!retro_mode) oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, Explode_Sprites[robotjumpframe[0]]);
-				else oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, ExplodeR_Sprites[robotjumpframe[0]]);
+				if (!retro_mode) oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, Explode_Sprites[robotjumpframe[0] & 0x7F]);
+				else oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, ExplodeR_Sprites[robotjumpframe[0] & 0x7F]);
 				++robotjumpframe[0];
 			}
 			--tmp1;
@@ -32,8 +32,8 @@ void reset_level(void) {
 			music_update();
 			oam_clear_player();	
 			if (robotjumpframe[0] < 20) {
-				if (!retro_mode) oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, Explode_Sprites2[robotjumpframe[0]]);
-				else oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, ExplodeR_Sprites2[robotjumpframe[0]]);
+				if (!retro_mode) oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, Explode_Sprites2[robotjumpframe[0] & 0x7F]);
+				else oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, ExplodeR_Sprites2[robotjumpframe[0] & 0x7F]);
 				
 				++robotjumpframe[0];
 			}

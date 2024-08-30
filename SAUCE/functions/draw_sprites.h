@@ -46,9 +46,9 @@ void draw_sprites(void){
 
 	for (tmp9 = 0; tmp9 < MAX_FIREBALLS; tmp9++) {
 		if (jimsheatballalive[tmp9]) {
-			oam_meta_spr(jimsheatballx[tmp9], high_byte(jimsheatbally[tmp9]), Heat_Ball_Sprites[jimsheatballframe[tmp9]]);		
-			jimsheatballframe[tmp9] == 20 ? jimsheatballframe[tmp9] = 0 : jimsheatballframe[tmp9]++;
-			jimsheatballx[tmp9] == 0xFF ? jimsheatballalive[tmp9] = 0 : jimsheatballx[tmp9]++;
+			oam_meta_spr(jimsheatballx[tmp9 & 0x7F], idx16_hi_NOC(jimsheatbally, tmp9), Heat_Ball_Sprites[jimsheatballframe[tmp9] & 0x7F]);		
+			jimsheatballframe[tmp9] == 20 ? jimsheatballframe[tmp9] = 0 : uint8_inc(jimsheatballframe, tmp9);
+			jimsheatballx[tmp9 & 0x7F] == 0xFF ? jimsheatballalive[tmp9] = 0 : uint8_inc(jimsheatballx, tmp9);
 		}
 	}
 

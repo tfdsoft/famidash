@@ -185,6 +185,7 @@ end:
 
 .segment "RODATA_2"
 
+.export _shiftBy4table := shiftBy4table
 shiftBy4table:
 	.byte $00, $10, $20, $30
 	.byte $40, $50, $60, $70

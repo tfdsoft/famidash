@@ -164,6 +164,8 @@ void gray_line();
 // No line, possibly means that you are in v-blank.
 
 
+#define fourth_byte(a) *((uint8_t*)&a+3)
+#define third_byte(a) *((uint8_t*)&a+2)
 #define high_byte(a) *((uint8_t*)&a+1)
 #define low_byte(a) *((uint8_t*)&a)
 // for getting or modifying just 1 byte of an int

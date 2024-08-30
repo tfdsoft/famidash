@@ -237,6 +237,18 @@ void _display_attempt_counter (uint32_t args);
     __A__ = MSB(word), \
     __asm__("sta %v+1, y", arr))
 
+#define uint16_store_lobyte_NOC(arr, idx, byte) ( \
+	__A__ = idx<<1, \
+    __asm__("tay"), \
+	__A__ = byte, \
+	__asm__("sta %v,y", arr))
+
+#define uint16_store_hibyte_NOC(arr, idx, byte) ( \
+	__A__ = idx<<1, \
+    __asm__("tay"), \
+	__A__ = byte, \
+	__asm__("sta %v+1,y", arr))
+
 #define uint32_inc(long) (__asm__("inc %v+0 \n bne %s", long, __LINE__), __asm__("inc %v+1 \n bne %s", long, __LINE__), __asm__("inc %v+2 \n bne %s", long, __LINE__), __asm__("inc %v+3 \n  %s:", long, __LINE__))
 
 // store a word's high and low bytes into separate places
@@ -315,3 +327,7 @@ do func while(0); \
 
 #define sec_adc(a, b) (__A__ = (a), __asm__("sec \nadc %v", b), __A__)
 #define clc_sbc(a, b) (__A__ = (a), __asm__("clc \nsbc %v", b), __A__)
+
+extern uint8_t shiftBy4table[16];
+#define shlNibble4(nibble) (uint8_load(shiftBy4table, nibble))
+#define shlNibble12(nibble) (uint8_load(shiftBy4table, nibble), __AX__ <<= 8)

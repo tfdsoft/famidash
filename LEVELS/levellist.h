@@ -67,7 +67,7 @@ const uint8_t difficulty_pal_B[] ={
 	0x21,	// danger
 };
 
-const unsigned short DECOTYPE[] = {
+const uint8_t DECOTYPE[] = {
 	DECO1,
 	DECO1,
 	DECO1,

@@ -111,7 +111,7 @@ void cube_movement(void){
 					if (!mini) currplayer_vel_y = JUMP_VEL^0xFFFF; // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL^0xFFFF; // JUMP
 				}
-				if (gamemode == 8) { ninjajumps[currplayer]--; }
+				if (gamemode == 8) { uint8_dec(ninjajumps, currplayer); }
 			
 			}
 	} else if (gamemode == 4) {
@@ -201,10 +201,10 @@ void cube_movement(void){
 			for (tmp9 = 0; tmp9 < MAX_FIREBALLS; tmp9++) {
 				if (!jimsheatballalive[tmp9]) {
 					jimsheatballalive[tmp9] = 1;
-					if (pad[controllingplayer] & PAD_UP) jimsheatball_vel_y[tmp9] = (JIMSHEATBALL_JUMP_VEL / 4) * 7;
-					else jimsheatball_vel_y[tmp9] = JIMSHEATBALL_JUMP_VEL;
-					jimsheatballx[tmp9] = high_byte(old_x);
-					high_byte(jimsheatbally[tmp9]) = high_byte(player_y[0]);
+					if (pad[controllingplayer] & PAD_UP) uint16_store_NOC(jimsheatball_vel_y, tmp9, (JIMSHEATBALL_JUMP_VEL / 4) * 7);
+					else uint16_store_NOC(jimsheatball_vel_y, tmp9, JIMSHEATBALL_JUMP_VEL);
+					uint16_store_NOC(jimsheatballx, tmp9, high_byte(old_x));
+					uint16_store_hibyte_NOC(jimsheatbally, tmp9, high_byte(player_y[0]));
 					jimsheatballframe[tmp9] = 0;
 					break;
 				}
@@ -214,10 +214,10 @@ void cube_movement(void){
 	}
 // done with jims shit	
 // jims heat bomb:
-	player_x[currplayer] = currplayer_x;
-	player_y[currplayer] = currplayer_y;
-	player_vel_x[currplayer] = currplayer_vel_x;
-	player_vel_y[currplayer] = currplayer_vel_y;
+	uint16_store_NOC(player_x, currplayer, currplayer_x);
+	uint16_store_NOC(player_y, currplayer, currplayer_y);
+	uint16_store_NOC(player_vel_x, currplayer, currplayer_vel_x);
+	uint16_store_NOC(player_vel_y, currplayer, currplayer_vel_y);
 	player_gravity[currplayer] = currplayer_gravity;
 
 	if (retro_mode) {
@@ -225,10 +225,10 @@ void cube_movement(void){
 			if (jimsheatballalive[tmp9]) {
 
 					
-				currplayer_x = jimsheatballx[tmp9];
-				currplayer_y = jimsheatbally[tmp9];
-				currplayer_vel_x = jimsheatball_vel_x[tmp9];
-				currplayer_vel_y = jimsheatball_vel_y[tmp9];
+				currplayer_x = jimsheatballx[tmp9 & 0x7F];
+				currplayer_y = jimsheatbally[tmp9 & 0x7F];
+				currplayer_vel_x = jimsheatball_vel_x[tmp9 & 0x7F];
+				currplayer_vel_y = jimsheatball_vel_y[tmp9 & 0x7F];
 				currplayer_gravity = 0;
 
 				if(currplayer_vel_y > JIMSHEATBALL_MAX_FALLSPEED){
@@ -247,18 +247,18 @@ void cube_movement(void){
 					currplayer_vel_y = JIMSHEATBALL_JUMP_VEL;
 				}
 
-				if (cube_data[currplayer] & 1) { cube_data[currplayer] &= 2; }
-				jimsheatballx[tmp9] = currplayer_x;
-				jimsheatbally[tmp9] = currplayer_y;
-				jimsheatball_vel_x[tmp9] = currplayer_vel_x;
-				jimsheatball_vel_y[tmp9] = currplayer_vel_y;
+				if (cube_data[currplayer] & 1) { uint8_store(cube_data, currplayer, cube_data[currplayer] & 2); }
+				uint16_store_NOC(jimsheatballx, tmp9, currplayer_x);
+				uint16_store_NOC(jimsheatbally, tmp9, currplayer_y);
+				uint16_store_NOC(jimsheatball_vel_x, tmp9, currplayer_vel_x);
+				uint16_store_NOC(jimsheatball_vel_y, tmp9, currplayer_vel_y);
 			}	
 		}
 	}
-	currplayer_x = player_x[currplayer];
-	currplayer_y = player_y[currplayer];
-	currplayer_vel_x = player_vel_x[currplayer];
-	currplayer_vel_y = player_vel_y[currplayer];
+	currplayer_x = player_x[currplayer & 0x7F];
+	currplayer_y = player_y[currplayer & 0x7F];
+	currplayer_vel_x = player_vel_x[currplayer & 0x7F];
+	currplayer_vel_y = player_vel_y[currplayer & 0x7F];
 	currplayer_gravity = player_gravity[currplayer];
 	
 	Generic.x = high_byte(currplayer_x);
