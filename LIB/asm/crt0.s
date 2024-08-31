@@ -365,8 +365,10 @@ _GAME_CHR:
     .incbin "GRAPHICS/slopesA.chr" ; (14)
     .incbin "GRAPHICS/slopesA.chr" ; ()
    
+    ; todo: move this motherfucker and remove iconbanktable
     .incbin "GRAPHICS/bankicon00.chr" ; 1kb (16)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
+
     .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (18)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .incbin "GRAPHICS/bankgamemodesAretro.chr" ; 1kb (20)
@@ -375,14 +377,17 @@ _GAME_CHR:
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .incbin "GRAPHICS/bankgamemodesBretro.chr" ; 1kb (24)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
+
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (26) 
     .incbin "GRAPHICS/bankblank.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (28) 
     .incbin "GRAPHICS/bankblank2.chr" ; 1kb
+
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (30) 
     .incbin "GRAPHICS/bankblankcloud.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (32) 
     .incbin "GRAPHICS/bankblankcloud2.chr" ; 1kb
+    
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (34) 
     .incbin "GRAPHICS/bankblankfingerdash.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (36) 
@@ -391,61 +396,15 @@ _GAME_CHR:
     .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (38) 
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
-    .incbin "GRAPHICS/bankicon01.chr" ; 1kb (40) 
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon02.chr" ; 1kb (42)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon03.chr" ; 1kb (44)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon04.chr" ; 1kb (46)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon05.chr" ; 1kb (48)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon06.chr" ; 1kb (50)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon07.chr" ; 1kb (52)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon08.chr" ; 1kb (54)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon09.chr" ; 1kb (56)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0A.chr" ; 1kb (58)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0B.chr" ; 1kb (60)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0C.chr" ; 1kb (62)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0D.chr" ; 1kb (64)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0E.chr" ; 1kb (66)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankicon0F.chr" ; 1kb (68)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contest1.chr" ; 1kb (70)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contest2.chr" ; 1kb (72)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contest3.chr" ; 1kb (74)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contest4.chr" ; 1kb (76)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contest5.chr" ; 1kb (78)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contest6.chr" ; 1kb (80)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contest7.chr" ; 1kb (82)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contest8.chr" ; 1kb (84)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contest9.chr" ; 1kb (86)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contestA.chr" ; 1kb (88)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "fan icon collection/CONTEST WINNERS/contestB.chr" ; 1kb (90)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .repeat 15, I   ; banks 40 - 69
+        .incbin .sprintf("GRAPHICS/bankicon%02X.chr", I+1)  ; 1kb
+        .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .endrepeat
 
-
-
+    .repeat 11, I   ; banks 70 - 91
+        .incbin .sprintf("fan icon collection/CONTEST WINNERS/contest%1X.chr", I+1) ; 1kb
+        .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .endrepeat
 
     .incbin "GRAPHICS/banktriangle.chr" ; 1kb (92)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
@@ -455,7 +414,7 @@ _GAME_CHR:
     .incbin "GRAPHICS/menuicons.chr"    ; 4kb (98)
     .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (102)
 
-.segment "PARALLAXCHR"
+.segment "PARALLAXCHR"  ; banks 112 - 255
 .export _PARALLAX_CHR
 _PARALLAX_CHR:
 	.incbin "GRAPHICS/parallax.chr" ; 144kb
