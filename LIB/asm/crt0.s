@@ -364,9 +364,8 @@ _GAME_CHR:
     .incbin "GRAPHICS/SawbladesA.chr" ; (12)
     .incbin "GRAPHICS/slopesA.chr" ; (14)
     .incbin "GRAPHICS/slopesA.chr" ; ()
-   
-    ; todo: move this motherfucker and remove iconbanktable
-    .incbin "GRAPHICS/bankicon00.chr" ; 1kb (16)
+
+    .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (16) 
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
     .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (18)
@@ -387,17 +386,14 @@ _GAME_CHR:
     .incbin "GRAPHICS/bankblankcloud.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (32) 
     .incbin "GRAPHICS/bankblankcloud2.chr" ; 1kb
-    
+
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (34) 
     .incbin "GRAPHICS/bankblankfingerdash.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (36) 
     .incbin "GRAPHICS/bankblankfingerdash2.chr" ; 1kb
 
-    .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (38) 
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-
-    .repeat 15, I   ; banks 40 - 69
-        .incbin .sprintf("GRAPHICS/bankicon%02X.chr", I+1)  ; 1kb
+    .repeat 16, I   ; banks 38 - 69
+        .incbin .sprintf("GRAPHICS/bankicon%02X.chr", I)  ; 1kb
         .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .endrepeat
 
