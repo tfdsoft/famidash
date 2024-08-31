@@ -45,18 +45,23 @@ void draw_dialog_box(const char * data);
     \b  - Replaces the entire line with Black BG characters, rewinds to the beginning
     \n  - Jumps to the beginning of the next line
     \t  - Skip the next few characters, the byte right after this indicates the amount
+    \v  - Skip the next few lines and jump to the beginning, the byte right after this indicates the amount
     \0 (automatically done by cc65) - End of string
+
+    How to include arguments:
+    \a  - use include_nested_dialog_string(the ptr to the data). Since this is a stack, you need to include the stirngs in a reverse order
+    \t and \v - include the argument byte right after the control code itself. You can either do this in hex ("\0x10" or "\x10") or in octal ("\020" or "\20")
 */ 
 
-const char dialogBox_saveFileSafetyHeader[] = "$$SAVE$$FILE$$SAFETY$$\n\n";
-const char dialogBox_pleasePressB[] = "\a  please press b on\n\n   the title screen\n\n  before powering off\n\n\t\5your system\n\n\n\n\b  [\t\20]  \n  $PRESS$ANY$BUTTON$\n  $$$TO$$CONTINUE$$$\n\b  {\t\20}  ";
-const char dialogBox_itIsNowSafe[] = "\a\n  it is now safe to\n\n turn off your system\n\n\n\n\n\n\b  [\t\20]  \n  $$$$PRESS$B$TO$$$$\n  $$$$GO$BACK$TO$$$$\n  $THE$TITLE$SCREEN$\n\b  {\t\20}  ";
+const char dialogBox_saveFileSafetyHeader[] = "$$SAVE$$FILE$$SAFETY$$\v\2";
+const char dialogBox_pleasePressB[] = "\a  please press b on\v\2   the title screen\v\2  before powering off\v\2\t\5your system\v\4\b  [\t\20]  \n  $PRESS$ANY$BUTTON$\n  $$$TO$$CONTINUE$$$\n\b  {\t\20}  ";
+const char dialogBox_itIsNowSafe[] = "\a\n  it is now safe to\v\2 turn off your system\v\6\b  [\t\20]  \n  $$$$PRESS$B$TO$$$$\n  $$$$GO$BACK$TO$$$$\n  $THE$TITLE$SCREEN$\n\b  {\t\20}  ";
 
 const char dialogBox_wrongSaveFileVersion[] = " for a\a version";
 const char dialogBox_nolder[] = "n older";
 const char dialogBox_newer[] = " newer ";
 const char dialogBox_saveFileMissingCorrupt[] = "  missing or corrupt";
-const char dialogBox_saveIssues[] = "$$INVALID$$SAVE$FILE$$\n\n\n\n\n  your save  file is\n\n\a\n\n\n\n\n\n (A;$CREATE$NEW$SAVE)\n\n (B;$LOAD$ANYWAY$$$$)";
+const char dialogBox_saveIssues[] = "$$INVALID$$SAVE$FILE$$\v\5  your save  file is\v\2\a\v\6 (A;$CREATE$NEW$SAVE)\v\2 (B;$LOAD$ANYWAY$$$$)";
 
 #include "no_remap_charmap.h"
 #pragma rodata-name (pop)

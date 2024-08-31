@@ -3648,8 +3648,8 @@ bank:
 	vramPtr = ptr2
 
 start:
-	sta	dataPtr						;	Store the data pointer
-	stx	dataPtr+1					;__
+	sta	dataPtr			;	Store the data pointer
+	stx	dataPtr+1		;__
 
 	ldy	#$20						;
 	sty	PPU_ADDR					;
@@ -3659,46 +3659,49 @@ start:
 	ldx	#>_dialogbox_base_nametable	;
 	jsr	_vram_unrle					;__
 
-	lda	#<_paletteSettings			;
-	ldx	#>_paletteSettings			;	Load the correct palette
-	jsr	_pal_bg						;__
+	lda	#<_paletteSettings	;
+	ldx	#>_paletteSettings	;	Load the correct palette
+	jsr	_pal_bg				;__
 
-	lda	#$20
-	sta	vramPtr+1
-	sta	PPU_ADDR
-	lda	#$C5
-	sta	vramPtr
-	sta	PPU_ADDR
+	lda	#$20			;
+	sta	vramPtr+1		;
+	sta	PPU_ADDR		;	Store the upper left corner
+	lda	#$C5			;	as the VRAM address
+	sta	vramPtr			;
+	sta	PPU_ADDR		;__
 
-	ldy	dataPtr
-	lda	#$00
-	sta	dataPtr
+	ldy	dataPtr			;
+	lda	#$00			;	Index with Y
+	sta	dataPtr			;__
 
 get_symbol:
-	lda	(dataPtr),	y
-	iny
-	bne :+
-		inc	dataPtr+1
-	:
-	cmp	#$10
-	bcc	control_code
-regular_symbol:
-	sta	PPU_DATA
-	inc	vramPtr
-	bne	get_symbol
-	inc	vramPtr+1
-	bne	get_symbol	; = BRA
+	lda	(dataPtr),	y	;__	Load symbol
+	iny					;
+	bne :+				;	Increment data pointer
+		inc	dataPtr+1	;
+	:					;__
+	cmp	#$10			;	If the symbol < $10,
+	bcc	control_code	;__	it's a control code
+regular_symbol:			;	If it is not, store
+	sta	PPU_DATA		;__	the symbol to the PPU
+	inc	vramPtr			;
+	bne	get_symbol		;	Increment the VRAM ptr
+	inc	vramPtr+1		;
+	bne	get_symbol		;__ = BRA
 
 control_code:
-	cmp	#$0A	;	\n - newline
-	beq	newline	;__
-	cmp	#$09	;	\t - skip some chars forward
-	jeq	space	;__
-	cmp	#$08	;	\b - fill line with black space 
-	jeq	black_line
-	cmp	#$07	;	\a - include a substring
-	jeq	recurse
-	rts
+	sbc	#$0B-1		;__	Subtract maximum real control code, carry is clear
+	jeq	vert_skip	;__	\v - skip some lines down
+	tax				;
+	inx				;	\n - newline
+	beq	newline		;__
+	inx				;	\t - skip some chars forward
+	beq	space		;__
+	inx				;	\b - fill line with black space
+	beq	black_line	;__
+	inx				;	\a - include a substring
+	beq	recurse		;__
+	rts				;__	Any other control code terminates the routine
 
 newline:
 	lda	vramPtr
@@ -3719,7 +3722,7 @@ space:
 	lda	(dataPtr), y	;
 	iny
 	bne	:+
-		inc	dataPtr
+		inc	dataPtr+1
 	:
 	
 	ldx	vramPtr+1
@@ -3778,5 +3781,37 @@ recurse:
 
 	jmp	get_symbol
 
+vert_skip:
+	lda	(dataPtr), y	;
+	iny					;
+	bne	:+				;	Load amount of lines to skip
+		inc	dataPtr+1	;
+	:					;__
+
+	and	#$1F			;
+	cmp	#$10			;	Put bit 4 into tmp memory
+	rol	dataPtr			;__
+	and	#$0F			;
+	cmp	#$08			;	Put bit 3 into tmp memory
+	rol	dataPtr			;__
+	asl					;
+	tax					;	A <<= 5
+	lda	shiftBy4table,x	;__
+	
+	adc	vramPtr			;__	Carry is clear by the ASL
+	and	#$E0			;	Rewind to beginning of line
+	ora	#$05			;__	(does not affect carry)
+	tax					;__	Temp mem
+	lda	dataPtr			;	Add high byte
+	adc	vramPtr+1		;__
+	sta	PPU_ADDR		;	Store high byte
+	sta	vramPtr+1		;__	
+	stx	PPU_ADDR		;	Store low byte
+	stx	vramPtr			;__
+
+	ldx	#$00			;	Reset temp mem back to 0
+	stx	dataPtr			;__
+
+	jmp	get_symbol
 	
 .endproc
