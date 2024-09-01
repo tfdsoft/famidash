@@ -5,7 +5,7 @@ A work-in-progress demake of Geometry Dash for the NES using the MMC3 mapper.
 
 ## development builds
 
-You can find nightly dev builds in the Actions tab. Alternatively you can download them here: https://nightly.link/famidash/famidash/workflows/main/main/famidash.nes.zip
+You can find nightly dev builds in the Actions tab. Alternatively you can download them here: https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.nes.zip
 
 You can find the nightly kando branch builds here:
 
