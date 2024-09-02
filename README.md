@@ -47,5 +47,6 @@ The general principle is: fork it, change it, push it, open a PR, get it merged 
 |Zee_Scott|icons|
 |[StudsX](https://github.com/smbhacks)|ASM, music|
 |[jaezu](https://github.com/jaezudev)|maintainer, music|
+|cloud54|various music tracks and art|
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
