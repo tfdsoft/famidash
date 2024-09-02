@@ -1,4 +1,4 @@
-# Famidash
+![image](https://github.com/user-attachments/assets/ad35e664-ddb0-45d6-b716-8ff3e80df00b)
 ## about
 
 A demake of Geometry Dash for the NES using the MMC3 mapper.
