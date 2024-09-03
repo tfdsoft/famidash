@@ -142,15 +142,17 @@ void draw_sprites(void){
 	}
 	if ((forced_trails == 2 || trails == 2) && !dual && !twoplayer) {
 
+		tmp6 = currplayer_vel_x << 2;
+
 		tmpA = player_x[0];
 		tmpB = player_y[0];
 
-		high_byte(player_x[0]) -= 8;
+		high_byte(player_x[0]) -= high_byte(tmp6);
 		high_byte(player_y[0]) = player_old_posy[3];
 
 		drawplayerone();
 		
-		high_byte(player_x[0]) -= 8;
+		high_byte(player_x[0]) -= high_byte(tmp6);
 		high_byte(player_y[0]) = player_old_posy[6];
 
 		drawplayerone();
