@@ -215,6 +215,7 @@ const uint8_t lvlselect_irq_table[] = {
 void levelselection() {
 
 	if (normalorcommlevels) level = LEVEL_COUNT;
+	else if (level >= LEVEL_COUNT) level -= LEVEL_COUNT;
 	
 	mmc3_set_8kb_chr(MENUBANK);
 	pal_fade_to_withmusic(4,0);
