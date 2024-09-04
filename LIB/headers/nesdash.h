@@ -284,9 +284,9 @@ void state_sorrynothing();
 
 // For more than 16 bits use extra macros and shit
 // Naming convention: crossPRGBankJump<bitsIn>
-#define crossPRGBankJump0(sym, args) (__asm__("lda #<%v \n ldx #>%v \n ldy #<.bank(%v) \n jsr crossPRGBankJump ", sym, sym, sym), __asm__("lda ptr3 \n ldx ptr3+1"), __AX__)
-#define crossPRGBankJump8(sym, args) (__A__ = args, __asm__("sta ptr3 "), crossPRGBankJump0(sym, args))
-#define crossPRGBankJump16(sym, args) (__AX__ = args, __asm__("sta ptr3 \n stx ptr3+1"),crossPRGBankJump0(sym, args))
+#define crossPRGBankJump0(sym) (__asm__("lda #<%v \n ldx #>%v \n ldy #<.bank(%v) \n jsr crossPRGBankJump ", sym, sym, sym), __asm__("lda ptr3 \n ldx ptr3+1"), __AX__)
+#define crossPRGBankJump8(sym, args) (__A__ = args, __asm__("sta ptr3 "), crossPRGBankJump0(sym))
+#define crossPRGBankJump16(sym, args) (__AX__ = args, __asm__("sta ptr3 \n stx ptr3+1"),crossPRGBankJump0(sym))
 
 #define uint16SepArrLoad(sym, idx) (__A__ = idx, __asm__("tay \n lda %v, y \n ldx %v, y", sym##_lo, sym##_hi), __AX__)
 
@@ -322,6 +322,8 @@ do func while(0); \
 #define do_if_bit7_clr_mem(val, func) __A__ = val; do_if_bit7_clr(func)
 #define do_if_bit6_set_mem(val, func) __asm__("BIT %v", val); do_if_v_set(func)
 #define do_if_bit6_clr_mem(val, func) __asm__("BIT %v", val); do_if_v_clr(func)
+
+#define do_if_in_range(val, min, max, func) __A__ = val; __asm__("sec \n sbc #%b \n sbc #%b-%b+1 ", min, max, min); do_if_c_clr(func);
 
 #define fc_mic_poll() (PEEK(0x4016) & 0x04)
 

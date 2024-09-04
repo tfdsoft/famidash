@@ -597,7 +597,7 @@ void funsettings() {
 			return;
 		}
 
-		crossPRGBankJump0(gameboy_check, 0);
+		crossPRGBankJump0(gameboy_check);
 
 		if (gameboy_mode) kandotemp4 = 1;
 
