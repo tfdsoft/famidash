@@ -144,7 +144,6 @@ void draw_sprites(void){
 
 		tmp6 = currplayer_vel_x << 2;
 		
-
 		tmpA = player_x[0];
 		tmpB = player_y[0];
 
