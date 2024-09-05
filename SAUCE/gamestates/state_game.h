@@ -351,7 +351,7 @@ void state_game(){
 					sfx_play(sfx_exit_level,0);
 					music_update();
 				//	color_emphasis(COL_EMP_NORMAL);
-					crossPRGBankJump0(gameboy_check, 0);
+					crossPRGBankJump0(gameboy_check);
 					return;
 				}
 				if ((pad_new[0] & PAD_RIGHT) && DEBUG_MODE) {
@@ -376,14 +376,14 @@ void state_game(){
 					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
 					set_player_banks();
 					oam_clear();
-					crossPRGBankJump0(drawplayerone,0);
+					crossPRGBankJump0(drawplayerone);
 					mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
 					draw_sprites();
 					ppu_on_all();
 				}
 			}
 		//	color_emphasis(COL_EMP_NORMAL);
-			crossPRGBankJump0(gameboy_check, 0);
+			crossPRGBankJump0(gameboy_check);
 			famistudio_music_pause(0);
 			// ppu_off();
 			// mmc3_set_8kb_chr(0);
@@ -402,7 +402,7 @@ void state_game(){
 				cube_data[1] &= 2; 
 			}		
 
-	if ((pad_new[controllingplayer] & PAD_B) && has_practice_point) crossPRGBankJump0(reset_game_vars,0);
+	if ((pad_new[controllingplayer] & PAD_B) && has_practice_point) crossPRGBankJump0(reset_game_vars);
 
 	if (pad_new[0] & PAD_UP && DEBUG_MODE) {
 		currplayer_gravity ^= 0x01;
@@ -430,7 +430,7 @@ void state_game(){
 			was_on_slope_counter--;
 		} else slope_type = 0;
 
-		crossPRGBankJump0(movement,0);
+		crossPRGBankJump0(movement);
 
 		kandotemp3 = 0;
 
@@ -494,7 +494,7 @@ void state_game(){
 #endif
 		if (invincible_counter) invincible_counter--;
 
-		crossPRGBankJump0(do_the_scroll_thing,0);
+		crossPRGBankJump0(do_the_scroll_thing);
 
 		check_spr_objects();
 
@@ -527,12 +527,12 @@ void state_game(){
 
 			if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
 
-			crossPRGBankJump0(movement,0);
+			crossPRGBankJump0(movement);
 
 
 			runthecolls();
 
-			crossPRGBankJump0(do_the_scroll_thing2,0);
+			crossPRGBankJump0(do_the_scroll_thing2);
 
 			currplayer = 0;					//give back focus
 
@@ -579,19 +579,19 @@ void state_game(){
 void runthecolls() {
 	if (!kandotemp3) {
 
-		crossPRGBankJump0(x_movement_coll,0);
+		crossPRGBankJump0(x_movement_coll);
 
-		crossPRGBankJump0(x_movement,0);
+		crossPRGBankJump0(x_movement);
 
-		crossPRGBankJump0(sprite_collide,0);
+		crossPRGBankJump0(sprite_collide);
 
 	}	
 		
 	else if (!(kandoframecnt & 1)) {
-		crossPRGBankJump0(sprite_collide,0);
+		crossPRGBankJump0(sprite_collide);
 	}
 	if (!DEBUG_MODE && !invincible_counter) {
-		crossPRGBankJump0(bg_coll_death,0);
+		crossPRGBankJump0(bg_coll_death);
 	}
 }				
 

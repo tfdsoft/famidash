@@ -56,7 +56,7 @@ void main(){
 
 
 	kandotemp = 0;
-	crossPRGBankJump0(gameboy_check, 0);
+	crossPRGBankJump0(gameboy_check);
 	gameState = 0x05;
     while (1){
         ppu_wait_nmi();
