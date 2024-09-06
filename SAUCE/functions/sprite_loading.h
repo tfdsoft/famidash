@@ -45,6 +45,8 @@ void init_sprites(void){	// required to be in a fixed bank
 
 char sprite_height_lookup(){
 
+	#define killSprite_return0 activesprites_type[index] = 0xFF; return 0
+
 	#define type tmp4
 /*
 	//	color fading code
@@ -84,23 +86,15 @@ char sprite_height_lookup(){
 				activesprites_type[index] = 0xFF;
 	}
 	*/
-#ifdef FLAG_KANDO_FUN_STUFF	
-	if (type == DEATH_CHANCE) { 
-		if ((newrand() & 63) == (newrand() & 63)) { uint8_store(cube_data, currplayer, cube_data[currplayer] | 1); } activesprites_type[index] = 0xFF; return 0; 
-	} 
-#endif
-	if (type == X_SCROLL_SETTING && !cam_seesaw) {
-		tmp8 = activesprites_realy[index] >> 4;
-		target_x_scroll_stop = shlNibble12(tmp8);
-		activesprites_type[index] = 0xFF;
-		return 0x00;		
+	
+	if ((type >= 0x2A && type <= 0x43) || (type >= 0x47 && type <= 0x4A)) {    // Decorations
+		if (twoplayer || !decorations) killSprite_return0;
+		return 0;
 	}
-	
-	
+
 	else if ((type >= 0xB0) && (type <= 0xBF)) {
 		outline_color = uint8_load(OUTLINES, type & 0x0F);
-		activesprites_type[index] = 0xFF; 
-		return 0x00;
+		killSprite_return0;
 	}
 
 	else if ((type >= 0x80) && (type < 0xED)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
@@ -119,46 +113,55 @@ char sprite_height_lookup(){
 			pal_col(9, oneShadeDarker(tmp2)); 
 			lastbgcolortype = type;
 		}
-		activesprites_type[index] = 0xFF; 
-		return 0;
+		killSprite_return0;
 	}
-#ifdef FLAG_KANDO_FUN_STUFF	
-	else if (type == MASK_SPRITES_ON) { disco_sprites = 1; activesprites_type[index] = 0xFF; return 0; }
-	else if (type == MASK_SPRITES_OFF) { disco_sprites = 0; activesprites_type[index] = 0xFF; return 0; }
-#endif
-	else if (type == SLOWMODE_ON) { slowmode = 1; activesprites_type[index] = 0xFF; return 0; }
-	else if (type == SLOWMODE_OFF) { slowmode = 0; activesprites_type[index] = 0xFF; return 0; }
-
 
 	else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
 	else if (type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) // Speed portals
 		return 0x1F;
 	else if (type >= CUBE_MODE && type <= ROBOT_MODE) // Player portals
 		return 0x2F;	
-	else if ((type >= 0x2A && type <= 0x43) || (type >= 0x47 && type <= 0x4A)) {    // Decorations
-		if (twoplayer || !decorations) activesprites_type[index] = 0xFF; 
-				return 0;
-	}
 
 	switch(type) {
-		case NOSPRITE:
-			activesprites_x_lo[index] = 0xFF; return 0;
+		#ifdef FLAG_KANDO_FUN_STUFF	
+			case DEATH_CHANCE: 
+				if ((newrand() & 63) == (newrand() & 63))
+					uint8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+				killSprite_return0;
+			case MASK_SPRITES_ON:
+				disco_sprites = 1;
+				killSprite_return0;
+			case MASK_SPRITES_OFF:
+				disco_sprites = 0;
+				killSprite_return0;
+		#endif
+		case X_SCROLL_SETTING:
+			if (!cam_seesaw) {
+				target_x_scroll_stop = (activesprites_realy[index] & 0xF0) << 8;
+				killSprite_return0;
+			}
+			return 0;
+
+		case SLOWMODE_ON:
+			slowmode = 1;
+			killSprite_return0;
+		case SLOWMODE_OFF:
+			slowmode = 0;
+			killSprite_return0;
+
 		case FORCED_TRAILS_ON:
 			forced_trails = 1;
-			activesprites_type[index] = 0xFF;
-			return 0x00;
+			killSprite_return0;
 		case FORCED_TRAILS_OFF:
 			forced_trails = 0;
-			activesprites_type[index] = 0xFF;
-			return 0x00;
+			killSprite_return0;
 		case PLAYER_TRAILS_ON:
 			forced_trails = 2;
-			activesprites_type[index] = 0xFF;
-			return 0x00;
+			killSprite_return0;
 		case PLAYER_TRAILS_OFF:
 			forced_trails = 0;
-			activesprites_type[index] = 0xFF;
-			return 0x00;
+			killSprite_return0;
+
 		case GRAVITY_PAD_DOWN_INVISIBLE:
 		case GRAVITY_PAD_UP_INVISIBLE:
 			return 0x07;
@@ -268,6 +271,8 @@ char sprite_height_lookup(){
 	return 0;
 
 	#undef type
+
+	#undef killSprite_return0
 }
 
 #define yellow_orb 0x00 << 3
@@ -763,24 +768,25 @@ void sprite_collide(){
 
 	Generic2.width = 0x0f;
 
-	for (index = 0; index < max_loaded_sprites; ++index){
+	index = 0;
+
+	do {
 		tmp3 = activesprites_active[index];
 		if (tmp3){
 			tmp4 = activesprites_type[index];
 
-			Generic2.x = activesprites_realx[index];
-			Generic2.y = activesprites_realy[index];
-
 			tmp2 = sprite_height_lookup();	// uses tmp4
+			if (tmp2 == 0) continue;
 			Generic2.height = tmp2;
 
-
+			Generic2.x = activesprites_realx[index];
+			Generic2.y = activesprites_realy[index];
 			
 			if (check_collision()) {
 				sprite_collide_lookup();
 			}
 		}
-	}
+	} while (++index < max_loaded_sprites);
 
 	Generic.height = mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
 }

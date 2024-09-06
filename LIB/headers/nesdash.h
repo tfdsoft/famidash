@@ -323,7 +323,7 @@ do func while(0); \
 #define do_if_bit6_set_mem(val, func) __asm__("BIT %v", val); do_if_v_set(func)
 #define do_if_bit6_clr_mem(val, func) __asm__("BIT %v", val); do_if_v_clr(func)
 
-#define do_if_in_range(val, min, max, func) __A__ = val; __asm__("sec \n sbc #%b \n sbc #%b-%b+1 ", min, max, min); do_if_c_clr(func);
+#define do_if_in_range(val, min, max, func) __A__ = val; __asm__("sec \n sbc #%b \n sbc #%b-%b+1 ", min, max, min); do_if_c_clr(func)
 
 #define fc_mic_poll() (PEEK(0x4016) & 0x04)
 
