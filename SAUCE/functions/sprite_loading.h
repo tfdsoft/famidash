@@ -43,7 +43,47 @@ void init_sprites(void){	// required to be in a fixed bank
 
 #pragma code-name(push, "XCD_BANK_00")
 
-char sprite_height_lookup(){
+#define OUTL    0xFC
+#define COLR    0xFD
+#define DECO    0xFE
+#define SPBH    0xFF
+
+uint8_t sprite_heights[]={
+	0x2F,	0x2F,	0x2F,	0x2F,	0x2F,	0x0F,	0x0F,	SPBH,	// 00 - 07
+	0x2F,	0x2F,	0x02,	0x0F,	0x02,	0x02,	0x02,	SPBH,	// 08 - 0F
+	0x02,	0x1F,	0x02,	0x1F,	0x1F,	0x1F,	0x1F,	0x2F,	// 10 - 17
+	0x2F,	0x2F,	SPBH,	SPBH,	0x17,	0x17,	0x17,	0x0F,	// 18 - 1F
+	0x1F,	0x1F,	0x2F,	0x2F,	0x2F,	0x02,	0x02,	0x0F,	// 20 - 27
+	0x0F,	0x0F,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 28 - 2F
+	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 30 - 37
+	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 38 - 3F
+	DECO,	DECO,	DECO,	DECO,	0x0F,	0x0F,	0x0F,	DECO,	// 40 - 47
+	DECO,	DECO,	DECO,	0x2F,	0x0F,	0x0F,	0x2F,	SPBH,	// 48 - 4F
+	0x0F,	0x0F,	0x02,	0x02,	0x0F,	0x0F,	0x01,	0x01,	// 50 - 57
+	0x2F,	0x0F,	SPBH,	0x0F,	0x0F,	0x0F,	0x0F,	0x2F,	// 58 - 5F
+	0x2F,	0x2F,	0x2F,	0x2F,	0x2F,	0x02,	0x0F,	SPBH,	// 60 - 67
+	0x0F,	SPBH,	0x2F,	0x2F,	0x2F,	0x00,	0x00,	0x00,	// 68 - 6F
+	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 70 - 77
+	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 78 - 7F
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 88 - 8F
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 90 - 97
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 98 - 9F
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// A0 - A7
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// A8 - AF
+	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	// B0 - B7
+	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	// B8 - BF
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// C0 - C7
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// C8 - CF
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// D0 - D7
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// D8 - DF
+	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// E0 - E7
+	COLR,	COLR,	COLR,	COLR,	COLR,	0x0F,	SPBH,	SPBH,	// E8 - EF
+	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x0F,	0x0F,	// F0 - F7
+	0x0F,	0x0F,	0x0F,	0x02,	0x02,	0x07,	0x07,	0x00,	// F8 - FF
+};
+
+char sprite_load_special_behavior(){
 
 	#define killSprite_return0 activesprites_type[index] = 0xFF; return 0
 
@@ -86,41 +126,6 @@ char sprite_height_lookup(){
 				activesprites_type[index] = 0xFF;
 	}
 	*/
-	
-	if ((type >= 0x2A && type <= 0x43) || (type >= 0x47 && type <= 0x4A)) {    // Decorations
-		if (twoplayer || !decorations) killSprite_return0;
-		return 0;
-	}
-
-	else if ((type >= 0xB0) && (type <= 0xBF)) {
-		outline_color = uint8_load(OUTLINES, type & 0x0F);
-		killSprite_return0;
-	}
-
-	else if ((type >= 0x80) && (type < 0xED)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
-		if (discomode) return 0;
-			
-		tmp2 = (type & 0x3F);                        
-		
-				
-		if (type >= 0xC0){
-			pal_col(6, tmp2);
-			pal_col(5, oneShadeDarker(tmp2)); 
-			lastgcolortype = type;
-		} else {
-			pal_col(0, tmp2);
-			pal_col(1, oneShadeDarker(tmp2)); 
-			pal_col(9, oneShadeDarker(tmp2)); 
-			lastbgcolortype = type;
-		}
-		killSprite_return0;
-	}
-
-	else if (type >= COINGOTTEN1 && type <= COINGOTTEN3) return 0x17;	// Coin
-	else if (type >= SPEED_05_PORTAL && type <= SPEED_20_PORTAL) // Speed portals
-		return 0x1F;
-	else if (type >= CUBE_MODE && type <= ROBOT_MODE) // Player portals
-		return 0x2F;	
 
 	switch(type) {
 		#ifdef FLAG_KANDO_FUN_STUFF	
@@ -153,117 +158,41 @@ char sprite_height_lookup(){
 			forced_trails = 1;
 			killSprite_return0;
 		case FORCED_TRAILS_OFF:
+		case PLAYER_TRAILS_OFF:
 			forced_trails = 0;
 			killSprite_return0;
 		case PLAYER_TRAILS_ON:
 			forced_trails = 2;
 			killSprite_return0;
-		case PLAYER_TRAILS_OFF:
-			forced_trails = 0;
-			killSprite_return0;
-
-		case GRAVITY_PAD_DOWN_INVISIBLE:
-		case GRAVITY_PAD_UP_INVISIBLE:
-			return 0x07;
 
 		case TELEPORT_SQUARE_EXIT:
 			teleport_output = activesprites_realy[index];
-			//intentional leak
-		case YELLOW_ORB:
-		case YELLOW_ORB_BIGGER:
-		case YELLOW_ORB_SMALLER:
-		case BLUE_ORB:
-		case PINK_ORB:
-		case GREEN_ORB:
-		case BLACK_ORB:
-		case DASH_ORB:
-		case DASH_GRAVITY_ORB:
-		case DASH_ORB_UPWARDS:
-		case DASH_GRAVITY_ORB_UPWARDS:
-		case DASH_ORB_DOWNWARDS:
-		case DASH_GRAVITY_ORB_DOWNWARDS:
-		case DASH_ORB_45DEG_UP:
-		case DASH_GRAVITY_ORB_45DEG_UP:
-		case DASH_ORB_45DEG_DOWN:
-		case DASH_GRAVITY_ORB_45DEG_DOWN:
-		case TELEPORT_PORTAL_UPWARDS_ENTER:
-		case TELEPORT_PORTAL_DOWNWARDS_ENTER:
-		case TELEPORT_PORTAL_ENTER_EXTENSION:
-		case RED_ORB:
-		case D_BLOCK:
-		case S_BLOCK:
-		case H_BLOCK:
-		case J_BLOCK:
-		case F_BLOCK:
-		case SPIDER_ORB_UP:
-		case SPIDER_ORB_DOWN:
-		case TELEPORT_SQUARE_ENTER:
 			return 0x0f;
 
-		case GRAVITY_UP_INVISIBLE_PORTAL:
-		case GRAVITY_DOWN_INVISIBLE_PORTAL:
-		case GRAVITY_DOWN_UPWARDS_PORTAL:
-		case GRAVITY_UP_UPWARDS_PORTAL:
-		case YELLOW_PAD_DOWN:
-		case YELLOW_PAD_UP:
-		case PINK_PAD_UP:
-		case PINK_PAD_DOWN:
-		case GREEN_PAD:
-		case RED_PAD_UP:
-		case RED_PAD_DOWN:
-		case GRAVITY_PAD_DOWN:
-		case GRAVITY_PAD_UP:
-			return 0x02;
-		case SPIDER_PAD_UP:
-		case SPIDER_PAD_DOWN:
-			return 0x01;
-//            return 0x0F;
 		case TELEPORT_PORTAL_DOWNWARDS_EXIT:
 		case TELEPORT_PORTAL_UPWARDS_EXIT:		
 		case TELEPORT_PORTAL_EXIT:
 			teleport_output = activesprites_realy[index] + 0x10;
-			//intentional leak
-		case SPIDER_MODE:
-		case SINGLE_PORTAL:
-		case DUAL_PORTAL:
-		case TALLBOI_MODE_ENTER:
-		case LONGBOI_MODE_ENTER:
-		case BIGBOI_MODE_ENTER:
-		case GRAVITY_DOWN_PORTAL:
-		case GRAVITY_UP_PORTAL:
-		case MINI_PORTAL:
-		case WAVE_MODE:
-		case SWING_MODE:
-		case NINJA_MODE:
-		case RANDOM_MODE_PORTAL:
-		case GROWTH_PORTAL:
-		case GRAVITY_13_PORTAL:
-		case GRAVITY_12_PORTAL:
-		case GRAVITY_23_PORTAL:
-		case GRAVITY_2X_PORTAL:
-		case GRAVITY_1X_PORTAL:
-		case TELEPORT_PORTAL_ENTER:
 			return 0x2f;
+
 		case COIN1:
 			if (coin1_obtained[level]) {
 				activesprites_type[index] = COINGOTTEN1;
 			}
-			return 0x17; 
+			return 0x17;
+
 		case COIN2:
 			if (coin2_obtained[level]) {
 				activesprites_type[index] = COINGOTTEN2;
 			}
-			return 0x17; 
+			return 0x17;
+
 		case COIN3:
 			if (coin3_obtained[level]) {
 				activesprites_type[index] = COINGOTTEN3;
 			}
 			return 0x17; 
-		case SPEED_30_PORTAL:
-		case SPEED_40_PORTAL:
-		case GRAVITY_DOWN_DOWNWARDS_PORTAL:
-		case GRAVITY_UP_DOWNWARDS_PORTAL:
-			return 0x1F;
+
 		case LEVEL_END_TRIGGER:
 			gameState = 0x03; 
 			
@@ -775,8 +704,41 @@ void sprite_collide(){
 		if (tmp3){
 			tmp4 = activesprites_type[index];
 
-			tmp2 = sprite_height_lookup();	// uses tmp4
-			if (tmp2 == 0) continue;
+			tmp2 = sprite_heights[tmp4];
+			switch (tmp2) {
+
+				case DECO:
+					if (twoplayer || !decorations) activesprites_type[index] = 0xFF;
+					continue;
+
+				case COLR:
+					if (discomode) {
+						activesprites_type[index] = 0xFF; continue;
+					}
+					tmp2 = (tmp4 & 0x3F);
+					if (tmp4 >= 0xC0){
+						pal_col(6, tmp2);
+						pal_col(5, oneShadeDarker(tmp2)); 
+						lastgcolortype = tmp4;
+					} else {
+						pal_col(0, tmp2);
+						pal_col(1, oneShadeDarker(tmp2)); 
+						pal_col(9, oneShadeDarker(tmp2)); 
+						lastbgcolortype = tmp4;
+					}
+					activesprites_type[index] = 0xFF;
+					// intentional leak
+				case 0:
+					continue;
+				
+				case OUTL:
+					outline_color = uint8_load(OUTLINES, tmp4 & 0x0F);
+					activesprites_type[index] = 0xFF;
+					continue;
+
+				case SPBH:
+					if ((tmp2 = sprite_load_special_behavior()) == 0) continue;
+			}
 			Generic2.height = tmp2;
 
 			Generic2.x = activesprites_realx[index];
