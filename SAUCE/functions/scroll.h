@@ -3,8 +3,22 @@
 #pragma rodata-name(push, "XCD_BANK_02")
 
 void do_the_scroll_thing(){
-	if (high_byte(currplayer_x) > MSB(0x5000)){ // change x scroll
-		tmp1 = MSB(currplayer_x - 0x5000);
+	switch (cam_seesaw) {
+		case 1:
+			if (curr_x_scroll_stop < 0xD000) target_x_scroll_stop = 0xD000;
+			else cam_seesaw = 2;
+			break;
+		case 2:
+			if (curr_x_scroll_stop > 0x1000) target_x_scroll_stop = 0x1000;
+			else cam_seesaw = 1;
+			break;
+	}
+	
+	if (curr_x_scroll_stop < target_x_scroll_stop) curr_x_scroll_stop += 0x80;
+	else if (curr_x_scroll_stop > target_x_scroll_stop) curr_x_scroll_stop -= 0x80;		
+
+	if (currplayer_x > curr_x_scroll_stop){ // change x scroll
+		tmp1 = MSB(currplayer_x - curr_x_scroll_stop);
 		scroll_x += tmp1;
 		parallax_scroll_x += tmp1 ? tmp1 - 1 : 0;
 		if (parallax_scroll_x >= 144) {
