@@ -11,6 +11,13 @@ void reset_level(void);
 void __fastcall__ drawplayerone();
 void __fastcall__ drawplayertwo();
 
+uint8_t plus9_tbl [] = {
+	(0x0 + 9)&0xF,	(0x1 + 9)&0xF,	(0x2 + 9)&0xF,	(0x3 + 9)&0xF,
+	(0x4 + 9)&0xF,	(0x5 + 9)&0xF,	(0x6 + 9)&0xF,	(0x7 + 9)&0xF,
+	(0x8 + 9)&0xF,	(0x9 + 9)&0xF,	(0xA + 9)&0xF,	(0xB + 9)&0xF,
+	(0xC + 9)&0xF,	(0xD + 9)&0xF,	(0xE + 9)&0xF,	(0xF + 9)&0xF,
+};
+
 void draw_sprites(void){
 	// dual = 1;
 	// twoplayer = 1;
@@ -44,12 +51,15 @@ void draw_sprites(void){
 		// else if (long_temp_x < 10) {}
 	}
 
-	for (tmp9 = 0; tmp9 < MAX_FIREBALLS; tmp9++) {
-		if (jimsheatballalive[tmp9]) {
-			oam_meta_spr(jimsheatballx[tmp9 & 0x7F], idx16_hi_NOC(jimsheatbally, tmp9), Heat_Ball_Sprites[jimsheatballframe[tmp9] & 0x7F]);		
-			jimsheatballframe[tmp9] == 20 ? jimsheatballframe[tmp9] = 0 : uint8_inc(jimsheatballframe, tmp9);
-			jimsheatballx[tmp9 & 0x7F] == 0xFF ? jimsheatballalive[tmp9] = 0 : uint8_inc(jimsheatballx, tmp9);
-		}
+	if (retro_mode) {
+		tmp9 = 0;
+		do {
+			if (jimsheatballalive[tmp9]) {
+				oam_meta_spr(jimsheatballx[tmp9 & 0x7F], idx16_hi_NOC(jimsheatbally, tmp9), Heat_Ball_Sprites[jimsheatballframe[tmp9] & 0x7F]);		
+				jimsheatballframe[tmp9] == 20 ? jimsheatballframe[tmp9] = 0 : uint8_inc(jimsheatballframe, tmp9);
+				jimsheatballx[tmp9 & 0x7F] == 0xFF ? jimsheatballalive[tmp9] = 0 : uint8_inc(jimsheatballx, tmp9);
+			}
+		} while (++tmp9 < MAX_FIREBALLS);
 	}
 
 	
@@ -58,75 +68,73 @@ void draw_sprites(void){
 	
 
 	// The flickering motherfucker, by jrowe
-	shuffle_offset += 11;
-	if (shuffle_offset >= max_loaded_sprites) {
-		shuffle_offset -= max_loaded_sprites;
-	}
+	shuffle_offset = (shuffle_offset + 11) & 0x0F;
 	// the level sprites
-	for (count = 0; count < max_loaded_sprites; ++count){
+	count = 0;
+	do {
 		// and every sprite add another number thats also coprime with 16 AND 11
-		shuffle_offset += 9;
-		if (shuffle_offset >= max_loaded_sprites) {	
-			shuffle_offset -= max_loaded_sprites;
-		}
+		shuffle_offset = (shuffle_offset + 9) & 0x0F;	// !!! If max_loaded_sprites changes change this
 		index = shuffle_offset;
-		if (index < 0xF0) {
-			if (activesprites_type[index] & 0x80) continue;
-		}
+		
+		if ((int8_t)(uint8_load(activesprites_type, index)) < 0) continue;
+		if (!activesprites_active[index]) continue; 
+
+		temp_x = activesprites_realx[index];
+		if (temp_x > 0xf0) continue;
+		if (temp_x == 0) temp_x = 1;
 
 		temp_y = activesprites_realy[index];
-		if (!activesprites_active[index]) continue; 
-		temp_x = activesprites_realx[index];
-		if (temp_x == 0) temp_x = 1;
-		if (temp_x > 0xf0) continue;
+		if (temp_y > 0xf0) continue;
 
-#define animation_frame_count tmp1
-#define animation_frame tmp2
-#define spr_type tmp3
-#define needs_reload tmp4
-#define animation_ptr tmpptr1
-#define animation_data_ptr tmpptr2
-		if (activesprites_type[index] > 0x80) {}
-		else {
-			if (temp_y < 0xf0) {
-			needs_reload = 0;
-			spr_type = activesprites_type[index];
-			animation_ptr = (unsigned char *)animation_frame_list[spr_type & 0x7F];
-			// If this sprite has animations, then this pointer will not be null
-			if (high_byte(animation_ptr)) {
-				// Reduce the frame counter by one to see if we need to move to the next frame
-				// If this frame has expired, then move to the next animation frame
-				animation_frame_count = uint8_dec(activesprites_anim_frame_count, index);
-				if (animation_frame_count >= 0x80) {
-					animation_frame = uint8_inc(activesprites_anim_frame, index);
-					// if the animation frame is past the length, wrap it around back to zero
-					if (animation_frame >= animation_frame_length[spr_type]) {
-						activesprites_anim_frame[index] = 0;
-						animation_frame = 0;
-					}
-					// and then set the animation_frame_count to be reloaded
-					needs_reload = 1;
-				} else {
-					animation_frame = activesprites_anim_frame[index];
-				}
-				
-				// Now load the data for this frame of animation
-				// The fastest way to convince cc65 to read all of the data is to force
-				// it to read all the bytes at once
-				tmplong = ((unsigned long int*)animation_ptr)[animation_frame];
-				if (needs_reload) {
-					uint8_store(activesprites_anim_frame_count, index, low_byte(tmplong));
-				}
-				// And finally, load the pointer for this animation
-				animation_data_ptr = (unsigned char*)high_word(tmplong);
-			} else {
-				animation_data_ptr =  (unsigned char*)Metasprites[spr_type & 0x7F];
-			}
-			oam_meta_spr(temp_x, temp_y, animation_data_ptr);
-			}
-		}
+		#define animation_frame_count tmp1
+		#define animation_frame tmp2
+		#define spr_type tmp3
+		#define needs_reload tmp4
+		#define animation_ptr tmpptr1
+		#define animation_data_ptr tmpptr2
 		
-	}
+		needs_reload = 0;
+		spr_type = activesprites_type[index];
+		animation_ptr = (unsigned char *)animation_frame_list[spr_type & 0x7F];
+		// If this sprite has animations, then this pointer will not be null
+		if (high_byte(animation_ptr)) {
+			// Reduce the frame counter by one to see if we need to move to the next frame
+			// If this frame has expired, then move to the next animation frame
+			animation_frame_count = uint8_dec(activesprites_anim_frame_count, index);
+			if ((int8_t)animation_frame_count < 0) {
+				animation_frame = uint8_inc(activesprites_anim_frame, index);
+				// if the animation frame is past the length, wrap it around back to zero
+				if (animation_frame >= animation_frame_length[spr_type]) {
+					activesprites_anim_frame[index] = 0;
+					animation_frame = 0;
+				}
+				// and then set the animation_frame_count to be reloaded
+				needs_reload = 1;
+			} else {
+				animation_frame = activesprites_anim_frame[index];
+			}
+			
+			// Now load the data for this frame of animation
+			// The fastest way to convince cc65 to read all of the data is to force
+			// it to read all the bytes at once
+			__AX__ = animation_frame << 1;
+			__AX__ += animation_frame;
+			animation_ptr += __AX__;
+
+			__asm__ ("ldy #2 \n lda (%v), y \n sta %v+1 \n dey \n lda (%v), y \n sta %v", animation_ptr, animation_data_ptr, animation_ptr, animation_data_ptr);
+
+			if (needs_reload) {
+				__A__ = *(uint8_t*)animation_ptr;
+				__asm__ ("ldy %v \n sta %v, y", index, activesprites_anim_frame_count);
+			}
+			
+			// And load the pointer for this animation
+		} else {
+			animation_data_ptr = (unsigned char*)Metasprites[spr_type & 0x7F];
+		}
+		oam_meta_spr(temp_x, temp_y, animation_data_ptr);
+		
+	} while (++count < max_loaded_sprites);
 	if (forced_trails == 1 || trails == 1 || (gamemode == 6 && trails != 2)) {
 		tmp6 = currplayer_vel_x << 1;
 		tmp5 = player_x[0] - tmp6;

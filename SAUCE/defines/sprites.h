@@ -2522,8 +2522,8 @@ const unsigned char Music_Note[]={
 
 
 struct SpriteFrame {
-	unsigned short frame_count; // use a two byte length value for alignment
-	const unsigned char* ptr;
+	uint8_t frame_count;
+	const uint8_t* ptr;
 };
 
 const struct SpriteFrame COIN_SPRITES[]={
