@@ -577,7 +577,7 @@ void state_game(){
 }
 
 void runthecolls() {
-	if (!DEBUG_MODE && !invincible_counter) {
+	if (!invincible_counter) {
 		crossPRGBankJump0(x_movement_coll);
 	}
 
