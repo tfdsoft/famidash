@@ -303,6 +303,7 @@ void levelselection() {
 			
 		if (pad_new[0] & PAD_RIGHT){
 			++level;
+			if (level == 0x0B) level = 0x0C;	//THEORY OF EVERYTHING SKIP
 			low_byte(tmp8) = 0xff;
 			tmp4 = 1;
 			if (!normalorcommlevels) {
@@ -321,6 +322,7 @@ void levelselection() {
 		}
 		if (pad_new[0] & PAD_LEFT){
 			--level;
+			if (level == 0x0B) level = 0x0A;	//THEORY OF EVERYTHING SKIP
 			low_byte(tmp8) = 0xff;
 			tmp4 = 0;
 			if (!normalorcommlevels) {
