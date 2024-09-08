@@ -309,7 +309,7 @@ GeometryDashPCMA:
 
 .segment "PCM_BANK_B"
 GeometryDashPCMB:
-	.incbin "MUSIC/PCM/gofuckyourself.pcm"
+	.incbin "MUSIC/PCM/fire2.pcm"
 	.byte $00
 
 
