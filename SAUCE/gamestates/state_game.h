@@ -577,9 +577,12 @@ void state_game(){
 }
 
 void runthecolls() {
+	if (!DEBUG_MODE && !invincible_counter) {
+		crossPRGBankJump0(x_movement_coll);
+	}
+
 	if (!kandotemp3) {
 
-		crossPRGBankJump0(x_movement_coll);
 
 		crossPRGBankJump0(x_movement);
 
