@@ -157,6 +157,7 @@ void __fastcall__ refreshmenu(void) {
 		tmp1 = difficulty_list[level];
 		pal_col(0x0a, difficulty_pal_A[tmp1]);
 		pal_col(0x0b, difficulty_pal_B[tmp1]);
+		pal_set_update();
 		
 		tmp1 = (tmp1 << 1) + 'a';
 		one_vram_buffer(tmp1, NTADR_A(7, 10)+tmp5);
@@ -185,6 +186,7 @@ void __fastcall__ refreshmenu(void) {
 		tmp3 = level % 9;
 		pal_col(0,colors_list[tmp3]);
 		pal_col(0xE,colors_list[tmp3]);
+		pal_set_update();
 	//coin stuff
 		coins = 0;
 
@@ -392,6 +394,7 @@ void customize_screen() {
 	ppu_off();
 	pal_bg(paletteMenu);
 	pal_col(0x00, 0x00);
+	pal_set_update();
 	mmc3_set_8kb_chr(MENUICONBANK);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
@@ -435,6 +438,7 @@ void customize_screen() {
 		pal_col(0x0a,color1);
 		pal_col(0x0b,color2);
 		pal_col(0x09,color3);
+		pal_set_update();
 
 		pad_poll(0); // read the first controller
 		
@@ -797,6 +801,7 @@ void state_menu() {
 				pal_col(0x11, tmp2)
 				// pal_col(1, oneShadeDarker(tmp2)); 
 				// pal_col(9, oneShadeDarker(tmp2)); 
+				pal_set_update();
 		
 			tmp3 = 0xC0 + BG_Table2[discoframe];
 			
@@ -805,6 +810,7 @@ void state_menu() {
 			tmp2 = (tmp3 & 0x3F);  		    
 			//	pal_col(6, tmp2);
 			//	pal_col(5, oneShadeDarker(tmp2)); 
+			//	pal_set_update();
 			discoframe++;
 			if (discoframe == 12) discoframe = 0;
 		}

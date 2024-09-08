@@ -123,6 +123,7 @@ char sprite_load_special_behavior(){
 			lastbgcolortype = type;
 			bg_palette_transition_timer = current_transition_timer_length;
 		}
+		pal_set_update();
 		activesprites_type[index] = 0xFF; 
 		return 0x00;
 	}
@@ -731,6 +732,7 @@ void sprite_collide(){
 						pal_col(9, oneShadeDarker(tmp2)); 
 						lastbgcolortype = tmp4;
 					}
+					pal_set_update();
 					activesprites_type[index] = 0xFF;
 					// intentional leak
 				case 0:

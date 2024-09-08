@@ -265,7 +265,8 @@ extern uint8_t auto_fs_updates;
 extern uint8_t PAL_UPDATE;
 extern uint8_t PAL_BUF[32];
 #pragma zpsym("PAL_UPDATE")
-#define pal_col(index, color) do { PAL_BUF[index&0x1F] = (color); ++PAL_UPDATE; } while(0);
+#define pal_col(index, color) PAL_BUF[index&0x1F] = (color);
+#define pal_set_update() ++PAL_UPDATE;
 
 // Uses the neslib table
 // Normal shade is 4, range is 0..8

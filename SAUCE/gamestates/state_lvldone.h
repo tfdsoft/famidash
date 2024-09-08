@@ -38,6 +38,7 @@ void state_lvldone() {
     pal_bg(paletteMenu);
 	pal_col(0x0A,0x2A);
 	pal_col(0x0B,0x21);
+	pal_set_update();
     pal_spr(paletteMenu);
 
 	mmc3_set_8kb_chr(LEVELCOMPLETEBANK);
