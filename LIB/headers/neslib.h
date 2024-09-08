@@ -92,6 +92,7 @@ uint8_t __fastcall__ ppu_system();
 void __fastcall__ oam_clear();
 
 void __fastcall__ oam_clear_player();
+void __fastcall__ oam_clear_two_players();
 
 
 //set sprite display mode, 0 for 8x8 sprites, 1 for 8x16 sprites
@@ -117,7 +118,7 @@ void __fastcall__ _oam_meta_spr(uint32_t args);
 //hide all remaining sprites from given offset
 // Note: sprid removed for speed
 // Now also changes sprid (index to buffer) to zero
-void __fastcall__ oam_hide_rest();
+// void __fastcall__ oam_hide_rest();
 
 
 // to manually change the sprid (index to sprite buffer)

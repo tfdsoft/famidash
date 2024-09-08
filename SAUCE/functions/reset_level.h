@@ -19,7 +19,7 @@ void reset_level(void) {
 		while (tmp1 != 0){
 			ppu_wait_nmi();
 			music_update();
-			oam_clear_player();
+			dual == 1 ? oam_clear_two_players() : oam_clear_player();
 			
 			if (robotjumpframe[0] < 20) {
 				if (!retro_mode) oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, Explode_Sprites[robotjumpframe[0] & 0x7F]);
@@ -35,7 +35,7 @@ void reset_level(void) {
 		while (tmp1 != 0){
 			ppu_wait_nmi();
 			music_update();
-			oam_clear_player();	
+			dual == 1 ? oam_clear_two_players() : oam_clear_player();
 			if (robotjumpframe[0] < 20) {
 				if (!retro_mode) oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, Explode_Sprites2[robotjumpframe[0] & 0x7F]);
 				else oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, ExplodeR_Sprites2[robotjumpframe[0] & 0x7F]);

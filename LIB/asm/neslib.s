@@ -15,7 +15,8 @@
 	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
 	.export _pal_bright,_pal_spr_bright,_pal_bg_bright
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
-	.export _oam_clear,_oam_clear_player,_oam_size,__oam_spr,__oam_meta_spr,_oam_hide_rest
+	.export _oam_clear,_oam_clear_player,_oam_size,__oam_spr,__oam_meta_spr,_oam_clear_two_players
+	;.export _oam_hide_rest
 	.export _ppu_wait_frame,_ppu_wait_nmi
 	.export __scroll,_split,_newrand
 	.export _bank_spr,_bank_bg
@@ -381,6 +382,19 @@ _oam_clear_player:
 ;to manually set the position
 ;a = sprid
 
+_oam_clear_two_players:
+	ldx #0
+	stx SPRID ; automatically sets sprid to zero
+	dex
+	stx OAM_BUF+0
+	stx OAM_BUF+4
+	stx OAM_BUF+8
+	stx OAM_BUF+12
+	rts
+;void __fastcall__ oam_set(uint8_t index);	
+;to manually set the position
+;a = sprid
+
 _oam_set:
 	and #$fc ;strip those low 2 bits, just in case
 	sta SPRID
@@ -506,22 +520,22 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 ;void __fastcall__ oam_hide_rest();
 ;sprid removed
 
-_oam_hide_rest:
+;_oam_hide_rest:
 
-	ldx SPRID
-	lda #240
+;	ldx SPRID
+;	lda #240
 
-@1:
+;@1:
 
-	sta OAM_BUF,x
-	inx
-	inx
-	inx
-	inx
-	bne @1
-	;x is zero
-	stx SPRID
-	rts
+;	sta OAM_BUF,x
+;	inx
+;	inx
+;	inx
+;	inx
+;	bne @1
+;	;x is zero
+;	stx SPRID
+;	rts
 
 
 
