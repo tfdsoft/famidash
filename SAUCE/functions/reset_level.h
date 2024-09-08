@@ -6,6 +6,11 @@ void reset_level(void) {
     if (!has_practice_point) famistudio_music_stop();
     coins = 0;
 
+    // slope stuff
+    was_on_slope_counter = 0;
+    slope_frames = 0;
+    slope_type = SLOPE_NONE;
+
     robotjumpframe[0] = 0;
     tmp1 = 30;
     if (!DEBUG_MODE && (cube_data[0] & 1)) {
