@@ -116,7 +116,7 @@ const unsigned char * const Explode_Sprites2[] = {Explode2_1,Explode2_1,Explode2
 
 const unsigned char ExplodeR2_1[]={
 
-	  0,  0,0x1D,1,
+	  0,  0,0x1F,1|OAM_FLIP_H,
 	  8,  0,0x1F,1,
 	0x80
 };

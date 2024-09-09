@@ -379,9 +379,9 @@ _oam_clear_player:
 	stx OAM_BUF+4
 	pha
 	lda _gamemode
-	cmp #5
+	cmp #4
 	beq @more
-	cmp #6
+	cmp #5
 	beq @more	
 	pla
 	rts	
@@ -404,9 +404,9 @@ _oam_clear_two_players:
 	stx OAM_BUF+12
 	pha
 	lda _gamemode
-	cmp #5
+	cmp #4
 	beq @more
-	cmp #6
+	cmp #5
 	beq @more
 	pla
 	rts
