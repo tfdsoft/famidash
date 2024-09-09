@@ -925,7 +925,7 @@ const unsigned char * const BALL2[]={Ball2_0, Ball2_0, Ball2_0, Ball2_0, Ball2_1
 
 const unsigned char Robot_0[]={
 	
-	-12,   1, 0x01,3,
+	 -12,   1, 0x01,3,
 	 -4,   1, 0x03,3,
 	  4,   1, 0x05,3,
 	0x80
@@ -938,6 +938,32 @@ const unsigned char Robot_1[]={//Also jumping frame - Ficus
 	  4,   1, 0x09,3,
 	0x80
 };
+
+const unsigned char Robot_2[]={
+	
+	-12,   1, 0x01,3,
+	 -4,   1, 0x0B,3,
+	  4,   1, 0x05,3,
+	0x80
+};
+
+const unsigned char Robot_3[]={
+	
+	-12,   1, 0xFF,3,
+	 -4,   1, 0x0D,3,
+	  4,   1, 0x09,3,
+	0x80
+};
+
+const unsigned char Robot_Jump_1[]={//Did 4th walk frame here - Ficus
+	
+	-12,   1, 0xFF,3,//No longer a jet, but the leftmost part of the sprite - Ficus
+	 -4,   1, 0x0F,3,
+	  4,   1, 0x11,3,
+	0x80
+};
+
+
 const unsigned char Robot_1_Alt[]={//Also jumping frame - Ficus
 	
 	-12,   1, 0x07,3,//UNUSED - Ficus
@@ -946,26 +972,12 @@ const unsigned char Robot_1_Alt[]={//Also jumping frame - Ficus
 	0x80
 };
 
-const unsigned char Robot_2[]={
-	
-	-12,   1, 0x0B,3,
-	 -4,   1, 0x0D,3,
-	  4,   1, 0x0F,3,
-	0x80
-};
 
-const unsigned char Robot_Jump_1[]={//Did 4th walk frame here - Ficus
-	
-	-12,   1, 0x11,3,//No longer a jet, but the leftmost part of the sprite - Ficus
-	 -4,   1, 0x13,3,
-	  4,   1, 0x15,3,
-	0x80
-};
-
-
-const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_1, Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2};
+const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_1, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2, Robot_3, Robot_3, Robot_3, Robot_3, Robot_3,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1};
 const unsigned char * const ROBOT_ALT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2};
 const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1};
+
+
 
 
 const unsigned char Mini_Robot_0[]={
@@ -1041,21 +1053,28 @@ const unsigned char Robot2_1[]={
 
 const unsigned char Robot2_2[]={
 	
-	-12,   1, 0x0B,1,
+	-12,   1, 0x01,1,
+	 -4,   1, 0x0B,1,
+	  4,   1, 0x05,1,
+	0x80
+};
+const unsigned char Robot2_3[]={
+	
+	-12,   1, 0xFF,1,
 	 -4,   1, 0x0D,1,
-	  4,   1, 0x0F,1,
+	  4,   1, 0x09,1,
 	0x80
 };
 
 const unsigned char Robot_Jump2_1[]={
 	
-	-8,   1, 0x11,1|OAM_FLIP_V,
-	-4,   1, 0x13,1,
-	 4,   1, 0x15,1,
+	-8,   1, 0xFF,1|OAM_FLIP_V,
+	-4,   1, 0x0F,1,
+	 4,   1, 0x11,1,
 	0x80
 };
 
-const unsigned char * const ROBOT2[]={Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_1, Robot2_1, Robot2_1, Robot2_1, Robot2_1, Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_2, Robot2_2, Robot2_2, Robot2_2, Robot2_2};
+const unsigned char * const ROBOT2[]={Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_0, Robot2_1, Robot2_1, Robot2_1, Robot2_1, Robot2_1, Robot2_2, Robot2_2, Robot2_2, Robot2_2, Robot2_2, Robot2_3, Robot2_3, Robot2_3, Robot2_3, Robot2_3, Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1};
 const unsigned char * const ROBOT_JUMP2[]={Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1, Robot_Jump2_1};
 
 

@@ -2500,7 +2500,7 @@ drawplayer_center_offsets:
 		@fini:
 			JMP fin
 		@jump:				;	} else {
-			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
+			LDA #21			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe
 			TAY				;__
@@ -2890,8 +2890,9 @@ drawplayer_common := _drawplayerone::common
 			;	} else {
 			;		[index from ROBOT_JUMP/MINI_ROBOT_JUMP using robotjumpframe[1]]
 			; 	}
-		LDA _player_vel_y+3	;
-		ORA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
+			LDA _player_vel_y+3	;
+			ORA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
+			BNE @jump
 			LDA _options
 			and #$04
 			beq	@cont1
@@ -2915,9 +2916,9 @@ drawplayer_common := _drawplayerone::common
 		@fini:
 			JMP drawplayer_common
 		@jump:				;	} else {
-			LDA #20			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
+			LDA #21			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
-			ADC _robotjumpframe+1
+			ADC _robotjumpframe
 			TAY				;__
 			JMP drawplayer_common
 	spider:
