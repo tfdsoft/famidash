@@ -285,10 +285,11 @@ void levelselection() {
 		if (pad_new[0] & PAD_START){
 			sfx_play(sfx_start_level, 0);
 			famistudio_music_stop();
-			for (tmp1 = 0; tmp1 < 30; tmp1++){
+			tmp1 = 0;
+			do {
 				ppu_wait_nmi();
 				music_update();
-			}
+			} while (++tmp1 < 30);
 			gameState = 0x02;
 			pal_fade_to(4,0);
 			kandotemp = 0;
@@ -404,11 +405,6 @@ void customize_screen() {
 	TOTALCOINS = 0;
 	TOTALSTARS = 0;
 
-	#ifdef FLAG_ENABLE_TEST_LEVELS
-	for (tmp2 = 0; tmp2 < 255; tmp2++)
-	#else
-	for (tmp2 = 0; tmp2 < LEVEL_COUNT2; tmp2++) 
-	#endif
 	{
 		// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
 		__A__ = tmp2; __asm__("tay");
@@ -418,7 +414,14 @@ void customize_screen() {
 		__asm__("clc \n adc %v, y", coin3_obtained);
 		TOTALCOINS = __A__;
 		if (LEVELCOMPLETE[tmp2]) TOTALSTARS += stars_list[tmp2];
+
+		tmp2++;
 	}
+	#ifdef FLAG_ENABLE_TEST_LEVELS
+	while (tmp2 < 255);
+	#else
+	while (tmp2 < LEVEL_COUNT2); 
+	#endif
 
 	
 	printDecimal(TOTALSTARS, 2, 0xD0, 0xFF, NTADR_A(26,4));

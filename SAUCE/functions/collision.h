@@ -174,13 +174,14 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 
 	commonly_stored_routine_2();
 
-	for (tmp8 = 0; tmp8 < 2; tmp8++) {
+	tmp8 = 0;
+	do {
 		bg_collision_sub();
 	
 		bg_coll_spikes();
 			
 		commonly_used_store();
-	}
+	} while (++tmp8 < 2);
 
 	// Check middle of cube
 
@@ -197,25 +198,27 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 
 	temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
 
-	for (tmp8 = 0; tmp8 < 2; tmp8++) {
+	tmp8 = 0;
+	do {
 		bg_collision_sub();
 
 		bg_coll_spikes();
 
 		commonly_used_store();
-	}
+	} while (++tmp8 < 2);
 
 	temp_x -= (Generic.width >> 1); // automatically only the low byte
 
 	commonly_stored_routine_2();
 
-	for (tmp8 = 0; tmp8 < 2; tmp8++) {
+	tmp8 = 0;
+	do {
 		bg_collision_sub();
 	
 		bg_coll_spikes();
 			
 		commonly_used_store();
-	}
+	} while (++tmp8 < 2);
 }
 /*
 	Clobbers:
@@ -713,14 +716,15 @@ char bg_coll_U() {
 			), temp_y, temp_room);
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
 
-		for (tmp2 = 0; tmp2 < 2; tmp2++) {
+		tmp2 = 0;
+		do {
 			bg_collision_sub(); // do again but this time in the center of the cube
 
 			// Clobbers 1, 4, 7, 8
 			if(bg_coll_return_slope_U()) return 1;
 			
 			temp_x += Generic.width; // automatically only the low byte
-		}			
+		} while (++tmp2 < 2);
 	}
 
 	if (currplayer_vel_y > 0x00) return 0;
@@ -764,13 +768,14 @@ char bg_coll_D() {
 			), temp_y, temp_room);
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
 
-		for (tmp2 = 0; tmp2 < 2; tmp2++) {
+		tmp2 = 0;
+		do {
 			bg_collision_sub(); // do again but this time in the center of the cube
 			
 			// Clobbers 1, 4, 7, 8
 			if(bg_coll_return_slope_D()) return 1;
 			temp_x += Generic.width; // automatically only the low byte
-		}			
+		} while (++tmp2 < 2);	
 	}
 	
 	if (currplayer_vel_y < 0x00) return 0;

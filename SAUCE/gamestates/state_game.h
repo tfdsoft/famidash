@@ -146,9 +146,7 @@ void state_game(){
 	pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 	pal_col(0x0B,color1);   //palette 2 set to player color
 
-	for (tmp2 = 0; tmp2 < 9; tmp2++) {
-		player_old_posy[tmp2] = 0;
-	}
+	memfill(player_old_posy, 0, sizeof(player_old_posy));
 	
 	switch (discomode) {
 		default: 
@@ -192,11 +190,13 @@ void state_game(){
 					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(old_trail_scroll_y, scroll_y));
 					tmp6 ^= 0xFFFF; tmp6++;
 				}
-				for (tmp3 = 7; !(tmp3 & 0x80); tmp3--) {
+				tmp3 = 7;
+				do {
 					tmp5 = player_old_posy[tmp3] + tmp6;
 					if (high_byte(tmp5) != 0) low_byte(tmp5) = 0;
 					(&player_old_posy[1])[tmp3] = tmp5;
-				}
+					--tmp3;
+				} while ((int8_t)tmp3 >= 0);
 				player_old_posy[0] = high_byte(player_y[0]);
 				old_trail_scroll_y = scroll_y;
 			}

@@ -70,12 +70,7 @@ void reset_level(void) {
     player_y[1] = 0xb000;
     currplayer_y = 0xb000;
 
-    
-
-    for (tmp9 = 0; tmp9 < MAX_FIREBALLS; tmp9++) {
-
-	jimsheatballalive[tmp9] = 0;
-    }
+    memfill(jimsheatballalive, 0, MAX_FIREBALLS);
 
     gravity_mod = 0;
     player_gravity[0] = 0x00;
@@ -106,9 +101,7 @@ void reset_level(void) {
     curr_x_scroll_stop = 0x5000;
     target_x_scroll_stop = 0x5000;
     discoframe = 0;
-	for (tmp2 = 0; tmp2 < 9; tmp2++) {
-		player_old_posy[tmp2] = 0;
-	}
+    memfill(player_old_posy, 0, sizeof(player_old_posy));
 
     if (!has_practice_point)    invincible_counter = 8;
     

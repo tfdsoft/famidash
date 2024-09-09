@@ -198,7 +198,8 @@ void cube_movement(void){
 //jim's shit
 	if (retro_mode) {
 		if (pad_new[currplayer] & PAD_B && !has_practice_point) {
-			for (tmp9 = 0; tmp9 < MAX_FIREBALLS; tmp9++) {
+			tmp9 = 0;
+			do {
 				if (!jimsheatballalive[tmp9]) {
 					jimsheatballalive[tmp9] = 1;
 					if (pad[controllingplayer] & PAD_UP) uint16_store_NOC(jimsheatball_vel_y, tmp9, (JIMSHEATBALL_JUMP_VEL / 4) * 7);
@@ -208,7 +209,7 @@ void cube_movement(void){
 					jimsheatballframe[tmp9] = 0;
 					break;
 				}
-			}
+			} while (++tmp9 < MAX_FIREBALLS);
 
 		}
 	}
@@ -221,7 +222,8 @@ void cube_movement(void){
 	player_gravity[currplayer] = currplayer_gravity;
 
 	if (retro_mode) {
-		for (tmp9 = 0; tmp9 < MAX_FIREBALLS; tmp9++) {
+		tmp9 = 0;
+		do {
 			if (jimsheatballalive[tmp9]) {
 
 					
@@ -253,7 +255,7 @@ void cube_movement(void){
 				uint16_store_NOC(jimsheatball_vel_x, tmp9, currplayer_vel_x);
 				uint16_store_NOC(jimsheatball_vel_y, tmp9, currplayer_vel_y);
 			}	
-		}
+		} while (++tmp9 < MAX_FIREBALLS);
 	}
 	currplayer_x = player_x[currplayer & 0x7F];
 	currplayer_y = player_y[currplayer & 0x7F];

@@ -201,12 +201,8 @@ void state_lvldone() {
 			TOTALCOINS = 0;
 			TOTALSTARS = 0;
 
-			#ifdef FLAG_ENABLE_TEST_LEVELS
-			for (tmp2 = 0; tmp2 < 255; tmp2++)
-			#else
-			for (tmp2 = 0; tmp2 < LEVEL_COUNT2; tmp2++) 
-			#endif
-			{
+			tmp2 = 0;
+			do {
 				// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
 				__A__ = tmp2; __asm__("tay");
 				__A__ = TOTALCOINS;
@@ -216,9 +212,16 @@ void state_lvldone() {
 				TOTALCOINS = __A__;
 				
 				if (LEVELCOMPLETE[tmp2]) TOTALSTARS += stars_list[tmp2];
+				tmp2++;
 			}
+			#ifdef FLAG_ENABLE_TEST_LEVELS
+			while (tmp2 < 255);
+			#else
+			while (tmp2 < LEVEL_COUNT2);
+			#endif
 
-			for (tmp2 = 0; tmp2 <= 10; tmp2++) {
+			tmp2 = 0;
+			do {
 				if (!achievements[tmp2]) {
 					if (LEVELCOMPLETE[tmp2]) {
 						achievements[tmp2] = 1;
@@ -237,7 +240,7 @@ void state_lvldone() {
 						};
 					}
 				}
-			}
+			} while (++tmp2 <= 10);
 
 			if (!achievements[11]) {
 				if (TOTALCOINS >= 10) {
