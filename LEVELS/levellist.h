@@ -150,7 +150,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //electroman
 	BLOCKSB, //decode
 	BLOCKSB, //lucky draw
-	BLOCKSC, //test1
+	BLOCKSA, //test1
 	BLOCKSB, //test2
 	BLOCKSB, //test3
 	BLOCKSA, //test4
