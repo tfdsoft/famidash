@@ -2129,7 +2129,7 @@ end:
 .import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y
 .import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _retro_mode, _icon
 .importzp _cube_rotate, _mini
-.import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING
+.import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT
 .importzp _cube_data, _slope_frames, _slope_type
 drawcube_rounding_table:
@@ -3018,13 +3018,13 @@ drawplayer_common := _drawplayerone::common
 		.byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT2, <_SPIDER2, <_WAVE2, <_SWING2, <_CUBE2
 		.byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2, <_MINI_CUBE2
     sprite_table_table_lo2:
-        .byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT_ALT, <_SPIDER2, <_WAVE2, <_SWING2, <_CUBE2
+        .byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT_ALT2, <_SPIDER2, <_WAVE2, <_SWING2, <_CUBE2
         .byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL_ALT, <_MINI_UFO2, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE2, <_MINI_SWING_ALT, <_MINI_CUBE2
 	sprite_table_table_hi:
 		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2, >_WAVE2, >_SWING2, <_CUBE2
 		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2, <_MINI_CUBE2
     sprite_table_table_hi2:
-        .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT, >_SPIDER2, >_WAVE2, >_SWING2, <_CUBE2
+        .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT2, >_SPIDER2, >_WAVE2, >_SWING2, <_CUBE2
         .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL_ALT, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE2, >_MINI_SWING_ALT, <_MINI_CUBE2
 .endproc
 

@@ -196,7 +196,7 @@ void cube_movement(void){
 	hblocked[currplayer] = 0;
 	jblocked[currplayer] = 0;
 //jim's shit
-	if (retro_mode) {
+	if (retro_mode && !dual) {
 		if (pad_new[currplayer] & PAD_B && !has_practice_point) {
 			tmp9 = 0;
 			do {

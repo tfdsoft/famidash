@@ -15,14 +15,14 @@
 	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
 	.export _pal_bright,_pal_spr_bright,_pal_bg_bright
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
-	.export _oam_clear,_oam_clear_player,_oam_size,__oam_spr,__oam_meta_spr,_oam_clear_two_players
-	;.export _oam_hide_rest
+	.export _oam_clear,_oam_clear_player,__oam_spr,__oam_meta_spr,_oam_clear_two_players
+	;.export _oam_hide_rest,_oam_size,_bank_bg,_rand8
 	.export _ppu_wait_frame,_ppu_wait_nmi
 	.export __scroll,_split,_newrand
-	.export _bank_spr,_bank_bg
+	.export _bank_spr
 	.export __vram_read,__vram_write
 	.export _pad_poll ;,_pad_trigger,_pad_state
-	.export _rand8,_rand16,_set_rand
+	.export _rand16,_set_rand
 	.export __vram_fill,_vram_inc,_vram_unrle
 	.export _set_vram_update,_flush_vram_update
 	.export __memcpy,__memfill,_delay
@@ -377,7 +377,19 @@ _oam_clear_player:
 	dex
 	stx OAM_BUF+0
 	stx OAM_BUF+4
+	pha
+	lda _gamemode
+	cmp #5
+	beq @more
+	cmp #6
+	beq @more	
+	pla
+	rts	
+@more:
+	pla
+	stx OAM_BUF+8
 	rts
+	
 ;void __fastcall__ oam_set(uint8_t index);	
 ;to manually set the position
 ;a = sprid
@@ -390,6 +402,18 @@ _oam_clear_two_players:
 	stx OAM_BUF+4
 	stx OAM_BUF+8
 	stx OAM_BUF+12
+	pha
+	lda _gamemode
+	cmp #5
+	beq @more
+	cmp #6
+	beq @more
+	pla
+	rts
+@more:
+	pla
+	stx OAM_BUF+16
+	stx OAM_BUF+20
 	rts
 ;void __fastcall__ oam_set(uint8_t index);	
 ;to manually set the position
@@ -414,19 +438,19 @@ _oam_get:
 
 ;void __fastcall__ oam_size(uint8_t size);
 
-_oam_size:
+;_oam_size:
 
-	and #1
-	php
-	lda <PPU_CTRL_VAR
-	and #%11011111
-	plp
-	beq :+
-		ora #%00100000
-	:
-	sta <PPU_CTRL_VAR
+;	and #1
+;	php
+;	lda <PPU_CTRL_VAR
+;	and #%11011111
+;	plp
+;	beq :+
+;		ora #%00100000
+;	:
+;	sta <PPU_CTRL_VAR
 
-	rts
+;	rts
 
 
 
@@ -735,19 +759,19 @@ _bank_spr:
 
 ;void __fastcall__ bank_bg(uint8_t n);
 
-_bank_bg:
+;_bank_bg:
 
-	and #1
-	php
-	lda <PPU_CTRL_VAR
-	and #%11101111
-	plp
-	beq :+
-		ora #%00010000
-	:
-	sta <PPU_CTRL_VAR
+;	and #1
+;	php
+;	lda <PPU_CTRL_VAR
+;	and #%11101111
+;	plp
+;	beq :+
+;		ora #%00010000
+;	:
+;	sta <PPU_CTRL_VAR
 
-	rts
+;	rts
 
 
 
@@ -952,13 +976,13 @@ rand2:
 	sta <RAND_SEED+1
 	rts
 
-_rand8:
+;_rand8:
 
-	jsr rand1
-	jsr rand2
-	adc <RAND_SEED
-	ldx #0
-	rts
+;	jsr rand1
+;	jsr rand2
+;	adc <RAND_SEED
+;	ldx #0
+;	rts
 
 
 

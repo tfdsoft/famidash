@@ -97,7 +97,7 @@ void __fastcall__ oam_clear_two_players();
 
 //set sprite display mode, 0 for 8x8 sprites, 1 for 8x16 sprites
 
-void __fastcall__ oam_size(uint8_t size);
+//void __fastcall__ oam_size(uint8_t size);
 
 //set sprite in OAM buffer, chrnum is tile, attr is attribute
 // Note: sprid removed for speed
@@ -168,14 +168,14 @@ void __fastcall__ bank_spr(uint8_t n);
 
 //select current chr bank for background, 0..1
 
-void __fastcall__ bank_bg(uint8_t n);
+//void __fastcall__ bank_bg(uint8_t n);
 
 
 
 //get random number 0..255 or 0..65535
 
 uint8_t __fastcall__ newrand();
-uint8_t __fastcall__ rand8();
+//uint8_t __fastcall__ rand8();
 uint16_t  __fastcall__ rand16();
 
 //set random seed
