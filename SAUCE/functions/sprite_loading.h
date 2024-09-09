@@ -455,7 +455,7 @@ void sprite_collide_lookup() {
 			gamemode = 8;
 			return;
 		case RANDOM_MODE_PORTAL:
-			gamemode = rand8() & 7;
+			gamemode = newrand() & 7;
 			uint8_inc(activesprites_activated, index);
 			return;
 #endif

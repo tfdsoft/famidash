@@ -866,7 +866,7 @@ void state_menu() {
 	set_scroll_y(0);
 	set_scroll_x(0);
 	ppu_wait_nmi();
-	tmp7 = rand8() & 255;
+	tmp7 = newrand() & 255;
 	normalorcommlevels = 1;
 	switch (menuselection) {
 		case 0x00:

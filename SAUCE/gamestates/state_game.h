@@ -214,7 +214,7 @@ void state_game(){
 			pal_col(0x1D,tmp2);
 
 
-			tmp3 = rand8();
+			tmp3 = newrand();
 
 
 			if (tmp3 < 0x80) tmp3 += 0x80;
