@@ -1202,11 +1202,77 @@ const unsigned char Spider_Jump[]={
 	0x80
 };
 
+
+const unsigned char Spider_0_Alt[]={
+	
+	-12,   0, 0x23,3,
+	 -4,   0, 0x25,3,
+	  4,   0, 0xFF,3,
+	0x80
+};
+
+const unsigned char Spider_1_Alt[]={
+	
+	-12,   0, 0x29,3,
+	 -4,   0, 0x2B,3,
+	  4,   0, 0xFF,3,
+	0x80
+};
+
+const unsigned char Spider_2_Alt[]={
+	
+	-12,   0, 0x2F,3,
+	 -4,   0, 0x31,3,
+	  4,   0, 0xFF,3,
+	0x80
+};
+const unsigned char Spider_3_Alt[]={
+	
+	-12,   0, 0x33,3,
+	 -4,   0, 0x35,3,
+	  4,   0, 0xFF,3,
+	0x80
+};
+
 const unsigned char * const SPIDER[]={Spider_0, Spider_0, Spider_0, Spider_0, Spider_1, Spider_1, Spider_1, Spider_1, Spider_2, Spider_2, Spider_2, Spider_2, Spider_3, Spider_3, Spider_3, Spider_3, Spider_Jump, Spider_Jump, Spider_Jump, Spider_Jump};
+const unsigned char * const SPIDER_ALT[]={Spider_0_Alt, Spider_0_Alt, Spider_0_Alt, Spider_0_Alt, Spider_1_Alt, Spider_1_Alt, Spider_1_Alt, Spider_1_Alt, Spider_2_Alt, Spider_2_Alt, Spider_2_Alt, Spider_2_Alt, Spider_3_Alt, Spider_3_Alt, Spider_3_Alt, Spider_3_Alt, Spider_0_Alt, Spider_0_Alt, Spider_0_Alt, Spider_0_Alt};
 
 const unsigned char * const SPIDER_JUMP[]={Spider_3};
 
 // ================================================================
+
+const unsigned char Spider_0_Alt2[]={
+	
+	-12,   0, 0x23,1,
+	 -4,   0, 0x25,1,
+	  4,   0, 0xFF,1,
+	0x80
+};
+
+const unsigned char Spider_1_Alt2[]={
+	
+	-12,   0, 0x29,1,
+	 -4,   0, 0x2B,1,
+	  4,   0, 0xFF,1,
+	0x80
+};
+
+const unsigned char Spider_2_Alt2[]={
+	
+	-12,   0, 0x2F,1,
+	 -4,   0, 0x31,1,
+	  4,   0, 0xFF,1,
+	0x80
+};
+const unsigned char Spider_3_Alt2[]={
+	
+	-12,   0, 0x33,1,
+	 -4,   0, 0x35,1,
+	  4,   0, 0xFF,1,
+	0x80
+};
+
+const unsigned char * const SPIDER_ALT2[]={Spider_0_Alt2, Spider_0_Alt2, Spider_0_Alt2, Spider_0_Alt2, Spider_1_Alt2, Spider_1_Alt2, Spider_1_Alt2, Spider_1_Alt2, Spider_2_Alt2, Spider_2_Alt2, Spider_2_Alt2, Spider_2_Alt2, Spider_3_Alt2, Spider_3_Alt2, Spider_3_Alt2, Spider_3_Alt2, Spider_0_Alt2, Spider_0_Alt2, Spider_0_Alt2, Spider_0_Alt2};
 
 const unsigned char Spider2_0[]={
 	
