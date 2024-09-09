@@ -590,7 +590,7 @@ void runthecolls() {
 
 	}	
 		
-	else if (!(kandoframecnt & 1)) {
+	else {
 		crossPRGBankJump0(sprite_collide);
 	}
 	if (!DEBUG_MODE && !invincible_counter) {
