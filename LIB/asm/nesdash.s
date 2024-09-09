@@ -2536,7 +2536,11 @@ drawplayer_center_offsets:
 			STA _spiderframe;__
 			JMP fin
 		@jump:				;	} else { SPIDER_JUMP[0] = SPIDER[8]
-			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
+			LDA #17			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
+			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
+			ADC _robotjumpframe
+			TAY				;__
+
 			JMP fin
 
 	wave:
@@ -2952,7 +2956,11 @@ drawplayer_common := _drawplayerone::common
 			STA _spiderframe+1;__
 			JMP drawplayer_common
 		@jump:				;	} else { SPIDER_JUMP[0] = SPIDER[8]
-			LDY #8			; ! This is the sizeof SPIDER / MINI_SPIDER, change it as needed
+			LDA #17			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
+			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
+			ADC _robotjumpframe
+			TAY				;__
+
 			JMP drawplayer_common
 	wave:
 		; C code:
