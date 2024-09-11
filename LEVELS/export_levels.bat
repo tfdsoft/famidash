@@ -1,7 +1,7 @@
 @echo off
 
 setlocal EnableDelayedExpansion
-SET ownpath=%~dp0
+cd "%~dp0"
 set n=0
 SET all_levels= ^
     stereomadness ^
@@ -27,7 +27,7 @@ SET all_levels= ^
 
 
 echo Exporting everything %all_levels%
-python %ownpath%export_levels.py --folder "%ownpath%LEVEL DATA" %all_levels%
+python export_levels.py --folder "%ownpath%LEVEL DATA" %all_levels%
 
 echo Export finished.
 pause
