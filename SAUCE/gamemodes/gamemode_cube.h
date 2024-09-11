@@ -241,14 +241,14 @@ void cube_movement(void){
 				Generic.x = high_byte(currplayer_x);
 				Generic.y = high_byte(currplayer_y);
 				
-
+			if (!(kandoframecnt & 3)) {
 			//	x_movement_coll();
 				if(bg_coll_D()){ // check collision below
 					high_byte(currplayer_y) -= eject_D;
 					low_byte(currplayer_y) = 0;
 					currplayer_vel_y = JIMSHEATBALL_JUMP_VEL;
 				}
-
+			}
 				if (cube_data[currplayer] & 1) { uint8_store(cube_data, currplayer, cube_data[currplayer] & 2); }
 				uint16_store_NOC(jimsheatballx, tmp9, currplayer_x);
 				uint16_store_NOC(jimsheatbally, tmp9, currplayer_y);

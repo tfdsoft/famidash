@@ -2281,8 +2281,8 @@ drawplayer_center_offsets:
 
         BIT _cube_data
         BMI @round
-		ldx _temptemp5
-		bne	@fin
+		ldx _temptemp5			;player trails?
+		bne	@fin			;if so, get out of here
 		LDA _player_vel_y+1		;	if player_vel_y == 0
 		ORA _player_vel_y+0		;
 		BNE @no_round		    ;__
@@ -2722,8 +2722,8 @@ drawplayer_common := _drawplayerone::common
 			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
 
-		ldx _temptemp5
-		bne	@fin		
+	;	ldx _temptemp5		;PLAYER TRAILS are disabled for 2 player mode anyway
+	;	bne	@fin		
 
 		LDA _player_vel_y+3		;	if player_vel_y == 0
 		ORA _player_vel_y+2		;
@@ -2777,13 +2777,23 @@ drawplayer_common := _drawplayerone::common
 		@fin:
 			LDX _cube_rotate+3
         @fin_nold:
+			LDA _gamemode
+			cmp #8
+			beq @noflip	
 			LDA _icon
+			cmp #$13
+			beq @noflip
 			cmp #2
 			bne	@norm
 			LDA drawcube_sprite_way, X
 			jmp @don
 		@norm:
 			LDA drawcube_sprite_table, X
+			jmp @don
+		@noflip:
+			LDA drawcube_sprite_none, X
+			;jmp @don
+			
 		@don:
 			TAX
 			AND #$C0

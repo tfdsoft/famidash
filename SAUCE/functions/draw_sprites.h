@@ -3,7 +3,10 @@
 #pragma rodata-name(push, "XCD_BANK_04")
 
 void reset_level(void);
-
+void minus15y();
+void minus15x();
+void plus15y();
+void plus15x();
 /*
 	Draws the first player sprite
 	Implemented in asm
@@ -30,10 +33,10 @@ void draw_sprites(void){
 			else { drawplayerone(); drawplayertwo(); }
 		}
 #ifdef FLAG_KANDO_FUN_STUFF
-		else if (bigboi) { drawplayerone(); high_byte(player_x[0]) += 15; drawplayerone(); high_byte(player_x[0]) -= 15; high_byte(player_y[0]) -= 15; drawplayerone(); high_byte(player_x[0]) += 15; drawplayerone(); high_byte(player_x[0]) -= 15; high_byte(player_y[0]) += 15; }
-		else if (longmode && !tallmode) { drawplayerone(); high_byte(player_x[0]) += 15; drawplayerone(); high_byte(player_x[0]) -= 15; }
-		else if (tallmode && !longmode) { drawplayerone(); high_byte(player_y[0]) -= 15; drawplayerone(); high_byte(player_y[0]) += 15; }
-		else if (tallmode && longmode) { drawplayerone(); high_byte(player_y[0]) -= 15; drawplayerone(); high_byte(player_y[0]) += 15; high_byte(player_x[0]) += 15; drawplayerone(); high_byte(player_x[0]) -= 15; }
+		else if (bigboi) { drawplayerone(); plus15x(); drawplayerone(); minus15x(); minus15y(); drawplayerone(); plus15x(); drawplayerone(); minus15x(); plus15y(); }
+		else if (longmode && !tallmode) { drawplayerone(); plus15x(); drawplayerone(); minus15x(); }
+		else if (tallmode && !longmode) { drawplayerone(); minus15y(); drawplayerone(); plus15y(); }
+		else if (tallmode && longmode) { drawplayerone(); minus15y(); drawplayerone(); plus15y(); plus15x(); drawplayerone(); minus15x(); }
 #endif
 		else drawplayerone();
 	}
@@ -57,7 +60,7 @@ void draw_sprites(void){
 			if (jimsheatballalive[tmp9]) {
 				oam_meta_spr(jimsheatballx[tmp9 & 0x7F], idx16_hi_NOC(jimsheatbally, tmp9), Heat_Ball_Sprites[jimsheatballframe[tmp9] & 0x7F]);		
 				jimsheatballframe[tmp9] == 20 ? jimsheatballframe[tmp9] = 0 : uint8_inc(jimsheatballframe, tmp9);
-				jimsheatballx[tmp9 & 0x7F] == 0xFF ? jimsheatballalive[tmp9] = 0 : uint8_inc(jimsheatballx, tmp9);
+				jimsheatballx[tmp9 & 0x7F] >= 0xF8 ? jimsheatballalive[tmp9] = 0 : jimsheatballx[tmp9]++;
 			}
 		} while (++tmp9 < MAX_FIREBALLS);
 	}
@@ -148,8 +151,8 @@ void draw_sprites(void){
 		} while (tmp1 > 0);
 
 	}
-	if ((forced_trails == 2 || trails == 2) && !dual && !twoplayer) {
-		temptemp5 = 1;
+	if ((forced_trails == 2 || trails == 2) && !dual) {
+		temptemp5++;
 		tmp6 = currplayer_vel_x << 2;
 		
 		tmpA = player_x[0];
@@ -167,13 +170,27 @@ void draw_sprites(void){
 		
 		player_x[0] = tmpA;
 		player_y[0] = tmpB;
-		temptemp5 = 0;		
+		temptemp5--;		
 	}
 #undef spr_type
 #undef animation_ptr
 }
 
+void minus15y() {
+	high_byte(player_y[0]) -= 15;
+}
 
+void minus15x() {
+	high_byte(player_x[0]) -= 15;
+}
+
+void plus15y() {
+	high_byte(player_y[0]) += 15;
+}
+
+void plus15x() {
+	high_byte(player_x[0]) += 15;
+}
 
 #pragma code-name(pop)
 #pragma data-name(pop) 
