@@ -437,7 +437,7 @@ void state_game(){
 		runthecolls();
 		
 		kandotemp3 = 1;
-				
+		
 #ifdef FLAG_KANDO_FUN_STUFF		
 		if (bigboi && !(kandoframecnt & 1) ) {
 			high_byte(player_x[0]) += 15;

@@ -7,6 +7,7 @@ extern void check_spr_objects(void);
 void scroll_thing_again2();
 extern char bg_coll_U();
 extern char bg_coll_D();
+void 	retrofireballclear();
 
 const unsigned char OUTLINES[]={
 		0x30,
@@ -426,6 +427,7 @@ void sprite_collide_lookup() {
 	//		target_scroll_y -= 0x10;
 		case ROBOT_MODE:
 			gamemode = collided;
+			retrofireballclear();
 			//robotjumptime[currplayer] = 0;
 			return;
 		case TELEPORT_SQUARE_ENTER:
@@ -443,12 +445,15 @@ void sprite_collide_lookup() {
 			return;
 		case SPIDER_MODE:
 			gamemode = 5;
+			retrofireballclear();			
 			return;
 		case WAVE_MODE:
 			gamemode = 6;
+			retrofireballclear();			
 			return;
 		case SWING_MODE:
 			gamemode = 7;
+			retrofireballclear();			
 			return;
 #ifdef FLAG_KANDO_FUN_STUFF
 		case NINJA_MODE:
@@ -794,6 +799,15 @@ void scroll_thing_again2(void) {
 		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF;
 	}
 }
+
+void retrofireballclear(void) {
+	if (retro_mode) {
+		tmp9 = 0;
+		do {
+			jimsheatballalive[tmp9] = 0;
+		} while (++tmp9 < MAX_FIREBALLS);			
+	}
+}			
 
 #pragma code-name(pop)
 #pragma data-name(pop) 
