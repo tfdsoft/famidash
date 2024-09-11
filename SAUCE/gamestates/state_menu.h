@@ -143,7 +143,7 @@ void __fastcall__ refreshmenu(void) {
 	tmp5 = ((level&1)<<10);
 	set_scroll_x(((level-tmp4)&1)<<8);
 	
-	__A__ = idx16_hi_NOC(leveltexts, level);
+	__A__ = idx16_load_hi_NOC(leveltexts, level);
 	if (__A__) draw_padded_text(leveltexts[level & 0x7F], level_text_size[level], 17, NTADR_A(8, 10)+tmp5);
 	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10)+tmp5);
 	// if (leveltexts2[level]) // always true
@@ -369,18 +369,18 @@ static const uint8_t iconTable[] = {
 
 void updateColors() {
 	if (pad_new[0] & PAD_UP) {
-		if (uint8_inc(icon_colors, settingvalue) & 0x30) {
+		if (idx8_inc(icon_colors, settingvalue) & 0x30) {
 			if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
-				uint8_store(icon_colors, settingvalue, (icon_colors[settingvalue] + 0x10) & 0x30);
+				idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] + 0x10) & 0x30);
 		} else {
 			if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
 				icon_colors[settingvalue] = 0x0F;
 		}
 	}
 	if (pad_new[0] & PAD_DOWN) { 
-		if (uint8_dec(icon_colors, settingvalue) & 0x30) {
+		if (idx8_dec(icon_colors, settingvalue) & 0x30) {
 			if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
-				uint8_store(icon_colors, settingvalue, (icon_colors[settingvalue] & 0x30) | 0x0C);
+				idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] & 0x30) | 0x0C);
 		} else {
 			if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
 				icon_colors[settingvalue] = 0x0C;
@@ -543,7 +543,7 @@ void funsettings() {
 		if (cam_seesaw) 	one_vram_buffer('g', NTADR_A(26, 17));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 17));	// this is auto optimized by cc65
 		
-		__A__ = idx16_hi_NOC(gameboytexts, gameboy_mode);
+		__A__ = idx16_load_hi_NOC(gameboytexts, gameboy_mode);
 		if (__A__) { draw_padded_text(gameboytexts[gameboy_mode & 0x7F], gameboy_text_size[gameboy_mode], 8, NTADR_A(19, 19)); 	one_vram_buffer('g', NTADR_A(26, 19));	}// believe it or not, 
 		else { one_vram_buffer_horz_repeat('$', 8, NTADR_A(19, 19)); one_vram_buffer('f', NTADR_A(26, 19)); }
 

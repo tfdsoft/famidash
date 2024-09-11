@@ -38,7 +38,7 @@ void spider_movement(void){
 				scroll_thing_again();
 				set_scroll_y(scroll_y);
 				if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
-					uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
+					idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 					break;
 				}
 				Generic.y = high_byte(currplayer_y); // the rest should be the same
@@ -79,7 +79,7 @@ void spider_movement(void){
 
 	if (currplayer_vel_y != 0){
 		if(pad_new[controllingplayer] & PAD_A) {
-			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 		}
 	}
 }	

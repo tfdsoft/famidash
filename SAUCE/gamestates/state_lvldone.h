@@ -498,10 +498,10 @@ void bgmtest() {
 		music_update();
 		pad_poll(0); // read the first controller
 		
-	__A__ = idx16_hi_NOC(xbgmtexts1, song);
+	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
 	if (__A__) draw_padded_text2(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 10));
 	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(7, 10));
-	__A__ = idx16_hi_NOC(xbgmtexts2, song);
+	__A__ = idx16_load_hi_NOC(xbgmtexts2, song);
 	if (__A__) draw_padded_text2(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 17, NTADR_A(7, 11));
 	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(7, 11));
 	

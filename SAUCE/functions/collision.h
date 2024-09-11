@@ -336,7 +336,7 @@ char bg_side_coll_common() {
 	if (gamemode == 6) {
 		if (bg_coll_slope()) {
 			if (!dblocked[currplayer]) {
-				uint8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
 			} 
 		}	
 		dblocked[currplayer] = 0;

@@ -59,7 +59,7 @@ void wave_movement(void){
 
 	if (currplayer_vel_y != 0 && !slope_type){
 		if(pad_new[controllingplayer] & PAD_A) {
-			uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 		}
 	}
 	
@@ -73,9 +73,9 @@ void wave_eject() {
 			if(dblocked[currplayer]){ // check collision above
 				high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U;
 				currplayer_vel_y = 0;
-				uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);			
+				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);			
 			} else {
-				uint8_store(cube_data, currplayer, cube_data[currplayer] | 1);		
+				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);		
 			}
 		}
 	}
@@ -84,9 +84,9 @@ void wave_eject() {
 			if (dblocked[currplayer]) {
 				high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
 				currplayer_vel_y = 0;
-				uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);		    
+				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);		    
 			} else {
-				uint8_store(cube_data, currplayer, cube_data[currplayer] | 1);		
+				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);		
 			}
 		}
 	}

@@ -163,92 +163,6 @@ void _display_attempt_counter (uint32_t args);
 
 #define GET_BANK(sym) (__asm__("ldx #0\nlda #<.bank(%v)", sym), __A__)
 
-// limit stuff to certain amounts
-#define byte(x) (((x)&0xFF))
-#define word(x) (((x)&0xFFFF))
-
-// redefined from neslib
-
-#define LSB(x)	((byte(x)))
-#define MSB(x)	((byte(x>>8)))
-#define SB3(x)	((byte(x##L>>16)))
-#define SB4(x)	((byte(x##L>>24)))
-
-#define LSW(x)	((word(x)))
-#define MSW(x)	((word((x##L)>>16)))
-
-// add byte with No Overflow Check
-#define addNOC_b(a, b) byte(byte(a)+b)
-// add word with No Overflow Check beyond the 16 bits
-#define addNOC_w(a, b) word(word(a)+b)
-
-// add to the low byte of a word, not overflowing into high
-#define addloNOC(a, b) (addNOC_b(a, b))|(a & 0xFF00)
-
-// subtract byte with No Overflow Check
-#define subNOC_b(a, b) byte(byte(a)-b)
-// subtract word with No Overflow Check beyond the 16 bits
-#define subNOC_w(a, b) word(word(a)-b)
-
-// subtract from the low byte of a word, not overflowing into high
-#define subloNOC(a, b) (subNOC_b(a, b))|(a & 0xFF00)
-
-// get specific byte from a word array
-#define idx16_lo(arr, idx) (*(((uint8_t * const)arr)+((idx<<1))))
-#define idx16_hi(arr, idx) (*(((uint8_t * const)(arr+1))+((idx<<1))))
-
-// same as above but idx < 128
-#define idx16_lo_NOC(arr, idx) (__A__ = idx<<1, __asm__("tay\n lda %v, y", arr), __A__)
-#define idx16_hi_NOC(arr, idx) (__A__ = idx<<1, __asm__("tay\n lda %v+1, y", arr), __A__)
-
-#define uint8_load(arr, idx) ( \
-	__A__ = idx, \
-	__asm__("tay"), \
-	__asm__("ldx #0 \n lda %v, y", arr), \
-	__A__ \
-)
-
-#define uint8_dec(arr, idx) ( \
-	__AX__ = idx << 8, \
-	__asm__("dec %v,x", arr), \
-	__asm__("lda %v,x", arr), \
-	__A__ \
-)
-
-#define uint8_inc(arr, idx) ( \
-	__AX__ = idx << 8, \
-	__asm__("inc %v,x", arr), \
-	__asm__("lda %v,x", arr), \
-	__A__ \
-)
-
-#define uint8_store(arr, idx, val) ( \
-	__A__ = idx, \
-	__asm__("tay"), \
-	__A__ = val, \
-	__asm__("sta %v, y", arr))
-
-// Yes i had to actually fucking use inline asm to get this to run fast
-#define uint16_store_NOC(arr, idx, word) ( \
-    __A__ = idx<<1, \
-    __asm__("tay"), \
-    __A__ = LSB(word), \
-    __asm__("sta %v,y", arr), \
-    __A__ = MSB(word), \
-    __asm__("sta %v+1, y", arr))
-
-#define uint16_store_lobyte_NOC(arr, idx, byte) ( \
-	__A__ = idx<<1, \
-    __asm__("tay"), \
-	__A__ = byte, \
-	__asm__("sta %v,y", arr))
-
-#define uint16_store_hibyte_NOC(arr, idx, byte) ( \
-	__A__ = idx<<1, \
-    __asm__("tay"), \
-	__A__ = byte, \
-	__asm__("sta %v+1,y", arr))
-
 #define uint32_inc(long) (__asm__("inc %v+0 \n bne %s", long, __LINE__), __asm__("inc %v+1 \n bne %s", long, __LINE__), __asm__("inc %v+2 \n bne %s", long, __LINE__), __asm__("inc %v+3 \n  %s:", long, __LINE__))
 
 // store a word's high and low bytes into separate places
@@ -332,5 +246,5 @@ do func while(0); \
 #define clc_sbc(a, b) (__A__ = (a), __asm__("clc \nsbc %v", b), __A__)
 
 extern uint8_t shiftBy4table[16];
-#define shlNibble4(nibble) (uint8_load(shiftBy4table, nibble))
-#define shlNibble12(nibble) (uint8_load(shiftBy4table, nibble), __AX__ <<= 8)
+#define shlNibble4(nibble) (idx8_load(shiftBy4table, nibble))
+#define shlNibble12(nibble) (idx8_load(shiftBy4table, nibble), __AX__ <<= 8)

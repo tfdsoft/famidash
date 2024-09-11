@@ -138,7 +138,7 @@ char sprite_load_special_behavior(){
 		#ifdef FLAG_KANDO_FUN_STUFF	
 			case DEATH_CHANCE: 
 				if ((newrand() & 63) == (newrand() & 63))
-					uint8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+					idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
 				killSprite_return0;
 			case MASK_SPRITES_ON:
 				disco_sprites = 1;
@@ -269,7 +269,7 @@ static void sprite_gamemode_main() {
 	if (pad[controllingplayer] & PAD_A) {	
 		if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
 		if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {
-			uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 
 			switch (collided) {
 			case BLUE_ORB:
@@ -326,14 +326,14 @@ static void sprite_gamemode_main() {
 				currplayer_vel_y = sprite_gamemode_y_adjust();
 				//break;
 			};
-		uint8_inc(activesprites_activated, index);			
+		idx8_inc(activesprites_activated, index);			
 		}
 	}
 }
 
 static void sprite_gamemode_controller_check() {
 	if (pad_new[controllingplayer] & PAD_A) {	
-		uint8_store(cube_data, currplayer, cube_data[currplayer] & 0x01);
+		idx8_store(cube_data, currplayer, cube_data[currplayer] & 0x01);
 		switch (collided) {
 		case BLUE_ORB:
 			currplayer_gravity ^= 0x01;
@@ -385,7 +385,7 @@ static void sprite_gamemode_controller_check() {
 			currplayer_vel_y = sprite_gamemode_y_adjust();
 			//break;
 		};
-	uint8_inc(activesprites_activated, index);
+	idx8_inc(activesprites_activated, index);
 	}
 }
 
@@ -434,13 +434,13 @@ void sprite_collide_lookup() {
 			if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {
 				currplayer_vel_y = 0;
 				orbed[currplayer] = 1;
-				uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 		case TELEPORT_PORTAL_UPWARDS_ENTER:
 		case TELEPORT_PORTAL_DOWNWARDS_ENTER:
 		case TELEPORT_PORTAL_ENTER_EXTENSION:
 		case TELEPORT_PORTAL_ENTER:
 				high_byte(currplayer_y) = teleport_output;
-				//uint8_inc(activesprites_activated, index);
+				//idx8_inc(activesprites_activated, index);
 			}
 			return;
 		case SPIDER_MODE:
@@ -461,7 +461,7 @@ void sprite_collide_lookup() {
 			return;
 		case RANDOM_MODE_PORTAL:
 			gamemode = newrand() & 7;
-			uint8_inc(activesprites_activated, index);
+			idx8_inc(activesprites_activated, index);
 			return;
 #endif
 		case MINI_PORTAL:
@@ -472,7 +472,7 @@ void sprite_collide_lookup() {
 			return;
 		case GREEN_PAD:
 			currplayer_gravity ^= 1;
-			uint8_inc(activesprites_activated, index);
+			idx8_inc(activesprites_activated, index);
 			return;
 		case DUAL_PORTAL:
 			dual = 1;
@@ -497,7 +497,7 @@ void sprite_collide_lookup() {
 				currplayer_gravity = 0; 
 				if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
 			}
-			uint8_inc(activesprites_activated, index);
+			idx8_inc(activesprites_activated, index);
 			return;
 		case GRAVITY_UP_PORTAL:
 		case GRAVITY_UP_UPWARDS_PORTAL:
@@ -509,7 +509,7 @@ void sprite_collide_lookup() {
 		//	    else
 					if (currplayer_vel_y > 0x0290) currplayer_vel_y = 0x0290; 
 			}
-			uint8_inc(activesprites_activated, index);	
+			idx8_inc(activesprites_activated, index);	
 			return;
 
 		// collided with coin
@@ -557,7 +557,7 @@ void sprite_collide_lookup() {
 
 		case SPIDER_ORB_UP:
 			if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {
-				uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 		case SPIDER_PAD_UP:
 			high_byte(currplayer_y) -= eject_D;
 			currplayer_vel_y = 0;
@@ -567,7 +567,7 @@ void sprite_collide_lookup() {
 			//	scroll_thing_again2();
 			//	set_scroll_y(scroll_y);
 				if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
-					uint8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
+					idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 					break;
 				}
 				Generic.y = high_byte(currplayer_y); // the rest should be the same
@@ -575,12 +575,12 @@ void sprite_collide_lookup() {
 				high_byte(currplayer_y) -= eject_U;
 				currplayer_vel_y = 0;	
 				orbed[currplayer] = 1;
-				uint8_inc(activesprites_activated, index);
+				idx8_inc(activesprites_activated, index);
 			}
 			return;
 		case SPIDER_ORB_DOWN:
 			if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {	
-				uint8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 		case SPIDER_PAD_DOWN:
 				high_byte(currplayer_y) -= eject_U + 1;
 				currplayer_vel_y = 0;
@@ -596,7 +596,7 @@ void sprite_collide_lookup() {
 				
 				currplayer_vel_y = 0;
 				orbed[currplayer] = 1;
-				uint8_inc(activesprites_activated, index);
+				idx8_inc(activesprites_activated, index);
 			}
 			return;
 
@@ -605,19 +605,19 @@ void sprite_collide_lookup() {
 		case YELLOW_PAD_UP:
 			table_offset = yellow_pad;
 			currplayer_vel_y = sprite_gamemode_y_adjust();
-			//uint8_inc(activesprites_activated, index);	
+			//idx8_inc(activesprites_activated, index);	
 			return;
 		case PINK_PAD_DOWN:
 		case PINK_PAD_UP:
 			table_offset = pink_pad;
 			currplayer_vel_y = sprite_gamemode_y_adjust();
-			//uint8_inc(activesprites_activated, index);	
+			//idx8_inc(activesprites_activated, index);	
 			return;
 		case RED_PAD_DOWN:
 		case RED_PAD_UP:
 			table_offset = red_pad;
 			currplayer_vel_y = sprite_gamemode_y_adjust();
-			//uint8_inc(activesprites_activated, index);	
+			//idx8_inc(activesprites_activated, index);	
 			return;
 
 		case GRAVITY_PAD_DOWN:
@@ -626,7 +626,7 @@ void sprite_collide_lookup() {
 				currplayer_gravity = 0x01;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE;	
 			}
-			//uint8_inc(activesprites_activated, index);	
+			//idx8_inc(activesprites_activated, index);	
 			return;
 		
 		case GRAVITY_PAD_UP:
@@ -635,7 +635,7 @@ void sprite_collide_lookup() {
 				currplayer_gravity = 0x00;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
 			}
-			//uint8_inc(activesprites_activated, index);	
+			//idx8_inc(activesprites_activated, index);	
 			return;
 
 		// collided with an orb
@@ -744,7 +744,7 @@ void sprite_collide(){
 					continue;
 				
 				case OUTL:
-					outline_color = uint8_load(OUTLINES, tmp4 & 0x0F);
+					outline_color = idx8_load(OUTLINES, tmp4 & 0x0F);
 					activesprites_type[index] = 0xFF;
 					continue;
 
@@ -802,10 +802,7 @@ void scroll_thing_again2(void) {
 
 void retrofireballclear(void) {
 	if (retro_mode) {
-		tmp9 = 0;
-		do {
-			jimsheatballalive[tmp9] = 0;
-		} while (++tmp9 < MAX_FIREBALLS);			
+		memfill(jimsheatballalive, 0, sizeof(jimsheatballalive));		
 	}
 }			
 

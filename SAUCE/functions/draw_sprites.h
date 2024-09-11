@@ -49,7 +49,7 @@ void draw_sprites(void){
 		
 		if (long_temp_x > 10) { 
 			long_temp_x -= 2;
-			oam_meta_spr(long_temp_x, idx16_hi_NOC(practice_player_y, currplayer)-1, Practice_Sprites[0]);
+			oam_meta_spr(long_temp_x, idx16_load_hi_NOC(practice_player_y, currplayer)-1, Practice_Sprites[0]);
 		}
 		// else if (long_temp_x < 10) {}
 	}
@@ -58,9 +58,9 @@ void draw_sprites(void){
 		tmp9 = 0;
 		do {
 			if (jimsheatballalive[tmp9]) {
-				oam_meta_spr(jimsheatballx[tmp9 & 0x7F], idx16_hi_NOC(jimsheatbally, tmp9), Heat_Ball_Sprites[jimsheatballframe[tmp9] & 0x7F]);		
-				jimsheatballframe[tmp9] == 20 ? jimsheatballframe[tmp9] = 0 : uint8_inc(jimsheatballframe, tmp9);
-				jimsheatballx[tmp9 & 0x7F] >= 0xF8 ? jimsheatballalive[tmp9] = 0 : jimsheatballx[tmp9]++;
+				oam_meta_spr(jimsheatballx[tmp9 & 0x7F], idx16_load_hi_NOC(jimsheatbally, tmp9), Heat_Ball_Sprites[jimsheatballframe[tmp9] & 0x7F]);		
+				jimsheatballframe[tmp9] == 20 ? jimsheatballframe[tmp9] = 0 : idx8_inc(jimsheatballframe, tmp9);
+				jimsheatballx[tmp9 & 0x7F] >= 0xF8 ? jimsheatballalive[tmp9] = 0 : idx16_inc_NOC(jimsheatballx, tmp9);
 			}
 		} while (++tmp9 < MAX_FIREBALLS);
 	}
@@ -79,7 +79,7 @@ void draw_sprites(void){
 		shuffle_offset = (shuffle_offset + 9) & 0x0F;	// !!! If max_loaded_sprites changes change this
 		index = shuffle_offset;
 		
-		if ((int8_t)(uint8_load(activesprites_type, index)) < 0) continue;
+		if ((int8_t)(idx8_load(activesprites_type, index)) < 0) continue;
 		if (!activesprites_active[index]) continue; 
 
 		temp_x = activesprites_realx[index];
@@ -103,9 +103,9 @@ void draw_sprites(void){
 		if (high_byte(animation_ptr)) {
 			// Reduce the frame counter by one to see if we need to move to the next frame
 			// If this frame has expired, then move to the next animation frame
-			animation_frame_count = uint8_dec(activesprites_anim_frame_count, index);
+			animation_frame_count = idx8_dec(activesprites_anim_frame_count, index);
 			if ((int8_t)animation_frame_count < 0) {
-				animation_frame = uint8_inc(activesprites_anim_frame, index);
+				animation_frame = idx8_inc(activesprites_anim_frame, index);
 				// if the animation frame is past the length, wrap it around back to zero
 				if (animation_frame >= animation_frame_length[spr_type]) {
 					activesprites_anim_frame[index] = 0;
@@ -145,7 +145,7 @@ void draw_sprites(void){
 		tmp1 = 8;
 
 		do {
-			oam_meta_spr(high_byte(tmp5), uint8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
+			oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
 			tmp5 = tmp5 - tmp6;
 			tmp1--;
 		} while (tmp1 > 0);

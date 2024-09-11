@@ -7,6 +7,7 @@
 #include "stdint.h"	// defines for standard types
 #include "stddef.h"	// more defines for standard types
 #include "nonstdint.h"
+#include "arr_macros.h" // fast array operations
 
 // asm standard library
 #include "neslib.h"  // common nes library
