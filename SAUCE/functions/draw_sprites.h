@@ -149,7 +149,7 @@ void draw_sprites(void){
 
 	}
 	if ((forced_trails == 2 || trails == 2) && !dual && !twoplayer) {
-
+		temptemp5 = 1;
 		tmp6 = currplayer_vel_x << 2;
 		
 		tmpA = player_x[0];
@@ -167,6 +167,7 @@ void draw_sprites(void){
 		
 		player_x[0] = tmpA;
 		player_y[0] = tmpB;
+		temptemp5 = 0;		
 	}
 #undef spr_type
 #undef animation_ptr

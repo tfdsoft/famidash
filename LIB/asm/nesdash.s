@@ -1,6 +1,6 @@
 ; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
 .importzp _gamemode
-.importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9, _max_fallspeed_big, _max_fallspeed_mini, _gravity_big, _gravity_mini  ; C-safe temp storage
+.importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9, _temptemp5, _max_fallspeed_big, _max_fallspeed_mini, _gravity_big, _gravity_mini  ; C-safe temp storage
 .import pusha, pushax, callptr4
 .import _scroll_x
 
@@ -2281,6 +2281,8 @@ drawplayer_center_offsets:
 
         BIT _cube_data
         BMI @round
+		ldx _temptemp5
+		bne	@fin
 		LDA _player_vel_y+1		;	if player_vel_y == 0
 		ORA _player_vel_y+0		;
 		BNE @no_round		    ;__
@@ -2719,6 +2721,9 @@ drawplayer_common := _drawplayerone::common
 			; 		else cube_rotate[1] += player_gravity[1] ? -CUBE_GRAVITY : CUBE_GRAVITY;
 			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
+
+		ldx _temptemp5
+		bne	@fin		
 
 		LDA _player_vel_y+3		;	if player_vel_y == 0
 		ORA _player_vel_y+2		;
