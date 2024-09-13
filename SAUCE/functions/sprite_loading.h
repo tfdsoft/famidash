@@ -58,7 +58,7 @@ uint8_t sprite_heights[]={
 	0x2F,	0x2F,	0x2F,	0x2F,	0x2F,	0x0F,	0x0F,	SPBH,	// 00 - 07
 	0x2F,	0x2F,	0x02,	0x0F,	0x02,	0x02,	0x02,	SPBH,	// 08 - 0F
 	0x02,	0x1F,	0x02,	0x1F,	0x1F,	0x1F,	0x1F,	0x2F,	// 10 - 17
-	0x2F,	0x2F,	SPBH,	SPBH,	0x17,	0x17,	0x17,	0x0F,	// 18 - 1F
+	0x2F,	0x2F,	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x0F,	// 18 - 1F
 	0x1F,	0x1F,	0x2F,	0x2F,	0x2F,	0x02,	0x02,	0x0F,	// 20 - 27
 	0x0F,	0x0F,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 28 - 2F
 	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 30 - 37
@@ -88,6 +88,14 @@ uint8_t sprite_heights[]={
 	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x0F,	0x0F,	// F0 - F7
 	0x0F,	0x0F,	0x0F,	0x02,	0x02,	0x07,	0x07,	0x00,	// F8 - FF
 };
+
+void animate_coin_1();
+
+void animate_coin_2();
+
+void animate_coin_3();
+
+
 
 char sprite_load_special_behavior(){
 
@@ -186,18 +194,32 @@ char sprite_load_special_behavior(){
 			if (coin1_obtained[level]) {
 				activesprites_type[index] = COINGOTTEN1;
 			}
+		case COINGOTTEN1:
+            if (coin1_timer) {
+                animate_coin_1();
+            }      
 			return 0x17;
 
 		case COIN2:
 			if (coin2_obtained[level]) {
 				activesprites_type[index] = COINGOTTEN2;
 			}
+
+		case COINGOTTEN2:
+	        if (coin2_timer) {
+                animate_coin_2();
+            }
 			return 0x17;
 
 		case COIN3:
 			if (coin3_obtained[level]) {
 				activesprites_type[index] = COINGOTTEN3;
 			}
+
+		case COINGOTTEN3:
+	        if (coin3_timer) {
+                animate_coin_3();
+            }
 			return 0x17; 
 
 		case LEVEL_END_TRIGGER:
@@ -209,6 +231,41 @@ char sprite_load_special_behavior(){
 	#undef type
 
 	#undef killSprite_return0
+}
+
+void animate_coin_1() {    
+    activesprites_y_lo[index & 0x7F] -= high_byte(coin1_speed);
+    coin1_speed -= 0x0040;
+    coin1_timer++;
+
+    if (coin1_timer == 40) {
+        activesprites_type[index & 0x7F] = 0xFF;
+        animating = 0;
+    }	 
+}
+
+
+void animate_coin_2() {
+    activesprites_y_lo[index & 0x7F] -= high_byte(coin2_speed);
+    coin2_speed -= 0x0040;
+    coin2_timer++;
+
+    if (coin2_timer == 40) {
+        activesprites_type[index & 0x7F] = 0xFF;
+        animating = 0;
+    }	 
+}
+
+
+void animate_coin_3() {
+    activesprites_y_lo[index & 0x7F] -= high_byte(coin3_speed);
+    coin3_speed -= 0x0040;
+    coin3_timer++;
+
+    if (coin3_timer == 40) {
+        activesprites_type[index & 0x7F] = 0xFF;
+        animating = 0;
+    }	 
 }
 
 #define yellow_orb 0x00 << 3
@@ -229,7 +286,7 @@ const short heights[] = {
 	0x530,  0x510,  0x38A,  0x510,  0x510,  0x510,  0x000, 0x000, // pink pad
 	0x850,  0x700,  0x600,  0x950,  0x950,  0x500,  0x000, 0x000, // red orb
 	0x590,  0x590,  0x4C0,  0x590,  0x590,  0x590,  0x000, 0x000, // yellow orb bigger
-       -0x990, -0x990, -0x970, -0x990, -0x990, -0x990,  0x000, 0x000, // black orb
+   -0x990, -0x990, -0x970, -0x990, -0x990, -0x990,  0x000, 0x000, // black orb
 	0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
 	0x950,  0x700,  0x600,  0x950,  0x950,  0x500,  0x000, 0x000, // red pad	
 };
@@ -242,7 +299,7 @@ const short mini_heights[] = {
 	0x350,  0x4A0,  0x4A0,  0x500,  0x350,  0x4A0,  0x000, 0x000, // pink pad
 	0x850,  0x700,  0x600,  0x850,  0x850,  0x500,  0x000, 0x000, // red orb
 	0x590,  0x590,  0x560,  0x590,  0x590,  0x590,  0x000, 0x000, // yellow orb bigger
-	-0x990,-0x990,-0x970,-0x990,-0x990,-0x990, 0x000, 0x000, // black orb
+	-0x990,-0x990, -0x970, -0x990, -0x990, -0x990,  0x000, 0x000, // black orb
 	0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
 	0x950,  0x700,  0x600,  0x950,  0x950,  0x500,  0x000, 0x000, // red pad	
 };
@@ -518,7 +575,9 @@ void sprite_collide_lookup() {
 			if (!has_practice_point) {
 				coins |= COIN_1;
 			sfx_play(sfx_coin, 0);
-				activesprites_type[index] = 0xFF;
+				coin1_timer = 1;
+				coin1_speed = 0x0200;
+				animating = 1;		
 			}
 			return;
 		case COIN2:
@@ -526,7 +585,9 @@ void sprite_collide_lookup() {
 			if (!has_practice_point) {
 				coins |= COIN_2;
 		       sfx_play(sfx_coin, 0);
-				activesprites_type[index] = 0xFF;
+				coin2_timer = 1;
+				coin2_speed = 0x0200;
+				animating = 1;		
 			}
 			return;
 		case COIN3:
@@ -534,7 +595,9 @@ void sprite_collide_lookup() {
 			if (!has_practice_point) {
 				coins |= COIN_3;
 			sfx_play(sfx_coin, 0);
-				activesprites_type[index] = 0xFF;
+				coin3_timer = 1;
+				coin3_speed = 0x0200;
+				animating = 1;		
 			}
 			return;
 

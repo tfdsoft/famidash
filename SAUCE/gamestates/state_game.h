@@ -110,7 +110,10 @@ unsigned char END_LEVEL_TIMER;
 void state_game(){
 	if (level == decode || level == test || level == test4) no_parallax = 1;
 	else no_parallax = 0;
-
+	coin1_timer = 0;
+	coin2_timer = 0;
+	coin3_timer = 0;
+	animating = 0;
 	mmc3_disable_irq();
 	//no_parallax = 0;
 	

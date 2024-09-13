@@ -311,6 +311,14 @@ uint16_t old_trail_scroll_y;
 uint16_t target_scroll_y;
 uint8_t song;
 
+uint8_t animating;
+uint8_t coin1_timer;
+uint8_t coin2_timer;
+uint8_t coin3_timer;
+uint16_t coin1_speed;
+uint16_t coin2_speed;
+uint16_t coin3_speed;
+
 uint8_t dashing[2];
 
 uint8_t has_practice_point; // = 0;

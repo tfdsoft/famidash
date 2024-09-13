@@ -2046,9 +2046,9 @@ doit:
 
 
 ; void check_spr_objects();
-.segment "CODE_2"
+.segment "CODE"
 
-.import _activesprites_active, _scroll_x, _scroll_y
+.import _activesprites_active, _scroll_x, _scroll_y, _animating
 
 .export _check_spr_objects := check_spr_objects
 .proc check_spr_objects
@@ -2092,7 +2092,7 @@ check_sprite_loop:
             jmp write_active
     sprite_alive:
         ; Sprite is still alive, so check to see if its on screen
-        bne sprite_offscreen
+        bne sprite_offscreen2
         ; sprite is alive AND onscreen x, so now check the Y position
         lda _activesprites_y_lo, x
         clc ; NOTICE: intentionally subtract 1 extra to position them on the screen better
@@ -2101,7 +2101,7 @@ check_sprite_loop:
         lda _activesprites_y_hi, x
         sbc realScrollY+1
         bne sprite_offscreen
-
+	finish:
         ; totally onscreen so finish updating its scroll position
         lda _activesprites_x_lo, x
         sec
@@ -2111,6 +2111,16 @@ check_sprite_loop:
         lda #1
         bne write_active ; unconditional
 	sprite_offscreen:
+		lda _animating
+		beq sprite_offscreen2
+		lda _activesprites_type, x
+		cmp #$07
+		beq finish
+		cmp #$1A
+		beq finish
+		cmp #$1B
+		beq finish
+	sprite_offscreen2:
         lda #0
 	write_active:
         sta _activesprites_active, x
