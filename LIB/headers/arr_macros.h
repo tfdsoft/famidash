@@ -100,6 +100,7 @@
 	__asm__("bne %s", __LINE__), \
 	__asm__("inc %v+1,x", arr), \
 	__asm__("%s:", __LINE__), \
+	/* The parts after this are auto-optimized out by cc65 if not needed */ \
 	__AX__ >>= 8, \
 	__asm__("tay"), \
 	__asm__("lda %v,y", arr), \
@@ -109,6 +110,7 @@
 	__A__ = idx << 1, \
 	__AX__ <<= 8, \
 	__asm__("inc %v,x", arr), \
+	/* The parts after this are auto-optimized out by cc65 if not needed */ \
 	__AX__ >>= 8, \
 	__asm__("tay"), \
 	__asm__("lda %v,y", arr), \
@@ -118,6 +120,7 @@
 	__A__ = idx << 1, \
 	__AX__ <<= 8, \
 	__asm__("inc %v+1,x", arr), \
+	/* The parts after this are auto-optimized out by cc65 if not needed */ \
 	__AX__ >>= 8, \
 	__asm__("tay"), \
 	__asm__("lda %v,y", arr), \
@@ -132,6 +135,7 @@
 	__asm__("dec %v+1,x", arr), \
 	__asm__("%s:", __LINE__), \
 	__asm__("dec %v,x", arr), \
+	/* The parts after this are auto-optimized out by cc65 if not needed */ \
 	__AX__ >>= 8, \
 	__asm__("tay"), \
 	__asm__("lda %v,y", arr), \
@@ -141,6 +145,7 @@
 	__A__ = idx << 1, \
 	__AX__ <<= 8, \
 	__asm__("dec %v,x", arr), \
+	/* The parts after this are auto-optimized out by cc65 if not needed */ \
 	__AX__ >>= 8, \
 	__asm__("tay"), \
 	__asm__("lda %v,y", arr), \
@@ -150,6 +155,7 @@
 	__A__ = idx << 1, \
 	__AX__ <<= 8, \
 	__asm__("dec %v+1,x", arr), \
+	/* The parts after this are auto-optimized out by cc65 if not needed */ \
 	__AX__ >>= 8, \
 	__asm__("tay"), \
 	__asm__("lda %v,y", arr), \

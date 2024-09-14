@@ -1,10 +1,10 @@
-#!/bin/python3
+#!/usr/bin/env python3
 # export command: dotnet path/FamiStudio.dll famidash/MUSIC/MODULES/music_master.fms famistudio-asm-export /tmp/tmp.s -famistudio-asm-format:ca65 -export-songs:find them yourself 
 
 instsizeregex = "Info: Instruments size : .+ bytes\\."
 songsizeregex = "Info: Song '.+' size: .+ bytes\\."
 
-songnameregex = 'Song[^\n]+Name="[^"]+"' # Song[anything but newline]Name="[anything but "]"
+songnameregex = 'Song[^\n]+Name="([^"]+)' # Song[anything but newline]Name="[anything but "]"
 nameregex = 'Name="[^"]+"'
 dpcmalignername = "dpcm"
 
@@ -26,7 +26,7 @@ if __name__ == "__main__":
     if os.path.exists(fs_txt_path):
         fs_txt = open(fs_txt_path)
 
-        names = [re.search(nameregex, i).group()[6:-1] for i in re.findall(songnameregex, "\n".join(fs_txt.readlines()))]
+        names = re.findall(songnameregex, "\n".join(fs_txt.readlines()))
         if len(names) == 0:
             LookupError("Amount of valid songs in the FS txt file is 0.")
             os.exit(1)
