@@ -354,7 +354,7 @@ char bg_side_coll_common() {
 */
 char bg_coll_R() {
     // check 2 points on the right side
-	temp_x = Generic.x + low_word(scroll_x) + Generic.width + (platformer ? 3 : 0); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + Generic.width + (platformer ? 3 : 2); // automatically only the low byte
 	return bg_side_coll_common();
 }
 
@@ -744,7 +744,7 @@ char bg_coll_U() {
 
 		COLL_CHECK_TOP
 
-		temp_x += 0x10; temp_x -= (Generic.width >> 1); // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
 
 		COLL_CHECK_TOP
 	}
@@ -796,7 +796,7 @@ char bg_coll_D() {
 
 		COLL_CHECK_BOTTOM
 
-		temp_x += 0x10; temp_x -= (Generic.width >> 1); // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
 
 		COLL_CHECK_BOTTOM
 	}
