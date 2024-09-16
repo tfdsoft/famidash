@@ -5,7 +5,7 @@
 void set_tile_banks();
 void __fastcall__ movement(void);
 void __fastcall__ movement2(void);
-
+extern uint8_t famistudio_song_speed;
 const uint8_t BG_Table[]={
 	0x11,
 	0x12,
@@ -140,7 +140,6 @@ void state_game(){
 	reset_level();
 
 	END_LEVEL_TIMER = 0;
-	songtimer = 0;
 	kandoframecnt = 0;
 
 	
@@ -179,10 +178,8 @@ void state_game(){
 		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(DECOTYPE[level]);		//OR ADDITIONAL SPRITES									//
 
 		if ((options & platformer) && !has_practice_point) {
-			songtimer++;
-			// DANGER ALERT
-			if ( songtime[song & 0x7F] < songtimer ) { songtimer = 0; music_play(song); }
-
+			
+			if (famistudio_song_speed == 0x80) music_play(song);
 		}		    
 
 		if (trails || forced_trails || gamemode == 6) {

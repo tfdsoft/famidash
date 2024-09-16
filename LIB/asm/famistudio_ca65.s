@@ -975,6 +975,7 @@ famistudio_dpcm_list_hi:          .res 1 ; TODO: Not needed if DPCM support is d
 famistudio_dpcm_effect:           .res 1 ; TODO: Not needed if DPCM support is disabled.
 famistudio_pulse1_prev:           .res 1
 famistudio_pulse2_prev:           .res 1
+.export _famistudio_song_speed = famistudio_song_speed
 famistudio_song_speed:            .res 1
 
 .if FAMISTUDIO_EXP_MMC5

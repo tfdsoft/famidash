@@ -89,28 +89,6 @@ const uint8_t DECOTYPE[] = {
 	EXTRASPRITES1,
 };
 
-const unsigned short songtime[] = {	//for looping in practice mode
-	5160, //stereo madness
-	4900, //back on track
-	5465, //polargeist
-	4940, //dryout
-	15000, //base after base
-	4900, //cant let go
-	5285, //jumper
-	15000, //time machine
-	5240, //cycles
-	15000, //xstep
-	15000, //clutterfunk
-	15000, //TOE
-	15000, //Electroman
-	15000, //lucky draw
-	15000, //decode
-	15000, //t1
-	15000, //t2
-	14000, //t3
-	14000, //t4
-};
-
 const unsigned char spike_set[] = {
 	SPIKESA, //stereo madness
 	SPIKESA, //back on track

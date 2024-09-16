@@ -411,9 +411,6 @@ uint8_t gravity_mod;
 
 uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 
-uint16_t songtimer;
-
-
 extern uint16_t min_scroll_y;
 extern uint16_t seam_scroll_y;
 
