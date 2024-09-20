@@ -82,6 +82,7 @@ const uint8_t DECOTYPE[] = {
 	DECOCLOUD,
 	DECOCLOUD,
 	DECOCLOUD,
+	DECOCLOUD,
 	DECOCLOUD, //lucky draw
 	EXTRASPRITES1,
 	EXTRASPRITES1,
@@ -103,6 +104,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //clutterfunk
 	SPIKESB, //theory of everything
 	SPIKESB, //electroman
+	SPIKESB, //nightmare
 	SPIKESB, //decode
 	SPIKESB, //lucky draw
 	SPIKESB, //test1
@@ -126,6 +128,7 @@ const unsigned char block_set[] = {
 	BLOCKSD, //clutterfunk
 	BLOCKSB, //theory of everything
 	BLOCKSB, //electroman
+	BLOCKSB, //nightmare
 	BLOCKSB, //decode
 	BLOCKSB, //lucky draw
 	BLOCKSA, //test1
@@ -149,6 +152,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //clutterfunk
 	SAWBLADESA, //theory of everything
 	SAWBLADESA, //electroman
+	SAWBLADESA, //nightmare
 	SAWBLADESA, //decode
 	SAWBLADESA, //lucky draw
 	SAWBLADESA, //test1
@@ -174,6 +178,7 @@ const unsigned char difficulty_list[] = {
     INSANE,
     INSANE,
     DEMON, //decode
+    DEMON, //nightmare
     DEMON, //lucky draw
     DEMON,
     DEMON,
@@ -195,6 +200,7 @@ const unsigned char stars_list[] = {
 	10,
 	11,
 	12,
+	10,
 	10,
 	10,
 	10,

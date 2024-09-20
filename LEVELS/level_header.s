@@ -78,6 +78,12 @@ decode_speed       = $00
 decode_bg_color    = $12
 decode_grnd_color  = $02
 
+nightmare_song_number = song_polargeist
+nightmare_game_mode   = $00
+nightmare_speed       = $00
+nightmare_bg_color    = $12
+nightmare_grnd_color  = $02
+
 electroman_song_number = song_electroman_adventures
 electroman_game_mode   = $00
 electroman_speed       = $00

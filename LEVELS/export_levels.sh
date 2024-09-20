@@ -16,6 +16,7 @@ all_levels="
             clutterfunk\
             theoryofeverything\
             electroman\
+	    nightmare\
 			decode\
 			luckydraw\
             test\
