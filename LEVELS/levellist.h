@@ -128,7 +128,7 @@ const unsigned char block_set[] = {
 	BLOCKSD, //clutterfunk
 	BLOCKSB, //theory of everything
 	BLOCKSB, //electroman
-	BLOCKSB, //nightmare
+	BLOCKSC, //nightmare
 	BLOCKSB, //decode
 	BLOCKSB, //lucky draw
 	BLOCKSA, //test1
