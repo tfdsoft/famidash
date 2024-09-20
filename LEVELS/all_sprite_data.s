@@ -3558,8 +3558,6 @@ sprite_data_electroman:
   .byte $ff
 .segment "SPR_BANK_02"
 sprite_data_nightmare:
-  .byte $00,$00,$70,$03,$91
-  .byte $00,$00,$80,$03,$c1
   .byte $a0,$00,$60,$03,$02
   .byte $d0,$00,$80,$03,$2c
   .byte $30,$01,$40,$03,$3d
