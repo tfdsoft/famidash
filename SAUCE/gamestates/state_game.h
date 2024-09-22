@@ -281,8 +281,11 @@ void state_game(){
 		set_player_banks();
 
         
+		crossPRGBankJump0(mouse_update);
+		pad_poll(0); // read the first controller
 
-        pad_poll(0); // read the first controller
+		if (mouse.left.click) pad_new[0] |= PAD_A;
+		if (mouse.left.press) pad[0] |= PAD_A;
 
 		if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
 

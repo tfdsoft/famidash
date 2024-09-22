@@ -153,6 +153,7 @@ void state_lvldone() {
 		}
 
  		// read the first controller
+		crossPRGBankJump0(mouse_update);
 		pad_poll(0);
 		// Move the sprite zero hit to the new location
 		POKE(0x200, sprite_0_y);
@@ -496,6 +497,7 @@ void bgmtest() {
 		
 		ppu_wait_nmi();
 		music_update();
+		crossPRGBankJump0(mouse_update);
 		pad_poll(0); // read the first controller
 		
 	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);

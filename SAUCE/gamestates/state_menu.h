@@ -266,7 +266,7 @@ void levelselection() {
 		newrand();
 		ppu_wait_nmi();
 		music_update();
-
+		crossPRGBankJump0(mouse_update);
 		pad_poll(0); // read the first controller
 
 		// scroll
@@ -446,7 +446,7 @@ void customize_screen() {
 		pal_col(0x0b,color2);
 		pal_col(0x09,color3);
 		pal_set_update();
-
+		crossPRGBankJump0(mouse_update);
 		pad_poll(0); // read the first controller
 		
 		if (!retro_mode) {
@@ -525,6 +525,7 @@ void funsettings() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
+		crossPRGBankJump0(mouse_update);
 		pad_poll(0); // read the first controller
 		
 		if (invisible) 	one_vram_buffer('g', NTADR_A(26, 7));	// believe it or not, 
@@ -633,6 +634,7 @@ void settings() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
+		crossPRGBankJump0(mouse_update);
 		pad_poll(0); // read the first controller
 		
 		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 7));
@@ -789,7 +791,6 @@ void state_menu() {
 	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
 	one_vram_buffer('a', tmp5);
 	one_vram_buffer('b', addloNOC(tmp5, 1));
-	pad_poll(0); // read the first controller
 	kandoframecnt = 0;
 	while (!(pad_new[0] & PAD_START)){
 		ppu_wait_nmi();
