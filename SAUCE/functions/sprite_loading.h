@@ -790,6 +790,9 @@ void sprite_collide(){
 						activesprites_type[index] = 0xFF; continue;
 					}
 					tmp2 = (tmp4 & 0x3F);
+					
+					if (tmp2 == 0x20) tmp2 = 0x30;
+					
 					if (tmp4 >= 0xC0){
 						pal_col(6, tmp2);
 						pal_col(5, oneShadeDarker(tmp2)); 
