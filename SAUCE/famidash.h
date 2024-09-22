@@ -321,7 +321,6 @@ uint16_t coin3_speed;
 
 // trail stuff
 uint8_t orbactive;
-uint8_t displaying;
 uint8_t last_trail_sprite_shown;
 uint8_t trail_sprites_visible[8];
 

@@ -884,18 +884,8 @@ void scroll_thing_again2(void) {
 }
 
 void settrailstuff() {
-	if (forced_trails != 2 && !orbactive && !displaying) {
-		orbactive = 2;
-		player_old_posy[0] = high_byte(player_y);	
-		player_old_posy[1] = high_byte(player_y);	
-		player_old_posy[2] = high_byte(player_y);	
-		player_old_posy[3] = high_byte(player_y);	
-		player_old_posy[4] = high_byte(player_y);	
-		player_old_posy[5] = high_byte(player_y);	
-		player_old_posy[6] = high_byte(player_y);	
-		player_old_posy[7] = high_byte(player_y);	
-		player_old_posy[8] = high_byte(player_y);
-		displaying = 0;
+	if (forced_trails != 2 && !orbactive) {
+		orbactive = 1;
 	}
 }
 

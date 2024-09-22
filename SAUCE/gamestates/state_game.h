@@ -115,7 +115,6 @@ void state_game(){
 	coin2_timer = 0;
 	coin3_timer = 0;
 	animating = 0;
-	displaying = 0;
 	last_trail_sprite_shown = 0;
 	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
     orbactive = 0;
@@ -187,7 +186,7 @@ void state_game(){
 			if (famistudio_song_speed == 0x80) music_play(song);
 		}		    
 
-		if ((forced_trails || gamemode == 6 || gamemode == 1 || gamemode == 3 || orbactive || displaying) && ((forced_trails == 2) || !(kandoframecnt & 0x1))) {
+		if (((forced_trails == 2) || !(kandoframecnt & 0x1))) {
 			if (!(kandoframecnt & 0x01)) {
 				if (old_trail_scroll_y >= scroll_y) {
 					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(scroll_y, old_trail_scroll_y));

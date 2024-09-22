@@ -132,31 +132,26 @@ void draw_sprites(void){
 		oam_meta_spr(temp_x, temp_y, animation_data_ptr);
 		
 	} while (++count < max_loaded_sprites);
-	if ((forced_trails == 1 || gamemode == 6 || gamemode == 1 || gamemode == 3 || ((orbactive || displaying) && forced_trails != 2))) {
+	if (kandoframecnt & 0x01) {
+		
+		tmp2 = 1;
+		do {
+			trail_sprites_visible[tmp2] = trail_sprites_visible[tmp2 + 1];
+		} while (++tmp2 < sizeof(trail_sprites_visible) - 1);
+
+		if (orbactive) {
+			trail_sprites_visible[7] = 1;
+		} else {
+			trail_sprites_visible[7] = 0;
+		}
+	}
+	if (forced_trails != 2) {
 		tmp6 = currplayer_vel_x << 1;
 		tmp5 = currplayer_x - (orbactive ? 0 : tmp6);
 		
 		tmp1 = (!orbactive ? 7 : 8);
-		
-		trail_loop();
 
-		if (!orbactive) {
-			if (kandoframecnt & 0x01) {
-				if (displaying == 0) {
-					orbactive = 2;
-				} else {
-					displaying--;
-					trail_sprites_visible[last_trail_sprite_shown + displaying] = 0;
-				}
-			}
-		}
-		else if (displaying < 8 && orbactive == 1) {
-			if (kandoframecnt & 0x01) {
-				displaying++;
-				trail_sprites_visible[8 - displaying] = 1;
-				last_trail_sprite_shown = 8 - displaying;
-			}
-		} else if (orbactive == 2) orbactive--;
+		trail_loop();
 	}
 	else if ((forced_trails == 2 || trails == 2) && !dual) {
 		temptemp5++;
