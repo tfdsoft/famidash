@@ -9,6 +9,9 @@ void reset_level(void) {
 	last_trail_sprite_shown = 0;
 	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
     orbactive = 0;
+    coin1_timer = 0;
+	coin2_timer = 0;
+	coin3_timer = 0;
 
     // slope stuff
     was_on_slope_counter = 0;
