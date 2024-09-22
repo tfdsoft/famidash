@@ -5,6 +5,8 @@ void reset_level(void) {
     // unsigned char i;
     if (!has_practice_point) famistudio_music_stop();
     coins = 0;
+    displaying = 0;
+    orbactive = 0;
 
     // slope stuff
     was_on_slope_counter = 0;

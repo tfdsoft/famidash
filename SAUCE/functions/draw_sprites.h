@@ -7,6 +7,7 @@ void minus15y();
 void minus15x();
 void plus15y();
 void plus15x();
+void trail_loop();
 /*
 	Draws the first player sprite
 	Implemented in asm
@@ -19,19 +20,19 @@ void draw_sprites(void){
 	// twoplayer = 1;
 	
 	// draw player
-
 	if (!invisible) {
 		if (dual) {
-			if (kandoframecnt & 0x01) { drawplayertwo(); drawplayerone(); }
-			else { drawplayerone(); drawplayertwo(); }
+			if (kandoframecnt & 0x01) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone);
+ }
+			else { crossPRGBankJump0(drawplayerone); crossPRGBankJump0(drawplayertwo); }
 		}
 #ifdef FLAG_KANDO_FUN_STUFF
-		else if (bigboi) { drawplayerone(); plus15x(); drawplayerone(); minus15x(); minus15y(); drawplayerone(); plus15x(); drawplayerone(); minus15x(); plus15y(); }
-		else if (longmode && !tallmode) { drawplayerone(); plus15x(); drawplayerone(); minus15x(); }
-		else if (tallmode && !longmode) { drawplayerone(); minus15y(); drawplayerone(); plus15y(); }
-		else if (tallmode && longmode) { drawplayerone(); minus15y(); drawplayerone(); plus15y(); plus15x(); drawplayerone(); minus15x(); }
+		else if (bigboi) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); minus15y(); crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); plus15y(); }
+		else if (longmode && !tallmode) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
+		else if (tallmode && !longmode) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); }
+		else if (tallmode && longmode) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
 #endif
-		else drawplayerone();
+		else crossPRGBankJump0(drawplayerone);
 	}
 	// the level sprites
 
@@ -131,20 +132,33 @@ void draw_sprites(void){
 		oam_meta_spr(temp_x, temp_y, animation_data_ptr);
 		
 	} while (++count < max_loaded_sprites);
-	if (forced_trails == 1 || trails == 1 || (gamemode == 6 && trails != 2)) {
+	if ((forced_trails == 1 || gamemode == 6 || gamemode == 1 || gamemode == 3 || ((orbactive || displaying) && forced_trails != 2))) {
 		tmp6 = currplayer_vel_x << 1;
-		tmp5 = player_x[0] - tmp6;
+		tmp5 = currplayer_x - (orbactive ? 0 : tmp6);
+		
+		tmp1 = (!orbactive ? 7 : 8);
+		
+		trail_loop();
 
-		tmp1 = 8;
-
-		do {
-			oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
-			tmp5 = tmp5 - tmp6;
-			tmp1--;
-		} while (tmp1 > 0);
-
+		if (!orbactive) {
+			if (kandoframecnt & 0x01) {
+				if (displaying == 0) {
+					orbactive = 2;
+				} else {
+					displaying--;
+					trail_sprites_visible[last_trail_sprite_shown + displaying] = 0;
+				}
+			}
+		}
+		else if (displaying < 8 && orbactive == 1) {
+			if (kandoframecnt & 0x01) {
+				displaying++;
+				trail_sprites_visible[8 - displaying] = 1;
+				last_trail_sprite_shown = 8 - displaying;
+			}
+		} else if (orbactive == 2) orbactive--;
 	}
-	if ((forced_trails == 2 || trails == 2) && !dual) {
+	else if ((forced_trails == 2 || trails == 2) && !dual) {
 		temptemp5++;
 		tmp6 = currplayer_vel_x << 2;
 		
@@ -154,12 +168,12 @@ void draw_sprites(void){
 		high_byte(player_x[0]) -= high_byte(tmp6);
 		high_byte(player_y[0]) = player_old_posy[3];
 
-		drawplayerone();
+		crossPRGBankJump0(drawplayerone);
 		
 		high_byte(player_x[0]) -= high_byte(tmp6);
 		high_byte(player_y[0]) = player_old_posy[6];
 
-		drawplayerone();
+		crossPRGBankJump0(drawplayerone);
 		
 		player_x[0] = tmpA;
 		player_y[0] = tmpB;
@@ -167,6 +181,16 @@ void draw_sprites(void){
 	}
 #undef spr_type
 #undef animation_ptr
+}
+
+void trail_loop() {
+	do {
+		if (trail_sprites_visible[tmp1 - 1]) {
+			oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(8 - tmp1)), Trail_Circ);
+		}
+		tmp5 = tmp5 - tmp6;
+		tmp1--;
+	} while (tmp1 > 0);
 }
 
 void minus15y() {

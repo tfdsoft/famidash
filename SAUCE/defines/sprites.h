@@ -135,6 +135,8 @@ const unsigned char Trail_Circ[]={
 	  0,  -4,0xF9,3,
 	0x80
 };
+#pragma rodata-name (pop)
+#pragma rodata-name (push, "XCD_BANK_05")
 
 // const unsigned char * const Trail_Circle[] = {Trail_Circ};
 
@@ -834,7 +836,8 @@ const unsigned char Mini_Ship2_6[]={
 
 const unsigned char * const MINI_SHIP2[] = {Mini_Ship2_0, Mini_Ship2_0, Mini_Ship2_1, Mini_Ship2_2, Mini_Ship2_2, Mini_Ship2_5, Mini_Ship2_6, Mini_Ship2_6};
 // end mini ship
-
+#pragma rodata-name (pop)
+#pragma rodata-name (push, "XCD_BANK_04")
 
 
 
@@ -889,7 +892,8 @@ const unsigned char COIN_3_X[]={
 	0x80
 };
 
-
+#pragma rodata-name (pop)
+#pragma rodata-name (push, "XCD_BANK_05")
 
 const unsigned char Ball_0[]={
 
@@ -1400,7 +1404,8 @@ const unsigned char * const MINI_SPIDER2[]={Mini_Spider2_0, Mini_Spider2_0, Mini
 
 const unsigned char * const MINI_SPIDER_JUMP2[]={Mini_Spider2_3};
 
-
+#pragma rodata-name (pop)
+#pragma rodata-name (push, "XCD_BANK_04")
 
 
 const unsigned char Speed_05_Portal[]={

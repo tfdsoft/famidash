@@ -31,6 +31,7 @@ void cube_movement(void){
 			high_byte(currplayer_y) -= eject_D;
 			low_byte(currplayer_y) = 0;
 			currplayer_vel_y = 0;
+			orbactive = 0;
 			if (fblocked[currplayer]) currplayer_gravity = 0;
 		}
 	} if (currplayer_gravity || (!currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))) {
@@ -38,6 +39,7 @@ void cube_movement(void){
 			high_byte(currplayer_y) -= eject_U;
 			low_byte(currplayer_y) = 0;
 			currplayer_vel_y = 0;
+			orbactive = 0;
 			if (fblocked[currplayer]) currplayer_gravity = 1;			
 		}
 	}
@@ -303,6 +305,7 @@ void cube_eject() {
 				high_byte(currplayer_y) -= eject_D;
 				low_byte(currplayer_y) = 0;
 				currplayer_vel_y = 0;
+				orbactive = 0;
 				if (fblocked[currplayer]) currplayer_gravity = 0;
 			}
 		} if (currplayer_gravity || (!currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))) {
@@ -310,6 +313,7 @@ void cube_eject() {
 				high_byte(currplayer_y) -= eject_U;
 				low_byte(currplayer_y) = 0;
 				currplayer_vel_y = 0;
+				orbactive = 0;
 				if (fblocked[currplayer]) currplayer_gravity = 1;			
 			}
 		}	

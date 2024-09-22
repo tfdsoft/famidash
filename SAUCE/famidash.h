@@ -319,6 +319,12 @@ uint16_t coin1_speed;
 uint16_t coin2_speed;
 uint16_t coin3_speed;
 
+// trail stuff
+uint8_t orbactive;
+uint8_t displaying;
+uint8_t last_trail_sprite_shown;
+uint8_t trail_sprites_visible[8];
+
 uint8_t dashing[2];
 
 uint8_t has_practice_point; // = 0;

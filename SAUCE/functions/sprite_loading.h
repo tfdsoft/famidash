@@ -8,6 +8,7 @@ void scroll_thing_again2();
 extern char bg_coll_U();
 extern char bg_coll_D();
 void 	retrofireballclear();
+void settrailstuff();
 
 const unsigned char OUTLINES[]={
 		0x30,
@@ -327,6 +328,7 @@ static void sprite_gamemode_main() {
 		if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
 		if (cube_data[currplayer] & 2 || pad_new[controllingplayer] & PAD_A) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+			settrailstuff();
 
 			switch (collided) {
 			case BLUE_ORB:
@@ -391,6 +393,7 @@ static void sprite_gamemode_main() {
 static void sprite_gamemode_controller_check() {
 	if (pad_new[controllingplayer] & PAD_A) {	
 		idx8_store(cube_data, currplayer, cube_data[currplayer] & 0x01);
+		settrailstuff();
 		switch (collided) {
 		case BLUE_ORB:
 			currplayer_gravity ^= 0x01;
@@ -473,13 +476,16 @@ void sprite_collide_lookup() {
 		case GRAVITY_2X_PORTAL: gravity_mod = 4; return;
 #endif
 		case CUBE_MODE:
+			orbactive = 0;
 			if (retro_mode) gamemode = 4;
 			else gamemode = 0;
 			return;    
 
 		case SHIP_MODE:
-		case BALL_MODE:
 		case UFO_MODE:
+			settrailstuff();
+			
+		case BALL_MODE:
 			target_scroll_y = uint16SepArrLoad(activesprites_y, index) - 0x10; //unused now
 	//		target_scroll_y -= 0x10;
 		case ROBOT_MODE:
@@ -505,10 +511,12 @@ void sprite_collide_lookup() {
 			retrofireballclear();			
 			return;
 		case WAVE_MODE:
+			settrailstuff();
 			gamemode = 6;
 			retrofireballclear();			
 			return;
 		case SWING_MODE:
+			settrailstuff();
 			gamemode = 7;
 			retrofireballclear();			
 			return;
@@ -551,6 +559,8 @@ void sprite_collide_lookup() {
 		case GRAVITY_DOWN_DOWNWARDS_PORTAL:
 		case GRAVITY_DOWN_INVISIBLE_PORTAL:  
 			if (currplayer_gravity) {
+				
+				settrailstuff();
 				currplayer_gravity = 0; 
 				if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
 			}
@@ -561,6 +571,8 @@ void sprite_collide_lookup() {
 		case GRAVITY_UP_DOWNWARDS_PORTAL:
 		case GRAVITY_UP_INVISIBLE_PORTAL:
 			if (!currplayer_gravity) {
+				
+				settrailstuff();
 				currplayer_gravity = 1; 
 				//if (currplayer_vel_y < 0x0200) currplayer_vel_y = 0x0200; 
 		//	    else
@@ -666,18 +678,21 @@ void sprite_collide_lookup() {
 		// collided with a pad
 		case YELLOW_PAD_DOWN:
 		case YELLOW_PAD_UP:
+			settrailstuff();
 			table_offset = yellow_pad;
 			currplayer_vel_y = sprite_gamemode_y_adjust();
 			//idx8_inc(activesprites_activated, index);	
 			return;
 		case PINK_PAD_DOWN:
 		case PINK_PAD_UP:
+			settrailstuff();
 			table_offset = pink_pad;
 			currplayer_vel_y = sprite_gamemode_y_adjust();
 			//idx8_inc(activesprites_activated, index);	
 			return;
 		case RED_PAD_DOWN:
 		case RED_PAD_UP:
+			settrailstuff();
 			table_offset = red_pad;
 			currplayer_vel_y = sprite_gamemode_y_adjust();
 			//idx8_inc(activesprites_activated, index);	
@@ -686,6 +701,7 @@ void sprite_collide_lookup() {
 		case GRAVITY_PAD_DOWN:
 		case GRAVITY_PAD_DOWN_INVISIBLE:
 			if (!currplayer_gravity) { 
+				settrailstuff();
 				currplayer_gravity = 0x01;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE;	
 			}
@@ -694,7 +710,8 @@ void sprite_collide_lookup() {
 		
 		case GRAVITY_PAD_UP:
 		case GRAVITY_PAD_UP_INVISIBLE:
-			if (currplayer_gravity) { 
+			if (currplayer_gravity) { 	
+				settrailstuff();
 				currplayer_gravity = 0x00;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
 			}
@@ -863,6 +880,22 @@ void scroll_thing_again2(void) {
 			if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
 		}
 		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF;
+	}
+}
+
+void settrailstuff() {
+	if (forced_trails != 2 && !orbactive && !displaying) {
+		orbactive = 2;
+		player_old_posy[0] = high_byte(player_y);	
+		player_old_posy[1] = high_byte(player_y);	
+		player_old_posy[2] = high_byte(player_y);	
+		player_old_posy[3] = high_byte(player_y);	
+		player_old_posy[4] = high_byte(player_y);	
+		player_old_posy[5] = high_byte(player_y);	
+		player_old_posy[6] = high_byte(player_y);	
+		player_old_posy[7] = high_byte(player_y);	
+		player_old_posy[8] = high_byte(player_y);
+		displaying = 0;
 	}
 }
 
