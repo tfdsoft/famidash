@@ -197,7 +197,7 @@ const unsigned char * const MINI_CUBE2[] = {Mini_Cube2_0, Mini_Cube2_1, Mini_Cub
 
 const unsigned char Mini_Ball[]={
 
-	 -4,  4,0x0B,3|OAM_FLIP_V,
+	 -12,  4,0x0B,3|OAM_FLIP_V,
 	0x80
 };
 
@@ -695,32 +695,32 @@ const unsigned char * const MINI_SWING_ALT[] = {Mini_Swing_0_ALT, Mini_Swing_0_A
 
 const unsigned char Mini_Swing2_0[]={
 
-	 -4,  -4,0x1B,1,
+	 -12,  -4,0x1B,1,
 	0x80
 };
 
 const unsigned char Mini_Swing2_1[]={
 
-	 -4,  -4,0x1B,1,
+	 -12,  -4,0x1B,1,
 	0x80
 };
 
 const unsigned char Mini_Swing2_2[]={
 
-	 -4,  -4,0x3F,1,
+	 -12,  -4,0x3F,1,
 	0x80
 };
 
 
 const unsigned char Mini_Swing2_5[]={
 
-	 -4,  -4,0x3D,1,
+	 -12,  -4,0x3D,1,
 	0x80
 };
 
 const unsigned char Mini_Swing2_6[]={
 
-	 -4,  -4,0x3D,1,
+	 -12,  -4,0x3D,1,
 	0x80
 };
 
@@ -1006,25 +1006,25 @@ const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump
 
 const unsigned char Mini_Robot_0[]={
 	
-	-4,   -4, 0x13,3,
+	-12,   -4, 0x13,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_1[]={
 	
-	-4,   -4, 0x15,3,
+	-12,   -4, 0x15,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_2[]={
 	
-	-4,   -4, 0x17,3,
+	-12,   -4, 0x17,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump_1[]={
 	
-	-4,   -4, 0x15,3,
+	-12,   -4, 0x15,3,
 	0x80
 };//also mini robot 3rd animation frame - Ficus
 
@@ -1326,25 +1326,25 @@ const unsigned char * const SPIDER_JUMP2[]={Spider2_3};
 
 const unsigned char Mini_Spider_0[]={
 
-	 -4,  -4,0x21,3,
+	 -12,  -4,0x21,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_1[]={
 
-	 -4,  -4,0x23,3,
+	 -12,  -4,0x23,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_2[]={
 
-	 -4,  -4,0x25,3,
+	 -12,  -4,0x25,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_3[]={
 
-	 -4,  -4,0x27,3,
+	 -12,  -4,0x27,3,
 	0x80
 };
 
@@ -1378,25 +1378,25 @@ const unsigned char * const MINI_SPIDER_JUMP[]={Mini_Spider_3};
 
 const unsigned char Mini_Spider2_0[]={
 
-	 -4,  -4,0x21,1,
+	 -12,  -4,0x21,1,
 	0x80
 };
 
 const unsigned char Mini_Spider2_1[]={
 
-	 -4,  -4,0x23,1,
+	 -12,  -4,0x23,1,
 	0x80
 };
 
 const unsigned char Mini_Spider2_2[]={
 
-	 -4,  -4,0x25,1,
+	 -12,  -4,0x25,1,
 	0x80
 };
 
 const unsigned char Mini_Spider2_3[]={
 
-	 -4,  -4,0x27,1,
+	 -12,  -4,0x27,1,
 	0x80
 };
 
