@@ -794,6 +794,7 @@ void state_menu() {
 	while (!(pad_new[0] & PAD_START)){
 		ppu_wait_nmi();
 		music_update();
+		crossPRGBankJump0(mouse_update);
 		pad_poll(0); // read the first controller
 		newrand();
 		
@@ -864,6 +865,7 @@ void state_menu() {
 			gameState = 0xFE;
 			return;
 		}
+		
 	}	
 	set_scroll_y(0);
 	set_scroll_x(0);

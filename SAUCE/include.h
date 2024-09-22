@@ -26,6 +26,10 @@
 #pragma rodata-name (push, "XCD_BANK_03")
 #include "defines/menunametable.h"
 #pragma rodata-name (pop)
+#pragma rodata-name (push, "XCD_BANK_05")
+#include "mouse.h"
+//#include "mouse.c"
+#pragma rodata-name (pop)
 #pragma rodata-name (push, "LVL_BANK_00")
 #include "defines/menunametable2.h"
 #include "LEVELS/grounddata.h"
