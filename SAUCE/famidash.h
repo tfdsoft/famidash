@@ -299,7 +299,7 @@ uint8_t gameState = 0x01;
 uint8_t teleport_output;
 
 uint8_t normalorcommlevels;
-
+uint8_t mouse_timer;
 
 extern uint8_t parallax_scroll_column;
 extern uint8_t parallax_scroll_column_start;

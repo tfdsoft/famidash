@@ -222,6 +222,8 @@ void levelselection() {
 	else if (level >= LEVEL_COUNT) level -= LEVEL_COUNT;
 	
 	mmc3_set_8kb_chr(MENUBANK);
+	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_1(22);
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
 
@@ -340,6 +342,8 @@ void levelselection() {
 			//break;
 			refreshmenu();
 		}
+		kandoframecnt++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 	}	
 
 }
@@ -401,6 +405,8 @@ void customize_screen() {
 	pal_col(0x00, 0x00);
 	pal_set_update();
 	mmc3_set_8kb_chr(MENUICONBANK);
+	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_1(22);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
 
@@ -503,6 +509,8 @@ void customize_screen() {
 		if (pad_new[0] & PAD_B) {
 			return;
 		}
+		kandoframecnt++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 	}
 }
 
@@ -519,6 +527,8 @@ void funsettings() {
 	vram_adr(NAMETABLE_A);
 	vram_unrle(funsettingscreen);   
 	//kandotemp4 = 0;
+	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_1(22);
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 by default	
 	pal_fade_to_withmusic(0,4);
@@ -612,7 +622,8 @@ void funsettings() {
 		crossPRGBankJump0(gameboy_check);
 
 		if (gameboy_mode) kandotemp4 = 1;
-
+		kandoframecnt++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 	}
 }
 
@@ -627,6 +638,8 @@ void settings() {
 	pal_bg(paletteSettings);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingscreen);   	
+	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_1(22);
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 beforehand
 	pal_fade_to_withmusic(0,4);
@@ -710,7 +723,8 @@ void settings() {
 		if (pad_new[0] & PAD_B) {
 			return;
 		}
-
+		kandoframecnt++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;			
 	}
 }
 
@@ -738,7 +752,8 @@ void state_menu() {
     pal_bg(splashMenu);
 
 	mmc3_set_8kb_chr(MENUBANK);
-
+	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_1(22);
 	
 	
 	
@@ -825,7 +840,7 @@ void state_menu() {
 			if (discoframe == 12) discoframe = 0;
 		}
 		kandoframecnt++;
-
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;		
 		tmp3 = 0;
 		
 		if (pad_new[0] & PAD_RIGHT) {
@@ -945,7 +960,14 @@ void bgmtest() {
 
 void mouse_and_cursor() {
 	crossPRGBankJump0(mouse_update);	
-	if (mouse.right.click) pad_new[0] |= PAD_B;
+	if (mouse.connected) {
+		if (mouse.left.press || mouse.left.click || mouse.right.press || mouse.right.click) mouse_timer = 120;
+		if (mouse.left.press) pad[0] |= PAD_A;
+		if (mouse.left.click) pad_new[0] |= PAD_A;
+		if (mouse.right.click) pad_new[0] |= PAD_B;
+		oam_clear();
+		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, 0xAF, 0);	
+	}
 }
 #pragma code-name(pop)
 #pragma data-name(pop) 

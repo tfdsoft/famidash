@@ -192,6 +192,7 @@ void __fastcall__ mouse_update(void) {
 
   // Update the cursor X position
   if (x_velocity) {
+	  mouse_timer = 120;
     new_x = mouse.x + x_velocity;
     if (x_velocity > 0) {
       mouse.x = new_x < MAX_X && new_x > mouse.x ? new_x : MAX_X;
@@ -203,6 +204,7 @@ void __fastcall__ mouse_update(void) {
 
   // Update the cursor Y position
   if (y_velocity) {
+	  mouse_timer = 120;
     new_y = mouse.y + y_velocity;
     if (y_velocity > 0) {
       mouse.y = new_y < MAX_Y && new_y > mouse.y ? new_y : MAX_Y;
