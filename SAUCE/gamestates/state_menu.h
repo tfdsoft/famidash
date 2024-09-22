@@ -620,7 +620,6 @@ void funsettings() {
 #include "defines/mainmenu_charmap.h"
 
 void settings() {
-	
 	settingvalue = 0; 
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
@@ -785,6 +784,8 @@ void state_menu() {
 
 	
  	ppu_on_all();
+	pad[0] = 0;
+	pad_new[0] = 0;
 	
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;
