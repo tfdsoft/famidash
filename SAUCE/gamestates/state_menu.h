@@ -2,37 +2,11 @@
 #pragma data-name(push, "XCD_BANK_03")
 #pragma rodata-name(push, "XCD_BANK_03")
 
-const uint8_t BG_Table2[]={
-	0x11,
-	0x12,
-	0x13,
-	0x14,
-	0x15,
-	0x16,
-	0x17,
-	0x18,
-	0x19,
-	0x1A,
-	0x1B,
-	0x1C
-};
-
-const uint8_t G_Table2[]={
-	0x21,
-	0x22,
-	0x23,
-	0x24,
-	0x25,
-	0x26,
-	0x27,
-	0x28,
-	0x29,
-	0x2A,
-	0x2B,
-	0x2C
-};
 void state_demo();
 void mouse_and_cursor();
+void colorinc();
+void colordec();
+
 const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
     LSB(NTADR_A(15, 11)),	// 0
@@ -369,28 +343,12 @@ const uint8_t hiNTAddrTableCustomizeScreen[] = {
 	MSB(NTADR_A(4, 14))			// 4 = 0
 };
 
-static const uint8_t iconTable[] = {
-	0, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C, 0x0E, 0x20, 0x22, 0x24, 0x26, 0x40, 0x42, 0x44, 0x46, 0x48, 0x4A, 0x4C, 0x4E, 0x60, 0x62, 0x64, 0x66, 0x68, 0x6A, 0x6C
-};
-
 void updateColors() {
 	if (pad_new[0] & PAD_UP) {
-		if (idx8_inc(icon_colors, settingvalue) & 0x30) {
-			if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
-				idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] + 0x10) & 0x30);
-		} else {
-			if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
-				icon_colors[settingvalue] = 0x0F;
-		}
+		crossPRGBankJump0(colorinc);
 	}
 	if (pad_new[0] & PAD_DOWN) { 
-		if (idx8_dec(icon_colors, settingvalue) & 0x30) {
-			if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
-				idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] & 0x30) | 0x0C);
-		} else {
-			if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
-				icon_colors[settingvalue] = 0x0C;
-		}
+		crossPRGBankJump0(colordec);
 	}
 	//if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) icon_colors[settingvalue] = 0x0D;	
 }
@@ -454,7 +412,62 @@ void customize_screen() {
 		pal_set_update();
 		mouse_and_cursor();
 		 // read the first controller
-		
+	
+//mouse stuff
+
+		if (mouse.left.click) {
+//icon
+			if ((mouse.x >= 0x76 && mouse.x <= 0x83)) { 
+				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
+					icon++;
+					if (icon > (MAX_ICONS - 1)) icon = 0;				
+					//settingvalue = 3;
+				}
+				else if (mouse.y >= 0x4D && mouse.y <= 0x54) {
+					if (icon == 0) icon = MAX_ICONS - 1;
+					else icon--;				
+					//settingvalue = 3;
+				}
+//color 2
+				else if ((mouse.y >= 0x64 && mouse.y <= 0x6C)) {
+					settingvalue = 1;
+					crossPRGBankJump0(colorinc);
+				}
+				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
+					settingvalue = 1;			
+					crossPRGBankJump0(colordec);
+				}
+
+				
+			}
+//color 1
+			if ((mouse.x >= 0x2E && mouse.x <= 0x3B)) {
+				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
+					settingvalue = 0;
+					crossPRGBankJump0(colorinc);
+				}
+				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
+					settingvalue = 0;			
+					crossPRGBankJump0(colordec);
+				}
+			}
+//color3
+			if ((mouse.x >= 0xBE && mouse.x <= 0xCB)) {
+				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
+					settingvalue = 2;
+					crossPRGBankJump0(colorinc);
+				}
+				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
+					settingvalue = 2;			
+					crossPRGBankJump0(colordec);
+				}
+			}
+			if ((mouse.x >= 0x35 && mouse.x <= 0xBC) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
+				return;			//go back
+			}
+		}
+//end mouse stuff
+	
 		if (!retro_mode) {
 			tmp1 = iconTable[icon] + 'a';
 			one_vram_buffer(tmp1, NTADR_A(15, 8));		
@@ -971,6 +984,7 @@ void mouse_and_cursor() {
 		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, 0xAF, 0);	
 	}
 }
+
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)

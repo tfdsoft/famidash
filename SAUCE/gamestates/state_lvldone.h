@@ -580,6 +580,28 @@ void gameboy_check() {
 		else if (gameboy_mode == 8) { color_emphasis(COL_EMP_GREYDARK); }
 }
 
+
+
+void colorinc() {
+	if (idx8_inc(icon_colors, settingvalue) & 0x30) {
+		if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
+			idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] + 0x10) & 0x30);
+	} else {
+		if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
+			icon_colors[settingvalue] = 0x0F;
+	}	
+}
+
+void colordec() {
+	if (idx8_dec(icon_colors, settingvalue) & 0x30) {
+		if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
+			idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] & 0x30) | 0x0C);
+	} else {
+		if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
+			icon_colors[settingvalue] = 0x0C;
+	}
+}	
+
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)
