@@ -42,7 +42,7 @@ void state_lvldone() {
     pal_spr(paletteMenu);
 
 	mmc3_set_8kb_chr(LEVELCOMPLETEBANK);
-
+	mmc3_set_2kb_chr_bank_1(22);
 	// Make an a nametable for the chain
     vram_adr(NAMETABLE_A);
 	vram_fill(0xfe, 0x3c0);
@@ -153,10 +153,10 @@ void state_lvldone() {
 		}
 
  		// read the first controller
-		crossPRGBankJump0(mouse_and_cursor);
-		pad_poll(0);
+		
 		// Move the sprite zero hit to the new location
 		POKE(0x200, sprite_0_y);
+
 
 		switch (current_state) {
 		case 0:
@@ -322,6 +322,7 @@ void state_lvldone() {
 			checkcoinproceed();
 			break;
 		case 7:
+			crossPRGBankJump0(mouse_and_cursor);
 			if (pad_new[0] & PAD_LEFT) menuselection ^= 1;
 			if (pad_new[0] & PAD_RIGHT) menuselection ^= 1;
 			if (pad_new[0] & PAD_START){
@@ -498,7 +499,7 @@ void bgmtest() {
 		ppu_wait_nmi();
 		music_update();
 		crossPRGBankJump0(mouse_and_cursor);
-		pad_poll(0); // read the first controller
+		 // read the first controller
 		
 	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
 	if (__A__) draw_padded_text2(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 10));

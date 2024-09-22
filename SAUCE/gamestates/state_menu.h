@@ -269,7 +269,7 @@ void levelselection() {
 		ppu_wait_nmi();
 		music_update();
 		mouse_and_cursor();
-		pad_poll(0); // read the first controller
+		 // read the first controller
 
 		// scroll
 		if (tmp4) edit_irq_table(high_byte(tmp8),2);
@@ -453,7 +453,7 @@ void customize_screen() {
 		pal_col(0x09,color3);
 		pal_set_update();
 		mouse_and_cursor();
-		pad_poll(0); // read the first controller
+		 // read the first controller
 		
 		if (!retro_mode) {
 			tmp1 = iconTable[icon] + 'a';
@@ -536,7 +536,7 @@ void funsettings() {
 		ppu_wait_nmi();
 		music_update();
 		mouse_and_cursor();
-		pad_poll(0); // read the first controller
+		 // read the first controller
 		
 		if (invisible) 	one_vram_buffer('g', NTADR_A(26, 7));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 7));	// this is auto optimized by cc65
@@ -647,7 +647,7 @@ void settings() {
 		ppu_wait_nmi();
 		music_update();
 		mouse_and_cursor();
-		pad_poll(0); // read the first controller
+		 // read the first controller
 		
 		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 7));
 		else one_vram_buffer('f', NTADR_A(26, 7));
@@ -812,7 +812,7 @@ void state_menu() {
 		ppu_wait_nmi();
 		music_update();
 		mouse_and_cursor();
-		pad_poll(0); // read the first controller
+		 // read the first controller
 		newrand();
 		
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
@@ -928,7 +928,7 @@ void bgmtest() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
-		pad_poll(0); // read the first controller
+		 // read the first controller
 		
 		one_vram_buffer(' '-1, NTADR_A(14, 10));
 		one_vram_buffer(0xb0+song, NTADR_A(15,10));
@@ -960,11 +960,13 @@ void bgmtest() {
 
 void mouse_and_cursor() {
 	crossPRGBankJump0(mouse_update);	
+	pad_poll(0);
 	if (mouse.connected) {
 		if (mouse.left.press || mouse.left.click || mouse.right.press || mouse.right.click) mouse_timer = 120;
 		if (mouse.left.press) pad[0] |= PAD_A;
 		if (mouse.left.click) pad_new[0] |= PAD_A;
 		if (mouse.right.click) pad_new[0] |= PAD_B;
+		if (mouse.right.press) pad[0] |= PAD_B;
 		oam_clear();
 		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, 0xAF, 0);	
 	}

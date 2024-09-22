@@ -97,6 +97,8 @@ void state_demo(){
 
 	oam_clear();
 	mmc3_set_8kb_chr(MENUBANK);
+	mmc3_set_2kb_chr_bank_0(0xFF);	
+	mmc3_set_2kb_chr_bank_1(22);	
 	ppu_on_all();
 	ppu_wait_nmi();
 
@@ -111,14 +113,14 @@ void state_demo(){
 	*/
 	
 	do {
-       	pad_poll_both();
+       	crossPRGBankJump0(mouse_and_cursor);
 		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1])) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
 	tmp1 = 0;
 	do {
-		pad_poll_both();
+		crossPRGBankJump0(mouse_and_cursor);
 		ppu_wait_nmi();
 		tmp1++;
 		set_scroll_x(tmp1<<2);
@@ -127,7 +129,7 @@ void state_demo(){
 	tmp1 = 0;
 	set_scroll_x(256);
 	do {
-		pad_poll_both();
+		crossPRGBankJump0(mouse_and_cursor);
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
