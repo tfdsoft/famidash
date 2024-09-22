@@ -134,22 +134,22 @@ void draw_sprites(void){
 	} while (++count < max_loaded_sprites);
 	if (kandoframecnt & 0x01) {
 		
-		tmp2 = 1;
+		tmp2 = 0;
 		do {
 			trail_sprites_visible[tmp2] = trail_sprites_visible[tmp2 + 1];
 		} while (++tmp2 < sizeof(trail_sprites_visible) - 1);
 
 		if (orbactive) {
-			trail_sprites_visible[7] = 1;
+			trail_sprites_visible[tmp2] = 1;
 		} else {
-			trail_sprites_visible[7] = 0;
+			trail_sprites_visible[tmp2] = 0;
 		}
 	}
 	if (forced_trails != 2) {
 		tmp6 = currplayer_vel_x << 1;
-		tmp5 = currplayer_x - (orbactive ? 0 : tmp6);
+		tmp5 = currplayer_x - tmp6;
 		
-		tmp1 = (!orbactive ? 7 : 8);
+		tmp1 = 8;
 
 		trail_loop();
 	}
@@ -181,11 +181,11 @@ void draw_sprites(void){
 void trail_loop() {
 	do {
 		if (trail_sprites_visible[tmp1 - 1]) {
-			oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(8 - tmp1)), Trail_Circ);
+			oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
 		}
 		tmp5 = tmp5 - tmp6;
 		tmp1--;
-	} while (tmp1 > 0);
+	} while (tmp1 > 1);
 }
 
 void minus15y() {
