@@ -32,7 +32,7 @@ const uint8_t G_Table2[]={
 	0x2C
 };
 void state_demo();
-
+void mouse_and_cursor();
 const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
     LSB(NTADR_A(15, 11)),	// 0
@@ -266,7 +266,7 @@ void levelselection() {
 		newrand();
 		ppu_wait_nmi();
 		music_update();
-		crossPRGBankJump0(mouse_update);
+		mouse_and_cursor();
 		pad_poll(0); // read the first controller
 
 		// scroll
@@ -446,7 +446,7 @@ void customize_screen() {
 		pal_col(0x0b,color2);
 		pal_col(0x09,color3);
 		pal_set_update();
-		crossPRGBankJump0(mouse_update);
+		mouse_and_cursor();
 		pad_poll(0); // read the first controller
 		
 		if (!retro_mode) {
@@ -525,7 +525,7 @@ void funsettings() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
-		crossPRGBankJump0(mouse_update);
+		mouse_and_cursor();
 		pad_poll(0); // read the first controller
 		
 		if (invisible) 	one_vram_buffer('g', NTADR_A(26, 7));	// believe it or not, 
@@ -633,7 +633,7 @@ void settings() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
-		crossPRGBankJump0(mouse_update);
+		mouse_and_cursor();
 		pad_poll(0); // read the first controller
 		
 		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 7));
@@ -796,7 +796,7 @@ void state_menu() {
 	while (!(pad_new[0] & PAD_START)){
 		ppu_wait_nmi();
 		music_update();
-		crossPRGBankJump0(mouse_update);
+		mouse_and_cursor();
 		pad_poll(0); // read the first controller
 		newrand();
 		
@@ -942,6 +942,11 @@ void bgmtest() {
 	
 }
 */
+
+void mouse_and_cursor() {
+	crossPRGBankJump0(mouse_update);	
+	if (mouse.right.click) pad_new[0] |= PAD_B;
+}
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)
