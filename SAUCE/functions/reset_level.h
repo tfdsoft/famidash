@@ -6,6 +6,8 @@ void reset_level(void) {
     if (!has_practice_point) famistudio_music_stop();
     coins = 0;
     displaying = 0;
+	last_trail_sprite_shown = 0;
+	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
     orbactive = 0;
 
     // slope stuff
