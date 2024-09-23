@@ -243,10 +243,10 @@ void levelselection() {
 
 		if (mouse.left.click) {
 			if (mouse.y >= 0x6E && mouse.y <= 0x7B) {
-				if (mouse.x >= 0x0D && mouse.x <= 0x14) {
+				if (mouse.x >= 0x09 && mouse.x <= 0x15) {
 					leveldec();
 				}
-				else if (mouse.x >= 0xE5 && mouse.x <= 0xEB) {
+				else if (mouse.x >= 0xE5 && mouse.x <= 0xEF) {
 					levelinc();				
 				}
 			}
