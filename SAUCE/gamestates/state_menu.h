@@ -6,6 +6,7 @@ void state_demo();
 void mouse_and_cursor();
 void colorinc();
 void colordec();
+void set_settings();
 
 const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
@@ -560,6 +561,37 @@ void settings() {
 
 		tmp1 = settingvalue;
 
+		if (mouse.left.click) {
+			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
+				if (mouse.y >= 0x35 && mouse.y <= 0x3C) {
+					settingvalue = 0; set_settings();
+				}
+				else if (mouse.y >= 0x45 && mouse.y <= 0x4C) {
+					settingvalue = 1; set_settings();
+				}
+				else if (mouse.y >= 0x55 && mouse.y <= 0x5C) {
+					settingvalue = 2; set_settings();
+				}
+				else if (mouse.y >= 0x65 && mouse.y <= 0x6C) {
+					settingvalue = 3; set_settings();
+				}
+				else if (mouse.y >= 0x75 && mouse.y <= 0x7C) {
+					settingvalue = 4; set_settings();
+				}
+				else if (mouse.y >= 0x85 && mouse.y <= 0x8C) {
+					settingvalue = 5; set_settings();
+				}
+				else if (mouse.y >= 0x95 && mouse.y <= 0x9C) {
+					settingvalue = 6; set_settings();
+				}
+
+			}
+			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
+				return;
+			}
+
+		}	
+
 		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
 			if (settingvalue == 7) { settingvalue = 0;  }
 			else { settingvalue++;   }
@@ -578,28 +610,7 @@ void settings() {
 		}
 		
 		if (pad_new[0] & (PAD_A | PAD_START)) {
-			switch (settingvalue) {
-				case 0: // oneptwoplayer
-					twoplayer ^= 1; break;
-				case 1: // oneptwoplayer
-					options ^= oneptwoplayer; break;
-				case 2: // sfxoff
-					options ^= sfxoff; break;
-				case 3: // musicoff
-					options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(song_menu_theme); } break;
-				case 4: // jumpsound
-					options ^= jumpsound; break;
-				case 5:
-					decorations ^= 1; break;
-				case 6:
-					trails = trails == 2 ? 0 : trails + 1; break;					
-				case 7:
-					if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
-						setdefaultoptions();
-						__asm__("JMP ($FFFC)");	// restart the game lmao	
-					}
-					break;
-			}
+			set_settings();
 		}
 		if (options & platformer) {
 			twoplayer = 0;
@@ -858,6 +869,31 @@ void mouse_and_cursor() {
 		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, 0xAF, 2);	
 	}
 }
+
+void set_settings() {
+	switch (settingvalue) {
+		case 0: // oneptwoplayer
+			twoplayer ^= 1; break;
+		case 1: // oneptwoplayer
+			options ^= oneptwoplayer; break;
+		case 2: // sfxoff
+			options ^= sfxoff; break;
+		case 3: // musicoff
+			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(song_menu_theme); } break;
+		case 4: // jumpsound
+			options ^= jumpsound; break;
+		case 5:
+			decorations ^= 1; break;
+		case 6:
+			trails = trails == 2 ? 0 : trails + 1; break;					
+		case 7:
+			if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
+				setdefaultoptions();
+				__asm__("JMP ($FFFC)");	// restart the game lmao	
+			}
+			break;
+	}
+}			
 
 #pragma code-name(pop)
 #pragma data-name(pop) 
