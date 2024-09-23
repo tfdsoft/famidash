@@ -282,7 +282,7 @@ void levelselection() {
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;				
+		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;				
 	}	
 
 }
@@ -489,7 +489,7 @@ void customize_screen() {
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;				
+		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;				
 	}
 }
 
@@ -604,7 +604,7 @@ void settings() {
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;		
+		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;		
 	}
 }
 
@@ -783,7 +783,7 @@ void state_menu() {
 				}
 			}
 		}	
-		if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;
+		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;
 		
 	}	
 	set_scroll_y(0);
