@@ -392,6 +392,12 @@ void state_lvldone() {
 	#undef delay_timer
 	#undef top_scroll
 }
+
+
+
+
+
+#include "defines/bgm_charmap.h"
 const unsigned char TEXT_xlevel1text[]="STEREO ";
 const unsigned char TEXT_xlevel2text[]="BACK ON";
 const unsigned char TEXT_xlevel5text[]="BASE AFTER";
@@ -499,9 +505,9 @@ const unsigned char xbgmtext1_size[] = {
 
 
 
-#include "defines/bg_charmap.h"
 const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
 
+//#include "defines/bgm_charmap.h"
 void bgmtest() {
 	song = 0;
 	#define sfx tmp4
@@ -516,7 +522,6 @@ void bgmtest() {
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(bgmtestscreen);   	
-	#include "defines/bgm_charmap.h"
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 	while (1) {
