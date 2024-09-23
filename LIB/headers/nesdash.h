@@ -53,9 +53,9 @@ void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
  * @param ppu_address The PPU address to put it at.
  */
 #define draw_padded_text(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text(__EAX__))
-#define draw_padded_text2(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text2(__EAX__))
+//#define draw_padded_text2(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text2(__EAX__))
 void __fastcall__ _draw_padded_text(uint32_t args);
-void __fastcall__ _draw_padded_text2(uint32_t args);
+//void __fastcall__ _draw_padded_text2(uint32_t args);
 
 /**
  * @name famistudio_music_play

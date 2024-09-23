@@ -516,7 +516,7 @@ void bgmtest() {
 	pal_bg(paletteMenu);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(bgmtestscreen);   	
-	#include "defines/mainmenu_charmap.h"
+	#include "defines/bgm_charmap.h"
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 	while (1) {
@@ -525,27 +525,77 @@ void bgmtest() {
 		music_update();
 		crossPRGBankJump0(mouse_and_cursor);
 		 // read the first controller
-		
+		kandoframecnt++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+		if (mouse.left.click) {
+			if ((mouse.x >= 0x63 && mouse.x <= 0x8C)) {
+				if (mouse.y >= 0x34 && mouse.y <= 0x3A) {		
+					settingvalue = 0;
+				}
+				else if ((mouse.y >= 0x6C && mouse.y <= 0x73)) {		
+					settingvalue = 1;
+				}
+			}
+			if ((mouse.x >= 0x2E && mouse.x <= 0xCC) && (mouse.y >= 0xAC && mouse.y <= 0xB3)) {		
+				if (settingvalue == 1) { sfx_play(sfx, 0); }
+				else {
+					music_play(song);
+				}
+			}
+			if ((mouse.y >= 0x4E && mouse.y <= 0x5C)) {
+				if ((mouse.x >= 0x24 && mouse.x <= 0x2C)) {		
+					if (song == 0) {song = song_max - 1;} else song--; settingvalue = 0;
+				}
+				else if ((mouse.x >= 0xCC && mouse.x <= 0xD4)) {		
+					song++; if (song == song_max) {song = 0;} settingvalue = 0;
+				}
+			}
+			if ((mouse.y >= 0x86 && mouse.y <= 0x93)) {
+
+				if ((mouse.x >= 0x24 && mouse.x <= 0x2C)) {		
+					if (sfx == 0) {sfx = sfx_max - 1;} else sfx--; settingvalue = 1;
+				}
+				else if ((mouse.x >= 0xCC && mouse.x <= 0xD4)) {		
+					sfx++; if (sfx == sfx_max) {sfx= 0;} settingvalue = 1;
+				}
+			}
+			if ((mouse.x >= 0x35 && mouse.x <= 0xC4)) {
+				if (mouse.y >= 0xBC && mouse.y <= 0xC4) {		
+					tmp3--;			
+					one_vram_buffer(' ', NTADR_A(11, 7));
+					one_vram_buffer(' ', NTADR_A(11, 14));
+					kandotemp = 1;
+					gameState = 1;
+					return;
+				}
+				else if (mouse.y >= 0x3D && mouse.y <= 0x64) {
+					music_play(song);
+				}
+				else if (mouse.y >= 0x75 && mouse.y <= 0x9C) {
+					sfx_play(sfx, 0);
+				}
+			}
+		}			
 	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
-	if (__A__) draw_padded_text2(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 10));
-	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(7, 10));
+	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 10));
+	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 10));
 	__A__ = idx16_load_hi_NOC(xbgmtexts2, song);
-	if (__A__) draw_padded_text2(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 17, NTADR_A(7, 11));
-	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(7, 11));
+	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 17, NTADR_A(7, 11));
+	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 11));
 	
-	draw_padded_text2(sfxtexts[sfx & 0x7F], sfxtexts_size[sfx], 17, NTADR_A(7, 18));
+	draw_padded_text(sfxtexts[sfx & 0x7F], sfxtexts_size[sfx], 17, NTADR_A(7, 18));
 
 	
 		if (settingvalue == 0) {
-			one_vram_buffer('c', NTADR_A(11, 8));
-			one_vram_buffer(' ', NTADR_A(11, 15));
+			one_vram_buffer('c', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
 			if (pad_new[0] & PAD_RIGHT) { song++; if (song == song_max) {song = 0;} }
 			if (pad_new[0] & PAD_LEFT) { if (song == 0) {song = song_max - 1;} else song--; }
 			if (pad_new[0] & PAD_A) music_play(song);
 		}		
 		else if (settingvalue == 1) {
-			one_vram_buffer(' ', NTADR_A(11, 8));
-			one_vram_buffer('c', NTADR_A(11, 15));
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer('c', NTADR_A(11, 14));
 			if (pad_new[0] & PAD_RIGHT) { sfx++; if (sfx == sfx_max) {sfx= 0;} };
 			if (pad_new[0] & PAD_LEFT) { if (sfx == 0) {sfx = sfx_max - 1;} else sfx--; }
 			if (pad_new[0] & PAD_A) sfx_play(sfx, 0);
