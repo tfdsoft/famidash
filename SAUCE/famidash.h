@@ -293,6 +293,7 @@ uint8_t level_data_bank;
 uint8_t sprite_data_bank;
 uint8_t menuselection; // = 0x00;
 uint8_t settingvalue;
+uint8_t mouseframe;
 
 uint8_t gameState = 0x01;
 
