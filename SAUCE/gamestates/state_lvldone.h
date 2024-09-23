@@ -832,6 +832,7 @@ void funsettings() {
 		if (gameboy_mode) kandotemp4 = 1;
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+		if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;				
 	}
 }
 
