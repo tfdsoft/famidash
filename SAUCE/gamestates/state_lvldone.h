@@ -399,20 +399,20 @@ void state_lvldone() {
 
 
 #include "defines/bgm_charmap.h"
-const unsigned char TEXT_xlevel1text[]="STEREO ";
-const unsigned char TEXT_xlevel2text[]="BACK ON";
-const unsigned char TEXT_xlevel5text[]="BASE AFTER";
-const unsigned char TEXT_xlevelCtext[]="THEORY OF";
+const unsigned char TEXT_xlevel1text[]="STEREO$";
+const unsigned char TEXT_xlevel2text[]="BACK$ON";
+const unsigned char TEXT_xlevel5text[]="BASE$AFTER";
+const unsigned char TEXT_xlevelCtext[]="THEORY$OF";
 const unsigned char TEXT_xlevelDtext[]="ELECTROMAN";
 
 const unsigned char TEXT_xlevel1text2[]="MADNESS";
 const unsigned char TEXT_xlevel2text2[]="TRACK";
 const unsigned char TEXT_xlevel3text2[]="POLARGEIST";
-const unsigned char TEXT_xlevel4text2[]="DRY OUT";
+const unsigned char TEXT_xlevel4text2[]="DRY$OUT";
 const unsigned char TEXT_xlevel5text2[]="BASE";
-const unsigned char TEXT_xlevel6text2[]="CANT LET GO";
+const unsigned char TEXT_xlevel6text2[]="CANT$LET$GO";
 const unsigned char TEXT_xlevel7text2[]="JUMPER";
-const unsigned char TEXT_xlevel8text2[]="TIME MACHINE";
+const unsigned char TEXT_xlevel8text2[]="TIME$MACHINE";
 const unsigned char TEXT_xlevel9text2[]="CYCLES";
 const unsigned char TEXT_xlevelAtext2[]="XSTEP";
 const unsigned char TEXT_xlevelBtext2[]="CLUTTERFUNK";
@@ -421,21 +421,21 @@ const unsigned char TEXT_xlevelDtext2[]="ADVENTURES";
 const unsigned char TEXT_xlevelEtext2[]="DECODE";
 const unsigned char TEXT_practicetext2[]="PRACTICE";
 const unsigned char TEXT_testformenu2[]="MENU";
-const unsigned char TEXT_everyendtext2[]="EVERY END";
+const unsigned char TEXT_everyendtext2[]="EVERY$END";
 
 
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
-const unsigned char TEXT_sfxtext2[]="LEVEL COMPLETE";
+const unsigned char TEXT_sfxtext2[]="LEVEL$COMPLETE";
 const unsigned char TEXT_sfxtext3[]="COIN";
-const unsigned char TEXT_sfxtext4[]="CHEST OPEN";
+const unsigned char TEXT_sfxtext4[]="CHEST$OPEN";
 const unsigned char TEXT_sfxtext5[]="ORBS";
 const unsigned char TEXT_sfxtext6[]="DIAMONDS";
-const unsigned char TEXT_sfxtext7[]="EXIT LEVEL";
-const unsigned char TEXT_sfxtext8[]="START LEVEL";
+const unsigned char TEXT_sfxtext7[]="EXIT$LEVEL";
+const unsigned char TEXT_sfxtext8[]="START$LEVEL";
 const unsigned char TEXT_sfxtext9[]="INVALID";
-const unsigned char TEXT_sfxtextA[]="ACHIEVEMENT GET";
+const unsigned char TEXT_sfxtextA[]="ACHIEVEMENT$GET";
 
 const unsigned char* const sfxtexts[] = {
 	TEXT_sfxtext0, TEXT_sfxtext1, TEXT_sfxtext2, TEXT_sfxtext3, TEXT_sfxtext4, TEXT_sfxtext5, TEXT_sfxtext6, TEXT_sfxtext7, TEXT_sfxtext8, TEXT_sfxtext9, TEXT_sfxtextA
