@@ -6,7 +6,10 @@ void state_demo();
 void mouse_and_cursor();
 void colorinc();
 void colordec();
+void leveldec();
+void levelinc();
 void set_settings();
+void start_the_level();
 
 const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
@@ -238,24 +241,29 @@ void levelselection() {
 			low_byte(tmp8) >>= 1;
 		high_byte(tmp8) = low_byte(tmp8)^0xff;
 
-
-		// no longer required because of the menu option
+		if (mouse.left.click) {
+			if (mouse.y >= 0x6E && mouse.y <= 0x7B) {
+				if (mouse.x >= 0x0D && mouse.x <= 0x14) {
+					leveldec();
+				}
+				else if (mouse.x >= 0xE5 && mouse.x <= 0xEB) {
+					levelinc();				
+				}
+			}
+			if (((mouse.y >= 0x3D && mouse.y <= 0x6C) && (mouse.x >= 0x2D && mouse.x <= 0xCC))) {
+				start_the_level();
+				return;				
+			}
+			
+		}
+		// no longer required because of the menu option 
 		//if (twoplayer) one_vram_buffer('d', NTADR_A(31, 2));
 		//else one_vram_buffer('e', NTADR_A(31, 2));
 
 		//if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
 		if (pad_new[0] & PAD_START){
-			sfx_play(sfx_start_level, 0);
-			famistudio_music_stop();
-			tmp1 = 0;
-			do {
-				ppu_wait_nmi();
-				music_update();
-			} while (++tmp1 < 30);
-			gameState = 0x02;
-			pal_fade_to(4,0);
-			kandotemp = 0;
+			start_the_level();
 			return;
 		}
 
@@ -266,40 +274,11 @@ void levelselection() {
 			
 			
 		if (pad_new[0] & PAD_RIGHT){
-			++level;
-			if (level == 0x0B) level = 0x0C;	//THEORY OF EVERYTHING SKIP
-			low_byte(tmp8) = 0xff;
-			tmp4 = 1;
-			if (!normalorcommlevels) {
-				if (level >= LEVEL_COUNT){
-					level = 0x00;
-					
-				}
-			}
-			else {
-				if (level >= LEVEL_COUNT2){
-					level = LEVEL_COUNT;
-				}
-			}
-			refreshmenu();
+			levelinc();
 		//	break;
 		}
 		if (pad_new[0] & PAD_LEFT){
-			--level;
-			if (level == 0x0B) level = 0x0A;	//THEORY OF EVERYTHING SKIP
-			low_byte(tmp8) = 0xff;
-			tmp4 = 0;
-			if (!normalorcommlevels) {
-				if (level == 0xFF){
-					level = LEVEL_COUNT-1;
-					
-				}
-			}
-			else {
-				if (level < LEVEL_COUNT) level = LEVEL_COUNT2 - 1;
-			}
-			//break;
-			refreshmenu();
+			leveldec();
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
@@ -895,6 +874,55 @@ void set_settings() {
 	}
 }			
 
+void leveldec() {
+	--level;
+	if (level == 0x0B) level = 0x0A;	//THEORY OF EVERYTHING SKIP
+	low_byte(tmp8) = 0xff;
+	tmp4 = 0;
+	if (!normalorcommlevels) {
+		if (level == 0xFF){
+			level = LEVEL_COUNT-1;
+			
+		}
+	}
+	else {
+		if (level < LEVEL_COUNT) level = LEVEL_COUNT2 - 1;
+	}
+	//break;
+	refreshmenu();
+}			
+
+void levelinc() {
+	++level;
+	if (level == 0x0B) level = 0x0C;	//THEORY OF EVERYTHING SKIP
+	low_byte(tmp8) = 0xff;
+	tmp4 = 1;
+	if (!normalorcommlevels) {
+		if (level >= LEVEL_COUNT){
+			level = 0x00;
+			
+		}
+	}
+	else {
+		if (level >= LEVEL_COUNT2){
+			level = LEVEL_COUNT;
+		}
+	}
+	refreshmenu();
+}			
+
+void start_the_level() {
+	sfx_play(sfx_start_level, 0);
+	famistudio_music_stop();
+	tmp1 = 0;
+	do {
+		ppu_wait_nmi();
+		music_update();
+	} while (++tmp1 < 30);
+	gameState = 0x02;
+	pal_fade_to(4,0);
+	kandotemp = 0;
+}			
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)
