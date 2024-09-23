@@ -602,6 +602,146 @@ void colordec() {
 	}
 }	
 
+
+#include "defines/mainmenu_charmap.h"
+
+const unsigned char gameboytext1[]="  GREY";
+const unsigned char gameboytext2[]="   RED";
+const unsigned char gameboytext3[]=" GREEN";
+const unsigned char gameboytext4[]="  BLUE";
+const unsigned char gameboytext5[]="YELLOW";
+const unsigned char gameboytext6[]="PURPLE";
+const unsigned char gameboytext7[]="  CYAN";
+const unsigned char gameboytext8[]="  DARK";
+
+const unsigned char* const gameboytexts[] = {
+	0, gameboytext1, gameboytext2, gameboytext3, gameboytext4, gameboytext5, gameboytext6, gameboytext7, gameboytext8
+};
+
+const unsigned char gameboy_text_size[] = {
+	0,
+	sizeof(gameboytext1) - 1,
+	sizeof(gameboytext2) - 1,
+	sizeof(gameboytext3) - 1,
+	sizeof(gameboytext4) - 1,
+	sizeof(gameboytext5) - 1,
+	sizeof(gameboytext6) - 1,
+	sizeof(gameboytext7) - 1,
+	sizeof(gameboytext8) - 1
+};
+
+
+
+void funsettings() {
+	settingvalue = 0; 
+	pal_fade_to_withmusic(4,0);
+	ppu_off();
+	pal_bg(paletteMenu);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(funsettingscreen);   
+	//kandotemp4 = 0;
+	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_1(22);
+	ppu_on_all();
+	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 by default	
+	pal_fade_to_withmusic(0,4);
+	while (1) {
+		ppu_wait_nmi();
+		music_update();
+		crossPRGBankJump0(mouse_and_cursor);
+		 // read the first controller
+		
+		if (invisible) 	one_vram_buffer('g', NTADR_A(26, 7));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 7));	// this is auto optimized by cc65
+
+		if ((options & platformer)) 	one_vram_buffer('g', NTADR_A(26, 9));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 9));	// this is auto optimized by cc65
+
+		if (retro_mode) 	one_vram_buffer('g', NTADR_A(26, 11));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 11));	// this is auto optimized by cc65
+
+		if (discomode) 	one_vram_buffer('g', NTADR_A(26, 13));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 13));	// this is auto optimized by cc65
+		
+		if (invisblocks) 	one_vram_buffer('g', NTADR_A(26, 15));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 15));	// this is auto optimized by cc65
+		
+		if (cam_seesaw) 	one_vram_buffer('g', NTADR_A(26, 17));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 17));	// this is auto optimized by cc65
+		
+		__A__ = idx16_load_hi_NOC(gameboytexts, gameboy_mode);
+		if (__A__) { draw_padded_text(gameboytexts[gameboy_mode & 0x7F], gameboy_text_size[gameboy_mode], 8, NTADR_A(19, 19)); 	one_vram_buffer('g', NTADR_A(26, 19));	}// believe it or not, 
+		else { one_vram_buffer_horz_repeat('$', 8, NTADR_A(19, 19)); one_vram_buffer('f', NTADR_A(26, 19)); }
+
+
+
+		tmp1 = settingvalue;
+
+		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
+			if (settingvalue == 6) { settingvalue = 0; }
+			else { settingvalue++;  }
+		}
+
+		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
+			if (settingvalue == 0) { settingvalue = 6; }
+			else { settingvalue--;  }
+		}
+
+		if (tmp1 != settingvalue) {
+			// NTADR_A = (NAMETABLE_A|(((y)<<5)|(x)))
+			// (tmp1 * 2) << 5 = tmp1<<6 = (tmp1<<8)>>2
+			one_vram_buffer(' ', NTADR_A(4, 7)+((tmp1<<8)>>2));
+			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
+		}
+
+		one_vram_buffer('X'-0x1B, NTADR_A(26, 13));
+		if (discomode & 0x02) { one_vram_buffer('2' - 0x20, NTADR_A(25, 13)); }
+		else if (discomode & 0x04) { one_vram_buffer('3' - 0x20, NTADR_A(25, 13));}
+		else if (discomode & 0x08) { one_vram_buffer('4' - 0x20, NTADR_A(25, 13));}
+		else if (discomode & 0x10) { one_vram_buffer('5' - 0x20, NTADR_A(25, 13));}
+		else if (discomode & 0x01) { one_vram_buffer('1' - 0x20, NTADR_A(25, 13));}
+		else { one_vram_buffer(' '-0x01, NTADR_A(25, 13)); one_vram_buffer(0x0F, NTADR_A(26, 13)); }
+
+		if (pad_new[0] & (PAD_START | PAD_A)) {
+			switch (settingvalue) {
+				case 0x00: invisible ^= 1; break;
+				case 0x01: options ^= platformer; break;
+				case 0x02: retro_mode ^= 1; break;
+				case 0x03: 
+					if (discomode & 0x10) discomode = 0;
+					else {
+						discomode = discomode << 1;
+						if (discomode == 0) ++discomode;
+					}
+					
+					break;
+				case 0x04: invisblocks ^= 1; break;
+				case 0x05: cam_seesaw = (cam_seesaw > 0 ? 0 : 1); break;
+				case 0x06: gameboy_mode = (gameboy_mode == 8 ? 0 : gameboy_mode + 1);
+			};
+		}
+			
+		if (pad_new[0] & PAD_B) {
+			// one_vram_buffer(' ', NTADR_A(6, 8));
+			// one_vram_buffer(' ', NTADR_A(6, 12));
+			// one_vram_buffer(' ', NTADR_A(6, 16));
+			//one_vram_buffer(' ', NTADR_A(4, 8));
+			//one_vram_buffer(' ', NTADR_A(4, 12));
+			//one_vram_buffer(' ', NTADR_A(4, 16));
+			gameState = last_gameState;
+			return;
+		}
+
+		crossPRGBankJump0(gameboy_check);
+
+		if (gameboy_mode) kandotemp4 = 1;
+		kandoframecnt++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+	}
+}
+
+
+
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)
