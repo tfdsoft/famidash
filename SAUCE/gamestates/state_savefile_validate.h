@@ -7,8 +7,8 @@ void mouse_and_cursor();
 void savefile_reset_check_loop(){
     do {
         crossPRGBankJump0(mouse_and_cursor);
-        if (pad_new[0] & PAD_B) break;
-        if (pad_new[0] & PAD_A){
+        if (pad_new[0] & PAD_B || mouse.right.click) break;
+        if (pad_new[0] & PAD_A || mouse.left.click){
             setdefaultoptions();
             break;
         }
@@ -68,7 +68,7 @@ void state_savefile_validate(){
         do {
             ppu_wait_nmi();
             crossPRGBankJump0(mouse_and_cursor);
-            if (pad_new[0]) break;
+            if (pad_new[0] || mouse.left.click || mouse.right.click) break;
 
         } while (1);
     }
@@ -105,7 +105,7 @@ void state_exit(){
         ppu_wait_nmi();
 	crossPRGBankJump0(mouse_and_cursor);
         // wait for system power off
-        if (pad_new[0] & PAD_B) break;
+        if (pad_new[0] & PAD_B || mouse.right.click) break;
     } while (1);
     kandotemp = 0;
     poweroffcheck = 0xff;
