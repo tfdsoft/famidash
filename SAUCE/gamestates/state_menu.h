@@ -759,6 +759,27 @@ void state_menu() {
 			gameState = 0xFE;
 			return;
 		}
+		if (mouse.left.click) {
+			if ((mouse.y >= 0x5E && mouse.y <= 0x7A)) {
+				if (mouse.x >= 0x41 && mouse.x <= 0x5A) {
+					menuselection = 4; break;
+				}
+				else if (mouse.x >= 0x6F && mouse.x <= 0x8C) {
+					menuselection = 0; break;
+				}
+				else if (mouse.x >= 0xA1 && mouse.x <= 0xBA) {
+					menuselection = 1; break;
+				}
+			}				
+			else if ((mouse.y >= 0x8C && mouse.x <= 0x9B)) {
+				if (mouse.x >= 0x5E && mouse.x <= 0x6D) {
+					menuselection = 2; break;
+				}
+				else if (mouse.x >= 0x8E && mouse.x <= 0x9D) {
+					menuselection = 3; break;
+				}
+			}
+		}			
 		
 	}	
 	set_scroll_y(0);
