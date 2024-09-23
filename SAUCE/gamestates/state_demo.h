@@ -114,6 +114,8 @@ void state_demo(){
 	
 	do {
        	crossPRGBankJump0(mouse_and_cursor);
+	    kandoframecnt++;
+       	    if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;	
 		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1] | mouse.left.click | mouse.right.click)) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
@@ -121,6 +123,9 @@ void state_demo(){
 	tmp1 = 0;
 	do {
 		crossPRGBankJump0(mouse_and_cursor);
+	    kandoframecnt++;
+       	    if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;	
+		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1] | mouse.left.click | mouse.right.click)) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 		set_scroll_x(tmp1<<2);
@@ -130,6 +135,10 @@ void state_demo(){
 	set_scroll_x(256);
 	do {
 		crossPRGBankJump0(mouse_and_cursor);
+	    kandoframecnt++;
+		
+       	    if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;	
+		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1] | mouse.left.click | mouse.right.click)) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
