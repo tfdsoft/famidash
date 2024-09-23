@@ -55,6 +55,7 @@ void main(){
 	//playPCM(0);
 
 
+	pal_spr(paletteDefaultSP);
 	kandotemp = 0;
 	crossPRGBankJump0(gameboy_check);
 	gameState = 0x05;

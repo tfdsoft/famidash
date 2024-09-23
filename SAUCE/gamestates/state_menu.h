@@ -855,7 +855,7 @@ void mouse_and_cursor() {
 		if (mouse.right.click) pad_new[0] |= PAD_B;
 		if (mouse.right.press) pad[0] |= PAD_B;
 		oam_clear();
-		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, 0xAF, 0);	
+		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, 0xAF, 2);	
 	}
 }
 
