@@ -282,6 +282,7 @@ void levelselection() {
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+		if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;				
 	}	
 
 }
@@ -488,6 +489,7 @@ void customize_screen() {
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+		if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;				
 	}
 }
 
@@ -601,7 +603,8 @@ void settings() {
 			return;
 		}
 		kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;			
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+		if (!(kandoframecnt & 0x03)) mouseframe += mouseframe == 3 ? -3 : 1;		
 	}
 }
 
