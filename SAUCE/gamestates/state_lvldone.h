@@ -5,7 +5,7 @@ extern volatile unsigned char VRAM_UPDATE;
 #pragma data-name(push, "LVL_BANK_00")
 #pragma rodata-name(push, "LVL_BANK_00")
 
-
+void set_fun_settings();
 void checkcointimer(){
 	if (tmp1 == 1){
 		sfx_play(sfx_coin,0);
@@ -675,7 +675,36 @@ void funsettings() {
 		music_update();
 		crossPRGBankJump0(mouse_and_cursor);
 		 // read the first controller
-		
+		if (mouse.left.click) {
+			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
+				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
+					settingvalue = 0; set_fun_settings();
+				}
+				else if (mouse.y >= 0x44 && mouse.y <= 0x4C) {
+					settingvalue = 1; set_fun_settings();
+				}
+				else if (mouse.y >= 0x54 && mouse.y <= 0x5C) {
+					settingvalue = 2; set_fun_settings();
+				}
+				else if (mouse.y >= 0x64 && mouse.y <= 0x6C) {
+					settingvalue = 3; set_fun_settings();
+				}
+				else if (mouse.y >= 0x74 && mouse.y <= 0x7C) {
+					settingvalue = 4; set_fun_settings();
+				}
+				else if (mouse.y >= 0x84 && mouse.y <= 0x8C) {
+					settingvalue = 5; set_fun_settings();
+				}
+				else if (mouse.y >= 0x94 && mouse.y <= 0x9C) {
+					settingvalue = 6; set_fun_settings();
+				}
+
+			}
+			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
+				return;
+			}
+
+		}	
 		if (invisible) 	one_vram_buffer('g', NTADR_A(26, 7));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 7));	// this is auto optimized by cc65
 
@@ -728,22 +757,7 @@ void funsettings() {
 		else { one_vram_buffer(' '-0x01, NTADR_A(25, 13)); one_vram_buffer(0x0F, NTADR_A(26, 13)); }
 
 		if (pad_new[0] & (PAD_START | PAD_A)) {
-			switch (settingvalue) {
-				case 0x00: invisible ^= 1; break;
-				case 0x01: options ^= platformer; break;
-				case 0x02: retro_mode ^= 1; break;
-				case 0x03: 
-					if (discomode & 0x10) discomode = 0;
-					else {
-						discomode = discomode << 1;
-						if (discomode == 0) ++discomode;
-					}
-					
-					break;
-				case 0x04: invisblocks ^= 1; break;
-				case 0x05: cam_seesaw = (cam_seesaw > 0 ? 0 : 1); break;
-				case 0x06: gameboy_mode = (gameboy_mode == 8 ? 0 : gameboy_mode + 1);
-			};
+			set_fun_settings();
 		}
 			
 		if (pad_new[0] & PAD_B) {
@@ -765,6 +779,24 @@ void funsettings() {
 	}
 }
 
+void set_fun_settings() {
+	switch (settingvalue) {
+		case 0x00: invisible ^= 1; break;
+		case 0x01: options ^= platformer; break;
+		case 0x02: retro_mode ^= 1; break;
+		case 0x03: 
+			if (discomode & 0x10) discomode = 0;
+			else {
+				discomode = discomode << 1;
+				if (discomode == 0) ++discomode;
+			}
+			
+			break;
+		case 0x04: invisblocks ^= 1; break;
+		case 0x05: cam_seesaw = (cam_seesaw > 0 ? 0 : 1); break;
+		case 0x06: gameboy_mode = (gameboy_mode == 8 ? 0 : gameboy_mode + 1);
+	};
+}	
 
 
 #pragma code-name(pop)
