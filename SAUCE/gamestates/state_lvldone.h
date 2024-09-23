@@ -323,6 +323,29 @@ void state_lvldone() {
 			break;
 		case 7:
 			crossPRGBankJump0(mouse_and_cursor);
+
+			if (mouse.left.click) {
+				if (mouse.y >= 0xC5 && mouse.y <= 0xE3) {
+					if (mouse.x >= 0x36 && mouse.x <= 0x53) {
+						sfx_play(sfx_start_level, 0);
+						gameState = 2;
+						pal_fade_to_withmusic(4,0);
+						memfill(attemptCounter, 0, sizeof(attemptCounter));
+						coins = 0;
+						return;					
+					}
+					if (mouse.x >= 0xA6 && mouse.x <= 0xc3) {
+						sfx_play(sfx_exit_level, 0);
+						music_update();
+						gameState = 1;
+						menuselection = 0;
+						kandowatchesyousleep = 1;
+						kandotemp = 0;
+						return;
+					}
+				}
+			}
+
 			if (pad_new[0] & PAD_LEFT) menuselection ^= 1;
 			if (pad_new[0] & PAD_RIGHT) menuselection ^= 1;
 			if (pad_new[0] & PAD_START){
@@ -360,6 +383,8 @@ void state_lvldone() {
 			}
 			break;
 		}
+		kandoframecnt++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 	}
 	#undef current_state
 	#undef sprite_0_y
