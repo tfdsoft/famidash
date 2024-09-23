@@ -8,7 +8,7 @@ void savefile_reset_check_loop(){
     do {
         crossPRGBankJump0(mouse_and_cursor);
 	    kandoframecnt++;
-       	    if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;
+       	    
         if (pad_new[0] & PAD_B || mouse.right.click) break;
         if (pad_new[0] & PAD_A || mouse.left.click){
             setdefaultoptions();
@@ -72,7 +72,7 @@ void state_savefile_validate(){
             crossPRGBankJump0(mouse_and_cursor);
             if (pad_new[0] || mouse.left.click || mouse.right.click) break;
 	    kandoframecnt++;
-       	    if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;			    
+       	    			    
         } while (1);
     }
     pal_bright(3);
@@ -110,7 +110,7 @@ void state_exit(){
         // wait for system power off
         if (pad_new[0] & PAD_B || mouse.right.click) break;
 	    kandoframecnt++;
-       	    if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;	
+       	    	
     } while (1);
     kandotemp = 0;
     poweroffcheck = 0xff;

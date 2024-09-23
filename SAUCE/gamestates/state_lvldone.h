@@ -385,7 +385,7 @@ void state_lvldone() {
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;				
+						
 	}
 	#undef current_state
 	#undef sprite_0_y
@@ -620,7 +620,7 @@ void bgmtest() {
 			return;
 		}
 
-		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;		
+				
 		
 		// sound test codes
 		if (pad_new[0] & PAD_START) {
@@ -832,7 +832,7 @@ void funsettings() {
 		if (gameboy_mode) kandotemp4 = 1;
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;				
+						
 	}
 }
 

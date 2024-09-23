@@ -282,7 +282,7 @@ void levelselection() {
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;				
+						
 	}	
 
 }
@@ -489,7 +489,7 @@ void customize_screen() {
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;				
+						
 	}
 }
 
@@ -604,7 +604,7 @@ void settings() {
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;		
+				
 	}
 }
 
@@ -783,7 +783,7 @@ void state_menu() {
 				}
 			}
 		}	
-		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;
+		
 		
 	}	
 	set_scroll_y(0);
@@ -869,6 +869,7 @@ void mouse_and_cursor() {
 //		if (mouse.left.click) pad_new[0] |= PAD_A;
 		if (mouse.right.click) pad_new[0] |= PAD_B;
 		if (mouse.right.press) pad[0] |= PAD_B;
+		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 3 ? -3 : 1;
 		oam_clear();
 		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA9 + (2*mouseframe)), 2);	
 	}
