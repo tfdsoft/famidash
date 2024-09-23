@@ -331,8 +331,10 @@ void state_game(){
 		
 		kandokidshack3 = 0;
 		
-		if (pad_new[0] & PAD_START) {
+		if (pad_new[0] & PAD_START || mouse.right.click) {
+
 			pad_new[0] = 0;
+			mouse.right.click = 0;
 			famistudio_music_pause(1);
 			famistudio_update();
 			color_emphasis(COL_EMP_DARK);
@@ -341,14 +343,14 @@ void state_game(){
 			// vram_adr(NAMETABLE_B);
 			// vram_unrle(pausescreen); 	
 			// ppu_on_all();
-			while (!(pad_new[0] & PAD_START)) {
-				
+			while (!(pad_new[0] & PAD_START) && !(mouse.right.click)) {
+				crossPRGBankJump0(mouse_update);				
 				pad_poll(0); // read the first controller
 				if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_B)) {
 					kandokidshack3++;
 				}
 
-				else if ((pad_new[controllingplayer] & PAD_B) && PRACTICE_ENABLED) {
+				else if ((pad_new[controllingplayer] & PAD_B || mouse.left.click) && PRACTICE_ENABLED) {
 					mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
 					reset_game_vars();
 					has_practice_point = 1;
