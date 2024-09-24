@@ -871,6 +871,7 @@ void mouse_and_cursor() {
 		if (mouse.right.press) pad[0] |= PAD_B;
 		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
 		oam_clear();
+		if (kandoframecnt > 0xFC) kandoframecnt = 0;
 		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA1 + (2*mouseframe)), 2);	
 	}
 }
