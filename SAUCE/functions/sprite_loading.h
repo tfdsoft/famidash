@@ -799,7 +799,7 @@ void sprite_collide(){
 			switch (tmp2) {
 
 				case DECO:
-					if (twoplayer || !decorations) activesprites_type[index] = 0xFF;
+					if (twoplayer || !viseffects) activesprites_type[index] = 0xFF;
 					continue;
 
 				case COLR:

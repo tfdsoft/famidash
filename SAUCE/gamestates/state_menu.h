@@ -533,7 +533,7 @@ void settings() {
 		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, 15));
 		else one_vram_buffer('f', NTADR_A(26, 15));
 
-		if (decorations) one_vram_buffer('g', NTADR_A(26, 17));
+		if (viseffects) one_vram_buffer('g', NTADR_A(26, 17));
 		else one_vram_buffer('f', NTADR_A(26, 17));
 
 		if (trails == 1) one_vram_buffer('g', NTADR_A(26, 19));
@@ -870,8 +870,8 @@ void mouse_and_cursor() {
 		if (mouse.right.click) pad_new[0] |= PAD_B;
 		if (mouse.right.press) pad[0] |= PAD_B;
 		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
-		oam_clear();
 		if (kandoframecnt > 0xFC) kandoframecnt = 0;
+		oam_clear();
 		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA1 + (2*mouseframe)), 2);	
 	}
 }
@@ -889,7 +889,7 @@ void set_settings() {
 		case 4: // jumpsound
 			options ^= jumpsound; break;
 		case 5:
-			decorations ^= 1; break;
+			viseffects ^= 1; break;
 		case 6:
 			trails = trails == 2 ? 0 : trails + 1; break;					
 		case 7:

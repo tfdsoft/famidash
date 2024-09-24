@@ -175,7 +175,7 @@ void setdefaultoptions() {
 	retro_mode = 0;
 	//palette_cycle_mode = 0;
 	gameboy_mode = 0;
-	decorations = 1;
+	viseffects = 1;
 	invisblocks = 0;
 	cam_seesaw = 0;
 	return;

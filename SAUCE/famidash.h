@@ -229,7 +229,7 @@ uint8_t icon_colors[3];
 
 uint8_t discomode;
 uint8_t trails;
-uint8_t decorations;
+uint8_t viseffects;
 uint8_t retro_mode;
 uint8_t palette_cycle_mode;
 uint8_t gameboy_mode;

@@ -145,7 +145,7 @@ void draw_sprites(void){
 			trail_sprites_visible[tmp2] = 0;
 		}
 	}
-	if (forced_trails != 2 && !invisible) {
+	if (forced_trails != 2 && !invisible && viseffects) {
 		tmp6 = currplayer_vel_x << 1;
 		tmp5 = currplayer_x - tmp6;
 		
@@ -153,7 +153,7 @@ void draw_sprites(void){
 
 		trail_loop();
 	}
-	else if ((forced_trails == 2 || trails == 2) && !dual) {
+	else if ((forced_trails == 2 || trails == 2) && !dual && viseffects) {
 		temptemp5++;
 		tmp6 = currplayer_vel_x << 2;
 		
