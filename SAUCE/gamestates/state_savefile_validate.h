@@ -35,7 +35,7 @@ void state_savefile_validate(){
         include_nested_dialog_string(dialogBox_wrongSaveFileVersion);
         draw_dialog_box(dialogBox_saveIssues);
 	mmc3_set_2kb_chr_bank_0(0xFF);	
-	mmc3_set_2kb_chr_bank_1(22);	
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
 
         ppu_on_all();
         pal_fade_to(0,4);
@@ -48,7 +48,7 @@ void state_savefile_validate(){
         include_nested_dialog_string(dialogBox_saveFileMissingCorrupt);
         draw_dialog_box(dialogBox_saveIssues);
 	mmc3_set_2kb_chr_bank_0(0xFF);	
-	mmc3_set_2kb_chr_bank_1(22);	
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
 	
         ppu_on_all();
         pal_fade_to(0,4);
@@ -65,7 +65,7 @@ void state_savefile_validate(){
         ppu_on_all();
         pal_fade_to(0,4);
 	mmc3_set_2kb_chr_bank_0(0xFF);	
-	mmc3_set_2kb_chr_bank_1(22);	
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
 
         do {
             ppu_wait_nmi();
@@ -86,7 +86,7 @@ void state_savefile_validate(){
 void state_exit(){
     poweroffcheck = 0x00;
 	mmc3_set_2kb_chr_bank_0(0xFF);	
-	mmc3_set_2kb_chr_bank_1(22);	
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
 
     pal_fade_to(4, 0);
     mmc3_disable_irq();

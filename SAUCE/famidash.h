@@ -1,9 +1,10 @@
 // Defines
 
 #define NINJABANK 92
-#define MENUBANK 94
-#define MENUICONBANK 98
-#define LEVELCOMPLETEBANK 102
+#define MOUSEBANK 94
+#define MENUBANK 96
+#define MENUICONBANK 100
+#define LEVELCOMPLETEBANK 104
 
 #define SPIKESA 0
 #define SPIKESB 2

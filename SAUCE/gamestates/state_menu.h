@@ -185,7 +185,7 @@ void levelselection() {
 	
 	mmc3_set_8kb_chr(MENUBANK);
 	mmc3_set_2kb_chr_bank_0(0xFF);
-	mmc3_set_2kb_chr_bank_1(22);
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
 
@@ -329,7 +329,7 @@ void customize_screen() {
 	pal_set_update();
 	mmc3_set_8kb_chr(MENUICONBANK);
 	mmc3_set_2kb_chr_bank_0(0xFF);
-	mmc3_set_2kb_chr_bank_1(22);
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
 
@@ -508,7 +508,7 @@ void settings() {
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingscreen);   	
 	mmc3_set_2kb_chr_bank_0(0xFF);
-	mmc3_set_2kb_chr_bank_1(22);
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 beforehand
 	pal_fade_to_withmusic(0,4);
@@ -633,7 +633,7 @@ void state_menu() {
 
 	mmc3_set_8kb_chr(MENUBANK);
 	mmc3_set_2kb_chr_bank_0(0xFF);
-	mmc3_set_2kb_chr_bank_1(22);
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	
 	
 	

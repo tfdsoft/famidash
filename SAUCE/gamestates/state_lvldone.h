@@ -42,7 +42,7 @@ void state_lvldone() {
     pal_spr(paletteMenu);
 
 	mmc3_set_8kb_chr(LEVELCOMPLETEBANK);
-	mmc3_set_2kb_chr_bank_1(22);
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	// Make an a nametable for the chain
     vram_adr(NAMETABLE_A);
 	vram_fill(0xfe, 0x3c0);
@@ -722,7 +722,7 @@ void funsettings() {
 	vram_unrle(funsettingscreen);   
 	//kandotemp4 = 0;
 	mmc3_set_2kb_chr_bank_0(0xFF);
-	mmc3_set_2kb_chr_bank_1(22);
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 by default	
 	pal_fade_to_withmusic(0,4);

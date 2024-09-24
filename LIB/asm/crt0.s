@@ -404,11 +404,13 @@ _GAME_CHR:
 
     .incbin "GRAPHICS/banktriangle.chr" ; 1kb (92)
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    
+    .incbin "GRAPHICS/cursors.chr" ; 2kb
 
 
-    .incbin "GRAPHICS/menus.chr"    ; 4kb (94)
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (98)
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (102)
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (96)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (100)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (104)
 
 .segment "PARALLAXCHR"  ; banks 112 - 255
 .export _PARALLAX_CHR
