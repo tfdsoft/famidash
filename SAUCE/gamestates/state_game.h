@@ -381,6 +381,7 @@ void state_game(){
 #else
 					gamemode == 7 ? gamemode = 0 : gamemode++;
 #endif			
+					cube_data[0] = 0;
 					ppu_off();
 					//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
 					set_player_banks();

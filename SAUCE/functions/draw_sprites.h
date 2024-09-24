@@ -145,7 +145,7 @@ void draw_sprites(void){
 			trail_sprites_visible[tmp2] = 0;
 		}
 	}
-	if (forced_trails != 2) {
+	if (forced_trails != 2 && !invisible) {
 		tmp6 = currplayer_vel_x << 1;
 		tmp5 = currplayer_x - tmp6;
 		
