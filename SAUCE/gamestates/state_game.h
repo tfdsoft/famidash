@@ -501,6 +501,7 @@ void state_game(){
 
 			}
 		}
+		kandotemp3 = 0;
 #endif
 		if (invincible_counter) invincible_counter--;
 
@@ -539,9 +540,10 @@ void state_game(){
 
 			crossPRGBankJump0(movement);
 
-
+			kandotemp3 = 1;
 			runthecolls();
-
+			kandotemp3 = 0;
+			
 			crossPRGBankJump0(do_the_scroll_thing2);
 
 			currplayer = 0;					//give back focus
@@ -563,7 +565,7 @@ void state_game(){
 			}
 		}
 	}
-        check_spr_objects();
+   //     check_spr_objects();
 
   		oam_clear();
 

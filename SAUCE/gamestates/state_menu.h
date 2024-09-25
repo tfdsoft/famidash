@@ -766,6 +766,7 @@ void state_menu() {
 
 
 		if (pad_new[0] & PAD_B) {
+			oam_clear();
 			gameState = 0xFE;
 			return;
 		}
