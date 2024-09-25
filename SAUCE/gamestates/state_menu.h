@@ -697,6 +697,8 @@ void state_menu() {
 	one_vram_buffer('a', tmp5);
 	one_vram_buffer('b', addloNOC(tmp5, 1));
 	kandoframecnt = 0;
+	currplayer_y = 160;
+	currplayer_x = 0;
 	while (!(pad_new[0] & PAD_START)){
 		pal_col(0x11,color3);
 		pal_col(0x12,color1);
@@ -723,8 +725,9 @@ void state_menu() {
 			mmc3_set_2kb_chr_bank_0(tmp7);
 		
 		}
-		oam_spr(currplayer_x, 160, 1, 0);
-		oam_spr(currplayer_x + 8, 160, 3, 0);
+		if (currplayer_y
+		oam_spr(currplayer_x, currplayer_y, 1, 0);
+		oam_spr(currplayer_x + 8, currplayer_y, 3, 0);
 		
 
 
