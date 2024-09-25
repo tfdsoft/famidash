@@ -132,6 +132,7 @@ void draw_sprites(void){
 		oam_meta_spr(temp_x, temp_y, animation_data_ptr);
 		
 	} while (++count < max_loaded_sprites);
+	if (!dual) {
 	if (kandoframecnt & 0x01) {
 		
 		tmp2 = 0;
@@ -173,6 +174,7 @@ void draw_sprites(void){
 		player_x[0] = tmpA;
 		player_y[0] = tmpB;
 		temptemp5--;		
+	}
 	}
 #undef spr_type
 #undef animation_ptr

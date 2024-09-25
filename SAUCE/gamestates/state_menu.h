@@ -714,7 +714,8 @@ void state_menu() {
 		currplayer_x += speed;
 		if (currplayer_x >= 0xFB) { 
 			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 0; 
-			titlemode = newrand() & 3;
+			titlemode = newrand() & 7;
+			ballframe = 0;
 			oam_clear();
 			set_title_icon();
 		
@@ -735,6 +736,42 @@ void state_menu() {
 				case 3:
 					oam_spr(currplayer_x, currplayer_y, 0x29, 0);
 					oam_spr(currplayer_x + 8, currplayer_y, 0x2B, 0);
+					break;
+				case 4:
+					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					switch (ballframe) {
+						case 0:
+							oam_spr(currplayer_x, currplayer_y, 0x01, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x03, 0);					
+							oam_spr(currplayer_x + 16, currplayer_y, 0x05, 0);					
+							break;
+						case 1:
+							oam_spr(currplayer_x + 8, currplayer_y, 0x07, 0);					
+							oam_spr(currplayer_x + 16, currplayer_y, 0x09, 0);					
+							break;
+						case 2:
+							oam_spr(currplayer_x, currplayer_y, 0x01, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x0B, 0);					
+							oam_spr(currplayer_x + 16, currplayer_y, 0x05, 0);					
+							break;
+						case 3:
+							oam_spr(currplayer_x + 8, currplayer_y, 0x0D, 0);					
+							oam_spr(currplayer_x + 16, currplayer_y, 0x09, 0);					
+							break;	
+					}
+					break;
+				case 5:
+				case 6:
+				case 7:
+					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
+					if (ballframe) {
+						oam_spr(currplayer_x, currplayer_y, 0x3F, 0);
+						oam_spr(currplayer_x + 8, currplayer_y, 0x3F, 0x40);
+					}
+					else {
+						oam_spr(currplayer_x, currplayer_y, 0x1B, 0);
+						oam_spr(currplayer_x + 8, currplayer_y, 0x1B, 0x40);
+					}						
 					break;
 			};
 		}
@@ -997,12 +1034,25 @@ void start_the_level() {
 }			
 
 void set_title_icon() {
-	while (tmp7 > 26) {
-		tmp7 = newrand() & 31;
-	}
-	tmp7 = tmp7 * 2;
-	tmp7 += 38;
-	mmc3_set_2kb_chr_bank_0(tmp7);
+	switch (titlemode) {
+		case 0:
+		case 1:
+		case 2:
+		case 3:
+			while (tmp7 > 26) {
+				tmp7 = newrand() & 31;
+			}
+			tmp7 = tmp7 * 2;
+			tmp7 += 38;
+			mmc3_set_2kb_chr_bank_0(tmp7);
+			break;
+		case 4: 
+		case 5: 
+		case 6: 
+		case 7: 
+			mmc3_set_2kb_chr_bank_0(18);		
+			break;
+	};
 }			
 
 #pragma code-name(pop)
