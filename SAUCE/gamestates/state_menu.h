@@ -2,6 +2,7 @@
 #pragma data-name(push, "XCD_BANK_03")
 #pragma rodata-name(push, "XCD_BANK_03")
 
+void set_title_icon();
 void state_demo();
 void mouse_and_cursor();
 void colorinc();
@@ -637,12 +638,9 @@ void state_menu() {
 
 	mmc3_set_8kb_chr(MENUBANK);
 
-	while (tmp2 > 26) {
-		tmp2 = newrand() & 31;
-	}
-	tmp2 *= 2;
-	tmp2 += 38;
-	mmc3_set_2kb_chr_bank_0(tmp2);
+	set_title_icon();
+	set_title_icon();
+
 	
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	
@@ -717,12 +715,7 @@ void state_menu() {
 		if (currplayer_x >= 0xFB) { 
 			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 0; 
 			oam_clear();
-			while (tmp7 > 26) {
-				tmp7 = newrand() & 31;
-			}
-			tmp7 = tmp7 * 2;
-			tmp7 += 38;
-			mmc3_set_2kb_chr_bank_0(tmp7);
+			set_title_icon();
 		
 		}
 		if (currplayer_x <= 0xF7) {
@@ -986,6 +979,16 @@ void start_the_level() {
 	pal_fade_to(4,0);
 	kandotemp = 0;
 }			
+
+void set_title_icon() {
+	while (tmp7 > 26) {
+		tmp7 = newrand() & 31;
+	}
+	tmp7 = tmp7 * 2;
+	tmp7 += 38;
+	mmc3_set_2kb_chr_bank_0(tmp7);
+}			
+
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)

@@ -114,8 +114,8 @@ void state_demo(){
 	
 	do {
 		oam_clear();
-
        	crossPRGBankJump0(mouse_and_cursor);
+		newrand();
 	    kandoframecnt++;
        	    	
 		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1] | mouse.left.click | mouse.right.click)) { gameState = 0x01; return; }		
@@ -125,8 +125,8 @@ void state_demo(){
 	tmp1 = 0;
 	do {
 		oam_clear();
-
 		crossPRGBankJump0(mouse_and_cursor);
+		newrand();
 	    kandoframecnt++;
        	    	
 		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1] | mouse.left.click | mouse.right.click)) { gameState = 0x01; return; }		
@@ -139,8 +139,8 @@ void state_demo(){
 	set_scroll_x(256);
 	do {
 		oam_clear();
-
 		crossPRGBankJump0(mouse_and_cursor);
+		newrand();
 	    kandoframecnt++;
 		
        	    	
