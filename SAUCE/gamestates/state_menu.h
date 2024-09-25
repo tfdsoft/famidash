@@ -531,41 +531,29 @@ void state_menu() {
 					}
 					break;				
 				case 6:		//wave
-					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 7 ? -7 : 1;
-					switch (ballframe) {
-						case 0:
-							oam_spr(currplayer_x, currplayer_y, 0x17, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x19, 0x00);					
-							break;
-						case 1:
-							oam_spr(currplayer_x, currplayer_y, 0x37, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x39, 0x00);					
-							break;
-						case 2:
-							oam_spr(currplayer_x, currplayer_y, 0x3B, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x3D, 0x00);					
-							break;
-						case 3:
-							oam_spr(currplayer_x, currplayer_y, 0x37, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x39, 0x00);					
-							break;	
-						case 4:
-							oam_spr(currplayer_x, currplayer_y, 0x17, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x19, 0x00);					
-							break;	
-						case 5:
-							oam_spr(currplayer_x, currplayer_y, 0x37, 0x80);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x39, 0x80);					
-							break;	
-						case 6:
-							oam_spr(currplayer_x, currplayer_y, 0x3B, 0x80);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x3D, 0x80);					
-							break;	
-						case 7:
-							oam_spr(currplayer_x, currplayer_y, 0x37, 0x80);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x39, 0x80);					
-							break;	
-					};
+					tmp2 = newrand() & 31;
+					if (tmp2 == 31) currplayer_gravity ^= 1;
+						
+					if (currplayer_gravity) currplayer_y -= speed;
+
+					else currplayer_y += speed;
+					if (currplayer_y >= 160) {
+						currplayer_y = 160;
+					}		
+					else if (currplayer_y < 0x08) currplayer_y = 0x08;
+					
+					if (currplayer_y == 160 || currplayer_y == 8) {
+						oam_spr(currplayer_x, currplayer_y, 0x17, 0);
+						oam_spr(currplayer_x + 8, currplayer_y, 0x19, 0);
+					}
+					else if (currplayer_gravity) {
+						oam_spr(currplayer_x, currplayer_y, 0x3B, 0x80);
+						oam_spr(currplayer_x + 8, currplayer_y, 0x3D, 0x80);
+					}
+					else {
+						oam_spr(currplayer_x, currplayer_y, 0x3B, 0);
+						oam_spr(currplayer_x + 8, currplayer_y, 0x3D, 0);
+					}
 					break;				
 				case 7:		//ball
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
@@ -892,7 +880,7 @@ void set_title_icon() {
 			tmp7 += 38;
 			mmc3_set_2kb_chr_bank_0(tmp7);
 		}
-		else if (titlemode < 7) {
+		else if (titlemode <= 7) {
 			mmc3_set_2kb_chr_bank_0(18);		
 		}
 		else if (titlemode <= 15) {
@@ -904,7 +892,9 @@ void roll_new_mode() {
 	speed = (newrand() & 3); 
 	if (speed == 0) speed = 1; 
 	currplayer_x = 8; 
+	currplayer_y = 160; 
 	titlemode = newrand() & 15;
+//	titlemode = 6; to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
