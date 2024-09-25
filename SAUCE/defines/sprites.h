@@ -372,7 +372,7 @@ const unsigned char * const MINI_UFO[] = {MINI_UFO_0, MINI_UFO_U, MINI_UFO_D};
 
 const unsigned char Mini_Ball2[]={
 
-	 -4,  4,0x0B,1|OAM_FLIP_V,
+	 -12,  4,0x0B,1|OAM_FLIP_V,
 	0x80
 };
 
