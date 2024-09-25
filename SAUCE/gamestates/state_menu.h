@@ -847,6 +847,11 @@ void state_menu() {
 			return;
 		}
 		if (mouse.left.click) {
+			if (mouse.y >= 0xA0 && mouse.y <= 0xBD) {
+				if (mouse.x >= currplayer_x && mouse.x <= (currplayer_x + 8)) titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
+			}
+				
+			
 			if ((mouse.y >= 0x5E && mouse.y <= 0x7A)) {
 				if (mouse.x >= 0x41 && mouse.x <= 0x5A) {
 					menuselection = 4; break;
@@ -858,7 +863,7 @@ void state_menu() {
 					menuselection = 1; break;
 				}
 			}				
-			else if ((mouse.y >= 0x8C && mouse.x <= 0x9B)) {
+			else if ((mouse.y >= 0x8C && mouse.y <= 0x9B)) {
 				if (mouse.x >= 0x5E && mouse.x <= 0x6D) {
 					menuselection = 2; break;
 				}
