@@ -630,9 +630,17 @@ void state_menu() {
 	
 	ppu_off();
     pal_bg(splashMenu);
+	newrand();
 
 	mmc3_set_8kb_chr(MENUBANK);
-	mmc3_set_2kb_chr_bank_0(38);
+
+	while (tmp7 > 26) {
+		tmp7 = newrand() & 31;
+	}
+	tmp7 = tmp7 * 2;
+	tmp7 += 38;
+	mmc3_set_2kb_chr_bank_0(tmp7);
+	
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	
 	
@@ -697,7 +705,17 @@ void state_menu() {
 		
 		
 		player_x[0] += speed;
-		if (player_x[0] >= 0xF8) { speed = (newrand() & 3); if (speed == 0) speed = 1; player_x[0] = 0; }
+		if (player_x[0] >= 0xF8) { 
+			speed = (newrand() & 3); if (speed == 0) speed = 1; player_x[0] = 0; 
+		
+			while (tmp7 > 26) {
+				tmp7 = newrand() & 31;
+			}
+			tmp7 = tmp7 * 2;
+			tmp7 += 38;
+			mmc3_set_2kb_chr_bank_0(tmp7);
+		
+		}
 		oam_spr(player_x[0], 160, 1, 0);
 		oam_spr(player_x[0] + 8, 160, 3, 0);
 
