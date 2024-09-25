@@ -695,17 +695,22 @@ void state_menu() {
 	one_vram_buffer('b', addloNOC(tmp5, 1));
 	kandoframecnt = 0;
 	while (!(pad_new[0] & PAD_START)){
+		pal_col(0x11,color3);
+		pal_col(0x12,color1);
+		pal_col(0x13,color2);
+		pal_set_update();
+
+
 		ppu_wait_nmi();
 		music_update();
 		mouse_and_cursor();
 		 // read the first controller
 
 		newrand();
-		
-		
-		player_x[0] += speed;
-		if (player_x[0] >= 0xF8) { 
-			speed = (newrand() & 3); if (speed == 0) speed = 1; player_x[0] = 0; 
+		oam_clear();
+		currplayer_x += speed;
+		if (currplayer_x >= 0xF8) { 
+			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 0; 
 		
 			while (tmp7 > 26) {
 				tmp7 = newrand() & 31;
@@ -715,13 +720,10 @@ void state_menu() {
 			mmc3_set_2kb_chr_bank_0(tmp7);
 		
 		}
-		oam_spr(player_x[0], 160, 1, 0);
-		oam_spr(player_x[0] + 8, 160, 3, 0);
+		oam_spr(currplayer_x, 160, 1, 0);
+		oam_spr(currplayer_x + 8, 160, 3, 0);
+		
 
-		pal_col(0x11,color3);
-		pal_col(0x12,color1);
-		pal_col(0x13,color2);
-		pal_set_update();
 
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 		if (!(kandoframecnt & 127)) {
