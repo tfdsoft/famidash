@@ -694,7 +694,7 @@ void state_menu() {
 		 // read the first controller
 
 		newrand();
-		player_x[0] += 2;
+		player_x[0] += 1;
 		oam_spr(player_x[0], 160, 1, 0);
 		oam_spr(player_x[0] + 8, 160, 3, 0);
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
