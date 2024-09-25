@@ -2,6 +2,7 @@
 #pragma data-name(push, "XCD_BANK_03")
 #pragma rodata-name(push, "XCD_BANK_03")
 
+void settings();
 void set_title_icon();
 void state_demo();
 void mouse_and_cursor();
@@ -500,118 +501,6 @@ void customize_screen() {
 
 
 
-#include "defines/mainmenu_charmap.h"
-
-void settings() {
-	settingvalue = 0; 
-	pal_fade_to_withmusic(4,0);
-	mmc3_disable_irq();
-	ppu_off();
-	pal_bg(paletteSettings);
-	vram_adr(NAMETABLE_A);
-	vram_unrle(settingscreen);   	
-	mmc3_set_2kb_chr_bank_0(0xFF);
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	ppu_on_all();
-	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 beforehand
-	pal_fade_to_withmusic(0,4);
-	while (1) {
-		ppu_wait_nmi();
-		music_update();
-		oam_clear();
-		mouse_and_cursor();
-		 // read the first controller
-		
-		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 7));
-		else one_vram_buffer('f', NTADR_A(26, 7));
-
-		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 9));
-		else one_vram_buffer('f', NTADR_A(26, 9));
-
-		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, 11));
-		else one_vram_buffer('g', NTADR_A(26, 11));
-
-		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, 13));
-		else one_vram_buffer('g', NTADR_A(26, 13));
-
-		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, 15));
-		else one_vram_buffer('f', NTADR_A(26, 15));
-
-		if (viseffects) one_vram_buffer('g', NTADR_A(26, 17));
-		else one_vram_buffer('f', NTADR_A(26, 17));
-
-		if (trails == 1) one_vram_buffer('g', NTADR_A(26, 19));
-		else if (trails == 2) one_vram_buffer('*', NTADR_A(26, 19));
-		else one_vram_buffer('f', NTADR_A(26, 19));
-
-		tmp1 = settingvalue;
-
-		if (mouse.left.click) {
-			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
-				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
-					settingvalue = 0; set_settings();
-				}
-				else if (mouse.y >= 0x44 && mouse.y <= 0x4C) {
-					settingvalue = 1; set_settings();
-				}
-				else if (mouse.y >= 0x54 && mouse.y <= 0x5C) {
-					settingvalue = 2; set_settings();
-				}
-				else if (mouse.y >= 0x64 && mouse.y <= 0x6C) {
-					settingvalue = 3; set_settings();
-				}
-				else if (mouse.y >= 0x74 && mouse.y <= 0x7C) {
-					settingvalue = 4; set_settings();
-				}
-				else if (mouse.y >= 0x84 && mouse.y <= 0x8C) {
-					settingvalue = 5; set_settings();
-				}
-				else if (mouse.y >= 0x94 && mouse.y <= 0x9C) {
-					settingvalue = 6; set_settings();
-				}
-
-			}
-			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
-				return;
-			}
-
-		}	
-
-		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 7) { settingvalue = 0;  }
-			else { settingvalue++;   }
-		}
-
-		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 7;  }
-			else { settingvalue--;   }
-		}
-
-		if (tmp1 != settingvalue) {
-			// NTADR_A = (NAMETABLE_A|(((y)<<5)|(x)))
-			// (tmp1 * 2) << 5 = tmp1<<6 = (tmp1<<8)>>2
-			one_vram_buffer(' ', NTADR_A(4, 7)+((tmp1<<8)>>2));
-			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
-		}
-		
-		if (pad_new[0] & (PAD_A | PAD_START)) {
-			set_settings();
-		}
-		if (options & platformer) {
-			twoplayer = 0;
-			one_vram_buffer('X',NTADR_A(26,7));
-		}
-		if (twoplayer) options &= platformer^0xff;		
-
-		if (pad_new[0] & PAD_B) {
-			return;
-		}
-		kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-				
-	}
-}
-
 
 #include "defines/mainmenu_charmap.h"
 
@@ -761,6 +650,29 @@ void state_menu() {
 					}
 					break;
 				case 5:
+					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					switch (ballframe) {
+						case 0:
+							oam_spr(currplayer_x, currplayer_y, 0x21, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x23, 0);					
+							oam_spr(currplayer_x + 16, currplayer_y, 0x25, 0);					
+							break;
+						case 1:
+							oam_spr(currplayer_x , currplayer_y, 0x27, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x29, 0);					
+							oam_spr(currplayer_x + 16, currplayer_y, 0x2B, 0);					
+							break;
+						case 2:
+							oam_spr(currplayer_x, currplayer_y, 0x2D, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x2F, 0);					
+							oam_spr(currplayer_x + 16, currplayer_y, 0x31, 0);					
+							break;
+						case 3:
+							oam_spr(currplayer_x + 8, currplayer_y, 0x33, 0);					
+							oam_spr(currplayer_x + 16, currplayer_y, 0x35, 0);					
+							break;	
+					}
+					break;				
 				case 6:
 				case 7:
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
@@ -888,7 +800,7 @@ void state_menu() {
 			levelselection(); 
 			return;		
 		case 0x02: gameState = 4; return;
-		case 0x03: settings(); return;
+		case 0x03: crossPRGBankJump0(settings); return;
 		case 0x04: customize_screen(); return;
 	};
 	
@@ -958,30 +870,7 @@ void mouse_and_cursor() {
 	}
 }
 
-void set_settings() {
-	switch (settingvalue) {
-		case 0: // oneptwoplayer
-			twoplayer ^= 1; break;
-		case 1: // oneptwoplayer
-			options ^= oneptwoplayer; break;
-		case 2: // sfxoff
-			options ^= sfxoff; break;
-		case 3: // musicoff
-			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(song_menu_theme); } break;
-		case 4: // jumpsound
-			options ^= jumpsound; break;
-		case 5:
-			viseffects ^= 1; break;
-		case 6:
-			trails = trails == 2 ? 0 : trails + 1; break;					
-		case 7:
-			if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
-				setdefaultoptions();
-				__asm__("JMP ($FFFC)");	// restart the game lmao	
-			}
-			break;
-	}
-}			
+		
 
 void leveldec() {
 	--level;
