@@ -40,8 +40,8 @@ void state_lvldone() {
 	pal_col(0x0A,0x2A);
 	pal_col(0x0B,0x21);
 	pal_set_update();
-    pal_spr(paletteMenu);
-
+    //pal_spr(paletteMenu);
+	pal_spr(paletteDefaultSP);
 	mmc3_set_8kb_chr(LEVELCOMPLETEBANK);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	// Make an a nametable for the chain
