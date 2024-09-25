@@ -6,6 +6,8 @@ void mouse_and_cursor();
 
 void savefile_reset_check_loop(){
     do {
+		oam_clear();
+
         crossPRGBankJump0(mouse_and_cursor);
 	    kandoframecnt++;
        	    
@@ -69,6 +71,8 @@ void state_savefile_validate(){
 
         do {
             ppu_wait_nmi();
+		oam_clear();
+
             crossPRGBankJump0(mouse_and_cursor);
             if (pad_new[0] || mouse.left.click || mouse.right.click) break;
 	    kandoframecnt++;
@@ -106,6 +110,8 @@ void state_exit(){
     pal_fade_to(0, 4);
     do {
         ppu_wait_nmi();
+		oam_clear();
+
 	crossPRGBankJump0(mouse_and_cursor);
         // wait for system power off
         if (pad_new[0] & PAD_B || mouse.right.click) break;

@@ -230,6 +230,7 @@ void levelselection() {
 		newrand();
 		ppu_wait_nmi();
 		music_update();
+		oam_clear();
 		mouse_and_cursor();
 		 // read the first controller
 
@@ -375,6 +376,7 @@ void customize_screen() {
 		pal_col(0x0b,color2);
 		pal_col(0x09,color3);
 		pal_set_update();
+		oam_clear();
 		mouse_and_cursor();
 		 // read the first controller
 	
@@ -515,6 +517,7 @@ void settings() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
+		oam_clear();
 		mouse_and_cursor();
 		 // read the first controller
 		
@@ -703,11 +706,11 @@ void state_menu() {
 
 		ppu_wait_nmi();
 		music_update();
+		oam_clear();
 		mouse_and_cursor();
 		 // read the first controller
 
 		newrand();
-		oam_clear();
 		currplayer_x += speed;
 		if (currplayer_x >= 0xF8) { 
 			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 0; 
@@ -902,7 +905,6 @@ void mouse_and_cursor() {
 		if (mouse.right.press) pad[0] |= PAD_B;
 		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
 		if (kandoframecnt > 0xFC) kandoframecnt = 0;
-		oam_clear();
 		if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA1 + (2*mouseframe)), 2);	
 	}
 }

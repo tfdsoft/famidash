@@ -113,6 +113,8 @@ void state_demo(){
 	*/
 	
 	do {
+		oam_clear();
+
        	crossPRGBankJump0(mouse_and_cursor);
 	    kandoframecnt++;
        	    	
@@ -122,6 +124,8 @@ void state_demo(){
 	} while (tmp1 != 0);
 	tmp1 = 0;
 	do {
+		oam_clear();
+
 		crossPRGBankJump0(mouse_and_cursor);
 	    kandoframecnt++;
        	    	
@@ -134,6 +138,8 @@ void state_demo(){
 	tmp1 = 0;
 	set_scroll_x(256);
 	do {
+		oam_clear();
+
 		crossPRGBankJump0(mouse_and_cursor);
 	    kandoframecnt++;
 		

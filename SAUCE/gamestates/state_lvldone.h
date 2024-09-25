@@ -323,6 +323,8 @@ void state_lvldone() {
 			checkcoinproceed();
 			break;
 		case 7:
+		oam_clear();
+
 			crossPRGBankJump0(mouse_and_cursor);
 
 			if (mouse.left.click) {
@@ -530,6 +532,8 @@ void bgmtest() {
 		
 		ppu_wait_nmi();
 		music_update();
+		oam_clear();
+
 		crossPRGBankJump0(mouse_and_cursor);
 		 // read the first controller
 		kandoframecnt++;
@@ -717,6 +721,8 @@ void funsettings() {
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
+		oam_clear();
+
 		crossPRGBankJump0(mouse_and_cursor);
 		 // read the first controller
 		if (mouse.left.click) {
