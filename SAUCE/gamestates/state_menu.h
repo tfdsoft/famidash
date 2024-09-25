@@ -184,7 +184,7 @@ void levelselection() {
 	else if (level >= LEVEL_COUNT) level -= LEVEL_COUNT;
 	
 	mmc3_set_8kb_chr(MENUBANK);
-	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_0(38);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
@@ -328,7 +328,7 @@ void customize_screen() {
 	pal_col(0x00, 0x00);
 	pal_set_update();
 	mmc3_set_8kb_chr(MENUICONBANK);
-	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_0(38);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
@@ -507,7 +507,7 @@ void settings() {
 	pal_bg(paletteSettings);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingscreen);   	
-	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_0(38);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 beforehand
@@ -632,7 +632,7 @@ void state_menu() {
     pal_bg(splashMenu);
 
 	mmc3_set_8kb_chr(MENUBANK);
-	mmc3_set_2kb_chr_bank_0(0xFF);
+	mmc3_set_2kb_chr_bank_0(38);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	
 	
@@ -681,7 +681,6 @@ void state_menu() {
  	ppu_on_all();
 	pad[0] = 0;
 	pad_new[0] = 0;
-	
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;
 	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
@@ -693,8 +692,11 @@ void state_menu() {
 		music_update();
 		mouse_and_cursor();
 		 // read the first controller
+
 		newrand();
-		
+		player_x[0] += 2;
+		oam_spr(player_x[0], 160, 1, 0);
+		oam_spr(player_x[0] + 8, 160, 3, 0);
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 		if (!(kandoframecnt & 127)) {
 			tmp3 = 0x80 + BG_Table2[discoframe];
