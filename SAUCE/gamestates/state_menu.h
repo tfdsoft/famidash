@@ -594,7 +594,29 @@ void state_menu() {
 					oam_spr(currplayer_x, currplayer_y, 0x0B, 0);
 					break;	
 				case 11:		//mini wave
-					oam_spr(currplayer_x, currplayer_y, 0x0D, 0);
+					tmp2 = newrand() & 31;
+					if (tmp2 == 31) currplayer_gravity ^= 1;
+						
+					if (currplayer_gravity) currplayer_y -= speed;
+
+					else currplayer_y += (speed << 1);
+					if (currplayer_y >= 160) {
+						currplayer_y = 160;
+					}		
+					else if (currplayer_y < 0x08) currplayer_y = 0x08;
+					
+					if (currplayer_y == 160 || currplayer_y == 8) {
+						oam_spr(currplayer_x, currplayer_y, 0x0D, 0);
+						
+					}
+					else if (currplayer_gravity) {
+						oam_spr(currplayer_x, currplayer_y, 0x11, 0x80);
+						
+					}
+					else {
+						oam_spr(currplayer_x, currplayer_y, 0x11, 0);
+						
+					}
 					break;	
 				case 12:		//mini ufo
 					oam_spr(currplayer_x, currplayer_y, 0x19, 0);
@@ -894,7 +916,7 @@ void roll_new_mode() {
 	currplayer_x = 8; 
 	currplayer_y = 160; 
 	titlemode = newrand() & 15;
-//	titlemode = 6; to test
+//	titlemode = 11; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
