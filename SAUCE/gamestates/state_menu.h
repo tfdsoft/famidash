@@ -637,7 +637,7 @@ void state_menu() {
 	while (tmp7 > 26) {
 		tmp7 = newrand() & 31;
 	}
-	tmp7 = tmp7 * 2;
+	tmp7 *= 2;
 	tmp7 += 38;
 	mmc3_set_2kb_chr_bank_0(tmp7);
 	
@@ -719,6 +719,10 @@ void state_menu() {
 		oam_spr(player_x[0], 160, 1, 0);
 		oam_spr(player_x[0] + 8, 160, 3, 0);
 
+		pal_col(0x11,color3);
+		pal_col(0x12,color1);
+		pal_col(0x13,color2);
+		pal_set_update();
 
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 		if (!(kandoframecnt & 127)) {
