@@ -677,7 +677,7 @@ void state_menu() {
 	vram_adr(NAMETABLE_B);
     vram_unrle(game_start_screen);
 
-	
+	speed = 1;
  	ppu_on_all();
 	pad[0] = 0;
 	pad_new[0] = 0;
@@ -694,9 +694,14 @@ void state_menu() {
 		 // read the first controller
 
 		newrand();
-		player_x[0] += 1;
+		
+		
+		player_x[0] += speed;
+		if (player_x[0] >= 0xF8) { speed = (newrand() & 3); if (speed == 0) speed = 1; player_x[0] = 0; }
 		oam_spr(player_x[0], 160, 1, 0);
 		oam_spr(player_x[0] + 8, 160, 3, 0);
+
+
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 		if (!(kandoframecnt & 127)) {
 			tmp3 = 0x80 + BG_Table2[discoframe];
