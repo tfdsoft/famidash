@@ -725,7 +725,6 @@ void state_menu() {
 			mmc3_set_2kb_chr_bank_0(tmp7);
 		
 		}
-		if (currplayer_y
 		oam_spr(currplayer_x, currplayer_y, 1, 0);
 		oam_spr(currplayer_x + 8, currplayer_y, 3, 0);
 		
