@@ -604,7 +604,7 @@ void state_menu() {
 		newrand();
 		currplayer_x += speed;
 		if (currplayer_x >= 0xFB) { 
-			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 0; 
+			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 8; 
 			titlemode = newrand() & 15;
 			ballframe = 0;
 			oam_clear();
@@ -632,22 +632,22 @@ void state_menu() {
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:
-							oam_spr(currplayer_x, currplayer_y, 0x01, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x03, 0);					
-							oam_spr(currplayer_x + 16, currplayer_y, 0x05, 0);					
+							oam_spr(currplayer_x-8, currplayer_y, 0x01, 0);
+							oam_spr(currplayer_x, currplayer_y, 0x03, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x05, 0);					
 							break;
 						case 1:
-							oam_spr(currplayer_x + 8, currplayer_y, 0x07, 0);					
-							oam_spr(currplayer_x + 16, currplayer_y, 0x09, 0);					
+							oam_spr(currplayer_x, currplayer_y, 0x07, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x09, 0);					
 							break;
 						case 2:
-							oam_spr(currplayer_x, currplayer_y, 0x01, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x0B, 0);					
-							oam_spr(currplayer_x + 16, currplayer_y, 0x05, 0);					
+							oam_spr(currplayer_x-8, currplayer_y, 0x01, 0);
+							oam_spr(currplayer_x, currplayer_y, 0x0B, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x05, 0);					
 							break;
 						case 3:
-							oam_spr(currplayer_x + 8, currplayer_y, 0x0D, 0);					
-							oam_spr(currplayer_x + 16, currplayer_y, 0x09, 0);					
+							oam_spr(currplayer_x, currplayer_y, 0x0D, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x09, 0);					
 							break;	
 					}
 					break;
@@ -655,23 +655,23 @@ void state_menu() {
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:
-							oam_spr(currplayer_x, currplayer_y, 0x21, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x23, 0);					
-							oam_spr(currplayer_x + 16, currplayer_y, 0x25, 0);					
+							oam_spr(currplayer_x - 8, currplayer_y, 0x21, 0);
+							oam_spr(currplayer_x, currplayer_y, 0x23, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x25, 0);					
 							break;
 						case 1:
-							oam_spr(currplayer_x , currplayer_y, 0x27, 0);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x29, 0);					
-							oam_spr(currplayer_x + 16, currplayer_y, 0x2B, 0);					
+							oam_spr(currplayer_x - 8, currplayer_y, 0x27, 0);					
+							oam_spr(currplayer_x, currplayer_y, 0x29, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x2B, 0);					
 							break;
 						case 2:
-							oam_spr(currplayer_x, currplayer_y, 0x2D, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x2F, 0);					
-							oam_spr(currplayer_x + 16, currplayer_y, 0x31, 0);					
+							oam_spr(currplayer_x - 8, currplayer_y, 0x2D, 0);
+							oam_spr(currplayer_x, currplayer_y, 0x2F, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x31, 0);					
 							break;
 						case 3:
-							oam_spr(currplayer_x + 8, currplayer_y, 0x33, 0);					
-							oam_spr(currplayer_x + 16, currplayer_y, 0x35, 0);					
+							oam_spr(currplayer_x, currplayer_y, 0x33, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x35, 0);					
 							break;	
 					}
 					break;				
