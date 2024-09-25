@@ -629,17 +629,17 @@ void state_menu() {
 	mmc3_disable_irq();
 	
 	ppu_off();
-    pal_bg(splashMenu);
+	pal_bg(splashMenu);
 	newrand();
 
 	mmc3_set_8kb_chr(MENUBANK);
 
-	while (tmp7 > 26) {
-		tmp7 = newrand() & 31;
+	while (tmp2 > 26) {
+		tmp2 = newrand() & 31;
 	}
-	tmp7 *= 2;
-	tmp7 += 38;
-	mmc3_set_2kb_chr_bank_0(tmp7);
+	tmp2 *= 2;
+	tmp2 += 38;
+	mmc3_set_2kb_chr_bank_0(tmp2);
 	
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	
@@ -687,7 +687,6 @@ void state_menu() {
 
 	speed = 1;
  	ppu_on_all();
-	pad[0] = 0;
 	pad_new[0] = 0;
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;
