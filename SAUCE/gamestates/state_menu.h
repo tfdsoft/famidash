@@ -650,7 +650,6 @@ void state_menu() {
 							oam_spr(currplayer_x + 16, currplayer_y, 0x09, 0);					
 							break;	
 					}
-					break;
 				case 5:		//spider
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
@@ -691,9 +690,25 @@ void state_menu() {
 					}						
 					break;
 				case 8:		//swing
-					oam_spr(currplayer_x, currplayer_y, 0x31, 0);
-					oam_spr(currplayer_x + 8, currplayer_y, 0x33, 0);
-					break;	
+					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					switch (ballframe) {
+						case 0:
+							oam_spr(currplayer_x, currplayer_y, 0x31, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x33, 0);					
+							break;
+						case 1:
+							oam_spr(currplayer_x, currplayer_y, 0x35, 0);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x37, 0);					
+							break;
+						case 2:
+							oam_spr(currplayer_x, currplayer_y, 0x31, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x33, 0);					
+							break;
+						case 3:
+							oam_spr(currplayer_x, currplayer_y, 0x35, 0x80);					
+							oam_spr(currplayer_x + 8, currplayer_y, 0x37, 0x80);					
+							break;	
+					}
 				case 9:		//mini ship
 					oam_spr(currplayer_x, currplayer_y, 0x05, 0);
 					break;	
@@ -740,8 +755,21 @@ void state_menu() {
 							break;
 					};
 				case 15:		//mini swing
-					oam_spr(currplayer_x, currplayer_y, 0x3F, 0);
-					break;					
+					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					switch (ballframe) {
+						case 0:				
+							oam_spr(currplayer_x, currplayer_y, 0x3F, 0);
+							break;
+						case 1:				
+							oam_spr(currplayer_x, currplayer_y, 0x1B, 0);
+							break;
+						case 2:				
+							oam_spr(currplayer_x, currplayer_y, 0x3F, 0);
+							break;
+						case 3:				
+							oam_spr(currplayer_x, currplayer_y, 0x3D, 0);
+							break;
+					};				
 			};
 		}
 
