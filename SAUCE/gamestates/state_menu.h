@@ -650,6 +650,7 @@ void state_menu() {
 							oam_spr(currplayer_x + 16, currplayer_y, 0x09, 0);					
 							break;	
 					}
+					break;
 				case 5:		//spider
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
@@ -708,7 +709,8 @@ void state_menu() {
 							oam_spr(currplayer_x, currplayer_y, 0x35, 0x80);					
 							oam_spr(currplayer_x + 8, currplayer_y, 0x37, 0x80);					
 							break;	
-					}
+					};
+					break;
 				case 9:		//mini ship
 					oam_spr(currplayer_x, currplayer_y, 0x05, 0);
 					break;	
@@ -737,6 +739,7 @@ void state_menu() {
 							oam_spr(currplayer_x, currplayer_y, 0x15, 0);
 							break;
 					};
+					break;
 
 				case 14:		//mini spider
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
@@ -754,6 +757,7 @@ void state_menu() {
 							oam_spr(currplayer_x, currplayer_y, 0x27, 0);
 							break;
 					};
+					break;
 				case 15:		//mini swing
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
@@ -769,7 +773,8 @@ void state_menu() {
 						case 3:				
 							oam_spr(currplayer_x, currplayer_y, 0x3D, 0);
 							break;
-					};				
+					};	
+					break;
 			};
 		}
 
