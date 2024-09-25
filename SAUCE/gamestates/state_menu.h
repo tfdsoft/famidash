@@ -869,8 +869,8 @@ void state_menu() {
 			return;
 		}
 		if (mouse.left.click) {
-			if (mouse.y >= 0xA0 && mouse.y <= 0xBD) {
-				if (mouse.x >= currplayer_x && mouse.x <= (currplayer_x + 8)) {
+			if (mouse.y >= (currplayer_y - 8) && mouse.y <= (currplayer_y + 8)) {
+				if (mouse.x >= currplayer_x && mouse.x <= (currplayer_x + 16)) {
 					titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
 					ballframe = 0;
 				}
