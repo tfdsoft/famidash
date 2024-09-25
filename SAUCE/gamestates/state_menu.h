@@ -674,6 +674,9 @@ void state_menu() {
 					}
 					break;				
 				case 6:
+					oam_spr(currplayer_x, currplayer_y, 0x17, 0);
+					oam_spr(currplayer_x + 8, currplayer_y, 0x19, 0);
+					break;				
 				case 7:
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
 					if (ballframe) {
