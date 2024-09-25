@@ -714,9 +714,9 @@ void state_menu() {
 
 		newrand();
 		currplayer_x += speed;
-		if (currplayer_x >= 0xF8) { 
+		if (currplayer_x >= 0xFB) { 
 			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 0; 
-		
+			oam_clear();
 			while (tmp7 > 26) {
 				tmp7 = newrand() & 31;
 			}
@@ -725,9 +725,10 @@ void state_menu() {
 			mmc3_set_2kb_chr_bank_0(tmp7);
 		
 		}
-		oam_spr(currplayer_x, currplayer_y, 1, 0);
-		oam_spr(currplayer_x + 8, currplayer_y, 3, 0);
-		
+		if (currplayer_x <= 0xF7) {
+			oam_spr(currplayer_x, currplayer_y, 1, 0);
+			oam_spr(currplayer_x + 8, currplayer_y, 3, 0);
+		}
 
 
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
