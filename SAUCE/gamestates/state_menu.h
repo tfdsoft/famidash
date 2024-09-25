@@ -2,6 +2,9 @@
 #pragma data-name(push, "XCD_BANK_03")
 #pragma rodata-name(push, "XCD_BANK_03")
 
+void refreshmenu();
+void loop_routine_update();
+void dec_mouse_timer();
 void roll_new_mode();
 void settings();
 void set_title_icon();
@@ -34,138 +37,6 @@ const uint8_t hiNTAddrTableTitleScreen[]={
     MSB(NTADR_A(15, 11))	// 5 = 0
 };
 
-const unsigned char* const leveltexts[] = {
-  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, NULL, NULL, NULL, NULL, NULL, NULL, level15text
-};
-const unsigned char* const leveltexts2[] = {
-  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2, level12text2, level13text2, level14text2, level15text2
-};
-
-
-const unsigned char level_text_size[] = {
-    sizeof(level1text) - 1,
-	sizeof(level2text) - 1,
-	0,
-	0,
-	sizeof(level5text) - 1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	sizeof(levelCtext) - 1,
-	sizeof(levelDtext) - 1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	sizeof(level15text) - 1,
-};
-const unsigned char level_text_size2[] = {
-    sizeof(level1text2) - 1,
-	sizeof(level2text2) - 1,
-	sizeof(level3text2) - 1,
-	sizeof(level4text2) - 1,
-	sizeof(level5text2) - 1,
-	sizeof(level6text2) - 1,
-	sizeof(level7text2) - 1,
-	sizeof(level8text2) - 1,
-	sizeof(level9text2) - 1,
-	sizeof(levelAtext2) - 1,
-	sizeof(levelBtext2) - 1,
-	sizeof(levelCtext2) - 1,
-	sizeof(levelDtext2) - 1,
-	sizeof(levelEtext2) - 1,
-	sizeof(levelFtext2) - 1,
-	sizeof(level10text2) - 1,
-	sizeof(level11text2) - 1,
-	sizeof(level12text2) - 1,
-	sizeof(level13text2) - 1,
-	sizeof(level14text2) - 1,
-	sizeof(level15text2) - 1,
-};
-
-const char coin_counter[][3] = {
-  "___",
-  "^__",
-  "_^_",
-  "^^_",
-  "__^",
-  "^_^",
-  "_^^",
-  "^^^",
-};
-
-
-#include "defines/color1_charmap.h"
-
-/*
-	Refreshes level name & number
-*/
-void __fastcall__ refreshmenu(void) {
-	tmp5 = ((level&1)<<10);
-	set_scroll_x(((level-tmp4)&1)<<8);
-	
-	__A__ = idx16_load_hi_NOC(leveltexts, level);
-	if (__A__) draw_padded_text(leveltexts[level & 0x7F], level_text_size[level], 17, NTADR_A(8, 10)+tmp5);
-	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10)+tmp5);
-	// if (leveltexts2[level]) // always true
-	draw_padded_text(leveltexts2[level & 0x7F], level_text_size2[level], 17, NTADR_A(8, 11)+tmp5);
-
-	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9)+tmp5);
-	one_vram_buffer('z', NTADR_A(8, 9)+tmp5); }
-	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9)+tmp5);
-
-	{	// write the difficulty
-		tmp1 = difficulty_list[level];
-		pal_col(0x0a, difficulty_pal_A[tmp1]);
-		pal_col(0x0b, difficulty_pal_B[tmp1]);
-		pal_set_update();
-		
-		tmp1 = (tmp1 << 1) + 'a';
-		one_vram_buffer(tmp1, NTADR_A(7, 10)+tmp5);
-		one_vram_buffer(++tmp1, NTADR_A(8, 10)+tmp5);
-		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(7, 11)+tmp5);
-		one_vram_buffer(++tmp1, NTADR_A(8, 11)+tmp5);
-		
-
-	}
-	// Star count stuff
-		printDecimal(stars_list[level], 2, '0', ' ', NTADR_A(22, 9)+tmp5);
-
-	// level number
-	#ifdef FLAG_ENABLE_TEST_LEVELS
-		printDecimal(level, 3, '0', ' ', NTADR_A(29, 2));
-		printDecimal(level, 3, '0', ' ', NTADR_B(29, 2));
-	#endif
-
-	// Normal level completeness stuff
-		printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);
-
-	// Practice level completeness stuff
-		printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19)+tmp5);
-
-	//palette stuff
-		tmp3 = level % 9;
-		pal_col(0,colors_list[tmp3]);
-		pal_col(0xE,colors_list[tmp3]);
-		pal_set_update();
-	//coin stuff
-		coins = 0;
-
-
-	// then in the function...
-	// combine all three into a single number from 0 - 7 to represent which coins have been grabbed
-		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
-		tmp7 = byte(tmp7<<1) + tmp7;
-	// actually draw the coins
-		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12)+tmp5);
-
-};
 void gameboy_check();
 void state_menu();
 //void bgmtest();
@@ -212,7 +83,7 @@ void levelselection() {
 	tmp8 = 0xff00;
 	edit_irq_table(high_byte(tmp8),2);
 	tmp4 = 1;
-	refreshmenu();
+	crossPRGBankJump0(refreshmenu);
 	
 
 	// one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
@@ -230,11 +101,7 @@ void levelselection() {
 	pal_fade_to_withmusic(0,4);
 	
 	while (1){
-		newrand();
-		ppu_wait_nmi();
-		music_update();
-		oam_clear();
-		mouse_and_cursor();
+		loop_routine_update();
 		 // read the first controller
 
 		// scroll
@@ -284,8 +151,7 @@ void levelselection() {
 		if (pad_new[0] & PAD_LEFT){
 			leveldec();
 		}
-		kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+		dec_mouse_timer();
 						
 	}	
 
@@ -372,15 +238,12 @@ void customize_screen() {
 	while (1) {
 		tmp3 = 0;
 
-		ppu_wait_nmi();
-		music_update();
+		loop_routine_update();
 
 		pal_col(0x0a,color1);
 		pal_col(0x0b,color2);
 		pal_col(0x09,color3);
 		pal_set_update();
-		oam_clear();
-		mouse_and_cursor();
 		 // read the first controller
 	
 //mouse stuff
@@ -411,7 +274,7 @@ void customize_screen() {
 				
 			}
 //color 1
-			if ((mouse.x >= 0x2E && mouse.x <= 0x3B)) {
+			else if ((mouse.x >= 0x2E && mouse.x <= 0x3B)) {
 				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
 					settingvalue = 0;
 					crossPRGBankJump0(colorinc);
@@ -422,7 +285,7 @@ void customize_screen() {
 				}
 			}
 //color3
-			if ((mouse.x >= 0xBE && mouse.x <= 0xCB)) {
+			else if ((mouse.x >= 0xBE && mouse.x <= 0xCB)) {
 				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
 					settingvalue = 2;
 					crossPRGBankJump0(colorinc);
@@ -492,8 +355,7 @@ void customize_screen() {
 		if (pad_new[0] & PAD_B) {
 			return;
 		}
-		kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+		dec_mouse_timer();
 						
 	}
 }
@@ -594,10 +456,7 @@ void state_menu() {
 		pal_set_update();
 
 
-		ppu_wait_nmi();
-		music_update();
-		oam_clear();
-		mouse_and_cursor();
+		loop_routine_update();
 		 // read the first controller
 
 		newrand();
@@ -672,8 +531,41 @@ void state_menu() {
 					}
 					break;				
 				case 6:		//wave
-					oam_spr(currplayer_x, currplayer_y, 0x17, 0);
-					oam_spr(currplayer_x + 8, currplayer_y, 0x19, 0);
+					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 7 ? -7 : 1;
+					switch (ballframe) {
+						case 0:
+							oam_spr(currplayer_x, currplayer_y, 0x17, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x19, 0x00);					
+							break;
+						case 1:
+							oam_spr(currplayer_x, currplayer_y, 0x37, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x39, 0x00);					
+							break;
+						case 2:
+							oam_spr(currplayer_x, currplayer_y, 0x3B, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x3D, 0x00);					
+							break;
+						case 3:
+							oam_spr(currplayer_x, currplayer_y, 0x37, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x39, 0x00);					
+							break;	
+						case 4:
+							oam_spr(currplayer_x, currplayer_y, 0x17, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x19, 0x00);					
+							break;	
+						case 5:
+							oam_spr(currplayer_x, currplayer_y, 0x37, 0x80);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x39, 0x80);					
+							break;	
+						case 6:
+							oam_spr(currplayer_x, currplayer_y, 0x3B, 0x80);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x3D, 0x80);					
+							break;	
+						case 7:
+							oam_spr(currplayer_x, currplayer_y, 0x37, 0x80);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x39, 0x80);					
+							break;	
+					};
 					break;				
 				case 7:		//ball
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
@@ -825,9 +717,8 @@ void state_menu() {
 			discoframe++;
 			if (discoframe == 12) discoframe = 0;
 		}
-		kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;		
-		tmp3 = 0;
+		dec_mouse_timer();
+		tmp3 = 0;	
 		
 		if (pad_new[0] & PAD_RIGHT) {
 			if (menuselection == 4) menuselection = 0;
@@ -900,8 +791,8 @@ void state_menu() {
 		
 		
 	}	
-	set_scroll_y(0);
-	set_scroll_x(0);
+//	set_scroll_y(0);		does this break anything?
+//	set_scroll_x(0);
 	oam_clear();
 	ppu_wait_nmi();
 	tmp7 = newrand() & 255;
@@ -927,61 +818,11 @@ void state_menu() {
 }
 
 
-/*
-#include "defines/mainmenu_charmap.h"
-
-void bgmtest() {
-	
-  	famistudio_music_stop();
-  	music_update();
-	kandotemp=0;
-	pal_fade_to(4,0);
-	ppu_off();
-	pal_bg(paletteMenu);
-	vram_adr(NAMETABLE_A);
-	vram_unrle(bgmtestscreen);   	
-	ppu_on_all();
-	pal_fade_to(0,4);
-	while (1) {
-		ppu_wait_nmi();
-		music_update();
-		 // read the first controller
-		
-		one_vram_buffer(' '-1, NTADR_A(14, 10));
-		one_vram_buffer(0xb0+song, NTADR_A(15,10));
-
-		if (settingvalue == 0) {
-			one_vram_buffer('c', NTADR_A(11, 7));
-			one_vram_buffer(' ', NTADR_A(11, 14));
-		}		
-		else if (settingvalue == 1) {
-			one_vram_buffer(' ', NTADR_A(11, 7));
-			one_vram_buffer('c', NTADR_A(11, 14));
-		}
-		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
-		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
-		if (pad_new[0] & PAD_RIGHT && settingvalue == 0) { song++; if (song == song_max) {song = 0;} }
-		if (pad_new[0] & PAD_LEFT && settingvalue == 0) { if (song == 0) {song = song_max - 1;} else song--; }
-//		if (pad_new[0] & PAD_RIGHT && settingvalue == 1) sfx ++;
-		if ((pad_new[0] & PAD_START || pad_new[0] & PAD_A) && settingvalue == 0) music_play(song);
-		if (pad_new[0] & PAD_B) {
-			tmp3--;			
-			one_vram_buffer(' ', NTADR_A(11, 7));
-			one_vram_buffer(' ', NTADR_A(11, 14));
-			return;
-		}
-	}
-	
-}
-*/
-
 void mouse_and_cursor() {
 	crossPRGBankJump0(mouse_update);	
 	pad_poll(0);
 	if (mouse.connected) {
 		if (mouse.left.press || mouse.left.click || mouse.right.press || mouse.right.click) mouse_timer = 120;
-//		if (mouse.left.press) pad[0] |= PAD_A;
-//		if (mouse.left.click) pad_new[0] |= PAD_A;
 		if (mouse.right.click) pad_new[0] |= PAD_B;
 		if (mouse.right.press) pad[0] |= PAD_B;
 		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
@@ -1007,7 +848,7 @@ void leveldec() {
 		if (level < LEVEL_COUNT) level = LEVEL_COUNT2 - 1;
 	}
 	//break;
-	refreshmenu();
+	crossPRGBankJump0(refreshmenu);
 }			
 
 void levelinc() {
@@ -1026,7 +867,7 @@ void levelinc() {
 			level = LEVEL_COUNT;
 		}
 	}
-	refreshmenu();
+	crossPRGBankJump0(refreshmenu);
 }			
 
 void start_the_level() {
@@ -1043,35 +884,20 @@ void start_the_level() {
 }			
 
 void set_title_icon() {
-	switch (titlemode) {
-		case 0:
-		case 1:
-		case 2:
-		case 3:
+		if (titlemode < 4) {
 			while (tmp7 > 26) {
 				tmp7 = newrand() & 31;
 			}
 			tmp7 = tmp7 * 2;
 			tmp7 += 38;
 			mmc3_set_2kb_chr_bank_0(tmp7);
-			break;
-		case 4: 
-		case 5: 
-		case 6: 
-		case 7: 
+		}
+		else if (titlemode < 7) {
 			mmc3_set_2kb_chr_bank_0(18);		
-			break;
-		case 8: 
-		case 9: 
-		case 10: 
-		case 11: 
-		case 12: 
-		case 13: 
-		case 14: 
-		case 15: 
+		}
+		else if (titlemode <= 15) {
 			mmc3_set_2kb_chr_bank_0(22);		
-			break;
-	};
+		}
 }			
 
 void roll_new_mode() {
@@ -1083,6 +909,19 @@ void roll_new_mode() {
 	oam_clear();
 	set_title_icon();
 }			
+
+void dec_mouse_timer() {
+	kandoframecnt++;
+	if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+}		
+
+void loop_routine_update() {
+	newrand();
+	ppu_wait_nmi();
+	music_update();
+	oam_clear();
+	mouse_and_cursor();
+}		
 
 #pragma code-name(pop)
 #pragma data-name(pop) 

@@ -5,6 +5,7 @@ extern volatile unsigned char VRAM_UPDATE;
 #pragma data-name(push, "LVL_BANK_00")
 #pragma rodata-name(push, "LVL_BANK_00")
 
+void refreshmenu();
 void code_checker();
 void set_fun_settings();
 void checkcointimer(){
@@ -1013,6 +1014,143 @@ void set_settings() {
 			break;
 	}
 }	
+
+
+const unsigned char* const leveltexts[] = {
+  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, NULL, NULL, NULL, NULL, NULL, NULL, level15text
+};
+const unsigned char* const leveltexts2[] = {
+  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelEtext2, levelFtext2, level10text2, level11text2, level12text2, level13text2, level14text2, level15text2
+};
+
+
+const unsigned char level_text_size[] = {
+    sizeof(level1text) - 1,
+	sizeof(level2text) - 1,
+	0,
+	0,
+	sizeof(level5text) - 1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	sizeof(levelCtext) - 1,
+	sizeof(levelDtext) - 1,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	sizeof(level15text) - 1,
+};
+const unsigned char level_text_size2[] = {
+    sizeof(level1text2) - 1,
+	sizeof(level2text2) - 1,
+	sizeof(level3text2) - 1,
+	sizeof(level4text2) - 1,
+	sizeof(level5text2) - 1,
+	sizeof(level6text2) - 1,
+	sizeof(level7text2) - 1,
+	sizeof(level8text2) - 1,
+	sizeof(level9text2) - 1,
+	sizeof(levelAtext2) - 1,
+	sizeof(levelBtext2) - 1,
+	sizeof(levelCtext2) - 1,
+	sizeof(levelDtext2) - 1,
+	sizeof(levelEtext2) - 1,
+	sizeof(levelFtext2) - 1,
+	sizeof(level10text2) - 1,
+	sizeof(level11text2) - 1,
+	sizeof(level12text2) - 1,
+	sizeof(level13text2) - 1,
+	sizeof(level14text2) - 1,
+	sizeof(level15text2) - 1,
+};
+
+const char coin_counter[][3] = {
+  "___",
+  "^__",
+  "_^_",
+  "^^_",
+  "__^",
+  "^_^",
+  "_^^",
+  "^^^",
+};
+
+
+#include "defines/color1_charmap.h"
+
+/*
+	Refreshes level name & number
+*/
+void refreshmenu(void) {
+	tmp5 = ((level&1)<<10);
+	set_scroll_x(((level-tmp4)&1)<<8);
+	
+	__A__ = idx16_load_hi_NOC(leveltexts, level);
+	if (__A__) draw_padded_text(leveltexts[level & 0x7F], level_text_size[level], 17, NTADR_A(8, 10)+tmp5);
+	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10)+tmp5);
+	// if (leveltexts2[level]) // always true
+	draw_padded_text(leveltexts2[level & 0x7F], level_text_size2[level], 17, NTADR_A(8, 11)+tmp5);
+
+	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9)+tmp5);
+	one_vram_buffer('z', NTADR_A(8, 9)+tmp5); }
+	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9)+tmp5);
+
+	{	// write the difficulty
+		tmp1 = difficulty_list[level];
+		pal_col(0x0a, difficulty_pal_A[tmp1]);
+		pal_col(0x0b, difficulty_pal_B[tmp1]);
+		pal_set_update();
+		
+		tmp1 = (tmp1 << 1) + 'a';
+		one_vram_buffer(tmp1, NTADR_A(7, 10)+tmp5);
+		one_vram_buffer(++tmp1, NTADR_A(8, 10)+tmp5);
+		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(7, 11)+tmp5);
+		one_vram_buffer(++tmp1, NTADR_A(8, 11)+tmp5);
+		
+
+	}
+	// Star count stuff
+		printDecimal(stars_list[level], 2, '0', ' ', NTADR_A(22, 9)+tmp5);
+
+	// level number
+	#ifdef FLAG_ENABLE_TEST_LEVELS
+		printDecimal(level, 3, '0', ' ', NTADR_A(29, 2));
+		printDecimal(level, 3, '0', ' ', NTADR_B(29, 2));
+	#endif
+
+	// Normal level completeness stuff
+		printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);
+
+	// Practice level completeness stuff
+		printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19)+tmp5);
+
+	//palette stuff
+		tmp3 = level % 9;
+		pal_col(0,colors_list[tmp3]);
+		pal_col(0xE,colors_list[tmp3]);
+		pal_set_update();
+	//coin stuff
+		coins = 0;
+
+
+	// then in the function...
+	// combine all three into a single number from 0 - 7 to represent which coins have been grabbed
+		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
+		tmp7 = byte(tmp7<<1) + tmp7;
+	// actually draw the coins
+		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12)+tmp5);
+
+};
+
+
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)
+
