@@ -714,13 +714,29 @@ void state_menu() {
 		currplayer_x += speed;
 		if (currplayer_x >= 0xFB) { 
 			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 0; 
+			titlemode = newrand() & 3;
 			oam_clear();
 			set_title_icon();
 		
 		}
 		if (currplayer_x <= 0xF7) {
-			oam_spr(currplayer_x, currplayer_y, 1, 0);
-			oam_spr(currplayer_x + 8, currplayer_y, 3, 0);
+			switch (titlemode) {
+				case 0:
+					oam_spr(currplayer_x, currplayer_y, 1, 0);
+					oam_spr(currplayer_x + 8, currplayer_y, 3, 0);
+					break;
+				case 1:
+					oam_spr(currplayer_x, currplayer_y, 0x3F, 0);
+					oam_spr(currplayer_x + 8, currplayer_y, 0x3F, 0x40);
+					break;
+				case 2:
+					oam_spr(currplayer_x, currplayer_y, 0x35, 0);
+					break;
+				case 3:
+					oam_spr(currplayer_x, currplayer_y, 0x29, 0);
+					oam_spr(currplayer_x + 8, currplayer_y, 0x2B, 0);
+					break;
+			};
 		}
 
 
