@@ -40,8 +40,8 @@ const unsigned char Explode_1[]={
 
 const unsigned char Explode_2[]={
 
-	  0,  0,0xFB,3,
-	  8,  0,0xFB,3|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0x7D,3,
+	  8,  0,0x7D,3|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
@@ -54,8 +54,8 @@ const unsigned char Explode_3[]={
 
 const unsigned char Explode_4[]={
 
-	  0,  0,0xFD,3,
-	  8,  0,0xFD,3|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0x7F,3,
+	  8,  0,0x7F,3|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
@@ -2192,18 +2192,18 @@ const unsigned char Yellow_Jump_Pad[]={
 const unsigned char Yellow_Jump_Pad2[]={
 
 	  0,-8,0x7B,1,
-	  8,-8,0x7D,1|OAM_FLIP_H,
+	  8,-8,0xFB,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad3[]={
 
-	  0,-8,0x7D,1,
-	  8,-8,0x7F,1|OAM_FLIP_H,
+	  0,-8,0xFB,1,
+	  8,-8,0xFD,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad4[]={
 
-	  0,-8,0x7F,1,
+	  0,-8,0xFD,1,
 	  8,-8,0x79,1|OAM_FLIP_H,
 	0x80
 };
@@ -2217,18 +2217,18 @@ const unsigned char Yellow_Jump_Pad_U[]={
 const unsigned char Yellow_Jump_Pad_U2[]={
 
 	  0,-0,0x7B,1|OAM_FLIP_V,
-	  8,-0,0x7D,1|OAM_FLIP_H|OAM_FLIP_V,
+	  8,-0,0xFB,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U3[]={
 
-	  0,-0,0x7D,1|OAM_FLIP_V,
-	  8,-0,0x7F,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,-0,0xFB,1|OAM_FLIP_V,
+	  8,-0,0xFD,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Yellow_Jump_Pad_U4[]={
 
-	  0,-0,0x7F,1|OAM_FLIP_V,
+	  0,-0,0xFD,1|OAM_FLIP_V,
 	  8,-0,0x79,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
@@ -2374,18 +2374,18 @@ const unsigned char Gravity_Pad[]={
 const unsigned char Gravity_Pad2[]={
 
 	  0,-8,0x7B,4,
-	  8,-8,0x7D,4|OAM_FLIP_H,
+	  8,-8,0xFB,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad3[]={
 
-	  0,-8,0x7D,4,
-	  8,-8,0x7F,4|OAM_FLIP_H,
+	  0,-8,0xFB,4,
+	  8,-8,0xFD,4|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Gravity_Pad4[]={
 
-	  0,-8,0x7F,4,
+	  0,-8,0xFD,4,
 	  8,-8,0x79,4|OAM_FLIP_H,
 	0x80
 };
@@ -2399,18 +2399,18 @@ const unsigned char Gravity_Pad_U[]={
 const unsigned char Gravity_Pad_U2[]={
 
 	  0, -0,0x7B,4|OAM_FLIP_V,
-	  8, -0,0x7D,4|OAM_FLIP_H|OAM_FLIP_V,
+	  8, -0,0xFB,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Gravity_Pad_U3[]={
 
-	  0, -0,0x7D,4|OAM_FLIP_V,
-	  8, -0,0x7F,4|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0xFB,4|OAM_FLIP_V,
+	  8, -0,0xFD,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Gravity_Pad_U4[]={
 
-	  0, -0,0x7F,4|OAM_FLIP_V,
+	  0, -0,0xFD,4|OAM_FLIP_V,
 	  8, -0,0x79,4|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };

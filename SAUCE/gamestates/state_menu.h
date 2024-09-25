@@ -2,6 +2,7 @@
 #pragma data-name(push, "XCD_BANK_03")
 #pragma rodata-name(push, "XCD_BANK_03")
 
+void roll_new_mode();
 void settings();
 void set_title_icon();
 void state_demo();
@@ -602,14 +603,9 @@ void state_menu() {
 		newrand();
 		newrand();
 		newrand();
-		currplayer_x += speed;
+		if (titlemode != 0xFF) currplayer_x += speed;
 		if (currplayer_x >= 0xFB) { 
-			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 8; 
-			titlemode = newrand() & 15;
-			ballframe = 0;
-			oam_clear();
-			set_title_icon();
-		
+			roll_new_mode();		
 		}
 		if (currplayer_x <= 0xF7) {
 			switch (titlemode) {
@@ -775,6 +771,32 @@ void state_menu() {
 							break;
 					};	
 					break;
+				case 0xFF:
+					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 5 ? -5 : 1;
+					switch (ballframe) {
+						case 0:
+							oam_spr(currplayer_x, currplayer_y, 0x1D, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x1D, 0xC0);					
+							break;
+						case 1:
+							oam_spr(currplayer_x, currplayer_y, 0x7D, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x7D, 0xC0);					
+							break;
+						case 2:
+							oam_spr(currplayer_x, currplayer_y, 0x1F, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x1F, 0xC0);					
+							break;
+						case 3:
+							oam_spr(currplayer_x, currplayer_y, 0x7F, 0);
+							oam_spr(currplayer_x + 8, currplayer_y, 0x7F, 0xC0);					
+							break;	
+						case 4:
+							break;	
+						case 5:
+							roll_new_mode();
+							break;
+					};
+					break;					
 			};
 		}
 
@@ -1047,6 +1069,16 @@ void set_title_icon() {
 			mmc3_set_2kb_chr_bank_0(22);		
 			break;
 	};
+}			
+
+void roll_new_mode() {
+	speed = (newrand() & 3); 
+	if (speed == 0) speed = 1; 
+	currplayer_x = 8; 
+	titlemode = newrand() & 15;
+	ballframe = 0;
+	oam_clear();
+	set_title_icon();
 }			
 
 #pragma code-name(pop)
