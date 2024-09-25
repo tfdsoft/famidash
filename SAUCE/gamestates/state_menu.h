@@ -790,6 +790,7 @@ void state_menu() {
 	}	
 	set_scroll_y(0);
 	set_scroll_x(0);
+	oam_clear();
 	ppu_wait_nmi();
 	tmp7 = newrand() & 255;
 	normalorcommlevels = 1;
