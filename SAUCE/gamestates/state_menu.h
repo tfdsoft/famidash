@@ -600,10 +600,12 @@ void state_menu() {
 		 // read the first controller
 
 		newrand();
+		newrand();
+		newrand();
 		currplayer_x += speed;
 		if (currplayer_x >= 0xFB) { 
 			speed = (newrand() & 3); if (speed == 0) speed = 1; currplayer_x = 0; 
-			titlemode = newrand() & 7;
+			titlemode = newrand() & 15;
 			ballframe = 0;
 			oam_clear();
 			set_title_icon();
@@ -611,22 +613,22 @@ void state_menu() {
 		}
 		if (currplayer_x <= 0xF7) {
 			switch (titlemode) {
-				case 0:
+				case 0:		//cube
 					oam_spr(currplayer_x, currplayer_y, 1, 0);
 					oam_spr(currplayer_x + 8, currplayer_y, 3, 0);
 					break;
-				case 1:
+				case 1:		//UFO
 					oam_spr(currplayer_x, currplayer_y, 0x3F, 0);
 					oam_spr(currplayer_x + 8, currplayer_y, 0x3F, 0x40);
 					break;
-				case 2:
+				case 2:		//mini cube
 					oam_spr(currplayer_x, currplayer_y, 0x35, 0);
 					break;
-				case 3:
+				case 3:		//ship
 					oam_spr(currplayer_x, currplayer_y, 0x29, 0);
 					oam_spr(currplayer_x + 8, currplayer_y, 0x2B, 0);
 					break;
-				case 4:
+				case 4:		//robot
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:
@@ -649,7 +651,7 @@ void state_menu() {
 							break;	
 					}
 					break;
-				case 5:
+				case 5:		//spider
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:
@@ -673,11 +675,11 @@ void state_menu() {
 							break;	
 					}
 					break;				
-				case 6:
+				case 6:		//wave
 					oam_spr(currplayer_x, currplayer_y, 0x17, 0);
 					oam_spr(currplayer_x + 8, currplayer_y, 0x19, 0);
 					break;				
-				case 7:
+				case 7:		//ball
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
 					if (ballframe) {
 						oam_spr(currplayer_x, currplayer_y, 0x3F, 0);
@@ -688,6 +690,58 @@ void state_menu() {
 						oam_spr(currplayer_x + 8, currplayer_y, 0x1B, 0x40);
 					}						
 					break;
+				case 8:		//swing
+					oam_spr(currplayer_x, currplayer_y, 0x31, 0);
+					oam_spr(currplayer_x + 8, currplayer_y, 0x33, 0);
+					break;	
+				case 9:		//mini ship
+					oam_spr(currplayer_x, currplayer_y, 0x05, 0);
+					break;	
+				case 10:		//mini ball
+					oam_spr(currplayer_x, currplayer_y, 0x0B, 0);
+					break;	
+				case 11:		//mini wave
+					oam_spr(currplayer_x, currplayer_y, 0x0D, 0);
+					break;	
+				case 12:		//mini ufo
+					oam_spr(currplayer_x, currplayer_y, 0x19, 0);
+					break;		
+				case 13:		//mini robot
+					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					switch (ballframe) {
+						case 0:				
+							oam_spr(currplayer_x, currplayer_y, 0x13, 0);
+							break;
+						case 1:				
+							oam_spr(currplayer_x, currplayer_y, 0x15, 0);
+							break;
+						case 2:				
+							oam_spr(currplayer_x, currplayer_y, 0x17, 0);
+							break;
+						case 3:				
+							oam_spr(currplayer_x, currplayer_y, 0x15, 0);
+							break;
+					};
+
+				case 14:		//mini spider
+					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					switch (ballframe) {
+						case 0:				
+							oam_spr(currplayer_x, currplayer_y, 0x21, 0);
+							break;
+						case 1:				
+							oam_spr(currplayer_x, currplayer_y, 0x23, 0);
+							break;
+						case 2:				
+							oam_spr(currplayer_x, currplayer_y, 0x25, 0);
+							break;
+						case 3:				
+							oam_spr(currplayer_x, currplayer_y, 0x27, 0);
+							break;
+					};
+				case 15:		//mini swing
+					oam_spr(currplayer_x, currplayer_y, 0x3F, 0);
+					break;					
 			};
 		}
 
@@ -943,6 +997,16 @@ void set_title_icon() {
 		case 6: 
 		case 7: 
 			mmc3_set_2kb_chr_bank_0(18);		
+			break;
+		case 8: 
+		case 9: 
+		case 10: 
+		case 11: 
+		case 12: 
+		case 13: 
+		case 14: 
+		case 15: 
+			mmc3_set_2kb_chr_bank_0(22);		
 			break;
 	};
 }			
