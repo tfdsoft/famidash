@@ -184,7 +184,7 @@ void levelselection() {
 	else if (level >= LEVEL_COUNT) level -= LEVEL_COUNT;
 	
 	mmc3_set_8kb_chr(MENUBANK);
-	mmc3_set_2kb_chr_bank_0(38);
+	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
@@ -328,7 +328,7 @@ void customize_screen() {
 	pal_col(0x00, 0x00);
 	pal_set_update();
 	mmc3_set_8kb_chr(MENUICONBANK);
-	mmc3_set_2kb_chr_bank_0(38);
+	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
@@ -507,7 +507,7 @@ void settings() {
 	pal_bg(paletteSettings);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingscreen);   	
-	mmc3_set_2kb_chr_bank_0(38);
+	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	ppu_on_all();
 	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 beforehand
