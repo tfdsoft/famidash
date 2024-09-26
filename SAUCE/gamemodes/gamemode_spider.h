@@ -35,7 +35,7 @@ void spider_movement(void){
 			currplayer_gravity = 1;
 			do {
 				high_byte(currplayer_y) -= 0x08;
-				scroll_thing_again();
+				//scroll_thing_again();
 				set_scroll_y(scroll_y);
 				if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
 					idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
@@ -52,7 +52,7 @@ void spider_movement(void){
 			currplayer_gravity = 0;
 			do {
 				high_byte(currplayer_y) += 0x08;
-				scroll_thing_again();
+				//scroll_thing_again();
 				set_scroll_y(scroll_y);
 				
 				Generic.y = high_byte(currplayer_y); // the rest should be the same
