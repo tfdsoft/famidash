@@ -705,7 +705,7 @@ void state_menu() {
 							break;
 
 					};
-					oam_spr(currplayer_x_small, currplayer_y_small, tmpi8, 0x20);
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
 					break;	
 				case 10:		//mini ball
 					title_ball_shit();
