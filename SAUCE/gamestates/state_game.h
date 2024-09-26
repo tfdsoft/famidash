@@ -344,7 +344,7 @@ void state_game(){
 			// vram_unrle(pausescreen); 	
 			// ppu_on_all();
 			while (!(pad_new[0] & PAD_START) && !(mouse.right.click)) {
-				//crossPRGBankJump0(mouse_update);				
+				crossPRGBankJump0(mouse_update);				
 				pad_poll(0); // read the first controller
 				if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_B)) {
 					kandokidshack3++;
