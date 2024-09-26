@@ -365,33 +365,31 @@ void customize_screen() {
 
 const uint8_t Title_Jump_Table[]={
 	5,
-	5,
 	4,
-	4,
-	4,
-	3,
-	3,
 	3,
 	3,
 	2,
 	2,
 	2,
+	2,
+	1,
+	1,
+	1,
 	1,
 	1,
 	0,
 	-1,
 	-1,
+	-1,
+	-1,
+	-1,
 	-2,
 	-2,
 	-2,
-	-3,
-	-3,
+	-2,
 	-3,
 	-3,
 	-4,
-	-4,
-	-4,
-	-5,
 	-5,
 };
 
@@ -478,8 +476,8 @@ void state_menu() {
 	one_vram_buffer('b', addloNOC(tmp5, 1));
 	kandoframecnt = 0;
 	teleport_output = 0Xff;
-	currplayer_y = 160;
-	currplayer_x = 0;
+	currplayer_y_small = 160;
+	currplayer_x_small = 0;
 	while (!(pad_new[0] & PAD_START)){
 		pal_col(0x11,color3);
 		pal_col(0x12,color1);
@@ -493,55 +491,68 @@ void state_menu() {
 		newrand();
 		newrand();
 		newrand();
-		if (titlemode != 0xFF) currplayer_x += speed;
-		if (currplayer_x >= 0xFB) { 
+		if (titlemode != 0xFF) currplayer_x_small += speed;
+		if (currplayer_x_small >= 0xFB) { 
 			roll_new_mode();		
 		}
-		if (currplayer_x <= 0xF7) {
+		if (currplayer_x_small <= 0xF7) {
 			switch (titlemode) {
 				case 0:		//cube
 /*
 					if (teleport_output <= 0x1C) {
-						currplayer_y -= Title_Jump_Table[teleport_output];		//hop hop
+						currplayer_y_small -= Title_Jump_Table[teleport_output];		//hop hop
 						teleport_output++;
 					}
 					else { if (!(newrand() & 31)) teleport_output = 0; }
 */					
-					oam_spr(currplayer_x, currplayer_y, 1, 0x20);
-					oam_spr(currplayer_x + 8, currplayer_y, 3, 0x20);
+					oam_spr(currplayer_x_small, currplayer_y_small, 1, 0x20);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, 3, 0x20);
 
 					break;
 				case 1:		//UFO
-					oam_spr(currplayer_x, currplayer_y, 0x3F, 0x20);
-					oam_spr(currplayer_x + 8, currplayer_y, 0x3F, 0x60);
+
+					if (teleport_output <= 0x1A) {
+						currplayer_y_small -= Title_Jump_Table[teleport_output];		//hop hop
+						teleport_output++;
+					}
+					else currplayer_y_small += 4;
+					if (!(newrand() & 15)) teleport_output = 0;
+					
+					if (currplayer_y_small >= 160) {
+						currplayer_y_small = 160;
+					}		
+					else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+					
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, 0x60);
 					break;
 				case 2:		//mini cube
-					oam_spr(currplayer_x, currplayer_y, 0x35, 0x20);
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x35, 0x20);
 					break;
 				case 3:		//ship
-					oam_spr(currplayer_x, currplayer_y, 0x29, 0x20);
-					oam_spr(currplayer_x + 8, currplayer_y, 0x2B, 0x20);
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x29, 0x20);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x2B, 0x20);
 					break;
 				case 4:		//robot
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:
-							oam_spr(currplayer_x-8, currplayer_y, 0x01, 0x20);
-							oam_spr(currplayer_x, currplayer_y, 0x03, 0x20);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x05, 0x20);					
+							oam_spr(currplayer_x_small-8, currplayer_y_small, 0x01, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x03, 0x20);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x05, 0x20);					
 							break;
 						case 1:
-							oam_spr(currplayer_x, currplayer_y, 0x07, 0x20);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x09, 0x20);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x07, 0x20);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x09, 0x20);					
 							break;
 						case 2:
-							oam_spr(currplayer_x-8, currplayer_y, 0x01, 0x20);
-							oam_spr(currplayer_x, currplayer_y, 0x0B, 0x20);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x05, 0x20);					
+							oam_spr(currplayer_x_small-8, currplayer_y_small, 0x01, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x0B, 0x20);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x05, 0x20);					
 							break;
 						case 3:
-							oam_spr(currplayer_x, currplayer_y, 0x0D, 0x20);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x09, 0x20);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x0D, 0x20);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x09, 0x20);					
 							break;	
 					}
 					break;
@@ -549,23 +560,23 @@ void state_menu() {
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:
-							oam_spr(currplayer_x - 8, currplayer_y, 0x21, 0x20);
-							oam_spr(currplayer_x, currplayer_y, 0x23, 0x20);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x25, 0x20);					
+							oam_spr(currplayer_x_small - 8, currplayer_y_small, 0x21, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x23, 0x20);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x25, 0x20);					
 							break;
 						case 1:
-							oam_spr(currplayer_x - 8, currplayer_y, 0x27, 0x20);					
-							oam_spr(currplayer_x, currplayer_y, 0x29, 0x20);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x2B, 0x20);					
+							oam_spr(currplayer_x_small - 8, currplayer_y_small, 0x27, 0x20);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x29, 0x20);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x2B, 0x20);					
 							break;
 						case 2:
-							oam_spr(currplayer_x - 8, currplayer_y, 0x2D, 0x20);
-							oam_spr(currplayer_x, currplayer_y, 0x2F, 0x20);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x31, 0x20);					
+							oam_spr(currplayer_x_small - 8, currplayer_y_small, 0x2D, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x2F, 0x20);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x31, 0x20);					
 							break;
 						case 3:
-							oam_spr(currplayer_x, currplayer_y, 0x33, 0x20);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x35, 0x20);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x33, 0x20);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x35, 0x20);					
 							break;	
 					}
 					break;				
@@ -573,107 +584,107 @@ void state_menu() {
 					tmp2 = newrand() & 31;
 					if (kandoframecnt & 1) { if (tmp2 >= 30) currplayer_gravity ^= 1; }
 						
-					if (currplayer_gravity) currplayer_y -= speed;
+					if (currplayer_gravity) currplayer_y_small -= speed;
 
-					else currplayer_y += speed;
-					if (currplayer_y >= 160) {
-						currplayer_y = 160;
+					else currplayer_y_small += speed;
+					if (currplayer_y_small >= 160) {
+						currplayer_y_small = 160;
 					}		
-					else if (currplayer_y < 0x08) currplayer_y = 0x08;
+					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
 					
-					if (currplayer_y == 160 || currplayer_y == 8) {
-						oam_spr(currplayer_x, currplayer_y, 0x17, 0x20);
-						oam_spr(currplayer_x + 8, currplayer_y, 0x19, 0x20);
+					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x17, 0x20);
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x19, 0x20);
 					}
 					else if (currplayer_gravity) {
-						oam_spr(currplayer_x, currplayer_y, 0x3B, 0xA0);
-						oam_spr(currplayer_x + 8, currplayer_y, 0x3D, 0xA0);
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x3B, 0xA0);
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3D, 0xA0);
 					}
 					else {
-						oam_spr(currplayer_x, currplayer_y, 0x3B, 0x20);
-						oam_spr(currplayer_x + 8, currplayer_y, 0x3D, 0x20);
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x3B, 0x20);
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3D, 0x20);
 					}
 					break;				
 				case 7:		//ball
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
 					if (ballframe) {
-						oam_spr(currplayer_x, currplayer_y, 0x3F, 0x20);
-						oam_spr(currplayer_x + 8, currplayer_y, 0x3F, 0x60);
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20);
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, 0x60);
 					}
 					else {
-						oam_spr(currplayer_x, currplayer_y, 0x1B, 0x20);
-						oam_spr(currplayer_x + 8, currplayer_y, 0x1B, 0x60);
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x1B, 0x20);
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x1B, 0x60);
 					}						
 					break;
 				case 8:		//swing
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:
-							oam_spr(currplayer_x, currplayer_y, 0x31, 0x20);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x33, 0x20);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x31, 0x20);
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x33, 0x20);					
 							break;
 						case 1:
-							oam_spr(currplayer_x, currplayer_y, 0x35, 0x20);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x37, 0x20);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x35, 0x20);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x37, 0x20);					
 							break;
 						case 2:
-							oam_spr(currplayer_x, currplayer_y, 0x31, 0x20);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x33, 0x20);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x31, 0x20);
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x33, 0x20);					
 							break;
 						case 3:
-							oam_spr(currplayer_x, currplayer_y, 0x35, 0xA0);					
-							oam_spr(currplayer_x + 8, currplayer_y, 0x37, 0xA0);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x35, 0xA0);					
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x37, 0xA0);					
 							break;	
 					};
 					break;
 				case 9:		//mini ship
-					oam_spr(currplayer_x, currplayer_y, 0x05, 0x20);
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x05, 0x20);
 					break;	
 				case 10:		//mini ball
-					oam_spr(currplayer_x, currplayer_y, 0x0B, 0x20);
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x0B, 0x20);
 					break;	
 				case 11:		//mini wave
 					tmp2 = newrand() & 31;
 					if (kandoframecnt & 1) { if (tmp2 >= 30) currplayer_gravity ^= 1; }
 						
-					if (currplayer_gravity) currplayer_y -= speed;
+					if (currplayer_gravity) currplayer_y_small -= speed;
 
-					else currplayer_y += (speed << 1);
-					if (currplayer_y >= 160) {
-						currplayer_y = 160;
+					else currplayer_y_small += (speed << 1);
+					if (currplayer_y_small >= 160) {
+						currplayer_y_small = 160;
 					}		
-					else if (currplayer_y < 0x08) currplayer_y = 0x08;
+					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
 					
-					if (currplayer_y == 160 || currplayer_y == 8) {
-						oam_spr(currplayer_x, currplayer_y, 0x0D, 0x20);
+					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x0D, 0x20);
 						
 					}
 					else if (currplayer_gravity) {
-						oam_spr(currplayer_x, currplayer_y, 0x11, 0xA0);
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x11, 0xA0);
 						
 					}
 					else {
-						oam_spr(currplayer_x, currplayer_y, 0x11, 0x20);
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x11, 0x20);
 						
 					}
 					break;	
 				case 12:		//mini ufo
-					oam_spr(currplayer_x, currplayer_y, 0x19, 0);
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x19, 0);
 					break;		
 				case 13:		//mini robot
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:				
-							oam_spr(currplayer_x, currplayer_y, 0x13, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x13, 0x20);
 							break;
 						case 1:				
-							oam_spr(currplayer_x, currplayer_y, 0x15, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x15, 0x20);
 							break;
 						case 2:				
-							oam_spr(currplayer_x, currplayer_y, 0x17, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x17, 0x20);
 							break;
 						case 3:				
-							oam_spr(currplayer_x, currplayer_y, 0x15, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x15, 0x20);
 							break;
 					};
 					break;
@@ -682,16 +693,16 @@ void state_menu() {
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:				
-							oam_spr(currplayer_x, currplayer_y, 0x21, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x21, 0x20);
 							break;
 						case 1:				
-							oam_spr(currplayer_x, currplayer_y, 0x23, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x23, 0x20);
 							break;
 						case 2:				
-							oam_spr(currplayer_x, currplayer_y, 0x25, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x25, 0x20);
 							break;
 						case 3:				
-							oam_spr(currplayer_x, currplayer_y, 0x27, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x27, 0x20);
 							break;
 					};
 					break;
@@ -699,16 +710,16 @@ void state_menu() {
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:				
-							oam_spr(currplayer_x, currplayer_y, 0x3F, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20);
 							break;
 						case 1:				
-							oam_spr(currplayer_x, currplayer_y, 0x1B, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x1B, 0x20);
 							break;
 						case 2:				
-							oam_spr(currplayer_x, currplayer_y, 0x3F, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20);
 							break;
 						case 3:				
-							oam_spr(currplayer_x, currplayer_y, 0x3D, 0x20);
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x3D, 0x20);
 							break;
 					};	
 					break;
@@ -716,20 +727,20 @@ void state_menu() {
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 5 ? -5 : 1;
 					switch (ballframe) {
 						case 0:
-							oam_spr(currplayer_x, currplayer_y, 0x1D, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x1D, 0xE0);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x1D, 0);
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x1D, 0xE0);					
 							break;
 						case 1:
-							oam_spr(currplayer_x, currplayer_y, 0x7D, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x7D, 0xE0);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x7D, 0);
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x7D, 0xE0);					
 							break;
 						case 2:
-							oam_spr(currplayer_x, currplayer_y, 0x1F, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x1F, 0xE0);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x1F, 0);
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x1F, 0xE0);					
 							break;
 						case 3:
-							oam_spr(currplayer_x, currplayer_y, 0x7F, 0);
-							oam_spr(currplayer_x + 8, currplayer_y, 0x7F, 0xE0);					
+							oam_spr(currplayer_x_small, currplayer_y_small, 0x7F, 0);
+							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x7F, 0xE0);					
 							break;	
 						case 4:
 							break;	
@@ -810,8 +821,8 @@ void state_menu() {
 			return;
 		}
 		if (mouse.left.click) {
-			if (mouse.y >= (currplayer_y - 8) && mouse.y <= (currplayer_y + 8)) {
-				if (mouse.x >= currplayer_x && mouse.x <= (currplayer_x + 16)) {
+			if (mouse.y >= (currplayer_y_small - 8) && mouse.y <= (currplayer_y_small + 8)) {
+				if (mouse.x >= currplayer_x_small && mouse.x <= (currplayer_x_small + 16)) {
 					titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
 					ballframe = 0;
 				}
@@ -953,11 +964,11 @@ void set_title_icon() {
 void roll_new_mode() {
 	speed = (newrand() & 3); 
 	if (speed == 0) speed = 1; 
-	currplayer_x = 8; 
-	currplayer_y = 160; 
-	teleport_output = 0Xff;
+	currplayer_x_small = 8; 
+	currplayer_y_small = 0x00A0; 
+	teleport_output = 0X1D;
 	titlemode = newrand() & 15;
-//	titlemode = 6; //to test
+	titlemode = 1; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
