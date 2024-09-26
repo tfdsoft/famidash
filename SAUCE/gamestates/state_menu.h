@@ -618,6 +618,30 @@ void state_menu() {
 					}
 					break;				
 				case 7:		//ball
+
+					if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
+						if (!(newrand() & 31)) {
+							if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
+							else { currplayer_gravity = 0; teleport_output = 0; }
+						}
+					}
+
+					if (currplayer_gravity) { 
+						currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
+						if (teleport_output < 7) teleport_output++;
+					}
+
+					else { 
+						currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
+						if (teleport_output < 7) teleport_output++;
+					}
+
+					if (currplayer_y_small >= 160) {
+						currplayer_y_small = 160;
+					}		
+					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
+					
+					
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
 					if (ballframe) {
 						oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20);
@@ -653,6 +677,27 @@ void state_menu() {
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x05, 0x20);
 					break;	
 				case 10:		//mini ball
+					if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
+						if (!(newrand() & 31)) {
+							if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
+							else { currplayer_gravity = 0; teleport_output = 0; }
+						}
+					}
+
+					if (currplayer_gravity) { 
+						currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
+						if (teleport_output < 7) teleport_output++;
+					}
+
+					else { 
+						currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
+						if (teleport_output < 7) teleport_output++;
+					}
+
+					if (currplayer_y_small >= 160) {
+						currplayer_y_small = 160;
+					}		
+					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x0B, 0x20);
 					break;	
 				case 11:		//mini wave
@@ -988,11 +1033,12 @@ void set_title_icon() {
 void roll_new_mode() {
 	speed = (newrand() & 3); 
 	if (speed == 0) speed = 1; 
-	currplayer_x_small = 8; 
-	currplayer_y_small = 0x00A0; 
+	currplayer_gravity = 0; 
+	currplayer_x_small = 0x08; 
+	currplayer_y_small = 0xA0; 
 	teleport_output = 0X1D;
 	titlemode = newrand() & 15;
-//	titlemode = 1; //to test
+//	titlemode = 7; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
