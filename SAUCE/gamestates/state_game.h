@@ -109,7 +109,7 @@ unsigned char END_LEVEL_TIMER;
 
 
 void state_game(){
-	if (level == decode || level == test || level == test4) no_parallax = 1;
+	if (level == decode || level == test || level == test2 || level == test4) no_parallax = 1;
 	else no_parallax = 0;
 	coin1_timer = 0;
 	coin2_timer = 0;
@@ -344,7 +344,7 @@ void state_game(){
 			// vram_unrle(pausescreen); 	
 			// ppu_on_all();
 			while (!(pad_new[0] & PAD_START) && !(mouse.right.click)) {
-				crossPRGBankJump0(mouse_update);				
+				//crossPRGBankJump0(mouse_update);				
 				pad_poll(0); // read the first controller
 				if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_B)) {
 					kandokidshack3++;
