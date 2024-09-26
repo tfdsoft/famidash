@@ -393,6 +393,18 @@ const uint8_t UFO_Title_Jump_Table[]={
 	-5,
 };
 
+const uint8_t BALL_Title_Jump_Table[]={
+	1,
+	1,
+	2,
+	2,
+	2,
+	3,
+	3,
+	4,
+};
+	
+
 #include "defines/mainmenu_charmap.h"
 
 const char palsystem[] = "FOR PAL SYSTEMS";
@@ -669,6 +681,18 @@ void state_menu() {
 					}
 					break;	
 				case 12:		//mini ufo
+					if (teleport_output <= 0x1A) {
+						currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
+						teleport_output++;
+					}
+					else currplayer_y_small += 4;
+					if (!(newrand() & 15)) teleport_output = 0;
+					
+					if (currplayer_y_small >= 160) {
+						currplayer_y_small = 160;
+					}		
+					else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x19, 0);
 					break;		
 				case 13:		//mini robot
