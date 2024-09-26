@@ -363,7 +363,7 @@ void customize_screen() {
 
 
 
-const uint8_t Title_Jump_Table[]={
+const uint8_t UFO_Title_Jump_Table[]={
 	5,
 	4,
 	3,
@@ -512,7 +512,7 @@ void state_menu() {
 				case 1:		//UFO
 
 					if (teleport_output <= 0x1A) {
-						currplayer_y_small -= Title_Jump_Table[teleport_output];		//hop hop
+						currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
 						teleport_output++;
 					}
 					else currplayer_y_small += 4;
@@ -968,7 +968,7 @@ void roll_new_mode() {
 	currplayer_y_small = 0x00A0; 
 	teleport_output = 0X1D;
 	titlemode = newrand() & 15;
-	titlemode = 1; //to test
+//	titlemode = 1; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
