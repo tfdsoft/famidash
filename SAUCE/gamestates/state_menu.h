@@ -705,6 +705,8 @@ void state_menu() {
 							break;
 
 					};
+					if (currplayer_y_small == 160 && tmp7 < 0x05) tmp7 = 0x05;
+					else if (currplayer_y_small == 8 && tmp7 > 0x05) tmp7 = 0x05;					
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
 					break;	
 				case 10:		//mini ball
