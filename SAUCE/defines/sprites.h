@@ -629,32 +629,32 @@ const unsigned char * const SWING2[] = {Swing2_0, Swing2_0, Swing2_1, Swing2_2, 
 // mini swing
 const unsigned char Mini_Swing_0[]={
 
-	 -4,  -4,0x1B,3,
+	 -12,  -4,0x1B,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_1[]={
 
-	 -4,  -4,0x1B,3,
+	 -12,  -4,0x1B,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_2[]={
 
-	 -4,  -4,0x3F,3,
+	 -12,  -4,0x3F,3,
 	0x80
 };
 
 
 const unsigned char Mini_Swing_5[]={
 
-	 -4,  -4,0x3D,3,
+	 -12,  -4,0x3D,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_6[]={
 
-	 -4,  -4,0x3D,3,
+	 -12,  -4,0x3D,3,
 	0x80
 };
 
@@ -1135,25 +1135,25 @@ const unsigned char * const ROBOT_JUMP2[]={Robot_Jump2_1, Robot_Jump2_1, Robot_J
 
 const unsigned char Mini_Robot2_0[]={
 	
-	-4,   -4, 0x13,1,
+	-12,   -4, 0x13,1,
 	0x80
 };
 
 const unsigned char Mini_Robot2_1[]={
 	
-	-4,   -4, 0x15,1,
+	-12,   -4, 0x15,1,
 	0x80
 };
 
 const unsigned char Mini_Robot2_2[]={
 	
-	-4,   -4, 0x17,1,
+	-12,   -4, 0x17,1,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump2_1[]={
 	
-	-4,   -4, 0x15,1,
+	-12,   -4, 0x15,1,
 	0x80
 };
 
