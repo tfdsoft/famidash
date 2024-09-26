@@ -119,6 +119,7 @@ uint8_t* tmpptr2;
 uint32_t tmplong;
 uint8_t selectedbgm;
 uint8_t selectedsfx;
+int8_t tmpi8;
 
 #pragma zpsym("tmpptr1")
 #pragma zpsym("tmpptr2")

@@ -2,6 +2,11 @@
 #pragma data-name(push, "XCD_BANK_03")
 #pragma rodata-name(push, "XCD_BANK_03")
 
+void title_wave_shit();
+void title_ufo_shit();
+void title_ball_shit();
+void title_swing_shit();
+void title_ship_shit();
 void refreshmenu();
 void loop_routine_update();
 void dec_mouse_timer();
@@ -438,8 +443,8 @@ void state_menu() {
 	
 	
 	
-	set_scroll_x(0);
-    set_scroll_y(0);
+//	set_scroll_x(0);
+//    set_scroll_y(0);
 
 	kandowatchesyousleep = 0;
 
@@ -507,6 +512,12 @@ void state_menu() {
 		if (currplayer_x_small >= 0xFB) { 
 			roll_new_mode();		
 		}
+		//temp values:
+		//teleport_output
+		//currplayer_gravity
+		//tmp2 tmp7
+		//tmpi8
+
 		if (currplayer_x_small <= 0xF7) {
 			switch (titlemode) {
 				case 0:		//cube
@@ -523,17 +534,7 @@ void state_menu() {
 					break;
 				case 1:		//UFO
 
-					if (teleport_output <= 0x1A) {
-						currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
-						teleport_output++;
-					}
-					else currplayer_y_small += 4;
-					if (!(newrand() & 15)) teleport_output = 0;
-					
-					if (currplayer_y_small >= 160) {
-						currplayer_y_small = 160;
-					}		
-					else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+					title_ufo_shit();
 					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, 0x60);
@@ -542,8 +543,35 @@ void state_menu() {
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x35, 0x20);
 					break;
 				case 3:		//ship
-					oam_spr(currplayer_x_small, currplayer_y_small, 0x29, 0x20);
-					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x2B, 0x20);
+
+					
+					title_ship_shit();
+
+					switch (tmpi8) {
+						case 0:
+							tmp7 = 0x29;
+							break;
+						case 1:
+							tmp7 = 0x2D;
+							break;
+						case 2:
+						case 3:
+							tmp7 = 0x31;
+							break;
+						case -1:
+							tmp7 = 0x25;
+							break;
+						case -2:
+						case -3:
+							tmp7 = 0x21;
+							break;
+
+					};
+						if (currplayer_y_small == 160 && tmp7 < 0x29) tmp7 = 0x29;
+						else if (currplayer_y_small == 8 && tmp7 > 0x29) tmp7 = 0x29;
+						
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7 + 2, 0x20);
 					break;
 				case 4:		//robot
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
@@ -600,16 +628,7 @@ void state_menu() {
 					}
 					break;				
 				case 6:		//wave
-					tmp2 = newrand() & 31;
-					if (kandoframecnt & 1) { if (tmp2 >= 30) currplayer_gravity ^= 1; }
-						
-					if (currplayer_gravity) currplayer_y_small -= speed;
-
-					else currplayer_y_small += speed;
-					if (currplayer_y_small >= 160) {
-						currplayer_y_small = 160;
-					}		
-					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
+					title_wave_shit();
 					
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
 						oam_spr(currplayer_x_small, currplayer_y_small, 0x17, 0x20);
@@ -626,27 +645,7 @@ void state_menu() {
 					break;				
 				case 7:		//ball
 
-					if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
-						if (!(newrand() & 15)) {
-							if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
-							else { currplayer_gravity = 0; teleport_output = 0; }
-						}
-					}
-
-					if (currplayer_gravity) { 
-						currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
-						if (teleport_output < 7) teleport_output++;
-					}
-
-					else { 
-						currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
-						if (teleport_output < 7) teleport_output++;
-					}
-
-					if (currplayer_y_small >= 160) {
-						currplayer_y_small = 160;
-					}		
-					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
+					title_ball_shit();
 					
 					
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
@@ -660,26 +659,7 @@ void state_menu() {
 					}						
 					break;
 				case 8:		//swing
-					if (kandoframecnt & 1) { 
-						if (!(newrand() & 15)) {
-							currplayer_gravity ^= 1; teleport_output = 0;
-						}
-					}
-
-					if (currplayer_gravity) { 
-						currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
-						if (teleport_output < 7) teleport_output++;
-					}
-
-					else { 
-						currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
-						if (teleport_output < 7) teleport_output++;
-					}
-
-					if (currplayer_y_small >= 160) {
-						currplayer_y_small = 160;
-					}		
-					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
+					title_swing_shit();
 
 
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
@@ -703,43 +683,36 @@ void state_menu() {
 					};
 					break;
 				case 9:		//mini ship
-					oam_spr(currplayer_x_small, currplayer_y_small, 0x05, 0x20);
+					title_ship_shit();
+
+					switch (tmpi8) {
+						case 0:
+							tmp7 = 0x05;
+							break;
+						case 1:
+							tmp7 = 0x07;
+							break;
+						case 2:
+						case 3:
+							tmp7 = 0x09;
+							break;
+						case -1:
+							tmp7 = 0x03;
+							break;
+						case -2:
+						case -3:
+							tmp7 = 0x01;
+							break;
+
+					};
+					oam_spr(currplayer_x_small, currplayer_y_small, tmpi8, 0x20);
 					break;	
 				case 10:		//mini ball
-					if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
-						if (!(newrand() & 15)) {
-							if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
-							else { currplayer_gravity = 0; teleport_output = 0; }
-						}
-					}
-
-					if (currplayer_gravity) { 
-						currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
-						if (teleport_output < 7) teleport_output++;
-					}
-
-					else { 
-						currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
-						if (teleport_output < 7) teleport_output++;
-					}
-
-					if (currplayer_y_small >= 160) {
-						currplayer_y_small = 160;
-					}		
-					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
+					title_ball_shit();
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x0B, 0x20);
 					break;	
 				case 11:		//mini wave
-					tmp2 = newrand() & 31;
-					if (kandoframecnt & 1) { if (tmp2 >= 30) currplayer_gravity ^= 1; }
-						
-					if (currplayer_gravity) currplayer_y_small -= speed;
-
-					else currplayer_y_small += (speed << 1);
-					if (currplayer_y_small >= 160) {
-						currplayer_y_small = 160;
-					}		
-					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
+					title_wave_shit();
 					
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
 						oam_spr(currplayer_x_small, currplayer_y_small, 0x0D, 0x20);
@@ -755,17 +728,7 @@ void state_menu() {
 					}
 					break;	
 				case 12:		//mini ufo
-					if (teleport_output <= 0x1A) {
-						currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
-						teleport_output++;
-					}
-					else currplayer_y_small += 4;
-					if (!(newrand() & 15)) teleport_output = 0;
-					
-					if (currplayer_y_small >= 160) {
-						currplayer_y_small = 160;
-					}		
-					else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+					title_ufo_shit();
 					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x19, 0);
 					break;		
@@ -812,26 +775,9 @@ void state_menu() {
 					};
 					break;
 				case 15:		//mini swing
-					if (kandoframecnt & 1) { 
-						if (!(newrand() & 15)) {
-							currplayer_gravity ^= 1; teleport_output = 0;
-						}
-					}
 
-					if (currplayer_gravity) { 
-						currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
-						if (teleport_output < 7) teleport_output++;
-					}
+					title_swing_shit();
 
-					else { 
-						currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
-						if (teleport_output < 7) teleport_output++;
-					}
-
-					if (currplayer_y_small >= 160) {
-						currplayer_y_small = 160;
-					}		
-					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:				
@@ -1092,12 +1038,13 @@ void roll_new_mode() {
 	currplayer_gravity = 0; 
 	currplayer_x_small = 0x08; 
 	currplayer_y_small = 0xA0; 
+	tmpi8 = 0;
 	teleport_output = 0X1D;
 	tmp7 = titlemode;
 	while (titlemode == tmp7) {
 		titlemode = newrand() & 15;
 	}
-//	titlemode = 5; //to test
+//	titlemode = 3; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
@@ -1116,6 +1063,104 @@ void loop_routine_update() {
 	mouse_and_cursor();
 }		
 
+void title_ship_shit() {
+	if (kandoframecnt & 1) { if (!(newrand() & 7)) currplayer_gravity ^= 1; }
+
+	currplayer_y_small -= tmpi8;
+
+	if (currplayer_y_small >= 160) {
+		currplayer_y_small = 160;
+	}		
+	else if (currplayer_y_small < 0x08) { 
+		currplayer_y_small = 0x08; 
+		currplayer_gravity = 0;
+		tmpi8 = 0;
+	}					
+
+
+	if (currplayer_gravity) {
+		if (!(kandoframecnt & 7)) { if (tmpi8 < 3) tmpi8++; }
+	}
+
+	else {
+		
+		if (!(kandoframecnt & 7)) { if (tmpi8 > -3) tmpi8--; }
+	}
+}					
+
+void title_swing_shit() {
+	if (kandoframecnt & 1) { 
+		if (!(newrand() & 15)) {
+			currplayer_gravity ^= 1; teleport_output = 0;
+		}
+	}
+
+	if (currplayer_gravity) { 
+		currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
+		if (teleport_output < 7) teleport_output++;
+	}
+
+	else { 
+		currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
+		if (teleport_output < 7) teleport_output++;
+	}
+
+	if (currplayer_y_small >= 160) {
+		currplayer_y_small = 160;
+	}		
+	else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;	
+}
+
+void title_ball_shit() {
+	if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
+		if (!(newrand() & 15)) {
+			if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
+			else { currplayer_gravity = 0; teleport_output = 0; }
+		}
+	}
+
+	if (currplayer_gravity) { 
+		currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
+		if (teleport_output < 7) teleport_output++;
+	}
+
+	else { 
+		currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
+		if (teleport_output < 7) teleport_output++;
+	}
+
+	if (currplayer_y_small >= 160) {
+		currplayer_y_small = 160;
+	}		
+	else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;	
+}
+
+void title_ufo_shit() {
+	if (teleport_output <= 0x1A) {
+		currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
+		teleport_output++;
+	}
+	else currplayer_y_small += 4;
+	if (!(newrand() & 15)) teleport_output = 0;
+	
+	if (currplayer_y_small >= 160) {
+		currplayer_y_small = 160;
+	}		
+	else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+}					
+
+void title_wave_shit() {
+	tmp2 = newrand() & 31;
+	if (kandoframecnt & 1) { if (tmp2 >= 30) currplayer_gravity ^= 1; }
+		
+	if (currplayer_gravity) currplayer_y_small -= speed;
+
+	else currplayer_y_small += speed;
+	if (currplayer_y_small >= 160) {
+		currplayer_y_small = 160;
+	}		
+	else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
+}
 #pragma code-name(pop)
 #pragma data-name(pop) 
 #pragma rodata-name(pop)
