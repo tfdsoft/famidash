@@ -917,7 +917,7 @@ void roll_new_mode() {
 	currplayer_x = 8; 
 	currplayer_y = 160; 
 	titlemode = newrand() & 15;
-	titlemode = 6; //to test
+//	titlemode = 6; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
