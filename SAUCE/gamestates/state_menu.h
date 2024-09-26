@@ -532,7 +532,7 @@ void state_menu() {
 					break;				
 				case 6:		//wave
 					tmp2 = newrand() & 31;
-					if (tmp2 == 31) currplayer_gravity ^= 1;
+					if (kandoframecnt & 1) { if (tmp2 >= 30) currplayer_gravity ^= 1; }
 						
 					if (currplayer_gravity) currplayer_y -= speed;
 
@@ -595,7 +595,7 @@ void state_menu() {
 					break;	
 				case 11:		//mini wave
 					tmp2 = newrand() & 31;
-					if (tmp2 == 31) currplayer_gravity ^= 1;
+					if (kandoframecnt & 1) { if (tmp2 >= 30) currplayer_gravity ^= 1; }
 						
 					if (currplayer_gravity) currplayer_y -= speed;
 
@@ -917,7 +917,7 @@ void roll_new_mode() {
 	currplayer_x = 8; 
 	currplayer_y = 160; 
 	titlemode = newrand() & 15;
-//	titlemode = 11; //to test
+	titlemode = 6; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
