@@ -1079,7 +1079,10 @@ void roll_new_mode() {
 	currplayer_x_small = 0x08; 
 	currplayer_y_small = 0xA0; 
 	teleport_output = 0X1D;
-	titlemode = newrand() & 15;
+	tmp7 = titlemode;
+	while (titlemode == tmp7) {
+		titlemode = newrand() & 15;
+	}
 //	titlemode = 8; //to test
 	ballframe = 0;
 	oam_clear();
