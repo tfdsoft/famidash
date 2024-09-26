@@ -396,7 +396,7 @@ const uint8_t UFO_Title_Jump_Table[]={
 const uint8_t BALL_Title_Jump_Table[]={
 	1,
 	1,
-	2,
+	1,
 	2,
 	2,
 	3,
@@ -620,7 +620,7 @@ void state_menu() {
 				case 7:		//ball
 
 					if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
-						if (!(newrand() & 31)) {
+						if (!(newrand() & 15)) {
 							if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
 							else { currplayer_gravity = 0; teleport_output = 0; }
 						}
@@ -653,6 +653,28 @@ void state_menu() {
 					}						
 					break;
 				case 8:		//swing
+					if (kandoframecnt & 1) { 
+						if (!(newrand() & 15)) {
+							currplayer_gravity ^= 1; teleport_output = 0;
+						}
+					}
+
+					if (currplayer_gravity) { 
+						currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
+						if (teleport_output < 7) teleport_output++;
+					}
+
+					else { 
+						currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
+						if (teleport_output < 7) teleport_output++;
+					}
+
+					if (currplayer_y_small >= 160) {
+						currplayer_y_small = 160;
+					}		
+					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
+
+
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:
@@ -678,7 +700,7 @@ void state_menu() {
 					break;	
 				case 10:		//mini ball
 					if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
-						if (!(newrand() & 31)) {
+						if (!(newrand() & 15)) {
 							if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
 							else { currplayer_gravity = 0; teleport_output = 0; }
 						}
@@ -776,6 +798,26 @@ void state_menu() {
 					};
 					break;
 				case 15:		//mini swing
+					if (kandoframecnt & 1) { 
+						if (!(newrand() & 15)) {
+							currplayer_gravity ^= 1; teleport_output = 0;
+						}
+					}
+
+					if (currplayer_gravity) { 
+						currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
+						if (teleport_output < 7) teleport_output++;
+					}
+
+					else { 
+						currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
+						if (teleport_output < 7) teleport_output++;
+					}
+
+					if (currplayer_y_small >= 160) {
+						currplayer_y_small = 160;
+					}		
+					else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:				
@@ -1038,7 +1080,7 @@ void roll_new_mode() {
 	currplayer_y_small = 0xA0; 
 	teleport_output = 0X1D;
 	titlemode = newrand() & 15;
-//	titlemode = 7; //to test
+//	titlemode = 8; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
