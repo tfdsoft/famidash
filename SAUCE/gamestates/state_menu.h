@@ -1108,6 +1108,7 @@ void roll_new_mode() {
 		titlemode = newrand() & 15;
 		if (retro_mode && titlemode == 0) titlemode = tmp7;
 	}
+//	titlemode = 0; //to test
 	if (titlemode == 1 || titlemode == 3 || titlemode == 6 || titlemode == 9 || titlemode == 11 || titlemode == 12) {
 		while (tmp1 > 0xA0 && tmp1 <= 0x20) {
 			tmp1 = newrand() & 0xFF;
@@ -1116,7 +1117,6 @@ void roll_new_mode() {
 	}
 		
 		
-//	titlemode = 0; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();

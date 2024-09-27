@@ -2,7 +2,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9, _temptemp5, _max_fallspeed_big, _max_fallspeed_mini, _gravity_big, _gravity_mini  ; C-safe temp storage
 .import pusha, pushax, callptr4
-.import _scroll_x
+.import _scroll_x, _gameState
 
 .macpack longbranch
 
@@ -2297,6 +2297,16 @@ drawplayer_center_offsets:
 		@don:
 			TAX
 			AND #$C0
+			PHA
+			lda _gameState
+			cmp #1
+			bne @continue
+			pla
+			ora #$20
+			bne @resume
+		@continue:
+			PLA
+		@resume:
 			STA xargs+0	; flip setting
 			TXA
 			AND #$07
