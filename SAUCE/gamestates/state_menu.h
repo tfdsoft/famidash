@@ -1112,10 +1112,15 @@ void roll_new_mode() {
 	tmpi8 = 0;
 	teleport_output = 0XFF;
 	tmp7 = titlemode;
-	while (titlemode == tmp7) {
-		titlemode = newrand() & 15;
-		if (retro_mode && titlemode == 0) titlemode = tmp7;
+	do {
+		do {
+			titlemode = newrand() & 15;
+		} while (titlemode > 9);
+	} while (titlemode == tmp7);
+	if (titlemode >= 8) {
+		titlemode = (newrand() & 7) + 8;
 	}
+	if (retro_mode && titlemode == 0) titlemode = tmp7;
 //	titlemode = 7; //to test
 	if (titlemode == 1 || titlemode == 3 || titlemode == 6 || titlemode == 9 || titlemode == 11 || titlemode == 12) {
 		while (tmp1 > 0xA0 && tmp1 <= 0x20) {
