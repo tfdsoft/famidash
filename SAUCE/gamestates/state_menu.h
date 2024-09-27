@@ -581,52 +581,71 @@ void state_menu() {
 					title_robot_shit();
 					
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
-				//	if (currplayer_y_small != 160) {
+					if (currplayer_y_small == 160) {
 						if (!retro_mode) {
 							switch (ballframe) {
 								case 0:
-									oam_spr(currplayer_x_small-8, currplayer_y_small, 0x01, 0x20);
-									oam_spr(currplayer_x_small, currplayer_y_small, 0x03, 0x20);					
-									oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x05, 0x20);					
+									tmp1 = 0x01;
+									tmp2 = 0x03;
+									tmp3 = 0x05;
 									break;
 								case 1:
-									oam_spr(currplayer_x_small, currplayer_y_small, 0x07, 0x20);					
-									oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x09, 0x20);					
+									tmp1 = 0xFF;
+									tmp2 = 0x07;
+									tmp3 = 0x09;
 									break;
 								case 2:
-									oam_spr(currplayer_x_small-8, currplayer_y_small, 0x01, 0x20);
-									oam_spr(currplayer_x_small, currplayer_y_small, 0x0B, 0x20);					
-									oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x05, 0x20);					
+									tmp1 = 0x01;
+									tmp2 = 0x0B;
+									tmp3 = 0x05;
 									break;
 								case 3:
-									oam_spr(currplayer_x_small, currplayer_y_small, 0x0D, 0x20);					
-									oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x09, 0x20);					
+									tmp1 = 0xFF;
+									tmp2 = 0x0D;
+									tmp3 = 0x09;
 									break;	
 							};
 						}
 						else {
 							switch (ballframe) {
 								case 0:
-									//oam_spr(currplayer_x_small-8, currplayer_y_small, 0x01, 0x20);
-									oam_spr(currplayer_x_small, currplayer_y_small, 0x01, 0x20);					
-									oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x03, 0x20);					
+									tmp1 = 0xFF;
+									tmp2 = 0x01;
+									tmp3 = 0x03;
 									break;
 								case 1:
-									oam_spr(currplayer_x_small, currplayer_y_small, 0x07, 0x20);					
-									oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x09, 0x20);					
+									tmp1 = 0xFF;
+									tmp2 = 0x07;
+									tmp3 = 0x09;
 									break;
 								case 2:
-									//oam_spr(currplayer_x_small-8, currplayer_y_small, 0x01, 0x20);
-									oam_spr(currplayer_x_small, currplayer_y_small, 0x0B, 0x20);					
-									oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x0D, 0x20);					
+									tmp1 = 0xFF;
+									tmp2 = 0x0B;
+									tmp3 = 0x0D;
 									break;
 								case 3:
-									oam_spr(currplayer_x_small, currplayer_y_small, 0x11, 0x20);					
-									oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x13, 0x20);					
+									tmp1 = 0xFF;
+									tmp2 = 0x11;
+									tmp3 = 0x13;
 									break;	
 							};
 						}						
-				//	}
+					}
+					else {
+						if (!retro_mode) {
+							tmp1 = 0xFF;
+							tmp2 = 0x0F;
+							tmp3 = 0x11;
+						}
+						else {
+							tmp1 = 0xFF;
+							tmp2 = 0x11;
+							tmp3 = 0x13;							
+						}
+					}
+					oam_spr(currplayer_x_small-8, currplayer_y_small, tmp1, 0x20);
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, 0x20);					
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, 0x20);					
 					break;
 				case 5:		//spider
 					if (kandoframecnt & 1) {
