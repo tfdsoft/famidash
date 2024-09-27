@@ -524,19 +524,10 @@ void state_menu() {
 		if (currplayer_x_small <= 0xF7) {
 			switch (titlemode) {
 				case 0:		//cube
-/*
-					if (teleport_output <= 0x1C) {
-						currplayer_y_small -= Title_Jump_Table[teleport_output];		//hop hop
-						teleport_output++;
-					}
-					else { if (!(newrand() & 31)) teleport_output = 0; }
-*/					
 					oam_spr(currplayer_x_small, currplayer_y_small, 1, 0x20);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, 3, 0x20);
-
 					break;
 				case 1:		//UFO
-
 					title_ufo_shit();
 					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20);
@@ -546,8 +537,6 @@ void state_menu() {
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x35, 0x20);
 					break;
 				case 3:		//ship
-
-					
 					title_ship_shit();
 
 					switch (tmpi8) {
@@ -632,13 +621,12 @@ void state_menu() {
 						}						
 					}
 					else {
+						tmp1 = 0xFF;
 						if (!retro_mode) {
-							tmp1 = 0xFF;
 							tmp2 = 0x0F;
 							tmp3 = 0x11;
 						}
 						else {
-							tmp1 = 0xFF;
 							tmp2 = 0x11;
 							tmp3 = 0x13;							
 						}
@@ -701,16 +689,14 @@ void state_menu() {
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp1 + 2, tmp2);
 					break;				
 				case 7:		//ball
-
 					title_ball_shit();
-					
 					
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
 
 					if (retro_mode && currplayer_gravity) tmp7 = 0xA0;
 					else tmp7 = 0x20;
 
-					if (ballframe) 	tmp2 = 0x3F;
+					if (ballframe) tmp2 = 0x3F;
 					else tmp2 = 0x1B;						
 
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
@@ -781,17 +767,19 @@ void state_menu() {
 					title_wave_shit();
 					
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
+						tmp1 = 0x0D;
+						tmp2 = 0x20;
 						oam_spr(currplayer_x_small, currplayer_y_small, 0x0D, 0x20);
-						
 					}
 					else if (currplayer_gravity) {
-						oam_spr(currplayer_x_small, currplayer_y_small, 0x11, 0xA0);
-						
+						tmp1 = 0x11;
+						tmp2 = 0xA0;
 					}
 					else {
-						oam_spr(currplayer_x_small, currplayer_y_small, 0x11, 0x20);
-						
+						tmp1 = 0x11;
+						tmp2 = 0x20;
 					}
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
 					break;	
 				case 12:		//mini ufo
 					title_ufo_shit();
@@ -803,20 +791,9 @@ void state_menu() {
 					title_robot_shit();
 
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
-					switch (ballframe) {
-						case 0:				
-							tmp2 = 0x13;
-							break;
-						case 1:				
-							tmp2 = 0x15;
-							break;
-						case 2:				
-							tmp2 = 0x17;
-							break;
-						case 3:				
-							tmp2 = 0x19;
-							break;
-					};
+
+					tmp2 = 0x13 + (ballframe * 2);
+
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, 0x20);
 					break;
 
