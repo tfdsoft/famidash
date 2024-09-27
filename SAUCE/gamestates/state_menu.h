@@ -413,6 +413,9 @@ const uint8_t BALL_Title_Jump_Table[]={
 	4,
 };
 	
+const uint8_t menu_color_table[]={
+	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0x0A, 0x0B, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3C
+};
 
 #include "defines/mainmenu_charmap.h"
 
@@ -500,12 +503,15 @@ void state_menu() {
 	teleport_output = 0Xff;
 	currplayer_y_small = 160;
 	currplayer_x_small = 0;
+	titlecolor3 = color3;
+	titlecolor2 = color2;
+	titlecolor1 = color1;
 	while (!(pad_new[0] & PAD_START)){
-		pal_col(0x11,color3);
-		pal_col(0x12,color1);
-		pal_col(0x13,color2);
-		pal_set_update();
 
+		pal_col(0x11,titlecolor3);
+		pal_col(0x12,titlecolor1);
+		pal_col(0x13,titlecolor2);
+		pal_set_update();
 
 		loop_routine_update();
 		 // read the first controller
@@ -1100,7 +1106,8 @@ void roll_new_mode() {
 	if (speed == 0) speed = 1; 
 	currplayer_gravity = 0; 
 	currplayer_x_small = 0x08; 
-	currplayer_y_small = 0xA0; 
+	currplayer_y_small = 0xA0;
+	player_vel_y[0] = 0;
 	tmpi8 = 0;
 	teleport_output = 0X1D;
 	tmp7 = titlemode;
@@ -1108,7 +1115,7 @@ void roll_new_mode() {
 		titlemode = newrand() & 15;
 		if (retro_mode && titlemode == 0) titlemode = tmp7;
 	}
-//	titlemode = 0; //to test
+//	titlemode = 2; //to test
 	if (titlemode == 1 || titlemode == 3 || titlemode == 6 || titlemode == 9 || titlemode == 11 || titlemode == 12) {
 		while (tmp1 > 0xA0 && tmp1 <= 0x20) {
 			tmp1 = newrand() & 0xFF;
@@ -1119,6 +1126,18 @@ void roll_new_mode() {
 		
 	ballframe = 0;
 	oam_clear();
+	while (tmp1 >= 53) {
+		tmp1 = newrand() & 63;
+	}
+	while (tmp2 >= 53) {
+		tmp2 = newrand() & 63;
+	}
+	while (tmp3 >= 53) {
+		tmp3 = newrand() & 63;
+	}
+//	titlecolor1 = menu_color_table[tmp1];
+//	titlecolor2 = menu_color_table[tmp2];   most of our colors suck
+//	titlecolor3 = menu_color_table[tmp3];
 	set_title_icon();
 }			
 
@@ -1230,12 +1249,12 @@ void title_cube_shit() {
 	}
 	else currplayer_y_small += 4;
 
-	if (currplayer_y_small >= 160) {
-		currplayer_y_small = 160;
+	if (currplayer_y_small >= (titlemode == 0 ? 160 : 164)) {
+		currplayer_y_small = titlemode == 0 ? 160 : 164;
 		player_vel_y[0] = 0;
 	}		
 	
-	if (currplayer_y_small == 160 && !(newrand() & 15)) { 
+	if (currplayer_y_small == (titlemode == 0 ? 160 : 164) && !(newrand() & 15)) { 
 		teleport_output = 0;
 		player_vel_y[0] = 1;
 	}
