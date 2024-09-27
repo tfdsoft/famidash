@@ -1216,7 +1216,7 @@ void title_swing_shit() {
 
 void title_ball_shit() {
 	if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
-		if (!(newrand() & 15)) {
+		if (!(newrand() & 31)) {
 			if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
 			else { currplayer_gravity = 0; teleport_output = 0; }
 		}
