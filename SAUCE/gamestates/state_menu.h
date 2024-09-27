@@ -885,7 +885,7 @@ void state_menu() {
 					if (ballframe != 5) {
 						oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0);
 						oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7, 0xE0);					
-						
+					}
 					break;					
 			};
 		}
