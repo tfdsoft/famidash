@@ -1089,6 +1089,7 @@ void set_title_icon() {
 			while (tmp7 > 26) {
 				tmp7 = newrand() & 31;
 			}
+			titleicon = tmp7;
 			tmp7 = tmp7 * 2;
 			tmp7 += 38;
 			mmc3_set_2kb_chr_bank_0(retro_mode ? 16 : tmp7);

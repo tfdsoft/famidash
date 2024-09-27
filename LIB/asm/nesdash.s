@@ -2,7 +2,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9, _temptemp5, _max_fallspeed_big, _max_fallspeed_mini, _gravity_big, _gravity_mini  ; C-safe temp storage
 .import pusha, pushax, callptr4
-.import _scroll_x, _gameState
+.import _scroll_x, _gameState, _titleicon
 
 .macpack longbranch
 
@@ -2280,7 +2280,16 @@ drawplayer_center_offsets:
 			cmp #8
 			beq @noflip
 
+			LDA _gameState
+			cmp #1
+			bne @normalicon
+			LDA _titleicon
+			jmp @domore
+			
+		@normalicon:
 			LDA _icon
+
+		@domore:
 			cmp #$13
 			beq @noflip
 			cmp #2
