@@ -164,7 +164,7 @@ _level_lengths_lo:
   .byte .lobyte($0000B0)		; luckydraw
   .byte .lobyte($000080)		; test
   .byte .lobyte($00006E)		; test2
-  .byte .lobyte($00008D)		; test3
+  .byte .lobyte($000069)		; test3
   .byte .lobyte($000019)		; test4
   .byte .lobyte($000006)		; danger
 
@@ -189,7 +189,7 @@ _level_lengths_md:
   .byte .hibyte($0000B0)		; luckydraw
   .byte .hibyte($000080)		; test
   .byte .hibyte($00006E)		; test2
-  .byte .hibyte($00008D)		; test3
+  .byte .hibyte($000069)		; test3
   .byte .hibyte($000019)		; test4
   .byte .hibyte($000006)		; danger
 
@@ -214,7 +214,7 @@ _level_lengths_hi:
   .byte .bankbyte($0000B0)		; luckydraw
   .byte .bankbyte($000080)		; test
   .byte .bankbyte($00006E)		; test2
-  .byte .bankbyte($00008D)		; test3
+  .byte .bankbyte($000069)		; test3
   .byte .bankbyte($000019)		; test4
   .byte .bankbyte($000006)		; danger
 
