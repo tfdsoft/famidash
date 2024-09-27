@@ -28,7 +28,7 @@ The general principle is: fork it, change it, push it, open a PR, get it merged 
 |contributor|role (in no particular order)|
 |---|---|
 |[Zephyrside](https://github.com/zephyrside)/[UserSniper](https://github.com/usersniper)|primary lead developer, project creator, coding, music, graphics|
-|[kandowontu](https://github.com/kandowontu)|secondary lead developer, maintainer|
+|[kandowontu](https://github.com/kandowontu)|director, secondary lead developer, maintainer|
 |[AleFunky](https://github.com/PinguLinux)|core code, levels, testing, bugfixes|
 |[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
 |[alexmush](https://github.com/ADM228)|code, code optimization|
@@ -46,7 +46,6 @@ The general principle is: fork it, change it, push it, open a PR, get it merged 
 |AdryanLucas096|icons, graphics|
 |Zee_Scott|icons|
 |[StudsX](https://github.com/smbhacks)|ASM, music|
-|[jaezu](https://github.com/jaezudev)|maintainer, music|
 |cloud54|various music tracks and art|
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
