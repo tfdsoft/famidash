@@ -1096,7 +1096,7 @@ void roll_new_mode() {
 		titlemode = newrand() & 15;
 		if (retro_mode && titlemode == 0) titlemode = tmp7;
 	}
-//	titlemode = 1; //to test
+	titlemode = 15; //to test
 	if (titlemode == 1 || titlemode == 3 || titlemode == 6 || titlemode == 9 || titlemode == 11 || titlemode == 12) {
 		while (tmp1 > 0xA0 && tmp1 <= 0x20) {
 			tmp1 = newrand() & 0xFF;
@@ -1158,19 +1158,21 @@ void title_ship_shit() {
 void title_swing_shit() {
 	if (kandoframecnt & 1) { 
 		if (!(newrand() & 15)) {
-			currplayer_gravity ^= 1; teleport_output = 0;
+			currplayer_gravity ^= 1; 
 		}
 	}
 
-	if (currplayer_gravity) { 
-		currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
-		if (teleport_output < 7) teleport_output++;
-	}
+	if ((kandoframecnt & 3) == 0)
+			if (currplayer_gravity) {
+				currplayer_vel_y_small -= 1;
+				if (currplayer_vel_y_small <= -3) currplayer_vel_y_small = -3;
+			} else {
+				currplayer_vel_y_small += 1;
+				if (currplayer_vel_y_small >= 3) currplayer_vel_y_small = 3;
+			}
 
-	else { 
-		currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
-		if (teleport_output < 7) teleport_output++;
-	}
+			
+	currplayer_y_small += currplayer_vel_y_small;
 
 	bounds_check();
 }

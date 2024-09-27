@@ -131,6 +131,7 @@ int16_t currplayer_vel_y;
 uint8_t currplayer_gravity;
 uint8_t currplayer_x_small;
 uint8_t currplayer_y_small;
+int8_t currplayer_vel_y_small;
 
 extern uint8_t pad[2];
 extern uint8_t pad_new[2];
