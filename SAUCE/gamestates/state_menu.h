@@ -2,7 +2,9 @@
 #pragma data-name(push, "XCD_BANK_03")
 #pragma rodata-name(push, "XCD_BANK_03")
 
+void movement();
 void bounds_check();
+void title_cube_shit();
 void title_robot_shit();
 void title_wave_shit();
 void title_ufo_shit();
@@ -524,8 +526,13 @@ void state_menu() {
 		if (currplayer_x_small <= 0xF7) {
 			switch (titlemode) {
 				case 0:		//cube
-					oam_spr(currplayer_x_small, currplayer_y_small, 1, 0x20);
-					oam_spr(currplayer_x_small + 8, currplayer_y_small, 3, 0x20);
+					//oam_spr(currplayer_x_small, currplayer_y_small, 1, 0x20);
+					//oam_spr(currplayer_x_small + 8, currplayer_y_small, 3, 0x20);
+					title_cube_shit();
+
+					high_byte(player_x[0]) = currplayer_x_small;
+					high_byte(player_y[0]) = currplayer_y_small;
+					crossPRGBankJump0(drawplayerone);
 					break;
 				case 1:		//UFO
 					title_ufo_shit();
@@ -534,7 +541,12 @@ void state_menu() {
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, 0x60);
 					break;
 				case 2:		//mini cube
-					oam_spr(currplayer_x_small, currplayer_y_small, 0x35, 0x20);
+					title_cube_shit();
+					mini = 1;
+					high_byte(player_x[0]) = currplayer_x_small;
+					high_byte(player_y[0]) = currplayer_y_small;
+					crossPRGBankJump0(drawplayerone);
+					mini = 0;
 					break;
 				case 3:		//ship
 					title_ship_shit();
@@ -1096,7 +1108,6 @@ void roll_new_mode() {
 		titlemode = newrand() & 15;
 		if (retro_mode && titlemode == 0) titlemode = tmp7;
 	}
-	titlemode = 15; //to test
 	if (titlemode == 1 || titlemode == 3 || titlemode == 6 || titlemode == 9 || titlemode == 11 || titlemode == 12) {
 		while (tmp1 > 0xA0 && tmp1 <= 0x20) {
 			tmp1 = newrand() & 0xFF;
@@ -1105,6 +1116,7 @@ void roll_new_mode() {
 	}
 		
 		
+//	titlemode = 0; //to test
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
@@ -1209,6 +1221,25 @@ void title_ufo_shit() {
 	if (currplayer_y_small >= 160) {
 		currplayer_y_small = 160;
 	}		
+	else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+}	
+void title_cube_shit() {
+	if (teleport_output <= 0x1A) {
+		currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
+		teleport_output++;
+	}
+	else currplayer_y_small += 4;
+
+	if (currplayer_y_small >= 160) {
+		currplayer_y_small = 160;
+		player_vel_y[0] = 0;
+	}		
+	
+	if (currplayer_y_small == 160 && !(newrand() & 15)) { 
+		teleport_output = 0;
+		player_vel_y[0] = 1;
+	}
+	
 	else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
 }					
 

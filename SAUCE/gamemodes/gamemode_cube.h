@@ -21,10 +21,10 @@ void cube_movement(void){
 	gravity_mini = MINI_CUBE_GRAVITY;
 	common_gravity_routine();
 
-
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 	
+	if (gameState != 0) {
 	
 	if(!currplayer_gravity || (currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))){
 		if(bg_coll_D()){ // check collision below
@@ -264,7 +264,7 @@ void cube_movement(void){
 	currplayer_vel_x = player_vel_x[currplayer & 0x7F];
 	currplayer_vel_y = player_vel_y[currplayer & 0x7F];
 	currplayer_gravity = player_gravity[currplayer];
-	
+	}
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 }	
