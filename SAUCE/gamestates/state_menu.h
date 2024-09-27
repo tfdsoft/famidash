@@ -658,41 +658,47 @@ void state_menu() {
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
 						case 0:
-							oam_spr(currplayer_x_small - 8, currplayer_y_small, 0x21, tmp7);
-							oam_spr(currplayer_x_small, currplayer_y_small, 0x23, tmp7);					
-							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x25, tmp7);					
+							tmp1 = 0x21;
+							tmp2 = 0x23;
+							tmp3 = 0x25;
 							break;
 						case 1:
-							oam_spr(currplayer_x_small - 8, currplayer_y_small, 0x27, tmp7);					
-							oam_spr(currplayer_x_small, currplayer_y_small, 0x29, tmp7);					
-							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x2B, tmp7);					
+							tmp1 = 0x27;
+							tmp2 = 0x29;
+							tmp3 = 0x2B;
 							break;
 						case 2:
-							oam_spr(currplayer_x_small - 8, currplayer_y_small, 0x2D, tmp7);
-							oam_spr(currplayer_x_small, currplayer_y_small, 0x2F, tmp7);					
-							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x31, tmp7);					
+							tmp1 = 0x2D;
+							tmp2 = 0x2F;
+							tmp3 = 0x31;
 							break;
 						case 3:
-							oam_spr(currplayer_x_small, currplayer_y_small, 0x33, tmp7);					
-							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x35, tmp7);					
+							tmp1 = 0xFF;
+							tmp2 = 0x33;
+							tmp3 = 0x35;
 							break;	
 					}
+					oam_spr(currplayer_x_small - 8, currplayer_y_small, tmp1, tmp7);
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);					
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, tmp7);					
 					break;				
 				case 6:		//wave
 					title_wave_shit();
 					
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
-						oam_spr(currplayer_x_small, currplayer_y_small, 0x17, 0x20);
-						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x19, 0x20);
+						tmp1 = 0x17;
+						tmp2 = 0x20;
 					}
 					else if (currplayer_gravity) {
-						oam_spr(currplayer_x_small, currplayer_y_small, 0x3B, 0xA0);
-						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3D, 0xA0);
+						tmp1 = 0x3B;
+						tmp2 = 0xA0;
 					}
 					else {
-						oam_spr(currplayer_x_small, currplayer_y_small, 0x3B, 0x20);
-						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3D, 0x20);
+						tmp1 = 0x3B;
+						tmp2 = 0x20;
 					}
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp1 + 2, tmp2);
 					break;				
 				case 7:		//ball
 
