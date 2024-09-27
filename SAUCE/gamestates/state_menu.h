@@ -1204,7 +1204,7 @@ void title_ufo_shit() {
 
 void title_wave_shit() {
 	tmp2 = newrand() & 31;
-	if (kandoframecnt & 1) { if (tmp2 >= 30) currplayer_gravity ^= 1; }
+	if (kandoframecnt & 1) { if (tmp2 >= 29) currplayer_gravity ^= 1; }
 		
 	if (currplayer_gravity) currplayer_y_small -= speed;
 
