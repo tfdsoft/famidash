@@ -703,14 +703,13 @@ void state_menu() {
 
 					if (retro_mode && currplayer_gravity) tmp7 = 0xA0;
 					else tmp7 = 0x20;
-					if (ballframe) {
-						oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, tmp7);
-						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, tmp7 + 0x40);
-					}
-					else {
-						oam_spr(currplayer_x_small, currplayer_y_small, 0x1B, tmp7);
-						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x1B, tmp7 + 0x40);
-					}						
+
+					if (ballframe) 	tmp2 = 0x3F;
+					else tmp2 = 0x1B;						
+
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp2, tmp7 + 0x40);
+
 					break;
 				case 8:		//swing
 					title_swing_shit();
@@ -762,7 +761,9 @@ void state_menu() {
 					};
 					if (currplayer_y_small == 160 && tmp7 < 0x05) tmp7 = 0x05;
 					else if (currplayer_y_small == 8 && tmp7 > 0x05) tmp7 = 0x05;					
+
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
+
 					break;	
 				case 10:		//mini ball
 					title_ball_shit();
@@ -789,7 +790,7 @@ void state_menu() {
 				case 12:		//mini ufo
 					title_ufo_shit();
 					
-					oam_spr(currplayer_x_small, currplayer_y_small, 0x19, 0);
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x19, 0x20);
 					break;		
 				case 13:		//mini robot
 					
@@ -863,27 +864,28 @@ void state_menu() {
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 5 ? -5 : 1;
 					switch (ballframe) {
 						case 0:
-							oam_spr(currplayer_x_small, currplayer_y_small, 0x1D, 0);
-							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x1D, 0xE0);					
+							tmp7 = 0x1D;
 							break;
 						case 1:
-							oam_spr(currplayer_x_small, currplayer_y_small, 0x7D, 0);
-							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x7D, 0xE0);					
+							tmp7 = 0x7D;
 							break;
 						case 2:
-							oam_spr(currplayer_x_small, currplayer_y_small, 0x1F, 0);
-							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x1F, 0xE0);					
+							tmp7 = 0x1F;
 							break;
 						case 3:
-							oam_spr(currplayer_x_small, currplayer_y_small, 0x7F, 0);
-							oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x7F, 0xE0);					
+							tmp7 = 0x7F;
 							break;	
 						case 4:
+							tmp7 = 0xFF;
 							break;	
 						case 5:
 							roll_new_mode();
 							break;
 					};
+					if (ballframe != 5) {
+						oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0);
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7, 0xE0);					
+						
 					break;					
 			};
 		}
