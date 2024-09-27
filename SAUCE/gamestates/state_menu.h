@@ -142,7 +142,7 @@ void levelselection() {
 
 		//if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
-		if (pad_new[0] & PAD_START){
+		if (pad_new[0] & (PAD_START | PAD_A)){
 			start_the_level();
 			return;
 		}
@@ -506,7 +506,7 @@ void state_menu() {
 	titlecolor3 = color3;
 	titlecolor2 = color2;
 	titlecolor1 = color1;
-	while (!(pad_new[0] & PAD_START)){
+	while (!(pad_new[0] & PAD_START) && !(pad_new[0] & PAD_A)){
 
 		pal_col(0x11,titlecolor3);
 		pal_col(0x12,titlecolor1);
