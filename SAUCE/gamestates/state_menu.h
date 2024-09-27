@@ -790,7 +790,7 @@ void state_menu() {
 					
 					title_robot_shit();
 
-					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 2 ? -2 : 1;
 
 					tmp2 = 0x13 + (ballframe * 2);
 
@@ -1075,7 +1075,7 @@ void set_title_icon() {
 			mmc3_set_2kb_chr_bank_0(retro_mode ? 16 : tmp7);
 		}
 		else if (titlemode <= 7) {
-			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 18 : 20);		
+			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 18 : 20);	
 		}
 		else if (titlemode <= 15) {
 			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 22 : 24);		
@@ -1095,8 +1095,15 @@ void roll_new_mode() {
 		titlemode = newrand() & 15;
 		if (retro_mode && titlemode == 0) titlemode = tmp7;
 	}
-	
-//	titlemode = 4; //to test
+//	titlemode = 1; //to test
+	if (titlemode == 1 || titlemode == 3 || titlemode == 6 || titlemode == 8 || titlemode == 9 || titlemode == 11 || titlemode == 12 || titlemode == 15) {
+		while (tmp1 > 0xA0 && tmp1 <= 0x20) {
+			tmp1 = newrand() & 0xFF;
+		}
+		currplayer_y_small = tmp1;
+	}
+		
+		
 	ballframe = 0;
 	oam_clear();
 	set_title_icon();
