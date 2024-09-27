@@ -945,6 +945,7 @@ void state_menu() {
 			if (mouse.y >= (currplayer_y_small - 8) && mouse.y <= (currplayer_y_small + 8)) {
 				if (mouse.x >= currplayer_x_small && mouse.x <= (currplayer_x_small + 16)) {
 					titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
+					sfx_play(sfx_death,0);
 					ballframe = 0;
 				}
 			}
