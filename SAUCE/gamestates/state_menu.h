@@ -94,6 +94,7 @@ void levelselection() {
 	edit_irq_table(high_byte(tmp8),2);
 	tmp4 = 1;
 	crossPRGBankJump0(refreshmenu);
+	crossPRGBankJump0(refreshmenu_part2);
 	
 
 	// one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
@@ -495,6 +496,8 @@ void state_menu() {
     vram_unrle(game_start_screen);
 	vram_adr(NAMETABLE_B);
     vram_unrle(game_start_screen);
+
+	set_scroll_x(0);
 
 	speed = 1;
  	ppu_on_all();
