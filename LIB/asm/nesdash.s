@@ -2009,6 +2009,16 @@ check_sprite_loop:
         sbc _scroll_x+1				;__
         bpl sprite_alive
 
+		lda _activesprites_type, x
+		cmp #$07
+		beq coin_dead
+		cmp #$1A
+		beq coin_dead
+		cmp #$1B
+		bne sprite_dead
+	coin_dead:
+		lda #0
+		sta _animating
 	sprite_dead:					;__	Load a new one in its place
             txa						;	Takes the "slot" argument in A
 			jsr load_next_sprite	;__	But also preserves the X

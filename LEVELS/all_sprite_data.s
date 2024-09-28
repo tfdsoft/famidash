@@ -587,8 +587,8 @@ sprite_data_polargeist:
   .byte $c0,$2c,$90,$02,$fc
   .byte $c0,$2c,$70,$03,$a1
   .byte $c0,$2c,$80,$03,$2e
-  .byte $d0,$2c,$b0,$02,$1b
   .byte $d0,$2c,$58,$03,$0a
+  .byte $e0,$2c,$b0,$02,$1b
   .byte $30,$2d,$40,$02,$2d
   .byte $80,$2d,$70,$03,$0b
   .byte $e0,$2d,$c0,$02,$91
