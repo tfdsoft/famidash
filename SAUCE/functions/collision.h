@@ -225,7 +225,7 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 	tmp2, tmp8
 */
 char bg_coll_mini_blocks() {
-	
+	if (collision != COL_FLOOR_CEIL && high_byte(currplayer_x) < 0x10) return 0;
 	switch (collision) {
 		case COL_UP_LEFT:
 			tmp2 = (uint8_t)(temp_y & 0x0f);	
@@ -378,7 +378,7 @@ char bg_coll_L() {
 char bg_coll_U_D_checks() {
 	switch (collision) {
 		case COL_ALL: 
-			if (was_on_slope_counter) return 0;
+			if (high_byte(currplayer_x) < 0x10 || was_on_slope_counter) return 0;
 			else return 1;
 		case COL_DEATH_TOP:
 			tmp2 = temp_y & 0x0f;	
