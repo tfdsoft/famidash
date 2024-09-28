@@ -61,23 +61,28 @@ void runthecolls();
 void set_player_banks();
 void gameboy_check();
 
+void slope_exit_vel() {
+	switch (tmp8 & 0x07) {
+		case SLOPE_22DEG_DOWN:
+		case SLOPE_22DEG_UP:
+			tmp5 = currplayer_vel_x >> 2;
+			break;
+		case SLOPE_45DEG_DOWN:
+		case SLOPE_45DEG_UP:
+			tmp5 = currplayer_vel_x >> 1;
+			break;
+		case SLOPE_66DEG_DOWN:
+		case SLOPE_66DEG_UP:
+			tmp5 = (currplayer_vel_x >> 1); 
+			tmp5 = (tmp5 >> 1) + tmp5;	
+	}
+}
+
 void x_movement_coll() {
 	if (slope_type && !slope_frames && gamemode != 6) {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
-		switch (slope_type & 0x07) {
-			case SLOPE_22DEG_DOWN:
-			case SLOPE_22DEG_UP:
-				tmp5 = currplayer_vel_x >> 2;
-				break;
-			case SLOPE_45DEG_DOWN:
-			case SLOPE_45DEG_UP:
-				tmp5 = currplayer_vel_x >> 1;
-				break;
-			case SLOPE_66DEG_DOWN:
-			case SLOPE_66DEG_UP:
-				tmp5 = (currplayer_vel_x >> 1); 
-				tmp5 = (tmp5 >> 1) + tmp5;	
-		}
+		tmp8 = slope_type;
+		slope_exit_vel();
 		if (slope_type & 1) {
 			if (currplayer_gravity) {
 				currplayer_vel_y = tmp5 + 0x200;

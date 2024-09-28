@@ -305,6 +305,9 @@ uint8_t titlecolor2;
 uint8_t titlecolor3;
 uint8_t titleicon;
 
+
+uint8_t last_slope_type;
+
 uint8_t gameState = 0x01;
 
 uint8_t teleport_output;

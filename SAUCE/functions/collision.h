@@ -420,6 +420,8 @@ char _slope_LX22_stuff() {
 	if ((uint8_t)(tmp4 + (gamemode == 6 ? 8 : 2)) <= (uint8_t)tmp5) {
 		set_slope_stuff();
 		slope_type = xargs[0];
+		
+		last_slope_type = slope_type;
 		tmp8 = tmp5 - tmp4 - 5;
 		return 1;
 	} else return 0;
@@ -607,6 +609,8 @@ char bg_coll_slope() {
 		default:
 			return 0;
 	}
+	
+	last_slope_type = slope_type;
 	if ((uint8_t)(tmp4) >= tmp7) {
 			tmp8 = tmp4 - tmp7 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
 			
