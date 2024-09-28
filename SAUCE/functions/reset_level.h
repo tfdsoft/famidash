@@ -5,8 +5,6 @@ void reset_level(void) {
     // unsigned char i;
     if (!has_practice_point) famistudio_music_stop();
     coins = 0;
-	last_trail_sprite_shown = 0;
-	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
     orbactive = 0;
     coin1_timer = 0;
 	coin2_timer = 0;
@@ -107,9 +105,11 @@ void reset_level(void) {
     curr_x_scroll_stop = 0x5000;
     target_x_scroll_stop = 0x5000;
     discoframe = 0;
-    memfill(player_old_posy, 0, sizeof(player_old_posy));
-
-    if (!has_practice_point)    invincible_counter = 8;
+    if (!has_practice_point) {
+        memfill(player_old_posy, 0, sizeof(player_old_posy));
+        memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
+        invincible_counter = 8;
+    }
     
     unrle_first_screen();
     if (has_practice_point) {

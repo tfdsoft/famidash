@@ -332,7 +332,6 @@ uint16_t coin3_speed;
 
 // trail stuff
 uint8_t orbactive;
-uint8_t last_trail_sprite_shown;
 uint8_t trail_sprites_visible[9];
 
 uint8_t dashing[2];
@@ -355,6 +354,9 @@ uint8_t practice_g_color;
 uint8_t practice_bg_color;
 uint8_t practice_g_color_type;
 uint8_t practice_bg_color_type;
+uint8_t practice_trail_sprites_visible[9];
+uint8_t practice_player_old_posy[9];
+uint8_t practice_orbactive;
 
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused

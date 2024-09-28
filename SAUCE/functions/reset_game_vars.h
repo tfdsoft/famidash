@@ -28,6 +28,12 @@ void reset_game_vars(){
 	practice_g_color_type = lastgcolortype;
 	gnd_palette_transition_timer = 0;		//palete fade code
 	bg_palette_transition_timer = 0;		//palette fade code
+	tmp2 = 0;
+	do {
+		practice_trail_sprites_visible[tmp2] = trail_sprites_visible[tmp2];
+		practice_player_old_posy[tmp2] = player_old_posy[tmp2];
+	} while (++tmp2 < 9);
+	practice_orbactive = orbactive;
 }
 
 
@@ -51,7 +57,13 @@ void restore_practice_state() {
 	speed = practice_speed;
 	parallax_scroll_x = practice_parallax_scroll_x;
 	scroll_x = practice_scroll_x - (256 + 16);
-	scroll_y = practice_scroll_y;
+	old_trail_scroll_y = scroll_y = practice_scroll_y;
+	tmp2 = 0;
+	do {
+		trail_sprites_visible[tmp2] = practice_trail_sprites_visible[tmp2];
+		player_old_posy[tmp2] = practice_player_old_posy[tmp2];
+	} while (++tmp2 < 9);
+	orbactive = practice_orbactive;
 
 	__A__ = currplayer<<1;
 	__asm__("tay");
