@@ -12,6 +12,7 @@ void title_ball_shit();
 void title_swing_shit();
 void title_ship_shit();
 void refreshmenu();
+void refreshmenu_part2();
 void loop_routine_update();
 void dec_mouse_timer();
 void roll_new_mode();
@@ -117,7 +118,7 @@ void levelselection() {
 		if (tmp4) edit_irq_table(high_byte(tmp8),2);
 		else edit_irq_table(low_byte(tmp8),2);
 
-		if ((PEEK(0x01) & 1)) 
+		if ((PEEK(0x01) & 2)) 
 			low_byte(tmp8) >>= 1;
 		high_byte(tmp8) = low_byte(tmp8)^0xff;
 
@@ -160,6 +161,11 @@ void levelselection() {
 		if (pad_new[0] & PAD_LEFT){
 			leveldec();
 		}
+
+		if (tmp8 == 0x7f) {
+			crossPRGBankJump0(refreshmenu_part2);
+		}
+
 		dec_mouse_timer();
 						
 	}	

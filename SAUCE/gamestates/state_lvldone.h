@@ -6,6 +6,7 @@ extern volatile unsigned char VRAM_UPDATE;
 #pragma rodata-name(push, "LVL_BANK_00")
 
 void refreshmenu();
+void refreshmenu_part2();
 void code_checker();
 void set_fun_settings();
 void checkcointimer(){
@@ -1124,7 +1125,10 @@ void refreshmenu(void) {
 		printDecimal(level, 3, '0', ' ', NTADR_A(29, 2));
 		printDecimal(level, 3, '0', ' ', NTADR_B(29, 2));
 	#endif
+};
 
+void refreshmenu_part2(void) {
+	
 	// Normal level completeness stuff
 		printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);
 
@@ -1147,7 +1151,7 @@ void refreshmenu(void) {
 	// actually draw the coins
 		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12)+tmp5);
 
-};
+}
 
 
 #pragma code-name(pop)
