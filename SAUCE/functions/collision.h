@@ -113,7 +113,7 @@ void bg_coll_spikes() {
 			}
 			return;
 		case COL_DEATH_TOP:
-			if ((uint8_t)(temp_y & 0x0f) < 0x04) {			
+			if ((uint8_t)(temp_y & 0x0f) < 0x06) {			
 				tmp20f();				// If Y pos inside block < 8px, die
 				if (tmp2 >= 0x04 && tmp2 < 0x09) {		// If X pos even insider, die even more
 					break;
@@ -121,7 +121,7 @@ void bg_coll_spikes() {
 			}		
 			return;
 		case COL_DEATH_BOTTOM:
-			if ((uint8_t)(temp_y & 0x0f) > 0x0c) {							// If Y pos inside block ≥ 8px, die
+			if ((uint8_t)(temp_y & 0x0f) > 0x0a) {							// If Y pos inside block ≥ 8px, die
 				tmp20f();				// If Y pos inside block < 8px, die
 				if (tmp2 >= 0x04 && tmp2 < 0x09) {		// If X pos even insider, die even more
 					break;
