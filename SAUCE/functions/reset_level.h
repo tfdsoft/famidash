@@ -14,6 +14,7 @@ void reset_level(void) {
     was_on_slope_counter = 0;
     slope_frames = 0;
     slope_type = SLOPE_NONE;
+    last_slope_type = SLOPE_NONE;
 
     robotjumpframe[0] = 0;
     tmp1 = 30;
