@@ -1,0 +1,321 @@
+Bullet points:
++ A positive change
+= An equal change
+- A negative change [which is subject to revertion]
+
+Whether the changes are good is decided subjectively by the devs, and any new changes MUST be shown to the devs and approved by a vote.
+
+Most importantly,
+DO. NOT. TRY. TO. "OPTIMIZE". MUSIC.
+Music is art, and art is not something you should optimize, ESPECIALLY if it comes at the expense of sounding worse.
+If it sounds *exactly the same* (or better but that's decided by all devs), then it is worthy.
+An example: replacing an arbitrary note on the triangle channel with an S04 effect with the "triangle pluck 2" instrument.
+
+
+Additional terminology:
+{x:y} indicates an exact instrument macro
+XXX.YY.ZZ - XXX = channel, YY = pattern, ZZ = row
+iXX "name" - instrument XX (hex index) with name "name"
+sXX "name" - same but with samples
+
+
+==== Commit b1c2e (4437): ==== [Zenith] ====
+Instruments:
+    + "hat" has a "1 0" duty env instead of "0" {4:3}
+    = Minor changes to envs 0:{0 "Instrument 2", 33 "menu acc", 38 "clap"}, 2:0 "triangle drums", 4:11 "shift string"
+    -r Minor change to "02 but tri" (not zeroes out) {0:9}
+DPCM:
+    + fdbass replaces sunsoft bass
+    + kick and snare are replaced too
+    + added "this is a time machine" samples
+Songs:
+  Stereo Madness:
+    + V02->01 @ PU2.00.14
+  Base After Base:
+    + DPCM drums instead of triangle drums
+      - DPCM doesnt match the rhythm of NOI.07
+  Time Machine:
+    + Added DPCM in intro
+    + Modified triangle in the middle, with volume control via DPCM
+    = Adjusted volumes
+  xStep:
+    + DPCM drums instead of triangle drums
+    - PU1.04.1C-1F less accurate to src
+  Clutterfunk:
+    + PU1.04-05 / PU2.05-06 more accurate to src
+    = Diff slides in the end
+    = 2x volume for chords @ PU1.0B (WHICH ARENT EVEN PRESENT IN THE SRC)
+  Theory Of Everything:
+    - Bass is an octave higher
+  Hexagon Force:
+    + Lead is an octave lower (closer to src)
+  Deadlocked:
+    + Added DPCM note cuts
+
+
+==== Commit d2491 (95a40): ==== [UserSniper] ====
+Songs:
+  Polargeist:
+    = Lighter drums @ NOI.01-03
+  Dry Out:
+    + Removed unnecessary instrument resets @ PU1.{02, 05} and PU2.02
+    + Added duty cycle switching @ PU1.03
+
+
+==== Commit cb553 (75a3a): ==== [UserSniper] ====
+Songs:
+  xStep:
+    + Triangle makes a 12th to bass as opposed to an octave @ pt 04
+    = Removed tri drums @ pt 04
+
+
+==== Commit 3b51c (01e17): ==== [Vickerinox] ====
+Instruments:
+    = Changes of envs 0:{15 "blank string", 39 "xstep wub"}, 4:{16 "hex guitar 1", 17 "hex guitar 2"}
+Songs:
+  xStep:
+    -r TRI.04 back to octave instead of 12th [reverts change @ cb553]
+  Hexagon Force:
+    + Added arps to PU1 and PU2
+    + Other minor improvements
+    = Increased tempo 162->163
+    = PU2.03.0E increased port speed 8->9
+
+
+==== Commit f3e99 (149ed): ==== [UserSniper] ====
+Instruments:
+    + "02 but tri" volume env zeroes out in the middle {0:9} [reverts change @ b1c2e]
+    = "echo" got louder echo {0:2}
+    = Minor change to 0:35 "blank instant decay"
+    = "02 but tri" unmapped duty env
+    -r "hat" unmapped duty env - now it's just mode 0 [reverts change @ b1c2e]
+DPCM:
+    = Shorter "fdkick"
+Songs:
+  Polargeist:
+    = Replaced note cuts with note stops @ TRI.{09, 0A, 0D}
+      - i1C "tight triangle kick" doesnt actually need the note stops
+        = in pt 0D this is not present
+    = Removed note cuts from snares @ TRI.{03, 06, 07} [= because little difference in master audio]
+    - Replaced S02/03 with i0D "triangle pluck" @ TRI.{06, 07} [same effect as S01]
+  Base After Base:
+    + Added a whole ass echo @ PU2.00
+      = As such, added the return 0CC effect @ PU2.09.00
+    - Removed note cuts @ DPCM.{07, 08}.{02, 06, 0A, 0E}
+  Can't Let Go:
+    + Changed instrument 12->10 @ {PU1, PU2}.04
+    = Changed starting duty 01->02 @ PU1.01
+  Jumper:
+    = As per i06 "02 but tri" duty changes, new V00 @ PU1.0B.00
+  Time Machine:
+    - Removed S05 @ DPCM.{11.{09, 0F}, {08, 0F, 10, 13}.16-17, {01, 08, 10}.19-1A, {10, 13}.1E}
+  Clutterfunk:
+    - Removed note releases @ DPCM.{06, 07}
+  Theory 2:
+    = Changed port speed @ PU2.04.01
+    = Changed ending duty @ PU2.1A.17
+
+==== Commit 3a462 (a8dac & 668ee): ==== [UserSniper] ====
+Songs:
+  Time Machine:
+    = Replaced S01 with i0D "triangle pluck" @ TRI.0C
+    - Replaced S02 with i0E "triangle pluck 2" @ TRI.10
+    - Replaced Tri + DMC drums with just triangle @ ods 09-10, 19-1C [Voted, 10/10:-]
+  Cycles:
+    = Replaced TRI.05 with TRI.04 (the latter has no drums)
+    = Removed tri drums @ TRI.{01, 06}
+
+
+==== Commit 2776c (cfe5f): ==== [UserSniper] ====
+DPCM:
+  -r Added s16 "Gimmick Snare"
+  -r Replaced s06 "snare" key mapping with s16 "Gimmick Snare"
+Songs:
+  Can't Let Go:
+    + Changed instrument 12->10 @ PU2.05 [as it should've in f3e99]
+      - Still not @ PU1.05
+    - Decreased port speed 3F->1F @ PU2.04.00 [less accurate to src]
+  Cycles:
+    = Replaced PU1.05 with PU1.03 @ od 0C [identical]
+    = Replaced TRI.02 with TRI.01 @ od 03 [identical]
+    = Replaced TRI.06 with TRI.04 @ od 0D [identical]
+  xStep:
+    + TRI.04 back to 12th instead of octave [reverts change @ 3b51c, restoring change @ cb553]
+  Clutterfunk:
+    = Added (barely noticeable) portamento @ PU1.07
+    - Removed note releases from DPCM.08-0A
+
+==== Commit 86c7a (25daa & 42cfb): ==== [UserSniper] ====
+Songs:
+  Time Machine:
+    = Changed timbre 01->00 @ PU2.{0C, 0D, 13, 14}.00
+  Clutterfunk:
+    - Removed S04 @ PU1.02.33
+  Hexagon Force:
+    + Changed timbre 01->00 @ PU1.0E
+  Menu Theme:
+    - Replaced S03 w/ i0E "triangle pluck" [which is 4 frames long] @ TRI.01-02
+  custom_everyend:
+    + Added duty cycles @ PU1 & PU2
+    = Replaced i0F "blank string" w/ i10 "blank"
+  unused:
+    + Removed
+
+
+==== Commit fde25 (c3672): ==== [UserSniper] ====
+Instruments:
+  + Added more lower orchestra hit mappings for i1A "DMC: orchestra hits"
+
+
+==== Commit 77997 (6cdc3): ==== [UserSniper] ====
+DPCM:
+  + Removed s16 "Gimmick Snare" [reverts change @ 2776c]
+  + Replaced s16 "Gimmick Snare" key mapping with s06 "snare" [reverts change @ 2776c]
+
+
+==== Commit d9449 (20d5b): ==== [UserSniper] ====
+Songs:
+  Stereo Madness:
+    + Proper echo @ PU1.03
+      - Only on first playthru @ PU1.03.01
+
+
+==== Commit cab34 (fe2b7): ==== [UserSniper] ====
+Songs:
+  Back On Track:
+    = Lighter drums @ NOI.02-04.{04, 0C, 14, 1C, 24, 2C, 34}, NOI.02.3C, NOI.05.{04, 08, 0A-0C, 0E-0F}
+  Time Machine:
+    + Stop note @ PU2.01.00
+  Cycles:
+    = Changed timbre 01->00 @ PU1.00.00
+  Clutterfunk:
+    = Removed volume changes @ NOI.09-0C
+    = Made kicks lighter @ NOI.{09-0C, 0E}
+      - Missed one @ NOI.0E.1C
+  Hexagon Force:
+    + Removed percussion from end @ ods 0D-0E / NOI.09 [more accurate to src]
+      - Still no toms before od 0F
+    + Made arps quieter @ PU2.06.{00, 04, 0E, 1C, 28, 32} [more accurate to src]
+    = Added V00 @ PU2.04.3F
+  Theory 2:
+    = Added V00 @ PU1.00.00
+
+
+==== Commit c833f (741a5): ==== [UserSniper] ====
+DPCM:
+  = Adjusted timings of "this is a time machine"
+
+
+==== Commit c53aa (6e623): ==== [UserSniper] ==== "DO NOT REVERT THIS COMMIT"
+Instruments:
+  = Added i28 "Instrument 3" with macros 0:44, 1:19, 4:19
+DPCM:
+  = Adjusted timings of "this is a time machine" [reverts change @ c833f]
+Songs:
+  Time Machine:
+    + Made effects simultaneous @ PU2.0C.(00-01 -> 00)
+      - Missed the same thing @ PU2.{0D, 13, 14}
+    + Made G not accented @ TRI.0F.10-11
+    = Removed redundant effects @ PU1.02-06.00, PU1.07.08, PU2.05.04, PU2.08.08, PU2.{09-0B, 15}.{00, 08}, NOI.0C.{02, 04}
+      - Missed redundant effects @ PU1.07.{00, 1C}, PU2.{{0F-11}.{00, 04}, 0E.04}
+    - Removed volume changes for a slower string @ PU1.{1-7, 11-14}, PU2.{1-4, 8-D, 13-15}
+    - Removed note cuts @ TRI.{0D.{16-17, 1A-1B, 1E-1F}, 0E.{02-03, 06-07, 0A-0B, 0E-0F}}
+      = Actually equivalent alternative: swap with i0E "triangle pluck 2"
+    - Cut a note exactly 1 row early @ TRI.0D.12 (as opposed to ..13) by replacing the S06 with a note stop
+    - Replaced NOI.0C->.02 @ ods {03, 05, 07}
+  Cycles:
+    - Fucked up the pattern numbers:
+      Mapping:
+        Old#  PU1     PU2     TRI       NOI     DMC
+        0     01      01      01        0       01
+        1     235678  2356    23        1       2
+        2     49      49     [23]       2*      3
+        3     AC      78ABC   49        3*      49
+        4     B       D       5678ABCD  49      56
+        5    [AC]    [Empty] [None]     57AC*   78ABC
+        6     D      [Empty] [01]       68B*    D
+        7    [None]  [Empty] [Empty]    D      [Empty]
+      Unused duplicate patterns: 
+        PU1: 1, 35678, 9, C
+        PU2: 1, 356, 9, 8ABC
+        TRI: 1, 3, 9, 678ABCD
+        NOI: 9, 8B, 7AC
+        DMC: 1, 6, 9, 8ABC
+    - Changed volume changes to pitch changes @ NOI.02-03 [clever, but sounds worse]
+    - Removed volume changes @ NOI.{05.13-3F, 06.3-3F}
+      + Technically an FBFF volume *would* work with the DPCM pattern 7 as there is a clap
+  xStep:
+    + Removed note cuts @ PU1.00.{1C, 1E, 36}, PU2.00.{1E, 20, 38} [more accurate to src]
+      + Portamento would fit PERFECTLY into the first one
+    = Removed redundant volume @ PU1.04.{0C, 2C}
+    = Replaced volume 0 with a note stop @ NOI.00.13
+    - Removed volume changes @ NOI.00.{08, 0C-12}
+      = Removing just the ones @ NOI.0C-12 would actually make zero difference, but the NOI.00.08 changes everything
+  Clutterfunk:
+    = Removed redundant effects @ PU1.01.{04, 08, 0C, 10}
+    = Removed timbre and volume changes and portamento @ PU1.{07-08, 0C-0E} [volume changes got replaced with note cut]
+    = Changed port speed @ PU2.12.11
+    = Changed volume @ PU2.12.20
+    = Replaced 0 volume w/ note cut @ PU2.0B-0D.01
+    - Replaced 2 volume w/ note cut @ PU2.0B-0D.{03, 05, 07}, PU2.0E-12.0C-3F
+    [Vote] Removed triangle @ ods 06-07
+  Electroman Adventures:
+    + Extended song to full length
+  Geometrical Dominator:
+    + Extended song to full length
+  Deadlocked:
+    - Removed DPCM note cuts [reverts change @ b1c2e]
+
+
+==== Commit 035a1a (7d0fe): ==== [UserSniper] ====
+Songs:
+  Geometrical Dominator:
+    + Cut pt 00 - 20->18 rows
+    + Cut pt 01 - 20->1C rows
+    + Added notes @ PU1.16.00-0E
+    -r Lowered notes @ PU1.14.00-0E
+
+
+==== Commit 8622f (cf018): ==== [jaezu] ====
+Instruments:
+  = Added i29 "young man... KILL YOURSE-" with macros 0:45
+Songs:
+  gnite:
+    + Added
+
+
+==== Commit fc068 (753bf & a684c): ==== [UserSniper] ====
+Songs:
+  Jumper:
+    + Raised notes by octave @ TRI.{04, 06} [more accurate to src]
+  Theory Of Everything:
+    + Notes are a 12th to the bass instead of an octave @ TRI.{01, 03, 05-07}
+    + Improved sound stacking @ {PU1.0A, PU2.08, TRI.07}.12
+      = Removed pitchbend @ TRI.07.13-14
+    = Added volume slide @ PU2.0A.0B-17
+  Clubstep:
+    + Extended to full song
+  Blast Processing:
+    + Added 2 patterns
+    = Replaced fancy percussion with mostly just hats
+  Geometrical Dominator:
+    + Returned notes back up @ PU1.14.00-0E [reverts change @ 035a1a]
+  custom_jetpack_joyride_theme:
+    - Removed
+  gnite:
+    = Volume F->A @ PU1.00.00
+  Scheming Weasel:
+    + Added
+
+==== Commit 9ad9f (8e446): ==== [jaezu] ====
+Instruments:
+  + Added vibrato macro to i29 "young man... KILL YOURSE-" {2:3}
+Songs:
+  Scheming Weasel:
+    + Made the notes into arps @ PU1.02.{0C, 10, 14, 18}
+
+==== negative shit still present:
+incorrect notes in time machine beginingn
+jumper music slower than needed
+dpcm note releases instead of cuts
+anything else marked with a "-"
