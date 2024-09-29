@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def convertCFileToS(filename : str, outfilename : str):
 	infile = open(filename, "r")
 	outfile = open(outfilename, "w")
