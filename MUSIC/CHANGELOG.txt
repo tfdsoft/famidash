@@ -19,7 +19,7 @@ iXX "name" - instrument XX (hex index) with name "name"
 sXX "name" - same but with samples
 
 
-==== Commit b1c2e (4437): ==== [Zenith] ====
+==== Commit 4437 (applied @ b1c2e): ==== [Zenith] ====
 Instruments:
     + "hat" has a "1 0" duty env instead of "0" {4:3}
     = Minor changes to envs 0:{0 "Instrument 2", 33 "menu acc", 38 "clap"}, 2:0 "triangle drums", 4:11 "shift string"
@@ -53,7 +53,7 @@ Songs:
     + Added DPCM note cuts
 
 
-==== Commit d2491 (95a40): ==== [UserSniper] ====
+==== Commit 95a40 (applied @ d2491): ==== [UserSniper] ====
 Songs:
   Polargeist:
     = Lighter drums @ NOI.01-03
@@ -62,14 +62,14 @@ Songs:
     + Added duty cycle switching @ PU1.03
 
 
-==== Commit cb553 (75a3a): ==== [UserSniper] ====
+==== Commit 75a3a (applied @ cb553): ==== [UserSniper] ====
 Songs:
   xStep:
     + Triangle makes a 12th to bass as opposed to an octave @ pt 04
     = Removed tri drums @ pt 04
 
 
-==== Commit 3b51c (01e17): ==== [Vickerinox] ====
+==== Commit 01e17 (applied @ 3b51c): ==== [Vickerinox] ====
 Instruments:
     = Changes of envs 0:{15 "blank string", 39 "xstep wub"}, 4:{16 "hex guitar 1", 17 "hex guitar 2"}
 Songs:
@@ -82,7 +82,7 @@ Songs:
     = PU2.03.0E increased port speed 8->9
 
 
-==== Commit f3e99 (149ed): ==== [UserSniper] ====
+==== Commit 149ed (applied @ f3e99): ==== [UserSniper] ====
 Instruments:
     + "02 but tri" volume env zeroes out in the middle {0:9} [reverts change @ b1c2e]
     = "echo" got louder echo {0:2}
@@ -115,7 +115,7 @@ Songs:
     = Changed port speed @ PU2.04.01
     = Changed ending duty @ PU2.1A.17
 
-==== Commit 3a462 (a8dac & 668ee): ==== [UserSniper] ====
+==== Commits a8dac & 668ee (applied @ 3a462): ==== [UserSniper] ====
 Songs:
   Time Machine:
     = Replaced S01 with i0D "triangle pluck" @ TRI.0C
@@ -126,7 +126,7 @@ Songs:
     = Removed tri drums @ TRI.{01, 06}
 
 
-==== Commit 2776c (cfe5f): ==== [UserSniper] ====
+==== Commit cfe5f (applied @ 2776c): ==== [UserSniper] ====
 DPCM:
   -r Added s16 "Gimmick Snare"
   -r Replaced s06 "snare" key mapping with s16 "Gimmick Snare"
@@ -145,7 +145,7 @@ Songs:
     = Added (barely noticeable) portamento @ PU1.07
     - Removed note releases from DPCM.08-0A
 
-==== Commit 86c7a (25daa & 42cfb): ==== [UserSniper] ====
+==== Commits 25daa & 42cfb (applied @ 86c7a): ==== [UserSniper] ====
 Songs:
   Time Machine:
     = Changed timbre 01->00 @ PU2.{0C, 0D, 13, 14}.00
@@ -162,25 +162,25 @@ Songs:
     + Removed
 
 
-==== Commit fde25 (c3672): ==== [UserSniper] ====
+==== Commit c3672 (applied @ fde25): ==== [UserSniper] ====
 Instruments:
   + Added more lower orchestra hit mappings for i1A "DMC: orchestra hits"
 
 
-==== Commit 77997 (6cdc3): ==== [UserSniper] ====
+==== Commit 6cdc3 (applied @ 77997): ==== [UserSniper] ====
 DPCM:
   + Removed s16 "Gimmick Snare" [reverts change @ 2776c]
   + Replaced s16 "Gimmick Snare" key mapping with s06 "snare" [reverts change @ 2776c]
 
 
-==== Commit d9449 (20d5b): ==== [UserSniper] ====
+==== Commit 20d5b (applied @ d9449): ==== [UserSniper] ====
 Songs:
   Stereo Madness:
     + Proper echo @ PU1.03
       - Only on first playthru @ PU1.03.01
 
 
-==== Commit cab34 (fe2b7): ==== [UserSniper] ====
+==== Commit fe2b7 (applied @ cab34): ==== [UserSniper] ====
 Songs:
   Back On Track:
     = Lighter drums @ NOI.02-04.{04, 0C, 14, 1C, 24, 2C, 34}, NOI.02.3C, NOI.05.{04, 08, 0A-0C, 0E-0F}
@@ -201,12 +201,12 @@ Songs:
     = Added V00 @ PU1.00.00
 
 
-==== Commit c833f (741a5): ==== [UserSniper] ====
+==== Commit 741a5 (applied @ c833f): ==== [UserSniper] ====
 DPCM:
   = Adjusted timings of "this is a time machine"
 
 
-==== Commit c53aa (6e623): ==== [UserSniper] ==== "DO NOT REVERT THIS COMMIT"
+==== Commit 6e623 (applied @ c53aa): ==== [UserSniper] ==== "DO NOT REVERT" my ass
 Instruments:
   = Added i28 "Instrument 3" with macros 0:44, 1:19, 4:19
 DPCM:
@@ -267,7 +267,7 @@ Songs:
     - Removed DPCM note cuts [reverts change @ b1c2e]
 
 
-==== Commit 035a1a (7d0fe): ==== [UserSniper] ====
+==== Commit 7d0fe (applied @ 035a1a): ==== [UserSniper] ====
 Songs:
   Geometrical Dominator:
     + Cut pt 00 - 20->18 rows
@@ -276,7 +276,7 @@ Songs:
     -r Lowered notes @ PU1.14.00-0E
 
 
-==== Commit 8622f (cf018): ==== [jaezu] ====
+==== Commit cf018 (applied @ 8622f): ==== [jaezu] ====
 Instruments:
   = Added i29 "young man... KILL YOURSE-" with macros 0:45
 Songs:
@@ -284,7 +284,7 @@ Songs:
     + Added
 
 
-==== Commit fc068 (753bf & a684c): ==== [UserSniper] ====
+==== Commits 753bf & a684c (applied @ fc068): ==== [UserSniper] ====
 Songs:
   Jumper:
     + Raised notes by octave @ TRI.{04, 06} [more accurate to src]
@@ -307,12 +307,46 @@ Songs:
   Scheming Weasel:
     + Added
 
-==== Commit 9ad9f (8e446): ==== [jaezu] ====
+==== Commit 8e446 (applied @ 9ad9f): ==== [jaezu] ====
 Instruments:
   + Added vibrato macro to i29 "young man... KILL YOURSE-" {2:3}
 Songs:
   Scheming Weasel:
     + Made the notes into arps @ PU1.02.{0C, 10, 14, 18}
+
+
+==== Commit ?: ==== [alexmush] ====
+Songs:
+  Time Machine:
+    + Replaced note releases with note stops @ DPCM.{
+      {01, 08, 13}.{12, 1D},
+      {03-05, 09, 0B}.{02, 05, 0A, 0D, 12, 15, 1A, 1D},
+      0F.{02, 12, 19, 1B, 1D, 1F},
+      10.{02, 05, 12},
+      11.{02, 05, 0C, 12, 15, 18},
+      12.{12, 19, 1B, 1D}
+    }
+    = Replaced note releases with note stops in unused patterns @ DPCM.06.{02, 0A, 0F, 12, 15, 1A, 1D}
+  Clutterfunk:
+    + Replaced note releases with note stops @ DPCM.{
+      {01, 02}.{02, 06, 09, 0C, 12, 16, 19, 1C, 22, 26, 29, 2C, 32, 36, 39, 3C},
+      02.3F,
+      03.{02, 22},
+    }
+    = Replaced note releases with note stops in unused patterns @ DPCM.0B.{05, 07, 0D, 0F, 13, 17, 1B, 1F, 25, 27, 2D, 2F, 33, 37, 3B, 3F}
+  Theory Of Everything:
+    + Replaced note releases with note stops @ DPCM.{
+      {02, 04}.{0B, 17},
+      {03, 05, 06}.0B,
+      07.{03, 06, 09, 0B, 0F, 12, 15}
+    }
+  Dash:
+    + Replaced note releases with note stops @ DPCM.01.{2A, 30, 34, 3A, 3E}
+  custom_endgame:
+    + Replaced note release with note stop @ DPCM.09.32
+  Scheming Weasel:
+    + Replaced note releases with note stops @ DPCM.00-03.{06, 16, 26, 36}
+    + Removed redundant note releases/stops @ DPCM.00-03.3C
 
 ==== negative shit still present:
 incorrect notes in time machine beginingn

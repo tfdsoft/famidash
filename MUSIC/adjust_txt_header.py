@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 
 DnFTheader = "# Dn-FamiTracker text export 0."
