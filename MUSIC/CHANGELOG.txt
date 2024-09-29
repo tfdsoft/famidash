@@ -74,7 +74,7 @@ Instruments:
     = Changes of envs 0:{15 "blank string", 39 "xstep wub"}, 4:{16 "hex guitar 1", 17 "hex guitar 2"}
 Songs:
   xStep:
-    -r TRI.04 back to octave instead of 12th [reverts change @ cb553]
+    -r TRI.04 back to octave instead of 12th [reverts change @ 75a3a]
   Hexagon Force:
     + Added arps to PU1 and PU2
     + Other minor improvements
@@ -84,11 +84,11 @@ Songs:
 
 ==== Commit 149ed (applied @ f3e99): ==== [UserSniper] ====
 Instruments:
-    + "02 but tri" volume env zeroes out in the middle {0:9} [reverts change @ b1c2e]
+    + "02 but tri" volume env zeroes out in the middle {0:9} [reverts change @ 4437]
     = "echo" got louder echo {0:2}
     = Minor change to 0:35 "blank instant decay"
     = "02 but tri" unmapped duty env
-    -r "hat" unmapped duty env - now it's just mode 0 [reverts change @ b1c2e]
+    -r "hat" unmapped duty env - now it's just mode 0 [reverts change @ 4437]
 DPCM:
     = Shorter "fdkick"
 Songs:
@@ -101,16 +101,16 @@ Songs:
   Base After Base:
     + Added a whole ass echo @ PU2.00
       = As such, added the return 0CC effect @ PU2.09.00
-    - Removed note cuts @ DPCM.{07, 08}.{02, 06, 0A, 0E}
+    -r Removed note cuts @ DPCM.{07, 08}.{02, 06, 0A, 0E}
   Can't Let Go:
     + Changed instrument 12->10 @ {PU1, PU2}.04
     = Changed starting duty 01->02 @ PU1.01
   Jumper:
     = As per i06 "02 but tri" duty changes, new V00 @ PU1.0B.00
   Time Machine:
-    - Removed S05 @ DPCM.{11.{09, 0F}, {08, 0F, 10, 13}.16-17, {01, 08, 10}.19-1A, {10, 13}.1E}
+    -r Removed S05 @ DPCM.{11.{09, 0F}, {08, 0F, 10}.16-17, {01, 08, 10, 13}.19-1A, {10, 13}.1E}
   Clutterfunk:
-    - Removed note releases @ DPCM.{06, 07}
+    -r Removed note releases @ DPCM.{06, 07}
   Theory 2:
     = Changed port speed @ PU2.04.01
     = Changed ending duty @ PU2.1A.17
@@ -132,7 +132,7 @@ DPCM:
   -r Replaced s06 "snare" key mapping with s16 "Gimmick Snare"
 Songs:
   Can't Let Go:
-    + Changed instrument 12->10 @ PU2.05 [as it should've in f3e99]
+    + Changed instrument 12->10 @ PU2.05 [as it should've in 149ed]
       - Still not @ PU1.05
     - Decreased port speed 3F->1F @ PU2.04.00 [less accurate to src]
   Cycles:
@@ -140,10 +140,10 @@ Songs:
     = Replaced TRI.02 with TRI.01 @ od 03 [identical]
     = Replaced TRI.06 with TRI.04 @ od 0D [identical]
   xStep:
-    + TRI.04 back to 12th instead of octave [reverts change @ 3b51c, restoring change @ cb553]
+    + TRI.04 back to 12th instead of octave [reverts change @ 01e17, restoring change @ 75a3a]
   Clutterfunk:
     = Added (barely noticeable) portamento @ PU1.07
-    - Removed note releases from DPCM.08-0A
+    [Vote]r Removed note releases from DPCM.08-0A
 
 ==== Commits 25daa & 42cfb (applied @ 86c7a): ==== [UserSniper] ====
 Songs:
@@ -169,8 +169,8 @@ Instruments:
 
 ==== Commit 6cdc3 (applied @ 77997): ==== [UserSniper] ====
 DPCM:
-  + Removed s16 "Gimmick Snare" [reverts change @ 2776c]
-  + Replaced s16 "Gimmick Snare" key mapping with s06 "snare" [reverts change @ 2776c]
+  + Removed s16 "Gimmick Snare" [reverts change @ cfe5f]
+  + Replaced s16 "Gimmick Snare" key mapping with s06 "snare" [reverts change @ cfe5f]
 
 
 ==== Commit 20d5b (applied @ d9449): ==== [UserSniper] ====
@@ -210,7 +210,7 @@ DPCM:
 Instruments:
   = Added i28 "Instrument 3" with macros 0:44, 1:19, 4:19
 DPCM:
-  = Adjusted timings of "this is a time machine" [reverts change @ c833f]
+  = Adjusted timings of "this is a time machine" [reverts change @ 741a5]
 Songs:
   Time Machine:
     + Made effects simultaneous @ PU2.0C.(00-01 -> 00)
@@ -264,7 +264,7 @@ Songs:
   Geometrical Dominator:
     + Extended song to full length
   Deadlocked:
-    - Removed DPCM note cuts [reverts change @ b1c2e]
+    -r Removed DPCM note cuts [reverts change @ 4437]
 
 
 ==== Commit 7d0fe (applied @ 035a1a): ==== [UserSniper] ====
@@ -299,7 +299,7 @@ Songs:
     + Added 2 patterns
     = Replaced fancy percussion with mostly just hats
   Geometrical Dominator:
-    + Returned notes back up @ PU1.14.00-0E [reverts change @ 035a1a]
+    + Returned notes back up @ PU1.14.00-0E [reverts change @ 7d0fe]
   custom_jetpack_joyride_theme:
     - Removed
   gnite:
@@ -315,7 +315,7 @@ Songs:
     + Made the notes into arps @ PU1.02.{0C, 10, 14, 18}
 
 
-==== Commit ?: ==== [alexmush] ====
+==== Commit 64604: ==== [alexmush] ====
 Songs:
   Time Machine:
     + Replaced note releases with note stops @ DPCM.{
@@ -348,8 +348,21 @@ Songs:
     + Replaced note releases with note stops @ DPCM.00-03.{06, 16, 26, 36}
     + Removed redundant note releases/stops @ DPCM.00-03.3C
 
+
+==== Commit ?: ==== [alexmush] ====
+Songs:
+Base After Base:
+    + Added note cuts @ DPCM.{07, 08}.{02, 06, 0A, 0E} [reverts change @ 149ed]
+Time Machine:
+    + Added S05 @ DPCM.{11.{09, 0F}, {08, 0F, 10}.16-17, {01, 08, 10, 13}.19-1A, {10, 13}.1E} [reverts change @ 149ed]
+Clutterfunk:
+    + Added note stops @ DPCM.06-07.{05, 07, 0D, 0F, 13, 17, 1B, 1F, 25, 27, 2D, 2F}, DPCM.06.{33, 37, 3B, 3F} [reverts change @ 149ed]
+    [Vote] Added note stops @ DPCM.08-0A.{05, 07, 0D, 0F, 13, 17, 1B, 1F, 25, 27, 2D, 2F, 33, 37, 3B, 3F} [reverts change @ cfe5f]
+    + Added note stop @ DPCM.0C.00
+Deadlocked:
+    + Added DPCM note cuts [reverts change @ 6e623, restoring change @ 4437]
+
 ==== negative shit still present:
 incorrect notes in time machine beginingn
 jumper music slower than needed
-dpcm note releases instead of cuts
 anything else marked with a "-"
