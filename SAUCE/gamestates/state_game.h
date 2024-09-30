@@ -119,16 +119,15 @@ unsigned char END_LEVEL_TIMER;
 
 
 void state_game(){
-	if ((level == decode || level == test || level == test2 || level == test4) || twoplayer) no_parallax = 1;
+	if ((level >= decode) || twoplayer) no_parallax = 1;
 	else no_parallax = 0;
 	coin1_timer = 0;
 	coin2_timer = 0;
 	coin3_timer = 0;
 	animating = 0;
 	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
-    orbactive = 0;
+	orbactive = 0;
 	mmc3_disable_irq();
-	//no_parallax = 0;
 	
 	outline_color = 0x30;
 
@@ -139,11 +138,8 @@ void state_game(){
 	
 	ppu_off();
 
-//	twoplayer = 1;
-
-//	mini = 1;
-    pal_bg(paletteDefault);
-    pal_spr(paletteDefaultSP);
+	pal_bg(paletteDefault);
+//	pal_spr(paletteDefaultSP);  //unneeded
 
 	crossPRGBankJump8(load_ground,0);
 
@@ -232,36 +228,16 @@ void state_game(){
 			if (discoframe == 12) discoframe = 0;
 		}
 
-
-
-
-
-		// {	// done in reset_level and after storing player 1
-		// 	currplayer_x = player_x[0];
-		// 	currplayer_y = player_y[0];
-		// 	currplayer_vel_x = player_vel_x[0];
-		// 	currplayer_vel_y = player_vel_y[0];
-		// 	currplayer_gravity = player_gravity[0];
-		// }
-
 		kandoframecnt++;
 		music_update();
 		if (slowmode && (kandoframecnt & 1)) { ppu_wait_nmi(); }
 		else {
 			ppu_wait_nmi();
+
 			set_tile_banks();
-	//	else {
-	//     mmc3_set_1kb_chr_bank_0(spike_set[level]);
-		//    mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
-	//       mmc3_set_1kb_chr_bank_2(parallax_scroll_x);
-	//     mmc3_set_1kb_chr_bank_3(saw_set[level]);
-		//}
 		
 			set_player_banks();
 
-		//oam_clear();
-
-			//kandodebugmode = 1;
 			if (!kandodebugmode) {
 				crossPRGBankJump0(mouse_update);
 				pad_poll(0); // read the first controller
@@ -273,16 +249,17 @@ void state_game(){
 			if (mouse.left.click) pad_new[0] |= PAD_A;
 			if (mouse.left.press) pad[0] |= PAD_A;
 
-		if (kandodebugmode) {
-			
-			if (mouse.left.press) {
-				//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
-				high_byte(currplayer_y) = mouse.y + high_byte(scroll_y);
-			}
 			//mouse debug here
+			if (kandodebugmode) {
+				
+				if (mouse.left.press) {
+					//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
+					high_byte(currplayer_y) = mouse.y + high_byte(scroll_y);
+				}
+				
+			}
+			//end mouse debug
 			
-		}
-
 			if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
 
 			if (options & platformer) twoplayer = 0;
@@ -306,24 +283,6 @@ void state_game(){
 
 
 			if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE)
-
-
-				// player_gravity[currplayer] ^= 0x01;			//DEBUG GRAVITY
-						
-				//mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
-				
-
-				//	memcpy(practice_famistudio_state, famistudio_state, sizeof(practice_famistudio_state));	unneeded because of practice music
-				//has_practice_point = 1;
-			
-
-
-
-	// palette fade code
-		//__asm__("LDA mmc3PRG1Bank \n PHA");
-		//mmc3_set_prg_bank_1(GET_BANK(check_fade_timer));
-		//check_fade_timer();
-		//(__asm__("PLA"), mmc3_set_prg_bank_1(__A__));
 		
 			kandokidshack3 = 0;
 		
@@ -355,7 +314,6 @@ void state_game(){
 					if (pad_new[0] & PAD_SELECT) { gameState = 1; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
-					//	color_emphasis(COL_EMP_NORMAL);
 						crossPRGBankJump0(gameboy_check);
 						return;
 					}
@@ -379,7 +337,6 @@ void state_game(){
 	#endif			
 						cube_data[0] = 0;
 						ppu_off();
-						//one_vram_buffer(0xf5+gamemode, NTADR_A(18,15));	
 						set_player_banks();
 						oam_clear();
 						crossPRGBankJump0(drawplayerone);
@@ -388,13 +345,8 @@ void state_game(){
 						ppu_on_all();
 					}
 				}
-			//	color_emphasis(COL_EMP_NORMAL);
 				crossPRGBankJump0(gameboy_check);
 				famistudio_music_pause(0);
-				// ppu_off();
-				// mmc3_set_8kb_chr(0);
-				// ppu_on_all();
-				// famistudio_update();
 				if (kandokidshack != 9) kandokidshack = 0;
 				if (kandokidshack2 != 7) kandokidshack2 = 0;
 				if (kandokidshack3 == 12) DEBUG_MODE = !DEBUG_MODE;
@@ -439,8 +391,6 @@ void state_game(){
 
 		crossPRGBankJump0(movement);
 
-
-
 		kandotemp3 = 0;
 
 		runthecolls();
@@ -449,6 +399,7 @@ void state_game(){
 		
 #ifdef FLAG_KANDO_FUN_STUFF		
 		if (bigboi && !(kandoframecnt & 1) ) {
+
 			x_plus_15();
 
 			runthecolls();
@@ -480,6 +431,7 @@ void state_game(){
 				x_minus_15();
 
 			}
+
 			if (tallmode) {
 
 				y_minus_15();
@@ -509,7 +461,7 @@ void state_game(){
 			player_gravity[0] = currplayer_gravity;
 		}
 
-/*		
+		
 		if (dual) { 
 			currplayer = 1;					//take focus
 			if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
@@ -553,7 +505,7 @@ void state_game(){
 				currplayer_gravity = player_gravity[0];
 			}
 		}
-*/
+
 	}
    //     check_spr_objects();
 
@@ -631,18 +583,18 @@ void set_tile_banks() {
 }	
 
 void x_minus_15() {
-//	high_byte(player_x[0]) -= 15;
-//	high_byte(currplayer_x) -= 15;	
+	high_byte(player_x[0]) -= 15;
+	high_byte(currplayer_x) -= 15;	
 }
 void x_plus_15() {
-//	high_byte(player_x[0]) += 15;
-//	high_byte(currplayer_x) += 15;	
+	high_byte(player_x[0]) += 15;
+	high_byte(currplayer_x) += 15;	
 }
 void y_minus_15() {
-//	high_byte(player_y[0]) -= 15;
-//	high_byte(currplayer_y) -= 15;	
+	high_byte(player_y[0]) -= 15;
+	high_byte(currplayer_y) -= 15;	
 }
 void y_plus_15() {
-//	high_byte(player_y[0]) += 15;
-//	high_byte(currplayer_y) += 15;	
+	high_byte(player_y[0]) += 15;
+	high_byte(currplayer_y) += 15;	
 }
