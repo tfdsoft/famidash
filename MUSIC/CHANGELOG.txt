@@ -177,7 +177,7 @@ DPCM:
 Songs:
   Stereo Madness:
     + Proper echo @ PU1.03
-      - Only on first playthru @ PU1.03.01
+      -r Only on first playthru @ PU1.03.01
 
 
 ==== Commit fe2b7 (applied @ cab34): ==== [UserSniper] ====
@@ -349,7 +349,7 @@ Songs:
     + Removed redundant note releases/stops @ DPCM.00-03.3C
 
 
-==== Commit ?: ==== [alexmush] ====
+==== Commit 76c33: ==== [alexmush] ====
 Songs:
 Base After Base:
     + Added note cuts @ DPCM.{07, 08}.{02, 06, 0A, 0E} [reverts change @ 149ed]
@@ -361,6 +361,18 @@ Clutterfunk:
     + Added note stop @ DPCM.0C.00
 Deadlocked:
     + Added DPCM note cuts [reverts change @ 6e623, restoring change @ 4437]
+
+
+=== Commit ?: ==== [alexmush] ====
+Comments:
+  Removed funny fact about can't let go never being changed as it was misinformation (it has been changed twice before this already)
+Songs:
+  Stereo Madness:
+    + Added PU1.09, which is PU1.03 but with filled in echo @ PU1.09.01 [finishes change @ 20d5b]
+    + Added note stop @ PU1.03.01 to imitate lack of echo yet
+    + Added note stop @ DPCM.00.00 [stops bass @ od 0D, does nothing @ od 04]
+    = Removed redundant note stop @ TRI.00.01
+    = Removed redundant volume change @ PU1.03.02
 
 ==== negative shit still present:
 incorrect notes in time machine beginingn
