@@ -2,23 +2,23 @@ extern unsigned char drawing_frame;
 extern unsigned char* PARALLAX_CHR;
 
 void reset_level(void) {
-    // unsigned char i;
-    if (!has_practice_point) famistudio_music_stop();
-    coins = 0;
-    orbactive = 0;
-    coin1_timer = 0;
+	// unsigned char i;
+	if (!has_practice_point) famistudio_music_stop();
+	coins = 0;
+	orbactive = 0;
+	coin1_timer = 0;
 	coin2_timer = 0;
 	coin3_timer = 0;
 
-    // slope stuff
-    was_on_slope_counter = 0;
-    slope_frames = 0;
-    slope_type = SLOPE_NONE;
-    last_slope_type = SLOPE_NONE;
+	// slope stuff
+	was_on_slope_counter = 0;
+	slope_frames = 0;
+	slope_type = SLOPE_NONE;
+	last_slope_type = SLOPE_NONE;
 
-    robotjumpframe[0] = 0;
-    tmp1 = 30;
-    if (!DEBUG_MODE && (cube_data[0] & 1)) {
+	robotjumpframe[0] = 0;
+	tmp1 = 30;
+	if (!DEBUG_MODE && (cube_data[0] & 1)) {
 		update_level_completeness();
 		sfx_play(sfx_death, 0);
 		while (tmp1 != 0){
@@ -32,9 +32,9 @@ void reset_level(void) {
 				++robotjumpframe[0];
 			}
 			--tmp1;
-        }
-    }
-    else if (!DEBUG_MODE && (cube_data[1] & 1)) {
+		}
+	}
+	else if (!DEBUG_MODE && (cube_data[1] & 1)) {
 		update_level_completeness();
 		sfx_play(sfx_death, 0);
 		while (tmp1 != 0){
@@ -49,89 +49,89 @@ void reset_level(void) {
 			}
 			--tmp1;
 		}
-    }
-    pal_fade_to_withmusic(4,0);
-    oam_clear();
-    ppu_off(); // reset the level when you get to this point, and change this later
-    scroll_x = 0;
-    drawing_frame = 0;
-    scroll_y = 0x2EF;
-    seam_scroll_y = (0x2EF - 0x78); // [temp]
-    set_scroll_x(scroll_x);
-    set_scroll_y(scroll_y);
-    init_rld(level);
+	}
+	pal_fade_to_withmusic(4,0);
+	oam_clear();
+	ppu_off(); // reset the level when you get to this point, and change this later
+	scroll_x = 0;
+	drawing_frame = 0;
+	scroll_y = 0x2EF;
+	seam_scroll_y = (0x2EF - 0x78); // [temp]
+	set_scroll_x(scroll_x);
+	set_scroll_y(scroll_y);
+	init_rld(level);
 
-    if (!(options & platformer)) {
-        player_x[0] = 0x0000;
-        player_x[1] = 0x0000;
-        currplayer_x = 0x0000;
-    } else {
-        player_x[0] = 0x1110;
-        player_x[1] = 0x1110;
-        currplayer_x = 0x1110;
-    }
-    
-    player_y[0] = 0xb000;
-    player_y[1] = 0xb000;
-    currplayer_y = 0xb000;
+	if (!(options & platformer)) {
+	player_x[0] = 0x0000;
+	player_x[1] = 0x0000;
+	currplayer_x = 0x0000;
+	} else {
+	player_x[0] = 0x1110;
+	player_x[1] = 0x1110;
+	currplayer_x = 0x1110;
+	}
 
-    memfill(jimsheatballalive, 0, MAX_FIREBALLS);
+	player_y[0] = 0xb000;
+	player_y[1] = 0xb000;
+	currplayer_y = 0xb000;
 
-    gravity_mod = 0;
-    player_gravity[0] = 0x00;
-    player_gravity[1] = twoplayer ? 0x00 : 0x01;
+	memfill(jimsheatballalive, 0, MAX_FIREBALLS);
 
-    currplayer_gravity = player_gravity[currplayer];
+	gravity_mod = 0;
+	player_gravity[0] = 0x00;
+	player_gravity[1] = twoplayer ? 0x00 : 0x01;
 
-    dual = twoplayer ? 1 : 0x00;
-    mini = 0x00;
-    player_vel_x[0] = 0;
-    player_vel_y[0] = 0;
-    player_vel_x[1] = 0;
-    player_vel_y[1] = 0;
-    disco_sprites = 0;
-    target_scroll_y = 0x0180;
-    currplayer_vel_x = 0;
-    currplayer_vel_y = 0;
-    cube_data[0] = 0;
-    cube_data[1] = 0;
-    cube_rotate[0] = 0;
-    cube_rotate[1] = 0;
-    forced_trails = 0;
+	currplayer_gravity = player_gravity[currplayer];
+
+	dual = twoplayer ? 1 : 0x00;
+	mini = 0x00;
+	player_vel_x[0] = 0;
+	player_vel_y[0] = 0;
+	player_vel_x[1] = 0;
+	player_vel_y[1] = 0;
+	disco_sprites = 0;
+	target_scroll_y = 0x0180;
+	currplayer_vel_x = 0;
+	currplayer_vel_y = 0;
+//	cube_data[0] = 0;
+//	cube_data[1] = 0;   this resets in level_loading/unrle_first_screen
+	cube_rotate[0] = 0;
+	cube_rotate[1] = 0;
+	forced_trails = 0;
 #ifdef FLAG_KANDO_FUN_STUFF
-    tallmode = 0;
-    longmode = 0;
-    bigboi = 0;
+	tallmode = 0;
+	longmode = 0;
+	bigboi = 0;
 #endif
-    curr_x_scroll_stop = 0x5000;
-    target_x_scroll_stop = 0x5000;
-    discoframe = 0;
-    if (!has_practice_point) {
-        memfill(player_old_posy, 0, sizeof(player_old_posy));
-        memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
-        invincible_counter = 8;
-    }
-    
-    unrle_first_screen();
-    if (has_practice_point) {
+	curr_x_scroll_stop = 0x5000;
+	target_x_scroll_stop = 0x5000;
+	discoframe = 0;
+	if (!has_practice_point) {
+	memfill(player_old_posy, 0, sizeof(player_old_posy));
+	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
+	invincible_counter = 8;
+	}
 
-	        tmp3 = practice_bg_color_type;
+	unrle_first_screen();
+	if (has_practice_point) {
+
+		tmp3 = practice_bg_color_type;
 			tmp2 = (tmp3 & 0x3F);                        
 			pal_col(0, tmp2);
 			pal_col(1, oneShadeDarker(tmp2)); 
 			pal_col(9, oneShadeDarker(tmp2)); 
 
-	        tmp3 = practice_g_color_type;
+		tmp3 = practice_g_color_type;
 			tmp2 = (tmp3 & 0x3F);                        
-            pal_col(6, tmp2);
+	    pal_col(6, tmp2);
 
-            pal_set_update();
-    }
-    if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-    ppu_on_all();
-    pal_fade_to_withmusic(0,4);
-    if (!has_practice_point) {
-        music_play(song);
-    }
-    
+	    pal_set_update();
+	}
+	if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+	ppu_on_all();
+	pal_fade_to_withmusic(0,4);
+	if (!has_practice_point) {
+	music_play(song);
+	}
+
 }

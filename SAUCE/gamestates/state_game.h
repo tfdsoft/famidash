@@ -267,15 +267,16 @@ void state_game(){
 			if (kandodebugmode) {
 				
 				if (mouse.left.press) {
-
+					kandodebug2 = 1;
 					//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
 					target_x_scroll_stop = 0xE000;
 					curr_x_scroll_stop = 0xE000;
-					high_byte(currplayer_y) = mouse.y + high_byte(scroll_y);
-					high_byte(currplayer_x) = mouse.x;
+					high_byte(currplayer_y) = (mouse.y + high_byte(scroll_y)) - 20;
+					high_byte(currplayer_x) = mouse.x - 20;
 					
 				}
 				else {
+					kandodebug2 = 0;
 					target_x_scroll_stop = 0x5000;
 				}
 				
@@ -290,10 +291,6 @@ void state_game(){
 
 
 
-		//	if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE)
-		
-		//	kandokidshack3 = 0;
-		
 			if (pad_new[0] & PAD_START || mouse.right.click) {
 
 				pad_new[0] = 0;
@@ -361,14 +358,14 @@ void state_game(){
 				else if (kandokidshack3 == 20) kandodebugmode ^= 1;
 				else kandokidshack3 = 0;
 			}
-			if (options & debugtoggle)
+		if (options & debugtoggle) {
 			if (pad_new[0] & PAD_SELECT) //THE BIG DEBUG - DISABLE BEFORE RELEASE
 				{ 
 					DEBUG_MODE = !DEBUG_MODE; 
 					cube_data[0] &= 2; 
 					cube_data[1] &= 2; 
 				}		
-
+		}
 		if ((pad_new[controllingplayer] & PAD_B) && has_practice_point) crossPRGBankJump0(reset_game_vars);
 
 		if (pad_new[0] & PAD_UP && DEBUG_MODE) {
@@ -383,7 +380,7 @@ void state_game(){
 		    if (++END_LEVEL_TIMER > 60) {
 			END_LEVEL_TIMER = 0;
 			gameState = 3;
-			DEBUG_MODE = 0;
+			//DEBUG_MODE = 0;
 			famistudio_music_stop();
 		    }
 		} else {
@@ -528,7 +525,7 @@ void state_game(){
  //       color_emphasis(0);
 
 		if (DEBUG_MODE) gray_line();
-		if (!DEBUG_MODE && !kandodebugmode) {
+		if (!DEBUG_MODE && !kandodebug2) {
 		if (high_byte(player_x[0]) > 0x20) {
 			if (cube_data[0] & 1 || cube_data[1] & 1) reset_level();
 		} else cube_data[0] = cube_data[1] = 0;
