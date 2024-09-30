@@ -663,12 +663,14 @@ void state_menu() {
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, 0x20);					
 					break;
 				case 5:		//spider
-					if (kandoframecnt & 1) {
-						if (!(newrand() & 31)) 	currplayer_gravity ^= 1;
-					}
+//					if (kandoframecnt & 1) {
+//						if (!(newrand() & 31)) 	currplayer_gravity ^= 1;
+//					}
 
-					if (!currplayer_gravity) { currplayer_y_small = 160; tmp7 = 0x20; }
-					else { currplayer_y_small = 8; tmp7 = 0xA0; }
+					//if (!currplayer_gravity) { 
+					currplayer_y_small = 160; tmp7 = 0x20; 
+					//}
+//					else { currplayer_y_small = 8; tmp7 = 0xA0; }
 
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
@@ -825,12 +827,17 @@ void state_menu() {
 					break;
 
 				case 14:		//mini spider
+				/*
 					if (kandoframecnt & 1) {
 						if (!(newrand() & 31)) 	currplayer_gravity ^= 1;
 					}
 
-					if (!currplayer_gravity) { currplayer_y_small = 160; tmp7 = 0x20; }
-					else { currplayer_y_small = 8; tmp7 = 0xA0; }
+					if (!currplayer_gravity) { 
+					*/
+					currplayer_y_small = 160; tmp7 = 0x20; 
+					//}
+					//else { currplayer_y_small = 8; tmp7 = 0xA0; }
+
 					
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
 					switch (ballframe) {
@@ -971,9 +978,11 @@ void state_menu() {
 		if (mouse.left.click) {
 			if (mouse.y >= (currplayer_y_small - 8) && mouse.y <= (currplayer_y_small + 8)) {
 				if (mouse.x >= currplayer_x_small && mouse.x <= (currplayer_x_small + 16)) {
-					titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
-					sfx_play(sfx_death,0);
-					ballframe = 0;
+					if (titlemode != 0xFF) {
+						titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
+						sfx_play(sfx_death,0);
+						ballframe = 0;
+					}
 				}
 			}
 				
@@ -1224,6 +1233,7 @@ void title_swing_shit() {
 }
 
 void title_ball_shit() {
+/*
 	if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
 		if (!(newrand() & 31)) {
 			if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
@@ -1240,7 +1250,7 @@ void title_ball_shit() {
 		currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
 		if (teleport_output < 7) teleport_output++;
 	}
-
+*/
 	bounds_check();
 }
 
