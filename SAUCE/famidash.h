@@ -304,6 +304,7 @@ uint8_t titlecolor1;
 uint8_t titlecolor2;
 uint8_t titlecolor3;
 uint8_t titleicon;
+uint8_t kandodebugmode;
 
 
 uint8_t last_slope_type;
