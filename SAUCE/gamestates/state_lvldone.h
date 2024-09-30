@@ -31,6 +31,7 @@ void state_lvldone() {
 	#define top_scroll scroll_x
     ppu_off();
 	gamemode = 0;
+	kandodebugmode = 0;
 	delay_spr_0 = 0x20;
 
 	current_state = 0;
