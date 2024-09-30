@@ -6,6 +6,7 @@ void movement();
 void bounds_check();
 void title_cube_shit();
 void title_robot_shit();
+void title_mini_wave_shit();
 void title_wave_shit();
 void title_ufo_shit();
 void title_ball_shit();
@@ -793,7 +794,7 @@ void state_menu() {
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x0B, tmp7);
 					break;	
 				case 11:		//mini wave
-					title_wave_shit();
+					title_mini_wave_shit();
 					
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
 						tmp1 = 0x0D;
@@ -1139,7 +1140,7 @@ void roll_new_mode() {
 		titlemode = (newrand() & 7) + 8;
 	}
 	if (retro_mode && titlemode == 0) titlemode = tmp7;
-//	titlemode = 7; //to test
+//	titlemode = 11; //to test
 	if (titlemode == 1 || titlemode == 3 || titlemode == 6 || titlemode == 9 || titlemode == 11 || titlemode == 12) {
 		while (tmp1 > 0xA0 && tmp1 <= 0x20) {
 			tmp1 = newrand() & 0xFF;
@@ -1150,6 +1151,7 @@ void roll_new_mode() {
 		
 	ballframe = 0;
 	oam_clear();
+/*
 	while (tmp1 >= 53) {
 		tmp1 = newrand() & 63;
 	}
@@ -1159,6 +1161,7 @@ void roll_new_mode() {
 	while (tmp3 >= 53) {
 		tmp3 = newrand() & 63;
 	}
+*/
 //	titlecolor1 = menu_color_table[tmp1];
 //	titlecolor2 = menu_color_table[tmp2];   most of our colors suck
 //	titlecolor3 = menu_color_table[tmp3];
@@ -1294,6 +1297,15 @@ void title_wave_shit() {
 	if (currplayer_gravity) currplayer_y_small -= speed;
 
 	else currplayer_y_small += speed;
+	bounds_check();
+}
+void title_mini_wave_shit() {
+	tmp2 = newrand() & 31;
+	if (kandoframecnt & 1) { if (tmp2 >= 29) currplayer_gravity ^= 1; }
+		
+	if (currplayer_gravity) currplayer_y_small -= (speed << 1);
+
+	else currplayer_y_small += (speed << 1);
 	bounds_check();
 }
 
