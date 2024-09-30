@@ -272,12 +272,13 @@ void state_game(){
 					target_x_scroll_stop = 0xE000;
 					curr_x_scroll_stop = 0xE000;
 					high_byte(currplayer_y) = (mouse.y + high_byte(scroll_y)) - 20;
-					high_byte(currplayer_x) = mouse.x - 20;
+					high_byte(currplayer_x) = mouse.x - 30 < 0 ? mouse.x : mouse.x - 30;
 					
 				}
 				else {
 					kandodebug2 = 0;
 					target_x_scroll_stop = 0x5000;
+					cube_data[0] = 0;
 				}
 				
 			}
@@ -316,7 +317,8 @@ void state_game(){
 						has_practice_point = 1;
 						pad_new[0] = PAD_START;
 					}
-					if (pad_new[0] & PAD_SELECT) { gameState = 1; 
+					if (pad_new[0] & PAD_SELECT) { 
+						gameState = 1; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
 						crossPRGBankJump0(gameboy_check);

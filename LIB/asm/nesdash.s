@@ -1970,7 +1970,7 @@ doit:
 
 
 ; void check_spr_objects();
-.segment "CODE"
+.segment "CODE_2"
 
 .import _activesprites_active, _scroll_x, _scroll_y, _animating
 

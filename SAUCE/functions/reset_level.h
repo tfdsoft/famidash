@@ -4,11 +4,7 @@ extern unsigned char* PARALLAX_CHR;
 void reset_level(void) {
 	// unsigned char i;
 	if (!has_practice_point) famistudio_music_stop();
-	coins = 0;
-	orbactive = 0;
-	coin1_timer = 0;
-	coin2_timer = 0;
-	coin3_timer = 0;
+
 
 	// slope stuff
 	was_on_slope_counter = 0;
@@ -53,8 +49,7 @@ void reset_level(void) {
 	pal_fade_to_withmusic(4,0);
 	oam_clear();
 	ppu_off(); // reset the level when you get to this point, and change this later
-	scroll_x = 0;
-	drawing_frame = 0;
+
 	scroll_y = 0x2EF;
 	seam_scroll_y = (0x2EF - 0x78); // [temp]
 	set_scroll_x(scroll_x);
@@ -77,32 +72,40 @@ void reset_level(void) {
 
 	memfill(jimsheatballalive, 0, MAX_FIREBALLS);
 
-	gravity_mod = 0;
-	player_gravity[0] = 0x00;
 	player_gravity[1] = twoplayer ? 0x00 : 0x01;
 
 	currplayer_gravity = player_gravity[currplayer];
 
+
 	dual = twoplayer ? 1 : 0x00;
+	player_gravity[0] = 0x00;
+	scroll_x = 0;
+	drawing_frame = 0;
+	gravity_mod = 0;
+	disco_sprites = 0;
 	mini = 0x00;
+	currplayer_vel_x = 0;
+	currplayer_vel_y = 0;
+	forced_trails = 0;
 	player_vel_x[0] = 0;
 	player_vel_y[0] = 0;
 	player_vel_x[1] = 0;
 	player_vel_y[1] = 0;
-	disco_sprites = 0;
-	target_scroll_y = 0x0180;
-	currplayer_vel_x = 0;
-	currplayer_vel_y = 0;
-//	cube_data[0] = 0;
-//	cube_data[1] = 0;   this resets in level_loading/unrle_first_screen
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
-	forced_trails = 0;
+	coins = 0;
+	orbactive = 0;
+	coin1_timer = 0;
+	coin2_timer = 0;
+	coin3_timer = 0;	
+//	cube_data[0] = 0;
+//	cube_data[1] = 0;   this resets in level_loading/unrle_first_screen
 #ifdef FLAG_KANDO_FUN_STUFF
 	tallmode = 0;
 	longmode = 0;
 	bigboi = 0;
 #endif
+	target_scroll_y = 0x0180;
 	curr_x_scroll_stop = 0x5000;
 	target_x_scroll_stop = 0x5000;
 	discoframe = 0;
