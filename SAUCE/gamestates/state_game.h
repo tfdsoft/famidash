@@ -249,19 +249,6 @@ void state_game(){
 			if (mouse.left.click) pad_new[0] |= PAD_A;
 			if (mouse.left.press) pad[0] |= PAD_A;
 
-			//mouse debug here
-			if (kandodebugmode) {
-				
-				if (mouse.left.press) {
-					//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
-					high_byte(currplayer_y) = mouse.y + high_byte(scroll_y);
-				}
-				
-			}
-			//end mouse debug
-			
-			if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
-
 			if (options & platformer) twoplayer = 0;
 
 			if ((options & oneptwoplayer) && twoplayer) {
@@ -274,6 +261,27 @@ void state_game(){
 				dual = 1;
 			}
 			
+			if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
+
+			//mouse debug here
+			if (kandodebugmode) {
+				
+				if (mouse.left.press) {
+
+					//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
+					target_x_scroll_stop = 0xE000;
+					curr_x_scroll_stop = 0xE000;
+					high_byte(currplayer_y) = mouse.y + high_byte(scroll_y);
+					high_byte(currplayer_x) = mouse.x;
+					
+				}
+				else {
+					target_x_scroll_stop = 0x5000;
+				}
+				
+			}
+			//end mouse debug
+			
 			if (options & jumpsound) {
 				if (pad_new[0] & PAD_A) {
 					sfx_play(sfx_click, 0);
@@ -282,9 +290,9 @@ void state_game(){
 
 
 
-			if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE)
+		//	if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE)
 		
-			kandokidshack3 = 0;
+		//	kandokidshack3 = 0;
 		
 			if (pad_new[0] & PAD_START || mouse.right.click) {
 
@@ -520,7 +528,7 @@ void state_game(){
  //       color_emphasis(0);
 
 		if (DEBUG_MODE) gray_line();
-		if (!DEBUG_MODE) {
+		if (!DEBUG_MODE && !kandodebugmode) {
 		if (high_byte(player_x[0]) > 0x20) {
 			if (cube_data[0] & 1 || cube_data[1] & 1) reset_level();
 		} else cube_data[0] = cube_data[1] = 0;

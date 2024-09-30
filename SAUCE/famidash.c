@@ -79,8 +79,6 @@ void main(){
 				break;
 			}
 			case 0x02: {
-  				player_gravity[0] = 0x00;
-				player_gravity[1] = 0x00;					
 				state_game();
 				break;
 			}
