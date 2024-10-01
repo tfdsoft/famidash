@@ -30,12 +30,13 @@ void state_lvldone() {
 	#define delay_timer tmpptr1
 	#define top_scroll scroll_x
 	ppu_off();
+	delay_spr_0 = 0x20;
 	gamemode = 0;
 	kandodebugmode = 0;
 	kandodebug2 = 0;
-	delay_spr_0 = 0x20;
 	cube_data[0] = 0;
 	cube_data[1] = 0;
+	has_practice_point = 0;
 	current_state = 0;
 
 	// Set palettes back to natural colors since we aren't fading back in
