@@ -374,7 +374,7 @@ Songs:
     = Removed redundant volume change @ PU1.03.02
 
 
-==== Commit ?: ==== [alexmush] ====
+==== Commit 73ad9: ==== [alexmush] ====
 Instruments:
   + Changed name of i0E "triangle pluck 2" to "triangle pluck 4" [reflecting the amount of frames it stays on]
   + Created i2A "triangle pluck 2" and i2B "triangle pluck 3"
@@ -392,7 +392,12 @@ Songs:
     + Note cut moved @ TRI.0D.(12->13) [fixes change @ 6e623]
     + Replaced NOI.02->.0C @ ods {03, 05, 07} [reverts change @ 6e623]
 
+
+==== Commit ?: ==== [alexmush] ====
+Songs:
+  Time Machine:
+    + Fixed the incorrect melody @ PU1.{01-02, 04-05, 07}, PU2.{01-02, 08-09, 0B}
+
 ==== negative shit still present:
-incorrect notes in time machine beginingn
 jumper music slower than needed
 anything else marked with a "-"
