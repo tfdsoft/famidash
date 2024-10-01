@@ -46,7 +46,7 @@ Songs:
     = Diff slides in the end
     = 2x volume for chords @ PU1.0B (WHICH ARENT EVEN PRESENT IN THE SRC)
   Theory Of Everything:
-    - Bass is an octave higher
+    = Bass is an octave higher
   Hexagon Force:
     + Lead is an octave lower (closer to src)
   Deadlocked:
@@ -119,8 +119,8 @@ Songs:
 Songs:
   Time Machine:
     = Replaced S01 with i0D "triangle pluck" @ TRI.0C
-    - Replaced S02 with i0E "triangle pluck 2" @ TRI.10
-    - Replaced Tri + DMC drums with just triangle @ ods 09-10, 19-1C [Voted, 10/10:-]
+    -f Replaced S02 with i0E "triangle pluck 2" @ TRI.10
+    -r Replaced Tri + DMC drums with just triangle @ TRI.{4-7}, DPCM.{3-6}, {TRI, DPCM}.{09, 0B} [Voted, 10/10:-]
   Cycles:
     = Replaced TRI.05 with TRI.04 (the latter has no drums)
     = Removed tri drums @ TRI.{01, 06}
@@ -143,7 +143,7 @@ Songs:
     + TRI.04 back to 12th instead of octave [reverts change @ 01e17, restoring change @ 75a3a]
   Clutterfunk:
     = Added (barely noticeable) portamento @ PU1.07
-    [Vote]r Removed note releases from DPCM.08-0A
+    -r Removed note releases from DPCM.08-0A
 
 ==== Commits 25daa & 42cfb (applied @ 86c7a): ==== [UserSniper] ====
 Songs:
@@ -214,15 +214,14 @@ DPCM:
 Songs:
   Time Machine:
     + Made effects simultaneous @ PU2.0C.(00-01 -> 00)
-      - Missed the same thing @ PU2.{0D, 13, 14}
+      -f Missed the same thing @ PU2.{0D, 13, 14}
     + Made G not accented @ TRI.0F.10-11
     = Removed redundant effects @ PU1.02-06.00, PU1.07.08, PU2.05.04, PU2.08.08, PU2.{09-0B, 15}.{00, 08}, NOI.0C.{02, 04}
-      - Missed redundant effects @ PU1.07.{00, 1C}, PU2.{{0F-11}.{00, 04}, 0E.04}
-    - Removed volume changes for a slower string @ PU1.{1-7, 11-14}, PU2.{1-4, 8-D, 13-15}
-    - Removed note cuts @ TRI.{0D.{16-17, 1A-1B, 1E-1F}, 0E.{02-03, 06-07, 0A-0B, 0E-0F}}
-      = Actually equivalent alternative: swap with i0E "triangle pluck 2"
-    - Cut a note exactly 1 row early @ TRI.0D.12 (as opposed to ..13) by replacing the S06 with a note stop
-    - Replaced NOI.0C->.02 @ ods {03, 05, 07}
+      -f Missed redundant effects @ PU1.07.{00, 1C}, PU2.{{0F-11}.{00, 04}, 0E.04}
+    -r Removed volume changes for a slower string @ PU1.{1-7, 11-14}, PU2.{1-4, 8-D, 13-15}
+    -f Removed note cuts @ TRI.{0D.{16-17, 1A-1B, 1E-1F}, 0E.{02-03, 06-07, 0A-0B, 0E-0F}}
+    -f Cut a note exactly 1 row early @ TRI.0D.12 (as opposed to ..13) by replacing the S06 with a note stop
+    -r Replaced NOI.0C->.02 @ ods {03, 05, 07}
   Cycles:
     - Fucked up the pattern numbers:
       Mapping:
@@ -258,7 +257,7 @@ Songs:
     = Changed volume @ PU2.12.20
     = Replaced 0 volume w/ note cut @ PU2.0B-0D.01
     - Replaced 2 volume w/ note cut @ PU2.0B-0D.{03, 05, 07}, PU2.0E-12.0C-3F
-    [Vote] Removed triangle @ ods 06-07
+    - Removed triangle @ ods 06-07 [Voted, + 0/0/4/4/1 -]
   Electroman Adventures:
     + Extended song to full length
   Geometrical Dominator:
@@ -357,13 +356,13 @@ Time Machine:
     + Added S05 @ DPCM.{11.{09, 0F}, {08, 0F, 10}.16-17, {01, 08, 10, 13}.19-1A, {10, 13}.1E} [reverts change @ 149ed]
 Clutterfunk:
     + Added note stops @ DPCM.06-07.{05, 07, 0D, 0F, 13, 17, 1B, 1F, 25, 27, 2D, 2F}, DPCM.06.{33, 37, 3B, 3F} [reverts change @ 149ed]
-    [Vote] Added note stops @ DPCM.08-0A.{05, 07, 0D, 0F, 13, 17, 1B, 1F, 25, 27, 2D, 2F, 33, 37, 3B, 3F} [reverts change @ cfe5f]
+    + Added note stops @ DPCM.08-0A.{05, 07, 0D, 0F, 13, 17, 1B, 1F, 25, 27, 2D, 2F, 33, 37, 3B, 3F} [reverts change @ cfe5f] [Voted, + 1/3/1/1/0 -]
     + Added note stop @ DPCM.0C.00
 Deadlocked:
     + Added DPCM note cuts [reverts change @ 6e623, restoring change @ 4437]
 
 
-=== Commit ?: ==== [alexmush] ====
+==== Commit 6573c: ==== [alexmush] ====
 Comments:
   Removed funny fact about can't let go never being changed as it was misinformation (it has been changed twice before this already)
 Songs:
@@ -373,6 +372,25 @@ Songs:
     + Added note stop @ DPCM.00.00 [stops bass @ od 0D, does nothing @ od 04]
     = Removed redundant note stop @ TRI.00.01
     = Removed redundant volume change @ PU1.03.02
+
+
+==== Commit ?: ==== [alexmush] ====
+Instruments:
+  + Changed name of i0E "triangle pluck 2" to "triangle pluck 4" [reflecting the amount of frames it stays on]
+  + Created i2A "triangle pluck 2" and i2B "triangle pluck 3"
+  + Created i2C "blank slower string" (about analogous to i0F "blank string" at ⅔ volume first 6 ticks)
+  + Changed name of i29 "young man... KILL YOURSE-" to "jaezu lead" because Eda you're better than this
+  + Added a [| 0 1] duty cycle env to i09 "hat" [sorta reverts change @ 149ed, sorta restoring change @ 4437]
+Songs:
+  Time Machine:
+    + Replaced i0E "triangle pluck 4" with i2A "triangle pluck 2" @ TRI.10 [fixes change @ a8dac & 668ee]
+    + Replaced i01 "blank" with i0E "triangle pluck 4" @ TRI.{0D.{16-17, 1A-1B, 1E-1F}, 0E.{02-03, 06-07, 0A-0B, 0E-0F}} [fixes change @ 6e623]
+    + Replaced just triangle drums with Tri + DMC @ TRI.{4-7}, DPCM.{3-6}, {TRI, DPCM}.{09, 0B} [reverts change @ a8dac & 668ee] [Voted, 10/10:-]
+    + Made effects simultaneous @ PU2.{0D, 13, 14}.(00-01 -> 00) [finishes change @ 6e623]
+    + Removed redundant effects @ PU1.{07.{00, 1C}, 11.03, 12-14.{00, 03}}, PU2.{{0F-11}.{00, 03}, 0E.03} [finishes change @ 6e623]
+    + Replaced i0F "blank string" with i2C "blank slower string" @ PU1.{1-7, 11-14}, PU2.{1-4, 8-D, 13-15} [reverts change @ 6e623 and one-ups the old one]
+    + Note cut moved @ TRI.0D.(12->13) [fixes change @ 6e623]
+    + Replaced NOI.02->.0C @ ods {03, 05, 07} [reverts change @ 6e623]
 
 ==== negative shit still present:
 incorrect notes in time machine beginingn
