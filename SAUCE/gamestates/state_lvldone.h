@@ -34,7 +34,8 @@ void state_lvldone() {
 	kandodebugmode = 0;
 	kandodebug2 = 0;
 	delay_spr_0 = 0x20;
-
+	cube_data[0] = 0;
+	cube_data[1] = 0;
 	current_state = 0;
 
 	// Set palettes back to natural colors since we aren't fading back in
@@ -341,7 +342,8 @@ void state_lvldone() {
 						gameState = 2;
 						pal_fade_to_withmusic(4,0);
 						memfill(attemptCounter, 0, sizeof(attemptCounter));
-						oam_clear();
+
+						//oam_clear();
 						coins = 0;
 						return;					
 					}
@@ -351,7 +353,7 @@ void state_lvldone() {
 						gameState = 1;
 						menuselection = 0;
 						kandowatchesyousleep = 1;
-						oam_clear();
+						//oam_clear();
 						kandotemp = 0;
 						return;
 					}
@@ -368,7 +370,8 @@ void state_lvldone() {
 					gameState = 1;
 					menuselection = 0;
 					kandowatchesyousleep = 1;
-					oam_clear();
+
+					//oam_clear();
 					kandotemp = 0;
 					return;
 				} else {
@@ -378,7 +381,9 @@ void state_lvldone() {
 					pal_fade_to_withmusic(4,0);
 					memfill(attemptCounter, 0, sizeof(attemptCounter));
 					coins = 0;
-					oam_clear();
+
+
+					//oam_clear();
 					return;
 				}
 			}
