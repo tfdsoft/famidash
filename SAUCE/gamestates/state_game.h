@@ -271,8 +271,9 @@ void state_game(){
 					//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
 					target_x_scroll_stop = 0xE000;
 					curr_x_scroll_stop = 0xE000;
-					high_byte(currplayer_y) = (mouse.y + high_byte(scroll_y)) - 20;
-					high_byte(currplayer_x) = mouse.x - 30 < 0 ? mouse.x : mouse.x - 30;
+					high_byte(currplayer_y) = (mouse.y + high_byte(scroll_y)) - 10;
+					high_byte(currplayer_x) = mouse.x - 10 < 0 ? mouse.x : mouse.x - 10;
+					if (high_byte(currplayer_x) > 226) high_byte(currplayer_x) = 226;
 					
 				}
 				else {
@@ -547,12 +548,9 @@ void runthecolls() {
 
 	if (!kandotemp3) {
 		crossPRGBankJump0(x_movement);
-		crossPRGBankJump0(sprite_collide);
 	}	
-		
-	else {
-		crossPRGBankJump0(sprite_collide);
-	}
+
+	crossPRGBankJump0(sprite_collide);
 
 	if (!DEBUG_MODE && !invincible_counter) {
 		crossPRGBankJump0(bg_coll_death);

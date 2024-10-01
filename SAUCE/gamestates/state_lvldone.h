@@ -29,9 +29,10 @@ void state_lvldone() {
 	#define delay_spr_0 tmp4
 	#define delay_timer tmpptr1
 	#define top_scroll scroll_x
-    ppu_off();
+	ppu_off();
 	gamemode = 0;
 	kandodebugmode = 0;
+	kandodebug2 = 0;
 	delay_spr_0 = 0x20;
 
 	current_state = 0;
@@ -39,7 +40,7 @@ void state_lvldone() {
 	// Set palettes back to natural colors since we aren't fading back in
 	pal_bright(4);
 
-    pal_bg(paletteMenu);
+	pal_bg(paletteMenu);
 	pal_col(0x0A,0x2A);
 	pal_col(0x0B,0x21);
 	pal_set_update();
@@ -226,6 +227,9 @@ void state_lvldone() {
 			#endif
 
 			tmp2 = 0;
+
+
+/*
 			do {
 				if (!achievements[tmp2]) {
 					if (LEVELCOMPLETE[tmp2]) {
@@ -288,7 +292,7 @@ void state_lvldone() {
 			if (!achievements[19]) {
 				
 			}
-
+*/
 			current_state = 4;
 			tmp1 = 1;
 			break;
@@ -337,6 +341,7 @@ void state_lvldone() {
 						gameState = 2;
 						pal_fade_to_withmusic(4,0);
 						memfill(attemptCounter, 0, sizeof(attemptCounter));
+						oam_clear();
 						coins = 0;
 						return;					
 					}
@@ -346,6 +351,7 @@ void state_lvldone() {
 						gameState = 1;
 						menuselection = 0;
 						kandowatchesyousleep = 1;
+						oam_clear();
 						kandotemp = 0;
 						return;
 					}
@@ -362,6 +368,7 @@ void state_lvldone() {
 					gameState = 1;
 					menuselection = 0;
 					kandowatchesyousleep = 1;
+					oam_clear();
 					kandotemp = 0;
 					return;
 				} else {
@@ -371,6 +378,7 @@ void state_lvldone() {
 					pal_fade_to_withmusic(4,0);
 					memfill(attemptCounter, 0, sizeof(attemptCounter));
 					coins = 0;
+					oam_clear();
 					return;
 				}
 			}
