@@ -150,11 +150,11 @@ Songs:
   Time Machine:
     = Changed timbre 01->00 @ PU2.{0C, 0D, 13, 14}.00
   Clutterfunk:
-    - Removed S04 @ PU1.02.33
+    -r Removed S04 @ PU1.02.33
   Hexagon Force:
     + Changed timbre 01->00 @ PU1.0E
   Menu Theme:
-    - Replaced S03 w/ i0E "triangle pluck" [which is 4 frames long] @ TRI.01-02
+    -f Replaced S03 w/ i0E "triangle pluck 2" [which is 4 frames long] @ TRI.01-02
   custom_everyend:
     + Added duty cycles @ PU1 & PU2
     = Replaced i0F "blank string" w/ i10 "blank"
@@ -191,7 +191,6 @@ Songs:
   Clutterfunk:
     = Removed volume changes @ NOI.09-0C
     = Made kicks lighter @ NOI.{09-0C, 0E}
-      - Missed one @ NOI.0E.1C
   Hexagon Force:
     + Removed percussion from end @ ods 0D-0E / NOI.09 [more accurate to src]
       - Still no toms before od 0F
@@ -256,8 +255,8 @@ Songs:
     = Changed port speed @ PU2.12.11
     = Changed volume @ PU2.12.20
     = Replaced 0 volume w/ note cut @ PU2.0B-0D.01
-    - Replaced 2 volume w/ note cut @ PU2.0B-0D.{03, 05, 07}, PU2.0E-12.0C-3F
-    - Removed triangle @ ods 06-07 [Voted, + 0/0/4/4/1 -]
+    -r Replaced 2 volume w/ note cut @ PU2.0B-0D.{03, 05, 07}, PU2.0E-12.0C-3F
+    -r Removed triangle @ ods 06-07 [Voted, + 0/0/4/4/1 -]
   Electroman Adventures:
     + Extended song to full length
   Geometrical Dominator:
@@ -398,10 +397,29 @@ Songs:
   Time Machine:
     + Fixed the incorrect melody @ PU1.{01-02, 04-05, 07}, PU2.{01-02, 08-09, 0B}
 
-==== Commit ?: ==== [alexmush] ====
+==== Commit a5ca3: ==== [alexmush] ====
 Songs:
   Back On Track:
     + Reimported because an old timbre change slipped through the cracks
+
+
+==== Commit ?: ==== [alexmush] ====
+Instruments:
+  + Created FS-exclusive "octave arp [ no duty ]" instrument
+Songs:
+  Time Machine:
+    + Added D-5 @ PU2.00.0F (to ensure correct pitch), removed note stop @ PU2.01.00 and added volume 1 @ PU2.02.04 [Voted, + 3/1/1 -]
+  Clutterfunk:
+    + Added S04 @ PU1.02.33 [reverts change @ 25daa & 42cfb]
+    + Made kick lighter @ NOI.0E.1C [fixes change @ fe2b7]
+    + Replaced note cuts w/ vol 2 @ PU2.0B-0D.{03, 05, 07}, PU2.0E-12.0C-3F [reverts change @ 6e623]
+    + Added triangle back @ ods 06-07 [Voted, + 0/0/4/4/1 -] [reverts change @ 6e623]
+    = Added 300 @ PU1.05.38 & PU2.06.38 cuz fs dumb
+    = [FS ONLY] Replaced instrument "octave arp" with "octave arp [ no duty ]", made the duty things @ PU2.0E-11 compatible
+  Menu Theme:
+    + Replaced i0E "triangle pluck 4" with i2B "triangle pluck 3" @ TRI.01-02 [fixes change @ fe2b7]
+
+    
 
 ==== negative shit still present:
 jumper music slower than needed
