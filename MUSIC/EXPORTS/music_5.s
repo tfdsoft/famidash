@@ -28,7 +28,7 @@ music_data_famidash_music_5:
 	.word @song2ch2
 	.word @song2ch3
 	.word @song2ch4
-	.word 358,298
+	.word 366,305
 ; 03 : Dry Out
 	.word @song3ch0
 	.word @song3ch1
