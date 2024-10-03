@@ -43,7 +43,7 @@
 #define JUMP_VEL -0x590
 #define MINI_JUMP_VEL -0x4D0
 
-#define UFO_JUMP_VEL -0x3B0
+#define UFO_JUMP_VEL -0x2F0
 #define MINI_UFO_JUMP_VEL -0x380
 
 #define ROBOT_JUMP_VEL -0x2B0
@@ -65,7 +65,7 @@
 #define MINI_CUBE_MAX_FALLSPEED 0x600
 #define MINI_CUBE_GRAVITY 0x6F
 
-#define UFO_GRAVITY 0x43
+#define UFO_GRAVITY 0x2C
 #define MINI_UFO_GRAVITY 0x43
 
 #define BALL_GRAVITY 0x53
