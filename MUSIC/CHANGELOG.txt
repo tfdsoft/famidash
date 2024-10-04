@@ -454,18 +454,21 @@ Songs:
 	+ [FS ONLY] shortened slide note @ PU2.05.054-055 to just ..054
 	
 
-==== Commit ?: ==== [alexmush] ====
+==== Commit b49aa: ==== [alexmush] ====
 Songs:
   Base After Base:
     + Added DPCM.09 and TRI.09 to match the rhythm of NOI.07
+	
+	
+==== Commit ?: ==== [alexmush] ====
+Songs:
+  Hexagon Force:
+    + Added toms @ TRI.0C.34-3F & NOI.09.34-3E
+	= Moved the pre-cymbal @ NOI.09.3E-3F -> ..3F
 
 
 ==== negative shit still present:
-Base After Base:
-  - DPCM doesnt match the rhythm of NOI.07 [since 4437]
 xStep:
   - PU1.04.1C-1F less accurate to src [since 4437]
   - Removed volume changes @ NOI.00.{08, 0C-12} [since 6e623]
      = Removing just the ones @ NOI.0C-12 would actually make zero difference, but the NOI.00.08 changes everything
-Hexagon Force:
-  - Still no toms before od 0F
