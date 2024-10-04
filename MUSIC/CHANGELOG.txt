@@ -432,7 +432,7 @@ Songs:
 	= Replaced the I14 w/ 20C @ PU1.0D.06 [compatible with FS]
 	
 	
-==== Commit ?: ==== [alexmush] ====
+==== Commit b59f5: ==== [alexmush] ====
 Songs:
   Cycles:
     + As a base for the following changes, reverted everything done in commit 6e623
@@ -443,13 +443,20 @@ Songs:
 	+ Removed redundant vol Fs @ NOI.{05-06, 08-09}
 	[Vote] Made the kicks / snares fade in slower after the cymbal @ NOI.05, 08 [only in song version "cycles alt"]
 	
+	
+==== Commit ?: ==== [alexmush] ====
+Songs:
+  Can't Let Go:
+    + Replaced i12 "cymbal" w/ i10 "blank" @ PU1.05 [finishes change @ cfe5f]
+    + Increased port speed 1F->3F @ PU2.04.00 [more accurate to src, esp. in FS] [reverts change @ cfe5f]
+	+ Added vol 0 notes for more portamento @ PU2.{04.3B, 05.{1B, 35, 3B}}
+	+ [FS ONLY] Added pt. PU2.04B, with portamento at the beginning
+	+ [FS ONLY] shortened slide note @ PU2.05.054-055 to just ..054
+
 
 ==== negative shit still present:
 Base After Base:
   - DPCM doesnt match the rhythm of NOI.07 [since 4437]
-Can't Let Go:
-  - Instrument 12 instead of 10 @ PU1.05 [since cfe5f]
-  - Decreased port speed 3F->1F @ PU2.04.00 [less accurate to src] [since cfe5f]
 xStep:
   - PU1.04.1C-1F less accurate to src [since 4437]
   - Removed volume changes @ NOI.00.{08, 0C-12} [since 6e623]
