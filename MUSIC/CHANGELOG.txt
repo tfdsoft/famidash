@@ -444,7 +444,7 @@ Songs:
 	[Vote] Made the kicks / snares fade in slower after the cymbal @ NOI.05, 08 [only in song version "cycles alt"]
 	
 	
-==== Commit ?: ==== [alexmush] ====
+==== Commit e699b: ==== [alexmush] ====
 Songs:
   Can't Let Go:
     + Replaced i12 "cymbal" w/ i10 "blank" @ PU1.05 [finishes change @ cfe5f]
@@ -452,6 +452,12 @@ Songs:
 	+ Added vol 0 notes for more portamento @ PU2.{04.3B, 05.{1B, 35, 3B}}
 	+ [FS ONLY] Added pt. PU2.04B, with portamento at the beginning
 	+ [FS ONLY] shortened slide note @ PU2.05.054-055 to just ..054
+	
+
+==== Commit ?: ==== [alexmush] ====
+Songs:
+  Base After Base:
+    + Added DPCM.09 and TRI.09 to match the rhythm of NOI.07
 
 
 ==== negative shit still present:
