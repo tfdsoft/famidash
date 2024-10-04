@@ -36,7 +36,7 @@ const uint8_t G_Table[]={
 	0x2C
 };
 
-#define stereo_madness  
+#define stereo_madness  0
 #define back_on_track  1
 #define polargeist  2
 #define dryout  3
