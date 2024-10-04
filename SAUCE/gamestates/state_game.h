@@ -306,7 +306,12 @@ void state_game(){
 				// vram_adr(NAMETABLE_B);
 				// vram_unrle(pausescreen); 	
 				// ppu_on_all();
-				while (!(joypad1.press_start) && !(mouse.right_press)) {
+				while (!(joypad1.press & PAD_START) && !(mouse.right_press)) {
+					if (VRAM_UPDATE == 1) {
+						ppu_wait_nmi();
+					}
+					// force re-enable NMI every frame.
+					VRAM_UPDATE = 1;
 					if ((joypad1.up) && (joypad1.press_b)) {
 						kandokidshack3++;
 					}
@@ -569,7 +574,7 @@ void set_player_banks() {
 		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank3);
 		else mmc3_set_2kb_chr_bank_0(iconbank1);
 
-}	
+}
 
 void set_tile_banks() {
 	if (!no_parallax) {

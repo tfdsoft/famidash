@@ -1,5 +1,3 @@
-extern volatile unsigned char VRAM_UPDATE;
-#pragma zpsym ("VRAM_UPDATE")
 
 #pragma code-name(push, "LVL_BANK_00")
 #pragma data-name(push, "LVL_BANK_00")

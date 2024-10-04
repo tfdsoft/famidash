@@ -125,6 +125,9 @@ int8_t tmpi8;
 #pragma zpsym("tmpptr1")
 #pragma zpsym("tmpptr2")
 
+extern volatile unsigned char VRAM_UPDATE;
+#pragma zpsym ("VRAM_UPDATE")
+
 uint16_t currplayer_x;
 uint16_t currplayer_y;
 int16_t currplayer_vel_x;
@@ -338,6 +341,7 @@ uint8_t trail_sprites_visible[9];
 
 uint8_t dashing[2];
 
+uint8_t disable_dpcm_bankswitch;
 uint8_t has_practice_point; // = 0;
 uint16_t practice_player_x[2];
 uint16_t practice_player_y[2];
@@ -463,8 +467,6 @@ struct Base {
 
 struct Base Generic;
 struct Base Generic2;
-
-
 
 // Palette declarations for some reason
 

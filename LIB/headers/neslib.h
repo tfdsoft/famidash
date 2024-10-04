@@ -45,15 +45,6 @@ void __fastcall__ pal_clear();
 
 void __fastcall__ pal_bright(uint8_t bright);
 
-//set virtual bright for sprites only
-
-void __fastcall__ pal_spr_bright(uint8_t bright);
-
-//set virtual bright for sprites background only
-
-void __fastcall__ pal_bg_bright(uint8_t bright);
-
-
 
 //wait actual TV frame, 50hz for PAL, 60hz for NTSC
 

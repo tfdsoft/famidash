@@ -269,7 +269,7 @@ _init_rld:
 	BNE @noset
 	LDA (level_data),y	;	Starting BG color
 	AND #$3F			;	Store normal color (pal_col(0, tmp2))
-	STA PAL_BUF+0		;__ 
+	STA PAL_BUF_RAW+0		;__
 	ldx _lastbgcolortype
 	cpx #$ff
 	bne @noset
@@ -279,15 +279,15 @@ _init_rld:
 	lda _discomode
 	bne @nostore
 	LDA palBrightTable3, X
-	STA PAL_BUF+1		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
-	STA PAL_BUF+9		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
+	STA PAL_BUF_RAW+1		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
+	STA PAL_BUF_RAW+9		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
 @nostore:
 	txa
 	incw_check level_data
 
 	LDA (level_data),y	;	Starting ground color
 	AND #$3F			;	Store normal color (pal_col(6, tmp2))
-	STA PAL_BUF+6		;__ 
+	STA PAL_BUF_RAW+6		;__
 	ldx _lastgcolortype
 	cpx #$ff
 	bne @noset2
@@ -295,9 +295,28 @@ _init_rld:
 @noset2:
 	TAX
 	LDA palBrightTable3, X
-	STA PAL_BUF+5		;__	Store faded color (pal_col(5, oneShadeDarker(tmp2)))
+	STA PAL_BUF_RAW+5		;__	Store faded color (pal_col(5, oneShadeDarker(tmp2)))
 	INC <PAL_UPDATE		;__ Yes, we do need to update the palette
 
+	; Copy all the raw colors into the buffer for the current brightness
+	ldy PAL_BUF_RAW+0
+	lda (PAL_PTR),y
+	sta PAL_BUF+0
+	ldy PAL_BUF_RAW+1
+	lda (PAL_PTR),y
+	sta PAL_BUF+1
+	ldy PAL_BUF_RAW+5
+	lda (PAL_PTR),y
+	sta PAL_BUF+5
+	ldy PAL_BUF_RAW+6
+	lda (PAL_PTR),y
+	sta PAL_BUF+6
+	ldy PAL_BUF_RAW+9
+	lda (PAL_PTR),y
+	sta PAL_BUF+9
+	
+	
+	ldy #0
 	incw_check level_data
 
 	.if USE_ILLEGAL_OPCODES
@@ -1792,8 +1811,9 @@ music_counts:
 
 .segment "CODE_2"
 
+.import _disable_dpcm_bankswitch
 .proc famistudio_dpcm_bank_callback
-	ldx _has_practice_point
+	ldx _disable_dpcm_bankswitch
 	beq :+
 		sec
 		rts
