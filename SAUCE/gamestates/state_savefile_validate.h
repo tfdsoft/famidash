@@ -11,8 +11,8 @@ void savefile_reset_check_loop(){
 		newrand();
 	    kandoframecnt++;
        	    
-        if (pad_new[0] & PAD_B || mouse.right.click) break;
-        if (pad_new[0] & PAD_A || mouse.left.click){
+        if (joypad1.press_b || mouse.right_press) break;
+        if (joypad1.press_a || mouse.left_press){
             setdefaultoptions();
             break;
         }
@@ -74,7 +74,7 @@ void state_savefile_validate(){
 		oam_clear();
             crossPRGBankJump0(mouse_and_cursor);
 		newrand();
-            if (pad_new[0] || mouse.left.click || mouse.right.click) break;
+            if (joypad1.press || mouse.left_press || mouse.right_press) break;
 	    kandoframecnt++;
        	    			    
         } while (1);
@@ -114,7 +114,7 @@ void state_exit(){
 	crossPRGBankJump0(mouse_and_cursor);
 		newrand();
         // wait for system power off
-        if (pad_new[0] & PAD_B || mouse.right.click) break;
+        if (joypad1.press_b || mouse.right_press) break;
 	    kandoframecnt++;
        	    	
     } while (1);

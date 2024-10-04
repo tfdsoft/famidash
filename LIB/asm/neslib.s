@@ -21,10 +21,8 @@
 	.export __scroll,_split,_newrand
 	.export _bank_spr
 	.export __vram_read,__vram_write
-	.export _pad_poll ;,_pad_trigger,_pad_state
 	.export _rand16,_set_rand
 	.export __vram_fill,_vram_inc,_vram_unrle
-	.export _set_vram_update,_flush_vram_update
 	.export __memcpy,__memfill,_delay
 	
 	.export _flush_vram_update2, _oam_set, _oam_get
@@ -58,17 +56,19 @@ nmi:
 	lda #0
 	sta <VRAM_UPDATE
 
-	lda <PPU_MASK_VAR
-	and #%11100111		;	Disable BG and sprites
-	ora #%11100000		;	Enable dark emphasis
-	sta PPU_MASK
+	; lda <PPU_MASK_VAR
+	; and #%11100111		;	Disable BG and sprites
+	; ora #%11100000		;	Enable dark emphasis
+	; sta PPU_MASK
 
-	lda #>OAM_BUF		;update OAM
-	sta PPU_OAM_DMA
-
+  ; If nametables are updating, don't do the palette update this frame
+	lda <NAME_UPD_ENABLE
+	beq @checkPal
+	  jsr _flush_vram_update2
+@checkPal:
 	lda <PAL_UPDATE		;update palette if needed
 	bne @updPal
-	jmp @updVRAM
+	jmp @skipUpd
 
 @updPal:
 
@@ -108,13 +108,6 @@ nmi:
 	.endrepeat
 	.endrepeat
 
-@updVRAM:
-	
-	lda <NAME_UPD_ENABLE
-	beq @skipUpd
-
-	jsr _flush_vram_update2
-
 @skipUpd:
 
 	lda #0
@@ -132,6 +125,14 @@ nmi:
 	jsr irq_parser ; needs to happen inside v-blank... 
                    ; so goes before the music
             ; but, if screen is off this should be skipped
+
+  ; Read the raw controller data synced with OAM DMA to prevent
+  ; DMC DMA bugs
+  jsr oam_and_readjoypad
+  ; Calculate the press/release for the controllers
+  ; and also update mouse X/Y coords after the timing sensitive parts
+  ; of NMI are complete
+  jsr calculate_extra_fields
 
 @skipAll:
 
@@ -370,7 +371,7 @@ _oam_clear:
 	rts
 	
 ;void __fastcall__ oam_clear_player();
-
+.importzp _gamemode
 _oam_clear_player:
 	ldx #0
 	stx SPRID ; automatically sets sprid to zero
@@ -858,50 +859,50 @@ __vram_write:
 
 ;uint8_t __fastcall__ pad_poll(uint8_t pad);
 
-_pad_poll:
+; _pad_poll:
 
-	tay
-	ldx #3
+; 	tay
+; 	ldx #3
 
-@padPollPort:
+; @padPollPort:
 
-	lda #1
-	sta CTRL_PORT1
-	sta <PAD_BUF-1,x
-	lda #0
-	sta CTRL_PORT1
-	lda #8
-	sta <TEMP
+; 	lda #1
+; 	sta CTRL_PORT1
+; 	sta <PAD_BUF-1,x
+; 	lda #0
+; 	sta CTRL_PORT1
+; 	lda #8
+; 	sta <TEMP
 
-@padPollLoop:
+; @padPollLoop:
 
-	lda CTRL_PORT1,y
-	lsr a
-	rol <PAD_BUF-1,x
-	bcc @padPollLoop
+; 	lda CTRL_PORT1,y
+; 	lsr a
+; 	rol <PAD_BUF-1,x
+; 	bcc @padPollLoop
 
-	dex
-	bne @padPollPort
+; 	dex
+; 	bne @padPollPort
 
-	lda <PAD_BUF
-	cmp <PAD_BUF+1
-	beq @done
-	cmp <PAD_BUF+2
-	beq @done
-	lda <PAD_BUF+1
+; 	lda <PAD_BUF
+; 	cmp <PAD_BUF+1
+; 	beq @done
+; 	cmp <PAD_BUF+2
+; 	beq @done
+; 	lda <PAD_BUF+1
 
-@done:
+; @done:
 
-	sta <PAD_STATE,y
-	tax
-	eor <PAD_STATEP,y
-	and <PAD_STATE ,y
-	sta <PAD_STATET,y
-	txa
-	sta <PAD_STATEP,y
+; 	sta <PAD_STATE,y
+; 	tax
+; 	eor <PAD_STATEP,y
+; 	and <PAD_STATE ,y
+; 	sta <PAD_STATET,y
+; 	txa
+; 	sta <PAD_STATEP,y
 	
-	ldx #0
-	rts
+; 	ldx #0
+; 	rts
 
 
 
@@ -1007,26 +1008,12 @@ _set_rand:
 	rts
 
 
-
-;void __fastcall__ set_vram_update(void *buf);
-
-_set_vram_update:
-
-	sta <NAME_UPD_ADR+0
-	stx <NAME_UPD_ADR+1
-	ora <NAME_UPD_ADR+1
-	sta <NAME_UPD_ENABLE
-
-	rts
-
-
-
 ;void __fastcall__ flush_vram_update(void *buf);
 
 _flush_vram_update:
 
-	sta <NAME_UPD_ADR+0
-	stx <NAME_UPD_ADR+1
+	; sta <NAME_UPD_ADR+0
+	; stx <NAME_UPD_ADR+1
 
 _flush_vram_update2: ;minor changes %
 
@@ -1034,15 +1021,15 @@ _flush_vram_update2: ;minor changes %
 
 @updName:
 
-	lda (NAME_UPD_ADR),y
+	lda VRAM_BUF,y
 	iny
 	cmp #$40				;is it a non-sequental write?
 	bcs @updNotSeq
 	sta PPU_ADDR
-	lda (NAME_UPD_ADR),y
+	lda VRAM_BUF,y
 	iny
 	sta PPU_ADDR
-	lda (NAME_UPD_ADR),y
+	lda VRAM_BUF,y
 	iny
 	sta PPU_DATA
 	jmp @updName
@@ -1072,17 +1059,17 @@ _flush_vram_update2: ;minor changes %
 	txa
 	and #$3f
 	sta PPU_ADDR
-	lda (NAME_UPD_ADR),y
+	lda VRAM_BUF,y
 	iny
 	sta PPU_ADDR
-	lda (NAME_UPD_ADR),y
+	lda VRAM_BUF,y
 	bmi @updRepeatedByte
 	iny
 	tax
 
 @updNameLoop:
 
-	lda (NAME_UPD_ADR),y
+	lda VRAM_BUF,y
 	iny
 	sta PPU_DATA
 	dex
@@ -1097,7 +1084,7 @@ _flush_vram_update2: ;minor changes %
 	and #$7f
 	tax
 	iny
-	lda (NAME_UPD_ADR),y
+	lda VRAM_BUF,y
 	iny
 @updRepeatedByteLoop:
 	sta PPU_DATA
@@ -1344,3 +1331,242 @@ palBrightTable8:
 .repeat 9, I
 .export .ident(.sprintf("palBrightTable%d", I))
 .endrepeat
+
+
+; Quick macros to reserve a value and export it for usage in C
+.macro RESERVE name, size
+  .export .ident(.sprintf("_%s", .string(name))) = .ident(.string(name)) 
+  .ident(.string(name)): .res size
+.endmacro
+.macro RESERVE_ZP name, size
+  .exportzp .ident(.sprintf("_%s", .string(name))) = .ident(.string(name)) 
+  .ident(.string(name)): .res size
+.endmacro
+
+
+.pushseg
+
+.segment "ZEROPAGE"
+
+; NOTE: These must be zero page and adjacent; the code relies on joypad1_down following mouse.
+RESERVE_ZP mouse, 4
+  kMouseZero = 0
+  kMouseButtons = 1
+  kMouseY = 2
+  kMouseX = 3
+RESERVE_ZP joypad1, 3
+; Overlay the second joypad with the mouse memory.
+; If the mouse isn't detected, then we copy data to the joypad struct.
+joypad2 = mouse + 1
+.exportzp _joypad2 := joypad2
+
+; Store a pointer to the current controlling player's joypad
+; for fast access
+RESERVE_ZP controllingplayer, 2
+
+; Bitmask indicating which $4016/7 bit the mouse is on.
+; Must be in ZP for now for timing reasons
+RESERVE_ZP mouse_mask, 1
+
+.if 0
+.segment "BSS"
+; NOTE: These variables are not page-sensitive and can be absolute.
+advance_sensitivity: .res 1  ; Bool.
+.endif
+
+.segment "OAMALIGN"
+
+MOUSE_PORT = CTRL_PORT2
+CONTROLLER_PORT = CTRL_PORT1
+
+
+.proc oam_and_readjoypad
+  ; save the previous controller state for calcuating the previous results
+  lda joypad1
+  sta TEMP + 3
+
+  ; and do the same for the controller 2
+  lda joypad2
+  sta TEMP + 4
+
+  ; Save the previous mouse state so we can calculate the next frames press/release
+  lda mouse + kMouseY
+  sta TEMP + 0
+  lda mouse + kMouseX
+  sta TEMP + 1
+  lda mouse + kMouseButtons
+  sta TEMP + 2
+
+  ; Strobe the joypads.
+  LDX #$00
+  LDY #$01
+  STY mouse
+  STY CTRL_PORT1
+
+ .if 0
+  ; Clock official mouse sensitivity. NOTE: This can be removed if not needed.
+  LDA advance_sensitivity
+  BEQ :+
+  LDA MOUSE_PORT
+  STX advance_sensitivity
+ :
+ .endif
+
+  STX CTRL_PORT1
+
+  LDA #>OAM_BUF
+  STA PPU_OAM_DMA
+ 
+  ; Desync cycles: 432, 576, 672, 848, 432*2-4 (860)
+
+  ; DMC DMA:         ; PUT GET PUT GET        ; Starts: 0
+
+ :
+  LDA mouse_mask     ; get put get*     *576  ; Starts: 4, 158, 312, 466, [620]
+  AND MOUSE_PORT   ; put get put GET
+  CMP #$01           ; put get
+  ROL mouse,X        ; put get put get* PUT GET  *432
+  BCC :-             ; put get (put)
+
+  INX                ; put get
+  CPX #$04           ; put get
+  STY mouse,X        ; put get put GET
+  BNE :-             ; put get (put)
+
+ :
+  LDA CONTROLLER_PORT ; put get put GET        ; Starts: 619
+  AND #$03           ; put get*         *672
+  CMP #$01           ; put get
+  ROL joypad1 ; put get put get put    ; This can desync, but we finish before it matters.
+  BCC :-             ; get put (get)
+
+ .if 0 ; TODO support SNES extra buttons 
+  STY joypad1+1 ; get put get
+  NOP                ; put get
+ :
+  LDA CONTROLLER_PORT ; put get* put GET *848  ; Starts: 751, [879]
+  AND #$03           ; put get
+  CMP #$01           ; put get
+  ROL joypad1+1 ; put get put get put    ; This can desync, but we finish before it matters.
+  BCC :-             ; get* put (get)   *860
+
+  ; NEXT: 878
+ .endif ; CONTROLLER_SIZE = 2
+
+  rts
+.endproc
+
+.segment "STARTUP"
+
+.proc calculate_extra_fields
+  ; calculate the press/release state for the controller buttons
+
+  ; Pressed
+  lda TEMP+3
+  eor #%11111111
+  and joypad1
+  sta joypad1 + 1
+
+  ; Released
+  lda joypad1
+  eor #%11111111
+  and TEMP+3
+  sta joypad1 + 2
+
+  ; Check the report to see if we have a snes mouse plugged in
+  lda mouse + kMouseButtons
+  and #$0f
+  cmp #$01
+  beq snes_mouse_detected
+    ; treat this as a standard NES controller instead and
+    ; calculate the press/release for it
+    lda mouse + kMouseZero
+    sta joypad2
+    ; Pressed
+    lda TEMP+4
+    eor #%11111111
+    and joypad2
+    sta joypad2 + 1
+
+    ; Released
+    lda joypad2
+    eor #%11111111
+    and TEMP+4
+    sta joypad2 + 2
+
+    ; no snes mouse, so leave the first field empty
+    lda #0
+    sta mouse + kMouseZero
+    rts
+snes_mouse_detected:
+
+  ; convert the X/Y displacement into X/Y positions on the screen
+  ldx #1
+loop:
+    lda mouse + kMouseY,x
+    bpl :+
+      ; subtract the negative number instead
+      and #$7f
+      sta mouse + kMouseZero ; reuse this value as a temp value
+      lda TEMP,x
+      sec 
+      sbc mouse + kMouseZero
+      ; check if we underflowed
+      bcc wrappednegative
+      ; check the lower bounds
+      cmp MouseBoundsMin,x
+      bcs setvalue ; didn't wrap so set the value now
+    wrappednegative:
+      lda MouseBoundsMin,x
+      jmp setvalue
+    :
+    ; add the positive number
+    clc
+    adc TEMP,x
+    ; check if we wrapped, set to the max bounds if we did
+    bcs wrapped
+    ; check the upper bounds
+    cmp MouseBoundsMax,x
+    bcc setvalue ; didn't wrap so set the value
+wrapped:
+    lda MouseBoundsMax,x
+setvalue:
+    sta mouse + kMouseY,x
+    dex
+    bpl loop
+  ; calculate newly pressed buttons and shift it into byte zero
+  lda TEMP+2
+  eor #%11000000
+  and mouse + kMouseButtons
+  rol
+  ror mouse + kMouseZero
+  rol
+  ror mouse + kMouseZero
+  
+  ; calculate newly released buttons
+  lda mouse + kMouseButtons
+  eor #%11000000
+  and TEMP+2
+  rol
+  ror mouse + kMouseZero
+  rol
+  ror mouse + kMouseZero
+
+  ; Set the connected bit
+  sec
+  ror mouse + kMouseZero
+
+  rts
+
+MOUSE_Y_MINIMUM = 1
+MOUSE_X_MINIMUM = 1
+MOUSE_Y_MAXIMUM = 239
+MOUSE_X_MAXIMUM = 255
+
+MouseBoundsMin:
+  .byte MOUSE_Y_MINIMUM, MOUSE_X_MINIMUM
+MouseBoundsMax:
+  .byte MOUSE_Y_MAXIMUM, MOUSE_X_MAXIMUM
+.endproc
+
+.popseg

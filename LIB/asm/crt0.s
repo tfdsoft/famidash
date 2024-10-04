@@ -24,7 +24,7 @@ VRAM_BUF=__VRAM_BUF_START__
 OAM_BUF=__OAM_BUF_START__
 PAL_BUF=__PAL_BUF_START__
 
-.importzp _PAD_STATE, _PAD_STATET ;added
+; .importzp _PAD_STATE, _PAD_STATET ;added
 .include "zeropage.inc"
 
 
@@ -52,7 +52,7 @@ NTSC_MODE: 			.res 1
 FRAME_CNT1: 		.res 1
 FRAME_CNT2: 		.res 1
 VRAM_UPDATE: 		.res 1
-NAME_UPD_ADR: 		.res 2
+; NAME_UPD_ADR: 		.res 2
 NAME_UPD_ENABLE: 	.res 1
 PAL_UPDATE: 		.res 1
 PAL_BG_PTR: 		.res 2
@@ -61,12 +61,12 @@ SCROLL_X: 			.res 1
 SCROLL_Y: 			.res 1
 SCROLL_X1: 			.res 1
 SCROLL_Y1: 			.res 1
-PAD_STATE: 			.res 2		;one byte per controller
-PAD_STATE2: 		.res 2		;one byte per controller
-PAD_STATEP: 		.res 2
-PAD_STATEP2: 		.res 2
-PAD_STATET: 		.res 2
-PAD_STATET2: 		.res 2
+; PAD_STATE: 			.res 2		;one byte per controller
+; PAD_STATE2: 		.res 2		;one byte per controller
+; PAD_STATEP: 		.res 2
+; PAD_STATEP2: 		.res 2
+; PAD_STATET: 		.res 2
+; PAD_STATET2: 		.res 2
 PPU_CTRL_VAR: 		.res 1
 PPU_CTRL_VAR1: 		.res 1
 PPU_MASK_VAR: 		.res 1
@@ -75,7 +75,7 @@ RAND_SEED: 			.res 4
 TEMP: 				.res 11
 SPRID:				.res 1
 
-PAD_BUF		=TEMP+1
+; PAD_BUF		=TEMP+1
 
 PTR			=TEMP	;word
 LEN			=TEMP+2	;word
@@ -237,9 +237,9 @@ detectNTSC:
 
 	jsr _ppu_off
 
-	lda #0
-	ldx #0
-	jsr _set_vram_update
+	; lda #0
+	; ldx #0
+	; jsr _set_vram_update
 
 	LDA #<-1			;   Do famistudio_init
     JSR _music_play		;__

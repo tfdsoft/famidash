@@ -134,12 +134,6 @@ uint8_t currplayer_x_small;
 uint8_t currplayer_y_small;
 int8_t currplayer_vel_y_small;
 
-extern uint8_t pad[2];
-extern uint8_t pad_new[2];
-
-#pragma zpsym("pad")
-#pragma zpsym("pad_new")
-
 uint8_t gamemode;
 uint8_t cube_data[2];
 uint16_t cube_rotate[2];
@@ -283,7 +277,9 @@ uint8_t kandotemp3;
 uint8_t kandotemp4;
 uint8_t kandotemp5;
 uint8_t kandoframecnt;
-uint8_t controllingplayer;
+// NOTE: joypad2 in memory is before joypad1 due to ram saving reasons
+// so controllingplayer = 0 is player 2, and controllingplayer = 1 is player 1
+// uint8_t controllingplayer;
 uint8_t spiderframe[2];
 uint8_t robotframe[2];
 uint8_t ballframe;

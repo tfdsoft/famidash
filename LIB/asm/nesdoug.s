@@ -18,11 +18,13 @@
 _set_vram_buffer:
 	ldx #$ff
 	stx VRAM_BUF
+	stx <NAME_UPD_ENABLE
 	inx ;x=0
 	stx VRAM_INDEX
-	ldx #>VRAM_BUF
-	lda #<VRAM_BUF
-	jmp _set_vram_update
+	rts
+	; ldx #>VRAM_BUF
+	; lda #<VRAM_BUF
+	; jmp _set_vram_update
 	
 	
 

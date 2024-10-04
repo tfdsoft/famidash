@@ -121,7 +121,7 @@ void state_demo(){
 		newrand();
 	    kandoframecnt++;
        	    	
-		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1] | mouse.left.click | mouse.right.click)) { gameState = 0x01; return; }		
+		if (SRAM_VALIDATE[0] == 0x13 && (joypad1.press | joypad2.press | mouse.left_press | mouse.right_press)) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
@@ -132,7 +132,7 @@ void state_demo(){
 		newrand();
 	    kandoframecnt++;
        	    	
-		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1] | mouse.left.click | mouse.right.click)) { gameState = 0x01; return; }		
+		if (SRAM_VALIDATE[0] == 0x13 && (joypad1.press | joypad2.press | mouse.left_press | mouse.right_press)) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 		set_scroll_x(tmp1<<2);
@@ -147,7 +147,7 @@ void state_demo(){
 	    kandoframecnt++;
 		
        	    	
-		if (SRAM_VALIDATE[0] == 0x13 && (pad_new[0] | pad_new[1] | mouse.left.click | mouse.right.click)) { gameState = 0x01; return; }		
+		if (SRAM_VALIDATE[0] == 0x13 && (joypad1.press | joypad2.press | mouse.left_press | mouse.right_press)) { gameState = 0x01; return; }		
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);

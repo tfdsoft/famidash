@@ -1,3 +1,6 @@
+#ifndef NESLIB_H
+#define NESLIB_H
+
 //NES hardware-dependent functions by Shiru (shiru@mail.ru)
 //Feel free to do anything you want with this code, consider it Public Domain
 
@@ -134,7 +137,7 @@ uint8_t __fastcall__ oam_get();
 
 //poll controller and return flags like PAD_LEFT etc, input is pad number (0 or 1)
 
-uint8_t __fastcall__ pad_poll(uint8_t pad);
+// uint8_t __fastcall__ pad_poll(uint8_t pad);
 
 //poll controller in trigger mode, a flag is set only on button down, not hold
 //if you need to poll the pad in both normal and trigger mode, poll it in the
@@ -198,15 +201,7 @@ void __fastcall__ set_rand(uint16_t seed);
 // MSB|NT_UPD_VERT, LSB, LEN, [bytes] for a vertical sequence
 // NT_UPD_EOF to mark end of the buffer
 
-//length of this data should be under 256 bytes
-
-void __fastcall__ set_vram_update(const uint8_t *buf);
-
 //all following vram functions only work when display is disabled
-
-//do a series of VRAM writes, the same format as for set_vram_update, but writes done right away
-
-void __fastcall__ flush_vram_update(const uint8_t *buf);
 
 //set vram pointer to write operations if you need to write some data to vram
 
@@ -256,6 +251,61 @@ void __fastcall__ _memfill(uint32_t args);
 void __fastcall__ delay(uint8_t frames);
 
 
+struct pad {
+    union {
+        unsigned char hold;
+        struct {
+            unsigned char right : 1;
+            unsigned char left : 1;
+            unsigned char down : 1;
+            unsigned char up : 1;
+            unsigned char start : 1;
+            unsigned char select : 1;
+            unsigned char b : 1;
+            unsigned char a : 1;
+        };
+    };
+    union {
+        unsigned char press;
+        struct {
+            unsigned char press_right : 1;
+            unsigned char press_left : 1;
+            unsigned char press_down : 1;
+            unsigned char press_up : 1;
+            unsigned char press_start : 1;
+            unsigned char press_select : 1;
+            unsigned char press_b : 1;
+            unsigned char press_a : 1;
+        };
+    };
+    union {
+        unsigned char release;
+        struct {
+            unsigned char release_right : 1;
+            unsigned char release_left : 1;
+            unsigned char release_down : 1;
+            unsigned char release_up : 1;
+            unsigned char release_start : 1;
+            unsigned char release_select : 1;
+            unsigned char release_b : 1;
+            unsigned char release_a : 1;
+        };
+    };
+};
+
+extern struct pad joypad1;
+#pragma zpsym("joypad1");
+
+extern struct pad joypad2;
+#pragma zpsym("joypad2");
+
+// WARNING: due to space saving reasons, joypad2 comes before joypad1 in ram
+// This means that if you want to access by value, then index 0 is pad 2 and
+// index 1 is pad 1.
+// Note that if the mouse is connected in slot 2, then use the `mouse` struct
+// to access the data instead.
+extern struct pad* controllingplayer;
+#pragma zpsym("controllingplayer");
 
 #define PAD_A			0x80
 #define PAD_B			0x40
@@ -298,3 +348,5 @@ void __fastcall__ delay(uint8_t frames);
 #define NTADR_B(x,y) 	(NAMETABLE_B|VRAM_OFF(x,y))
 #define NTADR_C(x,y) 	(NAMETABLE_C|VRAM_OFF(x,y))
 #define NTADR_D(x,y) 	(NAMETABLE_D|VRAM_OFF(x,y))
+
+#endif // NESLIB_H

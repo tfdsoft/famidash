@@ -3,67 +3,43 @@
 
 #include "core.h"
 
-#define MIN_X   1
-#define MAX_X 255
-#define MIN_Y   1
-#define MAX_Y 239
-
-
-
-typedef struct MouseButton {
-  bool press;
-  bool click;
-} MouseButton;
-
-typedef struct Mouse {
-  uint8_t x, y;
-  MouseButton left;
-  MouseButton right;
-  bool connected;
+typedef struct mouse_s {
+  union {
+    uint8_t status_computed;
+    struct {
+        uint8_t unused : 3;
+        uint8_t right_press : 1;
+        uint8_t left_press : 1;
+        uint8_t right_release : 1;
+        uint8_t left_release : 1;
+        uint8_t connected : 1;
+    };
+  };
+  union {
+    uint8_t status_raw;
+    struct {
+#if MOUSE_CONFIG_SENSITIVITY
+        uint8_t signature : 4;
+        uint8_t sensitivity : 2;
+#else
+        uint8_t signature : 4;
+        uint8_t unused2 : 2;
+#endif 
+        uint8_t left : 1;
+        uint8_t right : 1;
+    };
+  };
+  uint8_t y;
+  uint8_t x;
 } Mouse;
 
-#pragma bss-name (push, "ZEROPAGE")
-Mouse mouse;
-#pragma bss-name (pop)
-
-#pragma bss-name (push, "ZEROPAGE")
-static uint8_t new_x, new_y;
-static int8_t x_velocity;
-static int8_t y_velocity;
-static uint8_t report[4];
-static bool p_left;
-static bool p_right;
-#pragma bss-name (pop)
+_Static_assert (sizeof (Mouse) == 4, "Mouse struct must be 4 bytes");
 
 extern Mouse mouse;
-#pragma zpsym("mouse")
-
-extern void __fastcall__ mouse_init(uint8_t x, uint8_t y);
-extern void __fastcall__ mouse_clear(void);
-extern void __fastcall__ mouse_update(void);
+#pragma zpsym("mouse");
+// Set this to the bit for the controller port that the mouse is read from.
+// If you are reading it in a standard port, then you just set this to 1
+extern uint8_t mouse_mask;
+#pragma zpsym("mouse_mask");
 
 #endif // mouse.h
-
-
-#define LATCH_PORT 0x4016
-#define DATA_PORT1 0x4016
-#define DATA_PORT2 0x4017
-
-// If the mouse is connected on the second
-// controller port, use DATA_PORT2 instead
-#define MOUSE_PORT DATA_PORT2
-// NOTE: If you wish to autodetect the mouse port or
-// make configurable, you can use a variable instead
-
-#pragma bss-name (push, "ZEROPAGE")
-Mouse mouse;
-#pragma bss-name (pop)
-
-#pragma bss-name (push, "ZEROPAGE")
-static uint8_t new_x, new_y;
-static int8_t x_velocity;
-static int8_t y_velocity;
-static uint8_t report[4];
-static bool p_left;
-static bool p_right;
-#pragma bss-name (pop)

@@ -129,13 +129,6 @@ uint16_t __fastcall__ hexToDec (uint16_t input);
 void _printDecimal (uint32_t args);
 
 /**
- * @brief Poll both controllers
- *
- * @note Stores the states in @c pad and @c pad_new automatically.
- */
-void pad_poll_both();
-
-/**
  * @brief Update the level completeness percentages
  *
  * @note Automatically accounts for the current level number

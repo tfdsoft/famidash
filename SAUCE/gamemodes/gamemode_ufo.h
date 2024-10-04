@@ -58,7 +58,7 @@ void ufo_movement(void){
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
 //	if (currplayer_vel_y != 0){
-//		if(pad_new[controllingplayer] & PAD_A) {
+//		if(controllingplayer->press_a) {
 //			cube_data = 2;
 //		}
 //	}
@@ -67,7 +67,7 @@ void ufo_movement(void){
 	if (currplayer_gravity){
 			//if(bg_coll_U2()) {
 		//		cube_data = 0;
-				if(pad_new[controllingplayer] & PAD_A) {
+				if(controllingplayer->press_a) {
 					if (!mini) currplayer_vel_y = 	UFO_JUMP_VEL^0xFFFF; // JUMP
 					else currplayer_vel_y = MINI_UFO_JUMP_VEL^0xFFFF; // JUMP
 				}
@@ -75,7 +75,7 @@ void ufo_movement(void){
 	} else {
 			//if(bg_coll_D2()) {
 			//	cube_data = 0;				
-				if(pad_new[controllingplayer] & PAD_A) {
+				if(controllingplayer->press_a) {
 					if (!mini) currplayer_vel_y = 	UFO_JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_UFO_JUMP_VEL; // JUMP
 				}

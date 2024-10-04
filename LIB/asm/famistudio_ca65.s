@@ -6487,11 +6487,13 @@ sample_play:
     iny
     lda (@sample_data_ptr),y ; Bank number
     jsr famistudio_dpcm_bank_callback
+    ; jroweboy - ADDED if carry is set from the bank callback skip playing the sample
+    bcs @exit
 .endif
 
     lda #%00011111 ; Start DMC
     sta FAMISTUDIO_APU_SND_CHN
-
+@exit:
     rts
 
 ;======================================================================================================================
