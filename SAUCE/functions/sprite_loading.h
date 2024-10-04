@@ -239,36 +239,36 @@ char sprite_load_special_behavior(){
 }
 
 void animate_coin_1() {    
-    activesprites_y_lo[index & 0x7F] -= high_byte(coin1_speed);
+    idx8_store(activesprites_y_lo, index, activesprites_y_lo[index] - high_byte(coin1_speed));
     coin1_speed -= 0x0040;
     coin1_timer++;
 
     if (coin1_timer == 40) {
-        activesprites_type[index & 0x7F] = 0xFF;
+        activesprites_type[index] = 0xFF;
         animating = 0;
     }	 
 }
 
 
 void animate_coin_2() {
-    activesprites_y_lo[index & 0x7F] -= high_byte(coin2_speed);
+    idx8_store(activesprites_y_lo, index, activesprites_y_lo[index] - high_byte(coin2_speed));
     coin2_speed -= 0x0040;
     coin2_timer++;
 
     if (coin2_timer == 40) {
-        activesprites_type[index & 0x7F] = 0xFF;
+        activesprites_type[index] = 0xFF;
         animating = 0;
     }	 
 }
 
 
 void animate_coin_3() {
-    activesprites_y_lo[index & 0x7F] -= high_byte(coin3_speed);
+    idx8_store(activesprites_y_lo, index, activesprites_y_lo[index] - high_byte(coin3_speed));
     coin3_speed -= 0x0040;
     coin3_timer++;
 
     if (coin3_timer == 40) {
-        activesprites_type[index & 0x7F] = 0xFF;
+        activesprites_type[index] = 0xFF;
         animating = 0;
     }	 
 }
