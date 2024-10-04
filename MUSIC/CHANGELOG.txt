@@ -460,15 +460,18 @@ Songs:
     + Added DPCM.09 and TRI.09 to match the rhythm of NOI.07
 	
 	
-==== Commit ?: ==== [alexmush] ====
+==== Commit 8fe10: ==== [alexmush] ====
 Songs:
   Hexagon Force:
     + Added toms @ TRI.0C.34-3F & NOI.09.34-3E
 	= Moved the pre-cymbal @ NOI.09.3E-3F -> ..3F
 
 
-==== negative shit still present:
-xStep:
-  - PU1.04.1C-1F less accurate to src [since 4437]
-  - Removed volume changes @ NOI.00.{08, 0C-12} [since 6e623]
-     = Removing just the ones @ NOI.0C-12 would actually make zero difference, but the NOI.00.08 changes everything
+==== Commit ?: ==== [alexmush] ====
+Songs:
+  xStep:
+    + Added vol 8 @ NOI.00.08 [reverts change @ 6e623]
+    + Added a portamento @ {PU1, TRI}.04.1C-1F [more accurate to src]
+	+ Made notes just A @ DPCM.{04, 05}.1D-1F [more accurate to src]
+	+ Added portamento @ PU1.00.{1E, 2C}
+	+ Added 200 @ PU2.05.3F because FS dumb, also fixed PU2.02 in FS
