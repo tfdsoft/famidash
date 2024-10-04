@@ -1008,8 +1008,8 @@ void state_menu() {
 			return;
 		}
 		if (mouse.left_press) {
-			if (mouse.y >= (currplayer_y_small - 8) && mouse.y <= (currplayer_y_small + 8)) {
-				if (mouse.x >= currplayer_x_small && mouse.x <= (currplayer_x_small + 16)) {
+			if ((uint8_t)(currplayer_y_small - 8) <= (uint8_t)mouse.y && (uint8_t)(currplayer_y_small + 8) >= (uint8_t)mouse.y) {
+				if (mouse.x >= currplayer_x_small && (uint8_t)(currplayer_x_small + 16) >= mouse.x) {
 					if (titlemode != 0xFF) {
 						titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
 						sfx_play(sfx_death,0);

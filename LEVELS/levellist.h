@@ -48,26 +48,6 @@
 #define DECOCLOUD 30
 #define EXTRASPRITES1 34
 
-const uint8_t difficulty_pal_A[] ={
-	0x21,	// easy
-	0x2A,	// normal
-	0x28,	// hard
-	0x16,	// harder
-	0x24,	// insane
-	0x16,	// demon
-	0x13,	// danger
-};
-
-const uint8_t difficulty_pal_B[] ={
-	0x06,	// easy
-	0x30,	// normal
-	0x30,	// hard
-	0x30,	// harder
-	0x06,	// insane
-	0x30,	// demon
-	0x21,	// danger
-};
-
 const uint8_t DECOTYPE[] = {
 	DECO1,
 	DECO1,

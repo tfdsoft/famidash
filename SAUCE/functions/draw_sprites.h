@@ -137,7 +137,8 @@ void draw_sprites(void){
 		
 		tmp2 = 0;
 		do {
-			trail_sprites_visible[tmp2] = trail_sprites_visible[tmp2 + 1];
+			__A__ = idx8_load(trail_sprites_visible, tmp2 + 1); __asm__("pha");	
+			idx8_store(trail_sprites_visible, tmp2, (__asm__("pla"), __A__));	// TODO: idx8_X or idxY_load_store macros, this is insane 
 		} while (++tmp2 < sizeof(trail_sprites_visible) - 1);
 
 		if (orbactive) {
@@ -182,7 +183,7 @@ void draw_sprites(void){
 
 void trail_loop() {
 	do {
-		if (trail_sprites_visible[tmp1 - 1]) {
+		if (idx8_load(trail_sprites_visible, tmp1 - 1)) {
 			oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
 		}
 		tmp5 = tmp5 - tmp6;
