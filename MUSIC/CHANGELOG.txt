@@ -112,6 +112,7 @@ Songs:
     = Changed port speed @ PU2.04.01
     = Changed ending duty @ PU2.1A.17
 
+
 ==== Commits a8dac & 668ee (applied @ 3a462): ==== [UserSniper] ====
 Songs:
   Time Machine:
@@ -140,6 +141,7 @@ Songs:
   Clutterfunk:
     = Added (barely noticeable) portamento @ PU1.07
     -r Removed note releases from DPCM.08-0A
+
 
 ==== Commits 25daa & 42cfb (applied @ 86c7a): ==== [UserSniper] ====
 Songs:
@@ -414,15 +416,24 @@ Songs:
   Menu Theme:
     + Replaced i0E "triangle pluck 4" with i2B "triangle pluck 3" @ TRI.01-02 [fixes change @ fe2b7]
 
-==== Commit ?: ==== [alexmush] ====
+==== Commit 093dc: ==== [alexmush] ====
 Songs:
   Jumper:
     + Tempo 175->179 (finally in sync with the level) [reverts change @ 5c8ce]
 
+
+==== Commit ?: ==== [alexmush] ====
+Songs:
+  Polargeist:
+    + Replaced i0D "triangle pluck" where S02/03 used to be with i2A "triangle pluck 2" and i2B "triangle pluck 3" @ TRI.{06, 07} [reverts/fixes change @ 149ed]
+    + Added note cuts to snares @ TRI.{03, 06, 07} [reverts change @ 149ed]
+    = Removed redundant note stops after i1C "tight triangle kick" @ TRI.09-0A [fixes change @ 149ed]
+    = Removed redundant note stop after the cut @ TRI.03.13
+	= Replaced the I14 w/ 20C @ PU1.0D.06 [compatible with FS]
+	
+	
+
 ==== negative shit still present:
-Polargeist:
-  - Replaced S02/03 with i0D "triangle pluck" @ TRI.{06, 07} [same effect as S01] [since 149ed]
-  - i1C "tight triangle kick" doesnt actually need the note stops [since 149ed]
 Base After Base:
   - DPCM doesnt match the rhythm of NOI.07 [since 4437]
 Can't Let Go:
