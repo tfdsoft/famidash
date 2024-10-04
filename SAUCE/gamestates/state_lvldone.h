@@ -768,6 +768,7 @@ void funsettings() {
 
 			}
 			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
+				gameState = last_gameState;
 				return;
 			}
 
