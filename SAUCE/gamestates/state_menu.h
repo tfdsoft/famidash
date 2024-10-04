@@ -34,7 +34,8 @@ const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(21, 11)),	// 1 
     LSB(NTADR_A(12, 17)),	// 2
     LSB(NTADR_A(18, 17)),	// 3
-    LSB(NTADR_A(9, 11)),	// 4
+    LSB(NTADR_A(27, 1)),	// 4
+    LSB(NTADR_A(9, 11)),	// 5 = 0
     LSB(NTADR_A(15, 11))	// 5 = 0
 };
 
@@ -44,7 +45,8 @@ const uint8_t hiNTAddrTableTitleScreen[]={
     MSB(NTADR_A(21, 11)),	// 1
     MSB(NTADR_A(12, 17)),	// 2
     MSB(NTADR_A(18, 17)),	// 3
-    MSB(NTADR_A(9, 11)),	// 4
+    MSB(NTADR_A(27, 1)),	// 4
+    MSB(NTADR_A(9, 11)),	// 5 = 0
     MSB(NTADR_A(15, 11))	// 5 = 0
 };
 
@@ -443,6 +445,21 @@ void state_menu() {
 	poweroffcheck = 0xff;
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
+
+
+	if (LEVELCOMPLETE[0] && 
+	LEVELCOMPLETE[2] && 
+	LEVELCOMPLETE[3] && 
+	LEVELCOMPLETE[4] && 
+	LEVELCOMPLETE[5] && 
+	LEVELCOMPLETE[6] && 
+	LEVELCOMPLETE[7] && 
+	LEVELCOMPLETE[8] && 
+	LEVELCOMPLETE[9] && 
+	LEVELCOMPLETE[0x0A] && 
+	LEVELCOMPLETE[0x0B] && 
+	LEVELCOMPLETE[0x0C]) all_levels_complete = 0xFC;
+
 	
 	ppu_off();
 	pal_bg(splashMenu);
@@ -538,6 +555,19 @@ void state_menu() {
 		//currplayer_gravity
 		//tmp2 tmp7
 		//tmpi8
+	if (all_levels_complete != 0xFC) {
+		one_vram_buffer(0x19, NTADR_A(27,2));
+		one_vram_buffer(0x1A, NTADR_A(28,2));
+		one_vram_buffer(0x2D, NTADR_A(27,3));
+		one_vram_buffer(0x4D, NTADR_A(28,3));
+	}
+	else {
+		one_vram_buffer(0x1B, NTADR_A(27,2));
+		one_vram_buffer(0x1C, NTADR_A(28,2));
+		one_vram_buffer(0x1D, NTADR_A(27,3));
+		one_vram_buffer(0x1E, NTADR_A(28,3));
+	}
+
 
 		if (currplayer_x_small <= 0xF7) {
 			switch (titlemode) {
@@ -937,17 +967,17 @@ void state_menu() {
 		tmp3 = 0;	
 		
 		if (pad_new[0] & PAD_RIGHT) {
-			if (menuselection == 4) menuselection = 0;
+			if (menuselection == 5) menuselection = 0;
 			else menuselection++;
 			tmp3--;
 		}
 		if (pad_new[0] & PAD_LEFT) {
-			if (menuselection == 0) menuselection = 4;
+			if (menuselection == 0) menuselection = 5;
 			else menuselection--;
 			tmp3++;
 		}
 
-		if (tmp3) {    // menu selection incremented
+		if (tmp3 ) {    // menu selection incremented
 			tmp4 = menuselection; ++tmp4;
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
 			one_vram_buffer('a', tmp5);
@@ -1032,7 +1062,18 @@ void state_menu() {
 			return;		
 		case 0x02: gameState = 4; return;
 		case 0x03: crossPRGBankJump0(settings); return;
-		case 0x04: customize_screen(); return;
+		case 0x04: 
+			if (all_levels_complete != 0xFC) { sfx_play(sfx_invalid, 0); }
+			else {
+				POKE(0x2005, 0x00);
+				POKE(0x2005, 0x00);
+				mmc3_disable_irq(); // reset scroll before playing
+				last_gameState = gameState;
+				gameState = 0xF0; // fun settings gamestate
+				return;
+			}
+			break;
+		case 0x05: customize_screen(); return;
 	};
 	
 }
