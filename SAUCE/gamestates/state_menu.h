@@ -947,7 +947,7 @@ void state_menu() {
 			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
 			tmp2 = (tmp3 & 0x3F);  		    
 				pal_col(0, tmp2);
-				pal_col(0x11, tmp2)
+				pal_col(0x11, tmp2);
 				// pal_col(1, oneShadeDarker(tmp2)); 
 				// pal_col(9, oneShadeDarker(tmp2)); 
 				pal_set_update();

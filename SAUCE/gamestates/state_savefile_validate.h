@@ -44,6 +44,7 @@ void state_savefile_validate(){
 
         savefile_reset_check_loop();
     }
+    ppu_wait_nmi();
 
     // if header is wrong //
     if (SRAM_VALIDATE[0] != 0x13 || SRAM_VALIDATE[1] != 0x37 || SRAM_VALIDATE[2] != FLAG_SAVE_VER) {
@@ -57,6 +58,7 @@ void state_savefile_validate(){
         
         savefile_reset_check_loop();
     }
+    ppu_wait_nmi();
     
     // if poweroff check is not zero //
     if (poweroffcheck) {

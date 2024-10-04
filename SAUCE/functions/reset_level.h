@@ -116,8 +116,10 @@ void reset_level(void) {
 	}
 
 	// since audio isn't playing at this point, we can put this in the DPCM bank
+	disable_dpcm_bankswitch = 1;
 	mmc3_set_prg_bank_0(GET_BANK(unrle_first_screen));
 	unrle_first_screen();
+	disable_dpcm_bankswitch = 0;
 	if (has_practice_point) {
 
 		tmp3 = practice_bg_color_type;

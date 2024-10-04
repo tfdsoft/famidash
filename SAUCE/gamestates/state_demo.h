@@ -114,17 +114,24 @@ void state_demo(){
 		POKE(0x4011, fc_mic_poll()<<4);
 	}
 	*/
+	ppu_wait_nmi();
 	
 	do {
 		oam_clear();
        	crossPRGBankJump0(mouse_and_cursor);
 		newrand();
 	    kandoframecnt++;
-       	    	
-		if (SRAM_VALIDATE[0] == 0x13 && (joypad1.press | joypad2.press | mouse.left_press | mouse.right_press)) { gameState = 0x01; return; }		
+		
+		if (SRAM_VALIDATE[0] == 0x13 &&
+			(joypad1.press || (mouse.connected)
+				? mouse.left_press || mouse.right_press
+				: joypad2.press)) {
+					gameState = 0x01; return;
+		}
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
+
 	tmp1 = 0;
 	do {
 		oam_clear();
@@ -132,12 +139,17 @@ void state_demo(){
 		newrand();
 	    kandoframecnt++;
        	    	
-		if (SRAM_VALIDATE[0] == 0x13 && (joypad1.press | joypad2.press | mouse.left_press | mouse.right_press)) { gameState = 0x01; return; }		
+		if (SRAM_VALIDATE[0] == 0x13 &&
+			(joypad1.press || (mouse.connected)
+				? mouse.left_press || mouse.right_press
+				: joypad2.press)) {
+				gameState = 0x01; return;
+		}
 		ppu_wait_nmi();
 		tmp1++;
 		set_scroll_x(tmp1<<2);
-		
 	} while (tmp1 < 64);
+
 	tmp1 = 0;
 	set_scroll_x(256);
 	do {
@@ -145,9 +157,12 @@ void state_demo(){
 		crossPRGBankJump0(mouse_and_cursor);
 		newrand();
 	    kandoframecnt++;
-		
-       	    	
-		if (SRAM_VALIDATE[0] == 0x13 && (joypad1.press | joypad2.press | mouse.left_press | mouse.right_press)) { gameState = 0x01; return; }		
+		if (SRAM_VALIDATE[0] == 0x13 &&
+			(joypad1.press || (mouse.connected)
+				? mouse.left_press || mouse.right_press
+				: joypad2.press)) {
+					gameState = 0x01; return;
+		}
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);

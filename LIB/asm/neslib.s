@@ -13,7 +13,7 @@
 
 
 	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
-	.export _pal_bright,_pal_spr_bright,_pal_bg_bright
+	.export _pal_bright
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
 	.export _oam_clear,_oam_clear_player,__oam_spr,__oam_meta_spr,_oam_clear_two_players
 	;.export _oam_hide_rest,_oam_size,_bank_bg,_rand8
@@ -43,6 +43,7 @@ nmi:
     sta mmc3IRQJoever
 
 	lda <PPU_MASK_VAR	;if rendering is disabled, do not access the VRAM at all
+	sta PPU_MASK
 	and #%00011000
 	bne @renderingOn
 	jmp	@skipAll
@@ -64,7 +65,12 @@ nmi:
   ; If nametables are updating, don't do the palette update this frame
 	lda <NAME_UPD_ENABLE
 	beq @checkPal
+  ; don't run palette switches on the same frame that we flush vram to save time
+  lda VRAM_BUF
+  cmp #$ff
+  beq @checkPal
 	  jsr _flush_vram_update2
+    jmp @skipUpd
 @checkPal:
 	lda <PAL_UPDATE		;update palette if needed
 	bne @updPal
@@ -79,34 +85,36 @@ nmi:
 	sta PPU_ADDR
 	stx PPU_ADDR
 
-	ldy PAL_BUF				;background color, remember it in X
-	lda (PAL_BG_PTR),y
-	sta PPU_DATA
-	tax
+  lda #<PAL_BUF
+  jsr popslide_buffer
+	; ldy PAL_BUF				;background color, remember it in X
+	; lda (PAL_BG_PTR),y
+	; sta PPU_DATA
+	; tax
 	
-	.repeat 3,I
-	ldy PAL_BUF+1+I
-	lda (PAL_BG_PTR),y
-	sta PPU_DATA
-	.endrepeat
+	; .repeat 3,I
+	; ldy PAL_BUF+1+I
+	; lda (PAL_BG_PTR),y
+	; sta PPU_DATA
+	; .endrepeat
 
-	.repeat 3,J		
-	stx PPU_DATA			;background color
-	.repeat 3,I
-	ldy PAL_BUF+5+(J*4)+I
-	lda (PAL_BG_PTR),y
-	sta PPU_DATA
-	.endrepeat
-	.endrepeat
+	; .repeat 3,J		
+	; stx PPU_DATA			;background color
+	; .repeat 3,I
+	; ldy PAL_BUF+5+(J*4)+I
+	; lda (PAL_BG_PTR),y
+	; sta PPU_DATA
+	; .endrepeat
+	; .endrepeat
 
-	.repeat 4,J		
-	stx PPU_DATA			;background color
-	.repeat 3,I
-	ldy PAL_BUF+17+(J*4)+I
-	lda (PAL_SPR_PTR),y
-	sta PPU_DATA
-	.endrepeat
-	.endrepeat
+	; .repeat 4,J		
+	; stx PPU_DATA			;background color
+	; .repeat 3,I
+	; ldy PAL_BUF+17+(J*4)+I
+	; lda (PAL_SPR_PTR),y
+	; sta PPU_DATA
+	; .endrepeat
+	; .endrepeat
 
 @skipUpd:
 
@@ -135,9 +143,6 @@ nmi:
   jsr calculate_extra_fields
 
 @skipAll:
-
-	lda <PPU_MASK_VAR
-	sta PPU_MASK
 
 	inc <FRAME_CNT1
 	inc <FRAME_CNT2
@@ -258,39 +263,52 @@ _pal_clear:
 
 ;void __fastcall__ pal_spr_bright(uint8_t bright);
 
-_pal_spr_bright:
+; _pal_spr_bright:
 
-	tax
-	lda palBrightTableL,x
-	sta <PAL_SPR_PTR
-	lda palBrightTableH,x	;MSB is never zero
-	sta <PAL_SPR_PTR+1
-	sta <PAL_UPDATE
-	rts
+; 	tax
+; 	lda palBrightTableL,x
+; 	sta <PAL_SPR_PTR
+; 	lda palBrightTableH,x	;MSB is never zero
+; 	sta <PAL_SPR_PTR+1
+; 	sta <PAL_UPDATE
+; 	rts
 
 
 
-;void __fastcall__ pal_bg_bright(uint8_t bright);
+; ;void __fastcall__ pal_bg_bright(uint8_t bright);
 
-_pal_bg_bright:
+; _pal_bg_bright:
 
-	tax
-	lda palBrightTableL,x
-	sta <PAL_BG_PTR
-	lda palBrightTableH,x	;MSB is never zero
-	sta <PAL_BG_PTR+1
-	sta <PAL_UPDATE
-	rts
+; 	tax
+; 	lda palBrightTableL,x
+; 	sta <PAL_BG_PTR
+; 	lda palBrightTableH,x	;MSB is never zero
+; 	sta <PAL_BG_PTR+1
+; 	sta <PAL_UPDATE
+; 	rts
 
 
 
 ;void __fastcall__ pal_bright(uint8_t bright);
 
 _pal_bright:
-
-	jsr _pal_spr_bright
-	txa
-	jmp _pal_bg_bright
+  tax
+	lda palBrightTableL,x
+	sta <PAL_PTR
+	lda palBrightTableH,x	;MSB is never zero
+	sta <PAL_PTR+1
+  ldx #32 - 1
+@loop:
+    ldy PAL_BUF_RAW, x
+    lda (PAL_PTR), y
+    sta PAL_BUF,x
+    dex
+    bpl @loop
+	sta <PAL_UPDATE
+  rts
+	; jsr _pal_spr_bright
+	; txa
+	; jmp _pal_bg_bright
 
 
 
@@ -738,7 +756,19 @@ _split:
 
 	rts
 
-
+.proc popslide_buffer
+  tsx
+  stx SP_TEMP
+  tax
+  txs
+.repeat 32
+  pla
+  sta PPU_DATA
+.endrepeat
+  ldx SP_TEMP
+  txs
+  rts
+.endproc
 
 ;void __fastcall__ bank_spr(uint8_t n);
 

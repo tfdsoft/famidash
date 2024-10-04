@@ -22,7 +22,8 @@
 
 VRAM_BUF=__VRAM_BUF_START__
 OAM_BUF=__OAM_BUF_START__
-PAL_BUF=__PAL_BUF_START__
+PAL_BUF_RAW=__PAL_BUF_START__
+PAL_BUF=PAL_BUF_RAW+$20
 
 ; .importzp _PAD_STATE, _PAD_STATET ;added
 .include "zeropage.inc"
@@ -55,8 +56,9 @@ VRAM_UPDATE: 		.res 1
 ; NAME_UPD_ADR: 		.res 2
 NAME_UPD_ENABLE: 	.res 1
 PAL_UPDATE: 		.res 1
-PAL_BG_PTR: 		.res 2
-PAL_SPR_PTR: 		.res 2
+; PAL_BG_PTR: 		.res 2
+; PAL_SPR_PTR: 		.res 2
+PAL_PTR:            .res 2
 SCROLL_X: 			.res 1
 SCROLL_Y: 			.res 1
 SCROLL_X1: 			.res 1
@@ -84,6 +86,8 @@ SCRX		=TEMP+5
 SCRY		=TEMP+6
 SRC			=TEMP+7	;word
 DST			=TEMP+9	;word
+
+SP_TEMP     =TEMP+7
 
 RLE_LOW		=TEMP
 RLE_HIGH	=TEMP+1

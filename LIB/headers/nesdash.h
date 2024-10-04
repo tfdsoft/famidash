@@ -170,9 +170,17 @@ extern uint8_t auto_fs_updates;
 // set palette color, index 0..31
 // completely inlines and replaces neslib's
 extern uint8_t PAL_UPDATE;
+extern uint8_t* PAL_PTR;
+#pragma zpsym("PAL_PTR")
+extern uint8_t PAL_BUF_RAW[32];
 extern uint8_t PAL_BUF[32];
 #pragma zpsym("PAL_UPDATE")
-#define pal_col(index, color) PAL_BUF[index&0x1F] = (color);
+#define pal_col(index, color) ( \
+    PAL_BUF_RAW[index&0x1F] = (color), \
+    __A__ = (color), __asm__("tay"), \
+    __asm__("lda (%v), y", PAL_PTR), \
+    PAL_BUF[index&0x1F] = __A__)
+
 #define pal_set_update() ++PAL_UPDATE;
 
 // Uses the neslib table
