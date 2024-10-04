@@ -10,7 +10,7 @@ void ball_movement(void){
 	// currplayer_gravity
 	// currplayer_vel_y is signed
 
-	if ((pad_new[controllingplayer] & PAD_A) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+	if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
 	if (gamemode == 7) {
 
@@ -46,7 +46,7 @@ void ball_movement(void){
 		Generic.y = high_byte(currplayer_y) + 1;
 	}
 
-	if (pad_new[controllingplayer] & PAD_A) idx8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
+	if (controllingplayer->press_a) idx8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
 
 	ball_eject();
 
@@ -92,7 +92,7 @@ void ball_movement(void){
 	}
 
 	if (gamemode == 2) {
-		if ((pad[controllingplayer] & PAD_A) && (kandotemp2[currplayer] == 0) && currplayer_vel_y == 0){
+		if ((controllingplayer->a) && (kandotemp2[currplayer] == 0) && currplayer_vel_y == 0){
 			currplayer_gravity ^= 0x01;
 			kandotemp2[currplayer] = 1;
 			switch (currplayer_gravity){
@@ -102,14 +102,14 @@ void ball_movement(void){
 			bg_coll_floor_spikes();
 		}
 		if(kandotemp2[currplayer] == 1){
-			if (!(pad[controllingplayer] & PAD_A)){
+			if (!(controllingplayer->a)){
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 				kandotemp2[currplayer] = 0;			
 			}
 		}
 	}
 	else {
-		if ((pad_new[controllingplayer] & PAD_A)){
+		if ((controllingplayer->press_a)){
 			currplayer_gravity ^= 0x01;
 			bg_coll_floor_spikes();
 		}

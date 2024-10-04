@@ -126,7 +126,7 @@ void levelselection() {
 			low_byte(tmp8) >>= 1;
 		high_byte(tmp8) = low_byte(tmp8)^0xff;
 
-		if (mouse.left.click) {
+		if (mouse.left_press) {
 			if (mouse.y >= 0x6E && mouse.y <= 0x7B) {
 				if (mouse.x >= 0x09 && mouse.x <= 0x15) {
 					leveldec();
@@ -147,22 +147,22 @@ void levelselection() {
 
 		//if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
-		if (pad_new[0] & (PAD_START | PAD_A)){
+		if (joypad1.press & (PAD_START | PAD_A)){
 			start_the_level();
 			return;
 		}
 
-		if (pad_new[0] & (PAD_B)){
+		if (joypad1.press_b){
 			kandowatchesyousleep = 0;
 			return;
 		}
 			
 			
-		if (pad_new[0] & PAD_RIGHT){
+		if (joypad1.press_right){
 			levelinc();
 		//	break;
 		}
-		if (pad_new[0] & PAD_LEFT){
+		if (joypad1.press_left){
 			leveldec();
 		}
 
@@ -198,10 +198,10 @@ const uint8_t hiNTAddrTableCustomizeScreen[] = {
 };
 
 void updateColors() {
-	if (pad_new[0] & PAD_UP) {
+	if (joypad1.press_up) {
 		crossPRGBankJump0(colorinc);
 	}
-	if (pad_new[0] & PAD_DOWN) { 
+	if (joypad1.press_down) { 
 		crossPRGBankJump0(colordec);
 	}
 	//if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) icon_colors[settingvalue] = 0x0D;	
@@ -267,7 +267,7 @@ void customize_screen() {
 	
 //mouse stuff
 
-		if (mouse.left.click) {
+		if (mouse.left_press) {
 //icon
 			if ((mouse.x >= 0x76 && mouse.x <= 0x83)) { 
 				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
@@ -334,22 +334,22 @@ void customize_screen() {
 			one_vram_buffer('d'+0x6E, NTADR_A(16,9));			
 		}
 		if (settingvalue == 3 && !retro_mode) {
-			if (pad_new[0] & PAD_UP) {
+			if (joypad1.press_up) {
 				icon++;
 				if (icon > (MAX_ICONS - 1)) icon = 0;
 			}
-			if (pad_new[0] & PAD_DOWN) {
+			if (joypad1.press_down) {
 				if (icon == 0) icon = MAX_ICONS - 1;
 				else icon--;
 			}
 		} else if (settingvalue != 3) updateColors();
 
-		if (pad_new[0] & PAD_RIGHT) {
+		if (joypad1.press_right) {
 			settingvalue++;
 			if (settingvalue == 4) settingvalue = 0;
 			tmp3--;
 		}
-		if (pad_new[0] & PAD_LEFT) {
+		if (joypad1.press_left) {
 			if (settingvalue == 0) settingvalue = 3;
 			else settingvalue--;
 			tmp3++;
@@ -371,7 +371,7 @@ void customize_screen() {
 			one_vram_buffer(' ', tmp5 + VRAM_OFF(0, 1));
 		}
 
-		if (pad_new[0] & PAD_B) {
+		if (joypad1.press_b) {
 			return;
 		}
 		dec_mouse_timer();
@@ -519,7 +519,7 @@ void state_menu() {
 
 	speed = 1;
  	ppu_on_all();
-	pad_new[0] = 0;
+	joypad1.press = 0;
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;
 	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
@@ -533,7 +533,7 @@ void state_menu() {
 	titlecolor3 = color3;
 	titlecolor2 = color2;
 	titlecolor1 = color1;
-	while (!(pad_new[0] & PAD_START) && !(pad_new[0] & PAD_A)){
+	while (!(joypad1.press & (PAD_START | PAD_A))){
 
 		pal_col(0x11,titlecolor3);
 		pal_col(0x12,titlecolor1);
@@ -966,12 +966,12 @@ void state_menu() {
 		dec_mouse_timer();
 		tmp3 = 0;	
 		
-		if (pad_new[0] & PAD_RIGHT) {
+		if (joypad1.press_right) {
 			if (menuselection == 5) menuselection = 0;
 			else menuselection++;
 			tmp3--;
 		}
-		if (pad_new[0] & PAD_LEFT) {
+		if (joypad1.press_left) {
 			if (menuselection == 0) menuselection = 5;
 			else menuselection--;
 			tmp3++;
@@ -989,7 +989,7 @@ void state_menu() {
 			one_vram_buffer(' ', tmp5);
 			one_vram_buffer(' ', addloNOC(tmp5, 1));
 		}
-		if (pad_new[0] & PAD_SELECT) {
+		if (joypad1.press_select) {
 				tmp2 = 0;
 				gameState = 0;
 				famistudio_music_stop();
@@ -1002,12 +1002,12 @@ void state_menu() {
 		edit_irq_table(low_byte(tmp8), 2); 
 
 
-		if (pad_new[0] & PAD_B) {
+		if (joypad1.press_b) {
 			oam_clear();
 			gameState = 0xFE;
 			return;
 		}
-		if (mouse.left.click) {
+		if (mouse.left_press) {
 			if (mouse.y >= (currplayer_y_small - 8) && mouse.y <= (currplayer_y_small + 8)) {
 				if (mouse.x >= currplayer_x_small && mouse.x <= (currplayer_x_small + 16)) {
 					if (titlemode != 0xFF) {
@@ -1086,16 +1086,13 @@ void state_menu() {
 
 
 void mouse_and_cursor() {
-	crossPRGBankJump0(mouse_update);	
-	pad_poll(0);
 	if (mouse.connected) {
-		if (mouse.left.press || mouse.left.click || mouse.right.press || mouse.right.click) mouse_timer = 120;
-		if (mouse.right.click) pad_new[0] |= PAD_B;
-		if (mouse.right.press) pad[0] |= PAD_B;
+		if (mouse.left || mouse.right) mouse_timer = 120;
+		if (mouse.right_press) joypad1.press_b = true;
+		if (mouse.right) joypad1.b = true;
 		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
 		if (kandoframecnt > 0xFC) kandoframecnt = 0;
 		if (gameState != 2) { if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA1 + (2*mouseframe)), 2); }
-		
 	}
 }
 

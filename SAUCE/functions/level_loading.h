@@ -50,7 +50,7 @@ void increase_parallax_scroll_column() {
 	}
 }
 
-#pragma code-name(push, "CODE_2")
+#pragma code-name(push, "DMC_BANK_01")
 extern unsigned char drawing_frame;
 void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// register unsigned char i;

@@ -106,8 +106,8 @@ sprite_data = _sprite_data
 .export _auto_fs_updates := auto_fs_updates
 .export _hexToDecOutputBuffer := hexToDecOutputBuffer
 
-.export _pad = PAD_STATEP
-.export _pad_new = PAD_STATET
+; .export _pad = PAD_STATEP
+; .export _pad_new = PAD_STATET
 
 ; Standard for function declaration here:
 ; C function name
@@ -1793,6 +1793,11 @@ music_counts:
 .segment "CODE_2"
 
 .proc famistudio_dpcm_bank_callback
+	ldx _has_practice_point
+	beq :+
+		sec
+		rts
+	:
 	clc
 	adc #<FIRST_DMC_BANK
 	jmp mmc3_set_prg_bank_0
@@ -3296,21 +3301,7 @@ SampleRate_PAL:
 
 .endproc
 
-; void pad_poll_both();
 .segment "CODE_2"
-
-.export _pad_poll_both
-.proc _pad_poll_both
-	LDA #0
-	jsr _pad_poll
-	; returns 0 in X, but LDA #1 is faster anyway
-	LDA #1
-	jsr _pad_poll
-	; returns 0 in X, return nothing
-	txa
-	rts
-.endproc
-
 
 ; void update_level_completeness();
 .segment "CODE_2"

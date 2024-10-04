@@ -336,7 +336,7 @@ void state_lvldone() {
 
 			crossPRGBankJump0(mouse_and_cursor);
 
-			if (mouse.left.click) {
+			if (mouse.left_press) {
 				if (mouse.y >= 0xC5 && mouse.y <= 0xE3) {
 					if (mouse.x >= 0x36 && mouse.x <= 0x53) {
 						sfx_play(sfx_start_level, 0);
@@ -361,9 +361,9 @@ void state_lvldone() {
 				}
 			}
 
-			if (pad_new[0] & PAD_LEFT) menuselection ^= 1;
-			if (pad_new[0] & PAD_RIGHT) menuselection ^= 1;
-			if (pad_new[0] & PAD_START){
+			if (joypad1.press_left) menuselection ^= 1;
+			if (joypad1.press_right) menuselection ^= 1;
+			if (joypad1.press_start){
 				if (menuselection) {
 					
 					sfx_play(sfx_exit_level, 0);
@@ -551,7 +551,7 @@ void bgmtest() {
 		 // read the first controller
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (mouse.left.click) {
+		if (mouse.left_press) {
 			if ((mouse.x >= 0x63 && mouse.x <= 0x8C)) {
 				if (mouse.y >= 0x34 && mouse.y <= 0x3A) {		
 					settingvalue = 0;
@@ -617,23 +617,23 @@ void bgmtest() {
 		if (settingvalue == 0) {
 			one_vram_buffer('c', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
-			if (pad_new[0] & PAD_RIGHT) { song++; if (song == song_max) {song = 0;} }
-			if (pad_new[0] & PAD_LEFT) { if (song == 0) {song = song_max - 1;} else song--; }
-			if (pad_new[0] & PAD_A) music_play(song);
+			if (joypad1.press_right) { song++; if (song == song_max) {song = 0;} }
+			if (joypad1.press_left) { if (song == 0) {song = song_max - 1;} else song--; }
+			if (joypad1.press_a) music_play(song);
 		}		
 		else if (settingvalue == 1) {
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer('c', NTADR_A(11, 14));
-			if (pad_new[0] & PAD_RIGHT) { sfx++; if (sfx == sfx_max) {sfx= 0;} };
-			if (pad_new[0] & PAD_LEFT) { if (sfx == 0) {sfx = sfx_max - 1;} else sfx--; }
-			if (pad_new[0] & PAD_A) sfx_play(sfx, 0);
+			if (joypad1.press_right) { sfx++; if (sfx == sfx_max) {sfx= 0;} };
+			if (joypad1.press_left) { if (sfx == 0) {sfx = sfx_max - 1;} else sfx--; }
+			if (joypad1.press_a) sfx_play(sfx, 0);
 		}
 
-		if (pad_new[0] & PAD_DOWN) settingvalue ^= 1;
-		if (pad_new[0] & PAD_UP) settingvalue ^= 1;
+		if (joypad1.press_down) settingvalue ^= 1;
+		if (joypad1.press_up) settingvalue ^= 1;
 		
-		if (pad_new[0] & PAD_SELECT) famistudio_music_stop();
-		if (pad_new[0] & PAD_B) {
+		if (joypad1.press_select) famistudio_music_stop();
+		if (joypad1.press_b) {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
@@ -645,7 +645,7 @@ void bgmtest() {
 				
 		
 		// sound test codes
-		if (pad_new[0] & PAD_START) {
+		if (joypad1.press_start) {
 			code_checker();
 			if (gameState == 0xF0) return;
 		}
@@ -738,7 +738,7 @@ void funsettings() {
 
 		crossPRGBankJump0(mouse_and_cursor);
 		 // read the first controller
-		if (mouse.left.click) {
+		if (mouse.left_press) {
 			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
 				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
 					settingvalue = 0; set_fun_settings();
@@ -795,12 +795,12 @@ void funsettings() {
 
 		tmp1 = settingvalue;
 
-		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
+		if (joypad1.press & (PAD_RIGHT | PAD_DOWN)) {
 			if (settingvalue == 6) { settingvalue = 0; }
 			else { settingvalue++;  }
 		}
 
-		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
+		if (joypad1.press & (PAD_LEFT | PAD_UP)) {
 			if (settingvalue == 0) { settingvalue = 6; }
 			else { settingvalue--;  }
 		}
@@ -820,11 +820,11 @@ void funsettings() {
 		else if (discomode & 0x01) { one_vram_buffer('1' - 0x20, NTADR_A(25, 13));}
 		else { one_vram_buffer(' '-0x01, NTADR_A(25, 13)); one_vram_buffer(0x0F, NTADR_A(26, 13)); }
 
-		if (pad_new[0] & (PAD_START | PAD_A)) {
+		if (joypad1.press & (PAD_START | PAD_A)) {
 			set_fun_settings();
 		}
 			
-		if (pad_new[0] & PAD_B) {
+		if (joypad1.press_b) {
 			// one_vram_buffer(' ', NTADR_A(6, 8));
 			// one_vram_buffer(' ', NTADR_A(6, 12));
 			// one_vram_buffer(' ', NTADR_A(6, 16));
@@ -937,7 +937,7 @@ void settings() {
 
 		tmp1 = settingvalue;
 
-		if (mouse.left.click) {
+		if (mouse.left_press) {
 			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
 				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
 					settingvalue = 0; set_settings();
@@ -968,12 +968,12 @@ void settings() {
 
 		}	
 
-		if (pad_new[0] & (PAD_RIGHT | PAD_DOWN)) {
+		if (joypad1.press & (PAD_RIGHT | PAD_DOWN)) {
 			if (settingvalue == 7) { settingvalue = 0;  }
 			else { settingvalue++;   }
 		}
 
-		if (pad_new[0] & (PAD_LEFT | PAD_UP)) {
+		if (joypad1.press & (PAD_LEFT | PAD_UP)) {
 			if (settingvalue == 0) { settingvalue = 7;  }
 			else { settingvalue--;   }
 		}
@@ -985,7 +985,7 @@ void settings() {
 			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
 		}
 		
-		if (pad_new[0] & (PAD_A | PAD_START)) {
+		if (joypad1.press & (PAD_A | PAD_START)) {
 			set_settings();
 		}
 		if (options & platformer) {
@@ -994,7 +994,7 @@ void settings() {
 		}
 		if (twoplayer) options &= platformer^0xff;		
 
-		if (pad_new[0] & PAD_B) {
+		if (joypad1.press_b) {
 			return;
 		}
 		kandoframecnt++;
@@ -1020,7 +1020,7 @@ void set_settings() {
 		case 6:
 			trails = trails == 2 ? 0 : trails + 1; break;					
 		case 7:
-			if (pad[0] & PAD_A && pad_new[0] & PAD_START) {
+			if (joypad1.a && joypad1.press_start) {
 				setdefaultoptions();
 				__asm__("JMP ($FFFC)");	// restart the game lmao	
 			}

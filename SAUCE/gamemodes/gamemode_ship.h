@@ -47,7 +47,7 @@ void ship_movement(void){
 	Generic.x = high_byte(currplayer_x); // the rest should be the same
 	
 
-	if(pad[controllingplayer] & PAD_A) {
+	if(controllingplayer->a) {
 		if (!mini) {
 			if (!currplayer_gravity){
 			    currplayer_vel_y -= SHIP_GRAVITY<<1;

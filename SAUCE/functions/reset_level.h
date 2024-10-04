@@ -115,6 +115,8 @@ void reset_level(void) {
 	invincible_counter = 8;
 	}
 
+	// since audio isn't playing at this point, we can put this in the DPCM bank
+	mmc3_set_prg_bank_0(GET_BANK(unrle_first_screen));
 	unrle_first_screen();
 	if (has_practice_point) {
 

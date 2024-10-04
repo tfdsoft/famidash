@@ -22,9 +22,8 @@ void state_sorrynothing() {
     while (1) {
         ppu_wait_nmi();
         music_update();
-        pad_poll_both();
 
-        if (pad[0] & PAD_B) {
+        if (joypad1.b) {
             set_scroll_x(0);
             return;
         }

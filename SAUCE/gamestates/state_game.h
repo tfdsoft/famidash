@@ -145,6 +145,7 @@ void state_game(){
 
     
 	currplayer = 0;
+	controllingplayer = &joypad1;
 	current_transition_timer_length = 0;
 	reset_level();
 
@@ -239,34 +240,35 @@ void state_game(){
 			set_player_banks();
 
 			if (!kandodebugmode) {
-				crossPRGBankJump0(mouse_update);
-				pad_poll(0); // read the first controller
+				// crossPRGBankJump0(mouse_update);
+				// pad_poll(0); // read the first controller
 			}
 			else {
 				crossPRGBankJump0(mouse_and_cursor);
 			}
 
-			if (mouse.left.click) pad_new[0] |= PAD_A;
-			if (mouse.left.press) pad[0] |= PAD_A;
+			if (mouse.left_press) joypad1.press_a = 1;
+			if (mouse.left) joypad1.a = 1;
 
 			if (options & platformer) twoplayer = 0;
 
 			if ((options & oneptwoplayer) && twoplayer) {
-				pad[1] = pad[0]<<1; // read the second controller
-				pad_new[1] = pad_new[0]<<1;
+				// yo actually wtf is this
+				joypad2.hold = joypad1.hold<<1; // read the second controller
+				joypad2.press = joypad1.press<<1;
 				dual = 1;
 			}
 			else if (twoplayer) {
-				pad_poll(1); // read the second controller
+				// pad_poll(1); // read the second controller
 				dual = 1;
 			}
 			
-			if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
+			if (!(joypad1.a)) dashing[0] = 0;
 
 			//mouse debug here
 			if (kandodebugmode) {
 				
-				if (mouse.left.press) {
+				if (mouse.left_press) {
 					kandodebug2 = 1;
 					//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
 					target_x_scroll_stop = 0xE000;
@@ -286,17 +288,16 @@ void state_game(){
 			//end mouse debug
 			
 			if (options & jumpsound) {
-				if (pad_new[0] & PAD_A) {
+				if (joypad1.press_a) {
 					sfx_play(sfx_click, 0);
 				}
 			}
 
 
 
-			if (pad_new[0] & PAD_START || mouse.right.click) {
-
-				pad_new[0] = 0;
-				mouse.right.click = 0;
+			if (joypad1.press_start || mouse.right_press) {
+				joypad1.press = 0;
+				mouse.right_press = 0;
 				famistudio_music_pause(1);
 				famistudio_update();
 				color_emphasis(COL_EMP_DARK);
@@ -305,39 +306,37 @@ void state_game(){
 				// vram_adr(NAMETABLE_B);
 				// vram_unrle(pausescreen); 	
 				// ppu_on_all();
-				while (!(pad_new[0] & PAD_START) && !(mouse.right.click)) {
-					crossPRGBankJump0(mouse_update);				
-					pad_poll(0); // read the first controller
-					if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_B)) {
+				while (!(joypad1.press_start) && !(mouse.right_press)) {
+					if ((joypad1.up) && (joypad1.press_b)) {
 						kandokidshack3++;
 					}
 
-					else if ((pad_new[controllingplayer] & PAD_B || mouse.left.click) && PRACTICE_ENABLED) {
+					else if ((controllingplayer->press_b || mouse.left_press) && PRACTICE_ENABLED) {
 						mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
 						reset_game_vars();
 						has_practice_point = 1;
-						pad_new[0] = PAD_START;
+						joypad1.press = PAD_START;
 					}
-					if (pad_new[0] & PAD_SELECT) { 
+					if (joypad1.press_select) { 
 						gameState = 1; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
 						crossPRGBankJump0(gameboy_check);
 						return;
 					}
-					if ((pad_new[0] & PAD_RIGHT) && DEBUG_MODE) {
+					if ((joypad1.press_right) && DEBUG_MODE) {
 						speed == 4 ? speed = 0 : speed++;
 					}
-					if ((pad_new[0] & PAD_LEFT) && DEBUG_MODE) {
+					if ((joypad1.press_left) && DEBUG_MODE) {
 						gravity_mod == 4 ? gravity_mod = 0 : gravity_mod++;
 					}
-					if ((pad[0] & PAD_DOWN) && (pad_new[0] & PAD_A)) {
+					if ((joypad1.down) && (joypad1.press_a)) {
 						kandokidshack++;
 					}
-					else if ((pad[0] & PAD_UP) && (pad_new[0] & PAD_A)) {
+					else if ((joypad1.up) && (joypad1.press_a)) {
 						kandokidshack2++;
 					}
-					else if ((pad_new[0] & PAD_A) && DEBUG_MODE) {
+					else if ((joypad1.press_a) && DEBUG_MODE) {
 	#ifdef FLAG_KANDO_FUN_STUFF
 						gamemode == 8 ? gamemode = 0 : gamemode++;
 	#else
@@ -362,24 +361,24 @@ void state_game(){
 				else kandokidshack3 = 0;
 			}
 		if (options & debugtoggle) {
-			if (pad_new[0] & PAD_SELECT) //THE BIG DEBUG - DISABLE BEFORE RELEASE
+			if (joypad1.press_select) //THE BIG DEBUG - DISABLE BEFORE RELEASE
 				{ 
 					DEBUG_MODE = !DEBUG_MODE; 
 					cube_data[0] &= 2; 
 					cube_data[1] &= 2; 
 				}		
 		}
-		if ((pad_new[controllingplayer] & PAD_B) && has_practice_point) crossPRGBankJump0(reset_game_vars);
+		if ((controllingplayer->press_b) && has_practice_point) crossPRGBankJump0(reset_game_vars);
 
-		if (pad_new[0] & PAD_UP && DEBUG_MODE) {
+		if (joypad1.press_up && DEBUG_MODE) {
 			currplayer_gravity ^= 0x01;
 		}
 		
-		if (pad_new[0] & PAD_DOWN && DEBUG_MODE) {
+		if (joypad1.press_down && DEBUG_MODE) {
 			mini ^= 1;
 		}
 
-		if (pad[0] & PAD_SELECT && DEBUG_MODE) {
+		if (joypad1.select && DEBUG_MODE) {
 		    if (++END_LEVEL_TIMER > 60) {
 			END_LEVEL_TIMER = 0;
 			gameState = 3;
@@ -472,8 +471,8 @@ void state_game(){
 		
 		if (dual) { 
 			currplayer = 1;					//take focus
-			if (!(pad[currplayer] & PAD_A)) dashing[currplayer] = 0;
-			if (twoplayer) controllingplayer = 1;		//take controls
+			if (!(joypad2.a)) dashing[1] = 0;
+			if (twoplayer) controllingplayer = &joypad2;		//take controls
 			if (dual && (options & platformer) && !twoplayer) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
 			else if (dual && !(options & platformer)) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
 
@@ -485,7 +484,7 @@ void state_game(){
 				currplayer_gravity = player_gravity[1];
 			}
 
-			if (pad_new[controllingplayer] & PAD_UP && DEBUG_MODE) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
+			if (controllingplayer->press_up && DEBUG_MODE) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
 
 			crossPRGBankJump0(movement);
 
@@ -497,7 +496,7 @@ void state_game(){
 
 			currplayer = 0;					//give back focus
 
-			if (twoplayer) controllingplayer = 0;		//give back controls
+			if (twoplayer) controllingplayer = &joypad1;		//give back controls
 
 			{
 				player_x[1] = currplayer_x;

@@ -41,6 +41,9 @@ void main(){
 	// both bg and sprites are set to 0 by default
 	bank_spr(1);
 
+	mouse.x = 0x78;
+	mouse.y = 0x60;
+	mouse_mask = 1;
     set_vram_buffer(); // do at least once
 
     // ppu_on_all();
