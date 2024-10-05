@@ -9,6 +9,7 @@
 
     .export _exit,__STARTUP__:absolute=1
 	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
+	.export _PAL_BUF_RAW := PAL_BUF_RAW, _PAL_PTR := PAL_PTR
 	.import push0,popa,popax,_main
 
 ; Linker generated symbols
@@ -24,6 +25,7 @@ VRAM_BUF=__VRAM_BUF_START__
 OAM_BUF=__OAM_BUF_START__
 PAL_BUF_RAW=__PAL_BUF_START__
 PAL_BUF=PAL_BUF_RAW+$20
+
 
 ; .importzp _PAD_STATE, _PAD_STATET ;added
 .include "zeropage.inc"
@@ -88,6 +90,7 @@ SRC			=TEMP+7	;word
 DST			=TEMP+9	;word
 
 SP_TEMP     =TEMP+7
+CHRBANK_TEMP=TEMP+8
 
 RLE_LOW		=TEMP
 RLE_HIGH	=TEMP+1

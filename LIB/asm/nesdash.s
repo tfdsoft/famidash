@@ -3813,3 +3813,19 @@ vert_skip:
 	jmp	get_symbol
 	
 .endproc
+
+
+; void set_tile_banks(void);
+; 
+;	if (!no_parallax) {
+;		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
+;		mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
+;		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
+;		mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
+;	}
+;	else {
+;		mmc3_set_1kb_chr_bank_0(spike_set[level]);
+;		mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
+;		mmc3_set_1kb_chr_bank_2(SLOPESA);
+;		mmc3_set_1kb_chr_bank_3(saw_set[level]);
+;	}

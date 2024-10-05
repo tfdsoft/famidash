@@ -2,7 +2,7 @@
 	Calls the movement routine of the current gamemode
 	Implemented in asm
 */
-void set_tile_banks();
+// void set_tile_banks();
 void __fastcall__ movement(void);
 void __fastcall__ movement2(void);
 extern uint8_t famistudio_song_speed;
@@ -134,9 +134,11 @@ void state_game(){
 	lastgcolortype = 0xFF;
 	lastbgcolortype = 0xFF;
 
-	set_tile_banks();
+	// set_tile_banks();
 	
 	ppu_off();
+	
+	use_auto_chrswitch = 1;
 
 	pal_bg(paletteDefault);
 //	pal_spr(paletteDefaultSP);  //unneeded
@@ -235,7 +237,7 @@ void state_game(){
 		else {
 			ppu_wait_nmi();
 
-			set_tile_banks();
+			// set_tile_banks();
 		
 			set_player_banks();
 
@@ -575,21 +577,6 @@ void set_player_banks() {
 		else mmc3_set_2kb_chr_bank_0(iconbank1);
 
 }
-
-void set_tile_banks() {
-	if (!no_parallax) {
-		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
-		mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
-		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-		mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
-	}
-	else {
-		mmc3_set_1kb_chr_bank_0(spike_set[level]);
-		mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
-		mmc3_set_1kb_chr_bank_2(SLOPESA);
-		mmc3_set_1kb_chr_bank_3(saw_set[level]);
-	}
-}	
 
 void x_minus_15() {
 	high_byte(player_x[0]) -= 15;

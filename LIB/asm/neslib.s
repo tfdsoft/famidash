@@ -10,7 +10,7 @@
 ;minor change %%, added ldx #0 to functions returning char
 ;removed sprid from c functions to speed them up
 
-
+  .import _use_auto_chrswitch
 
 	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
 	.export _pal_bright
@@ -37,10 +37,6 @@ nmi:
 	pha
 	tya
 	pha
-
-	lda #0
-    sta mmc3IRQTableIndex
-    sta mmc3IRQJoever
 
 	lda <PPU_MASK_VAR	;if rendering is disabled, do not access the VRAM at all
 	sta PPU_MASK
@@ -85,36 +81,8 @@ nmi:
 	sta PPU_ADDR
 	stx PPU_ADDR
 
-  lda #<PAL_BUF
-  jsr popslide_buffer
-	; ldy PAL_BUF				;background color, remember it in X
-	; lda (PAL_BG_PTR),y
-	; sta PPU_DATA
-	; tax
-	
-	; .repeat 3,I
-	; ldy PAL_BUF+1+I
-	; lda (PAL_BG_PTR),y
-	; sta PPU_DATA
-	; .endrepeat
-
-	; .repeat 3,J		
-	; stx PPU_DATA			;background color
-	; .repeat 3,I
-	; ldy PAL_BUF+5+(J*4)+I
-	; lda (PAL_BG_PTR),y
-	; sta PPU_DATA
-	; .endrepeat
-	; .endrepeat
-
-	; .repeat 4,J		
-	; stx PPU_DATA			;background color
-	; .repeat 3,I
-	; ldy PAL_BUF+17+(J*4)+I
-	; lda (PAL_SPR_PTR),y
-	; sta PPU_DATA
-	; .endrepeat
-	; .endrepeat
+  lda #<PAL_BUF-1
+  jsr palette_popslide_buffer
 
 @skipUpd:
 
@@ -130,13 +98,22 @@ nmi:
 	lda <PPU_CTRL_VAR
 	sta PPU_CTRL
 
-	jsr irq_parser ; needs to happen inside v-blank... 
+  lda _use_auto_chrswitch
+  beq :+
+    jsr _set_tile_banks
+  :
+
+  lda #0
+  sta mmc3IRQTableIndex
+  sta mmc3IRQJoever
+  jsr irq_parser ; needs to happen inside v-blank... 
                    ; so goes before the music
             ; but, if screen is off this should be skipped
-
+  
   ; Read the raw controller data synced with OAM DMA to prevent
   ; DMC DMA bugs
   jsr oam_and_readjoypad
+
   ; Calculate the press/release for the controllers
   ; and also update mouse X/Y coords after the timing sensitive parts
   ; of NMI are complete
@@ -182,11 +159,19 @@ pal_copy:
 @0:
 
 	lda (PTR),y
-	sta PAL_BUF,x
+	sta PAL_BUF_RAW,x
 	inx
 	iny
 	dec <LEN
 	bne @0
+
+  ldx #32 - 1
+@loop:
+    ldy PAL_BUF_RAW,x
+    lda (PAL_PTR),y
+    sta PAL_BUF,x
+    dex
+    bne @loop
 
 	inc <PAL_UPDATE
 
@@ -756,15 +741,29 @@ _split:
 
 	rts
 
-.proc popslide_buffer
+.proc palette_popslide_buffer
   tsx
   stx SP_TEMP
   tax
   txs
-.repeat 32
+  ; global bg color
+  pla
+  tax
+  stx PPU_DATA
+  ; each palette
+.repeat 8, I
   pla
   sta PPU_DATA
+  pla
+  sta PPU_DATA
+  pla
+  sta PPU_DATA
+  .if I <> 7
+  pla
+  stx PPU_DATA
+  .endif
 .endrepeat
+  
   ldx SP_TEMP
   txs
   rts
@@ -1600,3 +1599,37 @@ MouseBoundsMax:
 .endproc
 
 .popseg
+
+SLOPESA = 14
+.import _spike_set, _block_set, _saw_set
+.import _no_parallax, _parallax_scroll_x, _level
+.export _set_tile_banks
+.proc _set_tile_banks
+	; inlined into ASM so we can call it from NMI
+	ldx _level
+	; if no parallax is 1, then it will maybe add an offset to the chr
+	; other wise it will add 0 (effectively disabling it without branching)
+	lda _no_parallax
+  eor #1
+	and _parallax_scroll_x
+	sta CHRBANK_TEMP
+	clc
+	lda _spike_set,x
+	adc CHRBANK_TEMP
+	jsr _mmc3_set_1kb_chr_bank_0
+	lda _block_set,x
+	adc CHRBANK_TEMP
+	jsr _mmc3_set_1kb_chr_bank_1
+	lda _saw_set,x
+	adc CHRBANK_TEMP
+	jsr _mmc3_set_1kb_chr_bank_3
+	; and then decide on the last bank
+	lda _no_parallax
+	beq :+
+		lda #SLOPESA
+		jmp _mmc3_set_1kb_chr_bank_2
+	:
+	lda _parallax_scroll_x
+	adc #<.bank(_PARALLAX_CHR)
+	jmp _mmc3_set_1kb_chr_bank_2
+.endproc

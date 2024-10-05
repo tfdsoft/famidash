@@ -123,9 +123,9 @@ void state_demo(){
 	    kandoframecnt++;
 		
 		if (SRAM_VALIDATE[0] == 0x13 &&
-			(joypad1.press || (mouse.connected)
+			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
-				: joypad2.press)) {
+				: joypad2.press))) {
 					gameState = 0x01; return;
 		}
 		ppu_wait_nmi();
@@ -140,9 +140,9 @@ void state_demo(){
 	    kandoframecnt++;
        	    	
 		if (SRAM_VALIDATE[0] == 0x13 &&
-			(joypad1.press || (mouse.connected)
+			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
-				: joypad2.press)) {
+				: joypad2.press))) {
 				gameState = 0x01; return;
 		}
 		ppu_wait_nmi();
@@ -158,9 +158,9 @@ void state_demo(){
 		newrand();
 	    kandoframecnt++;
 		if (SRAM_VALIDATE[0] == 0x13 &&
-			(joypad1.press || (mouse.connected)
+			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
-				: joypad2.press)) {
+				: joypad2.press))) {
 					gameState = 0x01; return;
 		}
 		ppu_wait_nmi();
