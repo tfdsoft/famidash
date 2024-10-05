@@ -9,7 +9,7 @@ Most importantly,
 DO. NOT. TRY. TO. "OPTIMIZE". MUSIC.
 Music is art, and art is not something you should optimize, ESPECIALLY if it comes at the expense of sounding worse.
 If it sounds *exactly the same* (or better but that's decided by all devs), then it is worthy.
-An example: replacing an arbitrary note on the triangle channel with an S04 effect with the "triangle pluck 2" instrument.
+An example: replacing an arbitrary note on the triangle channel with an S04 effect with the "triangle pluck 4" instrument.
 
 
 Additional terminology:
@@ -39,7 +39,7 @@ Songs:
     = Adjusted volumes
   xStep:
     + DPCM drums instead of triangle drums
-    -m PU1.04.1C-1F less accurate to src
+    -r PU1.04.1C-1F less accurate to src
   Clutterfunk:
     + PU1.04-05 / PU2.05-06 more accurate to src
     = Diff slides in the end
@@ -131,7 +131,7 @@ DPCM:
 Songs:
   Can't Let Go:
     + Changed instrument 12->10 @ PU2.05 [as it should've in 149ed]
-    -m Decreased port speed 3F->1F @ PU2.04.00 [less accurate to src]
+    -r Decreased port speed 3F->1F @ PU2.04.00 [less accurate to src]
   Cycles:
     = Replaced PU1.05 with PU1.03 @ od 0C [identical]
     = Replaced TRI.02 with TRI.01 @ od 03 [identical]
@@ -244,8 +244,7 @@ Songs:
       + Portamento would fit PERFECTLY into the first one
     = Removed redundant volume @ PU1.04.{0C, 2C}
     = Replaced volume 0 with a note stop @ NOI.00.13
-    -m Removed volume changes @ NOI.00.{08, 0C-12}
-      = Removing just the ones @ NOI.0C-12 would actually make zero difference, but the NOI.00.08 changes everything
+    -r Removed volume changes @ NOI.00.{08, 0C-12}
   Clutterfunk:
     = Removed redundant effects @ PU1.01.{04, 08, 0C, 10}
     = Removed timbre and volume changes and portamento @ PU1.{07-08, 0C-0E} [volume changes got replaced with note cut]
@@ -467,7 +466,7 @@ Songs:
 	= Moved the pre-cymbal @ NOI.09.3E-3F -> ..3F
 
 
-==== Commit ?: ==== [alexmush] ====
+==== Commit cfe14: ==== [alexmush] ====
 Songs:
   xStep:
     + Added vol 8 @ NOI.00.08 [reverts change @ 6e623]
