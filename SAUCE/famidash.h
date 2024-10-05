@@ -293,6 +293,7 @@ uint8_t jblocked[2];
 uint8_t fblocked[2];
 uint8_t ninjajumps[2];
 uint8_t slowmode;
+uint8_t use_auto_chrswitch;
 uint8_t level; // = 0x00;
 uint8_t level_data_bank;
 uint8_t sprite_data_bank;

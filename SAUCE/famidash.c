@@ -83,6 +83,7 @@ void main(){
 			}
 			case 0x02: {
 				state_game();
+				use_auto_chrswitch = 0;
 				break;
 			}
 			case 0x03: {
