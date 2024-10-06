@@ -419,31 +419,29 @@ void state_lvldone() {
 
 
 #include "defines/bgm_charmap.h"
-const unsigned char TEXT_xlevel1text[]="STEREO$";
-const unsigned char TEXT_xlevel2text[]="BACK$ON";
-const unsigned char TEXT_xlevel5text[]="BASE$AFTER";
-const unsigned char TEXT_xlevelCtext[]="THEORY$OF";
-const unsigned char TEXT_xlevelDtext[]="ELECTROMAN";
+const unsigned char TEXT_xlevel1text1[]="STEREO$";
+const unsigned char TEXT_xlevel1text2[]="BACK$ON";
+const unsigned char TEXT_xlevel1text5[]="BASE$AFTER";
+const unsigned char TEXT_xlevel1textC[]="THEORY$OF";
+const unsigned char TEXT_xlevel1textD[]="ELECTROMAN";
 
-const unsigned char TEXT_xlevel1text2[]="MADNESS";
+const unsigned char TEXT_xlevel2text1[]="MADNESS";
 const unsigned char TEXT_xlevel2text2[]="TRACK";
-const unsigned char TEXT_xlevel3text2[]="POLARGEIST";
-const unsigned char TEXT_xlevel4text2[]="DRY$OUT";
-const unsigned char TEXT_xlevel5text2[]="BASE";
-const unsigned char TEXT_xlevel6text2[]="CANT$LET$GO";
-const unsigned char TEXT_xlevel7text2[]="JUMPER";
-const unsigned char TEXT_xlevel8text2[]="TIME$MACHINE";
-const unsigned char TEXT_xlevel9text2[]="CYCLES";
-const unsigned char TEXT_xlevelAtext2[]="XSTEP";
-const unsigned char TEXT_xlevelBtext2[]="CLUTTERFUNK";
-const unsigned char TEXT_xlevelCtext2[]="EVERYTHING";
-const unsigned char TEXT_xlevelDtext2[]="ADVENTURES";
-const unsigned char TEXT_xlevelEtext2[]="DECODE";
-const unsigned char TEXT_practicetext2[]="PRACTICE";
-const unsigned char TEXT_testformenu2[]="MENU";
-const unsigned char TEXT_everyendtext2[]="EVERY$END";
-
-
+const unsigned char TEXT_xlevel2text3[]="POLARGEIST";
+const unsigned char TEXT_xlevel2text4[]="DRY$OUT";
+const unsigned char TEXT_xlevel2text5[]="BASE";
+const unsigned char TEXT_xlevel2text6[]="CANT$LET$GO";
+const unsigned char TEXT_xlevel2text7[]="JUMPER";
+const unsigned char TEXT_xlevel2text8[]="TIME$MACHINE";
+const unsigned char TEXT_xlevel2text9[]="CYCLES";
+const unsigned char TEXT_xlevel2textA[]="XSTEP";
+const unsigned char TEXT_xlevel2textB[]="CLUTTERFUNK";
+const unsigned char TEXT_xlevel2textC[]="EVERYTHING";
+const unsigned char TEXT_xlevel2textD[]="ADVENTURES";
+const unsigned char TEXT_xlevel2textE[]="DECODE";
+const unsigned char TEXT_2textpractice[]="PRACTICE";
+const unsigned char TEXT_2textmenu[]="MENU";
+const unsigned char TEXT_2texteveryend[]="EVERY$END";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -477,31 +475,30 @@ const unsigned char sfxtexts_size[] = {
 
 
 const unsigned char* const xbgmtexts1[] = {
-	0, 0, 0, 0, 0, TEXT_xlevelDtext, 0, TEXT_xlevel2text, TEXT_xlevel5text, TEXT_xlevel1text, TEXT_xlevelCtext, 0, 0, 0, 0, 0, 0
+	0, 0, 0, 0, 0, 0, TEXT_xlevel1textD, TEXT_xlevel1text1, TEXT_xlevel1text2, TEXT_xlevel1text5, 0, 0, 0, 0, TEXT_xlevel1textC, 0
 };
 
 const unsigned char* const xbgmtexts2[] = {
-	TEXT_xlevelBtext2, TEXT_xlevelEtext2, TEXT_practicetext2, TEXT_xlevel8text2, TEXT_xlevel3text2, TEXT_xlevelDtext2, TEXT_xlevel9text2, TEXT_xlevel2text2, TEXT_xlevel5text2, TEXT_xlevel1text2, TEXT_xlevelCtext2, TEXT_testformenu2, TEXT_xlevelAtext2, TEXT_everyendtext2, TEXT_xlevel7text2, TEXT_xlevel4text2, TEXT_xlevel6text2
+	TEXT_xlevel2text8, TEXT_xlevel2textB, TEXT_xlevel2textE, TEXT_2textpractice, TEXT_xlevel2text3, TEXT_xlevel2text7, TEXT_xlevel2textD, TEXT_xlevel2text1, TEXT_xlevel2text2, TEXT_xlevel2text5, TEXT_xlevel2text9, TEXT_xlevel2text4, TEXT_xlevel2text6, TEXT_xlevel2textA, TEXT_xlevel2textC, TEXT_2textmenu
 };
 
 const unsigned char xbgmtext2_size[] = {
-	sizeof(TEXT_xlevelBtext2) - 1,
-	sizeof(TEXT_xlevelEtext2) - 1,
-	sizeof(TEXT_practicetext2) - 1,
-	sizeof(TEXT_xlevel8text2) - 1,
-	sizeof(TEXT_xlevel3text2) - 1,
-	sizeof(TEXT_xlevelDtext2) - 1,	
-	sizeof(TEXT_xlevel9text2) - 1,	
+	sizeof(TEXT_xlevel2text8) - 1,
+	sizeof(TEXT_xlevel2textB) - 1,
+	sizeof(TEXT_xlevel2textE) - 1,
+	sizeof(TEXT_2textpractice) - 1,
+	sizeof(TEXT_xlevel2text3) - 1,
+	sizeof(TEXT_xlevel2text7) - 1,	
+	sizeof(TEXT_xlevel2textD) - 1,	
+	sizeof(TEXT_xlevel2text1) - 1,	
 	sizeof(TEXT_xlevel2text2) - 1,	
-	sizeof(TEXT_xlevel5text2) - 1,	
-	sizeof(TEXT_xlevel1text2) - 1,	
-	sizeof(TEXT_xlevelCtext2) - 1,	
-	sizeof(TEXT_testformenu2) - 1,	
-	sizeof(TEXT_xlevelAtext2) - 1,	
-	sizeof(TEXT_everyendtext2) - 1,	
-	sizeof(TEXT_xlevel7text2) - 1,	
-	sizeof(TEXT_xlevel4text2) - 1,	
-	sizeof(TEXT_xlevel6text2) - 1,	
+	sizeof(TEXT_xlevel2text5) - 1,	
+	sizeof(TEXT_xlevel2text9) - 1,	
+	sizeof(TEXT_xlevel2text4) - 1,	
+	sizeof(TEXT_xlevel2text6) - 1,	
+	sizeof(TEXT_xlevel2textA) - 1,	
+	sizeof(TEXT_xlevel2textC) - 1,	
+	sizeof(TEXT_2textmenu) - 1,	
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -509,17 +506,16 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	0,
-	sizeof(TEXT_xlevelDtext) - 1,	
 	0,
-	sizeof(TEXT_xlevel2text) - 1,	
-	sizeof(TEXT_xlevel5text) - 1,	
-	sizeof(TEXT_xlevel1text) - 1,	
-	sizeof(TEXT_xlevelCtext) - 1,	
-	0,
+	sizeof(TEXT_xlevel1textD) - 1,	
+	sizeof(TEXT_xlevel1text1) - 1,	
+	sizeof(TEXT_xlevel1text2) - 1,	
+	sizeof(TEXT_xlevel1text5) - 1,	
 	0,
 	0,
 	0,
 	0,
+	sizeof(TEXT_xlevel1textC) - 1,	
 	0,
 };
 

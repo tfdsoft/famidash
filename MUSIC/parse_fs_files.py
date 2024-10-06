@@ -55,7 +55,7 @@ if __name__ == "__main__":
     for filename in glob.glob(sys.path[0]+"/EXPORTS/music_*_songlist.inc"):
         print ("file: " + filename)
         count = incrIncFile(open(filename), outfileC, outfileAsm, count)
-        # os.remove(filename)
+        os.remove(filename)
     outfileC.write(f"#define song_max {count}")
     outfileC.write("\n")
     outfileC.write("\n".join(readIncFile("sfx_sfxlist")))

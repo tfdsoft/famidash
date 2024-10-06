@@ -241,8 +241,9 @@ detectNTSC:
 	ldx #0
 	jsr _set_vram_update
 
-	LDA #<-1        ;   Do famistudio_init
-    JSR _music_play ;__
+	LDA #<-1			;   Do famistudio_init
+    JSR _music_play		;__
+	INC current_song_bank	;__ Force reinit on any music_play
 
     LDA #<.bank(sounds)
     JSR mmc3_tmp_prg_bank_1

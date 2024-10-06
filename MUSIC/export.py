@@ -8,6 +8,7 @@ instSizeRegex = "Info: Instruments size : (.+) bytes\\."
 songSizeRegex = "Info: Song '(.+)' size: (.+) bytes\\."
 totalSizeRegex = "Info: Total assembly file size: (.+) bytes\\."
 youMustSetRegex = "Info: ([^\n]+, you must set [^\n]+\\.)"
+actualOptionRegex = "set (FAMISTUDIO_[^ \n=]+ = [^ \n.]+)"
 
 songNameRegex = 'Song[^\n]+Name="([^"]+)'
 songFolderNameRegex = 'Song[^\n]+Folder="([^"]+)'
@@ -166,6 +167,12 @@ if __name__ == "__main__":
 
     # Print which options to set
     print("\n==== Don't forget to set these options in the sound driver:")
-    print("\n".join(list(set(optionsToSet))))
+    print("\n".join(re.findall(actualOptionRegex, "\n".join(list(set(optionsToSet))))))
 
-    print("\n==== Please launch parse_fs_files.py now.")
+    if not args.test_export:
+        print("\n==== Please launch parse_fs_files.py now.")
+    else:
+        print("\n==== Everything seems to have gone alright, you can run it for real now.")
+        [os.remove(i) for i in glob.glob(f"{dpcmExportPrefix}*.s")]
+        [os.remove(i) for i in glob.glob(f"{dpcmExportPrefix}*.dmc")]
+        [os.remove(i) for i in glob.glob(f"{dpcmExportPrefix}*songlist.inc")]

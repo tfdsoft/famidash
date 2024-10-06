@@ -506,7 +506,7 @@ Songs:
     = Replaced F7F @ PU1.01.00 with global tempo 127 [actually compatible with FS]
 
 
-==== Commit ?: ==== [alexmush]
+==== Commit b5443: ==== [alexmush]
 Songs:
   Electroman Adventures:
     + Added note stops @ DPCM.{01, 02}.{06, 0E, 16, 1E, 26, 2E, 36, 3E}
