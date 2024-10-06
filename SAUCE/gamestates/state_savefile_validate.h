@@ -6,6 +6,7 @@ void mouse_and_cursor();
 
 void savefile_reset_check_loop(){
     do {
+        ppu_wait_nmi();
 		oam_clear();
         crossPRGBankJump0(mouse_and_cursor);
 		newrand();
