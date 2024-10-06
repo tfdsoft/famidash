@@ -504,3 +504,10 @@ Songs:
   Theory Of Everything:
     + Removed extra notes @ TRI.{{01, 05}.{0B, 17}, {07, 06}.0B}
     = Replaced F7F @ PU1.01.00 with global tempo 127 [actually compatible with FS]
+
+
+==== Commit ?: ==== [alexmush]
+Songs:
+  Electroman Adventures:
+    + Added note stops @ DPCM.{01, 02}.{06, 0E, 16, 1E, 26, 2E, 36, 3E}
+	+ Added L01s (converted automatically to S01s) @ DPCM.{03-06, 08-09}.{0-3}{5, 7, D, F}
