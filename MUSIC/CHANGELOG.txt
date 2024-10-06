@@ -19,7 +19,7 @@ iXX "name" - instrument XX (hex index) with name "name"
 sXX "name" - same but with samples
 
 
-==== Commit 4437 (applied @ b1c2e): ==== [Zenith] ====
+==== Commit 4437 (applied @ 7a6ab): ==== [Zenith] ====
 Instruments:
     + "hat" has a "1 0" duty env instead of "0" {4:3}
     = Minor changes to envs 0:{0 "Instrument 2", 33 "menu acc", 38 "clap"}, 2:0 "triangle drums", 4:11 "shift string"
@@ -52,7 +52,7 @@ Songs:
     + Added DPCM note cuts
 
 
-==== Commit 95a40 (applied @ d2491): ==== [UserSniper] ====
+==== Commit 95a40 (applied @ a4148): ==== [UserSniper] ====
 Songs:
   Polargeist:
     = Lighter drums @ NOI.01-03
@@ -61,7 +61,7 @@ Songs:
     + Added duty cycle switching @ PU1.03
 
 
-==== Commit 75a3a (applied @ cb553): ==== [UserSniper] ====
+==== Commit 75a3a (applied @ a4148): ==== [UserSniper] ====
 Songs:
   xStep:
     + Triangle makes a 12th to bass as opposed to an octave @ pt 04
@@ -69,7 +69,7 @@ Songs:
 	= Removed DPCM drums @ pt 06 / od 0A
 
 
-==== Commit 01e17 (applied @ 3b51c): ==== [Vickerinox] ====
+==== Commit 01e17 (applied @ e539a): ==== [Vickerinox] ====
 Instruments:
     = Changes of envs 0:{15 "blank string", 39 "xstep wub"}, 4:{16 "hex guitar 1", 17 "hex guitar 2"}
 Songs:
@@ -82,7 +82,7 @@ Songs:
     = PU2.03.0E increased port speed 8->9
 
 
-==== Commit 149ed (applied @ f3e99): ==== [UserSniper] ====
+==== Commit 149ed (applied @ a51cc): ==== [UserSniper] ====
 Instruments:
     + "02 but tri" volume env zeroes out in the middle {0:9} [reverts change @ 4437]
     = "echo" got louder echo {0:2}
@@ -114,7 +114,7 @@ Songs:
     = Changed ending duty @ PU2.1A.17
 
 
-==== Commits a8dac & 668ee (applied @ 3a462): ==== [UserSniper] ====
+==== Commits a8dac & 668ee (applied @ a51cc): ==== [UserSniper] ====
 Songs:
   Time Machine:
     = Replaced S01 with i0D "triangle pluck" @ TRI.0C
@@ -125,7 +125,7 @@ Songs:
     = Removed tri drums @ TRI.{01, 06}
 
 
-==== Commit cfe5f (applied @ 2776c): ==== [UserSniper] ====
+==== Commit cfe5f (applied @ a51cc): ==== [UserSniper] ====
 DPCM:
   -r Added s16 "Gimmick Snare"
   -r Replaced s06 "snare" key mapping with s16 "Gimmick Snare"
@@ -144,7 +144,7 @@ Songs:
     -r Removed note releases from DPCM.08-0A
 
 
-==== Commits 25daa & 42cfb (applied @ 86c7a): ==== [UserSniper] ====
+==== Commits 25daa & 42cfb (applied @ c934f): ==== [UserSniper] ====
 Songs:
   Time Machine:
     = Changed timbre 01->00 @ PU2.{0C, 0D, 13, 14}.00
@@ -161,25 +161,25 @@ Songs:
     + Removed
 
 
-==== Commit c3672 (applied @ fde25): ==== [UserSniper] ====
+==== Commit c3672 (applied @ c934f): ==== [UserSniper] ====
 Instruments:
   + Added more lower orchestra hit mappings for i1A "DMC: orchestra hits"
 
 
-==== Commit 6cdc3 (applied @ 77997): ==== [UserSniper] ====
+==== Commit 6cdc3 (applied @ a2177): ==== [UserSniper] ====
 DPCM:
   + Removed s16 "Gimmick Snare" [reverts change @ cfe5f]
   + Replaced s16 "Gimmick Snare" key mapping with s06 "snare" [reverts change @ cfe5f]
 
 
-==== Commit 20d5b (applied @ d9449): ==== [UserSniper] ====
+==== Commit 20d5b (applied @ ba929): ==== [UserSniper] ====
 Songs:
   Stereo Madness:
     + Proper echo @ PU1.03
       -r Only on first playthru @ PU1.03.01
 
 
-==== Commit fe2b7 (applied @ cab34): ==== [UserSniper] ====
+==== Commit fe2b7 (applied @ e286f): ==== [UserSniper] ====
 Songs:
   Back On Track:
     = Lighter drums @ NOI.02-04.{04, 0C, 14, 1C, 24, 2C, 34}, NOI.02.3C, NOI.05.{04, 08, 0A-0C, 0E-0F}
@@ -198,12 +198,12 @@ Songs:
     = Added V00 @ PU1.00.00
 
 
-==== Commit 741a5 (applied @ c833f): ==== [UserSniper] ====
+==== Commit 741a5 (applied @ 97f00): ==== [UserSniper] ====
 DPCM:
   = Adjusted timings of "this is a time machine"
 
 
-==== Commit 6e623 (applied @ c53aa): ==== [UserSniper] ==== "DO NOT REVERT" my ass
+==== Commit 6e623 (applied @ e2662): ==== [UserSniper] ==== "DO NOT REVERT" my ass
 Instruments:
   = Added i28 "Instrument 3" with macros 0:44, 1:19, 4:19
 DPCM:
@@ -262,7 +262,7 @@ Songs:
     -r Removed DPCM note cuts [reverts change @ 4437]
 
 
-==== Commit 7d0fe (applied @ 035a1a): ==== [UserSniper] ====
+==== Commit 7d0fe (applied @ 4f32d): ==== [UserSniper] ====
 Songs:
   Geometrical Dominator:
     + Cut pt 00 - 20->18 rows
@@ -271,7 +271,7 @@ Songs:
     -r Lowered notes @ PU1.14.00-0E
 
 
-==== Commit cf018 (applied @ 8622f): ==== [jaezu] ====
+==== Commit cf018 (applied @ 0a143): ==== [jaezu] ====
 Instruments:
   = Added i29 "young man... KILL YOURSE-" with macros 0:45
 Songs:
@@ -279,7 +279,7 @@ Songs:
     + Added
 
 
-==== Commits 753bf & a684c (applied @ fc068): ==== [UserSniper] ====
+==== Commits 753bf & a684c (applied @ 782b2): ==== [UserSniper] ====
 Songs:
   Jumper:
     + Raised notes by octave @ TRI.{04, 06} [more accurate to src]
@@ -302,7 +302,7 @@ Songs:
   Scheming Weasel:
     + Added
 
-==== Commit 8e446 (applied @ 9ad9f): ==== [jaezu] ====
+==== Commit 8e446 (applied @ 08f9a): ==== [jaezu] ====
 Instruments:
   + Added vibrato macro to i29 "young man... KILL YOURSE-" {2:3}
 Songs:
@@ -310,7 +310,7 @@ Songs:
     + Made the notes into arps @ PU1.02.{0C, 10, 14, 18}
 
 
-==== Commit 64604: ==== [alexmush] ====
+==== Commit 88742: ==== [alexmush] ====
 Songs:
   Time Machine:
     + Replaced note releases with note stops @ DPCM.{
@@ -344,7 +344,7 @@ Songs:
     + Removed redundant note releases/stops @ DPCM.00-03.3C
 
 
-==== Commit 76c33: ==== [alexmush] ====
+==== Commit 57c2e: ==== [alexmush] ====
 Songs:
 Base After Base:
     + Added note cuts @ DPCM.{07, 08}.{02, 06, 0A, 0E} [reverts change @ 149ed]
@@ -358,9 +358,9 @@ Deadlocked:
     + Added DPCM note cuts [reverts change @ 6e623, restoring change @ 4437]
 
 
-==== Commit 6573c: ==== [alexmush] ====
+==== Commit 27394: ==== [alexmush] ====
 Comments:
-  Removed funny fact about can't let go never being changed as it was misinformation (it has been changed twice before this already)
+  Removed funny fact about can't let go never being changed as it was technically misinformation (it has been changed twice before this already)
 Songs:
   Stereo Madness:
     + Added PU1.09, which is PU1.03 but with filled in echo @ PU1.09.01 [finishes change @ 20d5b]
@@ -370,7 +370,7 @@ Songs:
     = Removed redundant volume change @ PU1.03.02
 
 
-==== Commit 73ad9: ==== [alexmush] ====
+==== Commit cbb3d: ==== [alexmush] ====
 Instruments:
   + Changed name of i0E "triangle pluck 2" to "triangle pluck 4" [reflecting the amount of frames it stays on]
   + Created i2A "triangle pluck 2" and i2B "triangle pluck 3"
@@ -389,18 +389,18 @@ Songs:
     + Replaced NOI.02->.0C @ ods {03, 05, 07} [reverts change @ 6e623]
 
 
-==== Commit 2c7c7: ==== [alexmush] ====
+==== Commit b0bf0: ==== [alexmush] ====
 Songs:
   Time Machine:
     + Fixed the incorrect melody @ PU1.{01-02, 04-05, 07}, PU2.{01-02, 08-09, 0B}
 
-==== Commit a5ca3: ==== [alexmush] ====
+==== Commit 3a4f7: ==== [alexmush] ====
 Songs:
   Back On Track:
     + Reimported because an old timbre change slipped through the cracks
 
 
-==== Commit 23417: ==== [alexmush] ====
+==== Commit 93d07: ==== [alexmush] ====
 Instruments:
   + Created FS-exclusive "octave arp [ no duty ]" instrument
 Songs:
@@ -417,13 +417,13 @@ Songs:
   Menu Theme:
     + Replaced i0E "triangle pluck 4" with i2B "triangle pluck 3" @ TRI.01-02 [fixes change @ fe2b7]
 
-==== Commit 093dc: ==== [alexmush] ====
+==== Commit f2917: ==== [alexmush] ====
 Songs:
   Jumper:
     + Tempo 175->179 (finally in sync with the level) [reverts change @ 5c8ce]
 
 
-==== Commit 757a2: ==== [alexmush] ====
+==== Commit a8ef3: ==== [alexmush] ====
 Songs:
   Polargeist:
     + Replaced i0D "triangle pluck" where S02/03 used to be with i2A "triangle pluck 2" and i2B "triangle pluck 3" @ TRI.{06, 07} [reverts/fixes change @ 149ed]
@@ -433,7 +433,7 @@ Songs:
 	= Replaced the I14 w/ 20C @ PU1.0D.06 [compatible with FS]
 	
 	
-==== Commit b59f5: ==== [alexmush] ====
+==== Commit 38aba: ==== [alexmush] ====
 Songs:
   Cycles:
     + As a base for the following changes, reverted everything done in commit 6e623
@@ -445,7 +445,7 @@ Songs:
 	+ Made the kicks / snares fade in slower after the cymbal @ NOI.05, 08 [Voted, + 5/2/0 -]
 	
 	
-==== Commit e699b: ==== [alexmush] ====
+==== Commit ad79d: ==== [alexmush] ====
 Songs:
   Can't Let Go:
     + Replaced i12 "cymbal" w/ i10 "blank" @ PU1.05 [finishes change @ cfe5f]
@@ -455,20 +455,20 @@ Songs:
 	+ [FS ONLY] shortened slide note @ PU2.05.054-055 to just ..054
 	
 
-==== Commit b49aa: ==== [alexmush] ====
+==== Commit 7fc61: ==== [alexmush] ====
 Songs:
   Base After Base:
     + Added DPCM.09 and TRI.09 to match the rhythm of NOI.07
 	
 	
-==== Commit 8fe10: ==== [alexmush] ====
+==== Commit 37064: ==== [alexmush] ====
 Songs:
   Hexagon Force:
     + Added toms @ TRI.0C.34-3F & NOI.09.34-3E
 	= Moved the pre-cymbal @ NOI.09.3E-3F -> ..3F
 
 
-==== Commit cfe14: ==== [alexmush] ====
+==== Commit fa92b: ==== [alexmush] ====
 Songs:
   xStep:
     + Added vol 8 @ NOI.00.08 [reverts change @ 6e623]
@@ -478,7 +478,7 @@ Songs:
 	+ Added 200 @ PU2.05.3F because FS dumb, also fixed PU2.02 in FS
 
 
-==== Commit ?: ==== [alexmush] ====
+==== Commit 1ec6e: ==== [alexmush] ====
 Songs:
   Stereo Madness:
     + [FS ONLY] Fixed release time @ PU1.09.063
