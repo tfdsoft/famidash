@@ -9,13 +9,13 @@ songSizeRegex = "Info: Song '(.+)' size: (.+) bytes\\."
 totalSizeRegex = "Info: Total assembly file size: (.+) bytes\\."
 youMustSetRegex = "Info: ([^\n]+, you must set [^\n]+\\.)"
 
-songNameRegex = 'Song[^\n]+Name="([^"]+)' # Song[anything but newline]Name="[anything but "]"
+songNameRegex = 'Song[^\n]+Name="([^"]+)'
 songFolderNameRegex = 'Song[^\n]+Folder="([^"]+)'
 
 dpcmFileNameRegex = 'music_(.+)_bank(.+).dmc'
 
 dpcmAlignerName = "dpcm"
-usedFolderName = "Used in the game"
+usedFolderNames = ["Official music used in the game", "Custom music used in the game"]
 
 musicFolder = sys.path[0]
 tmpFolder = musicFolder + "/../TMP/"
@@ -28,6 +28,7 @@ if __name__ == "__main__":
     import binpacking
     parser = argparse.ArgumentParser()
     parser.add_argument('fsPath', metavar='famistudioPath', help='Path to FamiStudio.dll from FamiStudio 4.2.1')
+    parser.add_argument('-t', '--test-export', action='store_true', help='Exports the music to the TMP folder instead of MUSIC/EXPORTS.')
     args = parser.parse_args()
     
     modulePath = musicFolder+"/MODULES/music_master.fms"
@@ -62,20 +63,20 @@ if __name__ == "__main__":
 
     songNames = re.findall(songNameRegex, fsTxt)
     folderNames = re.findall(songFolderNameRegex, fsTxt)
+    neededSongs = [i for i in range(len(songNames)) if folderNames[i] in usedFolderNames]
 
     if len(songNames) == 0:
-        LookupError("Amount of valid songs in the FS txt file is 0.")
+        print("Amount of valid songs in the FS txt file is 0.")
         exit(2)
     
     if not(dpcmAlignerName in songNames):
-        LookupError("DPCM aligner not found in FS txt file.")
+        print("DPCM aligner not found in FS txt file.")
         exit(2)
-    elif not(usedFolderName in folderNames):
-        LookupError(f"None of the songs are in the folder \"{usedFolderName}\".")
+    elif len(neededSongs) == 0:
+        print(f"None of the songs are in the folders \"{usedFolderNames}\".")
         exit(2)
 
     dpcmidx = songNames.index(dpcmAlignerName)
-    neededSongs = [i for i in range(len(songNames)) if folderNames[i] == usedFolderName]
     neededSongsCommaSep = ",".join([str(i) for i in neededSongs])
 
     # Get instrument and song sizes
@@ -94,7 +95,7 @@ if __name__ == "__main__":
     # Get size of all instruments
     instsize = re.findall(instSizeRegex, cmdOutput)
     if (len(instsize) != 1):
-        LookupError("Instrument size not correctly present in the text.")
+        print("Instrument size not correctly present in the FamiStudio command output.")
         exit(3)
     instsize = int(instsize[0])
     print(f"== Total maximum size of data in a bank is {8192 - instsize} bytes")
@@ -109,6 +110,11 @@ if __name__ == "__main__":
         print("\t- Total approx. size:", sum([j[2] for j in bins[i]]), "bytes")
 
     # Export the music_X.s files
+    if (args.test_export):
+        exportPrefix = tmpFolder
+    else:
+        exportPrefix = f"{musicFolder}/EXPORTS/"
+    
     dpcmFiles = []
     optionsToSet = []
 
@@ -117,30 +123,24 @@ if __name__ == "__main__":
     for i in range(len(bins)):
         idxs = ",".join([str(j[0]) for j in bins[i]])
 
-        exportPrefix = tmpFolder+f"music_{i+1}_tmp"
-        # exportPrefix = f"{musicFolder}/EXPORTS/music_{i+1}"
-        exportPath = f"{exportPrefix}.s"
+        asmExportPrefix = f"{exportPrefix}/music_{i+1}"
+        asmExportPath = f"{asmExportPrefix}.s"
 
-        proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-asm-export', exportPath, '-famistudio-asm-format:ca65', '-famistudio-asm-generate-list', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
+        proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', '-famistudio-asm-generate-list', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
         output = proc.stdout.decode()
 
         print(f"== Info on bank {i}:")
         print("\t" + re.search(totalSizeRegex, output).group())
         
-        dpcmFiles += glob.glob(f"{exportPrefix}*.dmc")
+        dpcmFiles += glob.glob(f"{asmExportPrefix}*.dmc")
         optionsToSet += re.findall(youMustSetRegex, output)
 
     # Check the DPCM files for being identical
-    dpcmExportPrefix = tmpFolder+f"music_tmp"
-    # dpcmExportPrefix = f"{musicFolder}/EXPORTS/music"
+    dpcmExportPrefix = f"{exportPrefix}/music"
 
     print("\n==== Checking if the DPCM files are identical...")
-    for i in range(len(dpcmFiles)):
-        dpcmFiles[i] = (
-            dpcmFiles[i],
-            re.findall(dpcmFileNameRegex, os.path.basename(dpcmFiles[i]))[0]
-        )
-
+    
+    dpcmFiles = [(i, re.findall(dpcmFileNameRegex, os.path.basename(i))[0]) for i in dpcmFiles]
     dpcmError = False
     dpcmBanks = list(set([i[1][1] for i in dpcmFiles]))
     for bank in dpcmBanks:
@@ -154,8 +154,7 @@ if __name__ == "__main__":
         if not bankDpcmError:
             os.rename(dpcmFilesOfBank[0][0], f"{dpcmExportPrefix}_bank{bank}.dmc")
             dpcmFilesOfBank.pop(0)
-        for i in dpcmFilesOfBank:
-            os.remove(i[0])
+        [os.remove(i[0]) for i in dpcmFilesOfBank]
 
     if dpcmError:
         ValueError("DPCM files were not identical. Please check the dpcm aligner for containing all samples.")
