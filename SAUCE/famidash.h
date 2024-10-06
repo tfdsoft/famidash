@@ -317,6 +317,8 @@ uint8_t teleport_output;
 
 uint8_t normalorcommlevels;
 uint8_t mouse_timer;
+uint8_t prev_mouse_x;
+uint8_t prev_mouse_y;
 
 extern uint8_t parallax_scroll_column;
 extern uint8_t parallax_scroll_column_start;
