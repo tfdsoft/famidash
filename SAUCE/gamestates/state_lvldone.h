@@ -1,7 +1,5 @@
 
-#pragma code-name(push, "LVL_BANK_00")
-#pragma data-name(push, "LVL_BANK_00")
-#pragma rodata-name(push, "LVL_BANK_00")
+CODE_BANK_PUSH("LVL_BANK_00")
 
 const uint8_t difficulty_pal_A[] ={
 	0x21,	// easy
@@ -1184,7 +1182,5 @@ void refreshmenu_part2(void) {
 }
 
 
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+CODE_BANK_POP()
 

@@ -1,6 +1,5 @@
-#pragma code-name(push, "XCD_BANK_02")
-#pragma data-name(push, "XCD_BANK_02") 
-#pragma rodata-name(push, "XCD_BANK_02")
+
+CODE_BANK_PUSH("XCD_BANK_02")
 
 void mouse_and_cursor();
 
@@ -131,13 +130,4 @@ void state_exit(){
     return;
 }
 
-
-
-
-
-
-
-
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+CODE_BANK_POP()

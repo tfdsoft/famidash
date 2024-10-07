@@ -1,6 +1,5 @@
-#pragma code-name(push, "XCD_BANK_03")
-#pragma data-name(push, "XCD_BANK_03")
-#pragma rodata-name(push, "XCD_BANK_03")
+
+CODE_BANK_PUSH("XCD_BANK_03")
 
 void movement();
 void bounds_check();
@@ -1369,7 +1368,6 @@ void title_robot_shit() {
 		if (currplayer_y_small >= 160) { currplayer_gravity = 0; tmpi8 = 0; teleport_output = 0; currplayer_y_small = 160; }
 	}
 					
-}					
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+}
+
+CODE_BANK_POP()

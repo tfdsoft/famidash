@@ -1,6 +1,5 @@
-#pragma code-name(push, "XCD_BANK_02")
-#pragma data-name(push, "XCD_BANK_02")
-#pragma rodata-name(push, "XCD_BANK_02")
+
+CODE_BANK_PUSH("XCD_BANK_02")
 
 const unsigned short speed_table[] = {
 	CUBE_SPEED_X1, CUBE_SPEED_X05, CUBE_SPEED_X2, CUBE_SPEED_X3, CUBE_SPEED_X4
@@ -84,6 +83,4 @@ void x_movement(){
 }
 
 
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+CODE_BANK_POP();

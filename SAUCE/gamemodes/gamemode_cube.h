@@ -1,6 +1,6 @@
-#pragma code-name(push, "XCD_BANK_01")
-#pragma data-name(push, "XCD_BANK_01")
-#pragma rodata-name(push, "XCD_BANK_01")
+
+CODE_BANK_PUSH("XCD_BANK_01")
+
 void x_movement_coll();
 void common_gravity_routine();
 void cube_eject();
@@ -328,7 +328,4 @@ void cube_eject() {
 		}	
 }		
 
-
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+CODE_BANK_POP()
