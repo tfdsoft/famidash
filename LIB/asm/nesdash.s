@@ -1813,11 +1813,11 @@ music_counts:
 
 .import _disable_dpcm_bankswitch
 .proc famistudio_dpcm_bank_callback
-	ldx _disable_dpcm_bankswitch
-	beq :+
-		sec
-		rts
-	:
+	; ldx _disable_dpcm_bankswitch
+	; beq :+
+	; 	sec
+	; 	rts
+	; :
 	clc
 	adc #<FIRST_DMC_BANK
 	jmp mmc3_set_prg_bank_0
@@ -3100,7 +3100,7 @@ drawplayer_common := _drawplayerone::common
 .endproc
 
 ; void __fastcall__ playPCM(uint8_t sample);
-.segment "XCD_BANK_01"
+.segment "XCD_BANK_00"
 
 .export _playPCM
 .proc _playPCM
@@ -3516,7 +3516,7 @@ bank:
 
 
 ; void increment_attempt_count();
-.segment "XCD_BANK_01"
+.segment "XCD_BANK_00"
 
 .import _attemptCounter
 
