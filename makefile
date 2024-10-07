@@ -79,7 +79,7 @@ $(OUTDIR)/$(NAME).nsf: $(TMPDIR)/crt0_nsf2.o $(CFG)
 	$(LD65) -C $(CFG) -o $(OUTDIR)/$(NAME).nsf $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0_nsf2.o nes.lib --dbgfile $(OUTDIR)/famidash_nsf2.dbg
 	@echo $(NAME).nsf created
 
-$(TMPDIR)/crt0_nsf2.o: NSF/*.s LIB/asm/*.inc MUSIC/EXPORTS/*.s 
+$(TMPDIR)/crt0_nsf2.o: NSF/*.s LIB/asm/*.inc MUSIC/EXPORTS/*.s
 	$(CA65) NSF/crt0.s -l $(OUTDIR)/crt0_nsf2.lst --cpu 6502X -g $(call ca65IncDir,.) $(call ca65IncDir,MUSIC/EXPORTS) $(call ca65IncDir,$(TMPDIR)) $(call ca65IncDir,LIB/asm) -o $(TMPDIR)/crt0_nsf2.o
 
 clean:

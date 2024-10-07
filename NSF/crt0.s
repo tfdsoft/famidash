@@ -34,19 +34,6 @@ CTRL_PORT2	=$4017
 .segment "ZEROPAGE"
 
 NTSC_MODE: 			.res 1
-FRAME_CNT1: 		.res 1
-FRAME_CNT2: 		.res 1
-VRAM_UPDATE: 		.res 1
-; NAME_UPD_ADR: 		.res 2
-NAME_UPD_ENABLE: 	.res 1
-PAL_UPDATE: 		.res 1
-; PAL_BG_PTR: 		.res 2
-; PAL_SPR_PTR: 		.res 2
-PAL_PTR:            .res 2
-SCROLL_X: 			.res 1
-SCROLL_Y: 			.res 1
-SCROLL_X1: 			.res 1
-SCROLL_Y1: 			.res 1
 ; PAD_STATE: 			.res 2		;one byte per controller
 ; PAD_STATE2: 		.res 2		;one byte per controller
 ; PAD_STATEP: 		.res 2
@@ -69,6 +56,9 @@ SPRID:				.res 1
 
 xargs:				.res 4
 
+.segment "BSS"
+current_song_bank:	.res 1
+
  
 ;
 ; NES 2.0 header
@@ -76,8 +66,8 @@ xargs:				.res 4
 .segment "HEADER"
 
 	LOAD_ADDR = 0	; In case of bankswitching, indicates amount of padding
-	INIT_ADDR = start
-	PLAY_ADDR = music_update
+	INIT_ADDR = init
+	PLAY_ADDR = play
 
 	.byte 'N', 'E', 'S', 'M', $1A ; ID
 	.byte <VERSION
@@ -86,9 +76,18 @@ xargs:				.res 4
 	.word .loword(LOAD_ADDR)
 	.word .loword(INIT_ADDR)
 	.word .loword(PLAY_ADDR)
-	.asciiz "Famidash Music                 "
-	.asciiz "7 Musicians at / with TFDSoft  "
-	.asciiz "(c) TFDSoft 2023-2024          "
+	.asciiz "Famidash Music"
+	.repeat 31 - 14
+		.byte $00
+	.endrepeat
+	.asciiz "7 Musicians at / with TFDSoft"
+	.repeat 31 - 29
+		.byte $00
+	.endrepeat
+	.asciiz "(c) TFDSoft 2023-2024"
+	.repeat 31 - 21
+		.byte $00
+	.endrepeat
 	.word .loword(NTSC_RATE)
 	.byte <START_BANK_0, <START_BANK_1, <START_BANK_2, <START_BANK_3, <START_BANK_4, <START_BANK_5, <START_BANK_6, <START_BANK_7
 	.word .loword(PAL_RATE)
@@ -97,55 +96,17 @@ xargs:				.res 4
 	.byte <NSF2_FEATURES
 	.byte <PRGDATASIZE, >PRGDATASIZE, ^PRGDATASIZE
 
-; .segment "STARTUP"
 
-start:
-music_update:
+.segment "STARTUP"
 
-mmc3_tmp_prg_bank_1:
-famistudio_dpcm_bank_callback:
-; _exit:
+init:
 
 	; lda PPU_STATUS
 	; and #$80
 	; sta <NTSC_MODE
-
-	; jsr initialize_mapper
-
-    ; ; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
-	; jsr	copydata	; Sets all the initial values of variables
-
-    ; lda #<(__C_STACK_START__+__C_STACK_SIZE__) ;changed
-    ; sta	sp
-    ; lda	#>(__C_STACK_START__+__C_STACK_SIZE__)
-    ; sta	sp+1            ; Set argument stack ptr
-
-	; ; jsr	initlib	; removed. this called the CONDES function
-
-	; lda #%10100000
-	; sta <PPU_CTRL_VAR
-	; sta PPU_CTRL		;enable NMI
-	; lda #%00000110
-	; sta <PPU_MASK_VAR
-
-; waitSync3:
-	; lda <FRAME_CNT1
-; @1:
-	; cmp <FRAME_CNT1
-	; beq @1
-
-; detectNTSC:
-
-
-
-	; jsr _ppu_off
-
-	; ; lda #0
-	; ; ldx #0
-	; ; jsr _set_vram_update
-
-	; LDA #<-1			;   Do famistudio_init
-    ; JSR _music_play		;__
+	dex
+	stx <NTSC_MODE
+    JMP _music_play	
 
     ; LDA #<.bank(sounds)
     ; JSR mmc3_tmp_prg_bank_1
@@ -154,10 +115,13 @@ famistudio_dpcm_bank_callback:
 	; ldy #>sounds
 	; jsr famistudio_sfx_init
 
+play:
+	; TODO: SFX and PCM get their own routines
+	jmp _music_update
 
 	
-	; .include "nsfmapper.s"
-	; .include "nsfdash.s"
+	.include "nsfmapper.s"
+	.include "nsfdash.s"
 		
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music_bank0.dmc"
