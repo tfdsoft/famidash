@@ -106,8 +106,10 @@ void state_demo(){
 	pal_fade_to(0,4);
 	tmp1 = 0;
 
+	/*	Incomplete code for reproducing what is being screamed into the Famicom microphone
+	(He forgor about the PCM bit)
+	OG by UserSniper, commit 7e47f425
 	POKE(0x4015, 0b00010000);
-	/*
 	while (1) {
 		POKE(0x4011, fc_mic_poll()<<4);
 	}
