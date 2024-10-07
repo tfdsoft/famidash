@@ -94,7 +94,7 @@ void state_game(){
 	use_auto_chrswitch = 1;
 
 	pal_bg(paletteDefault);
-//	pal_spr(paletteDefaultSP);  //unneeded
+	pal_spr(paletteDefaultSP);  //needed
 
 	crossPRGBankJump8(load_ground,0);
 
