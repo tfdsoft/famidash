@@ -161,7 +161,7 @@ _level_lengths_lo:
   .byte .lobyte($00008D)		; electroman
   .byte .lobyte($000098)		; nightmare
   .byte .lobyte($00008A)		; decode
-  .byte .lobyte($0000B0)		; luckydraw
+  .byte .lobyte($000086)		; luckydraw
   .byte .lobyte($000080)		; test
   .byte .lobyte($00006E)		; test2
   .byte .lobyte($000069)		; test3
@@ -186,7 +186,7 @@ _level_lengths_md:
   .byte .hibyte($00008D)		; electroman
   .byte .hibyte($000098)		; nightmare
   .byte .hibyte($00008A)		; decode
-  .byte .hibyte($0000B0)		; luckydraw
+  .byte .hibyte($000086)		; luckydraw
   .byte .hibyte($000080)		; test
   .byte .hibyte($00006E)		; test2
   .byte .hibyte($000069)		; test3
@@ -211,7 +211,7 @@ _level_lengths_hi:
   .byte .bankbyte($00008D)		; electroman
   .byte .bankbyte($000098)		; nightmare
   .byte .bankbyte($00008A)		; decode
-  .byte .bankbyte($0000B0)		; luckydraw
+  .byte .bankbyte($000086)		; luckydraw
   .byte .bankbyte($000080)		; test
   .byte .bankbyte($00006E)		; test2
   .byte .bankbyte($000069)		; test3

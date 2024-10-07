@@ -54,7 +54,7 @@ void state_lvldone() {
 	kandodebug2 = 0;
 	cube_data[0] = 0;
 	cube_data[1] = 0;
-	has_practice_point = 0;
+
 	current_state = 0;
 
 	// Set palettes back to natural colors since we aren't fading back in
@@ -119,6 +119,7 @@ void state_lvldone() {
 		level_completeness_practice[level] = 100;
 	}
 	
+	has_practice_point = 0;
 	
 	if (!coins) {
 		tmp1 = sizeof(coins0) - 1;

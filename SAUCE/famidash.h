@@ -412,6 +412,7 @@ uint8_t forced_trails;
 uint8_t attemptCounter[7];
 uint8_t triggers_hit[3];
 
+/*
 uint8_t gnd_palette_transition_timer;
 uint8_t original_gnd_palette_idx_0;
 uint8_t original_gnd_palette_idx_1;
@@ -427,6 +428,7 @@ uint8_t original_bg_palette_color_1;
 uint8_t original_bg_palette_color_2;
 
 uint8_t current_transition_timer_length;
+*/
 
 #ifdef FLAG_KANDO_FUN_STUFF
 uint16_t target_x_scroll_stop;

@@ -101,7 +101,7 @@ void state_game(){
     
 	currplayer = 0;
 	controllingplayer = &joypad1;
-	current_transition_timer_length = 0;
+//	current_transition_timer_length = 0;
 	reset_level();
 
 	END_LEVEL_TIMER = 0;
