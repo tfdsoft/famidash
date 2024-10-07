@@ -66,9 +66,6 @@ const uint8_t lvlselect_irq_table[] = {
 };
 void levelselection() {
 
-	if (normalorcommlevels) level = LEVEL_COUNT;
-	else if (level >= LEVEL_COUNT) level -= LEVEL_COUNT;
-	
 	mmc3_set_8kb_chr(MENUBANK);
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
@@ -1073,6 +1070,8 @@ void state_menu() {
 			kandowatchesyousleep = 1; 
 			if(!tmp7) crossPRGBankJump8(playPCM, 1); 
 			else crossPRGBankJump8(playPCM, 0);  
+			if (normalorcommlevels) level = LEVEL_COUNT;
+			else level = 0;
 			levelselection(); 
 			return;		
 		case 0x02: gameState = 4; return;
