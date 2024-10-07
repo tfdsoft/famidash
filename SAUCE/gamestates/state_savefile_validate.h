@@ -7,7 +7,7 @@ void savefile_reset_check_loop(){
     do {
         ppu_wait_nmi();
 		oam_clear();
-        crossPRGBankJump0(mouse_and_cursor);
+        mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
        	    
@@ -74,7 +74,7 @@ void state_savefile_validate(){
         do {
             ppu_wait_nmi();
 		oam_clear();
-            crossPRGBankJump0(mouse_and_cursor);
+            mouse_and_cursor();
 		newrand();
             if (joypad1.press || mouse.left_press || mouse.right_press) break;
 	    kandoframecnt++;
@@ -113,7 +113,7 @@ void state_exit(){
     do {
         ppu_wait_nmi();
 		oam_clear();
-	crossPRGBankJump0(mouse_and_cursor);
+	mouse_and_cursor();
 		newrand();
         // wait for system power off
         if (joypad1.press_b || mouse.right_press) break;

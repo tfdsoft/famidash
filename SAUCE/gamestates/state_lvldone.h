@@ -1,6 +1,8 @@
 
 CODE_BANK_PUSH("LVL_BANK_00")
 
+void mouse_and_cursor();
+
 const uint8_t difficulty_pal_A[] ={
 	0x21,	// easy
 	0x2A,	// normal
@@ -350,7 +352,7 @@ void state_lvldone() {
 		case 7:
 		oam_clear();
 
-			crossPRGBankJump0(mouse_and_cursor);
+			mouse_and_cursor();
 
 			if (mouse.left_press) {
 				if (mouse.y >= 0xC5 && mouse.y <= 0xE3) {
@@ -563,7 +565,7 @@ void bgmtest() {
 		music_update();
 		oam_clear();
 
-		crossPRGBankJump0(mouse_and_cursor);
+		mouse_and_cursor();
 		 // read the first controller
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
@@ -752,7 +754,7 @@ void funsettings() {
 		music_update();
 		oam_clear();
 
-		crossPRGBankJump0(mouse_and_cursor);
+		mouse_and_cursor();
 		 // read the first controller
 		if (mouse.left_press) {
 			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
@@ -926,7 +928,7 @@ void settings() {
 		ppu_wait_nmi();
 		music_update();
 		oam_clear();
-		crossPRGBankJump0(mouse_and_cursor);
+		mouse_and_cursor();
 		 // read the first controller
 		
 		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 7));

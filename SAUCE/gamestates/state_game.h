@@ -5,6 +5,7 @@
 // void set_tile_banks();
 void __fastcall__ movement(void);
 void __fastcall__ movement2(void);
+void mouse_and_cursor();
 extern uint8_t famistudio_song_speed;
 const uint8_t BG_Table[]={
 	0x11,
@@ -198,7 +199,7 @@ void state_game(){
 				// pad_poll(0); // read the first controller
 			}
 			else {
-				crossPRGBankJump0(mouse_and_cursor);
+				mouse_and_cursor();
 			}
 
 			if (mouse.left_press) joypad1.press_a = 1;
@@ -545,4 +546,18 @@ void y_minus_15() {
 void y_plus_15() {
 	high_byte(player_y[0]) += 15;
 	high_byte(currplayer_y) += 15;	
+}
+
+void mouse_and_cursor() {
+	if (mouse.connected) {
+		if (mouse.left || mouse.right || mouse.x != prev_mouse_x || mouse.y != prev_mouse_y) mouse_timer = 120;
+		if (mouse.right_press) joypad1.press_b = true;
+		if (mouse.right) joypad1.b = true;
+		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
+		if (kandoframecnt > 0xFC) kandoframecnt = 0;
+		if (gameState != 2) { if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA1 + (2*mouseframe)), 2); }
+
+		prev_mouse_x = mouse.x;
+		prev_mouse_y = mouse.y;
+	}
 }
