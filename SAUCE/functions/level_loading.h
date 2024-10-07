@@ -2,6 +2,11 @@
 void init_sprites(void);
 #include "defines/bg_charmap.h"
 const unsigned char attempttext[]="PQQRSTQ"; //ATTEMPT
+#include "defines/luckydraw_charmap.h"
+const unsigned char triggerstext[]="TRIGGERS SURVIVED"; //ATTEMPT
+const unsigned char toptriggerstext[]="TOP TRIGGERS SURVIVED"; //ATTEMPT
+
+
 //const unsigned char whartxt[]="wxyz";	// WHAR
 void setdefaultoptions();
 /* 
@@ -134,6 +139,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 //
 //		else {
 			if (level == 0x0F && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
+				multi_vram_buffer_horz((const char*)triggerstext,sizeof(triggerstext)-1,NTADR_C(1, 17));
 				one_vram_buffer(0xF5+triggers_hit[2], NTADR_C(20,17));
 				one_vram_buffer(0xF5+triggers_hit[1], NTADR_C(21,17));
 				one_vram_buffer(0xF5+triggers_hit[0], NTADR_C(22,17));
@@ -142,6 +148,27 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 				one_vram_buffer(0xF5+0, NTADR_C(25,17));
 				one_vram_buffer(0xF5+0, NTADR_C(26,17));
 				
+				if (triggers > top_triggers) top_triggers = triggers;
+
+				multi_vram_buffer_horz((const char*)toptriggerstext,sizeof(toptriggerstext)-1,NTADR_C(1, 19));
+
+				
+				hexToDec(top_triggers);
+
+				if (hexToDecOutputBuffer[2])
+					one_vram_buffer(0xf5+hexToDecOutputBuffer[2], NTADR_C(23,19));
+
+				if (hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1])
+					one_vram_buffer(0xf5+hexToDecOutputBuffer[1], NTADR_C(24,19));
+
+				one_vram_buffer(0xf5+hexToDecOutputBuffer[0], NTADR_C(25,19));	
+		
+				one_vram_buffer(0xD0, NTADR_C(26,19));
+				one_vram_buffer(0xF5+8, NTADR_C(27,19));
+				one_vram_buffer(0xF5+0, NTADR_C(28,19));
+				one_vram_buffer(0xF5+0, NTADR_C(29,19));			
+			
+				triggers = 0;
 				triggers_hit[0] = 0;
 				triggers_hit[1] = 0;
 				triggers_hit[2] = 0;

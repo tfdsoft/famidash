@@ -97,7 +97,11 @@ void levelselection() {
 	tmp4 = 1;
 	crossPRGBankJump0(refreshmenu);
 	crossPRGBankJump0(refreshmenu_part2);
-	
+	top_triggers = 0;
+	triggers = 0;
+	triggers_hit[0] = 0;
+	triggers_hit[1] = 0;
+	triggers_hit[2] = 0;
 
 	// one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
 	// one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));

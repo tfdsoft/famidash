@@ -152,6 +152,7 @@ char sprite_load_special_behavior(){
 				triggers_hit[0]++;
 				if (triggers_hit[0] == 10) { triggers_hit[0] = 0; triggers_hit[1]++; }
 				if (triggers_hit[1] == 10) { triggers_hit[1] = 0; triggers_hit[2]++; }
+				triggers++;
 				killSprite_return0;
 			case MASK_SPRITES_ON:
 				disco_sprites = 1;
