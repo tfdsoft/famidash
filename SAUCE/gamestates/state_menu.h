@@ -207,7 +207,7 @@ void updateColors() {
 }
 
 void customize_screen() {
-	
+#define prev_icon tmp8
 	settingvalue = 3; 
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
@@ -253,6 +253,7 @@ void customize_screen() {
 
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
+	prev_icon = icon;
 	while (1) {
 		tmp3 = 0;
 
@@ -318,19 +319,23 @@ void customize_screen() {
 			}
 		}
 //end mouse stuff
-	
 		if (!retro_mode) {
-			tmp1 = iconTable[icon] + 'a';
-			one_vram_buffer(tmp1, NTADR_A(15, 8));		
-			one_vram_buffer(++tmp1, NTADR_A(16, 8));		
-			one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(15, 9));		
-			one_vram_buffer(++tmp1, NTADR_A(16, 9));		
-		}
-		else {
-			one_vram_buffer('a'+0x6E, NTADR_A(15,8));			
-			one_vram_buffer('b'+0x6E, NTADR_A(16,8));			
-			one_vram_buffer('c'+0x6E, NTADR_A(15,9));			
-			one_vram_buffer('d'+0x6E, NTADR_A(16,9));			
+			if (icon != prev_icon) {
+				tmp1 = iconTable[icon] + 'a';
+				one_vram_buffer(tmp1, NTADR_A(15, 8));
+				one_vram_buffer(++tmp1, NTADR_A(16, 8));
+				one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(15, 9));
+				one_vram_buffer(++tmp1, NTADR_A(16, 9));
+				prev_icon = icon;
+			}
+		} else {
+			if (prev_icon) {
+				one_vram_buffer('a'+0x6E, NTADR_A(15,8));
+				one_vram_buffer('b'+0x6E, NTADR_A(16,8));
+				one_vram_buffer('c'+0x6E, NTADR_A(15,9));
+				one_vram_buffer('d'+0x6E, NTADR_A(16,9));
+				prev_icon = 0;
+			}
 		}
 		if (settingvalue == 3 && !retro_mode) {
 			if (joypad1.press_up) {
@@ -364,7 +369,7 @@ void customize_screen() {
 
 			tmp4 += tmp3;   // Get the old index
 			tmp5 = loNTAddrTableCustomizeScreen[tmp4]|(hiNTAddrTableCustomizeScreen[tmp4]<<8);
-			one_vram_buffer(' ', tmp5);		
+			one_vram_buffer(' ', tmp5);
 			one_vram_buffer(' ', tmp5 + VRAM_OFF(0, 1));
 			one_vram_buffer(' ', tmp5 = addloNOC(tmp5, VRAM_OFF(5, 0)));
 			one_vram_buffer(' ', tmp5 + VRAM_OFF(0, 1));
@@ -376,6 +381,7 @@ void customize_screen() {
 		dec_mouse_timer();
 						
 	}
+#undef prev_icon
 }
 
 
