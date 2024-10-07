@@ -4,52 +4,6 @@
 #include <stdint.h>
 #include "neslib.h"
 
-// CHR Banks
-#define CHR_DEFAULT    0
-
-// Data Banks
-#define DATA_00        0
-#define DATA_01        1
-#define DATA_02        2
-#define DATA_03        3
-#define DATA_04        4
-#define DATA_05        5
-#define DATA_06        6
-#define DATA_07        7
-#define DATA_08        8
-#define DATA_09        9
-#define DATA_10       10
-#define DATA_11       11
-#define DATA_12       12
-#define DATA_13       13
-#define DATA_14       14
-#define DATA_15       15
-#define DATA_16       16
-
-// Music banks
-#define MUSIC_01      17
-#define MUSIC_02      18
-#define MUSIC_03      19
-#define MUSIC_04      20
-
-// Sound effect banks
-#define SOUND_01      21
-#define SOUND_02      22
-#define SOUND_03      23
-#define SOUND_04      24
-
-// Code Banks
-#define CODE_XTD      52
-#define CODE_EX9      53
-#define CODE_EX8      54
-#define CODE_EX7      55
-#define CODE_EX6      56
-#define CODE_EX5      57
-#define CODE_EX4      58
-#define CODE_EX3      59
-#define CODE_EX2      60
-#define CODE_EX1      61
-
 // Stack operations
 #define PUSH(s, v) (      \
   s[++s##_index] = (v)    \

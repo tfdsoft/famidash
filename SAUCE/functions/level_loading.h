@@ -73,13 +73,13 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		dummy_unrle_columns(ii);
 
 		__A__ = -(6 * (9 / 3) / 2); __asm__("tay \n sty %v", parallax_scroll_column);
-		do {
+		while (ii != 0) {
 			parallax_scroll_column++;
 			if (parallax_scroll_column == 0) {
 				__asm__("sty %v", parallax_scroll_column);
 			}
 			ii--;
-		} while (ii != 0);
+		}
 		parallax_scroll_column_start = -3;
 		__asm__("ldy #3");
 		unrle_first_screen_addition_loop:
