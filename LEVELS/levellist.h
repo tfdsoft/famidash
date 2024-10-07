@@ -42,6 +42,7 @@
 #define BLOCKSC 8
 #define BLOCKSD 10
 #define SAWBLADESA 12
+#define LETTERBANK 96
 
 #define DECO1 26
 #define DECOCLOUD 30
@@ -154,7 +155,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //electroman
 	SAWBLADESA, //nightmare
 	SAWBLADESA, //decode
-	SAWBLADESA, //lucky draw
+	LETTERBANK, //lucky draw
 	SAWBLADESA, //test1
 	SAWBLADESA, //test2
 	SAWBLADESA, //test3

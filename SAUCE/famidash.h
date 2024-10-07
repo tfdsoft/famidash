@@ -2,9 +2,10 @@
 
 #define NINJABANK 92
 #define MOUSEBANK 94
-#define MENUBANK 96
-#define MENUICONBANK 100
-#define LEVELCOMPLETEBANK 104
+#define LETTERBANK 96
+#define MENUBANK 98
+#define MENUICONBANK 102
+#define LEVELCOMPLETEBANK 106
 
 #define SPIKESA 0
 #define SPIKESB 2
@@ -404,7 +405,7 @@ uint8_t outline_color;
 uint8_t forced_trails;
 
 uint8_t attemptCounter[7];
-
+uint8_t triggers_hit[3];
 
 uint8_t gnd_palette_transition_timer;
 uint8_t original_gnd_palette_idx_0;

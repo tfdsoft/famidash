@@ -146,8 +146,12 @@ char sprite_load_special_behavior(){
 	switch(type) {
 		#ifdef FLAG_KANDO_FUN_STUFF	
 			case DEATH_CHANCE: 
-				if ((newrand() & 63) == (newrand() & 63))
+				if ((newrand() & 63) == (newrand() & 63)) {
 					idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+				}
+				triggers_hit[0]++;
+				if (triggers_hit[0] == 10) { triggers_hit[0] = 0; triggers_hit[1]++; }
+				if (triggers_hit[1] == 10) { triggers_hit[1] = 0; triggers_hit[2]++; }
 				killSprite_return0;
 			case MASK_SPRITES_ON:
 				disco_sprites = 1;

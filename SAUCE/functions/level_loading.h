@@ -69,6 +69,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// If practice mode has set a scroll position to restart from, run the unrle function
 	// over and over until it catches up
 	if (has_practice_point) {
+/*
 		ii = practice_scroll_x >> 4;
 		dummy_unrle_columns(ii);
 
@@ -104,7 +105,9 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		music_update();
 		
 	//	memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
-	} else {
+*/	
+	} 
+	else {
 		// To get the draw screen R to start in the left nametable, scroll must be negative.
 		low_word(scroll_x) = LSW(-256); high_word(scroll_x) = MSW(-256);
 		parallax_scroll_x = 0;
@@ -131,8 +134,24 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 //			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
 //
 //		else {
+			if (level == 0x0F && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
+				one_vram_buffer(0xF5+triggers_hit[2], NTADR_C(20,17));
+				one_vram_buffer(0xF5+triggers_hit[1], NTADR_C(21,17));
+				one_vram_buffer(0xF5+triggers_hit[0], NTADR_C(22,17));
+				one_vram_buffer(0xD0, NTADR_C(23,17));
+				one_vram_buffer(0xF5+8, NTADR_C(24,17));
+				one_vram_buffer(0xF5+0, NTADR_C(25,17));
+				one_vram_buffer(0xF5+0, NTADR_C(26,17));
+				
+				triggers_hit[0] = 0;
+				triggers_hit[1] = 0;
+				triggers_hit[2] = 0;
+			}
+			
 			mmc3_set_prg_bank_1(GET_BANK(_display_attempt_counter));
 			display_attempt_counter(0xF5, NTADR_C(20, 15));
+			
+			
 	}
 	
 }
