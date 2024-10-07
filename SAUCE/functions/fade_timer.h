@@ -1,5 +1,5 @@
 
-CODE_BANK_PUSH("XCD_BANK_01")
+CODE_BANK_PUSH("XCD_BANK_00")
 
 void check_fade_timer(){
     if (gnd_palette_transition_timer > 0) {

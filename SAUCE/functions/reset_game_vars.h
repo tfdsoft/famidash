@@ -1,5 +1,5 @@
 
-CODE_BANK_PUSH("XCD_BANK_01")
+CODE_BANK_PUSH("XCD_BANK_00")
 
 void reset_game_vars(){
 	if (!has_practice_point) music_play(song_practice);

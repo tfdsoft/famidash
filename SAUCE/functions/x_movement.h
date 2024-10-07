@@ -1,12 +1,62 @@
 
-CODE_BANK_PUSH("XCD_BANK_02")
+CODE_BANK_PUSH("CODE")
 
 const unsigned short speed_table[] = {
 	CUBE_SPEED_X1, CUBE_SPEED_X05, CUBE_SPEED_X2, CUBE_SPEED_X3, CUBE_SPEED_X4
 };
 
+void slope_exit_vel() {
+	switch (tmp8 & 0x07) {
+		case SLOPE_22DEG_DOWN:
+		case SLOPE_22DEG_UP:
+			tmp5 = currplayer_vel_x >> 2;
+			break;
+		case SLOPE_45DEG_DOWN:
+		case SLOPE_45DEG_UP:
+			tmp5 = currplayer_vel_x >> 1;
+			break;
+		case SLOPE_66DEG_DOWN:
+		case SLOPE_66DEG_UP:
+			tmp5 = (currplayer_vel_x >> 1); 
+			tmp5 = (tmp5 >> 1) + tmp5;	
+	}
+}
+
+void x_movement_coll() {
+  mmc3_set_prg_bank_1(GET_BANK(bg_coll_R));
+
+	if (slope_type && !slope_frames && gamemode != 6) {
+	// we we're on an slope and now we aren't, so push the player upwards a bit
+		tmp8 = slope_type;
+		slope_exit_vel();
+		if (slope_type & 1) {
+			if (currplayer_gravity) {
+				currplayer_vel_y = tmp5 + 0x200;
+			} else {
+				currplayer_vel_y = (tmp5 + 0x200)^0xFFFF;
+			}
+		}
+	}
+	if (slope_frames) {
+		slope_frames -= 1;
+	}
+	
+	Generic.x = high_byte(currplayer_x);
+	Generic.y = high_byte(currplayer_y);
+	// no L/R collision required, since that is accounted for with the death script
+	if (high_byte(currplayer_x) > 0x10) {
+		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
+		if (bg_coll_R()) {
+			if (!(options & platformer)) {idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);}
+			else {currplayer_vel_x = 0; }
+		}
+	}
+  
+}
+
 
 void x_movement(){
+  mmc3_set_prg_bank_1(GET_BANK(bg_coll_R));
     // handle x
 
 	old_x = currplayer_x;
@@ -83,4 +133,4 @@ void x_movement(){
 }
 
 
-CODE_BANK_POP();
+CODE_BANK_POP()

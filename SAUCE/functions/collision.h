@@ -1,4 +1,6 @@
 
+CODE_BANK_PUSH("XCD_BANK_01")
+
 #define SLOPE_NONE			0b0000
 
 #define SLOPE_45DEG_UP 		0b0001
@@ -876,4 +878,7 @@ void commonly_used_death_check() {
 	if ((uint8_t)(temp_x & 0x0f) >= 0x04 && (uint8_t)(temp_x & 0x0f) < 0x09) {
 		cube_data[currplayer] = 1;
 	}
-}					
+}
+
+
+CODE_BANK_POP()
