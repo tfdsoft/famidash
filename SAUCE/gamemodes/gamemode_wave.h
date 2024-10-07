@@ -1,6 +1,5 @@
-#pragma code-name(push, "XCD_BANK_01")
-#pragma data-name(push, "XCD_BANK_01")
-#pragma rodata-name(push, "XCD_BANK_01")
+
+CODE_BANK_PUSH("XCD_BANK_01")
 
 void wave_eject();
 void wave_movement(void){
@@ -90,7 +89,6 @@ void wave_eject() {
 			}
 		}
 	}
-}	
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+}
+
+CODE_BANK_POP()

@@ -1,6 +1,5 @@
-#pragma code-name(push, "XCD_BANK_03")
-#pragma data-name(push, "XCD_BANK_03")
-#pragma rodata-name(push, "XCD_BANK_03")
+
+CODE_BANK_PUSH("XCD_BANK_03")
 
 #include "defines/bg_charmap.h"
 const char TEXT_nothinghere[] = "SORRY NOTHING HERE YET";
@@ -30,7 +29,4 @@ void state_sorrynothing() {
     }
 }
 
-
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+CODE_BANK_POP()

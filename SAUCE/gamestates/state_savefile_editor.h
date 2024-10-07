@@ -1,13 +1,8 @@
-#pragma code-name(push, "XCD_BANK_04")
-#pragma data-name(push, "XCD_BANK_04")
-#pragma rodata-name(push, "XCD_BANK_04")
+
+CODE_BANK_PUSH("XCD_BANK_04")
 
 void state_savefile_editor() {
     //a
 }
 
-
-
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+CODE_BANK_POP()

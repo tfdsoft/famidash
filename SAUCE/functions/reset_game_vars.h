@@ -1,6 +1,5 @@
-#pragma code-name(push, "XCD_BANK_01")
-#pragma data-name(push, "XCD_BANK_01")
-#pragma rodata-name(push, "XCD_BANK_01")
+
+CODE_BANK_PUSH("XCD_BANK_01")
 
 void reset_game_vars(){
 	if (!has_practice_point) music_play(song_practice);
@@ -78,6 +77,4 @@ void restore_practice_state() {
 	currplayer_gravity = player_gravity[currplayer];
 }
 
-#pragma code-name(pop)
-#pragma data-name(pop)
-#pragma rodata-name(pop)
+CODE_BANK_POP()

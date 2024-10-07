@@ -1,6 +1,4 @@
-#pragma code-name(push, "XCD_BANK_04")
-#pragma data-name(push, "XCD_BANK_04")
-#pragma rodata-name(push, "XCD_BANK_04")
+CODE_BANK_PUSH("XCD_BANK_04")
 
 void reset_level(void);
 void minus15y();
@@ -207,6 +205,4 @@ void plus15x() {
 	high_byte(player_x[0]) += 15;
 }
 
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+CODE_BANK_POP()

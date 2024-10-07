@@ -1,6 +1,5 @@
-#pragma code-name(push, "XCD_BANK_01")
-#pragma data-name(push, "XCD_BANK_01")
-#pragma rodata-name(push, "XCD_BANK_01")
+
+CODE_BANK_PUSH("XCD_BANK_01")
 
 void ufo_ship_eject();
 void ship_movement(void){
@@ -86,6 +85,4 @@ void ufo_ship_eject() {
 	}
 }	
 
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+CODE_BANK_POP()

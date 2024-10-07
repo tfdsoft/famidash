@@ -188,6 +188,21 @@ extern uint8_t PAL_BUF[32];
 #define colBrightness(color, brightness) (__A__ = color, __asm__("tay"), __asm__("lda palBrightTable%s, y", brightness), __A__)
 #define oneShadeDarker(color) colBrightness(color, 3)
 
+#define DO_PRAGMA_(x) _Pragma (#x)
+#define DO_PRAGMA(x) DO_PRAGMA_(x)
+
+#define CODE_BANK_PUSH(bank) \
+  DO_PRAGMA(code-name(push, bank ))\
+  DO_PRAGMA(data-name(push, bank ))\
+  DO_PRAGMA(rodata-name(push, bank ))
+
+
+#define CODE_BANK_POP() \
+  DO_PRAGMA(code-name(pop))\
+  DO_PRAGMA(data-name(pop))\
+  DO_PRAGMA(rodata-name(pop))
+
+
 #define swapbyte(a, b) do { \
   __A__ = (a); \
   __asm__("pha"); \

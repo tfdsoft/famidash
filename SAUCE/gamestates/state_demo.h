@@ -1,6 +1,5 @@
-#pragma code-name(push, "XCD_BANK_02")
-#pragma data-name(push, "XCD_BANK_02") 
-#pragma rodata-name(push, "XCD_BANK_02")
+
+CODE_BANK_PUSH("XCD_BANK_02")
 
 const unsigned char Credits[351]={
 	0x01,0xfe,0x01,0x3f,0xff,0x01,0x47,0x20,0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,
@@ -172,6 +171,4 @@ void state_demo(){
 	
 }
 
-#pragma code-name(pop)
-#pragma data-name(pop) 
-#pragma rodata-name(pop)
+CODE_BANK_POP()
