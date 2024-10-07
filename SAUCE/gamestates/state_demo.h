@@ -1,6 +1,8 @@
 
 CODE_BANK_PUSH("XCD_BANK_02")
 
+void mouse_and_cursor();
+
 const unsigned char Credits[351]={
 	0x01,0xfe,0x01,0x3f,0xff,0x01,0x47,0x20,0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,
 	0x29,0x22,0x23,0x22,0x2b,0x2c,0x2c,0xff,0x01,0x0f,0x30,0x31,0x32,0x33,0x34,0x35,
@@ -117,7 +119,7 @@ void state_demo(){
 	
 	do {
 		oam_clear();
-       	crossPRGBankJump0(mouse_and_cursor);
+       	mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
 		
@@ -134,7 +136,7 @@ void state_demo(){
 	tmp1 = 0;
 	do {
 		oam_clear();
-		crossPRGBankJump0(mouse_and_cursor);
+		mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
        	    	
@@ -153,7 +155,7 @@ void state_demo(){
 	set_scroll_x(256);
 	do {
 		oam_clear();
-		crossPRGBankJump0(mouse_and_cursor);
+		mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
 		if (SRAM_VALIDATE[0] == 0x13 &&
