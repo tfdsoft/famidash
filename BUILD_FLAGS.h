@@ -75,5 +75,5 @@
 //
 // Save File Version
 // increase by 1 if SRAM values are added, changed or deleted.
-#define FLAG_SAVE_VER 0x0A
+#define FLAG_SAVE_VER 0x0B
 // ============================================================
