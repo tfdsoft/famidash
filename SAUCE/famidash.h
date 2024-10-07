@@ -300,6 +300,7 @@ uint8_t sprite_data_bank;
 uint8_t menuselection; // = 0x00;
 uint8_t settingvalue;
 uint8_t mouseframe;
+uint8_t hold_timer;
 uint8_t titlemode;
 uint8_t titlecolor1;
 uint8_t titlecolor2;

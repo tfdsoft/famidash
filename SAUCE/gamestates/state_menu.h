@@ -1,6 +1,7 @@
 
 CODE_BANK_PUSH("XCD_BANK_03")
 
+void clear_shit();
 void movement();
 void bounds_check();
 void title_cube_shit();
@@ -268,27 +269,38 @@ void customize_screen() {
 	
 //mouse stuff
 
-		if (mouse.left_press) {
+		if (mouse.left_press || (mouse.left && hold_timer >= 15)) {
 //icon
 			if ((mouse.x >= 0x76 && mouse.x <= 0x83)) { 
 				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
 					icon++;
 					if (icon > (MAX_ICONS - 1)) icon = 0;				
-					//settingvalue = 3;
+					settingvalue = 3;
+					hold_timer = 0;					
+					clear_shit();
 				}
 				else if (mouse.y >= 0x4D && mouse.y <= 0x54) {
 					if (icon == 0) icon = MAX_ICONS - 1;
 					else icon--;				
-					//settingvalue = 3;
+					settingvalue = 3;
+					hold_timer = 0;					
+					clear_shit();
+					
 				}
 //color 2
 				else if ((mouse.y >= 0x64 && mouse.y <= 0x6C)) {
 					settingvalue = 1;
 					crossPRGBankJump0(colorinc);
+					hold_timer = 0;					
+					clear_shit();
+					
 				}
 				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
 					settingvalue = 1;			
 					crossPRGBankJump0(colordec);
+					hold_timer = 0;					
+					clear_shit();
+					
 				}
 
 				
@@ -298,10 +310,16 @@ void customize_screen() {
 				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
 					settingvalue = 0;
 					crossPRGBankJump0(colorinc);
+					hold_timer = 0;					
+					clear_shit();
+					
 				}
 				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
 					settingvalue = 0;			
 					crossPRGBankJump0(colordec);
+					hold_timer = 0;					
+					clear_shit();
+					
 				}
 			}
 //color3
@@ -309,10 +327,16 @@ void customize_screen() {
 				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
 					settingvalue = 2;
 					crossPRGBankJump0(colorinc);
+					hold_timer = 0;					
+					clear_shit();
+					
 				}
 				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
 					settingvalue = 2;			
 					crossPRGBankJump0(colordec);
+					hold_timer = 0;					
+					clear_shit();
+					
 				}
 			}
 			if ((mouse.x >= 0x35 && mouse.x <= 0xBC) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
@@ -339,11 +363,11 @@ void customize_screen() {
 			}
 		}
 		if (settingvalue == 3 && !retro_mode) {
-			if (joypad1.press_up) {
+			if (joypad1.press_up || (joypad1.up && hold_timer >= 15)) {
 				icon++;
 				if (icon > (MAX_ICONS - 1)) icon = 0;
 			}
-			if (joypad1.press_down) {
+			if (joypad1.press_down || (joypad1.down && hold_timer >= 15)) {
 				if (icon == 0) icon = MAX_ICONS - 1;
 				else icon--;
 			}
@@ -380,6 +404,7 @@ void customize_screen() {
 			return;
 		}
 		dec_mouse_timer();
+		hold_timer++;
 						
 	}
 #undef prev_icon
@@ -1362,5 +1387,23 @@ void title_robot_shit() {
 	}
 					
 }
-
+void clear_shit() {
+	one_vram_buffer(' ', NTADR_A(4,14));	
+	one_vram_buffer(' ', NTADR_A(4,15));	
+	one_vram_buffer(' ', NTADR_A(9,14));	
+	one_vram_buffer(' ', NTADR_A(9,15));	
+	one_vram_buffer(' ', NTADR_A(13,14));	
+	one_vram_buffer(' ', NTADR_A(13,15));	
+	one_vram_buffer(' ', NTADR_A(18,14));	
+	one_vram_buffer(' ', NTADR_A(18,15));	
+	one_vram_buffer(' ', NTADR_A(22,14));	
+	one_vram_buffer(' ', NTADR_A(22,15));	
+	one_vram_buffer(' ', NTADR_A(27,14));	
+	one_vram_buffer(' ', NTADR_A(27,15));	
+	one_vram_buffer(' ', NTADR_A(13,8));	
+	one_vram_buffer(' ', NTADR_A(13,9));	
+	one_vram_buffer(' ', NTADR_A(18,8));	
+	one_vram_buffer(' ', NTADR_A(18,9));	
+	
+}
 CODE_BANK_POP()
