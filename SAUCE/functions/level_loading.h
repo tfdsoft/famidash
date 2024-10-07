@@ -68,7 +68,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// If practice mode has set a scroll position to restart from, run the unrle function
 	// over and over until it catches up
 	if (has_practice_point) {
-/*
+
 		ii = practice_scroll_x >> 4;
 		dummy_unrle_columns(ii);
 
@@ -104,7 +104,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		music_update();
 		
 	//	memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
-*/	
+	
 	} 
 	else {
 		// To get the draw screen R to start in the left nametable, scroll must be negative.
