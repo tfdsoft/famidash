@@ -1,8 +1,6 @@
 ; Startup code for cc65 and Shiru's NES library
 ; based on code by Groepaz/Hitmen <groepaz@gmx.net>, Ullrich von Bassewitz <uz@cc65.org>
 
-;REMOVED initlib
-;this called the CONDES function
 ; Linker generated symbols
 	.import VERSION, TOTAL_SONGS, START_SONG, NTSC_RATE, PAL_RATE, REGION, SOUND_EXP, NSF2_FEATURES
 	
@@ -10,62 +8,26 @@
 	.import FIRST_MUSIC_BANK, FIRST_DMC_BANK
 	.import PRGDATASIZE
 
+SFX_STRINGS = 0
+
+
 .include "zeropage.inc"
-
-
-
-
-PPU_CTRL	=$2000
-PPU_MASK	=$2001
-PPU_STATUS	=$2002
-PPU_OAM_ADDR=$2003
-PPU_OAM_DATA=$2004
-PPU_SCROLL	=$2005
-PPU_ADDR	=$2006
-PPU_DATA	=$2007
-PPU_OAM_DMA	=$4014
-PPU_FRAMECNT=$4017
-DMC_FREQ	=$4010
-CTRL_PORT1	=$4016
-CTRL_PORT2	=$4017
-
-
+.include "music_songlist.inc"
+.include "sfx_sfxlist.inc"
 
 .segment "ZEROPAGE"
-
 NTSC_MODE: 			.res 1
-; PAD_STATE: 			.res 2		;one byte per controller
-; PAD_STATE2: 		.res 2		;one byte per controller
-; PAD_STATEP: 		.res 2
-; PAD_STATEP2: 		.res 2
-; PAD_STATET: 		.res 2
-; PAD_STATET2: 		.res 2
-PPU_CTRL_VAR: 		.res 1
-PPU_CTRL_VAR1: 		.res 1
-PPU_MASK_VAR: 		.res 1
-RAND_SEED: 			.res 4
-
-TEMP: 				.res 11
-SPRID:				.res 1
-
-; variables for nesdoug's metatile system
-; META_PTR:			.res 2
-; META_PTR2:		.res 2
-; DATA_PTR:			.res 2
-; META_VAR:			.res 1
-
-xargs:				.res 4
-
+PLAYBACK_MODE:		.res 1 ; Bit 7 for SFX, bit 6 for PCM
 .segment "BSS"
 current_song_bank:	.res 1
 
- 
+
 ;
-; NES 2.0 header
+; NSF2 header
 ;
 .segment "HEADER"
 
-	LOAD_ADDR = 0	; In case of bankswitching, indicates amount of padding
+	LOAD_ADDR = $8000	; In case of bankswitching, indicates amount of padding from the start of the ROM
 	INIT_ADDR = init
 	PLAY_ADDR = play
 
@@ -106,17 +68,30 @@ init:
 	; sta <NTSC_MODE
 	dex
 	stx <NTSC_MODE
+	
+	cmp #song_max
+	bcs sfx_init
     JMP _music_play	
 
-    ; LDA #<.bank(sounds)
-    ; JSR mmc3_tmp_prg_bank_1
+sfx_init:
+	pha
+	JSR famistudio_init_for_sfx
+	
+    LDA #<.bank(sounds)
+    JSR mmc3_tmp_prg_bank_1
     
-	; ldx #<sounds
-	; ldy #>sounds
-	; jsr famistudio_sfx_init
+	ldx #<sounds
+	ldy #>sounds
+	JSR famistudio_sfx_init
+	
+	PLA
+	SEC
+	SBC #song_max
+	LDX #0
+	JMP famistudio_sfx_play
 
 play:
-	; TODO: SFX and PCM get their own routines
+	; TODO: PCM gets its own routine
 	jmp _music_update
 
 	

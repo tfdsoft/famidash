@@ -68,6 +68,37 @@ music_counts:
 	.byte 2, 2, 3, 4, $FF ;last bank is marked with an FF to always stop bank picking
 .endproc
 
+
+.proc famistudio_init_for_sfx
+	; CONFIGURATION:
+	; If the following value is set and valid, it will be used
+	; as the pointer to famistudio_init in all banks. If it
+	; isn't, then music_pointers_lo, hi and song count tables
+	; are needed for proper operation.
+	constInitPtr = $A000
+
+	.ifndef constInitPtr
+		constInitPtr = 0
+	.endif
+	useConstInitPtr = (constInitPtr >= $6000)
+	
+	
+	LDA #<FIRST_MUSIC_BANK
+	JSR mmc3_tmp_prg_bank_1
+	
+	.if useConstInitPtr
+		LDX #<constInitPtr
+		LDY #>constInitPtr
+	.else
+		LDX #<music_data_famidash_music1
+		LDY #>music_data_famidash_music1
+	.endif
+	LDA NTSC_MODE
+	JSR famistudio_init
+	
+	JMP _mmc3_pop_prg_bank_1
+.endproc
+
 .segment "CODE_2"
 
 .import _disable_dpcm_bankswitch
