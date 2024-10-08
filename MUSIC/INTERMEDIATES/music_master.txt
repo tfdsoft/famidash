@@ -9,7 +9,7 @@ COPYRIGHT       "NO TOUCH"
 # COMMENTS block
 COMMENT "CREDITS:"
 COMMENT ""
-COMMENT "stereo madness:        zenith302 & usersniper & alexmush"
+COMMENT "stereo madness:        zenith302 & usersniper"
 COMMENT "back on track:         aquamarine.gay"
 COMMENT "polargeist:            skiskissue gd & zenith302 & vikrinox"
 COMMENT "dry out:               usersniper"

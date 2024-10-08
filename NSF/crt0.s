@@ -39,12 +39,12 @@ sampleID:			.res 1
 	.word .loword(LOAD_ADDR)
 	.word .loword(INIT_ADDR)
 	.word .loword(PLAY_ADDR)
-	.asciiz "Famidash Music"
-	.repeat 31 - 14
+	.asciiz "Famidash"
+	.repeat 31 - 8
 		.byte $00
 	.endrepeat
-	.asciiz "7 Musicians at / with TFDSoft"
-	.repeat 31 - 29
+	.asciiz "OG by 9 ppl, covers by 7 ppl"
+	.repeat 31 - 28
 		.byte $00
 	.endrepeat
 	.asciiz "(c) TFDSoft 2023-2024"
@@ -153,3 +153,6 @@ GeometryDashPCMB:
 
 .segment "SFX_BANK"
 	.include "MUSIC/EXPORTS/sfx.s"
+
+.segment "METADATA"
+	.include "metadata.s"
