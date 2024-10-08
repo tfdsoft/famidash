@@ -17,9 +17,10 @@ SFX_STRINGS = 0
 
 .segment "ZEROPAGE"
 NTSC_MODE: 			.res 1
-PLAYBACK_MODE:		.res 1 ; Bit 7 for SFX, bit 6 for PCM
+PLAYBACK_MODE:		.res 1 ; Bit 7 for PCM, bit 6 for finished PCM
 .segment "BSS"
 current_song_bank:	.res 1
+sampleID:			.res 1
 
 
 ;
@@ -69,11 +70,19 @@ init:
 	dex
 	stx <NTSC_MODE
 	
+	cmp #(song_max+sfx_max)
+	bcs pcm_init
+	
+	ldy #0
+	sty PLAYBACK_MODE
+	
 	cmp #song_max
 	bcs sfx_init
     JMP _music_play	
 
 sfx_init:
+	; The carry is set
+	SBC #song_max
 	pha
 	JSR famistudio_init_for_sfx
 	
@@ -85,15 +94,27 @@ sfx_init:
 	JSR famistudio_sfx_init
 	
 	PLA
-	SEC
-	SBC #song_max
 	LDX #0
 	JMP famistudio_sfx_play
 
+pcm_init:
+	; The carry is set
+	sbc #(song_max+sfx_max)
+	sta sampleID
+	lda #$80
+	sta PLAYBACK_MODE
+play_return:
+	rts
+	
 play:
-	; TODO: PCM gets its own routine
+	BIT PLAYBACK_MODE
+	bvs play_return
+	bmi pcm_play
 	jmp _music_update
-
+pcm_play:
+	LDA sampleID
+	DEC PLAYBACK_MODE
+	JMP _playPCM
 	
 	.include "nsfmapper.s"
 	.include "nsfdash.s"
