@@ -154,3 +154,103 @@ music_counts:
 .endproc
 ; Because i JMPed, the routine is over
 
+
+; void __fastcall__ playPCM(uint8_t sample);
+.segment "CODE_2"
+
+.export _playPCM
+.proc _playPCM
+PCM_ptr = ptr1
+    ; A = Sample
+	tay
+	ldx	NTSC_MODE
+	bne :+
+		clc
+		adc #(SampleRate_PAL-SampleRate_NTSC)
+	:
+	tax
+	lda SampleRate_NTSC, x
+    sta tmp1
+	ldx Bank, y
+
+    ;enable DMC but disable DPCM
+    lda #%00000000
+    sta FAMISTUDIO_APU_DMC_FREQ
+    lda #%00001011
+    sta FAMISTUDIO_APU_SND_CHN
+    lda #0
+	sta PCM_ptr
+    sta FAMISTUDIO_APU_DMC_LEN
+    lda #%00011011
+    sta FAMISTUDIO_APU_SND_CHN
+    ; mute sqs+noi
+    lda #$30
+    sta FAMISTUDIO_APU_NOISE_VOL
+    lda #%00110000
+    sta FAMISTUDIO_APU_PL1_VOL
+    sta FAMISTUDIO_APU_PL2_VOL
+    ;init pcm
+;    lda #<GeometryDashPCM
+ ;   sta PCM_ptr
+ ;   ldx #<.bank(GeometryDashPCM)
+ 	ldy #0
+
+    ;play pcm
+@RestartPtr:
+    lda #>$C000
+    sta PCM_ptr+1
+@LoadBank:
+    txa
+    jsr mmc3_set_prg_bank_0
+    inx
+@LoadSample:
+    lda tmp1	; 3
+	sec			; 2
+@Delay:
+	sbc #1		;	5n cycles
+	bcs @Delay	;__
+	; 	beq	@noburn	; 2/3
+	; 7x jsr BurnCycles	; 26
+	; @noburn:
+	; 	php			;
+	; 	plp			;
+	; 	php			;	17
+	; 	plp			;
+	; 	bit PCM_ptr	;__
+	;	old code: if smp == 0 - 22 cycles, if not - 204 cycles
+	;	new: 
+	
+    lda (PCM_ptr),y
+    beq @DoneWithPCM
+    sta $4011
+    iny
+    bne @LoadSample
+    inc PCM_ptr+1
+    lda PCM_ptr+1
+    cmp #>($c000+$2000)
+    bcc @LoadSample
+    jmp @RestartPtr
+@DoneWithPCM:
+    lda #%00011111
+    sta FAMISTUDIO_APU_SND_CHN
+    lda #<FIRST_DMC_BANK
+	jmp mmc3_set_prg_bank_0
+
+; BurnCycles:	; 6 for JSR
+;     php	;	7
+;     plp	;__
+;     php	;	7
+;     plp	;__
+;     rts	;	6
+
+Bank:
+    .byte <.bank(GeometryDashPCMA)
+    .byte <.bank(GeometryDashPCMB)
+
+SampleRate_NTSC:	; Also applies to Dendy, as it is derived from the CPU speed
+	.byte 3		;(22-5+1)/5-1
+	.byte 40	;((NTSC Clock / 8000)-5+1)/5-1
+SampleRate_PAL:
+	.byte 2
+	.byte 37	;((PAL Clock / 8000)-5+1)/5-1
+.endproc
