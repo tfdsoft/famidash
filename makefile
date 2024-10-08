@@ -44,10 +44,10 @@ NSF_CFG=CONFIG/nsf2.cfg
 OUTDIR = BUILD
 TMPDIR = TMP
 
-.PHONY: default clean nsf2
+.PHONY: default clean nsf
 
 default: $(OUTDIR)/$(NAME).nes
-nsf2: $(OUTDIR)/$(NAME).nsf
+nsf: $(OUTDIR)/$(NAME).nsf
 
 #target: dependencies
 

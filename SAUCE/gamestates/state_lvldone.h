@@ -494,11 +494,11 @@ const unsigned char sfxtexts_size[] = {
 
 
 const unsigned char* const xbgmtexts1[] = {
-	0, 0, 0, 0, 0, 0, TEXT_xlevel1textD, TEXT_xlevel1text1, TEXT_xlevel1text2, TEXT_xlevel1text5, 0, 0, 0, 0, TEXT_xlevel1textC, 0
+	0, 0, 0, 0, 0, 0, 0, TEXT_xlevel1textD, TEXT_xlevel1text1, TEXT_xlevel1text2, TEXT_xlevel1text5, 0, 0, 0, 0, TEXT_xlevel1textC
 };
 
 const unsigned char* const xbgmtexts2[] = {
-	TEXT_xlevel2text8, TEXT_xlevel2textB, TEXT_xlevel2textE, TEXT_2textpractice, TEXT_xlevel2text3, TEXT_xlevel2text7, TEXT_xlevel2textD, TEXT_xlevel2text1, TEXT_xlevel2text2, TEXT_xlevel2text5, TEXT_xlevel2text9, TEXT_xlevel2text4, TEXT_xlevel2text6, TEXT_xlevel2textA, TEXT_xlevel2textC, TEXT_2textmenu
+	TEXT_xlevel2text8, TEXT_xlevel2textB, TEXT_xlevel2textE, TEXT_2textpractice, TEXT_2textmenu, TEXT_xlevel2text3, TEXT_xlevel2text7, TEXT_xlevel2textD, TEXT_xlevel2text1, TEXT_xlevel2text2, TEXT_xlevel2text5, TEXT_xlevel2text9, TEXT_xlevel2text4, TEXT_xlevel2text6, TEXT_xlevel2textA, TEXT_xlevel2textC, 
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -506,6 +506,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_xlevel2textB) - 1,
 	sizeof(TEXT_xlevel2textE) - 1,
 	sizeof(TEXT_2textpractice) - 1,
+	sizeof(TEXT_2textmenu) - 1,	
 	sizeof(TEXT_xlevel2text3) - 1,
 	sizeof(TEXT_xlevel2text7) - 1,	
 	sizeof(TEXT_xlevel2textD) - 1,	
@@ -517,9 +518,9 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_xlevel2text6) - 1,	
 	sizeof(TEXT_xlevel2textA) - 1,	
 	sizeof(TEXT_xlevel2textC) - 1,	
-	sizeof(TEXT_2textmenu) - 1,	
 };
 const unsigned char xbgmtext1_size[] = {
+	0,
 	0,
 	0,
 	0,
@@ -535,7 +536,6 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	sizeof(TEXT_xlevel1textC) - 1,	
-	0,
 };
 
 
