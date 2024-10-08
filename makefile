@@ -40,6 +40,7 @@ endef
 
 NAME = famidash
 CFG = CONFIG/mmc3.cfg
+NSF_CFG=CONFIG/nsf2.cfg
 OUTDIR = BUILD
 TMPDIR = TMP
 
@@ -47,8 +48,6 @@ TMPDIR = TMP
 
 default: $(OUTDIR)/$(NAME).nes
 nsf2: $(OUTDIR)/$(NAME).nsf
-
-$(OUTDIR)/$(NAME).nsf: CFG=CONFIG/nsf2.cfg
 
 #target: dependencies
 
@@ -75,8 +74,8 @@ $(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h SAUCE/gamestates/*.h SA
 	$(CC65) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) -E --add-source -o $(TMPDIR)/$(NAME).c
 	$(CC65) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) --add-source -o $(TMPDIR)/$(NAME).s
 
-$(OUTDIR)/$(NAME).nsf: $(TMPDIR)/crt0_nsf2.o $(CFG)
-	$(LD65) -C $(CFG) -o $(OUTDIR)/$(NAME).nsf $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0_nsf2.o nes.lib --dbgfile $(OUTDIR)/famidash_nsf2.dbg
+$(OUTDIR)/$(NAME).nsf: $(TMPDIR)/crt0_nsf2.o $(NSF_CFG)
+	$(LD65) -C $(NSF_CFG) -o $(OUTDIR)/$(NAME).nsf $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0_nsf2.o nes.lib --dbgfile $(OUTDIR)/famidash_nsf2.dbg
 	@echo $(NAME).nsf created
 
 $(TMPDIR)/crt0_nsf2.o: NSF/*.s LIB/asm/*.inc MUSIC/EXPORTS/*.s
