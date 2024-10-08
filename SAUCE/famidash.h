@@ -229,6 +229,7 @@ uint8_t icon_colors[3];
 #define color2 icon_colors[1]
 #define color3 icon_colors[2]
 
+uint8_t cursedmusic;
 uint8_t discomode;
 uint8_t trails;
 uint8_t viseffects;
