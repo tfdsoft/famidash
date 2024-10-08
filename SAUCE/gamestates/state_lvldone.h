@@ -780,6 +780,9 @@ void funsettings() {
 				else if (mouse.y >= 0x94 && mouse.y <= 0x9C) {
 					settingvalue = 6; set_fun_settings();
 				}
+				else if (mouse.y >= 0xA4 && mouse.y <= 0x9C) {
+					settingvalue = 7; set_fun_settings();
+				}
 
 			}
 			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
@@ -806,6 +809,9 @@ void funsettings() {
 		if (cam_seesaw) 	one_vram_buffer('g', NTADR_A(26, 17));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 17));	// this is auto optimized by cc65
 		
+		if (cursedmusic) 	one_vram_buffer('g', NTADR_A(26, 21));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 21));	// this is auto optimized by cc65
+		
 		__A__ = idx16_load_hi_NOC(gameboytexts, gameboy_mode);
 		if (__A__) { draw_padded_text(gameboytexts[gameboy_mode & 0x7F], gameboy_text_size[gameboy_mode], 8, NTADR_A(19, 19)); 	one_vram_buffer('g', NTADR_A(26, 19));	}// believe it or not, 
 		else { one_vram_buffer_horz_repeat('$', 8, NTADR_A(19, 19)); one_vram_buffer('f', NTADR_A(26, 19)); }
@@ -815,12 +821,12 @@ void funsettings() {
 		tmp1 = settingvalue;
 
 		if (joypad1.press & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 6) { settingvalue = 0; }
+			if (settingvalue == 7) { settingvalue = 0; }
 			else { settingvalue++;  }
 		}
 
 		if (joypad1.press & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 6; }
+			if (settingvalue == 0) { settingvalue = 7; }
 			else { settingvalue--;  }
 		}
 
@@ -878,7 +884,8 @@ void set_fun_settings() {
 			break;
 		case 0x04: invisblocks ^= 1; break;
 		case 0x05: cam_seesaw = (cam_seesaw > 0 ? 0 : 1); break;
-		case 0x06: gameboy_mode = (gameboy_mode == 8 ? 0 : gameboy_mode + 1);
+		case 0x06: gameboy_mode = (gameboy_mode == 8 ? 0 : gameboy_mode + 1); break;
+		case 0x07: cursedmusic ^= 1; break;
 	};
 }	
 
