@@ -1,6 +1,6 @@
 
 CODE_BANK_PUSH("LVL_BANK_00")
-
+void lvl_done_update();
 void mouse_and_cursor();
 
 const uint8_t difficulty_pal_A[] ={
@@ -160,7 +160,7 @@ void state_lvldone() {
 
 	sfx_play(sfx_level_complete, 0);
 	menuselection = 1;
-
+	lvl_done_update();
 	while (1) {
 		// Rather hacky, but when doing sprite zero at the bottom of the screen we DON'T 
 		// want to skip a frame, so we re-enable NMI and then if NMI happens during the frame
@@ -380,8 +380,8 @@ void state_lvldone() {
 				}
 			}
 
-			if (joypad1.press_left) menuselection ^= 1;
-			if (joypad1.press_right) menuselection ^= 1;
+			if (joypad1.press_left) { menuselection ^= 1; lvl_done_update(); }
+			if (joypad1.press_right) { menuselection ^= 1; lvl_done_update(); }
 			if (joypad1.press_start){
 				if (menuselection) {
 					
@@ -409,18 +409,7 @@ void state_lvldone() {
 			}
 
 
-			if (menuselection) {
-				one_vram_buffer(' ', NTADR_C(8,23));
-				one_vram_buffer(' ', NTADR_C(9,23));
-				one_vram_buffer(0x94, NTADR_C(22,23));
-				one_vram_buffer(0x95, NTADR_C(23,23));
-			} else {
-				one_vram_buffer(0x94, NTADR_C(8,23));
-				one_vram_buffer(0x95, NTADR_C(9,23));
-				one_vram_buffer(' ', NTADR_C(22,23));
-				one_vram_buffer(' ', NTADR_C(23,23));
-			}
-			break;
+
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
@@ -1056,6 +1045,20 @@ void refreshmenu_part2(void) {
 
 }
 
+#include "defines/endlevel_charmap.h"
+void lvl_done_update() {
+	if (menuselection) {
+		one_vram_buffer(0xFF, NTADR_C(8,23));
+		one_vram_buffer(0xFF, NTADR_C(9,23));
+		one_vram_buffer(0x94, NTADR_C(22,23));
+		one_vram_buffer(0x95, NTADR_C(23,23));
+	} else {
+		one_vram_buffer(0x94, NTADR_C(8,23));
+		one_vram_buffer(0x95, NTADR_C(9,23));
+		one_vram_buffer(0xFF, NTADR_C(22,23));
+		one_vram_buffer(0xFF, NTADR_C(23,23));
+	}
+}	
 
 CODE_BANK_POP()
 
