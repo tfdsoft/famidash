@@ -710,20 +710,6 @@ void colordec() {
 
 #include "defines/mainmenu_charmap.h"
 
-const unsigned char cursedtext1[]="  MILD";
-const unsigned char cursedtext2[]="MEDIUM";
-const unsigned char cursedtext3[]=" HEAVY";
-
-const unsigned char* const cursedtexts[] = {
-	0, cursedtext1, cursedtext2, cursedtext3
-};
-
-const unsigned char cursedtext_size[] = {
-	0,
-	sizeof(cursedtext1) - 1,
-	sizeof(cursedtext2) - 1,
-	sizeof(cursedtext3) - 1
-};
 
 const unsigned char gameboytext1[]="  GREY";
 const unsigned char gameboytext2[]="   RED";
@@ -823,14 +809,11 @@ void funsettings() {
 		
 		if (cam_seesaw) 	one_vram_buffer('g', NTADR_A(26, 17));	// believe it or not, 
 		else 	one_vram_buffer('f', NTADR_A(26, 17));	// this is auto optimized by cc65
+
+		if (cursedmusic & 0x40) 	one_vram_buffer('g', NTADR_A(26, 21));	// believe it or not, 
+		else 	one_vram_buffer('f', NTADR_A(26, 21));	// this is auto optimized by cc65
 		
-		tmp1 = 0;
-		if (cursedmusic >= 0x80) {tmp1++; tmp1++;}
-		if (cursedmusic & 0x40) tmp1++;
-		
-		__A__ = idx16_load_hi_NOC(cursedtexts, tmp1);
-		if (__A__) { draw_padded_text(cursedtexts[tmp1 & 0x7F], cursedtext_size[tmp1], 8, NTADR_A(19, 21)); 	one_vram_buffer('g', NTADR_A(26, 19));	}// believe it or not, 
-		else { one_vram_buffer_horz_repeat('$', 8, NTADR_A(19, 21)); one_vram_buffer('f', NTADR_A(26, 21)); }
+
 
 //		if (cursedmusic) 	one_vram_buffer('g', NTADR_A(26, 21));	// believe it or not, 
 //		else 	one_vram_buffer('f', NTADR_A(26, 21));	// this is auto optimized by cc65
@@ -902,7 +885,7 @@ void set_fun_settings() {
 		case 0x04: invisblocks ^= 1; break;
 		case 0x05: cam_seesaw = (cam_seesaw > 0 ? 0 : 1); break;
 		case 0x06: gameboy_mode = (gameboy_mode == 8 ? 0 : gameboy_mode + 1); break;
-		case 0x07: cursedmusic += 0x40; break;
+		case 0x07: cursedmusic ^= 0x40; break;
 	};
 }	
 
