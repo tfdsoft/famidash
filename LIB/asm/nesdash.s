@@ -1,8 +1,8 @@
 ; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
 .importzp _gamemode
-.importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9, _temptemp5, _max_fallspeed_big, _max_fallspeed_mini, _gravity_big, _gravity_mini  ; C-safe temp storage
+.importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9, _temptemp5  ; C-safe temp storage
 .import pusha, pushax, callptr4
-.import _scroll_x, _gameState, _titleicon
+.import _scroll_x, _cursedmusic
 
 .macpack longbranch
 
@@ -2096,7 +2096,7 @@ end:
 .define MINI_CUBE_GRAVITY $6F
 
 .import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y
-.import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _retro_mode, _icon
+.import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _retro_mode, _icon, _gameState, _titleicon
 .importzp _cube_rotate, _mini
 .import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2, _SPIDER_ALT, _SPIDER_ALT2
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT

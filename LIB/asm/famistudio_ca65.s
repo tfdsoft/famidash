@@ -4802,6 +4802,25 @@ famistudio_set_instrument:
 
     @instrument_ptr = famistudio_ptr1
     @chan_idx      = famistudio_r0
+	
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+;*  MODIFIED
+	; Randomize the instrument if the music is cursed
+    bit _cursedmusic
+	bvc @no_randomization
+	eor famistudio_tempo_acc_lo
+	
+	@randomization_loop:
+		sta @instrument_ptr
+		jsr _newrand
+		eor @instrument_ptr
+		; Y is 0
+		cmp #$11	;	Ensure shit stays in range
+		bcs @randomization_loop				;__
+	
+	@no_randomization:
+;!!! FAMISTUDIO DRIVER MODIFICATION END
+
 
     ; Pre-multiply by 4 if not using extended range, faster pointer arithmetic.
     .if !FAMISTUDIO_USE_INSTRUMENT_EXTENDED_RANGE
@@ -5562,6 +5581,24 @@ famistudio_advance_channel:
 
 @play_note:    
     sta famistudio_chn_note,x ; Store note code
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+;*  MODIFIED
+	; Randomize the instrument if the music is cursed
+    bit _cursedmusic
+	bpl @no_randomization
+	eor famistudio_tempo_acc_lo
+	
+	@randomization_loop:
+		sta famistudio_chn_note,x
+		jsr _newrand
+		eor famistudio_chn_note,x
+		cmp #96	;	Ensure shit stays in range
+		bcs @randomization_loop				;__
+	
+	sta famistudio_chn_note,x
+	@no_randomization:
+;!!! FAMISTUDIO DRIVER MODIFICATION END
+	
 
 .if FAMISTUDIO_USE_SLIDE_NOTES
 @clear_previous_slide:

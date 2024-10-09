@@ -898,7 +898,7 @@ void set_fun_settings() {
 		case 0x04: invisblocks ^= 1; break;
 		case 0x05: cam_seesaw = (cam_seesaw > 0 ? 0 : 1); break;
 		case 0x06: gameboy_mode = (gameboy_mode == 8 ? 0 : gameboy_mode + 1); break;
-		case 0x07: cursedmusic += (cursedmusic == 3 ? -3 : 1); break;
+		case 0x07: cursedmusic += 0x40; break;
 	};
 }	
 
