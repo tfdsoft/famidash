@@ -523,7 +523,10 @@ void state_menu() {
 
 	
 	ppu_off();
-	pal_bg(splashMenu);
+
+	if (all_levels_complete == 0xFC) pal_bg(splashMenu2);
+	else pal_bg (splashMenu);
+	
 	newrand();
 
 	mmc3_set_8kb_chr(MENUBANK);
