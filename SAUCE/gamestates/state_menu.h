@@ -55,6 +55,36 @@ void state_menu();
 //void bgmtest();
 
 
+const uint8_t BG_Table2[]={
+	0x11,
+	0x12,
+	0x13,
+	0x14,
+	0x15,
+	0x16,
+	0x17,
+	0x18,
+	0x19,
+	0x1A,
+	0x1B,
+	0x1C
+};
+
+const uint8_t G_Table2[]={
+	0x21,
+	0x22,
+	0x23,
+	0x24,
+	0x25,
+	0x26,
+	0x27,
+	0x28,
+	0x29,
+	0x2A,
+	0x2B,
+	0x2C
+};
+
 #include "defines/mainmenu_charmap.h"
 
 const uint8_t lvlselect_irq_table[] = {
@@ -75,7 +105,7 @@ void levelselection() {
 
 	write_irq_table(lvlselect_irq_table);
 	set_irq_ptr(irqTable);
-
+	pal_bg(oldsplashMenu);
 	oam_clear();
 	ppu_off();
 	pal_bright(0);
@@ -564,6 +594,18 @@ void state_menu() {
 	titlecolor3 = color3;
 	titlecolor2 = color2;
 	titlecolor1 = color1;
+	if (all_levels_complete != 0xFC) {
+		one_vram_buffer(0x19, NTADR_A(27,2));
+		one_vram_buffer(0x1A, NTADR_A(28,2));
+		one_vram_buffer(0x2D, NTADR_A(27,3));
+		one_vram_buffer(0x4D, NTADR_A(28,3));
+	}
+	else {
+		one_vram_buffer(0x1B, NTADR_A(27,2));
+		one_vram_buffer(0x1C, NTADR_A(28,2));
+		one_vram_buffer(0x1D, NTADR_A(27,3));
+		one_vram_buffer(0x1E, NTADR_A(28,3));
+	}	
 	while (!(joypad1.press & (PAD_START | PAD_A))){
 
 		pal_col(0x11,titlecolor3);
@@ -586,18 +628,7 @@ void state_menu() {
 		//currplayer_gravity
 		//tmp2 tmp7
 		//tmpi8
-	if (all_levels_complete != 0xFC) {
-		one_vram_buffer(0x19, NTADR_A(27,2));
-		one_vram_buffer(0x1A, NTADR_A(28,2));
-		one_vram_buffer(0x2D, NTADR_A(27,3));
-		one_vram_buffer(0x4D, NTADR_A(28,3));
-	}
-	else {
-		one_vram_buffer(0x1B, NTADR_A(27,2));
-		one_vram_buffer(0x1C, NTADR_A(28,2));
-		one_vram_buffer(0x1D, NTADR_A(27,3));
-		one_vram_buffer(0x1E, NTADR_A(28,3));
-	}
+
 
 
 		if (currplayer_x_small <= 0xF7) {
@@ -991,6 +1022,7 @@ void state_menu() {
 			//	pal_col(6, tmp2);
 			//	pal_col(5, oneShadeDarker(tmp2)); 
 			//	pal_set_update();
+			pal_set_update();
 			discoframe++;
 			if (discoframe == 12) discoframe = 0;
 		}
