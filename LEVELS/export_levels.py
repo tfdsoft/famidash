@@ -127,6 +127,7 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple[Iterable[int]]:
 		
 def export_spr(folder: str, levels: Iterable[str]):
 	all_data = []
+	overflows = []
 	for level in levels:
 		lines = []
 		with open(f"{folder}/{level}_SP.csv") as f:
@@ -137,7 +138,15 @@ def export_spr(folder: str, levels: Iterable[str]):
 		rowOffset = 57 - rows
 		count1 = 0
 		count2 = 0
+		spriteCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		overflowStart = -1
 		for i in range(0, columns):
+			spriteCounts[i & 0x0F] = sum([int(int(lines[j][i]) >= 0) for j in range(0, rows)])
+			if overflowStart < 0 and sum(spriteCounts) > 16:
+				overflowStart = i - 15
+			elif overflowStart >= 0 and sum(spriteCounts) <+ 16:
+				overflows.append([level, overflowStart, i])
+				overflowStart = -1
 			for j in range(0, rows):
 				a = str(lines[j][i])
 				if (a != "-1"):
@@ -171,6 +180,9 @@ def export_spr(folder: str, levels: Iterable[str]):
 						[x & 0xFF, (x >> 8) & 0xFF,
 						 y & 0xFF, (y >> 8) & 0xFF,
 						 obj_id])
+			
+		if overflowStart > 0:
+			overflows.append([level, overflowStart, -1])
 
 		level_data.append([0xff]) # add terminator byte
 		all_data.append((len(level_data) * 5 - 4, level_data))
@@ -196,6 +208,11 @@ def export_spr(folder: str, levels: Iterable[str]):
 
 {out_str}
 """)
+	if (len(overflows) > 0):
+		print("SPRITE LIMIT OVERFLOWS HAPPENED IN SPRITE DATA:", file=sys.stderr)
+		for i in overflows:
+			print(f"\tLevel {i[0]} at x={i[1]}..{i[2] if i[2] > 0 else 'the end'}", file=sys.stderr)
+	
 
 
 def main():
