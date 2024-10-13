@@ -1053,9 +1053,18 @@ void state_menu() {
 		if (tmp3 ) {    // menu selection incremented
 			tmp4 = menuselection; ++tmp4;
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-
-			one_vram_buffer('a', tmp5);
-			one_vram_buffer('b', addloNOC(tmp5, 1));
+			if (menuselection != 4) {
+				one_vram_buffer('a', tmp5);
+				one_vram_buffer('b', addloNOC(tmp5, 1));
+				one_vram_buffer(' ', NTADR_A(26, 2));
+				one_vram_buffer(' ', NTADR_A(26, 3));
+				
+			}
+			else {
+				one_vram_buffer(0x6F, NTADR_A(26, 2));
+				one_vram_buffer(0x7F, NTADR_A(26, 3));
+				
+			}
 
 			tmp4 += tmp3;   // Get the old index
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
