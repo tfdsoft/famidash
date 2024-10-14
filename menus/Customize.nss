@@ -6,13 +6,13 @@ BtnSelTiles=0
 BtnChrBank1=1
 BtnChrBank2=0
 BtnGridAll=0
-BtnGridTile=1
-BtnGridAtr=0
-BtnGridBlock=1
+BtnGridTile=0
+BtnGridAtr=1
+BtnGridBlock=0
 BtnGridScr=0
 BtnSelectedOnlyInverted=0
 BtnSolidityMask=0
-BtnPal=1
+BtnPal=0
 BtnTypeIn=0
 BtnFrameAll=1
 BtnFrameSelected=0
@@ -45,7 +45,7 @@ ChkSwapBanks_Labels=1
 VarTileViewTagBuf=0
 VarBgPalCur=3
 VarPalActive=0
-VarTileActive=208
+VarTileActive=15
 VarBankActive=0
 VarPPUMask=0
 VarPPUMaskSet0=0
@@ -67,10 +67,10 @@ VarNameSelectionT=-1
 VarNameSelectionB=5
 VarNameCopyW=14
 VarNameCopyH=1
-VarCHRSelectionL=0
-VarCHRSelectionR=1
-VarCHRSelectionT=13
-VarCHRSelectionB=14
+VarCHRSelectionL=15
+VarCHRSelectionR=16
+VarCHRSelectionT=0
+VarCHRSelectionB=1
 VarCHRCopyW=2
 VarCHRCopyH=1
 VarCHRCopyRect=1
@@ -124,12 +124,12 @@ propertyCHRlabel7=global condition
 
 
 
-MetaSpriteBankName=EditCube
+MetaSpriteBankName=Customize
 
 FilterCHR=1
-FilterName=1
+FilterName=9
 FileNameCHR=Z:\home\deck\Documents\famidash\GRAPHICS\menuicons
-FileNameName=
+FileNameName=C:\Users\house\Documents\GitHub\famidash\menus\h\Customize.h
 FileNamePal=
 FileNameMetaSpriteBank=
 FileNameTileProps=
@@ -144,7 +144,7 @@ RadioAutoexport_UseSubDir_NEXXT=0
 CheckAutoexport_MetatileAsBMP=0
 
 
-VarCHRSelected=00[d0]0100[2f]
+VarCHRSelected=00[f]0100[f0]
 
 
 Palette=000f1030000f2a39000f2a21000f11210f1121310f1222320f1323330f1424340f1525350f1626360f1727370f1828380f1929390f1a2a3a0f1b2b3b0f1c2c3c
@@ -162,13 +162,13 @@ CHRUndo=ff[10]00[8]ff[10]00[8]ff[8]00[8]ff[8]00ff[7]00[6]ff[8]00[2]ff[8]00[2]3f[
 CHRCopy=7f[2]3f1f0f070301003f1f0f07030100fe[2]fcf8f0e0c08000fcf8f0e0c08000ff[8]00[2]02060e1e3e7eff[8]00[2]406070787c7eff[8]7e3e1e0e060200[2]ff[8]7e7c7870604000[a]ff[3]7f[2]3f1f0700[8]ff[3]fe[2]fcf8e0ff[3]7f[2]3f1f07ff[3]7f[2]3f1f07ff[3]fe[2]fcf8e0ff[3]fe[2]fcf8e0ff[3]7f[2]3f1f0700[8]ff[3]fe[2]fcf8e000[f48]
 
 
-NameTable=02[40]060706070bff[1b]08090809ff[1c]06070fff[6]e3f5f3f4efede9fae5ffe9e3efeeff[4]d0a1ff[3]0809ff[19]d0a0ff[3]0dff[2e]1213ff[1e]2021ff[1e]3031ff[1e]1011ff[55]1213ff[7]1213ff[7]1213ff[c]4849ff[7]4a4bff[7]4c4dff[c]5859ff[7]5a5bff[7]5c5dff[c]1011ff[7]1011ff[7]1011ff[c6]0dff[1e]0c0607ff[9]f0f2e5f3[2]ffe2fff4efff[9]060708090fff[a]f2e5f4f5f2eeff[a]0f080906070607ff[18]06070607080908090bff[16]0a0809080902[40]
+NameTable=02[40]060706070fff[1b]08090809ff[1c]06070fff[6]e3f5f3f4efede9fae5ffe9e3efeeff[4]d0a1ff[3]0809ff[19]d0a0ff[3]0fff[2e]1213ff[1e]2021ff[1e]3031ff[1e]1011ff[55]1213ff[7]1213ff[7]1213ff[c]4849ff[7]4a4bff[7]4c4dff[c]5859ff[7]5a5bff[7]5c5dff[c]1011ff[7]1011ff[7]1011ff[c6]0fff[1e]0f0607ff[9]f0f2e5f3[2]ffe2fff4efff[9]060708090fff[a]f2e5f4f5f2eeff[a]0f080906070607ff[18]06070607080908090fff[16]0f0809080902[40]
 
 
 NameCopy=e3f5f3f4efede9fae5ffe9e3efeef5f2eeff[6]f3f4e1f2f316ff[9]5c5d5fff4c4d6fff5859ff[5]6fff5a5bff[5]6fff5c5dff[2]4e4fff[7]4e4fff[7]4e4fff[8]5eff4849ff5fff[3]5eff4a4bff5fff[3]5eff4c4dff5f6eff5859ff6fff[3]6eff5a5bff6fff[3]6eff5c5dff6fff[6]00[32a]
 
 
-NameUndo=02[40]060706070bff[1b]08090809ff[1c]06070fff[6]e3f5f3f4efede9fae5ffe9e3efeeff[4]d0a1ff[3]0809ff[1a]a0ff[3]0dff[2e]1213ff[1e]2021ff[1e]3031ff[1e]1011ff[55]1213ff[7]1213ff[7]1213ff[c]4849ff[7]4a4bff[7]4c4dff[c]5859ff[7]5a5bff[7]5c5dff[c]1011ff[7]1011ff[7]1011ff[c6]0dff[1e]0c0607ff[9]f0f2e5f3[2]ffe2fff4efff[9]060708090fff[a]f2e5f4f5f2eeff[a]0f080906070607ff[18]06070607080908090bff[16]0a0809080902[40]
+NameUndo=02[40]060706070bff[1b]08090809ff[1c]06070fff[6]e3f5f3f4efede9fae5ffe9e3efeeff[4]d0a1ff[3]0809ff[19]d0a0ff[3]0fff[2e]1213ff[1e]2021ff[1e]3031ff[1e]1011ff[55]1213ff[7]1213ff[7]1213ff[c]4849ff[7]4a4bff[7]4c4dff[c]5859ff[7]5a5bff[7]5c5dff[c]1011ff[7]1011ff[7]1011ff[c6]0fff[1e]0f0607ff[9]f0f2e5f3[2]ffe2fff4efff[9]060708090fff[a]f2e5f4f5f2eeff[a]0f080906070607ff[18]06070607080908090fff[16]0f0809080902[40]
 
 
 AttrTable=d01000[6]1700[6]0100[3]080200[4]80008020002000[9]1000[6]40d71000[4]407d00[8]
@@ -315,18 +315,18 @@ MetatileSet_8x8_props=00[2000]
 MetatileSet_8x8_propsUndo=00[2000]
 
 
-MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-MetatileSetLabels_8x8=Unlabeled,Unlabeled
-MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
+MetatileSetLabels_8x8=Unlabeled,Unlabeled
+MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
 
-CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-CHRBankLabelsUndo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+CHRBankLabelsUndo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
 Checkpoint_Palette=00[40]
 
@@ -433,15 +433,15 @@ Checkpoint_MetatileSet_8x8_props=00[2000]
 Checkpoint_MetatileSet_8x8_propsUndo=00[2000]
 
 
-Checkpoint_MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-Checkpoint_MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-Checkpoint_MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-Checkpoint_MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-Checkpoint_MetatileSetLabels_8x8=Unlabeled,Unlabeled
-Checkpoint_MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_8x8=Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
 
-Checkpoint_CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-Checkpoint_CHRBankLabelsUndo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_CHRBankLabelsUndo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
