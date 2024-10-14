@@ -10,6 +10,8 @@ void wave_movement(void){
 		
 		if (controllingplayer->a) currplayer_vel_y = -currplayer_vel_y;
 
+		if (controllingplayer->press_a) jumps++;
+
 		if (!slope_frames && !was_on_slope_counter) {
 			currplayer_y += currplayer_vel_y;
 		} else {

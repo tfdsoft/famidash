@@ -69,6 +69,7 @@ void ufo_movement(void){
 				if(controllingplayer->press_a) {
 					if (!mini) currplayer_vel_y = 	UFO_JUMP_VEL^0xFFFF; // JUMP
 					else currplayer_vel_y = MINI_UFO_JUMP_VEL^0xFFFF; // JUMP
+					jumps++;
 				}
 			//}
 	} else {
@@ -77,6 +78,7 @@ void ufo_movement(void){
 				if(controllingplayer->press_a) {
 					if (!mini) currplayer_vel_y = 	UFO_JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_UFO_JUMP_VEL; // JUMP
+					jumps++;
 				}
 			//}
 	}

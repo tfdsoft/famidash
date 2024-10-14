@@ -107,6 +107,33 @@ void state_lvldone() {
 
 	display_attempt_counter(0xD0, NTADR_C(25, 13));	// Same bank as this
 	
+	hexToDec(jumps);
+
+	tmp1 = 0;
+	
+	if (hexToDecOutputBuffer[4]) {
+		one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_C(25,15));
+		tmp1++;
+	}
+
+	if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3]) {
+		one_vram_buffer(0xD0+hexToDecOutputBuffer[3], NTADR_C(25+tmp1,15));
+		tmp1++;
+	}
+	
+	if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2]) {
+		one_vram_buffer(0xD0+hexToDecOutputBuffer[2], NTADR_C(25+tmp1,15));
+		tmp1++;
+	}
+
+	if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1]) {
+		one_vram_buffer(0xD0+hexToDecOutputBuffer[1], NTADR_C(25+tmp1,15));
+		tmp1++;
+	}
+	one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_C(25+tmp1,15));
+	
+	jumps = 0;
+	
 	if (!has_practice_point) {
 		LEVELCOMPLETE[level] = 1;
 		

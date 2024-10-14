@@ -269,6 +269,7 @@ uint8_t kandokidshack;
 uint8_t kandokidshack2;
 uint8_t kandokidshack3;
 
+uint8_t jumps;
 uint8_t orbed[2];
 uint8_t speed;
 uint8_t shuffle_offset;

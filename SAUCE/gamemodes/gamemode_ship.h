@@ -45,6 +45,7 @@ void ship_movement(void){
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 	Generic.x = high_byte(currplayer_x); // the rest should be the same
 	
+	if (controllingplayer->press_a) jumps++;
 
 	if(controllingplayer->a) {
 		if (!mini) {

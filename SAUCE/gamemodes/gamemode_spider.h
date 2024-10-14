@@ -31,6 +31,7 @@ void spider_movement(void){
 	
 	if (!currplayer_gravity) {
 		if(controllingplayer->press_a && currplayer_vel_y == 0) {
+			jumps++;
 			currplayer_gravity = 1;
 			do {
 				high_byte(currplayer_y) -= 0x08;
@@ -48,6 +49,7 @@ void spider_movement(void){
 }	
 	else {
 		if(controllingplayer->press_a && currplayer_vel_y == 0) {
+			jumps++;
 			currplayer_gravity = 0;
 			do {
 				high_byte(currplayer_y) += 0x08;
