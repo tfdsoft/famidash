@@ -54,7 +54,7 @@ void draw_dialog_box(const char * data);
 */ 
 
 const char dialogBox_saveFileSafetyHeader[] = "$$SAVE$$FILE$$SAFETY$$\v\2";
-const char dialogBox_pleasePressB[] = "\a  please press b on\v\2   the title screen\v\2  before powering off\v\2\t\5your system\v\4\b  [\t\20]  \n  $PRESS$ANY$BUTTON$\n  $$$TO$$CONTINUE$$$\n\b  {\t\20}  ";
+const char dialogBox_pleasePressB[] = "\a  please hold reset\v\2   before powering \v\2   off the nes on    \v\2\t\2 real hardware \v\2\t\2to avoid corruption\v\2\b  [\t\20]  \n  $PRESS$ANY$BUTTON$\n  $$$TO$$CONTINUE$$$\n\b  {\t\20}  ";
 const char dialogBox_itIsNowSafe[] = "\a\n  it is now safe to\v\2 turn off your system\v\6\b  [\t\20]  \n  $$$$PRESS$B$TO$$$$\n  $$$$GO$BACK$TO$$$$\n  $THE$TITLE$SCREEN$\n\b  {\t\20}  ";
 
 const char dialogBox_wrongSaveFileVersion[] = " for a\a version";

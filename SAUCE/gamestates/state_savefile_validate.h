@@ -49,8 +49,8 @@ void state_savefile_validate(){
     ppu_wait_nmi();
     
     // if poweroff check is not zero //
-/*
-    if (poweroffcheck) {
+
+ //   if (poweroffcheck) {
         ppu_off();
         pal_bright(0);
         include_nested_dialog_string(dialogBox_saveFileSafetyHeader);
@@ -69,10 +69,10 @@ void state_savefile_validate(){
 	    kandoframecnt++;
        	    			    
         } while (1);
-    }
+ //   }
     pal_bright(3);
     pal_fade_to(3,0);
-*/
+
     gameState = 0x00;
     return;
 }
