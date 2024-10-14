@@ -43,7 +43,7 @@ The general principle is: fork it, change it, push it, open a PR, get it merged 
 |---|---|
 |Aquamarine|music|
 |[vikrinox](https://github.com/Vickerinox)|music|
-|AdryanLucas096|icons, graphics|
+|[adrluc096](https://github.com/123456oil)|icons, graphics|
 |Zee_Scott|icons|
 |[StudsX](https://github.com/smbhacks)|ASM, music|
 |cloud54|various music tracks and art|
