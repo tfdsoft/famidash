@@ -482,6 +482,7 @@ void sprite_collide_lookup() {
 #endif
 		case CUBE_MODE:
 			orbactive = 0;
+			if (gamemode == 6) currplayer_vel_y = 0;
 			if (retro_mode) gamemode = 4;
 			else gamemode = 0;
 			return;    
@@ -494,6 +495,7 @@ void sprite_collide_lookup() {
 			target_scroll_y = uint16SepArrLoad(activesprites_y, index) - 0x10; //unused now
 	//		target_scroll_y -= 0x10;
 		case ROBOT_MODE:
+			if (gamemode == 6) currplayer_vel_y = 0;
 			gamemode = collided;
 			retrofireballclear();
 			//robotjumptime[currplayer] = 0;
@@ -512,24 +514,29 @@ void sprite_collide_lookup() {
 			}
 			return;
 		case SPIDER_MODE:
+			if (gamemode == 6) currplayer_vel_y = 0;
 			gamemode = 5;
 			retrofireballclear();			
 			return;
 		case WAVE_MODE:
 			settrailstuff();
+			if (gamemode == 6) currplayer_vel_y = 0;			
 			gamemode = 6;
 			retrofireballclear();			
 			return;
 		case SWING_MODE:
 			settrailstuff();
+			if (gamemode == 6) currplayer_vel_y = 0;
 			gamemode = 7;
 			retrofireballclear();			
 			return;
 #ifdef FLAG_KANDO_FUN_STUFF
 		case NINJA_MODE:
+			if (gamemode == 6) currplayer_vel_y = 0;		
 			gamemode = 8;
 			return;
 		case RANDOM_MODE_PORTAL:
+			if (gamemode == 6) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
 			idx8_inc(activesprites_activated, index);
 			return;
