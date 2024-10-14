@@ -1083,12 +1083,13 @@ void state_menu() {
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
 		edit_irq_table(low_byte(tmp8), 2); 
 
-
+/*
 		if (joypad1.press_b) {
 			oam_clear();
 			gameState = 0xFE;
 			return;
 		}
+*/
 		if (mouse.left_press) {
 			if ((uint8_t)(currplayer_y_small - 8) <= (uint8_t)mouse.y && (uint8_t)(currplayer_y_small + 8) >= (uint8_t)mouse.y) {
 				if (mouse.x >= currplayer_x_small && (uint8_t)(currplayer_x_small + 16) >= mouse.x) {

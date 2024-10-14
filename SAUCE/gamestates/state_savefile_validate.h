@@ -49,6 +49,7 @@ void state_savefile_validate(){
     ppu_wait_nmi();
     
     // if poweroff check is not zero //
+/*
     if (poweroffcheck) {
         ppu_off();
         pal_bright(0);
@@ -71,6 +72,7 @@ void state_savefile_validate(){
     }
     pal_bright(3);
     pal_fade_to(3,0);
+*/
     gameState = 0x00;
     return;
 }
