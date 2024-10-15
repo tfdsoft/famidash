@@ -456,7 +456,7 @@ static void sprite_gamemode_controller_check() {
 
 void sprite_collide_lookup() {
 
-	if (!activesprites_activated[index] || dual) {
+	if (!activesprites_activated[index] || dual || options & platformer) {
 		switch (collided) {
 
 		case TELEPORT_PORTAL_EXIT:
