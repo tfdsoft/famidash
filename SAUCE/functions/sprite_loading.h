@@ -375,7 +375,7 @@ static void sprite_gamemode_main() {
 				//intentional leak
 			case DASH_ORB_UPWARDS:
 				currplayer_vel_y = currplayer_vel_x;
-				currplayer_vel_x = 0;
+				//currplayer_vel_x = 0;
 				dashing[currplayer] = 4;
 				break;
 			case DASH_GRAVITY_ORB_DOWNWARDS:
@@ -383,7 +383,7 @@ static void sprite_gamemode_main() {
 				//intentional leak
 			case DASH_ORB_DOWNWARDS:
 				currplayer_vel_y = -currplayer_vel_x;
-				currplayer_vel_x = 0;
+				//currplayer_vel_x = 0;
 				dashing[currplayer] = 5;
 				break;
 			default:
