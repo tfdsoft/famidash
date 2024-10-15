@@ -29,8 +29,8 @@ void x_movement_coll() {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
 		tmp8 = slope_type;
 		slope_exit_vel();
-		if (slope_type & 1) {
-			if (currplayer_gravity) {
+		if (!(slope_type & 0b1000)) {
+			if (!(slope_type & 1)) {
 				currplayer_vel_y = tmp5 + 0x200;
 			} else {
 				currplayer_vel_y = (tmp5 + 0x200)^0xFFFF;
