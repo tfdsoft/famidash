@@ -112,8 +112,8 @@ void cube_movement(void){
 				tmp5 = 0;
 				tmp8 = last_slope_type;
 				slope_exit_vel();
-				tmp5 >>= 2;
-				currplayer_vel_y += (currplayer_gravity ? tmp5 : -tmp5);
+				tmp5 >>= 1;
+				currplayer_vel_y += (currplayer_gravity ? tmp5+0x100 : -tmp5-0x100);
 			}
 	} else if (gamemode == 4) {
 		if ((!retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0) || (dashing[currplayer] == 0 && kandokidshack == 9)){		//robot
