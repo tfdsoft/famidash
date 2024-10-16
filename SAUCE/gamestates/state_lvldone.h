@@ -66,7 +66,11 @@ void state_lvldone() {
 	pal_set_update();
     //pal_spr(paletteMenu);
 	pal_spr(paletteDefaultSP);
-	mmc3_set_8kb_chr(LEVELCOMPLETEBANK);
+	mmc3_set_1kb_chr_bank_0(LEVELCOMPLETEBANK);
+	mmc3_set_1kb_chr_bank_1(PRACTICECOMPLETEBANK);
+	mmc3_set_1kb_chr_bank_2(LEVELCOMPLETEBANK+2);
+	mmc3_set_1kb_chr_bank_3(LEVELCOMPLETEBANK+3);
+	
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	// Make an a nametable for the chain
     vram_adr(NAMETABLE_A);
@@ -87,7 +91,12 @@ void state_lvldone() {
 
 	// Copy the level done screen to the bot left and right nametable
     vram_adr(NAMETABLE_C);
-    vram_unrle(leveldone);
+	if(has_practice_point){
+	vram_unrle(practicedone);
+	}
+	else{
+	vram_unrle(leveldone);
+	};
 
 	// Change the text attributes for the press to return
 	// no longer required
@@ -95,7 +104,12 @@ void state_lvldone() {
 	//vram_fill(0xff, 0x6);
 
     vram_adr(NAMETABLE_D);
-    vram_unrle(leveldone);
+	if(has_practice_point){
+	vram_unrle(practicedone);
+	}
+	else{
+	vram_unrle(leveldone);
+	};
 
 	#include "defines/endlevel_charmap.h"
 	//multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));

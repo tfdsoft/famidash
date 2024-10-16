@@ -421,6 +421,7 @@ _GAME_CHR:
     .incbin "GRAPHICS/menus.chr"    ; 4kb (98)
     .incbin "GRAPHICS/menuicons.chr"    ; 4kb (102)
     .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (106)
+    .incbin "GRAPHICS/practicecomplete.chr"    ; 1kb (110)
 
 .segment "PARALLAXCHR"  ; banks 112 - 255
 .export _PARALLAX_CHR
