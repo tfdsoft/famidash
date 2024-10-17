@@ -6,6 +6,7 @@
 #define MENUBANK 98
 #define MENUICONBANK 102
 #define LEVELCOMPLETEBANK 106
+#define PRACTICECOMPLETEBANK 110
 
 #define SPIKESA 0
 #define SPIKESB 2
@@ -78,10 +79,10 @@
 #define MINI_BALL_GRAVITY 0x57
 #define MINI_BALL_MAX_FALLSPEED 0x600
 
-#define SHIP_MAX_FALLSPEED 0x290
+#define SHIP_MAX_FALLSPEED 0x2B0
 #define MINI_SHIP_MAX_FALLSPEED 0x380
 
-#define SHIP_GRAVITY 0x30
+#define SHIP_GRAVITY 0x2B
 #define MINI_SHIP_GRAVITY 0x3c
 
 #define JIMSHEATBALL_MAX_FALLSPEED 0x300
@@ -238,6 +239,7 @@ uint8_t palette_cycle_mode;
 uint8_t gameboy_mode;
 uint8_t invisblocks;
 uint8_t cam_seesaw;
+uint8_t forced_credits;
 extern uint8_t extceil;
 
 
@@ -269,6 +271,7 @@ uint8_t kandokidshack;
 uint8_t kandokidshack2;
 uint8_t kandokidshack3;
 
+uint8_t jumps;
 uint8_t orbed[2];
 uint8_t speed;
 uint8_t shuffle_offset;

@@ -4,19 +4,7 @@ CODE_BANK_PUSH("XCD_BANK_02")
 void mouse_and_cursor();
 
 void savefile_reset_check_loop(){
-    do {
-        ppu_wait_nmi();
-		oam_clear();
-        mouse_and_cursor();
-		newrand();
-	    kandoframecnt++;
-       	    
-        if (joypad1.press_b || mouse.right_press) break;
-        if (joypad1.press_a || mouse.left_press){
-            setdefaultoptions();
-            break;
-        }
-    } while (1);
+        setdefaultoptions();
 }
 
 void state_savefile_validate(){
@@ -32,15 +20,15 @@ void state_savefile_validate(){
 
     // if save file version is incorrect //
     if ((SRAM_VALIDATE[2] != FLAG_SAVE_VER) && SRAM_VALIDATE[2] != 0x00) {
-        if (SRAM_VALIDATE[2] > FLAG_SAVE_VER) include_nested_dialog_string(dialogBox_newer);
-        else include_nested_dialog_string(dialogBox_nolder);
-        include_nested_dialog_string(dialogBox_wrongSaveFileVersion);
-        draw_dialog_box(dialogBox_saveIssues);
-	mmc3_set_2kb_chr_bank_0(0xFF);	
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
+ //       if (SRAM_VALIDATE[2] > FLAG_SAVE_VER) include_nested_dialog_string(dialogBox_newer);
+   //     else include_nested_dialog_string(dialogBox_nolder);
+    //    include_nested_dialog_string(dialogBox_wrongSaveFileVersion);
+    //    draw_dialog_box(dialogBox_saveIssues);
+//	mmc3_set_2kb_chr_bank_0(0xFF);	
+//	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
 
-        ppu_on_all();
-        pal_fade_to(0,4);
+  //      ppu_on_all();
+   //     pal_fade_to(0,4);
 
         savefile_reset_check_loop();
     }
@@ -48,20 +36,21 @@ void state_savefile_validate(){
 
     // if header is wrong //
     if (SRAM_VALIDATE[0] != 0x13 || SRAM_VALIDATE[1] != 0x37 || SRAM_VALIDATE[2] != FLAG_SAVE_VER) {
-        include_nested_dialog_string(dialogBox_saveFileMissingCorrupt);
-        draw_dialog_box(dialogBox_saveIssues);
-	mmc3_set_2kb_chr_bank_0(0xFF);	
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
+  //      include_nested_dialog_string(dialogBox_saveFileMissingCorrupt);
+    //    draw_dialog_box(dialogBox_saveIssues);
+//	mmc3_set_2kb_chr_bank_0(0xFF);	
+//	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
 	
-        ppu_on_all();
-        pal_fade_to(0,4);
+//        ppu_on_all();
+  //      pal_fade_to(0,4);
         
         savefile_reset_check_loop();
     }
     ppu_wait_nmi();
     
     // if poweroff check is not zero //
-    if (poweroffcheck) {
+
+ //   if (poweroffcheck) {
         ppu_off();
         pal_bright(0);
         include_nested_dialog_string(dialogBox_saveFileSafetyHeader);
@@ -80,9 +69,10 @@ void state_savefile_validate(){
 	    kandoframecnt++;
        	    			    
         } while (1);
-    }
+ //   }
     pal_bright(3);
     pal_fade_to(3,0);
+
     gameState = 0x00;
     return;
 }

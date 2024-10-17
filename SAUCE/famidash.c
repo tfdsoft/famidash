@@ -155,7 +155,7 @@ void setdefaultoptions() {
 	SRAM_VALIDATE[0] = 0x13;
 	SRAM_VALIDATE[1] = 0x37;
 	SRAM_VALIDATE[2] = FLAG_SAVE_VER;
-	
+	forced_credits = 1;
 	// only non-zero values need to be set here
 
 	twoplayer = 0;

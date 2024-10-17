@@ -56,20 +56,20 @@ void init_sprites(void){	// required to be in a fixed bank
 #define SPBH    0xFF
 
 uint8_t sprite_heights[]={
-	0x2F,	0x2F,	0x2F,	0x2F,	0x2F,	0x0F,	0x0F,	SPBH,	// 00 - 07
-	0x2F,	0x2F,	0x02,	0x0F,	0x02,	0x02,	0x02,	SPBH,	// 08 - 0F
-	0x0f,	0x0f,	0x0f,	0x0f,	0x1F,	0x1F,	0x1F,	0x2F,	// 10 - 17
-	0x2F,	0x2F,	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x0F,	// 18 - 1F
-	0x1F,	0x1F,	0x2F,	0x2F,	0x2F,	0x02,	0x02,	0x0F,	// 20 - 27
-	0x0F,	0x0F,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 28 - 2F
+	0x30,	0x30,	0x30,	0x30,	0x30,	0x10,	0x10,	SPBH,	// 00 - 07
+	0x30,	0x30,	0x02,	0x10,	0x02,	0x02,	0x02,	SPBH,	// 08 - 0F
+	0x10,	0x10,	0x10,	0x10,	0x20,	0x20,	0x20,	0x30,	// 10 - 17
+	0x30,	0x30,	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x10,	// 18 - 1F
+	0x20,	0x20,	0x30,	0x30,	0x30,	0x02,	0x02,	0x10,	// 20 - 27
+	0x10,	0x10,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 28 - 2F
 	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 30 - 37
 	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 38 - 3F
-	DECO,	DECO,	DECO,	DECO,	0x0F,	0x0F,	0x0F,	DECO,	// 40 - 47
-	DECO,	DECO,	DECO,	0x2F,	0x0F,	0x0F,	0x2F,	SPBH,	// 48 - 4F
-	0x0F,	0x0F,	0x02,	0x02,	0x0F,	0x0F,	0x01,	0x01,	// 50 - 57
-	0x2F,	0x0F,	SPBH,	0x0F,	0x0F,	0x0F,	0x0F,	0x2F,	// 58 - 5F
-	0x2F,	0x2F,	0x2F,	0x2F,	0x2F,	0x02,	0x0F,	SPBH,	// 60 - 67
-	0x0F,	SPBH,	0x2F,	0x2F,	0x2F,	0x00,	0x00,	0x00,	// 68 - 6F
+	DECO,	DECO,	DECO,	DECO,	0x10,	0x10,	0x10,	DECO,	// 40 - 47
+	DECO,	DECO,	DECO,	0x30,	0x10,	0x10,	0x30,	SPBH,	// 48 - 4F
+	0x10,	0x10,	0x02,	0x02,	0x10,	0x10,	0x01,	0x01,	// 50 - 57
+	0x30,	0x10,	SPBH,	0x10,	0x10,	0x10,	0x10,	0x30,	// 58 - 5F
+	0x30,	0x30,	0x30,	0x30,	0x30,	0x02,	0x10,	SPBH,	// 60 - 67
+	0x10,	SPBH,	0x30,	0x30,	0x30,	0x00,	0x00,	0x00,	// 68 - 6F
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 70 - 77
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 78 - 7F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
@@ -85,9 +85,9 @@ uint8_t sprite_heights[]={
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// D0 - D7
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	SPBH,	KNDO,	// D8 - DF
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// E0 - E7
-	COLR,	COLR,	COLR,	COLR,	COLR,	0x0F,	KNDO,	KNDO,	// E8 - EF
-	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x0F,	0x0F,	// F0 - F7
-	0x0F,	0x0F,	0x0F,	0x0f,	0x0f,	0x02,	0x02,	0x00,	// F8 - FF
+	COLR,	COLR,	COLR,	COLR,	COLR,	0x10,	KNDO,	KNDO,	// E8 - EF
+	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x10,	0x10,	// F0 - F7
+	0x10,	0x10,	0x10,	0x10,	0x10,	0x02,	0x02,	0x00,	// F8 - FF
 };
 
 void animate_coin_1();
@@ -375,7 +375,7 @@ static void sprite_gamemode_main() {
 				//intentional leak
 			case DASH_ORB_UPWARDS:
 				currplayer_vel_y = currplayer_vel_x;
-				currplayer_vel_x = 0;
+				//currplayer_vel_x = 0;
 				dashing[currplayer] = 4;
 				break;
 			case DASH_GRAVITY_ORB_DOWNWARDS:
@@ -383,7 +383,7 @@ static void sprite_gamemode_main() {
 				//intentional leak
 			case DASH_ORB_DOWNWARDS:
 				currplayer_vel_y = -currplayer_vel_x;
-				currplayer_vel_x = 0;
+				//currplayer_vel_x = 0;
 				dashing[currplayer] = 5;
 				break;
 			default:
@@ -456,7 +456,7 @@ static void sprite_gamemode_controller_check() {
 
 void sprite_collide_lookup() {
 
-	if (!activesprites_activated[index] || dual) {
+	if (!activesprites_activated[index] || dual || options & platformer) {
 		switch (collided) {
 
 		case TELEPORT_PORTAL_EXIT:
@@ -482,6 +482,7 @@ void sprite_collide_lookup() {
 #endif
 		case CUBE_MODE:
 			orbactive = 0;
+			if (gamemode == 6) currplayer_vel_y = 0;
 			if (retro_mode) gamemode = 4;
 			else gamemode = 0;
 			return;    
@@ -494,6 +495,7 @@ void sprite_collide_lookup() {
 			target_scroll_y = uint16SepArrLoad(activesprites_y, index) - 0x10; //unused now
 	//		target_scroll_y -= 0x10;
 		case ROBOT_MODE:
+			if (gamemode == 6) currplayer_vel_y = 0;
 			gamemode = collided;
 			retrofireballclear();
 			//robotjumptime[currplayer] = 0;
@@ -512,24 +514,29 @@ void sprite_collide_lookup() {
 			}
 			return;
 		case SPIDER_MODE:
+			if (gamemode == 6) currplayer_vel_y = 0;
 			gamemode = 5;
 			retrofireballclear();			
 			return;
 		case WAVE_MODE:
 			settrailstuff();
+			if (gamemode == 6) currplayer_vel_y = 0;			
 			gamemode = 6;
 			retrofireballclear();			
 			return;
 		case SWING_MODE:
 			settrailstuff();
+			if (gamemode == 6) currplayer_vel_y = 0;
 			gamemode = 7;
 			retrofireballclear();			
 			return;
 #ifdef FLAG_KANDO_FUN_STUFF
 		case NINJA_MODE:
+			if (gamemode == 6) currplayer_vel_y = 0;		
 			gamemode = 8;
 			return;
 		case RANDOM_MODE_PORTAL:
+			if (gamemode == 6) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
 			idx8_inc(activesprites_activated, index);
 			return;

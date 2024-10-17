@@ -92,6 +92,7 @@ void ball_movement(void){
 
 	if (gamemode == 2) {
 		if ((controllingplayer->a) && (kandotemp2[currplayer] == 0) && currplayer_vel_y == 0){
+			jumps++;
 			currplayer_gravity ^= 0x01;
 			kandotemp2[currplayer] = 1;
 			switch (currplayer_gravity){
@@ -109,6 +110,7 @@ void ball_movement(void){
 	}
 	else {
 		if ((controllingplayer->press_a)){
+			jumps++;
 			currplayer_gravity ^= 0x01;
 			bg_coll_floor_spikes();
 		}

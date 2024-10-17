@@ -328,7 +328,7 @@ char bg_side_coll_common() {
 	}
 	
 	if (was_on_slope_counter | slope_frames) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
-		tmp1 += (currplayer_gravity ? 16 : -16);
+		tmp1 += (slope_type & 0b1 ? -16 : 16);
 	}
 
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
@@ -379,6 +379,9 @@ char bg_coll_L() {
 */
 char bg_coll_U_D_checks() {
 	switch (collision) {
+		case COL_NO_SIDE:
+			tmp8++;
+			return 1;		
 		case COL_ALL: 
 			if (high_byte(currplayer_x) < 0x10 || was_on_slope_counter) return 0;
 			else return 1;
@@ -438,7 +441,9 @@ char _slope_LX22_stuff() {
 char bg_coll_slope() {	
 	tmp8 = (temp_y) & 0x0f;
 	switch (collision) {
-
+		case COL_NO_SIDE:
+			return 1;
+			
 		// 45 degrees
 
 		case COL_ALL:
@@ -611,8 +616,6 @@ char bg_coll_slope() {
 		default:
 			return 0;
 	}
-	
-	last_slope_type = slope_type;
 	if ((uint8_t)(tmp4) >= tmp7) {
 			tmp8 = tmp4 - tmp7 + (mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
 			
@@ -663,6 +666,13 @@ char bg_coll_return_U () {
 */
 char bg_coll_return_slope_D () {
 	tmp1 = bg_coll_slope();
+	if (last_slope_type & 0b1 && !(slope_type & 0b1)) {
+		if (last_slope_type != 0 && slope_type != 0) {
+			slope_type = last_slope_type;
+			tmp8 = 0;
+		}
+	}
+	last_slope_type = slope_type;	
 	eject_D = tmp8;
 	return tmp1;
 }
@@ -675,6 +685,13 @@ char bg_coll_return_slope_D () {
 */
 char bg_coll_return_slope_U () {
 	tmp1 = bg_coll_slope();
+	if (last_slope_type & 0b1 && !(slope_type & 0b1)) {
+		if (last_slope_type != 0 && slope_type != 0) {
+			slope_type = last_slope_type;
+			tmp8 = 0;
+		}
+	}
+	last_slope_type = slope_type;	
 	eject_U = -tmp8;
 	return tmp1;
 }

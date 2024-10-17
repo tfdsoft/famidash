@@ -1053,9 +1053,18 @@ void state_menu() {
 		if (tmp3 ) {    // menu selection incremented
 			tmp4 = menuselection; ++tmp4;
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-
-			one_vram_buffer('a', tmp5);
-			one_vram_buffer('b', addloNOC(tmp5, 1));
+			if (menuselection != 4) {
+				one_vram_buffer('a', tmp5);
+				one_vram_buffer('b', addloNOC(tmp5, 1));
+				one_vram_buffer(' ', NTADR_A(26, 2));
+				one_vram_buffer(' ', NTADR_A(26, 3));
+				
+			}
+			else {
+				one_vram_buffer(0x6F, NTADR_A(26, 2));
+				one_vram_buffer(0x7F, NTADR_A(26, 3));
+				
+			}
 
 			tmp4 += tmp3;   // Get the old index
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
@@ -1074,12 +1083,13 @@ void state_menu() {
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
 		edit_irq_table(low_byte(tmp8), 2); 
 
-
+/*
 		if (joypad1.press_b) {
 			oam_clear();
 			gameState = 0xFE;
 			return;
 		}
+*/
 		if (mouse.left_press) {
 			if ((uint8_t)(currplayer_y_small - 8) <= (uint8_t)mouse.y && (uint8_t)(currplayer_y_small + 8) >= (uint8_t)mouse.y) {
 				if (mouse.x >= currplayer_x_small && (uint8_t)(currplayer_x_small + 16) >= mouse.x) {
