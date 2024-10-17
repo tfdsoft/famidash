@@ -159,7 +159,7 @@ void state_demo(){
 		newrand();
 	    kandoframecnt++;
 		
-		if (SRAM_VALIDATE[0] == 0x13 &&
+		if (!forced_credits &&
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
 				: joypad2.press))) {
@@ -176,12 +176,13 @@ void state_demo(){
 		newrand();
 	    kandoframecnt++;
        	    	
-		if (SRAM_VALIDATE[0] == 0x13 &&
+		if (!forced_credits &&
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
 				: joypad2.press))) {
 				gameState = 0x01; return;
 		}
+		
 		ppu_wait_nmi();
 		tmp1++;
 		set_scroll_x(tmp1<<2);
@@ -194,7 +195,7 @@ void state_demo(){
 		mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
-		if (SRAM_VALIDATE[0] == 0x13 &&
+		if (!forced_credits &&
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
 				: joypad2.press))) {
@@ -203,7 +204,7 @@ void state_demo(){
 		ppu_wait_nmi();
 		tmp1++;
 	} while (tmp1 != 0);
-	
+	forced_credits = 0;
 	gameState = 0x01; // validate save file before starting
 	return; 
 	

@@ -238,6 +238,7 @@ uint8_t palette_cycle_mode;
 uint8_t gameboy_mode;
 uint8_t invisblocks;
 uint8_t cam_seesaw;
+uint8_t forced_credits;
 extern uint8_t extceil;
 
 
