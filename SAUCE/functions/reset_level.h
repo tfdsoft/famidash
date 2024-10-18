@@ -29,6 +29,8 @@ void reset_level(void) {
 			}
 //			pad_poll(0);
 			if (joypad1.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
+			if (joypad2.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
+
 			--tmp1;
 		}
 	}
@@ -45,6 +47,8 @@ void reset_level(void) {
 				
 				++robotjumpframe[0];
 			}
+			if (joypad1.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
+			if (joypad2.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
 			--tmp1;
 		}
 	}
