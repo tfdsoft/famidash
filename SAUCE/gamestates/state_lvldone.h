@@ -894,7 +894,7 @@ void funsettings() {
 
 		crossPRGBankJump0(gameboy_check);
 
-		if (gameboy_mode) kandotemp4 = 1;
+//		if (gameboy_mode) kandotemp4 = 1;
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 						

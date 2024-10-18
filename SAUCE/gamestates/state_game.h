@@ -256,6 +256,7 @@ void state_game(){
 				famistudio_music_pause(1);
 				famistudio_update();
 				color_emphasis(COL_EMP_DARK);
+				exittimer = 0;
 				// ppu_off();
 				// mmc3_set_8kb_chr(16);
 				// vram_adr(NAMETABLE_B);
@@ -267,6 +268,9 @@ void state_game(){
 					}
 					// force re-enable NMI every frame.
 					VRAM_UPDATE = 1;
+
+					if (mouse.right) exittimer++;
+					else exittimer = 0;
 					if ((joypad1.up) && (joypad1.press_b)) {
 						kandokidshack3++;
 					}
@@ -277,7 +281,7 @@ void state_game(){
 						//has_practice_point = 1;
 						joypad1.press = PAD_START;
 					}
-					if (joypad1.press_select) { 
+					if (joypad1.press_select || exittimer == 100) { 
 						gameState = 1; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
