@@ -119,13 +119,13 @@ void reset_level(void) {
 	unrle_first_screen();
 	if (has_practice_point) {
 
-		tmp3 = practice_bg_color_type;
+		tmp3 = practice_bg_color_type[0];
 			tmp2 = (tmp3 & 0x3F);                        
 			pal_col(0, tmp2);
 			pal_col(1, oneShadeDarker(tmp2)); 
 			pal_col(9, oneShadeDarker(tmp2)); 
 
-		tmp3 = practice_g_color_type;
+		tmp3 = practice_g_color_type[0];
 			tmp2 = (tmp3 & 0x3F);                        
 	    pal_col(6, tmp2);
 

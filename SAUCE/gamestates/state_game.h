@@ -328,6 +328,9 @@ void state_game(){
 					cube_data[1] &= 2; 
 				}		
 		}
+
+		if (has_practice_point > 1 && joypad1.press_select) has_practice_point--;
+		
 		if ((controllingplayer->press_b) && has_practice_point) crossPRGBankJump0(reset_game_vars);
 
 		if (joypad1.press_up && DEBUG_MODE) {

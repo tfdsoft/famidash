@@ -16,23 +16,23 @@ void reset_game_vars(){
 	practice_player_gravity[1] = player_gravity[1];
 	practice_cube_rotate[0] = cube_rotate[0];
 	practice_cube_rotate[1] = cube_rotate[1];
-	practice_player_gamemode = gamemode;
-	practice_mini = mini;
-	practice_dual = dual;
-	practice_speed = speed;
-	practice_parallax_scroll_x = parallax_scroll_x;
-	practice_scroll_x = scroll_x;
-	practice_scroll_y = scroll_y;
-	practice_bg_color_type = lastbgcolortype;
-	practice_g_color_type = lastgcolortype;
+	practice_player_gamemode[0] = gamemode;
+	practice_mini[0] = mini;
+	practice_dual[0] = dual;
+	practice_speed[0] = speed;
+	practice_parallax_scroll_x[0] = parallax_scroll_x;
+	practice_scroll_x[0] = scroll_x;
+	practice_scroll_y[0] = scroll_y;
+	practice_bg_color_type[0] = lastbgcolortype;
+	practice_g_color_type[0] = lastgcolortype;
 //	gnd_palette_transition_timer = 0;		//palete fade code
 //	bg_palette_transition_timer = 0;		//palette fade code
 	tmp2 = 0;
-	do {
-		idx8_store(practice_trail_sprites_visible, tmp2, trail_sprites_visible[tmp2]);
-		idx8_store(practice_player_old_posy, tmp2, player_old_posy[tmp2]);
-	} while (++tmp2 < 9);
-	practice_orbactive = orbactive;
+//	do {
+//		idx8_store(practice_trail_sprites_visible, tmp2, trail_sprites_visible[tmp2]);
+//		idx8_store(practice_player_old_posy, tmp2, player_old_posy[tmp2]);
+//	} while (++tmp2 < 9);
+	practice_orbactive[0] = orbactive;
 }
 
 
@@ -50,19 +50,19 @@ void restore_practice_state() {
 	player_gravity[1] = practice_player_gravity[1];
 	cube_rotate[0] = practice_cube_rotate[0];
 	cube_rotate[1] = practice_cube_rotate[1];
-	gamemode = practice_player_gamemode;
-	mini = practice_mini;
-	dual = practice_dual;
-	speed = practice_speed;
-	parallax_scroll_x = practice_parallax_scroll_x;
-	scroll_x = practice_scroll_x - (256 + 16);
-	old_trail_scroll_y = scroll_y = practice_scroll_y;
+	gamemode = practice_player_gamemode[0];
+	mini = practice_mini[0];
+	dual = practice_dual[0];
+	speed = practice_speed[0];
+	parallax_scroll_x = practice_parallax_scroll_x[0];
+	scroll_x = practice_scroll_x[0] - (256 + 16);
+	old_trail_scroll_y = scroll_y = practice_scroll_y[0];
 	tmp2 = 0;
-	do {
-		idx8_store(trail_sprites_visible, tmp2, practice_trail_sprites_visible[tmp2]);
-		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);
-	} while (++tmp2 < 9);
-	orbactive = practice_orbactive;
+//	do {
+//		idx8_store(trail_sprites_visible, tmp2, practice_trail_sprites_visible[tmp2]);
+//		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);
+//	} while (++tmp2 < 9);
+	orbactive = practice_orbactive[0];
 
 	__A__ = currplayer<<1;
 	__asm__("tay");
