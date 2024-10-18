@@ -353,26 +353,30 @@ uint8_t dashing[2];
 
 uint8_t disable_dpcm_bankswitch;
 uint8_t has_practice_point; // = 0;
-uint16_t practice_player_x[2];
-uint16_t practice_player_y[2];
-uint8_t practice_player_gamemode;
-uint8_t practice_mini;
-uint8_t practice_dual;
-uint8_t practice_speed;
-uint16_t practice_cube_rotate[2];
-int16_t practice_player_vel_x[2];
-int16_t practice_player_vel_y[2];
-uint8_t practice_player_gravity[2];
-uint32_t practice_scroll_x;
-uint16_t practice_scroll_y;
-uint8_t practice_parallax_scroll_x;
-uint8_t practice_g_color;
-uint8_t practice_bg_color;
-uint8_t practice_g_color_type;
-uint8_t practice_bg_color_type;
-uint8_t practice_trail_sprites_visible[9];
-uint8_t practice_player_old_posy[9];
-uint8_t practice_orbactive;
+uint8_t curr_practice_point;
+
+#define MAX_PRACTICE_POINTS 9
+
+uint16_t practice_player_x[2*MAX_PRACTICE_POINTS];
+uint16_t practice_player_y[2*MAX_PRACTICE_POINTS];
+uint8_t practice_player_gamemode[MAX_PRACTICE_POINTS];
+uint8_t practice_mini[MAX_PRACTICE_POINTS];
+uint8_t practice_dual[MAX_PRACTICE_POINTS];
+uint8_t practice_speed[MAX_PRACTICE_POINTS];
+uint16_t practice_cube_rotate[2*MAX_PRACTICE_POINTS];
+int16_t practice_player_vel_x[2*MAX_PRACTICE_POINTS];
+int16_t practice_player_vel_y[2*MAX_PRACTICE_POINTS];
+uint8_t practice_player_gravity[2*MAX_PRACTICE_POINTS];
+uint32_t practice_scroll_x[MAX_PRACTICE_POINTS];
+uint16_t practice_scroll_y[MAX_PRACTICE_POINTS];
+uint8_t practice_parallax_scroll_x[MAX_PRACTICE_POINTS];
+uint8_t practice_g_color[MAX_PRACTICE_POINTS];
+uint8_t practice_bg_color[MAX_PRACTICE_POINTS];
+uint8_t practice_g_color_type[MAX_PRACTICE_POINTS];
+uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
+//uint8_t practice_trail_sprites_visible[9];
+//uint8_t practice_player_old_posy[9];
+uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
 
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
@@ -398,7 +402,7 @@ uint8_t lastbgcolortype;
 uint8_t iconbank;
 uint8_t dblocked[2];
 
-#define MAX_FIREBALLS 20
+#define MAX_FIREBALLS 2
 
 uint8_t jimsheatballalive[MAX_FIREBALLS]; //jims heatball shit
 uint16_t jimsheatballx[MAX_FIREBALLS]; //jims heatball shit

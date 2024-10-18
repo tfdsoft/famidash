@@ -74,7 +74,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// over and over until it catches up
 	if (has_practice_point) {
 
-		ii = practice_scroll_x >> 4;
+		ii = practice_scroll_x[has_practice_point-1] >> 4;
 		dummy_unrle_columns(ii);
 
 		__A__ = -(6 * (9 / 3) / 2); __asm__("tay \n sty %v", parallax_scroll_column);

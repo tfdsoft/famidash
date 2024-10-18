@@ -274,7 +274,7 @@ void state_game(){
 					else if ((controllingplayer->press_b || mouse.left_press) && PRACTICE_ENABLED) {
 						mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
 						reset_game_vars();
-						has_practice_point = 1;
+						//has_practice_point = 1;
 						joypad1.press = PAD_START;
 					}
 					if (joypad1.press_select) { 
@@ -328,6 +328,9 @@ void state_game(){
 					cube_data[1] &= 2; 
 				}		
 		}
+
+		if (has_practice_point > 1 && joypad1.press_select) { has_practice_point--; curr_practice_point = 0; }
+		
 		if ((controllingplayer->press_b) && has_practice_point) crossPRGBankJump0(reset_game_vars);
 
 		if (joypad1.press_up && DEBUG_MODE) {
