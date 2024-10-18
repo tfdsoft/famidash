@@ -40,7 +40,7 @@ void draw_sprites(void){
 	if (has_practice_point && curr_practice_point == has_practice_point) {
 		tmp3 = high_byte(practice_player_y[has_practice_point - 1]);
 		if (long_temp_x > 10) { 
-			long_temp_x -= 2;
+			long_temp_x -= 3;
 			oam_meta_spr(long_temp_x, tmp3 - 1, Practice_Sprites[0]);
 		}
 		// else if (long_temp_x < 10) {}
