@@ -37,7 +37,7 @@ void draw_sprites(void){
 	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
 	if (invisblocks) return;
 
-	if (has_practice_point) {
+	if (has_practice_point && curr_practice_point == has_practice_point) {
 		tmp3 = high_byte(practice_player_y[has_practice_point - 1]);
 		if (long_temp_x > 10) { 
 			long_temp_x -= 2;

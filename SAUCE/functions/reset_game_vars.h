@@ -8,6 +8,7 @@ void reset_game_vars(){
 
 	if (has_practice_point != MAX_PRACTICE_POINTS) { 
 		has_practice_point++;	
+		curr_practice_point = has_practice_point;
 		practice_player_x[tmp1] = player_x[0];
 		long_temp_x = high_byte(player_x[0]);
 		practice_player_x[tmp1+1] = player_x[1];

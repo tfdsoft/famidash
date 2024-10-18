@@ -11,7 +11,7 @@ void reset_level(void) {
 	slope_frames = 0;
 	slope_type = SLOPE_NONE;
 	last_slope_type = SLOPE_NONE;
-
+	curr_practice_point = has_practice_point;
 	robotjumpframe[0] = 0;
 	tmp1 = 30;
 	if (!DEBUG_MODE && (cube_data[0] & 1)) {
