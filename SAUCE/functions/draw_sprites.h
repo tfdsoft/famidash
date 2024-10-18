@@ -38,10 +38,10 @@ void draw_sprites(void){
 	if (invisblocks) return;
 
 	if (has_practice_point) {
-		
+		tmp3 = high_byte(practice_player_y[has_practice_point - 1]);
 		if (long_temp_x > 10) { 
 			long_temp_x -= 2;
-			oam_meta_spr(long_temp_x, idx16_load_hi_NOC(practice_player_y, currplayer)-1, Practice_Sprites[0]);
+			oam_meta_spr(long_temp_x, tmp3 - 1, Practice_Sprites[0]);
 		}
 		// else if (long_temp_x < 10) {}
 	}
