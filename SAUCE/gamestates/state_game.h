@@ -329,7 +329,7 @@ void state_game(){
 				}		
 		}
 
-		if (has_practice_point > 1 && joypad1.press_select) { has_practice_point--; curr_practice_point = 0; }
+		if (has_practice_point > 1 && (joypad1.press_select || (mouse.left && mouse.right_press))) { has_practice_point--; curr_practice_point = 0; }
 		
 		if ((controllingplayer->press_b) && has_practice_point) crossPRGBankJump0(reset_game_vars);
 
