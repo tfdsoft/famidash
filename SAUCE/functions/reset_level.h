@@ -27,6 +27,8 @@ void reset_level(void) {
 				else oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, ExplodeR_Sprites[robotjumpframe[0] & 0x7F]);
 				++robotjumpframe[0];
 			}
+//			pad_poll(0);
+			if (joypad1.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
 			--tmp1;
 		}
 	}
