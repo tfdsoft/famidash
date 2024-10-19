@@ -4,6 +4,8 @@
 extern void load_next_sprite(uint8_t slot);
 
 extern void check_spr_objects(void);
+void spider_up_wait();
+void spider_down_wait();
 void scroll_thing_again2();
 extern char bg_coll_U();
 extern char bg_coll_D();
@@ -646,19 +648,10 @@ void sprite_collide_lookup() {
 			if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 		case SPIDER_PAD_UP:
-			high_byte(currplayer_y) -= eject_D;
-			currplayer_vel_y = 0;
-			currplayer_gravity = 1;
-			do {
-				high_byte(currplayer_y) -= 0x08;
-			//	scroll_thing_again2();
-			//	set_scroll_y(scroll_y);
-				if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
-					idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
-					break;
-				}
-				Generic.y = high_byte(currplayer_y); // the rest should be the same
-			} while (!bg_coll_U());
+				high_byte(currplayer_y) -= eject_D;
+				currplayer_vel_y = 0;
+				currplayer_gravity = 1;
+				crossPRGBankJump0(spider_up_wait);
 				high_byte(currplayer_y) -= eject_U;
 				currplayer_vel_y = 0;	
 				orbed[currplayer] = 1;
@@ -672,12 +665,7 @@ void sprite_collide_lookup() {
 				high_byte(currplayer_y) -= eject_U + 1;
 				currplayer_vel_y = 0;
 				currplayer_gravity = 0;
-				do {
-					high_byte(currplayer_y) += 0x08;
-			//		scroll_thing_again2();
-			//		set_scroll_y(scroll_y);
-					Generic.y = high_byte(currplayer_y); // the rest should be the same
-				} while (!bg_coll_D());
+				crossPRGBankJump0(spider_down_wait);
 
 				high_byte(currplayer_y) -= eject_D;
 				

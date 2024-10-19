@@ -139,4 +139,26 @@ void spider_eject() {
 	}
 }
 
+void spider_up_wait() {
+	do {
+		high_byte(currplayer_y) -= 0x08;
+	//	scroll_thing_again2();
+	//	set_scroll_y(scroll_y);
+		if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
+			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
+			break;
+		}
+		Generic.y = high_byte(currplayer_y); // the rest should be the same
+	} while (!bg_coll_U());
+}			
+
+void spider_down_wait() {
+	do {
+		high_byte(currplayer_y) += 0x08;
+//		scroll_thing_again2();
+//		set_scroll_y(scroll_y);
+		Generic.y = high_byte(currplayer_y); // the rest should be the same
+	} while (!bg_coll_D());
+}				
+
 CODE_BANK_POP()
