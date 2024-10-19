@@ -114,7 +114,6 @@ void spider_down_wait() {
 		high_byte(currplayer_y) += 0x08;
 		crossPRGBankJump0(do_the_scroll_thing);
 		Generic.y = high_byte(currplayer_y); // the rest should be the same
-		if (scroll_y == 0xEF && high_byte(currplayer_y) >= 0xA9) continue;
 	} while (!bg_coll_D());
 }				
 
