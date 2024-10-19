@@ -33,6 +33,7 @@ void cube_movement(void){
 			low_byte(currplayer_y) = 0;
 			currplayer_vel_y = 0;
 			orbactive = 0;
+			if (dashing[currplayer] == 5) currplayer_vel_y++;
 			if (fblocked[currplayer]) currplayer_gravity = 0;
 		}
 	} if (currplayer_gravity || (!currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))) {
@@ -41,6 +42,7 @@ void cube_movement(void){
 			low_byte(currplayer_y) = 0;
 			currplayer_vel_y = 0;
 			orbactive = 0;
+			if (dashing[currplayer] == 4) currplayer_vel_y++;
 			if (fblocked[currplayer]) currplayer_gravity = 1;			
 		}
 	}
@@ -292,8 +294,8 @@ void common_gravity_routine() {
 	
 	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
 	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
-	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x*4; currplayer_y -= currplayer_vel_y; }	
+	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x*4; currplayer_y += currplayer_vel_y; }	
 	else currplayer_vel_y = 1;
 }
 

@@ -375,7 +375,7 @@ static void sprite_gamemode_main() {
 				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
 				//intentional leak
 			case DASH_ORB_UPWARDS:
-				currplayer_vel_y = currplayer_vel_x;
+				currplayer_vel_y = currplayer_vel_x * 2;
 				//currplayer_vel_x = 0;
 				dashing[currplayer] = 4;
 				break;
@@ -383,7 +383,7 @@ static void sprite_gamemode_main() {
 				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
 				//intentional leak
 			case DASH_ORB_DOWNWARDS:
-				currplayer_vel_y = -currplayer_vel_x;
+				currplayer_vel_y = -currplayer_vel_x * 4;
 				//currplayer_vel_x = 0;
 				dashing[currplayer] = 5;
 				break;
