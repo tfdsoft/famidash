@@ -6,7 +6,6 @@ extern void load_next_sprite(uint8_t slot);
 extern void check_spr_objects(void);
 void spider_up_wait();
 void spider_down_wait();
-void scroll_thing_again2();
 extern char bg_coll_U();
 extern char bg_coll_D();
 void 	retrofireballclear();
@@ -666,9 +665,7 @@ void sprite_collide_lookup() {
 				currplayer_vel_y = 0;
 				currplayer_gravity = 0;
 				crossPRGBankJump0(spider_down_wait);
-
 				high_byte(currplayer_y) -= eject_D;
-				
 				currplayer_vel_y = 0;
 				orbed[currplayer] = 1;
 				idx8_inc(activesprites_activated, index);
@@ -848,40 +845,6 @@ void sprite_collide(){
 	Generic.height = mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
 }
 
-
-void scroll_thing_again2(void) {
-	if (!dual) {
-		if (currplayer_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-			tmp1 = MSB(0x4000 - currplayer_y);
-			scroll_y -= tmp1;
-			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
-		}
-		cap_scroll_y_at_top();
-
-		
-		if (currplayer_y > 0xA000){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xA000);
-			scroll_y += tmp1;
-			if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-		}
-		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF;
-	}
-	else {
-		if (currplayer_y < 0x0700 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-			tmp1 = MSB(0x0700 - currplayer_y);
-			scroll_y -= tmp1;
-			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
-		}
-		cap_scroll_y_at_top();
-		
-		if (currplayer_y > 0xF000){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xF000);
-			scroll_y += tmp1;
-			if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-		}
-		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF;
-	}
-}
 
 void settrailstuff() {
 	if (forced_trails != 2 && !orbactive) {

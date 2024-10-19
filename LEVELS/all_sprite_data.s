@@ -5395,7 +5395,7 @@ sprite_data_luckydraw:
 .segment "SPR_BANK_03"
 sprite_data_test:
   .byte $40,$00,$80,$03,$54
-  .byte $a0,$00,$30,$03,$55
+  .byte $a0,$00,$90,$02,$55
   .byte $d0,$00,$30,$03,$5a
   .byte $d0,$00,$80,$03,$59
   .byte $00,$01,$80,$03,$54
