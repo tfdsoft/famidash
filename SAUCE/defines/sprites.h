@@ -2814,6 +2814,243 @@ const struct SpriteFrame RANDOM_GAMEMODE_PORTAL[]={
 
 const unsigned char nometa[] = {0x80};
 
+const unsigned char Menu_0[] = {
+	0, 0, 0x81, 2,
+	0x80
+};
+
+const unsigned char Menu_1[] = {
+	0, 0, 0x83, 2,
+	0x80
+};
+
+const unsigned char Menu_2[] = {
+	0, 0, 0x85, 2,
+	0x80
+};
+
+const unsigned char Menu_3[] = {
+	0, 0, 0x87, 2,
+	0x80
+};
+
+const unsigned char Menu_4[] = {
+	0, 0, 0x89, 2,
+	0x80
+};
+
+const unsigned char Menu_5[] = {
+	0, 0, 0x8b, 2,
+	0x80
+};
+
+const unsigned char Menu_6[] = {
+	0, 0, 0x8d, 2,
+	0x80
+};
+
+const unsigned char Menu_7[] = {
+	0, 0, 0x8f, 2,
+	0x80
+};
+
+const unsigned char Menu_8[] = {
+	0, 0, 0x91, 2,
+	0x80
+};
+
+const unsigned char Menu_9[] = {
+	0, 0, 0x93, 2,
+	0x80
+};
+
+const unsigned char Menu_Percentage[] = {
+	0, 0, 0x95, 2,
+	0x80
+};
+
+const unsigned char Menu_0_Pal3[] = {
+	0, 0, 0x81, 3,
+	0x80
+};
+
+const unsigned char Menu_1_Pal3[] = {
+	0, 0, 0x83, 3,
+	0x80
+};
+
+const unsigned char Menu_2_Pal3[] = {
+	0, 0, 0x85, 3,
+	0x80
+};
+
+const unsigned char Menu_3_Pal3[] = {
+	0, 0, 0x87, 3,
+	0x80
+};
+
+const unsigned char Menu_4_Pal3[] = {
+	0, 0, 0x89, 3,
+	0x80
+};
+
+const unsigned char Menu_5_Pal3[] = {
+	0, 0, 0x8b, 3,
+	0x80
+};
+
+const unsigned char Menu_6_Pal3[] = {
+	0, 0, 0x8d, 3,
+	0x80
+};
+
+const unsigned char Menu_7_Pal3[] = {
+	0, 0, 0x8f, 3,
+	0x80
+};
+
+const unsigned char Menu_8_Pal3[] = {
+	0, 0, 0x91, 3,
+	0x80
+};
+
+const unsigned char Menu_9_Pal3[] = {
+	0, 0, 0x93, 3,
+	0x80
+};
+
+const unsigned char Menu_Percentage_Pal3[] = {
+	0, 0, 0x95, 3,
+	0x80
+};
+
+
+const unsigned char Menu_Percentage_Mask[] = {
+	0, 0, 0x97, 3,
+	0x80
+};
+
+
+const unsigned char Menu_Percentage_Coarse[] = {
+	0, 0, 0x99, 0x0,
+	0x80
+};
+
+
+const unsigned char Menu_Percentage_Coarse_Pal1[] = {
+	0, 0, 0x99, 0x1,
+	0x80
+};
+
+const unsigned char Menu_Percentage_Hidder[] = {
+	0, 0, 0x9B, 0x1,
+	0x80
+};
+
+const unsigned char Menu_Percentage_Hidder_Flipped[] = {
+	0, 0, 0x9B, 0x40 | 0x1,
+	0x80
+};
+
+
+const unsigned char Progress_0[] = {
+	0, 0, 0x81, 2,
+	0x80
+};
+
+const unsigned char Progress_1[] = {
+	0, 0, 0x83, 2,
+	0x80
+};
+
+const unsigned char Progress_2[] = {
+	0, 0, 0x85, 2,
+	0x80
+};
+
+const unsigned char Progress_3[] = {
+	0, 0, 0x87, 2,
+	0x80
+};
+
+const unsigned char Progress_4[] = {
+	0, 0, 0x89, 2,
+	0x80
+};
+
+const unsigned char Progress_5[] = {
+	0, 0, 0x8b, 2,
+	0x80
+};
+
+const unsigned char Progress_6[] = {
+	0, 0, 0x8d, 2,
+	0x80
+};
+
+const unsigned char Progress_7[] = {
+	0, 0, 0x8f, 2,
+	0x80
+};
+
+const unsigned char Progress_8[] = {
+	0, 0, 0x91, 2,
+	0x80
+};
+
+const unsigned char Progress_9[] = {
+	0, 0, 0x93, 2,
+	0x80
+};
+
+const unsigned char Progress_Percentage[] = {
+	0, 0, 0x95, 2,
+	0x80
+};
+
+const unsigned char * const Number_Sprites[] = {
+	Menu_0,
+	Menu_1,
+	Menu_2,
+	Menu_3,
+	Menu_4,
+	Menu_5,
+	Menu_6,
+	Menu_7,
+	Menu_8,
+	Menu_9,
+	Menu_Percentage,
+	Menu_0_Pal3,
+	Menu_1_Pal3,
+	Menu_2_Pal3,
+	Menu_3_Pal3,
+	Menu_4_Pal3,
+	Menu_5_Pal3,
+	Menu_6_Pal3,
+	Menu_7_Pal3,
+	Menu_8_Pal3,
+	Menu_9_Pal3,
+	Menu_Percentage_Pal3,
+	
+	Menu_Percentage_Mask,
+	Menu_Percentage_Coarse,
+	Menu_Percentage_Coarse_Pal1,
+	Menu_Percentage_Hidder,
+	Menu_Percentage_Hidder_Flipped,
+
+	Progress_0,
+	Progress_1,
+	Progress_2,
+	Progress_3,
+	Progress_4,
+	Progress_5,
+	Progress_6,
+	Progress_7,
+	Progress_8,
+	Progress_9,
+	Progress_Percentage,
+};
+
 const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Cube,
 	Portal_Gamemode_Ship, 

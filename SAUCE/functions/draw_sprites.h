@@ -189,6 +189,14 @@ void trail_loop() {
 	} while (tmp1 > 1);
 }
 
+void put_progress_bar_sprite() {
+	oam_meta_spr(tmp1, tmp2, Number_Sprites[22 + tmp3]);
+}
+
+void put_number() {
+	oam_meta_spr(tmp1, tmp2, Number_Sprites[high_byte(tmp6) + tmp3]);
+}
+
 void minus15y() {
 	high_byte(player_y[0]) -= 15;
 }
