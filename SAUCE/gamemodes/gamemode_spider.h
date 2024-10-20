@@ -4,13 +4,8 @@ CODE_BANK_PUSH("XCD_BANK_01")
 void cube_vel_stuff();
 void spider_eject();
 void common_gravity_routine();
-void scroll_thing_again();
 void spider_movement(void){
-// handle y
 
-// currplayer_gravity
-	// currplayer_vel_y is signed
-	//if(currplayer_vel_y < 0x400){
 	fallspeed_big = CUBE_MAX_FALLSPEED;
 	fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;
 	gravity_big = CUBE_GRAVITY;
@@ -35,8 +30,7 @@ void spider_movement(void){
 			currplayer_gravity = 1;
 			do {
 				high_byte(currplayer_y) -= 0x08;
-				//scroll_thing_again();
-				set_scroll_y(scroll_y);
+				crossPRGBankJump0(do_the_scroll_thing);				
 				if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
 					idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 					break;
@@ -53,8 +47,7 @@ void spider_movement(void){
 			currplayer_gravity = 0;
 			do {
 				high_byte(currplayer_y) += 0x08;
-				//scroll_thing_again();
-				set_scroll_y(scroll_y);
+				crossPRGBankJump0(do_the_scroll_thing);				
 				
 				Generic.y = high_byte(currplayer_y); // the rest should be the same
 			} while (!bg_coll_D());
@@ -86,41 +79,6 @@ void spider_movement(void){
 }	
 
 
-void scroll_thing_again(void) {
-	if (!dual) {
-		if (currplayer_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-			tmp1 = MSB(0x4000 - currplayer_y);
-			scroll_y -= tmp1;
-			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
-		}
-		cap_scroll_y_at_top();
-
-		
-		if (currplayer_y > 0xA000){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xA000);
-			scroll_y += tmp1;
-			if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-		}
-		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF;
-	}
-	else {
-		if (currplayer_y < 0x0700 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-			tmp1 = MSB(0x0700 - currplayer_y);
-			scroll_y -= tmp1;
-			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
-		}
-		cap_scroll_y_at_top();
-
-		
-		if (currplayer_y > 0xF000){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xF000);
-			scroll_y += tmp1;
-			if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-		}
-		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF;
-	}
-}					
-
 
 void spider_eject() {
 	if(!currplayer_gravity){
@@ -138,5 +96,25 @@ void spider_eject() {
 		} 
 	}
 }
+
+void spider_up_wait() {
+	do {
+		high_byte(currplayer_y) -= 0x08;
+		crossPRGBankJump0(do_the_scroll_thing);
+		if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
+			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
+			break;
+		}
+		Generic.y = high_byte(currplayer_y); // the rest should be the same
+	} while (!bg_coll_U());
+}			
+
+void spider_down_wait() {
+	do {
+		high_byte(currplayer_y) += 0x08;
+		crossPRGBankJump0(do_the_scroll_thing);
+		Generic.y = high_byte(currplayer_y); // the rest should be the same
+	} while (!bg_coll_D());
+}				
 
 CODE_BANK_POP()

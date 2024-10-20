@@ -4,7 +4,8 @@
 extern void load_next_sprite(uint8_t slot);
 
 extern void check_spr_objects(void);
-void scroll_thing_again2();
+void spider_up_wait();
+void spider_down_wait();
 extern char bg_coll_U();
 extern char bg_coll_D();
 void 	retrofireballclear();
@@ -374,7 +375,7 @@ static void sprite_gamemode_main() {
 				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
 				//intentional leak
 			case DASH_ORB_UPWARDS:
-				currplayer_vel_y = currplayer_vel_x;
+				currplayer_vel_y = currplayer_vel_x * 2;
 				//currplayer_vel_x = 0;
 				dashing[currplayer] = 4;
 				break;
@@ -382,7 +383,7 @@ static void sprite_gamemode_main() {
 				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
 				//intentional leak
 			case DASH_ORB_DOWNWARDS:
-				currplayer_vel_y = -currplayer_vel_x;
+				currplayer_vel_y = -currplayer_vel_x * 4;
 				//currplayer_vel_x = 0;
 				dashing[currplayer] = 5;
 				break;
@@ -646,19 +647,10 @@ void sprite_collide_lookup() {
 			if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 		case SPIDER_PAD_UP:
-			high_byte(currplayer_y) -= eject_D;
-			currplayer_vel_y = 0;
-			currplayer_gravity = 1;
-			do {
-				high_byte(currplayer_y) -= 0x08;
-			//	scroll_thing_again2();
-			//	set_scroll_y(scroll_y);
-				if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
-					idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
-					break;
-				}
-				Generic.y = high_byte(currplayer_y); // the rest should be the same
-			} while (!bg_coll_U());
+				high_byte(currplayer_y) -= eject_D;
+				currplayer_vel_y = 0;
+				currplayer_gravity = 1;
+				crossPRGBankJump0(spider_up_wait);
 				high_byte(currplayer_y) -= eject_U;
 				currplayer_vel_y = 0;	
 				orbed[currplayer] = 1;
@@ -672,15 +664,8 @@ void sprite_collide_lookup() {
 				high_byte(currplayer_y) -= eject_U + 1;
 				currplayer_vel_y = 0;
 				currplayer_gravity = 0;
-				do {
-					high_byte(currplayer_y) += 0x08;
-			//		scroll_thing_again2();
-			//		set_scroll_y(scroll_y);
-					Generic.y = high_byte(currplayer_y); // the rest should be the same
-				} while (!bg_coll_D());
-
+				crossPRGBankJump0(spider_down_wait);
 				high_byte(currplayer_y) -= eject_D;
-				
 				currplayer_vel_y = 0;
 				orbed[currplayer] = 1;
 				idx8_inc(activesprites_activated, index);
@@ -860,40 +845,6 @@ void sprite_collide(){
 	Generic.height = mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
 }
 
-
-void scroll_thing_again2(void) {
-	if (!dual) {
-		if (currplayer_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-			tmp1 = MSB(0x4000 - currplayer_y);
-			scroll_y -= tmp1;
-			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
-		}
-		cap_scroll_y_at_top();
-
-		
-		if (currplayer_y > 0xA000){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xA000);
-			scroll_y += tmp1;
-			if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-		}
-		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF;
-	}
-	else {
-		if (currplayer_y < 0x0700 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-			tmp1 = MSB(0x0700 - currplayer_y);
-			scroll_y -= tmp1;
-			high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
-		}
-		cap_scroll_y_at_top();
-		
-		if (currplayer_y > 0xF000){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xF000);
-			scroll_y += tmp1;
-			if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-		}
-		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF;
-	}
-}
 
 void settrailstuff() {
 	if (forced_trails != 2 && !orbactive) {

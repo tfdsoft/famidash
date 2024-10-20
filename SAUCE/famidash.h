@@ -83,7 +83,7 @@
 #define MINI_SHIP_MAX_FALLSPEED 0x380
 
 #define SHIP_GRAVITY 0x2B
-#define MINI_SHIP_GRAVITY 0x3c
+#define MINI_SHIP_GRAVITY 0x2F
 
 #define JIMSHEATBALL_MAX_FALLSPEED 0x300
 #define JIMSHEATBALL_GRAVITY 0x34
@@ -239,7 +239,10 @@ uint8_t palette_cycle_mode;
 uint8_t gameboy_mode;
 uint8_t invisblocks;
 uint8_t cam_seesaw;
+uint8_t forced_credits;
 extern uint8_t extceil;
+uint8_t exitingLevelSelect;
+uint8_t drawBarFlag;
 
 
 //uint8_t greyscale_mode;
@@ -270,6 +273,7 @@ uint8_t kandokidshack;
 uint8_t kandokidshack2;
 uint8_t kandokidshack3;
 
+uint16_t exittimer;
 uint8_t jumps;
 uint8_t orbed[2];
 uint8_t speed;
@@ -280,8 +284,8 @@ uint8_t currplayer;
 uint8_t kandotemp;
 uint8_t kandotemp2[2];
 uint8_t kandotemp3;
-uint8_t kandotemp4;
-uint8_t kandotemp5;
+//uint8_t kandotemp4;
+//uint8_t kandotemp5;
 uint8_t kandoframecnt;
 // NOTE: joypad2 in memory is before joypad1 due to ram saving reasons
 // so controllingplayer = 0 is player 2, and controllingplayer = 1 is player 1
@@ -352,26 +356,30 @@ uint8_t dashing[2];
 
 uint8_t disable_dpcm_bankswitch;
 uint8_t has_practice_point; // = 0;
-uint16_t practice_player_x[2];
-uint16_t practice_player_y[2];
-uint8_t practice_player_gamemode;
-uint8_t practice_mini;
-uint8_t practice_dual;
-uint8_t practice_speed;
-uint16_t practice_cube_rotate[2];
-int16_t practice_player_vel_x[2];
-int16_t practice_player_vel_y[2];
-uint8_t practice_player_gravity[2];
-uint32_t practice_scroll_x;
-uint16_t practice_scroll_y;
-uint8_t practice_parallax_scroll_x;
-uint8_t practice_g_color;
-uint8_t practice_bg_color;
-uint8_t practice_g_color_type;
-uint8_t practice_bg_color_type;
-uint8_t practice_trail_sprites_visible[9];
-uint8_t practice_player_old_posy[9];
-uint8_t practice_orbactive;
+uint8_t curr_practice_point;
+
+#define MAX_PRACTICE_POINTS 9
+
+uint16_t practice_player_x[2*MAX_PRACTICE_POINTS];
+uint16_t practice_player_y[2*MAX_PRACTICE_POINTS];
+uint8_t practice_player_gamemode[MAX_PRACTICE_POINTS];
+uint8_t practice_mini[MAX_PRACTICE_POINTS];
+uint8_t practice_dual[MAX_PRACTICE_POINTS];
+uint8_t practice_speed[MAX_PRACTICE_POINTS];
+uint16_t practice_cube_rotate[2*MAX_PRACTICE_POINTS];
+int16_t practice_player_vel_x[2*MAX_PRACTICE_POINTS];
+int16_t practice_player_vel_y[2*MAX_PRACTICE_POINTS];
+uint8_t practice_player_gravity[2*MAX_PRACTICE_POINTS];
+uint32_t practice_scroll_x[MAX_PRACTICE_POINTS];
+uint16_t practice_scroll_y[MAX_PRACTICE_POINTS];
+uint8_t practice_parallax_scroll_x[MAX_PRACTICE_POINTS];
+uint8_t practice_g_color[MAX_PRACTICE_POINTS];
+uint8_t practice_bg_color[MAX_PRACTICE_POINTS];
+uint8_t practice_g_color_type[MAX_PRACTICE_POINTS];
+uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
+//uint8_t practice_trail_sprites_visible[9];
+//uint8_t practice_player_old_posy[9];
+uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
 
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
@@ -397,7 +405,7 @@ uint8_t lastbgcolortype;
 uint8_t iconbank;
 uint8_t dblocked[2];
 
-#define MAX_FIREBALLS 20
+#define MAX_FIREBALLS 2
 
 uint8_t jimsheatballalive[MAX_FIREBALLS]; //jims heatball shit
 uint16_t jimsheatballx[MAX_FIREBALLS]; //jims heatball shit

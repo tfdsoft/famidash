@@ -37,11 +37,11 @@ void draw_sprites(void){
 	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
 	if (invisblocks) return;
 
-	if (has_practice_point) {
-		
+	if (has_practice_point && curr_practice_point == has_practice_point) {
+		tmp3 = high_byte(practice_player_y[has_practice_point - 1]);
 		if (long_temp_x > 10) { 
-			long_temp_x -= 2;
-			oam_meta_spr(long_temp_x, idx16_load_hi_NOC(practice_player_y, currplayer)-1, Practice_Sprites[0]);
+			long_temp_x -= 3;
+			oam_meta_spr(long_temp_x, tmp3 - 1, Practice_Sprites[0]);
 		}
 		// else if (long_temp_x < 10) {}
 	}
@@ -187,6 +187,14 @@ void trail_loop() {
 		tmp5 = tmp5 - tmp6;
 		tmp1--;
 	} while (tmp1 > 1);
+}
+
+void put_progress_bar_sprite() {
+	oam_meta_spr(tmp1, tmp2, Number_Sprites[22 + tmp3]);
+}
+
+void put_number() {
+	oam_meta_spr(tmp1, tmp2, Number_Sprites[high_byte(tmp6) + tmp3]);
 }
 
 void minus15y() {

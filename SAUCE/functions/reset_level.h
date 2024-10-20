@@ -11,7 +11,7 @@ void reset_level(void) {
 	slope_frames = 0;
 	slope_type = SLOPE_NONE;
 	last_slope_type = SLOPE_NONE;
-
+	curr_practice_point = has_practice_point;
 	robotjumpframe[0] = 0;
 	tmp1 = 30;
 	if (!DEBUG_MODE && (cube_data[0] & 1)) {
@@ -27,6 +27,10 @@ void reset_level(void) {
 				else oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, ExplodeR_Sprites[robotjumpframe[0] & 0x7F]);
 				++robotjumpframe[0];
 			}
+//			pad_poll(0);
+			if (joypad1.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
+			if (joypad2.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
+
 			--tmp1;
 		}
 	}
@@ -43,6 +47,8 @@ void reset_level(void) {
 				
 				++robotjumpframe[0];
 			}
+			if (joypad1.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
+			if (joypad2.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
 			--tmp1;
 		}
 	}
@@ -119,13 +125,13 @@ void reset_level(void) {
 	unrle_first_screen();
 	if (has_practice_point) {
 
-		tmp3 = practice_bg_color_type;
+		tmp3 = practice_bg_color_type[has_practice_point-1];
 			tmp2 = (tmp3 & 0x3F);                        
 			pal_col(0, tmp2);
 			pal_col(1, oneShadeDarker(tmp2)); 
 			pal_col(9, oneShadeDarker(tmp2)); 
 
-		tmp3 = practice_g_color_type;
+		tmp3 = practice_g_color_type[has_practice_point-1];
 			tmp2 = (tmp3 & 0x3F);                        
 	    pal_col(6, tmp2);
 

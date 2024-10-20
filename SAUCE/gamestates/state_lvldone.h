@@ -40,26 +40,20 @@ void checkcoinproceed(){
 	}
 }
 
-
 void state_lvldone() {
 	#define current_state tmp2
 	#define sprite_0_y tmp3
 	#define delay_spr_0 tmp4
 	#define delay_timer tmpptr1
 	#define top_scroll scroll_x
+	oam_clear();
+    ppu_off();
 
-	pal_bright(0);
-	ppu_wait_nmi();
-	ppu_off();
 	delay_spr_0 = 0x20;
-	gamemode = 0;
-	kandodebugmode = 0;
-	kandodebug2 = 0;
-	cube_data[0] = 0;
-	cube_data[1] = 0;
 
 	current_state = 0;
-
+	// Set palettes back to natural colors since we aren't fading back in
+	pal_bright(4);
 	pal_bg(paletteMenu);
 	pal_col(0x0A,0x2A);
 	pal_col(0x0B,0x21);
@@ -72,45 +66,22 @@ void state_lvldone() {
 	mmc3_set_1kb_chr_bank_3(LEVELCOMPLETEBANK+3);
 	
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	// Make an a nametable for the chain
-    vram_adr(NAMETABLE_A);
-	vram_fill(0xfe, 0x3c0);
-	vram_fill(0x00, 0x3f);
-	// vertical increment: draw the chains
-	vram_inc(1);
-    vram_adr(NTADR_A(5, 0));
-	vram_fill(0xae, 30);
-    vram_adr(NTADR_A(26, 0));
-	vram_fill(0xae, 30);
-
-	// Make an empty nametable for the scroll split
-    vram_adr(NAMETABLE_B);
-	vram_inc(0);
+	// Make a nametable for the chain
+    vram_adr(NAMETABLE_C);
 	vram_fill(0xfe, 0x3c0);
 	vram_fill(0x00, 0x3f);
 
 	// Copy the level done screen to the bot left and right nametable
-    vram_adr(NAMETABLE_C);
+    vram_adr(NAMETABLE_A);
 	if(has_practice_point){
 	vram_unrle(practicedone);
 	}
 	else{
 	vram_unrle(leveldone);
-	};
-
-	// Change the text attributes for the press to return
-	// no longer required
-    //vram_adr(0x2be1);
-	//vram_fill(0xff, 0x6);
-
-    vram_adr(NAMETABLE_D);
-	if(has_practice_point){
-	vram_unrle(practicedone);
+	
 	}
-	else{
-	vram_unrle(leveldone);
-	};
 
+	has_practice_point = 0;
 	#include "defines/endlevel_charmap.h"
 	//multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));
 	//multi_vram_buffer_horz((const char*)menutext4,sizeof(menutext4)-1,NTADR_C(8, 18));
@@ -118,35 +89,33 @@ void state_lvldone() {
 	
 	tmp1 = 0;
 	tmpptr1 = NULL;
-
-	display_attempt_counter(0xD0, NTADR_C(25, 13));	// Same bank as this
+	crossPRGBankJump0(increment_attempt_count);
+	display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
 	
 	hexToDec(jumps);
 
 	tmp1 = 0;
 	
 	if (hexToDecOutputBuffer[4]) {
-		one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_C(25,15));
+		one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_A(18,15));
 		tmp1++;
 	}
 
 	if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3]) {
-		one_vram_buffer(0xD0+hexToDecOutputBuffer[3], NTADR_C(25+tmp1,15));
+		one_vram_buffer(0xD0+hexToDecOutputBuffer[3], NTADR_A(18+tmp1,15));
 		tmp1++;
 	}
 	
 	if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2]) {
-		one_vram_buffer(0xD0+hexToDecOutputBuffer[2], NTADR_C(25+tmp1,15));
+		one_vram_buffer(0xD0+hexToDecOutputBuffer[2], NTADR_A(18+tmp1,15));
 		tmp1++;
 	}
 
 	if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1]) {
-		one_vram_buffer(0xD0+hexToDecOutputBuffer[1], NTADR_C(25+tmp1,15));
+		one_vram_buffer(0xD0+hexToDecOutputBuffer[1], NTADR_A(18+tmp1,15));
 		tmp1++;
 	}
-	one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_C(25+tmp1,15));
-	
-	jumps = 0;
+	one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_A(18+tmp1,15));
 	
 	if (!has_practice_point) {
 		LEVELCOMPLETE[level] = 1;
@@ -160,7 +129,6 @@ void state_lvldone() {
 		level_completeness_practice[level] = 100;
 	}
 	
-	has_practice_point = 0;
 	
 	if (!coins) {
 		tmp1 = sizeof(coins0) - 1;
@@ -179,90 +147,59 @@ void state_lvldone() {
 	//if (tmp1) multi_vram_buffer_horz((const char*)tmpptr1,tmp1,NTADR_C(17,18));
 	flush_vram_update2();
 
-	// Set the start of the scroll to the top nametable
-	// so we can scroll it down (so the screen comes up)
-    top_scroll = 0x00;
+    set_scroll_x(0x00);
 
-	// setup sprite zero at the very bottom of the screen for now
-	sprite_0_y = 0xee;
-	POKE(0x200, sprite_0_y);
-	POKE(0x201, 0x02); // Use the second tile in the BG side which is pure black
-	POKE(0x202, 0x02); // second palette
-	POKE(0x203, 0);
 
-    set_scroll_x(0);
-    set_scroll_y(top_scroll);
+	tmp5 = 0x0000; // speed
+	tmp6 = 0xf000; // real y 
 
 	//	one_vram_buffer(0xD0+coins, NTADR_A(12,9));
-	// Set palettes back to natural colors since we aren't fading back in
-	pal_bright(4);
+	ppu_wait_nmi();
 
+	
+    set_scroll_y(0xe8);
     ppu_on_all();
-
-
 
 	sfx_play(sfx_level_complete, 0);
 	menuselection = 1;
-	lvl_done_update();
-	while (1) {
-		// Rather hacky, but when doing sprite zero at the bottom of the screen we DON'T 
-		// want to skip a frame, so we re-enable NMI and then if NMI happens during the frame
-		// we don't have a lag frame by skipping it.
-		if (VRAM_UPDATE == 1) {
-        	ppu_wait_nmi();
-		}
-		// force re-enable NMI every frame.
-		VRAM_UPDATE = 1;
 
+	while (1) {
+		ppu_wait_nmi();
+		
 		music_update();
 
-		// wait for sprite zero hit
-		if (current_state > 0 && current_state < 3) {
-			xy_split(0x100, scroll_y);
-		}
-
  		// read the first controller
-		
-		// Move the sprite zero hit to the new location
-		POKE(0x200, sprite_0_y);
 
+		kandoframecnt++;
 
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;
 		switch (current_state) {
 		case 0:
-			// Scroll the screen top bar up a bit
-			top_scroll += 2;
-			set_scroll_y(top_scroll);
-			if (top_scroll >= 31) {
-				scroll_y = 256 + 208 - 1;
+			tmp5 += 0x40;
+			tmp6 -= tmp5;
+			set_scroll_y(high_byte(tmp6));
+			
+			if (high_byte(tmp6) < 10) {
 				current_state = 1;
+				tmp5 = -0x0600;
 			}
 			break;
 		case 1:
-			// keep scrolling up, but have sprite zero follow now
-			sprite_0_y -= 2;
-			top_scroll += 2;
-			set_scroll_y(top_scroll);
-			// Play the level complete noise
-			// if (top_scroll == 115) {
-			// }
-			if (top_scroll > 151) {
+			tmp5 += 0x40;
+			tmp6 -= tmp5;
+			set_scroll_y(high_byte(tmp6));
+			if (high_byte(tmp6) < 5 && !(high_byte(tmp5) & 0x80)) {
 				current_state = 2;
+				tmp5 = -0x0300;
 			}
 			break;
 		case 2:
-			// keep scrolling up, but change the scroll split Y
-			// so it starts to "unravel"
-			sprite_0_y -= 2;
-			top_scroll += 2;
-			scroll_y -= 4;
-			set_scroll_y(top_scroll);
-			if (
-				(__A__ = fourth_byte(top_scroll) | third_byte(top_scroll),
-				__A__ |= high_byte(top_scroll),
-				__A__ == 0) && low_byte(top_scroll) == 240) {
-				set_scroll_x(0);
-				set_scroll_y(0x100);
+			tmp5 += 0x40;
+			tmp6 -= tmp5;
+			set_scroll_y(high_byte(tmp6));
+			if (high_byte(tmp6) < 3 && !(high_byte(tmp5) & 0x80)) {
 				current_state = 3;
+				set_scroll_y(0);
 			}
 			break;
 		case 3:
@@ -362,10 +299,10 @@ void state_lvldone() {
 			break;
 		case 4: // coin 1
 			if (coins & COIN_1){
-				one_vram_buffer(0x90, NTADR_C(11,18));
-				one_vram_buffer(0x91, NTADR_C(12,18));
-				one_vram_buffer(0xA0, NTADR_C(11,19));
-				one_vram_buffer(0xA1, NTADR_C(12,19));
+				one_vram_buffer(0x90, NTADR_A(11,18));
+				one_vram_buffer(0x91, NTADR_A(12,18));
+				one_vram_buffer(0xA0, NTADR_A(11,19));
+				one_vram_buffer(0xA1, NTADR_A(12,19));
 				checkcointimer();
 			}
 			tmp1--;
@@ -373,10 +310,10 @@ void state_lvldone() {
 			break;
 		case 5: // coin 2
 			if (coins & COIN_2){
-				one_vram_buffer(0x90, NTADR_C(15,18));
-				one_vram_buffer(0x91, NTADR_C(16,18));
-				one_vram_buffer(0xA0, NTADR_C(15,19));
-				one_vram_buffer(0xA1, NTADR_C(16,19));
+				one_vram_buffer(0x90, NTADR_A(15,18));
+				one_vram_buffer(0x91, NTADR_A(16,18));
+				one_vram_buffer(0xA0, NTADR_A(15,19));
+				one_vram_buffer(0xA1, NTADR_A(16,19));
 				checkcointimer();
 			}
 			tmp1--;
@@ -384,16 +321,17 @@ void state_lvldone() {
 			break;
 		case 6: // coin 3
 			if (coins & COIN_3){
-				one_vram_buffer(0x90, NTADR_C(19,18));
-				one_vram_buffer(0x91, NTADR_C(20,18));
-				one_vram_buffer(0xA0, NTADR_C(19,19));
-				one_vram_buffer(0xA1, NTADR_C(20,19));
+				one_vram_buffer(0x90, NTADR_A(19,18));
+				one_vram_buffer(0x91, NTADR_A(20,18));
+				one_vram_buffer(0xA0, NTADR_A(19,19));
+				one_vram_buffer(0xA1, NTADR_A(20,19));
 				checkcointimer();
 			}
 			tmp1--;
 			checkcoinproceed();
 			break;
 		case 7:
+		lvl_done_update();
 		oam_clear();
 
 			mouse_and_cursor();
@@ -894,7 +832,7 @@ void funsettings() {
 
 		crossPRGBankJump0(gameboy_check);
 
-		if (gameboy_mode) kandotemp4 = 1;
+//		if (gameboy_mode) kandotemp4 = 1;
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 						
@@ -1065,15 +1003,20 @@ void refreshmenu(void) {
 void refreshmenu_part2(void) {
 	
 	// Normal level completeness stuff
-		printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);
+		//printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);
 
 	// Practice level completeness stuff
-		printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19)+tmp5);
+		//printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19)+tmp5);
 
 	//palette stuff
 		tmp3 = level % 9;
 		pal_col(0,colors_list[tmp3]);
 		pal_col(0xE,colors_list[tmp3]);
+		
+		pal_col(0x10,colors_list[tmp3]);
+		pal_col(0x16,0x12);
+		pal_col(0x1a,0x12);
+		pal_col(0x1E,colors_list[tmp3]);
 		pal_set_update();
 	//coin stuff
 		coins = 0;
@@ -1091,17 +1034,98 @@ void refreshmenu_part2(void) {
 #include "defines/endlevel_charmap.h"
 void lvl_done_update() {
 	if (menuselection) {
-		one_vram_buffer(0xFF, NTADR_C(8,23));
-		one_vram_buffer(0xFF, NTADR_C(9,23));
-		one_vram_buffer(0x94, NTADR_C(22,23));
-		one_vram_buffer(0x95, NTADR_C(23,23));
+		one_vram_buffer(0xFF, NTADR_A(8,23));
+		one_vram_buffer(0xFF, NTADR_A(9,23));
+		one_vram_buffer(0x94, NTADR_A(22,23));
+		one_vram_buffer(0x95, NTADR_A(23,23));
 	} else {
-		one_vram_buffer(0x94, NTADR_C(8,23));
-		one_vram_buffer(0x95, NTADR_C(9,23));
-		one_vram_buffer(0xFF, NTADR_C(22,23));
-		one_vram_buffer(0xFF, NTADR_C(23,23));
+		one_vram_buffer(0x94, NTADR_A(8,23));
+		one_vram_buffer(0x95, NTADR_A(9,23));
+		one_vram_buffer(0xFF, NTADR_A(22,23));
+		one_vram_buffer(0xFF, NTADR_A(23,23));
 	}
 }	
+
+
+#define BAR_TILES 20
+#define CENTER_TILES BAR_TILES - 2
+#define BAR_MAX 100
+#define NUMBER_PER_TILES BAR_MAX / BAR_TILES
+void draw_progress_bar() {
+	#define nametable_A !(level & 1)
+	if (tmpi8) {
+		tmpi8--;
+		return;
+	}
+	
+	drawBarFlag--;
+
+	if (tmp7 >= NUMBER_PER_TILES) {
+		if (nametable_A) {
+			one_vram_buffer(0x8c, NTADR_A(tmp1, tmp2));
+		} else {
+			one_vram_buffer(0x8c, NTADR_B(tmp1, tmp2));
+		}
+		high_byte(tmp6) = (tmp7 >= BAR_MAX ? BAR_MAX - NUMBER_PER_TILES : tmp7);
+
+		
+		high_byte(tmpA) = 0;
+		do {
+			high_byte(tmp6) -= NUMBER_PER_TILES;
+			high_byte(tmpA) += 1;
+		} while (high_byte(tmp6) >= NUMBER_PER_TILES);
+		
+		if (nametable_A) {
+			one_vram_buffer_horz_repeat(0x6b, high_byte(tmpA), NTADR_A(tmp1 + 1, tmp2));
+			one_vram_buffer_horz_repeat(0x02, BAR_TILES - high_byte(tmpA), NTADR_A(tmp1 + high_byte(tmpA), tmp2));
+		} else {
+			one_vram_buffer_horz_repeat(0x6b, high_byte(tmpA), NTADR_B(tmp1 + 1, tmp2));
+			one_vram_buffer_horz_repeat(0x02, BAR_TILES - high_byte(tmpA), NTADR_B(tmp1 + high_byte(tmpA), tmp2));
+		}
+	} else {
+		if (nametable_A) {
+			one_vram_buffer(0x7c, NTADR_A(tmp1, tmp2));
+			one_vram_buffer_horz_repeat(0x02, CENTER_TILES, NTADR_A(tmp1 + 1, tmp2));
+		} else {
+			one_vram_buffer(0x7c, NTADR_B(tmp1, tmp2));
+			one_vram_buffer_horz_repeat(0x02, CENTER_TILES, NTADR_B(tmp1 + 1, tmp2));
+		}
+	}
+	
+	if (tmp7 >= BAR_MAX) {
+		if (nametable_A) {
+			one_vram_buffer(0x8d, NTADR_A(tmp1 + (BAR_TILES - 1), tmp2));
+		} else {
+			one_vram_buffer(0x8d, NTADR_B(tmp1 + (BAR_TILES - 1), tmp2));
+		}
+	} else {
+		if (nametable_A) {
+			one_vram_buffer(0x7d, NTADR_A(tmp1 + (BAR_TILES - 1), tmp2));
+		} else {
+			one_vram_buffer(0x7d, NTADR_B(tmp1 + (BAR_TILES - 1), tmp2));
+		}
+	}
+	#undef nametable_A
+}
+
+#define TOTAL_PIXELS 8 * BAR_TILES // 8 * 20 = 160
+#define PIXELS_PER_UNIT (TOTAL_PIXELS * 10) / (BAR_MAX) // (1600 / 100) = 1.6 | multiplied by 10 because of no floats
+#define PIXELS_PER_PERCENTAGE (PIXELS_PER_UNIT * 256) / 10 // 1.6 * 256 = 409.6
+
+void calculate_sprite_pos() {
+	high_byte(tmp5) = tmp1;
+	low_byte(tmp5) = 0;
+	tmp3 = 1;
+
+	if (tmp7 != 0) {
+		do {
+			tmp3++;
+			tmp5 += PIXELS_PER_PERCENTAGE;
+		} while (tmp3 < tmp7);
+	}
+
+	tmp1 = high_byte(tmp5);
+}
 
 CODE_BANK_POP()
 
