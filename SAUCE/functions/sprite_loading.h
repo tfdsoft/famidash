@@ -1,9 +1,11 @@
 #pragma data-name(push, "XCD_BANK_00")
 #pragma rodata-name(push, "XCD_BANK_00")
+#pragma code-name(push, "XCD_BANK_00")
 
 extern void load_next_sprite(uint8_t slot);
-
 extern void check_spr_objects(void);
+void init_sprites();
+
 void spider_up_wait();
 void spider_down_wait();
 extern char bg_coll_U();
@@ -29,22 +31,6 @@ const unsigned char OUTLINES[]={
 		0x17,
 		0x0F
 };
-
-void init_sprites(void){	// required to be in a fixed bank
-	// Setting up pointers is already done by init_rld()
-	mmc3_set_prg_bank_1(sprite_data_bank);
-
-	memfill(activesprites_type, 0xFF, sizeof(activesprites_type));
-
-	tmp4 = max_loaded_sprites;
-	do {
-		if (sprite_data[0] == TURN_OFF) break;
-		load_next_sprite(--tmp4);
-		if (activesprites_x_hi[tmp4] != 0) activesprites_active[tmp4] = 0;
-	} while (tmp4 != 0);
-}
-
-#pragma code-name(push, "XCD_BANK_00")
 
 #define OUTL    0xFC
 #define COLR    0xFD

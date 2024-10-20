@@ -3815,6 +3815,145 @@ vert_skip:
 .endproc
 
 
+; Standard for function declaration here:
+; void init_sprites();
+.segment "CODE"
+
+.importzp _sprite_data	
+.import _sprite_data_bank
+.import _activesprites_type, _activesprites_x_hi, _activesprites_x_lo, _activesprites_active
+
+.export _init_sprites
+.proc _init_sprites
+	; No arguments, at all
+	
+	x_counter = tmp1
+	
+	; Pointers are already set up by init_rld (at X=0)
+	
+	LDA	mmc3PRG1Bank			;
+	PHA							;
+	LDA	_sprite_data_bank		;	Switch to the correct bank
+	JSR	mmc3_set_prg_bank_1		;__
+	
+	LDX	#16			;! THIS IS THE SPRITE SLOT COUNT, CHANGE AS NEEDED
+	LDA	#$FF		;
+	clear_spritetype_loop:				;
+		STA	_activesprites_type-1,	X	;	Clear sprites to load them
+		DEX								;
+		BNE	clear_spritetype_loop		;__
+		
+	; Everything is init'd at X=0, so skip some sprite data if X != 0
+	
+	
+	LDY	#1					;__	Offset of high X byte, move inside block if opened
+	.if 0	; Feature is currently disabled due to no levels exceeding 4096 blocks (256*256px)
+	; First loop, for non-zero 3/4 bytes of scroll_x
+	; Flies thru sprite data till they overflow enough
+	; Note: may skip shit if there's too little sprites
+	; AND MAY NOT ACTUALLY WORK PROPERLY
+	old_hi_byte = tmp2
+	
+	highest_bytes_setup:
+		LDA	_scroll_x+2			;
+		ORA	_scroll_x+3			;	Skip this altogether if the scroll_x isn't ass big
+		BEQ	high_byte_setup		;__
+		
+		LDX	_scroll_x+3			;
+		INX						;	Store highest byte, inc for BEQ ending condition
+		STX	x_counter			;__
+		
+		LDX	_scroll_x+2			;
+		INX						;__
+		
+		JMP	highest_bytes_loop_entrypoint
+		
+	highest_bytes_loop:
+		LDA	#5-1				;
+		ADC	sprite_data			;	Relies on set carry
+		STA	sprite_data			;__
+		BCC	:+					;
+			INC	sprite_data+1	;	Overflow
+		:						;__
+		
+		@entrypoint:
+		
+		LDA	(sprite_data),y		;
+		CMP	old_hi_byte			;	If no overflow just
+		STA	old_hi_byte			;	increment the pointer
+		BCS	highest_bytes_loop	;__
+		
+		; An overflow of x_hi happened, decrement the counters
+		
+		SEC						;__	Set for the addition at the beginning
+		DEX						;	Decrement the 3rd byte counter
+		BNE	highest_bytes_loop	;__
+		DEC	x_counter			;	Decrement the 4th byte counter
+		BNE	highest_bytes_loop	;__
+		
+		highest_bytes_loop_entrypoint := @entrypoint
+	
+	.endif
+	
+	high_byte_setup:
+		LDX	_scroll_x+1
+		BEQ	low_byte_setup
+			JSR	data_comparison_entrypoint
+	low_byte_setup:
+		DEY
+		LDX	_scroll_x
+		BEQ :+
+			JSR	data_comparison_entrypoint
+		:
+
+	; BAM, the pointer is adjusted
+	; Load the sprites now
+	
+	LDX	#16			;! THIS IS THE SPRITE SLOT COUNT, CHANGE AS NEEDED
+	loading_loop:
+		;__	Y is 0
+		LDA	(sprite_data),	y	;
+		CMP	#$FF				;	If sprite data ended, stfu
+		BEQ	return				;__
+		
+		DEX						;
+		TXA						;	Load next sprite
+		JSR	_load_next_sprite	;
+		LDY	#0					;__ Reset Y
+		
+		; Part where it was writing to activesprites_active
+		; is ommited as it is done in load_next_sprite
+		
+		CPX	#0					;	Repeat for all sprite slots
+		BNE	loading_loop		;__
+	
+	return:
+	
+	PLA
+	JMP mmc3_set_prg_bank_1
+	
+	data_comparison_loop:	; Compares X with a byte of sprite data, until it >= A
+	
+		LDA	#5-1				;
+		ADC	sprite_data			;	Relies on set carry
+		STA	sprite_data			;__
+		BCC	@entrypoint			;	Overflow
+			INC	sprite_data+1	;__
+	
+		@entrypoint:
+		TXA						;
+		CMP	(sprite_data),	y	;	return if scroll_x <= sprite x
+		BEQ	@return				;
+		BCS	data_comparison_loop;__
+		
+		@return:
+			RTS
+		
+		data_comparison_entrypoint := @entrypoint
+		
+.endproc
+
+
 ; void set_tile_banks(void);
 ; 
 ;	if (!no_parallax) {

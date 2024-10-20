@@ -60,7 +60,6 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// register unsigned char i;
 	#define i (*((uint8_t *)&ii))
 	register uint16_t ii;
-	init_sprites();
 	mmc3_set_prg_bank_1(GET_BANK(increment_attempt_count));
 	increment_attempt_count();
 	coins = 0;
@@ -120,6 +119,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
 		i = 0;
 	}
+	
 
 	// Draw the nametable starting from where the scroll is set
     do {
@@ -129,6 +129,8 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		if (!(i & 0x1F)) music_update();	// it takes about 29k cycles for exactly 2 of these subloops, aka 1 frame
 	} while (i != 0);
 
+	init_sprites();
+	
 	set_scroll_x(scroll_x);
 	set_scroll_y(scroll_y);
 	if (!has_practice_point) {
