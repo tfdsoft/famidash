@@ -31,7 +31,8 @@ void cube_movement(void){
 		if(bg_coll_D()){ // check collision below
 			high_byte(currplayer_y) -= eject_D;
 			low_byte(currplayer_y) = 0;
-			currplayer_vel_y = 0;
+			if (currplayer_gravity && hblocked[currplayer]) currplayer_vel_y = -1;
+			else currplayer_vel_y = 0;
 			orbactive = 0;
 			if (dashing[currplayer] == 5) currplayer_vel_y++;
 			if (fblocked[currplayer]) currplayer_gravity = 0;
@@ -40,7 +41,8 @@ void cube_movement(void){
 		if(bg_coll_U()){ // check collision above
 			high_byte(currplayer_y) -= eject_U;
 			low_byte(currplayer_y) = 0;
-			currplayer_vel_y = 0;
+			if (!currplayer_gravity && hblocked[currplayer]) currplayer_vel_y = 1;
+			else currplayer_vel_y = 0;
 			orbactive = 0;
 			if (dashing[currplayer] == 4) currplayer_vel_y++;
 			if (fblocked[currplayer]) currplayer_gravity = 1;			
@@ -90,7 +92,7 @@ void cube_movement(void){
 				if (!(controllingplayer->a)) orbed[currplayer] = 0;
 			}
 			if (gamemode == 8 && currplayer_vel_y == 0) ninjajumps[currplayer] = 3; //ninja jump reset
-			if(controllingplayer->a && (!jblocked[currplayer] && !fblocked[currplayer] && !hblocked[currplayer] && !kandokidshack && gamemode == 0)) {			//no jblock - hold A to buffer jump
+			if(controllingplayer->a && (!jblocked[currplayer] && !fblocked[currplayer] && !kandokidshack && gamemode == 0)) {			//no jblock - hold A to buffer jump
 				if (!orbed[currplayer]) {
 					jumps++;
 
