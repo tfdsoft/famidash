@@ -3638,7 +3638,7 @@ bank:
 
 .import popax	; Unfortunately
 .import _paletteSettings
-.import _dialogbox_base_nametable
+.import _DialogBox
 
 .export _draw_dialog_box
 .proc _draw_dialog_box
@@ -3653,8 +3653,8 @@ start:
 	sty	PPU_ADDR					;
 	ldy	#$00						;
 	sty	PPU_ADDR					;	Unrle the base dialog box to nametable A
-	lda	#<_dialogbox_base_nametable	;
-	ldx	#>_dialogbox_base_nametable	;
+	lda	#<_DialogBox				;
+	ldx	#>_DialogBox				;
 	jsr	_vram_unrle					;__
 
 	lda	#<_paletteSettings	;
