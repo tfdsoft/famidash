@@ -11,16 +11,25 @@
 -Spider orb/portal and spider fixes
 -Down/Up dash orb functionality changed to reflect vanilla behavior
 -Many level fixes (decode, dry out, clutterfunk, nightmare)
+-Decode buffs (last ball section, final wave section)
 -Progress bars added to level select
 -Add jump counter to end level screen
 -End level screen effect improved
 -Practice Complete screen added
+-Practice diamonds move more in sync with screen
 -Fix second player explosion animation
+-Cam lock on non-cube/robot modes
+-Fix H block glitch (could not jump up while walking on H block)
 -Fix checkpoint glitch if mouse plugged in port 2 while 2player mode is on
 -Wave sets Y velocity to 0 when hitting a mode changing portal
 -Remove option to delete a corrupt/missing save, automatically does this
+-Remove "B" "Safe to shutdown" screen on menu
 -Credits must be viewed on a new save
 -Lock icon cursor position moved to side (overscan fix)
 -Customize screen CHR fixes
 -Title screen demo improvements
 -Improve 3D cube by RedGD
+-Attributes fixed in nag screen
+-Off by one issue with sprites fixed
+-Level complete options can function with A as well as START
+-Platformer mode allows you to multi-trigger orbs
