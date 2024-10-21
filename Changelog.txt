@@ -10,11 +10,13 @@
 -Slope improvements
 -Spider orb/portal and spider fixes
 -Down/Up dash orb functionality changed to reflect vanilla behavior
--Many level fixes
+-Many level fixes (decode, dry out, clutterfunk, nightmare)
 -Progress bars added to level select
 -Add jump counter to end level screen
 -End level screen effect improved
 -Practice Complete screen added
+-Fix second player explosion animation
+-Fix checkpoint glitch if mouse plugged in port 2 while 2player mode is on
 -Wave sets Y velocity to 0 when hitting a mode changing portal
 -Remove option to delete a corrupt/missing save, automatically does this
 -Credits must be viewed on a new save
