@@ -86,17 +86,17 @@ void do_the_scroll_thing(){
 	}
 	else {			//ship stuff
 		if (target_scroll_y > scroll_y + 0x20) {
-			++scroll_y; --high_byte(player_y);
-			++scroll_y; --high_byte(player_y);
+			scroll_y = add_scroll_y(2, scroll_y);
+			high_byte(currplayer_y) -= 2;
 		}
 		if (target_scroll_y < scroll_y + 0x20) {
-			--scroll_y; ++high_byte(player_y);
-			--scroll_y; ++high_byte(player_y);
+			scroll_y = sub_scroll_y(2, scroll_y);
+			high_byte(currplayer_y) += 2;
 		}
 		cap_scroll_y_at_top();
 		while (scroll_y > 0x2EF) {		//down
-			--scroll_y;
-			++high_byte(player_y);
+			scroll_y = sub_scroll_y(1, scroll_y);
+			high_byte(currplayer_y) += 1;
 		}
 	}
 //	}
