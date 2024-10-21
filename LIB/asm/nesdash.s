@@ -2327,6 +2327,8 @@ drawplayer_center_offsets:
 		@domore:
 			cmp #$13
 			beq @noflip
+			cmp #$17
+			beq @noflip
 			cmp #2
 			bne	@norm
 			LDA drawcube_sprite_way, X
@@ -2770,6 +2772,8 @@ drawplayer_common := _drawplayerone::common
 			beq @noflip	
 			LDA _icon
 			cmp #$13
+			beq @noflip
+			cmp #$17
 			beq @noflip
 			cmp #2
 			bne	@norm
