@@ -86,8 +86,8 @@ const unsigned char Explode2_1[]={
 
 const unsigned char Explode2_2[]={
 
-	  0,  0,0xFB,1,
-	  8,  0,0xFB,1|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0x7D,1,
+	  8,  0,0x7D,1|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
@@ -100,8 +100,8 @@ const unsigned char Explode2_3[]={
 
 const unsigned char Explode2_4[]={
 
-	  0,  0,0xFD,1,
-	  8,  0,0xFD,1|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0x7F,1,
+	  8,  0,0x7F,1|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 
