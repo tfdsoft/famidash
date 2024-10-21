@@ -1376,6 +1376,7 @@ void start_the_level() {
 	famistudio_music_stop();
 	tmp4 = 0;
 	do {
+		oam_clear();
 		draw_both_progress_bars();
 		ppu_wait_nmi();
 		music_update();
