@@ -29,7 +29,7 @@ void reset_level(void) {
 			}
 //			pad_poll(0);
 			if (joypad1.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
-			if (joypad2.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
+			if (!mouse.connected && joypad2.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
 
 			--tmp1;
 		}
@@ -116,14 +116,14 @@ void reset_level(void) {
 	target_x_scroll_stop = 0x5000;
 	discoframe = 0;
 	if (!has_practice_point) {
-	memfill(player_old_posy, 0, sizeof(player_old_posy));
-	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
-	invincible_counter = 8;
+		memfill(player_old_posy, 0, sizeof(player_old_posy));
+		memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
+		invincible_counter = 8;
 	}
 
 	unrle_first_screen();
-	if (has_practice_point) {
 
+	if (has_practice_point) {
 		tmp3 = practice_bg_color_type[has_practice_point-1];
 			tmp2 = (tmp3 & 0x3F);                        
 			pal_col(0, tmp2);

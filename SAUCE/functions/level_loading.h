@@ -94,8 +94,9 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 			__asm__("bmi %g", unrle_first_screen_addition_loop);
 		parallax_scroll_column <<= 1;
 
-		mmc3_set_prg_bank_1(GET_BANK(restore_practice_state));
-		restore_practice_state();
+		//mmc3_set_prg_bank_1(GET_BANK(restore_practice_state));
+		
+		crossPRGBankJump0(restore_practice_state);		
 
 		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
 		// Draw the nametable starting from where the scroll is set

@@ -211,7 +211,7 @@ extern uint8_t PAL_BUF[32];
   (b) = __A__; \
 } while(0);
 
-void state_sorrynothing();
+//void state_sorrynothing();
 
 // For more than 16 bits use extra macros and shit
 // Naming convention: crossPRGBankJump<bitsIn>
