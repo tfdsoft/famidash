@@ -262,6 +262,7 @@ void state_game(){
 				// vram_adr(NAMETABLE_B);
 				// vram_unrle(pausescreen); 	
 				// ppu_on_all();
+				kandokidshack3 = 0;
 				while (!(joypad1.press & PAD_START) && !(mouse.right_press)) {
 					if (VRAM_UPDATE == 1) {
 						ppu_wait_nmi();
