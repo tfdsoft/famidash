@@ -2568,8 +2568,8 @@ level_data_decode:
   .byte $cf,$ef,$97,$05,$00,$98,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$01,$6f,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$97,$01,$00,$a5,$0c,$24,$cf
   .byte $ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$97,$01,$00,$a1,$0c,$2f,$09,$24,$a8,$01,$00,$a6,$0c,$22,$09,$2f,$a3,$80,$ef,$80,$ef,$f4,$f7
   .byte $fa,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$09,$22,$a7,$ef,$02,$00,$f5,$f8,$fb,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$01,$4f,$ef,$cf,$ef
-  .byte $cf,$ef,$cf,$ef,$cf,$e3,$80,$ef,$80,$ef,$80,$f6,$f9,$fc,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$01,$6f,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef
-  .byte $c3,$ef,$02,$00,$b4,$ef,$fd,$98,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$01,$4f,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$e3,$ef,$80,$02,$6f,$fd
+  .byte $cf,$ef,$cf,$ef,$cf,$e3,$9b,$ef,$80,$ef,$80,$f6,$f9,$fc,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$01,$6f,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef
+  .byte $c3,$9b,$02,$00,$b4,$ef,$fd,$98,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$01,$4f,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$e3,$ef,$80,$02,$6f,$fd
   .byte $ef,$98,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$01,$6f,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$c3,$06,$6f,$91,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef
   .byte $01,$4f,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$e3,$ef,$af,$ef,$af,$02,$6f,$91,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$01,$6f,$cf,$ef,$cf,$ef
   .byte $cf,$ef,$cf,$ef,$c3,$03,$2f,$02,$6f,$91,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$01,$4f,$ef,$cf,$ef,$cf,$ef,$cf,$ef,$cf,$e3,$02,$6f,$af

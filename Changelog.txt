@@ -1,0 +1,24 @@
+1.0.1 Changelog:
+
+-SORRY BUT SRAM WIPE - your saves will be lost!
+
+-Ship/Mini Ship gravity lowered (lighter ship)
+-Practice mode fixes - sprites properly load in before player
+-Up to 9 practice checkpoints can be placed, overwriting the oldest one and shifting the rest down a slot when the max is reached
+-Delete a checkpoint with SELECT
+-More mouse controls! Hold left mouse and right click to delete a checkpoint, hold right mouse when pausing to exit level
+-Slope improvements
+-Spider orb/portal and spider fixes
+-Down/Up dash orb functionality changed to reflect vanilla behavior
+-Many level fixes
+-Progress bars added to level select
+-Add jump counter to end level screen
+-End level screen effect improved
+-Practice Complete screen added
+-Wave sets Y velocity to 0 when hitting a mode changing portal
+-Remove option to delete a corrupt/missing save, automatically does this
+-Credits must be viewed on a new save
+-Lock icon cursor position moved to side (overscan fix)
+-Customize screen CHR fixes
+-Title screen demo improvements
+-Improve 3D cube by RedGD
