@@ -26,9 +26,9 @@ void do_the_scroll_thing(){
 	if (currplayer_x > curr_x_scroll_stop){ // change x scroll
 		tmp1 = MSB(currplayer_x - curr_x_scroll_stop);
 		scroll_x += tmp1;
-		parallax_scroll_x += tmp1 ? tmp1 - 1 : 0;
-		if (parallax_scroll_x >= 144) {
-			parallax_scroll_x -= 144;
+		parallax_scroll_x += (tmp1 ? tmp1 - 1 : 0) >> 1;
+		if (parallax_scroll_x >= 72) {
+			parallax_scroll_x -= 72;
 		}
 		high_byte(currplayer_x) = high_byte(currplayer_x) - tmp1;
 	}
@@ -37,7 +37,7 @@ void do_the_scroll_thing(){
 		scroll_x = scroll_x - tmp1;
 		if (tmp1) {
 			if (tmp1 > parallax_scroll_x) {	// sorta yoda notation
-				parallax_scroll_x += 144;
+				parallax_scroll_x += 72;
 			}
 			parallax_scroll_x -= tmp1 - 1;
 		}
