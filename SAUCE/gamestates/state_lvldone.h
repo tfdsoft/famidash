@@ -154,7 +154,6 @@ void state_lvldone() {
 	tmp6 = 0xf000; // real y 
 
 	//	one_vram_buffer(0xD0+coins, NTADR_A(12,9));
-	ppu_wait_nmi();
 
 	
     set_scroll_y(0xe8);
@@ -1014,6 +1013,7 @@ void refreshmenu_part2(void) {
 		pal_col(0xE,colors_list[tmp3]);
 		
 		pal_col(0x10,colors_list[tmp3]);
+		pal_col(0x12,0x2a);
 		pal_col(0x16,0x12);
 		pal_col(0x1a,0x12);
 		pal_col(0x1E,colors_list[tmp3]);
