@@ -1574,8 +1574,8 @@ void title_cube_shit() {
 }					
 
 void title_wave_shit() {
-	tmp2 = newrand() & 31;
-	if (kandoframecnt & 1) { if (tmp2 >= 29) currplayer_gravity ^= 1; }
+	tmp2 = newrand() & 63;
+	if (kandoframecnt & 1) { if (tmp2 >= 60) currplayer_gravity ^= 1; }
 		
 	if (currplayer_gravity) currplayer_y_small -= speed;
 
@@ -1583,8 +1583,8 @@ void title_wave_shit() {
 	bounds_check();
 }
 void title_mini_wave_shit() {
-	tmp2 = newrand() & 31;
-	if (kandoframecnt & 1) { if (tmp2 >= 29) currplayer_gravity ^= 1; }
+	tmp2 = newrand() & 63;
+	if (kandoframecnt & 1) { if (tmp2 >= 60) currplayer_gravity ^= 1; }
 		
 	if (currplayer_gravity) currplayer_y_small -= (speed << 1);
 
