@@ -49,11 +49,12 @@ void do_the_scroll_thing(){
 	
 	
 	
-//	if (gamemode != 5) {
+	if (gamemode == 0 || gamemode == 4) {
 		if (!dual) {
 			if (currplayer_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
 				tmp1 = MSB(0x4000 - currplayer_y);
 				scroll_y = sub_scroll_y(tmp1, scroll_y);
+
 				high_byte(currplayer_y) = high_byte(currplayer_y) + tmp1;
 			}
 			cap_scroll_y_at_top();
@@ -82,7 +83,22 @@ void do_the_scroll_thing(){
 			}
 			if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF; // 2F0 overflows into 300 (add_scroll_y)
 		}
-
+	}
+	else {			//ship stuff
+		if (target_scroll_y > scroll_y + 0x20) {
+			++scroll_y; --high_byte(player_y);
+			++scroll_y; --high_byte(player_y);
+		}
+		if (target_scroll_y < scroll_y + 0x20) {
+			--scroll_y; ++high_byte(player_y);
+			--scroll_y; ++high_byte(player_y);
+		}
+		cap_scroll_y_at_top();
+		while (scroll_y > 0x2EF) {		//down
+			--scroll_y;
+			++high_byte(player_y);
+		}
+	}
 //	}
 /*
 	else {			//ship stuff
