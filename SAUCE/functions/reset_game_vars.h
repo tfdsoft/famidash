@@ -39,6 +39,7 @@ void reset_game_vars(){
 	//		idx8_store(practice_player_old_posy, tmp2, player_old_posy[tmp2]);
 	//	} while (++tmp2 < 9);
 		practice_orbactive[tmp1] = orbactive;
+		practice_target_scroll_y[tmp1] = target_scroll_y;
 	}
 	else {
 		tmp2 = 0;
@@ -74,6 +75,7 @@ void reset_game_vars(){
 		//		idx8_store(practice_player_old_posy, tmp2, player_old_posy[tmp2]);
 		//	} while (++tmp2 < 9);
 			practice_orbactive[tmp2] = practice_orbactive[tmp3];	
+			practice_target_scroll_y[tmp2] = practice_target_scroll_y[tmp3];	
 			tmp2++;
 			tmp3++;
 		} while (tmp3 < MAX_PRACTICE_POINTS);		
@@ -107,6 +109,7 @@ void reset_game_vars(){
 	//		idx8_store(practice_player_old_posy, tmp2, player_old_posy[tmp2]);
 	//	} while (++tmp2 < 9);
 		practice_orbactive[tmp2] = orbactive;		
+		practice_target_scroll_y[tmp2] = target_scroll_y;		
 		
 	}
 }
@@ -140,6 +143,7 @@ void restore_practice_state() {
 //		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);
 //	} while (++tmp2 < 9);
 	orbactive = practice_orbactive[tmp2];
+	target_scroll_y = practice_target_scroll_y[tmp2];
 
 	__A__ = currplayer<<1;
 	__asm__("tay");

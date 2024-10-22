@@ -390,6 +390,7 @@ uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_trail_sprites_visible[9];
 //uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
+uint16_t practice_target_scroll_y[MAX_PRACTICE_POINTS];
 
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
