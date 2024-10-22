@@ -730,32 +730,32 @@ const unsigned char * const MINI_SWING2[] = {Mini_Swing2_0, Mini_Swing2_0, Mini_
 
 const unsigned char Mini_Ship_0[]={
 
-	 -4,  -4,0x01,3,
+	 0,  -4,0x01,3,
 	0x80
 };
 
 const unsigned char Mini_Ship_1[]={
 
-	 -4,  -4,0x03,3,
+	 0,  -4,0x03,3,
 	0x80
 };
 
 const unsigned char Mini_Ship_2[]={
 
-	 -4,  -4,0x05,3,
+	 0,  -4,0x05,3,
 	0x80
 };
 
 
 const unsigned char Mini_Ship_5[]={
 
-	 -4,  -4,0x07,3,
+	 0,  -4,0x07,3,
 	0x80
 };
 
 const unsigned char Mini_Ship_6[]={
 
-	 -4,  -4,0x09,3,
+	 0,  -4,0x09,3,
 	0x80
 };
 
@@ -1006,25 +1006,25 @@ const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump
 
 const unsigned char Mini_Robot_0[]={
 	
-	-12,   -4, 0x13,3,
+	-4,   -4, 0x13,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_1[]={
 	
-	-12,   -4, 0x15,3,
+	-4,   -4, 0x15,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_2[]={
 	
-	-12,   -4, 0x17,3,
+	-4,   -4, 0x17,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump_1[]={
 	
-	-12,   -4, 0x15,3,
+	-4,   -4, 0x15,3,
 	0x80
 };//also mini robot 3rd animation frame - Ficus
 
