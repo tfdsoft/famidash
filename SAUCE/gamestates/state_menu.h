@@ -1,6 +1,7 @@
 
 CODE_BANK_PUSH("XCD_BANK_03")
 
+void check_if_music_stopped();
 void clear_shit();
 void movement();
 void bounds_check();
@@ -27,6 +28,30 @@ void leveldec();
 void levelinc();
 void set_settings();
 void start_the_level();
+extern uint8_t famistudio_song_speed;
+
+
+
+
+const uint8_t xbgm_lookup_table[] = {
+	song_menu_theme,
+	song_stereo_madness,
+	song_back_on_track,
+	song_polargeist,
+	song_dry_out,
+	song_base_after_base,
+	song_cant_let_go,
+	song_jumper,
+	song_time_machine,
+	song_cycles,
+	song_xstep, 
+	song_clutterfunk,
+	song_theory_of_everything, 
+	song_electroman_adventures, 
+	song_custom_endgame, 
+	song_practice,
+};
+
 
 const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
@@ -153,7 +178,7 @@ void levelselection() {
 	while (1){
 		loop_routine_update();
 		 // read the first controller
-
+		check_if_music_stopped();
 		// scroll
 		if (tmp4) edit_irq_table(high_byte(tmp8),2);
 		else edit_irq_table(low_byte(tmp8),2);
@@ -451,7 +476,7 @@ void customize_screen() {
 	prev_icon = icon;	
 	while (1) {
 		tmp3 = 0;
-
+		check_if_music_stopped();
 		loop_routine_update();
 
 		pal_col(0x0a,color1);
@@ -1625,4 +1650,11 @@ void clear_shit() {
 	one_vram_buffer(' ', NTADR_A(18,9));	
 	
 }
+
+void check_if_music_stopped() {
+		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[song]); }
+		else if (famistudio_song_speed == 0x80) { music_play(song_menu_theme); }
+}	
+
+
 CODE_BANK_POP()
