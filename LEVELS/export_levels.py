@@ -161,6 +161,10 @@ def export_spr(folder: str, levels: Iterable[str]):
 
 					if int(a) in [10,13,37,76,82,0x56,253]: # ADJUST HEIGHT FOR BOTTOM PADS
 						y += 8
+					if level == "test4" and obj_id == 0x08:
+							x += 4
+					if level == "test4" and obj_id == 0x09:
+							x += 4
 
 					if level == "polargeist" and obj_id == 0x0d:
 						y -= 6
