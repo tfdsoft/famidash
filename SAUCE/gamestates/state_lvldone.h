@@ -82,7 +82,6 @@ void state_lvldone() {
 	
 	}
 
-	has_practice_point = 0;
 	#include "defines/endlevel_charmap.h"
 	//multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));
 	//multi_vram_buffer_horz((const char*)menutext4,sizeof(menutext4)-1,NTADR_C(8, 18));
@@ -162,6 +161,7 @@ void state_lvldone() {
 
 	sfx_play(sfx_level_complete, 0);
 	menuselection = 1;
+	has_practice_point = 0;
 
 	while (1) {
 		ppu_wait_nmi();
@@ -1112,10 +1112,6 @@ void lvl_done_update() {
 #define NUMBER_PER_TILES BAR_MAX / BAR_TILES
 void draw_progress_bar() {
 	#define nametable_A !(level & 1)
-	if (tmpi8) {
-		tmpi8--;
-		return;
-	}
 	
 	drawBarFlag--;
 
