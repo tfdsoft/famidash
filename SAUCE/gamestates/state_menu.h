@@ -237,6 +237,7 @@ void levelselection() {
 		}
 
 		if (tmp8 == 0x3f) {
+			crossPRGBankJump0(refreshmenu);
 			crossPRGBankJump0(refreshmenu_part2);
 		}
 
