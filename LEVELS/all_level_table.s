@@ -142,7 +142,7 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_test4))
   .byte .lobyte(.bank(sprite_data_danger))
 
-.define MID_LEVEL_LENGTHS_ENABLED 0
+.define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
@@ -165,7 +165,7 @@ _level_lengths_lo:
   .byte .lobyte($000080)		; test
   .byte .lobyte($00006E)		; test2
   .byte .lobyte($000069)		; test3
-  .byte .lobyte($000069)		; test4
+  .byte .lobyte($000109)		; test4
   .byte .lobyte($000006)		; danger
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -190,7 +190,7 @@ _level_lengths_md:
   .byte .hibyte($000080)		; test
   .byte .hibyte($00006E)		; test2
   .byte .hibyte($000069)		; test3
-  .byte .hibyte($000069)		; test4
+  .byte .hibyte($000109)		; test4
   .byte .hibyte($000006)		; danger
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -215,7 +215,7 @@ _level_lengths_hi:
   .byte .bankbyte($000080)		; test
   .byte .bankbyte($00006E)		; test2
   .byte .bankbyte($000069)		; test3
-  .byte .bankbyte($000069)		; test4
+  .byte .bankbyte($000109)		; test4
   .byte .bankbyte($000006)		; danger
 
 .endif
