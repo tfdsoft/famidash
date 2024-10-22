@@ -526,6 +526,7 @@ void sprite_collide_lookup() {
 			gamemode = 8;
 			return;
 		case RANDOM_MODE_PORTAL:
+			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
 			if (gamemode == 6) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
 			idx8_inc(activesprites_activated, index);
