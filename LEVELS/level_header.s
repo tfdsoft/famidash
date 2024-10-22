@@ -111,8 +111,8 @@ test3_grnd_color  = $06
 test4_song_number = song_practice
 test4_game_mode   = $00
 test4_speed       = $00
-test4_bg_color    = $12
-test4_grnd_color  = $02
+test4_bg_color    = $0F
+test4_grnd_color  = $0F
 
 danger_song_number = song_menu_theme
 danger_game_mode   = $22
