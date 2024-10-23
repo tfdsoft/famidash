@@ -77,6 +77,9 @@ void state_game(){
 	coin1_timer = 0;
 	coin2_timer = 0;
 	coin3_timer = 0;
+	kandokidshack = 0;
+	kandokidshack2 = 0;
+	kandokidshack3 = 0;
 	animating = 0;
 	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
 	orbactive = 0;
