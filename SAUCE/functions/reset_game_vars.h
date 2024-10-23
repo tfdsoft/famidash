@@ -31,13 +31,6 @@ void reset_game_vars(){
 		practice_scroll_y[tmp1] = scroll_y;
 		practice_bg_color_type[tmp1] = lastbgcolortype;
 		practice_g_color_type[tmp1] = lastgcolortype;
-	//	gnd_palette_transition_timer = 0;		//palete fade code
-	//	bg_palette_transition_timer = 0;		//palette fade code
-	//	tmp2 = 0;
-	//	do {
-	//		idx8_store(practice_trail_sprites_visible, tmp2, trail_sprites_visible[tmp2]);
-	//		idx8_store(practice_player_old_posy, tmp2, player_old_posy[tmp2]);
-	//	} while (++tmp2 < 9);
 		practice_orbactive[tmp1] = orbactive;
 		practice_target_scroll_y[tmp1] = target_scroll_y;
 	}
@@ -67,13 +60,6 @@ void reset_game_vars(){
 			practice_scroll_y[tmp2] = practice_scroll_y[tmp3];
 			practice_bg_color_type[tmp2] = practice_bg_color_type[tmp3];
 			practice_g_color_type[tmp2] = practice_g_color_type[tmp3];
-		//	gnd_palette_transition_timer = 0;		//palete fade code
-		//	bg_palette_transition_timer = 0;		//palette fade code
-		//	tmp2 = 0;
-		//	do {
-		//		idx8_store(practice_trail_sprites_visible, tmp2, trail_sprites_visible[tmp2]);
-		//		idx8_store(practice_player_old_posy, tmp2, player_old_posy[tmp2]);
-		//	} while (++tmp2 < 9);
 			practice_orbactive[tmp2] = practice_orbactive[tmp3];	
 			practice_target_scroll_y[tmp2] = practice_target_scroll_y[tmp3];	
 			tmp2++;
@@ -101,13 +87,6 @@ void reset_game_vars(){
 		practice_scroll_y[tmp2] = scroll_y;
 		practice_bg_color_type[tmp2] = lastbgcolortype;
 		practice_g_color_type[tmp2] = lastgcolortype;
-	//	gnd_palette_transition_timer = 0;		//palete fade code
-	//	bg_palette_transition_timer = 0;		//palette fade code
-	//	tmp2 = 0;
-	//	do {
-	//		idx8_store(practice_trail_sprites_visible, tmp2, trail_sprites_visible[tmp2]);
-	//		idx8_store(practice_player_old_posy, tmp2, player_old_posy[tmp2]);
-	//	} while (++tmp2 < 9);
 		practice_orbactive[tmp2] = orbactive;		
 		practice_target_scroll_y[tmp2] = target_scroll_y;		
 		
@@ -137,7 +116,7 @@ void restore_practice_state() {
 	parallax_scroll_x = practice_parallax_scroll_x[tmp2];
 	scroll_x = practice_scroll_x[tmp2] - (256 + 16);
 	old_trail_scroll_y = scroll_y = practice_scroll_y[tmp2];
-	tmp2 = 0;
+//	tmp2 = 0;
 //	do {
 //		idx8_store(trail_sprites_visible, tmp2, practice_trail_sprites_visible[tmp2]);
 //		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);

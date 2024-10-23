@@ -99,33 +99,7 @@ void do_the_scroll_thing(){
 			high_byte(currplayer_y) += 1;
 		}
 	}
-//	}
-/*
-	else {			//ship stuff
-			if (target_scroll_y > 0x0120) {
-				target_scroll_y--;
-				target_scroll_y--;
-				++scroll_y; --high_byte(currplayer_y);
-				++scroll_y; --high_byte(currplayer_y);
-			}
-			if (target_scroll_y < 0x110) {
-				target_scroll_y++;
-				target_scroll_y++;
-				--scroll_y; ++high_byte(currplayer_y);
-				--scroll_y; ++high_byte(currplayer_y);
-			}
-			while (scroll_y < min_scroll_y) {
-				++scroll_y;
-				--high_byte(currplayer_y);
-			}
-			while (scroll_y > 0x2EF) {
-				--scroll_y;
-				++high_byte(currplayer_y);
-			}
 
-
-	}
-*/
     set_scroll_x(scroll_x);
     set_scroll_y(scroll_y);
 }

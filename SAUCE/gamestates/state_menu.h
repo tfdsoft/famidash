@@ -157,8 +157,8 @@ void levelselection() {
 	triggers_hit[1] = 0;
 	triggers_hit[2] = 0;
 
-	// one_vram_buffer(0xb0+TOTALCOINSTENS, NTADR_A(17,17));
-	// one_vram_buffer(0xb0+TOTALCOINSONES, NTADR_A(18,17));
+	// one_vram_buffer(0xb0+kandokidshackTENS, NTADR_A(17,17));
+	// one_vram_buffer(0xb0+kandokidshackONES, NTADR_A(18,17));
 
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
@@ -437,18 +437,18 @@ void customize_screen() {
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
 
-	TOTALCOINS = 0;
-	TOTALSTARS = 0;
+	kandokidshack = 0;
+	kandokidshack2 = 0;
 	tmp2 = 0;
 	do {
-		// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+		// kandokidshack = kandokidshack + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
 		__A__ = tmp2; __asm__("tay");
-		__A__ = TOTALCOINS;
+		__A__ = kandokidshack;
 		__asm__("clc \n adc %v, y", coin1_obtained);
 		__asm__("clc \n adc %v, y", coin2_obtained);
 		__asm__("clc \n adc %v, y", coin3_obtained);
-		TOTALCOINS = __A__;
-		if (LEVELCOMPLETE[tmp2]) TOTALSTARS += stars_list[tmp2];
+		kandokidshack = __A__;
+		if (LEVELCOMPLETE[tmp2]) kandokidshack2 += stars_list[tmp2];
 
 		tmp2++;
 	}
@@ -459,8 +459,8 @@ void customize_screen() {
 	#endif
 
 	
-	printDecimal(TOTALSTARS, 2, 0xD0, 0xFF, NTADR_A(26,4));
-	printDecimal(TOTALCOINS, 2, 0xD0, 0xFF, NTADR_A(26,5));
+	printDecimal(kandokidshack2, 2, 0xD0, 0xFF, NTADR_A(26,4));
+	printDecimal(kandokidshack, 2, 0xD0, 0xFF, NTADR_A(26,5));
 
 	one_vram_buffer('h', NTADR_A(13, 8));		
 	one_vram_buffer('i', NTADR_A(13, 9));

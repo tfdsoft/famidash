@@ -205,20 +205,20 @@ void state_lvldone() {
 		case 3:
 			// Draw the level stat text
 			//achievements
-			TOTALCOINS = 0;
-			TOTALSTARS = 0;
+			kandokidshack = 0;
+			kandokidshack2 = 0;
 
 			tmp2 = 0;
 			do {
-				// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
+				// kandokidshack = kandokidshack + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
 				__A__ = tmp2; __asm__("tay");
-				__A__ = TOTALCOINS;
+				__A__ = kandokidshack;
 				__asm__("clc \n adc %v, y", coin1_obtained);
 				__asm__("clc \n adc %v, y", coin2_obtained);
 				__asm__("clc \n adc %v, y", coin3_obtained);
-				TOTALCOINS = __A__;
+				kandokidshack = __A__;
 				
-				if (LEVELCOMPLETE[tmp2]) TOTALSTARS += stars_list[tmp2];
+				if (LEVELCOMPLETE[tmp2]) kandokidshack2 += stars_list[tmp2];
 				tmp2++;
 			}
 			#ifdef FLAG_ENABLE_TEST_LEVELS
@@ -253,14 +253,14 @@ void state_lvldone() {
 			} while (++tmp2 <= 10);
 
 			if (!achievements[11]) {
-				if (TOTALCOINS >= 10) {
+				if (kandokidshack >= 10) {
 					achievements[11] = 1;
 					//display text here
 				}
 			}
 
 			if (!achievements[12]) {
-				if (TOTALCOINS >= 20) {
+				if (kandokidshack >= 20) {
 					achievements[12] = 1;
 					//display text here
 				}
@@ -268,7 +268,7 @@ void state_lvldone() {
 				
 			
 			if (!achievements[13]) {
-				if (TOTALCOINS >= 30) {
+				if (kandokidshack >= 30) {
 					achievements[13] = 1;
 					//display text here
 				}
@@ -667,22 +667,31 @@ void bgmtest() {
 		}
 	}
 }
-
+#define sfx tmp4
 void code_checker() {
 	last_gameState = gameState;
 	sfx_play(sfx_achievement_get, 0);
 	tmp3 = 1;
 
 	// bgm 9 & sfx 2
-	if (song == 0x9 && sfx == 0x2) {
-		gameState = 0xF0; // fun settings gamestate
+	if (song == 0x9 && sfx == 0x2 && kandokidshack3 == 0) {
+		kandokidshack3++;
 		tmp3--;
 	}
+	
+	else if (song == 1 && sfx == 7 && kandokidshack3 == 1) {
+		gameState = 0xF0; // fun settings gamestate
+		tmp3--;
+	}		
+	else kandokidshack3 = 0;
+	
+/*   debug code disabled
 	if (song == 0xB && sfx == 0x7) {
 		multi_vram_buffer_horz(TEXT_debug_mode, sizeof(TEXT_debug_mode)-1, NTADR_A(7,26));
 		options |= debugtoggle;
 		tmp3--;
 	}
+*/
 
 	// this is quite literally the greatest hack ever
 	// since sfx doesn't update until the next frame i can just

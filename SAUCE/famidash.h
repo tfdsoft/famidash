@@ -266,8 +266,7 @@ uint8_t last_gameState;
 
 //extern uint8_t famistudio_state[0xbf];
 
-uint8_t TOTALCOINS;
-uint8_t TOTALSTARS;
+
 
 uint16_t player_x[2];
 uint16_t player_y[2];
@@ -348,6 +347,7 @@ uint32_t scroll_x; // gotta love massive levels amirite fellas
 uint16_t scroll_y;
 uint16_t old_trail_scroll_y;
 uint16_t target_scroll_y;
+//uint16_t reload_target_scroll_y;
 uint8_t song;
 uint8_t songplaying;
 uint8_t temptemp6;
