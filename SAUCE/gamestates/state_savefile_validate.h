@@ -67,7 +67,7 @@ void state_savefile_validate(){
 		newrand();
             if (joypad1.press || mouse.left_press || mouse.right_press) break;
 	    kandoframecnt++;
-       	    			    
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
         } while (1);
  //   }
     pal_bright(3);
@@ -80,6 +80,7 @@ void state_savefile_validate(){
 
 
 void state_exit(){
+/*
     poweroffcheck = 0x00;
 	mmc3_set_2kb_chr_bank_0(0xFF);	
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
@@ -118,6 +119,7 @@ void state_exit(){
 	POKE(0xA001, 0x80);
 
     return;
+   */
 }
 
 CODE_BANK_POP()

@@ -167,6 +167,7 @@ void state_demo(){
 		}
 		ppu_wait_nmi();
 		tmp1++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 	} while (tmp1 != 0);
 
 	tmp1 = 0;
@@ -186,6 +187,7 @@ void state_demo(){
 		ppu_wait_nmi();
 		tmp1++;
 		set_scroll_x(tmp1<<2);
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;				
 	} while (tmp1 < 64);
 
 	tmp1 = 0;
@@ -203,6 +205,7 @@ void state_demo(){
 		}
 		ppu_wait_nmi();
 		tmp1++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;				
 	} while (tmp1 != 0);
 	forced_credits = 0;
 	gameState = 0x01; // validate save file before starting
