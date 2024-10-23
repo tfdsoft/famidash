@@ -370,7 +370,7 @@ uint8_t disable_dpcm_bankswitch;
 uint8_t has_practice_point; // = 0;
 uint8_t curr_practice_point;
 
-#define MAX_PRACTICE_POINTS 9
+#define MAX_PRACTICE_POINTS 8
 
 uint16_t practice_player_x[2*MAX_PRACTICE_POINTS];
 uint16_t practice_player_y[2*MAX_PRACTICE_POINTS];
