@@ -49,7 +49,7 @@ void do_the_scroll_thing(){
 	
 	
 	
-	if (gamemode == 0 || gamemode == 4) {
+	if (gamemode == 0 || gamemode == 4 || nocamlock) {
 		if (!dual) {
 			if (currplayer_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
 				tmp1 = MSB(0x4000 - currplayer_y);

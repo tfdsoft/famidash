@@ -322,10 +322,12 @@ uint8_t titlecolor2;
 uint8_t titlecolor3;
 uint8_t titleicon;
 uint8_t kandodebugmode;
-uint8_t kandodebug2;
+//uint8_t kandodebug2;
 uint8_t all_levels_complete;
 uint16_t triggers;
 uint16_t top_triggers;
+
+uint8_t nocamlock;
 
 uint8_t last_slope_type;
 

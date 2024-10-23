@@ -90,7 +90,7 @@ void state_game(){
 	// set_tile_banks();
 	
 	ppu_off();
-	
+	nocamlock = 0;
 	use_auto_chrswitch = 1;
 
 	pal_bg(paletteDefault);
@@ -227,7 +227,7 @@ void state_game(){
 			if (kandodebugmode) {
 				
 				if (mouse.left_press) {
-					kandodebug2 = 1;
+					kandodebugmode = 2;
 					//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
 					target_x_scroll_stop = 0xE000;
 					curr_x_scroll_stop = 0xE000;
@@ -237,7 +237,7 @@ void state_game(){
 					
 				}
 				else {
-					kandodebug2 = 0;
+					kandodebugmode = 1;
 					target_x_scroll_stop = 0x5000;
 					cube_data[0] = 0;
 				}
@@ -305,6 +305,7 @@ void state_game(){
 						kandokidshack2++;
 					}
 					else if ((joypad1.press_a) && DEBUG_MODE) {
+						nocamlock = 1;
 	#ifdef FLAG_KANDO_FUN_STUFF
 						gamemode == 8 ? gamemode = 0 : gamemode++;
 	#else
@@ -334,6 +335,7 @@ void state_game(){
 					DEBUG_MODE = !DEBUG_MODE; 
 					cube_data[0] &= 2; 
 					cube_data[1] &= 2; 
+					if (!DEBUG_MODE) nocamlock = 0;
 				}		
 //		}
 
@@ -501,7 +503,7 @@ void state_game(){
  //       color_emphasis(0);
 
 		if (DEBUG_MODE) gray_line();
-		if (!DEBUG_MODE && !kandodebug2) {
+		if (!DEBUG_MODE && kandodebugmode != 2) {
 		if (high_byte(player_x[0]) > 0x20) {
 			if (cube_data[0] & 1 || cube_data[1] & 1) reset_level();
 		} else cube_data[0] = cube_data[1] = 0;
