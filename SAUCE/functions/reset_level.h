@@ -82,6 +82,10 @@ void reset_level(void) {
 
 	currplayer_gravity = 0;
 
+	tmp1 = 0;
+	do {
+		activesprites_active[tmp1] = 0;
+	} while (++tmp1 < max_loaded_sprites);
 
 	dual = twoplayer ? 1 : 0x00;
 	player_gravity[0] = 0x00;
