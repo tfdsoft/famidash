@@ -1688,8 +1688,8 @@ sprite_data_timemachine:
   .byte $10,$1b,$80,$03,$2e
   .byte $60,$1b,$70,$03,$0b
   .byte $80,$1b,$80,$03,$2e
-  .byte $90,$1b,$30,$03,$f3
   .byte $a0,$1b,$60,$03,$0b
+  .byte $b0,$1b,$30,$03,$f3
   .byte $c0,$1b,$70,$03,$3d
   .byte $e0,$1b,$50,$03,$0b
   .byte $00,$1c,$60,$03,$3d
