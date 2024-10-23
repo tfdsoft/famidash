@@ -1080,10 +1080,8 @@ void refreshmenu_part2(void) {
 		pal_col(0,colors_list[tmp3]);
 		pal_col(0xE,colors_list[tmp3]);
 		
+		pal_spr(paletteLVLSelectSP);
 		pal_col(0x10,colors_list[tmp3]);
-		pal_col(0x12,0x2a);
-		pal_col(0x16,0x12);
-		pal_col(0x1a,0x12);
 		pal_col(0x1E,colors_list[tmp3]);
 		pal_set_update();
 	//coin stuff
