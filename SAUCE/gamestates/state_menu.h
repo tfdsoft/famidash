@@ -439,7 +439,7 @@ void customize_screen() {
 
 	TOTALCOINS = 0;
 	TOTALSTARS = 0;
-
+	tmp2 = 0;
 	do {
 		// TOTALCOINS = TOTALCOINS + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
 		__A__ = tmp2; __asm__("tay");
