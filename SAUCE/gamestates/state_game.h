@@ -229,7 +229,7 @@ void state_game(){
 			//mouse debug here
 			if (kandodebugmode) {
 				
-				if (mouse.left_press) {
+				if (mouse.left) {
 					kandodebugmode = 2;
 					//high_byte(currplayer_x) = mouse.x + high_byte(scroll_x);
 					target_x_scroll_stop = 0xE000;
