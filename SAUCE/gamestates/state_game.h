@@ -150,7 +150,7 @@ void state_game(){
 			if (famistudio_song_speed == 0x80) music_play(song);
 		}		    
 
-		if (((forced_trails == 2) || !(kandoframecnt & 0x1))) {
+		if (((forced_trails == 2) || trails == 2 || !(kandoframecnt & 0x1))) {
 			if (!(kandoframecnt & 0x01)) {
 				if (old_trail_scroll_y >= scroll_y) {
 					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(scroll_y, old_trail_scroll_y));
