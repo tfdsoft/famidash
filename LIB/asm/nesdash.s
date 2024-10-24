@@ -2329,6 +2329,8 @@ drawplayer_center_offsets:
 			beq @noflip
 			cmp #$17
 			beq @noflip
+   			cmp #$10
+			beq @noflip
 			cmp #2
 			bne	@norm
 			LDA drawcube_sprite_way, X
@@ -2774,6 +2776,8 @@ drawplayer_common := _drawplayerone::common
 			cmp #$13
 			beq @noflip
 			cmp #$17
+			beq @noflip
+   			cmp #$10
 			beq @noflip
 			cmp #2
 			bne	@norm
