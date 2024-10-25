@@ -16,7 +16,8 @@ const unsigned char level2text[]="BACK ON";
 const unsigned char level5text[]="BASE AFTER";
 const unsigned char levelCtext[]="THEORY OF";
 const unsigned char levelDtext[]="ELECTROMAN";
-const unsigned char level15text[]="GO BACK TO";
+const unsigned char level16text[]="THE LIGHTNING";
+const unsigned char level18text[]="GO BACK TO";
 
 const unsigned char level1text2[]="MADNESS";
 const unsigned char level2text2[]="TRACK";
@@ -38,5 +39,8 @@ const unsigned char level11text2[]="TEST";
 const unsigned char level12text2[]="TEST2";
 const unsigned char level13text2[]="TEST3";
 const unsigned char level14text2[]="TEST4";
-const unsigned char level15text2[]="THE SAFE LEVELS";
+const unsigned char level15text2[]="LEVEL EASY";
+const unsigned char level16text2[]="ROAD";
+const unsigned char level17text2[]="EON";
+const unsigned char level18text2[]="THE SAFE LEVELS";
 

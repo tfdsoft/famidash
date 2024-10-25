@@ -17,8 +17,11 @@ SET all_levels= ^
     clutterfunk ^
     theoryofeverything ^
     electroman ^
+    leveleasy ^
+    thelightningroad ^
     nightmare ^
     decode ^
+    eon ^
     luckydraw ^
     test ^
     test2 ^

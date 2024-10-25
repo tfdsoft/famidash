@@ -49,26 +49,30 @@
 #define EXTRASPRITES1 34
 
 const uint8_t DECOTYPE[] = {
-	DECO1,
-	DECO1,
-	DECO1,
-	DECO1,
-	DECO1,
-	DECO1,
-	DECO1,
-	DECO1,
-	DECO1,
-	DECOCLOUD,
+	DECO1, //sm
+	DECO1, //bot
+	DECO1,  //polar
+	DECO1,  //dry
+	DECO1, //base
+	DECO1,  //cant
+	DECO1,  //jumper
+	DECO1,  //time
+	DECO1,  //cycles
+	DECOCLOUD,  //xstep
 	DECOCLOUD, //clutterfunk
-	DECOCLOUD,
-	DECOCLOUD,
-	DECOCLOUD,
-	DECOCLOUD,
+	DECOCLOUD, //TOE
+	DECOCLOUD, //electroman
+	DECO1, //LEVEL EASY
+	DECO1, //LIGHTNING ROAD
+	DECOCLOUD, //NIGHTMARE
+	DECOCLOUD, //DECODE
+	DECOCLOUD, //EON
 	DECOCLOUD, //lucky draw
 	EXTRASPRITES1,
 	EXTRASPRITES1,
 	DECOCLOUD,
 	EXTRASPRITES1,
+	EXTRASPRITES1, //danger
 };
 
 const unsigned char spike_set[] = {
@@ -85,8 +89,11 @@ const unsigned char spike_set[] = {
 	SPIKESB, //clutterfunk
 	SPIKESB, //theory of everything
 	SPIKESB, //electroman
+	SPIKESA, //LEVEL EASY
+	SPIKESA, //lightning road
 	SPIKESB, //nightmare
 	SPIKESB, //decode
+	SPIKESB, //eon
 	SPIKESB, //lucky draw
 	SPIKESB, //test1
 	SPIKESB, //test2
@@ -109,8 +116,11 @@ const unsigned char block_set[] = {
 	BLOCKSD, //clutterfunk
 	BLOCKSB, //theory of everything
 	BLOCKSB, //electroman
+	BLOCKSA, //LEVEL EASY
+	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
 	BLOCKSB, //decode
+	BLOCKSB, //EON
 	BLOCKSB, //lucky draw
 	BLOCKSA, //test1
 	BLOCKSB, //test2
@@ -133,8 +143,11 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //clutterfunk
 	SAWBLADESA, //theory of everything
 	SAWBLADESA, //electroman
+	SAWBLADESA, //LEVEL EASY
+	SAWBLADESA, //LIGHTNING ROAD
 	SAWBLADESA, //nightmare
 	SAWBLADESA, //decode
+	SAWBLADESA, //EON
 	LETTERBANK, //lucky draw
 	SAWBLADESA, //test1
 	SAWBLADESA, //test2
@@ -158,8 +171,11 @@ const unsigned char difficulty_list[] = {
     INSANE,
     INSANE,
     INSANE,
-    DEMON, //decode
+    EASY, //LEVEL EASY
+    DEMON, //lightning road
     DEMON, //nightmare
+    DEMON, //decode
+    DEMON, //eon
     DEMON, //lucky draw
     DEMON,
     DEMON,
@@ -181,6 +197,9 @@ const unsigned char stars_list[] = {
 	10,
 	11,
 	12,
+	10,
+	2,
+	10,
 	10,
 	10,
 	10,
