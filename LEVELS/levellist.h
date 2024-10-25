@@ -171,7 +171,7 @@ const unsigned char difficulty_list[] = {
     INSANE,
     INSANE,
     INSANE,
-    EASY, //LEVEL EASY
+    NORMAL, //LEVEL EASY
     DEMON, //lightning road
     DEMON, //nightmare
     DEMON, //decode
