@@ -197,13 +197,13 @@ const unsigned char * const MINI_CUBE2[] = {Mini_Cube2_0, Mini_Cube2_1, Mini_Cub
 
 const unsigned char Mini_Ball[]={
 
-	 -12,  4,0x0B,3|OAM_FLIP_V,
+	 -4,  4,0x0B,3|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Mini_Ball_Alt[]={
 
-	 -12,  4,0x0B,3|OAM_FLIP_V,
+	 -4,  4,0x0B,3|OAM_FLIP_V,
 	0x80
 };
 
@@ -287,17 +287,17 @@ const unsigned char * const WAVE2[] = {WAVE2_0, WAVE2_0, WAVE2_1, WAVE2_2, WAVE2
 
 const unsigned char MINI_WAVE_0[]={
 
-	 -12,  -6,0x11,3|OAM_FLIP_V,
+	 -4,  -6,0x11,3|OAM_FLIP_V,
 	0x80
 };
 const unsigned char MINI_WAVE_2[]={
 
-	 -12,  -6,0x0D,3,
+	 -4,  -6,0x0D,3,
 	0x80
 };
 const unsigned char MINI_WAVE_6[]={
 
-	 -12,  -6,0x11,3,
+	 -4,  -6,0x11,3,
 	0x80
 };
 
@@ -372,7 +372,7 @@ const unsigned char * const MINI_UFO[] = {MINI_UFO_0, MINI_UFO_U, MINI_UFO_D};
 
 const unsigned char Mini_Ball2[]={
 
-	 -12,  4,0x0B,1|OAM_FLIP_V,
+	 -4,  4,0x0B,1|OAM_FLIP_V,
 	0x80
 };
 
@@ -970,31 +970,31 @@ const unsigned char Robot_Jump_1[]={//Did 4th walk frame here - Ficus
 
 const unsigned char Robot_0_Alt[]={//Also jumping frame - Ficus
 	
-	-12,   1, 0x01,3,//UNUSED - Ficus
-	 -4,   1, 0x03,3,
-	  4,   1, 0xFF,3,
+	-8,   1, 0x01,3,//UNUSED - Ficus
+	 0,   1, 0x03,3,
+	 8,   1, 0xFF,3,
 	0x80
 };
 const unsigned char Robot_1_Alt[]={//Also jumping frame - Ficus
 	
-	-12,   1, 0x07,3,//UNUSED - Ficus
-	 -4,   1, 0x09,3,
-	  4,   1, 0xFF,3,
+	-8,   1, 0x07,3,//UNUSED - Ficus
+	 0,   1, 0x09,3,
+	 8,   1, 0xFF,3,
 	0x80
 };
 const unsigned char Robot_2_Alt[]={//Also jumping frame - Ficus
 	
-	-12,   1, 0x0B,3,//UNUSED - Ficus
-	 -4,   1, 0x0D,3,
-	  4,   1, 0xFF,3,
+	-8,   1, 0x0B,3,//UNUSED - Ficus
+	 0,   1, 0x0D,3,
+	 8,   1, 0xFF,3,
 	0x80
 };
 
 const unsigned char Robot_Jump_1_Alt[]={//Did 4th walk frame here - Ficus
 	
-	-12,   1, 0x11,3,//No longer a jet, but the leftmost part of the sprite - Ficus
-	 -4,   1, 0x13,3,
-	  4,   1, 0xFF,3,
+	-8,   1, 0x11,3,//No longer a jet, but the leftmost part of the sprite - Ficus
+	 0,   1, 0x13,3,
+	 8,   1, 0xFF,3,
 	0x80
 };
 const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_1, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2, Robot_3, Robot_3, Robot_3, Robot_3, Robot_3,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1};
@@ -1061,70 +1061,70 @@ const unsigned char * const MINI_ROBOT_JUMP_ALT[]={Mini_Robot_Jump_ALT_1, Mini_R
 
 const unsigned char Robot2_0[]={
 	
-	-12,   1, 0x01,1,
-	 -4,   1, 0x03,1,
-	  4,   1, 0x05,1,
+	-8,   1, 0x01,1,
+	 0,   1, 0x03,1,
+	 8,   1, 0x05,1,
 	0x80
 };
 
 const unsigned char Robot2_1[]={
 	
-	-12,   1, 0xFF,1,//UNUSED - Ficus
-	 -4,   1, 0x07,1,
-	  4,   1, 0x09,1,
+	-8,   1, 0xFF,1,//UNUSED - Ficus
+	 0,   1, 0x07,1,
+	 8,   1, 0x09,1,
 	0x80
 };
 
 const unsigned char Robot2_2[]={
 	
-	-12,   1, 0x01,1,
-	 -4,   1, 0x0B,1,
-	  4,   1, 0x05,1,
+	-8,   1, 0x01,1,
+	 0,   1, 0x0B,1,
+	 8,   1, 0x05,1,
 	0x80
 };
 const unsigned char Robot2_3[]={
 	
-	-12,   1, 0xFF,1,
-	 -4,   1, 0x0D,1,
-	  4,   1, 0x09,1,
+	-8,   1, 0xFF,1,
+	 0,   1, 0x0D,1,
+	 8,   1, 0x09,1,
 	0x80
 };
 
 const unsigned char Robot_Jump2_1[]={
 	
 	-8,   1, 0xFF,1|OAM_FLIP_V,
-	-4,   1, 0x0F,1,
-	 4,   1, 0x11,1,
+	 0,   1, 0x0F,1,
+	 8,   1, 0x11,1,
 	0x80
 };
 
 const unsigned char Robot_0_Alt2[]={//Also jumping frame - Ficus
 	
-	-12,   1, 0x01,1,//UNUSED - Ficus
-	 -4,   1, 0x03,1,
-	  4,   1, 0xFF,1,
+	-8,   1, 0x01,1,//UNUSED - Ficus
+	 0,   1, 0x03,1,
+	 8,   1, 0xFF,1,
 	0x80
 };
 const unsigned char Robot_1_Alt2[]={//Also jumping frame - Ficus
 	
-	-12,   1, 0x07,1,//UNUSED - Ficus
-	 -4,   1, 0x09,1,
-	  4,   1, 0xFF,1,
+	-8,   1, 0x07,1,//UNUSED - Ficus
+	 0,   1, 0x09,1,
+	 8,   1, 0xFF,1,
 	0x80
 };
 const unsigned char Robot_2_Alt2[]={//Also jumping frame - Ficus
 	
-	-12,   1, 0x0B,1,//UNUSED - Ficus
-	 -4,   1, 0x0D,1,
-	  4,   1, 0xFF,1,
+	-8,   1, 0x0B,1,//UNUSED - Ficus
+	 0,   1, 0x0D,1,
+	 8,   1, 0xFF,1,
 	0x80
 };
 
 const unsigned char Robot_Jump_1_Alt2[]={//Did 4th walk frame here - Ficus
 	
-	-12,   1, 0x11,1,//No longer a jet, but the leftmost part of the sprite - Ficus
-	 -4,   1, 0x13,1,
-	  4,   1, 0xFF,1,
+	-8,   1, 0x11,1,//No longer a jet, but the leftmost part of the sprite - Ficus
+	 0,   1, 0x13,1,
+	 8,   1, 0xFF,1,
 	0x80
 };
 
@@ -1209,32 +1209,32 @@ const unsigned char Spider_Jump[]={
 
 const unsigned char Spider_0_Alt[]={
 	
-	-12,   0, 0x23,3,
-	 -4,   0, 0x25,3,
-	  4,   0, 0xFF,3,
+	-8,   0, 0x23,3,
+	 0,   0, 0x25,3,
+	 8,   0, 0xFF,3,
 	0x80
 };
 
 const unsigned char Spider_1_Alt[]={
 	
-	-12,   0, 0x29,3,
-	 -4,   0, 0x2B,3,
-	  4,   0, 0xFF,3,
+	-8,   0, 0x29,3,
+	 0,   0, 0x2B,3,
+	 8,   0, 0xFF,3,
 	0x80
 };
 
 const unsigned char Spider_2_Alt[]={
 	
-	-12,   0, 0x2F,3,
-	 -4,   0, 0x31,3,
-	  4,   0, 0xFF,3,
+	-8,   0, 0x2F,3,
+	 0,   0, 0x31,3,
+	 8,   0, 0xFF,3,
 	0x80
 };
 const unsigned char Spider_3_Alt[]={
 	
-	-12,   0, 0x33,3,
-	 -4,   0, 0x35,3,
-	  4,   0, 0xFF,3,
+	-8,   0, 0x33,3,
+	 0,   0, 0x35,3,
+	 8,   0, 0xFF,3,
 	0x80
 };
 
@@ -1247,32 +1247,32 @@ const unsigned char * const SPIDER_JUMP[]={Spider_3};
 
 const unsigned char Spider_0_Alt2[]={
 	
-	-12,   0, 0x23,1,
-	 -4,   0, 0x25,1,
-	  4,   0, 0xFF,1,
+	-8,   0, 0x23,1,
+	 0,   0, 0x25,1,
+	 8,   0, 0xFF,1,
 	0x80
 };
 
 const unsigned char Spider_1_Alt2[]={
 	
-	-12,   0, 0x29,1,
-	 -4,   0, 0x2B,1,
-	  4,   0, 0xFF,1,
+	-8,   0, 0x29,1,
+	 0,   0, 0x2B,1,
+	 8,   0, 0xFF,1,
 	0x80
 };
 
 const unsigned char Spider_2_Alt2[]={
 	
-	-12,   0, 0x2F,1,
-	 -4,   0, 0x31,1,
-	  4,   0, 0xFF,1,
+	-8,   0, 0x2F,1,
+	 0,   0, 0x31,1,
+	 8,   0, 0xFF,1,
 	0x80
 };
 const unsigned char Spider_3_Alt2[]={
 	
-	-12,   0, 0x33,1,
-	 -4,   0, 0x35,1,
-	  4,   0, 0xFF,1,
+	-8,   0, 0x33,1,
+	 0,   0, 0x35,1,
+	 8,   0, 0xFF,1,
 	0x80
 };
 

@@ -2156,9 +2156,9 @@ drawcube_sprite_none:
 
 
 drawplayer_center_offsets:
-	;		Cub	Bal Shp	Bal	UFO	RBT	SPI	Wav
-	.byte	8,	8,	8,	8,	8,	8,	8,	8,	8,	8; normal size
-	.byte	0,	12,	4,	0,	12,	12,	12,	12,	12,	12; mini 
+	;		Cub	Shp Bal	UFO	RBT	SPI	Wav
+	.byte	8,	8,	8,	8,	8,	8,	8,	8,	8; normal size
+	.byte	4,	4,	4,	4,	4,	4,	4,	4,	4; mini 
 
 ; void drawplayerone();
 .segment "XCD_BANK_05"
@@ -2530,7 +2530,7 @@ drawplayer_center_offsets:
 			STA _spiderframe;__
 			JMP fin
 		@jump:				;	} else { SPIDER_JUMP[0] = SPIDER[8]
-			LDA #17			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
+			LDA #0			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe
 			TAY				;__
@@ -2967,7 +2967,7 @@ drawplayer_common := _drawplayerone::common
 			STA _spiderframe+1;__
 			JMP drawplayer_common
 		@jump:				;	} else { SPIDER_JUMP[0] = SPIDER[8]
-			LDA #17			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
+			LDA #0			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe
 			TAY				;__
