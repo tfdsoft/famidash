@@ -146,11 +146,6 @@ void draw_sprites(void){
 		}
 	}
 	if (forced_trails != 2 && !invisible && viseffects) {
-		tmp6 = currplayer_vel_x << 1;
-		tmp5 = currplayer_x - tmp6;
-		
-		tmp1 = 8;
-
 		trail_loop();
 	}
 	else if ((forced_trails == 2 || trails == 2) && !dual && viseffects) {
@@ -178,7 +173,7 @@ void draw_sprites(void){
 			mini = 1;
 		}
 
-			if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
+		if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
 		
 		if (gamemode == 0) {
 			mini = tmp9;
@@ -194,13 +189,31 @@ void draw_sprites(void){
 }
 
 void trail_loop() {
-	do {
-		if (idx8_load(trail_sprites_visible, tmp1 - 1)) {
-			oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
-		}
-		tmp5 = tmp5 - tmp6;
-		tmp1--;
-	} while (tmp1 > 1);
+	tmp6 = currplayer_vel_x << 1;
+
+	if (kandoframecnt & 1) {
+		tmp1 = 8;
+		tmp5 = currplayer_x - tmp6;
+		do {
+			if (trail_sprites_visible[tmp1 - 1]) {	
+				oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
+			}
+			
+			tmp5 = tmp5 - tmp6;
+			tmp1--;
+		} while (tmp1 > 1);
+	} else {
+		tmp1 = 2;
+		tmp5 = currplayer_x - tmp6 - tmp6 - tmp6 - tmp6 - tmp6 - tmp6 - tmp6;
+		do {
+			if (trail_sprites_visible[tmp1 - 1]) {
+				oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
+			}
+			
+			tmp5 = tmp5 + tmp6;
+			tmp1++;
+		} while (tmp1 < 9);
+	}	
 }
 
 void put_progress_bar_sprite() {
