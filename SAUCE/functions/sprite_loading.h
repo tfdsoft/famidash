@@ -333,8 +333,8 @@ static void sprite_gamemode_main() {
 				break;
 			case GREEN_ORB:
 				currplayer_gravity ^= 0x01;
-				if (currplayer_gravity && currplayer_vel_y < 0x570) currplayer_vel_y = 0x570;
-				else if (!currplayer_gravity && currplayer_vel_y > -0x570) currplayer_vel_y = -0x570;
+				if (currplayer_gravity) currplayer_vel_y = 0x570;
+				else currplayer_vel_y = -0x570;
 				break;
 			case DASH_GRAVITY_ORB:
 				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
