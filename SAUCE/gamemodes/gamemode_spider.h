@@ -8,8 +8,8 @@ void spider_movement(void){
 
 	fallspeed_big = CUBE_MAX_FALLSPEED;
 	fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;
-	gravity_big = CUBE_GRAVITY;
-	gravity_mini = MINI_CUBE_GRAVITY;
+	gravity_big = UFO_GRAVITY;
+	gravity_mini = MINI_UFO_GRAVITY;
 
 	common_gravity_routine();
 
