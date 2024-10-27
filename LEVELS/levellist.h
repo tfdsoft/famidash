@@ -71,7 +71,7 @@ const uint8_t DECOTYPE[] = {
 	EXTRASPRITES1,
 	EXTRASPRITES1,
 	DECOCLOUD,
-	EXTRASPRITES1,
+	DECO1,
 	EXTRASPRITES1, //danger
 };
 
@@ -125,7 +125,7 @@ const unsigned char block_set[] = {
 	BLOCKSA, //test1
 	BLOCKSB, //test2
 	BLOCKSB, //test3
-	BLOCKSA, //test4
+	BLOCKSB, //test4
 	SAWBLADESA, //danger
 };
 
