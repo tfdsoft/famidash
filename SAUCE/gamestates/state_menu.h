@@ -192,12 +192,10 @@ void levelselection() {
 				if (mouse.x >= 0x09 && mouse.x <= 0x15) {
 					drawBarFlag = 2;
 					leveldec();
-					low_byte(tmpA) = 0;
 				}
 				else if (mouse.x >= 0xE5 && mouse.x <= 0xEF) {
 					drawBarFlag = 2;
 					levelinc();				
-					low_byte(tmpA) = 1;
 				}
 			}
 			if (((mouse.y >= 0x3D && mouse.y <= 0x6C) && (mouse.x >= 0x2D && mouse.x <= 0xCC))) {
@@ -218,22 +216,18 @@ void levelselection() {
 		}
 
 		if (joypad1.press_b){
-			draw_both_progress_bars();
 			exitingLevelSelect = 1;
 			kandowatchesyousleep = 0;
 			return;
 		}
-			
-			
+		
 		if (joypad1.press_right){
 			drawBarFlag = 2;
 			levelinc();
-			low_byte(tmpA) = 1;
 		}
 		if (joypad1.press_left){
 			drawBarFlag = 2;
 			leveldec();
-			low_byte(tmpA) = 0;
 		}
 
 		if (tmp8 == 0x3f) {
@@ -241,9 +235,9 @@ void levelselection() {
 			crossPRGBankJump0(refreshmenu_part2);
 		}
 
-		dec_mouse_timer();
-		
 		draw_both_progress_bars();
+
+		dec_mouse_timer();
 	}	
 
 }
@@ -274,7 +268,7 @@ void draw_both_progress_bars() {
 		tmp7 = level_completeness_normal[level];
 		hexToDec(tmp7);
 		tmp1 = 112;		// x
-		if (low_byte(tmpA)) {
+		if (tmp4) {
 			tmp1 += tmp8 + 1;
 		} else {
 			tmp1 -= tmp8;
@@ -294,7 +288,7 @@ void draw_both_progress_bars() {
 		tmp7 = level_completeness_practice[level];
 		hexToDec(tmp7);
 		tmp1 = 112;		// x
-		if (low_byte(tmpA)) {
+		if (tmp4) {
 			tmp1 += tmp8 + 1;
 		} else {
 			tmp1 -= tmp8;
@@ -321,7 +315,7 @@ void draw_bar_sprites() {
 	tmp1 = (tmp1 << 3) + 1;
 	temp_save = tmp1;
 	tmp2 = (tmp2 << 3) - 1;
-	if (low_byte(tmpA)) {
+	if (tmp4) {
 		tmp1 += tmp8 + 1;
 	} else {
 		tmp1 -= tmp8;
@@ -332,7 +326,7 @@ void draw_bar_sprites() {
 	crossPRGBankJump0(put_progress_bar_sprite);
 
 	tmp1 = 206;
-	if (low_byte(tmpA)) {
+	if (tmp4) {
 		tmp1 += tmp8 + 1;
 	} else {
 		tmp1 -= tmp8;
@@ -342,7 +336,7 @@ void draw_bar_sprites() {
 	tmp1 = temp_save;
 	crossPRGBankJump0(calculate_sprite_pos);
 	
-	if (low_byte(tmpA)) {
+	if (tmp4) {
 		tmp1 += tmp8 + 1;
 	} else {
 		tmp1 -= tmp8;
