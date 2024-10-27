@@ -340,7 +340,7 @@ void set_settings() {
 		case 4: // jumpsound
 			options ^= jumpsound; break;
 		case 5:
-			viseffects ^= 1; break;
+			viseffects ^= 1; if (!viseffects) trails = 0; break;
 		case 6:
 			trails = trails == 2 ? 0 : trails + 1; break;					
 		case 7:
