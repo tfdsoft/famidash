@@ -141,7 +141,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 //			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
 //
 //		else {
-			if (level == 0x0F && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
+			if (level == luckydraw && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
 				multi_vram_buffer_horz((const char*)triggerstext,sizeof(triggerstext)-1,NTADR_C(1, 17));
 				one_vram_buffer(0xF5+triggers_hit[2], NTADR_C(20,17));
 				one_vram_buffer(0xF5+triggers_hit[1], NTADR_C(21,17));
