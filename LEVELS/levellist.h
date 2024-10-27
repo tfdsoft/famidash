@@ -120,7 +120,7 @@ const unsigned char block_set[] = {
 	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
 	BLOCKSB, //decode
-	BLOCKSB, //EON
+	BLOCKSA, //EON
 	BLOCKSB, //lucky draw
 	BLOCKSA, //test1
 	BLOCKSB, //test2
