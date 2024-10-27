@@ -1061,40 +1061,40 @@ const unsigned char * const MINI_ROBOT_JUMP_ALT[]={Mini_Robot_Jump_ALT_1, Mini_R
 
 const unsigned char Robot2_0[]={
 	
-	-8,   1, 0x01,1,
-	 0,   1, 0x03,1,
-	 8,   1, 0x05,1,
+	-12,  1, 0x01,1,
+	 -4,  1, 0x03,1,
+	  4,  1, 0x05,1,
 	0x80
 };
 
 const unsigned char Robot2_1[]={
 	
-	-8,   1, 0xFF,1,//UNUSED - Ficus
-	 0,   1, 0x07,1,
-	 8,   1, 0x09,1,
+	-12,  1, 0xFF,1,//UNUSED - Ficus
+	 -4,  1, 0x07,1,
+	  4,  1, 0x09,1,
 	0x80
 };
 
 const unsigned char Robot2_2[]={
 	
-	-8,   1, 0x01,1,
-	 0,   1, 0x0B,1,
-	 8,   1, 0x05,1,
+	-12,  1, 0x01,1,
+	 -4,  1, 0x0B,1,
+	  4,  1, 0x05,1,
 	0x80
 };
 const unsigned char Robot2_3[]={
 	
-	-8,   1, 0xFF,1,
-	 0,   1, 0x0D,1,
-	 8,   1, 0x09,1,
+	-12,  1, 0xFF,1,
+	 -4,  1, 0x0D,1,
+	  4,  1, 0x09,1,
 	0x80
 };
 
 const unsigned char Robot_Jump2_1[]={
 	
-	-8,   1, 0xFF,1|OAM_FLIP_V,
-	 0,   1, 0x0F,1,
-	 8,   1, 0x11,1,
+	-12,  1, 0xFF,1|OAM_FLIP_V,
+	 -4,  1, 0x0F,1,
+	  4,  1, 0x11,1,
 	0x80
 };
 
