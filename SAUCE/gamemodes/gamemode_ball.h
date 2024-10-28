@@ -96,8 +96,8 @@ void ball_movement(void){
 			currplayer_gravity ^= 0x01;
 			kandotemp2[currplayer] = 1;
 			switch (currplayer_gravity){
-				case 0x00: currplayer_vel_y = 0x100; break;
-				case 0x01: currplayer_vel_y = -0x100; break;
+				case 0x00: currplayer_vel_y = 0x200; break;
+				case 0x01: currplayer_vel_y = -0x200; break;
 			}
 			bg_coll_floor_spikes();
 		}
