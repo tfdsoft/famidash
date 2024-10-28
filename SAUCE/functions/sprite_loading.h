@@ -273,11 +273,11 @@ void animate_coin_3() {
 
 const short heights[] = {
 //	cube    ship    ball     ufo    robot   spider  wave   swing
-	0x590,  0x590,  0x4A0,  0x350,  0x590,  0x590,  0x000, 0x000, // yellow orb
-	0x7C0,  0x390,  0x575,  0x320,  0x7A0,  0x500,  0x000, 0x000, // yellow pad
+	0x590,  0x590,  0x4A0,  0x350,  0x690,  0x590,  0x000, 0x000, // yellow orb
+	0x7C0,  0x390,  0x575,  0x320,  0x8B0,  0x500,  0x000, 0x000, // yellow pad
 	0x3D0,  0x590,  0x3C0,  0x590,  0x450,  0x590,  0x000, 0x000, // pink orb
 	0x510,  0x510,  0x38A,  0x510,  0x510,  0x510,  0x000, 0x000, // pink pad
-	0x750,  0x700,  0x600,  0x750,  0x750,  0x500,  0x000, 0x000, // red orb
+	0x750,  0x700,  0x600,  0x750,  0x880,  0x700,  0x000, 0x000, // red orb
 	0x590,  0x590,  0x5D0,  0x590,  0x590,  0x590,  0x000, 0x000, // yellow orb bigger
        -0x990, -0x990, -0x970, -0x990, -0x990, -0x990,  0x000, 0x000, // black orb
 	0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000, 0x000, // yellow orb smaller
@@ -333,8 +333,8 @@ static void sprite_gamemode_main() {
 				break;
 			case GREEN_ORB:
 				currplayer_gravity ^= 0x01;
-				if (currplayer_gravity) currplayer_vel_y = 0x570;
-				else currplayer_vel_y = -0x570;
+				if (currplayer_gravity) currplayer_vel_y = 0x670;
+				else currplayer_vel_y = -0x670;
 				break;
 			case DASH_GRAVITY_ORB:
 				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
@@ -393,8 +393,9 @@ static void sprite_gamemode_controller_check() {
 			break;
 		case GREEN_ORB:
 			currplayer_gravity ^= 0x01;
-			if (currplayer_gravity && currplayer_vel_y < 0x570) currplayer_vel_y = 0x570;
-			else if (!currplayer_gravity && currplayer_vel_y > -0x570) currplayer_vel_y = -0x570;
+			if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
+			else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
+			
 			break;
 		case DASH_GRAVITY_ORB:
 			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
@@ -540,8 +541,8 @@ void sprite_collide_lookup() {
 			return;
 		case GREEN_PAD:
 			currplayer_gravity ^= 1;
-			if (currplayer_gravity && currplayer_vel_y < 0x570) currplayer_vel_y = 0x570;
-			else if (!currplayer_gravity && currplayer_vel_y > -0x570) currplayer_vel_y = -0x570;
+			if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
+			else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
 
 			idx8_inc(activesprites_activated, index);
 			return;
@@ -748,7 +749,7 @@ void sprite_collide_lookup() {
 			break;
 #ifdef FLAG_KANDO_FUN_STUFF		
 		case GREEN_ORB:
-			table_offset = red_orb;
+			table_offset = yellow_orb;
 			break;
 #endif
 		default:
