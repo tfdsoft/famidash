@@ -128,7 +128,7 @@ void levelselection() {
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
-
+	disco_sprites = 0;
 	write_irq_table(lvlselect_irq_table);
 	set_irq_ptr(irqTable);
 	pal_bg(oldsplashMenu);
