@@ -89,7 +89,7 @@ void state_lvldone() {
 	
 	tmp1 = 0;
 	tmpptr1 = NULL;
-	crossPRGBankJump0(increment_attempt_count);
+	//crossPRGBankJump0(increment_attempt_count); WTF WHO PUT THIS HERE
 	display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
 	
 	hexToDec(jumps);
