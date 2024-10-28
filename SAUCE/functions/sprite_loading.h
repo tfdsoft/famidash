@@ -273,9 +273,9 @@ void animate_coin_3() {
 
 const short heights[] = {
 //	cube    ship    ball     ufo    robot   spider  wave   swing
-	0x590,  0x590,  0x4A0,  0x350,  0x690,  0x590,  0x000, 0x000, // yellow orb
+	0x590,  0x590,  0x4A0,  0x350,  0x690,  0x490,  0x000, 0x000, // yellow orb
 	0x7C0,  0x390,  0x575,  0x320,  0x8B0,  0x500,  0x000, 0x000, // yellow pad
-	0x3D0,  0x590,  0x3C0,  0x590,  0x450,  0x590,  0x000, 0x000, // pink orb
+	0x3D0,  0x590,  0x3C0,  0x590,  0x450,  0x390,  0x000, 0x000, // pink orb
 	0x510,  0x510,  0x38A,  0x510,  0x510,  0x510,  0x000, 0x000, // pink pad
 	0x750,  0x700,  0x600,  0x750,  0x880,  0x700,  0x000, 0x000, // red orb
 	0x590,  0x590,  0x5D0,  0x590,  0x590,  0x590,  0x000, 0x000, // yellow orb bigger
@@ -324,7 +324,10 @@ static void sprite_gamemode_main() {
 
 			switch (collided) {
 			case BLUE_ORB:
-				currplayer_gravity ^= 0x01;
+				if (gamemode == 3 || gamemode == 5) {
+					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+				}
+				else currplayer_gravity ^= 0x01;
 				if (gamemode != BALL_MODE) {
 					currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
 				} else {
@@ -332,33 +335,55 @@ static void sprite_gamemode_main() {
 				}
 				break;
 			case GREEN_ORB:
-				currplayer_gravity ^= 0x01;
-				if (currplayer_gravity) currplayer_vel_y = 0x670;
-				else currplayer_vel_y = -0x670;
+				if (gamemode == 3 || gamemode == 5) {
+					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+				}
+				else currplayer_gravity ^= 0x01;
+				currplayer_vel_y = sprite_gamemode_y_adjust();
 				break;
 			case DASH_GRAVITY_ORB:
-				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+				if (!dashing[currplayer]) { 
+					if (gamemode == 3 || gamemode == 5) {
+						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+					}
+					else currplayer_gravity ^= 0x01;
+				}
 				//intentional leak
 			case DASH_ORB:
 				currplayer_vel_y = 0;
 				dashing[currplayer] = 1;
 				break;
 			case DASH_GRAVITY_ORB_45DEG_UP:
-				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+				if (!dashing[currplayer]) {
+					if (gamemode == 3 || gamemode == 5) {
+						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+					}
+					else currplayer_gravity ^= 0x01;
+				}				
 				//intentional leak
 			case DASH_ORB_45DEG_UP:
 				currplayer_vel_y = -currplayer_vel_x;
 				dashing[currplayer] = 2;
 				break;
 			case DASH_GRAVITY_ORB_45DEG_DOWN:
-				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+				if (!dashing[currplayer]) {
+					if (gamemode == 3 || gamemode == 5) {
+						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+					}
+					else currplayer_gravity ^= 0x01;
+				}				
 				//intentional leak
 			case DASH_ORB_45DEG_DOWN:
 				currplayer_vel_y = currplayer_vel_x;
 				dashing[currplayer] = 3;
 				break;
 			case DASH_GRAVITY_ORB_UPWARDS:
-				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+				if (!dashing[currplayer]) {
+					if (gamemode == 3 || gamemode == 5) {
+						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+					}
+					else currplayer_gravity ^= 0x01;
+				}			
 				//intentional leak
 			case DASH_ORB_UPWARDS:
 				currplayer_vel_y = currplayer_vel_x * 4;
@@ -366,7 +391,12 @@ static void sprite_gamemode_main() {
 				dashing[currplayer] = 4;
 				break;
 			case DASH_GRAVITY_ORB_DOWNWARDS:
-				if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+				if (!dashing[currplayer]) {
+					if (gamemode == 3 || gamemode == 5) {
+						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+					}
+					else currplayer_gravity ^= 0x01;
+				}			
 				//intentional leak
 			case DASH_ORB_DOWNWARDS:
 				currplayer_vel_y = -currplayer_vel_x * 4;
@@ -388,38 +418,64 @@ static void sprite_gamemode_controller_check() {
 		settrailstuff();
 		switch (collided) {
 		case BLUE_ORB:
-			currplayer_gravity ^= 0x01;
+			if (gamemode == 3 || gamemode == 5) {
+				if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+			}
+			else currplayer_gravity ^= 0x01;
 			currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
 			break;
 		case GREEN_ORB:
-			currplayer_gravity ^= 0x01;
-			if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
-			else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
-			
+			if (gamemode == 3 || gamemode == 5) {
+				if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+			}
+			else currplayer_gravity ^= 0x01;
+		//	if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
+		//	else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
+			currplayer_vel_y = sprite_gamemode_y_adjust();			
 			break;
 		case DASH_GRAVITY_ORB:
-			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+			if (!dashing[currplayer]) {
+				if (gamemode == 3 || gamemode == 5) {
+					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+				}
+				else currplayer_gravity ^= 0x01;
+			}
 			//intentional leak
 		case DASH_ORB:
 			currplayer_vel_y = 0;
 			dashing[currplayer] = 1;
 			break;
 		case DASH_GRAVITY_ORB_45DEG_UP:
-			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+			if (!dashing[currplayer]) {
+				if (gamemode == 3 || gamemode == 5) {
+					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+				}
+				else currplayer_gravity ^= 0x01;
+			}
 			//intentional leak
 		case DASH_ORB_45DEG_UP:
 			currplayer_vel_y = -currplayer_vel_x;
 			dashing[currplayer] = 2;
 			break;	
 		case DASH_GRAVITY_ORB_45DEG_DOWN:
-			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+			if (!dashing[currplayer]) {
+				if (gamemode == 3 || gamemode == 5) {
+					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+				}
+				else currplayer_gravity ^= 0x01;
+			}
 			//intentional leak
 		case DASH_ORB_45DEG_DOWN:
 			currplayer_vel_y = currplayer_vel_x;
 			dashing[currplayer] = 3;
 			break;		
 		case DASH_GRAVITY_ORB_UPWARDS:
-			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+			if (!dashing[currplayer]) {
+				if (gamemode == 3 || gamemode == 5) {
+					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+				}
+				else currplayer_gravity ^= 0x01;
+			}
 			//intentional leak
 		case DASH_ORB_UPWARDS:
 			currplayer_vel_y = currplayer_vel_x;
@@ -427,7 +483,12 @@ static void sprite_gamemode_controller_check() {
 			dashing[currplayer] = 4;
 			break;	
 		case DASH_GRAVITY_ORB_DOWNWARDS:
-			if (!dashing[currplayer]) currplayer_gravity ^= 0x01;	//reverse gravity
+			if (!dashing[currplayer]) {
+				if (gamemode == 3 || gamemode == 5) {
+					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+				}
+				else currplayer_gravity ^= 0x01;
+			}
 			//intentional leak
 		case DASH_ORB_DOWNWARDS:
 			currplayer_vel_y = -currplayer_vel_x;
@@ -509,7 +570,7 @@ void sprite_collide_lookup() {
 			return;
 		case WAVE_MODE:
 			settrailstuff();
-			if (gamemode == 6) currplayer_vel_y = 0;			
+			//if (gamemode == 6) currplayer_vel_y = 0;			
 			gamemode = 6;
 			retrofireballclear();		
 			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);		
