@@ -112,8 +112,8 @@ void restore_practice_state() {
 	player_gravity[1] = practice_player_gravity[tmp2+1];
 	cube_rotate[0] = practice_cube_rotate[tmp2];
 	cube_rotate[1] = practice_cube_rotate[tmp2+1];
-	mini[0] = practice_mini[0];
-	mini[1] = practice_mini[1];
+	mini[0] = practice_mini[tmp2];
+	mini[1] = practice_mini[tmp2+1];
 	gamemode = practice_player_gamemode[tmp2];
 	mini[0] = practice_mini[tmp2];
 	mini[1] = practice_mini[tmp2+1];

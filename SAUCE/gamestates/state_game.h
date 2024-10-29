@@ -465,6 +465,7 @@ void state_game(){
 				player_vel_x[1] = currplayer_vel_x;
 				player_vel_y[1] = currplayer_vel_y;
 				player_gravity[1] = currplayer_gravity;
+				mini[1] = currplayer_mini;
 
 				currplayer_x = player_x[0];
 				currplayer_y = player_y[0];
