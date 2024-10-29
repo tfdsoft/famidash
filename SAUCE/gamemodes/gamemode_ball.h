@@ -9,7 +9,7 @@ void ball_movement(void){
 	// currplayer_gravity
 	// currplayer_vel_y is signed
 
-	if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+//	if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
 	if (gamemode == 7) {
 

@@ -71,11 +71,7 @@ void spider_movement(void){
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
-	if (currplayer_vel_y != 0){
-		if(controllingplayer->press_a) {
-			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
-		}
-	}
+
 }	
 
 

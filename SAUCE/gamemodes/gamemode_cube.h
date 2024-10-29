@@ -14,7 +14,7 @@ void cube_movement(void){
 
 	if (retro_mode) { if (gamemode == 0) gamemode = 4; }
 
-	if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+
 
 	fallspeed_big = CUBE_MAX_FALLSPEED;
 	fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;
