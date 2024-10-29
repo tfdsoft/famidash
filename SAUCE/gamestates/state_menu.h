@@ -844,11 +844,11 @@ void state_menu() {
 					break;
 				case 2:		//mini cube
 					title_cube_shit();
-					mini = 1;
+					currplayer_mini = 1;
 					high_byte(player_x[0]) = currplayer_x_small;
 					high_byte(player_y[0]) = currplayer_y_small;
 					crossPRGBankJump0(drawplayerone);
-					mini = 0;
+					currplayer_mini = 0;
 					break;
 				case 3:		//ship
 					title_ship_shit();
