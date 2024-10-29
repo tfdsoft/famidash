@@ -352,8 +352,6 @@ void state_game(){
 			was_on_slope_counter--;
 		} else slope_type = 0;
 
-		crossPRGBankJump0(sprite_collide);
-
 		crossPRGBankJump0(movement);
 
 		kandotemp3 = 0;
@@ -446,7 +444,7 @@ void state_game(){
 			}
 
 			if (controllingplayer->press_up && DEBUG_MODE) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
-			crossPRGBankJump0(sprite_collide);
+
 			crossPRGBankJump0(movement);
 
 			kandotemp3 = 1;
@@ -510,7 +508,7 @@ void runthecolls() {
 		x_movement();
 	}	
 
-
+	crossPRGBankJump0(sprite_collide);
 
 	if (!DEBUG_MODE && !invincible_counter) {
 		crossPRGBankJump0(bg_coll_death);
