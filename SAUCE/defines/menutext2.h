@@ -43,4 +43,5 @@ const unsigned char level15text2[]="LEVEL EASY";
 const unsigned char level16text2[]="ROAD";
 const unsigned char level17text2[]="EON";
 const unsigned char level18text2[]="THE SAFE LEVELS";
+const unsigned char level19text2[]="DEMON PARK";
 

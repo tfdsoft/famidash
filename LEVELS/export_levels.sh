@@ -19,14 +19,15 @@ all_levels="
             leveleasy\	    
             thelightningroad\
 	    nightmare\
-			decode\
+	    demonpark\
+	    decode\
             eon\
-			luckydraw\
+	    luckydraw\
             test\
             test2\
             test3\
             test4\
-			danger\
+	    danger\
             "
 
 echo Exporting everything ${all_levels}

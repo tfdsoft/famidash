@@ -16,13 +16,14 @@
 #define leveleasy  0x0D
 #define lightningroad  0xE
 #define nightmare  0x0F
-#define decode  0x10
-#define eon  0x11
-#define luckydraw  0x12
-#define test  0x13
-#define test2  0x14
-#define test3  0x15
-#define test4  0X16
+#define demonpark  0x10
+#define decode  0x11
+#define eon  0x12
+#define luckydraw  0x13
+#define test  0x14
+#define test2  0x15
+#define test3  0x16
+#define test4  0X17
 
 
 #define NINJABANK 92
@@ -223,7 +224,7 @@ uint8_t SRAM_VALIDATE[4];
 #ifdef FLAG_ENABLE_TEST_LEVELS
 	#define LEVEL_COUNT2 256
 #else
-	#define LEVEL_COUNT2 23
+	#define LEVEL_COUNT2 24
 #endif
 
 

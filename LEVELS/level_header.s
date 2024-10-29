@@ -143,3 +143,9 @@ thelightningroad_game_mode   = $00
 thelightningroad_speed       = $00
 thelightningroad_bg_color    = $0F
 thelightningroad_grnd_color  = $0F
+
+demonpark_song_number = song_time_machine
+demonpark_game_mode   = $00
+demonpark_speed       = $00
+demonpark_bg_color    = $16
+demonpark_grnd_color  = $06

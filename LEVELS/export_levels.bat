@@ -20,6 +20,7 @@ SET all_levels= ^
     leveleasy ^
     thelightningroad ^
     nightmare ^
+    demonpark ^
     decode ^
     eon ^
     luckydraw ^
