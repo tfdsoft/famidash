@@ -2655,7 +2655,7 @@ drawplayer_common := _drawplayerone::common
 	STX sreg+1			;__
 
 	; Set up base pointer for jump tables
-	LDA _mini+1       ;
+	LDA _mini       ;
 	BEQ :+          ;   Add 8 if mini mode 
 		LDA #gamemode_count
 	:               ;__
@@ -3006,7 +3006,7 @@ drawplayer_common := _drawplayerone::common
             ; 7 - A = -A + 7
 			; -A = (A ^ 0xFF) + 1
 			; 7 - A = (A ^ 0xFF) + 8
-            LDY _mini+1
+            LDY _mini
             BNE :+
 			EOR #$FF
 			CLC

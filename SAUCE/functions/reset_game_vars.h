@@ -23,8 +23,7 @@ void reset_game_vars(){
 		practice_cube_rotate[tmp1] = cube_rotate[0];
 		practice_cube_rotate[tmp1+1] = cube_rotate[1];
 		practice_player_gamemode[tmp1] = gamemode;
-		practice_mini[tmp1] = mini[0];
-		practice_mini[tmp1+1] = mini[1];
+		practice_mini[tmp1] = mini;
 		practice_dual[tmp1] = dual;
 		practice_speed[tmp1] = speed;
 		practice_parallax_scroll_x[tmp1] = parallax_scroll_x;
@@ -54,7 +53,6 @@ void reset_game_vars(){
 			practice_cube_rotate[tmp2+1] = practice_cube_rotate[tmp3+1];
 			practice_player_gamemode[tmp2] = practice_player_gamemode[tmp3];
 			practice_mini[tmp2] = practice_mini[tmp3];
-			practice_mini[tmp2+1] = practice_mini[tmp3+1];
 			practice_dual[tmp2] = practice_dual[tmp3];
 			practice_speed[tmp2] = practice_speed[tmp3];
 			practice_parallax_scroll_x[tmp2] = practice_parallax_scroll_x[tmp3];
@@ -81,8 +79,7 @@ void reset_game_vars(){
 		practice_cube_rotate[tmp2] = cube_rotate[0];
 		practice_cube_rotate[tmp2+1] = cube_rotate[1];
 		practice_player_gamemode[tmp2] = gamemode;
-		practice_mini[tmp2] = mini[0];
-		practice_mini[tmp2+1] = mini[1];
+		practice_mini[tmp2] = mini;
 		practice_dual[tmp2] = dual;
 		practice_speed[tmp2] = speed;
 		practice_parallax_scroll_x[tmp2] = parallax_scroll_x;
@@ -112,11 +109,8 @@ void restore_practice_state() {
 	player_gravity[1] = practice_player_gravity[tmp2+1];
 	cube_rotate[0] = practice_cube_rotate[tmp2];
 	cube_rotate[1] = practice_cube_rotate[tmp2+1];
-	mini[0] = practice_mini[0];
-	mini[1] = practice_mini[1];
 	gamemode = practice_player_gamemode[tmp2];
-	mini[0] = practice_mini[tmp2];
-	mini[1] = practice_mini[tmp2+1];
+	mini = practice_mini[tmp2];
 	dual = practice_dual[tmp2];
 	speed = practice_speed[tmp2];
 	parallax_scroll_x = practice_parallax_scroll_x[tmp2];

@@ -304,7 +304,7 @@ const short mini_heights[] = {
 static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 	__A__ = (gamemode | table_offset) << 1;
 	__asm__("tay");
-	if (currplayer_mini) {
+	if (mini) {
 		__AX__ = (__asm__ ("lda %v,y", mini_heights), __asm__ ("ldx %v+1,y", mini_heights),__AX__);
 	} else {
 		__AX__ = (__asm__ ("lda %v,y", heights),__asm__ ("ldx %v+1,y", heights),__AX__);
@@ -595,10 +595,10 @@ void sprite_collide_lookup() {
 			return;
 #endif
 		case MINI_PORTAL:
-			currplayer_mini = 1;
+			mini = 1;
 			return;
 		case GROWTH_PORTAL:
-			currplayer_mini = 0;
+			mini = 0;
 			return;
 		case GREEN_PAD:
 			currplayer_gravity ^= 1;
@@ -835,8 +835,8 @@ void sprite_collide(){
 	Generic.x = high_byte(currplayer_x) + 1;
 	Generic.y = high_byte(currplayer_y);
 
-	Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
-	Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
+	Generic.width = mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
+	Generic.height = mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
 
 	Generic2.width = 0x0f;
 
@@ -897,7 +897,7 @@ void sprite_collide(){
 		}
 	} while (++index < max_loaded_sprites);
 
-	Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
+	Generic.height = mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
 }
 
 

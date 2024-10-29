@@ -71,7 +71,7 @@ void x_movement(){
 	}
 
 	if (gamemode == 0x06) { // wave
-		if (currplayer_mini) {
+		if (mini) {
 			Generic.width = MINI_WAVE_WIDTH;
 			Generic.height = MINI_WAVE_HEIGHT;
 		} else {
@@ -79,7 +79,7 @@ void x_movement(){
 			Generic.height = WAVE_HEIGHT;
 		}
 	} else {
-		if (!currplayer_mini) {
+		if (!mini) {
 			Generic.width = CUBE_WIDTH;
 			Generic.height = CUBE_HEIGHT;
 		} else {
@@ -106,7 +106,7 @@ void x_movement(){
 
 		if (tmp7 && (controllingplayer->right)) {
 			tmp7 = high_byte(currplayer_x) + low_word(scroll_x);
-			high_byte(currplayer_x) -= ((tmp7 + 4) & 0x07) - 4 + currplayer_mini; // if mini put it a pixel left-er
+			high_byte(currplayer_x) -= ((tmp7 + 4) & 0x07) - 4 + mini; // if mini put it a pixel left-er
 		}
 		else if (tmp8 && (controllingplayer->left)) {
 			tmp8 = high_byte(currplayer_x) + low_word(scroll_x);

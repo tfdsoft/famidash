@@ -6,7 +6,7 @@ void wave_movement(void){
 
 	if (!dashing[currplayer]) {
 		
-		currplayer_vel_y = !currplayer_mini ? (currplayer_gravity ? -currplayer_vel_x : currplayer_vel_x) : (currplayer_gravity ? -(currplayer_vel_x << 1) : (currplayer_vel_x << 1));
+		currplayer_vel_y = !mini ? (currplayer_gravity ? -currplayer_vel_x : currplayer_vel_x) : (currplayer_gravity ? -(currplayer_vel_x << 1) : (currplayer_vel_x << 1));
 		
 		if (controllingplayer->a) currplayer_vel_y = -currplayer_vel_y;
 

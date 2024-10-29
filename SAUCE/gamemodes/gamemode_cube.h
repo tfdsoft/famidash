@@ -97,7 +97,7 @@ void cube_movement(void){
 				if (!orbed[currplayer]) {
 					jumps++;
 
-					if (!currplayer_mini) currplayer_vel_y = JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
+					if (!mini) currplayer_vel_y = JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 
 				}
@@ -106,7 +106,7 @@ void cube_movement(void){
 			else if(controllingplayer->press_a && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack || (gamemode == 8 && ninjajumps[currplayer]))) {		//jblock making you release and press A again to jump
 				jumps++;
 
-				if (!currplayer_mini) currplayer_vel_y = JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
+				if (!mini) currplayer_vel_y = JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 				else currplayer_vel_y = MINI_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 
 				if (gamemode == 8) { idx8_dec(ninjajumps, currplayer); }
@@ -131,7 +131,7 @@ void cube_movement(void){
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);					
 			if(controllingplayer->a && !orbed[currplayer]) {
 				jumps++;
-				if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
+				if (!mini) currplayer_vel_y = ROBOT_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 				else currplayer_vel_y = MINI_ROBOT_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 
 				robotjumptime[currplayer] = ROBOT_JUMP_TIME;
@@ -144,11 +144,11 @@ void cube_movement(void){
 			if(controllingplayer->a && !jblocked[currplayer] && !orbed[currplayer]) {
 				jumps++;
 				if (!currplayer_gravity) {
-					if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
+					if (!mini) currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_ROBOT_JUMP_VEL; // JUMP
 				}
 				else {
-					if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
+					if (!mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
 					else currplayer_vel_y = MINI_ROBOT_JUMP_VEL^0xFFFF; // JUMP
 				}
 				robotjumptime[currplayer] = ROBOT_JUMP_TIME;
@@ -157,11 +157,11 @@ void cube_movement(void){
 			else if(controllingplayer->a && jblocked[currplayer] && !orbed[currplayer]) {	
 				jumps++;
 				if (!currplayer_gravity) {
-					if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
+					if (!mini) currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
 					else currplayer_vel_y = MINI_ROBOT_JUMP_VEL; // JUMP
 				}
 				else {
-					if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
+					if (!mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
 					else currplayer_vel_y = MINI_ROBOT_JUMP_VEL^0xFFFF; // JUMP
 				}
 				robotjumptime[currplayer] = ROBOT_JUMP_TIME;
@@ -179,11 +179,11 @@ void cube_movement(void){
 					if (robotjumpframe[0]) robotjumpframe[0]++;
 					if ( robotjumpframe[0] > 3 ) robotjumpframe[0] = 3;
 					if (!currplayer_gravity) {
-						if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
+						if (!mini) currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
 						else currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
 					}
 					else {
-						if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
+						if (!mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
 						else currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
 					}
 				}	
@@ -192,11 +192,11 @@ void cube_movement(void){
 					if (robotjumpframe[0]) robotjumpframe[0]++;
 					if ( robotjumpframe[0] > 3 ) robotjumpframe[0] = 3;
 					if (!currplayer_gravity) {
-						if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
+						if (!mini) currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
 						else currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
 					}
 					else {
-						if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
+						if (!mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
 						else currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
 					}
 				}
@@ -289,10 +289,10 @@ void common_gravity_routine() {
 	register uint8_t temp_gr;
 	if (!dashing[currplayer]) {
 		temp_gr = currplayer_gravity;
-		if(!currplayer_gravity ? ((!currplayer_mini ? fallspeed_big : fallspeed_mini) < currplayer_vel_y) : (-(!currplayer_mini ? fallspeed_big : fallspeed_mini) > currplayer_vel_y)){
+		if(!currplayer_gravity ? ((!mini ? fallspeed_big : fallspeed_mini) < currplayer_vel_y) : (-(!mini ? fallspeed_big : fallspeed_mini) > currplayer_vel_y)){
 			temp_gr = !temp_gr; 
 		}
-		tempvel = !currplayer_mini ? (temp_gr ? -gravity_big : gravity_big) : (temp_gr ? -gravity_mini : gravity_mini);
+		tempvel = !mini ? (temp_gr ? -gravity_big : gravity_big) : (temp_gr ? -gravity_mini : gravity_mini);
 			switch (gravity_mod) {
 				case 0: break;
 				case 1: tempvel /= 3; break;

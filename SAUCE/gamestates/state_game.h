@@ -331,7 +331,7 @@ void state_game(){
 		}
 		
 		if (joypad1.press_down && DEBUG_MODE) {
-			currplayer_mini ^= 1;
+			mini ^= 1;
 		}
 
 		if (joypad1.select && DEBUG_MODE) {
@@ -422,7 +422,6 @@ void state_game(){
 			player_vel_x[0] = currplayer_vel_x;
 			player_vel_y[0] = currplayer_vel_y;
 			player_gravity[0] = currplayer_gravity;
-			mini[0] = currplayer_mini;
 		}
 
 		
@@ -442,7 +441,6 @@ void state_game(){
 				currplayer_vel_x = player_vel_x[1];
 				currplayer_vel_y = player_vel_y[1];
 				currplayer_gravity = player_gravity[1];
-				currplayer_mini = mini[1];
 			}
 
 			if (controllingplayer->press_up && DEBUG_MODE) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
@@ -471,7 +469,6 @@ void state_game(){
 				currplayer_vel_x = player_vel_x[0];
 				currplayer_vel_y = player_vel_y[0];
 				currplayer_gravity = player_gravity[0];
-				currplayer_mini = mini[0];
 			}
 		}
 
@@ -527,7 +524,7 @@ void set_player_banks() {
 		}
 		
 		if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
-		else if ((currplayer_mini && gamemode != 0) || (gamemode == 7) || (gamemode == 6)) mmc3_set_2kb_chr_bank_0(iconbank2);
+		else if ((mini && gamemode != 0) || (gamemode == 7)) mmc3_set_2kb_chr_bank_0(iconbank2);
 		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank3);
 		else mmc3_set_2kb_chr_bank_0(iconbank1);
 

@@ -169,14 +169,14 @@ void draw_sprites(void){
 		high_byte(player_y[0]) = player_old_posy[8];
 
 		if (gamemode == 0) {
-			tmp9 = currplayer_mini;
-			currplayer_mini = 1;
+			tmp9 = mini;
+			mini = 1;
 		}
 
 		if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
 		
 		if (gamemode == 0) {
-			currplayer_mini = tmp9;
+			mini = tmp9;
 		}
 		
 		player_x[0] = tmpA;
