@@ -124,7 +124,7 @@ void x_movement(){
 	} 
 
 
-	if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
+	if (currplayer_y < 0x0600){
 		idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 	}
 	
