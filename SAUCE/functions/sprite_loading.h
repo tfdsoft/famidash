@@ -507,7 +507,24 @@ void sprite_collide_lookup() {
 
 	if (!activesprites_activated[index] || dual || options & platformer) {
 		switch (collided) {
-
+		case DUAL_PORTAL:
+			if (!activesprites_activated[index]) {
+				dual = 1;
+				if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1;  }
+				else { player_x[1] = player_x[0]; player_y[1] = player_y[0]; player_gravity[1] ^= player_gravity[0]; player_vel_y[1] = player_vel_y[0]^0xFFFF; }
+				idx8_inc(activesprites_activated, index);
+			}
+			return;
+		case SINGLE_PORTAL:
+			if (!activesprites_activated[index]) {
+				if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; player_gravity[0] = currplayer_gravity; player_vel_y[0] = currplayer_vel_y; }
+				else { player_gravity[1] = player_gravity[0]; }
+				idx8_inc(activesprites_activated, index);
+				tallmode = 0;
+				longmode = 0;
+				bigboi = 0;
+			}
+			return;
 		case TELEPORT_PORTAL_EXIT:
 		case TELEPORT_SQUARE_EXIT:
 		case NOSPRITE:
@@ -607,24 +624,7 @@ void sprite_collide_lookup() {
 
 			idx8_inc(activesprites_activated, index);
 			return;
-		case DUAL_PORTAL:
-			if (!activesprites_activated[index]) {
-				dual = 1;
-				if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1;  }
-				else { player_x[1] = player_x[0]; player_y[1] = player_y[0]; player_gravity[1] ^= player_gravity[0]; player_vel_y[1] = player_vel_y[0]^0xFFFF; }
-				idx8_inc(activesprites_activated, index);
-			}
-			return;
-		case SINGLE_PORTAL:
-			if (!activesprites_activated[index]) {
-				if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; player_gravity[0] = currplayer_gravity; }
-				else { player_gravity[1] = player_gravity[0]; }
-				idx8_inc(activesprites_activated, index);
-				tallmode = 0;
-				longmode = 0;
-				bigboi = 0;
-			}
-			return;
+
 
 		// collided with non game mode portals 
 
