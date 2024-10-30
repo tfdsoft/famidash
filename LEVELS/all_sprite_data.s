@@ -5128,8 +5128,8 @@ sprite_data_demonpark:
   .byte $70,$3c,$a0,$02,$2d
   .byte $70,$3c,$f0,$02,$2d
   .byte $a0,$3d,$48,$03,$0a
-  .byte $40,$3e,$f0,$02,$0f
-  .byte $40,$3e,$40,$03,$0f
+  .byte $70,$3e,$f0,$02,$0f
+  .byte $70,$3e,$40,$03,$0f
   .byte $ff
 .segment "SPR_BANK_03"
 sprite_data_decode:
