@@ -1372,8 +1372,8 @@ const unsigned char Mini_Spider_3_ALT[]={
 	 -4,  -4,0x27,3,
 	0x80
 };
-const unsigned char * const MINI_SPIDER[]={Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_1, Mini_Spider_1, Mini_Spider_1, Mini_Spider_1, Mini_Spider_2, Mini_Spider_2, Mini_Spider_2, Mini_Spider_2, Mini_Spider_3, Mini_Spider_3, Mini_Spider_3, Mini_Spider_3};
-const unsigned char * const MINI_SPIDER_ALT[]={Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT};
+const unsigned char * const MINI_SPIDER[]={Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_1, Mini_Spider_1, Mini_Spider_1, Mini_Spider_1, Mini_Spider_2, Mini_Spider_2, Mini_Spider_2, Mini_Spider_2, Mini_Spider_3, Mini_Spider_3, Mini_Spider_3, Mini_Spider_3, Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_0};
+const unsigned char * const MINI_SPIDER_ALT[]={Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT};
 const unsigned char * const MINI_SPIDER_JUMP[]={Mini_Spider_3};
 
 const unsigned char Mini_Spider2_0[]={
