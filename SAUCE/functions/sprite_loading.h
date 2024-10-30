@@ -608,16 +608,22 @@ void sprite_collide_lookup() {
 			idx8_inc(activesprites_activated, index);
 			return;
 		case DUAL_PORTAL:
-			dual = 1;
-			if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1; }
-			else { player_x[1] = player_x[0]; player_y[1] = player_y[0]; player_gravity[1] = player_gravity[0] ^ 1; }
+			if (!activesprites_activated[index]) {
+				dual = 1;
+				if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1;  }
+				else { player_x[1] = player_x[0]; player_y[1] = player_y[0]; player_gravity[1] ^= player_gravity[0]; player_vel_y[1] = player_vel_y[0]^0xFFFF; }
+				idx8_inc(activesprites_activated, index);
+			}
 			return;
 		case SINGLE_PORTAL:
-			if (!twoplayer) dual = 0;
-			else { player_gravity[1] = player_gravity[0]; }
-			tallmode = 0;
-			longmode = 0;
-			bigboi = 0;
+			if (!activesprites_activated[index]) {
+				if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; }
+				else { player_gravity[1] = player_gravity[0]; }
+				idx8_inc(activesprites_activated, index);
+				tallmode = 0;
+				longmode = 0;
+				bigboi = 0;
+			}
 			return;
 
 		// collided with non game mode portals 
