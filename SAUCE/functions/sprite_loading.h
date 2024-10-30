@@ -617,7 +617,7 @@ void sprite_collide_lookup() {
 			return;
 		case SINGLE_PORTAL:
 			if (!activesprites_activated[index]) {
-				if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; }
+				if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; player_gravity[0] = currplayer_gravity; }
 				else { player_gravity[1] = player_gravity[0]; }
 				idx8_inc(activesprites_activated, index);
 				tallmode = 0;
