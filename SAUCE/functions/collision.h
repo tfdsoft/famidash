@@ -834,6 +834,31 @@ char bg_coll_D() {
 	return 0;
 }
 
+char bg_coll_U_spider() {
+	storeWordSeparately(
+		add_scroll_y(
+			Generic.y + (mini ? byte(0x10 - Generic.height) >> 1 : 0),
+			scroll_y
+		), temp_y, temp_room);
+	
+	COLL_CHECK_TOP_NO_SPIKE
+
+	return 0;
+}
+
+char bg_coll_D_spider() {
+	storeWordSeparately(
+		add_scroll_y(
+			Generic.y + Generic.height + (mini ? byte(0x10 - Generic.height) >> 1 : 0),
+			scroll_y
+		), temp_y, temp_room);
+
+	COLL_CHECK_BOTTOM_NO_SPIKE
+
+	return 0;
+}
+
+
 /*
 	Clobbers:
 	tmp2
