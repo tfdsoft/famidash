@@ -129,6 +129,7 @@ void levelselection() {
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
 	disco_sprites = 0;
+
 	write_irq_table(lvlselect_irq_table);
 	set_irq_ptr(irqTable);
 	pal_bg(oldsplashMenu);
@@ -163,7 +164,7 @@ void levelselection() {
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
 
-	if (kandotemp == 0) music_play(song_menu_theme);
+	if (kandotemp == 0 && !nestopia) music_play(song_menu_theme);
 	kandotemp = 1;
 
 	ppu_on_all();
@@ -698,6 +699,7 @@ void state_menu() {
 	}
 	mmc3_disable_irq();
 
+	if (joypad1.select) nestopia = 1;
 
 	if (LEVELCOMPLETE[0] && 
 	LEVELCOMPLETE[1] && 
@@ -738,7 +740,7 @@ void state_menu() {
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-	if (kandotemp == 0) music_play(song_menu_theme);
+	if (kandotemp == 0 && !nestopia) music_play(song_menu_theme);
 	kandotemp = 1;
 
 	settingvalue = 0;
