@@ -82,31 +82,27 @@ void spider_eject() {
 }
 
 void spider_up_wait() {
-	tmp1 = Generic.x + low_word(scroll_x);
-	tmp2 = tmp1 + Generic.width >> 1;
-	tmp3 = tmp1 + Generic.width;
+	tmp7 = Generic.x + low_word(scroll_x);
+	tmp9 = tmp7 + (Generic.width >> 1);
+	tmp3 = tmp7 + Generic.width;
 	do {
 		high_byte(currplayer_y) -= 0x08;
-		if (nocamlock) {
-			crossPRGBankJump0(do_the_scroll_thing);
-			if (high_byte(currplayer_y) <= 0x06 && scroll_y <= min_scroll_y){
-				idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
-				break;
-			}
+		crossPRGBankJump0(do_the_scroll_thing);
+		if (high_byte(currplayer_y) <= 0x06 && scroll_y <= min_scroll_y){
+			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
+			break;
 		}
 		Generic.y = high_byte(currplayer_y); // the rest should be the same
 	} while (!bg_coll_U_spider());
 }			
 
 void spider_down_wait() {
-	tmp1 = Generic.x + low_word(scroll_x);
-	tmp2 = tmp1 + Generic.width >> 1;
-	tmp3 = tmp1 + Generic.width;
+	tmp7 = Generic.x + low_word(scroll_x);
+	tmp9 = tmp7 + (Generic.width >> 1);
+	tmp3 = tmp7 + Generic.width;
 	do {
 		high_byte(currplayer_y) += 0x08;
-		if (nocamlock) {
-			crossPRGBankJump0(do_the_scroll_thing);
-		}
+		crossPRGBankJump0(do_the_scroll_thing);
 		Generic.y = high_byte(currplayer_y); // the rest should be the same
 	} while (!bg_coll_D_spider());
 }				

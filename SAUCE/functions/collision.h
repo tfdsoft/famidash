@@ -846,8 +846,8 @@ char bg_coll_D() {
 	return 0;
 }
 
-#define GENERIC_X_PLUS_SCROLL tmp1
-#define GENERIC_X_PLUS_SCROLL_PLUS_HALF_WIDTH tmp2
+#define GENERIC_X_PLUS_SCROLL tmp7
+#define GENERIC_X_PLUS_SCROLL_PLUS_HALF_WIDTH tmp9
 #define GENERIC_X_PLUS_SCROLL_PLUS_WIDTH tmp3
 
 char bg_coll_U_spider() {
