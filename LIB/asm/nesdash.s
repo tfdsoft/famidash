@@ -3906,16 +3906,51 @@ vert_skip:
 	high_byte_setup:
 		LDX	_scroll_x+1
 		BEQ	low_byte_setup
-			JSR	data_comparison_entrypoint
-	low_byte_setup:
-		DEY
+		BNE @entrypoint	; BRA
+			@data_comparison_loop:
+				LDA	#5-1				;
+				ADC	sprite_data			;	Relies on set carry
+				STA	sprite_data			;__
+				BCC	@entrypoint			;	Overflow
+					INC	sprite_data+1	;__
+		
+			@entrypoint:
+				TXA						;
+				CMP	(sprite_data),	y	;	return if scroll_x <= sprite x
+				BEQ	@return				;
+				BCS	@data_comparison_loop;__
+			
+			@return:
+	low_byte_setup:	
+		STX	x_counter
 		LDX	_scroll_x
-		BEQ :+
-			JSR	data_comparison_entrypoint
-		:
+		BEQ @skip
+		BNE @entrypoint
+			@data_comparison_loop:
+				LDA	#5-1				;
+				ADC	sprite_data			;	Relies on set carry
+				STA	sprite_data			;__
+				BCC	@entrypoint			;	Overflow
+					INC	sprite_data+1	;__
+		
+			@entrypoint:
+				DEY
+				TXA						;
+				CMP	(sprite_data),	y	;	return if scroll_x <= sprite x
+				INY						;
+				LDA	x_counter			;
+				SBC	(sprite_data),	y	;
+				BEQ	@return				;
+				BCS	@data_comparison_loop;__
+			
+			@return:
+		@skip:
+		
 
 	; BAM, the pointer is adjusted
 	; Load the sprites now
+	
+	DEY	; Y is 1
 	
 	LDX	#16			;! THIS IS THE SPRITE SLOT COUNT, CHANGE AS NEEDED
 	loading_loop:
@@ -3939,25 +3974,6 @@ vert_skip:
 	
 	PLA
 	JMP mmc3_set_prg_bank_1
-	
-	data_comparison_loop:	; Compares X with a byte of sprite data, until it >= A
-	
-		LDA	#5-1				;
-		ADC	sprite_data			;	Relies on set carry
-		STA	sprite_data			;__
-		BCC	@entrypoint			;	Overflow
-			INC	sprite_data+1	;__
-	
-		@entrypoint:
-		TXA						;
-		CMP	(sprite_data),	y	;	return if scroll_x <= sprite x
-		BEQ	@return				;
-		BCS	data_comparison_loop;__
-		
-		@return:
-			RTS
-		
-		data_comparison_entrypoint := @entrypoint
 		
 .endproc
 
