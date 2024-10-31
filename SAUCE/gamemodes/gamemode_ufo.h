@@ -50,10 +50,10 @@ void ufo_movement(void){
 	Generic.y = high_byte(currplayer_y);
 
 	// check collision down a little lower than UFO
-	Generic.y = high_byte(currplayer_y); // the rest should be the same
+//	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
 
-	if(controllingplayer->press_a) {
+	if(controllingplayer->press_a || controllingplayer->press_up) {
 		if (!mini) currplayer_vel_y = 	UFO_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 		else currplayer_vel_y = MINI_UFO_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 		jumps++;

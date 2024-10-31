@@ -40,12 +40,12 @@ void ball_movement(void){
 
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
 	if (currplayer_gravity) {
-		Generic.y = high_byte(currplayer_y) - 1;
+		Generic.y = currplayer_gravity ? high_byte(currplayer_y) - 1 : high_byte(currplayer_y) + 1;
 	} else {
 		Generic.y = high_byte(currplayer_y) + 1;
 	}
 
-	if (controllingplayer->press_a) idx8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
+	if (controllingplayer->press_a || controllingplayer->press_up) idx8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
 
 	ball_eject();
 
@@ -81,6 +81,7 @@ void ball_movement(void){
 			ball_eject();
 		}
 	}
+	Generic.y = high_byte(currplayer_y);
 	Generic.x = high_byte(currplayer_x);
 
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
@@ -91,7 +92,7 @@ void ball_movement(void){
 	}
 
 	if (gamemode == 2) {
-		if ((controllingplayer->a) && (kandotemp2[currplayer] == 0) && currplayer_vel_y == 0){
+		if (((controllingplayer->a || controllingplayer->up)) && (kandotemp2[currplayer] == 0) && currplayer_vel_y == 0){
 			jumps++;
 			currplayer_gravity ^= 0x01;
 			kandotemp2[currplayer] = 1;
@@ -102,14 +103,14 @@ void ball_movement(void){
 			bg_coll_floor_spikes();
 		}
 		if(kandotemp2[currplayer] == 1){
-			if (!(controllingplayer->a)){
+			if (!(controllingplayer->a) && !(controllingplayer->up)){
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 				kandotemp2[currplayer] = 0;			
 			}
 		}
 	}
 	else {
-		if ((controllingplayer->press_a)){
+		if ((controllingplayer->press_a) || controllingplayer->press_up){
 			jumps++;
 			currplayer_gravity ^= 0x01;
 			bg_coll_floor_spikes();

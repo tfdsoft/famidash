@@ -201,7 +201,7 @@ void state_game(){
 				dual = 1;
 			}
 			
-			if (!(joypad1.a)) {
+			if (!(joypad1.a) && !(joypad1.up)) {
 				if (dashing[0]) currplayer_vel_y = 0x0100^(0x0000 - currplayer_gravity);
 				dashing[0] = 0;
 			}
@@ -326,7 +326,7 @@ void state_game(){
 		
 		if ((controllingplayer->press_b) && has_practice_point && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
 
-		if (joypad1.press_up && DEBUG_MODE) {
+		if (joypad1.press_right && DEBUG_MODE && !(options & platformer)) {
 			currplayer_gravity ^= 0x01;
 		}
 		
@@ -352,7 +352,11 @@ void state_game(){
 			was_on_slope_counter--;
 		} else slope_type = 0;
 
-		if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+		if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+
+	if (orbed[currplayer]) {
+		if (!(controllingplayer->a) && !(controllingplayer->up)) orbed[currplayer] = 0;
+	}
 
 		crossPRGBankJump0(sprite_collide);
 
@@ -431,7 +435,7 @@ void state_game(){
 		
 		if (dual) { 
 			currplayer = 1;					//take focus
-			if (!(joypad2.a)) {
+			if (!(joypad2.a) && !(joypad2.up)) {
 				if (dashing[1]) currplayer_vel_y = 0x0100^(0x0000 - currplayer_gravity);
 				dashing[1] = 0;
 			}
@@ -447,8 +451,12 @@ void state_game(){
 				currplayer_gravity = player_gravity[1];
 			}
 
-			if (controllingplayer->press_up && DEBUG_MODE) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
+			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
 			if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+	if (orbed[currplayer]) {
+		if (!(controllingplayer->a) && !(controllingplayer->up)) orbed[currplayer] = 0;
+	}
+
 			crossPRGBankJump0(sprite_collide);
 
 			crossPRGBankJump0(movement);

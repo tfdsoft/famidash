@@ -302,7 +302,9 @@ const short mini_heights[] = {
 
 // Load the player velocity from the height table
 static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
-	__A__ = (gamemode | table_offset) << 1;
+	if (!retro_mode) __A__ = (gamemode | table_offset) << 1;
+	else if (retro_mode && gamemode == 4) __A__ = (0 | table_offset) << 1;
+	else __A__ = (gamemode | table_offset) << 1;
 	__asm__("tay");
 	if (mini) {
 		__AX__ = (__asm__ ("lda %v,y", mini_heights), __asm__ ("ldx %v+1,y", mini_heights),__AX__);
