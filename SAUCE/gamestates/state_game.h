@@ -448,7 +448,7 @@ void state_game(){
 			}
 
 			if (controllingplayer->press_up && DEBUG_MODE) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
-
+			if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			crossPRGBankJump0(sprite_collide);
 
 			crossPRGBankJump0(movement);
