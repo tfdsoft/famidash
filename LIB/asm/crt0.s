@@ -26,10 +26,13 @@ OAM_BUF=__OAM_BUF_START__
 PAL_BUF_RAW=__PAL_BUF_START__
 PAL_BUF=PAL_BUF_RAW+$20
 
+SFX_STRINGS = 0
 
 ; .importzp _PAD_STATE, _PAD_STATET ;added
 .include "zeropage.inc"
 
+.include "music_songlist.inc"
+.include "sfx_sfxlist.inc"
 
 
 

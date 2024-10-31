@@ -1,5 +1,3 @@
-.include "music_songlist.inc"
-
 stereomadness_song_number = song_stereo_madness
 stereomadness_game_mode   = $00
 stereomadness_speed       = $00
