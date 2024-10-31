@@ -454,7 +454,7 @@ void state_game(){
 			crossPRGBankJump0(movement);
 
 			kandotemp3 = 1;
-			runthecolls();
+			if (!twoplayer) { if (kandoframecnt & 1) runthecolls(); }
 			kandotemp3 = 0;
 			
 	//		crossPRGBankJump0(do_the_scroll_thing2);
