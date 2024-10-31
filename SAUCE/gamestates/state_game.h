@@ -229,7 +229,7 @@ void state_game(){
 			//end mouse debug
 			
 			if (options & jumpsound) {
-				if (joypad1.press_a) {
+				if (joypad1.press_a || joypad1.press_up) {
 					sfx_play(sfx_click, 0);
 				}
 			}
@@ -452,7 +452,7 @@ void state_game(){
 			}
 
 			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
-			if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+			if (((controllingplayer->press_a || controllingplayer->press_up)) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 	if (orbed[currplayer]) {
 		if (!(controllingplayer->a) && !(controllingplayer->up)) orbed[currplayer] = 0;
 	}

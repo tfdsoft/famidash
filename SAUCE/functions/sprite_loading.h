@@ -318,9 +318,9 @@ static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 }
 
 static void sprite_gamemode_main() {
-	if (controllingplayer->a) {	
+	if (controllingplayer->a || controllingplayer->up) {	
 		if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
-		if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
+		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			settrailstuff();
 
@@ -415,7 +415,7 @@ static void sprite_gamemode_main() {
 }
 
 static void sprite_gamemode_controller_check() {
-	if (controllingplayer->press_a) {	
+	if (controllingplayer->press_a || controllingplayer->press_up) {	
 		idx8_store(cube_data, currplayer, cube_data[currplayer] & 0x01);
 		settrailstuff();
 		switch (collided) {
@@ -570,7 +570,7 @@ void sprite_collide_lookup() {
 			//robotjumptime[currplayer] = 0;
 			return;
 		case TELEPORT_SQUARE_ENTER:
-			if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
+			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 				currplayer_vel_y = 0;
 				orbed[currplayer] = 1;
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
@@ -708,7 +708,7 @@ void sprite_collide_lookup() {
 			return;
 
 		case SPIDER_ORB_UP:
-			if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
+			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 		case SPIDER_PAD_UP:
 				high_byte(currplayer_y) -= eject_D;
@@ -722,7 +722,7 @@ void sprite_collide_lookup() {
 			}
 			return;
 		case SPIDER_ORB_DOWN:
-			if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
+			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 		case SPIDER_PAD_DOWN:
 				high_byte(currplayer_y) -= eject_U + 1;

@@ -185,7 +185,7 @@ void cube_movement(void){
 						else currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
 					}
 				}	
-				else if((controllingplayer->press_a || controllingplayer->up) && jblocked[currplayer] && !orbed[currplayer]) {	
+				else if((controllingplayer->press_a || controllingplayer->press_up) && jblocked[currplayer] && !orbed[currplayer]) {	
 					jumps++;
 					if (robotjumpframe[0]) robotjumpframe[0]++;
 					if ( robotjumpframe[0] > 3 ) robotjumpframe[0] = 3;
