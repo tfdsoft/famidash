@@ -457,7 +457,7 @@ void state_game(){
 			runthecolls();
 			kandotemp3 = 0;
 			
-			crossPRGBankJump0(do_the_scroll_thing2);
+	//		crossPRGBankJump0(do_the_scroll_thing2);
 
 			currplayer = 0;					//give back focus
 
