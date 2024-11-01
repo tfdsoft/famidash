@@ -766,7 +766,7 @@ void sprite_collide_lookup() {
 				currplayer_gravity = 0x01;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE;	
 			}
-			//idx8_inc(activesprites_activated, index);	
+			idx8_inc(activesprites_activated, index);	
 			return;
 		
 		case GRAVITY_PAD_UP:
@@ -776,7 +776,7 @@ void sprite_collide_lookup() {
 				currplayer_gravity = 0x00;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
 			}
-			//idx8_inc(activesprites_activated, index);	
+			idx8_inc(activesprites_activated, index);	
 			return;
 
 		// collided with an orb
