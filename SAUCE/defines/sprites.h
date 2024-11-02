@@ -1006,25 +1006,25 @@ const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump
 
 const unsigned char Mini_Robot_0[]={
 	
-	-4,   -4, 0x13,3,
+	-4,   -4, 0x37,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_1[]={
 	
-	-4,   -4, 0x15,3,
+	-4,   -4, 0x39,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_2[]={
 	
-	-4,   -4, 0x17,3,
+	-4,   -4, 0x3B,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump_1[]={
 	
-	-4,   -4, 0x15,3,
+	-4,   -4, 0x39,3,
 	0x80
 };//also mini robot 3rd animation frame - Ficus
 
@@ -1135,25 +1135,25 @@ const unsigned char * const ROBOT_JUMP2[]={Robot_Jump2_1, Robot_Jump2_1, Robot_J
 
 const unsigned char Mini_Robot2_0[]={
 	
-	-4,   -4, 0x13,1,
+	-4,   -4, 0x37,1,
 	0x80
 };
 
 const unsigned char Mini_Robot2_1[]={
 	
-	-4,   -4, 0x15,1,
+	-4,   -4, 0x39,1,
 	0x80
 };
 
 const unsigned char Mini_Robot2_2[]={
 	
-	-4,   -4, 0x17,1,
+	-4,   -4, 0x3B,1,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump2_1[]={
 	
-	-4,   -4, 0x15,1,
+	-4,   -4, 0x39,1,
 	0x80
 };
 
