@@ -128,7 +128,7 @@ uint8_t __fastcall__ oam_get();
 
 //poll controller and return flags like PAD_LEFT etc, input is pad number (0 or 1)
 
-// uint8_t __fastcall__ pad_poll(uint8_t pad);
+uint8_t __fastcall__ pad_poll(uint8_t pad);
 
 //poll controller in trigger mode, a flag is set only on button down, not hold
 //if you need to poll the pad in both normal and trigger mode, poll it in the

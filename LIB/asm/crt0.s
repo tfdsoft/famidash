@@ -68,12 +68,12 @@ SCROLL_X: 			.res 1
 SCROLL_Y: 			.res 1
 SCROLL_X1: 			.res 1
 SCROLL_Y1: 			.res 1
-; PAD_STATE: 			.res 2		;one byte per controller
-; PAD_STATE2: 		.res 2		;one byte per controller
-; PAD_STATEP: 		.res 2
-; PAD_STATEP2: 		.res 2
-; PAD_STATET: 		.res 2
-; PAD_STATET2: 		.res 2
+PAD_STATE: 			.res 2		;one byte per controller
+PAD_STATE2: 		.res 2		;one byte per controller
+PAD_STATEP: 		.res 2
+PAD_STATEP2: 		.res 2
+PAD_STATET: 		.res 2
+PAD_STATET2: 		.res 2
 PPU_CTRL_VAR: 		.res 1
 PPU_CTRL_VAR1: 		.res 1
 PPU_MASK_VAR: 		.res 1
@@ -82,7 +82,7 @@ RAND_SEED: 			.res 4
 TEMP: 				.res 11
 SPRID:				.res 1
 
-; PAD_BUF		=TEMP+1
+PAD_BUF		=TEMP+1
 
 PTR			=TEMP	;word
 LEN			=TEMP+2	;word
@@ -108,6 +108,7 @@ VRAM_INDEX:			.res 1
 ; META_VAR:			.res 1
 
 xargs:				.res 4
+noMouse:			.res 1
 
  
 ;

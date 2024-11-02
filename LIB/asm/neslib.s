@@ -106,14 +106,32 @@ nmi:
   lda #0
   sta mmc3IRQTableIndex
   sta mmc3IRQJoever
+
   jsr irq_parser ; needs to happen inside v-blank... 
                    ; so goes before the music
             ; but, if screen is off this should be skipped
   
+
+  lda noMouse
+  bne @SkipMouse
   ; Read the raw controller data synced with OAM DMA to prevent
   ; DMC DMA bugs
   jsr oam_and_readjoypad
 
+  lda <(mouse + kMouseButtons)
+  and #$0f
+  cmp #$01
+  beq :+
+@SkipMouse:
+	LDA #>OAM_BUF
+  	STA PPU_OAM_DMA
+	lda <joypad1
+	sta TEMP + 4
+	lda #$01
+	sta noMouse
+	lda #$00
+    jsr _pad_poll
+  :
   ; Calculate the press/release for the controllers
   ; and also update mouse X/Y coords after the timing sensitive parts
   ; of NMI are complete
@@ -899,50 +917,34 @@ __vram_write:
 
 ;uint8_t __fastcall__ pad_poll(uint8_t pad);
 
-; _pad_poll:
-
-; 	tay
-; 	ldx #3
-
-; @padPollPort:
-
-; 	lda #1
-; 	sta CTRL_PORT1
-; 	sta <PAD_BUF-1,x
-; 	lda #0
-; 	sta CTRL_PORT1
-; 	lda #8
-; 	sta <TEMP
-
-; @padPollLoop:
-
-; 	lda CTRL_PORT1,y
-; 	lsr a
-; 	rol <PAD_BUF-1,x
-; 	bcc @padPollLoop
-
-; 	dex
-; 	bne @padPollPort
-
-; 	lda <PAD_BUF
-; 	cmp <PAD_BUF+1
-; 	beq @done
-; 	cmp <PAD_BUF+2
-; 	beq @done
-; 	lda <PAD_BUF+1
-
-; @done:
-
-; 	sta <PAD_STATE,y
-; 	tax
-; 	eor <PAD_STATEP,y
-; 	and <PAD_STATE ,y
-; 	sta <PAD_STATET,y
-; 	txa
-; 	sta <PAD_STATEP,y
-	
-; 	ldx #0
-; 	rts
+_pad_poll:
+	tay
+	ldx #3
+@padPollPort:
+	lda #1
+	sta CTRL_PORT1
+	sta <PAD_BUF-1,x
+	lda #0
+	sta CTRL_PORT1
+	lda #8
+	sta <TEMP
+@padPollLoop:
+	lda CTRL_PORT1,y
+	lsr a
+	rol <PAD_BUF-1,x
+	bcc @padPollLoop
+	dex
+	bne @padPollPort
+	lda <PAD_BUF
+	cmp <PAD_BUF+1
+	beq @done
+	cmp <PAD_BUF+2
+	beq @done
+	lda <PAD_BUF+1
+@done:
+	sta <joypad1
+	ldx #0
+	rts
 
 
 
@@ -1020,7 +1022,7 @@ rand2:
 ;_rand8:
 
 ;	jsr rand1
-;	jsr rand2
+;	jsr _pad_poll
 ;	adc <RAND_SEED
 ;	ldx #0
 ;	rts
@@ -1423,11 +1425,11 @@ CONTROLLER_PORT = CTRL_PORT1
 .proc oam_and_readjoypad
   ; save the previous controller state for calcuating the previous results
   lda joypad1
-  sta TEMP + 3
+  sta TEMP + 4
 
   ; and do the same for the controller 2
   lda joypad2
-  sta TEMP + 4
+  sta TEMP + 5
 
   ; Save the previous mouse state so we can calculate the next frames press/release
   lda mouse + kMouseY
@@ -1502,7 +1504,7 @@ CONTROLLER_PORT = CTRL_PORT1
   ; calculate the press/release state for the controller buttons
 
   ; Pressed
-  lda TEMP+3
+  lda TEMP+4
   eor #%11111111
   and joypad1
   sta joypad1 + 1
@@ -1510,7 +1512,7 @@ CONTROLLER_PORT = CTRL_PORT1
   ; Released
   lda joypad1
   eor #%11111111
-  and TEMP+3
+  and TEMP+4
   sta joypad1 + 2
 
   ; Check the report to see if we have a snes mouse plugged in
@@ -1523,7 +1525,7 @@ CONTROLLER_PORT = CTRL_PORT1
     lda mouse + kMouseZero
     sta joypad2
     ; Pressed
-    lda TEMP+4
+    lda TEMP+5
     eor #%11111111
     and joypad2
     sta joypad2 + 1
@@ -1531,12 +1533,14 @@ CONTROLLER_PORT = CTRL_PORT1
     ; Released
     lda joypad2
     eor #%11111111
-    and TEMP+4
+    and TEMP+5
     sta joypad2 + 2
 
     ; no snes mouse, so leave the first field empty
     lda #0
     sta mouse + kMouseZero
+	lda #1
+	sta noMouse
     rts
 snes_mouse_detected:
 
