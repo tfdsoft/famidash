@@ -162,6 +162,7 @@ int8_t tmpi8;
 extern volatile unsigned char VRAM_UPDATE;
 #pragma zpsym ("VRAM_UPDATE")
 
+uint8_t currplayer_mini;
 uint16_t currplayer_x;
 uint16_t currplayer_y;
 int16_t currplayer_vel_x;
@@ -184,7 +185,7 @@ uint8_t collision_D;
 uint16_t old_x;
 uint16_t old_y;
 
-uint8_t mini;
+uint8_t mini[2];
 uint8_t eject_L; // from the left
 uint8_t eject_R; // remember these from the collision sub routine
 uint8_t eject_D; // from below
@@ -409,7 +410,7 @@ uint8_t curr_practice_point;
 uint16_t practice_player_x[2*MAX_PRACTICE_POINTS];
 uint16_t practice_player_y[2*MAX_PRACTICE_POINTS];
 uint8_t practice_player_gamemode[MAX_PRACTICE_POINTS];
-uint8_t practice_mini[MAX_PRACTICE_POINTS];
+uint8_t practice_mini[2*MAX_PRACTICE_POINTS];
 uint8_t practice_dual[MAX_PRACTICE_POINTS];
 uint8_t practice_speed[MAX_PRACTICE_POINTS];
 uint16_t practice_cube_rotate[2*MAX_PRACTICE_POINTS];

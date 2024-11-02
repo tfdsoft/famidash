@@ -93,7 +93,9 @@ void reset_level(void) {
 	drawing_frame = 0;
 	gravity_mod = 0;
 	disco_sprites = 0;
-	mini = 0x00;
+	currplayer_mini = 0x00;
+	mini[0] = 0;
+	mini[1] = 0;
 	currplayer_vel_x = 0;
 	currplayer_vel_y = 0;
 	forced_trails = 0;
