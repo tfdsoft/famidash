@@ -20,8 +20,7 @@ void draw_sprites(void){
 	// draw player
 	if (!invisible) {
 		if (dual) {
-			if (kandoframecnt & 0x01) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone);
- }
+			if (kandoframecnt & 0x01) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone); }
 			else { crossPRGBankJump0(drawplayerone); crossPRGBankJump0(drawplayertwo); }
 		}
 #ifdef FLAG_KANDO_FUN_STUFF

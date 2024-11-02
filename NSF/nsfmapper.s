@@ -11,44 +11,42 @@ NSF_REG_BANK_E = $5FFE
 NSF_REG_BANK_F = $5FFF
 
 
-.segment "ZEROPAGE"
-    ; Used to track whether a register write was interrupted, so we can try again if needed.
-    ; alexmush comment:
-    ; not anymore, just used for the PRG mode
-    mmc3ChrInversionSetting: .res 1
-.segment "BSS"
-    mmc3PRG1Bank:   .res 1    ;because famistudio updates
+; .importzp mmc3ChrInversionSetting
+; .import mmc3PRG1Bank ;because famistudio updates
 
-.segment "CODE_2"
-    _mmc3_pop_prg_bank_1:
+.segment "NSF_CODE"
+	.byte "mpr:pop_prg_bnk1"
+    _mmc3_pop_prg_bank_1_patch:
         LDA mmc3PRG1Bank
 		ASL
 		STA NSF_REG_BANK_A
 		ORA	#1
 		STA NSF_REG_BANK_B
         rts
-    .export _mmc3_pop_prg_bank_1
+    .export _mmc3_pop_prg_bank_1_patch
 
-    mmc3_set_prg_bank_1:
-    _mmc3_set_prg_bank_1:
+	.byte "mpr:set_prg_bnk1"
+    mmc3_set_prg_bank_1_patch:
+    _mmc3_set_prg_bank_1_patch:
         STA mmc3PRG1Bank
-    mmc3_tmp_prg_bank_1:    ; ONLY MEANT FOR USE WITH NMI-RELATED TEMPORARY BANKSWITCHING
+    mmc3_tmp_prg_bank_1_patch:    ; ONLY MEANT FOR USE WITH NMI-RELATED TEMPORARY BANKSWITCHING
         ASL
 		STA NSF_REG_BANK_A
 		ORA	#1
 		STA NSF_REG_BANK_B
         rts
-    .export _mmc3_set_prg_bank_1
+    .export _mmc3_set_prg_bank_1_patch
 	
+	.byte "mpr:set_prg_bnk0"
     ; Store mirroring value to mmc3 register
-    mmc3_set_prg_bank_0:
-    _mmc3_set_prg_bank_0:
+    mmc3_set_prg_bank_0_patch:
+    _mmc3_set_prg_bank_0_patch:
         ASL
 		STA NSF_REG_BANK_C
 		ORA	#1
 		STA NSF_REG_BANK_D
         RTS
-    .export _mmc3_set_prg_bank_0
+    .export _mmc3_set_prg_bank_0_patch
 
 
     ; mmc3_disable_irq:

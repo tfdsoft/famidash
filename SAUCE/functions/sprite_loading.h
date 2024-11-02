@@ -223,7 +223,7 @@ char sprite_load_special_behavior(){
 
 	#undef type
 
-	#undef killSprite_return0
+//	#undef killSprite_return0
 }
 
 void animate_coin_1() {    
@@ -273,8 +273,8 @@ void animate_coin_3() {
 
 const short heights[] = {
 //	cube    ship    ball     ufo    robot   spider  wave   swing
-	0x590,  0x590,  0x4A0,  0x350,  0x660,  0x440,  0x000, 0x000, // yellow orb
-	0x7C0,  0x10A0,  0x575,  0x320,  0x8B0,  0x500,  0x000, 0x000, // yellow pad
+	0x590,  0x590,  0x4A0,  0x350,  0x590,  0x440,  0x000, 0x000, // yellow orb
+	0x7C0,  0x450,  0x575,  0x320,  0x8B0,  0x500,  0x000, 0x000, // yellow pad
 	0x3D0,  0x590,  0x3C0,  0x590,  0x450,  0x350,  0x000, 0x000, // pink orb
 	0x510,  0x510,  0x38A,  0x510,  0x510,  0x510,  0x000, 0x000, // pink pad
 	0x750,  0x700,  0x600,  0x750,  0x750,  0x500,  0x000, 0x000, // red orb
@@ -287,7 +287,7 @@ const short heights[] = {
 const short mini_heights[] = {
 //  cube    ship    ball     ufo    robot   spider  wave   swing
 	0x4D0,  0x4D0,  0x410,  0x3D0,  0x4D0,  0x4D0,  0x000, 0x000, // yellow orb
-	0x5B0,  0x10A0,  0x460,  0x3A0,  0x5B0,  0x500,  0x000, 0x000, // yellow pad
+	0x5B0,  0x450,  0x460,  0x3A0,  0x5B0,  0x500,  0x000, 0x000, // yellow pad
 	0x350,  0x4D0,  0x500,  0x4D0,  0x350,  0x4D0,  0x000, 0x000, // pink orb
 	0x350,  0x3A0,  0x390,  0x300,  0x350,  0x3A0,  0x000, 0x000, // pink pad
 	0x750,  0x700,  0x600,  0x750,  0x850,  0x500,  0x000, 0x000, // red orb
@@ -302,7 +302,9 @@ const short mini_heights[] = {
 
 // Load the player velocity from the height table
 static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
-	__A__ = (gamemode | table_offset) << 1;
+	if (!retro_mode) __A__ = (gamemode | table_offset) << 1;
+	else if (retro_mode && gamemode == 4) __A__ = (0 | table_offset) << 1;
+	else __A__ = (gamemode | table_offset) << 1;
 	__asm__("tay");
 	if (currplayer_mini) {
 		__AX__ = (__asm__ ("lda %v,y", mini_heights), __asm__ ("ldx %v+1,y", mini_heights),__AX__);
@@ -316,9 +318,9 @@ static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 }
 
 static void sprite_gamemode_main() {
-	if (controllingplayer->a) {	
+	if (controllingplayer->a || controllingplayer->up) {	
 		if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
-		if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
+		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			settrailstuff();
 
@@ -413,7 +415,7 @@ static void sprite_gamemode_main() {
 }
 
 static void sprite_gamemode_controller_check() {
-	if (controllingplayer->press_a) {	
+	if (controllingplayer->press_a || controllingplayer->press_up) {	
 		idx8_store(cube_data, currplayer, cube_data[currplayer] & 0x01);
 		settrailstuff();
 		switch (collided) {
@@ -507,7 +509,25 @@ void sprite_collide_lookup() {
 
 	if (!activesprites_activated[index] || dual || options & platformer) {
 		switch (collided) {
+		case DUAL_PORTAL:
+	//		if (!activesprites_activated[index]) {
+				dual = 1;
+				if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1;  }
+				else { player_x[1] = player_x[0]; player_y[1] = currplayer_y; player_gravity[1] = !currplayer_gravity; player_vel_y[1] = -currplayer_vel_y; }
+				activesprites_type[index] = 0xFF;
+	//		}
+			return;
+		case SINGLE_PORTAL:
+	//		if (!activesprites_activated[index]) {
+				if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; player_gravity[0] = currplayer_gravity; player_vel_y[0] = currplayer_vel_y; }
+				else { player_gravity[1] = player_gravity[0]; }
 
+				tallmode = 0;
+				longmode = 0;
+				bigboi = 0;
+				activesprites_type[index] = 0xFF;
+	//		}
+			return;
 		case TELEPORT_PORTAL_EXIT:
 		case TELEPORT_SQUARE_EXIT:
 		case NOSPRITE:
@@ -550,7 +570,7 @@ void sprite_collide_lookup() {
 			//robotjumptime[currplayer] = 0;
 			return;
 		case TELEPORT_SQUARE_ENTER:
-			if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
+			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 				currplayer_vel_y = 0;
 				orbed[currplayer] = 1;
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
@@ -607,18 +627,7 @@ void sprite_collide_lookup() {
 
 			idx8_inc(activesprites_activated, index);
 			return;
-		case DUAL_PORTAL:
-			dual = 1;
-			if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1; }
-			else { player_x[1] = player_x[0]; player_y[1] = player_y[0]; player_gravity[1] = player_gravity[0] ^ 1; }
-			return;
-		case SINGLE_PORTAL:
-			if (!twoplayer) dual = 0;
-			else { player_gravity[1] = player_gravity[0]; }
-			tallmode = 0;
-			longmode = 0;
-			bigboi = 0;
-			return;
+
 
 		// collided with non game mode portals 
 
@@ -699,7 +708,7 @@ void sprite_collide_lookup() {
 			return;
 
 		case SPIDER_ORB_UP:
-			if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
+			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 		case SPIDER_PAD_UP:
 				high_byte(currplayer_y) -= eject_D;
@@ -713,7 +722,7 @@ void sprite_collide_lookup() {
 			}
 			return;
 		case SPIDER_ORB_DOWN:
-			if ((cube_data[currplayer] & 2) || controllingplayer->press_a) {
+			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 		case SPIDER_PAD_DOWN:
 				high_byte(currplayer_y) -= eject_U + 1;
@@ -757,7 +766,7 @@ void sprite_collide_lookup() {
 				currplayer_gravity = 0x01;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE;	
 			}
-			//idx8_inc(activesprites_activated, index);	
+			idx8_inc(activesprites_activated, index);	
 			return;
 		
 		case GRAVITY_PAD_UP:
@@ -767,7 +776,7 @@ void sprite_collide_lookup() {
 				currplayer_gravity = 0x00;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
 			}
-			//idx8_inc(activesprites_activated, index);	
+			idx8_inc(activesprites_activated, index);	
 			return;
 
 		// collided with an orb

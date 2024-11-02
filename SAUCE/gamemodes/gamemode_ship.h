@@ -10,8 +10,8 @@ void ship_movement(void){
 	gravity_mini = MINI_SHIP_GRAVITY;
 	common_gravity_routine();
 
-	if(currplayer_vel_y > (!currplayer_mini ? SHIP_MAX_FALLSPEED : MINI_SHIP_MAX_FALLSPEED)) currplayer_vel_y = (!currplayer_mini ? SHIP_MAX_FALLSPEED : MINI_SHIP_MAX_FALLSPEED);
-	if(currplayer_vel_y < (!currplayer_mini ? -SHIP_MAX_FALLSPEED : -MINI_SHIP_MAX_FALLSPEED)) currplayer_vel_y = (!currplayer_mini ? -SHIP_MAX_FALLSPEED : -MINI_SHIP_MAX_FALLSPEED);
+	if(currplayer_vel_y > (!mini ? fallspeed_big : fallspeed_mini)) currplayer_vel_y -= (!mini ? gravity_big : gravity_mini);
+	if(currplayer_vel_y < (!mini ? -fallspeed_big : -fallspeed_mini)) currplayer_vel_y += (!mini ? gravity_big : gravity_mini);
 
 
 	Generic.x = high_byte(currplayer_x);
@@ -45,10 +45,10 @@ void ship_movement(void){
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 	Generic.x = high_byte(currplayer_x); // the rest should be the same
 	
-	if (controllingplayer->press_a) jumps++;
+	if (controllingplayer->press_a || controllingplayer->press_up) jumps++;
 
-	if(controllingplayer->a) {
-		if (!currplayer_mini) {
+	if(controllingplayer->a || controllingplayer->up) {
+		if (!mini) {
 			if (!currplayer_gravity){
 			    currplayer_vel_y -= SHIP_GRAVITY<<1;
 				} else {

@@ -680,6 +680,7 @@ void code_checker() {
 	}
 	
 	else if (song == 1 && sfx == 7 && kandokidshack3 == 1) {
+		all_levels_complete = 0xFC;
 		gameState = 0xF0; // fun settings gamestate
 		tmp3--;
 	}		
