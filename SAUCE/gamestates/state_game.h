@@ -169,7 +169,16 @@ void state_game(){
 
 		kandoframecnt++;
 		music_update();
-		if (slowmode && (kandoframecnt & 1)) { ppu_wait_nmi(); }
+		if (slowmode && (kandoframecnt & 1)) { ppu_wait_nmi(); 
+		crossPRGBankJump0(sprite_collide);
+  		oam_clear();
+
+		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
+		draw_screen(); 
+		mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
+		draw_sprites();
+
+		}
 		else {
 			ppu_wait_nmi();
 
