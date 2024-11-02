@@ -560,11 +560,19 @@ void customize_screen() {
 //end mouse stuff
 		if (!retro_mode) {
 			if (icon != prev_icon) {
-				tmp1 = iconTable[icon] + 'a';
-				one_vram_buffer(tmp1, NTADR_A(15, 8));
-				one_vram_buffer(++tmp1, NTADR_A(16, 8));
-				one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(15, 9));
-				one_vram_buffer(++tmp1, NTADR_A(16, 9));
+				if (icon != 27) {
+					tmp1 = iconTable[icon] + 'a';
+					one_vram_buffer(tmp1, NTADR_A(15, 8));
+					one_vram_buffer(++tmp1, NTADR_A(16, 8));
+					one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(15, 9));
+					one_vram_buffer(++tmp1, NTADR_A(16, 9));
+				}
+				else {
+						one_vram_buffer(0x1C, NTADR_A(15, 8));				
+						one_vram_buffer(0x1D, NTADR_A(16, 8));				
+						one_vram_buffer(0x1E, NTADR_A(15, 9));				
+						one_vram_buffer(0x1F, NTADR_A(16, 9));				
+				}
 				prev_icon = icon;
 			}
 		} else {

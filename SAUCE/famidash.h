@@ -26,13 +26,13 @@
 #define test4  0X17
 
 
-#define NINJABANK 92
-#define MOUSEBANK 94
-#define LETTERBANK 96
-#define MENUBANK 98
-#define MENUICONBANK 102
-#define LEVELCOMPLETEBANK 106
-#define PRACTICECOMPLETEBANK 110
+#define NINJABANK 94
+#define MOUSEBANK 96
+#define LETTERBANK 98
+#define MENUBANK 100
+#define MENUICONBANK 104
+#define LEVELCOMPLETEBANK 108
+#define PRACTICECOMPLETEBANK 112
 
 #define SPIKESA 0
 #define SPIKESB 2
@@ -48,7 +48,7 @@
 #define GAME 0x02
 
 
-#define MAX_ICONS 27 //total icons
+#define MAX_ICONS 28 //total icons
 
 // physics defines
 #define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580
