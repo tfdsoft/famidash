@@ -26,7 +26,7 @@
 	.export __memcpy,__memfill,_delay
 	
 	.export _flush_vram_update2, _oam_set, _oam_get
-	.import _disco_sprites
+	.import _disco_sprites, _slowmode, _kandoframecnt
 	.segment "NESLIB"
 
 ;NMI handler
@@ -111,12 +111,21 @@ nmi:
                    ; so goes before the music
             ; but, if screen is off this should be skipped
   
-
+  lda _slowmode
+  beq @calc
+  lda _kandoframecnt
+  and #$01
+  bne @skipAll
+  
+@calc:
   lda noMouse
   bne @SkipMouse
   ; Read the raw controller data synced with OAM DMA to prevent
   ; DMC DMA bugs
   jsr oam_and_readjoypad
+
+
+
 
   lda <(mouse + kMouseButtons)
   and #$0f
@@ -135,6 +144,7 @@ nmi:
   ; Calculate the press/release for the controllers
   ; and also update mouse X/Y coords after the timing sensitive parts
   ; of NMI are complete
+
   jsr calculate_extra_fields
 
 @skipAll:
@@ -250,16 +260,16 @@ _pal_spr:
 
 _pal_clear:
 
-	lda #$0f
-	ldx #0
+;	lda #$0f
+;	ldx #0
 
 @1:
 
-	sta PAL_BUF,x
-	inx
-	cpx #$20
-	bne @1
-	stx <PAL_UPDATE
+;	sta PAL_BUF,x
+;	inx
+;	cpx #$20
+;	bne @1
+;	stx <PAL_UPDATE
 	rts
 
 
