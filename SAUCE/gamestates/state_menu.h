@@ -854,11 +854,11 @@ void state_menu() {
 					break;
 				case 2:		//mini cube
 					title_cube_shit();
-					currplayer_mini = 1;
+					mini[0] = 1;
 					high_byte(player_x[0]) = currplayer_x_small;
 					high_byte(player_y[0]) = currplayer_y_small;
 					crossPRGBankJump0(drawplayerone);
-					currplayer_mini = 0;
+					mini[0] = 0;
 					break;
 				case 3:		//ship
 					title_ship_shit();
@@ -1000,15 +1000,15 @@ void state_menu() {
 					title_wave_shit();
 					
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
-						tmp1 = 0x17;
+						tmp1 = 0x29;
 						tmp2 = 0x20;
 					}
 					else if (currplayer_gravity) {
-						tmp1 = 0x3B;
+						tmp1 = 0x2D;
 						tmp2 = 0xA0;
 					}
 					else {
-						tmp1 = 0x3B;
+						tmp1 = 0x2D;
 						tmp2 = 0x20;
 					}
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
@@ -1087,7 +1087,7 @@ void state_menu() {
 					title_ball_shit();
 					if (retro_mode && currplayer_gravity) tmp7 = 0xA0;
 					else tmp7 = 0x20;					
-					oam_spr(currplayer_x_small, currplayer_y_small, 0x0B, tmp7);
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x3D, tmp7);
 					break;	
 				case 11:		//mini wave
 					title_mini_wave_shit();
@@ -1118,7 +1118,7 @@ void state_menu() {
 
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 2 ? -2 : 1;
 
-					tmp2 = 0x13 + (ballframe * 2);
+					tmp2 = 0x37 + (ballframe * 2);
 
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, 0x20);
 					break;
@@ -1426,10 +1426,10 @@ void set_title_icon() {
 			tmp7 += 38;
 			mmc3_set_2kb_chr_bank_0(retro_mode ? 16 : tmp7);
 		}
-		else if (titlemode <= 7) {
+		else if ((titlemode <= 7 && titlemode != 6) || titlemode == 13 || titlemode == 10) {
 			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 18 : 20);	
 		}
-		else if (titlemode <= 15) {
+		else if ((titlemode <= 15 && titlemode != 13) || titlemode == 6) {
 			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 22 : 24);		
 		}
 }			
