@@ -323,7 +323,7 @@ char bg_coll_slope();
 char bg_side_coll_common() {
 	tmp1 = Generic.y + (mini ? (byte(0x10 - Generic.height) >> 1) : 0) + (Generic.height >> 1);
 
-	if (mini && (gamemode == CUBE_MODE || gamemode == ROBOT_MODE)) {
+	if (currplayer_mini && (gamemode == CUBE_MODE || gamemode == ROBOT_MODE)) {
 		tmp1 += (currplayer_gravity ? 3 : -2);
 	}
 	
@@ -360,7 +360,7 @@ char bg_side_coll_common() {
 */
 char bg_coll_R() {
     // check 2 points on the right side
-	temp_x = Generic.x + low_word(scroll_x) + Generic.width + (platformer ? 3 : 2); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + Generic.width + (platformer ? 3 : 0); // automatically only the low byte
 	return bg_side_coll_common();
 }
 
