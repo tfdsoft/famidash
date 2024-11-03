@@ -60,6 +60,7 @@ void state_game(){
 	kandokidshack = 0;
 	kandokidshack2 = 0;
 	kandokidshack3 = 0;
+	kandokidshack4 = 0;
 	animating = 0;
 	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
 	orbactive = 0;
@@ -169,12 +170,13 @@ void state_game(){
 
 		kandoframecnt++;
 		music_update();
-		if (slowmode && (kandoframecnt & 1)) { ppu_wait_nmi(); 
+		if ((slowmode || (kandokidshack4 == 15)) && (kandoframecnt & 1)) { ppu_wait_nmi(); 
 //			oam_clear();
 //			mmc3_set_prg_bank_1(GET_BANK(draw_screen));
 //			draw_screen(); 
 //			mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
 //			draw_sprites();
+			if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			crossPRGBankJump0(sprite_collide);
 
 		}
@@ -257,6 +259,7 @@ void state_game(){
 				// vram_unrle(pausescreen); 	
 				// ppu_on_all();
 				kandokidshack3 = 0;
+				kandokidshack4 = 0;
 				while (!(joypad1.press & PAD_START) && !(mouse.right_press)) {
 					if (VRAM_UPDATE == 1) {
 						ppu_wait_nmi();
@@ -268,6 +271,9 @@ void state_game(){
 					else exittimer = 0;
 					if ((joypad1.up) && (joypad1.press_b)) {
 						kandokidshack3++;
+					}
+					if ((joypad1.down) && (joypad1.press_b)) {
+						kandokidshack4++;
 					}
 
 					else if ((controllingplayer->press_b || mouse.left_press) && PRACTICE_ENABLED) {
