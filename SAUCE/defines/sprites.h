@@ -1474,13 +1474,13 @@ const unsigned char Mini_Portal[]={
 };
 
 const unsigned char Growth_Portal[]={
-	  0,  0,0x81,0,	
-	  8,  0,0x83,0,	
-	  -8,  16,0x85,0,	
-	  0,  16,0x87,0,
-	  8,  16,0x89,0,
-	  0,  32,0x81,0|OAM_FLIP_V,
-	  8,  32,0x83,0|OAM_FLIP_V,
+	  8,  0,0x81,0,	
+	  16,  0,0x83,0,	
+	  0,  16,0x85,0,	
+	  8,  16,0x87,0,
+	  16,  16,0x89,0,
+	  8,  32,0x81,0|OAM_FLIP_V,
+	  16,  32,0x83,0|OAM_FLIP_V,
 	0x80
 };
 
