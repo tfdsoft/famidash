@@ -14,4 +14,5 @@ song_dry_out = 12
 song_cant_let_go = 13
 song_xstep = 14
 song_theory_of_everything = 15
-song_max = 16
+song_eon = 16
+song_max = 17
