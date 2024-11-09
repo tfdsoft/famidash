@@ -21,12 +21,12 @@
 	.export __scroll,_split,_newrand
 	.export _bank_spr
 	.export __vram_read,__vram_write
-	.export _rand16,_set_rand
+	.export _set_rand
 	.export __vram_fill,_vram_inc,_vram_unrle
 	.export __memcpy,__memfill,_delay
 	
 	.export _flush_vram_update2, _oam_set, _oam_get
-	.import _disco_sprites, _slowmode, _kandoframecnt
+	.import _disco_sprites, _slowmode, _kandoframecnt, _kandokidshack4
 	.segment "NESLIB"
 
 ;NMI handler
@@ -111,8 +111,13 @@ nmi:
                    ; so goes before the music
             ; but, if screen is off this should be skipped
   
+  
+  lda _kandokidshack4
+  cmp #$0f
+  beq @calc2
   lda _slowmode
   beq @calc
+@calc2:
   lda _kandoframecnt
   and #$01
   bne @skipAll
@@ -1041,13 +1046,13 @@ rand2:
 
 ;uint16_t __fastcall__ rand16();
 
-_rand16:
+;_rand16:
 
-	jsr rand1
-	tax
-	jsr rand2
+;	jsr rand1
+;	tax
+;	jsr rand2
 
-	rts
+;	rts
 
 
 ;void __fastcall__ set_rand(uint8_t seed);
