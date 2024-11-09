@@ -321,6 +321,7 @@ void state_game(){
 						ppu_on_all();
 					}
 				}
+				pauseStatus = 0;
 				crossPRGBankJump0(gameboy_check);
 				famistudio_music_pause(0);
 				if (kandokidshack != 9) kandokidshack = 0;
