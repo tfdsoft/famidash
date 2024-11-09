@@ -111,7 +111,6 @@ void ball_movement(void){
 	}
 	else {
 		if ((controllingplayer->press_a) || controllingplayer->press_up){
-			jumps++;
 			currplayer_gravity ^= 0x01;
 			bg_coll_floor_spikes();
 		}
