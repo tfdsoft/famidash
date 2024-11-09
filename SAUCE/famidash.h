@@ -464,6 +464,7 @@ uint8_t forced_trails;
 
 uint8_t attemptCounter[7];
 uint8_t triggers_hit[3];
+uint8_t pauseStatus;
 
 /*
 uint8_t gnd_palette_transition_timer;

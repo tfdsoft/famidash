@@ -254,6 +254,7 @@ void state_game(){
 				famistudio_update();
 				color_emphasis(COL_EMP_DARK);
 				exittimer = 0;
+				pauseStatus = 1;
 				// ppu_off();
 				// mmc3_set_8kb_chr(16);
 				// vram_adr(NAMETABLE_B);
@@ -288,6 +289,7 @@ void state_game(){
 						sfx_play(sfx_exit_level,0);
 						music_update();
 						crossPRGBankJump0(gameboy_check);
+						pauseStatus = 0;
 						return;
 					}
 					if ((joypad1.press_right) && DEBUG_MODE) {
