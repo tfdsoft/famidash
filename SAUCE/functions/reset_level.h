@@ -9,6 +9,7 @@ void reset_level(void) {
 	// slope stuff
 	was_on_slope_counter = 0;
 	slope_frames = 0;
+	jumps = 0;
 	slope_type = SLOPE_NONE;
 	last_slope_type = SLOPE_NONE;
 	curr_practice_point = has_practice_point;
