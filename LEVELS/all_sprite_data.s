@@ -6129,7 +6129,6 @@ sprite_data_eon:
   .byte $50,$5a,$f0,$02,$05
   .byte $60,$5a,$20,$03,$13
   .byte $70,$5a,$20,$03,$05
-  .byte $80,$5a,$20,$03,$fb
   .byte $80,$5a,$50,$03,$13
   .byte $90,$5a,$50,$03,$27
   .byte $a0,$5a,$50,$03,$fb
@@ -8071,7 +8070,9 @@ sprite_data_test3:
   .byte $ff
 .segment "SPR_BANK_05"
 sprite_data_test4:
+  .byte $40,$00,$60,$03,$10
   .byte $b0,$00,$20,$03,$03
+  .byte $b0,$00,$60,$03,$12
   .byte $ff
 .segment "SPR_BANK_05"
 sprite_data_danger:
