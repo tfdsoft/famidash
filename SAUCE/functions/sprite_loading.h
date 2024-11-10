@@ -947,12 +947,11 @@ void sprite_collide_lookup() {
 #undef collided
 
 void sprite_collide(){
-
-	Generic.x = high_byte(currplayer_x) + 1;
-	Generic.y = high_byte(currplayer_y);
-
 	Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
 	Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
+
+	Generic.x = high_byte(currplayer_x) + 1;
+	Generic.y = high_byte(currplayer_y) + (byte(0x10 - Generic.height) >> 1);
 
 	index = 0;
 

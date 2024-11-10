@@ -7918,9 +7918,18 @@ sprite_data_test3:
   .byte $ff
 .segment "SPR_BANK_05"
 sprite_data_test4:
-  .byte $40,$00,$60,$03,$10
-  .byte $b0,$00,$20,$03,$03
-  .byte $b0,$00,$60,$03,$12
+  .byte $c0,$00,$30,$03,$09
+  .byte $c0,$00,$40,$03,$05
+  .byte $00,$01,$20,$03,$09
+  .byte $00,$01,$30,$03,$05
+  .byte $10,$01,$60,$03,$06
+  .byte $a0,$01,$50,$03,$09
+  .byte $c0,$01,$30,$03,$08
+  .byte $e0,$01,$50,$03,$09
+  .byte $00,$02,$30,$03,$08
+  .byte $20,$02,$50,$03,$09
+  .byte $c0,$02,$50,$03,$09
+  .byte $c0,$02,$60,$03,$27
   .byte $ff
 .segment "SPR_BANK_05"
 sprite_data_danger:
