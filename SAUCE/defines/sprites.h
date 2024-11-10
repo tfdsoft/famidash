@@ -1705,32 +1705,32 @@ const unsigned char Portal_Gamemode_Wave[]={
 	0x80
 };
 const unsigned char Portal_Gravity_Down[]={
-	  -8,  0,0x6D,0,  
-	  -8, 16,0x73,0,  
-	  -8, 32,0x6D,0|OAM_FLIP_V, 
-	  0,  0,0x6F,0,  
+	  0,  0,0x6D,0,  
+	  0, 16,0x73,0,  
+	  0, 32,0x6D,0|OAM_FLIP_V, 
+	  8,  0,0x6F,0,  
 
-	  0, 16,0x75,0,
-	  0, 32,0x6F,0|OAM_FLIP_V,  
-	 8,  0,0x71,0,  
-	 8, 16,0x77,0, 
+	  8, 16,0x75,0,
+	  8, 32,0x6F,0|OAM_FLIP_V,  
+	 16,  0,0x71,0,  
+	 16, 16,0x77,0, 
 
-	 8, 32,0x71,0|OAM_FLIP_V, 
+	 16, 32,0x71,0|OAM_FLIP_V, 
 	0x80
 };
 const unsigned char Portal_Gravity_Up[]={
 
-	  -8,  0,0x6D,1,  
-	  -8, 16,0x73,1,  
-	  -8, 32,0x6D,1|OAM_FLIP_V, 
-	  0,  0,0x6F,1,  
+	  0,  0,0x6D,1,  
+	  0, 16,0x73,1,  
+	  0, 32,0x6D,1|OAM_FLIP_V, 
+	  8,  0,0x6F,1,  
 
-	  0, 16,0x75,1,
-	  0, 32,0x6F,1|OAM_FLIP_V,  
-	 8,  0,0x71,1,  
-	 8, 16,0x77,1, 
+	  8, 16,0x75,1,
+	  8, 32,0x6F,1|OAM_FLIP_V,  
+	 16,  0,0x71,1,  
+	 16, 16,0x77,1, 
 
-	 8, 32,0x71,1|OAM_FLIP_V, 
+	 16, 32,0x71,1|OAM_FLIP_V, 
 	0x80
 };
 
