@@ -569,7 +569,7 @@ void sprite_collide_lookup() {
 			return;
 		
 		// Portal game mode switches
-		case S_BLOCK: dashing[currplayer] = 0; return;
+		case S_BLOCK: dashing[currplayer] = 0; orbed[currplayer] = 1; return;
 		case H_BLOCK: hblocked[currplayer] = 1; return;
 		case J_BLOCK: jblocked[currplayer] = 1; return;
 		case D_BLOCK: dblocked[currplayer] = 1; return;
