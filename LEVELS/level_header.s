@@ -124,7 +124,7 @@ luckydraw_speed       = $00
 luckydraw_bg_color    = $0F
 luckydraw_grnd_color  = $0F
 
-eon_song_number = song_practice
+eon_song_number = song_eon
 eon_game_mode   = $00
 eon_speed       = $01
 eon_bg_color    = $0F

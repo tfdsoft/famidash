@@ -176,7 +176,7 @@ void state_game(){
 //			draw_screen(); 
 //			mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
 //			draw_sprites();
-			if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+//			if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			crossPRGBankJump0(sprite_collide);
 
 		}

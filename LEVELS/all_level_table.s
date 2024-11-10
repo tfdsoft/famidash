@@ -188,7 +188,7 @@ _level_lengths_lo:
   .byte .lobyte($000098)		; nightmare
   .byte .lobyte($0000A0)		; demonpark
   .byte .lobyte($00008A)		; decode
-  .byte .lobyte($000285)		; eon
+  .byte .lobyte($000286)		; eon
   .byte .lobyte($000086)		; luckydraw
   .byte .lobyte($000080)		; test
   .byte .lobyte($00006E)		; test2
@@ -217,7 +217,7 @@ _level_lengths_md:
   .byte .hibyte($000098)		; nightmare
   .byte .hibyte($0000A0)		; demonpark
   .byte .hibyte($00008A)		; decode
-  .byte .hibyte($000285)		; eon
+  .byte .hibyte($000286)		; eon
   .byte .hibyte($000086)		; luckydraw
   .byte .hibyte($000080)		; test
   .byte .hibyte($00006E)		; test2
@@ -246,7 +246,7 @@ _level_lengths_hi:
   .byte .bankbyte($000098)		; nightmare
   .byte .bankbyte($0000A0)		; demonpark
   .byte .bankbyte($00008A)		; decode
-  .byte .bankbyte($000285)		; eon
+  .byte .bankbyte($000286)		; eon
   .byte .bankbyte($000086)		; luckydraw
   .byte .bankbyte($000080)		; test
   .byte .bankbyte($00006E)		; test2
