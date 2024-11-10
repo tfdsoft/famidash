@@ -41,7 +41,7 @@ function Main()
   scrollxtable = emu.getLabelAddress("_scroll_x")
   scrollytable = emu.getLabelAddress("_scroll_y")
 
-  for i=0,16 do
+  for i=0,15 do
     sprActive = emu.read(actives.address + i, actives.memType, false)
     if sprActive > 0 then
       sprType = emu.read(types.address + i, types.memType, false)
