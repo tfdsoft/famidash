@@ -23,7 +23,7 @@ function Main()
     player_height = 15
   end
 
-  emu.drawRectangle(player_x, player_y, player_width, player_height, 0x7f0000ff, true)
+  emu.drawRectangle(player_x, player_y, player_width, player_height, 0x7fffff00, false)
 
   actives = emu.getLabelAddress("_activesprites_active")
   
