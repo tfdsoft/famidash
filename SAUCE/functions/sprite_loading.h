@@ -872,7 +872,7 @@ void sprite_collide_lookup() {
 				settrailstuff();
 				currplayer_gravity = 0x01;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE;
-				invincible_counter = 5;
+				//invincible_counter = 3;
 			}
 			idx8_inc(activesprites_activated, index);	
 			return;
@@ -882,7 +882,8 @@ void sprite_collide_lookup() {
 			if (currplayer_gravity) { 	
 				settrailstuff();
 				currplayer_gravity = 0x00;				//flip gravity
-				currplayer_vel_y = PAD_HEIGHT_BLUE^0xFFFF;	
+				currplayer_vel_y = PAD_HEIGHT_BLUE^0xFFFF;
+				//invincible_counter = 3;				
 			}
 			idx8_inc(activesprites_activated, index);	
 			return;
