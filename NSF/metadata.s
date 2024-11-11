@@ -11,7 +11,7 @@ RIFFChunkStart "plst"
 .byte song_menu_theme, song_stereo_madness, song_back_on_track, song_polargeist
 .byte song_dry_out, song_base_after_base, song_cant_let_go, song_jumper
 .byte song_time_machine, song_cycles, song_xstep, song_clutterfunk
-.byte song_theory_of_everything, song_electroman_adventures, song_custom_endgame, song_practice
+.byte song_theory_of_everything, song_electroman_adventures, song_custom_endgame, song_practice, song_eon
 
 .repeat sfx_max+2, n
 .byte song_max+n
