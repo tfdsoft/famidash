@@ -203,7 +203,7 @@ const unsigned char Mini_Ball[]={
 
 const unsigned char Mini_Ball_Alt[]={
 
-	 -4,  4,0x0B,3|OAM_FLIP_V,
+	 -4,  4,0x3D,3|OAM_FLIP_V,
 	0x80
 };
 
@@ -1033,25 +1033,25 @@ const unsigned char * const MINI_ROBOT_JUMP[]={Mini_Robot_Jump_1, Mini_Robot_Jum
 // ================================================================
 const unsigned char Mini_Robot_ALT_0[]={
 	
-	-4,   -4, 0x13,3,
+	-4,   -4, 0x37,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_ALT_1[]={
 	
-	-4,   -4, 0x15,3,
+	-4,   -4, 0x39,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_ALT_2[]={
 	
-	-4,   -4, 0x17,3,
+	-4,   -4, 0x3B,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump_ALT_1[]={
 	
-	-4,   -4, 0x15,3,
+	-4,   -4, 0x39,3,
 	0x80
 };//also mini robot 3rd animation frame - Ficus
 
