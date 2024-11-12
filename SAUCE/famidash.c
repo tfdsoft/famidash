@@ -63,7 +63,7 @@ void main(){
 	crossPRGBankJump0(gameboy_check);
 	gameState = 0x05;
     while (1){
-        ppu_wait_nmi();
+		ppu_wait_nmi();
 		switch (gameState){
 			case 0x01: {
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
