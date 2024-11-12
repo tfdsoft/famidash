@@ -97,6 +97,7 @@ void main(){
 				break;
 			}
 			case 0x05: {
+				music_play(song_scheming_weasel);
 				mmc3_set_prg_bank_1(GET_BANK(state_savefile_validate));
 				state_savefile_validate();
 				break;

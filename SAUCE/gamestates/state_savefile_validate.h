@@ -62,6 +62,7 @@ void state_savefile_validate(){
 
         do {
             ppu_wait_nmi();
+	    music_update();
 		oam_clear();
             mouse_and_cursor();
 		newrand();
