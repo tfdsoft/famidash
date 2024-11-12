@@ -27,8 +27,32 @@ if __name__ == "__main__":
     import argparse
     import subprocess
     import binpacking
+    
+    def checkErr(proc : subprocess.CompletedProcess):
+        if (proc.returncode != 0):
+            print(f"AN ERROR HAS OCCURED WITHIN A SUBPROCESS!\n======\nstdout dump:\n===\n{proc.stdout.decode()}\n===\nstderr dump:\n===\n{proc.stderr.decode()}\n===")
+            proc.check_returncode() # exits
+    
+    envPath = os.environ.get('PATH', "")
+    if (os.name == 'posix'):
+        envPath = envPath.split(":")
+    elif (os.name == 'nt'):
+        envPath = envPath.split(";")
+    else:
+        print (f"YO KIND OF OPERATING SYSTEM ('{os.name}') NOT SUPPORTED")
+        exit(1)
+    
+    def findInPATH(executable : str):
+        for prefix in envPath:
+            if os.path.exists(f"{prefix}/{executable}"):
+                return f"{prefix}/{executable}"
+        return None
+    
     parser = argparse.ArgumentParser()
-    parser.add_argument('fsPath', metavar='famistudioPath', help='Path to FamiStudio.dll from FamiStudio 4.2.1')
+    if (findInPATH("FamiStudio.dll")):
+        parser.add_argument('fsPath', metavar='famistudioPath', help='Path to FamiStudio.dll from FamiStudio 4.2.1', nargs='?', default=findInPATH("FamiStudio.dll"))
+    else:
+        parser.add_argument('fsPath', metavar='famistudioPath', help='Path to FamiStudio.dll from FamiStudio 4.2.1')
     parser.add_argument('-t', '--test-export', action='store_true', help='Exports the music to the TMP folder instead of MUSIC/EXPORTS.')
     args = parser.parse_args()
     
@@ -46,6 +70,7 @@ if __name__ == "__main__":
     # Check FamiStudio version
     print("\n==== Checking FamiStudio version...")
     proc = subprocess.run(['dotnet', fsPath, '-help'], capture_output=True)
+    checkErr(proc)
     fsVer = re.findall(famistudioHelpRegex, proc.stdout.decode())[0]
     fsVer = [int(x) for x in fsVer.split(".")]
     fsVer = fsVer[0]*1000_000 + fsVer[1]*1000 + fsVer[2]
@@ -58,6 +83,7 @@ if __name__ == "__main__":
     fsTxtPath = tmpFolder + "/music_fs.txt"
 
     proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-txt-export', fsTxtPath], capture_output=True)
+    checkErr(proc)
     fsTxtFile = open(fsTxtPath)
     fsTxt = "\n".join(fsTxtFile.readlines())
     fsTxtFile.close()
@@ -88,6 +114,7 @@ if __name__ == "__main__":
 
     proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-asm-export', tmpAsmPath, '-famistudio-asm-format:ca65', '-famistudio-asm-force-dpcm-bankswitch', f'-export-songs:{neededSongsCommaSep},{dpcmidx}'], capture_output=True)
     os.remove(tmpAsmPath)
+    checkErr(proc)
 
     for i in glob.glob(f"{tmpAsmPrefix}*.dmc"):
         os.remove(i)
@@ -130,6 +157,7 @@ if __name__ == "__main__":
 
         proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', '-famistudio-asm-generate-list', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
         output = proc.stdout.decode()
+        checkErr(proc)
 
         print(f"== Info on bank {i}:")
         print("\t" + re.search(totalSizeRegex, output).group())

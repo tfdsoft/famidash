@@ -34,19 +34,19 @@ After this, the same precautions and actions follow, no matter where you worked 
 			- this can be done by right-clicking on a DPCM sample and choosing the "Auto-Assign Banks..." option with an 8KB bank size
 		- every sample used in the tracks in the game is in the "dpcm" song (that's the DPCM aligner)
 	3. Save the MODULES/music_master.fms module
-	4. Run the following command to test the music exports, substituting the argument with the actual path to FamiStudio.dll on your machine:
-		"python3 export.py <path/to/FamiStudio.dll> -t"
-		[ TODO: add check for if it is already in the PATH env var ]
+	4. Run the following command to test the music exports:
+		"python3 export.py [<path/to/FamiStudio.dll>] -t"
+		If FamiStudio.dll on your system is in the PATH variable (this can be checked with trial and error), you should omit the <path/to/FamiStudio.dll>, otherwise substitute it with the actual path to FamiStudio.dll on your machine.
 	5. Check the output of it, make sure it didn't error out midway through and gave you the following message:
 		"==== Everything seems to have gone alright, you can run it for real now."
 	6. If it didn't error out and it completed successfully, run the following command to do it for real:
-		"python3 export.py <path/to/FamiStudio.dll>"
+		"python3 export.py [<path/to/FamiStudio.dll>]"
 	7. Don't close the terminal yet! You've now got a few things to adjust:
 	8. Copy the line after "==== Bank lengths table:" and paste it into /LIB/asm/nesdash.s after the line "music_counts:"
 		[ TODO: automate this ]
 	9. Ensure that the /LIB/asm/famistudio_ca65.s file has the settings set as the export output dictates
 	10. Run parse_fs_files.py to generate the include files
-		[ TODO: merge script into export.py ]
+		[ TODO: merge the actual include file generation into export.py ]
 	11. Remove the references to the "dpcm" song from the header of each music_X.s file
 		[ TODO: automate this ]
 	12. Adjust the music names before the bgmtest function in /SAUCE/gamestates/state_lvldone.h
