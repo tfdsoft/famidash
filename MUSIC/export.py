@@ -60,6 +60,7 @@ if __name__ == "__main__":
     proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-txt-export', fsTxtPath], capture_output=True)
     fsTxtFile = open(fsTxtPath)
     fsTxt = "\n".join(fsTxtFile.readlines())
+    fsTxtFile.close()
     os.remove(fsTxtPath)
 
     songNames = re.findall(songNameRegex, fsTxt)
