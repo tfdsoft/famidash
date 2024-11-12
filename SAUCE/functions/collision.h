@@ -626,7 +626,7 @@ char bg_coll_slope() {
 	if ((uint8_t)(tmp4) >= tmp7) {
 			tmp8 = tmp4 - tmp7 + (currplayer_mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
 			
-			if (controllingplayer->a && (gamemode == 0 || gamemode == 4)) {
+			if ((controllingplayer->a || controllingplayer->up) && (gamemode == 0 || gamemode == 4)) {
 				slope_frames = 0;
 				slope_type = 0;
 			} else {
