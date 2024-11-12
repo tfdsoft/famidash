@@ -415,6 +415,7 @@ const unsigned char TEXT_xlevel1text2[]="BACK$ON";
 const unsigned char TEXT_xlevel1text5[]="BASE$AFTER";
 const unsigned char TEXT_xlevel1textC[]="THEORY$OF";
 const unsigned char TEXT_xlevel1textD[]="ELECTROMAN";
+const unsigned char TEXT_xweasel[]="SCHEMING";
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
 const unsigned char TEXT_xlevel2text2[]="TRACK";
@@ -435,6 +436,7 @@ const unsigned char TEXT_2textmenu[]="MENU";
 const unsigned char TEXT_2texteveryend[]="EVERY$END";
 const unsigned char TEXT_2texteon[]="EON";
 const unsigned char TEXT_2textclubstep[]="CLUBSTEP";
+const unsigned char TEXT_2textweasel[]="WEASEL";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -468,11 +470,11 @@ const unsigned char sfxtexts_size[] = {
 
 
 const unsigned char* const xbgmtexts1[] = {
-	0, TEXT_xlevel1text1, TEXT_xlevel1text2, 0, 0, TEXT_xlevel1text5, 0, 0, 0, 0, 0, 0, TEXT_xlevel1textC, TEXT_xlevel1textD, 0, 0, 0, 0
+	0, TEXT_xlevel1text1, TEXT_xlevel1text2, 0, 0, TEXT_xlevel1text5, 0, 0, 0, 0, 0, 0, TEXT_xlevel1textC, TEXT_xlevel1textD, 0, 0, 0, 0, TEXT_xweasel
 };
 
 const unsigned char* const xbgmtexts2[] = {
-	TEXT_2textmenu, TEXT_xlevel2text1, TEXT_xlevel2text2, TEXT_xlevel2text3, TEXT_xlevel2text4, TEXT_xlevel2text5, TEXT_xlevel2text6, TEXT_xlevel2text7, TEXT_xlevel2text8, TEXT_xlevel2text9, TEXT_xlevel2textA, TEXT_xlevel2textB, TEXT_xlevel2textC, TEXT_xlevel2textD, TEXT_2textclubstep, TEXT_xlevel2textE, TEXT_2textpractice, TEXT_2texteon
+	TEXT_2textmenu, TEXT_xlevel2text1, TEXT_xlevel2text2, TEXT_xlevel2text3, TEXT_xlevel2text4, TEXT_xlevel2text5, TEXT_xlevel2text6, TEXT_xlevel2text7, TEXT_xlevel2text8, TEXT_xlevel2text9, TEXT_xlevel2textA, TEXT_xlevel2textB, TEXT_xlevel2textC, TEXT_xlevel2textD, TEXT_2textclubstep, TEXT_xlevel2textE, TEXT_2textpractice, TEXT_2texteon, TEXT_2textweasel
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -494,6 +496,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_xlevel2textE) - 1,
 	sizeof(TEXT_2textpractice) - 1,
 	sizeof(TEXT_2texteon) - 1,
+	sizeof(TEXT_2textweasel) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -514,6 +517,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	0,
+	sizeof(TEXT_xweasel) - 1,	
 };
 
 
@@ -536,6 +540,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_custom_endgame, 
 	song_practice,
 	song_eon,
+	song_scheming_weasel,
 };
 
 
