@@ -183,7 +183,7 @@ end:
 	rts
 .endproc
 
-.segment "RODATA_2"
+.segment "RODATA"
 
 .export _shiftBy4table := shiftBy4table
 shiftBy4table:
