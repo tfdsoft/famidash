@@ -7,7 +7,7 @@
 #define song_electroman_adventures 6
 #define song_polargeist 7
 #define song_theory_of_everything 8
-#define song_clubstep_ 9
+#define song_clubstep 9
 #define song_stereo_madness 10
 #define song_back_on_track 11
 #define song_base_after_base 12

@@ -36,13 +36,6 @@ music_data_famidash_music5:
 	.word @song3ch3
 	.word @song3ch4
 	.word 286,238
-; 04 : dpcm
-	.word @song4ch0
-	.word @song4ch1
-	.word @song4ch2
-	.word @song4ch3
-	.word @song4ch4
-	.word 307,256
 
 .export music_data_famidash_music5
 .global FAMISTUDIO_DPCM_PTR
@@ -1291,24 +1284,3 @@ music_data_famidash_music5:
 	.byte $41, $0b
 	.word @song3ref1455
 	.byte $11, $81, $17, $81, $11, $81, $14, $0e, $fb, $44, $00
-@song4ch0:
-	.byte $46, $01
-@song4ch0loop:
-	.byte $97, $42
-	.word @song4ch0loop
-@song4ch1:
-@song4ch1loop:
-	.byte $97, $42
-	.word @song4ch1loop
-@song4ch2:
-@song4ch2loop:
-	.byte $97, $42
-	.word @song4ch2loop
-@song4ch3:
-@song4ch3loop:
-	.byte $97, $42
-	.word @song4ch3loop
-@song4ch4:
-@song4ch4loop:
-	.byte $17, $14, $13, $0d, $09, $03, $01, $18, $15, $19, $16, $00, $42
-	.word @song4ch4loop

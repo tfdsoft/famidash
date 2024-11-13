@@ -431,11 +431,11 @@ const unsigned char TEXT_xlevel2textB[]="CLUTTERFUNK";
 const unsigned char TEXT_xlevel2textC[]="EVERYTHING";
 const unsigned char TEXT_xlevel2textD[]="ADVENTURES";
 const unsigned char TEXT_xlevel2textE[]="DECODE";
-const unsigned char TEXT_2textpractice[]="PRACTICE";
-const unsigned char TEXT_2textmenu[]="MENU";
 const unsigned char TEXT_2texteveryend[]="EVERY$END";
 const unsigned char TEXT_2texteon[]="EON";
 const unsigned char TEXT_2textclubstep[]="CLUBSTEP";
+const unsigned char TEXT_2textpractice[]="PRACTICE";
+const unsigned char TEXT_2textmenu[]="MENU";
 const unsigned char TEXT_2textweasel[]="WEASEL";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
@@ -539,7 +539,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_clubstep,
 	song_custom_endgame, 
 	song_practice,
-	song_eon,
+	song_custom_eon,
 	song_scheming_weasel,
 };
 
