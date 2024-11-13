@@ -169,7 +169,6 @@ void state_demo(){
 					gameState = 0x01; return;
 		}
 		ppu_wait_nmi();
-		music_update();
 		tmp1++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 	} while (tmp1 != 0);
@@ -180,7 +179,7 @@ void state_demo(){
 		mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
-		music_update();
+       	    	
 		if (!forced_credits &&
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
@@ -208,7 +207,6 @@ void state_demo(){
 					gameState = 0x01; return;
 		}
 		ppu_wait_nmi();
-		music_update();
 		tmp1++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;				
 	} while (tmp1 != 0);
