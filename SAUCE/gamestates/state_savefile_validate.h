@@ -62,12 +62,13 @@ void state_savefile_validate(){
 
         do {
             ppu_wait_nmi();
-		oam_clear();
+	        music_update();
+		    oam_clear();
             mouse_and_cursor();
-		newrand();
+		    newrand();
             if (joypad1.press || mouse.left_press || mouse.right_press) break;
-	    kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+	        kandoframecnt++;
+		    if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
         } while (1);
  //   }
     pal_bright(3);
