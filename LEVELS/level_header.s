@@ -147,3 +147,9 @@ demonpark_game_mode   = $00
 demonpark_speed       = $00
 demonpark_bg_color    = $16
 demonpark_grnd_color  = $06
+
+clubstep_song_number = song_clubstep
+clubstep_game_mode   = $00
+clubstep_speed       = $00
+clubstep_bg_color    = $0F
+clubstep_grnd_color  = $0F

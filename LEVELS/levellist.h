@@ -62,6 +62,7 @@ const uint8_t DECOTYPE[] = {
 	DECOCLOUD, //clutterfunk
 	DECOCLOUD, //TOE
 	DECOCLOUD, //electroman
+	DECO1, //clubstep
 	DECO1, //LEVEL EASY
 	DECO1, //LIGHTNING ROAD
 	DECOCLOUD, //NIGHTMARE
@@ -90,6 +91,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //clutterfunk
 	SPIKESB, //theory of everything
 	SPIKESB, //electroman
+	SPIKESB, //clubstep
 	SPIKESA, //LEVEL EASY
 	SPIKESA, //lightning road
 	SPIKESB, //nightmare
@@ -118,6 +120,7 @@ const unsigned char block_set[] = {
 	BLOCKSD, //clutterfunk
 	BLOCKSB, //theory of everything
 	BLOCKSB, //electroman
+	BLOCKSB, //clubstep
 	BLOCKSA, //LEVEL EASY
 	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
@@ -146,6 +149,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //clutterfunk
 	SAWBLADESA, //theory of everything
 	SAWBLADESA, //electroman
+	SAWBLADESA, //clubstep
 	SAWBLADESA, //LEVEL EASY
 	SAWBLADESA, //LIGHTNING ROAD
 	SAWBLADESA, //nightmare
@@ -175,6 +179,7 @@ const unsigned char difficulty_list[] = {
     INSANE,
     INSANE,
     INSANE,
+    DEMON,  //CLUBSTEP
     NORMAL, //LEVEL EASY
     DEMON, //lightning road
     DEMON, //nightmare
@@ -203,6 +208,7 @@ const unsigned char stars_list[] = {
 	11,
 	12,
 	10,
+	14,  //clubstep
 	2,
 	10,
 	10,

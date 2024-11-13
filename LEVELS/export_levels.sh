@@ -16,6 +16,7 @@ all_levels="
             clutterfunk\
             theoryofeverything\
             electroman\
+	    clubstep\
             leveleasy\	    
             thelightningroad\
 	    nightmare\
