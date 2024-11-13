@@ -28,7 +28,7 @@ music_data_famidash_music44:
 	.word @song3ch2
 	.word @song3ch3
 	.word @song3ch4
-	.word 266,221
+	.word 260,216
 
 .export music_data_famidash_music44
 .global FAMISTUDIO_DPCM_PTR
