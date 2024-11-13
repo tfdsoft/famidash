@@ -91,7 +91,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //clutterfunk
 	SPIKESB, //theory of everything
 	SPIKESB, //electroman
-	SPIKESB, //clubstep
+	SPIKESA, //clubstep
 	SPIKESA, //LEVEL EASY
 	SPIKESA, //lightning road
 	SPIKESB, //nightmare
