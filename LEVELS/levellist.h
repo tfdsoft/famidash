@@ -102,7 +102,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //test1
 	SPIKESB, //test2
 	SPIKESB, //test3
-	SPIKESB, //test4
+	SPIKESA, //test4
 	SAWBLADESA, //danger
 };
 
