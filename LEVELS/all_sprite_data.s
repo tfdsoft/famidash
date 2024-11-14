@@ -3867,7 +3867,7 @@ sprite_data_clubstep:
   .byte $d0,$1c,$30,$03,$0b
   .byte $00,$1d,$80,$03,$81
   .byte $10,$1d,$10,$03,$10
-  .byte $20,$1d,$f0,$02,$03
+  .byte $30,$1d,$f0,$02,$03
   .byte $78,$1d,$f0,$02,$3e
   .byte $90,$1d,$80,$03,$aa
   .byte $a0,$1d,$f0,$02,$05
@@ -8366,15 +8366,10 @@ sprite_data_test3:
   .byte $ff
 .segment "SPR_BANK_05"
 sprite_data_test4:
-  .byte $40,$00,$70,$03,$16
-  .byte $50,$00,$60,$03,$04
-  .byte $20,$02,$10,$03,$09
-  .byte $20,$02,$20,$03,$0b
-  .byte $40,$02,$20,$03,$08
-  .byte $40,$02,$30,$03,$27
-  .byte $90,$02,$50,$03,$0e
-  .byte $a0,$02,$50,$03,$0e
-  .byte $c0,$02,$50,$03,$28
+  .byte $60,$00,$40,$03,$10
+  .byte $a0,$00,$60,$03,$11
+  .byte $20,$01,$40,$03,$12
+  .byte $60,$01,$60,$03,$13
   .byte $ff
 .segment "SPR_BANK_05"
 sprite_data_danger:
