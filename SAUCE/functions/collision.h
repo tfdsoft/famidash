@@ -43,6 +43,7 @@ char bg_coll_sides() {
 			if (!(uint8_t)(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
 			break;
 		case COL_ALL: 
+		case COL_FLOOR_CEIL:
 			return 1;		
 		case COL_UP_LEFT:
 			tmp2 = temp_y & 0x0f;	
