@@ -53,12 +53,12 @@ void ufo_movement(void){
 //	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
 
-	if(controllingplayer->press_a || controllingplayer->press_up) {
+	if((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed) {
 		if (!currplayer_mini) currplayer_vel_y = UFO_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 		else currplayer_vel_y = MINI_UFO_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 		jumps++;
 	}
-
+	ufo_orbed = 0;
 }	
 
 CODE_BANK_POP()

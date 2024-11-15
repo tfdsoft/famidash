@@ -110,11 +110,12 @@ void ball_movement(void){
 		}
 	}
 	else {
-		if ((controllingplayer->press_a) || controllingplayer->press_up){
+		if ((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed){
 			currplayer_gravity ^= 0x01;
 			bg_coll_floor_spikes();
 		}
 	}		
+	ufo_orbed = 0;
 
 }
 

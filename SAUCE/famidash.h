@@ -400,6 +400,8 @@ uint16_t coin3_speed;
 uint8_t orbactive;
 uint8_t trail_sprites_visible[9];
 
+uint8_t ufo_orbed;
+
 uint8_t dashing[2];
 
 uint8_t disable_dpcm_bankswitch;
