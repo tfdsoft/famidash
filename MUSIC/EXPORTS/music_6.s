@@ -1302,21 +1302,16 @@ music_data_famidash_music6:
 @song6ch0:
 	.byte $46, $01
 @song6ch0loop:
-	.byte $97, $42
-	.word @song6ch0loop
+	.byte $97, $44, $00
 @song6ch1:
 @song6ch1loop:
-	.byte $97, $42
-	.word @song6ch1loop
+	.byte $97, $44, $00
 @song6ch2:
 @song6ch2loop:
-	.byte $97, $42
-	.word @song6ch2loop
+	.byte $97, $44, $00
 @song6ch3:
 @song6ch3loop:
-	.byte $97, $42
-	.word @song6ch3loop
+	.byte $97, $44, $00
 @song6ch4:
 @song6ch4loop:
-	.byte $13, $10, $0f, $09, $08, $02, $01, $14, $11, $15, $12, $00, $42
-	.word @song6ch4loop
+	.byte $13, $10, $0f, $09, $08, $02, $01, $14, $11, $15, $12, $00, $44, $00

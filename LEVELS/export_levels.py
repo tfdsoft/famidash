@@ -159,7 +159,7 @@ def export_spr(folder: str, levels: Iterable[str]):
 					elif obj_id == 0x40: #right long post
 						x -= 16
 
-					if int(a) in [10,13,37,76,82,0x56,253]: # ADJUST HEIGHT FOR BOTTOM PADS
+					if int(a) in [10,13,37,82,0x56,253]: # ADJUST HEIGHT FOR BOTTOM PADS
 						y += 8
 #					if level == "eon" and obj_id == 0x08:
 #							x += 4
