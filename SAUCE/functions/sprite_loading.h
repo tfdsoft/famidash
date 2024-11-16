@@ -940,7 +940,7 @@ void sprite_collide_lookup() {
 			return;
 		};
 		
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE || gamemode == 7) {
+		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE || gamemode == 5 || gamemode >= 7) {
 			sprite_gamemode_main();
 		} else {
 			sprite_gamemode_controller_check();

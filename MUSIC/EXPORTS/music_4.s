@@ -1287,3 +1287,24 @@ music_data_famidash_music4:
 	.byte $41, $0c
 	.word @song2ref1814
 	.byte $00, $9d, $44, $00
+@song3ch0:
+	.byte $46, $01
+@song3ch0loop:
+	.byte $97, $42
+	.word @song3ch0loop
+@song3ch1:
+@song3ch1loop:
+	.byte $97, $42
+	.word @song3ch1loop
+@song3ch2:
+@song3ch2loop:
+	.byte $97, $42
+	.word @song3ch2loop
+@song3ch3:
+@song3ch3loop:
+	.byte $97, $42
+	.word @song3ch3loop
+@song3ch4:
+@song3ch4loop:
+	.byte $17, $14, $13, $0d, $09, $02, $01, $18, $15, $19, $16, $00, $42
+	.word @song3ch4loop

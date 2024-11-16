@@ -8,7 +8,7 @@ music_data_famidash_music1:
 	.byte 3
 	.word @instruments
 	.word @samples-5
-; 00 : custom_endgame
+; 00 : endgame
 	.word @song0ch0
 	.word @song0ch1
 	.word @song0ch2
@@ -999,3 +999,24 @@ music_data_famidash_music1:
 	.byte $41, $46
 	.word @song1ref4213
 	.byte $d7, $44, $00
+@song2ch0:
+	.byte $46, $01
+@song2ch0loop:
+	.byte $97, $42
+	.word @song2ch0loop
+@song2ch1:
+@song2ch1loop:
+	.byte $97, $42
+	.word @song2ch1loop
+@song2ch2:
+@song2ch2loop:
+	.byte $97, $42
+	.word @song2ch2loop
+@song2ch3:
+@song2ch3loop:
+	.byte $97, $42
+	.word @song2ch3loop
+@song2ch4:
+@song2ch4loop:
+	.byte $17, $14, $13, $0e, $08, $02, $01, $18, $15, $19, $16, $00, $42
+	.word @song2ch4loop

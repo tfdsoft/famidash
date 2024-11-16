@@ -17,4 +17,5 @@ song_jumper = 15
 song_xstep = 16
 song_scheming_weasel = 17
 song_menu_theme = 18
-song_max = 19
+song_the_challenge = 19
+song_max = 20

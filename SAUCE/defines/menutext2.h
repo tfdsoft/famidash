@@ -17,6 +17,7 @@ const unsigned char level5text[]="BASE AFTER";
 const unsigned char levelCtext[]="THEORY OF";
 const unsigned char levelDtext[]="ELECTROMAN";
 const unsigned char level16text[]="THE LIGHTNING";
+const unsigned char levelchallengetext[]="THE";
 //const unsigned char level18text[]="GO BACK TO";
 
 const unsigned char level1text2[]="MADNESS";
@@ -45,4 +46,5 @@ const unsigned char level16text2[]="ROAD";
 const unsigned char level17text2[]="EON";
 //const unsigned char level18text2[]="THE SAFE LEVELS";
 const unsigned char level19text2[]="DEMON PARK";
+const unsigned char levelchallengetext2[]="CHALLENGE";
 

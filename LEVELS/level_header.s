@@ -106,7 +106,7 @@ test3_speed       = $00
 test3_bg_color    = $16
 test3_grnd_color  = $06
 
-test4_song_number = song_clubstep
+test4_song_number = song_the_challenge
 test4_game_mode   = $00
 test4_speed       = $00
 test4_bg_color    = $12

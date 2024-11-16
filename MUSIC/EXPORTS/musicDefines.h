@@ -17,7 +17,8 @@
 #define song_xstep 16
 #define song_scheming_weasel 17
 #define song_menu_theme 18
-#define song_max 19
+#define song_the_challenge 19
+#define song_max 20
 #define sfx_death 0
 #define sfx_click 1
 #define sfx_level_complete 2

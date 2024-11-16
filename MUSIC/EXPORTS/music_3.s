@@ -8,7 +8,7 @@ music_data_famidash_music3:
 	.byte 4
 	.word @instruments
 	.word @samples-5
-; 00 : custom_eon
+; 00 : eon
 	.word @song0ch0
 	.word @song0ch1
 	.word @song0ch2
@@ -1209,3 +1209,24 @@ music_data_famidash_music3:
 	.word @song2ref1961
 	.byte $00, $85, $14, $48, $01, $81, $14, $48, $01, $81, $00, $85, $0d, $48, $01, $81, $0d, $48, $01, $81, $00, $85, $0d, $48
 	.byte $01, $81, $0d, $48, $01, $81, $0c, $fd, $9f, $44, $00
+@song3ch0:
+	.byte $46, $01
+@song3ch0loop:
+	.byte $97, $42
+	.word @song3ch0loop
+@song3ch1:
+@song3ch1loop:
+	.byte $97, $42
+	.word @song3ch1loop
+@song3ch2:
+@song3ch2loop:
+	.byte $97, $42
+	.word @song3ch2loop
+@song3ch3:
+@song3ch3loop:
+	.byte $97, $42
+	.word @song3ch3loop
+@song3ch4:
+@song3ch4loop:
+	.byte $1a, $17, $16, $0f, $09, $03, $01, $1b, $18, $1c, $19, $00, $42
+	.word @song3ch4loop
