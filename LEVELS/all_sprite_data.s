@@ -4101,6 +4101,67 @@ sprite_data_clubstep:
   .byte $80,$38,$40,$03,$0f
   .byte $ff
 .segment "SPR_BANK_02"
+sprite_data_thechallenge:
+  .byte $90,$00,$58,$03,$0d
+  .byte $80,$01,$30,$03,$0e
+  .byte $e0,$01,$50,$03,$0b
+  .byte $20,$02,$40,$03,$45
+  .byte $90,$02,$30,$03,$f9
+  .byte $90,$02,$40,$03,$f9
+  .byte $90,$02,$50,$03,$f9
+  .byte $40,$03,$30,$03,$06
+  .byte $70,$03,$30,$03,$06
+  .byte $b0,$03,$40,$03,$4c
+  .byte $e0,$03,$e0,$02,$f9
+  .byte $e0,$03,$f0,$02,$f9
+  .byte $f0,$03,$f0,$02,$f9
+  .byte $f0,$03,$00,$03,$f9
+  .byte $00,$04,$00,$03,$f9
+  .byte $00,$04,$10,$03,$f9
+  .byte $10,$04,$10,$03,$f9
+  .byte $20,$04,$20,$03,$f9
+  .byte $20,$04,$40,$03,$27
+  .byte $30,$04,$30,$03,$f9
+  .byte $60,$04,$30,$03,$27
+  .byte $30,$05,$58,$03,$0a
+  .byte $80,$05,$30,$03,$0b
+  .byte $c0,$05,$30,$03,$05
+  .byte $e0,$05,$f0,$02,$05
+  .byte $f0,$05,$20,$03,$27
+  .byte $40,$06,$10,$03,$27
+  .byte $60,$07,$10,$03,$13
+  .byte $80,$07,$00,$03,$10
+  .byte $a0,$07,$f0,$02,$17
+  .byte $90,$08,$e8,$02,$0d
+  .byte $a0,$08,$d0,$02,$0e
+  .byte $a0,$08,$e8,$02,$0d
+  .byte $b0,$08,$d0,$02,$0e
+  .byte $b0,$08,$e8,$02,$0d
+  .byte $c0,$08,$d0,$02,$0e
+  .byte $c0,$08,$e8,$02,$0d
+  .byte $e0,$08,$c0,$02,$08
+  .byte $70,$09,$10,$03,$06
+  .byte $a0,$09,$10,$03,$06
+  .byte $30,$0b,$d0,$02,$0c
+  .byte $70,$0b,$f0,$02,$0b
+  .byte $b0,$0b,$f0,$02,$46
+  .byte $50,$0c,$f0,$02,$0e
+  .byte $50,$0c,$08,$03,$0d
+  .byte $60,$0c,$f0,$02,$0e
+  .byte $60,$0c,$08,$03,$0d
+  .byte $70,$0c,$f0,$02,$0e
+  .byte $70,$0c,$08,$03,$0d
+  .byte $80,$0c,$f0,$02,$0e
+  .byte $a0,$0c,$08,$03,$0a
+  .byte $f0,$0c,$f0,$02,$00
+  .byte $30,$0e,$00,$03,$06
+  .byte $00,$0f,$30,$00,$0f
+  .byte $00,$0f,$c0,$00,$0f
+  .byte $00,$0f,$a0,$01,$0f
+  .byte $00,$0f,$70,$02,$0f
+  .byte $00,$0f,$50,$03,$0f
+  .byte $ff
+.segment "SPR_BANK_02"
 sprite_data_leveleasy:
   .byte $00,$00,$70,$03,$ac
   .byte $00,$00,$80,$03,$e1
@@ -4319,7 +4380,7 @@ sprite_data_leveleasy:
   .byte $d0,$37,$d0,$02,$0f
   .byte $d0,$37,$30,$03,$0f
   .byte $ff
-.segment "SPR_BANK_02"
+.segment "SPR_BANK_03"
 sprite_data_thelightningroad:
   .byte $00,$00,$70,$03,$8f
   .byte $00,$00,$80,$03,$cf
@@ -5538,7 +5599,7 @@ sprite_data_demonpark:
   .byte $70,$3e,$f0,$02,$0f
   .byte $70,$3e,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_03"
+.segment "SPR_BANK_04"
 sprite_data_decode:
   .byte $00,$00,$70,$03,$c6
   .byte $00,$00,$80,$03,$96
@@ -6062,7 +6123,7 @@ sprite_data_decode:
   .byte $a0,$35,$b0,$02,$0f
   .byte $a0,$35,$60,$03,$0f
   .byte $ff
-.segment "SPR_BANK_04"
+.segment "SPR_BANK_05"
 sprite_data_eon:
   .byte $30,$01,$60,$03,$05
   .byte $40,$01,$40,$03,$0e
@@ -7373,7 +7434,7 @@ sprite_data_eon:
   .byte $30,$fc,$80,$02,$0f
   .byte $30,$fc,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_05"
+.segment "SPR_BANK_06"
 sprite_data_luckydraw:
   .byte $00,$00,$60,$03,$cf
   .byte $00,$00,$70,$03,$ee
@@ -8180,7 +8241,7 @@ sprite_data_luckydraw:
   .byte $30,$32,$60,$03,$df
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
-.segment "SPR_BANK_05"
+.segment "SPR_BANK_06"
 sprite_data_test:
   .byte $40,$00,$80,$03,$54
   .byte $a0,$00,$90,$02,$55
@@ -8320,7 +8381,7 @@ sprite_data_test:
   .byte $90,$31,$f0,$02,$0f
   .byte $90,$31,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_05"
+.segment "SPR_BANK_06"
 sprite_data_test2:
   .byte $c0,$00,$60,$03,$22
   .byte $f0,$01,$70,$03,$14
@@ -8353,75 +8414,14 @@ sprite_data_test2:
   .byte $20,$24,$10,$03,$18
   .byte $80,$2a,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_05"
+.segment "SPR_BANK_06"
 sprite_data_test3:
   .byte $50,$00,$60,$03,$24
   .byte $60,$00,$60,$03,$18
   .byte $c0,$28,$30,$02,$0f
   .byte $c0,$28,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_05"
+.segment "SPR_BANK_06"
 sprite_data_test4:
-  .byte $90,$00,$58,$03,$0d
-  .byte $80,$01,$30,$03,$0e
-  .byte $e0,$01,$50,$03,$0b
-  .byte $20,$02,$40,$03,$45
-  .byte $90,$02,$30,$03,$f9
-  .byte $90,$02,$40,$03,$f9
-  .byte $90,$02,$50,$03,$f9
-  .byte $40,$03,$30,$03,$06
-  .byte $70,$03,$30,$03,$06
-  .byte $b0,$03,$40,$03,$4c
-  .byte $e0,$03,$e0,$02,$f9
-  .byte $e0,$03,$f0,$02,$f9
-  .byte $f0,$03,$f0,$02,$f9
-  .byte $f0,$03,$00,$03,$f9
-  .byte $00,$04,$00,$03,$f9
-  .byte $00,$04,$10,$03,$f9
-  .byte $10,$04,$10,$03,$f9
-  .byte $20,$04,$20,$03,$f9
-  .byte $20,$04,$40,$03,$27
-  .byte $30,$04,$30,$03,$f9
-  .byte $60,$04,$30,$03,$27
-  .byte $30,$05,$58,$03,$0a
-  .byte $80,$05,$30,$03,$0b
-  .byte $c0,$05,$30,$03,$05
-  .byte $e0,$05,$f0,$02,$05
-  .byte $f0,$05,$20,$03,$27
-  .byte $40,$06,$10,$03,$27
-  .byte $60,$07,$10,$03,$13
-  .byte $80,$07,$00,$03,$10
-  .byte $a0,$07,$f0,$02,$17
-  .byte $90,$08,$e8,$02,$0d
-  .byte $a0,$08,$d0,$02,$0e
-  .byte $a0,$08,$e8,$02,$0d
-  .byte $b0,$08,$d0,$02,$0e
-  .byte $b0,$08,$e8,$02,$0d
-  .byte $c0,$08,$d0,$02,$0e
-  .byte $c0,$08,$e8,$02,$0d
-  .byte $e0,$08,$c0,$02,$08
-  .byte $70,$09,$10,$03,$06
-  .byte $a0,$09,$10,$03,$06
-  .byte $30,$0b,$d0,$02,$0c
-  .byte $70,$0b,$f0,$02,$0b
-  .byte $b0,$0b,$f0,$02,$46
-  .byte $50,$0c,$f0,$02,$0e
-  .byte $50,$0c,$08,$03,$0d
-  .byte $60,$0c,$f0,$02,$0e
-  .byte $60,$0c,$08,$03,$0d
-  .byte $70,$0c,$f0,$02,$0e
-  .byte $70,$0c,$08,$03,$0d
-  .byte $80,$0c,$f0,$02,$0e
-  .byte $a0,$0c,$08,$03,$0a
-  .byte $f0,$0c,$f0,$02,$00
-  .byte $30,$0e,$00,$03,$06
-  .byte $00,$0f,$30,$00,$0f
-  .byte $00,$0f,$c0,$00,$0f
-  .byte $00,$0f,$a0,$01,$0f
-  .byte $00,$0f,$70,$02,$0f
-  .byte $00,$0f,$50,$03,$0f
-  .byte $ff
-.segment "SPR_BANK_05"
-sprite_data_danger:
   .byte $ff
 

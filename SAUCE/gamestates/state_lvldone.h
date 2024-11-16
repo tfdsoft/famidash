@@ -977,10 +977,10 @@ void set_fun_settings() {
 
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, NULL, level16text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, levelchallengetext
+  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, levelchallengetext, NULL, level16text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 };
 const unsigned char* const leveltexts2[] = {
-  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelclubtext2, level15text2, level16text2, levelEtext2, level19text2, levelFtext2, level17text2, level10text2, level11text2, level12text2, level13text2, level14text2, levelchallengetext2
+  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelclubtext2, levelchallengetext2, level15text2, level16text2, levelEtext2, level19text2, levelFtext2, level17text2, level10text2, level11text2, level12text2, level13text2, level14text2
 };
 
 
@@ -999,6 +999,7 @@ const unsigned char level_text_size[] = {
 	sizeof(levelCtext) - 1,
 	sizeof(levelDtext) - 1,
 	0,
+	sizeof(levelchallengetext) - 1,
 	0,
 	sizeof(level16text) - 1,
 	0,
@@ -1010,7 +1011,7 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
-	sizeof(levelchallengetext) - 1,
+	0,
 };
 const unsigned char level_text_size2[] = {
     sizeof(level1text2) - 1,
@@ -1027,6 +1028,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelCtext2) - 1,
 	sizeof(levelDtext2) - 1,
 	sizeof(levelclubtext2) - 1,
+	sizeof(levelchallengetext2) - 1,
 	sizeof(level15text2) - 1,
 	sizeof(level16text2) - 1,
 	sizeof(levelEtext2) - 1,
@@ -1039,7 +1041,6 @@ const unsigned char level_text_size2[] = {
 	sizeof(level13text2) - 1,
 	sizeof(level14text2) - 1,
 	sizeof(level15text2) - 1,
-	sizeof(levelchallengetext) - 1,
 };
 
 const char coin_counter[][3] = {

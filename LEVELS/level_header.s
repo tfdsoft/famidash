@@ -112,6 +112,12 @@ test4_speed       = $00
 test4_bg_color    = $0F
 test4_grnd_color  = $06
 
+thechallenge_song_number = song_the_challenge
+thechallenge_game_mode   = $00
+thechallenge_speed       = $00
+thechallenge_bg_color    = $0F
+thechallenge_grnd_color  = $06
+
 danger_song_number = song_menu_theme
 danger_game_mode   = $22
 danger_speed       = $24

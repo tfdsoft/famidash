@@ -17,6 +17,7 @@ all_levels="
             theoryofeverything\
             electroman\
 	    clubstep\
+	    thechallenge\
             leveleasy\	    
             thelightningroad\
 	    nightmare\
@@ -28,7 +29,6 @@ all_levels="
             test2\
             test3\
             test4\
-	    danger\
             "
 
 echo Exporting everything ${all_levels}
