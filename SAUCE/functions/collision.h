@@ -55,6 +55,43 @@ char bg_coll_sides() {
 	};
 	return 0;
 }
+
+void col_death_bottom_routine() {
+	if ((uint8_t)(temp_y & 0x0f) > 0x0a) {							// If Y pos inside block ≥ 8px, die
+		tmp20f();				// If Y pos inside block < 8px, die
+		if (tmp2 >= 0x04 && tmp2 < 0x09) {		// If X pos even insider, die even more
+			cube_data[currplayer] = 1;
+		}
+	}	
+}
+
+void col_death_top_routine() {
+	if ((uint8_t)(temp_y & 0x0f) < 0x06) {			
+		tmp20f();				// If Y pos inside block < 8px, die
+		if (tmp2 >= 0x04 && tmp2 < 0x09) {		// If X pos even insider, die even more
+			cube_data[currplayer] = 1;
+		}
+	}	
+}
+
+void col_death_right_routine() {
+	if ((uint8_t)(temp_x & 0x0f) >= 0x0a) {
+		tmp2 = temp_y & 0x0f;
+		if (tmp2 >= 0x06 && tmp2 < 0x09) {
+			cube_data[currplayer] = 1;
+		}
+	}
+}
+
+void col_death_left_routine() {
+	if ((uint8_t)(temp_x & 0x0f) < 0x06) {
+		tmp2 = temp_y & 0x0f;
+		if (tmp2 >= 0x06 && tmp2 < 0x09) {
+			cube_data[currplayer] = 1;
+		}
+	}
+}
+
 /*
 	Clobbers:
 	tmp2
@@ -104,33 +141,38 @@ void bg_coll_spikes() {
 			}
 			return;
 		case COL_DEATH_LEFT:
-			if ((uint8_t)(temp_x & 0x0f) < 0x06) {
-				tmp2 = temp_y & 0x0f;
-				if (tmp2 >= 0x06 && tmp2 < 0x09) break;
-			}
+			col_death_left_routine();
 			return;
 		case COL_DEATH_RIGHT:
-			if ((uint8_t)(temp_x & 0x0f) >= 0x0a) {
-				tmp2 = temp_y & 0x0f;
-				if (tmp2 >= 0x06 && tmp2 < 0x09) break;
-			}
+			col_death_right_routine();
 			return;
 		case COL_DEATH_TOP:
-			if ((uint8_t)(temp_y & 0x0f) < 0x06) {			
-				tmp20f();				// If Y pos inside block < 8px, die
-				if (tmp2 >= 0x04 && tmp2 < 0x09) {		// If X pos even insider, die even more
-					break;
-				}
-			}		
+			col_death_top_routine();	
 			return;
 		case COL_DEATH_BOTTOM:
-			if ((uint8_t)(temp_y & 0x0f) > 0x0a) {							// If Y pos inside block ≥ 8px, die
-				tmp20f();				// If Y pos inside block < 8px, die
-				if (tmp2 >= 0x04 && tmp2 < 0x09) {		// If X pos even insider, die even more
-					break;
-				}
-			}								// else nothing
+			col_death_bottom_routine();	
 			return;
+			
+		case COL_DEATH_BOTTOM_LEFT:
+			col_death_left_routine();
+			col_death_bottom_routine();
+			return;
+
+		case COL_DEATH_BOTTOM_RIGHT:
+			col_death_right_routine();
+			col_death_bottom_routine();
+			return;
+
+		case COL_DEATH_TOP_LEFT:
+			col_death_left_routine();
+			col_death_top_routine();
+			return;
+
+		case COL_DEATH_TOP_RIGHT:
+			col_death_right_routine();
+			col_death_top_routine();
+			return;
+
 		case COL_DEATH:	
 			tmp2 = (uint8_t)(temp_y & 0x0f);
 			if (tmp2 >= 0x04 && tmp2 < 0x0c) {
@@ -391,27 +433,10 @@ char bg_coll_U_D_checks() {
 			if (high_byte(currplayer_x) < 0x10 || was_on_slope_counter) return 0;
 			else return 1;
 		case COL_DEATH_TOP:
-			tmp2 = temp_y & 0x0f;	
-			tmp8 = tmp2 & 0x07;	 
-			// if (tmp2 < 0x08) {
-			if (tmp8 == tmp2) {
-				// if (tmp2 < 0x04) {
-				if (!(tmp2 & 0x0C)) {
-					// if ((temp_x & 0x0f) >= 0x04 && (temp_x & 0x0f) < 0x0c) {
-					commonly_used_death_check();
-				}
-			}
+			col_death_top_routine();
 			break;
 		case COL_DEATH_BOTTOM:
-			tmp2 = temp_y & 0x0f;
-			tmp8 = tmp2 & 0x07;	 
-			// if (tmp2 >= 0x08) {
-			if (tmp8 != tmp2) {
-				if (tmp2 >= 0x0c) {
-					// if ((temp_x & 0x0f) >= 0x04 && (temp_x & 0x0f) < 0x0c) {
-					commonly_used_death_check();
-				}
-			}
+			col_death_bottom_routine();
 			break;
 		case COL_FLOOR_CEIL:
 			dblocked[currplayer] = 1;
