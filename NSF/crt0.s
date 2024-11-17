@@ -15,7 +15,7 @@
 ; .include "music_songlist.inc"
 ; .include "sfx_sfxlist.inc"
 
-REGION = 0
+REGION := 1
 
 ;
 ; NSF2 header
@@ -41,10 +41,7 @@ REGION = 0
 	.repeat 31 - 28
 		.byte $00
 	.endrepeat
-	.asciiz "(c) TFDSoft 2023-2024"
-	.repeat 31 - 21
-		.byte $00
-	.endrepeat
+	.byte "TFDSoft 23-24,GD producers 08-14"
 	.word .loword(NTSC_RATE)
 	.byte <START_BANK_0, <START_BANK_1, <START_BANK_2, <START_BANK_3, <START_BANK_4, <START_BANK_5, <START_BANK_6, <START_BANK_7
 	.word .loword(PAL_RATE)
@@ -67,8 +64,6 @@ sampleID = tmp2
 
 .segment "NSF_CODE"
 
-.byte "NSF:init"
-
 init:
 	; lda PPU_STATUS
 	; and #$80
@@ -84,7 +79,15 @@ init:
 	
 	cmp #song_max
 	bcs sfx_init
+	tax
+	lda song_tbl, X
     JMP _music_play	
+
+song_tbl:
+.byte song_menu_theme, song_stereo_madness, song_back_on_track, song_polargeist
+.byte song_dry_out, song_base_after_base, song_cant_let_go, song_jumper
+.byte song_time_machine, song_cycles, song_xstep, song_clutterfunk
+.byte song_theory_of_everything, song_electroman_adventures, song_custom_endgame, song_practice
 
 sfx_init:
 	; The carry is set
@@ -112,19 +115,17 @@ pcm_init:
 play_return:
 	rts
 
-.byte "NSF:play"
-
 play:
 	BIT PLAYBACK_MODE
 	bvs play_return
 	bmi pcm_play
 	jmp _music_update
 pcm_play:
+	lda #<.bank(_playPCM)
+	jsr	mmc3_set_prg_bank_1
 	LDA sampleID
 	DEC PLAYBACK_MODE
 	JMP _playPCM
-	
-.byte "NSF:fs_init_sfx"
 
 .proc famistudio_init_for_sfx
 	; CONFIGURATION:

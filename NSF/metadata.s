@@ -2,21 +2,10 @@
 
 RIFFChunkStart "auth"
 .asciiz "Famidash"
-.asciiz "Originals by 9 people, covers by 7 people"
+.asciiz "Originals by 9 people, covers by 8 people"
 .byte $C0, $A9
-.asciiz " TFDSoft 2023-2024, [include more shit about OG composers here]"
+.asciiz " TFDSoft 2023-2024, RobTop 2014, ForeverBound 2012, DJVI 2011-2013, Step 2013, Waterflame 2008-2014, Dj-Nate 2010, OcularNebula 2013"
 .asciiz "alexmush"
-
-RIFFChunkStart "plst"
-.byte song_menu_theme, song_stereo_madness, song_back_on_track, song_polargeist
-.byte song_dry_out, song_base_after_base, song_cant_let_go, song_jumper
-.byte song_time_machine, song_cycles, song_xstep, song_clutterfunk
-.byte song_theory_of_everything, song_electroman_adventures, song_custom_endgame, song_practice, song_eon
-
-.repeat sfx_max+2, n
-.byte song_max+n
-.endrepeat
-
 
 RIFFChunkStart "psfx"
 .repeat sfx_max+2, n
@@ -24,22 +13,22 @@ RIFFChunkStart "psfx"
 .endrepeat
 
 RIFFChunkStart "tlbl"
-.asciiz "Time Machine"
-.asciiz "Clutterfunk"
-.asciiz "Decode ~ Endgame"
-.asciiz "Practice ~ Stay Inside Me"
 .asciiz "Menu Theme"
-.asciiz "Polargeist"
-.asciiz "Jumper"
-.asciiz "Electroman Adventures"
 .asciiz "Stereo Madness"
 .asciiz "Back On Track"
-.asciiz "Base After Base"
-.asciiz "Cycles"
+.asciiz "Polargeist"
 .asciiz "Dry Out"
+.asciiz "Base After Base"
 .asciiz "Cant Let Go ~ Can't Let Go"
+.asciiz "Jumper"
+.asciiz "Time Machine"
+.asciiz "Cycles"
 .asciiz "xStep"
+.asciiz "Clutterfunk"
 .asciiz "Theory Of Everything"
+.asciiz "Electroman Adventures"
+.asciiz "Decode ~ Endgame"
+.asciiz "Practice ~ Stay Inside Me"
 
 .asciiz "Death SFX"
 .asciiz "Click SFX"
@@ -57,22 +46,22 @@ RIFFChunkStart "tlbl"
 .asciiz "FIRE IN THE HOLE! Voice Clip"
 
 RIFFChunkStart "taut"
-AutMeta "Waterflame", "Zenith302, Vikrinox, alexmush"
-AutMeta "Waterflame", "Zenith302, aquamarine.gay, Vikrinox"
-AutMeta "Waterflame", "Vikrinox"
-AutMeta "OcularNebula", "UserSniper"
-AutMeta "RobTop", "Zenith302"
-AutMeta "Step", "UserSniper, Zenith302, Vikrinox"
-AutMeta "Waterflame", "zukinnyk, UserSniper, Zenith302"
-AutMeta "Waterflame", "UserSniper, alexmush"
-AutMeta "ForeverBound", "Zenith302, UserSniper"
-AutMeta "DJVI", "aquamarine.gay"
-AutMeta "DJVI", "Zenith302, UserSniper, Vikrinox, alexmush"
-AutMeta "DJVI", "aquamarine.gay, alexmush"
-AutMeta "DJVI", "UserSniper"
-AutMeta "DJVI", "UserSniper, alexmush"
-AutMeta "DJVI", "Vikrinox, alexmush"
-AutMeta "Dj-Nate", "leejh20, UserSniper, Vikrinox, Zenith302"
+AutMeta "RobTop", "Zenith302" ; Menu
+AutMeta "ForeverBound", "Zenith302, UserSniper" ; Stereo Madness
+AutMeta "DJVI", "aquamarine.gay" ; Back On Track
+AutMeta "Step", "UserSniper, Zenith302, Vikrinox" ; Polargeist
+AutMeta "DJVI", "UserSniper" ; Dry Out
+AutMeta "DJVI", "Zenith302, UserSniper, Vikrinox, alexmush" ; Base After Base
+AutMeta "DJVI", "UserSniper, alexmush" ; Can't Let Go
+AutMeta "Waterflame", "zukinnyk, UserSniper, Zenith302" ; Jumper
+AutMeta "Waterflame", "Zenith302, Vikrinox, alexmush" ; Time Machine
+AutMeta "DJVI", "aquamarine.gay, alexmush" ; Cycles
+AutMeta "DJVI", "Vikrinox, alexmush" ; xStep
+AutMeta "Waterflame", "Zenith302, aquamarine.gay, Vikrinox" ; Clutterfunk
+AutMeta "Dj-Nate", "leejh20, UserSniper, Vikrinox, Zenith302" ; TOE
+AutMeta "Waterflame", "cloud54, UserSniper, alexmush" ; Electroman Adventures
+AutMeta "Waterflame", "Vikrinox" ;  Endgame
+AutMeta "OcularNebula", "UserSniper" ; Practice
 
 .repeat sfx_max
 .asciiz "UserSniper"
@@ -81,24 +70,37 @@ AutMeta "Dj-Nate", "leejh20, UserSniper, Vikrinox, Zenith302"
 .asciiz "VA: MDK"
 .asciiz "VA: Joe"
 
-; TODO: PAL Timings, by flag
 RIFFChunkStart "time"
-.dword 96369+500, 96702+500, 78862+500, (239817*2)
-.dword (29954*2), 90877+500, 86584+500, 88115+500
-.dword 85852+500, 82707+500, 84986+500, 85585+500
-.dword 81409+500, 80710+500, 82041+500, 88697+500
+.if REGION = 0
+.dword (30017*2), 85550, 82817, 90700
+.dword 81433, 85000, 80750, 86467
+.dword 96067, 85933, 82350, 96583
+.dword 89000, 87800, 79283, (239817*2)
 
-.dword 1000, 1000, 4000, 1000
-.dword 1000, 1000, 1000, 1000
-.dword 1000, 1000, 1000
+.dword 383, 50, 3167, 683
+.dword 100, 683, 683, 650
+.dword 967, 633, 950
 
-.dword 2000, 2000
+.dword 1150, 1650
+.else
+.dword (36080*2), 102840, 99540, 109000
+.dword 97880, 102160, 97040, 104100
+.dword 115460, 103280, 98980, 116080
+.dword 106960, 105520, 95280, (288380*2)
+
+.dword 460, 40, 3020, 700
+.dword 120, 820, 820, 680
+.dword 920, 640, 1140
+
+.dword 1100, 1650
+
+.endif
 
 RIFFChunkStart "fade"
-.dword 0, 0, 0, $FFFFFFFF
 .dword $FFFFFFFF, 0, 0, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
+.dword 0, 0, 0, $FFFFFFFF
 
 .repeat sfx_max+2
 .dword 0
