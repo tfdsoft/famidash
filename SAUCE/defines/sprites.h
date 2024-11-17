@@ -998,7 +998,7 @@ const unsigned char Robot_Jump_1_Alt[]={//Did 4th walk frame here - Ficus
 	0x80
 };
 const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_1, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2, Robot_3, Robot_3, Robot_3, Robot_3, Robot_3,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1};
-const unsigned char * const ROBOT_ALT[]={Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt};
+const unsigned char * const ROBOT_ALT[]={Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt};
 const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1};
 
 

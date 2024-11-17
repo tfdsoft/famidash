@@ -2157,7 +2157,7 @@ drawcube_sprite_none:
 
 drawplayer_center_offsets:
 	;		Cub	Shp Bal	UFO	RBT	SPI	Wav
-	.byte	8,	8,	8,	8,	8,	8,	8,	8,	8; normal size
+	.byte	8,	8,	8,	8,	4,	8,	8,	8,	8; normal size
 	.byte	4,	4,	4,	4,	4,	4,	4,	4,	4; mini 
 
 ; void drawplayerone();
@@ -2471,6 +2471,8 @@ drawplayer_center_offsets:
 			LDA _player_vel_y+1	;
 			ORA _player_vel_y	;	if (player_vel_y[0] == 0) {
 			BNE @jump			;__
+			LDA _retro_mode
+			BNE @jim
 			LDA _options
 			and #$04
 			beq	@cont1
@@ -2499,6 +2501,18 @@ drawplayer_center_offsets:
 			ADC _robotjumpframe
 			TAY				;__
 			JMP fin
+		@jim:
+			LDA #0
+			LDY _robotframe	;	[load robotframe[0] into Y]
+			SEC				;	robotframe[0]++; (A is 0, so set the carry and bam)
+			ADC _robotframe	;__
+			CMP #15			;
+			BCC @JIMMOMENT	;	if (robotframe[0] > 14) { robotframe[0] = 0; }	
+				LDA #$00	;__
+			@JIMMOMENT:		;
+			STA _robotframe	;__
+			JMP fin
+
 	spider:
 		; C code:
 			;	if (player_vel_y[0] == 0 ) {
