@@ -70,7 +70,7 @@ theoryofeverything_speed       = $00
 theoryofeverything_bg_color    = $05
 theoryofeverything_grnd_color  = $15
 
-decode_song_number = song_custom_endgame
+decode_song_number = song_endgame
 decode_game_mode   = $00
 decode_speed       = $00
 decode_bg_color    = $16
@@ -106,7 +106,7 @@ test3_speed       = $00
 test3_bg_color    = $16
 test3_grnd_color  = $06
 
-test4_song_number = song_the_challenge
+test4_song_number = song_death_moon
 test4_game_mode   = $00
 test4_speed       = $03
 test4_bg_color    = $12
@@ -130,7 +130,7 @@ luckydraw_speed       = $00
 luckydraw_bg_color    = $0F
 luckydraw_grnd_color  = $0F
 
-eon_song_number = song_custom_eon
+eon_song_number = song_eon
 eon_game_mode   = $00
 eon_speed       = $01
 eon_bg_color    = $0F
