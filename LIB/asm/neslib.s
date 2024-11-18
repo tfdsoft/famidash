@@ -75,7 +75,7 @@ nmi:
 @checkPal:
 	lda <PAL_UPDATE		;update palette if needed
 	bne @updPal
-	jmp @skipUpd
+	beq @skipUpd	; = BRA
 
 @updPal:
 
@@ -270,13 +270,13 @@ pal_copy:
 
 	ldy #$00
 
-@0:
+	@0:
 
-	lda (PTR),y
-	sta PAL_BUF_RAW,x
-	inx
-	iny
-	dec <LEN
+		lda (PTR),y
+		sta PAL_BUF_RAW,x
+		inx
+		iny
+		dec <LEN
 	bne @0
 
 	ldx #32 - 1
@@ -486,7 +486,7 @@ _oam_clear:
 	stx OAM_BUF + (I * 4)
 .endrepeat
 	rts
-	
+
 ;void __fastcall__ oam_clear_player();
 .importzp _gamemode
 _oam_clear_player:
