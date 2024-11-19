@@ -108,9 +108,15 @@ test3_grnd_color  = $06
 
 test4_song_number = song_death_moon
 test4_game_mode   = $00
-test4_speed       = $03
+test4_speed       = $00
 test4_bg_color    = $12
 test4_grnd_color  = $02
+
+toe2_song_number = song_toe_2
+toe2_game_mode   = $00
+toe2_speed       = $00
+toe2_bg_color    = $12
+toe2_grnd_color  = $02
 
 thechallenge_song_number = song_the_challenge
 thechallenge_game_mode   = $00

@@ -32,6 +32,7 @@ const unsigned char level9text2[]="CYCLES";
 const unsigned char levelAtext2[]="XSTEP";
 const unsigned char levelBtext2[]="CLUTTERFUNK";
 const unsigned char levelCtext2[]="EVERYTHING";
+const unsigned char levelCtext22[]="EVERYTHING 2";
 const unsigned char levelDtext2[]="ADVENTURES";
 const unsigned char levelclubtext2[]="CLUBSTEP";
 const unsigned char levelEtext2[]="THE NIGHTMARE";

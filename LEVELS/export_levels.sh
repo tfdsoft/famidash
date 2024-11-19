@@ -17,6 +17,7 @@ all_levels="
             theoryofeverything\
             electroman\
 	    clubstep\
+	    toe2\
 	    thechallenge\
             leveleasy\	    
             thelightningroad\
@@ -25,7 +26,6 @@ all_levels="
 	    decode\
             eon\
 	    luckydraw\
-            test\
             test2\
             test3\
             test4\

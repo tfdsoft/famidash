@@ -49,6 +49,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_theory_of_everything, 
 	song_electroman_adventures, 
 	song_clubstep,
+	song_toe_2,
 	song_endgame, 
 	song_practice,
 	song_eon,

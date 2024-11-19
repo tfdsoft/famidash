@@ -19,6 +19,7 @@ _level_list_lo:
   .byte .lobyte(level_data_theoryofeverything)
   .byte .lobyte(level_data_electroman)
   .byte .lobyte(level_data_clubstep)
+  .byte .lobyte(level_data_toe2)
   .byte .lobyte(level_data_thechallenge)
   .byte .lobyte(level_data_leveleasy)
   .byte .lobyte(level_data_thelightningroad)
@@ -27,7 +28,6 @@ _level_list_lo:
   .byte .lobyte(level_data_decode)
   .byte .lobyte(level_data_eon)
   .byte .lobyte(level_data_luckydraw)
-  .byte .lobyte(level_data_test)
   .byte .lobyte(level_data_test2)
   .byte .lobyte(level_data_test3)
   .byte .lobyte(level_data_test4)
@@ -47,6 +47,7 @@ _level_list_hi:
   .byte .hibyte(level_data_theoryofeverything)
   .byte .hibyte(level_data_electroman)
   .byte .hibyte(level_data_clubstep)
+  .byte .hibyte(level_data_toe2)
   .byte .hibyte(level_data_thechallenge)
   .byte .hibyte(level_data_leveleasy)
   .byte .hibyte(level_data_thelightningroad)
@@ -55,7 +56,6 @@ _level_list_hi:
   .byte .hibyte(level_data_decode)
   .byte .hibyte(level_data_eon)
   .byte .hibyte(level_data_luckydraw)
-  .byte .hibyte(level_data_test)
   .byte .hibyte(level_data_test2)
   .byte .hibyte(level_data_test3)
   .byte .hibyte(level_data_test4)
@@ -75,6 +75,7 @@ _level_list_bank:
   .byte .lobyte(.bank(level_data_theoryofeverything))
   .byte .lobyte(.bank(level_data_electroman))
   .byte .lobyte(.bank(level_data_clubstep))
+  .byte .lobyte(.bank(level_data_toe2))
   .byte .lobyte(.bank(level_data_thechallenge))
   .byte .lobyte(.bank(level_data_leveleasy))
   .byte .lobyte(.bank(level_data_thelightningroad))
@@ -83,7 +84,6 @@ _level_list_bank:
   .byte .lobyte(.bank(level_data_decode))
   .byte .lobyte(.bank(level_data_eon))
   .byte .lobyte(.bank(level_data_luckydraw))
-  .byte .lobyte(.bank(level_data_test))
   .byte .lobyte(.bank(level_data_test2))
   .byte .lobyte(.bank(level_data_test3))
   .byte .lobyte(.bank(level_data_test4))
@@ -103,6 +103,7 @@ _sprite_list_lo:
   .byte .lobyte(sprite_data_theoryofeverything)
   .byte .lobyte(sprite_data_electroman)
   .byte .lobyte(sprite_data_clubstep)
+  .byte .lobyte(sprite_data_toe2)
   .byte .lobyte(sprite_data_thechallenge)
   .byte .lobyte(sprite_data_leveleasy)
   .byte .lobyte(sprite_data_thelightningroad)
@@ -111,7 +112,6 @@ _sprite_list_lo:
   .byte .lobyte(sprite_data_decode)
   .byte .lobyte(sprite_data_eon)
   .byte .lobyte(sprite_data_luckydraw)
-  .byte .lobyte(sprite_data_test)
   .byte .lobyte(sprite_data_test2)
   .byte .lobyte(sprite_data_test3)
   .byte .lobyte(sprite_data_test4)
@@ -131,6 +131,7 @@ _sprite_list_hi:
   .byte .hibyte(sprite_data_theoryofeverything)
   .byte .hibyte(sprite_data_electroman)
   .byte .hibyte(sprite_data_clubstep)
+  .byte .hibyte(sprite_data_toe2)
   .byte .hibyte(sprite_data_thechallenge)
   .byte .hibyte(sprite_data_leveleasy)
   .byte .hibyte(sprite_data_thelightningroad)
@@ -139,7 +140,6 @@ _sprite_list_hi:
   .byte .hibyte(sprite_data_decode)
   .byte .hibyte(sprite_data_eon)
   .byte .hibyte(sprite_data_luckydraw)
-  .byte .hibyte(sprite_data_test)
   .byte .hibyte(sprite_data_test2)
   .byte .hibyte(sprite_data_test3)
   .byte .hibyte(sprite_data_test4)
@@ -159,6 +159,7 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_theoryofeverything))
   .byte .lobyte(.bank(sprite_data_electroman))
   .byte .lobyte(.bank(sprite_data_clubstep))
+  .byte .lobyte(.bank(sprite_data_toe2))
   .byte .lobyte(.bank(sprite_data_thechallenge))
   .byte .lobyte(.bank(sprite_data_leveleasy))
   .byte .lobyte(.bank(sprite_data_thelightningroad))
@@ -167,7 +168,6 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_decode))
   .byte .lobyte(.bank(sprite_data_eon))
   .byte .lobyte(.bank(sprite_data_luckydraw))
-  .byte .lobyte(.bank(sprite_data_test))
   .byte .lobyte(.bank(sprite_data_test2))
   .byte .lobyte(.bank(sprite_data_test3))
   .byte .lobyte(.bank(sprite_data_test4))
@@ -190,6 +190,7 @@ _level_lengths_lo:
   .byte .lobyte($00008B)		; theoryofeverything
   .byte .lobyte($00008D)		; electroman
   .byte .lobyte($000091)		; clubstep
+  .byte .lobyte($00009D)		; toe2
   .byte .lobyte($000028)		; thechallenge
   .byte .lobyte($000090)		; leveleasy
   .byte .lobyte($000087)		; thelightningroad
@@ -198,7 +199,6 @@ _level_lengths_lo:
   .byte .lobyte($00008A)		; decode
   .byte .lobyte($000286)		; eon
   .byte .lobyte($000086)		; luckydraw
-  .byte .lobyte($000080)		; test
   .byte .lobyte($00006E)		; test2
   .byte .lobyte($000038)		; test3
   .byte .lobyte($0000C0)		; test4
@@ -220,6 +220,7 @@ _level_lengths_md:
   .byte .hibyte($00008B)		; theoryofeverything
   .byte .hibyte($00008D)		; electroman
   .byte .hibyte($000091)		; clubstep
+  .byte .hibyte($00009D)		; toe2
   .byte .hibyte($000028)		; thechallenge
   .byte .hibyte($000090)		; leveleasy
   .byte .hibyte($000087)		; thelightningroad
@@ -228,7 +229,6 @@ _level_lengths_md:
   .byte .hibyte($00008A)		; decode
   .byte .hibyte($000286)		; eon
   .byte .hibyte($000086)		; luckydraw
-  .byte .hibyte($000080)		; test
   .byte .hibyte($00006E)		; test2
   .byte .hibyte($000038)		; test3
   .byte .hibyte($0000C0)		; test4
@@ -250,6 +250,7 @@ _level_lengths_hi:
   .byte .bankbyte($00008B)		; theoryofeverything
   .byte .bankbyte($00008D)		; electroman
   .byte .bankbyte($000091)		; clubstep
+  .byte .bankbyte($00009D)		; toe2
   .byte .bankbyte($000028)		; thechallenge
   .byte .bankbyte($000090)		; leveleasy
   .byte .bankbyte($000087)		; thelightningroad
@@ -258,7 +259,6 @@ _level_lengths_hi:
   .byte .bankbyte($00008A)		; decode
   .byte .bankbyte($000286)		; eon
   .byte .bankbyte($000086)		; luckydraw
-  .byte .bankbyte($000080)		; test
   .byte .bankbyte($00006E)		; test2
   .byte .bankbyte($000038)		; test3
   .byte .bankbyte($0000C0)		; test4

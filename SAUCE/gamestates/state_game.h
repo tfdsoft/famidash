@@ -52,7 +52,7 @@ unsigned char END_LEVEL_TIMER;
 
 
 void state_game(){
-	if ((level >= decode) || twoplayer) no_parallax = 1;
+	if ((level >= decode) || twoplayer) no_parallax = 1; if (level == test4 || level == nightmare) no_parallax = 0;
 	else no_parallax = 0;
 	coin1_timer = 0;
 	coin2_timer = 0;
