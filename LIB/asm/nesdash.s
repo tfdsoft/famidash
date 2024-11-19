@@ -265,8 +265,13 @@ _init_rld:
 	STA _speed			;   Starting speed
 	incw_check level_data
 
-	LDA _discomode
-	BNE @noset
+	LDA (level_data),y	;	Starting BG color
+;	AND #$3F			;	Store normal color (pal_col(0, tmp2))
+	STA _no_parallax		;__
+	incw_check level_data
+
+;	LDA _discomode
+;	BNE @noset
 	LDA (level_data),y	;	Starting BG color
 	AND #$3F			;	Store normal color (pal_col(0, tmp2))
 	STA PAL_BUF_RAW+0		;__
@@ -276,8 +281,8 @@ _init_rld:
 	STA _lastbgcolortype
 @noset:
 	TAX
-	lda _discomode
-	bne @nostore
+;	lda _discomode
+;	bne @nostore
 	LDA palBrightTable3, X
 	STA PAL_BUF_RAW+1		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
 	STA PAL_BUF_RAW+9		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
@@ -315,6 +320,8 @@ _init_rld:
 	lda (PAL_PTR),y
 	sta PAL_BUF+9
 	
+
+
 	
 	ldy #0
 	incw_check level_data

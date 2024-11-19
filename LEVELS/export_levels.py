@@ -56,6 +56,7 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple[Iterable[int]]:
 			f"{level}_song_number",
 			f"{level}_game_mode",
 			f"{level}_speed",
+			f"{level}_no_parallax",
 			f"{level}_bg_color",
 			f"{level}_grnd_color",
 			f"{len(lines)}\t; {level} height",
@@ -92,8 +93,8 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple[Iterable[int]]:
 				out_str += f"  .byte {bank[filled_bytes]}\n"
 				remaining_bytes -= 1
 				filled_bytes += 1
-				if remaining_bytes == -6:
-					next_level_offset = filled_bytes + level_lengths[current_level] - 6
+				if remaining_bytes == -7:
+					next_level_offset = filled_bytes + level_lengths[current_level] - 7
 					current_level += 1
 					remaining_bytes = 0
 
@@ -189,8 +190,8 @@ def export_spr(folder: str, levels: Iterable[str]):
 			overflows.append([level, overflowStart, -1])
 
 		level_data.append([0xff]) # add terminator byte
-		all_data.append((len(level_data) * 5 - 4, level_data))
-		print(f"Sprites data for {level} takes {len(level_data) * 5 - 4} bytes")
+		all_data.append((len(level_data) * 6 - 4, level_data))
+		print(f"Sprites data for {level} takes {len(level_data) * 6 - 4} bytes")
 
 		out_str = ""
 		current_bank = 0

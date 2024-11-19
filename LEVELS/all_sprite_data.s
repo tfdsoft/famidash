@@ -1258,7 +1258,7 @@ sprite_data_cantletgo:
   .byte $10,$34,$d0,$02,$0f
   .byte $10,$34,$30,$03,$0f
   .byte $ff
-.segment "SPR_BANK_00"
+.segment "SPR_BANK_01"
 sprite_data_jumper:
   .byte $e0,$00,$80,$03,$2c
   .byte $b0,$01,$80,$03,$2e
@@ -2393,7 +2393,7 @@ sprite_data_cycles:
   .byte $50,$33,$d0,$02,$0f
   .byte $50,$33,$30,$03,$0f
   .byte $ff
-.segment "SPR_BANK_01"
+.segment "SPR_BANK_02"
 sprite_data_xstep:
   .byte $30,$01,$70,$03,$2a
   .byte $50,$01,$78,$03,$0a
@@ -2858,7 +2858,7 @@ sprite_data_xstep:
   .byte $80,$34,$e0,$02,$0f
   .byte $80,$34,$30,$03,$0f
   .byte $ff
-.segment "SPR_BANK_01"
+.segment "SPR_BANK_02"
 sprite_data_clutterfunk:
   .byte $60,$01,$88,$03,$0a
   .byte $b0,$01,$70,$03,$0b
@@ -3647,7 +3647,7 @@ sprite_data_electroman:
   .byte $00,$36,$68,$03,$0a
   .byte $c0,$36,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_02"
+.segment "SPR_BANK_03"
 sprite_data_clubstep:
   .byte $50,$00,$60,$03,$86
   .byte $80,$00,$30,$03,$38
@@ -4100,7 +4100,7 @@ sprite_data_clubstep:
   .byte $f0,$37,$c0,$02,$8f
   .byte $80,$38,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_02"
+.segment "SPR_BANK_03"
 sprite_data_toe2:
   .byte $00,$00,$70,$03,$81
   .byte $00,$00,$80,$03,$c1
@@ -4276,8 +4276,10 @@ sprite_data_toe2:
   .byte $10,$1d,$40,$03,$10
   .byte $80,$1d,$20,$03,$05
   .byte $a0,$1d,$20,$03,$05
-  .byte $50,$1f,$00,$03,$16
-  .byte $50,$1f,$10,$03,$24
+  .byte $50,$1f,$00,$03,$24
+  .byte $50,$1f,$20,$03,$16
+  .byte $50,$1f,$30,$03,$24
+  .byte $50,$1f,$40,$03,$16
   .byte $b0,$1f,$20,$03,$33
   .byte $40,$20,$40,$03,$33
   .byte $10,$21,$f0,$02,$33
@@ -4287,7 +4289,7 @@ sprite_data_toe2:
   .byte $60,$23,$10,$03,$35
   .byte $70,$24,$20,$03,$33
   .byte $e0,$24,$48,$03,$0a
-  .byte $40,$25,$10,$03,$24
+  .byte $30,$25,$20,$03,$24
   .byte $a0,$25,$10,$03,$33
   .byte $60,$26,$10,$03,$33
   .byte $20,$27,$40,$03,$33
@@ -4382,7 +4384,7 @@ sprite_data_toe2:
   .byte $a0,$3b,$20,$03,$35
   .byte $e0,$3c,$50,$03,$0f
   .byte $ff
-.segment "SPR_BANK_02"
+.segment "SPR_BANK_03"
 sprite_data_thechallenge:
   .byte $00,$00,$70,$03,$cf
   .byte $00,$00,$80,$03,$b6
@@ -4445,7 +4447,7 @@ sprite_data_thechallenge:
   .byte $20,$0f,$70,$02,$0f
   .byte $20,$0f,$50,$03,$0f
   .byte $ff
-.segment "SPR_BANK_02"
+.segment "SPR_BANK_03"
 sprite_data_leveleasy:
   .byte $00,$00,$70,$03,$ac
   .byte $00,$00,$80,$03,$e1
@@ -5018,7 +5020,7 @@ sprite_data_thelightningroad:
   .byte $90,$34,$60,$02,$0f
   .byte $90,$34,$10,$03,$0f
   .byte $ff
-.segment "SPR_BANK_03"
+.segment "SPR_BANK_04"
 sprite_data_nightmare:
   .byte $a0,$00,$60,$03,$02
   .byte $d0,$00,$80,$03,$2c
@@ -5470,7 +5472,7 @@ sprite_data_nightmare:
   .byte $40,$3b,$70,$03,$0f
   .byte $40,$3b,$80,$03,$0f
   .byte $ff
-.segment "SPR_BANK_03"
+.segment "SPR_BANK_04"
 sprite_data_demonpark:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$d6
@@ -5883,7 +5885,7 @@ sprite_data_demonpark:
   .byte $70,$3e,$f0,$02,$0f
   .byte $70,$3e,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_04"
+.segment "SPR_BANK_05"
 sprite_data_decode:
   .byte $00,$00,$70,$03,$c6
   .byte $00,$00,$80,$03,$96
@@ -6407,7 +6409,7 @@ sprite_data_decode:
   .byte $a0,$35,$b0,$02,$0f
   .byte $a0,$35,$60,$03,$0f
   .byte $ff
-.segment "SPR_BANK_05"
+.segment "SPR_BANK_06"
 sprite_data_eon:
   .byte $30,$01,$60,$03,$05
   .byte $40,$01,$40,$03,$0e
@@ -7718,7 +7720,7 @@ sprite_data_eon:
   .byte $30,$fc,$80,$02,$0f
   .byte $30,$fc,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_06"
+.segment "SPR_BANK_07"
 sprite_data_luckydraw:
   .byte $00,$00,$60,$03,$cf
   .byte $00,$00,$70,$03,$ee
@@ -8525,7 +8527,7 @@ sprite_data_luckydraw:
   .byte $30,$32,$60,$03,$df
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
-.segment "SPR_BANK_06"
+.segment "SPR_BANK_07"
 sprite_data_test2:
   .byte $c0,$00,$60,$03,$22
   .byte $f0,$01,$70,$03,$14
@@ -8558,7 +8560,7 @@ sprite_data_test2:
   .byte $20,$24,$10,$03,$18
   .byte $80,$2a,$40,$03,$0f
   .byte $ff
-.segment "SPR_BANK_06"
+.segment "SPR_BANK_07"
 sprite_data_test3:
   .byte $20,$00,$70,$03,$14
   .byte $90,$00,$60,$02,$01
@@ -8669,7 +8671,7 @@ sprite_data_test3:
   .byte $c0,$15,$10,$03,$0f
   .byte $c0,$15,$50,$03,$0f
   .byte $ff
-.segment "SPR_BANK_06"
+.segment "SPR_BANK_07"
 sprite_data_test4:
   .byte $90,$01,$70,$03,$14
   .byte $50,$02,$40,$03,$20

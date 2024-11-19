@@ -14,18 +14,19 @@
 #define theory_of_everything  0x0B
 #define electroman_adventures  0x0C
 #define clubstep  0x0D
-#define the_challenge  0x0E
-#define leveleasy  0x0F
-#define lightningroad  0x10
-#define nightmare  0x11
-#define demonpark  0x12
-#define decode  0x13
-#define eon  0x14
-#define luckydraw  0x15
+#define toe_2  0x0E
+#define the_challenge  0x0F
+#define leveleasy  0x10
+#define lightningroad  0x11
+#define nightmare  0x12
+#define demonpark  0x13
+#define decode  0x14
+#define eon  0x15
+#define luckydraw  0x16
 //#define test  0x16
-#define test2  0x16
-#define test3  0x17
-#define test4  0X18
+#define test2  0x17
+#define test3  0x18
+#define test4  0X19
 
 
 #define NINJABANK 94
