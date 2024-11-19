@@ -433,6 +433,7 @@ static void sprite_gamemode_main() {
 
 			switch (collided) {
 			case BLUE_ORB:
+				if (!activesprites_activated[index]) {
 				if (gamemode == 3 || gamemode == 5) {
 					if (currplayer_vel_y != 0) { currplayer_gravity ^= 1; player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
 				}
@@ -441,6 +442,7 @@ static void sprite_gamemode_main() {
 					currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
 				} else {
 					currplayer_vel_y = (!currplayer_gravity) ? ORB_BALL_HEIGHT_BLUE^0xFFFF : ORB_BALL_HEIGHT_BLUE;
+				}
 				}
 				break;
 			case GREEN_ORB:
@@ -527,11 +529,13 @@ static void sprite_gamemode_controller_check() {
 		settrailstuff();
 		switch (collided) {
 		case BLUE_ORB:
+			if (!activesprites_activated[index]) {
 			if (gamemode == 3 || gamemode == 5) {
 				if (currplayer_vel_y != 0) { currplayer_gravity ^= 1;  player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
 			}
 			else { currplayer_gravity ^= 0x01; player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
 			currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
+			}
 			break;
 		case GREEN_ORB:
 			if (gamemode == 3 || gamemode == 5) {
