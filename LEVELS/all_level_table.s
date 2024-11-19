@@ -190,7 +190,7 @@ _level_lengths_lo:
   .byte .lobyte($00008B)		; theoryofeverything
   .byte .lobyte($00008D)		; electroman
   .byte .lobyte($000091)		; clubstep
-  .byte .lobyte($000027)		; thechallenge
+  .byte .lobyte($000028)		; thechallenge
   .byte .lobyte($000090)		; leveleasy
   .byte .lobyte($000087)		; thelightningroad
   .byte .lobyte($000098)		; nightmare
@@ -220,7 +220,7 @@ _level_lengths_md:
   .byte .hibyte($00008B)		; theoryofeverything
   .byte .hibyte($00008D)		; electroman
   .byte .hibyte($000091)		; clubstep
-  .byte .hibyte($000027)		; thechallenge
+  .byte .hibyte($000028)		; thechallenge
   .byte .hibyte($000090)		; leveleasy
   .byte .hibyte($000087)		; thelightningroad
   .byte .hibyte($000098)		; nightmare
@@ -250,7 +250,7 @@ _level_lengths_hi:
   .byte .bankbyte($00008B)		; theoryofeverything
   .byte .bankbyte($00008D)		; electroman
   .byte .bankbyte($000091)		; clubstep
-  .byte .bankbyte($000027)		; thechallenge
+  .byte .bankbyte($000028)		; thechallenge
   .byte .bankbyte($000090)		; leveleasy
   .byte .bankbyte($000087)		; thelightningroad
   .byte .bankbyte($000098)		; nightmare
