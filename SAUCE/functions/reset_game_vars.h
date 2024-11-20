@@ -1,103 +1,50 @@
 CODE_BANK_PUSH("XCD_BANK_04")
 
 void reset_game_vars(){
-	if (!practice_point_count) music_play(song_practice);
-
-	tmp1 = practice_point_count;
-
-	if (practice_point_count != MAX_PRACTICE_POINTS) { 
-		practice_point_count++;	
-		curr_practice_point = practice_point_count;
-		practice_player_x[tmp1] = player_x[0];
-		long_temp_x = high_byte(player_x[0]);
-		practice_player_x[tmp1+1] = player_x[1];
-		practice_player_y[tmp1] = player_y[0];
-		practice_player_y[tmp1+1] = player_y[1];
-		practice_player_vel_x[tmp1] = player_vel_x[0];
-		practice_player_vel_x[tmp1+1] = player_vel_x[1];
-		practice_player_vel_y[tmp1] = player_vel_y[0];
-		practice_player_vel_y[tmp1+1] = player_vel_y[1];
-		practice_player_gravity[tmp1] = player_gravity[0];
-		practice_player_gravity[tmp1+1] = player_gravity[1];
-		practice_cube_rotate[tmp1] = cube_rotate[0];
-		practice_cube_rotate[tmp1+1] = cube_rotate[1];
-		practice_player_gamemode[tmp1] = gamemode;
-		practice_mini[tmp1] = mini[0];
-		practice_mini[tmp1+1] = mini[1];
-		practice_dual[tmp1] = dual;
-		practice_speed[tmp1] = speed;
-		practice_parallax_scroll_x[tmp1] = parallax_scroll_x;
-		practice_scroll_x[tmp1] = scroll_x;
-		practice_scroll_y[tmp1] = scroll_y;
-		practice_bg_color_type[tmp1] = lastbgcolortype;
-		practice_g_color_type[tmp1] = lastgcolortype;
-		practice_orbactive[tmp1] = orbactive;
-		practice_target_scroll_y[tmp1] = target_scroll_y;
+	if (!practice_point_count) {
+		music_play(song_practice);
+		latest_practice_point = 0;
+	} else {
+		latest_practice_point++;
+		latest_practice_point &= 7;
 	}
-	else {
-		tmp2 = 0;
-		tmp3 = 1;
-		do {		
-			practice_player_x[tmp2] = practice_player_x[tmp3];
-			long_temp_x = high_byte(player_x[0]);
-			practice_player_x[tmp2+1] = practice_player_x[tmp3+1];
-			practice_player_y[tmp2] = practice_player_y[tmp3];
-			practice_player_y[tmp2+1] = practice_player_y[tmp3+1];
-			practice_player_vel_x[tmp2] = practice_player_vel_x[tmp3];
-			practice_player_vel_x[tmp2+1] = practice_player_vel_x[tmp3+1];
-			practice_player_vel_y[tmp2] = practice_player_vel_y[tmp3];
-			practice_player_vel_y[tmp2+1] = practice_player_vel_y[tmp3+1];
-			practice_player_gravity[tmp2] = practice_player_gravity[tmp3];
-			practice_player_gravity[tmp2+1] = practice_player_gravity[tmp3+1];
-			practice_cube_rotate[tmp2] = practice_cube_rotate[tmp3];
-			practice_cube_rotate[tmp2+1] = practice_cube_rotate[tmp3+1];
-			practice_player_gamemode[tmp2] = practice_player_gamemode[tmp3];
-			practice_mini[tmp2] = practice_mini[tmp3];
-			practice_mini[tmp2+1] = practice_mini[tmp3+1];
-			practice_dual[tmp2] = practice_dual[tmp3];
-			practice_speed[tmp2] = practice_speed[tmp3];
-			practice_parallax_scroll_x[tmp2] = practice_parallax_scroll_x[tmp3];
-			practice_scroll_x[tmp2] = practice_scroll_x[tmp3];
-			practice_scroll_y[tmp2] = practice_scroll_y[tmp3];
-			practice_bg_color_type[tmp2] = practice_bg_color_type[tmp3];
-			practice_g_color_type[tmp2] = practice_g_color_type[tmp3];
-			practice_orbactive[tmp2] = practice_orbactive[tmp3];	
-			practice_target_scroll_y[tmp2] = practice_target_scroll_y[tmp3];	
-			tmp2++;
-			tmp3++;
-		} while (tmp3 < MAX_PRACTICE_POINTS);		
-		practice_player_x[tmp2] = player_x[0];
-		long_temp_x = high_byte(player_x[0]);
-		practice_player_x[tmp2+1] = player_x[1];
-		practice_player_y[tmp2] = player_y[0];
-		practice_player_y[tmp2+1] = player_y[1];
-		practice_player_vel_x[tmp2] = player_vel_x[0];
-		practice_player_vel_x[tmp2+1] = player_vel_x[1];
-		practice_player_vel_y[tmp2] = player_vel_y[0];
-		practice_player_vel_y[tmp2+1] = player_vel_y[1];
-		practice_player_gravity[tmp2] = player_gravity[0];
-		practice_player_gravity[tmp2+1] = player_gravity[1];
-		practice_cube_rotate[tmp2] = cube_rotate[0];
-		practice_cube_rotate[tmp2+1] = cube_rotate[1];
-		practice_player_gamemode[tmp2] = gamemode;
-		practice_mini[tmp2] = mini[0];
-		practice_mini[tmp2+1] = mini[1];
-		practice_dual[tmp2] = dual;
-		practice_speed[tmp2] = speed;
-		practice_parallax_scroll_x[tmp2] = parallax_scroll_x;
-		practice_scroll_x[tmp2] = scroll_x;
-		practice_scroll_y[tmp2] = scroll_y;
-		practice_bg_color_type[tmp2] = lastbgcolortype;
-		practice_g_color_type[tmp2] = lastgcolortype;
-		practice_orbactive[tmp2] = orbactive;		
-		practice_target_scroll_y[tmp2] = target_scroll_y;		
-		
-	}
+
+	if (practice_point_count < MAX_PRACTICE_POINTS)
+		practice_point_count++;
+
+	tmp1 = latest_practice_point;
+
+	curr_practice_point = latest_practice_point;
+	practice_player_x[tmp1] = player_x[0];
+	long_temp_x = high_byte(player_x[0]);
+	practice_player_x[tmp1+1] = player_x[1];
+	practice_player_y[tmp1] = player_y[0];
+	practice_player_y[tmp1+1] = player_y[1];
+	practice_player_vel_x[tmp1] = player_vel_x[0];
+	practice_player_vel_x[tmp1+1] = player_vel_x[1];
+	practice_player_vel_y[tmp1] = player_vel_y[0];
+	practice_player_vel_y[tmp1+1] = player_vel_y[1];
+	practice_player_gravity[tmp1] = player_gravity[0];
+	practice_player_gravity[tmp1+1] = player_gravity[1];
+	practice_cube_rotate[tmp1] = cube_rotate[0];
+	practice_cube_rotate[tmp1+1] = cube_rotate[1];
+	practice_player_gamemode[tmp1] = gamemode;
+	practice_mini[tmp1] = mini[0];
+	practice_mini[tmp1+1] = mini[1];
+	practice_dual[tmp1] = dual;
+	practice_speed[tmp1] = speed;
+	practice_parallax_scroll_x[tmp1] = parallax_scroll_x;
+	practice_scroll_x[tmp1] = scroll_x;
+	practice_scroll_y[tmp1] = scroll_y;
+	practice_bg_color_type[tmp1] = lastbgcolortype;
+	practice_g_color_type[tmp1] = lastgcolortype;
+	practice_orbactive[tmp1] = orbactive;
+	practice_target_scroll_y[tmp1] = target_scroll_y;
 }
 
 
 void restore_practice_state() {
-	tmp2 = practice_point_count - 1;
+	tmp2 = curr_practice_point;
 	player_x[0] = practice_player_x[tmp2];
 	long_temp_x = high_byte(practice_player_x[tmp2]);
 	player_x[1] = practice_player_x[tmp2+1];

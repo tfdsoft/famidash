@@ -13,7 +13,7 @@ void reset_level(void) {
 	ufo_orbed = 0;
 	slope_type = SLOPE_NONE;
 	last_slope_type = SLOPE_NONE;
-	curr_practice_point = practice_point_count;
+	curr_practice_point = latest_practice_point;
 	robotjumpframe[0] = 0;
 	tmp1 = 30;
 	if (!DEBUG_MODE && (cube_data[0] & 1)) {
@@ -30,8 +30,11 @@ void reset_level(void) {
 				++robotjumpframe[0];
 			}
 //			pad_poll(0);
-			if (joypad1.press_select && practice_point_count > 1) { practice_point_count--; curr_practice_point = 0; }				
-			if (!mouse.connected && joypad2.press_select && practice_point_count > 1) { practice_point_count--; curr_practice_point = 0; }				
+			if (practice_point_count > 1 && (((mouse.connected ? 0 : joypad2.press) | joypad1.press) & PAD_SELECT)) {
+				curr_practice_point--;
+				if (curr_practice_point >= practice_point_count)
+					curr_practice_point = practice_point_count - 1;
+			}	
 
 			--tmp1;
 		}
@@ -49,8 +52,11 @@ void reset_level(void) {
 				
 				++robotjumpframe[0];
 			}
-			if (joypad1.press_select && practice_point_count > 1) { practice_point_count--; curr_practice_point = 0; }				
-			if (joypad2.press_select && practice_point_count > 1) { practice_point_count--; curr_practice_point = 0; }				
+			if (practice_point_count > 1 && (((mouse.connected ? 0 : joypad2.press) | joypad1.press) & PAD_SELECT)) {
+				curr_practice_point--;
+				if (curr_practice_point >= practice_point_count)
+					curr_practice_point = practice_point_count - 1;
+			}						
 			--tmp1;
 		}
 	}
@@ -132,13 +138,13 @@ void reset_level(void) {
 	unrle_first_screen();
 
 	if (practice_point_count) {
-		tmp3 = practice_bg_color_type[practice_point_count-1];
+		tmp3 = practice_bg_color_type[curr_practice_point];
 			tmp2 = (tmp3 & 0x3F);                        
 			pal_col(0, tmp2);
 			pal_col(1, oneShadeDarker(tmp2)); 
 			pal_col(9, oneShadeDarker(tmp2)); 
 
-		tmp3 = practice_g_color_type[practice_point_count-1];
+		tmp3 = practice_g_color_type[curr_practice_point];
 			tmp2 = (tmp3 & 0x3F);                        
 	    pal_col(6, tmp2);
 
@@ -148,7 +154,7 @@ void reset_level(void) {
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
 	if (!practice_point_count) {
-	music_play(song);
+		music_play(song);
 	}
 
 }

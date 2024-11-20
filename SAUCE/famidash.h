@@ -409,6 +409,7 @@ uint8_t dashing[2];
 
 uint8_t practice_point_count; // = 0;
 uint8_t curr_practice_point;
+uint8_t latest_practice_point;
 
 #define MAX_PRACTICE_POINTS 8
 

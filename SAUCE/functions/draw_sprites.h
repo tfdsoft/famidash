@@ -36,8 +36,8 @@ void draw_sprites(void){
 	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
 	if (invisblocks) return;
 
-	if (practice_point_count && curr_practice_point == practice_point_count) {
-		tmp3 = high_byte(practice_player_y[practice_point_count - 1]);
+	if (practice_point_count) {
+		tmp3 = high_byte(practice_player_y[curr_practice_point]);
 		if (long_temp_x > 10) { 
 			long_temp_x -= 3;
 			oam_meta_spr(long_temp_x, tmp3 - 1, Practice_Sprites[0]);

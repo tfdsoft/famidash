@@ -338,7 +338,11 @@ void state_game(){
 				}		
 //		}
 
-		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press))) { practice_point_count--; curr_practice_point = 0; }
+		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press))) {
+			curr_practice_point--;
+			if (curr_practice_point >= practice_point_count)
+				curr_practice_point = practice_point_count - 1;
+		}
 		
 		if ((controllingplayer->press_b) && practice_point_count && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
 

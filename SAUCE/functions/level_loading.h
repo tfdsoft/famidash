@@ -69,11 +69,11 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 
 	mmc3_set_prg_bank_1(level_data_bank);
 
-	// If practice mode has set a scroll position to restart from, run the unrle function
-	// over and over until it catches up
+	// If practice mode has set a scroll position to restart from
+	// Then we dummy unrle, and adjust the parallax to match
 	if (practice_point_count) {
 
-		ii = practice_scroll_x[practice_point_count-1] >> 4;
+		ii = practice_scroll_x[curr_practice_point] >> 4;
 		dummy_unrle_columns(ii);
 
 		__A__ = -(6 * (9 / 3) / 2); __asm__("tay \n sty %v", parallax_scroll_column);

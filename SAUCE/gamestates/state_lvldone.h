@@ -73,13 +73,11 @@ void state_lvldone() {
 	vram_fill(0x00, 0x3f);
 
 	// Copy the level done screen to the bot left and right nametable
-    vram_adr(NAMETABLE_A);
-	if(practice_point_count){
-	vram_unrle(practicedone);
-	}
-	else{
-	vram_unrle(leveldone);
-	
+	vram_adr(NAMETABLE_A);
+	if (practice_point_count) {
+		vram_unrle(practicedone);
+	} else {
+		vram_unrle(leveldone);
 	}
 
 	#include "defines/endlevel_charmap.h"
