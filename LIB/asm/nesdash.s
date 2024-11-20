@@ -473,13 +473,15 @@ single_rle_byte:
 	mulRes1 = ptr1+1
 	mulRes2 = sreg
 	start:
-		; Multiply columns by level height
-		sta mulIn0
-		stx mulIn0+1
-		and #$0F
-		sta rld_column
-		lda #27
-		sta mulIn1
+		sta mulIn0			;
+		stx mulIn0+1		;	Multiply the
+		and #$0F			;	amount of columns
+		sta rld_column		;__
+		lda rld_load_value	;
+		eor #$FF			;
+		sec					;	by level height
+		adc #0				;
+		sta mulIn1			;__
 		jsr umul8x16r24m
 		; result now in ptr1:sreg[0],
 		; y = 0 
@@ -3473,7 +3475,7 @@ SampleRate_PAL:
 .endproc
 
 ; [Not used in C]
-.segment "CODE_2"
+.segment "CODE"
 
 .import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK__
 

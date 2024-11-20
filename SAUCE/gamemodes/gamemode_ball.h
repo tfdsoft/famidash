@@ -103,7 +103,7 @@ void ball_movement(void){
 			bg_coll_floor_spikes();
 		}
 		if(kandotemp2[currplayer] == 1){
-			if (!(controllingplayer->a) && !(controllingplayer->up)){
+			if (!(controllingplayer->hold & (PAD_A | PAD_UP))){
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 				kandotemp2[currplayer] = 0;			
 			}

@@ -371,7 +371,7 @@ void state_game(){
 		if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
 	if (orbed[currplayer]) {
-		if (!(controllingplayer->a) && !(controllingplayer->up)) orbed[currplayer] = 0;
+		if (!(controllingplayer->hold & (PAD_A | PAD_UP))) orbed[currplayer] = 0;
 	}
 
 		crossPRGBankJump0(sprite_collide);
@@ -472,7 +472,7 @@ void state_game(){
 			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
 			if (((controllingplayer->press_a || controllingplayer->press_up)) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 	if (orbed[currplayer]) {
-		if (!(controllingplayer->a) && !(controllingplayer->up)) orbed[currplayer] = 0;
+		if (!(controllingplayer->hold & (PAD_A | PAD_UP))) orbed[currplayer] = 0;
 	}
 
 			crossPRGBankJump0(sprite_collide);

@@ -129,7 +129,7 @@ void x_movement(){
 	}
 	
 
-	else if (!(controllingplayer->a) && !(controllingplayer->up)) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+	else if (!(controllingplayer->hold & (PAD_A | PAD_UP))) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 }
 
 
