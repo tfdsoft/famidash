@@ -1820,13 +1820,7 @@ music_counts:
 
 .segment "CODE_2"
 
-.import _disable_dpcm_bankswitch
 .proc famistudio_dpcm_bank_callback
-	; ldx _disable_dpcm_bankswitch
-	; beq :+
-	; 	sec
-	; 	rts
-	; :
 	clc
 	adc #<FIRST_DMC_BANK
 	jmp mmc3_set_prg_bank_0

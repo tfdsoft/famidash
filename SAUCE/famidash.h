@@ -407,7 +407,6 @@ uint8_t ufo_orbed;
 
 uint8_t dashing[2];
 
-uint8_t disable_dpcm_bankswitch;
 uint8_t has_practice_point; // = 0;
 uint8_t curr_practice_point;
 
