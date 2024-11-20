@@ -3,7 +3,7 @@ extern unsigned char* PARALLAX_CHR;
 
 void reset_level(void) {
 	// unsigned char i;
-	if (!has_practice_point) famistudio_music_stop();
+	if (!practice_point_count) famistudio_music_stop();
 
 
 	// slope stuff
@@ -13,7 +13,7 @@ void reset_level(void) {
 	ufo_orbed = 0;
 	slope_type = SLOPE_NONE;
 	last_slope_type = SLOPE_NONE;
-	curr_practice_point = has_practice_point;
+	curr_practice_point = practice_point_count;
 	robotjumpframe[0] = 0;
 	tmp1 = 30;
 	if (!DEBUG_MODE && (cube_data[0] & 1)) {
@@ -30,8 +30,8 @@ void reset_level(void) {
 				++robotjumpframe[0];
 			}
 //			pad_poll(0);
-			if (joypad1.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
-			if (!mouse.connected && joypad2.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
+			if (joypad1.press_select && practice_point_count > 1) { practice_point_count--; curr_practice_point = 0; }				
+			if (!mouse.connected && joypad2.press_select && practice_point_count > 1) { practice_point_count--; curr_practice_point = 0; }				
 
 			--tmp1;
 		}
@@ -49,8 +49,8 @@ void reset_level(void) {
 				
 				++robotjumpframe[0];
 			}
-			if (joypad1.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
-			if (joypad2.press_select && has_practice_point > 1) { has_practice_point--; curr_practice_point = 0; }				
+			if (joypad1.press_select && practice_point_count > 1) { practice_point_count--; curr_practice_point = 0; }				
+			if (joypad2.press_select && practice_point_count > 1) { practice_point_count--; curr_practice_point = 0; }				
 			--tmp1;
 		}
 	}
@@ -123,7 +123,7 @@ void reset_level(void) {
 	curr_x_scroll_stop = 0x5000;
 	target_x_scroll_stop = 0x5000;
 	discoframe = 0;
-	if (!has_practice_point) {
+	if (!practice_point_count) {
 		memfill(player_old_posy, 0, sizeof(player_old_posy));
 		memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
 		invincible_counter = 8;
@@ -131,14 +131,14 @@ void reset_level(void) {
 
 	unrle_first_screen();
 
-	if (has_practice_point) {
-		tmp3 = practice_bg_color_type[has_practice_point-1];
+	if (practice_point_count) {
+		tmp3 = practice_bg_color_type[practice_point_count-1];
 			tmp2 = (tmp3 & 0x3F);                        
 			pal_col(0, tmp2);
 			pal_col(1, oneShadeDarker(tmp2)); 
 			pal_col(9, oneShadeDarker(tmp2)); 
 
-		tmp3 = practice_g_color_type[has_practice_point-1];
+		tmp3 = practice_g_color_type[practice_point_count-1];
 			tmp2 = (tmp3 & 0x3F);                        
 	    pal_col(6, tmp2);
 
@@ -147,7 +147,7 @@ void reset_level(void) {
 	if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
-	if (!has_practice_point) {
+	if (!practice_point_count) {
 	music_play(song);
 	}
 

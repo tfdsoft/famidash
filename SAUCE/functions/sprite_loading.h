@@ -772,7 +772,7 @@ void sprite_collide_lookup() {
 		// collided with coin
 		case COIN1:
 		case COINGOTTEN1:
-			if (!has_practice_point) {
+			if (!practice_point_count) {
 				coins |= COIN_1;
 			sfx_play(sfx_coin, 0);
 				coin1_timer = 1;
@@ -782,7 +782,7 @@ void sprite_collide_lookup() {
 			return;
 		case COIN2:
 		case COINGOTTEN2:
-			if (!has_practice_point) {
+			if (!practice_point_count) {
 				coins |= COIN_2;
 		       sfx_play(sfx_coin, 0);
 				coin2_timer = 1;
@@ -792,7 +792,7 @@ void sprite_collide_lookup() {
 			return;
 		case COIN3:
 		case COINGOTTEN3:
-			if (!has_practice_point) {
+			if (!practice_point_count) {
 				coins |= COIN_3;
 			sfx_play(sfx_coin, 0);
 				coin3_timer = 1;

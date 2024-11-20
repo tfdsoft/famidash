@@ -211,7 +211,7 @@ void cube_movement(void){
 	jblocked[currplayer] = 0;
 //jim's shit
 	if (retro_mode && !dual) {
-		if (controllingplayer->press_b && !has_practice_point) {
+		if (controllingplayer->press_b && !practice_point_count) {
 			tmp9 = 0;
 			do {
 				if (!jimsheatballalive[tmp9]) {

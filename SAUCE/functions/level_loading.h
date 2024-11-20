@@ -71,9 +71,9 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 
 	// If practice mode has set a scroll position to restart from, run the unrle function
 	// over and over until it catches up
-	if (has_practice_point) {
+	if (practice_point_count) {
 
-		ii = practice_scroll_x[has_practice_point-1] >> 4;
+		ii = practice_scroll_x[practice_point_count-1] >> 4;
 		dummy_unrle_columns(ii);
 
 		__A__ = -(6 * (9 / 3) / 2); __asm__("tay \n sty %v", parallax_scroll_column);
@@ -134,7 +134,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	
 	set_scroll_x(scroll_x);
 	set_scroll_y(scroll_y);
-	if (!has_practice_point) {
+	if (!practice_point_count) {
 		multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(6, 15));
 	
 //		if (TOTALATTEMPTSTHOUSANDS >= 10)

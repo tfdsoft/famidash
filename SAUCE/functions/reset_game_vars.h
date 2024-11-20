@@ -1,14 +1,13 @@
-
 CODE_BANK_PUSH("XCD_BANK_04")
 
 void reset_game_vars(){
-	if (!has_practice_point) music_play(song_practice);
+	if (!practice_point_count) music_play(song_practice);
 
-	tmp1 = has_practice_point;
+	tmp1 = practice_point_count;
 
-	if (has_practice_point != MAX_PRACTICE_POINTS) { 
-		has_practice_point++;	
-		curr_practice_point = has_practice_point;
+	if (practice_point_count != MAX_PRACTICE_POINTS) { 
+		practice_point_count++;	
+		curr_practice_point = practice_point_count;
 		practice_player_x[tmp1] = player_x[0];
 		long_temp_x = high_byte(player_x[0]);
 		practice_player_x[tmp1+1] = player_x[1];
@@ -98,7 +97,7 @@ void reset_game_vars(){
 
 
 void restore_practice_state() {
-	tmp2 = has_practice_point - 1;
+	tmp2 = practice_point_count - 1;
 	player_x[0] = practice_player_x[tmp2];
 	long_temp_x = high_byte(practice_player_x[tmp2]);
 	player_x[1] = practice_player_x[tmp2+1];
