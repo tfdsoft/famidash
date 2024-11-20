@@ -73,7 +73,7 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// Then we dummy unrle, and adjust the parallax to match
 	if (practice_point_count) {
 
-		ii = practice_scroll_x[curr_practice_point] >> 4;
+		ii = lohi_arr32_load(practice_scroll_x, curr_practice_point) >> 4;
 		dummy_unrle_columns(ii);
 
 		__A__ = -(6 * (9 / 3) / 2); __asm__("tay \n sty %v", parallax_scroll_column);

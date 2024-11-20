@@ -37,7 +37,7 @@ void draw_sprites(void){
 	if (invisblocks) return;
 
 	if (practice_point_count) {
-		tmp3 = high_byte(practice_player_y[curr_practice_point]);
+		tmp3 = practice_player_1_y_hi[curr_practice_point];
 		if (long_temp_x > 10) { 
 			long_temp_x -= 3;
 			oam_meta_spr(long_temp_x, tmp3 - 1, Practice_Sprites[0]);

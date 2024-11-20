@@ -181,3 +181,49 @@
 	__asm__("tay"), \
 	__A__ = byte, \
 	__asm__("sta %v+1,y", arr))
+
+
+/*
+	Lo-hi array macros by alexmush, 2024
+	TODO: more comment here
+*/
+
+#define lohi_arr16_decl(name, size) \
+uint8_t name##_lo[size]; \
+uint8_t name##_hi[size]
+
+#define	lohi_arr16_load(arr, idx) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__asm__("lda %v, y \n ldx %v, y", arr##_lo, arr##_hi), \
+	__AX__)
+
+#define	lohi_arr16_store(arr, idx, word) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__AX__ = word, \
+	__asm__("sta %v, y \n txa \n sta %v, y", arr##_lo, arr##_hi), \
+	__AX__)
+
+#define lohi_arr32_decl(name, size) \
+uint8_t name##_lo[size]; \
+uint8_t name##_md[size]; \
+uint8_t name##_hi[size]; \
+uint8_t name##_ex[size]
+
+#define	lohi_arr32_load(arr, idx) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__asm__("lda %v, y \n ldx %v, y", arr##_hi, arr##_ex), \
+	__asm__("sta sreg \n stx sreg+1"), \
+	__asm__("lda %v, y \n ldx %v, y", arr##_lo, arr##_md), \
+	__EAX__)
+
+#define	lohi_arr32_store(arr, idx, long) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__EAX__ = long, \
+	__asm__("sta %v, y \n txa \n sta %v, y", arr##_lo, arr##_md), \
+	__asm__("lda sreg \n ldx sreg+1"), \
+	__asm__("sta %v, y \n txa \n sta %v, y", arr##_hi, arr##_ex) \
+	)

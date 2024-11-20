@@ -15,66 +15,72 @@ void reset_game_vars(){
 	tmp1 = latest_practice_point;
 
 	curr_practice_point = latest_practice_point;
-	practice_player_x[tmp1] = player_x[0];
-	long_temp_x = high_byte(player_x[0]);
-	practice_player_x[tmp1+1] = player_x[1];
-	practice_player_y[tmp1] = player_y[0];
-	practice_player_y[tmp1+1] = player_y[1];
-	practice_player_vel_x[tmp1] = player_vel_x[0];
-	practice_player_vel_x[tmp1+1] = player_vel_x[1];
-	practice_player_vel_y[tmp1] = player_vel_y[0];
-	practice_player_vel_y[tmp1+1] = player_vel_y[1];
-	practice_player_gravity[tmp1] = player_gravity[0];
-	practice_player_gravity[tmp1+1] = player_gravity[1];
-	practice_cube_rotate[tmp1] = cube_rotate[0];
-	practice_cube_rotate[tmp1+1] = cube_rotate[1];
+	lohi_arr16_store(practice_player_1_x, tmp1, player_x[0]);
+	lohi_arr16_store(practice_player_2_x, tmp1, player_x[1]);
+	lohi_arr16_store(practice_player_1_y, tmp1, player_y[0]);
+	lohi_arr16_store(practice_player_2_y, tmp1, player_y[1]);
+	lohi_arr16_store(practice_player_1_vel_x, tmp1, player_vel_x[0]);
+	lohi_arr16_store(practice_player_2_vel_x, tmp1, player_vel_x[1]);
+	lohi_arr16_store(practice_player_1_vel_y, tmp1, player_vel_y[0]);
+	lohi_arr16_store(practice_player_2_vel_y, tmp1, player_vel_y[1]);
+	lohi_arr16_store(practice_cube_1_rotate, tmp1, cube_rotate[0]);
+	lohi_arr16_store(practice_cube_2_rotate, tmp1, cube_rotate[1]);
+	
+	practice_player_1_gravity[tmp1] = player_gravity[0];
+	practice_player_2_gravity[tmp1] = player_gravity[1];
+	practice_player_1_mini[tmp1] = mini[0];
+	practice_player_2_mini[tmp1] = mini[1];
+
+	lohi_arr32_store(practice_scroll_x, tmp1, scroll_x);
+	lohi_arr16_store(practice_scroll_y, tmp1, scroll_y);
+	lohi_arr16_store(practice_target_scroll_y, tmp1, target_scroll_y);
+
 	practice_player_gamemode[tmp1] = gamemode;
-	practice_mini[tmp1] = mini[0];
-	practice_mini[tmp1+1] = mini[1];
 	practice_dual[tmp1] = dual;
 	practice_speed[tmp1] = speed;
 	practice_parallax_scroll_x[tmp1] = parallax_scroll_x;
-	practice_scroll_x[tmp1] = scroll_x;
-	practice_scroll_y[tmp1] = scroll_y;
 	practice_bg_color_type[tmp1] = lastbgcolortype;
 	practice_g_color_type[tmp1] = lastgcolortype;
 	practice_orbactive[tmp1] = orbactive;
-	practice_target_scroll_y[tmp1] = target_scroll_y;
+
+	long_temp_x = high_byte(player_x[0]);
 }
 
 
 void restore_practice_state() {
 	tmp2 = curr_practice_point;
-	player_x[0] = practice_player_x[tmp2];
-	long_temp_x = high_byte(practice_player_x[tmp2]);
-	player_x[1] = practice_player_x[tmp2+1];
-	player_y[0] = practice_player_y[tmp2];
-	player_y[1] = practice_player_y[tmp2+1];
-	player_vel_x[0] = practice_player_vel_x[tmp2];
-	player_vel_x[1] = practice_player_vel_x[tmp2+1];
-	player_vel_y[0] = practice_player_vel_y[tmp2];
-	player_vel_y[1] = practice_player_vel_y[tmp2+1];
-	player_gravity[0] = practice_player_gravity[tmp2];
-	player_gravity[1] = practice_player_gravity[tmp2+1];
-	cube_rotate[0] = practice_cube_rotate[tmp2];
-	cube_rotate[1] = practice_cube_rotate[tmp2+1];
-	mini[0] = practice_mini[tmp2];
-	mini[1] = practice_mini[tmp2+1];
+	player_x[0] = lohi_arr16_load(practice_player_1_x, tmp2);
+	player_x[1] = lohi_arr16_load(practice_player_2_x, tmp2);
+	player_y[0] = lohi_arr16_load(practice_player_1_y, tmp2);
+	player_y[1] = lohi_arr16_load(practice_player_2_y, tmp2);
+	player_vel_x[0] = lohi_arr16_load(practice_player_1_vel_x, tmp2);
+	player_vel_x[1] = lohi_arr16_load(practice_player_2_vel_x, tmp2);
+	player_vel_y[0] = lohi_arr16_load(practice_player_1_vel_y, tmp2);
+	player_vel_y[1] = lohi_arr16_load(practice_player_2_vel_y, tmp2);
+	cube_rotate[0] = lohi_arr16_load(practice_cube_1_rotate, tmp2);
+	cube_rotate[1] = lohi_arr16_load(practice_cube_2_rotate, tmp2);
+
+	player_gravity[0] = practice_player_1_gravity[tmp2];
+	player_gravity[1] = practice_player_1_gravity[tmp2];
+	mini[0] = practice_player_1_mini[tmp2];
+	mini[1] = practice_player_2_mini[tmp2];
+
+	scroll_x = lohi_arr32_load(practice_scroll_x, tmp2) - (256 + 16);
+	old_trail_scroll_y = scroll_y = lohi_arr16_load(practice_scroll_y, tmp2);
+	target_scroll_y = lohi_arr16_load(practice_target_scroll_y, tmp2);
+
 	gamemode = practice_player_gamemode[tmp2];
-	mini[0] = practice_mini[tmp2];
-	mini[1] = practice_mini[tmp2+1];
 	dual = practice_dual[tmp2];
 	speed = practice_speed[tmp2];
 	parallax_scroll_x = practice_parallax_scroll_x[tmp2];
-	scroll_x = practice_scroll_x[tmp2] - (256 + 16);
-	old_trail_scroll_y = scroll_y = practice_scroll_y[tmp2];
 //	tmp2 = 0;
 //	do {
 //		idx8_store(trail_sprites_visible, tmp2, practice_trail_sprites_visible[tmp2]);
 //		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);
 //	} while (++tmp2 < 9);
 	orbactive = practice_orbactive[tmp2];
-	target_scroll_y = practice_target_scroll_y[tmp2];
+
+	long_temp_x = practice_player_1_x_hi[tmp2];
 
 	__A__ = currplayer<<1;
 	__asm__("tay");

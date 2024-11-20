@@ -413,18 +413,30 @@ uint8_t latest_practice_point;
 
 #define MAX_PRACTICE_POINTS 8
 
-uint16_t practice_player_x[2*MAX_PRACTICE_POINTS];
-uint16_t practice_player_y[2*MAX_PRACTICE_POINTS];
+lohi_arr16_decl(practice_player_1_x, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_player_1_vel_x, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_player_1_y, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_player_1_vel_y, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_cube_1_rotate, MAX_PRACTICE_POINTS);
+
+lohi_arr16_decl(practice_player_2_x, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_player_2_vel_x, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_player_2_y, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_player_2_vel_y, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_cube_2_rotate, MAX_PRACTICE_POINTS);
+
+uint8_t practice_player_1_gravity[MAX_PRACTICE_POINTS];
+uint8_t practice_player_2_gravity[MAX_PRACTICE_POINTS];
+uint8_t practice_player_1_mini[MAX_PRACTICE_POINTS];
+uint8_t practice_player_2_mini[MAX_PRACTICE_POINTS];
+
+lohi_arr32_decl(practice_scroll_x, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_scroll_y, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_target_scroll_y, MAX_PRACTICE_POINTS);
+
 uint8_t practice_player_gamemode[MAX_PRACTICE_POINTS];
-uint8_t practice_mini[2*MAX_PRACTICE_POINTS];
 uint8_t practice_dual[MAX_PRACTICE_POINTS];
 uint8_t practice_speed[MAX_PRACTICE_POINTS];
-uint16_t practice_cube_rotate[2*MAX_PRACTICE_POINTS];
-int16_t practice_player_vel_x[2*MAX_PRACTICE_POINTS];
-int16_t practice_player_vel_y[2*MAX_PRACTICE_POINTS];
-uint8_t practice_player_gravity[2*MAX_PRACTICE_POINTS];
-uint32_t practice_scroll_x[MAX_PRACTICE_POINTS];
-uint16_t practice_scroll_y[MAX_PRACTICE_POINTS];
 uint8_t practice_parallax_scroll_x[MAX_PRACTICE_POINTS];
 uint8_t practice_g_color[MAX_PRACTICE_POINTS];
 uint8_t practice_bg_color[MAX_PRACTICE_POINTS];
@@ -433,7 +445,6 @@ uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_trail_sprites_visible[9];
 //uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
-uint16_t practice_target_scroll_y[MAX_PRACTICE_POINTS];
 
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
