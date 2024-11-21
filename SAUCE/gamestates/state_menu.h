@@ -189,11 +189,14 @@ void levelselection() {
 		// scroll
 		if (tmp4) edit_irq_table(high_byte(tmp8),2);
 		else edit_irq_table(low_byte(tmp8),2);
-
-		if ((PEEK(0x01) & 2)) 
-			low_byte(tmp8) >>= 1;
+		
+		if (low_byte(tmp8) > 0) {
+			uint8_t diff = low_byte(tmp8) >> 2;
+			low_byte(tmp8) -= diff + 1;
+		}
+		
 		high_byte(tmp8) = low_byte(tmp8)^0xff;
-
+		
 		if (mouse.left_press) {
 			if (mouse.y >= 0x6E && mouse.y <= 0x7B) {
 				if (mouse.x >= 0x09 && mouse.x <= 0x15) {
