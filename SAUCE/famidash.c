@@ -75,7 +75,7 @@ void main(){
 					kandowatchesyousleep = 1;
 
 					//
-					has_practice_point = 0;
+					practice_point_count = 0;
 					#include "defines/mainmenu_charmap.h"
 					levelselection();
 				}

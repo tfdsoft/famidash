@@ -73,13 +73,11 @@ void state_lvldone() {
 	vram_fill(0x00, 0x3f);
 
 	// Copy the level done screen to the bot left and right nametable
-    vram_adr(NAMETABLE_A);
-	if(has_practice_point){
-	vram_unrle(practicedone);
-	}
-	else{
-	vram_unrle(leveldone);
-	
+	vram_adr(NAMETABLE_A);
+	if (practice_point_count) {
+		vram_unrle(practicedone);
+	} else {
+		vram_unrle(leveldone);
 	}
 
 	#include "defines/endlevel_charmap.h"
@@ -117,7 +115,7 @@ void state_lvldone() {
 	}
 	one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_A(18+tmp1,15));
 	
-	if (!has_practice_point) {
+	if (!practice_point_count) {
 		LEVELCOMPLETE[level] = 1;
 		
 		if (coins & COIN_1) coin1_obtained[level] = 1;
@@ -161,7 +159,7 @@ void state_lvldone() {
 
 	sfx_play(sfx_level_complete, 0);
 	menuselection = 1;
-	has_practice_point = 0;
+	practice_point_count = 0;
 
 	while (1) {
 		ppu_wait_nmi();

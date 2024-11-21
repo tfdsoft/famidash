@@ -124,7 +124,7 @@ void state_game(){
 		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(DECOTYPE[level] + 2);		//DECO
 		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(DECOTYPE[level]);		//OR ADDITIONAL SPRITES									//
 
-		if ((options & platformer) && !has_practice_point) {
+		if ((options & platformer) && !practice_point_count) {
 			
 			if (famistudio_song_speed == 0x80) music_play(song);
 		}		    
@@ -279,7 +279,7 @@ void state_game(){
 					else if ((controllingplayer->press_b || mouse.left_press) && PRACTICE_ENABLED) {
 						mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
 						reset_game_vars();
-						//has_practice_point = 1;
+						//practice_point_count = 1;
 						joypad1.press = PAD_START;
 					}
 					if (joypad1.press_select || exittimer == 100) { 
@@ -338,9 +338,13 @@ void state_game(){
 				}		
 //		}
 
-		if (has_practice_point > 1 && (joypad1.press_select || (mouse.left && mouse.right_press))) { has_practice_point--; curr_practice_point = 0; }
+		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press))) {
+			curr_practice_point--;
+			if (curr_practice_point >= practice_point_count)
+				curr_practice_point = practice_point_count - 1;
+		}
 		
-		if ((controllingplayer->press_b) && has_practice_point && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
+		if ((controllingplayer->press_b) && practice_point_count && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
 
 		if (joypad1.press_right && DEBUG_MODE && !(options & platformer)) {
 			currplayer_gravity ^= 0x01;

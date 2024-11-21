@@ -758,7 +758,7 @@ void state_menu() {
 	kandotemp = 1;
 
 	settingvalue = 0;
-	has_practice_point = 0;
+	practice_point_count = 0;
 	
 	// Enable SRAM write
 	POKE(0xA001, 0x80);

@@ -1820,13 +1820,7 @@ music_counts:
 
 .segment "CODE_2"
 
-.import _disable_dpcm_bankswitch
 .proc famistudio_dpcm_bank_callback
-	; ldx _disable_dpcm_bankswitch
-	; beq :+
-	; 	sec
-	; 	rts
-	; :
 	clc
 	adc #<FIRST_DMC_BANK
 	jmp mmc3_set_prg_bank_0
@@ -3357,7 +3351,7 @@ SampleRate_PAL:
 ; void update_level_completeness();
 .segment "CODE_2"
 
-.import _level, _has_practice_point
+.import _level, _practice_point_count
 .import _level_completeness_normal
 
 .export _update_level_completeness
@@ -3457,7 +3451,7 @@ SampleRate_PAL:
 			LDY #99		;	100% is reserved for complete levels only
 		:				;__
 
-		LDA _has_practice_point	;
+		LDA _practice_point_count	;
 		BEQ :+					;
 			LDA #levelsInTable	;	Calculate whether to store 
 		:						;	the new completeness in the
