@@ -3,8 +3,7 @@
 def convertCFileToS(filename : str, outfilename : str):
 	infile = open(filename, "r")
 	outfile = open(outfilename, "w")
-	while (True):
-		line = infile.readline()
+	for line in infile:
 		split = line.split()
 		# print(line)
 		if not line:

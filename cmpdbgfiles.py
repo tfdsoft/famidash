@@ -3,27 +3,23 @@
 import sys, argparse, pathlib
 
 def readDbgFile (filename : str, check : str) -> dict:
-	file = open(sys.path[0]+"/"+filename)
-
 	outdict = {}
-
-	while (True):
-		line = file.readline()
-		# print(line)
-		if not line:
-			break
-		if line.startswith(check):
-			line = line.split(",")
-			if [i[6:-1] for i in line if i.startswith("name")][0]:
-				outdict[[i[6:-1] for i in line if i.startswith("name")][0]] = [int(i[5:], 0) for i in line if i.startswith("size")][0]
-				# names += [i[6:-1] for i in line if i.startswith("name")]
-				# sizes += [int(i[5:]) for i in line if i.startswith("size")]
-			# if (len(line) >= 2 ):
-				# output.append("#define "+line[0]+" "+line[2])
-			# else: 
-	# for i in outdict.items():
-		# print(i)
-	file.close()
+	with open(sys.path[0]+"/"+filename) as file:
+		for line in file:
+			# print(line)
+			if not line:
+				break
+			if line.startswith(check):
+				line = line.split(",")
+				if [i[6:-1] for i in line if i.startswith("name")][0]:
+					outdict[[i[6:-1] for i in line if i.startswith("name")][0]] = [int(i[5:], 0) for i in line if i.startswith("size")][0]
+					# names += [i[6:-1] for i in line if i.startswith("name")]
+					# sizes += [int(i[5:]) for i in line if i.startswith("size")]
+				# if (len(line) >= 2 ):
+					# output.append("#define "+line[0]+" "+line[2])
+				# else: 
+		# for i in outdict.items():
+			# print(i)
 	return outdict
 
 def parseCfgLine (line : str) -> tuple:
@@ -60,33 +56,30 @@ def parseCfgLine (line : str) -> tuple:
 
 
 def readCfgFile (filename : str, check : str, part : str) -> dict:
-	file = open(sys.path[0]+"/"+filename)
-
 	outdict = {}
-
-	state = 0
-
 	lines = []
+	with open(sys.path[0]+"/"+filename) as file:
 
-	while (True):
-		line = file.readline()
-		if not line:
-			return {}
-		if state == 0:
-			if line.startswith(part):
-				line = line.split()
-				if line[1] == "{":
-					state = 1
-		elif state == 1:
-			if "}" in line:
-				break
-			lines.append(line)
-	for i in lines:
-		data = parseCfgLine(i)
-		if len(data) == 0:
-			continue
-		if check in data[1].keys():
-			outdict[data[0]] = data[1][check]
+		state = 0
+
+		for line in file:
+			if not line:
+				return {}
+			if state == 0:
+				if line.startswith(part):
+					line = line.split()
+					if line[1] == "{":
+						state = 1
+			elif state == 1:
+				if "}" in line:
+					break
+				lines.append(line)
+		for i in lines:
+			data = parseCfgLine(i)
+			if len(data) == 0:
+				continue
+			if check in data[1].keys():
+				outdict[data[0]] = data[1][check]
 	
 	return outdict
 

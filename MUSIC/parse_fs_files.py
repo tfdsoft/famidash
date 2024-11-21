@@ -3,17 +3,15 @@
 import sys
 
 def readIncFile (file : str) -> list:
-    file = open(sys.path[0]+"/EXPORTS/"+file+".inc")
     output = []
+    with open(sys.path[0]+"/EXPORTS/"+file+".inc") as file:
 
-    while (True):
-        line = file.readline()
-        line = line.split()
-        if (len(line) >= 2 and line[1] == "="):
-            output.append("#define "+line[0]+" "+line[2])
-        else: 
-            file.close()
-            return output
+        for line in file:
+            line = line.split()
+            if (len(line) >= 2 and line[1] == "="):
+                output.append("#define "+line[0]+" "+line[2])
+            else: 
+                return output
         
 def parseAllIncFiles() :
     output = readIncFile("music_songlist")
@@ -29,8 +27,7 @@ def incrIncFile(inFile : io.TextIOWrapper, outFileC : io.TextIOWrapper, outFileA
     outputAsm = []
     count = initialCount
 
-    while (True):
-        line = inFile.readline()
+    for line in inFile:
         line = line.split()
         if (len(line) >= 2 and line[1] == "=" and (line[0][:len("song_")] == "song_" or line[0][:len("sfx_")] == "sfx_")):
             if (line[0][len("song_"):] not in ["dpcm", "max"]):
