@@ -240,7 +240,8 @@ void levelselection() {
 			leveldec();
 		}
 
-		if (tmp8 == 0x3f) {
+		// NOTE: this is hardcoded. It used to be 0x3F with the old scroll scheme
+		if (tmp8 == 0x3B) {
 			crossPRGBankJump0(refreshmenu);
 			crossPRGBankJump0(refreshmenu_part2);
 		}
