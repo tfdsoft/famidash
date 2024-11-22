@@ -191,8 +191,7 @@ void levelselection() {
 		else edit_irq_table(low_byte(tmp8),2);
 		
 		if (low_byte(tmp8) > 0) {
-			uint8_t diff = low_byte(tmp8) >> 2;
-			low_byte(tmp8) -= diff + 1;
+			low_byte(tmp8) -= (low_byte(tmp8) >> 2) + 1;
 		}
 		
 		high_byte(tmp8) = low_byte(tmp8)^0xff;
