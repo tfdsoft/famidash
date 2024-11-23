@@ -1662,6 +1662,7 @@ SLOPESA = 14
 	lda _no_parallax
 	beq :+
 		lda #SLOPESA
+		adc CHRBANK_TEMP
 		jmp _mmc3_set_1kb_chr_bank_2
 	:
 	lda _parallax_scroll_x
