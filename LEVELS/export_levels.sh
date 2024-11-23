@@ -17,6 +17,7 @@ all_levels="
             theoryofeverything\
             electroman\
 	    clubstep\
+	    hexagonforce\
 	    toe2\
 	    thechallenge\
             leveleasy\	    

@@ -63,6 +63,7 @@ const uint8_t DECOTYPE[] = {
 	DECOCLOUD, //TOE
 	DECOCLOUD, //electroman
 	DECO1, //clubstep
+	DECO1, //hexagon force
 	DECO1, //TOE2
 	EXTRASPRITES1, //the challenge
 	DECO1, //LEVEL EASY
@@ -94,6 +95,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //theory of everything
 	SPIKESB, //electroman
 	SPIKESA, //clubstep
+	SPIKESA, //hexagon force
 	SPIKESA, //TOE2
 	SPIKESA, //the challenge
 	SPIKESA, //LEVEL EASY
@@ -125,6 +127,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //theory of everything
 	BLOCKSB, //electroman
 	BLOCKSB, //clubstep
+	BLOCKSB, //hexagon force
 	BLOCKSB, //TOE2
 	BLOCKSB, //the challenge
 	BLOCKSA, //LEVEL EASY
@@ -156,6 +159,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //theory of everything
 	SAWBLADESA, //electroman
 	SAWBLADESA, //clubstep
+	SAWBLADESA, //hexagon force
 	SAWBLADESA, //TOE2
 	SAWBLADESA, //the challenge
 	SAWBLADESA, //LEVEL EASY
@@ -188,6 +192,7 @@ const unsigned char difficulty_list[] = {
     INSANE,
     INSANE,
     DEMON,  //CLUBSTEP
+    INSANE,  //hexagon force
     DEMON,  //TOE2
     NORMAL, //the challenge
     NORMAL, //LEVEL EASY
@@ -219,6 +224,7 @@ const unsigned char stars_list[] = {
 	12,
 	10,
 	14,  //clubstep
+	12,  //hexagon force
 	14,  //TOE2
 	3,   //the challenge
 	3,

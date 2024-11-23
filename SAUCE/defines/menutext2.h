@@ -18,6 +18,7 @@ const unsigned char levelCtext[]="THEORY OF";
 const unsigned char levelDtext[]="ELECTROMAN";
 const unsigned char level16text[]="THE LIGHTNING";
 const unsigned char levelchallengetext[]="THE";
+const unsigned char levelhexagontext[]="HEXAGON";
 //const unsigned char level18text[]="GO BACK TO";
 
 const unsigned char level1text2[]="MADNESS";
@@ -35,6 +36,7 @@ const unsigned char levelCtext2[]="EVERYTHING";
 const unsigned char levelCtext22[]="EVERYTHING 2";
 const unsigned char levelDtext2[]="ADVENTURES";
 const unsigned char levelclubtext2[]="CLUBSTEP";
+const unsigned char levelhexagon2[]="FORCE";
 const unsigned char levelEtext2[]="THE NIGHTMARE";
 const unsigned char levelFtext2[]="DECODE";
 const unsigned char level10text2[]="LUCKY DRAW";

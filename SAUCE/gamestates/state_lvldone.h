@@ -415,6 +415,7 @@ const unsigned char TEXT_xlevel1textC[]="THEORY$OF";
 const unsigned char TEXT_xlevel1textD[]="ELECTROMAN";
 const unsigned char TEXT_xweasel[]="SCHEMING";
 const unsigned char TEXT_challenge[]="THE";
+const unsigned char TEXT_hexagon[]="HEXAGON";
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
 const unsigned char TEXT_xlevel2text2[]="TRACK";
@@ -439,6 +440,7 @@ const unsigned char TEXT_2textmenu[]="MENU";
 const unsigned char TEXT_2textweasel[]="WEASEL";
 const unsigned char TEXT_2challenge[]="CHALLENGE";
 const unsigned char TEXT_2deathmoon[]="DEATH$MOON";
+const unsigned char TEXT_2hexagon[]="FORCE";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -472,11 +474,11 @@ const unsigned char sfxtexts_size[] = {
 
 
 const unsigned char* const xbgmtexts1[] = {
-	0, TEXT_xlevel1text1, TEXT_xlevel1text2, 0, 0, TEXT_xlevel1text5, 0, 0, 0, 0, 0, 0, TEXT_xlevel1textC, TEXT_xlevel1textD, 0, TEXT_xlevel1textC, 0, 0, 0, 0, TEXT_xweasel, TEXT_challenge
+	0, TEXT_xlevel1text1, TEXT_xlevel1text2, 0, 0, TEXT_xlevel1text5, 0, 0, 0, 0, 0, 0, TEXT_xlevel1textC, TEXT_xlevel1textD, 0, TEXT_hexagon, TEXT_xlevel1textC, 0, 0, 0, 0, TEXT_xweasel, TEXT_challenge
 };
 
 const unsigned char* const xbgmtexts2[] = {
-	TEXT_2textmenu, TEXT_xlevel2text1, TEXT_xlevel2text2, TEXT_xlevel2text3, TEXT_xlevel2text4, TEXT_xlevel2text5, TEXT_xlevel2text6, TEXT_xlevel2text7, TEXT_xlevel2text8, TEXT_xlevel2text9, TEXT_xlevel2textA, TEXT_xlevel2textB, TEXT_xlevel2textC, TEXT_xlevel2textD, TEXT_2textclubstep, TEXT_xlevel22textC, TEXT_xlevel2textE, TEXT_2textpractice, TEXT_2texteon, TEXT_2deathmoon, TEXT_2textweasel, TEXT_2challenge
+	TEXT_2textmenu, TEXT_xlevel2text1, TEXT_xlevel2text2, TEXT_xlevel2text3, TEXT_xlevel2text4, TEXT_xlevel2text5, TEXT_xlevel2text6, TEXT_xlevel2text7, TEXT_xlevel2text8, TEXT_xlevel2text9, TEXT_xlevel2textA, TEXT_xlevel2textB, TEXT_xlevel2textC, TEXT_xlevel2textD, TEXT_2textclubstep, TEXT_2hexagon, TEXT_xlevel22textC, TEXT_xlevel2textE, TEXT_2textpractice, TEXT_2texteon, TEXT_2deathmoon, TEXT_2textweasel, TEXT_2challenge
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -495,6 +497,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_xlevel2textC) - 1,	
 	sizeof(TEXT_xlevel2textD) - 1,	
 	sizeof(TEXT_2textclubstep) - 1,
+	sizeof(TEXT_2hexagon) - 1,
 	sizeof(TEXT_xlevel22textC) - 1,	
 	sizeof(TEXT_xlevel2textE) - 1,
 	sizeof(TEXT_2textpractice) - 1,
@@ -519,6 +522,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_xlevel1textC) - 1,	
 	sizeof(TEXT_xlevel1textD) - 1,	
 	0,
+	sizeof(TEXT_hexagon) - 1,	
 	sizeof(TEXT_xlevel1textC) - 1,	
 	0,
 	0,
@@ -545,6 +549,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_theory_of_everything, 
 	song_electroman_adventures, 
 	song_clubstep,
+	song_hexagon_force,
 	song_toe_2,
 	song_endgame, 
 	song_practice,
@@ -983,10 +988,10 @@ void set_fun_settings() {
 
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, levelCtext, levelchallengetext, NULL, level16text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, levelhexagontext, levelCtext, levelchallengetext, NULL, level16text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 };
 const unsigned char* const leveltexts2[] = {
-  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelclubtext2, levelCtext22, levelchallengetext2, level15text2, level16text2, levelEtext2, level19text2, levelFtext2, level17text2, level10text2, level12text2, level13text2, level14text2
+  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelclubtext2, levelhexagon2, levelCtext22, levelchallengetext2, level15text2, level16text2, levelEtext2, level19text2, levelFtext2, level17text2, level10text2, level12text2, level13text2, level14text2
 };
 
 
@@ -1005,6 +1010,7 @@ const unsigned char level_text_size[] = {
 	sizeof(levelCtext) - 1,
 	sizeof(levelDtext) - 1,
 	0,
+	sizeof(levelhexagontext) - 1,
 	sizeof(levelCtext) - 1,
 	sizeof(levelchallengetext) - 1,
 	0,
@@ -1034,6 +1040,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelCtext2) - 1,
 	sizeof(levelDtext2) - 1,
 	sizeof(levelclubtext2) - 1,
+	sizeof(levelhexagon2) - 1,
 	sizeof(levelCtext22) - 1,
 	sizeof(levelchallengetext2) - 1,
 	sizeof(level15text2) - 1,

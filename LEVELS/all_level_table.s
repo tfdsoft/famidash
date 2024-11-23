@@ -19,6 +19,7 @@ _level_list_lo:
   .byte .lobyte(level_data_theoryofeverything)
   .byte .lobyte(level_data_electroman)
   .byte .lobyte(level_data_clubstep)
+  .byte .lobyte(level_data_hexagonforce)
   .byte .lobyte(level_data_toe2)
   .byte .lobyte(level_data_thechallenge)
   .byte .lobyte(level_data_leveleasy)
@@ -47,6 +48,7 @@ _level_list_hi:
   .byte .hibyte(level_data_theoryofeverything)
   .byte .hibyte(level_data_electroman)
   .byte .hibyte(level_data_clubstep)
+  .byte .hibyte(level_data_hexagonforce)
   .byte .hibyte(level_data_toe2)
   .byte .hibyte(level_data_thechallenge)
   .byte .hibyte(level_data_leveleasy)
@@ -75,6 +77,7 @@ _level_list_bank:
   .byte .lobyte(.bank(level_data_theoryofeverything))
   .byte .lobyte(.bank(level_data_electroman))
   .byte .lobyte(.bank(level_data_clubstep))
+  .byte .lobyte(.bank(level_data_hexagonforce))
   .byte .lobyte(.bank(level_data_toe2))
   .byte .lobyte(.bank(level_data_thechallenge))
   .byte .lobyte(.bank(level_data_leveleasy))
@@ -103,6 +106,7 @@ _sprite_list_lo:
   .byte .lobyte(sprite_data_theoryofeverything)
   .byte .lobyte(sprite_data_electroman)
   .byte .lobyte(sprite_data_clubstep)
+  .byte .lobyte(sprite_data_hexagonforce)
   .byte .lobyte(sprite_data_toe2)
   .byte .lobyte(sprite_data_thechallenge)
   .byte .lobyte(sprite_data_leveleasy)
@@ -131,6 +135,7 @@ _sprite_list_hi:
   .byte .hibyte(sprite_data_theoryofeverything)
   .byte .hibyte(sprite_data_electroman)
   .byte .hibyte(sprite_data_clubstep)
+  .byte .hibyte(sprite_data_hexagonforce)
   .byte .hibyte(sprite_data_toe2)
   .byte .hibyte(sprite_data_thechallenge)
   .byte .hibyte(sprite_data_leveleasy)
@@ -159,6 +164,7 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_theoryofeverything))
   .byte .lobyte(.bank(sprite_data_electroman))
   .byte .lobyte(.bank(sprite_data_clubstep))
+  .byte .lobyte(.bank(sprite_data_hexagonforce))
   .byte .lobyte(.bank(sprite_data_toe2))
   .byte .lobyte(.bank(sprite_data_thechallenge))
   .byte .lobyte(.bank(sprite_data_leveleasy))
@@ -190,6 +196,7 @@ _level_lengths_lo:
   .byte .lobyte($00008B)		; theoryofeverything
   .byte .lobyte($00008D)		; electroman
   .byte .lobyte($000091)		; clubstep
+  .byte .lobyte($0000CD)		; hexagonforce
   .byte .lobyte($00009D)		; toe2
   .byte .lobyte($000028)		; thechallenge
   .byte .lobyte($000090)		; leveleasy
@@ -220,6 +227,7 @@ _level_lengths_md:
   .byte .hibyte($00008B)		; theoryofeverything
   .byte .hibyte($00008D)		; electroman
   .byte .hibyte($000091)		; clubstep
+  .byte .hibyte($0000CD)		; hexagonforce
   .byte .hibyte($00009D)		; toe2
   .byte .hibyte($000028)		; thechallenge
   .byte .hibyte($000090)		; leveleasy
@@ -250,6 +258,7 @@ _level_lengths_hi:
   .byte .bankbyte($00008B)		; theoryofeverything
   .byte .bankbyte($00008D)		; electroman
   .byte .bankbyte($000091)		; clubstep
+  .byte .bankbyte($0000CD)		; hexagonforce
   .byte .bankbyte($00009D)		; toe2
   .byte .bankbyte($000028)		; thechallenge
   .byte .bankbyte($000090)		; leveleasy

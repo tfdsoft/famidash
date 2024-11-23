@@ -29,7 +29,6 @@ music_data_famidash_music4:
 	.word @song2ch3
 	.word @song2ch4
 	.word 262,218
-
 .export music_data_famidash_music4
 .global FAMISTUDIO_DPCM_PTR
 

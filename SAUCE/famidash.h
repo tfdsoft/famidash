@@ -222,13 +222,13 @@ uint8_t SRAM_VALIDATE[4];
 #ifdef FLAG_ENABLE_TEST_LEVELS
 	#define LEVEL_COUNT 256
 #else
-	#define LEVEL_COUNT 15
+	#define LEVEL_COUNT 16
 #endif
 
 #ifdef FLAG_ENABLE_TEST_LEVELS
 	#define LEVEL_COUNT2 256
 #else
-	#define LEVEL_COUNT2 26
+	#define LEVEL_COUNT2 27
 #endif
 
 

@@ -103,6 +103,13 @@ electroman_no_parallax  = 0
 electroman_bg_color    = $02
 electroman_grnd_color  = $01
 
+hexagonforce_song_number = song_hexagon_force
+hexagonforce_game_mode   = $00
+hexagonforce_speed       = $00
+hexagonforce_no_parallax  = 1
+hexagonforce_bg_color    = $0F
+hexagonforce_grnd_color  = $0F
+
 test2_song_number = song_practice
 test2_game_mode   = $00
 test2_speed       = $00
