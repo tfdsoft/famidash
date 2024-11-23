@@ -379,8 +379,6 @@ _GAME_CHR:
     .incbin "GRAPHICS/BlocksD.chr" ; (10)
     .incbin "GRAPHICS/SawbladesA.chr" ; (12)
     .incbin "GRAPHICS/slopesA.chr" ; (14)
-;    .incbin "GRAPHICS/slopesA.chr" ; ()
-    .incbin "GRAPHICS/practicecomplete.chr"    ; 1kb (15)
 
     .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (16) 
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
@@ -427,12 +425,12 @@ _GAME_CHR:
     
     .incbin "GRAPHICS/cursors.chr" ; 2kb (96)
 
-    .incbin "GRAPHICS/SawbladesNone.chr" ; 2kb (98)
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (98)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (102)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (106)
+    .incbin "GRAPHICS/practicecomplete.chr"    ; 1kb (110)
+   .incbin "GRAPHICS/SawbladesNone.chr" ; 1kb (111)
 
-
-    .incbin "GRAPHICS/menus.chr"    ; 4kb (100)
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (104)
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (108)
  ;   .incbin "GRAPHICS/practicecomplete.chr"    ; 1kb (112)
 
 .segment "PARALLAXCHR"  ; banks 112 - 255

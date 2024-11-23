@@ -1636,8 +1636,11 @@ SLOPESA = 14
 	ldx _level
 	; if no parallax is 1, then it will maybe add an offset to the chr
 	; other wise it will add 0 (effectively disabling it without branching)
-	lda _no_parallax
-  eor #1
+
+	;lda _no_parallax
+	
+	lda #0
+	eor #1
 	and _parallax_scroll_x
 	sta CHRBANK_TEMP
 	clc
@@ -1648,8 +1651,13 @@ SLOPESA = 14
 	adc CHRBANK_TEMP
 	jsr _mmc3_set_1kb_chr_bank_1
 	lda _saw_set,x
-	adc CHRBANK_TEMP
+	cmp #111
+	beq :+
+
+		adc CHRBANK_TEMP
+	:
 	jsr _mmc3_set_1kb_chr_bank_3
+	
 	; and then decide on the last bank
 	lda _no_parallax
 	beq :+

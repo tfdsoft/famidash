@@ -42,7 +42,7 @@
 #define BLOCKSC 8
 #define BLOCKSD 10
 #define SAWBLADESA 12
-#define LETTERBANK 98
+#define LETTERBANK 111
 
 #define DECO1 26
 #define DECOCLOUD 30
