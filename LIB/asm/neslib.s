@@ -1638,9 +1638,9 @@ SLOPESA = 14
 	; other wise it will add 0 (effectively disabling it without branching)
 
 	;lda _no_parallax
+	;eor #1
 	
-	lda #0
-	eor #1
+	lda #1
 	and _parallax_scroll_x
 	sta CHRBANK_TEMP
 	clc
