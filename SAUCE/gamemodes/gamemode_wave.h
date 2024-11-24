@@ -10,7 +10,7 @@ void wave_movement(void){
 		
 		if (controllingplayer->a || controllingplayer->up) currplayer_vel_y = -currplayer_vel_y;
 
-		if (!slope_frames && !was_on_slope_counter) {
+		if (!currplayer_slope_frames && !was_on_slope_counter) {
 			currplayer_y += currplayer_vel_y;
 		} else {
 			currplayer_vel_y = 0;

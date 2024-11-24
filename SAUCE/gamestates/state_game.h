@@ -451,6 +451,7 @@ void state_game(){
 			player_vel_y[0] = currplayer_vel_y;
 			player_gravity[0] = currplayer_gravity;
 			mini[0] = currplayer_mini;
+			slope_frames[0] = currplayer_slope_frames;
 		}
 
 		
@@ -471,6 +472,7 @@ void state_game(){
 				currplayer_vel_y = player_vel_y[1];
 				currplayer_gravity = player_gravity[1];
 				currplayer_mini = mini[1];
+				currplayer_slope_frames = slope_frames[1];
 			}
 
 			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
@@ -500,6 +502,7 @@ void state_game(){
 				player_vel_y[1] = currplayer_vel_y;
 				player_gravity[1] = currplayer_gravity;
 				mini[1] = currplayer_mini;
+				slope_frames[1] = currplayer_slope_frames;
 
 				currplayer_x = player_x[0];
 				currplayer_y = player_y[0];
@@ -507,6 +510,7 @@ void state_game(){
 				currplayer_vel_y = player_vel_y[0];
 				currplayer_gravity = player_gravity[0];
 				currplayer_mini = mini[0];
+				currplayer_slope_frames = slope_frames[0];
 			}
 		}
 
