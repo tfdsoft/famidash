@@ -95,7 +95,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //theory of everything
 	SPIKESB, //electroman
 	SPIKESA, //clubstep
-	SPIKESA, //hexagon force
+	SPIKESB, //hexagon force
 	SPIKESA, //TOE2
 	SPIKESA, //the challenge
 	SPIKESA, //LEVEL EASY
