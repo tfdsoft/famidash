@@ -371,7 +371,7 @@ char bg_side_coll_common() {
 	}
 	
 	if (currplayer_was_on_slope_counter | currplayer_slope_frames) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
-		tmp1 += (currplayer_slope_type & 0b1 ? -16 : 16);
+		return 0;
 	}
 
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
@@ -447,12 +447,12 @@ char bg_coll_U_D_checks() {
 }
 
 void set_slope_stuff() {
-	currplayer_slope_frames = (gamemode == 6 ? 3 : 2); //signal BG_COLL_R to not check stuff
+	currplayer_slope_frames = (gamemode == 6 ? 3 : 3); //signal BG_COLL_R to not check stuff
 	currplayer_was_on_slope_counter = (gamemode == 6 ? 6 : 4);
 }
 
 char _slope_LX22_stuff() {
-	if ((uint8_t)(tmp4 + (gamemode == 6 ? 8 : 2)) <= (uint8_t)tmp5) {
+	if ((uint8_t)(tmp4 + (gamemode == 6 ? 8 : 0)) <= (uint8_t)tmp5) {
 		set_slope_stuff();
 		currplayer_slope_type = xargs[0];
 		
@@ -472,7 +472,7 @@ char bg_coll_slope() {
 	tmp8 = (temp_y) & 0x0f;
 	switch (collision) {
 		case COL_NO_SIDE:
-			
+			if (gamemode == 0) return 0;
 			return 1;
 			
 		// 45 degrees

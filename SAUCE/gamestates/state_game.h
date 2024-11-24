@@ -524,6 +524,7 @@ void state_game(){
 				currplayer_gravity = player_gravity[0];
 				currplayer_mini = mini[0];
 				currplayer_slope_frames = slope_frames[0];
+				currplayer_was_on_slope_counter = was_on_slope_counter[0];
 				currplayer_slope_type = slope_type[0];
 				currplayer_last_slope_type = last_slope_type[0];
 			}

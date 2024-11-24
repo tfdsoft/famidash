@@ -129,22 +129,22 @@ void ball_movement(void){
 
 void ball_eject() {
 	
-		if(high_byte(currplayer_vel_y) & 0x80){
+		//if(high_byte(currplayer_vel_y) & 0x80){
 			if(bg_coll_U()){ // check collision above
 				high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U;
 				currplayer_vel_y = 0;
 				orbactive = 0;
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);			//fix for orb
 			}
-		}
-		else{
+		//}
+		//else{
 			if(bg_coll_D()){ // check collision below
 			    high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
 			    currplayer_vel_y = 0;
 				orbactive = 0;
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);		    //fix for orb
 			}
-		}		
+		//}		
 
 }	
 
