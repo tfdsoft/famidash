@@ -15,7 +15,9 @@ void reset_level(void) {
 	slope_type[0] = SLOPE_NONE;
 	slope_type[1] = SLOPE_NONE;
 	currplayer_slope_type = SLOPE_NONE;
-	last_slope_type = SLOPE_NONE;
+	last_slope_type[0] = SLOPE_NONE;
+	last_slope_type[1] = SLOPE_NONE;
+	currplayer_last_slope_type = SLOPE_NONE;
 	curr_practice_point = latest_practice_point;
 	robotjumpframe[0] = 0;
 	slope_frames[0] = 0;

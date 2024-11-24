@@ -454,6 +454,7 @@ void state_game(){
 			slope_frames[0] = currplayer_slope_frames;
 			was_on_slope_counter[0] = currplayer_was_on_slope_counter;
 			slope_type[0] = currplayer_slope_type;
+			last_slope_type[0] = currplayer_last_slope_type;
 		}
 
 		
@@ -477,6 +478,7 @@ void state_game(){
 				currplayer_slope_frames = slope_frames[1];
 				currplayer_was_on_slope_counter = was_on_slope_counter[1];
 				currplayer_slope_type = slope_type[1];
+				currplayer_last_slope_type = last_slope_type[1];
 			}
 
 			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
@@ -513,6 +515,7 @@ void state_game(){
 				slope_frames[1] = currplayer_slope_frames;
 				was_on_slope_counter[1] = currplayer_was_on_slope_counter;
 				slope_type[1] = currplayer_slope_type;
+				last_slope_type[1] = currplayer_last_slope_type;
 
 				currplayer_x = player_x[0];
 				currplayer_y = player_y[0];
@@ -522,6 +525,7 @@ void state_game(){
 				currplayer_mini = mini[0];
 				currplayer_slope_frames = slope_frames[0];
 				currplayer_slope_type = slope_type[0];
+				currplayer_last_slope_type = last_slope_type[0];
 			}
 		}
 

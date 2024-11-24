@@ -177,6 +177,7 @@ int8_t currplayer_vel_y_small;
 int8_t currplayer_slope_frames;
 uint8_t currplayer_was_on_slope_counter;
 uint8_t currplayer_slope_type;
+uint8_t currplayer_last_slope_type;
 
 uint8_t gamemode;
 uint8_t cube_data[2];
@@ -325,6 +326,8 @@ int8_t practice_player_1_slope_frames[MAX_PRACTICE_POINTS];
 int8_t practice_player_2_slope_frames[MAX_PRACTICE_POINTS];
 int8_t practice_player_1_slope_type[MAX_PRACTICE_POINTS];
 int8_t practice_player_2_slope_type[MAX_PRACTICE_POINTS];
+int8_t practice_player_1_last_slope_type[MAX_PRACTICE_POINTS];
+int8_t practice_player_2_last_slope_type[MAX_PRACTICE_POINTS];
 
 
 lohi_arr32_decl(practice_scroll_x, MAX_PRACTICE_POINTS);
@@ -416,7 +419,7 @@ uint16_t top_triggers;
 uint8_t nocamlock;
 uint8_t nestopia;
 
-uint8_t last_slope_type;
+uint8_t last_slope_type[2];
 
 uint8_t gameState = 0x01;
 
