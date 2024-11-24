@@ -323,6 +323,8 @@ uint8_t practice_player_1_was_on_slope_counter[MAX_PRACTICE_POINTS];
 uint8_t practice_player_2_was_on_slope_counter[MAX_PRACTICE_POINTS];
 int8_t practice_player_1_slope_frames[MAX_PRACTICE_POINTS];
 int8_t practice_player_2_slope_frames[MAX_PRACTICE_POINTS];
+int8_t practice_player_1_slope_type[MAX_PRACTICE_POINTS];
+int8_t practice_player_2_slope_type[MAX_PRACTICE_POINTS];
 
 
 lohi_arr32_decl(practice_scroll_x, MAX_PRACTICE_POINTS);
