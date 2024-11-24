@@ -107,8 +107,8 @@ hexagonforce_song_number = song_hexagon_force
 hexagonforce_game_mode   = $00
 hexagonforce_speed       = $00
 hexagonforce_no_parallax  = 1
-hexagonforce_bg_color    = $0F
-hexagonforce_grnd_color  = $0F
+hexagonforce_bg_color    = $02
+hexagonforce_grnd_color  = $12
 
 test2_song_number = song_practice
 test2_game_mode   = $00

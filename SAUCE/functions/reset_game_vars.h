@@ -61,9 +61,11 @@ void restore_practice_state() {
 	cube_rotate[1] = lohi_arr16_load(practice_cube_2_rotate, tmp2);
 
 	player_gravity[0] = practice_player_1_gravity[tmp2];
-	player_gravity[1] = practice_player_1_gravity[tmp2];
+	player_gravity[1] = practice_player_2_gravity[tmp2];
+	currplayer_gravity = player_gravity[0];
 	mini[0] = practice_player_1_mini[tmp2];
 	mini[1] = practice_player_2_mini[tmp2];
+	currplayer_mini = mini[0];
 
 	scroll_x = lohi_arr32_load(practice_scroll_x, tmp2) - (256 + 16);
 	old_trail_scroll_y = scroll_y = lohi_arr16_load(practice_scroll_y, tmp2);

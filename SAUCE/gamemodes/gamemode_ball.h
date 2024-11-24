@@ -48,7 +48,7 @@ void ball_movement(void){
 	if (controllingplayer->press_a || controllingplayer->press_up) idx8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
 
 	ball_eject();
-
+/*
 	if (bigboi) {
 			Generic.y -= 15;
 
@@ -62,7 +62,6 @@ void ball_movement(void){
 
 			ball_eject();
 	}
-
 	else {
 		if (tallmode) {
 			
@@ -81,6 +80,7 @@ void ball_movement(void){
 			ball_eject();
 		}
 	}
+*/
 	Generic.y = high_byte(currplayer_y);
 	Generic.x = high_byte(currplayer_x);
 
@@ -116,6 +116,14 @@ void ball_movement(void){
 		}
 	}		
 	ufo_orbed = 0;
+
+	if (was_on_slope_counter) {
+	    tmp5 = 0;
+	    tmp8 = last_slope_type;
+	    slope_exit_vel();
+	    tmp5 >>= 2;
+	    currplayer_vel_y += (currplayer_gravity ? tmp5 : -tmp5);
+	}
 
 }
 
