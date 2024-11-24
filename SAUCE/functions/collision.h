@@ -370,7 +370,7 @@ char bg_side_coll_common() {
 		tmp1 += (currplayer_gravity ? 3 : -2);
 	}
 	
-	if (was_on_slope_counter | currplayer_slope_frames) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
+	if (currplayer_was_on_slope_counter | currplayer_slope_frames) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
 		tmp1 += (slope_type & 0b1 ? -16 : 16);
 	}
 
@@ -385,7 +385,7 @@ char bg_side_coll_common() {
 			} 
 		}	
 		dblocked[currplayer] = 0;
-		if (was_on_slope_counter) return 0;
+		if (currplayer_was_on_slope_counter) return 0;
 	} else {
 		if (bg_coll_slope()) {
 			high_byte(currplayer_y) += (high_byte(currplayer_vel_y) & 0x80 ? 2 : -2);
@@ -430,7 +430,7 @@ char bg_coll_U_D_checks() {
 			tmp8++;
 			return 1;		
 		case COL_ALL: 
-			if (high_byte(currplayer_x) < 0x10 || was_on_slope_counter) return 0;
+			if (high_byte(currplayer_x) < 0x10 || currplayer_was_on_slope_counter) return 0;
 			else return 1;
 		case COL_DEATH_TOP:
 			col_death_top_routine();
@@ -448,7 +448,7 @@ char bg_coll_U_D_checks() {
 
 void set_slope_stuff() {
 	currplayer_slope_frames = (gamemode == 6 ? 3 : 2); //signal BG_COLL_R to not check stuff
-	was_on_slope_counter = (gamemode == 6 ? 6 : 4);
+	currplayer_was_on_slope_counter = (gamemode == 6 ? 6 : 4);
 }
 
 char _slope_LX22_stuff() {
@@ -478,7 +478,7 @@ char bg_coll_slope() {
 		// 45 degrees
 
 		case COL_ALL:
-			if (was_on_slope_counter | currplayer_slope_frames) {
+			if (currplayer_was_on_slope_counter | currplayer_slope_frames) {
 				high_byte(currplayer_y) += (high_byte(currplayer_y) - player_old_posy[1] & 0x80 ? high_byte(currplayer_vel_x) : -high_byte(currplayer_vel_x));
 				return 1;
 			}
@@ -657,10 +657,10 @@ char bg_coll_slope() {
 				slope_type = 0;
 			} else {
 				currplayer_slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
-				was_on_slope_counter = (gamemode == 6 ? 6 : 2);
+				currplayer_was_on_slope_counter = (gamemode == 6 ? 6 : 2);
 			}
 			return 1;
-	} else if (!was_on_slope_counter) {
+	} else if (!currplayer_was_on_slope_counter) {
 			slope_type = 0;
 	}
 	
@@ -954,7 +954,7 @@ void bg_coll_death() {
 		if (bg_coll_mini_blocks()) cube_data[currplayer] = 0x01; 
 	}
 	else {
-		if ((collision == COL_ALL || collision == COL_FLOOR_CEIL) && gamemode != 0x06 && !was_on_slope_counter) {  // wave
+		if ((collision == COL_ALL || collision == COL_FLOOR_CEIL) && gamemode != 0x06 && !currplayer_was_on_slope_counter) {  // wave
 			if (currplayer_gravity) {
 				if (currplayer_vel_y > 0) {
 					cube_data[currplayer] = 0x01; 
