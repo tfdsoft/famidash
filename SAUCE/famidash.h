@@ -176,6 +176,7 @@ uint8_t currplayer_y_small;
 int8_t currplayer_vel_y_small;
 int8_t currplayer_slope_frames;
 uint8_t currplayer_was_on_slope_counter;
+uint8_t currplayer_slope_type;
 
 uint8_t gamemode;
 uint8_t cube_data[2];
@@ -206,7 +207,7 @@ uint8_t temp_room;
 uint8_t dual;
 int8_t slope_frames[2];
 
-uint8_t slope_type;
+uint8_t slope_type[2];
 uint8_t was_on_slope_counter[2];
 uint8_t * sprite_data;
 uint8_t * level_data;

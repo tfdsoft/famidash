@@ -25,12 +25,12 @@ void slope_exit_vel() {
 void x_movement_coll() {
   mmc3_set_prg_bank_1(GET_BANK(bg_coll_R));
 
-	if (slope_type && !currplayer_slope_frames && gamemode != 6) {
+	if (currplayer_slope_type && !currplayer_slope_frames && gamemode != 6) {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
-		tmp8 = slope_type;
+		tmp8 = currplayer_slope_type;
 		slope_exit_vel();
-		if ((slope_type & 1)) {
-			if ((slope_type & 0b1000)) {
+		if ((currplayer_slope_type & 1)) {
+			if ((currplayer_slope_type & 0b1000)) {
 				currplayer_vel_y = tmp5 + 0x200;
 			} else {
 				currplayer_vel_y = (tmp5 + 0x200)^0xFFFF;

@@ -371,7 +371,7 @@ char bg_side_coll_common() {
 	}
 	
 	if (currplayer_was_on_slope_counter | currplayer_slope_frames) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
-		tmp1 += (slope_type & 0b1 ? -16 : 16);
+		tmp1 += (currplayer_slope_type & 0b1 ? -16 : 16);
 	}
 
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
@@ -454,9 +454,9 @@ void set_slope_stuff() {
 char _slope_LX22_stuff() {
 	if ((uint8_t)(tmp4 + (gamemode == 6 ? 8 : 2)) <= (uint8_t)tmp5) {
 		set_slope_stuff();
-		slope_type = xargs[0];
+		currplayer_slope_type = xargs[0];
 		
-		last_slope_type = slope_type;
+		last_slope_type = currplayer_slope_type;
 		tmp8 = tmp5 - tmp4 - 5;
 		return 1;
 	} else return 0;
@@ -491,7 +491,7 @@ char bg_coll_slope() {
 
 			if ((uint8_t)((gamemode == 6 ? 5 : -3) + tmp7) <= (uint8_t)tmp4) {
 				set_slope_stuff();
-				slope_type = SLOPE_45DEG_DOWN_UD;
+				currplayer_slope_type = SLOPE_45DEG_DOWN_UD;
 				tmp8 = tmp4 - tmp7 - 3;
 				return 1;
 			} else return 0;
@@ -503,7 +503,7 @@ char bg_coll_slope() {
 			
 			if ((uint8_t)tmp4 >= tmp7) {
 				set_slope_stuff();
-				slope_type = SLOPE_45DEG_DOWN;
+				currplayer_slope_type = SLOPE_45DEG_DOWN;
 				tmp8 = tmp4 - tmp7 - 3;
 				return 1;
 			} else return 0;
@@ -512,14 +512,14 @@ char bg_coll_slope() {
 			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y & 0x0f) ^ 0x0f;
 
-			slope_type = SLOPE_45DEG_UP_UD;
+			currplayer_slope_type = SLOPE_45DEG_UP_UD;
 			break;
 
 		case COL_SLOPE_RD45:
 			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = temp_y & 0x0f;
 
-			slope_type = SLOPE_45DEG_UP;
+			currplayer_slope_type = SLOPE_45DEG_UP;
 			break;
 		
 		// 22 degrees
@@ -528,28 +528,28 @@ char bg_coll_slope() {
 			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (((temp_y) & 0x0e) | 0x1) ^ 0x0f;
 
-			slope_type = SLOPE_22DEG_UP_UD;
+			currplayer_slope_type = SLOPE_22DEG_UP_UD;
 			break;
 
 		case COL_SLOPE_RU22_LEFT:
 			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
 		
-			slope_type = SLOPE_22DEG_UP_UD;
+			currplayer_slope_type = SLOPE_22DEG_UP_UD;
 			break;
 		
 		case COL_SLOPE_RD22_LEFT:
 			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0e) | 0x1;
 
-			slope_type = SLOPE_22DEG_UP;
+			currplayer_slope_type = SLOPE_22DEG_UP;
 			break;	
 
 		case COL_SLOPE_RD22_RIGHT:
 			tmp7 = ((temp_x >> 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y) & 0x0f;
 		
-			slope_type = SLOPE_22DEG_UP;
+			currplayer_slope_type = SLOPE_22DEG_UP;
 			break;
 	
 		case COL_SLOPE_LU22_RIGHT:
@@ -587,7 +587,7 @@ char bg_coll_slope() {
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f);
 
-			slope_type = SLOPE_66DEG_UP;
+			currplayer_slope_type = SLOPE_66DEG_UP;
 			break;	
 
 		case COL_SLOPE_RD66_BOT:
@@ -595,7 +595,7 @@ char bg_coll_slope() {
 			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f);
 
-			slope_type = SLOPE_66DEG_UP;
+			currplayer_slope_type = SLOPE_66DEG_UP;
 			break;	
 			
 		case COL_SLOPE_LD66_TOP:
@@ -603,7 +603,7 @@ char bg_coll_slope() {
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f);
 
-			slope_type = SLOPE_66DEG_DOWN;
+			currplayer_slope_type = SLOPE_66DEG_DOWN;
 			break;		
 
 		case COL_SLOPE_LD66_BOT:
@@ -611,7 +611,7 @@ char bg_coll_slope() {
 			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f);
 
-			slope_type = SLOPE_66DEG_DOWN;
+			currplayer_slope_type = SLOPE_66DEG_DOWN;
 			break;	
 
 		case COL_SLOPE_RU66_TOP:
@@ -619,7 +619,7 @@ char bg_coll_slope() {
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
 
-			slope_type = SLOPE_66DEG_UP_UD;
+			currplayer_slope_type = SLOPE_66DEG_UP_UD;
 			break;	
 
 		case COL_SLOPE_RU66_BOT:
@@ -627,7 +627,7 @@ char bg_coll_slope() {
 			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
 
-			slope_type = SLOPE_66DEG_UP_UD;
+			currplayer_slope_type = SLOPE_66DEG_UP_UD;
 			break;	
 
 		case COL_SLOPE_LU66_TOP:
@@ -635,7 +635,7 @@ char bg_coll_slope() {
 			tmp7 = (((temp_x & 0x07) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
 
-			slope_type = SLOPE_66DEG_DOWN_UD;
+			currplayer_slope_type = SLOPE_66DEG_DOWN_UD;
 			break;		
 
 		case COL_SLOPE_LU66_BOT:
@@ -643,25 +643,25 @@ char bg_coll_slope() {
 			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
 
-			slope_type = SLOPE_66DEG_DOWN_UD;
+			currplayer_slope_type = SLOPE_66DEG_DOWN_UD;
 			break;	
 			
 		default:
 			return 0;
 	}
 	if ((uint8_t)(tmp4) >= tmp7) {
-			tmp8 = tmp4 - tmp7 + (currplayer_mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
+			tmp8 = tmp4 - tmp7 + (currplayer_mini ? 2 : ((currplayer_slope_type == SLOPE_66DEG_UP) ? 1 : 0));
 			
 			if ((controllingplayer->a || controllingplayer->up) && (gamemode == 0 || gamemode == 4)) {
 				currplayer_slope_frames = 0;
-				slope_type = 0;
+				currplayer_slope_type = 0;
 			} else {
 				currplayer_slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
 				currplayer_was_on_slope_counter = (gamemode == 6 ? 6 : 2);
 			}
 			return 1;
 	} else if (!currplayer_was_on_slope_counter) {
-			slope_type = 0;
+			currplayer_slope_type = 0;
 	}
 	
 	return 0;
@@ -699,13 +699,13 @@ char bg_coll_return_U () {
 */
 char bg_coll_return_slope_D () {
 	tmp1 = bg_coll_slope();
-	if (last_slope_type & 0b1 && !(slope_type & 0b1)) {
-		if (last_slope_type != 0 && slope_type != 0) {
-			slope_type = last_slope_type;
+	if (last_slope_type & 0b1 && !(currplayer_slope_type & 0b1)) {
+		if (last_slope_type != 0 && currplayer_slope_type != 0) {
+			currplayer_slope_type = last_slope_type;
 			tmp8 = 0;
 		}
 	}
-	last_slope_type = slope_type;	
+	last_slope_type = currplayer_slope_type;	
 	eject_D = tmp8;
 	return tmp1;
 }
@@ -718,13 +718,13 @@ char bg_coll_return_slope_D () {
 */
 char bg_coll_return_slope_U () {
 	tmp1 = bg_coll_slope();
-	if (last_slope_type & 0b1 && !(slope_type & 0b1)) {
-		if (last_slope_type != 0 && slope_type != 0) {
-			slope_type = last_slope_type;
+	if (last_slope_type & 0b1 && !(currplayer_slope_type & 0b1)) {
+		if (last_slope_type != 0 && currplayer_slope_type != 0) {
+			currplayer_slope_type = last_slope_type;
 			tmp8 = 0;
 		}
 	}
-	last_slope_type = slope_type;	
+	last_slope_type = currplayer_slope_type;	
 	eject_U = -tmp8;
 	return tmp1;
 }

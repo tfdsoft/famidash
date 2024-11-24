@@ -370,7 +370,7 @@ void state_game(){
 
 		if (currplayer_was_on_slope_counter) {
 			currplayer_was_on_slope_counter--;
-		} else slope_type = 0;
+		} else currplayer_slope_type = 0;
 
 		if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
@@ -453,6 +453,7 @@ void state_game(){
 			mini[0] = currplayer_mini;
 			slope_frames[0] = currplayer_slope_frames;
 			was_on_slope_counter[0] = currplayer_was_on_slope_counter;
+			slope_type[0] = currplayer_slope_type;
 		}
 
 		
@@ -475,6 +476,7 @@ void state_game(){
 				currplayer_mini = mini[1];
 				currplayer_slope_frames = slope_frames[1];
 				currplayer_was_on_slope_counter = was_on_slope_counter[1];
+				currplayer_slope_type = slope_type[1];
 			}
 
 			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
@@ -482,7 +484,7 @@ void state_game(){
 			
 			if (currplayer_was_on_slope_counter) {
 				currplayer_was_on_slope_counter--;
-			} else slope_type = 0;			
+			} else currplayer_slope_type = 0;			
 	if (orbed[currplayer]) {
 		if (!(controllingplayer->hold & (PAD_A | PAD_UP))) orbed[currplayer] = 0;
 	}
@@ -510,6 +512,7 @@ void state_game(){
 				mini[1] = currplayer_mini;
 				slope_frames[1] = currplayer_slope_frames;
 				was_on_slope_counter[1] = currplayer_was_on_slope_counter;
+				slope_type[1] = currplayer_slope_type;
 
 				currplayer_x = player_x[0];
 				currplayer_y = player_y[0];
@@ -518,7 +521,7 @@ void state_game(){
 				currplayer_gravity = player_gravity[0];
 				currplayer_mini = mini[0];
 				currplayer_slope_frames = slope_frames[0];
-				currplayer_was_on_slope_counter = was_on_slope_counter[0];
+				currplayer_slope_type = slope_type[0];
 			}
 		}
 
