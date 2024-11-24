@@ -2170,7 +2170,7 @@ drawplayer_center_offsets:
 .proc _drawplayerone
 
     LDX _cube_data
-    LDA _slope_frames
+    LDA _slope_frames+0
     ORA _slope_type
     BEQ :+
         TXA
@@ -2662,6 +2662,20 @@ drawplayer_common := _drawplayerone::common
 .export _drawplayertwo
 .proc _drawplayertwo
 
+
+    LDX _cube_data+1
+    LDA _slope_frames+1
+    ORA _slope_type
+    BEQ :+
+        TXA
+        ORA #%10000000
+        BNE @skipClearBit
+    :
+        TXA
+        AND #%01111111
+    @skipClearBit:
+    sta _cube_data+1
+    
 	LDA _player_gravity+1
 	BEQ :+
 		LDA #$80

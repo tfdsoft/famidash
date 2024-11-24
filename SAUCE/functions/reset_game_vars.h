@@ -30,6 +30,8 @@ void reset_game_vars(){
 	practice_player_2_gravity[tmp1] = player_gravity[1];
 	practice_player_1_mini[tmp1] = mini[0];
 	practice_player_2_mini[tmp1] = mini[1];
+	practice_player_1_slope_frames[tmp1] = slope_frames[0];
+	practice_player_2_slope_frames[tmp1] = slope_frames[1];
 
 	lohi_arr32_store(practice_scroll_x, tmp1, scroll_x);
 	lohi_arr16_store(practice_scroll_y, tmp1, scroll_y);
@@ -63,9 +65,14 @@ void restore_practice_state() {
 	player_gravity[0] = practice_player_1_gravity[tmp2];
 	player_gravity[1] = practice_player_2_gravity[tmp2];
 	currplayer_gravity = player_gravity[0];
+
 	mini[0] = practice_player_1_mini[tmp2];
 	mini[1] = practice_player_2_mini[tmp2];
 	currplayer_mini = mini[0];
+
+	slope_frames[0] = practice_player_1_slope_frames;
+	slope_frames[1] = practice_player_2_slope_frames;
+	currplayer_slope_frames = slope_frames[0];
 
 	scroll_x = lohi_arr32_load(practice_scroll_x, tmp2) - (256 + 16);
 	old_trail_scroll_y = scroll_y = lohi_arr16_load(practice_scroll_y, tmp2);

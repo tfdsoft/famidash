@@ -8,13 +8,15 @@ void reset_level(void) {
 
 	// slope stuff
 	was_on_slope_counter = 0;
-	slope_frames = 0;
 	jumps = 0;
 	ufo_orbed = 0;
 	slope_type = SLOPE_NONE;
 	last_slope_type = SLOPE_NONE;
 	curr_practice_point = latest_practice_point;
 	robotjumpframe[0] = 0;
+	slope_frames[0] = 0;
+	slope_frames[1] = 0;
+	currplayer_slope_frames = 0;
 	tmp1 = 30;
 	if (!DEBUG_MODE && (cube_data[0] & 1)) {
 		update_level_completeness();

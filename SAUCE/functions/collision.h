@@ -370,7 +370,7 @@ char bg_side_coll_common() {
 		tmp1 += (currplayer_gravity ? 3 : -2);
 	}
 	
-	if (was_on_slope_counter | slope_frames) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
+	if (was_on_slope_counter | currplayer_slope_frames) { // if we are on a slope, make right_col a little more upwards so it doesn't hit blocks to the side of the slope
 		tmp1 += (slope_type & 0b1 ? -16 : 16);
 	}
 
@@ -447,7 +447,7 @@ char bg_coll_U_D_checks() {
 }
 
 void set_slope_stuff() {
-	slope_frames = (gamemode == 6 ? 3 : 2); //signal BG_COLL_R to not check stuff
+	currplayer_slope_frames = (gamemode == 6 ? 3 : 2); //signal BG_COLL_R to not check stuff
 	was_on_slope_counter = (gamemode == 6 ? 6 : 4);
 }
 
@@ -478,7 +478,7 @@ char bg_coll_slope() {
 		// 45 degrees
 
 		case COL_ALL:
-			if (was_on_slope_counter | slope_frames) {
+			if (was_on_slope_counter | currplayer_slope_frames) {
 				high_byte(currplayer_y) += (high_byte(currplayer_y) - player_old_posy[1] & 0x80 ? high_byte(currplayer_vel_x) : -high_byte(currplayer_vel_x));
 				return 1;
 			}
@@ -653,10 +653,10 @@ char bg_coll_slope() {
 			tmp8 = tmp4 - tmp7 + (currplayer_mini ? 2 : ((slope_type == SLOPE_66DEG_UP) ? 1 : 0));
 			
 			if ((controllingplayer->a || controllingplayer->up) && (gamemode == 0 || gamemode == 4)) {
-				slope_frames = 0;
+				currplayer_slope_frames = 0;
 				slope_type = 0;
 			} else {
-				slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
+				currplayer_slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
 				was_on_slope_counter = (gamemode == 6 ? 6 : 2);
 			}
 			return 1;
@@ -790,7 +790,7 @@ char bg_coll_U() {
 	}
 
 	if (currplayer_vel_y <= 0x00) {
-		if (!slope_frames) {
+		if (!currplayer_slope_frames) {
 			temp_x = Generic.x + low_word(scroll_x) + (gamemode == 6 ? 4 : 0); // automatically only the low byte
 			
 			storeWordSeparately(
@@ -845,7 +845,7 @@ char bg_coll_D() {
 	}
 	
 	if (currplayer_vel_y >= 0x00) {
-		if (!slope_frames) {
+		if (!currplayer_slope_frames) {
 			// check 2 points on the right side
 			temp_x = Generic.x + low_word(scroll_x) + (gamemode == 6 ? 4 : 0); // automatically only the low byte
 
