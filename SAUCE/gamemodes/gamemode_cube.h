@@ -113,7 +113,7 @@ void cube_movement(void){
 
 			if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_was_on_slope_counter) {
 				tmp5 = 0;
-				tmp8 = last_slope_type;
+				tmp8 = currplayer_last_slope_type;
 				slope_exit_vel();
 				tmp5 >>= 1;
 				currplayer_vel_y += (currplayer_gravity ? tmp5+0x100 : -tmp5-0x100);

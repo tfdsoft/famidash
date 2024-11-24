@@ -456,7 +456,7 @@ char _slope_LX22_stuff() {
 		set_slope_stuff();
 		currplayer_slope_type = xargs[0];
 		
-		last_slope_type = currplayer_slope_type;
+		currplayer_last_slope_type = currplayer_slope_type;
 		tmp8 = tmp5 - tmp4 - 5;
 		return 1;
 	} else return 0;
@@ -699,13 +699,13 @@ char bg_coll_return_U () {
 */
 char bg_coll_return_slope_D () {
 	tmp1 = bg_coll_slope();
-	if (last_slope_type & 0b1 && !(currplayer_slope_type & 0b1)) {
-		if (last_slope_type != 0 && currplayer_slope_type != 0) {
-			currplayer_slope_type = last_slope_type;
+	if (currplayer_last_slope_type & 0b1 && !(currplayer_slope_type & 0b1)) {
+		if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
+			currplayer_slope_type = currplayer_last_slope_type;
 			tmp8 = 0;
 		}
 	}
-	last_slope_type = currplayer_slope_type;	
+	currplayer_last_slope_type = currplayer_slope_type;	
 	eject_D = tmp8;
 	return tmp1;
 }
@@ -718,13 +718,13 @@ char bg_coll_return_slope_D () {
 */
 char bg_coll_return_slope_U () {
 	tmp1 = bg_coll_slope();
-	if (last_slope_type & 0b1 && !(currplayer_slope_type & 0b1)) {
-		if (last_slope_type != 0 && currplayer_slope_type != 0) {
-			currplayer_slope_type = last_slope_type;
+	if (currplayer_last_slope_type & 0b1 && !(currplayer_slope_type & 0b1)) {
+		if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
+			currplayer_slope_type = currplayer_last_slope_type;
 			tmp8 = 0;
 		}
 	}
-	last_slope_type = currplayer_slope_type;	
+	currplayer_last_slope_type = currplayer_slope_type;	
 	eject_U = -tmp8;
 	return tmp1;
 }

@@ -36,6 +36,8 @@ void reset_game_vars(){
 	practice_player_2_was_on_slope_counter[tmp1] = was_on_slope_counter[1];
 	practice_player_1_slope_type[tmp1] = slope_type[0];
 	practice_player_2_slope_type[tmp1] = slope_type[1];
+	practice_player_1_last_slope_type[tmp1] = last_slope_type[0];
+	practice_player_2_last_slope_type[tmp1] = last_slope_type[1];
 
 	lohi_arr32_store(practice_scroll_x, tmp1, scroll_x);
 	lohi_arr16_store(practice_scroll_y, tmp1, scroll_y);
@@ -85,6 +87,10 @@ void restore_practice_state() {
 	slope_type[0] = practice_player_1_slope_type[tmp2];
 	slope_type[1] = practice_player_2_slope_type[tmp2];
 	currplayer_slope_type = slope_type[0];
+	
+	last_slope_type[0] = practice_player_1_last_slope_type[tmp2];
+	last_slope_type[1] = practice_player_2_last_slope_type[tmp2];
+	currplayer_last_slope_type = last_slope_type[0];
 
 	scroll_x = lohi_arr32_load(practice_scroll_x, tmp2) - (256 + 16);
 	old_trail_scroll_y = scroll_y = lohi_arr16_load(practice_scroll_y, tmp2);
