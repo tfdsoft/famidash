@@ -287,17 +287,17 @@ const unsigned char * const WAVE2[] = {WAVE2_0, WAVE2_0, WAVE2_1, WAVE2_2, WAVE2
 
 const unsigned char MINI_WAVE_0[]={
 
-	 -4,  -6,0x11,3|OAM_FLIP_V,
+	 -4,  4,0x11,3|OAM_FLIP_V,
 	0x80
 };
 const unsigned char MINI_WAVE_2[]={
 
-	 -4,  -6,0x0D,3,
+	 -4,  -4,0x0D,3,
 	0x80
 };
 const unsigned char MINI_WAVE_6[]={
 
-	 -4,  -6,0x11,3,
+	 -4,  -4,0x11,3,
 	0x80
 };
 
