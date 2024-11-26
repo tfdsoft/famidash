@@ -42,8 +42,9 @@ char bg_coll_sides() {
 		case COL_TOP: 
 			if (!(uint8_t)(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
 			break;
-		case COL_ALL: 
 		case COL_FLOOR_CEIL:
+			if (gamemode == 6) return 0;
+		case COL_ALL: 
 			return 1;		
 		case COL_UP_LEFT:
 			tmp2 = temp_y & 0x0f;	
@@ -686,9 +687,10 @@ char bg_coll_return_D () {
 	tmp2, tmp8
 */
 char bg_coll_return_U () {
-	tmp1 = bg_coll_U_D_checks() || bg_coll_mini_blocks();
-	eject_U = tmp8 | 0xf8;
-	return tmp1;
+	tmp3 = bg_coll_U_D_checks();
+	tmp1 = bg_coll_mini_blocks();
+	eject_U = tmp8 | (tmp3 ? 0xf0 : 0xf8);
+	return tmp1 | tmp3;
 }
 
 /*

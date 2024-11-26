@@ -65,11 +65,11 @@
 #define MINI_CUBE_WIDTH 0x08
 #define MINI_CUBE_HEIGHT 0x07
 
-#define WAVE_WIDTH 0x01
-#define WAVE_HEIGHT 0x01
+#define WAVE_WIDTH 0x04
+#define WAVE_HEIGHT 0x04
 
-#define MINI_WAVE_WIDTH 0x01
-#define MINI_WAVE_HEIGHT 0x01
+#define MINI_WAVE_WIDTH 0x02
+#define MINI_WAVE_HEIGHT 0x02
 
 #define JUMP_VEL -0x590
 #define MINI_JUMP_VEL -0x4D0
