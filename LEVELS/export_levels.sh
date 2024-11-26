@@ -20,7 +20,7 @@ all_levels="
 	    hexagonforce\
 	    toe2\
 	    thechallenge\
-            leveleasy\	    
+            leveleasy\
             thelightningroad\
 	    nightmare\
 	    demonpark\

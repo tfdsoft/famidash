@@ -38,7 +38,7 @@ def vertical_rle_with_single_tile(lines):
 			run_length = 1
 	return rle_data
 
-def export_bg(folder: str, levels: Iterable[str]) -> tuple[Iterable[int]]:
+def export_bg(folder: str, levels: Iterable[str]) -> tuple:
 	# combine all the data into one big slab here and split it by 8kb banks later
 	all_data = []
 	# and include the offset into the data slab to put the level labels
@@ -124,9 +124,9 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple[Iterable[int]]:
 {out_str}
 """)
 		
-	return (level_widths, )
+	return (level_widths, current_bank - 1, remaining_bytes)
 		
-def export_spr(folder: str, levels: Iterable[str]):
+def export_spr(folder: str, levels: Iterable[str], level_last_bank : int, level_bytes_filled : int):
 	all_data = []
 	overflows = []
 	for level in levels:
@@ -194,13 +194,13 @@ def export_spr(folder: str, levels: Iterable[str]):
 		print(f"Sprites data for {level} takes {len(level_data) * 6 - 4} bytes")
 
 		out_str = ""
-		current_bank = 0
-		bytes_filled = 0
+		current_bank = level_last_bank
+		bytes_filled = level_bytes_filled
 		for (i, (length, data)) in enumerate(all_data):
 			if bytes_filled + length > 0x2000:
 				current_bank += 1
 				bytes_filled = 0
-			out_str += f'.segment "SPR_BANK_{current_bank:02X}"\n'
+			out_str += f'.segment "LVL_BANK_{current_bank:02X}"\n'
 			out_str += f"sprite_data_{levels[i]}:\n"
 			for sprite in data:
 				out_str += f"  .byte {','.join([f'${x:02x}' for x in sprite])}\n"
@@ -228,7 +228,7 @@ def main():
 					help='list of level names to process')
 	args = parser.parse_args()
 	bg_exp_data = export_bg(args.folder, args.file)
-	export_spr(args.folder, args.file)
+	export_spr(args.folder, args.file, bg_exp_data[1], bg_exp_data[2])
 
 	levels = args.file
 
