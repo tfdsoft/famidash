@@ -3912,13 +3912,11 @@ famistudio_advance_channel_with_delays:
     ; Write a stop note.
     lda #0
     sta famistudio_chn_note,x
-;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
-;*  MODIFIED
-	; We gotta stop on the DPCM channel immediately if there's a note cut
-    CPX #4
-	bne @done
-	jsr famistudio_sample_stop
-;!!! FAMISTUDIO DRIVER MODIFICATION END
+
+    ; Special case for DPCM, need to stop it manually.
+    cpx #4
+    bne @done
+    jsr famistudio_sample_stop
 
     @done:
     rts
