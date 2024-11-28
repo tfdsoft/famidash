@@ -26,7 +26,9 @@ _level_list_lo:
   .byte .lobyte(level_data_thelightningroad)
   .byte .lobyte(level_data_nightmare)
   .byte .lobyte(level_data_demonpark)
+  .byte .lobyte(level_data_deathmoon)
   .byte .lobyte(level_data_decode)
+  .byte .lobyte(level_data_problematic)
   .byte .lobyte(level_data_eon)
   .byte .lobyte(level_data_luckydraw)
   .byte .lobyte(level_data_test2)
@@ -55,7 +57,9 @@ _level_list_hi:
   .byte .hibyte(level_data_thelightningroad)
   .byte .hibyte(level_data_nightmare)
   .byte .hibyte(level_data_demonpark)
+  .byte .hibyte(level_data_deathmoon)
   .byte .hibyte(level_data_decode)
+  .byte .hibyte(level_data_problematic)
   .byte .hibyte(level_data_eon)
   .byte .hibyte(level_data_luckydraw)
   .byte .hibyte(level_data_test2)
@@ -84,7 +88,9 @@ _level_list_bank:
   .byte .lobyte(.bank(level_data_thelightningroad))
   .byte .lobyte(.bank(level_data_nightmare))
   .byte .lobyte(.bank(level_data_demonpark))
+  .byte .lobyte(.bank(level_data_deathmoon))
   .byte .lobyte(.bank(level_data_decode))
+  .byte .lobyte(.bank(level_data_problematic))
   .byte .lobyte(.bank(level_data_eon))
   .byte .lobyte(.bank(level_data_luckydraw))
   .byte .lobyte(.bank(level_data_test2))
@@ -113,7 +119,9 @@ _sprite_list_lo:
   .byte .lobyte(sprite_data_thelightningroad)
   .byte .lobyte(sprite_data_nightmare)
   .byte .lobyte(sprite_data_demonpark)
+  .byte .lobyte(sprite_data_deathmoon)
   .byte .lobyte(sprite_data_decode)
+  .byte .lobyte(sprite_data_problematic)
   .byte .lobyte(sprite_data_eon)
   .byte .lobyte(sprite_data_luckydraw)
   .byte .lobyte(sprite_data_test2)
@@ -142,7 +150,9 @@ _sprite_list_hi:
   .byte .hibyte(sprite_data_thelightningroad)
   .byte .hibyte(sprite_data_nightmare)
   .byte .hibyte(sprite_data_demonpark)
+  .byte .hibyte(sprite_data_deathmoon)
   .byte .hibyte(sprite_data_decode)
+  .byte .hibyte(sprite_data_problematic)
   .byte .hibyte(sprite_data_eon)
   .byte .hibyte(sprite_data_luckydraw)
   .byte .hibyte(sprite_data_test2)
@@ -171,7 +181,9 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_thelightningroad))
   .byte .lobyte(.bank(sprite_data_nightmare))
   .byte .lobyte(.bank(sprite_data_demonpark))
+  .byte .lobyte(.bank(sprite_data_deathmoon))
   .byte .lobyte(.bank(sprite_data_decode))
+  .byte .lobyte(.bank(sprite_data_problematic))
   .byte .lobyte(.bank(sprite_data_eon))
   .byte .lobyte(.bank(sprite_data_luckydraw))
   .byte .lobyte(.bank(sprite_data_test2))
@@ -203,12 +215,14 @@ _level_lengths_lo:
   .byte .lobyte($000087)		; thelightningroad
   .byte .lobyte($000098)		; nightmare
   .byte .lobyte($0000A0)		; demonpark
+  .byte .lobyte($0000C0)		; deathmoon
   .byte .lobyte($00008A)		; decode
+  .byte .lobyte($00006E)		; problematic
   .byte .lobyte($000286)		; eon
   .byte .lobyte($000086)		; luckydraw
   .byte .lobyte($00006E)		; test2
   .byte .lobyte($000038)		; test3
-  .byte .lobyte($00006E)		; test4
+  .byte .lobyte($00007D)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -234,12 +248,14 @@ _level_lengths_md:
   .byte .hibyte($000087)		; thelightningroad
   .byte .hibyte($000098)		; nightmare
   .byte .hibyte($0000A0)		; demonpark
+  .byte .hibyte($0000C0)		; deathmoon
   .byte .hibyte($00008A)		; decode
+  .byte .hibyte($00006E)		; problematic
   .byte .hibyte($000286)		; eon
   .byte .hibyte($000086)		; luckydraw
   .byte .hibyte($00006E)		; test2
   .byte .hibyte($000038)		; test3
-  .byte .hibyte($00006E)		; test4
+  .byte .hibyte($00007D)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -265,12 +281,14 @@ _level_lengths_hi:
   .byte .bankbyte($000087)		; thelightningroad
   .byte .bankbyte($000098)		; nightmare
   .byte .bankbyte($0000A0)		; demonpark
+  .byte .bankbyte($0000C0)		; deathmoon
   .byte .bankbyte($00008A)		; decode
+  .byte .bankbyte($00006E)		; problematic
   .byte .bankbyte($000286)		; eon
   .byte .bankbyte($000086)		; luckydraw
   .byte .bankbyte($00006E)		; test2
   .byte .bankbyte($000038)		; test3
-  .byte .bankbyte($00006E)		; test4
+  .byte .bankbyte($00007D)		; test4
 
 .endif
 .endif

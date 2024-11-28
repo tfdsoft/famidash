@@ -24,7 +24,9 @@ all_levels="
             thelightningroad\
 	    nightmare\
 	    demonpark\
+	    deathmoon\
 	    decode\
+	    problematic\
             eon\
 	    luckydraw\
             test2\

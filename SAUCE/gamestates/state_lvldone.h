@@ -988,10 +988,10 @@ void set_fun_settings() {
 
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, levelhexagontext, levelCtext, levelchallengetext, NULL, level16text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, levelhexagontext, levelCtext, levelchallengetext, NULL, level16text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
 };
 const unsigned char* const leveltexts2[] = {
-  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelclubtext2, levelhexagon2, levelCtext22, levelchallengetext2, level15text2, level16text2, levelEtext2, level19text2, levelFtext2, level17text2, level10text2, level12text2, level13text2, level14text2
+  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelclubtext2, levelhexagon2, levelCtext22, levelchallengetext2, level15text2, level16text2, levelEtext2, level19text2, leveldeathmoon2, leveldecode2, levelproblematic2, level17text2, level10text2, level12text2, level13text2, level14text2
 };
 
 
@@ -1024,6 +1024,8 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
+	0,
+	0,
 };
 const unsigned char level_text_size2[] = {
     sizeof(level1text2) - 1,
@@ -1047,7 +1049,9 @@ const unsigned char level_text_size2[] = {
 	sizeof(level16text2) - 1,
 	sizeof(levelEtext2) - 1,
 	sizeof(level19text2) - 1,
-	sizeof(levelFtext2) - 1,
+	sizeof(leveldeathmoon2) - 1,
+	sizeof(leveldecode2) - 1,
+	sizeof(levelproblematic2) - 1,
 	sizeof(level17text2) - 1,
 	sizeof(level10text2) - 1,
 	sizeof(level12text2) - 1,

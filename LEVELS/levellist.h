@@ -70,7 +70,9 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //LIGHTNING ROAD
 	DECOCLOUD, //NIGHTMARE
 	DECO1, //DEMON PARK
+	DECO1, //death moon
 	DECOCLOUD, //DECODE
+	DECO1, //problematic
 	EXTRASPRITES1, //EON
 	DECOCLOUD, //lucky draw
 	EXTRASPRITES1,
@@ -102,7 +104,9 @@ const unsigned char spike_set[] = {
 	SPIKESA, //lightning road
 	SPIKESB, //nightmare
 	SPIKESB, //demon park
+	SPIKESB, //death moon
 	SPIKESB, //decode
+	SPIKESB, //problematic
 	SPIKESB, //eon
 	SPIKESB, //lucky draw
 	SPIKESB, //test1
@@ -134,7 +138,9 @@ const unsigned char block_set[] = {
 	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
 	BLOCKSB, //demon park
+	BLOCKSB, //death moon
 	BLOCKSB, //decode
+	BLOCKSB, //problematic
 	BLOCKSA, //EON
 	BLOCKSB, //lucky draw
 	BLOCKSA, //test1
@@ -166,7 +172,9 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //LIGHTNING ROAD
 	SAWBLADESA, //nightmare
 	SAWBLADESA, //demon park
+	SAWBLADESA, //death moon
 	SAWBLADESA, //decode
+	SAWBLADESA, //problematic
 	SAWBLADESA, //EON
 	LETTERBANK, //lucky draw
 	SAWBLADESA, //test1
@@ -199,7 +207,9 @@ const unsigned char difficulty_list[] = {
     DEMON, //lightning road
     DEMON, //nightmare
     DEMON, //demon park
+    DEMON, //death moon
     DEMON, //decode
+    DEMON, //problematic
     DEMON, //eon
     DEMON, //lucky draw
     DEMON,
@@ -227,13 +237,15 @@ const unsigned char stars_list[] = {
 	12,  //hexagon force
 	14,  //TOE2
 	3,   //the challenge
-	3,
-	10,
-	10,
-	10,
-	10,
-	10,
-	10,
+	3,  //level easy
+	10, //lightning road
+	10, //nightmare
+	10, //demon park
+	10, //death moon
+	10, //decode
+	10, //problematic
+	10, //eon
+	10, // lucky draw
 	0,
 	0,
 	0,

@@ -186,3 +186,17 @@ clubstep_speed       = $00
 clubstep_no_parallax  = 0
 clubstep_bg_color    = $06
 clubstep_grnd_color  = $0F
+
+deathmoon_song_number = song_death_moon
+deathmoon_game_mode   = $00
+deathmoon_speed       = $03
+deathmoon_no_parallax  = 1
+deathmoon_bg_color    = $0F
+deathmoon_grnd_color  = $0F
+
+problematic_song_number = song_hexagon_force
+problematic_game_mode   = $00
+problematic_speed       = $00
+problematic_no_parallax  = 1
+problematic_bg_color    = $0F
+problematic_grnd_color  = $0F

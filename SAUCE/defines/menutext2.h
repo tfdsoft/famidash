@@ -38,7 +38,7 @@ const unsigned char levelDtext2[]="ADVENTURES";
 const unsigned char levelclubtext2[]="CLUBSTEP";
 const unsigned char levelhexagon2[]="FORCE";
 const unsigned char levelEtext2[]="THE NIGHTMARE";
-const unsigned char levelFtext2[]="DECODE";
+const unsigned char leveldecode2[]="DECODE";
 const unsigned char level10text2[]="LUCKY DRAW";
 const unsigned char level11text2[]="TEST";
 const unsigned char level12text2[]="TEST2";
@@ -50,4 +50,6 @@ const unsigned char level17text2[]="EON";
 //const unsigned char level18text2[]="THE SAFE LEVELS";
 const unsigned char level19text2[]="DEMON PARK";
 const unsigned char levelchallengetext2[]="CHALLENGE";
+const unsigned char leveldeathmoon2[]="DEATH MOON";
+const unsigned char levelproblematic2[]="PROBLEMATIC";
 
