@@ -125,11 +125,10 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple:
 {out_str}
 """)
 
-	if (remaining_bytes == 0):
-		current_bank += 1
-		remaining_bytes = 8192
+	if (remaining_bytes != 0):
+		current_bank -= 1
 		
-	return (level_widths, current_bank - 1, remaining_bytes)
+	return (level_widths, current_bank, remaining_bytes)
 		
 def export_spr(folder: str, levels: Iterable[str], level_last_bank : int, level_bytes_filled : int):
 	all_data = []
@@ -199,25 +198,36 @@ def export_spr(folder: str, levels: Iterable[str], level_last_bank : int, level_
 		print(f"Sprites data for {level} takes {len(level_data) * 5 - 4} bytes")
 
 	# binpack the data
+	first_bank_size = 8192-level_bytes_filled
+	first_bank_num = level_last_bank
 
-	data_for_first_bank = binpacking.to_constant_volume(
-		list(filter(lambda e : e[1] <= 8192-level_bytes_filled, all_data)),	# so that no levels too big end up in here
-		8192-level_bytes_filled, 1)
+	levels_that_fit_in_first_bank = list(filter(lambda e : e[1] <= first_bank_size, all_data))
+	total_banked_data = []
+	if (len(levels_that_fit_in_first_bank) != 0):
+		data_for_first_bank = binpacking.to_constant_volume(
+			list(filter(lambda e : e[1] <= 8192-level_bytes_filled, all_data)),	# so that no levels too big end up in here
+			8192-level_bytes_filled, 1)
 
-	all_data = list(filter(lambda e : e not in data_for_first_bank[0], all_data))
+		all_data = list(filter(lambda e : e not in data_for_first_bank[0], all_data))
+		total_banked_data.append(data_for_first_bank[0])
+	else:
+		first_bank_num += 1
+		first_bank_size = 8192
+
 	data_for_other_banks = binpacking.to_constant_volume(all_data, 8192, 1)
+	total_banked_data += data_for_other_banks
 
 	# assign bank numbers to each lvl
 
 	all_data = []
 
 	print("Per-bank sprite data:")
-	for (i, bank) in enumerate([data_for_first_bank[0]] + data_for_other_banks):
+	for (i, bank) in enumerate(total_banked_data):
 		real_sum_size = sum([length for (id, length, data) in bank])
-		print(f"\t- LVL_BANK_{level_last_bank+i:02X}, max size {8192-(level_bytes_filled if i == 0 else 0):04}, real sum size {real_sum_size:04}:")
+		print(f"\t- LVL_BANK_{first_bank_num+i:02X}, max size {(first_bank_size):04}, real sum size {real_sum_size:04}:")
 		for (id, length, data) in bank:
 			print(f"\t\t- ({length:4} bytes) {levels[id]}")
-			all_data.append((id, length, i+level_last_bank, data))
+			all_data.append((id, length, i+first_bank_num, data))
 
 	all_data.sort()
 
