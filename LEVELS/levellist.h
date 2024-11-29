@@ -76,11 +76,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //problematic
 	EXTRASPRITES1, //EON
 	DECOCLOUD, //lucky draw
-	EXTRASPRITES1,
-	EXTRASPRITES1,
-	DECOCLOUD,
 	DECO1,
-	EXTRASPRITES1, //danger
 };
 
 const unsigned char spike_set[] = {
@@ -111,11 +107,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //problematic
 	SPIKESB, //eon
 	SPIKESB, //lucky draw
-	SPIKESB, //test1
-	SPIKESB, //test2
-	SPIKESB, //test3
 	SPIKESA, //test4
-	SAWBLADESA, //danger
 };
 
 const unsigned char block_set[] = {
@@ -146,11 +138,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //problematic
 	BLOCKSA, //EON
 	BLOCKSB, //lucky draw
-	BLOCKSA, //test1
-	BLOCKSB, //test2
-	BLOCKSB, //test3
 	BLOCKSB, //test4
-	SAWBLADESA, //danger
 };
 
 const unsigned char saw_set[] = {
@@ -181,11 +169,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //problematic
 	SAWBLADESA, //EON
 	LETTERBANK, //lucky draw
-	SAWBLADESA, //test1
-	SAWBLADESA, //test2
-	SAWBLADESA, //test3
 	SAWBLADESA, //test4
-	SAWBLADESA, //danger
 };
 
 
@@ -218,10 +202,6 @@ const unsigned char difficulty_list[] = {
     DEMON, //eon
     DEMON, //lucky draw
     DEMON,
-    DEMON,
-    DEMON,
-    DEMON,
-    DANGER,
 };
 
 const unsigned char stars_list[] = {
@@ -253,10 +233,6 @@ const unsigned char stars_list[] = {
 	10, //eon
 	10, // lucky draw
 	0,
-	0,
-	0,
-	0,
-	69,
 };
 const unsigned char colors_list[] = {
 	0x12,

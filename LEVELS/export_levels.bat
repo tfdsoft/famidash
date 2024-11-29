@@ -31,8 +31,6 @@ SET all_levels= ^
     problematic ^
     eon ^
     luckydraw ^
-    test2 ^
-    test3 ^
     test4 ^
 
 

@@ -110,19 +110,6 @@ hexagonforce_no_parallax  = 1
 hexagonforce_bg_color    = $02
 hexagonforce_grnd_color  = $12
 
-test2_song_number = song_practice
-test2_game_mode   = $00
-test2_speed       = $00
-test2_no_parallax  = 1
-test2_bg_color    = $2A
-test2_grnd_color  = $1A
-
-test3_song_number = song_electroman_adventures
-test3_game_mode   = $00
-test3_speed       = $00
-test3_no_parallax  = 1
-test3_bg_color    = $16
-test3_grnd_color  = $06
 
 test4_song_number = song_hexagon_force
 test4_game_mode   = $00
