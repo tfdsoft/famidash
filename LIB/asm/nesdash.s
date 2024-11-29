@@ -3252,7 +3252,7 @@ Bank:
 ; Real playback speed and deviation percentage are specified in parentheses
 SampleRate_NTSC:	; Also applies to Dendy, as it is derived from the CPU speed
 	; For reference, NTSC Clock is 236250000/11/12 = 1789772.727 Hz
-	.byte 13	; 21307 Hz (21043.15 Hz, -1.23830%)
+	.byte 12	; 21307 Hz (21043.15 Hz, -1.23830%)
 	.byte 41	; 8000 Hz (7952.69 Hz, -0.59137%)
 SampleRate_PAL:
 	; For reference, PAL Clock is 26601712.5/16 = 1662607.03125 Hz
