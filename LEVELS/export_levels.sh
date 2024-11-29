@@ -20,6 +20,7 @@ all_levels="
 	    hexagonforce\
 	    toe2\
 	    thechallenge\
+	    retray\
             leveleasy\
             thelightningroad\
 	    nightmare\

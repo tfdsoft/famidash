@@ -474,11 +474,55 @@ const unsigned char sfxtexts_size[] = {
 
 
 const unsigned char* const xbgmtexts1[] = {
-	0, TEXT_xlevel1text1, TEXT_xlevel1text2, 0, 0, TEXT_xlevel1text5, 0, 0, 0, 0, 0, 0, TEXT_xlevel1textC, TEXT_xlevel1textD, 0, TEXT_hexagon, TEXT_xlevel1textC, 0, 0, 0, 0, TEXT_xweasel, TEXT_challenge
+	0, 
+	TEXT_xlevel1text1, 
+	TEXT_xlevel1text2, 
+	0, 
+	0, 
+	TEXT_xlevel1text5, 
+	0, 
+	0, 
+	0, 
+	0, 
+	0, 
+	0, 
+	TEXT_xlevel1textC, 
+	TEXT_xlevel1textD, 
+	0, 
+	TEXT_hexagon, 
+	TEXT_xlevel1textC, 
+	0, 
+	0, 
+	0, 
+	0, 
+	TEXT_xweasel, 
+	TEXT_challenge
 };
 
 const unsigned char* const xbgmtexts2[] = {
-	TEXT_2textmenu, TEXT_xlevel2text1, TEXT_xlevel2text2, TEXT_xlevel2text3, TEXT_xlevel2text4, TEXT_xlevel2text5, TEXT_xlevel2text6, TEXT_xlevel2text7, TEXT_xlevel2text8, TEXT_xlevel2text9, TEXT_xlevel2textA, TEXT_xlevel2textB, TEXT_xlevel2textC, TEXT_xlevel2textD, TEXT_2textclubstep, TEXT_2hexagon, TEXT_xlevel22textC, TEXT_xlevel2textE, TEXT_2textpractice, TEXT_2texteon, TEXT_2deathmoon, TEXT_2textweasel, TEXT_2challenge
+	TEXT_2textmenu, 
+	TEXT_xlevel2text1, 
+	TEXT_xlevel2text2, 
+	TEXT_xlevel2text3, 
+	TEXT_xlevel2text4, 
+	TEXT_xlevel2text5, 
+	TEXT_xlevel2text6,
+	TEXT_xlevel2text7, 
+	TEXT_xlevel2text8, 
+	TEXT_xlevel2text9, 
+	TEXT_xlevel2textA, 
+	TEXT_xlevel2textB, 
+	TEXT_xlevel2textC, 
+	TEXT_xlevel2textD, 
+	TEXT_2textclubstep, 
+	TEXT_2hexagon, 
+	TEXT_xlevel22textC, 
+	TEXT_xlevel2textE, 
+	TEXT_2textpractice, 
+	TEXT_2texteon, 
+	TEXT_2deathmoon, 
+	TEXT_2textweasel, 
+	TEXT_2challenge
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -988,10 +1032,69 @@ void set_fun_settings() {
 
 
 const unsigned char* const leveltexts[] = {
-  level1text, level2text, NULL, NULL, level5text, NULL, NULL, NULL, NULL, NULL, NULL, levelCtext, levelDtext, NULL, levelhexagontext, levelCtext, levelchallengetext, NULL, level16text, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL
+  level1text, 
+  level2text, 
+  NULL, 
+  NULL, 
+  level5text, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  levelCtext, 
+  levelDtext, 
+  NULL, 
+  levelhexagontext, 
+  levelCtext, 
+  NULL,
+  levelchallengetext, 
+  NULL, 
+  level16text, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL, 
+  NULL
 };
 const unsigned char* const leveltexts2[] = {
-  level1text2, level2text2, level3text2, level4text2, level5text2, level6text2, level7text2, level8text2, level9text2, levelAtext2, levelBtext2, levelCtext2, levelDtext2, levelclubtext2, levelhexagon2, levelCtext22, levelchallengetext2, level15text2, level16text2, levelEtext2, level19text2, leveldeathmoon2, leveldecode2, levelproblematic2, level17text2, level10text2, level12text2, level13text2, level14text2
+  level1text2, 
+  level2text2, 
+  level3text2, 
+  level4text2, 
+  level5text2, 
+  level6text2, 
+  level7text2, 
+  level8text2, 
+  level9text2, 
+  levelAtext2, 
+  levelBtext2, 
+  levelCtext2, 
+  levelDtext2, 
+  levelclubtext2, 
+  levelhexagon2, 
+  levelCtext22, 
+  levelretray2,
+  levelchallengetext2, 
+  levelleveleasy2, 
+  level16text2, 
+  levelEtext2, 
+  level19text2, 
+  leveldeathmoon2, 
+  leveldecode2, 
+  levelproblematic2, 
+  leveleon2, 
+  level10text2, 
+  level12text2, 
+  level13text2, 
+  level14text2
 };
 
 
@@ -1012,6 +1115,7 @@ const unsigned char level_text_size[] = {
 	0,
 	sizeof(levelhexagontext) - 1,
 	sizeof(levelCtext) - 1,
+	0,
 	sizeof(levelchallengetext) - 1,
 	0,
 	sizeof(level16text) - 1,
@@ -1044,20 +1148,21 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelclubtext2) - 1,
 	sizeof(levelhexagon2) - 1,
 	sizeof(levelCtext22) - 1,
+	sizeof(levelretray2) - 1,
 	sizeof(levelchallengetext2) - 1,
-	sizeof(level15text2) - 1,
+	sizeof(levelleveleasy2) - 1,
 	sizeof(level16text2) - 1,
 	sizeof(levelEtext2) - 1,
 	sizeof(level19text2) - 1,
 	sizeof(leveldeathmoon2) - 1,
 	sizeof(leveldecode2) - 1,
 	sizeof(levelproblematic2) - 1,
-	sizeof(level17text2) - 1,
+	sizeof(leveleon2) - 1,
 	sizeof(level10text2) - 1,
 	sizeof(level12text2) - 1,
 	sizeof(level13text2) - 1,
 	sizeof(level14text2) - 1,
-	sizeof(level15text2) - 1,
+	sizeof(levelleveleasy2) - 1,
 };
 
 const char coin_counter[][3] = {

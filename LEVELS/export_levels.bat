@@ -20,6 +20,7 @@ SET all_levels= ^
     clubstep ^
     hexagonforce ^
     toe2 ^
+    retray ^
     thechallenge ^
     leveleasy ^
     thelightningroad ^
