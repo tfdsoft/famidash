@@ -3256,7 +3256,7 @@ SampleRate_NTSC:	; Also applies to Dendy, as it is derived from the CPU speed
 	.byte 41	; 8000 Hz (7952.69 Hz, -0.59137%)
 SampleRate_PAL:
 	; For reference, PAL Clock is 26601712.5/16 = 1662607.03125 Hz
-	.byte 12	; 21307 Hz (21045.66 Hz, -2.52517%)
+	.byte 10	; 21307 Hz (21045.66 Hz, -2.52517%)
 	.byte 38	; 8000 Hz (7915.20 Hz, -1.06003%)
 .endproc
 
