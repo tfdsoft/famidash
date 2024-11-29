@@ -191,7 +191,7 @@ deathmoon_song_number = song_death_moon
 deathmoon_game_mode   = $00
 deathmoon_speed       = $03
 deathmoon_no_parallax  = 1
-deathmoon_bg_color    = $0F
+deathmoon_bg_color    = $16
 deathmoon_grnd_color  = $0F
 
 problematic_song_number = song_hexagon_force
