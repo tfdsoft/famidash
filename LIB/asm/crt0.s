@@ -316,7 +316,7 @@ _famistudio_state = *
 
 .segment "PCM_BANK"
 GeometryDashPCMA:
-	.incbin "MUSIC/PCM/geometry-dash2.pcm"
+	.incbin "MUSIC/PCM/RAW-geometryDash.pcm"
 	.byte $00
 
 .segment "PCM_BANK_B"

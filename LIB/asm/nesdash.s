@@ -3192,12 +3192,12 @@ PCM_ptr = ptr1
 
     ;play pcm
 @RestartPtr:
-    lda #>$C000
-    sta PCM_ptr+1
+    lda #>$C000		;	2
+    sta PCM_ptr+1	;__	3
 @LoadBank:
-    txa
-    jsr mmc3_set_prg_bank_0
-    inx
+    txa		;__	2
+    jsr mmc3_set_prg_bank_0	;__	35
+    inx		;__	2
 @LoadSample:
     lda tmp1	; 3
 	sec			; 2
@@ -3215,16 +3215,16 @@ PCM_ptr = ptr1
 	;	old code: if smp == 0 - 22 cycles, if not - 204 cycles
 	;	new: 
 	
-    lda (PCM_ptr),y
-    beq @DoneWithPCM
-    sta $4011
-    iny
-    bne @LoadSample
-    inc PCM_ptr+1
-    lda PCM_ptr+1
-    cmp #>($c000+$2000)
-    bcc @LoadSample
-    jmp @RestartPtr
+    lda (PCM_ptr),y		;	5
+    beq @DoneWithPCM	;	2
+    sta $4011			;	4
+    iny					;	2
+    bne @LoadSample		;__	3 /	2	(1/256)
+    inc PCM_ptr+1		;		5
+    lda PCM_ptr+1		;		3
+    cmp #>($c000+$2000)	;		2
+    bcc @LoadSample		;__	2 /	3	(1/32/256)
+    jmp @RestartPtr		;__	3
 @DoneWithPCM:
     lda #%00011111
     sta FAMISTUDIO_APU_SND_CHN
@@ -3242,12 +3242,22 @@ Bank:
     .byte <.bank(GeometryDashPCMA)
     .byte <.bank(GeometryDashPCMB)
 
+; Sample rate calculations go per this formula:
+; ((Region Clock / Sample Rate)-Sample Load Time)/5
+; Sample Load Time is:
+; (5 - 1 + 13) + (255/256*3) + (1/256* (12 + (31/32*3) + (1/32*49) ) ) = 20.052490234 
+; A reverse calculation is:
+; Region Clock / ((Ans)*5+Sample Load Time)
+; The target sample speed is specified after each value,
+; Real playback speed and deviation percentage are specified in parentheses
 SampleRate_NTSC:	; Also applies to Dendy, as it is derived from the CPU speed
-	.byte 3		;(22-5+1)/5-1
-	.byte 40	;((NTSC Clock / 8000)-5+1)/5-1
+	; For reference, NTSC Clock is 236250000/11/12 = 1789772.727 Hz
+	.byte 13	; 21307 Hz (21043.15 Hz, -1.23830%)
+	.byte 41	; 8000 Hz (7952.69 Hz, -0.59137%)
 SampleRate_PAL:
-	.byte 2
-	.byte 37	;((PAL Clock / 8000)-5+1)/5-1
+	; For reference, PAL Clock is 26601712.5/16 = 1662607.03125 Hz
+	.byte 12	; 21307 Hz (21045.66 Hz, -2.52517%)
+	.byte 38	; 8000 Hz (7915.20 Hz, -1.06003%)
 .endproc
 
 
