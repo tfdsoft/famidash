@@ -201,7 +201,7 @@ problematic_no_parallax  = 1
 problematic_bg_color    = $0F
 problematic_grnd_color  = $0F
 
-retray_song_number = song_hexagon_force
+retray_song_number = song_retray
 retray_game_mode   = $00
 retray_speed       = $01
 retray_no_parallax  = 1

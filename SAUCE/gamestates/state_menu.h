@@ -53,6 +53,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_toe_2,
 	song_endgame, 
 	song_practice,
+	song_retray,
 	song_eon,
 	song_death_moon,
 	song_scheming_weasel,

@@ -229,7 +229,7 @@ _level_lengths_lo:
   .byte .lobyte($000086)		; luckydraw
   .byte .lobyte($00006E)		; test2
   .byte .lobyte($000038)		; test3
-  .byte .lobyte($000080)		; test4
+  .byte .lobyte($0000D3)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -263,7 +263,7 @@ _level_lengths_md:
   .byte .hibyte($000086)		; luckydraw
   .byte .hibyte($00006E)		; test2
   .byte .hibyte($000038)		; test3
-  .byte .hibyte($000080)		; test4
+  .byte .hibyte($0000D3)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -297,7 +297,7 @@ _level_lengths_hi:
   .byte .bankbyte($000086)		; luckydraw
   .byte .bankbyte($00006E)		; test2
   .byte .bankbyte($000038)		; test3
-  .byte .bankbyte($000080)		; test4
+  .byte .bankbyte($0000D3)		; test4
 
 .endif
 .endif

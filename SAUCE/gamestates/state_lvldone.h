@@ -441,6 +441,7 @@ const unsigned char TEXT_2textweasel[]="WEASEL";
 const unsigned char TEXT_2challenge[]="CHALLENGE";
 const unsigned char TEXT_2deathmoon[]="DEATH$MOON";
 const unsigned char TEXT_2hexagon[]="FORCE";
+const unsigned char TEXT_2textretray[]="RETRAY";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -495,6 +496,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	0, 
 	0, 
+	0, 
 	TEXT_xweasel, 
 	TEXT_challenge
 };
@@ -519,6 +521,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_xlevel22textC, 
 	TEXT_xlevel2textE, 
 	TEXT_2textpractice, 
+	TEXT_2textretray, 
 	TEXT_2texteon, 
 	TEXT_2deathmoon, 
 	TEXT_2textweasel, 
@@ -545,6 +548,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_xlevel22textC) - 1,	
 	sizeof(TEXT_xlevel2textE) - 1,
 	sizeof(TEXT_2textpractice) - 1,
+	sizeof(TEXT_2textretray) - 1,
 	sizeof(TEXT_2texteon) - 1,
 	sizeof(TEXT_2deathmoon) - 1,
 	sizeof(TEXT_2textweasel) - 1,
@@ -568,6 +572,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	sizeof(TEXT_hexagon) - 1,	
 	sizeof(TEXT_xlevel1textC) - 1,	
+	0,
 	0,
 	0,
 	0,
@@ -597,6 +602,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_toe_2,
 	song_endgame, 
 	song_practice,
+	song_retray,
 	song_eon,
 	song_death_moon,
 	song_scheming_weasel,
