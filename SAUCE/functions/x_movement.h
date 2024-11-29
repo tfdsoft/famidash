@@ -18,7 +18,7 @@ void slope_exit_vel() {
 		case SLOPE_66DEG_DOWN:
 		case SLOPE_66DEG_UP:
 			tmp5 = (currplayer_vel_x >> 1); 
-			tmp5 = (tmp5 >> 1) + tmp5;	
+			tmp5 = (tmp5 >> 1) + (tmp5*3)/2;	
 	}
 }
 
