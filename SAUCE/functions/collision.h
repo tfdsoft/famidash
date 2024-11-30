@@ -473,13 +473,14 @@ char bg_coll_slope() {
 	tmp8 = (temp_y) & 0x0f;
 	switch (collision) {
 		case COL_NO_SIDE:
+			if (currplayer_was_on_slope_counter | currplayer_slope_frames) return 0;
 			if (gamemode == 0) return 0;
 			return 1;
 			
 		// 45 degrees
 
 		case COL_ALL:
-			if (currplayer_was_on_slope_counter | currplayer_slope_frames) {
+			if ((currplayer_was_on_slope_counter | currplayer_slope_frames) && high_byte(tmp3) != 1) {
 				high_byte(currplayer_y) += (high_byte(currplayer_y) - player_old_posy[1] & 0x80 ? high_byte(currplayer_vel_x) : -high_byte(currplayer_vel_x));
 				return 1;
 			}
@@ -663,6 +664,7 @@ char bg_coll_slope() {
 			return 1;
 	} else if (!currplayer_was_on_slope_counter) {
 			currplayer_slope_type = 0;
+			tmp8 = 0;
 	}
 	
 	return 0;
@@ -700,6 +702,7 @@ char bg_coll_return_U () {
 	tmp4, tmp7, tmp8
 */
 char bg_coll_return_slope_D () {
+	high_byte(tmp3) = 0; //UP
 	tmp1 = bg_coll_slope();
 	if (currplayer_last_slope_type & 0b1 && !(currplayer_slope_type & 0b1)) {
 		if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
@@ -719,6 +722,7 @@ char bg_coll_return_slope_D () {
 	tmp4, tmp7, tmp8
 */
 char bg_coll_return_slope_U () {
+	high_byte(tmp3) = 1; //UP
 	tmp1 = bg_coll_slope();
 	if (currplayer_last_slope_type & 0b1 && !(currplayer_slope_type & 0b1)) {
 		if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
