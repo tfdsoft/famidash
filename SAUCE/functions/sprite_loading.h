@@ -190,7 +190,10 @@ void animate_coin_2();
 
 void animate_coin_3();
 
-
+void clear_slope_stuff(void) {
+	currplayer_slope_frames = 0;
+	currplayer_slope_type = 0;
+}
 
 char sprite_load_special_behavior(){
 
@@ -430,6 +433,7 @@ static void sprite_gamemode_main() {
 		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			settrailstuff();
+			clear_slope_stuff();
 
 			switch (collided) {
 			case BLUE_ORB:
@@ -852,6 +856,7 @@ void sprite_collide_lookup() {
 		// collided with a pad
 		case YELLOW_PAD_DOWN:
 		case YELLOW_PAD_UP:
+			clear_slope_stuff();
 			settrailstuff();
 			table_offset = yellow_pad;
 			currplayer_vel_y = sprite_gamemode_y_adjust();
@@ -859,6 +864,7 @@ void sprite_collide_lookup() {
 			return;
 		case PINK_PAD_DOWN:
 		case PINK_PAD_UP:
+			clear_slope_stuff();
 			settrailstuff();
 			table_offset = pink_pad;
 			currplayer_vel_y = sprite_gamemode_y_adjust();
@@ -866,6 +872,7 @@ void sprite_collide_lookup() {
 			return;
 		case RED_PAD_DOWN:
 		case RED_PAD_UP:
+			clear_slope_stuff();
 			settrailstuff();
 			table_offset = red_pad;
 			currplayer_vel_y = sprite_gamemode_y_adjust();
@@ -874,6 +881,7 @@ void sprite_collide_lookup() {
 
 		case GRAVITY_PAD_DOWN:
 		case GRAVITY_PAD_DOWN_INVISIBLE:
+			clear_slope_stuff();
 			if (!currplayer_gravity) { 
 				settrailstuff();
 				currplayer_gravity = 0x01;				//flip gravity
@@ -885,6 +893,7 @@ void sprite_collide_lookup() {
 		
 		case GRAVITY_PAD_UP:
 		case GRAVITY_PAD_UP_INVISIBLE:
+			clear_slope_stuff();
 			if (currplayer_gravity) { 	
 				settrailstuff();
 				currplayer_gravity = 0x00;				//flip gravity
