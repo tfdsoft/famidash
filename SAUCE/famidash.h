@@ -285,6 +285,7 @@ uint8_t forced_credits;
 extern uint8_t extceil;
 uint8_t exitingLevelSelect;
 uint8_t drawBarFlag;
+uint8_t exitPortalTimer;
 
 #define MAX_FIREBALLS 20
 

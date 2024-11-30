@@ -662,6 +662,7 @@ void sprite_collide_lookup() {
 #endif
 		case CUBE_MODE:
 			orbactive = 0;
+			exitPortalTimer = 5;
 			if (gamemode == 6) currplayer_vel_y = 0;
 			if (retro_mode) gamemode = 4;
 			else gamemode = 0;
@@ -673,12 +674,15 @@ void sprite_collide_lookup() {
 			
 		case BALL_MODE:
 			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
-	//		target_scroll_y -= 0x10;
+			if (gamemode == 6) currplayer_vel_y = 0;
+			gamemode = collided;
+			return;
 		case ROBOT_MODE:
+		
+			exitPortalTimer = 5;
 			if (gamemode == 6) currplayer_vel_y = 0;
 			gamemode = collided;
 			retrofireballclear();
-			//robotjumptime[currplayer] = 0;
 			return;
 		case TELEPORT_SQUARE_ENTER:
 			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
@@ -690,7 +694,6 @@ void sprite_collide_lookup() {
 		case TELEPORT_PORTAL_ENTER_EXTENSION:
 		case TELEPORT_PORTAL_ENTER:
 				high_byte(currplayer_y) = teleport_output;
-				//idx8_inc(activesprites_activated, index);
 			}
 			return;
 		case SPIDER_MODE:
@@ -700,8 +703,7 @@ void sprite_collide_lookup() {
 			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);		
 			return;
 		case WAVE_MODE:
-			settrailstuff();
-			//if (gamemode == 6) currplayer_vel_y = 0;			
+			settrailstuff();		
 			gamemode = 6;
 			retrofireballclear();		
 			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);		
