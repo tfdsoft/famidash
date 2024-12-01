@@ -77,7 +77,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //problematic
 	EXTRASPRITES1, //EON
 	DECOCLOUD, //lucky draw
-	EXTRASPRITES1,
+	DECO1,
 };
 
 const unsigned char spike_set[] = {
