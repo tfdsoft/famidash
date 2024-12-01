@@ -17,17 +17,18 @@
 #define hexagon_force  0x0E
 #define toe_2  0x0F
 #define retray  0x10
-#define the_challenge  0x11
-#define leveleasy  0x12
-#define lightningroad  0x13
-#define nightmare  0x14
-#define demonpark  0x15
-#define death_moon  0x15
-#define decode  0x16
-#define problematic  0x17
-#define eon  0x18
-#define luckydraw  0x19
-#define test4  0X20
+#define sonar  0x11
+#define the_challenge  0x12
+#define leveleasy  0x13
+#define lightningroad  0x14
+#define nightmare  0x15
+#define demonpark  0x16
+#define death_moon  0x17
+#define decode  0x18
+#define problematic  0x19
+#define eon  0x1A
+#define luckydraw  0x1B
+#define test4  0X1C
 
 
 #define NINJABANK 94
@@ -233,7 +234,7 @@ uint8_t SRAM_VALIDATE[4];
 #ifdef FLAG_ENABLE_TEST_LEVELS
 	#define LEVEL_COUNT2 256
 #else
-	#define LEVEL_COUNT2 28
+	#define LEVEL_COUNT2 29
 #endif
 
 

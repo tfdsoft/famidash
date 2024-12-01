@@ -21,6 +21,7 @@ all_levels="
 	    toe2\
 	    thechallenge\
 	    retray\
+	    sonar\
             leveleasy\
             thelightningroad\
 	    nightmare\

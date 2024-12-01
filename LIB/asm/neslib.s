@@ -1637,10 +1637,10 @@ SLOPESA = 14
 	; if no parallax is 1, then it will maybe add an offset to the chr
 	; other wise it will add 0 (effectively disabling it without branching)
 
-	;lda _no_parallax
-	;eor #1
+	lda _no_parallax
+	eor #1
 	
-	lda #1
+;	lda #1
 	and _parallax_scroll_x
 	sta CHRBANK_TEMP
 	clc

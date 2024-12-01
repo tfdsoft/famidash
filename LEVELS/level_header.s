@@ -194,3 +194,11 @@ retray_speed       = $01
 retray_no_parallax  = 1
 retray_bg_color    = $0F
 retray_grnd_color  = $0F
+
+
+sonar_song_number = song_stereo_madness_2
+sonar_game_mode   = $00
+sonar_speed       = $00
+sonar_no_parallax  = 1
+sonar_bg_color    = $01
+sonar_grnd_color  = $01

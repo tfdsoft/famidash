@@ -442,6 +442,7 @@ const unsigned char TEXT_2challenge[]="CHALLENGE";
 const unsigned char TEXT_2deathmoon[]="DEATH$MOON";
 const unsigned char TEXT_2hexagon[]="FORCE";
 const unsigned char TEXT_2textretray[]="RETRAY";
+const unsigned char TEXT_2textstereo[]="MADNESS$2";
 const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
@@ -497,6 +498,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	0, 
 	0, 
+	TEXT_xlevel1text1, 
 	0, 
 	0, 
 	TEXT_xweasel, 
@@ -525,6 +527,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textpractice, 
 	TEXT_2textretray, 
 	TEXT_2textinfernoplex,
+	TEXT_2textstereo,
 	TEXT_2texteon, 
 	TEXT_2deathmoon, 
 	TEXT_2textweasel, 
@@ -553,6 +556,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textpractice) - 1,
 	sizeof(TEXT_2textretray) - 1,
 	sizeof(TEXT_2textinfernoplex) - 1,
+	sizeof(TEXT_2textstereo) - 1,	
 	sizeof(TEXT_2texteon) - 1,
 	sizeof(TEXT_2deathmoon) - 1,
 	sizeof(TEXT_2textweasel) - 1,
@@ -580,6 +584,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	0,
+	sizeof(TEXT_xlevel1text1) - 1,	
 	0,
 	0,
 	sizeof(TEXT_xweasel) - 1,	
@@ -609,6 +614,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_practice,
 	song_retray,
 	song_infernoplex,
+	song_stereo_madness_2,
 	song_eon,
 	song_death_moon,
 	song_scheming_weasel,
@@ -1061,6 +1067,7 @@ const unsigned char* const leveltexts[] = {
   levelhexagontext, 
   levelCtext, 
   NULL,
+  NULL, 
   levelchallengetext, 
   NULL, 
   level16text, 
@@ -1092,6 +1099,7 @@ const unsigned char* const leveltexts2[] = {
   levelhexagon2, 
   levelCtext22, 
   levelretray2,
+  levelsonar2,
   levelchallengetext2, 
   levelleveleasy2, 
   level16text2, 
@@ -1124,6 +1132,7 @@ const unsigned char level_text_size[] = {
 	sizeof(levelhexagontext) - 1,
 	sizeof(levelCtext) - 1,
 	0,
+	0,
 	sizeof(levelchallengetext) - 1,
 	0,
 	sizeof(level16text) - 1,
@@ -1154,6 +1163,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelhexagon2) - 1,
 	sizeof(levelCtext22) - 1,
 	sizeof(levelretray2) - 1,
+	sizeof(levelsonar2) - 1,
 	sizeof(levelchallengetext2) - 1,
 	sizeof(levelleveleasy2) - 1,
 	sizeof(level16text2) - 1,

@@ -21,6 +21,7 @@ SET all_levels= ^
     hexagonforce ^
     toe2 ^
     retray ^
+    sonar ^
     thechallenge ^
     leveleasy ^
     thelightningroad ^
