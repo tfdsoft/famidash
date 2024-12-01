@@ -857,7 +857,7 @@ sprite_data_dryout:
   .byte $90,$34,$d0,$02,$0f
   .byte $90,$34,$30,$03,$0f
   .byte $ff
-.segment "LVL_BANK_21"
+.segment "LVL_BANK_1F"
 sprite_data_baseafterbase:
   .byte $70,$02,$70,$03,$2b
   .byte $a0,$02,$40,$03,$2d
@@ -1506,7 +1506,7 @@ sprite_data_jumper:
   .byte $f0,$37,$d0,$02,$0f
   .byte $f0,$37,$30,$03,$0f
   .byte $ff
-.segment "LVL_BANK_1F"
+.segment "LVL_BANK_1E"
 sprite_data_timemachine:
   .byte $10,$01,$70,$03,$ab
   .byte $10,$01,$80,$03,$db
@@ -3065,7 +3065,7 @@ sprite_data_clutterfunk:
   .byte $70,$3d,$50,$03,$8f
   .byte $80,$3e,$30,$03,$0f
   .byte $ff
-.segment "LVL_BANK_1C"
+.segment "LVL_BANK_20"
 sprite_data_theoryofeverything:
   .byte $c0,$00,$70,$03,$0b
   .byte $00,$01,$68,$03,$25
@@ -3338,7 +3338,7 @@ sprite_data_theoryofeverything:
   .byte $e0,$34,$a0,$01,$82
   .byte $00,$36,$b0,$01,$0f
   .byte $ff
-.segment "LVL_BANK_20"
+.segment "LVL_BANK_1C"
 sprite_data_electroman:
   .byte $00,$00,$30,$03,$82
   .byte $00,$00,$40,$03,$c1
@@ -3647,7 +3647,7 @@ sprite_data_electroman:
   .byte $00,$36,$68,$03,$0a
   .byte $c0,$36,$40,$03,$0f
   .byte $ff
-.segment "LVL_BANK_20"
+.segment "LVL_BANK_1F"
 sprite_data_clubstep:
   .byte $50,$00,$60,$03,$86
   .byte $80,$00,$30,$03,$38
@@ -4917,7 +4917,7 @@ sprite_data_retray:
   .byte $20,$25,$30,$03,$1b
   .byte $90,$27,$80,$03,$0f
   .byte $ff
-.segment "LVL_BANK_1F"
+.segment "LVL_BANK_21"
 sprite_data_sonar:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$80,$03,$c1
@@ -5147,7 +5147,7 @@ sprite_data_sonar:
   .byte $10,$35,$70,$03,$4a
   .byte $f0,$35,$20,$03,$0f
   .byte $ff
-.segment "LVL_BANK_22"
+.segment "LVL_BANK_20"
 sprite_data_thechallenge:
   .byte $00,$00,$70,$03,$cf
   .byte $00,$00,$80,$03,$b6
@@ -7659,7 +7659,7 @@ sprite_data_decode:
   .byte $a0,$35,$b0,$02,$0f
   .byte $a0,$35,$60,$03,$0f
   .byte $ff
-.segment "LVL_BANK_1E"
+.segment "LVL_BANK_20"
 sprite_data_problematic:
   .byte $00,$00,$50,$03,$9b
   .byte $00,$00,$60,$03,$bb
@@ -9410,7 +9410,7 @@ sprite_data_eon:
   .byte $30,$fc,$80,$02,$0f
   .byte $30,$fc,$40,$03,$0f
   .byte $ff
-.segment "LVL_BANK_1D"
+.segment "LVL_BANK_1E"
 sprite_data_pgclubstep:
   .byte $00,$00,$70,$03,$c5
   .byte $00,$00,$80,$03,$8f
@@ -9457,47 +9457,33 @@ sprite_data_pgclubstep:
   .byte $30,$03,$20,$02,$94
   .byte $40,$03,$90,$02,$0b
   .byte $50,$03,$20,$02,$84
-  .byte $70,$03,$e0,$02,$2d
   .byte $80,$03,$40,$03,$3c
   .byte $a0,$03,$60,$03,$05
   .byte $b0,$03,$30,$03,$0b
   .byte $c0,$03,$50,$03,$87
-  .byte $d0,$03,$f0,$02,$2d
   .byte $e0,$03,$78,$03,$0a
-  .byte $00,$04,$e0,$02,$2d
-  .byte $30,$04,$f0,$02,$2d
   .byte $30,$04,$70,$03,$0b
-  .byte $60,$04,$f0,$02,$2d
   .byte $60,$04,$50,$03,$05
   .byte $70,$04,$70,$03,$05
   .byte $80,$04,$30,$03,$10
   .byte $80,$04,$40,$03,$a5
   .byte $80,$04,$50,$03,$b6
-  .byte $a0,$04,$e0,$02,$2d
   .byte $a0,$04,$40,$03,$95
   .byte $a0,$04,$60,$03,$05
   .byte $c0,$04,$40,$03,$8f
-  .byte $d0,$04,$e0,$02,$2d
   .byte $d0,$04,$60,$03,$05
   .byte $00,$05,$30,$03,$3b
-  .byte $20,$05,$f0,$02,$2d
   .byte $40,$05,$50,$03,$3c
-  .byte $80,$05,$c0,$02,$2d
   .byte $80,$05,$40,$03,$0b
   .byte $b0,$05,$f0,$02,$05
   .byte $b0,$05,$60,$03,$96
-  .byte $c0,$05,$b0,$02,$2d
   .byte $d0,$05,$60,$03,$86
-  .byte $f0,$05,$c0,$02,$2d
   .byte $00,$06,$20,$03,$05
-  .byte $20,$06,$d0,$02,$2d
   .byte $20,$06,$40,$03,$05
   .byte $30,$06,$60,$03,$05
   .byte $40,$06,$30,$03,$3b
-  .byte $80,$06,$d0,$02,$2d
   .byte $80,$06,$10,$03,$10
   .byte $90,$06,$20,$03,$06
-  .byte $d0,$06,$d0,$02,$2d
   .byte $d0,$06,$10,$03,$05
   .byte $f0,$06,$50,$03,$0b
   .byte $f0,$06,$60,$03,$96
@@ -9506,10 +9492,7 @@ sprite_data_pgclubstep:
   .byte $10,$07,$40,$03,$09
   .byte $10,$07,$60,$03,$86
   .byte $20,$07,$30,$03,$3c
-  .byte $30,$07,$e0,$02,$2d
-  .byte $60,$07,$f0,$02,$2d
   .byte $60,$07,$40,$03,$3b
-  .byte $90,$07,$00,$03,$2d
   .byte $90,$07,$50,$03,$08
   .byte $90,$07,$60,$03,$19
   .byte $f0,$07,$68,$03,$0a
@@ -10858,7 +10841,7 @@ sprite_data_luckydraw:
   .byte $30,$32,$60,$03,$df
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
-.segment "LVL_BANK_1E"
+.segment "LVL_BANK_1D"
 sprite_data_test4:
   .byte $00,$00,$70,$03,$c5
   .byte $00,$00,$80,$03,$8f
