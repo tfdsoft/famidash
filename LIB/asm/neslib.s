@@ -1628,6 +1628,7 @@ MouseBoundsMax:
 .popseg
 
 SLOPESA = 14
+luckydraw = $1B
 .import _spike_set, _block_set, _saw_set
 .import _no_parallax, _parallax_scroll_x, _level
 .export _set_tile_banks
@@ -1637,7 +1638,7 @@ SLOPESA = 14
 	; if no parallax is 1, then it will maybe add an offset to the chr
 	; other wise it will add 0 (effectively disabling it without branching)
 
-	lda _no_parallax
+	lda #0
 	eor #1
 	
 ;	lda #1
@@ -1660,11 +1661,19 @@ SLOPESA = 14
 	
 	; and then decide on the last bank
 	lda _no_parallax
-	beq :+
-		lda #SLOPESA
-		adc CHRBANK_TEMP
-		jmp _mmc3_set_1kb_chr_bank_2
-	:
+	beq @asdf
+	lda _level
+	cmp #luckydraw
+	beq @slop
+	lda #SLOPESA
+	adc CHRBANK_TEMP
+	jmp _mmc3_set_1kb_chr_bank_2
+	lda #1
+	beq @asdf
+	@slop:
+	lda #SLOPESA
+	jmp _mmc3_set_1kb_chr_bank_2
+	@asdf:
 	lda _parallax_scroll_x
 	adc #<.bank(_PARALLAX_CHR)
 	jmp _mmc3_set_1kb_chr_bank_2
