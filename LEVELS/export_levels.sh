@@ -30,6 +30,7 @@ all_levels="
 	    decode\
 	    problematic\
             eon\
+	    pgclubstep\
 	    luckydraw\
             test4\
             "

@@ -76,6 +76,7 @@ const uint8_t DECOTYPE[] = {
 	DECOCLOUD, //DECODE
 	DECO1, //problematic
 	EXTRASPRITES1, //EON
+	DECO1, //pg clubstep
 	DECOCLOUD, //lucky draw
 	DECO1,
 };
@@ -108,6 +109,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //decode
 	SPIKESB, //problematic
 	SPIKESB, //eon
+	SPIKESB, //pg clubstep
 	SPIKESB, //lucky draw
 	SPIKESA, //test4
 };
@@ -140,6 +142,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //decode
 	BLOCKSB, //problematic
 	BLOCKSA, //EON
+	BLOCKSB, //pg clubstep
 	BLOCKSB, //lucky draw
 	BLOCKSB, //test4
 };
@@ -172,6 +175,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //decode
 	SAWBLADESA, //problematic
 	SAWBLADESA, //EON
+	SAWBLADESA, //PG CLUBSTEP
 	LETTERBANK, //lucky draw
 	SAWBLADESA, //test4
 };
@@ -205,6 +209,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //decode
     DEMON, //problematic
     DEMON, //eon
+    DEMON, //pg clubstep
     DEMON, //lucky draw
     DEMON,
 };
@@ -237,6 +242,7 @@ const unsigned char stars_list[] = {
 	10, //decode
 	10, //problematic
 	10, //eon
+	10, //pg clubstep
 	10, // lucky draw
 	0,
 };

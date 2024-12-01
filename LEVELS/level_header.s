@@ -174,6 +174,13 @@ clubstep_no_parallax  = 0
 clubstep_bg_color    = $06
 clubstep_grnd_color  = $0F
 
+pgclubstep_song_number = song_clubstep
+pgclubstep_game_mode   = $00
+pgclubstep_speed       = $00
+pgclubstep_no_parallax  = 0
+pgclubstep_bg_color    = $0F
+pgclubstep_grnd_color  = $05
+
 deathmoon_song_number = song_death_moon
 deathmoon_game_mode   = $00
 deathmoon_speed       = $03

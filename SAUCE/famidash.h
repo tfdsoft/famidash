@@ -27,8 +27,9 @@
 #define decode  0x18
 #define problematic  0x19
 #define eon  0x1A
-#define luckydraw  0x1B
-#define test4  0X1C
+#define pgclubstep  0x1B
+#define luckydraw  0x1C
+#define test4  0X1D
 
 
 #define NINJABANK 94
@@ -234,7 +235,7 @@ uint8_t SRAM_VALIDATE[4];
 #ifdef FLAG_ENABLE_TEST_LEVELS
 	#define LEVEL_COUNT2 256
 #else
-	#define LEVEL_COUNT2 29
+	#define LEVEL_COUNT2 30
 #endif
 
 

@@ -54,4 +54,5 @@ const unsigned char leveldeathmoon2[]="DEATH MOON";
 const unsigned char levelproblematic2[]="PROBLEMATIC";
 const unsigned char levelretray2[]="RETRAY";
 const unsigned char levelsonar2[]="SONAR";
+const unsigned char levelpgclubtext2[]="PG CLUBSTEP";
 
