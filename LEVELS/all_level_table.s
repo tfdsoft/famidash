@@ -222,7 +222,7 @@ _level_lengths_lo:
   .byte .lobyte($00006E)		; problematic
   .byte .lobyte($000286)		; eon
   .byte .lobyte($000086)		; luckydraw
-  .byte .lobyte($000080)		; test4
+  .byte .lobyte($000094)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -255,7 +255,7 @@ _level_lengths_md:
   .byte .hibyte($00006E)		; problematic
   .byte .hibyte($000286)		; eon
   .byte .hibyte($000086)		; luckydraw
-  .byte .hibyte($000080)		; test4
+  .byte .hibyte($000094)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -288,7 +288,7 @@ _level_lengths_hi:
   .byte .bankbyte($00006E)		; problematic
   .byte .bankbyte($000286)		; eon
   .byte .bankbyte($000086)		; luckydraw
-  .byte .bankbyte($000080)		; test4
+  .byte .bankbyte($000094)		; test4
 
 .endif
 .endif

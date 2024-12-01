@@ -1629,6 +1629,7 @@ MouseBoundsMax:
 
 SLOPESA = 14
 luckydraw = $1B
+
 .import _spike_set, _block_set, _saw_set
 .import _no_parallax, _parallax_scroll_x, _level
 .export _set_tile_banks
@@ -1666,6 +1667,7 @@ luckydraw = $1B
 	cmp #luckydraw
 	beq @slop
 	lda #SLOPESA
+	clc
 	adc CHRBANK_TEMP
 	jmp _mmc3_set_1kb_chr_bank_2
 	lda #1
