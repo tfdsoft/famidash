@@ -30,6 +30,7 @@ SET all_levels= ^
     deathmoon ^
     decode ^
     problematic ^
+    firetemple ^
     eon ^
     pgclubstep ^
     luckydraw ^

@@ -181,6 +181,13 @@ pgclubstep_no_parallax  = 0
 pgclubstep_bg_color    = $0F
 pgclubstep_grnd_color  = $05
 
+firetemple_song_number = song_base_after_base
+firetemple_game_mode   = $00
+firetemple_speed       = $00
+firetemple_no_parallax  = 1
+firetemple_bg_color    = $0F
+firetemple_grnd_color  = $0F
+
 deathmoon_song_number = song_death_moon
 deathmoon_game_mode   = $00
 deathmoon_speed       = $03
