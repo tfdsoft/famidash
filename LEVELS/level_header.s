@@ -179,7 +179,7 @@ pgclubstep_game_mode   = $00
 pgclubstep_speed       = $00
 pgclubstep_no_parallax  = 0
 pgclubstep_bg_color    = $0F
-pgclubstep_grnd_color  = $05
+pgclubstep_grnd_color  = $0F
 
 firetemple_song_number = song_base_after_base
 firetemple_game_mode   = $00
