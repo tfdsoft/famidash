@@ -26,9 +26,10 @@
 #define death_moon  0x17
 #define decode  0x18
 #define problematic  0x19
-#define eon  0x1A
-#define pgclubstep  0x1B
-#define luckydraw  0x1C
+#define firetemple 0x1A
+#define eon  0x1B
+#define pgclubstep  0x1C
+#define luckydraw  0x1D
 #define test4  0X1D
 
 
