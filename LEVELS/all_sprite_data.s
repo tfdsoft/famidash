@@ -217,7 +217,7 @@ sprite_data_stereomadness:
   .byte $d0,$37,$d0,$02,$0f
   .byte $d0,$37,$30,$03,$0f
   .byte $ff
-.segment "LVL_BANK_22"
+.segment "LVL_BANK_21"
 sprite_data_backontrack:
   .byte $d0,$00,$88,$03,$0a
   .byte $30,$02,$70,$03,$2b
@@ -1090,7 +1090,7 @@ sprite_data_baseafterbase:
   .byte $30,$36,$d0,$02,$0f
   .byte $30,$36,$30,$03,$0f
   .byte $ff
-.segment "LVL_BANK_21"
+.segment "LVL_BANK_22"
 sprite_data_cantletgo:
   .byte $b0,$00,$60,$03,$2b
   .byte $d0,$00,$80,$03,$2e
@@ -5618,7 +5618,6 @@ sprite_data_thelightningroad:
   .byte $70,$1a,$80,$02,$08
   .byte $b0,$1a,$80,$02,$09
   .byte $c0,$1a,$80,$02,$02
-  .byte $e0,$1a,$70,$02,$02
   .byte $f0,$1a,$70,$02,$0c
   .byte $50,$1b,$70,$02,$0c
   .byte $60,$1b,$a0,$02,$90
@@ -5720,14 +5719,10 @@ sprite_data_thelightningroad:
   .byte $50,$2b,$00,$03,$a3
   .byte $70,$2b,$70,$03,$1b
   .byte $e0,$2b,$00,$03,$90
-  .byte $10,$2c,$50,$03,$10
-  .byte $20,$2c,$40,$03,$02
   .byte $40,$2c,$00,$03,$01
   .byte $40,$2c,$10,$03,$08
   .byte $50,$2c,$f0,$02,$a1
   .byte $70,$2c,$28,$03,$0a
-  .byte $70,$2c,$50,$03,$10
-  .byte $80,$2c,$40,$03,$01
   .byte $c0,$2c,$08,$03,$0a
   .byte $30,$2d,$10,$03,$0b
   .byte $40,$2d,$20,$03,$90
@@ -11066,7 +11061,7 @@ sprite_data_luckydraw:
   .byte $30,$32,$60,$03,$df
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
-.segment "LVL_BANK_21"
+.segment "LVL_BANK_1F"
 sprite_data_test4:
   .byte $e0,$00,$30,$03,$aa
   .byte $20,$01,$30,$03,$9a
