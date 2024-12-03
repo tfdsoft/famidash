@@ -5204,6 +5204,9 @@ sprite_data_thechallenge:
   .byte $a0,$0c,$08,$03,$0a
   .byte $f0,$0c,$f0,$02,$00
   .byte $30,$0e,$00,$03,$06
+  .byte $50,$0e,$70,$00,$07
+  .byte $60,$0e,$60,$00,$1a
+  .byte $70,$0e,$50,$00,$1b
   .byte $20,$0f,$30,$00,$0f
   .byte $20,$0f,$c0,$00,$0f
   .byte $20,$0f,$a0,$01,$0f
@@ -5633,8 +5636,6 @@ sprite_data_thelightningroad:
   .byte $c0,$1c,$60,$02,$02
   .byte $c0,$1c,$a0,$02,$90
   .byte $e0,$1c,$a0,$02,$80
-  .byte $00,$1d,$a0,$02,$10
-  .byte $10,$1d,$90,$02,$02
   .byte $30,$1d,$50,$02,$0c
   .byte $30,$1d,$90,$02,$a1
   .byte $70,$1d,$70,$02,$0b
@@ -11065,7 +11066,7 @@ sprite_data_luckydraw:
   .byte $30,$32,$60,$03,$df
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
-.segment "LVL_BANK_20"
+.segment "LVL_BANK_21"
 sprite_data_test4:
   .byte $e0,$00,$30,$03,$aa
   .byte $20,$01,$30,$03,$9a
