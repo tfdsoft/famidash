@@ -678,8 +678,8 @@ void sprite_collide_lookup() {
 		case BALL_MODE:
 			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
 			if (gamemode == 6) currplayer_vel_y = 0;
-			if (currplayer_vel_y > 0x230) currplayer_vel_y = 0x230;
-			if (currplayer_vel_y < -0x230) currplayer_vel_y = -0x230;
+			if (currplayer_vel_y > 0x350) currplayer_vel_y = 0x350;
+			if (currplayer_vel_y < -0x350) currplayer_vel_y = -0x350;
 			gamemode = collided;
 			return;
 		case ROBOT_MODE:
