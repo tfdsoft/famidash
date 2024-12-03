@@ -27,7 +27,27 @@ void cube_movement(void){
 	
 	if (gameState != 0) {
 	
-	cube_eject();
+	if(!currplayer_gravity || (currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))){
+		if(bg_coll_D()){ // check collision below
+			high_byte(currplayer_y) -= eject_D;
+			low_byte(currplayer_y) = 0;
+			if (currplayer_gravity && hblocked[currplayer]) currplayer_vel_y = -1;
+			else currplayer_vel_y = 0;
+			orbactive = 0;
+			if (dashing[currplayer] == 5) currplayer_vel_y++;
+			if (fblocked[currplayer]) currplayer_gravity = 0;
+		}
+	} if (currplayer_gravity || (!currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))) {
+		if(bg_coll_U()){ // check collision above
+			high_byte(currplayer_y) -= eject_U;
+			low_byte(currplayer_y) = 0;
+			if (!currplayer_gravity && hblocked[currplayer]) currplayer_vel_y = 1;
+			else currplayer_vel_y = 0;
+			orbactive = 0;
+			if (dashing[currplayer] == 4) currplayer_vel_y++;
+			if (fblocked[currplayer]) currplayer_gravity = 1;			
+		}
+	}
 	
 
 	if (bigboi) {
@@ -292,7 +312,6 @@ void common_gravity_routine() {
 
 
 void cube_eject() {
-	if (!currplayer_was_on_slope_counter || currplayer_slope_type & SLOPE_UPSIDEDOWN) {
 		if(!currplayer_gravity || (currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))){
 			if(bg_coll_D()){ // check collision below
 				high_byte(currplayer_y) -= eject_D;
@@ -301,10 +320,7 @@ void cube_eject() {
 				orbactive = 0;
 				if (fblocked[currplayer]) currplayer_gravity = 0;
 			}
-		} 
-	}
-	if (!currplayer_was_on_slope_counter || !(currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
-		if (currplayer_gravity || (!currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))) {
+		} if (currplayer_gravity || (!currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))) {
 			if(bg_coll_U()){ // check collision above
 				high_byte(currplayer_y) -= eject_U;
 				low_byte(currplayer_y) = 0;
@@ -312,8 +328,7 @@ void cube_eject() {
 				orbactive = 0;
 				if (fblocked[currplayer]) currplayer_gravity = 1;			
 			}
-		}
-	}	
+		}	
 }		
 
 CODE_BANK_POP()
