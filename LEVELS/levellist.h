@@ -113,7 +113,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //problematic
 	SPIKESB, //fire temple
 	SPIKESB, //eon
-	SPIKESB, //pg clubstep
+	SPIKESA, //pg clubstep
 	SPIKESB, //lucky draw
 	SPIKESA, //test4
 };
