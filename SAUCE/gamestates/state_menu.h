@@ -720,6 +720,10 @@ void state_menu() {
 	}
 	mmc3_disable_irq();
 
+	do {
+		discoframe = newrand() & 15;
+	} while (discoframe > 11);
+
 	if (joypad1.select) nestopia = 1;
 
 	if (LEVELCOMPLETE[0] && 
