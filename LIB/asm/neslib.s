@@ -1628,7 +1628,7 @@ MouseBoundsMax:
 .popseg
 
 SLOPESA = 14
-luckydraw = $1D
+luckydraw = $1E
 
 .import _spike_set, _block_set, _saw_set
 .import _no_parallax, _parallax_scroll_x, _level

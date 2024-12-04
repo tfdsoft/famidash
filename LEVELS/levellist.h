@@ -69,6 +69,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //SONAR
 	EXTRASPRITES1, //the challenge
 	DECO1, //LEVEL EASY
+	DECO1, //revolution
 	DECO1, //LIGHTNING ROAD
 	DECOCLOUD, //NIGHTMARE
 	DECO1, //DEMON PARK
@@ -103,6 +104,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //SONAR
 	SPIKESA, //the challenge
 	SPIKESA, //LEVEL EASY
+	SPIKESA, //revolution
 	SPIKESA, //lightning road
 	SPIKESB, //nightmare
 	SPIKESA, //demon park
@@ -137,6 +139,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //SONAR
 	BLOCKSB, //the challenge
 	BLOCKSA, //LEVEL EASY
+	BLOCKSB, //revolution
 	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
 	BLOCKSB, //demon park
@@ -171,6 +174,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //SONAR
 	SAWBLADESA, //the challenge
 	SAWBLADESA, //LEVEL EASY
+	SAWBLADESA, //revolution
 	SAWBLADESA, //LIGHTNING ROAD
 	SAWBLADESA, //nightmare
 	SAWBLADESA, //demon park
@@ -206,6 +210,7 @@ const unsigned char difficulty_list[] = {
     EASY, //SONAR
     NORMAL, //the challenge
     NORMAL, //LEVEL EASY
+    HARDER, //revolution
     DEMON, //lightning road
     DEMON, //nightmare
     DEMON, //demon park
@@ -240,6 +245,7 @@ const unsigned char stars_list[] = {
 	2,   //SONAR
 	3,   //the challenge
 	3,  //level easy
+	7,  //revolution
 	10, //lightning road
 	10, //nightmare
 	10, //demon park

@@ -216,3 +216,11 @@ sonar_speed       = $00
 sonar_no_parallax  = 1
 sonar_bg_color    = $01
 sonar_grnd_color  = $01
+
+
+revolution_song_number = song_infernoplex
+revolution_game_mode   = $00
+revolution_speed       = $00
+revolution_no_parallax  = 1
+revolution_bg_color    = $0F
+revolution_grnd_color  = $0F

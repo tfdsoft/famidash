@@ -1,7 +1,7 @@
 #define song_clutterfunk 0
 #define song_clubstep 1
-#define song_infernoplex 2
-#define song_practice 3
+#define song_practice 2
+#define song_infernoplex 3
 #define song_eon 4
 #define song_time_machine 5
 #define song_endgame 6

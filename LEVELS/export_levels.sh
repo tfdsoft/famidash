@@ -23,6 +23,7 @@ all_levels="
 	    retray\
 	    sonar\
             leveleasy\
+	    revolution\
             thelightningroad\
 	    nightmare\
 	    demonpark\

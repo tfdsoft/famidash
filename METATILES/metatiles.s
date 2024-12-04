@@ -35,7 +35,7 @@ metatiles_attr:
   .byte .ident(.sprintf("METATILE_%d_AT", I))
 .endrepeat
 
-.segment "RODATA_2"
+.segment "RODATA"
 
 metatiles_coll:
 .repeat METATILES_COUNT, I

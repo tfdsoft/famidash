@@ -1,7 +1,7 @@
 song_clutterfunk = 0
 song_clubstep = 1
-song_infernoplex = 2
-song_practice = 3
+song_practice = 2
+song_infernoplex = 3
 song_eon = 4
 song_time_machine = 5
 song_endgame = 6
