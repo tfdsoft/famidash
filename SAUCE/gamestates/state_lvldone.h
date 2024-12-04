@@ -444,6 +444,7 @@ const unsigned char TEXT_2hexagon[]="FORCE";
 const unsigned char TEXT_2textretray[]="RETRAY";
 const unsigned char TEXT_2textstereo[]="MADNESS$2";
 const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
+const unsigned char TEXT_2textproblematic[]="PROBLEMATIC";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -498,6 +499,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	0, 
 	0, 
+	0, 
 	TEXT_xlevel1text1, 
 	0, 
 	0, 
@@ -527,6 +529,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textpractice, 
 	TEXT_2textretray, 
 	TEXT_2textinfernoplex,
+	TEXT_2textproblematic,
 	TEXT_2textstereo,
 	TEXT_2texteon, 
 	TEXT_2deathmoon, 
@@ -556,6 +559,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textpractice) - 1,
 	sizeof(TEXT_2textretray) - 1,
 	sizeof(TEXT_2textinfernoplex) - 1,
+	sizeof(TEXT_2textproblematic) - 1,
 	sizeof(TEXT_2textstereo) - 1,	
 	sizeof(TEXT_2texteon) - 1,
 	sizeof(TEXT_2deathmoon) - 1,
@@ -580,6 +584,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	sizeof(TEXT_hexagon) - 1,	
 	sizeof(TEXT_xlevel1textC) - 1,	
+	0,
 	0,
 	0,
 	0,
@@ -614,6 +619,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_practice,
 	song_retray,
 	song_infernoplex,
+	song_problematic,
 	song_stereo_madness_2,
 	song_eon,
 	song_death_moon,

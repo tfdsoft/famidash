@@ -195,7 +195,7 @@ deathmoon_no_parallax  = 1
 deathmoon_bg_color    = $16
 deathmoon_grnd_color  = $0F
 
-problematic_song_number = song_hexagon_force
+problematic_song_number = song_problematic
 problematic_game_mode   = $00
 problematic_speed       = $00
 problematic_no_parallax  = 1
