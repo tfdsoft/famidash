@@ -9,16 +9,15 @@ void slope_exit_vel() {
 	switch (tmp8 & 0x07) {
 		case SLOPE_22DEG_DOWN:
 		case SLOPE_22DEG_UP:
-			tmp5 = currplayer_vel_x >> 2;
+			tmp5 = currplayer_vel_x >> 1;
 			break;
 		case SLOPE_45DEG_DOWN:
 		case SLOPE_45DEG_UP:
-			tmp5 = currplayer_vel_x >> 1;
+			tmp5 = currplayer_vel_x;
 			break;
 		case SLOPE_66DEG_DOWN:
 		case SLOPE_66DEG_UP:
-			tmp5 = (currplayer_vel_x >> 1); 
-			tmp5 = (tmp5 >> 1) + (tmp5*3)/2;	
+			tmp5 = (currplayer_vel_x << 1); 	
 	}
 }
 
@@ -29,11 +28,11 @@ void x_movement_coll() {
 	// we we're on an slope and now we aren't, so push the player upwards a bit
 		tmp8 = currplayer_slope_type;
 		slope_exit_vel();
-		if ((currplayer_slope_type & 1)) {
-			if ((currplayer_slope_type & 0b1000)) {
-				currplayer_vel_y = tmp5 + 0x200;
+		if ((currplayer_slope_type & SLOPE_RISING)) {
+			if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
+				currplayer_vel_y = tmp5;
 			} else {
-				currplayer_vel_y = -(tmp5 + 0x200);
+				currplayer_vel_y = -tmp5;
 			}
 		}
 	}
