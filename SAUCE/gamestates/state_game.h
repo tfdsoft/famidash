@@ -50,6 +50,31 @@ void gameboy_check();
 extern unsigned char* PARALLAX_CHR;
 unsigned char END_LEVEL_TIMER;
 
+void decrement_was_on_slope() {
+	if (currplayer_was_on_slope_counter) {
+		currplayer_was_on_slope_counter--;
+		
+		if (!currplayer_was_on_slope_counter) {
+			if (gamemode == 2) {
+				switch (currplayer_slope_type) {
+					case SLOPE_22DEG_UP:
+						currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? -0x050 : 0x050);
+						break;
+					case SLOPE_45DEG_UP:
+						break;
+					case SLOPE_66DEG_UP:
+						currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? -0x150 : 0x150);
+				}
+			}
+			currplayer_slope_type = 0;
+		}
+	} else {
+		currplayer_last_slope_type = 0;
+		currplayer_slope_type = 0;
+	}
+	
+}
+
 
 void state_game(){
 	coin1_timer = 0;
@@ -368,9 +393,7 @@ void state_game(){
 		//if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
 //		if (DEBUG_MODE) gray_line();
 
-		if (currplayer_was_on_slope_counter) {
-			currplayer_was_on_slope_counter--;
-		} else currplayer_slope_type = 0;
+		decrement_was_on_slope();
 
 		if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
@@ -485,9 +508,7 @@ void state_game(){
 			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
 			if (((controllingplayer->press_a || controllingplayer->press_up)) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			
-			if (currplayer_was_on_slope_counter) {
-				currplayer_was_on_slope_counter--;
-			} else currplayer_slope_type = 0;			
+			decrement_was_on_slope();		
 	if (orbed[currplayer]) {
 		if (!(controllingplayer->hold & (PAD_A | PAD_UP))) orbed[currplayer] = 0;
 	}

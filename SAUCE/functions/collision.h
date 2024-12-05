@@ -450,6 +450,16 @@ char bg_coll_U_D_checks() {
 
 	return 0;
 }
+
+void clear_slope_vars() {
+	currplayer_slope_frames = 0;
+	currplayer_slope_type = 0;
+	currplayer_last_slope_type = 0;
+}
+
+char a_check_lookup[] = {
+	1, 0, 0, 1
+};
 /*
 	Clobbers:
 	tmp4, tmp7
@@ -614,24 +624,41 @@ char bg_coll_slope() {
 		default:
 			return 0;
 	}
-	if ((uint8_t)(tmp4) + ((currplayer_slope_type & SLOPE_RISING) ? 0 : 2) >= tmp7) {
+	if ((uint8_t)(tmp4) + ((!(currplayer_slope_type & SLOPE_RISING) && currplayer_was_on_slope_counter) ? 8 : 0) >= tmp7) {
 			tmp8 = tmp4 - tmp7;
 			if (gamemode != 0 && gamemode != 4 && gamemode != 2) {
-				if (currplayer_gravity && !(currplayer_slope_type & SLOPE_RISING) && (controllingplayer->a || controllingplayer->up)) {
-					currplayer_slope_frames = 0;
-					currplayer_slope_type = 0;
-				} else if (!currplayer_gravity && !(currplayer_slope_type & SLOPE_RISING) && (controllingplayer->a || controllingplayer->up)) {
-					currplayer_slope_frames = 0;
-					currplayer_slope_type = 0;
+				tmp7 = 0;
+				tmp4 = 0;
+				if (currplayer_slope_type & SLOPE_RISING) {
+					tmp7 = 1;
 				}
+				if (currplayer_slope_type & SLOPE_UPSIDEDOWN) {
+					tmp4 |= 0b010;
+				}
+				if (currplayer_gravity) {
+					tmp4 |= 0b001;
+				}
+
+				if (!tmp7) {
+					if (a_check_lookup[tmp4]) {
+						if (controllingplayer->a || controllingplayer->up) {
+							clear_slope_vars();
+						}
+					} else {
+						if (!(controllingplayer->a || controllingplayer->up)) {
+							clear_slope_vars();
+						}
+					}
+				}
+					
 			}
 
 			if ((controllingplayer->a || controllingplayer->up) && (gamemode == 0 || gamemode == 4 || gamemode == 2)) {
-				currplayer_slope_frames = 0;
-				currplayer_slope_type = 0;
+				make_cube_jump_higher = 1;
+				clear_slope_vars();
 			} else {
-				currplayer_slope_frames = (gamemode == 6 ? 3 : 1); //signal BG_COLL_R to not check stuff
-				currplayer_was_on_slope_counter = (gamemode == 6 ? 6 : 3);
+				currplayer_slope_frames = 1; //signal BG_COLL_R to not check stuff
+				currplayer_was_on_slope_counter = 6;
 			}
 			return 1;
 	} else if (!currplayer_was_on_slope_counter) {

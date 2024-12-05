@@ -26,8 +26,7 @@ void x_movement_coll() {
 
 	if (currplayer_slope_frames) {
 		currplayer_slope_frames -= 1;
-
-		if (currplayer_slope_type && gamemode != 6) {
+		if (currplayer_slope_type) {
 		// we we're on an slope and now we aren't, so push the player upwards a bit
 			tmp8 = currplayer_slope_type;
 			slope_exit_vel();
