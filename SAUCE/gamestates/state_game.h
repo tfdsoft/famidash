@@ -437,7 +437,8 @@ void state_game(){
 #endif
 		if (invincible_counter) invincible_counter--;
 
-		crossPRGBankJump0(do_the_scroll_thing);
+		if (dual) crossPRGBankJump0(do_the_scroll_thing2);
+		else crossPRGBankJump0(do_the_scroll_thing);
 
 		check_spr_objects();
 
@@ -499,7 +500,7 @@ void state_game(){
 			runthecolls();
 			kandotemp3 = 0;
 			
-	//		crossPRGBankJump0(do_the_scroll_thing2);
+			crossPRGBankJump0(do_the_scroll_thing);
 
 			currplayer = 0;					//give back focus
 
