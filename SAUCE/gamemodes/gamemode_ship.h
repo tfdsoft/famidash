@@ -64,13 +64,17 @@ void ship_movement(void){
 }
 
 void ufo_ship_eject() {
-	if(bg_coll_U()){ // check collision above
-		high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U;
-		currplayer_vel_y = 0;
+	if (!currplayer_was_on_slope_counter || currplayer_slope_type & SLOPE_UPSIDEDOWN) {
+		if(bg_coll_U()){ // check collision above
+			high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U;
+			currplayer_vel_y = 0;
+		}
 	}
-	if(bg_coll_D()){ // check collision below
-		high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
-		currplayer_vel_y = 0;
+	if (!currplayer_was_on_slope_counter || !(currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
+		if(bg_coll_D()){ // check collision below
+			high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
+			currplayer_vel_y = 0;
+		}
 	}
 }	
 
