@@ -95,8 +95,10 @@ void cube_movement(void){
 				tmp5 = 0;
 				tmp8 = currplayer_last_slope_type;
 				slope_exit_vel();
-				tmp5 >>= 1;
-				currplayer_vel_y += (currplayer_gravity ? tmp5+0x100 : -tmp5-0x100);
+				if (currplayer_slope_type & SLOPE_RISING) {
+					tmp5 >>= 1;
+					currplayer_vel_y += (currplayer_gravity ? tmp5+0x100 : -tmp5-0x100);
+				}
 			}
 	} else if (gamemode == 4) {
 		
@@ -292,7 +294,7 @@ void common_gravity_routine() {
 
 
 void cube_eject() {
-	if (!currplayer_was_on_slope_counter || currplayer_slope_type & SLOPE_UPSIDEDOWN) {
+	//if (!currplayer_was_on_slope_counter || currplayer_slope_type & SLOPE_UPSIDEDOWN) {
 		if(!currplayer_gravity || (currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))){
 			if(bg_coll_D()){ // check collision below
 				high_byte(currplayer_y) -= eject_D;
@@ -302,8 +304,8 @@ void cube_eject() {
 				if (fblocked[currplayer]) currplayer_gravity = 0;
 			}
 		} 
-	}
-	if (!currplayer_was_on_slope_counter || !(currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
+	//}
+	//if (!currplayer_was_on_slope_counter || !(currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
 		if (currplayer_gravity || (!currplayer_gravity && (hblocked[currplayer] | fblocked[currplayer]))) {
 			if(bg_coll_U()){ // check collision above
 				high_byte(currplayer_y) -= eject_U;
@@ -313,7 +315,7 @@ void cube_eject() {
 				if (fblocked[currplayer]) currplayer_gravity = 1;			
 			}
 		}
-	}	
+	//}	
 }		
 
 CODE_BANK_POP()
