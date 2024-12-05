@@ -33,7 +33,7 @@ void x_movement_coll() {
 			if ((currplayer_slope_type & 0b1000)) {
 				currplayer_vel_y = tmp5 + 0x200;
 			} else {
-				currplayer_vel_y = (tmp5 + 0x200)^0xFFFF;
+				currplayer_vel_y = -(tmp5 + 0x200);
 			}
 		}
 	}

@@ -443,9 +443,9 @@ static void sprite_gamemode_main() {
 				}
 				else { currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
 				if (gamemode != BALL_MODE) {
-					currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
+					currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
 				} else {
-					currplayer_vel_y = (!currplayer_gravity) ? ORB_BALL_HEIGHT_BLUE^0xFFFF : ORB_BALL_HEIGHT_BLUE;
+					currplayer_vel_y = (!currplayer_gravity) ? -ORB_BALL_HEIGHT_BLUE : ORB_BALL_HEIGHT_BLUE;
 				}
 				}
 				break;
@@ -538,7 +538,7 @@ static void sprite_gamemode_controller_check() {
 				if (currplayer_vel_y != 0) { currplayer_gravity ^= 1;  player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
 			}
 			else { currplayer_gravity ^= 0x01; player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
-			currplayer_vel_y = (!currplayer_gravity) ? PAD_HEIGHT_BLUE^0xFFFF : PAD_HEIGHT_BLUE;
+			currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
 			}
 			break;
 		case GREEN_ORB:
@@ -898,14 +898,13 @@ void sprite_collide_lookup() {
 			if (currplayer_gravity) { 	
 				settrailstuff();
 				currplayer_gravity = 0x00;				//flip gravity
-				currplayer_vel_y = PAD_HEIGHT_BLUE^0xFFFF;
+				currplayer_vel_y = -PAD_HEIGHT_BLUE;
 				//invincible_counter = 3;				
 			}
 			idx8_inc(activesprites_activated, index);	
 			return;
 
 		// collided with an orb
-
 
 
 		case YELLOW_ORB:

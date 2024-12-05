@@ -146,8 +146,8 @@ void cube_movement(void){
 					else currplayer_vel_y = MINI_ROBOT_JUMP_VEL; // JUMP
 				}
 				else {
-					if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
-					else currplayer_vel_y = MINI_ROBOT_JUMP_VEL^0xFFFF; // JUMP
+					if (!currplayer_mini) currplayer_vel_y = -ROBOT_JUMP_VEL; // JUMP
+					else currplayer_vel_y = -MINI_ROBOT_JUMP_VEL; // JUMP
 				}
 				robotjumptime[currplayer] = ROBOT_JUMP_TIME;
 				robotjumpframe[0] = 1;
@@ -159,8 +159,8 @@ void cube_movement(void){
 					else currplayer_vel_y = MINI_ROBOT_JUMP_VEL; // JUMP
 				}
 				else {
-					if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
-					else currplayer_vel_y = MINI_ROBOT_JUMP_VEL^0xFFFF; // JUMP
+					if (!currplayer_mini) currplayer_vel_y = -ROBOT_JUMP_VEL; // JUMP
+					else currplayer_vel_y = -MINI_ROBOT_JUMP_VEL; // JUMP
 				}
 				robotjumptime[currplayer] = ROBOT_JUMP_TIME;
 				robotjumpframe[0] = 1;
@@ -181,8 +181,8 @@ void cube_movement(void){
 						else currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
 					}
 					else {
-						if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
-						else currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
+						if (!currplayer_mini) currplayer_vel_y = -ROBOT_JUMP_VEL; // JUMP
+						else currplayer_vel_y = -ROBOT_JUMP_VEL; // JUMP
 					}
 				}	
 				else if((controllingplayer->press_a || controllingplayer->press_up) && jblocked[currplayer] && !orbed[currplayer]) {	
@@ -194,8 +194,8 @@ void cube_movement(void){
 						else currplayer_vel_y = ROBOT_JUMP_VEL; // JUMP
 					}
 					else {
-						if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
-						else currplayer_vel_y = ROBOT_JUMP_VEL^0xFFFF; // JUMP
+						if (!currplayer_mini) currplayer_vel_y = -ROBOT_JUMP_VEL; // JUMP
+						else currplayer_vel_y = -ROBOT_JUMP_VEL; // JUMP
 					}
 				}
 				else { 
