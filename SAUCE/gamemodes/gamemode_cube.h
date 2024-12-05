@@ -79,6 +79,11 @@ void cube_movement(void){
 					else currplayer_vel_y = MINI_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 
 				}
+
+				if (make_cube_jump_higher) {
+					currplayer_vel_y += (currplayer_gravity ? 0x80 : -0x80);
+					make_cube_jump_higher = 0;
+				}
 			
 			}
 			else if((controllingplayer->press_a || controllingplayer->press_up) && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack || (gamemode == 8 && ninjajumps[currplayer]))) {		//jblock making you release and press A again to jump
@@ -87,14 +92,13 @@ void cube_movement(void){
 				if (!currplayer_mini) currplayer_vel_y = JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 				else currplayer_vel_y = MINI_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 
+				if (make_cube_jump_higher) {
+					currplayer_vel_y += (currplayer_gravity ? 0x80 : -0x80);
+					make_cube_jump_higher = 0;
+				}
+
 				if (gamemode == 8) { idx8_dec(ninjajumps, currplayer); }
 			
-			}
-
-			if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_was_on_slope_counter) {
-				if (currplayer_last_slope_type & SLOPE_RISING) {
-					currplayer_vel_y += (currplayer_gravity ? 0x80 : -0x80);
-				}
 			}
 	} else if (gamemode == 4) {
 		

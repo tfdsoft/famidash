@@ -320,6 +320,7 @@ uint16_t target_scroll_y;
 uint8_t song;
 uint8_t songplaying;
 uint8_t temptemp6;
+uint8_t make_cube_jump_higher;
 
 uint8_t animating;
 uint8_t coin1_timer;
