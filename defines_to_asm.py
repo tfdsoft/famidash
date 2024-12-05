@@ -6,8 +6,6 @@ def convertCFileToS(filename : str, outfilename : str):
 	for line in infile:
 		split = line.split()
 		# print(line)
-		if not line:
-			break
 		if len(split) == 0:
 			outfile.write("\n")
 		elif split[0] == "#define":
@@ -26,5 +24,13 @@ def convertCFileToS(filename : str, outfilename : str):
 	outfile.close()
 
 if __name__ == "__main__":
-	import sys
-	convertCFileToS(sys.path[0]+"/BUILD_FLAGS.h", sys.path[0]+"/TMP/BUILD_FLAGS.s")
+	import sys, argparse, pathlib
+	parser = argparse.ArgumentParser()
+	parser.add_argument("input", nargs=argparse.REMAINDER)
+	args = parser.parse_args()
+
+	ownPath = pathlib.PurePath(sys.path[0])
+	for filename in args.input:
+		realFilename = ownPath / filename
+		outFilename = ownPath / "TMP" / (realFilename.stem+".s")
+		convertCFileToS(realFilename, outFilename)

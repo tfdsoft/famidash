@@ -1,39 +1,3 @@
-// Defines
-
-#define stereo_madness  0
-#define back_on_track  1
-#define polargeist  2
-#define dryout  3
-#define base_after_base  4
-#define cant_let_go  5
-#define jumper  6
-#define time_machine  7
-#define cycles  8
-#define xstep  9
-#define clutterfunk  0x0A
-#define theory_of_everything  0x0B
-#define electroman_adventures  0x0C
-#define clubstep  0x0D
-#define hexagon_force  0x0E
-#define toe_2  0x0F
-#define retray  0x10
-#define sonar  0x11
-#define the_challenge  0x12
-#define leveleasy  0x13
-#define revolution  0x14
-#define lightningroad  0x15
-#define nightmare  0x16
-#define demonpark  0x17
-#define death_moon  0x18
-#define decode  0x19
-#define problematic  0x1A
-#define firetemple 0x1B
-#define eon  0x1C
-#define pgclubstep  0x1D
-#define luckydraw  0x1E
-#define test4  0X1F
-
-
 #define NINJABANK 94
 #define MOUSEBANK 96
 #define LETTERBANK 111
@@ -56,84 +20,9 @@
 #define GAME 0x02
 
 
-#define MAX_ICONS 28 //total icons
-
-// physics defines
-#define ORB_HEIGHT_YELLOW_UPSIDE2 -0x580
-#define PAD_HEIGHT_BLUE -0x3A0
-
-#define ORB_BALL_HEIGHT_BLUE -0x1A0
-
-#define CUBE_WIDTH 0x0F
-#define CUBE_HEIGHT 0x0F
-
-#define MINI_CUBE_WIDTH 0x08
-#define MINI_CUBE_HEIGHT 0x07
-
-#define WAVE_WIDTH 0x04
-#define WAVE_HEIGHT 0x04
-
-#define MINI_WAVE_WIDTH 0x02
-#define MINI_WAVE_HEIGHT 0x02
-
-#define JUMP_VEL -0x590
-#define MINI_JUMP_VEL -0x4D0
-
-#define UFO_JUMP_VEL -0x2F0
-#define MINI_UFO_JUMP_VEL -0x2D0
-
-#define ROBOT_JUMP_VEL -0x2B0
-#define MINI_ROBOT_JUMP_VEL -0x2B0
-
-#define CUBE_SPEED_X05 0x23B
-#define CUBE_SPEED_X1 0x2C4
-#define CUBE_SPEED_X2 0x371
-#define CUBE_SPEED_X3 0x429
-#define CUBE_SPEED_X4 0x51E
-
-#define ROBOT_JUMP_TIME 18
-
-#define UFO_MAX_FALLSPEED 0x320
-#define MINI_UFO_MAX_FALLSPEED 0x350
-
-#define CUBE_MAX_FALLSPEED 0x600
-#define CUBE_GRAVITY 0x6B
-
-#define SPIDER_MAX_FALLSPEED 0x600
-#define SPIDER_GRAVITY 0x4B
-
-#define MINI_SPIDER_MAX_FALLSPEED 0x600
-#define MINI_SPIDER_GRAVITY 0x4B
-
-#define MINI_CUBE_MAX_FALLSPEED 0x600
-#define MINI_CUBE_GRAVITY 0x6F
-
-#define UFO_GRAVITY 0x2C
-#define MINI_UFO_GRAVITY 0x32
-
-#define BALL_GRAVITY 0x47
-#define BALL_MAX_FALLSPEED 0x600
-#define SWING_GRAVITY 0x32
-#define SWING_MAX_FALLSPEED 0x4D0
-#define MINI_SWING_GRAVITY 0x38
-#define MINI_SWING_MAX_FALLSPEED 0x4D0
-#define MINI_BALL_GRAVITY 0x57
-#define MINI_BALL_MAX_FALLSPEED 0x600
-
-#define SHIP_MAX_FALLSPEED 0x2B0
-#define MINI_SHIP_MAX_FALLSPEED 0x380
-
-#define SHIP_GRAVITY 0x2F
-#define MINI_SHIP_GRAVITY 0x31
-
-#define JIMSHEATBALL_MAX_FALLSPEED 0x300
-#define JIMSHEATBALL_GRAVITY 0x34
-#define JIMSHEATBALL_JUMP_VEL -0x390
-
 #define COIN_1 0x01
 #define COIN_2 0x02
 #define COIN_3 0x04
-
 
 // Zeropage variables
 #pragma bss-name(push, "ZEROPAGE")
@@ -227,20 +116,6 @@ uint8_t * level_data;
 #pragma bss-name("SRAM")
 uint8_t SRAM_VALIDATE[4];
 
-//moved to BUILD FLAGS
-#ifdef FLAG_ENABLE_TEST_LEVELS
-	#define LEVEL_COUNT 256
-#else
-	#define LEVEL_COUNT 16
-#endif
-
-#ifdef FLAG_ENABLE_TEST_LEVELS
-	#define LEVEL_COUNT2 256
-#else
-	#define LEVEL_COUNT2 32
-#endif
-
-
 uint8_t coin1_obtained[0x40];
 uint8_t coin2_obtained[0x40];
 uint8_t coin3_obtained[0x40];
@@ -291,8 +166,6 @@ uint8_t exitingLevelSelect;
 uint8_t drawBarFlag;
 uint8_t exitPortalTimer;
 
-#define MAX_FIREBALLS 20
-
 uint8_t jimsheatballalive[MAX_FIREBALLS]; //jims heatball shit
 uint16_t jimsheatballx[MAX_FIREBALLS]; //jims heatball shit
 uint16_t jimsheatbally[MAX_FIREBALLS];
@@ -308,7 +181,6 @@ uint8_t practice_point_count; // = 0;
 uint8_t curr_practice_point;
 uint8_t latest_practice_point;
 
-#define MAX_PRACTICE_POINTS 8
 
 lohi_arr16_decl(practice_player_1_x, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_player_1_vel_x, MAX_PRACTICE_POINTS);
@@ -468,7 +340,6 @@ uint8_t dashing[2];
 
 // the funny uh uhhhhh um the uhh sprite storidge
 // X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
-#define max_loaded_sprites 16
 uint8_t activesprites_x_lo[max_loaded_sprites];
 uint8_t activesprites_x_hi[max_loaded_sprites];
 uint8_t activesprites_y_lo[max_loaded_sprites];
