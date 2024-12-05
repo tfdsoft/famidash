@@ -92,12 +92,8 @@ void cube_movement(void){
 			}
 
 			if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_was_on_slope_counter) {
-				tmp5 = 0;
-				tmp8 = currplayer_last_slope_type;
-				slope_exit_vel();
-				if (currplayer_slope_type & SLOPE_RISING) {
-					tmp5 >>= 1;
-					currplayer_vel_y += (currplayer_gravity ? tmp5+0x100 : -tmp5-0x100);
+				if (currplayer_last_slope_type & SLOPE_RISING) {
+					currplayer_vel_y += (currplayer_gravity ? 0x80 : -0x80);
 				}
 			}
 	} else if (gamemode == 4) {

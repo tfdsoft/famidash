@@ -24,20 +24,21 @@ void slope_exit_vel() {
 void x_movement_coll() {
   mmc3_set_prg_bank_1(GET_BANK(bg_coll_R));
 
-	if (currplayer_slope_type && !currplayer_slope_frames && gamemode != 6) {
-	// we we're on an slope and now we aren't, so push the player upwards a bit
-		tmp8 = currplayer_slope_type;
-		slope_exit_vel();
-		if ((currplayer_slope_type & SLOPE_RISING)) {
-			if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
-				currplayer_vel_y = tmp5;
-			} else {
-				currplayer_vel_y = -tmp5;
-			}
-		}
-	}
 	if (currplayer_slope_frames) {
 		currplayer_slope_frames -= 1;
+
+		if (currplayer_slope_type && gamemode != 6) {
+		// we we're on an slope and now we aren't, so push the player upwards a bit
+			tmp8 = currplayer_slope_type;
+			slope_exit_vel();
+			if ((currplayer_slope_type & SLOPE_RISING)) {
+				if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
+					currplayer_vel_y = tmp5;
+				} else {
+					currplayer_vel_y = -tmp5;
+				}
+			}
+		}
 	}
 	
 	Generic.x = high_byte(currplayer_x);
