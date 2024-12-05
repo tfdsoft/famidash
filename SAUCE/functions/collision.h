@@ -682,7 +682,7 @@ char bg_coll_return_slope_D () {
 			tmp8 = high_byte(currplayer_vel_x);
 		}
 	}
-	currplayer_last_slope_type = currplayer_slope_type;	
+	if (currplayer_slope_type != 0) currplayer_last_slope_type = currplayer_slope_type;	
 	eject_D = tmp8;
 	return tmp1;
 }
@@ -702,7 +702,7 @@ char bg_coll_return_slope_U () {
 			tmp8 = high_byte(currplayer_vel_x);
 		}
 	}
-	currplayer_last_slope_type = currplayer_slope_type;	
+	if (currplayer_slope_type != 0) currplayer_last_slope_type = currplayer_slope_type;	
 	eject_U = -tmp8;
 	return tmp1;
 }
