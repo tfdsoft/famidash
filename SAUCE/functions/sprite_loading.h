@@ -1047,12 +1047,11 @@ void sprite_collide(){
 		}
 	} while (++index < max_loaded_sprites);
 	if (gamemode != 6) {
-		Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
-		Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT; 
+		Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH; 
 	} else {
 		Generic.width = currplayer_mini ? MINI_WAVE_WIDTH : WAVE_WIDTH;
-		Generic.height = currplayer_mini ? MINI_WAVE_HEIGHT : WAVE_HEIGHT;
 	}
+	Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
 }
 
 
