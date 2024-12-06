@@ -155,6 +155,7 @@ void bg_coll_spikes() {
 		case COL_DEATH_TOP:
 			col_death_top_routine();	
 			return;
+		case COL_TOP_SPIKES:
 		case COL_DEATH_BOTTOM:
 			col_death_bottom_routine();	
 			return;
@@ -319,6 +320,7 @@ char bg_coll_mini_blocks() {
 				return 1;
 			}
 			break;
+		case COL_TOP_SPIKES:
 		case COL_TOP:
 			tmp2 = (uint8_t)(temp_y & 0x0f);
 			tmp8 = tmp2 & 0x07;	 
