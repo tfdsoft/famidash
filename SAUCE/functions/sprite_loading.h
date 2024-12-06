@@ -672,7 +672,7 @@ void sprite_collide_lookup() {
 		case CUBE_MODE:
 			orbactive = 0;
 			exitPortalTimer = 5;
-			if (gamemode == 6) currplayer_vel_y = 0;
+//			if (gamemode == 6) currplayer_vel_y = 0;
 			if (retro_mode) gamemode = 4;
 			else gamemode = 0;
 			if (currplayer_vel_y > 0x350) currplayer_vel_y = 0x350;
