@@ -357,6 +357,45 @@ char bg_coll_mini_blocks() {
 				if (tmp2 < 0x08) return 1;
 			}
 			break;
+		case COL_TOP_RIGHT_STAIRS:
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
+			tmp4 = (uint8_t)(temp_x & 0x0f);	 
+			tmp8 = tmp2 & 0x07;	 
+
+			if (tmp2 >= 0x08 && tmp4 < 0x08) {
+				break;
+			}
+			return 1;
+			
+		case COL_TOP_LEFT_STAIRS:
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
+			tmp4 = (uint8_t)(temp_x & 0x0f);	 
+			tmp8 = tmp2 & 0x07;	 
+
+			if (tmp2 >= 0x08 && tmp4 >= 0x08) {
+				break;
+			}
+			return 1;
+		
+		case COL_BOTTOM_RIGHT_STAIRS:
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
+			tmp4 = (uint8_t)(temp_x & 0x0f);	 
+			tmp8 = tmp2 & 0x07;	 
+
+			if (tmp2 < 0x08 && tmp4 < 0x08) {
+				break;
+			}
+			return 1;
+		
+		case COL_BOTTOM_LEFT_STAIRS:
+			tmp2 = (uint8_t)(temp_y & 0x0f);	
+			tmp4 = (uint8_t)(temp_x & 0x0f);	 
+			tmp8 = tmp2 & 0x07;	 
+
+			if (tmp2 < 0x08 && tmp4 >= 0x08) {
+				break;
+			}
+			return 1;
 	}
 	
 	return 0;
