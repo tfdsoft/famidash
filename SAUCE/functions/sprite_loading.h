@@ -682,15 +682,16 @@ void sprite_collide_lookup() {
 			settrailstuff();
 		case BALL_MODE:
 			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
-			if (gamemode == 6) currplayer_vel_y = 0;
+			if (gamemode == 6) currplayer_vel_y /= 2;
 			if (currplayer_vel_y > 0x350) currplayer_vel_y = 0x350;
 			if (currplayer_vel_y < -0x350) currplayer_vel_y = -0x350;
 			gamemode = collided;
+			activesprites_activated[index] = 1;
 			return;
 		case ROBOT_MODE:
 		
 			exitPortalTimer = 5;
-			if (gamemode == 6) currplayer_vel_y = 0;
+			if (gamemode == 6) currplayer_vel_y /= 2;
 			gamemode = collided;
 			retrofireballclear();
 			return;
