@@ -6,6 +6,7 @@ extern void load_next_sprite(uint8_t slot);
 extern void check_spr_objects(void);
 void init_sprites();
 
+void dual_cap_check();
 void spider_up_wait();
 void spider_down_wait();
 extern char bg_coll_U();
@@ -440,10 +441,8 @@ static void sprite_gamemode_main() {
 			switch (collided) {
 			case BLUE_ORB:
 				if (!activesprites_activated[index]) {
-				if (gamemode == 3 || gamemode == 5) {
-					if (currplayer_vel_y != 0) { currplayer_gravity ^= 1; player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
-				}
-				else { currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
+				currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1;
+				dual_cap_check();
 				if (gamemode != BALL_MODE) {
 					currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
 				} else {
@@ -453,10 +452,8 @@ static void sprite_gamemode_main() {
 				break;
 			case GREEN_ORB:
 				if (!activesprites_activated[index]) {
-				if (gamemode == 3 || gamemode == 5) {
-					if (currplayer_vel_y != 0) { currplayer_gravity ^= 1; player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
-				}
-				else { currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
+				currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1;
+				dual_cap_check();
 				currplayer_vel_y = sprite_gamemode_y_adjust();
 				}
 				break;
@@ -538,21 +535,23 @@ static void sprite_gamemode_controller_check() {
 		switch (collided) {
 		case BLUE_ORB:
 			if (!activesprites_activated[index]) {
-			if (gamemode == 3 || gamemode == 5) {
-				if (currplayer_vel_y != 0) { currplayer_gravity ^= 1;  player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
-			}
-			else { currplayer_gravity ^= 0x01; player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
-			currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
+				currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1;
+				dual_cap_check();
+				if (gamemode != BALL_MODE) {
+					currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
+				} else {
+					currplayer_vel_y = (!currplayer_gravity) ? -ORB_BALL_HEIGHT_BLUE : ORB_BALL_HEIGHT_BLUE;
+				}
 			}
 			break;
 		case GREEN_ORB:
-			if (gamemode == 3 || gamemode == 5) {
-				if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-			}
-			else currplayer_gravity ^= 0x01;
+			if (!activesprites_activated[index]) {
+			currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1;
+			dual_cap_check();
 		//	if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
 		//	else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
-			currplayer_vel_y = sprite_gamemode_y_adjust();			
+			currplayer_vel_y = sprite_gamemode_y_adjust();	
+			}			
 			break;
 		case DASH_GRAVITY_ORB:
 			if (!dashing[currplayer]) {
@@ -923,7 +922,6 @@ void sprite_collide_lookup() {
 
 		case YELLOW_ORB:
 			table_offset = 0;
-			ufo_orbed = 1;			
 			//intentional leak
 		case DASH_ORB:
 		case DASH_GRAVITY_ORB:
@@ -940,16 +938,13 @@ void sprite_collide_lookup() {
 
 		case YELLOW_ORB_BIGGER:
 			table_offset = ylw_bigger;
-			ufo_orbed = 1;
 			break;
 		case YELLOW_ORB_SMALLER:
 			table_offset = ylw_smaller;
-			ufo_orbed = 1;			
 			break;
 
 		case PINK_ORB:
 			table_offset = pink_orb;
-			ufo_orbed = 1;			
 			break;
 
 		case BLACK_ORB:
@@ -958,7 +953,6 @@ void sprite_collide_lookup() {
 
 		case RED_ORB:
 			table_offset = red_orb;
-			ufo_orbed = 1;
 			break;
 #ifdef FLAG_KANDO_FUN_STUFF		
 		case GREEN_ORB:
@@ -968,7 +962,7 @@ void sprite_collide_lookup() {
 		default:
 			return;
 		};
-		
+		ufo_orbed = 1;			
 		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE || gamemode == 5 || gamemode >= 7) {
 			sprite_gamemode_main();
 		} else {
@@ -1073,6 +1067,19 @@ void retrofireballclear(void) {
 		memfill(jimsheatballalive, 0, sizeof(jimsheatballalive));		
 	}
 }			
+
+void dual_cap_check() {
+	if (dual) {
+		if (currplayer = 0) {
+			if (player_vel_y[1] > 0x250) player_vel_y[1] = 0x250;
+			if (player_vel_y[1] < -0x250) player_vel_y[1] = -0x250;
+		}
+		else {
+			if (player_vel_y[0] > 0x250) player_vel_y[0] = 0x250;
+			if (player_vel_y[0] < -0x250) player_vel_y[0] = -0x250;
+		}					
+	}
+}				
 
 #pragma code-name(pop)
 #pragma data-name(pop) 
