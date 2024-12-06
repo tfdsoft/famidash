@@ -435,7 +435,8 @@ char bg_coll_U_D_checks() {
 		case COL_NO_SIDE:
 			return 1;		
 		case COL_ALL: 
-			return 1;
+			if (high_byte(currplayer_x) < 0x10) return 0;
+			else return 1;
 		case COL_DEATH_TOP:
 			col_death_top_routine();
 			break;
