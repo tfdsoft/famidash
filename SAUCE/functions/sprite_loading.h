@@ -922,7 +922,6 @@ void sprite_collide_lookup() {
 
 		case YELLOW_ORB:
 			table_offset = 0;
-			ufo_orbed = 1;			
 			//intentional leak
 		case DASH_ORB:
 		case DASH_GRAVITY_ORB:
@@ -939,16 +938,13 @@ void sprite_collide_lookup() {
 
 		case YELLOW_ORB_BIGGER:
 			table_offset = ylw_bigger;
-			ufo_orbed = 1;
 			break;
 		case YELLOW_ORB_SMALLER:
 			table_offset = ylw_smaller;
-			ufo_orbed = 1;			
 			break;
 
 		case PINK_ORB:
 			table_offset = pink_orb;
-			ufo_orbed = 1;			
 			break;
 
 		case BLACK_ORB:
@@ -957,7 +953,6 @@ void sprite_collide_lookup() {
 
 		case RED_ORB:
 			table_offset = red_orb;
-			ufo_orbed = 1;
 			break;
 #ifdef FLAG_KANDO_FUN_STUFF		
 		case GREEN_ORB:
@@ -967,7 +962,7 @@ void sprite_collide_lookup() {
 		default:
 			return;
 		};
-		
+		ufo_orbed = 1;			
 		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE || gamemode == 5 || gamemode >= 7) {
 			sprite_gamemode_main();
 		} else {
