@@ -452,11 +452,13 @@ static void sprite_gamemode_main() {
 				}
 				break;
 			case GREEN_ORB:
+				if (!activesprites_activated[index]) {
 				if (gamemode == 3 || gamemode == 5) {
-					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+					if (currplayer_vel_y != 0) { currplayer_gravity ^= 1; player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
 				}
-				else currplayer_gravity ^= 0x01;
+				else { currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1; }
 				currplayer_vel_y = sprite_gamemode_y_adjust();
+				}
 				break;
 			case DASH_GRAVITY_ORB:
 				if (!dashing[currplayer]) { 
