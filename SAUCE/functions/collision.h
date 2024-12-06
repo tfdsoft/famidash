@@ -435,8 +435,7 @@ char bg_coll_U_D_checks() {
 		case COL_NO_SIDE:
 			return 1;		
 		case COL_ALL: 
-			if (high_byte(currplayer_x) < 0x10 || currplayer_was_on_slope_counter) return 0;
-			else return 1;
+			return 1;
 		case COL_DEATH_TOP:
 			col_death_top_routine();
 			break;
@@ -624,7 +623,7 @@ char bg_coll_slope() {
 		default:
 			return 0;
 	}
-	if ((uint8_t)(tmp4) + ((!(currplayer_slope_type & SLOPE_RISING) && currplayer_was_on_slope_counter) ? 8 : 0) >= tmp7) {
+	if ((uint8_t)(tmp4) >= tmp7) {
 			tmp8 = tmp4 - tmp7;
 			if (gamemode != 0 && gamemode != 4 && gamemode != 2) {
 				tmp7 = 0;
@@ -658,7 +657,7 @@ char bg_coll_slope() {
 				clear_slope_vars();
 			} else {
 				currplayer_slope_frames = 1; //signal BG_COLL_R to not check stuff
-				currplayer_was_on_slope_counter = 6;
+				currplayer_was_on_slope_counter = 3;
 			}
 			return 1;
 	} else if (!currplayer_was_on_slope_counter) {

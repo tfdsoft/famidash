@@ -36,6 +36,12 @@ void x_movement_coll() {
 				} else {
 					currplayer_vel_y = -tmp5;
 				}
+			} else {
+				if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
+					currplayer_vel_y = -tmp5;
+				} else {
+					currplayer_vel_y = tmp5;
+				}
 			}
 		}
 	}

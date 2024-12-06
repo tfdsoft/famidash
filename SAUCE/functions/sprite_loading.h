@@ -191,8 +191,10 @@ void animate_coin_2();
 void animate_coin_3();
 
 void clear_slope_stuff(void) {
+	currplayer_was_on_slope_counter = 0;
 	currplayer_slope_frames = 0;
 	currplayer_slope_type = 0;
+	currplayer_last_slope_type = 0;
 }
 
 char sprite_load_special_behavior(){
