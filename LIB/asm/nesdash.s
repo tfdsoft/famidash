@@ -2648,7 +2648,7 @@ drawplayer_center_offsets:
 
     rounding_slope_table:
 		;     45^  45v  22^  22v  66^  66v  nothing
-        .byte $03, $09, $0a, $08, $08, $09, $00, $00
+        .byte $03, $09, $04, $08, $08, $09, $00, $00
 		.byte $03, $09, $1a, $16, $17, $1a 		;upsidedown
 .endproc
 drawplayer_common := _drawplayerone::common
@@ -2745,12 +2745,15 @@ drawplayer_common := _drawplayerone::common
 			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
 
+        BIT _cube_data+1
+        BMI @round
 	;	ldx _temptemp5		;PLAYER TRAILS are disabled for 2 player mode anyway
 	;	bne	@fin		
 
 		LDA _player_vel_y+3		;	if player_vel_y == 0
 		ORA _player_vel_y+2		;
 		BNE @no_round			;__
+		@round:
 			STA	_cube_rotate+2	;__ low_byte = 0
 			.if USE_ILLEGAL_OPCODES
 				LAX _cube_rotate+3	;	LAX abs is apparently stable
