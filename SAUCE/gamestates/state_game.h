@@ -55,24 +55,33 @@ void decrement_was_on_slope() {
 		currplayer_was_on_slope_counter--;
 		
 		if (!currplayer_was_on_slope_counter) {
-			if (gamemode == 2) {
-				switch (currplayer_slope_type) {
-					case SLOPE_22DEG_UP:
-						currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? -0x050 : 0x050);
-						break;
-					case SLOPE_45DEG_UP:
-						break;
-					case SLOPE_66DEG_UP:
-						currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? -0x150 : 0x150);
-				}
+			switch (gamemode) {
+				case 2:
+					switch (currplayer_slope_type) {
+						case SLOPE_22DEG_UP:
+						case SLOPE_22DEG_UP_UD:
+							currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? 0x050 : -0x050);
+							break;
+						case SLOPE_66DEG_UP:
+						case SLOPE_66DEG_UP_UD:
+							currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? -0x150 : 0x150);
+					}
+					break;
+				case 0:
+					switch (currplayer_slope_type) {
+						case SLOPE_22DEG_UP:
+						case SLOPE_22DEG_UP_UD:
+							currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? 0x100 : -0x100);
+							break;
+					}
+					break;
 			}
 			currplayer_slope_type = 0;
 		}
 	} else {
 		currplayer_last_slope_type = 0;
 		currplayer_slope_type = 0;
-	}
-	
+	}	
 }
 
 
