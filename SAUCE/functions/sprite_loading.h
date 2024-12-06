@@ -675,6 +675,8 @@ void sprite_collide_lookup() {
 			if (gamemode == 6) currplayer_vel_y = 0;
 			if (retro_mode) gamemode = 4;
 			else gamemode = 0;
+			if (currplayer_vel_y > 0x350) currplayer_vel_y = 0x350;
+			if (currplayer_vel_y < -0x350) currplayer_vel_y = -0x350;
 			return;    
 
 		case SHIP_MODE:
