@@ -982,15 +982,13 @@ void sprite_collide(){
 	if (gamemode != 6) {
 		Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
 		Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
-		Generic.x = high_byte(currplayer_x) + 1;
-		Generic.y = high_byte(currplayer_y) + (byte(0x10 - Generic.height) >> 1);
 	} else {
 		Generic.width = currplayer_mini ? MINI_WAVE_WIDTH : WAVE_WIDTH;
-		Generic.height = currplayer_mini ? MINI_WAVE_HEIGHT : MINI_WAVE_WIDTH;
-		Generic.x = high_byte(currplayer_x) + (currplayer_mini ? 4 : 8);
-		Generic.y = high_byte(currplayer_y) + (byte(0x10 - Generic.height) >> 1);
+		Generic.height = currplayer_mini ? MINI_WAVE_HEIGHT : WAVE_HEIGHT;
 	}
 
+	Generic.x = high_byte(currplayer_x) + 1;
+	Generic.y = high_byte(currplayer_y) + (byte(0x10 - Generic.height) >> 1);
 
 	index = 0;
 

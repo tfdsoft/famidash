@@ -22,11 +22,10 @@ function Main()
 
   gamemode = emu.read(gamemodeaddr.address, gamemodeaddr.memType, false)
 
-
   player_width = emu.read(genericaddr.address + 2, genericaddr.memType, false)
   player_height = emu.read(genericaddr.address + 3, genericaddr.memType, false)
 
-  emu.drawRectangle(player_x, player_y + ((0x0f - player_height) >> 1), player_width, player_height, 0xffff00, false)
+  emu.drawRectangle(player_x, player_y + ((0x10 - player_height) >> 1), player_width, player_height, 0xffff00, false)
 
   actives = emu.getLabelAddress("_activesprites_active")
   
