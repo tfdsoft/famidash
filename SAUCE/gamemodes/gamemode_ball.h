@@ -116,16 +116,6 @@ void ball_movement(void){
 		}
 	}		
 	ufo_orbed = 0;
-
-	if (currplayer_was_on_slope_counter) {
-	    tmp5 = 0;
-	    tmp8 = currplayer_last_slope_type;
-	    slope_exit_vel();
-	    if (currplayer_mini) { tmp5 >>= 2; tmp5 /= 2; }
-	    else tmp5 >>= 2;
-	    currplayer_vel_y += (currplayer_gravity ? tmp5 : -tmp5);
-	}
-
 }
 
 void ball_eject() {
