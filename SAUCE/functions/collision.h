@@ -744,14 +744,16 @@ char bg_coll_return_U () {
 char bg_coll_return_slope_D () {
 	high_byte(tmp3) = 0; //UP
 	tmp1 = bg_coll_slope();
-	if ((currplayer_last_slope_type & SLOPE_RISING) && !(currplayer_slope_type & SLOPE_RISING)) {
-		if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
-			currplayer_slope_type = currplayer_last_slope_type;
-			tmp8 = high_byte(currplayer_vel_x);
+	if (tmp1) {
+		if ((currplayer_last_slope_type & SLOPE_RISING) && !(currplayer_slope_type & SLOPE_RISING)) {
+			if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
+				currplayer_slope_type = currplayer_last_slope_type;
+				tmp8 = high_byte(currplayer_vel_x);
+			}
 		}
+		if (currplayer_slope_type != 0) currplayer_last_slope_type = currplayer_slope_type;	
+		eject_D = tmp8;
 	}
-	if (currplayer_slope_type != 0) currplayer_last_slope_type = currplayer_slope_type;	
-	eject_D = tmp8;
 	return tmp1;
 }
 
@@ -764,14 +766,16 @@ char bg_coll_return_slope_D () {
 char bg_coll_return_slope_U () {
 	high_byte(tmp3) = 1; //UP
 	tmp1 = bg_coll_slope();
-	if ((currplayer_last_slope_type & SLOPE_RISING) && !(currplayer_slope_type & SLOPE_RISING)) {
-		if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
-			currplayer_slope_type = currplayer_last_slope_type;
-			tmp8 = high_byte(currplayer_vel_x);
+	if (tmp1) {
+		if ((currplayer_last_slope_type & SLOPE_RISING) && !(currplayer_slope_type & SLOPE_RISING)) {
+			if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
+				currplayer_slope_type = currplayer_last_slope_type;
+				tmp8 = high_byte(currplayer_vel_x);
+			}
 		}
+		if (currplayer_slope_type != 0) currplayer_last_slope_type = currplayer_slope_type;	
+		eject_U = -tmp8;
 	}
-	if (currplayer_slope_type != 0) currplayer_last_slope_type = currplayer_slope_type;	
-	eject_U = -tmp8;
 	return tmp1;
 }
 
@@ -823,16 +827,18 @@ char bg_coll_U() {
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
 
 		tmp2 = 0;
+		low_byte(tmp3) = 0;
 		do {
 			bg_collision_sub(); // do again but this time in the center of the cube
 
 			if (collision) {
 				// Clobbers 1, 4, 7, 8
-				if(bg_coll_return_slope_U()) return 1;
+				low_byte(tmp3) |= bg_coll_return_slope_U();
 			}
 
 			temp_x += Generic.width; // automatically only the low byte
 		} while (++tmp2 < 2);
+		if (low_byte(tmp3)) return 1;
 	}
 
 	if (currplayer_vel_y <= 0x00) {
@@ -879,15 +885,17 @@ char bg_coll_D() {
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
 
 		tmp2 = 0;
+		low_byte(tmp3) = 0;
 		do {
 			bg_collision_sub(); // do again but this time in the center of the cube
 			
 			if (collision) {
 				// Clobbers 1, 4, 7, 8
-				if(bg_coll_return_slope_D()) return 1; 
+				low_byte(tmp3) |= bg_coll_return_slope_D();
 			}
 			temp_x += Generic.width; // automatically only the low byte
 		} while (++tmp2 < 2);	
+		if (low_byte(tmp3)) return 1;
 	}
 	
 	if (currplayer_vel_y >= 0x00) {
