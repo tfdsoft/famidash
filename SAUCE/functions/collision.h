@@ -786,11 +786,15 @@ char bg_coll_return_slope_U () {
 	tmp1, tmp2, tmp4, tmp7, tmp8
 */
 
+// in case of snap, dont kill player	
 #define COLL_CHECK_BOTTOM \
 			bg_collision_sub(); \
 			if (collision) { \
 				bg_coll_spikes(); \
-				if (bg_coll_return_D()) return 1; \
+				if (bg_coll_return_D()) { \
+					idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b1111110); \
+					return 1; \
+				} \
 			}
 
 #define COLL_CHECK_BOTTOM_NO_SPIKE \
@@ -798,12 +802,16 @@ char bg_coll_return_slope_U () {
 			if (collision) { \
 				if (bg_coll_return_D()) return 1; \
 			}
-
+			
+// in case of snap, dont kill player	
 #define COLL_CHECK_TOP \
 			bg_collision_sub(); \
 			if (collision) { \
 				bg_coll_spikes(); \
-				if (bg_coll_return_U()) return 1; \
+				if (bg_coll_return_U()) { \
+					idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b1111110); \
+					return 1; \
+				} \
 			}
 
 #define COLL_CHECK_TOP_NO_SPIKE \
