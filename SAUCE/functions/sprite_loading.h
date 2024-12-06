@@ -981,10 +981,10 @@ void sprite_collide_lookup() {
 void sprite_collide(){
 	if (gamemode != 6) {
 		Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
-		Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
+		Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT; 
 	} else {
 		Generic.width = currplayer_mini ? MINI_WAVE_WIDTH : WAVE_WIDTH;
-		Generic.height = currplayer_mini ? MINI_WAVE_HEIGHT : WAVE_HEIGHT;
+		Generic.height = currplayer_mini ? MINI_WAVE_HEIGHT+2 : WAVE_HEIGHT+2;
 	}
 
 	Generic.x = high_byte(currplayer_x) + 1;
@@ -1048,8 +1048,13 @@ void sprite_collide(){
 			}
 		}
 	} while (++index < max_loaded_sprites);
-
-	Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
+	if (gamemode != 6) {
+		Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
+		Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT; 
+	} else {
+		Generic.width = currplayer_mini ? MINI_WAVE_WIDTH : WAVE_WIDTH;
+		Generic.height = currplayer_mini ? MINI_WAVE_HEIGHT : WAVE_HEIGHT;
+	}
 }
 
 
