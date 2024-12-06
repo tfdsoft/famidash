@@ -757,7 +757,11 @@ void sprite_collide_lookup() {
 				
 				settrailstuff();
 				currplayer_gravity = 0; 
-				if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
+				if (gamemode != 2 && gamemode != 1) {
+					if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
+				} else {
+					if (currplayer_vel_y < -0x0190) currplayer_vel_y = -0x0190; 
+				}
 				robotjumptime[currplayer] = 0;
 				idx8_inc(activesprites_activated, index);
 			}
@@ -770,7 +774,11 @@ void sprite_collide_lookup() {
 				
 				settrailstuff();
 				currplayer_gravity = 1; 
-				if (currplayer_vel_y > 0x0290) currplayer_vel_y = 0x0290; 
+				if (gamemode != 2 && gamemode != 1) {
+					if (currplayer_vel_y > 0x0290) currplayer_vel_y = 0x0290; 
+				} else {
+					if (currplayer_vel_y > 0x0190) currplayer_vel_y = 0x0190; 
+				}
 				robotjumptime[currplayer] = 0;
 				idx8_inc(activesprites_activated, index);	
 			}
