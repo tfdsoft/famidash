@@ -681,7 +681,7 @@ void sprite_collide_lookup() {
 		case UFO_MODE:
 			settrailstuff();
 		case BALL_MODE:
-			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
+			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
 			if (gamemode == 6) currplayer_vel_y = 0;
 			if (currplayer_vel_y > 0x350) currplayer_vel_y = 0x350;
 			if (currplayer_vel_y < -0x350) currplayer_vel_y = -0x350;
@@ -710,20 +710,20 @@ void sprite_collide_lookup() {
 			if (gamemode == 6) currplayer_vel_y = 0;
 			gamemode = 5;
 			retrofireballclear();		
-			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);		
+			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);		
 			return;
 		case WAVE_MODE:
 			settrailstuff();		
 			gamemode = 6;
 			retrofireballclear();		
-			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);		
+			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);		
 			return;
 		case SWING_MODE:
 			settrailstuff();
 			if (gamemode == 6) currplayer_vel_y = 0;
 			gamemode = 7;
 			retrofireballclear();		
-			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);	
+			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);	
 			return;
 #ifdef FLAG_KANDO_FUN_STUFF
 		case NINJA_MODE:
@@ -731,7 +731,7 @@ void sprite_collide_lookup() {
 			gamemode = 8;
 			return;
 		case RANDOM_MODE_PORTAL:
-			target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
+			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
 			if (gamemode == 6) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
 			idx8_inc(activesprites_activated, index);
