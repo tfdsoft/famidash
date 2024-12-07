@@ -43,7 +43,6 @@ void x_movement_coll() {
 					currplayer_vel_y = tmp5;
 				}
 			}
-			currplayer_slope_speed = currplayer_vel_y;
 		}
 	}
 	
