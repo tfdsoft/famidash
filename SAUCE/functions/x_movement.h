@@ -6,17 +6,14 @@ const unsigned short speed_table[] = {
 };
 
 void slope_vel() {
-	switch (tmp8 & 0x07) {
-		case SLOPE_22DEG_DOWN:
-		case SLOPE_22DEG_UP:
+	switch (tmp8 & SLOPE_DEGREES_MASK) {
+		case SLOPE_22DEG:
 			tmp5 = currplayer_vel_x >> 1;
 			break;
-		case SLOPE_45DEG_DOWN:
-		case SLOPE_45DEG_UP:
+		case SLOPE_45DEG:
 			tmp5 = currplayer_vel_x;
 			break;
-		case SLOPE_66DEG_DOWN:
-		case SLOPE_66DEG_UP:
+		case SLOPE_66DEG:
 			tmp5 = (currplayer_vel_x << 1); 	
 	}
 }

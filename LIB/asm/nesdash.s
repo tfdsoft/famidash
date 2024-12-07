@@ -2647,9 +2647,9 @@ drawplayer_center_offsets:
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING_ALT, >_MINI_CUBE
 
     rounding_slope_table:
-		;     45^  45v  22^  22v  66^  66v  nothing
-        .byte $03, $09, $04, $08, $08, $09, $00, $00
-		.byte $03, $09, $1a, $16, $17, $1a 		;upsidedown
+		;     45v  22v  66v  45^  22^  66^  nothing
+        .byte $09, $08, $09, $00, $03, $04, $08, $00
+		.byte $09, $16, $1a, $00, $03, $1a, $17		;upsidedown
 .endproc
 drawplayer_common := _drawplayerone::common
 
@@ -3078,9 +3078,9 @@ drawplayer_common := _drawplayerone::common
         .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT2, >_SPIDER_ALT2, >_WAVE2, >_SWING2, <_CUBE2
         .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL_ALT, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE2, >_MINI_SWING_ALT, <_MINI_CUBE2
     rounding_slope_table:
-		;     45^  45v  22^  22v  66^  66v  nothing
-        .byte $03, $09, $0a, $08, $08, $09, $00, $00
-		.byte $03, $09, $1a, $16, $17, $1a 		;upsidedown
+		;     45v  22v  66v  45^  22^  66^  nothing
+        .byte $09, $08, $09, $03, $04, $08, $00, $00
+		.byte $09, $16, $1a, $03, $1a, $17		;upsidedown
 
 
 .endproc

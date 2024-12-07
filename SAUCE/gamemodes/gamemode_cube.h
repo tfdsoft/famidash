@@ -78,11 +78,13 @@ void cube_movement(void){
 					if (!currplayer_mini) currplayer_vel_y = JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 					else currplayer_vel_y = MINI_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 
-				}
 
-				if (make_cube_jump_higher) {
-					currplayer_vel_y += (currplayer_gravity ? 0x80 : -0x80);
-					make_cube_jump_higher = 0;
+					if (make_cube_jump_higher) {
+						if ((currplayer_slope_type & SLOPE_DEGREES_MASK) != SLOPE_22DEG) {
+							currplayer_vel_y += (currplayer_gravity ? 0x80 : -0x80);
+						}
+						make_cube_jump_higher = 0;
+					}
 				}
 			
 			}
@@ -93,7 +95,9 @@ void cube_movement(void){
 				else currplayer_vel_y = MINI_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
 
 				if (make_cube_jump_higher) {
-					currplayer_vel_y += (currplayer_gravity ? 0x80 : -0x80);
+					if ((currplayer_slope_type & SLOPE_DEGREES_MASK) != SLOPE_22DEG) {
+						currplayer_vel_y += (currplayer_gravity ? 0x80 : -0x80);
+					}
 					make_cube_jump_higher = 0;
 				}
 

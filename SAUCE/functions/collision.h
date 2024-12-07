@@ -3,24 +3,30 @@ CODE_BANK_PUSH("XCD_BANK_01")
 
 #define SLOPE_NONE			0b0000
 
-#define SLOPE_45DEG_UP 		0b0001
-#define SLOPE_45DEG_DOWN 	0b0010
-#define SLOPE_22DEG_UP 		0b0011
-#define SLOPE_22DEG_DOWN 	0b0100
-#define SLOPE_66DEG_UP 		0b0101
-#define SLOPE_66DEG_DOWN 	0b0110
+#define SLOPE_45DEG_UP 		(SLOPE_45DEG | SLOPE_RISING) 	// 0101
+#define SLOPE_45DEG_DOWN 	(SLOPE_45DEG)					// 0001
+#define SLOPE_22DEG_UP 		(SLOPE_22DEG | SLOPE_RISING)	// 0110
+#define SLOPE_22DEG_DOWN 	(SLOPE_22DEG)					// 0010
+#define SLOPE_66DEG_UP 		(SLOPE_66DEG | SLOPE_RISING)	// 0111
+#define SLOPE_66DEG_DOWN 	(SLOPE_66DEG)					// 0011
 
-#define SLOPE_45DEG_UP_UD 	0b1001
-#define SLOPE_45DEG_DOWN_UD 0b1010
-#define SLOPE_22DEG_UP_UD 	0b1011
-#define SLOPE_22DEG_DOWN_UD 0b1100
-#define SLOPE_66DEG_UP_UD 	0b1101
-#define SLOPE_66DEG_DOWN_UD 0b1110
+#define SLOPE_45DEG_UP_UD 	(SLOPE_45DEG | SLOPE_RISING | SLOPE_UPSIDEDOWN)	// 1101
+#define SLOPE_45DEG_DOWN_UD (SLOPE_45DEG | SLOPE_UPSIDEDOWN)				// 1001
+#define SLOPE_22DEG_UP_UD 	(SLOPE_22DEG | SLOPE_RISING | SLOPE_UPSIDEDOWN)	// 1110
+#define SLOPE_22DEG_DOWN_UD (SLOPE_22DEG | SLOPE_UPSIDEDOWN)				// 1010
+#define SLOPE_66DEG_UP_UD 	(SLOPE_66DEG | SLOPE_RISING | SLOPE_UPSIDEDOWN)	// 1111
+#define SLOPE_66DEG_DOWN_UD (SLOPE_66DEG | SLOPE_UPSIDEDOWN)				// 1011
+
+#define SLOPE_45DEG 0b01
+#define SLOPE_22DEG 0b10
+#define SLOPE_66DEG 0b11
 
 // slope flags
 
-#define SLOPE_RISING   0b0001
-#define SLOPE_UPSIDEDOWN 0b1000
+#define SLOPE_RISING    		 0b0100
+#define SLOPE_UPSIDEDOWN 		 0b1000
+#define SLOPE_RISING_MASK        0b0111
+#define SLOPE_DEGREES_MASK       0b0011
 
 
 
@@ -490,8 +496,15 @@ char bg_coll_U_D_checks() {
 
 	return 0;
 }
-void clear_slope_vars() {
+void unstick() {
 	tmp8 = 4;
+}
+
+void clear_slope_vars() {
+	currplayer_was_on_slope_counter = 0;
+	currplayer_slope_frames = 0;
+	currplayer_slope_type = 0;
+	currplayer_last_slope_type = 0;
 }
 
 char a_check_lookup[] = {
@@ -686,11 +699,11 @@ char bg_coll_slope() {
 
 				if (a_check_lookup[tmp4]) {
 					if (controllingplayer->a || controllingplayer->up) {
-						clear_slope_vars();
+						unstick();
 					}
 				} else {
 					if (!(controllingplayer->a || controllingplayer->up)) {
-						clear_slope_vars();
+						unstick();
 					}
 				}	
 
