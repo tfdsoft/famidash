@@ -425,8 +425,17 @@ char bg_side_coll_common() {
 
 	bg_collision_sub();
 	
-	if (!currplayer_was_on_slope_counter && bg_coll_slope()) {
-		high_byte(currplayer_y) += (currplayer_slope_type & SLOPE_UPSIDEDOWN ? 2 : -2);
+	if (gamemode == 6) {
+		if (bg_coll_slope()) {
+			if (!dblocked[currplayer]) {
+				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+			} 
+		}	
+		dblocked[currplayer] = 0;
+	} else {
+		if (!currplayer_was_on_slope_counter && bg_coll_slope()) {
+			high_byte(currplayer_y) += (currplayer_slope_type & SLOPE_UPSIDEDOWN ? 2 : -2);
+		}
 	}
 
 	bg_coll_spikes();
@@ -655,7 +664,7 @@ char bg_coll_slope() {
 	if ((uint8_t)(tmp4) >= tmp7) {
 			tmp8 = tmp4 - tmp7;
 
-			if (gamemode == 0 || gamemode == 4 || gamemode == 6) {
+			if (gamemode == 0 || gamemode == 4) {
 				if ((controllingplayer->a || controllingplayer->up)) {
 					make_cube_jump_higher = 1;
 					clear_slope_vars();
