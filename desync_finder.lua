@@ -15,6 +15,8 @@ function printInfo()
 
     emu.drawString(11, 20, middle, 0xFFFFFF, 0xFF000000)
 
+    emu.drawRectangle(0, player_y_1, 256, 1, 0x7fffff00, false)
+    emu.drawRectangle(0, player_y_2, 256, 1, 0x7fffff00, false)
     
     emu.drawRectangle(0, middle, 256, 1, 0x7fff0000, false)
     
