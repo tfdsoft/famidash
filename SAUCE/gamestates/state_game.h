@@ -518,9 +518,9 @@ void state_game(){
 			if (((controllingplayer->press_a || controllingplayer->press_up)) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			
 			decrement_was_on_slope();		
-	if (orbed[currplayer]) {
-		if (!(controllingplayer->hold & (PAD_A | PAD_UP))) orbed[currplayer] = 0;
-	}
+			if (orbed[currplayer]) {
+				if (!(controllingplayer->hold & (PAD_A | PAD_UP))) orbed[currplayer] = 0;
+			}
 
 			crossPRGBankJump0(sprite_collide);
 
