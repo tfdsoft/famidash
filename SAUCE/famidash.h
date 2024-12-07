@@ -24,6 +24,17 @@
 #define COIN_2 0x02
 #define COIN_3 0x04
 
+// gamemodes
+#define GAMEMODE_CUBE   0x00
+#define GAMEMODE_SHIP   0x01
+#define GAMEMODE_BALL   0x02
+#define GAMEMODE_UFO    0x03
+#define GAMEMODE_ROBOT  0x04
+#define GAMEMODE_SPIDER 0x05
+#define GAMEMODE_WAVE   0x06
+#define GAMEMODE_SWING  0x07
+#define GAMEMODE_NINJA  0x08
+
 // Zeropage variables
 #pragma bss-name(push, "ZEROPAGE")
 

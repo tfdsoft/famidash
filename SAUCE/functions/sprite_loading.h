@@ -374,6 +374,13 @@ void animate_coin_3() {
     }	 
 }
 
+void common_dash_orb_routine() {
+	if (gamemode == GAMEMODE_UFO || gamemode == GAMEMODE_ROBOT) {
+		if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+	}
+	else currplayer_gravity ^= 0x01;
+}
+
 #define yellow_orb 0x00 << 3
 #define yellow_pad 0x01 << 3
 #define pink_orb   0x02 << 3
@@ -416,7 +423,7 @@ const short mini_heights[] = {
 // Load the player velocity from the height table
 static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 	if (!retro_mode) __A__ = (gamemode | table_offset) << 1;
-	else if (retro_mode && gamemode == 4) __A__ = (0 | table_offset) << 1;
+	else if (retro_mode && gamemode == GAMEMODE_ROBOT) __A__ = (0 | table_offset) << 1;
 	else __A__ = (gamemode | table_offset) << 1;
 	__asm__("tay");
 	if (currplayer_mini) {
@@ -459,10 +466,7 @@ static void sprite_gamemode_main() {
 				break;
 			case DASH_GRAVITY_ORB:
 				if (!dashing[currplayer]) { 
-					if (gamemode == 3 || gamemode == 5) {
-						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-					}
-					else currplayer_gravity ^= 0x01;
+					common_dash_orb_routine();
 				}
 				//intentional leak
 			case DASH_ORB:
@@ -471,10 +475,7 @@ static void sprite_gamemode_main() {
 				break;
 			case DASH_GRAVITY_ORB_45DEG_UP:
 				if (!dashing[currplayer]) {
-					if (gamemode == 3 || gamemode == 5) {
-						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-					}
-					else currplayer_gravity ^= 0x01;
+					common_dash_orb_routine();
 				}				
 				//intentional leak
 			case DASH_ORB_45DEG_UP:
@@ -483,10 +484,7 @@ static void sprite_gamemode_main() {
 				break;
 			case DASH_GRAVITY_ORB_45DEG_DOWN:
 				if (!dashing[currplayer]) {
-					if (gamemode == 3 || gamemode == 5) {
-						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-					}
-					else currplayer_gravity ^= 0x01;
+					common_dash_orb_routine();
 				}				
 				//intentional leak
 			case DASH_ORB_45DEG_DOWN:
@@ -495,10 +493,7 @@ static void sprite_gamemode_main() {
 				break;
 			case DASH_GRAVITY_ORB_UPWARDS:
 				if (!dashing[currplayer]) {
-					if (gamemode == 3 || gamemode == 5) {
-						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-					}
-					else currplayer_gravity ^= 0x01;
+					common_dash_orb_routine();
 				}			
 				//intentional leak
 			case DASH_ORB_UPWARDS:
@@ -508,10 +503,7 @@ static void sprite_gamemode_main() {
 				break;
 			case DASH_GRAVITY_ORB_DOWNWARDS:
 				if (!dashing[currplayer]) {
-					if (gamemode == 3 || gamemode == 5) {
-						if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-					}
-					else currplayer_gravity ^= 0x01;
+					common_dash_orb_routine();
 				}			
 				//intentional leak
 			case DASH_ORB_DOWNWARDS:
@@ -555,10 +547,7 @@ static void sprite_gamemode_controller_check() {
 			break;
 		case DASH_GRAVITY_ORB:
 			if (!dashing[currplayer]) {
-				if (gamemode == 3 || gamemode == 5) {
-					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-				}
-				else currplayer_gravity ^= 0x01;
+				common_dash_orb_routine();
 			}
 			//intentional leak
 		case DASH_ORB:
@@ -567,10 +556,7 @@ static void sprite_gamemode_controller_check() {
 			break;
 		case DASH_GRAVITY_ORB_45DEG_UP:
 			if (!dashing[currplayer]) {
-				if (gamemode == 3 || gamemode == 5) {
-					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-				}
-				else currplayer_gravity ^= 0x01;
+				common_dash_orb_routine();
 			}
 			//intentional leak
 		case DASH_ORB_45DEG_UP:
@@ -579,10 +565,7 @@ static void sprite_gamemode_controller_check() {
 			break;	
 		case DASH_GRAVITY_ORB_45DEG_DOWN:
 			if (!dashing[currplayer]) {
-				if (gamemode == 3 || gamemode == 5) {
-					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-				}
-				else currplayer_gravity ^= 0x01;
+				common_dash_orb_routine();
 			}
 			//intentional leak
 		case DASH_ORB_45DEG_DOWN:
@@ -591,10 +574,7 @@ static void sprite_gamemode_controller_check() {
 			break;		
 		case DASH_GRAVITY_ORB_UPWARDS:
 			if (!dashing[currplayer]) {
-				if (gamemode == 3 || gamemode == 5) {
-					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-				}
-				else currplayer_gravity ^= 0x01;
+				common_dash_orb_routine();
 			}
 			//intentional leak
 		case DASH_ORB_UPWARDS:
@@ -604,10 +584,7 @@ static void sprite_gamemode_controller_check() {
 			break;	
 		case DASH_GRAVITY_ORB_DOWNWARDS:
 			if (!dashing[currplayer]) {
-				if (gamemode == 3 || gamemode == 5) {
-					if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
-				}
-				else currplayer_gravity ^= 0x01;
+				common_dash_orb_routine();
 			}
 			//intentional leak
 		case DASH_ORB_DOWNWARDS:
@@ -672,9 +649,9 @@ void sprite_collide_lookup() {
 		case CUBE_MODE:
 			orbactive = 0;
 			exitPortalTimer = 5;
-			if (gamemode == 6) currplayer_vel_y = 0;
-			if (retro_mode) gamemode = 4;
-			else gamemode = 0;
+			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+			if (retro_mode) gamemode = GAMEMODE_ROBOT;
+			else gamemode = GAMEMODE_CUBE;
 			return;    
 
 		case SHIP_MODE:
@@ -682,7 +659,7 @@ void sprite_collide_lookup() {
 			settrailstuff();
 		case BALL_MODE:
 			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
-			if (gamemode == 6) currplayer_vel_y /= 2;
+			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
 			if (currplayer_vel_y > 0x350) currplayer_vel_y = 0x350;
 			if (currplayer_vel_y < -0x350) currplayer_vel_y = -0x350;
 			gamemode = collided;
@@ -691,7 +668,7 @@ void sprite_collide_lookup() {
 		case ROBOT_MODE:
 		
 			exitPortalTimer = 5;
-			if (gamemode == 6) currplayer_vel_y /= 2;
+			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
 			gamemode = collided;
 			retrofireballclear();
 			return;
@@ -708,32 +685,32 @@ void sprite_collide_lookup() {
 			}
 			return;
 		case SPIDER_MODE:
-			if (gamemode == 6) currplayer_vel_y = 0;
-			gamemode = 5;
+			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+			gamemode = GAMEMODE_SPIDER;
 			retrofireballclear();		
 			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);		
 			return;
 		case WAVE_MODE:
 			settrailstuff();		
-			gamemode = 6;
+			gamemode = GAMEMODE_WAVE;
 			retrofireballclear();		
 			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);		
 			return;
 		case SWING_MODE:
 			settrailstuff();
-			if (gamemode == 6) currplayer_vel_y = 0;
-			gamemode = 7;
+			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+			gamemode = GAMEMODE_SWING;
 			retrofireballclear();		
 			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);	
 			return;
 #ifdef FLAG_KANDO_FUN_STUFF
 		case NINJA_MODE:
-			if (gamemode == 6) currplayer_vel_y = 0;		
-			gamemode = 8;
+			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
+			gamemode = GAMEMODE_NINJA;
 			return;
 		case RANDOM_MODE_PORTAL:
 			if (!dual) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
-			if (gamemode == 6) currplayer_vel_y = 0;		
+			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
 			idx8_inc(activesprites_activated, index);
 			return;
@@ -763,7 +740,7 @@ void sprite_collide_lookup() {
 				
 				settrailstuff();
 				currplayer_gravity = 0; 
-				if (gamemode != 2 && gamemode != 1) {
+				if (gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_SHIP) {
 					if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
 				} else {
 					if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
@@ -780,7 +757,7 @@ void sprite_collide_lookup() {
 				
 				settrailstuff();
 				currplayer_gravity = 1; 
-				if (gamemode != 2 && gamemode != 1) {
+				if (gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_SHIP) {
 					if (currplayer_vel_y > 0x0290) currplayer_vel_y = 0x0290; 
 				} else {
 					if (currplayer_vel_y > 0x0290) currplayer_vel_y = 0x0290; 
@@ -978,7 +955,7 @@ void sprite_collide_lookup() {
 #undef collided
 
 void sprite_collide(){
-	if (gamemode != 6) {
+	if (gamemode != GAMEMODE_WAVE) {
 		Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
 		Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT; 
 	} else {
@@ -1047,7 +1024,7 @@ void sprite_collide(){
 			}
 		}
 	} while (++index < max_loaded_sprites);
-	if (gamemode != 6) {
+	if (gamemode != GAMEMODE_WAVE) {
 		Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH; 
 	} else {
 		Generic.width = currplayer_mini ? MINI_WAVE_WIDTH : WAVE_WIDTH;

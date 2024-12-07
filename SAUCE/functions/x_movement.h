@@ -79,7 +79,7 @@ void x_movement(){
 		//return; 
 	}
 
-	if (gamemode == 0x06) { // wave
+	if (gamemode == GAMEMODE_WAVE) { // wave
 		if (currplayer_mini) {
 			Generic.width = MINI_WAVE_WIDTH;
 			Generic.height = MINI_WAVE_HEIGHT;

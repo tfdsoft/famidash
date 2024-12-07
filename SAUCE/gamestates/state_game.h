@@ -339,9 +339,9 @@ void state_game(){
 					else if ((joypad1.press_a) && DEBUG_MODE) {
 						nocamlock = 1;
 	#ifdef FLAG_KANDO_FUN_STUFF
-						gamemode == 8 ? gamemode = 0 : gamemode++;
+						gamemode == GAMEMODE_NINJA ? gamemode = GAMEMODE_CUBE : gamemode++;
 	#else
-						gamemode == 7 ? gamemode = 0 : gamemode++;
+						gamemode == GAMEMODE_SWING ? gamemode = GAMEMODE_CUBE : gamemode++;
 	#endif			
 						cube_data[0] = 0;
 						ppu_off();
@@ -612,9 +612,9 @@ void set_player_banks() {
 			iconbank1 = 20; iconbank2 = 24; iconbank3 = 16;
 		}
 		
-		if (gamemode == 8) mmc3_set_2kb_chr_bank_0(NINJABANK);
-		else if ((currplayer_mini && (gamemode != 0 && gamemode != 2 && gamemode != 4)) || (gamemode == 7) || (gamemode == 6)) mmc3_set_2kb_chr_bank_0(iconbank2);
-		else if (gamemode == 0 || gamemode == 1 || gamemode == 3) mmc3_set_2kb_chr_bank_0(iconbank3);
+		if (gamemode == GAMEMODE_NINJA) mmc3_set_2kb_chr_bank_0(NINJABANK);
+		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE)) mmc3_set_2kb_chr_bank_0(iconbank2);
+		else if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_SHIP || gamemode == GAMEMODE_UFO) mmc3_set_2kb_chr_bank_0(iconbank3);
 		else mmc3_set_2kb_chr_bank_0(iconbank1);
 
 }

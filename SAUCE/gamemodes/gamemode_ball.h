@@ -11,7 +11,7 @@ void ball_movement(void){
 
 //	if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
-	if (gamemode == 7) {
+	if (gamemode == GAMEMODE_SWING) {
 
 		fallspeed_big = SWING_MAX_FALLSPEED;
 		fallspeed_mini = MINI_SWING_MAX_FALLSPEED;
@@ -91,7 +91,7 @@ void ball_movement(void){
 		Generic.y = high_byte(currplayer_y) + 1;
 	}
 	#define BALL_SWITCH_VEL 0x200
-	if (gamemode == 2) {
+	if (gamemode == GAMEMODE_BALL) {
 		if (((controllingplayer->a || controllingplayer->up)) && (kandotemp2[currplayer] == 0) && currplayer_vel_y == 0){
 			jumps++;
 			currplayer_gravity ^= 0x01;

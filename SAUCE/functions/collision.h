@@ -48,7 +48,7 @@ char bg_coll_sides() {
 			if (!(uint8_t)(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
 			break;
 		case COL_FLOOR_CEIL:
-			if (gamemode == 6) return 0;
+			if (gamemode == GAMEMODE_WAVE) return 0;
 		case COL_ALL: 
 			return 1;		
 		case COL_UP_LEFT:
@@ -413,7 +413,7 @@ char bg_coll_slope();
 char bg_side_coll_common() {
 	tmp1 = Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + (Generic.height >> 1);
 
-	if (currplayer_mini && (gamemode == CUBE_MODE || gamemode == ROBOT_MODE)) {
+	if (currplayer_mini && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT)) {
 		tmp1 += (currplayer_gravity ? 3 : -2);
 	}
 	
@@ -425,7 +425,7 @@ char bg_side_coll_common() {
 
 	bg_collision_sub();
 	
-	if (gamemode == 6) {
+	if (gamemode == GAMEMODE_WAVE) {
 		if (bg_coll_slope()) {
 			if (!dblocked[currplayer]) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
@@ -664,7 +664,7 @@ char bg_coll_slope() {
 	if ((uint8_t)(tmp4) >= tmp7) {
 			tmp8 = tmp4 - tmp7;
 
-			if (gamemode == 0 || gamemode == 4) {
+			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT) {
 				if ((controllingplayer->a || controllingplayer->up)) {
 					make_cube_jump_higher = 1;
 					clear_slope_vars();
@@ -848,7 +848,7 @@ char bg_coll_U() {
 
 	if (currplayer_vel_y <= 0x00) {
 		if (!currplayer_slope_frames) {
-			temp_x = Generic.x + low_word(scroll_x) + (gamemode == 6 ? 4 : 0); // automatically only the low byte
+			temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
 			
 			storeWordSeparately(
 				add_scroll_y(
@@ -906,7 +906,7 @@ char bg_coll_D() {
 	if (currplayer_vel_y >= 0x00) {
 		if (!currplayer_slope_frames) {
 			// check 2 points on the right side
-			temp_x = Generic.x + low_word(scroll_x) + (gamemode == 6 ? 4 : 0); // automatically only the low byte
+			temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
 
 			storeWordSeparately(
 				add_scroll_y(
