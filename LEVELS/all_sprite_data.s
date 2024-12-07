@@ -4221,6 +4221,7 @@ sprite_data_hexagonforce:
   .byte $f0,$3a,$00,$02,$18
   .byte $00,$3b,$f0,$01,$14
   .byte $20,$3e,$00,$02,$23
+  .byte $30,$3e,$f0,$01,$08
   .byte $30,$3e,$00,$02,$19
   .byte $e0,$3f,$30,$02,$1b
   .byte $b0,$41,$c0,$01,$0f
