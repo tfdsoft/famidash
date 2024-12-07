@@ -21,6 +21,24 @@ void slope_vel() {
 	}
 }
 
+void apply_slope_vel() {
+	tmp8 = currplayer_slope_type;
+	slope_vel();
+	if ((currplayer_slope_type & SLOPE_RISING)) {
+		if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
+			currplayer_vel_y = tmp5;
+		} else {
+			currplayer_vel_y = -tmp5;
+		}
+	} else {
+		if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
+			currplayer_vel_y = -tmp5;
+		} else {
+			currplayer_vel_y = tmp5;
+		}
+	}
+}
+
 void x_movement_coll() {
   mmc3_set_prg_bank_1(GET_BANK(bg_coll_R));
 
@@ -28,21 +46,7 @@ void x_movement_coll() {
 		currplayer_slope_frames -= 1;
 		if (currplayer_slope_type) {
 		// we we're on an slope and now we aren't, so push the player upwards a bit
-			tmp8 = currplayer_slope_type;
-			slope_vel();
-			if ((currplayer_slope_type & SLOPE_RISING)) {
-				if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
-					currplayer_vel_y = tmp5;
-				} else {
-					currplayer_vel_y = -tmp5;
-				}
-			} else {
-				if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
-					currplayer_vel_y = -tmp5;
-				} else {
-					currplayer_vel_y = tmp5;
-				}
-			}
+			apply_slope_vel();
 		}
 	}
 	

@@ -490,8 +490,8 @@ char bg_coll_U_D_checks() {
 
 	return 0;
 }
-
 void clear_slope_vars() {
+	tmp8 = 4;
 }
 
 char a_check_lookup[] = {
