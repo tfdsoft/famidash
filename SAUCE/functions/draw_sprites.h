@@ -155,17 +155,17 @@ void draw_sprites(void){
 		tmpB = player_y[0];
 
 		high_byte(player_x[0]) -= high_byte(tmp6);
-		high_byte(player_y[0]) = player_old_posy[1];
+		high_byte(player_y[0]) = player_old_posy[0];
 
 		if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
 		
 		high_byte(player_x[0]) -= high_byte(tmp6);
-		high_byte(player_y[0]) = player_old_posy[2];
+		high_byte(player_y[0]) = player_old_posy[1];
 
-		if (kandoframecnt & 1) crossPRGBankJump0(drawplayerone);
+		if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
 
 		high_byte(player_x[0]) -= high_byte(tmp6);
-		high_byte(player_y[0]) = player_old_posy[3];
+		high_byte(player_y[0]) = player_old_posy[2];
 
 		if (gamemode == 0) {
 			tmp9 = currplayer_mini;
