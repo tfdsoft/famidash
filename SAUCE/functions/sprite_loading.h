@@ -610,7 +610,7 @@ void sprite_collide_lookup() {
 				target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
 				if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1;  }
 				else { player_x[1] = player_x[0]; player_y[1] = currplayer_y; player_gravity[1] = !currplayer_gravity; player_vel_y[1] = -currplayer_vel_y; mini[1] = mini[0]; }
-				activesprites_type[index] = 0xFF;
+	//			activesprites_type[index] = 0xFF;
 	//		}
 			return;
 		case SINGLE_PORTAL:
@@ -621,7 +621,7 @@ void sprite_collide_lookup() {
 				tallmode = 0;
 				longmode = 0;
 				bigboi = 0;
-				activesprites_type[index] = 0xFF;
+	//			activesprites_type[index] = 0xFF;
 				exitPortalTimer = 5;
 	//		}
 			return;

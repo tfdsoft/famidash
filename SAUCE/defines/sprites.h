@@ -1737,32 +1737,32 @@ const unsigned char Portal_Gravity_Up[]={
 
 const unsigned char Portal_Dual[]={
 
-	  0,  6,0x8B,1,
-	  8, 6,0x8D,1,
-	  16, 6,0x8F,1,
-	//  0,  16,0x91,1,
+	  0,  0,0x8B,1,
+	  8, 0,0x8D,1,
+	  16, 0,0x8F,1,
+	  0,  16,0x91,1,
 
-	 // 8, 16,0x93,1,
-	 // 16, 16,0x95,1,
-	 0,  22,0x8B,1|OAM_FLIP_V,
-	 8, 22,0x8D,1|OAM_FLIP_V,
+	 8, 16,0x93,1,
+	  16, 16,0x95,1,
+	 0,  32,0x8B,1|OAM_FLIP_V,
+	 8, 32,0x8D,1|OAM_FLIP_V,
 
-	 16, 22,0x8F,1|OAM_FLIP_V,
+	 16, 32,0x8F,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Single[]={
 
-	  0,  6,0x8B,0,
-	  8, 6,0x8D,0,
-	  16, 6,0x8F,0,
-//	  0,  16,0x91,0,
+	  0,  0,0x8B,0,
+	  8, 0,0x8D,0,
+	  16, 0,0x8F,0,
+	  0,  16,0x91,0,
 
-//	  8, 16,0x93,0,
-//	  16, 16,0x95,0,
-	  0,  22,0x8B,0|OAM_FLIP_V,
-	  8, 22,0x8D,0|OAM_FLIP_V,
+	  8, 16,0x93,0,
+	  16, 16,0x95,0,
+	  0,  32,0x8B,0|OAM_FLIP_V,
+	  8, 32,0x8D,0|OAM_FLIP_V,
 
-	 16, 22,0x8F,0|OAM_FLIP_V,
+	 16, 32,0x8F,0|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Tallboy_Portal[]={
