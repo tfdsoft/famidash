@@ -149,23 +149,23 @@ void draw_sprites(void){
 	}
 	else if ((forced_trails == 2 || trails == 2) && !dual && viseffects) {
 		temptemp5++;
-		tmp6 = currplayer_vel_x << 2;
+		tmp6 = currplayer_vel_x << 1;
 		
 		tmpA = player_x[0];
 		tmpB = player_y[0];
 
 		high_byte(player_x[0]) -= high_byte(tmp6);
-		high_byte(player_y[0]) = player_old_posy[3];
+		high_byte(player_y[0]) = player_old_posy[1];
 
 		if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
 		
 		high_byte(player_x[0]) -= high_byte(tmp6);
-		high_byte(player_y[0]) = player_old_posy[6];
+		high_byte(player_y[0]) = player_old_posy[2];
 
 		if (kandoframecnt & 1) crossPRGBankJump0(drawplayerone);
 
 		high_byte(player_x[0]) -= high_byte(tmp6);
-		high_byte(player_y[0]) = player_old_posy[8];
+		high_byte(player_y[0]) = player_old_posy[3];
 
 		if (gamemode == 0) {
 			tmp9 = currplayer_mini;
