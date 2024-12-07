@@ -4216,15 +4216,15 @@ sprite_data_hexagonforce:
   .byte $50,$3a,$30,$02,$05
   .byte $70,$3a,$f0,$01,$05
   .byte $c0,$3a,$58,$02,$0a
+  .byte $e0,$3a,$00,$02,$22
   .byte $f0,$3a,$f0,$01,$01
   .byte $f0,$3a,$00,$02,$18
   .byte $00,$3b,$f0,$01,$14
-  .byte $00,$3b,$00,$02,$14
-  .byte $10,$3b,$f0,$01,$22
   .byte $20,$3e,$00,$02,$23
   .byte $30,$3e,$00,$02,$19
   .byte $e0,$3f,$30,$02,$1b
   .byte $b0,$41,$c0,$01,$0f
+  .byte $b0,$41,$40,$02,$0f
   .byte $ff
 .segment "LVL_BANK_1F"
 sprite_data_toe2:
