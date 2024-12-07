@@ -1422,13 +1422,15 @@ void levelinc() {
 void start_the_level() {
 	sfx_play(sfx_start_level, 0);
 	famistudio_music_stop();
-	tmp4 = 0;
+	if (tmp4) edit_irq_table(high_byte(tmp8),2);
+	else edit_irq_table(low_byte(tmp8),2);
+	tmpA = 0;
 	do {
 		oam_clear();
 		draw_both_progress_bars();
 		ppu_wait_nmi();
 		music_update();
-	} while (++tmp4 < 30);
+	} while (++tmpA < 30);
 	gameState = 0x02;
 	pal_fade_to(4,0);
 	kandotemp = 0;
