@@ -23,6 +23,7 @@ void reset_level(void) {
 	slope_frames[0] = 0;
 	slope_frames[1] = 0;
 	currplayer_slope_frames = 0;
+	make_cube_jump_higher = 0;
 	tmp1 = 30;
 	if (!DEBUG_MODE && (cube_data[0] & 1)) {
 		update_level_completeness();
