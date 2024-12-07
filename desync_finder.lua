@@ -7,9 +7,9 @@ function printInfo()
 
     player_y_1 = emu.read(playeryaddr.address + 1, playeryaddr.memType, false)
     player_y_2 = emu.read(playeryaddr.address + 3, playeryaddr.memType, false)
-    middle = (player_y_1 + player_y_2) / 2
+    middle = math.floor((player_y_1 + player_y_2) / 2)
 
-    if (middle ~= 96.5) then
+    if (middle ~= 96) then
         emu.drawString(11, 220, "DESYNC DETECTED", 0xFFFFFF, 0xFF000000)
     end
 
