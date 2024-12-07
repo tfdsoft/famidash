@@ -100,7 +100,7 @@ void cube_movement(void){
 				if (gamemode == GAMEMODE_NINJA) { idx8_dec(ninjajumps, currplayer); }
 			
 			}
-	} else if (gamemode == GAMEMODE_CUBE) {
+	} else if (gamemode == GAMEMODE_ROBOT) {
 		
 		if (controllingplayer->press_a || controllingplayer->press_up) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0b100);	
