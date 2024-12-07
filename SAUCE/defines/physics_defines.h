@@ -19,7 +19,7 @@
 #define JUMP_VEL (-0x590)
 #define MINI_JUMP_VEL (-0x4D0)
 
-#define UFO_JUMP_VEL (-0x2F0)
+#define UFO_JUMP_VEL (-0x330)
 #define MINI_UFO_JUMP_VEL (-0x2D0)
 
 #define ROBOT_JUMP_VEL (-0x2B0)
