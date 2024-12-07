@@ -142,7 +142,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //revolution
 	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
-	BLOCKSB, //demon park
+	BLOCKSA, //demon park
 	BLOCKSB, //death moon
 	BLOCKSB, //decode
 	BLOCKSB, //problematic
