@@ -5,7 +5,7 @@ const unsigned short speed_table[] = {
 	CUBE_SPEED_X1, CUBE_SPEED_X05, CUBE_SPEED_X2, CUBE_SPEED_X3, CUBE_SPEED_X4
 };
 
-void slope_exit_vel() {
+void slope_vel() {
 	switch (tmp8 & 0x07) {
 		case SLOPE_22DEG_DOWN:
 		case SLOPE_22DEG_UP:
@@ -29,7 +29,7 @@ void x_movement_coll() {
 		if (currplayer_slope_type) {
 		// we we're on an slope and now we aren't, so push the player upwards a bit
 			tmp8 = currplayer_slope_type;
-			slope_exit_vel();
+			slope_vel();
 			if ((currplayer_slope_type & SLOPE_RISING)) {
 				if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
 					currplayer_vel_y = tmp5;
@@ -43,6 +43,7 @@ void x_movement_coll() {
 					currplayer_vel_y = tmp5;
 				}
 			}
+			currplayer_slope_speed = currplayer_vel_y;
 		}
 	}
 	

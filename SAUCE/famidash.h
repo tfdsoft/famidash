@@ -72,6 +72,7 @@ int8_t currplayer_slope_frames;
 uint8_t currplayer_was_on_slope_counter;
 uint8_t currplayer_slope_type;
 uint8_t currplayer_last_slope_type;
+uint16_t currplayer_slope_speed;
 
 uint8_t gamemode;
 uint8_t cube_data[2];

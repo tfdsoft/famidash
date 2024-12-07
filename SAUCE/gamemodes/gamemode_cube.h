@@ -4,7 +4,7 @@ CODE_BANK_PUSH("XCD_BANK_01")
 void x_movement_coll();
 void common_gravity_routine();
 void cube_eject();
-void slope_exit_vel();
+void slope_vel();
 void cube_movement(void){
 // handle y
 

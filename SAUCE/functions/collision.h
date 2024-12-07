@@ -493,13 +493,10 @@ char bg_coll_U_D_checks() {
 }
 
 void clear_slope_vars() {
-	currplayer_slope_frames = 0;
-	currplayer_slope_type = 0;
-	currplayer_last_slope_type = 0;
 }
 
 char a_check_lookup[] = {
-	1, 0, 0, 1
+	1, 0, 0, 1, 1, 0, 0, 1
 };
 /*
 	Clobbers:
@@ -667,11 +664,10 @@ char bg_coll_slope() {
 	}
 	if ((uint8_t)(tmp4) >= tmp7) {
 			tmp8 = tmp4 - tmp7;
-			if (gamemode != 0 && gamemode != 4 && gamemode != 2) {
-				tmp7 = 0;
+			if (gamemode != 0 && gamemode != 4 && gamemode != 2 && gamemode != 3) {
 				tmp4 = 0;
 				if (currplayer_slope_type & SLOPE_RISING) {
-					tmp7 = 1;
+					tmp4 |= 0b100;
 				}
 				if (currplayer_slope_type & SLOPE_UPSIDEDOWN) {
 					tmp4 |= 0b010;
@@ -680,27 +676,25 @@ char bg_coll_slope() {
 					tmp4 |= 0b001;
 				}
 
-				if (!tmp7) {
-					if (a_check_lookup[tmp4]) {
-						if (controllingplayer->a || controllingplayer->up) {
-							clear_slope_vars();
-						}
-					} else {
-						if (!(controllingplayer->a || controllingplayer->up)) {
-							clear_slope_vars();
-						}
+				if (a_check_lookup[tmp4]) {
+					if (controllingplayer->a || controllingplayer->up) {
+						clear_slope_vars();
 					}
-				}
-					
+				} else {
+					if (!(controllingplayer->a || controllingplayer->up)) {
+						clear_slope_vars();
+					}
+				}	
 			}
 
-			if ((controllingplayer->a || controllingplayer->up) && (gamemode == 0 || gamemode == 4 || gamemode == 2)) {
+			if ((controllingplayer->a || controllingplayer->up) && (gamemode == 0 || gamemode == 4)) {
 				make_cube_jump_higher = 1;
 				clear_slope_vars();
 			} else {
 				currplayer_slope_frames = 1; //signal BG_COLL_R to not check stuff
 				currplayer_was_on_slope_counter = 3;
 			}
+			
 			return 1;
 	} else if (!currplayer_was_on_slope_counter) {
 			currplayer_slope_type = 0;
