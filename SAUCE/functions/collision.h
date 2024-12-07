@@ -228,21 +228,26 @@ void bg_coll_spikes() {
 	tmp8
 */
 void bg_coll_floor_spikes() { // used just for checking ground spikes on the floor
-	temp_x = Generic.x + low_word(scroll_x) + (Generic.width >> 1); // automatically only the low byte
+	if (currplayer_vel_y != 0) {
+		currplayer_direction = high_byte(currplayer_vel_y) & 0x80;
+	}
 
-	commonly_stored_routine_2();
+	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
 
-	tmp8 = 0;
-	do {
-		bg_collision_sub();
-	
-		bg_coll_spikes();
-			
+	// LEFT
+	if (currplayer_direction) {
+		commonly_stored_routine_2();
+	} else {
 		commonly_used_store();
-	} while (++tmp8 < 2);
+	}
 
-	// Check middle of cube
+	bg_collision_sub();
 
+	if (collision) {
+		bg_coll_spikes();
+	}
+
+	// CENTER
 	storeWordSeparately(
 		add_scroll_y(
 			Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + (Generic.height >> 1), scroll_y
@@ -250,33 +255,38 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 
 	bg_collision_sub();
 
-	bg_coll_spikes();
-
-	commonly_stored_routine_2();
-
-	temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
-
-	tmp8 = 0;
-	do {
-		bg_collision_sub();
-
+	if (collision) {
 		bg_coll_spikes();
+	}
 
+	// MIDDLE
+	if (currplayer_direction) {
+		commonly_stored_routine_2();
+	} else {
 		commonly_used_store();
-	} while (++tmp8 < 2);
+	}
+
+	temp_x += Generic.width; // automatically only the low byte
+
+	bg_collision_sub();
+	if (collision) {
+		bg_coll_spikes();
+	}
 
 	temp_x -= (Generic.width >> 1); // automatically only the low byte
 
-	commonly_stored_routine_2();
-
-	tmp8 = 0;
-	do {
-		bg_collision_sub();
-	
-		bg_coll_spikes();
-			
+	// RIGHT
+	if (currplayer_direction) {
+		commonly_stored_routine_2();
+	} else {
 		commonly_used_store();
-	} while (++tmp8 < 2);
+	}
+
+	bg_collision_sub();
+
+	if (collision) {
+		bg_coll_spikes();
+	}
 }
 /*
 	Clobbers:
@@ -430,23 +440,26 @@ char bg_side_coll_common() {
 	storeWordSeparately(add_scroll_y(tmp1, scroll_y), temp_y, temp_room);
 
 	bg_collision_sub();
-	
-	if (gamemode == GAMEMODE_WAVE) {
-		if (bg_coll_slope()) {
-			if (!dblocked[currplayer]) {
-				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
-			} 
-		}	
-		dblocked[currplayer] = 0;
-	} else {
-		if (!currplayer_was_on_slope_counter && bg_coll_slope()) {
-			high_byte(currplayer_y) += (currplayer_slope_type & SLOPE_UPSIDEDOWN ? 2 : -2);
+	if (collision) {
+		if (gamemode == GAMEMODE_WAVE) {
+			if (bg_coll_slope()) {
+				if (!dblocked[currplayer]) {
+					idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+				} 
+			}	
+			dblocked[currplayer] = 0;
+		} else {
+			if (!currplayer_was_on_slope_counter && bg_coll_slope()) {
+				high_byte(currplayer_y) += (currplayer_slope_type & SLOPE_UPSIDEDOWN ? 2 : -2);
+			}
 		}
-	}
 
-	bg_coll_spikes();
+		bg_coll_spikes();
 
-	return bg_coll_sides() || bg_coll_mini_blocks();
+		return bg_coll_sides() || bg_coll_mini_blocks();
+	} 
+	
+	return 0;
 }
 
 /*
@@ -519,6 +532,11 @@ char a_check_lookup[] = {
 char bg_coll_slope() {	
 	tmp8 = (temp_y) & 0x0f;
 	switch (collision) {
+		// check early for optimization
+		case COL_ALL: 
+		case COL_NO_SIDE:
+			return 0;
+
 		case COL_SLOPE_LU45:
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y & 0x0f) ^ 0x0f;
@@ -1018,25 +1036,26 @@ void bg_coll_death() {
 
 	bg_collision_sub();
 	
+	if (collision) {
+		if(!currplayer_gravity && collision == COL_BOTTOM) { }
+		else if(currplayer_gravity && collision == COL_TOP) { }
 
-	if(!currplayer_gravity && collision == COL_BOTTOM) { }
-	else if(currplayer_gravity && collision == COL_TOP) { }
+		else if(collision >= COL_UP_LEFT && collision <= COL_TOP_RIGHT_BOTTOM_LEFT) {
+			if (bg_coll_mini_blocks()) cube_data[currplayer] = 0x01; 
+		}
+		else {
+			if ((collision == COL_ALL || collision == COL_FLOOR_CEIL) && gamemode != 0x06 && !currplayer_was_on_slope_counter) {  // wave
+				if (currplayer_gravity) {
+					if (currplayer_vel_y > 0) {
+						cube_data[currplayer] = 0x01; 
+					}
+				} else {
+					if (currplayer_vel_y < 0) {
+						cube_data[currplayer] = 0x01; 
+					}
+				}
 
-	else if(collision >= COL_UP_LEFT && collision <= COL_TOP_RIGHT_BOTTOM_LEFT) {
-		if (bg_coll_mini_blocks()) cube_data[currplayer] = 0x01; 
-	}
-	else {
-		if ((collision == COL_ALL || collision == COL_FLOOR_CEIL) && gamemode != 0x06 && !currplayer_was_on_slope_counter) {  // wave
-			if (currplayer_gravity) {
-				if (currplayer_vel_y > 0) {
-					cube_data[currplayer] = 0x01; 
-				}
-			} else {
-				if (currplayer_vel_y < 0) {
-					cube_data[currplayer] = 0x01; 
-				}
 			}
-
 		}
 		
 	}
