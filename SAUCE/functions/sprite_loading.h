@@ -605,25 +605,27 @@ void sprite_collide_lookup() {
 	if (!activesprites_activated[index] || dual || options & platformer) {
 		switch (collided) {
 		case DUAL_PORTAL:
-	//		if (!activesprites_activated[index]) {
+			if (!activesprites_activated[index]) {
 				dual = 1;
 				target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - 0x10);
 				if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1;  }
 				else { player_x[1] = player_x[0]; player_y[1] = currplayer_y; player_gravity[1] = !currplayer_gravity; player_vel_y[1] = -currplayer_vel_y; mini[1] = mini[0]; }
 	//			activesprites_type[index] = 0xFF;
-	//		}
+				activesprites_activated[index] = 1;
+			}
 			return;
 		case SINGLE_PORTAL:
-	//		if (!activesprites_activated[index]) {
+			if (!activesprites_activated[index]) {
 				if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; player_gravity[0] = currplayer_gravity; player_vel_y[0] = currplayer_vel_y; }
 				else { player_gravity[1] = player_gravity[0]; }
+				activesprites_activated[index] = 1;
 
 				tallmode = 0;
 				longmode = 0;
 				bigboi = 0;
 	//			activesprites_type[index] = 0xFF;
 				exitPortalTimer = 5;
-	//		}
+			}
 			return;
 		case TELEPORT_PORTAL_EXIT:
 		case TELEPORT_SQUARE_EXIT:
