@@ -235,7 +235,7 @@ _level_lengths_lo:
   .byte .lobyte($0000BB)		; revolution
   .byte .lobyte($000087)		; thelightningroad
   .byte .lobyte($000098)		; nightmare
-  .byte .lobyte($0000A0)		; demonpark
+  .byte .lobyte($0000A2)		; demonpark
   .byte .lobyte($000125)		; deathmoon
   .byte .lobyte($00008A)		; decode
   .byte .lobyte($00006E)		; problematic
@@ -271,7 +271,7 @@ _level_lengths_md:
   .byte .hibyte($0000BB)		; revolution
   .byte .hibyte($000087)		; thelightningroad
   .byte .hibyte($000098)		; nightmare
-  .byte .hibyte($0000A0)		; demonpark
+  .byte .hibyte($0000A2)		; demonpark
   .byte .hibyte($000125)		; deathmoon
   .byte .hibyte($00008A)		; decode
   .byte .hibyte($00006E)		; problematic
@@ -307,7 +307,7 @@ _level_lengths_hi:
   .byte .bankbyte($0000BB)		; revolution
   .byte .bankbyte($000087)		; thelightningroad
   .byte .bankbyte($000098)		; nightmare
-  .byte .bankbyte($0000A0)		; demonpark
+  .byte .bankbyte($0000A2)		; demonpark
   .byte .bankbyte($000125)		; deathmoon
   .byte .bankbyte($00008A)		; decode
   .byte .bankbyte($00006E)		; problematic
