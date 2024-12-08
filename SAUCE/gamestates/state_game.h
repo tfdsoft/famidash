@@ -601,7 +601,7 @@ void runthecolls() {
 
 
 
-	if (!DEBUG_MODE && !invincible_counter) {
+	if (!invincible_counter) {
 		crossPRGBankJump0(bg_coll_death);
 	}
 }				

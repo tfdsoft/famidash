@@ -249,20 +249,7 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 		bg_coll_spikes();
 	}
 
-	// CENTER
-	storeWordSeparately(
-		add_scroll_y(
-			Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + (Generic.height >> 1), scroll_y
-		), temp_y, temp_room);
-
-	bg_collision_sub();
-
-	if (collision) {
-		bg_coll_spikes();
-	}
-
-
-	temp_x = Generic.x + low_word(scroll_x) + Generic.width - 3; // automatically only the low byte
+	temp_x += Generic.width - 6; // automatically only the low byte
 
 	// RIGHT
 	commonly_stored_routine_2();
@@ -868,7 +855,7 @@ char bg_coll_U() {
 		if (low_byte(tmp3)) return 1;
 	}
 
-	if (currplayer_vel_y <= 0x00) {
+	if (high_byte(currplayer_vel_y) & 0x80) {
 		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
 		
 		storeWordSeparately(
@@ -923,7 +910,7 @@ char bg_coll_D() {
 		if (low_byte(tmp3)) return 1;
 	}
 	
-	if (currplayer_vel_y >= 0x00) {
+	if (!(high_byte(currplayer_vel_y) & 0x80)) {
 		// check 2 points on the right side
 		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
 
@@ -1024,27 +1011,10 @@ void bg_coll_death() {
 	bg_collision_sub();
 	
 	if (collision) {
-		if(!currplayer_gravity && collision == COL_BOTTOM) { }
-		else if(currplayer_gravity && collision == COL_TOP) { }
-
-		else if(collision >= COL_UP_LEFT && collision <= COL_TOP_RIGHT_BOTTOM_LEFT) {
-			if (bg_coll_mini_blocks()) cube_data[currplayer] = 0x01; 
+		bg_coll_spikes();
+		if (bg_coll_U_D_checks() | bg_coll_mini_blocks() | bg_coll_slope()) {
+			cube_data[currplayer] |= 1;
 		}
-		else {
-			if ((collision == COL_ALL || collision == COL_FLOOR_CEIL) && gamemode != 0x06 && !currplayer_was_on_slope_counter) {  // wave
-				if (currplayer_gravity) {
-					if (currplayer_vel_y > 0) {
-						cube_data[currplayer] = 0x01; 
-					}
-				} else {
-					if (currplayer_vel_y < 0) {
-						cube_data[currplayer] = 0x01; 
-					}
-				}
-
-			}
-		}
-		
 	}
 
 //	if(!DEBUG_MODE && cube_data[0] & 0x01) {
