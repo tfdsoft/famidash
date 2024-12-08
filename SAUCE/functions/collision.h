@@ -232,15 +232,17 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 		currplayer_direction = high_byte(currplayer_vel_y) & 0x80;
 	}
 
-	temp_x = Generic.x + low_word(scroll_x); // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + 3; // automatically only the low byte
 
 	// LEFT
-	if (currplayer_direction) {
-		commonly_stored_routine_2();
-	} else {
-		commonly_used_store();
+	commonly_stored_routine_2();
+	bg_collision_sub();
+
+	if (collision) {
+		bg_coll_spikes();
 	}
 
+	commonly_used_store();
 	bg_collision_sub();
 
 	if (collision) {
@@ -259,29 +261,18 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 		bg_coll_spikes();
 	}
 
-	// MIDDLE
-	if (currplayer_direction) {
-		commonly_stored_routine_2();
-	} else {
-		commonly_used_store();
-	}
 
-	temp_x += Generic.width; // automatically only the low byte
+	temp_x = Generic.x + low_word(scroll_x) + Generic.width - 3; // automatically only the low byte
 
+	// RIGHT
+	commonly_stored_routine_2();
 	bg_collision_sub();
+
 	if (collision) {
 		bg_coll_spikes();
 	}
 
-	temp_x -= (Generic.width >> 1); // automatically only the low byte
-
-	// RIGHT
-	if (currplayer_direction) {
-		commonly_stored_routine_2();
-	} else {
-		commonly_used_store();
-	}
-
+	commonly_used_store();
 	bg_collision_sub();
 
 	if (collision) {
@@ -878,27 +869,25 @@ char bg_coll_U() {
 	}
 
 	if (currplayer_vel_y <= 0x00) {
-		if (!currplayer_slope_frames) {
-			temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
-			
-			storeWordSeparately(
-				add_scroll_y(
-					Generic.y + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0) + 1,
-					scroll_y
-				), temp_y, temp_room);
-			
-			tmp8 = (temp_y) & 0x0f;
+		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
+		
+		storeWordSeparately(
+			add_scroll_y(
+				Generic.y + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0) + 1,
+				scroll_y
+			), temp_y, temp_room);
+		
+		tmp8 = (temp_y) & 0x0f;
 
-			COLL_CHECK_TOP_NO_SPIKE
-			
-			temp_x += Generic.width >> 1; // automatically only the low byte
+		COLL_CHECK_TOP_NO_SPIKE
+		
+		temp_x += Generic.width >> 1; // automatically only the low byte
 
-			COLL_CHECK_TOP
+		COLL_CHECK_TOP
 
-			temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
 
-			COLL_CHECK_TOP
-		}
+		COLL_CHECK_TOP
 	}
 	return 0;
 	
@@ -935,28 +924,26 @@ char bg_coll_D() {
 	}
 	
 	if (currplayer_vel_y >= 0x00) {
-		if (!currplayer_slope_frames) {
-			// check 2 points on the right side
-			temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
+		// check 2 points on the right side
+		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
 
-			storeWordSeparately(
-				add_scroll_y(
-					Generic.y + Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
-					scroll_y
-				), temp_y, temp_room);
+		storeWordSeparately(
+			add_scroll_y(
+				Generic.y + Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
+				scroll_y
+			), temp_y, temp_room);
 
-			tmp8 = (temp_y) & 0x0f;
+		tmp8 = (temp_y) & 0x0f;
 
-			COLL_CHECK_BOTTOM_NO_SPIKE
-			
-			temp_x += Generic.width >> 1; // automatically only the low byte
+		COLL_CHECK_BOTTOM_NO_SPIKE
+		
+		temp_x += Generic.width >> 1; // automatically only the low byte
 
-			COLL_CHECK_BOTTOM
+		COLL_CHECK_BOTTOM
 
-			temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + (Generic.width); // automatically only the low byte
 
-			COLL_CHECK_BOTTOM
-		}
+		COLL_CHECK_BOTTOM
 	}
 
 	return 0;
