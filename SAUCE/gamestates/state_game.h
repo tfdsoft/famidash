@@ -215,7 +215,7 @@ void state_game(){
 		else {
 			music_update();
 			ppu_wait_nmi();
-
+			if (!twoplayer) joypad2 = joypad1;
 			// set_tile_banks();
 		
 			set_player_banks();
@@ -497,7 +497,8 @@ void state_game(){
 				if (dashing[1]) currplayer_vel_y = 0x0100^(0x0000 - currplayer_gravity);
 				dashing[1] = 0;
 			}
-			if (twoplayer) controllingplayer = &joypad2;		//take controls
+			//if (twoplayer) 
+				controllingplayer = &joypad2;		//take controls
 			if (dual && (options & platformer) && !twoplayer) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
 			else if (dual && !(options & platformer)) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
 
@@ -534,7 +535,8 @@ void state_game(){
 
 			currplayer = 0;					//give back focus
 
-			if (twoplayer) controllingplayer = &joypad1;		//give back controls
+			//if (twoplayer) 
+				controllingplayer = &joypad1;		//give back controls
 
 			{
 				player_x[1] = currplayer_x;
