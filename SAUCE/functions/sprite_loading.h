@@ -293,7 +293,7 @@ char sprite_load_special_behavior(){
 		case TELEPORT_PORTAL_DOWNWARDS_EXIT:
 		case TELEPORT_PORTAL_UPWARDS_EXIT:		
 		case TELEPORT_PORTAL_EXIT:
-			teleport_output = activesprites_realy[index];
+			teleport_output = activesprites_realy[index] - 0x10;
 			return 0x2f;
 
 		case COIN1:
