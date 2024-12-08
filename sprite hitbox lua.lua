@@ -8,15 +8,14 @@ function Main()
   playerxaddr = emu.getLabelAddress("_player_x")
   playeryaddr = emu.getLabelAddress("_player_y")
 
-  
   genericaddr = emu.getLabelAddress("_Generic")
   
   playerminiaddr = emu.getLabelAddress("_mini")
 
   gamemodeaddr = emu.getLabelAddress("_mini")
 
-  player_x = emu.read(genericaddr.address, genericaddr.memType, false)
-  player_y = emu.read(genericaddr.address + 1, genericaddr.memType, false)
+  player_x = emu.read(playerxaddr.address + 1, playerxaddr.memType, false)
+  player_y = emu.read(playeryaddr.address + 1, playeryaddr.memType, false)
   
   player_mini = emu.read(playerminiaddr.address, playerminiaddr.memType, false)
 
@@ -59,6 +58,8 @@ function Main()
 
       if height < 0xfc then 
         emu.drawRectangle(x + xoffset, y + yoffset, width, height, 0x7f0000ff, true)
+      else
+        emu.drawRectangle(x + xoffset, y + yoffset, 16, 16, 0x7fffffff, true)
       end
     end
   end
