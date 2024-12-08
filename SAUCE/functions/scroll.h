@@ -59,7 +59,7 @@ void do_the_scroll_thing(){
 	
 	
 	
-	if (!dual && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || nocamlock)) {
+	if ((!dual || twoplayer) && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || nocamlock)) {
 			if (exitPortalTimer) exitPortalTimer--;
 	//	if (!dual) {
 			if (player0_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
