@@ -1012,7 +1012,7 @@ void bg_coll_death() {
 	
 	if (collision) {
 		bg_coll_spikes();
-		if (bg_coll_U_D_checks() | bg_coll_mini_blocks() | bg_coll_slope()) {
+		if (bg_coll_U_D_checks() | bg_coll_mini_blocks()) {
 			cube_data[currplayer] |= 1;
 		}
 	}

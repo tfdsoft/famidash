@@ -61,7 +61,6 @@ void do_the_scroll_thing(){
 	
 	if ((!dual || twoplayer) && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || nocamlock)) {
 			if (exitPortalTimer) exitPortalTimer--;
-	//	if (!dual) {
 			if (player0_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
 				tmp1 = MSB(0x4000 - player0_y);
 				if (exitPortalTimer && tmp1 >= 0x02) tmp1 = 0x02;
@@ -83,23 +82,6 @@ void do_the_scroll_thing(){
 				}
 			}
 			if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF; // 2F0 overflows into 300 (add_scroll_y)
-//		}
-/*		else {
-			if (currplayer_y < 0x0700 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-				tmp1 = MSB(0x0700 - currplayer_y);
-				scroll_y = sub_scroll_y(tmp1, scroll_y);
-				high_byte(currplayer_y) += tmp1;
-			}
-			cap_scroll_y_at_top();
-
-			
-			if (high_byte(currplayer_y) >= MSB(0xF000)){ // change y scroll (upward)
-				tmp1 = MSB(currplayer_y - 0xF000);
-				scroll_y = add_scroll_y(tmp1, scroll_y);
-				if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-			}
-			if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF; // 2F0 overflows into 300 (add_scroll_y)
-		}*/
 	}
 	else {			//ship stuff
 		if (target_scroll_y > scroll_y + 0x20) {
@@ -123,58 +105,6 @@ void do_the_scroll_thing(){
 
     set_scroll_x(scroll_x);
     set_scroll_y(scroll_y);
-}
-void do_the_scroll_thing2(){
-
-    
-	if (currplayer_x > curr_x_scroll_stop){ // change x scroll
-		tmp1 = MSB(currplayer_x - curr_x_scroll_stop);
-		scroll_x += tmp1;
-		parallax_scroll_x += tmp1 ? tmp1 - 1 : 0;
-		if (parallax_scroll_x >= 144) {
-			parallax_scroll_x -= 144;
-		}
-		high_byte(currplayer_x) = high_byte(currplayer_x) - tmp1;
-	}
-
-
-	if (!dual) {
-		if (currplayer_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-			tmp1 = MSB(0x4000 - currplayer_y);
-			scroll_y = sub_scroll_y(tmp1, scroll_y);
-			high_byte(currplayer_y) += tmp1;
-		}
-		cap_scroll_y_at_top();
-
-		
-		if (high_byte(currplayer_y) >= MSB(0xA000)){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xA000);
-			scroll_y = add_scroll_y(tmp1, scroll_y);
-			if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-		}
-		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF; // 2F0 overflows into 300 (add_scroll_y)
-	}
-	else {
-		if (currplayer_y < 0x0700 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-			tmp1 = MSB(0x0700 - currplayer_y);
-			scroll_y = sub_scroll_y(tmp1, scroll_y);
-			high_byte(currplayer_y) += tmp1;
-		}
-		cap_scroll_y_at_top();
-
-		
-		if (high_byte(currplayer_y) >= MSB(0xF000)){ // change y scroll (upward)
-			tmp1 = MSB(currplayer_y - 0xF000);
-			scroll_y = add_scroll_y(tmp1, scroll_y);
-			if (high_byte(scroll_y) < MSB(0x300)) high_byte(currplayer_y) = high_byte(currplayer_y) - tmp1;
-		}
-		if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF; // 2F0 overflows into 300 (add_scroll_y)
-	}
-
-
-    set_scroll_x(scroll_x);
- //   set_scroll_y(scroll_y);
-
 }
 
 CODE_BANK_POP()
