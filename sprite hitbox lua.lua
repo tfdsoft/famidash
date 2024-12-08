@@ -14,6 +14,10 @@ function Main()
     return
   end
 
+
+  dualaddr = emu.getLabelAddress("_dual")
+  dual = emu.read(dualaddr.address, dualaddr.memType, false)
+
   playerxaddr = emu.getLabelAddress("_player_x")
   playeryaddr = emu.getLabelAddress("_player_y")
 
@@ -34,6 +38,13 @@ function Main()
   player_height = emu.read(genericaddr.address + 3, genericaddr.memType, false)
 
   emu.drawRectangle(player_x, player_y + ((0x10 - player_height) >> 1), player_width, player_height, 0xffff00, false)
+
+  if dual == 1 then
+    player_x = emu.read(playerxaddr.address + 3, playerxaddr.memType, false)
+    player_y = emu.read(playeryaddr.address + 3, playeryaddr.memType, false)
+
+    emu.drawRectangle(player_x, player_y + ((0x10 - player_height) >> 1), player_width, player_height, 0xffff00, false)
+  end 
 
   actives = emu.getLabelAddress("_activesprites_active")
   
