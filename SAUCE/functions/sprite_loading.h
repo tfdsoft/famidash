@@ -375,7 +375,7 @@ void animate_coin_3() {
 }
 
 void common_dash_orb_routine() {
-	if (gamemode == GAMEMODE_UFO || gamemode == GAMEMODE_ROBOT) {
+	if (gamemode == GAMEMODE_UFO || gamemode == GAMEMODE_SPIDER) {
 		if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
 	}
 	else currplayer_gravity ^= 0x01;
