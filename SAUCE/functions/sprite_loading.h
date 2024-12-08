@@ -962,7 +962,7 @@ void sprite_collide(){
 		Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT; 
 	} else {
 		Generic.width = currplayer_mini ? MINI_WAVE_WIDTH : WAVE_WIDTH;
-		Generic.height = currplayer_mini ? MINI_WAVE_HEIGHT+2 : WAVE_HEIGHT+2;
+		Generic.height = currplayer_mini ? MINI_WAVE_HEIGHT+4 : WAVE_HEIGHT+4;
 	}
 
 	Generic.x = high_byte(currplayer_x) + 1;
