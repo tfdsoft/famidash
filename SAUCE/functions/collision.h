@@ -249,7 +249,7 @@ void bg_coll_floor_spikes() { // used just for checking ground spikes on the flo
 		bg_coll_spikes();
 	}
 
-	temp_x = Generic.x + low_word(scroll_x) + Generic.width - 3; // automatically only the low byte
+	temp_x += Generic.width - 6; // automatically only the low byte
 
 	// RIGHT
 	commonly_stored_routine_2();
