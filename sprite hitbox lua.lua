@@ -5,6 +5,15 @@ if consoleType ~= "Nes" then
 end
 
 function Main()
+
+  gamestateaddr = emu.getLabelAddress("_gameState")
+
+  gamestate = emu.read(gamestateaddr.address, gamestateaddr.memType, false)
+
+  if gamestate ~= 0x02 then
+    return
+  end
+
   playerxaddr = emu.getLabelAddress("_player_x")
   playeryaddr = emu.getLabelAddress("_player_y")
 

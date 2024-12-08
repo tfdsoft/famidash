@@ -49,8 +49,10 @@ void main(){
     // ppu_on_all();
     // pal_fade_to(4,0);
 
+	// needed for cc65 to export the label for mesen
+    gameState = 0x01;
+	
 	// These are done at init time
-    // gameState = 0x01;
     // level = 0x00;
 	// auto_fs_updates = 0;
 

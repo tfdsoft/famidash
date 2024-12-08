@@ -311,7 +311,7 @@ uint8_t nestopia;
 
 uint8_t last_slope_type[2];
 
-uint8_t gameState = 0x01;
+uint8_t gameState;
 
 uint8_t teleport_output;
 
