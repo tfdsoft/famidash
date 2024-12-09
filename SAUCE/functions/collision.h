@@ -749,6 +749,14 @@ char bg_coll_return_U () {
 */
 char bg_coll_return_slope_D () {
 	tmp1 = bg_coll_slope();
+	
+	if (!tmp2) {
+		// LEFT CHECK
+		if (currplayer_slope_type & SLOPE_RISING) return 0;
+	} else {
+		// RIGHT CHECK
+		if (!(currplayer_slope_type & SLOPE_RISING)) return 0;
+	}
 	if (tmp1) {
 		if ((currplayer_last_slope_type & SLOPE_RISING) && !(currplayer_slope_type & SLOPE_RISING)) {
 			if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
@@ -770,6 +778,15 @@ char bg_coll_return_slope_D () {
 */
 char bg_coll_return_slope_U () {
 	tmp1 = bg_coll_slope();
+
+	if (!tmp2) {
+		// LEFT CHECK
+		if (currplayer_slope_type & SLOPE_RISING) return 0;
+	} else {
+		// RIGHT CHECK
+		if (!(currplayer_slope_type & SLOPE_RISING)) return 0;
+	}
+
 	if (tmp1) {
 		if ((currplayer_last_slope_type & SLOPE_RISING) && !(currplayer_slope_type & SLOPE_RISING)) {
 			if (currplayer_last_slope_type != 0 && currplayer_slope_type != 0) {
