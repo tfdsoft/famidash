@@ -2160,7 +2160,7 @@ drawcube_sprite_none:
 
 drawplayer_center_offsets:
 	;		Cub	Shp Bal	UFO	RBT	SPI	Wav
-	.byte	8,	8,	8,	8,	4,	8,	8,	8,	8; normal size
+	.byte	8,	8,	8,	8,	4,	4,	8,	8,	8; normal size
 	.byte	4,	4,	4,	4,	4,	4,	4,	4,	4; mini 
 
 ; void drawplayerone();
@@ -3079,8 +3079,8 @@ drawplayer_common := _drawplayerone::common
         .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL_ALT, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE2, >_MINI_SWING_ALT, <_MINI_CUBE2
     rounding_slope_table:
 		;     45v  22v  66v  45^  22^  66^  nothing
-        .byte $09, $08, $09, $03, $04, $08, $00, $00
-		.byte $09, $16, $1a, $03, $1a, $17		;upsidedown
+        .byte $09, $08, $09, $00, $03, $04, $08, $00
+		.byte $09, $16, $1a, $00, $03, $1a, $17		;upsidedown
 
 
 .endproc
