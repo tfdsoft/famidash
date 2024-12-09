@@ -26,6 +26,7 @@ void spider_movement(void){
 	
 	if (!currplayer_gravity) {
 		if(((controllingplayer->press_a || controllingplayer->press_up) || cube_data[currplayer] & 2) && currplayer_vel_y == 0) {
+			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);	
 			jumps++;
 			currplayer_gravity = 1;
 			spider_up_wait();
@@ -36,6 +37,7 @@ void spider_movement(void){
 	else {
 		if(((controllingplayer->press_a || controllingplayer->press_up) || cube_data[currplayer] & 2) && currplayer_vel_y == 0) {
 			jumps++;
+			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);
 			currplayer_gravity = 0;
 
 			spider_down_wait();
@@ -80,10 +82,11 @@ void spider_eject() {
 		} 
 	}
 }
-
+#define LEFT_POS tmp7
+#define RIGHT_POS tmp9
 void spider_up_wait() {
-	tmp7 = Generic.x + low_word(scroll_x) + 3;
-	tmp9 = tmp7 + Generic.width - 6;
+	LEFT_POS = Generic.x + low_word(scroll_x) + 5;
+	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 5;
 	do {
 		high_byte(currplayer_y) -= 0x08;
 		crossPRGBankJump0(do_the_scroll_thing);
@@ -96,13 +99,14 @@ void spider_up_wait() {
 }			
 
 void spider_down_wait() {
-	tmp7 = Generic.x + low_word(scroll_x) + 3;
-	tmp9 = tmp7 + Generic.width - 6;
+	LEFT_POS = Generic.x + low_word(scroll_x) + 5;
+	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 5;
 	do {
 		high_byte(currplayer_y) += 0x08;
 		crossPRGBankJump0(do_the_scroll_thing);
 		Generic.y = high_byte(currplayer_y); // the rest should be the same
 	} while (!bg_coll_D_spider());
 }				
-
+#undef LEFT_POS
+#undef RIGHT_POS
 CODE_BANK_POP()

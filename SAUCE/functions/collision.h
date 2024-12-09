@@ -963,11 +963,11 @@ char bg_coll_D() {
 	return 0;
 }
 
-#define GENERIC_X_PLUS_3 tmp7
-#define GENERIC_X_PLUS_PLUS_WIDTH_MINUS_6 tmp9
+#define LEFT_POS tmp7
+#define RIGHT_POS tmp9
 
 char bg_coll_U_spider() {
-	temp_x = GENERIC_X_PLUS_3; // automatically only the low byte
+	temp_x = LEFT_POS; // automatically only the low byte
 	storeWordSeparately(
 		add_scroll_y(
 			Generic.y + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
@@ -978,7 +978,7 @@ char bg_coll_U_spider() {
 
 	COLL_CHECK_TOP
 
-	temp_x = GENERIC_X_PLUS_PLUS_WIDTH_MINUS_6; // automatically only the low byte
+	temp_x = RIGHT_POS; // automatically only the low byte
 
 	COLL_CHECK_TOP
 
@@ -986,7 +986,7 @@ char bg_coll_U_spider() {
 }
 
 char bg_coll_D_spider() {
-	temp_x = GENERIC_X_PLUS_3; // automatically only the low byte
+	temp_x = LEFT_POS; // automatically only the low byte
 	storeWordSeparately(
 		add_scroll_y(
 			Generic.y + Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
@@ -997,16 +997,14 @@ char bg_coll_D_spider() {
 
 	COLL_CHECK_BOTTOM
 
-	temp_x = GENERIC_X_PLUS_PLUS_WIDTH_MINUS_6; // automatically only the low byte
+	temp_x = RIGHT_POS; // automatically only the low byte
 
 	COLL_CHECK_BOTTOM
 
 	return 0;
 }
-
-#undef GENERIC_X_PLUS_SCROLL
-#undef GENERIC_X_PLUS_SCROLL_PLUS_HALF_WIDTH
-#undef GENERIC_X_PLUS_SCROLL_PLUS_WIDTH
+#undef LEFT_POS
+#undef RIGHT_POS
 
 
 /*
