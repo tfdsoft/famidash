@@ -866,7 +866,7 @@ char bg_coll_U() {
 		if (low_byte(tmp3)) return 1;
 	}
 
-	if (currplayer_direction) {
+	if (high_byte(currplayer_vel_y) & 0x80) {
 		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
 		
 		storeWordSeparately(
@@ -921,7 +921,7 @@ char bg_coll_D() {
 		if (low_byte(tmp3)) return 1;
 	}
 	
-	if (!currplayer_direction) {
+	if (!(high_byte(currplayer_vel_y) & 0x80)) {
 		// check 2 points on the right side
 		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
 
