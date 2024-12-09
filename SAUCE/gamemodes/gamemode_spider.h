@@ -82,9 +82,8 @@ void spider_eject() {
 }
 
 void spider_up_wait() {
-	tmp7 = Generic.x + low_word(scroll_x);
-	tmp9 = tmp7 + (Generic.width >> 1);
-	tmp3 = tmp7 + Generic.width;
+	tmp7 = Generic.x + low_word(scroll_x) + 3;
+	tmp9 = tmp7 + Generic.width - 6;
 	do {
 		high_byte(currplayer_y) -= 0x08;
 		crossPRGBankJump0(do_the_scroll_thing);
@@ -97,9 +96,8 @@ void spider_up_wait() {
 }			
 
 void spider_down_wait() {
-	tmp7 = Generic.x + low_word(scroll_x);
-	tmp9 = tmp7 + (Generic.width >> 1);
-	tmp3 = tmp7 + Generic.width;
+	tmp7 = Generic.x + low_word(scroll_x) + 3;
+	tmp9 = tmp7 + Generic.width - 6;
 	do {
 		high_byte(currplayer_y) += 0x08;
 		crossPRGBankJump0(do_the_scroll_thing);

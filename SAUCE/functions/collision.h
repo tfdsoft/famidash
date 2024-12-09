@@ -936,12 +936,11 @@ char bg_coll_D() {
 	return 0;
 }
 
-#define GENERIC_X_PLUS_SCROLL tmp7
-#define GENERIC_X_PLUS_SCROLL_PLUS_HALF_WIDTH tmp9
-#define GENERIC_X_PLUS_SCROLL_PLUS_WIDTH tmp3
+#define GENERIC_X_PLUS_3 tmp7
+#define GENERIC_X_PLUS_PLUS_WIDTH_MINUS_6 tmp9
 
 char bg_coll_U_spider() {
-	temp_x = GENERIC_X_PLUS_SCROLL; // automatically only the low byte
+	temp_x = GENERIC_X_PLUS_3; // automatically only the low byte
 	storeWordSeparately(
 		add_scroll_y(
 			Generic.y + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
@@ -950,13 +949,9 @@ char bg_coll_U_spider() {
 
 	tmp8 = (temp_y) & 0x0f;
 
-	COLL_CHECK_TOP_NO_SPIKE
-
-	temp_x = GENERIC_X_PLUS_SCROLL_PLUS_HALF_WIDTH; // automatically only the low byte
-
 	COLL_CHECK_TOP
 
-	temp_x = GENERIC_X_PLUS_SCROLL_PLUS_WIDTH; // automatically only the low byte
+	temp_x = GENERIC_X_PLUS_PLUS_WIDTH_MINUS_6; // automatically only the low byte
 
 	COLL_CHECK_TOP
 
@@ -964,7 +959,7 @@ char bg_coll_U_spider() {
 }
 
 char bg_coll_D_spider() {
-	temp_x = GENERIC_X_PLUS_SCROLL; // automatically only the low byte
+	temp_x = GENERIC_X_PLUS_3; // automatically only the low byte
 	storeWordSeparately(
 		add_scroll_y(
 			Generic.y + Generic.height + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0),
@@ -973,13 +968,9 @@ char bg_coll_D_spider() {
 	
 	tmp8 = (temp_y) & 0x0f;
 
-	COLL_CHECK_BOTTOM_NO_SPIKE
-
-	temp_x = GENERIC_X_PLUS_SCROLL_PLUS_HALF_WIDTH; // automatically only the low byte
-
 	COLL_CHECK_BOTTOM
 
-	temp_x = GENERIC_X_PLUS_SCROLL_PLUS_WIDTH; // automatically only the low byte
+	temp_x = GENERIC_X_PLUS_PLUS_WIDTH_MINUS_6; // automatically only the low byte
 
 	COLL_CHECK_BOTTOM
 
