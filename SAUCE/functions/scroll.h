@@ -84,12 +84,15 @@ void do_the_scroll_thing(){
 			if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF; // 2F0 overflows into 300 (add_scroll_y)
 	}
 	else {			//ship stuff
-		if (target_scroll_y > scroll_y + 0x20) {
+		if (high_byte(target_scroll_y) >= 0xf0) {
+			target_scroll_y += 0x10;
+		}
+		if (target_scroll_y > scroll_y) {
 			scroll_y = add_scroll_y(2, scroll_y);
 			high_byte(player0_y) -= 2;
 			high_byte(player1_y) -= 2;
 		}
-		if (target_scroll_y < scroll_y + 0x20) {
+		if (target_scroll_y < scroll_y) {
 			scroll_y = sub_scroll_y(2, scroll_y);
 			
 			high_byte(player0_y) += 2;
