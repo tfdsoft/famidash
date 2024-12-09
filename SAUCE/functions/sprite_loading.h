@@ -624,7 +624,7 @@ void sprite_collide_lookup() {
 				longmode = 0;
 				bigboi = 0;
 	//			activesprites_type[index] = 0xFF;
-				exitPortalTimer = 5;
+				exitPortalTimer = 10;
 			}
 			return;
 		case TELEPORT_PORTAL_EXIT:
@@ -650,7 +650,7 @@ void sprite_collide_lookup() {
 #endif
 		case CUBE_MODE:
 			orbactive = 0;
-			exitPortalTimer = 5;
+			exitPortalTimer = 10;
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
 			if (retro_mode) gamemode = GAMEMODE_ROBOT;
 			else gamemode = GAMEMODE_CUBE;
@@ -669,7 +669,7 @@ void sprite_collide_lookup() {
 			return;
 		case ROBOT_MODE:
 		
-			exitPortalTimer = 5;
+			exitPortalTimer = 10;
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
 			gamemode = collided;
 			retrofireballclear();

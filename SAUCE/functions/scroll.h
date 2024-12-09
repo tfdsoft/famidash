@@ -63,7 +63,7 @@ void do_the_scroll_thing(){
 			if (exitPortalTimer) exitPortalTimer--;
 			if (player0_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
 				tmp1 = MSB(0x4000 - player0_y);
-				if (exitPortalTimer && tmp1 >= 0x02) tmp1 = 0x02;
+				if (exitPortalTimer && tmp1 >= (11 - exitPortalTimer)) tmp1 = 11 - exitPortalTimer;
 				scroll_y = sub_scroll_y(tmp1, scroll_y);
 
 				high_byte(player0_y) = high_byte(player0_y) + tmp1;
@@ -74,7 +74,7 @@ void do_the_scroll_thing(){
 			
 			if (high_byte(player0_y) >= MSB(0xA000)){ // change y scroll (upward)
 				tmp1 = MSB(player0_y - 0xA000);
-				if (exitPortalTimer && tmp1 >= 0x02) tmp1 = 0x02;
+				if (exitPortalTimer && tmp1 >= (11 - exitPortalTimer)) tmp1 = 11 - exitPortalTimer;
 				scroll_y = add_scroll_y(tmp1, scroll_y);
 				if (high_byte(scroll_y) < MSB(0x300)) {
 					high_byte(player0_y) = high_byte(player0_y) - tmp1;
