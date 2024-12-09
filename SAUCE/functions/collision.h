@@ -676,7 +676,7 @@ char bg_coll_slope() {
 			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT) {
 				if ((controllingplayer->a || controllingplayer->up)) {
 					make_cube_jump_higher = 1;
-					clear_slope_vars();
+					
 				} else {
 					currplayer_slope_frames = 1; //signal BG_COLL_R to not check stuff
 					currplayer_was_on_slope_counter = 3;
@@ -752,10 +752,16 @@ char bg_coll_return_slope_D () {
 	
 	if (!tmp2) {
 		// LEFT CHECK
-		if (currplayer_slope_type & SLOPE_RISING) return 0;
+		if (currplayer_slope_type & SLOPE_RISING) {
+			currplayer_slope_type = currplayer_last_slope_type;
+			return 0;
+		}
 	} else {
 		// RIGHT CHECK
-		if (!(currplayer_slope_type & SLOPE_RISING)) return 0;
+		if (!(currplayer_slope_type & SLOPE_RISING)) {
+			currplayer_slope_type = currplayer_last_slope_type;
+			return 0;
+		}
 	}
 	if (tmp1) {
 		if ((currplayer_last_slope_type & SLOPE_RISING) && !(currplayer_slope_type & SLOPE_RISING)) {
@@ -781,10 +787,16 @@ char bg_coll_return_slope_U () {
 
 	if (!tmp2) {
 		// LEFT CHECK
-		if (currplayer_slope_type & SLOPE_RISING) return 0;
+		if (currplayer_slope_type & SLOPE_RISING) {
+			currplayer_slope_type = currplayer_last_slope_type;
+			return 0;
+		}
 	} else {
 		// RIGHT CHECK
-		if (!(currplayer_slope_type & SLOPE_RISING)) return 0;
+		if (!(currplayer_slope_type & SLOPE_RISING)) {
+			currplayer_slope_type = currplayer_last_slope_type;
+			return 0;
+		}
 	}
 
 	if (tmp1) {
