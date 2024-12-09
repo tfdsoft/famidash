@@ -748,7 +748,6 @@ char bg_coll_return_U () {
 	tmp4, tmp7, tmp8
 */
 char bg_coll_return_slope_D () {
-	high_byte(tmp3) = 0; //UP
 	tmp1 = bg_coll_slope();
 	if (tmp1) {
 		if ((currplayer_last_slope_type & SLOPE_RISING) && !(currplayer_slope_type & SLOPE_RISING)) {
@@ -770,7 +769,6 @@ char bg_coll_return_slope_D () {
 	tmp4, tmp7, tmp8
 */
 char bg_coll_return_slope_U () {
-	high_byte(tmp3) = 1; //UP
 	tmp1 = bg_coll_slope();
 	if (tmp1) {
 		if ((currplayer_last_slope_type & SLOPE_RISING) && !(currplayer_slope_type & SLOPE_RISING)) {
@@ -835,7 +833,7 @@ char bg_coll_U() {
 	if (high_byte(currplayer_x) >= 0x10) {
 		storeWordSeparately(
 			add_scroll_y(
-				Generic.y + (byte(0x10 - Generic.height) >> 1) + (currplayer_mini ? 1 : 2),
+				Generic.y + (byte(0x10 - Generic.height) >> 1) + (currplayer_mini ? 1 : 2) + (gamemode == GAMEMODE_SHIP ? 1 : 0),
 				scroll_y
 			), temp_y, temp_room);
 		temp_x = Generic.x + low_word(scroll_x); // middle of the cube
@@ -1003,7 +1001,7 @@ void bg_coll_death() {
 	
 	if (collision) {
 		bg_coll_spikes();
-		if (bg_coll_U_D_checks() | bg_coll_mini_blocks()) {
+		if (bg_coll_U_D_checks() | bg_coll_mini_blocks() | bg_coll_slope()) {
 			cube_data[currplayer] |= 1;
 		}
 	}
