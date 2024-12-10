@@ -303,7 +303,11 @@ void cube_eject() {
 			if(bg_coll_D()){ // check collision below
 				high_byte(currplayer_y) -= eject_D;
 				low_byte(currplayer_y) = 0;
-				currplayer_vel_y = 0;
+				if (!hblocked[currplayer]) {
+					currplayer_vel_y = 0;
+				} else {
+					currplayer_vel_y = 0xffff;
+				}
 				orbactive = 0;
 				if (fblocked[currplayer]) currplayer_gravity = 0;
 			}
@@ -314,7 +318,11 @@ void cube_eject() {
 			if(bg_coll_U()){ // check collision above
 				high_byte(currplayer_y) -= eject_U;
 				low_byte(currplayer_y) = 0;
-				currplayer_vel_y = 0;
+				if (!hblocked[currplayer]) {
+					currplayer_vel_y = 0;
+				} else {
+					currplayer_vel_y = 1;
+				}
 				orbactive = 0;
 				if (fblocked[currplayer]) currplayer_gravity = 1;			
 			}
