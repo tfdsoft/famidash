@@ -573,15 +573,17 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 	adc OAM_BUF+2,X
 	sta OAM_BUF+2,X
 	@no:		
-	inx
-	inx
-	inx
-	inx
+	txa
+	clc
+	adc #$04
+	bcs @spr_full
+	tax
 	jmp @1
 
 @2:
 
 	stx SPRID
+@spr_full:
 	rts
 
 
