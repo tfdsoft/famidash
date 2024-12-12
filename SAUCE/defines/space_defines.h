@@ -8,7 +8,7 @@
 #ifdef FLAG_ENABLE_TEST_LEVELS
 	#define LEVEL_COUNT2 256
 #else
-	#define LEVEL_COUNT2 32
+	#define LEVEL_COUNT2 33
 #endif
 
 #define MAX_ICONS 28 //total icons

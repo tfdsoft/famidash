@@ -24,6 +24,7 @@ SET all_levels= ^
     sonar ^
     thechallenge ^
     leveleasy ^
+    kappaclysm ^
     revolution ^
     thelightningroad ^
     nightmare ^

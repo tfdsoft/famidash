@@ -416,6 +416,7 @@ const unsigned char TEXT_xlevel1textD[]="ELECTROMAN";
 const unsigned char TEXT_xweasel[]="SCHEMING";
 const unsigned char TEXT_challenge[]="THE";
 const unsigned char TEXT_hexagon[]="HEXAGON";
+const unsigned char TEXT_speed[]="AT$THE$SPEED";
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
 const unsigned char TEXT_xlevel2text2[]="TRACK";
@@ -445,6 +446,7 @@ const unsigned char TEXT_2textretray[]="RETRAY";
 const unsigned char TEXT_2textstereo[]="MADNESS$2";
 const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
 const unsigned char TEXT_2textproblematic[]="PROBLEMATIC";
+const unsigned char TEXT_2textspeed[]="OF$LIGHT";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -504,7 +506,8 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	0, 
 	TEXT_xweasel, 
-	TEXT_challenge
+	TEXT_challenge,
+	TEXT_speed
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -534,7 +537,8 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2texteon, 
 	TEXT_2deathmoon, 
 	TEXT_2textweasel, 
-	TEXT_2challenge
+	TEXT_2challenge,
+	TEXT_2textspeed
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -565,6 +569,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2deathmoon) - 1,
 	sizeof(TEXT_2textweasel) - 1,
 	sizeof(TEXT_2challenge) - 1,
+	sizeof(TEXT_2textspeed) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -594,6 +599,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	sizeof(TEXT_xweasel) - 1,	
 	sizeof(TEXT_challenge) - 1,	
+	sizeof(TEXT_speed) - 1,	
 };
 
 
@@ -625,6 +631,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_death_moon,
 	song_scheming_weasel,
 	song_the_challenge,
+	song_atthespeedoflight,
 };
 
 
@@ -1077,6 +1084,7 @@ const unsigned char* const leveltexts[] = {
   levelchallengetext, 
   NULL, 
   NULL, 
+  NULL, 
   level16text, 
   NULL, 
   NULL, 
@@ -1111,6 +1119,7 @@ const unsigned char* const leveltexts2[] = {
   levelsonar2,
   levelchallengetext2, 
   levelleveleasy2, 
+  levelkappaclysm2, 
   levelrevolution2, 
   level16text2, 
   levelEtext2, 
@@ -1148,6 +1157,7 @@ const unsigned char level_text_size[] = {
 	sizeof(levelchallengetext) - 1,
 	0,
 	0,
+	0,
 	sizeof(level16text) - 1,
 	0,
 	0,
@@ -1181,6 +1191,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelsonar2) - 1,
 	sizeof(levelchallengetext2) - 1,
 	sizeof(levelleveleasy2) - 1,
+	sizeof(levelkappaclysm2) - 1,
 	sizeof(levelrevolution2) - 1,
 	sizeof(level16text2) - 1,
 	sizeof(levelEtext2) - 1,

@@ -202,6 +202,13 @@ problematic_no_parallax  = 1
 problematic_bg_color    = $0F
 problematic_grnd_color  = $0F
 
+kappaclysm_song_number = song_atthespeedoflight
+kappaclysm_game_mode   = $00
+kappaclysm_speed       = $00
+kappaclysm_no_parallax  = 1
+kappaclysm_bg_color    = $0F
+kappaclysm_grnd_color  = $0F
+
 retray_song_number = song_retray
 retray_game_mode   = $00
 retray_speed       = $01

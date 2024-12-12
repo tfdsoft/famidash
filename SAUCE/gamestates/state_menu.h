@@ -61,6 +61,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_death_moon,
 	song_scheming_weasel,
 	song_the_challenge,
+	song_atthespeedoflight,
 };
 
 

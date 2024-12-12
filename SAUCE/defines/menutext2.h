@@ -57,4 +57,5 @@ const unsigned char levelsonar2[]="SONAR";
 const unsigned char levelpgclubtext2[]="PG CLUBSTEP";
 const unsigned char levelfiretemple2[]="FIRE TEMPLE";
 const unsigned char levelrevolution2[]="REVOLUTION";
+const unsigned char levelkappaclysm2[]="KAPPACLYSM";
 
