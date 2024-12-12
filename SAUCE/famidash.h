@@ -8,12 +8,13 @@
 
 #define SPIKESA 0
 #define SPIKESB 2
-#define BLOCKSA 4
-#define BLOCKSB 6
-#define BLOCKSC 8
-#define BLOCKSD 10
-#define SAWBLADESA 12
-#define SLOPESA 14
+#define SPIKESC 4
+#define BLOCKSA 6
+#define BLOCKSB 8
+#define BLOCKSC 10
+#define BLOCKSD 12
+#define SAWBLADESA 14
+#define SLOPESA 16
 
 // game states
 #define MENU 0x01

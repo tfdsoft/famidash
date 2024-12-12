@@ -37,16 +37,17 @@
 
 #define SPIKESA 0
 #define SPIKESB 2
-#define BLOCKSA 4
-#define BLOCKSB 6
-#define BLOCKSC 8
-#define BLOCKSD 10
-#define SAWBLADESA 12
+#define SPIKESC 4
+#define BLOCKSA 6
+#define BLOCKSB 8
+#define BLOCKSC 10
+#define BLOCKSD 12
+#define SAWBLADESA 14
 #define LETTERBANK 111
 
-#define DECO1 26
-#define DECOCLOUD 30
-#define EXTRASPRITES1 34
+#define DECO1 28
+#define DECOCLOUD 32
+#define EXTRASPRITES1 36
 
 const uint8_t DECOTYPE[] = {
 	DECO1, //sm
@@ -105,11 +106,11 @@ const unsigned char spike_set[] = {
 	SPIKESA, //SONAR
 	SPIKESA, //the challenge
 	SPIKESA, //LEVEL EASY
-	SPIKESA, //kappaclysm
+	SPIKESC, //kappaclysm
 	SPIKESA, //revolution
 	SPIKESA, //lightning road
 	SPIKESB, //nightmare
-	SPIKESA, //demon park
+	SPIKESC, //demon park
 	SPIKESB, //death moon
 	SPIKESB, //decode
 	SPIKESB, //problematic
@@ -142,7 +143,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //the challenge
 	BLOCKSA, //LEVEL EASY
 	BLOCKSB, //kappaclysm
-	BLOCKSA, //revolution
+	BLOCKSB, //revolution
 	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
 	BLOCKSA, //demon park

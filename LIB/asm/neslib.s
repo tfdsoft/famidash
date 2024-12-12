@@ -1629,7 +1629,7 @@ MouseBoundsMax:
 
 .popseg
 
-SLOPESA = 14
+SLOPESA = 16
 luckydraw = $1E
 
 .import _spike_set, _block_set, _saw_set

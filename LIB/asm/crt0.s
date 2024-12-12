@@ -379,41 +379,42 @@ _GAME_CHR:
    
     .incbin "GRAPHICS/SpikesA.chr" ; (0)
     .incbin "GRAPHICS/SpikesB.chr" ; (2)
-    .incbin "GRAPHICS/BlocksA.chr" ; (4)
-    .incbin "GRAPHICS/BlocksB.chr" ; (6)
-    .incbin "GRAPHICS/BlocksC.chr" ; (8)
-    .incbin "GRAPHICS/BlocksD.chr" ; (10)
-    .incbin "GRAPHICS/SawbladesA.chr" ; (12)
-    .incbin "GRAPHICS/slopesA.chr" ; (14)
+    .incbin "GRAPHICS/SpikesC.chr" ; (4)
+    .incbin "GRAPHICS/BlocksA.chr" ; (6)
+    .incbin "GRAPHICS/BlocksB.chr" ; (8)
+    .incbin "GRAPHICS/BlocksC.chr" ; (10)
+    .incbin "GRAPHICS/BlocksD.chr" ; (12)
+    .incbin "GRAPHICS/SawbladesA.chr" ; (14)
+    .incbin "GRAPHICS/slopesA.chr" ; (16)
 
-    .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (16) 
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-
-    .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (18)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesAretro.chr" ; 1kb (20)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesB.chr" ; 1kb (22)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesBretro.chr" ; 1kb (24)
+    .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (18) 
     .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (26) 
-    .incbin "GRAPHICS/bankblank.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (20)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesAretro.chr" ; 1kb (22)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesB.chr" ; 1kb (24)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesBretro.chr" ; 1kb (26)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (28) 
+    .incbin "GRAPHICS/bankblank.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (30) 
     .incbin "GRAPHICS/bankblank2.chr" ; 1kb
 
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (30) 
-    .incbin "GRAPHICS/bankblankcloud.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (32) 
+    .incbin "GRAPHICS/bankblankcloud.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (34) 
     .incbin "GRAPHICS/bankblankcloud2.chr" ; 1kb
 
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (34) 
-    .incbin "GRAPHICS/bankblankfingerdash.chr" ; 1kb
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (36) 
+    .incbin "GRAPHICS/bankblankfingerdash.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (38) 
     .incbin "GRAPHICS/bankblankfingerdash2.chr" ; 1kb
 
-    .repeat 16, I   ; banks 38 - 69
+    .repeat 15, I   ; banks 40 - 69
         .incbin .sprintf("GRAPHICS/bankicon%02X.chr", I)  ; 1kb
         .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .endrepeat

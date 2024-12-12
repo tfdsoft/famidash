@@ -11,7 +11,8 @@
 	#define LEVEL_COUNT2 33
 #endif
 
-#define MAX_ICONS 28 //total icons
+#define MAX_ICONS 27 //total icons
 #define MAX_FIREBALLS 20
 #define MAX_PRACTICE_POINTS 8
 #define max_loaded_sprites 16
+#define SLOPESA 16

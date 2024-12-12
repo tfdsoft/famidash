@@ -575,7 +575,7 @@ void customize_screen() {
 //end mouse stuff
 		if (!retro_mode) {
 			if (icon != prev_icon) {
-				if (icon != 27) {
+				if (icon != 26) {
 					tmp1 = iconTable[icon] + 'a';
 					one_vram_buffer(tmp1, NTADR_A(15, 8));
 					one_vram_buffer(++tmp1, NTADR_A(16, 8));
@@ -1444,14 +1444,14 @@ void set_title_icon() {
 			}
 			titleicon = tmp7;
 			tmp7 = tmp7 * 2;
-			tmp7 += 38;
-			mmc3_set_2kb_chr_bank_0(retro_mode ? 16 : tmp7);
+			tmp7 += 40;
+			mmc3_set_2kb_chr_bank_0(retro_mode ? 18 : tmp7);
 		}
 		else if ((titlemode <= 7 && titlemode != 6) || titlemode == 13 || titlemode == 10) {
-			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 18 : 20);	
+			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 20 : 22);	
 		}
 		else if ((titlemode <= 15 && titlemode != 13) || titlemode == 6) {
-			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 22 : 24);		
+			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 24 : 26);		
 		}
 }			
 

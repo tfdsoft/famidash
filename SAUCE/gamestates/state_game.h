@@ -124,7 +124,7 @@ void state_game(){
 	kandoframecnt = 0;
 
 	
-	iconbank = (icon<<1) + 38;
+	iconbank = (icon<<1) + 40;
 
 	pal_col(0x0A,0x0F);   //palette 2 set to 0x0F for mountains
 	pal_col(0x0B,color1);   //palette 2 set to player color
@@ -149,7 +149,7 @@ void state_game(){
 
     while (1) {
 		newrand();
-		if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = (icon<<1) + 38; }
+		if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = (icon<<1) + 40; }
 		pal_col(3,outline_color);
 		pal_col(7,outline_color);
 		pal_set_update();
@@ -604,10 +604,10 @@ void runthecolls() {
 
 void set_player_banks() {
 		if (!retro_mode) {
-			iconbank1 = 18; iconbank2 = 22; iconbank3 = iconbank;
+			iconbank1 = 20; iconbank2 = 24; iconbank3 = iconbank;
 		}
 		else {
-			iconbank1 = 20; iconbank2 = 24; iconbank3 = 16;
+			iconbank1 = 22; iconbank2 = 26; iconbank3 = 18;
 		}
 		
 		if (gamemode == GAMEMODE_NINJA) mmc3_set_2kb_chr_bank_0(NINJABANK);
