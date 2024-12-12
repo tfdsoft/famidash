@@ -4100,7 +4100,7 @@ sprite_data_clubstep:
   .byte $f0,$37,$c0,$02,$8f
   .byte $80,$38,$40,$03,$0f
   .byte $ff
-.segment "LVL_BANK_24"
+.segment "LVL_BANK_25"
 sprite_data_hexagonforce:
   .byte $20,$01,$78,$03,$0a
   .byte $b0,$01,$70,$03,$0b
@@ -4782,7 +4782,7 @@ sprite_data_toe2:
   .byte $20,$3c,$10,$03,$8f
   .byte $e0,$3c,$50,$03,$0f
   .byte $ff
-.segment "LVL_BANK_25"
+.segment "LVL_BANK_24"
 sprite_data_retray:
   .byte $00,$00,$50,$03,$8f
   .byte $00,$00,$60,$03,$cf
@@ -5620,12 +5620,6 @@ sprite_data_kappaclysm:
   .byte $80,$23,$20,$03,$33
   .byte $80,$23,$50,$03,$33
   .byte $b0,$23,$00,$03,$05
-  .byte $60,$24,$40,$03,$32
-  .byte $80,$24,$f0,$02,$06
-  .byte $80,$24,$80,$03,$0b
-  .byte $a0,$24,$f0,$02,$06
-  .byte $a0,$24,$80,$03,$0b
-  .byte $c0,$24,$40,$03,$32
   .byte $00,$25,$40,$03,$23
   .byte $20,$25,$40,$03,$08
   .byte $30,$25,$40,$03,$19
