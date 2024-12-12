@@ -22,7 +22,6 @@ all_levels="
 	    thechallenge\
 	    retray\
 	    sonar\
-            leveleasy\
 	    kappaclysm\
 	    revolution\
             thelightningroad\

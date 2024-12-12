@@ -23,7 +23,6 @@ SET all_levels= ^
     retray ^
     sonar ^
     thechallenge ^
-    leveleasy ^
     kappaclysm ^
     revolution ^
     thelightningroad ^

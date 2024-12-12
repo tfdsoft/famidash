@@ -146,13 +146,6 @@ eon_no_parallax  = 1
 eon_bg_color    = $0F
 eon_grnd_color  = $0F
 
-leveleasy_song_number = song_stereo_madness
-leveleasy_game_mode   = $00
-leveleasy_speed       = $00
-leveleasy_no_parallax  = 0
-leveleasy_bg_color    = $2C
-leveleasy_grnd_color  = $1C
-
 thelightningroad_song_number = song_dry_out
 thelightningroad_game_mode   = $00
 thelightningroad_speed       = $00
