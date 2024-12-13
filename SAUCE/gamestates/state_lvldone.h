@@ -435,6 +435,7 @@ const unsigned char TEXT_xlevel2textD[]="ADVENTURES";
 const unsigned char TEXT_xlevel2textE[]="DECODE";
 const unsigned char TEXT_2texteveryend[]="EVERY$END";
 const unsigned char TEXT_2texteon[]="EON";
+const unsigned char TEXT_2textmidnight[]="MIDNIGHT";
 const unsigned char TEXT_2textclubstep[]="CLUBSTEP";
 const unsigned char TEXT_2textpractice[]="PRACTICE";
 const unsigned char TEXT_2textmenu[]="MENU";
@@ -507,7 +508,8 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	TEXT_xweasel, 
 	TEXT_challenge,
-	TEXT_speed
+	TEXT_speed,
+	0,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -538,7 +540,8 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2deathmoon, 
 	TEXT_2textweasel, 
 	TEXT_2challenge,
-	TEXT_2textspeed
+	TEXT_2textspeed,
+	TEXT_2textmidnight,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -570,6 +573,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textweasel) - 1,
 	sizeof(TEXT_2challenge) - 1,
 	sizeof(TEXT_2textspeed) - 1,
+	sizeof(TEXT_2textmidnight) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -600,6 +604,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_xweasel) - 1,	
 	sizeof(TEXT_challenge) - 1,	
 	sizeof(TEXT_speed) - 1,	
+	0,
 };
 
 
@@ -632,6 +637,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_scheming_weasel,
 	song_the_challenge,
 	song_atthespeedoflight,
+	song_midnight,
 };
 
 
