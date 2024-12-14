@@ -111,9 +111,9 @@ hexagonforce_bg_color    = $02
 hexagonforce_grnd_color  = $12
 
 
-test4_song_number = song_hexagon_force
+test4_song_number = song_midnight
 test4_game_mode   = $00
-test4_speed       = $00
+test4_speed       = $01
 test4_no_parallax  = 1
 test4_bg_color    = $12
 test4_grnd_color  = $02
