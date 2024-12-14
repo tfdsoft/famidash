@@ -118,6 +118,7 @@
 #define TALLBOI_MODE_ENTER			0x6A
 #define LONGBOI_MODE_ENTER			0x6B
 #define BIGBOI_MODE_ENTER			0x6C
+#define SPEED_SLOW				0x6D
 
 #define X_SCROLL_SETTING			0xDE	//bottom floor is 0XB0, reset to standard at 0x50
 #define DEATH_CHANCE				0xDF

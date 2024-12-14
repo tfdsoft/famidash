@@ -819,6 +819,9 @@ void sprite_collide_lookup() {
 		case SPEED_40_PORTAL:
 			speed = 4;
 			return;
+		case SPEED_SLOW:
+			speed = 5;
+			return;
 
 		case SPIDER_ORB_UP:
 			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {

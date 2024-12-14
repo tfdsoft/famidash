@@ -1408,6 +1408,13 @@ const unsigned char * const MINI_SPIDER_JUMP2[]={Mini_Spider2_3};
 #pragma rodata-name (push, "XCD_BANK_04")
 
 
+const unsigned char Speed_SLOW_Portal[]={
+	  0,  0,0xA1,0|OAM_FLIP_V,
+	  8,  0,0xA1,0|OAM_FLIP_H,	
+	  0,  13,0xA1,0,	
+	  8,  13,0xA1,0|OAM_FLIP_H|OAM_FLIP_V,	
+	0x80
+};
 const unsigned char Speed_05_Portal[]={
 	  0,  0,0xA1,1|OAM_FLIP_V,
 	  8,  0,0xA1,1|OAM_FLIP_H,	
@@ -3165,6 +3172,7 @@ const unsigned char * const Metasprites[]={
 	Tallboy_Portal,
 	Longboy_Portal,
 	Bigboy_Portal,
+	Speed_SLOW_Portal,
 	};
 
 
@@ -3276,6 +3284,7 @@ const void* const animation_frame_list[] = {
 	NULL,
 	RANDOM_GAMEMODE_PORTAL,
 	GREEN_PAD_SPRITES,
+	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -3395,6 +3404,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	sizeof(RANDOM_GAMEMODE_PORTAL) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	sizeof(GREEN_PAD_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	0,
 	0,
 	0,
 	0,
