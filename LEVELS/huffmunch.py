@@ -10,6 +10,19 @@ if (os.name == "nt"):
 elif (os.name == "posix"):
 	huffmunchExecutable = "huffmunch"
 
+def compress_single(data : list[int]) -> bytearray:
+	fileBase = huffmunch_tmp_path / "huff_tmp"
+	with open(f"{fileBase}.bin", "wb") as file:
+		file.write(bytes(data))
+	process = subprocess.run([huffmunch_own_path / "huffmunch" / "bin" / huffmunchExecutable, "-B", f"{fileBase}.bin", f"{fileBase}.hfm"], capture_output=True)
+	if (process.returncode != 0):
+		return 0
+	with open(f"{fileBase}.hfm", "rb") as file:
+		output = file.read()
+	for ext in ["bin", "hfm"]:
+		os.remove(f"{fileBase}.{ext}")
+	return output
+
 def estimate_compressed_size(data : list[int]) -> int:
 	fileBase = huffmunch_tmp_path / "huff_tmp"
 	with open(f"{fileBase}.bin", "wb") as file:
