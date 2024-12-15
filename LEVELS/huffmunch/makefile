@@ -1,5 +1,5 @@
 CXX=g++
-CPPFLAGS=
+CPPFLAGS=-O2 
 LDFLAGS=
 RM=rm -f
 
