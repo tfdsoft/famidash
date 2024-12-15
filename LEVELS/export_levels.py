@@ -14,6 +14,8 @@ import pathlib
 import itertools
 import math
 import binpacking
+import os
+import huffmunch
 from collections.abc import Iterable
 
 own_path = pathlib.Path(sys.path[0]).resolve()
@@ -47,7 +49,7 @@ def vertical_rle_with_single_tile(lines):
 			run_length = 1
 	return rle_data
 
-def export_bg(folder: str, levels: Iterable[str]) -> tuple:
+def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 	# combine all the data into one big slab here and split it by 8kb banks later
 	all_data = []
 	# and include the offset into the data slab to put the level labels
@@ -57,7 +59,7 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple:
 	for level in levels:
 		
 		lines = []
-		with open(f"{folder}/{level}_.csv") as f:
+		with open(folder / f"{level}_.csv") as f:
 			lines = list(csv.reader(f))
 		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
 		rle_data = vertical_rle_with_single_tile(lines)
@@ -72,7 +74,8 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple:
 		]
 		all_data += header
 		all_data += rle_data
-		print(f"loading level: {level} rle size: {len(rle_data)}")
+		compr_size = huffmunch.estimate_compressed_size(rle_data)
+		print(f"loading level: {level} rle size: {len(rle_data)} rle+huffmunch size: {compr_size} compression rate: {(compr_size / len(rle_data) * 100) : .4}%")
 		level_lengths.append(len(rle_data) + len(header))
 	
 	# now split up the data into banks
@@ -138,12 +141,12 @@ def export_bg(folder: str, levels: Iterable[str]) -> tuple:
 		
 	return (level_widths, current_bank, remaining_bytes)
 		
-def export_spr(folder: str, levels: Iterable[str], level_last_bank : int, level_bytes_filled : int):
+def export_spr(folder: pathlib.PurePath, levels: Iterable[str], level_last_bank : int, level_bytes_filled : int):
 	all_data = []
 	overflows = []
 	for (num, level) in enumerate(levels):
 		lines = []
-		with open(f"{folder}/{level}_SP.csv") as f:
+		with open(folder / f"{level}_SP.csv") as f:
 			lines = list(csv.reader(f))
 		level_data = []
 		rows = len(lines)
@@ -267,8 +270,8 @@ def main():
 	parser.add_argument('file', metavar='FILE', type=str, nargs='+',
 					help='list of level names to process')
 	args = parser.parse_args()
-	bg_exp_data = export_bg(args.folder, args.file)
-	export_spr(args.folder, args.file, bg_exp_data[1], bg_exp_data[2])
+	bg_exp_data = export_bg(pathlib.PurePath(args.folder), args.file)
+	export_spr(pathlib.PurePath(args.folder), args.file, bg_exp_data[1], bg_exp_data[2])
 
 	levels = args.file
 

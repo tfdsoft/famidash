@@ -7,3 +7,5 @@ MUSIC/music*.txt
 *.nes
 *.dbg
 *.bak
+
+*__pycache__*
