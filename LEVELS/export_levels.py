@@ -50,10 +50,8 @@ def vertical_rle_with_single_tile(lines):
 	return rle_data
 
 def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
-	# combine all the data into one big slab here and split it by 8kb banks later
-	all_data = []
-	# and include the offset into the data slab to put the level labels
-	level_lengths = []
+	# data for all levels, each gets a tuple, they are then binpacked
+	level_data = []
 	# also include the output length of levels in tiles:
 	level_widths = []
 	for level in levels:
@@ -63,6 +61,10 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			lines = list(csv.reader(f))
 		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
 		rle_data = vertical_rle_with_single_tile(lines)
+		huff_data = huffmunch.compress_single(rle_data)
+		if (len(huff_data) >= 8192 - 7):
+			print(f"Level {level} is {len(huff_data):6} bytes long after compression, which is more than the bank size of 8192 (- 7 required by the header). This is temporarily not supported, and as such the level will be absent.")
+			continue
 		header = [
 			f"{level}_song_number",
 			f"{level}_game_mode",
@@ -72,74 +74,88 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			f"{level}_grnd_color",
 			f"{len(lines)}\t; {level} height",
 		]
-		all_data += header
-		all_data += rle_data
-		compr_size = huffmunch.estimate_compressed_size(rle_data)
-		print(f"loading level: {level} rle size: {len(rle_data)} rle+huffmunch size: {compr_size} compression rate: {(compr_size / len(rle_data) * 100) : .4}%")
-		level_lengths.append(len(rle_data) + len(header))
+		level_data.append((level, len(header)+len(huff_data), header, rle_data))
+		#includes non-compressed data, as every bank will be compressed together
+		print(f"loading level: {level} rle size: {len(rle_data)} rle+huffmunch size: {len(huff_data)} compression rate: {(len(huff_data) / len(rle_data) * 100) : .4}%")
 	
-	# now split up the data into banks
-	banked_data = chunks(all_data, 0x2000)
-	print("about to split up the data")
+	banked_level_data = binpacking.to_constant_volume(level_data, 8192, 1)
 
-	current_bank = 1
-	current_level = 0
-	out_str = "\n"
-	# now write the bytes
-	remaining_bytes = 0
-	next_level_offset = 0
-	for bank in banked_data:
-		print(f"exporting bank {current_bank}")
-		out_str += f'.segment "LVL_BANK_{current_bank:02X}"\n'
-		filled_bytes = 0
-		while filled_bytes < len(bank):
-			print(f"already filled bytes: {filled_bytes}")
-			# if we don't have any left over bytes from the previous level, then start the next level
-			if remaining_bytes <= 0:
-				if remaining_bytes == 0:
-					print(f"exporting level {levels[current_level]}")
-					out_str += f".export level_data_{levels[current_level]}\n"
-					out_str += f"level_data_{levels[current_level]}:\n"
+	for (i, bank) in enumerate(banked_level_data, 1):
+		real_sum_size = sum([length for (id, length, hdr, rle_data) in bank])
+		print(f"\t- LVL_BANK_{i:02X}, max size 8192, real sum size {real_sum_size:04}:")
+		for (id, length, hdr, rle_data) in bank:
+			print(f"\t\t- ({length:4} bytes) {id}")
+			# all_data.append((id, length, i+first_bank_num, data))
+	
+	# TODO: complete the rest lmfao
+	# TODO (optional): caching
+
+
+	# this is legacy code now bitch
+
+	# # now split up the data into banks
+	# banked_data = chunks(all_data, 0x2000)
+	# print("about to split up the data")
+
+	# current_bank = 1
+	# current_level = 0
+	# out_str = "\n"
+	# # now write the bytes
+	# remaining_bytes = 0
+	# next_level_offset = 0
+	# for bank in banked_data:
+	# 	print(f"exporting bank {current_bank}")
+	# 	out_str += f'.segment "LVL_BANK_{current_bank:02X}"\n'
+	# 	filled_bytes = 0
+	# 	while filled_bytes < len(bank):
+	# 		print(f"already filled bytes: {filled_bytes}")
+	# 		# if we don't have any left over bytes from the previous level, then start the next level
+	# 		if remaining_bytes <= 0:
+	# 			if remaining_bytes == 0:
+	# 				print(f"exporting level {levels[current_level]}")
+	# 				out_str += f".export level_data_{levels[current_level]}\n"
+	# 				out_str += f"level_data_{levels[current_level]}:\n"
 				
-				# this is protection from header bank overflows (we go byte by byte)
-				out_str += f"  .byte {bank[filled_bytes]}\n"
-				remaining_bytes -= 1
-				filled_bytes += 1
-				if remaining_bytes == -7:
-					next_level_offset = filled_bytes + level_lengths[current_level] - 7
-					current_level += 1
-					remaining_bytes = 0
+	# 			# this is protection from header bank overflows (we go byte by byte)
+	# 			out_str += f"  .byte {bank[filled_bytes]}\n"
+	# 			remaining_bytes -= 1
+	# 			filled_bytes += 1
+	# 			if remaining_bytes == -7:
+	# 				next_level_offset = filled_bytes + level_lengths[current_level] - 7
+	# 				current_level += 1
+	# 				remaining_bytes = 0
 
-			else:
-				tmp = remaining_bytes
-				remaining_bytes = max(0, next_level_offset - 0x2000)
-				next_level_offset = tmp
-				print(f"spilling to new bank remaining_bytes {remaining_bytes}")
+	# 		else:
+	# 			tmp = remaining_bytes
+	# 			remaining_bytes = max(0, next_level_offset - 0x2000)
+	# 			next_level_offset = tmp
+	# 			print(f"spilling to new bank remaining_bytes {remaining_bytes}")
 
 
-			if remaining_bytes >= 0:
-				# chunk the bytes for this level
-				for level_data in chunks(bank[filled_bytes:next_level_offset], 0x20):
-					out_str += f"  .byte {','.join([f'${x:02x}' for x in level_data])}\n"
+	# 		if remaining_bytes >= 0:
+	# 			# chunk the bytes for this level
+	# 			for level_data in chunks(bank[filled_bytes:next_level_offset], 0x20):
+	# 				out_str += f"  .byte {','.join([f'${x:02x}' for x in level_data])}\n"
 
-				# if the next level ends past this one, then set the remaining bytes for the next bank
-				print(f"filled_bytes {filled_bytes} next_level_offset {next_level_offset} remaining_bytes {remaining_bytes}")
-				filled_bytes = next_level_offset
-				if 0x2000 <= next_level_offset:
-					remaining_bytes = next_level_offset - 0x2000
+	# 			# if the next level ends past this one, then set the remaining bytes for the next bank
+	# 			print(f"filled_bytes {filled_bytes} next_level_offset {next_level_offset} remaining_bytes {remaining_bytes}")
+	# 			filled_bytes = next_level_offset
+	# 			if 0x2000 <= next_level_offset:
+	# 				remaining_bytes = next_level_offset - 0x2000
 					
-		current_bank += 1
+	# 	current_bank += 1
 
-	with open(own_path.joinpath("all_level_data.s"), 'w') as out:
-		out.write(f"""
-;;; Generated by export_levels.py
-{out_str}
-""")
+# 	with open(own_path.joinpath("all_level_data.s"), 'w') as out:
+# 		out.write(f"""
+# ;;; Generated by export_levels.py
+# {out_str}
+# """)
 
-	if (remaining_bytes != 0):
-		current_bank -= 1
+# 	if (remaining_bytes != 0):
+# 		current_bank -= 1
 		
-	return (level_widths, current_bank, remaining_bytes)
+	exit()
+	return (level_widths, )#current_bank, remaining_bytes)
 		
 def export_spr(folder: pathlib.PurePath, levels: Iterable[str], level_last_bank : int, level_bytes_filled : int):
 	all_data = []
