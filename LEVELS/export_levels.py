@@ -1,9 +1,17 @@
+# No shebang as it's not supposed to run on its own
+
+# install binpacking
+import importlib.util
+import subprocess
+import sys
+spec = importlib.util.find_spec('binpacking')
+if spec is None:
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'binpacking'])
 
 import argparse
 import csv
 import pathlib
 import itertools
-import sys
 import math
 import binpacking
 from collections.abc import Iterable

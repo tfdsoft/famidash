@@ -22,10 +22,17 @@ musicFolder = sys.path[0]
 tmpFolder = musicFolder + "/../TMP/"
 
 if __name__ == "__main__":
-    import os, sys, glob, filecmp
+    # install binpacking
+    import importlib.util
+    import subprocess
+    import sys
+    spec = importlib.util.find_spec('binpacking')
+    if spec is None:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'binpacking'])
+
+    import os, glob, filecmp
     import re
     import argparse
-    import subprocess
     import binpacking
     
     def checkErr(proc : subprocess.CompletedProcess):
