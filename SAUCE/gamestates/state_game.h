@@ -148,6 +148,7 @@ void state_game(){
 	pal_set_update();
 
     while (1) {
+		if (level == luckydraw) { dblocked[0] = 1; }
 		newrand();
 		if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = (icon<<1) + 40; }
 		pal_col(3,outline_color);
@@ -412,7 +413,7 @@ void state_game(){
 
 		crossPRGBankJump0(sprite_collide);
 
-		crossPRGBankJump0(movement);
+		if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement);
 
 		kandotemp3 = 0;
 
@@ -523,7 +524,7 @@ void state_game(){
 
 			crossPRGBankJump0(sprite_collide);
 
-			crossPRGBankJump0(movement);
+			if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement);
 
 			kandotemp3 = 1;
 			runthecolls();
