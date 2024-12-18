@@ -226,7 +226,7 @@ _level_lengths_lo:
   .byte .lobyte($00008B)		; theoryofeverything
   .byte .lobyte($00008D)		; electroman
   .byte .lobyte($000091)		; clubstep
-  .byte .lobyte($0000CD)		; hexagonforce
+  .byte .lobyte($0000A9)		; hexagonforce
   .byte .lobyte($00009D)		; toe2
   .byte .lobyte($000066)		; retray
   .byte .lobyte($00008D)		; sonar
@@ -262,7 +262,7 @@ _level_lengths_md:
   .byte .hibyte($00008B)		; theoryofeverything
   .byte .hibyte($00008D)		; electroman
   .byte .hibyte($000091)		; clubstep
-  .byte .hibyte($0000CD)		; hexagonforce
+  .byte .hibyte($0000A9)		; hexagonforce
   .byte .hibyte($00009D)		; toe2
   .byte .hibyte($000066)		; retray
   .byte .hibyte($00008D)		; sonar
@@ -298,7 +298,7 @@ _level_lengths_hi:
   .byte .bankbyte($00008B)		; theoryofeverything
   .byte .bankbyte($00008D)		; electroman
   .byte .bankbyte($000091)		; clubstep
-  .byte .bankbyte($0000CD)		; hexagonforce
+  .byte .bankbyte($0000A9)		; hexagonforce
   .byte .bankbyte($00009D)		; toe2
   .byte .bankbyte($000066)		; retray
   .byte .bankbyte($00008D)		; sonar
