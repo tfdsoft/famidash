@@ -224,3 +224,17 @@ revolution_speed       = $00
 revolution_no_parallax  = 1
 revolution_bg_color    = $0F
 revolution_grnd_color  = $0F
+
+dreamer_song_number = song_midnight
+dreamer_game_mode   = $00
+dreamer_speed       = $01
+dreamer_no_parallax  = 1
+dreamer_bg_color    = $0F
+dreamer_grnd_color  = $0F
+
+electrodynamix_song_number = song_electrodynamix
+electrodynamix_game_mode   = $00
+electrodynamix_speed       = $00
+electrodynamix_no_parallax  = 0
+electrodynamix_bg_color    = $02
+electrodynamix_grnd_color  = $12

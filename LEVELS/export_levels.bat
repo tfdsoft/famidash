@@ -18,11 +18,13 @@ SET all_levels= ^
     theoryofeverything ^
     electroman ^
     clubstep ^
+    electrodynamix ^
     hexagonforce ^
     toe2 ^
     retray ^
     sonar ^
     thechallenge ^
+    dreamer ^
     kappaclysm ^
     revolution ^
     thelightningroad ^

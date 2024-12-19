@@ -1352,8 +1352,9 @@ void state_menu() {
 			POKE(0x2005, 0x00);
 			mmc3_disable_irq(); // reset scroll before playing
 			kandowatchesyousleep = 1; 
-			if(!tmp7) crossPRGBankJump8(playPCM, 1); 
-			else crossPRGBankJump8(playPCM, 0);  
+			//if(!tmp7) crossPRGBankJump8(playPCM, 1); 
+			//else crossPRGBankJump8(playPCM, 0);  
+			crossPRGBankJump8(playPCM, 0);  
 			if (normalorcommlevels) level = LEVEL_COUNT;
 			else level = 0;
 			levelselection(); 

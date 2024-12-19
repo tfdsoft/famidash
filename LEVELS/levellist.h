@@ -64,11 +64,13 @@ const uint8_t DECOTYPE[] = {
 	DECOCLOUD, //TOE
 	DECOCLOUD, //electroman
 	DECO1, //clubstep
+	DECO1, //electrodynamix
 	DECO1, //hexagon force
 	DECO1, //TOE2
 	DECO1, //RETRAY
 	DECO1, //SONAR
 	EXTRASPRITES1, //the challenge
+	DECO1, //dreamer
 	DECOCLOUD, //kappaclysm
 	DECO1, //revolution
 	DECO1, //LIGHTNING ROAD
@@ -99,11 +101,13 @@ const unsigned char spike_set[] = {
 	SPIKESB, //theory of everything
 	SPIKESB, //electroman
 	SPIKESA, //clubstep
+	SPIKESA, //electrodynamix
 	SPIKESB, //hexagon force
 	SPIKESA, //TOE2
 	SPIKESA, //RETRAY
 	SPIKESA, //SONAR
 	SPIKESA, //the challenge
+	SPIKESA, //dreamer
 	SPIKESC, //kappaclysm
 	SPIKESA, //revolution
 	SPIKESA, //lightning road
@@ -134,11 +138,13 @@ const unsigned char block_set[] = {
 	BLOCKSB, //theory of everything
 	BLOCKSB, //electroman
 	BLOCKSB, //clubstep
+	BLOCKSB, //electrodynamix
 	BLOCKSB, //hexagon force
 	BLOCKSB, //TOE2
 	BLOCKSB, //RETRAY
 	BLOCKSB, //SONAR
 	BLOCKSB, //the challenge
+	BLOCKSB, //dreamer
 	BLOCKSB, //kappaclysm
 	BLOCKSB, //revolution
 	BLOCKSA, //LIGHTNING ROAD
@@ -169,11 +175,13 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //theory of everything
 	SAWBLADESA, //electroman
 	SAWBLADESA, //clubstep
+	SAWBLADESA, //electrodynamix
 	SAWBLADESA, //hexagon force
 	SAWBLADESA, //TOE2
 	SAWBLADESA, //retray
 	SAWBLADESA, //SONAR
 	SAWBLADESA, //the challenge
+	SAWBLADESA, //dreamer
 	SAWBLADESA, //kappaclysm
 	SAWBLADESA, //revolution
 	SAWBLADESA, //LIGHTNING ROAD
@@ -205,11 +213,13 @@ const unsigned char difficulty_list[] = {
     INSANE,
     INSANE,
     DEMON,  //CLUBSTEP
+    INSANE,  //electrodynamix
     INSANE,  //hexagon force
     DEMON,  //TOE2
     EASY, //RETRAY
     EASY, //SONAR
     NORMAL, //the challenge
+    HARD, //dreamer
     HARDER, //kappaclysm
     HARDER, //revolution
     DEMON, //lightning road
@@ -240,11 +250,13 @@ const unsigned char stars_list[] = {
 	12,
 	10,
 	14,  //clubstep
+	12,  //electrodynamix
 	12,  //hexagon force
 	14,  //TOE2
 	2,   //retray
 	2,   //SONAR
 	3,   //the challenge
+	4,   //dreamer
 	6,  //kappaclysm
 	7,  //revolution
 	10, //lightning road

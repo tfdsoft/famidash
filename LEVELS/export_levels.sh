@@ -17,11 +17,13 @@ all_levels="
             theoryofeverything\
             electroman\
 	    clubstep\
+	    electrodynamix\
 	    hexagonforce\
 	    toe2\
 	    thechallenge\
 	    retray\
 	    sonar\
+	    dreamer\
 	    kappaclysm\
 	    revolution\
             thelightningroad\
