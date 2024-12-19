@@ -18,11 +18,12 @@ void __fastcall__ _one_vram_buffer(uint32_t args);
 #define one_vram_buffer(data, ppu_address) (storeByteToSreg(data), __AX__ = ppu_address, _one_vram_buffer(__EAX__))
 // to push a single byte write to the vram_buffer
 
-void __fastcall__ _multi_vram_buffer(uint32_t args);
-
-#define multi_vram_buffer_horz(data, len, ppu_address) (storeWordToSreg((uintptr_t)data), xargs[0] = len, __AX__ = ppu_address|(NT_UPD_HORZ<<8), _multi_vram_buffer(__EAX__))
+void __fastcall__ _multi_vram_buffer_horz(uint32_t args);
+#define multi_vram_buffer_horz(data, len, ppu_address) (storeWordToSreg((uintptr_t)data), xargs[0] = len, __AX__ = ppu_address, _multi_vram_buffer_horz(__EAX__))
 // to push multiple writes as one sequential horizontal write to the vram_buffer
-#define multi_vram_buffer_vert(data, len, ppu_address) (storeWordToSreg((uintptr_t)data), xargs[0] = len, __AX__ = ppu_address|(NT_UPD_VERT<<8), _multi_vram_buffer(__EAX__))
+
+void __fastcall__ _multi_vram_buffer_vert(uint32_t args);
+#define multi_vram_buffer_vert(data, len, ppu_address) (storeWordToSreg((uintptr_t)data), xargs[0] = len, __AX__ = ppu_address, _multi_vram_buffer_vert(__EAX__))
 // to push multiple writes as one sequential vertical write to the vram_buffer
 
 

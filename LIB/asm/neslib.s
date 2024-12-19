@@ -937,18 +937,18 @@ _split:
 	tax
 	stx PPU_DATA
 	; each palette
-.repeat 8, I
-	pla
-	sta PPU_DATA
-	pla
-	sta PPU_DATA
-	pla
-	sta PPU_DATA
-	.if I <> 7
-	pla
-	stx PPU_DATA
-	.endif
-.endrepeat
+	.repeat 8, I
+		pla
+		sta PPU_DATA
+		pla
+		sta PPU_DATA
+		pla
+		sta PPU_DATA
+		.if I <> 7
+			pla
+			stx PPU_DATA
+		.endif
+	.endrepeat
 	
 	ldx SP_TEMP
 	txs
@@ -1206,6 +1206,9 @@ _set_rand:
 
 	rts
 
+; new vram update mechanism:
+; ropslide to specific routine from a 16-word buffer
+; Y is VRAM_BUF idx
 
 ;void __fastcall__ flush_vram_update(void *buf);
 
@@ -1214,97 +1217,177 @@ _flush_vram_update:
 	; sta <NAME_UPD_ADR+0
 	; stx <NAME_UPD_ADR+1
 
-_flush_vram_update2: ;minor changes %
+_flush_vram_update2: ;major changes
 
 	ldy #0
 
-@updName:
+	lda #>VRAM_BUF
+	sta	NAME_UPD_PTR+1
 
-	lda VRAM_BUF,y
-	iny
-	cmp #$40				;is it a non-sequental write?
-	bcs @updNotSeq
-	sta PPU_ADDR
-	lda VRAM_BUF,y
-	iny
-	sta PPU_ADDR
-	lda VRAM_BUF,y
-	iny
-	sta PPU_DATA
-	jmp @updName
-
-@updNotSeq:
-
-	tax
-	lda <PPU_CTRL_VAR
-	cpx #$80				;is it a horizontal or vertical sequence?
-	bcc @updHorzSeq
-	cpx #$ff				;is it end of the update?
-	beq @updDone
-
-@updVertSeq:
-
-	ora #$04
-	bne @updNameSeq			;bra
-
-@updHorzSeq:
-
-	and #$fb
-
-@updNameSeq:
-
-	sta PPU_CTRL
-
-	txa
-	and #$3f
-	sta PPU_ADDR
-	lda VRAM_BUF,y
-	iny
-	sta PPU_ADDR
-	lda VRAM_BUF,y
-	bmi @updRepeatedByte
-	iny
-	tax
-
-@updNameLoop:
-
-	lda VRAM_BUF,y
-	iny
-	sta PPU_DATA
-	dex
-	bne @updNameLoop
-
-	lda <PPU_CTRL_VAR
-	sta PPU_CTRL
-
-	jmp @updName
-
-@updRepeatedByte:
-	and #$7f
-	tax
-	iny
-	lda VRAM_BUF,y
-	iny
-@updRepeatedByteLoop:
-	sta PPU_DATA
-	dex
-	bne @updRepeatedByteLoop
+	tsx
+	stx SP_TEMP
+	ldx	#<INST_BUF
+	txs
 	
-	lda <PPU_CTRL_VAR
-	sta PPU_CTRL
+	rts	; ropslide to routine
 
-	jmp @updName
+setSeqHorz:
+	lda	<PPU_CTRL_VAR
+	and #<~$04
 
+	jmp	setSeqFin
 
-@updDone:
-;changed to automatically clear these
-.ifdef VRAM_BUF
-	ldx #$ff
-	stx VRAM_BUF
-	inx ;x=0
-	stx VRAM_INDEX
-.endif
+setSeqVert:
+	lda	<PPU_CTRL_VAR
+	ora	#$04
+	
+setSeqFin:
+	sta	PPU_CTRL
+	
+	;passthru to loadAddr
+
+loadAddr:
+	lda VRAM_BUF,y
+	iny
+	sta PPU_ADDR
+	lda VRAM_BUF,y
+	iny
+	sta PPU_ADDR
+	lda VRAM_BUF,y
+	iny
 	rts
+
+updSingle:
+	sta PPU_DATA
+	rts	; ropslide to next routine
+
+updSeqNormal:
+	sty	NAME_UPD_PTR
+	tax
+	tay
+	@loop:
+		lda (NAME_UPD_PTR),y
+		sta PPU_DATA
+		dey
+		bne @loop
+	txa
+	clc
+	adc	NAME_UPD_PTR
+	tay
+	lda	#0
+	sta	NAME_UPD_PTR
+	rts	; ropslide to next routine
+
+updSeqRepeat:
+	tax
+	lda	VRAM_BUF,y
+	iny
+	@loop:
+		sta	PPU_DATA
+		dex
+		bne	@loop
+	rts
+
+updFinish:
+	ldx SP_TEMP
+	txs
+	lda	#<updFinish
+	sta	INST_BUF
+	lda	#>updFinish
+	sta	INST_BUF+1
+	lda	<PPU_CTRL_VAR
+	sta PPU_CTRL
+	rts
+
+
+
+; @updName:
+
+	; lda VRAM_BUF,y
+	; iny
+	; cmp #$40				;is it a non-sequental write?
+	; bcs @updNotSeq
+	; sta PPU_ADDR
+	; lda VRAM_BUF,y
+	; iny
+	; sta PPU_ADDR
+	; lda VRAM_BUF,y
+	; iny
+	; sta PPU_DATA
+	; jmp @updName
+
+; @updNotSeq:
+
+	; tax
+	; lda <PPU_CTRL_VAR
+	; cpx #$80				;is it a horizontal or vertical sequence?
+	; bcc @updHorzSeq
+	; cpx #$ff				;is it end of the update?
+	; beq @updDone
+
+; @updVertSeq:
+
+	; ora #$04
+	; bne @updNameSeq			;bra
+
+; @updHorzSeq:
+
+	; and #$fb
+
+; @updNameSeq:
+
+	; sta PPU_CTRL
+
+	; txa
+	; and #$3f
+	; sta PPU_ADDR
+	; lda VRAM_BUF,y
+	; iny
+	; sta PPU_ADDR
+	; lda VRAM_BUF,y
+	; bmi @updRepeatedByte
+	; iny
+	; tax
+
+; @updNameLoop:
+
+	; lda VRAM_BUF,y
+	; iny
+	; sta PPU_DATA
+	; dex
+	; bne @updNameLoop
+
+	; lda <PPU_CTRL_VAR
+	; sta PPU_CTRL
+
+	; jmp @updName
+
+; @updRepeatedByte:
+	; and #$7f
+	; tax
+	; iny
+	; lda VRAM_BUF,y
+	; iny
+; @updRepeatedByteLoop:
+	; sta PPU_DATA
+	; dex
+	; bne @updRepeatedByteLoop
+	
+	; lda <PPU_CTRL_VAR
+	; sta PPU_CTRL
+
+	; jmp @updName
+
+
+; @updDone:
+; ;changed to automatically clear these
+; .ifdef VRAM_BUF
+	; ldx #$ff
+	; stx VRAM_BUF
+	; inx ;x=0
+	; stx VRAM_INDEX
+; .endif
+	; rts
 	
 	
 	

@@ -1,7 +1,7 @@
 ;written by Doug Fraker
 ;version 1.3, 10/31/2022
 
-.export _set_vram_buffer, __multi_vram_buffer, __one_vram_buffer
+.export _set_vram_buffer, __multi_vram_buffer_horz, __multi_vram_buffer_vert, __one_vram_buffer
 .export _get_frame_count ;_get_pad_new
 .export _check_collision, __pal_fade_to, _set_scroll_x, _set_scroll_y, __add_scroll_y, __sub_scroll_y, __sub_scroll_y_ext
 .export  __get_ppu_addr, _get_at_addr
@@ -30,36 +30,79 @@ _set_vram_buffer:
 
 	
 ;void multi_vram_buffer_horz(void * data, uint8_t len, uint16_t ppu_address);
-;void multi_vram_buffer_vert(void * data, uint8_t len, uint16_t ppu_address);
-__multi_vram_buffer:
-	; AX = ppu_address (X OR'd with corresponding value beforehand)
+__multi_vram_buffer_horz:
+	; AX = ppu_address
 	; xargs[0] = len
 	; sreg = data
+	
+	pha
+	ldy	buf_instIdx
+	bit buf_curSeqMode
+	bcc _multi_vram_buffer_loadAddrInst
+	
+	lda	#<setSeqHorz
+	sta	INST_BUF, y
+	lda	#>setSeqHorz
+	bcs	_multi_vram_buffer_common	; = BRA, since we BCC'd earlier
 
+;void multi_vram_buffer_vert(void * data, uint8_t len, uint16_t ppu_address);
+__multi_vram_buffer_vert:
+	; AX = ppu_address
+	; xargs[0] = len
+	; sreg = data
+	
+	pha
+	ldy	buf_instIdx
+	bit buf_curSeqMode
+	bcs _multi_vram_buffer_loadAddrInst
+	
+	lda	#<setSeqVert
+	sta	INST_BUF, y
+	lda	#>setSeqVert
+	bcc	_multi_vram_buffer_common	; = BRA, since we BCC'd earlier
+
+
+_multi_vram_buffer_loadAddrInst:
+	lda	#<loadAddr
+	sta	INST_BUF, y
+	lda	#>loadAddr
+
+_multi_vram_buffer_common:
+	iny
+	sta	INST_BUF, y
+	iny
+	lda	#<updSeqNormal
+	iny
+	sta	INST_BUF, y
+	lda	#>updSeqNormal
+	iny
+	sta	INST_BUF, y
+	sty	buf_instIdx
+	
+	; AX = ppu_address
+	; xargs[0] = len
+	; sreg = data
 	ldy VRAM_INDEX
+	pla
 	sta VRAM_BUF+1, y
 	txa
 	sta VRAM_BUF+0, y
-	
-_multi_vram_buffer_common:
 	lda xargs+0
 	sta VRAM_BUF+2, y
+	tay
+	
 	;need y for source, x is for dest and for vram_index
 	ldx VRAM_INDEX
 	inx
 	inx
 	inx
 
-	ldy #0
 @loop:
 	lda (sreg), y
 	sta VRAM_BUF, x
 	inx
-	iny
-	cpy xargs+0
+	dey
 	bne @loop
-	lda #$ff ;=NT_UPD_EOF
-	sta VRAM_BUF, x
 	stx VRAM_INDEX
 	rts
 	
