@@ -413,7 +413,8 @@ void state_game(){
 
 		crossPRGBankJump0(sprite_collide);
 
-		if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement);
+		if (level == luckydraw) { if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement); }
+		else crossPRGBankJump0(movement);
 
 		kandotemp3 = 0;
 
@@ -524,7 +525,9 @@ void state_game(){
 
 			crossPRGBankJump0(sprite_collide);
 
-			if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement);
+			if (level == luckydraw) { if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement); }
+			else crossPRGBankJump0(movement);
+
 
 			kandotemp3 = 1;
 			runthecolls();
