@@ -435,6 +435,7 @@ const unsigned char TEXT_xlevel2textD[]="ADVENTURES";
 const unsigned char TEXT_xlevel2textE[]="DECODE";
 const unsigned char TEXT_2texteveryend[]="EVERY$END";
 const unsigned char TEXT_2texteon[]="EON";
+const unsigned char TEXT_2textelectrodynamix[]="ELECTRODYNAMIX";
 const unsigned char TEXT_2textmidnight[]="MIDNIGHT";
 const unsigned char TEXT_2textclubstep[]="CLUBSTEP";
 const unsigned char TEXT_2textpractice[]="PRACTICE";
@@ -496,6 +497,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_xlevel1textC, 
 	TEXT_xlevel1textD, 
 	0, 
+	0, 
 	TEXT_hexagon, 
 	TEXT_xlevel1textC, 
 	0, 
@@ -528,6 +530,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_xlevel2textC, 
 	TEXT_xlevel2textD, 
 	TEXT_2textclubstep, 
+	TEXT_2textelectrodynamix, 
 	TEXT_2hexagon, 
 	TEXT_xlevel22textC, 
 	TEXT_xlevel2textE, 
@@ -560,6 +563,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_xlevel2textC) - 1,	
 	sizeof(TEXT_xlevel2textD) - 1,	
 	sizeof(TEXT_2textclubstep) - 1,
+	sizeof(TEXT_2textelectrodynamix) - 1,
 	sizeof(TEXT_2hexagon) - 1,
 	sizeof(TEXT_xlevel22textC) - 1,	
 	sizeof(TEXT_xlevel2textE) - 1,
@@ -590,6 +594,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	sizeof(TEXT_xlevel1textC) - 1,	
 	sizeof(TEXT_xlevel1textD) - 1,	
+	0,
 	0,
 	sizeof(TEXT_hexagon) - 1,	
 	sizeof(TEXT_xlevel1textC) - 1,	
@@ -624,6 +629,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_theory_of_everything, 
 	song_electroman_adventures, 
 	song_clubstep,
+	song_electrodynamix,
 	song_hexagon_force,
 	song_toe_2,
 	song_endgame, 
