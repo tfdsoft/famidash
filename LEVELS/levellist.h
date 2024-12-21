@@ -66,6 +66,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //clubstep
 	DECO1, //electrodynamix
 	DECO1, //hexagon force
+	DECO1, //blast processing
 	DECO1, //TOE2
 	DECO1, //RETRAY
 	DECO1, //SONAR
@@ -103,6 +104,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //clubstep
 	SPIKESA, //electrodynamix
 	SPIKESB, //hexagon force
+	SPIKESB, //blast processing
 	SPIKESA, //TOE2
 	SPIKESA, //RETRAY
 	SPIKESA, //SONAR
@@ -140,6 +142,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //clubstep
 	BLOCKSB, //electrodynamix
 	BLOCKSB, //hexagon force
+	BLOCKSB, //blast processing
 	BLOCKSB, //TOE2
 	BLOCKSB, //RETRAY
 	BLOCKSB, //SONAR
@@ -177,6 +180,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //clubstep
 	SAWBLADESA, //electrodynamix
 	SAWBLADESA, //hexagon force
+	SAWBLADESA, //blast processing
 	SAWBLADESA, //TOE2
 	SAWBLADESA, //retray
 	SAWBLADESA, //SONAR
@@ -215,6 +219,7 @@ const unsigned char difficulty_list[] = {
     DEMON,  //CLUBSTEP
     INSANE,  //electrodynamix
     INSANE,  //hexagon force
+    HARDER, //blast processing
     DEMON,  //TOE2
     EASY, //RETRAY
     EASY, //SONAR
@@ -252,6 +257,7 @@ const unsigned char stars_list[] = {
 	14,  //clubstep
 	12,  //electrodynamix
 	12,  //hexagon force
+	10,  //blast processing
 	14,  //TOE2
 	2,   //retray
 	2,   //SONAR

@@ -19,6 +19,7 @@ const unsigned char levelDtext[]="ELECTROMAN";
 const unsigned char level16text[]="THE LIGHTNING";
 const unsigned char levelchallengetext[]="THE";
 const unsigned char levelhexagontext[]="HEXAGON";
+const unsigned char levelblasttext[]="BLAST";
 //const unsigned char level18text[]="GO BACK TO";
 
 const unsigned char level1text2[]="MADNESS";
@@ -58,5 +59,6 @@ const unsigned char levelfiretemple2[]="FIRE TEMPLE";
 const unsigned char levelrevolution2[]="REVOLUTION";
 const unsigned char levelkappaclysm2[]="KAPPACLYSM";
 const unsigned char leveldreamer2[]="DREAMER";
+const unsigned char levelblast2[]="PROCESSING";
 const unsigned char levelelectrodynamix2[]=" ELECTRODYNAMIX";
 

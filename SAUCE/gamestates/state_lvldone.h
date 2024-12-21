@@ -416,6 +416,7 @@ const unsigned char TEXT_xlevel1textD[]="ELECTROMAN";
 const unsigned char TEXT_xweasel[]="SCHEMING";
 const unsigned char TEXT_challenge[]="THE";
 const unsigned char TEXT_hexagon[]="HEXAGON";
+const unsigned char TEXT_blast[]="BLAST";
 const unsigned char TEXT_speed[]="AT$THE$SPEED";
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
@@ -444,6 +445,7 @@ const unsigned char TEXT_2textweasel[]="WEASEL";
 const unsigned char TEXT_2challenge[]="CHALLENGE";
 const unsigned char TEXT_2deathmoon[]="DEATH$MOON";
 const unsigned char TEXT_2hexagon[]="FORCE";
+const unsigned char TEXT_2blast[]="PROCESSING";
 const unsigned char TEXT_2textretray[]="RETRAY";
 const unsigned char TEXT_2textstereo[]="MADNESS$2";
 const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
@@ -499,6 +501,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	0, 
 	TEXT_hexagon, 
+	TEXT_blast, 
 	TEXT_xlevel1textC, 
 	0, 
 	0, 
@@ -532,6 +535,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textclubstep, 
 	TEXT_2textelectrodynamix, 
 	TEXT_2hexagon, 
+	TEXT_2blast, 
 	TEXT_xlevel22textC, 
 	TEXT_xlevel2textE, 
 	TEXT_2textpractice, 
@@ -565,6 +569,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textclubstep) - 1,
 	sizeof(TEXT_2textelectrodynamix) - 1,
 	sizeof(TEXT_2hexagon) - 1,
+	sizeof(TEXT_2blast) - 1,
 	sizeof(TEXT_xlevel22textC) - 1,	
 	sizeof(TEXT_xlevel2textE) - 1,
 	sizeof(TEXT_2textpractice) - 1,
@@ -597,6 +602,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	sizeof(TEXT_hexagon) - 1,	
+	sizeof(TEXT_blast) - 1,	
 	sizeof(TEXT_xlevel1textC) - 1,	
 	0,
 	0,
@@ -631,6 +637,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_clubstep,
 	song_electrodynamix,
 	song_hexagon_force,
+	song_blast_processing,
 	song_toe_2,
 	song_endgame, 
 	song_practice,
@@ -1091,6 +1098,7 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
   levelhexagontext, 
+  levelblasttext, 
   levelCtext, 
   NULL,
   NULL, 
@@ -1128,6 +1136,7 @@ const unsigned char* const leveltexts2[] = {
   levelclubtext2,
   levelelectrodynamix2,
   levelhexagon2, 
+  levelblast2, 
   levelCtext22, 
   levelretray2,
   levelsonar2,
@@ -1166,6 +1175,7 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	sizeof(levelhexagontext) - 1,
+	sizeof(levelblasttext) - 1,
 	sizeof(levelCtext) - 1,
 	0,
 	0,
@@ -1202,6 +1212,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelclubtext2) - 1,
 	sizeof(levelelectrodynamix2) - 1,
 	sizeof(levelhexagon2) - 1,
+	sizeof(levelblast2) - 1,
 	sizeof(levelCtext22) - 1,
 	sizeof(levelretray2) - 1,
 	sizeof(levelsonar2) - 1,

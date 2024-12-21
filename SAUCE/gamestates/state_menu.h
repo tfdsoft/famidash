@@ -51,6 +51,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_clubstep,
 	song_electrodynamix,
 	song_hexagon_force,
+	song_blast_processing,
 	song_toe_2,
 	song_endgame, 
 	song_practice,

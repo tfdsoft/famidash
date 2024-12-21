@@ -20,6 +20,7 @@ SET all_levels= ^
     clubstep ^
     electrodynamix ^
     hexagonforce ^
+    blastprocessing ^
     toe2 ^
     retray ^
     sonar ^

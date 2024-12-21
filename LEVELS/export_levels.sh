@@ -19,6 +19,7 @@ all_levels="
 	    clubstep\
 	    electrodynamix\
 	    hexagonforce\
+	    blastprocessing\
 	    toe2\
 	    thechallenge\
 	    retray\

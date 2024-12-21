@@ -110,6 +110,13 @@ hexagonforce_no_parallax  = 1
 hexagonforce_bg_color    = $02
 hexagonforce_grnd_color  = $12
 
+blastprocessing_song_number = song_blast_processing
+blastprocessing_game_mode   = $00
+blastprocessing_speed       = $00
+blastprocessing_no_parallax  = 1
+blastprocessing_bg_color    = $02
+blastprocessing_grnd_color  = $12
+
 
 test4_song_number = song_midnight
 test4_game_mode   = $00
@@ -231,6 +238,13 @@ dreamer_speed       = $01
 dreamer_no_parallax  = 1
 dreamer_bg_color    = $0F
 dreamer_grnd_color  = $0F
+
+stalemate_song_number = song_midnight
+stalemate_game_mode   = $00
+stalemate_speed       = $00
+stalemate_no_parallax  = 1
+stalemate_bg_color    = $0F
+stalemate_grnd_color  = $0F
 
 electrodynamix_song_number = song_electrodynamix
 electrodynamix_game_mode   = $00

@@ -21,6 +21,7 @@ _level_list_lo:
   .byte .lobyte(level_data_clubstep)
   .byte .lobyte(level_data_electrodynamix)
   .byte .lobyte(level_data_hexagonforce)
+  .byte .lobyte(level_data_blastprocessing)
   .byte .lobyte(level_data_toe2)
   .byte .lobyte(level_data_retray)
   .byte .lobyte(level_data_sonar)
@@ -57,6 +58,7 @@ _level_list_hi:
   .byte .hibyte(level_data_clubstep)
   .byte .hibyte(level_data_electrodynamix)
   .byte .hibyte(level_data_hexagonforce)
+  .byte .hibyte(level_data_blastprocessing)
   .byte .hibyte(level_data_toe2)
   .byte .hibyte(level_data_retray)
   .byte .hibyte(level_data_sonar)
@@ -93,6 +95,7 @@ _level_list_bank:
   .byte .lobyte(.bank(level_data_clubstep))
   .byte .lobyte(.bank(level_data_electrodynamix))
   .byte .lobyte(.bank(level_data_hexagonforce))
+  .byte .lobyte(.bank(level_data_blastprocessing))
   .byte .lobyte(.bank(level_data_toe2))
   .byte .lobyte(.bank(level_data_retray))
   .byte .lobyte(.bank(level_data_sonar))
@@ -129,6 +132,7 @@ _sprite_list_lo:
   .byte .lobyte(sprite_data_clubstep)
   .byte .lobyte(sprite_data_electrodynamix)
   .byte .lobyte(sprite_data_hexagonforce)
+  .byte .lobyte(sprite_data_blastprocessing)
   .byte .lobyte(sprite_data_toe2)
   .byte .lobyte(sprite_data_retray)
   .byte .lobyte(sprite_data_sonar)
@@ -165,6 +169,7 @@ _sprite_list_hi:
   .byte .hibyte(sprite_data_clubstep)
   .byte .hibyte(sprite_data_electrodynamix)
   .byte .hibyte(sprite_data_hexagonforce)
+  .byte .hibyte(sprite_data_blastprocessing)
   .byte .hibyte(sprite_data_toe2)
   .byte .hibyte(sprite_data_retray)
   .byte .hibyte(sprite_data_sonar)
@@ -201,6 +206,7 @@ _sprite_list_bank:
   .byte .lobyte(.bank(sprite_data_clubstep))
   .byte .lobyte(.bank(sprite_data_electrodynamix))
   .byte .lobyte(.bank(sprite_data_hexagonforce))
+  .byte .lobyte(.bank(sprite_data_blastprocessing))
   .byte .lobyte(.bank(sprite_data_toe2))
   .byte .lobyte(.bank(sprite_data_retray))
   .byte .lobyte(.bank(sprite_data_sonar))
@@ -240,6 +246,7 @@ _level_lengths_lo:
   .byte .lobyte($000091)		; clubstep
   .byte .lobyte($0000B2)		; electrodynamix
   .byte .lobyte($0000A9)		; hexagonforce
+  .byte .lobyte($0000A7)		; blastprocessing
   .byte .lobyte($00009D)		; toe2
   .byte .lobyte($000066)		; retray
   .byte .lobyte($00008D)		; sonar
@@ -254,10 +261,10 @@ _level_lengths_lo:
   .byte .lobyte($00008A)		; decode
   .byte .lobyte($00006E)		; problematic
   .byte .lobyte($00008D)		; firetemple
-  .byte .lobyte($000286)		; eon
+  .byte .lobyte($000080)		; eon
   .byte .lobyte($000094)		; pgclubstep
   .byte .lobyte($000086)		; luckydraw
-  .byte .lobyte($000080)		; test4
+  .byte .lobyte($000001)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -278,6 +285,7 @@ _level_lengths_md:
   .byte .hibyte($000091)		; clubstep
   .byte .hibyte($0000B2)		; electrodynamix
   .byte .hibyte($0000A9)		; hexagonforce
+  .byte .hibyte($0000A7)		; blastprocessing
   .byte .hibyte($00009D)		; toe2
   .byte .hibyte($000066)		; retray
   .byte .hibyte($00008D)		; sonar
@@ -292,10 +300,10 @@ _level_lengths_md:
   .byte .hibyte($00008A)		; decode
   .byte .hibyte($00006E)		; problematic
   .byte .hibyte($00008D)		; firetemple
-  .byte .hibyte($000286)		; eon
+  .byte .hibyte($000080)		; eon
   .byte .hibyte($000094)		; pgclubstep
   .byte .hibyte($000086)		; luckydraw
-  .byte .hibyte($000080)		; test4
+  .byte .hibyte($000001)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -316,6 +324,7 @@ _level_lengths_hi:
   .byte .bankbyte($000091)		; clubstep
   .byte .bankbyte($0000B2)		; electrodynamix
   .byte .bankbyte($0000A9)		; hexagonforce
+  .byte .bankbyte($0000A7)		; blastprocessing
   .byte .bankbyte($00009D)		; toe2
   .byte .bankbyte($000066)		; retray
   .byte .bankbyte($00008D)		; sonar
@@ -330,10 +339,10 @@ _level_lengths_hi:
   .byte .bankbyte($00008A)		; decode
   .byte .bankbyte($00006E)		; problematic
   .byte .bankbyte($00008D)		; firetemple
-  .byte .bankbyte($000286)		; eon
+  .byte .bankbyte($000080)		; eon
   .byte .bankbyte($000094)		; pgclubstep
   .byte .bankbyte($000086)		; luckydraw
-  .byte .bankbyte($000080)		; test4
+  .byte .bankbyte($000001)		; test4
 
 .endif
 .endif
