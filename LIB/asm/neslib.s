@@ -139,6 +139,8 @@ nmi:
 	LDA #>OAM_BUF
   	STA PPU_OAM_DMA
 	sta noMouse ; it checks for non zero, not just 1
+	lda #$0
+	sta <(mouse + kMouseButtons)
 	lda <joypad1
 	sta TEMP + 4
     jsr _pad_poll
