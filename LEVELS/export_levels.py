@@ -14,8 +14,9 @@ import pathlib
 import itertools
 import math
 import binpacking
-import os
 import huffmunch
+import json
+import hashlib
 from collections.abc import Iterable
 
 own_path = pathlib.Path(sys.path[0]).resolve()
@@ -54,6 +55,13 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 	level_data = []
 	# also include the output length of levels in tiles:
 	level_widths = []
+
+	# load compressed level cache, if it exists
+	if ((own_path / "level_data_cache.json").exists()):
+		with open((own_path / "level_data_cache.json")) as file:
+			size_cache = json.load(file)
+	else:
+		size_cache = {}
 	for level in levels:
 		
 		lines = []
@@ -61,9 +69,14 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			lines = list(csv.reader(f))
 		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
 		rle_data = vertical_rle_with_single_tile(lines)
-		huff_data = huffmunch.compress_single(rle_data)
-		if (len(huff_data) >= 8192 - 7):
-			print(f"Level {level} is {len(huff_data):6} bytes long after compression, which is more than the bank size of 8192 (- 7 required by the header). This is temporarily not supported, and as such the level will be absent.")
+		if level in size_cache and size_cache[level].get("hash") == hashlib.sha256(bytes(rle_data)).hexdigest() and int(size_cache[level].get("rle_size")) == len(rle_data) and "huff_size" in size_cache[level]:
+			huff_len = int(size_cache[level]["huff_size"])
+			cached_str = "cached level"
+		else:
+			huff_len = huffmunch.estimate_compressed_size(rle_data)
+			cached_str = "level"
+		if (huff_len >= 8192 - 7):
+			print(f"Level {level} is {huff_len:6} bytes long after compression, which is more than the bank size of 8192 (- 7 required by the header). This is temporarily not supported, and as such the level will be absent.")
 			continue
 		header = [
 			f"{level}_song_number",
@@ -74,10 +87,11 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			f"{level}_grnd_color",
 			f"{len(lines)}\t; {level} height",
 		]
-		level_data.append((level, len(header)+len(huff_data), header, rle_data))
+		level_data.append((level, len(header)+huff_len, header, rle_data))
 		#includes non-compressed data, as every bank will be compressed together
-		print(f"loading level: {level} rle size: {len(rle_data)} rle+huffmunch size: {len(huff_data)} compression rate: {(len(huff_data) / len(rle_data) * 100) : .4}%")
-	
+		print(f"loading {cached_str}: {level} rle size: {len(rle_data)} rle+huffmunch size: {huff_len} compression rate: {(huff_len / len(rle_data) * 100) : .4}%")
+		size_cache[level] = {"rle_size": len(rle_data), "huff_size": huff_len, "hash": hashlib.sha256(bytes(rle_data)).hexdigest()}
+		
 	banked_level_data = binpacking.to_constant_volume(level_data, 8192, 1)
 
 	for (i, bank) in enumerate(banked_level_data, 1):
@@ -88,7 +102,6 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			# all_data.append((id, length, i+first_bank_num, data))
 	
 	# TODO: complete the rest lmfao
-	# TODO (optional): caching
 
 
 	# this is legacy code now bitch
@@ -153,7 +166,11 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 
 # 	if (remaining_bytes != 0):
 # 		current_bank -= 1
-		
+
+	# if the export is successful, write cache
+	with open(own_path / "level_data_cache.json", "w") as file:
+		json.dump(size_cache, file)
+
 	exit()
 	return (level_widths, )#current_bank, remaining_bytes)
 		
