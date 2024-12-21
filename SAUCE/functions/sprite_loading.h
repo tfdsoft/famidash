@@ -63,9 +63,9 @@ uint8_t sprite_heights[]={
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 88 - 8F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 90 - 97
-	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	0x00,	// 98 - 9F
+	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 98 - 9F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// A0 - A7
-	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	0x00,	// A8 - AF
+	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	OUTL,	// A8 - AF
 	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	// B0 - B7
 	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	// B8 - BF
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// C0 - C7
@@ -996,7 +996,14 @@ void sprite_collide(){
 					
 					if (tmp2 == 0x20) tmp2 = 0x30;
 					
-					if (tmp4 >= 0xC0){
+					if (tmp4 == 0x9F) {
+						pal_col(0, color1);
+						pal_col(1, oneShadeDarker(color1)); 
+						pal_col(9, oneShadeDarker(color1)); 
+						lastbgcolortype = tmp4;
+					}						
+					
+					else if (tmp4 >= 0xC0){
 						pal_col(6, tmp2);
 						pal_col(5, oneShadeDarker(tmp2)); 
 						lastgcolortype = tmp4;
@@ -1013,7 +1020,9 @@ void sprite_collide(){
 					continue;
 				
 				case OUTL:
-					outline_color = idx8_load(OUTLINES, tmp4 & 0x0F);
+
+					if (tmp4 == 0xAF) outline_color = color1;
+					else outline_color = idx8_load(OUTLINES, tmp4 & 0x0F);
 					activesprites_type[index] = 0xFF;
 					continue;
 
