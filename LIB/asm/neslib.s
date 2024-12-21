@@ -1669,15 +1669,15 @@ luckydraw = $20
 	cmp #luckydraw
 	beq @slop
 	lda #SLOPESA
-	clc
+;	clc
 	adc CHRBANK_TEMP
 	jmp _mmc3_set_1kb_chr_bank_2
 	lda #1
 	beq @asdf
-	@slop:
+@slop:
 	lda #SLOPESA
 	jmp _mmc3_set_1kb_chr_bank_2
-	@asdf:
+@asdf:
 	lda _parallax_scroll_x
 	adc #<.bank(_PARALLAX_CHR)
 	jmp _mmc3_set_1kb_chr_bank_2
