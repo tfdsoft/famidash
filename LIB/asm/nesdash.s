@@ -2100,7 +2100,7 @@ end:
 
 .import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y
 .import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _retro_mode, _icon, _gameState, _titleicon
-.importzp _cube_rotate, _mini
+.importzp _cube_rotate, _mini, _was_on_slope_counter
 .import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2, _SPIDER_ALT, _SPIDER_ALT2
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT
 .importzp _cube_data, _slope_frames, _slope_type
@@ -2471,9 +2471,12 @@ drawplayer_center_offsets:
 			;	} else {
 			;		[index from ROBOT_JUMP/MINI_ROBOT_JUMP using robotjumpframe[0]]
 			; 	}
+			LDA _was_on_slope_counter
+			BNE @ignoreJump
 			LDA _player_vel_y+1	;
 			ORA _player_vel_y	;	if (player_vel_y[0] == 0) {
 			BNE @jump			;__
+		@ignoreJump:
 			LDA _retro_mode
 			BNE @jim
 			LDA _options
@@ -2945,9 +2948,12 @@ drawplayer_common := _drawplayerone::common
 			;	} else {
 			;		[index from ROBOT_JUMP/MINI_ROBOT_JUMP using robotjumpframe[1]]
 			; 	}
+			LDA _was_on_slope_counter+1
+			BNE @ignoreJump
 			LDA _player_vel_y+3	;
 			ORA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
 			BNE @jump
+		@ignoreJump:
 			LDA _options
 			and #$04
 			beq	@cont1
