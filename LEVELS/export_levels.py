@@ -401,11 +401,11 @@ def main():
 			[f"\t.byte .lobyte(.bank(sprite_data_{x}))" for x in levels])
 		
 		level_chunk_list_lo = '\n'.join(
-			[f"\t.byte .lobyte({x})" for x in bg_exp_data[2]])
+			[f"\t.byte .lobyte(level_data_{x})" for x in bg_exp_data[2]])
 		level_chunk_list_hi = '\n'.join(
-			[f"\t.byte .hibyte({x})" for x in bg_exp_data[2]])
+			[f"\t.byte .hibyte(level_data_{x})" for x in bg_exp_data[2]])
 		level_chunk_list_bank = '\n'.join(
-			[f"\t.byte .lobyte(.bank({x}))" for x in bg_exp_data[2]])
+			[f"\t.byte .lobyte(.bank(level_data_{x}))" for x in bg_exp_data[2]])
 
 		level_lengths_lo = "\n".join(
 			[f"\t.byte .lobyte(${bg_exp_data[1][x]:06X})\t\t; {levels[x]}" 
