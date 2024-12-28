@@ -67,6 +67,7 @@ def split_rle_data_into_huffmunch_banks(data : Iterable[int], compressed_bank_si
 	out_data = []
 	meta_ptr = first_meta_ptr
 	while len(data) != 0:
+		print(f"\tPart {len(out_data)}:")
 		# LET'S GO GAMBLING!!!
 		# make a bet about the compression rate
 		bet = 30 # %, pretty unsafe bet, but life is all about taking risks
@@ -80,7 +81,7 @@ def split_rle_data_into_huffmunch_banks(data : Iterable[int], compressed_bank_si
 				bet_data = data[0:get_split_point_in_rle_data(data, bet_size - 3)] + [0x7F, 0x7F, meta_ptr] # Meta seq
 				og_size = get_split_point_in_rle_data(data, bet_size - 3)
 			huff_data = huffmunch.compress_single(bet_data)
-			print(f"\tBet: {100-bet}%, Real size: {len(bet_data)} -> {len(huff_data)}, Real compression: {100-(len(huff_data) / len(bet_data) * 100) : .4}%")
+			print(f"\t\tBet: {100-bet}%, Real size: {len(bet_data)} -> {len(huff_data)}, Real compression: {100-(len(huff_data) / len(bet_data) * 100) : .4}%")
 			if (len(huff_data) <= compressed_bank_size):
 				break
 			# AW DANGIT
@@ -95,9 +96,12 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 	# data for all levels, each gets a tuple, they are then binpacked
 	level_data = []
 	# data for split level parts
-	meta_level_data = []
+	level_chunk_data = []
 	# also include the output length of levels in tiles:
 	level_widths = []
+
+	total_rle_size = 0
+	total_final_size = 0
 
 	# load compressed level cache, if it exists
 	if ((own_path / "level_data_cache.json").exists()):
@@ -132,15 +136,15 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 		):
 			huff_data = cached_data_path.read_bytes()
 			if (level_cache.get("huff_hash") == sha256(huff_data)):
-				cached_str = "cached level"
+				print(f'Loading cached level: {level}; ', end = "", flush = True)
 			else:
+				print(f'Loading level: {level}; ', end = "", flush = True)
 				huff_data = huffmunch.compress_single(rle_data)
-				cached_str = "level"
 				cached_data_path.write_bytes(huff_data)
 				level_cache = {}
 		else:
+			print(f'Loading level: {level}; ', end = "", flush = True)
 			huff_data = huffmunch.compress_single(rle_data)
-			cached_str = "level"
 			cached_data_path.write_bytes(huff_data)
 			level_cache = {}
 		header = [
@@ -152,6 +156,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			f"{level}_grnd_color",
 			f"{len(lines)}\t; height of {level}",
 		]
+		total_rle_size += len(header) + len(rle_data)
 		if (len(huff_data) >= 8192 - 7):
 			if (
 				# Check existence of split cache
@@ -163,29 +168,38 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 				len(level_cache["split_huff_hashes"]) == level_cache["split_count"] and
 				len(level_cache["split_huff_sizes"]) == level_cache["split_count"] and
 				# Check validity of all split cached data
-				min(
-					[int(
+				all([int(
 						path.exists() and path.is_file() and
 						level_cache["split_huff_sizes"][id] == path.stat().st_size and
 						level_cache["split_huff_hashes"][id] == sha256(path.read_bytes())
 					) for id, path in (
 						[(j, cached_data_path.with_suffix(f".{j}.bin")) for j in range(level_cache["split_count"])]
-					)
-					]) == 1
+					)])
 			):
 				split_files = [cached_data_path.with_suffix(f".{i}.bin") for i in range(level_cache["split_count"])]
 				split_data = [i.read_bytes() for i in split_files]
+			
 			else:
-				split_data = split_rle_data_into_huffmunch_banks(rle_data, 8192, len(meta_level_data))
+				print("compressing in parts:")
+
+				split_data = split_rle_data_into_huffmunch_banks(rle_data, 8192, len(level_chunk_data))
 				split_files = [cached_data_path.with_suffix(f".{i}.bin") for i in range(len(split_data))]
+
 				[path.write_bytes(data) for path, data in zip(split_files, split_data)]
+			
 			continued_data = split_data[1:]
 
 			level_data.append((level, len(header)+len(split_data[0]), header, split_files[0]))
-			meta_level_data += zip([level] * len(continued_data), [len(i) for i in continued_data], split_files[1:])
-			print(f"loading {cached_str}: {level} total rle size: {len(rle_data)}, split into:")
+
+			level_chunk_data += zip([level] * len(continued_data), [len(i) for i in continued_data], split_files[1:])
+
+			print(f"Total RLE size: {len(rle_data)}; Split into:")
+
+			total_final_size += len(header)
 			for idx, dat in enumerate(split_data):
 				print(f"\tpart {idx}, rle + huffmunch size: {len(dat)}")
+				total_final_size += len(dat)
+			
 			size_cache[level] = {
 				"rle_size": len(rle_data), "huff_size": len(huff_data),
 				"rle_hash": hashlib.sha256(bytes(rle_data)).hexdigest(),
@@ -198,46 +212,54 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			}
 		else:
 			level_data.append((level, len(header)+len(huff_data), header, cached_data_path))
-			#includes non-compressed data, as every bank will be compressed together
-			print(f"loading {cached_str}: {level} rle size: {len(rle_data)} rle+huffmunch size: {len(huff_data)} compression rate: {100-(len(huff_data) / len(rle_data) * 100) : .4}%")
+
+			print(f"RLE size: {len(rle_data)}; RLE+huffmunch size: {len(huff_data)}; compression rate: {100-(len(huff_data) / len(rle_data) * 100) : .4}%")
+
+			total_final_size += len(header)+len(huff_data)
+
 			size_cache[level] = {
 				"rle_size": len(rle_data), "huff_size": len(huff_data),
 				"rle_hash": hashlib.sha256(bytes(rle_data)).hexdigest(),
 				"huff_hash" : hashlib.sha256(bytes(huff_data)).hexdigest()
 			}
-	all_level_data = level_data + [(f"{l_id}_{i}", l_len, None, l_file) for i, (l_id, l_len, l_file) in enumerate(meta_level_data)]
-	banked_level_data = binpacking.to_constant_volume(all_level_data, 8192, 1)
+	
+	print("")
+	print("============ TOTAL LEVEL COMPRESSION STATS ============")
+	print(f"Total RLE (+ header) size: {total_rle_size}")
+	print(f"Total RLE+huffmunch (+ header) size: {total_final_size}")
+	print(f"Bytes shaved off: {total_rle_size - total_final_size}")
+	print(f"Effective compression rate: {100-(total_final_size / total_rle_size * 100) : .6}%")
+	print("============ TOTAL LEVEL COMPRESSION STATS ============")
+	print("")
 
-	out_str = ["", ";;; Generated by export_levels.py", ""]
+	all_level_data = level_data + [(f"{l_id}_{i}", l_len, None, l_file) for i, (l_id, l_len, l_file) in enumerate(level_chunk_data)]
 
-	for (i, bank) in enumerate(banked_level_data, 1):
-		real_sum_size = sum([length for (id, length, hdr, cached_data_path) in bank])
-		print(f"\t- LVL_BANK_{i:02X}, size {real_sum_size:04}/8192:")
-		out_str.append(f'.segment "LVL_BANK_{i:02X}" ; Size: {real_sum_size}')
-		for (id, length, hdr, cached_data_path) in bank:
-			print(f"\t\t- ({length:4} bytes) {id}")
-			out_str.append(f"\t.export level_data_{id}")
-			out_str.append(f"\tlevel_data_{id}:")
-			if (hdr != None):
-				out_str.append("\t; Header")
-				out_str += [f"\t\t.byte {i}" for i in hdr]
-			out_str.append("\t; Level data")
-			out_str.append(f'\t\t.incbin "{cached_data_path.relative_to(own_path)}" ; Size: {length}')
-			out_str.append("")
+	banked_level_data = []
+
+	for (id, length, hdr, cached_data_path) in all_level_data:
+		out_str = []
+		out_str.append(f"\t.export level_data_{id}")
+		out_str.append(f"\tlevel_data_{id}:")
+		if (hdr != None):
+			out_str.append("\t; Header")
+			out_str += [f"\t\t.byte {i}" for i in hdr]
+		out_str.append("\t; Level data")
+		out_str.append(f'\t\t.incbin "{cached_data_path.relative_to(own_path)}" ; Size: {length}')
 		out_str.append("")
-
-	(own_path / "all_level_data.s").write_text("\n".join(out_str))
+		
+		banked_level_data.append((length, "\n".join(out_str), f"level_data_{id}", "level", []))
 
 	# if the export is successful, write cache
 	(own_path / "level_data_cache.json").write_text(json.dumps(size_cache))
 
-	exit()
-	return (level_widths, )#current_bank, remaining_bytes)
+	level_chunk_list = [f"{l_id}_{i}" for i, (l_id, __, __) in enumerate(level_chunk_data)]
+
+	return (banked_level_data, level_widths, level_chunk_list)
 		
-def export_spr(folder: pathlib.PurePath, levels: Iterable[str], level_last_bank : int, level_bytes_filled : int):
+def export_spr(folder: pathlib.PurePath, levels: Iterable[str]):
 	all_data = []
 	overflows = []
-	for (num, level) in enumerate(levels):
+	for num, level in enumerate(levels):
 		lines = []
 		with open(folder / f"{level}_SP.csv") as f:
 			lines = list(csv.reader(f))
@@ -298,63 +320,52 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[str], level_last_bank 
 			overflows.append([level, overflowStart, -1])
 
 		level_data.append([0xff]) # add terminator byte
-		all_data.append((num, len(level_data) * 5 - 4, level_data))
-		print(f"Sprites data for {level} takes {len(level_data) * 5 - 4} bytes")
+		all_data.append((level, len(level_data) * 5 - 4, level_data, num))
+		print(f"Sprite data for {level} is {len(level_data) * 5 - 4} bytes long")
 
-	# binpack the data
-	first_bank_size = 8192-level_bytes_filled
-	first_bank_num = level_last_bank
-
-	levels_that_fit_in_first_bank = list(filter(lambda e : e[1] <= first_bank_size, all_data))
-	total_banked_data = []
-	if (len(levels_that_fit_in_first_bank) != 0):
-		data_for_first_bank = binpacking.to_constant_volume(
-			list(filter(lambda e : e[1] <= 8192-level_bytes_filled, all_data)),	# so that no levels too big end up in here
-			8192-level_bytes_filled, 1)
-
-		all_data = list(filter(lambda e : e not in data_for_first_bank[0], all_data))
-		total_banked_data.append(data_for_first_bank[0])
-	else:
-		first_bank_num += 1
-		first_bank_size = 8192
-
-	data_for_other_banks = binpacking.to_constant_volume(all_data, 8192, 1)
-	total_banked_data += data_for_other_banks
-
-	# assign bank numbers to each lvl
-
-	all_data = []
-
-	print("Per-bank sprite data:")
-	for (i, bank) in enumerate(total_banked_data):
-		real_sum_size = sum([length for (id, length, data) in bank])
-		print(f"\t- LVL_BANK_{first_bank_num+i:02X}, max size {(first_bank_size):04}, real sum size {real_sum_size:04}:")
-		for (id, length, data) in bank:
-			print(f"\t\t- ({length:4} bytes) {levels[id]}")
-			all_data.append((id, length, i+first_bank_num, data))
-
-	all_data.sort()
-
-	out_str = ""
-	for (id, length, bank, data) in all_data:
-		out_str += f'.segment "LVL_BANK_{bank:02X}"\n'
-		out_str += f"sprite_data_{levels[id]}:\n"
+	banked_data = []
+	for (id, length, data, num) in all_data:
+		out_str = []
+		out_str.append(f"sprite_data_{id}:")
 		for sprite in data:
-			out_str += f"  .byte {','.join([f'${x:02x}' for x in sprite])}\n"
+			out_str.append(f"  .byte {','.join([f'${x:02x}' for x in sprite])}")
+		banked_data.append((length, "\n".join(out_str), f"sprite_data_{id}", "sprite", [num, ]))
 
-	with open(own_path.joinpath("all_sprite_data.s"), 'w') as out:
-		out.write(f"""
-
-;;; Generated by export_levels.py
-
-{out_str}
-""")
 	if (len(overflows) > 0):
 		print("SPRITE LIMIT OVERFLOWS HAPPENED IN SPRITE DATA:", file=sys.stderr)
 		for i in overflows:
 			print(f"\tLevel {i[0]} at x={i[1]}..{i[2] if i[2] > 0 else 'the end'}", file=sys.stderr)
 	
+	return (banked_data, None)
+	
+def binpack_and_write_data(bg_exp_data : tuple, spr_exp_data : tuple):
+	# Binpack all the data
+	banked_data = binpacking.to_constant_volume(bg_exp_data[0] + spr_exp_data[0], 8192, 0)
+	lvl_file = ["", "; Generated by export_levels.py", ""]
+	spr_data = []
+	for i, bank in enumerate(banked_data, 1):
+		real_sum_size = sum(list(zip(*bank))[0])
+		print(f"Bank LVL_BANK_{i:02X}: {real_sum_size}/8192 bytes")
+		if (any([i[3] == "level" for i in bank])):
+			lvl_file.append("")
+			lvl_file.append(f'.segment "LVL_BANK_{i:02X}"\t; Total bank size: {real_sum_size} bytes')
+		for size, data, label, data_type, metadata in bank:
+			print(f"\t{label}: {size}")
+			if (data_type == "level"):
+				lvl_file.append(data)
+			elif (data_type == "sprite"):
+				spr_data.append((metadata[0], i, data))
+	
+	# Write the level data
+	(own_path / "all_level_data.s").write_text("\n".join(lvl_file))
 
+	# Pack the sprite data
+	spr_file = ["", "; Generated by export_levels.py", ""]
+	spr_data.sort()
+	for id, bank, data in spr_data:
+		spr_file += ["", f'.segment "LVL_BANK_{bank:02X}"', data]
+	# Write the sprite data
+	(own_path / "all_sprite_data.s").write_text("\n".join(spr_file))
 
 def main():
 	parser = argparse.ArgumentParser(prog='export_levels',
@@ -363,40 +374,53 @@ def main():
 	parser.add_argument('file', metavar='FILE', type=str, nargs='+',
 					help='list of level names to process')
 	args = parser.parse_args()
+
 	bg_exp_data = export_bg(pathlib.PurePath(args.folder), args.file)
-	export_spr(pathlib.PurePath(args.folder), args.file, bg_exp_data[1], bg_exp_data[2])
+	spr_exp_data = export_spr(pathlib.PurePath(args.folder), args.file)
+	binpack_and_write_data(bg_exp_data, spr_exp_data)
 
 	levels = args.file
 
-	mid_widths_enabled = max(bg_exp_data[0]) >= 0x100
-	hi_widths_enabled = max(bg_exp_data[0]) >= 0x10000
+	mid_widths_enabled = max(bg_exp_data[1]) >= 0x100
+	hi_widths_enabled = max(bg_exp_data[1]) >= 0x10000
 	
 	with open(own_path.joinpath("all_level_table.s"), 'w') as out:
 		level_list_lo = '\n'.join(
-			[f"  .byte .lobyte(level_data_{x})" for x in levels])
-		level_list_hi = '\n'.join(
-			[f"  .byte .hibyte(level_data_{x})" for x in levels])
+			[f"\t.byte .lobyte(level_data_{x})" for x in levels])
 		sprite_list_lo = '\n'.join(
-			[f"  .byte .lobyte(sprite_data_{x})" for x in levels])
+			[f"\t.byte .lobyte(sprite_data_{x})" for x in levels])
+		
+		level_list_hi = '\n'.join(
+			[f"\t.byte .hibyte(level_data_{x})" for x in levels])
 		sprite_list_hi = '\n'.join(
-			[f"  .byte .hibyte(sprite_data_{x})" for x in levels])
+			[f"\t.byte .hibyte(sprite_data_{x})" for x in levels])
+		
 		level_list_bank = '\n'.join(
-			[f"  .byte .lobyte(.bank(level_data_{x}))" for x in levels])
+			[f"\t.byte .lobyte(.bank(level_data_{x}))" for x in levels])
 		sprite_list_bank = '\n'.join(
-			[f"  .byte .lobyte(.bank(sprite_data_{x}))" for x in levels])
+			[f"\t.byte .lobyte(.bank(sprite_data_{x}))" for x in levels])
+		
+		level_chunk_list_lo = '\n'.join(
+			[f"\t.byte .lobyte({x})" for x in bg_exp_data[2]])
+		level_chunk_list_hi = '\n'.join(
+			[f"\t.byte .hibyte({x})" for x in bg_exp_data[2]])
+		level_chunk_list_bank = '\n'.join(
+			[f"\t.byte .lobyte(.bank({x}))" for x in bg_exp_data[2]])
+
 		level_lengths_lo = "\n".join(
-			[f"  .byte .lobyte(${bg_exp_data[0][x]:06X})\t\t; {levels[x]}" 
+			[f"\t.byte .lobyte(${bg_exp_data[1][x]:06X})\t\t; {levels[x]}" 
 				for x in range(len(levels))])
 		level_lengths_md = "\n".join(
-			[f"  .byte .hibyte(${bg_exp_data[0][x]:06X})\t\t; {levels[x]}"
+			[f"\t.byte .hibyte(${bg_exp_data[1][x]:06X})\t\t; {levels[x]}"
 				for x in range(len(levels))])
 		level_lengths_hi = "\n".join(
-			[f"  .byte .bankbyte(${bg_exp_data[0][x]:06X})\t\t; {levels[x]}"
+			[f"\t.byte .bankbyte(${bg_exp_data[1][x]:06X})\t\t; {levels[x]}"
 				for x in range(len(levels))])
+		
 		out.write(f"""
 ;;; Generated by export_levels.py
 
-.global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
+.global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank, _level_chunk_list_lo, _level_chunk_list_hi, _level_chunk_list_bank
 .segment "RODATA_2"
 
 _level_list_lo:
@@ -407,6 +431,15 @@ _level_list_hi:
 
 _level_list_bank:
 {level_list_bank}
+
+_level_chunk_list_lo:
+{level_chunk_list_lo}
+
+_level_chunk_list_hi:
+{level_chunk_list_hi}
+
+_level_chunk_list_bank:
+{level_chunk_list_bank}
 
 _sprite_list_lo:
 {sprite_list_lo}
