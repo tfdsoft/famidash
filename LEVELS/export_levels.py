@@ -36,7 +36,9 @@ def vertical_rle_with_single_tile(lines):
 		tile = int(strtile)
 		if (tile == -1):
 			tile = 0
-		if current_run == tile and run_length < 0x80:
+		if current_run == tile and (
+			(current_run == 0x7F and run_length < 0x7F) or	# For meta sequence
+			(current_run != 0x7F and run_length < 0x80)):
 			run_length += 1
 		else:
 			# if its a single tile thats less than 0x80, then we add just one byte
@@ -50,9 +52,48 @@ def vertical_rle_with_single_tile(lines):
 			run_length = 1
 	return rle_data
 
+def get_split_point_in_rle_data(data : Iterable[int], split_point : int):
+	lastptr = 0
+	ptr = 0
+	while ptr <= split_point:
+		lastptr = ptr
+		if data[ptr] < 0x80:
+			ptr += 1
+		else:
+			ptr += 2
+	return lastptr
+
+def split_rle_data_into_huffmunch_banks(data : Iterable[int], compressed_bank_size : int, first_meta_ptr : int):
+	out_data = []
+	met_ptr = first_meta_ptr
+	while len(data) != 0:
+		# make a bet about the compression rate
+		bet = 30 # %, pretty unsafe bet, but life is all about taking risks
+		while True:
+			bet_size = compressed_bank_size / (bet / 100)
+			# split the bank at the bet size
+			if bet_size >= len(data):
+				bet_data = data
+				og_size = len(data)
+			else:
+				bet_data = data[0:get_split_point_in_rle_data(data, bet_size - 2)] + [0x7F, 0x7F, met_ptr] # Meta seq
+				og_size = get_split_point_in_rle_data(data, bet_size - 2)
+			huff_data = huffmunch.compress_single(bet_data)
+			print(f"\tBet: {100-bet}%, Real size: {len(bet_data)} -> {len(huff_data)}, Real compression: {100-(len(huff_data) / len(bet_data) * 100) : .4}%")
+			if (len(huff_data) <= compressed_bank_size):
+				break
+			bet += 5 # %
+		out_data.append(huff_data)
+		data = data[og_size:]
+		met_ptr += 1
+	return out_data
+	
+
 def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 	# data for all levels, each gets a tuple, they are then binpacked
 	level_data = []
+	# data for split level parts
+	meta_level_data = []
 	# also include the output length of levels in tiles:
 	level_widths = []
 
@@ -70,30 +111,34 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
 		rle_data = vertical_rle_with_single_tile(lines)
 		cached_data_path = (own_path / "EXPORTS" / f"{level}.hfm.bin")
+		if (level in size_cache):
+			level_cache = size_cache[level]
+		else:
+			level_cache = {}
+		def sha256(data : bytes) -> str:
+			return hashlib.sha256(data).hexdigest()
 		if (
 			# Check existence of cache
 			level in size_cache and
 			cached_data_path.exists() and
 			cached_data_path.is_file() and
 			# Check that the cache is valid against the RLE data
-			int(size_cache[level].get("rle_size")) == len(rle_data) and
-			size_cache[level].get("rle_hash") == hashlib.sha256(bytes(rle_data)).hexdigest() and
+			int(level_cache.get("rle_size")) == len(rle_data) and
+			level_cache.get("rle_hash") == sha256(bytes(rle_data)) and
 			# Check that the cache is valid against the huffmunch data
-			int(size_cache[level].get("huff_size")) == cached_data_path.stat().st_size
+			int(level_cache.get("huff_size")) == cached_data_path.stat().st_size
 		):
 			huff_data = cached_data_path.read_bytes()
-			if (size_cache[level].get("huff_hash") == hashlib.sha256(huff_data).hexdigest()):
+			if (level_cache.get("huff_hash") == sha256(huff_data)):
 				cached_str = "cached level"
 			else:
 				huff_data = huffmunch.compress_single(rle_data)
 				cached_str = "level"
+				cached_data_path.write_bytes(huff_data)
 		else:
 			huff_data = huffmunch.compress_single(rle_data)
 			cached_str = "level"
-		cached_data_path.write_bytes(huff_data)
-		if (len(huff_data) >= 8192 - 7):
-			print(f"Level {level} is {len(huff_data):6} bytes long after compression, which is more than the bank size of 8192 (- 7 required by the header). This is temporarily not supported, and as such the level will be absent.")
-			continue
+			cached_data_path.write_bytes(huff_data)
 		header = [
 			f"{level}_song_number",
 			f"{level}_game_mode",
@@ -101,33 +146,83 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			f"{level}_no_parallax",
 			f"{level}_bg_color",
 			f"{level}_grnd_color",
-			f"{len(lines)}\t; {level} height",
+			f"{len(lines)}\t; height of {level}",
 		]
-		level_data.append((level, len(header)+len(huff_data), header, cached_data_path))
-		#includes non-compressed data, as every bank will be compressed together
-		print(f"loading {cached_str}: {level} rle size: {len(rle_data)} rle+huffmunch size: {len(huff_data)} compression rate: {(len(huff_data) / len(rle_data) * 100) : .4}%")
-		size_cache[level] = {
-			"rle_size": len(rle_data), "huff_size": len(huff_data),
-			"rle_hash": hashlib.sha256(bytes(rle_data)).hexdigest(),
-			"huff_hash" : hashlib.sha256(bytes(huff_data)).hexdigest()
-		}
-		
-	banked_level_data = binpacking.to_constant_volume(level_data, 8192, 1)
+		if (len(huff_data) >= 8192 - 7):
+			if (
+				# Check existence of split cache
+				level in size_cache and
+				"split_count" in level_cache and
+				"split_huff_hashes" in level_cache and
+				"split_huff_sizes" in level_cache and
+				# Check the consistency of the split count
+				len(level_cache["split_huff_hashes"]) == level_cache["split_count"] and
+				len(level_cache["split_huff_sizes"]) == level_cache["split_count"] and
+				# Check validity of all split cached data
+				min(
+					[int(
+						path.exists() and path.is_file() and
+						level_cache["split_huff_sizes"][id] == path.stat().st_size and
+						level_cache["split_huff_hashes"][id] == sha256(path.read_bytes())
+					) for id, path in (
+						[(j, cached_data_path.with_suffix(f".{j}.bin")) for j in range(level_cache["split_count"])]
+					)
+					]) == 1
+			):
+				split_files = [cached_data_path.with_suffix(f".{i}.bin") for i in range(level_cache["split_count"])]
+				split_data = [i.read_bytes() for i in split_files]
+			else:
+				split_data = split_rle_data_into_huffmunch_banks(rle_data, 8192, len(meta_level_data))
+				split_files = [cached_data_path.with_suffix(f".{i}.bin") for i in range(len(split_data))]
+				[path.write_bytes(data) for path, data in zip(split_files, split_data)]
+			continued_data = split_data[1:]
 
-	out_str = "\n;;; Generated by export_levels.py\n\n"
+			level_data.append((level, len(header)+len(split_data[0]), header, split_files[0]))
+			meta_level_data += zip([level] * len(continued_data), [len(i) for i in continued_data], split_files[1:])
+			print(f"loading {cached_str}: {level} total rle size: {len(rle_data)}, split into:")
+			for idx, dat in enumerate(split_data):
+				print(f"\tpart {idx}, rle + huffmunch size: {len(dat)}")
+			size_cache[level] = {
+				"rle_size": len(rle_data), "huff_size": len(huff_data),
+				"rle_hash": hashlib.sha256(bytes(rle_data)).hexdigest(),
+				"huff_hash" : hashlib.sha256(bytes(huff_data)).hexdigest(),
+				"split_count": len(split_data),
+				"split_huff_hashes": 
+					[hashlib.sha256(bytes(i)).hexdigest() for i in split_data],
+				"split_huff_sizes":
+					[len(i) for i in split_data]
+			}
+		else:
+			level_data.append((level, len(header)+len(huff_data), header, cached_data_path))
+			#includes non-compressed data, as every bank will be compressed together
+			print(f"loading {cached_str}: {level} rle size: {len(rle_data)} rle+huffmunch size: {len(huff_data)} compression rate: {100-(len(huff_data) / len(rle_data) * 100) : .4}%")
+			size_cache[level] = {
+				"rle_size": len(rle_data), "huff_size": len(huff_data),
+				"rle_hash": hashlib.sha256(bytes(rle_data)).hexdigest(),
+				"huff_hash" : hashlib.sha256(bytes(huff_data)).hexdigest()
+			}
+	all_level_data = level_data + [(f"{l_id}_{i}", l_len, None, l_file) for i, (l_id, l_len, l_file) in enumerate(meta_level_data)]
+	banked_level_data = binpacking.to_constant_volume(all_level_data, 8192, 1)
+
+	out_str = ["", ";;; Generated by export_levels.py", ""]
 
 	for (i, bank) in enumerate(banked_level_data, 1):
 		real_sum_size = sum([length for (id, length, hdr, cached_data_path) in bank])
 		print(f"\t- LVL_BANK_{i:02X}, size {real_sum_size:04}/8192:")
-		out_str += f'.segment "LVL_BANK_{i:02X}" ; Size: {real_sum_size}\n'
+		out_str.append(f'.segment "LVL_BANK_{i:02X}" ; Size: {real_sum_size}')
 		for (id, length, hdr, cached_data_path) in bank:
 			print(f"\t\t- ({length:4} bytes) {id}")
-			out_str += f"\t.export level_data_{id}\n"
-			out_str += f"\tlevel_data_{id}:\n"
-			out_str += f'\t\t.incbin "{cached_data_path.relative_to(own_path)}" ; Size: {length}\n'
-		out_str += "\n"
+			out_str.append(f"\t.export level_data_{id}")
+			out_str.append(f"\tlevel_data_{id}:")
+			if (hdr != None):
+				out_str.append("\t; Header")
+				out_str += [f"\t\t.byte {i}" for i in hdr]
+			out_str.append("\t; Level data")
+			out_str.append(f'\t\t.incbin "{cached_data_path.relative_to(own_path)}" ; Size: {length}')
+			out_str.append("")
+		out_str.append("")
 
-	(own_path / "all_level_data.s").write_text(out_str)
+	(own_path / "all_level_data.s").write_text("\n".join(out_str))
 
 	# if the export is successful, write cache
 	(own_path / "level_data_cache.json").write_text(json.dumps(size_cache))
@@ -148,7 +243,7 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[str], level_last_bank 
 		rowOffset = 57 - rows
 		count1 = 0
 		count2 = 0
-		spriteCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		spriteCounts = [0] * 16
 		overflowStart = -1
 		for i in range(0, columns):
 			spriteCounts[i & 0x0F] = sum([int(int(lines[j][i]) >= 0) for j in range(0, rows)])
