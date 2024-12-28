@@ -109,6 +109,7 @@ VRAM_INDEX:			.res 1
 
 xargs:				.res 4
 noMouse:			.res 1
+huffmunch_zpblock:	.res 9
 
  
 ;
@@ -301,6 +302,7 @@ detectNTSC:
 	.include "neslib.s"
 	.include "nesdash.s"
 	.include "nesdoug.s"
+	.include "huffmunch.s"
     
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music_bank0.dmc"

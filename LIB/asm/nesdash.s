@@ -6,8 +6,7 @@
 
 .macpack longbranch
 
-.importzp _level_data, _sprite_data
-level_data = _level_data
+.importzp _sprite_data
 sprite_data = _sprite_data
 
 .define gamemode_count 9
@@ -29,13 +28,6 @@ sprite_data = _sprite_data
 	INCW addr
 .endmacro
 
-.macro incw_check addr
-	INC addr
-	BNE :+
-		jsr incwlvl_checkC000
-:
-.endmacro
-
 ; You get your arguments back in ptr3
 .macro crossPRGBankJSR inArgCount, routine, bank
 	.ifblank routine
@@ -45,7 +37,7 @@ sprite_data = _sprite_data
 	.ifnblank bank
 		LDY bank
 	.else
-		LDY #^routine
+		LDY #.bank(routine)
 	.endif
 
 	.ifnblank inArgCount
@@ -64,8 +56,8 @@ sprite_data = _sprite_data
 
 
 .segment "ZEROPAGE"
-	rld_value:      .res 1
-	rld_run:        .res 1
+	rld_value:      	.res 1
+	rld_run:        	.res 1
 
 .segment "BSS"
 	; column buffer, to be pushed to the collision map
@@ -236,16 +228,14 @@ _init_rld:
 	STA _sprite_data+0		;__	Get low pointer to sprite data 
 	LDA _sprite_list_hi,y	;
 	STA _sprite_data+1		;__	Get high pointer to sprite data 
-	LDA _sprite_list_bank,y	;   Get sprite data bank
-	; CLC                     ;
-	; ADC #<FIRST_SPRITE_BANK ;
-	STA _sprite_data_bank	;__
+	LDA _sprite_list_bank,y	;
+	STA _sprite_data_bank	;__	Get sprite data bank
 	LDA _level_list_lo,y	;
-	STA _level_data+0		;__	Get low pointer to level data 
+	STA	ptr1+0				;__	Get low pointer to level data
 	LDA _level_list_hi,y	;
-	STA _level_data+1		;__	Get high pointer to level data 
-	LDA _level_list_bank,y	;   Get level data bank
-	STA _level_data_bank	;__
+	STA	ptr1+1				;__	Get high pointer to level data 
+	LDA _level_list_bank,y	;
+	STA _level_data_bank	;__	Get level data bank
 	
 	JSR mmc3_set_prg_bank_1
 
@@ -253,26 +243,26 @@ _init_rld:
 	STY rld_column		;__ Reset scrolling
 
 	; Read header
-	LDA (level_data),y	;
+	LDA (ptr1),y		;
 	STA _song			;   Song number
-	incw_check level_data
+	INCW ptr1			;__
 
-	LDA (level_data),y	;
+	LDA (ptr1),y		;
 	STA _gamemode		;   Starting level number
-	incw_check level_data
+	INCW ptr1			;__
 
-	LDA (level_data),y	;
+	LDA (ptr1),y		;
 	STA _speed			;   Starting speed
-	incw_check level_data
+	INCW ptr1			;__
 
-	LDA (level_data),y	;	Starting BG color
+	LDA (ptr1),y		;	Starting BG color
 ;	AND #$3F			;	Store normal color (pal_col(0, tmp2))
 	STA _no_parallax		;__
-	incw_check level_data
+	INCW ptr1			;__
 
 ;	LDA _discomode
 ;	BNE @noset
-	LDA (level_data),y	;	Starting BG color
+	LDA (ptr1),y	;	Starting BG color
 	AND #$3F			;	Store normal color (pal_col(0, tmp2))
 	STA PAL_BUF_RAW+0		;__
 	ldx _lastbgcolortype
@@ -288,9 +278,9 @@ _init_rld:
 	STA PAL_BUF_RAW+9		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
 @nostore:
 	txa
-	incw_check level_data
+	incw ptr1
 
-	LDA (level_data),y	;	Starting ground color
+	LDA (ptr1),y	;	Starting ground color
 	AND #$3F			;	Store normal color (pal_col(6, tmp2))
 	STA PAL_BUF_RAW+6		;__
 	ldx _lastgcolortype
@@ -324,12 +314,12 @@ _init_rld:
 
 	
 	ldy #0
-	incw_check level_data
+	incw ptr1
 
 	.if USE_ILLEGAL_OPCODES
-		lax (level_data),y
+		lax (ptr1),y
 	.else
-		LDA	(level_data),y
+		LDA	(ptr1),y
 		TAX
 	.endif
 	EOR #$FF			;
@@ -362,41 +352,32 @@ _init_rld:
 		ORA #$08
 		STA min_scroll_y
 
-	incw_check level_data
+	incw ptr1
 
 SetupNextRLEByte:
-    LDA (level_data),y	;
-    bmi single_rle_byte	;	Load rld_run, ++level_data
+	lda	ptr1+0				;
+	sta	huffmunch_zpblock+0	;	Huffmunch data ptr
+	lda	ptr1+1				;
+	sta	huffmunch_zpblock+1	;__
+
+	ldx	#$00			;	Stream ID: 0
+	ldy	#$00			;__
+
+	jsr	huffmunch_load
+
+    jsr	huffmunch_read	;
+	cmp	#$00			;
+    bmi single_rle_byte	;	Load rld_run
     STA rld_run			;__ 
-    incw_check level_data	;__
 
-    LDA (level_data),y	;
-    STA rld_value		;   Load rld_value, ++level_data
-    ; JMP incwlvl_checkC000
-
-    INC level_data
-    BNE :+
-incwlvl_checkC000:  ; clobbers nothing
-		INC level_data+1
-		bit level_data+1
-		; since the high byte will only be $Ax or $Bx, when bit 6 is set then its rolled over to $c0
-		bvc :+
-		pha 
-			; switch banks
-			LDA #$A0            ;   Reset memory-mapped ptr
-			STA level_data+1    ;__
-			INC _level_data_bank ;_ Increment bank
-			LDA _level_data_bank
-			jsr mmc3_set_prg_bank_1 ;__ Switch the bank
-		pla
-	:   
+    jsr	huffmunch_read	;
+    STA rld_value		;__	Load rld_value
 	RTS
 single_rle_byte:
 	and #$7f
 	sta rld_value
 	lda #0
 	sta rld_run
-	incw_check level_data
 	rts
 
 ; void unrle_next_column();
@@ -405,9 +386,10 @@ single_rle_byte:
 .export _unrle_next_column
 .proc _unrle_next_column
 
+	col_idx = tmp1
+
 	; Count up to zero to remove a cmp instruction
 	ldx rld_load_value
-	ldy #$00
 	lda rld_value
 
 	@FirstLoop:
@@ -419,18 +401,19 @@ single_rle_byte:
 		bpl @End ; Guaranteed jump
 	
 	@UpdateValueRun:
+		stx	col_idx
+
 		; if bit 7 of the byte is set, then its a run of length 1
 		; otherwise this is a length < 127 byte and we need to read another
-		lda (level_data), y
-		bmi @SingleByteRun
-		sta rld_run               ;__ Load rld_run, ++level_data
-		incw_check level_data     ;__
+		jsr	huffmunch_read		;
+		cmp	#$00				;
+		bmi @SingleByteRun		;	Load rld_run
+		sta rld_run				;__
 
-		lda (level_data), y       ;
-		sta rld_value             ;   Load rld_value, ++level_data
-		incw_check level_data
+		jsr	huffmunch_read		;
+		sta rld_value			;__	Load rld_value
 
-		lda rld_value
+		ldx	col_idx
 		inx 
 		bmi @FirstLoop
 		bpl @End ; Unconditional
@@ -438,9 +421,9 @@ single_rle_byte:
 	@SingleByteRun:
 		and #$7f
 		sta rld_value
-		; y = 0
+		ldy	#$00
 		sty rld_run
-		incw_check level_data
+		ldx col_idx
 		inx 
 		bmi @FirstLoop
 		; and then fallthrough to copying to the collision map
@@ -502,14 +485,13 @@ single_rle_byte:
 		beq end_early
 		
 	loop:
-		lda (level_data),y	; either single-run value or run
+		jsr	huffmunch_read	; either single-run value or run
+		cmp	#$00
 		bmi single_byte
 
-		incw_check level_data
 		sta rld_run
-		lda (level_data),y	; value
+		jsr	huffmunch_read	; value
 		tax
-		incw_check level_data
 
 		lda mulRes0
 		clc	; subtract 1 extra
@@ -534,8 +516,6 @@ single_rle_byte:
 
 
 	single_byte:
-		incw_check level_data
-
 		dec mulRes0
 		ldx mulRes0
 		inx	; less bytes then cpx #$ff
@@ -548,7 +528,8 @@ single_rle_byte:
 	end_single:
 		and #$7F
 		sta rld_value
-		sty rld_run	; y is still 0
+		lda	#$00
+		sta rld_run	; y is still 0
 		rts
 
 .endproc

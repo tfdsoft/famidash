@@ -2,7 +2,7 @@
 ; Brad Smith, 2019
 ; https://github.com/bbbradsmith/huffmunch
 
-.importzp huffmunch_zpblock
+; .importzp huffmunch_zpblock
 
 ; in: Y:X = stream index, hm_node = pointer to data block
 ; out: Y:X = output byte length of current stream, hm_node = total stream count in data
