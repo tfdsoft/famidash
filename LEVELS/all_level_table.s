@@ -113,13 +113,13 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_luckydraw))
 
 _level_chunk_list_lo:
-	.byte .lobyte(deathmoon_0)
+	.byte .lobyte(level_data_deathmoon_0)
 
 _level_chunk_list_hi:
-	.byte .hibyte(deathmoon_0)
+	.byte .hibyte(level_data_deathmoon_0)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(deathmoon_0))
+	.byte .lobyte(.bank(level_data_deathmoon_0))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)

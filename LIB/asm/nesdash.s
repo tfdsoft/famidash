@@ -403,6 +403,7 @@ single_rle_byte:
 	@UpdateValueRun:
 		stx	col_idx
 
+	@ReadNewVal:
 		; if bit 7 of the byte is set, then its a run of length 1
 		; otherwise this is a length < 127 byte and we need to read another
 		jsr	huffmunch_read		;
@@ -411,13 +412,20 @@ single_rle_byte:
 		sta rld_run				;__
 
 		jsr	huffmunch_read		;
-		sta rld_value			;__	Load rld_value
-
+		cmp	rld_run				;	Load rld_value
+		bne	:+					;__
+			cmp	#$7F			;
+			bne :+				;	Parse meta sequences
+			jsr	loadLevelContinuation
+			jmp	@ReadNewVal		;
+		:						;__
+		sta rld_value			;__
+	
 		ldx	col_idx
 		inx 
 		bmi @FirstLoop
 		bpl @End ; Unconditional
-	
+
 	@SingleByteRun:
 		and #$7f
 		sta rld_value
@@ -440,6 +448,26 @@ single_rle_byte:
 		sta rld_column
 	.endif
 	rts
+.endproc
+
+; Function not available in C
+.segment "CODE_2"
+
+.proc loadLevelContinuation
+	; Meta sequence: load new level chunk
+	jsr	huffmunch_read		;	Get Meta Level ID
+	tay						;__
+
+	lda	_level_chunk_list_lo, y		;	Get new data low ptr
+	sta	huffmunch_zpblock+0			;__
+	lda	_level_chunk_list_hi, y		;	Get new data high ptr
+	sta	huffmunch_zpblock+1			;__
+
+	lda	_level_chunk_list_bank, y	;
+	sta	_level_data_bank			;	Get new data bank
+	jsr	mmc3_set_prg_bank_1			;__
+
+	jmp	huffmunch_load
 .endproc
 
 ; void __fastcall__ dummy_unrle_columns(uint16_t columns);
@@ -488,9 +516,16 @@ single_rle_byte:
 		jsr	huffmunch_read	; either single-run value or run
 		cmp	#$00
 		bmi single_byte
-
 		sta rld_run
-		jsr	huffmunch_read	; value
+
+		jsr	huffmunch_read		;
+		cmp	rld_run				;	Load rld_value
+		bne	:+					;__
+			cmp	#$7F			;
+			bne :+				;	Parse meta sequences
+			jsr	loadLevelContinuation
+			jmp	loop			;
+		:						;__
 		tax
 
 		lda mulRes0
