@@ -65,8 +65,9 @@ def get_split_point_in_rle_data(data : Iterable[int], split_point : int):
 
 def split_rle_data_into_huffmunch_banks(data : Iterable[int], compressed_bank_size : int, first_meta_ptr : int):
 	out_data = []
-	met_ptr = first_meta_ptr
+	meta_ptr = first_meta_ptr
 	while len(data) != 0:
+		# LET'S GO GAMBLING!!!
 		# make a bet about the compression rate
 		bet = 30 # %, pretty unsafe bet, but life is all about taking risks
 		while True:
@@ -76,16 +77,17 @@ def split_rle_data_into_huffmunch_banks(data : Iterable[int], compressed_bank_si
 				bet_data = data
 				og_size = len(data)
 			else:
-				bet_data = data[0:get_split_point_in_rle_data(data, bet_size - 2)] + [0x7F, 0x7F, met_ptr] # Meta seq
-				og_size = get_split_point_in_rle_data(data, bet_size - 2)
+				bet_data = data[0:get_split_point_in_rle_data(data, bet_size - 3)] + [0x7F, 0x7F, meta_ptr] # Meta seq
+				og_size = get_split_point_in_rle_data(data, bet_size - 3)
 			huff_data = huffmunch.compress_single(bet_data)
 			print(f"\tBet: {100-bet}%, Real size: {len(bet_data)} -> {len(huff_data)}, Real compression: {100-(len(huff_data) / len(bet_data) * 100) : .4}%")
 			if (len(huff_data) <= compressed_bank_size):
 				break
+			# AW DANGIT
 			bet += 5 # %
 		out_data.append(huff_data)
 		data = data[og_size:]
-		met_ptr += 1
+		meta_ptr += 1
 	return out_data
 	
 
@@ -135,10 +137,12 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 				huff_data = huffmunch.compress_single(rle_data)
 				cached_str = "level"
 				cached_data_path.write_bytes(huff_data)
+				level_cache = {}
 		else:
 			huff_data = huffmunch.compress_single(rle_data)
 			cached_str = "level"
 			cached_data_path.write_bytes(huff_data)
+			level_cache = {}
 		header = [
 			f"{level}_song_number",
 			f"{level}_game_mode",
