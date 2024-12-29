@@ -90,6 +90,7 @@ sprite_data = _sprite_data
 .export _extceil := extceil
 .export _min_scroll_y := min_scroll_y
 .export	_seam_scroll_y := seam_scroll_y
+.export _old_draw_scroll_y := old_draw_scroll_y
 
 .export _drawing_frame := drawing_frame
 .export _parallax_scroll_column := parallax_scroll_column
