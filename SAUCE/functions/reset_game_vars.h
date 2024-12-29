@@ -106,8 +106,22 @@ void restore_practice_state() {
 //		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);
 //	} while (++tmp2 < 9);
 	orbactive = practice_orbactive[tmp2];
-
 	long_temp_x = practice_player_1_x_hi[tmp2];
+
+	lastgcolortype = practice_g_color_type[tmp2];
+	
+	lastbgcolortype = practice_bg_color_type[tmp2];
+	tmp3 = (lastbgcolortype & 0x3F);
+	pal_col(0, tmp3);
+	tmp3 = oneShadeDarker(tmp3);
+	pal_col(1, tmp3);
+	pal_col(9, tmp3);
+
+	tmp3 = (lastgcolortype & 0x3F);
+	pal_col(6, tmp3);
+	pal_col(5, oneShadeDarker(tmp3));
+
+	pal_set_update();
 
 	__A__ = currplayer<<1;
 	__asm__("tay");

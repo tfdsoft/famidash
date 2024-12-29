@@ -147,19 +147,6 @@ void reset_level(void) {
 
 	unrle_first_screen();
 
-	if (practice_point_count) {
-		tmp3 = practice_bg_color_type[curr_practice_point];
-			tmp2 = (tmp3 & 0x3F);                        
-			pal_col(0, tmp2);
-			pal_col(1, oneShadeDarker(tmp2)); 
-			pal_col(9, oneShadeDarker(tmp2)); 
-
-		tmp3 = practice_g_color_type[curr_practice_point];
-			tmp2 = (tmp3 & 0x3F);                        
-	    pal_col(6, tmp2);
-
-	    pal_set_update();
-	}
 	if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
