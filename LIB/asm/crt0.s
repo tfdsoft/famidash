@@ -414,38 +414,10 @@ _GAME_CHR:
     .incbin "GRAPHICS/bankmain.chr" ; 1kb (38) 
     .incbin "GRAPHICS/bankblankfingerdash2.chr" ; 1kb
 
-;    .repeat 15, I   ; banks 40 - 69
-        .incbin "GRAPHICS/bankicon00.chr" ;1kb
+    .repeat 15, I   ; banks 40 - 69
+        .incbin .sprintf("GRAPHICS/bankicon%02X.chr", I)  ; 1kb
         .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon01.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon02.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon03.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon04.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon05.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon06.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon07.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon08.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon09.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon0A.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon0B.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon0C.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon0D.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
-        .incbin "GRAPHICS/bankicon0E.chr" ;1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
- ;   .endrepeat
+    .endrepeat
 
     .repeat 11, I   ; banks 70 - 91
         .incbin .sprintf("fan icon collection/CONTEST WINNERS/contest%1X.chr", I+1) ; 1kb
