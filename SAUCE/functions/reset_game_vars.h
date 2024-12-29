@@ -1,5 +1,7 @@
 CODE_BANK_PUSH("XCD_BANK_04")
 
+extern uint16_t old_draw_scroll_y;
+
 void reset_game_vars(){
 	if (!practice_point_count) {
 		music_play(song_practice);
@@ -41,6 +43,8 @@ void reset_game_vars(){
 
 	lohi_arr32_store(practice_scroll_x, tmp1, scroll_x);
 	lohi_arr16_store(practice_scroll_y, tmp1, scroll_y);
+	lohi_arr16_store(practice_seam_scroll_y, tmp1, seam_scroll_y);
+	lohi_arr16_store(practice_old_draw_scroll_y, tmp1, old_draw_scroll_y);
 	lohi_arr16_store(practice_target_scroll_y, tmp1, target_scroll_y);
 
 	practice_player_gamemode[tmp1] = gamemode;
@@ -94,7 +98,9 @@ void restore_practice_state() {
 	currplayer_last_slope_type = last_slope_type[0];
 
 	scroll_x = lohi_arr32_load(practice_scroll_x, tmp2) - (256 + 16);
-	old_trail_scroll_y = scroll_y = lohi_arr16_load(practice_scroll_y, tmp2);
+	old_trail_scroll_y = scroll_y =	lohi_arr16_load(practice_scroll_y, tmp2);
+	old_draw_scroll_y = lohi_arr16_load(practice_old_draw_scroll_y, tmp2);
+	seam_scroll_y = lohi_arr16_load(practice_seam_scroll_y, tmp2);
 	target_scroll_y = lohi_arr16_load(practice_target_scroll_y, tmp2);
 
 	gamemode = practice_player_gamemode[tmp2];
