@@ -413,18 +413,20 @@ single_rle_byte:
 
 		jsr	huffmunch_read		;
 		cmp	rld_run				;	Load rld_value
-		bne	:+					;__
-			cmp	#$7F			;
-			bne :+				;	Parse meta sequences
-			jsr	loadLevelContinuation
-			jmp	@ReadNewVal		;
-		:						;__
+		beq	@ParseMetaSeq		;	or meta sequence
+	@noMetaSeq:					;
 		sta rld_value			;__
 	
 		ldx	col_idx
 		inx 
 		bmi @FirstLoop
 		bpl @End ; Unconditional
+
+	@ParseMetaSeq:
+		cmp	#$7F			;
+		bne @noMetaSeq		;	Parse meta sequences
+		jsr	loadLevelContinuation
+		jmp	@ReadNewVal		;__
 
 	@SingleByteRun:
 		and #$7f
@@ -466,6 +468,9 @@ single_rle_byte:
 	lda	_level_chunk_list_bank, y	;
 	sta	_level_data_bank			;	Get new data bank
 	jsr	mmc3_set_prg_bank_1			;__
+
+	ldx	#$00			;	Stream ID: 0
+	ldy	#$00			;__
 
 	jmp	huffmunch_load
 .endproc
@@ -519,14 +524,10 @@ single_rle_byte:
 		sta rld_run
 
 		jsr	huffmunch_read		;
-		cmp	rld_run				;	Load rld_value
-		bne	:+					;__
-			cmp	#$7F			;
-			bne :+				;	Parse meta sequences
-			jsr	loadLevelContinuation
-			jmp	loop			;
-		:						;__
-		tax
+			cmp	rld_run			;	Load rld_value
+			beq	parseMetaSeq	;	or meta sequence
+		loop_noMetaSeq:			;
+			tax					;__
 
 		lda mulRes0
 		clc	; subtract 1 extra
@@ -567,6 +568,11 @@ single_rle_byte:
 		sta rld_run	; y is still 0
 		rts
 
+	parseMetaSeq:
+		cmp	#$7F			;
+		bne loop_noMetaSeq	;	Parse meta sequences
+		jsr	loadLevelContinuation
+		jmp	loop			;__
 .endproc
 
 
