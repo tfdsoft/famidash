@@ -28,7 +28,7 @@ def chunks(lst, n):
 
 def vertical_rle_with_single_tile(lines):
 	# vertical rle compression
-	column_tiles = list(itertools.chain.from_iterable(zip(*list(lines))))
+	column_tiles = list(itertools.chain.from_iterable(zip(*list(lines)))) + [0x100]
 	rle_data = []
 	current_run = int(column_tiles[0])
 	run_length = 1

@@ -401,7 +401,7 @@ sprite_data_backontrack:
   .byte $d0,$34,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_11"
+.segment "LVL_BANK_15"
 sprite_data_polargeist:
   .byte $10,$01,$70,$03,$0b
   .byte $00,$02,$70,$03,$0b
@@ -861,7 +861,7 @@ sprite_data_dryout:
   .byte $90,$34,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_15"
+.segment "LVL_BANK_11"
 sprite_data_baseafterbase:
   .byte $70,$02,$70,$03,$2b
   .byte $a0,$02,$40,$03,$2d
@@ -3352,7 +3352,7 @@ sprite_data_theoryofeverything:
   .byte $00,$36,$b0,$01,$0f
   .byte $ff
 
-.segment "LVL_BANK_14"
+.segment "LVL_BANK_0E"
 sprite_data_electroman:
   .byte $00,$00,$30,$03,$82
   .byte $00,$00,$40,$03,$c1
@@ -4116,7 +4116,7 @@ sprite_data_clubstep:
   .byte $80,$38,$40,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_0E"
+.segment "LVL_BANK_08"
 sprite_data_electrodynamix:
   .byte $00,$00,$60,$03,$99
   .byte $00,$00,$80,$03,$c9
@@ -10663,7 +10663,7 @@ sprite_data_firetemple:
   .byte $f0,$36,$70,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_08"
+.segment "LVL_BANK_15"
 sprite_data_eon:
   .byte $f0,$00,$80,$03,$2e
   .byte $90,$01,$60,$03,$2b
@@ -11253,7 +11253,7 @@ sprite_data_pgclubstep:
   .byte $70,$39,$70,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_0C"
+.segment "LVL_BANK_0B"
 sprite_data_luckydraw:
   .byte $00,$00,$60,$03,$cf
   .byte $00,$00,$70,$03,$ee
@@ -12061,4 +12061,8 @@ sprite_data_luckydraw:
   .byte $20,$32,$60,$03,$df
   .byte $30,$32,$60,$03,$df
   .byte $b0,$33,$60,$03,$0f
+  .byte $ff
+
+.segment "LVL_BANK_0D"
+sprite_data_test4:
   .byte $ff
