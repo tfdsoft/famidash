@@ -39,6 +39,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_luckydraw)
+	.byte .lobyte(level_data_test4)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -75,6 +76,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_luckydraw)
+	.byte .hibyte(level_data_test4)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -111,6 +113,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_luckydraw))
+	.byte .lobyte(.bank(level_data_test4))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_deathmoon_0)
@@ -156,6 +159,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_eon)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_luckydraw)
+	.byte .lobyte(sprite_data_test4)
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
@@ -192,6 +196,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_eon)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_luckydraw)
+	.byte .hibyte(sprite_data_test4)
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
@@ -228,6 +233,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_eon))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_luckydraw))
+	.byte .lobyte(.bank(sprite_data_test4))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -267,6 +273,7 @@ _level_lengths_lo:
 	.byte .lobyte($000080)		; eon
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000086)		; luckydraw
+	.byte .lobyte($000001)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -305,6 +312,7 @@ _level_lengths_md:
 	.byte .hibyte($000080)		; eon
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000086)		; luckydraw
+	.byte .hibyte($000001)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -343,6 +351,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000080)		; eon
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000086)		; luckydraw
+	.byte .bankbyte($000001)		; test4
 
 .endif
 .endif
