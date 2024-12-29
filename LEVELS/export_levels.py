@@ -57,16 +57,18 @@ def get_split_point_in_rle_data(data : Iterable[int], split_point : int):
 	ptr = 0
 	while ptr <= split_point:
 		lastptr = ptr
-		if data[ptr] < 0x80:
+		if data[ptr] >= 0x80:
 			ptr += 1
 		else:
 			ptr += 2
 	return lastptr
 
-def split_rle_data_into_huffmunch_banks(data : Iterable[int], compressed_bank_size : int, first_meta_ptr : int):
+def split_rle_data_into_huffmunch_banks(data : Iterable[int], first_meta_ptr : int, compressed_banks_sizes : list[int]):
 	out_data = []
 	meta_ptr = first_meta_ptr
+	idx = 0
 	while len(data) != 0:
+		compressed_bank_size = compressed_banks_sizes[min(len(compressed_banks_sizes)-1, idx)]
 		print(f"\tPart {len(out_data)}:")
 		# LET'S GO GAMBLING!!!
 		# make a bet about the compression rate
@@ -182,7 +184,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			else:
 				print("compressing in parts:")
 
-				split_data = split_rle_data_into_huffmunch_banks(rle_data, 8192, len(level_chunk_data))
+				split_data = split_rle_data_into_huffmunch_banks(rle_data, len(level_chunk_data), [8192-7, 8192])
 				split_files = [cached_data_path.with_suffix(f".{i}.bin") for i in range(len(split_data))]
 
 				[path.write_bytes(data) for path, data in zip(split_files, split_data)]
@@ -225,10 +227,10 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 	
 	print("")
 	print("============ TOTAL LEVEL COMPRESSION STATS ============")
-	print(f"Total RLE (+ header) size: {total_rle_size}")
+	print(f"Total RLE (+ header) size:           {total_rle_size}")
 	print(f"Total RLE+huffmunch (+ header) size: {total_final_size}")
-	print(f"Bytes shaved off: {total_rle_size - total_final_size}")
-	print(f"Effective compression rate: {100-(total_final_size / total_rle_size * 100) : .6}%")
+	print(f"Bytes shaved off:                    {total_rle_size - total_final_size}")
+	print(f"Effective compression rate:         {100-(total_final_size / total_rle_size * 100) : .6}%")
 	print("============ TOTAL LEVEL COMPRESSION STATS ============")
 	print("")
 
