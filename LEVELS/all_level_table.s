@@ -270,7 +270,7 @@ _level_lengths_lo:
 	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($00006E)		; problematic
 	.byte .lobyte($00008D)		; firetemple
-	.byte .lobyte($000080)		; eon
+	.byte .lobyte($000286)		; eon
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000086)		; luckydraw
 	.byte .lobyte($000001)		; test4
@@ -309,7 +309,7 @@ _level_lengths_md:
 	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($00006E)		; problematic
 	.byte .hibyte($00008D)		; firetemple
-	.byte .hibyte($000080)		; eon
+	.byte .hibyte($000286)		; eon
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000086)		; luckydraw
 	.byte .hibyte($000001)		; test4
@@ -348,7 +348,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($00006E)		; problematic
 	.byte .bankbyte($00008D)		; firetemple
-	.byte .bankbyte($000080)		; eon
+	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000086)		; luckydraw
 	.byte .bankbyte($000001)		; test4
