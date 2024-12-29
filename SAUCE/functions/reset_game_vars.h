@@ -49,6 +49,7 @@ void reset_game_vars(){
 	practice_parallax_scroll_x[tmp1] = parallax_scroll_x;
 	practice_bg_color_type[tmp1] = lastbgcolortype;
 	practice_g_color_type[tmp1] = lastgcolortype;
+	practice_outline_color[tmp1] = outline_color;
 	practice_orbactive[tmp1] = orbactive;
 
 	long_temp_x = high_byte(player_x[0]);
@@ -108,6 +109,8 @@ void restore_practice_state() {
 	orbactive = practice_orbactive[tmp2];
 	long_temp_x = practice_player_1_x_hi[tmp2];
 
+	outline_color = practice_outline_color[tmp2];
+
 	lastgcolortype = practice_g_color_type[tmp2];
 	
 	lastbgcolortype = practice_bg_color_type[tmp2];
@@ -120,6 +123,10 @@ void restore_practice_state() {
 	tmp3 = (lastgcolortype & 0x3F);
 	pal_col(6, tmp3);
 	pal_col(5, oneShadeDarker(tmp3));
+
+	tmp3 = (outline_color & 0x3F);
+	pal_col(3, tmp3);
+	pal_col(7, tmp3);
 
 	pal_set_update();
 
