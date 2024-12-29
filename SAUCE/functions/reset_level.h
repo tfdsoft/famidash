@@ -71,6 +71,7 @@ void reset_level(void) {
 	}
 	pal_fade_to_withmusic(4,0);
 	oam_clear();
+	++auto_fs_updates;
 	ppu_off(); // reset the level when you get to this point, and change this later
 
 	scroll_y = 0x2EF;
