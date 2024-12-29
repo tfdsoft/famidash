@@ -311,7 +311,7 @@ void state_game(){
 						kandokidshack4++;
 					}
 
-					else if ((controllingplayer->press_b || mouse.left_press) && PRACTICE_ENABLED) {
+					else if (controllingplayer->press_b || mouse.left_press) {
 						mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
 						reset_game_vars();
 						//practice_point_count = 1;

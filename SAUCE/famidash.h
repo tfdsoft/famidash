@@ -139,7 +139,6 @@ uint8_t level_completeness_normal[0x40*2];
 uint8_t achievements[0x20];
 
 uint8_t invisible;
-uint8_t PRACTICE_ENABLED = 1;
 uint8_t twoplayer;
 
 /* memory optimization */
