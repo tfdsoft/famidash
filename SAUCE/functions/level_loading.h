@@ -106,7 +106,6 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 			i++;
 			uint32_inc(scroll_x);
 		} while (i != 0);
-		music_update();
 		
 	//	memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
 	
@@ -127,7 +126,6 @@ void unrle_first_screen(void){ // run-length decode the first screen of a level
 		if (draw_screen()) flush_vram_update2();	// if draw_screen did anything, flush vram
 		i++;
 		uint32_inc(scroll_x);
-		if (!(i & 0x1F)) music_update();	// it takes about 29k cycles for exactly 2 of these subloops, aka 1 frame
 	} while (i != 0);
 
 	init_sprites();
