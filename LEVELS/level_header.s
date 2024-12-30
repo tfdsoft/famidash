@@ -266,3 +266,10 @@ dearnostalgists_speed       = $02
 dearnostalgists_no_parallax  = 1
 dearnostalgists_bg_color    = $2C
 dearnostalgists_grnd_color  = $1C
+
+aprettyeasylevel_song_number = song_stereo_madness
+aprettyeasylevel_game_mode   = $00
+aprettyeasylevel_speed       = $00
+aprettyeasylevel_no_parallax  = 0
+aprettyeasylevel_bg_color    = $12
+aprettyeasylevel_grnd_color  = $02

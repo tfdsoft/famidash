@@ -30,6 +30,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_dreamer)
 	.byte .lobyte(level_data_kappaclysm)
 	.byte .lobyte(level_data_revolution)
+	.byte .lobyte(level_data_aprettyeasylevel)
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
 	.byte .lobyte(level_data_demonpark)
@@ -70,6 +71,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_dreamer)
 	.byte .hibyte(level_data_kappaclysm)
 	.byte .hibyte(level_data_revolution)
+	.byte .hibyte(level_data_aprettyeasylevel)
 	.byte .hibyte(level_data_thelightningroad)
 	.byte .hibyte(level_data_nightmare)
 	.byte .hibyte(level_data_demonpark)
@@ -110,6 +112,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_dreamer))
 	.byte .lobyte(.bank(level_data_kappaclysm))
 	.byte .lobyte(.bank(level_data_revolution))
+	.byte .lobyte(.bank(level_data_aprettyeasylevel))
 	.byte .lobyte(.bank(level_data_thelightningroad))
 	.byte .lobyte(.bank(level_data_nightmare))
 	.byte .lobyte(.bank(level_data_demonpark))
@@ -162,6 +165,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_dreamer)
 	.byte .lobyte(sprite_data_kappaclysm)
 	.byte .lobyte(sprite_data_revolution)
+	.byte .lobyte(sprite_data_aprettyeasylevel)
 	.byte .lobyte(sprite_data_thelightningroad)
 	.byte .lobyte(sprite_data_nightmare)
 	.byte .lobyte(sprite_data_demonpark)
@@ -202,6 +206,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_dreamer)
 	.byte .hibyte(sprite_data_kappaclysm)
 	.byte .hibyte(sprite_data_revolution)
+	.byte .hibyte(sprite_data_aprettyeasylevel)
 	.byte .hibyte(sprite_data_thelightningroad)
 	.byte .hibyte(sprite_data_nightmare)
 	.byte .hibyte(sprite_data_demonpark)
@@ -242,6 +247,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_dreamer))
 	.byte .lobyte(.bank(sprite_data_kappaclysm))
 	.byte .lobyte(.bank(sprite_data_revolution))
+	.byte .lobyte(.bank(sprite_data_aprettyeasylevel))
 	.byte .lobyte(.bank(sprite_data_thelightningroad))
 	.byte .lobyte(.bank(sprite_data_nightmare))
 	.byte .lobyte(.bank(sprite_data_demonpark))
@@ -285,6 +291,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000AC)		; dreamer
 	.byte .lobyte($000079)		; kappaclysm
 	.byte .lobyte($0000BB)		; revolution
+	.byte .lobyte($000070)		; aprettyeasylevel
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
 	.byte .lobyte($0000A2)		; demonpark
@@ -327,6 +334,7 @@ _level_lengths_md:
 	.byte .hibyte($0000AC)		; dreamer
 	.byte .hibyte($000079)		; kappaclysm
 	.byte .hibyte($0000BB)		; revolution
+	.byte .hibyte($000070)		; aprettyeasylevel
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
 	.byte .hibyte($0000A2)		; demonpark
@@ -369,6 +377,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000AC)		; dreamer
 	.byte .bankbyte($000079)		; kappaclysm
 	.byte .bankbyte($0000BB)		; revolution
+	.byte .bankbyte($000070)		; aprettyeasylevel
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
 	.byte .bankbyte($0000A2)		; demonpark

@@ -75,6 +75,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //dreamer
 	DECOCLOUD, //kappaclysm
 	DECO1, //revolution
+	DECO1, //a pretty easy level
 	DECO1, //LIGHTNING ROAD
 	DECOCLOUD, //NIGHTMARE
 	DECO1, //DEMON PARK
@@ -116,6 +117,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //dreamer
 	SPIKESC, //kappaclysm
 	SPIKESA, //revolution
+	SPIKESC, //a pretty easy level
 	SPIKESA, //lightning road
 	SPIKESB, //nightmare
 	SPIKESC, //demon park
@@ -157,6 +159,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //dreamer
 	BLOCKSB, //kappaclysm
 	BLOCKSB, //revolution
+	BLOCKSC, //a pretty easy level
 	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
 	BLOCKSA, //demon park
@@ -198,6 +201,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //dreamer
 	SAWBLADESA, //kappaclysm
 	SAWBLADESA, //revolution
+	SAWBLADESA, //a pretty easy level
 	SAWBLADESA, //LIGHTNING ROAD
 	SAWBLADESA, //nightmare
 	SAWBLADESA, //demon park
@@ -240,6 +244,7 @@ const unsigned char difficulty_list[] = {
     HARD, //dreamer
     HARDER, //kappaclysm
     HARDER, //revolution
+    INSANE, //a pretty easy level
     DEMON, //lightning road
     DEMON, //nightmare
     DEMON, //demon park
@@ -281,6 +286,7 @@ const unsigned char stars_list[] = {
 	4,   //dreamer
 	6,  //kappaclysm
 	7,  //revolution
+	9,  //a pretty easy level
 	10, //lightning road
 	10, //nightmare
 	10, //demon park
