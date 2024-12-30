@@ -549,7 +549,7 @@
 		.incbin "EXPORTS\stereomadness.hfm.bin" ; Size: 1904
 
 
-.segment "LVL_BANK_1B"	; Total bank size: 7617 bytes
+.segment "LVL_BANK_1B"	; Total bank size: 7627 bytes
 	.export level_data_cantletgo
 	level_data_cantletgo:
 	; Header
@@ -564,7 +564,7 @@
 		.incbin "EXPORTS\cantletgo.hfm.bin" ; Size: 1773
 
 
-.segment "LVL_BANK_1C"	; Total bank size: 8154 bytes
+.segment "LVL_BANK_1C"	; Total bank size: 8159 bytes
 	.export level_data_luckydraw
 	level_data_luckydraw:
 	; Header

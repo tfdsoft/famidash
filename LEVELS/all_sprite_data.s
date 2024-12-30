@@ -861,7 +861,7 @@ sprite_data_dryout:
   .byte $90,$34,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1B"
+.segment "LVL_BANK_1C"
 sprite_data_baseafterbase:
   .byte $70,$02,$70,$03,$2b
   .byte $a0,$02,$40,$03,$2d
@@ -8053,7 +8053,7 @@ sprite_data_revolution:
   .byte $30,$48,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1C"
+.segment "LVL_BANK_1B"
 sprite_data_aprettyeasylevel:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$c6
@@ -8165,6 +8165,7 @@ sprite_data_aprettyeasylevel:
   .byte $f0,$12,$10,$03,$ca
   .byte $60,$13,$20,$03,$2c
   .byte $a0,$13,$00,$03,$2c
+  .byte $00,$14,$d0,$02,$07
   .byte $30,$14,$10,$03,$2c
   .byte $60,$14,$d0,$02,$09
   .byte $80,$14,$d0,$02,$3c
@@ -8219,6 +8220,7 @@ sprite_data_aprettyeasylevel:
   .byte $40,$1d,$00,$03,$36
   .byte $40,$1d,$30,$03,$08
   .byte $60,$1d,$10,$03,$36
+  .byte $60,$1d,$30,$03,$1a
   .byte $90,$1d,$50,$03,$2c
   .byte $b0,$1d,$10,$03,$91
   .byte $b0,$1d,$20,$03,$c1
@@ -8282,7 +8284,8 @@ sprite_data_aprettyeasylevel:
   .byte $c0,$27,$00,$03,$34
   .byte $80,$28,$c0,$02,$09
   .byte $10,$29,$e0,$02,$08
-  .byte $90,$29,$e0,$02,$34
+  .byte $90,$29,$e0,$02,$1b
+  .byte $90,$29,$f0,$02,$34
   .byte $00,$2b,$30,$03,$0f
   .byte $ff
 
