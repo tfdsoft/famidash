@@ -299,8 +299,6 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[str]):
 #					if level == "eon" and obj_id == 0x09:
 #							x += 4
 
-					if level == "polargeist" and obj_id == 0x0d:
-						y -= 6
 					if level == "clutterfunk" and obj_id == 0x10:
 						count1 += 1
 						if count1 == 2:
