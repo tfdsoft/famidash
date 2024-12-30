@@ -82,6 +82,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //death moon
 	DECOCLOUD, //DECODE
 	EXTRASPRITES1, //dear nostalgists
+	DECO1, //super cycles
 	DECO1, //problematic
 	DECO1, //fire temple
 	EXTRASPRITES1, //EON
@@ -124,6 +125,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //death moon
 	SPIKESB, //decode
 	SPIKESA, //dear nostalgists
+	SPIKESA, //super cycles
 	SPIKESB, //problematic
 	SPIKESB, //fire temple
 	SPIKESB, //eon
@@ -166,6 +168,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //death moon
 	BLOCKSB, //decode
 	BLOCKSA, //dear nostalgists
+	BLOCKSB, //super cycles
 	BLOCKSB, //problematic
 	BLOCKSB, //fire temple
 	BLOCKSA, //EON
@@ -208,6 +211,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //death moon
 	SAWBLADESA, //decode
 	SAWBLADESA, //dear nostalgists
+	SAWBLADESA, //super cycles
 	SAWBLADESA, //problematic
 	SAWBLADESA, //fire temple
 	SAWBLADESA, //EON
@@ -251,6 +255,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //death moon
     DEMON, //decode
     DEMON, //dear nostalgists
+    DEMON, //super cycles
     DEMON, //problematic
     DEMON, //fire temple
     DEMON, //eon
@@ -293,6 +298,7 @@ const unsigned char stars_list[] = {
 	10, //death moon
 	10, //decode
 	10, //dear nostlagists
+	10, //super cycles
 	10, //problematic
 	10, //fire temple
 	10, //eon

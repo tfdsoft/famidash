@@ -91,14 +91,15 @@ void ball_movement(void){
 		Generic.y = high_byte(currplayer_y) + 1;
 	}
 	#define BALL_SWITCH_VEL 0x200
+	#define MINI_BALL_SWITCH_VEL 0x120
 	if (gamemode == GAMEMODE_BALL) {
 		if (((controllingplayer->a || controllingplayer->up)) && (kandotemp2[currplayer] == 0) && currplayer_vel_y == 0){
 			jumps++;
 			currplayer_gravity ^= 0x01;
 			kandotemp2[currplayer] = 1;
 			switch (currplayer_gravity){
-				case 0x00: currplayer_vel_y = BALL_SWITCH_VEL; break;
-				case 0x01: currplayer_vel_y = -BALL_SWITCH_VEL; break;
+				case 0x00: currplayer_vel_y = currplayer_mini ? MINI_BALL_SWITCH_VEL : BALL_SWITCH_VEL; break;
+				case 0x01: currplayer_vel_y = currplayer_mini ? -MINI_BALL_SWITCH_VEL : -BALL_SWITCH_VEL; break;
 			}
 			bg_coll_floor_spikes();
 		}

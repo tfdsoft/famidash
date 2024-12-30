@@ -66,4 +66,5 @@ const unsigned char levelstalemate2[]="STALEMATE";
 const unsigned char leveleasy2[]="LEVEL EASY";
 const unsigned char levelnostalgists2[]=" DEAR NOSTALGISTS";
 const unsigned char levelprettyeasytext2[]="EASY LEVEL";
+const unsigned char levelsupercycles2[]="SUPER CYCLES";
 

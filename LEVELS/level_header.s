@@ -120,10 +120,17 @@ blastprocessing_grnd_color  = $12
 
 test4_song_number = song_midnight
 test4_game_mode   = $00
-test4_speed       = $01
+test4_speed       = $00
 test4_no_parallax  = 1
 test4_bg_color    = $12
 test4_grnd_color  = $02
+
+supercycles_song_number = song_cycles
+supercycles_game_mode   = $00
+supercycles_speed       = $00
+supercycles_no_parallax  = 1
+supercycles_bg_color    = $12
+supercycles_grnd_color  = $02
 
 toe2_song_number = song_toe_2
 toe2_game_mode   = $00
