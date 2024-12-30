@@ -34,6 +34,7 @@ SET all_levels= ^
     demonpark ^
     deathmoon ^
     decode ^
+    dearnostalgists ^
     problematic ^
     firetemple ^
     eon ^

@@ -35,6 +35,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_demonpark)
 	.byte .lobyte(level_data_deathmoon)
 	.byte .lobyte(level_data_decode)
+	.byte .lobyte(level_data_dearnostalgists)
 	.byte .lobyte(level_data_problematic)
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_eon)
@@ -74,6 +75,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_demonpark)
 	.byte .hibyte(level_data_deathmoon)
 	.byte .hibyte(level_data_decode)
+	.byte .hibyte(level_data_dearnostalgists)
 	.byte .hibyte(level_data_problematic)
 	.byte .hibyte(level_data_firetemple)
 	.byte .hibyte(level_data_eon)
@@ -113,6 +115,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_demonpark))
 	.byte .lobyte(.bank(level_data_deathmoon))
 	.byte .lobyte(.bank(level_data_decode))
+	.byte .lobyte(.bank(level_data_dearnostalgists))
 	.byte .lobyte(.bank(level_data_problematic))
 	.byte .lobyte(.bank(level_data_firetemple))
 	.byte .lobyte(.bank(level_data_eon))
@@ -123,12 +126,15 @@ _level_list_bank:
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_deathmoon_0)
+	.byte .lobyte(level_data_dearnostalgists_1)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_deathmoon_0)
+	.byte .hibyte(level_data_dearnostalgists_1)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_deathmoon_0))
+	.byte .lobyte(.bank(level_data_dearnostalgists_1))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
@@ -161,6 +167,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_demonpark)
 	.byte .lobyte(sprite_data_deathmoon)
 	.byte .lobyte(sprite_data_decode)
+	.byte .lobyte(sprite_data_dearnostalgists)
 	.byte .lobyte(sprite_data_problematic)
 	.byte .lobyte(sprite_data_firetemple)
 	.byte .lobyte(sprite_data_eon)
@@ -200,6 +207,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_demonpark)
 	.byte .hibyte(sprite_data_deathmoon)
 	.byte .hibyte(sprite_data_decode)
+	.byte .hibyte(sprite_data_dearnostalgists)
 	.byte .hibyte(sprite_data_problematic)
 	.byte .hibyte(sprite_data_firetemple)
 	.byte .hibyte(sprite_data_eon)
@@ -239,6 +247,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_demonpark))
 	.byte .lobyte(.bank(sprite_data_deathmoon))
 	.byte .lobyte(.bank(sprite_data_decode))
+	.byte .lobyte(.bank(sprite_data_dearnostalgists))
 	.byte .lobyte(.bank(sprite_data_problematic))
 	.byte .lobyte(.bank(sprite_data_firetemple))
 	.byte .lobyte(.bank(sprite_data_eon))
@@ -281,6 +290,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A2)		; demonpark
 	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($00008A)		; decode
+	.byte .lobyte($000140)		; dearnostalgists
 	.byte .lobyte($00006E)		; problematic
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000286)		; eon
@@ -322,6 +332,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A2)		; demonpark
 	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($00008A)		; decode
+	.byte .hibyte($000140)		; dearnostalgists
 	.byte .hibyte($00006E)		; problematic
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000286)		; eon
@@ -363,6 +374,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A2)		; demonpark
 	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($00008A)		; decode
+	.byte .bankbyte($000140)		; dearnostalgists
 	.byte .bankbyte($00006E)		; problematic
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000286)		; eon
