@@ -476,7 +476,7 @@
 		.incbin "EXPORTS/retray.hfm.bin" ; Size: 2379
 
 
-.segment "LVL_BANK_17"	; Total bank size: 8177 bytes
+.segment "LVL_BANK_17"	; Total bank size: 8172 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
