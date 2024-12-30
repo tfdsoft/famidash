@@ -390,7 +390,20 @@
 		.incbin "EXPORTS/theoryofeverything.hfm.bin" ; Size: 3605
 
 
-.segment "LVL_BANK_12"	; Total bank size: 8057 bytes
+.segment "LVL_BANK_12"	; Total bank size: 8160 bytes
+	.export level_data_supercycles
+	level_data_supercycles:
+	; Header
+		.byte supercycles_song_number
+		.byte supercycles_game_mode
+		.byte supercycles_speed
+		.byte supercycles_no_parallax
+		.byte supercycles_bg_color
+		.byte supercycles_grnd_color
+		.byte 27	; height of supercycles
+	; Level data
+		.incbin "EXPORTS/supercycles.hfm.bin" ; Size: 3438
+
 	.export level_data_problematic
 	level_data_problematic:
 	; Header
@@ -403,19 +416,6 @@
 		.byte 27	; height of problematic
 	; Level data
 		.incbin "EXPORTS/problematic.hfm.bin" ; Size: 3371
-
-	.export level_data_supercycles
-	level_data_supercycles:
-	; Header
-		.byte supercycles_song_number
-		.byte supercycles_game_mode
-		.byte supercycles_speed
-		.byte supercycles_no_parallax
-		.byte supercycles_bg_color
-		.byte supercycles_grnd_color
-		.byte 27	; height of supercycles
-	; Level data
-		.incbin "EXPORTS/supercycles.hfm.bin" ; Size: 3335
 
 
 .segment "LVL_BANK_13"	; Total bank size: 8191 bytes
