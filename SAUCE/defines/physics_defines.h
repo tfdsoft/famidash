@@ -70,3 +70,7 @@
 #define JIMSHEATBALL_MAX_FALLSPEED 0x300
 #define JIMSHEATBALL_GRAVITY 0x34
 #define JIMSHEATBALL_JUMP_VEL (-0x390)
+
+#define GRAVITY_DOWN 0x00
+#define GRAVITY_UP 0xFF
+#define invert_gravity(var) (var ^= 0xFF)

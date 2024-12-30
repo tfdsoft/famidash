@@ -95,7 +95,7 @@ void ball_movement(void){
 	if (gamemode == GAMEMODE_BALL) {
 		if (((controllingplayer->a || controllingplayer->up)) && (kandotemp2[currplayer] == 0) && currplayer_vel_y == 0){
 			jumps++;
-			currplayer_gravity ^= 0x01;
+			invert_gravity(currplayer_gravity);
 			kandotemp2[currplayer] = 1;
 			switch (currplayer_gravity){
 				case 0x00: currplayer_vel_y = currplayer_mini ? MINI_BALL_SWITCH_VEL : BALL_SWITCH_VEL; break;
@@ -112,7 +112,7 @@ void ball_movement(void){
 	}
 	else {
 		if ((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed){
-			currplayer_gravity ^= 0x01;
+			invert_gravity(currplayer_gravity);
 			bg_coll_floor_spikes();
 		}
 	}		

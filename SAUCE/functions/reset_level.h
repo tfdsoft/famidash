@@ -98,7 +98,7 @@ void reset_level(void) {
 
 	player_gravity[1] = twoplayer ? 0x00 : 0x01;
 
-	currplayer_gravity = 0;
+	currplayer_gravity = GRAVITY_DOWN;
 
 	tmp1 = 0;
 	do {

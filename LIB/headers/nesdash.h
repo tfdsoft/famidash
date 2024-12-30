@@ -249,8 +249,8 @@ do func while(0); \
 #define do_if_positive(func) do_if_n_clr(func) 
 #define do_if_bit7_clr(func) do_if_n_clr(func)
 
-#define do_if_bit7_set_mem(val, func) __A__ = val; do_if_bit7_set(func)
-#define do_if_bit7_clr_mem(val, func) __A__ = val; do_if_bit7_clr(func)
+#define do_if_bit7_set_mem(val, func) __asm__("BIT %v", val); do_if_bit7_set(func)
+#define do_if_bit7_clr_mem(val, func) __asm__("BIT %v", val); do_if_bit7_clr(func)
 #define do_if_bit6_set_mem(val, func) __asm__("BIT %v", val); do_if_v_set(func)
 #define do_if_bit6_clr_mem(val, func) __asm__("BIT %v", val); do_if_v_clr(func)
 

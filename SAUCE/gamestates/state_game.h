@@ -384,7 +384,7 @@ void state_game(){
 		if ((controllingplayer->press_b) && practice_point_count && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
 
 		if (joypad1.press_right && DEBUG_MODE && !(options & platformer)) {
-			currplayer_gravity ^= 0x01;
+			invert_gravity(currplayer_gravity);
 		}
 		
 		if (joypad1.press_down && DEBUG_MODE) {
@@ -516,7 +516,7 @@ void state_game(){
 				currplayer_last_slope_type = last_slope_type[1];
 			}
 
-			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
+			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) invert_gravity(currplayer_gravity);			//DEBUG GRAVITY
 			if (((controllingplayer->press_a || controllingplayer->press_up)) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			
 			decrement_was_on_slope();		
