@@ -721,9 +721,13 @@ void sprite_collide_lookup() {
 #endif
 		case MINI_PORTAL:
 			currplayer_mini = 1;
+			player_mini[0] = 1;
+			player_mini[1] = 1;
 			return;
 		case GROWTH_PORTAL:
 			currplayer_mini = 0;
+			player_mini[0] = 0;
+			player_mini[1] = 0;
 			return;
 		case GREEN_PAD:
 			currplayer_gravity ^= 1;
