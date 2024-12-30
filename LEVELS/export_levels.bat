@@ -25,6 +25,7 @@ SET all_levels= ^
     retray ^
     sonar ^
     thechallenge ^
+    leveleasy ^
     dreamer ^
     kappaclysm ^
     revolution ^

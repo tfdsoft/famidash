@@ -252,3 +252,10 @@ electrodynamix_speed       = $00
 electrodynamix_no_parallax  = 0
 electrodynamix_bg_color    = $02
 electrodynamix_grnd_color  = $12
+
+leveleasy_song_number = song_stereo_madness
+leveleasy_game_mode   = $00
+leveleasy_speed       = $00
+leveleasy_no_parallax  = 0
+leveleasy_bg_color    = $2C
+leveleasy_grnd_color  = $1C

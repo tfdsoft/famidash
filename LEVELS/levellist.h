@@ -71,6 +71,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //RETRAY
 	DECO1, //SONAR
 	EXTRASPRITES1, //the challenge
+	DECO1, //level easy
 	DECO1, //dreamer
 	DECOCLOUD, //kappaclysm
 	DECO1, //revolution
@@ -110,6 +111,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //RETRAY
 	SPIKESA, //SONAR
 	SPIKESA, //the challenge
+	SPIKESA, //level easy
 	SPIKESA, //dreamer
 	SPIKESC, //kappaclysm
 	SPIKESA, //revolution
@@ -149,6 +151,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //RETRAY
 	BLOCKSB, //SONAR
 	BLOCKSB, //the challenge
+	BLOCKSA, //level easy
 	BLOCKSB, //dreamer
 	BLOCKSB, //kappaclysm
 	BLOCKSB, //revolution
@@ -188,6 +191,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //retray
 	SAWBLADESA, //SONAR
 	SAWBLADESA, //the challenge
+	SAWBLADESA, //level easy
 	SAWBLADESA, //dreamer
 	SAWBLADESA, //kappaclysm
 	SAWBLADESA, //revolution
@@ -228,6 +232,7 @@ const unsigned char difficulty_list[] = {
     EASY, //RETRAY
     EASY, //SONAR
     NORMAL, //the challenge
+    NORMAL, //level easy
     HARD, //dreamer
     HARDER, //kappaclysm
     HARDER, //revolution
@@ -267,6 +272,7 @@ const unsigned char stars_list[] = {
 	2,   //retray
 	2,   //SONAR
 	3,   //the challenge
+	3,   //level easy
 	4,   //dreamer
 	6,  //kappaclysm
 	7,  //revolution

@@ -26,6 +26,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_retray)
 	.byte .lobyte(level_data_sonar)
 	.byte .lobyte(level_data_thechallenge)
+	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_dreamer)
 	.byte .lobyte(level_data_kappaclysm)
 	.byte .lobyte(level_data_revolution)
@@ -64,6 +65,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_retray)
 	.byte .hibyte(level_data_sonar)
 	.byte .hibyte(level_data_thechallenge)
+	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_dreamer)
 	.byte .hibyte(level_data_kappaclysm)
 	.byte .hibyte(level_data_revolution)
@@ -102,6 +104,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_retray))
 	.byte .lobyte(.bank(level_data_sonar))
 	.byte .lobyte(.bank(level_data_thechallenge))
+	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_dreamer))
 	.byte .lobyte(.bank(level_data_kappaclysm))
 	.byte .lobyte(.bank(level_data_revolution))
@@ -149,6 +152,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_retray)
 	.byte .lobyte(sprite_data_sonar)
 	.byte .lobyte(sprite_data_thechallenge)
+	.byte .lobyte(sprite_data_leveleasy)
 	.byte .lobyte(sprite_data_dreamer)
 	.byte .lobyte(sprite_data_kappaclysm)
 	.byte .lobyte(sprite_data_revolution)
@@ -187,6 +191,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_retray)
 	.byte .hibyte(sprite_data_sonar)
 	.byte .hibyte(sprite_data_thechallenge)
+	.byte .hibyte(sprite_data_leveleasy)
 	.byte .hibyte(sprite_data_dreamer)
 	.byte .hibyte(sprite_data_kappaclysm)
 	.byte .hibyte(sprite_data_revolution)
@@ -225,6 +230,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_retray))
 	.byte .lobyte(.bank(sprite_data_sonar))
 	.byte .lobyte(.bank(sprite_data_thechallenge))
+	.byte .lobyte(.bank(sprite_data_leveleasy))
 	.byte .lobyte(.bank(sprite_data_dreamer))
 	.byte .lobyte(.bank(sprite_data_kappaclysm))
 	.byte .lobyte(.bank(sprite_data_revolution))
@@ -266,6 +272,7 @@ _level_lengths_lo:
 	.byte .lobyte($000066)		; retray
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000028)		; thechallenge
+	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($0000AC)		; dreamer
 	.byte .lobyte($000079)		; kappaclysm
 	.byte .lobyte($0000BB)		; revolution
@@ -306,6 +313,7 @@ _level_lengths_md:
 	.byte .hibyte($000066)		; retray
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000028)		; thechallenge
+	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($0000AC)		; dreamer
 	.byte .hibyte($000079)		; kappaclysm
 	.byte .hibyte($0000BB)		; revolution
@@ -346,6 +354,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000028)		; thechallenge
+	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($0000AC)		; dreamer
 	.byte .bankbyte($000079)		; kappaclysm
 	.byte .bankbyte($0000BB)		; revolution
