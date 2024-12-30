@@ -229,8 +229,10 @@ void state_game(){
 				mouse_and_cursor();
 			}
 
-			if (mouse.left_press) joypad1.press_a = 1;
-			if (mouse.left) joypad1.a = 1;
+			if (mouse.connected) {
+				if (mouse.left_press) joypad1.press_a = 1;
+				if (mouse.left) joypad1.a = 1;
+			}
 
 			if (options & platformer) twoplayer = 0;
 

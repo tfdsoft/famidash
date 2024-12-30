@@ -246,7 +246,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			out_str.append("\t; Header")
 			out_str += [f"\t\t.byte {i}" for i in hdr]
 		out_str.append("\t; Level data")
-		out_str.append(f'\t\t.incbin "{cached_data_path.relative_to(own_path)}" ; Size: {length}')
+		out_str.append(f'\t\t.incbin "{cached_data_path.relative_to(own_path).as_posix()}" ; Size: {length}')
 		out_str.append("")
 		
 		banked_level_data.append((length, "\n".join(out_str), f"level_data_{id}", "level", []))
