@@ -1063,7 +1063,7 @@ void retrofireballclear(void) {
 
 void dual_cap_check() {
 	if (dual && !twoplayer) {
-		if (currplayer = 0) {
+		if (currplayer == 0) {
 			if (player_vel_y[1] > 0x250) player_vel_y[1] = 0x250;
 			if (player_vel_y[1] < -0x250) player_vel_y[1] = -0x250;
 		}

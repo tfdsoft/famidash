@@ -17,7 +17,7 @@
 		.incbin "EXPORTS\deathmoon.hfm.0.bin" ; Size: 8140
 
 
-.segment "LVL_BANK_02"	; Total bank size: 7784 bytes
+.segment "LVL_BANK_02"	; Total bank size: 8175 bytes
 	.export level_data_dearnostalgists
 	level_data_dearnostalgists:
 	; Header
@@ -30,6 +30,19 @@
 		.byte 57	; height of dearnostalgists
 	; Level data
 		.incbin "EXPORTS\dearnostalgists.hfm.0.bin" ; Size: 7784
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS\test4.hfm.bin" ; Size: 391
 
 
 .segment "LVL_BANK_04"	; Total bank size: 8061 bytes
@@ -95,7 +108,7 @@
 		.incbin "EXPORTS\dearnostalgists.hfm.1.bin" ; Size: 2012
 
 
-.segment "LVL_BANK_07"	; Total bank size: 8084 bytes
+.segment "LVL_BANK_07"	; Total bank size: 8160 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -181,7 +194,7 @@
 		.incbin "EXPORTS\electrodynamix.hfm.bin" ; Size: 5003
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8190 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8172 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -194,19 +207,6 @@
 		.byte 27	; height of decode
 	; Level data
 		.incbin "EXPORTS\decode.hfm.bin" ; Size: 4866
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 57	; height of test4
-	; Level data
-		.incbin "EXPORTS\test4.hfm.bin" ; Size: 17
 
 
 .segment "LVL_BANK_0C"	; Total bank size: 8170 bytes

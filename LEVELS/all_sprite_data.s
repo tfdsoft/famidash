@@ -14660,6 +14660,21 @@ sprite_data_luckydraw:
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_0B"
+.segment "LVL_BANK_07"
 sprite_data_test4:
+  .byte $90,$01,$d0,$02,$aa
+  .byte $c0,$01,$d0,$02,$9a
+  .byte $d0,$01,$c0,$02,$15
+  .byte $e0,$01,$c0,$02,$22
+  .byte $f0,$01,$c0,$02,$00
+  .byte $f0,$01,$d0,$02,$90
+  .byte $20,$02,$d0,$02,$80
+  .byte $50,$02,$b0,$02,$26
+  .byte $50,$02,$f8,$02,$25
+  .byte $60,$02,$d0,$02,$a0
+  .byte $90,$02,$d0,$02,$90
+  .byte $90,$02,$00,$03,$27
+  .byte $c0,$02,$d0,$02,$9c
+  .byte $c0,$02,$f0,$02,$04
+  .byte $a0,$03,$80,$02,$00
   .byte $ff
