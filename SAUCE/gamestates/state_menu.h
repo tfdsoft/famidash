@@ -181,8 +181,8 @@ void levelselection() {
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
 
-	if (kandotemp == 0 && !nestopia) music_play(song_menu_theme);
-	kandotemp = 1;
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(song_menu_theme);
+	menuMusicCurrentlyPlaying = 1;
 
 	ppu_on_all();
 	drawBarFlag = 2;
@@ -764,8 +764,8 @@ void state_menu() {
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-	if (kandotemp == 0 && !nestopia) music_play(song_menu_theme);
-	kandotemp = 1;
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(song_menu_theme);
+	menuMusicCurrentlyPlaying = 1;
 
 	settingvalue = 0;
 	practice_point_count = 0;
@@ -779,7 +779,7 @@ void state_menu() {
 	tmp8 = 0;
 	
 
-	kandotemp = 1;
+	menuMusicCurrentlyPlaying = 1;
 	//invisible = 0;
 	
 
@@ -1286,7 +1286,7 @@ void state_menu() {
 				gameState = 0;
 				famistudio_music_stop();
 				music_update();
-				kandotemp = 0;
+				menuMusicCurrentlyPlaying = 0;
 				ppu_wait_nmi();
 				return;
 		}
@@ -1431,7 +1431,7 @@ void start_the_level() {
 	} while (++tmpA < 30);
 	gameState = 0x02;
 	pal_fade_to(4,0);
-	kandotemp = 0;
+	menuMusicCurrentlyPlaying = 0;
 }			
 
 void set_title_icon() {

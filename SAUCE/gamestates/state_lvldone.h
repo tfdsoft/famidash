@@ -353,7 +353,7 @@ void state_lvldone() {
 						menuselection = 0;
 						kandowatchesyousleep = 1;
 						//oam_clear();
-						kandotemp = 0;
+						menuMusicCurrentlyPlaying = 0;
 						return;
 					}
 				}
@@ -371,7 +371,7 @@ void state_lvldone() {
 					kandowatchesyousleep = 1;
 
 					//oam_clear();
-					kandotemp = 0;
+					menuMusicCurrentlyPlaying = 0;
 					return;
 				} else {
 					
@@ -679,7 +679,7 @@ void bgmtest() {
 	settingvalue = 0;
   	famistudio_music_stop();
   	music_update();
-	kandotemp=0;
+	menuMusicCurrentlyPlaying=0;
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
 	ppu_off();
@@ -740,7 +740,7 @@ void bgmtest() {
 					tmp3--;			
 					one_vram_buffer(' ', NTADR_A(11, 7));
 					one_vram_buffer(' ', NTADR_A(11, 14));
-					kandotemp = 1;
+					menuMusicCurrentlyPlaying = 1;
 					gameState = 1;
 					return;
 				}
@@ -789,7 +789,7 @@ void bgmtest() {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
-			kandotemp = 1;
+			menuMusicCurrentlyPlaying = 1;
 			gameState = 1;
 			return;
 		}
