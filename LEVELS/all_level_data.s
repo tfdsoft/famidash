@@ -189,7 +189,7 @@
 		.incbin "EXPORTS\test4.hfm.bin" ; Size: 17
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8178 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8170 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -201,7 +201,7 @@
 		.byte stalemate_grnd_color
 		.byte 27	; height of stalemate
 	; Level data
-		.incbin "EXPORTS\stalemate.hfm.bin" ; Size: 4650
+		.incbin "EXPORTS\stalemate.hfm.bin" ; Size: 4642
 
 	.export level_data_dreamer
 	level_data_dreamer:
@@ -488,7 +488,7 @@
 		.incbin "EXPORTS\polargeist.hfm.bin" ; Size: 1502
 
 
-.segment "LVL_BANK_18"	; Total bank size: 7401 bytes
+.segment "LVL_BANK_18"	; Total bank size: 7416 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
