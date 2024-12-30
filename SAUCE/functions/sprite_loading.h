@@ -376,9 +376,9 @@ void animate_coin_3() {
 
 void common_dash_orb_routine() {
 	if (gamemode == GAMEMODE_UFO || gamemode == GAMEMODE_SPIDER) {
-		if (currplayer_vel_y != 0) currplayer_gravity ^= 1;
+		if (currplayer_vel_y != 0) invert_gravity(currplayer_gravity);
 	}
-	else currplayer_gravity ^= 0x01;
+	else invert_gravity(currplayer_gravity);
 }
 
 #define yellow_orb 0x00 << 3
@@ -431,9 +431,7 @@ static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 	} else {
 		__AX__ = (__asm__ ("lda %v,y", heights),__asm__ ("ldx %v+1,y", heights),__AX__);
 	}
-	// Use y here for the conditional, otherwise the compiler overwrites A
-	__asm__("ldy %v", currplayer_gravity); 
-	do_if_zero({__AX__ ^= 0xffff; __AX__ += 1;});
+	do_if_bit7_clr_mem(currplayer_gravity, {__AX__ ^= 0xffff; __AX__ += 1;});
 	return __AX__;
 }
 
@@ -448,7 +446,7 @@ static void sprite_gamemode_main() {
 			switch (collided) {
 			case BLUE_ORB:
 				if (!activesprites_activated[index]) {
-				currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1;
+				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
 				dual_cap_check();
 				if (gamemode != BALL_MODE) {
 					currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
@@ -459,7 +457,7 @@ static void sprite_gamemode_main() {
 				break;
 			case GREEN_ORB:
 				if (!activesprites_activated[index]) {
-				currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1;
+				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
 				dual_cap_check();
 				currplayer_vel_y = sprite_gamemode_y_adjust();
 				}
@@ -527,7 +525,7 @@ static void sprite_gamemode_controller_check() {
 		switch (collided) {
 		case BLUE_ORB:
 			if (!activesprites_activated[index]) {
-				currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1;
+				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
 				dual_cap_check();
 				if (gamemode != BALL_MODE) {
 					currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
@@ -538,7 +536,7 @@ static void sprite_gamemode_controller_check() {
 			break;
 		case GREEN_ORB:
 			if (!activesprites_activated[index]) {
-			currplayer_gravity ^= 0x01;  player_gravity[0] ^= 1; player_gravity[1] ^= 1;
+			invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
 			dual_cap_check();
 		//	if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
 		//	else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
@@ -730,7 +728,7 @@ void sprite_collide_lookup() {
 			mini[1] = 0;
 			return;
 		case GREEN_PAD:
-			currplayer_gravity ^= 1;
+			invert_gravity(currplayer_gravity);
 			if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
 			else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
 
@@ -747,7 +745,7 @@ void sprite_collide_lookup() {
 			if (currplayer_gravity) {
 				
 				settrailstuff();
-				currplayer_gravity = 0; 
+				currplayer_gravity = GRAVITY_DOWN; 
 				if (gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_SHIP) {
 					if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
 				} else {
@@ -764,7 +762,7 @@ void sprite_collide_lookup() {
 			if (!currplayer_gravity) {
 				
 				settrailstuff();
-				currplayer_gravity = 1; 
+				currplayer_gravity = GRAVITY_UP; 
 				if (gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_SHIP) {
 					if (currplayer_vel_y > 0x0290) currplayer_vel_y = 0x0290; 
 				} else {
@@ -833,7 +831,7 @@ void sprite_collide_lookup() {
 		case SPIDER_PAD_UP:
 				high_byte(currplayer_y) -= eject_D;
 				currplayer_vel_y = 0;
-				currplayer_gravity = 1;
+				currplayer_gravity = GRAVITY_UP;
 				crossPRGBankJump0(spider_up_wait);
 				high_byte(currplayer_y) -= eject_U;
 				currplayer_vel_y = 0;	
@@ -847,7 +845,7 @@ void sprite_collide_lookup() {
 		case SPIDER_PAD_DOWN:
 				high_byte(currplayer_y) -= eject_U + 1;
 				currplayer_vel_y = 0;
-				currplayer_gravity = 0;
+				currplayer_gravity = GRAVITY_DOWN;
 				crossPRGBankJump0(spider_down_wait);
 				high_byte(currplayer_y) -= eject_D;
 				currplayer_vel_y = 0;
@@ -887,7 +885,7 @@ void sprite_collide_lookup() {
 			clear_slope_stuff();
 			if (!currplayer_gravity) { 
 				settrailstuff();
-				currplayer_gravity = 0x01;				//flip gravity
+				currplayer_gravity = GRAVITY_UP;				//flip gravity
 				currplayer_vel_y = PAD_HEIGHT_BLUE;
 				//invincible_counter = 3;
 			}
@@ -899,7 +897,7 @@ void sprite_collide_lookup() {
 			clear_slope_stuff();
 			if (currplayer_gravity) { 	
 				settrailstuff();
-				currplayer_gravity = 0x00;				//flip gravity
+				currplayer_gravity = GRAVITY_DOWN;				//flip gravity
 				currplayer_vel_y = -PAD_HEIGHT_BLUE;
 				//invincible_counter = 3;				
 			}

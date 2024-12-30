@@ -977,7 +977,7 @@ void state_menu() {
 					break;
 				case 5:		//spider
 //					if (kandoframecnt & 1) {
-//						if (!(newrand() & 31)) 	currplayer_gravity ^= 1;
+//						if (!(newrand() & 31)) 	invert_gravity(currplayer_gravity);
 //					}
 
 					//if (!currplayer_gravity) { 
@@ -1142,7 +1142,7 @@ void state_menu() {
 				case 14:		//mini spider
 				/*
 					if (kandoframecnt & 1) {
-						if (!(newrand() & 31)) 	currplayer_gravity ^= 1;
+						if (!(newrand() & 31)) 	invert_gravity(currplayer_gravity);
 					}
 
 					if (!currplayer_gravity) { 
@@ -1455,7 +1455,7 @@ void set_title_icon() {
 void roll_new_mode() {
 	speed = (newrand() & 3); 
 	if (speed == 0) speed = 1; 
-	currplayer_gravity = 0; 
+	currplayer_gravity = GRAVITY_DOWN; 
 	currplayer_x_small = 0x08; 
 	currplayer_y_small = 0xA0;
 	player_vel_y[0] = 0;
@@ -1521,7 +1521,7 @@ void bounds_check() {
 	else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;	
 }	
 void title_ship_shit() {
-	if (kandoframecnt & 1) { if (!(newrand() & 7)) currplayer_gravity ^= 1; }
+	if (kandoframecnt & 1) { if (!(newrand() & 7)) invert_gravity(currplayer_gravity); }
 
 	currplayer_y_small -= tmpi8;
 
@@ -1530,7 +1530,7 @@ void title_ship_shit() {
 	}		
 	else if (currplayer_y_small < 0x08) { 
 		currplayer_y_small = 0x08; 
-		currplayer_gravity = 0;
+		currplayer_gravity = GRAVITY_DOWN;
 		tmpi8 = 0;
 	}					
 
@@ -1548,7 +1548,7 @@ void title_ship_shit() {
 void title_swing_shit() {
 	if (kandoframecnt & 1) { 
 		if (!(newrand() & 15)) {
-			currplayer_gravity ^= 1; 
+			invert_gravity(currplayer_gravity); 
 		}
 	}
 
@@ -1571,8 +1571,8 @@ void title_ball_shit() {
 /*
 	if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
 		if (!(newrand() & 31)) {
-			if (currplayer_y_small == 0x08) { currplayer_gravity = 1; teleport_output = 0; }
-			else { currplayer_gravity = 0; teleport_output = 0; }
+			if (currplayer_y_small == 0x08) { currplayer_gravity = GRAVITY_UP; teleport_output = 0; }
+			else { currplayer_gravity = GRAVITY_DOWN; teleport_output = 0; }
 		}
 	}
 
@@ -1624,7 +1624,7 @@ void title_cube_shit() {
 
 void title_wave_shit() {
 	tmp2 = newrand() & 63;
-	if (kandoframecnt & 1) { if (tmp2 >= 60) currplayer_gravity ^= 1; }
+	if (kandoframecnt & 1) { if (tmp2 >= 60) invert_gravity(currplayer_gravity); }
 		
 	if (currplayer_gravity) currplayer_y_small -= speed;
 
@@ -1633,7 +1633,7 @@ void title_wave_shit() {
 }
 void title_mini_wave_shit() {
 	tmp2 = newrand() & 63;
-	if (kandoframecnt & 1) { if (tmp2 >= 60) currplayer_gravity ^= 1; }
+	if (kandoframecnt & 1) { if (tmp2 >= 60) invert_gravity(currplayer_gravity); }
 		
 	if (currplayer_gravity) currplayer_y_small -= (speed << 1);
 
@@ -1643,14 +1643,14 @@ void title_mini_wave_shit() {
 
 void title_robot_shit() {
 	if (kandoframecnt & 1 && !currplayer_gravity) {
-		if (!(newrand() & 15)) { tmpi8 = newrand() & 15; currplayer_gravity = 1; teleport_output = 0; }
+		if (!(newrand() & 15)) { tmpi8 = newrand() & 15; currplayer_gravity = GRAVITY_UP; teleport_output = 0; }
 	}
 
 	if (currplayer_gravity) {
 		if (teleport_output < 0x0C) { currplayer_y_small -= UFO_Title_Jump_Table[teleport_output]; teleport_output++; }
 		if (teleport_output == 0x0C && tmpi8 > 0) { currplayer_y_small -= UFO_Title_Jump_Table[teleport_output]; tmpi8--; }
 		else { currplayer_y_small -= UFO_Title_Jump_Table[teleport_output]; teleport_output++; if (teleport_output > 0x1A) teleport_output = 0x1A; }
-		if (currplayer_y_small >= 160) { currplayer_gravity = 0; tmpi8 = 0; teleport_output = 0; currplayer_y_small = 160; }
+		if (currplayer_y_small >= 160) { currplayer_gravity = GRAVITY_DOWN; tmpi8 = 0; teleport_output = 0; currplayer_y_small = 160; }
 	}
 					
 }

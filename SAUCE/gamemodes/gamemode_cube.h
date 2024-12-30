@@ -231,7 +231,7 @@ void cube_movement(void){
 				currplayer_y = jimsheatbally[tmp9 & 0x7F];
 				currplayer_vel_x = jimsheatball_vel_x[tmp9 & 0x7F];
 				currplayer_vel_y = jimsheatball_vel_y[tmp9 & 0x7F];
-				currplayer_gravity = 0;
+				currplayer_gravity = GRAVITY_DOWN;
 
 				if(currplayer_vel_y > JIMSHEATBALL_MAX_FALLSPEED){
 					currplayer_vel_y += -JIMSHEATBALL_GRAVITY;
@@ -309,7 +309,7 @@ void cube_eject() {
 					currplayer_vel_y = 0xffff;
 				}
 				orbactive = 0;
-				if (fblocked[currplayer]) currplayer_gravity = 0;
+				if (fblocked[currplayer]) currplayer_gravity = GRAVITY_DOWN;
 			}
 		} 
 	//}
@@ -324,7 +324,7 @@ void cube_eject() {
 					currplayer_vel_y = 1;
 				}
 				orbactive = 0;
-				if (fblocked[currplayer]) currplayer_gravity = 1;			
+				if (fblocked[currplayer]) currplayer_gravity = GRAVITY_UP;			
 			}
 		}
 	//}	
