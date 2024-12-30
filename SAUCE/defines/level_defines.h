@@ -31,5 +31,6 @@
 #define firetemple 0x1E
 #define eon  0x1F
 #define pgclubstep  0x20
-#define luckydraw  0x21
-#define test4  0X22
+#define stalemate  0x21
+#define luckydraw  0x22
+#define test4  0X23

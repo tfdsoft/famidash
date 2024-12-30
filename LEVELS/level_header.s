@@ -239,7 +239,7 @@ dreamer_no_parallax  = 1
 dreamer_bg_color    = $0F
 dreamer_grnd_color  = $0F
 
-stalemate_song_number = song_midnight
+stalemate_song_number = song_stalemate
 stalemate_game_mode   = $00
 stalemate_speed       = $00
 stalemate_no_parallax  = 1

@@ -61,4 +61,5 @@ const unsigned char levelkappaclysm2[]="KAPPACLYSM";
 const unsigned char leveldreamer2[]="DREAMER";
 const unsigned char levelblast2[]="PROCESSING";
 const unsigned char levelelectrodynamix2[]=" ELECTRODYNAMIX";
+const unsigned char levelstalemate2[]="STALEMATE";
 
