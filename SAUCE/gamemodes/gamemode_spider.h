@@ -28,7 +28,7 @@ void spider_movement(void){
 		if(((controllingplayer->press_a || controllingplayer->press_up) || cube_data[currplayer] & 2) && currplayer_vel_y == 0) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);	
 			jumps++;
-			currplayer_gravity = 1;
+			currplayer_gravity = GRAVITY_UP;
 			spider_up_wait();
 			high_byte(currplayer_y) -= eject_U;
 			currplayer_vel_y = 0;
@@ -38,7 +38,7 @@ void spider_movement(void){
 		if(((controllingplayer->press_a || controllingplayer->press_up) || cube_data[currplayer] & 2) && currplayer_vel_y == 0) {
 			jumps++;
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);
-			currplayer_gravity = 0;
+			currplayer_gravity = GRAVITY_DOWN;
 
 			spider_down_wait();
 

@@ -112,7 +112,7 @@ void state_exit(){
 	    kandoframecnt++;
        	    	
     } while (1);
-    kandotemp = 0;
+    menuMusicCurrentlyPlaying = 0;
     poweroffcheck = 0xff;
     gameState = 0x01;
 

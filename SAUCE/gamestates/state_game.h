@@ -384,7 +384,7 @@ void state_game(){
 		if ((controllingplayer->press_b) && practice_point_count && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
 
 		if (joypad1.press_right && DEBUG_MODE && !(options & platformer)) {
-			currplayer_gravity ^= 0x01;
+			invert_gravity(currplayer_gravity);
 		}
 		
 		if (joypad1.press_down && DEBUG_MODE) {
@@ -418,11 +418,11 @@ void state_game(){
 		if (level == luckydraw) { if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement); }
 		else crossPRGBankJump0(movement);
 
-		kandotemp3 = 0;
+		processXMovement = 1;
 
 		runthecolls();
 		
-		kandotemp3 = 1;
+		processXMovement = 0;
 		
 #ifdef FLAG_KANDO_FUN_STUFF		
 		if (bigboi && !(kandoframecnt & 1) ) {
@@ -469,7 +469,7 @@ void state_game(){
 
 			}
 		}
-		kandotemp3 = 0;
+		processXMovement = 1;
 #endif
 		if (invincible_counter) invincible_counter--;
 		
@@ -516,7 +516,7 @@ void state_game(){
 				currplayer_last_slope_type = last_slope_type[1];
 			}
 
-			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) currplayer_gravity ^= 0x01;			//DEBUG GRAVITY
+			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) invert_gravity(currplayer_gravity);			//DEBUG GRAVITY
 			if (((controllingplayer->press_a || controllingplayer->press_up)) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			
 			decrement_was_on_slope();		
@@ -532,9 +532,9 @@ void state_game(){
 			if (dual && (options & platformer) && !twoplayer) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
 			else if (dual && !(options & platformer)) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
 
-			kandotemp3 = 1;
+			processXMovement = 0;
 			runthecolls();
-			kandotemp3 = 0;
+			processXMovement = 1;
 
 			currplayer = 0;					//give back focus
 
@@ -598,7 +598,7 @@ void runthecolls() {
 		x_movement_coll();
 	}
 
-	if (!kandotemp3) {
+	if (processXMovement) {
 		x_movement();
 	}	
 

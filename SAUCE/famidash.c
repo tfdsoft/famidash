@@ -61,7 +61,7 @@ void main(){
 
 
 	pal_spr(paletteDefaultSP);
-	kandotemp = 0;
+	menuMusicCurrentlyPlaying = 0;
 	crossPRGBankJump0(gameboy_check);
 	gameState = 0x05;
     while (1){
