@@ -1264,7 +1264,7 @@ sprite_data_cantletgo:
   .byte $10,$34,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_12"
+.segment "LVL_BANK_19"
 sprite_data_jumper:
   .byte $e0,$00,$80,$03,$2c
   .byte $b0,$01,$80,$03,$2e
@@ -3078,7 +3078,7 @@ sprite_data_clutterfunk:
   .byte $80,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_19"
+.segment "LVL_BANK_12"
 sprite_data_theoryofeverything:
   .byte $c0,$00,$70,$03,$0b
   .byte $00,$01,$68,$03,$25
@@ -6417,7 +6417,7 @@ sprite_data_sonar:
   .byte $f0,$35,$20,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_19"
+.segment "LVL_BANK_02"
 sprite_data_thechallenge:
   .byte $00,$00,$70,$03,$cf
   .byte $00,$00,$80,$03,$b6
@@ -6755,6 +6755,7 @@ sprite_data_dreamer:
   .byte $c0,$0a,$40,$03,$bf
   .byte $d0,$0a,$50,$03,$81
   .byte $00,$0b,$40,$03,$b0
+  .byte $e0,$0b,$f0,$02,$07
   .byte $00,$0c,$40,$03,$bf
   .byte $40,$0c,$40,$03,$b0
   .byte $40,$0d,$40,$03,$bf
@@ -6889,6 +6890,7 @@ sprite_data_dreamer:
   .byte $c0,$21,$70,$03,$f2
   .byte $c0,$21,$80,$03,$91
   .byte $e0,$21,$f0,$02,$b7
+  .byte $e0,$21,$00,$03,$1a
   .byte $f0,$21,$80,$03,$81
   .byte $00,$22,$f0,$02,$b8
   .byte $10,$22,$00,$03,$36
@@ -7184,6 +7186,7 @@ sprite_data_dreamer:
   .byte $50,$3a,$80,$03,$86
   .byte $80,$3a,$80,$03,$96
   .byte $90,$3a,$30,$03,$0b
+  .byte $a0,$3a,$60,$03,$1b
   .byte $a0,$3a,$80,$03,$86
   .byte $d0,$3a,$80,$03,$96
   .byte $f0,$3a,$80,$03,$86
@@ -12416,7 +12419,7 @@ sprite_data_firetemple:
   .byte $f0,$36,$70,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_02"
+.segment "LVL_BANK_19"
 sprite_data_foresttemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$ba
@@ -12455,6 +12458,7 @@ sprite_data_foresttemple:
   .byte $50,$19,$10,$03,$32
   .byte $70,$19,$60,$03,$36
   .byte $90,$19,$00,$03,$36
+  .byte $90,$19,$10,$03,$07
   .byte $90,$19,$40,$03,$32
   .byte $c0,$19,$70,$03,$36
   .byte $d0,$19,$10,$03,$32
@@ -12488,6 +12492,7 @@ sprite_data_foresttemple:
   .byte $10,$25,$60,$03,$ba
   .byte $40,$28,$10,$03,$04
   .byte $40,$28,$20,$03,$15
+  .byte $a0,$2b,$30,$03,$1a
   .byte $e0,$2c,$30,$03,$02
   .byte $80,$2d,$40,$03,$cf
   .byte $30,$30,$30,$03,$00
@@ -12496,6 +12501,7 @@ sprite_data_foresttemple:
   .byte $a0,$35,$60,$03,$8f
   .byte $a0,$35,$70,$03,$bf
   .byte $a0,$35,$80,$03,$cf
+  .byte $a0,$36,$60,$03,$1b
   .byte $c0,$36,$70,$03,$b8
   .byte $90,$37,$40,$03,$0f
   .byte $ff
