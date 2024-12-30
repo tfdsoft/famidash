@@ -1264,7 +1264,7 @@ sprite_data_cantletgo:
   .byte $10,$34,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_19"
+.segment "LVL_BANK_12"
 sprite_data_jumper:
   .byte $e0,$00,$80,$03,$2c
   .byte $b0,$01,$80,$03,$2e
@@ -3078,7 +3078,7 @@ sprite_data_clutterfunk:
   .byte $80,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_12"
+.segment "LVL_BANK_19"
 sprite_data_theoryofeverything:
   .byte $c0,$00,$70,$03,$0b
   .byte $00,$01,$68,$03,$25

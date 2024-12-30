@@ -237,7 +237,7 @@
 		.incbin "EXPORTS\decode.hfm.bin" ; Size: 4866
 
 
-.segment "LVL_BANK_0C"	; Total bank size: 8170 bytes
+.segment "LVL_BANK_0C"	; Total bank size: 8013 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -251,18 +251,18 @@
 	; Level data
 		.incbin "EXPORTS\stalemate.hfm.bin" ; Size: 4642
 
-	.export level_data_dreamer
-	level_data_dreamer:
+	.export level_data_problematic
+	level_data_problematic:
 	; Header
-		.byte dreamer_song_number
-		.byte dreamer_game_mode
-		.byte dreamer_speed
-		.byte dreamer_no_parallax
-		.byte dreamer_bg_color
-		.byte dreamer_grnd_color
-		.byte 27	; height of dreamer
+		.byte problematic_song_number
+		.byte problematic_game_mode
+		.byte problematic_speed
+		.byte problematic_no_parallax
+		.byte problematic_bg_color
+		.byte problematic_grnd_color
+		.byte 27	; height of problematic
 	; Level data
-		.incbin "EXPORTS\dreamer.hfm.bin" ; Size: 3528
+		.incbin "EXPORTS\problematic.hfm.bin" ; Size: 3371
 
 
 .segment "LVL_BANK_0D"	; Total bank size: 8178 bytes
@@ -392,19 +392,19 @@
 		.incbin "EXPORTS\theoryofeverything.hfm.bin" ; Size: 3605
 
 
-.segment "LVL_BANK_12"	; Total bank size: 8084 bytes
-	.export level_data_problematic
-	level_data_problematic:
+.segment "LVL_BANK_12"	; Total bank size: 8172 bytes
+	.export level_data_dreamer
+	level_data_dreamer:
 	; Header
-		.byte problematic_song_number
-		.byte problematic_game_mode
-		.byte problematic_speed
-		.byte problematic_no_parallax
-		.byte problematic_bg_color
-		.byte problematic_grnd_color
-		.byte 27	; height of problematic
+		.byte dreamer_song_number
+		.byte dreamer_game_mode
+		.byte dreamer_speed
+		.byte dreamer_no_parallax
+		.byte dreamer_bg_color
+		.byte dreamer_grnd_color
+		.byte 27	; height of dreamer
 	; Level data
-		.incbin "EXPORTS\problematic.hfm.bin" ; Size: 3371
+		.incbin "EXPORTS\dreamer.hfm.bin" ; Size: 3574
 
 	.export level_data_test4
 	level_data_test4:
