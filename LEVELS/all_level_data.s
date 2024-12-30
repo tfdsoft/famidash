@@ -488,7 +488,7 @@
 		.incbin "EXPORTS\polargeist.hfm.bin" ; Size: 1502
 
 
-.segment "LVL_BANK_18"	; Total bank size: 7416 bytes
+.segment "LVL_BANK_18"	; Total bank size: 7401 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
