@@ -318,7 +318,7 @@ _level_lengths_lo:
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($000086)		; luckydraw
-	.byte .lobyte($000088)		; test4
+	.byte .lobyte($000080)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -363,7 +363,7 @@ _level_lengths_md:
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($000086)		; luckydraw
-	.byte .hibyte($000088)		; test4
+	.byte .hibyte($000080)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -408,7 +408,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($000086)		; luckydraw
-	.byte .bankbyte($000088)		; test4
+	.byte .bankbyte($000080)		; test4
 
 .endif
 .endif

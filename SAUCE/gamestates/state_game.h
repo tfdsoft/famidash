@@ -499,8 +499,7 @@ void state_game(){
 				dashing[1] = 0;
 			}
 			if (twoplayer || !mouse.connected) controllingplayer = &joypad2;		//take controls
-			if (dual && (options & platformer) && !twoplayer) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
-			else if (dual && !(options & platformer)) { player_x[1] = player_x[0]; player_vel_x[1] = player_vel_x[0]; }
+
 
 			{	
 				currplayer_x = player_x[1];
@@ -528,6 +527,8 @@ void state_game(){
 			if (level == luckydraw) { if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement); }
 			else crossPRGBankJump0(movement);
 
+			if (dual && (options & platformer) && !twoplayer) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
+			else if (dual && !(options & platformer)) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
 
 			kandotemp3 = 1;
 			runthecolls();
