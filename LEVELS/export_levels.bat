@@ -39,6 +39,7 @@ SET all_levels= ^
     supercycles ^
     problematic ^
     firetemple ^
+    foresttemple ^
     eon ^
     pgclubstep ^
     stalemate ^

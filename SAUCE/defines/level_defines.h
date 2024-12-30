@@ -33,8 +33,9 @@
 #define super_cycles  0x20
 #define problematic  0x21
 #define firetemple 0x22
-#define eon  0x23
-#define pgclubstep  0x24
-#define stalemate  0x25
-#define luckydraw  0x26
-#define test4  0X27
+#define foresttemple 0x23
+#define eon  0x24
+#define pgclubstep  0x25
+#define stalemate  0x26
+#define luckydraw  0x27
+#define test4  0X28

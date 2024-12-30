@@ -85,6 +85,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //super cycles
 	DECO1, //problematic
 	DECO1, //fire temple
+	DECO1, //forest temple
 	EXTRASPRITES1, //EON
 	DECO1, //pg clubstep
 	DECO1, //stalemate
@@ -128,6 +129,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //super cycles
 	SPIKESB, //problematic
 	SPIKESB, //fire temple
+	SPIKESB, //forest temple
 	SPIKESB, //eon
 	SPIKESA, //pg clubstep
 	SPIKESA, //STALEMATE
@@ -171,6 +173,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //super cycles
 	BLOCKSB, //problematic
 	BLOCKSB, //fire temple
+	BLOCKSB, //forest temple
 	BLOCKSA, //EON
 	BLOCKSB, //pg clubstep
 	BLOCKSB, //stalemate
@@ -214,6 +217,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //super cycles
 	SAWBLADESA, //problematic
 	SAWBLADESA, //fire temple
+	SAWBLADESA, //forest temple
 	SAWBLADESA, //EON
 	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //stalemate
@@ -258,6 +262,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //super cycles
     DEMON, //problematic
     DEMON, //fire temple
+    DEMON, //forest temple
     DEMON, //eon
     DEMON, //pg clubstep
     DEMON, //stalemate
@@ -301,6 +306,7 @@ const unsigned char stars_list[] = {
 	10, //super cycles
 	10, //problematic
 	10, //fire temple
+	10, //forest temple
 	10, //eon
 	10, //pg clubstep
 	10, //stalemate
