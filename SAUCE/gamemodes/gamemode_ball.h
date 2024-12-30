@@ -40,7 +40,7 @@ void ball_movement(void){
 
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
 	if (currplayer_gravity) {
-		Generic.y = currplayer_gravity ? high_byte(currplayer_y) - 1 : high_byte(currplayer_y) + 1;
+		Generic.y = high_byte(currplayer_y) - 1;
 	} else {
 		Generic.y = high_byte(currplayer_y) + 1;
 	}
@@ -98,8 +98,8 @@ void ball_movement(void){
 			invert_gravity(currplayer_gravity);
 			kandotemp2[currplayer] = 1;
 			switch (currplayer_gravity){
-				case 0x00: currplayer_vel_y = currplayer_mini ? MINI_BALL_SWITCH_VEL : BALL_SWITCH_VEL; break;
-				case 0x01: currplayer_vel_y = currplayer_mini ? -MINI_BALL_SWITCH_VEL : -BALL_SWITCH_VEL; break;
+				case GRAVITY_DOWN: currplayer_vel_y = currplayer_mini ? MINI_BALL_SWITCH_VEL : BALL_SWITCH_VEL; break;
+				case GRAVITY_UP: currplayer_vel_y = currplayer_mini ? -MINI_BALL_SWITCH_VEL : -BALL_SWITCH_VEL; break;
 			}
 			bg_coll_floor_spikes();
 		}

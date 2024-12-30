@@ -248,7 +248,7 @@ void state_game(){
 			}
 			
 			if (!(joypad1.a) && !(joypad1.up)) {
-				if (dashing[0]) currplayer_vel_y = 0x0100^(0x0000 - currplayer_gravity);
+				if (dashing[0]) currplayer_vel_y = currplayer_gravity ? -0x0100 : 0x0100;
 				dashing[0] = 0;
 			}
 
@@ -497,7 +497,7 @@ void state_game(){
 		if (dual) { 
 			currplayer = 1;					//take focus
 			if (!(joypad2.a) && !(joypad2.up)) {
-				if (dashing[1]) currplayer_vel_y = 0x0100^(0x0000 - currplayer_gravity);
+				if (dashing[1]) currplayer_vel_y = currplayer_gravity ? -0x0100 : 0x0100;
 				dashing[1] = 0;
 			}
 			if (twoplayer || !mouse.connected) controllingplayer = &joypad2;		//take controls

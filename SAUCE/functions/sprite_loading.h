@@ -608,8 +608,12 @@ void sprite_collide_lookup() {
 			if (!activesprites_activated[index]) {
 				dual = 1;
 				target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
-				if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 1;  }
-				else { player_x[1] = player_x[0]; player_y[1] = currplayer_y; player_gravity[1] = !currplayer_gravity; player_vel_y[1] = -currplayer_vel_y; mini[1] = mini[0]; }
+				if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 0xFF;  }
+				else { 
+					player_x[1] = player_x[0]; player_y[1] = currplayer_y;
+					player_gravity[1] = currplayer_gravity ^ 0xFF;
+					player_vel_y[1] = -currplayer_vel_y; mini[1] = mini[0];
+				}
 	//			activesprites_type[index] = 0xFF;
 				activesprites_activated[index] = 1;
 			}

@@ -96,7 +96,7 @@ void reset_level(void) {
 
 	memfill(jimsheatballalive, 0, MAX_FIREBALLS);
 
-	player_gravity[1] = twoplayer ? 0x00 : 0x01;
+	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
 
 	currplayer_gravity = GRAVITY_DOWN;
 
@@ -105,8 +105,8 @@ void reset_level(void) {
 		activesprites_active[tmp1] = 0;
 	} while (++tmp1 < max_loaded_sprites);
 
-	dual = twoplayer ? 1 : 0x00;
-	player_gravity[0] = 0x00;
+	dual = twoplayer ? 1 : 0;
+	player_gravity[0] = GRAVITY_DOWN;
 	scroll_x = 0;
 	drawing_frame = 0;
 	gravity_mod = 0;

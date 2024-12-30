@@ -75,8 +75,8 @@ void cube_movement(void){
 				if (!orbed[currplayer]) {
 					jumps++;
 
-					if (!currplayer_mini) currplayer_vel_y = JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
-					else currplayer_vel_y = MINI_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
+					if (!currplayer_mini) currplayer_vel_y = currplayer_gravity ? -JUMP_VEL : JUMP_VEL; // JUMP
+					else currplayer_vel_y = currplayer_gravity ? -MINI_JUMP_VEL : MINI_JUMP_VEL; // JUMP
 
 
 					if (make_cube_jump_higher) {
@@ -91,8 +91,8 @@ void cube_movement(void){
 			else if((controllingplayer->press_a || controllingplayer->press_up) && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack || (gamemode == GAMEMODE_NINJA && ninjajumps[currplayer]))) {		//jblock making you release and press A again to jump
 				jumps++;
 
-				if (!currplayer_mini) currplayer_vel_y = JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
-				else currplayer_vel_y = MINI_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
+				if (!currplayer_mini) currplayer_vel_y = currplayer_gravity ? -JUMP_VEL : JUMP_VEL; // JUMP
+				else currplayer_vel_y = currplayer_gravity ? -MINI_JUMP_VEL : MINI_JUMP_VEL; // JUMP
 
 				if (make_cube_jump_higher) {
 					if ((currplayer_slope_type & SLOPE_DEGREES_MASK) != SLOPE_22DEG) {
@@ -115,8 +115,8 @@ void cube_movement(void){
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);					
 			if((controllingplayer->a || controllingplayer->up) && !orbed[currplayer]) {
 				jumps++;
-				if (!currplayer_mini) currplayer_vel_y = ROBOT_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
-				else currplayer_vel_y = MINI_ROBOT_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
+				if (!currplayer_mini) currplayer_vel_y = currplayer_gravity ? -ROBOT_JUMP_VEL : ROBOT_JUMP_VEL; // JUMP
+				else currplayer_vel_y = currplayer_gravity ? -MINI_ROBOT_JUMP_VEL : MINI_ROBOT_JUMP_VEL; // JUMP
 
 				robotjumptime[currplayer] = ROBOT_JUMP_TIME;
 				robotjumpframe[0] = 1;

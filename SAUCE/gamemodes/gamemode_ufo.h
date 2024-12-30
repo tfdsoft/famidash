@@ -55,9 +55,9 @@ void ufo_movement(void){
 
 	if((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed) {
 		if (!currplayer_mini) {
-			currplayer_vel_y = UFO_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
+			currplayer_vel_y = currplayer_gravity ? -UFO_JUMP_VEL : UFO_JUMP_VEL; // JUMP
 		} else {
-			currplayer_vel_y = MINI_UFO_JUMP_VEL^(0x0000-currplayer_gravity); // JUMP
+			currplayer_vel_y = currplayer_gravity ? -MINI_UFO_JUMP_VEL : MINI_UFO_JUMP_VEL; // JUMP
 		}
 		jumps++;
 	}
