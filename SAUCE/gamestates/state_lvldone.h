@@ -418,6 +418,7 @@ const unsigned char TEXT_challenge[]="THE";
 const unsigned char TEXT_hexagon[]="HEXAGON";
 const unsigned char TEXT_blast[]="BLAST";
 const unsigned char TEXT_speed[]="AT$THE$SPEED";
+const unsigned char TEXT_crackdown[]="OKIBA";
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
 const unsigned char TEXT_xlevel2text2[]="TRACK";
@@ -451,6 +452,8 @@ const unsigned char TEXT_2textstereo[]="MADNESS$2";
 const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
 const unsigned char TEXT_2textproblematic[]="PROBLEMATIC";
 const unsigned char TEXT_2textspeed[]="OF$LIGHT";
+const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
+const unsigned char TEXT_2textstalemate[]="STALEMATE";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -515,6 +518,8 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_challenge,
 	TEXT_speed,
 	0,
+	TEXT_crackdown,
+	0,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -549,6 +554,8 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2challenge,
 	TEXT_2textspeed,
 	TEXT_2textmidnight,
+	TEXT_2textcrackdown,
+	TEXT_2textstalemate,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -583,6 +590,8 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2challenge) - 1,
 	sizeof(TEXT_2textspeed) - 1,
 	sizeof(TEXT_2textmidnight) - 1,
+	sizeof(TEXT_2textcrackdown) - 1,
+	sizeof(TEXT_2textstalemate) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -615,6 +624,8 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_xweasel) - 1,	
 	sizeof(TEXT_challenge) - 1,	
 	sizeof(TEXT_speed) - 1,	
+	0,
+	sizeof(TEXT_crackdown) - 1,	
 	0,
 };
 
@@ -651,6 +662,8 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_the_challenge,
 	song_atthespeedoflight,
 	song_midnight,
+	song_crackdown,
+	song_stalemate	
 };
 
 
