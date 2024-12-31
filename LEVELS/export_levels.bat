@@ -29,6 +29,7 @@ SET all_levels= ^
     dreamer ^
     kappaclysm ^
     revolution ^
+    lostinthewoods ^
     aprettyeasylevel ^
     thelightningroad ^
     nightmare ^

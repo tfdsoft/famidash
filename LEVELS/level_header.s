@@ -139,6 +139,13 @@ foresttemple_no_parallax  = 1
 foresttemple_bg_color    = $0F
 foresttemple_grnd_color  = $0F
 
+lostinthewoods_song_number = song_cycles
+lostinthewoods_game_mode   = $00
+lostinthewoods_speed       = $00
+lostinthewoods_no_parallax  = 1
+lostinthewoods_bg_color    = $0F
+lostinthewoods_grnd_color  = $0F
+
 toe2_song_number = song_toe_2
 toe2_game_mode   = $00
 toe2_speed       = $00

@@ -21,6 +21,7 @@ const unsigned char levelchallengetext[]="THE";
 const unsigned char levelhexagontext[]="HEXAGON";
 const unsigned char levelblasttext[]="BLAST";
 const unsigned char levelprettyeasytext[]="A PRETTY";
+const unsigned char levelwoodstext[]="LOST IN";
 //const unsigned char level18text[]="GO BACK TO";
 
 const unsigned char level1text2[]="MADNESS";
@@ -68,4 +69,5 @@ const unsigned char leveleasy2[]="LEVEL EASY";
 const unsigned char levelnostalgists2[]=" DEAR NOSTALGISTS";
 const unsigned char levelprettyeasytext2[]="EASY LEVEL";
 const unsigned char levelsupercycles2[]="SUPER CYCLES";
+const unsigned char levelwoods2[]="THE WOODS";
 

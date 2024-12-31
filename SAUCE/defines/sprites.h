@@ -1688,7 +1688,7 @@ const unsigned char Portal_Gamemode_Swing[]={
 	  0, 32,0x61,1|OAM_FLIP_V,
 	  8,  0,0x63,1,
 
-	  8, 16,0xEF,1,
+	  8, 16,0xE9,1,
 	  8, 32,0x63,1|OAM_FLIP_V,
 	 16,  0,0x65,1,
 	 16, 16,0xF1,1,
@@ -2038,15 +2038,15 @@ const unsigned char Dash_Gravity_Orb_45Deg_UP[]={
 
 const unsigned char Spider_Orb_UP[]={
 
-	  0,  0,0xC9,1,
-	  8,  0,0xC9,1|OAM_FLIP_H,
+	  0,  0,0xEF,1,
+	  8,  0,0xEF,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Orb_DOWN[]={
 
-	  0,  0,0xC9,1|OAM_FLIP_V,
-	  8,  0,0xC9,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,  0,0xEF,1|OAM_FLIP_V,
+	  8,  0,0xEF,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Dash_Orb_45Deg_DOWN[]={
