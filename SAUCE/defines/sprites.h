@@ -1654,14 +1654,14 @@ const unsigned char Portal_Gamemode_Robot[]={
 const unsigned char Portal_Gamemode_Spider[]={
 
 	  0,  0,0x41,1,
-	  0, 16,0xF3,1,
+	  0, 16,0x47,1,
 	  0, 32,0x41,1|OAM_FLIP_V,
 	  8,  0,0x43,1,
 
-	  8, 16,0xF5,1,
+	  8, 16,0x9C,1,
 	  8, 32,0x43,1|OAM_FLIP_V,
 	 16,  0,0x45,1,
-	 16, 16,0xF7,1,
+	 16, 16,0x9E,1,
 
 	 16, 32,0x45,1|OAM_FLIP_V,
 	0x80
@@ -1684,14 +1684,14 @@ const unsigned char Portal_Gamemode_Ninja[]={
 const unsigned char Portal_Gamemode_Swing[]={
 
 	  0,  0,0x61,1,
-	  0, 16,0xED,1,
+	  0, 16,0x67,1,
 	  0, 32,0x61,1|OAM_FLIP_V,
 	  8,  0,0x63,1,
 
-	  8, 16,0xE9,1,
+	  8, 16,0x8C,1,
 	  8, 32,0x63,1|OAM_FLIP_V,
 	 16,  0,0x65,1,
-	 16, 16,0xF1,1,
+	 16, 16,0x8E,1,
 
 	 16, 32,0x65,1|OAM_FLIP_V,
 	0x80
@@ -1825,13 +1825,13 @@ const unsigned char Bigboy_Portal[]={
 const unsigned char Teleport_Portal_Horizontal_Upwards_Enter[]={
 
 
-	  0,  0,0x9C,0|OAM_FLIP_H,  
-	  8, 0,0x8E,0|OAM_FLIP_H,  
-	  16, 0,0x8C,0|OAM_FLIP_H,
-	  24, 0,0x8C,0,  
+	  0,  0,0xF5,0|OAM_FLIP_H,  
+	  8,  0,0xF3,0|OAM_FLIP_H,  
+	  16, 0,0xF1,0|OAM_FLIP_H,
+	  24, 0,0xF1,0,  
 
-	32, 0,0x8E,0,
-	40, 0,0x9C,0,  
+	32, 0,0xF3,0,
+	40, 0,0xF5,0,  
 	0,8,0xE7,0|OAM_FLIP_H,
 	8,8,0xE5,0|OAM_FLIP_H,
 	16,8,0xE3,0|OAM_FLIP_H,
@@ -1845,13 +1845,13 @@ const unsigned char Teleport_Portal_Horizontal_Upwards_Enter[]={
 const unsigned char Teleport_Portal_Horizontal_Upwards_Exit[]={
 
 
-	  0,  0,0x9C,1|OAM_FLIP_H,  
-	  8, 0,0x8E,1|OAM_FLIP_H,  
-	  16, 0,0x8C,1|OAM_FLIP_H,
-	  24, 0,0x8C,1,  
+	  0,  0,0xF5,1|OAM_FLIP_H,  
+	  8, 0,0xF3,1|OAM_FLIP_H,  
+	  16, 0,0xF1,1|OAM_FLIP_H,
+	  24, 0,0xF1,1,  
 
-	32, 0,0x8E,1,
-	40,0,0x9C,1,  
+	32, 0,0xF3,1,
+	40,0,0xF5,1,  
 	0,8,0xE7,1|OAM_FLIP_H,
 	8,8,0xE5,1|OAM_FLIP_H,
 	16,8,0xE3,1|OAM_FLIP_H,
@@ -1865,13 +1865,13 @@ const unsigned char Teleport_Portal_Horizontal_Upwards_Exit[]={
 const unsigned char Teleport_Portal_Horizontal_Downwards_Enter[]={
 
 
-	  0,  0,0x9C,0|OAM_FLIP_H|OAM_FLIP_V,  
-	  8, 0,0x8E,0|OAM_FLIP_H|OAM_FLIP_V,  
-	  16, 0,0x8C,0|OAM_FLIP_H|OAM_FLIP_V,
-	  24, 0,0x8C,0|OAM_FLIP_V,  
+	  0,  0,0xF5,0|OAM_FLIP_H|OAM_FLIP_V,  
+	  8, 0,0xF3,0|OAM_FLIP_H|OAM_FLIP_V,  
+	  16, 0,0xF1,0|OAM_FLIP_H|OAM_FLIP_V,
+	  24, 0,0xF1,0|OAM_FLIP_V,  
 
-	32, 0,0x8E,0|OAM_FLIP_V,
-	40, 0,0x9C,0|OAM_FLIP_V,  
+	32, 0,0xF3,0|OAM_FLIP_V,
+	40, 0,0xF5,0|OAM_FLIP_V,  
 	0,-8,0xE7,0|OAM_FLIP_H|OAM_FLIP_V,
 	8,-8,0xE5,0|OAM_FLIP_H|OAM_FLIP_V,
 	16,-8,0xE3,0|OAM_FLIP_H|OAM_FLIP_V,
@@ -1884,13 +1884,13 @@ const unsigned char Teleport_Portal_Horizontal_Downwards_Enter[]={
 const unsigned char Teleport_Portal_Horizontal_Downwards_Exit[]={
 
 
-	  0,  0,0x9C,1|OAM_FLIP_H|OAM_FLIP_V,  
-	  8, 0,0x8E,1|OAM_FLIP_H|OAM_FLIP_V,  
-	  16, 0,0x8C,1|OAM_FLIP_H|OAM_FLIP_V,
-	  24, 0,0x8C,1|OAM_FLIP_V,  
+	  0,  0,0xF5,1|OAM_FLIP_H|OAM_FLIP_V,  
+	  8, 0,0xF3,1|OAM_FLIP_H|OAM_FLIP_V,  
+	  16, 0,0xF1,1|OAM_FLIP_H|OAM_FLIP_V,
+	  24, 0,0xF1,1|OAM_FLIP_V,  
 
-	32, 0,0x8E,1|OAM_FLIP_V,
-	40, 0,0x9C,1|OAM_FLIP_V,  
+	32, 0,0xF3,1|OAM_FLIP_V,
+	40, 0,0xF5,1|OAM_FLIP_V,  
 	0,-8,0xE7,1|OAM_FLIP_H|OAM_FLIP_V,
 	8,-8,0xE5,1|OAM_FLIP_H|OAM_FLIP_V,
 	16,-8,0xE3,1|OAM_FLIP_H|OAM_FLIP_V,

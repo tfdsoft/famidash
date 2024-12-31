@@ -164,7 +164,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.hfm.bin" ; Size: 2942
 
 
-.segment "LVL_BANK_09"	; Total bank size: 8146 bytes
+.segment "LVL_BANK_09"	; Total bank size: 7943 bytes
 	.export level_data_revolution
 	level_data_revolution:
 	; Header
@@ -190,19 +190,6 @@
 		.byte 27	; height of timemachine
 	; Level data
 		.incbin "EXPORTS/timemachine.hfm.bin" ; Size: 2901
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.hfm.bin" ; Size: 203
 
 
 .segment "LVL_BANK_0A"	; Total bank size: 8173 bytes
@@ -405,7 +392,7 @@
 		.incbin "EXPORTS/theoryofeverything.hfm.bin" ; Size: 3625
 
 
-.segment "LVL_BANK_13"	; Total bank size: 8160 bytes
+.segment "LVL_BANK_13"	; Total bank size: 8191 bytes
 	.export level_data_supercycles
 	level_data_supercycles:
 	; Header
@@ -433,7 +420,7 @@
 		.incbin "EXPORTS/problematic.hfm.bin" ; Size: 3371
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8191 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8155 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
@@ -474,6 +461,21 @@
 		.byte 35	; height of thelightningroad
 	; Level data
 		.incbin "EXPORTS/thelightningroad.hfm.bin" ; Size: 2533
+
+
+.segment "LVL_BANK_16"	; Total bank size: 8192 bytes
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
 
 .segment "LVL_BANK_17"	; Total bank size: 8182 bytes
