@@ -205,7 +205,7 @@
 		.incbin "EXPORTS/test4.hfm.bin" ; Size: 203
 
 
-.segment "LVL_BANK_0A"	; Total bank size: 8172 bytes
+.segment "LVL_BANK_0A"	; Total bank size: 8173 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
@@ -217,7 +217,7 @@
 		.byte lostinthewoods_grnd_color
 		.byte 47	; height of lostinthewoods
 	; Level data
-		.incbin "EXPORTS/lostinthewoods.hfm.bin" ; Size: 5016
+		.incbin "EXPORTS/lostinthewoods.hfm.bin" ; Size: 5017
 
 
 .segment "LVL_BANK_0B"	; Total bank size: 8165 bytes
