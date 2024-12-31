@@ -134,7 +134,7 @@ supercycles_grnd_color  = $02
 
 foresttemple_song_number = song_cycles
 foresttemple_game_mode   = $00
-foresttemple_speed       = $00
+foresttemple_speed       = $01
 foresttemple_no_parallax  = 1
 foresttemple_bg_color    = $0F
 foresttemple_grnd_color  = $0F
