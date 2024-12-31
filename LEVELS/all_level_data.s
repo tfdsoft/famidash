@@ -306,7 +306,7 @@
 		.incbin "EXPORTS/electroman.hfm.bin" ; Size: 3783
 
 
-.segment "LVL_BANK_0F"	; Total bank size: 8025 bytes
+.segment "LVL_BANK_0F"	; Total bank size: 8030 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -318,7 +318,7 @@
 		.byte foresttemple_grnd_color
 		.byte 27	; height of foresttemple
 	; Level data
-		.incbin "EXPORTS/foresttemple.hfm.bin" ; Size: 4314
+		.incbin "EXPORTS/foresttemple.hfm.bin" ; Size: 4319
 
 	.export level_data_xstep
 	level_data_xstep:
