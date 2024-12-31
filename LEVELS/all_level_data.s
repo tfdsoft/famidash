@@ -562,7 +562,7 @@
 		.incbin "EXPORTS/cantletgo.hfm.bin" ; Size: 1773
 
 
-.segment "LVL_BANK_1B"	; Total bank size: 8092 bytes
+.segment "LVL_BANK_1B"	; Total bank size: 8022 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
