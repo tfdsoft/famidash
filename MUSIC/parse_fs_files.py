@@ -49,7 +49,8 @@ if __name__ == "__main__":
     outfileC = open(sys.path[0]+"/EXPORTS/musicDefines.h", "w")
     outfileAsm = open(sys.path[0]+"/EXPORTS/music_songlist.inc", "w")
     count = 0
-    for filename in sorted(glob.glob(sys.path[0]+"/EXPORTS/music_*_songlist.inc")):
+    prefixRgx = "EXPORTS/music_(.+)_songlist"
+    for filename in sorted(glob.glob(sys.path[0]+"/EXPORTS/music_*_songlist.inc"), key=lambda x : int(re.findall(prefixRgx, x)[0])):
         print ("file: " + filename)
         count = incrIncFile(open(filename), outfileC, outfileAsm, count)
         os.remove(filename)

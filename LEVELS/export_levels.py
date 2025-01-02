@@ -106,7 +106,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 	total_final_size = 0
 
 	# load compressed level cache, if it exists
-	if ((own_path / "level_data_cache.json").exists()):
+	if ((own_path / "level_data_cache.json").is_file()):
 		with open((own_path / "level_data_cache.json")) as file:
 			size_cache = json.load(file)
 	else:
@@ -128,7 +128,6 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 		if (
 			# Check existence of cache
 			level in size_cache and
-			cached_data_path.exists() and
 			cached_data_path.is_file() and
 			# Check that the cache is valid against the RLE data
 			int(level_cache.get("rle_size")) == len(rle_data) and
@@ -171,7 +170,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 				len(level_cache["split_huff_sizes"]) == level_cache["split_count"] and
 				# Check validity of all split cached data
 				all([int(
-						path.exists() and path.is_file() and
+						path.is_file() and
 						level_cache["split_huff_sizes"][id] == path.stat().st_size and
 						level_cache["split_huff_hashes"][id] == sha256(path.read_bytes())
 					) for id, path in (
