@@ -188,13 +188,12 @@ void draw_sprites(void){
 }
 
 void trail_loop() {
-	tmp6 = currplayer_vel_x << 1;
-
 	if (kandoframecnt & 1) {
+		tmp6 = currplayer_vel_x << 1;
 		tmp1 = 8;
 		tmp5 = currplayer_x - tmp6;
 		do {
-			if (trail_sprites_visible[tmp1 - 1]) {	
+			if ((trail_sprites_visible-1)[tmp1]) {	
 				oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
 			}
 			
@@ -203,9 +202,11 @@ void trail_loop() {
 		} while (tmp1 > 1);
 	} else {
 		tmp1 = 2;
-		tmp5 = currplayer_x - tmp6 - tmp6 - tmp6 - tmp6 - tmp6 - tmp6 - tmp6;
+		// the following 2 lines of code are equal to tmp5 -= (tmp6 * 7)
+		tmp5 = currplayer_vel_x << 4;
+		tmp5 = (currplayer_vel_x << 1) + currplayer_x - tmp5;
 		do {
-			if (trail_sprites_visible[tmp1 - 1]) {
+			if ((trail_sprites_visible-1)[tmp1]) {
 				oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
 			}
 			
@@ -216,11 +217,11 @@ void trail_loop() {
 }
 
 void put_progress_bar_sprite() {
-	oam_meta_spr(tmp1, tmp2, Number_Sprites[22 + tmp3]);
+	oam_meta_spr(tmp1, tmp2, (Number_Sprites+22)[tmp3 & 0x7F]);	// = Number_Sprites[22+tmp3]
 }
 
 void put_number() {
-	oam_meta_spr(tmp1, tmp2, Number_Sprites[high_byte(tmp6) + tmp3]);
+	oam_meta_spr(tmp1, tmp2, Number_Sprites[(high_byte(tmp6) + tmp3) & 0x7F]);
 }
 
 void minus15y() {
