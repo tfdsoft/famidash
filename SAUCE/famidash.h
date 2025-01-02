@@ -352,12 +352,9 @@ uint8_t ufo_orbed;
 uint8_t dashing[2];
 
 
-// the funny uh uhhhhh um the uhh sprite storidge
-// X_lowbyte, X_highbyte, Y_lowbyte, Y_highbyte, object id, unused, unused, unused
-uint8_t activesprites_x_lo[max_loaded_sprites];
-uint8_t activesprites_x_hi[max_loaded_sprites];
-uint8_t activesprites_y_lo[max_loaded_sprites];
-uint8_t activesprites_y_hi[max_loaded_sprites];
+// Sprite Storage
+lohi_arr16_decl(activesprites_x, max_loaded_sprites);
+lohi_arr16_decl(activesprites_y, max_loaded_sprites);
 uint8_t activesprites_type[max_loaded_sprites];
 uint8_t activesprites_anim_frame[max_loaded_sprites];
 int8_t activesprites_anim_frame_count[max_loaded_sprites];

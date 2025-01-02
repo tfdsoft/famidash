@@ -219,8 +219,6 @@ extern uint8_t PAL_BUF[32];
 #define crossPRGBankJump8(sym, args) (__A__ = args, __asm__("sta ptr3 "), crossPRGBankJump0(sym))
 #define crossPRGBankJump16(sym, args) (__AX__ = args, __asm__("sta ptr3 \n stx ptr3+1"),crossPRGBankJump0(sym))
 
-#define uint16SepArrLoad(sym, idx) (__A__ = idx, __asm__("tay \n lda %v, y \n ldx %v, y", sym##_lo, sym##_hi), __AX__)
-
 // holy fuck i am a genius
 #define do_if_flag_common(func, opcode) do { \
 __asm__("j" opcode " %s", __LINE__); \
