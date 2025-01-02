@@ -381,15 +381,15 @@ void common_dash_orb_routine() {
 	else invert_gravity(currplayer_gravity);
 }
 
-#define yellow_orb 0x00 << 3
-#define yellow_pad 0x01 << 3
-#define pink_orb   0x02 << 3
-#define pink_pad   0x03 << 3
-#define red_orb    0x04 << 3
-#define ylw_bigger 0x05 << 3
-#define black_orb  0x06 << 3
+#define yellow_orb  0x00 << 3
+#define yellow_pad  0x01 << 3
+#define pink_orb    0x02 << 3
+#define pink_pad    0x03 << 3
+#define red_orb     0x04 << 3
+#define ylw_bigger  0x05 << 3
+#define black_orb   0x06 << 3
 #define ylw_smaller 0x07 << 3
-#define red_pad 0x08 << 3
+#define red_pad     0x08 << 3
 
 const short heights[] = {
 //	cube    ship    ball     ufo    robot   spider  wave    swing
@@ -436,7 +436,7 @@ static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 }
 
 static void sprite_gamemode_main() {
-	if (controllingplayer->a || controllingplayer->up) {	
+	if (controllingplayer->a || controllingplayer->up) {
 		if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
 		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
@@ -600,361 +600,449 @@ static void sprite_gamemode_controller_check() {
 
 #define PORTAL_TO_TOP_DIFF 0x38
 
+
 void sprite_collide_lookup() {
 
-	if (!activesprites_activated[index] || dual || options & platformer) {
-		switch (collided) {
-		case DUAL_PORTAL:
-			if (!activesprites_activated[index]) {
-				dual = 1;
-				target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
-				if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 0xFF;  }
-				else { 
-					player_x[1] = player_x[0]; player_y[1] = currplayer_y;
-					player_gravity[1] = currplayer_gravity ^ 0xFF;
-					player_vel_y[1] = -currplayer_vel_y; mini[1] = mini[0];
-				}
-	//			activesprites_type[index] = 0xFF;
-				activesprites_activated[index] = 1;
-			}
-			return;
-		case SINGLE_PORTAL:
-			if (!activesprites_activated[index]) {
-				if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; player_gravity[0] = currplayer_gravity; player_vel_y[0] = currplayer_vel_y; }
-				else { player_gravity[1] = player_gravity[0]; }
-				activesprites_activated[index] = 1;
+	static void * const sprite_collide_jump_table_0[] = {
+		&&spcl_cube,	&&spcl_shipufo,	&&spcl_ball,	&&spcl_shipufo,	// 0x00 - 0x03
+		&&spcl_robot,	&&spcl_orb_cmn,	&&spcl_pinkorb,	&&spcl_coin_1,	// 0x04 - 0x07
+		&&spcl_gvdn_pt,	&&spcl_gvup_pt,	&&spcl_ylw_pad,	&&spcl_ylw_orb,	// 0x08 - 0x0B
+		&&spcl_ylw_pad,	&&spcl_gvdn_pd,	&&spcl_gvup_pd,	&&spcl_default,	// 0x0C - 0x0F
+		&&spcl_gvdn_pt,	&&spcl_gvdn_pt,	&&spcl_gvup_pt,	&&spcl_gvup_pt,	// 0x10 - 0x13
+		&&spcl_spd_05,	&&spcl_spd_10,	&&spcl_spd_20,	&&spcl_spider,	// 0x14 - 0x17
+		&&spcl_mini_pt,	&&spcl_grow_pt,	&&spcl_coin_2,	&&spcl_coin_3,	// 0x18 - 0x1B
+		&&spcl_coin_1,	&&spcl_coin_2,	&&spcl_coin_3,	&&spcl_ylw_big,	// 0x1C - 0x1F
+		&&spcl_spd_30,	&&spcl_spd_40,	&&spcl_dual_pt,	&&spcl_sngl_pt,	// 0x20 - 0x23
+		&&spcl_wave,	&&spcl_pinkpad,	&&spcl_pinkpad,	&&spcl_grn_orb,	// 0x24 - 0x27
+		&&spcl_red_orb,	&&spcl_ylw_sml,	&&spcl_default,	&&spcl_default,	// 0x28 - 0x2B
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x2C - 0x2F
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x30 - 0x33
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x34 - 0x37
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x38 - 0x3B
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x3C - 0x3F
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x40 - 0x43
+		&&spcl_blckorb,	&&spcl_orb_cmn,	&&spcl_orb_cmn,	&&spcl_default,	// 0x44 - 0x47
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_swing,	// 0x48 - 0x4B
+		&&spcl_orb_cmn,	&&spcl_orb_cmn,	&&spcl_tlpt_pt,	&&spcl_default,	// 0x4C - 0x4F
+		&&spcl_orb_cmn,	&&spcl_orb_cmn,	&&spcl_red_pad,	&&spcl_red_pad,	// 0x50 - 0x53
+		&&spcl_sporbup,	&&spcl_sporbdn,	&&spcl_sppadup,	&&spcl_sppaddn,	// 0x54 - 0x57
+		&&spcl_ninja,	&&spcl_tlpt_sq,	&&spcl_default,	&&spcl_orb_cmn,	// 0x58 - 0x5B
+		&&spcl_orb_cmn,	&&spcl_orb_cmn,	&&spcl_orb_cmn,	&&spcl_gv13_pt,	// 0x5C - 0x5F
+		&&spcl_gv12_pt,	&&spcl_gv23_pt,	&&spcl_gv2x_pt,	&&spcl_gv1x_pt,	// 0x60 - 0x63
+		&&spcl_rndmode,	&&spcl_grn_pad,	&&spcl_tlpt_pt,	&&spcl_default,	// 0x64 - 0x67
+		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tall_pt,	&&spcl_long_pt,	// 0x68 - 0x6B
+		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_default,	&&spcl_default,	// 0x6C - 0x6F
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x74 - 0x77
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x78 - 0x7B
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x7C - 0x7F
+	};
+	static void * const sprite_collide_jump_table_1[] = {
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x80 - 0x83
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x84 - 0x87
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x88 - 0x8B
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x8C - 0x8F
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x90 - 0x93
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x94 - 0x97
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x98 - 0x9B
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x9C - 0x9F
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xA0 - 0xA3
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xA4 - 0xA7
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xA8 - 0xAB
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xAC - 0xAF
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xB0 - 0xB3
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xB4 - 0xB7
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xB8 - 0xBB
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xBC - 0xBF
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xC0 - 0xC3
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xC4 - 0xC7
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xC8 - 0xCB
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xCC - 0xCF
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xD0 - 0xD3
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xD4 - 0xD7
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xD8 - 0xDB
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xDC - 0xDF
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xE0 - 0xE3
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xE4 - 0xE7
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xE8 - 0xEB
+		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_default,	// 0xEC - 0xEF
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xF0 - 0xF3
+		&&spcl_default,	&&spcl_default,	&&spcl_f_block,	&&spcl_j_block,	// 0xF4 - 0xF7
+		&&spcl_h_block,	&&spcl_s_block,	&&spcl_d_block,	&&spcl_gvup_pt,	// 0xF8 - 0xFB
+		&&spcl_gvdn_pt,	&&spcl_gvdn_pd,	&&spcl_gvup_pd,	&&spcl_default,	// 0xFC - 0xFF
+	};
+	if (activesprites_activated[index] && !dual && !(options & platformer))
+		return;
+	
+	// Instead of the giant ass switch : case that used to be here
+	if (collided < 0x70)
+		goto *sprite_collide_jump_table_0[collided];
+	else if (collided >= 0xE0)
+		tmp2 = collided - 0xE0;
+		goto *sprite_collide_jump_table_1[tmp2];
 
-				tallmode = 0;
-				longmode = 0;
-				bigboi = 0;
-	//			activesprites_type[index] = 0xFF;
-				exitPortalTimer = 10;
-			}
-			return;
-		case TELEPORT_PORTAL_EXIT:
-		case TELEPORT_SQUARE_EXIT:
-		case NOSPRITE:
-			return;
-		
-		// Portal game mode switches
-		case S_BLOCK: if (dashing[currplayer]) { dashing[currplayer] = 0; orbed[currplayer] = 1; return; }
-		case H_BLOCK: hblocked[currplayer] = 1; return;
-		case J_BLOCK: jblocked[currplayer] = 1; return;
-		case D_BLOCK: dblocked[currplayer] = 1; return;
-		case F_BLOCK: fblocked[currplayer] = 1; return;
-#ifdef FLAG_KANDO_FUN_STUFF
-		case TALLBOI_MODE_ENTER: tallmode = 1; return;
-		case LONGBOI_MODE_ENTER: longmode = 1; return;
-		case BIGBOI_MODE_ENTER: bigboi = 1; return;
-		case GRAVITY_1X_PORTAL: gravity_mod = 0; return;
-		case GRAVITY_13_PORTAL: gravity_mod = 1; return;
-		case GRAVITY_12_PORTAL: gravity_mod = 2; return;
-		case GRAVITY_23_PORTAL: gravity_mod = 3; return;
-		case GRAVITY_2X_PORTAL: gravity_mod = 4; return;
-#endif
-		case CUBE_MODE:
-			orbactive = 0;
-			exitPortalTimer = 10;
-			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
-			if (retro_mode) gamemode = GAMEMODE_ROBOT;
-			else gamemode = GAMEMODE_CUBE;
-			return;    
+	spcl_default:
+		return;
 
-		case SHIP_MODE:
-		case UFO_MODE:
-			settrailstuff();
-			//if (currplayer_vel_y > 0x350) currplayer_vel_y = 0x350;
-			//if (currplayer_vel_y < -0x350) currplayer_vel_y = -0x350;
-			currplayer_vel_y /= 2;
-		case BALL_MODE:
-			if (!dual || twoplayer) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
-			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
-			gamemode = collided;
-			activesprites_activated[index] = 1;
-			return;
-		case ROBOT_MODE:
-		
-			exitPortalTimer = 10;
-			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
-			gamemode = collided;
-			retrofireballclear();
-			return;
-		case TELEPORT_SQUARE_ENTER:
-			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
-				currplayer_vel_y = 0;
-				orbed[currplayer] = 1;
-				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
-		case TELEPORT_PORTAL_UPWARDS_ENTER:
-		case TELEPORT_PORTAL_DOWNWARDS_ENTER:
-		case TELEPORT_PORTAL_ENTER_EXTENSION:
-		case TELEPORT_PORTAL_ENTER:
-				high_byte(currplayer_y) = teleport_output;
-			}
-			return;
-		case SPIDER_MODE:
-			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
-			gamemode = GAMEMODE_SPIDER;
-			retrofireballclear();		
-			if (!dual || twoplayer) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
-			return;
-		case WAVE_MODE:
-			settrailstuff();		
-			gamemode = GAMEMODE_WAVE;
-			retrofireballclear();		
-			if (!dual || twoplayer) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
-			return;
-		case SWING_MODE:
-			settrailstuff();
-			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
-			gamemode = GAMEMODE_SWING;
-			retrofireballclear();		
-			if (!dual || twoplayer) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - PORTAL_TO_TOP_DIFF);	
-			return;
-#ifdef FLAG_KANDO_FUN_STUFF
-		case NINJA_MODE:
+	// Gamemode portals
+	
+	spcl_cube:
+		orbactive = 0;
+		exitPortalTimer = 10;
+		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+		if (retro_mode) gamemode = GAMEMODE_ROBOT;
+		else gamemode = GAMEMODE_CUBE;
+		return;
+	
+	spcl_shipufo:
+		settrailstuff();
+		currplayer_vel_y /= 2;
+		// intentional leak
+	spcl_ball:
+		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
+		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
+		gamemode = collided;
+		activesprites_activated[index] = 1;
+		return;
+
+	spcl_robot:
+		exitPortalTimer = 10;
+		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
+		gamemode = GAMEMODE_ROBOT;
+		retrofireballclear();
+		return;
+
+	spcl_spider:
+		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+		gamemode = GAMEMODE_SPIDER;
+		retrofireballclear();		
+		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
+		return;
+
+	spcl_wave:
+		settrailstuff();		
+		gamemode = GAMEMODE_WAVE;
+		retrofireballclear();		
+		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
+		return;
+
+	spcl_swing:
+		settrailstuff();
+		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+		gamemode = GAMEMODE_SWING;
+		retrofireballclear();		
+		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);	
+		return;
+
+	spcl_ninja:
+		#ifdef FLAG_KANDO_FUN_STUFF
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
 			gamemode = GAMEMODE_NINJA;
-			return;
-		case RANDOM_MODE_PORTAL:
-			if (!dual || twoplayer) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
+		#endif
+		return;
+
+	spcl_rndmode:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
 			idx8_inc(activesprites_activated, index);
-			return;
-#endif
-		case MINI_PORTAL:
-			currplayer_mini = 1;
-			mini[0] = 1;
-			mini[1] = 1;
-			return;
-		case GROWTH_PORTAL:
-			currplayer_mini = 0;
-			mini[0] = 0;
-			mini[1] = 0;
-			return;
-		case GREEN_PAD:
-			invert_gravity(currplayer_gravity);
-			if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
-			else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
+		#endif
+		return;
 
+
+	// Non-Gamemode portals 
+	// - Gravity portals
+	spcl_gvdn_pt:
+		if (!currplayer_gravity) 
+			return;
+		currplayer_gravity = GRAVITY_DOWN;
+		goto spcl_gvity_portal_common;
+	
+	spcl_gvup_pt:
+		if (currplayer_gravity)
+			return;
+		currplayer_gravity = GRAVITY_UP;
+		// intentional leak
+	spcl_gvity_portal_common:
+		settrailstuff();
+		currplayer_vel_y /= 2;
+		robotjumptime[currplayer] = 0;
+		idx8_inc(activesprites_activated, index);
+		return;
+	
+	// - Speed portals
+	spcl_spd_05: speed = 1; return;
+	spcl_spd_10: speed = 0; return;
+	spcl_spd_20: speed = 2; return;
+	spcl_spd_30: speed = 3; return;
+	spcl_spd_40: speed = 4; return;
+	spcl_spdslow: speed = 5; return;
+
+	// - Gravity portals
+	spcl_gv1x_pt:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			gravity_mod = 0;
+		#endif
+		return;
+
+	spcl_gv13_pt:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			gravity_mod = 1;
+		#endif
+		return;
+
+	spcl_gv12_pt:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			gravity_mod = 2;
+		#endif
+		return;
+
+	spcl_gv23_pt:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			gravity_mod = 3;
+		#endif
+		return;
+
+	spcl_gv2x_pt:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			gravity_mod = 4;
+		#endif
+		return;
+
+	// - Size portals
+	spcl_mini_pt:
+		currplayer_mini = 1;
+		mini[0] = 1;
+		mini[1] = 1;
+		return;
+
+	spcl_grow_pt:
+		currplayer_mini = 0;
+		mini[0] = 0;
+		mini[1] = 0;
+		return;
+
+	// - Kando size portals
+	spcl_tall_pt:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			tallmode = 1;
+		#endif
+		return;
+
+	spcl_long_pt:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			longmode = 1;
+		#endif
+		return;
+
+	spcl_bigmode:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			bigboi = 1;
+		#endif
+		return;
+
+	// - Doubling portals
+	spcl_dual_pt:
+		if (!activesprites_activated[index]) {
+			dual = 1;
+			target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
+			if (twoplayer) { player_gravity[1] = player_gravity[0] ^ 0xFF;  }
+			else { 
+				player_x[1] = player_x[0]; player_y[1] = currplayer_y;
+				player_gravity[1] = currplayer_gravity ^ 0xFF;
+				player_vel_y[1] = -currplayer_vel_y; mini[1] = mini[0];
+			}
+			// activesprites_type[index] = 0xFF;
+			activesprites_activated[index] = 1;
+		}
+		return;
+	
+	spcl_sngl_pt:
+		if (!activesprites_activated[index]) {
+			if (!twoplayer) { dual = 0; player_y[0] = currplayer_y; player_gravity[0] = currplayer_gravity; player_vel_y[0] = currplayer_vel_y; }
+			else { player_gravity[1] = player_gravity[0]; }
+			activesprites_activated[index] = 1;
+
+			tallmode = 0;
+			longmode = 0;
+			bigboi = 0;
+			// activesprites_type[index] = 0xFF;
+			exitPortalTimer = 10;
+		}
+		return;
+	
+	// - Teleport portals (and square)
+	spcl_tlpt_sq:
+		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
+			currplayer_vel_y = 0;
+			orbed[currplayer] = 1;
+			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+	spcl_tlpt_pt:
+			high_byte(currplayer_y) = teleport_output;
+		}
+		return;
+
+	// Alphabet blocks
+	spcl_s_block:
+		if (dashing[currplayer]){
+			dashing[currplayer] = 0; orbed[currplayer] = 1;
+		}
+		return;
+	spcl_h_block: hblocked[currplayer] = 1; return;
+	spcl_j_block: jblocked[currplayer] = 1; return;
+	spcl_d_block: dblocked[currplayer] = 1; return;
+	spcl_f_block: fblocked[currplayer] = 1; return;
+
+	// Coins
+	spcl_coin_1:
+		if (practice_point_count) return;
+		coins |= COIN_1;
+		coin1_timer = 1;
+		coin1_speed = 0x0200;
+		goto spcl_coin_common;
+
+	spcl_coin_2:
+		if (practice_point_count) return;
+		coins |= COIN_2;
+		coin2_timer = 1;
+		coin2_speed = 0x0200;
+		goto spcl_coin_common;
+
+	spcl_coin_3:
+		if (practice_point_count) return;
+		coins |= COIN_3;
+		coin3_timer = 1;
+		coin3_speed = 0x0200;
+		// intentional leak
+	spcl_coin_common:
+		sfx_play(sfx_coin, 0);
+		animating = 1;
+		return;
+	
+
+	// collided with a pad
+	spcl_ylw_pad:
+		clear_slope_stuff();
+		settrailstuff();
+		table_offset = yellow_pad;
+		currplayer_vel_y = sprite_gamemode_y_adjust();
+		//idx8_inc(activesprites_activated, index);	
+		return;
+	spcl_pinkpad:
+		clear_slope_stuff();
+		settrailstuff();
+		table_offset = pink_pad;
+		currplayer_vel_y = sprite_gamemode_y_adjust();
+		//idx8_inc(activesprites_activated, index);	
+		return;
+	spcl_red_pad:
+		clear_slope_stuff();
+		settrailstuff();
+		table_offset = red_pad;
+		currplayer_vel_y = sprite_gamemode_y_adjust();
+		//idx8_inc(activesprites_activated, index);	
+		return;
+
+	spcl_grn_pad:
+		invert_gravity(currplayer_gravity);
+		if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
+		else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
+		idx8_inc(activesprites_activated, index);
+		return;
+	
+	spcl_gvdn_pd:
+		clear_slope_stuff();
+		if (!currplayer_gravity) { 
+			settrailstuff();
+			currplayer_gravity = GRAVITY_UP;				//flip gravity
+			currplayer_vel_y = PAD_HEIGHT_BLUE;
+			//invincible_counter = 3;
+		}
+		idx8_inc(activesprites_activated, index);	
+		return;
+	
+	spcl_gvup_pd:
+		clear_slope_stuff();
+		if (currplayer_gravity) { 	
+			settrailstuff();
+			currplayer_gravity = GRAVITY_DOWN;				//flip gravity
+			currplayer_vel_y = -PAD_HEIGHT_BLUE;
+			//invincible_counter = 3;				
+		}
+		idx8_inc(activesprites_activated, index);	
+		return;
+
+	// Spider orbs and pads
+	spcl_sporbup:
+		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
+			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+	spcl_sppadup:
+			high_byte(currplayer_y) -= eject_D;
+			currplayer_vel_y = 0;
+			currplayer_gravity = GRAVITY_UP;
+			crossPRGBankJump0(spider_up_wait);
+			high_byte(currplayer_y) -= eject_U;
+			currplayer_vel_y = 0;	
+			orbed[currplayer] = 1;
 			idx8_inc(activesprites_activated, index);
-			return;
+		}
+		return;
+	spcl_sporbdn:
+		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
+			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+	spcl_sppaddn:
+			high_byte(currplayer_y) -= eject_U + 1;
+			currplayer_vel_y = 0;
+			currplayer_gravity = GRAVITY_DOWN;
+			crossPRGBankJump0(spider_down_wait);
+			high_byte(currplayer_y) -= eject_D;
+			currplayer_vel_y = 0;
+			orbed[currplayer] = 1;
+			idx8_inc(activesprites_activated, index);
+		}
+		return;
 
+	spcl_ylw_orb:
+		table_offset = yellow_orb;
+		//intentional leak
+		goto spcl_orb_cmn;
+	spcl_grn_orb:
+	#ifdef FLAG_KANDO_FUN_STUFF		
+		table_offset = yellow_orb;
+		goto spcl_orb_cmn;
+	#else
+		return;
+	#endif
 
-		// collided with non game mode portals 
+	spcl_ylw_big:
+		table_offset = ylw_bigger;
+		goto spcl_orb_cmn;
 
-		case GRAVITY_DOWN_PORTAL:
-		case GRAVITY_DOWN_UPWARDS_PORTAL:
-		case GRAVITY_DOWN_DOWNWARDS_PORTAL:
-		case GRAVITY_DOWN_INVISIBLE_PORTAL:  
-			if (currplayer_gravity) {
-				
-				settrailstuff();
-				currplayer_gravity = GRAVITY_DOWN; 
-				currplayer_vel_y /= 2;
-				robotjumptime[currplayer] = 0;
-				idx8_inc(activesprites_activated, index);
-			}
-			return;
-		case GRAVITY_UP_PORTAL:
-		case GRAVITY_UP_UPWARDS_PORTAL:
-		case GRAVITY_UP_DOWNWARDS_PORTAL:
-		case GRAVITY_UP_INVISIBLE_PORTAL:
-			if (!currplayer_gravity) {
-				
-				settrailstuff();
-				currplayer_gravity = GRAVITY_UP; 
-				currplayer_vel_y /= 2;
-				robotjumptime[currplayer] = 0;
-				idx8_inc(activesprites_activated, index);	
-			}
-			return;
+	spcl_ylw_sml:
+		table_offset = ylw_smaller;
+		goto spcl_orb_cmn;
 
-		// collided with coin
-		case COIN1:
-		case COINGOTTEN1:
-			if (!practice_point_count) {
-				coins |= COIN_1;
-			sfx_play(sfx_coin, 0);
-				coin1_timer = 1;
-				coin1_speed = 0x0200;
-				animating = 1;		
-			}
-			return;
-		case COIN2:
-		case COINGOTTEN2:
-			if (!practice_point_count) {
-				coins |= COIN_2;
-		       sfx_play(sfx_coin, 0);
-				coin2_timer = 1;
-				coin2_speed = 0x0200;
-				animating = 1;		
-			}
-			return;
-		case COIN3:
-		case COINGOTTEN3:
-			if (!practice_point_count) {
-				coins |= COIN_3;
-			sfx_play(sfx_coin, 0);
-				coin3_timer = 1;
-				coin3_speed = 0x0200;
-				animating = 1;		
-			}
-			return;
+	spcl_pinkorb:
+		table_offset = pink_orb;
+		goto spcl_orb_cmn;
 
-		// collided with speed trigger
-		case SPEED_05_PORTAL:
-			speed = 1;
-			return;
-		case SPEED_10_PORTAL:
-			speed = 0;
-			return;
-		case SPEED_20_PORTAL:
-			speed = 2;
-			return;
-		case SPEED_30_PORTAL:
-			speed = 3;
-			return;
-		case SPEED_40_PORTAL:
-			speed = 4;
-			return;
-		case SPEED_SLOW:
-			speed = 5;
-			return;
+	spcl_blckorb:
+		table_offset = black_orb;
+		goto spcl_orb_cmn;
 
-		case SPIDER_ORB_UP:
-			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
-				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
-		case SPIDER_PAD_UP:
-				high_byte(currplayer_y) -= eject_D;
-				currplayer_vel_y = 0;
-				currplayer_gravity = GRAVITY_UP;
-				crossPRGBankJump0(spider_up_wait);
-				high_byte(currplayer_y) -= eject_U;
-				currplayer_vel_y = 0;	
-				orbed[currplayer] = 1;
-				idx8_inc(activesprites_activated, index);
-			}
-			return;
-		case SPIDER_ORB_DOWN:
-			if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
-				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
-		case SPIDER_PAD_DOWN:
-				high_byte(currplayer_y) -= eject_U + 1;
-				currplayer_vel_y = 0;
-				currplayer_gravity = GRAVITY_DOWN;
-				crossPRGBankJump0(spider_down_wait);
-				high_byte(currplayer_y) -= eject_D;
-				currplayer_vel_y = 0;
-				orbed[currplayer] = 1;
-				idx8_inc(activesprites_activated, index);
-			}
-			return;
+	spcl_red_orb:
+		table_offset = red_orb;
+		// intentional leak
 
-		// collided with a pad
-		case YELLOW_PAD_DOWN:
-		case YELLOW_PAD_UP:
-			clear_slope_stuff();
-			settrailstuff();
-			table_offset = yellow_pad;
-			currplayer_vel_y = sprite_gamemode_y_adjust();
-			//idx8_inc(activesprites_activated, index);	
-			return;
-		case PINK_PAD_DOWN:
-		case PINK_PAD_UP:
-			clear_slope_stuff();
-			settrailstuff();
-			table_offset = pink_pad;
-			currplayer_vel_y = sprite_gamemode_y_adjust();
-			//idx8_inc(activesprites_activated, index);	
-			return;
-		case RED_PAD_DOWN:
-		case RED_PAD_UP:
-			clear_slope_stuff();
-			settrailstuff();
-			table_offset = red_pad;
-			currplayer_vel_y = sprite_gamemode_y_adjust();
-			//idx8_inc(activesprites_activated, index);	
-			return;
-
-		case GRAVITY_PAD_DOWN:
-		case GRAVITY_PAD_DOWN_INVISIBLE:
-			clear_slope_stuff();
-			if (!currplayer_gravity) { 
-				settrailstuff();
-				currplayer_gravity = GRAVITY_UP;				//flip gravity
-				currplayer_vel_y = PAD_HEIGHT_BLUE;
-				//invincible_counter = 3;
-			}
-			idx8_inc(activesprites_activated, index);	
-			return;
-		
-		case GRAVITY_PAD_UP:
-		case GRAVITY_PAD_UP_INVISIBLE:
-			clear_slope_stuff();
-			if (currplayer_gravity) { 	
-				settrailstuff();
-				currplayer_gravity = GRAVITY_DOWN;				//flip gravity
-				currplayer_vel_y = -PAD_HEIGHT_BLUE;
-				//invincible_counter = 3;				
-			}
-			idx8_inc(activesprites_activated, index);	
-			return;
-
-		// collided with an orb
-
-
-		case YELLOW_ORB:
-			table_offset = 0;
-			//intentional leak
-		case DASH_ORB:
-		case DASH_GRAVITY_ORB:
-		case DASH_ORB_UPWARDS:
-		case DASH_GRAVITY_ORB_UPWARDS:
-		case DASH_ORB_DOWNWARDS:
-		case DASH_GRAVITY_ORB_DOWNWARDS:
-		case DASH_ORB_45DEG_UP:
-		case DASH_GRAVITY_ORB_45DEG_UP:
-		case DASH_ORB_45DEG_DOWN:
-		case DASH_GRAVITY_ORB_45DEG_DOWN:
-		case BLUE_ORB:
-			break;
-
-		case YELLOW_ORB_BIGGER:
-			table_offset = ylw_bigger;
-			break;
-		case YELLOW_ORB_SMALLER:
-			table_offset = ylw_smaller;
-			break;
-
-		case PINK_ORB:
-			table_offset = pink_orb;
-			break;
-
-		case BLACK_ORB:
-			table_offset = black_orb;
-			break;
-
-		case RED_ORB:
-			table_offset = red_orb;
-			break;
-#ifdef FLAG_KANDO_FUN_STUFF		
-		case GREEN_ORB:
-			table_offset = yellow_orb;
-			break;
-#endif
-		default:
-			return;
-		};
+	spcl_orb_cmn:
 		ufo_orbed = 1;			
-		if (gamemode == CUBE_MODE || gamemode == BALL_MODE || gamemode == ROBOT_MODE || gamemode == 5 || gamemode >= 7) {
+		if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode >= GAMEMODE_SWING) {
 			sprite_gamemode_main();
 		} else {
 			sprite_gamemode_controller_check();
 		}
-	
 		return;
-	}
 }
 
 #undef table_offset
