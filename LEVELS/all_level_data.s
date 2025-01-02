@@ -265,7 +265,7 @@
 		.incbin "EXPORTS/dreamer.hfm.bin" ; Size: 3543
 
 
-.segment "LVL_BANK_0E"	; Total bank size: 8178 bytes
+.segment "LVL_BANK_0E"	; Total bank size: 8162 bytes
 	.export level_data_kappaclysm
 	level_data_kappaclysm:
 	; Header
@@ -277,7 +277,7 @@
 		.byte kappaclysm_grnd_color
 		.byte 27	; height of kappaclysm
 	; Level data
-		.incbin "EXPORTS/kappaclysm.hfm.bin" ; Size: 4395
+		.incbin "EXPORTS/kappaclysm.hfm.bin" ; Size: 4379
 
 	.export level_data_electroman
 	level_data_electroman:
@@ -420,7 +420,7 @@
 		.incbin "EXPORTS/problematic.hfm.bin" ; Size: 3371
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8155 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8189 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
@@ -433,6 +433,19 @@
 		.byte 27	; height of firetemple
 	; Level data
 		.incbin "EXPORTS/firetemple.hfm.bin" ; Size: 3273
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
 
 .segment "LVL_BANK_15"	; Total bank size: 8192 bytes
@@ -461,21 +474,6 @@
 		.byte 35	; height of thelightningroad
 	; Level data
 		.incbin "EXPORTS/thelightningroad.hfm.bin" ; Size: 2533
-
-
-.segment "LVL_BANK_16"	; Total bank size: 8192 bytes
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
 
 .segment "LVL_BANK_17"	; Total bank size: 8182 bytes
