@@ -437,7 +437,7 @@ static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
 
 static void sprite_gamemode_main() {
 	if (controllingplayer->a || controllingplayer->up) {
-		if (gamemode == BALL_MODE) kandotemp2[currplayer] = 1;
+		if (gamemode == BALL_MODE) ball_switched[currplayer] = 1;
 		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			settrailstuff();

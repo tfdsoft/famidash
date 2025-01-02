@@ -93,20 +93,20 @@ void ball_movement(void){
 	#define BALL_SWITCH_VEL 0x200
 	#define MINI_BALL_SWITCH_VEL 0x120
 	if (gamemode == GAMEMODE_BALL) {
-		if (((controllingplayer->a || controllingplayer->up)) && (kandotemp2[currplayer] == 0) && currplayer_vel_y == 0){
+		if (((controllingplayer->a || controllingplayer->up)) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0){
 			jumps++;
 			invert_gravity(currplayer_gravity);
-			kandotemp2[currplayer] = 1;
+			ball_switched[currplayer] = 1;
 			switch (currplayer_gravity){
 				case GRAVITY_DOWN: currplayer_vel_y = currplayer_mini ? MINI_BALL_SWITCH_VEL : BALL_SWITCH_VEL; break;
 				case GRAVITY_UP: currplayer_vel_y = currplayer_mini ? -MINI_BALL_SWITCH_VEL : -BALL_SWITCH_VEL; break;
 			}
 			bg_coll_floor_spikes();
 		}
-		if(kandotemp2[currplayer] == 1){
+		if(ball_switched[currplayer]){
 			if (!(controllingplayer->hold & (PAD_A | PAD_UP))){
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
-				kandotemp2[currplayer] = 0;			
+				ball_switched[currplayer] = 0;			
 			}
 		}
 	}
