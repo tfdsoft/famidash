@@ -127,7 +127,7 @@ const unsigned char spike_set[] = {
 	SPIKESC, //demon park
 	SPIKESB, //death moon
 	SPIKESB, //decode
-	SPIKESA, //dear nostalgists
+	SPIKESC, //dear nostalgists
 	SPIKESA, //super cycles
 	SPIKESB, //problematic
 	SPIKESB, //fire temple
