@@ -270,7 +270,7 @@ uint8_t count;
 uint8_t coins;
 uint8_t currplayer;
 uint8_t menuMusicCurrentlyPlaying;
-uint8_t kandotemp2[2];
+uint8_t ball_switched[2];
 uint8_t processXMovement;
 //uint8_t kandotemp4;
 //uint8_t kandotemp5;
