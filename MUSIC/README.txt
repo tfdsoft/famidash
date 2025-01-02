@@ -42,16 +42,14 @@ After this, the same precautions and actions follow, no matter where you worked 
 	6. If it didn't error out and it completed successfully, run the following command to do it for real:
 		"python3 export.py [<path/to/FamiStudio.dll>]"
 	7. Don't close the terminal yet! You've now got a few things to adjust:
-	8. Copy the line after "==== Bank lengths table:" and paste it into /LIB/asm/nesdash.s after the line "music_counts:"
-		[ TODO: automate this ]
-	9. Ensure that the /LIB/asm/famistudio_ca65.s file has the settings set as the export output dictates
-	10. Run parse_fs_files.py to generate the include files
+	8. Ensure that the /LIB/asm/famistudio_ca65.s file has the settings set as the export output dictates
+	9. Run parse_fs_files.py to generate the include files
 		[ TODO: merge the actual include file generation into export.py ]
-	11. Remove the references to the "dpcm" song from the header of each music_X.s file
+	10. Remove the references to the "dpcm" song from the header of each music_X.s file
 		[ TODO: automate this ]
-	12. Adjust the music names before the bgmtest function in /SAUCE/gamestates/state_lvldone.h
-		[ Not automnatable as it is changing the names ]
-	13. Adjust the xbgm_lookup_table2 table in /SAUCE/gamestates/state_lvldone.h AND the contents of the "plst" chunk in NSF/metadata.s
+	11. Adjust the music names before the bgmtest function in /SAUCE/gamestates/state_lvldone.h
+		[ Not automatable as it is changing the names ]
+	12. Adjust the xbgm_lookup_table2 table in /SAUCE/gamestates/state_lvldone.h AND the contents of the "plst" chunk in NSF/metadata.s
 		[ TODO: automate and unify this ]
-	14. Test the game.
-	15. If anything odd went on in any of these steps, ping @alexmush and they'll probably respond within 48 hours (response times will vary)
+	13. Test the game.
+	14. If anything odd went on in any of these steps, ping @alexmush and they'll probably respond within 48 hours (response times will vary)

@@ -30,7 +30,7 @@ if __name__ == "__main__":
     if spec is None:
         subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'binpacking'])
 
-    import os, glob, filecmp
+    import os, glob, pathlib, filecmp
     import re
     import argparse
     import binpacking
@@ -46,7 +46,7 @@ if __name__ == "__main__":
     elif (os.name == 'nt'):
         envPath = envPath.split(";")
     else:
-        print (f"YO KIND OF OPERATING SYSTEM ('{os.name}') NOT SUPPORTED")
+        print (f"YO KIND OF OPERATING SYSTEM ('{os.name}') AIN'T SUPPORTED")
         exit(1)
     
     def findInPATH(executable : str):
@@ -81,8 +81,8 @@ if __name__ == "__main__":
     fsVer = re.findall(famistudioHelpRegex, proc.stdout.decode())[0]
     fsVer = [int(x) for x in fsVer.split(".")]
     fsVer = fsVer[0]*1000_000 + fsVer[1]*1000 + fsVer[2]
-    if (fsVer < 400_200_1):
-        print("FamiStudio version is less than 4.2.1, please update")
+    if (fsVer < 400_300_0):
+        print("FamiStudio version is less than 4.3.0, please update")
         exit(1)
 
     # Get FamiStudio text file
@@ -197,8 +197,18 @@ if __name__ == "__main__":
         exit(4)    
     
     # Export bank lengths table
-    print("\n==== Bank lengths table:")
-    print(f"\t.byte {', '.join([str(len(i)) for i in bins[:-1]])}, $FF ;last bank is marked with an FF to always stop bank picking")
+    bank_table_data = [
+        ".if .not(useConstInitPtr)",
+        "music_data_locations_lo:",
+        f"\t.byte " + ", ".join([f"<music_data_famidash_music{i+1}" for i in range(len(bins))]),
+        "music_data_locations_hi:",
+        f"\t.byte " + ",".join([f">music_data_famidash_music{i+1}" for i in range(len(bins))]),
+        ".endif",
+        "",
+        "music_counts:",
+        f"\t.byte {', '.join([str(len(i)) for i in bins[:-1]])}, $FF ;last bank is marked with an FF to always stop bank picking"
+        ]
+    (pathlib.Path(exportPrefix) / "musicPlayRoutines.s").write_text("\n".join(bank_table_data))
 
     # Print which options to set
     print("\n==== Don't forget to set these options in the sound driver:")
