@@ -253,11 +253,16 @@ do func while(0); \
 #define do_if_bit6_clr_mem(val, func) __asm__("BIT %v", val); do_if_v_clr(func)
 
 #define do_if_in_range(val, min, max, func) __A__ = val; __asm__("sec \n sbc #%b \n sbc #%b-%b+1 ", min, max, min); do_if_c_clr(func)
+#define do_if_not_in_range(val, min, max, func) __A__ = val; __asm__("sec \n sbc #%b \n sbc #%b-%b+1 ", min, max, min); do_if_c_set(func)
 
 #define fc_mic_poll() (PEEK(0x4016) & 0x04)
 
 #define sec_adc(a, b) (__A__ = (a), __asm__("sec \nadc %v", b), __A__)
 #define clc_sbc(a, b) (__A__ = (a), __asm__("clc \nsbc %v", b), __A__)
+
+#define jumpInTableWithOffset(tbl, val, off) ( \
+  __A__ = val << 1, \
+  __asm__("tay \n lda %v-%w, y \n ldx %v-%w+1, y \n jsr callax ", tbl, (off * 2), tbl, (off * 2)))
 
 extern uint8_t shiftBy4table[16];
 #define shlNibble4(nibble) (idx8_load(shiftBy4table, nibble))
