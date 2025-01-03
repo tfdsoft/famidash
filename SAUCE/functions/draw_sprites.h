@@ -140,11 +140,7 @@ void draw_sprites(void){
 			idx8_store(trail_sprites_visible, tmp2, (__asm__("pla"), __A__));	// TODO: idx8_X or idxY_load_store macros, this is insane 
 		} while (--tmp2 != 0);
 
-		if (orbactive || trails == 1) {
-			trail_sprites_visible[0] = 1;
-		} else {
-			trail_sprites_visible[0] = 0;
-		}
+		trail_sprites_visible[0] = (trails == 1 || orbactive);
 	}
 	if (viseffects) {
 		if ((trails == 1) || (trails != 2 && forced_trails != 2 && !invisible)) {
