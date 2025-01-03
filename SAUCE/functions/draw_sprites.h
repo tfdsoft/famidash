@@ -126,7 +126,8 @@ void draw_sprites(void){
 		} else {
 			animation_data_ptr = (unsigned char*)Metasprites[spr_type & 0x7F];
 		}
-		oam_meta_spr(temp_x, temp_y, animation_data_ptr);
+		if (!disco_sprites) oam_meta_spr(temp_x, temp_y, animation_data_ptr);
+		else oam_meta_spr_disco(temp_x, temp_y, animation_data_ptr);
 		
 	} while (++count < max_loaded_sprites);
 	if (!dual) {
