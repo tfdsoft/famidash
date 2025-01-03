@@ -165,7 +165,7 @@ void state_game(){
 		}		    
 
 		if (((forced_trails == 2) || trails == 2 || !(kandoframecnt & 0x1))) {
-			if (!(kandoframecnt & 0x01)) {
+			if (!(kandoframecnt & 1)) {
 				if (old_trail_scroll_y >= scroll_y) {
 					tmp6 = calculate_linear_scroll_y(sub_scroll_y_ext(scroll_y, old_trail_scroll_y));
 				} else {
