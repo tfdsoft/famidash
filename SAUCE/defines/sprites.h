@@ -130,11 +130,18 @@ const unsigned char Practice_Diamond[]={
 
 const unsigned char * const Practice_Sprites[] = {Practice_Diamond};
 
-const unsigned char Trail_Circ[]={
+// This singular sprite is stored as 4 defines instead,
+// passed directly to oam_spr
 
-	  0,  -4,0xF9,3,
-	0x80
-};
+#define Trail_Circ_X (0)
+#define Trail_Circ_Y (-4)
+#define Trail_Circ_CHR (0xF9)
+#define Trail_Circ_Attr (3)
+// const unsigned char Trail_Circ[]={
+
+// 	  0,  -4,0xF9,3,
+// 	0x80
+// };
 #pragma rodata-name (pop)
 #pragma rodata-name (push, "XCD_BANK_05")
 
