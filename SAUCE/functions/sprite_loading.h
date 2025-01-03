@@ -663,8 +663,9 @@ void sprite_collide_lookup() {
 		case SHIP_MODE:
 		case UFO_MODE:
 			settrailstuff();
-			if (currplayer_vel_y > 0x350) currplayer_vel_y = 0x350;
-			if (currplayer_vel_y < -0x350) currplayer_vel_y = -0x350;
+			//if (currplayer_vel_y > 0x350) currplayer_vel_y = 0x350;
+			//if (currplayer_vel_y < -0x350) currplayer_vel_y = -0x350;
+			currplayer_vel_y /= 2;
 		case BALL_MODE:
 			if (!dual || twoplayer) target_scroll_y = (uint16SepArrLoad(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;

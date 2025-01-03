@@ -32,7 +32,35 @@
 		.incbin "EXPORTS/dearnostalgists.hfm.0.bin" ; Size: 7784
 
 
-.segment "LVL_BANK_04"	; Total bank size: 8046 bytes
+.segment "LVL_BANK_03"	; Total bank size: 8176 bytes
+	.export level_data_bloodbath
+	level_data_bloodbath:
+	; Header
+		.byte bloodbath_song_number
+		.byte bloodbath_game_mode
+		.byte bloodbath_speed
+		.byte bloodbath_no_parallax
+		.byte bloodbath_bg_color
+		.byte bloodbath_grnd_color
+		.byte 27	; height of bloodbath
+	; Level data
+		.incbin "EXPORTS/bloodbath.hfm.bin" ; Size: 6882
+
+	.export level_data_backontrack
+	level_data_backontrack:
+	; Header
+		.byte backontrack_song_number
+		.byte backontrack_game_mode
+		.byte backontrack_speed
+		.byte backontrack_no_parallax
+		.byte backontrack_bg_color
+		.byte backontrack_grnd_color
+		.byte 27	; height of backontrack
+	; Level data
+		.incbin "EXPORTS/backontrack.hfm.bin" ; Size: 1294
+
+
+.segment "LVL_BANK_05"	; Total bank size: 8046 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -60,7 +88,7 @@
 		.incbin "EXPORTS/dryout.hfm.bin" ; Size: 1516
 
 
-.segment "LVL_BANK_05"	; Total bank size: 8152 bytes
+.segment "LVL_BANK_06"	; Total bank size: 8152 bytes
 	.export level_data_pgclubstep
 	level_data_pgclubstep:
 	; Header
@@ -88,7 +116,7 @@
 		.incbin "EXPORTS/jumper.hfm.bin" ; Size: 1834
 
 
-.segment "LVL_BANK_06"	; Total bank size: 8151 bytes
+.segment "LVL_BANK_07"	; Total bank size: 8151 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -108,7 +136,7 @@
 		.incbin "EXPORTS/dearnostalgists.hfm.1.bin" ; Size: 2012
 
 
-.segment "LVL_BANK_07"	; Total bank size: 8129 bytes
+.segment "LVL_BANK_08"	; Total bank size: 8129 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -136,7 +164,7 @@
 		.incbin "EXPORTS/cycles.hfm.bin" ; Size: 2651
 
 
-.segment "LVL_BANK_08"	; Total bank size: 8044 bytes
+.segment "LVL_BANK_09"	; Total bank size: 8044 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -164,7 +192,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.hfm.bin" ; Size: 2942
 
 
-.segment "LVL_BANK_09"	; Total bank size: 7943 bytes
+.segment "LVL_BANK_0A"	; Total bank size: 7943 bytes
 	.export level_data_revolution
 	level_data_revolution:
 	; Header
@@ -192,7 +220,7 @@
 		.incbin "EXPORTS/timemachine.hfm.bin" ; Size: 2901
 
 
-.segment "LVL_BANK_0A"	; Total bank size: 8173 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8173 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
@@ -207,7 +235,7 @@
 		.incbin "EXPORTS/lostinthewoods.hfm.bin" ; Size: 5017
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8165 bytes
+.segment "LVL_BANK_0C"	; Total bank size: 8165 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -222,7 +250,7 @@
 		.incbin "EXPORTS/electrodynamix.hfm.bin" ; Size: 5003
 
 
-.segment "LVL_BANK_0C"	; Total bank size: 8172 bytes
+.segment "LVL_BANK_0D"	; Total bank size: 8172 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -237,7 +265,7 @@
 		.incbin "EXPORTS/decode.hfm.bin" ; Size: 4866
 
 
-.segment "LVL_BANK_0D"	; Total bank size: 8185 bytes
+.segment "LVL_BANK_0E"	; Total bank size: 8185 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -265,7 +293,7 @@
 		.incbin "EXPORTS/dreamer.hfm.bin" ; Size: 3543
 
 
-.segment "LVL_BANK_0E"	; Total bank size: 8162 bytes
+.segment "LVL_BANK_0F"	; Total bank size: 8162 bytes
 	.export level_data_kappaclysm
 	level_data_kappaclysm:
 	; Header
@@ -293,7 +321,7 @@
 		.incbin "EXPORTS/electroman.hfm.bin" ; Size: 3783
 
 
-.segment "LVL_BANK_0F"	; Total bank size: 8030 bytes
+.segment "LVL_BANK_10"	; Total bank size: 8030 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -321,7 +349,7 @@
 		.incbin "EXPORTS/xstep.hfm.bin" ; Size: 3711
 
 
-.segment "LVL_BANK_10"	; Total bank size: 7939 bytes
+.segment "LVL_BANK_11"	; Total bank size: 7939 bytes
 	.export level_data_demonpark
 	level_data_demonpark:
 	; Header
@@ -349,7 +377,7 @@
 		.incbin "EXPORTS/clutterfunk.hfm.bin" ; Size: 3655
 
 
-.segment "LVL_BANK_11"	; Total bank size: 8140 bytes
+.segment "LVL_BANK_12"	; Total bank size: 8140 bytes
 	.export level_data_blastprocessing
 	level_data_blastprocessing:
 	; Header
@@ -364,7 +392,7 @@
 		.incbin "EXPORTS/blastprocessing.hfm.bin" ; Size: 4109
 
 
-.segment "LVL_BANK_12"	; Total bank size: 7728 bytes
+.segment "LVL_BANK_13"	; Total bank size: 7728 bytes
 	.export level_data_nightmare
 	level_data_nightmare:
 	; Header
@@ -392,7 +420,7 @@
 		.incbin "EXPORTS/theoryofeverything.hfm.bin" ; Size: 3625
 
 
-.segment "LVL_BANK_13"	; Total bank size: 8191 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8160 bytes
 	.export level_data_supercycles
 	level_data_supercycles:
 	; Header
@@ -420,7 +448,7 @@
 		.incbin "EXPORTS/problematic.hfm.bin" ; Size: 3371
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8189 bytes
+.segment "LVL_BANK_15"	; Total bank size: 8155 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
@@ -434,21 +462,8 @@
 	; Level data
 		.incbin "EXPORTS/firetemple.hfm.bin" ; Size: 3273
 
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
-
-.segment "LVL_BANK_15"	; Total bank size: 8192 bytes
+.segment "LVL_BANK_16"	; Total bank size: 8192 bytes
 	.export level_data_sonar
 	level_data_sonar:
 	; Header
@@ -476,7 +491,7 @@
 		.incbin "EXPORTS/thelightningroad.hfm.bin" ; Size: 2533
 
 
-.segment "LVL_BANK_17"	; Total bank size: 8182 bytes
+.segment "LVL_BANK_18"	; Total bank size: 7561 bytes
 	.export level_data_retray
 	level_data_retray:
 	; Header
@@ -491,22 +506,7 @@
 		.incbin "EXPORTS/retray.hfm.bin" ; Size: 2379
 
 
-.segment "LVL_BANK_18"	; Total bank size: 8097 bytes
-	.export level_data_backontrack
-	level_data_backontrack:
-	; Header
-		.byte backontrack_song_number
-		.byte backontrack_game_mode
-		.byte backontrack_speed
-		.byte backontrack_no_parallax
-		.byte backontrack_bg_color
-		.byte backontrack_grnd_color
-		.byte 27	; height of backontrack
-	; Level data
-		.incbin "EXPORTS/backontrack.hfm.bin" ; Size: 1294
-
-
-.segment "LVL_BANK_19"	; Total bank size: 8163 bytes
+.segment "LVL_BANK_1B"	; Total bank size: 7716 bytes
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header
@@ -533,8 +533,6 @@
 	; Level data
 		.incbin "EXPORTS/baseafterbase.hfm.bin" ; Size: 1935
 
-
-.segment "LVL_BANK_1A"	; Total bank size: 8190 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
@@ -548,6 +546,8 @@
 	; Level data
 		.incbin "EXPORTS/stereomadness.hfm.bin" ; Size: 1904
 
+
+.segment "LVL_BANK_1C"	; Total bank size: 8159 bytes
 	.export level_data_cantletgo
 	level_data_cantletgo:
 	; Header
@@ -561,8 +561,6 @@
 	; Level data
 		.incbin "EXPORTS/cantletgo.hfm.bin" ; Size: 1773
 
-
-.segment "LVL_BANK_1B"	; Total bank size: 8022 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -577,7 +575,20 @@
 		.incbin "EXPORTS/polargeist.hfm.bin" ; Size: 1502
 
 
-.segment "LVL_BANK_1D"	; Total bank size: 5309 bytes
+.segment "LVL_BANK_1E"	; Total bank size: 8105 bytes
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.hfm.bin" ; Size: 919
+
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header

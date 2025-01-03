@@ -230,6 +230,13 @@ kappaclysm_no_parallax  = 1
 kappaclysm_bg_color    = $0F
 kappaclysm_grnd_color  = $0F
 
+bloodbath_song_number = song_atthespeedoflight2
+bloodbath_game_mode   = $00
+bloodbath_speed       = $00
+bloodbath_no_parallax  = 1
+bloodbath_bg_color    = $0F
+bloodbath_grnd_color  = $0F
+
 retray_song_number = song_retray
 retray_game_mode   = $00
 retray_speed       = $01

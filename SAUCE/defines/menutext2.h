@@ -70,4 +70,5 @@ const unsigned char levelnostalgists2[]=" DEAR NOSTALGISTS";
 const unsigned char levelprettyeasytext2[]="EASY LEVEL";
 const unsigned char levelsupercycles2[]="SUPER CYCLES";
 const unsigned char levelwoods2[]="THE WOODS";
+const unsigned char levelbloodbath2[]="BLOODBATH";
 

@@ -44,6 +44,7 @@ SET all_levels= ^
     eon ^
     pgclubstep ^
     stalemate ^
+    bloodbath ^
     luckydraw ^
     test4 ^
 
