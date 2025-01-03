@@ -678,8 +678,7 @@ void sprite_collide_lookup() {
 	if (collided < 0x70)
 		goto *sprite_collide_jump_table_0[collided];
 	else if (collided >= 0xE0)
-		tmp2 = collided - 0xE0;
-		goto *sprite_collide_jump_table_1[tmp2];
+		jumpInTableWithOffset(sprite_collide_jump_table_1, collided, (0xE0 - 0x80));
 
 	spcl_default:
 		return;
