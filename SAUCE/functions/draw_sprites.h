@@ -20,7 +20,7 @@ void draw_sprites(void){
 	// draw player
 	if (!invisible) {
 		if (dual) {
-			if (kandoframecnt & 0x01) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone); }
+			if (kandoframecnt & 1) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone); }
 			else { crossPRGBankJump0(drawplayerone); crossPRGBankJump0(drawplayertwo); }
 		}
 #ifdef FLAG_KANDO_FUN_STUFF
@@ -31,6 +31,7 @@ void draw_sprites(void){
 #endif
 		else crossPRGBankJump0(drawplayerone);
 	}
+
 	// the level sprites
 
 	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
@@ -131,7 +132,7 @@ void draw_sprites(void){
 		
 	} while (++count < max_loaded_sprites);
 	if (!dual) {
-	if (kandoframecnt & 0x01) {
+	if (kandoframecnt & 1) {
 		
 		tmp2 = 0;
 		do {
@@ -145,43 +146,45 @@ void draw_sprites(void){
 			trail_sprites_visible[tmp2] = 0;
 		}
 	}
-	if ((trails == 1) || (trails != 2) && forced_trails != 2 && !invisible && viseffects) {
-		trail_loop();
-	}
-	else if ((forced_trails == 2 || trails == 2) && !dual && viseffects) {
-		temptemp5++;
-		tmp6 = currplayer_vel_x << 1;
-		
-		tmpA = player_x[0];
-		tmpB = player_y[0];
-
-		high_byte(player_x[0]) -= high_byte(tmp6);
-		high_byte(player_y[0]) = player_old_posy[0];
-
-		if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
-		
-		high_byte(player_x[0]) -= high_byte(tmp6);
-		high_byte(player_y[0]) = player_old_posy[1];
-
-		if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
-
-		high_byte(player_x[0]) -= high_byte(tmp6);
-		high_byte(player_y[0]) = player_old_posy[2];
-
-		if (gamemode == GAMEMODE_CUBE) {
-			tmp9 = currplayer_mini;
-			currplayer_mini = 1;
+	if (viseffects) {
+		if ((trails == 1) || (trails != 2 && forced_trails != 2 && !invisible)) {
+			trail_loop();
 		}
+		else if ((forced_trails == 2 || trails == 2) && !(kandoframecnt & 1)) {
+			temptemp5++;
+			tmp6 = currplayer_vel_x << 1;
+			
+			tmpA = player_x[0];
+			tmpB = player_y[0];
 
-		if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
-		
-		if (gamemode == GAMEMODE_CUBE) {
-			currplayer_mini = tmp9;
+			high_byte(player_x[0]) -= high_byte(tmp6);
+			high_byte(player_y[0]) = player_old_posy[0];
+
+			crossPRGBankJump0(drawplayerone);
+			
+			high_byte(player_x[0]) -= high_byte(tmp6);
+			high_byte(player_y[0]) = player_old_posy[1];
+
+			crossPRGBankJump0(drawplayerone);
+
+			high_byte(player_x[0]) -= high_byte(tmp6);
+			high_byte(player_y[0]) = player_old_posy[2];
+
+			if (gamemode == GAMEMODE_CUBE) {
+				tmp9 = currplayer_mini;
+				currplayer_mini = 1;
+			}
+
+			crossPRGBankJump0(drawplayerone);
+			
+			if (gamemode == GAMEMODE_CUBE) {
+				currplayer_mini = tmp9;
+			}
+			
+			player_x[0] = tmpA;
+			player_y[0] = tmpB;
+			temptemp5--;		
 		}
-		
-		player_x[0] = tmpA;
-		player_y[0] = tmpB;
-		temptemp5--;		
 	}
 	}
 #undef spr_type
