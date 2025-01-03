@@ -134,16 +134,16 @@ void draw_sprites(void){
 	if (!dual) {
 	if (kandoframecnt & 1) {
 		
-		tmp2 = 0;
+		tmp2 = sizeof(trail_sprites_visible) - 1;
 		do {
-			__A__ = idx8_load(trail_sprites_visible, tmp2 + 1); __asm__("pha");	
+			__A__ = idx8_load(trail_sprites_visible, tmp2 - 1); __asm__("pha");	
 			idx8_store(trail_sprites_visible, tmp2, (__asm__("pla"), __A__));	// TODO: idx8_X or idxY_load_store macros, this is insane 
-		} while (++tmp2 < sizeof(trail_sprites_visible) - 1);
+		} while (--tmp2 != 0);
 
 		if (orbactive || trails == 1) {
-			trail_sprites_visible[tmp2] = 1;
+			trail_sprites_visible[0] = 1;
 		} else {
-			trail_sprites_visible[tmp2] = 0;
+			trail_sprites_visible[0] = 0;
 		}
 	}
 	if (viseffects) {
@@ -194,29 +194,35 @@ void draw_sprites(void){
 void trail_loop() {
 	if (kandoframecnt & 1) {
 		tmp6 = currplayer_vel_x << 1;
-		tmp1 = 8;
+		tmp1 = 1;
 		tmp5 = currplayer_x - tmp6;
 		do {
-			if ((trail_sprites_visible-1)[tmp1]) {	
-				oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
+			if (trail_sprites_visible[tmp1]) {	
+				oam_spr(
+					high_byte(tmp5) + Trail_Circ_X,
+					player_old_posy[tmp1] + Trail_Circ_Y,
+					Trail_Circ_CHR, Trail_Circ_Attr);
 			}
 			
 			tmp5 = tmp5 - tmp6;
-			tmp1--;
-		} while (tmp1 > 1);
+			tmp1++;
+		} while (tmp1 < 8);
 	} else {
-		tmp1 = 2;
+		tmp1 = 7;
 		// the following 2 lines of code are equal to tmp5 -= (tmp6 * 7)
 		tmp5 = currplayer_vel_x << 4;
 		tmp5 = (currplayer_vel_x << 1) + currplayer_x - tmp5;
 		do {
-			if ((trail_sprites_visible-1)[tmp1]) {
-				oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
+			if (trail_sprites_visible[tmp1]) {
+				oam_spr(
+					high_byte(tmp5) + Trail_Circ_X,
+					player_old_posy[tmp1] + Trail_Circ_Y,
+					Trail_Circ_CHR, Trail_Circ_Attr);
 			}
 			
 			tmp5 = tmp5 + tmp6;
-			tmp1++;
-		} while (tmp1 < 9);
+			tmp1--;
+		} while (tmp1 > 0);
 	}	
 }
 
