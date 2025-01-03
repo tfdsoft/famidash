@@ -15,7 +15,7 @@
 	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
 	.export _pal_bright
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
-	.export _oam_clear,_oam_clear_player,__oam_spr,__oam_meta_spr,_oam_clear_two_players
+	.export _oam_clear,_oam_clear_player,__oam_spr,__oam_meta_spr,__oam_meta_spr_disco, _oam_clear_two_players
 	;.export _oam_hide_rest,_oam_size,_bank_bg,_rand8
 	.export _ppu_wait_frame,_ppu_wait_nmi
 	.export __scroll,_split,_newrand
@@ -535,52 +535,50 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 	
 	ldx SPRID
 
-@1:
+@loop:
 
-	lda (PTR),y		;x offset
-	cmp #$80
-	beq @2
-	iny
-	clc
-	adc sreg+0	; x
-	jmp @fuck_yes
-	cpx #$00
-	beq @fuck_yes	; no idea why I need to do this
-	lda #$f8
-	iny
-	clc
-	bcc @hell_yes
-@fuck_yes:
-	sta OAM_BUF+3,x
-	lda (PTR),y		;y offset
-	iny
-	clc
-	adc sreg+1	; y
-@hell_yes:
-	sta OAM_BUF+0,x
-	lda (PTR),y		;tile
-	iny
-	sta OAM_BUF+1,x
-	lda (PTR),y		;attribute
-	iny
-	sta OAM_BUF+2,x
-	lda _disco_sprites
-	beq @no
-	lda OAM_BUF+2,x
-	and #$FC
-	sta OAM_BUF+2,X
-	jsr rand1
-	and #$3
-	clc
-	adc OAM_BUF+2,X
-	sta OAM_BUF+2,X
-	@no:		
-	txa
-	clc
-	adc #$04
-	bcs @spr_full
-	tax
-	jmp @1
+	lda (PTR),y		;
+	cmp #$80		;	Load X offset
+	beq @2			;	Exit if = $80
+	iny				;__
+	; The CMP #$80 has practically loaded the last bit
+	; of the X offset into the carry flag
+	bcs @neg_x_off
+	@pos_x_off:
+		adc sreg+0		;__	Add it to the metasprite X	(carry already cleared)
+		bcs	@x_overflow	;__	If it had an overflow then don't render the damn sprite
+		bcc	@no_x_overflow
+	@neg_x_off:
+		clc				;	Add it to the metasprite X
+		adc sreg+0		;__
+		bcc	@x_overflow	;__	If it had an overflow then don't render the damn sprite
+		clc				;__	We need the clear carry later
+	@no_x_overflow:
+	sta OAM_BUF+3,x	;__	Store the sprite X
+	lda (PTR),y		;	Load Y offset
+	iny				;__
+	bpl	@pos_y_off
+	@pos_y_off:
+		adc sreg+1		;__	Add it to the metasprite Y	(carry already cleared)
+		bcs	@y_overflow	;__	If it had an overflow then don't render the damn sprite
+		bcc	@no_y_overflow
+	@neg_y_off:
+		adc	sreg+1		;__	Add it to the metasprite Y
+		bcc	@y_overflow	;__	If it had an overflow then don't render the damn sprite
+		clc				;__	We need the clear carry later
+	@no_y_overflow:
+	sta OAM_BUF+0,x	;__	Store the sprite Y
+	lda (PTR),y		;
+	iny				;	Load and store the tile
+	sta OAM_BUF+1,x	;__
+	lda (PTR),y		;
+	iny				;	Load and store the attribute
+	sta OAM_BUF+2,x	;__
+	txa				;	Add 4 to the SPRID
+	adc #$04		;__
+	bcs @spr_full	;__	If it overflows, exit
+	tax				;	Otherwise, loop right back
+	bcc @loop		;__	(= BRA)
 
 @2:
 
@@ -588,6 +586,89 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 @spr_full:
 	rts
 
+@x_overflow:
+	iny
+@y_overflow:
+	iny
+	iny
+	bne	@loop	;__ = BRA
+
+
+;void __fastcall__ oam_meta_spr_disco(uint8_t x, uint8_t y,const uint8_t *data);
+__oam_meta_spr_disco:
+	; AX = data
+	; sreg[0] = x
+	; sreg[1] = y
+
+	sta <PTR
+	stx <PTR+1
+
+	ldy #0
+	ldx SPRID
+
+@loop:
+
+	lda (PTR),y		;
+	cmp #$80		;	Load X offset
+	beq @2			;	Exit if = $80
+	iny				;__
+	; The CMP #$80 has practically loaded the last bit
+	; of the X offset into the carry flag
+	bcs @neg_x_off
+	@pos_x_off:
+		adc sreg+0		;__	Add it to the metasprite X	(carry already cleared)
+		bcs	@x_overflow	;__	If it had an overflow then don't render the damn sprite
+		bcc	@no_x_overflow
+	@neg_x_off:
+		clc				;	Add it to the metasprite X
+		adc sreg+0		;__
+		bcc	@x_overflow	;__	If it had an overflow then don't render the damn sprite
+		clc				;__	We need the clear carry later
+	@no_x_overflow:
+	sta OAM_BUF+3,x	;__	Store the sprite X
+	lda (PTR),y		;	Load Y offset
+	iny				;__
+	bpl	@pos_y_off
+	@pos_y_off:
+		adc sreg+1		;__	Add it to the metasprite Y	(carry already cleared)
+		bcs	@y_overflow	;__	If it had an overflow then don't render the damn sprite
+		bcc	@no_y_overflow
+	@neg_y_off:
+		adc	sreg+1		;__	Add it to the metasprite Y
+		bcc	@y_overflow	;__	If it had an overflow then don't render the damn sprite
+		clc				;__	We need the clear carry later
+	@no_y_overflow:
+	sta OAM_BUF+0,x	;__	Store the sprite Y
+	lda (PTR),y		;
+	iny				;	Load and store the tile
+	sta OAM_BUF+1,x	;__
+	lda (PTR),y		;
+	iny				;	Load and store the attribute
+	and #$FC		;
+	sta OAM_BUF+2,x	;__
+	jsr rand1		;
+	and #$3			;
+	ora OAM_BUF+2,X	;	Randomize the last 2 bits of the attributes
+	sta OAM_BUF+2,X	;__
+	txa				;	Add 4 to the SPRID
+	clc				;
+	adc #$04		;__
+	bcs @spr_full	;__	If it overflows, exit
+	tax				;	Otherwise, loop right back
+	bcc @loop		;__	(= BRA)
+
+@2:
+
+	stx SPRID
+@spr_full:
+	rts
+
+@x_overflow:
+	iny
+@y_overflow:
+	iny
+	iny
+	bne	@loop	;__ = BRA
 
 
 ;void __fastcall__ oam_hide_rest();

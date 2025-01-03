@@ -109,6 +109,9 @@ void __fastcall__ _oam_spr(uint32_t args);
 void __fastcall__ _oam_meta_spr(uint32_t args);
 #define oam_meta_spr(x, y, data)(storeBytesToSreg(x, y), __AX__ = (uintptr_t)data, _oam_meta_spr(__EAX__))
 
+void __fastcall__ _oam_meta_spr_disco(uint32_t args);
+#define oam_meta_spr_disco(x, y, data)(storeBytesToSreg(x, y), __AX__ = (uintptr_t)data, _oam_meta_spr_disco(__EAX__))
+
 //hide all remaining sprites from given offset
 // Note: sprid removed for speed
 // Now also changes sprid (index to buffer) to zero
