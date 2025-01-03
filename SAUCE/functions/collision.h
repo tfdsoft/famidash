@@ -34,7 +34,7 @@ CODE_BANK_PUSH("XCD_BANK_01")
 	Gets the collision of the current tile
 	Implemented in asm
 */
-__fastcall__ char bg_collision_sub(void);
+char bg_collision_sub();
 void commonly_used_store();
 void commonly_stored_routine_2();
 void commonly_used_death_check();
@@ -506,168 +506,186 @@ char a_check_lookup[] = {
 	A, tmp8
 */
 char bg_coll_slope() {	
+
+	static const void * const jumpTable[] = {
+		&&col_default,	&&col_default,	&&col_default,	&&col_default,	// 0x00 - 0x03
+		&&col_default,	&&col_default,	&&col_default,	&&col_default,	// 0x04 - 0x07
+		&&col_default,	&&col_default,	&&col_default,	// 0x08 - 0x0A
+
+		&&col_slope_RD45,	&&col_slope_LD45,
+		&&col_slope_RD22_RIGHT,	&&col_slope_LD22_RIGHT,
+		&&col_slope_RD22_LEFT,	&&col_slope_LD22_LEFT,
+		&&col_slope_RD66_TOP,	&&col_slope_LD66_TOP,
+		&&col_slope_RD66_BOT,	&&col_slope_LD66_BOT,
+		&&col_slope_RU45,	&&col_slope_LU45,
+		&&col_slope_RU22_LEFT,	&&col_slope_RU22_RIGHT,
+		&&col_slope_LU22_LEFT,	&&col_slope_LU22_RIGHT,
+		&&col_slope_RU66_TOP,	&&col_slope_LU66_TOP,
+		&&col_slope_RU66_BOT,	&&col_slope_LU66_BOT
+	};
+
 	tmp8 = (temp_y) & 0x0f;
-	switch (collision) {
-		// check early for optimization
-		case COL_ALL: 
-		case COL_NO_SIDE:
-			return 0;
 
-		case COL_SLOPE_LU45:
-			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f) ^ 0x0f;
+	do_if_not_in_range(collision, COL_SLOPE_RD45, COL_SLOPE_LU66_BOT, {return 0;});
+	goto *jumpTable[collision];
 
-			currplayer_slope_type = SLOPE_45DEG_DOWN_UD;
-			break;
+	col_default:
+		return 0;
 
-		case COL_SLOPE_LD45:
-			tmp7 = (temp_x & 0x0f);	// = 0x0f - (0x10 - (temp_x & 0x0f))
-			tmp4 = (temp_y & 0x0f);
-			
-			currplayer_slope_type = SLOPE_45DEG_DOWN;
-			break;
+	// 45 degrees
 
-		case COL_SLOPE_RU45:
-			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f) ^ 0x0f;
+	col_slope_LU45:
+		tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f) ^ 0x0f;
 
-			currplayer_slope_type = SLOPE_45DEG_UP_UD;
-			break;
+		currplayer_slope_type = SLOPE_45DEG_DOWN_UD;
+		goto col_end;
 
-		case COL_SLOPE_RD45:
-			tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = temp_y & 0x0f;
-
-			currplayer_slope_type = SLOPE_45DEG_UP;
-			break;
+	col_slope_LD45:
+		tmp7 = (temp_x & 0x0f);	// = 0x0f - (0x10 - (temp_x & 0x0f))
+		tmp4 = (temp_y & 0x0f);
 		
-		// 22 degrees
+		currplayer_slope_type = SLOPE_45DEG_DOWN;
+		goto col_end;
 
-		case COL_SLOPE_RU22_RIGHT:
-			tmp7 = ((temp_x >> 1) & 0x07) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f) ^ 0x0f;
-			
-			currplayer_slope_type = SLOPE_22DEG_UP_UD;
-			break;
+	col_slope_RU45:
+		tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f) ^ 0x0f;
 
-		case COL_SLOPE_RU22_LEFT:
-			tmp7 = (((temp_x >> 1) | 0x8) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f) ^ 0x0f;
+		currplayer_slope_type = SLOPE_45DEG_UP_UD;
+		goto col_end;
+
+	col_slope_RD45:
+		tmp7 = (temp_x & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = temp_y & 0x0f;
+
+		currplayer_slope_type = SLOPE_45DEG_UP;
+		goto col_end;
 		
-			currplayer_slope_type = SLOPE_22DEG_UP_UD;
-			break;
-		
-		case COL_SLOPE_RD22_RIGHT:
-			tmp7 = ((temp_x >> 1) & 0x07) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f);
+	// 22 degrees
 
-			currplayer_slope_type = SLOPE_22DEG_UP;
-			break;	
-
-		case COL_SLOPE_RD22_LEFT:
-			tmp7 = (((temp_x >> 1) | 0x8) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f);
+	col_slope_RU22_RIGHT:
+		tmp7 = ((temp_x >> 1) & 0x07) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f) ^ 0x0f;
 		
-			currplayer_slope_type = SLOPE_22DEG_UP;
-			break;
+		currplayer_slope_type = SLOPE_22DEG_UP_UD;
+		goto col_end;
+
+	col_slope_RU22_LEFT:
+		tmp7 = (((temp_x >> 1) | 0x8) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f) ^ 0x0f;
 	
-		case COL_SLOPE_LU22_RIGHT:
-			tmp7 = ((temp_x >> 1) & 0x07);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f) ^ 0x0f;
-			
-			currplayer_slope_type = SLOPE_22DEG_DOWN_UD;
-			break;
+		currplayer_slope_type = SLOPE_22DEG_UP_UD;
+		goto col_end;
 	
-		case COL_SLOPE_LU22_LEFT:
-			tmp7 = (((temp_x >> 1) | 0x8) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f) ^ 0x0f;
-		
-			currplayer_slope_type = SLOPE_22DEG_DOWN_UD;
-			break;
+	col_slope_RD22_RIGHT:
+		tmp7 = ((temp_x >> 1) & 0x07) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f);
 
-		case COL_SLOPE_LD22_RIGHT:
-			tmp7 = ((temp_x >> 1) & 0x07);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f);
+		currplayer_slope_type = SLOPE_22DEG_UP;
+		goto col_end;	
 
-			currplayer_slope_type = SLOPE_22DEG_DOWN;
-			break;	
+	col_slope_RD22_LEFT:
+		tmp7 = (((temp_x >> 1) | 0x8) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f);
 	
-		case COL_SLOPE_LD22_LEFT:
-			tmp7 = (((temp_x >> 1) | 0x8) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = (temp_y & 0x0f);
+		currplayer_slope_type = SLOPE_22DEG_UP;
+		goto col_end;
+
+	col_slope_LU22_RIGHT:
+		tmp7 = ((temp_x >> 1) & 0x07);	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f) ^ 0x0f;
 		
-			currplayer_slope_type = SLOPE_22DEG_DOWN;
-			break;
+		currplayer_slope_type = SLOPE_22DEG_DOWN_UD;
+		goto col_end;
+
+	col_slope_LU22_LEFT:
+		tmp7 = (((temp_x >> 1) | 0x8) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f) ^ 0x0f;
+	
+		currplayer_slope_type = SLOPE_22DEG_DOWN_UD;
+		goto col_end;
+
+	col_slope_LD22_RIGHT:
+		tmp7 = ((temp_x >> 1) & 0x07);	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f);
+
+		currplayer_slope_type = SLOPE_22DEG_DOWN;
+		goto col_end;	
+
+	col_slope_LD22_LEFT:
+		tmp7 = (((temp_x >> 1) | 0x8) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = (temp_y & 0x0f);
+	
+		currplayer_slope_type = SLOPE_22DEG_DOWN;
+		goto col_end;
+	
+	// 66 degrees
+
+	col_slope_RD66_TOP:
+		if ((uint8_t)(temp_x & 0x0f) < 0x08) return 0;
+		tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = ((temp_y) & 0x0f);
+
+		currplayer_slope_type = SLOPE_66DEG_UP;
+		goto col_end;	
+
+	col_slope_RD66_BOT:
+		if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 1;
+		tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = ((temp_y) & 0x0f);
+
+		currplayer_slope_type = SLOPE_66DEG_UP;
+		goto col_end;	
 		
-		// 66 degrees
+	col_slope_LD66_TOP:
+		if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 0;
+		tmp7 = (((temp_x & 0x07) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = ((temp_y) & 0x0f);
 
-		case COL_SLOPE_RD66_TOP:
-			if ((uint8_t)(temp_x & 0x0f) < 0x08) return 0;
-			tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0f);
+		currplayer_slope_type = SLOPE_66DEG_DOWN;
+		goto col_end;		
 
-			currplayer_slope_type = SLOPE_66DEG_UP;
-			break;	
+	col_slope_LD66_BOT:
+		if ((uint8_t)(temp_x & 0x0f) < 0x08) return 1;
+		tmp7 = (((temp_x & 0x0f) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = ((temp_y) & 0x0f);
 
-		case COL_SLOPE_RD66_BOT:
-			if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 1;
-			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0f);
+		currplayer_slope_type = SLOPE_66DEG_DOWN;
+		goto col_end;	
 
-			currplayer_slope_type = SLOPE_66DEG_UP;
-			break;	
-			
-		case COL_SLOPE_LD66_TOP:
-			if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 0;
-			tmp7 = (((temp_x & 0x07) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0f);
+	col_slope_RU66_TOP:
+		if ((uint8_t)(temp_x & 0x0f) < 0x08) return 0;
+		tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
 
-			currplayer_slope_type = SLOPE_66DEG_DOWN;
-			break;		
+		currplayer_slope_type = SLOPE_66DEG_UP_UD;
+		goto col_end;	
 
-		case COL_SLOPE_LD66_BOT:
-			if ((uint8_t)(temp_x & 0x0f) < 0x08) return 1;
-			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0f);
+	col_slope_RU66_BOT:
+		if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 1;
+		tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
 
-			currplayer_slope_type = SLOPE_66DEG_DOWN;
-			break;	
+		currplayer_slope_type = SLOPE_66DEG_UP_UD;
+		goto col_end;	
 
-		case COL_SLOPE_RU66_TOP:
-			if ((uint8_t)(temp_x & 0x0f) < 0x08) return 0;
-			tmp7 = (((temp_x & 0x07) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
+	col_slope_LU66_TOP:
+		if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 0;
+		tmp7 = (((temp_x & 0x07) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
 
-			currplayer_slope_type = SLOPE_66DEG_UP_UD;
-			break;	
+		currplayer_slope_type = SLOPE_66DEG_DOWN_UD;
+		goto col_end;		
 
-		case COL_SLOPE_RU66_BOT:
-			if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 1;
-			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f) ^ 0x0f;	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
+	col_slope_LU66_BOT:
+		if ((uint8_t)(temp_x & 0x0f) < 0x08) return 1;
+		tmp7 = (((temp_x & 0x0f) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
+		tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
 
-			currplayer_slope_type = SLOPE_66DEG_UP_UD;
-			break;	
-
-		case COL_SLOPE_LU66_TOP:
-			if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 0;
-			tmp7 = (((temp_x & 0x07) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
-
-			currplayer_slope_type = SLOPE_66DEG_DOWN_UD;
-			break;		
-
-		case COL_SLOPE_LU66_BOT:
-			if ((uint8_t)(temp_x & 0x0f) < 0x08) return 1;
-			tmp7 = (((temp_x & 0x0f) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
-			tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
-
-			currplayer_slope_type = SLOPE_66DEG_DOWN_UD;
-			break;	
-			
-		default:
-			return 0;
-	}
+		currplayer_slope_type = SLOPE_66DEG_DOWN_UD;
+	
+	col_end:
 	if ((uint8_t)(tmp4) >= tmp7) {
 			tmp8 = tmp4 - tmp7;
 
