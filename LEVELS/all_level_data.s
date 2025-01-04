@@ -245,7 +245,7 @@
 		.incbin "EXPORTS/decode.hfm.bin" ; Size: 4866
 
 
-.segment "LVL_BANK_0D"	; Total bank size: 8185 bytes
+.segment "LVL_BANK_0D"	; Total bank size: 8181 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -270,7 +270,7 @@
 		.byte dreamer_grnd_color
 		.byte 27	; height of dreamer
 	; Level data
-		.incbin "EXPORTS/dreamer.hfm.bin" ; Size: 3543
+		.incbin "EXPORTS/dreamer.hfm.bin" ; Size: 3539
 
 
 .segment "LVL_BANK_0E"	; Total bank size: 8162 bytes
