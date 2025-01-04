@@ -36,7 +36,6 @@ SET all_levels= ^
     demonpark ^
     deathmoon ^
     decode ^
-    dearnostalgists ^
     supercycles ^
     problematic ^
     firetemple ^
