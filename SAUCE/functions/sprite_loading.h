@@ -751,11 +751,7 @@ void sprite_collide_lookup() {
 				
 				settrailstuff();
 				currplayer_gravity = GRAVITY_DOWN; 
-				if (gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_SHIP) {
-					if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
-				} else {
-					if (currplayer_vel_y < -0x0290) currplayer_vel_y = -0x0290; 
-				}
+				currplayer_vel_y /= 2;
 				robotjumptime[currplayer] = 0;
 				idx8_inc(activesprites_activated, index);
 			}
@@ -768,11 +764,7 @@ void sprite_collide_lookup() {
 				
 				settrailstuff();
 				currplayer_gravity = GRAVITY_UP; 
-				if (gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_SHIP) {
-					if (currplayer_vel_y > 0x0290) currplayer_vel_y = 0x0290; 
-				} else {
-					if (currplayer_vel_y > 0x0290) currplayer_vel_y = 0x0290; 
-				}
+				currplayer_vel_y /= 2;
 				robotjumptime[currplayer] = 0;
 				idx8_inc(activesprites_activated, index);	
 			}
