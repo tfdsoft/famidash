@@ -14,7 +14,7 @@ import pathlib
 import itertools
 import math
 import binpacking
-import huffmunch
+import aart_lz
 import json
 import hashlib
 from collections.abc import Iterable
@@ -82,7 +82,7 @@ def split_rle_data_into_huffmunch_banks(data : Iterable[int], first_meta_ptr : i
 			else:
 				bet_data = data[0:get_split_point_in_rle_data(data, bet_size - 3)] + [0x7F, 0x7F, meta_ptr] # Meta seq
 				og_size = get_split_point_in_rle_data(data, bet_size - 3)
-			huff_data = huffmunch.compress_single(bet_data)
+			huff_data = aart_lz.compress(bet_data)
 			print(f"\t\tBet: {100-bet}%, Real size: {len(bet_data)} -> {len(huff_data)}, Real compression: {100-(len(huff_data) / len(bet_data) * 100) : .4}%")
 			if (len(huff_data) <= compressed_bank_size):
 				break
@@ -118,7 +118,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			lines = list(csv.reader(f))
 		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
 		rle_data = vertical_rle_with_single_tile(lines)
-		cached_data_path = (own_path / "EXPORTS" / f"{level}.hfm.bin")
+		cached_data_path = (own_path / "EXPORTS" / f"{level}.lz.bin")
 		if (level in size_cache):
 			level_cache = size_cache[level]
 		else:
@@ -140,12 +140,12 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 				print(f'Loading cached level: {level}; ', end = "", flush = True)
 			else:
 				print(f'Loading level: {level}; ', end = "", flush = True)
-				huff_data = huffmunch.compress_single(rle_data)
+				huff_data = aart_lz.compress(rle_data)
 				cached_data_path.write_bytes(huff_data)
 				level_cache = {}
 		else:
 			print(f'Loading level: {level}; ', end = "", flush = True)
-			huff_data = huffmunch.compress_single(rle_data)
+			huff_data = aart_lz.compress(rle_data)
 			cached_data_path.write_bytes(huff_data)
 			level_cache = {}
 		header = [
