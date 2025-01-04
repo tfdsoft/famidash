@@ -484,7 +484,7 @@
 		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
 
-.segment "LVL_BANK_16"	; Total bank size: 8018 bytes
+.segment "LVL_BANK_16"	; Total bank size: 8032 bytes
 	.export level_data_cycles
 	level_data_cycles:
 	; Header
@@ -496,7 +496,7 @@
 		.byte cycles_grnd_color
 		.byte 27	; height of cycles
 	; Level data
-		.incbin "EXPORTS/cycles.hfm.bin" ; Size: 2651
+		.incbin "EXPORTS/cycles.hfm.bin" ; Size: 2665
 
 
 .segment "LVL_BANK_17"	; Total bank size: 8182 bytes
@@ -514,7 +514,7 @@
 		.incbin "EXPORTS/retray.hfm.bin" ; Size: 2379
 
 
-.segment "LVL_BANK_19"	; Total bank size: 8128 bytes
+.segment "LVL_BANK_19"	; Total bank size: 8158 bytes
 	.export level_data_baseafterbase
 	level_data_baseafterbase:
 	; Header
