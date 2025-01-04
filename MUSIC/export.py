@@ -94,7 +94,7 @@ if __name__ == "__main__":
     checkErr(proc)
     if fsTxtPath.is_file():
         fsTxt = fsTxtPath.read_text()
-        fsTxtPath.unlink()
+        fsTxtPath.unlink(missing_ok = True)
     else:
         print("Somehow the famistudio-txt-export process didn't create a valid text file.")
         exit(2)
@@ -122,11 +122,11 @@ if __name__ == "__main__":
     tmpAsmPath = tmpFolder / "music_all.s"
 
     proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-asm-export', tmpAsmPath, '-famistudio-asm-format:ca65', '-famistudio-asm-force-dpcm-bankswitch', f'-export-songs:{neededSongsCommaSep},{dpcmidx}'], capture_output=True)
-    tmpAsmPath.unlink()
+    tmpAsmPath.unlink(missing_ok = True)
     checkErr(proc)
 
     for i in tmpFolder.glob(f"music_all*.dmc"):
-        i.unlink()
+        i.unlink(missing_ok = True)
     
     cmdOutput = proc.stdout.decode()
     
@@ -192,10 +192,10 @@ if __name__ == "__main__":
                 bankDpcmError = True
                 dpcmError = True
         if not bankDpcmError:
-            (dpcmExportPath / f"{dpcmExportStemPrefix}_bank{bank}.dmc").unlink()
+            (dpcmExportPath / f"{dpcmExportStemPrefix}_bank{bank}.dmc").unlink(missing_ok = True)
             dpcmFilesOfBank[0][0].rename(dpcmExportPath / f"{dpcmExportStemPrefix}_bank{bank}.dmc")
             dpcmFilesOfBank.pop(0)
-        [i[0].unlink() for i in dpcmFilesOfBank]
+        [i[0].unlink(missing_ok = True) for i in dpcmFilesOfBank]
 
     if dpcmError:
         ValueError("DPCM files were not identical. Please check the dpcm aligner for containing all samples.")
@@ -223,6 +223,6 @@ if __name__ == "__main__":
         print("\n==== Please launch parse_fs_files.py now.")
     else:
         print("\n==== Everything seems to have gone alright, you can run it for real now.")
-        [i.unlink() for i in dpcmExportPath.glob(f"{dpcmExportStemPrefix}*.s")]
-        [i.unlink() for i in dpcmExportPath.glob(f"{dpcmExportStemPrefix}*.dmc")]
-        [i.unlink() for i in dpcmExportPath.glob(f"{dpcmExportStemPrefix}*songlist.inc")]
+        [i.unlink(missing_ok = True) for i in dpcmExportPath.glob(f"{dpcmExportStemPrefix}*.s")]
+        [i.unlink(missing_ok = True) for i in dpcmExportPath.glob(f"{dpcmExportStemPrefix}*.dmc")]
+        [i.unlink(missing_ok = True) for i in dpcmExportPath.glob(f"{dpcmExportStemPrefix}*songlist.inc")]
