@@ -329,7 +329,7 @@
 		.incbin "EXPORTS/xstep.hfm.bin" ; Size: 3711
 
 
-.segment "LVL_BANK_10"	; Total bank size: 7939 bytes
+.segment "LVL_BANK_10"	; Total bank size: 7919 bytes
 	.export level_data_demonpark
 	level_data_demonpark:
 	; Header
@@ -341,7 +341,7 @@
 		.byte demonpark_grnd_color
 		.byte 27	; height of demonpark
 	; Level data
-		.incbin "EXPORTS/demonpark.hfm.bin" ; Size: 4284
+		.incbin "EXPORTS/demonpark.hfm.bin" ; Size: 4264
 
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
