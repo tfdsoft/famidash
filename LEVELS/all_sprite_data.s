@@ -14317,7 +14317,7 @@ sprite_data_stalemate:
   .byte $70,$38,$f0,$02,$0f
   .byte $ff
 
-.segment "LVL_BANK_07"
+.segment "LVL_BANK_16"
 sprite_data_bloodbath:
   .byte $00,$00,$20,$03,$8f
   .byte $00,$00,$30,$03,$cf
@@ -14389,13 +14389,11 @@ sprite_data_bloodbath:
   .byte $30,$06,$80,$03,$b6
   .byte $40,$06,$70,$03,$86
   .byte $40,$06,$80,$03,$bf
-  .byte $50,$06,$10,$03,$19
   .byte $50,$06,$20,$03,$14
   .byte $50,$06,$50,$03,$3d
   .byte $50,$06,$80,$03,$b6
   .byte $60,$06,$70,$03,$8f
   .byte $60,$06,$80,$03,$bf
-  .byte $70,$06,$30,$03,$18
   .byte $70,$06,$80,$03,$b6
   .byte $80,$06,$70,$03,$3d
   .byte $80,$06,$80,$03,$bf

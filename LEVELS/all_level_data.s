@@ -129,7 +129,7 @@
 		.incbin "EXPORTS/leveleasy.hfm.bin" ; Size: 1956
 
 
-.segment "LVL_BANK_07"	; Total bank size: 8185 bytes
+.segment "LVL_BANK_07"	; Total bank size: 8184 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -142,6 +142,19 @@
 		.byte 27	; height of toe2
 	; Level data
 		.incbin "EXPORTS/toe2.hfm.bin" ; Size: 5478
+
+	.export level_data_cycles
+	level_data_cycles:
+	; Header
+		.byte cycles_song_number
+		.byte cycles_game_mode
+		.byte cycles_speed
+		.byte cycles_no_parallax
+		.byte cycles_bg_color
+		.byte cycles_grnd_color
+		.byte 27	; height of cycles
+	; Level data
+		.incbin "EXPORTS/cycles.hfm.bin" ; Size: 2665
 
 
 .segment "LVL_BANK_08"	; Total bank size: 8044 bytes
@@ -482,21 +495,6 @@
 		.byte 27	; height of test4
 	; Level data
 		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
-
-
-.segment "LVL_BANK_16"	; Total bank size: 8032 bytes
-	.export level_data_cycles
-	level_data_cycles:
-	; Header
-		.byte cycles_song_number
-		.byte cycles_game_mode
-		.byte cycles_speed
-		.byte cycles_no_parallax
-		.byte cycles_bg_color
-		.byte cycles_grnd_color
-		.byte 27	; height of cycles
-	; Level data
-		.incbin "EXPORTS/cycles.hfm.bin" ; Size: 2665
 
 
 .segment "LVL_BANK_17"	; Total bank size: 8182 bytes
