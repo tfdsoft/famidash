@@ -109,7 +109,6 @@ VRAM_INDEX:			.res 1
 
 xargs:				.res 4
 noMouse:			.res 1
-huffmunch_zpblock:	.res 9
 
  
 ;
@@ -302,7 +301,7 @@ detectNTSC:
 	.include "neslib.s"
 	.include "nesdash.s"
 	.include "nesdoug.s"
-	.include "huffmunch.s"
+	.include "lz.s"
     
 .segment "DMC_BANK_00"
 	.incbin "MUSIC/EXPORTS/music_bank0.dmc"
@@ -366,6 +365,10 @@ GeometryDashPCMB:
 .segment "COLLMAP3"
     collMap3:       .res 16*12
 	ground:			.res 16*3
+
+.segment "SRAM"
+	.align 256
+	aart_lz_buffer:	.res 512
 
 .segment "VECTORS"
 
