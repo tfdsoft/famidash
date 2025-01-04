@@ -123,7 +123,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //revolution
 	SPIKESA, //lost in the woods
 	SPIKESC, //a pretty easy level
-	SPIKESA, //lightning road
+	SPIKESC, //lightning road
 	SPIKESB, //nightmare
 	SPIKESC, //demon park
 	SPIKESB, //death moon
