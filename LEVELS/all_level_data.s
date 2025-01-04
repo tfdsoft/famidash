@@ -129,7 +129,7 @@
 		.incbin "EXPORTS/leveleasy.hfm.bin" ; Size: 1956
 
 
-.segment "LVL_BANK_07"	; Total bank size: 8144 bytes
+.segment "LVL_BANK_07"	; Total bank size: 8185 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -428,7 +428,7 @@
 		.incbin "EXPORTS/problematic.hfm.bin" ; Size: 3371
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8189 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8155 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
@@ -442,21 +442,8 @@
 	; Level data
 		.incbin "EXPORTS/firetemple.hfm.bin" ; Size: 3273
 
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
-
-.segment "LVL_BANK_15"	; Total bank size: 8188 bytes
+.segment "LVL_BANK_15"	; Total bank size: 8192 bytes
 	.export level_data_sonar
 	level_data_sonar:
 	; Header
@@ -481,7 +468,20 @@
 		.byte thelightningroad_grnd_color
 		.byte 35	; height of thelightningroad
 	; Level data
-		.incbin "EXPORTS/thelightningroad.hfm.bin" ; Size: 2533
+		.incbin "EXPORTS/thelightningroad.hfm.bin" ; Size: 2544
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
 
 .segment "LVL_BANK_16"	; Total bank size: 8018 bytes
@@ -529,7 +529,7 @@
 		.incbin "EXPORTS/baseafterbase.hfm.bin" ; Size: 1935
 
 
-.segment "LVL_BANK_1A"	; Total bank size: 8180 bytes
+.segment "LVL_BANK_1A"	; Total bank size: 8185 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
