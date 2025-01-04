@@ -101,7 +101,7 @@
 		.incbin "EXPORTS/jumper.hfm.bin" ; Size: 1834
 
 
-.segment "LVL_BANK_06"	; Total bank size: 8095 bytes
+.segment "LVL_BANK_06"	; Total bank size: 8080 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -113,7 +113,7 @@
 		.byte hexagonforce_grnd_color
 		.byte 40	; height of hexagonforce
 	; Level data
-		.incbin "EXPORTS/hexagonforce.hfm.bin" ; Size: 6139
+		.incbin "EXPORTS/hexagonforce.hfm.bin" ; Size: 6124
 
 	.export level_data_leveleasy
 	level_data_leveleasy:
