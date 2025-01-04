@@ -73,7 +73,7 @@
 		.incbin "EXPORTS/dryout.hfm.bin" ; Size: 1516
 
 
-.segment "LVL_BANK_05"	; Total bank size: 8186 bytes
+.segment "LVL_BANK_05"	; Total bank size: 8152 bytes
 	.export level_data_pgclubstep
 	level_data_pgclubstep:
 	; Header
@@ -99,19 +99,6 @@
 		.byte 27	; height of jumper
 	; Level data
 		.incbin "EXPORTS/jumper.hfm.bin" ; Size: 1834
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
 
 .segment "LVL_BANK_06"	; Total bank size: 8095 bytes
@@ -441,7 +428,7 @@
 		.incbin "EXPORTS/problematic.hfm.bin" ; Size: 3371
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8191 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8189 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
@@ -455,8 +442,21 @@
 	; Level data
 		.incbin "EXPORTS/firetemple.hfm.bin" ; Size: 3273
 
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
-.segment "LVL_BANK_15"	; Total bank size: 8147 bytes
+
+.segment "LVL_BANK_15"	; Total bank size: 8188 bytes
 	.export level_data_sonar
 	level_data_sonar:
 	; Header
