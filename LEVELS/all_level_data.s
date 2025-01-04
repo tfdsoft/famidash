@@ -372,7 +372,7 @@
 		.incbin "EXPORTS/blastprocessing.hfm.bin" ; Size: 4109
 
 
-.segment "LVL_BANK_12"	; Total bank size: 8144 bytes
+.segment "LVL_BANK_12"	; Total bank size: 8114 bytes
 	.export level_data_nightmare
 	level_data_nightmare:
 	; Header
@@ -397,7 +397,7 @@
 		.byte theoryofeverything_grnd_color
 		.byte 57	; height of theoryofeverything
 	; Level data
-		.incbin "EXPORTS/theoryofeverything.hfm.bin" ; Size: 3625
+		.incbin "EXPORTS/theoryofeverything.hfm.bin" ; Size: 3595
 
 
 .segment "LVL_BANK_13"	; Total bank size: 8160 bytes
