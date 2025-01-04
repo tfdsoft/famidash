@@ -356,22 +356,17 @@ _init_rld:
 	incw ptr1
 
 SetupNextRLEByte:
-	lda	ptr1+0				;
-	sta	huffmunch_zpblock+0	;	Huffmunch data ptr
-	lda	ptr1+1				;
-	sta	huffmunch_zpblock+1	;__
+	ldx	ptr1+0		;	LZ data ptr
+	ldy	ptr1+1		;__
 
-	ldx	#$00			;	Stream ID: 0
-	ldy	#$00			;__
+	jsr	LZ_init_decomp
 
-	jsr	huffmunch_load
-
-    jsr	huffmunch_read	;
+    jsr	LZ_get_byte		;
 	cmp	#$00			;
     bmi single_rle_byte	;	Load rld_run
     STA rld_run			;__ 
 
-    jsr	huffmunch_read	;
+    jsr	LZ_get_byte		;
     STA rld_value		;__	Load rld_value
 	RTS
 single_rle_byte:
@@ -407,12 +402,12 @@ single_rle_byte:
 	@ReadNewVal:
 		; if bit 7 of the byte is set, then its a run of length 1
 		; otherwise this is a length < 127 byte and we need to read another
-		jsr	huffmunch_read		;
+		jsr	LZ_get_byte			;
 		cmp	#$00				;
 		bmi @SingleByteRun		;	Load rld_run
 		sta rld_run				;__
 
-		jsr	huffmunch_read		;
+		jsr	LZ_get_byte			;
 		cmp	rld_run				;	Load rld_value
 		beq	@ParseMetaSeq		;	or meta sequence
 	@noMetaSeq:					;
@@ -458,22 +453,18 @@ single_rle_byte:
 
 .proc loadLevelContinuation
 	; Meta sequence: load new level chunk
-	jsr	huffmunch_read		;	Get Meta Level ID
+	jsr	LZ_get_byte			;	Get Meta Level ID
 	tay						;__
-
-	lda	_level_chunk_list_lo, y		;	Get new data low ptr
-	sta	huffmunch_zpblock+0			;__
-	lda	_level_chunk_list_hi, y		;	Get new data high ptr
-	sta	huffmunch_zpblock+1			;__
 
 	lda	_level_chunk_list_bank, y	;
 	sta	_level_data_bank			;	Get new data bank
 	jsr	mmc3_set_prg_bank_1			;__
 
-	ldx	#$00			;	Stream ID: 0
-	ldy	#$00			;__
+	ldx	_level_chunk_list_lo, y		;__	Get new data low ptr
+	lda	_level_chunk_list_hi, y		;	Get new data high ptr
+	tay								;__
 
-	jmp	huffmunch_load
+	jmp	LZ_init_decomp
 .endproc
 
 ; void __fastcall__ dummy_unrle_columns(uint16_t columns);
@@ -519,12 +510,12 @@ single_rle_byte:
 		beq end_early
 		
 	loop:
-		jsr	huffmunch_read	; either single-run value or run
+		jsr	LZ_get_byte	; either single-run value or run
 		cmp	#$00
 		bmi single_byte
 		sta rld_run
 
-		jsr	huffmunch_read		;
+		jsr	LZ_get_byte			;
 			cmp	rld_run			;	Load rld_value
 			beq	parseMetaSeq	;	or meta sequence
 		loop_noMetaSeq:			;
