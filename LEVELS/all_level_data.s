@@ -215,7 +215,7 @@
 		.incbin "EXPORTS/lostinthewoods.hfm.bin" ; Size: 5017
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8190 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 7844 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -228,19 +228,6 @@
 		.byte 27	; height of electrodynamix
 	; Level data
 		.incbin "EXPORTS/electrodynamix.hfm.bin" ; Size: 5003
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.hfm.bin" ; Size: 346
 
 
 .segment "LVL_BANK_0C"	; Total bank size: 8172 bytes
@@ -413,7 +400,7 @@
 		.incbin "EXPORTS/theoryofeverything.hfm.bin" ; Size: 3625
 
 
-.segment "LVL_BANK_13"	; Total bank size: 8160 bytes
+.segment "LVL_BANK_13"	; Total bank size: 8191 bytes
 	.export level_data_supercycles
 	level_data_supercycles:
 	; Header
@@ -441,7 +428,7 @@
 		.incbin "EXPORTS/problematic.hfm.bin" ; Size: 3371
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8155 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8189 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
@@ -454,6 +441,19 @@
 		.byte 27	; height of firetemple
 	; Level data
 		.incbin "EXPORTS/firetemple.hfm.bin" ; Size: 3273
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.hfm.bin" ; Size: 34
 
 
 .segment "LVL_BANK_15"	; Total bank size: 8147 bytes
@@ -514,7 +514,7 @@
 		.incbin "EXPORTS/retray.hfm.bin" ; Size: 2379
 
 
-.segment "LVL_BANK_19"	; Total bank size: 8184 bytes
+.segment "LVL_BANK_19"	; Total bank size: 8128 bytes
 	.export level_data_baseafterbase
 	level_data_baseafterbase:
 	; Header
