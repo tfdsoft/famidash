@@ -172,7 +172,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.hfm.bin" ; Size: 2942
 
 
-.segment "LVL_BANK_09"	; Total bank size: 7943 bytes
+.segment "LVL_BANK_09"	; Total bank size: 7949 bytes
 	.export level_data_revolution
 	level_data_revolution:
 	; Header
@@ -184,7 +184,7 @@
 		.byte revolution_grnd_color
 		.byte 27	; height of revolution
 	; Level data
-		.incbin "EXPORTS/revolution.hfm.bin" ; Size: 5042
+		.incbin "EXPORTS/revolution.hfm.bin" ; Size: 5048
 
 	.export level_data_timemachine
 	level_data_timemachine:
