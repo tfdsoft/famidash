@@ -3,7 +3,7 @@ CODE_BANK_PUSH("XCD_BANK_01")
 
 void ufo_ship_eject();
 void common_gravity_routine();
-void ufo_movement(void){
+void ufo_movement(){
 
 	fallspeed_big = UFO_MAX_FALLSPEED;
 	fallspeed_mini = MINI_UFO_MAX_FALLSPEED;

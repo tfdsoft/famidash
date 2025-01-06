@@ -4045,7 +4045,7 @@ vert_skip:
 .endproc
 
 
-; void set_tile_banks(void);
+; void set_tile_banks();
 ; 
 ;	if (!no_parallax) {
 ;		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));

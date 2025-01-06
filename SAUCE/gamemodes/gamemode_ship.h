@@ -2,7 +2,7 @@
 CODE_BANK_PUSH("XCD_BANK_01")
 
 void ufo_ship_eject();
-void ship_movement(void){
+void ship_movement(){
 
 	fallspeed_big = SHIP_MAX_FALLSPEED;
 	fallspeed_mini = MINI_SHIP_MAX_FALLSPEED;

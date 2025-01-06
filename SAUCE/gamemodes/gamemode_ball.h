@@ -3,7 +3,7 @@ CODE_BANK_PUSH("XCD_BANK_01")
 
 void ball_eject();
 void common_gravity_routine();
-void ball_movement(void){
+void ball_movement(){
 // handle y
 
 	// currplayer_gravity

@@ -2,7 +2,7 @@
 CODE_BANK_PUSH("XCD_BANK_01")
 
 void wave_eject();
-void wave_movement(void){
+void wave_movement(){
 
 	if (!dashing[currplayer]) {
 		

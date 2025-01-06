@@ -1307,7 +1307,7 @@ const char coin_counter[][3] = {
 /*
 	Refreshes level name & number
 */
-void refreshmenu(void) {
+void refreshmenu() {
 	tmp5 = ((level&1)<<10);
 	set_scroll_x(((level-tmp4)&1)<<8);
 	
@@ -1345,7 +1345,7 @@ void refreshmenu(void) {
 	#endif
 };
 
-void refreshmenu_part2(void) {
+void refreshmenu_part2() {
 	
 	// Normal level completeness stuff
 		//printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);

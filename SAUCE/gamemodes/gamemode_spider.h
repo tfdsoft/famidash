@@ -4,7 +4,7 @@ CODE_BANK_PUSH("XCD_BANK_01")
 void cube_vel_stuff();
 void spider_eject();
 void common_gravity_routine();
-void spider_movement(void){
+void spider_movement(){
 
 	fallspeed_big = SPIDER_MAX_FALLSPEED;
 	fallspeed_mini = MINI_SPIDER_MAX_FALLSPEED;

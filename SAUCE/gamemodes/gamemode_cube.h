@@ -5,7 +5,7 @@ void x_movement_coll();
 void common_gravity_routine();
 void cube_eject();
 void slope_vel();
-void cube_movement(void){
+void cube_movement(){
 // handle y
 
 // gravity[currplayer]

@@ -61,7 +61,7 @@ void __fastcall__ famistudio_music_pause(unsigned char mode);
  * ======================================================================================================================
  */
 
-void __fastcall__ famistudio_music_stop(void);
+void __fastcall__ famistudio_music_stop();
 
 /**
  * ======================================================================================================================
@@ -74,7 +74,7 @@ void __fastcall__ famistudio_music_stop(void);
  * ======================================================================================================================
  */
 
-void __fastcall__ famistudio_update(void);
+void __fastcall__ famistudio_update();
 
 
 

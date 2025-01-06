@@ -1,5 +1,5 @@
 // prototype
-void init_sprites(void);
+void init_sprites();
 #include "defines/bg_charmap.h"
 const unsigned char attempttext[]="PQQRSTQ"; //ATTEMPT
 #include "defines/luckydraw_charmap.h"
@@ -56,7 +56,7 @@ void increase_parallax_scroll_column() {
 }
 
 extern unsigned char drawing_frame;
-void unrle_first_screen(void){ // run-length decode the first screen of a level
+void unrle_first_screen(){ // run-length decode the first screen of a level
 	// register unsigned char i;
 	#define i (*((uint8_t *)&ii))
 	register uint16_t ii;

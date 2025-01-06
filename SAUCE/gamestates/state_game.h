@@ -3,8 +3,8 @@
 	Implemented in asm
 */
 // void set_tile_banks();
-void __fastcall__ movement(void);
-void __fastcall__ movement2(void);
+void __fastcall__ movement();
+void __fastcall__ movement2();
 void mouse_and_cursor();
 extern uint8_t famistudio_song_speed;
 const uint8_t BG_Table[]={

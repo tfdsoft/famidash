@@ -1,6 +1,6 @@
 CODE_BANK_PUSH("XCD_BANK_04")
 
-void reset_level(void);
+void reset_level();
 void minus15y();
 void minus15x();
 void plus15y();
@@ -13,7 +13,7 @@ void trail_loop();
 void __fastcall__ drawplayerone();
 void __fastcall__ drawplayertwo();
 
-void draw_sprites(void){
+void draw_sprites(){
 	// dual = 1;
 	// twoplayer = 1;
 	

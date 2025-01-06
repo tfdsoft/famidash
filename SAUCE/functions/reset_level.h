@@ -1,7 +1,7 @@
 extern unsigned char drawing_frame;
 extern unsigned char* PARALLAX_CHR;
 
-void reset_level(void) {
+void reset_level() {
 	// unsigned char i;
 	if (!practice_point_count) famistudio_music_stop();
 

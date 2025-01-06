@@ -3,7 +3,7 @@
 #pragma code-name(push, "XCD_BANK_00")
 
 extern void load_next_sprite(uint8_t slot);
-extern void check_spr_objects(void);
+extern void check_spr_objects();
 void init_sprites();
 
 void dual_cap_check();
@@ -191,7 +191,7 @@ void animate_coin_2();
 
 void animate_coin_3();
 
-void clear_slope_stuff(void) {
+void clear_slope_stuff() {
 	currplayer_was_on_slope_counter = 0;
 	currplayer_slope_frames = 0;
 	currplayer_slope_type = 0;
@@ -1141,7 +1141,7 @@ void settrailstuff() {
 	}
 }
 
-void retrofireballclear(void) {
+void retrofireballclear() {
 	if (retro_mode) {
 		memfill(jimsheatballalive, 0, sizeof(jimsheatballalive));		
 	}
