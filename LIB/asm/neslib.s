@@ -555,8 +555,7 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 		clc				;__	We need the clear carry later
 	@no_x_overflow:
 	sta OAM_BUF+3,x	;__	Store the sprite X
-	lda (PTR),y		;	Load Y offset
-	iny				;__
+	lda (PTR),y		;__	Load Y offset
 	bmi	@neg_y_off
 	@pos_y_off:
 		adc sreg+1		;__	Add it to the metasprite Y	(carry already cleared)
@@ -570,6 +569,7 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 		@neg_no_y_overflow:
 		clc				;__	We need the clear carry later
 	@no_y_overflow:
+	iny				;
 	sta OAM_BUF+0,x	;__	Store the sprite Y
 	lda (PTR),y		;
 	iny				;	Load and store the tile
@@ -590,8 +590,8 @@ oam_meta_spr_params_set:	; Put &data into PTR, X and Y into SCRX and SCRY respec
 	rts
 
 @x_overflow:
-	iny
 @y_overflow:
+	iny
 	iny
 	iny
 	bne	@loop	;__ = BRA
@@ -629,18 +629,21 @@ __oam_meta_spr_disco:
 		clc				;__	We need the clear carry later
 	@no_x_overflow:
 	sta OAM_BUF+3,x	;__	Store the sprite X
-	lda (PTR),y		;	Load Y offset
-	iny				;__
-	bpl	@pos_y_off
+	lda (PTR),y		;__	Load Y offset
+	bmi	@neg_y_off
 	@pos_y_off:
 		adc sreg+1		;__	Add it to the metasprite Y	(carry already cleared)
 		bcs	@y_overflow	;__	If it had an overflow then don't render the damn sprite
 		bcc	@no_y_overflow
 	@neg_y_off:
 		adc	sreg+1		;__	Add it to the metasprite Y
-		bcc	@y_overflow	;__	If it had an overflow then don't render the damn sprite
+		bcs	@neg_no_y_overflow	;__	If it had an overflow then don't render the damn sprite
+			cmp #$F0		;	Do render the sprite if it ended up
+			bcc	@y_overflow	;__	in the negative space
+		@neg_no_y_overflow:
 		clc				;__	We need the clear carry later
 	@no_y_overflow:
+	iny				;
 	sta OAM_BUF+0,x	;__	Store the sprite Y
 	lda (PTR),y		;
 	iny				;	Load and store the tile
@@ -667,8 +670,8 @@ __oam_meta_spr_disco:
 	rts
 
 @x_overflow:
-	iny
 @y_overflow:
+	iny
 	iny
 	iny
 	bne	@loop	;__ = BRA
