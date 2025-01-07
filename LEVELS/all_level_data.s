@@ -17,7 +17,7 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 7906
 
 
-.segment "LVL_BANK_02"	; Total bank size: 8172 bytes
+.segment "LVL_BANK_02"	; Total bank size: 7856 bytes
 	.export level_data_deathmoon
 	level_data_deathmoon:
 	; Header
@@ -32,7 +32,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 7856
 
 
-.segment "LVL_BANK_03"	; Total bank size: 8113 bytes
+.segment "LVL_BANK_03"	; Total bank size: 8103 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -44,7 +44,7 @@
 		.byte bloodbath_grnd_color
 		.byte 27	; height of bloodbath
 	; Level data
-		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7697
+		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7687
 
 
 .segment "LVL_BANK_04"	; Total bank size: 8173 bytes
@@ -133,7 +133,22 @@
 		.incbin "EXPORTS/lostinthewoods.lz.bin" ; Size: 6113
 
 
-.segment "LVL_BANK_09"	; Total bank size: 8152 bytes
+.segment "LVL_BANK_09"	; Total bank size: 8154 bytes
+	.export level_data_decode
+	level_data_decode:
+	; Header
+		.byte decode_song_number
+		.byte decode_game_mode
+		.byte decode_speed
+		.byte decode_no_parallax
+		.byte decode_bg_color
+		.byte decode_grnd_color
+		.byte 27	; height of decode
+	; Level data
+		.incbin "EXPORTS/decode.lz.bin" ; Size: 5908
+
+
+.segment "LVL_BANK_0A"	; Total bank size: 8152 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -148,7 +163,7 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5831
 
 
-.segment "LVL_BANK_0A"	; Total bank size: 8151 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 7986 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -163,7 +178,7 @@
 		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5565
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8182 bytes
+.segment "LVL_BANK_0C"	; Total bank size: 8182 bytes
 	.export level_data_revolution
 	level_data_revolution:
 	; Header
@@ -178,22 +193,7 @@
 		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5336
 
 
-.segment "LVL_BANK_0C"	; Total bank size: 8118 bytes
-	.export level_data_decode
-	level_data_decode:
-	; Header
-		.byte decode_song_number
-		.byte decode_game_mode
-		.byte decode_speed
-		.byte decode_no_parallax
-		.byte decode_bg_color
-		.byte decode_grnd_color
-		.byte 27	; height of decode
-	; Level data
-		.incbin "EXPORTS/decode.lz.bin" ; Size: 5277
-
-
-.segment "LVL_BANK_0D"	; Total bank size: 7976 bytes
+.segment "LVL_BANK_0D"	; Total bank size: 8021 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -482,7 +482,7 @@
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3191
 
 
-.segment "LVL_BANK_19"	; Total bank size: 8190 bytes
+.segment "LVL_BANK_1A"	; Total bank size: 8125 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -508,21 +508,6 @@
 		.byte 27	; height of retray
 	; Level data
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2702
-
-
-.segment "LVL_BANK_1B"	; Total bank size: 8177 bytes
-	.export level_data_dryout
-	level_data_dryout:
-	; Header
-		.byte dryout_song_number
-		.byte dryout_game_mode
-		.byte dryout_speed
-		.byte dryout_no_parallax
-		.byte dryout_bg_color
-		.byte dryout_grnd_color
-		.byte 27	; height of dryout
-	; Level data
-		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1499
 
 
 .segment "LVL_BANK_1C"	; Total bank size: 8065 bytes
@@ -594,7 +579,7 @@
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 937
 
 
-.segment "LVL_BANK_1E"	; Total bank size: 8177 bytes
+.segment "LVL_BANK_1E"	; Total bank size: 8130 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -607,6 +592,19 @@
 		.byte 27	; height of polargeist
 	; Level data
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
+
+	.export level_data_dryout
+	level_data_dryout:
+	; Header
+		.byte dryout_song_number
+		.byte dryout_game_mode
+		.byte dryout_speed
+		.byte dryout_no_parallax
+		.byte dryout_bg_color
+		.byte dryout_grnd_color
+		.byte 27	; height of dryout
+	; Level data
+		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1499
 
 	.export level_data_backontrack
 	level_data_backontrack:
@@ -622,7 +620,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "LVL_BANK_20"	; Total bank size: 3803 bytes
+.segment "LVL_BANK_20"	; Total bank size: 4824 bytes
 	.export level_data_eon_1
 	level_data_eon_1:
 	; Level data
