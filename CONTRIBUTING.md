@@ -1,10 +1,14 @@
 # Contributing to Famidash
 
-congration you have decided to contribute to nintendo family computer geometry dash this guide will show you how to
+congration you have decided to contribute to nintendo family computer geometry dash this guideline will show you the guidelines
 
-## general overview
+## overview
 
-can't be arsed rn, might do later
+Famidash has grown to be a large project, which means there are a few guidelines to abide by when contributing. Generally, you should ALWAYS create a fork somewhere else, then apply your changes there. To get those changes into the main branch, opening up a pull request is necessary. Your changes will then be reviewed by a maintainers and merged if deemed appropriate. Don't create PRs for every little change; instead do all of your changes in your fork, then open up a single PR for all of them. If it isn't clear already, direct commits (unless by a maintainer for housekeeping or other reasons) are frowned upon and will immediately be reverted upon discovery.
+
+Your PR may be accepted or rejected at the maintainers' discretion; as such, they are not obliged to disclose the reason of a potential rejection, so don't even bother pestering them about it. Though if you ask nicely, you might get a more cooperative answer.
+
+The team utilises a large collection of software to facilitate development; more on that sometime later.
 
 ## music (guide by alexmush)
 
