@@ -19,7 +19,7 @@ How to compile the music:
 If you worked in Deeznuts-FT:
 	1. Copy the song into MODULES/music_master.dnm
 	2. While still in Dn-FT, export MODULES/music_master.dnm as .txt into the INTERMEDIATES folder
-	3. Run the adjust_txt_header.py script (run it from the main folder)
+	3. Run the adjust_ft_txt.py script (run it from the main folder)
 	4. Import ONLY THE SONGS AND INSTRUMENTS YOU HAVE ADDED/MODIFIED into FamiStudio 4.2.1.
 	5. Hand-correct things that FS gave warnings about.
 
@@ -43,13 +43,11 @@ After this, the same precautions and actions follow, no matter where you worked 
 		"python3 export.py [<path/to/FamiStudio.dll>]"
 	7. Don't close the terminal yet! You've now got a few things to adjust:
 	8. Ensure that the /LIB/asm/famistudio_ca65.s file has the settings set as the export output dictates
-	9. Run parse_fs_files.py to generate the include files
-		[ TODO: merge the actual include file generation into export.py ]
-	10. Remove the references to the "dpcm" song from the header of each music_X.s file
+	9. Remove the references to the "dpcm" song from the header of each music_X.s file
 		[ TODO: automate this ]
-	11. Adjust the music names before the bgmtest function in /SAUCE/gamestates/state_lvldone.h
+	10. Adjust the music names before the bgmtest function in /SAUCE/gamestates/state_lvldone.h
 		[ Not automatable as it is changing the names ]
-	12. Adjust the xbgm_lookup_table2 table in /SAUCE/gamestates/state_lvldone.h AND the contents of the "plst" chunk in NSF/metadata.s
+	11. Adjust the xbgm_lookup_table2 table in /SAUCE/gamestates/state_lvldone.h AND the contents of the "plst" chunk in NSF/metadata.s
 		[ TODO: automate and unify this ]
-	13. Test the game.
-	14. If anything odd went on in any of these steps, ping @alexmush and they'll probably respond within 48 hours (response times will vary)
+	12. Test the game.
+	13. If anything odd went on in any of these steps, ping @alexmush and they'll probably respond within 48 hours (response times will vary)

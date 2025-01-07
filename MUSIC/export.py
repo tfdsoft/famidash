@@ -14,10 +14,17 @@ actualOptionRegex = "set (FAMISTUDIO_[^ \n=]+ = [^ \n.]+)"
 songNameRegex = 'Song[^\n]+Name="([^"]+)'
 songFolderNameRegex = 'Song[^\n]+Folder="([^"]+)'
 
-dpcmFileNameRegex = 'music_(.+)_bank(.+).dmc'
+exportStemPrefix = "music"
+
+dpcmFileNameRegex = f'{exportStemPrefix}_(.+)_bank(.+).dmc'
 
 dpcmAlignerName = "dpcm"
+finalSongInListName = "max"
 usedFolderNames = ["Official music used in the game", "Custom music used in the game"]
+
+songlistNamesRegex = r'(?ms:(song_([\w]+) = (\d+)$)+)'
+
+asmMusicDataName = fr'music_data_famidash_{exportStemPrefix}'
 
 musicFolder = pathlib.Path(sys.path[0]).resolve()
 tmpFolder = (musicFolder.parent / "TMP").resolve()
@@ -88,7 +95,7 @@ if __name__ == "__main__":
 
     # Get FamiStudio text file
     print("\n==== Exporting a FamiStudio text file for processing...")
-    fsTxtPath = tmpFolder / "music_fs.txt"
+    fsTxtPath = tmpFolder / "{exportStemPrefix}_fs.txt"
 
     proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-txt-export', fsTxtPath], capture_output=True)
     checkErr(proc)
@@ -119,13 +126,13 @@ if __name__ == "__main__":
 
     # Get instrument and song sizes
     print("\n==== Getting sizes of songs and instruments...")
-    tmpAsmPath = tmpFolder / "music_all.s"
+    tmpAsmPath = tmpFolder / f"{exportStemPrefix}_all.s"
 
     proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-asm-export', tmpAsmPath, '-famistudio-asm-format:ca65', '-famistudio-asm-force-dpcm-bankswitch', f'-export-songs:{neededSongsCommaSep},{dpcmidx}'], capture_output=True)
     tmpAsmPath.unlink(missing_ok = True)
     checkErr(proc)
 
-    for i in tmpFolder.glob(f"music_all*.dmc"):
+    for i in tmpFolder.glob(f"{exportStemPrefix}_all*.dmc"):
         i.unlink(missing_ok = True)
     
     cmdOutput = proc.stdout.decode()
@@ -155,14 +162,16 @@ if __name__ == "__main__":
     
     dpcmFiles = []
     optionsToSet = []
+    masterSonglist = []
 
     print("\n==== Running export processes of each music data bank...")
 
     for i in range(len(bins)):
         idxs = ",".join([str(j[0]) for j in bins[i]])
 
-        asmExportName = f"music_{i+1}"
-        asmExportPath = exportPath / f"{asmExportName}.s"
+        asmExportStem = f"{exportStemPrefix}_{i+1}"
+        asmExportPath = exportPath / f"{asmExportStem}.s"
+        songlistExportPath = exportPath / f"{asmExportStem}_songlist.inc"
 
         proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', '-famistudio-asm-generate-list', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
         output = proc.stdout.decode()
@@ -170,14 +179,29 @@ if __name__ == "__main__":
 
         print(f"== Info on bank {i}:")
         print("\t" + re.search(totalSizeRegex, output).group())
+
+        # Rename labels to be unique
+        captData = []
+        asmExportData = asmExportPath.read_text()
+        for capt, og, repl in [
+            (None, asmMusicDataName, f"{asmMusicDataName}{i+1}")]:
+            if capt != None:
+                captData.append(re.findall(capt, asmExportData))
+            else:
+                captData.append(None)
+            asmExportData = re.sub(og, repl, asmExportData)
+        asmExportPath.write_text(asmExportData)
+
+        songlistData = songlistExportPath.read_text()
+        songlistExportPath.unlink()
         
-        dpcmFiles += exportPath.glob(f"{asmExportName}*.dmc")
+        dpcmFiles += exportPath.glob(f"{asmExportStem}*.dmc")
         optionsToSet += re.findall(youMustSetRegex, output)
+        masterSonglist += re.findall(songlistNamesRegex, songlistData)
+
+    masterSonglist = [i[1] for i in masterSonglist if i[1] not in [dpcmAlignerName, finalSongInListName]] + ["max"]
 
     # Check the DPCM files for being identical
-    dpcmExportPath = exportPath
-    dpcmExportStemPrefix = "music"
-
     print("\n==== Checking if the DPCM files are identical...")
     
     dpcmFiles = [(i, re.findall(dpcmFileNameRegex, i.name)[0]) for i in dpcmFiles]
@@ -192,8 +216,8 @@ if __name__ == "__main__":
                 bankDpcmError = True
                 dpcmError = True
         if not bankDpcmError:
-            (dpcmExportPath / f"{dpcmExportStemPrefix}_bank{bank}.dmc").unlink(missing_ok = True)
-            dpcmFilesOfBank[0][0].rename(dpcmExportPath / f"{dpcmExportStemPrefix}_bank{bank}.dmc")
+            (exportPath / f"{exportStemPrefix}_bank{bank}.dmc").unlink(missing_ok = True)
+            dpcmFilesOfBank[0][0].rename(exportPath / f"{exportStemPrefix}_bank{bank}.dmc")
             dpcmFilesOfBank.pop(0)
         [i[0].unlink(missing_ok = True) for i in dpcmFilesOfBank]
 
@@ -215,14 +239,22 @@ if __name__ == "__main__":
         ]
     (exportPath / "musicPlayRoutines.s").write_text("\n".join(bank_table_data))
 
+    # Export C songlist
+    (exportPath / "musicDefines.h").write_text(
+        "\n".join([f"#define song_{id} {i}" for i, id in enumerate(masterSonglist)]))
+
+    # Export asm songlist
+    # Export C songlist
+    (exportPath / "music_songlist.inc").write_text(
+        "\n".join([f"song_{id} = {i}" for i, id in enumerate(masterSonglist)]))
+
     # Print which options to set
     print("\n==== Don't forget to set these options in the sound driver:")
     print("\n".join(re.findall(actualOptionRegex, "\n".join(list(set(optionsToSet))))))
 
     if not args.test_export:
-        print("\n==== Please launch parse_fs_files.py now.")
+        print("\n==== The export is over, now manually correct stuff [CURRENTLY WIP TO BE LESS STUFF]")
     else:
         print("\n==== Everything seems to have gone alright, you can run it for real now.")
-        [i.unlink(missing_ok = True) for i in dpcmExportPath.glob(f"{dpcmExportStemPrefix}*.s")]
-        [i.unlink(missing_ok = True) for i in dpcmExportPath.glob(f"{dpcmExportStemPrefix}*.dmc")]
-        [i.unlink(missing_ok = True) for i in dpcmExportPath.glob(f"{dpcmExportStemPrefix}*songlist.inc")]
+        for glob in [f"{exportStemPrefix}*.s", f"{exportStemPrefix}*.dmc", f"{exportStemPrefix}_songlist.inc", f"{exportStemPrefix}Defines.h"]:
+            [i.unlink(missing_ok = True) for i in exportPath.glob(glob)]

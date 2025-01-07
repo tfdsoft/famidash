@@ -8,7 +8,7 @@ DPCMEffectsRegex = b"(?:[^:\n]+ :){5} ... .. .((?:(?: ...)*(?: L..)+)*)\r\n"
 DelayedReleaseRegex = b" L"
 
 if __name__ == "__main__":
-    import re, sys, glob
+    import re, sys, glob # todo: refactor with pathlib and non-binary reading mode
     for filename in glob.glob(sys.path[0]+"/INTERMEDIATES/*.txt"):
         file = open(filename, "rb")
         print(f"Opened file {filename}, ", end="")

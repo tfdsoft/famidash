@@ -18,13 +18,14 @@
 #include "famistudio_cc65.h" // sound driver
 
 #include "MUSIC/EXPORTS/musicDefines.h" // sound driver C defines
+#include "MUSIC/EXPORTS/sfxDefines.h" // sound driver C defines
 
 // various game-essential defines
 #include "defines/space_defines.h"
 #include "defines/physics_defines.h"
 #include "defines/level_defines.h"
 
-// grounds goes here
+// grounds go here
 #pragma rodata-name (push, "XCD_BANK_03")
 #include "defines/menunametable.h"
 #pragma rodata-name (pop)
