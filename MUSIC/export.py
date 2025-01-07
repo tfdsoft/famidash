@@ -173,7 +173,7 @@ if __name__ == "__main__":
     for i in range(len(bins)):
         idxs = ",".join([str(j[0]) for j in bins[i]])
 
-        asmExportStem = f"{exportStemPrefix}_{i+1}"
+        asmExportStem = f"{exportStemPrefix}_{i}"
         asmExportPath = exportPath / f"{asmExportStem}.s"
         songlistExportPath = exportPath / f"{asmExportStem}_songlist.inc"
 
@@ -191,7 +191,7 @@ if __name__ == "__main__":
             # Decrement song count
             (None, asmAmountOfSongsRegex, lambda x : f'{x.group(1)}{int(x.group(2)) - 1}'),
             # Make the label unique
-            (None, asmMusicDataName, f"{asmMusicDataName}{i+1}"),
+            (None, asmMusicDataName, f"{asmMusicDataName}{i}"),
             # Remove DPCM aligner from header
             (asmDpcmSongHeaderIdxRegex, asmDpcmSongHeaderMatchRegex, "; The DPCM aligner used to be here\n"),
             # Remove DPCM aligner song data
@@ -247,9 +247,9 @@ if __name__ == "__main__":
     bank_table_data = [
         ".if .not(useConstInitPtr)",
         "music_data_locations_lo:",
-        f"\t.byte " + ", ".join([f"<music_data_famidash_music{i+1}" for i in range(len(bins))]),
+        f"\t.byte " + ", ".join([f"<music_data_famidash_music{i}" for i in range(len(bins))]),
         "music_data_locations_hi:",
-        f"\t.byte " + ",".join([f">music_data_famidash_music{i+1}" for i in range(len(bins))]),
+        f"\t.byte " + ",".join([f">music_data_famidash_music{i}" for i in range(len(bins))]),
         ".endif",
         "",
         "music_counts:",
