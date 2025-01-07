@@ -249,7 +249,7 @@
 		.incbin "EXPORTS/test4.lz.bin" ; Size: 58
 
 
-.segment "LVL_BANK_0F"	; Total bank size: 8064 bytes
+.segment "LVL_BANK_0F"	; Total bank size: 8066 bytes
 	.export level_data_kappaclysm
 	level_data_kappaclysm:
 	; Header
@@ -261,7 +261,7 @@
 		.byte kappaclysm_grnd_color
 		.byte 27	; height of kappaclysm
 	; Level data
-		.incbin "EXPORTS/kappaclysm.lz.bin" ; Size: 5040
+		.incbin "EXPORTS/kappaclysm.lz.bin" ; Size: 5042
 
 	.export level_data_cycles
 	level_data_cycles:
