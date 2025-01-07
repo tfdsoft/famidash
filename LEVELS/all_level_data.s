@@ -424,7 +424,7 @@
 		.incbin "EXPORTS/electroman.lz.bin" ; Size: 3885
 
 
-.segment "LVL_BANK_16"	; Total bank size: 8058 bytes
+.segment "LVL_BANK_16"	; Total bank size: 8073 bytes
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
 	; Header
