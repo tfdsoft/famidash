@@ -118,7 +118,7 @@
 		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 1949
 
 
-.segment "LVL_BANK_08"	; Total bank size: 8099 bytes
+.segment "LVL_BANK_08"	; Total bank size: 8124 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
