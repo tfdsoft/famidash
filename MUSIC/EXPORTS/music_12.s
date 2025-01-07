@@ -17,7 +17,7 @@
 .endif
 
 music_data_famidash_music12:
-	.byte 7
+	.byte 6
 	.word @instruments
 	.word @samples-5
 ; 00 : retray
@@ -55,6 +55,7 @@ music_data_famidash_music12:
 	.word @song4ch3
 	.word @song4ch4
 	.word 337,281
+; The DPCM aligner used to be here
 ; 06 : Problematic
 	.word @song6ch0
 	.word @song6ch1
@@ -1335,27 +1336,7 @@ music_data_famidash_music12:
 	.byte $41, $0e
 	.word @song4ref520
 	.byte $14, $14, $14, $44, $00
-@song5ch0:
-	.byte $46, $01
-@song5ch0loop:
-	.byte $97, $42
-	.word @song5ch0loop
-@song5ch1:
-@song5ch1loop:
-	.byte $97, $42
-	.word @song5ch1loop
-@song5ch2:
-@song5ch2loop:
-	.byte $97, $42
-	.word @song5ch2loop
-@song5ch3:
-@song5ch3loop:
-	.byte $97, $42
-	.word @song5ch3loop
-@song5ch4:
-@song5ch4loop:
-	.byte $14, $11, $10, $0b, $08, $02, $01, $15, $12, $16, $13, $00, $42
-	.word @song5ch4loop
+; The DPCM aligner used to be here
 @song6ch0:
 	.byte $46, $06, $74, $4b, .lobyte(@env35), .hibyte(@env35), $8c, $20, $9d, $4b, .lobyte(@env8), .hibyte(@env8), $24, $9d
 	.byte $4b, .lobyte(@env11), .hibyte(@env11), $21, $9d, $4b, .lobyte(@env35), .hibyte(@env35), $20, $9d, $4d, $20, $9d, $4b

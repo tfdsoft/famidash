@@ -17,7 +17,7 @@
 .endif
 
 music_data_famidash_music7:
-	.byte 4
+	.byte 3
 	.word @instruments
 	.word @samples-5
 ; 00 : Death Moon
@@ -41,6 +41,7 @@ music_data_famidash_music7:
 	.word @song2ch3
 	.word @song2ch4
 	.word 262,218
+; The DPCM aligner used to be here
 
 .export music_data_famidash_music7
 .global FAMISTUDIO_DPCM_PTR

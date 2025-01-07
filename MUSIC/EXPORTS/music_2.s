@@ -16,7 +16,7 @@
 .endif
 
 music_data_famidash_music2:
-	.byte 3
+	.byte 2
 	.word @instruments
 	.word @samples-5
 ; 00 : Clutterfunk
@@ -26,6 +26,7 @@ music_data_famidash_music2:
 	.word @song0ch3
 	.word @song0ch4
 	.word 286,238
+; The DPCM aligner used to be here
 ; 02 : atthespeedoflight
 	.word @song2ch0
 	.word @song2ch1
@@ -661,27 +662,7 @@ music_data_famidash_music2:
 	.byte $41, $46
 	.word @song0ref4213
 	.byte $d7, $44, $00
-@song1ch0:
-	.byte $46, $01
-@song1ch0loop:
-	.byte $97, $42
-	.word @song1ch0loop
-@song1ch1:
-@song1ch1loop:
-	.byte $97, $42
-	.word @song1ch1loop
-@song1ch2:
-@song1ch2loop:
-	.byte $97, $42
-	.word @song1ch2loop
-@song1ch3:
-@song1ch3loop:
-	.byte $97, $42
-	.word @song1ch3loop
-@song1ch4:
-@song1ch4loop:
-	.byte $1d, $1a, $19, $14, $0a, $03, $01, $1e, $1b, $1f, $1c, $00, $42
-	.word @song1ch4loop
+; The DPCM aligner used to be here
 @song2ch0:
 	.byte $46, $06, $7a, $ac, $19, $8d, $1b, $85, $1c, $85, $1e, $8d, $19, $85, $1e, $85, $1d, $8d, $19, $85, $16, $85, $15, $8d
 	.byte $12, $8d, $7c, $4f, $02

@@ -15,7 +15,7 @@
 .endif
 
 music_data_famidash_music9:
-	.byte 4
+	.byte 3
 	.word @instruments
 	.word @samples-5
 ; 00 : Back on Track
@@ -32,6 +32,7 @@ music_data_famidash_music9:
 	.word @song1ch3
 	.word @song1ch4
 	.word 262,218
+; The DPCM aligner used to be here
 ; 03 : haunted woods
 	.word @song3ch0
 	.word @song3ch1
@@ -913,27 +914,7 @@ music_data_famidash_music9:
 	.byte $41, $0c
 	.word @song1ref1814
 	.byte $00, $9d, $44, $00
-@song2ch0:
-	.byte $46, $01
-@song2ch0loop:
-	.byte $97, $42
-	.word @song2ch0loop
-@song2ch1:
-@song2ch1loop:
-	.byte $97, $42
-	.word @song2ch1loop
-@song2ch2:
-@song2ch2loop:
-	.byte $97, $42
-	.word @song2ch2loop
-@song2ch3:
-@song2ch3loop:
-	.byte $97, $42
-	.word @song2ch3loop
-@song2ch4:
-@song2ch4loop:
-	.byte $16, $13, $12, $0d, $08, $03, $01, $17, $14, $18, $15, $00, $42
-	.word @song2ch4loop
+; The DPCM aligner used to be here
 @song3ch0:
 	.byte $46, $03, $72, $8c, $31, $81, $00, $81, $31, $81, $00, $81, $2b, $81, $00, $81, $2b, $81, $00, $81, $31, $81, $00, $81
 	.byte $31, $81, $00, $81, $2b, $81, $00, $81, $2b, $81, $00, $81, $7f, $90

@@ -15,7 +15,7 @@
 .endif
 
 music_data_famidash_music6:
-	.byte 4
+	.byte 3
 	.word @instruments
 	.word @samples-5
 ; 00 : Electrodynamix
@@ -32,6 +32,7 @@ music_data_famidash_music6:
 	.word @song1ch3
 	.word @song1ch4
 	.word 335,279
+; The DPCM aligner used to be here
 ; 03 : atthespeedoflight2
 	.word @song3ch0
 	.word @song3ch1
@@ -1021,27 +1022,7 @@ music_data_famidash_music6:
 	.word @song1ref422
 	.byte $07, $89, $00, $89, $15, $85, $08, $89, $00, $91, $42
 	.word @song1ch4loop
-@song2ch0:
-	.byte $46, $01
-@song2ch0loop:
-	.byte $97, $42
-	.word @song2ch0loop
-@song2ch1:
-@song2ch1loop:
-	.byte $97, $42
-	.word @song2ch1loop
-@song2ch2:
-@song2ch2loop:
-	.byte $97, $42
-	.word @song2ch2loop
-@song2ch3:
-@song2ch3loop:
-	.byte $97, $42
-	.word @song2ch3loop
-@song2ch4:
-@song2ch4loop:
-	.byte $1e, $1b, $1a, $14, $0b, $03, $01, $1f, $1c, $20, $1d, $00, $42
-	.word @song2ch4loop
+; The DPCM aligner used to be here
 @song3ch0:
 	.byte $46, $06, $a8, $0d, $ad, $09, $85, $0b, $85, $0d, $9d, $0b, $9d, $78, $a0
 @song3ref16:

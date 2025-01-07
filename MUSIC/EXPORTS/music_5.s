@@ -17,7 +17,7 @@
 .endif
 
 music_data_famidash_music5:
-	.byte 3
+	.byte 2
 	.word @instruments
 	.word @samples-5
 ; 00 : Polargeist
@@ -34,6 +34,7 @@ music_data_famidash_music5:
 	.word @song1ch3
 	.word @song1ch4
 	.word 292,244
+; The DPCM aligner used to be here
 
 .export music_data_famidash_music5
 .global FAMISTUDIO_DPCM_PTR

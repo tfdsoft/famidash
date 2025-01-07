@@ -14,7 +14,7 @@
 .endif
 
 music_data_famidash_music4:
-	.byte 3
+	.byte 2
 	.word @instruments
 	.word @samples-5
 ; 00 : eon
@@ -24,6 +24,7 @@ music_data_famidash_music4:
 	.word @song0ch3
 	.word @song0ch4
 	.word 317,264
+; The DPCM aligner used to be here
 ; 02 : infernoplex
 	.word @song2ch0
 	.word @song2ch1
@@ -766,27 +767,7 @@ music_data_famidash_music4:
 	.byte $41, $1c
 	.word @song0ref3462
 	.byte $00, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $9f, $44, $00
-@song1ch0:
-	.byte $46, $01
-@song1ch0loop:
-	.byte $97, $42
-	.word @song1ch0loop
-@song1ch1:
-@song1ch1loop:
-	.byte $97, $42
-	.word @song1ch1loop
-@song1ch2:
-@song1ch2loop:
-	.byte $97, $42
-	.word @song1ch2loop
-@song1ch3:
-@song1ch3loop:
-	.byte $97, $42
-	.word @song1ch3loop
-@song1ch4:
-@song1ch4loop:
-	.byte $16, $13, $12, $0c, $08, $02, $01, $17, $14, $18, $15, $00, $42
-	.word @song1ch4loop
+; The DPCM aligner used to be here
 @song2ch0:
 	.byte $46, $03, $bf, $7a, $4f, $00
 @song2ref7:

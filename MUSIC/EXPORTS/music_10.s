@@ -15,7 +15,7 @@
 .endif
 
 music_data_famidash_music10:
-	.byte 5
+	.byte 4
 	.word @instruments
 	.word @samples-5
 ; 00 : Base after Base
@@ -39,6 +39,7 @@ music_data_famidash_music10:
 	.word @song2ch3
 	.word @song2ch4
 	.word 276,230
+; The DPCM aligner used to be here
 ; 04 : stalemate
 	.word @song4ch0
 	.word @song4ch1
@@ -1160,27 +1161,7 @@ music_data_famidash_music10:
 	.byte $41, $11
 	.word @song2ref1360
 	.byte $00, $95, $44, $00
-@song3ch0:
-	.byte $46, $01
-@song3ch0loop:
-	.byte $97, $42
-	.word @song3ch0loop
-@song3ch1:
-@song3ch1loop:
-	.byte $97, $42
-	.word @song3ch1loop
-@song3ch2:
-@song3ch2loop:
-	.byte $97, $42
-	.word @song3ch2loop
-@song3ch3:
-@song3ch3loop:
-	.byte $97, $42
-	.word @song3ch3loop
-@song3ch4:
-@song3ch4loop:
-	.byte $15, $12, $11, $0a, $07, $03, $01, $16, $13, $17, $14, $00, $42
-	.word @song3ch4loop
+; The DPCM aligner used to be here
 @song4ch0:
 	.byte $46, $06
 @song4ref3:

@@ -25,6 +25,10 @@ usedFolderNames = ["Official music used in the game", "Custom music used in the 
 songlistNamesRegex = r'(?ms:(song_([\w]+) = (\d+)$)+)'
 
 asmMusicDataName = fr'music_data_famidash_{exportStemPrefix}'
+asmAmountOfSongsRegex = fr'({asmMusicDataName}:.*?\n\t\.byte )(\d+)'
+asmDpcmSongHeaderMatchRegex = r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song\d+.*?$\n){5}^\t.word \d+,\d+.*?$\n)'
+asmDpcmSongHeaderIdxRegex = r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song(\d+).*?$\n){5}^\t.word \d+,\d+.*?$\n)'
+asmDpcmSongMatchRegex = lambda x : r'(?ms:(^@song' + x + r'\S*:.*?)(?=^@song(?!' + x + r')))' #BUG: currently doesn't match if the dpcm song is the last
 
 musicFolder = pathlib.Path(sys.path[0]).resolve()
 tmpFolder = (musicFolder.parent / "TMP").resolve()
@@ -180,16 +184,28 @@ if __name__ == "__main__":
         print(f"== Info on bank {i}:")
         print("\t" + re.search(totalSizeRegex, output).group())
 
-        # Rename labels to be unique
+        # Run the asm file through a few regexes:
         captData = []
         asmExportData = asmExportPath.read_text()
         for capt, og, repl in [
-            (None, asmMusicDataName, f"{asmMusicDataName}{i+1}")]:
+            # Decrement song count
+            (None, asmAmountOfSongsRegex, lambda x : f'{x.group(1)}{int(x.group(2)) - 1}'),
+            # Make the label unique
+            (None, asmMusicDataName, f"{asmMusicDataName}{i+1}"),
+            # Remove DPCM aligner from header
+            (asmDpcmSongHeaderIdxRegex, asmDpcmSongHeaderMatchRegex, "; The DPCM aligner used to be here\n"),
+            # Remove DPCM aligner song data
+            (None, lambda : asmDpcmSongMatchRegex(captData[2][0]), "; The DPCM aligner used to be here\n")
+        ]:
             if capt != None:
                 captData.append(re.findall(capt, asmExportData))
             else:
                 captData.append(None)
-            asmExportData = re.sub(og, repl, asmExportData)
+
+            if callable(og):
+                asmExportData = re.sub(og(), repl, asmExportData)
+            else:
+                asmExportData = re.sub(og, repl, asmExportData)
         asmExportPath.write_text(asmExportData)
 
         songlistData = songlistExportPath.read_text()
@@ -225,6 +241,8 @@ if __name__ == "__main__":
         ValueError("DPCM files were not identical. Please check the dpcm aligner for containing all samples.")
         exit(4)    
     
+    print("\n==== Exporting miscellaneous files...")
+    print("== musicPlayRoutines.s")
     # Export bank lengths table
     bank_table_data = [
         ".if .not(useConstInitPtr)",
@@ -240,11 +258,12 @@ if __name__ == "__main__":
     (exportPath / "musicPlayRoutines.s").write_text("\n".join(bank_table_data))
 
     # Export C songlist
+    print("== musicDefines.h")
     (exportPath / "musicDefines.h").write_text(
         "\n".join([f"#define song_{id} {i}" for i, id in enumerate(masterSonglist)]))
 
     # Export asm songlist
-    # Export C songlist
+    print("== music_songlist.inc")
     (exportPath / "music_songlist.inc").write_text(
         "\n".join([f"song_{id} = {i}" for i, id in enumerate(masterSonglist)]))
 
@@ -253,7 +272,7 @@ if __name__ == "__main__":
     print("\n".join(re.findall(actualOptionRegex, "\n".join(list(set(optionsToSet))))))
 
     if not args.test_export:
-        print("\n==== The export is over, now manually correct stuff [CURRENTLY WIP TO BE LESS STUFF]")
+        print("\n==== The export is over, now manually correct stuff as per the contributing guide")
     else:
         print("\n==== Everything seems to have gone alright, you can run it for real now.")
         for glob in [f"{exportStemPrefix}*.s", f"{exportStemPrefix}*.dmc", f"{exportStemPrefix}_songlist.inc", f"{exportStemPrefix}Defines.h"]:

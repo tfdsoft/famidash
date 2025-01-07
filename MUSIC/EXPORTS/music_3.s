@@ -16,7 +16,7 @@
 .endif
 
 music_data_famidash_music3:
-	.byte 3
+	.byte 2
 	.word @instruments
 	.word @samples-5
 ; 00 : endgame
@@ -33,6 +33,7 @@ music_data_famidash_music3:
 	.word @song1ch3
 	.word @song1ch4
 	.word 438,365
+; The DPCM aligner used to be here
 
 .export music_data_famidash_music3
 .global FAMISTUDIO_DPCM_PTR

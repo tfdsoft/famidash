@@ -15,7 +15,7 @@
 .endif
 
 music_data_famidash_music11:
-	.byte 6
+	.byte 5
 	.word @instruments
 	.word @samples-5
 ; 00 : Stereo madness 2
@@ -46,6 +46,7 @@ music_data_famidash_music11:
 	.word @song3ch3
 	.word @song3ch4
 	.word 286,238
+; The DPCM aligner used to be here
 ; 05 : midnight
 	.word @song5ch0
 	.word @song5ch1
@@ -1212,27 +1213,7 @@ music_data_famidash_music11:
 	.byte $41, $0b
 	.word @song3ref1455
 	.byte $0d, $81, $12, $81, $0d, $81, $0f, $0a, $fb, $44, $00
-@song4ch0:
-	.byte $46, $01
-@song4ch0loop:
-	.byte $97, $42
-	.word @song4ch0loop
-@song4ch1:
-@song4ch1loop:
-	.byte $97, $42
-	.word @song4ch1loop
-@song4ch2:
-@song4ch2loop:
-	.byte $97, $42
-	.word @song4ch2loop
-@song4ch3:
-@song4ch3loop:
-	.byte $97, $42
-	.word @song4ch3loop
-@song4ch4:
-@song4ch4loop:
-	.byte $12, $0f, $0e, $09, $08, $02, $01, $13, $10, $14, $11, $00, $42
-	.word @song4ch4loop
+; The DPCM aligner used to be here
 @song5ch0:
 	.byte $46, $06
 @song5ref3:

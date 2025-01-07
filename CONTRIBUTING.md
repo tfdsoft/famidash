@@ -35,8 +35,8 @@ Paths are given to relative to the MUSIC folder, unless it begins with a /, then
 
 1. Copy the song into MODULES/music_master.dnm
 2. While still in Dn-FT, export MODULES/music_master.dnm as .txt into the INTERMEDIATES folder
-3. Run the adjust_ft_txt.py script (run it from the main folder)
-4. Import ONLY THE SONGS AND INSTRUMENTS YOU HAVE ADDED/MODIFIED into FamiStudio 4.3.0.
+3. Run the `adjust_ft_txt.py` script (run it from anywhere)
+4. Import **ONLY THE SONGS AND INSTRUMENTS YOU HAVE ADDED/MODIFIED** into FamiStudio 4.3.0.
 5. Hand-correct:
    - things that FS gave warnings about
    - every single pitch effect (0xy/1xx/2xx/3xx/Qxy/Rxy -> slide notes and arps), as FamiStudio currently botches their import somewhat
@@ -58,11 +58,10 @@ Paths are given to relative to the MUSIC folder, unless it begins with a /, then
 6. If it didn't error out and it completed successfully, run the following command to do it for real:<br>`python3 export.py [<path/to/FamiStudio.dll>]`
 7. Don't close the terminal yet! You've now got a few things to adjust:
 8. Ensure that the /LIB/asm/famistudio_ca65.s file has the settings set as the export output dictates
-9.  Remove the references to the "dpcm" song from the header of each music_X.s file <br>[ TODO: automate this ]
-10. Adjust the music names before the bgmtest function in /SAUCE/gamestates/state_lvldone.h <br>[ Not automatable as it is changing the names ]
-11. Adjust the xbgm_lookup_table2 table in /SAUCE/gamestates/state_lvldone.h AND the contents of the "plst" chunk in NSF/metadata.s <br>[ TODO: automate and unify this ]
-12. Test the game.
-13. If anything odd went on in any of these steps, ping @alexmush and they'll probably respond within 48 hours (response times will vary)
+9.  Adjust the music names before the bgmtest function in /SAUCE/gamestates/state_lvldone.h <br>[ Not automatable as it is changing the names ]
+10. Adjust the xbgm_lookup_table2 table in /SAUCE/gamestates/state_lvldone.h AND the contents of the "plst" chunk in NSF/metadata.s <br>[ TODO: automate and unify this ]
+11. Test the game.
+12. If anything odd went on in any of these steps, ping @alexmush and they'll probably respond within 48 hours (response times will vary)
 
 ## levels (guide by Ficus)
 

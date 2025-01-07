@@ -13,9 +13,10 @@
 .endif
 
 music_data_famidash_music1:
-	.byte 2
+	.byte 1
 	.word @instruments
 	.word @samples-5
+; The DPCM aligner used to be here
 ; 01 : crackdown
 	.word @song1ch0
 	.word @song1ch1
@@ -156,27 +157,7 @@ music_data_famidash_music1:
 	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$39,$0f,$40,$01 ; 10 this (Pitch:15)
 	.byte $1e+.lobyte(FAMISTUDIO_DPCM_PTR),$37,$0f,$40,$01 ; 11 time (Pitch:15)
 
-@song0ch0:
-	.byte $46, $01
-@song0ch0loop:
-	.byte $97, $42
-	.word @song0ch0loop
-@song0ch1:
-@song0ch1loop:
-	.byte $97, $42
-	.word @song0ch1loop
-@song0ch2:
-@song0ch2loop:
-	.byte $97, $42
-	.word @song0ch2loop
-@song0ch3:
-@song0ch3loop:
-	.byte $97, $42
-	.word @song0ch3loop
-@song0ch4:
-@song0ch4loop:
-	.byte $10, $0d, $0c, $08, $05, $02, $01, $11, $0e, $12, $0f, $00, $42
-	.word @song0ch4loop
+; The DPCM aligner used to be here
 @song1ch0:
 	.byte $46, $03
 @song1ch0loop:

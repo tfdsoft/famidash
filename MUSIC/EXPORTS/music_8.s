@@ -16,7 +16,7 @@
 .endif
 
 music_data_famidash_music8:
-	.byte 3
+	.byte 2
 	.word @instruments
 	.word @samples-5
 ; 00 : Electroman Adventures
@@ -33,6 +33,7 @@ music_data_famidash_music8:
 	.word @song1ch3
 	.word @song1ch4
 	.word 270,225
+; The DPCM aligner used to be here
 
 .export music_data_famidash_music8
 .global FAMISTUDIO_DPCM_PTR
