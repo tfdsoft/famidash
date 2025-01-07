@@ -6489,7 +6489,7 @@ sprite_data_thechallenge:
   .byte $20,$0f,$50,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1F"
+.segment "LVL_BANK_17"
 sprite_data_leveleasy:
   .byte $00,$00,$70,$03,$ac
   .byte $00,$00,$80,$03,$e1
@@ -12336,7 +12336,7 @@ sprite_data_problematic:
   .byte $80,$2a,$40,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_17"
+.segment "LVL_BANK_1F"
 sprite_data_firetemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$b6
@@ -12493,6 +12493,7 @@ sprite_data_firetemple:
   .byte $c0,$1f,$20,$03,$19
   .byte $c0,$1f,$30,$03,$20
   .byte $d0,$1f,$20,$03,$24
+  .byte $10,$20,$f0,$02,$07
   .byte $e0,$22,$20,$03,$22
   .byte $e0,$22,$30,$03,$14
   .byte $d0,$24,$20,$03,$08
@@ -12500,6 +12501,7 @@ sprite_data_firetemple:
   .byte $e0,$24,$20,$03,$4b
   .byte $e0,$24,$30,$03,$20
   .byte $f0,$24,$20,$03,$18
+  .byte $d0,$26,$20,$03,$1a
   .byte $00,$28,$30,$03,$08
   .byte $10,$28,$30,$03,$00
   .byte $10,$28,$40,$03,$15
@@ -12555,6 +12557,7 @@ sprite_data_firetemple:
   .byte $e0,$34,$70,$03,$b6
   .byte $10,$35,$60,$03,$8f
   .byte $10,$35,$70,$03,$bf
+  .byte $10,$36,$60,$03,$1b
   .byte $30,$36,$70,$03,$b8
   .byte $f0,$36,$70,$03,$0f
   .byte $ff

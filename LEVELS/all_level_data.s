@@ -439,7 +439,7 @@
 		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4027
 
 
-.segment "LVL_BANK_17"	; Total bank size: 8184 bytes
+.segment "LVL_BANK_17"	; Total bank size: 8169 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -467,7 +467,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
 
 
-.segment "LVL_BANK_18"	; Total bank size: 8168 bytes
+.segment "LVL_BANK_18"	; Total bank size: 8169 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
@@ -479,7 +479,7 @@
 		.byte firetemple_grnd_color
 		.byte 27	; height of firetemple
 	; Level data
-		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3191
+		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3192
 
 
 .segment "LVL_BANK_1A"	; Total bank size: 8125 bytes
