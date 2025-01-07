@@ -23,30 +23,42 @@ The general principle is: fork it, change it, push it, open a PR, get it merged 
 - https://twitter.com/TFDSoft
 - https://discord.gg/PCbwQaZs8K
 
-## credits (core team only)
+## credits
+### core team
 
 |contributor|role (in no particular order)|
 |---|---|
-|[Zephyrside](https://github.com/zephyrside)/[UserSniper](https://github.com/usersniper)|primary lead developer, project creator, coding, music, graphics|
-|[kandowontu](https://github.com/kandowontu)|director, secondary lead developer, maintainer|
-|[AleFunky](https://github.com/PinguLinux)|core code, levels, testing, bugfixes|
+|[Zephyrside](https://github.com/zephyrside)/[UserSniper](https://github.com/usersniper)|project creator, former lead developer, code, music, graphics|
+|[kandowontu](https://github.com/kandowontu)|director, current lead developer, maintainer|
+|[AleFunky](https://github.com/PinguLinux)|code, levels, testing, bugfixes|
 |[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
-|[alexmush](https://github.com/ADM228)|code, code optimization, music|
+|[alexmush](https://github.com/ADM228)|code, asm, code optimisation, music|
 |[jroweboy](https://github.com/jroweboy)|graphics, code optimisation, parallax, menu, etc|
 |[Zenith](https://github.com/ZenithNeko)|music, graphics|
 
-
-
-## additional staff
+### additional staff
 
 |contributor|role (in no particular order)|
 |---|---|
 |Aquamarine|music|
 |[vikrinox](https://github.com/Vickerinox)|music|
 |[adrluc096](https://github.com/123456oil)|icons, graphics|
-|Zee_Scott|icons|
-|[StudsX](https://github.com/smbhacks)|ASM, music|
+|Zee_Scott|icons, graphics|
+|[StudsX](https://github.com/smbhacks)|asm, music, pcm code|
 |cloud54|various music tracks and art|
 |[RedGD](https://github.com/RedGeometryDash)|icons, graphics|
+|AnnoyedArt1256|level compression|
+|sussysy|music|
+|KawaiiDawn|levels|
+|Crafty Jumper|levels, music|
+|banana6000|icons, levels|
+|blacecaptainn|icons|
+|dtpls|icons|
+|ps_lol|icons|
+|notapotato|icons|
+|[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
+|SeaGlowingPro|levels|
+|ElAngel378|music|
+
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
