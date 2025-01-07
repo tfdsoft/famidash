@@ -44,9 +44,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[RedGD](https://github.com/RedGeometryDash)|icons, graphics|
 |[AnnoyedArt1256](https://github.com/AnnoyedArt1256)|level compression|
 |[sussysy](https://github.com/VECTREX45)|music|
-|KawaiiDawn|levels|
+|[KawaiiDawn](https://github.com/Astroclimber26)|levels|
 |[Crafty Jumper](https://github.com/Crafty-Jumper)|levels, music|
-|banana6000|icons, levels|
+|[banana6000](https://github.com/xXFamidash_Fan69Xx)|icons, levels|
 |blacecaptainn|icons|
 |dtpls|icons|
 |ps_lol|icons|
