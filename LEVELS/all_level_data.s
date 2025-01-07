@@ -75,7 +75,7 @@
 		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
 
 
-.segment "LVL_BANK_05"	; Total bank size: 8187 bytes
+.segment "LVL_BANK_05"	; Total bank size: 8146 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -133,7 +133,7 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5831
 
 
-.segment "LVL_BANK_09"	; Total bank size: 8171 bytes
+.segment "LVL_BANK_09"	; Total bank size: 8151 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -163,7 +163,7 @@
 		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5336
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8158 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8118 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -175,7 +175,7 @@
 		.byte decode_grnd_color
 		.byte 27	; height of decode
 	; Level data
-		.incbin "EXPORTS/decode.lz.bin" ; Size: 5317
+		.incbin "EXPORTS/decode.lz.bin" ; Size: 5277
 
 
 .segment "LVL_BANK_0C"	; Total bank size: 7976 bytes
@@ -381,7 +381,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.lz.bin" ; Size: 3654
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8158 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8189 bytes
 	.export level_data_nightmare
 	level_data_nightmare:
 	; Header

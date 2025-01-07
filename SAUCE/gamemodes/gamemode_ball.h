@@ -45,7 +45,7 @@ void ball_movement(){
 		Generic.y = high_byte(currplayer_y) + 1;
 	}
 
-	if (controllingplayer->press_a || controllingplayer->press_up) idx8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
+	//if (controllingplayer->press_a || controllingplayer->press_up) idx8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
 
 	ball_eject();
 /*
