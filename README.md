@@ -9,13 +9,7 @@ You can find nightly dev builds in the Actions tab. Alternatively you can downlo
 
 ## contributing
 
-``TODO proper guide``
-
-Here are some instructions for specifically contributing to [levels](LEVELS/EXPORT%20LEVELS%20INSTRUCTIONS.txt) and [music](MUSIC/README.txt).
-
-The general principle is: fork it, change it, push it, open a PR, get it merged (or not).
-
-*(usersniper recommends working on the game using vscode on linux)*
+See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and levels there.
 
 ## socials
 
