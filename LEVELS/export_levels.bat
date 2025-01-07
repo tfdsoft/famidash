@@ -30,6 +30,7 @@ SET all_levels= ^
     kappaclysm ^
     revolution ^
     lostinthewoods ^
+    bloodbathbutno ^
     aprettyeasylevel ^
     thelightningroad ^
     nightmare ^

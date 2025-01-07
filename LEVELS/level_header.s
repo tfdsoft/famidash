@@ -237,6 +237,13 @@ bloodbath_no_parallax  = 1
 bloodbath_bg_color    = $0F
 bloodbath_grnd_color  = $0F
 
+bloodbathbutno_song_number = song_atthespeedoflight2
+bloodbathbutno_game_mode   = $00
+bloodbathbutno_speed       = $01
+bloodbathbutno_no_parallax  = 1
+bloodbathbutno_bg_color    = $0F
+bloodbathbutno_grnd_color  = $0F
+
 retray_song_number = song_retray
 retray_game_mode   = $00
 retray_speed       = $01

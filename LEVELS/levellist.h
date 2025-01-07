@@ -76,6 +76,7 @@ const uint8_t DECOTYPE[] = {
 	DECOCLOUD, //kappaclysm
 	DECO1, //revolution
 	DECO1, //lost in the woods
+	DECO1, //bloodbath but no
 	DECO1, //a pretty easy level
 	DECO1, //LIGHTNING ROAD
 	DECOCLOUD, //NIGHTMARE
@@ -122,6 +123,7 @@ const unsigned char spike_set[] = {
 	SPIKESC, //kappaclysm
 	SPIKESA, //revolution
 	SPIKESA, //lost in the woods
+	SPIKESA, //bloodbath but no
 	SPIKESC, //a pretty easy level
 	SPIKESC, //lightning road
 	SPIKESB, //nightmare
@@ -168,6 +170,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //kappaclysm
 	BLOCKSB, //revolution
 	BLOCKSB, //lost in the woods
+	BLOCKSB, //bloodbath but no
 	BLOCKSC, //a pretty easy level
 	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
@@ -214,6 +217,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //kappaclysm
 	SAWBLADESA, //revolution
 	SAWBLADESA, //lost in the woods
+	SAWBLADESA, //bloodbath but no
 	SAWBLADESA, //a pretty easy level
 	SAWBLADESA, //LIGHTNING ROAD
 	SAWBLADESA, //nightmare
@@ -261,6 +265,7 @@ const unsigned char difficulty_list[] = {
     HARDER, //kappaclysm
     HARDER, //revolution
     INSANE, //lost in the woods
+    INSANE, //bloodbath but no
     INSANE, //a pretty easy level
     DEMON, //lightning road
     DEMON, //nightmare
@@ -307,6 +312,7 @@ const unsigned char stars_list[] = {
 	6,  //kappaclysm
 	7,  //revolution
 	8,  //lost in the woods
+	8,  //bloodbath but no
 	9,  //a pretty easy level
 	10, //lightning road
 	10, //nightmare

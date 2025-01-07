@@ -31,6 +31,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_kappaclysm)
 	.byte .lobyte(level_data_revolution)
 	.byte .lobyte(level_data_lostinthewoods)
+	.byte .lobyte(level_data_bloodbathbutno)
 	.byte .lobyte(level_data_aprettyeasylevel)
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
@@ -75,6 +76,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_kappaclysm)
 	.byte .hibyte(level_data_revolution)
 	.byte .hibyte(level_data_lostinthewoods)
+	.byte .hibyte(level_data_bloodbathbutno)
 	.byte .hibyte(level_data_aprettyeasylevel)
 	.byte .hibyte(level_data_thelightningroad)
 	.byte .hibyte(level_data_nightmare)
@@ -119,6 +121,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_kappaclysm))
 	.byte .lobyte(.bank(level_data_revolution))
 	.byte .lobyte(.bank(level_data_lostinthewoods))
+	.byte .lobyte(.bank(level_data_bloodbathbutno))
 	.byte .lobyte(.bank(level_data_aprettyeasylevel))
 	.byte .lobyte(.bank(level_data_thelightningroad))
 	.byte .lobyte(.bank(level_data_nightmare))
@@ -175,6 +178,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_kappaclysm)
 	.byte .lobyte(sprite_data_revolution)
 	.byte .lobyte(sprite_data_lostinthewoods)
+	.byte .lobyte(sprite_data_bloodbathbutno)
 	.byte .lobyte(sprite_data_aprettyeasylevel)
 	.byte .lobyte(sprite_data_thelightningroad)
 	.byte .lobyte(sprite_data_nightmare)
@@ -219,6 +223,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_kappaclysm)
 	.byte .hibyte(sprite_data_revolution)
 	.byte .hibyte(sprite_data_lostinthewoods)
+	.byte .hibyte(sprite_data_bloodbathbutno)
 	.byte .hibyte(sprite_data_aprettyeasylevel)
 	.byte .hibyte(sprite_data_thelightningroad)
 	.byte .hibyte(sprite_data_nightmare)
@@ -263,6 +268,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_kappaclysm))
 	.byte .lobyte(.bank(sprite_data_revolution))
 	.byte .lobyte(.bank(sprite_data_lostinthewoods))
+	.byte .lobyte(.bank(sprite_data_bloodbathbutno))
 	.byte .lobyte(.bank(sprite_data_aprettyeasylevel))
 	.byte .lobyte(.bank(sprite_data_thelightningroad))
 	.byte .lobyte(.bank(sprite_data_nightmare))
@@ -310,6 +316,7 @@ _level_lengths_lo:
 	.byte .lobyte($000079)		; kappaclysm
 	.byte .lobyte($0000BB)		; revolution
 	.byte .lobyte($000066)		; lostinthewoods
+	.byte .lobyte($000090)		; bloodbathbutno
 	.byte .lobyte($000070)		; aprettyeasylevel
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
@@ -356,6 +363,7 @@ _level_lengths_md:
 	.byte .hibyte($000079)		; kappaclysm
 	.byte .hibyte($0000BB)		; revolution
 	.byte .hibyte($000066)		; lostinthewoods
+	.byte .hibyte($000090)		; bloodbathbutno
 	.byte .hibyte($000070)		; aprettyeasylevel
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
@@ -402,6 +410,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000079)		; kappaclysm
 	.byte .bankbyte($0000BB)		; revolution
 	.byte .bankbyte($000066)		; lostinthewoods
+	.byte .bankbyte($000090)		; bloodbathbutno
 	.byte .bankbyte($000070)		; aprettyeasylevel
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
