@@ -29,6 +29,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[alexmush](https://github.com/ADM228)|code, asm, code optimisation, music|
 |[jroweboy](https://github.com/jroweboy)|graphics, code optimisation, parallax, menu, etc|
 |[Zenith](https://github.com/ZenithNeko)|music, graphics|
+|[jaezu](https://github.com/jaezudev)|i'm solely here because of kando's orders|
 
 ### additional staff
 
@@ -41,18 +42,18 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[StudsX](https://github.com/smbhacks)|asm, music, pcm code|
 |cloud54|various music tracks and art|
 |[RedGD](https://github.com/RedGeometryDash)|icons, graphics|
-|AnnoyedArt1256|level compression|
-|sussysy|music|
+|[AnnoyedArt1256](https://github.com/AnnoyedArt1256)|level compression|
+|[sussysy](https://github.com/VECTREX45)|music|
 |KawaiiDawn|levels|
-|Crafty Jumper|levels, music|
+|[Crafty Jumper](https://github.com/Crafty-Jumper)|levels, music|
 |banana6000|icons, levels|
 |blacecaptainn|icons|
 |dtpls|icons|
 |ps_lol|icons|
 |notapotato|icons|
 |[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
-|SeaGlowingPro|levels|
-|ElAngel378|music|
+|[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels|
+|[ElAngel378](https://github.com/ElAngel378)|music|
 
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
