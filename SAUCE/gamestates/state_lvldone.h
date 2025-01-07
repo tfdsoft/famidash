@@ -456,6 +456,7 @@ const unsigned char TEXT_2textspeed2[]="OF$LIGHT$PT$2";
 const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
 const unsigned char TEXT_2textstalemate[]="STALEMATE";
 const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
+const unsigned char TEXT_2textchaoz[]="CHAOZ$FANTASY";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -524,6 +525,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_crackdown,
 	0,
 	0,
+	0,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -562,6 +564,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textcrackdown,
 	TEXT_2textstalemate,
 	TEXT_2textwoods,
+	TEXT_2textchaoz,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -600,6 +603,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textcrackdown) - 1,
 	sizeof(TEXT_2textstalemate) - 1,
 	sizeof(TEXT_2textwoods) - 1,
+	sizeof(TEXT_2textchaoz) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -635,6 +639,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_speed) - 1,	
 	0,
 	sizeof(TEXT_crackdown) - 1,	
+	0,
 	0,
 	0,
 };
@@ -675,7 +680,8 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_midnight,
 	song_crackdown,
 	song_stalemate,
-	song_haunted_woods
+	song_haunted_woods,
+	song_chaozfantasy,
 };
 
 

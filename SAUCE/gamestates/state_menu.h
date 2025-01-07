@@ -68,7 +68,8 @@ const uint8_t xbgm_lookup_table[] = {
 	song_midnight,
 	song_crackdown,
 	song_stalemate,
-	song_haunted_woods
+	song_haunted_woods,
+	song_chaozfantasy
 };
 
 
