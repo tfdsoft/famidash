@@ -65,7 +65,7 @@ uint8_t sprite_heights[]={
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 90 - 97
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 98 - 9F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// A0 - A7
-	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	OUTL,	// A8 - AF
+	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	COLR,	OUTL,	// A8 - AF
 	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	// B0 - B7
 	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	// B8 - BF
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// C0 - C7
@@ -1089,6 +1089,11 @@ void sprite_collide(){
 						lastbgcolortype = tmp4;
 					}						
 					
+					else if (tmp4 == 0xAE) {
+						pal_col(6, color2);
+						pal_col(5, oneShadeDarker(color2)); 
+						lastgcolortype = tmp4;
+					}
 					else if (tmp4 >= 0xC0){
 						pal_col(6, tmp2);
 						pal_col(5, oneShadeDarker(tmp2)); 
