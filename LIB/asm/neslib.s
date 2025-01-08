@@ -26,7 +26,7 @@
 	.export __memcpy,__memfill,_delay
 	
 	.export _flush_vram_update2, _oam_set, _oam_get
-	.import _disco_sprites, _slowmode, _kandoframecnt, _kandokidshack4, _pauseStatus
+	.import _disco_sprites, _slowmode, _kandoframecnt, _kandokidshack4, _pauseStatus,_coins_inserted, _CREDITS1_PREV, _CREDITS2_PREV
 	.segment "NESLIB"
 
 ;NMI handler
@@ -129,7 +129,7 @@ nmi:
   bne @SkipMouse
   ; Read the raw controller data synced with OAM DMA to prevent
   ; DMC DMA bugs
-  jsr oam_and_readjoypad
+  ;jsr oam_and_readjoypad
 
   lda <(mouse + kMouseButtons)
   and #$0f
@@ -152,6 +152,31 @@ nmi:
   jsr calculate_extra_fields
 
 @skipAll:
+
+	lda _CREDITS1_PREV
+	and #%00100000
+	beq @check_slot_2_creds
+	lda $4016
+	and #%00100000
+	bne @check_slot_2_creds
+	inc _coins_inserted
+
+@check_slot_2_creds:
+	lda $4016
+	sta _CREDITS1_PREV
+
+	; check for credits in the second slot
+	lda _CREDITS2_PREV
+	and #%01000000
+	beq @done_credit_check
+	lda $4016
+	and #%01000000
+	bne @done_credit_check
+	inc _coins_inserted
+
+@done_credit_check:
+	lda $4016
+	sta _CREDITS2_PREV
 
 	inc <FRAME_CNT1
 	inc <FRAME_CNT2
@@ -1525,81 +1550,19 @@ MOUSE_PORT = CTRL_PORT2
 CONTROLLER_PORT = CTRL_PORT1
 
 
-.proc oam_and_readjoypad
+;.proc oam_and_readjoypad
   ; save the previous controller state for calcuating the previous results
-  lda joypad1
-  sta TEMP + 4
+;  lda joypad1
+;  sta TEMP + 4
 
   ; and do the same for the controller 2
-  lda joypad2
-  sta TEMP + 5
+;  lda joypad2
+;  sta TEMP + 5
 
-  ; Save the previous mouse state so we can calculate the next frames press/release
-  lda mouse + kMouseY
-  sta TEMP + 0
-  lda mouse + kMouseX
-  sta TEMP + 1
-  lda mouse + kMouseButtons
-  sta TEMP + 2
 
   ; Strobe the joypads.
-  LDX #$00
-  LDY #$01
-  STY mouse
-  STY CTRL_PORT1
 
- .if 0
-  ; Clock official mouse sensitivity. NOTE: This can be removed if not needed.
-  LDA advance_sensitivity
-  BEQ :+
-  LDA MOUSE_PORT
-  STX advance_sensitivity
- :
- .endif
-
-  STX CTRL_PORT1
-
-  LDA #>OAM_BUF
-  STA PPU_OAM_DMA
- 
-  ; Desync cycles: 432, 576, 672, 848, 432*2-4 (860)
-
-  ; DMC DMA:         ; PUT GET PUT GET        ; Starts: 0
-
- :
-  LDA mouse_mask     ; get put get*     *576  ; Starts: 4, 158, 312, 466, [620]
-  AND MOUSE_PORT   ; put get put GET
-  CMP #$01           ; put get
-  ROL mouse,X        ; put get put get* PUT GET  *432
-  BCC :-             ; put get (put)
-
-  INX                ; put get
-  CPX #$04           ; put get
-  STY mouse,X        ; put get put GET
-  BNE :-             ; put get (put)
-
- :
-  LDA CONTROLLER_PORT ; put get put GET        ; Starts: 619
-  AND #$03           ; put get*         *672
-  CMP #$01           ; put get
-  ROL joypad1 ; put get put get put    ; This can desync, but we finish before it matters.
-  BCC :-             ; get put (get)
-
- .if 0 ; TODO support SNES extra buttons 
-  STY joypad1+1 ; get put get
-  NOP                ; put get
- :
-  LDA CONTROLLER_PORT ; put get* put GET *848  ; Starts: 751, [879]
-  AND #$03           ; put get
-  CMP #$01           ; put get
-  ROL joypad1+1 ; put get put get put    ; This can desync, but we finish before it matters.
-  BCC :-             ; get* put (get)   *860
-
-  ; NEXT: 878
- .endif ; CONTROLLER_SIZE = 2
-
-  rts
-.endproc
+;.endproc
 
 .segment "STARTUP"
 

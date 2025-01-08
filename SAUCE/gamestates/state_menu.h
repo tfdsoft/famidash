@@ -711,6 +711,11 @@ const uint8_t menu_irq_table[] = {
 
 	irqtable_end // always end with 0xff
 };
+
+const unsigned char nocoinstext[] = "INSERT COIN";
+const unsigned char coinstext[] = "COINS INSERTED";
+
+
 void state_menu() {
 	poweroffcheck = 0xff;
 	if (exitingLevelSelect) {
@@ -830,6 +835,35 @@ void state_menu() {
 		one_vram_buffer(0x1E, NTADR_A(28,3));
 	}	
 	while (!(joypad1.press & (PAD_START | PAD_A))){
+
+		if (!coins_inserted) multi_vram_buffer_horz(nocoinstext, sizeof(nocoinstext)-1, NTADR_A(11,9));
+		else {
+			multi_vram_buffer_horz(coinstext, sizeof(coinstext)-1, NTADR_A(7,9));
+			hexToDec(coins_inserted);
+
+			tmp1 = 0;
+			
+			if (hexToDecOutputBuffer[4]) {
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_A(23,9));
+				tmp1++;
+			}
+
+			if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3]) {
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[3], NTADR_A(23+tmp1,9));
+				tmp1++;
+			}
+			
+			if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2]) {
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[2], NTADR_A(23+tmp1,9));
+				tmp1++;
+			}
+
+			if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1]) {
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[1], NTADR_A(23+tmp1,9));
+				tmp1++;
+			}
+			one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_A(23+tmp1,9));			
+		}
 
 		pal_col(0x11,titlecolor3);
 		pal_col(0x12,titlecolor1);
