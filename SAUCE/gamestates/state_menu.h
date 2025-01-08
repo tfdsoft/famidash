@@ -1423,18 +1423,24 @@ void state_menu() {
 			levelselection(); 
 			return;		
 		case 0x02: gameState = 4; return;
-		case 0x03: crossPRGBankJump0(settings); return;
-		case 0x04: 
-			if (all_levels_complete != 0xFC) { sfx_play(sfx_invalid, 0); }
-			else {
-				POKE(0x2005, 0x00);
-				POKE(0x2005, 0x00);
-				mmc3_disable_irq(); // reset scroll before playing
-				last_gameState = gameState;
-				gameState = 0xF0; // fun settings gamestate
-				return;
-			}
-			break;
+		#if __VS_SYSTEM
+			case 0x03:
+			case 0x04:
+				break;
+		#else
+			case 0x03: crossPRGBankJump0(settings); return;
+			case 0x04: 
+				if (all_levels_complete != 0xFC) { sfx_play(sfx_invalid, 0); }
+				else {
+					POKE(0x2005, 0x00);
+					POKE(0x2005, 0x00);
+					mmc3_disable_irq(); // reset scroll before playing
+					last_gameState = gameState;
+					gameState = 0xF0; // fun settings gamestate
+					return;
+				}
+				break;
+		#endif
 		case 0x05: customize_screen(); return;
 	};
 	
