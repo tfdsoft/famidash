@@ -1330,7 +1330,7 @@ void state_menu() {
 			one_vram_buffer(' ', tmp5);
 			one_vram_buffer(' ', addloNOC(tmp5, 1));
 		}
-		if (joypad1.press_select) {
+/*		if (joypad1.press_select) {
 				tmp2 = 0;
 				gameState = 0;
 				famistudio_music_stop();
@@ -1338,7 +1338,7 @@ void state_menu() {
 				menuMusicCurrentlyPlaying = 0;
 				ppu_wait_nmi();
 				return;
-		}
+		} */
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
 		edit_irq_table(low_byte(tmp8), 2); 
 
