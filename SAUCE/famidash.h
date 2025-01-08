@@ -261,6 +261,14 @@ uint8_t kandokidshack2;
 uint8_t kandokidshack3;
 uint8_t kandokidshack4;
 
+#if __VS_SYSTEM
+
+uint8_t coins_inserted;
+uint8_t CREDITS1_PREV;
+uint8_t CREDITS2_PREV;
+
+#endif
+
 uint16_t exittimer;
 uint16_t jumps;
 uint8_t orbed[2];
