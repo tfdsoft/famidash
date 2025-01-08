@@ -129,13 +129,13 @@ uint8_t * level_data;
 #pragma bss-name("SRAM")
 uint8_t SRAM_VALIDATE[4];
 
-uint8_t coin1_obtained[0x40];
-uint8_t coin2_obtained[0x40];
-uint8_t coin3_obtained[0x40];
+uint8_t coin1_obtained[0x60];
+uint8_t coin2_obtained[0x60];
+uint8_t coin3_obtained[0x60];
 
-uint8_t LEVELCOMPLETE[0x40];
-uint8_t level_completeness_normal[0x40*2];
-#define level_completeness_practice (&level_completeness_normal[0x40])
+uint8_t LEVELCOMPLETE[0x60];
+uint8_t level_completeness_normal[0x60*2];
+#define level_completeness_practice (&level_completeness_normal[0x60])
 uint8_t achievements[0x20];
 
 uint8_t invisible;
