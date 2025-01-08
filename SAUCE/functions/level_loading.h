@@ -1,8 +1,8 @@
 // prototype
 void init_sprites();
 #include "defines/bg_charmap.h"
-const unsigned char attempttext[]="PQQRSTQ"; //ATTEMPT
 #include "defines/luckydraw_charmap.h"
+const unsigned char attempttext[]="PQQRSTQ"; //ATTEMPT
 const unsigned char triggerstext[]="TRIGGERS SURVIVED"; //ATTEMPT
 const unsigned char toptriggerstext[]="TOP TRIGGERS SURVIVED"; //ATTEMPT
 
@@ -133,7 +133,7 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	set_scroll_x(scroll_x);
 	set_scroll_y(scroll_y);
 	if (!practice_point_count) {
-		multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(6, 15));
+		//multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(6, 15));
 	
 //		if (TOTALATTEMPTSTHOUSANDS >= 10)
 //			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
