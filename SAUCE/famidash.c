@@ -63,7 +63,7 @@ void main(){
 	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;
 	crossPRGBankJump0(gameboy_check);
-	gameState = 0x05;
+	gameState = 0x00;
     while (1){
 		ppu_wait_nmi();
 		switch (gameState){
