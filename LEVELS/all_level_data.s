@@ -75,7 +75,7 @@
 		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
 
 
-.segment "LVL_BANK_05"	; Total bank size: 8178 bytes
+.segment "LVL_BANK_05"	; Total bank size: 8180 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -87,7 +87,7 @@
 		.byte cataclysm_grnd_color
 		.byte 27	; height of cataclysm
 	; Level data
-		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7067
+		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7069
 
 
 .segment "LVL_BANK_06"	; Total bank size: 8181 bytes
