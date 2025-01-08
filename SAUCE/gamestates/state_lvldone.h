@@ -161,6 +161,10 @@ void state_lvldone() {
 	menuselection = 1;
 	practice_point_count = 0;
 
+	#if __VS_SYSTEM
+	coins_inserted--;
+	#endif
+	
 	while (1) {
 		ppu_wait_nmi();
 		
