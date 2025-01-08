@@ -713,7 +713,7 @@ const uint8_t menu_irq_table[] = {
 };
 
 const unsigned char nocoinstext[] = "INSERT COIN";
-const unsigned char coinstext[] = "COINS INSERTED";
+const unsigned char coinstext[] = "COINS INSERTED ";
 
 
 void state_menu() {
@@ -834,7 +834,8 @@ void state_menu() {
 		one_vram_buffer(0x1D, NTADR_A(27,3));
 		one_vram_buffer(0x1E, NTADR_A(28,3));
 	}	
-	while (!(joypad1.press & (PAD_START | PAD_A))){
+
+	while (!(joypad1.press & (PAD_START | PAD_A)) || !coins_inserted){
 
 		if (!coins_inserted) multi_vram_buffer_horz(nocoinstext, sizeof(nocoinstext)-1, NTADR_A(11,9));
 		else {
