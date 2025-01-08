@@ -234,8 +234,8 @@ cataclysm_song_number = song_atthespeedoflight
 cataclysm_game_mode   = $00
 cataclysm_speed       = $01
 cataclysm_no_parallax  = 1
-cataclysm_bg_color    = $0F
-cataclysm_grnd_color  = $0F
+cataclysm_bg_color    = $02
+cataclysm_grnd_color  = $12
 
 bloodbath_song_number = song_atthespeedoflight2
 bloodbath_game_mode   = $00
