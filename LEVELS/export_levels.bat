@@ -45,6 +45,7 @@ SET all_levels= ^
     pgclubstep ^
     stalemate ^
     bloodbath ^
+    cataclysm ^
     luckydraw ^
     test4 ^
 

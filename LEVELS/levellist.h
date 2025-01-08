@@ -92,6 +92,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //pg clubstep
 	DECO1, //stalemate
 	DECOCLOUD, //bloodbath
+	DECO1, //cataclysm
 	DECOCLOUD, //lucky draw
 	EXTRASPRITES1,
 };
@@ -139,6 +140,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //pg clubstep
 	SPIKESA, //STALEMATE
 	SPIKESC, //bloodbath
+	SPIKESC, //cataclysm
 	SPIKESB, //lucky draw
 	SPIKESA, //test4
 };
@@ -186,6 +188,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //pg clubstep
 	BLOCKSB, //stalemate
 	BLOCKSB, //bloodbath
+	BLOCKSB, //cataclysm
 	BLOCKSB, //lucky draw
 	BLOCKSB, //test4
 };
@@ -233,6 +236,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //stalemate
 	SAWBLADESA, //bloodbath
+	SAWBLADESA, //cataclysm
 	LETTERBANK, //lucky draw
 	SAWBLADESA, //test4
 };
@@ -281,6 +285,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //pg clubstep
     DEMON, //stalemate
     DEMON, //bloodbath
+    DEMON, //cataclysm
     DEMON, //lucky draw
     DEMON,
 };
@@ -328,6 +333,7 @@ const unsigned char stars_list[] = {
 	10, //pg clubstep
 	10, //stalemate
 	10, //bloodbath
+	10, //cataclysm
 	10, // lucky draw
 	0,
 };

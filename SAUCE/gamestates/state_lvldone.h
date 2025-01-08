@@ -1164,6 +1164,7 @@ const unsigned char* const leveltexts[] = {
   NULL,  
   NULL,  
   NULL,  
+  NULL,  
   NULL
 };
 const unsigned char* const leveltexts2[] = {
@@ -1209,6 +1210,7 @@ const unsigned char* const leveltexts2[] = {
   levelpgclubtext2,
   levelstalemate2,
   levelbloodbath2,
+  levelcataclysm2,
   level10text2, 
   level14text2,
 };
@@ -1249,6 +1251,7 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 //	0,
+	0,
 	0,
 	0,
 	0,
@@ -1303,6 +1306,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelpgclubtext2) - 1,
 	sizeof(levelstalemate2) - 1,
 	sizeof(levelbloodbath2) - 1,
+	sizeof(levelcataclysm2) - 1,
 	sizeof(level10text2) - 1,
 	sizeof(level14text2) - 1,
 };
