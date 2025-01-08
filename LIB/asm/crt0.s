@@ -118,16 +118,7 @@ noMouse:			.res 1
 
     NES2_0_IDENTIFIER = %00001000
 
-    .byte 'N', 'E', 'S', $1A ; ID
-    .byte <PRG_BANK_COUNT
-    .byte <CHR_BANK_COUNT
-    .byte <(MIRRORING | (SRAM << 1) | (TRAINER << 2) | ((MAPPER & $00F) << 4))
-    .byte <((MAPPER & $0F0) | CONSOLE_TYPE | NES2_0_IDENTIFIER)
-    .byte <(((MAPPER & $F00) >> 8) | SUBMAPPER << 4)
-    .byte <(((PRG_BANK_COUNT & $F00) >> 8) | ((CHR_BANK_COUNT & $F00) >> 4))
-    .byte <(PRG_RAM_COUNT | (PRG_NVRAM_COUNT << 4))
-    .byte <(CHR_RAM_COUNT | (CHR_NVRAM_COUNT << 4))
-    .byte <CPU_PPU_TIMING, <HARDWARE_TYPE, <MISC_ROMS, <DEF_EXP_DEVICE
+    .byte $4E, $45, $53, $1A, $20, $20, $4A, $09, $00, $00, $70, $00, $02, $00, $00, $04
 
 .segment "STARTUP"
 
