@@ -44,10 +44,10 @@ const unsigned char OUTLINES[]={
 #define SPBH    0xFF
 
 uint8_t sprite_heights[]={
-	0x30,	0x30,	0x30,	0x30,	0x30,	0x12,	0x12,	0x10,	// 00 - 07
+	0x30,	0x30,	0x30,	0x30,	0x30,	0x12,	0x12,	SPBH,	// 00 - 07
 	0x28,	0x28,	0x03,	0x12,	0x03,	0x03,	0x03,	SPBH,	// 08 - 0F
 	0x0e,	0x0e,	0x0e,	0x0e,	0x20,	0x20,	0x20,	0x30,	// 10 - 17
-	0x30,	0x30,	0x10,	0x10,	SPBH,	SPBH,	SPBH,	0x12,	// 18 - 1F
+	0x30,	0x30,	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x12,	// 18 - 1F
 	0x20,	0x20,	0x30,	0x30,	0x30,	0x03,	0x03,	0x12,	// 20 - 27
 	0x12,	0x12,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 28 - 2F
 	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	DECO,	// 30 - 37
@@ -304,7 +304,7 @@ char sprite_load_special_behavior(){
 			if (coin1_timer) {
 				animate_coin_1();
 			}      
-			return 0x17;
+			return 0x10;
 
 		case COIN2:
 			if (coin2_obtained[level]) {
@@ -315,7 +315,7 @@ char sprite_load_special_behavior(){
 			if (coin2_timer) {
 				animate_coin_2();
 			}
-			return 0x17;
+			return 0x10;
 
 		case COIN3:
 			if (coin3_obtained[level]) {
@@ -326,7 +326,7 @@ char sprite_load_special_behavior(){
 			if (coin3_timer) {
 				animate_coin_3();
 			}
-			return 0x17; 
+			return 0x10; 
 
 		case LEVEL_END_TRIGGER:
 			gameState = 0x03; 
