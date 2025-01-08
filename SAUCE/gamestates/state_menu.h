@@ -1342,6 +1342,7 @@ void state_menu() {
 			one_vram_buffer(' ', tmp5);
 			one_vram_buffer(' ', addloNOC(tmp5, 1));
 		}
+		#if !__VS_SYSTEM
 		if (joypad1.press_select) {
 				tmp2 = 0;
 				gameState = 0;
@@ -1351,6 +1352,7 @@ void state_menu() {
 				ppu_wait_nmi();
 				return;
 		}
+		#endif
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
 		edit_irq_table(low_byte(tmp8), 2); 
 
