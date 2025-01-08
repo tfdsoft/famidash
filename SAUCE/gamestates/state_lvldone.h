@@ -359,8 +359,8 @@ void state_lvldone() {
 				}
 			}
 
-			if (joypad1.press_left) { menuselection ^= 1; lvl_done_update(); }
-			if (joypad1.press_right) { menuselection ^= 1; lvl_done_update(); }
+			//if (joypad1.press_left) { menuselection ^= 1; lvl_done_update(); }
+			//if (joypad1.press_right) { menuselection ^= 1; lvl_done_update(); }
 			if (joypad1.press_start || joypad1.press_a){
 				if (menuselection) {
 					
