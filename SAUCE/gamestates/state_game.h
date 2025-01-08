@@ -281,7 +281,7 @@ void state_game(){
 			}
 
 
-
+			#if !__VS_SYSTEM	// No pause in arcade
 			if (joypad1.press_start || mouse.right_press) {
 				joypad1.press = 0;
 				mouse.right_press = 0;
@@ -365,6 +365,7 @@ void state_game(){
 				else if (kandokidshack3 == 20) kandodebugmode ^= 1;
 				else kandokidshack3 = 0;
 			}
+			#endif	// No pause in arcade
 //		if (options & debugtoggle) {
 			if (joypad1.press_select) //THE BIG DEBUG - DISABLE BEFORE RELEASE
 				{ 
@@ -374,13 +375,13 @@ void state_game(){
 					if (!DEBUG_MODE) nocamlock = 0;
 				}		
 //		}
-
+		#if !__VS_SYSTEM	 //no practice in arcade
 		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press))) {
 			curr_practice_point--;
 			if (curr_practice_point >= practice_point_count)
 				curr_practice_point = practice_point_count - 1;
 		}
-		
+  		#endif	//no practice in arcade
 		if ((controllingplayer->press_b) && practice_point_count && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
 
 		if (joypad1.press_right && DEBUG_MODE && !(options & platformer)) {
@@ -582,7 +583,19 @@ void state_game(){
 		if (DEBUG_MODE) gray_line();
 		if (!DEBUG_MODE && kandodebugmode != 2) {
 		if (high_byte(player_x[0]) > 0x20) {
-			if (cube_data[0] & 1 || cube_data[1] & 1) reset_level();
+			if (cube_data[0] & 1 || cube_data[1] & 1) { 
+				reset_level();
+				#if __VS_SYSTEM
+					if (!coins_inserted) {
+						gameState = 1; 
+						sfx_play(sfx_exit_level,0);
+						music_update();
+						crossPRGBankJump0(gameboy_check);
+						pauseStatus = 0;
+						return;
+					}
+				#endif
+			}
 		} else cube_data[0] = cube_data[1] = 0;
 	}
 
