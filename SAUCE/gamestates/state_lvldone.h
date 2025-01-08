@@ -160,7 +160,7 @@ void state_lvldone() {
 	sfx_play(sfx_level_complete, 0);
 	menuselection = 1;
 	practice_point_count = 0;
-
+	coins_inserted--;
 	while (1) {
 		ppu_wait_nmi();
 		
