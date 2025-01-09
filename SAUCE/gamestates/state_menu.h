@@ -1680,7 +1680,7 @@ void clear_shit() {
 }
 
 void check_if_music_stopped() {
-		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[menu_music]); }
+		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[song]); }
 		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[menu_music]); }
 }	
 
