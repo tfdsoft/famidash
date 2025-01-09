@@ -2,10 +2,6 @@
 
 import pathlib, re
 
-tokenParser = re.compile(
-	r'^((?:[\t ]*#(?:(?P<control>ifdef[\t ]+\w+|if[\t ]+\w+|else|endif)|(?:define[\t ]+(?P<define>\w+)(?:|[\t ]+(?:|(?P<etcData>.*))))))?[\t ]*(?:\/\/(?P<comment>.*?))?$|(?P<emptyLine>\s))',
-	re.MULTILINE
-)
 # basic splitter into control and comment blocks
 basicSplit = re.compile(r'^(?P<padding>[\t ]*)(?:(?P<ctrl>#.*?)|(?P<noCtrl>))[\t ]*(?:\/\/(?P<comment>.*))?$', re.MULTILINE)
 # process control statements
@@ -32,6 +28,27 @@ expressionSplit = re.compile(
 	)) + ")"
 )
 expressionMatch = re.compile(r'(?:' + expressionSplit.pattern + ')+')
+
+def portExprToAsm(expr : str):
+	outString = ""
+	for i in re.finditer(expressionSplit, expr):
+		kind = i.lastgroup
+		val = i.group(kind)
+		if kind in ("dec", "opt", "opr", "brc", "pad"):	# no-mod tokens
+			outString += val
+		elif kind in ("hex", "bin", "tkn"):	# re-prefixed tokens
+			outString += {"hex" : "$", "bin" : "%", "tkn": "_"}[kind]
+			outString += val
+		elif kind == "oct":
+			# octal numerals are not supported in ca65,
+			# so convert them to decimal
+			outString += str(int(val, base=8))
+		elif kind in ("mod", "neq"):
+			# those tokens exist but with different symbols,
+			# so replace them
+			outString += {"mod" : ".mod", "neq" : "<>"}[kind]
+
+	return outString
 
 def convertCFileToS(filename : pathlib.Path, outfilename : pathlib.Path):
 	fileText = filename.read_text()
@@ -63,23 +80,7 @@ def convertCFileToS(filename : pathlib.Path, outfilename : pathlib.Path):
 				if match['stat'] == None:
 					outString += f"_{match['id']} = 1"
 				elif re.match(expressionMatch, match['stat']) != None:
-					outString += f"_{match['id']} = "
-					for i in re.finditer(expressionSplit, match['stat']):
-						kind = i.lastgroup
-						val = i.group(kind)
-						if kind in ("dec", "opt", "opr", "brc", "pad"):	# no-mod tokens
-							outString += val
-						elif kind in ("hex", "bin", "tkn"):	# re-prefixed tokens
-							outString += {"hex" : "$", "bin" : "%", "tkn": "_"}[kind]
-							outString += val
-						elif kind == "oct":
-							# octal numerals are not supported in ca65,
-							# so convert them to decimal
-							outString += str(int(val, base=8))
-						elif kind in ("mod", "neq"):
-							# those tokens exist but with different symbols,
-							# so replace them
-							outString += {"mod" : ".mod", "neq" : "<>"}[kind]
+					outString += f"_{match['id']} = {portExprToAsm(match['stat'])}"
 				else:
 					outString += f".define _{match['id']} {match['stat']}"
 			else:
