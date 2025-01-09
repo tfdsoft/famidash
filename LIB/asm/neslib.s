@@ -1718,9 +1718,6 @@ MouseBoundsMax:
 
 .popseg
 
-SLOPESA = 16
-luckydraw = $2B
-
 .import _spike_set, _block_set, _saw_set
 .import _no_parallax, _parallax_scroll_x, _level
 .export _set_tile_banks
@@ -1755,16 +1752,16 @@ luckydraw = $2B
 	lda _no_parallax
 	beq @asdf
 	lda _level
-	cmp #luckydraw
+	cmp #::_luckydraw
 	beq @slop
-	lda #SLOPESA
+	lda #::_SLOPESA
 ;	clc
 	adc CHRBANK_TEMP
 	jmp _mmc3_set_1kb_chr_bank_2
 	lda #1
 	beq @asdf
 @slop:
-	lda #SLOPESA
+	lda #::_SLOPESA
 	jmp _mmc3_set_1kb_chr_bank_2
 @asdf:
 	lda _parallax_scroll_x
