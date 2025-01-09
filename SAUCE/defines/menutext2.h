@@ -73,4 +73,5 @@ const unsigned char levelwoods2[]="THE WOODS";
 const unsigned char levelbloodbath2[]="BLOODBATH";
 const unsigned char levelbloodbathbutno2[]="BUT NO";
 const unsigned char levelcataclysm2[]="CATACLYSM";
+const unsigned char levelsunshine2[]="SUNSHINE";
 

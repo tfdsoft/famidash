@@ -74,6 +74,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //level easy
 	DECO1, //dreamer
 	DECOCLOUD, //kappaclysm
+	DECO1, //sunshine
 	DECO1, //revolution
 	DECO1, //lost in the woods
 	DECO1, //bloodbath but no
@@ -122,6 +123,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //level easy
 	SPIKESA, //dreamer
 	SPIKESC, //kappaclysm
+	SPIKESA, //sunshine
 	SPIKESA, //revolution
 	SPIKESA, //lost in the woods
 	SPIKESA, //bloodbath but no
@@ -170,6 +172,7 @@ const unsigned char block_set[] = {
 	BLOCKSA, //level easy
 	BLOCKSB, //dreamer
 	BLOCKSB, //kappaclysm
+	BLOCKSB, //sunshine
 	BLOCKSB, //revolution
 	BLOCKSB, //lost in the woods
 	BLOCKSB, //bloodbath but no
@@ -218,6 +221,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //level easy
 	SAWBLADESA, //dreamer
 	SAWBLADESA, //kappaclysm
+	SAWBLADESA, //sunshine
 	SAWBLADESA, //revolution
 	SAWBLADESA, //lost in the woods
 	SAWBLADESA, //bloodbath but no
@@ -267,6 +271,7 @@ const unsigned char difficulty_list[] = {
     NORMAL, //level easy
     HARD, //dreamer
     HARDER, //kappaclysm
+    HARDER, //sunshine
     HARDER, //revolution
     INSANE, //lost in the woods
     INSANE, //bloodbath but no
@@ -315,6 +320,7 @@ const unsigned char stars_list[] = {
 	3,   //level easy
 	4,   //dreamer
 	6,  //kappaclysm
+	7,  //sunshine
 	7,  //revolution
 	8,  //lost in the woods
 	8,  //bloodbath but no

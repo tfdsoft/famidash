@@ -28,6 +28,7 @@ SET all_levels= ^
     leveleasy ^
     dreamer ^
     kappaclysm ^
+    sunshine ^
     revolution ^
     lostinthewoods ^
     bloodbathbutno ^

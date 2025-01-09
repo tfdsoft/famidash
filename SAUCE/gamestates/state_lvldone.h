@@ -464,6 +464,7 @@ const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
 const unsigned char TEXT_2textstalemate[]="STALEMATE";
 const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
 const unsigned char TEXT_2textchaoz[]="CHAOZ$FANTASY";
+const unsigned char TEXT_2textjustright[]="JUST$RIGHT";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -533,6 +534,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	0,
 	0,
+	0,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -572,6 +574,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textstalemate,
 	TEXT_2textwoods,
 	TEXT_2textchaoz,
+	TEXT_2textjustright,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -611,6 +614,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textstalemate) - 1,
 	sizeof(TEXT_2textwoods) - 1,
 	sizeof(TEXT_2textchaoz) - 1,
+	sizeof(TEXT_2textjustright) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -646,6 +650,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_speed) - 1,	
 	0,
 	sizeof(TEXT_crackdown) - 1,	
+	0,
 	0,
 	0,
 	0,
@@ -689,6 +694,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_stalemate,
 	song_haunted_woods,
 	song_chaozfantasy,
+	song_just_right,
 };
 
 
@@ -1145,6 +1151,7 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
   NULL, 
+  NULL, 
   levelwoodstext,
   levelbloodbath2,
   levelprettyeasytext,
@@ -1192,6 +1199,7 @@ const unsigned char* const leveltexts2[] = {
   leveleasy2, 
   leveldreamer2,
   levelkappaclysm2, 
+  levelsunshine2, 
   levelrevolution2, 
   levelwoods2,
   levelbloodbathbutno2,
@@ -1242,6 +1250,7 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
+	0,
 	sizeof(levelwoodstext) - 1,
 	sizeof(levelbloodbath2) - 1,
 	sizeof(levelprettyeasytext) - 1,
@@ -1288,6 +1297,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(leveleasy2) - 1,
 	sizeof(leveldreamer2) - 1,
 	sizeof(levelkappaclysm2) - 1,
+	sizeof(levelsunshine2) - 1,
 	sizeof(levelrevolution2) - 1,
 	sizeof(levelwoods2) - 1,
 	sizeof(levelbloodbathbutno2) - 1,
