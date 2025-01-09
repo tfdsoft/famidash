@@ -1036,7 +1036,7 @@ void sprite_collide_lookup() {
 
 	spcl_orb_cmn:
 		ufo_orbed = 1;			
-		if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode >= GAMEMODE_SWING) {
+		if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) {
 			sprite_gamemode_main();
 		} else {
 			sprite_gamemode_controller_check();
