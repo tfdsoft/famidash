@@ -83,8 +83,8 @@ $(TMPDIR)/crt0.o: GRAPHICS/*.chr LIB/asm/*.s LEVELS/*.s METATILES/*.s METATILES/
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 	$(CA65) $(CA65_DEFINES) -l $(OUTDIR)/$(NAME).lst --cpu 6502X $(call ca65IncDir,LIB/asm) $(TMPDIR)/$(NAME).s -g 
 
-$(TMPDIR)/BUILD_FLAGS.s: BUILD_FLAGS.h defines_to_asm.py SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
-	$(PYTHON) defines_to_asm.py $(TMPDIR)/BUILD_FLAGS.s BUILD_FLAGS.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
+$(TMPDIR)/BUILD_FLAGS.s: BUILD_FLAGS.h defines_to_asm.py SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h SAUCE/defines/level_defines.h
+	$(PYTHON) defines_to_asm.py $(TMPDIR)/BUILD_FLAGS.s BUILD_FLAGS.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h SAUCE/defines/level_defines.h
 
 $(TMPDIR)/$(NAME).s: $(TMPDIR)/ SAUCE/$(NAME).c SAUCE/*.h SAUCE/gamestates/*.h SAUCE/gamemodes/*.h SAUCE/defines/*.h SAUCE/functions/*.h METATILES/metatiles.h LEVELS/*.h LIB/headers/*.h MUSIC/EXPORTS/*.h 
 	$(CC65) $(CC65_DEFINES) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) -E --add-source -o $(TMPDIR)/$(NAME).pp.c
