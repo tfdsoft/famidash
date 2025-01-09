@@ -9,6 +9,7 @@ DEL = del
 MKDIR = mkdir
 PYTHON = python
 CAT = type
+DS = \\
 else ifeq ($(OS),MSDOS)
 # MS-DOS
 # add "set OS=MSDOS" to autoexec
@@ -20,6 +21,7 @@ DEL = del
 MKDIR = mkdir
 PYTHON = python
 CAT = type
+DS = \\
 else
 # Ubuntu/Debian
 CC65 = cc65
@@ -29,6 +31,7 @@ DEL = rm
 MKDIR = mkdir
 PYTHON = python3
 CAT = cat
+DS = /
 endif
 
 define cc65IncDir
@@ -75,7 +78,7 @@ $(TMPDIR)/BUILD_FLAGS.s: BUILD_FLAGS.h defines_to_asm.py
 
 $(TMPDIR)/C_defines.s: SAUCE/defines/*_defines.h defines_to_asm.py
 	$(PYTHON) defines_to_asm.py SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h SAUCE/defines/level_defines.h
-	$(CAT) $(TMPDIR)/space_defines.s $(TMPDIR)/physics_defines.s $(TMPDIR)/level_defines.s > $(TMPDIR)/C_defines.s
+	$(CAT) $(TMPDIR)$(DS)space_defines.s $(TMPDIR)$(DS)physics_defines.s $(TMPDIR)$(DS)level_defines.s > $(TMPDIR)$(DS)C_defines.s
 
 $(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h SAUCE/gamestates/*.h SAUCE/gamemodes/*.h SAUCE/defines/*.h SAUCE/functions/*.h METATILES/metatiles.h LEVELS/*.h LIB/headers/*.h MUSIC/EXPORTS/*.h 
 	$(CC65) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) -E --add-source -o $(TMPDIR)/$(NAME).c
