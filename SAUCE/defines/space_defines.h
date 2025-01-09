@@ -15,4 +15,4 @@
 #define MAX_FIREBALLS 20
 #define MAX_PRACTICE_POINTS 8
 #define max_loaded_sprites 16
-#define SLOPESA 16
+#define MAX_LEVEL_COMPLETE 0x60
