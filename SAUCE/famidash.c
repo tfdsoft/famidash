@@ -194,5 +194,6 @@ void setdefaultoptions() {
 	viseffects = 1;
 	invisblocks = 0;
 	cam_seesaw = 0;
+	menu_music = song_menu_theme;
 	return;
 }

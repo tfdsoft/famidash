@@ -186,7 +186,7 @@ void levelselection() {
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
 
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(song_menu_theme);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[menu_music]);
 	menuMusicCurrentlyPlaying = 1;
 
 	ppu_on_all();
@@ -769,7 +769,7 @@ void state_menu() {
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(song_menu_theme);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[menu_music]);
 	menuMusicCurrentlyPlaying = 1;
 
 	settingvalue = 0;
@@ -1680,8 +1680,8 @@ void clear_shit() {
 }
 
 void check_if_music_stopped() {
-		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[song]); }
-		else if (famistudio_song_speed == 0x80) { music_play(song_menu_theme); }
+		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[menu_music]); }
+		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[menu_music]); }
 }	
 
 
