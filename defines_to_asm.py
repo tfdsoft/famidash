@@ -86,10 +86,10 @@ def convertCFileToS(filename : pathlib.Path, outfilename : pathlib.Path):
 			else:
 				outString += f"; NP : {di['ctrl']}"
 
-		if (di["comment"] != None):
+		if (di['comment'] != None):
 			if (len(outString)):
 				outString += " "
-			outString += f";{di["comment"]}"
+			outString += f";{di['comment']}"
 
 		outString += "\n"
 
