@@ -237,6 +237,13 @@ cataclysm_no_parallax  = 1
 cataclysm_bg_color    = $02
 cataclysm_grnd_color  = $12
 
+sunshine_song_number = song_just_right
+sunshine_game_mode   = $00
+sunshine_speed       = $00
+sunshine_no_parallax  = 1
+sunshine_bg_color    = $02
+sunshine_grnd_color  = $12
+
 bloodbath_song_number = song_atthespeedoflight2
 bloodbath_game_mode   = $00
 bloodbath_speed       = $00
