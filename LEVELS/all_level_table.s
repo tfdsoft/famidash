@@ -29,6 +29,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_dreamer)
 	.byte .lobyte(level_data_kappaclysm)
+	.byte .lobyte(level_data_sunshine)
 	.byte .lobyte(level_data_revolution)
 	.byte .lobyte(level_data_lostinthewoods)
 	.byte .lobyte(level_data_bloodbathbutno)
@@ -46,6 +47,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_bloodbath)
+	.byte .lobyte(level_data_cataclysm)
 	.byte .lobyte(level_data_luckydraw)
 	.byte .lobyte(level_data_test4)
 
@@ -74,6 +76,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_dreamer)
 	.byte .hibyte(level_data_kappaclysm)
+	.byte .hibyte(level_data_sunshine)
 	.byte .hibyte(level_data_revolution)
 	.byte .hibyte(level_data_lostinthewoods)
 	.byte .hibyte(level_data_bloodbathbutno)
@@ -91,6 +94,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_bloodbath)
+	.byte .hibyte(level_data_cataclysm)
 	.byte .hibyte(level_data_luckydraw)
 	.byte .hibyte(level_data_test4)
 
@@ -119,6 +123,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_dreamer))
 	.byte .lobyte(.bank(level_data_kappaclysm))
+	.byte .lobyte(.bank(level_data_sunshine))
 	.byte .lobyte(.bank(level_data_revolution))
 	.byte .lobyte(.bank(level_data_lostinthewoods))
 	.byte .lobyte(.bank(level_data_bloodbathbutno))
@@ -136,6 +141,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_bloodbath))
+	.byte .lobyte(.bank(level_data_cataclysm))
 	.byte .lobyte(.bank(level_data_luckydraw))
 	.byte .lobyte(.bank(level_data_test4))
 
@@ -176,6 +182,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_leveleasy)
 	.byte .lobyte(sprite_data_dreamer)
 	.byte .lobyte(sprite_data_kappaclysm)
+	.byte .lobyte(sprite_data_sunshine)
 	.byte .lobyte(sprite_data_revolution)
 	.byte .lobyte(sprite_data_lostinthewoods)
 	.byte .lobyte(sprite_data_bloodbathbutno)
@@ -193,6 +200,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_bloodbath)
+	.byte .lobyte(sprite_data_cataclysm)
 	.byte .lobyte(sprite_data_luckydraw)
 	.byte .lobyte(sprite_data_test4)
 
@@ -221,6 +229,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_leveleasy)
 	.byte .hibyte(sprite_data_dreamer)
 	.byte .hibyte(sprite_data_kappaclysm)
+	.byte .hibyte(sprite_data_sunshine)
 	.byte .hibyte(sprite_data_revolution)
 	.byte .hibyte(sprite_data_lostinthewoods)
 	.byte .hibyte(sprite_data_bloodbathbutno)
@@ -238,6 +247,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_bloodbath)
+	.byte .hibyte(sprite_data_cataclysm)
 	.byte .hibyte(sprite_data_luckydraw)
 	.byte .hibyte(sprite_data_test4)
 
@@ -266,6 +276,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_leveleasy))
 	.byte .lobyte(.bank(sprite_data_dreamer))
 	.byte .lobyte(.bank(sprite_data_kappaclysm))
+	.byte .lobyte(.bank(sprite_data_sunshine))
 	.byte .lobyte(.bank(sprite_data_revolution))
 	.byte .lobyte(.bank(sprite_data_lostinthewoods))
 	.byte .lobyte(.bank(sprite_data_bloodbathbutno))
@@ -283,6 +294,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
+	.byte .lobyte(.bank(sprite_data_cataclysm))
 	.byte .lobyte(.bank(sprite_data_luckydraw))
 	.byte .lobyte(.bank(sprite_data_test4))
 
@@ -314,6 +326,7 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($0000AC)		; dreamer
 	.byte .lobyte($000079)		; kappaclysm
+	.byte .lobyte($0000A5)		; sunshine
 	.byte .lobyte($0000BB)		; revolution
 	.byte .lobyte($000066)		; lostinthewoods
 	.byte .lobyte($000090)		; bloodbathbutno
@@ -331,6 +344,7 @@ _level_lengths_lo:
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($0000D5)		; bloodbath
+	.byte .lobyte($00007D)		; cataclysm
 	.byte .lobyte($000086)		; luckydraw
 	.byte .lobyte($000080)		; test4
 
@@ -361,6 +375,7 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($0000AC)		; dreamer
 	.byte .hibyte($000079)		; kappaclysm
+	.byte .hibyte($0000A5)		; sunshine
 	.byte .hibyte($0000BB)		; revolution
 	.byte .hibyte($000066)		; lostinthewoods
 	.byte .hibyte($000090)		; bloodbathbutno
@@ -378,6 +393,7 @@ _level_lengths_md:
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($0000D5)		; bloodbath
+	.byte .hibyte($00007D)		; cataclysm
 	.byte .hibyte($000086)		; luckydraw
 	.byte .hibyte($000080)		; test4
 
@@ -408,6 +424,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($0000AC)		; dreamer
 	.byte .bankbyte($000079)		; kappaclysm
+	.byte .bankbyte($0000A5)		; sunshine
 	.byte .bankbyte($0000BB)		; revolution
 	.byte .bankbyte($000066)		; lostinthewoods
 	.byte .bankbyte($000090)		; bloodbathbutno
@@ -425,6 +442,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($0000D5)		; bloodbath
+	.byte .bankbyte($00007D)		; cataclysm
 	.byte .bankbyte($000086)		; luckydraw
 	.byte .bankbyte($000080)		; test4
 

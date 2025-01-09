@@ -74,6 +74,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //level easy
 	DECO1, //dreamer
 	DECOCLOUD, //kappaclysm
+	DECO1, //sunshine
 	DECO1, //revolution
 	DECO1, //lost in the woods
 	DECO1, //bloodbath but no
@@ -92,6 +93,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //pg clubstep
 	DECO1, //stalemate
 	DECOCLOUD, //bloodbath
+	DECO1, //cataclysm
 	DECOCLOUD, //lucky draw
 	EXTRASPRITES1,
 };
@@ -121,6 +123,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //level easy
 	SPIKESA, //dreamer
 	SPIKESC, //kappaclysm
+	SPIKESA, //sunshine
 	SPIKESA, //revolution
 	SPIKESA, //lost in the woods
 	SPIKESA, //bloodbath but no
@@ -139,6 +142,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //pg clubstep
 	SPIKESA, //STALEMATE
 	SPIKESC, //bloodbath
+	SPIKESC, //cataclysm
 	SPIKESB, //lucky draw
 	SPIKESA, //test4
 };
@@ -168,6 +172,7 @@ const unsigned char block_set[] = {
 	BLOCKSA, //level easy
 	BLOCKSB, //dreamer
 	BLOCKSB, //kappaclysm
+	BLOCKSB, //sunshine
 	BLOCKSB, //revolution
 	BLOCKSB, //lost in the woods
 	BLOCKSB, //bloodbath but no
@@ -186,6 +191,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //pg clubstep
 	BLOCKSB, //stalemate
 	BLOCKSB, //bloodbath
+	BLOCKSB, //cataclysm
 	BLOCKSB, //lucky draw
 	BLOCKSB, //test4
 };
@@ -215,6 +221,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //level easy
 	SAWBLADESA, //dreamer
 	SAWBLADESA, //kappaclysm
+	SAWBLADESA, //sunshine
 	SAWBLADESA, //revolution
 	SAWBLADESA, //lost in the woods
 	SAWBLADESA, //bloodbath but no
@@ -233,6 +240,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //stalemate
 	SAWBLADESA, //bloodbath
+	SAWBLADESA, //cataclysm
 	LETTERBANK, //lucky draw
 	SAWBLADESA, //test4
 };
@@ -263,6 +271,7 @@ const unsigned char difficulty_list[] = {
     NORMAL, //level easy
     HARD, //dreamer
     HARDER, //kappaclysm
+    HARDER, //sunshine
     HARDER, //revolution
     INSANE, //lost in the woods
     INSANE, //bloodbath but no
@@ -281,6 +290,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //pg clubstep
     DEMON, //stalemate
     DEMON, //bloodbath
+    DEMON, //cataclysm
     DEMON, //lucky draw
     DEMON,
 };
@@ -310,6 +320,7 @@ const unsigned char stars_list[] = {
 	3,   //level easy
 	4,   //dreamer
 	6,  //kappaclysm
+	7,  //sunshine
 	7,  //revolution
 	8,  //lost in the woods
 	8,  //bloodbath but no
@@ -328,6 +339,7 @@ const unsigned char stars_list[] = {
 	10, //pg clubstep
 	10, //stalemate
 	10, //bloodbath
+	10, //cataclysm
 	10, // lucky draw
 	0,
 };

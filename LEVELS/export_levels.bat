@@ -28,6 +28,7 @@ SET all_levels= ^
     leveleasy ^
     dreamer ^
     kappaclysm ^
+    sunshine ^
     revolution ^
     lostinthewoods ^
     bloodbathbutno ^
@@ -45,6 +46,7 @@ SET all_levels= ^
     pgclubstep ^
     stalemate ^
     bloodbath ^
+    cataclysm ^
     luckydraw ^
     test4 ^
 
