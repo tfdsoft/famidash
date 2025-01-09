@@ -18,7 +18,7 @@
 #define song_clubstep 17
 #define song_haunted_woods 18
 #define song_base_after_base 19
-#define song_menu_theme 20
+#define song_scheming_weasel 20
 #define song_stalemate 21
 #define song_just_right 22
 #define song_cycles 23
@@ -34,6 +34,6 @@
 #define song_dry_out 33
 #define song_jumper 34
 #define song_theory_of_everything 35
-#define song_scheming_weasel 36
+#define song_menu_theme 36
 #define song_problematic 37
 #define song_max 38
