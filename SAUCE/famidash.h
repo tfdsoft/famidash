@@ -177,6 +177,9 @@ extern uint8_t extceil;
 uint8_t exitingLevelSelect;
 uint8_t drawBarFlag;
 uint8_t exitPortalTimer;
+uint8_t menu_music;
+
+
 
 uint8_t jimsheatballalive[MAX_FIREBALLS]; //jims heatball shit
 uint16_t jimsheatballx[MAX_FIREBALLS]; //jims heatball shit
@@ -236,6 +239,7 @@ uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_trail_sprites_visible[9];
 //uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
+
 
 
 #define poweroffcheck SRAM_VALIDATE[3]
