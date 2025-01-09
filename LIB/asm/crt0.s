@@ -4,7 +4,6 @@
 ;REMOVED initlib
 ;this called the CONDES function
 .include "BUILD_FLAGS.s"
-.include "C_defines.s"
 
 .exportzp _VRAM_UPDATE := VRAM_UPDATE
 
