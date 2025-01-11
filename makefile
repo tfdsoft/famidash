@@ -163,12 +163,15 @@ $(TMPDIR)/crt0.o: GRAPHICS/*.chr LIB/asm/*.s LEVELS/include/lvlset_$(LEVELSET)/*
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 	$(CA65) $(CA65_DEFINES) -l $(OUTDIR)/$(NAME).lst --cpu 6502X $(call ca65IncDir,LIB/asm) $(TMPDIR)/$(NAME).s -g 
 
-$(TMPDIR)/BUILD_FLAGS.s: BUILD_FLAGS.h defines_to_asm.py LEVELS/include/lvlset_$(LEVELSET)/level_defines.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
-	$(PYTHON) defines_to_asm.py $(TMPDIR)/BUILD_FLAGS.s BUILD_FLAGS.h LEVELS/include/lvlset_$(LEVELSET)/level_defines.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
+$(TMPDIR)/BUILD_FLAGS.s: BUILD_FLAGS.h UTILS/defines_to_asm.py LEVELS/include/lvlset_$(LEVELSET)/level_defines.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
+	$(PYTHON) UTILS/defines_to_asm.py $(TMPDIR)/BUILD_FLAGS.s BUILD_FLAGS.h LEVELS/include/lvlset_$(LEVELSET)/level_defines.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
 
 $(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h SAUCE/*/*.h SAUCE/*/*.c SAUCE/*/*/*.h SAUCE/*/*/*.c METATILES/metatiles.h LEVELS/include/lvlset_$(LEVELSET)/*.h LIB/headers/*.h MUSIC/EXPORTS/lvlset_$(LEVELSET)/*.h 
 	$(CC65) $(CC65_DEFINES) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) $(call cc65IncDir,MUSIC/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,LEVELS/include/lvlset_$(LEVELSET)) -E --add-source -o $(TMPDIR)/$(NAME).pp.c
 	$(CC65) $(CC65_DEFINES) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) $(call cc65IncDir,MUSIC/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,LEVELS/include/lvlset_$(LEVELSET)) --add-source -o $(TMPDIR)/$(NAME).s
+
+SAUCE/defines/physics_table_defines.cmp.h: SAUCE/defines/physics_table_defines.txt UTILS/compileVarTables.py
+	$(PYTHON) UTILS/compileVarTables.py SAUCE/defines/physics_table_defines.txt
 
 $(TMPDIR)/$(NAME)_prg.bin $(TMPDIR)/$(NAME)_nsfprg.bin $(TMPDIR)/$(NAME)_meta.bin $(TMPDIR)/$(NAME)_hdr.bin: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0_nsf.o $(NSF_CFG)
 	$(LD65) -C $(NSF_CFG) -o $(TMPDIR)/$(NAME) $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0_nsf.o $(NAME).o nes.lib --dbgfile $(OUTDIR)/famidash_nsf.dbg

@@ -49,7 +49,7 @@ def readCfgFile (filename : pathlib.Path) -> dict:
 
 	return outdict
 
-ownPath = pathlib.Path(sys.path[0]).resolve()
+rootPath = pathlib.Path(sys.path[0]).parent.resolve()
 
 parser = argparse.ArgumentParser()
 filepathArgGroup = parser.add_mutually_exclusive_group()
@@ -106,7 +106,7 @@ if compare:
 			old[i[0]] = 0
 
 if args.entry_type == "bank":
-	cfgData = readCfgFile(ownPath / "CONFIG" / "mmc3.cfg")
+	cfgData = readCfgFile(rootPath / "CONFIG" / "mmc3.cfg")
 	cfg = {}
 	for segment in cfgData['SEGMENTS']:
 		cfg[segment] = cfgData['SEGMENTS'][segment]['load']
