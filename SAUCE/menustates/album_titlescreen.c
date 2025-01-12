@@ -21,9 +21,6 @@ const uint8_t menu_irq_table[];
 #include "defines/charmap/mainmenu_charmap.h"	// Set it for the further routine
 const char palsystem[] = "FOR PAL SYSTEMS";
 
-// TO BE REPLACE in physics update
-#define NTSC_SYS PEEK(0x00)
-
 void state_menu() {
 	oam_clear();
 
@@ -41,7 +38,7 @@ void state_menu() {
     vram_unrle(game_start_screen);
 
     // Tilemap 2
-	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
+	if (framerate) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 
 	// Tilemap 3
 	tmp4 = menuselection; ++tmp4;
