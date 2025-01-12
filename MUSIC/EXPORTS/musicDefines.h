@@ -18,7 +18,7 @@
 #define song_clubstep 17
 #define song_haunted_woods 18
 #define song_base_after_base 19
-#define song_scheming_weasel 20
+#define song_cant_let_go 20
 #define song_stalemate 21
 #define song_just_right 22
 #define song_cycles 23
@@ -27,8 +27,8 @@
 #define song_against_the_odds_redux 26
 #define song_stereo_madness_2 27
 #define song_stereo_madness 28
-#define song_cant_let_go 29
-#define song_xstep 30
+#define song_xstep 29
+#define song_scheming_weasel 30
 #define song_midnight 31
 #define song_retray 32
 #define song_dry_out 33
