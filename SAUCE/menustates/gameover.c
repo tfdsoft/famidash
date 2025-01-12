@@ -20,7 +20,7 @@ void state_gameover() {
 
 	ppu_on_all();
 
-	pal_fade_to(0,4);
+	pal_fade_in();
 
 	while (tmp5) {
 		ppu_wait_nmi();

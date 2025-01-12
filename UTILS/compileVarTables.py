@@ -119,7 +119,7 @@ def generateCTable(source : dict) -> str:
 	size = math.ceil(math.log2(max(numTable)) / 8) * 8
 	
 	if (size == 8):
-		return (comment + '\n' if comment else '') + f'const uint8_t {source['name']}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};'
+		return (comment + '\n' if comment else '') + f'const uint8_t {source["name"]}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};'
 	elif (size >= 16 and size <= 32):
 		outString = []
 		if comment:

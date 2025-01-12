@@ -68,7 +68,7 @@ void state_soundtest() {
 	menuMusicCurrentlyPlaying=0;
 	
 	ppu_on_all();
-	pal_fade_to(0,4);
+	pal_fade_in();
 	
 	while (1) {
 		//rand8();

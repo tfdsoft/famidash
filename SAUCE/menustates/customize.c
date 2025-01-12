@@ -66,7 +66,7 @@ void state_customize() {
 
 	ppu_on_all();
 
-	pal_fade_to(0,4);
+	pal_fade_in();
 
 	while (1) {
 		tmp3 = 0;
