@@ -4194,7 +4194,7 @@ vert_skip:
 .importzp _currplayer_mini, _currplayer_gravity, _currplayer_table_idx
 
 .export _update_currplayer_table_idx
-.proc currplayer_table_idx
+.proc _update_currplayer_table_idx
 	LDA	NTSC_MODE	; CURRENTLY INCORRECT, REQUIRES NEW INIT CODE
 	ASL
 	ORA	_currplayer_mini
