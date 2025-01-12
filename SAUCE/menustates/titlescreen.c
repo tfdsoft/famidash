@@ -83,8 +83,6 @@ const char palsystem[] = "FOR PAL SYSTEMS";
 #define coinCondition true
 #endif
 
-#define NTSC_SYS PEEK(0x00)
-
 // Routines start
 
 void state_menu() {
@@ -123,7 +121,7 @@ void state_menu() {
 	vram_unrle(game_start_screen);
 
 	// Tilemap 2
-	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
+	if (framerate) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 
 	// Tilemap 3
 	#if __VS_SYSTEM

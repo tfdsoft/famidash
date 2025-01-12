@@ -17,7 +17,7 @@
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
 	.export _oam_clear,_oam_clear_player,__oam_spr,__oam_meta_spr,__oam_meta_spr_disco, _oam_clear_two_players
 	;.export _oam_hide_rest,_oam_size,_bank_bg,_rand8
-	.export _ppu_wait_frame,_ppu_wait_nmi
+	.export _ppu_wait_nmi
 	.export __scroll,_split,_newrand
 	.export _bank_spr
 	.export __vram_read,__vram_write
@@ -236,8 +236,7 @@ nmi:
 
 	.endif
 
-	inc <FRAME_CNT1
-	inc <FRAME_CNT2
+	inc <FRAME_CNT
 
 	lda auto_fs_updates
 	beq :+
@@ -470,7 +469,7 @@ _ppu_mask:
 
 _ppu_system:
 
-	lda <NTSC_MODE
+	lda framerate
 	ldx #0
 	rts
 
@@ -781,44 +780,16 @@ __oam_meta_spr_disco:
 ;	rts
 
 
-
-;void __fastcall__ ppu_wait_frame();
-
-_ppu_wait_frame:
-
-	lda #1
-	sta <VRAM_UPDATE
-	lda <FRAME_CNT1
-
-@1:
-
-	cmp <FRAME_CNT1
-	beq @1
-	lda <NTSC_MODE
-	beq @3
-
-@2:
-
-	lda <FRAME_CNT2
-	cmp #5
-	beq @2
-
-@3:
-
-	rts
-
-
-
 ;void __fastcall__ ppu_wait_nmi();
 
 _ppu_wait_nmi:
 
 	lda #1
 	sta <VRAM_UPDATE
-	lda <FRAME_CNT1
+	lda <FRAME_CNT
 @1:
 
-	cmp <FRAME_CNT1
+	cmp <FRAME_CNT
 	beq @1
 	rts
 

@@ -62,7 +62,7 @@ def generateCArrayLine(source : dict, numTable : tuple[int], byteIdx : int, suff
 	if bytesEqual(numTable, byteIdx):
 		return f"#define {source['name']}{suffix} 0x{getByte(numTable[0], byteIdx):02X}"
 	else:
-		return f"const uint8_t {source['name']}{suffix}[] = {{{", ".join(f'0x{getByte(i, byteIdx):02X}' for i in numTable)}}};"
+		return f"const uint8_t {source['name']}{suffix}[] = {{{', '.join(f'0x{getByte(i, byteIdx):02X}' for i in numTable)}}};"
 
 def generateCArgumentDefine(source : dict, numTable : tuple[int], suffixes : tuple[str] | list[str], argument : str) -> str:
 	output = [f"__A__ = {argument}", '__asm__("tay")']

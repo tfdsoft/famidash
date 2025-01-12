@@ -30,6 +30,7 @@
     .export _exit,__STARTUP__:absolute=1
 	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
 	.export _PAL_BUF_RAW := PAL_BUF_RAW, _PAL_PTR := PAL_PTR
+	.export _framerate := framerate, _cpuRegion := cpuRegion
 	.import push0,popa,popax,_main
 
 ; Linker generated symbols
@@ -79,8 +80,7 @@ CTRL_PORT2	=$4017
 .segment "ZEROPAGE"
 
 NTSC_MODE: 			.res 1
-FRAME_CNT1: 		.res 1
-FRAME_CNT2: 		.res 1
+FRAME_CNT: 			.res 1
 VRAM_UPDATE: 		.res 1
 ; NAME_UPD_ADR: 		.res 2
 NAME_UPD_ENABLE: 	.res 1
@@ -134,6 +134,9 @@ VRAM_INDEX:			.res 1
 xargs:				.res 4
 noMouse:			.res 1
 
+framerate:			.res 1	;	0 = ~60Hz (NTSC), 1 = ~50Hz (PAL, Dendy)
+cpuRegion:			.res 1	;	0 = NTSC speed (also on Dendy), 1 = PAL speed
+
  
 ;
 ; NES 2.0 header
@@ -176,39 +179,18 @@ _exit:
     stx DMC_FREQ
     stx PPU_CTRL		;no NMI
 
-initPPU:
-    bit PPU_STATUS
-@1:
-    bit PPU_STATUS
-    bpl @1
-@2:
-    bit PPU_STATUS
-    bpl @2
+initPPU_first:		;
+    bit PPU_STATUS	;
+@1:					;	Wait out the first frame
+    bit PPU_STATUS	;
+    bpl @1			;__
 
-clearPalette:
-	lda #$3f
-	sta PPU_ADDR
-	stx PPU_ADDR
-	lda #$0f
-	ldx #$20
-@1:
-	sta PPU_DATA
-	dex
-	bne @1
+; We now have about 30,000 cycles to burn before the PPU stabilizes.
+; One thing we can do with this time is put RAM in a known state.
+; Here we fill it with $00, which matches what (say) a C compiler
+; expects for BSS.  Conveniently, X is still 0.
 
-clearVRAM:
-	txa
-	ldy #$20
-	sty PPU_ADDR
-	sta PPU_ADDR
-	ldy #$10
-@1:
-	sta PPU_DATA
-	inx
-	bne @1
-	dey
-	bne @1
-
+initRNG:
 	lda _donotresetrng
 	cmp #1
 	bne @setseed
@@ -223,7 +205,6 @@ clearVRAM:
 	lda RAND_SEED+4
 	sta aart_lz_buffer+4
 	jmp clearRAM
-	
 	
 @setseed:
 	lda $FC
@@ -275,6 +256,8 @@ clearRAM:
     inx
     bne @1
 
+    sta	framerate
+    sta	cpuRegion
 
 	lda aart_lz_buffer
 	sta RAND_SEED
@@ -290,11 +273,6 @@ clearRAM:
 	lda #1
 	sta _donotresetrng
 
-	lda #4
-	jsr _pal_bright
-	jsr _pal_clear
-	jsr _oam_clear
-
 	jsr initialize_mapper
 
     ; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
@@ -307,37 +285,7 @@ clearRAM:
 
 	; jsr	initlib	; removed. this called the CONDES function
 
-	lda #%10100000
-	sta <PPU_CTRL_VAR
-	sta PPU_CTRL		;enable NMI
-	lda #%00000110
-	sta <PPU_MASK_VAR
-
-waitSync3:
-	lda <FRAME_CNT1
-@1:
-	cmp <FRAME_CNT1
-	beq @1
-
-detectNTSC:
-	ldx #52				;blargg's code
-	ldy #24
-@1:
-	dex
-	bne @1
-	dey
-	bne @1
-
-	lda PPU_STATUS
-	and #$80
-	sta <NTSC_MODE
-
-	jsr _ppu_off
-
-	; lda #0
-	; ldx #0
-	; jsr _set_vram_update
-
+init_famistudio:
 	LDA #<-1			;   Do famistudio_init
     JSR _music_play		;__
     JSR	famistudio_music_stop
@@ -349,6 +297,56 @@ detectNTSC:
 	ldy #>sounds
 	jsr famistudio_sfx_init
 
+initPPU_second:
+@1:
+    bit PPU_STATUS
+    bpl @1
+
+clearPalette:
+	lda #$3f
+	sta PPU_ADDR
+	stx PPU_ADDR
+	lda #$0f
+	ldx #$20
+@1:
+	sta PPU_DATA
+	dex
+	bne @1
+
+clearVRAM:
+	txa
+	ldy #$20
+	sty PPU_ADDR
+	sta PPU_ADDR
+	ldy #$10
+@1:
+	sta PPU_DATA
+	inx
+	bne @1
+	dey
+	bne @1
+
+	lda #4
+	jsr _pal_bright
+	jsr _pal_clear
+	jsr _oam_clear
+
+	lda #%10100000
+	sta <PPU_CTRL_VAR
+	sta PPU_CTRL		;enable NMI
+	lda #%00000110
+	sta <PPU_MASK_VAR
+
+	jsr	getTVSystem	;__	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = unknown
+	cmp	#1			;	Set framerate to 1 if value > NTSC
+	rol	framerate	;__	(so PAL, Dendy and unknown)
+	and	#1			;	Set framerate to the last bit of the value
+	sta	cpuRegion	;__	(so 0 = NTSC / Dendy, 1 = PAL / unknown)
+	;__	As a result of the code above, an unknown region will behave like PAL
+
+	jsr _ppu_off
+
+finish:
 	lda #0
 	sta PPU_SCROLL
 	sta PPU_SCROLL
@@ -356,6 +354,8 @@ detectNTSC:
     cli
 
 	jmp _main			;no parameters
+ 
+	.include "get_tv_system.s"
 
 	.include "METATILES/metatiles.s"
 
