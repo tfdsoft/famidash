@@ -9,6 +9,10 @@ parseNum = lambda x : float(x) if "." in x else int(x, base=0)
 
 getByte = lambda x, y : (x >> (y * 8)) & 0xFF
 
+def bytesEqual(arr, idx : int) -> bool:
+	tmp = [getByte(i, idx) for i in arr]
+	return max(tmp) == min(tmp)
+
 NTSC_FRAMERATE = (236250000 / 11) / 4 / 89341.5
 PAL_FRAMERATE = (26601712.5) / 5 / 106392
 
@@ -35,8 +39,6 @@ def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> tu
 	bitCount = math.ceil(math.log2(abs(maxVal)) / 8) * 8
 	maxVal = 2 ** bitCount
 
-
-
 	if (num < 0):
 		ntscVal = maxVal - abs(ntscVal)
 		palVal = maxVal - abs(palVal)
@@ -51,22 +53,58 @@ def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> tu
 		)
 	)
 
+def generateCArrayLine(source : dict, numTable : tuple[int], byteIdx : int, suffix : str | None) -> str:
+	if suffix == None:
+		suffix = ""
+	else:
+		suffix = f"_{suffix}"
+
+	if bytesEqual(numTable, byteIdx):
+		return f"#define {source['name']}{suffix} 0x{getByte(numTable[0], byteIdx):02X}"
+	else:
+		return f"const uint8_t {source['name']}{suffix}[] = {{{", ".join(f'0x{getByte(i, byteIdx):02X}' for i in numTable)}}};"
+
+def generateCArgumentDefine(source : dict, numTable : tuple[int], suffixes : tuple[str] | list[str], argument : str) -> str:
+	output = [f"__A__ = {argument}", '__asm__("tay")']
+	size = len(suffixes) * 8
+	suffixes = [f"_{i}" for i in suffixes]
+	equalBytes = [bytesEqual(numTable, i) for i in range(size // 8)]
+	arg = [r'%b' if i else r'%v, y' for i in equalBytes]
+	val = [f'{source["name"]}{suffix}' for suffix in suffixes]
+	if size > 16:
+		if size > 24:
+			# Load value into sreg+1
+			output.append(f'__asm__("ldx {arg[3]}", {val[3]})')
+		else:
+			# Load zero into sreg+1
+			output.append(f'__asm__("ldx #0")')
+		output.append(f'__asm__("lda {arg[2]}", {val[2]})')
+		output.append(f'__EAX__ <<= 16')
+
+	output.append(f'__asm__("ldx {arg[1]} \\n lda {arg[0]}", {val[1]}, {val[0]})')
+	output.append('__EAX__' if size > 16 else '__AX__')
+	output = f'( \\\n\t{", \\\n\t".join(output)} \\\n)'
+	return output
 
 def generateCTable(source : dict) -> str:
-	comment = ""
+	comment = None
+	argument = "table_idx"
 	if source['flags'] == 'g':
 		value = generateCNumArray(parseNum(source['value']), source)
 		numTable = value[0]
 		comment = "// Depends on gravity"
+		argument = "gravity"
 	elif source['flags'] == 'm':
 		values = [parseNum(i) for i in source['value'].split()]
 		values = [generateCNumArray(i, source, max(values)) for i in values]
 		numTable = (values[0][0][0], values[1][0][0])
 		comment = "// Depends on mini"
+		argument = "mini"
 	elif source['flags'] == 'r' or source['flags'] == 'R':
 		value = generateCNumArray(parseNum(source['value']), source)
 		numTable = (value[0][0], value[1][0])
 		comment = "// Depends on framerate"
+		argument = "framerate"
 	elif 'm' in source['flags']:
 		values = [parseNum(i) for i in source['value'].split()]
 		values = [generateCNumArray(i, source, max(values)) for i in values]
@@ -78,20 +116,29 @@ def generateCTable(source : dict) -> str:
 	size = math.ceil(math.log2(max(numTable)) / 8) * 8
 	
 	if (size == 8):
-		return (comment + '\n' if len(comment) else '') + f'uint8_t {source['name']}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};\n'
-	elif (size == 16):
-		outString = comment + '\n' if len(comment) else ''
-		outString += f'uint8_t {source['name']}_lo[] = {{{", ".join(f"0x{getByte(i, 0):02X}" for i in numTable)}}};\n'
-		outString += f'uint8_t {source['name']}_hi[] = {{{", ".join(f"0x{getByte(i, 1):02X}" for i in numTable)}}};\n'
-		return outString
-	elif (size == 24 or size == 32):
-		outString = comment + '\n' if len(comment) else ''
-		outString += f'uint8_t {source['name']}_lo[] = {{{", ".join(f"0x{getByte(i, 0):02X}" for i in numTable)}}};\n'
-		outString += f'uint8_t {source['name']}_md[] = {{{", ".join(f"0x{getByte(i, 1):02X}" for i in numTable)}}};\n'
-		outString += f'uint8_t {source['name']}_hi[] = {{{", ".join(f"0x{getByte(i, 2):02X}" for i in numTable)}}};\n'
-		if (size == 32):
-			outString += f'uint8_t {source['name']}_ex[] = {{{", ".join(f"0x{getByte(i, 3):02X}" for i in numTable)}}};\n'
-		return outString
+		return (comment + '\n' if comment else '') + f'const uint8_t {source['name']}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};'
+	elif (size >= 16 and size <= 32):
+		outString = []
+		if comment:
+			outString.append(comment)
+
+		match(size):
+			case 16:
+				suffixes = ['lo', 'hi']
+			case 24:
+				suffixes = ['lo', 'md', 'hi']
+			case 32:
+				suffixes = ['lo', 'md', 'hi', 'ex']
+
+		for byte, suffix in enumerate(suffixes):
+			outString.append(generateCArrayLine(source, numTable, byte, suffix))
+		
+		if any([bytesEqual(numTable, i) for i in range(size // 8)]):
+			outString.append(f'#define {source["name"]}({argument}) {generateCArgumentDefine(source, numTable, suffixes, argument)}')
+		else:
+			outString.append(f'#define {source["name"]}({argument}) (lohi_arr{size}_load({source["name"]}, {argument}))')
+
+		return "\n".join(outString)
 	print(f"Table integer size {size} is invalid! Full table: {numTable}, happened with {source}")
 
 	return f""
@@ -114,4 +161,4 @@ if __name__ == "__main__":
 		for line in re.finditer(lineParseRegex, realFilename.read_text()):
 			outString.append(generateCTable(line.groupdict()))
 
-		outFilename.write_text("\n".join(outString))
+		outFilename.write_text("\n\n".join(outString))
