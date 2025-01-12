@@ -30,7 +30,7 @@
     .export _exit,__STARTUP__:absolute=1
 	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
 	.export _PAL_BUF_RAW := PAL_BUF_RAW, _PAL_PTR := PAL_PTR
-	.export _framerate := framerate, _cpuRegion := cpuRegion
+	.export _framerate := framerate, _cpuRegion := cpuRegion, _fullRegion := fullRegion
 	.import push0,popa,popax,_main
 
 ; Linker generated symbols
@@ -79,7 +79,6 @@ CTRL_PORT2	=$4017
 
 .segment "ZEROPAGE"
 
-NTSC_MODE: 			.res 1
 FRAME_CNT: 			.res 1
 VRAM_UPDATE: 		.res 1
 ; NAME_UPD_ADR: 		.res 2
@@ -134,9 +133,9 @@ VRAM_INDEX:			.res 1
 xargs:				.res 4
 noMouse:			.res 1
 
-framerate:			.res 1	;	0 = ~60Hz (NTSC), 1 = ~50Hz (PAL, Dendy)
-cpuRegion:			.res 1	;	0 = NTSC speed (also on Dendy), 1 = PAL speed
-
+framerate:			.res 1	;	1 = ~60Hz (NTSC), 0 = ~50Hz (PAL, Dendy)
+cpuRegion:			.res 1	;	1 = NTSC speed (also on Dendy), 0 = PAL speed
+fullRegion:			.res 1	;	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = WTF
  
 ;
 ; NES 2.0 header
@@ -285,17 +284,6 @@ clearRAM:
 
 	; jsr	initlib	; removed. this called the CONDES function
 
-init_famistudio:
-	LDA #<-1			;   Do famistudio_init
-    JSR _music_play		;__
-    JSR	famistudio_music_stop
-
-    LDA #<.bank(sounds)
-    JSR mmc3_tmp_prg_bank_1
-    
-	ldx #<sounds
-	ldy #>sounds
-	jsr famistudio_sfx_init
 
 initPPU_second:
 @1:
@@ -337,14 +325,27 @@ clearVRAM:
 	lda #%00000110
 	sta <PPU_MASK_VAR
 
-	jsr	getTVSystem	;__	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = unknown
-	cmp	#1			;	Set framerate to 1 if value > NTSC
-	rol	framerate	;__	(so PAL, Dendy and unknown)
+	jsr	getTVSystem	;	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = unknown
+	sta	fullRegion	;__
+	eor	#3			;__ 0 = unknown, 1 = Dendy, 2 = PAL, 3 = NTSC
+	cmp	#3			;	Set framerate to 1 if value <= NTSC
+	rol	framerate	;__	(so 50Hz systems - PAL, Dendy and unknown get 0)
 	and	#1			;	Set framerate to the last bit of the value
-	sta	cpuRegion	;__	(so 0 = NTSC / Dendy, 1 = PAL / unknown)
+	sta	cpuRegion	;__	(so 1 = NTSC / Dendy, 0 = PAL / unknown)
 	;__	As a result of the code above, an unknown region will behave like PAL
 
 	jsr _ppu_off
+
+init_famistudio:
+	LDA #<-1			;   Do famistudio_init
+    JSR _music_play		;__
+
+    LDA #<.bank(sounds)
+    JSR mmc3_tmp_prg_bank_1
+    
+	ldx #<sounds
+	ldy #>sounds
+	jsr famistudio_sfx_init
 
 finish:
 	lda #0

@@ -1623,12 +1623,11 @@ famistudio_music_play:
 ;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
 .if 0   ;*  ORIGINAL BEGIN
     lda famistudio_pal_adjust
-    beq @pal
 .endif  ;*  ORIGINAL END
 ;*  MODIFIED
     lda framerate
-    bne @pal
 ;!!! FAMISTUDIO DRIVER MODIFICATION END
+    beq @pal
     iny
     iny
 @pal:
@@ -1659,12 +1658,11 @@ famistudio_music_play:
 ;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
 .if 0   ;*  ORIGINAL BEGIN
     ldx famistudio_pal_adjust
-    bne @ntsc_target
 .endif  ;*  ORIGINAL END
 ;*  MODIFIED
     ldx framerate
-    beq @ntsc_target
 ;!!! FAMISTUDIO DRIVER MODIFICATION END
+    bne @ntsc_target
     ora #1
     @ntsc_target:
 .elseif FAMISTUDIO_CFG_PAL_SUPPORT ; PAL only

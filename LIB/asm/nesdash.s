@@ -1830,7 +1830,6 @@ found_bank:
 			TAY
 		.endif
         LDA cpuRegion
-        EOR	#1
         JSR famistudio_init
 	:
 
@@ -3249,7 +3248,7 @@ SSDPCM_amphi:
     ; A = Sample
 	tay
 	ldx	cpuRegion
-	beq :+
+	bne :+
 		clc
 		adc #(SampleRate_PAL-SampleRate_NTSC)
 	:

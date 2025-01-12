@@ -16,7 +16,7 @@ def bytesEqual(arr, idx : int) -> bool:
 NTSC_FRAMERATE = (236250000 / 11) / 4 / 89341.5
 PAL_FRAMERATE = (26601712.5) / 5 / 106392
 
-def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> tuple:
+def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> list:
 	if not maxNum:
 		maxNum = num
 
@@ -43,15 +43,16 @@ def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> tu
 		ntscVal = maxVal - abs(ntscVal)
 		palVal = maxVal - abs(palVal)
 
-	return (
-		(
-			round(ntscVal),
-			round((maxVal - ntscVal) if 'g' in source['flags'] else ntscVal),
-		), (
+	return [
+		[
 			round(palVal),
 			round((maxVal - palVal) if 'g' in source['flags'] else palVal),
-		)
-	)
+		],
+		[
+			round(ntscVal),
+			round((maxVal - ntscVal) if 'g' in source['flags'] else ntscVal),
+		]
+	]
 
 def generateCArrayLine(source : dict, numTable : tuple[int], byteIdx : int, suffix : str | None) -> str:
 	if suffix == None:
@@ -83,7 +84,9 @@ def generateCArgumentDefine(source : dict, numTable : tuple[int], suffixes : tup
 
 	output.append(f'__asm__("ldx {arg[1]} \\n lda {arg[0]}", {val[1]}, {val[0]})')
 	output.append('__EAX__' if size > 16 else '__AX__')
-	output = f'( \\\n\t{", \\\n\t".join(output)} \\\n)'
+	output = [f'\t{i}' for i in output]
+	mlsp = '\\\n'
+	output = f'( {mlsp}{f", {mlsp}".join(output)} {mlsp})'
 	return output
 
 def generateCTable(source : dict) -> str:
