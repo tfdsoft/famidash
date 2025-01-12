@@ -125,6 +125,12 @@ uint8_t * level_data;
 #pragma zpsym("level_data")
 
 
+extern uint8_t framerate;
+extern uint8_t cpuRegion;
+
+#pragma zpsym ("framerate")
+#pragma zpsym ("cpuRegion")
+
 // SRAM
 #pragma bss-name("SRAM")
 uint8_t SRAM_VALIDATE[4];

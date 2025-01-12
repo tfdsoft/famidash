@@ -3,7 +3,7 @@
 ; THIS VERSION OF THE FAMISTUDIO DRIVER HAS BEEN MODIFIED TO INCLUDE SFX BANKSWITCHING AND ALTERED PAL SUPPORT.
 ;
 ; that is all, have a nice day
-; - usersniper
+; - usersniper, alexmush, studsX
 ;======================================================================================================================
 
 
@@ -1620,13 +1620,14 @@ famistudio_music_play:
     bne @set_channels
 
 .if FAMISTUDIO_USE_FAMITRACKER_TEMPO
-    lda famistudio_pal_adjust
 ;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
 .if 0   ;*  ORIGINAL BEGIN
+    lda famistudio_pal_adjust
     beq @pal
 .endif  ;*  ORIGINAL END
 ;*  MODIFIED
-    ;beq @pal
+    lda framerate
+    bne @pal
 ;!!! FAMISTUDIO DRIVER MODIFICATION END
     iny
     iny
@@ -1655,8 +1656,15 @@ famistudio_music_play:
     iny
     lda (@song_list_ptr),y
 .if FAMISTUDIO_DUAL_SUPPORT ; Dual mode
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+.if 0   ;*  ORIGINAL BEGIN
     ldx famistudio_pal_adjust
     bne @ntsc_target
+.endif  ;*  ORIGINAL END
+;*  MODIFIED
+    ldx framerate
+    beq @ntsc_target
+;!!! FAMISTUDIO DRIVER MODIFICATION END
     ora #1
     @ntsc_target:
 .elseif FAMISTUDIO_CFG_PAL_SUPPORT ; PAL only

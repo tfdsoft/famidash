@@ -107,7 +107,7 @@ _clear_vram_buffer:
 	
 ;uint8_t __fastcall__ get_frame_count();	
 _get_frame_count:
-	lda <FRAME_CNT1
+	lda <FRAME_CNT
 	ldx #0
 	rts
 	
@@ -832,7 +832,7 @@ _gray_line:
 	
 ;void seed_rng();
 _seed_rng:
-	lda <FRAME_CNT1
+	lda <FRAME_CNT
 	sta <RAND_SEED
 	rts
 	

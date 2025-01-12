@@ -50,10 +50,6 @@ void __fastcall__ pal_bright(uint8_t bright);
 
 void __fastcall__ ppu_wait_nmi();
 
-//wait virtual frame, it is always 50hz, frame-to-frame in PAL, frameskip in NTSC
-//don't use this one
-void __fastcall__ ppu_wait_frame();
-
 //turn off rendering, nmi still enabled when rendering is disabled
 
 void __fastcall__ ppu_off();
