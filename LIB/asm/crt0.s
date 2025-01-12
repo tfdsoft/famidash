@@ -340,6 +340,7 @@ detectNTSC:
 
 	LDA #<-1			;   Do famistudio_init
     JSR _music_play		;__
+    JSR	famistudio_music_stop
 
     LDA #<.bank(sounds)
     JSR mmc3_tmp_prg_bank_1

@@ -20,7 +20,6 @@ void state_sorrynothing() {
     pal_bright(4);
     while (1) {
         ppu_wait_nmi();
-        music_update();
 
         if (joypad1.b) {
             set_scroll_x(0);

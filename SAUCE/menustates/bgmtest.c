@@ -27,7 +27,7 @@ void state_soundtest() {
 
 	ppu_on_all();
 	
-	pal_fade_to(0,4);
+	pal_fade_in();
 	
 	while (1) {
 		

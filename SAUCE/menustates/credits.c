@@ -69,7 +69,7 @@ void state_credits(){
 	ppu_on_all();
 	ppu_wait_nmi();
 
-	pal_fade_to(0,4);
+	pal_fade_in();
 
 	/*	Incomplete code for reproducing what is being screamed into the Famicom microphone
 	(He forgor about the PCM bit)

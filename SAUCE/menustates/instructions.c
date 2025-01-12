@@ -18,7 +18,7 @@ void state_instructions(){
 
 	ppu_on_all();
 
-	pal_fade_to(0,4);
+	pal_fade_in();
 
 	do {
 		oam_clear();

@@ -213,7 +213,7 @@ void state_menu() {
 	set_scroll_x(0);
 	set_scroll_y(0);
  	ppu_on_all();
-	pal_fade_to(0,4);
+	pal_fade_in();
 
 	roll_new_mode();
 

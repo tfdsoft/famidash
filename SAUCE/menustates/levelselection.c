@@ -73,7 +73,7 @@ void state_levelselect() {
 
 	ppu_on_all();
 
-	pal_fade_to(0,4);
+	pal_fade_in();
 
 	while (1){
 		loop_routine_update();

@@ -182,6 +182,10 @@ void __fastcall__ _famistudio_sfx_clear_channel(unsigned int args);
 							__asm__("STX %v", high))
 
 extern uint8_t auto_fs_updates;
+#define nmi_fs_updates_on() (++auto_fs_updates)
+#define nmi_fs_updates_off() (auto_fs_updates = 0)
+#define pal_fade_out() (pal_fade_to(4, 0))
+#define pal_fade_in() (pal_fade_to(0, 4))
 
 // set palette color, index 0..31
 // completely inlines and replaces neslib's

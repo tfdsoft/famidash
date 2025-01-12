@@ -34,7 +34,7 @@ void state_savefile_validate(){
 
         ppu_on_all();
 
-        pal_fade_to(0,4);
+        pal_fade_in();
 
 
         do {
