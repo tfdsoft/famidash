@@ -38,7 +38,7 @@ void state_menu() {
     vram_unrle(game_start_screen);
 
     // Tilemap 2
-	if (framerate) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
+	if (fullRegion == 1) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 
 	// Tilemap 3
 	tmp4 = menuselection; ++tmp4;
