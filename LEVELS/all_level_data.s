@@ -383,19 +383,19 @@
 		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3314
 
 
-.segment "LVL_BANK_15"	; Total bank size: 8005 bytes
-	.export level_data_xstep
-	level_data_xstep:
+.segment "LVL_BANK_15"	; Total bank size: 8057 bytes
+	.export level_data_foresttemple
+	level_data_foresttemple:
 	; Header
-		.byte xstep_song_number
-		.byte xstep_game_mode
-		.byte xstep_speed
-		.byte xstep_no_parallax
-		.byte xstep_bg_color
-		.byte xstep_grnd_color
-		.byte 27	; height of xstep
+		.byte foresttemple_song_number
+		.byte foresttemple_game_mode
+		.byte foresttemple_speed
+		.byte foresttemple_no_parallax
+		.byte foresttemple_bg_color
+		.byte foresttemple_grnd_color
+		.byte 27	; height of foresttemple
 	; Level data
-		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4336
+		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4388
 
 	.export level_data_dreamer
 	level_data_dreamer:
@@ -411,19 +411,19 @@
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3669
 
 
-.segment "LVL_BANK_16"	; Total bank size: 7968 bytes
-	.export level_data_foresttemple
-	level_data_foresttemple:
+.segment "LVL_BANK_16"	; Total bank size: 7990 bytes
+	.export level_data_xstep
+	level_data_xstep:
 	; Header
-		.byte foresttemple_song_number
-		.byte foresttemple_game_mode
-		.byte foresttemple_speed
-		.byte foresttemple_no_parallax
-		.byte foresttemple_bg_color
-		.byte foresttemple_grnd_color
-		.byte 27	; height of foresttemple
+		.byte xstep_song_number
+		.byte xstep_game_mode
+		.byte xstep_speed
+		.byte xstep_no_parallax
+		.byte xstep_bg_color
+		.byte xstep_grnd_color
+		.byte 27	; height of xstep
 	; Level data
-		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4314
+		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4336
 
 	.export level_data_aprettyeasylevel
 	level_data_aprettyeasylevel:
