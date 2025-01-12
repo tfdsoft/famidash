@@ -160,6 +160,11 @@ void _display_attempt_counter (uint32_t args);
 void __fastcall__ _famistudio_sfx_clear_channel(unsigned int args);
 #define famistudio_sfx_clear_channel(channel) (__A__ = channel, __AX__ <<= 8, _famistudio_sfx_clear_channel(__AX__))
 
+/**
+ * @brief Updates currplayer_table_idx from other currplayer variables
+ */
+void _update_currplayer_table_idx();
+
 #define low_word(a) *((uint16_t*)&a)
 #define high_word(a) *((uint16_t*)&a+1)
 
