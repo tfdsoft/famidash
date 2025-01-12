@@ -4188,6 +4188,22 @@ vert_skip:
 .endproc
 
 
+; void _update_currplayer_table_idx();
+.segment "CODE"
+
+.importzp _currplayer_mini, _currplayer_gravity, _currplayer_table_idx
+
+.export _update_currplayer_table_idx
+.proc currplayer_table_idx
+	LDA	NTSC_MODE	; CURRENTLY INCORRECT, REQUIRES NEW INIT CODE
+	ASL
+	ORA	_currplayer_mini
+	BIT	_currplayer_gravity	;	Put gravity into Carry
+	ROL						;__	and shift it in
+	STA	_currplayer_table_idx
+	RTS
+.endproc
+
 ; void set_tile_banks();
 ; 
 ;	if (!no_parallax) {
