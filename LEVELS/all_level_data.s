@@ -17,7 +17,7 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8143
 
 
-.segment "LVL_BANK_02"	; Total bank size: 8086 bytes
+.segment "LVL_BANK_02"	; Total bank size: 8072 bytes
 	.export level_data_deathmoon
 	level_data_deathmoon:
 	; Header
@@ -29,7 +29,7 @@
 		.byte deathmoon_grnd_color
 		.byte 57	; height of deathmoon
 	; Level data
-		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8086
+		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8072
 
 
 .segment "LVL_BANK_03"	; Total bank size: 8114 bytes
@@ -320,7 +320,7 @@
 		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3024
 
 
-.segment "LVL_BANK_12"	; Total bank size: 8190 bytes
+.segment "LVL_BANK_12"	; Total bank size: 8191 bytes
 	.export level_data_problematic
 	level_data_problematic:
 	; Header
@@ -333,6 +333,11 @@
 		.byte 27	; height of problematic
 	; Level data
 		.incbin "EXPORTS/problematic.lz.bin" ; Size: 4889
+
+	.export level_data_deathmoon_0
+	level_data_deathmoon_0:
+	; Level data
+		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3302
 
 
 .segment "LVL_BANK_13"	; Total bank size: 8172 bytes
@@ -363,7 +368,7 @@
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8007 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8005 bytes
 	.export level_data_demonpark
 	level_data_demonpark:
 	; Header
@@ -376,11 +381,6 @@
 		.byte 27	; height of demonpark
 	; Level data
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4699
-
-	.export level_data_deathmoon_0
-	level_data_deathmoon_0:
-	; Level data
-		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3308
 
 
 .segment "LVL_BANK_15"	; Total bank size: 8057 bytes
@@ -510,7 +510,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
 
 
-.segment "LVL_BANK_1A"	; Total bank size: 8169 bytes
+.segment "LVL_BANK_1A"	; Total bank size: 8164 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header

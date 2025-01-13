@@ -4121,7 +4121,7 @@ sprite_data_clubstep:
   .byte $80,$38,$40,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1A"
+.segment "LVL_BANK_14"
 sprite_data_electrodynamix:
   .byte $00,$00,$60,$03,$99
   .byte $00,$00,$80,$03,$c9
@@ -11616,7 +11616,7 @@ sprite_data_decode:
   .byte $30,$35,$60,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_12"
+.segment "LVL_BANK_1A"
 sprite_data_supercycles:
   .byte $00,$00,$60,$03,$93
   .byte $00,$00,$80,$03,$d3
