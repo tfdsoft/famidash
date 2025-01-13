@@ -75,7 +75,7 @@
 		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
 
 
-.segment "LVL_BANK_05"	; Total bank size: 8180 bytes
+.segment "LVL_BANK_05"	; Total bank size: 8184 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -87,10 +87,10 @@
 		.byte cataclysm_grnd_color
 		.byte 27	; height of cataclysm
 	; Level data
-		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7069
+		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7048
 
 
-.segment "LVL_BANK_06"	; Total bank size: 8181 bytes
+.segment "LVL_BANK_06"	; Total bank size: 8146 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -568,7 +568,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
 
-.segment "LVL_BANK_1F"	; Total bank size: 8152 bytes
+.segment "LVL_BANK_1F"	; Total bank size: 8166 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -595,21 +595,8 @@
 	; Level data
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1852
 
-	.export level_data_thechallenge
-	level_data_thechallenge:
-	; Header
-		.byte thechallenge_song_number
-		.byte thechallenge_game_mode
-		.byte thechallenge_speed
-		.byte thechallenge_no_parallax
-		.byte thechallenge_bg_color
-		.byte thechallenge_grnd_color
-		.byte 57	; height of thechallenge
-	; Level data
-		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 937
 
-
-.segment "LVL_BANK_20"	; Total bank size: 8130 bytes
+.segment "LVL_BANK_20"	; Total bank size: 7814 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -650,7 +637,20 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "LVL_BANK_22"	; Total bank size: 4584 bytes
+.segment "LVL_BANK_22"	; Total bank size: 5311 bytes
+	.export level_data_thechallenge
+	level_data_thechallenge:
+	; Header
+		.byte thechallenge_song_number
+		.byte thechallenge_game_mode
+		.byte thechallenge_speed
+		.byte thechallenge_no_parallax
+		.byte thechallenge_bg_color
+		.byte thechallenge_grnd_color
+		.byte 57	; height of thechallenge
+	; Level data
+		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 937
+
 	.export level_data_eon_1
 	level_data_eon_1:
 	; Level data

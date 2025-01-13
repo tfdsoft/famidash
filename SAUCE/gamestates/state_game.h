@@ -367,7 +367,7 @@ void state_game(){
 			}
 			#endif	// No pause in arcade
 //		if (options & debugtoggle) {
-			if (joypad1.press_select) //THE BIG DEBUG - DISABLE BEFORE RELEASE
+			if (joypad1.press_select && practice_point_count == 0) //THE BIG DEBUG - DISABLE BEFORE RELEASE
 				{ 
 					DEBUG_MODE = !DEBUG_MODE; 
 					cube_data[0] &= 2; 
