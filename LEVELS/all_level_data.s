@@ -236,7 +236,7 @@
 		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5336
 
 
-.segment "LVL_BANK_0F"	; Total bank size: 8021 bytes
+.segment "LVL_BANK_0F"	; Total bank size: 8058 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -248,7 +248,7 @@
 		.byte stalemate_grnd_color
 		.byte 27	; height of stalemate
 	; Level data
-		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5180
+		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5217
 
 
 .segment "LVL_BANK_10"	; Total bank size: 8192 bytes
@@ -637,7 +637,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "LVL_BANK_22"	; Total bank size: 5311 bytes
+.segment "LVL_BANK_22"	; Total bank size: 5306 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
