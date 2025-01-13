@@ -1,21 +1,3 @@
-#define NINJABANK 94
-#define MOUSEBANK 96
-#define LETTERBANK 111
-#define MENUBANK 98
-#define MENUICONBANK 102
-#define LEVELCOMPLETEBANK 106
-#define PRACTICECOMPLETEBANK 110
-
-#define SPIKESA 0
-#define SPIKESB 2
-#define SPIKESC 4
-#define BLOCKSA 6
-#define BLOCKSB 8
-#define BLOCKSC 10
-#define BLOCKSD 12
-#define SAWBLADESA 14
-#define SLOPESA 16
-
 // game states
 #define MENU 0x01
 #define GAME 0x02
@@ -129,13 +111,13 @@ uint8_t * level_data;
 #pragma bss-name("SRAM")
 uint8_t SRAM_VALIDATE[4];
 
-uint8_t coin1_obtained[0x60];
-uint8_t coin2_obtained[0x60];
-uint8_t coin3_obtained[0x60];
+uint8_t coin1_obtained[MAX_LEVEL_COMPLETE];
+uint8_t coin2_obtained[MAX_LEVEL_COMPLETE];
+uint8_t coin3_obtained[MAX_LEVEL_COMPLETE];
 
-uint8_t LEVELCOMPLETE[0x60];
-uint8_t level_completeness_normal[0x60*2];
-#define level_completeness_practice (&level_completeness_normal[0x60])
+uint8_t LEVELCOMPLETE[MAX_LEVEL_COMPLETE];
+uint8_t level_completeness_normal[MAX_LEVEL_COMPLETE*2];
+#define level_completeness_practice (&level_completeness_normal[MAX_LEVEL_COMPLETE])
 uint8_t achievements[0x20];
 
 uint8_t invisible;
@@ -177,6 +159,9 @@ extern uint8_t extceil;
 uint8_t exitingLevelSelect;
 uint8_t drawBarFlag;
 uint8_t exitPortalTimer;
+uint8_t menu_music;
+
+
 
 uint8_t jimsheatballalive[MAX_FIREBALLS]; //jims heatball shit
 uint16_t jimsheatballx[MAX_FIREBALLS]; //jims heatball shit
@@ -236,6 +221,7 @@ uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_trail_sprites_visible[9];
 //uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
+
 
 
 #define poweroffcheck SRAM_VALIDATE[3]

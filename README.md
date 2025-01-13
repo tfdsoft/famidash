@@ -52,7 +52,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |ps_lol|icons|
 |notapotato|icons|
 |[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
-|[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels|
+|[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music|
 |[ElAngel378](https://github.com/ElAngel378)|music|
 
 

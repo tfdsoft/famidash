@@ -2100,8 +2100,8 @@ end:
 
 .segment "XCD_BANK_05"
 
-.define CUBE_GRAVITY $6B
-.define MINI_CUBE_GRAVITY $6F
+.define CUBE_GRAVITY ::_CUBE_GRAVITY
+.define MINI_CUBE_GRAVITY ::_MINI_CUBE_GRAVITY
 
 .import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y
 .import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _retro_mode, _icon, _gameState, _titleicon
@@ -3406,7 +3406,7 @@ SampleRate_PAL:
 
 .export _update_level_completeness
 .proc _update_level_completeness
-	levelsInTable = $40
+	levelsInTable = ::_MAX_LEVEL_COMPLETE
 
 	levelLengthLo = ptr1+0
 	levelLengthMd = ptr1+1
@@ -3873,7 +3873,7 @@ vert_skip:
 	LDA	_sprite_data_bank		;	Switch to the correct bank
 	JSR	mmc3_set_prg_bank_1		;__
 	
-	LDX	#16			;! THIS IS THE SPRITE SLOT COUNT, CHANGE AS NEEDED
+	LDX	#::_max_loaded_sprites
 	LDA	#$FF		;
 	clear_spritetype_loop:				;
 		STA	_activesprites_type-1,	X	;	Clear sprites to load them
@@ -3981,7 +3981,7 @@ vert_skip:
 	
 	DEY	; Y is 1
 	
-	LDX	#16			;! THIS IS THE SPRITE SLOT COUNT, CHANGE AS NEEDED
+	LDX	#::_max_loaded_sprites
 	loading_loop:
 		;__	Y is 0
 		LDA	(sprite_data),	y	;

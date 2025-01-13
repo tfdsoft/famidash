@@ -63,7 +63,7 @@ def get_split_point_in_rle_data(data : Iterable[int], split_point : int):
 			ptr += 2
 	return lastptr
 
-def split_rle_data_into_huffmunch_banks(data : Iterable[int], first_meta_ptr : int, compressed_banks_sizes : list[int]):
+def split_rle_data_into_compressed_banks(data : Iterable[int], first_meta_ptr : int, compressed_banks_sizes : list[int]):
 	out_data = []
 	meta_ptr = first_meta_ptr
 	idx = 0
@@ -79,16 +79,18 @@ def split_rle_data_into_huffmunch_banks(data : Iterable[int], first_meta_ptr : i
 			if bet_size >= len(data):
 				bet_data = data
 				og_size = len(data)
+				bet = min(math.floor((compressed_bank_size / og_size) * 100), 100)
 			else:
 				bet_data = data[0:get_split_point_in_rle_data(data, bet_size - 3)] + [0x7F, 0x7F, meta_ptr] # Meta seq
 				og_size = get_split_point_in_rle_data(data, bet_size - 3)
-			huff_data = aart_lz.compress(bet_data)
-			print(f"\t\tBet: {100-bet}%, Real size: {len(bet_data)} -> {len(huff_data)}, Real compression: {100-(len(huff_data) / len(bet_data) * 100) : .4}%")
-			if (len(huff_data) <= compressed_bank_size):
+			print(f"\t\tBet: {100-bet}%, Real size: {len(bet_data)} -> ", end = "", flush = True)
+			compressed_data = aart_lz.compress(bet_data)
+			print(f"{len(compressed_data)}, Real compression: {100-(len(compressed_data) / len(bet_data) * 100) : .4}%")
+			if (len(compressed_data) <= compressed_bank_size):
 				break
 			# AW DANGIT
-			bet += 5 # %
-		out_data.append(huff_data)
+			bet += 1 # %
+		out_data.append(compressed_data)
 		data = data[og_size:]
 		meta_ptr += 1
 	return out_data
@@ -111,8 +113,8 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			size_cache = json.load(file)
 	else:
 		size_cache = {}
+
 	for level in levels:
-		
 		lines = []
 		with open(folder / f"{level}_.csv") as f:
 			lines = list(csv.reader(f))
@@ -130,23 +132,25 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			level in size_cache and
 			cached_data_path.is_file() and
 			# Check that the cache is valid against the RLE data
+			"rle_size" in level_cache.keys() and
 			int(level_cache.get("rle_size")) == len(rle_data) and
 			level_cache.get("rle_hash") == sha256(bytes(rle_data)) and
-			# Check that the cache is valid against the huffmunch data
-			int(level_cache.get("huff_size")) == cached_data_path.stat().st_size
+			# Check that the cache is valid against the compressed data
+			"lz_size" in level_cache.keys() and
+			int(level_cache.get("lz_size")) == cached_data_path.stat().st_size
 		):
-			huff_data = cached_data_path.read_bytes()
-			if (level_cache.get("huff_hash") == sha256(huff_data)):
+			lz_data = cached_data_path.read_bytes()
+			if (level_cache.get("lz_hash") == sha256(lz_data)):
 				print(f'Loading cached level: {level}; ', end = "", flush = True)
 			else:
 				print(f'Loading level: {level}; ', end = "", flush = True)
-				huff_data = aart_lz.compress(rle_data)
-				cached_data_path.write_bytes(huff_data)
+				lz_data = aart_lz.compress(rle_data)
+				cached_data_path.write_bytes(lz_data)
 				level_cache = {}
 		else:
 			print(f'Loading level: {level}; ', end = "", flush = True)
-			huff_data = aart_lz.compress(rle_data)
-			cached_data_path.write_bytes(huff_data)
+			lz_data = aart_lz.compress(rle_data)
+			cached_data_path.write_bytes(lz_data)
 			level_cache = {}
 		header = [
 			f"{level}_song_number",
@@ -158,7 +162,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			f"{len(lines)}\t; height of {level}",
 		]
 		total_rle_size += len(header) + len(rle_data)
-		if (len(huff_data) >= 8192 - 7):
+		if (len(lz_data) >= 8192 - 7):
 			if (
 				# Check existence of split cache
 				level in size_cache and
@@ -183,7 +187,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 			else:
 				print("compressing in parts:")
 
-				split_data = split_rle_data_into_huffmunch_banks(rle_data, len(level_chunk_data), [8192-7, 8192])
+				split_data = split_rle_data_into_compressed_banks(rle_data, len(level_chunk_data), [8192-7, 8192])
 				split_files = [cached_data_path.with_suffix(f".{i}.bin") for i in range(len(split_data))]
 
 				[path.write_bytes(data) for path, data in zip(split_files, split_data)]
@@ -198,13 +202,13 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 
 			total_final_size += len(header)
 			for idx, dat in enumerate(split_data):
-				print(f"\tpart {idx}, rle + huffmunch size: {len(dat)}")
+				print(f"\tPart {idx}, RLE+LZ size: {len(dat)}")
 				total_final_size += len(dat)
 			
 			size_cache[level] = {
-				"rle_size": len(rle_data), "huff_size": len(huff_data),
+				"rle_size": len(rle_data), "lz_size": len(lz_data),
 				"rle_hash": hashlib.sha256(bytes(rle_data)).hexdigest(),
-				"huff_hash" : hashlib.sha256(bytes(huff_data)).hexdigest(),
+				"lz_hash" : hashlib.sha256(bytes(lz_data)).hexdigest(),
 				"split_count": len(split_data),
 				"split_huff_hashes": 
 					[hashlib.sha256(bytes(i)).hexdigest() for i in split_data],
@@ -212,24 +216,26 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str]) -> tuple:
 					[len(i) for i in split_data]
 			}
 		else:
-			level_data.append((level, len(header)+len(huff_data), header, cached_data_path))
+			level_data.append((level, len(header)+len(lz_data), header, cached_data_path))
 
-			print(f"RLE size: {len(rle_data)}; RLE+huffmunch size: {len(huff_data)}; compression rate: {100-(len(huff_data) / len(rle_data) * 100) : .4}%")
+			print(f"RLE size: {len(rle_data)}; RLE+LZ size: {len(lz_data)}; compression rate: {100-(len(lz_data) / len(rle_data) * 100) : .4}%")
 
-			total_final_size += len(header)+len(huff_data)
+			total_final_size += len(header)+len(lz_data)
 
 			size_cache[level] = {
-				"rle_size": len(rle_data), "huff_size": len(huff_data),
+				"rle_size": len(rle_data), "lz_size": len(lz_data),
 				"rle_hash": hashlib.sha256(bytes(rle_data)).hexdigest(),
-				"huff_hash" : hashlib.sha256(bytes(huff_data)).hexdigest()
+				"lz_hash" : hashlib.sha256(bytes(lz_data)).hexdigest()
 			}
 	
+
+
 	print("")
 	print("============ TOTAL LEVEL COMPRESSION STATS ============")
-	print(f"Total RLE (+ header) size:           {total_rle_size}")
-	print(f"Total RLE+huffmunch (+ header) size: {total_final_size}")
-	print(f"Bytes shaved off:                    {total_rle_size - total_final_size}")
-	print(f"Effective compression rate:         {100-(total_final_size / total_rle_size * 100) : .6}%")
+	print(f"Total RLE (+ header) size:    {total_rle_size}")
+	print(f"Total RLE+LZ (+ header) size: {total_final_size}")
+	print(f"Bytes shaved off:             {total_rle_size - total_final_size}")
+	print(f"Effective compression rate:  {100-(total_final_size / total_rle_size * 100) : .6}%")
 	print("============ TOTAL LEVEL COMPRESSION STATS ============")
 	print("")
 
