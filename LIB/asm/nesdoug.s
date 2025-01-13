@@ -17,7 +17,6 @@
 ;void set_vram_buffer()
 _set_vram_buffer:
 	ldx #$ff
-	stx VRAM_BUF
 	stx <NAME_UPD_ENABLE
 	inx ;x=0
 	stx VRAM_INDEX
@@ -36,48 +35,24 @@ __multi_vram_buffer_horz:
 	; sreg = data
 	
 	pha
-	ldy	buf_instIdx
-	bit buf_curSeqMode
-	bcc _multi_vram_buffer_loadAddrInst
-	
-	lda	#<setSeqHorz
-	sta	INST_BUF, y
-	lda	#>setSeqHorz
-	bcs	_multi_vram_buffer_common	; = BRA, since we BCC'd earlier
+	jsr set_horz_vbuf_seq
+	bne	_multi_vram_buffer_common	; = BRA
 
 ;void multi_vram_buffer_vert(void * data, uint8_t len, uint16_t ppu_address);
 __multi_vram_buffer_vert:
 	; AX = ppu_address
 	; xargs[0] = len
 	; sreg = data
-	
+		
 	pha
-	ldy	buf_instIdx
-	bit buf_curSeqMode
-	bcs _multi_vram_buffer_loadAddrInst
-	
-	lda	#<setSeqVert
-	sta	INST_BUF, y
-	lda	#>setSeqVert
-	bcc	_multi_vram_buffer_common	; = BRA, since we BCC'd earlier
-
-
-_multi_vram_buffer_loadAddrInst:
-	lda	#<loadAddr
-	sta	INST_BUF, y
-	lda	#>loadAddr
+	jsr set_vert_vbuf_seq
 
 _multi_vram_buffer_common:
-	iny
-	sta	INST_BUF, y
-	iny
-	lda	#<updSeqNormal
-	iny
-	sta	INST_BUF, y
-	lda	#>updSeqNormal
-	iny
-	sta	INST_BUF, y
-	sty	buf_instIdx
+	lda	#<(fl_updSeqNormal-1)
+	sta	INST_BUF+2, y
+	lda	#>(fl_updSeqNormal-1)
+	sta	INST_BUF+3, y
+	jsr	update_vbuf_inst_ptr
 	
 	; AX = ppu_address
 	; xargs[0] = len
@@ -90,9 +65,8 @@ _multi_vram_buffer_common:
 	lda xargs+0
 	sta VRAM_BUF+2, y
 	tay
-	
-	;need y for source, x is for dest and for vram_index
-	ldx VRAM_INDEX
+
+	ldx	VRAM_INDEX
 	inx
 	inx
 	inx
@@ -119,20 +93,20 @@ __one_vram_buffer:
 	lda sreg
 	sta VRAM_BUF, y
 	iny
-	lda #$ff ;=NT_UPD_EOF
-	sta VRAM_BUF, y
 	sty VRAM_INDEX
-	rts
-	
-	
+	jsr set_curr_vbuf_seq	;__	Add the instruction
+	lda	#<(fl_updSingle-1)
+	sta	INST_BUF+2, y
+	lda	#>(fl_updSingle-1)
+	sta	INST_BUF+3, y
+	jmp	update_vbuf_inst_ptr
 	
 	
 ;void clear_vram_buffer();	
 _clear_vram_buffer:
 	lda #0
 	sta VRAM_INDEX
-	lda #$ff
-	sta VRAM_BUF
+	sta	buf_instIdx
 	rts
 	
 	

@@ -67,8 +67,7 @@ nmi:
 	lda <NAME_UPD_ENABLE
 	beq @checkPal
 	; don't run palette switches on the same frame that we flush vram to save time
-	lda VRAM_BUF
-	cmp #$ff
+	lda	buf_instIdx
 	beq @checkPal
 		jsr _flush_vram_update2
 		jmp @skipUpd
@@ -1219,34 +1218,41 @@ _flush_vram_update:
 
 _flush_vram_update2: ;major changes
 
+	ldy	buf_instIdx			;
+	lda	#<(fl_updFinish-1)	;
+	sta	INST_BUF, y			;	Ensure the routine ends up exiting
+	lda	#>(fl_updFinish-1)	;
+	sta	INST_BUF+1, y		;__
+
 	ldy #0
+	sty	buf_instIdx
+	sty	VRAM_INDEX
 
 	lda #>VRAM_BUF
 	sta	NAME_UPD_PTR+1
 
 	tsx
 	stx SP_TEMP
-	ldx	#<INST_BUF
+	ldx	#<INST_BUF-1
 	txs
 	
 	rts	; ropslide to routine
 
-setSeqHorz:
-	lda	<PPU_CTRL_VAR
-	and #<~$04
-
-	jmp	setSeqFin
-
-setSeqVert:
+fl_setSeqVert:
 	lda	<PPU_CTRL_VAR
 	ora	#$04
+	bne	fl_setSeqFin
+
+fl_setSeqHorz:
+	lda	<PPU_CTRL_VAR
+	and #<~$04
 	
-setSeqFin:
+fl_setSeqFin:
 	sta	PPU_CTRL
 	
 	;passthru to loadAddr
 
-loadAddr:
+fl_loadAddr:
 	lda VRAM_BUF,y
 	iny
 	sta PPU_ADDR
@@ -1254,14 +1260,14 @@ loadAddr:
 	iny
 	sta PPU_ADDR
 	lda VRAM_BUF,y
-	iny
-	rts
+	rts	; ropslide to next routine
 
-updSingle:
+fl_updSingle:
+	iny
 	sta PPU_DATA
 	rts	; ropslide to next routine
 
-updSeqNormal:
+fl_updSeqNormal:
 	sty	NAME_UPD_PTR
 	tax
 	tay
@@ -1271,14 +1277,15 @@ updSeqNormal:
 		dey
 		bne @loop
 	txa
-	clc
+	sec
 	adc	NAME_UPD_PTR
 	tay
 	lda	#0
 	sta	NAME_UPD_PTR
 	rts	; ropslide to next routine
 
-updSeqRepeat:
+fl_updSeqRepeat:
+	iny
 	tax
 	lda	VRAM_BUF,y
 	iny
@@ -1288,15 +1295,13 @@ updSeqRepeat:
 		bne	@loop
 	rts
 
-updFinish:
+fl_updFinish:
 	ldx SP_TEMP
 	txs
-	lda	#<updFinish
-	sta	INST_BUF
-	lda	#>updFinish
-	sta	INST_BUF+1
 	lda	<PPU_CTRL_VAR
 	sta PPU_CTRL
+
+
 	rts
 
 

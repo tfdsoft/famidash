@@ -182,29 +182,45 @@ shiftBy4table:
 
 .segment "CODE_2"
 
-.export __one_vram_buffer_repeat
+; exports down below
 .proc __one_vram_buffer_repeat
 	; ax = ppu_address
 	; sreg[0] = data
 	; sreg[1] = len
+	horz:
+		pha
+		jsr	set_horz_vbuf_seq
+		bne	common	; = BRA
+
+	vert:
+		pha
+		jsr	set_vert_vbuf_seq
+
+	common:
+		lda	#<(fl_updSeqRepeat-1)
+		sta	INST_BUF+2, y
+		lda	#>(fl_updSeqRepeat-1)
+		sta	INST_BUF+3, y
+		jsr	update_vbuf_inst_ptr
+
 	ldy VRAM_INDEX
+	pla
 	sta VRAM_BUF+1, y
 	txa
 	sta VRAM_BUF+0, y
 	; ptr1 lo byte is len, hi byte is character to repeat
 	lda sreg+1
-	ora #$80 ; set length + repeat byte
 	sta VRAM_BUF+2, y
 	lda sreg+0
 	sta VRAM_BUF+3, y
-	lda #$ff ;=NT_UPD_EOF
-	sta VRAM_BUF+4, y
 	tya
 	clc
 	adc #4
 	sta VRAM_INDEX
 	rts
 .endproc
+.export __one_vram_buffer_horz_repeat := __one_vram_buffer_repeat::horz
+.export __one_vram_buffer_vert_repeat := __one_vram_buffer_repeat::vert
 
 ; void __fastcall__ init_rld(uint8_t level);
 .segment "CODE"
@@ -826,10 +842,7 @@ write_start:
 	TYA
 	AND #$0F
 	ASL         ;__
-	LDY drawing_frame
-	BEQ :+
-		ORA #$01    ;   000xxxx1 - the right tiles of the metatiles
-	:
+	ORA drawing_frame    ;   000xxxx1 - the right tiles of the metatiles
 	STA VRAM_BUF+TileOff0+1,X
 	STA VRAM_BUF+TileOff1+1,X
 
@@ -882,7 +895,6 @@ write_start:
 	; No need to do anything for the screen, as it always increments
 
 	LDA drawing_frame
-	AND #1
 	beq @LeftWrite2
 		JSR right_tilewriteloop
 		BMI @RenderParallax	; The loop keeps looping via a BPL, therefore a BMI = BRA
@@ -1661,7 +1673,7 @@ ntAddrHiTbl:
 .endif
 
 ; void __fastcall__ draw_padded_text(const void * data, uint8_t len, uint8_t total_len, uintptr_t ppu_address)
-.segment "CODE_2"
+.segment "CODE"
 
 .export __draw_padded_text
 .proc __draw_padded_text
@@ -1682,32 +1694,21 @@ ntAddrHiTbl:
 	LDA total_len		;	total length
 	STA VRAM_BUF+2, Y	;__
 
+	LDX VRAM_INDEX
+
 	SEC					;	Total padding
 	SBC len				;__
 	LSR					;	Get left offset
 	STA tmp1			;__
 	ADC #$00			;	Get right offset
 	TAY					;__
-
-	LDA total_len
-	ADC	VRAM_INDEX		;	Carry is guaranteed to be clear by LSR : ADC #$00
-	; If carry is still set, we have big problems
-	; BCS some shit to do
-	TAX
-	ADC #$03
-	STA VRAM_INDEX
-
-	LDA #$FF			;	Finish off the write
-	STA VRAM_BUF+3, X	;__
-
-	CPY #$00	; Had to do this, very sorry
-	BEQ main_data
+	BEQ main_data		;__	If none, skip padding
 
 	LDA #spaceChr
 
 	pad_loop_right:
-		STA VRAM_BUF+2, X
-		DEX
+		STA VRAM_BUF+3, X
+		INX
 		DEY
 		BNE pad_loop_right
 		
@@ -1716,9 +1717,9 @@ ntAddrHiTbl:
 		DEY
 
 	main_data_loop:
-		LDA (<data), Y
-		STA VRAM_BUF+2, X
-		DEX
+		LDA (data), Y
+		STA VRAM_BUF+3, X
+		INX
 		DEY
 		BPL main_data_loop
 
@@ -1728,15 +1729,34 @@ ntAddrHiTbl:
 	LDA #spaceChr
 
 	pad_loop_left:
-		STA VRAM_BUF+2, X
-		DEX
+		STA VRAM_BUF+3, X
+		INX
 		DEY
 		BNE pad_loop_left
 
 	fin:
-		RTS
-
+		INX
+		INX
+		INX
+		STX	VRAM_INDEX
+	
+	instBuf:
+		JMP	endRoutineVbufHorzSeq
 .endproc
+
+
+; [asm-only function]
+.segment "CODE"
+
+.proc endRoutineVbufHorzSeq
+	JSR	set_horz_vbuf_seq
+	LDA	#<(fl_updSeqNormal-1)
+	STA	INST_BUF+2, y
+	LDA	#>(fl_updSeqNormal-1)
+	STA	INST_BUF+3, y
+	JMP	update_vbuf_inst_ptr
+.endproc
+
 
 ; void movement();
 .segment _MOVEMENT_BANK
@@ -1747,29 +1767,24 @@ ntAddrHiTbl:
 
 .export _movement
 .proc _movement
-	LDX _gamemode
-	CPX #<gamemode_count
-	BCS end
+	LDX _gamemode			;	If gamemode is invalid,
+	CPX #<gamemode_count	;	don't do anything to the stack
+	BCS end					;__	and just return
 	lda _retro_mode
-	beq @no1
-	lda _gamemode
-	cmp #1
-	bne	@no1
-		; LDA #<_ufo_movement
-		; STA <PTR
-		; LDA #>_ufo_movement
-		; STA <PTR+1
-		; JMP (PTR)	
-		JMP _ufo_movement
+	beq normal
+		lda _gamemode		;
+		cmp #1				;	If anything but a ship in retro mode,
+		bne	normal			;	use UFO movement
+		JMP _ufo_movement	;__
 	
-	@no1:
+	normal:
 		LDA jump_table_hi, X
 		PHA
 		LDA jump_table_lo, X
 		PHA
 
 	end:
-		RTS     ; break or use the RTS trick
+		RTS     ;__	return or use the RTS trick
 
 	jump_table_lo:
 		.byte <(_cube_movement-1), <(_ship_movement-1), <(_ball_movement-1), <(_ufo_movement-1), <(_cube_movement-1), <(_spider_movement-1), <(_wave_movement-1), <(_ball_movement-1), <(_cube_movement-1)
@@ -3591,17 +3606,15 @@ SSDPCM_getbyte:
 		STA VRAM_BUF+2, Y	;__
 		CLC					;
 		ADC VRAM_INDEX		;	Update VRAM index
-		ADC #3				;__
-		PHA					;
-		TAY					;
-		LDA #$FF			;	Mark section as taken
-		STA VRAM_BUF, Y		;__
+		ADC #4				;
+		STA	VRAM_INDEX		;__
 
 		LDA value			;
 		LDX value+1			;	Convert to decimal
 		JSR _hexToDec		;__
 
 		LDY VRAM_INDEX
+		DEY
 
 		LDX digits
 		DEX
@@ -3611,8 +3624,8 @@ SSDPCM_getbyte:
 		LDA hexToDecOutputBuffer, X
 		BNE numberStart
 		LDA spaceChr
-		STA VRAM_BUF+3, Y
-		INY
+		STA VRAM_BUF, Y
+		DEY
 		DEX
 		BNE spaceLoop
 
@@ -3622,19 +3635,15 @@ SSDPCM_getbyte:
 	numberStart:
 		CLC
 		ADC zeroChr
-		STA VRAM_BUF+3, Y
-		INY
+		STA VRAM_BUF, Y
+		DEY
 		DEX
 		BPL numberLoop
 
 	end:
-		PLA
-		STA VRAM_INDEX
-		RTS
-
+		JMP endRoutineVbufHorzSeq
 .endproc
 
-.segment "CODE_2"
 
 ; void update_level_completeness();
 .segment "CODE_2"
@@ -3905,7 +3914,6 @@ SSDPCM_getbyte:
 		sty	tmp1
 
 		txa					;
-		ora	#$40			;	NT_UPD_HORZ
 		ldx	VRAM_INDEX		;
 		sta	VRAM_BUF+0,	x	;	Calculate the vram address of the leftmost digit
 		pla					;	and store in the buffer
@@ -3917,23 +3925,22 @@ SSDPCM_getbyte:
 		sta	VRAM_BUF+2,	x	;__
 
 		clc
+		adc	VRAM_INDEX
+		adc	#4
+		sta	VRAM_INDEX
+		tax
+		dex
 	vram_write_main:
 		lda	_attemptCounter-1, y
 		; clc should not be needed as the writes SHOULD NOT overflow
 		adc	zeroChr
-		sta	VRAM_BUF+3,	x
-		inx
+		sta	VRAM_BUF,	x
+		dex
 		dey
 		bne vram_write_main
 
 	vram_write_finish:
-		lda	#$FF
-		sta	VRAM_BUF+3,	x
-		txa
-		clc
-		adc	#3
-		sta	VRAM_INDEX
-		rts
+		jmp	endRoutineVbufHorzSeq
 
 	use_one_vram_buffer:
 		lda	_attemptCounter+0
@@ -4306,6 +4313,65 @@ vert_skip:
 	ROL							;__	A = -----fmg;	C = 0
 	STA	_currplayer_table_idx	;__	Store the result
 	RTS
+.endproc
+
+
+; [asm only]
+.segment "CODE"
+
+; Clobbers A, Y
+; Returns: current INST_BUF position in Y, Z flag always clear
+.proc set_vbuf_seq
+	; Entrypoint A: horizontal sequence
+	horizontal:
+		ldy	buf_instIdx
+		bit buf_curSeqMode
+		bcc current
+		
+			lda	#<(fl_setSeqHorz-1)
+			sta	INST_BUF+0, y
+			lda	#>(fl_setSeqHorz-1)
+			bcs	common	; = BRA, since we BCC'd earlier
+
+	; Entrypoint B: vertical sequence
+	vertical:
+		pha
+		ldy	buf_instIdx
+		bit buf_curSeqMode
+		bcs current
+	
+			lda	#<(fl_setSeqVert-1)
+			sta	INST_BUF+0, y
+			lda	#>(fl_setSeqVert-1)
+			bcc	common	; = BRA, since we BCC'd earlier
+
+	loadAddr:
+		ldy	buf_instIdx
+	current:
+		lda	#<(fl_loadAddr-1)
+		sta	INST_BUF+0, y
+		lda	#>(fl_loadAddr-1)
+
+	common:
+		sta	INST_BUF+1, y
+	rts
+
+	::set_horz_vbuf_seq := horizontal
+	::set_vert_vbuf_seq := vertical
+	::set_curr_vbuf_seq := loadAddr
+.endproc
+
+
+; [asm only]
+.segment "CODE"
+
+.proc update_vbuf_inst_ptr
+	; A: old buf_instIdx
+	tya
+	clc
+	adc	#$04
+	sta	buf_instIdx
+	rts
 .endproc
 
 ; void set_tile_banks();

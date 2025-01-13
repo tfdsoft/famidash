@@ -36,13 +36,14 @@ void __fastcall__ _oam_meta_spr_flipped(uint32_t args);
 /**
  * @brief Repeat a single tile horizontally.
  */
-#define one_vram_buffer_horz_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _one_vram_buffer_repeat(__EAX__))
+#define one_vram_buffer_horz_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __AX__ = ppu_address, _one_vram_buffer_horz_repeat(__EAX__))
 /**
  * @brief Repeat a single tile vertically.
  */
-#define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __AX__ = ppu_address|(NT_UPD_VERT<<8) _one_vram_buffer_repeat(__EAX__))
+#define one_vram_buffer_vert_repeat(data, len, ppu_address) (storeBytesToSreg(data, len), __AX__ = ppu_address, _one_vram_buffer_vert_repeat(__EAX__))
 ///@}
-void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
+void __fastcall__ _one_vram_buffer_horz_repeat(uint32_t args);
+void __fastcall__ _one_vram_buffer_vert_repeat(uint32_t args);
 
 /**
  * @brief Draw a string, padded to be in the center of a block.
@@ -52,7 +53,7 @@ void __fastcall__ _one_vram_buffer_repeat(uint32_t args);
  * @param total_len The length of the block to center it in.
  * @param ppu_address The PPU address to put it at.
  */
-#define draw_padded_text(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text(__EAX__))
+#define draw_padded_text(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __AX__ = ppu_address, _draw_padded_text(__EAX__))
 //#define draw_padded_text2(data, len, total_len, ppu_address) (pxargs[0] = data, storeBytesToSreg(total_len, len), __AX__ = ppu_address|(NT_UPD_HORZ<<8), _draw_padded_text2(__EAX__))
 void __fastcall__ _draw_padded_text(uint32_t args);
 //void __fastcall__ _draw_padded_text2(uint32_t args);
