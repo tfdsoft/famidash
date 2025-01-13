@@ -1218,22 +1218,13 @@ _flush_vram_update:
 
 _flush_vram_update2: ;major changes
 
-	ldy	buf_instIdx			;
-	lda	#<(fl_updFinish-1)	;
-	sta	INST_BUF, y			;	Ensure the routine ends up exiting
-	lda	#>(fl_updFinish-1)	;
-	sta	INST_BUF+1, y		;__
-
 	ldy #0
 	sty	buf_instIdx
 	sty	VRAM_INDEX
 
-	lda #>VRAM_BUF
-	sta	NAME_UPD_PTR+1
-
 	tsx
 	stx SP_TEMP
-	ldx	#<INST_BUF-1
+	ldx	#<(INST_BUF-1)
 	txs
 	
 	rts	; ropslide to routine
@@ -1251,19 +1242,20 @@ fl_setSeqFin:
 	sta	PPU_CTRL
 	
 	;passthru to loadAddr
-
 fl_loadAddr:
-	lda VRAM_BUF,y
-	iny
+	pla
 	sta PPU_ADDR
-	lda VRAM_BUF,y
-	iny
+	pla
 	sta PPU_ADDR
-	lda VRAM_BUF,y
+	pla
 	rts	; ropslide to next routine
 
 fl_updSingle:
-	iny
+	pla
+	sta PPU_ADDR
+	pla
+	sta PPU_ADDR
+	pla
 	sta PPU_DATA
 	rts	; ropslide to next routine
 
@@ -1280,15 +1272,12 @@ fl_updSeqNormal:
 	sec
 	adc	NAME_UPD_PTR
 	tay
-	lda	#0
-	sta	NAME_UPD_PTR
 	rts	; ropslide to next routine
 
 fl_updSeqRepeat:
 	iny
 	tax
-	lda	VRAM_BUF,y
-	iny
+	pla
 	@loop:
 		sta	PPU_DATA
 		dex

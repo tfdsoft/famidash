@@ -20,6 +20,9 @@ _set_vram_buffer:
 	stx <NAME_UPD_ENABLE
 	inx ;x=0
 	stx VRAM_INDEX
+	stx	NAME_UPD_PTR
+	lda #>VRAM_BUF
+	sta	NAME_UPD_PTR+1
 	rts
 	; ldx #>VRAM_BUF
 	; lda #<VRAM_BUF
@@ -34,7 +37,7 @@ __multi_vram_buffer_horz:
 	; xargs[0] = len
 	; sreg = data
 	
-	pha
+	sta	instBufWriteBuffer+3
 	jsr set_horz_vbuf_seq
 	bne	_multi_vram_buffer_common	; = BRA
 
@@ -44,32 +47,23 @@ __multi_vram_buffer_vert:
 	; xargs[0] = len
 	; sreg = data
 		
-	pha
+	sta	instBufWriteBuffer+3
 	jsr set_vert_vbuf_seq
 
 _multi_vram_buffer_common:
 	lda	#<(fl_updSeqNormal-1)
-	sta	INST_BUF+2, y
+	sta	instBufWriteBuffer+5
 	lda	#>(fl_updSeqNormal-1)
-	sta	INST_BUF+3, y
-	jsr	update_vbuf_inst_ptr
+	sta	instBufWriteBuffer+6
 	
 	; AX = ppu_address
 	; xargs[0] = len
 	; sreg = data
-	ldy VRAM_INDEX
-	pla
-	sta VRAM_BUF+1, y
-	txa
-	sta VRAM_BUF+0, y
-	lda xargs+0
-	sta VRAM_BUF+2, y
-	tay
+	stx	instBufWriteBuffer+2
+	ldy xargs+0
+	sty	instBufWriteBuffer+4
 
 	ldx	VRAM_INDEX
-	inx
-	inx
-	inx
 
 @loop:
 	lda (sreg), y
@@ -78,28 +72,24 @@ _multi_vram_buffer_common:
 	dey
 	bne @loop
 	stx VRAM_INDEX
-	rts
+@end:
+	ldx #7
+	jmp	transferWriteToInstBuf
 	
 ;void one_vram_buffer(uint8_t data, uint16_t ppu_address);
 __one_vram_buffer:
 	; ax = ppu_address
 	; sreg[0] = data
-	ldy VRAM_INDEX
-	sta VRAM_BUF+1, y
-	txa
-	sta VRAM_BUF+0, y
-	iny
-	iny
+	sta	instBufWriteBuffer+3
+	stx	instBufWriteBuffer+2
 	lda sreg
-	sta VRAM_BUF, y
-	iny
-	sty VRAM_INDEX
-	jsr set_curr_vbuf_seq	;__	Add the instruction
+	sta	instBufWriteBuffer+4
 	lda	#<(fl_updSingle-1)
-	sta	INST_BUF+2, y
+	sta	instBufWriteBuffer+0
 	lda	#>(fl_updSingle-1)
-	sta	INST_BUF+3, y
-	jmp	update_vbuf_inst_ptr
+	sta	instBufWriteBuffer+1
+	ldx #5
+	jmp	transferWriteToInstBuf
 	
 	
 ;void clear_vram_buffer();	
