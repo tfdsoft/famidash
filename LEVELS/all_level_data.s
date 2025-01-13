@@ -363,7 +363,7 @@
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8013 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8007 bytes
 	.export level_data_demonpark
 	level_data_demonpark:
 	; Header
@@ -380,7 +380,7 @@
 	.export level_data_deathmoon_0
 	level_data_deathmoon_0:
 	; Level data
-		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3314
+		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3308
 
 
 .segment "LVL_BANK_15"	; Total bank size: 8057 bytes
