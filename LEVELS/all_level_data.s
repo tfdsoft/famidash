@@ -32,7 +32,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8086
 
 
-.segment "LVL_BANK_03"	; Total bank size: 8105 bytes
+.segment "LVL_BANK_03"	; Total bank size: 8114 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -44,7 +44,7 @@
 		.byte bloodbath_grnd_color
 		.byte 27	; height of bloodbath
 	; Level data
-		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7689
+		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7698
 
 
 .segment "LVL_BANK_04"	; Total bank size: 8173 bytes
@@ -525,7 +525,7 @@
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3192
 
 
-.segment "LVL_BANK_1C"	; Total bank size: 8125 bytes
+.segment "LVL_BANK_1C"	; Total bank size: 8165 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
