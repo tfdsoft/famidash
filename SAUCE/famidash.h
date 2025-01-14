@@ -334,6 +334,8 @@ uint16_t coin1_speed;
 uint16_t coin2_speed;
 uint16_t coin3_speed;
 
+uint16_t menutimer;
+
 // trail stuff
 uint8_t orbactive;
 uint8_t trail_sprites_visible[9];

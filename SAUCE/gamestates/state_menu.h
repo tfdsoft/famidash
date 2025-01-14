@@ -201,7 +201,7 @@ void levelselection() {
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
 
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[menu_music]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[newrand() & 31]);
 	menuMusicCurrentlyPlaying = 1;
 
 	ppu_on_all();
@@ -806,7 +806,7 @@ void state_menu() {
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[menu_music]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[newrand() & 31]);
 	menuMusicCurrentlyPlaying = 1;
 
 	settingvalue = 0;
@@ -871,13 +871,14 @@ void state_menu() {
 
 	while (!(joypad1.press & (PAD_START | PAD_A)) || !coins_inserted){
 
-		if (joypad1.press & PAD_SELECT) { 
+		if (joypad1.press & PAD_SELECT && coins_inserted != 255) { 
 			for (tmp2 = 0; tmp2 < 255; tmp2++) {
 		
 			coins_inserted++; 
 			sfx_play(sfx_coin,0); 
 		
 			}
+
 		}
 
 		multi_vram_buffer_horz(vstext, sizeof(vstext)-1, NTADR_A(25,5));
@@ -1382,7 +1383,15 @@ void state_menu() {
 			return;
 		}
 */
-		
+		menutimer++;
+		if (menutimer == 2000) {
+			menutimer = 0;
+			gameState = 0;
+			music_update();
+			ppu_off();
+			return;
+		}			
+			
 	}	
 //	set_scroll_y(0);		does this break anything?
 //	set_scroll_x(0);
@@ -1710,8 +1719,8 @@ void clear_shit() {
 }
 
 void check_if_music_stopped() {
-		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[song]); }
-		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[menu_music]); }
+		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[newrand() & 31]); }
+		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[newrand() & 31]); }
 }	
 
 
