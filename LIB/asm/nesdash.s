@@ -3645,8 +3645,6 @@ bank:
 
 	start:
 		pha		; temp storage
-
-	.if !VS_SYSTEM
 		ldy #7	; size of _attemptCounter
 
 	numsize_loop:
@@ -3692,10 +3690,6 @@ bank:
 
 	use_one_vram_buffer:
 		lda	_attemptCounter+0
-
-	.else
-		lda	_coins_inserted+0
-	.endif
 
 		clc
 		adc	zeroChr

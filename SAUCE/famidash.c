@@ -60,6 +60,9 @@ void main(){
 	//playPCM(0);
 
 
+    #if __VS_SYSTEM
+	memfill(attemptCounter, 0, sizeof(attemptCounter));
+	#endif
 	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;
 	crossPRGBankJump0(gameboy_check);

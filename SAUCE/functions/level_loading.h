@@ -63,7 +63,14 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	#define i (*((uint8_t *)&ii))
 	register uint16_t ii;
 	mmc3_set_prg_bank_1(GET_BANK(increment_attempt_count));
-	increment_attempt_count();
+	#if !__VS_SYSTEM
+		increment_attempt_count();
+	#else
+		memfill(attemptCounter, 0, sizeof(attemptCounter));
+		for (tmp2 = 0; tmp2 < coins_inserted; tmp2++) {
+			increment_attempt_count();
+		}
+	#endif
 	coins = 0;
 	outline_color = 0x30;	
 	cube_data[0] = 0;
