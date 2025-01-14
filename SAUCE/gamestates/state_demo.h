@@ -215,7 +215,7 @@ void state_demo(){
 		oam_clear();
 		mouse_and_cursor();
 		newrand();
-	    kandoframecnt++;
+		kandoframecnt++;
 		if (!forced_credits &&
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
@@ -396,7 +396,11 @@ void set_settings() {
 		case 2: // sfxoff
 			options ^= sfxoff; break;
 		case 3: // musicoff
+			#if __VS_SYSTEM
+			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgm_lookup_table3[newrand() & 31]); } break;
+			#else
 			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgm_lookup_table3[menu_music]); } break;
+			#endif
 		case 4: // jumpsound
 			options ^= jumpsound; break;
 		case 5:

@@ -337,6 +337,10 @@ uint16_t coin1_speed;
 uint16_t coin2_speed;
 uint16_t coin3_speed;
 
+#if __VS_SYSTEM
+uint16_t menutimer;
+#endif
+
 // trail stuff
 uint8_t orbactive;
 uint8_t trail_sprites_visible[9];
