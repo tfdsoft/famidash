@@ -1833,8 +1833,8 @@ found_bank:
 
 .export __sfx_play
 .proc __sfx_play  
-    ; x = sfx
-	; a = channel
+    ; a = sfx
+	; x = channel
 
     bit _options ; bit 6 is copied to the overflow flag  
     bvc play  
