@@ -887,6 +887,15 @@ void state_menu() {
 
 		#if __VS_SYSTEM
 
+		if (joypad1.press & PAD_SELECT) { 
+			for (tmp2 = 0; tmp2 < 255; tmp2++) {
+		
+			coins_inserted++; 
+			sfx_play(sfx_coin,0); 
+		
+			}
+		}
+
 		multi_vram_buffer_horz(vstext, sizeof(vstext)-1, NTADR_A(25,5));
 		if (!coins_inserted) multi_vram_buffer_horz(nocoinstext, sizeof(nocoinstext)-1, NTADR_A(11,9));
 		else {
@@ -1393,6 +1402,8 @@ void state_menu() {
 			return;
 		}
 */
+		#if !__VS_SYSTEM
+		
 		if (mouse.left_press) {
 			if ((uint8_t)(currplayer_y_small - 8) <= (uint8_t)mouse.y && (uint8_t)(currplayer_y_small + 8) >= (uint8_t)mouse.y) {
 				if (mouse.x >= currplayer_x_small && (uint8_t)(currplayer_x_small + 16) >= mouse.x) {
@@ -1430,8 +1441,9 @@ void state_menu() {
 				}
 			}
 		}	
+		#endif
 		
-		
+
 	}	
 //	set_scroll_y(0);		does this break anything?
 //	set_scroll_x(0);
