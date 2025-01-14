@@ -59,11 +59,11 @@ void main(){
 	//mmc3_set_prg_bank_1(GET_BANK(playPCM));
 	//playPCM(0);
 
-	memfill(attemptCounter, 0, sizeof(attemptCounter));
+//	memfill(attemptCounter, 0, sizeof(attemptCounter));
 	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;
 	crossPRGBankJump0(gameboy_check);
-	gameState = 0x00;
+	gameState = 0x05;
     while (1){
 		ppu_wait_nmi();
 		switch (gameState){
@@ -99,7 +99,7 @@ void main(){
 				break;
 			}
 			case 0x05: {
-				music_play(song_scheming_weasel);
+				//music_play(song_scheming_weasel);
 				mmc3_set_prg_bank_1(GET_BANK(state_savefile_validate));
 				state_savefile_validate();
 				break;

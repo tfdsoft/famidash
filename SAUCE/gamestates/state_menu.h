@@ -871,6 +871,15 @@ void state_menu() {
 
 	while (!(joypad1.press & (PAD_START | PAD_A)) || !coins_inserted){
 
+		if (joypad1.press & PAD_SELECT) { 
+			for (tmp2 = 0; tmp2 < 255; tmp2++) {
+		
+			coins_inserted++; 
+			sfx_play(sfx_coin,0); 
+		
+			}
+		}
+
 		multi_vram_buffer_horz(vstext, sizeof(vstext)-1, NTADR_A(25,5));
 		if (!coins_inserted) multi_vram_buffer_horz(nocoinstext, sizeof(nocoinstext)-1, NTADR_A(11,9));
 		else {
@@ -1373,44 +1382,6 @@ void state_menu() {
 			return;
 		}
 */
-		if (mouse.left_press) {
-			if ((uint8_t)(currplayer_y_small - 8) <= (uint8_t)mouse.y && (uint8_t)(currplayer_y_small + 8) >= (uint8_t)mouse.y) {
-				if (mouse.x >= currplayer_x_small && (uint8_t)(currplayer_x_small + 16) >= mouse.x) {
-					if (titlemode != 0xFF) {
-						titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
-						sfx_play(sfx_death,0);
-						ballframe = 0;
-					}
-				}
-			}
-				
-			
-			if ((mouse.y >= 0x5E && mouse.y <= 0x7A)) {
-				if (mouse.x >= 0x41 && mouse.x <= 0x5A) {
-					menuselection = 5; break;
-				}
-				else if (mouse.x >= 0x6F && mouse.x <= 0x8C) {
-					menuselection = 0; break;
-				}
-				else if (mouse.x >= 0xA1 && mouse.x <= 0xBA) {
-					menuselection = 1; break;
-				}
-			}				
-			else if ((mouse.y >= 0x8C && mouse.y <= 0x9B)) {
-				if (mouse.x >= 0x5E && mouse.x <= 0x6D) {
-					menuselection = 2; break;
-				}
-				else if (mouse.x >= 0x8E && mouse.x <= 0x9D) {
-					menuselection = 3; break;
-				}				
-			}
-			else if ((mouse.y >= 0x0D && mouse.y <= 0x1C)) {
-				if (mouse.x >= 0xD6 && mouse.x <= 0xE4) {
-					menuselection = 4; break;
-				}
-			}
-		}	
-		
 		
 	}	
 //	set_scroll_y(0);		does this break anything?
