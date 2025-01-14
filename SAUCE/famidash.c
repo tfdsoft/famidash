@@ -180,11 +180,11 @@ void setdefaultoptions() {
 			LEVELCOMPLETE[tmp2] = 0;
 			level_completeness_normal[tmp2] = 0;
 			level_completeness_practice[tmp2] = 0;
-		} while (++tmp2 < (0x40));
+		} while (++tmp2 < (MAX_LEVEL_COMPLETE));
 		tmp2 = 0;
 		do {
 			achievements[tmp2] = 0;
-		} while (++tmp2 < (0x20));
+		} while (++tmp2 < (sizeof(achievements)));
 	invisible = 0;
 	color1 = 0x2A;
 	color2 = 0X2C;		
