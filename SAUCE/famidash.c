@@ -176,7 +176,7 @@ void setdefaultoptions() {
 			LEVELCOMPLETE[tmp2] = 0;
 			level_completeness_normal[tmp2] = 0;
 			level_completeness_practice[tmp2] = 0;
-		} while (++tmp2 < (0x40));
+		} while (++tmp2 < (0x60));
 		tmp2 = 0;
 		do {
 			achievements[tmp2] = 0;
