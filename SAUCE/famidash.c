@@ -59,7 +59,7 @@ void main(){
 	//mmc3_set_prg_bank_1(GET_BANK(playPCM));
 	//playPCM(0);
 
-
+	memfill(attemptCounter, 0, sizeof(attemptCounter));
 	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;
 	crossPRGBankJump0(gameboy_check);

@@ -153,14 +153,18 @@ nmi:
 
 @skipAll:
 
+	ldx #0
 	lda _CREDITS1_PREV
 	and #%00100000
 	beq @check_slot_2_creds
 	lda $4016
 	and #%00100000
 	bne @check_slot_2_creds
+	lda _coins_inserted
+	cmp #$FF
+	beq @skip1
 	inc _coins_inserted
-	ldx #0
+@skip1:
 	lda #sfx_coin
 	JSR __sfx_play
 
@@ -175,8 +179,11 @@ nmi:
 	lda $4016
 	and #%01000000
 	bne @done_credit_check
+	lda _coins_inserted
+	cmp #$FF
+	beq @skip2
 	inc _coins_inserted
-	ldx #0
+@skip2:
 	lda #sfx_coin
 	JSR __sfx_play
 	
