@@ -152,9 +152,9 @@ void levelselection() {
 	mmc3_disable_irq();
 	disco_sprites = 0;
 
+	pal_bg(oldsplashMenu);
 	write_irq_table(lvlselect_irq_table);
 	set_irq_ptr(irqTable);
-	pal_bg(oldsplashMenu);
 	oam_clear();
 	ppu_off();
 	pal_bright(0);
@@ -164,20 +164,25 @@ void levelselection() {
 
 	#if __VS_SYSTEM
 		if (!coins_inserted) {
-			kandowatchesyousleep = 0;
-			exitingLevelSelect = 1;
-			cube_data[0] = 0;
-			cube_data[1] = 0;
-			return;
-		}
+			pal_bg(gameoverpalette);
+			vram_adr(NAMETABLE_A);
+			vram_unrle(gameover); 
+			vram_adr(NAMETABLE_B);
+			vram_unrle(gameover);
+			tmp5 = 200;
+			ppu_on_all();		
+	//		kandowatchesyousleep = 0;
+	//		exitingLevelSelect = 1;
+	//		cube_data[0] = 0;
+	//		cube_data[1] = 0;
+	//		return;
+		} else {
 	#endif
-		
-	
+
 	vram_adr(NAMETABLE_A);
 	vram_unrle(game_main_menu); 
 	vram_adr(NAMETABLE_B);
 	vram_unrle(game_main_menu);
-
 	memfill(attemptCounter, 0, sizeof(attemptCounter));
 
 	tmp8 = 0xff00;
@@ -205,10 +210,30 @@ void levelselection() {
 	low_byte(tmpA) = 1;
 	draw_both_progress_bars();
 	
+	#if __VS_SYSTEM
+	}	// end the else statement
+	#endif
+
 	ppu_wait_nmi();
 	ppu_wait_nmi();
 	pal_fade_to_withmusic(0,4);
-	
+
+	#if __VS_SYSTEM
+		if (!coins_inserted) {
+			while (tmp5) {
+				ppu_wait_nmi();
+				music_update();
+				tmp5--;
+			}
+			ppu_off();
+			kandowatchesyousleep = 0;
+			exitingLevelSelect = 1;
+			cube_data[0] = 0;
+			cube_data[1] = 0;
+			return;
+		} else {
+	#endif
+
 	while (1){
 		loop_routine_update();
 		 // read the first controller
@@ -275,7 +300,10 @@ void levelselection() {
 		draw_both_progress_bars();
 
 		dec_mouse_timer();
-	}	
+	}
+	#if __VS_SYSTEM	
+	}	// end the else statement
+	#endif
 
 }
 
