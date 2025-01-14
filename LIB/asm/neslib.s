@@ -160,6 +160,9 @@ nmi:
 	and #%00100000
 	bne @check_slot_2_creds
 	inc _coins_inserted
+	ldx #0
+	lda #sfx_coin
+	JSR __sfx_play
 
 @check_slot_2_creds:
 	lda $4016
@@ -173,7 +176,10 @@ nmi:
 	and #%01000000
 	bne @done_credit_check
 	inc _coins_inserted
-
+	ldx #0
+	lda #sfx_coin
+	JSR __sfx_play
+	
 @done_credit_check:
 	lda $4016
 	sta _CREDITS2_PREV

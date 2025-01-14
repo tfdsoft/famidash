@@ -152,9 +152,9 @@ void levelselection() {
 	mmc3_disable_irq();
 	disco_sprites = 0;
 
+	pal_bg(oldsplashMenu);
 	write_irq_table(lvlselect_irq_table);
 	set_irq_ptr(irqTable);
-	pal_bg(oldsplashMenu);
 	oam_clear();
 	ppu_off();
 	pal_bright(0);
@@ -163,20 +163,26 @@ void levelselection() {
 	set_scroll_y(0);  
 
 	if (!coins_inserted) {
-		kandowatchesyousleep = 0;
-		exitingLevelSelect = 1;
-		cube_data[0] = 0;
-		cube_data[1] = 0;
-		return;
+		pal_bg(gameoverpalette);
+		vram_adr(NAMETABLE_A);
+		vram_unrle(gameover); 
+		vram_adr(NAMETABLE_B);
+		vram_unrle(gameover);
+		tmp5 = 200;
+		ppu_on_all();		
+//		kandowatchesyousleep = 0;
+//		exitingLevelSelect = 1;
+//		cube_data[0] = 0;
+//		cube_data[1] = 0;
+//		return;
 	}
 		
-	
-	vram_adr(NAMETABLE_A);
-	vram_unrle(game_main_menu); 
-	vram_adr(NAMETABLE_B);
-	vram_unrle(game_main_menu);
-
-	memfill(attemptCounter, 0, sizeof(attemptCounter));
+	else {
+		vram_adr(NAMETABLE_A);
+		vram_unrle(game_main_menu); 
+		vram_adr(NAMETABLE_B);
+		vram_unrle(game_main_menu);
+		memfill(attemptCounter, 0, sizeof(attemptCounter));
 
 	tmp8 = 0xff00;
 	edit_irq_table(high_byte(tmp8),2);
@@ -203,10 +209,25 @@ void levelselection() {
 	low_byte(tmpA) = 1;
 	draw_both_progress_bars();
 	
+	}
 	ppu_wait_nmi();
 	ppu_wait_nmi();
 	pal_fade_to_withmusic(0,4);
+	if (!coins_inserted) {
+		while (tmp5){
+			ppu_wait_nmi();
+			music_update();
+			tmp5--;
+		}
+		ppu_off();
+		kandowatchesyousleep = 0;
+		exitingLevelSelect = 1;
+		cube_data[0] = 0;
+		cube_data[1] = 0;
+		return;
+	}
 	
+	else {
 	while (1){
 		loop_routine_update();
 		 // read the first controller
@@ -274,6 +295,7 @@ void levelselection() {
 
 		dec_mouse_timer();
 	}	
+	}
 
 }
 
