@@ -366,6 +366,7 @@ void state_game(){
 				else kandokidshack3 = 0;
 			}
 			#endif	// No pause in arcade
+		#if !__VS_SYSTEM	 //no practice or debug in arcade
 //		if (options & debugtoggle) {
 			if (joypad1.press_select && practice_point_count == 0) //THE BIG DEBUG - DISABLE BEFORE RELEASE
 				{ 
@@ -375,7 +376,6 @@ void state_game(){
 					if (!DEBUG_MODE) nocamlock = 0;
 				}		
 //		}
-		#if !__VS_SYSTEM	 //no practice in arcade
 		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press))) {
 			curr_practice_point--;
 			if (curr_practice_point >= practice_point_count)
