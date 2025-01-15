@@ -120,7 +120,11 @@ const unsigned char Credits2[572]={
 	#endif
 #endif
 
+#if !__VS_SYSTEM
 const unsigned char palette_Credits[16]={ 0x11,0x0f,0x10,0x30,0x11,0x0f,0x2a,0x39,0x11,0x28,0x17,0x0f,0x11,0x0f,0x11,0x21 };
+#else
+const unsigned char palette_Credits[16]={ 0x06,0x0f,0x10,0x30,0x05,0x0f,0x2a,0x39,0x05,0x28,0x17,0x0f,0x05,0x0f,0x05,0x21 };
+#endif
 
 void state_demo(){
 	mmc3_disable_irq();
@@ -184,6 +188,9 @@ void state_demo(){
 					gameState = 0x01; return;
 		}
 		ppu_wait_nmi();
+		#if __VS_SYSTEM
+			crossPRGBankJump0(check_if_music_stopped);
+		#endif
 		music_update();
 		tmp1++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
@@ -195,6 +202,9 @@ void state_demo(){
 		mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
+		#if __VS_SYSTEM
+			crossPRGBankJump0(check_if_music_stopped);
+		#endif
 		music_update();
 		if (!forced_credits &&
 			(joypad1.press || ((mouse.connected)
@@ -223,6 +233,9 @@ void state_demo(){
 					gameState = 0x01; return;
 		}
 		ppu_wait_nmi();
+		#if __VS_SYSTEM
+			crossPRGBankJump0(check_if_music_stopped);
+		#endif
 		music_update();
 		tmp1++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;				
