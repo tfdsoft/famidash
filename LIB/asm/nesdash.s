@@ -4,6 +4,10 @@
 .import pusha, pushax, callptr4
 .import _scroll_x, _cursedmusic
 
+.if VS_SYSTEM
+	.import _draw_arrow
+.endif
+
 .macpack longbranch
 
 .importzp _sprite_data

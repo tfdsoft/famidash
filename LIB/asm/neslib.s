@@ -29,7 +29,7 @@
 	.import _disco_sprites, _slowmode, _kandoframecnt, _kandokidshack4, _pauseStatus
 
 	.if VS_SYSTEM
-		.import _coins_inserted, _CREDITS1_PREV, _CREDITS2_PREV
+		.import _coins_inserted, _CREDITS1_PREV, _CREDITS2_PREV, _showarrownow
 	.endif
 
 	.segment "NESLIB"
@@ -130,18 +130,18 @@ nmi:
   bne @skipAll
   
 @calc:
-  lda noMouse
-  bne @SkipMouse
-  ; Read the raw controller data synced with OAM DMA to prevent
-  ; DMC DMA bugs
   .if !VS_SYSTEM
+	  lda noMouse
+	  bne @SkipMouse
+	  ; Read the raw controller data synced with OAM DMA to prevent
+	  ; DMC DMA bugs
   	jsr oam_and_readjoypad
-  .endif
 
-  lda <(mouse + kMouseButtons)
-  and #$0f
-  cmp #$01
-  beq :+
+	  lda <(mouse + kMouseButtons)
+	  and #$0f
+	  cmp #$01
+	  beq :+
+  .endif
 @SkipMouse:
 	LDA #>OAM_BUF
   	STA PPU_OAM_DMA
@@ -160,6 +160,7 @@ nmi:
 
 @skipAll:
 	
+	
 	.if VS_SYSTEM
 		ldx #0
 		lda _CREDITS1_PREV
@@ -171,6 +172,11 @@ nmi:
 		lda	_coins_inserted
 		cmp	#$FF
 		beq	@skip1
+		cmp #0
+		bne @justinc
+		lda #1
+		sta _showarrownow
+	@justinc:	
 		inc _coins_inserted
 	@skip1:
 		lda #sfx_coin
@@ -190,6 +196,11 @@ nmi:
 		lda _coins_inserted
 		cmp #$FF
 		beq @skip2
+		cmp #0
+		bne @justinc2
+		lda #1
+		sta _showarrownow
+	@justinc2:
 		inc _coins_inserted
 	@skip2:
 		lda #sfx_coin
@@ -1697,7 +1708,7 @@ CONTROLLER_PORT = CTRL_PORT1
 	sta noMouse
     rts
 snes_mouse_detected:
-
+.if !VS_SYSTEM
   ; convert the X/Y displacement into X/Y positions on the screen
   ldx #1
 loop:
@@ -1753,7 +1764,7 @@ setvalue:
   ; Set the connected bit
   sec
   ror mouse + kMouseZero
-
+.endif
   rts
 
 MOUSE_Y_MINIMUM = 1

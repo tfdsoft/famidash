@@ -842,6 +842,9 @@ const unsigned char vstext[] = "VS";
 #endif
 void state_menu() {
 	poweroffcheck = 0xff;
+	#if __VS_SYSTEM
+		menuselection = 0;
+	#endif
 	if (exitingLevelSelect) {
 		draw_both_progress_bars();
 		pal_fade_to_withmusic(4,0);
@@ -927,10 +930,10 @@ void state_menu() {
 	//POKE(0x203, 0x00);
 	
 	// Expand the data for the menu nametable while the PPU is still off
-    vram_adr(NAMETABLE_A);
-    vram_unrle(game_start_screen);
+	vram_adr(NAMETABLE_A);
+	vram_unrle(game_start_screen);
 	vram_adr(NAMETABLE_B);
-    vram_unrle(game_start_screen);
+	vram_unrle(game_start_screen);
 
 	set_scroll_x(0);
 
@@ -940,8 +943,16 @@ void state_menu() {
 	pal_fade_to_withmusic(0,4);
 	tmp4 = menuselection; ++tmp4;
 	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
+	#if __VS_SYSTEM
+		if (coins_inserted) { 
+	#endif	// unconditional otherwise
+	
 	one_vram_buffer('a', tmp5);
-	one_vram_buffer('b', addloNOC(tmp5, 1));
+	one_vram_buffer('b', addloNOC(tmp5, 1)); 
+	
+	#if __VS_SYSTEM
+		}	
+	#endif
 	roll_new_mode();
 	kandoframecnt = 0;
 	teleport_output = 0Xff;
@@ -973,6 +984,14 @@ void state_menu() {
 
 		#if __VS_SYSTEM
 
+		if (showarrownow) {
+			tmp4 = menuselection; ++tmp4;
+			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
+			one_vram_buffer('a', tmp5);
+			one_vram_buffer('b', addloNOC(tmp5, 1)); 
+			showarrownow = 0;
+		}
+		
 		if (joypad1.press & PAD_SELECT && coins_inserted != 255) { 
 			for (tmp2 = 0; tmp2 < 255; tmp2++) {
 		
@@ -1435,7 +1454,12 @@ void state_menu() {
 		dec_mouse_timer();
 		tmp3 = 0;	
 		
-		if (joypad1.press_right) {
+		if (
+			joypad1.press_right 
+		#if __VS_SYSTEM
+			&& coins_inserted
+		#endif
+			) {
 			if (menuselection == 5) menuselection = 0;
 			#if __VS_SYSTEM
 				else if (menuselection == 1) { menuselection = 5; tmp3--; tmp3--; tmp3--; }
@@ -1446,7 +1470,12 @@ void state_menu() {
 				menutimer = 0;
 			#endif
 		}
-		if (joypad1.press_left) {
+		if (
+			joypad1.press_left
+		#if __VS_SYSTEM
+			&& coins_inserted
+		#endif
+			) {
 			if (menuselection == 0) menuselection = 5;
 			#if __VS_SYSTEM
 				else if (menuselection == 5) { menuselection = 1; tmp3++; tmp3++; tmp3++; }
@@ -1458,7 +1487,12 @@ void state_menu() {
 			#endif
 		}
 
-		if (tmp3 ) {    // menu selection incremented
+		if (
+			tmp3
+		#if __VS_SYSTEM
+			&& coins_inserted
+		#endif
+			) {    // menu selection incremented
 			tmp4 = menuselection; ++tmp4;
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
 			if (menuselection != 4) {
