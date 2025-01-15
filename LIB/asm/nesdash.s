@@ -458,17 +458,7 @@ single_rle_byte:
 		; and then fallthrough to copying to the collision map
 
 	@End:
-	ldx rld_column
-	inx
-	.if USE_ILLEGAL_OPCODES
-		lda #$0F
-		sax rld_column
-	.else
-		txa
-		and #$0F
-		sta rld_column
-	.endif
-	rts
+		rts
 .endproc
 
 ; Function not available in C
@@ -599,16 +589,6 @@ single_rle_byte:
 	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
 	; roughly twice the size for much more perf. ill probably make it back to loop
 	ldx rld_column
-	.if USE_ILLEGAL_OPCODES
-		dex
-		lda #$0F
-		axs #0
-	.else
-		dex
-		txa
-		and #$0F
-		tax
-	.endif
 	ldy rld_load_value
 	cpy #<-(15+15+12)
 	bcs write_collmap1
@@ -701,8 +681,6 @@ noSeam:
 ; char draw_screen();
 .segment _BACKGROUND_RENDER_BANK
 
-.global dsrt_fr1O : zp
-
 .export _draw_screen
 .proc _draw_screen
 
@@ -718,7 +696,6 @@ noSeam:
 ;   Attributes
 
 	frame_free = 0
-	frame_R_tile_1 = 1
 	frame_R_attr = 2
 	frame_UD_tiles_separate_1 = 3
 	frame_UD_attr_unified = 4
@@ -754,8 +731,7 @@ jmpto_draw_screen_UD_tiles:
 	JMP draw_screen_UD_tiles_frame0
 
 switch:
-	DEX									;	if drawing_frame == 1, do frame 1
-	BEQ	draw_screen_R_tiles+dsrt_fr1O	;__	of drawing the right edge (right tile halves)
+	DEX									;
 	DEX									;	if drawing_frame == 2, do frame 2
 	jeq	draw_screen_R_attributes		;__ of drawing the right edge (attributes)
 	DEX									;	if drawing_frame == 3, do frame 1
@@ -769,14 +745,16 @@ switch:
 
 .proc draw_screen_R_tiles
 
-	TileWriteSize	= (15*2)+2+1
+	TileWriteSize	= 15*2
 
-	TileOff0		= 0
-	TileOff1		= 0+TileWriteSize
-	TileEnd			= 0+TileWriteSize+TileWriteSize
+	.repeat 4, I
+	.ident(.sprintf("TileOff%d", I))	= TileWriteSize*I
+	.endrepeat
+	TileEnd			= 0+(TileWriteSize*4)
 
 	CurrentRow = tmp1
 	LoopCount = tmp2
+	InvisBlMask = tmp3
 	SeamValue = ptr3+1
 
 	
@@ -787,14 +765,6 @@ frame0:
 	; Switch banks
 	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
 	JSR writeToCollisionMap
-frame1:
-
-	; thanks ca65, very cool
-	.if (frame1 - frame0) < 256
-		.exportzp dsrt_fr1O = <(frame1 - frame0)
-	.else
-		.error "too far"
-	.endif
 
 calc_seam_pos:
 
@@ -825,76 +795,68 @@ calc_seam_pos:
 		STY	CurrentRow
 
 write_start:
-	; Writing to nesdoug's VRAM buffer starts here
-	LDX VRAM_INDEX
+	ldx	_invisblocks
+	dex
+	stx	InvisBlMask
+
+	; Writing to the VRAM buffer starts here
+	LDA VRAM_INDEX
+	CLC
+	ADC #30 - 1
+	TAX
 
 	; In-house replacement of get_ppu_addr, only counts X
 	; Address is big-endian
-	LDY rld_column ;   000xxxx0 - the left tiles of the metatiles
-	DEY
-	TYA
+	LDA rld_column ;   000xxxx0 - the left tiles of the metatiles
 	AND #$0F
 	ASL         ;__
-	ORA drawing_frame    ;   000xxxx1 - the right tiles of the metatiles
-	STA VRAM_BUF+TileOff0+1,X
-	STA VRAM_BUF+TileOff1+1,X
+	STA instBufWriteBuffer+3
 
 	; Get nametable
 	lda _scroll_x + 1 ; high byte
 	and #%00000001
 	tay
 	lda	ntAddrHiTbl,y
-	STA VRAM_BUF+TileOff0,X
+	STA	instBufWriteBuffer+2
 	ORA #$08        ; 2nd nametable
-	STA VRAM_BUF+TileOff1,X
+	STA	instBufWriteBuffer+4
 
-
-	; First part of the update: the tiles
-	; Amount of data in the sequence - 27*2 tiles (8x8 tiles, left sides of the metatiles)
-	LDA #(15*2)
-	STA VRAM_BUF+TileOff0+2,X
-	STA VRAM_BUF+TileOff1+2,X
+	; Set instruction
+	lda	#<(fl_seqLvlFrame0-1)
+	sta	instBufWriteBuffer+0
+	lda	#>(fl_seqLvlFrame0-1)
+	sta	instBufWriteBuffer+1
 
 	; The sequence itself:
+	LDY	CurrentRow
+@tileWriteLoop:
+	lda columnBuffer,Y
+	and	InvisBlMask
+	tay
+	; y is the metatile id
+	lda metatiles_bot_right, y
+	STA VRAM_BUF+TileOff0, X
+	lda metatiles_top_right, y
+	STA VRAM_BUF+TileOff1, X
+	lda metatiles_bot_left, y
+	STA VRAM_BUF+TileOff2, X
+	lda metatiles_top_left, y
+	STA VRAM_BUF+TileOff3, X
 	
-	; Load max value
-	LDA #15 - 1
-	STA LoopCount
-	; Check if doing a left or right hand write
-	LDA drawing_frame
-	AND #1
-	beq @LeftWrite
-		; Right side write
-		; Call for upper tiles
-		JSR right_tilewriteloop
-		BMI @WriteBottomHalf	; The loop keeps looping via a BPL, therefore a BMI = BRA
-	@LeftWrite:
-		JSR left_tilewriteloop
-@WriteBottomHalf:
-	; Load new max
-	LDA #15 - 1
-	STA LoopCount
-	; Add offset to X
-	.if USE_ILLEGAL_OPCODES
-		TXA
-		AXS #<-(TileWriteSize-(15*2))
-	.else
-		TXA
-		CLC
-		ADC #(TileWriteSize-(15*2))
-		TAX
-	.endif
+	LDA CurrentRow
+	CMP SeamValue
+	SEC		; Does not reset the Zero flag
+	BNE :+	; If the seam doesn't match up, dont subtract
+		SBC	#30	; Carry still set after this (or invalid otherwise)
+	: ADC #0 ; Adds a 1
+	STA CurrentRow
+	TAY
+	DEX
+	BPL @tileWriteLoop
 
-	; No need to do anything for the screen, as it always increments
+RenderParallax:
 
-	LDA drawing_frame
-	beq @LeftWrite2
-		JSR right_tilewriteloop
-		BMI @RenderParallax	; The loop keeps looping via a BPL, therefore a BMI = BRA
-	@LeftWrite2:
-		; Call for lower tiles
-		JSR left_tilewriteloop
-@RenderParallax:
+	jmp donot
 
 	ParallaxBufferStart = tmp1
 	ParallaxExtent = tmp3
@@ -921,14 +883,11 @@ write_start:
 	stx LoopCount
 	ldx #TileOff1
 	jsr RenderParallaxLoop
+
+donot:
 	
 	; move to the next scroll column for next frame
 	jsr _increase_parallax_scroll_column
-
-	; Demarkate end of write
-	LDX VRAM_INDEX
-	LDA #$FF
-	STA VRAM_BUF+TileEnd,X
 
 	; Declare this section as taken
 	.if USE_ILLEGAL_OPCODES
@@ -942,70 +901,25 @@ write_start:
 		STA	VRAM_INDEX
 	.endif
 
-	INC drawing_frame
+	; Update rld_column
+	ldx rld_column
+	inx
+	.if USE_ILLEGAL_OPCODES
+		lda #$0F
+		sax rld_column
+	.else
+		txa
+		and #$0F
+		sta rld_column
+	.endif
+
+	ldx	#5
+	jsr	transferWriteToInstBuf
 
 	LDA #1
 	LDX #0
 	RTS
 
-right_tilewriteloop:
-		ldy CurrentRow
-		lda _invisblocks
-		beq @norm
-		lda #0
-		beq @done
-		@norm:
-		LDA columnBuffer,Y
-		@done:
-		tay
-		; y is the metatile id
-		lda metatiles_top_right, y
-		STA VRAM_BUF+TileOff0+3,X
-		lda metatiles_bot_right, y
-		STA VRAM_BUF+TileOff0+4,X
-		
-		INX
-		INX
-		LDA CurrentRow
-		CMP SeamValue
-		SEC		; Does not reset the Zero flag
-		BNE :+	; If the seam doesn't match up, dont subtract
-			SBC	#30	; Carry still set after this (or invalid otherwise)
-		: ADC #0 ; Adds a 1
-		STA CurrentRow
-		DEC LoopCount
-		BPL right_tilewriteloop
-	rts
-
-left_tilewriteloop:
-		ldy CurrentRow
-		lda _invisblocks
-		beq @norm2
-		lda #0
-		beq @done2
-		@norm2:
-		LDA columnBuffer,Y
-		@done2:
-		tay
-		; y is the metatile id
-		lda metatiles_top_left, y
-		STA VRAM_BUF+TileOff0+3,X
-		lda metatiles_bot_left, y
-		STA VRAM_BUF+TileOff0+4,X
-		
-		INX
-		INX
-		LDA CurrentRow
-		CMP SeamValue
-		SEC		; Does not reset the Zero flag
-		BNE :+	; If the seam doesn't match up, dont subtract
-			SBC	#30	; Carry still set after this (or invalid otherwise)
-		: ADC #0 ; Adds a 1
-		STA CurrentRow
-		DEC LoopCount
-		BPL left_tilewriteloop
-	rts
-		
 RenderParallaxLoop:
 	lda _no_parallax
 	bne @nopar
@@ -1604,6 +1518,76 @@ ntAddrHiTbl:
 		STX	drawing_frame
 		RTS
 .endproc
+
+.endproc
+
+
+; [Not available in C]
+.segment "WRAMCODE"
+
+.proc fl_seqLvlFrame0
+	TileWriteSize	= 15*2
+
+	.repeat 4, I
+	.ident(.sprintf("TileOff%d", I))	= TileWriteSize*I
+	.endrepeat
+	TileEnd			= 0+(TileWriteSize*4)
+
+
+	lda	PPU_CTRL_VAR	;
+	ora	#$04			;	Set vertical orientation
+	sta	PPU_CTRL		;__
+
+	pla
+	sta	PPU_ADDR
+	sta	NAME_UPD_PTR
+	pla
+	sta	PPU_ADDR
+	tax
+
+	.repeat 15, J
+		lda	VRAM_BUF+TileOff3+TileOff1-J-1,	y
+		sta	PPU_DATA
+		lda	VRAM_BUF+TileOff2+TileOff1-J-1,	y
+		sta	PPU_DATA
+	.endrepeat
+	
+	lda	NAME_UPD_PTR
+	sta	PPU_ADDR
+	inx
+	stx	PPU_ADDR
+	.repeat 15, J
+		lda	VRAM_BUF+TileOff1+TileOff1-J-1,	y
+		sta	PPU_DATA
+		lda	VRAM_BUF+TileOff0+TileOff1-J-1,	y
+		sta	PPU_DATA
+	.endrepeat
+
+	pla
+	sta	PPU_ADDR
+	sta	NAME_UPD_PTR
+	dex
+	stx	PPU_ADDR
+
+	.repeat 15, J
+		lda	VRAM_BUF+TileOff3+TileOff1-15-J-1,	y
+		sta	PPU_DATA
+		lda	VRAM_BUF+TileOff2+TileOff1-15-J-1,	y
+		sta	PPU_DATA
+	.endrepeat
+	
+	lda	NAME_UPD_PTR
+	sta	PPU_ADDR
+	inx
+	stx	PPU_ADDR
+	.repeat 15, J
+		lda	VRAM_BUF+TileOff1+TileOff1-15-J-1,	y
+		sta	PPU_DATA
+		lda	VRAM_BUF+TileOff0+TileOff1-15-J-1,	y
+		sta	PPU_DATA
+	.endrepeat
+
+	rts	; Ropslide to next routine
 
 .endproc
 
@@ -3752,79 +3736,81 @@ SSDPCM_getbyte:
 
 .endproc
 
+
+.if !__THE_ALBUM	; WRAMCODE not used in album
 ; [Not used in C]
-;	.segment "CODE"
-;	
-;	.import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK__
-;	
-;	.global copydata
-;	.proc copydata
-;	
-;		seg_count = 1
-;		
-;		current_area = tmp1
-;		current_bank = tmp2
-;		
-;		src = sreg
-;		dest = xargs+0
-;		
-;		start:
-;			lda	#0
-;			sta	current_bank
-;			ldy	#<seg_count
-;			
-;		loop:
-;			lda	load_lo-1,	y
-;			sta	src+0
-;			lda	load_hi-1,	y
-;			sta	src+1
-;			
-;			lda	run_lo-1,	y
-;			sta	dest+0
-;			lda	run_hi-1,	y
-;			sta	dest+1
-;			
-;			lda	bank-1,	y
-;			beq	@no_bankswitch
-;				cmp	current_bank
-;				beq	@no_bankswitch
-;					jsr	mmc3_tmp_prg_bank_1	; only allowed because this is run on init
-;					sta	current_bank
-;			@no_bankswitch:
-;			
-;			lda	size_lo-1,	y
-;			ldx	size_hi-1,	y
-;			sty	current_area
-;			jsr	__memcpy
-;			
-;			ldy	current_area
-;			dey
-;			bne	loop
-;			
-;		rts
+.segment "CODE"
+	
+;.import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK_
+.import __WRAMCODE_LOAD__, __WRAMCODE_RUN__, __WRAMCODE_SIZE__, __WRAMCODE_LOAD_BANK__
 
-;	load_lo:
-;		.byte	<__DATA_LOAD__
+.global copydata
+.proc copydata
 
-;	load_hi:
-;		.byte	>__DATA_LOAD__
+	seg_count = (load_hi - load_lo)
+	
+	current_area = tmp1
+	current_bank = tmp2
+	
+	src = sreg
+	dest = xargs+0
+	
+	start:
+		lda	#0
+		sta	current_bank
+		ldy	#<seg_count
+		
+	loop:
+		lda	load_lo-1,	y
+		sta	src+0
+		lda	load_hi-1,	y
+		sta	src+1
+		
+		lda	run_lo-1,	y
+		sta	dest+0
+		lda	run_hi-1,	y
+		sta	dest+1
+		
+		lda	bank-1,	y
+		beq	@no_bankswitch
+			cmp	current_bank
+			beq	@no_bankswitch
+				jsr	mmc3_tmp_prg_bank_1	; only allowed because this is run on init
+				sta	current_bank
+		@no_bankswitch:
+		
+		lda	size_lo-1,	y
+		ldx	size_hi-1,	y
+		sty	current_area
+		jsr	__memcpy
+		
+		ldy	current_area
+		dey
+		bne	loop
+		
+	rts
 
-;	run_lo:
-;		.byte	<__DATA_RUN__
+load_lo:
+	.byte	<__WRAMCODE_LOAD__
+load_hi:
+	.byte	>__WRAMCODE_LOAD__
 
-;	run_hi:
-;		.byte	>__DATA_RUN__
+run_lo:
+	.byte	<__WRAMCODE_RUN__
+run_hi:
+	.byte	>__WRAMCODE_RUN__
 
-;	size_lo:
-;		.byte	<__DATA_SIZE__
+size_lo:
+	.byte	<__WRAMCODE_SIZE__
+size_hi:
+	.byte	>__WRAMCODE_SIZE__
 
-;	size_hi:
-;		.byte	>__DATA_SIZE__
+bank:
+	.byte	<__WRAMCODE_LOAD_BANK__
 
-;	bank:
-;		.byte	<__DATA_LOAD_BANK__
+.endproc
 
-;	.endproc
+.endif
 
 
 ; void increment_attempt_count();
