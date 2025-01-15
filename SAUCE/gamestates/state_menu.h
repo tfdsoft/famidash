@@ -1763,6 +1763,9 @@ void dec_mouse_timer() {
 void loop_routine_update() {
 	newrand();
 	ppu_wait_nmi();
+	#if __VS_SYSTEM
+	check_if_music_stopped();
+	#endif
 	music_update();
 	oam_clear();
 	mouse_and_cursor();
@@ -1931,8 +1934,8 @@ void clear_shit() {
 
 void check_if_music_stopped() {
 	#if __VS_SYSTEM
-		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[(newrand() & 31) + 1]); }
-		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[(newrand() & 31) + 1]); }
+		tmp2 = (newrand() & 31) + 1;
+		if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[tmp2]); }
 	#else
 		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[song]); }
 		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[menu_music]); }
