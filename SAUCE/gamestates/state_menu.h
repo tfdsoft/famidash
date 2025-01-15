@@ -217,6 +217,7 @@ void levelselection() {
 	set_scroll_y(0);  
 
 	#if __VS_SYSTEM
+		menutimer = 0;
 		if (!coins_inserted) {
 			pal_bg(gameoverpalette);
 			vram_adr(NAMETABLE_A);
@@ -329,24 +330,45 @@ void levelselection() {
 
 		//if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
+		#if __VS_SYSTEM
+			menutimer++;
+			if (menutimer == 2000) {
+				exitingLevelSelect = 1;
+				kandowatchesyousleep = 0;
+				return;
+			}
+		#endif
+
 		if (joypad1.press & (PAD_START | PAD_A)){
 			start_the_level();
+			#if __VS_SYSTEM
+				menutimer = 0;
+			#endif
 			return;
 		}
 
 		if (joypad1.press_b){
 			exitingLevelSelect = 1;
 			kandowatchesyousleep = 0;
+			#if __VS_SYSTEM
+				menutimer = 0;
+			#endif
 			return;
 		}
 		
 		if (joypad1.press_right){
 			drawBarFlag = 2;
 			levelinc();
+			#if __VS_SYSTEM
+				menutimer = 0;
+			#endif
 		}
 		if (joypad1.press_left){
 			drawBarFlag = 2;
 			leveldec();
+			#if __VS_SYSTEM
+				menutimer = 0;
+			#endif		
 		}
 
 		// NOTE: this is hardcoded. It used to be 0x3F with the old scroll scheme
@@ -969,25 +991,25 @@ void state_menu() {
 			tmp1 = 0;
 			
 			if (hexToDecOutputBuffer[4]) {
-				one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_A(23,9));
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_A(24,9));
 				tmp1++;
 			}
 
 			if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3]) {
-				one_vram_buffer(0xD0+hexToDecOutputBuffer[3], NTADR_A(23+tmp1,9));
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[3], NTADR_A(24+tmp1,9));
 				tmp1++;
 			}
 			
 			if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2]) {
-				one_vram_buffer(0xD0+hexToDecOutputBuffer[2], NTADR_A(23+tmp1,9));
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[2], NTADR_A(24+tmp1,9));
 				tmp1++;
 			}
 
 			if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1]) {
-				one_vram_buffer(0xD0+hexToDecOutputBuffer[1], NTADR_A(23+tmp1,9));
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[1], NTADR_A(24+tmp1,9));
 				tmp1++;
 			}
-			one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_A(23+tmp1,9));			
+			one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_A(24+tmp1,9));			
 		}
 
 		#endif
