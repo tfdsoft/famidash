@@ -779,18 +779,7 @@ void state_menu() {
 
 	if (joypad1.select) nestopia = 1;
 
-	if (LEVELCOMPLETE[0] && 
-	LEVELCOMPLETE[1] && 
-	LEVELCOMPLETE[2] && 
-	LEVELCOMPLETE[3] && 
-	LEVELCOMPLETE[4] && 
-	LEVELCOMPLETE[5] && 
-	LEVELCOMPLETE[6] && 
-	LEVELCOMPLETE[7] && 
-	LEVELCOMPLETE[8] && 
-	LEVELCOMPLETE[9] && 
-	LEVELCOMPLETE[0x0A] && 
-	LEVELCOMPLETE[0x0C]) all_levels_complete = 0xFC;
+
 
 	
 	ppu_off();
