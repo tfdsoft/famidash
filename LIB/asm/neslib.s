@@ -26,7 +26,7 @@
 	.export __memcpy,__memfill,_delay
 	
 	.export _flush_vram_update2, _oam_set, _oam_get
-	.import _disco_sprites, _slowmode, _kandoframecnt, _kandokidshack4, _pauseStatus,_coins_inserted, _CREDITS1_PREV, _CREDITS2_PREV
+	.import _disco_sprites, _slowmode, _kandoframecnt, _kandokidshack4, _pauseStatus,_coins_inserted, _CREDITS1_PREV, _CREDITS2_PREV, _showarrownow
 	.segment "NESLIB"
 
 ;NMI handler
@@ -125,16 +125,16 @@ nmi:
   bne @skipAll
   
 @calc:
-  lda noMouse
-  bne @SkipMouse
+;  lda noMouse
+;  bne @SkipMouse
   ; Read the raw controller data synced with OAM DMA to prevent
   ; DMC DMA bugs
   ;jsr oam_and_readjoypad
 
-  lda <(mouse + kMouseButtons)
-  and #$0f
-  cmp #$01
-  beq :+
+;  lda <(mouse + kMouseButtons)
+;  and #$0f
+;  cmp #$01
+;  beq :+
 @SkipMouse:
 	LDA #>OAM_BUF
   	STA PPU_OAM_DMA
@@ -163,6 +163,11 @@ nmi:
 	lda _coins_inserted
 	cmp #$FF
 	beq @skip1
+	cmp #0
+	bne @justinc
+	lda #1
+	sta _showarrownow
+@justinc:	
 	inc _coins_inserted
 @skip1:
 	lda #sfx_coin
@@ -182,6 +187,11 @@ nmi:
 	lda _coins_inserted
 	cmp #$FF
 	beq @skip2
+	cmp #0
+	bne @justinc2
+	lda #1
+	sta _showarrownow
+@justinc2:
 	inc _coins_inserted
 @skip2:
 	lda #sfx_coin
@@ -1623,62 +1633,7 @@ CONTROLLER_PORT = CTRL_PORT1
     rts
 snes_mouse_detected:
 
-  ; convert the X/Y displacement into X/Y positions on the screen
-  ldx #1
-loop:
-    lda mouse + kMouseY,x
-    bpl :+
-      ; subtract the negative number instead
-      and #$7f
-      sta mouse + kMouseZero ; reuse this value as a temp value
-      lda TEMP,x
-      sec 
-      sbc mouse + kMouseZero
-      ; check if we underflowed
-      bcc wrappednegative
-      ; check the lower bounds
-      cmp MouseBoundsMin,x
-      bcs setvalue ; didn't wrap so set the value now
-    wrappednegative:
-      lda MouseBoundsMin,x
-      jmp setvalue
-    :
-    ; add the positive number
-    clc
-    adc TEMP,x
-    ; check if we wrapped, set to the max bounds if we did
-    bcs wrapped
-    ; check the upper bounds
-    cmp MouseBoundsMax,x
-    bcc setvalue ; didn't wrap so set the value
-wrapped:
-    lda MouseBoundsMax,x
-setvalue:
-    sta mouse + kMouseY,x
-    dex
-    bpl loop
-  ; calculate newly pressed buttons and shift it into byte zero
-  lda TEMP+2
-  eor #%11000000
-  and mouse + kMouseButtons
-  rol
-  ror mouse + kMouseZero
-  rol
-  ror mouse + kMouseZero
-  
-  ; calculate newly released buttons
-  lda mouse + kMouseButtons
-  eor #%11000000
-  and TEMP+2
-  rol
-  ror mouse + kMouseZero
-  rol
-  ror mouse + kMouseZero
-
-  ; Set the connected bit
-  sec
-  ror mouse + kMouseZero
-
+ 
   rts
 
 MOUSE_Y_MINIMUM = 1

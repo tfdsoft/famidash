@@ -2,7 +2,7 @@
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9, _temptemp5  ; C-safe temp storage
 .import pusha, pushax, callptr4
-.import _scroll_x, _cursedmusic
+.import _scroll_x, _cursedmusic, _draw_arrow
 
 .macpack longbranch
 
