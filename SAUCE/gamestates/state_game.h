@@ -367,7 +367,7 @@ void state_game(){
 			}
 */			//NO PAUSE IN ARCADE
 //		if (options & debugtoggle) {
-			if (joypad1.press_select && practice_point_count == 0) //THE BIG DEBUG - DISABLE BEFORE RELEASE
+/*			if (joypad1.press_select && practice_point_count == 0) //THE BIG DEBUG - DISABLE BEFORE RELEASE
 				{ 
 					DEBUG_MODE = !DEBUG_MODE; 
 					cube_data[0] &= 2; 
@@ -375,7 +375,7 @@ void state_game(){
 					if (!DEBUG_MODE) nocamlock = 0;
 				}		
 //		}
-
+*/
 /*		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press))) {
 			curr_practice_point--;
 			if (curr_practice_point >= practice_point_count)
