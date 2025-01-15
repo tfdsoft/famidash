@@ -1742,6 +1742,7 @@ ntAddrHiTbl:
 	STA	instBufWriteBuffer+5
 	LDA	#>(fl_updSeqNormal-1)
 	STA	instBufWriteBuffer+6
+	DEC	instBufWriteBuffer+4	;__	The length
 	ldx #7
 	JMP	transferWriteToInstBuf
 .endproc
@@ -3905,11 +3906,11 @@ SSDPCM_getbyte:
 		sec							;
 		sbc	tmp1					;
 		sta	instBufWriteBuffer+3	;__
-		iny							;
-		tya							;	The amount of bytes needs to be incremented
-		sta	instBufWriteBuffer+4	;__
+		sty	instBufWriteBuffer+4	;__	The amount of bytes
 
-		clc
+		tay
+
+		sec				;__	The amount of bytes needs to be incremented
 		adc	VRAM_INDEX
 		sta	VRAM_INDEX
 		tax

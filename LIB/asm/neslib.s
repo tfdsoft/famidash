@@ -1267,7 +1267,10 @@ fl_updSeqNormal:
 		lda (NAME_UPD_PTR),y
 		sta PPU_DATA
 		dey
-		bne @loop
+		bne	@loop
+	@finalWrite:
+		lda (NAME_UPD_PTR),y
+		sta PPU_DATA
 	txa
 	sec
 	adc	NAME_UPD_PTR
@@ -1275,7 +1278,6 @@ fl_updSeqNormal:
 	rts	; ropslide to next routine
 
 fl_updSeqRepeat:
-	iny
 	tax
 	pla
 	@loop:

@@ -61,6 +61,7 @@ _multi_vram_buffer_common:
 	; sreg = data
 	stx	instBufWriteBuffer+2
 	ldy xargs+0
+	dey
 	sty	instBufWriteBuffer+4
 
 	ldx	VRAM_INDEX
@@ -71,8 +72,13 @@ _multi_vram_buffer_common:
 	inx
 	dey
 	bne @loop
-	stx VRAM_INDEX
+@finalWrite:
+	lda (sreg), y
+	sta VRAM_BUF, x
+	inx
+	dey
 @end:
+	stx VRAM_INDEX
 	ldx #7
 	jmp	transferWriteToInstBuf
 	
