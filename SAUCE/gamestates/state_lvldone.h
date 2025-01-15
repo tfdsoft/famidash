@@ -664,6 +664,8 @@ const unsigned char xbgmtext1_size[] = {
 };
 
 
+#if !__VS_SYSTEM
+
 const uint8_t xbgm_lookup_table2[] = {
 	song_menu_theme,
 	song_stereo_madness,
@@ -704,6 +706,51 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_just_right,
 	song_against_the_odds_redux,
 };
+
+#else
+
+const uint8_t xbgm_lookup_table2[] = {
+	song_menu_theme,
+	song_stereo_madness,
+	song_back_on_track,
+	song_polargeist,
+	song_dry_out,
+	song_base_after_base,
+	song_cant_let_go,
+	song_jumper,
+	song_time_machine,
+	song_cycles,
+	song_xstep, 
+	song_clutterfunk,
+	song_theory_of_everything, 
+	song_electroman_adventures, 
+	song_clubstep,
+	song_electrodynamix,
+	song_hexagon_force,
+	song_blast_processing,
+	song_toe_2,
+	song_endgame, 
+	song_retray,
+	song_infernoplex,
+	song_problematic,
+	song_stereo_madness_2,
+	song_eon,
+	song_death_moon,
+	song_scheming_weasel,
+	song_the_challenge,
+	song_atthespeedoflight,
+	song_atthespeedoflight2,
+	song_midnight,
+	song_crackdown,
+	song_stalemate,
+	song_haunted_woods,
+	song_chaozfantasy,
+	song_just_right,
+	song_against_the_odds_redux,
+	song_practice,
+};
+
+#endif
 
 
 

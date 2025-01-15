@@ -33,6 +33,8 @@ extern uint8_t famistudio_song_speed;
 
 
 
+#if !__VS_SYSTEM
+
 const uint8_t xbgm_lookup_table[] = {
 	song_menu_theme,
 	song_stereo_madness,
@@ -74,12 +76,60 @@ const uint8_t xbgm_lookup_table[] = {
 	song_against_the_odds_redux,
 };
 
+#else
+
+const uint8_t xbgm_lookup_table[] = {
+	song_menu_theme,
+	song_stereo_madness,
+	song_back_on_track,
+	song_polargeist,
+	song_dry_out,
+	song_base_after_base,
+	song_cant_let_go,
+	song_jumper,
+	song_time_machine,
+	song_cycles,
+	song_xstep, 
+	song_clutterfunk,
+	song_theory_of_everything, 
+	song_electroman_adventures, 
+	song_clubstep,
+	song_electrodynamix,
+	song_hexagon_force,
+	song_blast_processing,
+	song_toe_2,
+	song_endgame, 
+	song_retray,
+	song_infernoplex,
+	song_problematic,
+	song_stereo_madness_2,
+	song_eon,
+	song_death_moon,
+	song_scheming_weasel,
+	song_the_challenge,
+	song_atthespeedoflight,
+	song_atthespeedoflight2,
+	song_midnight,
+	song_crackdown,
+	song_stalemate,
+	song_haunted_woods,
+	song_chaozfantasy,
+	song_just_right,
+	song_against_the_odds_redux,
+	song_practice,
+};
+
+#endif
 
 const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
     LSB(NTADR_A(15, 11)),	// 0
     LSB(NTADR_A(21, 11)),	// 1 
+    #if !__VS_SYSTEM
     LSB(NTADR_A(12, 17)),	// 2
+    #else
+    LSB(NTADR_A(15, 17)),	// 2
+    #endif
     LSB(NTADR_A(18, 17)),	// 3
     LSB(NTADR_A(27, 1)),	// 4
     LSB(NTADR_A(9, 11)),	// 5 = 0
@@ -90,7 +140,11 @@ const uint8_t hiNTAddrTableTitleScreen[]={
     MSB(NTADR_A(9, 11)),	// -1 = 4
     MSB(NTADR_A(15, 11)),	// 0
     MSB(NTADR_A(21, 11)),	// 1
+    #if !__VS_SYSTEM
     MSB(NTADR_A(12, 17)),	// 2
+    #else
+    MSB(NTADR_A(15, 17)),	// 2
+    #endif
     MSB(NTADR_A(18, 17)),	// 3
     MSB(NTADR_A(27, 1)),	// 4
     MSB(NTADR_A(9, 11)),	// 5 = 0
@@ -203,7 +257,7 @@ void levelselection() {
 	cube_rotate[1] = 0;
 
 	#if __VS_SYSTEM
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[newrand() & 31]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[(newrand() & 31) + 1]);
 	#else
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[menu_music]);
 	#endif
@@ -821,7 +875,7 @@ void state_menu() {
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
 	#if __VS_SYSTEM
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[newrand() & 31]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[(newrand() & 31) + 1]);
 	#else
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[menu_music]);
 	#endif
@@ -874,18 +928,20 @@ void state_menu() {
 	titlecolor3 = color3;
 	titlecolor2 = color2;
 	titlecolor1 = color1;
-	if (all_levels_complete != 0xFC) {
-		one_vram_buffer(0x19, NTADR_A(27,2));
-		one_vram_buffer(0x1A, NTADR_A(28,2));
-		one_vram_buffer(0x2D, NTADR_A(27,3));
-		one_vram_buffer(0x4D, NTADR_A(28,3));
-	}
-	else {
-		one_vram_buffer(0x1B, NTADR_A(27,2));
-		one_vram_buffer(0x1C, NTADR_A(28,2));
-		one_vram_buffer(0x1D, NTADR_A(27,3));
-		one_vram_buffer(0x1E, NTADR_A(28,3));
-	}	
+	#if !__VS_SYSTEM
+		if (all_levels_complete != 0xFC) {
+			one_vram_buffer(0x19, NTADR_A(27,2));
+			one_vram_buffer(0x1A, NTADR_A(28,2));
+			one_vram_buffer(0x2D, NTADR_A(27,3));
+			one_vram_buffer(0x4D, NTADR_A(28,3));
+		}
+		else {
+			one_vram_buffer(0x1B, NTADR_A(27,2));
+			one_vram_buffer(0x1C, NTADR_A(28,2));
+			one_vram_buffer(0x1D, NTADR_A(27,3));
+			one_vram_buffer(0x1E, NTADR_A(28,3));
+		}
+	#endif
 
 	while (!(joypad1.press & (PAD_START | PAD_A))
 		#if __VS_SYSTEM
@@ -1350,8 +1406,8 @@ void state_menu() {
 			//	pal_col(6, tmp2);
 			//	pal_col(5, oneShadeDarker(tmp2)); 
 			//	pal_set_update();
-			pal_set_update();
 			discoframe++;
+			pal_set_update();
 			if (discoframe == 12) discoframe = 0;
 		}
 		dec_mouse_timer();
@@ -1359,13 +1415,25 @@ void state_menu() {
 		
 		if (joypad1.press_right) {
 			if (menuselection == 5) menuselection = 0;
+			#if __VS_SYSTEM
+				else if (menuselection == 1) { menuselection = 5; tmp3--; tmp3--; tmp3--; }
+			#endif
 			else menuselection++;
 			tmp3--;
+			#if __VS_SYSTEM
+				menutimer = 0;
+			#endif
 		}
 		if (joypad1.press_left) {
 			if (menuselection == 0) menuselection = 5;
+			#if __VS_SYSTEM
+				else if (menuselection == 5) { menuselection = 1; tmp3++; tmp3++; tmp3++; }
+			#endif
 			else menuselection--;
 			tmp3++;
+			#if __VS_SYSTEM
+				menutimer = 0;
+			#endif
 		}
 
 		if (tmp3 ) {    // menu selection incremented
@@ -1805,8 +1873,8 @@ void clear_shit() {
 
 void check_if_music_stopped() {
 	#if __VS_SYSTEM
-		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[newrand() & 31]); }
-		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[newrand() & 31]); }
+		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[(newrand() & 31) + 1]); }
+		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[(newrand() & 31) + 1]); }
 	#else
 		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[song]); }
 		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[menu_music]); }
