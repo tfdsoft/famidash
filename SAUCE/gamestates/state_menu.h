@@ -161,7 +161,7 @@ void levelselection() {
 	// pal_bg(paletteMenu);
 	set_scroll_x(0);
 	set_scroll_y(0);  
-
+	menutimer = 0;
 	if (!coins_inserted) {
 		pal_bg(gameoverpalette);
 		vram_adr(NAMETABLE_A);
@@ -265,24 +265,35 @@ void levelselection() {
 
 		//if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
+		menutimer++;
+		if (menutimer == 2000) {
+			exitingLevelSelect = 1;
+			kandowatchesyousleep = 0;
+			return;
+		}			
+
 		if (joypad1.press & (PAD_START | PAD_A)){
 			start_the_level();
+			menutimer = 0;
 			return;
 		}
 
 		if (joypad1.press_b){
 			exitingLevelSelect = 1;
 			kandowatchesyousleep = 0;
+			menutimer = 0;
 			return;
 		}
 		
 		if (joypad1.press_right){
 			drawBarFlag = 2;
 			levelinc();
+			menutimer = 0;
 		}
 		if (joypad1.press_left){
 			drawBarFlag = 2;
 			leveldec();
+			menutimer = 0;			
 		}
 
 		// NOTE: this is hardcoded. It used to be 0x3F with the old scroll scheme
@@ -884,31 +895,31 @@ void state_menu() {
 		multi_vram_buffer_horz(vstext, sizeof(vstext)-1, NTADR_A(25,5));
 		if (!coins_inserted) multi_vram_buffer_horz(nocoinstext, sizeof(nocoinstext)-1, NTADR_A(11,9));
 		else {
-			multi_vram_buffer_horz(coinstext, sizeof(coinstext)-1, NTADR_A(7,9));
+			multi_vram_buffer_horz(coinstext, sizeof(coinstext)-1, NTADR_A(8,9));
 			hexToDec(coins_inserted);
 
 			tmp1 = 0;
 			
 			if (hexToDecOutputBuffer[4]) {
-				one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_A(23,9));
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_A(24,9));
 				tmp1++;
 			}
 
 			if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3]) {
-				one_vram_buffer(0xD0+hexToDecOutputBuffer[3], NTADR_A(23+tmp1,9));
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[3], NTADR_A(24+tmp1,9));
 				tmp1++;
 			}
 			
 			if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2]) {
-				one_vram_buffer(0xD0+hexToDecOutputBuffer[2], NTADR_A(23+tmp1,9));
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[2], NTADR_A(24+tmp1,9));
 				tmp1++;
 			}
 
 			if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1]) {
-				one_vram_buffer(0xD0+hexToDecOutputBuffer[1], NTADR_A(23+tmp1,9));
+				one_vram_buffer(0xD0+hexToDecOutputBuffer[1], NTADR_A(24+tmp1,9));
 				tmp1++;
 			}
-			one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_A(23+tmp1,9));			
+			one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_A(24+tmp1,9));			
 		}
 
 		pal_col(0x11,titlecolor3);
