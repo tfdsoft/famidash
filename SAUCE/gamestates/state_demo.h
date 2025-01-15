@@ -367,7 +367,6 @@ const uint8_t xbgm_lookup_table3[] = {
 	song_blast_processing,
 	song_toe_2,
 	song_endgame, 
-	song_practice,
 	song_retray,
 	song_infernoplex,
 	song_problematic,
@@ -385,6 +384,7 @@ const uint8_t xbgm_lookup_table3[] = {
 	song_chaozfantasy,
 	song_just_right,
 	song_against_the_odds_redux,
+	song_practice,
 };
 
 void set_settings() {
@@ -396,7 +396,7 @@ void set_settings() {
 		case 2: // sfxoff
 			options ^= sfxoff; break;
 		case 3: // musicoff
-			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgm_lookup_table3[newrand() & 31]); } break;
+			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgm_lookup_table3[(newrand() & 31) + 1]); } break;
 		case 4: // jumpsound
 			options ^= jumpsound; break;
 		case 5:

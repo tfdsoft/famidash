@@ -678,7 +678,6 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_blast_processing,
 	song_toe_2,
 	song_endgame, 
-	song_practice,
 	song_retray,
 	song_infernoplex,
 	song_problematic,
@@ -696,6 +695,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_chaozfantasy,
 	song_just_right,
 	song_against_the_odds_redux,
+	song_practice,
 };
 
 
