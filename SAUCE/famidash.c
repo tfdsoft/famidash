@@ -169,19 +169,19 @@ void setdefaultoptions() {
 	//oneptwoplayer = 0;
 	//platformer = 0;
 	options = 0; 
-		tmp2 = 0;
-		do {
-			coin1_obtained[tmp2] = 0;
-			coin2_obtained[tmp2] = 0;
-			coin3_obtained[tmp2] = 0;
-			LEVELCOMPLETE[tmp2] = 0;
-			level_completeness_normal[tmp2] = 0;
-			level_completeness_practice[tmp2] = 0;
-		} while (++tmp2 < (MAX_LEVEL_COMPLETE));
-		tmp2 = 0;
-		do {
-			achievements[tmp2] = 0;
-		} while (++tmp2 < (sizeof(achievements)));
+	tmp2 = 0;
+	do {
+		coin1_obtained[tmp2] = 0;
+		coin2_obtained[tmp2] = 0;
+		coin3_obtained[tmp2] = 0;
+		LEVELCOMPLETE[tmp2] = 0;
+		level_completeness_normal[tmp2] = 0;
+		level_completeness_practice[tmp2] = 0;
+	} while (++tmp2 < (MAX_LEVEL_COMPLETE));
+	tmp2 = 0;
+	do {
+		achievements[tmp2] = 0;
+	} while (++tmp2 < (sizeof(achievements)));
 	invisible = 0;
 	color1 = 0x2A;
 	color2 = 0X2C;		
