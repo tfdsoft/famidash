@@ -176,7 +176,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8154 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8163 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -188,7 +188,7 @@
 		.byte decode_grnd_color
 		.byte 27	; height of decode
 	; Level data
-		.incbin "EXPORTS/decode.lz.bin" ; Size: 5908
+		.incbin "EXPORTS/decode.lz.bin" ; Size: 5917
 
 
 .segment "LVL_BANK_0C"	; Total bank size: 8152 bytes
@@ -525,7 +525,7 @@
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3192
 
 
-.segment "LVL_BANK_1C"	; Total bank size: 8165 bytes
+.segment "LVL_BANK_1C"	; Total bank size: 8179 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -539,6 +539,8 @@
 	; Level data
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2727
 
+
+.segment "LVL_BANK_1D"	; Total bank size: 8185 bytes
 	.export level_data_retray
 	level_data_retray:
 	; Header
