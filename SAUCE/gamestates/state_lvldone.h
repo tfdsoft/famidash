@@ -420,6 +420,7 @@ const unsigned char TEXT_blast[]="BLAST";
 const unsigned char TEXT_speed[]="AT$THE$SPEED";
 const unsigned char TEXT_crackdown[]="OKIBA";
 const unsigned char TEXT_against[]="8$BIT$AGAINST";
+const unsigned char TEXT_geometrical[]="GEOMETRICAL";
 
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
@@ -461,6 +462,7 @@ const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
 const unsigned char TEXT_2textchaoz[]="CHAOZ$FANTASY";
 const unsigned char TEXT_2textjustright[]="JUST$RIGHT";
 const unsigned char TEXT_against2[]="THE$ODDS$REDUX";
+const unsigned char TEXT_geometrical2[]="DOMINATOR";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -513,6 +515,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_hexagon, 
 	TEXT_blast, 
 	TEXT_xlevel1textC, 
+	TEXT_geometrical,
 	0, 
 	0, 
 	0, 
@@ -526,7 +529,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_speed,
 	TEXT_speed,
 	0,
-	TEXT_crackdown,
+//	TEXT_crackdown,
 	0,
 	0,
 	0,
@@ -554,6 +557,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2hexagon, 
 	TEXT_2blast, 
 	TEXT_xlevel22textC, 
+	TEXT_geometrical2,
 	TEXT_xlevel2textE, 
 	TEXT_2textpractice, 
 	TEXT_2textretray, 
@@ -567,7 +571,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textspeed,
 	TEXT_2textspeed2,
 	TEXT_2textmidnight,
-	TEXT_2textcrackdown,
+//	TEXT_2textcrackdown,
 	TEXT_2textstalemate,
 	TEXT_2textwoods,
 	TEXT_2textchaoz,
@@ -595,6 +599,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2hexagon) - 1,
 	sizeof(TEXT_2blast) - 1,
 	sizeof(TEXT_xlevel22textC) - 1,	
+	sizeof(TEXT_geometrical2) - 1,	
 	sizeof(TEXT_xlevel2textE) - 1,
 	sizeof(TEXT_2textpractice) - 1,
 	sizeof(TEXT_2textretray) - 1,
@@ -608,7 +613,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textspeed) - 1,
 	sizeof(TEXT_2textspeed2) - 1,
 	sizeof(TEXT_2textmidnight) - 1,
-	sizeof(TEXT_2textcrackdown) - 1,
+//	sizeof(TEXT_2textcrackdown) - 1,
 	sizeof(TEXT_2textstalemate) - 1,
 	sizeof(TEXT_2textwoods) - 1,
 	sizeof(TEXT_2textchaoz) - 1,
@@ -635,6 +640,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_hexagon) - 1,	
 	sizeof(TEXT_blast) - 1,	
 	sizeof(TEXT_xlevel1textC) - 1,	
+	sizeof(TEXT_geometrical) - 1,	
 	0,
 	0,
 	0,
@@ -648,7 +654,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_speed) - 1,	
 	sizeof(TEXT_speed) - 1,	
 	0,
-	sizeof(TEXT_crackdown) - 1,	
+//	sizeof(TEXT_crackdown) - 1,	
 	0,
 	0,
 	0,
@@ -677,6 +683,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_hexagon_force,
 	song_blast_processing,
 	song_toe_2,
+	song_geometrical_dominator,
 	song_endgame, 
 	song_practice,
 	song_retray,
@@ -690,7 +697,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_atthespeedoflight,
 	song_atthespeedoflight2,
 	song_midnight,
-	song_crackdown,
+//	song_crackdown,
 	song_stalemate,
 	song_haunted_woods,
 	song_chaozfantasy,

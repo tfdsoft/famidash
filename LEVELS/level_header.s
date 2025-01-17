@@ -309,13 +309,6 @@ leveleasy_no_parallax  = 0
 leveleasy_bg_color    = $2C
 leveleasy_grnd_color  = $1C
 
-dearnostalgists_song_number = song_crackdown
-dearnostalgists_game_mode   = $00
-dearnostalgists_speed       = $02
-dearnostalgists_no_parallax  = 1
-dearnostalgists_bg_color    = $2C
-dearnostalgists_grnd_color  = $1C
-
 aprettyeasylevel_song_number = song_against_the_odds_redux
 aprettyeasylevel_game_mode   = $00
 aprettyeasylevel_speed       = $00
