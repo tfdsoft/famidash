@@ -176,7 +176,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8166 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8163 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -188,7 +188,7 @@
 		.byte decode_grnd_color
 		.byte 27	; height of decode
 	; Level data
-		.incbin "EXPORTS/decode.lz.bin" ; Size: 5920
+		.incbin "EXPORTS/decode.lz.bin" ; Size: 5917
 
 
 .segment "LVL_BANK_0C"	; Total bank size: 8152 bytes
