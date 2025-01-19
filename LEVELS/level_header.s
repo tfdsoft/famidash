@@ -1,4 +1,4 @@
-stereomadness_song_number = song_stereo_madness
+stereomadness_song_number = song_dash
 stereomadness_game_mode   = $00
 stereomadness_speed       = $00
 stereomadness_no_parallax = 0
@@ -195,12 +195,12 @@ clubstep_no_parallax  = 0
 clubstep_bg_color    = $06
 clubstep_grnd_color  = $0F
 
-pgclubstep_song_number = song_clubstep
-pgclubstep_game_mode   = $00
-pgclubstep_speed       = $00
-pgclubstep_no_parallax  = 0
-pgclubstep_bg_color    = $0F
-pgclubstep_grnd_color  = $0F
+fingerdash_song_number = song_clubstep
+fingerdash_game_mode   = $00
+fingerdash_speed       = $00
+fingerdash_no_parallax  = 1
+fingerdash_bg_color    = $0F
+fingerdash_grnd_color  = $0F
 
 firetemple_song_number = song_base_after_base
 firetemple_game_mode   = $00

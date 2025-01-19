@@ -22,6 +22,7 @@ SET all_levels= ^
     hexagonforce ^
     blastprocessing ^
     toe2 ^
+    fingerdash ^
     retray ^
     sonar ^
     thechallenge ^
@@ -43,7 +44,6 @@ SET all_levels= ^
     firetemple ^
     foresttemple ^
     eon ^
-    pgclubstep ^
     stalemate ^
     bloodbath ^
     cataclysm ^
