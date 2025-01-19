@@ -118,7 +118,7 @@ blastprocessing_bg_color    = $02
 blastprocessing_grnd_color  = $12
 
 
-test4_song_number = song_midnight
+test4_song_number = song_dash
 test4_game_mode   = $00
 test4_speed       = $00
 test4_no_parallax  = 1
