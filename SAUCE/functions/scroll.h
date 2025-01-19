@@ -59,7 +59,7 @@ void do_the_scroll_thing(){
 	
 	
 	
-	if ((!dual || twoplayer) && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || nocamlock)) {
+	if ((!dual || twoplayer) && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || nocamlock || nocamlockforced)) {
 			if (exitPortalTimer) exitPortalTimer--;
 			if (player0_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
 				tmp1 = MSB(0x4000 - player0_y);
