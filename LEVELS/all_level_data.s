@@ -540,7 +540,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2702
 
 
-.segment "LVL_BANK_1E"	; Total bank size: 8067 bytes
+.segment "LVL_BANK_1E"	; Total bank size: 7796 bytes
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header
@@ -569,6 +569,21 @@
 
 
 .segment "LVL_BANK_1F"	; Total bank size: 8186 bytes
+	.export level_data_stereomadness
+	level_data_stereomadness:
+	; Header
+		.byte stereomadness_song_number
+		.byte stereomadness_game_mode
+		.byte stereomadness_speed
+		.byte stereomadness_no_parallax
+		.byte stereomadness_bg_color
+		.byte stereomadness_grnd_color
+		.byte 27	; height of stereomadness
+	; Level data
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1852
+
+
+.segment "LVL_BANK_20"	; Total bank size: 8185 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -582,8 +597,6 @@
 	; Level data
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
-
-.segment "LVL_BANK_20"	; Total bank size: 8165 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -611,7 +624,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "LVL_BANK_21"	; Total bank size: 8019 bytes
+.segment "LVL_BANK_22"	; Total bank size: 4115 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -625,21 +638,6 @@
 	; Level data
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 937
 
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte stereomadness_song_number
-		.byte stereomadness_game_mode
-		.byte stereomadness_speed
-		.byte stereomadness_no_parallax
-		.byte stereomadness_bg_color
-		.byte stereomadness_grnd_color
-		.byte 27	; height of stereomadness
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 896
-
-
-.segment "LVL_BANK_22"	; Total bank size: 2282 bytes
 	.export level_data_eon_1
 	level_data_eon_1:
 	; Level data
