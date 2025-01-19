@@ -22,6 +22,7 @@ void reset_level() {
 	robotjumpframe[0] = 0;
 	slope_frames[0] = 0;
 	slope_frames[1] = 0;
+	nocamlockforced = 0;
 	currplayer_slope_frames = 0;
 	make_cube_jump_higher = 0;
 	tmp1 = 30;
