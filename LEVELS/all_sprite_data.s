@@ -1106,7 +1106,7 @@ sprite_data_cantletgo:
   .byte $10,$34,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_06"
+.segment "LVL_BANK_20"
 sprite_data_jumper:
   .byte $e0,$00,$80,$03,$2c
   .byte $b0,$01,$80,$03,$2e
@@ -5892,7 +5892,7 @@ sprite_data_toe2:
   .byte $e0,$3c,$50,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_20"
+.segment "LVL_BANK_06"
 sprite_data_fingerdash:
   .byte $00,$00,$60,$03,$84
   .byte $00,$00,$70,$03,$d5
@@ -6062,29 +6062,39 @@ sprite_data_fingerdash:
   .byte $90,$27,$20,$03,$96
   .byte $90,$27,$30,$03,$b8
   .byte $c0,$27,$20,$03,$86
+  .byte $60,$28,$30,$03,$6e
   .byte $c0,$28,$20,$03,$18
   .byte $c0,$28,$30,$03,$15
+  .byte $30,$29,$20,$03,$b0
   .byte $30,$29,$30,$03,$80
-  .byte $30,$29,$40,$03,$b0
+  .byte $30,$29,$40,$03,$6e
   .byte $70,$29,$30,$03,$86
   .byte $70,$29,$40,$03,$b8
+  .byte $80,$29,$50,$03,$6e
+  .byte $d0,$29,$10,$03,$6e
   .byte $10,$2a,$10,$03,$16
   .byte $10,$2a,$20,$03,$19
   .byte $10,$2a,$30,$03,$16
+  .byte $70,$2a,$40,$03,$6e
   .byte $90,$2a,$30,$03,$96
   .byte $c0,$2a,$30,$03,$86
+  .byte $d0,$2a,$20,$03,$6e
+  .byte $40,$2b,$10,$03,$6e
   .byte $70,$2b,$30,$03,$96
   .byte $a0,$2b,$30,$03,$86
+  .byte $c0,$2b,$20,$03,$6e
   .byte $e0,$2b,$40,$03,$18
   .byte $e0,$2b,$50,$03,$15
+  .byte $20,$2c,$00,$03,$6e
   .byte $30,$2c,$30,$03,$96
   .byte $60,$2c,$30,$03,$86
-  .byte $e0,$2c,$f0,$02,$1b
+  .byte $b0,$2c,$70,$03,$6e
   .byte $00,$2d,$30,$03,$96
   .byte $30,$2d,$30,$03,$86
   .byte $30,$2d,$40,$03,$17
   .byte $30,$2d,$50,$03,$16
   .byte $40,$2d,$40,$03,$19
+  .byte $70,$2d,$60,$03,$1b
   .byte $c0,$2d,$40,$03,$94
   .byte $c0,$2d,$50,$03,$b0
   .byte $e0,$2d,$40,$03,$85
@@ -13036,7 +13046,7 @@ sprite_data_firetemple:
   .byte $f0,$36,$70,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_03"
+.segment "LVL_BANK_20"
 sprite_data_foresttemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$ba
@@ -16373,11 +16383,17 @@ sprite_data_luckydraw:
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1A"
+.segment "LVL_BANK_1B"
 sprite_data_test4:
-  .byte $e0,$00,$70,$03,$07
-  .byte $60,$01,$70,$03,$1a
-  .byte $00,$02,$70,$03,$1b
-  .byte $e0,$02,$70,$03,$0f
-  .byte $80,$2a,$40,$03,$0f
+  .byte $40,$00,$60,$03,$02
+  .byte $60,$00,$80,$03,$05
+  .byte $80,$00,$50,$03,$05
+  .byte $a0,$00,$80,$03,$05
+  .byte $c0,$00,$50,$03,$05
+  .byte $e0,$00,$80,$03,$05
+  .byte $00,$01,$60,$03,$6e
+  .byte $10,$01,$70,$03,$6e
+  .byte $20,$01,$80,$03,$6e
+  .byte $30,$01,$70,$03,$6e
+  .byte $40,$01,$60,$03,$6e
   .byte $ff

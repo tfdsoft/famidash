@@ -338,6 +338,8 @@ uint8_t ufo_orbed;
 
 uint8_t dashing[2];
 
+uint8_t minicoins;
+
 
 // Sprite Storage
 lohi_arr16_decl(activesprites_x, max_loaded_sprites);

@@ -32,7 +32,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8072
 
 
-.segment "LVL_BANK_03"	; Total bank size: 8125 bytes
+.segment "LVL_BANK_03"	; Total bank size: 7709 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -77,7 +77,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7048
 
 
-.segment "LVL_BANK_06"	; Total bank size: 8146 bytes
+.segment "LVL_BANK_06"	; Total bank size: 8156 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -238,7 +238,7 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5217
 
 
-.segment "LVL_BANK_10"	; Total bank size: 8134 bytes
+.segment "LVL_BANK_10"	; Total bank size: 8192 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -264,6 +264,19 @@
 		.byte 27	; height of timemachine
 	; Level data
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3074
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 58
 
 
 .segment "LVL_BANK_11"	; Total bank size: 8066 bytes
@@ -484,7 +497,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
 
 
-.segment "LVL_BANK_1A"	; Total bank size: 8190 bytes
+.segment "LVL_BANK_1A"	; Total bank size: 8164 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
@@ -525,21 +538,6 @@
 		.byte 27	; height of retray
 	; Level data
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2702
-
-
-.segment "LVL_BANK_1D"	; Total bank size: 8158 bytes
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 79
 
 
 .segment "LVL_BANK_1E"	; Total bank size: 8067 bytes
@@ -585,7 +583,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
 
-.segment "LVL_BANK_20"	; Total bank size: 7709 bytes
+.segment "LVL_BANK_20"	; Total bank size: 8165 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header

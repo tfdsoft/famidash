@@ -2,6 +2,25 @@
 
 // a 16x16 pixel metasprite
 
+
+const unsigned char MINICOIN_SPRITE1[]={
+	  4,  -4,0xE9,0,
+	0x80
+};
+const unsigned char MINICOIN_SPRITE2[]={
+	  4,  -4,0xED,0,
+	0x80
+};
+const unsigned char MINICOIN_SPRITE3[]={
+	  4,  -4,0xF7,0,
+	0x80
+};
+const unsigned char MINICOIN_SPRITE4[]={
+	  4,  -4,0xED,0|OAM_FLIP_H,
+	0x80
+};
+
+
 const unsigned char Heat_Ball_1[]={
 
 	  0,  0,0x1D,3,
@@ -2825,6 +2844,12 @@ const struct SpriteFrame RANDOM_GAMEMODE_PORTAL[]={
 	{10, Portal_Gamemode_Swing},
 };
 
+const struct SpriteFrame MINI_COIN_SPRITES[]={
+	{5, MINICOIN_SPRITE1},
+	{5, MINICOIN_SPRITE2},
+	{5, MINICOIN_SPRITE3},
+	{5, MINICOIN_SPRITE4},
+};
 
 const unsigned char nometa[] = {0x80};
 
@@ -3180,6 +3205,7 @@ const unsigned char * const Metasprites[]={
 	Longboy_Portal,
 	Bigboy_Portal,
 	Speed_SLOW_Portal,
+	MINICOIN_SPRITE1,
 	};
 
 
@@ -3299,6 +3325,7 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
+	MINI_COIN_SPRITES,
 	
 	
 };
@@ -3419,6 +3446,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
+	sizeof(MINI_COIN_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 };
 
 #pragma rodata-name (pop)
