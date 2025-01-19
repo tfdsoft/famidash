@@ -119,11 +119,13 @@
 #define LONGBOI_MODE_ENTER			0x6B
 #define BIGBOI_MODE_ENTER			0x6C
 #define SPEED_SLOW				0x6D
+#define MINI_COIN				0x6E
 
+#define FORCED_FREECAM_ON			0xDD
 #define X_SCROLL_SETTING			0xDE	//bottom floor is 0xB0, reset to standard at 0x50
 #define DEATH_CHANCE				0xDF
 
-#define TELEPORT_PORTAL_ENTER_EXTENSION		0xED
+#define FORCED_FREECAM_OFF			0xED
 #define MASK_SPRITES_ON				0xEE
 #define MASK_SPRITES_OFF			0xEF
 

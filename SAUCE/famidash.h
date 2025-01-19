@@ -299,6 +299,7 @@ uint16_t triggers;
 uint16_t top_triggers;
 
 uint8_t nocamlock;
+uint8_t nocamlockforced;
 uint8_t nestopia;
 
 uint8_t last_slope_type[2];
@@ -344,6 +345,8 @@ uint8_t trail_sprites_visible[9];
 uint8_t ufo_orbed;
 
 uint8_t dashing[2];
+
+uint8_t minicoins;
 
 
 // Sprite Storage

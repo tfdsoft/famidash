@@ -118,7 +118,7 @@ blastprocessing_bg_color    = $02
 blastprocessing_grnd_color  = $12
 
 
-test4_song_number = song_midnight
+test4_song_number = song_dash
 test4_game_mode   = $00
 test4_speed       = $00
 test4_no_parallax  = 1
@@ -195,12 +195,12 @@ clubstep_no_parallax  = 0
 clubstep_bg_color    = $06
 clubstep_grnd_color  = $0F
 
-pgclubstep_song_number = song_clubstep
-pgclubstep_game_mode   = $00
-pgclubstep_speed       = $00
-pgclubstep_no_parallax  = 0
-pgclubstep_bg_color    = $0F
-pgclubstep_grnd_color  = $0F
+fingerdash_song_number = song_clubstep
+fingerdash_game_mode   = $00
+fingerdash_speed       = $00
+fingerdash_no_parallax  = 1
+fingerdash_bg_color    = $0F
+fingerdash_grnd_color  = $0F
 
 firetemple_song_number = song_base_after_base
 firetemple_game_mode   = $00
@@ -308,13 +308,6 @@ leveleasy_speed       = $00
 leveleasy_no_parallax  = 0
 leveleasy_bg_color    = $2C
 leveleasy_grnd_color  = $1C
-
-dearnostalgists_song_number = song_crackdown
-dearnostalgists_game_mode   = $00
-dearnostalgists_speed       = $02
-dearnostalgists_no_parallax  = 1
-dearnostalgists_bg_color    = $2C
-dearnostalgists_grnd_color  = $1C
 
 aprettyeasylevel_song_number = song_against_the_odds_redux
 aprettyeasylevel_game_mode   = $00
