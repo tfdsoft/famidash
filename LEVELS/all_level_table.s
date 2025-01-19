@@ -23,6 +23,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_hexagonforce)
 	.byte .lobyte(level_data_blastprocessing)
 	.byte .lobyte(level_data_toe2)
+	.byte .lobyte(level_data_fingerdash)
 	.byte .lobyte(level_data_retray)
 	.byte .lobyte(level_data_sonar)
 	.byte .lobyte(level_data_thechallenge)
@@ -44,7 +45,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_eon)
-	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_cataclysm)
@@ -70,6 +70,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_hexagonforce)
 	.byte .hibyte(level_data_blastprocessing)
 	.byte .hibyte(level_data_toe2)
+	.byte .hibyte(level_data_fingerdash)
 	.byte .hibyte(level_data_retray)
 	.byte .hibyte(level_data_sonar)
 	.byte .hibyte(level_data_thechallenge)
@@ -91,7 +92,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_firetemple)
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_eon)
-	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_cataclysm)
@@ -117,6 +117,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_hexagonforce))
 	.byte .lobyte(.bank(level_data_blastprocessing))
 	.byte .lobyte(.bank(level_data_toe2))
+	.byte .lobyte(.bank(level_data_fingerdash))
 	.byte .lobyte(.bank(level_data_retray))
 	.byte .lobyte(.bank(level_data_sonar))
 	.byte .lobyte(.bank(level_data_thechallenge))
@@ -138,7 +139,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_firetemple))
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_eon))
-	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_cataclysm))
@@ -176,6 +176,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_hexagonforce)
 	.byte .lobyte(sprite_data_blastprocessing)
 	.byte .lobyte(sprite_data_toe2)
+	.byte .lobyte(sprite_data_fingerdash)
 	.byte .lobyte(sprite_data_retray)
 	.byte .lobyte(sprite_data_sonar)
 	.byte .lobyte(sprite_data_thechallenge)
@@ -197,7 +198,6 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_firetemple)
 	.byte .lobyte(sprite_data_foresttemple)
 	.byte .lobyte(sprite_data_eon)
-	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_bloodbath)
 	.byte .lobyte(sprite_data_cataclysm)
@@ -223,6 +223,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_hexagonforce)
 	.byte .hibyte(sprite_data_blastprocessing)
 	.byte .hibyte(sprite_data_toe2)
+	.byte .hibyte(sprite_data_fingerdash)
 	.byte .hibyte(sprite_data_retray)
 	.byte .hibyte(sprite_data_sonar)
 	.byte .hibyte(sprite_data_thechallenge)
@@ -244,7 +245,6 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_firetemple)
 	.byte .hibyte(sprite_data_foresttemple)
 	.byte .hibyte(sprite_data_eon)
-	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_bloodbath)
 	.byte .hibyte(sprite_data_cataclysm)
@@ -270,6 +270,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_hexagonforce))
 	.byte .lobyte(.bank(sprite_data_blastprocessing))
 	.byte .lobyte(.bank(sprite_data_toe2))
+	.byte .lobyte(.bank(sprite_data_fingerdash))
 	.byte .lobyte(.bank(sprite_data_retray))
 	.byte .lobyte(.bank(sprite_data_sonar))
 	.byte .lobyte(.bank(sprite_data_thechallenge))
@@ -291,7 +292,6 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_firetemple))
 	.byte .lobyte(.bank(sprite_data_foresttemple))
 	.byte .lobyte(.bank(sprite_data_eon))
-	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
 	.byte .lobyte(.bank(sprite_data_cataclysm))
@@ -302,7 +302,7 @@ _sprite_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
-	.byte .lobyte($000090)		; stereomadness
+	.byte .lobyte($00006E)		; stereomadness
 	.byte .lobyte($000088)		; backontrack
 	.byte .lobyte($000096)		; polargeist
 	.byte .lobyte($000087)		; dryout
@@ -320,6 +320,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A9)		; hexagonforce
 	.byte .lobyte($0000A7)		; blastprocessing
 	.byte .lobyte($00009D)		; toe2
+	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($000066)		; retray
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000028)		; thechallenge
@@ -341,17 +342,16 @@ _level_lengths_lo:
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($000286)		; eon
-	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
 	.byte .lobyte($000086)		; luckydraw
-	.byte .lobyte($000080)		; test4
+	.byte .lobyte($00006E)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
-	.byte .hibyte($000090)		; stereomadness
+	.byte .hibyte($00006E)		; stereomadness
 	.byte .hibyte($000088)		; backontrack
 	.byte .hibyte($000096)		; polargeist
 	.byte .hibyte($000087)		; dryout
@@ -369,6 +369,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A9)		; hexagonforce
 	.byte .hibyte($0000A7)		; blastprocessing
 	.byte .hibyte($00009D)		; toe2
+	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($000066)		; retray
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000028)		; thechallenge
@@ -390,17 +391,16 @@ _level_lengths_md:
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($000286)		; eon
-	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
 	.byte .hibyte($000086)		; luckydraw
-	.byte .hibyte($000080)		; test4
+	.byte .hibyte($00006E)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-	.byte .bankbyte($000090)		; stereomadness
+	.byte .bankbyte($00006E)		; stereomadness
 	.byte .bankbyte($000088)		; backontrack
 	.byte .bankbyte($000096)		; polargeist
 	.byte .bankbyte($000087)		; dryout
@@ -418,6 +418,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A9)		; hexagonforce
 	.byte .bankbyte($0000A7)		; blastprocessing
 	.byte .bankbyte($00009D)		; toe2
+	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000028)		; thechallenge
@@ -439,12 +440,11 @@ _level_lengths_hi:
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($000286)		; eon
-	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm
 	.byte .bankbyte($000086)		; luckydraw
-	.byte .bankbyte($000080)		; test4
+	.byte .bankbyte($00006E)		; test4
 
 .endif
 .endif

@@ -2,7 +2,7 @@
 #ifdef FLAG_ENABLE_TEST_LEVELS
 	#define LEVEL_COUNT 256
 #else
-	#define LEVEL_COUNT 18
+	#define LEVEL_COUNT 19
 #endif
 
 #ifdef FLAG_ENABLE_TEST_LEVELS

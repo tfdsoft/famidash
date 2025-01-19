@@ -47,32 +47,19 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7709
 
 
-.segment "LVL_BANK_04"	; Total bank size: 8173 bytes
-	.export level_data_pgclubstep
-	level_data_pgclubstep:
+.segment "LVL_BANK_04"	; Total bank size: 8162 bytes
+	.export level_data_fingerdash
+	level_data_fingerdash:
 	; Header
-		.byte pgclubstep_song_number
-		.byte pgclubstep_game_mode
-		.byte pgclubstep_speed
-		.byte pgclubstep_no_parallax
-		.byte pgclubstep_bg_color
-		.byte pgclubstep_grnd_color
-		.byte 50	; height of pgclubstep
+		.byte fingerdash_song_number
+		.byte fingerdash_game_mode
+		.byte fingerdash_speed
+		.byte fingerdash_no_parallax
+		.byte fingerdash_bg_color
+		.byte fingerdash_grnd_color
+		.byte 27	; height of fingerdash
 	; Level data
-		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7517
-
-	.export level_data_luckydraw
-	level_data_luckydraw:
-	; Header
-		.byte luckydraw_song_number
-		.byte luckydraw_game_mode
-		.byte luckydraw_speed
-		.byte luckydraw_no_parallax
-		.byte luckydraw_bg_color
-		.byte luckydraw_grnd_color
-		.byte 27	; height of luckydraw
-	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
+		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7476
 
 
 .segment "LVL_BANK_05"	; Total bank size: 8184 bytes
@@ -105,7 +92,7 @@
 		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6910
 
 
-.segment "LVL_BANK_08"	; Total bank size: 8191 bytes
+.segment "LVL_BANK_08"	; Total bank size: 8160 bytes
 	.export level_data_bloodbathbutno
 	level_data_bloodbathbutno:
 	; Header
@@ -221,7 +208,7 @@
 		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5565
 
 
-.segment "LVL_BANK_0E"	; Total bank size: 8182 bytes
+.segment "LVL_BANK_0E"	; Total bank size: 8177 bytes
 	.export level_data_revolution
 	level_data_revolution:
 	; Header
@@ -236,7 +223,7 @@
 		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5336
 
 
-.segment "LVL_BANK_0F"	; Total bank size: 8058 bytes
+.segment "LVL_BANK_0F"	; Total bank size: 8013 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -251,7 +238,7 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5217
 
 
-.segment "LVL_BANK_10"	; Total bank size: 8192 bytes
+.segment "LVL_BANK_10"	; Total bank size: 8134 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -277,19 +264,6 @@
 		.byte 27	; height of timemachine
 	; Level data
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3074
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 58
 
 
 .segment "LVL_BANK_11"	; Total bank size: 8066 bytes
@@ -510,7 +484,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
 
 
-.segment "LVL_BANK_1A"	; Total bank size: 8164 bytes
+.segment "LVL_BANK_1A"	; Total bank size: 8190 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
@@ -525,7 +499,7 @@
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3192
 
 
-.segment "LVL_BANK_1C"	; Total bank size: 8179 bytes
+.segment "LVL_BANK_1C"	; Total bank size: 8145 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -539,8 +513,6 @@
 	; Level data
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2727
 
-
-.segment "LVL_BANK_1D"	; Total bank size: 8185 bytes
 	.export level_data_retray
 	level_data_retray:
 	; Header
@@ -555,7 +527,22 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2702
 
 
-.segment "LVL_BANK_1E"	; Total bank size: 8036 bytes
+.segment "LVL_BANK_1D"	; Total bank size: 8158 bytes
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 79
+
+
+.segment "LVL_BANK_1E"	; Total bank size: 8067 bytes
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header
@@ -569,8 +556,6 @@
 	; Level data
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
-
-.segment "LVL_BANK_1F"	; Total bank size: 8166 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -584,21 +569,8 @@
 	; Level data
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1876
 
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte stereomadness_song_number
-		.byte stereomadness_game_mode
-		.byte stereomadness_speed
-		.byte stereomadness_no_parallax
-		.byte stereomadness_bg_color
-		.byte stereomadness_grnd_color
-		.byte 27	; height of stereomadness
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1852
 
-
-.segment "LVL_BANK_20"	; Total bank size: 7814 bytes
+.segment "LVL_BANK_1F"	; Total bank size: 8186 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -612,6 +584,8 @@
 	; Level data
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
+
+.segment "LVL_BANK_20"	; Total bank size: 7709 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -639,7 +613,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "LVL_BANK_22"	; Total bank size: 5306 bytes
+.segment "LVL_BANK_21"	; Total bank size: 8019 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -653,7 +627,35 @@
 	; Level data
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 937
 
+	.export level_data_stereomadness
+	level_data_stereomadness:
+	; Header
+		.byte stereomadness_song_number
+		.byte stereomadness_game_mode
+		.byte stereomadness_speed
+		.byte stereomadness_no_parallax
+		.byte stereomadness_bg_color
+		.byte stereomadness_grnd_color
+		.byte 27	; height of stereomadness
+	; Level data
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 896
+
+
+.segment "LVL_BANK_22"	; Total bank size: 2282 bytes
 	.export level_data_eon_1
 	level_data_eon_1:
 	; Level data
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
+
+	.export level_data_luckydraw
+	level_data_luckydraw:
+	; Header
+		.byte luckydraw_song_number
+		.byte luckydraw_game_mode
+		.byte luckydraw_speed
+		.byte luckydraw_no_parallax
+		.byte luckydraw_bg_color
+		.byte luckydraw_grnd_color
+		.byte 27	; height of luckydraw
+	; Level data
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656

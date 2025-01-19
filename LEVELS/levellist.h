@@ -68,6 +68,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //hexagon force
 	DECO1, //blast processing
 	DECO1, //TOE2
+	EXTRASPRITES1, //fingerdash
 	DECO1, //RETRAY
 	DECO1, //SONAR
 	EXTRASPRITES1, //the challenge
@@ -90,7 +91,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //fire temple
 	DECO1, //forest temple
 	EXTRASPRITES1, //EON
-	DECO1, //pg clubstep
+//	DECO1, //pg clubstep
 	DECO1, //stalemate
 	DECOCLOUD, //bloodbath
 	DECO1, //cataclysm
@@ -117,6 +118,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //hexagon force
 	SPIKESB, //blast processing
 	SPIKESA, //TOE2
+	SPIKESA, //fingerdash
 	SPIKESA, //RETRAY
 	SPIKESA, //SONAR
 	SPIKESA, //the challenge
@@ -139,7 +141,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //fire temple
 	SPIKESB, //forest temple
 	SPIKESB, //eon
-	SPIKESA, //pg clubstep
+//	SPIKESA, //pg clubstep
 	SPIKESA, //STALEMATE
 	SPIKESC, //bloodbath
 	SPIKESC, //cataclysm
@@ -166,6 +168,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //hexagon force
 	BLOCKSB, //blast processing
 	BLOCKSB, //TOE2
+	BLOCKSB, //fingerdash
 	BLOCKSB, //RETRAY
 	BLOCKSB, //SONAR
 	BLOCKSB, //the challenge
@@ -188,7 +191,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //fire temple
 	BLOCKSB, //forest temple
 	BLOCKSA, //EON
-	BLOCKSB, //pg clubstep
+//	BLOCKSB, //pg clubstep
 	BLOCKSB, //stalemate
 	BLOCKSB, //bloodbath
 	BLOCKSB, //cataclysm
@@ -215,6 +218,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //hexagon force
 	SAWBLADESA, //blast processing
 	SAWBLADESA, //TOE2
+	SAWBLADESA, //fingerdash
 	SAWBLADESA, //retray
 	SAWBLADESA, //SONAR
 	SAWBLADESA, //the challenge
@@ -237,7 +241,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //fire temple
 	SAWBLADESA, //forest temple
 	SAWBLADESA, //EON
-	SAWBLADESA, //PG CLUBSTEP
+//	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //stalemate
 	SAWBLADESA, //bloodbath
 	SAWBLADESA, //cataclysm
@@ -265,6 +269,7 @@ const unsigned char difficulty_list[] = {
     INSANE,  //hexagon force
     HARDER, //blast processing
     DEMON,  //TOE2
+    INSANE,  //fingerdash
     EASY, //RETRAY
     EASY, //SONAR
     NORMAL, //the challenge
@@ -287,7 +292,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //fire temple
     DEMON, //forest temple
     DEMON, //eon
-    DEMON, //pg clubstep
+//    DEMON, //pg clubstep
     DEMON, //stalemate
     DEMON, //bloodbath
     DEMON, //cataclysm
@@ -314,6 +319,7 @@ const unsigned char stars_list[] = {
 	12,  //hexagon force
 	10,  //blast processing
 	14,  //TOE2
+	12,  //fingerdash
 	2,   //retray
 	2,   //SONAR
 	3,   //the challenge
@@ -336,7 +342,7 @@ const unsigned char stars_list[] = {
 	10, //fire temple
 	10, //forest temple
 	10, //eon
-	10, //pg clubstep
+//	10, //pg clubstep
 	10, //stalemate
 	10, //bloodbath
 	10, //cataclysm
