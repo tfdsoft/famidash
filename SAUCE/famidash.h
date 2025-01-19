@@ -302,6 +302,7 @@ uint16_t triggers;
 uint16_t top_triggers;
 
 uint8_t nocamlock;
+uint8_t nocamlockforced;
 uint8_t nestopia;
 
 uint8_t last_slope_type[2];

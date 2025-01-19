@@ -71,9 +71,9 @@ uint8_t sprite_heights[]={
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// C0 - C7
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// C8 - CF
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// D0 - D7
-	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	SPBH,	KNDO,	// D8 - DF
+	COLR,	COLR,	COLR,	COLR,	COLR,	SPBH,	SPBH,	KNDO,	// D8 - DF
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// E0 - E7
-	COLR,	COLR,	COLR,	COLR,	COLR,	0x10,	KNDO,	KNDO,	// E8 - EF
+	COLR,	COLR,	COLR,	COLR,	COLR,	SPBH,	KNDO,	KNDO,	// E8 - EF
 	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x10,	0x10,	// F0 - F7
 	0x10,	0x10,	0x10,	0x10,	0x10,	0x03,	0x03,	0x00,	// F8 - FF
 };
@@ -261,6 +261,12 @@ char sprite_load_special_behavior(){
 				disco_sprites = 0;
 				killSprite_return0;
 		#endif
+		case FORCED_FREECAM_ON:
+			nocamlockforced = 1;
+			killSprite_return0;
+		case FORCED_FREECAM_OFF:
+			nocamlockforced = 0;
+			killSprite_return0;
 		case X_SCROLL_SETTING:
 			if (!cam_seesaw) {
 				target_x_scroll_stop = (activesprites_realy[index] & 0xF0) << 8;
