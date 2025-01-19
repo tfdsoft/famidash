@@ -302,7 +302,7 @@ _sprite_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
-	.byte .lobyte($00006E)		; stereomadness
+	.byte .lobyte($000090)		; stereomadness
 	.byte .lobyte($000088)		; backontrack
 	.byte .lobyte($000096)		; polargeist
 	.byte .lobyte($000087)		; dryout
@@ -351,7 +351,7 @@ _level_lengths_lo:
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
-	.byte .hibyte($00006E)		; stereomadness
+	.byte .hibyte($000090)		; stereomadness
 	.byte .hibyte($000088)		; backontrack
 	.byte .hibyte($000096)		; polargeist
 	.byte .hibyte($000087)		; dryout
@@ -400,7 +400,7 @@ _level_lengths_md:
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-	.byte .bankbyte($00006E)		; stereomadness
+	.byte .bankbyte($000090)		; stereomadness
 	.byte .bankbyte($000088)		; backontrack
 	.byte .bankbyte($000096)		; polargeist
 	.byte .bankbyte($000087)		; dryout

@@ -1,4 +1,4 @@
-stereomadness_song_number = song_dash
+stereomadness_song_number = song_stereo_madness
 stereomadness_game_mode   = $00
 stereomadness_speed       = $00
 stereomadness_no_parallax = 0
