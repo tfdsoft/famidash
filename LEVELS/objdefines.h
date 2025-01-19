@@ -119,6 +119,7 @@
 #define LONGBOI_MODE_ENTER			0x6B
 #define BIGBOI_MODE_ENTER			0x6C
 #define SPEED_SLOW				0x6D
+#define MINI_COIN				0x6E
 
 #define FORCED_FREECAM_ON			0xDD
 #define X_SCROLL_SETTING			0xDE	//bottom floor is 0xB0, reset to standard at 0x50
