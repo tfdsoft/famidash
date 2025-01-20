@@ -1515,7 +1515,7 @@ sprite_data_jumper:
   .byte $f0,$37,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_0C"
+.segment "LVL_BANK_1B"
 sprite_data_timemachine:
   .byte $10,$01,$70,$03,$ab
   .byte $10,$01,$80,$03,$db
@@ -2410,7 +2410,7 @@ sprite_data_cycles:
   .byte $50,$33,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1B"
+.segment "LVL_BANK_1D"
 sprite_data_xstep:
   .byte $30,$01,$70,$03,$2a
   .byte $50,$01,$78,$03,$0a
@@ -4121,7 +4121,7 @@ sprite_data_clubstep:
   .byte $80,$38,$40,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_14"
+.segment "LVL_BANK_12"
 sprite_data_electrodynamix:
   .byte $00,$00,$60,$03,$99
   .byte $00,$00,$80,$03,$c9
@@ -6303,7 +6303,7 @@ sprite_data_fingerdash:
   .byte $20,$39,$40,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_04"
+.segment "LVL_BANK_22"
 sprite_data_retray:
   .byte $00,$00,$50,$03,$8f
   .byte $00,$00,$60,$03,$cf
@@ -6412,6 +6412,50 @@ sprite_data_retray:
   .byte $60,$13,$40,$03,$89
   .byte $80,$13,$40,$03,$99
   .byte $a0,$13,$40,$03,$a9
+  .byte $c0,$13,$80,$03,$33
+  .byte $d0,$13,$70,$03,$33
+  .byte $e0,$13,$60,$03,$33
+  .byte $f0,$13,$50,$03,$33
+  .byte $00,$14,$40,$03,$33
+  .byte $00,$15,$30,$03,$33
+  .byte $10,$15,$20,$03,$33
+  .byte $20,$15,$10,$03,$33
+  .byte $30,$15,$00,$03,$33
+  .byte $40,$15,$f0,$02,$33
+  .byte $10,$16,$80,$03,$33
+  .byte $20,$16,$70,$03,$33
+  .byte $30,$16,$60,$03,$33
+  .byte $40,$16,$50,$03,$33
+  .byte $50,$16,$40,$03,$33
+  .byte $a0,$17,$30,$03,$33
+  .byte $b0,$17,$20,$03,$33
+  .byte $c0,$17,$10,$03,$33
+  .byte $d0,$17,$00,$03,$33
+  .byte $e0,$17,$f0,$02,$33
+  .byte $b0,$18,$80,$03,$33
+  .byte $c0,$18,$70,$03,$33
+  .byte $d0,$18,$60,$03,$33
+  .byte $e0,$18,$50,$03,$33
+  .byte $f0,$18,$40,$03,$33
+  .byte $60,$1a,$30,$03,$33
+  .byte $70,$1a,$20,$03,$33
+  .byte $80,$1a,$10,$03,$33
+  .byte $90,$1a,$00,$03,$33
+  .byte $a0,$1a,$f0,$02,$33
+  .byte $90,$1b,$80,$03,$33
+  .byte $a0,$1b,$70,$03,$33
+  .byte $b0,$1b,$60,$03,$33
+  .byte $c0,$1b,$50,$03,$33
+  .byte $d0,$1b,$40,$03,$33
+  .byte $a0,$1c,$80,$03,$33
+  .byte $b0,$1c,$70,$03,$33
+  .byte $c0,$1c,$60,$03,$33
+  .byte $e0,$1c,$80,$03,$33
+  .byte $f0,$1c,$70,$03,$33
+  .byte $00,$1d,$60,$03,$33
+  .byte $20,$1d,$80,$03,$33
+  .byte $30,$1d,$70,$03,$33
+  .byte $40,$1d,$60,$03,$33
   .byte $d0,$1d,$60,$03,$00
   .byte $d0,$1d,$70,$03,$15
   .byte $e0,$1d,$60,$03,$18
@@ -10027,7 +10071,7 @@ sprite_data_thelightningroad:
   .byte $90,$34,$10,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1D"
+.segment "LVL_BANK_0C"
 sprite_data_nightmare:
   .byte $a0,$00,$60,$03,$02
   .byte $d0,$00,$80,$03,$2c
@@ -16541,7 +16585,7 @@ sprite_data_luckydraw:
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1B"
+.segment "LVL_BANK_10"
 sprite_data_test4:
   .byte $40,$00,$60,$03,$02
   .byte $60,$00,$80,$03,$05
