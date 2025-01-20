@@ -178,7 +178,7 @@
 		.incbin "EXPORTS/decode.lz.bin" ; Size: 5917
 
 
-.segment "LVL_BANK_0C"	; Total bank size: 8152 bytes
+.segment "LVL_BANK_0C"	; Total bank size: 8192 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -190,7 +190,20 @@
 		.byte toe2_grnd_color
 		.byte 27	; height of toe2
 	; Level data
-		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5831
+		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5888
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 58
 
 
 .segment "LVL_BANK_0D"	; Total bank size: 7991 bytes
@@ -238,7 +251,7 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5217
 
 
-.segment "LVL_BANK_10"	; Total bank size: 8192 bytes
+.segment "LVL_BANK_10"	; Total bank size: 8190 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -264,19 +277,6 @@
 		.byte 27	; height of timemachine
 	; Level data
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3074
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 58
 
 
 .segment "LVL_BANK_11"	; Total bank size: 8066 bytes
