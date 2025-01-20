@@ -47,7 +47,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7709
 
 
-.segment "LVL_BANK_04"	; Total bank size: 8162 bytes
+.segment "LVL_BANK_04"	; Total bank size: 8132 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -60,6 +60,19 @@
 		.byte 27	; height of fingerdash
 	; Level data
 		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7476
+
+	.export level_data_luckydraw
+	level_data_luckydraw:
+	; Header
+		.byte luckydraw_song_number
+		.byte luckydraw_game_mode
+		.byte luckydraw_speed
+		.byte luckydraw_no_parallax
+		.byte luckydraw_bg_color
+		.byte luckydraw_grnd_color
+		.byte 27	; height of luckydraw
+	; Level data
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
 
 
 .segment "LVL_BANK_05"	; Total bank size: 8184 bytes
@@ -624,7 +637,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "LVL_BANK_22"	; Total bank size: 4115 bytes
+.segment "LVL_BANK_22"	; Total bank size: 4365 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -642,16 +655,3 @@
 	level_data_eon_1:
 	; Level data
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
-
-	.export level_data_luckydraw
-	level_data_luckydraw:
-	; Header
-		.byte luckydraw_song_number
-		.byte luckydraw_game_mode
-		.byte luckydraw_speed
-		.byte luckydraw_no_parallax
-		.byte luckydraw_bg_color
-		.byte luckydraw_grnd_color
-		.byte 27	; height of luckydraw
-	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
