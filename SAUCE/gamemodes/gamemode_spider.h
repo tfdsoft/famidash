@@ -90,7 +90,7 @@ void spider_up_wait() {
 	do {
 		high_byte(currplayer_y) -= 0x08;
 		crossPRGBankJump0(do_the_scroll_thing);
-		if (high_byte(currplayer_y) <= 0x06 && scroll_y <= min_scroll_y){
+		if (high_byte(currplayer_y) <= 0x07){ // && scroll_y <= min_scroll_y
 			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 			break;
 		}
