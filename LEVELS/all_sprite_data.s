@@ -4121,7 +4121,7 @@ sprite_data_clubstep:
   .byte $80,$38,$40,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_14"
+.segment "LVL_BANK_12"
 sprite_data_electrodynamix:
   .byte $00,$00,$60,$03,$99
   .byte $00,$00,$80,$03,$c9
