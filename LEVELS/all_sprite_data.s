@@ -1515,7 +1515,7 @@ sprite_data_jumper:
   .byte $f0,$37,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_0C"
+.segment "LVL_BANK_1B"
 sprite_data_timemachine:
   .byte $10,$01,$70,$03,$ab
   .byte $10,$01,$80,$03,$db
@@ -2410,7 +2410,7 @@ sprite_data_cycles:
   .byte $50,$33,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1B"
+.segment "LVL_BANK_1D"
 sprite_data_xstep:
   .byte $30,$01,$70,$03,$2a
   .byte $50,$01,$78,$03,$0a
@@ -10027,7 +10027,7 @@ sprite_data_thelightningroad:
   .byte $90,$34,$10,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1D"
+.segment "LVL_BANK_0C"
 sprite_data_nightmare:
   .byte $a0,$00,$60,$03,$02
   .byte $d0,$00,$80,$03,$2c
@@ -16541,7 +16541,7 @@ sprite_data_luckydraw:
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1B"
+.segment "LVL_BANK_10"
 sprite_data_test4:
   .byte $40,$00,$60,$03,$02
   .byte $60,$00,$80,$03,$05
