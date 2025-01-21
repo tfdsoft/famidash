@@ -76,6 +76,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_chaozfantasy,
 	song_just_right,
 	song_against_the_odds_redux,
+	song_driving_by_night,
 };
 
 #else
