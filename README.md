@@ -12,6 +12,28 @@ FamiDash is a project aiming to recreate the iconic gameplay of Geometry Dash on
 
 Development/Nightly builds are available [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.nes.zip).
 
+## Installation Tutorial
+
+To play FamiDash, follow these steps:
+
+1. **Download Mesen Emulator**
+   - Visit the [official Mesen site](https://www.mesen.ca/) and download the latest version of the emulator.
+   - Extract the downloaded files to a folder on your computer.
+
+2. **Download FamiDash ROM**
+   - Get the latest FamiDash ROM by downloading the build from [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.nes.zip).
+   - Extract the `.nes` file from the ZIP archive.
+
+3. **Launch Mesen**
+   - Open the Mesen emulator by running the executable (`Mesen.exe` or equivalent for your platform).
+
+4. **Load the ROM**
+   - In Mesen, click on **File** → **Open**, and navigate to the extracted `.nes` file of FamiDash.
+   - Select the file and click **Open**.
+
+5. **PLACEHOLDER**
+   - The game should now launch in the emulator. You can configure controls, audio, and video settings in the Mesen menu to your preference.
+
 ## Contributing
 
 Check out [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guides on adding music, levels, and more. Contributions are welcome!
