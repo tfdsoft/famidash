@@ -23,11 +23,13 @@ SET all_levels= ^
     blastprocessing ^
     toe2 ^
     fingerdash ^
+    dash ^
     retray ^
     sonar ^
     thechallenge ^
     leveleasy ^
     dreamer ^
+    lookatthislevel ^
     kappaclysm ^
     sunshine ^
     revolution ^
@@ -39,14 +41,12 @@ SET all_levels= ^
     demonpark ^
     deathmoon ^
     decode ^
-    supercycles ^
     problematic ^
     firetemple ^
     foresttemple ^
     eon ^
     stalemate ^
     bloodbath ^
-    cataclysm ^
     luckydraw ^
     test4 ^
 

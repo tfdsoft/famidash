@@ -185,7 +185,7 @@ shiftBy4table:
 	.byte $80, $90, $A0, $B0
 	.byte $C0, $D0, $E0, $F0
 
-.segment "CODE_2"
+.segment "CODE"
 
 .export __one_vram_buffer_repeat
 .proc __one_vram_buffer_repeat
