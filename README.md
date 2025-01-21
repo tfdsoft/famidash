@@ -10,7 +10,7 @@ FamiDash is a project aiming to recreate the iconic gameplay of Geometry Dash on
 
 ## Development Builds
 
-You can find nightly development builds in the Actions tab. Alternatively, download them directly using this link: [Nightly Builds](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.nes.zip).
+Development/Nightly builds are available [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.nes.zip).
 
 ## Contributing
 
