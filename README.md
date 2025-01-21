@@ -40,7 +40,6 @@ Check out [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guides on adding music
 
 ## Socials
 
-Connect with us:
 - [Mastodon](https://wetdry.world/@famidash)
 - [X/Twitter](https://x.com/TFDSoft)
 - [Discord](https://discord.gg/PCbwQaZs8K)
