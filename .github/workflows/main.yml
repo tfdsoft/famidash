@@ -1,22 +1,29 @@
 name: Build ROM
 
-on: [push]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
 
 jobs:
   build_rom:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     name: Compile ROM
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
+
       - name: Cache cc65
         uses: ./.github/actions/cache_cc65
-      - name: Set path
+
+      - name: Set path for cc65 binaries
         run: |
           echo "${{ github.workspace }}/opt/cc65/bin" >> $GITHUB_PATH
+
       - name: Build the game
         run: make
-      - name: Upload artifacts
+
+      - name: Upload built artifacts
         uses: actions/upload-artifact@v4
         with:
           name: famidash.nes
