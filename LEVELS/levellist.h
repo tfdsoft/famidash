@@ -88,7 +88,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //death moon
 	DECOCLOUD, //DECODE
 //	EXTRASPRITES1, //dear nostalgists
-	DECO1, //super cycles
+//	DECO1, //super cycles
 	DECO1, //problematic
 	DECO1, //fire temple
 	DECO1, //forest temple
@@ -96,7 +96,7 @@ const uint8_t DECOTYPE[] = {
 //	DECO1, //pg clubstep
 	DECO1, //stalemate
 	DECOCLOUD, //bloodbath
-	DECO1, //cataclysm
+//	DECO1, //cataclysm
 	DECOCLOUD, //lucky draw
 	EXTRASPRITES1,
 };
@@ -140,7 +140,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //death moon
 	SPIKESB, //decode
 //	SPIKESC, //dear nostalgists
-	SPIKESA, //super cycles
+//	SPIKESA, //super cycles
 	SPIKESB, //problematic
 	SPIKESB, //fire temple
 	SPIKESB, //forest temple
@@ -148,7 +148,7 @@ const unsigned char spike_set[] = {
 //	SPIKESA, //pg clubstep
 	SPIKESA, //STALEMATE
 	SPIKESC, //bloodbath
-	SPIKESC, //cataclysm
+//	SPIKESC, //cataclysm
 	SPIKESB, //lucky draw
 	SPIKESA, //test4
 };
@@ -192,7 +192,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //death moon
 	BLOCKSB, //decode
 //	BLOCKSA, //dear nostalgists
-	BLOCKSB, //super cycles
+//	BLOCKSB, //super cycles
 	BLOCKSB, //problematic
 	BLOCKSB, //fire temple
 	BLOCKSB, //forest temple
@@ -200,7 +200,7 @@ const unsigned char block_set[] = {
 //	BLOCKSB, //pg clubstep
 	BLOCKSB, //stalemate
 	BLOCKSB, //bloodbath
-	BLOCKSB, //cataclysm
+//	BLOCKSB, //cataclysm
 	BLOCKSB, //lucky draw
 	BLOCKSB, //test4
 };
@@ -244,7 +244,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //death moon
 	SAWBLADESA, //decode
 //	SAWBLADESA, //dear nostalgists
-	SAWBLADESA, //super cycles
+//	SAWBLADESA, //super cycles
 	SAWBLADESA, //problematic
 	SAWBLADESA, //fire temple
 	SAWBLADESA, //forest temple
@@ -252,7 +252,7 @@ const unsigned char saw_set[] = {
 //	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //stalemate
 	SAWBLADESA, //bloodbath
-	SAWBLADESA, //cataclysm
+//	SAWBLADESA, //cataclysm
 	LETTERBANK, //lucky draw
 	SAWBLADESA, //test4
 };
@@ -297,7 +297,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //death moon
     DEMON, //decode
 //    DEMON, //dear nostalgists
-    DEMON, //super cycles
+//    DEMON, //super cycles
     DEMON, //problematic
     DEMON, //fire temple
     DEMON, //forest temple
@@ -305,7 +305,7 @@ const unsigned char difficulty_list[] = {
 //    DEMON, //pg clubstep
     DEMON, //stalemate
     DEMON, //bloodbath
-    DEMON, //cataclysm
+//    DEMON, //cataclysm
     DEMON, //lucky draw
     DEMON,
 };
@@ -349,7 +349,7 @@ const unsigned char stars_list[] = {
 	10, //death moon
 	10, //decode
 //	10, //dear nostlagists
-	10, //super cycles
+//	10, //super cycles
 	10, //problematic
 	10, //fire temple
 	10, //forest temple
@@ -357,7 +357,7 @@ const unsigned char stars_list[] = {
 //	10, //pg clubstep
 	10, //stalemate
 	10, //bloodbath
-	10, //cataclysm
+//	10, //cataclysm
 	10, // lucky draw
 	0,
 };
