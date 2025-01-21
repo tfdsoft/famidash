@@ -69,11 +69,13 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //blast processing
 	DECO1, //TOE2
 	EXTRASPRITES1, //fingerdash
+	EXTRASPRITES1, //dash
 	DECO1, //RETRAY
 	DECO1, //SONAR
 	EXTRASPRITES1, //the challenge
 	DECO1, //level easy
 	DECO1, //dreamer
+	DECO1, //lookatthislevel
 	DECOCLOUD, //kappaclysm
 	DECO1, //sunshine
 	DECO1, //revolution
@@ -119,11 +121,13 @@ const unsigned char spike_set[] = {
 	SPIKESB, //blast processing
 	SPIKESA, //TOE2
 	SPIKESA, //fingerdash
+	SPIKESA, //dash
 	SPIKESA, //RETRAY
 	SPIKESA, //SONAR
 	SPIKESA, //the challenge
 	SPIKESA, //level easy
 	SPIKESA, //dreamer
+	SPIKESA, //lookatthislevel
 	SPIKESC, //kappaclysm
 	SPIKESA, //sunshine
 	SPIKESA, //revolution
@@ -169,11 +173,13 @@ const unsigned char block_set[] = {
 	BLOCKSB, //blast processing
 	BLOCKSB, //TOE2
 	BLOCKSB, //fingerdash
+	BLOCKSA, //dash
 	BLOCKSB, //RETRAY
 	BLOCKSB, //SONAR
 	BLOCKSB, //the challenge
 	BLOCKSA, //level easy
 	BLOCKSB, //dreamer
+	BLOCKSB, //lookatthislevel
 	BLOCKSB, //kappaclysm
 	BLOCKSB, //sunshine
 	BLOCKSB, //revolution
@@ -219,11 +225,13 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //blast processing
 	SAWBLADESA, //TOE2
 	SAWBLADESA, //fingerdash
+	SAWBLADESA, //dash
 	SAWBLADESA, //retray
 	SAWBLADESA, //SONAR
 	SAWBLADESA, //the challenge
 	SAWBLADESA, //level easy
 	SAWBLADESA, //dreamer
+	SAWBLADESA, //lookatthislevel
 	SAWBLADESA, //kappaclysm
 	SAWBLADESA, //sunshine
 	SAWBLADESA, //revolution
@@ -270,11 +278,13 @@ const unsigned char difficulty_list[] = {
     HARDER, //blast processing
     DEMON,  //TOE2
     INSANE,  //fingerdash
+    INSANE,  //dash
     EASY, //RETRAY
     EASY, //SONAR
     NORMAL, //the challenge
     NORMAL, //level easy
     HARD, //dreamer
+    HARD, //lookatthislevel
     HARDER, //kappaclysm
     HARDER, //sunshine
     HARDER, //revolution
@@ -320,11 +330,13 @@ const unsigned char stars_list[] = {
 	10,  //blast processing
 	14,  //TOE2
 	12,  //fingerdash
+	12,  //dash
 	2,   //retray
 	2,   //SONAR
 	3,   //the challenge
 	3,   //level easy
 	4,   //dreamer
+	4,   //lookatthislevel
 	6,  //kappaclysm
 	7,  //sunshine
 	7,  //revolution
