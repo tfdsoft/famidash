@@ -398,7 +398,7 @@
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4699
 
 
-.segment "LVL_BANK_15"	; Total bank size: 8055 bytes
+.segment "LVL_BANK_15"	; Total bank size: 8068 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -410,7 +410,7 @@
 		.byte foresttemple_grnd_color
 		.byte 27	; height of foresttemple
 	; Level data
-		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4386
+		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4399
 
 	.export level_data_dreamer
 	level_data_dreamer:
