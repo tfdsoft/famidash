@@ -320,8 +320,8 @@ lookatthislevel_song_number = song_against_the_odds_redux
 lookatthislevel_game_mode   = $00
 lookatthislevel_speed       = $01
 lookatthislevel_no_parallax  = 0
-lookatthislevel_bg_color    = $12
-lookatthislevel_grnd_color  = $02
+lookatthislevel_bg_color    = $0F
+lookatthislevel_grnd_color  = $0F
 
 dash_song_number = song_dash
 dash_game_mode   = $00
