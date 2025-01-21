@@ -46,14 +46,15 @@ void __fastcall__ load_ground(uint8_t id);
 void __fastcall__ dummy_unrle_columns(uint16_t columns);
 
 void increase_parallax_scroll_column() {
-	// The parallax is a 6 x 9 tile background, and when it repeats
+	// The parallax is a 6 x 9 tile background, 2 tiles horizontally
+	// are rendered per draw_screen_R, and when it repeats
 	// horizontally, we offset the start of the next column by 3
 	// to stagger the repeat
 	parallax_scroll_column++;
-	if (parallax_scroll_column >= 6) {
+	if (parallax_scroll_column >= 3) {
 		parallax_scroll_column = 0;
-		parallax_scroll_column_start += 3;
-		if (parallax_scroll_column_start >= 9) {
+		parallax_scroll_column_start++;
+		if (parallax_scroll_column_start >= 3) {
 			parallax_scroll_column_start = 0;
 		}
 	}
@@ -87,7 +88,9 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 		ii = lohi_arr32_load(practice_scroll_x, curr_practice_point) >> 4;
 		dummy_unrle_columns(ii);
 
-		__A__ = -(6 * (9 / 3) / 2); __asm__("tay \n sty %v", parallax_scroll_column);
+		// Increment parallax as per the processing:
+		// Divide column count by 9
+		__A__ = -(6 * (3 / 1) / 2); __asm__("tay \n sty %v", parallax_scroll_column);
 		while (ii != 0) {
 			parallax_scroll_column++;
 			if (parallax_scroll_column == 0) {
@@ -95,15 +98,16 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 			}
 			ii--;
 		}
-		parallax_scroll_column_start = -3;
+		// Now parallax_scroll_column contains the correct value minus 9
+
+
+		parallax_scroll_column_start = 0;
 		__asm__("ldy #3");
 		unrle_first_screen_addition_loop:
-			__asm__("tya ");
-			parallax_scroll_column_start += __A__;
+			parallax_scroll_column_start++;
 			__asm__("tya ");
 			parallax_scroll_column += __A__;
 			__asm__("bmi %g", unrle_first_screen_addition_loop);
-		parallax_scroll_column <<= 1;
 
 		//mmc3_set_prg_bank_1(GET_BANK(load_practice_state));
 		

@@ -752,12 +752,17 @@ switch:
 	.endrepeat
 	TileEnd			= 0+(TileWriteSize*4)
 
+	;__	Main rendering variables
+
 	CurrentRow = tmp1
 	LoopCount = tmp2
 	InvisBlMask = tmp3
 	SeamValue = ptr3+1
 
-	
+	;__	Parallax rendering variables
+
+	ParallaxBufferStart = tmp1
+	ParallaxExtent = tmp3
 
 frame0:
 	LDA #frame_free
@@ -802,7 +807,7 @@ write_start:
 	; Writing to the VRAM buffer starts here
 	LDA VRAM_INDEX
 	CLC
-	ADC #30 - 1
+	ADC #TileWriteSize - 1
 	TAX
 
 	; In-house replacement of get_ppu_addr, only counts X
@@ -856,50 +861,25 @@ write_start:
 
 RenderParallax:
 
-	jmp donot
+	lda	_no_parallax		;	Skip parallax rendering
+	bne	FinishRendering		;__	if there is none
 
-	ParallaxBufferStart = tmp1
-	ParallaxExtent = tmp3
 	; Loop through the vram writes and find any $00 tiles and replace them with parallax
 	; Calculate the end of the parallax column offset
 	ldy parallax_scroll_column
-	lda ParallaxBufferOffset, y
-	sta ParallaxBufferStart
-	clc
-	adc #9
-	sta ParallaxExtent
+	lda ParallaxBufferLeftOffset, y
+	ldx #TileOff2 + TileWriteSize - 1
+	jsr RenderParallaxSub
 
-	lda ParallaxBufferStart
-	clc
-	adc parallax_scroll_column_start
-	tay
+	ldy parallax_scroll_column
+	lda ParallaxBufferRightOffset, y
+	ldx #TileOff0 + TileWriteSize - 1
+	jsr RenderParallaxSub
 
-	ldx #TileOff0 + TileWriteSize - 1 - (2+1)
-	stx LoopCount
-	ldx #TileOff0
-	jsr RenderParallaxLoop
-
-	ldx #TileWriteSize - 1 - (2+1)
-	stx LoopCount
-	ldx #TileOff1
-	jsr RenderParallaxLoop
-
-donot:
-	
 	; move to the next scroll column for next frame
 	jsr _increase_parallax_scroll_column
 
-	; Declare this section as taken
-	.if USE_ILLEGAL_OPCODES
-		; A is already #$FF
-		AXS #<-TileEnd
-		STX VRAM_INDEX
-	.else
-		TXA
-		CLC
-		ADC #TileEnd
-		STA	VRAM_INDEX
-	.endif
+FinishRendering:
 
 	; Update rld_column
 	ldx rld_column
@@ -920,48 +900,76 @@ donot:
 	LDX #0
 	RTS
 
-RenderParallaxLoop:
-	lda _no_parallax
-	bne @nopar
-		lda VRAM_BUF+TileOff0+3,x
+
+RenderParallaxSub:
+	; In:
+	;	[A] Right or Left offset
+	;	[X] Tile offset
+	sta ParallaxBufferStart
+	clc
+	adc #9
+	sta ParallaxExtent
+
+	lda ParallaxBufferStart
+	ldy	parallax_scroll_column_start
+	;__	clc	The last ADC ain't overflowing
+	adc ParallaxBufferStartTable,	y
+	tay
+
+	lda #TileWriteSize-1
+	sta LoopCount
+	
+	@loop:
+		; Replace the top tile
+		lda VRAM_BUF+TileOff1,	x
 		bne :+
 			; empty tile, so replace it with the parallax for this
-			lda ParallaxBuffer, y
-			sta VRAM_BUF+TileOff0+3,x
+			lda ParallaxBuffer+0,	y
+			sta VRAM_BUF+TileOff1,	x
+		:
+		; Replace the bottom tile
+		lda VRAM_BUF+TileOff0,	x
+		bne :+
+			; empty tile, so replace it with the parallax for this
+			lda ParallaxBuffer+5,	y	;__	Offset of half the size
+			sta VRAM_BUF+TileOff0,	x
 		:
 		iny
 		cpy ParallaxExtent
 		bne :+
 			ldy ParallaxBufferStart
 		:
-		inx
+		dex
 		dec LoopCount
-		bpl RenderParallaxLoop
-@nopar:
-		rts
+		bne @loop
+	rts
 
 ; Column striped parallax data definition
 ; add to the tile for the next row, up to 6.
 ParallaxBuffer:
-	ParallaxBufferOffset:
-		.byte ParallaxBufferCol0 - ParallaxBuffer
-		.byte ParallaxBufferCol1 - ParallaxBuffer
-		.byte ParallaxBufferCol2 - ParallaxBuffer
-		.byte ParallaxBufferCol3 - ParallaxBuffer
-		.byte ParallaxBufferCol4 - ParallaxBuffer
-		.byte ParallaxBufferCol5 - ParallaxBuffer
-	ParallaxBufferCol0:
-		.byte $80, $90, $a0, $b0, $86, $96, $a6, $b6, $8c
-	ParallaxBufferCol1:
-		.byte $81, $91, $a1, $b1, $87, $97, $a7, $b7, $8d
-	ParallaxBufferCol2:
-		.byte $82, $92, $a2, $b2, $88, $98, $a8, $b8, $8e
-	ParallaxBufferCol3:
-		.byte $83, $93, $a3, $b3, $89, $99, $a9, $b9, $9c
-	ParallaxBufferCol4:
-		.byte $84, $94, $a4, $b4, $8a, $9a, $aa, $ba, $9d
-	ParallaxBufferCol5:
-		.byte $85, $95, $a5, $b5, $8b, $9b, $ab, $bb, $9e
+	ParallaxBufferLCol0:
+		.byte $80, $a0, $86, $a6, $8c, $90, $b0, $96, $b6, $80, $a0, $86, $a6, $8c
+	ParallaxBufferRCol0:
+		.byte $81, $a1, $87, $a7, $8d, $91, $b1, $97, $b7, $81, $a1, $87, $a7, $8d
+	ParallaxBufferLCol1:
+		.byte $82, $a2, $88, $a8, $8e, $92, $b2, $98, $b8, $82, $a2, $88, $a8, $8e
+	ParallaxBufferRCol1:
+		.byte $83, $a3, $89, $a9, $9c, $93, $b3, $99, $b9, $83, $a3, $89, $a9, $9c
+	ParallaxBufferLCol2:
+		.byte $84, $a4, $8a, $aa, $9d, $94, $b4, $9a, $ba, $84, $a4, $8a, $aa, $9d
+	ParallaxBufferRCol2:
+		.byte $85, $a5, $8b, $ab, $9e, $95, $b5, $9b, $bb, $85, $a5, $8b, $ab, $9e
+	ParallaxBufferLeftOffset:
+		.byte ParallaxBufferLCol0 - ParallaxBuffer
+		.byte ParallaxBufferLCol1 - ParallaxBuffer
+		.byte ParallaxBufferLCol2 - ParallaxBuffer
+	ParallaxBufferRightOffset:
+		.byte ParallaxBufferRCol0 - ParallaxBuffer
+		.byte ParallaxBufferRCol1 - ParallaxBuffer
+		.byte ParallaxBufferRCol2 - ParallaxBuffer
+
+ParallaxBufferStartTable:
+	.byte	0,	6,	3
 
 SeamTable:
 	.byte 0, 15
