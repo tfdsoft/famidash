@@ -421,6 +421,7 @@ const unsigned char TEXT_speed[]="AT$THE$SPEED";
 const unsigned char TEXT_crackdown[]="OKIBA";
 const unsigned char TEXT_against[]="8$BIT$AGAINST";
 const unsigned char TEXT_geometrical[]="GEOMETRICAL";
+const unsigned char TEXT_driving[]="DRIVING$BY";
 
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
@@ -464,6 +465,7 @@ const unsigned char TEXT_2textjustright[]="JUST$RIGHT";
 const unsigned char TEXT_against2[]="THE$ODDS$REDUX";
 const unsigned char TEXT_geometrical2[]="DOMINATOR";
 const unsigned char TEXT_dash2[]="DASH";
+const unsigned char TEXT_driving2[]="NIGHT";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -537,6 +539,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	0,
 	TEXT_against,
+	TEXT_driving,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -580,6 +583,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textchaoz,
 	TEXT_2textjustright,
 	TEXT_against2,
+	TEXT_driving2,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -623,6 +627,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textchaoz) - 1,
 	sizeof(TEXT_2textjustright) - 1,
 	sizeof(TEXT_against2) - 1,
+	sizeof(TEXT_driving2) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -665,6 +670,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	sizeof(TEXT_against) - 1,	
+	sizeof(TEXT_driving) - 1,	
 };
 
 
@@ -709,6 +715,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_chaozfantasy,
 	song_just_right,
 	song_against_the_odds_redux,
+	song_driving_by_night,
 };
 
 
