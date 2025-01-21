@@ -75,4 +75,7 @@ const unsigned char levelbloodbathbutno2[]="BUT NO";
 const unsigned char levelcataclysm2[]="CATACLYSM";
 const unsigned char levelsunshine2[]="SUNSHINE";
 const unsigned char levelfingerdash2[]="FINGERDASH";
+const unsigned char levellookatthislevel[]="LOOK AT";
+const unsigned char levellookatthislevel2[]="THIS LEVEL";
+const unsigned char leveldash2[]="DASH";
 

@@ -315,3 +315,17 @@ aprettyeasylevel_speed       = $00
 aprettyeasylevel_no_parallax  = 0
 aprettyeasylevel_bg_color    = $12
 aprettyeasylevel_grnd_color  = $02
+
+lookatthislevel_song_number = song_driving_by_night
+lookatthislevel_game_mode   = $00
+lookatthislevel_speed       = $01
+lookatthislevel_no_parallax  = 0
+lookatthislevel_bg_color    = $0F
+lookatthislevel_grnd_color  = $0F
+
+dash_song_number = song_dash
+dash_game_mode   = $00
+dash_speed       = $00
+dash_no_parallax  = 1
+dash_bg_color    = $0F
+dash_grnd_color  = $0F

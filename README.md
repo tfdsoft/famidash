@@ -54,6 +54,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
 |[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music|
 |[ElAngel378](https://github.com/ElAngel378)|music|
+|NerdBoy628|levels, music|
 
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.

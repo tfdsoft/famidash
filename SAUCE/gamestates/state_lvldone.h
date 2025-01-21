@@ -420,7 +420,8 @@ const unsigned char TEXT_blast[]="BLAST";
 const unsigned char TEXT_speed[]="AT$THE$SPEED";
 const unsigned char TEXT_crackdown[]="OKIBA";
 const unsigned char TEXT_against[]="8$BIT$AGAINST";
-
+const unsigned char TEXT_geometrical[]="GEOMETRICAL";
+const unsigned char TEXT_driving[]="DRIVING$BY";
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
 const unsigned char TEXT_xlevel2text2[]="TRACK";
@@ -461,6 +462,9 @@ const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
 const unsigned char TEXT_2textchaoz[]="CHAOZ$FANTASY";
 const unsigned char TEXT_2textjustright[]="JUST$RIGHT";
 const unsigned char TEXT_against2[]="THE$ODDS$REDUX";
+const unsigned char TEXT_geometrical2[]="DOMINATOR";
+const unsigned char TEXT_dash2[]="DASH";
+const unsigned char TEXT_driving2[]="NIGHT";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -532,6 +536,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	0,
 	TEXT_against,
+	TEXT_driving,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -573,6 +578,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textchaoz,
 	TEXT_2textjustright,
 	TEXT_against2,
+	TEXT_driving2,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -614,6 +620,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textchaoz) - 1,
 	sizeof(TEXT_2textjustright) - 1,
 	sizeof(TEXT_against2) - 1,
+	sizeof(TEXT_driving2) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -654,6 +661,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	sizeof(TEXT_against) - 1,	
+	sizeof(TEXT_driving) - 1,	
 };
 
 
@@ -1151,9 +1159,11 @@ const unsigned char* const leveltexts[] = {
   NULL,
   NULL,
   NULL, 
+  NULL, 
   levelchallengetext, 
   NULL, 
   NULL, 
+  levellookatthislevel,
   NULL, 
   NULL, 
   NULL, 
@@ -1166,7 +1176,7 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
 //  NULL, 
-  NULL, 
+//  NULL, 
   NULL, 
   NULL, 
   NULL, 
@@ -1175,7 +1185,7 @@ const unsigned char* const leveltexts[] = {
   NULL,  
   NULL,  
   NULL,  
-  NULL,  
+//  NULL,  
   NULL,  
   NULL
 };
@@ -1199,11 +1209,13 @@ const unsigned char* const leveltexts2[] = {
   levelblast2, 
   leveltoe22, 
   levelfingerdash2,
+  leveldash2,
   levelretray2,
   levelsonar2,
   levelchallengetext2, 
   leveleasy2, 
   leveldreamer2,
+  levellookatthislevel2,
   levelkappaclysm2, 
   levelsunshine2, 
   levelrevolution2, 
@@ -1216,7 +1228,7 @@ const unsigned char* const leveltexts2[] = {
   leveldeathmoon2, 
   leveldecode2, 
 //  levelnostalgists2, 
-  levelsupercycles2,
+//  levelsupercycles2,
   levelproblematic2, 
   levelfiretemple2,
   levelforesttemple2,
@@ -1224,7 +1236,7 @@ const unsigned char* const leveltexts2[] = {
  // levelpgclubtext2,
   levelstalemate2,
   levelbloodbath2,
-  levelcataclysm2,
+//  levelcataclysm2,
   level10text2, 
   level14text2,
 };
@@ -1252,9 +1264,11 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
+	0,
 	sizeof(levelchallengetext) - 1,
 	0,
 	0,
+	sizeof(levellookatthislevel) - 1,
 	0,
 	0,
 	0,
@@ -1267,7 +1281,7 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 //	0,
-	0,
+//	0,
 	0,
 	0,
 	0,
@@ -1275,7 +1289,7 @@ const unsigned char level_text_size[] = {
 //	0,
 	0,
 	0,
-	0,
+//	0,
 	0,
 	0,
 };
@@ -1299,11 +1313,13 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelblast2) - 1,
 	sizeof(leveltoe22) - 1,
 	sizeof(levelfingerdash2) - 1,
+	sizeof(leveldash2) - 1,
 	sizeof(levelretray2) - 1,
 	sizeof(levelsonar2) - 1,
 	sizeof(levelchallengetext2) - 1,
 	sizeof(leveleasy2) - 1,
 	sizeof(leveldreamer2) - 1,
+	sizeof(levellookatthislevel2) - 1,
 	sizeof(levelkappaclysm2) - 1,
 	sizeof(levelsunshine2) - 1,
 	sizeof(levelrevolution2) - 1,
@@ -1316,7 +1332,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(leveldeathmoon2) - 1,
 	sizeof(leveldecode2) - 1,
 //	sizeof(levelnostalgists2) - 1,
-	sizeof(levelsupercycles2) - 1,
+//	sizeof(levelsupercycles2) - 1,
 	sizeof(levelproblematic2) - 1,
 	sizeof(levelfiretemple2) - 1,
 	sizeof(levelforesttemple2) - 1,
@@ -1324,7 +1340,7 @@ const unsigned char level_text_size2[] = {
 //	sizeof(levelpgclubtext2) - 1,
 	sizeof(levelstalemate2) - 1,
 	sizeof(levelbloodbath2) - 1,
-	sizeof(levelcataclysm2) - 1,
+//	sizeof(levelcataclysm2) - 1,
 	sizeof(level10text2) - 1,
 	sizeof(level14text2) - 1,
 };
