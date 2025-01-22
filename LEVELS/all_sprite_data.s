@@ -2876,7 +2876,7 @@ sprite_data_xstep:
   .byte $80,$34,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1F"
+.segment "LVL_BANK_22"
 sprite_data_clutterfunk:
   .byte $60,$01,$88,$03,$0a
   .byte $b0,$01,$70,$03,$0b
@@ -6131,7 +6131,7 @@ sprite_data_deadlocked:
   .byte $e0,$0c,$30,$03,$b0
   .byte $60,$0d,$20,$03,$a3
   .byte $80,$0d,$20,$03,$93
-  .byte $40,$0e,$60,$03,$07
+  .byte $90,$0e,$30,$03,$07
   .byte $00,$0f,$20,$03,$83
   .byte $70,$0f,$20,$03,$80
   .byte $a0,$0f,$00,$03,$02
@@ -6279,6 +6279,7 @@ sprite_data_deadlocked:
   .byte $f0,$22,$00,$03,$68
   .byte $f0,$22,$60,$03,$69
   .byte $f0,$22,$70,$03,$11
+  .byte $10,$23,$58,$03,$0a
   .byte $10,$23,$68,$03,$0a
   .byte $50,$23,$40,$03,$05
   .byte $90,$23,$20,$03,$05
@@ -7369,7 +7370,7 @@ sprite_data_sonar:
   .byte $f0,$35,$20,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1E"
+.segment "LVL_BANK_22"
 sprite_data_thechallenge:
   .byte $00,$00,$70,$03,$cf
   .byte $00,$00,$80,$03,$b6
@@ -11634,7 +11635,7 @@ sprite_data_nightmare:
   .byte $40,$3b,$80,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_07"
+.segment "LVL_BANK_1F"
 sprite_data_demonpark:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$d6
@@ -13468,7 +13469,7 @@ sprite_data_problematic:
   .byte $80,$2a,$40,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_22"
+.segment "LVL_BANK_1F"
 sprite_data_firetemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$b6
