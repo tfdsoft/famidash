@@ -22,6 +22,7 @@ SET all_levels= ^
     hexagonforce ^
     blastprocessing ^
     toe2 ^
+    deadlocked ^
     fingerdash ^
     dash ^
     retray ^

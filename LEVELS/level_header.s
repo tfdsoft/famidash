@@ -329,3 +329,10 @@ dash_speed       = $00
 dash_no_parallax  = 1
 dash_bg_color    = $0F
 dash_grnd_color  = $0F
+
+deadlocked_song_number = song_deadlocked
+deadlocked_game_mode   = $00
+deadlocked_speed       = $00
+deadlocked_no_parallax  = 1
+deadlocked_bg_color    = $0F
+deadlocked_grnd_color  = $0F

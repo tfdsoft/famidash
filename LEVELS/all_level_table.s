@@ -23,6 +23,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_hexagonforce)
 	.byte .lobyte(level_data_blastprocessing)
 	.byte .lobyte(level_data_toe2)
+	.byte .lobyte(level_data_deadlocked)
 	.byte .lobyte(level_data_fingerdash)
 	.byte .lobyte(level_data_dash)
 	.byte .lobyte(level_data_retray)
@@ -70,6 +71,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_hexagonforce)
 	.byte .hibyte(level_data_blastprocessing)
 	.byte .hibyte(level_data_toe2)
+	.byte .hibyte(level_data_deadlocked)
 	.byte .hibyte(level_data_fingerdash)
 	.byte .hibyte(level_data_dash)
 	.byte .hibyte(level_data_retray)
@@ -117,6 +119,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_hexagonforce))
 	.byte .lobyte(.bank(level_data_blastprocessing))
 	.byte .lobyte(.bank(level_data_toe2))
+	.byte .lobyte(.bank(level_data_deadlocked))
 	.byte .lobyte(.bank(level_data_fingerdash))
 	.byte .lobyte(.bank(level_data_dash))
 	.byte .lobyte(.bank(level_data_retray))
@@ -176,6 +179,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_hexagonforce)
 	.byte .lobyte(sprite_data_blastprocessing)
 	.byte .lobyte(sprite_data_toe2)
+	.byte .lobyte(sprite_data_deadlocked)
 	.byte .lobyte(sprite_data_fingerdash)
 	.byte .lobyte(sprite_data_dash)
 	.byte .lobyte(sprite_data_retray)
@@ -223,6 +227,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_hexagonforce)
 	.byte .hibyte(sprite_data_blastprocessing)
 	.byte .hibyte(sprite_data_toe2)
+	.byte .hibyte(sprite_data_deadlocked)
 	.byte .hibyte(sprite_data_fingerdash)
 	.byte .hibyte(sprite_data_dash)
 	.byte .hibyte(sprite_data_retray)
@@ -270,6 +275,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_hexagonforce))
 	.byte .lobyte(.bank(sprite_data_blastprocessing))
 	.byte .lobyte(.bank(sprite_data_toe2))
+	.byte .lobyte(.bank(sprite_data_deadlocked))
 	.byte .lobyte(.bank(sprite_data_fingerdash))
 	.byte .lobyte(.bank(sprite_data_dash))
 	.byte .lobyte(.bank(sprite_data_retray))
@@ -320,6 +326,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A9)		; hexagonforce
 	.byte .lobyte($0000A7)		; blastprocessing
 	.byte .lobyte($00009D)		; toe2
+	.byte .lobyte($0000BF)		; deadlocked
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
 	.byte .lobyte($000066)		; retray
@@ -369,6 +376,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A9)		; hexagonforce
 	.byte .hibyte($0000A7)		; blastprocessing
 	.byte .hibyte($00009D)		; toe2
+	.byte .hibyte($0000BF)		; deadlocked
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
 	.byte .hibyte($000066)		; retray
@@ -418,6 +426,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A9)		; hexagonforce
 	.byte .bankbyte($0000A7)		; blastprocessing
 	.byte .bankbyte($00009D)		; toe2
+	.byte .bankbyte($0000BF)		; deadlocked
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
 	.byte .bankbyte($000066)		; retray

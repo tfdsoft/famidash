@@ -78,4 +78,5 @@ const unsigned char levelfingerdash2[]="FINGERDASH";
 const unsigned char levellookatthislevel[]="LOOK AT";
 const unsigned char levellookatthislevel2[]="THIS LEVEL";
 const unsigned char leveldash2[]="DASH";
+const unsigned char leveldeadlocked2[]="DEADLOCKED";
 
