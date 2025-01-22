@@ -105,7 +105,7 @@
 		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1609
 
 
-.segment "LVL_BANK_07"	; Total bank size: 8176 bytes
+.segment "LVL_BANK_07"	; Total bank size: 8189 bytes
 	.export level_data_deadlocked
 	level_data_deadlocked:
 	; Header
@@ -117,7 +117,7 @@
 		.byte deadlocked_grnd_color
 		.byte 27	; height of deadlocked
 	; Level data
-		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6324
+		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6337
 
 	.export level_data_stereomadness
 	level_data_stereomadness:
