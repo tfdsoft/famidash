@@ -2876,7 +2876,7 @@ sprite_data_xstep:
   .byte $80,$34,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_22"
+.segment "LVL_BANK_1F"
 sprite_data_clutterfunk:
   .byte $60,$01,$88,$03,$0a
   .byte $b0,$01,$70,$03,$0b
@@ -7369,7 +7369,7 @@ sprite_data_sonar:
   .byte $f0,$35,$20,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_22"
+.segment "LVL_BANK_1E"
 sprite_data_thechallenge:
   .byte $00,$00,$70,$03,$cf
   .byte $00,$00,$80,$03,$b6
@@ -11634,7 +11634,7 @@ sprite_data_nightmare:
   .byte $40,$3b,$80,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1F"
+.segment "LVL_BANK_07"
 sprite_data_demonpark:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$d6
@@ -13468,7 +13468,7 @@ sprite_data_problematic:
   .byte $80,$2a,$40,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1F"
+.segment "LVL_BANK_22"
 sprite_data_firetemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$b6
