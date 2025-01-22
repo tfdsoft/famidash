@@ -105,7 +105,7 @@
 		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1609
 
 
-.segment "LVL_BANK_07"	; Total bank size: 8190 bytes
+.segment "LVL_BANK_07"	; Total bank size: 8176 bytes
 	.export level_data_deadlocked
 	level_data_deadlocked:
 	; Header
@@ -117,20 +117,20 @@
 		.byte deadlocked_grnd_color
 		.byte 27	; height of deadlocked
 	; Level data
-		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6314
+		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6324
 
-	.export level_data_jumper
-	level_data_jumper:
+	.export level_data_stereomadness
+	level_data_stereomadness:
 	; Header
-		.byte jumper_song_number
-		.byte jumper_game_mode
-		.byte jumper_speed
-		.byte jumper_no_parallax
-		.byte jumper_bg_color
-		.byte jumper_grnd_color
-		.byte 27	; height of jumper
+		.byte stereomadness_song_number
+		.byte stereomadness_game_mode
+		.byte stereomadness_speed
+		.byte stereomadness_no_parallax
+		.byte stereomadness_bg_color
+		.byte stereomadness_grnd_color
+		.byte 27	; height of stereomadness
 	; Level data
-		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1876
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1852
 
 
 .segment "LVL_BANK_08"	; Total bank size: 8160 bytes
@@ -596,19 +596,19 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
 
-.segment "LVL_BANK_1F"	; Total bank size: 8187 bytes
-	.export level_data_stereomadness
-	level_data_stereomadness:
+.segment "LVL_BANK_1F"	; Total bank size: 8186 bytes
+	.export level_data_jumper
+	level_data_jumper:
 	; Header
-		.byte stereomadness_song_number
-		.byte stereomadness_game_mode
-		.byte stereomadness_speed
-		.byte stereomadness_no_parallax
-		.byte stereomadness_bg_color
-		.byte stereomadness_grnd_color
-		.byte 27	; height of stereomadness
+		.byte jumper_song_number
+		.byte jumper_game_mode
+		.byte jumper_speed
+		.byte jumper_no_parallax
+		.byte jumper_bg_color
+		.byte jumper_grnd_color
+		.byte 27	; height of jumper
 	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1852
+		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1876
 
 	.export level_data_polargeist
 	level_data_polargeist:
@@ -652,7 +652,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "LVL_BANK_21"	; Total bank size: 8123 bytes
+.segment "LVL_BANK_21"	; Total bank size: 8148 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header

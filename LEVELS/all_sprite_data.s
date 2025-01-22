@@ -7138,7 +7138,7 @@ sprite_data_retray:
   .byte $90,$27,$80,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1F"
+.segment "LVL_BANK_21"
 sprite_data_sonar:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$80,$03,$c1
@@ -13468,7 +13468,7 @@ sprite_data_problematic:
   .byte $80,$2a,$40,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_21"
+.segment "LVL_BANK_1F"
 sprite_data_firetemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$b6
