@@ -1228,8 +1228,11 @@ const unsigned char* const leveltexts[] = {
   levelhexagontext, 
   levelblasttext, 
   leveltoe2text, 
+  levelgeometrical,
   NULL,
   NULL,
+  NULL, 
+  
   NULL, 
   NULL, 
   levelchallengetext, 
@@ -1280,9 +1283,11 @@ const unsigned char* const leveltexts2[] = {
   levelhexagon2, 
   levelblast2, 
   leveltoe22, 
+  levelgeometrical2,
   leveldeadlocked2,
   levelfingerdash2,
   leveldash2,
+  
   levelretray2,
   levelsonar2,
   levelchallengetext2, 
@@ -1316,7 +1321,7 @@ const unsigned char* const leveltexts2[] = {
 
 
 const unsigned char level_text_size[] = {
-    sizeof(level1text) - 1,
+	sizeof(level1text) - 1,
 	sizeof(level2text) - 1,
 	0,
 	0,
@@ -1334,8 +1339,11 @@ const unsigned char level_text_size[] = {
 	sizeof(levelhexagontext) - 1,
 	sizeof(levelblasttext) - 1,
 	sizeof(leveltoe2text) - 1,
+	sizeof(levelgeometrical) - 1,
 	0,
 	0,
+	0,
+	
 	0,
 	0,
 	sizeof(levelchallengetext) - 1,
@@ -1367,7 +1375,7 @@ const unsigned char level_text_size[] = {
 	0,
 };
 const unsigned char level_text_size2[] = {
-    sizeof(level1text2) - 1,
+	sizeof(level1text2) - 1,
 	sizeof(level2text2) - 1,
 	sizeof(level3text2) - 1,
 	sizeof(level4text2) - 1,
@@ -1385,9 +1393,11 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelhexagon2) - 1,
 	sizeof(levelblast2) - 1,
 	sizeof(leveltoe22) - 1,
+	sizeof(levelgeometrical2) - 1,
 	sizeof(leveldeadlocked2) - 1,
 	sizeof(levelfingerdash2) - 1,
 	sizeof(leveldash2) - 1,
+	
 	sizeof(levelretray2) - 1,
 	sizeof(levelsonar2) - 1,
 	sizeof(levelchallengetext2) - 1,

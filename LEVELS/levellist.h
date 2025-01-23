@@ -68,6 +68,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //hexagon force
 	DECO1, //blast processing
 	DECO1, //TOE2
+	DECO1, //geometrical dominator
 	EXTRASPRITES1, //deadlocked
 	EXTRASPRITES1, //fingerdash
 	EXTRASPRITES1, //dash
@@ -121,6 +122,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //hexagon force
 	SPIKESB, //blast processing
 	SPIKESA, //TOE2
+	SPIKESA, //geometrical dominator
 	SPIKESA, //deadlocked
 	SPIKESA, //fingerdash
 	SPIKESA, //dash
@@ -174,6 +176,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //hexagon force
 	BLOCKSB, //blast processing
 	BLOCKSB, //TOE2
+	BLOCKSA, //geometrical dominator
 	BLOCKSB, //deadlocked
 	BLOCKSB, //fingerdash
 	BLOCKSA, //dash
@@ -199,7 +202,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //problematic
 	BLOCKSB, //fire temple
 	BLOCKSB, //forest temple
-	BLOCKSA, //EON
+//	BLOCKSA, //EON
 //	BLOCKSB, //pg clubstep
 	BLOCKSB, //stalemate
 	BLOCKSB, //bloodbath
@@ -227,6 +230,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //hexagon force
 	SAWBLADESA, //blast processing
 	SAWBLADESA, //TOE2
+	SAWBLADESA, //geometrical dominator
 	SAWBLADESA, //deadlocked
 	SAWBLADESA, //fingerdash
 	SAWBLADESA, //dash
@@ -252,7 +256,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //problematic
 	SAWBLADESA, //fire temple
 	SAWBLADESA, //forest temple
-	SAWBLADESA, //EON
+//	SAWBLADESA, //EON
 //	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //stalemate
 	SAWBLADESA, //bloodbath
@@ -281,6 +285,7 @@ const unsigned char difficulty_list[] = {
     INSANE,  //hexagon force
     HARDER, //blast processing
     DEMON,  //TOE2
+    HARDER, //geometrical dominiator
     DEMON,  //deadlocked
     INSANE,  //fingerdash
     INSANE,  //dash
@@ -306,7 +311,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //problematic
     DEMON, //fire temple
     DEMON, //forest temple
-    DEMON, //eon
+//    DEMON, //eon
 //    DEMON, //pg clubstep
     DEMON, //stalemate
     DEMON, //bloodbath
@@ -334,6 +339,7 @@ const unsigned char stars_list[] = {
 	12,  //hexagon force
 	10,  //blast processing
 	14,  //TOE2
+	10,  //geometrical dominiator
 	15,  //DEADLOCKED
 	12,  //fingerdash
 	12,  //dash
@@ -359,7 +365,7 @@ const unsigned char stars_list[] = {
 	10, //problematic
 	10, //fire temple
 	10, //forest temple
-	10, //eon
+//	10, //eon
 //	10, //pg clubstep
 	10, //stalemate
 	10, //bloodbath

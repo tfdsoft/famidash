@@ -79,4 +79,6 @@ const unsigned char levellookatthislevel[]="LOOK AT";
 const unsigned char levellookatthislevel2[]="THIS LEVEL";
 const unsigned char leveldash2[]="DASH";
 const unsigned char leveldeadlocked2[]="DEADLOCKED";
+const unsigned char levelgeometrical[]="GEOMETRICAL";
+const unsigned char levelgeometrical2[]="DOMINATOR";
 
