@@ -1178,6 +1178,8 @@ const unsigned char* const leveltexts[] = {
   NULL,
   NULL,
   NULL, 
+  
+  NULL, 
   NULL, 
   levelchallengetext, 
   NULL, 
@@ -1199,7 +1201,7 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
   NULL, 
-  //NULL, 
+  NULL, 
  // NULL, 
   NULL,  
   NULL,  
@@ -1231,6 +1233,7 @@ const unsigned char* const leveltexts2[] = {
   leveldeadlocked2,
   levelfingerdash2,
   leveldash2,
+  
   levelretray2,
   levelsonar2,
   levelchallengetext2, 
@@ -1253,7 +1256,7 @@ const unsigned char* const leveltexts2[] = {
   levelproblematic2, 
   levelfiretemple2,
   levelforesttemple2,
-  //leveleon2, 
+  leveleon2, 
  // levelpgclubtext2,
   levelstalemate2,
   levelbloodbath2,
@@ -1264,7 +1267,7 @@ const unsigned char* const leveltexts2[] = {
 
 
 const unsigned char level_text_size[] = {
-    sizeof(level1text) - 1,
+	sizeof(level1text) - 1,
 	sizeof(level2text) - 1,
 	0,
 	0,
@@ -1285,6 +1288,8 @@ const unsigned char level_text_size[] = {
 	sizeof(levelgeometrical) - 1,
 	0,
 	0,
+	0,
+	
 	0,
 	0,
 	sizeof(levelchallengetext) - 1,
@@ -1307,7 +1312,7 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
-//	0,
+	0,
 //	0,
 	0,
 	0,
@@ -1316,7 +1321,7 @@ const unsigned char level_text_size[] = {
 	0,
 };
 const unsigned char level_text_size2[] = {
-    sizeof(level1text2) - 1,
+	sizeof(level1text2) - 1,
 	sizeof(level2text2) - 1,
 	sizeof(level3text2) - 1,
 	sizeof(level4text2) - 1,
@@ -1338,6 +1343,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(leveldeadlocked2) - 1,
 	sizeof(levelfingerdash2) - 1,
 	sizeof(leveldash2) - 1,
+	
 	sizeof(levelretray2) - 1,
 	sizeof(levelsonar2) - 1,
 	sizeof(levelchallengetext2) - 1,
@@ -1360,7 +1366,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelproblematic2) - 1,
 	sizeof(levelfiretemple2) - 1,
 	sizeof(levelforesttemple2) - 1,
-//	sizeof(leveleon2) - 1,
+	sizeof(leveleon2) - 1,
 //	sizeof(levelpgclubtext2) - 1,
 	sizeof(levelstalemate2) - 1,
 	sizeof(levelbloodbath2) - 1,
