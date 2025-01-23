@@ -12653,7 +12653,7 @@ sprite_data_deathmoon:
   .byte $f0,$71,$b0,$01,$0f
   .byte $ff
 
-.segment "LVL_BANK_1B"
+.segment "LVL_BANK_1A"
 sprite_data_decode:
   .byte $00,$00,$70,$03,$c6
   .byte $00,$00,$80,$03,$96
@@ -12711,6 +12711,7 @@ sprite_data_decode:
   .byte $20,$05,$20,$03,$a8
   .byte $30,$05,$d0,$02,$01
   .byte $30,$05,$f0,$02,$fb
+  .byte $40,$05,$b0,$02,$16
   .byte $40,$05,$c0,$02,$fc
   .byte $40,$05,$d0,$02,$16
   .byte $40,$05,$e0,$02,$fc
