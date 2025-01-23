@@ -525,7 +525,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
 
 
-.segment "LVL_BANK_1A"	; Total bank size: 8167 bytes
+.segment "LVL_BANK_1A"	; Total bank size: 8169 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -539,6 +539,8 @@
 	; Level data
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2727
 
+
+.segment "LVL_BANK_1B"	; Total bank size: 8182 bytes
 	.export level_data_retray
 	level_data_retray:
 	; Header
