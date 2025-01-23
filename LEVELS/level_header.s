@@ -336,3 +336,10 @@ deadlocked_speed       = $00
 deadlocked_no_parallax  = 1
 deadlocked_bg_color    = $0F
 deadlocked_grnd_color  = $0F
+
+geometricaldominator_song_number = song_geometrical_dominator
+geometricaldominator_game_mode   = $00
+geometricaldominator_speed       = $00
+geometricaldominator_no_parallax  = 1
+geometricaldominator_bg_color    = $0F
+geometricaldominator_grnd_color  = $0F

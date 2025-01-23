@@ -22,6 +22,7 @@ SET all_levels= ^
     hexagonforce ^
     blastprocessing ^
     toe2 ^
+    geometricaldominator ^
     deadlocked ^
     fingerdash ^
     dash ^
@@ -45,7 +46,6 @@ SET all_levels= ^
     problematic ^
     firetemple ^
     foresttemple ^
-    eon ^
     stalemate ^
     bloodbath ^
     luckydraw ^
