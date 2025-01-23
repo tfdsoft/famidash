@@ -320,7 +320,7 @@
 		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3024
 
 
-.segment "LVL_BANK_11"	; Total bank size: 8087 bytes
+.segment "LVL_BANK_11"	; Total bank size: 8092 bytes
 	.export level_data_dash
 	level_data_dash:
 	; Header
@@ -332,7 +332,7 @@
 		.byte dash_grnd_color
 		.byte 36	; height of dash
 	; Level data
-		.incbin "EXPORTS/dash.lz.bin" ; Size: 4895
+		.incbin "EXPORTS/dash.lz.bin" ; Size: 4900
 
 	.export level_data_firetemple
 	level_data_firetemple:
