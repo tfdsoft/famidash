@@ -176,7 +176,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //hexagon force
 	BLOCKSB, //blast processing
 	BLOCKSB, //TOE2
-	BLOCKSD, //geometrical dominator
+	BLOCKSA, //geometrical dominator
 	BLOCKSB, //deadlocked
 	BLOCKSB, //fingerdash
 	BLOCKSA, //dash
