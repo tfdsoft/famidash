@@ -449,6 +449,7 @@ static void sprite_gamemode_main() {
 	if (controllingplayer->a || controllingplayer->up) {
 		if (gamemode == BALL_MODE) ball_switched[currplayer] = 1;
 		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
+			if (gamemode == ROBOT_MODE) orbed[currplayer] = 1;
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			settrailstuff();
 			clear_slope_stuff();
