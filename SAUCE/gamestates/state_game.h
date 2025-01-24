@@ -313,7 +313,7 @@ void state_game(){
 						kandokidshack4++;
 					}
 
-					else if (controllingplayer->press_b || mouse.left_press) {
+					else if ((controllingplayer->press_b || mouse.left_press) && !(controllingplayer->up) && !(controllingplayer->down)) {
 						mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
 						reset_game_vars();
 						//practice_point_count = 1;
@@ -376,7 +376,7 @@ void state_game(){
 					if (!DEBUG_MODE) nocamlock = 0;
 				}		
 //		}
-		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press))) {
+		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.up) && !(joypad1.down)) {
 			curr_practice_point--;
 			if (curr_practice_point >= practice_point_count)
 				curr_practice_point = practice_point_count - 1;

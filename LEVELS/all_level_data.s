@@ -75,7 +75,7 @@
 		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6910
 
 
-.segment "LVL_BANK_05"	; Total bank size: 8083 bytes
+.segment "LVL_BANK_05"	; Total bank size: 8095 bytes
 	.export level_data_deadlocked
 	level_data_deadlocked:
 	; Header
@@ -87,7 +87,7 @@
 		.byte deadlocked_grnd_color
 		.byte 27	; height of deadlocked
 	; Level data
-		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6362
+		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6374
 
 
 .segment "LVL_BANK_06"	; Total bank size: 8160 bytes
@@ -570,7 +570,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
 
-.segment "LVL_BANK_1D"	; Total bank size: 7920 bytes
+.segment "LVL_BANK_1D"	; Total bank size: 7925 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
