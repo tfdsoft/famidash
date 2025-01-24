@@ -765,7 +765,7 @@ switch:
 	ParallaxExtent = tmp3
 
 frame0:
-	LDA #frame_free
+	LDA #frame_R_attr
 	STA drawing_frame
 	; Switch banks
 	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
@@ -896,6 +896,10 @@ FinishRendering:
 	ldx	#5
 	jsr	transferWriteToInstBuf
 
+	lda	buf_curSeqMode
+	ora	#$80
+	sta	buf_curSeqMode
+
 	LDA #1
 	LDX #0
 	RTS
@@ -975,7 +979,7 @@ SeamTable:
 	.byte 0, 15
 
 ntAddrHiTbl:
-	.byte	$24|$80,	$20|$80
+	.byte	$24,	$20
 .endproc
 
 ; [Subroutine]
@@ -983,39 +987,39 @@ ntAddrHiTbl:
 .import _no_parallax, _invisblocks, _force_platformer
 
 .proc draw_screen_R_attributes
-	AttrWriteSize	= 3*8
+	AttrDataSize	= 16
+	AttrAddrSize	= 4
 
-	AttrOff0		= 0
-	AttrOff1		= 0+AttrWriteSize
-	AttrEnd			= 0+AttrWriteSize+AttrWriteSize
+	AttrOffData		= 0
+	AttrOffAddr		= 0+AttrDataSize
+	AttrEnd			= 0+AttrDataSize+AttrAddrSize
 
-	tmp5 = ptr2
-	ColumnBufferIdx = ptr2+1
+	tmp5 			= ptr2
 
 	NametableAddrHi = tmp1
-	LoopCount = tmp2
-	SeamValue = ptr3+1
+	LoopCount		= tmp2
+	DecRldColumn	= ptr3+0
+	SeamValue		= ptr3+1
 	; Attribute write architecture:
 
-	; | Ad|dr |dat|
-	;   0   1   2
-	; Addr = VRAM address
+	; Instruction buffer:
+	;	| Instruct.	| Addr Hi 0	| Addr Hi 1	|
+	;	|	0	1	| 2			| 3			|
+	; VRAM buffer:
+	;	| Data 0	| Data 1	| ...	| Data 15	| Addr Lo 0	| Addr Lo 1	| Addr Lo 2	| Addr Lo 3	|
+	;	|	0		|	1		| 2-14	|	15		|	16		|	17		|	18		| 	19		|
 
-	; 1 byte can theoretically be saved by using a vertical
-	; sequence of 2 bytes, but this comes at a cost of 23
-	; cycles per 2 bytes in vblank (80 vs 103), and vlank
-	; time is not to be wasted
 
 	; Decremented rld_column, very useful
 	LDX rld_column
 	DEX
 	.if USE_ILLEGAL_OPCODES
 		LDA #$0F
-		SAX ptr3
+		SAX DecRldColumn
 	.else
 		TXA
 		AND #$0F
-		STA ptr3
+		STA DecRldColumn
 	.endif
 
 	; Seam pos for attributes:
@@ -1036,15 +1040,13 @@ ntAddrHiTbl:
 	:					;	(the screen)
 	STY	ptr1+1			;__
 
-	LDA ptr3			;
+	LDA DecRldColumn			;
 	AND #$0E			;	Get column (w/o highest bit cuz attributes)
 	; ADC #<(collMap0-1) ; the low byte is 0
 	STA ptr1			;__
 	EOR	SeamValue		;	The only overlapping bit is bit 1,
 	STA	SeamValue		;__	if it's invalid the seam won't be drawn
 
-	LDX #0
-	STX ColumnBufferIdx
 	JSR attributeCalc
 
 	; Increment screen (we always increment)
@@ -1059,61 +1061,45 @@ ntAddrHiTbl:
 	and #%00000001		;
 	tay					;	5 cycles, 6 bytes
 	lda	ntAddrHiTbl, Y	;__
-	sta NametableAddrHi
+	sta	instBufWriteBuffer+2
+	ora #$08			; 2nd nametable
+	sta	instBufWriteBuffer+3
+
+	; Set instruction
+	lda	#<(fl_seqLvlFrame1-1)
+	sta	instBufWriteBuffer+0
+	lda	#>(fl_seqLvlFrame1-1)
+	sta	instBufWriteBuffer+1
 	
-	LDA ptr3
+	LDA DecRldColumn
 	LSR
 	ORA #$C0
 	
 	; Store address
-	LDX VRAM_INDEX
+	LDX VRAM_INDEX	; Already offset
 	CLC
 	addressLoop:
 		; Low byte
-		STA VRAM_BUF+AttrOff0+1,X
-		STA VRAM_BUF+AttrOff1+1,X
-		TAY
-		; High byte
-		lda NametableAddrHi
-		STA VRAM_BUF+AttrOff0,X
-		ORA #$08
-		STA VRAM_BUF+AttrOff1,X
-		TYA
+		STA VRAM_BUF,	X
 
-		INX 
-		INX
 		INX
 
 		; C is cleared by BCC
 		ADC #$08
+		CMP	#$E0
 		BCC addressLoop
 	
 	LDY #16
 
-	LDA VRAM_INDEX
-	ADC #AttrEnd-1  ; Carry is set by the ADC : BCC
-	STA VRAM_INDEX  ; State that the block is now occupied
-	TAX
+	STX VRAM_INDEX  ; State that the block is now occupied
 
-	dataLoop:
-		LDA columnBuffer-1,Y
-		STA VRAM_BUF-3+2,X
+	ldx	#4
+	jsr	transferWriteToInstBuf
 
-		.if USE_ILLEGAL_OPCODES
-			TXA
-			AXS #3
-		.else
-			DEX
-			DEX
-			DEX
-		.endif
-		DEY
-		BNE dataLoop
-	
-	; Finish off the routine
-	; X has the original VRAM_INDEX, mark this block as taken
-	LDA #$FF
-	STA VRAM_BUF+AttrEnd,X
+	lda	buf_curSeqMode
+	ora	#$80
+	sta	buf_curSeqMode
+
 	; Reset frame counter
 	LDX #frame_free
 	STX drawing_frame
@@ -1131,7 +1117,7 @@ attributeCalc:
 		.if USE_ILLEGAL_OPCODES
 			lax (ptr1),y
 		.else
-			LDA	(ptr1),Y
+			lda	(ptr1),Y
 			tax
 		.endif
 		; Read lower left metatile
@@ -1166,8 +1152,8 @@ attributeCalc:
 		; Combine
 		LDY tmp5	; Y has the lower metatile attrs, will shift by 4
 		ORA shiftBy4table,Y
-		LDX ColumnBufferIdx
-		STA columnBuffer,X
+		LDX VRAM_INDEX
+		STA VRAM_BUF+AttrOffData,	X
 
 		; Increment pointer
 		LDA	ptr1
@@ -1180,7 +1166,7 @@ attributeCalc:
 		ADC #$20
 		STA	ptr1
 
-		INC ColumnBufferIdx
+		INC VRAM_INDEX
 		DEC LoopCount
 		BPL attributeLoop
 	RTS
@@ -1595,10 +1581,66 @@ ntAddrHiTbl:
 		sta	PPU_DATA
 	.endrepeat
 
+	tya
+	clc
+	adc	#TileEnd
+	tay
+
 	rts	; Ropslide to next routine
 
 .endproc
 
+
+; [Not available in C]
+.segment "WRAMCODE"
+
+.proc fl_seqLvlFrame1
+	
+	DataOff0 = 0
+	DataOff1 = 4
+	DataOff2 = 8
+	DataOff3 = 12
+	AddrOff = 16
+	TotalSize = 20
+
+
+	lda	PPU_CTRL_VAR	;
+	ora	#$04			;	Set vertical orientation
+	sta	PPU_CTRL		;__
+
+	pla		;	Load first high byte of VRAM address
+	tax		;__
+
+	.repeat	4,	I
+		stx	PPU_ADDR
+		lda	VRAM_BUF+AddrOff+I,	y
+		sta	PPU_ADDR
+		lda	VRAM_BUF+DataOff0+I,	y
+		sta	PPU_DATA
+		lda	VRAM_BUF+DataOff1+I,	y
+		sta	PPU_DATA
+	.endrepeat
+
+	pla		;	Load second high byte of VRAM address
+	tax		;__
+
+	.repeat	4,	I
+		stx	PPU_ADDR
+		lda	VRAM_BUF+AddrOff+I,	y
+		sta	PPU_ADDR
+		lda	VRAM_BUF+DataOff2+I,	y
+		sta	PPU_DATA
+		lda	VRAM_BUF+DataOff3+I,	y
+		sta	PPU_DATA
+	.endrepeat
+
+	tya
+	clc
+	adc	#TotalSize
+	tay
+
+	rts	; Ropslide to next routine
+.endproc
 
 ; void __fastcall__ load_ground(uint8_t id);
 .segment _GROUND_BANK
@@ -4305,6 +4347,10 @@ vert_skip:
 	horizontal:
 		bit buf_curSeqMode
 		bcc current
+
+			lda	#<~$80
+			and	buf_curSeqMode
+			sta	buf_curSeqMode
 		
 			lda	#<(fl_setSeqHorz-1)
 			sta	instBufWriteBuffer+0
@@ -4318,6 +4364,10 @@ vert_skip:
 		bit buf_curSeqMode
 		bcs current
 	
+			lda	#$80
+			ora	buf_curSeqMode
+			sta	buf_curSeqMode
+
 			lda	#<(fl_setSeqVert-1)
 			sta	instBufWriteBuffer+0
 			lda	#>(fl_setSeqVert-1)
@@ -4344,35 +4394,23 @@ vert_skip:
 .segment "CODE"
 
 .proc transferWriteToInstBuf
-	ldy	buf_instIdx
-	.repeat 5, I
-		lda	instBufWriteBuffer+I
-		sta	INST_BUF+I,	y
-	.endrepeat
-	cpx	#7
-	bcc :+
-		lda	instBufWriteBuffer+5
-		sta	INST_BUF+5,	y
-		iny
-		lda	instBufWriteBuffer+6
-		sta	INST_BUF+5,	y
-		iny
-	:
-	cpx #8
-	bcc	:+
-		lda	instBufWriteBuffer+7
-		sta	INST_BUF+5,	y
-		iny
-	:
-	lda	#<(fl_updFinish-1)	;
-	sta	INST_BUF+5, y		;	Ensure the routine ends up exiting
-	lda	#>(fl_updFinish-1)	;
-	sta	INST_BUF+6, y		;__
-
-	tya
+	txa
 	clc
-	adc	#5
+	adc	buf_instIdx
 	sta	buf_instIdx
+	tay
+
+	lda	#<(fl_updFinish-1)	;
+	sta	INST_BUF+1-1, y		;	Ensure the routine ends up exiting
+	lda	#>(fl_updFinish-1)	;
+	sta	INST_BUF+2-1, y		;__
+
+	loop:
+		lda	instBufWriteBuffer-1,	x
+		sta	INST_BUF-1,	y
+		dey
+		dex
+		bne	loop
 
 	rts
 .endproc
