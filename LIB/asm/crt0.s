@@ -330,10 +330,10 @@ GeometryDashPCMA:
 	.incbin "MUSIC/PCM/RAW-geometryDash.pcm"
 	.byte $00
 
-.segment "PCM_BANK_B"
-GeometryDashPCMB:
-	.incbin "MUSIC/PCM/fire2.pcm"
-	.byte $00
+;.segment "PCM_BANK_B"
+;GeometryDashPCMB:
+;	.incbin "MUSIC/PCM/fire2.pcm"
+;	.byte $00
 
 
 ; Store music in switchable PRG banks
@@ -364,6 +364,8 @@ GeometryDashPCMB:
 	.include "MUSIC/EXPORTS/music_11.s"
 .segment "MUS_BANK_0C"
 	.include "MUSIC/EXPORTS/music_12.s"
+.segment "MUS_BANK_0D"
+	.include "MUSIC/EXPORTS/music_13.s"
 
 .segment "SFX_BANK"
 	.include "MUSIC/EXPORTS/sfx.s"

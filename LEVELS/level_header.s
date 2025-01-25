@@ -195,7 +195,7 @@ clubstep_no_parallax  = 0
 clubstep_bg_color    = $06
 clubstep_grnd_color  = $0F
 
-fingerdash_song_number = song_clubstep
+fingerdash_song_number = song_fingerdash
 fingerdash_game_mode   = $00
 fingerdash_speed       = $00
 fingerdash_no_parallax  = 1

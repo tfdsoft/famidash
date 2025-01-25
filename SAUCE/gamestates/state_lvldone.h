@@ -474,6 +474,7 @@ const unsigned char TEXT_geometrical2[]="DOMINATOR";
 const unsigned char TEXT_dash2[]="DASH";
 const unsigned char TEXT_driving2[]="NIGHT";
 const unsigned char TEXT_deadlocked2[]="DEADLOCKED";
+const unsigned char TEXT_fingerdash2[]="FINGERDASH";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -528,6 +529,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_xlevel1textC, 
 	TEXT_geometrical,
 	0,
+	0,
 	0, 
 	0, 
 	0, 
@@ -573,6 +575,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_xlevel22textC, 
 	TEXT_geometrical2,
 	TEXT_deadlocked2,
+	TEXT_fingerdash2,
 	TEXT_dash2,
 	TEXT_xlevel2textE, 
 	TEXT_2textpractice, 
@@ -618,6 +621,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_xlevel22textC) - 1,	
 	sizeof(TEXT_geometrical2) - 1,	
 	sizeof(TEXT_deadlocked2) - 1,	
+	sizeof(TEXT_fingerdash2) - 1,	
 	sizeof(TEXT_dash2) - 1,	
 	sizeof(TEXT_xlevel2textE) - 1,
 	sizeof(TEXT_2textpractice) - 1,
@@ -668,6 +672,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	0,
+	0,
 	sizeof(TEXT_xlevel1text1) - 1,	
 	0,
 	0,
@@ -710,6 +715,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_toe_2,
 	song_geometrical_dominator,
 	song_deadlocked,
+	song_fingerdash,
 	song_dash,
 	song_endgame, 
 	song_practice,
