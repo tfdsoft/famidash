@@ -36,6 +36,11 @@
 #define GAMEMODE_SWING  0x07
 #define GAMEMODE_NINJA  0x08
 
+// table_idx masks
+#define TBLIDX_GRAV	0b001
+#define TBLIDX_MINI	0b010
+#define	TBLIDX_NTSC	0b100
+
 // Zeropage variables
 #pragma bss-name("ZEROPAGE")
 
@@ -51,10 +56,8 @@ uint8_t tmp9;
 uint16_t tmpA;
 uint16_t tmpB;
 uint8_t temptemp5;
-int16_t fallspeed_big;
-int16_t fallspeed_mini;
-int16_t gravity_big;
-int16_t gravity_mini;
+int16_t tmpfallspeed;
+int16_t tmpgravity;
 uint8_t iconbank1;
 uint8_t iconbank2;
 uint8_t iconbank3;
@@ -100,7 +103,6 @@ uint8_t collision_D;
 uint16_t old_x;
 uint16_t old_y;
 
-uint8_t mini[2];
 uint8_t eject_L; // from the left
 uint8_t eject_R; // remember these from the collision sub routine
 uint8_t eject_D; // from below
@@ -254,12 +256,14 @@ uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_trail_sprites_visible[9];
 //uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
+
 uint8_t practice_song[MAX_PRACTICE_POINTS];
 uint8_t practice_player_invis[MAX_PRACTICE_POINTS];
 
 uint8_t practice_famistudio_state[FAMISTUDIO_STATE_SIZE * MAX_PRACTICE_POINTS];
 uint8_t practice_famistudio_registers[FAMISTUDIO_OUTPUT_BUF_SIZE * MAX_PRACTICE_POINTS];
 
+// practice_table_idx not needed as it is formed from other existing variables
 
 #if __THE_ALBUM
 #define MAX_SONG_QUEUE_SIZE 20
@@ -279,6 +283,7 @@ uint16_t player_y[2];
 int16_t player_vel_x[2];
 int16_t player_vel_y[2];
 uint8_t player_gravity[2];
+uint8_t player_mini[2];
 
 uint8_t practice_sprite_x_pos;
 

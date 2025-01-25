@@ -846,6 +846,7 @@ void sprite_collide_lookup() {
 		currplayer_vel_y /= 2;
 		robotjumptime[currplayer] = 0;
 		idx8_inc(activesprites_activated, index);
+		update_currplayer_table_idx();
 		return;
 	
 	// - Speed portals
@@ -890,14 +891,16 @@ void sprite_collide_lookup() {
 	// - Size portals
 	spcl_mini_pt:
 		currplayer_mini = 1;
-		mini[0] = 1;
-		mini[1] = 1;
+		player_mini[0] = 1;
+		player_mini[1] = 1;
+		currplayer_table_idx |= TBLIDX_MINI;
 		return;
 
 	spcl_grow_pt:
 		currplayer_mini = 0;
-		mini[0] = 0;
-		mini[1] = 0;
+		player_mini[0] = 0;
+		player_mini[1] = 0;
+		currplayer_table_idx &= ~TBLIDX_MINI;
 		return;
 
 	// - Kando size portals
@@ -928,7 +931,7 @@ void sprite_collide_lookup() {
 			else { 
 				player_x[1] = player_x[0]; player_y[1] = currplayer_y;
 				player_gravity[1] = currplayer_gravity ^ 0xFF;
-				player_vel_y[1] = -currplayer_vel_y; mini[1] = mini[0];
+				player_vel_y[1] = -currplayer_vel_y; player_mini[1] = player_mini[0];
 			}
 			// activesprites_type[index] = 0xFF;
 			activesprites_activated[index] = 1;
@@ -1130,11 +1133,11 @@ void sprite_collide_lookup() {
 
 void sprite_collide(){
 	if (gamemode != GAMEMODE_WAVE) {
-		Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH;
-		Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT; 
+		Generic.width = CUBE_WIDTH[currplayer_mini];
+		Generic.height = CUBE_HEIGHT[currplayer_mini]; 
 	} else {
-		Generic.width = currplayer_mini ? MINI_WAVE_WIDTH : WAVE_WIDTH;
-		Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
+		Generic.width = WAVE_WIDTH[currplayer_mini];
+		Generic.height = CUBE_HEIGHT[currplayer_mini];	// Why not wave height?
 	}
 
 	Generic.x = high_byte(currplayer_x) + 1;
@@ -1215,11 +1218,11 @@ void sprite_collide(){
 		}
 	} while (++index < max_loaded_sprites);
 	if (gamemode != GAMEMODE_WAVE) {
-		Generic.width = currplayer_mini ? MINI_CUBE_WIDTH : CUBE_WIDTH; 
+		Generic.width = CUBE_WIDTH[currplayer_mini]; 
 	} else {
-		Generic.width = currplayer_mini ? MINI_WAVE_WIDTH : WAVE_WIDTH;
+		Generic.width = WAVE_WIDTH[currplayer_mini];
 	}
-	Generic.height = currplayer_mini ? MINI_CUBE_HEIGHT : CUBE_HEIGHT;
+	Generic.height = CUBE_HEIGHT[currplayer_mini];
 }
 
 

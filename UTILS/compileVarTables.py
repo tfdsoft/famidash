@@ -2,7 +2,7 @@
 
 import pathlib, re, math
 
-lineParseRegex = re.compile(r'^[\t ]*(?!#|$)(?P<type>\w+)[\t ]+\[(?P<flags>\w*)\][\t ]+(?P<name>\w+)[\t ]+(?P<value>.*)$', re.MULTILINE)
+lineParseRegex = re.compile(r'^[\t ]*(?!#|$)(?P<type>\w+)[\t ]+(?:sz(?P<size>.*)[\t ]+)?\[(?P<flags>\w*)\][\t ]+(?P<name>\w+)[\t ]+(?P<value>.*)$', re.MULTILINE)
 fxpRegex = re.compile(r'^fxp(?P<fracBits>\d+)')
 
 parseNum = lambda x : float(x) if "." in x else int(x, base=0)
@@ -36,8 +36,11 @@ def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> li
 		ntscVal = palVal = num
 		maxVal = maxNum
 
-	bitCount = math.ceil(math.log2(abs(maxVal)) / 8) * 8
-	maxVal = 2 ** bitCount
+	if source['size'] != None:
+		maxVal = 2 ** int(source['size'])
+	else:
+		bitCount = math.ceil(math.ceil(math.log2(abs(maxVal))+(1 if 'g' in source['flags'] else 0)) / 8) * 8
+		maxVal = 2 ** bitCount
 
 	if (num < 0):
 		ntscVal = maxVal - abs(ntscVal)
@@ -70,7 +73,7 @@ def generateCArgumentDefine(source : dict, numTable : tuple[int], suffixes : tup
 	size = len(suffixes) * 8
 	suffixes = [f"_{i}" for i in suffixes]
 	equalBytes = [bytesEqual(numTable, i) for i in range(size // 8)]
-	arg = [r'%b' if i else r'%v, y' for i in equalBytes]
+	arg = [r'#%b' if i else r'%v, y' for i in equalBytes]
 	val = [f'{source["name"]}{suffix}' for suffix in suffixes]
 	if size > 16:
 		if size > 24:
@@ -116,10 +119,10 @@ def generateCTable(source : dict) -> str:
 		value = generateCNumArray(parseNum(source['value']), source)
 		numTable = (*value[0], *value[0], *value[1], *value[1])
 
-	size = math.ceil(math.log2(max(numTable)) / 8) * 8
+	size = math.ceil(math.ceil(math.log2(max(numTable))) / 8) * 8
 	
 	if (size == 8):
-		return (comment + '\n' if comment else '') + f'const uint8_t {source["name"]}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};'
+		return (comment + '\n' if comment else '') + f'const uint8_t {source["name"]}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};\n#define {source["name"]}({argument}) {source["name"]}[{argument}]'
 	elif (size >= 16 and size <= 32):
 		outString = []
 		if comment:

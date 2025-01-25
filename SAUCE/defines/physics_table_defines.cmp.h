@@ -4,13 +4,17 @@
 
 // Depends on mini
 const uint8_t CUBE_WIDTH[] = {0x0F, 0x08};
+#define CUBE_WIDTH(mini) CUBE_WIDTH[mini]
 
 // Depends on mini
 const uint8_t CUBE_HEIGHT[] = {0x0F, 0x07};
+#define CUBE_HEIGHT(mini) CUBE_HEIGHT[mini]
 
 const uint8_t WAVE_WIDTH[] = {0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08};
+#define WAVE_WIDTH(table_idx) WAVE_WIDTH[table_idx]
 
 const uint8_t WAVE_HEIGHT[] = {0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08};
+#define WAVE_HEIGHT(table_idx) WAVE_HEIGHT[table_idx]
 
 const uint8_t JUMP_VEL_lo[] = {0x53, 0xAD, 0x3A, 0xC6, 0x72, 0x8E, 0x32, 0xCE};
 const uint8_t JUMP_VEL_hi[] = {0xF9, 0x06, 0xFA, 0x05, 0xFA, 0x05, 0xFB, 0x04};
@@ -30,7 +34,7 @@ const uint8_t CUBE_SPEED_SLOW_lo[] = {0xB7, 0x6D};
 #define CUBE_SPEED_SLOW(framerate) ( \
 	__A__ = framerate, \
 	__asm__("tay"), \
-	__asm__("ldx %b \n lda %v, y", CUBE_SPEED_SLOW_hi, CUBE_SPEED_SLOW_lo), \
+	__asm__("ldx #%b \n lda %v, y", CUBE_SPEED_SLOW_hi, CUBE_SPEED_SLOW_lo), \
 	__AX__ \
 )
 
@@ -40,7 +44,7 @@ const uint8_t CUBE_SPEED_X05_lo[] = {0xAD, 0x3A};
 #define CUBE_SPEED_X05(framerate) ( \
 	__A__ = framerate, \
 	__asm__("tay"), \
-	__asm__("ldx %b \n lda %v, y", CUBE_SPEED_X05_hi, CUBE_SPEED_X05_lo), \
+	__asm__("ldx #%b \n lda %v, y", CUBE_SPEED_X05_hi, CUBE_SPEED_X05_lo), \
 	__AX__ \
 )
 
@@ -60,7 +64,7 @@ const uint8_t CUBE_SPEED_X3_lo[] = {0xFD, 0x27};
 #define CUBE_SPEED_X3(framerate) ( \
 	__A__ = framerate, \
 	__asm__("tay"), \
-	__asm__("ldx %b \n lda %v, y", CUBE_SPEED_X3_hi, CUBE_SPEED_X3_lo), \
+	__asm__("ldx #%b \n lda %v, y", CUBE_SPEED_X3_hi, CUBE_SPEED_X3_lo), \
 	__AX__ \
 )
 
@@ -70,43 +74,60 @@ const uint8_t CUBE_SPEED_X4_hi[] = {0x06, 0x05};
 #define CUBE_SPEED_X4(framerate) (lohi_arr16_load(CUBE_SPEED_X4, framerate))
 
 // Depends on framerate
-const uint8_t ROBOT_JUMP_TIME[] = {0x0F, 0x12};
-
-const uint8_t UFO_MAX_FALLSPEED_lo[] = {0xC0, 0x40, 0xF9, 0x07, 0x1F, 0xE1, 0x4F, 0xB1};
-const uint8_t UFO_MAX_FALLSPEED_hi[] = {0x03, 0xFC, 0x03, 0xFC, 0x03, 0xFC, 0x03, 0xFC};
-#define UFO_MAX_FALLSPEED(table_idx) (lohi_arr16_load(UFO_MAX_FALLSPEED, table_idx))
+const uint8_t ROBOT_JUMP_TIME[] = {0x10, 0x13};
+#define ROBOT_JUMP_TIME(framerate) ROBOT_JUMP_TIME[framerate]
 
 const uint8_t CUBE_MAX_FALLSPEED_lo[] = {0x33, 0xCD, 0x33, 0xCD, 0xFD, 0x03, 0xFD, 0x03};
 const uint8_t CUBE_MAX_FALLSPEED_hi[] = {0x07, 0xF8, 0x07, 0xF8, 0x05, 0xFA, 0x05, 0xFA};
 #define CUBE_MAX_FALLSPEED(table_idx) (lohi_arr16_load(CUBE_MAX_FALLSPEED, table_idx))
 
-const uint8_t CUBE_GRAVITY[] = {0x80, 0x80, 0x85, 0x7B, 0x6B, 0x95, 0x6F, 0x91};
-
-const uint8_t SPIDER_MAX_FALLSPEED_lo[] = {0x33, 0xCD, 0x33, 0xCD, 0xFD, 0x03, 0xFD, 0x03};
-const uint8_t SPIDER_MAX_FALLSPEED_hi[] = {0x07, 0xF8, 0x07, 0xF8, 0x05, 0xFA, 0x05, 0xFA};
-#define SPIDER_MAX_FALLSPEED(table_idx) (lohi_arr16_load(SPIDER_MAX_FALLSPEED, table_idx))
-
-const uint8_t SPIDER_GRAVITY[] = {0x5A, 0xA6, 0x5A, 0xA6, 0x4B, 0xB5, 0x4B, 0xB5};
-
-const uint8_t UFO_GRAVITY[] = {0x3C, 0xC4, 0x3C, 0xC4, 0x32, 0xCE, 0x32, 0xCE};
-
-const uint8_t BALL_GRAVITY[] = {0x55, 0xAB, 0x68, 0x98, 0x47, 0xB9, 0x57, 0xA9};
+const uint8_t SHIP_MAX_FALLSPEED_lo[] = {0x33, 0xCD, 0x33, 0xCD, 0x7F, 0x81, 0x7F, 0x81};
+const uint8_t SHIP_MAX_FALLSPEED_hi[] = {0x04, 0xFB, 0x04, 0xFB, 0x03, 0xFC, 0x03, 0xFC};
+#define SHIP_MAX_FALLSPEED(table_idx) (lohi_arr16_load(SHIP_MAX_FALLSPEED, table_idx))
 
 const uint8_t BALL_MAX_FALLSPEED_lo[] = {0x33, 0xCD, 0x33, 0xCD, 0xFD, 0x03, 0xFD, 0x03};
 const uint8_t BALL_MAX_FALLSPEED_hi[] = {0x07, 0xF8, 0x07, 0xF8, 0x05, 0xFA, 0x05, 0xFA};
 #define BALL_MAX_FALLSPEED(table_idx) (lohi_arr16_load(BALL_MAX_FALLSPEED, table_idx))
 
-const uint8_t SWING_GRAVITY[] = {0x3C, 0xC4, 0x43, 0xBD, 0x32, 0xCE, 0x38, 0xC8};
+const uint8_t UFO_MAX_FALLSPEED_lo[] = {0xC0, 0x40, 0xF9, 0x07, 0x1F, 0xE1, 0x4F, 0xB1};
+const uint8_t UFO_MAX_FALLSPEED_hi[] = {0x03, 0xFC, 0x03, 0xFC, 0x03, 0xFC, 0x03, 0xFC};
+#define UFO_MAX_FALLSPEED(table_idx) (lohi_arr16_load(UFO_MAX_FALLSPEED, table_idx))
+
+const uint8_t SPIDER_MAX_FALLSPEED_lo[] = {0x33, 0xCD, 0x33, 0xCD, 0xFD, 0x03, 0xFD, 0x03};
+const uint8_t SPIDER_MAX_FALLSPEED_hi[] = {0x07, 0xF8, 0x07, 0xF8, 0x05, 0xFA, 0x05, 0xFA};
+#define SPIDER_MAX_FALLSPEED(table_idx) (lohi_arr16_load(SPIDER_MAX_FALLSPEED, table_idx))
 
 const uint8_t SWING_MAX_FALLSPEED_lo[] = {0x06, 0xFA, 0x06, 0xFA, 0x2E, 0xD2, 0x2E, 0xD2};
 const uint8_t SWING_MAX_FALLSPEED_hi[] = {0x05, 0xFA, 0x05, 0xFA, 0x04, 0xFB, 0x04, 0xFB};
 #define SWING_MAX_FALLSPEED(table_idx) (lohi_arr16_load(SWING_MAX_FALLSPEED, table_idx))
 
-const uint8_t SHIP_GRAVITY[] = {0x32, 0xCE, 0x35, 0xCB, 0x2A, 0xD6, 0x2C, 0xD4};
+const uint8_t CUBE_GRAVITY_lo[] = {0x80, 0x80, 0x85, 0x7B, 0x6B, 0x95, 0x6F, 0x91};
+const uint8_t CUBE_GRAVITY_hi[] = {0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF};
+#define CUBE_GRAVITY(table_idx) (lohi_arr16_load(CUBE_GRAVITY, table_idx))
 
-const uint8_t SHIP_MAX_FALLSPEED_lo[] = {0x33, 0xCD, 0x33, 0xCD, 0x7F, 0x81, 0x7F, 0x81};
-const uint8_t SHIP_MAX_FALLSPEED_hi[] = {0x04, 0xFB, 0x04, 0xFB, 0x03, 0xFC, 0x03, 0xFC};
-#define SHIP_MAX_FALLSPEED(table_idx) (lohi_arr16_load(SHIP_MAX_FALLSPEED, table_idx))
+const uint8_t SHIP_GRAVITY_lo[] = {0x32, 0xCE, 0x35, 0xCB, 0x2A, 0xD6, 0x2C, 0xD4};
+const uint8_t SHIP_GRAVITY_hi[] = {0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF};
+#define SHIP_GRAVITY(table_idx) (lohi_arr16_load(SHIP_GRAVITY, table_idx))
+
+const uint8_t SHIP_GRAVITY_UP_lo[] = {0x3C, 0xC4, 0x3F, 0xC1, 0x32, 0xCE, 0x35, 0xCB};
+const uint8_t SHIP_GRAVITY_UP_hi[] = {0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF};
+#define SHIP_GRAVITY_UP(table_idx) (lohi_arr16_load(SHIP_GRAVITY_UP, table_idx))
+
+const uint8_t BALL_GRAVITY_lo[] = {0x55, 0xAB, 0x68, 0x98, 0x47, 0xB9, 0x57, 0xA9};
+const uint8_t BALL_GRAVITY_hi[] = {0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF};
+#define BALL_GRAVITY(table_idx) (lohi_arr16_load(BALL_GRAVITY, table_idx))
+
+const uint8_t UFO_GRAVITY_lo[] = {0x3C, 0xC4, 0x3C, 0xC4, 0x32, 0xCE, 0x32, 0xCE};
+const uint8_t UFO_GRAVITY_hi[] = {0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF};
+#define UFO_GRAVITY(table_idx) (lohi_arr16_load(UFO_GRAVITY, table_idx))
+
+const uint8_t SPIDER_GRAVITY_lo[] = {0x5A, 0xA6, 0x5A, 0xA6, 0x4B, 0xB5, 0x4B, 0xB5};
+const uint8_t SPIDER_GRAVITY_hi[] = {0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF};
+#define SPIDER_GRAVITY(table_idx) (lohi_arr16_load(SPIDER_GRAVITY, table_idx))
+
+const uint8_t SWING_GRAVITY_lo[] = {0x3C, 0xC4, 0x43, 0xBD, 0x32, 0xCE, 0x38, 0xC8};
+const uint8_t SWING_GRAVITY_hi[] = {0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF};
+#define SWING_GRAVITY(table_idx) (lohi_arr16_load(SWING_GRAVITY, table_idx))
 
 // Depends on framerate
 const uint8_t JIMSHEATBALL_MAX_FALLSPEED_lo[] = {0x99, 0xFF};
@@ -115,8 +136,14 @@ const uint8_t JIMSHEATBALL_MAX_FALLSPEED_hi[] = {0x03, 0x02};
 
 // Depends on framerate
 const uint8_t JIMSHEATBALL_GRAVITY[] = {0x3E, 0x34};
+#define JIMSHEATBALL_GRAVITY(framerate) JIMSHEATBALL_GRAVITY[framerate]
 
 // Depends on framerate
 const uint8_t JIMSHEATBALL_JUMP_VEL_lo[] = {0xBA, 0x71};
 const uint8_t JIMSHEATBALL_JUMP_VEL_hi[] = {0xFB, 0xFC};
 #define JIMSHEATBALL_JUMP_VEL(framerate) (lohi_arr16_load(JIMSHEATBALL_JUMP_VEL, framerate))
+
+// Depends on framerate
+const uint8_t JIMSHEATBALL_JUMP_VEL_d4x7_lo[] = {0x85, 0xC7};
+const uint8_t JIMSHEATBALL_JUMP_VEL_d4x7_hi[] = {0xF8, 0xF9};
+#define JIMSHEATBALL_JUMP_VEL_d4x7(framerate) (lohi_arr16_load(JIMSHEATBALL_JUMP_VEL_d4x7, framerate))

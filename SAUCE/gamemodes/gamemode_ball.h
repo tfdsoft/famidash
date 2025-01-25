@@ -13,10 +13,8 @@ void ball_movement(){
 
 	if (gamemode == GAMEMODE_SWING) {
 
-		fallspeed_big = SWING_MAX_FALLSPEED;
-		fallspeed_mini = MINI_SWING_MAX_FALLSPEED;
-		gravity_big = SWING_GRAVITY;
-		gravity_mini = MINI_SWING_GRAVITY;
+		tmpfallspeed = SWING_MAX_FALLSPEED(currplayer_table_idx);
+		tmpgravity = SWING_GRAVITY(currplayer_table_idx);
 		common_gravity_routine();
 
 		
@@ -24,10 +22,8 @@ void ball_movement(){
 
 	}
 	else {		
-		fallspeed_big = BALL_MAX_FALLSPEED;
-		fallspeed_mini = MINI_BALL_MAX_FALLSPEED;
-		gravity_big = BALL_GRAVITY;
-		gravity_mini = MINI_BALL_GRAVITY;
+		tmpfallspeed = BALL_MAX_FALLSPEED(currplayer_table_idx);
+		tmpgravity = BALL_GRAVITY(currplayer_table_idx);
 		common_gravity_routine();
 
 		
