@@ -1435,10 +1435,10 @@ const unsigned char * const MINI_SPIDER_JUMP2[]={Mini_Spider2_3};
 
 
 const unsigned char Speed_SLOW_Portal[]={
-	  0,  0,0xA1,3|OAM_FLIP_V,
-	  8,  0,0xA1,3|OAM_FLIP_H,	
-	  0,  13,0xA1,3,	
-	  8,  13,0xA1,3|OAM_FLIP_H|OAM_FLIP_V,	
+	  0,  0,0xA1,0|OAM_FLIP_V,
+	  8,  0,0xA1,0|OAM_FLIP_H,	
+	  0,  13,0xA1,0,	
+	  8,  13,0xA1,0|OAM_FLIP_H|OAM_FLIP_V,	
 	0x80
 };
 const unsigned char Speed_05_Portal[]={
@@ -1457,14 +1457,14 @@ const unsigned char Speed_10_Portal[]={
 	0x80
 };
 const unsigned char Speed_20_Portal[]={
-	  0,  0,0xA9,3,	
-	  5,  0,0xA9,3|OAM_FLIP_H|OAM_FLIP_V,	
-	  6,  0,0xA9,3,	  
-	  11,  0,0xA9,3|OAM_FLIP_H|OAM_FLIP_V,	  
-	  0,  13,0xA9,3|OAM_FLIP_V,	
-	  5,  13,0xA9,3|OAM_FLIP_H,	
-	  6,  13,0xA9,3|OAM_FLIP_V,	
-	  11,  13,0xA9,3|OAM_FLIP_H,	
+	  0,  0,0xA9,0,	
+	  5,  0,0xA9,0|OAM_FLIP_H|OAM_FLIP_V,	
+	  6,  0,0xA9,0,	  
+	  11,  0,0xA9,0|OAM_FLIP_H|OAM_FLIP_V,	  
+	  0,  13,0xA9,0|OAM_FLIP_V,	
+	  5,  13,0xA9,0|OAM_FLIP_H,	
+	  6,  13,0xA9,0|OAM_FLIP_V,	
+	  11,  13,0xA9,0|OAM_FLIP_H,	
 	0x80
 };
 const unsigned char Speed_30_Portal[]={
@@ -1507,13 +1507,13 @@ const unsigned char Mini_Portal[]={
 };
 
 const unsigned char Growth_Portal[]={
-	  8,  0,0x81,3,	
-	  16,  0,0x83,3,	
-	  0,  16,0x85,3,	
-	  8,  16,0x87,3,
-	  16,  16,0x89,3,
-	  8,  32,0x81,3|OAM_FLIP_V,
-	  16,  32,0x83,3|OAM_FLIP_V,
+	  8,  0,0x81,0,	
+	  16,  0,0x83,0,	
+	  0,  16,0x85,0,	
+	  8,  16,0x87,0,
+	  16,  16,0x89,0,
+	  8,  32,0x81,0|OAM_FLIP_V,
+	  16,  32,0x83,0|OAM_FLIP_V,
 	0x80
 };
 
@@ -1604,17 +1604,17 @@ const unsigned char Teleport_Portal_Exit[]={
 
 const unsigned char Portal_Gamemode_Cube[]={
 
-	  0,  0,0x41,3,
-	  0, 16,0x47,3,
-	  0, 32,0x41,3|OAM_FLIP_V,
-	  8,  0,0x43,3,
+	  0,  0,0x41,0,
+	  0, 16,0x47,0,
+	  0, 32,0x41,0|OAM_FLIP_V,
+	  8,  0,0x43,0,
 
-	  8, 16,0x49,3,
-	  8, 32,0x43,3|OAM_FLIP_V,
-	 16,  0,0x45,3,
-	 16, 16,0x4B,3,
+	  8, 16,0x49,0,
+	  8, 32,0x43,0|OAM_FLIP_V,
+	 16,  0,0x45,0,
+	 16, 16,0x4B,0,
 
-	 16, 32,0x45,3|OAM_FLIP_V,
+	 16, 32,0x45,0|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Portal_Gamemode_Ship[]={
@@ -2003,8 +2003,8 @@ const unsigned char Portal_Gravity_Up_Horizontal_Upwards[]={
 
 const unsigned char Dash_Orb[]={
 
-	  0,  0,0xD1,3,
-	  8,  0,0xD3,3,
+	  0,  0,0xD1,0,
+	  8,  0,0xD3,0,
 	0x80
 };
 
@@ -2017,8 +2017,8 @@ const unsigned char Black_Orb[]={
 
 const unsigned char Dash_Orb_Upwards[]={
 
-	  0,  0,0xCB,3|OAM_FLIP_H,
-	  8,  0,0xCB,3,
+	  0,  0,0xCB,0|OAM_FLIP_H,
+	  8,  0,0xCB,0,
 	0x80
 };
 const unsigned char Dash_Gravity_Orb_Upwards[]={
@@ -2030,8 +2030,8 @@ const unsigned char Dash_Gravity_Orb_Upwards[]={
 
 const unsigned char Dash_Orb_Downwards[]={
 
-	  0,  0,0xCB,3|OAM_FLIP_H|OAM_FLIP_V,
-	  8,  0,0xCB,3|OAM_FLIP_V,
+	  0,  0,0xCB,0|OAM_FLIP_H|OAM_FLIP_V,
+	  8,  0,0xCB,0|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Dash_Gravity_Orb_Downwards[]={
@@ -2050,8 +2050,8 @@ const unsigned char Dash_Gravity_Orb[]={
 
 const unsigned char Dash_Orb_45Deg_UP[]={
 
-	  0,  0,0xCD,3,
-	  8,  0,0xCF,3,
+	  0,  0,0xCD,0,
+	  8,  0,0xCF,0,
 	0x80
 };
 
@@ -2077,8 +2077,8 @@ const unsigned char Spider_Orb_DOWN[]={
 };
 const unsigned char Dash_Orb_45Deg_DOWN[]={
 
-	  0,  0,0xCD,3|OAM_FLIP_V,
-	  8,  0,0xCF,3|OAM_FLIP_V,
+	  0,  0,0xCD,0|OAM_FLIP_V,
+	  8,  0,0xCF,0|OAM_FLIP_V,
 	0x80
 };
 
