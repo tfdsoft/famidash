@@ -746,6 +746,7 @@ void state_menu() {
 	LEVELCOMPLETE[8] && 
 	LEVELCOMPLETE[9] && 
 	LEVELCOMPLETE[0x0A] && 
+	LEVELCOMPLETE[0x0B] && 
 	LEVELCOMPLETE[0x0C]) all_levels_complete = 0xFC;
 
 	
