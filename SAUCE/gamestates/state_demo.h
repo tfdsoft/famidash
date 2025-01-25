@@ -369,6 +369,7 @@ const uint8_t xbgm_lookup_table3[] = {
 	song_toe_2,
 	song_geometrical_dominator,
 	song_deadlocked,
+	song_fingerdash,
 	song_dash,
 	song_endgame, 
 	song_practice,
