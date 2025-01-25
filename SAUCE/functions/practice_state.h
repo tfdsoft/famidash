@@ -50,8 +50,8 @@ void store_practice_state(){
 	idx8_store(practice_song, get_Y, song);
 	idx8_store(practice_player_1_gravity, get_Y, player_gravity[0]);
 	idx8_store(practice_player_2_gravity, get_Y, player_gravity[1]);
-	idx8_store(practice_player_1_mini, get_Y, mini[0]);
-	idx8_store(practice_player_2_mini, get_Y, mini[1]);
+	idx8_store(practice_player_1_mini, get_Y, player_mini[0]);
+	idx8_store(practice_player_2_mini, get_Y, player_mini[1]);
 	idx8_store(practice_player_1_slope_frames, get_Y, slope_frames[0]);
 	idx8_store(practice_player_2_slope_frames, get_Y, slope_frames[1]);
 	idx8_store(practice_player_1_was_on_slope_counter, get_Y, was_on_slope_counter[0]);
@@ -110,8 +110,8 @@ void load_practice_state() {
 		idx8_load(practice_player_1_gravity, get_Y);
 	player_gravity[1] = idx8_load(practice_player_2_gravity, get_Y);
 
-	currplayer_mini = mini[0] = idx8_load(practice_player_1_mini, get_Y);
-	mini[1] = idx8_load(practice_player_2_mini, get_Y);
+	currplayer_mini = player_mini[0] = idx8_load(practice_player_1_mini, get_Y);
+	player_mini[1] = idx8_load(practice_player_2_mini, get_Y);
 
 	currplayer_slope_frames = slope_frames[0] = idx8_load(practice_player_1_slope_frames, get_Y);
 	slope_frames[1] = idx8_load(practice_player_2_slope_frames, get_Y);

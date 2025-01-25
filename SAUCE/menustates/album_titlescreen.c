@@ -126,7 +126,7 @@ void state_menu() {
 		kandoframecnt++;
 		tmp3 = 0;	
 		
-		low_byte(tmp8) += CUBE_SPEED_X05>>8;
+		low_byte(tmp8) += MSB(CUBE_SPEED_X05(framerate));
 		edit_irq_table(low_byte(tmp8), 2); 
 	}	
 

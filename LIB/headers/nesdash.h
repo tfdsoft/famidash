@@ -163,7 +163,7 @@ void __fastcall__ _famistudio_sfx_clear_channel(unsigned int args);
 /**
  * @brief Updates currplayer_table_idx from other currplayer variables
  */
-void _update_currplayer_table_idx();
+void update_currplayer_table_idx();
 
 #define low_word(a) *((uint16_t*)&a)
 #define high_word(a) *((uint16_t*)&a+1)

@@ -1,10 +1,6 @@
 
 CODE_BANK_PUSH("CODE")
 
-const unsigned short speed_table[] = {
-	CUBE_SPEED_X1, CUBE_SPEED_X05, CUBE_SPEED_X2, CUBE_SPEED_X3, CUBE_SPEED_X4, CUBE_SPEED_SLOW
-};
-
 void slope_vel() {
 	switch (tmp8 & SLOPE_DEGREES_MASK) {
 		case SLOPE_22DEG:
@@ -60,6 +56,30 @@ void x_movement_coll() {
   
 }
 
+uint16_t get_speed(){
+	static void * const speed_table [] = {
+		&&spd_10,	&&spd_05,	&&spd_20,	&&spd_30,	&&spd_40,	&&spd_slow
+	};
+	goto *speed_table[speed];
+
+	spd_10:
+		return CUBE_SPEED_X1(framerate);
+
+	spd_05:
+		return CUBE_SPEED_X05(framerate);
+
+	spd_20:
+		return CUBE_SPEED_X2(framerate);
+
+	spd_30:
+		return CUBE_SPEED_X3(framerate);
+
+	spd_40:
+		return CUBE_SPEED_X4(framerate);
+
+	spd_slow:
+		return CUBE_SPEED_SLOW(framerate);
+}
 
 void x_movement(){
   mmc3_set_prg_bank_1(GET_BANK(bg_coll_R));
@@ -67,7 +87,7 @@ void x_movement(){
 
 	old_x = currplayer_x;
 	
-	currplayer_vel_x = speed_table[speed & 0x7F];
+	currplayer_vel_x = get_speed();
 	
 //	if (controllingplayer->hold & PAD_LEFT) currplayer_vel_x = 0;
 	
@@ -79,21 +99,11 @@ void x_movement(){
 	}
 
 	if (gamemode == GAMEMODE_WAVE) { // wave
-		if (currplayer_mini) {
-			Generic.width = MINI_WAVE_WIDTH;
-			Generic.height = MINI_WAVE_HEIGHT;
-		} else {
-			Generic.width = WAVE_WIDTH;
-			Generic.height = WAVE_HEIGHT;
-		}
+		Generic.width = WAVE_WIDTH[currplayer_mini];
+		Generic.height = WAVE_HEIGHT[currplayer_mini];
 	} else {
-		if (!currplayer_mini) {
-			Generic.width = CUBE_WIDTH;
-			Generic.height = CUBE_HEIGHT;
-		} else {
-			Generic.width = MINI_CUBE_WIDTH;
-			Generic.height = MINI_CUBE_HEIGHT;
-		}   
+		Generic.width = CUBE_WIDTH[currplayer_mini];
+		Generic.height = CUBE_HEIGHT[currplayer_mini];
 	}
 
 	Generic.x = high_byte(currplayer_x); // this is much faster than passing a pointer to player

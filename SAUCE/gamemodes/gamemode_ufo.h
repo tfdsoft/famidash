@@ -5,10 +5,8 @@ void ufo_ship_eject();
 void common_gravity_routine();
 void ufo_movement(){
 
-	fallspeed_big = UFO_MAX_FALLSPEED;
-	fallspeed_mini = MINI_UFO_MAX_FALLSPEED;
-	gravity_big = UFO_GRAVITY;
-	gravity_mini = MINI_UFO_GRAVITY;
+	tmpfallspeed = UFO_MAX_FALLSPEED(currplayer_table_idx);
+	tmpgravity = UFO_GRAVITY(currplayer_table_idx);
 	common_gravity_routine();
 
 		
@@ -29,11 +27,7 @@ void ufo_movement(){
 
 
 	if((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed) {
-		if (!currplayer_mini) {
-			currplayer_vel_y = currplayer_gravity ? -UFO_JUMP_VEL : UFO_JUMP_VEL; // JUMP
-		} else {
-			currplayer_vel_y = currplayer_gravity ? -MINI_UFO_JUMP_VEL : MINI_UFO_JUMP_VEL; // JUMP
-		}
+		currplayer_vel_y = UFO_JUMP_VEL(currplayer_table_idx); // JUMP
 		jumps++;
 	}
 	ufo_orbed = 0;
