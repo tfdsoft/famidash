@@ -2151,15 +2151,9 @@ sprite_data_cycles:
   .byte $a0,$14,$50,$03,$2f
   .byte $d0,$14,$80,$03,$2a
   .byte $40,$15,$10,$03,$3a
-  .byte $70,$15,$10,$03,$4f
-  .byte $80,$15,$10,$03,$4f
-  .byte $90,$15,$10,$03,$4f
   .byte $90,$15,$20,$03,$2f
-  .byte $a0,$15,$10,$03,$4f
   .byte $a0,$15,$20,$03,$41
-  .byte $b0,$15,$10,$03,$4f
   .byte $b0,$15,$20,$03,$07
-  .byte $c0,$15,$10,$03,$4f
   .byte $c0,$15,$20,$03,$2f
   .byte $c0,$15,$70,$03,$2e
   .byte $e0,$15,$20,$03,$41
@@ -11008,7 +11002,7 @@ sprite_data_aprettyeasylevel:
   .byte $00,$2b,$30,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_07"
+.segment "LVL_BANK_1E"
 sprite_data_thelightningroad:
   .byte $00,$00,$70,$03,$8f
   .byte $00,$00,$80,$03,$cf
@@ -11809,7 +11803,7 @@ sprite_data_nightmare:
   .byte $40,$3b,$80,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_1E"
+.segment "LVL_BANK_07"
 sprite_data_demonpark:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$d6
