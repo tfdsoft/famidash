@@ -49,6 +49,7 @@ SET all_levels= ^
     eon ^
     stalemate ^
     bloodbath ^
+    cataclysm ^
     luckydraw ^
     test4 ^
 
