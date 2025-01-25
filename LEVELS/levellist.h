@@ -202,7 +202,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //problematic
 	BLOCKSB, //fire temple
 	BLOCKSB, //forest temple
-//	BLOCKSA, //EON
+	BLOCKSA, //EON
 //	BLOCKSB, //pg clubstep
 	BLOCKSB, //stalemate
 	BLOCKSB, //bloodbath
@@ -256,7 +256,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //problematic
 	SAWBLADESA, //fire temple
 	SAWBLADESA, //forest temple
-//	SAWBLADESA, //EON
+	SAWBLADESA, //EON
 //	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //stalemate
 	SAWBLADESA, //bloodbath
@@ -311,7 +311,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //problematic
     DEMON, //fire temple
     DEMON, //forest temple
-//    DEMON, //eon
+    DEMON, //eon
 //    DEMON, //pg clubstep
     DEMON, //stalemate
     DEMON, //bloodbath
@@ -365,7 +365,7 @@ const unsigned char stars_list[] = {
 	10, //problematic
 	10, //fire temple
 	10, //forest temple
-//	10, //eon
+	10, //eon
 //	10, //pg clubstep
 	10, //stalemate
 	10, //bloodbath
