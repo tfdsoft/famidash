@@ -60,7 +60,7 @@
 		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
 
 
-.segment "LVL_BANK_04"	; Total bank size: 8156 bytes
+.segment "LVL_BANK_04"	; Total bank size: 8161 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
