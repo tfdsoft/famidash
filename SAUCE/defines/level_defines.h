@@ -46,6 +46,6 @@
 //#define pgclubstep  0x27
 #define stalemate  0x2B
 #define bloodbath 0x2C
-//#define cataclysm 0x2A
-#define luckydraw  0x2D
-#define test4  0X2E
+#define cataclysm 0x2D
+#define luckydraw  0x2E
+#define test4  0X2F
