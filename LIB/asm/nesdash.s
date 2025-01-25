@@ -2133,12 +2133,10 @@ end:
 
 .segment "XCD_BANK_05"
 
-.define CUBE_GRAVITY ::_CUBE_GRAVITY
-.define MINI_CUBE_GRAVITY ::_MINI_CUBE_GRAVITY
-
-.import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y
+.import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y, _player_mini
 .import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _retro_mode, _icon, _gameState, _titleicon
-.importzp _cube_rotate, _mini, _was_on_slope_counter
+.import _CUBE_GRAVITY_lo
+.importzp _cube_rotate, _was_on_slope_counter
 .import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2, _SPIDER_ALT, _SPIDER_ALT2
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT
 .importzp _cube_data, _slope_frames, _slope_type
@@ -2230,7 +2228,7 @@ drawplayer_center_offsets:
 	STX sreg+1			;__
 
 	; Set up base pointer for jump tables
-	LDA _mini       ;
+	LDA _player_mini;
 	BEQ :+          ;   Add 8 if mini mode 
 		LDA #gamemode_count
 	:               ;__
@@ -2323,14 +2321,19 @@ drawplayer_center_offsets:
             JMP @fin_nold
 
 		@no_round:
+		LDA	_framerate	;
+		ASL				;	Physics table index
+		ASL				;	(just the framerate)
+		TAY				;__
+
 		LDA _cube_rotate
-		CLC
 
 		LDX _player_gravity+0
 		BNE @subtract
 
-			ADC #<CUBE_GRAVITY      ;
-			STA _cube_rotate        ;
+			CLC						;
+			ADC _CUBE_GRAVITY_lo,Y	;
+			STA _cube_rotate		;
 			BCC @fin				;   cube_rotate[0] += CUBE_GRAVITY;
 				LDX _cube_rotate+1	;
 				INX					;__
@@ -2341,7 +2344,8 @@ drawplayer_center_offsets:
 				JMP @fin_nold
 
 		@subtract:
-			SBC #<CUBE_GRAVITY-1	; 	
+			SEC						;
+			SBC _CUBE_GRAVITY_lo,Y	; 	
 			STA _cube_rotate		;
 			BCS @fin				;	cube_rotate[0] -= CUBE_GRAVITY;
 				DEC _cube_rotate+1	;
@@ -2632,7 +2636,7 @@ drawplayer_center_offsets:
             ; 7 - A = -A + 7
 			; -A = (A ^ 0xFF) + 1
 			; 7 - A = (A ^ 0xFF) + 8
-            LDY _mini
+            LDY _player_mini
             BNE :+
 			EOR #$FF
 			CLC
@@ -2731,7 +2735,7 @@ drawplayer_common := _drawplayerone::common
 	STX sreg+1			;__
 
 	; Set up base pointer for jump tables
-	LDA _mini+1       ;
+	LDA _player_mini+1;
 	BEQ :+          ;   Add 8 if mini mode 
 		LDA #gamemode_count
 	:               ;__
@@ -2825,15 +2829,20 @@ drawplayer_common := _drawplayerone::common
 			JMP @fin_nold
 
 		@no_round:
+		LDA	_framerate	;
+		ASL				;	Physics table index
+		ASL				;	(just the framerate)
+		TAY				;__
+
 		LDA _cube_rotate+2
-		CLC
 
 		LDX _player_gravity+1
 		BNE @subtract
 
-			ADC #<CUBE_GRAVITY      ;
-			STA _cube_rotate+2		;
-			BCC @fin				;   cube_rotate[0] += CUBE_GRAVITY;
+			CLC						;
+			ADC _CUBE_GRAVITY_lo,Y	;
+			STA _cube_rotate+2		;	cube_rotate[0] += CUBE_GRAVITY;
+			BCC @fin				;
 				LDX _cube_rotate+3	;
 				INX					;__
 				CPX #24				;
@@ -2843,9 +2852,10 @@ drawplayer_common := _drawplayerone::common
 				JMP @fin_nold
 
 		@subtract:
-			SBC #<CUBE_GRAVITY-1	; 	
-			STA _cube_rotate+2		;
-			BCS @fin				;	cube_rotate[0] -= CUBE_GRAVITY;
+			SEC						;
+			SBC _CUBE_GRAVITY_lo,Y	; 	
+			STA _cube_rotate+2		;	cube_rotate[0] -= CUBE_GRAVITY;
+			BCS @fin				;
 				DEC _cube_rotate+3	;
 				BPL @fin			;__
 				LDA #23				;	Cap at 0
@@ -3094,7 +3104,7 @@ drawplayer_common := _drawplayerone::common
             ; 7 - A = -A + 7
 			; -A = (A ^ 0xFF) + 1
 			; 7 - A = (A ^ 0xFF) + 8
-            LDY _mini+1
+            LDY _player_mini+1
             BNE :+
 			EOR #$FF
 			CLC
@@ -4033,9 +4043,11 @@ vert_skip:
 .endproc
 
 .endif
-; Standard for function declaration here:
+
+
+
 ; void init_sprites();
-.segment "CODE"
+.segment "CODE_2"
 
 .importzp _sprite_data	
 .import _sprite_data_bank
@@ -4188,8 +4200,8 @@ vert_skip:
 .endproc
 
 
-; void _update_currplayer_table_idx();
-.segment "CODE"
+; void update_currplayer_table_idx();
+.segment "CODE_2"
 
 .importzp _currplayer_mini, _currplayer_gravity, _currplayer_table_idx
 

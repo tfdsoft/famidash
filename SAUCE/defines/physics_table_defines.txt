@@ -1,9 +1,10 @@
 #	This file is taken by a python script and compiled into tables for each value
 #	File format:
-#	type [flags] name values
+#	type {size} [flags] name values
 #	Types:
-#		int: The values are stored as integer values, size determined automatically
+#		int: The values are stored as integer values, size determined automatically or defined later
 #		fxp[X]: The values are stored as inf.X bit fixed point values
+#	Size: is optional, is of the form "sz[X]" where X is the size in bits
 #	Flags:
 #		g - The values are flipped when gravity is reversed
 #		m - 2 values are defined - one for normal and one for mini
@@ -32,25 +33,27 @@ fxp8 [r] CUBE_SPEED_X2 206.4516129
 fxp8 [r] CUBE_SPEED_X3 249.5126706
 fxp8 [r] CUBE_SPEED_X4 306.9544365
 
-int [R] ROBOT_JUMP_TIME 0.3
+int [R] ROBOT_JUMP_TIME 0.32
+
+fxp8 [gr] CUBE_MAX_FALLSPEED 360.0
+fxp8 [gr] SHIP_MAX_FALLSPEED 210.0
+fxp8 [gr] BALL_MAX_FALLSPEED 360.0
 
 fxp8 [gmr] UFO_MAX_FALLSPEED 187.5 198.75
-fxp8 [gr] CUBE_MAX_FALLSPEED 360.0
-fxp8 [gmr] CUBE_GRAVITY 25.078125 26.015625
-
 fxp8 [gr] SPIDER_MAX_FALLSPEED 360.0
-fxp8 [gr] SPIDER_GRAVITY 17.578125
-
-fxp8 [gr] UFO_GRAVITY 11.71875
-
-fxp8 [gmr] BALL_GRAVITY 16.640625 20.390625
-fxp8 [gr] BALL_MAX_FALLSPEED 360.0
-fxp8 [gmr] SWING_GRAVITY 11.71875 13.125
 fxp8 [gr] SWING_MAX_FALLSPEED 251.25
 
-fxp8 [gmr] SHIP_GRAVITY 9.84375 10.3125
-fxp8 [gr] SHIP_MAX_FALLSPEED 210.0
+fxp8 sz16 [gmr] CUBE_GRAVITY 25.078125 26.015625
+fxp8 sz16 [gmr] SHIP_GRAVITY 9.84375 10.3125
+# = SHIP_GRAVITY * 6 / 5
+fxp8 sz16 [gmr] SHIP_GRAVITY_UP 11.8125 12.375
+fxp8 sz16 [gmr] BALL_GRAVITY 16.640625 20.390625
+fxp8 sz16 [gr] UFO_GRAVITY 11.71875
+fxp8 sz16 [gr] SPIDER_GRAVITY 17.578125
+fxp8 sz16 [gmr] SWING_GRAVITY 11.71875 13.125
 
 fxp8 [r] JIMSHEATBALL_MAX_FALLSPEED 180.0
 fxp8 [r] JIMSHEATBALL_GRAVITY 12.1875
 fxp8 [r] JIMSHEATBALL_JUMP_VEL -213.75
+# literally the above / 4 * 7
+fxp8 [r] JIMSHEATBALL_JUMP_VEL_d4x7 -374.0625

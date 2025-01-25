@@ -6,10 +6,8 @@ void spider_eject();
 void common_gravity_routine();
 void spider_movement(){
 
-	fallspeed_big = SPIDER_MAX_FALLSPEED;
-	fallspeed_mini = MINI_SPIDER_MAX_FALLSPEED;
-	gravity_big = SPIDER_GRAVITY;
-	gravity_mini = MINI_SPIDER_GRAVITY;
+	tmpfallspeed = SPIDER_MAX_FALLSPEED(currplayer_table_idx);
+	tmpgravity = SPIDER_GRAVITY(currplayer_table_idx);
 
 	common_gravity_routine();
 

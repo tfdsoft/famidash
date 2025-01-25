@@ -5,20 +5,22 @@ void bigboi_stuff();
 void ufo_ship_eject();
 void ship_movement(){
 
-	fallspeed_big = SHIP_MAX_FALLSPEED;
-	fallspeed_mini = MINI_SHIP_MAX_FALLSPEED;
+	tmpfallspeed = SHIP_MAX_FALLSPEED(currplayer_table_idx);
 	if (controllingplayer->a || controllingplayer->up) {
-		gravity_big = (SHIP_GRAVITY * 6) / 5;
-		gravity_mini = (MINI_SHIP_GRAVITY * 6) / 5;
+		tmpgravity = SHIP_GRAVITY_UP(currplayer_table_idx);
 	} else {
-		gravity_big = SHIP_GRAVITY;
-		gravity_mini = MINI_SHIP_GRAVITY;
+		tmpgravity = SHIP_GRAVITY(currplayer_table_idx);
 	}
-	common_gravity_routine();
 
-	if(currplayer_vel_y > (!currplayer_mini ? fallspeed_big : fallspeed_mini)) currplayer_vel_y -= (!currplayer_mini ? gravity_big : gravity_mini);
-	if(currplayer_vel_y < (!currplayer_mini ? -fallspeed_big : -fallspeed_mini)) currplayer_vel_y += (!currplayer_mini ? gravity_big : gravity_mini);
+	tmpfallspeed = SHIP_MAX_FALLSPEED(currplayer_table_idx&~TBLIDX_GRAV);
+	if (controllingplayer->a || controllingplayer->up) {
+		tmpgravity = SHIP_GRAVITY_UP(currplayer_table_idx&~TBLIDX_GRAV);
+	} else {
+		tmpgravity = SHIP_GRAVITY(currplayer_table_idx&~TBLIDX_GRAV);
+	}
 
+	if(currplayer_vel_y > tmpfallspeed) currplayer_vel_y -= tmpgravity;
+	if(currplayer_vel_y < -tmpfallspeed) currplayer_vel_y += tmpgravity;
 
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
@@ -32,20 +34,7 @@ void ship_movement(){
 	Generic.x = high_byte(currplayer_x); // the rest should be the same
 	
 	if(controllingplayer->a || controllingplayer->up) {
-		if (!currplayer_mini) {
-			if (!currplayer_gravity){
-			    currplayer_vel_y -= gravity_big<<1;
-				} else {
-			    currplayer_vel_y += gravity_big<<1;
-			}
-		}
-		else {
-			if (!currplayer_gravity){
-			    currplayer_vel_y -= gravity_mini<<1;
-				} else {
-			    currplayer_vel_y += gravity_mini<<1;
-			}
-		}
+		currplayer_vel_y = SHIP_GRAVITY_UP(currplayer_table_idx) * 2 + currplayer_vel_y;
 	}	
 }
 

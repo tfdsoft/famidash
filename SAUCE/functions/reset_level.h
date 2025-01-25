@@ -118,23 +118,15 @@ void reset_level() {
 	drawing_frame = 0;
 	gravity_mod = 0;
 	disco_sprites = 0;
-	currplayer_mini = 0x00;
-	mini[0] = 0;
-	mini[1] = 0;
-	currplayer_vel_x = 0;
-	currplayer_vel_y = 0;
+	player_mini[0] = player_mini[1] = currplayer_mini = 0;
+	player_vel_x[0] = player_vel_x[1] = currplayer_vel_x = 0;
+	player_vel_y[0] = player_vel_y[1] = currplayer_vel_y = 0;
 	forced_trails = 0;
-	player_vel_x[0] = 0;
-	player_vel_y[0] = 0;
-	player_vel_x[1] = 0;
-	player_vel_y[1] = 0;
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
 	coins = 0;
 	orbactive = 0;
-	coin1_timer = 0;
-	coin2_timer = 0;
-	coin3_timer = 0;	
+	coin1_timer = coin2_timer = coin3_timer = 0;
 //	cube_data[0] = 0;
 //	cube_data[1] = 0;   this resets in level_loading/unrle_first_screen
 #ifdef FLAG_KANDO_FUN_STUFF
