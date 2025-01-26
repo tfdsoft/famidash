@@ -47,7 +47,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7745
 
 
-.segment "LVL_BANK_04"	; Total bank size: 8132 bytes
+.segment "LVL_BANK_04"	; Total bank size: 8188 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -206,7 +206,22 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
 
 
-.segment "LVL_BANK_0C"	; Total bank size: 8163 bytes
+.segment "LVL_BANK_0C"	; Total bank size: 8164 bytes
+	.export level_data_geometricaldominator
+	level_data_geometricaldominator:
+	; Header
+		.byte geometricaldominator_song_number
+		.byte geometricaldominator_game_mode
+		.byte geometricaldominator_speed
+		.byte geometricaldominator_no_parallax
+		.byte geometricaldominator_bg_color
+		.byte geometricaldominator_grnd_color
+		.byte 27	; height of geometricaldominator
+	; Level data
+		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6078
+
+
+.segment "LVL_BANK_0D"	; Total bank size: 8163 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -221,7 +236,7 @@
 		.incbin "EXPORTS/decode.lz.bin" ; Size: 5917
 
 
-.segment "LVL_BANK_0D"	; Total bank size: 8169 bytes
+.segment "LVL_BANK_0E"	; Total bank size: 8169 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -236,22 +251,7 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5888
 
 
-.segment "LVL_BANK_0E"	; Total bank size: 8047 bytes
-	.export level_data_geometricaldominator
-	level_data_geometricaldominator:
-	; Header
-		.byte geometricaldominator_song_number
-		.byte geometricaldominator_game_mode
-		.byte geometricaldominator_speed
-		.byte geometricaldominator_no_parallax
-		.byte geometricaldominator_bg_color
-		.byte geometricaldominator_grnd_color
-		.byte 27	; height of geometricaldominator
-	; Level data
-		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 5621
-
-
-.segment "LVL_BANK_0F"	; Total bank size: 7886 bytes
+.segment "LVL_BANK_0F"	; Total bank size: 7991 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -542,7 +542,7 @@
 		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4027
 
 
-.segment "LVL_BANK_1C"	; Total bank size: 8169 bytes
+.segment "LVL_BANK_1C"	; Total bank size: 8159 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -585,7 +585,7 @@
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2727
 
 
-.segment "LVL_BANK_1E"	; Total bank size: 8182 bytes
+.segment "LVL_BANK_1E"	; Total bank size: 8177 bytes
 	.export level_data_retray
 	level_data_retray:
 	; Header
@@ -600,22 +600,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2719
 
 
-.segment "LVL_BANK_1F"	; Total bank size: 8192 bytes
-	.export level_data_leveleasy
-	level_data_leveleasy:
-	; Header
-		.byte leveleasy_song_number
-		.byte leveleasy_game_mode
-		.byte leveleasy_speed
-		.byte leveleasy_no_parallax
-		.byte leveleasy_bg_color
-		.byte leveleasy_grnd_color
-		.byte 27	; height of leveleasy
-	; Level data
-		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
-
-
-.segment "LVL_BANK_20"	; Total bank size: 7925 bytes
+.segment "LVL_BANK_20"	; Total bank size: 7856 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -629,8 +614,6 @@
 	; Level data
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1876
 
-
-.segment "LVL_BANK_21"	; Total bank size: 8192 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
@@ -644,6 +627,8 @@
 	; Level data
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1852
 
+
+.segment "LVL_BANK_21"	; Total bank size: 8106 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -658,7 +643,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
 
-.segment "LVL_BANK_22"	; Total bank size: 8149 bytes
+.segment "LVL_BANK_22"	; Total bank size: 8113 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -685,8 +670,13 @@
 	; Level data
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
+	.export level_data_eon_1
+	level_data_eon_1:
+	; Level data
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
 
-.segment "LVL_BANK_24"	; Total bank size: 6567 bytes
+
+.segment "LVL_BANK_24"	; Total bank size: 4796 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -699,8 +689,3 @@
 		.byte 57	; height of thechallenge
 	; Level data
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 937
-
-	.export level_data_eon_1
-	level_data_eon_1:
-	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
