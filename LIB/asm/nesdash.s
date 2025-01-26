@@ -2333,11 +2333,11 @@ drawplayer_center_offsets:
 			LDA _icon
 
 		@domore:
-			cmp #$13
+			cmp #$12
 			beq @noflip
-			cmp #$17
+			cmp #$16
 			beq @noflip
-   			cmp #$10
+   			cmp #$0F
 			beq @noflip
 			cmp #2
 			bne	@norm
@@ -2821,11 +2821,11 @@ drawplayer_common := _drawplayerone::common
 			cmp #8
 			beq @noflip	
 			LDA _icon
-			cmp #$13
+			cmp #$12
 			beq @noflip
-			cmp #$17
+			cmp #$16
 			beq @noflip
-   			cmp #$10
+   			cmp #$0F
 			beq @noflip
 			cmp #2
 			bne	@norm
