@@ -178,7 +178,7 @@
 		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6138
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8043 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8174 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
@@ -191,19 +191,6 @@
 		.byte 47	; height of lostinthewoods
 	; Level data
 		.incbin "EXPORTS/lostinthewoods.lz.bin" ; Size: 6113
-
-	.export level_data_cantletgo
-	level_data_cantletgo:
-	; Header
-		.byte cantletgo_song_number
-		.byte cantletgo_game_mode
-		.byte cantletgo_speed
-		.byte cantletgo_no_parallax
-		.byte cantletgo_bg_color
-		.byte cantletgo_grnd_color
-		.byte 27	; height of cantletgo
-	; Level data
-		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
 
 
 .segment "LVL_BANK_0C"	; Total bank size: 8164 bytes
@@ -600,7 +587,22 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2719
 
 
-.segment "LVL_BANK_20"	; Total bank size: 7861 bytes
+.segment "LVL_BANK_1F"	; Total bank size: 8128 bytes
+	.export level_data_cantletgo
+	level_data_cantletgo:
+	; Header
+		.byte cantletgo_song_number
+		.byte cantletgo_game_mode
+		.byte cantletgo_speed
+		.byte cantletgo_no_parallax
+		.byte cantletgo_bg_color
+		.byte cantletgo_grnd_color
+		.byte 27	; height of cantletgo
+	; Level data
+		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
+
+
+.segment "LVL_BANK_20"	; Total bank size: 7930 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -614,6 +616,8 @@
 	; Level data
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1876
 
+
+.segment "LVL_BANK_21"	; Total bank size: 8192 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
@@ -627,8 +631,6 @@
 	; Level data
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1852
 
-
-.segment "LVL_BANK_21"	; Total bank size: 8106 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
