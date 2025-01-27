@@ -6044,7 +6044,7 @@ sprite_data_toe2:
   .byte $e0,$3c,$50,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_0B"
+.segment "LVL_BANK_0A"
 sprite_data_geometricaldominator:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$b0
@@ -6364,8 +6364,6 @@ sprite_data_geometricaldominator:
   .byte $c0,$32,$d0,$02,$b4
   .byte $d0,$32,$d0,$02,$bf
   .byte $d0,$32,$10,$03,$0b
-  .byte $e0,$32,$d0,$02,$ba
-  .byte $f0,$32,$d0,$02,$bf
   .byte $10,$33,$d0,$02,$bd
   .byte $20,$33,$d0,$02,$bf
   .byte $40,$33,$d0,$02,$b4
@@ -10388,7 +10386,7 @@ sprite_data_lostinthewoods:
   .byte $20,$27,$80,$02,$0f
   .byte $ff
 
-.segment "LVL_BANK_0A"
+.segment "LVL_BANK_0B"
 sprite_data_bloodbathbutno:
   .byte $00,$00,$70,$03,$18
   .byte $00,$00,$88,$03,$0d

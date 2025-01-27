@@ -163,7 +163,7 @@
 		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 1949
 
 
-.segment "LVL_BANK_0A"	; Total bank size: 8149 bytes
+.segment "LVL_BANK_0A"	; Total bank size: 8189 bytes
 	.export level_data_sunshine
 	level_data_sunshine:
 	; Header
@@ -178,7 +178,7 @@
 		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6138
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8174 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8124 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
