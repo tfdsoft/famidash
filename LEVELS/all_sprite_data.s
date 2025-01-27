@@ -6044,7 +6044,7 @@ sprite_data_toe2:
   .byte $e0,$3c,$50,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_0A"
+.segment "LVL_BANK_09"
 sprite_data_geometricaldominator:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$b0
@@ -6308,21 +6308,15 @@ sprite_data_geometricaldominator:
   .byte $b0,$2e,$10,$03,$bd
   .byte $c0,$2e,$e0,$02,$8f
   .byte $c0,$2e,$10,$03,$bf
-  .byte $e0,$2e,$10,$03,$b4
-  .byte $f0,$2e,$10,$03,$bf
-  .byte $10,$2f,$10,$03,$ba
-  .byte $20,$2f,$10,$03,$bf
+  .byte $00,$2f,$10,$03,$ba
+  .byte $10,$2f,$10,$03,$bf
   .byte $40,$2f,$10,$03,$bd
   .byte $50,$2f,$10,$03,$bf
   .byte $70,$2f,$10,$03,$b4
   .byte $80,$2f,$10,$03,$bf
-  .byte $a0,$2f,$10,$03,$ba
-  .byte $b0,$2f,$10,$03,$bf
   .byte $d0,$2f,$08,$03,$0a
   .byte $d0,$2f,$10,$03,$bd
   .byte $e0,$2f,$10,$03,$bf
-  .byte $00,$30,$d0,$02,$b4
-  .byte $10,$30,$d0,$02,$bf
   .byte $30,$30,$d0,$02,$ba
   .byte $40,$30,$d0,$02,$bf
   .byte $60,$30,$d0,$02,$bd
@@ -6373,19 +6367,13 @@ sprite_data_geometricaldominator:
   .byte $80,$33,$18,$03,$25
   .byte $a0,$33,$d0,$02,$bd
   .byte $b0,$33,$d0,$02,$bf
-  .byte $d0,$33,$d0,$02,$b4
-  .byte $e0,$33,$d0,$02,$bf
-  .byte $00,$34,$d0,$02,$b7
-  .byte $10,$34,$d0,$02,$bf
+  .byte $f0,$33,$d0,$02,$b7
+  .byte $00,$34,$d0,$02,$bf
   .byte $30,$34,$d0,$02,$ba
   .byte $40,$34,$d0,$02,$bf
-  .byte $60,$34,$d0,$02,$bd
-  .byte $70,$34,$d0,$02,$bf
   .byte $80,$34,$f0,$02,$0b
   .byte $90,$34,$d0,$02,$b4
   .byte $a0,$34,$d0,$02,$bf
-  .byte $c0,$34,$d0,$02,$b7
-  .byte $d0,$34,$d0,$02,$bf
   .byte $e0,$34,$20,$03,$05
   .byte $f0,$34,$00,$03,$ba
   .byte $00,$35,$d0,$02,$05
@@ -6403,12 +6391,9 @@ sprite_data_geometricaldominator:
   .byte $90,$35,$00,$03,$bf
   .byte $b0,$35,$00,$03,$ba
   .byte $c0,$35,$00,$03,$bf
-  .byte $e0,$35,$00,$03,$bd
   .byte $e0,$35,$40,$03,$35
-  .byte $f0,$35,$00,$03,$bf
   .byte $10,$36,$00,$03,$b4
   .byte $20,$36,$00,$03,$bf
-  .byte $40,$36,$00,$03,$b6
   .byte $40,$36,$20,$03,$0b
   .byte $50,$36,$00,$03,$bf
   .byte $70,$36,$f0,$02,$24
@@ -10386,7 +10371,7 @@ sprite_data_lostinthewoods:
   .byte $20,$27,$80,$02,$0f
   .byte $ff
 
-.segment "LVL_BANK_0B"
+.segment "LVL_BANK_0A"
 sprite_data_bloodbathbutno:
   .byte $00,$00,$70,$03,$18
   .byte $00,$00,$88,$03,$0d

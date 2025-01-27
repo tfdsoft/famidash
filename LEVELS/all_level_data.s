@@ -135,7 +135,7 @@
 		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6372
 
 
-.segment "LVL_BANK_09"	; Total bank size: 8160 bytes
+.segment "LVL_BANK_09"	; Total bank size: 8187 bytes
 	.export level_data_bloodbathbutno
 	level_data_bloodbathbutno:
 	; Header
@@ -149,21 +149,8 @@
 	; Level data
 		.incbin "EXPORTS/bloodbathbutno.lz.bin" ; Size: 6211
 
-	.export level_data_baseafterbase
-	level_data_baseafterbase:
-	; Header
-		.byte baseafterbase_song_number
-		.byte baseafterbase_game_mode
-		.byte baseafterbase_speed
-		.byte baseafterbase_no_parallax
-		.byte baseafterbase_bg_color
-		.byte baseafterbase_grnd_color
-		.byte 27	; height of baseafterbase
-	; Level data
-		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 1949
 
-
-.segment "LVL_BANK_0A"	; Total bank size: 8189 bytes
+.segment "LVL_BANK_0A"	; Total bank size: 8149 bytes
 	.export level_data_sunshine
 	level_data_sunshine:
 	; Header
@@ -178,7 +165,7 @@
 		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6138
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8124 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8062 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
@@ -191,6 +178,19 @@
 		.byte 47	; height of lostinthewoods
 	; Level data
 		.incbin "EXPORTS/lostinthewoods.lz.bin" ; Size: 6113
+
+	.export level_data_baseafterbase
+	level_data_baseafterbase:
+	; Header
+		.byte baseafterbase_song_number
+		.byte baseafterbase_game_mode
+		.byte baseafterbase_speed
+		.byte baseafterbase_no_parallax
+		.byte baseafterbase_bg_color
+		.byte baseafterbase_grnd_color
+		.byte 27	; height of baseafterbase
+	; Level data
+		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 1949
 
 
 .segment "LVL_BANK_0C"	; Total bank size: 8164 bytes
