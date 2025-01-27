@@ -22,8 +22,8 @@ void do_the_scroll_thing(){
 
 
 	if (!kandodebugmode) {
-		if (curr_x_scroll_stop < target_x_scroll_stop) curr_x_scroll_stop += 0x80;
-		else if (curr_x_scroll_stop > target_x_scroll_stop) curr_x_scroll_stop -= 0x80;		
+		if (curr_x_scroll_stop < target_x_scroll_stop) curr_x_scroll_stop += 0x200;
+		else if (curr_x_scroll_stop > target_x_scroll_stop) curr_x_scroll_stop -= 0x200;		
 	}
 	else {
 		if (curr_x_scroll_stop < target_x_scroll_stop) curr_x_scroll_stop += 0x180;
