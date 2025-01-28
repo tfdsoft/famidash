@@ -206,7 +206,11 @@ void state_instructions(){
 		music_update();
 		newrand();
 		kandoframecnt++;
-	} while (!joypad1.press);
+	} while (!joypad1.press
+		#if !__VS_SYSTEM
+			&& !mouse.left_press
+		#endif
+		);
 	gameState = 1;
 	return;
 }	

@@ -1584,7 +1584,7 @@ void state_menu() {
 			
 			if ((mouse.y >= 0x5E && mouse.y <= 0x7A)) {
 				if (mouse.x >= 0x41 && mouse.x <= 0x5A) {
-					menuselection = 5; break;
+					menuselection = 6; break;
 				}
 				else if (mouse.x >= 0x6F && mouse.x <= 0x8C) {
 					menuselection = 0; break;
@@ -1594,16 +1594,19 @@ void state_menu() {
 				}
 			}				
 			else if ((mouse.y >= 0x8C && mouse.y <= 0x9B)) {
-				if (mouse.x >= 0x5E && mouse.x <= 0x6D) {
+				if (mouse.x >= 0x46 && mouse.x <= 0x56) {
 					menuselection = 2; break;
 				}
-				else if (mouse.x >= 0x8E && mouse.x <= 0x9D) {
+				else if (mouse.x >= 0x76 && mouse.x <= 0x86) {
 					menuselection = 3; break;
+				}				
+				else if (mouse.x >= 0xA6 && mouse.x <= 0xB6) {
+					menuselection = 4; break;
 				}				
 			}
 			else if ((mouse.y >= 0x0D && mouse.y <= 0x1C)) {
 				if (mouse.x >= 0xD6 && mouse.x <= 0xE4) {
-					menuselection = 4; break;
+					menuselection = 5; break;
 				}
 			}
 		}	
