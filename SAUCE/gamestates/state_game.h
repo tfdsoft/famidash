@@ -377,6 +377,7 @@ void state_game(){
 
 		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.up) && !(joypad1.down)) {
 			curr_practice_point--;
+			latest_practice_point--;
 			if (curr_practice_point >= practice_point_count)
 				curr_practice_point = practice_point_count - 1;
 		}
