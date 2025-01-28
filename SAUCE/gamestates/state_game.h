@@ -282,7 +282,7 @@ void state_game(){
 
 
 
-			if (joypad1.press_start || mouse.right_press) {
+			if (joypad1.press_start || (mouse.right_press && !(mouse.left))) {
 				joypad1.press = 0;
 				mouse.right_press = 0;
 				famistudio_music_pause(1);
@@ -377,7 +377,7 @@ void state_game(){
 
 		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.up) && !(joypad1.down)) {
 			curr_practice_point--;
-			latest_practice_point--;
+			if (latest_practice_point) latest_practice_point--;
 			if (curr_practice_point >= practice_point_count)
 				curr_practice_point = practice_point_count - 1;
 		}
