@@ -318,6 +318,7 @@ void state_game(){
 						reset_game_vars();
 						//practice_point_count = 1;
 						joypad1.press = PAD_START;
+						orbed[currplayer] = 1;
 					}
 					if (joypad1.press_select || exittimer == 100) { 
 						gameState = 1; 
@@ -411,7 +412,7 @@ void state_game(){
 		if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
 	if (orbed[currplayer]) {
-		if (!(controllingplayer->hold & (PAD_A | PAD_UP))) orbed[currplayer] = 0;
+		if (!(controllingplayer->hold & (PAD_A | PAD_UP)) && !mouse.left) orbed[currplayer] = 0;
 	}
 
 		crossPRGBankJump0(sprite_collide);
