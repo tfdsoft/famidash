@@ -126,15 +126,36 @@ const uint8_t xbgm_lookup_table[] = {
 
 #endif
 
+#if !__VS_SYSTEM
 const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
     LSB(NTADR_A(15, 11)),	// 0
     LSB(NTADR_A(21, 11)),	// 1 
-    #if !__VS_SYSTEM
-    LSB(NTADR_A(12, 17)),	// 2
-    #else
+    LSB(NTADR_A(9, 17)),	// 2
+    LSB(NTADR_A(15, 17)),	// 3
+    LSB(NTADR_A(21, 17)),	// 3
+    LSB(NTADR_A(27, 1)),	// 4
+    LSB(NTADR_A(9, 11)),	// 5 = 0
+    LSB(NTADR_A(15, 11))	// 5 = 0
+};
+
+const uint8_t hiNTAddrTableTitleScreen[]={
+    MSB(NTADR_A(9, 11)),	// -1 = 4
+    MSB(NTADR_A(15, 11)),	// 0
+    MSB(NTADR_A(21, 11)),	// 1
+    MSB(NTADR_A(9, 17)),	// 2
+    MSB(NTADR_A(15, 17)),	// 3
+    MSB(NTADR_A(21, 17)),	// 3
+    MSB(NTADR_A(27, 1)),	// 4
+    MSB(NTADR_A(9, 11)),	// 5 = 0
+    MSB(NTADR_A(15, 11))	// 5 = 0
+};
+#else
+const uint8_t loNTAddrTableTitleScreen[]={
+    LSB(NTADR_A(9, 11)),	// -1 = 4
+    LSB(NTADR_A(15, 11)),	// 0
+    LSB(NTADR_A(21, 11)),	// 1 
     LSB(NTADR_A(15, 17)),	// 2
-    #endif
     LSB(NTADR_A(18, 17)),	// 3
     LSB(NTADR_A(27, 1)),	// 4
     LSB(NTADR_A(9, 11)),	// 5 = 0
@@ -145,16 +166,13 @@ const uint8_t hiNTAddrTableTitleScreen[]={
     MSB(NTADR_A(9, 11)),	// -1 = 4
     MSB(NTADR_A(15, 11)),	// 0
     MSB(NTADR_A(21, 11)),	// 1
-    #if !__VS_SYSTEM
-    MSB(NTADR_A(12, 17)),	// 2
-    #else
     MSB(NTADR_A(15, 17)),	// 2
-    #endif
     MSB(NTADR_A(18, 17)),	// 3
     MSB(NTADR_A(27, 1)),	// 4
     MSB(NTADR_A(9, 11)),	// 5 = 0
     MSB(NTADR_A(15, 11))	// 5 = 0
 };
+#endif
 
 void gameboy_check();
 void state_menu();
@@ -1468,8 +1486,10 @@ void state_menu() {
 			&& coins_inserted
 		#endif
 			) {
-			if (menuselection == 5) menuselection = 0;
-			#if __VS_SYSTEM
+			#if !__VS_SYSTEM
+				if (menuselection == 6) menuselection = 0;
+			#else
+				if (menuselection == 5) menuselection = 0;
 				else if (menuselection == 1) { menuselection = 5; tmp3--; tmp3--; tmp3--; }
 			#endif
 			else menuselection++;
@@ -1484,8 +1504,10 @@ void state_menu() {
 			&& coins_inserted
 		#endif
 			) {
-			if (menuselection == 0) menuselection = 5;
-			#if __VS_SYSTEM
+			#if !__VS_SYSTEM
+				if (menuselection == 0) menuselection = 6;
+			#else
+				if (menuselection == 0) menuselection = 5;
 				else if (menuselection == 5) { menuselection = 1; tmp3++; tmp3++; tmp3++; }
 			#endif
 			else menuselection--;
@@ -1503,7 +1525,11 @@ void state_menu() {
 			) {    // menu selection incremented
 			tmp4 = menuselection; ++tmp4;
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
+			#if !__VS_SYSTEM
+			if (menuselection != 5) {
+			#else
 			if (menuselection != 4) {
+			#endif
 				one_vram_buffer('a', tmp5);
 				one_vram_buffer('b', addloNOC(tmp5, 1));
 				one_vram_buffer(' ', NTADR_A(26, 2));
@@ -1621,9 +1647,16 @@ void state_menu() {
 			case 0x03:
 			case 0x04:
 				break;
+			case 0x05: customize_screen(); return;
 		#else
 			case 0x03: crossPRGBankJump0(settings); return;
 			case 0x04: 
+				tmp2 = 0;
+				gameState = 0xF1;
+				music_update();
+				ppu_wait_nmi();		
+				break;
+			case 0x05: 
 				if (all_levels_complete != 0xFC) { sfx_play(sfx_invalid, 0); }
 				else {
 					POKE(0x2005, 0x00);
@@ -1634,8 +1667,8 @@ void state_menu() {
 					return;
 				}
 				break;
+			case 0x06: customize_screen(); return;
 		#endif
-		case 0x05: customize_screen(); return;
 	};
 	
 }

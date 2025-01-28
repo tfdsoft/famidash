@@ -117,7 +117,11 @@ void main(){
 				funsettings();
 				break;
 			}
-
+			case 0xF1: {
+				mmc3_set_prg_bank_1(GET_BANK(state_instructions));
+				state_instructions();
+				break;
+			}
 			case 0xFE: {
 				mmc3_set_prg_bank_1(GET_BANK(state_exit));
 				state_exit();
