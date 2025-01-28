@@ -1383,6 +1383,7 @@ void state_menu() {
 			tmp2 = 0;
 			gameState = 0xF1;
 			music_update();
+			pal_fade_to_withmusic(4,0);
 			ppu_wait_nmi();		
 			break;
 		case 0x05: 
