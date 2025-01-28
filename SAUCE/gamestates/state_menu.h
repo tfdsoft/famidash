@@ -84,8 +84,9 @@ const uint8_t loNTAddrTableTitleScreen[]={
     LSB(NTADR_A(9, 11)),	// -1 = 4
     LSB(NTADR_A(15, 11)),	// 0
     LSB(NTADR_A(21, 11)),	// 1 
-    LSB(NTADR_A(12, 17)),	// 2
-    LSB(NTADR_A(18, 17)),	// 3
+    LSB(NTADR_A(9, 17)),	// 2
+    LSB(NTADR_A(15, 17)),	// 3
+    LSB(NTADR_A(21, 17)),	// 3
     LSB(NTADR_A(27, 1)),	// 4
     LSB(NTADR_A(9, 11)),	// 5 = 0
     LSB(NTADR_A(15, 11))	// 5 = 0
@@ -95,8 +96,9 @@ const uint8_t hiNTAddrTableTitleScreen[]={
     MSB(NTADR_A(9, 11)),	// -1 = 4
     MSB(NTADR_A(15, 11)),	// 0
     MSB(NTADR_A(21, 11)),	// 1
-    MSB(NTADR_A(12, 17)),	// 2
-    MSB(NTADR_A(18, 17)),	// 3
+    MSB(NTADR_A(9, 17)),	// 2
+    MSB(NTADR_A(15, 17)),	// 3
+    MSB(NTADR_A(21, 17)),	// 3
     MSB(NTADR_A(27, 1)),	// 4
     MSB(NTADR_A(9, 11)),	// 5 = 0
     MSB(NTADR_A(15, 11))	// 5 = 0
@@ -1261,12 +1263,12 @@ void state_menu() {
 		tmp3 = 0;	
 		
 		if (joypad1.press_right) {
-			if (menuselection == 5) menuselection = 0;
+			if (menuselection == 6) menuselection = 0;
 			else menuselection++;
 			tmp3--;
 		}
 		if (joypad1.press_left) {
-			if (menuselection == 0) menuselection = 5;
+			if (menuselection == 0) menuselection = 6;
 			else menuselection--;
 			tmp3++;
 		}
@@ -1274,7 +1276,7 @@ void state_menu() {
 		if (tmp3 ) {    // menu selection incremented
 			tmp4 = menuselection; ++tmp4;
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-			if (menuselection != 4) {
+			if (menuselection != 5) {
 				one_vram_buffer('a', tmp5);
 				one_vram_buffer('b', addloNOC(tmp5, 1));
 				one_vram_buffer(' ', NTADR_A(26, 2));
@@ -1375,6 +1377,12 @@ void state_menu() {
 		case 0x02: gameState = 4; return;
 		case 0x03: crossPRGBankJump0(settings); return;
 		case 0x04: 
+			tmp2 = 0;
+			gameState = 0xF1;
+			music_update();
+			ppu_wait_nmi();		
+			break;
+		case 0x05: 
 			if (all_levels_complete != 0xFC) { sfx_play(sfx_invalid, 0); }
 			else {
 				POKE(0x2005, 0x00);
@@ -1385,7 +1393,7 @@ void state_menu() {
 				return;
 			}
 			break;
-		case 0x05: customize_screen(); return;
+		case 0x06: customize_screen(); return;
 	};
 	
 }
