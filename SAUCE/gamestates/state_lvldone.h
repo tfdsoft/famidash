@@ -825,11 +825,16 @@ void bgmtest() {
 					settingvalue = 1;
 				}
 			}
-			if ((mouse.x >= 0x2E && mouse.x <= 0xCC) && (mouse.y >= 0xAC && mouse.y <= 0xB3)) {		
-				if (settingvalue == 1) { sfx_play(sfx, 0); }
-				else {
-					if (!temptemp6) { music_play(xbgm_lookup_table2[song]); temptemp6 = 1; songplaying = 1; }
-					else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
+			if ((mouse.x >= 0x2E && mouse.x <= 0xCC)) {
+				if ((mouse.y >= 0xB4 && mouse.y <= 0xBB)) {		
+					if (settingvalue == 1) { sfx_play(sfx, 0); }
+					else {
+						if (!temptemp6) { music_play(xbgm_lookup_table2[song]); temptemp6 = 1; songplaying = 1; }
+						else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
+					}
+				}
+				if ((mouse.y >= 0xA4 && mouse.y <= 0xAB)) {
+					menu_music = song; sfx_play(sfx_orbs, 0);
 				}
 			}
 			if ((mouse.x >= 0x56 && mouse.x <= 0xA5) && (mouse.y >= 0x24 && mouse.y <= 0x2B)) {		
@@ -854,7 +859,7 @@ void bgmtest() {
 				}
 			}
 			if ((mouse.x >= 0x35 && mouse.x <= 0xC4)) {
-				if (mouse.y >= 0xBC && mouse.y <= 0xC4) {		
+				if (mouse.y >= 0xC4 && mouse.y <= 0xCD) {		
 					tmp3--;			
 					one_vram_buffer(' ', NTADR_A(11, 7));
 					one_vram_buffer(' ', NTADR_A(11, 14));
@@ -902,7 +907,7 @@ void bgmtest() {
 		if (joypad1.press_down) settingvalue ^= 1;
 		if (joypad1.press_up) settingvalue ^= 1;
 		
-		if (joypad1.press_select) menu_music = song;
+		if (joypad1.press_select) { menu_music = song; sfx_play(sfx_orbs, 0); }
 		if (joypad1.press_b) {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
