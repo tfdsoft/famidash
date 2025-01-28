@@ -184,8 +184,7 @@ void state_instructions(){
 	mmc3_set_2kb_chr_bank_0(0xFF);	
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
 	ppu_on_all();
-	ppu_wait_nmi();
-
+	music_update();
 	pal_fade_to(0,4);
 	tmp1 = 0;
 
@@ -197,13 +196,13 @@ void state_instructions(){
 		POKE(0x4011, fc_mic_poll()<<4);
 	}
 	*/
-	ppu_wait_nmi();
+
 	
 	do {
 		oam_clear();
 		mouse_and_cursor();
-		ppu_wait_nmi();
 		music_update();
+		ppu_wait_nmi();
 		newrand();
 		kandoframecnt++;
 	} while (!joypad1.press
