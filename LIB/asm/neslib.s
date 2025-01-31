@@ -1817,7 +1817,7 @@ MouseBoundsMax:
 	cmp #::_luckydraw
 	beq @slop
 	lda #::_SLOPESA
-;	clc
+	clc
 	adc CHRBANK_TEMP
 	jmp _mmc3_set_1kb_chr_bank_2
 	lda #1
