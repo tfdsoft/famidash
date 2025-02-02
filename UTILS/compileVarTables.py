@@ -2,7 +2,15 @@
 
 import pathlib, re, math
 
-lineParseRegex = re.compile(r'^[\t ]*(?!#|$)(?P<type>\w+)[\t ]+(?:sz(?P<size>.*)[\t ]+)?\[(?P<flags>\w*)\][\t ]+(?P<name>\w+)[\t ]+(?P<value>.*)$', re.MULTILINE)
+optionalFlagRegex = \
+	"(?:" + "|".join(
+		f"{marker}[ \t]*=[ \t]*(?P<{name}>{data})" for marker, name, data in [
+			("sz", "size", r".*"),
+			("pw", "power", r"-?\d+")
+	]) + ")"
+optionalFlagsRegex = f"(?:{optionalFlagRegex}[ \t]+)*"
+
+lineParseRegex = re.compile(r'^[\t ]*(?!#|$)(?P<type>\w+)[\t ]+' + optionalFlagsRegex + r'?\[(?P<flags>\w*)\][\t ]+(?P<name>\w+)[\t ]+(?P<value>.*)$', re.MULTILINE)
 fxpRegex = re.compile(r'^fxp(?P<fracBits>\d+)')
 
 parseNum = lambda x : float(x) if "." in x else int(x, base=0)
@@ -24,17 +32,16 @@ def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> li
 		num *= 2 ** int(re.match(fxpRegex, source['type'])['fracBits'])	# Convert to fixed point
 		maxNum *= 2 ** int(re.match(fxpRegex, source['type'])['fracBits'])
 
-	if 'r' in source['flags']:	# Division
-		ntscVal = num / NTSC_FRAMERATE
-		palVal = num / PAL_FRAMERATE
-		maxVal = maxNum / PAL_FRAMERATE		# Maximum result of division
-	elif 'R' in source['flags']:	# Multiplication
-		ntscVal = num * NTSC_FRAMERATE
-		palVal = num * PAL_FRAMERATE
-		maxVal = maxNum * NTSC_FRAMERATE	# Maximum result of division
-	else:
+	if source['power'] == None or int(source['power']) == 0:
 		ntscVal = palVal = num
 		maxVal = maxNum
+	else:
+		ntscVal = num * NTSC_FRAMERATE ** int(source['power'])
+		palVal = num * PAL_FRAMERATE ** int(source['power'])
+		if int(source['power']) < 0:	# Division
+			maxVal = maxNum * PAL_FRAMERATE ** int(source['power'])		# Maximum result of division
+		elif int(source['power']) > 0:	# Multiplication
+			maxVal = maxNum * NTSC_FRAMERATE ** int(source['power'])	# Maximum result of division
 
 	if source['size'] != None:
 		maxVal = 2 ** int(source['size'])
@@ -45,6 +52,7 @@ def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> li
 	if (num < 0):
 		ntscVal = maxVal - abs(ntscVal)
 		palVal = maxVal - abs(palVal)
+
 
 	return [
 		[
@@ -95,23 +103,32 @@ def generateCArgumentDefine(source : dict, numTable : tuple[int], suffixes : tup
 def generateCTable(source : dict) -> str:
 	comment = None
 	argument = "table_idx"
-	if source['flags'] == 'g':
+
+	flags = {
+		'g': 'g' in source['flags'],
+		'm': 'm' in source['flags'],
+		'r': not (source['power'] == None or int(source['power']) == 0)
+	}
+
+	size_override = -1 if source['size'] == None else int(source['size'])
+
+	if flags['g'] and not (flags['m'] or flags['r']):
 		value = generateCNumArray(parseNum(source['value']), source)
 		numTable = value[0]
 		comment = "// Depends on gravity"
 		argument = "gravity"
-	elif source['flags'] == 'm':
+	elif flags['m'] and not (flags['r'] or flags['g']):
 		values = [parseNum(i) for i in source['value'].split()]
 		values = [generateCNumArray(i, source, max(values)) for i in values]
 		numTable = (values[0][0][0], values[1][0][0])
 		comment = "// Depends on mini"
 		argument = "mini"
-	elif source['flags'] == 'r' or source['flags'] == 'R':
+	elif flags['r'] and not (flags['g'] or flags['m']):
 		value = generateCNumArray(parseNum(source['value']), source)
 		numTable = (value[0][0], value[1][0])
 		comment = "// Depends on framerate"
 		argument = "framerate"
-	elif 'm' in source['flags']:
+	elif flags['m']:
 		values = [parseNum(i) for i in source['value'].split()]
 		values = [generateCNumArray(i, source, max(values)) for i in values]
 		numTable = (*values[0][0], *values[1][0], *values[0][1], *values[1][1])
@@ -119,7 +136,7 @@ def generateCTable(source : dict) -> str:
 		value = generateCNumArray(parseNum(source['value']), source)
 		numTable = (*value[0], *value[0], *value[1], *value[1])
 
-	size = math.ceil(math.ceil(math.log2(max(numTable))) / 8) * 8
+	size = math.ceil(math.ceil(max(math.log2(max(numTable)), size_override)) / 8) * 8
 	
 	if (size == 8):
 		return (comment + '\n' if comment else '') + f'const uint8_t {source["name"]}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};\n#define {source["name"]}({argument}) {source["name"]}[{argument}]'
