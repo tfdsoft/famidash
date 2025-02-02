@@ -1,10 +1,17 @@
 #	This file is taken by a python script and compiled into tables for each value
 #	File format:
-#	type {size} [flags] name values
+#	type {optional settings} [flags] name values
 #	Types:
 #		int: The values are stored as integer values, size determined automatically or defined later
 #		fxp[X]: The values are stored as inf.X bit fixed point values
-#	Size: is optional, is of the form "sz=[X]" where X is the size in bits
+#	Optional settings:
+#		have the form {marker}={value}
+#		sz: Forced size of the variable in bits
+#		pw: Power of the framerate to multiply the value with
+#			(examples: 	1 if the value is in s (duration),
+#						-1 if the value is in 1/s (velocity), 
+#						-2 if the value is in 1/(s^2) (acceleration))
+#			If not specified the value doesn't depend on the framerate
 #	Flags:
 #		g - The values are flipped when gravity is reversed
 #		m - 2 values are defined - one for normal and one for mini
