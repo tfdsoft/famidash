@@ -17,11 +17,11 @@
 #define song_electroman_adventures 16
 #define song_dash 17
 #define song_stereo_madness_2 18
-#define song_back_on_track 19
-#define song_clubstep 20
+#define song_clubstep 19
+#define song_blast_processing 20
 #define song_atthespeedoflight 21
-#define song_base_after_base 22
-#define song_blast_processing 23
+#define song_back_on_track 22
+#define song_base_after_base 23
 #define song_the_challenge 24
 #define song_just_right 25
 #define song_stereo_madness 26
