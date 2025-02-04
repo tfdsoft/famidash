@@ -1364,8 +1364,13 @@ void state_menu() {
 	normalorcommlevels = 1;
 	switch (menuselection) {
 		case 0x00:
-			normalorcommlevels = 0;
-			// fall through lmao
+			tmp2 = 0;
+			gameState = 0xF2;
+			music_update();
+			pal_fade_to_withmusic(4,0);
+			ppu_wait_nmi();		
+			break;
+			// no fall through lmao
 		case 0x01: 
 			POKE(0x2005, 0x00);
 			POKE(0x2005, 0x00);

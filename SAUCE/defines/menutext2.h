@@ -11,9 +11,9 @@ const unsigned char coins3[]="3/3";
 
 #include "defines/color1_charmap.h"
 
-const unsigned char level1text[]="STEREO ";
+const unsigned char level1text[]="YOU SHOULDNT";
 
-const unsigned char level1text2[]="MADNESS";
+const unsigned char level1text2[]="BE HERE";
 const unsigned char levelpgclubtext2[]="PG CLUBSTEP";
 const unsigned char leveleasy2[]="LEVEL EASY";
 const unsigned char levelnostalgists2[]=" DEAR NOSTALGISTS";

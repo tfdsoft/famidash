@@ -121,6 +121,11 @@ void main(){
 				state_instructions();
 				break;
 			}
+			case 0xF2: {
+				mmc3_set_prg_bank_1(GET_BANK(state_playmain));
+				state_playmain();
+				break;
+			}
 			case 0xFE: {
 				mmc3_set_prg_bank_1(GET_BANK(state_exit));
 				state_exit();
