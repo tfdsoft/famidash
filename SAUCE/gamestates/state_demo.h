@@ -483,6 +483,7 @@ const uint8_t xbgm_lookup_table3[] = {
 	song_driving_by_night,
 	song_chaozfantasy,
 	song_clutterfunk_2,
+	song_crackdown,
 	
 };
 
