@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 6
+#define COMMUNITY_LEVEL_COUNT 7
 
 #define stereomadness 0
 #define leveleasy 1
@@ -13,3 +13,4 @@
 #define pgclubstep 4
 #define eon 5
 #define cataclysm 6
+#define aftercatabath 7

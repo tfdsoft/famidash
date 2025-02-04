@@ -139,6 +139,22 @@
 				}
 			]
 		},
+		{
+			level: "aftercatabath",
+			lowerText: "AFTERCATABATH",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_atthespeedoflightfull",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x06,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		}
 	],
 	globalObjectOffsets: [
 		/*	Format:

@@ -336,6 +336,11 @@
 			vsSystemEnabled: true
 		},
 		{
+			fmsSongName: "atthespeedoflightfull",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT FULL"
+		},
+		{
 			fmsSongName: "midnight",
 			lowerText: "MIDNIGHT",
 			vsSystemEnabled: true

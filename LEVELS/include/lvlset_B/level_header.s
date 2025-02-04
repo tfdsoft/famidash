@@ -49,3 +49,10 @@ cataclysm_speed       = 1
 cataclysm_no_parallax = 1
 cataclysm_bg_color    = $06
 cataclysm_grnd_color  = $0F
+
+aftercatabath_song_number = song_atthespeedoflightfull
+aftercatabath_game_mode   = 0
+aftercatabath_speed       = 1
+aftercatabath_no_parallax = 1
+aftercatabath_bg_color    = $06
+aftercatabath_grnd_color  = $0F
