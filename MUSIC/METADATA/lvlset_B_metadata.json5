@@ -1,19 +1,9 @@
 {
 	songs: [
 		{
-			fmsSongName: "Menu Theme",
+			fmsSongName: "Menu Theme (2.2)",
 			lowerText: "MENU",
-			vsSystemEnabled: false,
-			nsfData: {
-				trackLabel: "Menu Theme",
-				trackAuthor: {
-					original: "RobTop",
-					cover: "Zenith302"
-				},
-				durationNTSC: 30017,
-				durationPAL: 36080,
-				looped: true
-			}
+			vsSystemEnabled: false
 		},
 		{
 			fmsSongName: "Stereo Madness",

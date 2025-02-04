@@ -285,7 +285,7 @@ CODE_BANK_PUSH("RODATA")
 #if !__VS_SYSTEM
 
 const uint8_t xbgmlookuptable[] = {
-	song_menu_theme,
+	song_menu_theme_22,
 	song_stereo_madness,
 	song_back_on_track,
 	song_polargeist,
