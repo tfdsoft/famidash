@@ -13,6 +13,7 @@ SET all_levels= ^
     cataclysm ^
     aftermath ^
     aftercatabath ^
+    test4 ^
 
 
 echo Exporting everything %all_levels%

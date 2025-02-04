@@ -60,3 +60,10 @@ eon_speed       = $01
 eon_no_parallax  = 1
 eon_bg_color    = $0F
 eon_grnd_color  = $0F
+
+test4_song_number = song_hexagon_force
+test4_game_mode   = $00
+test4_speed       = $00
+test4_no_parallax  = 1
+test4_bg_color    = $12
+test4_grnd_color  = $02
