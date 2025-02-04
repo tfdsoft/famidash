@@ -7,6 +7,10 @@ A demake of Geometry Dash for the NES using the MMC3 mapper.
 
 You can find nightly dev builds in the Actions tab. Alternatively you can download them [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.nes.zip).
 
+You can find the B-Sides branch here: https://github.com/tfdsoft/famidash/tree/Famidash-b-sides
+
+You can find the VS branch here: https://github.com/tfdsoft/famidash/tree/vs-famidash-again
+
 ## contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and levels there.
@@ -42,19 +46,18 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[StudsX](https://github.com/smbhacks)|asm, music, pcm code|
 |cloud54|various music tracks and art|
 |[RedGD](https://github.com/RedGeometryDash)|icons, graphics|
-|[AnnoyedArt1256](https://github.com/AnnoyedArt1256)|level compression|
+|[AnnoyedArt1256](https://github.com/AnnoyedArt1256)|level compression asm|
+|[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music|
 |[sussysy](https://github.com/VECTREX45)|music|
 |[KawaiiDawn](https://github.com/Astroclimber26)|levels|
 |[Crafty Jumper](https://github.com/Crafty-Jumper)|levels, music|
 |[banana6000](https://github.com/xXFamidash_Fan69Xx)|icons, levels|
-|blacecaptainn|icons|
-|dtpls|icons|
-|ps_lol|icons|
-|notapotato|icons|
 |[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
-|[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music|
 |[ElAngel378](https://github.com/ElAngel378)|music|
 |NerdBoy628|levels, music|
-
+|blacecaptainn|icon contest winner|
+|dtpls|icon contest winner|
+|ps_lol|icon contest winner|
+|notapotato|icon contest winner|
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
