@@ -392,6 +392,11 @@
 			upperText: "OKIBA",
 			lowerText: "CRACKDOWN",
 			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "ultimatedestruction",
+			upperText: "ULTIMATE",
+			lowerText: "DESTRUCTION"
 		}
 	],
 	SFX: [
