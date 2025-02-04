@@ -19,4 +19,5 @@ const unsigned char leveleasy2[]="LEVEL EASY";
 const unsigned char levelnostalgists2[]=" DEAR NOSTALGISTS";
 const unsigned char levelsupercycles2[]="SUPER CYCLES";
 const unsigned char levelcataclysm2[]="CATACLYSM";
+const unsigned char leveleon2[]="EON";
 

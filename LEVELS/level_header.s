@@ -32,3 +32,10 @@ pgclubstep_speed       = $00
 pgclubstep_no_parallax  = 0
 pgclubstep_bg_color    = $0F
 pgclubstep_grnd_color  = $0F
+
+eon_song_number = song_eon
+eon_game_mode   = $00
+eon_speed       = $01
+eon_no_parallax  = 1
+eon_bg_color    = $0F
+eon_grnd_color  = $0F

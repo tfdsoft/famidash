@@ -148,7 +148,7 @@ void state_game(){
 	pal_set_update();
 
     while (1) {
-		if (level == luckydraw) { dblocked[0] = 1; }
+//		if (level == luckydraw) { dblocked[0] = 1; }
 		newrand();
 		if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = (icon<<1) + 40; }
 		pal_col(3,outline_color);
@@ -417,8 +417,9 @@ void state_game(){
 
 		crossPRGBankJump0(sprite_collide);
 
-		if (level == luckydraw) { if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement); }
-		else crossPRGBankJump0(movement);
+//		if (level == luckydraw) { if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement); }
+//		else crossPRGBankJump0(movement);
+		crossPRGBankJump0(movement);
 
 		processXMovement = 1;
 
@@ -528,8 +529,9 @@ void state_game(){
 
 			crossPRGBankJump0(sprite_collide);
 
-			if (level == luckydraw) { if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement); }
-			else crossPRGBankJump0(movement);
+			//if (level == luckydraw) { if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement); }
+			//else crossPRGBankJump0(movement);
+			crossPRGBankJump0(movement);
 
 			if (dual && (options & platformer) && !twoplayer) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
 			else if (dual && !(options & platformer)) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
