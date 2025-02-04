@@ -3,7 +3,7 @@
 #define song_practice 2
 #define song_haunted_woods 3
 #define song_eon 4
-#define song_death_moon 5
+#define song_dash 5
 #define song_polargeist 6
 #define song_time_machine 7
 #define song_fingerdash 8
@@ -14,8 +14,8 @@
 #define song_geometrical_dominator 13
 #define song_toe_2 14
 #define song_atthespeedoflight2 15
-#define song_electroman_adventures 16
-#define song_dash 17
+#define song_death_moon 16
+#define song_electroman_adventures 17
 #define song_stereo_madness_2 18
 #define song_clubstep 19
 #define song_blast_processing 20
