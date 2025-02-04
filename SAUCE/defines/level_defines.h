@@ -42,10 +42,10 @@
 #define problematic  0x26
 #define firetemple 0x27
 #define foresttemple 0x28
-#define eon  0x29
+//#define eon  0x29
 //#define pgclubstep  0x27
-#define stalemate  0x2A
-#define bloodbath 0x2B
+#define stalemate  0x29
+#define bloodbath 0x2A
 //#define cataclysm 0x2C
-#define luckydraw  0x2C
-#define test4  0X2D
+#define luckydraw  0x2B
+#define test4  0X2C

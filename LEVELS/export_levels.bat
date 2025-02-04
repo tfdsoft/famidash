@@ -45,7 +45,6 @@ SET all_levels= ^
     problematic ^
     firetemple ^
     foresttemple ^
-    eon ^
     stalemate ^
     bloodbath ^
     luckydraw ^
