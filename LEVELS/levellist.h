@@ -51,327 +51,57 @@
 
 const uint8_t DECOTYPE[] = {
 	DECO1, //sm
-	DECO1, //bot
-	DECO1,  //polar
-	DECO1,  //dry
-	DECO1, //base
-	DECO1,  //cant
-	DECO1,  //jumper
-	DECO1,  //time
-	DECO1,  //cycles
-	DECOCLOUD,  //xstep
-	DECOCLOUD, //clutterfunk
-	DECOCLOUD, //TOE
-	DECOCLOUD, //electroman
-	DECO1, //clubstep
-	DECO1, //electrodynamix
-	DECO1, //hexagon force
-	DECO1, //blast processing
-	DECO1, //TOE2
-	DECO1, //geometrical dominator
-	EXTRASPRITES1, //deadlocked
-	EXTRASPRITES1, //fingerdash
-	EXTRASPRITES1, //dash
-	DECO1, //RETRAY
-	DECO1, //SONAR
-	EXTRASPRITES1, //the challenge
-//	DECO1, //level easy
-	DECO1, //dreamer
-	DECO1, //lookatthislevel
-	DECOCLOUD, //kappaclysm
-	DECO1, //sunshine
-	DECO1, //revolution
-	DECO1, //lost in the woods
-	DECO1, //bloodbath but no
-	DECO1, //a pretty easy level
-	DECO1, //LIGHTNING ROAD
-	DECOCLOUD, //NIGHTMARE
-	DECO1, //DEMON PARK
-	DECO1, //death moon
-	DECOCLOUD, //DECODE
+	DECO1, //level easy
 //	EXTRASPRITES1, //dear nostalgists
-//	DECO1, //super cycles
-	DECO1, //problematic
-	DECO1, //fire temple
-	DECO1, //forest temple
-	EXTRASPRITES1, //EON
-//	DECO1, //pg clubstep
-	DECO1, //stalemate
-	DECOCLOUD, //bloodbath
-//	DECO1, //cataclysm
-	DECOCLOUD, //lucky draw
-	EXTRASPRITES1,
+	DECO1, //super cycles
+	DECO1, //pg clubstep
+	DECO1, //cataclysm
 };
 
 const unsigned char spike_set[] = {
 	SPIKESA, //stereo madness
-	SPIKESA, //back on track
-	SPIKESA, //polargeist
-	SPIKESA, //dryout
-	SPIKESA, //base after base
-	SPIKESA, //cant let go
-	SPIKESA, //jumper
-	SPIKESA, //time machine
-	SPIKESA, //cycles
-	SPIKESB, //xstep
-	SPIKESB, //clutterfunk
-	SPIKESB, //theory of everything
-	SPIKESB, //electroman
-	SPIKESA, //clubstep
-	SPIKESA, //electrodynamix
-	SPIKESB, //hexagon force
-	SPIKESB, //blast processing
-	SPIKESA, //TOE2
-	SPIKESC, //geometrical dominator
-	SPIKESA, //deadlocked
-	SPIKESA, //fingerdash
-	SPIKESA, //dash
-	SPIKESA, //RETRAY
-	SPIKESA, //SONAR
-	SPIKESA, //the challenge
-//	SPIKESA, //level easy
-	SPIKESA, //dreamer
-	SPIKESA, //lookatthislevel
-	SPIKESC, //kappaclysm
-	SPIKESA, //sunshine
-	SPIKESA, //revolution
-	SPIKESA, //lost in the woods
-	SPIKESA, //bloodbath but no
-	SPIKESC, //a pretty easy level
-	SPIKESC, //lightning road
-	SPIKESB, //nightmare
-	SPIKESC, //demon park
-	SPIKESB, //death moon
-	SPIKESB, //decode
+	SPIKESA, //level easy
 //	SPIKESC, //dear nostalgists
-//	SPIKESA, //super cycles
-	SPIKESB, //problematic
-	SPIKESB, //fire temple
-	SPIKESB, //forest temple
-	SPIKESB, //eon
-//	SPIKESA, //pg clubstep
-	SPIKESA, //STALEMATE
-	SPIKESC, //bloodbath
-//	SPIKESC, //cataclysm
-	SPIKESB, //lucky draw
-	SPIKESA, //test4
+	SPIKESA, //super cycles
+	SPIKESA, //pg clubstep
+	SPIKESC, //cataclysm
 };
 
 const unsigned char block_set[] = {
 	BLOCKSA, //stereo madness
-	BLOCKSA, //back on track
-	BLOCKSA, //polargeist
-	BLOCKSA, //dryout
-	BLOCKSA, //base after base
-	BLOCKSA, //cant let go
-	BLOCKSA, //jumper
-	BLOCKSA, //time machine
-	BLOCKSA, //cycles
-	BLOCKSC, //xstep
-	BLOCKSD, //clutterfunk
-	BLOCKSB, //theory of everything
-	BLOCKSB, //electroman
-	BLOCKSB, //clubstep
-	BLOCKSB, //electrodynamix
-	BLOCKSB, //hexagon force
-	BLOCKSB, //blast processing
-	BLOCKSB, //TOE2
-	BLOCKSB, //geometrical dominator
-	BLOCKSB, //deadlocked
-	BLOCKSB, //fingerdash
-	BLOCKSA, //dash
-	BLOCKSB, //RETRAY
-	BLOCKSB, //SONAR
-	BLOCKSB, //the challenge
-//	BLOCKSA, //level easy
-	BLOCKSB, //dreamer
-	BLOCKSB, //lookatthislevel
-	BLOCKSB, //kappaclysm
-	BLOCKSB, //sunshine
-	BLOCKSB, //revolution
-	BLOCKSB, //lost in the woods
-	BLOCKSB, //bloodbath but no
-	BLOCKSC, //a pretty easy level
-	BLOCKSA, //LIGHTNING ROAD
-	BLOCKSC, //nightmare
-	BLOCKSA, //demon park
-	BLOCKSB, //death moon
-	BLOCKSB, //decode
+	BLOCKSA, //level easy
 //	BLOCKSA, //dear nostalgists
-//	BLOCKSB, //super cycles
-	BLOCKSB, //problematic
-	BLOCKSB, //fire temple
-	BLOCKSB, //forest temple
-	BLOCKSA, //EON
-//	BLOCKSB, //pg clubstep
-	BLOCKSB, //stalemate
-	BLOCKSB, //bloodbath
-//	BLOCKSB, //cataclysm
-	BLOCKSB, //lucky draw
-	BLOCKSB, //test4
+	BLOCKSB, //super cycles
+	BLOCKSB, //pg clubstep
+	BLOCKSB, //cataclysm
 };
 
 const unsigned char saw_set[] = {
 	SAWBLADESA, //stereo madness
-	SAWBLADESA, //back on track
-	SAWBLADESA, //polargeist
-	SAWBLADESA, //dryout
-	SAWBLADESA, //base after base
-	SAWBLADESA, //cant let go
-	SAWBLADESA, //jumper
-	SAWBLADESA, //time machine
-	SAWBLADESA, //cycles
-	SAWBLADESA, //xstep
-	SAWBLADESA, //clutterfunk
-	SAWBLADESA, //theory of everything
-	SAWBLADESA, //electroman
-	SAWBLADESA, //clubstep
-	SAWBLADESA, //electrodynamix
-	SAWBLADESA, //hexagon force
-	SAWBLADESA, //blast processing
-	SAWBLADESA, //TOE2
-	SAWBLADESA, //geometrical dominator
-	SAWBLADESA, //deadlocked
-	SAWBLADESA, //fingerdash
-	SAWBLADESA, //dash
-	SAWBLADESA, //retray
-	SAWBLADESA, //SONAR
-	SAWBLADESA, //the challenge
-//	SAWBLADESA, //level easy
-	SAWBLADESA, //dreamer
-	SAWBLADESA, //lookatthislevel
-	SAWBLADESA, //kappaclysm
-	SAWBLADESA, //sunshine
-	SAWBLADESA, //revolution
-	SAWBLADESA, //lost in the woods
-	SAWBLADESA, //bloodbath but no
-	SAWBLADESA, //a pretty easy level
-	SAWBLADESA, //LIGHTNING ROAD
-	SAWBLADESA, //nightmare
-	SAWBLADESA, //demon park
-	SAWBLADESA, //death moon
-	SAWBLADESA, //decode
+	SAWBLADESA, //level easy
 //	SAWBLADESA, //dear nostalgists
-//	SAWBLADESA, //super cycles
-	SAWBLADESA, //problematic
-	SAWBLADESA, //fire temple
-	SAWBLADESA, //forest temple
-	SAWBLADESA, //EON
-//	SAWBLADESA, //PG CLUBSTEP
-	SAWBLADESA, //stalemate
-	SAWBLADESA, //bloodbath
-//	SAWBLADESA, //cataclysm
-	LETTERBANK, //lucky draw
-	SAWBLADESA, //test4
+	SAWBLADESA, //super cycles
+	SAWBLADESA, //PG CLUBSTEP
+	SAWBLADESA, //cataclysm
 };
 
 
 const unsigned char difficulty_list[] = {
     EASY,
-    EASY,
-    NORMAL,
-    NORMAL,
-    HARD,
-    HARD,
-    HARDER,
-    HARDER,
-    HARDER,
-    INSANE,
-    INSANE,
-    INSANE,
-    INSANE,
-    DEMON,  //CLUBSTEP
-    INSANE,  //electrodynamix
-    INSANE,  //hexagon force
-    HARDER, //blast processing
-    DEMON,  //TOE2
-    HARDER, //geometrical dominiator
-    DEMON,  //deadlocked
-    INSANE,  //fingerdash
-    INSANE,  //dash
-    EASY, //RETRAY
-    EASY, //SONAR
-    NORMAL, //the challenge
-//    NORMAL, //level easy
-    HARD, //dreamer
-    HARD, //lookatthislevel
-    HARDER, //kappaclysm
-    HARDER, //sunshine
-    HARDER, //revolution
-    INSANE, //lost in the woods
-    INSANE, //bloodbath but no
-    INSANE, //a pretty easy level
-    DEMON, //lightning road
-    DEMON, //nightmare
-    DEMON, //demon park
-    DEMON, //death moon
-    DEMON, //decode
+    NORMAL, //level easy
 //    DEMON, //dear nostalgists
-//    DEMON, //super cycles
-    DEMON, //problematic
-    DEMON, //fire temple
-    DEMON, //forest temple
-    DEMON, //eon
-//    DEMON, //pg clubstep
-    DEMON, //stalemate
-    DEMON, //bloodbath
-//    DEMON, //cataclysm
-    DEMON, //lucky draw
-    DEMON,
+    DEMON, //super cycles
+    DEMON, //pg clubstep
+    DEMON, //cataclysm
 };
 
 const unsigned char stars_list[] = {
 	1,
-	2,
-	3,
-	4,
-	5,
-	6,
-	7,
-	8,
-	9,
-	10,
-	11,
-	12,
-	10,
-	14,  //clubstep
-	12,  //electrodynamix
-	12,  //hexagon force
-	10,  //blast processing
-	14,  //TOE2
-	10,  //geometrical dominiator
-	15,  //DEADLOCKED
-	12,  //fingerdash
-	12,  //dash
-	2,   //retray
-	2,   //SONAR
-	3,   //the challenge
-//	3,   //level easy
-	4,   //dreamer
-	4,   //lookatthislevel
-	6,  //kappaclysm
-	7,  //sunshine
-	7,  //revolution
-	8,  //lost in the woods
-	8,  //bloodbath but no
-	9,  //a pretty easy level
-	10, //lightning road
-	10, //nightmare
-	10, //demon park
-	10, //death moon
-	10, //decode
+	3,   //level easy
 //	10, //dear nostlagists
-//	10, //super cycles
-	10, //problematic
-	10, //fire temple
-	10, //forest temple
-	10, //eon
-//	10, //pg clubstep
-	10, //stalemate
-	10, //bloodbath
-//	10, //cataclysm
-	10, // lucky draw
-	0,
+	10, //super cycles
+	10, //pg clubstep
+	10, //cataclysm
 };
 const unsigned char colors_list[] = {
 	0x12,
