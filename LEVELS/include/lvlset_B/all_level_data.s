@@ -60,22 +60,22 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
 
-.segment "DAT_BANK_04"	; Total bank size: 6686 bytes
-	.export level_data_supercycles
-	level_data_supercycles:
+.segment "DAT_BANK_04"	; Total bank size: 6461 bytes
+	.export level_data_clutterfunk2
+	level_data_clutterfunk2:
 	; Header
-		.byte supercycles_song_number
-		.byte supercycles_game_mode
-		.byte supercycles_speed
-		.byte supercycles_no_parallax
-		.byte supercycles_bg_color
-		.byte supercycles_grnd_color
-		.byte 27	; height of supercycles
+		.byte clutterfunk2_song_number
+		.byte clutterfunk2_game_mode
+		.byte clutterfunk2_speed
+		.byte clutterfunk2_no_parallax
+		.byte clutterfunk2_bg_color
+		.byte clutterfunk2_grnd_color
+		.byte 27	; height of clutterfunk2
 	; Level data
-		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
+		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6461
 
 
-.segment "DAT_BANK_05"	; Total bank size: 7525 bytes
+.segment "DAT_BANK_05"	; Total bank size: 7644 bytes
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header
@@ -88,6 +88,21 @@
 		.byte 27	; height of leveleasy
 	; Level data
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
+
+
+.segment "DAT_BANK_06"	; Total bank size: 7486 bytes
+	.export level_data_supercycles
+	level_data_supercycles:
+	; Header
+		.byte supercycles_song_number
+		.byte supercycles_game_mode
+		.byte supercycles_speed
+		.byte supercycles_no_parallax
+		.byte supercycles_bg_color
+		.byte supercycles_grnd_color
+		.byte 27	; height of supercycles
+	; Level data
+		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
 
 	.export level_data_eon_0
 	level_data_eon_0:

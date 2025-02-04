@@ -22,6 +22,13 @@ supercycles_no_parallax = 1
 supercycles_bg_color    = $12
 supercycles_grnd_color  = $02
 
+clutterfunk2_song_number = song_clutterfunk_2
+clutterfunk2_game_mode   = 0
+clutterfunk2_speed       = 0
+clutterfunk2_no_parallax = 1
+clutterfunk2_bg_color    = $0F
+clutterfunk2_grnd_color  = $0F
+
 pgclubstep_song_number = song_clubstep
 pgclubstep_game_mode   = 0
 pgclubstep_speed       = 0

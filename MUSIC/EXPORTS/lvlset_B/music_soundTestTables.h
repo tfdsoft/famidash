@@ -58,6 +58,8 @@ const char musicSoundTestString32[13] = "HAUNTED$WOODS";
 const char musicSoundTestString33[10] = "JUST$RIGHT";
 const char musicSoundTestString34[14] = "THE$ODDS$REDUX";
 const char musicSoundTestString35[ 5] = "NIGHT";
+const char musicSoundTestString36[13] = "CHAOZ$FANTASY";
+const char musicSoundTestString37[13] = "CLUTTERFUNK$2";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -102,6 +104,8 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	musicSoundTestString0B,
 	musicSoundTestString0C,
+	NULL,
+	NULL,
 };
 
 const uint8_t xbgmtextsUpperSize[] = {
@@ -146,6 +150,8 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	sizeof(musicSoundTestString0B),
 	sizeof(musicSoundTestString0C),
+	0,
+	0,
 };
 
 
@@ -191,6 +197,8 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString33,
 	musicSoundTestString34,
 	musicSoundTestString35,
+	musicSoundTestString36,
+	musicSoundTestString37,
 };
 
 const uint8_t xbgmtextsLowerSize[] = {
@@ -235,6 +243,8 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString33),
 	sizeof(musicSoundTestString34),
 	sizeof(musicSoundTestString35),
+	sizeof(musicSoundTestString36),
+	sizeof(musicSoundTestString37),
 };
 
 #else
@@ -294,6 +304,8 @@ const uint8_t xbgmlookuptable[] = {
 	song_just_right,
 	song_against_the_odds_redux,
 	song_driving_by_night,
+	song_chaozfantasy,
+	song_clutterfunk_2,
 };
 
 #else
@@ -337,6 +349,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_haunted_woods,
 	song_against_the_odds_redux,
 	song_driving_by_night,
+	song_chaozfantasy,
 };
 
 #endif

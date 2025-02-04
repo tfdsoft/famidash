@@ -358,13 +358,6 @@
 			lowerText: "HAUNTED WOODS",
 			vsSystemEnabled: true
 		},
-		/*
-		{
-			fmsSongName: "chaozfantasy",
-			lowerText: "CHAOZ FANTASY",
-			vsSystemEnabled: true
-		},
-		*/
 		{
 			fmsSongName: "just right",
 			lowerText: "JUST RIGHT",
@@ -381,6 +374,16 @@
 			upperText: "DRIVING BY",
 			lowerText: "NIGHT",
 			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "chaozfantasy",
+			lowerText: "CHAOZ FANTASY",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "clutterfunk 2",
+			lowerText: "CLUTTERFUNK 2"
+			/* no vs system to speak of */
 		}
 	],
 	SFX: [

@@ -4,11 +4,12 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 5
+#define COMMUNITY_LEVEL_COUNT 6
 
 #define stereomadness 0
 #define leveleasy 1
 #define supercycles 2
-#define pgclubstep 3
-#define eon 4
-#define cataclysm 5
+#define clutterfunk2 3
+#define pgclubstep 4
+#define eon 5
+#define cataclysm 6
