@@ -512,6 +512,7 @@ const unsigned char TEXT_xlevel2text8[]="TIME$MACHINE";
 const unsigned char TEXT_xlevel2text9[]="CYCLES";
 const unsigned char TEXT_xlevel2textA[]="XSTEP";
 const unsigned char TEXT_xlevel2textB[]="CLUTTERFUNK";
+const unsigned char TEXT_2clutterfunk2[]="CLUTTERFUNK$2";
 const unsigned char TEXT_xlevel2textC[]="EVERYTHING";
 const unsigned char TEXT_xlevel22textC[]="EVERYTHING$2";
 const unsigned char TEXT_xlevel2textD[]="ADVENTURES";
@@ -537,7 +538,7 @@ const unsigned char TEXT_2textspeed2[]="OF$LIGHT$PT$2";
 const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
 const unsigned char TEXT_2textstalemate[]="STALEMATE";
 const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
-//const unsigned char TEXT_2textchaoz[]="CHAOZ$FANTASY";
+const unsigned char TEXT_2textchaoz[]="CHAOZ$FANTASY";
 const unsigned char TEXT_2textjustright[]="JUST$RIGHT";
 const unsigned char TEXT_against2[]="THE$ODDS$REDUX";
 const unsigned char TEXT_geometrical2[]="DOMINATOR";
@@ -621,6 +622,8 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	TEXT_against,
 	TEXT_driving,
+	0,
+	0,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -667,6 +670,8 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textjustright,
 	TEXT_against2,
 	TEXT_driving2,
+	TEXT_2textchaoz,
+	TEXT_2clutterfunk2,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -713,6 +718,8 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textjustright) - 1,
 	sizeof(TEXT_against2) - 1,
 	sizeof(TEXT_driving2) - 1,
+	sizeof(TEXT_2textchaoz) - 1,
+	sizeof(TEXT_2clutterfunk2) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -757,7 +764,9 @@ const unsigned char xbgmtext1_size[] = {
 //	0,
 	0,
 	sizeof(TEXT_against) - 1,	
-	sizeof(TEXT_driving) - 1,	
+	sizeof(TEXT_driving) - 1,
+	0,	
+	0,	
 };
 
 
@@ -801,10 +810,11 @@ const uint8_t xbgm_lookup_table2[] = {
 //	song_crackdown,
 	song_stalemate,
 	song_haunted_woods,
-//	song_chaozfantasy,
 	song_just_right,
 	song_against_the_odds_redux,
 	song_driving_by_night,
+	song_chaozfantasy,
+	song_clutterfunk_2,
 };
 
 
@@ -1250,6 +1260,7 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
   NULL, 
+  NULL, 
   NULL,  
 };
 const unsigned char* const leveltexts2[] = {
@@ -1257,6 +1268,7 @@ const unsigned char* const leveltexts2[] = {
   leveleasy2, 
 //  levelnostalgists2, 
   levelsupercycles2,
+  levelclutterfunk22,
   levelpgclubtext2,
   leveleon2,
   levelcataclysm2,
@@ -1271,12 +1283,14 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
+	0,
 };
 const unsigned char level_text_size2[] = {
 	sizeof(level1text2) - 1,
 	sizeof(leveleasy2) - 1,
 //	sizeof(levelnostalgists2) - 1,
 	sizeof(levelsupercycles2) - 1,
+	sizeof(levelclutterfunk22) - 1,
 	sizeof(levelpgclubtext2) - 1,
 	sizeof(leveleon2) - 1,
 	sizeof(levelcataclysm2) - 1,

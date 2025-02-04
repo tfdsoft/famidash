@@ -8,6 +8,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_stereomadness)
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_supercycles)
+	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_cataclysm)
@@ -16,6 +17,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_supercycles)
+	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_cataclysm)
@@ -24,6 +26,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_supercycles))
+	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_cataclysm))
@@ -41,6 +44,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
 	.byte .lobyte(sprite_data_leveleasy)
 	.byte .lobyte(sprite_data_supercycles)
+	.byte .lobyte(sprite_data_clutterfunk2)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_eon)
 	.byte .lobyte(sprite_data_cataclysm)
@@ -49,6 +53,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
 	.byte .hibyte(sprite_data_leveleasy)
 	.byte .hibyte(sprite_data_supercycles)
+	.byte .hibyte(sprite_data_clutterfunk2)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_eon)
 	.byte .hibyte(sprite_data_cataclysm)
@@ -57,6 +62,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
 	.byte .lobyte(.bank(sprite_data_leveleasy))
 	.byte .lobyte(.bank(sprite_data_supercycles))
+	.byte .lobyte(.bank(sprite_data_clutterfunk2))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_eon))
 	.byte .lobyte(.bank(sprite_data_cataclysm))
@@ -68,6 +74,7 @@ _level_lengths_lo:
 	.byte .lobyte($000080)		; stereomadness
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($000088)		; supercycles
+	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000286)		; eon
 	.byte .lobyte($00007D)		; cataclysm
@@ -78,6 +85,7 @@ _level_lengths_md:
 	.byte .hibyte($000080)		; stereomadness
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($000088)		; supercycles
+	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000286)		; eon
 	.byte .hibyte($00007D)		; cataclysm
@@ -88,6 +96,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000080)		; stereomadness
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($000088)		; supercycles
+	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($00007D)		; cataclysm

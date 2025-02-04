@@ -33,6 +33,13 @@ pgclubstep_no_parallax  = 0
 pgclubstep_bg_color    = $0F
 pgclubstep_grnd_color  = $0F
 
+clutterfunk2_song_number = song_clutterfunk_2
+clutterfunk2_game_mode   = $00
+clutterfunk2_speed       = $00
+clutterfunk2_no_parallax  = 1
+clutterfunk2_bg_color    = $0F
+clutterfunk2_grnd_color  = $0F
+
 eon_song_number = song_eon
 eon_game_mode   = $00
 eon_speed       = $01
