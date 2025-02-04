@@ -43,7 +43,6 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// problematic
 	DECO1,	// firetemple
 	DECO1,	// foresttemple
-	EXTRASPRITES1,	// eon
 	DECO1,	// stalemate
 	DECOCLOUD,	// bloodbath
 	DECOCLOUD,	// luckydraw
@@ -92,7 +91,6 @@ const uint8_t spike_set[] = {
 	SPIKESB,	// problematic
 	SPIKESB,	// firetemple
 	SPIKESB,	// foresttemple
-	SPIKESB,	// eon
 	SPIKESA,	// stalemate
 	SPIKESC,	// bloodbath
 	SPIKESB,	// luckydraw
@@ -142,7 +140,6 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// problematic
 	BLOCKSB,	// firetemple
 	BLOCKSB,	// foresttemple
-	BLOCKSA,	// eon
 	BLOCKSB,	// stalemate
 	BLOCKSB,	// bloodbath
 	BLOCKSB,	// luckydraw
@@ -191,7 +188,6 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// problematic
 	SAWBLADESA,	// firetemple
 	SAWBLADESA,	// foresttemple
-	SAWBLADESA,	// eon
 	SAWBLADESA,	// stalemate
 	SAWBLADESA,	// bloodbath
 	LETTERBANK,	// luckydraw
@@ -249,7 +245,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// problematic
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
-	DEMON,	// eon
 	DEMON,	// stalemate
 	DEMON,	// bloodbath
 	DEMON,	// luckydraw
@@ -298,7 +293,6 @@ const uint8_t stars_list[] = {
 	10,	// problematic
 	10,	// firetemple
 	10,	// foresttemple
-	10,	// eon
 	10,	// stalemate
 	10,	// bloodbath
 	10,	// luckydraw

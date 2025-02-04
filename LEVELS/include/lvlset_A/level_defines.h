@@ -4,7 +4,7 @@
 #define LEVELSET 'A'
 
 #define OFFICIAL_LEVEL_COUNT 22
-#define COMMUNITY_LEVEL_COUNT 24
+#define COMMUNITY_LEVEL_COUNT 23
 
 #define stereomadness 0
 #define backontrack 1
@@ -47,8 +47,7 @@
 #define problematic 38
 #define firetemple 39
 #define foresttemple 40
-#define eon 41
-#define stalemate 42
-#define bloodbath 43
-#define luckydraw 44
-#define test4 45
+#define stalemate 41
+#define bloodbath 42
+#define luckydraw 43
+#define test4 44

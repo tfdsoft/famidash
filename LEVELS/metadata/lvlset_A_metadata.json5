@@ -675,28 +675,6 @@
 			parallaxDisable: true
 		},
 		{
-			level: "eon",
-			lowerText: "EON",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "B",
-			blockSet: "A",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_eon",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-			/* objectOffsets: [
-				{
-					objectID: [0x08, 0x09],
-					offsetX: 4
-				}
-			] */
-		},
-		{
 			level: "stalemate",
 			lowerText: "STALEMATE",
 			decoType: "DECO1",

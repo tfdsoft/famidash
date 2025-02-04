@@ -288,13 +288,6 @@ foresttemple_no_parallax = 1
 foresttemple_bg_color    = $0F
 foresttemple_grnd_color  = $0F
 
-eon_song_number = song_eon
-eon_game_mode   = 0
-eon_speed       = 1
-eon_no_parallax = 1
-eon_bg_color    = $0F
-eon_grnd_color  = $0F
-
 stalemate_song_number = song_stalemate
 stalemate_game_mode   = 0
 stalemate_speed       = 0

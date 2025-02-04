@@ -1813,9 +1813,13 @@ MouseBoundsMax:
 	; and then decide on the last bank
 	lda _no_parallax
 	beq @asdf
-	lda _level
-	cmp #::_luckydraw
-	beq @slop
+
+	.ifdef _luckydraw
+		lda _level
+		cmp #::_luckydraw
+		beq @slop
+	.endif
+	
 	lda #::_SLOPESA
 	clc
 	adc CHRBANK_TEMP

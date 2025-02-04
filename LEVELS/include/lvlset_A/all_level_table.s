@@ -46,7 +46,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_problematic)
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_foresttemple)
-	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_luckydraw)
@@ -94,7 +93,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_problematic)
 	.byte .hibyte(level_data_firetemple)
 	.byte .hibyte(level_data_foresttemple)
-	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_luckydraw)
@@ -142,7 +140,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_problematic))
 	.byte .lobyte(.bank(level_data_firetemple))
 	.byte .lobyte(.bank(level_data_foresttemple))
-	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_luckydraw))
@@ -150,15 +147,12 @@ _level_list_bank:
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_deathmoon_0)
-	.byte .lobyte(level_data_eon_1)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_deathmoon_0)
-	.byte .hibyte(level_data_eon_1)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_deathmoon_0))
-	.byte .lobyte(.bank(level_data_eon_1))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
@@ -202,7 +196,6 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_problematic)
 	.byte .lobyte(sprite_data_firetemple)
 	.byte .lobyte(sprite_data_foresttemple)
-	.byte .lobyte(sprite_data_eon)
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_bloodbath)
 	.byte .lobyte(sprite_data_luckydraw)
@@ -250,7 +243,6 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_problematic)
 	.byte .hibyte(sprite_data_firetemple)
 	.byte .hibyte(sprite_data_foresttemple)
-	.byte .hibyte(sprite_data_eon)
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_bloodbath)
 	.byte .hibyte(sprite_data_luckydraw)
@@ -298,7 +290,6 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_problematic))
 	.byte .lobyte(.bank(sprite_data_firetemple))
 	.byte .lobyte(.bank(sprite_data_foresttemple))
-	.byte .lobyte(.bank(sprite_data_eon))
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
 	.byte .lobyte(.bank(sprite_data_luckydraw))
@@ -349,7 +340,6 @@ _level_lengths_lo:
 	.byte .lobyte($00006E)		; problematic
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000090)		; foresttemple
-	.byte .lobyte($000286)		; eon
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($000086)		; luckydraw
@@ -399,7 +389,6 @@ _level_lengths_md:
 	.byte .hibyte($00006E)		; problematic
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000090)		; foresttemple
-	.byte .hibyte($000286)		; eon
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($000086)		; luckydraw
@@ -449,7 +438,6 @@ _level_lengths_hi:
 	.byte .bankbyte($00006E)		; problematic
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000090)		; foresttemple
-	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($000086)		; luckydraw

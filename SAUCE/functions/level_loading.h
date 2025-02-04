@@ -150,6 +150,7 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 //			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
 //
 //		else {
+			#ifdef luckydraw
 			if (level == luckydraw && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
 				multi_vram_buffer_horz((const char*)triggerstext,sizeof(triggerstext)-1,NTADR_C(1, 17));
 				one_vram_buffer(0xF5+triggers_hit[2], NTADR_C(20,17));
@@ -185,6 +186,8 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 				triggers_hit[1] = 0;
 				triggers_hit[2] = 0;
 			}
+
+			#endif
 			
 			mmc3_set_prg_bank_1(GET_BANK(_display_attempt_counter));
 			display_attempt_counter(0xF5, NTADR_C(20, 15));
