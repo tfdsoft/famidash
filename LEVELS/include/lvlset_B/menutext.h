@@ -3,8 +3,8 @@
 
 #include "defines/color1_charmap.h"
 
-const char levelText00[ 7] = "STEREO ";
-const char levelText01[ 7] = "MADNESS";
+const char levelText00[12] = "YOU SHOULDNT";
+const char levelText01[ 7] = "BE HERE";
 const char levelText02[10] = "LEVEL EASY";
 const char levelText03[12] = "SUPER CYCLES";
 const char levelText04[11] = "PG CLUBSTEP";

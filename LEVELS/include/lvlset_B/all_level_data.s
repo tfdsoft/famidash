@@ -17,7 +17,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7517
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8129 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8188 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -30,6 +30,19 @@
 		.byte 27	; height of cataclysm
 	; Level data
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7048
+
+	.export level_data_stereomadness
+	level_data_stereomadness:
+	; Header
+		.byte stereomadness_song_number
+		.byte stereomadness_game_mode
+		.byte stereomadness_speed
+		.byte stereomadness_no_parallax
+		.byte stereomadness_bg_color
+		.byte stereomadness_grnd_color
+		.byte 27	; height of stereomadness
+	; Level data
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
 
 .segment "DAT_BANK_02"	; Total bank size: 6686 bytes
@@ -47,7 +60,7 @@
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
 
 
-.segment "DAT_BANK_03"	; Total bank size: 7857 bytes
+.segment "DAT_BANK_03"	; Total bank size: 6725 bytes
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header
@@ -60,16 +73,3 @@
 		.byte 27	; height of leveleasy
 	; Level data
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
-
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte stereomadness_song_number
-		.byte stereomadness_game_mode
-		.byte stereomadness_speed
-		.byte stereomadness_no_parallax
-		.byte stereomadness_bg_color
-		.byte stereomadness_grnd_color
-		.byte 27	; height of stereomadness
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1852

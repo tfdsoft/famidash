@@ -122,6 +122,13 @@ void main(){
 				state_instructions();
 				break;
 			}
+			#if LEVELSET != 'A'
+			case 0xF2: {
+				mmc3_set_prg_bank_1(GET_BANK(state_playmain));
+				state_playmain();
+				break;
+			}
+			#endif
 			case 0xFE: {
 				mmc3_set_prg_bank_1(GET_BANK(state_exit));
 				state_exit();

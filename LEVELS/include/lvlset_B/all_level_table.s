@@ -59,7 +59,7 @@ _sprite_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
-	.byte .lobyte($000090)		; stereomadness
+	.byte .lobyte($000080)		; stereomadness
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($000094)		; pgclubstep
@@ -68,7 +68,7 @@ _level_lengths_lo:
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
-	.byte .hibyte($000090)		; stereomadness
+	.byte .hibyte($000080)		; stereomadness
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($000094)		; pgclubstep
@@ -77,7 +77,7 @@ _level_lengths_md:
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-	.byte .bankbyte($000090)		; stereomadness
+	.byte .bankbyte($000080)		; stereomadness
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($000094)		; pgclubstep

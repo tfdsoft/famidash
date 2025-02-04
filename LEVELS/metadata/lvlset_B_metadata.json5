@@ -2,8 +2,8 @@
 	official_levels:  [
 		{
 			level: "stereomadness",
-			upperText: "STEREO ",
-			lowerText: "MADNESS",
+			upperText: "YOU SHOULDNT",
+			lowerText: "BE HERE",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "A",
