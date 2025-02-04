@@ -499,6 +499,8 @@ const unsigned char TEXT_crackdown[]="OKIBA";
 const unsigned char TEXT_against[]="8$BIT$AGAINST";
 const unsigned char TEXT_geometrical[]="GEOMETRICAL";
 const unsigned char TEXT_driving[]="DRIVING$BY";
+const unsigned char TEXT_ultimate[]="ULTIMATE";
+const unsigned char TEXT_ultimate2[]="DESTRUCTION";
 
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
@@ -628,6 +630,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	0,
 	TEXT_crackdown,
+	TEXT_ultimate,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -677,6 +680,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textchaoz,
 	TEXT_2clutterfunk2,
 	TEXT_2textcrackdown,
+	TEXT_ultimate2,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -726,6 +730,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textchaoz) - 1,
 	sizeof(TEXT_2clutterfunk2) - 1,
 	sizeof(TEXT_2textcrackdown) - 1,
+	sizeof(TEXT_ultimate2) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -774,6 +779,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,	
 	0,	
 	sizeof(TEXT_crackdown) - 1,	
+	sizeof(TEXT_ultimate) - 1,	
 };
 
 
@@ -824,6 +830,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_chaozfantasy,
 	song_clutterfunk_2,
 	song_crackdown,
+	song_ultimatedestruction,
 };
 
 
