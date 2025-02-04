@@ -153,7 +153,11 @@ const unsigned char Credits2[569]={
 
 #ifdef FLAG_ENABLE_VER_NUM
 	#ifdef FLAG_BETA_BUILD
-		const unsigned char ver[] = "DEMO";
+		#if LEVELSET == 'B'
+			const unsigned char ver[] = "B SIDES DEMO 1 DOT 2";
+		#else
+			const unsigned char ver[] = "DEMO";
+		#endif
 	#else
 		const unsigned char ver[] = " VER";
 	#endif
@@ -238,10 +242,12 @@ void state_demo(){
 
 	
 	multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(1,3));
-	one_vram_buffer(FLAG_MAJ_VER, NTADR_A(6,3));
-	#ifdef FLAG_BETA_BUILD
-		one_vram_buffer(0x18, NTADR_A(7,3)); // dot
-		one_vram_buffer(FLAG_MIN_VER, NTADR_A(8,3));
+	#if LEVELSET != 'B'
+		one_vram_buffer(FLAG_MAJ_VER, NTADR_A(6,3));
+		#ifdef FLAG_BETA_BUILD
+			one_vram_buffer(0x18, NTADR_A(7,3)); // dot
+			one_vram_buffer(FLAG_MIN_VER, NTADR_A(8,3));
+		#endif
 	#endif
 	
 	// __asm__("LDA mmc3PRG1Bank \nPHA ");
