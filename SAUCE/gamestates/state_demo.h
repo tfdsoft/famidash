@@ -360,7 +360,7 @@ const uint8_t xbgm_lookup_table3[] = {
 	song_cant_let_go,
 	song_jumper,
 	song_time_machine,
-	song_chaozfantasy,
+	
 	song_cycles,
 	song_stalemate,
 	song_xstep, 
