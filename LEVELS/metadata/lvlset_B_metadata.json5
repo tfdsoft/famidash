@@ -140,6 +140,22 @@
 			]
 		},
 		{
+			level: "aftermath",
+			lowerText: "AFTERMATH",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_atthespeedoflight3",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x06,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "aftercatabath",
 			lowerText: "AFTERCATABATH",
 			decoType: "DECO1",

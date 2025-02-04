@@ -9,6 +9,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// pgclubstep
 	EXTRASPRITES1,	// eon
 	DECO1,	// cataclysm
+	DECO1,	// aftermath
 	DECO1,	// aftercatabath
 };
 
@@ -20,6 +21,7 @@ const uint8_t spike_set[] = {
 	SPIKESA,	// pgclubstep
 	SPIKESB,	// eon
 	SPIKESC,	// cataclysm
+	SPIKESC,	// aftermath
 	SPIKESC,	// aftercatabath
 };
 
@@ -32,6 +34,7 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// pgclubstep
 	BLOCKSA,	// eon
 	BLOCKSB,	// cataclysm
+	BLOCKSB,	// aftermath
 	BLOCKSB,	// aftercatabath
 };
 
@@ -43,6 +46,7 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// pgclubstep
 	SAWBLADESA,	// eon
 	SAWBLADESA,	// cataclysm
+	SAWBLADESA,	// aftermath
 	SAWBLADESA,	// aftercatabath
 };
 
@@ -63,6 +67,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// pgclubstep
 	DEMON,	// eon
 	DEMON,	// cataclysm
+	DEMON,	// aftermath
 	DEMON,	// aftercatabath
 };
 
@@ -74,5 +79,6 @@ const uint8_t stars_list[] = {
 	10,	// pgclubstep
 	10,	// eon
 	10,	// cataclysm
+	10,	// aftermath
 	10,	// aftercatabath
 };

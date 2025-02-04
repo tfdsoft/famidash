@@ -50,6 +50,13 @@ cataclysm_no_parallax = 1
 cataclysm_bg_color    = $06
 cataclysm_grnd_color  = $0F
 
+aftermath_song_number = song_atthespeedoflight3
+aftermath_game_mode   = 0
+aftermath_speed       = 1
+aftermath_no_parallax = 1
+aftermath_bg_color    = $06
+aftermath_grnd_color  = $0F
+
 aftercatabath_song_number = song_atthespeedoflightfull
 aftercatabath_game_mode   = 0
 aftercatabath_speed       = 1
