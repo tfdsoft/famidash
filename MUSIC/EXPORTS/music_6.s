@@ -177,13 +177,13 @@ music_data_famidash_music6:
 	.byte $6b+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0e,$40,$00 ; 1a fdkick (Pitch:14)
 	.byte $0f+.lobyte(FAMISTUDIO_DPCM_PTR),$38,$0f,$40,$01 ; 1b is a (Pitch:15)
 	.byte $2c+.lobyte(FAMISTUDIO_DPCM_PTR),$6d,$0f,$40,$01 ; 1c machine (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$e0,$0e,$40,$3f ; 1d MUSIC_PCM_DS-geo (Pitch:14)
-	.byte $a8+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$3f ; 1e one (Pitch:15)
+	.byte $48+.lobyte(FAMISTUDIO_DPCM_PTR),$7e,$0b,$40,$01 ; 1d MUSIC_PCM_DS-geo (Pitch:11)
+	.byte $5f+.lobyte(FAMISTUDIO_DPCM_PTR),$7a,$0a,$40,$02 ; 1e one (Pitch:10)
 	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$41,$0f,$34,$00 ; 1f snare (Pitch:15)
 	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$39,$0f,$40,$01 ; 20 this (Pitch:15)
-	.byte $38+.lobyte(FAMISTUDIO_DPCM_PTR),$e7,$0f,$40,$3f ; 21 three (Pitch:15)
+	.byte $68+.lobyte(FAMISTUDIO_DPCM_PTR),$58,$0a,$40,$01 ; 21 three (Pitch:10)
 	.byte $1e+.lobyte(FAMISTUDIO_DPCM_PTR),$37,$0f,$40,$01 ; 22 time (Pitch:15)
-	.byte $72+.lobyte(FAMISTUDIO_DPCM_PTR),$d6,$0f,$40,$3f ; 23 two (Pitch:15)
+	.byte $4a+.lobyte(FAMISTUDIO_DPCM_PTR),$52,$0a,$40,$02 ; 23 two (Pitch:10)
 
 @song0ch0:
 	.byte $46, $06, $71, $94, $20, $72, $81, $76, $bb, $71, $1c, $75, $81, $78, $9b, $79, $1e, $7a, $81, $7b, $81, $7c, $81, $7d
