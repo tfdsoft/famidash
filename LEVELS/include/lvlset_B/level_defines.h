@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 8
+#define COMMUNITY_LEVEL_COUNT 9
 
 #define stereomadness 0
 #define leveleasy 1
@@ -15,3 +15,4 @@
 #define cataclysm 6
 #define aftermath 7
 #define aftercatabath 8
+#define test4 9

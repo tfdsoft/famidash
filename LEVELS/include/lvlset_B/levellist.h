@@ -11,6 +11,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// cataclysm
 	DECO1,	// aftermath
 	DECO1,	// aftercatabath
+	DECO1,	// test4
 };
 
 const uint8_t spike_set[] = {
@@ -23,6 +24,7 @@ const uint8_t spike_set[] = {
 	SPIKESC,	// cataclysm
 	SPIKESC,	// aftermath
 	SPIKESC,	// aftercatabath
+	SPIKESC,	// test4
 };
 
 
@@ -36,6 +38,7 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// cataclysm
 	BLOCKSB,	// aftermath
 	BLOCKSB,	// aftercatabath
+	BLOCKSB,	// test4
 };
 
 const uint8_t saw_set[] = {
@@ -48,6 +51,7 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// cataclysm
 	SAWBLADESA,	// aftermath
 	SAWBLADESA,	// aftercatabath
+	SAWBLADESA,	// test4
 };
 
 
@@ -69,6 +73,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// cataclysm
 	DEMON,	// aftermath
 	DEMON,	// aftercatabath
+	EASY,	// test4
 };
 
 const uint8_t stars_list[] = {
@@ -81,4 +86,5 @@ const uint8_t stars_list[] = {
 	10,	// cataclysm
 	10,	// aftermath
 	10,	// aftercatabath
+	0,	// test4
 };

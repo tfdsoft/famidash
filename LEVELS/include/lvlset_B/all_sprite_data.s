@@ -5710,3 +5710,18 @@ sprite_data_aftercatabath:
   .byte $70,$ac,$20,$03,$33
   .byte $f0,$ad,$40,$03,$0f
   .byte $ff
+
+.segment "DAT_BANK_0A"
+sprite_data_test4:
+  .byte $40,$00,$60,$03,$02
+  .byte $60,$00,$80,$03,$05
+  .byte $80,$00,$50,$03,$05
+  .byte $a0,$00,$80,$03,$05
+  .byte $c0,$00,$50,$03,$05
+  .byte $e0,$00,$80,$03,$05
+  .byte $00,$01,$60,$03,$6e
+  .byte $10,$01,$70,$03,$6e
+  .byte $20,$01,$80,$03,$6e
+  .byte $30,$01,$70,$03,$6e
+  .byte $40,$01,$60,$03,$6e
+  .byte $ff
