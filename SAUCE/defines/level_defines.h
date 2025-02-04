@@ -8,3 +8,4 @@
 #define cataclysm 0x07
 #define aftermath 0x08
 #define aftercatabath 0x09
+#define test4 0x0A
