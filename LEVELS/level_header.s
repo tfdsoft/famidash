@@ -19,6 +19,13 @@ cataclysm_no_parallax  = 1
 cataclysm_bg_color    = $06
 cataclysm_grnd_color  = $0F
 
+aftercatabath_song_number = song_atthespeedoflightfull
+aftercatabath_game_mode   = $00
+aftercatabath_speed       = $01
+aftercatabath_no_parallax  = 1
+aftercatabath_bg_color    = $06
+aftercatabath_grnd_color  = $0F
+
 leveleasy_song_number = song_stereo_madness
 leveleasy_game_mode   = $00
 leveleasy_speed       = $00

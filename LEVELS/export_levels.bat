@@ -11,6 +11,7 @@ SET all_levels= ^
     pgclubstep ^
     eon ^
     cataclysm ^
+    aftercatabath ^
 
 
 echo Exporting everything %all_levels%

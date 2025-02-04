@@ -69,6 +69,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_the_challenge,
 	song_atthespeedoflight,
 	song_atthespeedoflight2,
+	song_atthespeedoflightfull,
 	song_midnight,
 //	song_crackdown,
 	song_stalemate,

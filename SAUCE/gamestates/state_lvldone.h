@@ -535,6 +535,7 @@ const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
 const unsigned char TEXT_2textproblematic[]="PROBLEMATIC";
 const unsigned char TEXT_2textspeed[]="OF$LIGHT";
 const unsigned char TEXT_2textspeed2[]="OF$LIGHT$PT$2";
+const unsigned char TEXT_2textspeedfull[]="OF$LIGHT$FULL";
 const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
 const unsigned char TEXT_2textstalemate[]="STALEMATE";
 const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
@@ -614,6 +615,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_challenge,
 	TEXT_speed,
 	TEXT_speed,
+	TEXT_speed,
 	0,
 	0,
 	0,
@@ -662,6 +664,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2challenge,
 	TEXT_2textspeed,
 	TEXT_2textspeed2,
+	TEXT_2textspeedfull,
 	TEXT_2textmidnight,
 	TEXT_2textstalemate,
 	TEXT_2textwoods,
@@ -709,6 +712,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2challenge) - 1,
 	sizeof(TEXT_2textspeed) - 1,
 	sizeof(TEXT_2textspeed2) - 1,
+	sizeof(TEXT_2textspeedfull) - 1,
 	sizeof(TEXT_2textmidnight) - 1,
 	sizeof(TEXT_2textstalemate) - 1,
 	sizeof(TEXT_2textwoods) - 1,
@@ -753,6 +757,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	sizeof(TEXT_xweasel) - 1,	
 	sizeof(TEXT_challenge) - 1,	
+	sizeof(TEXT_speed) - 1,	
 	sizeof(TEXT_speed) - 1,	
 	sizeof(TEXT_speed) - 1,	
 	0,
@@ -803,6 +808,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_the_challenge,
 	song_atthespeedoflight,
 	song_atthespeedoflight2,
+	song_atthespeedoflightfull,
 	song_midnight,
 	song_stalemate,
 	song_haunted_woods,
@@ -1258,6 +1264,7 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
   NULL, 
+  NULL, 
   NULL,  
 };
 const unsigned char* const leveltexts2[] = {
@@ -1269,6 +1276,7 @@ const unsigned char* const leveltexts2[] = {
   levelpgclubtext2,
   leveleon2,
   levelcataclysm2,
+  levelaftercatabath2,
 };
 
 
@@ -1276,6 +1284,7 @@ const unsigned char level_text_size[] = {
 	sizeof(level1text) - 1,
 	0,
 //	0,
+	0,
 	0,
 	0,
 	0,
@@ -1291,6 +1300,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelpgclubtext2) - 1,
 	sizeof(leveleon2) - 1,
 	sizeof(levelcataclysm2) - 1,
+	sizeof(levelaftercatabath2) - 1,	
 };
 
 const char coin_counter[][3] = {

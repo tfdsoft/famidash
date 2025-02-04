@@ -58,6 +58,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //pg clubstep
 	EXTRASPRITES1, //eon
 	DECO1, //cataclysm
+	DECO1, //aftercatabath
 };
 
 const unsigned char spike_set[] = {
@@ -69,6 +70,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //pg clubstep
 	SPIKESB, //eon
 	SPIKESC, //cataclysm
+	SPIKESC, //aftercatabath
 };
 
 const unsigned char block_set[] = {
@@ -80,6 +82,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //pg clubstep
 	BLOCKSA, //eon
 	BLOCKSB, //cataclysm
+	BLOCKSB, //aftercatabath
 };
 
 const unsigned char saw_set[] = {
@@ -91,6 +94,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //eon
 	SAWBLADESA, //cataclysm
+	SAWBLADESA, //aftercatabath
 };
 
 
@@ -103,6 +107,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //pg clubstep
     DEMON, //eon
     DEMON, //cataclysm
+    DEMON, //aftercatabath
 };
 
 const unsigned char stars_list[] = {
@@ -114,6 +119,7 @@ const unsigned char stars_list[] = {
 	10, //pg clubstep
 	10, //eon
 	10, //cataclysm
+	10, //aftercatabath
 };
 const unsigned char colors_list[] = {
 	0x12,
