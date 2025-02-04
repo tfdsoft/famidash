@@ -47,10 +47,10 @@ TMPDIR ?= $(TMPDIR_PREFIX)/main
 CFG ?= CONFIG/mmc3.cfg
 LEVELSET ?= A
 
-.PHONY: default clean distclean nsf vs-sys
+.PHONY: default clean distclean nsf vs-sys main b-sides
 
 main: $(OUTDIR)/ $(OUTDIR)/$(NAME).nes
-all: main vs-sys
+all: main vs-sys b-sides
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
 
 vs-sys: CC65_DEFINES += -D__VS_SYSTEM=1
@@ -60,7 +60,18 @@ vs-sys: TMPDIR = $(TMPDIR_PREFIX)/$@
 vs-sys: CFG = CONFIG/vs-sys.cfg
 vs-sys:
 	@echo Building VS System version...
-	@$(MAKE) \
+	@$(MAKE) LEVELSET=$(LEVELSET) \
+	CC65_DEFINES=$(CC65_DEFINES) \
+	CA65_DEFINES=$(CA65_DEFINES) \
+	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
+	--no-print-directory
+
+b-sides: LEVELSET = B
+b-sides: OUTDIR = $(OUTDIR_PREFIX)/$@
+b-sides: TMPDIR = $(TMPDIR_PREFIX)/$@
+b-sides:
+	@echo Building B-Sides...
+	@$(MAKE) LEVELSET=$(LEVELSET) \
 	CC65_DEFINES=$(CC65_DEFINES) \
 	CA65_DEFINES=$(CA65_DEFINES) \
 	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \

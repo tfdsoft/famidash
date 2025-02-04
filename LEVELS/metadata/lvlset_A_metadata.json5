@@ -403,21 +403,6 @@
 			startingGroundColor: 0x06,
 			parallaxDisable: true
 		},
-		/*{
-			level: "leveleasy",
-			lowerText: "LEVEL EASY",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "A",
-			sawSet: "A",
-			difficulty: "NORMAL",
-			stars: 3,
-			songID: "song_stereo_madness",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x2C,
-			startingGroundColor: 0x1C
-		},*/
 		{
 			level: "dreamer",
 			lowerText: "DREAMER",
@@ -641,22 +626,6 @@
 			startingBackgroundColor: [UNSPECIFIED],
 			startingGroundColor: [UNSPECIFIED]
 		},*/
-		/*{
-			level: "supercycles",
-			lowerText: "SUPER CYCLES",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_cycles",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02,
-			parallaxDisable: true
-		},*/
 		{
 			level: "problematic",
 			lowerText: "PROBLEMATIC",
@@ -727,21 +696,6 @@
 				}
 			] */
 		},
-		/*{
-			level: "pgclubstep",
-			lowerText: "PG CLUBSTEP",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: [UNSPECIFIED],
-			startingGameMode: [UNSPECIFIED],
-			startingSpeed: [UNSPECIFIED],
-			startingBackgroundColor: [UNSPECIFIED],
-			startingGroundColor: [UNSPECIFIED]
-		},*/
 		{
 			level: "stalemate",
 			lowerText: "STALEMATE",
@@ -774,28 +728,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		/*{
-			level: "cataclysm",
-			lowerText: "CATACLYSM",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_atthespeedoflight",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x06,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					objectID: 0x1A,
-					offsetY: 8
-				}
-			]
-		},*/
 		{
 			level: "luckydraw",
 			lowerText: "LUCKY DRAW",

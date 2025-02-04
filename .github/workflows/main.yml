@@ -13,6 +13,7 @@ jobs:
         target:
         - { name: Main MMC3 ROM, target: main }
         - { name: VS-System ROM, target: vs-sys }
+        - { name: B-Sides MMC3 ROM, target: b-sides }
 
     steps:
       - name: Checkout

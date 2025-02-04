@@ -1,0 +1,135 @@
+{
+	official_levels:  [
+		{
+			level: "stereomadness",
+			upperText: "STEREO ",
+			lowerText: "MADNESS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "EASY",
+			stars: 1,
+			songID: "song_stereo_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02
+		}
+	],
+	community_levels: [
+		{
+			level: "leveleasy",
+			lowerText: "LEVEL EASY",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "NORMAL",
+			stars: 3,
+			songID: "song_stereo_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x2C,
+			startingGroundColor: 0x1C
+		},
+		/*{
+			level: "dearnostalgists",
+			lowerText: " DEAR NOSTALGISTS",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "C",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: [UNSPECIFIED],
+			startingGameMode: [UNSPECIFIED],
+			startingSpeed: [UNSPECIFIED],
+			startingBackgroundColor: [UNSPECIFIED],
+			startingGroundColor: [UNSPECIFIED]
+		},*/
+		{
+			level: "supercycles",
+			lowerText: "SUPER CYCLES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_cycles",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			parallaxDisable: true
+		},
+		{
+			level: "pgclubstep",
+			lowerText: "PG CLUBSTEP",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_clubstep",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F
+		},
+		{
+			level: "cataclysm",
+			lowerText: "CATACLYSM",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_atthespeedoflight",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x06,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					objectID: 0x1A,
+					offsetY: 8
+				}
+			]
+		},
+	],
+	globalObjectOffsets: [
+		/*	Format:
+		{
+			objectID: int or array,
+			--
+			offset: [x_offset, y_offset] (in px)
+			OR
+			offset{X, Y}: offset (in px)
+
+			override: true if you want this setting to override the previous one for this tile
+		}
+		*/
+		{
+			objectID: 0x3E, /* Right medium post */
+			offsetX: -8
+		},
+		{
+			objectID: 0x40, /* Right long post */
+			offsetX: -16
+		},
+		{
+			objectID: [0x0A, 0x0D, 0x25, 0x52, 0x56, 0xFD], /* Bottom pads */
+			offsetY: 8
+		},
+		{
+			objectID: [0x42, 0x43, 0x47], /* Some specific deco*/
+			offsetY: -8
+		}
+	],
+	levelSetDefineName: "B"
+}
