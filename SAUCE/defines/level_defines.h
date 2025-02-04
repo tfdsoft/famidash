@@ -6,4 +6,5 @@
 #define eon  0x05
 #define pgclubstep  0x06
 #define cataclysm 0x07
-#define aftercatabath 0x08
+#define aftermath 0x08
+#define aftercatabath 0x09

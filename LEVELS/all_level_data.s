@@ -82,14 +82,27 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
 
-.segment "LVL_BANK_06"	; Total bank size: 7361 bytes
+.segment "LVL_BANK_06"	; Total bank size: 7606 bytes
+	.export level_data_aftermath
+	level_data_aftermath:
+	; Header
+		.byte aftermath_song_number
+		.byte aftermath_game_mode
+		.byte aftermath_speed
+		.byte aftermath_no_parallax
+		.byte aftermath_bg_color
+		.byte aftermath_grnd_color
+		.byte 27	; height of aftermath
+	; Level data
+		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6806
+
 	.export level_data_eon_0
 	level_data_eon_0:
 	; Level data
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
 
 
-.segment "LVL_BANK_07"	; Total bank size: 6461 bytes
+.segment "LVL_BANK_08"	; Total bank size: 6461 bytes
 	.export level_data_clutterfunk2
 	level_data_clutterfunk2:
 	; Header
@@ -104,7 +117,7 @@
 		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6461
 
 
-.segment "LVL_BANK_08"	; Total bank size: 7869 bytes
+.segment "LVL_BANK_09"	; Total bank size: 7869 bytes
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header
@@ -119,7 +132,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
 
-.segment "LVL_BANK_0A"	; Total bank size: 8058 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8058 bytes
 	.export level_data_aftercatabath_2
 	level_data_aftercatabath_2:
 	; Level data

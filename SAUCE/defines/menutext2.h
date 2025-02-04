@@ -21,5 +21,6 @@ const unsigned char levelsupercycles2[]="SUPER CYCLES";
 const unsigned char levelcataclysm2[]="CATACLYSM";
 const unsigned char leveleon2[]="EON";
 const unsigned char levelclutterfunk22[]="CLUTTERFUNK 2";
+const unsigned char levelaftermath2[]="AFTERMATH";
 const unsigned char levelaftercatabath2[]="AFTERCATABATH";
 

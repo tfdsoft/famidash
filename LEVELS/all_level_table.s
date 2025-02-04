@@ -12,6 +12,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_cataclysm)
+	.byte .lobyte(level_data_aftermath)
 	.byte .lobyte(level_data_aftercatabath)
 
 _level_list_hi:
@@ -22,6 +23,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_cataclysm)
+	.byte .hibyte(level_data_aftermath)
 	.byte .hibyte(level_data_aftercatabath)
 
 _level_list_bank:
@@ -32,6 +34,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_cataclysm))
+	.byte .lobyte(.bank(level_data_aftermath))
 	.byte .lobyte(.bank(level_data_aftercatabath))
 
 _level_chunk_list_lo:
@@ -57,6 +60,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_eon)
 	.byte .lobyte(sprite_data_cataclysm)
+	.byte .lobyte(sprite_data_aftermath)
 	.byte .lobyte(sprite_data_aftercatabath)
 
 _sprite_list_hi:
@@ -67,6 +71,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_eon)
 	.byte .hibyte(sprite_data_cataclysm)
+	.byte .hibyte(sprite_data_aftermath)
 	.byte .hibyte(sprite_data_aftercatabath)
 
 _sprite_list_bank:
@@ -77,6 +82,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_eon))
 	.byte .lobyte(.bank(sprite_data_cataclysm))
+	.byte .lobyte(.bank(sprite_data_aftermath))
 	.byte .lobyte(.bank(sprite_data_aftercatabath))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
@@ -90,6 +96,7 @@ _level_lengths_lo:
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000286)		; eon
 	.byte .lobyte($00007D)		; cataclysm
+	.byte .lobyte($00007C)		; aftermath
 	.byte .lobyte($0001BF)		; aftercatabath
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -102,6 +109,7 @@ _level_lengths_md:
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000286)		; eon
 	.byte .hibyte($00007D)		; cataclysm
+	.byte .hibyte($00007C)		; aftermath
 	.byte .hibyte($0001BF)		; aftercatabath
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -114,6 +122,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($00007D)		; cataclysm
+	.byte .bankbyte($00007C)		; aftermath
 	.byte .bankbyte($0001BF)		; aftercatabath
 
 .endif

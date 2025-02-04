@@ -11,6 +11,7 @@ SET all_levels= ^
     pgclubstep ^
     eon ^
     cataclysm ^
+    aftermath ^
     aftercatabath ^
 
 
