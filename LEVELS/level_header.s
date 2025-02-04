@@ -195,7 +195,7 @@ clubstep_no_parallax  = 0
 clubstep_bg_color    = $06
 clubstep_grnd_color  = $0F
 
-fingerdash_song_number = song_clubstep
+fingerdash_song_number = song_fingerdash
 fingerdash_game_mode   = $00
 fingerdash_speed       = $00
 fingerdash_no_parallax  = 1
@@ -302,12 +302,12 @@ electrodynamix_no_parallax  = 0
 electrodynamix_bg_color    = $02
 electrodynamix_grnd_color  = $12
 
-leveleasy_song_number = song_stereo_madness
-leveleasy_game_mode   = $00
-leveleasy_speed       = $00
-leveleasy_no_parallax  = 0
-leveleasy_bg_color    = $2C
-leveleasy_grnd_color  = $1C
+;leveleasy_song_number = song_stereo_madness
+;leveleasy_game_mode   = $00
+;leveleasy_speed       = $00
+;leveleasy_no_parallax  = 0
+;leveleasy_bg_color    = $2C
+;leveleasy_grnd_color  = $1C
 
 aprettyeasylevel_song_number = song_against_the_odds_redux
 aprettyeasylevel_game_mode   = $00
@@ -329,3 +329,17 @@ dash_speed       = $00
 dash_no_parallax  = 1
 dash_bg_color    = $0F
 dash_grnd_color  = $0F
+
+deadlocked_song_number = song_deadlocked
+deadlocked_game_mode   = $00
+deadlocked_speed       = $00
+deadlocked_no_parallax  = 1
+deadlocked_bg_color    = $0F
+deadlocked_grnd_color  = $0F
+
+geometricaldominator_song_number = song_geometrical_dominator
+geometricaldominator_game_mode   = $00
+geometricaldominator_speed       = $00
+geometricaldominator_no_parallax  = 1
+geometricaldominator_bg_color    = $0F
+geometricaldominator_grnd_color  = $0F

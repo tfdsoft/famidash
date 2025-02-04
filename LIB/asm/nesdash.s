@@ -2333,11 +2333,11 @@ drawplayer_center_offsets:
 			LDA _icon
 
 		@domore:
-			cmp #$13
+			cmp #$12
 			beq @noflip
-			cmp #$17
+			cmp #$16
 			beq @noflip
-   			cmp #$10
+   			cmp #$0F
 			beq @noflip
 			cmp #2
 			bne	@norm
@@ -2821,11 +2821,11 @@ drawplayer_common := _drawplayerone::common
 			cmp #8
 			beq @noflip	
 			LDA _icon
-			cmp #$13
+			cmp #$12
 			beq @noflip
-			cmp #$17
+			cmp #$16
 			beq @noflip
-   			cmp #$10
+   			cmp #$0F
 			beq @noflip
 			cmp #2
 			bne	@norm
@@ -3166,10 +3166,45 @@ drawplayer_common := _drawplayerone::common
 
 ; void __fastcall__ playPCM(uint8_t sample);
 .segment "XCD_BANK_00"
+SSDPCM_ptr = ptr1
+SSDPCM_bank_num = tmp1
+SSDPCM_amp = tmp2
+SSDPCM_wait = tmp3
+SSDPCM_delta_add = ptr2
+
+SSDPCM_luts:
+.repeat 256, I
+	.byte ((I>>6)&3)
+.endrepeat 
+.repeat 256, I
+	.byte ((I>>4)&3)
+.endrepeat 
+.repeat 256, I
+	.byte ((I>>2)&3)
+.endrepeat 
+.repeat 256, I
+	.byte ((I>>0)&3)
+.endrepeat 
+
+SSDPCM_amps:
+.repeat 64, I
+	.byte (-1*I)&$ff
+	.byte (0*I)&$ff
+	.byte (1*I)&$ff
+	.byte (2*I)&$ff
+.endrepeat
+
+SSDPCM_amplo:
+.repeat 64, I
+	.lobytes SSDPCM_amps+(I*4) 
+.endrepeat
+SSDPCM_amphi:
+.repeat 64, I
+	.hibytes SSDPCM_amps+(I*4) 
+.endrepeat
 
 .export _playPCM
 .proc _playPCM
-PCM_ptr = ptr1
     ; A = Sample
 	tay
 	ldx	NTSC_MODE
@@ -3179,16 +3214,18 @@ PCM_ptr = ptr1
 	:
 	tax
 	lda SampleRate_NTSC, x
-    sta tmp1
+    sta SSDPCM_wait
 	ldx Bank, y
 
+    lda #128
+    sta SSDPCM_amp
     ;enable DMC but disable DPCM
     lda #%00000000
     sta FAMISTUDIO_APU_DMC_FREQ
     lda #%00001011
     sta FAMISTUDIO_APU_SND_CHN
     lda #0
-	sta PCM_ptr
+	sta SSDPCM_ptr
     sta FAMISTUDIO_APU_DMC_LEN
     lda #%00011011
     sta FAMISTUDIO_APU_SND_CHN
@@ -3199,51 +3236,115 @@ PCM_ptr = ptr1
     sta FAMISTUDIO_APU_PL1_VOL
     sta FAMISTUDIO_APU_PL2_VOL
     ;init pcm
-;    lda #<GeometryDashPCM
- ;   sta PCM_ptr
- ;   ldx #<.bank(GeometryDashPCM)
  	ldy #0
+
+    lda #>$BFFF		;	2
+    sta SSDPCM_ptr+1	;__	3
+    lda #<$BFFF		;	2
+    sta SSDPCM_ptr	;__	3
+
+    txa		;__	2
+    jsr mmc3_set_prg_bank_0	;__	35
 
     ;play pcm
 @RestartPtr:
-    lda #>$C000		;	2
-    sta PCM_ptr+1	;__	3
-@LoadBank:
-    txa		;__	2
-    jsr mmc3_set_prg_bank_0	;__	35
-    inx		;__	2
-@LoadSample:
-    lda tmp1	; 3
-	sec			; 2
-@Delay:
-	sbc #1		;	5n cycles
-	bcs @Delay	;__
-	; 	beq	@noburn	; 2/3
-	; 7x jsr BurnCycles	; 26
-	; @noburn:
-	; 	php			;
-	; 	plp			;
-	; 	php			;	17
-	; 	plp			;
-	; 	bit PCM_ptr	;__
-	;	old code: if smp == 0 - 22 cycles, if not - 204 cycles
-	;	new: 
-	
-    lda (PCM_ptr),y		;	5
-    beq @DoneWithPCM	;	2
-    sta $4011			;	4
-    iny					;	2
-    bne @LoadSample		;__	3 /	2	(1/256)
-    inc PCM_ptr+1		;		5
-    lda PCM_ptr+1		;		3
-    cmp #>($c000+$2000)	;		2
-    bcc @LoadSample		;__	2 /	3	(1/32/256)
-    jmp @RestartPtr		;__	3
+	jsr SSDPCM_getbyte
+	tax
+	lda SSDPCM_amplo, x
+	sta SSDPCM_delta_add
+	lda SSDPCM_amphi, x
+	sta SSDPCM_delta_add+1
+	cpx #$ff
+	bne :+
+    jmp @DoneWithPCM
+:
+.repeat 128/4
+	jsr SSDPCM_dobyte
+.endrepeat
+	jmp @RestartPtr
+
+
 @DoneWithPCM:
     lda #%00011111
     sta FAMISTUDIO_APU_SND_CHN
     lda #<FIRST_DMC_BANK
 	jmp mmc3_set_prg_bank_0
+
+
+SSDPCM_dobyte:
+    jsr SSDPCM_getbyte
+	tax
+	ldy SSDPCM_luts, x ; 4
+	lda SSDPCM_amp ; 2
+	clc ; 2
+	adc (SSDPCM_delta_add), y ; 5
+	sta SSDPCM_amp ; 3
+	lsr ; 2
+	jsr SSDPCM_store_pcm ; 6
+
+	ldy SSDPCM_luts+256, x
+	lda SSDPCM_amp
+	clc
+	adc (SSDPCM_delta_add), y
+	sta SSDPCM_amp
+	lsr
+	jsr SSDPCM_store_pcm
+
+	ldy SSDPCM_luts+512, x
+	lda SSDPCM_amp
+	clc
+	adc (SSDPCM_delta_add), y
+	sta SSDPCM_amp
+	lsr
+	jsr SSDPCM_store_pcm
+
+	ldy SSDPCM_luts+768, x
+	lda SSDPCM_amp
+	clc
+	adc (SSDPCM_delta_add), y
+	sta SSDPCM_amp
+	lsr
+	jsr SSDPCM_store_pcm
+	rts
+
+
+SSDPCM_store_pcm:
+    ; 4+2+5+2+3+2+6 = 24 cycles
+    sta $4011 ; 4
+    nop
+    nop
+    nop
+    lda SSDPCM_wait	; 3 
+    sec
+@Delay:
+	sbc #1		;	5n cycles
+	bcs @Delay	;__
+    rts
+
+SSDPCM_getbyte:
+ inc SSDPCM_ptr
+ bne @g1
+ inc SSDPCM_ptr+1
+@g1:
+ lda SSDPCM_ptr
+ cmp #$00
+ bne @g2
+ lda SSDPCM_ptr+1
+ cmp #$C0+$20
+ bne @g2
+
+ lda #$80
+ sta SSDPCM_ptr+1
+ lda SSDPCM_getbyte
+ pha
+ inc SSDPCM_getbyte
+ pla
+ jsr mmc3_set_prg_bank_0
+
+@g2:
+ ldy #0
+ lda (SSDPCM_ptr), y
+ rts
 
 ; BurnCycles:	; 6 for JSR
 ;     php	;	7
@@ -3259,21 +3360,21 @@ Bank:
 ; Sample rate calculations go per this formula:
 ; ((Region Clock / Sample Rate)-Sample Load Time)/5
 ; Sample Load Time is:
-; (5 - 1 + 13) + (255/256*3) + (1/256* (12 + (31/32*3) + (1/32*49) ) ) = 20.052490234 
+; 58 cycles?
 ; A reverse calculation is:
 ; Region Clock / ((Ans)*5+Sample Load Time)
 ; The target sample speed is specified after each value,
 ; Real playback speed and deviation percentage are specified in parentheses
+; TODO: get proper sample calculations for SSDPCM2
 SampleRate_NTSC:	; Also applies to Dendy, as it is derived from the CPU speed
 	; For reference, NTSC Clock is 236250000/11/12 = 1789772.727 Hz
-	.byte 12	; 21307 Hz (21043.15 Hz, -1.23830%)
-	.byte 41	; 8000 Hz (7952.69 Hz, -0.59137%)
+	.byte 4	; 21307 Hz
+	.byte 10	; 8000 Hz
 SampleRate_PAL:
 	; For reference, PAL Clock is 26601712.5/16 = 1662607.03125 Hz
-	.byte 10	; 21307 Hz (21045.66 Hz, -2.52517%)
-	.byte 38	; 8000 Hz (7915.20 Hz, -1.06003%)
+	.byte 3	; 21307 Hz
+	.byte 8	; 8000 Hz
 .endproc
-
 
 ; uint16_t hexToDec (uint16_t input)
 .segment "CODE_2"

@@ -22,12 +22,13 @@ SET all_levels= ^
     hexagonforce ^
     blastprocessing ^
     toe2 ^
+    geometricaldominator ^
+    deadlocked ^
     fingerdash ^
     dash ^
     retray ^
     sonar ^
     thechallenge ^
-    leveleasy ^
     dreamer ^
     lookatthislevel ^
     kappaclysm ^
@@ -44,7 +45,6 @@ SET all_levels= ^
     problematic ^
     firetemple ^
     foresttemple ^
-    eon ^
     stalemate ^
     bloodbath ^
     luckydraw ^

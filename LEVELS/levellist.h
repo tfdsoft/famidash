@@ -68,12 +68,14 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //hexagon force
 	DECO1, //blast processing
 	DECO1, //TOE2
+	DECO1, //geometrical dominator
+	EXTRASPRITES1, //deadlocked
 	EXTRASPRITES1, //fingerdash
 	EXTRASPRITES1, //dash
 	DECO1, //RETRAY
 	DECO1, //SONAR
 	EXTRASPRITES1, //the challenge
-	DECO1, //level easy
+//	DECO1, //level easy
 	DECO1, //dreamer
 	DECO1, //lookatthislevel
 	DECOCLOUD, //kappaclysm
@@ -92,7 +94,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //problematic
 	DECO1, //fire temple
 	DECO1, //forest temple
-	EXTRASPRITES1, //EON
+//	EXTRASPRITES1, //EON
 //	DECO1, //pg clubstep
 	DECO1, //stalemate
 	DECOCLOUD, //bloodbath
@@ -120,12 +122,14 @@ const unsigned char spike_set[] = {
 	SPIKESB, //hexagon force
 	SPIKESB, //blast processing
 	SPIKESA, //TOE2
+	SPIKESC, //geometrical dominator
+	SPIKESA, //deadlocked
 	SPIKESA, //fingerdash
 	SPIKESA, //dash
 	SPIKESA, //RETRAY
 	SPIKESA, //SONAR
 	SPIKESA, //the challenge
-	SPIKESA, //level easy
+//	SPIKESA, //level easy
 	SPIKESA, //dreamer
 	SPIKESA, //lookatthislevel
 	SPIKESC, //kappaclysm
@@ -144,7 +148,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //problematic
 	SPIKESB, //fire temple
 	SPIKESB, //forest temple
-	SPIKESB, //eon
+//	SPIKESB, //eon
 //	SPIKESA, //pg clubstep
 	SPIKESA, //STALEMATE
 	SPIKESC, //bloodbath
@@ -172,12 +176,14 @@ const unsigned char block_set[] = {
 	BLOCKSB, //hexagon force
 	BLOCKSB, //blast processing
 	BLOCKSB, //TOE2
+	BLOCKSB, //geometrical dominator
+	BLOCKSB, //deadlocked
 	BLOCKSB, //fingerdash
 	BLOCKSA, //dash
 	BLOCKSB, //RETRAY
 	BLOCKSB, //SONAR
 	BLOCKSB, //the challenge
-	BLOCKSA, //level easy
+//	BLOCKSA, //level easy
 	BLOCKSB, //dreamer
 	BLOCKSB, //lookatthislevel
 	BLOCKSB, //kappaclysm
@@ -196,7 +202,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //problematic
 	BLOCKSB, //fire temple
 	BLOCKSB, //forest temple
-	BLOCKSA, //EON
+//	BLOCKSA, //EON
 //	BLOCKSB, //pg clubstep
 	BLOCKSB, //stalemate
 	BLOCKSB, //bloodbath
@@ -224,12 +230,14 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //hexagon force
 	SAWBLADESA, //blast processing
 	SAWBLADESA, //TOE2
+	SAWBLADESA, //geometrical dominator
+	SAWBLADESA, //deadlocked
 	SAWBLADESA, //fingerdash
 	SAWBLADESA, //dash
 	SAWBLADESA, //retray
 	SAWBLADESA, //SONAR
 	SAWBLADESA, //the challenge
-	SAWBLADESA, //level easy
+//	SAWBLADESA, //level easy
 	SAWBLADESA, //dreamer
 	SAWBLADESA, //lookatthislevel
 	SAWBLADESA, //kappaclysm
@@ -248,7 +256,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //problematic
 	SAWBLADESA, //fire temple
 	SAWBLADESA, //forest temple
-	SAWBLADESA, //EON
+//	SAWBLADESA, //EON
 //	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //stalemate
 	SAWBLADESA, //bloodbath
@@ -277,12 +285,14 @@ const unsigned char difficulty_list[] = {
     INSANE,  //hexagon force
     HARDER, //blast processing
     DEMON,  //TOE2
+    HARDER, //geometrical dominiator
+    DEMON,  //deadlocked
     INSANE,  //fingerdash
     INSANE,  //dash
     EASY, //RETRAY
     EASY, //SONAR
     NORMAL, //the challenge
-    NORMAL, //level easy
+//    NORMAL, //level easy
     HARD, //dreamer
     HARD, //lookatthislevel
     HARDER, //kappaclysm
@@ -301,7 +311,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //problematic
     DEMON, //fire temple
     DEMON, //forest temple
-    DEMON, //eon
+//    DEMON, //eon
 //    DEMON, //pg clubstep
     DEMON, //stalemate
     DEMON, //bloodbath
@@ -329,12 +339,14 @@ const unsigned char stars_list[] = {
 	12,  //hexagon force
 	10,  //blast processing
 	14,  //TOE2
+	10,  //geometrical dominiator
+	15,  //DEADLOCKED
 	12,  //fingerdash
 	12,  //dash
 	2,   //retray
 	2,   //SONAR
 	3,   //the challenge
-	3,   //level easy
+//	3,   //level easy
 	4,   //dreamer
 	4,   //lookatthislevel
 	6,  //kappaclysm
@@ -353,7 +365,7 @@ const unsigned char stars_list[] = {
 	10, //problematic
 	10, //fire temple
 	10, //forest temple
-	10, //eon
+//	10, //eon
 //	10, //pg clubstep
 	10, //stalemate
 	10, //bloodbath
