@@ -190,6 +190,7 @@ void load_practice_state() {
 	#undef quick_ld
 	currplayer_gravity = player_gravity[currplayer];
 	auto_practicepoint_timer = 200;
+	update_currplayer_table_idx();
 #endif
 
 }
