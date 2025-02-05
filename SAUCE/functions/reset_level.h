@@ -143,6 +143,7 @@ void reset_level() {
 		memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
 		invincible_counter = 8;
 	}
+	update_currplayer_table_idx();
 
 	unrle_first_screen();
 

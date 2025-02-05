@@ -86,17 +86,14 @@ void ball_movement(){
 	} else {
 		Generic.y = high_byte(currplayer_y) + 1;
 	}
-	#define BALL_SWITCH_VEL 0x200
-	#define MINI_BALL_SWITCH_VEL 0x120
+
 	if (gamemode == GAMEMODE_BALL) {
 		if (((controllingplayer->a || controllingplayer->up)) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0){
 			jumps++;
 			invert_gravity(currplayer_gravity);
+			update_currplayer_table_idx();
 			ball_switched[currplayer] = 1;
-			switch (currplayer_gravity){
-				case GRAVITY_DOWN: currplayer_vel_y = currplayer_mini ? MINI_BALL_SWITCH_VEL : BALL_SWITCH_VEL; break;
-				case GRAVITY_UP: currplayer_vel_y = currplayer_mini ? -MINI_BALL_SWITCH_VEL : -BALL_SWITCH_VEL; break;
-			}
+			currplayer_vel_y = BALL_SWITCH_VEL(currplayer_table_idx);
 			bg_coll_floor_spikes();
 		}
 		if(ball_switched[currplayer]){
@@ -109,6 +106,7 @@ void ball_movement(){
 	else {
 		if ((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed){
 			invert_gravity(currplayer_gravity);
+			update_currplayer_table_idx();
 			bg_coll_floor_spikes();
 		}
 	}		

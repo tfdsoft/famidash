@@ -419,10 +419,12 @@ void state_game(){
 
 		if (joypad1.press_right && DEBUG_MODE && !(options & platformer) && !force_platformer) {
 			invert_gravity(currplayer_gravity);
+			update_currplayer_table_idx();
 		}
 		
 		if (joypad1.press_down && DEBUG_MODE) {
 			currplayer_mini ^= 1;
+			update_currplayer_table_idx();
 		}
 
 		if (joypad1.select && DEBUG_MODE) {
