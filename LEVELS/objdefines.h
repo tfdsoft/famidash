@@ -120,6 +120,12 @@
 #define BIGBOI_MODE_ENTER			0x6C
 #define SPEED_SLOW				0x6D
 #define MINI_COIN				0x6E
+#define UNUSED_UNUSED_UNUSED			0x6F
+#define GRAVITY_13_PORTAL_INVIS			0x70
+#define GRAVITY_12_PORTAL_INVIS			0x71
+#define GRAVITY_23_PORTAL_INVIS			0x72
+#define GRAVITY_2X_PORTAL_INVIS			0x73
+#define GRAVITY_1X_PORTAL_INVIS			0x74
 
 #define FORCED_FREECAM_ON			0xDD
 #define X_SCROLL_SETTING			0xDE	//bottom floor is 0xB0, reset to standard at 0x50
