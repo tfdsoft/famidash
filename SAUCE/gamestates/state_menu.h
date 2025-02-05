@@ -60,7 +60,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_endgame, 
 	song_practice,
 	song_retray,
-	song_infernoplex,
+	song_infernoplex_full,
 	song_problematic,
 	song_stereo_madness_2,
 	song_eon,

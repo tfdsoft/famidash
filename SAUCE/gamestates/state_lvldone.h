@@ -534,6 +534,7 @@ const unsigned char TEXT_2blast[]="PROCESSING";
 const unsigned char TEXT_2textretray[]="RETRAY";
 const unsigned char TEXT_2textstereo[]="MADNESS$2";
 const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
+const unsigned char TEXT_2textfullversion[]="FULL$VERSION";
 const unsigned char TEXT_2textproblematic[]="PROBLEMATIC";
 const unsigned char TEXT_2textspeed[]="OF$LIGHT";
 const unsigned char TEXT_2textspeed2[]="OF$LIGHT$PT$2";
@@ -609,7 +610,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	0, 
 	0, 
-	0, 
+	TEXT_2textinfernoplex, 
 	0, 
 	TEXT_xlevel1text1, 
 	0, 
@@ -660,7 +661,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_xlevel2textE, 
 	TEXT_2textpractice, 
 	TEXT_2textretray, 
-	TEXT_2textinfernoplex,
+	TEXT_2textfullversion,
 	TEXT_2textproblematic,
 	TEXT_2textstereo,
 	TEXT_2texteon, 
@@ -710,7 +711,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_xlevel2textE) - 1,
 	sizeof(TEXT_2textpractice) - 1,
 	sizeof(TEXT_2textretray) - 1,
-	sizeof(TEXT_2textinfernoplex) - 1,
+	sizeof(TEXT_2textfullversion) - 1,
 	sizeof(TEXT_2textproblematic) - 1,
 	sizeof(TEXT_2textstereo) - 1,	
 	sizeof(TEXT_2texteon) - 1,
@@ -759,7 +760,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	0,
-	0,
+	sizeof(TEXT_2textinfernoplex) - 1,	
 	0,
 	sizeof(TEXT_xlevel1text1) - 1,	
 	0,
@@ -810,7 +811,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_endgame, 
 	song_practice,
 	song_retray,
-	song_infernoplex,
+	song_infernoplex_full,
 	song_problematic,
 	song_stereo_madness_2,
 	song_eon,
