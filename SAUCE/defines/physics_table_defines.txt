@@ -26,6 +26,7 @@ int [] WAVE_WIDTH 0x08
 int [] WAVE_HEIGHT 0x08
 
 fxp8 pw=-1 [gm] JUMP_VEL -333.75 -288.75
+fxp8 pw=-1 [gm] BALL_SWITCH_VEL 120 67.5
 fxp8 pw=-1 [gm] UFO_JUMP_VEL -191.25 -168.75
 fxp8 pw=-1 [g] ROBOT_JUMP_VEL -161.25
 

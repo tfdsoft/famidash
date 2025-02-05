@@ -233,30 +233,36 @@ void cube_movement(){
 
 
 void common_gravity_routine() {
-	register int16_t tempvel;
+	register int16_t tmpaccel;
 	tmp1 = dashing[currplayer];
 	if (!tmp1) {
-		tempvel = tmpgravity;
-		if((!currplayer_gravity ? currplayer_vel_y : -currplayer_vel_y) > tmpfallspeed){
-			tempvel = -tempvel;
+		tmpaccel = tmpgravity;
+		if((!currplayer_gravity ? currplayer_vel_y > tmpfallspeed : currplayer_vel_y < tmpfallspeed)){
+			tmpaccel = -tmpaccel;
 		}
-			switch (gravity_mod) {
-				case 0: break;
-				case 1: tempvel /= 3; break;
-				case 2: tempvel /= 2; break;
-				case 3: tempvel = (tempvel / 3 * 2); break;
-				case 4: tempvel *= 2; break;
-			};
-		currplayer_vel_y += tempvel;
+		switch (gravity_mod) {
+			case 0: break;
+			case 1: tmpaccel /= 3; break;
+			case 2: tmpaccel /= 2; break;
+			case 3: tmpaccel = (tmpaccel / 3 * 2); break;
+			case 4: tmpaccel *= 2; break;
+		};
+		currplayer_vel_y += tmpaccel;
 		currplayer_y += currplayer_vel_y;
-	}
-	
-	
-	else if (tmp1 == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
-	else if (tmp1 == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else if (tmp1 == 4) { currplayer_vel_y = currplayer_vel_x*2; currplayer_y -= currplayer_vel_y; }	
-	else if (tmp1 == 5) { currplayer_vel_y = currplayer_vel_x*2; currplayer_y += currplayer_vel_y; }	
-	else currplayer_vel_y = currplayer_gravity ? -1 : 1;
+	} else if (tmp1 == 2) {
+		currplayer_vel_y = -currplayer_vel_x;
+		currplayer_y += currplayer_vel_y;
+	} else if (tmp1 == 3) {
+		currplayer_vel_y = currplayer_vel_x;
+		currplayer_y += currplayer_vel_y;
+	} else if (tmp1 == 4) {
+		currplayer_vel_y = currplayer_vel_x*2;
+		currplayer_y -= currplayer_vel_y;
+	} else if (tmp1 == 5) {
+		currplayer_vel_y = currplayer_vel_x*2;
+		currplayer_y += currplayer_vel_y;
+	} else
+		currplayer_vel_y = currplayer_gravity ? -1 : 1;
 }
 
 
@@ -272,7 +278,10 @@ void cube_eject() {
 					currplayer_vel_y = 0xffff;
 				}
 				orbactive = 0;
-				if (fblocked[currplayer]) currplayer_gravity = GRAVITY_DOWN;
+				if (fblocked[currplayer]) {
+					currplayer_gravity = GRAVITY_DOWN;
+					update_currplayer_table_idx();
+				}
 			}
 		} 
 	//}
@@ -287,7 +296,10 @@ void cube_eject() {
 					currplayer_vel_y = 1;
 				}
 				orbactive = 0;
-				if (fblocked[currplayer]) currplayer_gravity = GRAVITY_UP;			
+				if (fblocked[currplayer]) {
+					currplayer_gravity = GRAVITY_UP;
+					update_currplayer_table_idx();
+				}
 			}
 		}
 	//}	

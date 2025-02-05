@@ -27,6 +27,7 @@ void spider_movement(){
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);	
 			jumps++;
 			currplayer_gravity = GRAVITY_UP;
+			update_currplayer_table_idx();
 			spider_up_wait();
 			high_byte(currplayer_y) -= eject_U;
 			currplayer_vel_y = 0;
@@ -37,6 +38,7 @@ void spider_movement(){
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);
 			jumps++;
 			currplayer_gravity = GRAVITY_DOWN;
+			update_currplayer_table_idx();
 			spider_down_wait();
 			high_byte(currplayer_y) -= eject_D;
 			currplayer_vel_y = 0;

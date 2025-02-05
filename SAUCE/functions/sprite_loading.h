@@ -1125,6 +1125,7 @@ void sprite_collide_lookup() {
 		} else {
 			sprite_gamemode_controller_check();
 		}
+		update_currplayer_table_idx();
 		return;
 }
 
