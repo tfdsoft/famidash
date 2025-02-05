@@ -183,7 +183,7 @@ shiftBy4table:
 	.byte $80, $90, $A0, $B0
 	.byte $C0, $D0, $E0, $F0
 
-.segment "CODE"
+.segment "CODE_2"
 
 .export __one_vram_buffer_repeat
 .proc __one_vram_buffer_repeat
@@ -2423,7 +2423,7 @@ drawplayer_center_offsets:
 		CMP	#$08				;	if (high_byte(cube_rotate) >= 0x08) {
 		BCC :++					;__
 			CMP #$80			;	if (high_byte(cube_rotate) < 0x80)
-			BCC	:+				;__
+			BCS	:+				;__
 				LDY #$07		;	cube_rotate[0] = 0x07FF
 				DEX				;__
 			:					;__	else 0x0000 (Y and X still remain at 0)
@@ -2911,7 +2911,7 @@ drawplayer_common := _drawplayerone::common
 		CMP	#$08				;	if (high_byte(cube_rotate) >= 0x08) {
 		BCC :++					;__
 			CMP #$80			;	if (high_byte(cube_rotate) < 0x80)
-			BCC	:+				;__
+			BCS	:+				;__
 				LDY #$07		;	cube_rotate[1] = 0x07FF
 				DEX				;__
 			:					;__	else 0x0000 (Y and X still remain at 0)
@@ -4207,12 +4207,13 @@ vert_skip:
 
 .export _update_currplayer_table_idx
 .proc _update_currplayer_table_idx
-	LDA	framerate
-	ASL
-	ORA	_currplayer_mini
-	BIT	_currplayer_gravity	;	Put gravity into Carry
-	ROL						;__	and shift it in
-	STA	_currplayer_table_idx
+	LDA	_currplayer_gravity		;__	A = gggggggg;	C = ?
+	AND	#$80					;__	A = g-------;	C = ?
+	ORA	framerate				;__	A = g------f;	C = ?
+	ASL							;__	A = ------f-;	C = g
+	ORA	_currplayer_mini		;__	A = ------fm;	C = g
+	ROL							;__	A = -----fmg;	C = 0
+	STA	_currplayer_table_idx	;__	Store the result
 	RTS
 .endproc
 

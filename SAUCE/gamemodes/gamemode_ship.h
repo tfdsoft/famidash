@@ -11,6 +11,7 @@ void ship_movement(){
 	} else {
 		tmpgravity = SHIP_GRAVITY(currplayer_table_idx);
 	}
+	common_gravity_routine();
 
 	tmpfallspeed = SHIP_MAX_FALLSPEED(currplayer_table_idx&~TBLIDX_GRAV);
 	if (controllingplayer->a || controllingplayer->up) {
@@ -34,7 +35,7 @@ void ship_movement(){
 	Generic.x = high_byte(currplayer_x); // the rest should be the same
 	
 	if(controllingplayer->a || controllingplayer->up) {
-		currplayer_vel_y = SHIP_GRAVITY_UP(currplayer_table_idx) * 2 + currplayer_vel_y;
+		currplayer_vel_y = SHIP_GRAVITY_UP(currplayer_table_idx^TBLIDX_GRAV) * 2 + currplayer_vel_y;
 	}	
 }
 
