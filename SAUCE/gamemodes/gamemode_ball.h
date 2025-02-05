@@ -12,24 +12,13 @@ void ball_movement(){
 //	if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
 	if (gamemode == GAMEMODE_SWING) {
-
 		tmpfallspeed = SWING_MAX_FALLSPEED(currplayer_table_idx);
 		tmpgravity = SWING_GRAVITY(currplayer_table_idx);
 		common_gravity_routine();
-
-		
-
-
-	}
-	else {		
+	} else {		
 		tmpfallspeed = BALL_MAX_FALLSPEED(currplayer_table_idx);
 		tmpgravity = BALL_GRAVITY(currplayer_table_idx);
 		common_gravity_routine();
-
-		
-
-
-
 	}
 	
 	Generic.x = high_byte(currplayer_x);

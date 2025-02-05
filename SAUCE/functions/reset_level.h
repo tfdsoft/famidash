@@ -106,6 +106,7 @@ void reset_level() {
 	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
 
 	currplayer_gravity = GRAVITY_DOWN;
+	update_currplayer_table_idx();
 
 	tmp1 = 0;
 	do {

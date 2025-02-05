@@ -197,6 +197,7 @@ void cube_movement(){
 				currplayer_vel_x = jimsheatball_vel_x[tmp9 & 0x7F];
 				currplayer_vel_y = jimsheatball_vel_y[tmp9 & 0x7F];
 				currplayer_gravity = GRAVITY_DOWN;
+				update_currplayer_table_idx();
 
 				if(currplayer_vel_y > JIMSHEATBALL_MAX_FALLSPEED(framerate)){
 					currplayer_vel_y += -JIMSHEATBALL_GRAVITY(framerate);
@@ -229,6 +230,7 @@ void cube_movement(){
 	currplayer_gravity = player_gravity[currplayer];
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
+	update_currplayer_table_idx();
 }	
 
 

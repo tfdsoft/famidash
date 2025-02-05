@@ -411,6 +411,7 @@ void common_dash_orb_routine() {
 		if (currplayer_vel_y != 0) invert_gravity(currplayer_gravity);
 	}
 	else invert_gravity(currplayer_gravity);
+	update_currplayer_table_idx();
 }
 
 #define yellow_orb  0x00 << 3
@@ -437,7 +438,7 @@ const short heights[] = {
 };
 
 const short mini_heights[] = {
-//      cube    ship    ball     ufo    robot   spider  wave    swing
+//	cube    ship    ball     ufo    robot   spider  wave    swing
 	0x4D0,  0x4A0,  0x450,  0x3D0,  0x470,  0x350,  0x000,  0x2A0, // yellow orb
 	0x680,  0x430,  0x4D0,  0x3A0,  0x730,  0x400,  0x000,  0x340, // yellow pad
 	0x350,  0x1E0,  0x350,  0x1B0,  0x370,  0x230,  0x000,  0x1F0, // pink orb
@@ -453,7 +454,7 @@ const short mini_heights[] = {
 #define collided tmp4
 
 // Load the player velocity from the height table
-static unsigned int __fastcall__ sprite_gamemode_y_adjust() {
+static uint16_t sprite_gamemode_y_adjust() {
 	if (!retro_mode) __A__ = (gamemode | table_offset) << 1;
 	else if (retro_mode && gamemode == GAMEMODE_ROBOT) __A__ = (0 | table_offset) << 1;
 	else __A__ = (gamemode | table_offset) << 1;
@@ -480,6 +481,7 @@ static void sprite_gamemode_main() {
 			case BLUE_ORB:
 				if (!activesprites_activated[index]) {
 				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+				update_currplayer_table_idx();
 				dual_cap_check();
 				if (gamemode != BALL_MODE) {
 					currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
@@ -491,6 +493,7 @@ static void sprite_gamemode_main() {
 			case GREEN_ORB:
 				if (!activesprites_activated[index]) {
 				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+				update_currplayer_table_idx();
 				dual_cap_check();
 				currplayer_vel_y = sprite_gamemode_y_adjust();
 				}
@@ -559,6 +562,7 @@ static void sprite_gamemode_controller_check() {
 		case BLUE_ORB:
 			if (!activesprites_activated[index]) {
 				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+				update_currplayer_table_idx();
 				dual_cap_check();
 				if (gamemode != BALL_MODE) {
 					currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
@@ -570,6 +574,7 @@ static void sprite_gamemode_controller_check() {
 		case GREEN_ORB:
 			if (!activesprites_activated[index]) {
 			invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+			update_currplayer_table_idx();
 			dual_cap_check();
 		//	if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
 		//	else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
@@ -893,14 +898,14 @@ void sprite_collide_lookup() {
 		currplayer_mini = 1;
 		player_mini[0] = 1;
 		player_mini[1] = 1;
-		currplayer_table_idx |= TBLIDX_MINI;
+		update_currplayer_table_idx();
 		return;
 
 	spcl_grow_pt:
 		currplayer_mini = 0;
 		player_mini[0] = 0;
 		player_mini[1] = 0;
-		currplayer_table_idx &= ~TBLIDX_MINI;
+		update_currplayer_table_idx();
 		return;
 
 	// - Kando size portals
@@ -1032,6 +1037,7 @@ void sprite_collide_lookup() {
 		if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
 		else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
 		idx8_inc(activesprites_activated, index);
+		update_currplayer_table_idx();
 		return;
 	
 	spcl_gvdn_pd:
@@ -1039,10 +1045,11 @@ void sprite_collide_lookup() {
 		if (!currplayer_gravity) { 
 			settrailstuff();
 			currplayer_gravity = GRAVITY_UP;				//flip gravity
+			update_currplayer_table_idx();
 			currplayer_vel_y = PAD_HEIGHT_BLUE;
 			//invincible_counter = 3;
 		}
-		idx8_inc(activesprites_activated, index);	
+		idx8_inc(activesprites_activated, index);
 		return;
 	
 	spcl_gvup_pd:
@@ -1050,6 +1057,7 @@ void sprite_collide_lookup() {
 		if (currplayer_gravity) { 	
 			settrailstuff();
 			currplayer_gravity = GRAVITY_DOWN;				//flip gravity
+			update_currplayer_table_idx();
 			currplayer_vel_y = -PAD_HEIGHT_BLUE;
 			//invincible_counter = 3;				
 		}
@@ -1064,6 +1072,7 @@ void sprite_collide_lookup() {
 			high_byte(currplayer_y) -= eject_D;
 			currplayer_vel_y = 0;
 			currplayer_gravity = GRAVITY_UP;
+			update_currplayer_table_idx();
 			crossPRGBankJump0(spider_up_wait);
 			high_byte(currplayer_y) -= eject_U;
 			currplayer_vel_y = 0;	
@@ -1078,6 +1087,7 @@ void sprite_collide_lookup() {
 			high_byte(currplayer_y) -= eject_U + 1;
 			currplayer_vel_y = 0;
 			currplayer_gravity = GRAVITY_DOWN;
+			update_currplayer_table_idx();
 			crossPRGBankJump0(spider_down_wait);
 			high_byte(currplayer_y) -= eject_D;
 			currplayer_vel_y = 0;
