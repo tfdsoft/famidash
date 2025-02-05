@@ -276,8 +276,9 @@
 			vsSystemEnabled: true
 		},
 		{
-			fmsSongName: "infernoplex",
-			lowerText: "INFERNOPLEX",
+			fmsSongName: "infernoplex full",
+			upperText: "INFERNOPLEX",
+			lowerText: "FULL VERSION",
 			vsSystemEnabled: true
 		},
 		{
