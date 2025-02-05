@@ -1,6 +1,8 @@
 #	This file is taken by a python script and compiled into tables for each value
-#	File format:
+#	Line format:
 #	type {optional settings} [flags] name values
+#		or
+#	command arguments
 #	Types:
 #		int: The values are stored as integer values, size determined automatically or defined later
 #		fxp[X]: The values are stored as inf.X bit fixed point values
@@ -18,6 +20,10 @@
 #	Name: literally just alphanumeric characters
 #			each table will be exported under this exact name
 #	Values: int(s) or float(s), processed per the flags and then rounded
+#	
+#	Commands:
+#		segment: sets the segment for the following data
+#		Arguments: the bank to set, set to RODATA in the beginning
 
 int [m] CUBE_WIDTH 0x0F 0x08
 int [m] CUBE_HEIGHT 0x0F 0x07
@@ -25,17 +31,19 @@ int [m] CUBE_HEIGHT 0x0F 0x07
 int [] WAVE_WIDTH 0x08
 int [] WAVE_HEIGHT 0x08
 
-fxp8 pw=-1 [gm] JUMP_VEL -333.75 -288.75
-fxp8 pw=-1 [gm] BALL_SWITCH_VEL 120 67.5
-fxp8 pw=-1 [gm] UFO_JUMP_VEL -191.25 -168.75
-fxp8 pw=-1 [g] ROBOT_JUMP_VEL -161.25
-
 fxp8 pw=-1 [] CUBE_SPEED_SLOW 85.78125
 fxp8 pw=-1 [] CUBE_SPEED_X05 133.8912134
 fxp8 pw=-1 [] CUBE_SPEED_X1 166.0181582
 fxp8 pw=-1 [] CUBE_SPEED_X2 206.4516129
 fxp8 pw=-1 [] CUBE_SPEED_X3 249.5126706
 fxp8 pw=-1 [] CUBE_SPEED_X4 306.9544365
+
+segment XCD_BANK_01
+
+fxp8 pw=-1 [gm] JUMP_VEL -333.75 -288.75
+fxp8 pw=-1 [gm] BALL_SWITCH_VEL 120 67.5
+fxp8 pw=-1 [gm] UFO_JUMP_VEL -191.25 -168.75
+fxp8 pw=-1 [g] ROBOT_JUMP_VEL -161.25
 
 int pw=1 [] ROBOT_JUMP_TIME 0.32
 
@@ -45,6 +53,8 @@ fxp8 pw=-1 [g] BALL_MAX_FALLSPEED 360.0
 fxp8 pw=-1 [gm] UFO_MAX_FALLSPEED 187.5 198.75
 fxp8 pw=-1 [g] SPIDER_MAX_FALLSPEED 360.0
 fxp8 pw=-1 [g] SWING_MAX_FALLSPEED 251.25
+
+segment RODATA
 
 fxp8 pw=-2 sz=16 [gm] CUBE_GRAVITY 1504.6875 1560.9375
 fxp8 pw=-2 sz=16 [gm] SHIP_GRAVITY 590.625 618.75
