@@ -58,7 +58,7 @@ uint8_t sprite_heights[]={
 	0x30,	0x10,	SPBH,	0x12,	0x12,	0x12,	0x12,	0x30,	// 58 - 5F
 	0x30,	0x30,	0x30,	0x30,	0x30,	0x02,	0x10,	SPBH,	// 60 - 67
 	0x10,	SPBH,	0x30,	0x30,	0x30,	0x20,	0x08,	0x00,	// 68 - 6F
-	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 70 - 77
+	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x00,	0x00,	0x00,	// 70 - 77
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 78 - 7F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 88 - 8F
@@ -259,6 +259,21 @@ char sprite_load_special_behavior(){
 				killSprite_return0;
 			case MASK_SPRITES_OFF:
 				disco_sprites = 0;
+				killSprite_return0;
+			case GRAVITY_13_PORTAL_INVIS:
+				gravity_mod = 1;
+				killSprite_return0;
+			case GRAVITY_12_PORTAL_INVIS:
+				gravity_mod = 2;
+				killSprite_return0;
+			case GRAVITY_23_PORTAL_INVIS:
+				gravity_mod = 3;
+				killSprite_return0;
+			case GRAVITY_2X_PORTAL_INVIS:
+				gravity_mod = 4;
+				killSprite_return0;
+			case GRAVITY_1X_PORTAL_INVIS:
+				gravity_mod = 0;
 				killSprite_return0;
 		#endif
 		case FORCED_FREECAM_ON:
