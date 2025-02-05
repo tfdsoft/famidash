@@ -8,6 +8,7 @@ SET all_levels= ^
     leveleasy ^
     supercycles ^
     clutterfunk2 ^
+    speedracer ^
     pgclubstep ^
     eon ^
     cataclysm ^

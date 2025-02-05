@@ -132,7 +132,22 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 8172 bytes
+.segment "LVL_BANK_0A"	; Total bank size: 5611 bytes
+	.export level_data_speedracer
+	level_data_speedracer:
+	; Header
+		.byte speedracer_song_number
+		.byte speedracer_game_mode
+		.byte speedracer_speed
+		.byte speedracer_no_parallax
+		.byte speedracer_bg_color
+		.byte speedracer_grnd_color
+		.byte 27	; height of speedracer
+	; Level data
+		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5611
+
+
+.segment "LVL_BANK_0C"	; Total bank size: 8172 bytes
 	.export level_data_aftercatabath_2
 	level_data_aftercatabath_2:
 	; Level data
