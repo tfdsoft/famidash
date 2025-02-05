@@ -561,7 +561,7 @@ void state_game(){
 				update_currplayer_table_idx();
 			}
 
-			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer) && !force_platformer) invert_gravity(currplayer_gravity);			//DEBUG GRAVITY
+			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer) && !force_platformer) { invert_gravity(currplayer_gravity); update_currplayer_table_idx(); }			//DEBUG GRAVITY
 			if (((controllingplayer->press_a || controllingplayer->press_up)) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			
 			decrement_was_on_slope();		
