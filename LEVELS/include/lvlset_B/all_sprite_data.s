@@ -1523,6 +1523,10 @@ sprite_data_dearnostalgists:
   .byte $f0,$71,$a0,$02,$80
   .byte $10,$72,$a0,$02,$a6
   .byte $50,$72,$a0,$02,$96
+  .byte $f0,$73,$40,$00,$0f
+  .byte $f0,$73,$50,$01,$0f
+  .byte $f0,$73,$50,$02,$0f
+  .byte $f0,$73,$40,$03,$0f
   .byte $ff
 
 .segment "DAT_BANK_0B"
