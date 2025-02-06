@@ -33,20 +33,14 @@
 			startingBackgroundColor: 0x2C,
 			startingGroundColor: 0x1C
 		},
-		/*{
+		/*{ 	Residual data:
 			level: "dearnostalgists",
-			lowerText: " DEAR NOSTALGISTS",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "C",
 			blockSet: "A",
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: [UNSPECIFIED],
-			startingGameMode: [UNSPECIFIED],
-			startingSpeed: [UNSPECIFIED],
-			startingBackgroundColor: [UNSPECIFIED],
-			startingGroundColor: [UNSPECIFIED]
 		},*/
 		{
 			level: "supercycles",
@@ -62,6 +56,22 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
+			parallaxDisable: true
+		},
+		{
+			level: "dearnostalgists",
+			lowerText: " DEAR NOSTALGISTS",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "C",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_crackdown",
+			startingGameMode: 0,
+			startingSpeed: 2,
+			startingBackgroundColor: 0x2C,
+			startingGroundColor: 0x1C,
 			parallaxDisable: true
 		},
 		{

@@ -5,6 +5,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// stereomadness
 	DECO1,	// leveleasy
 	DECO1,	// supercycles
+	EXTRASPRITES1,	// dearnostalgists
 	DECO1,	// clutterfunk2
 	EXTRASPRITES1,	// speedracer
 	DECO1,	// pgclubstep
@@ -19,6 +20,7 @@ const uint8_t spike_set[] = {
 	SPIKESA,	// stereomadness
 	SPIKESA,	// leveleasy
 	SPIKESA,	// supercycles
+	SPIKESC,	// dearnostalgists
 	SPIKESA,	// clutterfunk2
 	SPIKESA,	// speedracer
 	SPIKESA,	// pgclubstep
@@ -34,6 +36,7 @@ const uint8_t block_set[] = {
 	BLOCKSA,	// stereomadness
 	BLOCKSA,	// leveleasy
 	BLOCKSB,	// supercycles
+	BLOCKSA,	// dearnostalgists
 	BLOCKSB,	// clutterfunk2
 	BLOCKSB,	// speedracer
 	BLOCKSB,	// pgclubstep
@@ -48,6 +51,7 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// stereomadness
 	SAWBLADESA,	// leveleasy
 	SAWBLADESA,	// supercycles
+	SAWBLADESA,	// dearnostalgists
 	SAWBLADESA,	// clutterfunk2
 	SAWBLADESA,	// speedracer
 	SAWBLADESA,	// pgclubstep
@@ -71,6 +75,7 @@ const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
 	NORMAL,	// leveleasy
 	DEMON,	// supercycles
+	DEMON,	// dearnostalgists
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
 	DEMON,	// pgclubstep
@@ -85,6 +90,7 @@ const uint8_t stars_list[] = {
 	1,	// stereomadness
 	3,	// leveleasy
 	10,	// supercycles
+	10,	// dearnostalgists
 	10,	// clutterfunk2
 	10,	// speedracer
 	10,	// pgclubstep

@@ -22,6 +22,13 @@ supercycles_no_parallax = 1
 supercycles_bg_color    = $12
 supercycles_grnd_color  = $02
 
+dearnostalgists_song_number = song_crackdown
+dearnostalgists_game_mode   = 0
+dearnostalgists_speed       = 2
+dearnostalgists_no_parallax = 1
+dearnostalgists_bg_color    = $2C
+dearnostalgists_grnd_color  = $1C
+
 clutterfunk2_song_number = song_clutterfunk_2
 clutterfunk2_game_mode   = 0
 clutterfunk2_speed       = 0
