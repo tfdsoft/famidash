@@ -7,6 +7,7 @@ SET all_levels= ^
     stereomadness ^
     leveleasy ^
     supercycles ^
+    dearnostalgists ^
     clutterfunk2 ^
     speedracer ^
     pgclubstep ^

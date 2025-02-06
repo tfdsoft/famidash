@@ -1273,7 +1273,7 @@ void set_fun_settings() {
 const unsigned char* const leveltexts[] = {
   level1text, 
   NULL, 
-//  NULL, 
+  NULL, 
   NULL, 
   NULL, 
   NULL, 
@@ -1287,8 +1287,8 @@ const unsigned char* const leveltexts[] = {
 const unsigned char* const leveltexts2[] = {
   level1text2, 
   leveleasy2, 
-//  levelnostalgists2, 
   levelsupercycles2,
+  levelnostalgists2, 
   levelclutterfunk22,
   levelspeedracer2,
   levelpgclubtext2,
@@ -1303,7 +1303,7 @@ const unsigned char* const leveltexts2[] = {
 const unsigned char level_text_size[] = {
 	sizeof(level1text) - 1,
 	0,
-//	0,
+	0,
 	0,
 	0,
 	0,
@@ -1317,8 +1317,8 @@ const unsigned char level_text_size[] = {
 const unsigned char level_text_size2[] = {
 	sizeof(level1text2) - 1,
 	sizeof(leveleasy2) - 1,
-//	sizeof(levelnostalgists2) - 1,
 	sizeof(levelsupercycles2) - 1,
+	sizeof(levelnostalgists2) - 1,
 	sizeof(levelclutterfunk22) - 1,
 	sizeof(levelspeedracer2) - 1,
 	sizeof(levelpgclubtext2) - 1,

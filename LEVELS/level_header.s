@@ -1,3 +1,10 @@
+test4_song_number = song_hexagon_force
+test4_game_mode   = $00
+test4_speed       = $00
+test4_no_parallax  = 1
+test4_bg_color    = $12
+test4_grnd_color  = $02
+
 stereomadness_song_number = song_stereo_madness
 stereomadness_game_mode   = $00
 stereomadness_speed       = $00
@@ -68,9 +75,9 @@ eon_no_parallax  = 1
 eon_bg_color    = $0F
 eon_grnd_color  = $0F
 
-test4_song_number = song_hexagon_force
-test4_game_mode   = $00
-test4_speed       = $00
-test4_no_parallax  = 1
-test4_bg_color    = $12
-test4_grnd_color  = $02
+dearnostalgists_song_number = song_crackdown
+dearnostalgists_game_mode   = $00
+dearnostalgists_speed       = $02
+dearnostalgists_no_parallax  = 1
+dearnostalgists_bg_color    = $2C
+dearnostalgists_grnd_color  = $1C
