@@ -551,6 +551,7 @@ const unsigned char TEXT_dash2[]="DASH";
 const unsigned char TEXT_driving2[]="NIGHT";
 const unsigned char TEXT_deadlocked2[]="DEADLOCKED";
 const unsigned char TEXT_fingerdash2[]="FINGERDASH";
+const unsigned char TEXT_ninox2[]="NINOX";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -632,6 +633,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	TEXT_crackdown,
 	TEXT_ultimate,
+	0,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -682,6 +684,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2clutterfunk2,
 	TEXT_2textcrackdown,
 	TEXT_ultimate2,
+	TEXT_ninox2,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -732,6 +735,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2clutterfunk2) - 1,
 	sizeof(TEXT_2textcrackdown) - 1,
 	sizeof(TEXT_ultimate2) - 1,
+	sizeof(TEXT_ninox2) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -781,6 +785,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,	
 	sizeof(TEXT_crackdown) - 1,	
 	sizeof(TEXT_ultimate) - 1,	
+	0,
 };
 
 
