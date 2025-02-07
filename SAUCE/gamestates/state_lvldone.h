@@ -832,6 +832,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_clutterfunk_2,
 	song_crackdown,
 	song_ultimatedestruction,
+	song_ninox,
 };
 
 
