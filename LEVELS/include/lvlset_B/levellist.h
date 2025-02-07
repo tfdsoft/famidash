@@ -4,6 +4,7 @@
 const uint8_t DECOTYPE[] = {
 	DECO1,	// stereomadness
 	DECO1,	// leveleasy
+	DECOCLOUD,	// ninox
 	DECO1,	// supercycles
 	EXTRASPRITES1,	// dearnostalgists
 	DECO1,	// clutterfunk2
@@ -19,6 +20,7 @@ const uint8_t DECOTYPE[] = {
 const uint8_t spike_set[] = {
 	SPIKESA,	// stereomadness
 	SPIKESA,	// leveleasy
+	SPIKESB,	// ninox
 	SPIKESA,	// supercycles
 	SPIKESC,	// dearnostalgists
 	SPIKESA,	// clutterfunk2
@@ -35,6 +37,7 @@ const uint8_t spike_set[] = {
 const uint8_t block_set[] = {
 	BLOCKSA,	// stereomadness
 	BLOCKSA,	// leveleasy
+	BLOCKSC,	// ninox
 	BLOCKSB,	// supercycles
 	BLOCKSA,	// dearnostalgists
 	BLOCKSB,	// clutterfunk2
@@ -50,6 +53,7 @@ const uint8_t block_set[] = {
 const uint8_t saw_set[] = {
 	SAWBLADESA,	// stereomadness
 	SAWBLADESA,	// leveleasy
+	SAWBLADESA,	// ninox
 	SAWBLADESA,	// supercycles
 	SAWBLADESA,	// dearnostalgists
 	SAWBLADESA,	// clutterfunk2
@@ -74,6 +78,7 @@ const uint8_t saw_set[] = {
 const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
 	NORMAL,	// leveleasy
+	NORMAL,	// ninox
 	DEMON,	// supercycles
 	DEMON,	// dearnostalgists
 	DEMON,	// clutterfunk2
@@ -89,6 +94,7 @@ const uint8_t difficulty_list[] = {
 const uint8_t stars_list[] = {
 	1,	// stereomadness
 	3,	// leveleasy
+	3,	// ninox
 	10,	// supercycles
 	10,	// dearnostalgists
 	10,	// clutterfunk2

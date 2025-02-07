@@ -4,17 +4,18 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 11
+#define COMMUNITY_LEVEL_COUNT 12
 
 #define stereomadness 0
 #define leveleasy 1
-#define supercycles 2
-#define dearnostalgists 3
-#define clutterfunk2 4
-#define speedracer 5
-#define pgclubstep 6
-#define eon 7
-#define cataclysm 8
-#define aftermath 9
-#define aftercatabath 10
-#define test4 11
+#define ninox 2
+#define supercycles 3
+#define dearnostalgists 4
+#define clutterfunk2 5
+#define speedracer 6
+#define pgclubstep 7
+#define eon 8
+#define cataclysm 9
+#define aftermath 10
+#define aftercatabath 11
+#define test4 12

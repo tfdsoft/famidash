@@ -15,6 +15,13 @@ leveleasy_no_parallax = 0
 leveleasy_bg_color    = $2C
 leveleasy_grnd_color  = $1C
 
+ninox_song_number = song_ninox
+ninox_game_mode   = 0
+ninox_speed       = 0
+ninox_no_parallax = 0
+ninox_bg_color    = $12
+ninox_grnd_color  = $02
+
 supercycles_song_number = song_cycles
 supercycles_game_mode   = 0
 supercycles_speed       = 0

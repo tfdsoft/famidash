@@ -33,15 +33,21 @@
 			startingBackgroundColor: 0x2C,
 			startingGroundColor: 0x1C
 		},
-		/*{ 	Residual data:
-			level: "dearnostalgists",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "C",
-			blockSet: "A",
+		{
+			level: "ninox",
+			lowerText: "NINOX",
+			decoType: "DECOCLOUD",
+			spikeSet: "B",
+			blockSet: "C",
 			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-		},*/
+			difficulty: "NORMAL",
+			stars: 3,
+			songID: "song_ninox",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02
+		},
 		{
 			level: "supercycles",
 			lowerText: "SUPER CYCLES",
