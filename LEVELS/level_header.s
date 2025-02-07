@@ -81,3 +81,10 @@ dearnostalgists_speed       = $02
 dearnostalgists_no_parallax  = 1
 dearnostalgists_bg_color    = $2C
 dearnostalgists_grnd_color  = $1C
+
+ninox_song_number = song_ninox
+ninox_game_mode   = $00
+ninox_speed       = $00
+ninox_no_parallax  = 0
+ninox_bg_color    = $12
+ninox_grnd_color  = $02

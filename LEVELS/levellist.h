@@ -52,7 +52,7 @@
 const uint8_t DECOTYPE[] = {
 	DECO1, //sm
 	DECO1, //level easy
-//	EXTRASPRITES1, //dear nostalgists
+	DECOCLOUD, //ninox
 	DECO1, //super cycles
 	EXTRASPRITES1, //dear nostalgists
 	DECO1, //clutterfunk 2
@@ -68,7 +68,7 @@ const uint8_t DECOTYPE[] = {
 const unsigned char spike_set[] = {
 	SPIKESA, //stereo madness
 	SPIKESA, //level easy
-//	SPIKESC, //dear nostalgists
+	SPIKESB, //ninox
 	SPIKESA, //super cycles
 	SPIKESC, //dear nostalgists
 	SPIKESA, //clutterfunk 2
@@ -84,7 +84,7 @@ const unsigned char spike_set[] = {
 const unsigned char block_set[] = {
 	BLOCKSA, //stereo madness
 	BLOCKSA, //level easy
-//	BLOCKSA, //dear nostalgists
+	BLOCKSC, //ninox
 	BLOCKSB, //super cycles
 	BLOCKSA, //dear nostalgists
 	BLOCKSB, //clutterfunk 2
@@ -100,7 +100,7 @@ const unsigned char block_set[] = {
 const unsigned char saw_set[] = {
 	SAWBLADESA, //stereo madness
 	SAWBLADESA, //level easy
-//	SAWBLADESA, //dear nostalgists
+	SAWBLADESA, //ninox
 	SAWBLADESA, //super cycles
 	SAWBLADESA, //dear nostalgists
 	SAWBLADESA, //clutterfunk 2
@@ -117,7 +117,7 @@ const unsigned char saw_set[] = {
 const unsigned char difficulty_list[] = {
     EASY,
     NORMAL, //level easy
-//    DEMON, //dear nostalgists
+    NORMAL, //ninox
     DEMON, //super cycles
     DEMON, //dear nostalgists
     DEMON, //clutterfunk 2
@@ -133,6 +133,7 @@ const unsigned char difficulty_list[] = {
 const unsigned char stars_list[] = {
 	1,
 	3,   //level easy
+	3,   //ninox
 //	10, //dear nostlagists
 	10, //super cycles
 	10, //dear nostalgists

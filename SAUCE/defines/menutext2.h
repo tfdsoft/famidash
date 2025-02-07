@@ -25,4 +25,5 @@ const unsigned char levelaftermath2[]="AFTERMATH";
 const unsigned char levelaftercatabath2[]="AFTERCATABATH";
 const unsigned char levelspeedracer2[]="SPEED RACER";
 const unsigned char leveltest4[]="TEST 4";
+const unsigned char levelninox2[]="NINOX";
 

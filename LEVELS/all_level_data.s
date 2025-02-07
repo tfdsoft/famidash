@@ -46,18 +46,18 @@
 	; Level data
 		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8118
 
-	.export level_data_test4
-	level_data_test4:
+	.export level_data_stereomadness
+	level_data_stereomadness:
 	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
+		.byte stereomadness_song_number
+		.byte stereomadness_game_mode
+		.byte stereomadness_speed
+		.byte stereomadness_no_parallax
+		.byte stereomadness_bg_color
+		.byte stereomadness_grnd_color
+		.byte 27	; height of stereomadness
 	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 58
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
 
 .segment "LVL_BANK_04"	; Total bank size: 8045 bytes
@@ -82,7 +82,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7517
 
 
-.segment "LVL_BANK_06"	; Total bank size: 8188 bytes
+.segment "LVL_BANK_06"	; Total bank size: 8180 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -96,21 +96,8 @@
 	; Level data
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7048
 
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte stereomadness_song_number
-		.byte stereomadness_game_mode
-		.byte stereomadness_speed
-		.byte stereomadness_no_parallax
-		.byte stereomadness_bg_color
-		.byte stereomadness_grnd_color
-		.byte 27	; height of stereomadness
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
-
-.segment "LVL_BANK_07"	; Total bank size: 7606 bytes
+.segment "LVL_BANK_07"	; Total bank size: 7887 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -123,11 +110,6 @@
 		.byte 27	; height of aftermath
 	; Level data
 		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6806
-
-	.export level_data_eon_1
-	level_data_eon_1:
-	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
 
 
 .segment "LVL_BANK_09"	; Total bank size: 6460 bytes
@@ -145,7 +127,22 @@
 		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6460
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 5611 bytes
+.segment "LVL_BANK_0A"	; Total bank size: 7869 bytes
+	.export level_data_leveleasy
+	level_data_leveleasy:
+	; Header
+		.byte leveleasy_song_number
+		.byte leveleasy_game_mode
+		.byte leveleasy_speed
+		.byte leveleasy_no_parallax
+		.byte leveleasy_bg_color
+		.byte leveleasy_grnd_color
+		.byte 27	; height of leveleasy
+	; Level data
+		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
+
+
+.segment "LVL_BANK_0B"	; Total bank size: 8192 bytes
 	.export level_data_speedracer
 	level_data_speedracer:
 	; Header
@@ -159,8 +156,13 @@
 	; Level data
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5611
 
+	.export level_data_eon_1
+	level_data_eon_1:
+	; Level data
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
 
-.segment "LVL_BANK_0D"	; Total bank size: 8114 bytes
+
+.segment "LVL_BANK_0D"	; Total bank size: 8172 bytes
 	.export level_data_aftercatabath_3
 	level_data_aftercatabath_3:
 	; Level data
@@ -179,22 +181,35 @@
 	; Level data
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
 
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 58
 
-.segment "LVL_BANK_0F"	; Total bank size: 7912 bytes
+
+.segment "LVL_BANK_0F"	; Total bank size: 8138 bytes
 	.export level_data_dearnostalgists_0
 	level_data_dearnostalgists_0:
 	; Level data
 		.incbin "EXPORTS/dearnostalgists.lz.1.bin" ; Size: 2968
 
-	.export level_data_leveleasy
-	level_data_leveleasy:
+	.export level_data_ninox
+	level_data_ninox:
 	; Header
-		.byte leveleasy_song_number
-		.byte leveleasy_game_mode
-		.byte leveleasy_speed
-		.byte leveleasy_no_parallax
-		.byte leveleasy_bg_color
-		.byte leveleasy_grnd_color
-		.byte 27	; height of leveleasy
+		.byte ninox_song_number
+		.byte ninox_game_mode
+		.byte ninox_speed
+		.byte ninox_no_parallax
+		.byte ninox_bg_color
+		.byte ninox_grnd_color
+		.byte 27	; height of ninox
 	; Level data
-		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
+		.incbin "EXPORTS/ninox.lz.bin" ; Size: 2324
