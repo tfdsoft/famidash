@@ -754,6 +754,8 @@ void state_menu() {
 	
 	ppu_off();
 
+	gamemode = 0;
+
 	if (all_levels_complete == 0xFC) pal_bg(splashMenu2);
 	else pal_bg (splashMenu);
 	
