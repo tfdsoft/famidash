@@ -276,7 +276,7 @@
 			vsSystemEnabled: true
 		},
 		{
-			fmsSongName: "Infernoplex Full",
+			fmsSongName: "infernoplex full",
 			upperText: "INFERNOPLEX",
 			lowerText: "FULL VERSION",
 			vsSystemEnabled: true
@@ -388,6 +388,10 @@
 			fmsSongName: "ultimatedestruction",
 			upperText: "ULTIMATE",
 			lowerText: "DESTRUCTION"
+		},
+		{
+			fmsSongName: "Ninox",
+			lowerText: "NINOX"
 		}
 	],
 	SFX: [
