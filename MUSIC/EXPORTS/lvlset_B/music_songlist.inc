@@ -1,5 +1,5 @@
 song_crackdown = 0
-song_cant_let_go = 1
+song_the_challenge = 1
 song_infernoplex_full = 2
 song_retray = 3
 song_atthespeedoflightfull = 4
@@ -29,7 +29,7 @@ song_back_on_track = 27
 song_blast_processing = 28
 song_stalemate = 29
 song_base_after_base = 30
-song_the_challenge = 31
+song_cant_let_go = 31
 song_stereo_madness_2 = 32
 song_just_right = 33
 song_stereo_madness = 34

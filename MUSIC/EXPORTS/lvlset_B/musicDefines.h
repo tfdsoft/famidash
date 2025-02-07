@@ -1,5 +1,5 @@
 #define song_crackdown 0
-#define song_cant_let_go 1
+#define song_the_challenge 1
 #define song_infernoplex_full 2
 #define song_retray 3
 #define song_atthespeedoflightfull 4
@@ -29,7 +29,7 @@
 #define song_blast_processing 28
 #define song_stalemate 29
 #define song_base_after_base 30
-#define song_the_challenge 31
+#define song_cant_let_go 31
 #define song_stereo_madness_2 32
 #define song_just_right 33
 #define song_stereo_madness 34
