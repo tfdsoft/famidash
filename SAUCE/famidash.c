@@ -207,5 +207,6 @@ void setdefaultoptions() {
 	invisblocks = 0;
 	cam_seesaw = 0;
 	menu_music = 0;
+	auto_practicepoints = 1;
 	return;
 }

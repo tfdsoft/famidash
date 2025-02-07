@@ -75,5 +75,9 @@
 //
 // Save File Version
 // increase by 1 if SRAM values are added, changed or deleted.
+#if !__VS_SYSTEM
+#define FLAG_SAVE_VER 0x16
+#else
 #define FLAG_SAVE_VER 0x15
+#endif
 // ============================================================

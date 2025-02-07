@@ -388,6 +388,10 @@ void state_game(){
   		#endif	//no practice in arcade
 		if ((controllingplayer->press_b) && practice_point_count && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
 
+		if (auto_practicepoint_timer) auto_practicepoint_timer--;
+
+		if (practice_point_count && !auto_practicepoint_timer) { crossPRGBankJump0(reset_game_vars); }
+
 		if (joypad1.press_right && DEBUG_MODE && !(options & platformer)) {
 			invert_gravity(currplayer_gravity);
 		}
