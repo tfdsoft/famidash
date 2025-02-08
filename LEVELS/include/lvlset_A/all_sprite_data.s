@@ -15540,7 +15540,7 @@ sprite_data_luckydraw:
 .segment "DAT_BANK_0D"
 sprite_data_test4:
   .byte $80,$00,$60,$03,$20
-  .byte $40,$01,$f0,$02,$02
+  .byte $40,$01,$f0,$02,$01
   .byte $40,$01,$00,$03,$18
   .byte $60,$01,$30,$03,$93
   .byte $70,$01,$f0,$02,$36
