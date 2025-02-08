@@ -553,6 +553,22 @@ const unsigned char TEXT_deadlocked2[]="DEADLOCKED";
 const unsigned char TEXT_fingerdash2[]="FINGERDASH";
 const unsigned char TEXT_ninox2[]="NINOX";
 
+const unsigned char TEXT_future[]="WHATS$A";
+const unsigned char TEXT_future2[]="FUTURE$FUNK";
+
+const unsigned char TEXT_freedom[]="FREEDOM";
+const unsigned char TEXT_freedom2[]="DIVE";
+
+const unsigned char TEXT_ludicrous[]="LUDICROUS";
+const unsigned char TEXT_ludicrous2[]="SPEED";
+
+const unsigned char TEXT_idols[]="IDOLS";
+
+const unsigned char TEXT_windfall[]="WINDFALL";
+
+
+
+
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
 const unsigned char TEXT_sfxtext2[]="LEVEL$COMPLETE";
@@ -598,7 +614,6 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	0, 
 	TEXT_xweasel, 
-	TEXT_challenge,
 	TEXT_speed,
 	TEXT_speed,
 	TEXT_speed,
@@ -606,7 +621,6 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	0,
 	0,
-//	0,
 	0,
 	TEXT_against,
 	TEXT_driving,
@@ -614,6 +628,11 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	TEXT_crackdown,
 	TEXT_ultimate,
+	0,
+	TEXT_future,
+	TEXT_freedom,
+	0,
+	TEXT_ludicrous,
 	0,
 };
 
@@ -631,7 +650,6 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2texteon, 
 	TEXT_2deathmoon, 
 	TEXT_2textweasel, 
-	TEXT_2challenge,
 	TEXT_2textspeed,
 	TEXT_2textspeed2,
 	TEXT_2textspeed3,
@@ -647,6 +665,11 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textcrackdown,
 	TEXT_ultimate2,
 	TEXT_ninox2,
+	TEXT_future2,
+	TEXT_freedom2,
+	TEXT_idols,
+	TEXT_ludicrous2,
+	TEXT_windfall,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -663,7 +686,6 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2texteon) - 1,
 	sizeof(TEXT_2deathmoon) - 1,
 	sizeof(TEXT_2textweasel) - 1,
-	sizeof(TEXT_2challenge) - 1,
 	sizeof(TEXT_2textspeed) - 1,
 	sizeof(TEXT_2textspeed2) - 1,
 	sizeof(TEXT_2textspeed3) - 1,
@@ -679,6 +701,11 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textcrackdown) - 1,
 	sizeof(TEXT_ultimate2) - 1,
 	sizeof(TEXT_ninox2) - 1,
+	sizeof(TEXT_future2) - 1,
+	sizeof(TEXT_freedom2) - 1,
+	sizeof(TEXT_idols) - 1,
+	sizeof(TEXT_ludicrous2) - 1,
+	sizeof(TEXT_windfall) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -694,7 +721,6 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	sizeof(TEXT_xweasel) - 1,	
-	sizeof(TEXT_challenge) - 1,	
 	sizeof(TEXT_speed) - 1,	
 	sizeof(TEXT_speed) - 1,	
 	sizeof(TEXT_speed) - 1,	
@@ -709,6 +735,11 @@ const unsigned char xbgmtext1_size[] = {
 	0,	
 	sizeof(TEXT_crackdown) - 1,	
 	sizeof(TEXT_ultimate) - 1,	
+	0,
+	sizeof(TEXT_future) - 1,	
+	sizeof(TEXT_freedom) - 1,	
+	0,
+	sizeof(TEXT_ludicrous) - 1,	
 	0,
 };
 
@@ -727,7 +758,6 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_eon,
 	song_death_moon,
 	song_scheming_weasel,
-	
 	song_atthespeedoflight,
 	song_atthespeedoflight2,
 	song_atthespeedoflight3,
@@ -743,6 +773,11 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_crackdown,
 	song_ultimatedestruction,
 	song_ninox,
+	song_whats_a_future_funk,
+	song_freedom_dive,
+	song_idols,
+	song_ludicrous_speed,
+	song_windfall,	
 };
 
 

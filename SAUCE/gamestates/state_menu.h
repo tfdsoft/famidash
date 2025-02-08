@@ -47,16 +47,13 @@ const uint8_t xbgm_lookup_table[] = {
 	song_eon,
 	song_death_moon,
 	song_scheming_weasel,
-	
 	song_atthespeedoflight,
 	song_atthespeedoflight2,
 	song_atthespeedoflight3,
 	song_atthespeedoflightfull,
 	song_midnight,
-//	song_crackdown,
 	song_stalemate,
 	song_haunted_woods,
-	//song_chaozfantasy,
 	song_just_right,
 	song_against_the_odds_redux,
 	song_driving_by_night,
@@ -65,6 +62,11 @@ const uint8_t xbgm_lookup_table[] = {
 	song_crackdown,
 	song_ultimatedestruction,
 	song_ninox,
+	song_whats_a_future_funk,
+	song_freedom_dive,
+	song_idols,
+	song_ludicrous_speed,
+	song_windfall,
 };
 
 

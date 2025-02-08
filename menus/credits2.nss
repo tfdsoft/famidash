@@ -1,6 +1,6 @@
 NSTssTXT
 
-BtnTiles=0
+BtnTiles=1
 BtnChecker=0
 BtnSelTiles=0
 BtnChrBank1=1
@@ -44,8 +44,8 @@ ChkSwapBanks_Properties=1
 ChkSwapBanks_Labels=1
 VarTileViewTagBuf=0
 VarBgPalCur=3
-VarPalActive=2
-VarTileActive=233
+VarPalActive=0
+VarTileActive=225
 VarBankActive=0
 VarPPUMask=0
 VarPPUMaskSet0=0
@@ -62,13 +62,13 @@ VarNameH=30
 VarNameViewX=0
 VarNameViewY=-1
 VarNameSelectionL=-1
-VarNameSelectionR=23
+VarNameSelectionR=16
 VarNameSelectionT=-1
-VarNameSelectionB=3
-VarNameCopyW=9
-VarNameCopyH=2
-VarCHRSelectionL=9
-VarCHRSelectionR=10
+VarNameSelectionB=15
+VarNameCopyW=2
+VarNameCopyH=1
+VarCHRSelectionL=1
+VarCHRSelectionR=2
 VarCHRSelectionT=14
 VarCHRSelectionB=15
 VarCHRCopyW=1
@@ -144,7 +144,7 @@ RadioAutoexport_UseSubDir_NEXXT=0
 CheckAutoexport_MetatileAsBMP=0
 
 
-VarCHRSelected=00[e9]0100[16]
+VarCHRSelected=00[e1]0100[1e]
 
 
 Palette=110f1030110f2a391128170f110f11210f1121310f1222320f1323330f1424340f1525350f1626360f1727370f1828380f1929390f1a2a3a0f1b2b3b0f1c2c3c
@@ -162,22 +162,22 @@ CHRUndo=ff[10]00[8]ff[10]00[d]817e8100[5]7eff7eff[8]00ff[7]00[6]ff[8]00[2]ff[8]0
 CHRCopy=00[10]ff[8]00fe[7]80[7]ff7f[7]0001[7]fffe[7]0081[2]f111[2]1f00[2]7e[2]0e[3]00[3]e0f8feff[2]fef8e00060787e[2]786000[fa1]
 
 
-NameTable=fe[40]ff[3]eff2e9e7e9eee1ecff[a]e3efed[2]f5eee9f4f9ff[5]edf5f3e9e3ff[f]e3f2e5e4e9f4f3ff[5]e3f2e5e4e9f4f3ff[2a]eee5f2e4e2eff9d6d2d8ff[5]e6eff2e5f6e5f2e2eff5eee4ff[7]e1[2]f2f4d1d2d5d6ff[5]e4eaf6e9ff[10]f3f5f3[2]f9f3f9ff[5]f7e1f4e5f2e6ece1ede5ff[7]ebe1f7e1e9[2]e4e1f7eeff[5]e4ea18eee1f4e5ff[7]e3f2e1e6f4f9ffeaf5edf0e5f2ff[5]efe3f5ece1f2eee5e2f5ece1ff[a]f2e5e4e7e4ff[5]e3e1e3efece1ff[b]e2e1eee1eee1d6d0[3]ff[5]ebe5f6e9eeffede1e3ece5efe4ffe2ece1e3e5e3e1f0f4e1e9ee[2]ff[5]f3f4e5f0fff7ff[10]e4f4f0ecf3ff[5]f3e8ebff[12]f0f303ecefecff[5]ede4ebff[c]eeeff4e1f0eff4e1f4efd6d4ff[5]e4e9edf2e1e9eed4d7ff[6]e2e9e7e6eceff0[2]e1d3d8d5ff[5]eeebff[10]fae5[2]03f3e3eff4[2]ff[5]e3eff2eee1eee4e2e5e1eef3ff[6]e1e4f2ecf5e3d0d9d6ff[5]ebe1f9eff3faf8ff[a]e1f1f5e1ede1f2e9eee5ff[5]e2eff3[2]e6e9e7e8f4ff[c]f3f4f5e4f3f8ff[5]e5ece9f4e5e6e5f2[2]e5f8ff[9]e3eceff5e4d5d4ff[5]eaefe5ff[b]f3e5e1e7eceff7e9eee7f0f2efff[5]e4eae8efeee5f9e2ff[9]e5ece1eee7e5ecd3d7d8ff[5]f2e5e9ee[2]ff[9]e5ede1eef5e5ecd2d0d2d3f8e4ff[5]e6d7[3]ff[1c]ede5e7e1eee5ebefff[35]fe[40]
+NameTable=fe[40]ff[3]eff2e9e7e9eee1ecff[a]e3efed[2]f5eee9f4f9ff[5]edf5f3e9e3ff[f]e3f2e5e4e9f4f3ff[5]e3f2e5e4e9f4f3ff[2a]eee5f2e4e2eff9d6d2d8ff[5]e6eff2e5f6e5f2e2eff5eee4ff[7]e1[2]f2f4d1d2d5d6ff[5]e4eaf6e9ff[10]f3f5f3[2]f9f3f9ff[5]f7e1f4e5f2e6ece1ede5ff[7]ebe1f7e1e9[2]e4e1f7eeff[5]e4ea18eee1f4e5ff[7]e3f2e1e6f4f9ffeaf5edf0e5f2ff[5]efe3f5ece1f2eee5e2f5ece1ff[a]f2e5e4e7e4ff[5]e3e1e3efece1ff[b]e2e1eee1eee1d6d0[3]ff[5]ebe5f6e9eeffede1e3ece5efe4ffe2ece1e3e5e3e1f0f4e1e9ee[2]ff[5]f3f4e5f0fff7ff[10]e4f4f0ecf3ff[5]f3e8ebe0ede4ebe0eeebe0f8e9ff[8]f0f303ecefecff[5]f4e8e5e6e1f4f2e1f4ff[6]eeeff4e1f0eff4e1f4efd6d4ff[5]e4e9edf2e1e9eed4d7ff[6]e2e9e7e6eceff0[2]e1d3d8d5ff[5]f6e9f2f4f5e1ecfff2e9eff4ff[6]fae5[2]03f3e3eff4[2]ff[5]e3eff2eee1eee4e2e5e1eef3ff[6]e1e4f2ecf5e3d0d9d6ff[5]ebe1f9eff3faf8ff[a]e1f1f5e1ede1f2e9eee5ff[5]e2eff3[2]e6e9e7e8f4ff[c]f3f4f5e4f3f8ff[5]e5ece9f4e5e6e5f2[2]e5f8ff[9]e3eceff5e4d5d4ff[5]eaefe5ff[b]f3e5e1e7eceff7e9eee7f0f2efff[5]e4eae8efeee5f9e2ff[9]e5ece1eee7e5ecd3d7d8ff[5]f2e5e9ee[2]ff[9]e5ede1eef5e5ecd2d0d2d3f8e4ff[5]e6d7[3]ff[1c]ede5e7e1eee5ebefff[18]ece5edebf5[2]eae1ff[15]fe[40]
 
 
-NameCopy=e3efed[2]f5eee9f4f9ff[2]e3f2e5e4e9f4f3e1[2]f2f4d1d2d5d6ff[6]f3f5f3[2]f9f3f9ff[3]ebe1f7e1e9[2]e4e1f7eee3f2e1e6f4f9ffeaf5edf0e5f2ff[8]f2e5e4e7e4ff[3]e2e1eee1eee1d6d0[3]e2ece1e3e5e3e1f0f4e1e9ee[2]ff[8]e4f4f0ecf3ff[7]f0f303ecefecffeeeff4e1f0eff4e1f4efd6d4ffe2e9e7e6eceff0[2]e1d3d8d5ff[4]fae5[2]03f3e3eff4[2]ff[4]e1e4f2ecf5e3d0d9d6ff[3]e1f1f5e1ede1f2e9eee5ff[7]f3f4f5e4f3f8ff[6]e3eceff5e4d5d4f3e5e1e7eceff7e9eee7f0f2efff[3]e5ece1eee7e5ecd3d7d8ffe5ff[11]e3eceff5e4d5d4f3e5e1e7eceff7e9eee7f0f2efff[3]e5ece1eee7e5ecd3d7d8ffd7[3]ff[16]00[27b]
+NameCopy=f8e9ebe5f6e5f2e2eff5eee4f2e5e4e9f4f3e1[2]f2f4d1d2d5d6ff[6]f3f5f3[2]f9f3f9ff[3]ebe1f7e1e9[2]e4e1f7eee3f2e1e6f4f9ffeaf5edf0e5f2ff[8]f2e5e4e7e4ff[3]e2e1eee1eee1d6d0[3]e2ece1e3e5e3e1f0f4e1e9ee[2]ff[8]e4f4f0ecf3ff[7]f0f303ecefecffeeeff4e1f0eff4e1f4efd6d4ffe2e9e7e6eceff0[2]e1d3d8d5ff[4]fae5[2]03f3e3eff4[2]ff[4]e1e4f2ecf5e3d0d9d6ff[3]e1f1f5e1ede1f2e9eee5ff[7]f3f4f5e4f3f8ff[6]e3eceff5e4d5d4f3e5e1e7eceff7e9eee7f0f2efff[3]e5ece1eee7e5ecd3d7d8ffe5ff[11]e3eceff5e4d5d4f3e5e1e7eceff7e9eee7f0f2efff[3]e5ece1eee7e5ecd3d7d8ffd7[3]ff[16]00[27b]
 
 
-NameUndo=fe[40]ff[3]eff2e9e7e9eee1ecff[a]e3efed[2]f5eee9f4f9ff[5]edf5f3e9e3ff[f]e3f2e5e4e9f4f3ff[5]e3f2e5e4e9f4f3ff[2a]eee5f2e4e2eff9d6d2d8ff[5]e6eff2e5f6e5f2e2eff5eee4ff[7]e1[2]f2f4d1d2d5d6ff[5]e4eaf6e9ff[10]f3f5f3[2]f9f3f9ff[5]f7e1f4e5f2e6ece1ede5ff[7]ebe1f7e1e9[2]e4e1f7eeff[5]e4ea18eee1f4e5ff[7]e3f2e1e6f4f9ffeaf5edf0e5f2ff[5]efe3f5ece1f2eee5e2f5ece1ff[a]f2e5e4e7e4ff[5]e3e1e3efece1ff[b]e2e1eee1eee1d6d0[3]ff[5]ebe5f6e9eeffede1e3ece5efe4ffe2ece1e3e5e3e1f0f4e1e9ee[2]ff[5]f3f4e5f0fff7ff[10]e4f4f0ecf3ff[5]f3e8ebff[12]f0f303ecefecff[5]ede4ebff[c]eeeff4e1f0eff4e1f4efd6d4ff[5]e4e9edf2e1e9eed4d7ff[6]e2e9e7e6eceff0[2]e1d3d8d5ff[5]eeebff[10]fae5[2]03f3e3eff4[2]ff[5]e3eff2eee1eee4e2e5e1eef3ff[6]e1e4f2ecf5e3d0d9d6ff[5]ebe1f9eff3faf8ff[a]e1f1f5e1ede1f2e9eee5ff[5]e2eff3[2]e6e9e7e8f4ff[c]f3f4f5e4f3f8ff[5]e5ece9f4e5e6e5f2[2]e5f8ff[9]e3eceff5e4d5d4ff[5]eaefe5ff[b]f3e5e1e7eceff7e9eee7f0f2efff[5]e4eae8efeee5f9e2ff[9]e5ece1eee7e5ecd3d7d8ff[5]f2e5e9ee[2]ff[9]e5ede1eef5e5ecd2d0d2d3f8e4ff[5]e6d7[3]ff[1c]ede5e7e1eee5ebefff[35]fe[40]
+NameUndo=fe[40]ff[3]eff2e9e7e9eee1ecff[a]e3efed[2]f5eee9f4f9ff[5]edf5f3e9e3ff[f]e3f2e5e4e9f4f3ff[5]e3f2e5e4e9f4f3ff[2a]eee5f2e4e2eff9d6d2d8ff[5]e6eff2e5f6e5f2e2eff5eee4ff[7]e1[2]f2f4d1d2d5d6ff[5]e4eaf6e9ff[10]f3f5f3[2]f9f3f9ff[5]f7e1f4e5f2e6ece1ede5ff[7]ebe1f7e1e9[2]e4e1f7eeff[5]e4ea18eee1f4e5ff[7]e3f2e1e6f4f9ffeaf5edf0e5f2ff[5]efe3f5ece1f2eee5e2f5ece1ff[a]f2e5e4e7e4ff[5]e3e1e3efece1ff[b]e2e1eee1eee1d6d0[3]ff[5]ebe5f6e9eeffede1e3ece5efe4ffe2ece1e3e5e3e1f0f4e1e9ee[2]ff[5]f3f4e5f0fff7ff[10]e4f4f0ecf3ff[5]f3e8ebe0ede4ebe0eeebe0f8e9ff[8]f0f303ecefecff[5]f4e8e5e6e1f4f2e1f4ff[6]eeeff4e1f0eff4e1f4efd6d4ff[5]e4e9edf2e1e9eed4d7ff[6]e2e9e7e6eceff0[2]e1d3d8d5ff[5]f6e9f2f4f5e1ecfff2e9eff4ff[6]fae5[2]03f3e3eff4[2]ff[5]e3eff2eee1eee4e2e5e1eef3ff[6]e1e4f2ecf5e3d0d9d6ff[5]ebe1f9eff3faf8ff[a]e1f1f5e1ede1f2e9eee5ff[5]e2eff3[2]e6e9e7e8f4ff[c]f3f4f5e4f3f8ff[5]e5ece9f4e5e6e5f2[2]e5f8ff[9]e3eceff5e4d5d4ff[5]eaefe5ff[b]f3e5e1e7eceff7e9eee7f0f2efff[5]e4eae8efeee5f9e2ff[9]e5ece1eee7e5ecd3d7d8ff[5]f2e5e9ee[2]ff[9]e5ede1eef5e5ecd2d0d2d3f8e4ff[5]e6d7[3]ff[1c]ede5e7e1eee5ebefff[18]ece5edebf5[2]eaff[16]fe[40]
 
 
 AttrTable=80a0[2]00[2]a0[2]200a[2]0200[c]8000[10]1000[7]1100[f]
 
 
-AttrCopy=02[12]00[2e]
+AttrCopy=00[c]02[6]00[2e]
 
 
-AttrUndo=80a0[2]00[2]a0[2]200200[e]8000[10]1000[7]1100[f]
+AttrUndo=80a0[2]00[2]a0[2]200a[2]0200[c]8000[10]1000[7]1100[f]
 
 
 MetaSprites=ff[10000]
