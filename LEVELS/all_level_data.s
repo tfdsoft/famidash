@@ -32,7 +32,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7745
 
 
-.segment "LVL_BANK_03"	; Total bank size: 8188 bytes
+.segment "LVL_BANK_03"	; Total bank size: 8132 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -223,7 +223,7 @@
 		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5336
 
 
-.segment "LVL_BANK_0E"	; Total bank size: 8013 bytes
+.segment "LVL_BANK_0E"	; Total bank size: 8149 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -238,7 +238,7 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5217
 
 
-.segment "LVL_BANK_0F"	; Total bank size: 8192 bytes
+.segment "LVL_BANK_0F"	; Total bank size: 8134 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -264,19 +264,6 @@
 		.byte 27	; height of timemachine
 	; Level data
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3074
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 58
 
 
 .segment "LVL_BANK_10"	; Total bank size: 8066 bytes
@@ -370,7 +357,7 @@
 		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3302
 
 
-.segment "LVL_BANK_14"	; Total bank size: 7460 bytes
+.segment "LVL_BANK_14"	; Total bank size: 7736 bytes
 	.export level_data_demonpark
 	level_data_demonpark:
 	; Header
@@ -383,6 +370,19 @@
 		.byte 27	; height of demonpark
 	; Level data
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4699
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 276
 
 
 .segment "LVL_BANK_15"	; Total bank size: 8068 bytes
