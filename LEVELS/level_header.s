@@ -1,4 +1,4 @@
-test4_song_number = song_hexagon_force
+test4_song_number = song_atthespeedoflightfull
 test4_game_mode   = $00
 test4_speed       = $00
 test4_no_parallax  = 1
