@@ -85,7 +85,7 @@ aftercatabath_no_parallax = 1
 aftercatabath_bg_color    = $06
 aftercatabath_grnd_color  = $0F
 
-test4_song_number = song_hexagon_force
+test4_song_number = song_atthespeedoflightfull
 test4_game_mode   = 0
 test4_speed       = 0
 test4_no_parallax = 1

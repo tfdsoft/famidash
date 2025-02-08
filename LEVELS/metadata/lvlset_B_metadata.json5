@@ -212,7 +212,7 @@
 			sawSet: "A",
 			difficulty: "EASY",
 			stars: 0,
-			songID: "song_hexagon_force",
+			songID: "song_atthespeedoflightfull",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
