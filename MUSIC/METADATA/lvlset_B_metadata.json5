@@ -184,6 +184,29 @@
 		{
 			fmsSongName: "Ninox",
 			lowerText: "NINOX"
+		},
+		{
+			fmsSongName: "What's a Future Funk?",
+			upperText: "WHATS A",
+			lowerText: "FUTURE FUNK"
+		},
+		{
+			fmsSongName: "FREEDOM DiVE",
+			upperText: "FREEDOM",
+			lowerText: "DIVE"
+		},
+		{
+			fmsSongName: "Idols",
+			lowerText: "IDOLS"
+		},
+		{
+			fmsSongName: "Ludicrous Speed",
+			upperText: "LUDICROUS",
+			lowerText: "SPEED"
+		},
+		{
+			fmsSongName: "Windfall",
+			lowerText: "WINDFALL"
 		}
 	],
 	SFX: [
