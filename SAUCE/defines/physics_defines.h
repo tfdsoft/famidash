@@ -10,8 +10,13 @@
 #define MINI_CUBE_WIDTH 0x08
 #define MINI_CUBE_HEIGHT 0x07
 
+#if LEVELSET == 'A'
 #define WAVE_WIDTH 0x01
 #define WAVE_HEIGHT 0x01
+#else
+#define WAVE_WIDTH 0x08
+#define WAVE_HEIGHT 0x08
+#endif
 
 #define MINI_WAVE_WIDTH 0x04
 #define MINI_WAVE_HEIGHT 0x04
