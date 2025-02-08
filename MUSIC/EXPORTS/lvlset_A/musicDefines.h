@@ -8,9 +8,9 @@
 #define song_infernoplex 7
 #define song_endgame 8
 #define song_electrodynamix 9
-#define song_hexagon_force 10
+#define song_toe_2 10
 #define song_geometrical_dominator 11
-#define song_toe_2 12
+#define song_hexagon_force 12
 #define song_atthespeedoflight2 13
 #define song_death_moon 14
 #define song_stereo_madness 15
