@@ -470,7 +470,7 @@ const uint8_t xbgm_lookup_table3[] = {
 	song_infernoplex,
 	song_problematic,
 	song_stereo_madness_2,
-	song_eon,
+	
 	song_death_moon,
 	song_scheming_weasel,
 	song_the_challenge,

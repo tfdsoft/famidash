@@ -167,13 +167,6 @@ luckydraw_no_parallax  = 1
 luckydraw_bg_color    = $0F
 luckydraw_grnd_color  = $0F
 
-eon_song_number = song_eon
-eon_game_mode   = $00
-eon_speed       = $01
-eon_no_parallax  = 1
-eon_bg_color    = $0F
-eon_grnd_color  = $0F
-
 thelightningroad_song_number = song_dry_out
 thelightningroad_game_mode   = $00
 thelightningroad_speed       = $00
