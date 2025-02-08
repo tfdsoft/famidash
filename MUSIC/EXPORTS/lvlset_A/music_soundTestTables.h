@@ -46,18 +46,17 @@ const char musicSoundTestString26[ 6] = "RETRAY";
 const char musicSoundTestString27[11] = "INFERNOPLEX";
 const char musicSoundTestString28[11] = "PROBLEMATIC";
 const char musicSoundTestString29[ 9] = "MADNESS$2";
-const char musicSoundTestString2A[ 3] = "EON";
-const char musicSoundTestString2B[10] = "DEATH$MOON";
-const char musicSoundTestString2C[ 6] = "WEASEL";
-const char musicSoundTestString2D[ 9] = "CHALLENGE";
-const char musicSoundTestString2E[ 8] = "OF$LIGHT";
-const char musicSoundTestString2F[13] = "OF$LIGHT$PT$2";
-const char musicSoundTestString30[ 8] = "MIDNIGHT";
-const char musicSoundTestString31[ 9] = "STALEMATE";
-const char musicSoundTestString32[13] = "HAUNTED$WOODS";
-const char musicSoundTestString33[10] = "JUST$RIGHT";
-const char musicSoundTestString34[14] = "THE$ODDS$REDUX";
-const char musicSoundTestString35[ 5] = "NIGHT";
+const char musicSoundTestString2A[10] = "DEATH$MOON";
+const char musicSoundTestString2B[ 6] = "WEASEL";
+const char musicSoundTestString2C[ 9] = "CHALLENGE";
+const char musicSoundTestString2D[ 8] = "OF$LIGHT";
+const char musicSoundTestString2E[13] = "OF$LIGHT$PT$2";
+const char musicSoundTestString2F[ 8] = "MIDNIGHT";
+const char musicSoundTestString30[ 9] = "STALEMATE";
+const char musicSoundTestString31[13] = "HAUNTED$WOODS";
+const char musicSoundTestString32[10] = "JUST$RIGHT";
+const char musicSoundTestString33[14] = "THE$ODDS$REDUX";
+const char musicSoundTestString34[ 5] = "NIGHT";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -90,7 +89,6 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
 	musicSoundTestString00,
-	NULL,
 	NULL,
 	musicSoundTestString08,
 	musicSoundTestString09,
@@ -134,7 +132,6 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
 	sizeof(musicSoundTestString00),
-	0,
 	0,
 	sizeof(musicSoundTestString08),
 	sizeof(musicSoundTestString09),
@@ -190,7 +187,6 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString32,
 	musicSoundTestString33,
 	musicSoundTestString34,
-	musicSoundTestString35,
 };
 
 const uint8_t xbgmtextsLowerSize[] = {
@@ -234,7 +230,6 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString32),
 	sizeof(musicSoundTestString33),
 	sizeof(musicSoundTestString34),
-	sizeof(musicSoundTestString35),
 };
 
 #else
@@ -282,7 +277,6 @@ const uint8_t xbgmlookuptable[] = {
 	song_infernoplex,
 	song_problematic,
 	song_stereo_madness_2,
-	song_eon,
 	song_death_moon,
 	song_scheming_weasel,
 	song_the_challenge,
@@ -327,7 +321,6 @@ const uint8_t xbgmlookuptable[] = {
 	song_infernoplex,
 	song_problematic,
 	song_stereo_madness_2,
-	song_eon,
 	song_death_moon,
 	song_the_challenge,
 	song_atthespeedoflight,

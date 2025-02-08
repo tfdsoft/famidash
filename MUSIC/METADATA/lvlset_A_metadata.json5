@@ -302,11 +302,6 @@
 			vsSystemEnabled: true
 		},
 		{
-			fmsSongName: "eon",
-			lowerText: "EON",
-			vsSystemEnabled: true
-		},
-		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
 			vsSystemEnabled: true
