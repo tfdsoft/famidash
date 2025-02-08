@@ -82,7 +82,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7517
 
 
-.segment "LVL_BANK_06"	; Total bank size: 8180 bytes
+.segment "LVL_BANK_06"	; Total bank size: 8179 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -97,7 +97,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7048
 
 
-.segment "LVL_BANK_07"	; Total bank size: 7887 bytes
+.segment "LVL_BANK_07"	; Total bank size: 8148 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -110,6 +110,19 @@
 		.byte 27	; height of aftermath
 	; Level data
 		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6806
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 261
 
 
 .segment "LVL_BANK_09"	; Total bank size: 6460 bytes
@@ -162,7 +175,7 @@
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
 
 
-.segment "LVL_BANK_0D"	; Total bank size: 8172 bytes
+.segment "LVL_BANK_0D"	; Total bank size: 8058 bytes
 	.export level_data_aftercatabath_3
 	level_data_aftercatabath_3:
 	; Level data
@@ -180,19 +193,6 @@
 		.byte 27	; height of supercycles
 	; Level data
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 58
 
 
 .segment "LVL_BANK_0F"	; Total bank size: 8138 bytes
