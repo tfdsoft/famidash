@@ -56,38 +56,13 @@ void x_movement_coll() {
   
 }
 
-uint16_t get_speed(){
-	static void * const speed_table [] = {
-		&&spd_10,	&&spd_05,	&&spd_20,	&&spd_30,	&&spd_40,	&&spd_slow
-	};
-	goto *speed_table[speed];
-
-	spd_10:
-		return CUBE_SPEED_X1(framerate);
-
-	spd_05:
-		return CUBE_SPEED_X05(framerate);
-
-	spd_20:
-		return CUBE_SPEED_X2(framerate);
-
-	spd_30:
-		return CUBE_SPEED_X3(framerate);
-
-	spd_40:
-		return CUBE_SPEED_X4(framerate);
-
-	spd_slow:
-		return CUBE_SPEED_SLOW(framerate);
-}
-
 void x_movement(){
   mmc3_set_prg_bank_1(GET_BANK(bg_coll_R));
     // handle x
 
 	old_x = currplayer_x;
 	
-	currplayer_vel_x = get_speed();
+	currplayer_vel_x = ind16_load_NOC(CUBE_SPEED(framerate), speed);
 	
 //	if (controllingplayer->hold & PAD_LEFT) currplayer_vel_x = 0;
 	

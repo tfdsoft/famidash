@@ -302,3 +302,18 @@ uint8_t name##_ex[size]
 	__AX__ = value, \
 	__asm__("sta %v, y \n txa \n sta %v, y", arr##_hi, arr##_ex) \
 	)
+
+/*
+	Faster indirect indexing because cc65 is *that* stupid
+	by alexmush, 2025
+*/
+
+#define ind16_load_NOC(ptr, idx2) (\
+	__AX__ = (uintptr_t)ptr, \
+	__asm__("sta ptr1 \n stx ptr1+1"), \
+	__A__ = idx2 << 1, \
+	__asm__("tay \n iny"), \
+	__asm__("lda (ptr1), y \n tax"), \
+	__asm__("dey \n lda (ptr1), y"), \
+	__AX__)
+

@@ -17,49 +17,11 @@ const uint8_t WAVE_HEIGHT[] = {0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08};
 #define WAVE_HEIGHT(table_idx) WAVE_HEIGHT[table_idx]
 
 // Depends on framerate
-const uint8_t CUBE_SPEED_SLOW_lo[] = {0xB7, 0x6D};
-#define CUBE_SPEED_SLOW_hi 0x01
-#define CUBE_SPEED_SLOW(framerate) ( \
-	__A__ = framerate, \
-	__asm__("tay"), \
-	__asm__("ldx #%b \n lda %v, y", CUBE_SPEED_SLOW_hi, CUBE_SPEED_SLOW_lo), \
-	__AX__ \
-)
+const uint16_t CUBE_SPEED_50[] = {0x0352, 0x02AD, 0x0421, 0x04FD, 0x0623, 0x01B7};
+const uint16_t CUBE_SPEED_60[] = {0x02C3, 0x023A, 0x036F, 0x0427, 0x051C, 0x016D};
 
-// Depends on framerate
-const uint8_t CUBE_SPEED_X05_lo[] = {0xAD, 0x3A};
-#define CUBE_SPEED_X05_hi 0x02
-#define CUBE_SPEED_X05(framerate) ( \
-	__A__ = framerate, \
-	__asm__("tay"), \
-	__asm__("ldx #%b \n lda %v, y", CUBE_SPEED_X05_hi, CUBE_SPEED_X05_lo), \
-	__AX__ \
-)
-
-// Depends on framerate
-const uint8_t CUBE_SPEED_X1_lo[] = {0x52, 0xC3};
-const uint8_t CUBE_SPEED_X1_hi[] = {0x03, 0x02};
-#define CUBE_SPEED_X1(framerate) (lohi_arr16_load(CUBE_SPEED_X1, framerate))
-
-// Depends on framerate
-const uint8_t CUBE_SPEED_X2_lo[] = {0x21, 0x6F};
-const uint8_t CUBE_SPEED_X2_hi[] = {0x04, 0x03};
-#define CUBE_SPEED_X2(framerate) (lohi_arr16_load(CUBE_SPEED_X2, framerate))
-
-// Depends on framerate
-const uint8_t CUBE_SPEED_X3_lo[] = {0xFD, 0x27};
-#define CUBE_SPEED_X3_hi 0x04
-#define CUBE_SPEED_X3(framerate) ( \
-	__A__ = framerate, \
-	__asm__("tay"), \
-	__asm__("ldx #%b \n lda %v, y", CUBE_SPEED_X3_hi, CUBE_SPEED_X3_lo), \
-	__AX__ \
-)
-
-// Depends on framerate
-const uint8_t CUBE_SPEED_X4_lo[] = {0x23, 0x1C};
-const uint8_t CUBE_SPEED_X4_hi[] = {0x06, 0x05};
-#define CUBE_SPEED_X4(framerate) (lohi_arr16_load(CUBE_SPEED_X4, framerate))
+const uint16_t * const CUBE_SPEED[] = {CUBE_SPEED_50, CUBE_SPEED_60};
+#define CUBE_SPEED(framerate) CUBE_SPEED[framerate & 0x7F]
 
 #pragma rodata-name("XCD_BANK_01")
 
