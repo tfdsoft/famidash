@@ -3,13 +3,13 @@
 
 A demake of Geometry Dash for the NES using the MMC3 mapper.
 
-## development builds
+## Nightly Builds
 
-You can find nightly dev builds in the Actions tab. Alternatively you can download them [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.nes.zip).
+You can find nightly builds [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.nes.zip).
 
-You can find the B-Sides branch here: https://github.com/tfdsoft/famidash/tree/Famidash-b-sides
+You can find the B-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/Famidash-b-sides/famidash.nes.zip).
 
-You can find the VS branch here: https://github.com/tfdsoft/famidash/tree/vs-famidash-again
+You can find the VS branch nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/vs-famidash-again/famidash.nes.zip).
 
 ## contributing
 
