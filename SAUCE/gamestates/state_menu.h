@@ -817,10 +817,22 @@ void state_menu() {
  	ppu_on_all();
 	joypad1.press = 0;
 	pal_fade_to_withmusic(0,4);
+
 	tmp4 = menuselection; ++tmp4;
 	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-	one_vram_buffer('a', tmp5);
-	one_vram_buffer('b', addloNOC(tmp5, 1));
+	if (menuselection != 5) {
+		one_vram_buffer('a', tmp5);
+		one_vram_buffer('b', addloNOC(tmp5, 1));
+		one_vram_buffer(' ', NTADR_A(26, 2));
+		one_vram_buffer(' ', NTADR_A(26, 3));
+		
+	}
+	else {
+		one_vram_buffer(0x6F, NTADR_A(26, 2));
+		one_vram_buffer(0x7F, NTADR_A(26, 3));
+		
+	}	
+
 	roll_new_mode();
 	kandoframecnt = 0;
 	teleport_output = 0Xff;
