@@ -688,7 +688,7 @@ char bg_coll_slope() {
 	col_end:
 
 	// 0 is col_UP | 1 is col_DOWN
-	if ((!high_byte(tmp6)) ? (currplayer_slope_type & SLOPE_UPSIDEDOWN) : !(currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
+	if ((!tmpB) ? (currplayer_slope_type & SLOPE_UPSIDEDOWN) : !(currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
 		if ((uint8_t)(tmp4) >= tmp7) {
 				tmp8 = tmp4 - tmp7;
 
@@ -875,7 +875,7 @@ char bg_coll_U() {
 
 		tmp2 = 0;
 		low_byte(tmp3) = 0;
-		high_byte(tmp6) = 0;
+		tmpB = 0;
 		do {
 			bg_collision_sub(); // do again but this time in the center of the cube
 
@@ -932,7 +932,7 @@ char bg_coll_D() {
 
 		tmp2 = 0;
 		low_byte(tmp3) = 0;
-		high_byte(tmp6) = 1;
+		tmpB = 1;
 		do {
 			bg_collision_sub(); // do again but this time in the center of the cube
 			

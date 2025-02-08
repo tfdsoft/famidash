@@ -357,7 +357,7 @@
 		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3302
 
 
-.segment "LVL_BANK_14"	; Total bank size: 7736 bytes
+.segment "LVL_BANK_14"	; Total bank size: 7460 bytes
 	.export level_data_demonpark
 	level_data_demonpark:
 	; Header
@@ -370,19 +370,6 @@
 		.byte 27	; height of demonpark
 	; Level data
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4699
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 276
 
 
 .segment "LVL_BANK_15"	; Total bank size: 8068 bytes
@@ -557,7 +544,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
 
 
-.segment "LVL_BANK_1D"	; Total bank size: 7930 bytes
+.segment "LVL_BANK_1D"	; Total bank size: 8191 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -570,6 +557,19 @@
 		.byte 27	; height of jumper
 	; Level data
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1876
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 261
 
 
 .segment "LVL_BANK_1E"	; Total bank size: 8185 bytes
