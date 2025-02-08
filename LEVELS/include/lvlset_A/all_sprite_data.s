@@ -3662,7 +3662,7 @@ sprite_data_electroman:
   .byte $c0,$36,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_09"
+.segment "DAT_BANK_0A"
 sprite_data_clubstep:
   .byte $50,$00,$60,$03,$86
   .byte $80,$00,$30,$03,$38
@@ -8402,7 +8402,7 @@ sprite_data_dreamer:
   .byte $a0,$42,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0A"
+.segment "DAT_BANK_09"
 sprite_data_lookatthislevel:
   .byte $00,$00,$88,$03,$56
   .byte $10,$00,$f0,$02,$0e
