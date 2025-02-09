@@ -16,10 +16,12 @@ const uint8_t WAVE_WIDTH[] = {0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08};
 const uint8_t WAVE_HEIGHT[] = {0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08};
 #define WAVE_HEIGHT(table_idx) WAVE_HEIGHT[table_idx]
 
-// Depends on framerate
-const uint16_t CUBE_SPEED_50[] = {0x0352, 0x02AD, 0x0421, 0x04FD, 0x0623, 0x01B7};
-const uint16_t CUBE_SPEED_60[] = {0x02C3, 0x023A, 0x036F, 0x0427, 0x051C, 0x016D};
+// These tables have been generated in big-endian.
+// Use the corresponding macros to fetch data.
+const uint16_t CUBE_SPEED_50[] = {0x5203, 0xAD02, 0x2104, 0xFD04, 0x2306, 0xB701};
+const uint16_t CUBE_SPEED_60[] = {0xC302, 0x3A02, 0x6F03, 0x2704, 0x1C05, 0x6D01};
 
+// Depends on framerate
 const uint16_t * const CUBE_SPEED[] = {CUBE_SPEED_50, CUBE_SPEED_60};
 #define CUBE_SPEED(framerate) CUBE_SPEED[framerate & 0x7F]
 
