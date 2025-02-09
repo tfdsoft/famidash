@@ -8,8 +8,9 @@ optionalFlagRegex = \
 		for marker, name, data in [
 			("sz", "size", r".*"),
 			("pw", "power", r"-?\d+"),
-			("table", "table", None),
-			("uninum", "unifiedNumber", None)
+			("tbl", "table", None),
+			("uninum", "unifiedNumber", None),
+			("be", "bigEndian", None)
 	]) + ")"
 optionalFlagsRegex = f"(?:{optionalFlagRegex}[ \t]+)*"
 
@@ -148,9 +149,9 @@ def generateOptimizedNumArray(source : dict, flags : dict, value) -> tuple:
 
 	return (numTable, comment, argument)
 
-def generateCTable(source : dict, numTable : tuple, argument : str, comment : str, size : int, name : str, unifiedNumber : bool, bracketsDefine : bool = True) -> str:
+def generateCTable(source : dict, numTable : tuple, argument : str, comment : str, size : int, name : str, unifiedNumber : bool, standalone : bool = True) -> str:
 	if (size == 8):
-		return (comment + '\n' if comment else '') + f'const uint8_t {name}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};' + (f'\n#define {name}({argument}) {name}[{argument}]' if bracketsDefine else '')
+		return (comment + '\n' if comment else '') + f'const uint8_t {name}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};' + (f'\n#define {name}({argument}) {name}[{argument}]' if standalone else '')
 	elif (size >= 16 and size <= 32):
 		if not unifiedNumber:
 			outString = []
@@ -176,12 +177,17 @@ def generateCTable(source : dict, numTable : tuple, argument : str, comment : st
 			return "\n".join(outString)
 
 		else:
-			if (size > 16 and size <= 32):
-				size = 32
-
 			fmt = lambda x : f'0x{x:04X}' if size == 16 else f'0x{x:08X}'
 
-			return (comment + '\n' if comment else '') + f'const uint{size}_t {name}[] = {{{", ".join(fmt(i) for i in numTable)}}};' + (f'\n#define {name}({argument}) {name}[{argument}]' if bracketsDefine else '')
+			if source['bigEndian']:
+				inv = lambda x : ((getByte(x, 0) << 8) | getByte(x, 1)) if size == 16 else ((getByte(x, 0) << 24) | (getByte(x, 1) << 16) | (getByte(x, 2) << 8) | getByte(x, 3))
+			else:
+				inv = lambda x : x
+
+			return (comment + '\n' if comment else '') + \
+				('// These tables have been generated in big-endian.\n// Use the corresponding macros to fetch data.\n' if source['bigEndian'] and standalone else '') + \
+				f'const uint{size}_t {name}[] = {{{", ".join(fmt(inv(i)) for i in numTable)}}};' + \
+				(f'\n#define {name}({argument}) {name}[{argument}]' if standalone else '')
 	print(f"Table integer size {size} is invalid! Full table: {numTable}, happened with {source}")
 
 	return f""
@@ -251,14 +257,18 @@ def processCTableCommand(source : dict) -> str:
 
 		output = []
 
-		if comment:
-			output.append(comment)
+		if source['bigEndian']:
+			output.append("// These tables have been generated in big-endian.")
+			output.append("// Use the corresponding macros to fetch data.")
 
 		for	idx, name in enumerate(names):
 			output.append(generateCTable(source, numTable[idx], "idx", None, size, name, source['unifiedNumber'] != None, False))
 
 		# Next, generate the table of tables
 		output.append("")
+
+		if comment:
+			output.append(comment)
 
 		output.append(f"const uint{size}_t * const {source['name']}[] = {{{', '.join(names)}}};")
 		output.append(f"#define {source['name']}({argument}) {source['name']}[{argument} & 0x7F]")
