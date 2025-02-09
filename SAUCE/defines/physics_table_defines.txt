@@ -7,13 +7,17 @@
 #		int: The values are stored as integer values, size determined automatically or defined later
 #		fxp[X]: The values are stored as inf.X bit fixed point values
 #	Optional settings:
-#		have the form {marker}={value}
+#		have the form {marker}={value} or {marker}
 #		sz: Forced size of the variable in bits
 #		pw: Power of the framerate to multiply the value with
 #			(examples: 	1 if the value is in s (duration),
 #						-1 if the value is in 1/s (velocity), 
 #						-2 if the value is in 1/(s^2) (acceleration))
 #			If not specified the value doesn't depend on the framerate
+#		tbl: Compiles the following numbers into a table per setting, and then a table of tables
+#		uninum: Numbers are stored as one array of uint8/16/32_t as opposed to hi/lo arrays
+#			This way is faster when using tables (only one pointer to load as opposed to multiple)
+#		be: When using uninum, numbers are stored in big-endian order as opposed to little-endian
 #	Flags:
 #		g - The values are flipped when gravity is reversed
 #		m - 2 values are defined - one for normal and one for mini
@@ -31,7 +35,7 @@ int [m] CUBE_HEIGHT 0x0F 0x07
 int [] WAVE_WIDTH 0x08
 int [] WAVE_HEIGHT 0x08
 
-fxp8 table uninum pw=-1 [] CUBE_SPEED {
+fxp8 tbl uninum be pw=-1 [] CUBE_SPEED {
 	166.0181582 133.8912134 206.4516129 249.5126706 306.9544365 85.78125 # 1, .5, 2, 3, 4, Slow
 }
 

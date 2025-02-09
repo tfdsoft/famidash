@@ -314,6 +314,44 @@ uint8_t name##_ex[size]
 	__A__ = idx2 << 1, \
 	__asm__("tay \n iny"), \
 	__asm__("lda (ptr1), y \n tax"), \
-	__asm__("dey \n lda (ptr1), y"), \
+	__asm__("dey"), \
+	__asm__("lda (ptr1), y"), \
 	__AX__)
 
+#define ind16BE_load_NOC(ptr, idx2) (\
+	__AX__ = (uintptr_t)ptr, \
+	__asm__("sta ptr1 \n stx ptr1+1"), \
+	__A__ = idx2 << 1, \
+	__asm__("tay"), \
+	__asm__("lda (ptr1), y \n tax"), \
+	__asm__("iny"), \
+	__asm__("lda (ptr1), y"), \
+	__AX__)
+
+#define ind32_load_NOC(ptr, idx2) (\
+	__AX__ = (uintptr_t)ptr, \
+	__asm__("sta ptr1 \n stx ptr1+1"), \
+	__A__ = idx2 << 2, \
+	__asm__("ora #$03 \n tay"), \
+	__asm__("lda (ptr1), y \n sta sreg+1"), \
+	__asm__("dey"), \
+	__asm__("lda (ptr1), y \n sta sreg"), \
+	__asm__("dey"), \
+	__asm__("lda (ptr1), y \n tax"), \
+	__asm__("dey"), \
+	__asm__("lda (ptr1), y"), \
+	__EAX__)
+
+#define ind32BE_load_NOC(ptr, idx2) (\
+	__AX__ = (uintptr_t)ptr, \
+	__asm__("sta ptr1 \n stx ptr1+1"), \
+	__A__ = idx2 << 2, \
+	__asm__("tay"), \
+	__asm__("lda (ptr1), y \n sta sreg+1"), \
+	__asm__("iny"), \
+	__asm__("lda (ptr1), y \n sta sreg"), \
+	__asm__("iny"), \
+	__asm__("lda (ptr1), y \n tax"), \
+	__asm__("iny"), \
+	__asm__("lda (ptr1), y"), \
+	__EAX__)
