@@ -686,51 +686,47 @@ char bg_coll_slope() {
 		currplayer_slope_type = SLOPE_66DEG_DOWN_UD;
 	
 	col_end:
+	if ((uint8_t)(tmp4) >= tmp7) {
+			tmp8 = tmp4 - tmp7;
 
-	// 0 is col_UP | 1 is col_DOWN
-	if ((!high_byte(tmp6)) ? (currplayer_slope_type & SLOPE_UPSIDEDOWN) : !(currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
-		if ((uint8_t)(tmp4) >= tmp7) {
-				tmp8 = tmp4 - tmp7;
-
-				if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT) {
-					if ((controllingplayer->a || controllingplayer->up)) {
-						make_cube_jump_higher = 1;
-						
-					} else {
-						currplayer_slope_frames = 1; //signal BG_COLL_R to not check stuff
-						currplayer_was_on_slope_counter = 3;
-					}
+			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT) {
+				if ((controllingplayer->a || controllingplayer->up)) {
+					make_cube_jump_higher = 1;
+					
 				} else {
-					tmp4 = 0;
-					if (currplayer_slope_type & SLOPE_RISING) {
-						tmp4 |= 0b100;
-					}
-					if (currplayer_slope_type & SLOPE_UPSIDEDOWN) {
-						tmp4 |= 0b010;
-					}
-					if (currplayer_gravity) {
-						tmp4 |= 0b001;
-					}
-
-					if (a_check_lookup[tmp4]) {
-						if (controllingplayer->a || controllingplayer->up) {
-							unstick();
-						}
-					} else {
-						if (!(controllingplayer->a || controllingplayer->up)) {
-							unstick();
-						}
-					}	
-
 					currplayer_slope_frames = 1; //signal BG_COLL_R to not check stuff
 					currplayer_was_on_slope_counter = 3;
 				}
-				
-				return 1;
-		} else if (!currplayer_was_on_slope_counter) {
-				currplayer_slope_type = 0;
-				tmp8 = 0;
-		}
+			} else {
+				tmp4 = 0;
+				if (currplayer_slope_type & SLOPE_RISING) {
+					tmp4 |= 0b100;
+				}
+				if (currplayer_slope_type & SLOPE_UPSIDEDOWN) {
+					tmp4 |= 0b010;
+				}
+				if (currplayer_gravity) {
+					tmp4 |= 0b001;
+				}
+
+				if (a_check_lookup[tmp4]) {
+					if (controllingplayer->a || controllingplayer->up) {
+						unstick();
+					}
+				} else {
+					if (!(controllingplayer->a || controllingplayer->up)) {
+						unstick();
+					}
+				}	
+
+				currplayer_slope_frames = 1; //signal BG_COLL_R to not check stuff
+				currplayer_was_on_slope_counter = 3;
+			}
+			
+			return 1;
+	} else if (!currplayer_was_on_slope_counter) {
+			currplayer_slope_type = 0;
+			tmp8 = 0;
 	}
 	
 	return 0;
@@ -875,7 +871,6 @@ char bg_coll_U() {
 
 		tmp2 = 0;
 		low_byte(tmp3) = 0;
-		high_byte(tmp6) = 0;
 		do {
 			bg_collision_sub(); // do again but this time in the center of the cube
 
@@ -932,7 +927,6 @@ char bg_coll_D() {
 
 		tmp2 = 0;
 		low_byte(tmp3) = 0;
-		high_byte(tmp6) = 1;
 		do {
 			bg_collision_sub(); // do again but this time in the center of the cube
 			
