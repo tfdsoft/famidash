@@ -23,9 +23,9 @@ function Main()
 
   genericaddr = emu.getLabelAddress("_Generic")
   
-  playerminiaddr = emu.getLabelAddress("_mini")
+  playerminiaddr = emu.getLabelAddress("_player_mini")
 
-  gamemodeaddr = emu.getLabelAddress("_mini")
+  gamemodeaddr = emu.getLabelAddress("_player_mini")
 
   player_x = emu.read(playerxaddr.address + 1, playerxaddr.memType, false)
   player_y = emu.read(playeryaddr.address + 1, playeryaddr.memType, false)
