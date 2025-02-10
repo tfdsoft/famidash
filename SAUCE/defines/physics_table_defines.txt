@@ -18,6 +18,7 @@
 #		uninum: Numbers are stored as one array of uint8/16/32_t as opposed to hi/lo arrays
 #			This way is faster when using tables (only one pointer to load as opposed to multiple)
 #		be: When using uninum, numbers are stored in big-endian order as opposed to little-endian
+#		ef: Values are defined as absolute values (not assuming that the NTSC framerate is exactly 60Hz)
 #	Flags:
 #		g - The values are flipped when gravity is reversed
 #		m - 2 values are defined - one for normal and one for mini

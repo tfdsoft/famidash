@@ -10,7 +10,8 @@ optionalFlagRegex = \
 			("pw", "power", r"-?\d+"),
 			("tbl", "table", None),
 			("uninum", "unifiedNumber", None),
-			("be", "bigEndian", None)
+			("be", "bigEndian", None),
+			("ef", "exactFramerate", None)
 	]) + ")"
 optionalFlagsRegex = f"(?:{optionalFlagRegex}[ \t]+)*"
 
@@ -19,7 +20,7 @@ lineParseRegex = re.compile(r'^[\t ]*(?!#|$)' +
 		r'(?P<type>(?:int)|(?:fxp\w+))[\t ]+' + 
 			optionalFlagsRegex +
 			r'?\[(?P<flags>\w*)\][\t ]+(?P<name>\w+)[\t ]+' +
-			r'(?:{(?s:(?P<mltLnValue>.*))}.*|(?P<value>.*))',
+			r'(?:{(?s:(?P<mltLnValue>.*?))}.*|(?P<value>.*))',
 		
 		r'(?P<segCmd>segment)[\t ]+(?P<segVal>\w+)'
 	]) + '$', re.MULTILINE)		# matches each command
@@ -39,9 +40,20 @@ def bytesEqual(arr, idx : int) -> bool:
 NTSC_FRAMERATE = (236250000 / 11) / 4 / 89341.5
 PAL_FRAMERATE = (26601712.5) / 5 / 106392
 
+NTSC_FRAMERATE_APPROX = 60
+# defines PAL rate as the same ratio as real PAL / NTSC, but assuming that NTSC is 60Hz
+PAL_FRAMERATE_APPROX = (26601712.5) / 5 / 106392 * (60 / ((236250000 / 11) / 4 / 89341.5))
+
 def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> list:
 	if not maxNum:
 		maxNum = num
+
+	if source['exactFramerate']:
+		ntsc = NTSC_FRAMERATE
+		pal = PAL_FRAMERATE
+	else:
+		ntsc = NTSC_FRAMERATE_APPROX
+		pal = PAL_FRAMERATE_APPROX
 
 	if re.match(fxpRegex, source['type']):
 		num *= 2 ** int(re.match(fxpRegex, source['type'])['fracBits'])	# Convert to fixed point
@@ -51,12 +63,15 @@ def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> li
 		ntscVal = palVal = num
 		maxVal = maxNum
 	else:
-		ntscVal = num * NTSC_FRAMERATE ** int(source['power'])
-		palVal = num * PAL_FRAMERATE ** int(source['power'])
+		ntscVal = num * ntsc ** int(source['power'])
+		palVal = num * pal ** int(source['power'])
 		if int(source['power']) < 0:	# Division
-			maxVal = maxNum * PAL_FRAMERATE ** int(source['power'])		# Maximum result of division
+			maxVal = maxNum * pal ** int(source['power'])	# Maximum result of division
 		elif int(source['power']) > 0:	# Multiplication
-			maxVal = maxNum * NTSC_FRAMERATE ** int(source['power'])	# Maximum result of division
+			maxVal = maxNum * ntsc ** int(source['power'])	# Maximum result of division
+
+	if maxNum == 0:
+		return [[0, 0], [0, 0]]
 
 	if source['size']:
 		maxVal = 2 ** int(source['size'])
