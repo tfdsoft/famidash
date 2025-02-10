@@ -424,48 +424,24 @@ void common_dash_orb_routine() {
 #define ylw_smaller 0x07 << 3
 #define red_pad     0x08 << 3
 
-const short heights[] = {
-//	cube    ship    ball     ufo    robot   spider  wave    swing
-	0x590,  0x450,  0x410,  0x3B0,  0x590,  0x440,  0x000,  0x3A0, // yellow orb
-	0x7C0,  0x3C0,  0x4F0,  0x330,  0x8B0,  0x500,  0x000,  0x450, // yellow pad
-	0x3D0,  0x200,  0x330,  0x220,  0x450,  0x350,  0x000,  0x2D0, // pink orb
-	0x510,  0x270,  0x360,  0x250,  0x550,  0x350,  0x000,  0x360, // pink pad
-	0x750,  0x5D0,  0x550,  0x510,  0x750,  0x500,  0x000,  0x4D0, // red orb
-	0x590,  0x590,  0x5D0,  0x590,  0x590,  0x590,  0x000,  0x5D0, // yellow orb bigger
-   -0x990, -0x990, -0x970, -0x990, -0x990, -0x990,  0x000, -0x970, // black orb
-	0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000,  0x472, // yellow orb smaller
-	0x9F0,  0x620,  0x630,  0x400,  0xA50,  0x690,  0x000,  0x660, // red pad		
-};
-
-const short mini_heights[] = {
-//	cube    ship    ball     ufo    robot   spider  wave    swing
-	0x4D0,  0x4A0,  0x450,  0x3D0,  0x470,  0x350,  0x000,  0x2A0, // yellow orb
-	0x680,  0x430,  0x4D0,  0x3A0,  0x730,  0x400,  0x000,  0x340, // yellow pad
-	0x350,  0x1E0,  0x350,  0x1B0,  0x370,  0x230,  0x000,  0x1F0, // pink orb
-	0x3F0,  0x1E0,  0x390,  0x150,  0x350,  0x350,  0x000,  0x220, // pink pad
-	0x650,  0x670,  0x500,  0x550,  0x650,  0x470,  0x000,  0x350, // red orb
-	0x590,  0x590,  0x560,  0x590,  0x590,  0x590,  0x000,  0x560, // yellow orb bigger
-   -0x990, -0x990, -0x970, -0x990, -0x990, -0x990,  0x000, -0x970, // black orb
-	0x540,  0x540,  0x472,  0x4B0,  0x770,  0x4B0,  0x000,  0x472, // yellow orb smaller
-	0x830,  0x6C0,  0x5B0,  0x550,  0x8D0,  0x550,  0x000,  0x3A0, // red pad	
-};
-
 #define table_offset tmp3
 #define collided tmp4
 
+#pragma data-name(push, "XCD_BANK_06")
+#pragma rodata-name(push, "XCD_BANK_06")
+#pragma code-name(push, "XCD_BANK_06")
+
 // Load the player velocity from the height table
-static uint16_t sprite_gamemode_y_adjust() {
-	if (!retro_mode) __A__ = (gamemode | table_offset) << 1;
-	else if (retro_mode && gamemode == GAMEMODE_ROBOT) __A__ = (0 | table_offset) << 1;
-	else __A__ = (gamemode | table_offset) << 1;
-	__asm__("tay");
-	if (currplayer_mini) {
-		__AX__ = (__asm__ ("lda %v,y", mini_heights), __asm__ ("ldx %v+1,y", mini_heights),__AX__);
-	} else {
-		__AX__ = (__asm__ ("lda %v,y", heights),__asm__ ("ldx %v+1,y", heights),__AX__);
-	}
-	do_if_bit7_clr_mem(currplayer_gravity, {__AX__ ^= 0xffff; __AX__ += 1;});
-	return __AX__;
+static uint16_t _sprite_gamemode_y_adjust() {
+	return ind16BE_load_NOC(sprite_gamemode_adjust_heights(currplayer_table_idx), (retro_mode && gamemode == GAMEMODE_ROBOT) ? table_offset : gamemode | table_offset);
+}
+
+#pragma code-name(pop)
+#pragma rodata-name(pop)
+#pragma data-name(pop)
+
+static uint16_t sprite_gamemode_y_adjust() {	// A trampoline of sorts
+	return crossPRGBankJump0(_sprite_gamemode_y_adjust);
 }
 
 static void sprite_gamemode_main() {
@@ -480,22 +456,22 @@ static void sprite_gamemode_main() {
 			switch (collided) {
 			case BLUE_ORB:
 				if (!activesprites_activated[index]) {
-				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
-				update_currplayer_table_idx();
-				dual_cap_check();
-				if (gamemode != BALL_MODE) {
-					currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
-				} else {
-					currplayer_vel_y = (!currplayer_gravity) ? -ORB_BALL_HEIGHT_BLUE : ORB_BALL_HEIGHT_BLUE;
-				}
+					invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+					update_currplayer_table_idx();
+					dual_cap_check();
+					if (gamemode != BALL_MODE) {
+						currplayer_vel_y = PAD_HEIGHT_BLUE(currplayer_table_idx);
+					} else {
+						currplayer_vel_y = ORB_BALL_HEIGHT_BLUE(currplayer_table_idx);
+					}
 				}
 				break;
 			case GREEN_ORB:
 				if (!activesprites_activated[index]) {
-				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
-				update_currplayer_table_idx();
-				dual_cap_check();
-				currplayer_vel_y = sprite_gamemode_y_adjust();
+					invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
+					update_currplayer_table_idx();
+					dual_cap_check();
+					currplayer_vel_y = sprite_gamemode_y_adjust();
 				}
 				break;
 			case DASH_GRAVITY_ORB:
@@ -564,10 +540,11 @@ static void sprite_gamemode_controller_check() {
 				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
 				update_currplayer_table_idx();
 				dual_cap_check();
+				// INTENTIONALLY do this after changing gravity
 				if (gamemode != BALL_MODE) {
-					currplayer_vel_y = (!currplayer_gravity) ? -PAD_HEIGHT_BLUE : PAD_HEIGHT_BLUE;
+					currplayer_vel_y = PAD_HEIGHT_BLUE(currplayer_table_idx);
 				} else {
-					currplayer_vel_y = (!currplayer_gravity) ? -ORB_BALL_HEIGHT_BLUE : ORB_BALL_HEIGHT_BLUE;
+					currplayer_vel_y = ORB_BALL_HEIGHT_BLUE(currplayer_table_idx);
 				}
 			}
 			break;
@@ -1034,6 +1011,7 @@ void sprite_collide_lookup() {
 
 	spcl_grn_pad:
 		invert_gravity(currplayer_gravity);
+		// TODO
 		if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
 		else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
 		idx8_inc(activesprites_activated, index);
@@ -1044,9 +1022,10 @@ void sprite_collide_lookup() {
 		clear_slope_stuff();
 		if (!currplayer_gravity) { 
 			settrailstuff();
+			// INTENTIONALLY do this before flipping gravity
+			currplayer_vel_y = PAD_HEIGHT_BLUE(currplayer_table_idx);
 			currplayer_gravity = GRAVITY_UP;				//flip gravity
 			update_currplayer_table_idx();
-			currplayer_vel_y = PAD_HEIGHT_BLUE;
 			//invincible_counter = 3;
 		}
 		idx8_inc(activesprites_activated, index);
@@ -1056,9 +1035,10 @@ void sprite_collide_lookup() {
 		clear_slope_stuff();
 		if (currplayer_gravity) { 	
 			settrailstuff();
+			// INTENTIONALLY do this before flipping gravity
+			currplayer_vel_y = PAD_HEIGHT_BLUE(currplayer_table_idx);
 			currplayer_gravity = GRAVITY_DOWN;				//flip gravity
 			update_currplayer_table_idx();
-			currplayer_vel_y = -PAD_HEIGHT_BLUE;
 			//invincible_counter = 3;				
 		}
 		idx8_inc(activesprites_activated, index);	
