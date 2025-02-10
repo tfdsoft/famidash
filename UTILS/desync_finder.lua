@@ -26,4 +26,4 @@ function printInfo()
   emu.addEventCallback(printInfo, emu.eventType.endFrame);
   
   --Display a startup message
-  emu.displayMessage("Script", "Example Lua script loaded.")
+  emu.displayMessage("Script", "Desync Finder script loaded.")
