@@ -135,11 +135,11 @@ def generateOptimizedNumArray(source : dict, flags : dict, value) -> tuple:
 	argument = "table_idx"
 	maxVal = None
 
-	if type(source['value']) == list:
+	if type(source['value']) in [list]:
 		maxVal = max(map(parseNum, source['value']), key=abs)
 
 	if flags['g'] and not (flags['m'] or flags['r']):
-		value = generateCNumArray(parseNum(value), source)
+		value = generateCNumArray(parseNum(value), source, maxVal)
 		numTable = value[0]
 		comment = "// Depends on gravity"
 		argument = "gravity"
@@ -150,7 +150,7 @@ def generateOptimizedNumArray(source : dict, flags : dict, value) -> tuple:
 		comment = "// Depends on mini"
 		argument = "mini"
 	elif flags['r'] and not (flags['g'] or flags['m']):
-		value = generateCNumArray(parseNum(value), source)
+		value = generateCNumArray(parseNum(value), source, maxVal)
 		numTable = (value[0][0], value[1][0])
 		comment = "// Depends on framerate"
 		argument = "framerate"
@@ -159,7 +159,7 @@ def generateOptimizedNumArray(source : dict, flags : dict, value) -> tuple:
 		values = [generateCNumArray(i, source, maxVal) for i in values]
 		numTable = (*values[0][0], *values[1][0], *values[0][1], *values[1][1])
 	else:
-		value = generateCNumArray(parseNum(source['value']), source)
+		value = generateCNumArray(parseNum(source['value']), source, maxVal)
 		numTable = (*value[0], *value[0], *value[1], *value[1])
 
 	return (numTable, comment, argument)
@@ -225,7 +225,11 @@ def processCTableCommand(source : dict) -> str:
 	size_override = -1 if source['size'] == None else int(source['size'])
 
 	if source['table']:
-		numTable, comment, argument = zip(*map(lambda x : generateOptimizedNumArray(source, flags, x), source['value']))
+		if flags['m']:
+			values = tuple(zip(source['value'][:len(source['value']) // 2], source['value'][len(source['value']) // 2:]))
+		else:
+			values = source['value']
+		numTable, comment, argument = zip(*map(lambda x : generateOptimizedNumArray(source, flags, x), values))
 		comment = comment[0]
 		argument = argument[0]
 		# Maybe make this eventually a flag?
