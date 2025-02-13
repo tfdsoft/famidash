@@ -70,6 +70,8 @@ fxp8 tbl uninum be pw=-1 [gm] sprite_gamemode_adjust_heights {
 
 fxp8 pw=-1 [g] PAD_HEIGHT_BLUE 217.5
 fxp8 pw=-1 [g] ORB_BALL_HEIGHT_BLUE 97.5
+fxp8 pw=-1 [] POS_DUAL_CAP_CHECK 138.75
+fxp8 pw=-1 [] NEG_DUAL_CAP_CHECK -138.75
 
 segment XCD_BANK_01
 
