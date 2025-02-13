@@ -59,12 +59,12 @@ void decrement_was_on_slope() {
 					switch (currplayer_slope_type) {
 						case SLOPE_22DEG_UP:
 						case SLOPE_22DEG_UP_UD:
-							// TODO
+							// !!TODO
 							currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? 0x050 : -0x050);
 							break;
 						case SLOPE_66DEG_UP:
 						case SLOPE_66DEG_UP_UD:
-							// TODO
+							// !!TODO
 							currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? -0x150 : 0x150);
 					}
 					break;
@@ -72,7 +72,7 @@ void decrement_was_on_slope() {
 					switch (currplayer_slope_type) {
 						case SLOPE_22DEG_UP:
 						case SLOPE_22DEG_UP_UD:
-							// TODO
+							// !!TODO
 							currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? 0x100 : -0x100);
 							break;
 					}
@@ -271,7 +271,7 @@ void state_game(){
 			}
 			
 			if (!(joypad1.a) && !(joypad1.up)) {
-				// TODO
+				// !!TODO
 				if (dashing[0]) currplayer_vel_y = currplayer_gravity ? -0x0100 : 0x0100;
 				dashing[0] = 0;
 			}

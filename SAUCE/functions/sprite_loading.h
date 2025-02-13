@@ -1010,12 +1010,14 @@ void sprite_collide_lookup() {
 		return;
 
 	spcl_grn_pad:
-		invert_gravity(currplayer_gravity);
-		// TODO
-		if (currplayer_gravity && currplayer_vel_y < 0x670) currplayer_vel_y = 0x670;
-		else if (!currplayer_gravity && currplayer_vel_y > -0x670) currplayer_vel_y = -0x670;
-		idx8_inc(activesprites_activated, index);
+		#ifdef FLAG_KANDO_FUN_STUFF
+		invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
 		update_currplayer_table_idx();
+		dual_cap_check();
+		table_offset = yellow_pad;
+		currplayer_vel_y = sprite_gamemode_y_adjust();
+		idx8_inc(activesprites_activated, index);
+		#endif
 		return;
 	
 	spcl_gvdn_pd:
@@ -1230,7 +1232,7 @@ void retrofireballclear() {
 void dual_cap_check() {
 	if (dual && !twoplayer) {
 		if (currplayer == 0) {
-			// TODO
+			// !!TODO
 			if (player_vel_y[1] > 0x250) player_vel_y[1] = 0x250;
 			if (player_vel_y[1] < -0x250) player_vel_y[1] = -0x250;
 		}
