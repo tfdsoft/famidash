@@ -32,7 +32,7 @@
 #define	HARDER 3
 #define	INSANE 4
 #define	DEMON 5
-#define	DANGER 6
+#define	AUTO 6
 
 
 #define SPIKESA 0

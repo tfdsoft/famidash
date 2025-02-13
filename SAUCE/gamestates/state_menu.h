@@ -160,9 +160,9 @@ void levelselection() {
 	set_scroll_y(0);  
 	
 	vram_adr(NAMETABLE_A);
-	vram_unrle(game_main_menu); 
+	vram_unrle(level_select_screen); 
 	vram_adr(NAMETABLE_B);
-	vram_unrle(game_main_menu);
+	vram_unrle(level_select_screen);
 
 	memfill(attemptCounter, 0, sizeof(attemptCounter));
 

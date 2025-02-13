@@ -87,7 +87,7 @@ const uint8_t difficulty_pal_A[] ={
 	0x16,	// harder
 	0x24,	// insane
 	0x16,	// demon
-	0x13,	// danger
+	0x28,	// auto
 };
 
 const uint8_t difficulty_pal_B[] ={
@@ -97,7 +97,7 @@ const uint8_t difficulty_pal_B[] ={
 	0x30,	// harder
 	0x06,	// insane
 	0x30,	// demon
-	0x21,	// danger
+	0x0F,	// auto
 };
 
 void refreshmenu();
