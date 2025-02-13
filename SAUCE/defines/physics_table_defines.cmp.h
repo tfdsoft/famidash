@@ -131,7 +131,7 @@ const uint8_t JIMSHEATBALL_MAX_FALLSPEED_lo[] = {0x9B, 0x00};
 #define JIMSHEATBALL_MAX_FALLSPEED(framerate) ( \
 	__A__ = framerate, \
 	__asm__("tay"), \
-	__asm__("ldx #%b \n lda %v, y", JIMSHEATBALL_MAX_FALLSPEED_hi, JIMSHEATBALL_MAX_FALLSPEED_lo), \
+	__asm__("ldx #%b \n lda %v, y", (uint8_t)JIMSHEATBALL_MAX_FALLSPEED_hi, JIMSHEATBALL_MAX_FALLSPEED_lo), \
 	__AX__ \
 )
 
@@ -141,7 +141,7 @@ const uint8_t JIMSHEATBALL_GRAVITY_lo[] = {0x4B, 0x34};
 #define JIMSHEATBALL_GRAVITY(framerate) ( \
 	__A__ = framerate, \
 	__asm__("tay"), \
-	__asm__("ldx #%b \n lda %v, y", JIMSHEATBALL_GRAVITY_hi, JIMSHEATBALL_GRAVITY_lo), \
+	__asm__("ldx #%b \n lda %v, y", (uint8_t)JIMSHEATBALL_GRAVITY_hi, JIMSHEATBALL_GRAVITY_lo), \
 	__AX__ \
 )
 

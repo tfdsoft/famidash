@@ -112,18 +112,19 @@ def generateCArgumentDefine(source : dict, numTable : tuple[int], suffixes : tup
 	suffixes = [f"_{i}" for i in suffixes]
 	equalBytes = [bytesEqual(numTable, i) for i in range(size // 8)]
 	arg = [r'#%b' if i else r'%v, y' for i in equalBytes]
+	cv = [r'(uint8_t)' if i else '' for i in equalBytes]
 	val = [f'{source["name"]}{suffix}' for suffix in suffixes]
 	if size > 16:
 		if size > 24:
 			# Load value into sreg+1
-			output.append(f'__asm__("ldx {arg[3]}", {val[3]})')
+			output.append(f'__asm__("ldx {arg[3]}", {cv[3]}{val[3]})')
 		else:
 			# Load zero into sreg+1
 			output.append(f'__asm__("ldx #0")')
-		output.append(f'__asm__("lda {arg[2]}", {val[2]})')
+		output.append(f'__asm__("lda {arg[2]}", {cv[2]}{val[2]})')
 		output.append(f'__EAX__ <<= 16')
 
-	output.append(f'__asm__("ldx {arg[1]} \\n lda {arg[0]}", {val[1]}, {val[0]})')
+	output.append(f'__asm__("ldx {arg[1]} \\n lda {arg[0]}", {cv[1]}{val[1]}, {cv[0]}{val[0]})')
 	output.append('__EAX__' if size > 16 else '__AX__')
 	output = [f'\t{i}' for i in output]
 	mlsp = '\\\n'
