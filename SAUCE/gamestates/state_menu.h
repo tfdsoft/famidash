@@ -163,10 +163,17 @@ void levelselection() {
 		} else {
 	#endif
 
+#if !__VS_SYSTEM
+	vram_adr(NAMETABLE_A);
+	vram_unrle(level_select_screen); 
+	vram_adr(NAMETABLE_B);
+	vram_unrle(level_select_screen);
+#else
 	vram_adr(NAMETABLE_A);
 	vram_unrle(game_main_menu); 
 	vram_adr(NAMETABLE_B);
 	vram_unrle(game_main_menu);
+#endif
 	memfill(attemptCounter, 0, sizeof(attemptCounter));
 
 	tmp8 = 0xff00;
