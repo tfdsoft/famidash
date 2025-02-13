@@ -1232,13 +1232,18 @@ void retrofireballclear() {
 void dual_cap_check() {
 	if (dual && !twoplayer) {
 		if (currplayer == 0) {
-			// !!TODO
-			if (player_vel_y[1] > 0x250) player_vel_y[1] = 0x250;
-			if (player_vel_y[1] < -0x250) player_vel_y[1] = -0x250;
+			if (POS_DUAL_CAP_CHECK(framerate) < player_vel_y[1]) {
+				player_vel_y[1] = POS_DUAL_CAP_CHECK(framerate);
+			} else if (NEG_DUAL_CAP_CHECK(framerate) >= player_vel_y[1]) {
+				player_vel_y[1] = NEG_DUAL_CAP_CHECK(framerate);
+			}
 		}
 		else {
-			if (player_vel_y[0] > 0x250) player_vel_y[0] = 0x250;
-			if (player_vel_y[0] < -0x250) player_vel_y[0] = -0x250;
+			if (POS_DUAL_CAP_CHECK(framerate) < player_vel_y[0]) {
+				player_vel_y[0] = POS_DUAL_CAP_CHECK(framerate);
+			} else if (NEG_DUAL_CAP_CHECK(framerate) >= player_vel_y[0]) {
+				player_vel_y[0] = NEG_DUAL_CAP_CHECK(framerate);
+			}
 		}					
 	}
 }				

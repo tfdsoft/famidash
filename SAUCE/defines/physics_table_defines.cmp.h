@@ -49,6 +49,26 @@ const uint8_t ORB_BALL_HEIGHT_BLUE_lo[] = {0xF4, 0x0C, 0xF4, 0x0C, 0xA0, 0x60, 0
 const uint8_t ORB_BALL_HEIGHT_BLUE_hi[] = {0x01, 0xFE, 0x01, 0xFE, 0x01, 0xFE, 0x01, 0xFE};
 #define ORB_BALL_HEIGHT_BLUE(table_idx) (lohi_arr16_load(ORB_BALL_HEIGHT_BLUE, table_idx))
 
+// Depends on framerate
+const uint8_t POS_DUAL_CAP_CHECK_lo[] = {0xC7, 0x50};
+#define POS_DUAL_CAP_CHECK_hi 0x02
+#define POS_DUAL_CAP_CHECK(framerate) ( \
+	__A__ = framerate, \
+	__asm__("tay"), \
+	__asm__("ldx #%b \n lda %v, y", (uint8_t)POS_DUAL_CAP_CHECK_hi, POS_DUAL_CAP_CHECK_lo), \
+	__AX__ \
+)
+
+// Depends on framerate
+const uint8_t NEG_DUAL_CAP_CHECK_lo[] = {0x39, 0xB0};
+#define NEG_DUAL_CAP_CHECK_hi 0xFD
+#define NEG_DUAL_CAP_CHECK(framerate) ( \
+	__A__ = framerate, \
+	__asm__("tay"), \
+	__asm__("ldx #%b \n lda %v, y", (uint8_t)NEG_DUAL_CAP_CHECK_hi, NEG_DUAL_CAP_CHECK_lo), \
+	__AX__ \
+)
+
 #pragma rodata-name("XCD_BANK_01")
 
 const uint8_t JUMP_VEL_lo[] = {0x51, 0xAF, 0x37, 0xC9, 0x70, 0x90, 0x30, 0xD0};
