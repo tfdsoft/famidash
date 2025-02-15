@@ -17,7 +17,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8072
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8147 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -29,7 +29,7 @@
 		.byte bloodbath_grnd_color
 		.byte 27	; height of bloodbath
 	; Level data
-		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7745
+		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7731
 
 
 .segment "DAT_BANK_02"	; Total bank size: 8132 bytes
@@ -499,7 +499,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
 
 
-.segment "DAT_BANK_19"	; Total bank size: 8169 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8167 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -513,8 +513,6 @@
 	; Level data
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2727
 
-
-.segment "DAT_BANK_1A"	; Total bank size: 8177 bytes
 	.export level_data_retray
 	level_data_retray:
 	; Header
@@ -613,7 +611,7 @@
 		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1609
 
 
-.segment "DAT_BANK_1E"	; Total bank size: 7313 bytes
+.segment "DAT_BANK_1E"	; Total bank size: 8139 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -641,7 +639,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "DAT_BANK_20"	; Total bank size: 5847 bytes
+.segment "DAT_BANK_20"	; Total bank size: 4951 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header

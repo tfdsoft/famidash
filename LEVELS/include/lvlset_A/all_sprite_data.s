@@ -218,7 +218,7 @@ sprite_data_stereomadness:
   .byte $d0,$37,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_20"
+.segment "DAT_BANK_1A"
 sprite_data_backontrack:
   .byte $d0,$00,$88,$03,$0a
   .byte $30,$02,$70,$03,$2b
@@ -1095,7 +1095,7 @@ sprite_data_baseafterbase:
   .byte $30,$36,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1A"
+.segment "DAT_BANK_1E"
 sprite_data_cantletgo:
   .byte $b0,$00,$60,$03,$2b
   .byte $d0,$00,$80,$03,$2e
@@ -14176,7 +14176,7 @@ sprite_data_stalemate:
   .byte $70,$38,$f0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_19"
+.segment "DAT_BANK_1A"
 sprite_data_bloodbath:
   .byte $00,$00,$20,$03,$8f
   .byte $00,$00,$30,$03,$cf
@@ -14533,40 +14533,25 @@ sprite_data_bloodbath:
   .byte $a0,$37,$10,$03,$06
   .byte $e0,$37,$f0,$02,$00
   .byte $e0,$37,$00,$03,$19
-  .byte $10,$38,$38,$03,$fd
-  .byte $20,$38,$10,$03,$fe
-  .byte $30,$38,$28,$03,$fd
-  .byte $40,$38,$00,$03,$fe
-  .byte $50,$38,$18,$03,$fd
-  .byte $60,$38,$f0,$02,$fe
-  .byte $70,$38,$08,$03,$fd
-  .byte $80,$38,$e0,$02,$fe
-  .byte $90,$38,$f8,$02,$fd
-  .byte $a0,$38,$d0,$02,$fe
-  .byte $b0,$38,$e8,$02,$fd
-  .byte $c0,$38,$d0,$02,$fe
-  .byte $d0,$38,$e8,$02,$fd
-  .byte $e0,$38,$d0,$02,$fe
-  .byte $f0,$38,$f8,$02,$fd
-  .byte $00,$39,$e0,$02,$fe
-  .byte $10,$39,$08,$03,$fd
-  .byte $20,$39,$f0,$02,$fe
-  .byte $30,$39,$18,$03,$fd
-  .byte $30,$39,$30,$03,$96
-  .byte $40,$39,$00,$03,$fe
-  .byte $50,$39,$28,$03,$fd
-  .byte $50,$39,$30,$03,$86
-  .byte $60,$39,$10,$03,$fe
-  .byte $70,$39,$38,$03,$fd
-  .byte $80,$39,$10,$03,$fe
-  .byte $90,$39,$38,$03,$fd
-  .byte $a0,$39,$10,$03,$fe
-  .byte $b0,$39,$28,$03,$fd
-  .byte $c0,$39,$00,$03,$fe
-  .byte $d0,$39,$18,$03,$fd
+  .byte $20,$38,$20,$03,$4a
+  .byte $40,$38,$10,$03,$33
+  .byte $60,$38,$00,$03,$4a
+  .byte $80,$38,$f0,$02,$33
+  .byte $b0,$38,$d0,$02,$09
+  .byte $c0,$38,$d0,$02,$18
+  .byte $e0,$38,$e0,$02,$33
+  .byte $00,$39,$f0,$02,$4a
+  .byte $20,$39,$00,$03,$33
+  .byte $30,$39,$f0,$02,$96
+  .byte $40,$39,$10,$03,$4a
+  .byte $50,$39,$f0,$02,$86
+  .byte $60,$39,$20,$03,$33
+  .byte $80,$39,$10,$03,$08
+  .byte $90,$39,$10,$03,$19
+  .byte $b0,$39,$10,$03,$4a
+  .byte $d0,$39,$00,$03,$33
   .byte $e0,$39,$d0,$02,$96
-  .byte $e0,$39,$f0,$02,$fe
-  .byte $f0,$39,$08,$03,$fd
+  .byte $f0,$39,$e0,$02,$09
   .byte $00,$3a,$d0,$02,$86
   .byte $00,$3a,$e0,$02,$fe
   .byte $10,$3a,$08,$03,$fd
@@ -14580,6 +14565,9 @@ sprite_data_bloodbath:
   .byte $80,$3a,$10,$03,$96
   .byte $90,$3a,$e0,$02,$14
   .byte $a0,$3a,$10,$03,$86
+  .byte $b0,$3a,$f0,$02,$33
+  .byte $c0,$3a,$f0,$02,$33
+  .byte $d0,$3a,$f0,$02,$33
   .byte $f0,$3a,$e0,$02,$03
   .byte $f0,$3a,$f0,$02,$20
   .byte $20,$3b,$f0,$02,$35
