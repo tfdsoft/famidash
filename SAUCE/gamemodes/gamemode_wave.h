@@ -25,7 +25,7 @@ void wave_movement(){
 	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
 	else currplayer_vel_y = 1;
 
-	Generic.x = high_byte(currplayer_x) + ((0x10 - Generic.width) >> 1);
+	Generic.x = high_byte(currplayer_x) + 4;
 	
 	// this literally offsets the collision down 2 pixel for the vel reset to happen every frame instead of each other frame
 	Generic.y = high_byte(currplayer_y) + ((high_byte(currplayer_vel_y) & 0x80) ? 2 : -2);
