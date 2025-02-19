@@ -658,8 +658,8 @@ void sprite_collide_lookup() {
 		&&spcl_rndmode,	&&spcl_grn_pad,	&&spcl_tlpt_pt,	&&spcl_default,	// 0x64 - 0x67
 		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tall_pt,	&&spcl_long_pt,	// 0x68 - 0x6B
 		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x74 - 0x77
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
+		&&spcl_default,	//&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x74 - 0x77
 		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x78 - 0x7B
 		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x7C - 0x7F
 	};
