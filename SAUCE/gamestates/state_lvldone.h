@@ -565,6 +565,7 @@ const unsigned char TEXT_ludicrous2[]="SPEED";
 const unsigned char TEXT_idols[]="IDOLS";
 
 const unsigned char TEXT_windfall[]="WINDFALL";
+const unsigned char TEXT_speedracer[]="SPEED$RACER";
 
 
 
@@ -634,6 +635,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	TEXT_ludicrous,
 	0,
+	0,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -670,6 +672,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_idols,
 	TEXT_ludicrous2,
 	TEXT_windfall,
+	TEXT_speedracer,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -706,6 +709,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_idols) - 1,
 	sizeof(TEXT_ludicrous2) - 1,
 	sizeof(TEXT_windfall) - 1,
+	sizeof(TEXT_speedracer) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -740,6 +744,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_freedom) - 1,	
 	0,
 	sizeof(TEXT_ludicrous) - 1,	
+	0,
 	0,
 };
 
@@ -778,6 +783,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_idols,
 	song_ludicrous_speed,
 	song_windfall,	
+	song_speed_racer,
 };
 
 

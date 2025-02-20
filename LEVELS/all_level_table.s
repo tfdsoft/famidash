@@ -120,7 +120,7 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($000088)		; supercycles
-	.byte .lobyte($000140)		; dearnostalgists
+	.byte .lobyte($000155)		; dearnostalgists
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($000094)		; pgclubstep
@@ -137,7 +137,7 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($000088)		; supercycles
-	.byte .hibyte($000140)		; dearnostalgists
+	.byte .hibyte($000155)		; dearnostalgists
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($000094)		; pgclubstep
@@ -154,7 +154,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($000088)		; supercycles
-	.byte .bankbyte($000140)		; dearnostalgists
+	.byte .bankbyte($000155)		; dearnostalgists
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($000094)		; pgclubstep

@@ -61,7 +61,7 @@ clutterfunk2_no_parallax  = 1
 clutterfunk2_bg_color    = $0F
 clutterfunk2_grnd_color  = $0F
 
-speedracer_song_number = song_clutterfunk_2
+speedracer_song_number = song_speed_racer
 speedracer_game_mode   = $00
 speedracer_speed       = $00
 speedracer_no_parallax  = 1
