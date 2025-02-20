@@ -31,4 +31,5 @@
 #define song_stereo_madness 30
 #define song_problematic 31
 #define song_midnight 32
-#define song_max 33
+#define song_speed_racer 33
+#define song_max 34

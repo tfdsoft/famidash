@@ -31,4 +31,5 @@ song_driving_by_night = 29
 song_stereo_madness = 30
 song_problematic = 31
 song_midnight = 32
-song_max = 33
+song_speed_racer = 33
+song_max = 34

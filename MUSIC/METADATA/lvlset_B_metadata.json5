@@ -207,6 +207,10 @@
 		{
 			fmsSongName: "Windfall",
 			lowerText: "WINDFALL"
+		},
+		{
+			fmsSongName: "Speed Racer",
+			lowerText: "SPEED RACER"
 		}
 	],
 	SFX: [

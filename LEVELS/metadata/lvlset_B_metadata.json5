@@ -105,7 +105,7 @@
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_clutterfunk_2",
+			songID: "song_speed_racer",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
