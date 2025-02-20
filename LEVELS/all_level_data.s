@@ -163,7 +163,7 @@
 		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6078
 
 
-.segment "LVL_BANK_0A"	; Total bank size: 8187 bytes
+.segment "LVL_BANK_0A"	; Total bank size: 8173 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -175,7 +175,7 @@
 		.byte decode_grnd_color
 		.byte 27	; height of decode
 	; Level data
-		.incbin "EXPORTS/decode.lz.bin" ; Size: 5906
+		.incbin "EXPORTS/decode.lz.bin" ; Size: 5892
 
 
 .segment "LVL_BANK_0B"	; Total bank size: 8134 bytes
@@ -499,7 +499,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
 
 
-.segment "LVL_BANK_1A"	; Total bank size: 8167 bytes
+.segment "LVL_BANK_1A"	; Total bank size: 8162 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
