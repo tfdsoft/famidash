@@ -535,7 +535,7 @@ char bg_coll_slope() {
 	// 45 degrees
 
 	col_slope_LU45:
-		if (gamemode == GAMEMODE_WAVE) {
+		if (gamemode == GAMEMODE_WAVE && !currplayer_mini) {
 			return 0;
 		}
 		else {
