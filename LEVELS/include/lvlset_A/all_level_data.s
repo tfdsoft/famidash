@@ -223,7 +223,7 @@
 		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5336
 
 
-.segment "DAT_BANK_0D"	; Total bank size: 8149 bytes
+.segment "DAT_BANK_0D"	; Total bank size: 8013 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -294,7 +294,7 @@
 		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3024
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8092 bytes
+.segment "DAT_BANK_10"	; Total bank size: 8189 bytes
 	.export level_data_dash
 	level_data_dash:
 	; Header
@@ -320,6 +320,19 @@
 		.byte 27	; height of firetemple
 	; Level data
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3192
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 97
 
 
 .segment "DAT_BANK_11"	; Total bank size: 8180 bytes
@@ -542,7 +555,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8191 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 7930 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -556,21 +569,8 @@
 	; Level data
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1876
 
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 261
 
-
-.segment "DAT_BANK_1D"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 8191 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
