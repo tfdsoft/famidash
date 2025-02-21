@@ -42,11 +42,11 @@ SET all_levels= ^
     demonpark ^
     deathmoon ^
     decode ^
+    dearnostalgists ^
     problematic ^
     firetemple ^
     foresttemple ^
     stalemate ^
-    bloodbath ^
     luckydraw ^
     test4 ^
 

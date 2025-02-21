@@ -336,3 +336,10 @@ geometricaldominator_speed       = $00
 geometricaldominator_no_parallax  = 1
 geometricaldominator_bg_color    = $0F
 geometricaldominator_grnd_color  = $0F
+
+dearnostalgists_song_number = song_crackdown
+dearnostalgists_game_mode   = $00
+dearnostalgists_speed       = $02
+dearnostalgists_no_parallax  = 1
+dearnostalgists_bg_color    = $2C
+dearnostalgists_grnd_color  = $1C
