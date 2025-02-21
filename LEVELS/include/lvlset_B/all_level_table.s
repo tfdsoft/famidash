@@ -9,11 +9,11 @@ _level_list_lo:
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_ninox)
 	.byte .lobyte(level_data_supercycles)
-	.byte .lobyte(level_data_dearnostalgists)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_eon)
+	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_cataclysm)
 	.byte .lobyte(level_data_aftermath)
 	.byte .lobyte(level_data_aftercatabath)
@@ -24,11 +24,11 @@ _level_list_hi:
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_ninox)
 	.byte .hibyte(level_data_supercycles)
-	.byte .hibyte(level_data_dearnostalgists)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_eon)
+	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_cataclysm)
 	.byte .hibyte(level_data_aftermath)
 	.byte .hibyte(level_data_aftercatabath)
@@ -39,44 +39,41 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_ninox))
 	.byte .lobyte(.bank(level_data_supercycles))
-	.byte .lobyte(.bank(level_data_dearnostalgists))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_eon))
+	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_cataclysm))
 	.byte .lobyte(.bank(level_data_aftermath))
 	.byte .lobyte(.bank(level_data_aftercatabath))
 	.byte .lobyte(.bank(level_data_test4))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_dearnostalgists_0)
-	.byte .lobyte(level_data_eon_1)
+	.byte .lobyte(level_data_eon_0)
+	.byte .lobyte(level_data_aftercatabath_1)
 	.byte .lobyte(level_data_aftercatabath_2)
-	.byte .lobyte(level_data_aftercatabath_3)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_dearnostalgists_0)
-	.byte .hibyte(level_data_eon_1)
+	.byte .hibyte(level_data_eon_0)
+	.byte .hibyte(level_data_aftercatabath_1)
 	.byte .hibyte(level_data_aftercatabath_2)
-	.byte .hibyte(level_data_aftercatabath_3)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_dearnostalgists_0))
-	.byte .lobyte(.bank(level_data_eon_1))
+	.byte .lobyte(.bank(level_data_eon_0))
+	.byte .lobyte(.bank(level_data_aftercatabath_1))
 	.byte .lobyte(.bank(level_data_aftercatabath_2))
-	.byte .lobyte(.bank(level_data_aftercatabath_3))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
 	.byte .lobyte(sprite_data_leveleasy)
 	.byte .lobyte(sprite_data_ninox)
 	.byte .lobyte(sprite_data_supercycles)
-	.byte .lobyte(sprite_data_dearnostalgists)
 	.byte .lobyte(sprite_data_clutterfunk2)
 	.byte .lobyte(sprite_data_speedracer)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_eon)
+	.byte .lobyte(sprite_data_bloodbath)
 	.byte .lobyte(sprite_data_cataclysm)
 	.byte .lobyte(sprite_data_aftermath)
 	.byte .lobyte(sprite_data_aftercatabath)
@@ -87,11 +84,11 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_leveleasy)
 	.byte .hibyte(sprite_data_ninox)
 	.byte .hibyte(sprite_data_supercycles)
-	.byte .hibyte(sprite_data_dearnostalgists)
 	.byte .hibyte(sprite_data_clutterfunk2)
 	.byte .hibyte(sprite_data_speedracer)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_eon)
+	.byte .hibyte(sprite_data_bloodbath)
 	.byte .hibyte(sprite_data_cataclysm)
 	.byte .hibyte(sprite_data_aftermath)
 	.byte .hibyte(sprite_data_aftercatabath)
@@ -102,11 +99,11 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_leveleasy))
 	.byte .lobyte(.bank(sprite_data_ninox))
 	.byte .lobyte(.bank(sprite_data_supercycles))
-	.byte .lobyte(.bank(sprite_data_dearnostalgists))
 	.byte .lobyte(.bank(sprite_data_clutterfunk2))
 	.byte .lobyte(.bank(sprite_data_speedracer))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_eon))
+	.byte .lobyte(.bank(sprite_data_bloodbath))
 	.byte .lobyte(.bank(sprite_data_cataclysm))
 	.byte .lobyte(.bank(sprite_data_aftermath))
 	.byte .lobyte(.bank(sprite_data_aftercatabath))
@@ -120,11 +117,11 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($000088)		; supercycles
-	.byte .lobyte($000155)		; dearnostalgists
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000286)		; eon
+	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
 	.byte .lobyte($00007C)		; aftermath
 	.byte .lobyte($0001BF)		; aftercatabath
@@ -137,11 +134,11 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($000088)		; supercycles
-	.byte .hibyte($000155)		; dearnostalgists
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000286)		; eon
+	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
 	.byte .hibyte($00007C)		; aftermath
 	.byte .hibyte($0001BF)		; aftercatabath
@@ -154,11 +151,11 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($000088)		; supercycles
-	.byte .bankbyte($000155)		; dearnostalgists
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000286)		; eon
+	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm
 	.byte .bankbyte($00007C)		; aftermath
 	.byte .bankbyte($0001BF)		; aftercatabath

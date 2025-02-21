@@ -10,11 +10,11 @@
 #define leveleasy 1
 #define ninox 2
 #define supercycles 3
-#define dearnostalgists 4
-#define clutterfunk2 5
-#define speedracer 6
-#define pgclubstep 7
-#define eon 8
+#define clutterfunk2 4
+#define speedracer 5
+#define pgclubstep 6
+#define eon 7
+#define bloodbath 8
 #define cataclysm 9
 #define aftermath 10
 #define aftercatabath 11

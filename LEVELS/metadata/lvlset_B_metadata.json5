@@ -65,22 +65,6 @@
 			parallaxDisable: true
 		},
 		{
-			level: "dearnostalgists",
-			lowerText: " DEAR NOSTALGISTS",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "C",
-			blockSet: "A",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_crackdown",
-			startingGameMode: 0,
-			startingSpeed: 2,
-			startingBackgroundColor: 0x2C,
-			startingGroundColor: 0x1C,
-			parallaxDisable: true
-		},
-		{
 			level: "clutterfunk2",
 			lowerText: "CLUTTERFUNK 2",
 			decoType: "DECO1",
@@ -148,6 +132,22 @@
 					offsetX: 4
 				}
 			] */
+		},
+		{
+			level: "bloodbath",
+			lowerText: "BLOODBATH",
+			decoType: "DECOCLOUD",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_atthespeedoflight2",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "cataclysm",

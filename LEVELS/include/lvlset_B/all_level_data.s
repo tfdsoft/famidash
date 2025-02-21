@@ -32,26 +32,26 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8143
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8115 bytes
-	.export level_data_dearnostalgists
-	level_data_dearnostalgists:
-	; Header
-		.byte dearnostalgists_song_number
-		.byte dearnostalgists_game_mode
-		.byte dearnostalgists_speed
-		.byte dearnostalgists_no_parallax
-		.byte dearnostalgists_bg_color
-		.byte dearnostalgists_grnd_color
-		.byte 57	; height of dearnostalgists
-	; Level data
-		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8115
-
-
-.segment "DAT_BANK_03"	; Total bank size: 8045 bytes
-	.export level_data_aftercatabath_2
-	level_data_aftercatabath_2:
+.segment "DAT_BANK_02"	; Total bank size: 8045 bytes
+	.export level_data_aftercatabath_1
+	level_data_aftercatabath_1:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8045
+
+
+.segment "DAT_BANK_03"	; Total bank size: 7731 bytes
+	.export level_data_bloodbath
+	level_data_bloodbath:
+	; Header
+		.byte bloodbath_song_number
+		.byte bloodbath_game_mode
+		.byte bloodbath_speed
+		.byte bloodbath_no_parallax
+		.byte bloodbath_bg_color
+		.byte bloodbath_grnd_color
+		.byte 27	; height of bloodbath
+	; Level data
+		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7731
 
 
 .segment "DAT_BANK_04"	; Total bank size: 7517 bytes
@@ -69,7 +69,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7517
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_05"	; Total bank size: 8186 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -84,7 +84,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7048
 
 
-.segment "DAT_BANK_06"	; Total bank size: 6806 bytes
+.segment "DAT_BANK_06"	; Total bank size: 7887 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -99,7 +99,7 @@
 		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6806
 
 
-.segment "DAT_BANK_08"	; Total bank size: 6460 bytes
+.segment "DAT_BANK_08"	; Total bank size: 7260 bytes
 	.export level_data_clutterfunk2
 	level_data_clutterfunk2:
 	; Header
@@ -112,6 +112,11 @@
 		.byte 27	; height of clutterfunk2
 	; Level data
 		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6460
+
+	.export level_data_eon_0
+	level_data_eon_0:
+	; Level data
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
 
 
 .segment "DAT_BANK_09"	; Total bank size: 8192 bytes
@@ -170,36 +175,9 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8191 bytes
-	.export level_data_eon_1
-	level_data_eon_1:
-	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
-
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte stereomadness_song_number
-		.byte stereomadness_game_mode
-		.byte stereomadness_speed
-		.byte stereomadness_no_parallax
-		.byte stereomadness_bg_color
-		.byte stereomadness_grnd_color
-		.byte 27	; height of stereomadness
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
-
-
-.segment "DAT_BANK_0C"	; Total bank size: 7974 bytes
-	.export level_data_dearnostalgists_0
-	level_data_dearnostalgists_0:
-	; Level data
-		.incbin "EXPORTS/dearnostalgists.lz.1.bin" ; Size: 5128
-
-
-.segment "DAT_BANK_0D"	; Total bank size: 8058 bytes
-	.export level_data_aftercatabath_3
-	level_data_aftercatabath_3:
+.segment "DAT_BANK_0C"	; Total bank size: 8116 bytes
+	.export level_data_aftercatabath_2
+	level_data_aftercatabath_2:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4673
 
@@ -215,3 +193,16 @@
 		.byte 27	; height of supercycles
 	; Level data
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
+
+	.export level_data_stereomadness
+	level_data_stereomadness:
+	; Header
+		.byte stereomadness_song_number
+		.byte stereomadness_game_mode
+		.byte stereomadness_speed
+		.byte stereomadness_no_parallax
+		.byte stereomadness_bg_color
+		.byte stereomadness_grnd_color
+		.byte 27	; height of stereomadness
+	; Level data
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58

@@ -6,11 +6,11 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// leveleasy
 	DECOCLOUD,	// ninox
 	DECO1,	// supercycles
-	EXTRASPRITES1,	// dearnostalgists
 	DECO1,	// clutterfunk2
 	EXTRASPRITES1,	// speedracer
 	DECO1,	// pgclubstep
 	EXTRASPRITES1,	// eon
+	DECOCLOUD,	// bloodbath
 	DECO1,	// cataclysm
 	DECO1,	// aftermath
 	DECO1,	// aftercatabath
@@ -22,11 +22,11 @@ const uint8_t spike_set[] = {
 	SPIKESA,	// leveleasy
 	SPIKESB,	// ninox
 	SPIKESA,	// supercycles
-	SPIKESC,	// dearnostalgists
 	SPIKESA,	// clutterfunk2
 	SPIKESA,	// speedracer
 	SPIKESA,	// pgclubstep
 	SPIKESB,	// eon
+	SPIKESC,	// bloodbath
 	SPIKESC,	// cataclysm
 	SPIKESC,	// aftermath
 	SPIKESC,	// aftercatabath
@@ -39,11 +39,11 @@ const uint8_t block_set[] = {
 	BLOCKSA,	// leveleasy
 	BLOCKSC,	// ninox
 	BLOCKSB,	// supercycles
-	BLOCKSA,	// dearnostalgists
 	BLOCKSB,	// clutterfunk2
 	BLOCKSB,	// speedracer
 	BLOCKSB,	// pgclubstep
 	BLOCKSA,	// eon
+	BLOCKSB,	// bloodbath
 	BLOCKSB,	// cataclysm
 	BLOCKSB,	// aftermath
 	BLOCKSB,	// aftercatabath
@@ -55,11 +55,11 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// leveleasy
 	SAWBLADESA,	// ninox
 	SAWBLADESA,	// supercycles
-	SAWBLADESA,	// dearnostalgists
 	SAWBLADESA,	// clutterfunk2
 	SAWBLADESA,	// speedracer
 	SAWBLADESA,	// pgclubstep
 	SAWBLADESA,	// eon
+	SAWBLADESA,	// bloodbath
 	SAWBLADESA,	// cataclysm
 	SAWBLADESA,	// aftermath
 	SAWBLADESA,	// aftercatabath
@@ -80,11 +80,11 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// leveleasy
 	NORMAL,	// ninox
 	DEMON,	// supercycles
-	DEMON,	// dearnostalgists
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
 	DEMON,	// pgclubstep
 	DEMON,	// eon
+	DEMON,	// bloodbath
 	DEMON,	// cataclysm
 	DEMON,	// aftermath
 	DEMON,	// aftercatabath
@@ -96,11 +96,11 @@ const uint8_t stars_list[] = {
 	3,	// leveleasy
 	3,	// ninox
 	10,	// supercycles
-	10,	// dearnostalgists
 	10,	// clutterfunk2
 	10,	// speedracer
 	10,	// pgclubstep
 	10,	// eon
+	10,	// bloodbath
 	10,	// cataclysm
 	10,	// aftermath
 	10,	// aftercatabath
