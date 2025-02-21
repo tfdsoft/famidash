@@ -238,11 +238,11 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5217
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8162 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8165 bytes
 	.export level_data_dearnostalgists_1
 	level_data_dearnostalgists_1:
 	; Level data
-		.incbin "EXPORTS/dearnostalgists.lz.1.bin" ; Size: 5138
+		.incbin "EXPORTS/dearnostalgists.lz.1.bin" ; Size: 5141
 
 	.export level_data_cycles
 	level_data_cycles:
@@ -504,7 +504,7 @@
 		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4027
 
 
-.segment "DAT_BANK_19"	; Total bank size: 8178 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8183 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
