@@ -1,6 +1,6 @@
 
 CODE_BANK_PUSH("XCD_BANK_01")
-void bigboi_stuff();
+
 void ufo_ship_eject();
 void common_gravity_routine();
 void ufo_movement(){
@@ -19,8 +19,33 @@ void ufo_movement(){
 
 	ufo_ship_eject();
 
-	bigboi_stuff(); 
-	
+	if (bigboi) {
+			Generic.y -= 15;
+
+			ufo_ship_eject();		
+		
+			Generic.x += 15;
+
+			ufo_ship_eject();
+
+			Generic.y += 15;
+
+			ufo_ship_eject();			
+	}
+
+	else {
+		if (tallmode) {
+			Generic.y -= 15;
+
+			ufo_ship_eject();
+		}
+		if (longmode) {
+			Generic.x += 15;
+			Generic.y = high_byte(currplayer_y);
+
+			ufo_ship_eject();
+		}
+	}
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 
@@ -37,30 +62,6 @@ void ufo_movement(){
 		jumps++;
 	}
 	ufo_orbed = 0;
-}	
-
-void bigboi_stuff() {
-	if (bigboi) {
-			Generic.y -= 15;
-			ufo_ship_eject();
-		
-			Generic.x += 15;
-			ufo_ship_eject();
-
-			Generic.y += 15;
-			ufo_ship_eject();
-	}
-	else {
-		if (tallmode) {
-			Generic.y = high_byte(currplayer_y) - 15;
-			ufo_ship_eject();
-		}	
-		if (longmode) {
-			Generic.x += 15;
-			Generic.y = high_byte(currplayer_y);
-			ufo_ship_eject();
-		}	
-	}	
 }	
 
 CODE_BANK_POP()
