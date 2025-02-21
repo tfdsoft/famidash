@@ -384,6 +384,15 @@ void state_game(){
 */   //no practice in arcade
 		if ((controllingplayer->press_b) && practice_point_count && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
 
+		if (auto_practicepoints && auto_practicepoint_timer) auto_practicepoint_timer--;
+
+		if (practice_point_count && !auto_practicepoint_timer) { 
+			if (gamemode == 0 || gamemode == 2 || gamemode == 4 || gamemode == 5 || gamemode == 8) {
+				if (currplayer_vel_y == 0) crossPRGBankJump0(reset_game_vars); 
+			}
+			else crossPRGBankJump0(reset_game_vars); 
+		}
+
 		if (joypad1.press_right && DEBUG_MODE && !(options & platformer)) {
 			invert_gravity(currplayer_gravity);
 		}
