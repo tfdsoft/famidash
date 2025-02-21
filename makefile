@@ -53,6 +53,7 @@ main: $(OUTDIR)/ $(OUTDIR)/$(NAME).nes
 all: main vs-sys b-sides
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
 
+vs-sys: LEVELSET = V #hopefully not for long
 vs-sys: CC65_DEFINES += -D__VS_SYSTEM=1
 vs-sys: CA65_DEFINES += -D__VS_SYSTEM=1
 vs-sys: OUTDIR = $(OUTDIR_PREFIX)/$@

@@ -58,7 +58,11 @@ uint8_t sprite_heights[]={
 	0x30,	0x10,	SPBH,	0x12,	0x12,	0x12,	0x12,	0x30,	// 58 - 5F
 	0x30,	0x30,	0x30,	0x30,	0x30,	0x02,	0x10,	SPBH,	// 60 - 67
 	0x10,	SPBH,	0x30,	0x30,	0x30,	0x20,	0x08,	0x00,	// 68 - 6F
+	#if !__VS_SYSTEM
 	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x00,	0x00,	0x00,	// 70 - 77
+	#else
+	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 70 - 77
+	#endif
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 78 - 7F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 88 - 8F
@@ -260,6 +264,7 @@ char sprite_load_special_behavior(){
 			case MASK_SPRITES_OFF:
 				disco_sprites = 0;
 				killSprite_return0;
+			#if !__VS_SYSTEM
 			case GRAVITY_13_PORTAL_INVIS:
 				gravity_mod = 1;
 				killSprite_return0;
@@ -275,6 +280,7 @@ char sprite_load_special_behavior(){
 			case GRAVITY_1X_PORTAL_INVIS:
 				gravity_mod = 0;
 				killSprite_return0;
+			#endif
 		#endif
 		case FORCED_FREECAM_ON:
 			nocamlockforced = 1;
@@ -660,8 +666,13 @@ void sprite_collide_lookup() {
 		&&spcl_rndmode,	&&spcl_grn_pad,	&&spcl_tlpt_pt,	&&spcl_default,	// 0x64 - 0x67
 		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tall_pt,	&&spcl_long_pt,	// 0x68 - 0x6B
 		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
+		#if !__VS_SYSTEM
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	//&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x74 - 0x77
+		#else
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
+		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x74 - 0x77
+		#endif
 		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x78 - 0x7B
 		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x7C - 0x7F
 	};

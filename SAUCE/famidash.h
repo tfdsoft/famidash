@@ -160,7 +160,9 @@ uint8_t exitingLevelSelect;
 uint8_t drawBarFlag;
 uint8_t exitPortalTimer;
 uint8_t menu_music;
+#if !__VS_SYSTEM
 uint8_t auto_practicepoints;
+#endif
 
 
 uint8_t jimsheatballalive[MAX_FIREBALLS]; //jims heatball shit
@@ -355,7 +357,9 @@ uint8_t dashing[2];
 
 uint8_t minicoins;
 
+#if !__VS_SYSTEM
 uint16_t auto_practicepoint_timer;
+#endif
 
 // Sprite Storage
 lohi_arr16_decl(activesprites_x, max_loaded_sprites);

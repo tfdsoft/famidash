@@ -85,8 +85,13 @@ void spider_eject() {
 #define LEFT_POS tmp7
 #define RIGHT_POS tmp9
 void spider_up_wait() {
+	#if !__VS_SYSTEM
 	LEFT_POS = Generic.x + low_word(scroll_x) + 3;
 	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 3;
+	#else
+	LEFT_POS = Generic.x + low_word(scroll_x) + 6;
+	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 6;
+	#endif
 	do {
 		high_byte(currplayer_y) -= 0x08;
 		crossPRGBankJump0(do_the_scroll_thing);
@@ -99,8 +104,13 @@ void spider_up_wait() {
 }			
 
 void spider_down_wait() {
+	#if !__VS_SYSTEM
 	LEFT_POS = Generic.x + low_word(scroll_x) + 3;
 	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 3;
+	#else
+	LEFT_POS = Generic.x + low_word(scroll_x) + 6;
+	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 6;
+	#endif
 	do {
 		high_byte(currplayer_y) += 0x08;
 		crossPRGBankJump0(do_the_scroll_thing);

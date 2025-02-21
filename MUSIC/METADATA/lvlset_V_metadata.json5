@@ -1,0 +1,514 @@
+{
+	songs: [
+		{
+			fmsSongName: "Menu Theme",
+			lowerText: "MENU",
+			vsSystemEnabled: false,
+			nsfData: {
+				trackLabel: "Menu Theme",
+				trackAuthor: {
+					original: "RobTop",
+					cover: "Zenith302"
+				},
+				durationNTSC: 30017,
+				durationPAL: 36080,
+				looped: true
+			}
+		},
+		{
+			fmsSongName: "Stereo Madness",
+			upperText: "STEREO ",
+			lowerText: "MADNESS",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Stereo Madness",
+				trackAuthor: {
+					original: "ForeverBound",
+					cover: "Zenith302, UserSniper"
+				},
+				durationNTSC: 85550,
+				durationPAL: 102840
+			}
+		},
+		{
+			fmsSongName: "Back on Track",
+			upperText: "BACK ON",
+			lowerText: "TRACK",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Back On Track",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "aquamarine.gay"
+				},
+				durationNTSC: 82817,
+				durationPAL: 99540
+			}
+		},
+		{
+			fmsSongName: "Polargeist",
+			lowerText: "POLARGEIST",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Polargeist",
+				trackAuthor: {
+					original: "Step",
+					cover: "UserSniper, Zenith302, Vikrinox"
+				},
+				durationNTSC: 90700,
+				durationPAL: 109000
+			}
+		},
+		{
+			fmsSongName: "Dry Out",
+			lowerText: "DRY OUT",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Dry Out",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "UserSniper"
+				},
+				durationNTSC: 81433,
+				durationPAL: 97880
+			}
+		},
+		{
+			fmsSongName: "Base after Base",
+			upperText: "BASE AFTER",
+			lowerText: "BASE",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Base After Base",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "Zenith302, UserSniper, Vikrinox, alexmush"
+				},
+				durationNTSC: 85000,
+				durationPAL: 102160
+			}
+		},
+		{
+			fmsSongName: "Can't Let Go",
+			lowerText: "CANT LET GO",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Cant Let Go ~ Can't Let Go",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "UserSniper, alexmush"
+				},
+				durationNTSC: 80750,
+				durationPAL: 97040
+			}
+		},
+		{
+			fmsSongName: "Jumper",
+			lowerText: "JUMPER",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Jumper",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "zukinnyk, UserSniper, Zenith302"
+				},
+				durationNTSC: 86467,
+				durationPAL: 104100
+			}
+		},
+		{
+			fmsSongName: "Time Machine",
+			lowerText: "TIME MACHINE",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Time Machine",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "Zenith302, Vikrinox, alexmush"
+				},
+				durationNTSC: 96067,
+				durationPAL: 115460
+			}
+		},
+		{
+			fmsSongName: "Cycles",
+			lowerText: "CYCLES",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Cycles",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "aquamarine.gay, alexmush"
+				},
+				durationNTSC: 85933,
+				durationPAL: 103280
+			}
+		},
+		{
+			fmsSongName: "xStep",
+			lowerText: "XSTEP",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "xStep",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "Vikrinox, alexmush"
+				},
+				durationNTSC: 82350,
+				durationPAL: 98980
+			}
+		},
+		{
+			fmsSongName: "Clutterfunk",
+			lowerText: "CLUTTERFUNK",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Clutterfunk",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "Zenith302, aquamarine.gay, Vikrinox"
+				},
+				durationNTSC: 96583,
+				durationPAL: 116080
+			}
+		},
+		{
+			fmsSongName: "Theory of Everything",
+			upperText: "THEORY OF",
+			lowerText: "EVERYTHING",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Theory Of Everything",
+				trackAuthor: {
+					original: "Dj-Nate",
+					cover: "leejh20, UserSniper, Vikrinox, Zenith302"
+				},
+				durationNTSC: 89000,
+				durationPAL: 106960
+			}
+		},
+		{
+			fmsSongName: "Electroman Adventures",
+			upperText: "ELECTROMAN",
+			lowerText: "ADVENTURES",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Electroman Adventures",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "cloud54, UserSniper, alexmush"
+				},
+				durationNTSC: 87800,
+				durationPAL: 105520
+			}
+		},
+		{
+			fmsSongName: "Clubstep",
+			lowerText: "CLUBSTEP",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Electrodynamix",
+			lowerText: "ELECTRODYNAMIX",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Hexagon Force [VS-System]",
+			upperText: "HEXAGON",
+			lowerText: "FORCE",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Blast processing",
+			upperText: "BLAST",
+			lowerText: "PROCESSING",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "TOE 2",
+			upperText: "THEORY OF",
+			lowerText: "EVERYTHING 2",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Geometrical Dominator",
+			upperText: "GEOMETRICAL",
+			lowerText: "DOMINATOR",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Deadlocked",
+			lowerText: "DEADLOCKED",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Fingerdash",
+			lowerText: "FINGERDASH",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Dash",
+			lowerText: "DASH",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "endgame",
+			lowerText: "DECODE",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Decode ~ Endgame",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "Vikrinox"
+				},
+				durationNTSC: 79283,
+				durationPAL: 95280
+			}
+		},
+		{
+			fmsSongName: "Practice",
+			lowerText: "PRACTICE",
+			vsSystemEnabled: false,
+			nsfData: {
+				trackLabel: "Practice ~ Stay Inside Me",
+				trackAuthor: {
+					original: "OcularNebula",
+					cover: "UserSniper"
+				},
+				durationNTSC: 239817,
+				durationPAL: 288380,
+				looped: true
+			}
+		},
+		{
+			fmsSongName: "retray",
+			lowerText: "RETRAY",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "infernoplex",
+			lowerText: "INFERNOPLEX",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Problematic",
+			lowerText: "PROBLEMATIC",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Stereo madness 2",
+			upperText: "STEREO ",
+			lowerText: "MADNESS 2",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "eon [VS-System]",
+			lowerText: "EON",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Death Moon",
+			lowerText: "DEATH MOON",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Scheming Weasel",
+			upperText: "SCHEMING",
+			lowerText: "WEASEL",
+			vsSystemEnabled: false
+		},
+		{
+			fmsSongName: "The Challenge",
+			upperText: "THE",
+			lowerText: "CHALLENGE",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "atthespeedoflight",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "atthespeedoflight2",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT 2",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "midnight",
+			lowerText: "MIDNIGHT",
+			vsSystemEnabled: true
+		},
+		/*
+		{	
+			fmsSongName: "crackdown",
+			upperText: "OKIBA",
+			lowerText: "CRACKDOWN",
+			vsSystemEnabled: true
+		},
+		*/
+		{
+			fmsSongName: "stalemate",
+			lowerText: "STALEMATE",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "haunted woods",
+			lowerText: "HAUNTED WOODS",
+			vsSystemEnabled: true
+		},
+		/*
+		{
+			fmsSongName: "chaozfantasy",
+			lowerText: "CHAOZ FANTASY",
+			vsSystemEnabled: true
+		},
+		*/
+		{
+			fmsSongName: "just right",
+			lowerText: "JUST RIGHT",
+			vsSystemEnabled: false
+		},
+		{
+			fmsSongName: "against the odds redux",
+			upperText: "8 BIT AGAINST",
+			lowerText: "THE ODDS REDUX",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "Driving By Night",
+			upperText: "DRIVING BY",
+			lowerText: "NIGHT",
+			vsSystemEnabled: true
+		}
+	],
+	SFX: [
+		{
+			text: "DEATH",
+			nsfData: {
+				trackLabel: "Death SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 383,
+				durationPAL: 460
+			}
+		},
+		{
+			text: "CLICK",
+			nsfData: {
+				trackLabel: "Click SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 50,
+				durationPAL: 40
+			}
+		},
+		{
+			text: "LEVEL COMPLETE",
+			nsfData: {
+				trackLabel: "LEVEL COMPLETE! SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 3167,
+				durationPAL: 3020
+			}
+		},
+		{
+			text: "COIN",
+			nsfData: {
+				trackLabel: "Coin SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 683,
+				durationPAL: 700
+			}
+		},
+		{
+			text: "CHEST OPEN",
+			nsfData: {
+				trackLabel: "Chest Open SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 100,
+				durationPAL: 120
+			}
+		},
+		{
+			text: "ORBS",
+			nsfData: {
+				trackLabel: "Orbs SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 683,
+				durationPAL: 820
+			}
+		},
+		{
+			text: "DIAMONDS",
+			nsfData: {
+				trackLabel: "Diamonds SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 683,
+				durationPAL: 820
+			}
+		},
+		{
+			text: "EXIT LEVEL",
+			nsfData: {
+				trackLabel: "Exit Level SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 650,
+				durationPAL: 680
+			}
+		},
+		{
+			text: "START LEVEL",
+			nsfData: {
+				trackLabel: "Start Level SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 967,
+				durationPAL: 920
+			}
+		},
+		{
+			text: "INVALID",
+			nsfData: {
+				trackLabel: "Invalid SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 633,
+				durationPAL: 640
+			}
+		},
+		{
+			text: "ACHIEVEMENT GET",
+			nsfData: {
+				trackLabel: "Achievement Get SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 950,
+				durationPAL: 1140
+			}
+		}
+	],
+	PCM: [
+		{
+			segment: "PCM_BANK",
+			path: "MUSIC/PCM/SSDPCM2-geometryDash.pcm",
+			sampleRateNTSC: 4,
+			sampleRatePAL: 3,
+			nsfData: {
+				trackLabel: "Geometry Dash Voice Clip",
+				trackAuthor: "VA: MDK",
+				durationNTSC: 1150,
+				durationPAL: 1100
+			}
+		},
+		{
+			segment: "PCM_BANK_B",
+			path: "MUSIC/PCM/SSDPCM2-fire.pcm",
+			sampleRateNTSC: 10,
+			sampleRatePAL: 8,
+			nsfData: {
+				trackLabel: "FIRE IN THE HOLE! Voice Clip",
+				trackAuthor: "VA: Joe",
+				durationNTSC: 1650,
+				durationPAL: 1650
+			}
+		}
+	],
+	dpcmAligner: "dpcm"
+}

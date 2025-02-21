@@ -7,7 +7,9 @@ void reset_level() {
 	// unsigned char i;
 	if (!practice_point_count) famistudio_music_stop();
 
+	#if !__VS_SYSTEM
 	gameState = 0x02; //fix for dying as the end trigger triggers
+	#endif
 	// slope stuff
 	currplayer_was_on_slope_counter = 0;
 	was_on_slope_counter[0] = 0;

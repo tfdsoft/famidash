@@ -207,6 +207,8 @@ void setdefaultoptions() {
 	invisblocks = 0;
 	cam_seesaw = 0;
 	menu_music = 0;
+	#if !__VS_SYSTEM
 	auto_practicepoints = 1;
+	#endif
 	return;
 }
