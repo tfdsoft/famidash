@@ -1,6 +1,7 @@
 
 CODE_BANK_PUSH("XCD_BANK_01")
 
+void bigboi_stuff();
 void ufo_ship_eject();
 void ship_movement(){
 
@@ -23,27 +24,7 @@ void ship_movement(){
 	
 	ufo_ship_eject();
 
-	if (bigboi) {
-			Generic.y -= 15;
-			ufo_ship_eject();
-		
-			Generic.x += 15;
-			ufo_ship_eject();
-
-			Generic.y += 15;
-			ufo_ship_eject();
-	}
-	else {
-		if (tallmode) {
-			Generic.y = high_byte(currplayer_y) - 15;
-			ufo_ship_eject();
-		}	
-		if (longmode) {
-			Generic.x += 15;
-			Generic.y = high_byte(currplayer_y);
-			ufo_ship_eject();
-		}	
-	}		
+	bigboi_stuff();
 
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
@@ -52,16 +33,16 @@ void ship_movement(){
 	if(controllingplayer->a || controllingplayer->up) {
 		if (!currplayer_mini) {
 			if (!currplayer_gravity){
-			    currplayer_vel_y -= SHIP_GRAVITY<<1;
+			    currplayer_vel_y -= gravity_big<<1;
 				} else {
-			    currplayer_vel_y += SHIP_GRAVITY<<1;
+			    currplayer_vel_y += gravity_big<<1;
 			}
 		}
 		else {
 			if (!currplayer_gravity){
-			    currplayer_vel_y -= MINI_SHIP_GRAVITY<<1;
+			    currplayer_vel_y -= gravity_mini<<1;
 				} else {
-			    currplayer_vel_y += MINI_SHIP_GRAVITY<<1;
+			    currplayer_vel_y += gravity_mini<<1;
 			}
 		}
 	}	
