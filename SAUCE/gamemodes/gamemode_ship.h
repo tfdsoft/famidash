@@ -1,9 +1,7 @@
 
 CODE_BANK_PUSH("XCD_BANK_01")
 
-#if !__VS_SYSTEM
 void bigboi_stuff();
-#endif
 void ufo_ship_eject();
 void ship_movement(){
 
@@ -11,12 +9,10 @@ void ship_movement(){
 	fallspeed_mini = MINI_SHIP_MAX_FALLSPEED;
 	gravity_big = SHIP_GRAVITY;
 	gravity_mini = MINI_SHIP_GRAVITY;
-	#if !__VS_SYSTEM
 	if (controllingplayer->a || controllingplayer->up) {
 		gravity_big = (gravity_big / 5) * 6;
 		gravity_mini = (gravity_mini / 5) * 6;
 	}
-	#endif
 	common_gravity_routine();
 
 	if(currplayer_vel_y > (!currplayer_mini ? fallspeed_big : fallspeed_mini)) currplayer_vel_y -= (!mini ? gravity_big : gravity_mini);
@@ -28,31 +24,7 @@ void ship_movement(){
 	
 	ufo_ship_eject();
 
-	#if !__VS_SYSTEM
 	bigboi_stuff();
-	#else
-	if (bigboi) {
-			Generic.y -= 15;
-			ufo_ship_eject();
-		
-			Generic.x += 15;
-			ufo_ship_eject();
-
-			Generic.y += 15;
-			ufo_ship_eject();
-	}
-	else {
-		if (tallmode) {
-			Generic.y = high_byte(currplayer_y) - 15;
-			ufo_ship_eject();
-		}	
-		if (longmode) {
-			Generic.x += 15;
-			Generic.y = high_byte(currplayer_y);
-			ufo_ship_eject();
-		}	
-	}		
-	#endif
 
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
@@ -61,28 +33,16 @@ void ship_movement(){
 	if(controllingplayer->a || controllingplayer->up) {
 		if (!currplayer_mini) {
 			if (!currplayer_gravity){
-				#if !__VS_SYSTEM
 			    currplayer_vel_y -= gravity_big<<1;
 				} else {
 			    currplayer_vel_y += gravity_big<<1;
-			    #else
-			    currplayer_vel_y -= SHIP_GRAVITY<<1;
-				} else {
-			    currplayer_vel_y += SHIP_GRAVITY<<1;
-			    #endif
 			}
 		}
 		else {
 			if (!currplayer_gravity){
-				#if !__VS_SYSTEM
 			    currplayer_vel_y -= gravity_mini<<1;
 				} else {
 			    currplayer_vel_y += gravity_mini<<1;
-			    #else
-			    currplayer_vel_y -= MINI_SHIP_GRAVITY<<1;
-				} else {
-			    currplayer_vel_y += MINI_SHIP_GRAVITY<<1;
-			    #endif
 			}
 		}
 	}	
@@ -102,5 +62,35 @@ void ufo_ship_eject() {
 		}
 	//}
 }	
+#if __VS_SYSTEM
+void bigboi_stuff() {
+	if (bigboi) {
+			Generic.y -= 15;
 
+			ufo_ship_eject();		
+		
+			Generic.x += 15;
+
+			ufo_ship_eject();
+
+			Generic.y += 15;
+
+			ufo_ship_eject();			
+	}
+
+	else {
+		if (tallmode) {
+			Generic.y -= 15;
+
+			ufo_ship_eject();
+		}
+		if (longmode) {
+			Generic.x += 15;
+			Generic.y = high_byte(currplayer_y);
+
+			ufo_ship_eject();
+		}
+	}
+}
+#endif
 CODE_BANK_POP()
