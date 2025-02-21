@@ -314,7 +314,7 @@ const unsigned char difficulty_list[] = {
 //    DEMON, //eon
 //    DEMON, //pg clubstep
     DEMON, //stalemate
-    DEMON, //bloodbath
+//    DEMON, //bloodbath
 //    DEMON, //cataclysm
     DEMON, //lucky draw
     DEMON,
@@ -368,7 +368,7 @@ const unsigned char stars_list[] = {
 //	10, //eon
 //	10, //pg clubstep
 	10, //stalemate
-	10, //bloodbath
+//	10, //bloodbath
 //	10, //cataclysm
 	10, // lucky draw
 	0,
