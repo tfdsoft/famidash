@@ -75,16 +75,16 @@ eon_no_parallax  = 1
 eon_bg_color    = $0F
 eon_grnd_color  = $0F
 
-dearnostalgists_song_number = song_crackdown
-dearnostalgists_game_mode   = $00
-dearnostalgists_speed       = $02
-dearnostalgists_no_parallax  = 1
-dearnostalgists_bg_color    = $2C
-dearnostalgists_grnd_color  = $1C
-
 ninox_song_number = song_ninox
 ninox_game_mode   = $00
 ninox_speed       = $00
 ninox_no_parallax  = 0
 ninox_bg_color    = $12
 ninox_grnd_color  = $02
+
+bloodbath_song_number = song_atthespeedoflight2
+bloodbath_game_mode   = $00
+bloodbath_speed       = $00
+bloodbath_no_parallax  = 1
+bloodbath_bg_color    = $0F
+bloodbath_grnd_color  = $0F

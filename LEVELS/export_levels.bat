@@ -8,11 +8,11 @@ SET all_levels= ^
     leveleasy ^
     ninox ^
     supercycles ^
-    dearnostalgists ^
     clutterfunk2 ^
     speedracer ^
     pgclubstep ^
     eon ^
+    bloodbath ^
     cataclysm ^
     aftermath ^
     aftercatabath ^

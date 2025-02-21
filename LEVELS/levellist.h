@@ -54,11 +54,11 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //level easy
 	DECOCLOUD, //ninox
 	DECO1, //super cycles
-	EXTRASPRITES1, //dear nostalgists
 	DECO1, //clutterfunk 2
 	EXTRASPRITES1, //speed racer
 	DECO1, //pg clubstep
 	EXTRASPRITES1, //eon
+	DECOCLOUD, //bloodbath
 	DECO1, //cataclysm
 	DECO1, //aftermath
 	DECO1, //aftercatabath
@@ -70,11 +70,11 @@ const unsigned char spike_set[] = {
 	SPIKESA, //level easy
 	SPIKESB, //ninox
 	SPIKESA, //super cycles
-	SPIKESC, //dear nostalgists
 	SPIKESA, //clutterfunk 2
 	SPIKESA, //speed racer
 	SPIKESA, //pg clubstep
 	SPIKESB, //eon
+	SPIKESC, //bloodbath
 	SPIKESC, //cataclysm
 	SPIKESC, //aftermath
 	SPIKESC, //aftercatabath
@@ -86,11 +86,11 @@ const unsigned char block_set[] = {
 	BLOCKSA, //level easy
 	BLOCKSC, //ninox
 	BLOCKSB, //super cycles
-	BLOCKSA, //dear nostalgists
 	BLOCKSB, //clutterfunk 2
 	BLOCKSB, //speed racer
 	BLOCKSB, //pg clubstep
 	BLOCKSA, //eon
+	BLOCKSB, //bloodbath
 	BLOCKSB, //cataclysm
 	BLOCKSB, //aftermath
 	BLOCKSB, //aftercatabath
@@ -102,11 +102,11 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //level easy
 	SAWBLADESA, //ninox
 	SAWBLADESA, //super cycles
-	SAWBLADESA, //dear nostalgists
 	SAWBLADESA, //clutterfunk 2
 	SAWBLADESA, //speed racer
 	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //eon
+	SAWBLADESA, //bloodbath
 	SAWBLADESA, //cataclysm
 	SAWBLADESA, //aftermath
 	SAWBLADESA, //aftercatabath
@@ -119,11 +119,11 @@ const unsigned char difficulty_list[] = {
     NORMAL, //level easy
     NORMAL, //ninox
     DEMON, //super cycles
-    DEMON, //dear nostalgists
     DEMON, //clutterfunk 2
     DEMON, //speed racer
     DEMON, //pg clubstep
     DEMON, //eon
+    DEMON, //bloodbath
     DEMON, //cataclysm
     DEMON, //aftermath
     DEMON, //aftercatabath
@@ -134,13 +134,12 @@ const unsigned char stars_list[] = {
 	1,
 	3,   //level easy
 	3,   //ninox
-//	10, //dear nostlagists
 	10, //super cycles
-	10, //dear nostalgists
 	10, //clutterfunk 2
 	10, //speed racer
 	10, //pg clubstep
 	10, //eon
+	10, //bloodbath
 	10, //cataclysm
 	10, //aftermath
 	10, //aftercatabath
