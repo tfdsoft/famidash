@@ -44,10 +44,10 @@
 #define demonpark 35
 #define deathmoon 36
 #define decode 37
-#define problematic 38
-#define firetemple 39
-#define foresttemple 40
-#define stalemate 41
-#define bloodbath 42
+#define dearnostalgists 38
+#define problematic 39
+#define firetemple 40
+#define foresttemple 41
+#define stalemate 42
 #define luckydraw 43
 #define test4 44

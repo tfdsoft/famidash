@@ -267,6 +267,13 @@ decode_no_parallax = 1
 decode_bg_color    = $16
 decode_grnd_color  = $06
 
+dearnostalgists_song_number = song_crackdown
+dearnostalgists_game_mode   = 0
+dearnostalgists_speed       = 2
+dearnostalgists_no_parallax = 1
+dearnostalgists_bg_color    = $2C
+dearnostalgists_grnd_color  = $1C
+
 problematic_song_number = song_problematic
 problematic_game_mode   = 0
 problematic_speed       = 0
@@ -294,13 +301,6 @@ stalemate_speed       = 0
 stalemate_no_parallax = 1
 stalemate_bg_color    = $0F
 stalemate_grnd_color  = $0F
-
-bloodbath_song_number = song_atthespeedoflight2
-bloodbath_game_mode   = 0
-bloodbath_speed       = 0
-bloodbath_no_parallax = 1
-bloodbath_bg_color    = $0F
-bloodbath_grnd_color  = $0F
 
 luckydraw_song_number = song_electroman_adventures
 luckydraw_game_mode   = 0

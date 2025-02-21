@@ -40,11 +40,11 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// demonpark
 	DECO1,	// deathmoon
 	DECOCLOUD,	// decode
+	EXTRASPRITES1,	// dearnostalgists
 	DECO1,	// problematic
 	DECO1,	// firetemple
 	DECO1,	// foresttemple
 	DECO1,	// stalemate
-	DECOCLOUD,	// bloodbath
 	DECOCLOUD,	// luckydraw
 	EXTRASPRITES1,	// test4
 };
@@ -88,11 +88,11 @@ const uint8_t spike_set[] = {
 	SPIKESC,	// demonpark
 	SPIKESB,	// deathmoon
 	SPIKESB,	// decode
+	SPIKESC,	// dearnostalgists
 	SPIKESB,	// problematic
 	SPIKESB,	// firetemple
 	SPIKESB,	// foresttemple
 	SPIKESA,	// stalemate
-	SPIKESC,	// bloodbath
 	SPIKESB,	// luckydraw
 	SPIKESA,	// test4
 };
@@ -137,11 +137,11 @@ const uint8_t block_set[] = {
 	BLOCKSA,	// demonpark
 	BLOCKSB,	// deathmoon
 	BLOCKSB,	// decode
+	BLOCKSA,	// dearnostalgists
 	BLOCKSB,	// problematic
 	BLOCKSB,	// firetemple
 	BLOCKSB,	// foresttemple
 	BLOCKSB,	// stalemate
-	BLOCKSB,	// bloodbath
 	BLOCKSB,	// luckydraw
 	BLOCKSB,	// test4
 };
@@ -185,11 +185,11 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// demonpark
 	SAWBLADESA,	// deathmoon
 	SAWBLADESA,	// decode
+	SAWBLADESA,	// dearnostalgists
 	SAWBLADESA,	// problematic
 	SAWBLADESA,	// firetemple
 	SAWBLADESA,	// foresttemple
 	SAWBLADESA,	// stalemate
-	SAWBLADESA,	// bloodbath
 	LETTERBANK,	// luckydraw
 	SAWBLADESA,	// test4
 };
@@ -242,11 +242,11 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// demonpark
 	DEMON,	// deathmoon
 	DEMON,	// decode
+	DEMON,	// dearnostalgists
 	DEMON,	// problematic
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
 	DEMON,	// stalemate
-	DEMON,	// bloodbath
 	DEMON,	// luckydraw
 	DEMON,	// test4
 };
@@ -290,11 +290,11 @@ const uint8_t stars_list[] = {
 	10,	// demonpark
 	10,	// deathmoon
 	10,	// decode
+	10,	// dearnostalgists
 	10,	// problematic
 	10,	// firetemple
 	10,	// foresttemple
 	10,	// stalemate
-	10,	// bloodbath
 	10,	// luckydraw
 	0,	// test4
 };

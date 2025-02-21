@@ -335,14 +335,12 @@
 			lowerText: "MIDNIGHT",
 			vsSystemEnabled: true
 		},
-		/*
 		{	
 			fmsSongName: "crackdown",
 			upperText: "OKIBA",
 			lowerText: "CRACKDOWN",
 			vsSystemEnabled: true
 		},
-		*/
 		{
 			fmsSongName: "stalemate",
 			lowerText: "STALEMATE",

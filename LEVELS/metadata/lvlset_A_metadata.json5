@@ -611,7 +611,7 @@
 			startingGroundColor: 0x06,
 			parallaxDisable: true
 		},
-		/*{
+		{
 			level: "dearnostalgists",
 			lowerText: " DEAR NOSTALGISTS",
 			decoType: "EXTRASPRITES1",
@@ -620,12 +620,13 @@
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: [UNSPECIFIED],
-			startingGameMode: [UNSPECIFIED],
-			startingSpeed: [UNSPECIFIED],
-			startingBackgroundColor: [UNSPECIFIED],
-			startingGroundColor: [UNSPECIFIED]
-		},*/
+			songID: "song_crackdown",
+			startingGameMode: 0,
+			startingSpeed: 2,
+			startingBackgroundColor: 0x2C,
+			startingGroundColor: 0x1C,
+			parallaxDisable: true
+		},
 		{
 			level: "problematic",
 			lowerText: "PROBLEMATIC",
@@ -690,7 +691,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
+		/*{
 			level: "bloodbath",
 			lowerText: "BLOODBATH",
 			decoType: "DECOCLOUD",
@@ -705,7 +706,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
-		},
+		},*/
 		{
 			level: "luckydraw",
 			lowerText: "LUCKY DRAW",

@@ -55,12 +55,13 @@ const char levelText30[13] = "THE NIGHTMARE";
 const char levelText31[10] = "DEMON PARK";
 const char levelText32[10] = "DEATH MOON";
 const char levelText33[ 6] = "DECODE";
-const char levelText34[11] = "PROBLEMATIC";
-const char levelText35[11] = "FIRE TEMPLE";
-const char levelText36[13] = "FOREST TEMPLE";
-const char levelText37[ 9] = "STALEMATE";
-const char levelText38[10] = "LUCKY DRAW";
-const char levelText39[ 5] = "TEST4";
+const char levelText34[17] = " DEAR NOSTALGISTS";
+const char levelText35[11] = "PROBLEMATIC";
+const char levelText36[11] = "FIRE TEMPLE";
+const char levelText37[13] = "FOREST TEMPLE";
+const char levelText38[ 9] = "STALEMATE";
+const char levelText39[10] = "LUCKY DRAW";
+const char levelText3A[ 5] = "TEST4";
 
 
 const char* const levelTextsUpper[] = {
@@ -203,9 +204,9 @@ const char* const levelTextsLower[] = {
 	levelText35,
 	levelText36,
 	levelText37,
-	levelText0B,
 	levelText38,
 	levelText39,
+	levelText3A,
 };
 
 const uint8_t levelTextsLowerSize[] = {
@@ -251,7 +252,7 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText35),
 	sizeof(levelText36),
 	sizeof(levelText37),
-	sizeof(levelText0B),
 	sizeof(levelText38),
 	sizeof(levelText39),
+	sizeof(levelText3A),
 };
