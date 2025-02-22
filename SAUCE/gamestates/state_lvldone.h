@@ -140,7 +140,9 @@ void state_lvldone() {
     ppu_off();
 
 	delay_spr_0 = 0x20;
-
+	#if __VS_SYSTEM
+	menutimer = 0;
+	#endif
 	current_state = 0;
 	// Set palettes back to natural colors since we aren't fading back in
 	pal_bright(4);
@@ -454,14 +456,15 @@ void state_lvldone() {
 				}
 			}
 
-			#if !__VS_SYSTEM	// Disable level restarting on VS system
+		#if !__VS_SYSTEM	// Disable level restarting on VS system
 			if (joypad1.press_left) { menuselection ^= 1; lvl_done_update(); }
 			if (joypad1.press_right) { menuselection ^= 1; lvl_done_update(); }
-			#endif
-			
 			if (joypad1.press_start || joypad1.press_a){
 				if (menuselection) {
-					
+		#else
+			if (joypad1.press_start || joypad1.press_a || menutimer == 2000){
+		#endif
+
 					sfx_play(sfx_exit_level, 0);
 					music_update();
 					gameState = 1;
@@ -471,6 +474,7 @@ void state_lvldone() {
 					//oam_clear();
 					menuMusicCurrentlyPlaying = 0;
 					return;
+			#if !__VS_SYSTEM
 				} else {
 					
 					sfx_play(sfx_start_level, 0);
@@ -483,9 +487,13 @@ void state_lvldone() {
 					//oam_clear();
 					return;
 				}
+			#endif
 			}
 
 
+		#if __VS_SYSTEM
+			menutimer++;
+		#endif
 
 		}
 		kandoframecnt++;

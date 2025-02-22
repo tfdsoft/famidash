@@ -511,7 +511,9 @@ void customize_screen() {
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	vram_adr(NAMETABLE_A);
 	vram_unrle(customizescreen);   	
-
+	#if __VS_SYSTEM
+	menutimer = 0;
+	#endif
 	kandokidshack = 0;
 	kandokidshack2 = 0;
 	tmp2 = 0;
@@ -565,6 +567,9 @@ void customize_screen() {
 
 		if (mouse.left_press || (mouse.left && hold_timer >= 15)) {
 //icon
+		#if __VS_SYSTEM
+		menutimer = 0;
+		#endif
 			if ((mouse.x >= 0x76 && mouse.x <= 0x83)) { 
 				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
 					icon++;
@@ -659,10 +664,16 @@ void customize_screen() {
 		if (settingvalue == 3 && !retro_mode) {
 			if (joypad1.press_up || (joypad1.up && hold_timer >= 15)) {
 				icon++;
+				#if __VS_SYSTEM
+				menutimer = 0;
+				#endif
 				if (icon > (MAX_ICONS - 1)) icon = 0;
 				hold_timer = 0;
 			}
 			if (joypad1.press_down || (joypad1.down && hold_timer >= 15)) {
+				#if __VS_SYSTEM
+				menutimer = 0;
+				#endif
 				if (icon == 0) icon = MAX_ICONS - 1;
 				else icon--;
 				hold_timer = 0;				
@@ -671,12 +682,18 @@ void customize_screen() {
 
 		if (joypad1.press_right) {
 			settingvalue++;
+			#if __VS_SYSTEM
+			menutimer = 0;
+			#endif
 			if (settingvalue == 4) settingvalue = 0;
 			tmp3--;
 		}
 		if (joypad1.press_left) {
 			if (settingvalue == 0) settingvalue = 3;
 			else settingvalue--;
+			#if __VS_SYSTEM
+			menutimer = 0;
+			#endif
 			tmp3++;
 		}
 
@@ -701,7 +718,10 @@ void customize_screen() {
 		}
 		dec_mouse_timer();
 		hold_timer++;
-						
+		#if __VS_SYSTEM
+		menutimer++;
+		if (menutimer == 2000) return;						
+		#endif
 	}
 #undef prev_icon
 }
