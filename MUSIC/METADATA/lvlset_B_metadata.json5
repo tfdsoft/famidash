@@ -211,6 +211,10 @@
 		{
 			fmsSongName: "Speed Racer",
 			lowerText: "SPEED RACER"
+		},
+		{
+			fmsSongName: "Magic Touch",
+			lowerText: "MAGIC TOUCH"
 		}
 	],
 	SFX: [

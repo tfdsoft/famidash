@@ -9,6 +9,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// clutterfunk2
 	EXTRASPRITES1,	// speedracer
 	DECO1,	// pgclubstep
+	DECO1,	// highlife
 	EXTRASPRITES1,	// eon
 	DECOCLOUD,	// bloodbath
 	DECO1,	// cataclysm
@@ -25,6 +26,7 @@ const uint8_t spike_set[] = {
 	SPIKESA,	// clutterfunk2
 	SPIKESA,	// speedracer
 	SPIKESA,	// pgclubstep
+	SPIKESA,	// highlife
 	SPIKESB,	// eon
 	SPIKESC,	// bloodbath
 	SPIKESC,	// cataclysm
@@ -42,6 +44,7 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// clutterfunk2
 	BLOCKSB,	// speedracer
 	BLOCKSB,	// pgclubstep
+	BLOCKSB,	// highlife
 	BLOCKSA,	// eon
 	BLOCKSB,	// bloodbath
 	BLOCKSB,	// cataclysm
@@ -58,6 +61,7 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// clutterfunk2
 	SAWBLADESA,	// speedracer
 	SAWBLADESA,	// pgclubstep
+	SAWBLADESA,	// highlife
 	SAWBLADESA,	// eon
 	SAWBLADESA,	// bloodbath
 	SAWBLADESA,	// cataclysm
@@ -83,6 +87,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
 	DEMON,	// pgclubstep
+	DEMON,	// highlife
 	DEMON,	// eon
 	DEMON,	// bloodbath
 	DEMON,	// cataclysm
@@ -99,6 +104,7 @@ const uint8_t stars_list[] = {
 	10,	// clutterfunk2
 	10,	// speedracer
 	10,	// pgclubstep
+	10,	// highlife
 	10,	// eon
 	10,	// bloodbath
 	10,	// cataclysm

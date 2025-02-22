@@ -50,6 +50,13 @@ pgclubstep_no_parallax = 0
 pgclubstep_bg_color    = $0F
 pgclubstep_grnd_color  = $0F
 
+highlife_song_number = song_magic_touch
+highlife_game_mode   = 0
+highlife_speed       = 1
+highlife_no_parallax = 1
+highlife_bg_color    = $0F
+highlife_grnd_color  = $0F
+
 eon_song_number = song_eon
 eon_game_mode   = 0
 eon_speed       = 1
