@@ -51,7 +51,7 @@ void state_lvldone() {
     ppu_off();
 
 	delay_spr_0 = 0x20;
-
+	menutimer = 0;
 	current_state = 0;
 	// Set palettes back to natural colors since we aren't fading back in
 	pal_bright(4);
@@ -361,9 +361,7 @@ void state_lvldone() {
 
 			//if (joypad1.press_left) { menuselection ^= 1; lvl_done_update(); }
 			//if (joypad1.press_right) { menuselection ^= 1; lvl_done_update(); }
-			if (joypad1.press_start || joypad1.press_a){
-				if (menuselection) {
-					
+			if (joypad1.press_start || joypad1.press_a || menutimer == 2000){
 					sfx_play(sfx_exit_level, 0);
 					music_update();
 					gameState = 1;
@@ -373,21 +371,10 @@ void state_lvldone() {
 					//oam_clear();
 					menuMusicCurrentlyPlaying = 0;
 					return;
-				} else {
-					
-					sfx_play(sfx_start_level, 0);
-					gameState = 2;
-					pal_fade_to_withmusic(4,0);
-					memfill(attemptCounter, 0, sizeof(attemptCounter));
-					coins = 0;
-
-
-					//oam_clear();
-					return;
-				}
 			}
 
-
+			menutimer++;
+			
 
 		}
 		kandoframecnt++;
