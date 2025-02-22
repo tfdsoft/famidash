@@ -2870,7 +2870,7 @@ sprite_data_xstep:
   .byte $80,$34,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_21"
+.segment "DAT_BANK_19"
 sprite_data_clutterfunk:
   .byte $60,$01,$88,$03,$0a
   .byte $b0,$01,$70,$03,$0b
@@ -8862,7 +8862,7 @@ sprite_data_lookatthislevel:
   .byte $90,$23,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_19"
+.segment "DAT_BANK_20"
 sprite_data_kappaclysm:
   .byte $00,$00,$50,$03,$8f
   .byte $00,$00,$60,$03,$b6
@@ -13493,12 +13493,18 @@ sprite_data_dearnostalgists:
   .byte $40,$27,$f0,$02,$80
   .byte $40,$27,$20,$03,$fe
   .byte $40,$27,$38,$03,$fd
+  .byte $50,$27,$10,$03,$fa
   .byte $50,$27,$20,$03,$fe
   .byte $50,$27,$38,$03,$fd
+  .byte $50,$27,$40,$03,$fa
+  .byte $60,$27,$10,$03,$fa
   .byte $60,$27,$20,$03,$fe
   .byte $60,$27,$30,$03,$fb
+  .byte $60,$27,$40,$03,$fa
+  .byte $70,$27,$10,$03,$fa
   .byte $70,$27,$20,$03,$fe
   .byte $70,$27,$30,$03,$fc
+  .byte $80,$27,$20,$03,$fe
   .byte $90,$27,$f0,$02,$81
   .byte $90,$27,$40,$03,$00
   .byte $d0,$27,$30,$03,$03
@@ -13575,7 +13581,7 @@ sprite_data_dearnostalgists:
   .byte $e0,$37,$10,$03,$02
   .byte $40,$38,$38,$03,$0a
   .byte $a0,$38,$50,$03,$13
-  .byte $f0,$38,$30,$03,$27
+  .byte $e0,$38,$30,$03,$27
   .byte $40,$39,$40,$03,$0b
   .byte $60,$39,$00,$03,$03
   .byte $00,$3a,$10,$03,$97
@@ -13672,6 +13678,8 @@ sprite_data_dearnostalgists:
   .byte $30,$4d,$f0,$02,$0b
   .byte $b0,$4d,$e0,$02,$01
   .byte $b0,$4d,$f0,$02,$14
+  .byte $b0,$4d,$00,$03,$01
+  .byte $b0,$4d,$10,$03,$14
   .byte $20,$4e,$00,$03,$97
   .byte $40,$4e,$00,$03,$9c
   .byte $60,$4e,$00,$03,$8c
@@ -13884,6 +13892,7 @@ sprite_data_dearnostalgists:
   .byte $10,$7b,$10,$03,$4e
   .byte $20,$7b,$d0,$02,$04
   .byte $20,$7b,$e0,$02,$20
+  .byte $30,$7b,$d0,$02,$08
   .byte $70,$7b,$00,$03,$8f
   .byte $c0,$7b,$00,$03,$a5
   .byte $00,$7c,$a0,$02,$01
@@ -14676,7 +14685,7 @@ sprite_data_foresttemple:
   .byte $90,$37,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_20"
+.segment "DAT_BANK_21"
 sprite_data_stalemate:
   .byte $00,$00,$30,$03,$b7
   .byte $00,$00,$40,$03,$80
