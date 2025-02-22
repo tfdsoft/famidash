@@ -28,12 +28,14 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |---|---|
 |[Zephyrside](https://github.com/zephyrside)/[UserSniper](https://github.com/usersniper)|project creator, former lead developer, code, music, graphics|
 |[kandowontu](https://github.com/kandowontu)|director, current lead developer, maintainer|
-|[AleFunky](https://github.com/PinguLinux)|code, levels, testing, bugfixes|
 |[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
 |[alexmush](https://github.com/ADM228)|code, asm, code optimisation, music|
 |[jroweboy](https://github.com/jroweboy)|graphics, code optimisation, parallax, menu, etc|
 |[Zenith](https://github.com/ZenithNeko)|music, graphics|
 |[jaezu](https://github.com/jaezudev)|i'm solely here because of kando's orders|
+|[ElAngel378](https://github.com/ElAngel378)|music|
+|[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music|
+|[KawaiiDawn](https://github.com/Astroclimber26)|levels|
 
 ### additional staff
 
@@ -47,13 +49,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |cloud54|various music tracks and art|
 |[RedGD](https://github.com/RedGeometryDash)|icons, graphics|
 |[AnnoyedArt1256](https://github.com/AnnoyedArt1256)|level compression asm|
-|[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music|
 |[sussysy](https://github.com/VECTREX45)|music|
-|[KawaiiDawn](https://github.com/Astroclimber26)|levels|
 |[Crafty Jumper](https://github.com/Crafty-Jumper)|levels, music|
 |[banana6000](https://github.com/xXFamidash_Fan69Xx)|icons, levels|
 |[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
-|[ElAngel378](https://github.com/ElAngel378)|music|
+|[AleFunky](https://github.com/PinguLinux)|code, levels, testing, bugfixes|
 |NerdBoy628|levels, music|
 |blacecaptainn|icon contest winner|
 |dtpls|icon contest winner|
