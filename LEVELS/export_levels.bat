@@ -7,11 +7,11 @@ SET all_levels= ^
     stereomadness ^
     leveleasy ^
     ninox ^
+    highlife ^
     supercycles ^
     clutterfunk2 ^
     speedracer ^
     pgclubstep ^
-    highlife ^
     eon ^
     bloodbath ^
     cataclysm ^

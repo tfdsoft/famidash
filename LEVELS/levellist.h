@@ -53,11 +53,11 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //sm
 	DECO1, //level easy
 	DECOCLOUD, //ninox
+	DECO1, //high life
 	DECO1, //super cycles
 	DECO1, //clutterfunk 2
 	EXTRASPRITES1, //speed racer
 	DECO1, //pg clubstep
-	DECO1, //high life
 	EXTRASPRITES1, //eon
 	DECOCLOUD, //bloodbath
 	DECO1, //cataclysm
@@ -70,11 +70,11 @@ const unsigned char spike_set[] = {
 	SPIKESA, //stereo madness
 	SPIKESA, //level easy
 	SPIKESB, //ninox
+	SPIKESA, //high life
 	SPIKESA, //super cycles
 	SPIKESA, //clutterfunk 2
 	SPIKESA, //speed racer
 	SPIKESA, //pg clubstep
-	SPIKESA, //high life
 	SPIKESB, //eon
 	SPIKESC, //bloodbath
 	SPIKESC, //cataclysm
@@ -87,11 +87,11 @@ const unsigned char block_set[] = {
 	BLOCKSA, //stereo madness
 	BLOCKSA, //level easy
 	BLOCKSC, //ninox
+	BLOCKSB, //high life
 	BLOCKSB, //super cycles
 	BLOCKSB, //clutterfunk 2
 	BLOCKSB, //speed racer
 	BLOCKSB, //pg clubstep
-	BLOCKSB, //high life
 	BLOCKSA, //eon
 	BLOCKSB, //bloodbath
 	BLOCKSB, //cataclysm
@@ -104,11 +104,11 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //stereo madness
 	SAWBLADESA, //level easy
 	SAWBLADESA, //ninox
+	SAWBLADESA, //high life
 	SAWBLADESA, //super cycles
 	SAWBLADESA, //clutterfunk 2
 	SAWBLADESA, //speed racer
 	SAWBLADESA, //PG CLUBSTEP
-	SAWBLADESA, //high life
 	SAWBLADESA, //eon
 	SAWBLADESA, //bloodbath
 	SAWBLADESA, //cataclysm
@@ -122,11 +122,11 @@ const unsigned char difficulty_list[] = {
     EASY,
     NORMAL, //level easy
     NORMAL, //ninox
+    DEMON, //high life
     DEMON, //super cycles
     DEMON, //clutterfunk 2
     DEMON, //speed racer
     DEMON, //pg clubstep
-    DEMON, //high life
     DEMON, //eon
     DEMON, //bloodbath
     DEMON, //cataclysm
@@ -139,11 +139,11 @@ const unsigned char stars_list[] = {
 	1,
 	3,   //level easy
 	3,   //ninox
+	9, //high life
 	10, //super cycles
 	10, //clutterfunk 2
 	10, //speed racer
 	10, //pg clubstep
-	10, //high life
 	10, //eon
 	10, //bloodbath
 	10, //cataclysm
