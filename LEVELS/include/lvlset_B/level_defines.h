@@ -9,11 +9,11 @@
 #define stereomadness 0
 #define leveleasy 1
 #define ninox 2
-#define supercycles 3
-#define clutterfunk2 4
-#define speedracer 5
-#define pgclubstep 6
-#define highlife 7
+#define highlife 3
+#define supercycles 4
+#define clutterfunk2 5
+#define speedracer 6
+#define pgclubstep 7
 #define eon 8
 #define bloodbath 9
 #define cataclysm 10

@@ -22,6 +22,13 @@ ninox_no_parallax = 0
 ninox_bg_color    = $12
 ninox_grnd_color  = $02
 
+highlife_song_number = song_magic_touch
+highlife_game_mode   = 0
+highlife_speed       = 1
+highlife_no_parallax = 1
+highlife_bg_color    = $0F
+highlife_grnd_color  = $0F
+
 supercycles_song_number = song_cycles
 supercycles_game_mode   = 0
 supercycles_speed       = 0
@@ -49,13 +56,6 @@ pgclubstep_speed       = 0
 pgclubstep_no_parallax = 0
 pgclubstep_bg_color    = $0F
 pgclubstep_grnd_color  = $0F
-
-highlife_song_number = song_magic_touch
-highlife_game_mode   = 0
-highlife_speed       = 1
-highlife_no_parallax = 1
-highlife_bg_color    = $0F
-highlife_grnd_color  = $0F
 
 eon_song_number = song_eon
 eon_game_mode   = 0

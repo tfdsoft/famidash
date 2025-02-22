@@ -49,6 +49,22 @@
 			startingGroundColor: 0x02
 		},
 		{
+			level: "highlife",
+			lowerText: "HIGH LIFE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 9,
+			songID: "song_magic_touch",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "supercycles",
 			lowerText: "SUPER CYCLES",
 			decoType: "DECO1",
@@ -110,22 +126,6 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F
-		},
-		{
-			level: "highlife",
-			lowerText: "HIGH LIFE",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_magic_touch",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
 		},
 		{
 			level: "eon",
