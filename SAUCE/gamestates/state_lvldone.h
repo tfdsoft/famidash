@@ -566,6 +566,7 @@ const unsigned char TEXT_idols[]="IDOLS";
 
 const unsigned char TEXT_windfall[]="WINDFALL";
 const unsigned char TEXT_speedracer[]="SPEED$RACER";
+const unsigned char TEXT_magictouch[]="MAGIC$TOUCH";
 
 
 
@@ -636,6 +637,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_ludicrous,
 	0,
 	0,
+	0,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -673,6 +675,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_ludicrous2,
 	TEXT_windfall,
 	TEXT_speedracer,
+	TEXT_magictouch,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -710,6 +713,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_ludicrous2) - 1,
 	sizeof(TEXT_windfall) - 1,
 	sizeof(TEXT_speedracer) - 1,
+	sizeof(TEXT_magictouch) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -744,6 +748,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_freedom) - 1,	
 	0,
 	sizeof(TEXT_ludicrous) - 1,	
+	0,
 	0,
 	0,
 };
@@ -1234,6 +1239,7 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
   NULL, 
+  NULL, 
   NULL,  
   NULL,  
 };
@@ -1245,6 +1251,7 @@ const unsigned char* const leveltexts2[] = {
   levelclutterfunk22,
   levelspeedracer2,
   levelpgclubtext2,
+  levelhighlife2,
   leveleon2,
   levelbloodbath2,
   levelcataclysm2,
@@ -1268,6 +1275,7 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
+	0,
 };
 const unsigned char level_text_size2[] = {
 	sizeof(level1text2) - 1,
@@ -1277,6 +1285,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelclutterfunk22) - 1,
 	sizeof(levelspeedracer2) - 1,
 	sizeof(levelpgclubtext2) - 1,
+	sizeof(levelhighlife2) - 1,
 	sizeof(leveleon2) - 1,
 	sizeof(levelbloodbath2) - 1,
 	sizeof(levelcataclysm2) - 1,

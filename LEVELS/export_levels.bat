@@ -11,6 +11,7 @@ SET all_levels= ^
     clutterfunk2 ^
     speedracer ^
     pgclubstep ^
+    highlife ^
     eon ^
     bloodbath ^
     cataclysm ^

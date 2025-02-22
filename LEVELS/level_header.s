@@ -88,3 +88,10 @@ bloodbath_speed       = $00
 bloodbath_no_parallax  = 1
 bloodbath_bg_color    = $0F
 bloodbath_grnd_color  = $0F
+
+highlife_song_number = song_magic_touch
+highlife_game_mode   = $00
+highlife_speed       = $01
+highlife_no_parallax  = 1
+highlife_bg_color    = $0F
+highlife_grnd_color  = $0F
