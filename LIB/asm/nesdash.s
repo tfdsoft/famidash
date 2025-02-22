@@ -1,7 +1,7 @@
-; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
+ ; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
 .importzp _gamemode
 .importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9  ; C-safe temp storage
-.import pusha, pushax, callptr4
+.import pusha, pushax
 .import _scroll_x, _cursedmusic
 
 .if VS_SYSTEM
@@ -84,7 +84,7 @@ sprite_data = _sprite_data
 
 	hexToDecOutputBuffer: .res 5
 
-	instBufWriteBuffer: .res 8	; 2 inst + 2 addr + 1 data + 2 inst + (optionally) 1 length
+	instBufWriteBuffer: .res 16
  
 
 .export _extceil := extceil
@@ -827,9 +827,9 @@ write_start:
 	STA	instBufWriteBuffer+4
 
 	; Set instruction
-	lda	#<(fl_seqLvlFrame0-1)
+	lda	#<(fl_lvlRenderRTiles-1)
 	sta	instBufWriteBuffer+0
-	lda	#>(fl_seqLvlFrame0-1)
+	lda	#>(fl_lvlRenderRTiles-1)
 	sta	instBufWriteBuffer+1
 
 	; The sequence itself:
@@ -994,8 +994,6 @@ ntAddrHiTbl:
 	AttrOffAddr		= 0+AttrDataSize
 	AttrEnd			= 0+AttrDataSize+AttrAddrSize
 
-	tmp5 			= ptr2
-
 	NametableAddrHi = tmp1
 	LoopCount		= tmp2
 	DecRldColumn	= ptr3+0
@@ -1004,7 +1002,7 @@ ntAddrHiTbl:
 
 	; Instruction buffer:
 	;	| Instruct.	| Addr Hi 0	| Addr Hi 1	|
-	;	|	0	1	| 2			| 3			|
+	;	|	0	1	|	2		|	3		|
 	; VRAM buffer:
 	;	| Data 0	| Data 1	| ...	| Data 15	| Addr Lo 0	| Addr Lo 1	| Addr Lo 2	| Addr Lo 3	|
 	;	|	0		|	1		| 2-14	|	15		|	16		|	17		|	18		| 	19		|
@@ -1023,7 +1021,7 @@ ntAddrHiTbl:
 	.endif
 
 	; Seam pos for attributes:
-	; ( <seam_scroll_y & $E0 | >seam_scroll_y & 5) ^ column
+	; ( <seam_scroll_y & $E0 | >seam_scroll_y & 3) ^ column
 	LDA seam_scroll_y
 	AND #$E0
 	STA SeamValue
@@ -1040,9 +1038,9 @@ ntAddrHiTbl:
 	:					;	(the screen)
 	STY	ptr1+1			;__
 
-	LDA DecRldColumn			;
+	LDA DecRldColumn	;
 	AND #$0E			;	Get column (w/o highest bit cuz attributes)
-	; ADC #<(collMap0-1) ; the low byte is 0
+	; ADC #<collMap0	; the low byte is 0
 	STA ptr1			;__
 	EOR	SeamValue		;	The only overlapping bit is bit 1,
 	STA	SeamValue		;__	if it's invalid the seam won't be drawn
@@ -1066,9 +1064,9 @@ ntAddrHiTbl:
 	sta	instBufWriteBuffer+3
 
 	; Set instruction
-	lda	#<(fl_seqLvlFrame1-1)
+	lda	#<(fl_lvlRenderRAttr-1)
 	sta	instBufWriteBuffer+0
-	lda	#>(fl_seqLvlFrame1-1)
+	lda	#>(fl_lvlRenderRAttr-1)
 	sta	instBufWriteBuffer+1
 	
 	LDA DecRldColumn
@@ -1081,7 +1079,6 @@ ntAddrHiTbl:
 	addressLoop:
 		; Low byte
 		STA VRAM_BUF,	X
-
 		INX
 
 		; C is cleared by BCC
@@ -1129,7 +1126,7 @@ attributeCalc:
 		ASL
 		ASL
 		ora metatiles_attr,y	; Lower left
-		STA tmp5
+		STA tmp3
 
 		; Read upper right metatile
 		LDY #$01
@@ -1150,7 +1147,7 @@ attributeCalc:
 		ora metatiles_attr,y	; Upper left
 
 		; Combine
-		LDY tmp5	; Y has the lower metatile attrs, will shift by 4
+		LDY tmp3	; Y has the lower metatile attrs, will shift by 4
 		ORA shiftBy4table,Y
 		LDX VRAM_INDEX
 		STA VRAM_BUF+AttrOffData,	X
@@ -1184,19 +1181,12 @@ ntAddrHiTbl:
 .proc draw_screen_UD_tiles_frame0
 	scroll_direction = tmp1
 	column_idx = tmp2
-	loop_count = tmp3
 
 	new_seam_pos = ptr1
 	this_seam_pos = ptr2
 	collmap_ptr = ptr3
 
-	UnifiedTileWriteSize = (16*4)+2+1
-	Separate2WritesSize = (16*2)+((2+1)*2)	; Contains 32 tiles in total, in 2 writes
-	SepWrABuf = VRAM_BUF+0
-	SepWrBBuf = VRAM_BUF+3
-	SepWrCBuf = VRAM_BUF+Separate2WritesSize+0
-	SepWrDBuf = VRAM_BUF+Separate2WritesSize+3
-	SepWriEnd = Separate2WritesSize
+	UnifiedTileWriteSize = (16*4)
 
 	start:
 		LDA	_scroll_y				;
@@ -1287,10 +1277,8 @@ ntAddrHiTbl:
 			STA	collmap_ptr+1	;__
 
 		@get_write_type:
-			LDX	VRAM_INDEX
-
 			; 2 scenarios: one write 64 tiles long, or 4 writes, 16-x and x tiles long each (thanks jrowe screen extension)
-			LDY	rld_column
+			LDY rld_column
 			jne write_separate
 
 	write_unified:
@@ -1301,73 +1289,84 @@ ntAddrHiTbl:
 			ROL					;__	to get ll00 00hh
 		@store_low:
 			TAY					;__	Tmp storage
-			AND	#$C0			;	Store the low byte for X=0
-			STA	VRAM_BUF+1,	X	;__
+			AND	#$C0			;__	Store the low byte for X=0
+			STA	instBufWriteBuffer+3
 		@store_high:
+
 			LDA	_scroll_x+1		;	Thanks jroweboy
-			LSR					;__
-			TYA					;	These don't affect carry
+			AND	#$01			;
+			TAX					;__
+			TYA					;	Get X of nametable
 			AND	#$03			;__
-			BCS	:+				;	Get X of nametable
-				ORA	#$04		;__
-			:	ORA	#$20|$40	;__	Get valid nametable addr with horizontal seq update
+			ORA	draw_screen_R_tiles::ntAddrHiTbl, X
 			LDY	this_seam_pos+1	;
 			BEQ	:+				;	Get Y of nametable
 				ORA	#$08		;__
-			:	STA	VRAM_BUF+0,X;__	Store the high byte of nametable addr
+			:	STA	instBufWriteBuffer+2;__	Store the high byte of nametable addr
 		@store_length:
-			LDA	#64				;	Store length
-			STA	VRAM_BUF+2,	X	;__
-		@store_finish:
-			LDA	#$FF
-			STA	VRAM_BUF+UnifiedTileWriteSize,	X
+			LDA	#64-1				;	Store length
+			STA	instBufWriteBuffer+4;__
 
-	write_unified_loop:
-		@start:
-			LDA	#$00
-			STA	column_idx
-			LDA	#$10
-			STA	loop_count
-		@loop:
-			LDY	column_idx			;
-			LDA	(collmap_ptr),	Y	;	Get metatile
-			TAY						;__
+		jsr write_loop
 
-			LDA	metatiles_top_left,	Y	;
-			STA	VRAM_BUF+3+0,	X		;
-			LDA	metatiles_top_right,Y	;
-			STA	VRAM_BUF+3+1,	X		;	Get and store the tiles
-			LDA	metatiles_bot_left,	Y	;	into the VRAM buffer
-			STA	VRAM_BUF+3+32,	X		;
-			LDA	metatiles_bot_right,Y	;
-			STA	VRAM_BUF+3+33,	X		;__
+		; Current X is VRAM_INDEX + 32
 
-			INX
-			INX
-			INC	column_idx
-			DEC	loop_count
-			BNE	@loop
-
-		LDA	VRAM_INDEX
+		TXA
 		CLC
-		ADC	#UnifiedTileWriteSize
+		ADC	#UnifiedTileWriteSize-32
 		STA	VRAM_INDEX
 
 		; TODO eventually: parallax
 
+		lda	#<(fl_updSeqNormal-1)
+		sta	instBufWriteBuffer+5
+		lda	#>(fl_updSeqNormal-1)
+		sta	instBufWriteBuffer+6
+
+		jsr	set_horz_vbuf_seq
+
+		ldx #7
+		jsr transferWriteToInstBuf
+
 		LDA #1
-		LDX	#0
+		LDX	#frame_free
+		STX	drawing_frame
 
 		RTS
 
 	write_separate:
 		;	Write architecture:
-		;	Wr:	| Wr. A (32-X)	| Wr. B (X)	| Wr. C (32-X)	| Wr. D (X)	|
-		;	Loc:|		VRAM buffer			|		Column buffer		|
+
+		;		VRAM buffer (initial write):
+		;	Wr:	|	 Write A	|  Write B	|	 Write C	|  Write D	|
+		;	Len:|	  32-X		|	  X		|	  32-X		|	  X		|
 		;	NT:	|	NT. A/C		|	NT. B/D	|	NT. A/C		|	NT. B/D	|
-		;	Tile|			Upper			|			Lower			|
+		;	Tile|			Lower			|			Upper			|
 		;	X:	|		X		|	  0		|		X		|	  0		|
-		;		 \Combined length of 32(+6)/ \Combined length of 32(+6)/
+		;	Off:|			0..31			|			32..63			|
+		;		 \  Combined length of 32  / \  Combined length of 32  /
+		;		 
+		;		VRAM buffer (after swapping)
+		;	Wr:	| Wr. A (32-X)	| Wr. C (32-X)	| Wr. B (X)	| Wr. D (X)	|
+		;	NT:	|	NT. A/C		|	NT. A/C		|	NT. B/D	|	NT. B/D	|
+		;	Tile|	Lower		|	Upper		|	Lower	|	Upper	|
+		;	X:	|				X				|	  		0			|
+		;	Len:|			  32-X			  	|			X			|
+		;	Off:|							0..63						|
+
+		;		Instruction buffer:
+		;	| Instruct.	| Addr A	| Len A	| Addr C	| Addr B	| Len B	| Addr D	|
+		;	|	0	1	|	2	3	|	4	|	5	6	|	7	8	|	9	|	10	11	|
+
+		SeparateWriteSize = (16*4)
+
+		IBWBInst	= instBufWriteBuffer+0
+		IBWBAddrA	= instBufWriteBuffer+2
+		IBWBLenA	= instBufWriteBuffer+4
+		IBWBAddrC	= instBufWriteBuffer+5
+		IBWBAddrB	= instBufWriteBuffer+7
+		IBWBLenB	= instBufWriteBuffer+9
+		IBWBAddrD	= instBufWriteBuffer+10
 
 		@shift_addr:
 			LDA	this_seam_pos	;__	Get bits: hhll uuuu (u will be ignored)
@@ -1376,14 +1375,16 @@ ntAddrHiTbl:
 			ROL					;__	to get ll00 00hh
 		@store_low:
 			TAY					;__	Tmp storage
-			AND	#$C0			;	Push the low byte for X=0
-			PHA					;__	for writes B&D
+			AND	#$C0			;	Store low byte for X=0
+			STA	IBWBAddrD+1		;__
+			ORA	#$20			;	Get and store low byte of Address D
+			STA	IBWBAddrB+1		;__
 			LSR					;
 			ORA	rld_column		;	Add the X
 			ASL					;__
-			STA	SepWrABuf+1,X	;__	Store write A
-			ORA	#$20			;	Get and
-			STA	SepWrCBuf+1,X	;__	store write C
+			STA	IBWBAddrA+1		;__	Store low byte of Address C
+			AND	#<~$20			;	Get and store low byte of Address A
+			STA	IBWBAddrC+1		;__
 		@store_high:
 			LDA	_scroll_x+1		;	Thanks jroweboy
 			LSR					;__
@@ -1391,98 +1392,146 @@ ntAddrHiTbl:
 			AND	#$03			;__
 			BCC	:+				;	Get X of nametable
 				ORA	#$04		;__
-			:	ORA	#$20|$40	;__	Get valid nametable addr with horizontal seq update
+			:	ORA	#$20		;__	Get valid nametable addr
 			LDY	this_seam_pos+1	;
 			BEQ	:+				;	Get Y of nametable
-				ORA	#$08		;__
-			:	PHA				;__	Push high byte of nametable addr for writes B & D
-			STA SepWrABuf,	X	;	Store the high byte
-			STA	SepWrCBuf,	X	;__
+				ORA	#$08		;
+			:					;__
+			STA	IBWBAddrA+0		;__	Store high byte of Address A
+			STA	IBWBAddrC+0		;__	Store high byte of Address C
+			EOR	#$04			;__	Invert the high byte's X of the nametable
+			STA	IBWBAddrB+0		;__	Store high byte of Address B
+			STA	IBWBAddrD+0		;__	Store high byte of Address D
 		@store_length:
 			LDA	#16				;
-			SEC					;
-			SBC	rld_column		;	Get length for writes A & C
-			STA	loop_count		;	Store as a counter to check for writes B & D
-			ASL					;__
-			STA	SepWrABuf+2,X	;	Store it
-			STA	SepWrCBuf+2,X	;__
-	write_separate_loop:
-		@setup_first_loop:
-			LDA	rld_column
-			STA	column_idx
-		@loop_AC:
-			LDY	column_idx			;
-			LDA	(collmap_ptr),	Y	;	Get metatile
-			TAY						;__
-
-			LDA	metatiles_top_left,	Y	;
-			STA	SepWrABuf+3+0,	X		;
-			LDA	metatiles_top_right,Y	;
-			STA	SepWrABuf+3+1,	X		;	Get and store the tiles
-			LDA	metatiles_bot_left,	Y	;	into the VRAM buffer
-			STA	SepWrCBuf+3+0,	X		;
-			LDA	metatiles_bot_right,Y	;
-			STA	SepWrCBuf+3+1,	X		;__
-
-			INX
-			INX
-			INC	column_idx
-			DEC	loop_count
-			BNE	@loop_AC
-		@setup_second_loop:
-			LDA	column_idx
-			CMP	#$10
-			BNE @fin
-
-			LDA	#$00
-			STA	column_idx
-
-			LDA	rld_column		;	Update loop count
-			STA	loop_count		;__
+			SEC					;	Get length of writes A & C
+			SBC	rld_column		;__
 			ASL					;
-			STA	SepWrBBuf+2,X	;	Store the length
-			STA	SepWrDBuf+2,X	;__
+			STA	IBWBLenA		;__
+			LDA	rld_column		;
+			ASL					;	Store length of write B
+			STA	IBWBLenB		;__
 
-			PLA					;	Invert the high byte's
-			EOR	#$04			;__	X of the nametable
-			STA	SepWrBBuf+0,X	;	Store the high nametable byte
-			STA	SepWrDBuf+0,X	;__
+		@write_loop:
+			jsr write_loop		;__	First, get the OG data
 
-			PLA					;
-			STA	SepWrBBuf+1,X	;	Store the low nametable byte
-			ORA	#$20			;
-			STA	SepWrDBuf+1,X	;__
+			; Current X is VRAM_INDEX + 32
+			TXA
+			PHA
 
-			INX
-			INX
-			INX
+			; Then swap writes B and C
+			; Using the triple block reversal algorithm
+			
+			; The block_reversal subroutine takes in:
+			; A = starting offset in VRAM buffer
+			; X = length
+			
+			; A is already VRAM_INDEX + 32 = the offset of block C
+			LDX	IBWBLenA			;	Reverse block C
+			JSR	block_reversal		;__
 
-			BCC	@loop_AC	;__	Last carry instruction was ASL rld_column, which shifted out a 0
+			LDA	IBWBLenA			;
+			CLC						;
+			ADC	VRAM_INDEX			;
+			PHA						;	Reverse block B
+									;
+			LDX	IBWBLenB			;
+			JSR block_reversal		;__
 
+			PLA						;= offset of block B
+									;
+			LDX	#32					;	Reverse blocks B&C, finishing the routine
+			JSR	block_reversal		;__
+		
 		@fin:
-			LDA	#frame_UD_tiles_separate_1
+			PLA							;
+			CLC							;	VRAM_INDEX + 32 + 32 = new VRAM index
+			ADC	#SeparateWriteSize-32	;
+			STA	VRAM_INDEX				;__
+
+			LDA	#frame_free
 			STA	drawing_frame
 
-			; Current X is pointing at the last element - 3
-			INX
-			INX
-			INX
-			STX	VRAM_INDEX
-			LDY	#Separate2WritesSize
-		@transfer_loop:
-			DEX
-			LDA	SepWrCBuf,	X
-			STA	columnBuffer-1,	Y
-			DEY
-			BNE	@transfer_loop
+			; TODO eventually: parallax
 
-			LDA	#$FF
-			STA	VRAM_BUF+Separate2WritesSize,	X
+			lda	#<(fl_seqLvlUDTiles-1)
+			sta	IBWBInst+0
+			lda	#>(fl_seqLvlUDTiles-1)
+			sta	IBWBInst+1
+
+			dec	IBWBLenA
+			dec	IBWBLenB
+
+			ldx #12
+			jsr transferWriteToInstBuf
+
+			lda	buf_curSeqMode
+			and	#<~$80
+			sta	buf_curSeqMode
 
 			LDA	#1
 			LDX	#0
 			RTS
 
+block_reversal:
+	block_size = tmp3
+	swap = tmp4
+	@start:
+		;	A:	Offset
+		;	X:	Length
+		stx	block_size
+
+		tay
+		clc
+		adc	block_size
+		tax
+		dex
+
+		lsr	block_size	; Discard the extra bit since the center element doesn't need swapping (if it exists)
+
+		; A: data mover
+		; X: left ptr
+		; Y: right ptr
+
+	@loop:
+		lda	VRAM_BUF,	X
+		sta	swap
+		lda	VRAM_BUF,	Y
+		sta	VRAM_BUF,	X
+		lda	swap
+		sta	VRAM_BUF,	Y
+		iny
+		dex
+		dec	block_size
+		bne	@loop
+
+	rts
+
+
+write_loop:	; literally the same for both unified and separate writes
+	@start:
+		LDA	#$0F
+		STA	column_idx
+		LDX	VRAM_INDEX
+	@loop:
+		LDY	column_idx			;
+		LDA	(collmap_ptr),	Y	;	Get metatile
+		TAY						;__
+
+		LDA	metatiles_top_left,	Y	;
+		STA	VRAM_BUF+33, X			;
+		LDA	metatiles_top_right,Y	;
+		STA	VRAM_BUF+32, X			;	Get and store the tiles
+		LDA	metatiles_bot_left,	Y	;	into the VRAM buffer
+		STA	VRAM_BUF+1, X			;
+		LDA	metatiles_bot_right,Y	;
+		STA	VRAM_BUF+0, X			;__
+
+		INX
+		INX
+		DEC	column_idx
+		BPL @loop
+	RTS
 
 .endproc
 
@@ -1519,7 +1568,7 @@ ntAddrHiTbl:
 ; [Not available in C]
 .segment "WRAMCODE"
 
-.proc fl_seqLvlFrame0
+.proc fl_lvlRenderRTiles
 	TileWriteSize	= 15*2
 
 	.repeat 4, I
@@ -1594,7 +1643,7 @@ ntAddrHiTbl:
 ; [Not available in C]
 .segment "WRAMCODE"
 
-.proc fl_seqLvlFrame1
+.proc fl_lvlRenderRAttr
 	
 	DataOff0 = 0
 	DataOff1 = 4
@@ -1641,6 +1690,131 @@ ntAddrHiTbl:
 
 	rts	; Ropslide to next routine
 .endproc
+
+
+
+; [Not available in C]
+.segment "WRAMCODE"
+
+.proc fl_seqLvlUDTiles
+	;	Write architecture:
+	;		VRAM buffer (initial write):
+	;	Wr:	|	 Write A	|  Write B	|	 Write C	|  Write D	|
+	;	Len:|	  32-X		|	  X		|	  32-X		|	  X		|
+	;	NT:	|	NT. A/C		|	NT. B/D	|	NT. A/C		|	NT. B/D	|
+	;	Tile|			Lower			|			Upper			|
+	;	X:	|		X		|	  0		|		X		|	  0		|
+	;	Off:|			0..31			|			32..63			|
+	;		 \  Combined length of 32  / \  Combined length of 32  /
+	;		 
+	;		VRAM buffer (after swapping)
+	;	Wr:	| Wr. A (32-X)	| Wr. C (32-X)	| Wr. B (X)	| Wr. D (X)	|
+	;	NT:	|	NT. A/C		|	NT. A/C		|	NT. B/D	|	NT. B/D	|
+	;	Tile|	Lower		|	Upper		|	Lower	|	Upper	|
+	;	X:	|				X				|	  		0			|
+	;	Len:|			  32-X			  	|			X			|
+	;	Off:|							0..63						|
+
+
+	;		Instruction buffer:
+	;	| Instruct.	| Addr A	| Len A	| Addr C	| Addr B	| Len B	| Addr D	|
+	;	|	0	1	|	2	3	|	4	|	5	6	|	7	8	|	9	|	10	11	|
+
+	lda	PPU_CTRL_VAR
+	and #<~$04
+	sta	PPU_CTRL
+
+	partA:
+
+		pla				;
+		sta	PPU_ADDR	;	Store address A
+		pla				;
+		sta PPU_ADDR	;__
+		pla				;__	Get length A
+
+		sty	NAME_UPD_PTR
+		tax
+		tay
+		@loopA:
+			lda (NAME_UPD_PTR),y
+			sta PPU_DATA
+			dey
+			bne	@loopA
+		@finalWriteA:
+			lda (NAME_UPD_PTR),y
+			sta PPU_DATA
+		txa
+		tay
+		sec
+		adc	NAME_UPD_PTR
+		sta	NAME_UPD_PTR
+
+	partC:
+		pla				;
+		sta	PPU_ADDR	;	Store address C
+		pla				;
+		sta PPU_ADDR	;__
+
+		@loopC:
+			lda (NAME_UPD_PTR),y
+			sta PPU_DATA
+			dey
+			bne	@loopC
+		@finalWriteC:
+			lda (NAME_UPD_PTR),y
+			sta PPU_DATA
+		txa
+		tay
+		sec
+		adc	NAME_UPD_PTR
+		sta	NAME_UPD_PTR
+
+	partB:
+		pla				;
+		sta	PPU_ADDR	;	Store address B
+		pla				;
+		sta PPU_ADDR	;__
+		pla				;__	Get length B
+
+		tax
+		tay
+		@loopB:
+			lda (NAME_UPD_PTR),y
+			sta PPU_DATA
+			dey
+			bne	@loopB
+		@finalWriteB:
+			lda (NAME_UPD_PTR),y
+			sta PPU_DATA
+		txa
+		tay
+		sec
+		adc	NAME_UPD_PTR
+		sta	NAME_UPD_PTR
+
+	partD:
+		pla				;
+		sta	PPU_ADDR	;	Store address D
+		pla				;
+		sta PPU_ADDR	;__
+
+		@loopD:
+			lda (NAME_UPD_PTR),y
+			sta PPU_DATA
+			dey
+			bne	@loopD
+		@finalWriteD:
+			lda (NAME_UPD_PTR),y
+			sta PPU_DATA
+		txa
+		tay
+		sec
+		adc	NAME_UPD_PTR
+		tay
+
+	rts
+.endproc
+
 
 ; void __fastcall__ load_ground(uint8_t id);
 .segment _GROUND_BANK
@@ -3320,6 +3494,8 @@ drawplayer_common := _drawplayerone::common
 .endif
 
 .segment "CODE_2"
+
+.import callptr4
 
 .export crossPRGBankJump
 .proc crossPRGBankJump
