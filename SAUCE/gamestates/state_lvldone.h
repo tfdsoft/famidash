@@ -531,7 +531,7 @@ const unsigned char TEXT_2challenge[]="CHALLENGE";
 const unsigned char TEXT_2deathmoon[]="DEATH$MOON";
 const unsigned char TEXT_2hexagon[]="FORCE";
 const unsigned char TEXT_2blast[]="PROCESSING";
-const unsigned char TEXT_2textretray[]="RETRAY";
+const unsigned char TEXT_2textlost[]="LOST";
 const unsigned char TEXT_2textstereo[]="MADNESS$2";
 const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
 const unsigned char TEXT_2textfullversion[]="FULL$VERSION";
@@ -647,7 +647,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textclubstep,
 	TEXT_xlevel2textE, 
 	TEXT_2textpractice, 
-	TEXT_2textretray, 
+	TEXT_2textlost, 
 	TEXT_2textfullversion,
 	TEXT_2textproblematic,
 	TEXT_2textstereo,
@@ -685,7 +685,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textclubstep) - 1,
 	sizeof(TEXT_xlevel2textE) - 1,
 	sizeof(TEXT_2textpractice) - 1,
-	sizeof(TEXT_2textretray) - 1,
+	sizeof(TEXT_2textlost) - 1,
 	sizeof(TEXT_2textfullversion) - 1,
 	sizeof(TEXT_2textproblematic) - 1,
 	sizeof(TEXT_2textstereo) - 1,	
@@ -761,7 +761,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_clubstep,
 	song_endgame, 
 	song_practice,
-	song_retray,
+	song_lost,
 	song_infernoplex_full,
 	song_problematic,
 	song_stereo_madness_2,
@@ -1240,6 +1240,7 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
   NULL, 
+  NULL, 
   NULL,  
   NULL,  
 };
@@ -1257,12 +1258,14 @@ const unsigned char* const leveltexts2[] = {
   levelcataclysm2,
   levelaftermath2,
   levelaftercatabath2,
+  levelslaughterhouse2,
   leveltest4,
 };
 
 
 const unsigned char level_text_size[] = {
 	sizeof(level1text) - 1,
+	0,
 	0,
 	0,
 	0,
@@ -1291,6 +1294,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelcataclysm2) - 1,
 	sizeof(levelaftermath2) - 1,
 	sizeof(levelaftercatabath2) - 1,	
+	sizeof(levelslaughterhouse2) - 1,	
 	sizeof(leveltest4) - 1,	
 };
 

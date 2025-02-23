@@ -23,6 +23,7 @@ const unsigned char leveleon2[]="EON";
 const unsigned char levelclutterfunk22[]="CLUTTERFUNK 2";
 const unsigned char levelaftermath2[]="AFTERMATH";
 const unsigned char levelaftercatabath2[]="AFTERCATABATH";
+const unsigned char levelslaughterhouse2[]="SLAUGHTERHOUSE";
 const unsigned char levelspeedracer2[]="SPEED RACER";
 const unsigned char levelhighlife2[]="HIGH LIFE";
 const unsigned char leveltest4[]="TEST 4";

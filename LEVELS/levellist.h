@@ -63,6 +63,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //cataclysm
 	DECO1, //aftermath
 	DECO1, //aftercatabath
+	DECO1, //slaughterhouse
 	DECO1, //test4
 };
 
@@ -80,6 +81,7 @@ const unsigned char spike_set[] = {
 	SPIKESC, //cataclysm
 	SPIKESC, //aftermath
 	SPIKESC, //aftercatabath
+	SPIKESA, //slaughterhouse
 	SPIKESC, //test4
 };
 
@@ -97,6 +99,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //cataclysm
 	BLOCKSB, //aftermath
 	BLOCKSB, //aftercatabath
+	BLOCKSB, //slaughterhouse
 	BLOCKSB, //test4
 };
 
@@ -114,6 +117,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //cataclysm
 	SAWBLADESA, //aftermath
 	SAWBLADESA, //aftercatabath
+	SAWBLADESA, //slaughterhouse
 	SAWBLADESA, //test4
 };
 
@@ -132,6 +136,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //cataclysm
     DEMON, //aftermath
     DEMON, //aftercatabath
+    DEMON, //slaughterhouse
     EASY, //test4
 };
 
@@ -149,6 +154,7 @@ const unsigned char stars_list[] = {
 	10, //cataclysm
 	10, //aftermath
 	10, //aftercatabath
+	10, //slaughterhouse
 	0, //test4
 };
 const unsigned char colors_list[] = {

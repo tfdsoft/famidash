@@ -19,6 +19,13 @@ supercycles_no_parallax  = 1
 supercycles_bg_color    = $12
 supercycles_grnd_color  = $02
 
+slaughterhouse_song_number = song_lost
+slaughterhouse_game_mode   = $00
+slaughterhouse_speed       = $01
+slaughterhouse_no_parallax  = 1
+slaughterhouse_bg_color    = $0F
+slaughterhouse_grnd_color  = $0F
+
 cataclysm_song_number = song_atthespeedoflight
 cataclysm_game_mode   = $00
 cataclysm_speed       = $01

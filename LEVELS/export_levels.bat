@@ -17,6 +17,7 @@ SET all_levels= ^
     cataclysm ^
     aftermath ^
     aftercatabath ^
+    slaughterhouse ^
     test4 ^
 
 
