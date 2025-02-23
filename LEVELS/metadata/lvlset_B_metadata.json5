@@ -220,6 +220,22 @@
 			parallaxDisable: true
 		},
 		{
+			level: "slaughterhouse",
+			lowerText: "SLAUGHTERHOUSE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_lost",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "test4",
 			lowerText: "TEST 4",
 			decoType: "DECO1",

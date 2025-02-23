@@ -92,6 +92,13 @@ aftercatabath_no_parallax = 1
 aftercatabath_bg_color    = $06
 aftercatabath_grnd_color  = $0F
 
+slaughterhouse_song_number = song_lost
+slaughterhouse_game_mode   = 0
+slaughterhouse_speed       = 1
+slaughterhouse_no_parallax = 1
+slaughterhouse_bg_color    = $0F
+slaughterhouse_grnd_color  = $0F
+
 test4_song_number = song_atthespeedoflightfull
 test4_game_mode   = 0
 test4_speed       = 0

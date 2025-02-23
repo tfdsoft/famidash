@@ -21,7 +21,7 @@ const char musicSoundTestString0D[ 6] = "CYCLES";
 const char musicSoundTestString0E[ 8] = "CLUBSTEP";
 const char musicSoundTestString0F[ 6] = "DECODE";
 const char musicSoundTestString10[ 8] = "PRACTICE";
-const char musicSoundTestString11[ 6] = "RETRAY";
+const char musicSoundTestString11[ 4] = "LOST";
 const char musicSoundTestString12[12] = "FULL$VERSION";
 const char musicSoundTestString13[11] = "PROBLEMATIC";
 const char musicSoundTestString14[ 9] = "MADNESS$2";
@@ -227,7 +227,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_clubstep,
 	song_endgame,
 	song_practice,
-	song_retray,
+	song_lost,
 	song_infernoplex_full,
 	song_problematic,
 	song_stereo_madness_2,
@@ -266,7 +266,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_cycles,
 	song_clubstep,
 	song_endgame,
-	song_retray,
+	song_lost,
 	song_infernoplex_full,
 	song_problematic,
 	song_stereo_madness_2,

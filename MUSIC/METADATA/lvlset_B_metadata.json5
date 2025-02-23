@@ -69,8 +69,8 @@
 			}
 		},
 		{
-			fmsSongName: "retray",
-			lowerText: "RETRAY",
+			fmsSongName: "lost",
+			lowerText: "LOST",
 			vsSystemEnabled: true
 		},
 		{
