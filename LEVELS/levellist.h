@@ -73,7 +73,7 @@ const unsigned char spike_set[] = {
 	SPIKESB, //ninox
 	SPIKESA, //high life
 	SPIKESA, //super cycles
-	SPIKESA, //clutterfunk 2
+	SPIKESC, //clutterfunk 2
 	SPIKESA, //speed racer
 	SPIKESA, //pg clubstep
 	SPIKESB, //eon
