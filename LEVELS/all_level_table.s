@@ -146,16 +146,19 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_test4))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_deathmoon_0)
-	.byte .lobyte(level_data_dearnostalgists_1)
+	.byte .lobyte(level_data_dash_0)
+	.byte .lobyte(level_data_deathmoon_1)
+	.byte .lobyte(level_data_dearnostalgists_2)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_deathmoon_0)
-	.byte .hibyte(level_data_dearnostalgists_1)
+	.byte .hibyte(level_data_dash_0)
+	.byte .hibyte(level_data_deathmoon_1)
+	.byte .hibyte(level_data_dearnostalgists_2)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_deathmoon_0))
-	.byte .lobyte(.bank(level_data_dearnostalgists_1))
+	.byte .lobyte(.bank(level_data_dash_0))
+	.byte .lobyte(.bank(level_data_deathmoon_1))
+	.byte .lobyte(.bank(level_data_dearnostalgists_2))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
