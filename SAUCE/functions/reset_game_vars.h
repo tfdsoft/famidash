@@ -58,7 +58,7 @@ void reset_game_vars(){
 
 	long_temp_x = high_byte(player_x[0]);
 	#if !__VS_SYSTEM
-	auto_practicepoint_timer = 300;
+	auto_practicepoint_timer = 200;
 	#endif
 }
 
@@ -151,7 +151,7 @@ void restore_practice_state() {
 	#undef quick_ld
 	currplayer_gravity = player_gravity[currplayer];
 	#if !__VS_SYSTEM
-	auto_practicepoint_timer = 300;
+	auto_practicepoint_timer = 200;
 	#endif
 }
 
