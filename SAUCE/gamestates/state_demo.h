@@ -486,6 +486,7 @@ const uint8_t xbgm_lookup_table3[] = {
 	song_ludicrous_speed,
 	song_windfall,	
 	song_speed_racer,
+	song_magic_touch,
 };
 
 void set_settings() {
