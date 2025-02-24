@@ -7,16 +7,17 @@ void ship_movement(){
 
 	fallspeed_big = SHIP_MAX_FALLSPEED;
 	fallspeed_mini = MINI_SHIP_MAX_FALLSPEED;
-	gravity_big = SHIP_GRAVITY;
-	gravity_mini = MINI_SHIP_GRAVITY;
 	if (controllingplayer->a || controllingplayer->up) {
-		gravity_big = (gravity_big / 5) * 6;
-		gravity_mini = (gravity_mini / 5) * 6;
+		gravity_big = (SHIP_GRAVITY * 6) / 5;
+		gravity_mini = (MINI_SHIP_GRAVITY * 6) / 5;
+	} else {
+		gravity_big = SHIP_GRAVITY;
+		gravity_mini = MINI_SHIP_GRAVITY;
 	}
 	common_gravity_routine();
 
-	if(currplayer_vel_y > (!currplayer_mini ? fallspeed_big : fallspeed_mini)) currplayer_vel_y -= (!mini ? gravity_big : gravity_mini);
-	if(currplayer_vel_y < (!currplayer_mini ? -fallspeed_big : -fallspeed_mini)) currplayer_vel_y += (!mini ? gravity_big : gravity_mini);
+	if(currplayer_vel_y > (!currplayer_mini ? fallspeed_big : fallspeed_mini)) currplayer_vel_y -= (!currplayer_mini ? gravity_big : gravity_mini);
+	if(currplayer_vel_y < (!currplayer_mini ? -fallspeed_big : -fallspeed_mini)) currplayer_vel_y += (!currplayer_mini ? gravity_big : gravity_mini);
 
 
 	Generic.x = high_byte(currplayer_x);
