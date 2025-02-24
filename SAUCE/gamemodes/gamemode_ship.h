@@ -10,8 +10,8 @@ void ship_movement(){
 	gravity_big = SHIP_GRAVITY;
 	gravity_mini = MINI_SHIP_GRAVITY;
 	if (controllingplayer->a || controllingplayer->up) {
-		gravity_big = (gravity_big / 5) * 6;
-		gravity_mini = (gravity_mini / 5) * 6;
+		gravity_big = (gravity_big / 10) * 11;
+		gravity_mini = (gravity_mini / 10) * 11;
 	}
 	common_gravity_routine();
 
