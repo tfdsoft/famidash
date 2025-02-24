@@ -70,7 +70,7 @@ const uint8_t spike_set[] = {
 	SPIKESA,	// toe2
 	SPIKESC,	// geometricaldominator
 	SPIKESA,	// deadlocked
-	SPIKESA,	// fingerdash
+	SPIKESC,	// fingerdash
 	SPIKESA,	// dash
 	SPIKESA,	// retray
 	SPIKESA,	// sonar

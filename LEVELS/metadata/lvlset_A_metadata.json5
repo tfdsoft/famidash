@@ -324,7 +324,7 @@
 			level: "fingerdash",
 			lowerText: "FINGERDASH",
 			decoType: "EXTRASPRITES1",
-			spikeSet: "A",
+			spikeSet: "C",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "INSANE",
