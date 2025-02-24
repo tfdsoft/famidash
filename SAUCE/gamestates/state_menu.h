@@ -1,6 +1,7 @@
 
 CODE_BANK_PUSH("XCD_BANK_03")
 
+void color_picker();
 void check_if_music_stopped();
 void clear_shit();
 void movement();
@@ -550,81 +551,7 @@ void customize_screen() {
 	
 //mouse stuff
 
-		if (mouse.left_press || (mouse.left && hold_timer >= 15)) {
-//icon
-		menutimer = 0;
-			if ((mouse.x >= 0x76 && mouse.x <= 0x83)) { 
-				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
-					icon++;
-					if (icon > (MAX_ICONS - 1)) icon = 0;				
-					settingvalue = 3;
-					hold_timer = 0;					
-					clear_shit();
-				}
-				else if (mouse.y >= 0x4D && mouse.y <= 0x54) {
-					if (icon == 0) icon = MAX_ICONS - 1;
-					else icon--;				
-					settingvalue = 3;
-					hold_timer = 0;					
-					clear_shit();
-					
-				}
-//color 2
-				else if ((mouse.y >= 0x64 && mouse.y <= 0x6C)) {
-					settingvalue = 1;
-					crossPRGBankJump0(colorinc);
-					hold_timer = 0;					
-					clear_shit();
-					
-				}
-				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
-					settingvalue = 1;			
-					crossPRGBankJump0(colordec);
-					hold_timer = 0;					
-					clear_shit();
-					
-				}
 
-				
-			}
-//color 1
-			else if ((mouse.x >= 0x2E && mouse.x <= 0x3B)) {
-				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
-					settingvalue = 0;
-					crossPRGBankJump0(colorinc);
-					hold_timer = 0;					
-					clear_shit();
-					
-				}
-				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
-					settingvalue = 0;			
-					crossPRGBankJump0(colordec);
-					hold_timer = 0;					
-					clear_shit();
-					
-				}
-			}
-//color3
-			else if ((mouse.x >= 0xBE && mouse.x <= 0xCB)) {
-				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
-					settingvalue = 2;
-					crossPRGBankJump0(colorinc);
-					hold_timer = 0;					
-					clear_shit();
-					
-				}
-				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
-					settingvalue = 2;			
-					crossPRGBankJump0(colordec);
-					hold_timer = 0;					
-					clear_shit();
-					
-				}
-			}
-			if ((mouse.x >= 0x35 && mouse.x <= 0xBC) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
-				return;			//go back
-			}
-		}
 //end mouse stuff
 		if (!retro_mode) {
 			if (icon != prev_icon) {
@@ -794,6 +721,8 @@ void state_menu() {
 	else pal_bg (splashMenu);
 	
 	newrand();
+
+	color_picker();
 
 	mmc3_set_8kb_chr(MENUBANK);
 
@@ -1326,28 +1255,7 @@ void state_menu() {
 
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 		if (!(kandoframecnt & 127)) {
-			tmp3 = 0x80 + BG_Table2[discoframe];
-			
-			if (tmp3 < 0x80) tmp3 += 0x80;
-			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
-			tmp2 = (tmp3 & 0x3F);  		    
-				pal_col(0, tmp2);
-				pal_col(0x11, tmp2);
-				// pal_col(1, oneShadeDarker(tmp2)); 
-				// pal_col(9, oneShadeDarker(tmp2)); 
-				pal_set_update();
-		
-			tmp3 = 0xC0 + BG_Table2[discoframe];
-			
-			if (tmp3 < 0x80) tmp3 += 0x80;
-			else if (tmp3 >= 0xF0) tmp3 -= 0x80;
-			tmp2 = (tmp3 & 0x3F);  		    
-			//	pal_col(6, tmp2);
-			//	pal_col(5, oneShadeDarker(tmp2)); 
-			//	pal_set_update();
-			discoframe++;
-			pal_set_update();
-			if (discoframe == 12) discoframe = 0;
+			color_picker();
 		}
 		dec_mouse_timer();
 		tmp3 = 0;	
@@ -1551,7 +1459,7 @@ void roll_new_mode() {
 		
 	ballframe = 0;
 	oam_clear();
-/*
+
 	while (tmp1 >= 53) {
 		tmp1 = newrand() & 63;
 	}
@@ -1561,15 +1469,15 @@ void roll_new_mode() {
 	while (tmp3 >= 53) {
 		tmp3 = newrand() & 63;
 	}
-*/
-//	titlecolor1 = menu_color_table[tmp1];
-//	titlecolor2 = menu_color_table[tmp2];   most of our colors suck
-//	titlecolor3 = menu_color_table[tmp3];
+
+	titlecolor1 = menu_color_table[tmp1];
+	titlecolor2 = menu_color_table[tmp2]; //  most of our colors suck
+	titlecolor3 = menu_color_table[tmp3];
 	set_title_icon();
 }			
 
 void dec_mouse_timer() {
-	kandoframecnt++;
+//	kandoframecnt++;
 	if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 }		
 
@@ -1748,5 +1656,29 @@ void check_if_music_stopped() {
 		if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[tmp2]); }
 }	
 
+void color_picker() {
+	tmp3 = 0x80 + BG_Table2[discoframe];
+	
+	if (tmp3 < 0x80) tmp3 += 0x80;
+	else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+	tmp2 = (tmp3 & 0x3F);  		    
+		pal_col(0, tmp2);
+		pal_col(0x11, tmp2);
+		// pal_col(1, oneShadeDarker(tmp2)); 
+		// pal_col(9, oneShadeDarker(tmp2)); 
+		pal_set_update();
+
+	tmp3 = 0xC0 + BG_Table2[discoframe];
+	
+	if (tmp3 < 0x80) tmp3 += 0x80;
+	else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+	tmp2 = (tmp3 & 0x3F);  		    
+	//	pal_col(6, tmp2);
+	//	pal_col(5, oneShadeDarker(tmp2)); 
+	//	pal_set_update();
+	discoframe++;
+	pal_set_update();
+	if (discoframe == 12) discoframe = 0;
+}	
 
 CODE_BANK_POP()
