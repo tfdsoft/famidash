@@ -120,7 +120,7 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// geometricaldominator
 	BLOCKSB,	// deadlocked
 	BLOCKSB,	// fingerdash
-	BLOCKSA,	// dash
+	BLOCKSB,	// dash
 	BLOCKSB,	// retray
 	BLOCKSB,	// sonar
 	BLOCKSB,	// thechallenge

@@ -341,7 +341,7 @@
 			lowerText: "DASH",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "A",
-			blockSet: "A",
+			blockSet: "B",
 			sawSet: "A",
 			difficulty: "INSANE",
 			stars: 12,
