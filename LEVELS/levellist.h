@@ -179,7 +179,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //geometrical dominator
 	BLOCKSB, //deadlocked
 	BLOCKSB, //fingerdash
-	BLOCKSA, //dash
+	BLOCKSB, //dash
 	BLOCKSB, //RETRAY
 	BLOCKSB, //SONAR
 	BLOCKSB, //the challenge
