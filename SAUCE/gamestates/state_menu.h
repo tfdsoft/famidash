@@ -1051,8 +1051,13 @@ void state_menu() {
 				case 1:		//UFO
 					title_ufo_shit();
 					
+				#if !__VS_SYSTEM					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, 0x60);
+				#else
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x23);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, 0x63);
+				#endif
 					break;
 				case 2:		//mini cube
 					title_cube_shit();
@@ -1088,8 +1093,13 @@ void state_menu() {
 						if (currplayer_y_small == 160 && tmp7 < 0x29) tmp7 = 0x29;
 						else if (currplayer_y_small == 8 && tmp7 > 0x29) tmp7 = 0x29;
 						
+				#if !__VS_SYSTEM
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7 + 2, 0x20);
+				#else
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x23);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7 + 2, 0x23);
+				#endif					
 					break;
 				case 4:		//robot
 
@@ -1157,9 +1167,15 @@ void state_menu() {
 							tmp3 = 0x13;							
 						}
 					}
+				#if !__VS_SYSTEM
 					oam_spr(currplayer_x_small-8, currplayer_y_small, tmp1, 0x20);
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, 0x20);					
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, 0x20);					
+				#else
+					oam_spr(currplayer_x_small-8, currplayer_y_small, tmp1, 0x23);
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, 0x23);					
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, 0x23);					
+				#endif					
 					break;
 				case 5:		//spider
 //					if (kandoframecnt & 1) {
@@ -1167,7 +1183,11 @@ void state_menu() {
 //					}
 
 					//if (!currplayer_gravity) { 
+				#if !__VS_SYSTEM
 					currplayer_y_small = 160; tmp7 = 0x20; 
+				#else
+					currplayer_y_small = 160; tmp7 = 0x23; 
+				#endif				
 					//}
 //					else { currplayer_y_small = 8; tmp7 = 0xA0; }
 
@@ -1203,15 +1223,27 @@ void state_menu() {
 					
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
 						tmp1 = 0x29;
+						#if !__VS_SYSTEM
 						tmp2 = 0x20;
+						#else
+						tmp2 = 0x23;
+						#endif
 					}
 					else if (currplayer_gravity) {
 						tmp1 = 0x2D;
+						#if !__VS_SYSTEM
 						tmp2 = 0xA0;
+						#else
+						tmp2 = 0xA3;
+						#endif
 					}
 					else {
 						tmp1 = 0x2D;
+						#if !__VS_SYSTEM
 						tmp2 = 0x20;
+						#else
+						tmp2 = 0x23;
+						#endif
 					}
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp1 + 2, tmp2);
@@ -1221,8 +1253,13 @@ void state_menu() {
 					
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
 
+				#if !__VS_SYSTEM
 					if (retro_mode && currplayer_gravity) tmp7 = 0xA0;
 					else tmp7 = 0x20;
+				#else
+					if (retro_mode && currplayer_gravity) tmp7 = 0xA3;
+					else tmp7 = 0x23;
+				#endif					
 
 					if (ballframe) tmp2 = 0x3F;
 					else tmp2 = 0x1B;						
@@ -1239,18 +1276,34 @@ void state_menu() {
 					switch (ballframe) {
 						case 0:
 							tmp2 = 0x31;
+							#if !__VS_SYSTEM
 							tmp7 = 0x20;
+							#else
+							tmp7 = 0x23;
+							#endif
 							break;
 						case 1:
 							tmp2 = 0x35;
+							#if !__VS_SYSTEM
 							tmp7 = 0x20;
+							#else
+							tmp7 = 0x23;
+							#endif
 							break;
 						case 2:
 							tmp2 = 0x31;
+							#if !__VS_SYSTEM
 							tmp7 = 0x20;
+							#else
+							tmp7 = 0x23;
+							#endif
 						case 3:
 							tmp2 = 0x35;
+							#if !__VS_SYSTEM
 							tmp7 = 0xA0;
+							#else
+							tmp7 = 0xA3;
+							#endif
 							break;	
 					};
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);					
@@ -1282,13 +1335,22 @@ void state_menu() {
 					if (currplayer_y_small == 160 && tmp7 < 0x05) tmp7 = 0x05;
 					else if (currplayer_y_small == 8 && tmp7 > 0x05) tmp7 = 0x05;					
 
+				#if !__VS_SYSTEM
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
+				#else
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x23);
+				#endif					
 
 					break;	
 				case 10:		//mini ball
 					title_ball_shit();
+				#if !__VS_SYSTEM
 					if (retro_mode && currplayer_gravity) tmp7 = 0xA0;
 					else tmp7 = 0x20;					
+				#else
+					if (retro_mode && currplayer_gravity) tmp7 = 0xA3;
+					else tmp7 = 0x23;					
+				#endif					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x3D, tmp7);
 					break;	
 				case 11:		//mini wave
@@ -1297,22 +1359,38 @@ void state_menu() {
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
 						tmp1 = 0x0D;
 						tmp2 = 0x20;
+					#if !__VS_SYSTEM
 						oam_spr(currplayer_x_small, currplayer_y_small, 0x0D, 0x20);
+					#else
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x0D, 0x23);
+					#endif						
 					}
 					else if (currplayer_gravity) {
 						tmp1 = 0x11;
+						#if !__VS_SYSTEM
 						tmp2 = 0xA0;
+						#else
+						tmp2 = 0xA3;
+						#endif
 					}
 					else {
 						tmp1 = 0x11;
+						#if !__VS_SYSTEM
 						tmp2 = 0x20;
+						#else
+						tmp2 = 0x23;
+						#endif
 					}
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
 					break;	
 				case 12:		//mini ufo
 					title_ufo_shit();
 					
+					#if !__VS_SYSTEM
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x19, 0x20);
+					#else
+					oam_spr(currplayer_x_small, currplayer_y_small, 0x19, 0x23);
+					#endif
 					break;		
 				case 13:		//mini robot
 					
@@ -1322,7 +1400,11 @@ void state_menu() {
 
 					tmp2 = 0x37 + (ballframe * 2);
 
+					#if !__VS_SYSTEM
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, 0x20);
+					#else
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, 0x23);
+					#endif
 					break;
 
 				case 14:		//mini spider
@@ -1333,7 +1415,11 @@ void state_menu() {
 
 					if (!currplayer_gravity) { 
 					*/
+					#if !__VS_SYSTEM
 					currplayer_y_small = 160; tmp7 = 0x20; 
+					#else
+					currplayer_y_small = 160; tmp7 = 0x23; 
+					#endif
 					//}
 					//else { currplayer_y_small = 8; tmp7 = 0xA0; }
 
@@ -1374,7 +1460,11 @@ void state_menu() {
 							tmp7 = 0x3D;
 							break;
 					};	
+					#if !__VS_SYSTEM
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
+					#else
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x23);
+					#endif
 					break;
 				case 0xFF:
 					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 5 ? -5 : 1;
@@ -1399,8 +1489,13 @@ void state_menu() {
 							break;
 					};
 					if (ballframe != 5) {
+					#if !__VS_SYSTEM
 						oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
 						oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7, 0xE0);					
+					#else
+						oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x23);
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7, 0xE3);	
+					#endif						
 					}
 					break;					
 			};
@@ -1768,9 +1863,7 @@ void roll_new_mode() {
 }			
 
 void dec_mouse_timer() {
-	#if !__VS_SYSTEM
 	kandoframecnt++;
-	#endif
 	if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 }		
 
