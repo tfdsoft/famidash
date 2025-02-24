@@ -57,7 +57,7 @@ void reset_game_vars(){
 	practice_orbactive[tmp1] = orbactive;
 
 	long_temp_x = high_byte(player_x[0]);
-	auto_practicepoint_timer = 300;
+	auto_practicepoint_timer = 200;
 }
 
 
@@ -148,7 +148,7 @@ void restore_practice_state() {
 
 	#undef quick_ld
 	currplayer_gravity = player_gravity[currplayer];
-	auto_practicepoint_timer = 300;
+	auto_practicepoint_timer = 200;
 }
 
 CODE_BANK_POP()
