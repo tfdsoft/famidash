@@ -124,7 +124,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //TOE2
 	SPIKESC, //geometrical dominator
 	SPIKESA, //deadlocked
-	SPIKESA, //fingerdash
+	SPIKESC, //fingerdash
 	SPIKESA, //dash
 	SPIKESA, //RETRAY
 	SPIKESA, //SONAR
