@@ -890,6 +890,7 @@ void state_menu() {
 	}
 		
 		
+/*    DEBUG STUFF
 		if (joypad1.press & PAD_SELECT && coins_inserted != 255) { 
 			for (tmp2 = 0; tmp2 < 255; tmp2++) {
 		
@@ -899,7 +900,7 @@ void state_menu() {
 			}
 
 		}
-
+*/
 		multi_vram_buffer_horz(vstext, sizeof(vstext)-1, NTADR_A(25,5));
 		if (!coins_inserted) multi_vram_buffer_horz(nocoinstext, sizeof(nocoinstext)-1, NTADR_A(11,9));
 		else {
