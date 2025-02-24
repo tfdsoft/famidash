@@ -1,6 +1,9 @@
 
 CODE_BANK_PUSH("XCD_BANK_03")
 
+#if __VS_SYSTEM
+void color_picker();
+#endif
 void check_if_music_stopped();
 void clear_shit();
 void movement();
@@ -565,11 +568,9 @@ void customize_screen() {
 	
 //mouse stuff
 
+	#if !__VS_SYSTEM
 		if (mouse.left_press || (mouse.left && hold_timer >= 15)) {
 //icon
-		#if __VS_SYSTEM
-		menutimer = 0;
-		#endif
 			if ((mouse.x >= 0x76 && mouse.x <= 0x83)) { 
 				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
 					icon++;
@@ -642,6 +643,7 @@ void customize_screen() {
 				return;			//go back
 			}
 		}
+	#endif
 //end mouse stuff
 		if (!retro_mode) {
 			if (icon != prev_icon) {
@@ -847,6 +849,10 @@ void state_menu() {
 	else pal_bg (splashMenu);
 	
 	newrand();
+
+	#if __VS_SYSTEM
+	color_picker();
+	#endif
 
 	mmc3_set_8kb_chr(MENUBANK);
 
@@ -1403,6 +1409,7 @@ void state_menu() {
 
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 		if (!(kandoframecnt & 127)) {
+		#if !__VS_SYSTEM
 			tmp3 = 0x80 + BG_Table2[discoframe];
 			
 			if (tmp3 < 0x80) tmp3 += 0x80;
@@ -1425,6 +1432,9 @@ void state_menu() {
 			discoframe++;
 			pal_set_update();
 			if (discoframe == 12) discoframe = 0;
+		#else
+			color_picker();
+		#endif
 		}
 		dec_mouse_timer();
 		tmp3 = 0;	
@@ -1740,7 +1750,7 @@ void roll_new_mode() {
 		
 	ballframe = 0;
 	oam_clear();
-/*
+#if __VS_SYSTEM
 	while (tmp1 >= 53) {
 		tmp1 = newrand() & 63;
 	}
@@ -1750,15 +1760,17 @@ void roll_new_mode() {
 	while (tmp3 >= 53) {
 		tmp3 = newrand() & 63;
 	}
-*/
-//	titlecolor1 = menu_color_table[tmp1];
-//	titlecolor2 = menu_color_table[tmp2];   most of our colors suck
-//	titlecolor3 = menu_color_table[tmp3];
+	titlecolor1 = menu_color_table[tmp1];
+	titlecolor2 = menu_color_table[tmp2]; //  most of our colors suck
+	titlecolor3 = menu_color_table[tmp3];
+#endif
 	set_title_icon();
 }			
 
 void dec_mouse_timer() {
+	#if !__VS_SYSTEM
 	kandoframecnt++;
+	#endif
 	if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 }		
 
@@ -1944,5 +1956,31 @@ void check_if_music_stopped() {
 	#endif
 }	
 
+#if __VS_SYSTEM
+void color_picker() {
+	tmp3 = 0x80 + BG_Table2[discoframe];
+	
+	if (tmp3 < 0x80) tmp3 += 0x80;
+	else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+	tmp2 = (tmp3 & 0x3F);  		    
+		pal_col(0, tmp2);
+		pal_col(0x11, tmp2);
+		// pal_col(1, oneShadeDarker(tmp2)); 
+		// pal_col(9, oneShadeDarker(tmp2)); 
+		pal_set_update();
+
+	tmp3 = 0xC0 + BG_Table2[discoframe];
+	
+	if (tmp3 < 0x80) tmp3 += 0x80;
+	else if (tmp3 >= 0xF0) tmp3 -= 0x80;
+	tmp2 = (tmp3 & 0x3F);  		    
+	//	pal_col(6, tmp2);
+	//	pal_col(5, oneShadeDarker(tmp2)); 
+	//	pal_set_update();
+	discoframe++;
+	pal_set_update();
+	if (discoframe == 12) discoframe = 0;
+}	
+#endif
 
 CODE_BANK_POP()
