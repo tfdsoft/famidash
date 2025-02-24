@@ -228,11 +228,11 @@ void state_demo(){
 	vram_unrle(Credits2);
 
 	
-	multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(1,3));
-	one_vram_buffer(FLAG_MAJ_VER, NTADR_A(6,3));
+	multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(1,24));
+	one_vram_buffer(FLAG_MAJ_VER, NTADR_A(6,24));
 	#ifdef FLAG_BETA_BUILD
-		one_vram_buffer(0x18, NTADR_A(7,3)); // dot
-		one_vram_buffer(FLAG_MIN_VER, NTADR_A(8,3));
+		one_vram_buffer(0x18, NTADR_A(7,24)); // dot
+		one_vram_buffer(FLAG_MIN_VER, NTADR_A(8,24));
 	#endif
 	
 	// __asm__("LDA mmc3PRG1Bank \nPHA ");
