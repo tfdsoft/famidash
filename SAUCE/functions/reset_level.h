@@ -12,6 +12,7 @@ void reset_level() {
 	was_on_slope_counter[1] = 0;
 	jumps = 0;
 	ufo_orbed = 0;
+	slowmode = 0;
 	slope_type[0] = SLOPE_NONE;
 	slope_type[1] = SLOPE_NONE;
 	currplayer_slope_type = SLOPE_NONE;
