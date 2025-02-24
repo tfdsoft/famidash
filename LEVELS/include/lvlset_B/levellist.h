@@ -25,7 +25,7 @@ const uint8_t spike_set[] = {
 	SPIKESB,	// ninox
 	SPIKESA,	// highlife
 	SPIKESA,	// supercycles
-	SPIKESA,	// clutterfunk2
+	SPIKESC,	// clutterfunk2
 	SPIKESA,	// speedracer
 	SPIKESA,	// pgclubstep
 	SPIKESB,	// eon
