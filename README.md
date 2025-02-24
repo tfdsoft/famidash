@@ -59,5 +59,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |dtpls|icon contest winner|
 |ps_lol|icon contest winner|
 |notapotato|icon contest winner|
+|LemonAid!|icon contest winner|
 
 Shoutout to RobTop for making all of this possible by creating Geometry Dash in the first place. Hope this silly project of ours is able to pay justice to his masterpiece.
