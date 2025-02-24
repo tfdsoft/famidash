@@ -185,7 +185,7 @@
 		.incbin "EXPORTS/test4.lz.bin" ; Size: 97
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8147 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8178 bytes
 	.export level_data_speedracer
 	level_data_speedracer:
 	; Header
@@ -197,7 +197,7 @@
 		.byte speedracer_grnd_color
 		.byte 27	; height of speedracer
 	; Level data
-		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5611
+		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5642
 
 	.export level_data_highlife_0
 	level_data_highlife_0:
