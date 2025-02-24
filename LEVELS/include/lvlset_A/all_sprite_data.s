@@ -647,7 +647,7 @@ sprite_data_polargeist:
   .byte $50,$3a,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_21"
+.segment "DAT_BANK_19"
 sprite_data_dryout:
   .byte $40,$02,$60,$03,$2b
   .byte $60,$02,$80,$03,$2e
@@ -13736,15 +13736,10 @@ sprite_data_dearnostalgists:
   .byte $40,$27,$f0,$02,$80
   .byte $40,$27,$20,$03,$fe
   .byte $40,$27,$38,$03,$fd
-  .byte $50,$27,$10,$03,$fa
   .byte $50,$27,$20,$03,$fe
   .byte $50,$27,$38,$03,$fd
-  .byte $50,$27,$40,$03,$fa
-  .byte $60,$27,$10,$03,$fa
   .byte $60,$27,$20,$03,$fe
   .byte $60,$27,$30,$03,$fb
-  .byte $60,$27,$40,$03,$fa
-  .byte $70,$27,$10,$03,$fa
   .byte $70,$27,$20,$03,$fe
   .byte $70,$27,$30,$03,$fc
   .byte $80,$27,$20,$03,$fe
@@ -13825,7 +13820,7 @@ sprite_data_dearnostalgists:
   .byte $40,$38,$38,$03,$0a
   .byte $a0,$38,$50,$03,$13
   .byte $e0,$38,$30,$03,$27
-  .byte $40,$39,$40,$03,$0b
+  .byte $30,$39,$40,$03,$0b
   .byte $60,$39,$00,$03,$03
   .byte $00,$3a,$10,$03,$97
   .byte $40,$3a,$10,$03,$87
@@ -14841,7 +14836,7 @@ sprite_data_firetemple:
   .byte $f0,$36,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_21"
+.segment "DAT_BANK_22"
 sprite_data_foresttemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$ba
@@ -15952,7 +15947,15 @@ sprite_data_luckydraw:
   .byte $b0,$33,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_0B"
 sprite_data_test4:
-  .byte $50,$00,$60,$03,$24
+  .byte $c0,$03,$80,$01,$01
+  .byte $c0,$03,$90,$01,$6d
+  .byte $d0,$03,$80,$01,$fc
+  .byte $d0,$03,$90,$01,$fc
+  .byte $d0,$03,$a0,$01,$fc
+  .byte $60,$04,$a0,$01,$84
+  .byte $90,$04,$a0,$01,$94
+  .byte $10,$0a,$90,$01,$00
+  .byte $10,$0a,$a0,$01,$14
   .byte $ff
