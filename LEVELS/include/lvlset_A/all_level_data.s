@@ -213,7 +213,7 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5888
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8131 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8121 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
