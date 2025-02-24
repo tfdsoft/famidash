@@ -266,7 +266,7 @@ void levelselection() {
 		//if (pad[0] & PAD_UP && pad_new[0] & PAD_SELECT) { twoplayer ^= 0x01; sfx_play(sfx_coin, 0); }
 
 		menutimer++;
-		if (menutimer == 2000) {
+		if (menutimer >= 2000) {
 			exitingLevelSelect = 1;
 			kandowatchesyousleep = 0;
 			return;
@@ -694,7 +694,7 @@ void customize_screen() {
 		dec_mouse_timer();
 		hold_timer++;
 		menutimer++;
-		if (menutimer == 2000) return;						
+		if (menutimer >= 2000) return;						
 	}
 #undef prev_icon
 }
@@ -1408,7 +1408,7 @@ void state_menu() {
 		}
 */
 		menutimer++;
-		if (menutimer == 2000) {
+		if (menutimer >= 2000) {
 			menutimer = 0;
 			gameState = 0;
 			music_update();
