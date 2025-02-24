@@ -268,7 +268,7 @@ void levelselection() {
 
 		#if __VS_SYSTEM
 			menutimer++;
-			if (menutimer == 2000) {
+			if (menutimer >= 2000) {
 				exitingLevelSelect = 1;
 				kandowatchesyousleep = 0;
 				return;
@@ -720,7 +720,7 @@ void customize_screen() {
 		hold_timer++;
 		#if __VS_SYSTEM
 		menutimer++;
-		if (menutimer == 2000) return;						
+		if (menutimer >= 2000) return;						
 		#endif
 	}
 #undef prev_icon
@@ -1564,7 +1564,7 @@ void state_menu() {
 
 		#if __VS_SYSTEM
 			menutimer++;
-			if (menutimer == 2000) {
+			if (menutimer >= 2000) {
 				menutimer = 0;
 				gameState = 0;
 				music_update();
