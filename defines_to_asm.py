@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
-def convertCFileToS(filename : str, outfilename : str):
+def convertCFileToS(filename : str, outfile):
 	infile = open(filename, "r")
-	outfile = open(outfilename, "w")
 	for line in infile:
 		split = line.split()
 		# print(line)
@@ -23,14 +22,19 @@ def convertCFileToS(filename : str, outfilename : str):
 	infile.close()
 	outfile.close()
 
+getStringForFile = lambda name : "\n".join(["; " + ("="*23) + "+" + ("-"*len(name)) + "+", f"; Start of contents from |{name}|", "; " + ("="*23) + "+" + ("-"*len(name)) + "+", "", ""])
+
 if __name__ == "__main__":
 	import sys, argparse, pathlib
 	parser = argparse.ArgumentParser()
+	parser.add_argument("output", type=pathlib.Path)
 	parser.add_argument("input", nargs=argparse.REMAINDER)
 	args = parser.parse_args()
 
 	ownPath = pathlib.PurePath(sys.path[0])
+
+	outfile = open(ownPath / args.output.with_suffix(".s"), "w")
 	for filename in args.input:
+		outfile.write(getStringForFile(filename))
 		realFilename = ownPath / filename
-		outFilename = ownPath / "TMP" / (realFilename.stem+".s")
-		convertCFileToS(realFilename, outFilename)
+		convertCFileToS(realFilename, outfile)
