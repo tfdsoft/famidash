@@ -37,7 +37,7 @@
 		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
-.segment "LVL_BANK_03"	; Total bank size: 8072 bytes
+.segment "LVL_BANK_03"	; Total bank size: 8095 bytes
 	.export level_data_deathmoon
 	level_data_deathmoon:
 	; Header
@@ -49,7 +49,7 @@
 		.byte deathmoon_grnd_color
 		.byte 57	; height of deathmoon
 	; Level data
-		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8072
+		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8095
 
 
 .segment "LVL_BANK_04"	; Total bank size: 8132 bytes
@@ -336,7 +336,7 @@
 		.incbin "EXPORTS/problematic.lz.bin" ; Size: 4874
 
 
-.segment "LVL_BANK_14"	; Total bank size: 8089 bytes
+.segment "LVL_BANK_14"	; Total bank size: 8091 bytes
 	.export level_data_blastprocessing
 	level_data_blastprocessing:
 	; Header
@@ -353,7 +353,7 @@
 	.export level_data_deathmoon_1
 	level_data_deathmoon_1:
 	; Level data
-		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3302
+		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3304
 
 
 .segment "LVL_BANK_15"	; Total bank size: 7891 bytes
@@ -539,7 +539,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
 
 
-.segment "LVL_BANK_1C"	; Total bank size: 8177 bytes
+.segment "LVL_BANK_1C"	; Total bank size: 8182 bytes
 	.export level_data_retray
 	level_data_retray:
 	; Header
