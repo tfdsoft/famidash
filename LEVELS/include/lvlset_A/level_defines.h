@@ -4,7 +4,7 @@
 #define LEVELSET 'A'
 
 #define OFFICIAL_LEVEL_COUNT 22
-#define COMMUNITY_LEVEL_COUNT 23
+#define COMMUNITY_LEVEL_COUNT 21
 
 #define stereomadness 0
 #define backontrack 1
@@ -29,15 +29,15 @@
 #define fingerdash 20
 #define dash 21
 #define retray 22
-#define sonar 23
-#define thechallenge 24
-#define dreamer 25
-#define lookatthislevel 26
-#define kappaclysm 27
-#define sunshine 28
-#define revolution 29
-#define lostinthewoods 30
-#define bloodbathbutno 31
+#define thechallenge 23
+#define dreamer 24
+#define groundtospace 25
+#define kappaclysm 26
+#define sunshine 27
+#define revolution 28
+#define lostinthewoods 29
+#define bloodbathbutno 30
+#define rainbowtylenol 31
 #define aprettyeasylevel 32
 #define thelightningroad 33
 #define nightmare 34
@@ -48,6 +48,4 @@
 #define problematic 39
 #define firetemple 40
 #define foresttemple 41
-#define stalemate 42
-#define luckydraw 43
-#define test4 44
+#define luckydraw 42

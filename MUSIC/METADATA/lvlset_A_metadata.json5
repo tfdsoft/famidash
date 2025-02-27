@@ -296,12 +296,6 @@
 			vsSystemEnabled: true
 		},
 		{
-			fmsSongName: "Stereo madness 2",
-			upperText: "STEREO ",
-			lowerText: "MADNESS 2",
-			vsSystemEnabled: true
-		},
-		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
 			vsSystemEnabled: true
@@ -342,14 +336,8 @@
 			vsSystemEnabled: true
 		},
 		{
-			fmsSongName: "stalemate",
-			lowerText: "STALEMATE",
-			vsSystemEnabled: true
-		},
-		{
 			fmsSongName: "haunted woods",
 			lowerText: "HAUNTED WOODS",
-			vsSystemEnabled: true
 		},
 		/*
 		{
@@ -367,13 +355,16 @@
 			fmsSongName: "against the odds redux",
 			upperText: "8 BIT AGAINST",
 			lowerText: "THE ODDS REDUX",
-			vsSystemEnabled: true
 		},
 		{
-			fmsSongName: "Driving By Night",
-			upperText: "DRIVING BY",
-			lowerText: "NIGHT",
-			vsSystemEnabled: true
+			fmsSongName: "Ground to Space",
+			upperText: "GROUND TO",
+			lowerText: "SPACE"
+		},
+		{
+			fmsSongName: "rainbow tylenol",
+			upperText: "RAINBOW",
+			lowerText: "TYLENOL"
 		}
 	],
 	SFX: [

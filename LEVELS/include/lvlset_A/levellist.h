@@ -25,15 +25,15 @@ const uint8_t DECOTYPE[] = {
 	EXTRASPRITES1,	// fingerdash
 	EXTRASPRITES1,	// dash
 	DECO1,	// retray
-	DECO1,	// sonar
 	EXTRASPRITES1,	// thechallenge
 	DECO1,	// dreamer
-	DECO1,	// lookatthislevel
+	DECO1,	// groundtospace
 	DECOCLOUD,	// kappaclysm
 	DECO1,	// sunshine
 	DECO1,	// revolution
 	DECO1,	// lostinthewoods
 	DECO1,	// bloodbathbutno
+	EXTRASPRITES1,	// rainbowtylenol
 	DECO1,	// aprettyeasylevel
 	DECO1,	// thelightningroad
 	DECOCLOUD,	// nightmare
@@ -44,9 +44,7 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// problematic
 	DECO1,	// firetemple
 	DECO1,	// foresttemple
-	DECO1,	// stalemate
 	DECOCLOUD,	// luckydraw
-	EXTRASPRITES1,	// test4
 };
 
 const uint8_t spike_set[] = {
@@ -73,15 +71,15 @@ const uint8_t spike_set[] = {
 	SPIKESC,	// fingerdash
 	SPIKESA,	// dash
 	SPIKESA,	// retray
-	SPIKESA,	// sonar
 	SPIKESA,	// thechallenge
 	SPIKESA,	// dreamer
-	SPIKESA,	// lookatthislevel
+	SPIKESA,	// groundtospace
 	SPIKESC,	// kappaclysm
 	SPIKESA,	// sunshine
 	SPIKESA,	// revolution
 	SPIKESA,	// lostinthewoods
 	SPIKESA,	// bloodbathbutno
+	SPIKESA,	// rainbowtylenol
 	SPIKESC,	// aprettyeasylevel
 	SPIKESC,	// thelightningroad
 	SPIKESB,	// nightmare
@@ -92,9 +90,7 @@ const uint8_t spike_set[] = {
 	SPIKESB,	// problematic
 	SPIKESB,	// firetemple
 	SPIKESB,	// foresttemple
-	SPIKESA,	// stalemate
 	SPIKESB,	// luckydraw
-	SPIKESA,	// test4
 };
 
 
@@ -122,15 +118,15 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// fingerdash
 	BLOCKSB,	// dash
 	BLOCKSB,	// retray
-	BLOCKSB,	// sonar
 	BLOCKSB,	// thechallenge
 	BLOCKSB,	// dreamer
-	BLOCKSB,	// lookatthislevel
+	BLOCKSB,	// groundtospace
 	BLOCKSB,	// kappaclysm
 	BLOCKSB,	// sunshine
 	BLOCKSB,	// revolution
 	BLOCKSB,	// lostinthewoods
 	BLOCKSB,	// bloodbathbutno
+	BLOCKSA,	// rainbowtylenol
 	BLOCKSC,	// aprettyeasylevel
 	BLOCKSA,	// thelightningroad
 	BLOCKSC,	// nightmare
@@ -141,9 +137,7 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// problematic
 	BLOCKSB,	// firetemple
 	BLOCKSB,	// foresttemple
-	BLOCKSB,	// stalemate
 	BLOCKSB,	// luckydraw
-	BLOCKSB,	// test4
 };
 
 const uint8_t saw_set[] = {
@@ -170,15 +164,15 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// fingerdash
 	SAWBLADESA,	// dash
 	SAWBLADESA,	// retray
-	SAWBLADESA,	// sonar
 	SAWBLADESA,	// thechallenge
 	SAWBLADESA,	// dreamer
-	SAWBLADESA,	// lookatthislevel
+	SAWBLADESA,	// groundtospace
 	SAWBLADESA,	// kappaclysm
 	SAWBLADESA,	// sunshine
 	SAWBLADESA,	// revolution
 	SAWBLADESA,	// lostinthewoods
 	SAWBLADESA,	// bloodbathbutno
+	SAWBLADESA,	// rainbowtylenol
 	SAWBLADESA,	// aprettyeasylevel
 	SAWBLADESA,	// thelightningroad
 	SAWBLADESA,	// nightmare
@@ -189,9 +183,7 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// problematic
 	SAWBLADESA,	// firetemple
 	SAWBLADESA,	// foresttemple
-	SAWBLADESA,	// stalemate
 	LETTERBANK,	// luckydraw
-	SAWBLADESA,	// test4
 };
 
 
@@ -227,15 +219,15 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// fingerdash
 	INSANE,	// dash
 	EASY,	// retray
-	EASY,	// sonar
 	NORMAL,	// thechallenge
 	HARD,	// dreamer
-	HARD,	// lookatthislevel
+	HARD,	// groundtospace
 	HARDER,	// kappaclysm
 	HARDER,	// sunshine
 	HARDER,	// revolution
 	INSANE,	// lostinthewoods
 	INSANE,	// bloodbathbutno
+	INSANE,	// rainbowtylenol
 	INSANE,	// aprettyeasylevel
 	DEMON,	// thelightningroad
 	DEMON,	// nightmare
@@ -246,9 +238,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// problematic
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
-	DEMON,	// stalemate
 	DEMON,	// luckydraw
-	DEMON,	// test4
 };
 
 const uint8_t stars_list[] = {
@@ -275,15 +265,15 @@ const uint8_t stars_list[] = {
 	12,	// fingerdash
 	12,	// dash
 	2,	// retray
-	2,	// sonar
 	3,	// thechallenge
 	4,	// dreamer
-	4,	// lookatthislevel
+	5,	// groundtospace
 	6,	// kappaclysm
 	7,	// sunshine
 	7,	// revolution
 	8,	// lostinthewoods
 	8,	// bloodbathbutno
+	8,	// rainbowtylenol
 	9,	// aprettyeasylevel
 	10,	// thelightningroad
 	10,	// nightmare
@@ -294,7 +284,5 @@ const uint8_t stars_list[] = {
 	10,	// problematic
 	10,	// firetemple
 	10,	// foresttemple
-	10,	// stalemate
 	10,	// luckydraw
-	0,	// test4
 };

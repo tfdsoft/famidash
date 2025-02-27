@@ -106,7 +106,7 @@ electrodynamix_no_parallax = 0
 electrodynamix_bg_color    = $02
 electrodynamix_grnd_color  = $12
 
-hexagonforce_song_number = song_hexagon_force_vs_system
+hexagonforce_song_number = song_hexagon_force
 hexagonforce_game_mode   = 0
 hexagonforce_speed       = 0
 hexagonforce_no_parallax = 1
@@ -162,13 +162,6 @@ retray_no_parallax = 1
 retray_bg_color    = $0F
 retray_grnd_color  = $0F
 
-sonar_song_number = song_stereo_madness_2
-sonar_game_mode   = 0
-sonar_speed       = 0
-sonar_no_parallax = 1
-sonar_bg_color    = $01
-sonar_grnd_color  = $01
-
 thechallenge_song_number = song_the_challenge
 thechallenge_game_mode   = 0
 thechallenge_speed       = 0
@@ -183,12 +176,12 @@ dreamer_no_parallax = 1
 dreamer_bg_color    = $0F
 dreamer_grnd_color  = $0F
 
-lookatthislevel_song_number = song_driving_by_night
-lookatthislevel_game_mode   = 0
-lookatthislevel_speed       = 1
-lookatthislevel_no_parallax = 0
-lookatthislevel_bg_color    = $0F
-lookatthislevel_grnd_color  = $0F
+groundtospace_song_number = song_crackdown
+groundtospace_game_mode   = 0
+groundtospace_speed       = 1
+groundtospace_no_parallax = 1
+groundtospace_bg_color    = $12
+groundtospace_grnd_color  = $02
 
 kappaclysm_song_number = song_atthespeedoflight
 kappaclysm_game_mode   = 0
@@ -224,6 +217,13 @@ bloodbathbutno_speed       = 1
 bloodbathbutno_no_parallax = 1
 bloodbathbutno_bg_color    = $0F
 bloodbathbutno_grnd_color  = $0F
+
+rainbowtylenol_song_number = song_crackdown
+rainbowtylenol_game_mode   = 0
+rainbowtylenol_speed       = 0
+rainbowtylenol_no_parallax = 1
+rainbowtylenol_bg_color    = $12
+rainbowtylenol_grnd_color  = $02
 
 aprettyeasylevel_song_number = song_against_the_odds_redux
 aprettyeasylevel_game_mode   = 0
@@ -267,6 +267,13 @@ decode_no_parallax = 1
 decode_bg_color    = $16
 decode_grnd_color  = $06
 
+dearnostalgists_song_number = song_crackdown
+dearnostalgists_game_mode   = 0
+dearnostalgists_speed       = 2
+dearnostalgists_no_parallax = 1
+dearnostalgists_bg_color    = $2C
+dearnostalgists_grnd_color  = $1C
+
 problematic_song_number = song_problematic
 problematic_game_mode   = 0
 problematic_speed       = 0
@@ -288,30 +295,9 @@ foresttemple_no_parallax = 1
 foresttemple_bg_color    = $0F
 foresttemple_grnd_color  = $0F
 
-stalemate_song_number = song_stalemate
-stalemate_game_mode   = 0
-stalemate_speed       = 0
-stalemate_no_parallax = 1
-stalemate_bg_color    = $0F
-stalemate_grnd_color  = $0F
-
-bloodbath_song_number = song_atthespeedoflight2
-bloodbath_game_mode   = 0
-bloodbath_speed       = 0
-bloodbath_no_parallax = 1
-bloodbath_bg_color    = $0F
-bloodbath_grnd_color  = $0F
-
 luckydraw_song_number = song_electroman_adventures
 luckydraw_game_mode   = 0
 luckydraw_speed       = 0
 luckydraw_no_parallax = 1
 luckydraw_bg_color    = $0F
 luckydraw_grnd_color  = $0F
-
-test4_song_number = song_dash
-test4_game_mode   = 0
-test4_speed       = 0
-test4_no_parallax = 1
-test4_bg_color    = $12
-test4_grnd_color  = $02
