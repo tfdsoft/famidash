@@ -69,7 +69,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8045
 
 
-.segment "LVL_BANK_06"	; Total bank size: 8077 bytes
+.segment "LVL_BANK_06"	; Total bank size: 8092 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -259,7 +259,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
 
 
-.segment "LVL_BANK_13"	; Total bank size: 7981 bytes
+.segment "LVL_BANK_13"	; Total bank size: 7991 bytes
 	.export level_data_supercycles
 	level_data_supercycles:
 	; Header
