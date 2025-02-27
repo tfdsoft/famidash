@@ -70,8 +70,8 @@ const uint8_t xbgm_lookup_table[] = {
 	song_windfall,
 	song_speed_racer,
 	song_magic_touch,
-	song_subtle_oddities,
 	song_pyrophoric,
+	song_subtle_oddities,
 };
 
 
