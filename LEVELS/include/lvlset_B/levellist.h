@@ -116,7 +116,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// subzero
 	HARDER,	// pyrophoric
 	INSANE,	// subtleoddities
-	DEMON,	// highlife
+	INSANE,	// highlife
 	DEMON,	// supercycles
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer

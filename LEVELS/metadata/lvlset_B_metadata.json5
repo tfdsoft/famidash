@@ -135,7 +135,7 @@
 			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
-			difficulty: "DEMON",
+			difficulty: "INSANE",
 			stars: 9,
 			songID: "song_magic_touch",
 			startingGameMode: 0,
