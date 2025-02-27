@@ -293,7 +293,7 @@
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3074
 
 
-.segment "LVL_BANK_12"	; Total bank size: 8172 bytes
+.segment "LVL_BANK_12"	; Total bank size: 8169 bytes
 	.export level_data_rainbowtylenol
 	level_data_rainbowtylenol:
 	; Header
@@ -305,7 +305,7 @@
 		.byte rainbowtylenol_grnd_color
 		.byte 27	; height of rainbowtylenol
 	; Level data
-		.incbin "EXPORTS/rainbowtylenol.lz.bin" ; Size: 5060
+		.incbin "EXPORTS/rainbowtylenol.lz.bin" ; Size: 5057
 
 
 .segment "LVL_BANK_13"	; Total bank size: 7803 bytes
