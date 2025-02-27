@@ -8,6 +8,13 @@ stereomadness_no_parallax = 0
 stereomadness_bg_color    = $12
 stereomadness_grnd_color  = $02
 
+sonar_song_number = song_stereo_madness_2
+sonar_game_mode   = 0
+sonar_speed       = 0
+sonar_no_parallax = 1
+sonar_bg_color    = $01
+sonar_grnd_color  = $01
+
 leveleasy_song_number = song_stereo_madness
 leveleasy_game_mode   = 0
 leveleasy_speed       = 0
@@ -21,6 +28,13 @@ ninox_speed       = 0
 ninox_no_parallax = 0
 ninox_bg_color    = $12
 ninox_grnd_color  = $02
+
+lookatthislevel_song_number = song_driving_by_night
+lookatthislevel_game_mode   = 0
+lookatthislevel_speed       = 1
+lookatthislevel_no_parallax = 0
+lookatthislevel_bg_color    = $0F
+lookatthislevel_grnd_color  = $0F
 
 highlife_song_number = song_magic_touch
 highlife_game_mode   = 0
@@ -63,6 +77,13 @@ eon_speed       = 1
 eon_no_parallax = 1
 eon_bg_color    = $0F
 eon_grnd_color  = $0F
+
+stalemate_song_number = song_stalemate
+stalemate_game_mode   = 0
+stalemate_speed       = 0
+stalemate_no_parallax = 1
+stalemate_bg_color    = $0F
+stalemate_grnd_color  = $0F
 
 bloodbath_song_number = song_atthespeedoflight2
 bloodbath_game_mode   = 0

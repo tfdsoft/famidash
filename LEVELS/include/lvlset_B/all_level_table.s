@@ -6,14 +6,17 @@
 
 _level_list_lo:
 	.byte .lobyte(level_data_stereomadness)
+	.byte .lobyte(level_data_sonar)
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_ninox)
+	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_supercycles)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_eon)
+	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_cataclysm)
 	.byte .lobyte(level_data_aftermath)
@@ -23,14 +26,17 @@ _level_list_lo:
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
+	.byte .hibyte(level_data_sonar)
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_ninox)
+	.byte .hibyte(level_data_lookatthislevel)
 	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_supercycles)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_eon)
+	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_cataclysm)
 	.byte .hibyte(level_data_aftermath)
@@ -40,14 +46,17 @@ _level_list_hi:
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
+	.byte .lobyte(.bank(level_data_sonar))
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_ninox))
+	.byte .lobyte(.bank(level_data_lookatthislevel))
 	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_supercycles))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_eon))
+	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_cataclysm))
 	.byte .lobyte(.bank(level_data_aftermath))
@@ -75,14 +84,17 @@ _level_chunk_list_bank:
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
+	.byte .lobyte(sprite_data_sonar)
 	.byte .lobyte(sprite_data_leveleasy)
 	.byte .lobyte(sprite_data_ninox)
+	.byte .lobyte(sprite_data_lookatthislevel)
 	.byte .lobyte(sprite_data_highlife)
 	.byte .lobyte(sprite_data_supercycles)
 	.byte .lobyte(sprite_data_clutterfunk2)
 	.byte .lobyte(sprite_data_speedracer)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_eon)
+	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_bloodbath)
 	.byte .lobyte(sprite_data_cataclysm)
 	.byte .lobyte(sprite_data_aftermath)
@@ -92,14 +104,17 @@ _sprite_list_lo:
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
+	.byte .hibyte(sprite_data_sonar)
 	.byte .hibyte(sprite_data_leveleasy)
 	.byte .hibyte(sprite_data_ninox)
+	.byte .hibyte(sprite_data_lookatthislevel)
 	.byte .hibyte(sprite_data_highlife)
 	.byte .hibyte(sprite_data_supercycles)
 	.byte .hibyte(sprite_data_clutterfunk2)
 	.byte .hibyte(sprite_data_speedracer)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_eon)
+	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_bloodbath)
 	.byte .hibyte(sprite_data_cataclysm)
 	.byte .hibyte(sprite_data_aftermath)
@@ -109,14 +124,17 @@ _sprite_list_hi:
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
+	.byte .lobyte(.bank(sprite_data_sonar))
 	.byte .lobyte(.bank(sprite_data_leveleasy))
 	.byte .lobyte(.bank(sprite_data_ninox))
+	.byte .lobyte(.bank(sprite_data_lookatthislevel))
 	.byte .lobyte(.bank(sprite_data_highlife))
 	.byte .lobyte(.bank(sprite_data_supercycles))
 	.byte .lobyte(.bank(sprite_data_clutterfunk2))
 	.byte .lobyte(.bank(sprite_data_speedracer))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_eon))
+	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
 	.byte .lobyte(.bank(sprite_data_cataclysm))
 	.byte .lobyte(.bank(sprite_data_aftermath))
@@ -129,14 +147,17 @@ _sprite_list_bank:
 
 _level_lengths_lo:
 	.byte .lobyte($000080)		; stereomadness
+	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($00007B)		; ninox
+	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000286)		; eon
+	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
 	.byte .lobyte($00007C)		; aftermath
@@ -148,14 +169,17 @@ _level_lengths_lo:
 
 _level_lengths_md:
 	.byte .hibyte($000080)		; stereomadness
+	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($00007B)		; ninox
+	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000286)		; eon
+	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
 	.byte .hibyte($00007C)		; aftermath
@@ -167,14 +191,17 @@ _level_lengths_md:
 
 _level_lengths_hi:
 	.byte .bankbyte($000080)		; stereomadness
+	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($00007B)		; ninox
+	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000286)		; eon
+	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm
 	.byte .bankbyte($00007C)		; aftermath

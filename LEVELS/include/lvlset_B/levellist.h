@@ -3,14 +3,17 @@
 
 const uint8_t DECOTYPE[] = {
 	DECO1,	// stereomadness
+	DECO1,	// sonar
 	DECO1,	// leveleasy
 	DECOCLOUD,	// ninox
+	DECO1,	// lookatthislevel
 	DECO1,	// highlife
 	DECO1,	// supercycles
 	DECO1,	// clutterfunk2
 	EXTRASPRITES1,	// speedracer
 	DECO1,	// pgclubstep
 	EXTRASPRITES1,	// eon
+	DECO1,	// stalemate
 	DECOCLOUD,	// bloodbath
 	DECO1,	// cataclysm
 	DECO1,	// aftermath
@@ -21,14 +24,17 @@ const uint8_t DECOTYPE[] = {
 
 const uint8_t spike_set[] = {
 	SPIKESA,	// stereomadness
+	SPIKESA,	// sonar
 	SPIKESA,	// leveleasy
 	SPIKESB,	// ninox
+	SPIKESA,	// lookatthislevel
 	SPIKESA,	// highlife
 	SPIKESA,	// supercycles
 	SPIKESC,	// clutterfunk2
 	SPIKESA,	// speedracer
 	SPIKESA,	// pgclubstep
 	SPIKESB,	// eon
+	SPIKESA,	// stalemate
 	SPIKESC,	// bloodbath
 	SPIKESC,	// cataclysm
 	SPIKESC,	// aftermath
@@ -40,14 +46,17 @@ const uint8_t spike_set[] = {
 
 const uint8_t block_set[] = {
 	BLOCKSA,	// stereomadness
+	BLOCKSB,	// sonar
 	BLOCKSA,	// leveleasy
 	BLOCKSC,	// ninox
+	BLOCKSB,	// lookatthislevel
 	BLOCKSB,	// highlife
 	BLOCKSB,	// supercycles
 	BLOCKSB,	// clutterfunk2
 	BLOCKSB,	// speedracer
 	BLOCKSB,	// pgclubstep
 	BLOCKSA,	// eon
+	BLOCKSB,	// stalemate
 	BLOCKSB,	// bloodbath
 	BLOCKSB,	// cataclysm
 	BLOCKSB,	// aftermath
@@ -58,14 +67,17 @@ const uint8_t block_set[] = {
 
 const uint8_t saw_set[] = {
 	SAWBLADESA,	// stereomadness
+	SAWBLADESA,	// sonar
 	SAWBLADESA,	// leveleasy
 	SAWBLADESA,	// ninox
+	SAWBLADESA,	// lookatthislevel
 	SAWBLADESA,	// highlife
 	SAWBLADESA,	// supercycles
 	SAWBLADESA,	// clutterfunk2
 	SAWBLADESA,	// speedracer
 	SAWBLADESA,	// pgclubstep
 	SAWBLADESA,	// eon
+	SAWBLADESA,	// stalemate
 	SAWBLADESA,	// bloodbath
 	SAWBLADESA,	// cataclysm
 	SAWBLADESA,	// aftermath
@@ -85,14 +97,17 @@ const uint8_t saw_set[] = {
 
 const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
+	EASY,	// sonar
 	NORMAL,	// leveleasy
 	NORMAL,	// ninox
+	HARD,	// lookatthislevel
 	DEMON,	// highlife
 	DEMON,	// supercycles
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
 	DEMON,	// pgclubstep
 	DEMON,	// eon
+	DEMON,	// stalemate
 	DEMON,	// bloodbath
 	DEMON,	// cataclysm
 	DEMON,	// aftermath
@@ -103,14 +118,17 @@ const uint8_t difficulty_list[] = {
 
 const uint8_t stars_list[] = {
 	1,	// stereomadness
+	2,	// sonar
 	3,	// leveleasy
 	3,	// ninox
+	4,	// lookatthislevel
 	9,	// highlife
 	10,	// supercycles
 	10,	// clutterfunk2
 	10,	// speedracer
 	10,	// pgclubstep
 	10,	// eon
+	10,	// stalemate
 	10,	// bloodbath
 	10,	// cataclysm
 	10,	// aftermath

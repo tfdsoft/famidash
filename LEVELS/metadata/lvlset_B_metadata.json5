@@ -19,6 +19,22 @@
 	],
 	community_levels: [
 		{
+			level: "sonar",
+			lowerText: "SONAR",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASY",
+			stars: 2,
+			songID: "song_stereo_madness_2",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x01,
+			startingGroundColor: 0x01,
+			parallaxDisable: true
+		},
+		{
 			level: "leveleasy",
 			lowerText: "LEVEL EASY",
 			decoType: "DECO1",
@@ -47,6 +63,22 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02
+		},
+		{
+			level: "lookatthislevel",
+			upperText: "LOOK AT",
+			lowerText: "THIS LEVEL",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 4,
+			songID: "song_driving_by_night",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F
 		},
 		{
 			level: "highlife",
@@ -148,6 +180,22 @@
 					offsetX: 4
 				}
 			] */
+		},
+		{
+			level: "stalemate",
+			lowerText: "STALEMATE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_stalemate",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "bloodbath",

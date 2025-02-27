@@ -32,7 +32,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8173
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8143 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -99,7 +99,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7517
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8179 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8184 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -142,7 +142,22 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 7541 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8170 bytes
+	.export level_data_lookatthislevel
+	level_data_lookatthislevel:
+	; Header
+		.byte lookatthislevel_song_number
+		.byte lookatthislevel_game_mode
+		.byte lookatthislevel_speed
+		.byte lookatthislevel_no_parallax
+		.byte lookatthislevel_bg_color
+		.byte lookatthislevel_grnd_color
+		.byte 27	; height of lookatthislevel
+	; Level data
+		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1609
+
+
+.segment "DAT_BANK_0A"	; Total bank size: 7946 bytes
 	.export level_data_clutterfunk2
 	level_data_clutterfunk2:
 	; Header
@@ -192,7 +207,55 @@
 		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2536
 
 
-.segment "DAT_BANK_0D"	; Total bank size: 7649 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8063 bytes
+	.export level_data_stalemate
+	level_data_stalemate:
+	; Header
+		.byte stalemate_song_number
+		.byte stalemate_game_mode
+		.byte stalemate_speed
+		.byte stalemate_no_parallax
+		.byte stalemate_bg_color
+		.byte stalemate_grnd_color
+		.byte 27	; height of stalemate
+	; Level data
+		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5217
+
+
+.segment "DAT_BANK_10"	; Total bank size: 8191 bytes
+	.export level_data_aftercatabath_3
+	level_data_aftercatabath_3:
+	; Level data
+		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4673
+
+	.export level_data_sonar
+	level_data_sonar:
+	; Header
+		.byte sonar_song_number
+		.byte sonar_game_mode
+		.byte sonar_speed
+		.byte sonar_no_parallax
+		.byte sonar_bg_color
+		.byte sonar_grnd_color
+		.byte 27	; height of sonar
+	; Level data
+		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
+
+
+.segment "DAT_BANK_11"	; Total bank size: 8190 bytes
+	.export level_data_supercycles
+	level_data_supercycles:
+	; Header
+		.byte supercycles_song_number
+		.byte supercycles_game_mode
+		.byte supercycles_speed
+		.byte supercycles_no_parallax
+		.byte supercycles_bg_color
+		.byte supercycles_grnd_color
+		.byte 27	; height of supercycles
+	; Level data
+		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
+
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header
@@ -207,27 +270,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8058 bytes
-	.export level_data_aftercatabath_3
-	level_data_aftercatabath_3:
-	; Level data
-		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4673
-
-	.export level_data_supercycles
-	level_data_supercycles:
-	; Header
-		.byte supercycles_song_number
-		.byte supercycles_game_mode
-		.byte supercycles_speed
-		.byte supercycles_no_parallax
-		.byte supercycles_bg_color
-		.byte supercycles_grnd_color
-		.byte 27	; height of supercycles
-	; Level data
-		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
-
-
-.segment "DAT_BANK_11"	; Total bank size: 3340 bytes
+.segment "DAT_BANK_13"	; Total bank size: 1559 bytes
 	.export level_data_eon_1
 	level_data_eon_1:
 	; Level data
