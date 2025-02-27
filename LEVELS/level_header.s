@@ -344,14 +344,14 @@ dearnostalgists_no_parallax  = 1
 dearnostalgists_bg_color    = $2C
 dearnostalgists_grnd_color  = $1C
 
-groundtospace_song_number = song_crackdown
+groundtospace_song_number = song_ground_to_space
 groundtospace_game_mode   = $00
 groundtospace_speed       = $01
 groundtospace_no_parallax  = 1
 groundtospace_bg_color    = $12
 groundtospace_grnd_color  = $02
 
-rainbowtylenol_song_number = song_crackdown
+rainbowtylenol_song_number = song_rainbow_tylenol
 rainbowtylenol_game_mode   = $00
 rainbowtylenol_speed       = $00
 rainbowtylenol_no_parallax  = 1
