@@ -687,7 +687,7 @@ sprite_data_ninox:
   .byte $70,$2f,$70,$03,$0f
   .byte $ff
 
-.segment "LVL_BANK_14"
+.segment "LVL_BANK_15"
 sprite_data_lookatthislevel:
   .byte $00,$00,$88,$03,$56
   .byte $10,$00,$f0,$02,$0e
@@ -10439,7 +10439,7 @@ sprite_data_slaughterhouse:
   .byte $a0,$3a,$70,$02,$0f
   .byte $ff
 
-.segment "LVL_BANK_03"
+.segment "LVL_BANK_04"
 sprite_data_test4:
   .byte $c0,$03,$80,$01,$01
   .byte $c0,$03,$90,$01,$6d
