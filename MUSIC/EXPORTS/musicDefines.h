@@ -8,9 +8,9 @@
 #define song_subtle_oddities 7
 #define song_atthespeedoflightfull 8
 #define song_stalemate 9
-#define song_atthespeedoflight 10
+#define song_clubstep 10
 #define song_eon 11
-#define song_clubstep 12
+#define song_atthespeedoflight 12
 #define song_whats_a_future_funk 13
 #define song_practice 14
 #define song_clutterfunk_2 15

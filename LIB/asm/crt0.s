@@ -310,6 +310,14 @@ detectNTSC:
 	.incbin "MUSIC/EXPORTS/music_bank1.dmc"
 .segment "DMC_BANK_02"
 	.incbin "MUSIC/EXPORTS/music_bank2.dmc"
+.segment "DMC_BANK_03"
+	.incbin "MUSIC/EXPORTS/music_bank3.dmc"
+.segment "DMC_BANK_04"
+	.incbin "MUSIC/EXPORTS/music_bank4.dmc"
+.segment "DMC_BANK_05"
+	.incbin "MUSIC/EXPORTS/music_bank5.dmc"
+.segment "DMC_BANK_06"
+	.incbin "MUSIC/EXPORTS/music_bank6.dmc"
 
 CURSED_MUSIC_ENABLE = 1
 .segment "BSS"
