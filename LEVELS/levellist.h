@@ -155,7 +155,7 @@ const unsigned char difficulty_list[] = {
     HARD, //subzero
     HARDER, //pyrophoric
     INSANE, //subtle oddities
-    DEMON, //high life
+    INSANE, //high life
     DEMON, //super cycles
     DEMON, //clutterfunk 2
     DEMON, //speed racer
