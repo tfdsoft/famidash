@@ -28,4 +28,8 @@ const unsigned char levelspeedracer2[]="SPEED RACER";
 const unsigned char levelhighlife2[]="HIGH LIFE";
 const unsigned char leveltest4[]="TEST 4";
 const unsigned char levelninox2[]="NINOX";
+const unsigned char levellookat[]="LOOK AT";
+const unsigned char levellookat2[]="THIS LEVEL";
+const unsigned char levelstalemate2[]="STALEMATE";
+const unsigned char levelsonar2[]="SONAR";
 

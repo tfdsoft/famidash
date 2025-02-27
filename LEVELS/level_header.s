@@ -102,3 +102,24 @@ highlife_speed       = $01
 highlife_no_parallax  = 1
 highlife_bg_color    = $0F
 highlife_grnd_color  = $0F
+
+lookatthislevel_song_number = song_driving_by_night
+lookatthislevel_game_mode   = $00
+lookatthislevel_speed       = $01
+lookatthislevel_no_parallax  = 0
+lookatthislevel_bg_color    = $0F
+lookatthislevel_grnd_color  = $0F
+
+stalemate_song_number = song_stalemate
+stalemate_game_mode   = $00
+stalemate_speed       = $00
+stalemate_no_parallax  = 1
+stalemate_bg_color    = $0F
+stalemate_grnd_color  = $0F
+
+sonar_song_number = song_stereo_madness_2
+sonar_game_mode   = $00
+sonar_speed       = $00
+sonar_no_parallax  = 1
+sonar_bg_color    = $01
+sonar_grnd_color  = $01

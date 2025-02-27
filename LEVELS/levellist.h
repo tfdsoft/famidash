@@ -51,14 +51,17 @@
 
 const uint8_t DECOTYPE[] = {
 	DECO1, //sm
+	DECO1, //sonar
 	DECO1, //level easy
 	DECOCLOUD, //ninox
+	DECO1, //look at this level
 	DECO1, //high life
 	DECO1, //super cycles
 	DECO1, //clutterfunk 2
 	EXTRASPRITES1, //speed racer
 	DECO1, //pg clubstep
 	EXTRASPRITES1, //eon
+	DECO1, //stalemate
 	DECOCLOUD, //bloodbath
 	DECO1, //cataclysm
 	DECO1, //aftermath
@@ -69,14 +72,17 @@ const uint8_t DECOTYPE[] = {
 
 const unsigned char spike_set[] = {
 	SPIKESA, //stereo madness
+	SPIKESA, //sonar
 	SPIKESA, //level easy
 	SPIKESB, //ninox
+	SPIKESA, //look at this level
 	SPIKESA, //high life
 	SPIKESA, //super cycles
 	SPIKESC, //clutterfunk 2
 	SPIKESA, //speed racer
 	SPIKESA, //pg clubstep
 	SPIKESB, //eon
+	SPIKESA, //stalemate
 	SPIKESC, //bloodbath
 	SPIKESC, //cataclysm
 	SPIKESC, //aftermath
@@ -87,14 +93,17 @@ const unsigned char spike_set[] = {
 
 const unsigned char block_set[] = {
 	BLOCKSA, //stereo madness
+	BLOCKSB, //sonar
 	BLOCKSA, //level easy
 	BLOCKSC, //ninox
+	BLOCKSB, //look at this level
 	BLOCKSB, //high life
 	BLOCKSB, //super cycles
 	BLOCKSB, //clutterfunk 2
 	BLOCKSB, //speed racer
 	BLOCKSB, //pg clubstep
 	BLOCKSA, //eon
+	BLOCKSB, //stalemate
 	BLOCKSB, //bloodbath
 	BLOCKSB, //cataclysm
 	BLOCKSB, //aftermath
@@ -105,14 +114,17 @@ const unsigned char block_set[] = {
 
 const unsigned char saw_set[] = {
 	SAWBLADESA, //stereo madness
+	SAWBLADESA, //sonar
 	SAWBLADESA, //level easy
 	SAWBLADESA, //ninox
+	SAWBLADESA, //look at this level
 	SAWBLADESA, //high life
 	SAWBLADESA, //super cycles
 	SAWBLADESA, //clutterfunk 2
 	SAWBLADESA, //speed racer
 	SAWBLADESA, //PG CLUBSTEP
 	SAWBLADESA, //eon
+	SAWBLADESA, //stalemate
 	SAWBLADESA, //bloodbath
 	SAWBLADESA, //cataclysm
 	SAWBLADESA, //aftermath
@@ -124,14 +136,17 @@ const unsigned char saw_set[] = {
 
 const unsigned char difficulty_list[] = {
     EASY,
+    EASY, //sonar
     NORMAL, //level easy
     NORMAL, //ninox
+    HARD, //look at this level
     DEMON, //high life
     DEMON, //super cycles
     DEMON, //clutterfunk 2
     DEMON, //speed racer
     DEMON, //pg clubstep
     DEMON, //eon
+    DEMON, //stalemate
     DEMON, //bloodbath
     DEMON, //cataclysm
     DEMON, //aftermath
@@ -142,14 +157,17 @@ const unsigned char difficulty_list[] = {
 
 const unsigned char stars_list[] = {
 	1,
+	2,   //sonar
 	3,   //level easy
 	3,   //ninox
+	4,   //look at this level
 	9, //high life
 	10, //super cycles
 	10, //clutterfunk 2
 	10, //speed racer
 	10, //pg clubstep
 	10, //eon
+	10, //stalemate
 	10, //bloodbath
 	10, //cataclysm
 	10, //aftermath
