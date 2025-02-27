@@ -55,6 +55,9 @@ const uint8_t DECOTYPE[] = {
 	DECO1, //level easy
 	DECOCLOUD, //ninox
 	DECO1, //look at this level
+	DECO1, //subzero
+	DECO1, //pyrophoric
+	EXTRASPRITES1, //subtle oddities
 	DECO1, //high life
 	DECO1, //super cycles
 	DECO1, //clutterfunk 2
@@ -76,6 +79,9 @@ const unsigned char spike_set[] = {
 	SPIKESA, //level easy
 	SPIKESB, //ninox
 	SPIKESA, //look at this level
+	SPIKESA, //subzero
+	SPIKESA, //pyrophoric
+	SPIKESA, //subtle oddities
 	SPIKESA, //high life
 	SPIKESA, //super cycles
 	SPIKESC, //clutterfunk 2
@@ -97,6 +103,9 @@ const unsigned char block_set[] = {
 	BLOCKSA, //level easy
 	BLOCKSC, //ninox
 	BLOCKSB, //look at this level
+	BLOCKSB, //subzero
+	BLOCKSB, //pyrophoric
+	BLOCKSB, //subtle oddities
 	BLOCKSB, //high life
 	BLOCKSB, //super cycles
 	BLOCKSB, //clutterfunk 2
@@ -118,6 +127,9 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //level easy
 	SAWBLADESA, //ninox
 	SAWBLADESA, //look at this level
+	SAWBLADESA, //subzero
+	SAWBLADESA, //pyrophoric
+	SAWBLADESA, //subtle oddities
 	SAWBLADESA, //high life
 	SAWBLADESA, //super cycles
 	SAWBLADESA, //clutterfunk 2
@@ -140,6 +152,9 @@ const unsigned char difficulty_list[] = {
     NORMAL, //level easy
     NORMAL, //ninox
     HARD, //look at this level
+    HARD, //subzero
+    HARDER, //pyrophoric
+    INSANE, //subtle oddities
     DEMON, //high life
     DEMON, //super cycles
     DEMON, //clutterfunk 2
@@ -161,6 +176,9 @@ const unsigned char stars_list[] = {
 	3,   //level easy
 	3,   //ninox
 	4,   //look at this level
+	5, //subzero
+	6, //pyrophoric
+	8, //subtle oddities
 	9, //high life
 	10, //super cycles
 	10, //clutterfunk 2

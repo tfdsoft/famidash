@@ -9,6 +9,9 @@ SET all_levels= ^
     leveleasy ^
     ninox ^
     lookatthislevel ^
+    subzero ^
+    pyrophoric ^
+    subtleoddities ^
     highlife ^
     supercycles ^
     clutterfunk2 ^

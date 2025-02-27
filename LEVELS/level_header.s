@@ -123,3 +123,25 @@ sonar_speed       = $00
 sonar_no_parallax  = 1
 sonar_bg_color    = $01
 sonar_grnd_color  = $01
+
+subzero_song_number = song_cant_let_go
+subzero_game_mode   = $00
+subzero_speed       = $00
+subzero_no_parallax  = 0
+subzero_bg_color    = $01
+subzero_grnd_color  = $01
+
+pyrophoric_song_number = song_pyrophoric
+pyrophoric_game_mode   = $00
+pyrophoric_speed       = $00
+pyrophoric_no_parallax  = 1
+pyrophoric_bg_color    = $07
+pyrophoric_grnd_color  = $0F
+
+subtleoddities_song_number = song_subtle_oddities
+subtleoddities_game_mode   = $00
+subtleoddities_speed       = $00
+subtleoddities_no_parallax  = 1
+subtleoddities_bg_color    = $0F
+subtleoddities_grnd_color  = $0F
+

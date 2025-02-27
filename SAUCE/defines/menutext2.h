@@ -32,4 +32,8 @@ const unsigned char levellookat[]="LOOK AT";
 const unsigned char levellookat2[]="THIS LEVEL";
 const unsigned char levelstalemate2[]="STALEMATE";
 const unsigned char levelsonar2[]="SONAR";
+const unsigned char levelpyrophoric2[]="PYROPHORIC";
+const unsigned char levelsubzero2[]="SUBZERO";
+const unsigned char levelsubtle[]="SUBTLE";
+const unsigned char levelsubtle2[]="ODDITIES";
 

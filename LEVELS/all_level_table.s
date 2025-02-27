@@ -10,6 +10,9 @@ _level_list_lo:
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_ninox)
 	.byte .lobyte(level_data_lookatthislevel)
+	.byte .lobyte(level_data_subzero)
+	.byte .lobyte(level_data_pyrophoric)
+	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_supercycles)
 	.byte .lobyte(level_data_clutterfunk2)
@@ -30,6 +33,9 @@ _level_list_hi:
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_ninox)
 	.byte .hibyte(level_data_lookatthislevel)
+	.byte .hibyte(level_data_subzero)
+	.byte .hibyte(level_data_pyrophoric)
+	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_supercycles)
 	.byte .hibyte(level_data_clutterfunk2)
@@ -50,6 +56,9 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_ninox))
 	.byte .lobyte(.bank(level_data_lookatthislevel))
+	.byte .lobyte(.bank(level_data_subzero))
+	.byte .lobyte(.bank(level_data_pyrophoric))
+	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_supercycles))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
@@ -65,22 +74,25 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_test4))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_highlife_0)
-	.byte .lobyte(level_data_eon_1)
-	.byte .lobyte(level_data_aftercatabath_2)
+	.byte .lobyte(level_data_subtleoddities_0)
+	.byte .lobyte(level_data_highlife_1)
+	.byte .lobyte(level_data_eon_2)
 	.byte .lobyte(level_data_aftercatabath_3)
+	.byte .lobyte(level_data_aftercatabath_4)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_highlife_0)
-	.byte .hibyte(level_data_eon_1)
-	.byte .hibyte(level_data_aftercatabath_2)
+	.byte .hibyte(level_data_subtleoddities_0)
+	.byte .hibyte(level_data_highlife_1)
+	.byte .hibyte(level_data_eon_2)
 	.byte .hibyte(level_data_aftercatabath_3)
+	.byte .hibyte(level_data_aftercatabath_4)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_highlife_0))
-	.byte .lobyte(.bank(level_data_eon_1))
-	.byte .lobyte(.bank(level_data_aftercatabath_2))
+	.byte .lobyte(.bank(level_data_subtleoddities_0))
+	.byte .lobyte(.bank(level_data_highlife_1))
+	.byte .lobyte(.bank(level_data_eon_2))
 	.byte .lobyte(.bank(level_data_aftercatabath_3))
+	.byte .lobyte(.bank(level_data_aftercatabath_4))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
@@ -88,6 +100,9 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_leveleasy)
 	.byte .lobyte(sprite_data_ninox)
 	.byte .lobyte(sprite_data_lookatthislevel)
+	.byte .lobyte(sprite_data_subzero)
+	.byte .lobyte(sprite_data_pyrophoric)
+	.byte .lobyte(sprite_data_subtleoddities)
 	.byte .lobyte(sprite_data_highlife)
 	.byte .lobyte(sprite_data_supercycles)
 	.byte .lobyte(sprite_data_clutterfunk2)
@@ -108,6 +123,9 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_leveleasy)
 	.byte .hibyte(sprite_data_ninox)
 	.byte .hibyte(sprite_data_lookatthislevel)
+	.byte .hibyte(sprite_data_subzero)
+	.byte .hibyte(sprite_data_pyrophoric)
+	.byte .hibyte(sprite_data_subtleoddities)
 	.byte .hibyte(sprite_data_highlife)
 	.byte .hibyte(sprite_data_supercycles)
 	.byte .hibyte(sprite_data_clutterfunk2)
@@ -128,6 +146,9 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_leveleasy))
 	.byte .lobyte(.bank(sprite_data_ninox))
 	.byte .lobyte(.bank(sprite_data_lookatthislevel))
+	.byte .lobyte(.bank(sprite_data_subzero))
+	.byte .lobyte(.bank(sprite_data_pyrophoric))
+	.byte .lobyte(.bank(sprite_data_subtleoddities))
 	.byte .lobyte(.bank(sprite_data_highlife))
 	.byte .lobyte(.bank(sprite_data_supercycles))
 	.byte .lobyte(.bank(sprite_data_clutterfunk2))
@@ -151,6 +172,9 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($00005C)		; lookatthislevel
+	.byte .lobyte($000088)		; subzero
+	.byte .lobyte($000050)		; pyrophoric
+	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($0000B1)		; clutterfunk2
@@ -173,6 +197,9 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($00005C)		; lookatthislevel
+	.byte .hibyte($000088)		; subzero
+	.byte .hibyte($000050)		; pyrophoric
+	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($0000B1)		; clutterfunk2
@@ -195,6 +222,9 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($00005C)		; lookatthislevel
+	.byte .bankbyte($000088)		; subzero
+	.byte .bankbyte($000050)		; pyrophoric
+	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($0000B1)		; clutterfunk2

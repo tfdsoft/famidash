@@ -361,7 +361,7 @@ GeometryDashPCMB:
 .segment "MUS_BANK_0D"
 	.include "MUSIC/EXPORTS/music_13.s"
 .segment "MUS_BANK_0E"
-;	.include "MUSIC/EXPORTS/music_14.s"
+	.include "MUSIC/EXPORTS/music_14.s"
 .segment "MUS_BANK_0F"
 ;	.include "MUSIC/EXPORTS/music_15.s"
 .segment "MUS_BANK_10"

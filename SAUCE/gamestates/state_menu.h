@@ -36,6 +36,7 @@ extern uint8_t famistudio_song_speed;
 const uint8_t xbgm_lookup_table[] = {
 	song_menu_theme,
 	song_stereo_madness,
+	song_cant_let_go,
 	song_cycles,
 	song_clubstep,
 	song_endgame, 
@@ -69,6 +70,8 @@ const uint8_t xbgm_lookup_table[] = {
 	song_windfall,
 	song_speed_racer,
 	song_magic_touch,
+	song_subtle_oddities,
+	song_pyrophoric,
 };
 
 

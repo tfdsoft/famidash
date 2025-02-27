@@ -32,7 +32,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8173
 
 
-.segment "LVL_BANK_03"	; Total bank size: 8143 bytes
+.segment "LVL_BANK_03"	; Total bank size: 8189 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -47,14 +47,29 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8143
 
 
-.segment "LVL_BANK_04"	; Total bank size: 8045 bytes
-	.export level_data_aftercatabath_2
-	level_data_aftercatabath_2:
+.segment "LVL_BANK_04"	; Total bank size: 8139 bytes
+	.export level_data_subtleoddities
+	level_data_subtleoddities:
+	; Header
+		.byte subtleoddities_song_number
+		.byte subtleoddities_game_mode
+		.byte subtleoddities_speed
+		.byte subtleoddities_no_parallax
+		.byte subtleoddities_bg_color
+		.byte subtleoddities_grnd_color
+		.byte 27	; height of subtleoddities
+	; Level data
+		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8139
+
+
+.segment "LVL_BANK_05"	; Total bank size: 8045 bytes
+	.export level_data_aftercatabath_3
+	level_data_aftercatabath_3:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8045
 
 
-.segment "LVL_BANK_05"	; Total bank size: 7741 bytes
+.segment "LVL_BANK_06"	; Total bank size: 8077 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -69,7 +84,7 @@
 		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7741
 
 
-.segment "LVL_BANK_06"	; Total bank size: 7731 bytes
+.segment "LVL_BANK_07"	; Total bank size: 7731 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -84,7 +99,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7731
 
 
-.segment "LVL_BANK_07"	; Total bank size: 7517 bytes
+.segment "LVL_BANK_08"	; Total bank size: 7517 bytes
 	.export level_data_pgclubstep
 	level_data_pgclubstep:
 	; Header
@@ -99,7 +114,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7517
 
 
-.segment "LVL_BANK_08"	; Total bank size: 8184 bytes
+.segment "LVL_BANK_09"	; Total bank size: 8184 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -114,7 +129,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7048
 
 
-.segment "LVL_BANK_09"	; Total bank size: 8155 bytes
+.segment "LVL_BANK_0A"	; Total bank size: 8097 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -128,21 +143,8 @@
 	; Level data
 		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6806
 
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte stereomadness_song_number
-		.byte stereomadness_game_mode
-		.byte stereomadness_speed
-		.byte stereomadness_no_parallax
-		.byte stereomadness_bg_color
-		.byte stereomadness_grnd_color
-		.byte 27	; height of stereomadness
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
-
-.segment "LVL_BANK_0A"	; Total bank size: 8170 bytes
+.segment "LVL_BANK_0B"	; Total bank size: 8170 bytes
 	.export level_data_lookatthislevel
 	level_data_lookatthislevel:
 	; Header
@@ -157,7 +159,7 @@
 		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1609
 
 
-.segment "LVL_BANK_0B"	; Total bank size: 7946 bytes
+.segment "LVL_BANK_0C"	; Total bank size: 7886 bytes
 	.export level_data_clutterfunk2
 	level_data_clutterfunk2:
 	; Header
@@ -172,7 +174,7 @@
 		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6460
 
 
-.segment "LVL_BANK_0C"	; Total bank size: 8095 bytes
+.segment "LVL_BANK_0D"	; Total bank size: 8095 bytes
 	.export level_data_ninox
 	level_data_ninox:
 	; Header
@@ -187,7 +189,7 @@
 		.incbin "EXPORTS/ninox.lz.bin" ; Size: 2324
 
 
-.segment "LVL_BANK_0D"	; Total bank size: 8178 bytes
+.segment "LVL_BANK_0E"	; Total bank size: 8178 bytes
 	.export level_data_speedracer
 	level_data_speedracer:
 	; Header
@@ -201,13 +203,28 @@
 	; Level data
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5642
 
-	.export level_data_highlife_0
-	level_data_highlife_0:
+	.export level_data_highlife_1
+	level_data_highlife_1:
 	; Level data
 		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2536
 
 
-.segment "LVL_BANK_0F"	; Total bank size: 8063 bytes
+.segment "LVL_BANK_0F"	; Total bank size: 8102 bytes
+	.export level_data_pyrophoric
+	level_data_pyrophoric:
+	; Header
+		.byte pyrophoric_song_number
+		.byte pyrophoric_game_mode
+		.byte pyrophoric_speed
+		.byte pyrophoric_no_parallax
+		.byte pyrophoric_bg_color
+		.byte pyrophoric_grnd_color
+		.byte 27	; height of pyrophoric
+	; Level data
+		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 2551
+
+
+.segment "LVL_BANK_10"	; Total bank size: 8063 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -222,9 +239,9 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5217
 
 
-.segment "LVL_BANK_11"	; Total bank size: 8191 bytes
-	.export level_data_aftercatabath_3
-	level_data_aftercatabath_3:
+.segment "LVL_BANK_12"	; Total bank size: 8191 bytes
+	.export level_data_aftercatabath_4
+	level_data_aftercatabath_4:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4673
 
@@ -242,7 +259,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3517
 
 
-.segment "LVL_BANK_12"	; Total bank size: 8190 bytes
+.segment "LVL_BANK_13"	; Total bank size: 7981 bytes
 	.export level_data_supercycles
 	level_data_supercycles:
 	; Header
@@ -255,6 +272,26 @@
 		.byte 27	; height of supercycles
 	; Level data
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
+
+
+.segment "LVL_BANK_15"	; Total bank size: 8166 bytes
+	.export level_data_subtleoddities_0
+	level_data_subtleoddities_0:
+	; Level data
+		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2272
+
+	.export level_data_subzero
+	level_data_subzero:
+	; Header
+		.byte subzero_song_number
+		.byte subzero_game_mode
+		.byte subzero_speed
+		.byte subzero_no_parallax
+		.byte subzero_bg_color
+		.byte subzero_grnd_color
+		.byte 27	; height of subzero
+	; Level data
+		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2252
 
 	.export level_data_leveleasy
 	level_data_leveleasy:
@@ -269,10 +306,23 @@
 	; Level data
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
+	.export level_data_stereomadness
+	level_data_stereomadness:
+	; Header
+		.byte stereomadness_song_number
+		.byte stereomadness_game_mode
+		.byte stereomadness_speed
+		.byte stereomadness_no_parallax
+		.byte stereomadness_bg_color
+		.byte stereomadness_grnd_color
+		.byte 27	; height of stereomadness
+	; Level data
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
-.segment "LVL_BANK_14"	; Total bank size: 1559 bytes
-	.export level_data_eon_1
-	level_data_eon_1:
+
+.segment "LVL_BANK_16"	; Total bank size: 6588 bytes
+	.export level_data_eon_2
+	level_data_eon_2:
 	; Level data
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
 

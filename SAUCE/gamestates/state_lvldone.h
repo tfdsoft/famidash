@@ -567,6 +567,10 @@ const unsigned char TEXT_idols[]="IDOLS";
 const unsigned char TEXT_windfall[]="WINDFALL";
 const unsigned char TEXT_speedracer[]="SPEED$RACER";
 const unsigned char TEXT_magictouch[]="MAGIC$TOUCH";
+const unsigned char TEXT_pyrophoric[]="PYROPHORIC";
+const unsigned char TEXT_subtle[]="SUBTLE";
+const unsigned char TEXT_subtle2[]="ODDITIES";
+const unsigned char TEXT_cantletgo[]="CANT$LET$GO";
 
 
 
@@ -610,6 +614,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	0, 
 	0, 
+	0, 
 	TEXT_2textinfernoplex, 
 	0, 
 	TEXT_xlevel1text1, 
@@ -638,11 +643,14 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	0,
 	0,
+	0,
+	TEXT_subtle
 };
 
 const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textmenu, 
 	TEXT_madness2,
+	TEXT_cantletgo,
 	TEXT_xlevel2text9,
 	TEXT_2textclubstep,
 	TEXT_xlevel2textE, 
@@ -676,11 +684,14 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_windfall,
 	TEXT_speedracer,
 	TEXT_magictouch,
+	TEXT_pyrophoric,
+	TEXT_subtle2
 };
 
 const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textmenu) - 1,
 	sizeof(TEXT_madness2) - 1,
+	sizeof(TEXT_cantletgo) - 1,
 	sizeof(TEXT_xlevel2text9) - 1,
 	sizeof(TEXT_2textclubstep) - 1,
 	sizeof(TEXT_xlevel2textE) - 1,
@@ -714,10 +725,13 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_windfall) - 1,
 	sizeof(TEXT_speedracer) - 1,
 	sizeof(TEXT_magictouch) - 1,
+	sizeof(TEXT_pyrophoric) - 1,
+	sizeof(TEXT_subtle2) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
 	sizeof(TEXT_xlevel1text1) - 1,	
+	0,
 	0,
 	0,
 	0,
@@ -751,12 +765,15 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	0,
+	0,
+	sizeof(TEXT_subtle) - 1,	
 };
 
 
 const uint8_t xbgm_lookup_table2[] = {
 	song_menu_theme,
 	song_stereo_madness,
+	song_cant_let_go,	
 	song_cycles,
 	song_clubstep,
 	song_endgame, 
@@ -790,6 +807,8 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_windfall,	
 	song_speed_racer,
 	song_magic_touch,
+	song_subtle_oddities,
+	song_pyrophoric,
 };
 
 
@@ -1236,6 +1255,9 @@ const unsigned char* const leveltexts[] = {
   levellookat, 
   NULL, 
   NULL, 
+  levelsubtle,
+  NULL, 
+  NULL, 
   NULL, 
   NULL, 
   NULL, 
@@ -1254,6 +1276,9 @@ const unsigned char* const leveltexts2[] = {
   leveleasy2, 
   levelninox2,
   levellookat2,
+  levelsubzero2,
+  levelpyrophoric2,
+  levelsubtle2,
   levelhighlife2,
   levelsupercycles2,
   levelclutterfunk22,
@@ -1278,6 +1303,9 @@ const unsigned char level_text_size[] = {
 	sizeof(levellookat) - 1,
 	0,
 	0,
+	sizeof(levelsubtle) - 1,
+	0,
+	0,
 	0,
 	0,
 	0,
@@ -1296,6 +1324,9 @@ const unsigned char level_text_size2[] = {
 	sizeof(leveleasy2) - 1,
 	sizeof(levelninox2) - 1,
 	sizeof(levellookat2) - 1,
+	sizeof(levelsubzero2) - 1,
+	sizeof(levelpyrophoric2) - 1,
+	sizeof(levelsubtle2) - 1,
 	sizeof(levelhighlife2) - 1,
 	sizeof(levelsupercycles2) - 1,
 	sizeof(levelclutterfunk22) - 1,
