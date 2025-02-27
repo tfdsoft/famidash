@@ -468,6 +468,10 @@ const unsigned char TEXT_dash2[]="DASH";
 const unsigned char TEXT_driving2[]="NIGHT";
 const unsigned char TEXT_deadlocked2[]="DEADLOCKED";
 const unsigned char TEXT_fingerdash2[]="FINGERDASH";
+const unsigned char TEXT_groundtospace[]="GROUND$TO";
+const unsigned char TEXT_groundtospace2[]="SPACE";
+const unsigned char TEXT_rainbowt[]="RAINBOW";
+const unsigned char TEXT_rainbowt2[]="TYLENOL";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -530,7 +534,6 @@ const unsigned char* const xbgmtexts1[] = {
 	0, 
 	0, 
 	0, 
-	TEXT_xlevel1text1, 
 	0, 
 	TEXT_xweasel, 
 	TEXT_challenge,
@@ -540,9 +543,9 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_crackdown,
 	0,
 	0,
-	0,
 	TEXT_against,
-	TEXT_driving,
+	TEXT_groundtospace,
+	TEXT_rainbowt,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -575,7 +578,6 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textretray, 
 	TEXT_2textinfernoplex,
 	TEXT_2textproblematic,
-	TEXT_2textstereo,
 	TEXT_2deathmoon, 
 	TEXT_2textweasel, 
 	TEXT_2challenge,
@@ -583,11 +585,11 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textspeed2,
 	TEXT_2textmidnight,
 	TEXT_2textcrackdown,
-	TEXT_2textstalemate,
 	TEXT_2textwoods,
 	TEXT_2textjustright,
 	TEXT_against2,
-	TEXT_driving2,
+	TEXT_groundtospace2,
+	TEXT_rainbowt2,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -620,7 +622,6 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textretray) - 1,
 	sizeof(TEXT_2textinfernoplex) - 1,
 	sizeof(TEXT_2textproblematic) - 1,
-	sizeof(TEXT_2textstereo) - 1,	
 	sizeof(TEXT_2deathmoon) - 1,
 	sizeof(TEXT_2textweasel) - 1,
 	sizeof(TEXT_2challenge) - 1,
@@ -628,11 +629,11 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textspeed2) - 1,
 	sizeof(TEXT_2textmidnight) - 1,
 	sizeof(TEXT_2textcrackdown) - 1,
-	sizeof(TEXT_2textstalemate) - 1,
 	sizeof(TEXT_2textwoods) - 1,
 	sizeof(TEXT_2textjustright) - 1,
 	sizeof(TEXT_against2) - 1,
-	sizeof(TEXT_driving2) - 1,
+	sizeof(TEXT_groundtospace2) - 1,
+	sizeof(TEXT_rainbowt2) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -664,7 +665,6 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	0,
-	sizeof(TEXT_xlevel1text1) - 1,	
 	0,
 	sizeof(TEXT_xweasel) - 1,	
 	sizeof(TEXT_challenge) - 1,	
@@ -674,9 +674,9 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_crackdown) - 1,	
 	0,
 	0,
-	0,
 	sizeof(TEXT_against) - 1,	
-	sizeof(TEXT_driving) - 1,	
+	sizeof(TEXT_groundtospace) - 1,	
+	sizeof(TEXT_rainbowt) - 1,	
 };
 
 
@@ -710,7 +710,6 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_retray,
 	song_infernoplex,
 	song_problematic,
-	song_stereo_madness_2,
 	song_death_moon,
 	song_scheming_weasel,
 	song_the_challenge,
@@ -718,11 +717,11 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_atthespeedoflight2,
 	song_midnight,
 	song_crackdown,
-	song_stalemate,
 	song_haunted_woods,
 	song_just_right,
 	song_against_the_odds_redux,
-	song_driving_by_night,
+	song_ground_to_space,
+	song_rainbow_tylenol,	
 };
 
 
@@ -1186,15 +1185,16 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   
   NULL, 
-  NULL, 
   levelchallengetext, 
   NULL, 
-  levellookatthislevel,
+ // levellookatthislevel,
+  levelgroundtospace,
   NULL, 
   NULL, 
   NULL, 
   levelwoodstext,
   levelbloodbath2,
+  levelrainbow,
   levelprettyeasytext,
   level16text, 
   NULL, 
@@ -1206,9 +1206,6 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
   NULL,  
-//  NULL,  
-  NULL,  
-  NULL
 };
 const unsigned char* const leveltexts2[] = {
   level1text2, 
@@ -1235,15 +1232,16 @@ const unsigned char* const leveltexts2[] = {
   leveldash2,
   
   levelretray2,
-  levelsonar2,
   levelchallengetext2, 
   leveldreamer2,
-  levellookatthislevel2,
+ // levellookatthislevel2,
+  levelgroundtospace2,
   levelkappaclysm2, 
   levelsunshine2, 
   levelrevolution2, 
   levelwoods2,
   levelbloodbathbutno2,
+  levelrainbow2,
   levelprettyeasytext2,
   level16text2, 
   levelEtext2, 
@@ -1254,10 +1252,7 @@ const unsigned char* const leveltexts2[] = {
   levelproblematic2, 
   levelfiretemple2,
   levelforesttemple2,
-  levelstalemate2,
-//  levelbloodbath2,
   level10text2, 
-  level14text2,
 };
 
 
@@ -1286,15 +1281,16 @@ const unsigned char level_text_size[] = {
 	0,
 	
 	0,
-	0,
 	sizeof(levelchallengetext) - 1,
 	0,
-	sizeof(levellookatthislevel) - 1,
+//	sizeof(levellookatthislevel) - 1,
+	sizeof(levelgroundtospace) - 1,
 	0,
 	0,
 	0,
 	sizeof(levelwoodstext) - 1,
 	sizeof(levelbloodbath2) - 1,
+	sizeof(levelrainbow) - 1,
 	sizeof(levelprettyeasytext) - 1,
 	sizeof(level16text) - 1,
 	0,
@@ -1304,9 +1300,6 @@ const unsigned char level_text_size[] = {
 	0,
 	0,
 	0,
-	0,
-	0,
-//	0,
 	0,
 	0,
 };
@@ -1335,15 +1328,16 @@ const unsigned char level_text_size2[] = {
 	sizeof(leveldash2) - 1,
 	
 	sizeof(levelretray2) - 1,
-	sizeof(levelsonar2) - 1,
 	sizeof(levelchallengetext2) - 1,
 	sizeof(leveldreamer2) - 1,
-	sizeof(levellookatthislevel2) - 1,
+//	sizeof(levellookatthislevel2) - 1,
+	sizeof(levelgroundtospace2) - 1,
 	sizeof(levelkappaclysm2) - 1,
 	sizeof(levelsunshine2) - 1,
 	sizeof(levelrevolution2) - 1,
 	sizeof(levelwoods2) - 1,
 	sizeof(levelbloodbathbutno2) - 1,
+	sizeof(levelrainbow2) - 1,
 	sizeof(levelprettyeasytext2) - 1,
 	sizeof(level16text2) - 1,
 	sizeof(levelEtext2) - 1,
@@ -1354,10 +1348,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelproblematic2) - 1,
 	sizeof(levelfiretemple2) - 1,
 	sizeof(levelforesttemple2) - 1,
-	sizeof(levelstalemate2) - 1,
-//	sizeof(levelbloodbath2) - 1,
 	sizeof(level10text2) - 1,
-	sizeof(level14text2) - 1,
 };
 
 const char coin_counter[][3] = {

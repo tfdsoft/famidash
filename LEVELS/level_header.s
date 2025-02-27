@@ -259,12 +259,12 @@ retray_bg_color    = $0F
 retray_grnd_color  = $0F
 
 
-sonar_song_number = song_stereo_madness_2
-sonar_game_mode   = $00
-sonar_speed       = $00
-sonar_no_parallax  = 1
-sonar_bg_color    = $01
-sonar_grnd_color  = $01
+;sonar_song_number = song_stereo_madness_2
+;sonar_game_mode   = $00
+;sonar_speed       = $00
+;sonar_no_parallax  = 1
+;sonar_bg_color    = $01
+;sonar_grnd_color  = $01
 
 
 revolution_song_number = song_infernoplex
@@ -281,12 +281,12 @@ dreamer_no_parallax  = 1
 dreamer_bg_color    = $0F
 dreamer_grnd_color  = $0F
 
-stalemate_song_number = song_stalemate
-stalemate_game_mode   = $00
-stalemate_speed       = $00
-stalemate_no_parallax  = 1
-stalemate_bg_color    = $0F
-stalemate_grnd_color  = $0F
+;stalemate_song_number = song_stalemate
+;stalemate_game_mode   = $00
+;stalemate_speed       = $00
+;stalemate_no_parallax  = 1
+;stalemate_bg_color    = $0F
+;stalemate_grnd_color  = $0F
 
 electrodynamix_song_number = song_electrodynamix
 electrodynamix_game_mode   = $00
@@ -309,12 +309,12 @@ aprettyeasylevel_no_parallax  = 0
 aprettyeasylevel_bg_color    = $12
 aprettyeasylevel_grnd_color  = $02
 
-lookatthislevel_song_number = song_driving_by_night
-lookatthislevel_game_mode   = $00
-lookatthislevel_speed       = $01
-lookatthislevel_no_parallax  = 0
-lookatthislevel_bg_color    = $0F
-lookatthislevel_grnd_color  = $0F
+;lookatthislevel_song_number = song_driving_by_night
+;lookatthislevel_game_mode   = $00
+;lookatthislevel_speed       = $01
+;lookatthislevel_no_parallax  = 0
+;lookatthislevel_bg_color    = $0F
+;lookatthislevel_grnd_color  = $0F
 
 dash_song_number = song_dash
 dash_game_mode   = $00
@@ -343,3 +343,17 @@ dearnostalgists_speed       = $02
 dearnostalgists_no_parallax  = 1
 dearnostalgists_bg_color    = $2C
 dearnostalgists_grnd_color  = $1C
+
+groundtospace_song_number = song_crackdown
+groundtospace_game_mode   = $00
+groundtospace_speed       = $01
+groundtospace_no_parallax  = 1
+groundtospace_bg_color    = $12
+groundtospace_grnd_color  = $02
+
+rainbowtylenol_song_number = song_crackdown
+rainbowtylenol_game_mode   = $00
+rainbowtylenol_speed       = $00
+rainbowtylenol_no_parallax  = 1
+rainbowtylenol_bg_color    = $12
+rainbowtylenol_grnd_color  = $02

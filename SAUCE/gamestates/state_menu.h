@@ -62,8 +62,6 @@ const uint8_t xbgm_lookup_table[] = {
 	song_retray,
 	song_infernoplex,
 	song_problematic,
-	song_stereo_madness_2,
-	
 	song_death_moon,
 	song_scheming_weasel,
 	song_the_challenge,
@@ -71,12 +69,11 @@ const uint8_t xbgm_lookup_table[] = {
 	song_atthespeedoflight2,
 	song_midnight,
 	song_crackdown,
-	song_stalemate,
 	song_haunted_woods,
-	//song_chaozfantasy,
 	song_just_right,
 	song_against_the_odds_redux,
-	song_driving_by_night,
+	song_ground_to_space,
+	song_rainbow_tylenol,
 };
 
 
