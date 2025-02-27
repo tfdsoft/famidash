@@ -176,7 +176,7 @@ dreamer_no_parallax = 1
 dreamer_bg_color    = $0F
 dreamer_grnd_color  = $0F
 
-groundtospace_song_number = song_crackdown
+groundtospace_song_number = song_ground_to_space
 groundtospace_game_mode   = 0
 groundtospace_speed       = 1
 groundtospace_no_parallax = 1
@@ -218,7 +218,7 @@ bloodbathbutno_no_parallax = 1
 bloodbathbutno_bg_color    = $0F
 bloodbathbutno_grnd_color  = $0F
 
-rainbowtylenol_song_number = song_crackdown
+rainbowtylenol_song_number = song_rainbow_tylenol
 rainbowtylenol_game_mode   = 0
 rainbowtylenol_speed       = 0
 rainbowtylenol_no_parallax = 1
