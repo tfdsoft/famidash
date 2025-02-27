@@ -32,7 +32,7 @@
 #define	HARDER 3
 #define	INSANE 4
 #define	DEMON 5
-#define	DANGER 6
+#define	AUTO 6
 
 
 #define SPIKESA 0
@@ -73,34 +73,36 @@ const uint8_t DECOTYPE[] = {
 	EXTRASPRITES1, //fingerdash
 	EXTRASPRITES1, //dash
 	DECO1, //RETRAY
-	DECO1, //SONAR
+//	DECO1, //SONAR
 	EXTRASPRITES1, //the challenge
 //	DECO1, //level easy
 	DECO1, //dreamer
-	DECO1, //lookatthislevel
+//	DECO1, //lookatthislevel
+	DECO1, //groundtospace
 	DECOCLOUD, //kappaclysm
 	DECO1, //sunshine
 	DECO1, //revolution
 	DECO1, //lost in the woods
 	DECO1, //bloodbath but no
+	EXTRASPRITES1, //rainbow tylenol
 	DECO1, //a pretty easy level
 	DECO1, //LIGHTNING ROAD
 	DECOCLOUD, //NIGHTMARE
 	DECO1, //DEMON PARK
 	DECO1, //death moon
 	DECOCLOUD, //DECODE
-//	EXTRASPRITES1, //dear nostalgists
+	EXTRASPRITES1, //dear nostalgists
 //	DECO1, //super cycles
 	DECO1, //problematic
 	DECO1, //fire temple
 	DECO1, //forest temple
 //	EXTRASPRITES1, //EON
 //	DECO1, //pg clubstep
-	DECO1, //stalemate
-	DECOCLOUD, //bloodbath
+//	DECO1, //stalemate
+//	DECOCLOUD, //bloodbath
 //	DECO1, //cataclysm
 	DECOCLOUD, //lucky draw
-	EXTRASPRITES1,
+//	EXTRASPRITES1,
 };
 
 const unsigned char spike_set[] = {
@@ -127,31 +129,33 @@ const unsigned char spike_set[] = {
 	SPIKESC, //fingerdash
 	SPIKESA, //dash
 	SPIKESA, //RETRAY
-	SPIKESA, //SONAR
+//	SPIKESA, //SONAR
 	SPIKESA, //the challenge
 //	SPIKESA, //level easy
 	SPIKESA, //dreamer
-	SPIKESA, //lookatthislevel
+//	SPIKESA, //lookatthislevel
+	SPIKESA, //groundtospace
 	SPIKESC, //kappaclysm
 	SPIKESA, //sunshine
 	SPIKESA, //revolution
 	SPIKESA, //lost in the woods
 	SPIKESA, //bloodbath but no
+	SPIKESA, //rainbow tylenol
 	SPIKESC, //a pretty easy level
 	SPIKESC, //lightning road
 	SPIKESB, //nightmare
 	SPIKESC, //demon park
 	SPIKESB, //death moon
 	SPIKESB, //decode
-//	SPIKESC, //dear nostalgists
+	SPIKESC, //dear nostalgists
 //	SPIKESA, //super cycles
 	SPIKESB, //problematic
 	SPIKESB, //fire temple
 	SPIKESB, //forest temple
 //	SPIKESB, //eon
 //	SPIKESA, //pg clubstep
-	SPIKESA, //STALEMATE
-	SPIKESC, //bloodbath
+//	SPIKESA, //STALEMATE
+//	SPIKESC, //bloodbath
 //	SPIKESC, //cataclysm
 	SPIKESB, //lucky draw
 	SPIKESA, //test4
@@ -181,31 +185,33 @@ const unsigned char block_set[] = {
 	BLOCKSB, //fingerdash
 	BLOCKSB, //dash
 	BLOCKSB, //RETRAY
-	BLOCKSB, //SONAR
+//	BLOCKSB, //SONAR
 	BLOCKSB, //the challenge
 //	BLOCKSA, //level easy
 	BLOCKSB, //dreamer
-	BLOCKSB, //lookatthislevel
+//	BLOCKSB, //lookatthislevel
+	BLOCKSB, //groundtospace
 	BLOCKSB, //kappaclysm
 	BLOCKSB, //sunshine
 	BLOCKSB, //revolution
 	BLOCKSB, //lost in the woods
 	BLOCKSB, //bloodbath but no
+	BLOCKSA, //rainbow tylenol
 	BLOCKSC, //a pretty easy level
 	BLOCKSA, //LIGHTNING ROAD
 	BLOCKSC, //nightmare
 	BLOCKSA, //demon park
 	BLOCKSB, //death moon
 	BLOCKSB, //decode
-//	BLOCKSA, //dear nostalgists
+	BLOCKSA, //dear nostalgists
 //	BLOCKSB, //super cycles
 	BLOCKSB, //problematic
 	BLOCKSB, //fire temple
 	BLOCKSB, //forest temple
 //	BLOCKSA, //EON
 //	BLOCKSB, //pg clubstep
-	BLOCKSB, //stalemate
-	BLOCKSB, //bloodbath
+//	BLOCKSB, //stalemate
+//	BLOCKSB, //bloodbath
 //	BLOCKSB, //cataclysm
 	BLOCKSB, //lucky draw
 	BLOCKSB, //test4
@@ -235,31 +241,33 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //fingerdash
 	SAWBLADESA, //dash
 	SAWBLADESA, //retray
-	SAWBLADESA, //SONAR
+//	SAWBLADESA, //SONAR
 	SAWBLADESA, //the challenge
 //	SAWBLADESA, //level easy
 	SAWBLADESA, //dreamer
-	SAWBLADESA, //lookatthislevel
+//	SAWBLADESA, //lookatthislevel
+	SAWBLADESA, //groundtospace
 	SAWBLADESA, //kappaclysm
 	SAWBLADESA, //sunshine
 	SAWBLADESA, //revolution
 	SAWBLADESA, //lost in the woods
 	SAWBLADESA, //bloodbath but no
+	SAWBLADESA, //rainbow tylenol
 	SAWBLADESA, //a pretty easy level
 	SAWBLADESA, //LIGHTNING ROAD
 	SAWBLADESA, //nightmare
 	SAWBLADESA, //demon park
 	SAWBLADESA, //death moon
 	SAWBLADESA, //decode
-//	SAWBLADESA, //dear nostalgists
+	SAWBLADESA, //dear nostalgists
 //	SAWBLADESA, //super cycles
 	SAWBLADESA, //problematic
 	SAWBLADESA, //fire temple
 	SAWBLADESA, //forest temple
 //	SAWBLADESA, //EON
 //	SAWBLADESA, //PG CLUBSTEP
-	SAWBLADESA, //stalemate
-	SAWBLADESA, //bloodbath
+//	SAWBLADESA, //stalemate
+//	SAWBLADESA, //bloodbath
 //	SAWBLADESA, //cataclysm
 	LETTERBANK, //lucky draw
 	SAWBLADESA, //test4
@@ -290,31 +298,33 @@ const unsigned char difficulty_list[] = {
     INSANE,  //fingerdash
     INSANE,  //dash
     EASY, //RETRAY
-    EASY, //SONAR
+//    EASY, //SONAR
     NORMAL, //the challenge
 //    NORMAL, //level easy
     HARD, //dreamer
-    HARD, //lookatthislevel
+//    HARD, //lookatthislevel
+    HARD, //groundtospace
     HARDER, //kappaclysm
     HARDER, //sunshine
     HARDER, //revolution
     INSANE, //lost in the woods
     INSANE, //bloodbath but no
+    INSANE, //rainbow tylenol
     INSANE, //a pretty easy level
     DEMON, //lightning road
     DEMON, //nightmare
     DEMON, //demon park
     DEMON, //death moon
     DEMON, //decode
-//    DEMON, //dear nostalgists
+    DEMON, //dear nostalgists
 //    DEMON, //super cycles
     DEMON, //problematic
     DEMON, //fire temple
     DEMON, //forest temple
 //    DEMON, //eon
 //    DEMON, //pg clubstep
-    DEMON, //stalemate
-    DEMON, //bloodbath
+//    DEMON, //stalemate
+//    DEMON, //bloodbath
 //    DEMON, //cataclysm
     DEMON, //lucky draw
     DEMON,
@@ -344,15 +354,17 @@ const unsigned char stars_list[] = {
 	12,  //fingerdash
 	12,  //dash
 	2,   //retray
-	2,   //SONAR
+//	2,   //SONAR
 	3,   //the challenge
 //	3,   //level easy
 	4,   //dreamer
-	4,   //lookatthislevel
+//	4,   //lookatthislevel
+	5,   //groundtospace
 	6,  //kappaclysm
 	7,  //sunshine
 	7,  //revolution
 	8,  //lost in the woods
+	8,  //rainbow tylenol
 	8,  //bloodbath but no
 	9,  //a pretty easy level
 	10, //lightning road
@@ -360,15 +372,15 @@ const unsigned char stars_list[] = {
 	10, //demon park
 	10, //death moon
 	10, //decode
-//	10, //dear nostlagists
+	10, //dear nostlagists
 //	10, //super cycles
 	10, //problematic
 	10, //fire temple
 	10, //forest temple
 //	10, //eon
 //	10, //pg clubstep
-	10, //stalemate
-	10, //bloodbath
+//	10, //stalemate
+//	10, //bloodbath
 //	10, //cataclysm
 	10, // lucky draw
 	0,

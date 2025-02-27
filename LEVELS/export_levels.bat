@@ -27,28 +27,26 @@ SET all_levels= ^
     fingerdash ^
     dash ^
     retray ^
-    sonar ^
     thechallenge ^
     dreamer ^
-    lookatthislevel ^
+    groundtospace ^
     kappaclysm ^
     sunshine ^
     revolution ^
     lostinthewoods ^
     bloodbathbutno ^
+    rainbowtylenol ^
     aprettyeasylevel ^
     thelightningroad ^
     nightmare ^
     demonpark ^
     deathmoon ^
     decode ^
+    dearnostalgists ^
     problematic ^
     firetemple ^
     foresttemple ^
-    stalemate ^
-    bloodbath ^
     luckydraw ^
-    test4 ^
 
 
 echo Exporting everything %all_levels%
