@@ -209,7 +209,7 @@
 		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2536
 
 
-.segment "LVL_BANK_0F"	; Total bank size: 8102 bytes
+.segment "LVL_BANK_0F"	; Total bank size: 8160 bytes
 	.export level_data_pyrophoric
 	level_data_pyrophoric:
 	; Header
@@ -222,6 +222,19 @@
 		.byte 27	; height of pyrophoric
 	; Level data
 		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 2551
+
+	.export level_data_stereomadness
+	level_data_stereomadness:
+	; Header
+		.byte stereomadness_song_number
+		.byte stereomadness_game_mode
+		.byte stereomadness_speed
+		.byte stereomadness_no_parallax
+		.byte stereomadness_bg_color
+		.byte stereomadness_grnd_color
+		.byte 27	; height of stereomadness
+	; Level data
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
 
 .segment "LVL_BANK_10"	; Total bank size: 8063 bytes
@@ -281,7 +294,7 @@
 		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2289
 
 
-.segment "LVL_BANK_15"	; Total bank size: 8175 bytes
+.segment "LVL_BANK_15"	; Total bank size: 8097 bytes
 	.export level_data_subzero
 	level_data_subzero:
 	; Header
@@ -293,7 +306,7 @@
 		.byte subzero_grnd_color
 		.byte 27	; height of subzero
 	; Level data
-		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2252
+		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2232
 
 	.export level_data_leveleasy
 	level_data_leveleasy:
@@ -307,19 +320,6 @@
 		.byte 27	; height of leveleasy
 	; Level data
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
-
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte stereomadness_song_number
-		.byte stereomadness_game_mode
-		.byte stereomadness_speed
-		.byte stereomadness_no_parallax
-		.byte stereomadness_bg_color
-		.byte stereomadness_grnd_color
-		.byte 27	; height of stereomadness
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
 
 .segment "LVL_BANK_16"	; Total bank size: 6588 bytes
