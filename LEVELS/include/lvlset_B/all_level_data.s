@@ -32,7 +32,22 @@
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8173
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8189 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8155 bytes
+	.export level_data_subtleoddities
+	level_data_subtleoddities:
+	; Header
+		.byte subtleoddities_song_number
+		.byte subtleoddities_game_mode
+		.byte subtleoddities_speed
+		.byte subtleoddities_no_parallax
+		.byte subtleoddities_bg_color
+		.byte subtleoddities_grnd_color
+		.byte 27	; height of subtleoddities
+	; Level data
+		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8155
+
+
+.segment "DAT_BANK_03"	; Total bank size: 8189 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -45,21 +60,6 @@
 		.byte 27	; height of eon
 	; Level data
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8143
-
-
-.segment "DAT_BANK_03"	; Total bank size: 8139 bytes
-	.export level_data_subtleoddities
-	level_data_subtleoddities:
-	; Header
-		.byte subtleoddities_song_number
-		.byte subtleoddities_game_mode
-		.byte subtleoddities_speed
-		.byte subtleoddities_no_parallax
-		.byte subtleoddities_bg_color
-		.byte subtleoddities_grnd_color
-		.byte 27	; height of subtleoddities
-	; Level data
-		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8139
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8045 bytes
@@ -274,12 +274,14 @@
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3385
 
 
-.segment "DAT_BANK_14"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_13"	; Total bank size: 7596 bytes
 	.export level_data_subtleoddities_0
 	level_data_subtleoddities_0:
 	; Level data
-		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2272
+		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2289
 
+
+.segment "DAT_BANK_14"	; Total bank size: 8175 bytes
 	.export level_data_subzero
 	level_data_subzero:
 	; Header
