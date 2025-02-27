@@ -147,12 +147,12 @@ if __name__ == "__main__":
         print("Instrument size not correctly present in the FamiStudio command output.")
         exit(3)
     instsize = int(instsize[0])
-    print(f"== Total maximum size of data in a bank is {8192 - instsize} bytes")
+    print(f"== Total maximum size of data in a bank is {8192 - (instsize / 5 * 3)} bytes")
 
     # Get song sizes in bytes
     songsizestrings = re.findall(songSizeRegex, cmdOutput)
     songsizes = [(songNames.index(i[0]), i[0], int(i[1])) for i in songsizestrings if i[0] != dpcmAlignerName]
-    bins = binpacking.to_constant_volume(songsizes, 8192-instsize, 2)
+    bins = binpacking.to_constant_volume(songsizes, 8192-(instsize / 5 * 3), 2)
     for i in range(len(bins)):
         print(f"== Bank {i}:")
         print("\t- Songs: "+", ".join([j[1] for j in bins[i]]))
@@ -249,7 +249,7 @@ if __name__ == "__main__":
         "music_data_locations_lo:",
         f"\t.byte " + ", ".join([f"<music_data_famidash_music{i}" for i in range(len(bins))]),
         "music_data_locations_hi:",
-        f"\t.byte " + ",".join([f">music_data_famidash_music{i}" for i in range(len(bins))]),
+        f"\t.byte " + ", ".join([f">music_data_famidash_music{i}" for i in range(len(bins))]),
         ".endif",
         "",
         "music_counts:",
