@@ -21,6 +21,20 @@
 			}
 		},
 		{
+			fmsSongName: "Can't Let Go",
+			lowerText: "CANT LET GO",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Cant Let Go ~ Can't Let Go",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "UserSniper, alexmush"
+				},
+				durationNTSC: 80750,
+				durationPAL: 97040
+			}
+		},
+		{
 			fmsSongName: "Cycles",
 			lowerText: "CYCLES",
 			vsSystemEnabled: true,
@@ -215,6 +229,15 @@
 		{
 			fmsSongName: "Magic Touch",
 			lowerText: "MAGIC TOUCH"
+		},
+		{
+			fmsSongName: "Pyrophoric",
+			lowerText: "PYROPHORIC"
+		},
+		{
+			fmsSongName: "subtle oddities",
+			upperText: "SUBTLE",
+			lowerText: "ODDITIES"
 		}
 	],
 	SFX: [

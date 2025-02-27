@@ -2,6 +2,7 @@
 
 RIFFChunkStart "tlbl"
 .asciiz "Stereo Madness"
+.asciiz "Cant Let Go ~ Can't Let Go"
 .asciiz "Cycles"
 .asciiz "Decode ~ Endgame"
 .asciiz "Practice ~ Stay Inside Me"
@@ -21,6 +22,7 @@ RIFFChunkStart "tlbl"
 
 RIFFChunkStart "taut"
 .asciiz "Original by ForeverBound, covered by Zenith302, UserSniper"
+.asciiz "Original by DJVI, covered by UserSniper, alexmush"
 .asciiz "Original by DJVI, covered by aquamarine.gay, alexmush"
 .asciiz "Original by Waterflame, covered by Vikrinox"
 .asciiz "Original by OcularNebula, covered by UserSniper"
@@ -40,22 +42,22 @@ RIFFChunkStart "taut"
 
 RIFFChunkStart "time"
 .if REGION = 0
-.dword 85550, 85933, 79283, 479634
-.dword 383, 50, 3167, 683
-.dword 100, 683, 683, 650
-.dword 967, 633, 950, 1150
-.dword 1650
+.dword 85550, 80750, 85933, 79283
+.dword 479634, 383, 50, 3167
+.dword 683, 100, 683, 683
+.dword 650, 967, 633, 950
+.dword 1150, 1650
 .else
-.dword 102840, 103280, 95280, 576760
-.dword 460, 40, 3020, 700
-.dword 120, 820, 820, 680
-.dword 920, 640, 1140, 1100
-.dword 1650
+.dword 102840, 97040, 103280, 95280
+.dword 576760, 460, 40, 3020
+.dword 700, 120, 820, 820
+.dword 680, 920, 640, 1140
+.dword 1100, 1650
 .endif
 
 RIFFChunkStart "fade"
-.dword 0, 0, 0, 4294967295
+.dword 0, 0, 0, 0
+.dword 4294967295, 0, 0, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
-.dword 0, 0, 0, 0
-.dword 0
+.dword 0, 0

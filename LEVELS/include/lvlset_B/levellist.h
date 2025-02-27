@@ -7,6 +7,9 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// leveleasy
 	DECOCLOUD,	// ninox
 	DECO1,	// lookatthislevel
+	DECO1,	// subzero
+	DECO1,	// pyrophoric
+	EXTRASPRITES1,	// subtleoddities
 	DECO1,	// highlife
 	DECO1,	// supercycles
 	DECO1,	// clutterfunk2
@@ -28,6 +31,9 @@ const uint8_t spike_set[] = {
 	SPIKESA,	// leveleasy
 	SPIKESB,	// ninox
 	SPIKESA,	// lookatthislevel
+	SPIKESA,	// subzero
+	SPIKESA,	// pyrophoric
+	SPIKESA,	// subtleoddities
 	SPIKESA,	// highlife
 	SPIKESA,	// supercycles
 	SPIKESC,	// clutterfunk2
@@ -50,6 +56,9 @@ const uint8_t block_set[] = {
 	BLOCKSA,	// leveleasy
 	BLOCKSC,	// ninox
 	BLOCKSB,	// lookatthislevel
+	BLOCKSB,	// subzero
+	BLOCKSB,	// pyrophoric
+	BLOCKSB,	// subtleoddities
 	BLOCKSB,	// highlife
 	BLOCKSB,	// supercycles
 	BLOCKSB,	// clutterfunk2
@@ -71,6 +80,9 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// leveleasy
 	SAWBLADESA,	// ninox
 	SAWBLADESA,	// lookatthislevel
+	SAWBLADESA,	// subzero
+	SAWBLADESA,	// pyrophoric
+	SAWBLADESA,	// subtleoddities
 	SAWBLADESA,	// highlife
 	SAWBLADESA,	// supercycles
 	SAWBLADESA,	// clutterfunk2
@@ -101,6 +113,9 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// leveleasy
 	NORMAL,	// ninox
 	HARD,	// lookatthislevel
+	HARD,	// subzero
+	HARDER,	// pyrophoric
+	INSANE,	// subtleoddities
 	DEMON,	// highlife
 	DEMON,	// supercycles
 	DEMON,	// clutterfunk2
@@ -122,6 +137,9 @@ const uint8_t stars_list[] = {
 	3,	// leveleasy
 	3,	// ninox
 	4,	// lookatthislevel
+	5,	// subzero
+	6,	// pyrophoric
+	8,	// subtleoddities
 	9,	// highlife
 	10,	// supercycles
 	10,	// clutterfunk2

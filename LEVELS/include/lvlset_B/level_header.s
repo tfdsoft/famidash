@@ -36,6 +36,27 @@ lookatthislevel_no_parallax = 0
 lookatthislevel_bg_color    = $0F
 lookatthislevel_grnd_color  = $0F
 
+subzero_song_number = song_cant_let_go
+subzero_game_mode   = 0
+subzero_speed       = 0
+subzero_no_parallax = 0
+subzero_bg_color    = $01
+subzero_grnd_color  = $01
+
+pyrophoric_song_number = song_pyrophoric
+pyrophoric_game_mode   = 0
+pyrophoric_speed       = 0
+pyrophoric_no_parallax = 1
+pyrophoric_bg_color    = $07
+pyrophoric_grnd_color  = $0F
+
+subtleoddities_song_number = song_subtle_oddities
+subtleoddities_game_mode   = 0
+subtleoddities_speed       = 1
+subtleoddities_no_parallax = 1
+subtleoddities_bg_color    = $0F
+subtleoddities_grnd_color  = $0F
+
 highlife_song_number = song_magic_touch
 highlife_game_mode   = 0
 highlife_speed       = 1
