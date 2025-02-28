@@ -4817,7 +4817,7 @@ famistudio_set_instrument:
 		eor @instrument_ptr
 		and #$1F
 		; Y is 0
-		cmp #$11	;	Ensure shit stays in range
+		cmp #$09	;	Ensure shit stays in range
 		bcs @randomization_loop				;__
 	
 	@no_randomization:
