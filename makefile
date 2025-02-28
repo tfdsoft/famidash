@@ -54,8 +54,8 @@ nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_ns
 
 vs-sys: CC65_DEFINES += -D__VS_SYSTEM=1
 vs-sys: CA65_DEFINES += -D__VS_SYSTEM=1
-vs-sys: OUTDIR = $(OUTDIR_PREFIX)/vs
-vs-sys: TMPDIR = $(TMPDIR_PREFIX)/vs
+vs-sys: OUTDIR = $(OUTDIR_PREFIX)/$@
+vs-sys: TMPDIR = $(TMPDIR_PREFIX)/$@
 vs-sys: CFG = CONFIG/vs-sys.cfg
 vs-sys:
 	@echo Building VS System version...

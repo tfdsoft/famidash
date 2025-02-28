@@ -11,8 +11,8 @@ jobs:
       fail-fast: false
       matrix:
         target:
-        - { name: Main MMC3 ROM, target: main, subfolder: main  }
-        - { name: VS-System ROM, target: vs-sys, subfolder: vs  }
+        - { name: Main MMC3 ROM, target: main }
+        - { name: VS-System ROM, target: vs-sys }
 
     steps:
       - name: Checkout
@@ -27,5 +27,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: famidash.nes
-          path: BUILD/${{matrix.target.subfolder}}/famidash.nes
+          name: famidash.${{ matrix.target.target }}.nes
+          path: BUILD/${{ matrix.target.target }}/famidash.nes
