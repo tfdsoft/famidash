@@ -99,7 +99,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7731
 
 
-.segment "DAT_BANK_07"	; Total bank size: 7517 bytes
+.segment "DAT_BANK_07"	; Total bank size: 7514 bytes
 	.export level_data_pgclubstep
 	level_data_pgclubstep:
 	; Header
@@ -111,7 +111,7 @@
 		.byte pgclubstep_grnd_color
 		.byte 50	; height of pgclubstep
 	; Level data
-		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7517
+		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7514
 
 
 .segment "DAT_BANK_08"	; Total bank size: 8184 bytes
