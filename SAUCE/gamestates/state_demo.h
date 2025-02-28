@@ -241,11 +241,11 @@ const unsigned char Credits2[629]={
 #include "defines/mainmenu_charmap.h"
 
 #ifdef FLAG_ENABLE_VER_NUM
-	#ifdef FLAG_BETA_BUILD
-		const unsigned char ver[] = "DEMO";
-	#else
+//	#ifdef FLAG_BETA_BUILD
+//		const unsigned char ver[] = "DEMO";
+//	#else
 		const unsigned char ver[] = " VER";
-	#endif
+//	#endif
 #endif
 
 #if !__VS_SYSTEM
