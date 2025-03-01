@@ -5,25 +5,7 @@ cd "%~dp0"
 set n=0
 SET all_levels= ^
     stereomadness ^
-    sonar ^
-    leveleasy ^
-    ninox ^
-    lookatthislevel ^
-    subzero ^
-    pyrophoric ^
-    subtleoddities ^
-    highlife ^
-    supercycles ^
-    clutterfunk2 ^
-    speedracer ^
-    pgclubstep ^
-    eon ^
-    stalemate ^
-    bloodbath ^
-    cataclysm ^
-    aftermath ^
-    aftercatabath ^
-    slaughterhouse ^
+    depressionmadness ^
     test4 ^
 
 
