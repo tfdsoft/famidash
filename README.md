@@ -53,7 +53,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[Crafty Jumper](https://github.com/Crafty-Jumper)|levels, music|
 |[banana6000](https://github.com/xXFamidash_Fan69Xx)|icons, levels|
 |[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
-|[AleFunky](https://github.com/PinguLinux)|code, levels, testing, bugfixes|
+|[AleFunky](https://github.com/AleFunky)|code, levels, testing, bugfixes|
 |NerdBoy628|levels, music|
 |blacecaptainn|icon contest winner|
 |dtpls|icon contest winner|
