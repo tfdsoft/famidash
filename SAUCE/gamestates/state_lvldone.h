@@ -84,21 +84,21 @@ void state_playmain(){
 const uint8_t difficulty_pal_A[] ={
 	0x21,	// easy
 	0x2A,	// normal
-	0x28,	// hard
-	0x16,	// harder
-	0x24,	// insane
+	0x21,	// hard
+	0x1C,	// harder
+	0x11,	// insane
 	0x16,	// demon
-	0x28,	// auto
+	0x03,	// auto
 };
 
 const uint8_t difficulty_pal_B[] ={
 	0x06,	// easy
 	0x30,	// normal
-	0x30,	// hard
-	0x30,	// harder
-	0x06,	// insane
+	0x35,	// hard
+	0x37,	// harder
+	0x37,	// insane
 	0x30,	// demon
-	0x0F,	// auto
+	0x37,	// auto
 };
 
 void refreshmenu();
@@ -772,7 +772,7 @@ const unsigned char xbgmtext1_size[] = {
 
 
 const uint8_t xbgm_lookup_table2[] = {
-	song_menu_theme,
+	song_merry_go_round,
 	song_stereo_madness,
 	song_cant_let_go,	
 	song_cycles,

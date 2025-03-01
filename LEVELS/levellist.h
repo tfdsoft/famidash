@@ -167,7 +167,7 @@ const unsigned char difficulty_list[] = {
     DEMON, //aftermath
     DEMON, //aftercatabath
     DEMON, //slaughterhouse
-    EASY, //test4
+    AUTO, //test4
 };
 
 const unsigned char stars_list[] = {

@@ -456,7 +456,7 @@ void settings() {
 }
 
 const uint8_t xbgm_lookup_table3[] = {
-	song_menu_theme,
+	song_merry_go_round,
 	song_stereo_madness,
 	song_cant_let_go,
 	song_cycles,
