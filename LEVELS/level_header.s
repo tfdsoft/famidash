@@ -15,7 +15,7 @@ stereomadness_grnd_color  = $02
 depressionmadness_song_number = song_stereo_madness
 depressionmadness_game_mode   = $00
 depressionmadness_speed       = $00
-depressionmadness_no_parallax  = 1
+depressionmadness_no_parallax  = 0
 depressionmadness_bg_color    = $12
 depressionmadness_grnd_color  = $02
 
