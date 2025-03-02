@@ -34,7 +34,9 @@ SFX_STRINGS = 0
 .include "music_songlist.inc"
 .include "sfx_sfxlist.inc"
 
-
+.ifndef __VS_SYSTEM
+	__VS_SYSTEM = 0
+.endif
 
 PPU_CTRL	=$2000
 PPU_MASK	=$2001
