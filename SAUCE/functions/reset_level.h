@@ -1,5 +1,7 @@
 extern unsigned char drawing_frame;
 extern unsigned char* PARALLAX_CHR;
+void gameboy_check();
+
 
 void reset_level() {
 	// unsigned char i;
@@ -26,6 +28,9 @@ void reset_level() {
 	make_cube_jump_higher = 0;
 	tmp1 = 30;
 	if (!DEBUG_MODE && (cube_data[0] & 1)) {
+		#if __VS_SYSTEM
+		coins_inserted--;
+		#endif
 		update_level_completeness();
 		sfx_play(sfx_death, 0);
 		while (tmp1 != 0){
@@ -49,6 +54,9 @@ void reset_level() {
 		}
 	}
 	else if (!DEBUG_MODE && (cube_data[1] & 1)) {
+		#if __VS_SYSTEM
+		coins_inserted--;
+		#endif
 		update_level_completeness();
 		sfx_play(sfx_death, 0);
 		while (tmp1 != 0){
@@ -73,6 +81,10 @@ void reset_level() {
 	oam_clear();
 	++auto_fs_updates;
 	ppu_off(); // reset the level when you get to this point, and change this later
+
+	#if __VS_SYSTEM
+	if (!coins_inserted) return;
+	#endif
 
 	scroll_y = 0x2EF;
 	seam_scroll_y = (0x2EF - 0x78); // [temp]

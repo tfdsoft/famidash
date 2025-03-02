@@ -159,6 +159,17 @@ void levelselection() {
 	// pal_bg(paletteMenu);
 	set_scroll_x(0);
 	set_scroll_y(0);  
+
+	#if __VS_SYSTEM
+		if (!coins_inserted) {
+			kandowatchesyousleep = 0;
+			exitingLevelSelect = 1;
+			cube_data[0] = 0;
+			cube_data[1] = 0;
+			return;
+		}
+	#endif
+		
 	
 	vram_adr(NAMETABLE_A);
 	vram_unrle(game_main_menu); 
