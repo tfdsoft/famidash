@@ -715,7 +715,7 @@ const uint8_t menu_irq_table[] = {
 #if __VS_SYSTEM
 
 const unsigned char nocoinstext[] = "INSERT COIN";
-const unsigned char coinstext[] = "COINS INSERTED";
+const unsigned char coinstext[] = "COINS INSERTED ";
 
 #endif
 void state_menu() {
@@ -836,7 +836,12 @@ void state_menu() {
 		one_vram_buffer(0x1D, NTADR_A(27,3));
 		one_vram_buffer(0x1E, NTADR_A(28,3));
 	}	
-	while (!(joypad1.press & (PAD_START | PAD_A))){
+
+	while (!(joypad1.press & (PAD_START | PAD_A))
+		#if __VS_SYSTEM
+			|| !coins_inserted
+		#endif
+		){
 
 		#if __VS_SYSTEM
 
