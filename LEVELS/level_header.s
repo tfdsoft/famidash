@@ -19,3 +19,10 @@ depressionmadness_no_parallax  = 0
 depressionmadness_bg_color    = $12
 depressionmadness_grnd_color  = $02
 
+ninecircles_song_number = song_stereo_madness
+ninecircles_game_mode   = $00
+ninecircles_speed       = $00
+ninecircles_no_parallax  = 0
+ninecircles_bg_color    = $12
+ninecircles_grnd_color  = $02
+

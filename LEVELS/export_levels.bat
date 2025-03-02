@@ -6,6 +6,7 @@ set n=0
 SET all_levels= ^
     stereomadness ^
     depressionmadness ^
+    ninecircles ^
     test4 ^
 
 

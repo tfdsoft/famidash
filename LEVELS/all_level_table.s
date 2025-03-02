@@ -7,16 +7,19 @@
 _level_list_lo:
 	.byte .lobyte(level_data_stereomadness)
 	.byte .lobyte(level_data_depressionmadness)
+	.byte .lobyte(level_data_ninecircles)
 	.byte .lobyte(level_data_test4)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
 	.byte .hibyte(level_data_depressionmadness)
+	.byte .hibyte(level_data_ninecircles)
 	.byte .hibyte(level_data_test4)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
 	.byte .lobyte(.bank(level_data_depressionmadness))
+	.byte .lobyte(.bank(level_data_ninecircles))
 	.byte .lobyte(.bank(level_data_test4))
 
 _level_chunk_list_lo:
@@ -31,16 +34,19 @@ _level_chunk_list_bank:
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
 	.byte .lobyte(sprite_data_depressionmadness)
+	.byte .lobyte(sprite_data_ninecircles)
 	.byte .lobyte(sprite_data_test4)
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
 	.byte .hibyte(sprite_data_depressionmadness)
+	.byte .hibyte(sprite_data_ninecircles)
 	.byte .hibyte(sprite_data_test4)
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
 	.byte .lobyte(.bank(sprite_data_depressionmadness))
+	.byte .lobyte(.bank(sprite_data_ninecircles))
 	.byte .lobyte(.bank(sprite_data_test4))
 
 .define MID_LEVEL_LENGTHS_ENABLED 0
@@ -49,6 +55,7 @@ _sprite_list_bank:
 _level_lengths_lo:
 	.byte .lobyte($000080)		; stereomadness
 	.byte .lobyte($000080)		; depressionmadness
+	.byte .lobyte($0000A0)		; ninecircles
 	.byte .lobyte($000080)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -56,6 +63,7 @@ _level_lengths_lo:
 _level_lengths_md:
 	.byte .hibyte($000080)		; stereomadness
 	.byte .hibyte($000080)		; depressionmadness
+	.byte .hibyte($0000A0)		; ninecircles
 	.byte .hibyte($000080)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -63,6 +71,7 @@ _level_lengths_md:
 _level_lengths_hi:
 	.byte .bankbyte($000080)		; stereomadness
 	.byte .bankbyte($000080)		; depressionmadness
+	.byte .bankbyte($0000A0)		; ninecircles
 	.byte .bankbyte($000080)		; test4
 
 .endif

@@ -1253,11 +1253,13 @@ void set_fun_settings() {
 const unsigned char* const leveltexts[] = {
   level1text, 
   leveldm,
+  NULL,
   NULL,  
 };
 const unsigned char* const leveltexts2[] = {
   level1text2, 
   leveldmtext2,
+  levelnc,
   leveltest4,
 };
 
@@ -1266,10 +1268,12 @@ const unsigned char level_text_size[] = {
 	sizeof(level1text) - 1,
 	sizeof(leveldm) - 1,
 	0,
+	0,
 };
 const unsigned char level_text_size2[] = {
 	sizeof(level1text2) - 1,
 	sizeof(leveldmtext2) - 1,
+	sizeof(levelnc) - 1,
 	sizeof(leveltest4) - 1,	
 };
 

@@ -16,5 +16,6 @@ const unsigned char level1text[]="YOU SHOULDNT";
 const unsigned char level1text2[]="BE HERE";
 const unsigned char leveldm[]="DEPRESSION";
 const unsigned char leveldmtext2[]="MADNESS";
+const unsigned char levelnc[]="NINE CIRCLES";
 const unsigned char leveltest4[]="TEST 4";
 
