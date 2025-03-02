@@ -14,7 +14,7 @@ const unsigned char coins3[]="3/3";
 const unsigned char level1text[]="YOU SHOULDNT";
 
 const unsigned char level1text2[]="BE HERE";
-const unsigned char leveltest4[]="TEST 4";
 const unsigned char leveldm[]="DEPRESSION";
 const unsigned char leveldmtext2[]="MADNESS";
+const unsigned char leveltest4[]="TEST 4";
 
