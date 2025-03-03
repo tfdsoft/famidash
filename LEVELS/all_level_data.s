@@ -528,7 +528,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2719
 
 
-.segment "LVL_BANK_1E"	; Total bank size: 7986 bytes
+.segment "LVL_BANK_1E"	; Total bank size: 7996 bytes
 	.export level_data_baseafterbase
 	level_data_baseafterbase:
 	; Header
@@ -556,7 +556,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
 
 
-.segment "LVL_BANK_1F"	; Total bank size: 7961 bytes
+.segment "LVL_BANK_1F"	; Total bank size: 7966 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
