@@ -5100,7 +5100,7 @@ sprite_data_hexagonforce:
   .byte $b0,$41,$c0,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_1D"
+.segment "DAT_BANK_1E"
 sprite_data_blastprocessing:
   .byte $00,$00,$60,$03,$92
   .byte $00,$00,$80,$03,$c2
@@ -6443,7 +6443,7 @@ sprite_data_geometricaldominator:
   .byte $b0,$43,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_1D"
 sprite_data_deadlocked:
   .byte $00,$00,$60,$03,$bd
   .byte $00,$00,$70,$03,$8c
@@ -6807,6 +6807,8 @@ sprite_data_deadlocked:
   .byte $50,$42,$40,$03,$8f
   .byte $80,$42,$10,$03,$03
   .byte $80,$42,$20,$03,$16
+  .byte $80,$42,$30,$03,$03
+  .byte $80,$42,$40,$03,$16
   .byte $20,$43,$30,$03,$95
   .byte $20,$43,$40,$03,$ba
   .byte $40,$43,$30,$03,$85
@@ -6815,6 +6817,7 @@ sprite_data_deadlocked:
   .byte $80,$44,$30,$03,$95
   .byte $a0,$44,$30,$03,$85
   .byte $c0,$44,$30,$03,$8f
+  .byte $a0,$45,$10,$03,$15
   .byte $a0,$45,$20,$03,$00
   .byte $a0,$45,$30,$03,$15
   .byte $30,$46,$30,$03,$93
