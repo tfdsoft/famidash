@@ -1254,12 +1254,14 @@ const unsigned char* const leveltexts[] = {
   level1text, 
   leveldm,
   NULL,
+  levelxc1,
   NULL,  
 };
 const unsigned char* const leveltexts2[] = {
   level1text2, 
   leveldmtext2,
   levelnc,
+  levelxc2,
   leveltest4,
 };
 
@@ -1268,12 +1270,14 @@ const unsigned char level_text_size[] = {
 	sizeof(level1text) - 1,
 	sizeof(leveldm) - 1,
 	0,
+	sizeof(levelxc1) - 1,
 	0,
 };
 const unsigned char level_text_size2[] = {
 	sizeof(level1text2) - 1,
 	sizeof(leveldmtext2) - 1,
 	sizeof(levelnc) - 1,
+	sizeof(levelxc2) - 1,
 	sizeof(leveltest4) - 1,	
 };
 

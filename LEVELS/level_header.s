@@ -26,3 +26,10 @@ ninecircles_no_parallax  = 1
 ninecircles_bg_color    = $06
 ninecircles_grnd_color  = $16
 
+xmaschallenge_song_number = song_stereo_madness
+xmaschallenge_game_mode   = $00
+xmaschallenge_speed       = $00
+xmaschallenge_no_parallax  = 1
+xmaschallenge_bg_color    = $0F
+xmaschallenge_grnd_color  = $1F
+

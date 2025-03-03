@@ -7,6 +7,7 @@ SET all_levels= ^
     stereomadness ^
     depressionmadness ^
     ninecircles ^
+    xmaschallenge ^
     test4 ^
 
 

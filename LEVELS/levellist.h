@@ -52,6 +52,7 @@
 const uint8_t DECOTYPE[] = {
 	DECO1, //sm
 	DECO1, //depression madness
+	DECO1, //xmas
 	DECO1, //test4
 };
 
@@ -59,6 +60,7 @@ const unsigned char spike_set[] = {
 	SPIKESA, //stereo madness
 	SPIKESA, //depression madness
 	SPIKESA, //nine circles
+	SPIKESA, //cmas again
 	SPIKESC, //test4
 };
 
@@ -66,6 +68,7 @@ const unsigned char block_set[] = {
 	BLOCKSA, //stereo madness
 	BLOCKSA, //depression madness
 	BLOCKSB, //nine circles
+	BLOCKSB, //xmas yet again
 	BLOCKSB, //test4
 };
 
@@ -73,6 +76,7 @@ const unsigned char saw_set[] = {
 	SAWBLADESA, //stereo madness
 	SAWBLADESA, //depression madness
 	SAWBLADESA, //nine circles
+	SAWBLADESA, //xmas yet again 2: electric boogaloo
 	SAWBLADESA, //test4
 };
 
@@ -81,6 +85,7 @@ const unsigned char difficulty_list[] = {
     EASY, // stereo madness for some reaosn
     AUTO, //depression madness
 	INSANE, //i think you get it by this point
+	HARD, //feliz navisdad
     AUTO, //test4
 };
 
