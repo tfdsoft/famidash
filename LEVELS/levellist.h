@@ -65,7 +65,7 @@ const unsigned char spike_set[] = {
 const unsigned char block_set[] = {
 	BLOCKSA, //stereo madness
 	BLOCKSA, //depression madness
-	BLOCKSA, //nine circles
+	BLOCKSB, //nine circles
 	BLOCKSB, //test4
 };
 
@@ -80,7 +80,7 @@ const unsigned char saw_set[] = {
 const unsigned char difficulty_list[] = {
     EASY, // stereo madness for some reaosn
     AUTO, //depression madness
-	HARD, //i think you get it by this point
+	INSANE, //i think you get it by this point
     AUTO, //test4
 };
 
