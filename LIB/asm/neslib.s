@@ -28,7 +28,7 @@
 	.export _flush_vram_update2, _oam_set, _oam_get
 	.import _disco_sprites, _slowmode, _kandoframecnt, _kandokidshack4, _pauseStatus
 
-	.if __VS_SYSTEM
+	.if VS_SYSTEM
 		.import _coins_inserted, _CREDITS1_PREV, _CREDITS2_PREV
 	.endif
 
@@ -134,7 +134,7 @@ nmi:
   bne @SkipMouse
   ; Read the raw controller data synced with OAM DMA to prevent
   ; DMC DMA bugs
-  .if !__VS_SYSTEM
+  .if !VS_SYSTEM
   	jsr oam_and_readjoypad
   .endif
 
@@ -160,7 +160,7 @@ nmi:
 
 @skipAll:
 	
-	.if __VS_SYSTEM
+	.if VS_SYSTEM
 		lda _CREDITS1_PREV
 		and #%00100000
 		beq @check_slot_2_creds
@@ -1559,7 +1559,7 @@ advance_sensitivity: .res 1  ; Bool.
 MOUSE_PORT = CTRL_PORT2
 CONTROLLER_PORT = CTRL_PORT1
 
-.if !__VS_SYSTEM ; not used for the VS System version of the game fsr
+.if !VS_SYSTEM ; not used for the VS System version of the game fsr
 
 .proc oam_and_readjoypad
   ; save the previous controller state for calcuating the previous results
