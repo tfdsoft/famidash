@@ -969,21 +969,24 @@ RenderParallaxSub:
 		dex
 
 		dec SeamValueTmp
-		bne @noSeamColl						;
-			tya								;
-			clc								;
-			adc	#6							;
-			cmp	ParallaxExtent				;
-			bcc :+							;	pos += 6 (mod 9)
-				; sec is already done		;	if we've hit the seam
-				sbc	#9						;
-			:								;
-			tay								;
-		@noSeamColl:						;__
+		beq	@seamColl
 
+		@noSeamColl:
 		dec LoopCount
 		bne @loop
 	rts
+
+	@seamColl:							;
+		tya								;
+		clc								;
+		adc	#6							;
+		cmp	ParallaxExtent				;
+		bcc :+							;	pos += 6 (mod 9)
+			; sec is already done		;	if we've hit the seam
+			sbc	#9						;
+		:								;
+		tay								;
+		jmp	@noSeamColl					;__
 
 ; Column striped parallax data definition
 ; add to the tile for the next row, up to 6.
