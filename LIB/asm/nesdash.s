@@ -762,7 +762,9 @@ switch:
 	;__	Parallax rendering variables
 
 	ParallaxBufferStart = tmp1
+	; LoopCount still in effect
 	ParallaxExtent = tmp3
+	SeamValueTmp = tmp4
 
 frame0:
 	LDA #frame_R_attr
@@ -914,13 +916,34 @@ RenderParallaxSub:
 	adc #9
 	sta ParallaxExtent
 
-	lda ParallaxBufferStart
 	ldy	parallax_scroll_column_start
-	;__	clc	The last ADC ain't overflowing
+	lda seam_scroll_y+1
+	cmp	#$02
+	bcc @yesSeam
+		cmp	#$FF
+		beq	:+
+			iny		;	If not at beginning, start with 3 instead of 0
+			iny		;__	(shift accordingly)
+		:
+		lda	#$FF		;	No seam
+		sta	SeamValueTmp;__
+		bne	@afterSeam	;__	= BRA
+	@yesSeam:
+		lda	SeamValue
+		; carry is clear
+		sbc	#30-1-1	; -1 to make a BEQ condition
+		sta	SeamValueTmp
+		iny
+		iny
+	@afterSeam:
+
+
+	lda ParallaxBufferStart	
+	clc
 	adc ParallaxBufferStartTable,	y
 	tay
 
-	lda #TileWriteSize-1
+	lda #TileWriteSize
 	sta LoopCount
 	
 	@loop:
@@ -944,6 +967,20 @@ RenderParallaxSub:
 			ldy ParallaxBufferStart
 		:
 		dex
+
+		dec SeamValueTmp
+		bne @noSeamColl						;
+			tya								;
+			clc								;
+			adc	#6							;
+			cmp	ParallaxExtent				;
+			bcc :+							;	pos += 6 (mod 9)
+				; sec is already done		;	if we've hit the seam
+				sbc	#9						;
+			:								;
+			tay								;
+		@noSeamColl:						;__
+
 		dec LoopCount
 		bne @loop
 	rts
@@ -973,10 +1010,10 @@ ParallaxBuffer:
 		.byte ParallaxBufferRCol2 - ParallaxBuffer
 
 ParallaxBufferStartTable:
-	.byte	0,	6,	3
+	.byte	0,	6,	3,	0,	6
 
 SeamTable:
-	.byte 0, 15
+	.byte	0,	15
 
 ntAddrHiTbl:
 	.byte	$24,	$20
