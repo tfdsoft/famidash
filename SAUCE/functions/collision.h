@@ -1032,8 +1032,15 @@ void bg_coll_death() {
 	bg_collision_sub();
 	
 	if (collision) {
-		if (bg_coll_U_D_checks() | bg_coll_mini_blocks() | bg_coll_spikes() | bg_coll_slope()) {
-			cube_data[currplayer] |= 1;
+		if (!dblocked[currplayer] || gamemode != GAMEMODE_WAVE) {
+			if (bg_coll_U_D_checks() | bg_coll_mini_blocks() | bg_coll_spikes() | bg_coll_slope()) {
+				cube_data[currplayer] |= 1;
+			}
+		}
+		else {
+			if (bg_coll_mini_blocks() | bg_coll_spikes() | bg_coll_slope()) {
+				cube_data[currplayer] |= 1;
+			}
 		}
 	}
 
