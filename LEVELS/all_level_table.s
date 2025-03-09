@@ -35,17 +35,17 @@ _sprite_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
-	.byte .lobyte($00007A)		; test4
+	.byte .lobyte($000008)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
-	.byte .hibyte($00007A)		; test4
+	.byte .hibyte($000008)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-	.byte .bankbyte($00007A)		; test4
+	.byte .bankbyte($000008)		; test4
 
 .endif
 .endif
