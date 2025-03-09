@@ -91,7 +91,7 @@ void wave_eject() {
 			}
 		}
 	}
-	dblocked[currplayer] = 0;
 }
+
 
 CODE_BANK_POP()
