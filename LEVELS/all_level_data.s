@@ -52,7 +52,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8095
 
 
-.segment "LVL_BANK_04"	; Total bank size: 8132 bytes
+.segment "LVL_BANK_04"	; Total bank size: 8177 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -65,19 +65,6 @@
 		.byte 27	; height of fingerdash
 	; Level data
 		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7476
-
-	.export level_data_luckydraw
-	level_data_luckydraw:
-	; Header
-		.byte luckydraw_song_number
-		.byte luckydraw_game_mode
-		.byte luckydraw_speed
-		.byte luckydraw_no_parallax
-		.byte luckydraw_bg_color
-		.byte luckydraw_grnd_color
-		.byte 27	; height of luckydraw
-	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
 
 
 .segment "LVL_BANK_05"	; Total bank size: 8181 bytes
@@ -528,7 +515,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2719
 
 
-.segment "LVL_BANK_1E"	; Total bank size: 7996 bytes
+.segment "LVL_BANK_1E"	; Total bank size: 8136 bytes
 	.export level_data_baseafterbase
 	level_data_baseafterbase:
 	; Header
@@ -554,6 +541,19 @@
 		.byte 27	; height of cantletgo
 	; Level data
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1930
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte test4_song_number
+		.byte test4_game_mode
+		.byte test4_speed
+		.byte test4_no_parallax
+		.byte test4_bg_color
+		.byte test4_grnd_color
+		.byte 27	; height of test4
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 140
 
 
 .segment "LVL_BANK_1F"	; Total bank size: 7966 bytes
@@ -627,7 +627,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "LVL_BANK_22"	; Total bank size: 7308 bytes
+.segment "LVL_BANK_22"	; Total bank size: 7964 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -640,3 +640,16 @@
 		.byte 57	; height of thechallenge
 	; Level data
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 937
+
+	.export level_data_luckydraw
+	level_data_luckydraw:
+	; Header
+		.byte luckydraw_song_number
+		.byte luckydraw_game_mode
+		.byte luckydraw_speed
+		.byte luckydraw_no_parallax
+		.byte luckydraw_bg_color
+		.byte luckydraw_grnd_color
+		.byte 27	; height of luckydraw
+	; Level data
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656

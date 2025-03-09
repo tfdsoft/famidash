@@ -48,6 +48,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_luckydraw)
+	.byte .lobyte(level_data_test4)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -93,6 +94,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_firetemple)
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_luckydraw)
+	.byte .hibyte(level_data_test4)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -138,6 +140,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_firetemple))
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_luckydraw))
+	.byte .lobyte(.bank(level_data_test4))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_dash_0)
@@ -198,6 +201,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_firetemple)
 	.byte .lobyte(sprite_data_foresttemple)
 	.byte .lobyte(sprite_data_luckydraw)
+	.byte .lobyte(sprite_data_test4)
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
@@ -243,6 +247,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_firetemple)
 	.byte .hibyte(sprite_data_foresttemple)
 	.byte .hibyte(sprite_data_luckydraw)
+	.byte .hibyte(sprite_data_test4)
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
@@ -288,6 +293,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_firetemple))
 	.byte .lobyte(.bank(sprite_data_foresttemple))
 	.byte .lobyte(.bank(sprite_data_luckydraw))
+	.byte .lobyte(.bank(sprite_data_test4))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -336,6 +342,7 @@ _level_lengths_lo:
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($000086)		; luckydraw
+	.byte .lobyte($00007A)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -383,6 +390,7 @@ _level_lengths_md:
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($000086)		; luckydraw
+	.byte .hibyte($00007A)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -430,6 +438,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($000086)		; luckydraw
+	.byte .bankbyte($00007A)		; test4
 
 .endif
 .endif
