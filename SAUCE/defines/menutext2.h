@@ -78,4 +78,5 @@ const unsigned char levelrainbow[]="RAINBOW";
 const unsigned char levelrainbow2[]="TYLENOL";
 const unsigned char levelgroundtospace[]="GROUND TO";
 const unsigned char levelgroundtospace2[]="SPACE";
+const unsigned char leveltest42[]="TEST4";
 

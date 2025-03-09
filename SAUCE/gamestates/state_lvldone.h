@@ -1170,6 +1170,7 @@ const unsigned char* const leveltexts[] = {
   NULL, 
   NULL, 
   NULL,  
+  NULL,  
 };
 const unsigned char* const leveltexts2[] = {
   level1text2, 
@@ -1217,6 +1218,7 @@ const unsigned char* const leveltexts2[] = {
   levelfiretemple2,
   levelforesttemple2,
   level10text2, 
+  leveltest42,
 };
 
 
@@ -1257,6 +1259,7 @@ const unsigned char level_text_size[] = {
 	sizeof(levelrainbow) - 1,
 	sizeof(levelprettyeasytext) - 1,
 	sizeof(level16text) - 1,
+	0,
 	0,
 	0,
 	0,
@@ -1313,6 +1316,7 @@ const unsigned char level_text_size2[] = {
 	sizeof(levelfiretemple2) - 1,
 	sizeof(levelforesttemple2) - 1,
 	sizeof(level10text2) - 1,
+	sizeof(leveltest42) - 1,
 };
 
 const char coin_counter[][3] = {

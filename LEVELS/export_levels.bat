@@ -47,6 +47,7 @@ SET all_levels= ^
     firetemple ^
     foresttemple ^
     luckydraw ^
+	test4 ^
 
 
 echo Exporting everything %all_levels%
