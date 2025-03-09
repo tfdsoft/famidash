@@ -4,7 +4,7 @@
 #define LEVELSET 'A'
 
 #define OFFICIAL_LEVEL_COUNT 22
-#define COMMUNITY_LEVEL_COUNT 22
+#define COMMUNITY_LEVEL_COUNT 21
 
 #define stereomadness 0
 #define backontrack 1
@@ -49,4 +49,3 @@
 #define firetemple 40
 #define foresttemple 41
 #define luckydraw 42
-#define test4 43
