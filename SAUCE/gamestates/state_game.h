@@ -506,6 +506,7 @@ void state_game(){
 			last_slope_type[0] = currplayer_last_slope_type;
 		}
 
+		dblocked[currplayer] = 0;
 		
 		if (dual) { 
 			currplayer = 1;					//take focus
@@ -548,6 +549,8 @@ void state_game(){
 			processXMovement = 0;
 			runthecolls();
 			processXMovement = 1;
+			
+			dblocked[currplayer] = 0;
 
 			currplayer = 0;					//give back focus
 
@@ -578,7 +581,6 @@ void state_game(){
 				currplayer_last_slope_type = last_slope_type[0];
 			}
 		}
-
 	}
    //     check_spr_objects();
 
