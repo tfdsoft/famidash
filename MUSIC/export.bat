@@ -1,2 +1,2 @@
-export.py "c:\program files\famistudio"
+python export.py "c:\program files\famistudio"
 pause
