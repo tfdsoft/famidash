@@ -824,7 +824,7 @@ void state_menu() {
 	titlecolor3 = color3;
 	titlecolor2 = color2;
 	titlecolor1 = color1;
-	if (all_levels_complete != 0xFC) {
+/*	if (all_levels_complete != 0xFC) {
 		one_vram_buffer(0x19, NTADR_A(27,2));
 		one_vram_buffer(0x1A, NTADR_A(28,2));
 		one_vram_buffer(0x2D, NTADR_A(27,3));
@@ -835,7 +835,7 @@ void state_menu() {
 		one_vram_buffer(0x1C, NTADR_A(28,2));
 		one_vram_buffer(0x1D, NTADR_A(27,3));
 		one_vram_buffer(0x1E, NTADR_A(28,3));
-	}	
+	}	*/
 	while (!(joypad1.press & (PAD_START | PAD_A))){
 
 		pal_col(0x11,titlecolor3);
@@ -1260,14 +1260,14 @@ void state_menu() {
 		tmp3 = 0;	
 		
 		if (joypad1.press_right) {
-			if (menuselection == 6) menuselection = 0;
-			else menuselection++;
-			tmp3--;
+			//if (menuselection == 6) menuselection = 0;
+			//else menuselection++;
+			//tmp3--;
 		}
 		if (joypad1.press_left) {
-			if (menuselection == 0) menuselection = 6;
-			else menuselection--;
-			tmp3++;
+			//if (menuselection == 0) menuselection = 6;
+			//else menuselection--;
+			//tmp3++;
 		}
 
 		if (tmp3 ) {    // menu selection incremented
@@ -1324,29 +1324,29 @@ void state_menu() {
 			
 			if ((mouse.y >= 0x5E && mouse.y <= 0x7A)) {
 				if (mouse.x >= 0x41 && mouse.x <= 0x5A) {
-					menuselection = 6; break;
+//					menuselection = 6; break;
 				}
 				else if (mouse.x >= 0x6F && mouse.x <= 0x8C) {
 					menuselection = 0; break;
 				}
 				else if (mouse.x >= 0xA1 && mouse.x <= 0xBA) {
-					menuselection = 1; break;
+//					menuselection = 1; break;
 				}
 			}				
 			else if ((mouse.y >= 0x8C && mouse.y <= 0x9B)) {
 				if (mouse.x >= 0x46 && mouse.x <= 0x56) {
-					menuselection = 2; break;
+//					menuselection = 2; break;
 				}
 				else if (mouse.x >= 0x76 && mouse.x <= 0x86) {
-					menuselection = 3; break;
+//					menuselection = 3; break;
 				}				
 				else if (mouse.x >= 0xA6 && mouse.x <= 0xB6) {
-					menuselection = 4; break;
+//					menuselection = 4; break;
 				}				
 			}
 			else if ((mouse.y >= 0x0D && mouse.y <= 0x1C)) {
 				if (mouse.x >= 0xD6 && mouse.x <= 0xE4) {
-					menuselection = 5; break;
+//					menuselection = 5; break;
 				}
 			}
 		}	
@@ -1361,45 +1361,8 @@ void state_menu() {
 	normalorcommlevels = 1;
 	switch (menuselection) {
 		case 0x00:
-			tmp2 = 0;
-			gameState = 0xF2;
-			music_update();
-			pal_fade_to_withmusic(4,0);
-			ppu_wait_nmi();		
-			break;
-			// no fall through lmao
-		case 0x01: 
-			POKE(0x2005, 0x00);
-			POKE(0x2005, 0x00);
-			mmc3_disable_irq(); // reset scroll before playing
-			kandowatchesyousleep = 1; 
-			if(!tmp7) crossPRGBankJump8(playPCM, 1); 
-			else crossPRGBankJump8(playPCM, 0);  
-			if (normalorcommlevels) level = LEVEL_COUNT;
-			else level = 0;
-			levelselection(); 
-			return;		
-		case 0x02: gameState = 4; return;
-		case 0x03: crossPRGBankJump0(settings); return;
-		case 0x04: 
-			tmp2 = 0;
-			gameState = 0xF1;
-			music_update();
-			pal_fade_to_withmusic(4,0);
-			ppu_wait_nmi();		
-			break;
-		case 0x05: 
-			if (all_levels_complete != 0xFC) { sfx_play(sfx_invalid, 0); }
-			else {
-				POKE(0x2005, 0x00);
-				POKE(0x2005, 0x00);
-				mmc3_disable_irq(); // reset scroll before playing
-				last_gameState = gameState;
-				gameState = 0xF0; // fun settings gamestate
-				return;
-			}
-			break;
-		case 0x06: customize_screen(); return;
+			gameState = 0x04;
+			return;
 	};
 	
 }

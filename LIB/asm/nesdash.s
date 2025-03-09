@@ -3354,8 +3354,8 @@ SSDPCM_getbyte:
 ;     rts	;	6
 
 Bank:
-    .byte <.bank(GeometryDashPCMA)
-    .byte <.bank(GeometryDashPCMB)
+;    .byte <.bank(GeometryDashPCMA)
+;    .byte <.bank(GeometryDashPCMB)
 
 ; Sample rate calculations go per this formula:
 ; ((Region Clock / Sample Rate)-Sample Load Time)/5
