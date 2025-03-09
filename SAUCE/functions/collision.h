@@ -423,7 +423,6 @@ char bg_side_coll_common() {
 					idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
 				} 
 			}	
-			dblocked[currplayer] = 0;
 		} else {
 			if (!currplayer_was_on_slope_counter && bg_coll_slope()) {
 				high_byte(currplayer_y) += (currplayer_slope_type & SLOPE_UPSIDEDOWN ? 2 : -2);
