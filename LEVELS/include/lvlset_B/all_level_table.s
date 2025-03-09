@@ -187,7 +187,7 @@ _level_lengths_lo:
 	.byte .lobyte($00007C)		; aftermath
 	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($000098)		; slaughterhouse
-	.byte .lobyte($000080)		; test4
+	.byte .lobyte($00007A)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -212,7 +212,7 @@ _level_lengths_md:
 	.byte .hibyte($00007C)		; aftermath
 	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($000098)		; slaughterhouse
-	.byte .hibyte($000080)		; test4
+	.byte .hibyte($00007A)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -237,7 +237,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00007C)		; aftermath
 	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($000098)		; slaughterhouse
-	.byte .bankbyte($000080)		; test4
+	.byte .bankbyte($00007A)		; test4
 
 .endif
 .endif

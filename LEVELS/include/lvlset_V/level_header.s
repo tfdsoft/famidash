@@ -301,3 +301,10 @@ luckydraw_speed       = 0
 luckydraw_no_parallax = 1
 luckydraw_bg_color    = $0F
 luckydraw_grnd_color  = $0F
+
+test4_song_number = song_dash
+test4_game_mode   = 0
+test4_speed       = 0
+test4_no_parallax = 1
+test4_bg_color    = $12
+test4_grnd_color  = $02

@@ -493,6 +493,7 @@ void state_game(){
 		}
 		processXMovement = 1;
 #endif
+		dblocked[currplayer] = 0;
 		if (invincible_counter) invincible_counter--;
 		
 		crossPRGBankJump0(do_the_scroll_thing);
@@ -515,8 +516,7 @@ void state_game(){
 			last_slope_type[0] = currplayer_last_slope_type;
 		}
 
-		dblocked[currplayer] = 0;
-		
+
 		if (dual) { 
 			currplayer = 1;					//take focus
 			if (!(joypad2.a) && !(joypad2.up)) {
@@ -562,9 +562,7 @@ void state_game(){
 			processXMovement = 0;
 			runthecolls();
 			processXMovement = 1;
-			
 			dblocked[currplayer] = 0;
-
 			currplayer = 0;					//give back focus
 
 			//if (twoplayer) 
