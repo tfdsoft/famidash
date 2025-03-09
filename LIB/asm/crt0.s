@@ -323,7 +323,7 @@ detectNTSC:
 .segment "DMC_BANK_08"
 	.incbin "MUSIC/EXPORTS/music_bank8.dmc"
 .segment "DMC_BANK_09"
-	.incbin "MUSIC/EXPORTS/music_bank9.dmc"
+;	.incbin "MUSIC/EXPORTS/music_bank9.dmc"
 .segment "DMC_BANK_0A"
 ;	.incbin "MUSIC/EXPORTS/music_bankA.dmc"
 .segment "DMC_BANK_0B"

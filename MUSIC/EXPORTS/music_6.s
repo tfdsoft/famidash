@@ -141,44 +141,46 @@ music_data_famidash_music6:
 	.byte $00,$cf,$ca,$c9,$c8,$c7,$c6,$c6,$c5,$00,$08
 
 @samples:
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$a7,$4f,$40,$03 ; 00 Choir Ahh A (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$4f,$40,$04 ; 01 Choir Ahh B (Pitch:15)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$4f,$40,$04 ; 02 Choir Ahh C (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$4d,$40,$05 ; 03 Choir Ahh C# (Pitch:13)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$de,$4c,$40,$05 ; 04 Choir Ahh D (Pitch:12)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$de,$4f,$40,$05 ; 05 Choir Ahh D (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$de,$4f,$40,$06 ; 06 Choir Ahh E (Pitch:15)
-	.byte $38+.lobyte(FAMISTUDIO_DPCM_PTR),$de,$4f,$40,$06 ; 07 Choir Ahh G (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ab,$0f,$20,$08 ; 08 Dash (Pitch:15)
-	.byte $2a+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$03 ; 09 EON_AH (Pitch:15)
-	.byte $11+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 0a fdbass A# (Pitch:15)
-	.byte $23+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0d,$40,$00 ; 0b fdbass B (Pitch:13)
-	.byte $23+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$00 ; 0c fdbass B (Pitch:15)
-	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0e,$40,$00 ; 0d fdbass C (Pitch:14)
-	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 0e fdbass C (Pitch:15)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$09,$40,$00 ; 0f fdbass C# (Pitch:9)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0a,$40,$00 ; 10 fdbass C# (Pitch:10)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0b,$40,$00 ; 11 fdbass C# (Pitch:11)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0c,$40,$00 ; 12 fdbass C# (Pitch:12)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0d,$40,$00 ; 13 fdbass C# (Pitch:13)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0e,$40,$00 ; 14 fdbass C# (Pitch:14)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 15 fdbass C# (Pitch:15)
-	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$08,$40,$00 ; 16 fdbass D (Pitch:8)
-	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0b,$40,$00 ; 17 fdbass D (Pitch:11)
-	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0c,$40,$00 ; 18 fdbass D (Pitch:12)
-	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0d,$40,$00 ; 19 fdbass D (Pitch:13)
-	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0e,$40,$00 ; 1a fdbass D (Pitch:14)
-	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0f,$40,$00 ; 1b fdbass D (Pitch:15)
-	.byte $6b+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0e,$40,$00 ; 1c fdkick (Pitch:14)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$00,$07 ; 1d Geometry (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$38,$0f,$40,$01 ; 1e is a (Pitch:15)
-	.byte $2c+.lobyte(FAMISTUDIO_DPCM_PTR),$6d,$0f,$40,$01 ; 1f machine (Pitch:15)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$09 ; 20 One (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$41,$0f,$34,$00 ; 21 snare (Pitch:15)
-	.byte $0f+.lobyte(FAMISTUDIO_DPCM_PTR),$39,$0f,$40,$01 ; 22 this (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$09 ; 23 Three (Pitch:15)
-	.byte $1e+.lobyte(FAMISTUDIO_DPCM_PTR),$37,$0f,$40,$01 ; 24 time (Pitch:15)
-	.byte $2b+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$08 ; 25 Two (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$a8,$0b,$40,$02 ; 00 BSV (Pitch:11)
+	.byte $2a+.lobyte(FAMISTUDIO_DPCM_PTR),$7f,$0c,$40,$02 ; 01 BSV_1 (Pitch:12)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$a7,$4f,$40,$03 ; 02 Choir Ahh A (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$4f,$40,$04 ; 03 Choir Ahh B (Pitch:15)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$4f,$40,$04 ; 04 Choir Ahh C (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$4d,$40,$05 ; 05 Choir Ahh C# (Pitch:13)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$de,$4c,$40,$05 ; 06 Choir Ahh D (Pitch:12)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$de,$4e,$40,$05 ; 07 Choir Ahh D (Pitch:14)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$de,$4f,$40,$05 ; 08 Choir Ahh D (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$de,$4f,$40,$06 ; 09 Choir Ahh E (Pitch:15)
+	.byte $38+.lobyte(FAMISTUDIO_DPCM_PTR),$de,$4f,$40,$06 ; 0a Choir Ahh G (Pitch:15)
+	.byte $2a+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$03 ; 0b EON_AH (Pitch:15)
+	.byte $11+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 0c fdbass A# (Pitch:15)
+	.byte $23+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0d,$40,$00 ; 0d fdbass B (Pitch:13)
+	.byte $23+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$00 ; 0e fdbass B (Pitch:15)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0e,$40,$00 ; 0f fdbass C (Pitch:14)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 10 fdbass C (Pitch:15)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$09,$40,$00 ; 11 fdbass C# (Pitch:9)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0a,$40,$00 ; 12 fdbass C# (Pitch:10)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0b,$40,$00 ; 13 fdbass C# (Pitch:11)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0c,$40,$00 ; 14 fdbass C# (Pitch:12)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0d,$40,$00 ; 15 fdbass C# (Pitch:13)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0e,$40,$00 ; 16 fdbass C# (Pitch:14)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 17 fdbass C# (Pitch:15)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$08,$40,$00 ; 18 fdbass D (Pitch:8)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0b,$40,$00 ; 19 fdbass D (Pitch:11)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0c,$40,$00 ; 1a fdbass D (Pitch:12)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0d,$40,$00 ; 1b fdbass D (Pitch:13)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0e,$40,$00 ; 1c fdbass D (Pitch:14)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0f,$40,$00 ; 1d fdbass D (Pitch:15)
+	.byte $6b+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0e,$40,$00 ; 1e fdkick (Pitch:14)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$38,$0f,$40,$01 ; 1f is a (Pitch:15)
+	.byte $2c+.lobyte(FAMISTUDIO_DPCM_PTR),$6d,$0f,$40,$01 ; 20 machine (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$e0,$0e,$40,$07 ; 21 MUSIC_PCM_DS-geo (Pitch:14)
+	.byte $36+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$08 ; 22 one (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$41,$0f,$34,$00 ; 23 snare (Pitch:15)
+	.byte $0f+.lobyte(FAMISTUDIO_DPCM_PTR),$39,$0f,$40,$01 ; 24 this (Pitch:15)
+	.byte $38+.lobyte(FAMISTUDIO_DPCM_PTR),$e7,$0f,$40,$07 ; 25 three (Pitch:15)
+	.byte $1e+.lobyte(FAMISTUDIO_DPCM_PTR),$37,$0f,$40,$01 ; 26 time (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$d6,$0f,$40,$08 ; 27 two (Pitch:15)
 
 @song0ch0:
 	.byte $46, $06, $78, $4f, $01
@@ -471,25 +473,25 @@ music_data_famidash_music6:
 	.byte $1f, $81, $7e, $1f, $89, $78, $81, $77, $81, $76, $81, $75, $81, $74, $81, $73, $81, $72, $81, $71, $81, $70, $83, $44
 	.byte $00
 @song0ch4:
-	.byte $1d, $fd, $1d, $fd, $1d, $bd, $1d, $8d, $1d, $85, $1d, $85, $1d, $9d, $1d, $99, $1d, $81, $1d, $9d, $1d, $8d, $1d, $85
-	.byte $1d, $81, $1d, $81, $1d, $85, $1d, $85, $1d, $81, $1d, $81
+	.byte $1f, $fd, $1f, $fd, $1f, $bd, $1f, $8d, $1f, $85, $1f, $85, $1f, $9d, $1f, $99, $1f, $81, $1f, $9d, $1f, $8d, $1f, $85
+	.byte $1f, $81, $1f, $81, $1f, $85, $1f, $85, $1f, $81, $1f, $81
 @song0ref1586:
-	.byte $1d, $1d, $1d, $1d, $1d, $1d, $1d, $1d, $1d
+	.byte $1f, $1f, $1f, $1f, $1f, $1f, $1f, $1f, $1f
 	.byte $41, $09
 	.word @song0ref1586
-	.byte $1d, $1d, $1d, $9d
+	.byte $1f, $1f, $1f, $9d
 @song0ref1602:
-	.byte $1d, $81, $19, $81, $22, $81, $19
+	.byte $1f, $81, $1b, $81, $24, $81, $1b
 @song0ref1609:
-	.byte $81, $1d, $81
+	.byte $81, $1f, $81
 @song0ref1612:
-	.byte $19, $81, $22, $81, $19
+	.byte $1b, $81, $24, $81, $1b
 @song0ref1617:
-	.byte $81, $1d, $81, $1b, $81, $22, $81, $1b, $81, $1d, $81, $1b, $81, $22, $81, $1b
+	.byte $81, $1f, $81, $1d, $81, $24, $81, $1d, $81, $1f, $81, $1d, $81, $24, $81, $1d
 	.byte $41, $10
 	.word @song0ref1617
 @song0ref1636:
-	.byte $81, $1d, $81, $0e, $81, $22, $81, $0e, $81, $1d, $81, $0e, $81, $22, $81, $0e
+	.byte $81, $1f, $81, $10, $81, $24, $81, $10, $81, $1f, $81, $10, $81, $24, $81, $10
 	.byte $41, $0b
 	.word @song0ref1609
 	.byte $41, $15
@@ -514,7 +516,7 @@ music_data_famidash_music6:
 	.word @song0ref1617
 	.byte $41, $09
 	.word @song0ref1636
-	.byte $22, $22, $22, $22, $22, $22, $22, $22
+	.byte $24, $24, $24, $24, $24, $24, $24, $24
 	.byte $41, $1f
 	.word @song0ref1602
 	.byte $41, $10
@@ -529,13 +531,13 @@ music_data_famidash_music6:
 	.word @song0ref1617
 	.byte $41, $09
 	.word @song0ref1636
-	.byte $22, $22, $22, $22, $22, $22, $22, $22
+	.byte $24, $24, $24, $24, $24, $24, $24, $24
 @song0ref1725:
-	.byte $83, $48, $0f, $19, $00, $83, $48, $0f, $19, $00, $83, $48, $0f, $19, $00, $83, $48, $0f, $19, $00, $83, $1b, $85, $1b
-	.byte $85, $1b, $85, $1b, $85, $1b, $85, $1b, $85, $1b, $85, $1b, $81, $00, $81, $0e, $85, $0e, $85, $0e, $85, $0e, $81
+	.byte $83, $48, $0f, $1b, $00, $83, $48, $0f, $1b, $00, $83, $48, $0f, $1b, $00, $83, $48, $0f, $1b, $00, $83, $1d, $85, $1d
+	.byte $85, $1d, $85, $1d, $85, $1d, $85, $1d, $85, $1d, $85, $1d, $81, $00, $81, $10, $85, $10, $85, $10, $85, $10, $81
 	.byte $41, $1d
 	.word @song0ref1725
-	.byte $0e, $9d, $44, $00
+	.byte $10, $9d, $44, $00
 ; The DPCM aligner used to be here
 @song2ch0:
 @song2ch0loop:
@@ -746,7 +748,9 @@ music_data_famidash_music6:
 @song2ref1781:
 	.byte $81, $28, $81, $23, $81, $28, $81, $23, $81, $28
 @song2ref1791:
-	.byte $81, $00, $81, $1f, $81, $00, $81, $1f, $81, $00, $81, $23, $81, $21, $81
+	.byte $81, $00
+@song2ref1793:
+	.byte $81, $1f, $81, $00, $81, $1f, $81, $00, $81, $23, $81, $21, $81
 	.byte $41, $2c
 	.word @song2ref1748
 	.byte $23, $81, $28, $81, $23, $81, $28, $81, $26, $81, $28, $85
@@ -866,8 +870,10 @@ music_data_famidash_music6:
 	.byte $41, $20
 	.word @song2ref2427
 	.byte $1e, $81, $1a, $81, $21, $81, $1a, $81, $1e, $81, $1a, $81, $21, $81, $1a, $81, $26, $81, $21, $81, $24, $81, $1f, $81
-	.byte $23, $81, $1c, $81, $1f, $81, $1c, $81, $24, $85, $1f, $85, $24, $85, $1f, $85, $24, $81, $1f, $81, $24, $81, $1f, $81
-	.byte $21, $1c, $21, $1c, $21, $1c, $21, $1c, $00, $bd, $98
+	.byte $23, $81, $1c, $81, $1f, $81, $1c, $81
+@song2ref2497:
+	.byte $24, $85, $1f, $85, $24, $85, $1f, $85, $24, $81, $1f, $81, $24, $81, $1f, $81, $21, $1c, $21, $1c, $21, $1c, $21, $1c
+	.byte $00, $bd, $98
 @song2ref2524:
 	.byte $1c, $83, $00, $1c, $83, $00, $1c, $83, $00, $1c, $83, $00, $10, $83, $00, $17, $81, $1a, $91
 	.byte $41, $13
@@ -1202,21 +1208,21 @@ music_data_famidash_music6:
 @song2ch4:
 @song2ch4loop:
 @song2ref3885:
-	.byte $1d, $85, $1d, $85, $1d, $85
+	.byte $1f, $85, $1f, $85, $1f, $85
 @song2ref3891:
-	.byte $22, $85, $1d, $85, $1d, $85, $1d, $85, $22, $85
+	.byte $24, $85, $1f, $85, $1f, $85, $1f, $85, $24, $85
 	.byte $41, $0d
 	.word @song2ref3885
-	.byte $1d, $1d, $1d
+	.byte $1f, $1f, $1f
 	.byte $41, $0a
 	.word @song2ref3891
 	.byte $41, $0a
 	.word @song2ref3885
-	.byte $00, $91, $1d, $85, $00, $99
+	.byte $00, $91, $1f, $85, $00, $99
 @song2ref3919:
-	.byte $1d, $81, $1d, $81, $22
+	.byte $1f, $81, $1f, $81, $24
 @song2ref3924:
-	.byte $81, $00, $81, $1d, $81, $00, $81, $22, $81, $00, $81
+	.byte $81, $00, $81, $1f, $81, $00, $81, $24, $81, $00, $81
 	.byte $41, $10
 	.word @song2ref3919
 	.byte $41, $10
@@ -1224,30 +1230,30 @@ music_data_famidash_music6:
 	.byte $41, $10
 	.word @song2ref3919
 @song2ref3944:
-	.byte $1d, $81, $1d
+	.byte $1f, $81, $1f
 @song2ref3947:
 	.byte $81
 @song2ref3948:
-	.byte $22, $81, $22, $81, $1d, $81, $1d, $81, $22, $85
+	.byte $24, $81, $24, $81, $1f, $81, $1f, $81, $24, $85
 	.byte $41, $09
 	.word @song2ref3944
 	.byte $85
 	.byte $41, $09
 	.word @song2ref3948
-	.byte $81, $22, $81, $1d, $81, $1d, $81, $22, $22, $22, $22, $1d, $81, $1d, $81, $22, $81, $1d, $85, $22, $81, $22, $22, $22
+	.byte $81, $24, $81, $1f, $81, $1f, $81, $24, $24, $24, $24, $1f, $81, $1f, $81, $24, $81, $1f, $85, $24, $81, $24, $24, $24
 	.byte $81
 @song2ref3990:
-	.byte $1d, $81, $1d, $81, $22, $85, $1d, $81, $1d, $81, $22, $85
+	.byte $1f, $81, $1f, $81, $24, $85, $1f, $81, $1f, $81, $24, $85
 	.byte $41, $0c
 	.word @song2ref3990
 	.byte $41, $0c
 	.word @song2ref3990
-	.byte $22, $81, $22
+	.byte $24, $81, $24
 	.byte $41, $0b
 	.word @song2ref3947
 	.byte $41, $0c
 	.word @song2ref3990
-	.byte $1d, $81, $1d, $81, $22, $85, $1d, $85, $1d, $85
+	.byte $1f, $81, $1f, $81, $24, $85, $1f, $85, $1f, $85
 	.byte $41, $10
 	.word @song2ref3919
 	.byte $41, $10
@@ -1257,196 +1263,228 @@ music_data_famidash_music6:
 	.byte $41, $10
 	.word @song2ref3919
 @song2ref4039:
-	.byte $1d, $81, $1d, $81, $1d, $81, $1d, $81, $1d, $81, $1d, $81, $1d, $81, $1d, $81
-@song2ref4055:
-	.byte $1d, $85, $22, $85, $1d, $85, $22, $85, $1d, $85, $22, $85
-	.byte $41, $0c
-	.word @song2ref4055
-	.byte $41, $0c
-	.word @song2ref4055
-	.byte $41, $0c
-	.word @song2ref4055
-	.byte $41, $0c
-	.word @song2ref4055
-	.byte $1d, $85, $22, $85
-@song2ref4083:
-	.byte $1d, $81, $0d, $81, $22, $81, $0d, $81, $1d, $81, $16, $81, $22, $81, $16, $81, $1d, $81, $1a, $81, $22, $81, $13, $81
-	.byte $1d, $81, $1a, $81, $22, $81, $13, $81
+	.byte $1f, $81, $1f, $81, $1f, $81, $1f, $81, $1f, $81, $1f, $81, $1f, $81, $1f, $81, $1f, $85
+	.byte $41, $09
+	.word @song2ref2497
+	.byte $85, $1f, $85
+	.byte $41, $09
+	.word @song2ref2497
+	.byte $85, $1f, $85
+	.byte $41, $09
+	.word @song2ref2497
+	.byte $85, $1f, $85
+	.byte $41, $09
+	.word @song2ref2497
+	.byte $85, $1f, $85
+	.byte $41, $09
+	.word @song2ref2497
+	.byte $85, $1f, $85, $24, $85
+@song2ref4089:
+	.byte $1f, $81, $0f, $81, $24, $81, $0f, $81, $1f, $81, $18, $81, $24, $81, $18, $81, $1f, $81, $1c, $81, $24, $81, $15, $81
+	.byte $1f, $81, $1c, $81, $24, $81, $15, $81
 	.byte $41, $20
-	.word @song2ref4083
+	.word @song2ref4089
 	.byte $41, $20
-	.word @song2ref4083
-	.byte $1d, $81, $16, $81, $22, $81, $15, $81, $1d, $81, $16, $81, $22, $81, $15, $81, $1d, $81, $16, $81, $22, $81, $1a, $81
-	.byte $1d, $81, $0d, $81, $22, $81, $0c, $81, $0d, $81, $00, $81, $1a, $81, $00, $81, $0d, $81, $00, $81, $1a, $81, $00, $81
-	.byte $0d, $81, $1a, $81, $0d, $81, $1a, $81, $22, $22, $22, $22, $22, $22, $22, $22, $00, $95, $1d, $81, $00, $81, $1d, $81
-	.byte $00, $99
-@song2ref4195:
-	.byte $1d, $81, $00
-@song2ref4198:
-	.byte $81, $1d, $81, $00, $81, $1d, $81, $00, $81
-	.byte $41, $0a
-	.word @song2ref4195
-@song2ref4210:
-	.byte $13, $81, $1d, $81, $13, $81, $1d, $81, $13
+	.word @song2ref4089
+	.byte $1f, $81, $18, $81, $24, $81, $17, $81, $1f, $81, $18, $81, $24, $81, $17, $81, $1f, $81, $18, $81, $24, $81, $1c, $81
+	.byte $1f, $81, $0f, $81, $24, $81, $0e, $81, $0f, $81, $00, $81, $1c, $81, $00, $81, $0f, $81, $00, $81, $1c, $81, $00, $81
+	.byte $0f, $81, $1c, $81, $0f, $81, $1c, $81, $24, $24, $24, $24, $24, $24, $24, $24, $00, $95, $1f, $81, $00, $81, $1f, $81
+	.byte $00, $99, $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
 	.byte $41, $09
-	.word @song2ref4198
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $1d, $81
+	.word @song2ref1791
+@song2ref4209:
+	.byte $15, $81, $1f, $81, $15, $81, $1f, $81, $15
 	.byte $41, $09
-	.word @song2ref4210
+	.word @song2ref1793
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f, $81
 	.byte $41, $09
-	.word @song2ref4198
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $1d, $81
+	.word @song2ref4209
 	.byte $41, $09
-	.word @song2ref4210
+	.word @song2ref1793
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f, $81
 	.byte $41, $09
-	.word @song2ref4198
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $1d, $81, $00, $81
-@song2ref4251:
-	.byte $1d, $85
+	.word @song2ref4209
+	.byte $41, $09
+	.word @song2ref1793
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f, $81, $00, $81
 @song2ref4253:
-	.byte $00, $85, $1d, $85, $00, $85, $1d, $85, $00, $85
+	.byte $1f, $85
+@song2ref4255:
+	.byte $00, $85, $1f, $85, $00, $85, $1f, $85, $00, $85
 	.byte $41, $0c
-	.word @song2ref4251
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $1d, $1d, $1d, $1d
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $1d, $1d, $1d
+	.word @song2ref4253
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f, $1f, $1f, $1f, $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f, $1f, $1f
 	.byte $41, $09
-	.word @song2ref4198
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-@song2ref4336:
-	.byte $1d, $81
-@song2ref4338:
-	.byte $1a, $81, $1d, $81, $1a, $81, $1d, $81, $15, $81, $1d, $81, $15, $81, $1d, $81, $0b, $81, $1d, $81, $0b, $81, $1d, $81
-	.byte $1a, $81, $1d, $81, $14, $81
+	.word @song2ref1793
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+@song2ref4358:
+	.byte $1f, $81
+@song2ref4360:
+	.byte $1c, $81, $1f, $81, $1c, $81, $1f, $81, $17, $81, $1f, $81, $17, $81, $1f, $81, $0d, $81, $1f, $81, $0d, $81, $1f, $81
+	.byte $1c, $81, $1f, $81, $16, $81
 	.byte $41, $20
-	.word @song2ref4336
-	.byte $1d, $81, $00, $89, $1d, $81, $00, $89, $1d, $81, $00, $99, $bf, $bf, $9f, $1d, $81, $00, $89
-	.byte $41, $0a
-	.word @song2ref4195
+	.word @song2ref4358
+	.byte $1f, $81, $00, $89, $1f, $81, $00, $89, $1f, $81, $00, $99, $bf, $bf, $9f, $1f, $81, $00, $89, $1f
+	.byte $41, $09
+	.word @song2ref1791
 	.byte $41, $1e
-	.word @song2ref4338
+	.word @song2ref4360
 	.byte $41, $1a
-	.word @song2ref4336
+	.word @song2ref4358
 	.byte $41, $0a
 	.word @song2ref4039
-	.byte $22, $81, $1d, $1d
+	.byte $24, $81, $1f, $1f
 	.byte $41, $0b
 	.word @song2ref3990
-	.byte $81, $1d, $1d
+	.byte $81, $1f, $1f
 	.byte $41, $0b
 	.word @song2ref3990
-	.byte $81, $1d, $1d
+	.byte $81, $1f, $1f
 	.byte $41, $0b
 	.word @song2ref3990
-	.byte $81, $1d, $1d
+	.byte $81, $1f, $1f
 	.byte $41, $0b
 	.word @song2ref3990
-	.byte $81, $1d, $1d
+	.byte $81, $1f, $1f
 	.byte $41, $0b
 	.word @song2ref3990
-	.byte $81, $1d, $1d
+	.byte $81, $1f, $1f
 	.byte $41, $0b
 	.word @song2ref3990
-	.byte $81, $1d, $1d
+	.byte $81, $1f, $1f
 	.byte $41, $0b
 	.word @song2ref3990
-	.byte $81, $1d, $1d, $22, $1d, $22, $1d, $22, $85, $00, $bd, $bf
+	.byte $81, $1f, $1f, $24, $1f, $24, $1f, $24, $85, $00, $bd, $bf
 	.byte $41, $0c
-	.word @song2ref4251
-	.byte $1d, $81, $1d, $81
-	.byte $41, $0a
 	.word @song2ref4253
-	.byte $1d, $85, $1d, $85, $1d, $81, $1d, $81, $00, $85
-@song2ref4477:
-	.byte $1d, $81, $1d, $81, $22, $81, $1d
-@song2ref4484:
-	.byte $81, $1d, $81, $1d, $81, $22, $81, $1d, $81
+	.byte $1f, $81, $1f, $81
+	.byte $41, $0a
+	.word @song2ref4255
+	.byte $1f, $85, $1f, $85, $1f, $81, $1f, $81, $00, $85
+@song2ref4500:
+	.byte $1f, $81, $1f, $81, $24, $81, $1f
+@song2ref4507:
+	.byte $81, $1f, $81, $1f, $81, $24, $81, $1f, $81
 	.byte $41, $0e
-	.word @song2ref4477
-	.byte $22
+	.word @song2ref4500
+	.byte $24
 	.byte $41, $09
-	.word @song2ref4484
-	.byte $1d, $81, $1d, $81, $22, $81, $1d, $81, $22, $81, $1d, $81, $22, $81, $1d, $81, $22, $81, $22, $81, $22, $22, $22, $22
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $1d
+	.word @song2ref4507
+	.byte $1f, $81, $1f, $81, $24, $81, $1f, $81, $24, $81, $1f, $81, $24, $81, $1f, $81, $24, $81, $24, $81, $24, $24, $24, $24
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
 	.byte $41, $0b
 	.word @song2ref3924
-	.byte $22, $81, $00, $81, $22, $81, $00, $91
-@song2ref4545:
-	.byte $1d, $81, $18, $81, $1d, $81, $18, $81, $1d, $81, $12, $81, $1d, $81, $12, $81, $1d, $81, $11, $81, $1d, $81, $11
-@song2ref4568:
-	.byte $81, $1d, $81, $10, $81, $1d, $81, $10, $81
+	.byte $24, $81, $00, $81, $24, $81, $00, $91
+@song2ref4571:
+	.byte $1f, $81, $1a, $81, $1f, $81, $1a, $81, $1f, $81, $14, $81, $1f, $81, $14, $81, $1f, $81, $13, $81, $1f, $81, $13
+@song2ref4594:
+	.byte $81, $1f, $81, $12, $81, $1f, $81, $12, $81
 	.byte $41, $20
-	.word @song2ref4545
+	.word @song2ref4571
 	.byte $41, $20
-	.word @song2ref4545
+	.word @song2ref4571
 	.byte $41, $20
-	.word @song2ref4545
+	.word @song2ref4571
 	.byte $41, $20
-	.word @song2ref4545
+	.word @song2ref4571
 	.byte $41, $20
-	.word @song2ref4545
+	.word @song2ref4571
 	.byte $41, $20
-	.word @song2ref4545
-	.byte $1d, $81, $17, $81, $1d, $81, $17
+	.word @song2ref4571
+	.byte $1f, $81, $19, $81, $1f, $81, $19
 	.byte $41, $09
-	.word @song2ref4568
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $41, $0c
-	.word @song2ref4195
-	.byte $1d, $81, $00, $81, $1d, $81, $00, $91, $42
+	.word @song2ref4594
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f
+	.byte $41, $0b
+	.word @song2ref1791
+	.byte $1f, $81, $00, $81, $1f, $81, $00, $91, $42
 	.word @song2ch4loop
