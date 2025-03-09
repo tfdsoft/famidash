@@ -480,6 +480,7 @@ const uint8_t xbgm_lookup_table3[] = {
 	song_deadlocked,
 	song_fingerdash,
 	song_dash,
+	
 	song_the_challenge,
 	song_practice,
 	song_scheming_weasel,
