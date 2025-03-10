@@ -5,80 +5,6 @@ void mouse_and_cursor();
 
 const unsigned char palette_Credits2[16]={ 0x11,0x0f,0x10,0x30,0x11,0x0f,0x2a,0x39,0x11,0x28,0x17,0x0f,0x11,0x0f,0x11,0x21 };
 
-const unsigned char playmain[339]={
-0x03,0xfe,0x03,0x3f,0xff,0x03,0x27,0x20,0x21,0x22,0x23,0x24,0x25,0x26,0x27,0x28,
-0x29,0x22,0x23,0x22,0x2b,0x2c,0x2c,0xff,0x03,0x0f,0x30,0x31,0x32,0x33,0x34,0x35,
-0x36,0x37,0x38,0x39,0x32,0x33,0x3a,0x3b,0x3c,0x3d,0xff,0x03,0x0f,0x40,0xff,0x42,
-0x43,0x44,0x45,0x46,0x47,0x48,0x49,0x42,0x43,0x4a,0x4b,0x4c,0x4c,0xff,0x03,0x4d,
-0xf4,0xe8,0xe5,0xff,0xe6,0xe1,0xed,0xe9,0xe4,0xe1,0xf3,0xe8,0xff,0xe2,0xff,0xf3,
-0xe9,0xe4,0xe5,0xf3,0xff,0x03,0x0b,0xe1,0xf2,0xe5,0xff,0xe5,0xf8,0xf4,0xf2,0xe1,
-0xff,0xec,0xe5,0xf6,0xe5,0xec,0xf3,0xff,0xf4,0xe8,0xe1,0xf4,0xff,0x03,0x0a,0xe3,
-0xef,0xf5,0xec,0xe4,0xff,0xee,0xef,0xf4,0xff,0xe6,0xe9,0xf4,0xff,0xe9,0xee,0xff,
-0xf4,0xe8,0xe5,0xff,0x03,0x0b,0xed,0xe1,0xe9,0xee,0xff,0xe7,0xe1,0xed,0xe5,0xff,
-0x03,0x56,0xf4,0xef,0xff,0xf0,0xec,0xe1,0xf9,0xff,0xf4,0xe8,0xe5,0xff,0xed,0xe1,
-0xe9,0xee,0xff,0xec,0xe5,0xf6,0xe5,0xec,0xf3,0xff,0x03,0x08,0xe1,0xee,0xe4,0xff,
-0xed,0xef,0xf2,0xe5,0xff,0xf0,0xec,0xe5,0xe1,0xf3,0xe5,0xff,0xf0,0xec,0xe1,0xf9,
-0xff,0x03,0x0b,0xf4,0xe8,0xe5,0xff,0xed,0xe1,0xe9,0xee,0xff,0xe7,0xe1,0xed,0xe5,
-0xff,0x03,0x52,0xf6,0xe9,0xf3,0xe9,0xf4,0xff,0xf4,0xe8,0xe5,0xff,0xe3,0xef,0xed,
-0xed,0xf5,0xee,0xe9,0xf4,0xf9,0xff,0xf4,0xe1,0xe2,0xff,0x03,0x08,0xf4,0xef,0xff,
-0xf0,0xec,0xe1,0xf9,0xff,0xf4,0xe8,0xe5,0xff,0xe2,0xff,0xf3,0xe9,0xe4,0xe5,0xf3,
-0xff,0x03,0x0c,0xec,0xe5,0xf6,0xe5,0xec,0xf3,0xff,0x03,0x5c,0xf0,0xf2,0xe5,0xf3,
-0xf3,0xff,0xe1,0xee,0xf9,0xff,0xeb,0xe5,0xf9,0xff,0x03,0x14,0xf4,0xef,0xff,0xf2,
-0xe5,0xf4,0xf5,0xf2,0xee,0xff,0x03,0x4b,0xfe,0x03,0x3f,0x00,0x00,0x50,0x03,0x03,
-0x00,0x03,0x02,0x04,0x05,0x03,0x03,0x01,0x00,0x80,0x00,0x03,0x0e,0x04,0x00,0x08,
-0x0a,0x0a,0x00,0x03,0x07,0x80,0x00,0x03,0x03,0x0a,0x03,0x02,0x02,0x00,0x03,0x08,
-0x00,0x03,0x00
-};
-
-void state_playmain(){
-	mmc3_disable_irq();
-	
-	ppu_off();
-	pal_bright(0);
-    
-	pal_bg(palette_Credits2);
-	
-
-
-	vram_adr(NAMETABLE_A);
-	vram_unrle(playmain);
-
-	// __asm__("LDA mmc3PRG1Bank \nPHA ");
-    // mmc3_set_prg_bank_1(0);
-    // vram_adr(NAMETABLE_A);
-	//    vram_unrle(dem_funnies);
-    // __asm__("PLA \n JSR %v ", mmc3_set_prg_bank_1);
-
-	oam_clear();
-	mmc3_set_8kb_chr(MENUBANK);
-	mmc3_set_2kb_chr_bank_0(0xFF);	
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
-	ppu_on_all();
-	music_update();
-	pal_fade_to(0,4);
-	tmp1 = 0;
-
-	/*	Incomplete code for reproducing what is being screamed into the Famicom microphone
-	(He forgor about the PCM bit)
-	OG by UserSniper, commit 7e47f425
-	POKE(0x4015, 0b00010000);
-	while (1) {
-		POKE(0x4011, fc_mic_poll()<<4);
-	}
-	*/
-
-	
-	do {
-		oam_clear();
-		mouse_and_cursor();
-		music_update();
-		ppu_wait_nmi();
-		newrand();
-		kandoframecnt++;
-	} while (!joypad1.press && !mouse.left_press);
-	gameState = 1;
-	return;
-}	
 
 const uint8_t difficulty_pal_A[] ={
 	0x21,	// easy
@@ -100,6 +26,10 @@ const uint8_t difficulty_pal_B[] ={
 	0x0F,	// auto
 };
 
+void state_playmain() {
+	
+}
+
 void refreshmenu();
 void refreshmenu_part2();
 void code_checker();
@@ -119,363 +49,7 @@ void checkcoinproceed(){
 }
 
 void state_lvldone() {
-	#define current_state tmp2
-	#define sprite_0_y tmp3
-	#define delay_spr_0 tmp4
-	#define delay_timer tmpptr1
-	#define top_scroll scroll_x
-	oam_clear();
-    ppu_off();
 
-	delay_spr_0 = 0x20;
-
-	current_state = 0;
-	// Set palettes back to natural colors since we aren't fading back in
-	pal_bright(4);
-	pal_bg(paletteMenu);
-	pal_col(0x0A,0x2A);
-	pal_col(0x0B,0x21);
-	pal_set_update();
-    //pal_spr(paletteMenu);
-	pal_spr(paletteDefaultSP);
-	mmc3_set_1kb_chr_bank_0(LEVELCOMPLETEBANK);
-	mmc3_set_1kb_chr_bank_1(PRACTICECOMPLETEBANK);
-	mmc3_set_1kb_chr_bank_2(LEVELCOMPLETEBANK+2);
-	mmc3_set_1kb_chr_bank_3(LEVELCOMPLETEBANK+3);
-	
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	// Make a nametable for the chain
-    vram_adr(NAMETABLE_C);
-	vram_fill(0xfe, 0x3c0);
-	vram_fill(0x00, 0x3f);
-
-	// Copy the level done screen to the bot left and right nametable
-	vram_adr(NAMETABLE_A);
-	if (practice_point_count) {
-		vram_unrle(practicedone);
-	} else {
-		vram_unrle(leveldone);
-	}
-
-	#include "defines/endlevel_charmap.h"
-	//multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));
-	//multi_vram_buffer_horz((const char*)menutext4,sizeof(menutext4)-1,NTADR_C(8, 18));
-	//multi_vram_buffer_horz((const char*)attemptstext,sizeof(attemptstext)-1,NTADR_C(7, 19));
-	
-	tmp1 = 0;
-	tmpptr1 = NULL;
-	//crossPRGBankJump0(increment_attempt_count); WTF WHO PUT THIS HERE
-	display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
-	
-	hexToDec(jumps);
-
-	tmp1 = 0;
-	
-	if (hexToDecOutputBuffer[4]) {
-		one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_A(18,15));
-		tmp1++;
-	}
-
-	if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3]) {
-		one_vram_buffer(0xD0+hexToDecOutputBuffer[3], NTADR_A(18+tmp1,15));
-		tmp1++;
-	}
-	
-	if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2]) {
-		one_vram_buffer(0xD0+hexToDecOutputBuffer[2], NTADR_A(18+tmp1,15));
-		tmp1++;
-	}
-
-	if (hexToDecOutputBuffer[4] | hexToDecOutputBuffer[3] | hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1]) {
-		one_vram_buffer(0xD0+hexToDecOutputBuffer[1], NTADR_A(18+tmp1,15));
-		tmp1++;
-	}
-	one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_A(18+tmp1,15));
-	
-	if (!practice_point_count) {
-		LEVELCOMPLETE[level] = 1;
-		
-		if (coins & COIN_1) coin1_obtained[level] = 1;
-		if (coins & COIN_2) coin2_obtained[level] = 1;
-		if (coins & COIN_3) coin3_obtained[level] = 1;
-
-		level_completeness_normal[level] = 100;
-	} else {
-		level_completeness_practice[level] = 100;
-	}
-	
-	
-	if (!coins) {
-		tmp1 = sizeof(coins0) - 1;
-		tmpptr1 = (unsigned char*)coins0;
-	} else if ((coins & 7) == 7) {
-		tmp1 = sizeof(coins3) - 1;
-		tmpptr1 = (unsigned char*)coins3;
-	} else if (((coins & COIN_1) && (coins & COIN_2)) || ((coins & COIN_2) && (coins & COIN_3)) || ((coins & COIN_1) && (coins & COIN_3))) {
-		tmp1 = sizeof(coins2) - 1;
-		tmpptr1 = (unsigned char*)coins2;
-	} else if (coins & COIN_1 || coins & COIN_2 || coins & COIN_3) {
-		tmp1 = sizeof(coins1) - 1;
-		tmpptr1 = (unsigned char*)coins1;
-	}
-	 
-	//if (tmp1) multi_vram_buffer_horz((const char*)tmpptr1,tmp1,NTADR_C(17,18));
-	flush_vram_update2();
-
-    set_scroll_x(0x00);
-
-
-	tmp5 = 0x0000; // speed
-	tmp6 = 0xf000; // real y 
-
-	//	one_vram_buffer(0xD0+coins, NTADR_A(12,9));
-
-	
-    set_scroll_y(0xe8);
-    ppu_on_all();
-
-	sfx_play(sfx_level_complete, 0);
-	menuselection = 1;
-	practice_point_count = 0;
-
-	while (1) {
-		ppu_wait_nmi();
-		
-		music_update();
-
- 		// read the first controller
-
-		kandoframecnt++;
-
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;
-		switch (current_state) {
-		case 0:
-			tmp5 += 0x40;
-			tmp6 -= tmp5;
-			set_scroll_y(high_byte(tmp6));
-			
-			if (high_byte(tmp6) < 10) {
-				current_state = 1;
-				tmp5 = -0x0600;
-			}
-			break;
-		case 1:
-			tmp5 += 0x40;
-			tmp6 -= tmp5;
-			set_scroll_y(high_byte(tmp6));
-			if (high_byte(tmp6) < 5 && !(high_byte(tmp5) & 0x80)) {
-				current_state = 2;
-				tmp5 = -0x0300;
-			}
-			break;
-		case 2:
-			tmp5 += 0x40;
-			tmp6 -= tmp5;
-			set_scroll_y(high_byte(tmp6));
-			if (high_byte(tmp6) < 3 && !(high_byte(tmp5) & 0x80)) {
-				current_state = 3;
-				set_scroll_y(0);
-			}
-			break;
-		case 3:
-			// Draw the level stat text
-			//achievements
-			kandokidshack = 0;
-			kandokidshack2 = 0;
-
-			tmp2 = 0;
-			do {
-				// kandokidshack = kandokidshack + coin1_obtained[tmp2] + coin2_obtained[tmp2] + coin3_obtained[tmp2];
-				__A__ = tmp2; __asm__("tay");
-				__A__ = kandokidshack;
-				__asm__("clc \n adc %v, y", coin1_obtained);
-				__asm__("clc \n adc %v, y", coin2_obtained);
-				__asm__("clc \n adc %v, y", coin3_obtained);
-				kandokidshack = __A__;
-				
-				if (LEVELCOMPLETE[tmp2]) kandokidshack2 += stars_list[tmp2];
-				tmp2++;
-			}
-			#ifdef FLAG_ENABLE_TEST_LEVELS
-			while (tmp2 < 255);
-			#else
-			while (tmp2 < LEVEL_COUNT2);
-			#endif
-
-			tmp2 = 0;
-
-
-/*
-			do {
-				if (!achievements[tmp2]) {
-					if (LEVELCOMPLETE[tmp2]) {
-						achievements[tmp2] = 1;
-						switch (tmp2) {
-							case 0:
-							case 1:
-							case 2:
-							case 3:			//display achievements here
-							case 4:
-							case 5:
-							case 6:
-							case 7:
-							case 8:
-							case 9:
-							case 10: break;
-						};
-					}
-				}
-			} while (++tmp2 <= 10);
-
-			if (!achievements[11]) {
-				if (kandokidshack >= 10) {
-					achievements[11] = 1;
-					//display text here
-				}
-			}
-
-			if (!achievements[12]) {
-				if (kandokidshack >= 20) {
-					achievements[12] = 1;
-					//display text here
-				}
-			}
-				
-			
-			if (!achievements[13]) {
-				if (kandokidshack >= 30) {
-					achievements[13] = 1;
-					//display text here
-				}
-			}
-				
-			
-			if (!achievements[14]) {
-				
-			}
-			if (!achievements[15]) {
-				
-			}
-			if (!achievements[16]) {
-				
-			}
-			if (!achievements[17]) {
-				
-			}
-			if (!achievements[18]) {
-				
-			}
-			if (!achievements[19]) {
-				
-			}
-*/
-			current_state = 4;
-			tmp1 = 1;
-			break;
-		case 4: // coin 1
-			if (coins & COIN_1){
-				one_vram_buffer(0x90, NTADR_A(11,18));
-				one_vram_buffer(0x91, NTADR_A(12,18));
-				one_vram_buffer(0xA0, NTADR_A(11,19));
-				one_vram_buffer(0xA1, NTADR_A(12,19));
-				checkcointimer();
-			}
-			tmp1--;
-			checkcoinproceed();
-			break;
-		case 5: // coin 2
-			if (coins & COIN_2){
-				one_vram_buffer(0x90, NTADR_A(15,18));
-				one_vram_buffer(0x91, NTADR_A(16,18));
-				one_vram_buffer(0xA0, NTADR_A(15,19));
-				one_vram_buffer(0xA1, NTADR_A(16,19));
-				checkcointimer();
-			}
-			tmp1--;
-			checkcoinproceed();
-			break;
-		case 6: // coin 3
-			if (coins & COIN_3){
-				one_vram_buffer(0x90, NTADR_A(19,18));
-				one_vram_buffer(0x91, NTADR_A(20,18));
-				one_vram_buffer(0xA0, NTADR_A(19,19));
-				one_vram_buffer(0xA1, NTADR_A(20,19));
-				checkcointimer();
-			}
-			tmp1--;
-			checkcoinproceed();
-			break;
-		case 7:
-		lvl_done_update();
-		oam_clear();
-
-			mouse_and_cursor();
-
-			if (mouse.left_press) {
-				if (mouse.y >= 0xC5 && mouse.y <= 0xE3) {
-					if (mouse.x >= 0x36 && mouse.x <= 0x53) {
-						sfx_play(sfx_start_level, 0);
-						gameState = 2;
-						pal_fade_to_withmusic(4,0);
-						memfill(attemptCounter, 0, sizeof(attemptCounter));
-
-						//oam_clear();
-						coins = 0;
-						return;					
-					}
-					if (mouse.x >= 0xA6 && mouse.x <= 0xc3) {
-						sfx_play(sfx_exit_level, 0);
-						music_update();
-						gameState = 1;
-						menuselection = 0;
-						kandowatchesyousleep = 1;
-						//oam_clear();
-						menuMusicCurrentlyPlaying = 0;
-						return;
-					}
-				}
-			}
-
-			if (joypad1.press_left) { menuselection ^= 1; lvl_done_update(); }
-			if (joypad1.press_right) { menuselection ^= 1; lvl_done_update(); }
-			if (joypad1.press_start || joypad1.press_a){
-				if (menuselection) {
-					
-					sfx_play(sfx_exit_level, 0);
-					music_update();
-					gameState = 1;
-					menuselection = 0;
-					kandowatchesyousleep = 1;
-
-					//oam_clear();
-					menuMusicCurrentlyPlaying = 0;
-					return;
-				} else {
-					
-					sfx_play(sfx_start_level, 0);
-					gameState = 2;
-					pal_fade_to_withmusic(4,0);
-					memfill(attemptCounter, 0, sizeof(attemptCounter));
-					coins = 0;
-
-
-					//oam_clear();
-					return;
-				}
-			}
-
-
-
-		}
-		kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-						
-	}
-	#undef current_state
-	#undef sprite_0_y
-	#undef delay_spr_0
-	#undef delay_timer
-	#undef top_scroll
 }
 
 
@@ -703,6 +277,85 @@ const unsigned char* const xbgmtexts1[] = {
 
 };
 
+const unsigned char xbgmtext1_size[] = {
+	0,
+	0,
+	sizeof(TEXT_xlevel1text1) - 1,	
+	sizeof(TEXT_xlevel1text2) - 1,	
+	0,
+	0,
+	sizeof(TEXT_xlevel1text5) - 1,	
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	sizeof(TEXT_xlevel1textC) - 1,	
+	sizeof(TEXT_xlevel1textD) - 1,	
+	0,
+	0,
+	sizeof(TEXT_hexagon) - 1,	
+	sizeof(TEXT_blast) - 1,	
+	sizeof(TEXT_xlevel1textC) - 1,	
+	sizeof(TEXT_geometrical) - 1,	
+	0,
+	0,
+	0,
+	
+	
+	sizeof(TEXT_challenge) - 1,	
+	0,
+	sizeof(TEXT_xweasel) - 1,	
+	
+	sizeof(TEXT_against) - 1,	
+	sizeof(TEXT_speed) - 1,	
+	sizeof(TEXT_speed) - 1,	
+	sizeof(TEXT_speed) - 1,	
+	sizeof(TEXT_speed) - 1,	
+	sizeof(TEXT_beastmode) - 1,	
+	0,		//chaoz fantasy
+	0,		//clutterfunk 2
+	0,		//death moon
+	sizeof(TEXT_driving) - 1,
+	0,		//endgame
+	sizeof(TEXT_freedom) - 1,	
+	0,		//retray / golden haze
+	sizeof(TEXT_groundto) - 1,	
+	0,		//idols
+	0,		//infernoplex
+	sizeof(TEXT_2textinfernoplex) - 1,	
+	0,		//just right
+	0,		//haunted woods
+	0,		//lost
+	sizeof(TEXT_ludicrous) - 1,	
+	sizeof(TEXT_machina) - 1,	
+	0,		//magic touch
+	sizeof(TEXT_mayhem) - 1,	
+	0,		//mayhem
+	0,		//metamorphasis
+	0,		//midnight
+	0,		//ninox
+	sizeof(TEXT_crackdown) - 1,	
+	sizeof(TEXT_payload) - 1,	
+	0,		//problematic
+	0,		//pyrophoric
+	sizeof(TEXT_rainbowt) - 1,	
+	0,		//speed racer
+	0,		//stalemate
+	sizeof(TEXT_2textstalemate) - 1,	//stalemate full version
+	sizeof(TEXT_xlevel1text1) - 1,	//stereo madness 2
+	sizeof(TEXT_subtle) - 1,	
+	0,		//the angel
+	0,		//thoughts
+	sizeof(TEXT_ultimate) - 1,	
+	sizeof(TEXT_youvebeen) - 1,	
+	sizeof(TEXT_future) - 1,	
+	0,		//windfall
+	sizeof(TEXT_years) - 1,	
+	
+};
+
 const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textmenu, 
 	TEXT_2textmenuB, 
@@ -858,84 +511,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_GDW) - 1,
 	
 };
-const unsigned char xbgmtext1_size[] = {
-	0,
-	0,
-	sizeof(TEXT_xlevel1text1) - 1,	
-	sizeof(TEXT_xlevel1text2) - 1,	
-	0,
-	0,
-	sizeof(TEXT_xlevel1text5) - 1,	
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	sizeof(TEXT_xlevel1textC) - 1,	
-	sizeof(TEXT_xlevel1textD) - 1,	
-	0,
-	0,
-	sizeof(TEXT_hexagon) - 1,	
-	sizeof(TEXT_blast) - 1,	
-	sizeof(TEXT_xlevel1textC) - 1,	
-	sizeof(TEXT_geometrical) - 1,	
-	0,
-	0,
-	0,
-	
-	
-	sizeof(TEXT_challenge) - 1,	
-	0,
-	sizeof(TEXT_xweasel) - 1,	
-	
-	sizeof(TEXT_against) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	sizeof(TEXT_beastmode) - 1,	
-	0,		//chaoz fantasy
-	0,		//clutterfunk 2
-	0,		//death moon
-	sizeof(TEXT_driving) - 1,
-	0,		//endgame
-	sizeof(TEXT_freedom) - 1,	
-	0,		//retray / golden haze
-	sizeof(TEXT_groundto) - 1,	
-	0,		//idols
-	0,		//infernoplex
-	sizeof(TEXT_2textinfernoplex) - 1,	
-	0,		//just right
-	0,		//haunted woods
-	0,		//lost
-	sizeof(TEXT_ludicrous) - 1,	
-	sizeof(TEXT_machina) - 1,	
-	0,		//magic touch
-	sizeof(TEXT_mayhem) - 1,	
-	0,		//mayhem
-	0,		//metamorphasis
-	0,		//midnight
-	0,		//ninox
-	sizeof(TEXT_crackdown) - 1,	
-	sizeof(TEXT_payload) - 1,	
-	0,		//problematic
-	0,		//pyrophoric
-	sizeof(TEXT_rainbowt) - 1,	
-	0,		//speed racer
-	0,		//stalemate
-	sizeof(TEXT_2textstalemate) - 1,	//stalemate full version
-	sizeof(TEXT_xlevel1text1) - 1,	//stereo madness 2
-	sizeof(TEXT_subtle) - 1,	
-	0,		//the angel
-	0,		//thoughts
-	sizeof(TEXT_ultimate) - 1,	
-	sizeof(TEXT_youvebeen) - 1,	
-	sizeof(TEXT_future) - 1,	
-	0,		//windfall
-	sizeof(TEXT_years) - 1,	
-	
-};
+
 
 
 const uint8_t xbgm_lookup_table2[] = {
@@ -1013,10 +589,6 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_windfall,
 	song_years_gdw_cut,
 };
-
-
-
-const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
 
 //#include "defines/bgm_charmap.h"
 void bgmtest() {
@@ -1156,40 +728,7 @@ void bgmtest() {
 		}
 	}
 }
-#define sfx tmp4
-void code_checker() {
-	last_gameState = gameState;
-	sfx_play(sfx_achievement_get, 0);
-	tmp3 = 1;
 
-	// bgm 9 & sfx 2
-	if (song == 0x9 && sfx == 0x2 && kandokidshack3 == 0) {
-		kandokidshack3++;
-		tmp3--;
-	}
-	
-	else if (song == 1 && sfx == 7 && kandokidshack3 == 1) {
-		all_levels_complete = 0xFC;
-		gameState = 0xF0; // fun settings gamestate
-		tmp3--;
-	}		
-	else kandokidshack3 = 0;
-	
-/*   debug code disabled
-	if (song == 0xB && sfx == 0x7) {
-		multi_vram_buffer_horz(TEXT_debug_mode, sizeof(TEXT_debug_mode)-1, NTADR_A(7,26));
-		options |= debugtoggle;
-		tmp3--;
-	}
-*/
-
-	// this is quite literally the greatest hack ever
-	// since sfx doesn't update until the next frame i can just
-	// overwrite the success sfx with the invalid one
-	if (tmp3) sfx_play(sfx_invalid, 0);	
-}
-
-#undef sfx
 
 
 const unsigned char bgmtestscreen[487]={
@@ -1298,266 +837,17 @@ const unsigned char gameboy_text_size[] = {
 
 
 void funsettings() {
-	settingvalue = 0; 
-	pal_fade_to_withmusic(4,0);
-	ppu_off();
-	pal_bg(paletteMenu);
-	vram_adr(NAMETABLE_A);
-	vram_unrle(funsettingscreen);   
-	//kandotemp4 = 0;
-	mmc3_set_2kb_chr_bank_0(0xFF);
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	ppu_on_all();
-	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 by default	
-	pal_fade_to_withmusic(0,4);
-	while (1) {
-		ppu_wait_nmi();
-		music_update();
-		oam_clear();
-		crossPRGBankJump0(check_if_music_stopped);
-		mouse_and_cursor();
-		 // read the first controller
-		if (mouse.left_press) {
-			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
-				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
-					settingvalue = 0; set_fun_settings();
-				}
-				else if (mouse.y >= 0x44 && mouse.y <= 0x4C) {
-					settingvalue = 1; set_fun_settings();
-				}
-				else if (mouse.y >= 0x54 && mouse.y <= 0x5C) {
-					settingvalue = 2; set_fun_settings();
-				}
-				else if (mouse.y >= 0x64 && mouse.y <= 0x6C) {
-					settingvalue = 3; set_fun_settings();
-				}
-				else if (mouse.y >= 0x74 && mouse.y <= 0x7C) {
-					settingvalue = 4; set_fun_settings();
-				}
-				else if (mouse.y >= 0x84 && mouse.y <= 0x8C) {
-					settingvalue = 5; set_fun_settings();
-				}
-				else if (mouse.y >= 0x94 && mouse.y <= 0x9C) {
-					settingvalue = 6; set_fun_settings();
-				}
-				else if (mouse.y >= 0xA4 && mouse.y <= 0xAC) {
-					settingvalue = 7; set_fun_settings();
-				}
 
-			}
-			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
-				gameState = last_gameState;
-				return;
-			}
-
-		}	
-		if (invisible) 	one_vram_buffer('g', NTADR_A(26, 7));	// believe it or not, 
-		else 	one_vram_buffer('f', NTADR_A(26, 7));	// this is auto optimized by cc65
-
-		if ((options & platformer)) 	one_vram_buffer('g', NTADR_A(26, 9));	// believe it or not, 
-		else 	one_vram_buffer('f', NTADR_A(26, 9));	// this is auto optimized by cc65
-
-		if (retro_mode) 	one_vram_buffer('g', NTADR_A(26, 11));	// believe it or not, 
-		else 	one_vram_buffer('f', NTADR_A(26, 11));	// this is auto optimized by cc65
-
-		if (discomode) 	one_vram_buffer('g', NTADR_A(26, 13));	// believe it or not, 
-		else 	one_vram_buffer('f', NTADR_A(26, 13));	// this is auto optimized by cc65
-		
-		if (invisblocks) 	one_vram_buffer('g', NTADR_A(26, 15));	// believe it or not, 
-		else 	one_vram_buffer('f', NTADR_A(26, 15));	// this is auto optimized by cc65
-		
-		if (cam_seesaw) 	one_vram_buffer('g', NTADR_A(26, 17));	// believe it or not, 
-		else 	one_vram_buffer('f', NTADR_A(26, 17));	// this is auto optimized by cc65
-
-		if (cursedmusic & 0x40) 	one_vram_buffer('g', NTADR_A(26, 21));	// believe it or not, 
-		else 	one_vram_buffer('f', NTADR_A(26, 21));	// this is auto optimized by cc65
-		
-
-
-//		if (cursedmusic) 	one_vram_buffer('g', NTADR_A(26, 21));	// believe it or not, 
-//		else 	one_vram_buffer('f', NTADR_A(26, 21));	// this is auto optimized by cc65
-		
-		__A__ = idx16_load_hi_NOC(gameboytexts, gameboy_mode);
-		if (__A__) { draw_padded_text(gameboytexts[gameboy_mode & 0x7F], gameboy_text_size[gameboy_mode], 8, NTADR_A(19, 19)); 	one_vram_buffer('g', NTADR_A(26, 19));	}// believe it or not, 
-		else { one_vram_buffer_horz_repeat('$', 8, NTADR_A(19, 19)); one_vram_buffer('f', NTADR_A(26, 19)); }
-
-
-
-		tmp1 = settingvalue;
-
-		if (joypad1.press & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 7) { settingvalue = 0; }
-			else { settingvalue++;  }
-		}
-
-		if (joypad1.press & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 7; }
-			else { settingvalue--;  }
-		}
-
-		if (tmp1 != settingvalue) {
-			// NTADR_A = (NAMETABLE_A|(((y)<<5)|(x)))
-			// (tmp1 * 2) << 5 = tmp1<<6 = (tmp1<<8)>>2
-			one_vram_buffer(' ', NTADR_A(4, 7)+((tmp1<<8)>>2));
-			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
-		}
-
-		one_vram_buffer('X'-0x1B, NTADR_A(26, 13));
-		if (discomode & 0x02) { one_vram_buffer('2' - 0x20, NTADR_A(25, 13)); }
-		else if (discomode & 0x04) { one_vram_buffer('3' - 0x20, NTADR_A(25, 13));}
-		else if (discomode & 0x08) { one_vram_buffer('4' - 0x20, NTADR_A(25, 13));}
-		else if (discomode & 0x10) { one_vram_buffer('5' - 0x20, NTADR_A(25, 13));}
-		else if (discomode & 0x01) { one_vram_buffer('1' - 0x20, NTADR_A(25, 13));}
-		else { one_vram_buffer(' '-0x01, NTADR_A(25, 13)); one_vram_buffer(0x0F, NTADR_A(26, 13)); }
-
-		if (joypad1.press & (PAD_START | PAD_A)) {
-			set_fun_settings();
-		}
-			
-		if (joypad1.press_b) {
-			gameState = last_gameState;
-			return;
-		}
-
-		crossPRGBankJump0(gameboy_check);
-
-//		if (gameboy_mode) kandotemp4 = 1;
-		kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-						
-	}
 }
 
 void set_fun_settings() {
-	switch (settingvalue) {
-		case 0x00: invisible ^= 1; break;
-		case 0x01: options ^= platformer; break;
-		case 0x02: retro_mode ^= 1; break;
-		case 0x03: 
-			if (discomode & 0x10) discomode = 0;
-			else {
-				discomode = discomode << 1;
-				if (discomode == 0) ++discomode;
-			}
-			
-			break;
-		case 0x04: invisblocks ^= 1; break;
-		case 0x05: cam_seesaw = (cam_seesaw > 0 ? 0 : 1); break;
-		case 0x06: gameboy_mode = (gameboy_mode == 8 ? 0 : gameboy_mode + 1); break;
-		case 0x07: cursedmusic ^= 0x40; break;
-	};
+
 }	
 
 
 
 
 
-
-const unsigned char* const leveltexts[] = {
-  level1text, 
-  NULL, 
-  NULL, 
-  NULL, 
-  levellookat, 
-  NULL, 
-  NULL, 
-  levelsubtle,
-  NULL, 
-  NULL, 
-  NULL, 
-  NULL, 
-  NULL, 
-  NULL, 
-  NULL, 
-  NULL, 
-  NULL, 
-  NULL, 
-  NULL, 
-  NULL,  
-  NULL,  
-};
-const unsigned char* const leveltexts2[] = {
-  level1text2, 
-  levelsonar2,
-  leveleasy2, 
-  levelninox2,
-  levellookat2,
-  levelsubzero2,
-  levelpyrophoric2,
-  levelsubtle2,
-  levelhighlife2,
-  levelsupercycles2,
-  levelclutterfunk22,
-  levelspeedracer2,
-  levelpgclubtext2,
-  leveleon2,
-  levelstalemate2,
-  levelbloodbath2,
-  levelcataclysm2,
-  levelaftermath2,
-  levelaftercatabath2,
-  levelslaughterhouse2,
-  leveltest4,
-};
-
-
-const unsigned char level_text_size[] = {
-	sizeof(level1text) - 1,
-	0,
-	0,
-	0,
-	sizeof(levellookat) - 1,
-	0,
-	0,
-	sizeof(levelsubtle) - 1,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-};
-const unsigned char level_text_size2[] = {
-	sizeof(level1text2) - 1,
-	sizeof(levelsonar2) - 1,
-	sizeof(leveleasy2) - 1,
-	sizeof(levelninox2) - 1,
-	sizeof(levellookat2) - 1,
-	sizeof(levelsubzero2) - 1,
-	sizeof(levelpyrophoric2) - 1,
-	sizeof(levelsubtle2) - 1,
-	sizeof(levelhighlife2) - 1,
-	sizeof(levelsupercycles2) - 1,
-	sizeof(levelclutterfunk22) - 1,
-	sizeof(levelspeedracer2) - 1,
-	sizeof(levelpgclubtext2) - 1,
-	sizeof(leveleon2) - 1,
-	sizeof(levelstalemate2) - 1,
-	sizeof(levelbloodbath2) - 1,
-	sizeof(levelcataclysm2) - 1,
-	sizeof(levelaftermath2) - 1,
-	sizeof(levelaftercatabath2) - 1,	
-	sizeof(levelslaughterhouse2) - 1,	
-	sizeof(leveltest4) - 1,	
-};
-
-const char coin_counter[][3] = {
-  "___",
-  "^__",
-  "_^_",
-  "^^_",
-  "__^",
-  "^_^",
-  "_^^",
-  "^^^",
-};
 
 
 #include "defines/color1_charmap.h"
@@ -1566,86 +856,16 @@ const char coin_counter[][3] = {
 	Refreshes level name & number
 */
 void refreshmenu() {
-	tmp5 = ((level&1)<<10);
-	set_scroll_x(((level-tmp4)&1)<<8);
-	
-	__A__ = idx16_load_hi_NOC(leveltexts, level);
-	if (__A__) draw_padded_text(leveltexts[level & 0x7F], level_text_size[level], 17, NTADR_A(8, 10)+tmp5);
-	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10)+tmp5);
-	// if (leveltexts2[level]) // always true
-	draw_padded_text(leveltexts2[level & 0x7F], level_text_size2[level], 17, NTADR_A(8, 11)+tmp5);
 
-	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9)+tmp5);
-	one_vram_buffer('z', NTADR_A(8, 9)+tmp5); }
-	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9)+tmp5);
-
-	{	// write the difficulty
-		tmp1 = difficulty_list[level];
-		pal_col(0x0a, difficulty_pal_A[tmp1]);
-		pal_col(0x0b, difficulty_pal_B[tmp1]);
-		pal_set_update();
-		
-		tmp1 = (tmp1 << 1) + 'a';
-		one_vram_buffer(tmp1, NTADR_A(7, 10)+tmp5);
-		one_vram_buffer(++tmp1, NTADR_A(8, 10)+tmp5);
-		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(7, 11)+tmp5);
-		one_vram_buffer(++tmp1, NTADR_A(8, 11)+tmp5);
-		
-
-	}
-	// Star count stuff
-		printDecimal(stars_list[level], 2, '0', ' ', NTADR_A(22, 9)+tmp5);
-
-	// level number
-	#ifdef FLAG_ENABLE_TEST_LEVELS
-		printDecimal(level, 3, '0', ' ', NTADR_A(29, 2));
-		printDecimal(level, 3, '0', ' ', NTADR_B(29, 2));
-	#endif
 };
 
 void refreshmenu_part2() {
-	
-	// Normal level completeness stuff
-		//printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);
-
-	// Practice level completeness stuff
-		//printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19)+tmp5);
-
-	//palette stuff
-		tmp3 = level % 9;
-		pal_col(0,colors_list[tmp3]);
-		pal_col(0xE,colors_list[tmp3]);
-		
-		pal_spr(paletteLVLSelectSP);
-		pal_col(0x10,colors_list[tmp3]);
-		pal_col(0x1E,colors_list[tmp3]);
-		pal_set_update();
-	//coin stuff
-		coins = 0;
-
-
-	// then in the function...
-	// combine all three into a single number from 0 - 7 to represent which coins have been grabbed
-		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
-		tmp7 = byte(tmp7<<1) + tmp7;
-	// actually draw the coins
-		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12)+tmp5);
 
 }
 
 #include "defines/endlevel_charmap.h"
 void lvl_done_update() {
-	if (menuselection) {
-		one_vram_buffer(0xFF, NTADR_A(8,23));
-		one_vram_buffer(0xFF, NTADR_A(9,23));
-		one_vram_buffer(0x94, NTADR_A(22,23));
-		one_vram_buffer(0x95, NTADR_A(23,23));
-	} else {
-		one_vram_buffer(0x94, NTADR_A(8,23));
-		one_vram_buffer(0x95, NTADR_A(9,23));
-		one_vram_buffer(0xFF, NTADR_A(22,23));
-		one_vram_buffer(0xFF, NTADR_A(23,23));
-	}
+
 }	
 
 
@@ -1654,56 +874,7 @@ void lvl_done_update() {
 #define BAR_MAX 100
 #define NUMBER_PER_TILES BAR_MAX / BAR_TILES
 void draw_progress_bar() {
-	#define nametable_A !(level & 1)
-	
-	drawBarFlag--;
 
-	if (tmp7 >= NUMBER_PER_TILES) {
-		if (nametable_A) {
-			one_vram_buffer(0x8c, NTADR_A(tmp1, tmp2));
-		} else {
-			one_vram_buffer(0x8c, NTADR_B(tmp1, tmp2));
-		}
-		high_byte(tmp6) = (tmp7 >= BAR_MAX ? BAR_MAX - NUMBER_PER_TILES : tmp7);
-
-		
-		high_byte(tmpA) = 0;
-		do {
-			high_byte(tmp6) -= NUMBER_PER_TILES;
-			high_byte(tmpA) += 1;
-		} while (high_byte(tmp6) >= NUMBER_PER_TILES);
-		
-		if (nametable_A) {
-			one_vram_buffer_horz_repeat(0x6b, high_byte(tmpA), NTADR_A(tmp1 + 1, tmp2));
-			one_vram_buffer_horz_repeat(0x02, BAR_TILES - high_byte(tmpA), NTADR_A(tmp1 + high_byte(tmpA), tmp2));
-		} else {
-			one_vram_buffer_horz_repeat(0x6b, high_byte(tmpA), NTADR_B(tmp1 + 1, tmp2));
-			one_vram_buffer_horz_repeat(0x02, BAR_TILES - high_byte(tmpA), NTADR_B(tmp1 + high_byte(tmpA), tmp2));
-		}
-	} else {
-		if (nametable_A) {
-			one_vram_buffer(0x7c, NTADR_A(tmp1, tmp2));
-			one_vram_buffer_horz_repeat(0x02, CENTER_TILES, NTADR_A(tmp1 + 1, tmp2));
-		} else {
-			one_vram_buffer(0x7c, NTADR_B(tmp1, tmp2));
-			one_vram_buffer_horz_repeat(0x02, CENTER_TILES, NTADR_B(tmp1 + 1, tmp2));
-		}
-	}
-	
-	if (tmp7 >= BAR_MAX) {
-		if (nametable_A) {
-			one_vram_buffer(0x8d, NTADR_A(tmp1 + (BAR_TILES - 1), tmp2));
-		} else {
-			one_vram_buffer(0x8d, NTADR_B(tmp1 + (BAR_TILES - 1), tmp2));
-		}
-	} else {
-		if (nametable_A) {
-			one_vram_buffer(0x7d, NTADR_A(tmp1 + (BAR_TILES - 1), tmp2));
-		} else {
-			one_vram_buffer(0x7d, NTADR_B(tmp1 + (BAR_TILES - 1), tmp2));
-		}
-	}
-	#undef nametable_A
 }
 
 #define TOTAL_PIXELS 8 * BAR_TILES // 8 * 20 = 160
@@ -1711,18 +882,7 @@ void draw_progress_bar() {
 #define PIXELS_PER_PERCENTAGE (PIXELS_PER_UNIT * 256) / 10 // 1.6 * 256 = 409.6
 
 void calculate_sprite_pos() {
-	high_byte(tmp5) = tmp1;
-	low_byte(tmp5) = 0;
-	tmp3 = 1;
 
-	if (tmp7 != 0) {
-		do {
-			tmp3++;
-			tmp5 += PIXELS_PER_PERCENTAGE;
-		} while (tmp3 < tmp7);
-	}
-
-	tmp1 = high_byte(tmp5);
 }
 
 CODE_BANK_POP()
