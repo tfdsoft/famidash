@@ -138,8 +138,8 @@ const unsigned char TEXT_future2[]="FUTURE$FUNK";
 const unsigned char TEXT_freedom[]="FREEDOM";
 const unsigned char TEXT_freedom2[]="DIVE";
 
-const unsigned char TEXT_cheetahmen[]="CHEETAHMEN";
-const unsigned char TEXT_cheetahmen2[]="SHORT$VER";
+const unsigned char TEXT_mayhem[]="MAYHEM";
+const unsigned char TEXT_mayhem2[]="SHORT$VER";
 
 const unsigned char TEXT_groundto[]="GROUND$TO";
 const unsigned char TEXT_groundto2[]="SPACE";
@@ -236,8 +236,6 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_beastmode,
 	0, 		//chaoz fantasy
 	0,		//speed racer
-	TEXT_cheetahmen,
-	0,		//cheetahmen short ver
 	0,		//clutterfunk 2
 	0,		//death moon
 	TEXT_driving,
@@ -254,6 +252,8 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_ludicrous,
 	TEXT_machina,
 	0,		//magic touch
+	TEXT_mayhem,
+	0,		//cheetahmen short ver
 	0,		//metamorphasis
 	0,		//midnight
 	0,		//ninox
@@ -316,8 +316,6 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_beastmode) - 1,	
 	0,		//chaoz fantasy
 	0,		//speed racer
-	sizeof(TEXT_cheetahmen) - 1,	
-	0,		//cheetahmen
 	0,		//clutterfunk 2
 	0,		//death moon
 	sizeof(TEXT_driving) - 1,
@@ -334,6 +332,8 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_ludicrous) - 1,	
 	sizeof(TEXT_machina) - 1,	
 	0,		//magic touch
+	sizeof(TEXT_mayhem) - 1,	
+	0,		//mayhem
 	0,		//metamorphasis
 	0,		//midnight
 	0,		//ninox
@@ -394,8 +394,6 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_GDW,
 	TEXT_2textchaoz,
 	TEXT_speedracer,
-	TEXT_cheetahmen2,
-	TEXT_cheetahmen,
 	TEXT_2clutterfunk2,
 	TEXT_2deathmoon,
 	TEXT_driving2,
@@ -412,6 +410,8 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_ludicrous2,
 	TEXT_GDW,
 	TEXT_magictouch,
+	TEXT_mayhem2,
+	TEXT_mayhem,
 	TEXT_metamorphasis,
 	TEXT_2textmidnight,
 	TEXT_ninox2,
@@ -472,8 +472,6 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_GDW) - 1,
 	sizeof(TEXT_2textchaoz) - 1,
 	sizeof(TEXT_speedracer) - 1,
-	sizeof(TEXT_cheetahmen2) - 1,
-	sizeof(TEXT_cheetahmen) - 1,
 	sizeof(TEXT_2clutterfunk2) - 1,
 	sizeof(TEXT_2deathmoon) - 1,
 	sizeof(TEXT_driving2) - 1,
@@ -490,6 +488,8 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_ludicrous2) - 1,
 	sizeof(TEXT_GDW) - 1,
 	sizeof(TEXT_magictouch) - 1,
+	sizeof(TEXT_mayhem2) - 1,
+	sizeof(TEXT_mayhem) - 1,
 	sizeof(TEXT_metamorphasis) - 1,
 	sizeof(TEXT_2textmidnight) - 1,
 	sizeof(TEXT_ninox2) - 1,
@@ -560,6 +560,7 @@ const unsigned char TEXT_interworld[]="INTERWORLD";
 const unsigned char TEXT_seaglowingpro[]="SEAGLOWINGPRO";
 const unsigned char TEXT_elangel[]="ELANGEL378";
 const unsigned char TEXT_nerdboy[]="NERDBOY628";
+const unsigned char TEXT_craftyjumper[]="CRAFTY$JUMPER";
 
 
 
@@ -602,8 +603,6 @@ const unsigned char* const origartists2[] = {
 	TEXT_dexarson,			//beast mode GDW cut
 	TEXT_paragonx9,			//chaoz fantasy
 	TEXT_paragonx9,			//chaoz impact
-	TEXT_analog,			//cheetahmen short ver
-	TEXT_analog,			//cheetahmen
 	TEXT_waterflame,		//clutterfunk 2
 	TEXT_soundholick,		//death moon
 	TEXT_reinn,				//driving by night
@@ -620,6 +619,8 @@ const unsigned char* const origartists2[] = {
 	TEXT_f777,				//ludacris speed
 	TEXT_dexarson,			//machina GDW cut
 	TEXT_romos,				//magic touch
+	TEXT_craftyjumper,			//mayhem short ver
+	TEXT_craftyjumper,			//mayhem
 	TEXT_interworld,			//metamorphasis
 	TEXT_cornandbeans,		//midnight
 	TEXT_meganeko,			//ninox
@@ -680,8 +681,6 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_dexarson) - 1,			//beast mode GDW cut
 	sizeof(TEXT_paragonx9) - 1,			//chaoz fantasy
 	sizeof(TEXT_paragonx9) - 1,			//chaoz impact
-	sizeof(TEXT_analog) - 1,			//cheetahmen short ver
-	sizeof(TEXT_analog) - 1,			//cheetahmen
 	sizeof(TEXT_waterflame) - 1,		//clutterfunk 2
 	sizeof(TEXT_soundholick) - 1,		//death moon
 	sizeof(TEXT_reinn) - 1,				//driving by night
@@ -698,6 +697,8 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_f777) - 1,				//ludacris speed
 	sizeof(TEXT_dexarson) - 1,			//machina GDW cut
 	sizeof(TEXT_romos) - 1,				//magic touch
+	sizeof(TEXT_craftyjumper) - 1,			//mayhem short ver
+	sizeof(TEXT_craftyjumper) - 1,			//mayhem
 	sizeof(TEXT_interworld) - 1,			//metamorphasis
 	sizeof(TEXT_cornandbeans) - 1,		//midnight
 	sizeof(TEXT_meganeko) - 1,			//ninox
@@ -767,9 +768,9 @@ const unsigned char* const origartists1[] = {
 	0,
 	0,
 	0,
-	0,
-	0,
 	TEXT_dan_harrison,
+	0,
+	0,
 	0,
 	0,
 	0,
@@ -854,9 +855,9 @@ const unsigned char origartists1_size[] = {
 	0,
 	0,
 	0,
-	0,
-	0,
 	sizeof(TEXT_dan_harrison) - 1,
+	0,
+	0,
 	0,
 	0,
 	0,
@@ -1269,8 +1270,6 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_beast_mode_gdw_cut,
 	song_chaozfantasy,
 	song_speed_racer,
-	song_cheetahmen_short,
-	song_cheetahmen,
 	song_clutterfunk_2,
 	song_death_moon,
 	song_driving_by_night,
@@ -1287,6 +1286,8 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_ludicrous_speed,
 	song_machina_gdw_cut,
 	song_magic_touch,
+	song_mayhem_short,
+	song_mayhem,
 	song_metamorphosis,
 	song_midnight,
 	song_ninox,
