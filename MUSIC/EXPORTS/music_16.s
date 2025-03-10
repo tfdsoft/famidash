@@ -34,7 +34,7 @@ music_data_famidash_music16:
 	.word @song2ch3
 	.word @song2ch4
 	.word 368,307
-; 03 : Mayhem
+; 03 : cheetahmen
 	.word @song3ch0
 	.word @song3ch1
 	.word @song3ch2

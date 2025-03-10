@@ -47,7 +47,7 @@ music_data_famidash_music20:
 	.word @song4ch3
 	.word @song4ch4
 	.word 245,204
-; 05 : Mayhem Short
+; 05 : cheetahmen Short
 	.word @song5ch0
 	.word @song5ch1
 	.word @song5ch2

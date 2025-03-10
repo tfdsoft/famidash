@@ -35,7 +35,7 @@
 #define song_atthespeedoflight2 34
 #define song_death_moon 35
 #define song_rainbow_tylenol 36
-#define song_mayhem 37
+#define song_cheetahmen 37
 #define song_clubstep 38
 #define song_atthespeedoflight 39
 #define song_haunted_woods 40
@@ -51,7 +51,7 @@
 #define song_theory_of_everything 50
 #define song_ultimatedestruction 51
 #define song_ground_to_space 52
-#define song_mayhem_short 53
+#define song_cheetahmen_short 53
 #define song_dry_out 54
 #define song_jumper 55
 #define song_deadlocked 56
