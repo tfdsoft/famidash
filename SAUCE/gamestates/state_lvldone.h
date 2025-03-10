@@ -613,7 +613,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_virtual_riot,		//idols
 	TEXT_dimrain47, 		//infernoplex
 	TEXT_dimrain47, 		//infernoplex full
-	TEXT_tessaviolet,		//just right (additional credits needed)
+	TEXT_tessaviolet,		//just right
 	TEXT_waterflame, 		//haunted woods
 	TEXT_crim3s, 			//lost
 	TEXT_f777,				//ludacris speed
@@ -784,6 +784,7 @@ const unsigned char* const origartists1[] = {
 	0,
 	0,
 	0,
+	TEXT_dwedit,
 	0,
 	0,
 	0,
@@ -870,7 +871,7 @@ const unsigned char origartists1_size[] = {
 	0,
 	0,
 	0,
-	0,
+	sizeof(TEXT_dwedit) - 1,
 	0,
 	0,
 	0,
