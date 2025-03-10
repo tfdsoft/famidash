@@ -554,6 +554,7 @@ const unsigned char TEXT_analog[]="ANALOGBYNATURE";
 const unsigned char TEXT_kitsune[]="KITSUNE2";
 const unsigned char TEXT_tmm43[]="TMM43";
 const unsigned char TEXT_theclydecash[]="THECLYDECASH";
+const unsigned char TEXT_interworld[]="INTERWORLD";
 
 
 const unsigned char TEXT_seaglowingpro[]="SEAGLOWINGPRO";
@@ -619,7 +620,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_f777,				//ludacris speed
 	TEXT_dexarson,			//machina GDW cut
 	TEXT_romos,				//magic touch
-	TEXT_elangel,			//metamorphasis
+	TEXT_interworld,			//metamorphasis
 	TEXT_cornandbeans,		//midnight
 	TEXT_meganeko,			//ninox
 	TEXT_bossfight,			//okiba crackdown
@@ -697,7 +698,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_f777) - 1,				//ludacris speed
 	sizeof(TEXT_dexarson) - 1,			//machina GDW cut
 	sizeof(TEXT_romos) - 1,				//magic touch
-	sizeof(TEXT_elangel) - 1,			//metamorphasis
+	sizeof(TEXT_interworld) - 1,			//metamorphasis
 	sizeof(TEXT_cornandbeans) - 1,		//midnight
 	sizeof(TEXT_meganeko) - 1,			//ninox
 	sizeof(TEXT_bossfight) - 1,			//okiba crackdown
