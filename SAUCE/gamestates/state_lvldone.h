@@ -619,9 +619,9 @@ const unsigned char* const origartists2[] = {
 	TEXT_f777,				//ludacris speed
 	TEXT_dexarson,			//machina GDW cut
 	TEXT_romos,				//magic touch
-	TEXT_craftyjumper,			//mayhem short ver
-	TEXT_craftyjumper,			//mayhem
-	TEXT_interworld,			//metamorphasis
+	TEXT_craftyjumper,		//mayhem short ver
+	TEXT_craftyjumper,		//mayhem
+	TEXT_interworld,		//metamorphasis
 	TEXT_cornandbeans,		//midnight
 	TEXT_meganeko,			//ninox
 	TEXT_bossfight,			//okiba crackdown
@@ -634,7 +634,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_foreverbound,		//stereo madness2
 	TEXT_lemondemon,		//subtle oddities
 	TEXT_cacola,			//the angel
-	0,						//thoughts
+	TEXT_craftyjumper,		//thoughts
 	TEXT_tmm43,				//ultimate destruction
 	TEXT_theclydecash,		//you've been trolled
 	TEXT_lemkuuja,			//what's a future funk
@@ -666,12 +666,12 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_waterflame) - 1,	//blast processing
 	sizeof(TEXT_djnate) - 1,		//theory of everything 2
 	sizeof(TEXT_waterflame) - 1,	//geometrical dominator
-	sizeof(TEXT_f777) - 1,	//deadlocked
-	sizeof(TEXT_mdk) - 1,	//fingerbang
-	sizeof(TEXT_mdk) - 1,	//dash
+	sizeof(TEXT_f777) - 1,			//deadlocked
+	sizeof(TEXT_mdk) - 1,			//fingerbang
+	sizeof(TEXT_mdk) - 1,			//dash
 	sizeof(TEXT_robtop) - 1, 		//the challenge
 	sizeof(TEXT_ocular) - 1, 		//practice
-	sizeof(TEXT_kevin_macleod) - 1, 		//scheming weasel	
+	sizeof(TEXT_kevin_macleod) - 1, //scheming weasel	
 	
 	sizeof(TEXT_eliteferrex) - 1, 		//8-bit against the odds redux
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light 1
@@ -697,9 +697,9 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_f777) - 1,				//ludacris speed
 	sizeof(TEXT_dexarson) - 1,			//machina GDW cut
 	sizeof(TEXT_romos) - 1,				//magic touch
-	sizeof(TEXT_craftyjumper) - 1,			//mayhem short ver
-	sizeof(TEXT_craftyjumper) - 1,			//mayhem
-	sizeof(TEXT_interworld) - 1,			//metamorphasis
+	sizeof(TEXT_craftyjumper) - 1,		//mayhem short ver
+	sizeof(TEXT_craftyjumper) - 1,		//mayhem
+	sizeof(TEXT_interworld) - 1,		//metamorphasis
 	sizeof(TEXT_cornandbeans) - 1,		//midnight
 	sizeof(TEXT_meganeko) - 1,			//ninox
 	sizeof(TEXT_bossfight) - 1,			//okiba crackdown
@@ -712,7 +712,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_foreverbound) - 1,		//stereo madness2
 	sizeof(TEXT_lemondemon) - 1,		//subtle oddities
 	sizeof(TEXT_cacola) - 1,			//the angel
-	0,						//thoughts
+	sizeof(TEXT_craftyjumper) - 1,		//thoughts
 	sizeof(TEXT_tmm43) - 1,				//ultimate destruction
 	sizeof(TEXT_theclydecash) - 1,		//you've been trolled
 	sizeof(TEXT_lemkuuja) - 1,			//what's a future funk
