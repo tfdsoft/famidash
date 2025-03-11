@@ -1131,6 +1131,7 @@ void calculate_sprite_pos() {
 }
 
 void music_restore() {
+	#if !__VS_SYSTEM
 		famistudio_music_stop();
 		POKE(0x4000, practice_famistudio_registers[0 + (11 * tmp2)]);
 		POKE(0x4001, 0x08);
@@ -1151,6 +1152,7 @@ void music_restore() {
 		POKE(0x400e, practice_famistudio_registers[10 + (11 * tmp2)]);
 		memcpy(famistudio_state, practice_famistudio_state + (200 * tmp2), 200);
 		memcpy(famistudio_output_buf, practice_famistudio_registers + (11 * tmp2), 11);
+	#endif
 }		
 
 CODE_BANK_POP()
