@@ -834,7 +834,7 @@ FAMISTUDIO_FIRST_POSITIVE_SLIDE_CHANNEL = 3
 ;======================================================================================================================
 
 .segment .string(FAMISTUDIO_CA65_RAM_SEGMENT)
-
+START_ADDR = *
 famistudio_env_value:             .res FAMISTUDIO_NUM_ENVELOPES
 famistudio_env_repeat:            .res FAMISTUDIO_NUM_ENVELOPES
 famistudio_env_addr_lo:           .res FAMISTUDIO_NUM_ENVELOPES
@@ -1009,7 +1009,7 @@ famistudio_exp_instrument_hi:     .res 1
 .endif
 
 .if FAMISTUDIO_CFG_SFX_SUPPORT
-
+_famistudio_output_buf:
 famistudio_output_buf:     .res 11
 famistudio_sfx_addr_lo:    .res 1
 famistudio_sfx_addr_hi:    .res 1
@@ -1023,7 +1023,7 @@ famistudio_sfx_offset = famistudio_sfx_base_addr + 3
 famistudio_sfx_buffer = famistudio_sfx_base_addr + 4
 
 .endif 
-
+.out .sprintf("SIZE OF FAMISTUDIO RAM %d", * - START_ADDR)
 ;======================================================================================================================
 ; ZEROPAGE VARIABLES
 ;
@@ -1052,7 +1052,7 @@ famistudio_ptr1_hi = famistudio_ptr1+1
 ;======================================================================================================================
 ; CODE
 ;======================================================================================================================
-
+.export _famistudio_output_buf
 .export famistudio_init
 .export famistudio_music_play
 .export famistudio_music_pause

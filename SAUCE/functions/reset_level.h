@@ -3,7 +3,7 @@ extern unsigned char* PARALLAX_CHR;
 
 void reset_level() {
 	// unsigned char i;
-	if (!practice_point_count) famistudio_music_stop();
+	if (!practice_point_count || practice_music_sync) famistudio_music_stop();
 
 	gameState = 0x02; //fix for dying as the end trigger triggers
 	// slope stuff
