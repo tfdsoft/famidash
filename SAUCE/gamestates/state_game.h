@@ -216,8 +216,13 @@ void state_game(){
 
 		}
 		else {
+			#if __VS_SYSTEM
 			music_update();
 			ppu_wait_nmi();
+			#else
+			ppu_wait_nmi();
+			music_update();
+			#endif
 			if (!twoplayer && !mouse.connected) joypad2 = joypad1;
 			// set_tile_banks();
 		
@@ -316,6 +321,9 @@ void state_game(){
 					}
 
 					else if ((controllingplayer->press_b || mouse.left_press) && !(controllingplayer->up) && !(controllingplayer->down)) {
+					#if !__VS_SYSTEM
+						famistudio_music_pause(0);
+					#endif
 						mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
 						reset_game_vars();
 						//practice_point_count = 1;

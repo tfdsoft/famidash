@@ -209,6 +209,7 @@ void setdefaultoptions() {
 	menu_music = 0;
 	#if !__VS_SYSTEM
 	auto_practicepoints = 1;
+	practice_music_sync = 0;
 	#endif
 	return;
 }
