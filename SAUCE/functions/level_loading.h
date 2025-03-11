@@ -100,7 +100,9 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 
 		//mmc3_set_prg_bank_1(GET_BANK(restore_practice_state));
 		
-		crossPRGBankJump0(restore_practice_state);		
+		crossPRGBankJump0(restore_practice_state);	
+
+		music_update();
 
 		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
 		// Draw the nametable starting from where the scroll is set
