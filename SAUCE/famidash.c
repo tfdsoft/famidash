@@ -200,5 +200,6 @@ void setdefaultoptions() {
 	cam_seesaw = 0;
 	menu_music = 0;
 	auto_practicepoints = 1;
+	practice_music_sync = 0;
 	return;
 }

@@ -1,10 +1,11 @@
 CODE_BANK_PUSH("XCD_BANK_04")
 
 extern uint16_t old_draw_scroll_y;
+extern famistudio_output_buf[11];
 
 void reset_game_vars(){
 	if (!practice_point_count) {
-		music_play(song_practice);
+		if (!practice_music_sync) music_play(song_practice);
 		latest_practice_point = 0;
 	} else {
 		latest_practice_point++;
@@ -56,6 +57,10 @@ void reset_game_vars(){
 	practice_outline_color[tmp1] = outline_color;
 	practice_orbactive[tmp1] = orbactive;
 
+	if (practice_music_sync) {
+		memcpy(practice_famistudio_state + (200 * tmp1), famistudio_state, 200);
+		memcpy(practice_famistudio_registers + (11 * tmp1), famistudio_output_buf, 11);
+    }
 	long_temp_x = high_byte(player_x[0]);
 	auto_practicepoint_timer = 200;
 }
@@ -120,6 +125,30 @@ void restore_practice_state() {
 
 	lastgcolortype = practice_g_color_type[tmp2];
 	
+	if (practice_music_sync) {
+		famistudio_music_stop();
+		POKE(0x4000, practice_famistudio_registers[0 + (11 * tmp2)]);
+		POKE(0x4001, 0x08);
+		POKE(0x4002, practice_famistudio_registers[1 + (11 * tmp2)]);
+		if (famistudio_output_buf+2 != practice_famistudio_registers[2 + (11 * tmp2)]) {
+			POKE(0x4003, practice_famistudio_registers[2 + (11 * tmp2)]);
+		}
+		POKE(0x4004, practice_famistudio_registers[3 + (11 * tmp2)]);
+		POKE(0x4005, 0x08);
+		POKE(0x4006, practice_famistudio_registers[4 + (11 * tmp2)]);
+		if (famistudio_output_buf+5 != practice_famistudio_registers[5 + (11 * tmp2)]) {
+			POKE(0x4007, practice_famistudio_registers[5 + (11 * tmp2)]);
+		}
+		POKE(0x4008, practice_famistudio_registers[6 + (11 * tmp2)]);
+		POKE(0x400a, practice_famistudio_registers[7 + (11 * tmp2)]);
+		POKE(0x400b, practice_famistudio_registers[8 + (11 * tmp2)]);
+		POKE(0x400c, practice_famistudio_registers[9 + (11 * tmp2)]);
+		POKE(0x400e, practice_famistudio_registers[10 + (11 * tmp2)]);
+		memcpy(famistudio_state, practice_famistudio_state + (200 * tmp2), 200);
+		memcpy(famistudio_output_buf, practice_famistudio_registers + (11 * tmp2), 11);
+	}
+	
+	
 	lastbgcolortype = practice_bg_color_type[tmp2];
 	tmp3 = (lastbgcolortype & 0x3F);
 	pal_col(0, tmp3);
@@ -149,6 +178,7 @@ void restore_practice_state() {
 	#undef quick_ld
 	currplayer_gravity = player_gravity[currplayer];
 	auto_practicepoint_timer = 200;
+
 }
 
 CODE_BANK_POP()
