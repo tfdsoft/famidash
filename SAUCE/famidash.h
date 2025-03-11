@@ -107,8 +107,8 @@ uint8_t * level_data;
 
 
 // SRAM
-
-#pragma bss-name("SRAM")
+#pragma bss-name(pop)
+#pragma bss-name(push, "SRAM")
 uint8_t SRAM_VALIDATE[4];
 
 uint8_t coin1_obtained[MAX_LEVEL_COMPLETE];
@@ -204,7 +204,6 @@ int8_t practice_player_2_slope_type[MAX_PRACTICE_POINTS];
 int8_t practice_player_1_last_slope_type[MAX_PRACTICE_POINTS];
 int8_t practice_player_2_last_slope_type[MAX_PRACTICE_POINTS];
 
-
 lohi_arr32_decl(practice_scroll_x, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_scroll_y, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_seam_scroll_y, MAX_PRACTICE_POINTS);
@@ -222,12 +221,16 @@ uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
 
+unsigned char practice_famistudio_state[200 * MAX_PRACTICE_POINTS];
+unsigned char practice_famistudio_registers[11 * MAX_PRACTICE_POINTS];
 
+unsigned char practice_music_sync;
 
 #define poweroffcheck SRAM_VALIDATE[3]
 // Regular NES RAM
-#pragma bss-name("BSS")
+#pragma bss-name(pop)
 
+extern unsigned char famistudio_state[200];
 uint8_t last_gameState;
 
 //extern uint8_t famistudio_state[0xbf];
