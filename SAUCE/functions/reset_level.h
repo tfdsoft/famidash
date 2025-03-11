@@ -1,6 +1,8 @@
 extern unsigned char drawing_frame;
 extern unsigned char* PARALLAX_CHR;
 
+void music_restore();
+
 void reset_level() {
 	// unsigned char i;
 	if (!practice_point_count || practice_music_sync) famistudio_music_stop();
@@ -156,5 +158,8 @@ void reset_level() {
 	if (!practice_point_count) {
 		music_play(song);
 	}
+	else if (practice_music_sync) {
+		crossPRGBankJump0(music_restore);
+	}		
 
 }
