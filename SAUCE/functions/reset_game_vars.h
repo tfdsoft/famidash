@@ -6,6 +6,7 @@ extern famistudio_output_buf[11];
 #endif
 
 void reset_game_vars(){
+#if !__VS_SYSTEM
 	if (!practice_point_count) {
 		#if !__VS_SYSTEM
 		if (!practice_music_sync)
@@ -64,20 +65,18 @@ void reset_game_vars(){
 	practice_outline_color[tmp1] = outline_color;
 	practice_orbactive[tmp1] = orbactive;
 
-#if !__VS_SYSTEM
 	if (practice_music_sync) {
 		memcpy(practice_famistudio_state + (200 * tmp1), famistudio_state, 200);
 		memcpy(practice_famistudio_registers + (11 * tmp1), famistudio_output_buf, 11);
     }
-#endif
 	long_temp_x = high_byte(player_x[0]);
-	#if !__VS_SYSTEM
 	auto_practicepoint_timer = 200;
-	#endif
+#endif
 }
 
 
 void restore_practice_state() {
+#if !__VS_SYSTEM
 	tmp2 = curr_practice_point;
 	player_x[0] = lohi_arr16_load(practice_player_1_x, tmp2);
 	player_x[1] = lohi_arr16_load(practice_player_2_x, tmp2);
@@ -169,13 +168,13 @@ void restore_practice_state() {
 
 	#undef quick_ld
 	currplayer_gravity = player_gravity[currplayer];
-	#if !__VS_SYSTEM
 	auto_practicepoint_timer = 200;
-	#endif
-	
+#endif
+
 }
 
 void music_restore() {
+	#if !__VS_SYSTEM
 		famistudio_music_stop();
 		POKE(0x4000, practice_famistudio_registers[0 + (11 * tmp2)]);
 		POKE(0x4001, 0x08);
@@ -196,6 +195,7 @@ void music_restore() {
 		POKE(0x400e, practice_famistudio_registers[10 + (11 * tmp2)]);
 		memcpy(famistudio_state, practice_famistudio_state + (200 * tmp2), 200);
 		memcpy(famistudio_output_buf, practice_famistudio_registers + (11 * tmp2), 11);
+	#endif
 }	
 
 CODE_BANK_POP()
