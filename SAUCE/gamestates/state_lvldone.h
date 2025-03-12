@@ -1538,28 +1538,7 @@ void calculate_sprite_pos() {
 	tmp1 = high_byte(tmp5);
 }
 
-void music_restore() {
-		famistudio_music_stop();
-		POKE(0x4000, practice_famistudio_registers[0 + (11 * tmp2)]);
-		POKE(0x4001, 0x08);
-		POKE(0x4002, practice_famistudio_registers[1 + (11 * tmp2)]);
-		if (famistudio_output_buf+2 != practice_famistudio_registers[2 + (11 * tmp2)]) {
-			POKE(0x4003, practice_famistudio_registers[2 + (11 * tmp2)]);
-		}
-		POKE(0x4004, practice_famistudio_registers[3 + (11 * tmp2)]);
-		POKE(0x4005, 0x08);
-		POKE(0x4006, practice_famistudio_registers[4 + (11 * tmp2)]);
-		if (famistudio_output_buf+5 != practice_famistudio_registers[5 + (11 * tmp2)]) {
-			POKE(0x4007, practice_famistudio_registers[5 + (11 * tmp2)]);
-		}
-		POKE(0x4008, practice_famistudio_registers[6 + (11 * tmp2)]);
-		POKE(0x400a, practice_famistudio_registers[7 + (11 * tmp2)]);
-		POKE(0x400b, practice_famistudio_registers[8 + (11 * tmp2)]);
-		POKE(0x400c, practice_famistudio_registers[9 + (11 * tmp2)]);
-		POKE(0x400e, practice_famistudio_registers[10 + (11 * tmp2)]);
-		memcpy(famistudio_state, practice_famistudio_state + (200 * tmp2), 200);
-		memcpy(famistudio_output_buf, practice_famistudio_registers + (11 * tmp2), 11);
-}		
+	
 
 CODE_BANK_POP()
 
