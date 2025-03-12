@@ -64,6 +64,10 @@ void reset_game_vars(){
 	practice_g_color_type[tmp1] = lastgcolortype;
 	practice_outline_color[tmp1] = outline_color;
 	practice_orbactive[tmp1] = orbactive;
+	practice_disco_sprites[tmp1] = disco_sprites;
+	practice_slowmode[tmp1] = slowmode;
+	practice_forced_trails[tmp1] = forced_trails;
+	practice_gravity_mod[tmp1] = gravity_mod;
 
 	if (practice_music_sync) {
 		memcpy(practice_famistudio_state + (200 * tmp1), famistudio_state, 200);
@@ -110,6 +114,10 @@ void restore_practice_state() {
 	currplayer_slope_type = slope_type[0];
 	
 	nocamlockforced = practice_nocamlockforced[tmp2];
+	disco_sprites = practice_disco_sprites[tmp2];
+	slowmode = practice_slowmode[tmp2];
+	forced_trails = practice_forced_trails[tmp2];
+	gravity_mod = practice_gravity_mod[tmp2];
 	
 	last_slope_type[0] = practice_player_1_last_slope_type[tmp2];
 	last_slope_type[1] = practice_player_2_last_slope_type[tmp2];
