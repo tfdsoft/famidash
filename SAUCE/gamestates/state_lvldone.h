@@ -1502,9 +1502,6 @@ void calculate_sprite_pos() {
 	tmp1 = high_byte(tmp5);
 }
 
-void music_restore() {
-
-}		
 
 CODE_BANK_POP()
 
