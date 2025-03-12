@@ -206,10 +206,12 @@ int8_t practice_player_2_last_slope_type[MAX_PRACTICE_POINTS];
 
 lohi_arr32_decl(practice_scroll_x, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_scroll_y, MAX_PRACTICE_POINTS);
+lohi_arr16_decl(practice_min_scroll_y, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_seam_scroll_y, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_old_draw_scroll_y, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_target_scroll_y, MAX_PRACTICE_POINTS);
 
+uint8_t practice_nocamlockforced[MAX_PRACTICE_POINTS];
 uint8_t practice_player_gamemode[MAX_PRACTICE_POINTS];
 uint8_t practice_dual[MAX_PRACTICE_POINTS];
 uint8_t practice_speed[MAX_PRACTICE_POINTS];
