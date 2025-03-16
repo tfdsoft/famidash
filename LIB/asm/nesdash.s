@@ -11,12 +11,6 @@ sprite_data = _sprite_data
 
 .define gamemode_count 9
 
-.ifndef _USE_ILLEGAL_OPCODES
-.define _USE_ILLEGAL_OPCODES 0
-.endif
-
-.define USE_ILLEGAL_OPCODES ::_USE_ILLEGAL_OPCODES
-
 .macro INCW addr
 	INC addr
 	BNE :+

@@ -34,7 +34,17 @@ SFX_STRINGS = 0
 .include "music_songlist.inc"
 .include "sfx_sfxlist.inc"
 
+.ifndef __VS_SYSTEM
+	__VS_SYSTEM = 0
+.endif
+.define VS_SYSTEM ::__VS_SYSTEM
 
+
+.ifndef _USE_ILLEGAL_OPCODES
+	.define _USE_ILLEGAL_OPCODES 0
+.endif
+
+.define USE_ILLEGAL_OPCODES ::_USE_ILLEGAL_OPCODES
 
 PPU_CTRL	=$2000
 PPU_MASK	=$2001
