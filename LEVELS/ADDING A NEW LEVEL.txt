@@ -1,0 +1,10 @@
+This is hard, but you ofc can do that. Guide by kando, alexmush and me
+
+how to add a brand new level to famidash's array:
+
+1. export the level to csv from Tiled into LEVEL DATA/lvlset_B
+2. add level into metadata/lvlset_B_metadata.json5
+3. export levels and build, select level set B when prompted
+4. launch FD B-Sides
+
+Also keep in mind a rom can only have limited amount of levels
