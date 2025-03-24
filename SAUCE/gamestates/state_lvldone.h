@@ -904,7 +904,7 @@ const unsigned char origartists1_size[] = {
 
 const unsigned char* const coveringartists1[] = {
 	TEXT_zenith, 			//menu theme
-	0, 			//menu theme 2.2
+	TEXT_usersniper, 			//menu theme 2.2
 	TEXT_zenith,		//stereo madness
 	TEXT_aquamarine,				//back on track
 	TEXT_zenith,				//polargeist
@@ -923,7 +923,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_vikrinox,		//hexagon force
 	TEXT_elangel,		//blast processing
 	TEXT_vikrinox,			//theory of everything 2
-	0,		//geometrical dominator
+	TEXT_cloud54,		//geometrical dominator
 	TEXT_usersniper,				//deadlocked
 	TEXT_elangel,				//fingerbang
 	TEXT_craftyjumper,				//dash
@@ -937,7 +937,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel, 		//at the speed of light 3
 	TEXT_elangel, 		//at the speed of light full
 	TEXT_elangel,			//beast mode GDW cut
-	0,			//chaoz fantasy
+	TEXT_usersniper,			//chaoz fantasy
 	TEXT_elangel,			//chaoz impact
 	TEXT_cloud54,		//clutterfunk 2
 	TEXT_elangel,		//death moon
@@ -971,17 +971,17 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_dwedit,		//subtle oddities
 	TEXT_elangel,			//the angel
 	TEXT_craftyjumper,		//thoughts
-	0,				//ultimate destruction
+	TEXT_usersniper,				//ultimate destruction
 	TEXT_seaglowingpro,		//you've been trolled
 	TEXT_seaglowingpro,			//what's a future funk
-	0,			//windfall
+	TEXT_seaglowingpro,			//windfall
 	TEXT_elangel,			//years GDW cut
 };
 
 
 const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_zenith) - 1, 			//menu theme
-	0, 			//menu theme 2.2
+	sizeof(TEXT_usersniper) - 1, 			//menu theme 2.2
 	sizeof(TEXT_zenith) - 1,		//stereo madness
 	sizeof(TEXT_aquamarine) - 1,				//back on track
 	sizeof(TEXT_zenith) - 1,				//polargeist
@@ -1000,7 +1000,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_vikrinox) - 1,		//hexagon force
 	sizeof(TEXT_elangel) - 1,		//blast processing
 	sizeof(TEXT_vikrinox) - 1,			//theory of everything 2
-	0,		//geometrical dominator
+	sizeof(TEXT_cloud54) - 1,		//geometrical dominator
 	sizeof(TEXT_usersniper) - 1,				//deadlocked
 	sizeof(TEXT_elangel) - 1,				//fingerbang
 	sizeof(TEXT_craftyjumper) - 1,				//dash
@@ -1014,7 +1014,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1, 		//at the speed of light 3
 	sizeof(TEXT_elangel) - 1, 		//at the speed of light full
 	sizeof(TEXT_elangel) - 1,			//beast mode GDW cut
-	0,			//chaoz fantasy
+	sizeof(TEXT_usersniper) - 1,			//chaoz fantasy
 	sizeof(TEXT_elangel) - 1,			//chaoz impact
 	sizeof(TEXT_cloud54) - 1,		//clutterfunk 2
 	sizeof(TEXT_elangel) - 1,		//death moon
@@ -1048,10 +1048,10 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_dwedit) - 1,		//subtle oddities
 	sizeof(TEXT_elangel) - 1,			//the angel
 	sizeof(TEXT_craftyjumper) - 1,		//thoughts
-	0,				//ultimate destruction
+	sizeof(TEXT_usersniper) - 1,				//ultimate destruction
 	sizeof(TEXT_seaglowingpro) - 1,		//you've been trolled
 	sizeof(TEXT_seaglowingpro) - 1,			//what's a future funk
-	0,			//windfall
+	sizeof(TEXT_seaglowingpro) - 1,			//windfall
 	sizeof(TEXT_elangel) - 1,			//years GDW cut
 };
 
