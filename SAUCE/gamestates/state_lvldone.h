@@ -1061,7 +1061,160 @@ const unsigned char* const coveringartists2[] = {
 	0, 			//menu theme 2.2
 	0,		//stereo madness
 	0,				//back on track
-	0,				//polargeist
+	TEXT_usersniper,				//polargeist
+	0,				//dry out
+	0,				//base after base
+	0,				//can't let go
+	0,		//jumper
+	TEXT_vikrinox,		//time machine
+	TEXT_alexmush,				//cycles
+	0,				//xstep
+	TEXT_vikrinox,		//clutterfunk
+	0,			//theory of everything
+	0,		//electroman adventures
+	0,			//clubstep
+	0,			//electrodynamix
+	0,		//hexagon force
+	0,		//blast processing
+	0,			//theory of everything 2
+	0,		//geometrical dominator
+	0,				//deadlocked
+	0,				//fingerbang
+	0,				//dash
+	0, 			//the challenge
+	0, 			//practice
+	0, 	//scheming weasel
+	
+	0, 		//8-bit against the odds redux
+	0, 		//at the speed of light 1
+	0, 		//at the speed of light 2
+	0, 		//at the speed of light 3
+	0, 		//at the speed of light full
+	0,			//beast mode GDW cut
+	0,			//chaoz fantasy
+	0,			//chaoz impact
+	0,		//clutterfunk 2
+	0,		//death moon
+	0,				//driving by night
+	0, 		//endgame
+	0, 				//freedom dive
+	TEXT_elangel, 			//golden haze
+	0,		//ground to space
+	0,		//idols
+	0, 		//infernoplex
+	0, 		//infernoplex full
+	TEXT_elangel,		//just right
+	0, 		//haunted woods
+	0, 			//lost
+	0,				//ludacris speed
+	0,			//machina GDW cut
+	0,				//magic touch
+	0,		//mayhem short ver
+	0,		//mayhem
+	0,		//metamorphasis
+	0,		//midnight
+	0,			//ninox
+	0,			//okiba crackdown
+	0,			//payload GDW cut
+	0,				//problematic
+	0,			//pyrophoric
+	0,			//rainbow tylenol
+	0,			//stalemate
+	TEXT_seaglowingpro,			//stalemate full
+	0,		//stereo madness2
+	0,		//subtle oddities
+	0,			//the angel
+	0,		//thoughts
+	0,				//ultimate destruction
+	0,		//you've been trolled
+	0,			//what's a future funk
+	0,			//windfall
+	0,			//years GDW cut
+};
+
+
+const unsigned char coveringartists2_size[] = {
+	0, 			//menu theme
+	0, 			//menu theme 2.2
+	0,		//stereo madness
+	0,				//back on track
+	sizeof(TEXT_usersniper) - 1,				//polargeist
+	0,				//dry out
+	0,				//base after base
+	0,				//can't let go
+	0,		//jumper
+	sizeof(TEXT_vikrinox) - 1,		//time machine
+	sizeof(TEXT_alexmush) - 1,				//cycles
+	0,				//xstep
+	sizeof(TEXT_vikrinox) - 1,		//clutterfunk
+	0,			//theory of everything
+	0,		//electroman adventures
+	0,			//clubstep
+	0,			//electrodynamix
+	0,		//hexagon force
+	0,		//blast processing
+	0,			//theory of everything 2
+	0,		//geometrical dominator
+	0,				//deadlocked
+	0,				//fingerbang
+	0,				//dash
+	0, 			//the challenge
+	0, 			//practice
+	0, 	//scheming weasel
+	
+	0, 		//8-bit against the odds redux
+	0, 		//at the speed of light 1
+	0, 		//at the speed of light 2
+	0, 		//at the speed of light 3
+	0, 		//at the speed of light full
+	0,			//beast mode GDW cut
+	0,			//chaoz fantasy
+	0,			//chaoz impact
+	0,		//clutterfunk 2
+	0,		//death moon
+	0,				//driving by night
+	0, 		//endgame
+	0, 				//freedom dive
+	sizeof(TEXT_elangel) - 1, 			//golden haze
+	0,		//ground to space
+	0,		//idols
+	0, 		//infernoplex
+	0, 		//infernoplex full
+	sizeof(TEXT_elangel) - 1,		//just right
+	0, 		//haunted woods
+	0, 			//lost
+	0,				//ludacris speed
+	0,			//machina GDW cut
+	0,				//magic touch
+	0,		//mayhem short ver
+	0,		//mayhem
+	0,		//metamorphasis
+	0,		//midnight
+	0,			//ninox
+	0,			//okiba crackdown
+	0,			//payload GDW cut
+	0,				//problematic
+	0,			//pyrophoric
+	0,			//rainbow tylenol
+	0,			//stalemate
+	sizeof(TEXT_seaglowingpro) - 1,			//stalemate full
+	0,		//stereo madness2
+	0,		//subtle oddities
+	0,			//the angel
+	0,		//thoughts
+	0,				//ultimate destruction
+	0,		//you've been trolled
+	0,			//what's a future funk
+	0,			//windfall
+	0,			//years GDW cut
+};
+
+const unsigned char* const coveringartists3[] = {
+	0, 			//menu theme
+	0, 			//menu theme 2.2
+	0,		//stereo madness
+	0,				//back on track
+	TEXT_vikrinox,				//polargeist
 	0,				//dry out
 	0,				//base after base
 	0,				//can't let go
@@ -1069,7 +1222,7 @@ const unsigned char* const coveringartists2[] = {
 	0,		//time machine
 	0,				//cycles
 	0,				//xstep
-	0,		//clutterfunk
+	TEXT_zenith,		//clutterfunk
 	0,			//theory of everything
 	0,		//electroman adventures
 	0,			//clubstep
@@ -1133,12 +1286,12 @@ const unsigned char* const coveringartists2[] = {
 };
 
 
-const unsigned char coveringartists2_size[] = {
+const unsigned char coveringartists3_size[] = {
 	0, 			//menu theme
 	0, 			//menu theme 2.2
 	0,		//stereo madness
 	0,				//back on track
-	0,				//polargeist
+	sizeof(TEXT_vikrinox) - 1,				//polargeist
 	0,				//dry out
 	0,				//base after base
 	0,				//can't let go
@@ -1146,7 +1299,7 @@ const unsigned char coveringartists2_size[] = {
 	0,		//time machine
 	0,				//cycles
 	0,				//xstep
-	0,		//clutterfunk
+	sizeof(TEXT_zenith) - 1,		//clutterfunk
 	0,			//theory of everything
 	0,		//electroman adventures
 	0,			//clubstep
@@ -1402,6 +1555,9 @@ void bgmtest() {
 	__A__ = idx16_load_hi_NOC(coveringartists2, song);
 	if (__A__) draw_padded_text(coveringartists2[song & 0x7F], coveringartists2_size[song], 18, NTADR_A(7, 20));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 20));
+	__A__ = idx16_load_hi_NOC(coveringartists3, song);
+	if (__A__) draw_padded_text(coveringartists3[song & 0x7F], coveringartists3_size[song], 18, NTADR_A(7, 21));
+	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 21));
 	
 //	draw_padded_text(sfxtexts[sfx & 0x7F], sfxtexts_size[sfx], 18, NTADR_A(7, 18));
 
