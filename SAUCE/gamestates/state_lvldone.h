@@ -958,7 +958,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_craftyjumper,		//mayhem short ver
 	TEXT_craftyjumper,		//mayhem
 	TEXT_elangel,		//metamorphasis
-	0,		//midnight
+	TEXT_seaglowingpro,		//midnight
 	TEXT_seaglowingpro,			//ninox
 	TEXT_sussysy,			//okiba crackdown
 	TEXT_elangel,			//payload GDW cut
@@ -1035,7 +1035,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_craftyjumper) - 1,		//mayhem short ver
 	sizeof(TEXT_craftyjumper) - 1,		//mayhem
 	sizeof(TEXT_elangel) - 1,		//metamorphasis
-	0,		//midnight
+	sizeof(TEXT_seaglowingpro) - 1,		//midnight
 	sizeof(TEXT_seaglowingpro) - 1,			//ninox
 	sizeof(TEXT_sussysy) - 1,			//okiba crackdown
 	sizeof(TEXT_elangel) - 1,			//payload GDW cut
