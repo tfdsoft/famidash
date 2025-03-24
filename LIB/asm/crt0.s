@@ -386,68 +386,68 @@ _GAME_CHR:
  ;   .incbin "GRAPHICS/famidash2.chr" ; 8kb		//theory of everything (12)
  ;   .incbin "GRAPHICS/famidash-parallax2.chr" ; 4kb	//theory of everything (20)
    
-    .incbin "GRAPHICS/SpikesA.chr" ; (0)
-    .incbin "GRAPHICS/SpikesB.chr" ; (2)
-    .incbin "GRAPHICS/SpikesC.chr" ; (4)
-    .incbin "GRAPHICS/BlocksA.chr" ; (6)
-    .incbin "GRAPHICS/BlocksB.chr" ; (8)
-    .incbin "GRAPHICS/BlocksC.chr" ; (10)
-    .incbin "GRAPHICS/BlocksD.chr" ; (12)
-    .incbin "GRAPHICS/SawbladesA.chr" ; (14)
-    .incbin "GRAPHICS/slopesA.chr" ; (16)
+    .incbin "GRAPHICS/Level Tiles/SpikesA.chr" ; (0)
+    .incbin "GRAPHICS/Level Tiles/SpikesB.chr" ; (2)
+    .incbin "GRAPHICS/Level Tiles/SpikesC.chr" ; (4)
+    .incbin "GRAPHICS/Level Tiles/BlocksA.chr" ; (6)
+    .incbin "GRAPHICS/Level Tiles/BlocksB.chr" ; (8)
+    .incbin "GRAPHICS/Level Tiles/BlocksC.chr" ; (10)
+    .incbin "GRAPHICS/Level Tiles/BlocksD.chr" ; (12)
+    .incbin "GRAPHICS/Level Tiles/SawbladesA.chr" ; (14)
+    .incbin "GRAPHICS/Level Tiles/slopesA.chr" ; (16)
 
-    .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (18) 
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/Gamemode/so_retro_v2.chr" ; 1kb (18) 
+    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
 
-    .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (20)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesAretro.chr" ; 1kb (22)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesB.chr" ; 1kb (24)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/bankgamemodesBretro.chr" ; 1kb (26)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/Gamemode/bankgamemodesA.chr" ; 1kb (20)
+    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/Gamemode/bankgamemodesAretro.chr" ; 1kb (22)
+    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/Gamemode/bankgamemodesB.chr" ; 1kb (24)
+    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/Gamemode/bankgamemodesBretro.chr" ; 1kb (26)
+    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
 
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (28) 
-    .incbin "GRAPHICS/bankblank.chr" ; 1kb
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (30) 
-    .incbin "GRAPHICS/bankblank2.chr" ; 1kb
+    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (28) 
+    .incbin "GRAPHICS/Level Sprites/bankblank.chr" ; 1kb
+    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (30) 
+    .incbin "GRAPHICS/Level Sprites/bankblank2.chr" ; 1kb
 
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (32) 
-    .incbin "GRAPHICS/bankblankcloud.chr" ; 1kb
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (34) 
-    .incbin "GRAPHICS/bankblankcloud2.chr" ; 1kb
+    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (32) 
+    .incbin "GRAPHICS/Level Sprites/bankblankcloud.chr" ; 1kb
+    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (34) 
+    .incbin "GRAPHICS/Level Sprites/bankblankcloud2.chr" ; 1kb
 
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (36) 
-    .incbin "GRAPHICS/bankblankfingerdash.chr" ; 1kb
-    .incbin "GRAPHICS/bankmain.chr" ; 1kb (38) 
-    .incbin "GRAPHICS/bankblankfingerdash2.chr" ; 1kb
+    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (36) 
+    .incbin "GRAPHICS/Level Sprites/bankblankfingerdash.chr" ; 1kb
+    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (38) 
+    .incbin "GRAPHICS/Level Sprites/bankblankfingerdash2.chr" ; 1kb
 
     .repeat 15, I   ; banks 40 - 69
-        .incbin .sprintf("GRAPHICS/bankicon%02X.chr", I)  ; 1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
+        .incbin .sprintf("GRAPHICS/Icons/bankicon%02X.chr", I)  ; 1kb
+        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     .endrepeat
 
     .repeat 11, I   ; banks 70 - 91
         .incbin .sprintf("fan icon collection/CONTEST WINNERS/contest%1X.chr", I+1) ; 1kb
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
+        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     .endrepeat
 
         .incbin "fan icon collection/starfox.chr" ; 1kb (92)
-        .incbin "GRAPHICS/bankportals.chr" ; 1kb
+        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
 
-    .incbin "GRAPHICS/banktriangle.chr" ; 1kb (94)
-    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/Gamemode/banktriangle.chr" ; 1kb (94)
+    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     
-    .incbin "GRAPHICS/cursors.chr" ; 2kb (96)
+    .incbin "GRAPHICS/Menus/cursors.chr" ; 2kb (96)
 
-    .incbin "GRAPHICS/menus.chr"    ; 4kb (98)
-    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (102)
-    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (106)
-    .incbin "GRAPHICS/practicecomplete.chr"    ; 1kb (110)
-   .incbin "GRAPHICS/SawbladesNone.chr" ; 1kb (111)
+    .incbin "GRAPHICS/Menus/menus.chr"    ; 4kb (98)
+    .incbin "GRAPHICS/Menus/menuicons.chr"    ; 4kb (102)
+    .incbin "GRAPHICS/Menus/levelcomplete.chr"    ; 4kb (106)
+    .incbin "GRAPHICS/Menus/practicecomplete.chr"    ; 1kb (110)
+   .incbin "GRAPHICS/Level Tiles/SawbladesNone.chr" ; 1kb (111)
 
- ;   .incbin "GRAPHICS/practicecomplete.chr"    ; 1kb (112)
+ ;   .incbin "GRAPHICS/Menus/practicecomplete.chr"    ; 1kb (112)
 
 .segment "PARALLAXCHR"  ; banks 112 - 255
 .export _PARALLAX_CHR
