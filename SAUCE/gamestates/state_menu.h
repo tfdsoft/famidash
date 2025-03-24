@@ -76,6 +76,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_driving_by_night,
 	song_endgame,
 	song_freedom_dive,
+	song_glint,
 	song_retray,
 	song_ground_to_space,
 	song_haunted_woods,

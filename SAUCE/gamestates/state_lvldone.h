@@ -133,6 +133,7 @@ const unsigned char TEXT_machina[]="MACHINA";
 const unsigned char TEXT_payload[]="PAYLOAD";
 const unsigned char TEXT_candyland[]="CANDYLAND";
 const unsigned char TEXT_hell[]="HELL";
+const unsigned char TEXT_glint[]="GLINT";
 const unsigned char TEXT_GDW[]="GDW$CUT";
 
 const unsigned char TEXT_future[]="WHATS$A";
@@ -246,7 +247,8 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_driving,
 	0,		//endgame
 	TEXT_freedom,
-	0,		//retray / golden haze
+	0,		//glint
+	0,		//golden haze
 	TEXT_groundto,
 	0,		//haunted woods
 	0,		//hell
@@ -330,6 +332,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_driving) - 1,
 	0,		//endgame
 	sizeof(TEXT_freedom) - 1,	
+	0,		//glint
 	0,		//golden haze
 	sizeof(TEXT_groundto) - 1,	
 	0,		//haunted woods
@@ -412,6 +415,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_driving2,
 	TEXT_xlevel2textE,	//endgame
 	TEXT_freedom2,
+	TEXT_glint,
 	TEXT_retray,
 	TEXT_groundto2,
 	TEXT_2textwoods,
@@ -494,6 +498,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_driving2) - 1,
 	sizeof(TEXT_xlevel2textE) - 1,	//endgame
 	sizeof(TEXT_freedom2) - 1,
+	sizeof(TEXT_glint) - 1,
 	sizeof(TEXT_retray) - 1,
 	sizeof(TEXT_groundto2) - 1,
 	sizeof(TEXT_2textwoods) - 1,
@@ -577,6 +582,7 @@ const unsigned char TEXT_theclydecash[]="THECLYDECASH";
 const unsigned char TEXT_interworld[]="INTERWORLD";
 const unsigned char TEXT_tobu[]="TOBU";
 const unsigned char TEXT_acidnotation[]="ACID$NOTATION";
+const unsigned char TEXT_dominuus[]="DOMINUUS";
 
 
 const unsigned char TEXT_seaglowingpro[]="SEAGLOWINGPRO";
@@ -641,6 +647,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_reinn,				//driving by night
 	TEXT_waterflame, 		//endgame
 	TEXT_xi, 				//freedom dive
+	TEXT_dominuus, 				//glint
 	TEXT_detious, 			//golden haze
 	TEXT_seaglowingpro,		//ground to space
 	TEXT_waterflame, 		//haunted woods
@@ -723,6 +730,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_reinn) - 1,				//driving by night
 	sizeof(TEXT_waterflame) - 1, 		//endgame
 	sizeof(TEXT_xi) - 1, 				//freedom dive
+	sizeof(TEXT_dominuus) - 1, 				//glint
 	sizeof(TEXT_detious) - 1, 			//golden haze
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
 	sizeof(TEXT_waterflame) - 1, 		//haunted woods
@@ -789,6 +797,7 @@ const unsigned char* const origartists1[] = {
 	0,
 	0,
 	
+	0,
 	0,
 	0,
 	0,
@@ -902,6 +911,7 @@ const unsigned char origartists1_size[] = {
 	0,
 	0,
 	0,
+	0,
 	sizeof(TEXT_dan_harrison) - 1, //just right
 	0,
 	0,
@@ -984,6 +994,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_nerdboy,				//driving by night
 	TEXT_vikrinox, 		//endgame
 	TEXT_seaglowingpro, 				//freedom dive
+	TEXT_nerdboy, 				//glint
 	TEXT_craftyjumper, 			//golden haze
 	TEXT_seaglowingpro,		//ground to space
 	TEXT_sussysy, 		//haunted woods
@@ -1065,6 +1076,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_nerdboy) - 1,				//driving by night
 	sizeof(TEXT_vikrinox) - 1, 		//endgame
 	sizeof(TEXT_seaglowingpro) - 1, 				//freedom dive
+	sizeof(TEXT_nerdboy) - 1, 				//glint
 	sizeof(TEXT_craftyjumper) - 1, 			//golden haze
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
 	sizeof(TEXT_sussysy) - 1, 		//haunted woods
@@ -1146,6 +1158,7 @@ const unsigned char* const coveringartists2[] = {
 	0,				//driving by night
 	0, 		//endgame
 	0, 				//freedom dive
+	0, 				//glint
 	TEXT_elangel, 			//golden haze
 	0,		//ground to space
 	0, 		//haunted woods
@@ -1227,6 +1240,7 @@ const unsigned char coveringartists2_size[] = {
 	0,				//driving by night
 	0, 		//endgame
 	0, 				//freedom dive
+	0, 				//glint
 	sizeof(TEXT_elangel) - 1, 			//golden haze
 	0,		//ground to space
 	0, 		//haunted woods
@@ -1307,6 +1321,7 @@ const unsigned char* const coveringartists3[] = {
 	0,				//driving by night
 	0, 		//endgame
 	0, 				//freedom dive
+	0, 				//glint
 	0, 			//golden haze
 	0,		//ground to space
 	0, 		//haunted woods
@@ -1388,6 +1403,7 @@ const unsigned char coveringartists3_size[] = {
 	0,				//driving by night
 	0, 		//endgame
 	0, 				//freedom dive
+	0, 				//glint
 	0, 			//golden haze
 	0,		//ground to space
 	0, 		//haunted woods
@@ -1473,6 +1489,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_driving_by_night,
 	song_endgame,
 	song_freedom_dive,
+	song_glint,
 	song_retray,
 	song_ground_to_space,
 	song_haunted_woods,
