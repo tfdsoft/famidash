@@ -166,6 +166,7 @@ const unsigned char TEXT_rainbowt2[]="TYLENOL";
 const unsigned char TEXT_thoughts[]="THOUGHTS";
 const unsigned char TEXT_youvebeen[]="YOUVE$BEEN";
 const unsigned char TEXT_youvebeen2[]="TROLLED";
+const unsigned char TEXT_kesobomb[]="KESOBOMB";
 
 
 
@@ -252,6 +253,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_2textinfernoplex,	//infernoplex full
 	0,		//jack russel
 	0,		//just right
+	0,		//kesobomb
 	0,		//lost
 	TEXT_ludicrous,
 	TEXT_machina,
@@ -325,7 +327,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_driving) - 1,
 	0,		//endgame
 	sizeof(TEXT_freedom) - 1,	
-	0,		//retray / golden haze
+	0,		//golden haze
 	sizeof(TEXT_groundto) - 1,	
 	0,		//haunted woods
 	0,		//hell
@@ -334,6 +336,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_2textinfernoplex) - 1,	
 	0,		//jack russel
 	0,		//just right
+	0,		//kesobomb
 	0,		//lost
 	sizeof(TEXT_ludicrous) - 1,	
 	sizeof(TEXT_machina) - 1,	
@@ -414,6 +417,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textfullversion,
 	TEXT_jackrussel,
 	TEXT_2textjustright,
+	TEXT_kesobomb,
 	TEXT_2textlost,
 	TEXT_ludicrous2,
 	TEXT_GDW,
@@ -494,6 +498,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textfullversion) - 1,
 	sizeof(TEXT_jackrussel) - 1,
 	sizeof(TEXT_2textjustright) - 1,
+	sizeof(TEXT_kesobomb) - 1,
 	sizeof(TEXT_2textlost) - 1,
 	sizeof(TEXT_ludicrous2) - 1,
 	sizeof(TEXT_GDW) - 1,
@@ -580,6 +585,7 @@ const unsigned char TEXT_cloud54[]="CLOUD54";
 const unsigned char TEXT_usersniper[]="USERSNIPER";
 const unsigned char TEXT_sussysy[]="SUSSYSY";
 const unsigned char TEXT_clickerty[]="CLICKERTY";
+const unsigned char TEXT_rymdkraft[]="RYMDKRAFT";
 
 
 
@@ -637,6 +643,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_dimrain47, 		//infernoplex full
 	TEXT_bossfight,			//jack russel
 	TEXT_tessaviolet,		//just right
+	TEXT_rymdkraft,			//kesobomb
 	TEXT_crim3s, 			//lost
 	TEXT_f777,				//ludacris speed
 	TEXT_dexarson,			//machina GDW cut
@@ -715,8 +722,9 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_virtual_riot) - 1,		//idols
 	sizeof(TEXT_dimrain47) - 1, 		//infernoplex
 	sizeof(TEXT_dimrain47) - 1, 		//infernoplex full
-	sizeof(TEXT_bossfight) - 1,		//jack russel
+	sizeof(TEXT_bossfight) - 1,			//jack russel
 	sizeof(TEXT_tessaviolet) - 1,		//just right
+	sizeof(TEXT_rymdkraft) - 1,			//kesobomb
 	sizeof(TEXT_crim3s) - 1, 			//lost
 	sizeof(TEXT_f777) - 1,				//ludacris speed
 	sizeof(TEXT_dexarson) - 1,			//machina GDW cut
@@ -795,6 +803,7 @@ const unsigned char* const origartists1[] = {
 	0,
 	0,
 	TEXT_dan_harrison,	//just right
+	0,
 	0,
 	0,
 	0,
@@ -918,6 +927,7 @@ const unsigned char origartists1_size[] = {
 	0,
 	0,
 	0,
+	0,
 };
 
 
@@ -972,6 +982,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_cloud54, 		//infernoplex full
 	TEXT_nerdboy,		//jack russel
 	TEXT_seaglowingpro,		//just right
+	TEXT_nerdboy,		//kesobomb
 	TEXT_seaglowingpro, 			//lost
 	TEXT_seaglowingpro,				//ludacris speed
 	TEXT_elangel,			//machina GDW cut
@@ -1051,6 +1062,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_cloud54) - 1, 		//infernoplex full
 	sizeof(TEXT_nerdboy) - 1,		//jack russel
 	sizeof(TEXT_seaglowingpro) - 1,		//just right
+	sizeof(TEXT_nerdboy) - 1,		//kesobomb
 	sizeof(TEXT_seaglowingpro) - 1, 			//lost
 	sizeof(TEXT_seaglowingpro) - 1,				//ludacris speed
 	sizeof(TEXT_elangel) - 1,			//machina GDW cut
@@ -1130,6 +1142,7 @@ const unsigned char* const coveringartists2[] = {
 	TEXT_seaglowingpro, 		//infernoplex full
 	0, 		//jack russel
 	TEXT_elangel,		//just right
+	0, 		//kesobomb
 	0, 			//lost
 	0,				//ludacris speed
 	0,			//machina GDW cut
@@ -1209,6 +1222,7 @@ const unsigned char coveringartists2_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1, 		//infernoplex full
 	0, 		//jack russel	
 	sizeof(TEXT_elangel) - 1,		//just right
+	0, 			//kesobomb
 	0, 			//lost
 	0,				//ludacris speed
 	0,			//machina GDW cut
@@ -1287,6 +1301,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 		//infernoplex full
 	0, 		//jack russel
 	0,		//just right
+	0,		//kesobomb
 	0, 			//lost
 	0,				//ludacris speed
 	0,			//machina GDW cut
@@ -1366,6 +1381,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 		//infernoplex full
 	0, 		//jack russel
 	0,		//just right
+	0,		//kesobomb
 	0, 			//lost
 	0,				//ludacris speed
 	0,			//machina GDW cut
@@ -1449,6 +1465,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_infernoplex_full,
 	song_jack_russel,
 	song_just_right,
+	song_kesobomb,
 	song_lost,
 	song_ludicrous_speed,
 	song_machina_gdw_cut,
