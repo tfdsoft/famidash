@@ -130,6 +130,7 @@ const unsigned char TEXT_ninox2[]="NINOX";
 const unsigned char TEXT_beastmode[]="BEAST$MODE";
 const unsigned char TEXT_machina[]="MACHINA";
 const unsigned char TEXT_payload[]="PAYLOAD";
+const unsigned char TEXT_hell[]="HELL";
 const unsigned char TEXT_GDW[]="GDW$CUT";
 
 const unsigned char TEXT_future[]="WHATS$A";
@@ -244,6 +245,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,		//retray / golden haze
 	TEXT_groundto,
 	0,		//haunted woods
+	0,		//hell
 	0,		//idols
 	0,		//infernoplex
 	TEXT_2textinfernoplex,	//infernoplex full
@@ -324,6 +326,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,		//retray / golden haze
 	sizeof(TEXT_groundto) - 1,	
 	0,		//haunted woods
+	0,		//hell
 	0,		//idols
 	0,		//infernoplex
 	sizeof(TEXT_2textinfernoplex) - 1,	
@@ -402,6 +405,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_retray,
 	TEXT_groundto2,
 	TEXT_2textwoods,
+	TEXT_hell,
 	TEXT_idols,
 	TEXT_2textinfernoplex,
 	TEXT_2textfullversion,
@@ -480,6 +484,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_retray) - 1,
 	sizeof(TEXT_groundto2) - 1,
 	sizeof(TEXT_2textwoods) - 1,
+	sizeof(TEXT_hell) - 1,
 	sizeof(TEXT_idols) - 1,
 	sizeof(TEXT_2textinfernoplex) - 1,
 	sizeof(TEXT_2textfullversion) - 1,
@@ -555,6 +560,7 @@ const unsigned char TEXT_kitsune[]="KITSUNE2";
 const unsigned char TEXT_tmm43[]="TMM43";
 const unsigned char TEXT_theclydecash[]="THECLYDECASH";
 const unsigned char TEXT_interworld[]="INTERWORLD";
+const unsigned char TEXT_acidnotation[]="ACID$NOTATION";
 
 
 const unsigned char TEXT_seaglowingpro[]="SEAGLOWINGPRO";
@@ -620,6 +626,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_detious, 			//golden haze
 	TEXT_seaglowingpro,		//ground to space
 	TEXT_waterflame, 		//haunted woods
+	TEXT_acidnotation,		//hell
 	TEXT_virtual_riot,		//idols
 	TEXT_dimrain47, 		//infernoplex
 	TEXT_dimrain47, 		//infernoplex full
@@ -698,6 +705,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_detious) - 1, 			//golden haze
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
 	sizeof(TEXT_waterflame) - 1, 		//haunted woods
+	sizeof(TEXT_acidnotation) - 1, 		//hell
 	sizeof(TEXT_virtual_riot) - 1,		//idols
 	sizeof(TEXT_dimrain47) - 1, 		//infernoplex
 	sizeof(TEXT_dimrain47) - 1, 		//infernoplex full
@@ -777,6 +785,7 @@ const unsigned char* const origartists1[] = {
 	0,
 	0,
 	0,
+	0,
 	TEXT_dan_harrison,
 	0,
 	0,
@@ -817,6 +826,7 @@ const unsigned char* const origartists1[] = {
 
 
 const unsigned char origartists1_size[] = {
+	0,
 	0,
 	0,
 	0,
@@ -947,6 +957,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_craftyjumper, 			//golden haze
 	TEXT_seaglowingpro,		//ground to space
 	TEXT_sussysy, 		//haunted woods
+	TEXT_elangel, 		//hell
 	TEXT_seaglowingpro,		//idols
 	TEXT_cloud54, 		//infernoplex
 	TEXT_cloud54, 		//infernoplex full
@@ -1024,6 +1035,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_craftyjumper) - 1, 			//golden haze
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
 	sizeof(TEXT_sussysy) - 1, 		//haunted woods
+	sizeof(TEXT_elangel) - 1, 		//hell
 	sizeof(TEXT_seaglowingpro) - 1,		//idols
 	sizeof(TEXT_cloud54) - 1, 		//infernoplex
 	sizeof(TEXT_cloud54) - 1, 		//infernoplex full
@@ -1101,6 +1113,7 @@ const unsigned char* const coveringartists2[] = {
 	TEXT_elangel, 			//golden haze
 	0,		//ground to space
 	0, 		//haunted woods
+	0, 		//hell
 	0,		//idols
 	0, 		//infernoplex
 	TEXT_seaglowingpro, 		//infernoplex full
@@ -1178,6 +1191,7 @@ const unsigned char coveringartists2_size[] = {
 	sizeof(TEXT_elangel) - 1, 			//golden haze
 	0,		//ground to space
 	0, 		//haunted woods
+	0, 		//hell
 	0,		//idols
 	0, 		//infernoplex
 	sizeof(TEXT_seaglowingpro) - 1, 		//infernoplex full
@@ -1254,6 +1268,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 			//golden haze
 	0,		//ground to space
 	0, 		//haunted woods
+	0, 		//hell
 	0,		//idols
 	0, 		//infernoplex
 	0, 		//infernoplex full
@@ -1331,6 +1346,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 			//golden haze
 	0,		//ground to space
 	0, 		//haunted woods
+	0, 		//hell
 	0,		//idols
 	0, 		//infernoplex
 	0, 		//infernoplex full
@@ -1403,7 +1419,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_atthespeedoflightfull,
 	song_beast_mode_gdw_cut,
 	song_chaozfantasy,
-	song_speed_racer,
+	song_chaoz_impact,
 	song_clutterfunk_2,
 	song_death_moon,
 	song_driving_by_night,
@@ -1412,6 +1428,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_retray,
 	song_ground_to_space,
 	song_haunted_woods,
+	song_hell,
 	song_idols,
 	song_infernoplex,
 	song_infernoplex_full,
