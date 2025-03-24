@@ -82,6 +82,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_idols,
 	song_infernoplex,
 	song_infernoplex_full,
+	song_jack_russel,
 	song_just_right,
 	song_lost,
 	song_ludicrous_speed,

@@ -115,6 +115,7 @@ const unsigned char TEXT_2textspeed[]="OF$LIGHT";
 const unsigned char TEXT_2textspeed2[]="OF$LIGHT$PT$2";
 const unsigned char TEXT_2textspeed3[]="OF$LIGHT$PT$3";
 const unsigned char TEXT_2textspeedfull[]="OF$LIGHT$FULL";
+const unsigned char TEXT_jackrussel[]="JACK$RUSSEL";
 const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
 const unsigned char TEXT_2textstalemate[]="STALEMATE";
 const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
@@ -249,6 +250,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,		//idols
 	0,		//infernoplex
 	TEXT_2textinfernoplex,	//infernoplex full
+	0,		//jack russel
 	0,		//just right
 	0,		//lost
 	TEXT_ludicrous,
@@ -330,6 +332,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,		//idols
 	0,		//infernoplex
 	sizeof(TEXT_2textinfernoplex) - 1,	
+	0,		//jack russel
 	0,		//just right
 	0,		//lost
 	sizeof(TEXT_ludicrous) - 1,	
@@ -409,6 +412,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_idols,
 	TEXT_2textinfernoplex,
 	TEXT_2textfullversion,
+	TEXT_jackrussel,
 	TEXT_2textjustright,
 	TEXT_2textlost,
 	TEXT_ludicrous2,
@@ -488,6 +492,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_idols) - 1,
 	sizeof(TEXT_2textinfernoplex) - 1,
 	sizeof(TEXT_2textfullversion) - 1,
+	sizeof(TEXT_jackrussel) - 1,
 	sizeof(TEXT_2textjustright) - 1,
 	sizeof(TEXT_2textlost) - 1,
 	sizeof(TEXT_ludicrous2) - 1,
@@ -630,6 +635,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_virtual_riot,		//idols
 	TEXT_dimrain47, 		//infernoplex
 	TEXT_dimrain47, 		//infernoplex full
+	TEXT_bossfight,			//jack russel
 	TEXT_tessaviolet,		//just right
 	TEXT_crim3s, 			//lost
 	TEXT_f777,				//ludacris speed
@@ -709,7 +715,8 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_virtual_riot) - 1,		//idols
 	sizeof(TEXT_dimrain47) - 1, 		//infernoplex
 	sizeof(TEXT_dimrain47) - 1, 		//infernoplex full
-	sizeof(TEXT_tessaviolet) - 1,		//just right (additional credits needed)
+	sizeof(TEXT_bossfight) - 1,		//jack russel
+	sizeof(TEXT_tessaviolet) - 1,		//just right
 	sizeof(TEXT_crim3s) - 1, 			//lost
 	sizeof(TEXT_f777) - 1,				//ludacris speed
 	sizeof(TEXT_dexarson) - 1,			//machina GDW cut
@@ -786,7 +793,8 @@ const unsigned char* const origartists1[] = {
 	0,
 	0,
 	0,
-	TEXT_dan_harrison,
+	0,
+	TEXT_dan_harrison,	//just right
 	0,
 	0,
 	0,
@@ -874,7 +882,8 @@ const unsigned char origartists1_size[] = {
 	0,
 	0,
 	0,
-	sizeof(TEXT_dan_harrison) - 1,
+	0,
+	sizeof(TEXT_dan_harrison) - 1, //just right
 	0,
 	0,
 	0,
@@ -961,6 +970,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro,		//idols
 	TEXT_cloud54, 		//infernoplex
 	TEXT_cloud54, 		//infernoplex full
+	TEXT_nerdboy,		//jack russel
 	TEXT_seaglowingpro,		//just right
 	TEXT_seaglowingpro, 			//lost
 	TEXT_seaglowingpro,				//ludacris speed
@@ -1039,6 +1049,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1,		//idols
 	sizeof(TEXT_cloud54) - 1, 		//infernoplex
 	sizeof(TEXT_cloud54) - 1, 		//infernoplex full
+	sizeof(TEXT_nerdboy) - 1,		//jack russel
 	sizeof(TEXT_seaglowingpro) - 1,		//just right
 	sizeof(TEXT_seaglowingpro) - 1, 			//lost
 	sizeof(TEXT_seaglowingpro) - 1,				//ludacris speed
@@ -1117,6 +1128,7 @@ const unsigned char* const coveringartists2[] = {
 	0,		//idols
 	0, 		//infernoplex
 	TEXT_seaglowingpro, 		//infernoplex full
+	0, 		//jack russel
 	TEXT_elangel,		//just right
 	0, 			//lost
 	0,				//ludacris speed
@@ -1195,6 +1207,7 @@ const unsigned char coveringartists2_size[] = {
 	0,		//idols
 	0, 		//infernoplex
 	sizeof(TEXT_seaglowingpro) - 1, 		//infernoplex full
+	0, 		//jack russel	
 	sizeof(TEXT_elangel) - 1,		//just right
 	0, 			//lost
 	0,				//ludacris speed
@@ -1272,6 +1285,7 @@ const unsigned char* const coveringartists3[] = {
 	0,		//idols
 	0, 		//infernoplex
 	0, 		//infernoplex full
+	0, 		//jack russel
 	0,		//just right
 	0, 			//lost
 	0,				//ludacris speed
@@ -1350,6 +1364,7 @@ const unsigned char coveringartists3_size[] = {
 	0,		//idols
 	0, 		//infernoplex
 	0, 		//infernoplex full
+	0, 		//jack russel
 	0,		//just right
 	0, 			//lost
 	0,				//ludacris speed
@@ -1432,6 +1447,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_idols,
 	song_infernoplex,
 	song_infernoplex_full,
+	song_jack_russel,
 	song_just_right,
 	song_lost,
 	song_ludicrous_speed,
