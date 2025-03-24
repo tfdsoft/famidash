@@ -491,6 +491,7 @@ const uint8_t xbgm_lookup_table3[] = {
 	song_atthespeedoflight3,
 	song_atthespeedoflightfull,
 	song_beast_mode_gdw_cut,
+	song_candyland,
 	song_chaozfantasy,
 	song_chaoz_impact,
 	song_clutterfunk_2,

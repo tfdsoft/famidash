@@ -131,6 +131,7 @@ const unsigned char TEXT_ninox2[]="NINOX";
 const unsigned char TEXT_beastmode[]="BEAST$MODE";
 const unsigned char TEXT_machina[]="MACHINA";
 const unsigned char TEXT_payload[]="PAYLOAD";
+const unsigned char TEXT_candyland[]="CANDYLAND";
 const unsigned char TEXT_hell[]="HELL";
 const unsigned char TEXT_GDW[]="GDW$CUT";
 
@@ -237,8 +238,9 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_speed,
 	TEXT_speed,
 	TEXT_beastmode,
+	0, 		//candyland
 	0, 		//chaoz fantasy
-	0,		//speed racer
+	0,		//chaoz impact
 	0,		//clutterfunk 2
 	0,		//death moon
 	TEXT_driving,
@@ -320,8 +322,9 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_speed) - 1,	
 	sizeof(TEXT_speed) - 1,	
 	sizeof(TEXT_beastmode) - 1,	
+	0,		//candyland
 	0,		//chaoz fantasy
-	0,		//speed racer
+	0,		//chaoz impact
 	0,		//clutterfunk 2
 	0,		//death moon
 	sizeof(TEXT_driving) - 1,
@@ -401,6 +404,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textspeed3,
 	TEXT_2textspeedfull,
 	TEXT_GDW,
+	TEXT_candyland,
 	TEXT_2textchaoz,
 	TEXT_speedracer,
 	TEXT_2clutterfunk2,
@@ -482,6 +486,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textspeed3) - 1,
 	sizeof(TEXT_2textspeedfull) - 1,
 	sizeof(TEXT_GDW) - 1,
+	sizeof(TEXT_candyland) - 1,
 	sizeof(TEXT_2textchaoz) - 1,
 	sizeof(TEXT_speedracer) - 1,
 	sizeof(TEXT_2clutterfunk2) - 1,
@@ -570,6 +575,7 @@ const unsigned char TEXT_kitsune[]="KITSUNE2";
 const unsigned char TEXT_tmm43[]="TMM43";
 const unsigned char TEXT_theclydecash[]="THECLYDECASH";
 const unsigned char TEXT_interworld[]="INTERWORLD";
+const unsigned char TEXT_tobu[]="TOBU";
 const unsigned char TEXT_acidnotation[]="ACID$NOTATION";
 
 
@@ -627,6 +633,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_dimrain47, 		//at the speed of light 3
 	TEXT_dimrain47, 		//at the speed of light full
 	TEXT_dexarson,			//beast mode GDW cut
+	TEXT_tobu,			//candyland
 	TEXT_paragonx9,			//chaoz fantasy
 	TEXT_paragonx9,			//chaoz impact
 	TEXT_waterflame,		//clutterfunk 2
@@ -708,6 +715,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light 3
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light full
 	sizeof(TEXT_dexarson) - 1,			//beast mode GDW cut
+	sizeof(TEXT_tobu) - 1,			//candyland
 	sizeof(TEXT_paragonx9) - 1,			//chaoz fantasy
 	sizeof(TEXT_paragonx9) - 1,			//chaoz impact
 	sizeof(TEXT_waterflame) - 1,		//clutterfunk 2
@@ -781,6 +789,7 @@ const unsigned char* const origartists1[] = {
 	0,
 	0,
 	
+	0,
 	0,
 	0,
 	0,
@@ -892,6 +901,7 @@ const unsigned char origartists1_size[] = {
 	0,
 	0,
 	0,
+	0,
 	sizeof(TEXT_dan_harrison) - 1, //just right
 	0,
 	0,
@@ -966,6 +976,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel, 		//at the speed of light 3
 	TEXT_elangel, 		//at the speed of light full
 	TEXT_elangel,			//beast mode GDW cut
+	TEXT_nerdboy,		//candyland
 	TEXT_usersniper,			//chaoz fantasy
 	TEXT_elangel,			//chaoz impact
 	TEXT_cloud54,		//clutterfunk 2
@@ -1046,6 +1057,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1, 		//at the speed of light 3
 	sizeof(TEXT_elangel) - 1, 		//at the speed of light full
 	sizeof(TEXT_elangel) - 1,			//beast mode GDW cut
+	sizeof(TEXT_nerdboy) - 1,			//candyland
 	sizeof(TEXT_usersniper) - 1,			//chaoz fantasy
 	sizeof(TEXT_elangel) - 1,			//chaoz impact
 	sizeof(TEXT_cloud54) - 1,		//clutterfunk 2
@@ -1126,6 +1138,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 		//at the speed of light 3
 	0, 		//at the speed of light full
 	0,			//beast mode GDW cut
+	0,			//candyland
 	0,			//chaoz fantasy
 	0,			//chaoz impact
 	0,		//clutterfunk 2
@@ -1206,6 +1219,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 		//at the speed of light 3
 	0, 		//at the speed of light full
 	0,			//beast mode GDW cut
+	0,			//candyland
 	0,			//chaoz fantasy
 	0,			//chaoz impact
 	0,		//clutterfunk 2
@@ -1285,6 +1299,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 		//at the speed of light 3
 	0, 		//at the speed of light full
 	0,			//beast mode GDW cut
+	0,			//candyland
 	0,			//chaoz fantasy
 	0,			//chaoz impact
 	0,		//clutterfunk 2
@@ -1365,6 +1380,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 		//at the speed of light 3
 	0, 		//at the speed of light full
 	0,			//beast mode GDW cut
+	0,			//candyland
 	0,			//chaoz fantasy
 	0,			//chaoz impact
 	0,		//clutterfunk 2
@@ -1449,6 +1465,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_atthespeedoflight3,
 	song_atthespeedoflightfull,
 	song_beast_mode_gdw_cut,
+	song_candyland,
 	song_chaozfantasy,
 	song_chaoz_impact,
 	song_clutterfunk_2,
