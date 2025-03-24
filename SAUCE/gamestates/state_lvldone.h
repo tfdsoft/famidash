@@ -908,9 +908,9 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_zenith,		//stereo madness
 	TEXT_aquamarine,				//back on track
 	TEXT_zenith,				//polargeist
-	0,				//dry out
+	TEXT_usersniper,				//dry out
 	TEXT_vikrinox,				//base after base
-	0,				//can't let go
+	TEXT_usersniper,				//can't let go
 	TEXT_zenith,		//jumper
 	TEXT_zenith,		//time machine
 	TEXT_aquamarine,				//cycles
@@ -938,7 +938,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel, 		//at the speed of light full
 	TEXT_elangel,			//beast mode GDW cut
 	0,			//chaoz fantasy
-	0,			//chaoz impact
+	TEXT_elangel,			//chaoz impact
 	TEXT_cloud54,		//clutterfunk 2
 	TEXT_elangel,		//death moon
 	TEXT_nerdboy,				//driving by night
@@ -947,9 +947,9 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_craftyjumper, 			//golden haze
 	TEXT_seaglowingpro,		//ground to space
 	TEXT_sussysy, 		//haunted woods
-	0,		//idols
+	TEXT_seaglowingpro,		//idols
 	TEXT_cloud54, 		//infernoplex
-	0, 		//infernoplex full
+	TEXT_cloud54, 		//infernoplex full
 	TEXT_seaglowingpro,		//just right
 	TEXT_seaglowingpro, 			//lost
 	TEXT_seaglowingpro,				//ludacris speed
@@ -985,9 +985,9 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_zenith) - 1,		//stereo madness
 	sizeof(TEXT_aquamarine) - 1,				//back on track
 	sizeof(TEXT_zenith) - 1,				//polargeist
-	0,				//dry out
+	sizeof(TEXT_usersniper) - 1,				//dry out
 	sizeof(TEXT_vikrinox) - 1,				//base after base
-	0,				//can't let go
+	sizeof(TEXT_usersniper) - 1,				//can't let go
 	sizeof(TEXT_zenith) - 1,		//jumper
 	sizeof(TEXT_zenith) - 1,		//time machine
 	sizeof(TEXT_aquamarine) - 1,				//cycles
@@ -1015,7 +1015,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1, 		//at the speed of light full
 	sizeof(TEXT_elangel) - 1,			//beast mode GDW cut
 	0,			//chaoz fantasy
-	0,			//chaoz impact
+	sizeof(TEXT_elangel) - 1,			//chaoz impact
 	sizeof(TEXT_cloud54) - 1,		//clutterfunk 2
 	sizeof(TEXT_elangel) - 1,		//death moon
 	sizeof(TEXT_nerdboy) - 1,				//driving by night
@@ -1024,9 +1024,9 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_craftyjumper) - 1, 			//golden haze
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
 	sizeof(TEXT_sussysy) - 1, 		//haunted woods
-	0,		//idols
+	sizeof(TEXT_seaglowingpro) - 1,		//idols
 	sizeof(TEXT_cloud54) - 1, 		//infernoplex
-	0, 		//infernoplex full
+	sizeof(TEXT_cloud54) - 1, 		//infernoplex full
 	sizeof(TEXT_seaglowingpro) - 1,		//just right
 	sizeof(TEXT_seaglowingpro) - 1, 			//lost
 	sizeof(TEXT_seaglowingpro) - 1,				//ludacris speed
@@ -1102,7 +1102,7 @@ const unsigned char* const coveringartists2[] = {
 	0,		//ground to space
 	0,		//idols
 	0, 		//infernoplex
-	0, 		//infernoplex full
+	TEXT_seaglowingpro, 		//infernoplex full
 	TEXT_elangel,		//just right
 	0, 		//haunted woods
 	0, 			//lost
@@ -1179,7 +1179,7 @@ const unsigned char coveringartists2_size[] = {
 	0,		//ground to space
 	0,		//idols
 	0, 		//infernoplex
-	0, 		//infernoplex full
+	sizeof(TEXT_seaglowingpro) - 1, 		//infernoplex full
 	sizeof(TEXT_elangel) - 1,		//just right
 	0, 		//haunted woods
 	0, 			//lost
