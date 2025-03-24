@@ -916,7 +916,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_aquamarine,				//cycles
 	TEXT_vikrinox,				//xstep
 	TEXT_aquamarine,		//clutterfunk
-	0,			//theory of everything
+	TEXT_vikrinox,			//theory of everything
 	TEXT_cloud54,		//electroman adventures
 	TEXT_cloud54,			//clubstep
 	TEXT_aquamarine,			//electrodynamix
@@ -924,7 +924,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel,		//blast processing
 	TEXT_vikrinox,			//theory of everything 2
 	0,		//geometrical dominator
-	TEXT_cloud54,				//deadlocked
+	TEXT_usersniper,				//deadlocked
 	TEXT_elangel,				//fingerbang
 	TEXT_craftyjumper,				//dash
 	TEXT_elangel, 			//the challenge
@@ -993,7 +993,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_aquamarine) - 1,				//cycles
 	sizeof(TEXT_vikrinox) - 1,				//xstep
 	sizeof(TEXT_aquamarine) - 1,		//clutterfunk
-	0,			//theory of everything
+	sizeof(TEXT_vikrinox) - 1,			//theory of everything
 	sizeof(TEXT_cloud54) - 1,		//electroman adventures
 	sizeof(TEXT_cloud54) - 1,			//clubstep
 	sizeof(TEXT_aquamarine) - 1,			//electrodynamix
@@ -1001,7 +1001,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1,		//blast processing
 	sizeof(TEXT_vikrinox) - 1,			//theory of everything 2
 	0,		//geometrical dominator
-	sizeof(TEXT_cloud54) - 1,				//deadlocked
+	sizeof(TEXT_usersniper) - 1,				//deadlocked
 	sizeof(TEXT_elangel) - 1,				//fingerbang
 	sizeof(TEXT_craftyjumper) - 1,				//dash
 	sizeof(TEXT_elangel) - 1, 			//the challenge
