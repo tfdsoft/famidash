@@ -1100,11 +1100,11 @@ const unsigned char* const coveringartists2[] = {
 	0, 				//freedom dive
 	TEXT_elangel, 			//golden haze
 	0,		//ground to space
+	0, 		//haunted woods
 	0,		//idols
 	0, 		//infernoplex
 	TEXT_seaglowingpro, 		//infernoplex full
 	TEXT_elangel,		//just right
-	0, 		//haunted woods
 	0, 			//lost
 	0,				//ludacris speed
 	0,			//machina GDW cut
@@ -1177,11 +1177,11 @@ const unsigned char coveringartists2_size[] = {
 	0, 				//freedom dive
 	sizeof(TEXT_elangel) - 1, 			//golden haze
 	0,		//ground to space
+	0, 		//haunted woods
 	0,		//idols
 	0, 		//infernoplex
 	sizeof(TEXT_seaglowingpro) - 1, 		//infernoplex full
 	sizeof(TEXT_elangel) - 1,		//just right
-	0, 		//haunted woods
 	0, 			//lost
 	0,				//ludacris speed
 	0,			//machina GDW cut
@@ -1253,11 +1253,11 @@ const unsigned char* const coveringartists3[] = {
 	0, 				//freedom dive
 	0, 			//golden haze
 	0,		//ground to space
+	0, 		//haunted woods
 	0,		//idols
 	0, 		//infernoplex
 	0, 		//infernoplex full
 	0,		//just right
-	0, 		//haunted woods
 	0, 			//lost
 	0,				//ludacris speed
 	0,			//machina GDW cut
@@ -1330,11 +1330,11 @@ const unsigned char coveringartists3_size[] = {
 	0, 				//freedom dive
 	0, 			//golden haze
 	0,		//ground to space
+	0, 		//haunted woods
 	0,		//idols
 	0, 		//infernoplex
 	0, 		//infernoplex full
 	0,		//just right
-	0, 		//haunted woods
 	0, 			//lost
 	0,				//ludacris speed
 	0,			//machina GDW cut
