@@ -243,11 +243,11 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_freedom,
 	0,		//retray / golden haze
 	TEXT_groundto,
+	0,		//haunted woods
 	0,		//idols
 	0,		//infernoplex
 	TEXT_2textinfernoplex,	//infernoplex full
 	0,		//just right
-	0,		//haunted woods
 	0,		//lost
 	TEXT_ludicrous,
 	TEXT_machina,
@@ -323,11 +323,11 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_freedom) - 1,	
 	0,		//retray / golden haze
 	sizeof(TEXT_groundto) - 1,	
+	0,		//haunted woods
 	0,		//idols
 	0,		//infernoplex
 	sizeof(TEXT_2textinfernoplex) - 1,	
 	0,		//just right
-	0,		//haunted woods
 	0,		//lost
 	sizeof(TEXT_ludicrous) - 1,	
 	sizeof(TEXT_machina) - 1,	
@@ -401,11 +401,11 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_freedom2,
 	TEXT_retray,
 	TEXT_groundto2,
+	TEXT_2textwoods,
 	TEXT_idols,
 	TEXT_2textinfernoplex,
 	TEXT_2textfullversion,
 	TEXT_2textjustright,
-	TEXT_2textwoods,
 	TEXT_2textlost,
 	TEXT_ludicrous2,
 	TEXT_GDW,
@@ -479,11 +479,11 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_freedom2) - 1,
 	sizeof(TEXT_retray) - 1,
 	sizeof(TEXT_groundto2) - 1,
+	sizeof(TEXT_2textwoods) - 1,
 	sizeof(TEXT_idols) - 1,
 	sizeof(TEXT_2textinfernoplex) - 1,
 	sizeof(TEXT_2textfullversion) - 1,
 	sizeof(TEXT_2textjustright) - 1,
-	sizeof(TEXT_2textwoods) - 1,
 	sizeof(TEXT_2textlost) - 1,
 	sizeof(TEXT_ludicrous2) - 1,
 	sizeof(TEXT_GDW) - 1,
