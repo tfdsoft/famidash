@@ -1992,14 +1992,14 @@ void update_text() {
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 13));
 	
 	__A__ = idx16_load_hi_NOC(coveringartists1, song);
-	if (__A__) draw_padded_text(coveringartists1[song & 0x7F], coveringartists1_size[song], 17, NTADR_A(7, 19));
-	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 19));
+	if (__A__) draw_padded_text(coveringartists1[song & 0x7F], coveringartists1_size[song], 16, NTADR_A(7, 19));
+	else one_vram_buffer_horz_repeat('$', 16, NTADR_A(7, 19));
 	__A__ = idx16_load_hi_NOC(coveringartists2, song);
-	if (__A__) draw_padded_text(coveringartists2[song & 0x7F], coveringartists2_size[song], 17, NTADR_A(7, 20));
-	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 20));
+	if (__A__) draw_padded_text(coveringartists2[song & 0x7F], coveringartists2_size[song], 16, NTADR_A(7, 20));
+	else one_vram_buffer_horz_repeat('$', 16, NTADR_A(7, 20));
 	__A__ = idx16_load_hi_NOC(coveringartists3, song);
-	if (__A__) draw_padded_text(coveringartists3[song & 0x7F], coveringartists3_size[song], 17, NTADR_A(7, 21));
-	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 21));
+	if (__A__) draw_padded_text(coveringartists3[song & 0x7F], coveringartists3_size[song], 16, NTADR_A(7, 21));
+	else one_vram_buffer_horz_repeat('$', 16, NTADR_A(7, 21));
 	__A__ = idx16_load_hi_NOC(coveringartists4, song);
 	if (__A__) draw_padded_text(coveringartists4[song & 0x7F], coveringartists4_size[song], 16, NTADR_A(7, 22));
 	else one_vram_buffer_horz_repeat('$', 16, NTADR_A(7, 22));
