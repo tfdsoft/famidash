@@ -1495,7 +1495,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 		//infernoplex
 	0, 		//infernoplex full
 	0, 		//jack russel
-	0,		//just right
+	TEXT_dan_harrison,		//just right
 	0,		//kesobomb
 	0, 			//lost
 	0,				//ludacris speed
@@ -1577,7 +1577,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 		//infernoplex
 	0, 		//infernoplex full
 	0, 		//jack russel
-	0,		//just right
+	sizeof(TEXT_dan_harrison) - 1,		//just right
 	0,		//kesobomb
 	0, 			//lost
 	0,				//ludacris speed
@@ -1999,8 +1999,8 @@ void update_text() {
 	if (__A__) draw_padded_text(coveringartists3[song & 0x7F], coveringartists3_size[song], 17, NTADR_A(7, 21));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 21));
 	__A__ = idx16_load_hi_NOC(coveringartists4, song);
-	if (__A__) draw_padded_text(coveringartists4[song & 0x7F], coveringartists4_size[song], 17, NTADR_A(7, 22));
-	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 22));
+	if (__A__) draw_padded_text(coveringartists4[song & 0x7F], coveringartists4_size[song], 16, NTADR_A(7, 22));
+	else one_vram_buffer_horz_repeat('$', 16, NTADR_A(7, 22));
 }	
 
 CODE_BANK_POP()
