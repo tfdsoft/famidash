@@ -583,6 +583,7 @@ const unsigned char TEXT_interworld[]="INTERWORLD";
 const unsigned char TEXT_tobu[]="TOBU";
 const unsigned char TEXT_acidnotation[]="ACID$NOTATION";
 const unsigned char TEXT_dominuus[]="DOMINUUS";
+const unsigned char TEXT_rymdkraft[]="RYMDKRAFT";
 
 
 const unsigned char TEXT_seaglowingpro[]="SEAGLOWINGPRO";
@@ -597,7 +598,8 @@ const unsigned char TEXT_cloud54[]="CLOUD54";
 const unsigned char TEXT_usersniper[]="USERSNIPER";
 const unsigned char TEXT_sussysy[]="SUSSYSY";
 const unsigned char TEXT_clickerty[]="CLICKERTY";
-const unsigned char TEXT_rymdkraft[]="RYMDKRAFT";
+const unsigned char TEXT_zukinnyk[]="ZUKINNYK";
+const unsigned char TEXT_leejh20[]="LEEJH20";
 
 
 
@@ -1118,22 +1120,22 @@ const unsigned char coveringartists1_size[] = {
 const unsigned char* const coveringartists2[] = {
 	0, 			//menu theme
 	0, 			//menu theme 2.2
-	0,		//stereo madness
+	TEXT_usersniper,		//stereo madness
 	0,				//back on track
 	TEXT_usersniper,				//polargeist
 	0,				//dry out
-	0,				//base after base
-	0,				//can't let go
-	0,		//jumper
+	TEXT_usersniper,				//base after base
+	TEXT_alexmush,				//can't let go
+	TEXT_zukinnyk,		//jumper
 	TEXT_vikrinox,		//time machine
 	TEXT_alexmush,				//cycles
-	0,				//xstep
+	TEXT_alexmush,				//xstep
 	TEXT_vikrinox,		//clutterfunk
-	0,			//theory of everything
-	0,		//electroman adventures
+	TEXT_usersniper,			//theory of everything
+	TEXT_usersniper,		//electroman adventures
 	0,			//clubstep
 	0,			//electrodynamix
-	0,		//hexagon force
+	TEXT_alexmush,		//hexagon force
 	0,		//blast processing
 	0,			//theory of everything 2
 	0,		//geometrical dominator
@@ -1200,22 +1202,22 @@ const unsigned char* const coveringartists2[] = {
 const unsigned char coveringartists2_size[] = {
 	0, 			//menu theme
 	0, 			//menu theme 2.2
-	0,		//stereo madness
+	sizeof(TEXT_usersniper) - 1,		//stereo madness
 	0,				//back on track
 	sizeof(TEXT_usersniper) - 1,				//polargeist
 	0,				//dry out
-	0,				//base after base
-	0,				//can't let go
-	0,		//jumper
+	sizeof(TEXT_usersniper) - 1,				//base after base
+	sizeof(TEXT_alexmush) - 1,				//can't let go
+	sizeof(TEXT_zukinnyk) - 1,		//jumper
 	sizeof(TEXT_vikrinox) - 1,		//time machine
 	sizeof(TEXT_alexmush) - 1,				//cycles
-	0,				//xstep
+	sizeof(TEXT_alexmush) - 1,				//xstep
 	sizeof(TEXT_vikrinox) - 1,		//clutterfunk
-	0,			//theory of everything
-	0,		//electroman adventures
+	sizeof(TEXT_usersniper) - 1,			//theory of everything
+	sizeof(TEXT_usersniper) - 1,		//electroman adventures
 	0,			//clubstep
 	0,			//electrodynamix
-	0,		//hexagon force
+	sizeof(TEXT_alexmush) - 1,		//hexagon force
 	0,		//blast processing
 	0,			//theory of everything 2
 	0,		//geometrical dominator
@@ -1285,15 +1287,15 @@ const unsigned char* const coveringartists3[] = {
 	0,				//back on track
 	TEXT_vikrinox,				//polargeist
 	0,				//dry out
-	0,				//base after base
+	TEXT_zenith,				//base after base
 	0,				//can't let go
-	0,		//jumper
-	0,		//time machine
+	TEXT_usersniper,		//jumper
+	TEXT_alexmush,		//time machine
 	0,				//cycles
 	0,				//xstep
 	TEXT_zenith,		//clutterfunk
-	0,			//theory of everything
-	0,		//electroman adventures
+	TEXT_zenith,			//theory of everything
+	TEXT_alexmush,		//electroman adventures
 	0,			//clubstep
 	0,			//electrodynamix
 	0,		//hexagon force
@@ -1367,14 +1369,177 @@ const unsigned char coveringartists3_size[] = {
 	0,				//back on track
 	sizeof(TEXT_vikrinox) - 1,				//polargeist
 	0,				//dry out
-	0,				//base after base
+	sizeof(TEXT_zenith) - 1,				//base after base
+	0,				//can't let go
+	sizeof(TEXT_usersniper) - 1,		//jumper
+	sizeof(TEXT_alexmush) - 1,		//time machine
+	0,				//cycles
+	0,				//xstep
+	sizeof(TEXT_zenith) - 1,		//clutterfunk
+	sizeof(TEXT_zenith) - 1,			//theory of everything
+	sizeof(TEXT_alexmush) - 1,		//electroman adventures
+	0,			//clubstep
+	0,			//electrodynamix
+	0,		//hexagon force
+	0,		//blast processing
+	0,			//theory of everything 2
+	0,		//geometrical dominator
+	0,				//deadlocked
+	0,				//fingerbang
+	0,				//dash
+	0, 			//the challenge
+	0, 			//practice
+	0, 	//scheming weasel
+	
+	0, 		//8-bit against the odds redux
+	0, 		//at the speed of light 1
+	0, 		//at the speed of light 2
+	0, 		//at the speed of light 3
+	0, 		//at the speed of light full
+	0,			//beast mode GDW cut
+	0,			//candyland
+	0,			//chaoz fantasy
+	0,			//chaoz impact
+	0,		//clutterfunk 2
+	0,		//death moon
+	0,				//driving by night
+	0, 		//endgame
+	0, 				//freedom dive
+	0, 				//glint
+	0, 			//golden haze
+	0,		//ground to space
+	0, 		//haunted woods
+	0, 		//hell
+	0,		//idols
+	0, 		//infernoplex
+	0, 		//infernoplex full
+	0, 		//jack russel
+	0,		//just right
+	0,		//kesobomb
+	0, 			//lost
+	0,				//ludacris speed
+	0,			//machina GDW cut
+	0,				//magic touch
+	0,		//mayhem short ver
+	0,		//mayhem
+	0,		//metamorphasis
+	0,		//midnight
+	0,			//ninox
+	0,			//okiba crackdown
+	0,			//payload GDW cut
+	0,				//problematic
+	0,			//pyrophoric
+	0,			//rainbow tylenol
+	0,			//stalemate
+	0,			//stalemate full
+	0,		//stereo madness2
+	0,		//subtle oddities
+	0,			//the angel
+	0,		//thoughts
+	0,				//ultimate destruction
+	0,		//you've been trolled
+	0,			//what's a future funk
+	0,			//windfall
+	0,			//years GDW cut
+};
+
+const unsigned char* const coveringartists4[] = {
+	0, 			//menu theme
+	0, 			//menu theme 2.2
+	0,		//stereo madness
+	0,				//back on track
+	0,				//polargeist
+	0,				//dry out
+	TEXT_alexmush,				//base after base
 	0,				//can't let go
 	0,		//jumper
 	0,		//time machine
 	0,				//cycles
 	0,				//xstep
-	sizeof(TEXT_zenith) - 1,		//clutterfunk
-	0,			//theory of everything
+	0,		//clutterfunk
+	TEXT_leejh20,			//theory of everything
+	0,		//electroman adventures
+	0,			//clubstep
+	0,			//electrodynamix
+	0,		//hexagon force
+	0,		//blast processing
+	0,			//theory of everything 2
+	0,		//geometrical dominator
+	0,				//deadlocked
+	0,				//fingerbang
+	0,				//dash
+	0, 			//the challenge
+	0, 			//practice
+	0, 	//scheming weasel
+	
+	0, 		//8-bit against the odds redux
+	0, 		//at the speed of light 1
+	0, 		//at the speed of light 2
+	0, 		//at the speed of light 3
+	0, 		//at the speed of light full
+	0,			//beast mode GDW cut
+	0,			//candyland
+	0,			//chaoz fantasy
+	0,			//chaoz impact
+	0,		//clutterfunk 2
+	0,		//death moon
+	0,				//driving by night
+	0, 		//endgame
+	0, 				//freedom dive
+	0, 				//glint
+	0, 			//golden haze
+	0,		//ground to space
+	0, 		//haunted woods
+	0, 		//hell
+	0,		//idols
+	0, 		//infernoplex
+	0, 		//infernoplex full
+	0, 		//jack russel
+	0,		//just right
+	0,		//kesobomb
+	0, 			//lost
+	0,				//ludacris speed
+	0,			//machina GDW cut
+	0,				//magic touch
+	0,		//mayhem short ver
+	0,		//mayhem
+	0,		//metamorphasis
+	0,		//midnight
+	0,			//ninox
+	0,			//okiba crackdown
+	0,			//payload GDW cut
+	0,				//problematic
+	0,			//pyrophoric
+	0,			//rainbow tylenol
+	0,			//stalemate
+	0,			//stalemate full
+	0,		//stereo madness2
+	0,		//subtle oddities
+	0,			//the angel
+	0,		//thoughts
+	0,				//ultimate destruction
+	0,		//you've been trolled
+	0,			//what's a future funk
+	0,			//windfall
+	0,			//years GDW cut
+};
+
+
+const unsigned char coveringartists4_size[] = {
+	0, 			//menu theme
+	0, 			//menu theme 2.2
+	0,		//stereo madness
+	0,				//back on track
+	0,				//polargeist
+	0,				//dry out
+	sizeof(TEXT_alexmush) - 1,				//base after base
+	0,				//can't let go
+	0,		//jumper
+	0,		//time machine
+	0,				//cycles
+	0,				//xstep
+	0,		//clutterfunk
+	sizeof(TEXT_leejh20) - 1,			//theory of everything
 	0,		//electroman adventures
 	0,			//clubstep
 	0,			//electrodynamix
@@ -1620,28 +1785,31 @@ void bgmtest() {
 			}
 		}			
 	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
-	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 18, NTADR_A(7, 7));
+	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 7));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 7));
 	__A__ = idx16_load_hi_NOC(xbgmtexts2, song);
-	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 18, NTADR_A(7, 8));
+	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 17, NTADR_A(7, 8));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 8));
 	
 	__A__ = idx16_load_hi_NOC(origartists1, song);
-	if (__A__) draw_padded_text(origartists1[song & 0x7F], origartists1_size[song], 18, NTADR_A(7, 14));
+	if (__A__) draw_padded_text(origartists1[song & 0x7F], origartists1_size[song], 17, NTADR_A(7, 14));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 14));
 	__A__ = idx16_load_hi_NOC(origartists2, song);
-	if (__A__) draw_padded_text(origartists2[song & 0x7F], origartists2_size[song], 18, NTADR_A(7, 13));
+	if (__A__) draw_padded_text(origartists2[song & 0x7F], origartists2_size[song], 17, NTADR_A(7, 13));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 13));
 	
 	__A__ = idx16_load_hi_NOC(coveringartists1, song);
-	if (__A__) draw_padded_text(coveringartists1[song & 0x7F], coveringartists1_size[song], 18, NTADR_A(7, 19));
+	if (__A__) draw_padded_text(coveringartists1[song & 0x7F], coveringartists1_size[song], 17, NTADR_A(7, 19));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 19));
 	__A__ = idx16_load_hi_NOC(coveringartists2, song);
-	if (__A__) draw_padded_text(coveringartists2[song & 0x7F], coveringartists2_size[song], 18, NTADR_A(7, 20));
+	if (__A__) draw_padded_text(coveringartists2[song & 0x7F], coveringartists2_size[song], 17, NTADR_A(7, 20));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 20));
 	__A__ = idx16_load_hi_NOC(coveringartists3, song);
-	if (__A__) draw_padded_text(coveringartists3[song & 0x7F], coveringartists3_size[song], 18, NTADR_A(7, 21));
+	if (__A__) draw_padded_text(coveringartists3[song & 0x7F], coveringartists3_size[song], 17, NTADR_A(7, 21));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 21));
+//	__A__ = idx16_load_hi_NOC(coveringartists4, song);
+//	if (__A__) draw_padded_text(coveringartists4[song & 0x7F], coveringartists4_size[song], 17, NTADR_A(7, 22));
+//	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 22));
 	
 //	draw_padded_text(sfxtexts[sfx & 0x7F], sfxtexts_size[sfx], 18, NTADR_A(7, 18));
 
@@ -1689,7 +1857,7 @@ void bgmtest() {
 
 
 
-const unsigned char bgmtestscreen[449]={
+const unsigned char bgmtestscreen[470]={
 0x01,0x02,0x01,0x04,0xae,0x02,0x01,0x13,0xae,0x02,0x01,0x09,0xaf,0x02,0x01,0x13,
 0xaf,0x02,0x01,0x06,0x06,0x07,0x04,0x01,0x17,0x06,0x07,0x02,0x01,0x03,0x08,0x09,
 0x05,0x01,0x17,0x08,0x09,0x02,0x01,0x03,0x0c,0xff,0x01,0x19,0x0d,0x02,0x01,0x03,
@@ -1706,20 +1874,22 @@ const unsigned char bgmtestscreen[449]={
 0x01,0x03,0x0c,0xff,0x01,0x06,0xe3,0xef,0xf6,0xe5,0xf2,0xe5,0xe4,0xff,0xe2,0xf9,
 0xff,0x01,0x08,0x0d,0x02,0x01,0x03,0x0c,0xff,0x5c,0xfe,0x01,0x15,0x5d,0xff,0x0d,
 0x02,0x01,0x03,0x0c,0xff,0xfe,0x01,0x17,0xff,0x0d,0x02,0x01,0x03,0x0c,0xff,0xfe,
-0x01,0x17,0xff,0x0d,0x02,0x01,0x03,0x0c,0xff,0x6c,0xfe,0x01,0x15,0x6d,0xff,0x0d,
-0x02,0x01,0x03,0x0c,0xff,0x01,0x19,0x0d,0x02,0x01,0x03,0x0c,0xff,0xff,0xf3,0xe5,
-0xec,0xe5,0xe3,0xf4,0xe0,0xff,0xf3,0xe5,0xf4,0xff,0xed,0xe5,0xee,0xf5,0xff,0xed,
-0xf5,0xf3,0xe9,0xe3,0xff,0xff,0x0d,0x02,0x01,0x03,0x0c,0xff,0xff,0xf0,0xf2,0xe5,
-0xf3,0xf3,0xff,0xe1,0xff,0xf4,0xef,0xff,0xf0,0xec,0xe1,0xf9,0xff,0xe0,0xff,0xf3,
-0xf4,0xef,0xf0,0xff,0xff,0x0d,0x02,0x01,0x03,0x0c,0xff,0x01,0x03,0xf0,0xf2,0xe5,
-0xf3,0xf3,0xff,0xe2,0xff,0xf4,0xef,0xff,0xf2,0xe5,0xf4,0xf5,0xf2,0xee,0xff,0x01,
-0x04,0x0d,0x02,0x01,0x03,0x0a,0x0b,0x04,0x01,0x09,0x06,0x0e,0x0e,0x07,0x04,0x01,
-0x09,0x0a,0x0b,0x02,0x01,0x05,0x05,0x01,0x09,0x08,0x05,0x05,0x09,0x05,0x01,0x09,
-0x02,0x01,0x43,0xff,0x5c,0x5f,0x01,0x03,0x53,0xff,0x77,0x00,0x01,0x05,0xdd,0x77,
-0x00,0x01,0x05,0xdd,0x77,0x00,0x01,0x05,0xdd,0x77,0x00,0x01,0x05,0xdd,0x77,0x00,
-0x01,0x05,0xdd,0xf7,0x50,0x50,0xd0,0x70,0x50,0x50,0xfd,0x0f,0x01,0x06,0x0f,0x01,
-0x00
+0x01,0x17,0xff,0x0d,0x02,0x01,0x03,0x0c,0xff,0xfe,0x01,0x17,0xff,0x0d,0x02,0x01,
+0x03,0x0c,0xff,0xfe,0x01,0x17,0xff,0x0d,0x02,0x01,0x03,0x0c,0xff,0x6c,0xfe,0x01,
+0x15,0x6d,0xff,0x0d,0x02,0x01,0x03,0x0c,0xff,0x01,0x19,0x0d,0x02,0x01,0x03,0x0c,
+0xff,0xff,0xf3,0xe5,0xec,0xe5,0xe3,0xf4,0xe0,0xff,0xf3,0xe5,0xf4,0xff,0xed,0xe5,
+0xee,0xf5,0xff,0xed,0xf5,0xf3,0xe9,0xe3,0xff,0xff,0x0d,0x02,0x01,0x03,0x0c,0xff,
+0xff,0xf0,0xf2,0xe5,0xf3,0xf3,0xff,0xe1,0xff,0xf4,0xef,0xff,0xf0,0xec,0xe1,0xf9,
+0xff,0xe0,0xff,0xf3,0xf4,0xef,0xf0,0xff,0xff,0x0d,0x02,0x01,0x03,0x0c,0xff,0x01,
+0x03,0xf0,0xf2,0xe5,0xf3,0xf3,0xff,0xe2,0xff,0xf4,0xef,0xff,0xf2,0xe5,0xf4,0xf5,
+0xf2,0xee,0xff,0x01,0x04,0x0d,0x02,0x01,0x03,0x0a,0x0b,0x04,0x01,0x09,0x06,0x0e,
+0x0e,0x07,0x04,0x01,0x09,0x0a,0x0b,0x02,0x01,0x05,0x05,0x01,0x09,0x08,0x05,0x05,
+0x09,0x05,0x01,0x09,0x02,0x01,0x03,0xff,0x5c,0x5f,0x01,0x03,0x53,0xff,0x77,0x00,
+0x01,0x05,0xdd,0x77,0x00,0x01,0x05,0xdd,0x77,0x00,0x01,0x05,0xdd,0x77,0x00,0x01,
+0x05,0xdd,0x77,0x00,0x01,0x05,0xdd,0x77,0x00,0x01,0x05,0xdd,0x0f,0x05,0x05,0x0d,
+0x07,0x05,0x05,0x0f,0x01,0x00
 };
+
 
 
 
