@@ -238,6 +238,10 @@
 			fmsSongName: "subtle oddities",
 			upperText: "SUBTLE",
 			lowerText: "ODDITIES"
+		},
+		{
+			fmsSongName: "Hell",
+			lowerText: "HELL"
 		}
 	],
 	SFX: [
