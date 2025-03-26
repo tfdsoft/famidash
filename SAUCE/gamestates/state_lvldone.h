@@ -570,6 +570,7 @@ const unsigned char TEXT_magictouch[]="MAGIC$TOUCH";
 const unsigned char TEXT_pyrophoric[]="PYROPHORIC";
 const unsigned char TEXT_subtle[]="SUBTLE";
 const unsigned char TEXT_subtle2[]="ODDITIES";
+const unsigned char TEXT_hell[]="HELL";
 const unsigned char TEXT_cantletgo[]="CANT$LET$GO";
 
 
@@ -644,7 +645,8 @@ const unsigned char* const xbgmtexts1[] = {
 	0,
 	0,
 	0,
-	TEXT_subtle
+	TEXT_subtle,
+	0,
 };
 
 const unsigned char* const xbgmtexts2[] = {
@@ -685,7 +687,8 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_speedracer,
 	TEXT_magictouch,
 	TEXT_pyrophoric,
-	TEXT_subtle2
+	TEXT_subtle2,
+	TEXT_hell,
 };
 
 const unsigned char xbgmtext2_size[] = {
@@ -727,6 +730,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_magictouch) - 1,
 	sizeof(TEXT_pyrophoric) - 1,
 	sizeof(TEXT_subtle2) - 1,
+	sizeof(TEXT_hell) - 1,
 };
 const unsigned char xbgmtext1_size[] = {
 	0,
@@ -767,6 +771,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	sizeof(TEXT_subtle) - 1,	
+	0,
 };
 
 
@@ -809,6 +814,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_magic_touch,
 	song_pyrophoric,
 	song_subtle_oddities,
+	song_hell,
 };
 
 

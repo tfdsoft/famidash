@@ -72,6 +72,7 @@ const uint8_t xbgm_lookup_table[] = {
 	song_magic_touch,
 	song_pyrophoric,
 	song_subtle_oddities,
+	song_hell,
 };
 
 
