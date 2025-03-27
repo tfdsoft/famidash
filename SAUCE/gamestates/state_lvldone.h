@@ -996,7 +996,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_nerdboy,				//driving by night
 	TEXT_vikrinox, 		//endgame
 	TEXT_seaglowingpro, 				//freedom dive
-	TEXT_nerdboy, 				//glint
+	TEXT_seaglowingpro, 				//glint
 	TEXT_craftyjumper, 			//golden haze
 	TEXT_seaglowingpro,		//ground to space
 	TEXT_sussysy, 		//haunted woods
@@ -1078,7 +1078,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_nerdboy) - 1,				//driving by night
 	sizeof(TEXT_vikrinox) - 1, 		//endgame
 	sizeof(TEXT_seaglowingpro) - 1, 				//freedom dive
-	sizeof(TEXT_nerdboy) - 1, 				//glint
+	sizeof(TEXT_seaglowingpro) - 1, 				//glint
 	sizeof(TEXT_craftyjumper) - 1, 			//golden haze
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
 	sizeof(TEXT_sussysy) - 1, 		//haunted woods
