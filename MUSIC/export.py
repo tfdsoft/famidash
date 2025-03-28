@@ -30,9 +30,9 @@ asmDpcmSongHeaderMatchRegex = r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\
 asmDpcmSongHeaderIdxRegex = r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song(\d+).*?$\n){5}^\t.word \d+,\d+.*?$\n)'
 asmDpcmSongMatchRegex = lambda x : r'(?ms:(^@song' + x + r'\S*:.*?)(?=^@song(?!' + x + r')))' #BUG: currently doesn't match if the dpcm song is the last
 
-musBankSegPrefix = "MUS_BANK_"
-dmcBankSegPrefix = "DMC_BANK_"
+datBankSegPrefix = "DAT_BANK_"
 dmcBankMetaUnused = 63  # a special dmc bank for shit to go unused
+lastDatBank = 0x33
 
 musicFolder = pathlib.Path(sys.path[0]).resolve()
 tmpFolder = (musicFolder.parent / "TMP").resolve()
@@ -244,6 +244,8 @@ if __name__ == "__main__":
     if dpcmError:
         ValueError("DPCM files were not identical. Please check the dpcm aligner for containing all samples.")
         exit(4)    
+
+    dpcmBanks = sorted(list(map(int, dpcmBanks)))
     
     print("\n==== Exporting miscellaneous files...")
     print("== musicPlayRoutines.s")
@@ -273,25 +275,27 @@ if __name__ == "__main__":
 
     # Export segment assignment
     print("== header.s")
+    lastAfterDatBank = lastDatBank + 1
+    firstDmcBank = lastAfterDatBank - len([i for i in dpcmBanks if i != dmcBankMetaUnused])
+    firstMusBank = firstDmcBank - len(bins)
     header_data = [
         '; Music data banks',
-        f'.segment "{musBankSegPrefix}00"',
+        f'.segment "{datBankSegPrefix}{firstMusBank:02X}"',
         '\tfirstMusicBankPtr := *',
         f'\t.include "{exportStemPrefix}_0.s"'
     ]
     if (len(bins) > 1):
-        header_data += [f'.segment "{musBankSegPrefix}{i:02X}"\n\t.include "{exportStemPrefix}_{i}.s"' for i in range(1, len(bins))]
+        header_data += [f'.segment "{datBankSegPrefix}{i+firstMusBank:02X}"\n\t.include "{exportStemPrefix}_{i}.s"' for i in range(1, len(bins))]
 
     if (len(dpcmBanks)):
-        dpcmBanks = sorted(list(map(int, dpcmBanks)))
         header_data += [
             '',
             '; DMC banks',
-            f'.segment "{dmcBankSegPrefix}00"',
+            f'.segment "{datBankSegPrefix}{firstDmcBank:02X}"',
             '\tfirstDMCBankPtr := *',
             f'\t.incbin "{exportStemPrefix}_bank{dpcmBanks[0]}.dmc"',
         ]
-        header_data += [f'.segment "{dmcBankSegPrefix}{i:02X}"\n\t.incbin "{exportStemPrefix}_bank{bank}.dmc"' for i, bank in enumerate(dpcmBanks[1:], 1) if bank != dmcBankMetaUnused]
+        header_data += [f'.segment "{datBankSegPrefix}{i+firstDmcBank:02X}"\n\t.incbin "{exportStemPrefix}_bank{bank}.dmc"' for i, bank in enumerate(dpcmBanks[1:], 1) if bank != dmcBankMetaUnused]
 
     header_data += [
         '',
