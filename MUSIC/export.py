@@ -39,8 +39,8 @@ tmpFolder = (musicFolder.parent / "TMP").resolve()
 # Source code @ https://github.com/BleuBleu/FamiStudio/blob/master/FamiStudio/Source/Utils/Utils.cs
 # Function name: Utils.MakeNiceAsmName
 # Make sure to keep this updated
-def makeNiceAsmName(name : str, allowDash : bool = True):
-    niceName = "";
+def makeNiceAsmName(name : str, allowDash : bool = True) -> str:
+    niceName = ""
     for c in name:
         if (c.isalnum()):
             niceName += c.lower();
@@ -51,6 +51,55 @@ def makeNiceAsmName(name : str, allowDash : bool = True):
         elif (c == '_'):
             niceName += c
     return niceName
+
+def convertTextToMenuFormat(name : str | None) -> str | None:
+    if name == None:
+        return None
+    niceName = ""
+    for c in name:
+        if (c.isalpha() and c.isupper()) or (c.isdigit()):
+            niceName += c
+        elif (c.isspace()):
+            niceName += "$"
+        else:
+            print(f"Warning: illegal character '{c}' detected in sound test string '{name}'. Will be omitted.")
+    return niceName
+
+def processMetadata(metadata : dict) -> dict:
+    songlist = [i for i in metadata['songs'] if 'fmsSongName' in i.keys()] # filter out commented out songs
+
+    # Get song names
+    songNameList = ['song_' + makeNiceAsmName(i.get('fmsSongName')) for i in songlist]
+    vsSongNameList = ['song_' + makeNiceAsmName(i.get('fmsSongName')) for i in songlist if i.get('vsSystemEnabled') == True]
+
+    # Optimize text usage
+    upperTextList = [i.get('upperText') for i in songlist]
+    lowerTextList = [i.get('lowerText') for i in songlist]
+    totalTextList = [i for i in upperTextList + lowerTextList if i]
+    totalTextSet = tuple(sorted(set(totalTextList), key=lambda x : totalTextList.index(x)))
+
+    # Get indices, convert to displayable format
+    upperIdxList = [totalTextSet.index(i) if i else None for i in upperTextList]
+    lowerIdxList = [totalTextSet.index(i) if i else None for i in lowerTextList]
+    processedTextList = tuple(map(convertTextToMenuFormat, totalTextSet))
+
+    outputStringsList = [f'const char soundTestString{i}[{len(s)}] = "{s}";' for i, s in enumerate(processedTextList)]
+    upperArrayList = [f'\tsoundTestString{i},' if i != None else '\t0,' for i in upperIdxList]
+    upperSizeArrayList = [f'\tsizeof(soundTestString{i}),' if i != None else '\t0,' for i in upperIdxList]
+    lowerArrayList = [f'\tsoundTestString{i},' if i != None else '\t0,' for i in lowerIdxList]
+    lowerSizeArrayList = [f'\tsizeof(soundTestString{i}),' if i != None else '\t0,' for i in lowerIdxList]
+
+    return {
+        'filteredSongList': songlist,
+        'songNames': songNameList,
+        'vsSongNames': vsSongNameList,
+        'outStrings': outputStringsList,
+        'upperPtrs': upperArrayList,
+        'upperSizes': upperSizeArrayList,
+        'lowerPtrs': lowerArrayList,
+        'lowerSizes': lowerSizeArrayList
+    }
+
 
 if __name__ == "__main__":
     # install binpacking
@@ -115,6 +164,10 @@ if __name__ == "__main__":
     with metadataPath.open() as fp:
         metadata = json.load(fp)
     
+    # Process metadata
+    print("\n==== Processing metadata...")
+    processed_metadata = processMetadata(metadata)
+
     # Check FamiStudio version
     print("\n==== Checking FamiStudio version...")
     proc = subprocess.run(['dotnet', fsPath, '-help'], capture_output=True)
@@ -140,7 +193,7 @@ if __name__ == "__main__":
         exit(2)
 
     songNames = re.findall(songNameRegex, fsTxt)
-    neededSongNames = [i['fmsSongName'] for i in metadata['songs'] if 'fmsSongName' in i.keys()]
+    neededSongNames = [i['fmsSongName'] for i in processed_metadata['filteredSongList']]
     neededSongs = [i for i in range(len(songNames)) if songNames[i] in neededSongNames]
 
     if len(songNames) == 0:
@@ -275,9 +328,9 @@ if __name__ == "__main__":
     bank_table_data = [
         ".if .not(useConstInitPtr)",
         "music_data_locations_lo:",
-        f"\t.byte " + ", ".join([f"<music_data_famidash_music{i}" for i in range(len(bins))]),
+        f"\t.byte " + ", ".join([f"<{asmMusicDataName}{i}" for i in range(len(bins))]),
         "music_data_locations_hi:",
-        f"\t.byte " + ",".join([f">music_data_famidash_music{i}" for i in range(len(bins))]),
+        f"\t.byte " + ",".join([f">{asmMusicDataName}{i}" for i in range(len(bins))]),
         ".endif",
         "",
         "music_counts:",
@@ -328,6 +381,55 @@ if __name__ == "__main__":
         header_data.append('FIRST_DMC_BANK = .bank(firstDMCBankPtr)')
     (exportPath / "header.s").write_text("\n".join(header_data))
 
+    print(f"== {exportStemPrefix}_soundTestTables.h")
+    soundTestTextData = [
+        '#if !__VS_SYSTEM',
+        '',
+        '#include "defines/bgm_charmap.h"',
+        '',
+        *processed_metadata['outStrings'],
+        '', '',
+        'const char* const xbgmtextsUpper[] = {',
+        *processed_metadata['upperPtrs'],
+        '};',
+        '',
+        'const uint8_t xbgmtextsUpperSize[] = {',
+        *processed_metadata['upperSizes'],
+        '};',
+        '', '',
+        'const char* const xbgmtextsLower[] = {',
+        *processed_metadata['lowerPtrs'],
+        '};',
+        '',
+        'const uint8_t xbgmtextsLowerSize[] = {',
+        *processed_metadata['lowerSizes'],
+        '};',
+        '',
+        '#else',
+        '',
+        'const char* const xbgmtextsUpper[] = {};',
+        'const uint8_t xbgmtextsUpperSize[] = {};',
+        'const char* const xbgmtextsLower[] = {};',
+        'const uint8_t xbgmtextsLowerSize[] = {};',
+        '',
+        '#endif',
+        '', '', '',
+        'CODE_BANK_PUSH("RODATA")',
+        '',
+        '#if !__VS_SYSTEM',
+        '',
+        'const uint8_t xbgmlookuptable[] = {',
+        *[f"\t{i}," for i in processed_metadata['songNames']],
+        '};', '', '#else', '',
+        'const uint8_t xbgmlookuptable[] = {',
+        '\t0,',
+        *[f"\t{i}," for i in processed_metadata['vsSongNames']],
+        '};', '', '#endif', '', 
+        'CODE_BANK_POP()',
+        ''
+    ]
+    (exportPath / f"{exportStemPrefix}_soundTestTables.h").write_text("\n".join(soundTestTextData))
+
     # Print which options to set
     print("\n==== Don't forget to set these options in the sound driver:")
     print("\n".join(re.findall(actualOptionRegex, "\n".join(list(set(optionsToSet))))))
@@ -336,5 +438,5 @@ if __name__ == "__main__":
         print("\n==== The export is over, now manually correct stuff as per the contributing guide")
     else:
         print("\n==== Everything seems to have gone alright, you can run it for real now.")
-        for glob in [f"{exportStemPrefix}*.s", f"{exportStemPrefix}*.dmc", f"{exportStemPrefix}_songlist.inc", f"{exportStemPrefix}Defines.h"]:
+        for glob in [f"{exportStemPrefix}*.s", f"{exportStemPrefix}*.dmc", f"{exportStemPrefix}_songlist.inc", f"{exportStemPrefix}Defines.h", f"header.s", f"{exportStemPrefix}_soundTestTables.h"]:
             [i.unlink(missing_ok = True) for i in exportPath.glob(glob)]

@@ -415,66 +415,6 @@ CODE_BANK_PUSH("XCD_BANK_05")
 const unsigned char bgmtestscreen[];
 
 #include "defines/bgm_charmap.h"
-const unsigned char TEXT_xlevel1text1[]="STEREO$";
-const unsigned char TEXT_xlevel1text2[]="BACK$ON";
-const unsigned char TEXT_xlevel1text5[]="BASE$AFTER";
-const unsigned char TEXT_xlevel1textC[]="THEORY$OF";
-const unsigned char TEXT_xlevel1textD[]="ELECTROMAN";
-const unsigned char TEXT_xweasel[]="SCHEMING";
-const unsigned char TEXT_challenge[]="THE";
-const unsigned char TEXT_hexagon[]="HEXAGON";
-const unsigned char TEXT_blast[]="BLAST";
-const unsigned char TEXT_speed[]="AT$THE$SPEED";
-const unsigned char TEXT_crackdown[]="OKIBA";
-const unsigned char TEXT_against[]="8$BIT$AGAINST";
-const unsigned char TEXT_geometrical[]="GEOMETRICAL";
-const unsigned char TEXT_driving[]="DRIVING$BY";
-
-
-const unsigned char TEXT_xlevel2text1[]="MADNESS";
-const unsigned char TEXT_xlevel2text2[]="TRACK";
-const unsigned char TEXT_xlevel2text3[]="POLARGEIST";
-const unsigned char TEXT_xlevel2text4[]="DRY$OUT";
-const unsigned char TEXT_xlevel2text5[]="BASE";
-const unsigned char TEXT_xlevel2text6[]="CANT$LET$GO";
-const unsigned char TEXT_xlevel2text7[]="JUMPER";
-const unsigned char TEXT_xlevel2text8[]="TIME$MACHINE";
-const unsigned char TEXT_xlevel2text9[]="CYCLES";
-const unsigned char TEXT_xlevel2textA[]="XSTEP";
-const unsigned char TEXT_xlevel2textB[]="CLUTTERFUNK";
-const unsigned char TEXT_xlevel2textC[]="EVERYTHING";
-const unsigned char TEXT_xlevel22textC[]="EVERYTHING$2";
-const unsigned char TEXT_xlevel2textD[]="ADVENTURES";
-const unsigned char TEXT_xlevel2textE[]="DECODE";
-const unsigned char TEXT_2texteveryend[]="EVERY$END";
-const unsigned char TEXT_2texteon[]="EON";
-const unsigned char TEXT_2textelectrodynamix[]="ELECTRODYNAMIX";
-const unsigned char TEXT_2textmidnight[]="MIDNIGHT";
-const unsigned char TEXT_2textclubstep[]="CLUBSTEP";
-const unsigned char TEXT_2textpractice[]="PRACTICE";
-const unsigned char TEXT_2textmenu[]="MENU";
-const unsigned char TEXT_2textweasel[]="WEASEL";
-const unsigned char TEXT_2challenge[]="CHALLENGE";
-const unsigned char TEXT_2deathmoon[]="DEATH$MOON";
-const unsigned char TEXT_2hexagon[]="FORCE";
-const unsigned char TEXT_2blast[]="PROCESSING";
-const unsigned char TEXT_2textretray[]="RETRAY";
-const unsigned char TEXT_2textstereo[]="MADNESS$2";
-const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
-const unsigned char TEXT_2textproblematic[]="PROBLEMATIC";
-const unsigned char TEXT_2textspeed[]="OF$LIGHT";
-const unsigned char TEXT_2textspeed2[]="OF$LIGHT$PT$2";
-const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
-const unsigned char TEXT_2textstalemate[]="STALEMATE";
-const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
-//const unsigned char TEXT_2textchaoz[]="CHAOZ$FANTASY";
-const unsigned char TEXT_2textjustright[]="JUST$RIGHT";
-const unsigned char TEXT_against2[]="THE$ODDS$REDUX";
-const unsigned char TEXT_geometrical2[]="DOMINATOR";
-const unsigned char TEXT_dash2[]="DASH";
-const unsigned char TEXT_driving2[]="NIGHT";
-const unsigned char TEXT_deadlocked2[]="DEADLOCKED";
-const unsigned char TEXT_fingerdash2[]="FINGERDASH";
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
 const unsigned char TEXT_sfxtext1[]="CLICK";
@@ -506,285 +446,7 @@ const unsigned char sfxtexts_size[] = {
 	sizeof(TEXT_sfxtextA) - 1
 };
 
-
-const unsigned char* const xbgmtexts1[] = {
-	0, 
-	TEXT_xlevel1text1, 
-	TEXT_xlevel1text2, 
-	0, 
-	0, 
-	TEXT_xlevel1text5, 
-	0, 
-	0, 
-	0, 
-	0, 
-	0, 
-	0, 
-	TEXT_xlevel1textC, 
-	TEXT_xlevel1textD, 
-	0, 
-	0, 
-	TEXT_hexagon, 
-	TEXT_blast, 
-	TEXT_xlevel1textC, 
-	TEXT_geometrical,
-	0,
-	0,
-	0, 
-	0, 
-	0, 
-	0, 
-	0, 
-	0, 
-	TEXT_xlevel1text1, 
-	0, 
-	0, 
-	TEXT_xweasel, 
-	TEXT_challenge,
-	TEXT_speed,
-	TEXT_speed,
-	0,
-//	TEXT_crackdown,
-	0,
-	0,
-//	0,
-	0,
-	TEXT_against,
-	TEXT_driving,
-};
-
-const unsigned char* const xbgmtexts2[] = {
-	TEXT_2textmenu, 
-	TEXT_xlevel2text1, 
-	TEXT_xlevel2text2, 
-	TEXT_xlevel2text3, 
-	TEXT_xlevel2text4, 
-	TEXT_xlevel2text5, 
-	TEXT_xlevel2text6,
-	TEXT_xlevel2text7, 
-	TEXT_xlevel2text8, 
-	TEXT_xlevel2text9, 
-	TEXT_xlevel2textA, 
-	TEXT_xlevel2textB, 
-	TEXT_xlevel2textC, 
-	TEXT_xlevel2textD, 
-	TEXT_2textclubstep, 
-	TEXT_2textelectrodynamix, 
-	TEXT_2hexagon, 
-	TEXT_2blast, 
-	TEXT_xlevel22textC, 
-	TEXT_geometrical2,
-	TEXT_deadlocked2,
-	TEXT_fingerdash2,
-	TEXT_dash2,
-	TEXT_xlevel2textE, 
-	TEXT_2textpractice, 
-	TEXT_2textretray, 
-	TEXT_2textinfernoplex,
-	TEXT_2textproblematic,
-	TEXT_2textstereo,
-	TEXT_2texteon, 
-	TEXT_2deathmoon, 
-	TEXT_2textweasel, 
-	TEXT_2challenge,
-	TEXT_2textspeed,
-	TEXT_2textspeed2,
-	TEXT_2textmidnight,
-//	TEXT_2textcrackdown,
-	TEXT_2textstalemate,
-	TEXT_2textwoods,
-//	TEXT_2textchaoz,
-	TEXT_2textjustright,
-	TEXT_against2,
-	TEXT_driving2,
-};
-
-const unsigned char xbgmtext2_size[] = {
-	sizeof(TEXT_2textmenu) - 1,
-	sizeof(TEXT_xlevel2text1) - 1,	
-	sizeof(TEXT_xlevel2text2) - 1,	
-	sizeof(TEXT_xlevel2text3) - 1,
-	sizeof(TEXT_xlevel2text4) - 1,	
-	sizeof(TEXT_xlevel2text5) - 1,	
-	sizeof(TEXT_xlevel2text6) - 1,	
-	sizeof(TEXT_xlevel2text7) - 1,	
-	sizeof(TEXT_xlevel2text8) - 1,
-	sizeof(TEXT_xlevel2text9) - 1,	
-	sizeof(TEXT_xlevel2textA) - 1,	
-	sizeof(TEXT_xlevel2textB) - 1,
-	sizeof(TEXT_xlevel2textC) - 1,	
-	sizeof(TEXT_xlevel2textD) - 1,	
-	sizeof(TEXT_2textclubstep) - 1,
-	sizeof(TEXT_2textelectrodynamix) - 1,
-	sizeof(TEXT_2hexagon) - 1,
-	sizeof(TEXT_2blast) - 1,
-	sizeof(TEXT_xlevel22textC) - 1,	
-	sizeof(TEXT_geometrical2) - 1,	
-	sizeof(TEXT_deadlocked2) - 1,	
-	sizeof(TEXT_fingerdash2) - 1,	
-	sizeof(TEXT_dash2) - 1,	
-	sizeof(TEXT_xlevel2textE) - 1,
-	sizeof(TEXT_2textpractice) - 1,
-	sizeof(TEXT_2textretray) - 1,
-	sizeof(TEXT_2textinfernoplex) - 1,
-	sizeof(TEXT_2textproblematic) - 1,
-	sizeof(TEXT_2textstereo) - 1,	
-	sizeof(TEXT_2texteon) - 1,
-	sizeof(TEXT_2deathmoon) - 1,
-	sizeof(TEXT_2textweasel) - 1,
-	sizeof(TEXT_2challenge) - 1,
-	sizeof(TEXT_2textspeed) - 1,
-	sizeof(TEXT_2textspeed2) - 1,
-	sizeof(TEXT_2textmidnight) - 1,
-//	sizeof(TEXT_2textcrackdown) - 1,
-	sizeof(TEXT_2textstalemate) - 1,
-	sizeof(TEXT_2textwoods) - 1,
-//	sizeof(TEXT_2textchaoz) - 1,
-	sizeof(TEXT_2textjustright) - 1,
-	sizeof(TEXT_against2) - 1,
-	sizeof(TEXT_driving2) - 1,
-};
-const unsigned char xbgmtext1_size[] = {
-	0,
-	sizeof(TEXT_xlevel1text1) - 1,	
-	sizeof(TEXT_xlevel1text2) - 1,	
-	0,
-	0,
-	sizeof(TEXT_xlevel1text5) - 1,	
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	sizeof(TEXT_xlevel1textC) - 1,	
-	sizeof(TEXT_xlevel1textD) - 1,	
-	0,
-	0,
-	sizeof(TEXT_hexagon) - 1,	
-	sizeof(TEXT_blast) - 1,	
-	sizeof(TEXT_xlevel1textC) - 1,	
-	sizeof(TEXT_geometrical) - 1,	
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	sizeof(TEXT_xlevel1text1) - 1,	
-	0,
-	0,
-	sizeof(TEXT_xweasel) - 1,	
-	sizeof(TEXT_challenge) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	0,
-//	sizeof(TEXT_crackdown) - 1,	
-	0,
-	0,
-//	0,
-	0,
-	sizeof(TEXT_against) - 1,	
-	sizeof(TEXT_driving) - 1,	
-};
-
-
-#if !__VS_SYSTEM
-
-const uint8_t xbgm_lookup_table2[] = {
-	song_menu_theme,
-	song_stereo_madness,
-	song_back_on_track,
-	song_polargeist,
-	song_dry_out,
-	song_base_after_base,
-	song_cant_let_go,
-	song_jumper,
-	song_time_machine,
-	song_cycles,
-	song_xstep, 
-	song_clutterfunk,
-	song_theory_of_everything, 
-	song_electroman_adventures, 
-	song_clubstep,
-	song_electrodynamix,
-	song_hexagon_force,
-	song_blast_processing,
-	song_toe_2,
-	song_geometrical_dominator,
-	song_deadlocked,
-	song_fingerdash,
-	song_dash,
-	song_endgame, 
-	song_practice,
-	song_retray,
-	song_infernoplex,
-	song_problematic,
-	song_stereo_madness_2,
-	song_eon,
-	song_death_moon,
-	song_scheming_weasel,
-	song_the_challenge,
-	song_atthespeedoflight,
-	song_atthespeedoflight2,
-	song_midnight,
-//	song_crackdown,
-	song_stalemate,
-	song_haunted_woods,
-//	song_chaozfantasy,
-	song_just_right,
-	song_against_the_odds_redux,
-	song_driving_by_night,
-};
-
-#else
-
-const uint8_t xbgm_lookup_table2[] = {
-	song_menu_theme,
-	song_stereo_madness,
-	song_back_on_track,
-	song_polargeist,
-	song_dry_out,
-	song_base_after_base,
-	song_cant_let_go,
-	song_jumper,
-	song_time_machine,
-
-	song_cycles,
-	song_stalemate,
-	song_xstep, 
-	song_clutterfunk,
-	song_theory_of_everything, 
-	song_haunted_woods,
-	song_against_the_odds_redux,
-	song_electroman_adventures, 
-	song_clubstep,
-	song_electrodynamix,
-	song_hexagon_force,
-	song_blast_processing,
-	song_toe_2,
-	song_endgame, 
-	song_retray,
-	song_infernoplex,
-	song_problematic,
-	song_stereo_madness_2,
-	song_eon,
-	song_death_moon,
-	song_the_challenge,
-	song_atthespeedoflight,
-	song_atthespeedoflight2,
-	song_midnight,
-//	song_crackdown,
-	song_just_right,
-	song_practice,
-	song_scheming_weasel,
-};
-
-#endif
-
-
+#include "MUSIC/EXPORTS/music_soundTestTables.h"
 
 const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
 
@@ -829,7 +491,7 @@ void bgmtest() {
 				if ((mouse.y >= 0xB4 && mouse.y <= 0xBB)) {		
 					if (settingvalue == 1) { sfx_play(sfx, 0); }
 					else {
-						if (!temptemp6) { music_play(xbgm_lookup_table2[song]); temptemp6 = 1; songplaying = 1; }
+						if (!temptemp6) { music_play(xbgmlookuptable[song]); temptemp6 = 1; songplaying = 1; }
 						else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
 					}
 				}
@@ -868,7 +530,7 @@ void bgmtest() {
 					return;
 				}
 				else if (mouse.y >= 0x3D && mouse.y <= 0x64) {
-					if (!temptemp6) { music_play(xbgm_lookup_table2[song]); temptemp6 = 1; songplaying = 1; }
+					if (!temptemp6) { music_play(xbgmlookuptable[song]); temptemp6 = 1; songplaying = 1; }
 					else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
 				}
 				else if (mouse.y >= 0x75 && mouse.y <= 0x9C) {
@@ -876,11 +538,11 @@ void bgmtest() {
 				}
 			}
 		}			
-	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
-	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 18, NTADR_A(7, 10));
+	__A__ = idx16_load_hi_NOC(xbgmtextsUpper, song);
+	if (__A__) draw_padded_text(xbgmtextsUpper[song & 0x7F], xbgmtextsUpperSize[song], 18, NTADR_A(7, 10));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 10));
-	__A__ = idx16_load_hi_NOC(xbgmtexts2, song);
-	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 18, NTADR_A(7, 11));
+	__A__ = idx16_load_hi_NOC(xbgmtextsLower, song);
+	if (__A__) draw_padded_text(xbgmtextsLower[song & 0x7F], xbgmtextsLowerSize[song], 18, NTADR_A(7, 11));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 11));
 	
 	draw_padded_text(sfxtexts[sfx & 0x7F], sfxtexts_size[sfx], 18, NTADR_A(7, 18));
@@ -892,7 +554,7 @@ void bgmtest() {
 			if (joypad1.press_right) { song++; temptemp6 = 0; if (song == song_max) {song = 0;} }
 			if (joypad1.press_left) { if (song == 0) {song = song_max - 1;} else song--; temptemp6 = 0; }
 			if (joypad1.press_a) {
-					if (!temptemp6) { music_play(xbgm_lookup_table2[song]); temptemp6 = 1; songplaying = 1; }
+					if (!temptemp6) { music_play(xbgmlookuptable[song]); temptemp6 = 1; songplaying = 1; }
 					else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
 			}					
 		}		

@@ -30,101 +30,7 @@ void set_settings();
 void start_the_level();
 extern uint8_t famistudio_song_speed;
 
-
-
-
-#if !__VS_SYSTEM
-
-const uint8_t xbgm_lookup_table[] = {
-	song_menu_theme,
-	song_stereo_madness,
-	song_back_on_track,
-	song_polargeist,
-	song_dry_out,
-	song_base_after_base,
-	song_cant_let_go,
-	song_jumper,
-	song_time_machine,
-	song_cycles,
-	song_xstep, 
-	song_clutterfunk,
-	song_theory_of_everything, 
-	song_electroman_adventures, 
-	song_clubstep,
-	song_electrodynamix,
-	song_hexagon_force,
-	song_blast_processing,
-	song_toe_2,
-	song_geometrical_dominator,
-	song_deadlocked,
-	song_fingerdash,
-	song_dash,
-	song_endgame, 
-	song_practice,
-	song_retray,
-	song_infernoplex,
-	song_problematic,
-	song_stereo_madness_2,
-	song_eon,
-	song_death_moon,
-	song_scheming_weasel,
-	song_the_challenge,
-	song_atthespeedoflight,
-	song_atthespeedoflight2,
-	song_midnight,
-//	song_crackdown,
-	song_stalemate,
-	song_haunted_woods,
-	//song_chaozfantasy,
-	song_just_right,
-	song_against_the_odds_redux,
-	song_driving_by_night,
-};
-
-#else
-
-const uint8_t xbgm_lookup_table[] = {
-	song_menu_theme,
-	song_stereo_madness,
-	song_back_on_track,
-	song_polargeist,
-	song_dry_out,
-	song_base_after_base,
-	song_cant_let_go,
-	song_jumper,
-	song_time_machine,
-
-	song_cycles,
-	song_stalemate,
-	song_xstep, 
-	song_clutterfunk,
-	song_theory_of_everything, 
-	song_haunted_woods,
-	song_against_the_odds_redux,
-	song_electroman_adventures, 
-	song_clubstep,
-	song_electrodynamix,
-	song_hexagon_force,
-	song_blast_processing,
-	song_toe_2,
-	song_endgame, 
-	song_retray,
-	song_infernoplex,
-	song_problematic,
-	song_stereo_madness_2,
-	song_eon,
-	song_death_moon,
-	song_the_challenge,
-	song_atthespeedoflight,
-	song_atthespeedoflight2,
-	song_midnight,
-//	song_crackdown,
-	song_just_right,
-	song_practice,
-	song_scheming_weasel,
-};
-
-#endif
+const uint8_t xbgmlookuptable[];
 
 #if !__VS_SYSTEM
 const uint8_t loNTAddrTableTitleScreen[]={
@@ -281,9 +187,9 @@ void levelselection() {
 	cube_rotate[1] = 0;
 
 	#if __VS_SYSTEM
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[(newrand() & 31) + 1]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[(newrand() & 31) + 1]);
 	#else
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[menu_music]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menu_music]);
 	#endif
 	menuMusicCurrentlyPlaying = 1;
 
@@ -926,9 +832,9 @@ void state_menu() {
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
 	#if __VS_SYSTEM
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[(newrand() & 31) + 1]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[(newrand() & 31) + 1]);
 	#else
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[menu_music]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menu_music]);
 	#endif
 	menuMusicCurrentlyPlaying = 1;
 
@@ -1978,10 +1884,10 @@ void clear_shit() {
 void check_if_music_stopped() {
 	#if __VS_SYSTEM
 		tmp2 = (newrand() & 31) + 1;
-		if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[tmp2]); }
+		if (famistudio_song_speed == 0x80) { music_play(xbgmlookuptable[tmp2]); }
 	#else
-		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[song]); }
-		else if (famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table[menu_music]); }
+		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgmlookuptable[song]); }
+		else if (famistudio_song_speed == 0x80) { music_play(xbgmlookuptable[menu_music]); }
 	#endif
 }	
 
