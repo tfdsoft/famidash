@@ -1,0 +1,515 @@
+{
+	"main": [
+		{
+			"songTitle": "song_menu_theme",
+			"lowerText": "MENU",
+			"vsSystemEnabled": false,
+			"nsfData": {
+				"trackLabel": "Menu Theme",
+				"trackAuthor": {
+					"original": "RobTop",
+					"cover": "Zenith302"
+				},
+				"durationNTSC": 30017,
+				"durationPAL": 36080,
+				"looped": true
+			}
+		},
+		{
+			"songTitle": "song_stereo_madness",
+			"upperText": "STEREO ",
+			"lowerText": "MADNESS",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Stereo Madness",
+				"trackAuthor": {
+					"original": "ForeverBound",
+					"cover": "Zenith302, UserSniper"
+				},
+				"durationNTSC": 85550,
+				"durationPAL": 102840
+			}
+		},
+		{
+			"songTitle": "song_back_on_track",
+			"upperText": "BACK ON",
+			"lowerText": "TRACK",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Back On Track",
+				"trackAuthor": {
+					"original": "DJVI",
+					"cover": "aquamarine.gay"
+				},
+				"durationNTSC": 82817,
+				"durationPAL": 99540
+			}
+		},
+		{
+			"songTitle": "song_polargeist",
+			"lowerText": "POLARGEIST",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Polargeist",
+				"trackAuthor": {
+					"original": "Step",
+					"cover": "UserSniper, Zenith302, Vikrinox"
+				},
+				"durationNTSC": 90700,
+				"durationPAL": 109000
+			}
+		},
+		{
+			"songTitle": "song_dry_out",
+			"lowerText": "DRY OUT",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Dry Out",
+				"trackAuthor": {
+					"original": "DJVI",
+					"cover": "UserSniper"
+				},
+				"durationNTSC": 81433,
+				"durationPAL": 97880
+			}
+		},
+		{
+			"songTitle": "song_base_after_base",
+			"upperText": "BASE AFTER",
+			"lowerText": "BASE",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Base After Base",
+				"trackAuthor": {
+					"original": "DJVI",
+					"cover": "Zenith302, UserSniper, Vikrinox, alexmush"
+				},
+				"durationNTSC": 85000,
+				"durationPAL": 102160
+			}
+		},
+		{
+			"songTitle": "song_cant_let_go",
+			"lowerText": "CANT LET GO",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Cant Let Go ~ Can't Let Go",
+				"trackAuthor": {
+					"original": "DJVI",
+					"cover": "UserSniper, alexmush"
+				},
+				"durationNTSC": 80750,
+				"durationPAL": 97040
+			}
+		},
+		{
+			"songTitle": "song_jumper",
+			"lowerText": "JUMPER",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Jumper",
+				"trackAuthor": {
+					"original": "Waterflame",
+					"cover": "zukinnyk, UserSniper, Zenith302"
+				},
+				"durationNTSC": 86467,
+				"durationPAL": 104100
+			}
+		},
+		{
+			"songTitle": "song_time_machine",
+			"lowerText": "TIME MACHINE",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Time Machine",
+				"trackAuthor": {
+					"original": "Waterflame",
+					"cover": "Zenith302, Vikrinox, alexmush"
+				},
+				"durationNTSC": 96067,
+				"durationPAL": 115460
+			}
+		},
+		{
+			"songTitle": "song_cycles",
+			"lowerText": "CYCLES",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Cycles",
+				"trackAuthor": {
+					"original": "DJVI",
+					"cover": "aquamarine.gay, alexmush"
+				},
+				"durationNTSC": 85933,
+				"durationPAL": 103280
+			}
+		},
+		{
+			"songTitle": "song_xstep",
+			"lowerText": "XSTEP",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "xStep",
+				"trackAuthor": {
+					"original": "DJVI",
+					"cover": "Vikrinox, alexmush"
+				},
+				"durationNTSC": 82350,
+				"durationPAL": 98980
+			}
+		},
+		{
+			"songTitle": "song_clutterfunk",
+			"lowerText": "CLUTTERFUNK",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Clutterfunk",
+				"trackAuthor": {
+					"original": "Waterflame",
+					"cover": "Zenith302, aquamarine.gay, Vikrinox"
+				},
+				"durationNTSC": 96583,
+				"durationPAL": 116080
+			}
+		},
+		{
+			"songTitle": "song_theory_of_everything",
+			"upperText": "THEORY OF",
+			"lowerText": "EVERYTHING",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Theory Of Everything",
+				"trackAuthor": {
+					"original": "Dj-Nate",
+					"cover": "leejh20, UserSniper, Vikrinox, Zenith302"
+				},
+				"durationNTSC": 89000,
+				"durationPAL": 106960
+			}
+		},
+		{
+			"songTitle": "song_electroman_adventures",
+			"upperText": "ELECTROMAN",
+			"lowerText": "ADVENTURES",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Electroman Adventures",
+				"trackAuthor": {
+					"original": "Waterflame",
+					"cover": "cloud54, UserSniper, alexmush"
+				},
+				"durationNTSC": 87800,
+				"durationPAL": 105520
+			}
+		},
+		{
+			"songTitle": "song_clubstep",
+			"lowerText": "CLUBSTEP",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_electrodynamix",
+			"lowerText": "ELECTRODYNAMIX",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_hexagon_force",
+			"upperText": "HEXAGON",
+			"lowerText": "FORCE",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_blast_processing",
+			"upperText": "BLAST",
+			"lowerText": "PROCESSING",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_toe_2",
+			"upperText": "THEORY OF",
+			"lowerText": "EVERYTHING 2",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_geometrical_dominator",
+			"upperText": "GEOMETRICAL",
+			"lowerText": "DOMINATOR",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_deadlocked",
+			"lowerText": "DEADLOCKED",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_fingerdash",
+			"lowerText": "FINGERDASH",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_dash",
+			"lowerText": "DASH",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_endgame",
+			"lowerText": "DECODE",
+			"vsSystemEnabled": true,
+			"nsfData": {
+				"trackLabel": "Decode ~ Endgame",
+				"trackAuthor": {
+					"original": "Waterflame",
+					"cover": "Vikrinox"
+				},
+				"durationNTSC": 79283,
+				"durationPAL": 95280
+			}
+		},
+		{
+			"songTitle": "song_practice",
+			"lowerText": "PRACTICE",
+			"vsSystemEnabled": false,
+			"nsfData": {
+				"trackLabel": "Practice ~ Stay Inside Me",
+				"trackAuthor": {
+					"original": "OcularNebula",
+					"cover": "UserSniper"
+				},
+				"durationNTSC": 239817,
+				"durationPAL": 288380,
+				"looped": true
+			}
+		},
+		{
+			"songTitle": "song_retray",
+			"lowerText": "RETRAY",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_infernoplex",
+			"lowerText": "INFERNOPLEX",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_problematic",
+			"lowerText": "PROBLEMATIC",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_stereo_madness_2",
+			"upperText": "STEREO ",
+			"lowerText": "MADNESS 2",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_eon",
+			"lowerText": "EON",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_death_moon",
+			"lowerText": "DEATH MOON",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_scheming_weasel",
+			"upperText": "SCHEMING",
+			"lowerText": "WEASEL",
+			"vsSystemEnabled": false
+		},
+		{
+			"songTitle": "song_the_challenge",
+			"upperText": "THE",
+			"lowerText": "CHALLENGE",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_atthespeedoflight",
+			"upperText": "AT THE SPEED",
+			"lowerText": "OF LIGHT",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_atthespeedoflight2",
+			"upperText": "AT THE SPEED",
+			"lowerText": "OF LIGHT PT 2",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_midnight",
+			"lowerText": "MIDNIGHT",
+			"vsSystemEnabled": true
+		},
+		{
+			"_comment": {
+				"songTitle": "song_crackdown",
+				"upperText": "OKIBA",
+				"lowerText": "CRACKDOWN",
+				"vsSystemEnabled": true
+			}
+		},
+		{
+			"songTitle": "song_stalemate",
+			"lowerText": "STALEMATE",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_haunted_woods",
+			"lowerText": "HAUNTED WOODS",
+			"vsSystemEnabled": true
+		},
+		{
+			"_comment": {
+				"songTitle": "song_chaozfantasy",
+				"lowerText": "CHAOZ FANTASY",
+				"vsSystemEnabled": true
+			}
+		},
+		{
+			"songTitle": "song_just_right",
+			"lowerText": "JUST RIGHT",
+			"vsSystemEnabled": false
+		},
+		{
+			"songTitle": "song_against_the_odds_redux",
+			"upperText": "8 BIT AGAINST",
+			"lowerText": "THE ODDS REDUX",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_driving_by_night",
+			"upperText": "DRIVING BY",
+			"lowerText": "NIGHT",
+			"vsSystemEnabled": true
+		}
+	],
+	"SFX": [
+		{
+			"text": "DEATH",
+			"nsfData": {
+				"trackLabel": "Death SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 383,
+				"durationPAL": 460
+			}
+		},
+		{
+			"text": "CLICK",
+			"nsfData": {
+				"trackLabel": "Click SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 50,
+				"durationPAL": 40
+			}
+		},
+		{
+			"text": "LEVEL COMPLETE",
+			"nsfData": {
+				"trackLabel": "LEVEL COMPLETE! SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 3167,
+				"durationPAL": 3020
+			}
+		},
+		{
+			"text": "COIN",
+			"nsfData": {
+				"trackLabel": "Coin SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 683,
+				"durationPAL": 700
+			}
+		},
+		{
+			"text": "CHEST OPEN",
+			"nsfData": {
+				"trackLabel": "Chest Open SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 100,
+				"durationPAL": 120
+			}
+		},
+		{
+			"text": "ORBS",
+			"nsfData": {
+				"trackLabel": "Orbs SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 683,
+				"durationPAL": 820
+			}
+		},
+		{
+			"text": "DIAMONDS",
+			"nsfData": {
+				"trackLabel": "Diamonds SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 683,
+				"durationPAL": 820
+			}
+		},
+		{
+			"text": "EXIT LEVEL",
+			"nsfData": {
+				"trackLabel": "Exit Level SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 650,
+				"durationPAL": 680
+			}
+		},
+		{
+			"text": "START LEVEL",
+			"nsfData": {
+				"trackLabel": "Start Level SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 967,
+				"durationPAL": 920
+			}
+		},
+		{
+			"text": "INVALID",
+			"nsfData": {
+				"trackLabel": "Invalid SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 633,
+				"durationPAL": 640
+			}
+		},
+		{
+			"text": "ACHIEVEMENT GET",
+			"nsfData": {
+				"trackLabel": "Achievement Get SFX",
+				"trackAuthor": "UserSniper",
+				"durationNTSC": 950,
+				"durationPAL": 1140
+			}
+		}
+	],
+	"PCM": [
+		{
+			"segment": "PCM_BANK",
+			"path": "MUSIC/PCM/SSDPCM2-geometryDash.pcm",
+			"symbol": "GeometryDashPCMA",
+			"sampleRateNTSC": 4,
+			"sampleRatePAL": 3,
+			"nsfData": {
+				"trackLabel": "Geometry Dash Voice Clip",
+				"trackAuthor": "VA: MDK",
+				"durationNTSC": 1150,
+				"durationPAL": 1100
+			}
+		},
+		{
+			"segment": "PCM_BANK_B",
+			"path": "MUSIC/PCM/SSDPCM2-fire.pcm",
+			"symbol": "GeometryDashPCMB",
+			"sampleRateNTSC": 10,
+			"sampleRatePAL": 8,
+			"nsfData": {
+				"trackLabel": "FIRE IN THE HOLE! Voice Clip",
+				"trackAuthor": "VA: Joe",
+				"durationNTSC": 1650,
+				"durationPAL": 1650
+			}
+		}
+	]
+}
