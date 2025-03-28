@@ -1,0 +1,240 @@
+{
+	"songlist": [
+		{
+			"songTitle": "song_menu_theme",
+			"lowerText": "MENU",
+			"vsSystemEnabled": false
+		},
+		{
+			"songTitle": "song_stereo_madness",
+			"upperText": "STEREO ",
+			"lowerText": "MADNESS",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_back_on_track",
+			"upperText": "BACK ON",
+			"lowerText": "TRACK",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_polargeist",
+			"lowerText": "POLARGEIST",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_dry_out",
+			"lowerText": "DRY OUT",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_base_after_base",
+			"upperText": "BASE AFTER",
+			"lowerText": "BASE",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_cant_let_go",
+			"lowerText": "CANT LET GO",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_jumper",
+			"lowerText": "JUMPER",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_time_machine",
+			"lowerText": "TIME MACHINE",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_cycles",
+			"lowerText": "CYCLES",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_xstep",
+			"lowerText": "XSTEP",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_clutterfunk",
+			"lowerText": "CLUTTERFUNK",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_theory_of_everything",
+			"upperText": "THEORY OF",
+			"lowerText": "EVERYTHING",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_electroman_adventures",
+			"upperText": "ELECTROMAN",
+			"lowerText": "ADVENTURES",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_clubstep",
+			"lowerText": "CLUBSTEP",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_electrodynamix",
+			"lowerText": "ELECTRODYNAMIX",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_hexagon_force",
+			"upperText": "HEXAGON",
+			"lowerText": "FORCE",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_blast_processing",
+			"upperText": "BLAST",
+			"lowerText": "PROCESSING",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_toe_2",
+			"upperText": "THEORY OF",
+			"lowerText": "EVERYTHING 2",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_geometrical_dominator",
+			"upperText": "GEOMETRICAL",
+			"lowerText": "DOMINATOR",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_deadlocked",
+			"lowerText": "DEADLOCKED",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_fingerdash",
+			"lowerText": "FINGERDASH",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_dash",
+			"lowerText": "DASH",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_endgame",
+			"lowerText": "DECODE",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_practice",
+			"lowerText": "PRACTICE",
+			"vsSystemEnabled": false
+		},
+		{
+			"songTitle": "song_retray",
+			"lowerText": "RETRAY",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_infernoplex",
+			"lowerText": "INFERNOPLEX",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_problematic",
+			"lowerText": "PROBLEMATIC",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_stereo_madness_2",
+			"upperText": "STEREO ",
+			"lowerText": "MADNESS 2",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_eon",
+			"lowerText": "EON",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_death_moon",
+			"lowerText": "DEATH MOON",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_scheming_weasel",
+			"upperText": "SCHEMING",
+			"lowerText": "WEASEL",
+			"vsSystemEnabled": false
+		},
+		{
+			"songTitle": "song_the_challenge",
+			"upperText": "THE",
+			"lowerText": "CHALLENGE",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_atthespeedoflight",
+			"upperText": "AT THE SPEED",
+			"lowerText": "OF LIGHT",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_atthespeedoflight2",
+			"upperText": "AT THE SPEED",
+			"lowerText": "OF LIGHT PT 2",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_midnight",
+			"lowerText": "MIDNIGHT",
+			"vsSystemEnabled": true
+		},
+		/*
+		{
+			"songTitle": "song_crackdown",
+			"upperText": "OKIBA",
+			"lowerText": "CRACKDOWN",
+			"vsSystemEnabled": true
+		}
+		*/
+		{
+			"songTitle": "song_stalemate",
+			"lowerText": "STALEMATE",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_haunted_woods",
+			"lowerText": "HAUNTED WOODS",
+			"vsSystemEnabled": true
+		},
+		/*
+		{
+			"songTitle": "song_chaozfantasy",
+			"lowerText": "CHAOZ FANTASY",
+			"vsSystemEnabled": true
+		}
+		*/
+		{
+			"songTitle": "song_just_right",
+			"lowerText": "JUST RIGHT",
+			"vsSystemEnabled": false
+		},
+		{
+			"songTitle": "song_against_the_odds_redux",
+			"upperText": "8 BIT AGAINST",
+			"lowerText": "THE ODDS REDUX",
+			"vsSystemEnabled": true
+		},
+		{
+			"songTitle": "song_driving_by_night",
+			"upperText": "DRIVING BY",
+			"lowerText": "NIGHT",
+			"vsSystemEnabled": true
+		}
+	]
+}

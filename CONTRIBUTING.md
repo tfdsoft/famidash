@@ -43,25 +43,22 @@ Paths are given to relative to the MUSIC folder, unless it begins with a /, then
 
 #### After this, the same precautions and actions follow, no matter where you worked before
 
-1. Ensure that all added songs:
-    - are in MODULES/music_master.fms
-    - are in one of the following folders:
-        - "Official music used in the game"
-        - "Custom music used in the game"
+1. Ensure that all added songs are in MODULES/music_master.fms
 2. If you have added / modified any DPCM samples, ensure that:
     - they are properly distributed between banks
         - this can be done by right-clicking on a DPCM sample and choosing the "Auto-Assign Banks..." option with an 8KB bank size
     - every sample used in the tracks in the game is in the "dpcm" song (that's the DPCM aligner)
 3. Save the MODULES/music_master.fms module
-4. Run the following command to test the music exports:<br>`python3 export.py [<path/to/FamiStudio.dll>] -t`<br>If FamiStudio.dll on your system is in the PATH variable (this can be checked with trial and error), you should omit the <path/to/FamiStudio.dll>, otherwise substitute it with the actual path to FamiStudio.dll on your machine.
-5. Check the output of it, make sure it didn't error out midway through and gave you the following message:<br>"==== Everything seems to have gone alright, you can run it for real now."
-6. If it didn't error out and it completed successfully, run the following command to do it for real:<br>`python3 export.py [<path/to/FamiStudio.dll>]`
-7. Don't close the terminal yet! You've now got a few things to adjust:
-8. Ensure that the /LIB/asm/famistudio_ca65.s file has the settings set as the export output dictates
-9.  Adjust the music names before the bgmtest function in /SAUCE/gamestates/state_lvldone.h <br>[ Not automatable as it is changing the names ]
-10. Adjust the xbgm_lookup_table2 table in /SAUCE/gamestates/state_lvldone.h AND the contents of the "plst" chunk in NSF/metadata.s <br>[ TODO: automate and unify this ]
-11. Test the game.
-12. If anything odd went on in any of these steps, ping @alexmush and they'll probably respond within 48 hours (response times will vary)
+4. Add the songs to SOUNDTEST/musicList.json for the export script to include them in the game (and the sound test)
+5. Run the following command to test the music exports:<br>`python3 export.py [<path/to/FamiStudio.dll>] -t`<br>If FamiStudio.dll on your system is in the PATH variable (this can be checked with trial and error), you should omit the <path/to/FamiStudio.dll>, otherwise substitute it with the actual path to FamiStudio.dll on your machine.
+6. Check the output of it, make sure it didn't error out midway through and gave you the following message:<br>"==== Everything seems to have gone alright, you can run it for real now."
+7. If it didn't error out and it completed successfully, run the following command to do it for real:<br>`python3 export.py [<path/to/FamiStudio.dll>]`
+8. Don't close the terminal yet! You've now got a few things to adjust:
+9. Ensure that the /LIB/asm/famistudio_ca65.s file has the settings set as the export output dictates
+10. Test the game.
+11. If the song did not appear anywhere during the export process and doesn't appear in the sound test, refer to step 4.
+12. If the compilation errors out due to an overflow in DAT_BANK_XX, congratulations, you've run out of space! Refer to step 13.
+13. If anything odd went on in any of these steps, ping @alexmush and they'll probably respond within 48 hours (response times will vary)
 
 ## levels (guide by Ficus)
 
