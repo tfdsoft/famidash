@@ -1761,7 +1761,7 @@ ntAddrHiTbl:
 ; void __fastcall__ music_play(uint8_t song);
 .segment "CODE_2"
 
-.import _options, FIRST_MUSIC_BANK
+.import _options
 
 .export _music_play
 .proc _music_play  

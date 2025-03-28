@@ -30,8 +30,6 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
 .define MMC3_REG_SEL_PRG2_C000 %00000000
 .define MMC3_REG_SEL_PRG2_8000 %01000000
 
-.import FIRST_DMC_BANK
-
 ; Values for which banks to load
 .define MMC3_REG_CONTROL_DEFAULT #%11100
 

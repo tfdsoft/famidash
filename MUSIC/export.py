@@ -30,6 +30,10 @@ asmDpcmSongHeaderMatchRegex = r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\
 asmDpcmSongHeaderIdxRegex = r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song(\d+).*?$\n){5}^\t.word \d+,\d+.*?$\n)'
 asmDpcmSongMatchRegex = lambda x : r'(?ms:(^@song' + x + r'\S*:.*?)(?=^@song(?!' + x + r')))' #BUG: currently doesn't match if the dpcm song is the last
 
+musBankSegPrefix = "MUS_BANK_"
+dmcBankSegPrefix = "DMC_BANK_"
+dmcBankMetaUnused = 63  # a special dmc bank for shit to go unused
+
 musicFolder = pathlib.Path(sys.path[0]).resolve()
 tmpFolder = (musicFolder.parent / "TMP").resolve()
 
@@ -266,6 +270,37 @@ if __name__ == "__main__":
     print("== music_songlist.inc")
     (exportPath / "music_songlist.inc").write_text(
         "\n".join([f"song_{id} = {i}" for i, id in enumerate(masterSonglist)]))
+
+    # Export segment assignment
+    print("== header.s")
+    header_data = [
+        '; Music data banks',
+        f'.segment "{musBankSegPrefix}00"',
+        '\tfirstMusicBankPtr := *',
+        f'\t.include "{exportStemPrefix}_0.s"'
+    ]
+    if (len(bins) > 1):
+        header_data += [f'.segment "{musBankSegPrefix}{i:02X}"\n\t.include "{exportStemPrefix}_{i}.s"' for i in range(1, len(bins))]
+
+    if (len(dpcmBanks)):
+        dpcmBanks = sorted(list(map(int, dpcmBanks)))
+        header_data += [
+            '',
+            '; DMC banks',
+            f'.segment "{dmcBankSegPrefix}00"',
+            '\tfirstDMCBankPtr := *',
+            f'\t.incbin "{exportStemPrefix}_bank{dpcmBanks[0]}.dmc"',
+        ]
+        header_data += [f'.segment "{dmcBankSegPrefix}{i:02X}"\n\t.incbin "{exportStemPrefix}_bank{bank}.dmc"' for i, bank in enumerate(dpcmBanks[1:], 1) if bank != dmcBankMetaUnused]
+
+    header_data += [
+        '',
+        '; Constants',
+        'FIRST_MUSIC_BANK = .bank(firstMusicBankPtr)',
+    ]
+    if (len(dpcmBanks)):
+        header_data.append('FIRST_DMC_BANK = .bank(firstDMCBankPtr)')
+    (exportPath / "header.s").write_text("\n".join(header_data))
 
     # Print which options to set
     print("\n==== Don't forget to set these options in the sound driver:")
