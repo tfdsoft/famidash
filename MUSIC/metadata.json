@@ -1,7 +1,7 @@
 {
-	"main": [
+	"songs": [
 		{
-			"songTitle": "song_menu_theme",
+			"fmsSongName": "Menu Theme",
 			"lowerText": "MENU",
 			"vsSystemEnabled": false,
 			"nsfData": {
@@ -16,7 +16,7 @@
 			}
 		},
 		{
-			"songTitle": "song_stereo_madness",
+			"fmsSongName": "Stereo Madness",
 			"upperText": "STEREO ",
 			"lowerText": "MADNESS",
 			"vsSystemEnabled": true,
@@ -31,7 +31,7 @@
 			}
 		},
 		{
-			"songTitle": "song_back_on_track",
+			"fmsSongName": "Back on Track",
 			"upperText": "BACK ON",
 			"lowerText": "TRACK",
 			"vsSystemEnabled": true,
@@ -46,7 +46,7 @@
 			}
 		},
 		{
-			"songTitle": "song_polargeist",
+			"fmsSongName": "Polargeist",
 			"lowerText": "POLARGEIST",
 			"vsSystemEnabled": true,
 			"nsfData": {
@@ -60,7 +60,7 @@
 			}
 		},
 		{
-			"songTitle": "song_dry_out",
+			"fmsSongName": "Dry Out",
 			"lowerText": "DRY OUT",
 			"vsSystemEnabled": true,
 			"nsfData": {
@@ -74,7 +74,7 @@
 			}
 		},
 		{
-			"songTitle": "song_base_after_base",
+			"fmsSongName": "Base after Base",
 			"upperText": "BASE AFTER",
 			"lowerText": "BASE",
 			"vsSystemEnabled": true,
@@ -89,7 +89,7 @@
 			}
 		},
 		{
-			"songTitle": "song_cant_let_go",
+			"fmsSongName": "Can't Let Go",
 			"lowerText": "CANT LET GO",
 			"vsSystemEnabled": true,
 			"nsfData": {
@@ -103,7 +103,7 @@
 			}
 		},
 		{
-			"songTitle": "song_jumper",
+			"fmsSongName": "Jumper",
 			"lowerText": "JUMPER",
 			"vsSystemEnabled": true,
 			"nsfData": {
@@ -117,7 +117,7 @@
 			}
 		},
 		{
-			"songTitle": "song_time_machine",
+			"fmsSongName": "Time Machine",
 			"lowerText": "TIME MACHINE",
 			"vsSystemEnabled": true,
 			"nsfData": {
@@ -131,7 +131,7 @@
 			}
 		},
 		{
-			"songTitle": "song_cycles",
+			"fmsSongName": "Cycles",
 			"lowerText": "CYCLES",
 			"vsSystemEnabled": true,
 			"nsfData": {
@@ -145,7 +145,7 @@
 			}
 		},
 		{
-			"songTitle": "song_xstep",
+			"fmsSongName": "xStep",
 			"lowerText": "XSTEP",
 			"vsSystemEnabled": true,
 			"nsfData": {
@@ -159,7 +159,7 @@
 			}
 		},
 		{
-			"songTitle": "song_clutterfunk",
+			"fmsSongName": "Clutterfunk",
 			"lowerText": "CLUTTERFUNK",
 			"vsSystemEnabled": true,
 			"nsfData": {
@@ -173,7 +173,7 @@
 			}
 		},
 		{
-			"songTitle": "song_theory_of_everything",
+			"fmsSongName": "Theory of Everything",
 			"upperText": "THEORY OF",
 			"lowerText": "EVERYTHING",
 			"vsSystemEnabled": true,
@@ -188,7 +188,7 @@
 			}
 		},
 		{
-			"songTitle": "song_electroman_adventures",
+			"fmsSongName": "Electroman Adventures",
 			"upperText": "ELECTROMAN",
 			"lowerText": "ADVENTURES",
 			"vsSystemEnabled": true,
@@ -203,56 +203,56 @@
 			}
 		},
 		{
-			"songTitle": "song_clubstep",
+			"fmsSongName": "Clubstep",
 			"lowerText": "CLUBSTEP",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_electrodynamix",
+			"fmsSongName": "Electrodynamix",
 			"lowerText": "ELECTRODYNAMIX",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_hexagon_force",
+			"fmsSongName": "Hexagon Force",
 			"upperText": "HEXAGON",
 			"lowerText": "FORCE",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_blast_processing",
+			"fmsSongName": "Blast processing",
 			"upperText": "BLAST",
 			"lowerText": "PROCESSING",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_toe_2",
+			"fmsSongName": "TOE 2",
 			"upperText": "THEORY OF",
 			"lowerText": "EVERYTHING 2",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_geometrical_dominator",
+			"fmsSongName": "Geometrical Dominator",
 			"upperText": "GEOMETRICAL",
 			"lowerText": "DOMINATOR",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_deadlocked",
+			"fmsSongName": "Deadlocked",
 			"lowerText": "DEADLOCKED",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_fingerdash",
+			"fmsSongName": "Fingerdash",
 			"lowerText": "FINGERDASH",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_dash",
+			"fmsSongName": "Dash",
 			"lowerText": "DASH",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_endgame",
+			"fmsSongName": "endgame",
 			"lowerText": "DECODE",
 			"vsSystemEnabled": true,
 			"nsfData": {
@@ -266,7 +266,7 @@
 			}
 		},
 		{
-			"songTitle": "song_practice",
+			"fmsSongName": "Practice",
 			"lowerText": "PRACTICE",
 			"vsSystemEnabled": false,
 			"nsfData": {
@@ -281,103 +281,103 @@
 			}
 		},
 		{
-			"songTitle": "song_retray",
+			"fmsSongName": "retray",
 			"lowerText": "RETRAY",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_infernoplex",
+			"fmsSongName": "infernoplex",
 			"lowerText": "INFERNOPLEX",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_problematic",
+			"fmsSongName": "Problematic",
 			"lowerText": "PROBLEMATIC",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_stereo_madness_2",
+			"fmsSongName": "Stereo madness 2",
 			"upperText": "STEREO ",
 			"lowerText": "MADNESS 2",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_eon",
+			"fmsSongName": "eon",
 			"lowerText": "EON",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_death_moon",
+			"fmsSongName": "Death Moon",
 			"lowerText": "DEATH MOON",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_scheming_weasel",
+			"fmsSongName": "Scheming Weasel",
 			"upperText": "SCHEMING",
 			"lowerText": "WEASEL",
 			"vsSystemEnabled": false
 		},
 		{
-			"songTitle": "song_the_challenge",
+			"fmsSongName": "The Challenge",
 			"upperText": "THE",
 			"lowerText": "CHALLENGE",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_atthespeedoflight",
+			"fmsSongName": "atthespeedoflight",
 			"upperText": "AT THE SPEED",
 			"lowerText": "OF LIGHT",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_atthespeedoflight2",
+			"fmsSongName": "atthespeedoflight2",
 			"upperText": "AT THE SPEED",
 			"lowerText": "OF LIGHT PT 2",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_midnight",
+			"fmsSongName": "midnight",
 			"lowerText": "MIDNIGHT",
 			"vsSystemEnabled": true
 		},
 		{
 			"_comment": {
-				"songTitle": "song_crackdown",
+				"fmsSongName": "crackdown",
 				"upperText": "OKIBA",
 				"lowerText": "CRACKDOWN",
 				"vsSystemEnabled": true
 			}
 		},
 		{
-			"songTitle": "song_stalemate",
+			"fmsSongName": "stalemate",
 			"lowerText": "STALEMATE",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_haunted_woods",
+			"fmsSongName": "haunted woods",
 			"lowerText": "HAUNTED WOODS",
 			"vsSystemEnabled": true
 		},
 		{
 			"_comment": {
-				"songTitle": "song_chaozfantasy",
+				"fmsSongName": "chaozfantasy",
 				"lowerText": "CHAOZ FANTASY",
 				"vsSystemEnabled": true
 			}
 		},
 		{
-			"songTitle": "song_just_right",
+			"fmsSongName": "just right",
 			"lowerText": "JUST RIGHT",
 			"vsSystemEnabled": false
 		},
 		{
-			"songTitle": "song_against_the_odds_redux",
+			"fmsSongName": "against the odds redux",
 			"upperText": "8 BIT AGAINST",
 			"lowerText": "THE ODDS REDUX",
 			"vsSystemEnabled": true
 		},
 		{
-			"songTitle": "song_driving_by_night",
+			"fmsSongName": "Driving By Night",
 			"upperText": "DRIVING BY",
 			"lowerText": "NIGHT",
 			"vsSystemEnabled": true

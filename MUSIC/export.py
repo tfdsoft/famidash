@@ -12,7 +12,6 @@ youMustSetRegex = "Info: ([^\n]+, you must set [^\n]+\\.)"
 actualOptionRegex = "set (FAMISTUDIO_[^ \n=]+ = [^ \n.]+)"
 
 songNameRegex = 'Song[^\n]+Name="([^"]+)'
-songFolderNameRegex = 'Song[^\n]+Folder="([^"]+)'
 
 exportStemPrefix = "music"
 
@@ -20,7 +19,6 @@ dpcmFileNameRegex = f'{exportStemPrefix}_(.+)_bank(.+).dmc'
 
 dpcmAlignerName = "dpcm"
 finalSongInListName = "max"
-usedFolderNames = ["Official music used in the game", "Custom music used in the game"]
 
 songlistNamesRegex = r'(?ms:(song_([\w]+) = (\d+)$)+)'
 
@@ -37,6 +35,23 @@ lastDatBank = 0x33
 musicFolder = pathlib.Path(sys.path[0]).resolve()
 tmpFolder = (musicFolder.parent / "TMP").resolve()
 
+# Local version of FamiStudio function
+# Source code @ https://github.com/BleuBleu/FamiStudio/blob/master/FamiStudio/Source/Utils/Utils.cs
+# Function name: Utils.MakeNiceAsmName
+# Make sure to keep this updated
+def makeNiceAsmName(name : str, allowDash : bool = True):
+    niceName = "";
+    for c in name:
+        if (c.isalnum()):
+            niceName += c.lower();
+        elif (c.isspace() and niceName[-1] != '_'):
+            niceName += '_'
+        elif (c == '-'):
+            niceName += '-' if allowDash else '_'
+        elif (c == '_'):
+            niceName += c
+    return niceName
+
 if __name__ == "__main__":
     # install binpacking
     import importlib.util
@@ -50,6 +65,7 @@ if __name__ == "__main__":
     import re
     import argparse
     import binpacking
+    import json
     
     def checkErr(proc : subprocess.CompletedProcess):
         if (proc.returncode != 0):
@@ -80,6 +96,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     modulePath = musicFolder / "MODULES" / "music_master.fms"
+    metadataPath = musicFolder / "metadata.json"
     
     fsPath = pathlib.Path(args.fsPath)
     
@@ -89,6 +106,14 @@ if __name__ == "__main__":
         
     if fsPath.is_dir() and (fsPath / "FamiStudio.dll").is_file():
         fsPath /= "FamiStudio.dll"
+
+    # Load metadata file
+    print("\n==== Loading metadata...")
+    if not(metadataPath.is_file()):
+        print("The metadata file is not present.")
+        exit(1)
+    with metadataPath.open() as fp:
+        metadata = json.load(fp)
     
     # Check FamiStudio version
     print("\n==== Checking FamiStudio version...")
@@ -115,8 +140,8 @@ if __name__ == "__main__":
         exit(2)
 
     songNames = re.findall(songNameRegex, fsTxt)
-    folderNames = re.findall(songFolderNameRegex, fsTxt)
-    neededSongs = [i for i in range(len(songNames)) if folderNames[i] in usedFolderNames]
+    neededSongNames = [i['fmsSongName'] for i in metadata['songs'] if 'fmsSongName' in i.keys()]
+    neededSongs = [i for i in range(len(songNames)) if songNames[i] in neededSongNames]
 
     if len(songNames) == 0:
         print("Amount of valid songs in the FS txt file is 0.")
@@ -124,9 +149,6 @@ if __name__ == "__main__":
     
     if not(dpcmAlignerName in songNames):
         print("DPCM aligner not found in FS txt file.")
-        exit(2)
-    elif len(neededSongs) == 0:
-        print(f"None of the songs are in the folders \"{usedFolderNames}\".")
         exit(2)
 
     dpcmidx = songNames.index(dpcmAlignerName)
