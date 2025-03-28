@@ -1587,7 +1587,7 @@ ntAddrHiTbl:
 
 
 ; void __fastcall__ load_ground(uint8_t id);
-.segment "LVL_BANK_00"
+.segment "XCD_BANK_06"
 
 .import _ground
 
@@ -1596,14 +1596,12 @@ ntAddrHiTbl:
 	;A = ground num
 	ASL						;
 	TAX						;
-	LDA	#$00				;
-	TAY						;	ptr1 = ground[id]
-	JSR	mmc3_set_prg_bank_1	;	mmc3_set_prg_bank_1(0)
-	LDA _ground, X			;	Y = 0
-	STA ptr1				;
+	LDA _ground, X			;	ptr1 = ground[id]
+	STA ptr1				;	(we're already within the correct bank)
 	LDA _ground+1, X		;
 	STA ptr1+1				;__
 	LDX #<-48				;__	X = idx @ collmap data, count up to 0
+	LDY	#$00				;__	Y = 0
 
 	ground_ptr = ground-($100-48)
 
@@ -3738,7 +3736,7 @@ bank:
 
 
 ; void display_attempt_counter (uint8_t zeroChr, uintptr_t ppu_address);
-.segment "LVL_BANK_00"	; Same as state_lvldone	
+.segment "XCD_BANK_06"	; Same as state_lvldone	
 
 .import _attemptCounter
 

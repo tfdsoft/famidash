@@ -33,7 +33,7 @@
 #include "mouse.h"
 //#include "mouse.c"
 #pragma rodata-name (pop)
-#pragma rodata-name (push, "LVL_BANK_00")
+#pragma rodata-name (push, "XCD_BANK_06")
 #include "defines/menunametable2.h"
 #include "LEVELS/grounddata.h"
 #include "LEVELS/groundlist.h"
@@ -71,7 +71,7 @@
 #pragma rodata-name (push, "XCD_BANK_03")
 #include "defines/menutext.h" // menu text. obviously.
 
-#pragma rodata-name ("LVL_BANK_00")
+#pragma rodata-name ("XCD_BANK_06")
 #include "defines/menutext2.h" // end level text, not obviously.
 #pragma rodata-name (pop)
 
