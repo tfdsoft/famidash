@@ -3349,10 +3349,6 @@ SSDPCM_getbyte:
 ;     plp	;__
 ;     rts	;	6
 
-Bank:
-    .byte <.bank(GeometryDashPCMA)
-    .byte <.bank(GeometryDashPCMB)
-
 ; Sample rate calculations go per this formula:
 ; ((Region Clock / Sample Rate)-Sample Load Time)/5
 ; Sample Load Time is:
@@ -3362,14 +3358,8 @@ Bank:
 ; The target sample speed is specified after each value,
 ; Real playback speed and deviation percentage are specified in parentheses
 ; TODO: get proper sample calculations for SSDPCM2
-SampleRate_NTSC:	; Also applies to Dendy, as it is derived from the CPU speed
-	; For reference, NTSC Clock is 236250000/11/12 = 1789772.727 Hz
-	.byte 4	; 21307 Hz
-	.byte 10	; 8000 Hz
-SampleRate_PAL:
-	; For reference, PAL Clock is 26601712.5/16 = 1662607.03125 Hz
-	.byte 3	; 21307 Hz
-	.byte 8	; 8000 Hz
+.include "MUSIC/EXPORTS/pcm_metadata.s"
+
 .endproc
 
 ; uint16_t hexToDec (uint16_t input)

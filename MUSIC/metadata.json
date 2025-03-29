@@ -488,7 +488,6 @@
 		{
 			"segment": "PCM_BANK",
 			"path": "MUSIC/PCM/SSDPCM2-geometryDash.pcm",
-			"symbol": "GeometryDashPCMA",
 			"sampleRateNTSC": 4,
 			"sampleRatePAL": 3,
 			"nsfData": {
@@ -501,7 +500,6 @@
 		{
 			"segment": "PCM_BANK_B",
 			"path": "MUSIC/PCM/SSDPCM2-fire.pcm",
-			"symbol": "GeometryDashPCMB",
 			"sampleRateNTSC": 10,
 			"sampleRatePAL": 8,
 			"nsfData": {

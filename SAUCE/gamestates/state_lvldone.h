@@ -414,39 +414,8 @@ CODE_BANK_PUSH("XCD_BANK_05")
 
 const unsigned char bgmtestscreen[];
 
-#include "defines/bgm_charmap.h"
-
-const unsigned char TEXT_sfxtext0[]="DEATH";
-const unsigned char TEXT_sfxtext1[]="CLICK";
-const unsigned char TEXT_sfxtext2[]="LEVEL$COMPLETE";
-const unsigned char TEXT_sfxtext3[]="COIN";
-const unsigned char TEXT_sfxtext4[]="CHEST$OPEN";
-const unsigned char TEXT_sfxtext5[]="ORBS";
-const unsigned char TEXT_sfxtext6[]="DIAMONDS";
-const unsigned char TEXT_sfxtext7[]="EXIT$LEVEL";
-const unsigned char TEXT_sfxtext8[]="START$LEVEL";
-const unsigned char TEXT_sfxtext9[]="INVALID";
-const unsigned char TEXT_sfxtextA[]="ACHIEVEMENT$GET";
-
-const unsigned char* const sfxtexts[] = {
-	TEXT_sfxtext0, TEXT_sfxtext1, TEXT_sfxtext2, TEXT_sfxtext3, TEXT_sfxtext4, TEXT_sfxtext5, TEXT_sfxtext6, TEXT_sfxtext7, TEXT_sfxtext8, TEXT_sfxtext9, TEXT_sfxtextA
-};
-
-const unsigned char sfxtexts_size[] = {
-	sizeof(TEXT_sfxtext0) - 1,
-	sizeof(TEXT_sfxtext1) - 1,
-	sizeof(TEXT_sfxtext2) - 1,
-	sizeof(TEXT_sfxtext3) - 1,
-	sizeof(TEXT_sfxtext4) - 1,
-	sizeof(TEXT_sfxtext5) - 1,
-	sizeof(TEXT_sfxtext6) - 1,
-	sizeof(TEXT_sfxtext7) - 1,
-	sizeof(TEXT_sfxtext8) - 1,
-	sizeof(TEXT_sfxtext9) - 1,
-	sizeof(TEXT_sfxtextA) - 1
-};
-
 #include "MUSIC/EXPORTS/music_soundTestTables.h"
+#include "MUSIC/EXPORTS/sfx_soundTestTables.h"
 
 const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
 
@@ -545,7 +514,7 @@ void bgmtest() {
 	if (__A__) draw_padded_text(xbgmtextsLower[song & 0x7F], xbgmtextsLowerSize[song], 18, NTADR_A(7, 11));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 11));
 	
-	draw_padded_text(sfxtexts[sfx & 0x7F], sfxtexts_size[sfx], 18, NTADR_A(7, 18));
+	draw_padded_text(sfxtexts[sfx & 0x7F], sfxtextSizes[sfx], 18, NTADR_A(7, 18));
 
 	
 		if (settingvalue == 0) {
