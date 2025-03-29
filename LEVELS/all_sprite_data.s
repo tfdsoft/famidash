@@ -7604,9 +7604,9 @@ sprite_data_eon:
   .byte $e0,$ea,$b0,$02,$0e
   .byte $60,$ec,$c0,$02,$0b
   .byte $00,$ee,$d0,$02,$0b
-  .byte $e0,$ef,$a0,$02,$1b
   .byte $50,$f7,$e0,$02,$ef
   .byte $30,$f9,$e0,$02,$15
+  .byte $a0,$f9,$d0,$02,$1b
   .byte $30,$fc,$80,$02,$0f
   .byte $30,$fc,$40,$03,$0f
   .byte $ff
@@ -7691,7 +7691,6 @@ sprite_data_stalemate:
   .byte $70,$1f,$20,$03,$18
   .byte $b0,$1f,$10,$03,$08
   .byte $b0,$1f,$20,$03,$19
-  .byte $30,$20,$60,$03,$07
   .byte $40,$20,$20,$03,$09
   .byte $c0,$20,$00,$03,$11
   .byte $d0,$20,$40,$03,$07

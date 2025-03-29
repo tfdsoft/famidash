@@ -335,7 +335,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2098
 
 
-.segment "LVL_BANK_16"	; Total bank size: 6530 bytes
+.segment "LVL_BANK_16"	; Total bank size: 6525 bytes
 	.export level_data_eon_2
 	level_data_eon_2:
 	; Level data

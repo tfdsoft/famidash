@@ -570,7 +570,7 @@ const unsigned char TEXT_magictouch[]="MAGIC$TOUCH";
 const unsigned char TEXT_pyrophoric[]="PYROPHORIC";
 const unsigned char TEXT_subtle[]="SUBTLE";
 const unsigned char TEXT_subtle2[]="ODDITIES";
-const unsigned char TEXT_hell[]="HELL";
+const unsigned char TEXT_hell[]="ACCELERATE";
 const unsigned char TEXT_cantletgo[]="CANT$LET$GO";
 
 
