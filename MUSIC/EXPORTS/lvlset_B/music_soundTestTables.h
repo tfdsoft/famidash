@@ -54,7 +54,7 @@ const char musicSoundTestString2E[11] = "SPEED$RACER";
 const char musicSoundTestString2F[11] = "MAGIC$TOUCH";
 const char musicSoundTestString30[10] = "PYROPHORIC";
 const char musicSoundTestString31[ 8] = "ODDITIES";
-const char musicSoundTestString32[ 4] = "HELL";
+const char musicSoundTestString32[10] = "ACCELERATE";
 
 
 const char* const xbgmtextsUpper[] = {
