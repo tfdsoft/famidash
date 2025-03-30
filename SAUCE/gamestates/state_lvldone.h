@@ -2,7 +2,8 @@
 CODE_BANK_PUSH("LVL_BANK_00")
 void lvl_done_update();
 void mouse_and_cursor();
-void update_text();
+void update_text1();
+void update_text2();
 const unsigned char palette_Credits2[16]={ 0x11,0x0f,0x10,0x30,0x11,0x0f,0x2a,0x39,0x11,0x28,0x17,0x0f,0x11,0x0f,0x11,0x21 };
 
 
@@ -1715,7 +1716,7 @@ void bgmtest() {
 	vram_unrle(bgmtestscreen);   	
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
-	update_text();
+	update_text1();
 	while (1) {
 		
 		ppu_wait_nmi();
@@ -1774,8 +1775,8 @@ void bgmtest() {
 	*/
 
 	if (joypad1.press_right || joypad1.press_left) hold_timer = 0;
-	if (joypad1.press_right || (joypad1.right && hold_timer >= 15)) { song++; temptemp6 = 0; if (song == song_max) {song = 0;} update_text(); hold_timer = 0;}
-	if (joypad1.press_left || (joypad1.left && hold_timer >= 15)) { if (song == 0) {song = song_max - 1;} else song--; temptemp6 = 0; update_text(); hold_timer = 0;}
+	if (joypad1.press_right || (joypad1.right && hold_timer >= 15)) { song++; temptemp6 = 0; if (song == song_max) {song = 0;} if (!queuemode) update_text1(); else update_text2(); hold_timer = 0;}
+	if (joypad1.press_left || (joypad1.left && hold_timer >= 15)) { if (song == 0) {song = song_max - 1;} else song--; temptemp6 = 0; if (!queuemode) update_text1(); else update_text2();  hold_timer = 0;}
 		if (joypad1.press_b) {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
@@ -1796,6 +1797,7 @@ void bgmtest() {
 			vram_unrle(SoundQueue);   	
 			ppu_on_all();
 			queuemode = 1;
+			update_text2();
 		}
 	}
 	else {					//queue mode
@@ -1805,6 +1807,7 @@ void bgmtest() {
 			vram_unrle(bgmtestscreen);   	
 			ppu_on_all();
 			queuemode = 0;
+			update_text1();
 		}		
 	}				
 		
@@ -2002,7 +2005,7 @@ void calculate_sprite_pos() {
 
 }
 
-void update_text() {
+void update_text1() {
 	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
 	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 7));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 7));
@@ -2029,6 +2032,16 @@ void update_text() {
 	__A__ = idx16_load_hi_NOC(coveringartists4, song);
 	if (__A__) draw_padded_text(coveringartists4[song & 0x7F], coveringartists4_size[song], 16, NTADR_A(7, 22));
 	else one_vram_buffer_horz_repeat('$', 16, NTADR_A(7, 22));
+}	
+
+void update_text2() {
+	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
+	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 17, NTADR_A(7, 7));
+	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 7));
+	__A__ = idx16_load_hi_NOC(xbgmtexts2, song);
+	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 17, NTADR_A(7, 8));
+	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 8));
+	
 }	
 
 CODE_BANK_POP()
