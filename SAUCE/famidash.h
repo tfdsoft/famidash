@@ -232,6 +232,8 @@ unsigned char practice_famistudio_registers[11 * MAX_PRACTICE_POINTS];
 
 unsigned char practice_music_sync;
 
+unsigned char music_queue[10];
+
 #define poweroffcheck SRAM_VALIDATE[3]
 // Regular NES RAM
 #pragma bss-name(pop)

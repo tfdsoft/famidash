@@ -1595,52 +1595,7 @@ ntAddrHiTbl:
 
 .export _load_ground
 .proc _load_ground
-	;A = ground num
-	ASL						;
-	TAX						;
-	LDA	#$00				;
-	TAY						;	ptr1 = ground[id]
-	JSR	mmc3_set_prg_bank_1	;	mmc3_set_prg_bank_1(0)
-	LDA _ground, X			;	Y = 0
-	STA ptr1				;
-	LDA _ground+1, X		;
-	STA ptr1+1				;__
-	LDX #<-48				;__	X = idx @ collmap data, count up to 0
 
-	ground_ptr = ground-($100-48)
-
-	; there's a max of 48 bytes of data to fill, 
-	; the rle worst case is 96 bytes long,
-	; therefore not needing to check for an overflow
-
-	loop:
-		LDA (ptr1),y		;
-		bmi single_rle_byte	;	Run
-		STA tmp1			;
-		iny					;__
-
-		LDA (ptr1),y		;	Value
-		iny					;__
-
-		STY tmp2
-		LDY tmp1
-	mult_loop:
-		STA ground_ptr, X
-		INX
-		BEQ fin
-		DEY
-		BPL mult_loop
-		LDY tmp2
-		BNE loop	; Physically cannot be not 0
-
-	single_rle_byte:
-		AND #$7F
-		STA ground_ptr, X
-		INY
-		INX
-		BNE loop
-
-	fin:
 		RTS
 
 .endproc
@@ -3746,66 +3701,7 @@ bank:
 
 .export __display_attempt_counter
 .proc __display_attempt_counter
-	; AX = ppu_address
-	; sreg[0] = zeroChr
-	zeroChr = sreg
 
-	start:
-		pha		; temp storage
-		ldy #7	; size of _attemptCounter
-
-	numsize_loop:
-		dey
-		beq	use_one_vram_buffer	; If Y decrements to 0, we are just printing the last digit
-		lda	_attemptCounter, y
-		beq	numsize_loop
-
-		; now we have the (amount of digits to print - 1) in Y
-	vram_write_header:
-		sty	tmp1
-
-		txa					;
-		ora	#$40			;	NT_UPD_HORZ
-		ldx	VRAM_INDEX		;
-		sta	VRAM_BUF+0,	x	;	Calculate the vram address of the leftmost digit
-		pla					;	and store in the buffer
-		sec					;
-		sbc	tmp1			;
-		sta	VRAM_BUF+1,	x	;__
-		iny					;
-		tya					;	The amount of bytes needs to be incremented
-		sta	VRAM_BUF+2,	x	;__
-
-		clc
-	vram_write_main:
-		lda	_attemptCounter-1, y
-		; clc should not be needed as the writes SHOULD NOT overflow
-		adc	zeroChr
-		sta	VRAM_BUF+3,	x
-		inx
-		dey
-		bne vram_write_main
-
-	vram_write_finish:
-		lda	#$FF
-		sta	VRAM_BUF+3,	x
-		txa
-		clc
-		adc	#3
-		sta	VRAM_INDEX
-		rts
-
-	use_one_vram_buffer:
-		lda	_attemptCounter+0
-		clc
-		adc	zeroChr
-		sta	sreg	; doesn't matter, it's not used anymore anyway
-
-		; X has remained the same high byte of PPU address
-		; A has to be recovered rq
-		pla
-
-		jmp	__one_vram_buffer
 .endproc
 
 

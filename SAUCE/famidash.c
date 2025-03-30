@@ -59,6 +59,10 @@ void main(){
 	//mmc3_set_prg_bank_1(GET_BANK(playPCM));
 	//playPCM(0);
 
+	tmp2 = 0;
+	for (tmp2 = 0; tmp2 < 10; tmp2++) {
+		music_queue[tmp2] = 0xFF;
+	}
 
 	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;

@@ -12,8 +12,8 @@
 #endif
 
 #define MAX_ICONS 27 //total icons
-#define MAX_FIREBALLS 20
-#define MAX_PRACTICE_POINTS 8
+#define MAX_FIREBALLS 1
+#define MAX_PRACTICE_POINTS 1
 #define max_loaded_sprites 16
 #define MAX_LEVEL_COMPLETE 0x60
 
