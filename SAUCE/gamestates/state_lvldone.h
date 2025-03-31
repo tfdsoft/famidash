@@ -64,7 +64,7 @@ const unsigned char bgmtestscreen[];
 const unsigned char SoundQueue[];
 
 #include "defines/bgm_charmap.h"
-const unsigned char TEXT_xlevel1text1[]="STEREO$";
+const unsigned char TEXT_xlevel1text1[]="STEREO";
 const unsigned char TEXT_xlevel1text2[]="BACK$ON";
 const unsigned char TEXT_xlevel1text5[]="BASE$AFTER";
 const unsigned char TEXT_xlevel1textC[]="THEORY$OF";
