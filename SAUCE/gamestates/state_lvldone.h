@@ -1016,7 +1016,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro,		//just right
 	TEXT_nerdboy,		//kesobomb
 	TEXT_seaglowingpro, 			//lost
-	TEXT_seaglowingpro,				//ludacris speed
+	TEXT_elangel,				//ludacris speed
 	TEXT_elangel,			//machina GDW cut
 	TEXT_seaglowingpro,				//magic touch
 	TEXT_craftyjumper,		//mayhem short ver
@@ -1098,7 +1098,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1,		//just right
 	sizeof(TEXT_nerdboy) - 1,		//kesobomb
 	sizeof(TEXT_seaglowingpro) - 1, 			//lost
-	sizeof(TEXT_seaglowingpro) - 1,				//ludacris speed
+	sizeof(TEXT_elangel) - 1,				//ludacris speed
 	sizeof(TEXT_elangel) - 1,			//machina GDW cut
 	sizeof(TEXT_seaglowingpro) - 1,				//magic touch
 	sizeof(TEXT_craftyjumper) - 1,		//mayhem short ver
