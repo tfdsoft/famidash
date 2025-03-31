@@ -2055,6 +2055,7 @@ void check_if_music_stopped() {
 			ppu_off();
 			crossPRGBankJump0(unrle_bgm2);
 			update_text2();
+			update_text3();
 			ppu_on_all();
 		}
 	}
