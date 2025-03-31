@@ -1862,7 +1862,7 @@ void bgmtest() {
 
 
 void refresh_queue_screen() {
-		if (!tmp4) {
+		if (!tmp4 || tmp4 == 0xFF) {
 //					ppu_off();
 //					crossPRGBankJump0(unrle_bgm2);
 					update_text2();
@@ -2175,8 +2175,8 @@ void play_next_queue() {
 			if (music_queue[0] != 0xFF) { music_play(xbgm_lookup_table2[music_queue[0]]); }
 			else { famistudio_music_stop(); songplaying = 0; }
 				
-			refresh_queue_screen();
-			tmp4 = 2;
+			//refresh_queue_screen();
+			tmp4 = 0xFF;
 }			
 
 
@@ -2188,6 +2188,7 @@ void check_if_music_stopped() {
 		if (famistudio_song_speed == 0x80) {
 
 			play_next_queue();
+
 		}
 	}
 }	
