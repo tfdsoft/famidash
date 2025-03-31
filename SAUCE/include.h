@@ -35,8 +35,8 @@
 #pragma rodata-name (pop)
 #pragma rodata-name (push, "LVL_BANK_00")
 #include "defines/menunametable2.h"
-#include "LEVELS/grounddata.h"
-#include "LEVELS/groundlist.h"
+//#include "LEVELS/grounddata.h"
+//#include "LEVELS/groundlist.h"
 #pragma rodata-name (pop)
 
 

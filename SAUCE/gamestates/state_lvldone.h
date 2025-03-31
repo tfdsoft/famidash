@@ -78,7 +78,7 @@ const unsigned char TEXT_hexagon[]="HEXAGON";
 const unsigned char TEXT_blast[]="BLAST";
 const unsigned char TEXT_speed[]="AT$THE$SPEED";
 const unsigned char TEXT_crackdown[]="OKIBA";
-const unsigned char TEXT_against[]="8$BIT$AGAINST";
+const unsigned char TEXT_against[]="8BIT$AGAINST";
 const unsigned char TEXT_geometrical[]="GEOMETRICAL";
 const unsigned char TEXT_driving[]="DRIVING$BY";
 const unsigned char TEXT_ultimate[]="ULTIMATE";
@@ -117,19 +117,19 @@ const unsigned char TEXT_2blast[]="PROCESSING";
 const unsigned char TEXT_2textlost[]="LOST";
 const unsigned char TEXT_2textstereo[]="MADNESS$2";
 const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
-const unsigned char TEXT_2textfullversion[]="FULL$VERSION";
+const unsigned char TEXT_2textfullversion[]="FULL$VER";
 const unsigned char TEXT_2textproblematic[]="PROBLEMATIC";
-const unsigned char TEXT_2textspeed[]="OF$LIGHT";
-const unsigned char TEXT_2textspeed2[]="OF$LIGHT$PT$2";
-const unsigned char TEXT_2textspeed3[]="OF$LIGHT$PT$3";
-const unsigned char TEXT_2textspeedfull[]="OF$LIGHT$FULL";
+const unsigned char TEXT_2textspeed[]="OF$LIGHT$1";
+const unsigned char TEXT_2textspeed2[]="OF$LIGHT$2";
+const unsigned char TEXT_2textspeed3[]="OF$LIGHT$3";
+const unsigned char TEXT_2textspeedfull[]="OF$LIGHT";
 const unsigned char TEXT_jackrussel[]="JACK$RUSSEL";
 const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
 const unsigned char TEXT_2textstalemate[]="STALEMATE";
 const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
 const unsigned char TEXT_2textchaoz[]="CHAOZ$FANTASY";
 const unsigned char TEXT_2textjustright[]="JUST$RIGHT";
-const unsigned char TEXT_against2[]="THE$ODDS$REDUX";
+const unsigned char TEXT_against2[]="THE$ODDS$RDX";
 const unsigned char TEXT_geometrical2[]="DOMINATOR";
 const unsigned char TEXT_dash2[]="DASH";
 const unsigned char TEXT_driving2[]="NIGHT";
@@ -1871,10 +1871,10 @@ void refresh_queue_screen() {
 		}
 		else if (tmp4 == 1) {
 					update_text3();
-					tmp4 = 0;
+					tmp4 = 3;
 		}			
 		else if (tmp4 == 2) {
-			for (tmp1 = 5; tmp1 < 10; tmp1++) {			//limited to 5??
+			for (tmp1 = 4; tmp1 < 8; tmp1++) {			//limited to 5??
 			if (music_queue[tmp1] != 0xFF) {
 				tmp3 = music_queue[tmp1];
 				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
@@ -1893,6 +1893,27 @@ void refresh_queue_screen() {
 			else one_vram_buffer_horz_repeat('$', 22, NTADR_A(5, (13 + (tmp1))));	
 			}
 			tmp4 = 1;
+		}
+		else if (tmp4 == 3) {
+			for (tmp1 = 8; tmp1 < 10; tmp1++) {			//limited to 5??
+			if (music_queue[tmp1] != 0xFF) {
+				tmp3 = music_queue[tmp1];
+				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
+				if (__A__) { 
+					multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(5, (13 + (tmp1))));
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((6 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
+				}
+				else {
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(5, (13 + (tmp1))));
+					multi_vram_buffer_horz(blanktext2, 7, NTADR_A((5 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
+
+				}				
+			}
+			else one_vram_buffer_horz_repeat('$', 22, NTADR_A(5, (13 + (tmp1))));	
+			}
+			tmp4 = 0;
 		}
 			
 }					
@@ -2072,7 +2093,7 @@ void update_text2() {
 //	one_vram_buffer(0xB9, NTADR_A(5,22)); // 9
 	
 //	for (tmp1 = 0; tmp1 < 10; tmp1++) {
-	for (tmp1 = 0; tmp1 < 5; tmp1++) {			//limited to 5??
+	for (tmp1 = 0; tmp1 < 4; tmp1++) {			//limited to 5??
 		if (music_queue[tmp1] != 0xFF) {
 			tmp3 = music_queue[tmp1];
 			__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
