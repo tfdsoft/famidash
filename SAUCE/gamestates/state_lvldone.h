@@ -3,6 +3,7 @@ CODE_BANK_PUSH("LVL_BANK_00")
 void lvl_done_update();
 void mouse_and_cursor();
 void refresh_queue_screen();
+void play_next_queue();
 void update_text1();
 void update_text2();
 void update_text3();
@@ -1813,6 +1814,9 @@ void bgmtest() {
 			queuemode = 0;
 			update_text1();
 		}	
+		if (joypad1.press_up) {
+				play_next_queue();		//debug
+		}
 		if (joypad1.press_a) {
 			if (music_queue[0] == 0xFF) { 
 				music_play(xbgm_lookup_table2[song]); 
@@ -2090,13 +2094,7 @@ void update_text2() {
 	tmp4 = 2;
 }	
 
-void check_if_music_stopped() {
-	if (!queuemode) {
-		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table2[song]); }
-	}
-	else {
-		if (famistudio_song_speed == 0x80) {
-
+void play_next_queue() {
 			tmp1 = 0;
 
 			for (tmp1 = 0; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {		
@@ -2111,6 +2109,17 @@ void check_if_music_stopped() {
 				
 			refresh_queue_screen();
 			tmp4 = 2;
+}			
+
+
+void check_if_music_stopped() {
+	if (!queuemode) {
+		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table2[song]); }
+	}
+	else {
+		if (famistudio_song_speed == 0x80) {
+
+			play_next_queue();
 		}
 	}
 }	
