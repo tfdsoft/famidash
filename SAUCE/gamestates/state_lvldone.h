@@ -1863,10 +1863,10 @@ void bgmtest() {
 
 void refresh_queue_screen() {
 		if (!tmp4) {
-					ppu_off();
-					crossPRGBankJump0(unrle_bgm2);
+//					ppu_off();
+//					crossPRGBankJump0(unrle_bgm2);
 					update_text2();
-					ppu_on_all();
+//					ppu_on_all();
 					tmp4 = 2;
 		}
 		else if (tmp4 == 1) {
@@ -1874,7 +1874,8 @@ void refresh_queue_screen() {
 					tmp4 = 3;
 		}			
 		else if (tmp4 == 2) {
-			for (tmp1 = 4; tmp1 < 8; tmp1++) {			//limited to 5??
+			for (tmp1 = 2; tmp1 < 4; tmp1++) {			//limited to 5??
+			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));		
 			if (music_queue[tmp1] != 0xFF) {
 				tmp3 = music_queue[tmp1];
 				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
@@ -1890,12 +1891,13 @@ void refresh_queue_screen() {
 
 				}				
 			}
-			else one_vram_buffer_horz_repeat('$', 22, NTADR_A(3, (13 + (tmp1))));	
-			}
+			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			tmp4 = 1;
+			}
 		}
 		else if (tmp4 == 3) {
-			for (tmp1 = 8; tmp1 < 10; tmp1++) {			//limited to 5??
+			for (tmp1 = 4; tmp1 < 6; tmp1++) {			//limited to 5??
+			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			if (music_queue[tmp1] != 0xFF) {
 				tmp3 = music_queue[tmp1];
 				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
@@ -1911,7 +1913,51 @@ void refresh_queue_screen() {
 
 				}				
 			}
-			else one_vram_buffer_horz_repeat('$', 22, NTADR_A(3, (13 + (tmp1))));	
+			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+			tmp4 = 4;
+			}
+		}
+		else if (tmp4 == 4) {
+			for (tmp1 = 6; tmp1 < 8; tmp1++) {			//limited to 5??
+			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+			if (music_queue[tmp1] != 0xFF) {
+				tmp3 = music_queue[tmp1];
+				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
+				if (__A__) { 
+					multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(3, (13 + (tmp1))));
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((4 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
+				}
+				else {
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(3, (13 + (tmp1))));
+					multi_vram_buffer_horz(blanktext2, 7, NTADR_A((3 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
+
+				}				
+			}
+			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+			tmp4 = 5;
+			}
+		}
+		else if (tmp4 == 5) {
+			for (tmp1 = 8; tmp1 < 10; tmp1++) {			//limited to 5??
+			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+			if (music_queue[tmp1] != 0xFF) {
+				tmp3 = music_queue[tmp1];
+				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
+				if (__A__) { 
+					multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(3, (13 + (tmp1))));
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((4 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
+				}
+				else {
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(3, (13 + (tmp1))));
+					multi_vram_buffer_horz(blanktext2, 7, NTADR_A((3 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
+
+				}				
+			}
+			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			}
 			tmp4 = 0;
 		}
@@ -2093,8 +2139,9 @@ void update_text2() {
 //	one_vram_buffer(0xB9, NTADR_A(5,22)); // 9
 	
 //	for (tmp1 = 0; tmp1 < 10; tmp1++) {
-	for (tmp1 = 0; tmp1 < 4; tmp1++) {			//limited to 5??
+	for (tmp1 = 0; tmp1 < 2; tmp1++) {			//limited to 5??
 		if (music_queue[tmp1] != 0xFF) {
+			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			tmp3 = music_queue[tmp1];
 			__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
 			if (__A__) { 
@@ -2109,7 +2156,7 @@ void update_text2() {
 
 			}				
 		}
-		else one_vram_buffer_horz_repeat('$', 22, NTADR_A(3, (13 + (tmp1))));	
+		else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 	}	
 	//ppu_on_all();
 	tmp4 = 2;
