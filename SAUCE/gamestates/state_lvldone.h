@@ -2038,22 +2038,23 @@ void update_text2() {
 //	one_vram_buffer(0xB9, NTADR_A(5,22)); // 9
 	
 //	for (tmp1 = 0; tmp1 < 10; tmp1++) {
-	for (tmp1 = 0; tmp1 < 6; tmp1++) {			//again, limited to 5??
+	for (tmp1 = 0; tmp1 < 5; tmp1++) {			//limited to 5??
 		if (music_queue[tmp1] != 0xFF) {
-			__A__ = idx16_load_hi_NOC(xbgmtexts1, music_queue[tmp1]);
+			tmp3 = music_queue[tmp1];
+			__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
 			if (__A__) { 
-				multi_vram_buffer_horz(xbgmtexts1[music_queue[tmp1] & 0x7F], xbgmtext1_size[music_queue[tmp1]], NTADR_A(7, (13 + tmp1)));
-				__A__ = idx16_load_hi_NOC(xbgmtexts2, music_queue[tmp1]);
-				multi_vram_buffer_horz(xbgmtexts2[music_queue[tmp1] & 0x7F], xbgmtext2_size[music_queue[tmp1]], NTADR_A((8 + xbgmtext1_size[music_queue[tmp1]]), (13 + tmp1)));
+				multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(5, (13 + tmp1)));
+				__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+				multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((6 + xbgmtext1_size[tmp3]), (13 + tmp1)));
 			}
 			else {
-				__A__ = idx16_load_hi_NOC(xbgmtexts2, music_queue[tmp1]);
-				multi_vram_buffer_horz(xbgmtexts2[music_queue[tmp1] & 0x7F], xbgmtext2_size[music_queue[tmp1]], NTADR_A(7, (13 + tmp1)));
-				multi_vram_buffer_horz(blanktext2, 7, NTADR_A((7 + xbgmtext2_size[music_queue[tmp1]]), (13 + tmp1)));
+				__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+				multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(5, (13 + tmp1)));
+				multi_vram_buffer_horz(blanktext2, 7, NTADR_A((5 + xbgmtext2_size[tmp3]), (13 + tmp1)));
 
 			}				
 		}
-		else one_vram_buffer_horz_repeat('$', 14, NTADR_A(7, (13 + tmp1)));	
+		else one_vram_buffer_horz_repeat('$', 14, NTADR_A(5, (13 + tmp1)));	
 	}	
 	//ppu_on_all();
 }	
@@ -2064,14 +2065,15 @@ void check_if_music_stopped() {
 	}
 	else {
 		if (famistudio_song_speed == 0x80) {
+
 			tmp1 = 0;
-//			for (tmp1 = 0; tmp1 < 9; tmp1++) {
-			for (tmp1 = 0; tmp1 < 6; tmp1++) {		//cannot do more than 5???
+
+			for (tmp1 = 0; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {		
 				tmp2 = tmp1 + 1;
 				music_queue[tmp1] = music_queue[tmp2];
 			}
-//			music_queue[9] = 0xFF;
-			music_queue[6] = 0xFF;	//for 5 songs
+
+			music_queue[MAX_SONG_QUEUE_SIZE] = 0xFF;
 
 			if (music_queue[0] != 0xFF) { music_play(xbgm_lookup_table2[music_queue[0]]); }
 			else { famistudio_music_stop(); songplaying = 0; }
