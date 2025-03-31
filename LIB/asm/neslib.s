@@ -652,7 +652,7 @@ __oam_meta_spr_disco:
 	iny				;	Load and store the attribute
 	and #$FC		;
 	sta OAM_BUF+2,x	;__
-	jsr rand1		;
+	jsr _newrand		;
 	and #$3			;
 	ora OAM_BUF+2,X	;	Randomize the last 2 bits of the attributes
 	sta OAM_BUF+2,X	;__
