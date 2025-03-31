@@ -2,6 +2,7 @@
 CODE_BANK_PUSH("LVL_BANK_00")
 void lvl_done_update();
 void mouse_and_cursor();
+void refresh_queue_screen();
 void update_text1();
 void update_text2();
 void update_text3();
@@ -9,6 +10,7 @@ void unrle_bgm1();
 void unrle_bgm2();
 const unsigned char palette_Credits2[16]={ 0x11,0x0f,0x10,0x30,0x11,0x0f,0x2a,0x39,0x11,0x28,0x17,0x0f,0x11,0x0f,0x11,0x21 };
 
+const unsigned char blanktext2[] = "$$$$$$$$$$$$$";
 
 const uint8_t difficulty_pal_A[] ={
 	0x21,	// easy
@@ -1729,6 +1731,7 @@ void bgmtest() {
 		 // read the first controller
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+		if (tmp4) refresh_queue_screen();
 /*
 		if (mouse.left_press) {
 			if ((mouse.x >= 0x63 && mouse.x <= 0x8C)) {
@@ -1817,24 +1820,21 @@ void bgmtest() {
 				update_text2();
 			}
 			else {
-				for (tmp1 = 1; tmp1 < 10; tmp1++) {
+				for (tmp1 = 1; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {
 					if (music_queue[tmp1] == 0xFF) {
 						music_queue[tmp1] = song;
 						break;
 					}
 				}
-				update_text2();
+				if (music_queue[10] == 0xFF) update_text2();
 			}
 		}
 		if (joypad1.press_b) {
 			if (music_queue[0] == 0xFF) { }
 			else if (music_queue[1] == 0xFF) { 
 					music_queue[0] = 0xFF;
-					ppu_off();
-					crossPRGBankJump0(unrle_bgm2);
-					update_text2();
-					update_text3();
-					ppu_on_all();
+					refresh_queue_screen();
+					tmp4 = 2;
 					famistudio_music_stop();
 					songplaying = 0;
 			}
@@ -1842,11 +1842,8 @@ void bgmtest() {
 				for (tmp1 = MAX_SONG_QUEUE_SIZE - 1; tmp1--; tmp1 > 0) {
 					if (music_queue[tmp1] != 0xFF) {
 						music_queue[tmp1] = 0xFF;
-						ppu_off();
-						crossPRGBankJump0(unrle_bgm2);
-						update_text2();
-						update_text3();
-						ppu_on_all();
+						refresh_queue_screen();
+						tmp4 = 2;
 						break;
 					}
 				}
@@ -1860,7 +1857,41 @@ void bgmtest() {
 }
 
 
+void refresh_queue_screen() {
+		if (!tmp4) {
+					ppu_off();
+					crossPRGBankJump0(unrle_bgm2);
+					update_text2();
+					ppu_on_all();
+					tmp4 = 2;
+		}
+		else if (tmp4 == 1) {
+					update_text3();
+					tmp4 = 0;
+		}			
+		else if (tmp4 == 2) {
+			for (tmp1 = 5; tmp1 < 10; tmp1++) {			//limited to 5??
+			if (music_queue[tmp1] != 0xFF) {
+				tmp3 = music_queue[tmp1];
+				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
+				if (__A__) { 
+					multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(5, (13 + (tmp1))));
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((6 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
+				}
+				else {
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(5, (13 + (tmp1))));
+					multi_vram_buffer_horz(blanktext2, 7, NTADR_A((5 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
 
+				}				
+			}
+			else one_vram_buffer_horz_repeat('$', 22, NTADR_A(5, (13 + (tmp1))));	
+			}
+			tmp4 = 1;
+		}
+			
+}					
 
 //CODE_BANK_POP()
 
@@ -2016,7 +2047,6 @@ void update_text3() {
 	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 14, NTADR_A(9, 8));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 8));
 }
-const unsigned char blanktext2[] = "$$$$$$$$$$$$$";
 void update_text2() {
 	//ppu_off();
 //	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
@@ -2043,20 +2073,21 @@ void update_text2() {
 			tmp3 = music_queue[tmp1];
 			__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
 			if (__A__) { 
-				multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(5, (13 + tmp1)));
+				multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(5, (13 + (tmp1))));
 				__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-				multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((6 + xbgmtext1_size[tmp3]), (13 + tmp1)));
+				multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((6 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
 			}
 			else {
 				__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-				multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(5, (13 + tmp1)));
-				multi_vram_buffer_horz(blanktext2, 7, NTADR_A((5 + xbgmtext2_size[tmp3]), (13 + tmp1)));
+				multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(5, (13 + (tmp1))));
+				multi_vram_buffer_horz(blanktext2, 7, NTADR_A((5 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
 
 			}				
 		}
-		else one_vram_buffer_horz_repeat('$', 14, NTADR_A(5, (13 + tmp1)));	
+		else one_vram_buffer_horz_repeat('$', 22, NTADR_A(5, (13 + (tmp1))));	
 	}	
 	//ppu_on_all();
+	tmp4 = 2;
 }	
 
 void check_if_music_stopped() {
@@ -2078,11 +2109,8 @@ void check_if_music_stopped() {
 			if (music_queue[0] != 0xFF) { music_play(xbgm_lookup_table2[music_queue[0]]); }
 			else { famistudio_music_stop(); songplaying = 0; }
 				
-			ppu_off();
-			crossPRGBankJump0(unrle_bgm2);
-			update_text2();
-			update_text3();
-			ppu_on_all();
+			refresh_queue_screen();
+			tmp4 = 2;
 		}
 	}
 }	
