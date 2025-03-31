@@ -2052,7 +2052,10 @@ void check_if_music_stopped() {
 			if (music_queue[0] != 0xFF) { music_play(xbgm_lookup_table2[music_queue[0]]); }
 			else { famistudio_music_stop(); songplaying = 0; }
 				
+			ppu_off();
+			crossPRGBankJump0(unrle_bgm2);
 			update_text2();
+			ppu_on_all();
 		}
 	}
 }	

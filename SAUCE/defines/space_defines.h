@@ -16,6 +16,8 @@
 #define MAX_PRACTICE_POINTS 1
 #define max_loaded_sprites 16
 #define MAX_LEVEL_COMPLETE 0x60
+#define MAX_SONG_QUEUE_SIZE 20
+
 
 #define NINJABANK 94
 #define MOUSEBANK 96
