@@ -45,7 +45,7 @@ ChkSwapBanks_Labels=1
 VarTileViewTagBuf=0
 VarBgPalCur=2
 VarPalActive=0
-VarTileActive=254
+VarTileActive=244
 VarBankActive=0
 VarPPUMask=0
 VarPPUMaskSet0=0
@@ -62,13 +62,13 @@ VarNameH=30
 VarNameViewX=0
 VarNameViewY=-1
 VarNameSelectionL=-1
-VarNameSelectionR=29
+VarNameSelectionR=20
 VarNameSelectionT=-1
-VarNameSelectionB=13
-VarNameCopyW=2
-VarNameCopyH=12
-VarCHRSelectionL=14
-VarCHRSelectionR=15
+VarNameSelectionB=28
+VarNameCopyW=5
+VarNameCopyH=1
+VarCHRSelectionL=4
+VarCHRSelectionR=5
 VarCHRSelectionT=15
 VarCHRSelectionB=16
 VarCHRCopyW=1
@@ -129,7 +129,7 @@ MetaSpriteBankName=SoundQueue
 FilterCHR=1
 FilterName=9
 FileNameCHR=C:\Users\computer\Desktop\Famidash Assets\Menus\menus
-FileNameName=C:\famidash-new\menus\h\SoundTest
+FileNameName=C:\famidash-new\menus\h\SoundQueue.h
 FileNamePal=
 FileNameMetaSpriteBank=
 FileNameTileProps=
@@ -144,7 +144,7 @@ RadioAutoexport_UseSubDir_NEXXT=0
 CheckAutoexport_MetatileAsBMP=0
 
 
-VarCHRSelected=00[fe]0100
+VarCHRSelected=00[f4]0100[b]
 
 
 Palette=170f1030170f2a28170f1626170f11300f1121310f1222320f1323330f1424340f1525350f1626360f1727370f1828380f1929390f1a2a3a0f1b2b3b0f1c2c3c
@@ -162,19 +162,19 @@ CHRUndo=ff[10]00[8]ff[10]00[8]ff[8]00[8]ff[8]00ff[7]00[6]ff[8]00[2]ff[8]00[2]3f[
 CHRCopy=e0f8feff[2]fef8e00060787e[2]786000ffe7dba5[2]dbe7ff00183c7e[2]3c1800ff[3]8081[3]f17e[2]7f[2]7e[3]0eff[3]0181[3]f17e[2]fe[2]7e[3]0e11[2]1f00[5]0e[2]00[6]ff81bd[4]81ff007e425a[2]427e00[fa1]
 
 
-NameTable=02[5]ae02[14]ae02[a]af02[14]af02[5]060704[1c]0607080905[1c]08090cff[1e]0d0cff[c]edf5f3e9e3ff[d]0d0cff[5]5cfe[12]5dff[5]0d0cff[3]6efffe[14]ff6fff[3]0d0cff[3]7efffe[14]ff7fff[3]0d0cff[5]6cfe[12]6dff[5]0d0cff[1e]0d0cff[8]f0ece1f9ece9f3f4fff1f5e5f5e5ff[8]0d0cff5cfe[1a]5dff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cff6cfe[1a]6dff0d0cff[1e]0d0cff[4]f3e5ece5e3f4e0fff4efe7[2]ece5fff0ece1f9ece9f3f4ff[3]0d0cff[4]f0f2e5f3[2]ffe1fff4efffe1e4[2]fff4effff1f5e5f5e5ff[3]0d0cff[4]f0f2e5f3[2]ffe2fff4effff2e5edeff6e5ff[9]0d0a0b04[c]060e[2]0704[c]0a0b02[2]05[c]0805[2]0905[c]02[2]
+NameTable=02[5]ae02[14]ae02[a]af02[14]af02[5]060704[1c]0607080905[1c]08090cff[1e]0d0cff[c]edf5f3e9e3ff[d]0d0cff[5]5cfe[12]5dff[5]0d0cff[3]6efffe[14]ff6fff[3]0d0cff[3]7efffe[14]ff7fff[3]0d0cff[5]6cfe[12]6dff[5]0d0cff[1e]0d0cff[8]f0ece1f9ece9f3f4fff1f5e5f5e5ff[8]0d0cff5cfe[1a]5dff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cff6cfe[1a]6dff0d0cff[4]f3e5ece5e3f4e0fff4efe7[2]ece5fff0ece1f9ece9f3f4ff[3]0d0cff[4]f0f2e5f3[2]ffe1fff4efffe1e4[2]fff4effff1f5e5f5e5ff[3]0d0cff[4]f0f2e5f3[2]ffe2fff4effff2e5edeff6e5ff[9]0d0cff[4]f0f2e5f3[2]fff5f0fff4effff3ebe9f0fff4efffeee5f8f4ff[2]0d0a0b04[c]060e[2]0704[c]0a0b02[2]05[c]0805[2]0905[c]02[2]
 
 
-NameCopy=fe5dfe[15]6dff0dff0dff0dff0dff0dff0dff0dff0dff0dff0dff0dff0d0a0b02[2]f0ff[2]0d0cff[4]f0f2e5f3[2]ffe2fff4effff2e5f4f5f2eeff[5]0d0a0b04[a]060e[2]0704[a]0a0b02[2]05[a]0805[2]0905[a]02[2]fe[16]6cfe[10]6d00[30c]
+NameCopy=ff[5]f4e0fff4efe7[2]ece5fff0ece1f9ece9f3f4f0f2e5f3[2]ffe1fff4efffe1e4[2]fff4effff1f5e5f5e5f0f2e5f3[2]ffe2fff4effff2e5edeff6e5ff[6]f4effff2e5f4f5f2eeff[5]0d0a0b04[a]060e[2]0704[a]0a0b02[2]05[a]0805[2]0905[a]02[2]fe[16]6cfe[10]6d00[30c]
 
 
-NameUndo=02[5]ae02[14]ae02[a]af02[14]af02[5]060704[1c]0607080905[1c]08090cff[1e]0d0cff[c]edf5f3e9e3ff[d]0d0cff[5]5cfe[12]5dff[5]0d0cff[3]6efffe[14]ff6fff[3]0d0cff[3]7efffe[14]ff7fff[3]0d0cff[5]6cfe[12]6dff[5]0d0cff[1e]0d0cff[8]f0ece1f9ece9f3f4fff1f5e5f5e5ff[8]0d0cff5cfe[1a]5dff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[a]cabbc1bffe[e]ff0d0cff6cfe[1a]6dff0d0cff[1e]0d0cff[4]f3e5ece5e3f4e0fff4efe7[2]ece5fff0ece1f9ece9f3f4ff[3]0d0cff[4]f0f2e5f3[2]ffe1fff4efffe1e4[2]fff4effff1f5e5f5e5ff[3]0d0cff[4]f0f2e5f3[2]ffe2fff4effff2e5edeff6e5ff[9]0d0a0b04[c]060e[2]0704[c]0a0b02[2]05[c]0805[2]0905[c]02[2]
+NameUndo=02[5]ae02[14]ae02[a]af02[14]af02[5]060704[1c]0607080905[1c]08090cff[1e]0d0cff[c]edf5f3e9e3ff[d]0d0cff[5]5cfe[12]5dff[5]0d0cff[3]6efffe[14]ff6fff[3]0d0cff[3]7efffe[14]ff7fff[3]0d0cff[5]6cfe[12]6dff[5]0d0cff[1e]0d0cff[8]f0ece1f9ece9f3f4fff1f5e5f5e5ff[8]0d0cff5cfe[1a]5dff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cfffe[1c]ff0d0cff6cfe[1a]6dff0d0cff[4]f3e5ece5e3f4e0fff4efe7[2]ece5fff0ece1f9ece9f3f4ff[3]0d0cff[4]f0f2e5f3[2]ffe1fff4efffe1e4[2]fff4effff1f5e5f5e5ff[3]0d0cff[4]f0f2e5f3[2]ffe2fff4effff2e5edeff6e5ff[9]0d0cff[4]f0f2e5f3[2]fff5f0fff4effff3ebe9f0fff4efffeee5f8ff[3]0d0a0b04[c]060e[2]0704[c]0a0b02[2]05[c]0805[2]0905[c]02[2]
 
 
-AttrTable=7f5c5f[4]53df5500[6]55[2]00[6]551100[6]441100[6]441100[6]445500[6]550705[2]0d0705[2]0d
+AttrTable=7f5c5f[4]53df5500[6]55[2]00[6]551100[6]441100[6]441100[6]445500[6]450705[2]0d0705[2]0d
 
 
-AttrCopy=00[18]01[18]03[4]00[2]01[4]00[6]
+AttrCopy=00[40]
 
 
 AttrUndo=7f5c5f[4]53df5500[6]55[2]00[6]551100[6]441100[6]441100[6]445500[6]550705[2]0d0705[2]0d
