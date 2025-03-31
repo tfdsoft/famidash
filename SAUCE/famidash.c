@@ -60,7 +60,7 @@ void main(){
 	//playPCM(0);
 
 	tmp2 = 0;
-	for (tmp2 = 0; tmp2 < 10; tmp2++) {
+	for (tmp2 = 0; tmp2 < MAX_SONG_QUEUE_SIZE; tmp2++) {
 		music_queue[tmp2] = 0xFF;
 	}
 

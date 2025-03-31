@@ -1779,6 +1779,8 @@ void bgmtest() {
 	if (joypad1.press_right || joypad1.press_left) hold_timer = 0;
 	if (joypad1.press_right || (joypad1.right && hold_timer >= 15)) { song++; temptemp6 = 0; if (song == song_max) {song = 0;} if (!queuemode) update_text1(); else update_text3(); hold_timer = 0;}
 	if (joypad1.press_left || (joypad1.left && hold_timer >= 15)) { if (song == 0) {song = song_max - 1;} else song--; temptemp6 = 0; if (!queuemode) update_text1(); else update_text3();  hold_timer = 0;}
+
+	if (!queuemode) {		//not queue mode
 		if (joypad1.press_b) {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
@@ -1787,8 +1789,6 @@ void bgmtest() {
 			gameState = 1;
 			return;
 		}
-
-	if (!queuemode) {		//not queue mode
 		if (joypad1.press_a) {
 				if (!temptemp6) { music_play(xbgm_lookup_table2[song]); temptemp6 = 1; songplaying = 1; }
 				else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
@@ -1826,8 +1826,32 @@ void bgmtest() {
 				update_text2();
 			}
 		}
-
-		
+		if (joypad1.press_b) {
+			if (music_queue[0] == 0xFF) { }
+			else if (music_queue[1] == 0xFF) { 
+					music_queue[0] = 0xFF;
+					ppu_off();
+					crossPRGBankJump0(unrle_bgm2);
+					update_text2();
+					update_text3();
+					ppu_on_all();
+					famistudio_music_stop();
+					songplaying = 0;
+			}
+			else {
+				for (tmp1 = MAX_SONG_QUEUE_SIZE - 1; tmp1--; tmp1 > 0) {
+					if (music_queue[tmp1] != 0xFF) {
+						music_queue[tmp1] = 0xFF;
+						ppu_off();
+						crossPRGBankJump0(unrle_bgm2);
+						update_text2();
+						update_text3();
+						ppu_on_all();
+						break;
+					}
+				}
+			}
+		}
 	}				
 		
 		// sound test codes
