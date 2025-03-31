@@ -1994,7 +1994,7 @@ void update_text3() {
 }
 const unsigned char blanktext2[] = "$$$$$$$$$$$$$";
 void update_text2() {
-	ppu_off();
+	//ppu_off();
 	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
 	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 14, NTADR_A(9, 7));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 7));
@@ -2031,7 +2031,7 @@ void update_text2() {
 		}
 		else one_vram_buffer_horz_repeat('$', 14, NTADR_A(7, (13 + tmp1)));	
 	}	
-	ppu_on_all();
+	//ppu_on_all();
 }	
 
 void check_if_music_stopped() {
