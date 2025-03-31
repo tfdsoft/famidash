@@ -177,6 +177,27 @@ clearVRAM:
 	dey
 	bne @1
 
+	lda $FC
+	beq @fallback
+	sta aart_lz_buffer
+	lda $FD
+	beq @fallback
+	sta aart_lz_buffer+1
+	lda $FE
+	beq @fallback
+	sta aart_lz_buffer+2
+	lda $FF
+	beq @fallback
+	sta aart_lz_buffer+3
+        bne @done
+@fallback:
+	lda #$FD
+	sta aart_lz_buffer
+	sta aart_lz_buffer+1
+	sta aart_lz_buffer+2
+	sta aart_lz_buffer+3
+@done:
+
 clearRAM:
     txa
 @1:
@@ -195,6 +216,15 @@ clearRAM:
     inx
     bne @1
 
+
+	lda aart_lz_buffer
+	sta RAND_SEED
+	lda aart_lz_buffer+1
+	sta RAND_SEED+1
+	lda aart_lz_buffer+2
+	sta RAND_SEED+2
+	lda aart_lz_buffer+3
+	sta RAND_SEED+3
 
 	lda #4
 	jsr _pal_bright
@@ -254,26 +284,6 @@ detectNTSC:
 	ldy #>sounds
 	jsr famistudio_sfx_init
 
-	lda $60FC
-	beq @fallback
-	sta <RAND_SEED
-	lda $60FD
-	beq @fallback
-	sta <RAND_SEED+1
-	lda $60FE
-	beq @fallback
-	sta <RAND_SEED+2
-	lda $60FF
-	beq @fallback
-	sta <RAND_SEED+3
-        bne @done
-@fallback:
-	lda #$FD
-	sta <RAND_SEED
-	sta <RAND_SEED+1
-	sta <RAND_SEED+2
-	sta <RAND_SEED+3
-@done:
 	lda #0
 	sta PPU_SCROLL
 	sta PPU_SCROLL
