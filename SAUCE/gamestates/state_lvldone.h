@@ -1799,13 +1799,13 @@ void bgmtest() {
 			ppu_on_all();
 			queuemode = 1;
 			update_text2();
+			update_text3();
 		}
 	}
 	else {					//queue mode
 		if (joypad1.press_select) { 
 			ppu_off();
-			vram_adr(NAMETABLE_A);
-			vram_unrle(bgmtestscreen);   	
+			crossPRGBankJump0(unrle_bgm1);
 			ppu_on_all();
 			queuemode = 0;
 			update_text1();
@@ -1995,12 +1995,12 @@ void update_text3() {
 const unsigned char blanktext2[] = "$$$$$$$$$$$$$";
 void update_text2() {
 	//ppu_off();
-	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
-	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 14, NTADR_A(9, 7));
-	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 7));
-	__A__ = idx16_load_hi_NOC(xbgmtexts2, song);
-	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 14, NTADR_A(9, 8));
-	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 8));
+//	__A__ = idx16_load_hi_NOC(xbgmtexts1, song);
+//	if (__A__) draw_padded_text(xbgmtexts1[song & 0x7F], xbgmtext1_size[song], 14, NTADR_A(9, 7));
+//	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 7));
+//	__A__ = idx16_load_hi_NOC(xbgmtexts2, song);
+//	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 14, NTADR_A(9, 8));
+//	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 8));
 	
 //	one_vram_buffer(0xB0, NTADR_A(5,13)); // 0
 //	one_vram_buffer(0xB1, NTADR_A(5,14)); // 1
@@ -2014,7 +2014,7 @@ void update_text2() {
 //	one_vram_buffer(0xB9, NTADR_A(5,22)); // 9
 	
 //	for (tmp1 = 0; tmp1 < 10; tmp1++) {
-	for (tmp1 = 0; tmp1 < 5; tmp1++) {			//again, limited to 5??
+	for (tmp1 = 0; tmp1 < 6; tmp1++) {			//again, limited to 5??
 		if (music_queue[tmp1] != 0xFF) {
 			__A__ = idx16_load_hi_NOC(xbgmtexts1, music_queue[tmp1]);
 			if (__A__) { 
@@ -2042,12 +2042,12 @@ void check_if_music_stopped() {
 		if (famistudio_song_speed == 0x80) {
 			tmp1 = 0;
 //			for (tmp1 = 0; tmp1 < 9; tmp1++) {
-			for (tmp1 = 0; tmp1 < 5; tmp1++) {		//cannot do more than 5???
+			for (tmp1 = 0; tmp1 < 6; tmp1++) {		//cannot do more than 5???
 				tmp2 = tmp1 + 1;
 				music_queue[tmp1] = music_queue[tmp2];
 			}
 //			music_queue[9] = 0xFF;
-			music_queue[5] = 0xFF;	//for 5 songs
+			music_queue[6] = 0xFF;	//for 5 songs
 
 			if (music_queue[0] != 0xFF) { music_play(xbgm_lookup_table2[music_queue[0]]); }
 			else { famistudio_music_stop(); songplaying = 0; }
