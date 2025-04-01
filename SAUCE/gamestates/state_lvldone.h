@@ -592,6 +592,7 @@ const unsigned char TEXT_tobu[]="TOBU";
 const unsigned char TEXT_acidnotation[]="ACID$NOTATION";
 const unsigned char TEXT_dominuus[]="DOMINUUS";
 const unsigned char TEXT_rymdkraft[]="RYMDKRAFT";
+const unsigned char TEXT_gdcolon[]="GD$COLON";
 
 
 const unsigned char TEXT_seaglowingpro[]="SEAGLOWINGPRO";
@@ -616,7 +617,7 @@ const unsigned char TEXT_leejh20[]="LEEJH20";
 
 const unsigned char* const origartists2[] = {
 	TEXT_robtop, 			//menu theme
-	TEXT_robtop, 			//menu theme 2.2
+	TEXT_gdcolon, 			//menu theme 2.2
 	TEXT_foreverbound,		//stereo madness
 	TEXT_djvi,				//back on track
 	TEXT_stepw,				//polargeist
@@ -699,7 +700,7 @@ const unsigned char* const origartists2[] = {
 
 const unsigned char origartists2_size[] = {
 	sizeof(TEXT_robtop) - 1,
-	sizeof(TEXT_robtop) - 1,
+	sizeof(TEXT_gdcolon) - 1,
 	sizeof(TEXT_foreverbound) - 1,
 	sizeof(TEXT_djvi) - 1,			//back on track
 	sizeof(TEXT_stepw) - 1,			//polargeist
