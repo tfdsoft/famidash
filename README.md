@@ -51,7 +51,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[AnnoyedArt1256](https://github.com/AnnoyedArt1256)|level compression asm|
 |[sussysy](https://github.com/VECTREX45)|music|
 |[Crafty Jumper](https://github.com/Crafty-Jumper)|levels, music|
-|[banana6000](https://github.com/xXFamidash_Fan69Xx)|icons, levels|
+|[banana6000](https://github.com/xXFamidashFan69Xx)|icons, levels|
 |[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
 |[AleFunky](https://github.com/AleFunky)|code, levels, testing, bugfixes|
 |NerdBoy628|levels, music|
