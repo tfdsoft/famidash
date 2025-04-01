@@ -52,7 +52,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8095
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8132 bytes
+.segment "DAT_BANK_03"	; Total bank size: 8156 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -77,7 +77,7 @@
 		.byte luckydraw_grnd_color
 		.byte 27	; height of luckydraw
 	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 680
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8181 bytes
@@ -470,7 +470,7 @@
 		.incbin "EXPORTS/electroman.lz.bin" ; Size: 3885
 
 
-.segment "DAT_BANK_19"	; Total bank size: 8073 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8068 bytes
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
 	; Header
