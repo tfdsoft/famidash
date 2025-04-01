@@ -457,7 +457,7 @@
 		.incbin "EXPORTS/electroman.lz.bin" ; Size: 3885
 
 
-.segment "LVL_BANK_1A"	; Total bank size: 8073 bytes
+.segment "LVL_BANK_1A"	; Total bank size: 8068 bytes
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
 	; Header
@@ -627,7 +627,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1351
 
 
-.segment "LVL_BANK_22"	; Total bank size: 7964 bytes
+.segment "LVL_BANK_22"	; Total bank size: 7988 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -652,4 +652,4 @@
 		.byte luckydraw_grnd_color
 		.byte 27	; height of luckydraw
 	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 656
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 680
