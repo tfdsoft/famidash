@@ -857,7 +857,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel,				//beast mode GDW cut
 	TEXT_nerdboy,				//candyland
 	TEXT_craftyjumper,			//can't electroman
-	TEXT_seaglowingpro,			//can't let go remixed
+	TEXT_craftyjumper,			//can't let go remixed
 	TEXT_usersniper,			//chaoz fantasy
 	TEXT_elangel,				//chaoz impact
 	TEXT_seaglowingpro,			//clubstep full
@@ -945,7 +945,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1,				//beast mode GDW cut
 	sizeof(TEXT_nerdboy) - 1,				//candyland
 	sizeof(TEXT_craftyjumper) - 1,			//can't electroman
-	sizeof(TEXT_seaglowingpro) - 1,			//can't let go remixed
+	sizeof(TEXT_craftyjumper) - 1,			//can't let go remixed
 	sizeof(TEXT_usersniper) - 1,			//chaoz fantasy
 	sizeof(TEXT_elangel) - 1,				//chaoz impact
 	sizeof(TEXT_seaglowingpro) - 1,			//clubstep full
