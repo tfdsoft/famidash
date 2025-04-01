@@ -341,7 +341,7 @@ _level_lengths_lo:
 	.byte .lobyte($00006E)		; problematic
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000090)		; foresttemple
-	.byte .lobyte($000086)		; luckydraw
+	.byte .lobyte($000089)		; luckydraw
 	.byte .lobyte($00007A)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -389,7 +389,7 @@ _level_lengths_md:
 	.byte .hibyte($00006E)		; problematic
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000090)		; foresttemple
-	.byte .hibyte($000086)		; luckydraw
+	.byte .hibyte($000089)		; luckydraw
 	.byte .hibyte($00007A)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -437,7 +437,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00006E)		; problematic
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000090)		; foresttemple
-	.byte .bankbyte($000086)		; luckydraw
+	.byte .bankbyte($000089)		; luckydraw
 	.byte .bankbyte($00007A)		; test4
 
 .endif
