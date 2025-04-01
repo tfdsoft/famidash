@@ -187,25 +187,29 @@ clearVRAM:
 	bne @1
 
 	lda $FC
-	beq @fallback
+	bne @cont1
+@fallback1:
+	lda #$FD
+@cont1:
 	sta aart_lz_buffer
 	lda $FD
-	beq @fallback
+	bne @cont2
+@fallback2:
+	lda #$FD
+@cont2:
 	sta aart_lz_buffer+1
 	lda $FE
-	beq @fallback
+	bne @cont3
+@fallback3:
+	lda #$FD
+@cont3:
 	sta aart_lz_buffer+2
 	lda $FF
-	beq @fallback
-	sta aart_lz_buffer+3
-        bne @done
-@fallback:
+    bne @cont4
+@fallback4:
 	lda #$FD
-	sta aart_lz_buffer
-	sta aart_lz_buffer+1
-	sta aart_lz_buffer+2
+@cont4:
 	sta aart_lz_buffer+3
-@done:
 
 clearRAM:
     txa
