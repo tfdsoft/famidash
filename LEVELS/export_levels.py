@@ -8,12 +8,17 @@ spec = importlib.util.find_spec('binpacking')
 if spec is None:
     subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'binpacking'])
 
+spec = importlib.util.find_spec('pyjson5')
+if spec is None:
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pyjson5'])
+
 import argparse
 import csv
 import pathlib
 import itertools
 import math
 import binpacking
+import pyjson5
 import aart_lz
 import json
 import hashlib
@@ -378,16 +383,35 @@ def binpack_and_write_data(bg_exp_data : tuple, spr_exp_data : tuple):
 def main():
 	parser = argparse.ArgumentParser(prog='export_levels',
 					description='RLE encode level csv files and convert them to level data')
-	parser.add_argument('-f', '--folder')
-	parser.add_argument('file', metavar='FILE', type=str, nargs='+',
-					help='list of level names to process')
+	parser.add_argument('-f', '--folder', type=pathlib.Path, required=True,
+					help='Path to folder with csv files')
+	parser.add_argument('-m', '--metadata', type=pathlib.Path, required=False,
+					help='Path to metadata.json5 file with level specifications')
 	args = parser.parse_args()
 
-	bg_exp_data = export_bg(pathlib.PurePath(args.folder), args.file)
-	spr_exp_data = export_spr(pathlib.PurePath(args.folder), args.file)
-	binpack_and_write_data(bg_exp_data, spr_exp_data)
+	if (args.metadata == None or not args.metadata.is_file()):
+		# first, try to find the file in its own folder
+		if (own_path / 'metadata.json5').is_file():
+			args.metadata = (own_path / 'metadata.json5')
+		elif (args.folder / 'metadata.json5').is_file():
+			args.metadata = (args.folder / 'metadata.json5')
+		else:
+			print("Path to metadata.json5 not specified and not found. Please specify it with the -m argument")
+			exit(1)
 
-	levels = args.file
+	with args.metadata.open() as metafile:
+		metadata = pyjson5.decode_io(metafile)
+
+	filteredMetadata = filter(lambda obj: 
+		set(['level', 'decoType', 'spikeSet', 'blockSet', 'sawSet', 'difficulty', 'stars',
+			'songID', 'startingGameMode', 'startingSpeed', 'startingBackgroundColor', 
+			'startingGroundColor']).issubset(obj.keys()), metadata['levels'])
+
+	levels = [i['level'] for i in filteredMetadata]
+
+	bg_exp_data = export_bg(args.folder, levels)
+	spr_exp_data = export_spr(args.folder, levels)
+	binpack_and_write_data(bg_exp_data, spr_exp_data)
 
 	mid_widths_enabled = max(bg_exp_data[1]) >= 0x100
 	hi_widths_enabled = max(bg_exp_data[1]) >= 0x10000
