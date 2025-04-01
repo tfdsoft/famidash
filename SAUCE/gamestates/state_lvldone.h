@@ -143,7 +143,7 @@ const unsigned char TEXT_candyland[]="CANDYLAND";
 const unsigned char TEXT_accelerate[]="ACCELERATE";
 const unsigned char TEXT_glint[]="GLINT";
 const unsigned char TEXT_flow[]="FLOW";
-const unsigned char TEXT_remix[]="REMIXED";
+const unsigned char TEXT_remix[]="MIX";
 const unsigned char TEXT_GDW[]="GDW$CUT";
 const unsigned char TEXT_cantelectroman[]="CANT";
 
