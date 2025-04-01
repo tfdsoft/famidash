@@ -2,7 +2,7 @@
 CODE_BANK_PUSH("XCD_BANK_02")
 
 void mouse_and_cursor();
-
+void check_if_music_stopped_3();
 void savefile_reset_check_loop(){
         setdefaultoptions();
 }
@@ -61,6 +61,7 @@ void state_savefile_validate(){
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
 
         do {
+			crossPRGBankJump0(check_if_music_stopped_3);
             ppu_wait_nmi();
 	        music_update();
 		    oam_clear();

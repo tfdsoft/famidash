@@ -177,54 +177,11 @@ const unsigned char palette_Credits[16]={ 0x11,0x0f,0x10,0x30,0x11,0x0f,0x2a,0x3
 
 
 void state_instructions(){
-	mmc3_disable_irq();
-	
-	ppu_off();
-	pal_bright(0);
-    
-	pal_bg(palette_Credits);
-	
-
-
-	vram_adr(NAMETABLE_A);
-	vram_unrle(instructions);
-
-	// __asm__("LDA mmc3PRG1Bank \nPHA ");
-    // mmc3_set_prg_bank_1(0);
-    // vram_adr(NAMETABLE_A);
-	//    vram_unrle(dem_funnies);
-    // __asm__("PLA \n JSR %v ", mmc3_set_prg_bank_1);
-
-	oam_clear();
-	mmc3_set_8kb_chr(MENUBANK);
-	mmc3_set_2kb_chr_bank_0(0xFF);	
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
-	ppu_on_all();
-	music_update();
-	pal_fade_to(0,4);
-	tmp1 = 0;
-
-	/*	Incomplete code for reproducing what is being screamed into the Famicom microphone
-	(He forgor about the PCM bit)
-	OG by UserSniper, commit 7e47f425
-	POKE(0x4015, 0b00010000);
-	while (1) {
-		POKE(0x4011, fc_mic_poll()<<4);
-	}
-	*/
-
-	
-	do {
-		oam_clear();
-		mouse_and_cursor();
-		music_update();
-		ppu_wait_nmi();
-		newrand();
-		kandoframecnt++;
-	} while (!joypad1.press && !mouse.left_press);
-	gameState = 1;
-	return;
 }	
+
+void check_if_music_stopped_3() {
+	if (famistudio_song_speed == 0x80) music_play(song_scheming_weasel);
+}
 
 void state_demo(){
 	mmc3_disable_irq();
@@ -282,7 +239,7 @@ void state_demo(){
        	mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
-		
+		check_if_music_stopped_3();
 		if (!forced_credits &&
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
@@ -322,6 +279,7 @@ void state_demo(){
 		mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
+		check_if_music_stopped_3();
 		if (!forced_credits &&
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
@@ -342,228 +300,14 @@ void state_demo(){
 
 #include "defines/mainmenu_charmap.h"
 
+
+
 void settings() {
-	settingvalue = 0; 
-	pal_fade_to_withmusic(4,0);
-	mmc3_disable_irq();
-	ppu_off();
-	pal_bg(paletteSettings);
-	vram_adr(NAMETABLE_A);
-	vram_unrle(settingscreen);   	
-	mmc3_set_2kb_chr_bank_0(0xFF);
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	ppu_on_all();
-	one_vram_buffer('c', NTADR_A(4, 5));	// settingvalue is set to 0 beforehand
-	pal_fade_to_withmusic(0,4);
-	while (1) {
-		ppu_wait_nmi();
-		music_update();
-		oam_clear();
-		mouse_and_cursor();
-		 // read the first controller
-		
-		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 5));
-		else one_vram_buffer('f', NTADR_A(26, 5));
 
-		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 7));
-		else one_vram_buffer('f', NTADR_A(26, 7));
-
-		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, 9));
-		else one_vram_buffer('g', NTADR_A(26, 9));
-
-		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, 11));
-		else one_vram_buffer('g', NTADR_A(26, 11));
-
-		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, 13));
-		else one_vram_buffer('f', NTADR_A(26, 13));
-
-		if (viseffects) one_vram_buffer('g', NTADR_A(26, 15));
-		else one_vram_buffer('f', NTADR_A(26, 15));
-
-		if (trails == 1) one_vram_buffer('g', NTADR_A(26, 17));
-		else if (trails == 2) one_vram_buffer('*', NTADR_A(26, 17));
-		else one_vram_buffer('f', NTADR_A(26, 17));
-
-		if (auto_practicepoints) one_vram_buffer('g', NTADR_A(26, 19));
-		else one_vram_buffer('f', NTADR_A(26, 19));
-
-		tmp1 = settingvalue;
-
-		if (mouse.left_press) {
-			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
-				if (mouse.y >= 0x24 && mouse.y <= 0x2C) {
-					settingvalue = 0; set_settings();
-				}
-				else if (mouse.y >= 0x34 && mouse.y <= 0x4C) {
-					settingvalue = 1; set_settings();
-				}
-				else if (mouse.y >= 0x44 && mouse.y <= 0x4C) {
-					settingvalue = 2; set_settings();
-				}
-				else if (mouse.y >= 0x54 && mouse.y <= 0x5C) {
-					settingvalue = 3; set_settings();
-				}
-				else if (mouse.y >= 0x64 && mouse.y <= 0x6C) {
-					settingvalue = 4; set_settings();
-				}
-				else if (mouse.y >= 0x74 && mouse.y <= 0x7C) {
-					settingvalue = 5; set_settings();
-				}
-				else if (mouse.y >= 0x84 && mouse.y <= 0x8C) {
-					settingvalue = 6; set_settings();
-				}
-				else if (mouse.y >= 0x94 && mouse.y <= 0x9C) {
-					settingvalue = 7; set_settings();
-				}
-
-			}
-			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
-				return;
-			}
-
-		}	
-
-		if (joypad1.press & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == 8) { settingvalue = 0;  }
-			else { settingvalue++;   }
-		}
-
-		if (joypad1.press & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = 8;  }
-			else { settingvalue--;   }
-		}
-
-		if (tmp1 != settingvalue) {
-			// NTADR_A = (NAMETABLE_A|(((y)<<5)|(x)))
-			// (tmp1 * 2) << 5 = tmp1<<6 = (tmp1<<8)>>2
-			one_vram_buffer(' ', NTADR_A(4, 5)+((tmp1<<8)>>2));
-			one_vram_buffer('c', NTADR_A(4, 5)+((settingvalue<<8)>>2));
-		}
-		
-		if (joypad1.press & (PAD_A | PAD_START)) {
-			set_settings();
-		}
-		if (options & platformer) {
-			twoplayer = 0;
-			one_vram_buffer('X',NTADR_A(26,7));
-		}
-		if (twoplayer) options &= platformer^0xff;		
-
-		if (joypad1.press_b) {
-			return;
-		}
-		kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-				
-	}
 }
 
-const uint8_t xbgm_lookup_table3[] = {
-	song_menu_theme,
-	song_menu_theme_b_sides,
-	song_stereo_madness,
-	song_back_on_track,
-	song_polargeist,
-	song_dry_out,
-	song_base_after_base,
-	song_cant_let_go,
-	song_jumper,
-	song_time_machine,
-	song_cycles,
-	song_xstep, 
-	song_clutterfunk,
-	song_theory_of_everything, 
-	song_electroman_adventures, 
-	song_clubstep,
-	song_electrodynamix,
-	song_hexagon_force,
-	song_blast_processing,
-	song_toe_2,
-	song_geometrical_dominator,
-	song_deadlocked,
-	song_fingerdash,
-	song_dash,
-	song_the_challenge,
-	song_practice,
-	song_scheming_weasel,
-	
-	song_against_the_odds_redux,
-	song_atthespeedoflight,
-	song_atthespeedoflight2,
-	song_atthespeedoflight3,
-	song_atthespeedoflightfull,
-	song_beast_mode_gdw_cut,
-	song_candyland,
-	song_chaozfantasy,
-	song_chaoz_impact,
-	song_clutterfunk_2,
-	song_death_moon,
-	song_driving_by_night,
-	song_endgame,
-	song_freedom_dive,
-	song_glint,
-	song_retray,
-	song_ground_to_space,
-	song_haunted_woods,
-	song_hell,
-	song_idols,
-	song_infernoplex,
-	song_infernoplex_full,
-	song_jack_russel,
-	song_just_right,
-	song_kesobomb,
-	song_lost,
-	song_ludicrous_speed,
-	song_machina_gdw_cut,
-	song_magic_touch,
-	song_mayhem_short,
-	song_mayhem,
-	song_metamorphosis,
-	song_midnight,
-	song_ninox,
-	song_crackdown,
-	song_payload_gdw_cut,
-	song_problematic,
-	song_pyrophoric,
-	song_rainbow_tylenol,
-	song_stalemate,
-	song_stalemate_full,
-	song_stereo_madness_2,
-	song_subtle_oddities,
-	song_eon,
-	song_thoughts,
-	song_ultimatedestruction,
-	song_youve_been_trolled,
-	song_whats_a_future_funk,
-	song_windfall,
-	song_years_gdw_cut,
-};
 
 void set_settings() {
-	switch (settingvalue) {
-		case 0: // oneptwoplayer
-			twoplayer ^= 1; break;
-		case 1: // oneptwoplayer
-			options ^= oneptwoplayer; break;
-		case 2: // sfxoff
-			options ^= sfxoff; break;
-		case 3: // musicoff
-			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgm_lookup_table3[menu_music]); } break;
-		case 4: // jumpsound
-			options ^= jumpsound; break;
-		case 5:
-			viseffects ^= 1; if (!viseffects) trails = 0; break;
-		case 6:
-			trails = trails == 2 ? 0 : trails + 1; break;					
-		case 7:
-			auto_practicepoints ^= 1; break;
-		case 8:
-			if (joypad1.a && joypad1.press_start) {
-				setdefaultoptions();
-				__asm__("JMP ($FFFC)");	// restart the game lmao	
-			}
-			break;
-	}
 }	
 
 CODE_BANK_POP()

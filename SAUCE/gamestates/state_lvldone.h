@@ -140,8 +140,9 @@ const unsigned char TEXT_beastmode[]="BEAST$MODE";
 const unsigned char TEXT_machina[]="MACHINA";
 const unsigned char TEXT_payload[]="PAYLOAD";
 const unsigned char TEXT_candyland[]="CANDYLAND";
-const unsigned char TEXT_hell[]="HELL";
+const unsigned char TEXT_accelerate[]="ACCELERATE";
 const unsigned char TEXT_glint[]="GLINT";
+const unsigned char TEXT_flow[]="FLOW";
 const unsigned char TEXT_GDW[]="GDW$CUT";
 
 const unsigned char TEXT_future[]="WHATS$A";
@@ -242,6 +243,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_xweasel, 
 	
 	TEXT_against,
+	0,		//accelerate
 	TEXT_speed,
 	TEXT_speed,
 	TEXT_speed,
@@ -254,12 +256,12 @@ const unsigned char* const xbgmtexts1[] = {
 	0,		//death moon
 	TEXT_driving,
 	0,		//endgame
+	0,		//flow
 	TEXT_freedom,
 	0,		//glint
 	0,		//golden haze
 	TEXT_groundto,
 	0,		//haunted woods
-	0,		//hell
 	0,		//idols
 	0,		//infernoplex
 	TEXT_2textinfernoplex,	//infernoplex full
@@ -320,18 +322,17 @@ const unsigned char xbgmtext1_size[] = {
 	0,
 	0,
 	0,
-	
-	
 	sizeof(TEXT_challenge) - 1,	
 	0,
 	sizeof(TEXT_xweasel) - 1,	
 	
 	sizeof(TEXT_against) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	sizeof(TEXT_speed) - 1,	
-	sizeof(TEXT_beastmode) - 1,	
+	0,		//accelerate
+	sizeof(TEXT_speed) - 1,	//at the speed of light pt 1
+	sizeof(TEXT_speed) - 1,	//at the speed of light pt 2
+	sizeof(TEXT_speed) - 1,		//at the speed of light pt 3
+	sizeof(TEXT_speed) - 1,		//at the speed of light full
+	sizeof(TEXT_beastmode) - 1,	//beast mode (gdw cut)
 	0,		//candyland
 	0,		//chaoz fantasy
 	0,		//chaoz impact
@@ -339,12 +340,12 @@ const unsigned char xbgmtext1_size[] = {
 	0,		//death moon
 	sizeof(TEXT_driving) - 1,
 	0,		//endgame
+	0,		//flow
 	sizeof(TEXT_freedom) - 1,	
 	0,		//glint
 	0,		//golden haze
 	sizeof(TEXT_groundto) - 1,	
 	0,		//haunted woods
-	0,		//hell
 	0,		//idols
 	0,		//infernoplex
 	sizeof(TEXT_2textinfernoplex) - 1,	
@@ -410,6 +411,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textweasel, 
 	
 	TEXT_against2,
+	TEXT_accelerate,
 	TEXT_2textspeed,
 	TEXT_2textspeed2,
 	TEXT_2textspeed3,
@@ -422,12 +424,12 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2deathmoon,
 	TEXT_driving2,
 	TEXT_xlevel2textE,	//endgame
+	TEXT_flow,			//flow
 	TEXT_freedom2,
 	TEXT_glint,
 	TEXT_retray,
 	TEXT_groundto2,
 	TEXT_2textwoods,
-	TEXT_hell,
 	TEXT_idols,
 	TEXT_2textinfernoplex,
 	TEXT_2textfullversion,
@@ -493,6 +495,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textweasel) - 1,
 	
 	sizeof(TEXT_against2) - 1,
+	sizeof(TEXT_accelerate) - 1,
 	sizeof(TEXT_2textspeed) - 1,
 	sizeof(TEXT_2textspeed2) - 1,
 	sizeof(TEXT_2textspeed3) - 1,
@@ -505,12 +508,12 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2deathmoon) - 1,
 	sizeof(TEXT_driving2) - 1,
 	sizeof(TEXT_xlevel2textE) - 1,	//endgame
+	sizeof(TEXT_flow) - 1,	//flow
 	sizeof(TEXT_freedom2) - 1,
 	sizeof(TEXT_glint) - 1,
 	sizeof(TEXT_retray) - 1,
 	sizeof(TEXT_groundto2) - 1,
 	sizeof(TEXT_2textwoods) - 1,
-	sizeof(TEXT_hell) - 1,
 	sizeof(TEXT_idols) - 1,
 	sizeof(TEXT_2textinfernoplex) - 1,
 	sizeof(TEXT_2textfullversion) - 1,
@@ -609,6 +612,7 @@ const unsigned char TEXT_sussysy[]="SUSSYSY";
 const unsigned char TEXT_clickerty[]="CLICKERTY";
 const unsigned char TEXT_zukinnyk[]="ZUKINNYK";
 const unsigned char TEXT_leejh20[]="LEEJH20";
+const unsigned char TEXT_creo[]="CREO";
 
 
 
@@ -645,24 +649,25 @@ const unsigned char* const origartists2[] = {
 	TEXT_kevin_macleod, 	//scheming weasel
 	
 	TEXT_eliteferrex, 		//8-bit against the odds redux
+	TEXT_acidnotation,		//accelerate
 	TEXT_dimrain47, 		//at the speed of light 1
 	TEXT_dimrain47, 		//at the speed of light 2
 	TEXT_dimrain47, 		//at the speed of light 3
 	TEXT_dimrain47, 		//at the speed of light full
 	TEXT_dexarson,			//beast mode GDW cut
-	TEXT_tobu,			//candyland
+	TEXT_tobu,				//candyland
 	TEXT_paragonx9,			//chaoz fantasy
 	TEXT_paragonx9,			//chaoz impact
 	TEXT_waterflame,		//clutterfunk 2
 	TEXT_soundholick,		//death moon
 	TEXT_reinn,				//driving by night
 	TEXT_waterflame, 		//endgame
+	TEXT_creo, 				//flow
 	TEXT_xi, 				//freedom dive
-	TEXT_dominuus, 				//glint
+	TEXT_dominuus, 			//glint
 	TEXT_detious, 			//golden haze
 	TEXT_seaglowingpro,		//ground to space
 	TEXT_waterflame, 		//haunted woods
-	TEXT_acidnotation,		//hell
 	TEXT_virtual_riot,		//idols
 	TEXT_dimrain47, 		//infernoplex
 	TEXT_dimrain47, 		//infernoplex full
@@ -699,9 +704,9 @@ const unsigned char* const origartists2[] = {
 
 
 const unsigned char origartists2_size[] = {
-	sizeof(TEXT_robtop) - 1,
-	sizeof(TEXT_gdcolon) - 1,
-	sizeof(TEXT_foreverbound) - 1,
+	sizeof(TEXT_robtop) - 1,		//menu
+	sizeof(TEXT_gdcolon) - 1,		//menu b sides
+	sizeof(TEXT_foreverbound) - 1,	//stereo madness
 	sizeof(TEXT_djvi) - 1,			//back on track
 	sizeof(TEXT_stepw) - 1,			//polargeist
 	sizeof(TEXT_djvi) - 1,			//dry out
@@ -728,24 +733,25 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_kevin_macleod) - 1, //scheming weasel	
 	
 	sizeof(TEXT_eliteferrex) - 1, 		//8-bit against the odds redux
+	sizeof(TEXT_acidnotation) - 1, 		//accelerate
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light 1
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light 2
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light 3
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light full
 	sizeof(TEXT_dexarson) - 1,			//beast mode GDW cut
-	sizeof(TEXT_tobu) - 1,			//candyland
+	sizeof(TEXT_tobu) - 1,				//candyland
 	sizeof(TEXT_paragonx9) - 1,			//chaoz fantasy
 	sizeof(TEXT_paragonx9) - 1,			//chaoz impact
 	sizeof(TEXT_waterflame) - 1,		//clutterfunk 2
 	sizeof(TEXT_soundholick) - 1,		//death moon
 	sizeof(TEXT_reinn) - 1,				//driving by night
 	sizeof(TEXT_waterflame) - 1, 		//endgame
+	sizeof(TEXT_creo) - 1, 				//flow
 	sizeof(TEXT_xi) - 1, 				//freedom dive
-	sizeof(TEXT_dominuus) - 1, 				//glint
+	sizeof(TEXT_dominuus) - 1, 			//glint
 	sizeof(TEXT_detious) - 1, 			//golden haze
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
 	sizeof(TEXT_waterflame) - 1, 		//haunted woods
-	sizeof(TEXT_acidnotation) - 1, 		//hell
 	sizeof(TEXT_virtual_riot) - 1,		//idols
 	sizeof(TEXT_dimrain47) - 1, 		//infernoplex
 	sizeof(TEXT_dimrain47) - 1, 		//infernoplex full
@@ -779,840 +785,667 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_dexarson) - 1,			//years GDW cut
 };
 
-const unsigned char* const origartists1[] = {
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	TEXT_dan_harrison,	//just right
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-};
-
-
-const unsigned char origartists1_size[] = {
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	sizeof(TEXT_dan_harrison) - 1, //just right
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-};
 
 
 const unsigned char* const coveringartists1[] = {
-	TEXT_zenith, 			//menu theme
+	TEXT_zenith, 				//menu theme
 	TEXT_usersniper, 			//menu theme 2.2
-	TEXT_zenith,		//stereo madness
-	TEXT_aquamarine,				//back on track
+	TEXT_zenith,				//stereo madness
+	TEXT_aquamarine,			//back on track
 	TEXT_zenith,				//polargeist
-	TEXT_usersniper,				//dry out
+	TEXT_usersniper,			//dry out
 	TEXT_vikrinox,				//base after base
-	TEXT_usersniper,				//can't let go
-	TEXT_zenith,		//jumper
-	TEXT_zenith,		//time machine
-	TEXT_aquamarine,				//cycles
+	TEXT_usersniper,			//can't let go
+	TEXT_zenith,				//jumper
+	TEXT_zenith,				//time machine
+	TEXT_aquamarine,			//cycles
 	TEXT_vikrinox,				//xstep
-	TEXT_aquamarine,		//clutterfunk
-	TEXT_vikrinox,			//theory of everything
-	TEXT_cloud54,		//electroman adventures
-	TEXT_cloud54,			//clubstep
+	TEXT_aquamarine,			//clutterfunk
+	TEXT_vikrinox,				//theory of everything
+	TEXT_cloud54,				//electroman adventures
+	TEXT_cloud54,				//clubstep
 	TEXT_aquamarine,			//electrodynamix
-	TEXT_vikrinox,		//hexagon force
-	TEXT_elangel,		//blast processing
-	TEXT_vikrinox,			//theory of everything 2
-	TEXT_cloud54,		//geometrical dominator
-	TEXT_usersniper,				//deadlocked
+	TEXT_vikrinox,				//hexagon force
+	TEXT_elangel,				//blast processing
+	TEXT_vikrinox,				//theory of everything 2
+	TEXT_cloud54,				//geometrical dominator
+	TEXT_usersniper,			//deadlocked
 	TEXT_elangel,				//fingerbang
-	TEXT_craftyjumper,				//dash
-	TEXT_elangel, 			//the challenge
+	TEXT_craftyjumper,			//dash
+	TEXT_elangel, 				//the challenge
 	TEXT_usersniper, 			//practice
-	TEXT_usersniper, 	//scheming weasel
+	TEXT_usersniper, 			//scheming weasel
 	
-	TEXT_elangel, 		//8-bit against the odds redux
-	TEXT_elangel, 		//at the speed of light 1
-	TEXT_elangel, 		//at the speed of light 2
-	TEXT_elangel, 		//at the speed of light 3
-	TEXT_elangel, 		//at the speed of light full
-	TEXT_elangel,			//beast mode GDW cut
-	TEXT_nerdboy,		//candyland
+	TEXT_elangel, 				//8-bit against the odds redux
+	TEXT_elangel, 				//accelerate
+	TEXT_elangel, 				//at the speed of light 1
+	TEXT_elangel, 				//at the speed of light 2
+	TEXT_elangel, 				//at the speed of light 3
+	TEXT_elangel, 				//at the speed of light full
+	TEXT_elangel,				//beast mode GDW cut
+	TEXT_nerdboy,				//candyland
 	TEXT_usersniper,			//chaoz fantasy
-	TEXT_elangel,			//chaoz impact
-	TEXT_cloud54,		//clutterfunk 2
-	TEXT_elangel,		//death moon
+	TEXT_elangel,				//chaoz impact
+	TEXT_cloud54,				//clutterfunk 2
+	TEXT_elangel,				//death moon
 	TEXT_nerdboy,				//driving by night
-	TEXT_vikrinox, 		//endgame
-	TEXT_seaglowingpro, 				//freedom dive
-	TEXT_seaglowingpro, 				//glint
+	TEXT_vikrinox, 				//endgame
+	TEXT_seaglowingpro, 		//flow
+	TEXT_seaglowingpro, 		//freedom dive
+	TEXT_seaglowingpro, 		//glint
 	TEXT_craftyjumper, 			//golden haze
-	TEXT_seaglowingpro,		//ground to space
-	TEXT_sussysy, 		//haunted woods
-	TEXT_elangel, 		//hell
-	TEXT_seaglowingpro,		//idols
-	TEXT_cloud54, 		//infernoplex
-	TEXT_cloud54, 		//infernoplex full
-	TEXT_nerdboy,		//jack russel
-	TEXT_seaglowingpro,		//just right
-	TEXT_nerdboy,		//kesobomb
-	TEXT_seaglowingpro, 			//lost
+	TEXT_seaglowingpro,			//ground to space
+	TEXT_sussysy, 				//haunted woods
+	TEXT_seaglowingpro,			//idols
+	TEXT_cloud54, 				//infernoplex
+	TEXT_cloud54, 				//infernoplex full
+	TEXT_nerdboy,				//jack russel
+	TEXT_seaglowingpro,			//just right
+	TEXT_nerdboy,				//kesobomb
+	TEXT_seaglowingpro, 		//lost
 	TEXT_elangel,				//ludacris speed
-	TEXT_elangel,			//machina GDW cut
-	TEXT_seaglowingpro,				//magic touch
-	TEXT_craftyjumper,		//mayhem short ver
-	TEXT_craftyjumper,		//mayhem
-	TEXT_elangel,		//metamorphasis
-	TEXT_seaglowingpro,		//midnight
+	TEXT_elangel,				//machina GDW cut
+	TEXT_seaglowingpro,			//magic touch
+	TEXT_craftyjumper,			//mayhem short ver
+	TEXT_craftyjumper,			//mayhem
+	TEXT_elangel,				//metamorphasis
+	TEXT_seaglowingpro,			//midnight
 	TEXT_seaglowingpro,			//ninox
-	TEXT_sussysy,			//okiba crackdown
-	TEXT_elangel,			//payload GDW cut
+	TEXT_sussysy,				//okiba crackdown
+	TEXT_elangel,				//payload GDW cut
 	TEXT_elangel,				//problematic
-	TEXT_nerdboy,			//pyrophoric
-	TEXT_clickerty,			//rainbow tylenol
-	TEXT_elangel,			//stalemate
-	TEXT_elangel,			//stalemate full
-	TEXT_elangel,		//stereo madness2
-	TEXT_dwedit,		//subtle oddities
-	TEXT_elangel,			//the angel
-	TEXT_craftyjumper,		//thoughts
-	TEXT_usersniper,				//ultimate destruction
-	TEXT_seaglowingpro,		//you've been trolled
+	TEXT_nerdboy,				//pyrophoric
+	TEXT_clickerty,				//rainbow tylenol
+	TEXT_elangel,				//stalemate
+	TEXT_elangel,				//stalemate full
+	TEXT_elangel,				//stereo madness2
+	TEXT_dwedit,				//subtle oddities
+	TEXT_elangel,				//the angel
+	TEXT_craftyjumper,			//thoughts
+	TEXT_usersniper,			//ultimate destruction
+	TEXT_seaglowingpro,			//you've been trolled
 	TEXT_seaglowingpro,			//what's a future funk
 	TEXT_seaglowingpro,			//windfall
-	TEXT_elangel,			//years GDW cut
+	TEXT_elangel,				//years GDW cut
 };
 
 
 const unsigned char coveringartists1_size[] = {
-	sizeof(TEXT_zenith) - 1, 			//menu theme
+	sizeof(TEXT_zenith) - 1, 				//menu theme
 	sizeof(TEXT_usersniper) - 1, 			//menu theme 2.2
-	sizeof(TEXT_zenith) - 1,		//stereo madness
-	sizeof(TEXT_aquamarine) - 1,				//back on track
+	sizeof(TEXT_zenith) - 1,				//stereo madness
+	sizeof(TEXT_aquamarine) - 1,			//back on track
 	sizeof(TEXT_zenith) - 1,				//polargeist
-	sizeof(TEXT_usersniper) - 1,				//dry out
+	sizeof(TEXT_usersniper) - 1,			//dry out
 	sizeof(TEXT_vikrinox) - 1,				//base after base
-	sizeof(TEXT_usersniper) - 1,				//can't let go
-	sizeof(TEXT_zenith) - 1,		//jumper
-	sizeof(TEXT_zenith) - 1,		//time machine
-	sizeof(TEXT_aquamarine) - 1,				//cycles
+	sizeof(TEXT_usersniper) - 1,			//can't let go
+	sizeof(TEXT_zenith) - 1,				//jumper
+	sizeof(TEXT_zenith) - 1,				//time machine
+	sizeof(TEXT_aquamarine) - 1,			//cycles
 	sizeof(TEXT_vikrinox) - 1,				//xstep
-	sizeof(TEXT_aquamarine) - 1,		//clutterfunk
-	sizeof(TEXT_vikrinox) - 1,			//theory of everything
-	sizeof(TEXT_cloud54) - 1,		//electroman adventures
-	sizeof(TEXT_cloud54) - 1,			//clubstep
+	sizeof(TEXT_aquamarine) - 1,			//clutterfunk
+	sizeof(TEXT_vikrinox) - 1,				//theory of everything
+	sizeof(TEXT_cloud54) - 1,				//electroman adventures
+	sizeof(TEXT_cloud54) - 1,				//clubstep
 	sizeof(TEXT_aquamarine) - 1,			//electrodynamix
-	sizeof(TEXT_vikrinox) - 1,		//hexagon force
-	sizeof(TEXT_elangel) - 1,		//blast processing
-	sizeof(TEXT_vikrinox) - 1,			//theory of everything 2
-	sizeof(TEXT_cloud54) - 1,		//geometrical dominator
-	sizeof(TEXT_usersniper) - 1,				//deadlocked
+	sizeof(TEXT_vikrinox) - 1,				//hexagon force
+	sizeof(TEXT_elangel) - 1,				//blast processing
+	sizeof(TEXT_vikrinox) - 1,				//theory of everything 2
+	sizeof(TEXT_cloud54) - 1,				//geometrical dominator
+	sizeof(TEXT_usersniper) - 1,			//deadlocked
 	sizeof(TEXT_elangel) - 1,				//fingerbang
-	sizeof(TEXT_craftyjumper) - 1,				//dash
-	sizeof(TEXT_elangel) - 1, 			//the challenge
+	sizeof(TEXT_craftyjumper) - 1,			//dash
+	sizeof(TEXT_elangel) - 1, 				//the challenge
 	sizeof(TEXT_usersniper) - 1, 			//practice
-	sizeof(TEXT_usersniper) - 1, 	//scheming weasel
+	sizeof(TEXT_usersniper) - 1, 			//scheming weasel
 	
-	sizeof(TEXT_elangel) - 1, 		//8-bit against the odds redux
-	sizeof(TEXT_elangel) - 1, 		//at the speed of light 1
-	sizeof(TEXT_elangel) - 1, 		//at the speed of light 2
-	sizeof(TEXT_elangel) - 1, 		//at the speed of light 3
-	sizeof(TEXT_elangel) - 1, 		//at the speed of light full
-	sizeof(TEXT_elangel) - 1,			//beast mode GDW cut
-	sizeof(TEXT_nerdboy) - 1,			//candyland
+	sizeof(TEXT_elangel) - 1, 				//8-bit against the odds redux
+	sizeof(TEXT_elangel) - 1, 				//accelerate
+	sizeof(TEXT_elangel) - 1, 				//at the speed of light 1
+	sizeof(TEXT_elangel) - 1, 				//at the speed of light 2
+	sizeof(TEXT_elangel) - 1, 				//at the speed of light 3
+	sizeof(TEXT_elangel) - 1, 				//at the speed of light full
+	sizeof(TEXT_elangel) - 1,				//beast mode GDW cut
+	sizeof(TEXT_nerdboy) - 1,				//candyland
 	sizeof(TEXT_usersniper) - 1,			//chaoz fantasy
-	sizeof(TEXT_elangel) - 1,			//chaoz impact
-	sizeof(TEXT_cloud54) - 1,		//clutterfunk 2
-	sizeof(TEXT_elangel) - 1,		//death moon
+	sizeof(TEXT_elangel) - 1,				//chaoz impact
+	sizeof(TEXT_cloud54) - 1,				//clutterfunk 2
+	sizeof(TEXT_elangel) - 1,				//death moon
 	sizeof(TEXT_nerdboy) - 1,				//driving by night
-	sizeof(TEXT_vikrinox) - 1, 		//endgame
-	sizeof(TEXT_seaglowingpro) - 1, 				//freedom dive
-	sizeof(TEXT_seaglowingpro) - 1, 				//glint
+	sizeof(TEXT_vikrinox) - 1, 				//endgame
+	sizeof(TEXT_seaglowingpro) - 1, 		//flow
+	sizeof(TEXT_seaglowingpro) - 1, 		//freedom dive
+	sizeof(TEXT_seaglowingpro) - 1, 		//glint
 	sizeof(TEXT_craftyjumper) - 1, 			//golden haze
-	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
-	sizeof(TEXT_sussysy) - 1, 		//haunted woods
-	sizeof(TEXT_elangel) - 1, 		//hell
-	sizeof(TEXT_seaglowingpro) - 1,		//idols
-	sizeof(TEXT_cloud54) - 1, 		//infernoplex
-	sizeof(TEXT_cloud54) - 1, 		//infernoplex full
-	sizeof(TEXT_nerdboy) - 1,		//jack russel
-	sizeof(TEXT_seaglowingpro) - 1,		//just right
-	sizeof(TEXT_nerdboy) - 1,		//kesobomb
-	sizeof(TEXT_seaglowingpro) - 1, 			//lost
+	sizeof(TEXT_seaglowingpro) - 1,			//ground to space
+	sizeof(TEXT_sussysy) - 1, 				//haunted woods
+	sizeof(TEXT_seaglowingpro) - 1,			//idols
+	sizeof(TEXT_cloud54) - 1, 				//infernoplex
+	sizeof(TEXT_cloud54) - 1, 				//infernoplex full
+	sizeof(TEXT_nerdboy) - 1,				//jack russel
+	sizeof(TEXT_seaglowingpro) - 1,			//just right
+	sizeof(TEXT_nerdboy) - 1,				//kesobomb
+	sizeof(TEXT_seaglowingpro) - 1, 		//lost
 	sizeof(TEXT_elangel) - 1,				//ludacris speed
-	sizeof(TEXT_elangel) - 1,			//machina GDW cut
-	sizeof(TEXT_seaglowingpro) - 1,				//magic touch
-	sizeof(TEXT_craftyjumper) - 1,		//mayhem short ver
-	sizeof(TEXT_craftyjumper) - 1,		//mayhem
-	sizeof(TEXT_elangel) - 1,		//metamorphasis
-	sizeof(TEXT_seaglowingpro) - 1,		//midnight
+	sizeof(TEXT_elangel) - 1,				//machina GDW cut
+	sizeof(TEXT_seaglowingpro) - 1,			//magic touch
+	sizeof(TEXT_craftyjumper) - 1,			//mayhem short ver
+	sizeof(TEXT_craftyjumper) - 1,			//mayhem
+	sizeof(TEXT_elangel) - 1,				//metamorphasis
+	sizeof(TEXT_seaglowingpro) - 1,			//midnight
 	sizeof(TEXT_seaglowingpro) - 1,			//ninox
-	sizeof(TEXT_sussysy) - 1,			//okiba crackdown
-	sizeof(TEXT_elangel) - 1,			//payload GDW cut
+	sizeof(TEXT_sussysy) - 1,				//okiba crackdown
+	sizeof(TEXT_elangel) - 1,				//payload GDW cut
 	sizeof(TEXT_elangel) - 1,				//problematic
-	sizeof(TEXT_nerdboy) - 1,			//pyrophoric
-	sizeof(TEXT_clickerty) - 1,			//rainbow tylenol
-	sizeof(TEXT_elangel) - 1,			//stalemate
-	sizeof(TEXT_elangel) - 1,			//stalemate full
-	sizeof(TEXT_elangel) - 1,		//stereo madness2
-	sizeof(TEXT_dwedit) - 1,		//subtle oddities
-	sizeof(TEXT_elangel) - 1,			//the angel
-	sizeof(TEXT_craftyjumper) - 1,		//thoughts
-	sizeof(TEXT_usersniper) - 1,				//ultimate destruction
-	sizeof(TEXT_seaglowingpro) - 1,		//you've been trolled
+	sizeof(TEXT_nerdboy) - 1,				//pyrophoric
+	sizeof(TEXT_clickerty) - 1,				//rainbow tylenol
+	sizeof(TEXT_elangel) - 1,				//stalemate
+	sizeof(TEXT_elangel) - 1,				//stalemate full
+	sizeof(TEXT_elangel) - 1,				//stereo madness2
+	sizeof(TEXT_dwedit) - 1,				//subtle oddities
+	sizeof(TEXT_elangel) - 1,				//the angel
+	sizeof(TEXT_craftyjumper) - 1,			//thoughts
+	sizeof(TEXT_usersniper) - 1,			//ultimate destruction
+	sizeof(TEXT_seaglowingpro) - 1,			//you've been trolled
 	sizeof(TEXT_seaglowingpro) - 1,			//what's a future funk
 	sizeof(TEXT_seaglowingpro) - 1,			//windfall
-	sizeof(TEXT_elangel) - 1,			//years GDW cut
+	sizeof(TEXT_elangel) - 1,				//years GDW cut
 };
 
 
 const unsigned char* const coveringartists2[] = {
-	0, 			//menu theme
-	0, 			//menu theme 2.2
-	TEXT_usersniper,		//stereo madness
-	0,				//back on track
-	TEXT_usersniper,				//polargeist
-	0,				//dry out
-	TEXT_usersniper,				//base after base
-	TEXT_alexmush,				//can't let go
-	TEXT_zukinnyk,		//jumper
-	TEXT_vikrinox,		//time machine
-	TEXT_alexmush,				//cycles
-	TEXT_alexmush,				//xstep
-	TEXT_vikrinox,		//clutterfunk
-	TEXT_usersniper,			//theory of everything
-	TEXT_usersniper,		//electroman adventures
-	0,			//clubstep
-	0,			//electrodynamix
-	TEXT_alexmush,		//hexagon force
-	0,		//blast processing
-	0,			//theory of everything 2
-	0,		//geometrical dominator
-	0,				//deadlocked
-	0,				//fingerbang
-	0,				//dash
-	0, 			//the challenge
-	0, 			//practice
-	0, 	//scheming weasel
+	0, 										//menu theme
+	0, 										//menu theme 2.2
+	TEXT_usersniper,						//stereo madness
+	0,										//back on track
+	TEXT_usersniper,						//polargeist
+	0,										//dry out
+	TEXT_usersniper,						//base after base
+	TEXT_alexmush,							//can't let go
+	TEXT_zukinnyk,							//jumper
+	TEXT_vikrinox,							//time machine
+	TEXT_alexmush,							//cycles
+	TEXT_alexmush,							//xstep
+	TEXT_vikrinox,							//clutterfunk
+	TEXT_usersniper,						//theory of everything
+	TEXT_usersniper,						//electroman adventures
+	0,										//clubstep
+	0,										//electrodynamix
+	TEXT_alexmush,							//hexagon force
+	0,										//blast processing
+	0,										//theory of everything 2
+	0,										//geometrical dominator
+	0,										//deadlocked
+	0,										//fingerbang
+	0,										//dash
+	0, 										//the challenge
+	0, 										//practice
+	0, 										//scheming weasel
 	
-	0, 		//8-bit against the odds redux
-	0, 		//at the speed of light 1
-	0, 		//at the speed of light 2
-	0, 		//at the speed of light 3
-	0, 		//at the speed of light full
-	0,			//beast mode GDW cut
-	0,			//candyland
-	0,			//chaoz fantasy
-	0,			//chaoz impact
-	0,		//clutterfunk 2
-	0,		//death moon
-	0,				//driving by night
-	0, 		//endgame
-	0, 				//freedom dive
-	0, 				//glint
-	TEXT_elangel, 			//golden haze
-	0,		//ground to space
-	0, 		//haunted woods
-	0, 		//hell
-	0,		//idols
-	0, 		//infernoplex
-	TEXT_seaglowingpro, 		//infernoplex full
-	0, 		//jack russel
-	TEXT_elangel,		//just right
-	0, 		//kesobomb
-	0, 			//lost
-	0,				//ludacris speed
-	0,			//machina GDW cut
-	0,				//magic touch
-	0,		//mayhem short ver
-	0,		//mayhem
-	0,		//metamorphasis
-	0,		//midnight
-	0,			//ninox
-	0,			//okiba crackdown
-	0,			//payload GDW cut
-	0,				//problematic
-	0,			//pyrophoric
-	0,			//rainbow tylenol
-	0,			//stalemate
-	TEXT_seaglowingpro,			//stalemate full
-	0,		//stereo madness2
-	0,		//subtle oddities
-	0,			//the angel
-	0,		//thoughts
-	0,				//ultimate destruction
-	0,		//you've been trolled
-	0,			//what's a future funk
-	0,			//windfall
-	0,			//years GDW cut
+	0, 										//8-bit against the odds redux
+	0, 										//accelerate
+	0, 										//at the speed of light 1
+	0, 										//at the speed of light 2
+	0, 										//at the speed of light 3
+	0, 										//at the speed of light full
+	0,										//beast mode GDW cut
+	0,										//candyland
+	0,										//chaoz fantasy
+	0,										//chaoz impact
+	0,										//clutterfunk 2
+	0,										//death moon
+	0,										//driving by night
+	0, 										//endgame
+	0, 										//flow
+	0, 										//freedom dive
+	0, 										//glint
+	TEXT_elangel, 							//golden haze
+	0,										//ground to space
+	0, 										//haunted woods
+	0,										//idols
+	0, 										//infernoplex
+	TEXT_seaglowingpro, 					//infernoplex full
+	0, 										//jack russel
+	TEXT_elangel,							//just right
+	0, 										//kesobomb
+	0, 										//lost
+	0, 										//ludacris speed
+	0, 										//machina GDW cut
+	0, 										//magic touch
+	0, 										//mayhem short ver
+	0, 										//mayhem
+	0, 										//metamorphasis
+	0, 										//midnight
+	0, 										//ninox
+	0, 										//okiba crackdown
+	0, 										//payload GDW cut
+	0, 										//problematic
+	0, 										//pyrophoric
+	0, 										//rainbow tylenol
+	0, 										//stalemate
+	TEXT_seaglowingpro,						//stalemate full
+	0, 										//stereo madness2
+	0, 										//subtle oddities
+	0, 										//the angel
+	0, 										//thoughts
+	0, 										//ultimate destruction
+	0, 										//you've been trolled
+	0, 										//what's a future funk
+	0, 										//windfall
+	0, 										//years GDW cut
 };
 
 
 const unsigned char coveringartists2_size[] = {
-	0, 			//menu theme
-	0, 			//menu theme 2.2
-	sizeof(TEXT_usersniper) - 1,		//stereo madness
-	0,				//back on track
-	sizeof(TEXT_usersniper) - 1,				//polargeist
-	0,				//dry out
-	sizeof(TEXT_usersniper) - 1,				//base after base
+	0, 										//menu theme
+	0, 										//menu theme 2.2
+	sizeof(TEXT_usersniper) - 1,			//stereo madness
+	0, 										//back on track
+	sizeof(TEXT_usersniper) - 1,			//polargeist
+	0, 										//dry out
+	sizeof(TEXT_usersniper) - 1,			//base after base
 	sizeof(TEXT_alexmush) - 1,				//can't let go
-	sizeof(TEXT_zukinnyk) - 1,		//jumper
-	sizeof(TEXT_vikrinox) - 1,		//time machine
+	sizeof(TEXT_zukinnyk) - 1,				//jumper
+	sizeof(TEXT_vikrinox) - 1,				//time machine
 	sizeof(TEXT_alexmush) - 1,				//cycles
 	sizeof(TEXT_alexmush) - 1,				//xstep
-	sizeof(TEXT_vikrinox) - 1,		//clutterfunk
+	sizeof(TEXT_vikrinox) - 1,				//clutterfunk
 	sizeof(TEXT_usersniper) - 1,			//theory of everything
-	sizeof(TEXT_usersniper) - 1,		//electroman adventures
-	0,			//clubstep
-	0,			//electrodynamix
-	sizeof(TEXT_alexmush) - 1,		//hexagon force
-	0,		//blast processing
-	0,			//theory of everything 2
-	0,		//geometrical dominator
-	0,				//deadlocked
-	0,				//fingerbang
-	0,				//dash
-	0, 			//the challenge
-	0, 			//practice
-	0, 	//scheming weasel
+	sizeof(TEXT_usersniper) - 1,			//electroman adventures
+	0, 										//clubstep
+	0, 										//electrodynamix
+	sizeof(TEXT_alexmush) - 1,				//hexagon force
+	0, 										//blast processing
+	0, 										//theory of everything 2
+	0, 										//geometrical dominator
+	0, 										//deadlocked
+	0, 										//fingerbang
+	0, 										//dash
+	0, 										//the challenge
+	0, 										//practice
+	0, 										//scheming weasel
 	
-	0, 		//8-bit against the odds redux
-	0, 		//at the speed of light 1
-	0, 		//at the speed of light 2
-	0, 		//at the speed of light 3
-	0, 		//at the speed of light full
-	0,			//beast mode GDW cut
-	0,			//candyland
-	0,			//chaoz fantasy
-	0,			//chaoz impact
-	0,		//clutterfunk 2
-	0,		//death moon
-	0,				//driving by night
-	0, 		//endgame
-	0, 				//freedom dive
-	0, 				//glint
-	sizeof(TEXT_elangel) - 1, 			//golden haze
-	0,		//ground to space
-	0, 		//haunted woods
-	0, 		//hell
-	0,		//idols
-	0, 		//infernoplex
+	0, 										//8-bit against the odds redux
+	0, 										//accelerate
+	0, 										//at the speed of light 1
+	0, 										//at the speed of light 2
+	0, 										//at the speed of light 3
+	0, 										//at the speed of light full
+	0, 										//beast mode GDW cut
+	0, 										//candyland
+	0, 										//chaoz fantasy
+	0, 										//chaoz impact
+	0, 										//clutterfunk 2
+	0, 										//death moon
+	0, 										//driving by night
+	0, 										//endgame
+	0, 										//flow
+	0, 										//freedom dive
+	0, 										//glint
+	sizeof(TEXT_elangel) - 1, 				//golden haze
+	0, 										//ground to space
+	0, 										//haunted woods
+	0, 										//idols
+	0, 										//infernoplex
 	sizeof(TEXT_seaglowingpro) - 1, 		//infernoplex full
-	0, 		//jack russel	
-	sizeof(TEXT_elangel) - 1,		//just right
-	0, 			//kesobomb
-	0, 			//lost
-	0,				//ludacris speed
-	0,			//machina GDW cut
-	0,				//magic touch
-	0,		//mayhem short ver
-	0,		//mayhem
-	0,		//metamorphasis
-	0,		//midnight
-	0,			//ninox
-	0,			//okiba crackdown
-	0,			//payload GDW cut
-	0,				//problematic
-	0,			//pyrophoric
-	0,			//rainbow tylenol
-	0,			//stalemate
+	0, 										//jack russel	
+	sizeof(TEXT_elangel) - 1,				//just right
+	0, 										//kesobomb
+	0, 										//lost
+	0, 										//ludacris speed
+	0, 										//machina GDW cut
+	0, 										//magic touch
+	0, 										//mayhem short ver
+	0, 										//mayhem
+	0, 										//metamorphasis
+	0, 										//midnight
+	0, 										//ninox
+	0, 										//okiba crackdown
+	0, 										//payload GDW cut
+	0, 										//problematic
+	0, 										//pyrophoric
+	0, 										//rainbow tylenol
+	0, 										//stalemate
 	sizeof(TEXT_seaglowingpro) - 1,			//stalemate full
-	0,		//stereo madness2
-	0,		//subtle oddities
-	0,			//the angel
-	0,		//thoughts
-	0,				//ultimate destruction
-	0,		//you've been trolled
-	0,			//what's a future funk
-	0,			//windfall
-	0,			//years GDW cut
+	0, 										//stereo madness2
+	0, 										//subtle oddities
+	0, 										//the angel
+	0, 										//thoughts
+	0, 										//ultimate destruction
+	0, 										//you've been trolled
+	0, 										//what's a future funk
+	0, 										//windfall
+	0, 										//years GDW cut
 };
 
 const unsigned char* const coveringartists3[] = {
-	0, 			//menu theme
-	0, 			//menu theme 2.2
-	0,		//stereo madness
-	0,				//back on track
-	TEXT_vikrinox,				//polargeist
-	0,				//dry out
-	TEXT_zenith,				//base after base
-	0,				//can't let go
-	TEXT_usersniper,		//jumper
-	TEXT_alexmush,		//time machine
-	0,				//cycles
-	0,				//xstep
-	TEXT_zenith,		//clutterfunk
-	TEXT_zenith,			//theory of everything
-	TEXT_alexmush,		//electroman adventures
-	0,			//clubstep
-	0,			//electrodynamix
-	0,		//hexagon force
-	0,		//blast processing
-	0,			//theory of everything 2
-	0,		//geometrical dominator
-	0,				//deadlocked
-	0,				//fingerbang
-	0,				//dash
-	0, 			//the challenge
-	0, 			//practice
-	0, 	//scheming weasel
+	0, 										//menu theme
+	0, 										//menu theme 2.2
+	0, 										//stereo madness
+	0, 										//back on track
+	TEXT_vikrinox,							//polargeist
+	0, 										//dry out
+	TEXT_zenith,							//base after base
+	0, 										//can't let go
+	TEXT_usersniper,						//jumper
+	TEXT_alexmush, 							//time machine
+	0, 										//cycles
+	0, 										//xstep
+	TEXT_zenith,							//clutterfunk
+	TEXT_zenith,							//theory of everything
+	TEXT_alexmush,							//electroman adventures
+	0, 										//clubstep
+	0, 										//electrodynamix
+	0, 										//hexagon force
+	0, 										//blast processing
+	0, 										//theory of everything 2
+	0, 										//geometrical dominator
+	0, 										//deadlocked
+	0, 										//fingerbang
+	0, 										//dash
+	0, 										//the challenge
+	0, 										//practice
+	0, 										//scheming weasel
 	
-	0, 		//8-bit against the odds redux
-	0, 		//at the speed of light 1
-	0, 		//at the speed of light 2
-	0, 		//at the speed of light 3
-	0, 		//at the speed of light full
-	0,			//beast mode GDW cut
-	0,			//candyland
-	0,			//chaoz fantasy
-	0,			//chaoz impact
-	0,		//clutterfunk 2
-	0,		//death moon
-	0,				//driving by night
-	0, 		//endgame
-	0, 				//freedom dive
-	0, 				//glint
-	0, 			//golden haze
-	0,		//ground to space
-	0, 		//haunted woods
-	0, 		//hell
-	0,		//idols
-	0, 		//infernoplex
-	0, 		//infernoplex full
-	0, 		//jack russel
-	0,		//just right
-	0,		//kesobomb
-	0, 			//lost
-	0,				//ludacris speed
-	0,			//machina GDW cut
-	0,				//magic touch
-	0,		//mayhem short ver
-	0,		//mayhem
-	0,		//metamorphasis
-	0,		//midnight
-	0,			//ninox
-	0,			//okiba crackdown
-	0,			//payload GDW cut
-	0,				//problematic
-	0,			//pyrophoric
-	0,			//rainbow tylenol
-	0,			//stalemate
-	0,			//stalemate full
-	0,		//stereo madness2
-	0,		//subtle oddities
-	0,			//the angel
-	0,		//thoughts
-	0,				//ultimate destruction
-	0,		//you've been trolled
-	0,			//what's a future funk
-	0,			//windfall
-	0,			//years GDW cut
+	0, 										//8-bit against the odds redux
+	0, 										//accelerate
+	0, 										//at the speed of light 1
+	0, 										//at the speed of light 2
+	0, 										//at the speed of light 3
+	0, 										//at the speed of light full
+	0, 										//beast mode GDW cut
+	0, 										//candyland
+	0, 										//chaoz fantasy
+	0, 										//chaoz impact
+	0, 										//clutterfunk 2
+	0, 										//death moon
+	0, 										//driving by night
+	0, 										//endgame
+	0, 										//flow
+	0, 										//freedom dive
+	0, 										//glint
+	0, 										//golden haze
+	0, 										//ground to space
+	0, 										//haunted woods
+	0, 										//idols
+	0, 										//infernoplex
+	0, 										//infernoplex full
+	0, 										//jack russel
+	0, 										//just right
+	0, 										//kesobomb
+	0, 										//lost
+	0, 										//ludacris speed
+	0, 										//machina GDW cut
+	0, 										//magic touch
+	0, 										//mayhem short ver
+	0, 										//mayhem
+	0, 										//metamorphasis
+	0, 										//midnight
+	0, 										//ninox
+	0, 										//okiba crackdown
+	0, 										//payload GDW cut
+	0, 										//problematic
+	0, 										//pyrophoric
+	0, 										//rainbow tylenol
+	0, 										//stalemate
+	0, 										//stalemate full
+	0, 										//stereo madness2
+	0, 										//subtle oddities
+	0, 										//the angel
+	0, 										//thoughts
+	0, 										//ultimate destruction
+	0, 										//you've been trolled
+	0, 										//what's a future funk
+	0, 										//windfall
+	0, 										//years GDW cut
 };
 
 
 const unsigned char coveringartists3_size[] = {
-	0, 			//menu theme
-	0, 			//menu theme 2.2
-	0,		//stereo madness
-	0,				//back on track
+	0, 										//menu theme
+	0, 										//menu theme 2.2
+	0, 										//stereo madness
+	0, 										//back on track
 	sizeof(TEXT_vikrinox) - 1,				//polargeist
-	0,				//dry out
+	0,										//dry out
 	sizeof(TEXT_zenith) - 1,				//base after base
-	0,				//can't let go
-	sizeof(TEXT_usersniper) - 1,		//jumper
-	sizeof(TEXT_alexmush) - 1,		//time machine
-	0,				//cycles
-	0,				//xstep
-	sizeof(TEXT_zenith) - 1,		//clutterfunk
-	sizeof(TEXT_zenith) - 1,			//theory of everything
-	sizeof(TEXT_alexmush) - 1,		//electroman adventures
-	0,			//clubstep
-	0,			//electrodynamix
-	0,		//hexagon force
-	0,		//blast processing
-	0,			//theory of everything 2
-	0,		//geometrical dominator
-	0,				//deadlocked
-	0,				//fingerbang
-	0,				//dash
-	0, 			//the challenge
-	0, 			//practice
-	0, 	//scheming weasel
+	0,										//can't let go
+	sizeof(TEXT_usersniper) - 1,			//jumper
+	sizeof(TEXT_alexmush) - 1,				//time machine
+	0, 										//cycles
+	0, 										//xstep
+	sizeof(TEXT_zenith) - 1,				//clutterfunk
+	sizeof(TEXT_zenith) - 1,				//theory of everything
+	sizeof(TEXT_alexmush) - 1,				//electroman adventures
+	0, 										//clubstep
+	0, 										//electrodynamix
+	0, 										//hexagon force
+	0, 										//blast processing
+	0, 										//theory of everything 2
+	0, 										//geometrical dominator
+	0, 										//deadlocked
+	0, 										//fingerbang
+	0, 										//dash
+	0, 										//the challenge
+	0, 										//practice
+	0, 										//scheming weasel
 	
-	0, 		//8-bit against the odds redux
-	0, 		//at the speed of light 1
-	0, 		//at the speed of light 2
-	0, 		//at the speed of light 3
-	0, 		//at the speed of light full
-	0,			//beast mode GDW cut
-	0,			//candyland
-	0,			//chaoz fantasy
-	0,			//chaoz impact
-	0,		//clutterfunk 2
-	0,		//death moon
-	0,				//driving by night
-	0, 		//endgame
-	0, 				//freedom dive
-	0, 				//glint
-	0, 			//golden haze
-	0,		//ground to space
-	0, 		//haunted woods
-	0, 		//hell
-	0,		//idols
-	0, 		//infernoplex
-	0, 		//infernoplex full
-	0, 		//jack russel
-	0,		//just right
-	0,		//kesobomb
-	0, 			//lost
-	0,				//ludacris speed
-	0,			//machina GDW cut
-	0,				//magic touch
-	0,		//mayhem short ver
-	0,		//mayhem
-	0,		//metamorphasis
-	0,		//midnight
-	0,			//ninox
-	0,			//okiba crackdown
-	0,			//payload GDW cut
-	0,				//problematic
-	0,			//pyrophoric
-	0,			//rainbow tylenol
-	0,			//stalemate
-	0,			//stalemate full
-	0,		//stereo madness2
-	0,		//subtle oddities
-	0,			//the angel
-	0,		//thoughts
-	0,				//ultimate destruction
-	0,		//you've been trolled
-	0,			//what's a future funk
-	0,			//windfall
-	0,			//years GDW cut
+	0, 										//8-bit against the odds redux
+	0, 										//accelerate
+	0, 										//at the speed of light 1
+	0, 										//at the speed of light 2
+	0, 										//at the speed of light 3
+	0, 										//at the speed of light full
+	0, 										//beast mode GDW cut
+	0, 										//candyland
+	0, 										//chaoz fantasy
+	0, 										//chaoz impact
+	0, 										//clutterfunk 2
+	0, 										//death moon
+	0, 										//driving by night
+	0, 										//endgame
+	0, 										//flow
+	0, 										//freedom dive
+	0, 										//glint
+	0, 										//golden haze
+	0, 										//ground to space
+	0, 										//haunted woods
+	0, 										//idols
+	0, 										//infernoplex
+	0, 										//infernoplex full
+	0, 										//jack russel
+	0, 										//just right
+	0, 										//kesobomb
+	0, 										//lost
+	0, 										//ludacris speed
+	0, 										//machina GDW cut
+	0, 										//magic touch
+	0, 										//mayhem short ver
+	0, 										//mayhem
+	0, 										//metamorphasis
+	0, 										//midnight
+	0, 										//ninox
+	0, 										//okiba crackdown
+	0, 										//payload GDW cut
+	0, 										//problematic
+	0, 										//pyrophoric
+	0, 										//rainbow tylenol
+	0, 										//stalemate
+	0, 										//stalemate full
+	0, 										//stereo madness2
+	0, 										//subtle oddities
+	0, 										//the angel
+	0, 										//thoughts
+	0, 										//ultimate destruction
+	0, 										//you've been trolled
+	0, 										//what's a future funk
+	0, 										//windfall
+	0, 										//years GDW cut
 };
 
 const unsigned char* const coveringartists4[] = {
-	0, 			//menu theme
-	0, 			//menu theme 2.2
-	0,		//stereo madness
-	0,				//back on track
-	0,				//polargeist
-	0,				//dry out
-	TEXT_alexmush,				//base after base
-	0,				//can't let go
-	0,		//jumper
-	0,		//time machine
-	0,				//cycles
-	0,				//xstep
-	0,		//clutterfunk
-	TEXT_leejh20,			//theory of everything
-	0,		//electroman adventures
-	0,			//clubstep
-	0,			//electrodynamix
-	0,		//hexagon force
-	0,		//blast processing
-	0,			//theory of everything 2
-	0,		//geometrical dominator
-	0,				//deadlocked
-	0,				//fingerbang
-	0,				//dash
-	0, 			//the challenge
-	0, 			//practice
-	0, 	//scheming weasel
+	0, 										//menu theme
+	0, 										//menu theme 2.2
+	0, 										//stereo madness
+	0, 										//back on track
+	0, 										//polargeist
+	0, 										//dry out
+	TEXT_alexmush,							//base after base
+	0, 										//can't let go
+	0, 										//jumper
+	0, 										//time machine
+	0, 										//cycles
+	0, 										//xstep
+	0, 										//clutterfunk
+	TEXT_leejh20,							//theory of everything
+	0, 										//electroman adventures
+	0, 										//clubstep
+	0, 										//electrodynamix
+	0, 										//hexagon force
+	0, 										//blast processing
+	0, 										//theory of everything 2
+	0, 										//geometrical dominator
+	0, 										//deadlocked
+	0, 										//fingerbang
+	0, 										//dash
+	0, 										//the challenge
+	0, 										//practice
+	0, 										//scheming weasel
 	
-	0, 		//8-bit against the odds redux
-	0, 		//at the speed of light 1
-	0, 		//at the speed of light 2
-	0, 		//at the speed of light 3
-	0, 		//at the speed of light full
-	0,			//beast mode GDW cut
-	0,			//candyland
-	0,			//chaoz fantasy
-	0,			//chaoz impact
-	0,		//clutterfunk 2
-	0,		//death moon
-	0,				//driving by night
-	0, 		//endgame
-	0, 				//freedom dive
-	0, 				//glint
-	0, 			//golden haze
-	0,		//ground to space
-	0, 		//haunted woods
-	0, 		//hell
-	0,		//idols
-	0, 		//infernoplex
-	0, 		//infernoplex full
-	0, 		//jack russel
-	TEXT_dan_harrison,		//just right
-	0,		//kesobomb
-	0, 			//lost
-	0,				//ludacris speed
-	0,			//machina GDW cut
-	0,				//magic touch
-	0,		//mayhem short ver
-	0,		//mayhem
-	0,		//metamorphasis
-	0,		//midnight
-	0,			//ninox
-	0,			//okiba crackdown
-	0,			//payload GDW cut
-	0,				//problematic
-	0,			//pyrophoric
-	0,			//rainbow tylenol
-	0,			//stalemate
-	0,			//stalemate full
-	0,		//stereo madness2
-	0,		//subtle oddities
-	0,			//the angel
-	0,		//thoughts
-	0,				//ultimate destruction
-	0,		//you've been trolled
-	0,			//what's a future funk
-	0,			//windfall
-	0,			//years GDW cut
+	0, 										//8-bit against the odds redux
+	0, 										//accelerate
+	0, 										//at the speed of light 1
+	0, 										//at the speed of light 2
+	0, 										//at the speed of light 3
+	0, 										//at the speed of light full
+	0, 										//beast mode GDW cut
+	0, 										//candyland
+	0, 										//chaoz fantasy
+	0, 										//chaoz impact
+	0, 										//clutterfunk 2
+	0, 										//death moon
+	0, 										//driving by night
+	0, 										//endgame
+	0, 										//flow
+	0, 										//freedom dive
+	0, 										//glint
+	0, 										//golden haze
+	0, 										//ground to space
+	0, 										//haunted woods
+	0, 										//idols
+	0, 										//infernoplex
+	0, 										//infernoplex full
+	0, 										//jack russel
+	TEXT_dan_harrison,						//just right
+	0, 										//kesobomb
+	0, 										//lost
+	0, 										//ludacris speed
+	0, 										//machina GDW cut
+	0, 										//magic touch
+	0, 										//mayhem short ver
+	0, 										//mayhem
+	0, 										//metamorphasis
+	0, 										//midnight
+	0, 										//ninox
+	0, 										//okiba crackdown
+	0, 										//payload GDW cut
+	0, 										//problematic
+	0, 										//pyrophoric
+	0, 										//rainbow tylenol
+	0, 										//stalemate
+	0, 										//stalemate full
+	0, 										//stereo madness2
+	0, 										//subtle oddities
+	0, 										//the angel
+	0, 										//thoughts
+	0, 										//ultimate destruction
+	0, 										//you've been trolled
+	0, 										//what's a future funk
+	0, 										//windfall
+	0, 										//years GDW cut
 };
 
 
 const unsigned char coveringartists4_size[] = {
-	0, 			//menu theme
-	0, 			//menu theme 2.2
-	0,		//stereo madness
-	0,				//back on track
-	0,				//polargeist
-	0,				//dry out
+	0, 										//menu theme
+	0, 										//menu theme 2.2
+	0, 										//stereo madness
+	0, 										//back on track
+	0, 										//polargeist
+	0, 										//dry out
 	sizeof(TEXT_alexmush) - 1,				//base after base
-	0,				//can't let go
-	0,		//jumper
-	0,		//time machine
-	0,				//cycles
-	0,				//xstep
-	0,		//clutterfunk
-	sizeof(TEXT_leejh20) - 1,			//theory of everything
-	0,		//electroman adventures
-	0,			//clubstep
-	0,			//electrodynamix
-	0,		//hexagon force
-	0,		//blast processing
-	0,			//theory of everything 2
-	0,		//geometrical dominator
-	0,				//deadlocked
-	0,				//fingerbang
-	0,				//dash
-	0, 			//the challenge
-	0, 			//practice
-	0, 	//scheming weasel
+	0, 										//can't let go
+	0, 										//jumper
+	0, 										//time machine
+	0, 										//cycles
+	0, 										//xstep
+	0, 										//clutterfunk
+	sizeof(TEXT_leejh20) - 1,				//theory of everything
+	0, 										//electroman adventures
+	0, 										//clubstep
+	0, 										//electrodynamix
+	0, 										//hexagon force
+	0, 										//blast processing
+	0, 										//theory of everything 2
+	0, 										//geometrical dominator
+	0, 										//deadlocked
+	0, 										//fingerbang
+	0, 										//dash
+	0, 										//the challenge
+	0, 										//practice
+	0, 										//scheming weasel
 	
-	0, 		//8-bit against the odds redux
-	0, 		//at the speed of light 1
-	0, 		//at the speed of light 2
-	0, 		//at the speed of light 3
-	0, 		//at the speed of light full
-	0,			//beast mode GDW cut
-	0,			//candyland
-	0,			//chaoz fantasy
-	0,			//chaoz impact
-	0,		//clutterfunk 2
-	0,		//death moon
-	0,				//driving by night
-	0, 		//endgame
-	0, 				//freedom dive
-	0, 				//glint
-	0, 			//golden haze
-	0,		//ground to space
-	0, 		//haunted woods
-	0, 		//hell
-	0,		//idols
-	0, 		//infernoplex
-	0, 		//infernoplex full
-	0, 		//jack russel
-	sizeof(TEXT_dan_harrison) - 1,		//just right
-	0,		//kesobomb
-	0, 			//lost
-	0,				//ludacris speed
-	0,			//machina GDW cut
-	0,				//magic touch
-	0,		//mayhem short ver
-	0,		//mayhem
-	0,		//metamorphasis
-	0,		//midnight
-	0,			//ninox
-	0,			//okiba crackdown
-	0,			//payload GDW cut
-	0,				//problematic
-	0,			//pyrophoric
-	0,			//rainbow tylenol
-	0,			//stalemate
-	0,			//stalemate full
-	0,		//stereo madness2
-	0,		//subtle oddities
-	0,			//the angel
-	0,		//thoughts
-	0,				//ultimate destruction
-	0,		//you've been trolled
-	0,			//what's a future funk
-	0,			//windfall
-	0,			//years GDW cut
+	0, 										//8-bit against the odds redux
+	0, 										//accelerate
+	0, 										//at the speed of light 1
+	0, 										//at the speed of light 2
+	0, 										//at the speed of light 3
+	0, 										//at the speed of light full
+	0, 										//beast mode GDW cut
+	0, 										//candyland
+	0, 										//chaoz fantasy
+	0, 										//chaoz impact
+	0, 										//clutterfunk 2
+	0, 										//death moon
+	0, 										//driving by night
+	0, 										//endgame
+	0, 										//flow
+	0, 										//freedom dive
+	0, 										//glint
+	0, 										//golden haze
+	0, 										//ground to space
+	0, 										//haunted woods
+	0, 										//idols
+	0, 										//infernoplex
+	0, 										//infernoplex full
+	0, 										//jack russel
+	sizeof(TEXT_dan_harrison) - 1,			//just right
+	0, 										//kesobomb
+	0, 										//lost
+	0, 										//ludacris speed
+	0, 										//machina GDW cut
+	0, 										//magic touch
+	0, 										//mayhem short ver
+	0, 										//mayhem
+	0, 										//metamorphasis
+	0, 										//midnight
+	0, 										//ninox
+	0, 										//okiba crackdown
+	0, 										//payload GDW cut
+	0, 										//problematic
+	0, 										//pyrophoric
+	0, 										//rainbow tylenol
+	0, 										//stalemate
+	0, 										//stalemate full
+	0, 										//stereo madness2
+	0, 										//subtle oddities
+	0, 										//the angel
+	0, 										//thoughts
+	0, 										//ultimate destruction
+	0, 										//you've been trolled
+	0, 										//what's a future funk
+	0, 										//windfall
+	0, 										//years GDW cut
 };
 
 
@@ -1650,6 +1483,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_scheming_weasel,
 	
 	song_against_the_odds_redux,
+	song_hell,
 	song_atthespeedoflight,
 	song_atthespeedoflight2,
 	song_atthespeedoflight3,
@@ -1662,12 +1496,12 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_death_moon,
 	song_driving_by_night,
 	song_endgame,
+	song_flow,
 	song_freedom_dive,
 	song_glint,
 	song_retray,
 	song_ground_to_space,
 	song_haunted_woods,
-	song_hell,
 	song_idols,
 	song_infernoplex,
 	song_infernoplex_full,

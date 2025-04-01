@@ -109,86 +109,7 @@ void unrle_bgm2() {
 
 
 
-const uint8_t xbgm_lookup_table[] = {
-	song_menu_theme,
-	song_menu_theme_b_sides,
-	song_stereo_madness,
-	song_back_on_track,
-	song_polargeist,
-	song_dry_out,
-	song_base_after_base,
-	song_cant_let_go,
-	song_jumper,
-	song_time_machine,
-	song_cycles,
-	song_xstep, 
-	song_clutterfunk,
-	song_theory_of_everything, 
-	song_electroman_adventures, 
-	song_clubstep,
-	song_electrodynamix,
-	song_hexagon_force,
-	song_blast_processing,
-	song_toe_2,
-	song_geometrical_dominator,
-	song_deadlocked,
-	song_fingerdash,
-	song_dash,
-	song_the_challenge,
-	song_practice,
-	song_scheming_weasel,
-	
-	song_against_the_odds_redux,
-	song_atthespeedoflight,
-	song_atthespeedoflight2,
-	song_atthespeedoflight3,
-	song_atthespeedoflightfull,
-	song_beast_mode_gdw_cut,
-	song_candyland,
-	song_chaozfantasy,
-	song_chaoz_impact,
-	song_clutterfunk_2,
-	song_death_moon,
-	song_driving_by_night,
-	song_endgame,
-	song_freedom_dive,
-	song_glint,
-	song_retray,
-	song_ground_to_space,
-	song_haunted_woods,
-	song_hell,
-	song_idols,
-	song_infernoplex,
-	song_infernoplex_full,
-	song_jack_russel,
-	song_just_right,
-	song_kesobomb,
-	song_lost,
-	song_ludicrous_speed,
-	song_machina_gdw_cut,
-	song_magic_touch,
-	song_mayhem_short,
-	song_mayhem,
-	song_metamorphosis,
-	song_midnight,
-	song_ninox,
-	song_crackdown,
-	song_payload_gdw_cut,
-	song_problematic,
-	song_pyrophoric,
-	song_rainbow_tylenol,
-	song_stalemate,
-	song_stalemate_full,
-	song_stereo_madness_2,
-	song_subtle_oddities,
-	song_eon,
-	song_thoughts,
-	song_ultimatedestruction,
-	song_youve_been_trolled,
-	song_whats_a_future_funk,
-	song_windfall,
-	song_years_gdw_cut,
-};
+
 
 
 const uint8_t loNTAddrTableTitleScreen[]={
@@ -421,7 +342,9 @@ const uint8_t menu_color_table[]={
 const char palsystem[] = "FOR PAL SYSTEMS";
 #define NTSC_SYS PEEK(0x00)
 
-
+void check_if_music_stopped2() {
+	if (famistudio_song_speed == 0x80) { music_play(song_menu_theme); }
+}
 
 
 const uint8_t menu_irq_table[] = {
@@ -477,7 +400,7 @@ void state_menu() {
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgm_lookup_table[menu_music]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(song_menu_theme);
 	menuMusicCurrentlyPlaying = 1;
 
 	settingvalue = 0;
@@ -553,6 +476,8 @@ void state_menu() {
 	}	*/
 	while (!(joypad1.press & (PAD_START | PAD_A))){
 
+		check_if_music_stopped2();
+
 		pal_col(0x11,titlecolor3);
 		pal_col(0x12,titlecolor1);
 		pal_col(0x13,titlecolor2);
@@ -573,7 +498,6 @@ void state_menu() {
 		//currplayer_gravity
 		//tmp2 tmp7
 		//tmpi8
-
 
 
 		if (currplayer_x_small <= 0xF7) {
