@@ -256,6 +256,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_xlevel2text6,					//can't let go remixed
 	0,									//chaoz fantasy
 	0,									//chaoz impact
+	TEXT_2textclubstep,					//clubstep full version
 	0,									//clutterfunk 2
 	0,									//death moon
 	TEXT_driving,						//driving by midnight
@@ -344,6 +345,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_xlevel2text6) - 1,		//can't let go remixed
 	0,									//chaoz fantasy
 	0,									//chaoz impact
+	sizeof(TEXT_2textclubstep) - 1,		//clubstep full
 	0,									//clutterfunk 2
 	0,									//death moon
 	sizeof(TEXT_driving) - 1,			//driving by midnight
@@ -432,6 +434,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_remix,							//can't let go remixed
 	TEXT_2textchaoz,					//chaoz fantasy
 	TEXT_speedracer,					//chaoz impact
+	TEXT_2textfullversion,				//clubstep full
 	TEXT_2clutterfunk2,					//clutterfunk 2
 	TEXT_2deathmoon,					//death moon
 	TEXT_driving2,						//driving by night
@@ -520,6 +523,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_remix) - 1,							//can't let go remixed
 	sizeof(TEXT_2textchaoz) - 1,					//chaoz fantasy
 	sizeof(TEXT_speedracer) - 1,					//chaoz impact
+	sizeof(TEXT_2textfullversion) - 1,				//clubstep full
 	sizeof(TEXT_2clutterfunk2) - 1,					//clutterfunk 2
 	sizeof(TEXT_2deathmoon) - 1,					//death moon
 	sizeof(TEXT_driving2) - 1,						//driving by midnight
@@ -678,6 +682,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_djvi,				//can't let go remixed
 	TEXT_paragonx9,			//chaoz fantasy
 	TEXT_paragonx9,			//chaoz impact
+	TEXT_djnate,			//clubstep full
 	TEXT_waterflame,		//clutterfunk 2
 	TEXT_soundholick,		//death moon
 	TEXT_reinn,				//driving by night
@@ -766,6 +771,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_djvi) - 1,				//can't let go remixed
 	sizeof(TEXT_paragonx9) - 1,			//chaoz fantasy
 	sizeof(TEXT_paragonx9) - 1,			//chaoz impact
+	sizeof(TEXT_djnate) - 1,			//clubstep full
 	sizeof(TEXT_waterflame) - 1,		//clutterfunk 2
 	sizeof(TEXT_soundholick) - 1,		//death moon
 	sizeof(TEXT_reinn) - 1,				//driving by night
@@ -854,6 +860,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro,			//can't let go remixed
 	TEXT_usersniper,			//chaoz fantasy
 	TEXT_elangel,				//chaoz impact
+	TEXT_seaglowingpro,			//clubstep full
 	TEXT_cloud54,				//clutterfunk 2
 	TEXT_elangel,				//death moon
 	TEXT_nerdboy,				//driving by night
@@ -941,6 +948,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1,			//can't let go remixed
 	sizeof(TEXT_usersniper) - 1,			//chaoz fantasy
 	sizeof(TEXT_elangel) - 1,				//chaoz impact
+	sizeof(TEXT_seaglowingpro) - 1,			//clubstep full
 	sizeof(TEXT_cloud54) - 1,				//clutterfunk 2
 	sizeof(TEXT_elangel) - 1,				//death moon
 	sizeof(TEXT_nerdboy) - 1,				//driving by night
@@ -1028,6 +1036,7 @@ const unsigned char* const coveringartists2[] = {
 	0,										//can't let go remixed
 	0,										//chaoz fantasy
 	0,										//chaoz impact
+	0,										//clubstep full
 	0,										//clutterfunk 2
 	0,										//death moon
 	0,										//driving by night
@@ -1115,6 +1124,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//can't let go remixed
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
+	0,										//clubstep full
 	0, 										//clutterfunk 2
 	0, 										//death moon
 	0, 										//driving by night
@@ -1201,6 +1211,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//can't let go remixed
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
+	0,										//clubstep full
 	0, 										//clutterfunk 2
 	0, 										//death moon
 	0, 										//driving by night
@@ -1288,6 +1299,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//can't let go remixed
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
+	0,										//clubstep full
 	0, 										//clutterfunk 2
 	0, 										//death moon
 	0, 										//driving by night
@@ -1374,6 +1386,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//can't let go remixed
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
+	0,										//clubstep full
 	0, 										//clutterfunk 2
 	0, 										//death moon
 	0, 										//driving by night
@@ -1461,6 +1474,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//can't let go remixed
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
+	0,										//clubstep full
 	0, 										//clutterfunk 2
 	0, 										//death moon
 	0, 										//driving by night
@@ -1552,6 +1566,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_cant_let_go_remix,
 	song_chaozfantasy,
 	song_chaoz_impact,
+	song_clubstep_full,
 	song_clutterfunk_2,
 	song_death_moon,
 	song_driving_by_night,
