@@ -244,7 +244,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
-			startingGroundColor: 0x12
+			startingGroundColor: 0x12,
+			parallaxDisable: true
 		},
 		{
 			level: "blastprocessing",
@@ -260,7 +261,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
-			startingGroundColor: 0x12
+			startingGroundColor: 0x12,
+			parallaxDisable: true
 		},
 		{
 			level: "toe2",
@@ -276,7 +278,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x01,
-			startingGroundColor: 0x01
+			startingGroundColor: 0x01,
+			parallaxDisable: true
 		},
 		{
 			level: "geometricaldominator",
@@ -292,7 +295,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "deadlocked",
@@ -307,7 +311,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "fingerdash",
@@ -322,7 +327,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "dash",
@@ -337,7 +343,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "retray",
@@ -352,7 +359,8 @@
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "sonar",
@@ -367,7 +375,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x01,
-			startingGroundColor: 0x01
+			startingGroundColor: 0x01,
+			parallaxDisable: true
 		},
 		{
 			level: "thechallenge",
@@ -383,7 +392,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x06
+			startingGroundColor: 0x06,
+			parallaxDisable: true
 		},
 		/*{
 			level: "leveleasy",
@@ -413,7 +423,8 @@
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "lookatthislevel",
@@ -444,7 +455,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "sunshine",
@@ -459,7 +471,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
-			startingGroundColor: 0x12
+			startingGroundColor: 0x12,
+			parallaxDisable: true
 		},
 		{
 			level: "revolution",
@@ -474,7 +487,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "lostinthewoods",
@@ -490,7 +504,8 @@
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "bloodbathbutno",
@@ -506,7 +521,8 @@
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "aprettyeasylevel",
@@ -564,11 +580,11 @@
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "",
+			songID: "song_time_machine",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x,
-			startingGroundColor: 0x
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x06
 		},
 		{
 			level: "deathmoon",
@@ -579,11 +595,12 @@
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_time_machine",
+			songID: "song_death_moon",
 			startingGameMode: 0,
 			startingSpeed: 3,
 			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x06
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "decode",
@@ -598,7 +615,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x06
+			startingGroundColor: 0x06,
+			parallaxDisable: true
 		},
 		/*{
 			level: "dearnostalgists",
@@ -628,7 +646,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02
+			startingGroundColor: 0x02,
+			parallaxDisable: true
 		},*/
 		{
 			level: "problematic",
@@ -643,7 +662,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "firetemple",
@@ -658,7 +678,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "foresttemple",
@@ -673,7 +694,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "eon",
@@ -688,7 +710,8 @@
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		/*{
 			level: "pgclubstep",
@@ -718,7 +741,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "bloodbath",
@@ -733,7 +757,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		/*{
 			level: "cataclysm",
@@ -748,7 +773,8 @@
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x06,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},*/
 		{
 			level: "luckydraw",
@@ -763,7 +789,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "test4",
@@ -778,7 +805,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02
+			startingGroundColor: 0x02,
+			parallaxDisable: true
 		}
 	]
 }
