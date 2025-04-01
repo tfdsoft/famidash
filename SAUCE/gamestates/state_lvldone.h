@@ -165,6 +165,7 @@ const unsigned char TEXT_ludicrous2[]="SPEED";
 const unsigned char TEXT_idols[]="IDOLS";
 const unsigned char TEXT_metamorphasis[]="METAMORPHASIS";
 
+const unsigned char TEXT_fingerbang[]="FINGERBANG";
 const unsigned char TEXT_windfall[]="WINDFALL";
 const unsigned char TEXT_speedracer[]="CHAOZ$IMPACT";
 const unsigned char TEXT_magictouch[]="MAGIC$TOUCH";
@@ -259,6 +260,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//death moon
 	TEXT_driving,						//driving by midnight
 	0,									//endgame
+	0,									//fingerbang
 	0,									//flow
 	TEXT_freedom,						//freedom dive
 	0,									//glint
@@ -346,6 +348,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//death moon
 	sizeof(TEXT_driving) - 1,			//driving by midnight
 	0,									//endgame
+	0,									//fingerbang
 	0,									//flow
 	sizeof(TEXT_freedom) - 1,			//freedom dive
 	0,									//glint
@@ -433,6 +436,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2deathmoon,					//death moon
 	TEXT_driving2,						//driving by night
 	TEXT_xlevel2textE,					//endgame
+	TEXT_fingerbang,					//fingerbang
 	TEXT_flow,							//flow
 	TEXT_freedom2,						//freedom drive
 	TEXT_glint,							//glint
@@ -520,6 +524,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2deathmoon) - 1,					//death moon
 	sizeof(TEXT_driving2) - 1,						//driving by midnight
 	sizeof(TEXT_xlevel2textE) - 1,					//endgame
+	sizeof(TEXT_fingerbang) - 1,					//fingerbang
 	sizeof(TEXT_flow) - 1,							//flow
 	sizeof(TEXT_freedom2) - 1,						//freedom dive
 	sizeof(TEXT_glint) - 1,							//glint
@@ -677,6 +682,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_soundholick,		//death moon
 	TEXT_reinn,				//driving by night
 	TEXT_waterflame, 		//endgame
+	TEXT_mdk, 				//fingerbang
 	TEXT_creo, 				//flow
 	TEXT_xi, 				//freedom dive
 	TEXT_dominuus, 			//glint
@@ -764,6 +770,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_soundholick) - 1,		//death moon
 	sizeof(TEXT_reinn) - 1,				//driving by night
 	sizeof(TEXT_waterflame) - 1, 		//endgame
+	sizeof(TEXT_mdk) - 1, 				//fingerbang
 	sizeof(TEXT_creo) - 1, 				//flow
 	sizeof(TEXT_xi) - 1, 				//freedom dive
 	sizeof(TEXT_dominuus) - 1, 			//glint
@@ -851,6 +858,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel,				//death moon
 	TEXT_nerdboy,				//driving by night
 	TEXT_vikrinox, 				//endgame
+	TEXT_craftyjumper, 			//fingerbang
 	TEXT_seaglowingpro, 		//flow
 	TEXT_seaglowingpro, 		//freedom dive
 	TEXT_seaglowingpro, 		//glint
@@ -937,6 +945,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1,				//death moon
 	sizeof(TEXT_nerdboy) - 1,				//driving by night
 	sizeof(TEXT_vikrinox) - 1, 				//endgame
+	sizeof(TEXT_craftyjumper) - 1, 			//fingerbang
 	sizeof(TEXT_seaglowingpro) - 1, 		//flow
 	sizeof(TEXT_seaglowingpro) - 1, 		//freedom dive
 	sizeof(TEXT_seaglowingpro) - 1, 		//glint
@@ -1023,6 +1032,7 @@ const unsigned char* const coveringartists2[] = {
 	0,										//death moon
 	0,										//driving by night
 	0, 										//endgame
+	0, 										//fingerbang
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
@@ -1109,6 +1119,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
+	0, 										//fingerbang
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
@@ -1194,6 +1205,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
+	0, 										//fingerbang
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
@@ -1280,6 +1292,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
+	0, 										//fingerbang
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
@@ -1365,6 +1378,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
+	0, 										//fingerbang
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
@@ -1451,6 +1465,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
+	0, 										//fingerbang
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
@@ -1541,6 +1556,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_death_moon,
 	song_driving_by_night,
 	song_endgame,
+	song_fingerbang,
 	song_flow,
 	song_freedom_dive,
 	song_glint,
