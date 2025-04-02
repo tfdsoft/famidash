@@ -124,6 +124,7 @@ const unsigned char TEXT_2textspeed2[]="OF$LIGHT$PT$2";
 const unsigned char TEXT_2textspeed3[]="OF$LIGHT$PT$3";
 const unsigned char TEXT_2textspeedfull[]="OF$LIGHT$FULL";
 const unsigned char TEXT_jackrussel[]="JACK$RUSSEL";
+const unsigned char TEXT_powertrip[]="POWER$TRIP";
 const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
 const unsigned char TEXT_2textstalemate[]="STALEMATE";
 const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
@@ -294,6 +295,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//ninox
 	TEXT_crackdown,						//okiba crackdown
 	TEXT_payload,						//payload (gdw cut)
+	0,									//power trip
 	0,									//problematic
 	0,									//pyrophoric
 	TEXT_rainbowt,						//rainbow tylenol
@@ -390,6 +392,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//ninox
 	sizeof(TEXT_crackdown) - 1,			//okiba crackdown
 	sizeof(TEXT_payload) - 1,			//payload (gdw cut)
+	0,									//power trip
 	0,									//problematic
 	0,									//pyrophoric
 	sizeof(TEXT_rainbowt) - 1,			//rainbow tylenol
@@ -486,6 +489,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_ninox2,						//ninox
 	TEXT_2textcrackdown,				//okiba crackdown
 	TEXT_GDW,							//payload (gdw cut)
+	TEXT_powertrip,						//power trip
 	TEXT_2textproblematic,				//problematic
 	TEXT_pyrophoric,					//pyrophoric
 	TEXT_rainbowt2,						//rainbow tylenol
@@ -582,6 +586,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_ninox2) - 1,						//ninox
 	sizeof(TEXT_2textcrackdown) - 1,				//okiba crackdown
 	sizeof(TEXT_GDW) - 1,							//payload (gdw cut)
+	sizeof(TEXT_powertrip) - 1,						//power trip
 	sizeof(TEXT_2textproblematic) - 1,				//problematic
 	sizeof(TEXT_pyrophoric) - 1,					//pyrophoric
 	sizeof(TEXT_rainbowt2) - 1,						//rainbow tylenol
@@ -668,6 +673,7 @@ const unsigned char TEXT_clickerty[]="CLICKERTY";
 const unsigned char TEXT_zukinnyk[]="ZUKINNYK";
 const unsigned char TEXT_leejh20[]="LEEJH20";
 const unsigned char TEXT_creo[]="CREO";
+const unsigned char TEXT_boomkitty[]="BOOM$KITTY";
 
 
 
@@ -749,6 +755,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_meganeko,			//ninox
 	TEXT_bossfight,			//okiba crackdown
 	TEXT_dexarson,			//payload GDW cut
+	TEXT_boomkitty,			//power trip
 	TEXT_nk,				//problematic
 	TEXT_nerdboy,			//pyrophoric
 	TEXT_kitsune,			//rainbow tylenol
@@ -845,6 +852,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_meganeko) - 1,			//ninox
 	sizeof(TEXT_bossfight) - 1,			//okiba crackdown
 	sizeof(TEXT_dexarson) - 1,			//payload GDW cut
+	sizeof(TEXT_boomkitty) - 1,			//power trip
 	sizeof(TEXT_nk) - 1,				//problematic
 	sizeof(TEXT_nerdboy) - 1,			//pyrophoric
 	sizeof(TEXT_kitsune) - 1,			//rainbow tylenol
@@ -941,6 +949,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro,			//ninox
 	TEXT_sussysy,				//okiba crackdown
 	TEXT_elangel,				//payload GDW cut
+	TEXT_craftyjumper,			//power trip
 	TEXT_elangel,				//problematic
 	TEXT_nerdboy,				//pyrophoric
 	TEXT_clickerty,				//rainbow tylenol
@@ -1036,6 +1045,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1,			//ninox
 	sizeof(TEXT_sussysy) - 1,				//okiba crackdown
 	sizeof(TEXT_elangel) - 1,				//payload GDW cut
+	sizeof(TEXT_craftyjumper) - 1,			//power trip
 	sizeof(TEXT_elangel) - 1,				//problematic
 	sizeof(TEXT_nerdboy) - 1,				//pyrophoric
 	sizeof(TEXT_clickerty) - 1,				//rainbow tylenol
@@ -1131,6 +1141,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//ninox
 	0, 										//okiba crackdown
 	0, 										//payload GDW cut
+	0, 										//power trip
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
@@ -1226,6 +1237,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//ninox
 	0, 										//okiba crackdown
 	0, 										//payload GDW cut
+	0, 										//power trip
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
@@ -1320,6 +1332,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//ninox
 	0, 										//okiba crackdown
 	0, 										//payload GDW cut
+	0, 										//power trip
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
@@ -1415,6 +1428,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//ninox
 	0, 										//okiba crackdown
 	0, 										//payload GDW cut
+	0, 										//power trip
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
@@ -1509,6 +1523,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//ninox
 	0, 										//okiba crackdown
 	0, 										//payload GDW cut
+	0, 										//power trip
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
@@ -1604,6 +1619,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//ninox
 	0, 										//okiba crackdown
 	0, 										//payload GDW cut
+	0, 										//power trip
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
@@ -1703,6 +1719,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_ninox,
 	song_crackdown,
 	song_payload_gdw_cut,
+	song_power_trip,
 	song_problematic,
 	song_pyrophoric,
 	song_rainbow_tylenol,
