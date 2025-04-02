@@ -132,8 +132,6 @@ const unsigned char TEXT_2textjustright[]="JUST$RIGHT";
 const unsigned char TEXT_against2[]="THE$ODDS$REDUX";
 const unsigned char TEXT_geometrical2[]="DOMINATOR";
 const unsigned char TEXT_dash2[]="DASH";
-const unsigned char TEXT_hsad2[]="HSAD";
-const unsigned char TEXT_repmuj2[]="REPMUJ";
 const unsigned char TEXT_driving2[]="NIGHT";
 const unsigned char TEXT_deadlocked2[]="DEADLOCKED";
 const unsigned char TEXT_fingerdash2[]="FINGERDASH";
@@ -185,6 +183,9 @@ const unsigned char TEXT_youvebeen[]="YOUVE$BEEN";
 const unsigned char TEXT_youvebeen2[]="TROLLED";
 const unsigned char TEXT_kesobomb[]="KESOBOMB";
 
+const unsigned char TEXT_hsad2[]="HSAD";
+const unsigned char TEXT_repmuj2[]="REPMUJ";
+const unsigned char TEXT_unem2[]="EMEHT$UNEM";
 
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
@@ -304,6 +305,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_future,						//whats a future funk
 	0,									//windfall
 	TEXT_years,							//years (gdw cut)
+	0,									//emeht unem
 	0,									//hsaD
 	0,									//repmuJ
 
@@ -396,6 +398,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_future) - 1,			//whats a future funk
 	0,									//windfall
 	sizeof(TEXT_years) - 1,				//years (gdw cut)
+	0,									//emeht unem
 	0,									//hsaD
 	0,									//repmuJ
 	
@@ -488,6 +491,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_future2,						//whats a future funk
 	TEXT_windfall,						//windfall
 	TEXT_GDW,							//years (gdw cut)
+	TEXT_unem2,							//emeht unem
 	TEXT_hsad2,							//hsaD
 	TEXT_repmuj2,						//repmuJ
 	
@@ -580,6 +584,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_future2) - 1,						//whats a future funk
 	sizeof(TEXT_windfall) - 1,						//windfall
 	sizeof(TEXT_GDW) - 1,							//years (gdw cut)
+	sizeof(TEXT_unem2) - 1,							//unem emeht
 	sizeof(TEXT_hsad2) - 1,							//hsaD
 	sizeof(TEXT_repmuj2) - 1,						//repmuJ
 	
@@ -743,6 +748,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_lemkuuja,			//what's a future funk
 	TEXT_thefatrat,			//windfall
 	TEXT_dexarson,			//years GDW cut
+	TEXT_robtop,			//emeht uneM
 	TEXT_mdk,				//hsaD
 	TEXT_waterflame,		//repmuJ
 	
@@ -835,6 +841,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_lemkuuja) - 1,			//what's a future funk
 	sizeof(TEXT_thefatrat) - 1,			//windfall
 	sizeof(TEXT_dexarson) - 1,			//years GDW cut
+	sizeof(TEXT_robtop) - 1,			//emeht unem
 	sizeof(TEXT_mdk) - 1,				//hsaD
 	sizeof(TEXT_waterflame) - 1,		//repmuJ
 };
@@ -927,6 +934,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro,			//what's a future funk
 	TEXT_seaglowingpro,			//windfall
 	TEXT_elangel,				//years GDW cut
+	TEXT_craftyjumper,			//emeht unem
 	TEXT_craftyjumper,			//hsaD
 	TEXT_seaglowingpro,			//repmuJ
 };
@@ -1018,6 +1026,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1,			//what's a future funk
 	sizeof(TEXT_seaglowingpro) - 1,			//windfall
 	sizeof(TEXT_elangel) - 1,				//years GDW cut
+	sizeof(TEXT_craftyjumper) - 1,			//emeht unem
 	sizeof(TEXT_craftyjumper) - 1,			//hsaD
 	sizeof(TEXT_seaglowingpro) - 1,			//repmuJ
 };
@@ -1109,6 +1118,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//what's a future funk
 	0, 										//windfall
 	0, 										//years GDW cut
+	0,										//emeht unem	
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1199,6 +1209,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//what's a future funk
 	0, 										//windfall
 	0, 										//years GDW cut
+	0,										//emeht unem	
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1289,6 +1300,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//what's a future funk
 	0, 										//windfall
 	0, 										//years GDW cut
+	0,										//emeht unem	
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1380,6 +1392,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//what's a future funk
 	0, 										//windfall
 	0, 										//years GDW cut
+	0,										//emeht unem	
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1470,6 +1483,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//what's a future funk
 	0, 										//windfall
 	0, 										//years GDW cut
+	0,										//emeht unem	
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1561,6 +1575,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//what's a future funk
 	0, 										//windfall
 	0, 										//years GDW cut
+	0,										//emeht unem	
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1656,6 +1671,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_whats_a_future_funk,
 	song_windfall,
 	song_years_gdw_cut,
+	song_emeht_unem,
 	song_hsad,
 	song_repmuj,
 };
