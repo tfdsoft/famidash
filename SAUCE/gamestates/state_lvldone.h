@@ -133,6 +133,7 @@ const unsigned char TEXT_against2[]="THE$ODDS$REDUX";
 const unsigned char TEXT_geometrical2[]="DOMINATOR";
 const unsigned char TEXT_dash2[]="DASH";
 const unsigned char TEXT_hsad2[]="HSAD";
+const unsigned char TEXT_repmuj2[]="REPMUJ";
 const unsigned char TEXT_driving2[]="NIGHT";
 const unsigned char TEXT_deadlocked2[]="DEADLOCKED";
 const unsigned char TEXT_fingerdash2[]="FINGERDASH";
@@ -304,6 +305,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//windfall
 	TEXT_years,							//years (gdw cut)
 	0,									//hsaD
+	0,									//repmuJ
 
 
 };
@@ -395,6 +397,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//windfall
 	sizeof(TEXT_years) - 1,				//years (gdw cut)
 	0,									//hsaD
+	0,									//repmuJ
 	
 };
 
@@ -486,6 +489,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_windfall,						//windfall
 	TEXT_GDW,							//years (gdw cut)
 	TEXT_hsad2,							//hsaD
+	TEXT_repmuj2,						//repmuJ
 	
 };
 
@@ -577,6 +581,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_windfall) - 1,						//windfall
 	sizeof(TEXT_GDW) - 1,							//years (gdw cut)
 	sizeof(TEXT_hsad2) - 1,							//hsaD
+	sizeof(TEXT_repmuj2) - 1,						//repmuJ
 	
 };
 
@@ -739,6 +744,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_thefatrat,			//windfall
 	TEXT_dexarson,			//years GDW cut
 	TEXT_mdk,				//hsaD
+	TEXT_waterflame,		//repmuJ
 	
 };
 
@@ -830,6 +836,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_thefatrat) - 1,			//windfall
 	sizeof(TEXT_dexarson) - 1,			//years GDW cut
 	sizeof(TEXT_mdk) - 1,				//hsaD
+	sizeof(TEXT_waterflame) - 1,		//repmuJ
 };
 
 
@@ -921,6 +928,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro,			//windfall
 	TEXT_elangel,				//years GDW cut
 	TEXT_craftyjumper,			//hsaD
+	TEXT_seaglowingpro,			//repmuJ
 };
 
 
@@ -1011,6 +1019,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1,			//windfall
 	sizeof(TEXT_elangel) - 1,				//years GDW cut
 	sizeof(TEXT_craftyjumper) - 1,			//hsaD
+	sizeof(TEXT_seaglowingpro) - 1,			//repmuJ
 };
 
 
@@ -1101,6 +1110,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//windfall
 	0, 										//years GDW cut
 	0, 										//hsaD
+	0, 										//repmuJ
 };
 
 
@@ -1190,6 +1200,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//windfall
 	0, 										//years GDW cut
 	0, 										//hsaD
+	0, 										//repmuJ
 };
 
 const unsigned char* const coveringartists3[] = {
@@ -1279,6 +1290,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//windfall
 	0, 										//years GDW cut
 	0, 										//hsaD
+	0, 										//repmuJ
 };
 
 
@@ -1369,6 +1381,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//windfall
 	0, 										//years GDW cut
 	0, 										//hsaD
+	0, 										//repmuJ
 };
 
 const unsigned char* const coveringartists4[] = {
@@ -1458,6 +1471,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//windfall
 	0, 										//years GDW cut
 	0, 										//hsaD
+	0, 										//repmuJ
 };
 
 
@@ -1548,6 +1562,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//windfall
 	0, 										//years GDW cut
 	0, 										//hsaD
+	0, 										//repmuJ
 };
 
 
@@ -1642,6 +1657,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_windfall,
 	song_years_gdw_cut,
 	song_hsad,
+	song_repmuj,
 };
 
 
