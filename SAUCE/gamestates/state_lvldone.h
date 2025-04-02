@@ -305,6 +305,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_subtle,						//subtle oddities
 	0,									//the angel
 	0,									//thoughts
+	TEXT_xlevel2text8,					//time machine full
 	TEXT_ultimate,						//ultimate destruction
 	TEXT_youvebeen,						//you've been trolled
 	TEXT_future,						//whats a future funk
@@ -402,6 +403,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_subtle) - 1,			//subtle oddities
 	0,									//the angel
 	0,									//thoughts
+	sizeof(TEXT_xlevel2text8) - 1,		//time machine full
 	sizeof(TEXT_ultimate) - 1,			//ultimate destruction
 	sizeof(TEXT_youvebeen) - 1,			//youve been trolled
 	sizeof(TEXT_future) - 1,			//whats a future funk
@@ -499,6 +501,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_subtle2,						//subtle oddities
 	TEXT_2texteon,						//the angel
 	TEXT_thoughts,						//thoughts
+	TEXT_2textfullversion,				//time machine full
 	TEXT_ultimate2,						//ultimate destruction
 	TEXT_youvebeen2,					//you've been trolled
 	TEXT_future2,						//whats a future funk
@@ -596,6 +599,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_subtle2) - 1,						//subtle oddities
 	sizeof(TEXT_2texteon) - 1,						//the angel
 	sizeof(TEXT_thoughts) - 1,						//thoughts
+	sizeof(TEXT_2textfullversion) - 1,				//time machine full
 	sizeof(TEXT_ultimate2) - 1,						//ultimate destruction
 	sizeof(TEXT_youvebeen2) - 1,					//you've been trolled
 	sizeof(TEXT_future2) - 1,						//whats a future funk
@@ -765,6 +769,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_lemondemon,		//subtle oddities
 	TEXT_cacola,			//the angel
 	TEXT_craftyjumper,		//thoughts
+	TEXT_waterflame,		//time machine full
 	TEXT_tmm43,				//ultimate destruction
 	TEXT_theclydecash,		//you've been trolled
 	TEXT_lemkuuja,			//what's a future funk
@@ -862,6 +867,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_lemondemon) - 1,		//subtle oddities
 	sizeof(TEXT_cacola) - 1,			//the angel
 	sizeof(TEXT_craftyjumper) - 1,		//thoughts
+	sizeof(TEXT_waterflame) - 1,		//time machine full
 	sizeof(TEXT_tmm43) - 1,				//ultimate destruction
 	sizeof(TEXT_theclydecash) - 1,		//you've been trolled
 	sizeof(TEXT_lemkuuja) - 1,			//what's a future funk
@@ -959,6 +965,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_dwedit,				//subtle oddities
 	TEXT_elangel,				//the angel
 	TEXT_craftyjumper,			//thoughts
+	TEXT_craftyjumper,			//time machine full
 	TEXT_usersniper,			//ultimate destruction
 	TEXT_seaglowingpro,			//you've been trolled
 	TEXT_seaglowingpro,			//what's a future funk
@@ -1055,6 +1062,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_dwedit) - 1,				//subtle oddities
 	sizeof(TEXT_elangel) - 1,				//the angel
 	sizeof(TEXT_craftyjumper) - 1,			//thoughts
+	sizeof(TEXT_craftyjumper) - 1,			//time machine full
 	sizeof(TEXT_usersniper) - 1,			//ultimate destruction
 	sizeof(TEXT_seaglowingpro) - 1,			//you've been trolled
 	sizeof(TEXT_seaglowingpro) - 1,			//what's a future funk
@@ -1151,6 +1159,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//subtle oddities
 	0, 										//the angel
 	0, 										//thoughts
+	TEXT_zenith,							//time machine full
 	0, 										//ultimate destruction
 	0, 										//you've been trolled
 	0, 										//what's a future funk
@@ -1247,6 +1256,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//subtle oddities
 	0, 										//the angel
 	0, 										//thoughts
+	sizeof(TEXT_zenith) - 1, 				//time machine full
 	0, 										//ultimate destruction
 	0, 										//you've been trolled
 	0, 										//what's a future funk
@@ -1342,6 +1352,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//subtle oddities
 	0, 										//the angel
 	0, 										//thoughts
+	TEXT_vikrinox, 							//time machine full
 	0, 										//ultimate destruction
 	0, 										//you've been trolled
 	0, 										//what's a future funk
@@ -1438,6 +1449,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//subtle oddities
 	0, 										//the angel
 	0, 										//thoughts
+	sizeof(TEXT_vikrinox) - 1,				//time machine full
 	0, 										//ultimate destruction
 	0, 										//you've been trolled
 	0, 										//what's a future funk
@@ -1533,6 +1545,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//subtle oddities
 	0, 										//the angel
 	0, 										//thoughts
+	TEXT_alexmush,							//time machine full
 	0, 										//ultimate destruction
 	0, 										//you've been trolled
 	0, 										//what's a future funk
@@ -1629,6 +1642,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//subtle oddities
 	0, 										//the angel
 	0, 										//thoughts
+	sizeof(TEXT_alexmush) - 1,				//time machine full
 	0, 										//ultimate destruction
 	0, 										//you've been trolled
 	0, 										//what's a future funk
@@ -1729,6 +1743,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_subtle_oddities,
 	song_eon,
 	song_thoughts,
+	song_time_machine_full,
 	song_ultimatedestruction,
 	song_youve_been_trolled,
 	song_whats_a_future_funk,
