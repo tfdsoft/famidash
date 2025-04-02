@@ -3,6 +3,7 @@ CODE_BANK_PUSH("LVL_BANK_00")
 void lvl_done_update();
 void mouse_and_cursor();
 void refresh_queue_screen();
+void text_stuff();
 void play_next_queue();
 void update_text1();
 void update_text2();
@@ -43,16 +44,9 @@ void code_checker();
 void check_if_music_stopped();
 void set_fun_settings();
 void checkcointimer(){
-	if (tmp1 == 1){
-		sfx_play(sfx_coin,0);
-		tmp1 = 50;
-	}
 }
 void checkcoinproceed(){
-	if (tmp1 == 0 || tmp1 == 30) {
-		tmp2++;
-		tmp1 = 1;
-	}
+
 }
 
 void state_lvldone() {
@@ -204,21 +198,10 @@ const unsigned char TEXT_sfxtext9[]="INVALID";
 const unsigned char TEXT_sfxtextA[]="ACHIEVEMENT$GET";
 
 const unsigned char* const sfxtexts[] = {
-	TEXT_sfxtext0, TEXT_sfxtext1, TEXT_sfxtext2, TEXT_sfxtext3, TEXT_sfxtext4, TEXT_sfxtext5, TEXT_sfxtext6, TEXT_sfxtext7, TEXT_sfxtext8, TEXT_sfxtext9, TEXT_sfxtextA
 };
 
 const unsigned char sfxtexts_size[] = {
-	sizeof(TEXT_sfxtext0) - 1,
-	sizeof(TEXT_sfxtext1) - 1,
-	sizeof(TEXT_sfxtext2) - 1,
-	sizeof(TEXT_sfxtext3) - 1,
-	sizeof(TEXT_sfxtext4) - 1,
-	sizeof(TEXT_sfxtext5) - 1,
-	sizeof(TEXT_sfxtext6) - 1,
-	sizeof(TEXT_sfxtext7) - 1,
-	sizeof(TEXT_sfxtext8) - 1,
-	sizeof(TEXT_sfxtext9) - 1,
-	sizeof(TEXT_sfxtextA) - 1
+
 };
 
 
@@ -892,7 +875,201 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_waterflame) - 1,		//repmuJ
 };
 
+const unsigned char* const origartists1[] = {
+	0, 										//menu theme
+	0, 										//menu theme 2.2
+	0, 										//stereo madness
+	0, 										//back on track
+	0, 										//polargeist
+	0, 										//dry out
+	0,										//base after base
+	0, 										//can't let go
+	0, 										//jumper
+	0, 										//time machine
+	0, 										//cycles
+	0, 										//xstep
+	0, 										//clutterfunk
+	0,										//theory of everything
+	0, 										//electroman adventures
+	0, 										//clubstep
+	0, 										//electrodynamix
+	0, 										//hexagon force
+	0, 										//blast processing
+	0, 										//theory of everything 2
+	0, 										//geometrical dominator
+	0, 										//deadlocked
+	0, 										//fingerdash
+	0, 										//dash
+	0, 										//the challenge
+	0, 										//practice
+	0, 										//scheming weasel
+	
+	0, 										//8-bit against the odds redux
+	0, 										//accelerate
+	0, 										//at the speed of light 1
+	0, 										//at the speed of light 2
+	0, 										//at the speed of light 3
+	0, 										//at the speed of light full
+	0, 										//back on track full
+	0, 										//beast mode GDW cut
+	0, 										//candyland
+	0, 										//can't electroman
+	0, 										//can't let go remixed
+	0, 										//chaoz fantasy
+	0, 										//chaoz impact
+	0,										//clubstep full
+	0, 										//clutterfunk 2
+	0,										//dash full
+	0, 										//death moon
+	0, 										//driving by night
+	0, 										//dry out full version
+	0, 										//endgame
+	0, 										//fingerbang
+	0, 										//flow
+	0, 										//freedom dive
+	0, 										//glint
+	0, 										//golden haze
+	0, 										//ground to space
+	0, 										//haunted woods
+	0, 										//idols
+	0, 										//infernoplex
+	0, 										//infernoplex full
+	0, 										//isolation
+	0, 										//jack russel
+	0, 										//jumper full version
+	TEXT_dan_harrison,						//just right
+	TEXT_dan_harrison,						//just right full
+	0, 										//kesobomb
+	0, 										//lost
+	0, 										//ludacris speed
+	0, 										//machina GDW cut
+	0, 										//magic touch
+	0, 										//mayhem short ver
+	0, 										//mayhem
+	0, 										//metamorphasis
+	0, 										//midnight
+	0, 										//ninox
+	0, 										//okiba crackdown
+	0, 										//payload GDW cut
+	0, 										//power trip
+	0, 										//problematic
+	0, 										//pyrophoric
+	0, 										//rainbow tylenol
+	0, 										//sonic blaster
+	0, 										//stalemate
+	0, 										//stalemate full
+	0, 										//stereo madness2
+	0, 										//subtle oddities
+	0, 										//the angel
+	0, 										//thoughts
+	0,										//time machine full
+	0, 										//ultimate destruction
+	0, 										//you've been trolled
+	0, 										//what's a future funk
+	0, 										//windfall
+	0, 										//years GDW cut
+	0,										//emeht unem	
+	0, 										//hsaD
+	0, 										//repmuJ
+};
 
+const unsigned char origartists1_size[] = {
+	0, 										//menu theme
+	0, 										//menu theme 2.2
+	0, 										//stereo madness
+	0, 										//back on track
+	0, 										//polargeist
+	0, 										//dry out
+	0,										//base after base
+	0, 										//can't let go
+	0, 										//jumper
+	0, 										//time machine
+	0, 										//cycles
+	0, 										//xstep
+	0, 										//clutterfunk
+	0,										//theory of everything
+	0, 										//electroman adventures
+	0, 										//clubstep
+	0, 										//electrodynamix
+	0, 										//hexagon force
+	0, 										//blast processing
+	0, 										//theory of everything 2
+	0, 										//geometrical dominator
+	0, 										//deadlocked
+	0, 										//fingerdash
+	0, 										//dash
+	0, 										//the challenge
+	0, 										//practice
+	0, 										//scheming weasel
+	
+	0, 										//8-bit against the odds redux
+	0, 										//accelerate
+	0, 										//at the speed of light 1
+	0, 										//at the speed of light 2
+	0, 										//at the speed of light 3
+	0, 										//at the speed of light full
+	0, 										//back on track full
+	0, 										//beast mode GDW cut
+	0, 										//candyland
+	0, 										//can't electroman
+	0, 										//can't let go remixed
+	0, 										//chaoz fantasy
+	0, 										//chaoz impact
+	0,										//clubstep full
+	0, 										//clutterfunk 2
+	0,										//dash full
+	0, 										//death moon
+	0, 										//driving by night
+	0, 										//dry out full version
+	0, 										//endgame
+	0, 										//fingerbang
+	0, 										//flow
+	0, 										//freedom dive
+	0, 										//glint
+	0, 										//golden haze
+	0, 										//ground to space
+	0, 										//haunted woods
+	0, 										//idols
+	0, 										//infernoplex
+	0, 										//infernoplex full
+	0, 										//isolation
+	0, 										//jack russel
+	0, 										//jumper full version
+	sizeof(TEXT_dan_harrison) - 1,			//just right
+	sizeof(TEXT_dan_harrison) - 1,			//just right full
+	0, 										//kesobomb
+	0, 										//lost
+	0, 										//ludacris speed
+	0, 										//machina GDW cut
+	0, 										//magic touch
+	0, 										//mayhem short ver
+	0, 										//mayhem
+	0, 										//metamorphasis
+	0, 										//midnight
+	0, 										//ninox
+	0, 										//okiba crackdown
+	0, 										//payload GDW cut
+	0, 										//power trip
+	0, 										//problematic
+	0, 										//pyrophoric
+	0, 										//rainbow tylenol
+	0, 										//sonic blaster
+	0, 										//stalemate
+	0, 										//stalemate full
+	0, 										//stereo madness2
+	0, 										//subtle oddities
+	0, 										//the angel
+	0, 										//thoughts
+	0,										//time machine full
+	0, 										//ultimate destruction
+	0, 										//you've been trolled
+	0, 										//what's a future funk
+	0, 										//windfall
+	0, 										//years GDW cut
+	0,										//emeht unem	
+	0, 										//hsaD
+	0, 										//repmuJ
+};
 
 const unsigned char* const coveringartists1[] = {
 	TEXT_zenith, 				//menu theme
@@ -1548,8 +1725,8 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//isolation
 	0, 										//jack russel
 	TEXT_usersniper, 						//jumper full version
-	TEXT_dan_harrison,						//just right
-	TEXT_dan_harrison,						//just right full
+	0,										//just right
+	0,										//just right full
 	0, 										//kesobomb
 	0, 										//lost
 	0, 										//ludacris speed
@@ -1647,8 +1824,8 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//isolation
 	0, 										//jack russel
 	sizeof(TEXT_usersniper) - 1,			//jumper full version
-	sizeof(TEXT_dan_harrison) - 1,			//just right
-	sizeof(TEXT_dan_harrison) - 1,			//just right full
+	0,										//just right
+	0,										//just right full
 	0, 										//kesobomb
 	0, 										//lost
 	0, 										//ludacris speed
@@ -1819,6 +1996,21 @@ void bgmtest() {
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 		if (tmp4) refresh_queue_screen();
+		if (tmp5) {
+			__A__ = idx16_load_hi_NOC(coveringartists1, song);
+			if (__A__) draw_padded_text(coveringartists1[song & 0x7F], coveringartists1_size[song], 14, NTADR_A(9, 19));
+			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 19));
+			__A__ = idx16_load_hi_NOC(coveringartists2, song);
+			if (__A__) draw_padded_text(coveringartists2[song & 0x7F], coveringartists2_size[song], 14, NTADR_A(9, 20));
+			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 20));
+			__A__ = idx16_load_hi_NOC(coveringartists3, song);
+			if (__A__) draw_padded_text(coveringartists3[song & 0x7F], coveringartists3_size[song], 14, NTADR_A(9, 21));
+			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 21));
+			__A__ = idx16_load_hi_NOC(coveringartists4, song);
+			if (__A__) draw_padded_text(coveringartists4[song & 0x7F], coveringartists4_size[song], 14, NTADR_A(9, 22));
+			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 22));
+			tmp5 = 0;
+		}
 /*
 		if (mouse.left_press) {
 			if ((mouse.x >= 0x63 && mouse.x <= 0x8C)) {
@@ -1985,19 +2177,7 @@ void refresh_queue_screen() {
 			for (tmp1 = 4; tmp1 < 6; tmp1++) {			//limited to 5??
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			if (music_queue[tmp1] != 0xFF) {
-				tmp3 = music_queue[tmp1];
-				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
-				if (__A__) { 
-					multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(3, (13 + (tmp1))));
-					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((4 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
-				}
-				else {
-					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(3, (13 + (tmp1))));
-					multi_vram_buffer_horz(blanktext2, 7, NTADR_A((3 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
-
-				}				
+				text_stuff();			
 			}
 			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			tmp4 = 4;
@@ -2007,19 +2187,7 @@ void refresh_queue_screen() {
 			for (tmp1 = 6; tmp1 < 8; tmp1++) {			//limited to 5??
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			if (music_queue[tmp1] != 0xFF) {
-				tmp3 = music_queue[tmp1];
-				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
-				if (__A__) { 
-					multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(3, (13 + (tmp1))));
-					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((4 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
-				}
-				else {
-					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(3, (13 + (tmp1))));
-					multi_vram_buffer_horz(blanktext2, 7, NTADR_A((3 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
-
-				}				
+				text_stuff();			
 			}
 			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			tmp4 = 5;
@@ -2029,19 +2197,7 @@ void refresh_queue_screen() {
 			for (tmp1 = 8; tmp1 < 10; tmp1++) {			//limited to 5??
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			if (music_queue[tmp1] != 0xFF) {
-				tmp3 = music_queue[tmp1];
-				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
-				if (__A__) { 
-					multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(3, (13 + (tmp1))));
-					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((4 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
-				}
-				else {
-					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(3, (13 + (tmp1))));
-					multi_vram_buffer_horz(blanktext2, 7, NTADR_A((3 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
-
-				}				
+				text_stuff();			
 			}
 			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			}
@@ -2175,25 +2331,14 @@ void update_text1() {
 	if (__A__) draw_padded_text(xbgmtexts2[song & 0x7F], xbgmtext2_size[song], 14, NTADR_A(9, 8));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 8));
 	
-//	__A__ = idx16_load_hi_NOC(origartists1, song);
-//	if (__A__) draw_padded_text(origartists1[song & 0x7F], origartists1_size[song], 17, NTADR_A(7, 14));
-//	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 14));
+	__A__ = idx16_load_hi_NOC(origartists1, song);
+	if (__A__) draw_padded_text(origartists1[song & 0x7F], origartists1_size[song], 14, NTADR_A(9, 14));
+	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 14));
 	__A__ = idx16_load_hi_NOC(origartists2, song);
 	if (__A__) draw_padded_text(origartists2[song & 0x7F], origartists2_size[song], 14, NTADR_A(9, 13));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 13));
-	
-	__A__ = idx16_load_hi_NOC(coveringartists1, song);
-	if (__A__) draw_padded_text(coveringartists1[song & 0x7F], coveringartists1_size[song], 14, NTADR_A(9, 19));
-	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 19));
-	__A__ = idx16_load_hi_NOC(coveringartists2, song);
-	if (__A__) draw_padded_text(coveringartists2[song & 0x7F], coveringartists2_size[song], 14, NTADR_A(9, 20));
-	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 20));
-	__A__ = idx16_load_hi_NOC(coveringartists3, song);
-	if (__A__) draw_padded_text(coveringartists3[song & 0x7F], coveringartists3_size[song], 14, NTADR_A(9, 21));
-	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 21));
-	__A__ = idx16_load_hi_NOC(coveringartists4, song);
-	if (__A__) draw_padded_text(coveringartists4[song & 0x7F], coveringartists4_size[song], 14, NTADR_A(9, 22));
-	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 22));
+
+	tmp5 = 1;
 }	
 
 void update_text3() {
@@ -2228,19 +2373,7 @@ void update_text2() {
 	for (tmp1 = 0; tmp1 < 2; tmp1++) {			//limited to 5??
 		if (music_queue[tmp1] != 0xFF) {
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			tmp3 = music_queue[tmp1];
-			__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
-			if (__A__) { 
-				multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(3, (13 + (tmp1))));
-				__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-				multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((4 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
-			}
-			else {
-				__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
-				multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(3, (13 + (tmp1))));
-				multi_vram_buffer_horz(blanktext2, 7, NTADR_A((3 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
-
-			}				
+			text_stuff();
 		}
 		else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 	}	
@@ -2278,6 +2411,23 @@ void check_if_music_stopped() {
 		}
 	}
 }	
+
+
+void text_stuff() {
+				tmp3 = music_queue[tmp1];
+				__A__ = idx16_load_hi_NOC(xbgmtexts1, tmp3);
+				if (__A__) { 
+					multi_vram_buffer_horz(xbgmtexts1[tmp3 & 0x7F], xbgmtext1_size[tmp3], NTADR_A(3, (13 + (tmp1))));
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A((4 + xbgmtext1_size[tmp3]), (13 + (tmp1))));
+				}
+				else {
+					__A__ = idx16_load_hi_NOC(xbgmtexts2, tmp3);
+					multi_vram_buffer_horz(xbgmtexts2[tmp3 & 0x7F], xbgmtext2_size[tmp3], NTADR_A(3, (13 + (tmp1))));
+					multi_vram_buffer_horz(blanktext2, 7, NTADR_A((3 + xbgmtext2_size[tmp3]), (13 + (tmp1))));
+
+				}	
+}				
 
 CODE_BANK_POP()
 
