@@ -262,6 +262,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//chaoz impact
 	TEXT_2textclubstep,					//clubstep full version
 	0,									//clutterfunk 2
+	TEXT_dash2,							//dash full
 	0,									//death moon
 	TEXT_driving,						//driving by midnight
 	0,									//endgame
@@ -355,6 +356,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//chaoz impact
 	sizeof(TEXT_2textclubstep) - 1,		//clubstep full
 	0,									//clutterfunk 2
+	sizeof(TEXT_dash2) - 1,				//dash full
 	0,									//death moon
 	sizeof(TEXT_driving) - 1,			//driving by midnight
 	0,									//endgame
@@ -448,6 +450,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_speedracer,					//chaoz impact
 	TEXT_2textfullversion,				//clubstep full
 	TEXT_2clutterfunk2,					//clutterfunk 2
+	TEXT_2textfullversion,				//dash full
 	TEXT_2deathmoon,					//death moon
 	TEXT_driving2,						//driving by night
 	TEXT_xlevel2textE,					//endgame
@@ -541,6 +544,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_speedracer) - 1,					//chaoz impact
 	sizeof(TEXT_2textfullversion) - 1,				//clubstep full
 	sizeof(TEXT_2clutterfunk2) - 1,					//clutterfunk 2
+	sizeof(TEXT_2textfullversion) - 1,				//dash full
 	sizeof(TEXT_2deathmoon) - 1,					//death moon
 	sizeof(TEXT_driving2) - 1,						//driving by midnight
 	sizeof(TEXT_xlevel2textE) - 1,					//endgame
@@ -705,6 +709,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_paragonx9,			//chaoz impact
 	TEXT_djnate,			//clubstep full
 	TEXT_waterflame,		//clutterfunk 2
+	TEXT_mdk,				//dash full
 	TEXT_soundholick,		//death moon
 	TEXT_reinn,				//driving by night
 	TEXT_waterflame, 		//endgame
@@ -798,6 +803,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_paragonx9) - 1,			//chaoz impact
 	sizeof(TEXT_djnate) - 1,			//clubstep full
 	sizeof(TEXT_waterflame) - 1,		//clutterfunk 2
+	sizeof(TEXT_mdk) - 1,				//dash full
 	sizeof(TEXT_soundholick) - 1,		//death moon
 	sizeof(TEXT_reinn) - 1,				//driving by night
 	sizeof(TEXT_waterflame) - 1, 		//endgame
@@ -891,6 +897,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel,				//chaoz impact
 	TEXT_seaglowingpro,			//clubstep full
 	TEXT_cloud54,				//clutterfunk 2
+	TEXT_craftyjumper,			//dash full
 	TEXT_elangel,				//death moon
 	TEXT_nerdboy,				//driving by night
 	TEXT_vikrinox, 				//endgame
@@ -983,6 +990,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1,				//chaoz impact
 	sizeof(TEXT_seaglowingpro) - 1,			//clubstep full
 	sizeof(TEXT_cloud54) - 1,				//clutterfunk 2
+	sizeof(TEXT_craftyjumper) - 1,			//dash full
 	sizeof(TEXT_elangel) - 1,				//death moon
 	sizeof(TEXT_nerdboy) - 1,				//driving by night
 	sizeof(TEXT_vikrinox) - 1, 				//endgame
@@ -1075,6 +1083,7 @@ const unsigned char* const coveringartists2[] = {
 	0,										//chaoz impact
 	0,										//clubstep full
 	0,										//clutterfunk 2
+	0,										//dash full
 	0,										//death moon
 	0,										//driving by night
 	0, 										//endgame
@@ -1167,6 +1176,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//chaoz impact
 	0,										//clubstep full
 	0, 										//clutterfunk 2
+	0,										//dash full
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
@@ -1258,6 +1268,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//chaoz impact
 	0,										//clubstep full
 	0, 										//clutterfunk 2
+	0,										//dash full
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
@@ -1350,6 +1361,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//chaoz impact
 	0,										//clubstep full
 	0, 										//clutterfunk 2
+	0,										//dash full
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
@@ -1441,6 +1453,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//chaoz impact
 	0,										//clubstep full
 	0, 										//clutterfunk 2
+	0,										//dash full
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
@@ -1533,6 +1546,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//chaoz impact
 	0,										//clubstep full
 	0, 										//clutterfunk 2
+	0,										//dash full
 	0, 										//death moon
 	0, 										//driving by night
 	0, 										//endgame
@@ -1629,6 +1643,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_chaoz_impact,
 	song_clubstep_full,
 	song_clutterfunk_2,
+	song_dash_full,
 	song_death_moon,
 	song_driving_by_night,
 	song_endgame,
