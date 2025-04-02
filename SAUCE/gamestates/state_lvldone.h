@@ -184,6 +184,7 @@ const unsigned char TEXT_thoughts[]="THOUGHTS";
 const unsigned char TEXT_youvebeen[]="YOUVE$BEEN";
 const unsigned char TEXT_youvebeen2[]="TROLLED";
 const unsigned char TEXT_kesobomb[]="KESOBOMB";
+const unsigned char TEXT_sonicblaster[]="SONIC$BLASTER";
 
 const unsigned char TEXT_hsad2[]="HSAD";
 const unsigned char TEXT_repmuj2[]="REPMUJ";
@@ -301,6 +302,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//problematic
 	0,									//pyrophoric
 	TEXT_rainbowt,						//rainbow tylenol
+	0,									//sonic blaster
 	0,									//stalemate
 	TEXT_2textstalemate,				//stalemate full version
 	TEXT_xlevel1text1,					//stereo madness 2
@@ -400,6 +402,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//problematic
 	0,									//pyrophoric
 	sizeof(TEXT_rainbowt) - 1,			//rainbow tylenol
+	0,									//sonic blaster
 	0,									//stalemate
 	sizeof(TEXT_2textstalemate) - 1,	//stalemate full version
 	sizeof(TEXT_xlevel1text1) - 1,		//stereo madness 2
@@ -499,6 +502,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textproblematic,				//problematic
 	TEXT_pyrophoric,					//pyrophoric
 	TEXT_rainbowt2,						//rainbow tylenol
+	TEXT_sonicblaster,					//sonic blaster
 	TEXT_2textstalemate,				//stalemate
 	TEXT_2textfullversion,				//stalemate full version
 	TEXT_2textstereo,					//stereo madness 2
@@ -598,6 +602,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textproblematic) - 1,				//problematic
 	sizeof(TEXT_pyrophoric) - 1,					//pyrophoric
 	sizeof(TEXT_rainbowt2) - 1,						//rainbow tylenol
+	sizeof(TEXT_sonicblaster) - 1,					//sonic blaster
 	sizeof(TEXT_2textstalemate) - 1,				//stalemate
 	sizeof(TEXT_2textfullversion) - 1,				//stalemate full version
 	sizeof(TEXT_2textstereo) - 1,					//stereo madness 2
@@ -769,6 +774,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_nk,				//problematic
 	TEXT_nerdboy,			//pyrophoric
 	TEXT_kitsune,			//rainbow tylenol
+	TEXT_f777,				//sonic blaster
 	TEXT_kayoszx,			//stalemate
 	TEXT_kayoszx,			//stalemate full
 	TEXT_foreverbound,		//stereo madness2
@@ -868,6 +874,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_nk) - 1,				//problematic
 	sizeof(TEXT_nerdboy) - 1,			//pyrophoric
 	sizeof(TEXT_kitsune) - 1,			//rainbow tylenol
+	sizeof(TEXT_f777) - 1,				//sonic blaster
 	sizeof(TEXT_kayoszx) - 1,			//stalemate
 	sizeof(TEXT_kayoszx) - 1,			//stalemate full
 	sizeof(TEXT_foreverbound) - 1,		//stereo madness2
@@ -967,6 +974,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel,				//problematic
 	TEXT_nerdboy,				//pyrophoric
 	TEXT_clickerty,				//rainbow tylenol
+	TEXT_elangel,				//sonic blaster
 	TEXT_elangel,				//stalemate
 	TEXT_elangel,				//stalemate full
 	TEXT_elangel,				//stereo madness2
@@ -1065,6 +1073,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1,				//problematic
 	sizeof(TEXT_nerdboy) - 1,				//pyrophoric
 	sizeof(TEXT_clickerty) - 1,				//rainbow tylenol
+	sizeof(TEXT_elangel) - 1,				//sonic blaster
 	sizeof(TEXT_elangel) - 1,				//stalemate
 	sizeof(TEXT_elangel) - 1,				//stalemate full
 	sizeof(TEXT_elangel) - 1,				//stereo madness2
@@ -1163,6 +1172,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//sonic blaster
 	0, 										//stalemate
 	TEXT_seaglowingpro,						//stalemate full
 	0, 										//stereo madness2
@@ -1261,6 +1271,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//sonic blaster
 	0, 										//stalemate
 	sizeof(TEXT_seaglowingpro) - 1,			//stalemate full
 	0, 										//stereo madness2
@@ -1358,6 +1369,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
@@ -1456,6 +1468,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
@@ -1553,6 +1566,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
@@ -1651,6 +1665,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
@@ -1753,6 +1768,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_problematic,
 	song_pyrophoric,
 	song_rainbow_tylenol,
+	song_sonic_blaster,
 	song_stalemate,
 	song_stalemate_full,
 	song_stereo_madness_2,
