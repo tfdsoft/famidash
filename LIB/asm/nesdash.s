@@ -903,7 +903,7 @@ write_start:
 	jsr RenderParallaxLoop
 	
 	; move to the next scroll column for next frame
-	jsr _increase_parallax_scroll_column
+;	jsr _increase_parallax_scroll_column
 
 	; Demarkate end of write
 	LDX VRAM_INDEX
@@ -1679,43 +1679,6 @@ ntAddrHiTbl:
 .endproc
 
 ; void movement();
-.segment "XCD_BANK_01"
-
-.import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _wave_movement
-.import _retro_mode
-
-.export _movement
-.proc _movement
-	LDX _gamemode
-	CPX #<gamemode_count
-	BCS end
-	lda _retro_mode
-	beq @no1
-	lda _gamemode
-	cmp #1
-	bne	@no1
-		; LDA #<_ufo_movement
-		; STA <PTR
-		; LDA #>_ufo_movement
-		; STA <PTR+1
-		; JMP (PTR)	
-		JMP _ufo_movement
-	
-	@no1:
-		LDA jump_table_hi, X
-		PHA
-		LDA jump_table_lo, X
-		PHA
-
-	end:
-		RTS     ; break or use the RTS trick
-
-	jump_table_lo:
-		.byte <(_cube_movement-1), <(_ship_movement-1), <(_ball_movement-1), <(_ufo_movement-1), <(_cube_movement-1), <(_spider_movement-1), <(_wave_movement-1), <(_ball_movement-1), <(_cube_movement-1)
-	jump_table_hi:
-		.byte >(_cube_movement-1), >(_ship_movement-1), >(_ball_movement-1), >(_ufo_movement-1), >(_cube_movement-1), >(_spider_movement-1), >(_wave_movement-1), >(_ball_movement-1), >(_cube_movement-1)
-
-.endproc
 
 ; void __fastcall__ music_play(uint8_t song);
 .segment "CODE_2"

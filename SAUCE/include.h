@@ -66,7 +66,7 @@
 
 #include "METATILES/metatiles.h"  // metatile defines
 #include "defines/sprites.h"    // metasprite defines
-#include "functions/sprite_loading.h"
+//#include "functions/sprite_loading.h"
 
 #pragma rodata-name (push, "XCD_BANK_03")
 #include "defines/menutext.h" // menu text. obviously.
@@ -76,12 +76,12 @@
 #pragma rodata-name (pop)
 
 //#include "functions/fade_timer.h"
-#include "functions/reset_game_vars.h"
-#include "functions/draw_sprites.h"  // sproit drawlign
-#include "functions/level_loading.h"  // goofy ass screen drawing routines
-#include "functions/scroll.h"
-#include "functions/collision.h"  // collision
-#include "functions/reset_level.h"  // reset the stage
+//#include "functions/reset_game_vars.h"
+//#include "functions/draw_sprites.h"  // sproit drawlign
+//#include "functions/level_loading.h"  // goofy ass screen drawing routines
+//#include "functions/scroll.h"
+//#include "functions/collision.h"  // collision
+//#include "functions/reset_level.h"  // reset the stage
 
 
 
@@ -90,14 +90,14 @@
 
 
 // THE GAME MODE DEFINES //
-#include "functions/x_movement.h"
+//#include "functions/x_movement.h"
 
-#include "gamemodes/gamemode_ufo.h"
-#include "gamemodes/gamemode_ball.h"
-#include "gamemodes/gamemode_cube.h"
-#include "gamemodes/gamemode_ship.h"
-#include "gamemodes/gamemode_spider.h"
-#include "gamemodes/gamemode_wave.h"
+//#include "gamemodes/gamemode_ufo.h"
+//#include "gamemodes/gamemode_ball.h"
+//#include "gamemodes/gamemode_cube.h"
+//#include "gamemodes/gamemode_ship.h"
+//#include "gamemodes/gamemode_spider.h"
+//#include "gamemodes/gamemode_wave.h"
 
 // THE GAME STATE DEFINES //
 

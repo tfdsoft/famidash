@@ -1,10 +1,10 @@
 
-CODE_BANK_PUSH("XCD_BANK_02")
+CODE_BANK_PUSH("XCD_BANK_01")
 
 void mouse_and_cursor();
 void check_if_music_stopped_3();
 void savefile_reset_check_loop(){
-        setdefaultoptions();
+//        setdefaultoptions();
 }
 
 void state_savefile_validate(){
@@ -51,7 +51,8 @@ void state_savefile_validate(){
     // if poweroff check is not zero //
 
  //   if (poweroffcheck) {
-        ppu_off();
+/*  
+  ppu_off();
         pal_bright(0);
         include_nested_dialog_string(dialogBox_saveFileSafetyHeader);
         draw_dialog_box(dialogBox_pleasePressB);
@@ -72,6 +73,7 @@ void state_savefile_validate(){
 		    if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
         } while (1);
  //   }
+ */
     pal_bright(3);
     pal_fade_to(3,0);
 
