@@ -279,6 +279,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_2textinfernoplex,				//infernoplex full
 	0,									//isolation
 	0,									//jack russel
+	TEXT_xlevel2text7,					//jumper full ver
 	0,									//just right
 	TEXT_2textjustright,				//just right full
 	0,									//kesobomb
@@ -374,6 +375,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_2textinfernoplex) - 1,	//infernoplex full
 	0,									//isolation
 	0,									//jack russel
+	sizeof(TEXT_xlevel2text7) - 1,		//jumper full ver
 	0,									//just right
 	sizeof(TEXT_2textjustright) - 1,	//just right full
 	0,									//kesobomb
@@ -469,6 +471,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textfullversion,				//infernoplex full version
 	TEXT_isolation,						//isolation
 	TEXT_jackrussel,					//jack russel
+	TEXT_2textfullversion,				//jumper full ver
 	TEXT_2textjustright,				//just right
 	TEXT_2textfullversion,				//just right full ver
 	TEXT_kesobomb,						//kesobomb
@@ -562,8 +565,9 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_idols) - 1,							//idols
 	sizeof(TEXT_2textinfernoplex) - 1,				//infernoplex
 	sizeof(TEXT_2textfullversion) - 1,				//infernoplex full version
-	sizeof(TEXT_isolation) - 1,					//isolation
+	sizeof(TEXT_isolation) - 1,						//isolation
 	sizeof(TEXT_jackrussel) - 1,					//jack russel
+	sizeof(TEXT_2textfullversion) - 1,				//jumper full version
 	sizeof(TEXT_2textjustright) - 1,				//just right
 	sizeof(TEXT_2textfullversion) - 1,				//just right full ver
 	sizeof(TEXT_kesobomb) - 1,						//kesobomb
@@ -730,6 +734,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_dimrain47, 		//infernoplex full
 	TEXT_nighthawk22,		//isolation
 	TEXT_bossfight,			//jack russel
+	TEXT_waterflame,		//jumper full version
 	TEXT_tessaviolet,		//just right
 	TEXT_tessaviolet,		//just right full
 	TEXT_rymdkraft,			//kesobomb
@@ -825,6 +830,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_dimrain47) - 1, 		//infernoplex full
 	sizeof(TEXT_nighthawk22) - 1,		//isolation
 	sizeof(TEXT_bossfight) - 1,			//jack russel
+	sizeof(TEXT_waterflame) - 1,		//jumper full version
 	sizeof(TEXT_tessaviolet) - 1,		//just right
 	sizeof(TEXT_tessaviolet) - 1,		//just right full
 	sizeof(TEXT_rymdkraft) - 1,			//kesobomb
@@ -920,6 +926,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_cloud54, 				//infernoplex full
 	TEXT_craftyjumper,			//isolation
 	TEXT_nerdboy,				//jack russel
+	TEXT_seaglowingpro,			//jumper full version
 	TEXT_seaglowingpro,			//just right
 	TEXT_seaglowingpro,			//just right full
 	TEXT_nerdboy,				//kesobomb
@@ -1014,6 +1021,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_cloud54) - 1, 				//infernoplex full
 	sizeof(TEXT_craftyjumper) - 1,			//isolation
 	sizeof(TEXT_nerdboy) - 1,				//jack russel
+	sizeof(TEXT_seaglowingpro) - 1,			//jumper full version
 	sizeof(TEXT_seaglowingpro) - 1,			//just right
 	sizeof(TEXT_seaglowingpro) - 1,			//just right full
 	sizeof(TEXT_nerdboy) - 1,				//kesobomb
@@ -1108,6 +1116,7 @@ const unsigned char* const coveringartists2[] = {
 	TEXT_seaglowingpro, 					//infernoplex full
 	0, 										//isolation
 	0, 										//jack russel
+	TEXT_zenith,							//jumper full version
 	TEXT_elangel,							//just right
 	TEXT_elangel,							//just right full
 	0, 										//kesobomb
@@ -1202,6 +1211,7 @@ const unsigned char coveringartists2_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1, 		//infernoplex full
 	0, 										//isolation
 	0,										//jack russel
+	sizeof(TEXT_zenith) - 1,				//jumper full version
 	sizeof(TEXT_elangel) - 1,				//just right
 	sizeof(TEXT_elangel) - 1,				//just right full
 	0, 										//kesobomb
@@ -1295,6 +1305,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//infernoplex full
 	0, 										//isolation
 	0, 										//jack russel
+	TEXT_zukinnyk, 							//jumper full version
 	0, 										//just right
 	0, 										//just right full
 	0, 										//kesobomb
@@ -1389,6 +1400,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//infernoplex full
 	0, 										//isolation
 	0, 										//jack russel
+	sizeof(TEXT_zukinnyk) - 1,				//jumper full version
 	0, 										//just right
 	0, 										//just right full
 	0, 										//kesobomb
@@ -1482,6 +1494,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//infernoplex full
 	0, 										//isolation
 	0, 										//jack russel
+	TEXT_usersniper, 						//jumper full version
 	TEXT_dan_harrison,						//just right
 	TEXT_dan_harrison,						//just right full
 	0, 										//kesobomb
@@ -1576,6 +1589,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//infernoplex full
 	0, 										//isolation
 	0, 										//jack russel
+	sizeof(TEXT_usersniper) - 1,			//jumper full version
 	sizeof(TEXT_dan_harrison) - 1,			//just right
 	sizeof(TEXT_dan_harrison) - 1,			//just right full
 	0, 										//kesobomb
@@ -1674,6 +1688,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_infernoplex_full,
 	song_isolation,
 	song_jack_russel,
+	song_jumper_full,
 	song_just_right,
 	song_just_right_full,
 	song_kesobomb,
