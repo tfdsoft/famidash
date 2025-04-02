@@ -1181,6 +1181,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//infernoplex
 	sizeof(TEXT_seaglowingpro) - 1, 		//infernoplex full
 	0, 										//isolation
+	0,										//jack russel
 	sizeof(TEXT_elangel) - 1,				//just right
 	sizeof(TEXT_elangel) - 1,				//just right full
 	0, 										//kesobomb
