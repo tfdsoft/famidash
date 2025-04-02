@@ -180,6 +180,7 @@ const unsigned char TEXT_youvebeen2[]="TROLLED";
 const unsigned char TEXT_kesobomb[]="KESOBOMB";
 const unsigned char TEXT_sonicblaster[]="SONIC$BLASTER";
 const unsigned char TEXT_xo[]="XO";
+const unsigned char TEXT_kratos[]="KRATOS";
 
 const unsigned char TEXT_hsad2[]="HSAD";
 const unsigned char TEXT_repmuj2[]="REPMUJ";
@@ -271,6 +272,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//just right
 	TEXT_2textjustright,				//just right full
 	0,									//kesobomb
+	0,									//kratos
 	0,									//lost
 	TEXT_ludicrous,						//ludicrous speed
 	TEXT_machina,						//machina (gdw cut)
@@ -372,6 +374,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//just right
 	sizeof(TEXT_2textjustright) - 1,	//just right full
 	0,									//kesobomb
+	0,									//kratos
 	0,									//lost
 	sizeof(TEXT_ludicrous) - 1,			//ludicrous speed
 	sizeof(TEXT_machina) - 1,			//Machina (GDW cut)
@@ -473,6 +476,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textjustright,				//just right
 	TEXT_2textfullversion,				//just right full ver
 	TEXT_kesobomb,						//kesobomb
+	TEXT_kratos,						//kratos
 	TEXT_2textlost,						//lost
 	TEXT_ludicrous2,					//ludicrous speed
 	TEXT_GDW,							//machina (gdw cut)
@@ -574,6 +578,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textjustright) - 1,				//just right
 	sizeof(TEXT_2textfullversion) - 1,				//just right full ver
 	sizeof(TEXT_kesobomb) - 1,						//kesobomb
+	sizeof(TEXT_kratos) - 1,						//kratos
 	sizeof(TEXT_2textlost) - 1,						//lost
 	sizeof(TEXT_ludicrous2) - 1,					//ludicrous speed
 	sizeof(TEXT_GDW) - 1,							//machina (gdw cut)
@@ -660,6 +665,7 @@ const unsigned char TEXT_gdcolon[]="GD$COLON";
 const unsigned char TEXT_nighthawk22[]="NIGHTHAWK22";
 const unsigned char TEXT_aaron[]="AARON";
 const unsigned char TEXT_musselwhite[]="MUSSELWHITE";
+const unsigned char TEXT_shappy[]="SHAPPY";
 
 
 const unsigned char TEXT_seaglowingpro[]="SEAGLOWINGPRO";
@@ -749,6 +755,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_tessaviolet,		//just right
 	TEXT_tessaviolet,		//just right full
 	TEXT_rymdkraft,			//kesobomb
+	TEXT_shappy,			//kratos
 	TEXT_crim3s, 			//lost
 	TEXT_f777,				//ludacris speed
 	TEXT_dexarson,			//machina GDW cut
@@ -850,6 +857,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_tessaviolet) - 1,		//just right
 	sizeof(TEXT_tessaviolet) - 1,		//just right full
 	sizeof(TEXT_rymdkraft) - 1,			//kesobomb
+	sizeof(TEXT_shappy) - 1,			//kratos
 	sizeof(TEXT_crim3s) - 1, 			//lost
 	sizeof(TEXT_f777) - 1,				//ludacris speed
 	sizeof(TEXT_dexarson) - 1,			//machina GDW cut
@@ -949,6 +957,7 @@ const unsigned char* const origartists1[] = {
 	TEXT_dan_harrison,						//just right
 	TEXT_dan_harrison,						//just right full
 	0, 										//kesobomb
+	0, 										//kratos
 	0, 										//lost
 	0, 										//ludacris speed
 	0, 										//machina GDW cut
@@ -1048,6 +1057,7 @@ const unsigned char origartists1_size[] = {
 	sizeof(TEXT_dan_harrison) - 1,			//just right
 	sizeof(TEXT_dan_harrison) - 1,			//just right full
 	0, 										//kesobomb
+	0, 										//kratos
 	0, 										//lost
 	0, 										//ludacris speed
 	0, 										//machina GDW cut
@@ -1147,6 +1157,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro,			//just right
 	TEXT_seaglowingpro,			//just right full
 	TEXT_nerdboy,				//kesobomb
+	TEXT_seaglowingpro, 		//kratos
 	TEXT_seaglowingpro, 		//lost
 	TEXT_elangel,				//ludacris speed
 	TEXT_elangel,				//machina GDW cut
@@ -1247,6 +1258,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1,			//just right
 	sizeof(TEXT_seaglowingpro) - 1,			//just right full
 	sizeof(TEXT_nerdboy) - 1,				//kesobomb
+	sizeof(TEXT_seaglowingpro) - 1, 		//kratos
 	sizeof(TEXT_seaglowingpro) - 1, 		//lost
 	sizeof(TEXT_elangel) - 1,				//ludacris speed
 	sizeof(TEXT_elangel) - 1,				//machina GDW cut
@@ -1347,6 +1359,7 @@ const unsigned char* const coveringartists2[] = {
 	TEXT_elangel,							//just right
 	TEXT_elangel,							//just right full
 	0, 										//kesobomb
+	0, 										//kratos
 	0, 										//lost
 	0, 										//ludacris speed
 	0, 										//machina GDW cut
@@ -1447,6 +1460,7 @@ const unsigned char coveringartists2_size[] = {
 	sizeof(TEXT_elangel) - 1,				//just right
 	sizeof(TEXT_elangel) - 1,				//just right full
 	0, 										//kesobomb
+	0, 										//kratos
 	0, 										//lost
 	0, 										//ludacris speed
 	0, 										//machina GDW cut
@@ -1546,6 +1560,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//just right
 	0, 										//just right full
 	0, 										//kesobomb
+	0, 										//kratos
 	0, 										//lost
 	0, 										//ludacris speed
 	0, 										//machina GDW cut
@@ -1646,6 +1661,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//just right
 	0, 										//just right full
 	0, 										//kesobomb
+	0, 										//kratos
 	0, 										//lost
 	0, 										//ludacris speed
 	0, 										//machina GDW cut
@@ -1745,6 +1761,7 @@ const unsigned char* const coveringartists4[] = {
 	0,										//just right
 	0,										//just right full
 	0, 										//kesobomb
+	0, 										//kratos
 	0, 										//lost
 	0, 										//ludacris speed
 	0, 										//machina GDW cut
@@ -1845,6 +1862,7 @@ const unsigned char coveringartists4_size[] = {
 	0,										//just right
 	0,										//just right full
 	0, 										//kesobomb
+	0, 										//kratos
 	0, 										//lost
 	0, 										//ludacris speed
 	0, 										//machina GDW cut
@@ -1949,6 +1967,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_just_right,
 	song_just_right_full,
 	song_kesobomb,
+	song_kratos,
 	song_lost,
 	song_ludicrous_speed,
 	song_machina_gdw_cut,
