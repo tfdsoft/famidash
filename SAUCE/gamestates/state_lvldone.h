@@ -83,6 +83,7 @@ const unsigned char TEXT_geometrical[]="GEOMETRICAL";
 const unsigned char TEXT_driving[]="DRIVING$BY";
 const unsigned char TEXT_ultimate[]="ULTIMATE";
 const unsigned char TEXT_ultimate2[]="DESTRUCTION";
+const unsigned char TEXT_trackfull[]="TRACK$FULL";
 
 
 const unsigned char TEXT_xlevel2text1[]="MADNESS";
@@ -255,6 +256,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_speed,							//at the speed of light pt 2
 	TEXT_speed,							//at the speed of light pt 3
 	TEXT_speed,							//at the speed of light full
+	TEXT_xlevel1text2,					//back on track full
 	TEXT_beastmode,						//beast mode (gdw cut)
 	0,									//candyland
 	TEXT_cantelectroman,				//can't electroman
@@ -353,6 +355,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_speed) - 1,				//at the speed of light pt 2
 	sizeof(TEXT_speed) - 1,				//at the speed of light pt 3
 	sizeof(TEXT_speed) - 1,				//at the speed of light full
+	sizeof(TEXT_xlevel1text2) - 1,		//back on track full
 	sizeof(TEXT_beastmode) - 1,			//beast mode (gdw cut)
 	0,									//candyland
 	sizeof(TEXT_cantelectroman) - 1,	//can't electroman
@@ -451,6 +454,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textspeed2,					//at the speed of light pt 2
 	TEXT_2textspeed3,					//at the speed of light pt 3
 	TEXT_2textspeedfull,				//at the speed of light full
+	TEXT_trackfull,						//back on track full
 	TEXT_GDW,							//beast mode (gdw cut)
 	TEXT_candyland,						//candyland
 	TEXT_xlevel1textD,					//can't electroman
@@ -549,6 +553,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textspeed2) - 1,					//at the speed of light pt 2
 	sizeof(TEXT_2textspeed3) - 1,					//at the speed of light pt 3
 	sizeof(TEXT_2textspeedfull) - 1,				//at the speed of light full
+	sizeof(TEXT_trackfull) - 1,						//back on track full
 	sizeof(TEXT_GDW) - 1,							//beast mode (gdw cut)
 	sizeof(TEXT_candyland) - 1,						//candyland
 	sizeof(TEXT_xlevel1textD) - 1,					//can't electroman
@@ -719,6 +724,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_dimrain47, 		//at the speed of light 2
 	TEXT_dimrain47, 		//at the speed of light 3
 	TEXT_dimrain47, 		//at the speed of light full
+	TEXT_djvi,				//back on track full
 	TEXT_dexarson,			//beast mode GDW cut
 	TEXT_tobu,				//candyland
 	TEXT_djvi,				//can't electroman
@@ -817,6 +823,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light 2
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light 3
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light full
+	sizeof(TEXT_djvi) - 1,				//back on track full
 	sizeof(TEXT_dexarson) - 1,			//beast mode GDW cut
 	sizeof(TEXT_tobu) - 1,				//candyland
 	sizeof(TEXT_djvi) - 1,				//can't electroman
@@ -915,6 +922,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel, 				//at the speed of light 2
 	TEXT_elangel, 				//at the speed of light 3
 	TEXT_elangel, 				//at the speed of light full
+	TEXT_seaglowingpro,			//back on track full
 	TEXT_elangel,				//beast mode GDW cut
 	TEXT_nerdboy,				//candyland
 	TEXT_craftyjumper,			//can't electroman
@@ -1012,6 +1020,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1, 				//at the speed of light 2
 	sizeof(TEXT_elangel) - 1, 				//at the speed of light 3
 	sizeof(TEXT_elangel) - 1, 				//at the speed of light full
+	sizeof(TEXT_seaglowingpro) - 1,			//back on track full
 	sizeof(TEXT_elangel) - 1,				//beast mode GDW cut
 	sizeof(TEXT_nerdboy) - 1,				//candyland
 	sizeof(TEXT_craftyjumper) - 1,			//can't electroman
@@ -1109,6 +1118,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//at the speed of light 2
 	0, 										//at the speed of light 3
 	0, 										//at the speed of light full
+	TEXT_aquamarine,						//back on track full
 	0,										//beast mode GDW cut
 	0,										//candyland
 	0,										//can't electroman
@@ -1206,6 +1216,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//at the speed of light 2
 	0, 										//at the speed of light 3
 	0, 										//at the speed of light full
+	sizeof(TEXT_aquamarine) - 1,			//back on track full
 	0, 										//beast mode GDW cut
 	0, 										//candyland
 	0, 										//can't electroman
@@ -1302,6 +1313,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//at the speed of light 2
 	0, 										//at the speed of light 3
 	0, 										//at the speed of light full
+	0, 										//back on track full
 	0, 										//beast mode GDW cut
 	0, 										//candyland
 	0, 										//can't electroman
@@ -1399,6 +1411,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//at the speed of light 2
 	0, 										//at the speed of light 3
 	0, 										//at the speed of light full
+	0, 										//back on track full
 	0, 										//beast mode GDW cut
 	0, 										//candyland
 	0, 										//can't electroman
@@ -1495,6 +1508,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//at the speed of light 2
 	0, 										//at the speed of light 3
 	0, 										//at the speed of light full
+	0, 										//back on track full
 	0, 										//beast mode GDW cut
 	0, 										//candyland
 	0, 										//can't electroman
@@ -1592,6 +1606,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//at the speed of light 2
 	0, 										//at the speed of light 3
 	0, 										//at the speed of light full
+	0, 										//back on track full
 	0, 										//beast mode GDW cut
 	0, 										//candyland
 	0, 										//can't electroman
@@ -1693,6 +1708,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_atthespeedoflight2,
 	song_atthespeedoflight3,
 	song_atthespeedoflightfull,
+	song_back_on_track_full,
 	song_beast_mode_gdw_cut,
 	song_candyland,
 	song_cant_electroman,
