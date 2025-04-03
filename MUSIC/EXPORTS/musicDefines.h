@@ -53,8 +53,8 @@
 #define song_sonic_blaster 52
 #define song_blast_processing 53
 #define song_clubstep 54
-#define song_thoughts 55
-#define song_machina_gdw_cut 56
+#define song_round_1_gdw_cut 55
+#define song_thoughts 56
 #define song_back_on_track 57
 #define song_base_after_base 58
 #define song_pyrophoric 59
@@ -93,6 +93,7 @@
 #define song_retray 92
 #define song_youve_been_trolled 93
 #define song_beast_mode_gdw_cut 94
-#define song_payload_gdw_cut 95
+#define song_machina_gdw_cut 95
 #define song_years_gdw_cut 96
-#define song_max 97
+#define song_payload_gdw_cut 97
+#define song_max 98

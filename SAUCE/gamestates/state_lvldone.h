@@ -142,6 +142,7 @@ const unsigned char TEXT_flow[]="FLOW";
 const unsigned char TEXT_remix[]="MIX";
 const unsigned char TEXT_GDW[]="GDW$CUT";
 const unsigned char TEXT_cantelectroman[]="CANT";
+const unsigned char TEXT_round1[]="ROUND$1";
 
 const unsigned char TEXT_future[]="WHATS$A";
 const unsigned char TEXT_future2[]="FUTURE$FUNK";
@@ -290,6 +291,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//problematic
 	0,									//pyrophoric
 	TEXT_rainbowt,						//rainbow tylenol
+	TEXT_round1,						//round 1 (gdw cut)
 	0,									//sonic blaster
 	0,									//stalemate
 	TEXT_2textstalemate,				//stalemate full version
@@ -393,6 +395,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//problematic
 	0,									//pyrophoric
 	sizeof(TEXT_rainbowt) - 1,			//rainbow tylenol
+	sizeof(TEXT_round1) - 1,			//round 1 (gdw cut)
 	0,									//sonic blaster
 	0,									//stalemate
 	sizeof(TEXT_2textstalemate) - 1,	//stalemate full version
@@ -496,6 +499,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textproblematic,				//problematic
 	TEXT_pyrophoric,					//pyrophoric
 	TEXT_rainbowt2,						//rainbow tylenol
+	TEXT_GDW,							//round 1 (gdw cut)
 	TEXT_sonicblaster,					//sonic blaster
 	TEXT_2textstalemate,				//stalemate
 	TEXT_2textfullversion,				//stalemate full version
@@ -599,6 +603,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textproblematic) - 1,				//problematic
 	sizeof(TEXT_pyrophoric) - 1,					//pyrophoric
 	sizeof(TEXT_rainbowt2) - 1,						//rainbow tylenol
+	sizeof(TEXT_GDW) - 1,							//round 1 (gdw cut)
 	sizeof(TEXT_sonicblaster) - 1,					//sonic blaster
 	sizeof(TEXT_2textstalemate) - 1,				//stalemate
 	sizeof(TEXT_2textfullversion) - 1,				//stalemate full version
@@ -777,6 +782,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_nk,				//problematic
 	TEXT_nerdboy,			//pyrophoric
 	TEXT_kitsune,			//rainbow tylenol
+	TEXT_dexarson,			//round 1 (gdw cut)
 	TEXT_f777,				//sonic blaster
 	TEXT_kayoszx,			//stalemate
 	TEXT_kayoszx,			//stalemate full
@@ -880,6 +886,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_nk) - 1,				//problematic
 	sizeof(TEXT_nerdboy) - 1,			//pyrophoric
 	sizeof(TEXT_kitsune) - 1,			//rainbow tylenol
+	sizeof(TEXT_dexarson) - 1,			//round 1 (gdw cut)
 	sizeof(TEXT_f777) - 1,				//sonic blaster
 	sizeof(TEXT_kayoszx) - 1,			//stalemate
 	sizeof(TEXT_kayoszx) - 1,			//stalemate full
@@ -981,6 +988,7 @@ const unsigned char* const origartists1[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
@@ -1082,6 +1090,7 @@ const unsigned char origartists1_size[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
@@ -1183,6 +1192,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel,				//problematic
 	TEXT_nerdboy,				//pyrophoric
 	TEXT_clickerty,				//rainbow tylenol
+	TEXT_seaglowingpro,			//round 1 (gdw cut)
 	TEXT_elangel,				//sonic blaster
 	TEXT_elangel,				//stalemate
 	TEXT_elangel,				//stalemate full
@@ -1285,6 +1295,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1,				//problematic
 	sizeof(TEXT_nerdboy) - 1,				//pyrophoric
 	sizeof(TEXT_clickerty) - 1,				//rainbow tylenol
+	sizeof(TEXT_seaglowingpro) - 1,			//round 1 (gdw cut)
 	sizeof(TEXT_elangel) - 1,				//sonic blaster
 	sizeof(TEXT_elangel) - 1,				//stalemate
 	sizeof(TEXT_elangel) - 1,				//stalemate full
@@ -1387,6 +1398,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
 	0, 										//stalemate
 	TEXT_seaglowingpro,						//stalemate full
@@ -1489,6 +1501,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
 	0, 										//stalemate
 	sizeof(TEXT_seaglowingpro) - 1,			//stalemate full
@@ -1590,6 +1603,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
@@ -1692,6 +1706,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
@@ -1793,6 +1808,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
@@ -1895,6 +1911,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//problematic
 	0, 										//pyrophoric
 	0, 										//rainbow tylenol
+	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
 	0, 										//stalemate
 	0, 										//stalemate full
@@ -2001,6 +2018,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_problematic,
 	song_pyrophoric,
 	song_rainbow_tylenol,
+	song_round_1_gdw_cut,
 	song_sonic_blaster,
 	song_stalemate,
 	song_stalemate_full,
