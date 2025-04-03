@@ -1315,8 +1315,8 @@ const unsigned char* const coveringartists2[] = {
 	TEXT_alexmush,							//hexagon force
 	0,										//blast processing
 	0,										//theory of everything 2
-	0,										//geometrical dominator
-	0,										//deadlocked
+	TEXT_vikrinox,							//geometrical dominator
+	TEXT_vikrinox,							//deadlocked
 	0,										//fingerdash
 	0,										//dash
 	0, 										//the challenge
@@ -1416,8 +1416,8 @@ const unsigned char coveringartists2_size[] = {
 	sizeof(TEXT_alexmush) - 1,				//hexagon force
 	0, 										//blast processing
 	0, 										//theory of everything 2
-	0, 										//geometrical dominator
-	0, 										//deadlocked
+	sizeof(TEXT_vikrinox) - 1, 				//geometrical dominator
+	sizeof(TEXT_vikrinox) - 1, 				//deadlocked
 	0, 										//fingerdash
 	0, 										//dash
 	0, 										//the challenge
