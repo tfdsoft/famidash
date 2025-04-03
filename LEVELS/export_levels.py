@@ -381,6 +381,46 @@ def binpack_and_write_data(bg_exp_data : tuple, spr_exp_data : tuple):
 	# Write the sprite data
 	(include_path / "all_sprite_data.s").write_text("\n".join(spr_file))
 
+def compile_and_write_menutext(filteredMetadata : dict):
+	upperTextList = [i.get('upperText') for i in filteredMetadata]
+	lowerTextList = [i.get('lowerText') for i in filteredMetadata]
+	totalTextList = [i for i in upperTextList + lowerTextList if i]
+	totalTextSet = tuple(sorted(set(totalTextList), key=lambda x : totalTextList.index(x)))
+	print()
+
+	# Get indices, convert to displayable format
+	upperIdxList = [totalTextSet.index(i) if i else None for i in upperTextList]
+	lowerIdxList = [totalTextSet.index(i) if i else None for i in lowerTextList]
+
+	# Convert to C
+	outputStringsList = [f'const char levelText{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(totalTextSet)]
+	upperArrayList = [f'\tlevelText{i:02X},' if i != None else '\tNULL,' for i in upperIdxList]
+	upperSizeArrayList = [f'\tsizeof(levelText{i:02X}),' if i != None else '\t0,' for i in upperIdxList]
+	lowerArrayList = [f'\tlevelText{i:02X},' if i != None else '\tNULL,' for i in lowerIdxList]
+	lowerSizeArrayList = [f'\tsizeof(levelText{i:02X}),' if i != None else '\t0,' for i in lowerIdxList]
+	(include_path / 'menutext.h').write_text("\n".join(
+		[
+		'#include "defines/color1_charmap.h"',
+		'',
+		*outputStringsList,
+		'', '',
+		'const char* const levelTextsUpper[] = {',
+		*upperArrayList,
+		'};',
+		'',
+		'const uint8_t levelTextsUpperSize[] = {',
+		*upperSizeArrayList,
+		'};',
+		'', '',
+		'const char* const levelTextsLower[] = {',
+		*lowerArrayList,
+		'};',
+		'',
+		'const uint8_t levelTextsLowerSize[] = {',
+		*lowerSizeArrayList,
+		'};',
+		]))
+
 def main():
 	parser = argparse.ArgumentParser(prog='export_levels',
 					description='RLE encode level csv files and convert them to level data')
@@ -413,6 +453,8 @@ def main():
 	bg_exp_data = export_bg(args.folder, levels)
 	spr_exp_data = export_spr(args.folder, levels)
 	binpack_and_write_data(bg_exp_data, spr_exp_data)
+
+	compile_and_write_menutext(filteredMetadata)
 
 	mid_widths_enabled = max(bg_exp_data[1]) >= 0x100
 	hi_widths_enabled = max(bg_exp_data[1]) >= 0x10000
