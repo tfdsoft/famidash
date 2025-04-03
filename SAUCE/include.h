@@ -35,25 +35,25 @@
 #pragma rodata-name (pop)
 #pragma rodata-name (push, "XCD_BANK_06")
 #include "defines/menunametable2.h"
-#include "LEVELS/grounddata.h"
-#include "LEVELS/groundlist.h"
+#include "LEVELS/include/grounddata.h"
+#include "LEVELS/include/groundlist.h"
 #pragma rodata-name (pop)
 
 
 
 
 // banks set inside level data due to banking
-#include "LEVELS/objdefines.h"   // object defines for easier implementation
+#include "LEVELS/include/objdefines.h"   // object defines for easier implementation
                                     // stolen from the old repo lol
 
 // levels are exported to asm now
-// #include "LEVELS/leveldata.h"    // level data goes here
+// #include "LEVELS/include/leveldata.h"    // level data goes here
 
 
 
 
 #pragma rodata-name (push, "RODATA")
-#include "LEVELS/levellist.h"    // level order goes here
+#include "LEVELS/include/levellist.h"    // level order goes here
 #pragma rodata-name (pop)
 
 #include "defines/dialogbox.h"
