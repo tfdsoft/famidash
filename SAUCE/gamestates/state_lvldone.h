@@ -1353,7 +1353,7 @@ const unsigned char* const coveringartists2[] = {
 	0,										//idols
 	0, 										//infernoplex
 	TEXT_seaglowingpro, 					//infernoplex full
-	0, 										//isolation
+	TEXT_seaglowingpro, 					//isolation
 	0, 										//jack russel
 	TEXT_zenith,							//jumper full version
 	TEXT_elangel,							//just right
@@ -1454,7 +1454,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//idols
 	0, 										//infernoplex
 	sizeof(TEXT_seaglowingpro) - 1, 		//infernoplex full
-	0, 										//isolation
+	sizeof(TEXT_seaglowingpro) - 1,			//isolation
 	0,										//jack russel
 	sizeof(TEXT_zenith) - 1,				//jumper full version
 	sizeof(TEXT_elangel) - 1,				//just right
