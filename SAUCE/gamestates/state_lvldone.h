@@ -1180,7 +1180,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_dwedit,				//subtle oddities
 	TEXT_elangel,				//the angel
 	TEXT_craftyjumper,			//thoughts
-	TEXT_craftyjumper,			//time machine full
+	TEXT_seaglowingpro,			//time machine full
 	TEXT_usersniper,			//ultimate destruction
 	TEXT_seaglowingpro,			//you've been trolled
 	TEXT_seaglowingpro,			//what's a future funk
@@ -1281,7 +1281,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_dwedit) - 1,				//subtle oddities
 	sizeof(TEXT_elangel) - 1,				//the angel
 	sizeof(TEXT_craftyjumper) - 1,			//thoughts
-	sizeof(TEXT_craftyjumper) - 1,			//time machine full
+	sizeof(TEXT_seaglowingpro) - 1,			//time machine full
 	sizeof(TEXT_usersniper) - 1,			//ultimate destruction
 	sizeof(TEXT_seaglowingpro) - 1,			//you've been trolled
 	sizeof(TEXT_seaglowingpro) - 1,			//what's a future funk
