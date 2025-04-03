@@ -154,6 +154,7 @@ const unsigned char TEXT_mayhem2[]="SHORT$VER";
 
 const unsigned char TEXT_groundto[]="GROUND$TO";
 const unsigned char TEXT_groundto2[]="SPACE";
+const unsigned char TEXT_groundto3[]="KRUSTY$KRAB";
 
 const unsigned char TEXT_ludicrous[]="LUDICROUS";
 const unsigned char TEXT_ludicrous2[]="SPEED";
@@ -261,6 +262,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_freedom,						//freedom dive
 	0,									//glint
 	0,									//golden haze
+	TEXT_groundto,						//ground to krusty krab
 	TEXT_groundto,						//ground to space
 	0,									//haunted woods
 	0,									//idols
@@ -363,6 +365,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_freedom) - 1,			//freedom dive
 	0,									//glint
 	0,									//golden haze
+	sizeof(TEXT_groundto) - 1,			//ground to krusty krab
 	sizeof(TEXT_groundto) - 1,			//ground to space
 	0,									//haunted woods
 	0,									//idols
@@ -465,6 +468,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_freedom2,						//freedom drive
 	TEXT_glint,							//glint
 	TEXT_retray,						//golden haze
+	TEXT_groundto3,						//ground to krusty krab
 	TEXT_groundto2,						//ground to space
 	TEXT_2textwoods,					//lost in the woods
 	TEXT_idols,							//idols
@@ -567,6 +571,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_freedom2) - 1,						//freedom dive
 	sizeof(TEXT_glint) - 1,							//glint
 	sizeof(TEXT_retray) - 1,						//golden haze
+	sizeof(TEXT_groundto3) - 1,						//ground to krusty krab
 	sizeof(TEXT_groundto2) - 1,						//ground to space
 	sizeof(TEXT_2textwoods) - 1,					//lost in the woods
 	sizeof(TEXT_idols) - 1,							//idols
@@ -744,6 +749,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_xi, 				//freedom dive
 	TEXT_dominuus, 			//glint
 	TEXT_detious, 			//golden haze
+	TEXT_seaglowingpro,		//ground to krusty krab
 	TEXT_seaglowingpro,		//ground to space
 	TEXT_waterflame, 		//haunted woods
 	TEXT_virtual_riot,		//idols
@@ -846,6 +852,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_xi) - 1, 				//freedom dive
 	sizeof(TEXT_dominuus) - 1, 			//glint
 	sizeof(TEXT_detious) - 1, 			//golden haze
+	sizeof(TEXT_seaglowingpro) - 1,		//ground to krusty krab
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
 	sizeof(TEXT_waterflame) - 1, 		//haunted woods
 	sizeof(TEXT_virtual_riot) - 1,		//idols
@@ -946,6 +953,7 @@ const unsigned char* const origartists1[] = {
 	0, 										//freedom dive
 	0, 										//glint
 	0, 										//golden haze
+	0, 										//ground to krusty krab
 	0, 										//ground to space
 	0, 										//haunted woods
 	0, 										//idols
@@ -1046,6 +1054,7 @@ const unsigned char origartists1_size[] = {
 	0, 										//freedom dive
 	0, 										//glint
 	0, 										//golden haze
+	0, 										//ground to krusty krab
 	0, 										//ground to space
 	0, 										//haunted woods
 	0, 										//idols
@@ -1146,6 +1155,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro, 		//freedom dive
 	TEXT_seaglowingpro, 		//glint
 	TEXT_craftyjumper, 			//golden haze
+	TEXT_seaglowingpro,			//ground to krusty krab
 	TEXT_seaglowingpro,			//ground to space
 	TEXT_sussysy, 				//haunted woods
 	TEXT_seaglowingpro,			//idols
@@ -1247,6 +1257,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1, 		//freedom dive
 	sizeof(TEXT_seaglowingpro) - 1, 		//glint
 	sizeof(TEXT_craftyjumper) - 1, 			//golden haze
+	sizeof(TEXT_seaglowingpro) - 1,			//ground to krusty krab
 	sizeof(TEXT_seaglowingpro) - 1,			//ground to space
 	sizeof(TEXT_sussysy) - 1, 				//haunted woods
 	sizeof(TEXT_seaglowingpro) - 1,			//idols
@@ -1348,6 +1359,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//freedom dive
 	0, 										//glint
 	TEXT_elangel, 							//golden haze
+	0, 										//ground to krusty krab
 	0,										//ground to space
 	0, 										//haunted woods
 	0,										//idols
@@ -1449,6 +1461,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//freedom dive
 	0, 										//glint
 	sizeof(TEXT_elangel) - 1, 				//golden haze
+	0, 										//ground to krusty krab
 	0, 										//ground to space
 	0, 										//haunted woods
 	0, 										//idols
@@ -1549,6 +1562,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//freedom dive
 	0, 										//glint
 	0, 										//golden haze
+	0, 										//ground to krusty krab
 	0, 										//ground to space
 	0, 										//haunted woods
 	0, 										//idols
@@ -1650,6 +1664,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//freedom dive
 	0, 										//glint
 	0, 										//golden haze
+	0, 										//ground to krusty krab
 	0, 										//ground to space
 	0, 										//haunted woods
 	0, 										//idols
@@ -1750,6 +1765,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//freedom dive
 	0, 										//glint
 	0, 										//golden haze
+	0, 										//ground to krusty krab
 	0, 										//ground to space
 	0, 										//haunted woods
 	0, 										//idols
@@ -1851,6 +1867,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//freedom dive
 	0, 										//glint
 	0, 										//golden haze
+	0, 										//ground to krusty krab
 	0, 										//ground to space
 	0, 										//haunted woods
 	0, 										//idols
@@ -1956,6 +1973,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_freedom_dive,
 	song_glint,
 	song_retray,
+	song_ground_to_krusty_krab,
 	song_ground_to_space,
 	song_haunted_woods,
 	song_idols,
