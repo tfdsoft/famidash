@@ -302,10 +302,10 @@ detectNTSC:
 
 	.include "METATILES/metatiles.s"
 
-	.include "LEVELS/all_level_data.s"
-	.include "LEVELS/all_sprite_data.s"
-	.include "LEVELS/level_header.s"
-	.include "LEVELS/all_level_table.s"
+	.include "LEVELS/include/all_level_data.s"
+	.include "LEVELS/include/all_sprite_data.s"
+	.include "LEVELS/include/level_header.s"
+	.include "LEVELS/include/all_level_table.s"
 	
 	.include "mapper.s"
 	.include "neslib.s"
