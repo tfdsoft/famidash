@@ -316,6 +316,7 @@ uint8_t nocamlock;
 uint8_t nocamlockforced;
 uint8_t nestopia;
 
+
 uint8_t last_slope_type[2];
 
 uint8_t gameState;
@@ -429,6 +430,8 @@ uint8_t longmode;
 uint8_t bigboi;
 uint8_t gravity_mod;
 #endif
+
+uint8_t tempplat;
 
 uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 
