@@ -64,7 +64,7 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// clutterfunk2
 	BLOCKSB,	// speedracer
 	BLOCKSB,	// pgclubstep
-	BLOCKSA,	// hell
+	BLOCKSB,	// hell
 	BLOCKSA,	// eon
 	BLOCKSB,	// stalemate
 	BLOCKSB,	// bloodbath
