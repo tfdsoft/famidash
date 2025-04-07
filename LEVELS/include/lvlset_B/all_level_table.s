@@ -18,6 +18,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_pgclubstep)
+	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_bloodbath)
@@ -40,6 +41,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_pgclubstep)
+	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_bloodbath)
@@ -62,6 +64,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_pgclubstep))
+	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_bloodbath))
@@ -105,6 +108,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_clutterfunk2)
 	.byte .lobyte(sprite_data_speedracer)
 	.byte .lobyte(sprite_data_pgclubstep)
+	.byte .lobyte(sprite_data_hell)
 	.byte .lobyte(sprite_data_eon)
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_bloodbath)
@@ -127,6 +131,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_clutterfunk2)
 	.byte .hibyte(sprite_data_speedracer)
 	.byte .hibyte(sprite_data_pgclubstep)
+	.byte .hibyte(sprite_data_hell)
 	.byte .hibyte(sprite_data_eon)
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_bloodbath)
@@ -149,6 +154,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_clutterfunk2))
 	.byte .lobyte(.bank(sprite_data_speedracer))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
+	.byte .lobyte(.bank(sprite_data_hell))
 	.byte .lobyte(.bank(sprite_data_eon))
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
@@ -174,6 +180,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($000094)		; pgclubstep
+	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($000286)		; eon
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($0000D5)		; bloodbath
@@ -198,6 +205,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($000094)		; pgclubstep
+	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($000286)		; eon
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($0000D5)		; bloodbath
@@ -222,6 +230,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($000094)		; pgclubstep
+	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($0000D5)		; bloodbath

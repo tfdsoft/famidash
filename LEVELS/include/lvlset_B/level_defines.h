@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 19
+#define COMMUNITY_LEVEL_COUNT 20
 
 #define stereomadness 0
 #define sonar 1
@@ -19,10 +19,11 @@
 #define clutterfunk2 10
 #define speedracer 11
 #define pgclubstep 12
-#define eon 13
-#define stalemate 14
-#define bloodbath 15
-#define cataclysm 16
-#define aftermath 17
-#define aftercatabath 18
-#define slaughterhouse 19
+#define hell 13
+#define eon 14
+#define stalemate 15
+#define bloodbath 16
+#define cataclysm 17
+#define aftermath 18
+#define aftercatabath 19
+#define slaughterhouse 20

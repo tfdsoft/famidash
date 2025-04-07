@@ -208,6 +208,22 @@
 			startingGroundColor: 0x0F
 		},
 		{
+			level: "hell",
+			lowerText: "HELL",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_hell",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "eon",
 			lowerText: "EON",
 			decoType: "EXTRASPRITES1",

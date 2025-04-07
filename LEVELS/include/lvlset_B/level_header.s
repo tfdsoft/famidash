@@ -92,6 +92,13 @@ pgclubstep_no_parallax = 0
 pgclubstep_bg_color    = $0F
 pgclubstep_grnd_color  = $0F
 
+hell_song_number = song_hell
+hell_game_mode   = 0
+hell_speed       = 0
+hell_no_parallax = 1
+hell_bg_color    = $0F
+hell_grnd_color  = $0F
+
 eon_song_number = song_eon
 eon_game_mode   = 0
 eon_speed       = 1
