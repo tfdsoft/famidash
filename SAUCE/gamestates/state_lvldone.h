@@ -145,6 +145,7 @@ const unsigned char TEXT_GDW[]="GDW$CUT";
 const unsigned char TEXT_cantelectroman[]="CANT";
 const unsigned char TEXT_round1[]="ROUND$1";
 const unsigned char TEXT_thesevenseas[]="THE$SEVEN$SEAS";
+const unsigned char TEXT_spacepirates[]="SPACE$PIRATES";
 
 const unsigned char TEXT_future[]="WHATS$A";
 const unsigned char TEXT_future2[]="FUTURE$FUNK";
@@ -300,6 +301,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_rainbowt,						//rainbow tylenol
 	TEXT_round1,						//round 1 (gdw cut)
 	0,									//sonic blaster
+	TEXT_spacepirates,					//space pirates (gdw cut)
 	0,									//stalemate
 	TEXT_2textstalemate,				//stalemate full version
 	TEXT_xlevel1text1,					//stereo madness 2
@@ -408,6 +410,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_rainbowt) - 1,			//rainbow tylenol
 	sizeof(TEXT_round1) - 1,			//round 1 (gdw cut)
 	0,									//sonic blaster
+	sizeof(TEXT_spacepirates) - 1,		//space pirates (gdw cut)
 	0,									//stalemate
 	sizeof(TEXT_2textstalemate) - 1,	//stalemate full version
 	sizeof(TEXT_xlevel1text1) - 1,		//stereo madness 2
@@ -516,6 +519,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_rainbowt2,						//rainbow tylenol
 	TEXT_GDW,							//round 1 (gdw cut)
 	TEXT_sonicblaster,					//sonic blaster
+	TEXT_GDW,							//space pirates (gdw cut)
 	TEXT_2textstalemate,				//stalemate
 	TEXT_2textfullversion,				//stalemate full version
 	TEXT_2textstereo,					//stereo madness 2
@@ -624,12 +628,13 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_rainbowt2) - 1,						//rainbow tylenol
 	sizeof(TEXT_GDW) - 1,							//round 1 (gdw cut)
 	sizeof(TEXT_sonicblaster) - 1,					//sonic blaster
+	sizeof(TEXT_GDW) - 1,							//space pirates
 	sizeof(TEXT_2textstalemate) - 1,				//stalemate
 	sizeof(TEXT_2textfullversion) - 1,				//stalemate full version
 	sizeof(TEXT_2textstereo) - 1,					//stereo madness 2
 	sizeof(TEXT_subtle2) - 1,						//subtle oddities
-	sizeof(TEXT_thesevenseas) - 1,					//the seven seas
 	sizeof(TEXT_2texteon) - 1,						//the angel
+	sizeof(TEXT_thesevenseas) - 1,					//the seven seas
 	sizeof(TEXT_thoughts) - 1,						//thoughts
 	sizeof(TEXT_2textfullversion) - 1,				//time machine full
 	sizeof(TEXT_ultimate2) - 1,						//ultimate destruction
@@ -809,12 +814,13 @@ const unsigned char* const origartists2[] = {
 	TEXT_kitsune,			//rainbow tylenol
 	TEXT_dexarson,			//round 1 (gdw cut)
 	TEXT_f777,				//sonic blaster
+	TEXT_waterflame,		//space pirates (gdw cut)
 	TEXT_kayoszx,			//stalemate
 	TEXT_kayoszx,			//stalemate full
 	TEXT_foreverbound,		//stereo madness2
 	TEXT_lemondemon,		//subtle oddities
-	TEXT_f777,				//the seven seas
 	TEXT_cacola,			//the angel
+	TEXT_f777,				//the seven seas
 	TEXT_craftyjumper,		//thoughts
 	TEXT_waterflame,		//time machine full
 	TEXT_tmm43,				//ultimate destruction
@@ -917,12 +923,13 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_kitsune) - 1,			//rainbow tylenol
 	sizeof(TEXT_dexarson) - 1,			//round 1 (gdw cut)
 	sizeof(TEXT_f777) - 1,				//sonic blaster
+	sizeof(TEXT_waterflame) - 1,		//space pirates (gdw cut)
 	sizeof(TEXT_kayoszx) - 1,			//stalemate
 	sizeof(TEXT_kayoszx) - 1,			//stalemate full
 	sizeof(TEXT_foreverbound) - 1,		//stereo madness2
 	sizeof(TEXT_lemondemon) - 1,		//subtle oddities
-	sizeof(TEXT_f777) - 1,				//the seven seas
 	sizeof(TEXT_cacola) - 1,			//the angel
+	sizeof(TEXT_f777) - 1,				//the seven seas
 	sizeof(TEXT_craftyjumper) - 1,		//thoughts
 	sizeof(TEXT_waterflame) - 1,		//time machine full
 	sizeof(TEXT_tmm43) - 1,				//ultimate destruction
@@ -1023,12 +1030,13 @@ const unsigned char* const origartists1[] = {
 	0, 										//rainbow tylenol
 	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
+	0, 										//space pirates (gdw cut)
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
 	0, 										//subtle oddities
-	0, 										//the seven seas
 	0, 										//the angel
+	0, 										//the seven seas
 	0, 										//thoughts
 	0,										//time machine full
 	0, 										//ultimate destruction
@@ -1129,12 +1137,13 @@ const unsigned char origartists1_size[] = {
 	0, 										//rainbow tylenol
 	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
+	0, 										//space pirates (gdw cut)
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
 	0, 										//subtle oddities
-	0, 										//the seven seas
 	0, 										//the angel
+	0, 										//the seven seas
 	0, 										//thoughts
 	0,										//time machine full
 	0, 										//ultimate destruction
@@ -1235,12 +1244,13 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_clickerty,				//rainbow tylenol
 	TEXT_seaglowingpro,			//round 1 (gdw cut)
 	TEXT_elangel,				//sonic blaster
+	TEXT_seaglowingpro,			//space pirates (gdw cut)
 	TEXT_elangel,				//stalemate
 	TEXT_elangel,				//stalemate full
 	TEXT_elangel,				//stereo madness2
 	TEXT_dwedit,				//subtle oddities
-	TEXT_craftyjumper,			//the seven seas
 	TEXT_elangel,				//the angel
+	TEXT_craftyjumper,			//the seven seas
 	TEXT_craftyjumper,			//thoughts
 	TEXT_seaglowingpro,			//time machine full
 	TEXT_usersniper,			//ultimate destruction
@@ -1342,12 +1352,13 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_clickerty) - 1,				//rainbow tylenol
 	sizeof(TEXT_seaglowingpro) - 1,			//round 1 (gdw cut)
 	sizeof(TEXT_elangel) - 1,				//sonic blaster
+	sizeof(TEXT_seaglowingpro) - 1,			//space pirates (gdw cut)
 	sizeof(TEXT_elangel) - 1,				//stalemate
 	sizeof(TEXT_elangel) - 1,				//stalemate full
 	sizeof(TEXT_elangel) - 1,				//stereo madness2
 	sizeof(TEXT_dwedit) - 1,				//subtle oddities
-	sizeof(TEXT_craftyjumper) - 1,			//the seven seas
 	sizeof(TEXT_elangel) - 1,				//the angel
+	sizeof(TEXT_craftyjumper) - 1,			//the seven seas
 	sizeof(TEXT_craftyjumper) - 1,			//thoughts
 	sizeof(TEXT_seaglowingpro) - 1,			//time machine full
 	sizeof(TEXT_usersniper) - 1,			//ultimate destruction
@@ -1449,12 +1460,13 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//rainbow tylenol
 	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
+	0, 										//space pirates
 	0, 										//stalemate
 	TEXT_seaglowingpro,						//stalemate full
 	0, 										//stereo madness2
 	0, 										//subtle oddities
-	0, 										//the seven seas
 	0, 										//the angel
+	0, 										//the seven seas
 	0, 										//thoughts
 	TEXT_zenith,							//time machine full
 	0, 										//ultimate destruction
@@ -1556,12 +1568,13 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//rainbow tylenol
 	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
+	0, 										//space pirates
 	0, 										//stalemate
 	sizeof(TEXT_seaglowingpro) - 1,			//stalemate full
 	0, 										//stereo madness2
 	0, 										//subtle oddities
-	0, 										//the seven seas
 	0, 										//the angel
+	0, 										//the seven seas
 	0, 										//thoughts
 	sizeof(TEXT_zenith) - 1, 				//time machine full
 	0, 										//ultimate destruction
@@ -1662,12 +1675,13 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//rainbow tylenol
 	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
+	0, 										//space pirates
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
 	0, 										//subtle oddities
-	0, 										//the seven seas
 	0, 										//the angel
+	0, 										//the seven seas
 	0, 										//thoughts
 	TEXT_vikrinox, 							//time machine full
 	0, 										//ultimate destruction
@@ -1769,12 +1783,13 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//rainbow tylenol
 	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
+	0, 										//space pirates
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
 	0, 										//subtle oddities
-	0, 										//the seven seas
 	0, 										//the angel
+	0, 										//the seven seas
 	0, 										//thoughts
 	sizeof(TEXT_vikrinox) - 1,				//time machine full
 	0, 										//ultimate destruction
@@ -1875,12 +1890,13 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//rainbow tylenol
 	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
+	0, 										//space pirates
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
 	0, 										//subtle oddities
-	0, 										//the seven seas
 	0, 										//the angel
+	0, 										//the seven seas
 	0, 										//thoughts
 	TEXT_alexmush,							//time machine full
 	0, 										//ultimate destruction
@@ -1982,12 +1998,13 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//rainbow tylenol
 	0, 										//round 1 (gdw cut)
 	0, 										//sonic blaster
+	0, 										//space pirates
 	0, 										//stalemate
 	0, 										//stalemate full
 	0, 										//stereo madness2
 	0, 										//subtle oddities
-	0, 										//the seven seas
 	0, 										//the angel
+	0, 										//the seven seas
 	0, 										//thoughts
 	sizeof(TEXT_alexmush) - 1,				//time machine full
 	0, 										//ultimate destruction
@@ -2093,6 +2110,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_rainbow_tylenol,
 	song_round_1_gdw_cut,
 	song_sonic_blaster,
+	song_space_pirates_gdw_cut,
 	song_stalemate,
 	song_stalemate_full,
 	song_stereo_madness_2,
