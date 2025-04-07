@@ -201,6 +201,12 @@ clearVRAM:
 	lda #$FD
 @cont4:
 	sta aart_lz_buffer+3
+	lda $FB
+    bne @cont5
+@fallback5:
+	lda #$FD
+@cont5:
+	sta aart_lz_buffer+4
 
 clearRAM:
     txa
@@ -229,6 +235,8 @@ clearRAM:
 	sta RAND_SEED+2
 	lda aart_lz_buffer+3
 	sta RAND_SEED+3
+	lda aart_lz_buffer+4
+	sta RAND_SEED+4
 
 	lda #4
 	jsr _pal_bright
