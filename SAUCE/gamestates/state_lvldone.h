@@ -1393,7 +1393,7 @@ const unsigned char* const coveringartists2[] = {
 	0,										//can't electroman
 	0,										//can't let go remixed
 	0,										//chaoz airflow
-	0,										//chaoz fantasy
+	TEXT_seaglowingpro,						//chaoz fantasy
 	0,										//chaoz impact
 	TEXT_cloud54,							//clubstep full
 	0,										//clutterfunk 2
@@ -1499,7 +1499,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//can't electroman
 	0, 										//can't let go remixed
 	0, 										//chaoz airflow
-	0, 										//chaoz fantasy
+	sizeof(TEXT_seaglowingpro) - 1, 		//chaoz fantasy
 	0, 										//chaoz impact
 	sizeof(TEXT_cloud54) - 1,				//clubstep full
 	0, 										//clutterfunk 2
