@@ -185,6 +185,7 @@ const unsigned char TEXT_sonicblaster[]="SONIC$BLASTER";
 const unsigned char TEXT_xo[]="XO";
 const unsigned char TEXT_kratos[]="KRATOS";
 const unsigned char TEXT_eighto[]="EIGHTO";
+const unsigned char TEXT_beepbeep[]="BEEP$BEEP";
 
 const unsigned char TEXT_hsad2[]="HSAD";
 const unsigned char TEXT_repmuj2[]="REPMUJ";
@@ -248,6 +249,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_speed,							//at the speed of light full
 	TEXT_xlevel1text2,					//back on track full
 	TEXT_beastmode,						//beast mode (gdw cut)
+	0,									//beep beep 
 	0,									//candyland
 	TEXT_cantelectroman,				//can't electroman
 	TEXT_xlevel2text6,					//can't let go remixed
@@ -354,6 +356,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_speed) - 1,				//at the speed of light full
 	sizeof(TEXT_xlevel1text2) - 1,		//back on track full
 	sizeof(TEXT_beastmode) - 1,			//beast mode (gdw cut)
+	0,									//beep beep
 	0,									//candyland
 	sizeof(TEXT_cantelectroman) - 1,	//can't electroman
 	sizeof(TEXT_xlevel2text6) - 1,		//can't let go remixed
@@ -460,6 +463,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textspeedfull,				//at the speed of light full
 	TEXT_trackfull,						//back on track full
 	TEXT_GDW,							//beast mode (gdw cut)
+	TEXT_beepbeep,						//beepbeep
 	TEXT_candyland,						//candyland
 	TEXT_xlevel1textD,					//can't electroman
 	TEXT_remix,							//can't let go remixed
@@ -566,6 +570,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textspeedfull) - 1,				//at the speed of light full
 	sizeof(TEXT_trackfull) - 1,						//back on track full
 	sizeof(TEXT_GDW) - 1,							//beast mode (gdw cut)
+	sizeof(TEXT_beepbeep) - 1,						//beep beep
 	sizeof(TEXT_candyland) - 1,						//candyland
 	sizeof(TEXT_xlevel1textD) - 1,					//can't electroman
 	sizeof(TEXT_remix) - 1,							//can't let go remixed
@@ -704,6 +709,7 @@ const unsigned char TEXT_clickerty[]="CLICKERTY";
 const unsigned char TEXT_zukinnyk[]="ZUKINNYK";
 const unsigned char TEXT_leejh20[]="LEEJH20";
 const unsigned char TEXT_creo[]="CREO";
+const unsigned char TEXT_schtiffles[]="SCHTIFFLES";
 const unsigned char TEXT_boomkitty[]="BOOM$KITTY";
 
 
@@ -748,6 +754,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_dimrain47, 		//at the speed of light full
 	TEXT_djvi,				//back on track full
 	TEXT_dexarson,			//beast mode GDW cut
+	TEXT_schtiffles,		//beep beep
 	TEXT_tobu,				//candyland
 	TEXT_djvi,				//can't electroman
 	TEXT_djvi,				//can't let go remixed
@@ -854,6 +861,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_dimrain47) - 1, 		//at the speed of light full
 	sizeof(TEXT_djvi) - 1,				//back on track full
 	sizeof(TEXT_dexarson) - 1,			//beast mode GDW cut
+	sizeof(TEXT_schtiffles) - 1,		//beep beep
 	sizeof(TEXT_tobu) - 1,				//candyland
 	sizeof(TEXT_djvi) - 1,				//can't electroman
 	sizeof(TEXT_djvi) - 1,				//can't let go remixed
@@ -958,6 +966,7 @@ const unsigned char* const origartists1[] = {
 	0, 										//at the speed of light full
 	0, 										//back on track full
 	0, 										//beast mode GDW cut
+	0, 										//beep beep
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
@@ -1062,6 +1071,7 @@ const unsigned char origartists1_size[] = {
 	0, 										//at the speed of light full
 	0, 										//back on track full
 	0, 										//beast mode GDW cut
+	0, 										//beep beep
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
@@ -1166,6 +1176,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_elangel, 				//at the speed of light full
 	TEXT_seaglowingpro,			//back on track full
 	TEXT_elangel,				//beast mode GDW cut
+	TEXT_clickerty,				//beep beep
 	TEXT_nerdboy,				//candyland
 	TEXT_craftyjumper,			//can't electroman
 	TEXT_craftyjumper,			//can't let go remixed
@@ -1271,6 +1282,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_elangel) - 1, 				//at the speed of light full
 	sizeof(TEXT_seaglowingpro) - 1,			//back on track full
 	sizeof(TEXT_elangel) - 1,				//beast mode GDW cut
+	sizeof(TEXT_clickerty) - 1,				//beep beep
 	sizeof(TEXT_nerdboy) - 1,				//candyland
 	sizeof(TEXT_craftyjumper) - 1,			//can't electroman
 	sizeof(TEXT_craftyjumper) - 1,			//can't let go remixed
@@ -1376,6 +1388,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//at the speed of light full
 	TEXT_aquamarine,						//back on track full
 	0,										//beast mode GDW cut
+	0,										//beep beep
 	0,										//candyland
 	0,										//can't electroman
 	0,										//can't let go remixed
@@ -1481,6 +1494,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//at the speed of light full
 	sizeof(TEXT_aquamarine) - 1,			//back on track full
 	0, 										//beast mode GDW cut
+	0, 										//beep beep
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
@@ -1585,6 +1599,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//at the speed of light full
 	0, 										//back on track full
 	0, 										//beast mode GDW cut
+	0, 										//beep beep
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
@@ -1690,6 +1705,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//at the speed of light full
 	0, 										//back on track full
 	0, 										//beast mode GDW cut
+	0, 										//beep beep
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
@@ -1794,6 +1810,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//at the speed of light full
 	0, 										//back on track full
 	0, 										//beast mode GDW cut
+	0, 										//beep beep
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
@@ -1899,6 +1916,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//at the speed of light full
 	0, 										//back on track full
 	0, 										//beast mode GDW cut
+	0, 										//beep beep
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
@@ -2008,6 +2026,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_atthespeedoflightfull,
 	song_back_on_track_full,
 	song_beast_mode_gdw_cut,
+	song_beep_beep,
 	song_candyland,
 	song_cant_electroman,
 	song_cant_let_go_remix,
