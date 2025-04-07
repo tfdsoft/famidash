@@ -86,7 +86,7 @@ void decrement_was_on_slope() {
 
 
 void state_game(){
-	if (level == luckydraw && (options & platformer)) { options ^= platformer; tempplat = 1; }
+	//if (level == luckydraw && (options & platformer)) { options ^= platformer; tempplat = 1; }
 	coin1_timer = 0;
 	coin2_timer = 0;
 	coin3_timer = 0;
