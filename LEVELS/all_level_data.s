@@ -472,7 +472,7 @@
 		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4027
 
 
-.segment "LVL_BANK_1B"	; Total bank size: 8183 bytes
+.segment "LVL_BANK_1B"	; Total bank size: 8188 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header

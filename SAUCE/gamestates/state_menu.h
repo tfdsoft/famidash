@@ -145,7 +145,7 @@ const uint8_t lvlselect_irq_table[] = {
 };
 void draw_both_progress_bars();
 void levelselection() {
-
+	if (tempplat == 1) { tempplat = 0; options |= platformer; }
 	mmc3_set_8kb_chr(MENUBANK);
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
