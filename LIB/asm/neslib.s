@@ -711,7 +711,7 @@ __oam_meta_spr_disco:
 	iny				;	Load and store the attribute
 	and #$FC		;
 	sta OAM_BUF+2,x	;__
-	jsr _newrand		;
+	jsr rand1		;
 	and #$3			;
 	ora OAM_BUF+2,X	;	Randomize the last 2 bits of the attributes
 	sta OAM_BUF+2,X	;__
@@ -1139,7 +1139,7 @@ _pad_poll:
 ;Galois random generator, found somewhere
 ;out: A random number 0..255
 
-
+newrand:
 _newrand:
 	ldy #8
 	lda RAND_SEED+0
@@ -1159,14 +1159,14 @@ _newrand:
 
 rand1:
 
-	lda <RAND_SEED
+	lda <RAND_SEED+4
 	asl a
 	bcc @1
 	eor #$cf
 
 @1:
 
-	sta <RAND_SEED
+	sta <RAND_SEED+4
 	rts
 
 rand2:

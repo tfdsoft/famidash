@@ -90,7 +90,7 @@ PAD_STATET2: 		.res 2
 PPU_CTRL_VAR: 		.res 1
 PPU_CTRL_VAR1: 		.res 1
 PPU_MASK_VAR: 		.res 1
-RAND_SEED: 			.res 4
+RAND_SEED: 			.res 5
 
 TEMP: 				.res 11
 SPRID:				.res 1
