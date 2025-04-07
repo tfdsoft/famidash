@@ -17,6 +17,7 @@ SET all_levels= ^
     clutterfunk2 ^
     speedracer ^
     pgclubstep ^
+	hell ^
     eon ^
     stalemate ^
     bloodbath ^

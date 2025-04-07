@@ -36,4 +36,5 @@ const unsigned char levelpyrophoric2[]="PYROPHORIC";
 const unsigned char levelsubzero2[]="SUBZERO";
 const unsigned char levelsubtle[]="SUBTLE";
 const unsigned char levelsubtle2[]="ODDITIES";
+const unsigned char levelhell2[]="HELL";
 
