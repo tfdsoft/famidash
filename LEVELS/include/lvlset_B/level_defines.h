@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 20
+#define COMMUNITY_LEVEL_COUNT 19
 
 #define stereomadness 0
 #define sonar 1
@@ -26,4 +26,3 @@
 #define aftermath 17
 #define aftercatabath 18
 #define slaughterhouse 19
-#define test4 20

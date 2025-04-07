@@ -26,7 +26,6 @@ const char levelText13[ 9] = "CATACLYSM";
 const char levelText14[ 9] = "AFTERMATH";
 const char levelText15[13] = "AFTERCATABATH";
 const char levelText16[14] = "SLAUGHTERHOUSE";
-const char levelText17[ 6] = "TEST 4";
 
 
 const char* const levelTextsUpper[] = {
@@ -50,7 +49,6 @@ const char* const levelTextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
-	NULL,
 };
 
 const uint8_t levelTextsUpperSize[] = {
@@ -62,7 +60,6 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	0,
 	sizeof(levelText02),
-	0,
 	0,
 	0,
 	0,
@@ -99,7 +96,6 @@ const char* const levelTextsLower[] = {
 	levelText14,
 	levelText15,
 	levelText16,
-	levelText17,
 };
 
 const uint8_t levelTextsLowerSize[] = {
@@ -123,5 +119,4 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText14),
 	sizeof(levelText15),
 	sizeof(levelText16),
-	sizeof(levelText17),
 };

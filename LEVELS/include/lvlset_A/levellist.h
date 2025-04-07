@@ -45,7 +45,6 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// firetemple
 	DECO1,	// foresttemple
 	DECOCLOUD,	// luckydraw
-	EXTRASPRITES1,	// test4
 };
 
 const uint8_t spike_set[] = {
@@ -92,7 +91,6 @@ const uint8_t spike_set[] = {
 	SPIKESB,	// firetemple
 	SPIKESB,	// foresttemple
 	SPIKESB,	// luckydraw
-	SPIKESA,	// test4
 };
 
 
@@ -140,7 +138,6 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// firetemple
 	BLOCKSB,	// foresttemple
 	BLOCKSB,	// luckydraw
-	BLOCKSB,	// test4
 };
 
 const uint8_t saw_set[] = {
@@ -187,7 +184,6 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// firetemple
 	SAWBLADESA,	// foresttemple
 	LETTERBANK,	// luckydraw
-	SAWBLADESA,	// test4
 };
 
 
@@ -243,7 +239,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
 	DEMON,	// luckydraw
-	DEMON,	// test4
 };
 
 const uint8_t stars_list[] = {
@@ -290,5 +285,4 @@ const uint8_t stars_list[] = {
 	10,	// firetemple
 	10,	// foresttemple
 	10,	// luckydraw
-	0,	// test4
 };

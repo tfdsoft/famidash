@@ -62,24 +62,11 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8143
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8045 bytes
 	.export level_data_aftercatabath_3
 	level_data_aftercatabath_3:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8045
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte test4_song_number
-		.byte test4_game_mode
-		.byte test4_speed
-		.byte test4_no_parallax
-		.byte test4_bg_color
-		.byte test4_grnd_color
-		.byte 27	; height of test4
-	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 140
 
 
 .segment "DAT_BANK_05"	; Total bank size: 8092 bytes
@@ -335,7 +322,7 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 58
 
 
-.segment "DAT_BANK_15"	; Total bank size: 6525 bytes
+.segment "DAT_BANK_15"	; Total bank size: 5824 bytes
 	.export level_data_eon_2
 	level_data_eon_2:
 	; Level data

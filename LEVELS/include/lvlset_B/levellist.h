@@ -22,7 +22,6 @@ const uint8_t DECOTYPE[] = {
 	DECO1,	// aftermath
 	DECO1,	// aftercatabath
 	DECO1,	// slaughterhouse
-	DECO1,	// test4
 };
 
 const uint8_t spike_set[] = {
@@ -46,7 +45,6 @@ const uint8_t spike_set[] = {
 	SPIKESC,	// aftermath
 	SPIKESC,	// aftercatabath
 	SPIKESA,	// slaughterhouse
-	SPIKESC,	// test4
 };
 
 
@@ -71,7 +69,6 @@ const uint8_t block_set[] = {
 	BLOCKSB,	// aftermath
 	BLOCKSB,	// aftercatabath
 	BLOCKSB,	// slaughterhouse
-	BLOCKSB,	// test4
 };
 
 const uint8_t saw_set[] = {
@@ -95,7 +92,6 @@ const uint8_t saw_set[] = {
 	SAWBLADESA,	// aftermath
 	SAWBLADESA,	// aftercatabath
 	SAWBLADESA,	// slaughterhouse
-	SAWBLADESA,	// test4
 };
 
 
@@ -128,7 +124,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// aftermath
 	DEMON,	// aftercatabath
 	DEMON,	// slaughterhouse
-	EASY,	// test4
 };
 
 const uint8_t stars_list[] = {
@@ -152,5 +147,4 @@ const uint8_t stars_list[] = {
 	10,	// aftermath
 	10,	// aftercatabath
 	10,	// slaughterhouse
-	0,	// test4
 };
