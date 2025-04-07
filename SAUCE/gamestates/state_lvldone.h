@@ -124,6 +124,7 @@ const unsigned char TEXT_2textcrackdown[]="CRACKDOWN";
 const unsigned char TEXT_2textstalemate[]="STALEMATE";
 const unsigned char TEXT_2textwoods[]="HAUNTED$WOODS";
 const unsigned char TEXT_2textchaoz[]="CHAOZ$FANTASY";
+const unsigned char TEXT_chaozairflow[]="CHAOZ$AIRFLOW";
 const unsigned char TEXT_2textjustright[]="JUST$RIGHT";
 const unsigned char TEXT_against2[]="THE$ODDS$REDUX";
 const unsigned char TEXT_geometrical2[]="DOMINATOR";
@@ -249,6 +250,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//candyland
 	TEXT_cantelectroman,				//can't electroman
 	TEXT_xlevel2text6,					//can't let go remixed
+	0,									//chaoz airflow
 	0,									//chaoz fantasy
 	0,									//chaoz impact
 	TEXT_2textclubstep,					//clubstep full version
@@ -353,6 +355,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//candyland
 	sizeof(TEXT_cantelectroman) - 1,	//can't electroman
 	sizeof(TEXT_xlevel2text6) - 1,		//can't let go remixed
+	0,									//chaoz airflow
 	0,									//chaoz fantasy
 	0,									//chaoz impact
 	sizeof(TEXT_2textclubstep) - 1,		//clubstep full
@@ -457,6 +460,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_candyland,						//candyland
 	TEXT_xlevel1textD,					//can't electroman
 	TEXT_remix,							//can't let go remixed
+	TEXT_chaozairflow,					//chaoz airflow
 	TEXT_2textchaoz,					//chaoz fantasy
 	TEXT_speedracer,					//chaoz impact
 	TEXT_2textfullversion,				//clubstep full
@@ -561,6 +565,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_candyland) - 1,						//candyland
 	sizeof(TEXT_xlevel1textD) - 1,					//can't electroman
 	sizeof(TEXT_remix) - 1,							//can't let go remixed
+	sizeof(TEXT_chaozairflow) - 1,					//chaoz airflow
 	sizeof(TEXT_2textchaoz) - 1,					//chaoz fantasy
 	sizeof(TEXT_speedracer) - 1,					//chaoz impact
 	sizeof(TEXT_2textfullversion) - 1,				//clubstep full
@@ -740,6 +745,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_tobu,				//candyland
 	TEXT_djvi,				//can't electroman
 	TEXT_djvi,				//can't let go remixed
+	TEXT_paragonx9,			//chaoz airflow
 	TEXT_paragonx9,			//chaoz fantasy
 	TEXT_paragonx9,			//chaoz impact
 	TEXT_djnate,			//clubstep full
@@ -844,6 +850,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_tobu) - 1,				//candyland
 	sizeof(TEXT_djvi) - 1,				//can't electroman
 	sizeof(TEXT_djvi) - 1,				//can't let go remixed
+	sizeof(TEXT_paragonx9) - 1,			//chaoz airflow
 	sizeof(TEXT_paragonx9) - 1,			//chaoz fantasy
 	sizeof(TEXT_paragonx9) - 1,			//chaoz impact
 	sizeof(TEXT_djnate) - 1,			//clubstep full
@@ -946,6 +953,7 @@ const unsigned char* const origartists1[] = {
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
+	0, 										//chaoz airflow
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
 	0,										//clubstep full
@@ -1048,6 +1056,7 @@ const unsigned char origartists1_size[] = {
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
+	0, 										//chaoz airflow
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
 	0,										//clubstep full
@@ -1150,6 +1159,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_nerdboy,				//candyland
 	TEXT_craftyjumper,			//can't electroman
 	TEXT_craftyjumper,			//can't let go remixed
+	TEXT_seaglowingpro,			//chaoz airflow
 	TEXT_usersniper,			//chaoz fantasy
 	TEXT_elangel,				//chaoz impact
 	TEXT_seaglowingpro,			//clubstep full
@@ -1253,6 +1263,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_nerdboy) - 1,				//candyland
 	sizeof(TEXT_craftyjumper) - 1,			//can't electroman
 	sizeof(TEXT_craftyjumper) - 1,			//can't let go remixed
+	sizeof(TEXT_seaglowingpro) - 1,			//chaoz airflow
 	sizeof(TEXT_usersniper) - 1,			//chaoz fantasy
 	sizeof(TEXT_elangel) - 1,				//chaoz impact
 	sizeof(TEXT_seaglowingpro) - 1,			//clubstep full
@@ -1356,6 +1367,7 @@ const unsigned char* const coveringartists2[] = {
 	0,										//candyland
 	0,										//can't electroman
 	0,										//can't let go remixed
+	0,										//chaoz airflow
 	0,										//chaoz fantasy
 	0,										//chaoz impact
 	TEXT_cloud54,							//clubstep full
@@ -1459,6 +1471,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
+	0, 										//chaoz airflow
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
 	sizeof(TEXT_cloud54) - 1,				//clubstep full
@@ -1561,6 +1574,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
+	0, 										//chaoz airflow
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
 	0,										//clubstep full
@@ -1664,6 +1678,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
+	0, 										//chaoz airflow
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
 	0,										//clubstep full
@@ -1766,6 +1781,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
+	0, 										//chaoz airflow
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
 	0,										//clubstep full
@@ -1869,6 +1885,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//candyland
 	0, 										//can't electroman
 	0, 										//can't let go remixed
+	0, 										//chaoz airflow
 	0, 										//chaoz fantasy
 	0, 										//chaoz impact
 	0,										//clubstep full
@@ -1976,6 +1993,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_candyland,
 	song_cant_electroman,
 	song_cant_let_go_remix,
+	song_chaoz_airflow,
 	song_chaozfantasy,
 	song_chaoz_impact,
 	song_clubstep_full,
