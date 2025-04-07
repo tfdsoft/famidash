@@ -1803,7 +1803,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//xstep
 	0, 										//clutterfunk
 	TEXT_leejh20,							//theory of everything
-	0, 										//electroman adventures
+	TEXT_craftyjumper, 						//electroman adventures
 	0, 										//clubstep
 	0, 										//electrodynamix
 	0, 										//hexagon force
@@ -1910,7 +1910,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//xstep
 	0, 										//clutterfunk
 	sizeof(TEXT_leejh20) - 1,				//theory of everything
-	0, 										//electroman adventures
+	sizeof(TEXT_craftyjumper) - 1, 			//electroman adventures
 	0, 										//clubstep
 	0, 										//electrodynamix
 	0, 										//hexagon force
