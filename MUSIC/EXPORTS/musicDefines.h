@@ -43,7 +43,7 @@
 #define song_eighto 42
 #define song_dash 43
 #define song_magic_touch 44
-#define song_machina_gdw_cut 45
+#define song_space_pirates_gdw_cut 45
 #define song_atthespeedoflight2 46
 #define song_endgame 47
 #define song_stereo_madness_2 48
@@ -96,8 +96,8 @@
 #define song_driving_by_night 95
 #define song_lost 96
 #define song_round_1_gdw_cut 97
-#define song_space_pirates_gdw_cut 98
-#define song_beast_mode_gdw_cut 99
+#define song_beast_mode_gdw_cut 98
+#define song_machina_gdw_cut 99
 #define song_payload_gdw_cut 100
 #define song_years_gdw_cut 101
 #define song_emeht_unem 102
