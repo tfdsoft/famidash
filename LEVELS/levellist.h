@@ -113,7 +113,7 @@ const unsigned char block_set[] = {
 	BLOCKSB, //clutterfunk 2
 	BLOCKSB, //speed racer
 	BLOCKSB, //pg clubstep
-	BLOCKSA, //hell
+	BLOCKSB, //hell
 	BLOCKSA, //eon
 	BLOCKSB, //stalemate
 	BLOCKSB, //bloodbath
