@@ -165,7 +165,7 @@ const unsigned char Credits2[629]={
 
 #ifdef FLAG_ENABLE_VER_NUM
 	#ifdef FLAG_BETA_BUILD
-		const unsigned char ver[] = "DEMO";
+		const unsigned char ver[] = " VER";
 	#else
 		const unsigned char ver[] = " VER";
 	#endif
