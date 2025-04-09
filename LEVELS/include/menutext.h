@@ -1,3 +1,5 @@
+// Exported by export_levels.py
+
 #include "defines/color1_charmap.h"
 
 const char levelText00[ 7] = "STEREO ";

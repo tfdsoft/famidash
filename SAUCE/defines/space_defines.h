@@ -35,3 +35,6 @@
 #define SAWBLADESA 14
 #define SLOPESA 16
 
+#define DECO1 28
+#define DECOCLOUD 32
+#define EXTRASPRITES1 36
