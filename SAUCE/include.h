@@ -54,6 +54,7 @@
 
 #pragma rodata-name (push, "RODATA")
 #include "LEVELS/include/levellist.h"    // level order goes here
+#include "LEVELS/include/const_levellist.h"    // colors list and icontable for overflow conservation reasons
 #pragma rodata-name (pop)
 
 #include "defines/dialogbox.h"

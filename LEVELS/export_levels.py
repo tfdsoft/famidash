@@ -398,8 +398,11 @@ def compile_and_write_menutext(filteredMetadata : dict):
 	upperSizeArrayList = [f'\tsizeof(levelText{i:02X}),' if i != None else '\t0,' for i in upperIdxList]
 	lowerArrayList = [f'\tlevelText{i:02X},' if i != None else '\tNULL,' for i in lowerIdxList]
 	lowerSizeArrayList = [f'\tsizeof(levelText{i:02X}),' if i != None else '\t0,' for i in lowerIdxList]
+
 	(include_path / 'menutext.h').write_text("\n".join(
 		[
+		'// Exported by export_levels.py',
+		'',
 		'#include "defines/color1_charmap.h"',
 		'',
 		*outputStringsList,
@@ -419,7 +422,72 @@ def compile_and_write_menutext(filteredMetadata : dict):
 		'const uint8_t levelTextsLowerSize[] = {',
 		*lowerSizeArrayList,
 		'};',
+		''
 		]))
+
+def generate_level_list(filteredMetadata : dict):
+	def getPropFormatted(i, prop, prefix = None, validPrefixVals = None) -> str:
+		if prefix and i[prop] in validPrefixVals:
+			return f"\t{prefix}{i[prop]},\t// {i['level']}"
+		else:
+			return f"\t{i[prop]},\t// {i['level']}"
+
+	# variables in RODATA
+	# should really be moved to header
+	decoTypes = [getPropFormatted(i, 'decoType') for i in filteredMetadata]
+	spikeSets = [getPropFormatted(i, 'spikeSet', 'SPIKES', ('A', 'B', 'C')) for i in filteredMetadata]
+	blockSets = [getPropFormatted(i, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D')) for i in filteredMetadata]
+	sawSets = [getPropFormatted(i, 'sawSet', 'SAWBLADES', ('A',)) for i in filteredMetadata]
+
+	# Accessed from multiple places in diff banks, so it's in fixed
+	starsList = [f"\t{i['stars']},\t// {i['level']}" for i in filteredMetadata]
+
+	# variables that will be in the menu bank
+	difficultiesList = [f"\t{i['difficulty']},\t// {i['level']}" for i in filteredMetadata]
+	# colors list would be here IF IT WAS UPDATED
+	# currently it overflows into iconBank
+	# those 2 happen to get accessed from exclusively diff banks
+
+	(include_path / 'levellist.h').write_text("\n".join(
+		[
+			'// Exported by export_levels.py',
+			'',
+			'const uint8_t DECOTYPE[] = {',
+			*decoTypes,
+			'};',
+			'',
+			'const uint8_t spike_set[] = {',
+			*spikeSets,
+			'};',
+			'', '',
+			'const uint8_t block_set[] = {',
+			*blockSets,
+			'};',
+			'',
+			'const uint8_t saw_set[] = {',
+			*sawSets,
+			'};',
+			'',
+			'',
+			'#define EASY 0',
+			'#define NORMAL 1',
+			'#define HARD 2',
+			'#define HARDER 3',
+			'#define INSANE 4',
+			'#define DEMON 5',
+			'#define DANGER 6',
+			'',
+			'const uint8_t difficulty_list[] = {',
+			*difficultiesList,
+			'};',
+			'',
+			'const uint8_t stars_list[] = {',
+			*starsList,
+			'};',
+			''
+		]
+		))
+
 
 def main():
 	parser = argparse.ArgumentParser(prog='export_levels',
@@ -455,6 +523,7 @@ def main():
 	binpack_and_write_data(bg_exp_data, spr_exp_data)
 
 	compile_and_write_menutext(filteredMetadata)
+	generate_level_list(filteredMetadata)
 
 	mid_widths_enabled = max(bg_exp_data[1]) >= 0x100
 	hi_widths_enabled = max(bg_exp_data[1]) >= 0x10000
