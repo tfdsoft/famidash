@@ -20,7 +20,7 @@
 	.import	__RODATA_LOAD__ ,__RODATA_RUN__ ,__RODATA_SIZE__
 
 	.import MAPPER, SUBMAPPER, MIRRORING, PRG_BANK_COUNT, CHR_BANK_COUNT, SRAM, TRAINER, CONSOLE_TYPE, PRG_RAM_COUNT, PRG_NVRAM_COUNT, CHR_RAM_COUNT, CHR_NVRAM_COUNT, CPU_PPU_TIMING, HARDWARE_TYPE, MISC_ROMS, DEF_EXP_DEVICE
-	.import FIRST_MUSIC_BANK, FIRST_DMC_BANK, _SRAM_VALIDATE, _donotresetrng
+	.import FIRST_MUSIC_BANK, FIRST_DMC_BANK, _SRAM_VALIDATE
 
 VRAM_BUF=__VRAM_BUF_START__
 OAM_BUF=__OAM_BUF_START__
@@ -186,47 +186,6 @@ clearVRAM:
 	dey
 	bne @1
 
-	lda _donotresetrng
-	cmp #1
-	bne @setseed
-	lda RAND_SEED
-	sta aart_lz_buffer
-	lda RAND_SEED+1
-	sta aart_lz_buffer+1
-	lda RAND_SEED+2
-	sta aart_lz_buffer+2
-	lda RAND_SEED+3
-	sta aart_lz_buffer+3
-	lda RAND_SEED+4
-	sta aart_lz_buffer+4
-	jmp clearRAM
-	
-	
-@setseed:
-	lda $FC
-	bne @cont1
-@fallback1:
-	lda #$FD
-@cont1:
-	sta aart_lz_buffer
-	lda $FD
-	bne @cont2
-@fallback2:
-	lda #$FD
-@cont2:
-	sta aart_lz_buffer+1
-	lda $FE
-	bne @cont3
-@fallback3:
-	lda #$FD
-@cont3:
-	sta aart_lz_buffer+2
-	lda $FF
-    bne @cont4
-@fallback4:
-	lda #$FD
-@cont4:
-	sta aart_lz_buffer+3
 
 clearRAM:
     txa
@@ -247,17 +206,6 @@ clearRAM:
     bne @1
 
 
-	lda aart_lz_buffer
-	sta RAND_SEED
-	lda aart_lz_buffer+1
-	sta RAND_SEED+1
-	lda aart_lz_buffer+2
-	sta RAND_SEED+2
-	lda aart_lz_buffer+3
-	sta RAND_SEED+3
-
-	lda #1
-	sta _donotresetrng
 
 	lda #4
 	jsr _pal_bright
