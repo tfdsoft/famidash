@@ -175,11 +175,15 @@ if __name__ == "__main__":
     if spec is None:
         subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'binpacking'])
 
+    spec = importlib.util.find_spec('pyjson5')
+    if spec is None:
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pyjson5'])
+
     import os, filecmp
     import re
     import argparse
     import binpacking
-    import json
+    import pyjson5
     import itertools
     
     def checkErr(proc : subprocess.CompletedProcess):
@@ -207,11 +211,13 @@ if __name__ == "__main__":
         parser.add_argument('fsPath', metavar='famistudioPath', help='Path to FamiStudio.dll from FamiStudio 4.3.0', nargs='?', default=findInPATH("FamiStudio.dll"), type=pathlib.Path)
     else:
         parser.add_argument('fsPath', metavar='famistudioPath', help='Path to FamiStudio.dll from FamiStudio 4.3.0', type=pathlib.Path)
+    parser.add_argument('-m', '--metadata', type=pathlib.Path, required=True,
+                help='Path to json5 file with music metadata specifications')
     parser.add_argument('-t', '--test-export', action='store_true', help='Exports the music to the TMP folder instead of MUSIC/EXPORTS.')
     args = parser.parse_args()
     
     modulePath = musicFolder / "MODULES" / "music_master.fms"
-    metadataPath = musicFolder / "metadata.json"
+    metadataPath = args.metadata
     
     fsPath = pathlib.Path(args.fsPath)
     
@@ -225,10 +231,10 @@ if __name__ == "__main__":
     # Load metadata file
     print("\n==== Loading metadata...")
     if not(metadataPath.is_file()):
-        print("The metadata file is not present.")
+        print("Path to the metadata json5 file is invalid. Please specify a proper file.")
         exit(1)
-    with metadataPath.open() as fp:
-        metadata = json.load(fp)
+    with metadataPath.open() as metafile:
+        metadata = pyjson5.decode_io(metafile)
     
     # Process metadata
     print("\n==== Processing metadata...")

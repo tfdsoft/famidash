@@ -512,18 +512,12 @@ def main():
 	parser.add_argument('-f', '--folder', type=pathlib.Path, required=True,
 					help='Path to folder with csv files')
 	parser.add_argument('-m', '--metadata', type=pathlib.Path, required=False,
-					help='Path to metadata.json5 file with level specifications')
+					help='Path to json5 file with level metadata specifications')
 	args = parser.parse_args()
 
-	if (args.metadata == None or not args.metadata.is_file()):
-		# first, try to find the file in its own folder
-		if (own_path / 'metadata.json5').is_file():
-			args.metadata = (own_path / 'metadata.json5')
-		elif (args.folder / 'metadata.json5').is_file():
-			args.metadata = (args.folder / 'metadata.json5')
-		else:
-			print("Path to metadata.json5 not specified and not found. Please specify it with the -m argument")
-			exit(1)
+	if not args.metadata.is_file():
+		print("Path to the metadata json5 file is invalid. Please specify a proper file.")
+		exit(1)
 
 	with args.metadata.open() as metafile:
 		metadata = pyjson5.decode_io(metafile)

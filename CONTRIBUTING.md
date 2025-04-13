@@ -50,9 +50,9 @@ Paths are given to relative to the MUSIC folder, unless it begins with a /, then
     - every sample used in the tracks in the game is in the "dpcm" song (that's the DPCM aligner)
 3. Save the MODULES/music_master.fms module
 4. Add the songs to metadata.json for the export script to include them in the game (and the sound test)
-5. Run the following command to test the music exports:<br>`python3 export.py [<path/to/FamiStudio.dll>] -t`<br>If FamiStudio.dll on your system is in the PATH variable (this can be checked with trial and error), you should omit the <path/to/FamiStudio.dll>, otherwise substitute it with the actual path to FamiStudio.dll on your machine.
+5. Run the following command to test the music exports:<br>`python3 export.py -m metadata.json5 [<path/to/FamiStudio.dll>] -t`<br>If FamiStudio.dll on your system is in the PATH variable (this can be checked with trial and error), you should omit the <path/to/FamiStudio.dll>, otherwise substitute it with the actual path to FamiStudio.dll on your machine.
 6. Check the output of it, make sure it didn't error out midway through and gave you the following message:<br>"==== Everything seems to have gone alright, you can run it for real now."
-7. If it didn't error out and it completed successfully, run the following command to do it for real:<br>`python3 export.py [<path/to/FamiStudio.dll>]`
+7. If it didn't error out and it completed successfully, run the following command to do it for real:<br>`python3 export.py -m metadata.json5 [<path/to/FamiStudio.dll>]`
 8. Don't close the terminal yet! You've now got one last thing to adjust:
 9. Ensure that the /LIB/asm/famistudio_ca65.s file has the settings set as the export output dictates
 10. Test the game.
