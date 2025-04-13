@@ -20,7 +20,7 @@
 	.import	__RODATA_LOAD__ ,__RODATA_RUN__ ,__RODATA_SIZE__
 
 	.import MAPPER, SUBMAPPER, MIRRORING, PRG_BANK_COUNT, CHR_BANK_COUNT, SRAM, TRAINER, CONSOLE_TYPE, PRG_RAM_COUNT, PRG_NVRAM_COUNT, CHR_RAM_COUNT, CHR_NVRAM_COUNT, CPU_PPU_TIMING, HARDWARE_TYPE, MISC_ROMS, DEF_EXP_DEVICE
-	.import FIRST_MUSIC_BANK, FIRST_DMC_BANK, _SRAM_VALIDATE
+	.import FIRST_MUSIC_BANK, FIRST_DMC_BANK, _SRAM_VALIDATE, _donotresetrng
 
 VRAM_BUF=__VRAM_BUF_START__
 OAM_BUF=__OAM_BUF_START__
@@ -186,6 +186,23 @@ clearVRAM:
 	dey
 	bne @1
 
+	lda _donotresetrng
+	cmp #1
+	bne @setseed
+	lda RAND_SEED
+	sta aart_lz_buffer
+	lda RAND_SEED+1
+	sta aart_lz_buffer+1
+	lda RAND_SEED+2
+	sta aart_lz_buffer+2
+	lda RAND_SEED+3
+	sta aart_lz_buffer+3
+	lda RAND_SEED+4
+	sta aart_lz_buffer+4
+	jmp clearRAM
+	
+	
+@setseed:
 	lda $FC
 	bne @cont1
 @fallback1:
@@ -246,6 +263,9 @@ clearRAM:
 	sta RAND_SEED+3
 	lda aart_lz_buffer+4
 	sta RAND_SEED+4
+
+	lda #1
+	sta _donotresetrng
 
 	lda #4
 	jsr _pal_bright
