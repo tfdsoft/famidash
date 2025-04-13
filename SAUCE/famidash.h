@@ -439,6 +439,8 @@ uint8_t tempplat;
 
 uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 
+uint8_t donotresetrng;
+
 extern uint16_t min_scroll_y;
 extern uint16_t seam_scroll_y;
 
