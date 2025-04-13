@@ -212,7 +212,7 @@ shiftBy4table:
 .endproc
 
 ; void __fastcall__ init_rld(uint8_t level);
-.segment "CODE_2"
+.segment "CODE"
 
 .global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
 .import _song, _speed, _lastgcolortype, _lastbgcolortype
