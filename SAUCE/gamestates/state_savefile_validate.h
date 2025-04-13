@@ -1,10 +1,11 @@
 
 CODE_BANK_PUSH("XCD_BANK_01")
 
+void setdefaultoptions();
 void mouse_and_cursor();
 void check_if_music_stopped_3();
 void savefile_reset_check_loop(){
-//        setdefaultoptions();
+        setdefaultoptions();
 }
 
 void state_savefile_validate(){
