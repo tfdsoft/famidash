@@ -594,7 +594,7 @@ def print_around_function(stringA, stringB, function, args):
 def main():
 	parser = argparse.ArgumentParser(prog='export_levels',
 					description='RLE encode level csv files and convert them to level data')
-	parser.add_argument('-f', '--folder', type=pathlib.Path, required=True,
+	parser.add_argument('-f', '--csvFolder', type=pathlib.Path, required=True,
 					help='Path to folder with csv files')
 	parser.add_argument('-m', '--metadata', type=pathlib.Path, required=True,
 					help='Path to json5 file with level metadata specifications')
@@ -620,8 +620,8 @@ def main():
 
 	levels = [i['level'] for i in filteredMetadata]
 
-	bg_exp_data = export_bg(args.folder, levels, include_path)
-	spr_exp_data = export_spr(args.folder, levels)
+	bg_exp_data = export_bg(args.csvFolder, levels, include_path)
+	spr_exp_data = export_spr(args.csvFolder, levels)
 	binpack_and_write_data(bg_exp_data, spr_exp_data, include_path)
 
 	print("")
