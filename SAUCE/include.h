@@ -17,8 +17,8 @@
 #include "nesdash.h" // custom stuff made specifically for famidash
 #include "famistudio_cc65.h" // sound driver
 
-#include "MUSIC/EXPORTS/musicDefines.h" // sound driver C defines
-#include "MUSIC/EXPORTS/sfxDefines.h" // sound driver C defines
+#include "musicDefines.h" // sound driver C defines
+#include "sfxDefines.h" // sound driver C defines
 
 // various game-essential defines
 #include "defines/space_defines.h"
@@ -35,26 +35,26 @@
 #pragma rodata-name (pop)
 #pragma rodata-name (push, "XCD_BANK_06")
 #include "defines/menunametable2.h"
-#include "LEVELS/include/grounddata.h"
-#include "LEVELS/include/groundlist.h"
+#include "grounddata.h"
+#include "groundlist.h"
 #pragma rodata-name (pop)
 
 
 
 
 // banks set inside level data due to banking
-#include "LEVELS/include/objdefines.h"   // object defines for easier implementation
+#include "objdefines.h"   // object defines for easier implementation
                                     // stolen from the old repo lol
 
 // levels are exported to asm now
-// #include "LEVELS/include/leveldata.h"    // level data goes here
+// #include "leveldata.h"    // level data goes here
 
 
 
 
 #pragma rodata-name (push, "RODATA")
-#include "LEVELS/include/levellist.h"    // level order goes here
-#include "LEVELS/include/const_levellist.h"    // colors list and icontable for overflow conservation reasons
+#include "levellist.h"    // level order goes here
+#include "const_levellist.h"    // colors list and icontable for overflow conservation reasons
 #pragma rodata-name (pop)
 
 #include "defines/dialogbox.h"

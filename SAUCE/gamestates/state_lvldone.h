@@ -414,8 +414,8 @@ CODE_BANK_PUSH("XCD_BANK_05")
 
 const unsigned char bgmtestscreen[];
 
-#include "MUSIC/EXPORTS/music_soundTestTables.h"
-#include "MUSIC/EXPORTS/sfx_soundTestTables.h"
+#include "music_soundTestTables.h"
+#include "sfx_soundTestTables.h"
 
 const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
 
@@ -846,7 +846,7 @@ void set_fun_settings() {
 	};
 }	
 
-#include "LEVELS/include/menutext.h"
+#include "menutext.h"
 
 const char coin_counter[][3] = {
   "___",

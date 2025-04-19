@@ -2,13 +2,20 @@
 
 import pathlib
 import sys
+import re
 
 own_path = pathlib.Path(sys.path[0]).resolve()
 
-metadataFile = own_path / "metadata.json5"
-outputFolder = own_path / "include"
+metadataPath = own_path / "metadata"
+
+metadataFileRegex = "lvlset_(.+)_metadata.json5"
+metadataFileGlob = "lvlset_*_metadata.json5"
+metadataFile = lambda lvlset: metadataPath / f"lvlset_{lvlset}_metadata.json5"
+outputFolder = lambda lvlset: own_path / "include" / f"lvlset_{lvlset}"
 csvFolder = own_path / "LEVEL DATA"
 innerScript = own_path / "export_levels.py"
+
+availableLevelSets = {re.findall(metadataFileRegex, i.name)[0] for i in (metadataPath).glob(metadataFileGlob)}
 
 verbose = False
 
@@ -59,19 +66,35 @@ if __name__ == "__main__":
 					default=csvFolder,
 					help='Path to folder with csv files')
 	parser.add_argument('-m', '--metadata', type=pathlib.Path, required=False,
-					default=metadataFile,
-					help='Path to json5 file with level metadata specifications')
+					default=None,
+					help='Custom path to json5 file with level metadata specifications')
 	parser.add_argument('-o', '--outputFolder', type=pathlib.Path, required=False,
-					default=outputFolder,
-					help='Output folder for the include files')
+					default=None,
+					help='Custom output folder for the include files')
+	parser.add_argument('-l', '--levelSet', choices=availableLevelSets, required=False,
+					default=None,
+					help='Set of levels to export')
 	parser.add_argument('-v', '--verbose', action='store_true',
 		help='Increase verbosity of wrapper script')
 	args = parser.parse_args()
 
 	verbose = args.verbose
 
+	levelSet = args.levelSet
+	while levelSet not in availableLevelSets.union({"exit"}):
+		levelSet = input(f"Please select the level set to export [{', '.join(sorted(availableLevelSets))}, exit to exit]: ")
+	if levelSet == "exit":
+		exit(0)
+
+	metaFile = metadataFile(levelSet) if not args.metadata else args.metadata
+	outFolder = outputFolder(levelSet) if not args.outputFolder else args.outputFolder
+
 	print("Running export script...")
-	cmd = [sys.executable, innerScript, '--csvFolder', args.csvFolder, '--metadata', args.metadata, '--outputFolder', args.outputFolder]
+	cmd = [
+		sys.executable, innerScript,
+		'--csvFolder', args.csvFolder,
+		'--metadata', metaFile,
+		'--outputFolder', outFolder]
 	if verbose:
 		print(f"Command: {' '.join(map(str, cmd))}")
 	proc = subprocess.run(cmd)

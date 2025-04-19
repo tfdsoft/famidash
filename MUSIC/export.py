@@ -294,6 +294,8 @@ if __name__ == "__main__":
 
     # Export the music_X.s files
     exportPath = args.outputFolder
+    if not exportPath.is_dir():
+        exportPath.mkdir(parents=True)
     
     dpcmFiles = []
     optionsToSet = []
@@ -403,7 +405,7 @@ if __name__ == "__main__":
         "\n".join([f"song_{id} = {i}" for i, id in enumerate(masterSonglist)]))
 
     # Export segment assignment
-    print("== header.s")
+    print("== music_data_header.s")
     lastAfterDatBank = lastDatBank + 1
     firstDmcBank = lastAfterDatBank - len([i for i in dpcmBanks if i != dmcBankMetaUnused])
     firstMusBank = firstDmcBank - len(bins)
@@ -438,7 +440,7 @@ if __name__ == "__main__":
     if (len(dpcmBanks)):
         header_data.append('FIRST_DMC_BANK = .bank(firstDMCBankPtr)')
 
-    (exportPath / "header.s").write_text("\n".join(header_data))
+    (exportPath / "music_data_header.s").write_text("\n".join(header_data))
 
     print(f"== {exportStemPrefix}_soundTestTables.h")
     processed_soundtest_metadata = processed_metadata['soundTestData']

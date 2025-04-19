@@ -2,14 +2,20 @@
 
 import pathlib
 import sys
+import re
 
 famistudioHelpRegex = "FamiStudio (.+) Command-Line Usage"
 
 own_path = pathlib.Path(sys.path[0]).resolve()
+metadataPath = own_path / "METADATA"
 
-metadataFile = own_path / "metadata.json5"
-outputFolder = own_path / "EXPORTS"
+metadataFileRegex = "lvlset_(.+)_metadata.json5"
+metadataFileGlob = "lvlset_*_metadata.json5"
+metadataFile = lambda lvlset: metadataPath / f"lvlset_{lvlset}_metadata.json5"
+outputFolder = lambda lvlset: own_path / "EXPORTS" / f"lvlset_{lvlset}"
 innerScript = own_path / "export.py"
+
+availableLevelSets = {re.findall(metadataFileRegex, i.name)[0] for i in (metadataPath).glob(metadataFileGlob)}
 
 tmpFolder = (own_path.parent / "TMP").resolve()
 
@@ -22,7 +28,6 @@ if __name__ == "__main__":
 	import os
 	import textwrap
 	from collections.abc import Iterable
-	import re
 
 	envPath = os.environ.get('PATH', "")
 	if (os.name == 'posix'):
@@ -157,11 +162,22 @@ if __name__ == "__main__":
 			Command to execute FamiStudio
 				(Useful if -f is not flexible enough
 				or additional arguments are needed)'''))
+	parser.add_argument('-l', '--levelSet', choices=availableLevelSets, required=False,
+		default=None,
+		help='Set of levels to export')
 	parser.add_argument('-v', '--verbose', action='store_true',
 		help='Increase verbosity of wrapper script')
 	args = parser.parse_args()
 
 	verbose = args.verbose
+
+	levelSet = args.levelSet
+	while levelSet not in availableLevelSets.union({"exit"}):
+		levelSet = input(f"Please select the level set to export [{', '.join(sorted(availableLevelSets))}, exit to exit]: ")
+	if levelSet == "exit":
+		exit(0)
+
+	metaFile = metadataFile(levelSet)
 
 	def getFamiStudio():
 		# Order of precedence:
@@ -199,10 +215,10 @@ if __name__ == "__main__":
 		outFolder = tmpFolder / foldername
 		outFolder.mkdir()
 	else:
-		outFolder = outputFolder
+		outFolder = outputFolder(levelSet)
 
 	print("Running export script...")
-	cmd = [sys.executable, innerScript, '-f', *fsCmd, '-m', metadataFile, '-o', outFolder]
+	cmd = [sys.executable, innerScript, '-f', *fsCmd, '-m', metaFile, '-o', outFolder]
 	if verbose:
 		print(f"Command: {' '.join(map(str, cmd))}")
 	proc = subprocess.run(cmd)
