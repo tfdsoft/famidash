@@ -167,17 +167,22 @@ def processMetadata(metadata : dict) -> dict:
 
 
 if __name__ == "__main__":
-    # install binpacking
+    # install binpacking and pyjson5
+    install_list = []
+
     import importlib.util
     import subprocess
     import sys
     spec = importlib.util.find_spec('binpacking')
     if spec is None:
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'binpacking'])
+        install_list.append('binpacking')
 
     spec = importlib.util.find_spec('pyjson5')
     if spec is None:
-        subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pyjson5'])
+        install_list.append('pyjson5')
+
+    if len(install_list):
+        subprocess.check_call([sys.executable, '-m', 'pip', 'install', *install_list])
 
     import os, filecmp
     import re
@@ -185,48 +190,26 @@ if __name__ == "__main__":
     import binpacking
     import pyjson5
     import itertools
+    from collections.abc import Iterable
     
     def checkErr(proc : subprocess.CompletedProcess):
         if (proc.returncode != 0):
             print(f"AN ERROR HAS OCCURED WITHIN A SUBPROCESS!\n======\nstdout dump:\n===\n{proc.stdout.decode()}\n===\nstderr dump:\n===\n{proc.stderr.decode()}\n===")
             proc.check_returncode() # exits
     
-    envPath = os.environ.get('PATH', "")
-    if (os.name == 'posix'):
-        envPath = envPath.split(":")
-    elif (os.name == 'nt'):
-        envPath = envPath.split(";")
-    else:
-        print (f"YO KIND OF OPERATING SYSTEM ('{os.name}') AIN'T SUPPORTED")
-        exit(1)
-    
-    def findInPATH(executable : str):
-        for prefix in envPath:
-            if (pathlib.Path(prefix) / executable).is_file():
-                return f"{prefix}/{executable}"
-        return None
-    
     parser = argparse.ArgumentParser()
-    if (findInPATH("FamiStudio.dll")):
-        parser.add_argument('fsPath', metavar='famistudioPath', help='Path to FamiStudio.dll from FamiStudio 4.3.0', nargs='?', default=findInPATH("FamiStudio.dll"), type=pathlib.Path)
-    else:
-        parser.add_argument('fsPath', metavar='famistudioPath', help='Path to FamiStudio.dll from FamiStudio 4.3.0', type=pathlib.Path)
+    parser.add_argument('-f', '--famistudioCommand', required=True, nargs="+",
+                help='Command to launch FamiStudio >= 4.3.0')
     parser.add_argument('-m', '--metadata', type=pathlib.Path, required=True,
                 help='Path to json5 file with music metadata specifications')
-    parser.add_argument('-t', '--test-export', action='store_true', help='Exports the music to the TMP folder instead of MUSIC/EXPORTS.')
+    parser.add_argument('-o', '--outputFolder', type=pathlib.Path, required=True,
+                help='Output folder for the include files')
     args = parser.parse_args()
     
     modulePath = musicFolder / "MODULES" / "music_master.fms"
     metadataPath = args.metadata
-    
-    fsPath = pathlib.Path(args.fsPath)
-    
-    if not(fsPath.is_file() or (fsPath / "FamiStudio.dll").is_file()):
-        print(f"{fsPath} is not a valid path to FamiStudio.dll or a directory with it.")
-        exit(1)
-        
-    if fsPath.is_dir() and (fsPath / "FamiStudio.dll").is_file():
-        fsPath /= "FamiStudio.dll"
+
+    fsCmd = args.famistudioCommand
 
     # Load metadata file
     print("\n==== Loading metadata...")
@@ -242,7 +225,7 @@ if __name__ == "__main__":
 
     # Check FamiStudio version
     print("\n==== Checking FamiStudio version...")
-    proc = subprocess.run(['dotnet', fsPath, '-help'], capture_output=True)
+    proc = subprocess.run([*fsCmd, '-help'], capture_output=True)
     checkErr(proc)
     fsVer = re.findall(famistudioHelpRegex, proc.stdout.decode())[0]
     fsVer = [int(x) for x in fsVer.split(".")]
@@ -255,7 +238,7 @@ if __name__ == "__main__":
     print("\n==== Exporting a FamiStudio text file for processing...")
     fsTxtPath = tmpFolder / "{exportStemPrefix}_fs.txt"
 
-    proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-txt-export', fsTxtPath], capture_output=True)
+    proc = subprocess.run([*fsCmd, modulePath, 'famistudio-txt-export', fsTxtPath], capture_output=True)
     checkErr(proc)
     if fsTxtPath.is_file():
         fsTxt = fsTxtPath.read_text()
@@ -283,7 +266,7 @@ if __name__ == "__main__":
     print("\n==== Getting sizes of songs and instruments...")
     tmpAsmPath = tmpFolder / f"{exportStemPrefix}_all.s"
 
-    proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-asm-export', tmpAsmPath, '-famistudio-asm-format:ca65', '-famistudio-asm-force-dpcm-bankswitch', f'-export-songs:{neededSongsCommaSep},{dpcmidx}'], capture_output=True)
+    proc = subprocess.run([*fsCmd, modulePath, 'famistudio-asm-export', tmpAsmPath, '-famistudio-asm-format:ca65', '-famistudio-asm-force-dpcm-bankswitch', f'-export-songs:{neededSongsCommaSep},{dpcmidx}'], capture_output=True)
     tmpAsmPath.unlink(missing_ok = True)
     checkErr(proc)
 
@@ -310,10 +293,7 @@ if __name__ == "__main__":
         print("\t- Total approx. size:", sum([j[2] for j in bins[i]]), "bytes")
 
     # Export the music_X.s files
-    if (args.test_export):
-        exportPath = tmpFolder
-    else:
-        exportPath = musicFolder / "EXPORTS"
+    exportPath = args.outputFolder
     
     dpcmFiles = []
     optionsToSet = []
@@ -328,7 +308,7 @@ if __name__ == "__main__":
         asmExportPath = exportPath / f"{asmExportStem}.s"
         songlistExportPath = exportPath / f"{asmExportStem}_songlist.inc"
 
-        proc = subprocess.run(['dotnet', fsPath, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', '-famistudio-asm-generate-list', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
+        proc = subprocess.run([*fsCmd, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', '-famistudio-asm-generate-list', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
         output = proc.stdout.decode()
         checkErr(proc)
 
@@ -404,7 +384,7 @@ if __name__ == "__main__":
         "music_data_locations_lo:",
         f"\t.byte " + ", ".join([f"<{asmMusicDataName}{i}" for i in range(len(bins))]),
         "music_data_locations_hi:",
-        f"\t.byte " + ",".join([f">{asmMusicDataName}{i}" for i in range(len(bins))]),
+        f"\t.byte " + ", ".join([f">{asmMusicDataName}{i}" for i in range(len(bins))]),
         ".endif",
         "",
         "music_counts:",
@@ -584,9 +564,4 @@ if __name__ == "__main__":
     print("\n==== Don't forget to set these options in the sound driver:")
     print("\n".join(re.findall(actualOptionRegex, "\n".join(list(set(optionsToSet))))))
 
-    if not args.test_export:
-        print("\n==== The export is over, now manually correct stuff as per the contributing guide")
-    else:
-        print("\n==== Everything seems to have gone alright, you can run it for real now.")
-        for glob in [f"{exportStemPrefix}*.s", f"{exportStemPrefix}*.dmc", f"{exportStemPrefix}_songlist.inc", f"{exportStemPrefix}Defines.h", f"header.s", f"{exportStemPrefix}_soundTestTables.h", "sfx_soundTestTables.h", "pcm_metadata.s", "nsf_metadata.s"]:
-            [i.unlink(missing_ok = True) for i in exportPath.glob(glob)]
+    print("\n==== The export is over, now manually correct stuff as per the contributing guide")

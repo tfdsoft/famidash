@@ -2,5 +2,5 @@
 
 cd "%~dp0"
 
-python export_wrapper.py
+python export_wrapper.py -t
 pause

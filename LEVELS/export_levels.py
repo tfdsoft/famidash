@@ -1,16 +1,21 @@
 # No shebang as it's not supposed to run on its own
 
-# install binpacking
+# install binpacking and pyjson5
+install_list = []
+
 import importlib.util
 import subprocess
 import sys
 spec = importlib.util.find_spec('binpacking')
 if spec is None:
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'binpacking'])
+	install_list.append('binpacking')
 
 spec = importlib.util.find_spec('pyjson5')
 if spec is None:
-    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pyjson5'])
+	install_list.append('pyjson5')
+
+if len(install_list):
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', *install_list])
 
 import argparse
 import csv
@@ -594,7 +599,7 @@ def main():
 	parser.add_argument('-m', '--metadata', type=pathlib.Path, required=True,
 					help='Path to json5 file with level metadata specifications')
 	parser.add_argument('-o', '--outputFolder', type=pathlib.Path, required=True,
-					help='Subfolder name in the include folder for this level set')
+					help='Output folder for the include files')
 	args = parser.parse_args()
 
 	if not args.metadata.is_file():
