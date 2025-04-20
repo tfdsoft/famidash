@@ -1,3 +1,4 @@
+
 // Exported by export_levels.py
 
 #include "defines/color1_charmap.h"

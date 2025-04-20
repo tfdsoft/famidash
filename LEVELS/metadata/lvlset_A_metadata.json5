@@ -1,5 +1,5 @@
 {
-	levels:  [
+	official_levels:  [
 		{
 			level: "stereomadness",
 			upperText: "STEREO ",
@@ -345,7 +345,9 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
-		},
+		}
+	],
+	community_levels: [
 		{
 			level: "retray",
 			lowerText: "RETRAY",

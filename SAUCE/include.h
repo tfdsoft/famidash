@@ -21,9 +21,9 @@
 #include "sfxDefines.h" // sound driver C defines
 
 // various game-essential defines
+#include "level_defines.h"
 #include "defines/space_defines.h"
 #include "defines/physics_defines.h"
-#include "defines/level_defines.h"
 
 // grounds go here
 #pragma rodata-name (push, "XCD_BANK_03")
