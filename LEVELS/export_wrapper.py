@@ -12,7 +12,7 @@ metadataFileRegex = "lvlset_(.+)_metadata.json5"
 metadataFileGlob = "lvlset_*_metadata.json5"
 metadataFile = lambda lvlset: metadataPath / f"lvlset_{lvlset}_metadata.json5"
 outputFolder = lambda lvlset: own_path / "include" / f"lvlset_{lvlset}"
-csvFolder = own_path / "LEVEL DATA"
+csvFolder = lambda lvlset : own_path / "LEVEL DATA" / f"lvlset_{lvlset}"
 innerScript = own_path / "export_levels.py"
 
 availableLevelSets = {re.findall(metadataFileRegex, i.name)[0] for i in (metadataPath).glob(metadataFileGlob)}
@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
 	parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
 	parser.add_argument('-f', '--csvFolder', type=pathlib.Path, required=False,
-					default=csvFolder,
+					default=None,
 					help='Path to folder with csv files')
 	parser.add_argument('-m', '--metadata', type=pathlib.Path, required=False,
 					default=None,
@@ -88,11 +88,12 @@ if __name__ == "__main__":
 
 	metaFile = metadataFile(levelSet) if not args.metadata else args.metadata
 	outFolder = outputFolder(levelSet) if not args.outputFolder else args.outputFolder
+	csvFolderArg = csvFolder(levelSet) if not args.csvFolder else args.csvFolder
 
 	print("Running export script...")
 	cmd = [
 		sys.executable, innerScript,
-		'--csvFolder', args.csvFolder,
+		'--csvFolder', csvFolderArg,
 		'--metadata', metaFile,
 		'--outputFolder', outFolder]
 	if verbose:
