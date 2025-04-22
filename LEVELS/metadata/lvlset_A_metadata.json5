@@ -857,5 +857,6 @@
 			objectID: [0x42, 0x43, 0x47], /* Some specific deco*/
 			offsetY: -8
 		}
-	]
+	],
+	levelSetDefineName: "A"
 }
