@@ -166,7 +166,13 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x06
+			startingGroundColor: 0x06,
+			objectOffsets: [
+				{
+					coordinates: [430, 24],
+					offsetY: -8
+				}
+			]
 		},
 		{
 			level: "theoryofeverything",
@@ -714,6 +720,12 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
+			/* objectOffsets: [
+				{
+					objectID: [0x08, 0x09],
+					offsetX: 4
+				}
+			] */
 		},
 		/*{
 			level: "pgclubstep",
@@ -776,7 +788,13 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x06,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					objectID: 0x1A,
+					offsetY: 8
+				}
+			]
 		},*/
 		{
 			level: "luckydraw",
@@ -809,6 +827,35 @@
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
 			parallaxDisable: true
+		}
+	],
+	globalObjectOffsets: [
+		/*	Format:
+		{
+			objectID: int or array,
+			--
+			offset: [x_offset, y_offset] (in px)
+			OR
+			offset{X, Y}: offset (in px)
+
+			override: true if you want this setting to override the previous one for this tile
+		}
+		*/
+		{
+			objectID: 0x3E, /* Right medium post */
+			offsetX: -8
+		},
+		{
+			objectID: 0x40, /* Right long post */
+			offsetX: -16
+		},
+		{
+			objectID: [0x0A, 0x0D, 0x25, 0x52, 0x56, 0xFD], /* Bottom pads */
+			offsetY: 8
+		},
+		{
+			objectID: [0x42, 0x43, 0x47], /* Some specific deco*/
+			offsetY: -8
 		}
 	]
 }

@@ -277,10 +277,50 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str], include_path : pa
 
 	return (banked_level_data, level_widths, level_chunk_list)
 		
-def export_spr(folder: pathlib.PurePath, levels: Iterable[str]):
+def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSettings: Iterable[dict]):
 	all_data = []
 	overflows = []
-	for num, level in enumerate(levels):
+
+	def getDictFromOffsetSettings(offsetSettings : Iterable[dict], alreadyExistingDict: dict = {}):
+		outDict = alreadyExistingDict.copy()
+		# Recompile global offset settings into a single dict (faster)
+		for setting in offsetSettings:
+			offset = setting.get('offset', None)
+			if not offset:
+				offsetX = setting.get('offsetX', 0)
+				offsetY = setting.get('offsetY', 0)
+				offset = [offsetX, offsetY]
+			if all([i == 0 for i in offset]):
+				print(f"No offset data specified in setting {setting}.")
+				continue
+
+			if 'coordinates' in setting.keys():
+				coordinates = tuple(setting['coordinates'])
+				if not isinstance(coordinates, Iterable) or len(coordinates) != 2:
+					print (f"Coordinates invalid in setting {setting}")
+					continue
+
+				if coordinates not in outDict.keys() or setting.get('override'):
+					outDict[coordinates] = [offset, setting.get('override', False)]
+				else:	# add up
+					outDict[coordinates] = [[outDict[coordinates][i] + offset[i] for i in range(2)], False]
+			elif 'objectID' in setting.keys():
+				objIDs = setting['objectID']
+				if isinstance(objIDs, int):
+					objIDs = [objIDs]					
+
+				for obj in objIDs:
+					if obj not in outDict.keys() or setting.get('override'):
+						outDict[obj] = offset
+					else:	# add up
+						outDict[obj] = [outDict[obj][i] + offset[i] for i in range(2)]
+		return outDict
+
+	globalOffsetSettingDict = getDictFromOffsetSettings(globalOffsetSettings)
+
+	for num, metadata in enumerate(levels):
+		level = metadata['level']
+		localOffsetSettings = getDictFromOffsetSettings(metadata.get('objectOffsets', []), globalOffsetSettingDict)
 		lines = []
 		with open(folder / f"{level}_SP.csv") as f:
 			lines = list(csv.reader(f))
@@ -305,34 +345,17 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[str]):
 					x = i * 16		# x coordinate
 					y = (rowOffset + j) * 16		# y coordinate
 					obj_id = int(a)	# object id
+
+					offsetA = localOffsetSettings.get(obj_id, [0, 0])
+					offsetB, offBOverride = localOffsetSettings.get((i, j), [[0, 0], False])
+
+					if offBOverride:
+						x += offsetB[0]
+						y += offsetB[1]
+					else:
+						x += offsetA[0] + offsetB[0]
+						y += offsetA[1] + offsetB[1]
 					
-					if obj_id == 0x3E: #right medium post
-						x -= 8
-					elif obj_id == 0x40: #right long post
-						x -= 16
-
-					if int(a) in [10,13,37,82,0x56,253]: # ADJUST HEIGHT FOR BOTTOM PADS
-						y += 8
-#					if level == "eon" and obj_id == 0x08:
-#							x += 4
-#					if level == "eon" and obj_id == 0x09:
-#							x += 4
-					if level == "cataclysm" and obj_id == 0x1A:
-							y += 8
-
-
-					if level == "clutterfunk" and obj_id == 0x10:
-						count1 += 1
-						if count1 == 2:
-							y -= 8
-					if level == "clutterfunk" and obj_id == 0xfc:
-						count2 += 1
-						if count2 == 3:
-							y -= 8                     
-						elif count2 == 4:
-							y -= 8                     
-					if int(a) in [0x42,0x43,0x47]:
-						y -= 8
 					level_data.append(
 						[x & 0xFF, (x >> 8) & 0xFF,
 						 y & 0xFF, (y >> 8) & 0xFF,
@@ -644,8 +667,10 @@ def main():
 
 	levels = [i['level'] for i in filteredMetadata]
 
+	globalObjectOffsetSettings = metadata['globalObjectOffsets']
+
 	bg_exp_data = export_bg(args.csvFolder, levels, include_path)
-	spr_exp_data = export_spr(args.csvFolder, levels)
+	spr_exp_data = export_spr(args.csvFolder, filteredMetadata, globalObjectOffsetSettings)
 	binpack_and_write_data(bg_exp_data, spr_exp_data, include_path)
 
 	print("")
