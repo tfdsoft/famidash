@@ -503,4 +503,4 @@ _GAME_CHR:
 .segment "PARALLAXCHR"  ; banks 112 - 255
 .export _PARALLAX_CHR
 _PARALLAX_CHR:
-	.incbin "GRAPHICS/parallax.chr" ; 144kb
+	.incbin "GRAPHICS/parallax.chr" ; 72kb

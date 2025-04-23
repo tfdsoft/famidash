@@ -33,9 +33,9 @@ void do_the_scroll_thing(){
 	if (player0_x > curr_x_scroll_stop){ // change x scroll
 		tmp1 = MSB(player0_x - curr_x_scroll_stop);
 		scroll_x += tmp1;
-		parallax_scroll_x += tmp1 ? tmp1 - 1 : 0;
-		if (parallax_scroll_x >= 144) {
-			parallax_scroll_x -= 144;
+		parallax_scroll_x += (tmp1 ? tmp1 - 1 : 0) >> 1;
+		if (parallax_scroll_x >= 72) {
+			parallax_scroll_x -= 72;
 		}
 		high_byte(player0_x) = high_byte(player0_x) - tmp1;
 		high_byte(player1_x) = high_byte(player1_x) - tmp1;

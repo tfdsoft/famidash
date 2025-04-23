@@ -1,0 +1,9 @@
+This script trims CHR files to length based on the first blank row found within the file
+How to use:
+Place CHR files to trim to length in the INPUT folder
+MAKE SURE THE CHR FILES YOU ARE TRIMMING HAVE NO GRAPHICS BENEATH BLANK ROWS
+Run RUN.bat
+All files in the INPUT folder will be trimmed to length and copied over to the OUTPUT folder
+If the CHR file you trimmed is broken, or not a multiple of 16 tiles across, please contact Ficus through the Graphics channel in the Famidash Discord server, and the script may be fixed
+
+	- Ficus Houseplant - April 23, 2025
