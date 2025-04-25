@@ -1244,7 +1244,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_clickerty,				//rainbow tylenol
 	TEXT_seaglowingpro,			//round 1 (gdw cut)
 	TEXT_elangel,				//sonic blaster
-	TEXT_seaglowingpro,			//space pirates (gdw cut)
+	TEXT_elangel,				//space pirates (gdw cut)
 	TEXT_elangel,				//stalemate
 	TEXT_elangel,				//stalemate full
 	TEXT_elangel,				//stereo madness2
@@ -1352,7 +1352,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_clickerty) - 1,				//rainbow tylenol
 	sizeof(TEXT_seaglowingpro) - 1,			//round 1 (gdw cut)
 	sizeof(TEXT_elangel) - 1,				//sonic blaster
-	sizeof(TEXT_seaglowingpro) - 1,			//space pirates (gdw cut)
+	sizeof(TEXT_elangel) - 1,				//space pirates (gdw cut)
 	sizeof(TEXT_elangel) - 1,				//stalemate
 	sizeof(TEXT_elangel) - 1,				//stalemate full
 	sizeof(TEXT_elangel) - 1,				//stereo madness2
