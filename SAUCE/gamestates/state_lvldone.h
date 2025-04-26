@@ -189,6 +189,7 @@ const unsigned char TEXT_xo[]="XO";
 const unsigned char TEXT_kratos[]="KRATOS";
 const unsigned char TEXT_eighto[]="EIGHTO";
 const unsigned char TEXT_beepbeep[]="BEEP$BEEP";
+const unsigned char TEXT_megalovania[]="MEGALOVANIA";
 
 const unsigned char TEXT_hsad2[]="HSAD";
 const unsigned char TEXT_repmuj2[]="REPMUJ";
@@ -294,6 +295,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//magic touch
 	TEXT_mayhem,						//mayhem
 	0,									//mayhem short ver
+	0,									//megalovania
 	0,									//metamorphasis
 	0,									//midnight
 	0,									//ninox
@@ -405,6 +407,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//magic touch
 	sizeof(TEXT_mayhem) - 1,			//mayhem
 	0,									//mayhem short ver
+	0,									//megalovania
 	0,									//metamorphasis
 	0,									//midnight
 	0,									//ninox
@@ -516,6 +519,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_magictouch,					//magic touch
 	TEXT_mayhem2,						//mayhem short ver
 	TEXT_mayhem,						//mayhem
+	TEXT_megalovania,					//megalovania
 	TEXT_metamorphasis,					//metamorphasis
 	TEXT_2textmidnight,					//midnight
 	TEXT_ninox2,						//ninox
@@ -627,6 +631,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_magictouch) - 1,					//magic touch
 	sizeof(TEXT_mayhem2) - 1,						//mayhem short ver
 	sizeof(TEXT_mayhem) - 1,						//mayhem
+	sizeof(TEXT_megalovania) - 1,					//megalovania
 	sizeof(TEXT_metamorphasis) - 1,					//metamorphasis
 	sizeof(TEXT_2textmidnight) - 1,					//midnight
 	sizeof(TEXT_ninox2) - 1,						//ninox
@@ -732,6 +737,7 @@ const unsigned char TEXT_leejh20[]="LEEJH20";
 const unsigned char TEXT_creo[]="CREO";
 const unsigned char TEXT_schtiffles[]="SCHTIFFLES";
 const unsigned char TEXT_boomkitty[]="BOOM$KITTY";
+const unsigned char TEXT_tobyfox[]="TOBY$FOX";
 
 
 
@@ -815,6 +821,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_romos,				//magic touch
 	TEXT_craftyjumper,		//mayhem short ver
 	TEXT_craftyjumper,		//mayhem
+	TEXT_tobyfox,			//megalovania
 	TEXT_interworld,		//metamorphasis
 	TEXT_cornandbeans,		//midnight
 	TEXT_meganeko,			//ninox
@@ -926,6 +933,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_romos) - 1,				//magic touch
 	sizeof(TEXT_craftyjumper) - 1,		//mayhem short ver
 	sizeof(TEXT_craftyjumper) - 1,		//mayhem
+	sizeof(TEXT_tobyfox) - 1,			//megalovania
 	sizeof(TEXT_interworld) - 1,		//metamorphasis
 	sizeof(TEXT_cornandbeans) - 1,		//midnight
 	sizeof(TEXT_meganeko) - 1,			//ninox
@@ -1035,6 +1043,7 @@ const unsigned char* const origartists1[] = {
 	0, 										//magic touch
 	0, 										//mayhem short ver
 	0, 										//mayhem
+	0, 										//megalovania
 	0, 										//metamorphasis
 	0, 										//midnight
 	0, 										//ninox
@@ -1144,6 +1153,7 @@ const unsigned char origartists1_size[] = {
 	0, 										//magic touch
 	0, 										//mayhem short ver
 	0, 										//mayhem
+	0, 										//megalovania
 	0, 										//metamorphasis
 	0, 										//midnight
 	0, 										//ninox
@@ -1253,6 +1263,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro,			//magic touch
 	TEXT_craftyjumper,			//mayhem short ver
 	TEXT_craftyjumper,			//mayhem
+	TEXT_craftyjumper,			//megalovania
 	TEXT_elangel,				//metamorphasis
 	TEXT_seaglowingpro,			//midnight
 	TEXT_seaglowingpro,			//ninox
@@ -1363,6 +1374,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1,			//magic touch
 	sizeof(TEXT_craftyjumper) - 1,			//mayhem short ver
 	sizeof(TEXT_craftyjumper) - 1,			//mayhem
+	sizeof(TEXT_craftyjumper) - 1,			//megalovania
 	sizeof(TEXT_elangel) - 1,				//metamorphasis
 	sizeof(TEXT_seaglowingpro) - 1,			//midnight
 	sizeof(TEXT_seaglowingpro) - 1,			//ninox
@@ -1473,6 +1485,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//magic touch
 	0, 										//mayhem short ver
 	0, 										//mayhem
+	0, 										//megalovania
 	0, 										//metamorphasis
 	0, 										//midnight
 	0, 										//ninox
@@ -1583,6 +1596,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//magic touch
 	0, 										//mayhem short ver
 	0, 										//mayhem
+	0, 										//megalovania
 	0, 										//metamorphasis
 	0, 										//midnight
 	0, 										//ninox
@@ -1692,6 +1706,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//magic touch
 	0, 										//mayhem short ver
 	0, 										//mayhem
+	0, 										//megalovania
 	0, 										//metamorphasis
 	0, 										//midnight
 	0, 										//ninox
@@ -1802,6 +1817,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//magic touch
 	0, 										//mayhem short ver
 	0, 										//mayhem
+	0, 										//megalovania
 	0, 										//metamorphasis
 	0, 										//midnight
 	0, 										//ninox
@@ -1911,6 +1927,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//magic touch
 	0, 										//mayhem short ver
 	0, 										//mayhem
+	0, 										//megalovania
 	0, 										//metamorphasis
 	0, 										//midnight
 	0, 										//ninox
@@ -2021,6 +2038,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//magic touch
 	0, 										//mayhem short ver
 	0, 										//mayhem
+	0, 										//megalovania
 	0, 										//metamorphasis
 	0, 										//midnight
 	0, 										//ninox
@@ -2135,6 +2153,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_magic_touch,
 	song_mayhem_short,
 	song_mayhem,
+	song_megalovania,
 	song_metamorphosis,
 	song_midnight,
 	song_ninox,

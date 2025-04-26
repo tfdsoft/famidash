@@ -395,7 +395,7 @@ _famistudio_state = *
 .segment "MUS_BANK_23"
 	.include "MUSIC/EXPORTS/music_35.s"
 .segment "MUS_BANK_24"
-;	.include "MUSIC/EXPORTS/music_36.s"
+	.include "MUSIC/EXPORTS/music_36.s"
 .segment "MUS_BANK_25"
 ;	.include "MUSIC/EXPORTS/music_37.s"
 .segment "MUS_BANK_26"
