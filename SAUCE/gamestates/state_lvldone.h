@@ -146,6 +146,7 @@ const unsigned char TEXT_cantelectroman[]="CANT";
 const unsigned char TEXT_round1[]="ROUND$1";
 const unsigned char TEXT_thesevenseas[]="THE$SEVEN$SEAS";
 const unsigned char TEXT_spacepirates[]="SPACE$PIRATES";
+const unsigned char TEXT_glitchgremlin[]="GLITCH$GREMLIN";
 
 const unsigned char TEXT_future[]="WHATS$A";
 const unsigned char TEXT_future2[]="FUTURE$FUNK";
@@ -272,6 +273,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//flow
 	TEXT_freedom,						//freedom dive
 	0,									//glint
+	0,									//glitch gremlin
 	0,									//golden haze
 	TEXT_groundto,						//ground to krusty krab
 	TEXT_groundto,						//ground to space
@@ -382,6 +384,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//flow
 	sizeof(TEXT_freedom) - 1,			//freedom dive
 	0,									//glint
+	0,									//glitch gremlin
 	0,									//golden haze
 	sizeof(TEXT_groundto) - 1,			//ground to krusty krab
 	sizeof(TEXT_groundto) - 1,			//ground to space
@@ -492,6 +495,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_flow,							//flow
 	TEXT_freedom2,						//freedom drive
 	TEXT_glint,							//glint
+	TEXT_glitchgremlin,					//glitch gremlin
 	TEXT_retray,						//golden haze
 	TEXT_groundto3,						//ground to krusty krab
 	TEXT_groundto2,						//ground to space
@@ -602,6 +606,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_flow) - 1,							//flow
 	sizeof(TEXT_freedom2) - 1,						//freedom dive
 	sizeof(TEXT_glint) - 1,							//glint
+	sizeof(TEXT_glitchgremlin) - 1,					//glitch gremlin
 	sizeof(TEXT_retray) - 1,						//golden haze
 	sizeof(TEXT_groundto3) - 1,						//ground to krusty krab
 	sizeof(TEXT_groundto2) - 1,						//ground to space
@@ -789,6 +794,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_creo, 				//flow
 	TEXT_xi, 				//freedom dive
 	TEXT_dominuus, 			//glint
+	TEXT_bossfight,			//glitch gremlin
 	TEXT_detious, 			//golden haze
 	TEXT_seaglowingpro,		//ground to krusty krab
 	TEXT_seaglowingpro,		//ground to space
@@ -899,6 +905,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_creo) - 1, 				//flow
 	sizeof(TEXT_xi) - 1, 				//freedom dive
 	sizeof(TEXT_dominuus) - 1, 			//glint
+	sizeof(TEXT_bossfight) - 1, 		//glitch gremlin
 	sizeof(TEXT_detious) - 1, 			//golden haze
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to krusty krab
 	sizeof(TEXT_seaglowingpro) - 1,		//ground to space
@@ -1007,6 +1014,7 @@ const unsigned char* const origartists1[] = {
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
+	0, 										//glitch gremlin
 	0, 										//golden haze
 	0, 										//ground to krusty krab
 	0, 										//ground to space
@@ -1115,6 +1123,7 @@ const unsigned char origartists1_size[] = {
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
+	0, 										//glitch gremlin
 	0, 										//golden haze
 	0, 										//ground to krusty krab
 	0, 										//ground to space
@@ -1223,6 +1232,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro, 		//flow
 	TEXT_seaglowingpro, 		//freedom dive
 	TEXT_seaglowingpro, 		//glint
+	TEXT_seaglowingpro, 		//glitch gremlin
 	TEXT_craftyjumper, 			//golden haze
 	TEXT_seaglowingpro,			//ground to krusty krab
 	TEXT_seaglowingpro,			//ground to space
@@ -1332,6 +1342,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1, 		//flow
 	sizeof(TEXT_seaglowingpro) - 1, 		//freedom dive
 	sizeof(TEXT_seaglowingpro) - 1, 		//glint
+	sizeof(TEXT_seaglowingpro) - 1, 		//glitch gremlin
 	sizeof(TEXT_craftyjumper) - 1, 			//golden haze
 	sizeof(TEXT_seaglowingpro) - 1,			//ground to krusty krab
 	sizeof(TEXT_seaglowingpro) - 1,			//ground to space
@@ -1441,6 +1452,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
+	0, 										//glitch gremlin
 	TEXT_elangel, 							//golden haze
 	0, 										//ground to krusty krab
 	0,										//ground to space
@@ -1550,6 +1562,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
+	0, 										//glitch gremlin
 	sizeof(TEXT_elangel) - 1, 				//golden haze
 	0, 										//ground to krusty krab
 	0, 										//ground to space
@@ -1658,6 +1671,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
+	0, 										//glitch gremlin
 	0, 										//golden haze
 	0, 										//ground to krusty krab
 	0, 										//ground to space
@@ -1767,6 +1781,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
+	0, 										//glitch gremlin
 	0, 										//golden haze
 	0, 										//ground to krusty krab
 	0, 										//ground to space
@@ -1875,6 +1890,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
+	0, 										//glitch gremlin
 	0, 										//golden haze
 	0, 										//ground to krusty krab
 	0, 										//ground to space
@@ -1984,6 +2000,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//flow
 	0, 										//freedom dive
 	0, 										//glint
+	0, 										//glitch gremlin
 	0, 										//golden haze
 	0, 										//ground to krusty krab
 	0, 										//ground to space
@@ -2097,6 +2114,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_flow,
 	song_freedom_dive,
 	song_glint,
+	song_glitch_gremlin,
 	song_retray,
 	song_ground_to_krusty_krab,
 	song_ground_to_space,
