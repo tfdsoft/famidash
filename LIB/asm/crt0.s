@@ -11,7 +11,7 @@
     .export _exit,__STARTUP__:absolute=1
 	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
 	.export _PAL_BUF_RAW := PAL_BUF_RAW, _PAL_PTR := PAL_PTR
-	.import push0,popa,popax,_main
+	.import push0,popa,popax,_main,_donotresetrng
 
 ; Linker generated symbols
 	.import __C_STACK_START__, __C_STACK_SIZE__
@@ -78,7 +78,7 @@ PAD_STATET2: 		.res 2
 PPU_CTRL_VAR: 		.res 1
 PPU_CTRL_VAR1: 		.res 1
 PPU_MASK_VAR: 		.res 1
-RAND_SEED: 			.res 4
+RAND_SEED: 			.res 5
 
 TEMP: 				.res 11
 SPRID:				.res 1
@@ -186,6 +186,54 @@ clearVRAM:
 	dey
 	bne @1
 
+	lda _donotresetrng
+	cmp #1
+	bne @setseed
+	lda RAND_SEED
+	sta aart_lz_buffer
+	lda RAND_SEED+1
+	sta aart_lz_buffer+1
+	lda RAND_SEED+2
+	sta aart_lz_buffer+2
+	lda RAND_SEED+3
+	sta aart_lz_buffer+3
+	lda RAND_SEED+4
+	sta aart_lz_buffer+4
+	jmp clearRAM
+	
+	
+@setseed:
+	lda $FC
+	bne @cont1
+@fallback1:
+	lda #$FD
+@cont1:
+	sta aart_lz_buffer
+	lda $FD
+	bne @cont2
+@fallback2:
+	lda #$FD
+@cont2:
+	sta aart_lz_buffer+1
+	lda $FE
+	bne @cont3
+@fallback3:
+	lda #$FD
+@cont3:
+	sta aart_lz_buffer+2
+	lda $FF
+    bne @cont4
+@fallback4:
+	lda #$FD
+@cont4:
+	sta aart_lz_buffer+3
+	lda $FB
+    bne @cont5
+@fallback5:
+	lda #$FD
+@cont5:
+	sta aart_lz_buffer+4
+
 
 clearRAM:
     txa
@@ -205,7 +253,19 @@ clearRAM:
     inx
     bne @1
 
+	lda aart_lz_buffer
+	sta RAND_SEED
+	lda aart_lz_buffer+1
+	sta RAND_SEED+1
+	lda aart_lz_buffer+2
+	sta RAND_SEED+2
+	lda aart_lz_buffer+3
+	sta RAND_SEED+3
+	lda aart_lz_buffer+4
+	sta RAND_SEED+4
 
+	lda #1
+	sta _donotresetrng
 
 	lda #4
 	jsr _pal_bright

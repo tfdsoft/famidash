@@ -172,7 +172,7 @@ void __fastcall__ bank_spr(uint8_t n);
 //get random number 0..255 or 0..65535
 
 uint8_t __fastcall__ newrand();
-//uint8_t __fastcall__ rand8();
+uint8_t __fastcall__ rand8();
 // uint16_t  __fastcall__ rand16();
 
 //set random seed

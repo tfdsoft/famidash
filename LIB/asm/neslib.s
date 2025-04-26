@@ -15,8 +15,8 @@
 	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
 	.export _pal_bright
 	.export _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask,_ppu_system
-	.export _oam_clear,_oam_clear_player,__oam_spr,__oam_meta_spr,__oam_meta_spr_disco, _oam_clear_two_players
-	;.export _oam_hide_rest,_oam_size,_bank_bg,_rand8
+	.export _oam_clear,_oam_clear_player,__oam_spr,__oam_meta_spr,__oam_meta_spr_disco, _oam_clear_two_players,_rand8
+	;.export _oam_hide_rest,_oam_size,_bank_bg
 	.export _ppu_wait_frame,_ppu_wait_nmi
 	.export __scroll,_split,_newrand
 	.export _bank_spr
@@ -1122,13 +1122,13 @@ rand2:
 	sta <RAND_SEED+1
 	rts
 
-;_rand8:
+_rand8:
 
-;	jsr rand1
-;	jsr _pad_poll
-;	adc <RAND_SEED
-;	ldx #0
-;	rts
+	jsr rand1
+	jsr _pad_poll
+	adc <RAND_SEED
+	ldx #0
+	rts
 
 
 

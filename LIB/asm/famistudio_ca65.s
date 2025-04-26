@@ -4813,11 +4813,11 @@ famistudio_set_instrument:
 	
 	@randomization_loop:
 		sta @instrument_ptr
-		jsr _newrand
+		jsr rand1
 		eor @instrument_ptr
 		and #$1F
 		; Y is 0
-		cmp #$09	;	Ensure shit stays in range
+		cmp #$0A	;	Ensure shit stays in range
 		bcs @randomization_loop				;__
 	
 	@no_randomization:
@@ -5597,7 +5597,7 @@ famistudio_advance_channel:
 	sta famistudio_slide_step, x
 	
 	@randomization_loop:
-		jsr _newrand
+		jsr rand1
 		eor famistudio_chn_note,x
 		cmp #96	;	Ensure shit stays in range
 		bcs @randomization_loop				;__

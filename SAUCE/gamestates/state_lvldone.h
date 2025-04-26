@@ -2226,7 +2226,7 @@ void bgmtest() {
 	pal_fade_to_withmusic(0,4);
 	update_text1();
 	while (1) {
-		
+		rand8();
 		ppu_wait_nmi();
 		music_update();
 		oam_clear();
