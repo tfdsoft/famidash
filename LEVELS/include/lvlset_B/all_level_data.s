@@ -256,7 +256,7 @@
 		.incbin "EXPORTS/ninox.lz.bin" ; Size: 2328
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8182 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8180 bytes
 	.export level_data_speedracer
 	level_data_speedracer:
 	; Header
@@ -277,7 +277,7 @@
 	.export level_data_highlife_1
 	level_data_highlife_1:
 	; Level data
-		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2536
+		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2534
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 8168 bytes
