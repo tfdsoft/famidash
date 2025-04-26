@@ -192,6 +192,8 @@ const unsigned char TEXT_beepbeep[]="BEEP$BEEP";
 const unsigned char TEXT_hsad2[]="HSAD";
 const unsigned char TEXT_repmuj2[]="REPMUJ";
 const unsigned char TEXT_unem2[]="EMEHT$UNEM";
+const unsigned char TEXT_ssendam_oerets[]="OERETS";
+const unsigned char TEXT_ssendam_oerets2[]="SSENDAM";
 
 
 const unsigned char TEXT_sfxtext0[]="DEATH";
@@ -317,6 +319,7 @@ const unsigned char* const xbgmtexts1[] = {
 	0,									//xo
 	TEXT_years,							//years (gdw cut)
 	0,									//emeht unem
+	TEXT_ssendam_oerets,				//ssendam oerets
 	0,									//hsaD
 	0,									//repmuJ
 
@@ -426,6 +429,7 @@ const unsigned char xbgmtext1_size[] = {
 	0,									//xo
 	sizeof(TEXT_years) - 1,				//years (gdw cut)
 	0,									//emeht unem
+	sizeof(TEXT_ssendam_oerets) - 1,	//ssendam oerets
 	0,									//hsaD
 	0,									//repmuJ
 	
@@ -535,6 +539,7 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_xo,							//xo
 	TEXT_GDW,							//years (gdw cut)
 	TEXT_unem2,							//emeht unem
+	TEXT_ssendam_oerets2,				//ssendam oerets
 	TEXT_hsad2,							//hsaD
 	TEXT_repmuj2,						//repmuJ
 	
@@ -644,6 +649,7 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_xo) - 1,							//xo
 	sizeof(TEXT_GDW) - 1,							//years (gdw cut)
 	sizeof(TEXT_unem2) - 1,							//unem emeht
+	sizeof(TEXT_ssendam_oerets2) - 1,				//ssendam oerets
 	sizeof(TEXT_hsad2) - 1,							//hsaD
 	sizeof(TEXT_repmuj2) - 1,						//repmuJ
 	
@@ -830,6 +836,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_aaron,				//xo
 	TEXT_dexarson,			//years GDW cut
 	TEXT_robtop,			//emeht uneM
+	TEXT_foreverbound,		//ssendam oerets
 	TEXT_mdk,				//hsaD
 	TEXT_waterflame,		//repmuJ
 	
@@ -939,6 +946,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_aaron) - 1,				//xo
 	sizeof(TEXT_dexarson) - 1,			//years GDW cut
 	sizeof(TEXT_robtop) - 1,			//emeht unem
+	sizeof(TEXT_foreverbound) - 1,		//ssendam oerets
 	sizeof(TEXT_mdk) - 1,				//hsaD
 	sizeof(TEXT_waterflame) - 1,		//repmuJ
 };
@@ -1046,6 +1054,7 @@ const unsigned char* const origartists1[] = {
 	TEXT_musselwhite,						//xo
 	0, 										//years GDW cut
 	0,										//emeht unem	
+	0,										//ssendam oerets
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1153,6 +1162,7 @@ const unsigned char origartists1_size[] = {
 	sizeof(TEXT_musselwhite) - 1,			//xo
 	0, 										//years GDW cut
 	0,										//emeht unem	
+	0,										//ssendam oerets
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1260,6 +1270,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_seaglowingpro,			//xo
 	TEXT_elangel,				//years GDW cut
 	TEXT_craftyjumper,			//emeht unem
+	TEXT_craftyjumper,			//ssendam oerets
 	TEXT_craftyjumper,			//hsaD
 	TEXT_seaglowingpro,			//repmuJ
 };
@@ -1368,6 +1379,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_seaglowingpro) - 1,			//xo
 	sizeof(TEXT_elangel) - 1,				//years GDW cut
 	sizeof(TEXT_craftyjumper) - 1,			//emeht unem
+	sizeof(TEXT_craftyjumper) - 1,			//ssendam oerets
 	sizeof(TEXT_craftyjumper) - 1,			//hsaD
 	sizeof(TEXT_seaglowingpro) - 1,			//repmuJ
 };
@@ -1476,6 +1488,7 @@ const unsigned char* const coveringartists2[] = {
 	0, 										//xo
 	0, 										//years GDW cut
 	0,										//emeht unem	
+	0,										//ssendam oerets
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1584,6 +1597,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//xo
 	0, 										//years GDW cut
 	0,										//emeht unem	
+	0,										//ssendam oerets
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1691,6 +1705,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//xo
 	0, 										//years GDW cut
 	0,										//emeht unem	
+	0,										//ssendam oerets
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1799,6 +1814,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//xo
 	0, 										//years GDW cut
 	0,										//emeht unem	
+	0,										//ssendam oerets
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -1906,6 +1922,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//xo
 	0, 										//years GDW cut
 	0,										//emeht unem	
+	0,										//ssendam oerets
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -2014,6 +2031,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//xo
 	0, 										//years GDW cut
 	0,										//emeht unem	
+	0,										//ssendam oerets
 	0, 										//hsaD
 	0, 										//repmuJ
 };
@@ -2126,6 +2144,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_xo,
 	song_years_gdw_cut,
 	song_emeht_unem,
+	song_ssendam_oerets,
 	song_hsad,
 	song_repmuj,
 };
