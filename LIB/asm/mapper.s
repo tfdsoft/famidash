@@ -359,7 +359,7 @@ MMC3_REG_PRG_RAM_PROTECT = $a001
     .export _write_irq_table
 
 
-.segment "CODE"
+.segment "CODE_2"
     edit_irq_table:
     __edit_irq_table:
        ; a = byte

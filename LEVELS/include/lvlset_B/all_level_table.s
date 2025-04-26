@@ -26,6 +26,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_aftermath)
 	.byte .lobyte(level_data_aftercatabath)
 	.byte .lobyte(level_data_slaughterhouse)
+	.byte .lobyte(level_data_test4)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -49,6 +50,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_aftermath)
 	.byte .hibyte(level_data_aftercatabath)
 	.byte .hibyte(level_data_slaughterhouse)
+	.byte .hibyte(level_data_test4)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -72,6 +74,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_aftermath))
 	.byte .lobyte(.bank(level_data_aftercatabath))
 	.byte .lobyte(.bank(level_data_slaughterhouse))
+	.byte .lobyte(.bank(level_data_test4))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_subtleoddities_0)
@@ -116,6 +119,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_aftermath)
 	.byte .lobyte(sprite_data_aftercatabath)
 	.byte .lobyte(sprite_data_slaughterhouse)
+	.byte .lobyte(sprite_data_test4)
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
@@ -139,6 +143,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_aftermath)
 	.byte .hibyte(sprite_data_aftercatabath)
 	.byte .hibyte(sprite_data_slaughterhouse)
+	.byte .hibyte(sprite_data_test4)
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
@@ -162,6 +167,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_aftermath))
 	.byte .lobyte(.bank(sprite_data_aftercatabath))
 	.byte .lobyte(.bank(sprite_data_slaughterhouse))
+	.byte .lobyte(.bank(sprite_data_test4))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -188,6 +194,7 @@ _level_lengths_lo:
 	.byte .lobyte($00007C)		; aftermath
 	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($000098)		; slaughterhouse
+	.byte .lobyte($00007A)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -213,6 +220,7 @@ _level_lengths_md:
 	.byte .hibyte($00007C)		; aftermath
 	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($000098)		; slaughterhouse
+	.byte .hibyte($00007A)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -238,6 +246,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00007C)		; aftermath
 	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($000098)		; slaughterhouse
+	.byte .bankbyte($00007A)		; test4
 
 .endif
 .endif

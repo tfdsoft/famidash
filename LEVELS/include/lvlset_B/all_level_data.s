@@ -78,11 +78,28 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8147
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8045 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8190 bytes
 	.export level_data_aftercatabath_3
 	level_data_aftercatabath_3:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8045
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte song_atthespeedoflightfull ;___ Song ID
+		.byte 0 ;____________________________ Starting game mode
+		.byte 0 ;____________________________ Starting speed
+		.byte 1 ;____________________________ Disable parallax
+		.byte _DECO1 ;_______________________ Deco type
+		.byte _SPIKESC ;_____________________ Spike set
+		.byte _BLOCKSB ;_____________________ Block set
+		.byte _SAWBLADESA ;__________________ Sawblade set
+		.byte $12 ;__________________________ Starting background color
+		.byte $02 ;__________________________ Starting ground color
+		.byte 27 ;___________________________ Level height
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 144
 
 
 .segment "DAT_BANK_05"	; Total bank size: 8096 bytes
@@ -142,7 +159,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7518
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8189 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8188 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -404,7 +421,7 @@
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2236
 
 
-.segment "DAT_BANK_16"	; Total bank size: 6145 bytes
+.segment "DAT_BANK_16"	; Total bank size: 6846 bytes
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header

@@ -64,7 +64,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8099
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8164 bytes
+.segment "DAT_BANK_03"	; Total bank size: 8181 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -81,23 +81,6 @@
 		.byte 27 ;________________ Level height
 	; Level data
 		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7480
-
-	.export level_data_luckydraw
-	level_data_luckydraw:
-	; Header
-		.byte song_electroman_adventures ;___ Song ID
-		.byte 0 ;____________________________ Starting game mode
-		.byte 0 ;____________________________ Starting speed
-		.byte 1 ;____________________________ Disable parallax
-		.byte _DECOCLOUD ;___________________ Deco type
-		.byte _SPIKESB ;_____________________ Spike set
-		.byte _BLOCKSB ;_____________________ Block set
-		.byte _LETTERBANK ;__________________ Sawblade set
-		.byte $0F ;__________________________ Starting background color
-		.byte $0F ;__________________________ Starting ground color
-		.byte 27 ;___________________________ Level height
-	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8185 bytes
@@ -668,7 +651,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2723
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 8004 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 8148 bytes
 	.export level_data_baseafterbase
 	level_data_baseafterbase:
 	; Header
@@ -702,6 +685,23 @@
 		.byte 27 ;_________________ Level height
 	; Level data
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1934
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte song_dash ;________ Song ID
+		.byte 0 ;________________ Starting game mode
+		.byte 0 ;________________ Starting speed
+		.byte 1 ;________________ Disable parallax
+		.byte _EXTRASPRITES1 ;___ Deco type
+		.byte _SPIKESA ;_________ Spike set
+		.byte _BLOCKSB ;_________ Block set
+		.byte _SAWBLADESA ;______ Sawblade set
+		.byte $12 ;______________ Starting background color
+		.byte $02 ;______________ Starting ground color
+		.byte 27 ;_______________ Level height
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 144
 
 
 .segment "DAT_BANK_1E"	; Total bank size: 7974 bytes
@@ -795,7 +795,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1355
 
 
-.segment "DAT_BANK_21"	; Total bank size: 7312 bytes
+.segment "DAT_BANK_21"	; Total bank size: 7996 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -812,3 +812,20 @@
 		.byte 57 ;___________________ Level height
 	; Level data
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 941
+
+	.export level_data_luckydraw
+	level_data_luckydraw:
+	; Header
+		.byte song_electroman_adventures ;___ Song ID
+		.byte 0 ;____________________________ Starting game mode
+		.byte 0 ;____________________________ Starting speed
+		.byte 1 ;____________________________ Disable parallax
+		.byte _DECOCLOUD ;___________________ Deco type
+		.byte _SPIKESB ;_____________________ Spike set
+		.byte _BLOCKSB ;_____________________ Block set
+		.byte _LETTERBANK ;__________________ Sawblade set
+		.byte $0F ;__________________________ Starting background color
+		.byte $0F ;__________________________ Starting ground color
+		.byte 27 ;___________________________ Level height
+	; Level data
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684

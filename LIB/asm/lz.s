@@ -20,7 +20,7 @@ LZ_y_temp: .res 1
 LZ_buffer := LZ_buffer_addr
 LZ_buffer2 := LZ_buffer_addr+256
 
-.segment "CODE"
+.segment "CODE_2"
 
 .export LZ_init_decomp, LZ_get_byte, LZ_done
 

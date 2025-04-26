@@ -53,6 +53,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
 	DEMON,	// luckydraw
+	DEMON,	// test4
 };
 
 const uint8_t stars_list[] = {
@@ -99,4 +100,5 @@ const uint8_t stars_list[] = {
 	10,	// firetemple
 	10,	// foresttemple
 	10,	// luckydraw
+	0,	// test4
 };

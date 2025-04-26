@@ -709,7 +709,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		/*{
+		{
 			level: "test4",
 			lowerText: "TEST4",
 			decoType: "EXTRASPRITES1",
@@ -724,7 +724,7 @@
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
 			parallaxDisable: true
-		}*/
+		}
 	],
 	globalObjectOffsets: [
 		/*	Format:

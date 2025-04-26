@@ -347,7 +347,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		/*
 		{
 			level: "test4",
 			lowerText: "TEST 4",
@@ -364,7 +363,6 @@
 			startingGroundColor: 0x02,
 			parallaxDisable: true
 		}
-		*/
 	],
 	globalObjectOffsets: [
 		/*	Format:
