@@ -112,7 +112,7 @@ const unsigned char TEXT_2blast[]="PROCESSING";
 const unsigned char TEXT_2textlost[]="LOST";
 const unsigned char TEXT_2textstereo[]="MADNESS$2";
 const unsigned char TEXT_2textinfernoplex[]="INFERNOPLEX";
-const unsigned char TEXT_2textfullversion[]="FULL$VERSION";
+const unsigned char TEXT_fullversion[]="FULL$VERSION";
 const unsigned char TEXT_2textproblematic[]="PROBLEMATIC";
 const unsigned char TEXT_2textspeed[]="OF$LIGHT$PT$1";
 const unsigned char TEXT_2textspeed2[]="OF$LIGHT$PT$2";
@@ -269,6 +269,7 @@ const unsigned char* const xbgmtexts1[] = {
 	TEXT_driving,						//driving by midnight
 	TEXT_xlevel2text4,					//dry out full
 	0,									//eighto
+	TEXT_eighto,						//eighto full
 	0,									//endgame
 	0,									//fingerbang
 	0,									//flow
@@ -381,6 +382,7 @@ const unsigned char xbgmtext1_size[] = {
 	sizeof(TEXT_driving) - 1,			//driving by midnight
 	sizeof(TEXT_xlevel2text4) - 1,		//dry out full
 	0,									//eighto
+	sizeof(TEXT_eighto) - 1,			//eighto full
 	0,									//endgame
 	0,									//fingerbang
 	0,									//flow
@@ -486,13 +488,14 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_chaozairflow,					//chaoz airflow
 	TEXT_2textchaoz,					//chaoz fantasy
 	TEXT_speedracer,					//chaoz impact
-	TEXT_2textfullversion,				//clubstep full
+	TEXT_fullversion,					//clubstep full
 	TEXT_2clutterfunk2,					//clutterfunk 2
-	TEXT_2textfullversion,				//dash full
+	TEXT_fullversion,					//dash full
 	TEXT_2deathmoon,					//death moon
 	TEXT_driving2,						//driving by night
-	TEXT_2textfullversion,				//dry out full
+	TEXT_fullversion,					//dry out full
 	TEXT_eighto,						//eighto
+	TEXT_fullversion,					//eighto full
 	TEXT_xlevel2textE,					//endgame
 	TEXT_fingerbang,					//fingerbang
 	TEXT_flow,							//flow
@@ -505,12 +508,12 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_2textwoods,					//lost in the woods
 	TEXT_idols,							//idols
 	TEXT_2textinfernoplex,				//infernoplex
-	TEXT_2textfullversion,				//infernoplex full version
+	TEXT_fullversion,					//infernoplex full version
 	TEXT_isolation,						//isolation
 	TEXT_jackrussel,					//jack russel
-	TEXT_2textfullversion,				//jumper full ver
+	TEXT_fullversion,					//jumper full ver
 	TEXT_2textjustright,				//just right
-	TEXT_2textfullversion,				//just right full ver
+	TEXT_fullversion,					//just right full ver
 	TEXT_kesobomb,						//kesobomb
 	TEXT_kratos,						//kratos
 	TEXT_2textlost,						//lost
@@ -533,13 +536,13 @@ const unsigned char* const xbgmtexts2[] = {
 	TEXT_sonicblaster,					//sonic blaster
 	TEXT_GDW,							//space pirates (gdw cut)
 	TEXT_2textstalemate,				//stalemate
-	TEXT_2textfullversion,				//stalemate full version
+	TEXT_fullversion,				//stalemate full version
 	TEXT_2textstereo,					//stereo madness 2
 	TEXT_subtle2,						//subtle oddities
 	TEXT_2texteon,						//the angel
 	TEXT_thesevenseas,					//the seven seas
 	TEXT_thoughts,						//thoughts
-	TEXT_2textfullversion,				//time machine full
+	TEXT_fullversion,				//time machine full
 	TEXT_ultimate2,						//ultimate destruction
 	TEXT_youvebeen2,					//you've been trolled
 	TEXT_future2,						//whats a future funk
@@ -598,13 +601,14 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_chaozairflow) - 1,					//chaoz airflow
 	sizeof(TEXT_2textchaoz) - 1,					//chaoz fantasy
 	sizeof(TEXT_speedracer) - 1,					//chaoz impact
-	sizeof(TEXT_2textfullversion) - 1,				//clubstep full
+	sizeof(TEXT_fullversion) - 1,					//clubstep full
 	sizeof(TEXT_2clutterfunk2) - 1,					//clutterfunk 2
-	sizeof(TEXT_2textfullversion) - 1,				//dash full
+	sizeof(TEXT_fullversion) - 1,					//dash full
 	sizeof(TEXT_2deathmoon) - 1,					//death moon
 	sizeof(TEXT_driving2) - 1,						//driving by midnight
-	sizeof(TEXT_2textfullversion) - 1,				//dry out full version
+	sizeof(TEXT_fullversion) - 1,					//dry out full version
 	sizeof(TEXT_eighto) - 1,						//eighto
+	sizeof(TEXT_fullversion) - 1,					//eighto full
 	sizeof(TEXT_xlevel2textE) - 1,					//endgame
 	sizeof(TEXT_fingerbang) - 1,					//fingerbang
 	sizeof(TEXT_flow) - 1,							//flow
@@ -617,12 +621,12 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_2textwoods) - 1,					//lost in the woods
 	sizeof(TEXT_idols) - 1,							//idols
 	sizeof(TEXT_2textinfernoplex) - 1,				//infernoplex
-	sizeof(TEXT_2textfullversion) - 1,				//infernoplex full version
+	sizeof(TEXT_fullversion) - 1,					//infernoplex full version
 	sizeof(TEXT_isolation) - 1,						//isolation
 	sizeof(TEXT_jackrussel) - 1,					//jack russel
-	sizeof(TEXT_2textfullversion) - 1,				//jumper full version
+	sizeof(TEXT_fullversion) - 1,					//jumper full version
 	sizeof(TEXT_2textjustright) - 1,				//just right
-	sizeof(TEXT_2textfullversion) - 1,				//just right full ver
+	sizeof(TEXT_fullversion) - 1,					//just right full ver
 	sizeof(TEXT_kesobomb) - 1,						//kesobomb
 	sizeof(TEXT_kratos) - 1,						//kratos
 	sizeof(TEXT_2textlost) - 1,						//lost
@@ -645,13 +649,13 @@ const unsigned char xbgmtext2_size[] = {
 	sizeof(TEXT_sonicblaster) - 1,					//sonic blaster
 	sizeof(TEXT_GDW) - 1,							//space pirates
 	sizeof(TEXT_2textstalemate) - 1,				//stalemate
-	sizeof(TEXT_2textfullversion) - 1,				//stalemate full version
+	sizeof(TEXT_fullversion) - 1,				//stalemate full version
 	sizeof(TEXT_2textstereo) - 1,					//stereo madness 2
 	sizeof(TEXT_subtle2) - 1,						//subtle oddities
 	sizeof(TEXT_2texteon) - 1,						//the angel
 	sizeof(TEXT_thesevenseas) - 1,					//the seven seas
 	sizeof(TEXT_thoughts) - 1,						//thoughts
-	sizeof(TEXT_2textfullversion) - 1,				//time machine full
+	sizeof(TEXT_fullversion) - 1,				//time machine full
 	sizeof(TEXT_ultimate2) - 1,						//ultimate destruction
 	sizeof(TEXT_youvebeen2) - 1,					//you've been trolled
 	sizeof(TEXT_future2) - 1,						//whats a future funk
@@ -795,6 +799,7 @@ const unsigned char* const origartists2[] = {
 	TEXT_reinn,				//driving by night
 	TEXT_djvi, 				//dry out full version
 	TEXT_jomekka, 			//eighto
+	TEXT_jomekka, 			//eighto full
 	TEXT_waterflame, 		//endgame
 	TEXT_mdk, 				//fingerbang
 	TEXT_creo, 				//flow
@@ -907,6 +912,7 @@ const unsigned char origartists2_size[] = {
 	sizeof(TEXT_reinn) - 1,				//driving by night
 	sizeof(TEXT_djvi) - 1, 				//dry out full version
 	sizeof(TEXT_jomekka) - 1, 			//eighto
+	sizeof(TEXT_jomekka) - 1, 			//eighto full
 	sizeof(TEXT_waterflame) - 1, 		//endgame
 	sizeof(TEXT_mdk) - 1, 				//fingerbang
 	sizeof(TEXT_creo) - 1, 				//flow
@@ -1017,6 +1023,7 @@ const unsigned char* const origartists1[] = {
 	0, 										//driving by night
 	0, 										//dry out full version
 	0, 										//eighto
+	0, 										//eighto full
 	0, 										//endgame
 	0, 										//fingerbang
 	0, 										//flow
@@ -1127,6 +1134,7 @@ const unsigned char origartists1_size[] = {
 	0, 										//driving by night
 	0, 										//dry out full version
 	0, 										//eighto
+	0, 										//eighto full
 	0, 										//endgame
 	0, 										//fingerbang
 	0, 										//flow
@@ -1237,6 +1245,7 @@ const unsigned char* const coveringartists1[] = {
 	TEXT_nerdboy,				//driving by night
 	TEXT_seaglowingpro,			//dry out full version
 	TEXT_sussysy, 				//eighto
+	TEXT_sussysy, 				//eighto full
 	TEXT_vikrinox, 				//endgame
 	TEXT_craftyjumper, 			//fingerbang
 	TEXT_seaglowingpro, 		//flow
@@ -1348,6 +1357,7 @@ const unsigned char coveringartists1_size[] = {
 	sizeof(TEXT_nerdboy) - 1,				//driving by night
 	sizeof(TEXT_seaglowingpro) - 1, 		//dry out full
 	sizeof(TEXT_sussysy) - 1, 				//eighto
+	sizeof(TEXT_sussysy) - 1, 				//eighto full
 	sizeof(TEXT_vikrinox) - 1, 				//endgame
 	sizeof(TEXT_craftyjumper) - 1, 			//fingerbang
 	sizeof(TEXT_seaglowingpro) - 1, 		//flow
@@ -1459,6 +1469,7 @@ const unsigned char* const coveringartists2[] = {
 	0,										//driving by night
 	TEXT_usersniper, 						//dry out full version
 	0, 										//eighto
+	0, 										//eighto full
 	0, 										//endgame
 	TEXT_elangel, 							//fingerbang
 	0, 										//flow
@@ -1570,6 +1581,7 @@ const unsigned char coveringartists2_size[] = {
 	0, 										//driving by night
 	sizeof(TEXT_usersniper) - 1, 			//dry out full version
 	0, 										//eighto
+	0, 										//eighto full
 	0, 										//endgame
 	sizeof(TEXT_elangel) - 1,				//fingerbang
 	0, 										//flow
@@ -1680,6 +1692,7 @@ const unsigned char* const coveringartists3[] = {
 	0, 										//driving by night
 	0, 										//dry out full version
 	0, 										//eighto
+	0, 										//eighto full
 	0, 										//endgame
 	0, 										//fingerbang
 	0, 										//flow
@@ -1791,6 +1804,7 @@ const unsigned char coveringartists3_size[] = {
 	0, 										//driving by night
 	0, 										//dry out full version
 	0, 										//eighto
+	0, 										//eighto full
 	0, 										//endgame
 	0, 										//fingerbang
 	0, 										//flow
@@ -1901,6 +1915,7 @@ const unsigned char* const coveringartists4[] = {
 	0, 										//driving by night
 	0, 										//dry out full version
 	0, 										//eighto
+	0, 										//eighto full
 	0, 										//endgame
 	0, 										//fingerbang
 	0, 										//flow
@@ -2012,6 +2027,7 @@ const unsigned char coveringartists4_size[] = {
 	0, 										//driving by night
 	0, 										//dry out full version
 	0, 										//eighto
+	0, 										//eighto full
 	0, 										//endgame
 	0, 										//fingerbang
 	0, 										//flow
@@ -2127,6 +2143,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_driving_by_night,
 	song_dry_out_full,
 	song_eighto,
+	song_eighto_full,
 	song_endgame,
 	song_fingerbang,
 	song_flow,

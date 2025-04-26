@@ -27,7 +27,7 @@ music_data_famidash_music21:
 	.word @song0ch4
 	.word 270,225
 ; The DPCM aligner used to be here
-; 02 : eighto
+; 02 : eighto full
 	.word @song2ch0
 	.word @song2ch1
 	.word @song2ch2
