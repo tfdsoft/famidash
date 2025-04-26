@@ -145,7 +145,6 @@ uint8_t icon_colors[3];
 #define color2 icon_colors[1]
 #define color3 icon_colors[2]
 
-uint8_t cursedmusic;
 uint8_t discomode;
 uint8_t trails;
 uint8_t viseffects;
@@ -172,6 +171,7 @@ uint8_t jimsheatballframe[MAX_FIREBALLS];
 
 //uint8_t greyscale_mode;
 
+uint8_t cursedmusic;
 //uint8_t practice_famistudio_state[0xbf];
 
 uint8_t practice_point_count; // = 0;

@@ -346,11 +346,6 @@ void state_menu() {
 		discoframe = newrand() & 15;
 	} while (discoframe > 11);
 
-	if (joypad1.select) nestopia = 1;
-
-	all_levels_complete = 0xFC;
-
-	
 	ppu_off();
 
 	gamemode = 0;
@@ -536,7 +531,7 @@ void state_menu() {
 			one_vram_buffer(' ', tmp5);
 			one_vram_buffer(' ', addloNOC(tmp5, 1));
 		}
-		if (joypad1.press_select) {
+/*		if (joypad1.press_select) {
 				tmp2 = 0;
 				gameState = 0;
 				famistudio_music_stop();
@@ -544,7 +539,7 @@ void state_menu() {
 				menuMusicCurrentlyPlaying = 0;
 				ppu_wait_nmi();
 				return;
-		}
+		} */
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
 		edit_irq_table(low_byte(tmp8), 2); 
 
@@ -600,6 +595,7 @@ void state_menu() {
 	}	
 //	set_scroll_y(0);		does this break anything?
 //	set_scroll_x(0);
+	if (joypad1.select) cursedmusic = 0x40;
 	oam_clear();
 	ppu_wait_nmi();
 	tmp7 = newrand() & 255;

@@ -311,7 +311,7 @@ detectNTSC:
 .segment "DMC_BANK_0B"
 ;	.incbin "MUSIC/EXPORTS/music_bankB.dmc"
 
-CURSED_MUSIC_ENABLE = 0
+CURSED_MUSIC_ENABLE = 1
 .segment "BSS"
 .export _famistudio_state
 _famistudio_state = *

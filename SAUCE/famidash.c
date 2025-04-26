@@ -45,7 +45,7 @@ void main(){
 	mouse.y = 0x60;
 	mouse_mask = 1;
     set_vram_buffer(); // do at least once
-
+	cursedmusic = 0;
     // ppu_on_all();
     // pal_fade_to(4,0);
 
