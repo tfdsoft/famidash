@@ -504,5 +504,6 @@
 				durationPAL: 1650
 			}
 		}
-	]
+	],
+	dpcmAligner: "dpcm"
 }

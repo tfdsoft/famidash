@@ -17,15 +17,14 @@ exportStemPrefix = "music"
 
 dpcmFileNameRegex = f'{exportStemPrefix}_(.+)_bank(.+).dmc'
 
-dpcmAlignerName = "dpcm"
 finalSongInListName = "max"
 
 songlistNamesRegex = r'(?ms:(song_([\w]+) = (\d+)$)+)'
 
 asmMusicDataName = fr'music_data_famidash_{exportStemPrefix}'
 asmAmountOfSongsRegex = fr'({asmMusicDataName}:.*?\n\t\.byte )(\d+)'
-asmDpcmSongHeaderMatchRegex = r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song\d+.*?$\n){5}^\t.word \d+,\d+.*?$\n)'
-asmDpcmSongHeaderIdxRegex = r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song(\d+).*?$\n){5}^\t.word \d+,\d+.*?$\n)'
+asmDpcmSongHeaderMatchRegex = lambda dpcmAlignerName : r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song\d+.*?$\n){5}^\t.word \d+,\d+.*?$\n)'
+asmDpcmSongHeaderIdxRegex = lambda dpcmAlignerName : r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song(\d+).*?$\n){5}^\t.word \d+,\d+.*?$\n)'
 asmDpcmSongMatchRegex = lambda x : r'(?ms:(^@song' + x + r'\S*:.*?)(?=^@song(?!' + x + r')))' #BUG: currently doesn't match if the dpcm song is the last
 
 datBankSegPrefix = "DAT_BANK_"
@@ -162,7 +161,8 @@ def processMetadata(metadata : dict) -> dict:
             'sampleRateNTSC': sampleRateNTSCList,
             'sampleRatePAL': sampleRatePALList,
             'headerData': pcmHeaderList
-        }
+        },
+        'dpcmAlignerName': metadata['dpcmAligner']
     }
 
 
@@ -246,6 +246,8 @@ if __name__ == "__main__":
     else:
         print("Somehow the famistudio-txt-export process didn't create a valid text file.")
         exit(2)
+    
+    dpcmAlignerName = processed_metadata['dpcmAlignerName']
 
     songNames = re.findall(songNameRegex, fsTxt)
     neededSongNames = [i['fmsSongName'] for i in processed_metadata['filteredSongList']]
@@ -326,7 +328,7 @@ if __name__ == "__main__":
             # Make the label unique
             (None, asmMusicDataName, f"{asmMusicDataName}{i}"),
             # Remove DPCM aligner from header
-            (asmDpcmSongHeaderIdxRegex, asmDpcmSongHeaderMatchRegex, "; The DPCM aligner used to be here\n"),
+            (asmDpcmSongHeaderIdxRegex(dpcmAlignerName), asmDpcmSongHeaderMatchRegex(dpcmAlignerName), "; The DPCM aligner used to be here\n"),
             # Remove DPCM aligner song data
             (None, lambda : asmDpcmSongMatchRegex(captData[2][0]), "; The DPCM aligner used to be here\n")
         ]:

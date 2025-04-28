@@ -520,5 +520,6 @@
 				durationPAL: 1650
 			}
 		}
-	]
+	],
+	dpcmAligner: "dpcm_B-sides"
 }
