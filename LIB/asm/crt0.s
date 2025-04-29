@@ -1,6 +1,15 @@
 ; Startup code for cc65 and Shiru's NES library
 ; based on code by Groepaz/Hitmen <groepaz@gmx.net>, Ullrich von Bassewitz <uz@cc65.org>
 
+; First, deal with defines given thru cmdline
+
+.ifndef __VS_SYSTEM
+	__VS_SYSTEM = 0
+.endif
+.define VS_SYSTEM ::__VS_SYSTEM
+.define ___VS_SYSTEM ::__VS_SYSTEM
+; The latter is to keep the C compilers happy
+
 ;REMOVED initlib
 ;this called the CONDES function
 .include "BUILD_FLAGS.s"
@@ -33,12 +42,6 @@ SFX_STRINGS = 0
 
 .include "music_songlist.inc"
 .include "sfx_sfxlist.inc"
-
-.ifndef __VS_SYSTEM
-	__VS_SYSTEM = 0
-.endif
-.define VS_SYSTEM ::__VS_SYSTEM
-
 
 .ifndef _USE_ILLEGAL_OPCODES
 	.define _USE_ILLEGAL_OPCODES 0

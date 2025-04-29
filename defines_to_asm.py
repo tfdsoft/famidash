@@ -6,7 +6,7 @@ import pathlib, re
 basicSplit = re.compile(r'^(?P<padding>[\t ]*)(?:(?P<ctrl>#.*?)|(?P<noCtrl>))[\t ]*(?:\/\/(?P<comment>.*))?$', re.MULTILINE)
 # process control statements
 ifdefStatementMatch = re.compile(r'#ifdef[\t ]+(?P<id>\w+)')
-condStatementMatch = re.compile(r'#if[\t ]+(?P<stat>.*)')
+condStatementMatch = re.compile(r'#(?P<ctrl>if|elif)[\t ]+(?P<stat>.*)')
 ctrlStatementMatch = re.compile(r'#(?P<ctrl>else|endif)')
 macroMatch = re.compile(r'#define[\t ]+(?P<id>\w+)\((?P<params>[\w,]+)\)[\t ]+(?P<stat>.*)[\t ]*')
 defineMatch = re.compile(r'#define[\t ]+(?P<id>\w+)(?:[\t ]+(?P<stat>.*)|)[\t ]*')
@@ -19,10 +19,12 @@ expressionSplit = re.compile(
 		r'(?:0[Bb](?P<bin>[01]+))',			# bin numerals
 		r'(?:(?P<dec>\d+))',				# dec numerals
 		r'(?P<mod>%)',						# mod operator, requires modification to insert into ca65
-		r'(?P<neq>!=)',						# neq operator, same as above
+		r'(?P<neq>!=)',						# neq operator, same as above,
+		r'(?P<eqp>==)',						# eq operator, same as above,
 		r'(?P<opt><<|>>|=|>|<|>=|<=|&&|\|\|)',	# multi-symbol operators
 		r'(?P<opr>[~*\/&^+\-|!])',				# single-symbol operators
 		r'(?P<brc>[()])',						# braces, who knows how they get modified later
+		r'(?P<str>[\'"]\w*[\'"])',				# strings
 		r'(?P<tkn>\w+)',						# symbols
 		r'(?P<pad>[\t ]+)',						# space
 	)) + ")"
@@ -34,19 +36,19 @@ def portExprToAsm(expr : str):
 	for i in re.finditer(expressionSplit, expr):
 		kind = i.lastgroup
 		val = i.group(kind)
-		if kind in ("dec", "opt", "opr", "brc", "pad"):	# no-mod tokens
+		if kind in {"dec", "opt", "opr", "brc", "pad", "str"}:	# no-mod tokens
 			outString += val
-		elif kind in ("hex", "bin", "tkn"):	# re-prefixed tokens
+		elif kind in {"hex", "bin", "tkn"}:	# re-prefixed tokens
 			outString += {"hex" : "$", "bin" : "%", "tkn": "_"}[kind]
 			outString += val
 		elif kind == "oct":
 			# octal numerals are not supported in ca65,
 			# so convert them to decimal
 			outString += str(int(val, base=8))
-		elif kind in ("mod", "neq"):
+		elif kind in {"mod", "neq", "eqp"}:
 			# those tokens exist but with different symbols,
 			# so replace them
-			outString += {"mod" : ".mod", "neq" : "<>"}[kind]
+			outString += {"mod" : ".mod", "neq" : "<>", "eqp" : "="}[kind]
 
 	return outString
 
@@ -66,9 +68,13 @@ def convertCFileToS(filename : pathlib.Path, outfile):
 			if re.match(ifdefStatementMatch, stat):
 				match = re.match(ifdefStatementMatch, stat).groupdict()
 				outString += f".ifdef _{match['id']}"
-			elif re.match(condStatementMatch, stat): # CURRENTLY DANGEROUS !!
+			elif re.match(condStatementMatch, stat):
 				match = re.match(condStatementMatch, stat).groupdict()
-				outString += f".if {match['stat']}"
+				if re.match(expressionMatch, match['stat']) != None:
+					outString += {"if" : ".if", "elif" : ".elseif"}[match['ctrl']]
+					outString += f" {portExprToAsm(match['stat'])}"
+				else:
+					print(f"Line '{stat}' has a condition but the expression was deemed invalid")
 			elif re.match(ctrlStatementMatch, stat):
 				match = re.match(ctrlStatementMatch, stat).groupdict()
 				outString += f".{match['ctrl']}"
