@@ -96,9 +96,9 @@
 #define song_the_challenge 95
 #define song_flow 96
 #define song_retray 97
-#define song_round_1_gdw_cut 98
-#define song_space_pirates_gdw_cut 99
-#define song_youve_been_trolled 100
+#define song_youve_been_trolled 98
+#define song_round_1_gdw_cut 99
+#define song_space_pirates_gdw_cut 100
 #define song_years_gdw_cut 101
 #define song_menu_theme 102
 #define song_driving_by_night 103
