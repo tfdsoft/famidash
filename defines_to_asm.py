@@ -24,7 +24,9 @@ expressionSplit = re.compile(
 		r'(?P<opt><<|>>|=|>|<|>=|<=|&&|\|\|)',	# multi-symbol operators
 		r'(?P<opr>[~*\/&^+\-|!])',				# single-symbol operators
 		r'(?P<brc>[()])',						# braces, who knows how they get modified later
-		r'(?P<str>[\'"]\w*[\'"])',				# strings
+		r'(?P<chr>\'(?:[^\'\\]|\\.)*\')',		# character literals (treating like strings just in case)
+		# r'(?P<str>"(?:[^"\\]|\\.)*")',		# string literals
+		# cancelled because not valid expressions in both use cases
 		r'(?P<tkn>\w+)',						# symbols
 		r'(?P<pad>[\t ]+)',						# space
 	)) + ")"
@@ -36,7 +38,7 @@ def portExprToAsm(expr : str):
 	for i in re.finditer(expressionSplit, expr):
 		kind = i.lastgroup
 		val = i.group(kind)
-		if kind in {"dec", "opt", "opr", "brc", "pad", "str"}:	# no-mod tokens
+		if kind in {"dec", "opt", "opr", "brc", "pad", "chr", "str"}:	# no-mod tokens
 			outString += val
 		elif kind in {"hex", "bin", "tkn"}:	# re-prefixed tokens
 			outString += {"hex" : "$", "bin" : "%", "tkn": "_"}[kind]
