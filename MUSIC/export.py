@@ -19,8 +19,6 @@ dpcmFileNameRegex = f'{exportStemPrefix}_(.+)_bank(.+).dmc'
 
 finalSongInListName = "max"
 
-songlistNamesRegex = r'(?ms:(song_([\w]+) = (\d+)$)+)'
-
 asmMusicDataName = fr'music_data_famidash_{exportStemPrefix}'
 asmAmountOfSongsRegex = fr'({asmMusicDataName}:.*?\n\t\.byte )(\d+)'
 asmDpcmSongHeaderMatchRegex = lambda dpcmAlignerName : r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song\d+.*?$\n){5}^\t.word \d+,\d+.*?$\n)'
@@ -306,13 +304,14 @@ if __name__ == "__main__":
     print("\n==== Running export processes of each music data bank...")
 
     for i in range(len(bins)):
-        idxs = ",".join([str(j[0]) for j in bins[i]])
+        idxs, names, _ = zip(*sorted(bins[i]))
+        idxs = ','.join(map(str, idxs))
+        names = list(map(makeNiceAsmName, names))
 
         asmExportStem = f"{exportStemPrefix}_{i}"
         asmExportPath = exportPath / f"{asmExportStem}.s"
-        songlistExportPath = exportPath / f"{asmExportStem}_songlist.inc"
 
-        proc = subprocess.run([*fsCmd, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', '-famistudio-asm-generate-list', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
+        proc = subprocess.run([*fsCmd, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
         output = proc.stdout.decode()
         checkErr(proc)
 
@@ -343,14 +342,11 @@ if __name__ == "__main__":
                 asmExportData = re.sub(og, repl, asmExportData)
         asmExportPath.write_text(asmExportData)
 
-        songlistData = songlistExportPath.read_text()
-        songlistExportPath.unlink()
-        
         dpcmFiles += exportPath.glob(f"{asmExportStem}*.dmc")
         optionsToSet += re.findall(youMustSetRegex, output)
-        masterSonglist += re.findall(songlistNamesRegex, songlistData)
+        masterSonglist += names
 
-    masterSonglist = [i[1] for i in masterSonglist if i[1] not in [dpcmAlignerName, finalSongInListName]] + ["max"]
+    masterSonglist.append(finalSongInListName)
 
     # Check the DPCM files for being identical
     print("\n==== Checking if the DPCM files are identical...")
