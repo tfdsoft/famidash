@@ -251,11 +251,14 @@ if __name__ == "__main__":
     dpcmAlignerName = processed_metadata['dpcmAlignerName']
 
     songNames = re.findall(songNameRegex, fsTxt)
-    neededSongNames = [i['fmsSongName'] for i in processed_metadata['filteredSongList']]
-    neededSongs = [i for i in range(len(songNames)) if songNames[i] in neededSongNames]
+    neededSongNames = sorted(i['fmsSongName'] for i in processed_metadata['filteredSongList'])
+    if any(i not in songNames for i in neededSongNames):
+        print(f'Songs {", ".join([f"\"{i}\"" for i in neededSongNames if i not in songNames])} not found in FamiStudio module. Please check the song names')
+        exit(2)
+    neededSongs = [songNames.index(i) for i in neededSongNames]
 
     if len(songNames) == 0:
-        print("Amount of valid songs in the FS txt file is 0.")
+        print("No valid songs found in FS txt file.")
         exit(2)
     
     if not(dpcmAlignerName in songNames):
