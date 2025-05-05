@@ -36,7 +36,7 @@ tmpFolder = (musicFolder.parent / "TMP").resolve()
 # Source code @ https://github.com/BleuBleu/FamiStudio/blob/master/FamiStudio/Source/Utils/Utils.cs
 # Function name: Utils.MakeNiceAsmName
 # Make sure to keep this updated
-def makeNiceAsmName(name : str, allowDash : bool = True) -> str:
+def makeNiceAsmName(name : str, allowDash : bool = False) -> str:
     niceName = ""
     for c in name:
         if (c.isalnum()):
@@ -48,9 +48,6 @@ def makeNiceAsmName(name : str, allowDash : bool = True) -> str:
         elif (c == '_'):
             niceName += c
     return niceName
-
-makeNiceCName = lambda name : makeNiceAsmName(name, False) # Dashes aren't C-compatible
-convertNiceAsmNameToC = lambda string : string.replace('-', '_') # Convert per the above
 
 def convertTextToMenuFormat(name : str | None) -> str | None:
     if name == None:
@@ -83,8 +80,8 @@ def processMetadata(metadata : dict) -> dict:
     songlist = [i for i in metadata['songs'] if 'fmsSongName' in i.keys()] # filter out commented out songs
 
     # Get song names
-    songNameList = ['song_' + makeNiceAsmName(i.get('fmsSongName')) for i in songlist]
-    vsSongNameList = ['song_' + makeNiceAsmName(i.get('fmsSongName')) for i in songlist if i.get('vsSystemEnabled') == True]
+    songNameList = ['song_' + makeNiceAsmName(i.get('fmsSongName'), False) for i in songlist]
+    vsSongNameList = ['song_' + makeNiceAsmName(i.get('fmsSongName'), False) for i in songlist if i.get('vsSystemEnabled') == True]
 
     # Optimize text usage
     upperTextList = [i.get('upperText') for i in songlist]
@@ -401,7 +398,7 @@ if __name__ == "__main__":
     # Export C songlist
     print("== musicDefines.h")
     (exportPath / "musicDefines.h").write_text(
-        "\n".join([f"#define song_{id} {i}" for i, id in enumerate(map(convertNiceAsmNameToC, masterSonglist))]))
+        "\n".join([f"#define song_{id} {i}" for i, id in enumerate(masterSonglist)]))
 
     # Export asm songlist
     print("== music_songlist.inc")
@@ -487,11 +484,11 @@ if __name__ == "__main__":
         '#if !__VS_SYSTEM',
         '',
         'const uint8_t xbgmlookuptable[] = {',
-        *[f"\t{i}," for i in map(convertNiceAsmNameToC, processed_soundtest_metadata['songNames'])],
+        *[f"\t{i}," for i in processed_soundtest_metadata['songNames']],
         '};', '', '#else', '',
         'const uint8_t xbgmlookuptable[] = {',
         '\t0,',
-        *[f"\t{i}," for i in map(convertNiceAsmNameToC, processed_soundtest_metadata['vsSongNames'])],
+        *[f"\t{i}," for i in processed_soundtest_metadata['vsSongNames']],
         '};', '', '#endif', '', 
         'CODE_BANK_POP()',
         ''
