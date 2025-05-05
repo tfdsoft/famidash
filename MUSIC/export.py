@@ -49,6 +49,9 @@ def makeNiceAsmName(name : str, allowDash : bool = True) -> str:
             niceName += c
     return niceName
 
+makeNiceCName = lambda name : makeNiceAsmName(name, False) # Dashes aren't C-compatible
+convertNiceAsmNameToC = lambda string : string.replace('-', '_') # Convert per the above
+
 def convertTextToMenuFormat(name : str | None) -> str | None:
     if name == None:
         return None
@@ -395,7 +398,7 @@ if __name__ == "__main__":
     # Export C songlist
     print("== musicDefines.h")
     (exportPath / "musicDefines.h").write_text(
-        "\n".join([f"#define song_{id} {i}" for i, id in enumerate(masterSonglist)]))
+        "\n".join([f"#define song_{id} {i}" for i, id in enumerate(map(convertNiceAsmNameToC, masterSonglist))]))
 
     # Export asm songlist
     print("== music_songlist.inc")
@@ -481,11 +484,11 @@ if __name__ == "__main__":
         '#if !__VS_SYSTEM',
         '',
         'const uint8_t xbgmlookuptable[] = {',
-        *[f"\t{i}," for i in processed_soundtest_metadata['songNames']],
+        *[f"\t{i}," for i in map(convertNiceAsmNameToC, processed_soundtest_metadata['songNames'])],
         '};', '', '#else', '',
         'const uint8_t xbgmlookuptable[] = {',
         '\t0,',
-        *[f"\t{i}," for i in processed_soundtest_metadata['vsSongNames']],
+        *[f"\t{i}," for i in map(convertNiceAsmNameToC, processed_soundtest_metadata['vsSongNames'])],
         '};', '', '#endif', '', 
         'CODE_BANK_POP()',
         ''
