@@ -38,20 +38,38 @@ define ld65IncDir
 -L $(1) --obj-path $(1)
 endef
 
+.DEFAULT_GOAL = main
+
 NAME := famidash
 NSF_CFG := CONFIG/nsf.cfg
 OUTDIR_PREFIX = BUILD
 TMPDIR_PREFIX = TMP
-OUTDIR ?= $(OUTDIR_PREFIX)/main
-TMPDIR ?= $(TMPDIR_PREFIX)/main
+OUTDIR ?= $(OUTDIR_PREFIX)
+TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= CONFIG/mmc3.cfg
-LEVELSET ?= A
 
-.PHONY: default clean distclean nsf vs-sys main b-sides
+ifneq ($(findstring build,$(MAKECMDGOALS)),)
+ifeq ($(LEVELSET),)
+$(error Level set not specified, you are not calling this makefile correctly)
+endif
+endif
 
-main: $(OUTDIR)/ $(OUTDIR)/$(NAME).nes
+.PHONY: default clean distclean build nsf vs-sys main b-sides
+
+build: $(OUTDIR)/ $(OUTDIR)/$(NAME).nes
 all: main vs-sys b-sides
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
+
+main: LEVELSET = A
+main: OUTDIR = $(OUTDIR_PREFIX)/$@
+main: TMPDIR = $(TMPDIR_PREFIX)/$@
+main:
+	@echo Building main...
+	@$(MAKE) build LEVELSET=$(LEVELSET) \
+	CC65_DEFINES=$(CC65_DEFINES) \
+	CA65_DEFINES=$(CA65_DEFINES) \
+	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
+	--no-print-directory
 
 vs-sys: LEVELSET = V #hopefully not for long
 vs-sys: CC65_DEFINES += -D__VS_SYSTEM=1
@@ -61,7 +79,7 @@ vs-sys: TMPDIR = $(TMPDIR_PREFIX)/$@
 vs-sys: CFG = CONFIG/vs-sys.cfg
 vs-sys:
 	@echo Building VS System version...
-	@$(MAKE) LEVELSET=$(LEVELSET) \
+	@$(MAKE) build LEVELSET=$(LEVELSET) \
 	CC65_DEFINES=$(CC65_DEFINES) \
 	CA65_DEFINES=$(CA65_DEFINES) \
 	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
@@ -72,7 +90,7 @@ b-sides: OUTDIR = $(OUTDIR_PREFIX)/$@
 b-sides: TMPDIR = $(TMPDIR_PREFIX)/$@
 b-sides:
 	@echo Building B-Sides...
-	@$(MAKE) LEVELSET=$(LEVELSET) \
+	@$(MAKE) build LEVELSET=$(LEVELSET) \
 	CC65_DEFINES=$(CC65_DEFINES) \
 	CA65_DEFINES=$(CA65_DEFINES) \
 	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
