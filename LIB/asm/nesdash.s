@@ -275,57 +275,48 @@ _init_rld:
 	STA _current_saw_set	;	Saw set
 	INCW ptr1				;__
 
-;	LDA _discomode
-;	BNE @noset
-	LDA (ptr1),y	;	Starting BG color
-	AND #$3F			;	Store normal color (pal_col(0, tmp2))
+	;	Deal with the starting BG color
+	LDA (ptr1),y			;	Starting BG color
+	AND #$3F				;	Store normal color to slot 0
 	STA PAL_BUF_RAW+0		;__
-	ldx _lastbgcolortype
-	cpx #$ff
-	bne @noset
-	STA _lastbgcolortype
-@noset:
-	TAX
-;	lda _discomode
-;	bne @nostore
-	LDA palBrightTable3, X
-	STA PAL_BUF_RAW+1		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
-	STA PAL_BUF_RAW+9		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
-@nostore:
-	txa
-	incw ptr1
+	LDX _lastbgcolortype	;
+	INX						;
+	BNE :+					;	Replace lastbgcolortype if == 0xFF
+		STA _lastbgcolortype;
+	:						;__
+	TAY						;
+	LDA (PAL_PTR),y			;	Store it to the buffer
+	STA PAL_BUF+0			;__
+	;	Now fade it
+	LDA palBrightTable3, Y	;
+	STA PAL_BUF_RAW+1		;	Store faded color to slots 1 and 9
+	STA PAL_BUF_RAW+9		;__
+	TAY						;
+	LDA (PAL_PTR),y			;	Store it into the buffer
+	STA PAL_BUF+1			;
+	STA PAL_BUF+9			;__
+	incw ptr1				;	Move on
+	LDY #0					;__
 
-	LDA (ptr1),y	;	Starting ground color
-	AND #$3F			;	Store normal color (pal_col(6, tmp2))
+	;	Deal with the starting ground color
+	LDA (ptr1),y			;	Starting ground color
+	AND #$3F				;	Store normal color to slot 6
 	STA PAL_BUF_RAW+6		;__
-	ldx _lastgcolortype
-	cpx #$ff
-	bne @noset2
-	STA	_lastgcolortype
-@noset2:
-	TAX
-	LDA palBrightTable3, X
-	STA PAL_BUF_RAW+5		;__	Store faded color (pal_col(5, oneShadeDarker(tmp2)))
-	INC <PAL_UPDATE		;__ Yes, we do need to update the palette
-
-	; Copy all the raw colors into the buffer for the current brightness
-	ldy PAL_BUF_RAW+0
-	lda (PAL_PTR),y
-	sta PAL_BUF+0
-	ldy PAL_BUF_RAW+1
-	lda (PAL_PTR),y
-	sta PAL_BUF+1
-	ldy PAL_BUF_RAW+5
-	lda (PAL_PTR),y
-	sta PAL_BUF+5
-	ldy PAL_BUF_RAW+6
-	lda (PAL_PTR),y
-	sta PAL_BUF+6
-	ldy PAL_BUF_RAW+9
-	lda (PAL_PTR),y
-	sta PAL_BUF+9
-	
-
+	LDX _lastgcolortype		;
+	INX						;
+	BNE :+					;	Replace lastgcolortype if == 0xFF
+		STA	_lastgcolortype	;
+	:						;__
+	TAY						;
+	LDA (PAL_PTR),y			;	Store it into the buffer
+	STA PAL_BUF+6			;__
+	;	Now fade it
+	LDA palBrightTable3, Y	;	Store faded color to slot 5
+	STA PAL_BUF_RAW+5		;__
+	TAY						;
+	LDA	(PAL_PTR),y			;	Store it into the buffer
+	STA	PAL_BUF+5			;__
+	INC <PAL_UPDATE			;__ Yes, we do need to update the palette
 
 	
 	ldy #0
