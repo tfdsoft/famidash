@@ -197,7 +197,7 @@ void levelselection() {
 	cube_rotate[1] = 0;
 
 	#if __VS_SYSTEM
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[(newrand() & 31) + 1]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(idx8_load(xbgmlookuptable, newrand() & 31));
 	#else
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menu_music]);
 	#endif
@@ -873,7 +873,7 @@ void state_menu() {
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
 	#if __VS_SYSTEM
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[(newrand() & 31) + 1]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(idx8_load(xbgmlookuptable, newrand() & 31));
 	#else
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menu_music]);
 	#endif

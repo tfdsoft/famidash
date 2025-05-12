@@ -643,7 +643,7 @@ void set_settings() {
 			options ^= sfxoff; break;
 		case 3: // musicoff
 			#if __VS_SYSTEM
-			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgmlookuptable[(newrand() & 31) + 1]); } break;
+			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(idx8_load(xbgmlookuptable, newrand() & 31)); } break;
 			#else
 			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgmlookuptable[menu_music]); } break;
 			#endif

@@ -286,7 +286,6 @@ const uint8_t xbgmlookuptable[] = {
 #else
 
 const uint8_t xbgmlookuptable[] = {
-	0,
 	song_stereo_madness,
 	song_cant_let_go,
 	song_cycles,

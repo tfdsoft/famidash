@@ -487,7 +487,6 @@ if __name__ == "__main__":
         *[f"\t{i}," for i in processed_soundtest_metadata['songNames']],
         '};', '', '#else', '',
         'const uint8_t xbgmlookuptable[] = {',
-        '\t0,',
         *[f"\t{i}," for i in processed_soundtest_metadata['vsSongNames']],
         '};', '', '#endif', '', 
         'CODE_BANK_POP()',
