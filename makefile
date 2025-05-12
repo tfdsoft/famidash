@@ -71,7 +71,7 @@ main:
 	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
 	--no-print-directory
 
-vs-sys: LEVELSET = V #hopefully not for long
+vs-sys: LEVELSET = A
 vs-sys: CC65_DEFINES += -D__VS_SYSTEM=1
 vs-sys: CA65_DEFINES += -D__VS_SYSTEM=1
 vs-sys: OUTDIR = $(OUTDIR_PREFIX)/$@
