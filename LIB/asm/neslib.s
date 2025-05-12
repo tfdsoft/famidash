@@ -1780,32 +1780,28 @@ MouseBoundsMax:
 
 .popseg
 
-.import _spike_set, _block_set, _saw_set
+.import _current_spike_set, _current_block_set, _current_saw_set
 .import _no_parallax, _parallax_scroll_x, _level
 .export _set_tile_banks
 .proc _set_tile_banks
 	; inlined into ASM so we can call it from NMI
-	ldx _level
+
 	; if no parallax is 1, then it will maybe add an offset to the chr
 	; other wise it will add 0 (effectively disabling it without branching)
 
-	lda #0
-	eor #1
-	
-;	lda #1
+  lda #1
 	and _parallax_scroll_x
 	sta CHRBANK_TEMP
 	clc
-	lda _spike_set,x
+	lda _current_spike_set
 	adc CHRBANK_TEMP
 	jsr _mmc3_set_1kb_chr_bank_0
-	lda _block_set,x
+	lda _current_block_set
 	adc CHRBANK_TEMP
 	jsr _mmc3_set_1kb_chr_bank_1
-	lda _saw_set,x
+	lda _current_saw_set
 	cmp #111
 	beq :+
-
 		adc CHRBANK_TEMP
 	:
 	jsr _mmc3_set_1kb_chr_bank_3

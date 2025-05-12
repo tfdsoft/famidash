@@ -161,8 +161,8 @@ void state_game(){
 		pal_set_update();
 
 
-		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(DECOTYPE[level] + 2);		//DECO
-		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(DECOTYPE[level]);		//OR ADDITIONAL SPRITES									//
+		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(current_deco_type + 2);		//DECO
+		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(current_deco_type);		//OR ADDITIONAL SPRITES									//
 
 		if ((options & platformer) && !practice_point_count) {
 			

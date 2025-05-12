@@ -210,9 +210,10 @@ shiftBy4table:
 .endproc
 
 ; void __fastcall__ init_rld(uint8_t level);
-.segment "CODE_2"
+.segment "CODE"
 
 .global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
+.import _current_deco_type, _current_spike_set, _current_block_set, _current_saw_set
 .import _song, _speed, _lastgcolortype, _lastbgcolortype
 .import _level_data_bank, _sprite_data_bank
 .import _discomode
@@ -243,21 +244,36 @@ _init_rld:
 
 	; Read header
 	LDA (ptr1),y		;
-	STA _song			;   Song number
+	STA _song			;   Song ID
 	INCW ptr1			;__
 
 	LDA (ptr1),y		;
-	STA _gamemode		;   Starting level number
+	STA _gamemode		;   Starting game mode
 	INCW ptr1			;__
 
 	LDA (ptr1),y		;
 	STA _speed			;   Starting speed
 	INCW ptr1			;__
 
-	LDA (ptr1),y		;	Starting BG color
-;	AND #$3F			;	Store normal color (pal_col(0, tmp2))
-	STA _no_parallax		;__
+	LDA (ptr1),y		;
+	STA _no_parallax	;	Parallax disable
 	INCW ptr1			;__
+
+	LDA (ptr1),y			;
+	STA _current_deco_type	;	Deco type
+	INCW ptr1				;__
+	
+	LDA (ptr1),y			;
+	STA _current_spike_set	;	Spike set
+	INCW ptr1				;__
+
+	LDA (ptr1),y			;
+	STA _current_block_set	;	Block set
+	INCW ptr1				;__
+
+	LDA (ptr1),y			;
+	STA _current_saw_set	;	Saw set
+	INCW ptr1				;__
 
 ;	LDA _discomode
 ;	BNE @noset
@@ -4136,14 +4152,14 @@ vert_skip:
 ; void set_tile_banks();
 ; 
 ;	if (!no_parallax) {
-;		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
-;		mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
+;		mmc3_set_1kb_chr_bank_0(current_spike_set + (parallax_scroll_x & 1));
+;		mmc3_set_1kb_chr_bank_1(current_block_set + (parallax_scroll_x & 1));	//tile graphics
 ;		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-;		mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
+;		mmc3_set_1kb_chr_bank_3(current_saw_set + (parallax_scroll_x & 1));
 ;	}
 ;	else {
-;		mmc3_set_1kb_chr_bank_0(spike_set[level]);
-;		mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
+;		mmc3_set_1kb_chr_bank_0(current_spike_set);
+;		mmc3_set_1kb_chr_bank_1(current_block_set);	//tile graphics
 ;		mmc3_set_1kb_chr_bank_2(SLOPESA);
-;		mmc3_set_1kb_chr_bank_3(saw_set[level]);
+;		mmc3_set_1kb_chr_bank_3(current_saw_set);
 ;	}

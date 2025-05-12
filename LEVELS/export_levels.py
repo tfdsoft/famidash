@@ -36,6 +36,12 @@ def chunks(lst, n):
 	for i in range(0, len(lst), n):
 		yield lst[i:i + n]
 
+def getPropFormatted(i, prop, prefix = None, validPrefixVals = None, globalPrefix = "") -> str:
+		if prefix and i[prop] in validPrefixVals:
+			return f"{globalPrefix}{prefix}{i[prop]}"
+		else:
+			return f"{globalPrefix}{i[prop]}"
+
 def vertical_rle_with_single_tile(lines):
 	# vertical rle compression
 	column_tiles = list(itertools.chain.from_iterable(zip(*list(lines)))) + [0x100]
@@ -106,7 +112,7 @@ def split_rle_data_into_compressed_banks(data : Iterable[int], first_meta_ptr : 
 	return out_data
 	
 
-def export_bg(folder: pathlib.PurePath, levels: Iterable[str], include_path : pathlib.Path) -> tuple:
+def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : pathlib.Path) -> tuple:
 	# data for all levels, each gets a tuple, they are then binpacked
 	level_data = []
 	# data for split level parts
@@ -128,7 +134,8 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str], include_path : pa
 	if not cached_data_subfolder.is_dir():
 		cached_data_subfolder.mkdir(parents=True)
 
-	for level in levels:
+	for metadata in levels:
+		level = metadata['level']
 		lines = []
 		with open(folder / f"{level}_.csv") as f:
 			lines = list(csv.reader(f))
@@ -167,16 +174,26 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str], include_path : pa
 			cached_data_path.write_bytes(lz_data)
 			level_cache = {}
 		header = [
-			f"{level}_song_number",
-			f"{level}_game_mode",
-			f"{level}_speed",
-			f"{level}_no_parallax",
-			f"{level}_bg_color",
-			f"{level}_grnd_color",
-			f"{len(lines)}\t; height of {level}",
+			metadata['songID'],
+			f"{metadata['startingGameMode']}",
+			f"{metadata['startingSpeed']}",
+			f"{int(bool(metadata.get('parallaxDisable')))}",
+			f"_{metadata['decoType']}",
+			getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
+			getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
+			getPropFormatted(metadata, 'sawSet', 'SAWBLADES', ('A',), "_"),
+			f"${metadata['startingBackgroundColor']:02X}",
+			f"${metadata['startingGroundColor']:02X}",
+			str(len(lines)),
 		]
+		maxHeaderStrLen = max(map(len, header))
+		headerDataDesc = [
+			"Song ID", "Starting game mode", "Starting speed", "Disable parallax",
+			"Deco type", "Spike set", "Block set", "Sawblade set",
+			"Starting background color", "Starting ground color", "Level height"]
+		header = [f"{i} ;{'_'*(maxHeaderStrLen-len(i)+3)} {headerDataDesc[idx]}" for idx, i in enumerate(header)]
 		total_rle_size += len(header) + len(rle_data)
-		if (len(lz_data) >= 8192 - 7):
+		if (len(lz_data) >= 8192 - len(header)):
 			if (
 				# Check existence of split cache
 				level in size_cache and
@@ -201,7 +218,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[str], include_path : pa
 			else:
 				print("compressing in parts:")
 
-				split_data = split_rle_data_into_compressed_banks(rle_data, len(level_chunk_data), [8192-7, 8192])
+				split_data = split_rle_data_into_compressed_banks(rle_data, len(level_chunk_data), [8192-len(header), 8192])
 				split_files = [cached_data_path.with_suffix(f".{i}.bin") for i in range(len(split_data))]
 
 				[path.write_bytes(data) for path, data in zip(split_files, split_data)]
@@ -456,18 +473,6 @@ def generate_menutext(filteredMetadata : dict, include_path : pathlib.Path):
 		]))
 
 def generate_level_list(filteredMetadata : dict, include_path : pathlib.Path):
-	def getPropFormatted(i, prop, prefix = None, validPrefixVals = None) -> str:
-		if prefix and i[prop] in validPrefixVals:
-			return f"\t{prefix}{i[prop]},\t// {i['level']}"
-		else:
-			return f"\t{i[prop]},\t// {i['level']}"
-
-	# variables in RODATA
-	# should really be moved to header
-	decoTypes = [getPropFormatted(i, 'decoType') for i in filteredMetadata]
-	spikeSets = [getPropFormatted(i, 'spikeSet', 'SPIKES', ('A', 'B', 'C')) for i in filteredMetadata]
-	blockSets = [getPropFormatted(i, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D')) for i in filteredMetadata]
-	sawSets = [getPropFormatted(i, 'sawSet', 'SAWBLADES', ('A',)) for i in filteredMetadata]
 
 	# Accessed from multiple places in diff banks, so it's in fixed
 	starsList = [f"\t{i['stars']},\t// {i['level']}" for i in filteredMetadata]
@@ -481,23 +486,6 @@ def generate_level_list(filteredMetadata : dict, include_path : pathlib.Path):
 	(include_path / 'levellist.h').write_text("\n".join([
 			'',
 			'// Exported by export_levels.py',
-			'',
-			'const uint8_t DECOTYPE[] = {',
-			*decoTypes,
-			'};',
-			'',
-			'const uint8_t spike_set[] = {',
-			*spikeSets,
-			'};',
-			'', '',
-			'const uint8_t block_set[] = {',
-			*blockSets,
-			'};',
-			'',
-			'const uint8_t saw_set[] = {',
-			*sawSets,
-			'};',
-			'',
 			'',
 			'#define EASY 0',
 			'#define NORMAL 1',
@@ -517,25 +505,6 @@ def generate_level_list(filteredMetadata : dict, include_path : pathlib.Path):
 			''
 		]
 		))
-
-def generate_level_header(filteredMetadata : dict, include_path : pathlib.Path):
-	output = [
-		'',
-		';;; Generated by export_levels.py',
-		''
-	]
-	for i in filteredMetadata:
-		output += [
-			f"{i['level']}_song_number = {i['songID']}",
-			f"{i['level']}_game_mode   = {i['startingGameMode']}",
-			f"{i['level']}_speed       = {i['startingSpeed']}",
-			f"{i['level']}_no_parallax = {int(bool(i.get('parallaxDisable')))}",
-			f"{i['level']}_bg_color    = ${i['startingBackgroundColor']:02X}",
-			f"{i['level']}_grnd_color  = ${i['startingGroundColor']:02X}",
-			""
-		]
-
-	(include_path / 'level_header.s').write_text("\n".join(output))
 
 def generate_level_table(levels, bg_exp_data, include_path):
 
@@ -677,7 +646,7 @@ def main():
 	if not include_path.is_dir():
 		include_path.mkdir(parents=True)
 
-	bg_exp_data = export_bg(args.csvFolder, levels, include_path)
+	bg_exp_data = export_bg(args.csvFolder, filteredMetadata, include_path)
 	spr_exp_data = export_spr(args.csvFolder, filteredMetadata, globalObjectOffsetSettings)
 	binpack_and_write_data(bg_exp_data, spr_exp_data, include_path)
 
@@ -685,7 +654,6 @@ def main():
 	print("Exporting includes:")
 	print_around_function("\t- Menu text... ", "Done\n", generate_menutext, (filteredMetadata, include_path))
 	print_around_function("\t- Level list... ", "Done\n", generate_level_list, (filteredMetadata, include_path))
-	print_around_function("\t- Level header... ", "Done\n", generate_level_header, (filteredMetadata, include_path))
 	print_around_function("\t- Level table... ", "Done\n", generate_level_table, (levels, bg_exp_data, include_path))
 	print_around_function("\t- Level defines... ", "Done\n", generate_space_defines, (filteredOfficialMetadata, filteredCommunityMetadata, levelSetDefineName, include_path))
 

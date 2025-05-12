@@ -19,7 +19,7 @@
 #define GAMEMODE_NINJA  0x08
 
 // Zeropage variables
-#pragma bss-name(push, "ZEROPAGE")
+#pragma bss-name("ZEROPAGE")
 
 uint8_t tmp1;
 uint8_t tmp2;
@@ -107,8 +107,7 @@ uint8_t * level_data;
 
 
 // SRAM
-#pragma bss-name(pop)
-#pragma bss-name(push, "SRAM")
+#pragma bss-name("SRAM")
 uint8_t SRAM_VALIDATE[4];
 
 uint8_t coin1_obtained[MAX_LEVEL_COMPLETE];
@@ -236,7 +235,7 @@ unsigned char practice_music_sync;
 
 #define poweroffcheck SRAM_VALIDATE[3]
 // Regular NES RAM
-#pragma bss-name(pop)
+#pragma bss-name("BSS")
 
 extern unsigned char famistudio_state[200];
 uint8_t last_gameState;
@@ -311,6 +310,11 @@ uint8_t kandodebugmode;
 uint8_t all_levels_complete;
 uint16_t triggers;
 uint16_t top_triggers;
+
+uint8_t current_deco_type;
+uint8_t current_spike_set;
+uint8_t current_block_set;
+uint8_t current_saw_set;
 
 uint8_t nocamlock;
 uint8_t nocamlockforced;
