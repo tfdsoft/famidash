@@ -2,6 +2,7 @@
 
 import sys
 import pathlib
+import itertools
 
 famistudioHelpRegex = "FamiStudio (.+) Command-Line Usage"
 
@@ -31,6 +32,17 @@ lastDatBank = 0x33
 
 musicFolder = pathlib.Path(sys.path[0]).resolve()
 tmpFolder = (musicFolder.parent / "TMP").resolve()
+
+# Because itertools is old af sometimes
+def batched(iterable, n, *, strict=False):
+    # batched('ABCDEFG', 3) → ABC DEF G
+    if n < 1:
+        raise ValueError('n must be at least one')
+    iterator = iter(iterable)
+    while batch := tuple(itertools.islice(iterator, n)):
+        if strict and len(batch) != n:
+            raise ValueError('batched(): incomplete batch')
+        yield batch
 
 # Local version of FamiStudio function
 # Source code @ https://github.com/BleuBleu/FamiStudio/blob/master/FamiStudio/Source/Utils/Utils.cs
@@ -187,7 +199,6 @@ if __name__ == "__main__":
     import argparse
     import binpacking
     import pyjson5
-    import itertools
     from collections.abc import Iterable
     
     def checkErr(proc : subprocess.CompletedProcess):
@@ -551,13 +562,13 @@ if __name__ == "__main__":
         '',
         'RIFFChunkStart "time"',
         '.if REGION = 0',
-        *['.dword ' + ", ".join(i) for i in itertools.batched(map(str, processed_nsf_metadata['durationNTSCList']), 4)],
+        *['.dword ' + ", ".join(i) for i in batched(map(str, processed_nsf_metadata['durationNTSCList']), 4)],
         '.else',
-        *['.dword ' + ", ".join(i) for i in itertools.batched(map(str, processed_nsf_metadata['durationPALList']), 4)],
+        *['.dword ' + ", ".join(i) for i in batched(map(str, processed_nsf_metadata['durationPALList']), 4)],
         '.endif',
         '',
         'RIFFChunkStart "fade"',
-        *['.dword ' + ", ".join(i) for i in itertools.batched(map(str, processed_nsf_metadata['durationFadeList']), 4)],
+        *['.dword ' + ", ".join(i) for i in batched(map(str, processed_nsf_metadata['durationFadeList']), 4)],
         ''
     ]
     (exportPath / "nsf_metadata.s").write_text("\n".join(nsfMetadataText))
