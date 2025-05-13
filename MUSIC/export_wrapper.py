@@ -162,22 +162,17 @@ if __name__ == "__main__":
 			Command to execute FamiStudio
 				(Useful if -f is not flexible enough
 				or additional arguments are needed)'''))
-	parser.add_argument('-l', '--levelSet', choices=availableLevelSets, required=False,
-		default=None,
-		help='Set of levels to export')
+	levelSetArgs = parser.add_mutually_exclusive_group()
+	levelSetArgs.add_argument('-l', '--levelSet', choices=availableLevelSets, required=False,
+					default=None,
+					help='Set of levels to export')
+	levelSetArgs.add_argument('-a', '--exportAll', action='store_true', required=False,
+					default=False,
+					help='Export all level sets')
 	parser.add_argument('-v', '--verbose', action='store_true',
 		help='Increase verbosity of wrapper script')
 	args = parser.parse_args()
 
-	verbose = args.verbose
-
-	levelSet = args.levelSet
-	while levelSet not in availableLevelSets.union({"exit"}):
-		levelSet = input(f"Please select the level set to export [{', '.join(sorted(availableLevelSets))}, exit to exit]: ")
-	if levelSet == "exit":
-		exit(0)
-
-	metaFile = metadataFile(levelSet)
 
 	def getFamiStudio():
 		# Order of precedence:
@@ -203,36 +198,58 @@ if __name__ == "__main__":
 	fsCmd = getFamiStudio()
 
 	if fsCmd == None:
-		print("No FamiStudio instances found. See the help message by running this script with the -h option for more information.")
+		parser.print_help()
+		print("")
+		print("No FamiStudio instances found.")
 		exit(1)
 
-	# Get output folder
-	if args.test:
-		# Create new temp folder
-		foldername = f"music_export_{os.getpid():x}_{time.time_ns():x}"
-		if verbose:
-			print(f"Creating temporary folder TMP/{foldername}")
-		outFolder = tmpFolder / foldername
-		outFolder.mkdir()
+	verbose = args.verbose
+
+	if args.exportAll:
+		levelSet = "all"
 	else:
-		outFolder = outputFolder(levelSet)
+		levelSet = args.levelSet
+		while levelSet not in availableLevelSets.union({"exit", "all"}):
+			levelSet = input(f"Please select the level set to export [{', '.join(sorted(availableLevelSets))}, 'exit' to exit, 'all' to build them all]: ")
+		if levelSet == "exit":
+			exit(0)
 
-	print("Running export script...")
-	cmd = [sys.executable, innerScript, '-f', *fsCmd, '-m', metaFile, '-o', outFolder]
-	if verbose:
-		print(f"Command: {' '.join(map(str, cmd))}")
-	proc = subprocess.run(cmd)
+	if levelSet == "all":
+		levelSetsToExport = availableLevelSets
+	else:
+		levelSetsToExport = [levelSet]
 
-	if args.test:
-		if proc.returncode == 0:
-			print(f"Export successful, deleting temporary folder {outFolder}")
-			for i in outFolder.rglob('*'):
-				i.unlink()
-			outFolder.rmdir()
-		elif proc.returncode == 1:
-			print(f"Export failed before even doing anything, deleting temporary folder {outFolder}")
-			for i in outFolder.rglob('*'):
-				i.unlink()
-			outFolder.rmdir()
+	for levelSet in levelSetsToExport:
+
+		metaFile = metadataFile(levelSet)
+
+		# Get output folder
+		if args.test:
+			# Create new temp folder
+			foldername = f"music_export_{os.getpid():x}_{time.time_ns():x}"
+			if verbose:
+				print(f"Creating temporary folder TMP/{foldername}")
+			outFolder = tmpFolder / foldername
+			outFolder.mkdir()
 		else:
-			print(f"Export failed, please check temporary folder {outFolder}")
+			outFolder = outputFolder(levelSet)
+
+		print(f"Running export script for level set {levelSet}...")
+		cmd = [sys.executable, innerScript, '-f', *fsCmd, '-m', metaFile, '-o', outFolder]
+		if verbose:
+			print(f"Command: {' '.join(map(str, cmd))}")
+		proc = subprocess.run(cmd)
+
+		if args.test:
+			if proc.returncode == 0:
+				print(f"Export successful, deleting temporary folder {outFolder}")
+				for i in outFolder.rglob('*'):
+					i.unlink()
+				outFolder.rmdir()
+			elif proc.returncode == 1:
+				print(f"Export failed before even doing anything, deleting temporary folder {outFolder}")
+				for i in outFolder.rglob('*'):
+					i.unlink()
+				outFolder.rmdir()
+			else:
+				print(f"Export failed, please check temporary folder {outFolder}")

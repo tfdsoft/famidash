@@ -71,31 +71,44 @@ if __name__ == "__main__":
 	parser.add_argument('-o', '--outputFolder', type=pathlib.Path, required=False,
 					default=None,
 					help='Custom output folder for the include files')
-	parser.add_argument('-l', '--levelSet', choices=availableLevelSets, required=False,
+	levelSetArgs = parser.add_mutually_exclusive_group()
+	levelSetArgs.add_argument('-l', '--levelSet', choices=availableLevelSets, required=False,
 					default=None,
 					help='Set of levels to export')
+	levelSetArgs.add_argument('-a', '--exportAll', action='store_true', required=False,
+					default=False,
+					help='Export all level sets')
 	parser.add_argument('-v', '--verbose', action='store_true',
 		help='Increase verbosity of wrapper script')
 	args = parser.parse_args()
 
 	verbose = args.verbose
 
-	levelSet = args.levelSet
-	while levelSet not in availableLevelSets.union({"exit"}):
-		levelSet = input(f"Please select the level set to export [{', '.join(sorted(availableLevelSets))}, exit to exit]: ")
-	if levelSet == "exit":
-		exit(0)
+	if args.exportAll:
+		levelSet = "all"
+	else:
+		levelSet = args.levelSet
+		while levelSet not in availableLevelSets.union({"exit", "all"}):
+			levelSet = input(f"Please select the level set to export [{', '.join(sorted(availableLevelSets))}, 'exit' to exit, 'all' to build them all]: ")
+		if levelSet == "exit":
+			exit(0)
 
-	metaFile = metadataFile(levelSet) if not args.metadata else args.metadata
-	outFolder = outputFolder(levelSet) if not args.outputFolder else args.outputFolder
-	csvFolderArg = csvFolder(levelSet) if not args.csvFolder else args.csvFolder
+	if levelSet == "all":
+		levelSetsToExport = availableLevelSets
+	else:
+		levelSetsToExport = [levelSet]
 
-	print("Running export script...")
-	cmd = [
-		sys.executable, innerScript,
-		'--csvFolder', csvFolderArg,
-		'--metadata', metaFile,
-		'--outputFolder', outFolder]
-	if verbose:
-		print(f"Command: {' '.join(map(str, cmd))}")
-	proc = subprocess.run(cmd)
+	for levelSet in levelSetsToExport:
+		metaFile = metadataFile(levelSet) if not args.metadata else args.metadata
+		outFolder = outputFolder(levelSet) if not args.outputFolder else args.outputFolder
+		csvFolderArg = csvFolder(levelSet) if not args.csvFolder else args.csvFolder
+
+		print(f"Running export script for level set {levelSet}...")
+		cmd = [
+			sys.executable, innerScript,
+			'--csvFolder', csvFolderArg,
+			'--metadata', metaFile,
+			'--outputFolder', outFolder]
+		if verbose:
+			print(f"Command: {' '.join(map(str, cmd))}")
+		proc = subprocess.run(cmd)
