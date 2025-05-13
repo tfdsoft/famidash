@@ -5,11 +5,11 @@ A demake of Geometry Dash for the NES using the MMC3 mapper.
 
 ## Nightly Builds
 
-You can find nightly builds [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.nes.zip).
+You can find nightly builds [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.main.nes.zip).
 
-You can find the B-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/Famidash-b-sides/famidash.nes.zip).
+You can find the B-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.b-sides.nes.zip).
 
-You can find the VS branch nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/vs-famidash-again/famidash.nes.zip).
+You can find the VS branch nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
 ## contributing
 
@@ -29,7 +29,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[Zephyrside](https://github.com/zephyrside)/[UserSniper](https://github.com/usersniper)|project creator, former lead developer, code, music, graphics|
 |[kandowontu](https://github.com/kandowontu)|director, current lead developer, maintainer|
 |[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
-|[alexmush](https://github.com/ADM228)|code, asm, code optimisation, music|
+|[alexmush](https://github.com/ADM228)|code, asm, code optimisation, music, codebase unification|
 |[jroweboy](https://github.com/jroweboy)|graphics, code optimisation, parallax, menu, etc|
 |[Zenith](https://github.com/ZenithNeko)|music, graphics|
 |[jaezu](https://github.com/jaezudev)|i'm solely here because of kando's orders|
