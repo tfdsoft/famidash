@@ -112,6 +112,22 @@
 			parallaxDisable: true
 		},
 		{
+			level: "oceane",
+			lowerText: "OCEANE",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 6,
+			songID: "song_kesobomb",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "rainbowdust",
 			upperText: "RAINBOW",
 			lowerText: "DUST",

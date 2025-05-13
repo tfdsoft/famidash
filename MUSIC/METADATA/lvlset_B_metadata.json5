@@ -190,6 +190,11 @@
 			lowerText: "CLUTTERFUNK 2"
 			/* no vs system to speak of */
 		},
+		{
+			fmsSongName: "kesobomb",
+			lowerText: "KESOBOMB"
+			/* no vs system to speak of */
+		},
 		{	
 			fmsSongName: "crackdown",
 			upperText: "OKIBA",
