@@ -5,8 +5,15 @@ ifeq ($(OS),Windows_NT)
 CC65 := ./BIN/cc65.exe
 CA65 := ./BIN/ca65.exe
 LD65 := ./BIN/ld65.exe
-DEL := del
-MKDIR := mkdir
+
+define del
+del $(subst /,\\,$(1))
+endef
+
+define mkdir
+mkdir $(subst /,\\,$(1))
+endef
+
 PYTHON := python
 else ifeq ($(OS),MSDOS)
 # MS-DOS
@@ -15,17 +22,33 @@ else ifeq ($(OS),MSDOS)
 CC65 := ./BIN/cc65d.exe
 CA65 := ./BIN/ca65d.exe
 LD65 := ./BIN/ld65d.exe
-DEL := del
-MKDIR := mkdir
+
+define del
+del $(subst /,\\,$(1))
+endef
+
+define mkdir
+mkdir $(subst /,\\,$(1))
+endef
+
 PYTHON := python
+DIRSEP := \\
 else
 # Ubuntu/Debian
 CC65 := cc65
 CA65 := ca65
 LD65 := ld65
-DEL := rm -rf
-MKDIR := mkdir -p
+
+define del
+rm -rf $(1)
+endef
+
+define mkdir
+mkdir -p $(1)
+endef
+
 PYTHON := python3
+DIRSEP := /
 endif
 
 define cc65IncDir
@@ -56,7 +79,7 @@ endif
 
 .PHONY: default clean distclean build nsf vs-sys main b-sides
 
-build: $(OUTDIR)/ $(OUTDIR)/$(NAME).nes
+build: $(OUTDIR) $(OUTDIR)/$(NAME).nes
 all: main vs-sys b-sides
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
 
@@ -98,13 +121,13 @@ b-sides:
 
 #target: dependencies
 
-$(OUTDIR)/:
-	$(MKDIR) $(OUTDIR)
+$(OUTDIR):
+	$(call mkdir,$(OUTDIR))
 
-$(TMPDIR)/:
-	$(MKDIR) $(TMPDIR)
+$(TMPDIR):
+	$(call mkdir,$(TMPDIR))
 
-$(OUTDIR)/$(NAME).nes: $(OUTDIR)/ $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
+$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
 	$(LD65) -C $(CFG) -o $(OUTDIR)/$(NAME).nes $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0.o $(NAME).o nes.lib --dbgfile $(OUTDIR)/famidash.dbg
 	@echo $(NAME).nes created
 
@@ -117,7 +140,7 @@ $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 $(TMPDIR)/BUILD_FLAGS.s: BUILD_FLAGS.h defines_to_asm.py LEVELS/include/lvlset_$(LEVELSET)/level_defines.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
 	$(PYTHON) defines_to_asm.py $(TMPDIR)/BUILD_FLAGS.s BUILD_FLAGS.h LEVELS/include/lvlset_$(LEVELSET)/level_defines.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
 
-$(TMPDIR)/$(NAME).s: $(TMPDIR)/ SAUCE/$(NAME).c SAUCE/*.h SAUCE/gamestates/*.h SAUCE/gamemodes/*.h SAUCE/defines/*.h SAUCE/functions/*.h METATILES/metatiles.h LEVELS/include/lvlset_$(LEVELSET)/*.h LIB/headers/*.h MUSIC/EXPORTS/lvlset_$(LEVELSET)/*.h 
+$(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h SAUCE/gamestates/*.h SAUCE/gamemodes/*.h SAUCE/defines/*.h SAUCE/functions/*.h METATILES/metatiles.h LEVELS/include/lvlset_$(LEVELSET)/*.h LIB/headers/*.h MUSIC/EXPORTS/lvlset_$(LEVELSET)/*.h 
 	$(CC65) $(CC65_DEFINES) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) $(call cc65IncDir,MUSIC/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,LEVELS/include/lvlset_$(LEVELSET)) -E --add-source -o $(TMPDIR)/$(NAME).pp.c
 	$(CC65) $(CC65_DEFINES) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) $(call cc65IncDir,MUSIC/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,LEVELS/include/lvlset_$(LEVELSET)) --add-source -o $(TMPDIR)/$(NAME).s
 
@@ -132,7 +155,7 @@ clean:
 ifeq ($(OS),Windows_NT)
 	clean.bat
 else ifeq ($(OS),MSDOS)
-	rm -rf $(TMPDIR_PREFIX)/*.*
+	$(call del,$(TMPDIR_PREFIX)/*.*)
 else
 	rm -rf $(TMPDIR_PREFIX)
 endif
@@ -141,7 +164,7 @@ distclean:
 ifeq ($(OS),Windows_NT)
 	clean.bat
 else ifeq ($(OS),MSDOS)
-	rm -rf $(OUTDIR_PREFIX)/*.*
+	$(call del,$(OUTDIR_PREFIX)/*.*)
 else
 	rm -rf $(OUTDIR_PREFIX)
 endif
