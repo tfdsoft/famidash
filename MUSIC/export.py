@@ -250,7 +250,7 @@ if __name__ == "__main__":
     songNames = re.findall(songNameRegex, fsTxt)
     neededSongNames = sorted(i['fmsSongName'] for i in processed_metadata['filteredSongList'])
     if any(i not in songNames for i in neededSongNames):
-        print(f'Songs {", ".join([f"\"{i}\"" for i in neededSongNames if i not in songNames])} not found in FamiStudio module. Please check the song names')
+        print('Songs ', ", ".join([f'"{i}"' for i in neededSongNames if i not in songNames]), ' not found in FamiStudio module. Please check the song names', sep="")
         exit(2)
     neededSongs = [songNames.index(i) for i in neededSongNames]
 
