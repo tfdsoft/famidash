@@ -46,7 +46,7 @@
 	; Header
 		.byte song_subtle_oddities ;___ Song ID
 		.byte 0 ;______________________ Starting game mode
-		.byte 1 ;______________________ Starting speed
+		.byte 0 ;______________________ Starting speed
 		.byte 1 ;______________________ Disable parallax
 		.byte _EXTRASPRITES1 ;_________ Deco type
 		.byte _SPIKESA ;_______________ Spike set

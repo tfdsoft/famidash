@@ -140,7 +140,7 @@
 			stars: 8,
 			songID: "song_subtle_oddities",
 			startingGameMode: 0,
-			startingSpeed: 1,
+			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
