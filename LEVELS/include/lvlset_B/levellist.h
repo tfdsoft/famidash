@@ -17,6 +17,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// lookatthislevel
 	HARD,	// subzero
 	HARDER,	// pyrophoric
+	HARDER,	// rainbowdust
 	INSANE,	// subtleoddities
 	INSANE,	// highlife
 	DEMON,	// supercycles
@@ -42,6 +43,7 @@ const uint8_t stars_list[] = {
 	4,	// lookatthislevel
 	5,	// subzero
 	6,	// pyrophoric
+	7,	// rainbowdust
 	8,	// subtleoddities
 	9,	// highlife
 	10,	// supercycles

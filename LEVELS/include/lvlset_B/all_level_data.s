@@ -352,7 +352,26 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5221
 
 
-.segment "DAT_BANK_12"	; Total bank size: 8062 bytes
+.segment "DAT_BANK_11"	; Total bank size: 7962 bytes
+	.export level_data_rainbowdust
+	level_data_rainbowdust:
+	; Header
+		.byte song_chaoz_fantasy_extended ;___ Song ID
+		.byte 0 ;_____________________________ Starting game mode
+		.byte 1 ;_____________________________ Starting speed
+		.byte 1 ;_____________________________ Disable parallax
+		.byte _DECO1 ;________________________ Deco type
+		.byte _SPIKESC ;______________________ Spike set
+		.byte _BLOCKSB ;______________________ Block set
+		.byte _SAWBLADESA ;___________________ Sawblade set
+		.byte $0F ;___________________________ Starting background color
+		.byte $0F ;___________________________ Starting ground color
+		.byte 27 ;____________________________ Level height
+	; Level data
+		.incbin "EXPORTS/rainbowdust.lz.bin" ; Size: 5126
+
+
+.segment "DAT_BANK_13"	; Total bank size: 8062 bytes
 	.export level_data_aftercatabath_4
 	level_data_aftercatabath_4:
 	; Level data
@@ -376,7 +395,7 @@
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3389
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8145 bytes
+.segment "DAT_BANK_14"	; Total bank size: 8145 bytes
 	.export level_data_sonar
 	level_data_sonar:
 	; Header
@@ -395,14 +414,14 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3539
 
 
-.segment "DAT_BANK_14"	; Total bank size: 7596 bytes
+.segment "DAT_BANK_15"	; Total bank size: 7596 bytes
 	.export level_data_subtleoddities_0
 	level_data_subtleoddities_0:
 	; Level data
 		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2289
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8169 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8169 bytes
 	.export level_data_subzero
 	level_data_subzero:
 	; Header
@@ -421,7 +440,7 @@
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2236
 
 
-.segment "DAT_BANK_16"	; Total bank size: 6846 bytes
+.segment "DAT_BANK_17"	; Total bank size: 6846 bytes
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header

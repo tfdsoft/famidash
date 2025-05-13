@@ -112,6 +112,23 @@
 			parallaxDisable: true
 		},
 		{
+			level: "rainbowdust",
+			upperText: "RAINBOW",
+			lowerText: "DUST",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_chaoz_fantasy_extended",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "subtleoddities",
 			upperText: "SUBTLE",
 			lowerText: "ODDITIES",

@@ -180,6 +180,12 @@
 			vsSystemEnabled: true
 		},
 		{
+			fmsSongName: "Chaoz Fantasy Extended",
+			upperText: "CHAOZ FANTASY",
+			lowerText: "EXTENDED",
+			vsSystemEnabled: true
+		},
+		{
 			fmsSongName: "clutterfunk 2",
 			lowerText: "CLUTTERFUNK 2"
 			/* no vs system to speak of */
