@@ -26,9 +26,6 @@
 #include "defines/physics_defines.h"
 
 // grounds go here
-#pragma rodata-name (push, "XCD_BANK_03")
-#include "defines/menunametable.h"
-#pragma rodata-name (pop)
 #pragma rodata-name (push, "XCD_BANK_05")
 #include "mouse.h"
 //#include "mouse.c"
@@ -100,10 +97,13 @@
 #include "gamemodes/gamemode_spider.h"
 #include "gamemodes/gamemode_wave.h"
 
+// THE MENU STATE DEFINES //
+
+#include "include_menus.h"
+
 // THE GAME STATE DEFINES //
 
 #include "gamestates/state_savefile_validate.h"
-#include "gamestates/state_menu.h"
 #include "gamestates/state_game.h"
 
 //#include "gamestates/state_sorrynothing.h"
