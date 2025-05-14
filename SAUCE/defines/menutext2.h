@@ -1,4 +1,4 @@
-#include "bg_charmap.h"
+#include "charmaps/bg_charmap.h"
 
 
 const unsigned char menutext3[]="PRESS START TO RETURN";

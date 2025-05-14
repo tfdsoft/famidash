@@ -1,8 +1,6 @@
 
 // Exported by export_levels.py
 
-#include "defines/color1_charmap.h"
-
 const char levelText00[ 7] = "STEREO ";
 const char levelText01[ 7] = "BACK ON";
 const char levelText02[10] = "BASE AFTER";

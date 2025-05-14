@@ -2,8 +2,6 @@
 
 #if !__VS_SYSTEM
 
-#include "defines/bgm_charmap.h"
-
 const char musicSoundTestString00[ 7] = "STEREO$";
 const char musicSoundTestString01[ 8] = "SCHEMING";
 const char musicSoundTestString02[12] = "AT$THE$SPEED";

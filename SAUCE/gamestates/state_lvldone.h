@@ -171,7 +171,7 @@ void state_lvldone() {
 		vram_unrle(leveldone);
 	}
 
-	#include "defines/endlevel_charmap.h"
+	#include "charmaps/endlevel_charmap.h"
 	//multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));
 	//multi_vram_buffer_horz((const char*)menutext4,sizeof(menutext4)-1,NTADR_C(8, 18));
 	//multi_vram_buffer_horz((const char*)attemptstext,sizeof(attemptstext)-1,NTADR_C(7, 19));
@@ -513,12 +513,14 @@ CODE_BANK_PUSH("XCD_BANK_05")
 
 const unsigned char bgmtestscreen[];
 
+#if !__VS_SYSTEM
+#include "charmaps/bgm_charmap.h"
+#endif
 #include "music_soundTestTables.h"
 #include "sfx_soundTestTables.h"
 
 const char TEXT_debug_mode[] = "DEBUG MODE ENABLED";
 
-//#include "defines/bgm_charmap.h"
 void bgmtest() {
 	song = 0;
 	temptemp6 = 0; 	
@@ -764,7 +766,7 @@ void colordec() {
 }	
 
 
-#include "defines/mainmenu_charmap.h"
+#include "charmaps/mainmenu_charmap.h"
 
 
 const unsigned char gameboytext1[]="  GREY";
@@ -951,6 +953,7 @@ void set_fun_settings() {
 	};
 }	
 
+#include "charmaps/color1_charmap.h"
 #include "menutext.h"
 
 const char coin_counter[][3] = {
@@ -963,9 +966,6 @@ const char coin_counter[][3] = {
   "_^^",
   "^^^",
 };
-
-
-#include "defines/color1_charmap.h"
 
 /*
 	Refreshes level name & number
@@ -1038,7 +1038,7 @@ void refreshmenu_part2() {
 
 }
 
-#include "defines/endlevel_charmap.h"
+#include "charmaps/endlevel_charmap.h"
 void lvl_done_update() {
 	if (menuselection) {
 		one_vram_buffer(0xFF, NTADR_A(8,23));
