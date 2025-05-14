@@ -18,6 +18,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// subzero
 	HARDER,	// pyrophoric
 	HARDER,	// oceane
+	HARDER,	// generationretro
 	HARDER,	// rainbowdust
 	INSANE,	// subtleoddities
 	INSANE,	// highlife
@@ -45,6 +46,7 @@ const uint8_t stars_list[] = {
 	5,	// subzero
 	6,	// pyrophoric
 	6,	// oceane
+	6,	// generationretro
 	7,	// rainbowdust
 	8,	// subtleoddities
 	9,	// highlife

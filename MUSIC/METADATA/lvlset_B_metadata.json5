@@ -9,12 +9,12 @@
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
 			lowerText: "MADNESS",
-			vsSystemEnabled: true,
+		
 			nsfData: {
 				trackLabel: "Stereo Madness",
 				trackAuthor: {
 					original: "ForeverBound",
-					cover: "Zenith302, UserSniper"
+					cover: "Zenith302, UserSniper",
 				},
 				durationNTSC: 85550,
 				durationPAL: 102840
@@ -23,7 +23,7 @@
 		{
 			fmsSongName: "Can't Let Go",
 			lowerText: "CANT LET GO",
-			vsSystemEnabled: true,
+		
 			nsfData: {
 				trackLabel: "Cant Let Go ~ Can't Let Go",
 				trackAuthor: {
@@ -37,7 +37,7 @@
 		{
 			fmsSongName: "Cycles",
 			lowerText: "CYCLES",
-			vsSystemEnabled: true,
+		
 			nsfData: {
 				trackLabel: "Cycles",
 				trackAuthor: {
@@ -51,21 +51,7 @@
 		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
-			vsSystemEnabled: true
-		},
-		{
-			fmsSongName: "endgame",
-			lowerText: "DECODE",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Decode ~ Endgame",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Vikrinox"
-				},
-				durationNTSC: 79283,
-				durationPAL: 95280
-			}
+			
 		},
 		{
 			fmsSongName: "Practice",
@@ -85,34 +71,18 @@
 		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
-			vsSystemEnabled: true
-		},
-		{
-			fmsSongName: "Infernoplex full",
-			upperText: "INFERNOPLEX",
-			lowerText: "FULL VERSION",
-			vsSystemEnabled: true
-		},
-		{
-			fmsSongName: "Problematic",
-			lowerText: "PROBLEMATIC",
-			vsSystemEnabled: true
+			
 		},
 		{
 			fmsSongName: "Stereo madness 2",
 			upperText: "STEREO ",
 			lowerText: "MADNESS 2",
-			vsSystemEnabled: true
+			
 		},
 		{
 			fmsSongName: "EON",
 			lowerText: "EON",
-			vsSystemEnabled: true
-		},
-		{
-			fmsSongName: "Death Moon",
-			lowerText: "DEATH MOON",
-			vsSystemEnabled: true
+			
 		},
 		{
 			fmsSongName: "Scheming Weasel",
@@ -124,13 +94,13 @@
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT",
-			vsSystemEnabled: true
+			
 		},
 		{
 			fmsSongName: "atthespeedoflight2",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT PT 2",
-			vsSystemEnabled: true
+			
 		},
 		{
 			fmsSongName: "atthespeedoflight3",
@@ -143,47 +113,21 @@
 			lowerText: "OF LIGHT FULL"
 		},
 		{
-			fmsSongName: "midnight",
-			lowerText: "MIDNIGHT",
-			vsSystemEnabled: true
-		},
-		{
 			fmsSongName: "stalemate",
 			lowerText: "STALEMATE",
-			vsSystemEnabled: true
-		},
-		{
-			fmsSongName: "haunted woods",
-			lowerText: "HAUNTED WOODS",
-			vsSystemEnabled: true
-		},
-		{
-			fmsSongName: "just right",
-			lowerText: "JUST RIGHT",
-			vsSystemEnabled: false
-		},
-		{
-			fmsSongName: "against the odds redux",
-			upperText: "8 BIT AGAINST",
-			lowerText: "THE ODDS REDUX",
-			vsSystemEnabled: true
+			
 		},
 		{
 			fmsSongName: "Driving By Night",
 			upperText: "DRIVING BY",
 			lowerText: "NIGHT",
-			vsSystemEnabled: true
-		},
-		{
-			fmsSongName: "chaozfantasy",
-			lowerText: "CHAOZ FANTASY",
-			vsSystemEnabled: true
+			
 		},
 		{
 			fmsSongName: "Chaoz Fantasy Extended",
 			upperText: "CHAOZ FANTASY",
 			lowerText: "EXTENDED",
-			vsSystemEnabled: true
+			
 		},
 		{
 			fmsSongName: "clutterfunk 2",
@@ -191,47 +135,19 @@
 			/* no vs system to speak of */
 		},
 		{
-			fmsSongName: "kesobomb",
-			lowerText: "KESOBOMB"
+			fmsSongName: "Glitch Gremlin",
+			upperText: "GLITCH",
+			lowerText: "GREMLIN",
 			/* no vs system to speak of */
 		},
-		{	
-			fmsSongName: "crackdown",
-			upperText: "OKIBA",
-			lowerText: "CRACKDOWN",
-			vsSystemEnabled: true
-		},
 		{
-			fmsSongName: "ultimatedestruction",
-			upperText: "ULTIMATE",
-			lowerText: "DESTRUCTION"
+			fmsSongName: "kesobomb",
+			lowerText: "KESOBOMB",
+			/* no vs system to speak of */
 		},
 		{
 			fmsSongName: "Ninox",
 			lowerText: "NINOX"
-		},
-		{
-			fmsSongName: "What's a Future Funk?",
-			upperText: "WHATS A",
-			lowerText: "FUTURE FUNK"
-		},
-		{
-			fmsSongName: "FREEDOM DiVE",
-			upperText: "FREEDOM",
-			lowerText: "DIVE"
-		},
-		{
-			fmsSongName: "Idols",
-			lowerText: "IDOLS"
-		},
-		{
-			fmsSongName: "Ludicrous Speed",
-			upperText: "LUDICROUS",
-			lowerText: "SPEED"
-		},
-		{
-			fmsSongName: "Windfall",
-			lowerText: "WINDFALL"
 		},
 		{
 			fmsSongName: "Speed Racer",

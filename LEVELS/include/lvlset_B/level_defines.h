@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 23
+#define COMMUNITY_LEVEL_COUNT 24
 
 #define stereomadness 0
 #define sonar 1
@@ -14,19 +14,20 @@
 #define subzero 5
 #define pyrophoric 6
 #define oceane 7
-#define rainbowdust 8
-#define subtleoddities 9
-#define highlife 10
-#define supercycles 11
-#define clutterfunk2 12
-#define speedracer 13
-#define pgclubstep 14
-#define hell 15
-#define eon 16
-#define stalemate 17
-#define bloodbath 18
-#define cataclysm 19
-#define aftermath 20
-#define aftercatabath 21
-#define slaughterhouse 22
-#define test4 23
+#define generationretro 8
+#define rainbowdust 9
+#define subtleoddities 10
+#define highlife 11
+#define supercycles 12
+#define clutterfunk2 13
+#define speedracer 14
+#define pgclubstep 15
+#define hell 16
+#define eon 17
+#define stalemate 18
+#define bloodbath 19
+#define cataclysm 20
+#define aftermath 21
+#define aftercatabath 22
+#define slaughterhouse 23
+#define test4 24
