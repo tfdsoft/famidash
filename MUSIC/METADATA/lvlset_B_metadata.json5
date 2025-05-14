@@ -169,6 +169,11 @@
 		{
 			fmsSongName: "Hell",
 			lowerText: "ACCELERATE"
+		},
+		{
+			fmsSongName: "Sonic blaster",
+			upperText: "SONIC",
+			lowerText: "BLASTER"
 		}
 	],
 	SFX: [

@@ -27,6 +27,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// speedracer
 	DEMON,	// pgclubstep
 	DEMON,	// hell
+	DEMON,	// sonicwave
 	DEMON,	// eon
 	DEMON,	// stalemate
 	DEMON,	// bloodbath
@@ -55,6 +56,7 @@ const uint8_t stars_list[] = {
 	10,	// speedracer
 	10,	// pgclubstep
 	10,	// hell
+	10,	// sonicwave
 	10,	// eon
 	10,	// stalemate
 	10,	// bloodbath

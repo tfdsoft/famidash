@@ -365,6 +365,11 @@
 			fmsSongName: "rainbow tylenol",
 			upperText: "RAINBOW",
 			lowerText: "TYLENOL"
+		},
+		{
+			fmsSongName: "Glitch Gremlin",
+			upperText: "GLITCH",
+			lowerText: "GREMLIN"
 		}
 	],
 	SFX: [

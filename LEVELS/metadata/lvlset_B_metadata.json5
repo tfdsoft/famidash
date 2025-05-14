@@ -274,6 +274,22 @@
 			parallaxDisable: true
 		},
 		{
+			level: "sonicwave",
+			lowerText: "SONIC WAVE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "C",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_sonic_blaster",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "eon",
 			lowerText: "EON",
 			decoType: "EXTRASPRITES1",
