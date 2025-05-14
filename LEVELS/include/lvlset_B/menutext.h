@@ -20,20 +20,21 @@ const char levelText0D[ 5] = "RETRO";
 const char levelText0E[ 4] = "DUST";
 const char levelText0F[ 8] = "ODDITIES";
 const char levelText10[ 9] = "HIGH LIFE";
-const char levelText11[12] = "SUPER CYCLES";
-const char levelText12[13] = "CLUTTERFUNK 2";
-const char levelText13[11] = "SPEED RACER";
-const char levelText14[11] = "PG CLUBSTEP";
-const char levelText15[ 4] = "HELL";
-const char levelText16[10] = "SONIC WAVE";
-const char levelText17[ 3] = "EON";
-const char levelText18[ 9] = "STALEMATE";
-const char levelText19[ 9] = "BLOODBATH";
-const char levelText1A[ 9] = "CATACLYSM";
-const char levelText1B[ 9] = "AFTERMATH";
-const char levelText1C[13] = "AFTERCATABATH";
-const char levelText1D[14] = "SLAUGHTERHOUSE";
-const char levelText1E[ 6] = "TEST 4";
+const char levelText11[10] = "DEATH MOON";
+const char levelText12[12] = "SUPER CYCLES";
+const char levelText13[13] = "CLUTTERFUNK 2";
+const char levelText14[11] = "SPEED RACER";
+const char levelText15[11] = "PG CLUBSTEP";
+const char levelText16[ 4] = "HELL";
+const char levelText17[10] = "SONIC WAVE";
+const char levelText18[ 3] = "EON";
+const char levelText19[ 9] = "STALEMATE";
+const char levelText1A[ 9] = "BLOODBATH";
+const char levelText1B[ 9] = "CATACLYSM";
+const char levelText1C[ 9] = "AFTERMATH";
+const char levelText1D[13] = "AFTERCATABATH";
+const char levelText1E[14] = "SLAUGHTERHOUSE";
+const char levelText1F[ 6] = "TEST 4";
 
 
 const char* const levelTextsUpper[] = {
@@ -63,6 +64,7 @@ const char* const levelTextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 const uint8_t levelTextsUpperSize[] = {
@@ -77,6 +79,7 @@ const uint8_t levelTextsUpperSize[] = {
 	sizeof(levelText02),
 	sizeof(levelText03),
 	sizeof(levelText04),
+	0,
 	0,
 	0,
 	0,
@@ -122,6 +125,7 @@ const char* const levelTextsLower[] = {
 	levelText1C,
 	levelText1D,
 	levelText1E,
+	levelText1F,
 };
 
 const uint8_t levelTextsLowerSize[] = {
@@ -151,4 +155,5 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText1C),
 	sizeof(levelText1D),
 	sizeof(levelText1E),
+	sizeof(levelText1F),
 };

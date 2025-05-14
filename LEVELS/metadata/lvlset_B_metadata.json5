@@ -195,6 +195,22 @@
 			parallaxDisable: true
 		},
 		{
+			level: "deathmoon",
+			lowerText: "DEATH MOON",
+			decoType: "DECO1",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_death_moon",
+			startingGameMode: 0,
+			startingSpeed: 3,
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "supercycles",
 			lowerText: "SUPER CYCLES",
 			decoType: "DECO1",

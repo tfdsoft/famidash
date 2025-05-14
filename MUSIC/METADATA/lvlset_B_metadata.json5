@@ -171,6 +171,11 @@
 			lowerText: "ACCELERATE"
 		},
 		{
+			fmsSongName: "Death Moon",
+			lowerText: "DEATH MOON",
+			vsSystemEnabled: true
+		},
+		{
 			fmsSongName: "Sonic blaster",
 			upperText: "SONIC",
 			lowerText: "BLASTER"

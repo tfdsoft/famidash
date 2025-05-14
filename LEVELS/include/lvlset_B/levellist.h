@@ -22,6 +22,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// rainbowdust
 	INSANE,	// subtleoddities
 	INSANE,	// highlife
+	DEMON,	// deathmoon
 	DEMON,	// supercycles
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
@@ -51,6 +52,7 @@ const uint8_t stars_list[] = {
 	7,	// rainbowdust
 	8,	// subtleoddities
 	9,	// highlife
+	10,	// deathmoon
 	10,	// supercycles
 	10,	// clutterfunk2
 	10,	// speedracer

@@ -46,14 +46,12 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// thelightningroad
 	DEMON,	// nightmare
 	DEMON,	// demonpark
-	DEMON,	// deathmoon
 	DEMON,	// decode
 	DEMON,	// dearnostalgists
 	DEMON,	// problematic
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
 	DEMON,	// luckydraw
-	DEMON,	// test4
 };
 
 const uint8_t stars_list[] = {
@@ -93,12 +91,10 @@ const uint8_t stars_list[] = {
 	10,	// thelightningroad
 	10,	// nightmare
 	10,	// demonpark
-	10,	// deathmoon
 	10,	// decode
 	10,	// dearnostalgists
 	10,	// problematic
 	10,	// firetemple
 	10,	// foresttemple
 	10,	// luckydraw
-	0,	// test4
 };

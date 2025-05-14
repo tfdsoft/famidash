@@ -4,7 +4,7 @@
 #define LEVELSET 'A'
 
 #define OFFICIAL_LEVEL_COUNT 22
-#define COMMUNITY_LEVEL_COUNT 22
+#define COMMUNITY_LEVEL_COUNT 20
 
 #define stereomadness 0
 #define backontrack 1
@@ -42,11 +42,9 @@
 #define thelightningroad 33
 #define nightmare 34
 #define demonpark 35
-#define deathmoon 36
-#define decode 37
-#define dearnostalgists 38
-#define problematic 39
-#define firetemple 40
-#define foresttemple 41
-#define luckydraw 42
-#define test4 43
+#define decode 36
+#define dearnostalgists 37
+#define problematic 38
+#define firetemple 39
+#define foresttemple 40
+#define luckydraw 41

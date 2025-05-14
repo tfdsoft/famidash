@@ -296,11 +296,6 @@
 			vsSystemEnabled: true
 		},
 		{
-			fmsSongName: "Death Moon",
-			lowerText: "DEATH MOON",
-			vsSystemEnabled: true
-		},
-		{
 			fmsSongName: "Scheming Weasel",
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
@@ -339,13 +334,6 @@
 			fmsSongName: "haunted woods",
 			lowerText: "HAUNTED WOODS",
 		},
-		/*
-		{
-			fmsSongName: "chaozfantasy",
-			lowerText: "CHAOZ FANTASY",
-			vsSystemEnabled: true
-		},
-		*/
 		{
 			fmsSongName: "just right",
 			lowerText: "JUST RIGHT",
@@ -366,11 +354,6 @@
 			upperText: "RAINBOW",
 			lowerText: "TYLENOL"
 		},
-		{
-			fmsSongName: "Glitch Gremlin",
-			upperText: "GLITCH",
-			lowerText: "GREMLIN"
-		}
 	],
 	SFX: [
 		{

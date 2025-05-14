@@ -508,7 +508,7 @@
 			lowerText: "TYLENOL",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "A",
-			blockSet: "A",
+			blockSet: "B",
 			sawSet: "A",
 			difficulty: "INSANE",
 			stars: 8,
@@ -580,22 +580,6 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x06
-		},
-		{
-			level: "deathmoon",
-			lowerText: "DEATH MOON",
-			decoType: "DECO1",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_death_moon",
-			startingGameMode: 0,
-			startingSpeed: 3,
-			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
 		},
 		{
 			level: "decode",
@@ -677,22 +661,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		/*{
-			level: "bloodbath",
-			lowerText: "BLOODBATH",
-			decoType: "DECOCLOUD",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_atthespeedoflight2",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},*/
 		{
 			level: "luckydraw",
 			lowerText: "LUCKY DRAW",
@@ -709,22 +677,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
-			level: "test4",
-			lowerText: "TEST4",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 0,
-			songID: "song_dash",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02,
-			parallaxDisable: true
-		}
 	],
 	globalObjectOffsets: [
 		/*	Format:
