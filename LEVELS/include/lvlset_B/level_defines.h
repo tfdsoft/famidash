@@ -22,11 +22,11 @@
 #define supercycles 13
 #define clutterfunk2 14
 #define speedracer 15
-#define pgclubstep 16
-#define hell 17
-#define sonicwave 18
-#define eon 19
-#define stalemate 20
+#define hell 16
+#define pgclubstep 17
+#define eon 18
+#define stalemate 19
+#define sonicwave 20
 #define bloodbath 21
 #define cataclysm 22
 #define aftermath 23

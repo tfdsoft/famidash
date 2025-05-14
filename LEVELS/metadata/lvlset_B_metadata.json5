@@ -259,21 +259,6 @@
 			parallaxDisable: true
 		},
 		{
-			level: "pgclubstep",
-			lowerText: "PG CLUBSTEP",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_clubstep",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
-		},
-		{
 			level: "hell",
 			lowerText: "HELL",
 			decoType: "EXTRASPRITES1",
@@ -290,20 +275,19 @@
 			parallaxDisable: true
 		},
 		{
-			level: "sonicwave",
-			lowerText: "SONIC WAVE",
+			level: "pgclubstep",
+			lowerText: "PG CLUBSTEP",
 			decoType: "DECO1",
-			spikeSet: "C",
+			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_sonic_blaster",
+			songID: "song_clubstep",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			startingGroundColor: 0x0F
 		},
 		{
 			level: "eon",
@@ -326,7 +310,7 @@
 					offsetX: 4
 				}
 			] */
-		},
+		},		
 		{
 			level: "stalemate",
 			lowerText: "STALEMATE",
@@ -337,6 +321,22 @@
 			difficulty: "DEMON",
 			stars: 10,
 			songID: "song_stalemate",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
+			level: "sonicwave",
+			lowerText: "SONIC WAVE",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_sonic_blaster",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,

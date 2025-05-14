@@ -274,8 +274,8 @@
 	; Level data
 		.incbin "EXPORTS/hell.lz.bin" ; Size: 6275
 
-	.export level_data_eon_4
-	level_data_eon_4:
+	.export level_data_eon_3
+	level_data_eon_3:
 	; Level data
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 800
 
@@ -448,8 +448,8 @@
 
 
 .segment "DAT_BANK_19"	; Total bank size: 8153 bytes
-	.export level_data_sonicwave_3
-	level_data_sonicwave_3:
+	.export level_data_sonicwave_4
+	level_data_sonicwave_4:
 	; Level data
 		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3711
 

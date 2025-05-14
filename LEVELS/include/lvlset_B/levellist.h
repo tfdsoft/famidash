@@ -26,11 +26,11 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// supercycles
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
-	DEMON,	// pgclubstep
 	DEMON,	// hell
-	DEMON,	// sonicwave
+	DEMON,	// pgclubstep
 	DEMON,	// eon
 	DEMON,	// stalemate
+	DEMON,	// sonicwave
 	DEMON,	// bloodbath
 	DEMON,	// cataclysm
 	DEMON,	// aftermath
@@ -56,11 +56,11 @@ const uint8_t stars_list[] = {
 	10,	// supercycles
 	10,	// clutterfunk2
 	10,	// speedracer
-	10,	// pgclubstep
 	10,	// hell
-	10,	// sonicwave
+	10,	// pgclubstep
 	10,	// eon
 	10,	// stalemate
+	10,	// sonicwave
 	10,	// bloodbath
 	10,	// cataclysm
 	10,	// aftermath
