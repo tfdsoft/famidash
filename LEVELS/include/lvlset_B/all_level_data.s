@@ -87,8 +87,8 @@
 		.byte 0 ;____________________ Starting speed
 		.byte 1 ;____________________ Disable parallax
 		.byte _DECO1 ;_______________ Deco type
-		.byte _SPIKESA ;_____________ Spike set
-		.byte _BLOCKSC ;_____________ Block set
+		.byte _SPIKESC ;_____________ Spike set
+		.byte _BLOCKSB ;_____________ Block set
 		.byte _SAWBLADESA ;__________ Sawblade set
 		.byte $0F ;__________________ Starting background color
 		.byte $0F ;__________________ Starting ground color
