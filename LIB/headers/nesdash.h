@@ -196,11 +196,15 @@ extern uint8_t PAL_BUF[32];
   DO_PRAGMA(data-name(push, bank ))\
   DO_PRAGMA(rodata-name(push, bank ))
 
-
 #define CODE_BANK_POP() \
   DO_PRAGMA(code-name(pop))\
   DO_PRAGMA(data-name(pop))\
   DO_PRAGMA(rodata-name(pop))
+
+#define CODE_BANK(bank) \
+  DO_PRAGMA(code-name(bank ))\
+  DO_PRAGMA(data-name(bank ))\
+  DO_PRAGMA(rodata-name(bank ))
 
 
 #define swapbyte(a, b) do { \
