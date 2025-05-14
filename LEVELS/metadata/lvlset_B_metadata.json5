@@ -312,6 +312,22 @@
 			] */
 		},		
 		{
+			level: "eighto",
+			lowerText: "8O",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "C",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_eighto",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "stalemate",
 			lowerText: "STALEMATE",
 			decoType: "DECO1",

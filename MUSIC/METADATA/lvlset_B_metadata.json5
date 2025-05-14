@@ -176,6 +176,11 @@
 			vsSystemEnabled: true
 		},
 		{
+			fmsSongName: "eighto",
+			lowerText: "EIGHTO",
+			vsSystemEnabled: true
+		},
+		{
 			fmsSongName: "Sonic blaster",
 			upperText: "SONIC",
 			lowerText: "BLASTER"

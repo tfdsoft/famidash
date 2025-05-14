@@ -24,6 +24,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_eon)
+	.byte .lobyte(level_data_eighto)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_sonicwave)
 	.byte .lobyte(level_data_bloodbath)
@@ -53,6 +54,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_eon)
+	.byte .hibyte(level_data_eighto)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_sonicwave)
 	.byte .hibyte(level_data_bloodbath)
@@ -82,6 +84,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_eon))
+	.byte .lobyte(.bank(level_data_eighto))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_sonicwave))
 	.byte .lobyte(.bank(level_data_bloodbath))
@@ -138,6 +141,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_hell)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_eon)
+	.byte .lobyte(sprite_data_eighto)
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_sonicwave)
 	.byte .lobyte(sprite_data_bloodbath)
@@ -167,6 +171,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_hell)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_eon)
+	.byte .hibyte(sprite_data_eighto)
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_sonicwave)
 	.byte .hibyte(sprite_data_bloodbath)
@@ -196,6 +201,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_hell))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_eon))
+	.byte .lobyte(.bank(sprite_data_eighto))
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_sonicwave))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
@@ -228,6 +234,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000286)		; eon
+	.byte .lobyte($000078)		; eighto
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($0000FB)		; sonicwave
 	.byte .lobyte($0000D5)		; bloodbath
@@ -259,6 +266,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000286)		; eon
+	.byte .hibyte($000078)		; eighto
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($0000FB)		; sonicwave
 	.byte .hibyte($0000D5)		; bloodbath
@@ -290,6 +298,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000286)		; eon
+	.byte .bankbyte($000078)		; eighto
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($0000FB)		; sonicwave
 	.byte .bankbyte($0000D5)		; bloodbath
