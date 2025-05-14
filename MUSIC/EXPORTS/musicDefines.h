@@ -49,7 +49,7 @@
 #define song_electroman_adventures 48
 #define song_dry_out_full 49
 #define song_rainbow_tylenol 50
-#define song_chaozfantasy 51
+#define song_chaoz_fantasy 51
 #define song_death_moon 52
 #define song_jack_russel 53
 #define song_atthespeedoflight 54

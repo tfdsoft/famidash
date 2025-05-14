@@ -2134,7 +2134,7 @@ const uint8_t xbgm_lookup_table2[] = {
 	song_cant_electroman,
 	song_cant_let_go_remix,
 	song_chaoz_airflow,
-	song_chaozfantasy,
+	song_chaoz_fantasy,
 	song_chaoz_impact,
 	song_clubstep_full,
 	song_clutterfunk_2,
