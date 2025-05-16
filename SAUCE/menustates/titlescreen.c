@@ -160,12 +160,30 @@ const uint8_t menu_irq_table[] = {
 };
 
 #if __VS_SYSTEM
-
 const unsigned char nocoinstext[] = "INSERT COIN";
 const unsigned char coinstext[] = "COINS INSERTED ";
 const unsigned char vstext[] = "VS";
-
 #endif
+
+const uint8_t shipFrameTable[];
+
+const uint8_t robotFrameTable1[];
+const uint8_t robotFrameTable2[];
+const uint8_t robotFrameTable3[];
+
+const uint8_t spiderFrameTable1[];
+const uint8_t spiderFrameTable2[];
+const uint8_t spiderFrameTable3[];
+
+const uint8_t swingFrameTable1[];
+const uint8_t swingFrameTable2[];
+
+const uint8_t miniShipFrameTable[];
+
+const uint8_t miniSwingFrameTable[];
+
+const uint8_t mysteryFrameTable[];
+
 void state_menu() {
 	poweroffcheck = 0xff;
 	#if __VS_SYSTEM
@@ -438,28 +456,10 @@ void state_menu() {
 				case 3:		//ship
 					title_ship_shit();
 
-					switch (tmpi8) {
-						case 0:
-							tmp7 = 0x29;
-							break;
-						case 1:
-							tmp7 = 0x2D;
-							break;
-						case 2:
-						case 3:
-							tmp7 = 0x31;
-							break;
-						case -1:
-							tmp7 = 0x25;
-							break;
-						case -2:
-						case -3:
-							tmp7 = 0x21;
-							break;
+					tmp7 = idx8_load(shipFrameTable, tmpi8 + 3);
 
-					};
-						if (currplayer_y_small == 160 && tmp7 < 0x29) tmp7 = 0x29;
-						else if (currplayer_y_small == 8 && tmp7 > 0x29) tmp7 = 0x29;
+					if (currplayer_y_small == 160 && tmp7 < 0x29) tmp7 = 0x29;
+					else if (currplayer_y_small == 8 && tmp7 > 0x29) tmp7 = 0x29;
 						
 				#if !__VS_SYSTEM
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
@@ -474,66 +474,20 @@ void state_menu() {
 					title_robot_shit();
 					
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
+
 					if (currplayer_y_small == 160) {
+
 						if (!retro_mode) {
-							switch (ballframe) {
-								case 0:
-									tmp1 = 0x01;
-									tmp2 = 0x03;
-									tmp3 = 0x05;
-									break;
-								case 1:
-									tmp1 = 0xFF;
-									tmp2 = 0x07;
-									tmp3 = 0x09;
-									break;
-								case 2:
-									tmp1 = 0x01;
-									tmp2 = 0x0B;
-									tmp3 = 0x05;
-									break;
-								case 3:
-									tmp1 = 0xFF;
-									tmp2 = 0x0D;
-									tmp3 = 0x09;
-									break;	
-							};
-						}
-						else {
-							switch (ballframe) {
-								case 0:
-									tmp1 = 0xFF;
-									tmp2 = 0x01;
-									tmp3 = 0x03;
-									break;
-								case 1:
-									tmp1 = 0xFF;
-									tmp2 = 0x07;
-									tmp3 = 0x09;
-									break;
-								case 2:
-									tmp1 = 0xFF;
-									tmp2 = 0x0B;
-									tmp3 = 0x0D;
-									break;
-								case 3:
-									tmp1 = 0xFF;
-									tmp2 = 0x11;
-									tmp3 = 0x13;
-									break;	
-							};
-						}						
-					}
-					else {
+							tmp1 = idx8_load(robotFrameTable1, ballframe & 1);
+						} else {
+							tmp1 = 0xFF;
+						}			
+						tmp2 = idx8_load(robotFrameTable2, ballframe | (retro_mode << 2));
+						tmp3 = idx8_load(robotFrameTable3, get_Y);
+					} else {
 						tmp1 = 0xFF;
-						if (!retro_mode) {
-							tmp2 = 0x0F;
-							tmp3 = 0x11;
-						}
-						else {
-							tmp2 = 0x11;
-							tmp3 = 0x13;							
-						}
+						tmp2 = 0x0F + (retro_mode * 2); // 0x0F or 0x11
+						tmp3 = tmp2 + 2;				// 0x11 or 0x13
 					}
 				#if !__VS_SYSTEM
 					oam_spr(currplayer_x_small-8, currplayer_y_small, tmp1, 0x20);
@@ -561,35 +515,16 @@ void state_menu() {
 
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
 
-					switch (ballframe) {
-						case 0:
-							tmp1 = 0x21;
-							tmp2 = 0x23;
-							tmp3 = 0x25;
-							break;
-						case 1:
-							tmp1 = 0x27;
-							tmp2 = 0x29;
-							tmp3 = 0x2B;
-							break;
-						case 2:
-							tmp1 = 0x2D;
-							tmp2 = 0x2F;
-							tmp3 = 0x31;
-							break;
-						case 3:
-							tmp1 = 0xFF;
-							tmp2 = 0x33;
-							tmp3 = 0x35;
-							break;	
-					}
+					tmp1 = idx8_load(spiderFrameTable1, ballframe);
+					tmp2 = idx8_load(spiderFrameTable2, get_Y);
+					tmp3 = idx8_load(spiderFrameTable3, get_Y);
 					oam_spr(currplayer_x_small - 8, currplayer_y_small, tmp1, tmp7);
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);					
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, tmp7);					
 					break;				
 				case 6:		//wave
 					title_wave_shit();
-					
+
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
 						tmp1 = 0x29;
 						#if !__VS_SYSTEM
@@ -597,23 +532,23 @@ void state_menu() {
 						#else
 						tmp2 = 0x23;
 						#endif
-					}
-					else if (currplayer_gravity) {
+					} else {
 						tmp1 = 0x2D;
-						#if !__VS_SYSTEM
-						tmp2 = 0xA0;
-						#else
-						tmp2 = 0xA3;
-						#endif
+						if (currplayer_gravity) {
+							#if !__VS_SYSTEM
+							tmp2 = 0xA0;
+							#else
+							tmp2 = 0xA3;
+							#endif
+						} else {
+							#if !__VS_SYSTEM
+							tmp2 = 0x20;
+							#else
+							tmp2 = 0x23;
+							#endif
+						}
 					}
-					else {
-						tmp1 = 0x2D;
-						#if !__VS_SYSTEM
-						tmp2 = 0x20;
-						#else
-						tmp2 = 0x23;
-						#endif
-					}
+
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp1 + 2, tmp2);
 					break;				
@@ -642,65 +577,18 @@ void state_menu() {
 
 
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
-					switch (ballframe) {
-						case 0:
-							tmp2 = 0x31;
-							#if !__VS_SYSTEM
-							tmp7 = 0x20;
-							#else
-							tmp7 = 0x23;
-							#endif
-							break;
-						case 1:
-							tmp2 = 0x35;
-							#if !__VS_SYSTEM
-							tmp7 = 0x20;
-							#else
-							tmp7 = 0x23;
-							#endif
-							break;
-						case 2:
-							tmp2 = 0x31;
-							#if !__VS_SYSTEM
-							tmp7 = 0x20;
-							#else
-							tmp7 = 0x23;
-							#endif
-						case 3:
-							tmp2 = 0x35;
-							#if !__VS_SYSTEM
-							tmp7 = 0xA0;
-							#else
-							tmp7 = 0xA3;
-							#endif
-							break;	
-					};
+					
+					tmp2 = idx8_load(swingFrameTable1, ballframe & 1);
+					tmp7 = idx8_load(swingFrameTable2, ballframe);
+
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);					
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp2+2, tmp7);					
 					break;
 				case 9:		//mini ship
 					title_ship_shit();
 
-					switch (tmpi8) {
-						case 0:
-							tmp7 = 0x05;
-							break;
-						case 1:
-							tmp7 = 0x07;
-							break;
-						case 2:
-						case 3:
-							tmp7 = 0x09;
-							break;
-						case -1:
-							tmp7 = 0x03;
-							break;
-						case -2:
-						case -3:
-							tmp7 = 0x01;
-							break;
+					tmp7 = idx8_load(miniShipFrameTable, tmpi8 + 3);
 
-					};
 					if (currplayer_y_small == 160 && tmp7 < 0x05) tmp7 = 0x05;
 					else if (currplayer_y_small == 8 && tmp7 > 0x05) tmp7 = 0x05;					
 
@@ -733,23 +621,23 @@ void state_menu() {
 					#else
 						oam_spr(currplayer_x_small, currplayer_y_small, 0x0D, 0x23);
 					#endif						
-					}
-					else if (currplayer_gravity) {
+					} else {
 						tmp1 = 0x11;
-						#if !__VS_SYSTEM
-						tmp2 = 0xA0;
-						#else
-						tmp2 = 0xA3;
-						#endif
+						if (currplayer_gravity) {
+							#if !__VS_SYSTEM
+							tmp2 = 0xA0;
+							#else
+							tmp2 = 0xA3;
+							#endif
+						} else {
+							#if !__VS_SYSTEM
+							tmp2 = 0x20;
+							#else
+							tmp2 = 0x23;
+							#endif
+						}
 					}
-					else {
-						tmp1 = 0x11;
-						#if !__VS_SYSTEM
-						tmp2 = 0x20;
-						#else
-						tmp2 = 0x23;
-						#endif
-					}
+
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
 					break;	
 				case 12:		//mini ufo
@@ -797,20 +685,7 @@ void state_menu() {
 
 					
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
-					switch (ballframe) {
-						case 0:				
-							tmp2 = 0x21;
-							break;
-						case 1:				
-							tmp2 = 0x23;
-							break;
-						case 2:				
-							tmp2 = 0x25;
-							break;
-						case 3:				
-							tmp2 = 0x27;
-							break;
-					};
+					tmp2 = 0x21 + (ballframe * 2);
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
 					break;
 				case 15:		//mini swing
@@ -818,20 +693,8 @@ void state_menu() {
 					title_swing_shit();
 
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
-					switch (ballframe) {
-						case 0:	
-							tmp7 = 0x3F;
-							break;
-						case 1:				
-							tmp7 = 0x1B;
-							break;
-						case 2:				
-							tmp7 = 0x3F;
-							break;
-						case 3:				
-							tmp7 = 0x3D;
-							break;
-					};	
+
+					tmp7 = idx8_load(miniSwingFrameTable, ballframe);
 					#if !__VS_SYSTEM
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
 					#else
@@ -843,27 +706,9 @@ void state_menu() {
 						if (ballframe == 5) ballframe = 0;
 						else ++ballframe;
 					}
-					switch (ballframe) {
-						case 0:
-							tmp7 = 0x1D;
-							break;
-						case 1:
-							tmp7 = 0x7D;
-							break;
-						case 2:
-							tmp7 = 0x1F;
-							break;
-						case 3:
-							tmp7 = 0x7F;
-							break;	
-						case 4:
-							tmp7 = 0xFF;
-							break;	
-						case 5:
-							roll_new_mode();
-							break;
-					};
+
 					if (ballframe != 5) {
+						tmp7 = idx8_load(mysteryFrameTable, ballframe);
 					#if !__VS_SYSTEM
 						oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20);
 						oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7, 0xE0);					
@@ -871,6 +716,8 @@ void state_menu() {
 						oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x23);
 						oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7, 0xE3);	
 					#endif						
+					} else {
+						roll_new_mode();
 					}
 					break;					
 			};
@@ -1349,3 +1196,26 @@ void color_picker() {
 	if (discoframe == 12) discoframe = 0;
 }	
 #endif
+
+const uint8_t shipFrameTable[] = {0x21, 0x21, 0x25, 0x29, 0x2D, 0x31, 0x31};
+
+const uint8_t robotFrameTable1[] = {0x01, 0xFF};
+const uint8_t robotFrameTable2[] = {0x03, 0x07, 0x0B, 0x0D, 0x01, 0x07, 0x0B, 0x11};
+const uint8_t robotFrameTable3[] = {0x05, 0x09, 0x05, 0x09, 0x03, 0x09, 0x0D, 0x13};
+
+const uint8_t spiderFrameTable1[] = {0x21, 0x27, 0x2D, 0xFF};
+const uint8_t spiderFrameTable2[] = {0x23, 0x29, 0x2F, 0x33};
+const uint8_t spiderFrameTable3[] = {0x25, 0x2B, 0x31, 0x35};
+
+const uint8_t swingFrameTable1[] = {0x31, 0x35};
+#if !__VS_SYSTEM
+const uint8_t swingFrameTable2[] = {0x20, 0x20, 0x20, 0xA0};
+#else
+const uint8_t swingFrameTable2[] = {0x23, 0x23, 0x23, 0xA3};
+#endif
+
+const uint8_t miniShipFrameTable[] = {0x01, 0x01, 0x03, 0x05, 0x07, 0x09, 0x09};
+
+const uint8_t miniSwingFrameTable[] = {0x3F, 0x1B, 0x3F, 0x3D};
+
+const uint8_t mysteryFrameTable[] = {0x1D, 0x7D, 0x1F, 0x7F, 0xFF};
