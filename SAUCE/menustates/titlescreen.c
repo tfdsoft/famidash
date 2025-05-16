@@ -473,7 +473,7 @@ void state_menu() {
 
 					title_robot_shit();
 					
-					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
 					if (currplayer_y_small == 160) {
 						if (!retro_mode) {
 							switch (ballframe) {
@@ -559,7 +559,8 @@ void state_menu() {
 					//}
 //					else { currplayer_y_small = 8; tmp7 = 0xA0; }
 
-					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
+
 					switch (ballframe) {
 						case 0:
 							tmp1 = 0x21;
@@ -640,7 +641,7 @@ void state_menu() {
 					title_swing_shit();
 
 
-					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
 					switch (ballframe) {
 						case 0:
 							tmp2 = 0x31;
@@ -764,7 +765,10 @@ void state_menu() {
 					
 					title_robot_shit();
 
-					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 2 ? -2 : 1;
+					if (!(kandoframecnt & 0x07)) {
+						if (ballframe == 2) ballframe = 0;
+						else ++ballframe;
+					}
 
 					tmp2 = 0x37 + (ballframe * 2);
 
@@ -792,7 +796,7 @@ void state_menu() {
 					//else { currplayer_y_small = 8; tmp7 = 0xA0; }
 
 					
-					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
 					switch (ballframe) {
 						case 0:				
 							tmp2 = 0x21;
@@ -813,7 +817,7 @@ void state_menu() {
 
 					title_swing_shit();
 
-					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 3 ? -3 : 1;
+					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
 					switch (ballframe) {
 						case 0:	
 							tmp7 = 0x3F;
@@ -835,7 +839,10 @@ void state_menu() {
 					#endif
 					break;
 				case 0xFF:
-					if (!(kandoframecnt & 0x07)) ballframe += ballframe == 5 ? -5 : 1;
+					if (!(kandoframecnt & 0x07)) {
+						if (ballframe == 5) ballframe = 0;
+						else ++ballframe;
+					}
 					switch (ballframe) {
 						case 0:
 							tmp7 = 0x1D;
