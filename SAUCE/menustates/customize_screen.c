@@ -98,14 +98,14 @@ void customize_screen() {
 //color 2
 				else if ((mouse.y >= 0x64 && mouse.y <= 0x6C)) {
 					settingvalue = 1;
-					crossPRGBankJump0(colorinc);
+					colorinc();
 					hold_timer = 0;					
 					clear_shit();
 					
 				}
 				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
 					settingvalue = 1;			
-					crossPRGBankJump0(colordec);
+					colordec();
 					hold_timer = 0;					
 					clear_shit();
 					
@@ -117,14 +117,14 @@ void customize_screen() {
 			else if ((mouse.x >= 0x2E && mouse.x <= 0x3B)) {
 				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
 					settingvalue = 0;
-					crossPRGBankJump0(colorinc);
+					colorinc();
 					hold_timer = 0;					
 					clear_shit();
 					
 				}
 				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
 					settingvalue = 0;			
-					crossPRGBankJump0(colordec);
+					colordec();
 					hold_timer = 0;					
 					clear_shit();
 					
@@ -134,14 +134,14 @@ void customize_screen() {
 			else if ((mouse.x >= 0xBE && mouse.x <= 0xCB)) {
 				if (mouse.y >= 0x63 && mouse.y <= 0x6C) {
 					settingvalue = 2;
-					crossPRGBankJump0(colorinc);
+					colorinc();
 					hold_timer = 0;					
 					clear_shit();
 					
 				}
 				else if ((mouse.y >= 0x7D && mouse.y <= 0x83)) {
 					settingvalue = 2;			
-					crossPRGBankJump0(colordec);
+					colordec();
 					hold_timer = 0;					
 					clear_shit();
 					
@@ -258,10 +258,10 @@ void clear_shit() {
 
 void updateColors() {
 	if (joypad1.press_up) {
-		crossPRGBankJump0(colorinc);
+		colorinc();
 	}
 	if (joypad1.press_down) { 
-		crossPRGBankJump0(colordec);
+		colordec();
 	}
 	//if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) icon_colors[settingvalue] = 0x0D;	
 }
@@ -283,3 +283,23 @@ const uint8_t hiNTAddrTableCustomizeScreen[] = {
 	MSB(NTADR_A(13, 8)),		// 3
 	MSB(NTADR_A(4, 14))			// 4 = 0
 };
+
+void colorinc() {
+	if (idx8_inc(icon_colors, settingvalue) & 0x30) {
+		if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
+			idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] + 0x10) & 0x30);
+	} else {
+		if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
+			icon_colors[settingvalue] = 0x0F;
+	}	
+}
+
+void colordec() {
+	if (idx8_dec(icon_colors, settingvalue) & 0x30) {
+		if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
+			idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] & 0x30) | 0x0C);
+	} else {
+		if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
+			icon_colors[settingvalue] = 0x0C;
+	}
+}
