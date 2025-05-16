@@ -11,7 +11,25 @@ CODE_BANK_PUSH("XCD_BANK_03")
 #include "menustates/titlescreen.c"
 
 CODE_BANK("XCD_BANK_05")
+
+#include "menustates/bgmtest.c"
+
+
 CODE_BANK("XCD_BANK_06")
+
+#include "defines/menunametable2.h"
+
+#if LEVELSET != 'A'
+#include "menustates/playmain.c"
+#endif
+
+#include "menustates/misc_xcd_bank_06.c"
+
+#include "menustates/funsettings.c"
+#include "menustates/refreshmenu.c"
+#include "menustates/progressbar_pt2.c"
+
+
 CODE_BANK("XCD_BANK_02")
 
 CODE_BANK_POP()
