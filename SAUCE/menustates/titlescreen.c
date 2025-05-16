@@ -1,19 +1,17 @@
-
-CODE_BANK_PUSH("XCD_BANK_03")
-
 #if __VS_SYSTEM
 void color_picker();
 #endif
+
 void bounds_check();
 
 void title_cube_shit();
-void title_robot_shit();
-void title_mini_wave_shit();
-void title_wave_shit();
-void title_ufo_shit();
-void title_ball_shit();
-void title_swing_shit();
 void title_ship_shit();
+void title_ball_shit();
+void title_ufo_shit();
+void title_robot_shit();
+void title_wave_shit();
+void title_mini_wave_shit();
+void title_swing_shit();
 
 void roll_new_mode();
 void settings();
@@ -1347,5 +1345,3 @@ void color_picker() {
 	if (discoframe == 12) discoframe = 0;
 }	
 #endif
-
-CODE_BANK_POP()

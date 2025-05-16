@@ -1,14 +1,14 @@
 void draw_both_progress_bars();
 
-void refreshmenu();
-void refreshmenu_part2();
 void leveldec();
 void levelinc();
+void refreshmenu();
+void refreshmenu_part2();
 void start_the_level();
 
-void loop_routine_update();
 void check_if_music_stopped();
 void dec_mouse_timer();
+void loop_routine_update();
 
 const uint8_t xbgmlookuptable[];
 

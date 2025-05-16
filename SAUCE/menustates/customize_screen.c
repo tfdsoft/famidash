@@ -1,7 +1,7 @@
 void clear_shit();
-void updateColors();
 void colorinc();
 void colordec();
+void updateColors();
 
 const uint8_t loNTAddrTableCustomizeScreen[];
 const uint8_t hiNTAddrTableCustomizeScreen[];
