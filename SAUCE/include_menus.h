@@ -23,8 +23,6 @@ CODE_BANK("XCD_BANK_06")
 #include "menustates/playmain.c"
 #endif
 
-#include "menustates/misc_xcd_bank_06.c"
-
 #include "menustates/funsettings.c"
 #include "menustates/refreshmenu.c"
 #include "menustates/progressbar_pt2.c"
