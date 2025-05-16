@@ -2,7 +2,7 @@ CODE_BANK_PUSH("XCD_BANK_04")
 
 extern uint16_t old_draw_scroll_y;
 #if !__VS_SYSTEM
-extern famistudio_output_buf[11];
+extern uint8_t famistudio_output_buf[11];
 #endif
 
 void reset_game_vars(){
@@ -25,49 +25,49 @@ void reset_game_vars(){
 
 	curr_practice_point = latest_practice_point;
 	lohi_arr16_store(practice_player_1_x, tmp1, player_x[0]);
-	lohi_arr16_store(practice_player_2_x, tmp1, player_x[1]);
-	lohi_arr16_store(practice_player_1_y, tmp1, player_y[0]);
-	lohi_arr16_store(practice_player_2_y, tmp1, player_y[1]);
-	lohi_arr16_store(practice_player_1_vel_x, tmp1, player_vel_x[0]);
-	lohi_arr16_store(practice_player_2_vel_x, tmp1, player_vel_x[1]);
-	lohi_arr16_store(practice_player_1_vel_y, tmp1, player_vel_y[0]);
-	lohi_arr16_store(practice_player_2_vel_y, tmp1, player_vel_y[1]);
-	lohi_arr16_store(practice_cube_1_rotate, tmp1, cube_rotate[0]);
-	lohi_arr16_store(practice_cube_2_rotate, tmp1, cube_rotate[1]);
+	lohi_arr16_store(practice_player_2_x, get_Y, player_x[1]);
+	lohi_arr16_store(practice_player_1_y, get_Y, player_y[0]);
+	lohi_arr16_store(practice_player_2_y, get_Y, player_y[1]);
+	lohi_arr16_store(practice_player_1_vel_x, get_Y, player_vel_x[0]);
+	lohi_arr16_store(practice_player_2_vel_x, get_Y, player_vel_x[1]);
+	lohi_arr16_store(practice_player_1_vel_y, get_Y, player_vel_y[0]);
+	lohi_arr16_store(practice_player_2_vel_y, get_Y, player_vel_y[1]);
+	lohi_arr16_store(practice_cube_1_rotate, get_Y, cube_rotate[0]);
+	lohi_arr16_store(practice_cube_2_rotate, get_Y, cube_rotate[1]);
 	
-	practice_nocamlockforced[tmp1] = nocamlockforced;
-	practice_player_1_gravity[tmp1] = player_gravity[0];
-	practice_player_2_gravity[tmp1] = player_gravity[1];
-	practice_player_1_mini[tmp1] = mini[0];
-	practice_player_2_mini[tmp1] = mini[1];
-	practice_player_1_slope_frames[tmp1] = slope_frames[0];
-	practice_player_2_slope_frames[tmp1] = slope_frames[1];
-	practice_player_1_was_on_slope_counter[tmp1] = was_on_slope_counter[0];
-	practice_player_2_was_on_slope_counter[tmp1] = was_on_slope_counter[1];
-	practice_player_1_slope_type[tmp1] = slope_type[0];
-	practice_player_2_slope_type[tmp1] = slope_type[1];
-	practice_player_1_last_slope_type[tmp1] = last_slope_type[0];
-	practice_player_2_last_slope_type[tmp1] = last_slope_type[1];
+	idx8_store(practice_nocamlockforced, get_Y, nocamlockforced);
+	idx8_store(practice_player_1_gravity, get_Y, player_gravity[0]);
+	idx8_store(practice_player_2_gravity, get_Y, player_gravity[1]);
+	idx8_store(practice_player_1_mini, get_Y, mini[0]);
+	idx8_store(practice_player_2_mini, get_Y, mini[1]);
+	idx8_store(practice_player_1_slope_frames, get_Y, slope_frames[0]);
+	idx8_store(practice_player_2_slope_frames, get_Y, slope_frames[1]);
+	idx8_store(practice_player_1_was_on_slope_counter, get_Y, was_on_slope_counter[0]);
+	idx8_store(practice_player_2_was_on_slope_counter, get_Y, was_on_slope_counter[1]);
+	idx8_store(practice_player_1_slope_type, get_Y, slope_type[0]);
+	idx8_store(practice_player_2_slope_type, get_Y, slope_type[1]);
+	idx8_store(practice_player_1_last_slope_type, get_Y, last_slope_type[0]);
+	idx8_store(practice_player_2_last_slope_type, get_Y, last_slope_type[1]);
 
-	lohi_arr32_store(practice_scroll_x, tmp1, scroll_x);
-	lohi_arr16_store(practice_scroll_y, tmp1, scroll_y);
-	lohi_arr16_store(practice_seam_scroll_y, tmp1, seam_scroll_y);
-	lohi_arr16_store(practice_old_draw_scroll_y, tmp1, old_draw_scroll_y);
-	lohi_arr16_store(practice_target_scroll_y, tmp1, target_scroll_y);
-	lohi_arr16_store(practice_min_scroll_y, tmp1, min_scroll_y);
+	lohi_arr32_store(practice_scroll_x, get_Y, scroll_x);
+	lohi_arr16_store(practice_scroll_y, get_Y, scroll_y);
+	lohi_arr16_store(practice_seam_scroll_y, get_Y, seam_scroll_y);
+	lohi_arr16_store(practice_old_draw_scroll_y, get_Y, old_draw_scroll_y);
+	lohi_arr16_store(practice_target_scroll_y, get_Y, target_scroll_y);
+	lohi_arr16_store(practice_min_scroll_y, get_Y, min_scroll_y);
 
-	practice_player_gamemode[tmp1] = gamemode;
-	practice_dual[tmp1] = dual;
-	practice_speed[tmp1] = speed;
-	practice_parallax_scroll_x[tmp1] = parallax_scroll_x;
-	practice_bg_color_type[tmp1] = lastbgcolortype;
-	practice_g_color_type[tmp1] = lastgcolortype;
-	practice_outline_color[tmp1] = outline_color;
-	practice_orbactive[tmp1] = orbactive;
-	practice_disco_sprites[tmp1] = disco_sprites;
-	practice_slowmode[tmp1] = slowmode;
-	practice_forced_trails[tmp1] = forced_trails;
-	practice_gravity_mod[tmp1] = gravity_mod;
+	idx8_store(practice_player_gamemode, get_Y, gamemode);
+	idx8_store(practice_dual, get_Y, dual);
+	idx8_store(practice_speed, get_Y, speed);
+	idx8_store(practice_parallax_scroll_x, get_Y, parallax_scroll_x);
+	idx8_store(practice_bg_color_type, get_Y, lastbgcolortype);
+	idx8_store(practice_g_color_type, get_Y, lastgcolortype);
+	idx8_store(practice_outline_color, get_Y, outline_color);
+	idx8_store(practice_orbactive, get_Y, orbactive);
+	idx8_store(practice_disco_sprites, get_Y, disco_sprites);
+	idx8_store(practice_slowmode, get_Y, slowmode);
+	idx8_store(practice_forced_trails, get_Y, forced_trails);
+	idx8_store(practice_gravity_mod, get_Y, gravity_mod);
 
 	if (practice_music_sync) {
 		memcpy(practice_famistudio_state + (200 * tmp1), famistudio_state, 200);
@@ -83,72 +83,68 @@ void restore_practice_state() {
 #if !__VS_SYSTEM
 	tmp2 = curr_practice_point;
 	player_x[0] = lohi_arr16_load(practice_player_1_x, tmp2);
-	player_x[1] = lohi_arr16_load(practice_player_2_x, tmp2);
-	player_y[0] = lohi_arr16_load(practice_player_1_y, tmp2);
-	player_y[1] = lohi_arr16_load(practice_player_2_y, tmp2);
-	player_vel_x[0] = lohi_arr16_load(practice_player_1_vel_x, tmp2);
-	player_vel_x[1] = lohi_arr16_load(practice_player_2_vel_x, tmp2);
-	player_vel_y[0] = lohi_arr16_load(practice_player_1_vel_y, tmp2);
-	player_vel_y[1] = lohi_arr16_load(practice_player_2_vel_y, tmp2);
-	cube_rotate[0] = lohi_arr16_load(practice_cube_1_rotate, tmp2);
-	cube_rotate[1] = lohi_arr16_load(practice_cube_2_rotate, tmp2);
+	player_x[1] = lohi_arr16_load(practice_player_2_x, get_Y);
+	player_y[0] = lohi_arr16_load(practice_player_1_y, get_Y);
+	player_y[1] = lohi_arr16_load(practice_player_2_y, get_Y);
+	player_vel_x[0] = lohi_arr16_load(practice_player_1_vel_x, get_Y);
+	player_vel_x[1] = lohi_arr16_load(practice_player_2_vel_x, get_Y);
+	player_vel_y[0] = lohi_arr16_load(practice_player_1_vel_y, get_Y);
+	player_vel_y[1] = lohi_arr16_load(practice_player_2_vel_y, get_Y);
+	cube_rotate[0] = lohi_arr16_load(practice_cube_1_rotate, get_Y);
+	cube_rotate[1] = lohi_arr16_load(practice_cube_2_rotate, get_Y);
 
-	player_gravity[0] = practice_player_1_gravity[tmp2];
-	player_gravity[1] = practice_player_2_gravity[tmp2];
-	currplayer_gravity = player_gravity[0];
+	currplayer_gravity = player_gravity[0] = \
+		idx8_load(practice_player_1_gravity, get_Y);
+	player_gravity[1] = idx8_load(practice_player_2_gravity, get_Y);
 
-	mini[0] = practice_player_1_mini[tmp2];
-	mini[1] = practice_player_2_mini[tmp2];
-	currplayer_mini = mini[0];
+	currplayer_mini = mini[0] = idx8_load(practice_player_1_mini, get_Y);
+	mini[1] = idx8_load(practice_player_2_mini, get_Y);
 
-	slope_frames[0] = practice_player_1_slope_frames[tmp2];
-	slope_frames[1] = practice_player_2_slope_frames[tmp2];
-	currplayer_slope_frames = slope_frames[0];
+	currplayer_slope_frames = slope_frames[0] = idx8_load(practice_player_1_slope_frames, get_Y);
+	slope_frames[1] = idx8_load(practice_player_2_slope_frames, get_Y);
 
-	was_on_slope_counter[0] = practice_player_1_was_on_slope_counter[tmp2];
-	was_on_slope_counter[1] = practice_player_2_was_on_slope_counter[tmp2];
-	currplayer_was_on_slope_counter = was_on_slope_counter[0];
+	currplayer_was_on_slope_counter = was_on_slope_counter[0] = \
+		idx8_load(practice_player_1_was_on_slope_counter, get_Y);
+	was_on_slope_counter[1] = idx8_load(practice_player_2_was_on_slope_counter, get_Y);
 	
-	slope_type[0] = practice_player_1_slope_type[tmp2];
-	slope_type[1] = practice_player_2_slope_type[tmp2];
-	currplayer_slope_type = slope_type[0];
+	currplayer_slope_type = slope_type[0] = \
+		idx8_load(practice_player_1_slope_type, get_Y);
+	slope_type[1] = idx8_load(practice_player_2_slope_type, get_Y);
 	
-	nocamlockforced = practice_nocamlockforced[tmp2];
-	disco_sprites = practice_disco_sprites[tmp2];
-	slowmode = practice_slowmode[tmp2];
-	forced_trails = practice_forced_trails[tmp2];
-	gravity_mod = practice_gravity_mod[tmp2];
+	nocamlockforced = idx8_load(practice_nocamlockforced, get_Y);
+	disco_sprites = idx8_load(practice_disco_sprites, get_Y);
+	slowmode = idx8_load(practice_slowmode, get_Y);
+	forced_trails = idx8_load(practice_forced_trails, get_Y);
+	gravity_mod = idx8_load(practice_gravity_mod, get_Y);
 	
-	last_slope_type[0] = practice_player_1_last_slope_type[tmp2];
-	last_slope_type[1] = practice_player_2_last_slope_type[tmp2];
-	currplayer_last_slope_type = last_slope_type[0];
+	currplayer_last_slope_type = last_slope_type[0] = \
+		idx8_load(practice_player_1_last_slope_type, get_Y);
+	last_slope_type[1] = idx8_load(practice_player_2_last_slope_type, get_Y);
 
-	scroll_x = lohi_arr32_load(practice_scroll_x, tmp2) - (256 + 16);
-	old_trail_scroll_y = scroll_y =	lohi_arr16_load(practice_scroll_y, tmp2);
-	old_draw_scroll_y = lohi_arr16_load(practice_old_draw_scroll_y, tmp2);
-	seam_scroll_y = lohi_arr16_load(practice_seam_scroll_y, tmp2);
-	target_scroll_y = lohi_arr16_load(practice_target_scroll_y, tmp2);
-	min_scroll_y = lohi_arr16_load(practice_min_scroll_y, tmp2);
+	scroll_x = lohi_arr32_load(practice_scroll_x, get_Y) - (256 + 16);
+	old_trail_scroll_y = scroll_y =	lohi_arr16_load(practice_scroll_y, get_Y);
+	old_draw_scroll_y = lohi_arr16_load(practice_old_draw_scroll_y, get_Y);
+	seam_scroll_y = lohi_arr16_load(practice_seam_scroll_y, get_Y);
+	target_scroll_y = lohi_arr16_load(practice_target_scroll_y, get_Y);
+	min_scroll_y = lohi_arr16_load(practice_min_scroll_y, get_Y);
 
-	gamemode = practice_player_gamemode[tmp2];
-	dual = practice_dual[tmp2];
-	speed = practice_speed[tmp2];
-	parallax_scroll_x = practice_parallax_scroll_x[tmp2];
+	gamemode = idx8_load(practice_player_gamemode, get_Y);
+	dual = idx8_load(practice_dual, get_Y);
+	speed = idx8_load(practice_speed, get_Y);
+	parallax_scroll_x = idx8_load(practice_parallax_scroll_x, get_Y);
 //	tmp2 = 0;
 //	do {
 //		idx8_store(trail_sprites_visible, tmp2, practice_trail_sprites_visible[tmp2]);
 //		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);
 //	} while (++tmp2 < 9);
-	orbactive = practice_orbactive[tmp2];
-	long_temp_x = practice_player_1_x_hi[tmp2];
+	orbactive = idx8_load(practice_orbactive, get_Y);
+	long_temp_x = idx8_load(practice_player_1_x_hi, get_Y);
 
-	outline_color = practice_outline_color[tmp2];
+	outline_color = idx8_load(practice_outline_color, get_Y);
 
-	lastgcolortype = practice_g_color_type[tmp2];
-	
-	
-	
-	lastbgcolortype = practice_bg_color_type[tmp2];
+	lastgcolortype = idx8_load(practice_g_color_type, get_Y);
+	lastbgcolortype = idx8_load(practice_bg_color_type, get_Y);
+
 	tmp3 = (lastbgcolortype & 0x3F);
 	pal_col(0, tmp3);
 	tmp3 = oneShadeDarker(tmp3);

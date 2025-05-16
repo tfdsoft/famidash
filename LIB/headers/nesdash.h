@@ -215,6 +215,9 @@ extern uint8_t PAL_BUF[32];
   (b) = __A__; \
 } while(0);
 
+// Get the current value of Y (overwrites __A__ tho)
+#define get_Y (__asm__("tya"), __A__)
+
 //void state_sorrynothing();
 
 // For more than 16 bits use extra macros and shit
