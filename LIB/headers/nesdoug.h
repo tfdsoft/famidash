@@ -151,6 +151,13 @@ void __fastcall__ color_emphasis(uint8_t color);
 #define COL_EMP_DARK 0xe0
 #define COL_EMP_GREY 0x01
 
+const uint8_t gameboy_check_table[] = {
+	COL_EMP_NORMAL,
+	COL_EMP_GREY, COL_EMP_GREYRED, COL_EMP_GREYGREEN, COL_EMP_GREYBLUE,
+	COL_EMP_GREYYELLOW, COL_EMP_GREYPURPLE, COL_EMP_GREYCYAN, COL_EMP_GREYDARK
+};
+
+#define gameboy_check() color_emphasis(gameboy_check_table[gameboy_mode])
 
 void __fastcall__ _xy_split(uint32_t args);
 #define xy_split(x, y) (storeWordToSreg(x), __AX__ = y, _xy_split(__EAX__))

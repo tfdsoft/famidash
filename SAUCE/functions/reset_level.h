@@ -1,7 +1,5 @@
 extern unsigned char drawing_frame;
 extern unsigned char* PARALLAX_CHR;
-void gameboy_check();
-
 
 void music_restore();
 
