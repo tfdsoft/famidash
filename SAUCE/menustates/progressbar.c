@@ -1,8 +1,6 @@
-
-
-void draw_progress_bar();
 void draw_full_progress_bar();
 void draw_percentage();
+void draw_progress_bar();
 
 /*
 	all 8 bit tmps:
