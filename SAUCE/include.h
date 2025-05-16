@@ -31,7 +31,6 @@
 //#include "mouse.c"
 #pragma rodata-name (pop)
 #pragma rodata-name (push, "XCD_BANK_06")
-#include "defines/menunametable2.h"
 #include "grounddata.h"
 #include "groundlist.h"
 #pragma rodata-name (pop)
