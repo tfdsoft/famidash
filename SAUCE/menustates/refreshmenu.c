@@ -47,17 +47,6 @@ void refreshmenu() {
 		printDecimal(level, 3, '0', ' ', NTADR_A(29, 2));
 		printDecimal(level, 3, '0', ' ', NTADR_B(29, 2));
 	#endif
-};
-
-// To be merged into part 1
-
-void refreshmenu_part2() {
-	
-	// Normal level completeness stuff
-		//printDecimal(level_completeness_normal[level], 3, '0', ' ', NTADR_A(14, 16)+tmp5);
-
-	// Practice level completeness stuff
-		//printDecimal(level_completeness_practice[level], 3, '0', ' ', NTADR_A(14, 19)+tmp5);
 
 	//palette stuff
 		tmp3 = level % 9;
@@ -70,7 +59,6 @@ void refreshmenu_part2() {
 		pal_set_update();
 	//coin stuff
 		coins = 0;
-
 
 	// then in the function...
 	// combine all three into a single number from 0 - 7 to represent which coins have been grabbed

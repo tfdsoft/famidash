@@ -3,7 +3,6 @@ void draw_both_progress_bars();
 void leveldec();
 void levelinc();
 void refreshmenu();
-void refreshmenu_part2();
 void start_the_level();
 
 void check_if_music_stopped();
@@ -78,7 +77,6 @@ void levelselection() {
 	edit_irq_table(high_byte(tmp8),2);
 	tmp4 = 1;
 	crossPRGBankJump0(refreshmenu);
-	crossPRGBankJump0(refreshmenu_part2);
 	top_triggers = 0;
 	triggers = 0;
 	triggers_hit[0] = 0;
@@ -208,7 +206,6 @@ void levelselection() {
 		// NOTE: this is hardcoded. It used to be 0x3F with the old scroll scheme
 		if (tmp8 == 0x3B) {
 			crossPRGBankJump0(refreshmenu);
-			crossPRGBankJump0(refreshmenu_part2);
 		}
 
 		draw_both_progress_bars();
@@ -223,40 +220,27 @@ void levelselection() {
 
 void leveldec() {
 	--level;
-	//if (level == 0x0B) level = 0x0A;	//THEORY OF EVERYTHING SKIP
 	low_byte(tmp8) = 0xff;
 	tmp4 = 0;
 	if (!normalorcommlevels) {
-		if (level == 0xFF){
-			level = LEVEL_COUNT-1;
-			
-		}
-	}
-	else {
+		if (level == 0xFF) level = LEVEL_COUNT-1;
+	} else {
 		if (level < LEVEL_COUNT) level = LEVEL_COUNT2 - 1;
 	}
-	//break;
 	crossPRGBankJump0(refreshmenu);
 }			
 
 void levelinc() {
 	++level;
-	//if (level == 0x0B) level = 0x0C;	//THEORY OF EVERYTHING SKIP
 	low_byte(tmp8) = 0xff;
 	tmp4 = 1;
 	if (!normalorcommlevels) {
-		if (level >= LEVEL_COUNT){
-			level = 0x00;
-			
-		}
-	}
-	else {
-		if (level >= LEVEL_COUNT2){
-			level = LEVEL_COUNT;
-		}
+		if (level >= LEVEL_COUNT) level = 0x00;
+	} else {
+		if (level >= LEVEL_COUNT2) level = LEVEL_COUNT;
 	}
 	crossPRGBankJump0(refreshmenu);
-}			
+}
 
 void start_the_level() {
 	sfx_play(sfx_start_level, 0);

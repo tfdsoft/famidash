@@ -65,11 +65,8 @@
 #include "defines/sprites.h"    // metasprite defines
 #include "functions/sprite_loading.h"
 
-#pragma rodata-name (push, "XCD_BANK_03")
-#include "defines/menutext.h" // menu text. obviously.
-
-#pragma rodata-name ("XCD_BANK_06")
-#include "defines/menutext2.h" // end level text, not obviously.
+#pragma rodata-name (push, "XCD_BANK_06")
+#include "defines/endlvltext.h" // end level text, obviously.
 #pragma rodata-name (pop)
 
 //#include "functions/fade_timer.h"
