@@ -45,7 +45,6 @@ void x_plus_15();
 void y_plus_15();
 void runthecolls();
 void set_player_banks();
-void gameboy_check();
 
 extern unsigned char* PARALLAX_CHR;
 unsigned char END_LEVEL_TIMER;
@@ -337,7 +336,7 @@ void state_game(){
 						gameState = 1; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
-						crossPRGBankJump0(gameboy_check);
+						gameboy_check();
 						pauseStatus = 0;
 						return;
 					}
@@ -371,7 +370,7 @@ void state_game(){
 					}
 				}
 				pauseStatus = 0;
-				crossPRGBankJump0(gameboy_check);
+				gameboy_check();
 				famistudio_music_pause(0);
 				if (kandokidshack != 9) kandokidshack = 0;
 				if (kandokidshack2 != 7) kandokidshack2 = 0;
@@ -626,7 +625,7 @@ void state_game(){
 						gameState = 1; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
-						crossPRGBankJump0(gameboy_check);
+						gameboy_check();
 						pauseStatus = 0;
 						return;
 					}

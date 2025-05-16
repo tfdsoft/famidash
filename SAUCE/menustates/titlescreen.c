@@ -67,10 +67,7 @@ const uint8_t hiNTAddrTableTitleScreen[]={
 };
 #endif
 
-void gameboy_check();
 void state_menu();
-//void bgmtest();
-
 
 const uint8_t BG_Table2[]={
 	0x11,
