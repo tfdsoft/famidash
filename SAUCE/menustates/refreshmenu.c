@@ -12,7 +12,7 @@ const char coin_counter[][3];
 	Refreshes level name & number
 */
 void refreshmenu() {
-	tmp5 = ((level&1)<<10);
+	tmp5 = ((level&1)<<2)<<8;
 	set_scroll_x(((level-tmp4)&1)<<8);
 	
 	__A__ = idx16_load_hi_NOC(levelTextsUpper, level);
