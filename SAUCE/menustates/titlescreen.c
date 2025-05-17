@@ -1,3 +1,5 @@
+// Forward declarations of routines
+
 void color_picker();
 
 void bounds_check();
@@ -15,147 +17,38 @@ void roll_new_mode();
 void settings();
 void set_title_icon();
 
+// Forward declarations of tables
+
 const uint8_t xbgmlookuptable[];
 
-#if !__VS_SYSTEM
-const uint8_t loNTAddrTableTitleScreen[]={
-    LSB(NTADR_A(9, 11)),	// -1 = 4
-    LSB(NTADR_A(15, 11)),	// 0
-    LSB(NTADR_A(21, 11)),	// 1 
-    LSB(NTADR_A(9, 17)),	// 2
-    LSB(NTADR_A(15, 17)),	// 3
-    LSB(NTADR_A(21, 17)),	// 3
-    LSB(NTADR_A(27, 1)),	// 4
-    LSB(NTADR_A(9, 11)),	// 5 = 0
-    LSB(NTADR_A(15, 11))	// 5 = 0
-};
+const uint8_t loNTAddrTableTitleScreen[];
+const uint8_t hiNTAddrTableTitleScreen[];
 
-const uint8_t hiNTAddrTableTitleScreen[]={
-    MSB(NTADR_A(9, 11)),	// -1 = 4
-    MSB(NTADR_A(15, 11)),	// 0
-    MSB(NTADR_A(21, 11)),	// 1
-    MSB(NTADR_A(9, 17)),	// 2
-    MSB(NTADR_A(15, 17)),	// 3
-    MSB(NTADR_A(21, 17)),	// 3
-    MSB(NTADR_A(27, 1)),	// 4
-    MSB(NTADR_A(9, 11)),	// 5 = 0
-    MSB(NTADR_A(15, 11))	// 5 = 0
-};
-#else
-const uint8_t loNTAddrTableTitleScreen[]={
-    LSB(NTADR_A(9, 11)),	// -1 = 4
-    LSB(NTADR_A(15, 11)),	// 0
-    LSB(NTADR_A(21, 11)),	// 1 
-    LSB(NTADR_A(15, 17)),	// 2
-    LSB(NTADR_A(18, 17)),	// 3
-    LSB(NTADR_A(27, 1)),	// 4
-    LSB(NTADR_A(9, 11)),	// 5 = 0
-    LSB(NTADR_A(15, 11))	// 5 = 0
-};
+const uint8_t BG_Table2[];
+const uint8_t G_Table2[];
+const uint8_t menu_color_table[];
 
-const uint8_t hiNTAddrTableTitleScreen[]={
-    MSB(NTADR_A(9, 11)),	// -1 = 4
-    MSB(NTADR_A(15, 11)),	// 0
-    MSB(NTADR_A(21, 11)),	// 1
-    MSB(NTADR_A(15, 17)),	// 2
-    MSB(NTADR_A(18, 17)),	// 3
-    MSB(NTADR_A(27, 1)),	// 4
-    MSB(NTADR_A(9, 11)),	// 5 = 0
-    MSB(NTADR_A(15, 11))	// 5 = 0
-};
-#endif
+const uint8_t UFO_Title_Jump_Table[];
+const uint8_t BALL_Title_Jump_Table[];
+const uint8_t shipFrameTable[];
+const uint8_t robotFrameTable1[];
+const uint8_t robotFrameTable2[];
+const uint8_t robotFrameTable3[];
+const uint8_t spiderFrameTable1[];
+const uint8_t spiderFrameTable2[];
+const uint8_t spiderFrameTable3[];
+const uint8_t swingFrameTable1[];
+const uint8_t swingFrameTable2[];
+const uint8_t miniShipFrameTable[];
+const uint8_t miniSwingFrameTable[];
+const uint8_t mysteryFrameTable[];
 
-void state_menu();
+const uint8_t menu_irq_table[];
 
-const uint8_t BG_Table2[]={
-	0x11,
-	0x12,
-	0x13,
-	0x14,
-	0x15,
-	0x16,
-	0x17,
-	0x18,
-	0x19,
-	0x1A,
-	0x1B,
-	0x1C
-};
-
-const uint8_t G_Table2[]={
-	0x21,
-	0x22,
-	0x23,
-	0x24,
-	0x25,
-	0x26,
-	0x27,
-	0x28,
-	0x29,
-	0x2A,
-	0x2B,
-	0x2C
-};
-
-const uint8_t UFO_Title_Jump_Table[]={
-	5,
-	4,
-	3,
-	3,
-	2,
-	2,
-	2,
-	2,
-	1,
-	1,
-	1,
-	1,
-	1,
-	0,
-	-1,
-	-1,
-	-1,
-	-1,
-	-1,
-	-2,
-	-2,
-	-2,
-	-2,
-	-3,
-	-3,
-	-4,
-	-5,
-};
-
-const uint8_t BALL_Title_Jump_Table[]={
-	1,
-	1,
-	1,
-	2,
-	2,
-	3,
-	3,
-	4,
-};
-	
-const uint8_t menu_color_table[]={
-	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0x0A, 0x0B, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3C
-};
-
-#include "charmaps/mainmenu_charmap.h"
+// Declarations of strings
+#include "charmaps/mainmenu_charmap.h"	// Set it for the further routine
 
 const char palsystem[] = "FOR PAL SYSTEMS";
-#define NTSC_SYS PEEK(0x00)
-
-
-
-
-const uint8_t menu_irq_table[] = {
-	180,
-	irqtable_hscroll, 0x00,
-
-	irqtable_end // always end with 0xff
-};
 
 #if __VS_SYSTEM
 const unsigned char nocoinstext[] = "INSERT COIN";
@@ -163,24 +56,30 @@ const unsigned char coinstext[] = "COINS INSERTED ";
 const unsigned char vstext[] = "VS";
 #endif
 
-const uint8_t shipFrameTable[];
+// Will be replaced during the physics update
 
-const uint8_t robotFrameTable1[];
-const uint8_t robotFrameTable2[];
-const uint8_t robotFrameTable3[];
+#define NTSC_SYS PEEK(0x00)
 
-const uint8_t spiderFrameTable1[];
-const uint8_t spiderFrameTable2[];
-const uint8_t spiderFrameTable3[];
+// Title screen modes
+#define	TITLEMODE_CUBE		0
+#define	TITLEMODE_UFO		1
+#define	TITLEMODE_MINICUBE	2
+#define	TITLEMODE_SHIP		3
+#define	TITLEMODE_ROBOT		4
+#define	TITLEMODE_SPIDER	5
+#define	TITLEMODE_WAVE		6
+#define	TITLEMODE_BALL		7
+#define	TITLEMODE_SWING		8
+#define	TITLEMODE_MINISHIP	9
+#define	TITLEMODE_MINIBALL	10
+#define	TITLEMODE_MINIWAVE	11
+#define	TITLEMODE_MINIUFO	12
+#define	TITLEMODE_MINIROBOT	13
+#define	TITLEMODE_MINISPDR	14
+#define	TITLEMODE_MINISWING	15
+#define	TITLEMODE_META		0xFF
 
-const uint8_t swingFrameTable1[];
-const uint8_t swingFrameTable2[];
-
-const uint8_t miniShipFrameTable[];
-
-const uint8_t miniSwingFrameTable[];
-
-const uint8_t mysteryFrameTable[];
+// Routines start
 
 void state_menu() {
 	poweroffcheck = 0xff;
@@ -331,8 +230,7 @@ void state_menu() {
 			one_vram_buffer(0x1A, NTADR_A(28,2));
 			one_vram_buffer(0x2D, NTADR_A(27,3));
 			one_vram_buffer(0x4D, NTADR_A(28,3));
-		}
-		else {
+		} else {
 			one_vram_buffer(0x1B, NTADR_A(27,2));
 			one_vram_buffer(0x1C, NTADR_A(28,2));
 			one_vram_buffer(0x1D, NTADR_A(27,3));
@@ -409,7 +307,7 @@ void state_menu() {
 		newrand();
 		newrand();
 		newrand();
-		if (titlemode != 0xFF) currplayer_x_small += speed;
+		if (titlemode != TITLEMODE_META) currplayer_x_small += speed;
 		if (currplayer_x_small >= 0xFB) { 
 			roll_new_mode();		
 		}
@@ -429,7 +327,7 @@ void state_menu() {
 			#endif
 
 			switch (titlemode) {
-				case 0:		//cube
+				case TITLEMODE_CUBE:
 					//oam_spr(currplayer_x_small, currplayer_y_small, 1, 0x20);
 					//oam_spr(currplayer_x_small + 8, currplayer_y_small, 3, 0x20);
 					title_cube_shit();
@@ -438,13 +336,13 @@ void state_menu() {
 					high_byte(player_y[0]) = currplayer_y_small;
 					crossPRGBankJump0(drawplayerone);
 					break;
-				case 1:		//UFO
+				case TITLEMODE_UFO:
 					title_ufo_shit();
 					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20+xtra);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, 0x60+xtra);
 					break;
-				case 2:		//mini cube
+				case TITLEMODE_MINICUBE:
 					title_cube_shit();
 					mini[0] = 1;
 					high_byte(player_x[0]) = currplayer_x_small;
@@ -452,7 +350,7 @@ void state_menu() {
 					crossPRGBankJump0(drawplayerone);
 					mini[0] = 0;
 					break;
-				case 3:		//ship
+				case TITLEMODE_SHIP:
 					title_ship_shit();
 
 					tmp7 = idx8_load(shipFrameTable, tmpi8 + 3);
@@ -461,16 +359,14 @@ void state_menu() {
 					else if (currplayer_y_small == 8 && tmp7 > 0x29) tmp7 = 0x29;
 					
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20+xtra);
-					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7 + 2, 0x20+xtra);				
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7 + 2, 0x20+xtra);
 					break;
-				case 4:		//robot
-
+				case TITLEMODE_ROBOT:
 					title_robot_shit();
 					
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
 
 					if (currplayer_y_small == 160) {
-
 						if (!retro_mode) {
 							tmp1 = idx8_load(robotFrameTable1, ballframe & 1);
 						} else {
@@ -486,14 +382,14 @@ void state_menu() {
 
 					oam_spr(currplayer_x_small-8, currplayer_y_small, tmp1, 0x20+xtra);
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, 0x20+xtra);
-					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, 0x20+xtra);				
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, 0x20+xtra);
 					break;
-				case 5:		//spider
+				case TITLEMODE_SPIDER:
 //					if (kandoframecnt & 1) {
 //						if (!(newrand() & 31)) 	invert_gravity(currplayer_gravity);
 //					}
 
-					//if (!currplayer_gravity) { 
+					//if (!currplayer_gravity) {
 					currplayer_y_small = 160; tmp7 = 0x20+xtra;
 					//}
 //					else { currplayer_y_small = 8; tmp7 = 0xA0; }
@@ -503,11 +399,12 @@ void state_menu() {
 					tmp1 = idx8_load(spiderFrameTable1, ballframe);
 					tmp2 = idx8_load(spiderFrameTable2, get_Y);
 					tmp3 = idx8_load(spiderFrameTable3, get_Y);
+
 					oam_spr(currplayer_x_small - 8, currplayer_y_small, tmp1, tmp7);
-					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);					
-					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, tmp7);					
-					break;				
-				case 6:		//wave
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp3, tmp7);
+					break;
+				case TITLEMODE_WAVE:
 					title_wave_shit();
 
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
@@ -524,8 +421,8 @@ void state_menu() {
 
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp1 + 2, tmp2);
-					break;				
-				case 7:		//ball
+					break;
+				case TITLEMODE_BALL:
 					title_ball_shit();
 					
 					if (!(kandoframecnt & 0x07)) ballframe ^= 1;
@@ -534,43 +431,41 @@ void state_menu() {
 					else tmp7 = 0x20+xtra;
 
 					if (ballframe) tmp2 = 0x3F;
-					else tmp2 = 0x1B;						
+					else tmp2 = 0x1B;
 
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp2, tmp7 + 0x40);
-
 					break;
-				case 8:		//swing
+				case TITLEMODE_SWING:
 					title_swing_shit();
-
 
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
 					
 					tmp2 = idx8_load(swingFrameTable1, ballframe & 1);
 					tmp7 = idx8_load(swingFrameTable2, ballframe);
 
-					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);					
-					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp2+2, tmp7);					
+					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
+					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp2+2, tmp7);
 					break;
-				case 9:		//mini ship
+				case TITLEMODE_MINISHIP:
 					title_ship_shit();
 
 					tmp7 = idx8_load(miniShipFrameTable, tmpi8 + 3);
 
 					if (currplayer_y_small == 160 && tmp7 < 0x05) tmp7 = 0x05;
-					else if (currplayer_y_small == 8 && tmp7 > 0x05) tmp7 = 0x05;					
+					else if (currplayer_y_small == 8 && tmp7 > 0x05) tmp7 = 0x05;
 
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20+xtra);
-					break;	
-				case 10:		//mini ball
+					break;
+				case TITLEMODE_MINIBALL:
 					title_ball_shit();
 
 					if (retro_mode && currplayer_gravity) tmp7 = 0xA0+xtra;
 					else tmp7 = 0x20+xtra;
 
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x3D, tmp7);
-					break;	
-				case 11:		//mini wave
+					break;
+				case TITLEMODE_MINIWAVE:
 					title_mini_wave_shit();
 					
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
@@ -587,14 +482,13 @@ void state_menu() {
 					}
 
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
-					break;	
-				case 12:		//mini ufo
+					break;
+				case TITLEMODE_MINIUFO:
 					title_ufo_shit();
 					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x19, 0x20+xtra);
-					break;		
-				case 13:		//mini robot
-					
+					break;
+				case TITLEMODE_MINIROBOT:	
 					title_robot_shit();
 
 					if (!(kandoframecnt & 0x07)) {
@@ -607,8 +501,8 @@ void state_menu() {
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, 0x20+xtra);
 					break;
 
-				case 14:		//mini spider
-				/*
+				case TITLEMODE_MINISPDR:
+					/*
 					if (kandoframecnt & 1) {
 						if (!(newrand() & 31)) 	invert_gravity(currplayer_gravity);
 					}
@@ -616,16 +510,15 @@ void state_menu() {
 					if (!currplayer_gravity) { 
 					*/
 					currplayer_y_small = 160; tmp7 = 0x20+xtra; 
-					//}
-					//else { currplayer_y_small = 8; tmp7 = 0xA0; }
-
+					/*
+					} else { currplayer_y_small = 8; tmp7 = 0xA0; }
+					*/
 					
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
 					tmp2 = 0x21 + (ballframe * 2);
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
 					break;
-				case 15:		//mini swing
-
+				case TITLEMODE_MINISWING:
 					title_swing_shit();
 
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
@@ -633,7 +526,7 @@ void state_menu() {
 					tmp7 = idx8_load(miniSwingFrameTable, ballframe);
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20+xtra);
 					break;
-				case 0xFF:
+				case TITLEMODE_META:
 					if (!(kandoframecnt & 0x07)) {
 						if (ballframe == 5) ballframe = 0;
 						else ++ballframe;
@@ -642,11 +535,11 @@ void state_menu() {
 					if (ballframe != 5) {
 						tmp7 = idx8_load(mysteryFrameTable, ballframe);
 						oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20+xtra);
-						oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7, 0xE0+xtra);					
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp7, 0xE0+xtra);
 					} else {
 						roll_new_mode();
 					}
-					break;					
+					break;
 			};
 		}
 
@@ -711,13 +604,10 @@ void state_menu() {
 				one_vram_buffer('a', tmp5);
 				one_vram_buffer('b', addloNOC(tmp5, 1));
 				one_vram_buffer(' ', NTADR_A(26, 2));
-				one_vram_buffer(' ', NTADR_A(26, 3));
-				
-			}
-			else {
+				one_vram_buffer(' ', NTADR_A(26, 3));	
+			} else {
 				one_vram_buffer(0x6F, NTADR_A(26, 2));
 				one_vram_buffer(0x7F, NTADR_A(26, 3));
-				
 			}
 
 			tmp4 += tmp3;   // Get the old index
@@ -751,8 +641,8 @@ void state_menu() {
 		if (mouse.left_press) {
 			if ((uint8_t)(currplayer_y_small - 8) <= (uint8_t)mouse.y && (uint8_t)(currplayer_y_small + 8) >= (uint8_t)mouse.y) {
 				if (mouse.x >= currplayer_x_small && (uint8_t)(currplayer_x_small + 16) >= mouse.x) {
-					if (titlemode != 0xFF) {
-						titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
+					if (titlemode != TITLEMODE_META) {
+						titlemode = TITLEMODE_META;		//crossPRGBankJump8(playPCM, 1); 
 						sfx_play(sfx_death,0);
 						ballframe = 0;
 					}
@@ -763,26 +653,21 @@ void state_menu() {
 			if ((mouse.y >= 0x5E && mouse.y <= 0x7A)) {
 				if (mouse.x >= 0x41 && mouse.x <= 0x5A) {
 					menuselection = 6; break;
-				}
-				else if (mouse.x >= 0x6F && mouse.x <= 0x8C) {
+				} else if (mouse.x >= 0x6F && mouse.x <= 0x8C) {
 					menuselection = 0; break;
-				}
-				else if (mouse.x >= 0xA1 && mouse.x <= 0xBA) {
+				} else if (mouse.x >= 0xA1 && mouse.x <= 0xBA) {
 					menuselection = 1; break;
 				}
 			}				
 			else if ((mouse.y >= 0x8C && mouse.y <= 0x9B)) {
 				if (mouse.x >= 0x46 && mouse.x <= 0x56) {
 					menuselection = 2; break;
-				}
-				else if (mouse.x >= 0x76 && mouse.x <= 0x86) {
+				} else if (mouse.x >= 0x76 && mouse.x <= 0x86) {
 					menuselection = 3; break;
-				}				
-				else if (mouse.x >= 0xA6 && mouse.x <= 0xB6) {
+				} else if (mouse.x >= 0xA6 && mouse.x <= 0xB6) {
 					menuselection = 4; break;
-				}				
-			}
-			else if ((mouse.y >= 0x0D && mouse.y <= 0x1C)) {
+				}
+			} else if ((mouse.y >= 0x0D && mouse.y <= 0x1C)) {
 				if (mouse.x >= 0xD6 && mouse.x <= 0xE4) {
 					menuselection = 5; break;
 				}
@@ -849,7 +734,7 @@ void state_menu() {
 				ppu_wait_nmi();		
 				break;
 			case 0x05: 
-				if (all_levels_complete != 0xFC) { sfx_play(sfx_invalid, 0); }
+				if (all_levels_complete != 0xFC) sfx_play(sfx_invalid, 0);
 				else {
 					POKE(0x2005, 0x00);
 					POKE(0x2005, 0x00);
@@ -866,19 +751,19 @@ void state_menu() {
 }
 
 void set_title_icon() {
-		if (titlemode < 4) {
-			while (tmp7 > 26) {
+		if (titlemode < TITLEMODE_ROBOT) {	// cube, ufo, mini cube, ship
+			do {
 				tmp7 = newrand() & 31;
-			}
+			} while (tmp7 > 26);
 			titleicon = tmp7;
-			tmp7 = tmp7 * 2;
-			tmp7 += 40;
+			tmp7 = 40 + (tmp7 * 2);
 			mmc3_set_2kb_chr_bank_0(retro_mode ? 18 : tmp7);
-		}
-		else if ((titlemode <= 7 && titlemode != 6) || titlemode == 13 || titlemode == 10) {
+		} else if (
+			(titlemode <= TITLEMODE_BALL && titlemode != TITLEMODE_WAVE) || \
+			titlemode == TITLEMODE_MINIROBOT || titlemode == TITLEMODE_MINIBALL	\
+		){
 			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 20 : 22);	
-		}
-		else if ((titlemode <= 15 && titlemode != 13) || titlemode == 6) {
+		} else if (titlemode <= TITLEMODE_MINISWING) {
 			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 24 : 26);		
 		}
 }			
@@ -891,27 +776,28 @@ void roll_new_mode() {
 	currplayer_y_small = 0xA0;
 	player_vel_y[0] = 0;
 	tmpi8 = 0;
-	teleport_output = 0XFF;
+	teleport_output = 0xFF;
 	tmp7 = titlemode;
 	do {
-		do {
-			titlemode = newrand() & 15;
-		} while (titlemode > 9);
-	} while (titlemode == tmp7);
+		titlemode = newrand() & 15;
+	} while (titlemode > TITLEMODE_MINISHIP || titlemode == tmp7); // 1st: old sanity check? we have more
 	if (titlemode >= 8) {
 		titlemode = (newrand() & 7) + 8;
 	}
-	if (retro_mode && titlemode == 0) titlemode = tmp7;
-	if (retro_mode && titlemode == 2) titlemode = tmp7;
-//	titlemode = 11; //to test
-	if (titlemode == 1 || titlemode == 3 || titlemode == 6 || titlemode == 9 || titlemode == 11 || titlemode == 12) {
+	if (retro_mode && (titlemode == TITLEMODE_CUBE || titlemode == TITLEMODE_MINICUBE))
+		titlemode = tmp7;
+
+	if (
+		titlemode == TITLEMODE_UFO		|| titlemode == TITLEMODE_SHIP		||	\
+		titlemode == TITLEMODE_WAVE 	|| titlemode == TITLEMODE_MINISHIP	||	\
+		titlemode == TITLEMODE_MINIWAVE	|| titlemode == TITLEMODE_MINIUFO		\
+	) {
 		while (tmp1 > 0xA0 && tmp1 <= 0x20) {
 			tmp1 = newrand() & 0xFF;
 		}
 		currplayer_y_small = tmp1;
 	}
-		
-		
+	
 	ballframe = 0;
 	oam_clear();
 #if __VS_SYSTEM
@@ -954,10 +840,7 @@ void title_ship_shit() {
 
 	if (currplayer_gravity) {
 		if (!(kandoframecnt & 7)) { if (tmpi8 < 3) tmpi8++; }
-	}
-
-	else {
-		
+	} else {
 		if (!(kandoframecnt & 7)) { if (tmpi8 > -3) tmpi8--; }
 	}
 }					
@@ -1010,21 +893,18 @@ void title_ufo_shit() {
 	if (teleport_output <= 0x1A) {
 		currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
 		teleport_output++;
-	}
-	else currplayer_y_small += 4;
+	} else currplayer_y_small += 4;
 	if (!(newrand() & 15)) teleport_output = 0;
 	
 	if (currplayer_y_small >= 160) {
 		currplayer_y_small = 160;
-	}		
-	else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+	} else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
 }	
 void title_cube_shit() {
 	if (teleport_output <= 0x1A) {
 		currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
 		teleport_output++;
-	}
-	else currplayer_y_small += 4;
+	} else currplayer_y_small += 4;
 
 	if (currplayer_y_small >= (titlemode == 0 ? 160 : 164)) {
 		currplayer_y_small = titlemode == 0 ? 160 : 164;
@@ -1034,9 +914,7 @@ void title_cube_shit() {
 	if (currplayer_y_small == (titlemode == 0 ? 160 : 164) && !(newrand() & 15)) { 
 		teleport_output = 0;
 		player_vel_y[0] = 1;
-	}
-	
-	else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+	} else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
 }					
 
 void title_wave_shit() {
@@ -1095,7 +973,118 @@ void color_picker() {
 	discoframe++;
 	pal_set_update();
 	if (discoframe == 12) discoframe = 0;
-}	
+}
+
+// Tables start
+
+#if !__VS_SYSTEM
+/*	Looks like this:
+ *	X->	9	12	15	18	21	24	27
+ *	Y
+ *	1							(5)
+ *	11	(6)		(0)		(1)
+ *	17	(2)		(3)		(4)
+ */
+
+const uint8_t loNTAddrTableTitleScreen[]={
+    LSB(NTADR_A(9, 11)),	// -1 = 6
+    LSB(NTADR_A(15, 11)),	// 0
+    LSB(NTADR_A(21, 11)),	// 1 
+    LSB(NTADR_A(9, 17)),	// 2
+    LSB(NTADR_A(15, 17)),	// 3
+    LSB(NTADR_A(21, 17)),	// 4
+    LSB(NTADR_A(27, 1)),	// 5
+    LSB(NTADR_A(9, 11)),	// 6
+    LSB(NTADR_A(15, 11))	// 7 = 0
+};
+
+const uint8_t hiNTAddrTableTitleScreen[]={
+    MSB(NTADR_A(9, 11)),	// -1 = 6
+    MSB(NTADR_A(15, 11)),	// 0
+    MSB(NTADR_A(21, 11)),	// 1
+    MSB(NTADR_A(9, 17)),	// 2
+    MSB(NTADR_A(15, 17)),	// 3
+    MSB(NTADR_A(21, 17)),	// 4
+    MSB(NTADR_A(27, 1)),	// 5
+    MSB(NTADR_A(9, 11)),	// 6
+    MSB(NTADR_A(15, 11))	// 7 = 0
+};
+#else
+/*	Looks like this:
+ *	X->	9	12	15	18	21	24	27
+ *	Y
+ *	1							[4]
+ *	11	(5)		(0)		(1)
+ *	17			[2]	[3]
+ *	5 rolls around to 0
+ *	1 rolls around to 5
+ *	Therefore 2, 3 and 4 are de facto unused and will be cleared up
+ */
+
+const uint8_t loNTAddrTableTitleScreen[]={
+    LSB(NTADR_A(9, 11)),	// -1 = 5
+    LSB(NTADR_A(15, 11)),	// 0
+    LSB(NTADR_A(21, 11)),	// 1 
+    LSB(NTADR_A(15, 17)),	// 2
+    LSB(NTADR_A(18, 17)),	// 3
+    LSB(NTADR_A(27, 1)),	// 4
+    LSB(NTADR_A(9, 11)),	// 5
+    LSB(NTADR_A(15, 11))	// 6 = 0
+};
+
+const uint8_t hiNTAddrTableTitleScreen[]={
+    MSB(NTADR_A(9, 11)),	// -1 = 5
+    MSB(NTADR_A(15, 11)),	// 0
+    MSB(NTADR_A(21, 11)),	// 1
+    MSB(NTADR_A(15, 17)),	// 2
+    MSB(NTADR_A(18, 17)),	// 3
+    MSB(NTADR_A(27, 1)),	// 4
+    MSB(NTADR_A(9, 11)),	// 5
+    MSB(NTADR_A(15, 11))	// 6 = 0
+};
+#endif
+
+const uint8_t BG_Table2[]={
+			0x11,	0x12,	0x13,	0x14,	0x15,	0x16,	0x17,
+	0x18,	0x19,	0x1A,	0x1B,	0x1C
+};
+
+const uint8_t G_Table2[]={
+			0x21,	0x22,	0x23,	0x24,	0x25,	0x26,	0x27,
+	0x28,	0x29,	0x2A,	0x2B,	0x2C
+};
+
+const uint8_t UFO_Title_Jump_Table[]={
+	5,
+	4,
+	3,	3,
+	2,	2,	2,	2,
+	1,	1,	1,	1,	1,
+	0,
+	-1,	-1,	-1,	-1,	-1,
+	-2,	-2,	-2,	-2,
+	-3,	-3,
+	-4,
+	-5,
+};
+
+const uint8_t BALL_Title_Jump_Table[]={
+	1,	1,	1,
+	2,	2,
+	3,	3,
+	4,
+};
+	
+const uint8_t menu_color_table[]={
+	0x00,	0x01,	0x02,	0x03,	0x04,	0x05,	0x06,	0x07,
+	0x08,	0x09,	0x0A,	0x0B,	0x0C,					0x0F,
+	0x10,	0x11,	0x12,	0x13,	0x14,	0x15,	0x16,	0x17,
+	0x18,	0x19,	0x1A,	0x1B,	0x1C,
+	0x20,	0x21,	0x22,	0x23,	0x24,	0x25,	0x26,	0x27,
+	0x28,	0x29,	0x2A,	0x2B,	0x2C,
+	0x30,	0x31,	0x32,	0x33,	0x34,	0x35,	0x36,	0x37,
+	0x38,	0x39,	0x3A,	0x3B,	0x3C
+};
 
 const uint8_t shipFrameTable[] = {0x21, 0x21, 0x25, 0x29, 0x2D, 0x31, 0x31};
 
@@ -1119,3 +1108,10 @@ const uint8_t miniShipFrameTable[] = {0x01, 0x01, 0x03, 0x05, 0x07, 0x09, 0x09};
 const uint8_t miniSwingFrameTable[] = {0x3F, 0x1B, 0x3F, 0x3D};
 
 const uint8_t mysteryFrameTable[] = {0x1D, 0x7D, 0x1F, 0x7F, 0xFF};
+
+const uint8_t menu_irq_table[] = {
+	180,
+	irqtable_hscroll, 0x00,
+
+	irqtable_end // always end with 0xff
+};
