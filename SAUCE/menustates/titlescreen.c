@@ -21,9 +21,6 @@ void set_title_icon();
 
 const uint8_t xbgmlookuptable[];
 
-const uint8_t loNTAddrTableTitleScreen[];
-const uint8_t hiNTAddrTableTitleScreen[];
-
 const uint8_t BG_Table2[];
 const uint8_t G_Table2[];
 const uint8_t menu_color_table[];
@@ -44,6 +41,9 @@ const uint8_t miniSwingFrameTable[];
 const uint8_t mysteryFrameTable[];
 
 const uint8_t menu_irq_table[];
+
+// Button table
+#include "defines/titlescreen_buttons.c"
 
 // Declarations of strings
 #include "charmaps/mainmenu_charmap.h"	// Set it for the further routine
@@ -84,7 +84,7 @@ const unsigned char vstext[] = "VS";
 void state_menu() {
 	poweroffcheck = 0xff;
 	#if __VS_SYSTEM
-		menuselection = 0;
+		menuselection = TITLE_BTN_LEVELMAIN;
 	#endif
 	if (exitingLevelSelect) {
 		draw_both_progress_bars();
@@ -206,11 +206,9 @@ void state_menu() {
 			one_vram_buffer('b', addloNOC(tmp5, 1)); 
 		}
 	#else
-		if (menuselection != 5) {
+		if (menuselection != TITLE_BTN_FUNSETTINGS) {
 			one_vram_buffer('a', tmp5);
 			one_vram_buffer('b', addloNOC(tmp5, 1));
-			one_vram_buffer(' ', NTADR_A(26, 2));
-			one_vram_buffer(' ', NTADR_A(26, 3));
 		} else {
 			one_vram_buffer(0x6F, NTADR_A(26, 2));
 			one_vram_buffer(0x7F, NTADR_A(26, 3));
@@ -557,12 +555,7 @@ void state_menu() {
 			&& coins_inserted
 		#endif
 			) {
-			#if !__VS_SYSTEM
-				if (menuselection == 6) menuselection = 0;
-			#else
-				if (menuselection == 5) menuselection = 0;
-				else if (menuselection == 1) { menuselection = 5; tmp3--; tmp3--; tmp3--; }
-			#endif
+			if (menuselection == TITLE_BTN_COUNT) menuselection = 0;
 			else menuselection++;
 			tmp3--;
 			#if __VS_SYSTEM
@@ -575,12 +568,7 @@ void state_menu() {
 			&& coins_inserted
 		#endif
 			) {
-			#if !__VS_SYSTEM
-				if (menuselection == 0) menuselection = 6;
-			#else
-				if (menuselection == 0) menuselection = 5;
-				else if (menuselection == 5) { menuselection = 1; tmp3++; tmp3++; tmp3++; }
-			#endif
+			if (menuselection == 0) menuselection = TITLE_BTN_COUNT;
 			else menuselection--;
 			tmp3++;
 			#if __VS_SYSTEM
@@ -593,30 +581,39 @@ void state_menu() {
 		#if __VS_SYSTEM
 			&& coins_inserted
 		#endif
-			) {    // menu selection incremented
+			) {    // menu selection incremented or decremented
 			tmp4 = menuselection; ++tmp4;
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-			#if !__VS_SYSTEM
-			if (menuselection != 5) {
-			#else
-			if (menuselection != 4) {
-			#endif
+		#if !__VS_SYSTEM
+			if (menuselection != TITLE_BTN_FUNSETTINGS) {
 				one_vram_buffer('a', tmp5);
 				one_vram_buffer('b', addloNOC(tmp5, 1));
-				one_vram_buffer(' ', NTADR_A(26, 2));
-				one_vram_buffer(' ', NTADR_A(26, 3));	
 			} else {
 				one_vram_buffer(0x6F, NTADR_A(26, 2));
 				one_vram_buffer(0x7F, NTADR_A(26, 3));
 			}
+		#else
+			one_vram_buffer('a', tmp5);
+			one_vram_buffer('b', addloNOC(tmp5, 1));
+		#endif
 
 			tmp4 += tmp3;   // Get the old index
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-			one_vram_buffer(' ', tmp5);
-			one_vram_buffer(' ', addloNOC(tmp5, 1));
+		#if !__VS_SYSTEM
+			if (tmp4 != TITLE_BTN_FUNSETTINGS+1) {
+		#endif
+				one_vram_buffer(' ', tmp5);
+				one_vram_buffer(' ', addloNOC(tmp5, 1));
+		#if !__VS_SYSTEM
+			} else {
+				one_vram_buffer(' ', NTADR_A(26, 2));
+				one_vram_buffer(' ', NTADR_A(26, 3));
+			}
+		#endif
+
 		}
 		#if !__VS_SYSTEM
-		if (joypad1.press_select) {
+			if (joypad1.press_select) {
 				tmp2 = 0;
 				gameState = 0;
 				famistudio_music_stop();
@@ -624,7 +621,7 @@ void state_menu() {
 				menuMusicCurrentlyPlaying = 0;
 				ppu_wait_nmi();
 				return;
-		}
+			}
 		#endif
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
 		edit_irq_table(low_byte(tmp8), 2); 
@@ -652,24 +649,23 @@ void state_menu() {
 			
 			if ((mouse.y >= 0x5E && mouse.y <= 0x7A)) {
 				if (mouse.x >= 0x41 && mouse.x <= 0x5A) {
-					menuselection = 6; break;
+					menuselection = TITLE_BTN_CUSTOMIZE; break;
 				} else if (mouse.x >= 0x6F && mouse.x <= 0x8C) {
-					menuselection = 0; break;
+					menuselection = TITLE_BTN_LEVELMAIN; break;
 				} else if (mouse.x >= 0xA1 && mouse.x <= 0xBA) {
-					menuselection = 1; break;
+					menuselection = TITLE_BTN_LEVELCOMM; break;
 				}
-			}				
-			else if ((mouse.y >= 0x8C && mouse.y <= 0x9B)) {
+			} else if ((mouse.y >= 0x8C && mouse.y <= 0x9B)) {
 				if (mouse.x >= 0x46 && mouse.x <= 0x56) {
-					menuselection = 2; break;
+					menuselection = TITLE_BTN_SOUNDTEST; break;
 				} else if (mouse.x >= 0x76 && mouse.x <= 0x86) {
-					menuselection = 3; break;
+					menuselection = TITLE_BTN_SETTINGS; break;
 				} else if (mouse.x >= 0xA6 && mouse.x <= 0xB6) {
-					menuselection = 4; break;
+					menuselection = TITLE_BTN_INSTRUCTIONS; break;
 				}
 			} else if ((mouse.y >= 0x0D && mouse.y <= 0x1C)) {
 				if (mouse.x >= 0xD6 && mouse.x <= 0xE4) {
-					menuselection = 5; break;
+					menuselection = TITLE_BTN_FUNSETTINGS; break;
 				}
 			}
 		}	
@@ -694,47 +690,47 @@ void state_menu() {
 	tmp7 = newrand() & 255;
 	normalorcommlevels = 1;
 	switch (menuselection) {
-		case 0x00:
-			#if LEVELSET == 'A'
-			normalorcommlevels = 0;
-			// fall through lmao
+		case TITLE_BTN_LEVELMAIN:
+			#if LEVELSET != 'A'
+				tmp2 = 0;
+				gameState = 0xF2;
+				music_update();
+				pal_fade_to_withmusic(4,0);
+				ppu_wait_nmi();		
+				break;
+				// no fall through lmao
 			#else
-			tmp2 = 0;
-			gameState = 0xF2;
-			music_update();
-			pal_fade_to_withmusic(4,0);
-			ppu_wait_nmi();		
-			break;
-			// no fall through lmao
+				normalorcommlevels = 0;
+				// fall through lmao
 			#endif
-		case 0x01: 
+		case TITLE_BTN_LEVELCOMM:
 			POKE(0x2005, 0x00);
 			POKE(0x2005, 0x00);
 			mmc3_disable_irq(); // reset scroll before playing
-			kandowatchesyousleep = 1; 
-			if(!tmp7) crossPRGBankJump8(playPCM, 1); 
-			else crossPRGBankJump8(playPCM, 0);  
+			kandowatchesyousleep = 1;
+
+			if (!tmp7) crossPRGBankJump8(playPCM, 1);
+			else crossPRGBankJump8(playPCM, 0);
+
 			if (normalorcommlevels) level = LEVEL_COUNT;
 			else level = 0;
-			levelselection(); 
-			return;		
-		case 0x02: gameState = 4; return;
-		#if __VS_SYSTEM
-			case 0x03:
-			case 0x04:
-				break;
-			case 0x05: customize_screen(); return;
-		#else
-			case 0x03: crossPRGBankJump0(settings); return;
-			case 0x04: 
+
+			levelselection();
+			return;
+
+		#if !__VS_SYSTEM
+			case TITLE_BTN_SOUNDTEST: gameState = 4; return;
+			case TITLE_BTN_SETTINGS: crossPRGBankJump0(settings); return;
+			case TITLE_BTN_INSTRUCTIONS:
 				tmp2 = 0;
 				gameState = 0xF1;
 				music_update();
 				pal_fade_to_withmusic(4,0);
 				ppu_wait_nmi();		
 				break;
-			case 0x05: 
-				if (all_levels_complete != 0xFC) sfx_play(sfx_invalid, 0);
+			case TITLE_BTN_FUNSETTINGS:
+				if (all_levels_complete != 0xFC)
+					sfx_play(sfx_invalid, 0);
 				else {
 					POKE(0x2005, 0x00);
 					POKE(0x2005, 0x00);
@@ -744,8 +740,8 @@ void state_menu() {
 					return;
 				}
 				break;
-			case 0x06: customize_screen(); return;
 		#endif
+			case TITLE_BTN_CUSTOMIZE: customize_screen(); return;
 	};
 	
 }
@@ -820,9 +816,9 @@ void roll_new_mode() {
 void bounds_check() {
 	if (currplayer_y_small >= 160) {
 		currplayer_y_small = 160;
-	}		
-	else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;	
-}	
+	} else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;	
+}
+
 void title_ship_shit() {
 	if (kandoframecnt & 1) { if (!(newrand() & 7)) invert_gravity(currplayer_gravity); }
 
@@ -830,8 +826,7 @@ void title_ship_shit() {
 
 	if (currplayer_y_small >= 160) {
 		currplayer_y_small = 160;
-	}		
-	else if (currplayer_y_small < 0x08) { 
+	} else if (currplayer_y_small < 0x08) { 
 		currplayer_y_small = 0x08; 
 		currplayer_gravity = GRAVITY_DOWN;
 		tmpi8 = 0;
@@ -976,73 +971,6 @@ void color_picker() {
 }
 
 // Tables start
-
-#if !__VS_SYSTEM
-/*	Looks like this:
- *	X->	9	12	15	18	21	24	27
- *	Y
- *	1							(5)
- *	11	(6)		(0)		(1)
- *	17	(2)		(3)		(4)
- */
-
-const uint8_t loNTAddrTableTitleScreen[]={
-    LSB(NTADR_A(9, 11)),	// -1 = 6
-    LSB(NTADR_A(15, 11)),	// 0
-    LSB(NTADR_A(21, 11)),	// 1 
-    LSB(NTADR_A(9, 17)),	// 2
-    LSB(NTADR_A(15, 17)),	// 3
-    LSB(NTADR_A(21, 17)),	// 4
-    LSB(NTADR_A(27, 1)),	// 5
-    LSB(NTADR_A(9, 11)),	// 6
-    LSB(NTADR_A(15, 11))	// 7 = 0
-};
-
-const uint8_t hiNTAddrTableTitleScreen[]={
-    MSB(NTADR_A(9, 11)),	// -1 = 6
-    MSB(NTADR_A(15, 11)),	// 0
-    MSB(NTADR_A(21, 11)),	// 1
-    MSB(NTADR_A(9, 17)),	// 2
-    MSB(NTADR_A(15, 17)),	// 3
-    MSB(NTADR_A(21, 17)),	// 4
-    MSB(NTADR_A(27, 1)),	// 5
-    MSB(NTADR_A(9, 11)),	// 6
-    MSB(NTADR_A(15, 11))	// 7 = 0
-};
-#else
-/*	Looks like this:
- *	X->	9	12	15	18	21	24	27
- *	Y
- *	1							[4]
- *	11	(5)		(0)		(1)
- *	17			[2]	[3]
- *	5 rolls around to 0
- *	1 rolls around to 5
- *	Therefore 2, 3 and 4 are de facto unused and will be cleared up
- */
-
-const uint8_t loNTAddrTableTitleScreen[]={
-    LSB(NTADR_A(9, 11)),	// -1 = 5
-    LSB(NTADR_A(15, 11)),	// 0
-    LSB(NTADR_A(21, 11)),	// 1 
-    LSB(NTADR_A(15, 17)),	// 2
-    LSB(NTADR_A(18, 17)),	// 3
-    LSB(NTADR_A(27, 1)),	// 4
-    LSB(NTADR_A(9, 11)),	// 5
-    LSB(NTADR_A(15, 11))	// 6 = 0
-};
-
-const uint8_t hiNTAddrTableTitleScreen[]={
-    MSB(NTADR_A(9, 11)),	// -1 = 5
-    MSB(NTADR_A(15, 11)),	// 0
-    MSB(NTADR_A(21, 11)),	// 1
-    MSB(NTADR_A(15, 17)),	// 2
-    MSB(NTADR_A(18, 17)),	// 3
-    MSB(NTADR_A(27, 1)),	// 4
-    MSB(NTADR_A(9, 11)),	// 5
-    MSB(NTADR_A(15, 11))	// 6 = 0
-};
-#endif
 
 const uint8_t BG_Table2[]={
 			0x11,	0x12,	0x13,	0x14,	0x15,	0x16,	0x17,
