@@ -33,7 +33,7 @@ void main(){
 	mmc3_set_8kb_chr(MENUBANK);
 
 	// disable debug mode toggle
-	options &= debugtoggle^0xFF;
+	options &= ~debugtoggle;
 
     //pal_bg(paletteDefault);
     //pal_spr(paletteDefaultSP);
@@ -50,7 +50,7 @@ void main(){
     // pal_fade_to(4,0);
 
 	// needed for cc65 to export the label for mesen
-    gameState = 0x01;
+    gameState = STATE_MENU;
 	
 	// These are done at init time
     // level = 0x00;
@@ -62,11 +62,11 @@ void main(){
 	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;
 	gameboy_check();
-	gameState = 0x05;
+	gameState = STATE_SAVEVALIDATE;
     while (1){
 		ppu_wait_nmi();
 		switch (gameState){
-			case 0x01: {
+			case STATE_MENU: {	// To be split into actual state_menu and levelselection
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
 				if (!kandowatchesyousleep) state_menu();
 				else {
@@ -82,22 +82,22 @@ void main(){
 				}
 				break;
 			}
-			case 0x02: {
+			case STATE_GAME: {
 				state_game();
 				use_auto_chrswitch = 0;
 				break;
 			}
-			case 0x03: {
+			case STATE_LVLDONE: {
 				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
 				state_lvldone();
 				break;
 			}
-			case 0x04: {
-				mmc3_set_prg_bank_1(GET_BANK(bgmtest));
-				bgmtest();
+			case STATE_SOUNDTEST: {
+				mmc3_set_prg_bank_1(GET_BANK(state_soundtest));
+				state_soundtest();
 				break;
 			}
-			case 0x05: {
+			case STATE_SAVEVALIDATE: {
 				#if !__VS_SYSTEM
 					music_play(song_scheming_weasel);
 				#endif
@@ -105,35 +105,37 @@ void main(){
 				state_savefile_validate();
 				break;
 			}
-			case 0x06: {
+			/* Not implemented
+			case STATE_SAVEEDITOR: {
 				mmc3_set_prg_bank_1(GET_BANK(state_savefile_editor));
 				state_savefile_editor();
 				break;
 			}
-
-
-			case 0xF0: {
-				mmc3_set_prg_bank_1(GET_BANK(funsettings));
-				funsettings();
+			*/
+			case STATE_FUNSETTINGS: {
+				mmc3_set_prg_bank_1(GET_BANK(state_funsettings));
+				state_funsettings();
 				break;
 			}
-			case 0xF1: {
+			case STATE_INSTRUCTIONS: {
 				mmc3_set_prg_bank_1(GET_BANK(state_instructions));
 				state_instructions();
 				break;
 			}
 			#if LEVELSET != 'A'
-			case 0xF2: {
+			case STATE_PLAYMAIN: {
 				mmc3_set_prg_bank_1(GET_BANK(state_playmain));
 				state_playmain();
 				break;
 			}
 			#endif
-			case 0xFE: {
+			/*	Implementation redacted
+			case STATE_EXIT: {
 				mmc3_set_prg_bank_1(GET_BANK(state_exit));
 				state_exit();
 				break;
 			}
+			*/
 			default: {
 				mmc3_set_prg_bank_1(GET_BANK(state_demo));
 				state_demo();

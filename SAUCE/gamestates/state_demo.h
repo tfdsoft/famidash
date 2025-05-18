@@ -305,7 +305,7 @@ void state_instructions(){
 			&& !mouse.left_press
 		#endif
 		);
-	gameState = 1;
+	gameState = STATE_MENU;
 	return;
 }	
 
@@ -371,7 +371,7 @@ void state_demo(){
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
 				: joypad2.press))) {
-					gameState = 0x01; return;
+					gameState = STATE_MENU; return;
 		}
 		ppu_wait_nmi();
 		#if __VS_SYSTEM
@@ -396,7 +396,7 @@ void state_demo(){
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
 				: joypad2.press))) {
-				gameState = 0x01; return;
+				gameState = STATE_MENU; return;
 		}
 		
 		ppu_wait_nmi();
@@ -416,7 +416,7 @@ void state_demo(){
 			(joypad1.press || ((mouse.connected)
 				? mouse.left_press || mouse.right_press
 				: joypad2.press))) {
-					gameState = 0x01; return;
+					gameState = STATE_MENU; return;
 		}
 		ppu_wait_nmi();
 		#if __VS_SYSTEM
@@ -427,7 +427,7 @@ void state_demo(){
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;				
 	} while (tmp1 != 0);
 	forced_credits = 0;
-	gameState = 0x01; // validate save file before starting
+	gameState = STATE_MENU;
 	return; 
 	
 }
@@ -619,7 +619,7 @@ void settings() {
 			twoplayer = 0;
 			one_vram_buffer('X',NTADR_A(26,7));
 		}
-		if (twoplayer) options &= platformer^0xff;		
+		if (twoplayer) options &= ~platformer;		
 
 		if (joypad1.press_b) {
 			return;

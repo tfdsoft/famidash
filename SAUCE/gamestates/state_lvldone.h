@@ -309,7 +309,7 @@ void state_lvldone() {
 				if (mouse.y >= 0xC5 && mouse.y <= 0xE3) {
 					if (mouse.x >= 0x36 && mouse.x <= 0x53) {
 						sfx_play(sfx_start_level, 0);
-						gameState = 2;
+						gameState = STATE_GAME;
 						pal_fade_to_withmusic(4,0);
 						memfill(attemptCounter, 0, sizeof(attemptCounter));
 
@@ -320,7 +320,7 @@ void state_lvldone() {
 					if (mouse.x >= 0xA6 && mouse.x <= 0xc3) {
 						sfx_play(sfx_exit_level, 0);
 						music_update();
-						gameState = 1;
+						gameState = STATE_MENU;
 						menuselection = 0;
 						kandowatchesyousleep = 1;
 						//oam_clear();
@@ -341,7 +341,7 @@ void state_lvldone() {
 
 					sfx_play(sfx_exit_level, 0);
 					music_update();
-					gameState = 1;
+					gameState = STATE_MENU;
 					menuselection = 0;
 					kandowatchesyousleep = 1;
 
@@ -352,7 +352,7 @@ void state_lvldone() {
 				} else {
 					
 					sfx_play(sfx_start_level, 0);
-					gameState = 2;
+					gameState = STATE_GAME;
 					pal_fade_to_withmusic(4,0);
 					memfill(attemptCounter, 0, sizeof(attemptCounter));
 					coins = 0;

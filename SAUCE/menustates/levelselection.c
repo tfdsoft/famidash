@@ -254,7 +254,7 @@ void start_the_level() {
 		ppu_wait_nmi();
 		music_update();
 	} while (++tmpA < 30);
-	gameState = 0x02;
+	gameState = STATE_GAME;
 	pal_fade_to(4,0);
 	menuMusicCurrentlyPlaying = 0;
 }			

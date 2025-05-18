@@ -333,7 +333,7 @@ void state_game(){
 						orbed[currplayer] = 1;
 					}
 					if (joypad1.press_select || exittimer == 100) { 
-						gameState = 1; 
+						gameState = STATE_MENU; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
 						gameboy_check();
@@ -422,7 +422,7 @@ void state_game(){
 		if (joypad1.select && DEBUG_MODE) {
 		    if (++END_LEVEL_TIMER > 60) {
 			END_LEVEL_TIMER = 0;
-			gameState = 3;
+			gameState = STATE_LVLDONE;
 			//DEBUG_MODE = 0;
 			famistudio_music_stop();
 		    }
@@ -622,7 +622,7 @@ void state_game(){
 				reset_level();
 				#if __VS_SYSTEM
 					if (!coins_inserted) {
-						gameState = 1; 
+						gameState = STATE_MENU; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
 						gameboy_check();
@@ -634,7 +634,7 @@ void state_game(){
 		} else cube_data[0] = cube_data[1] = 0;
 	}
 
-        if (gameState != 0x02) return;
+        if (gameState != STATE_GAME) return;
 	if (mouse_timer) mouse_timer--;
 
     }
@@ -696,7 +696,7 @@ void mouse_and_cursor() {
 		if (mouse.right) joypad1.b = true;
 		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
 		if (kandoframecnt > 0xFC) kandoframecnt = 0;
-		if (gameState != 2) { if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA1 + (2*mouseframe)), 2); }
+		if (gameState != STATE_GAME) { if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA1 + (2*mouseframe)), 2); }
 
 		prev_mouse_x = mouse.x;
 		prev_mouse_y = mouse.y;

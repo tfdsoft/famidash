@@ -35,7 +35,7 @@ void state_playmain(){
 		newrand();
 		kandoframecnt++;
 	} while (!joypad1.press && !mouse.left_press);
-	gameState = 1;
+	gameState = STATE_MENU;
 	return;
 }	
 

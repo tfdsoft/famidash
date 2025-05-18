@@ -42,7 +42,7 @@ const uint8_t hiNTAddrTableTitleScreen[]={
 #define	TITLE_BTN_FUNSETTINGS	5
 #define	TITLE_BTN_CUSTOMIZE		6
 
-#define TITLE_BTN_COUNT 6
+#define TITLE_BTN_MAX 6
 
 #else
 /*	Looks like this:
@@ -76,6 +76,6 @@ const uint8_t hiNTAddrTableTitleScreen[]={
 #define TITLE_BTN_LEVELCOMM		1
 #define	TITLE_BTN_CUSTOMIZE		2
 
-#define TITLE_BTN_COUNT 2
+#define TITLE_BTN_MAX 2
 
 #endif

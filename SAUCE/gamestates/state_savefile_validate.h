@@ -76,7 +76,7 @@ void state_savefile_validate(){
         pal_fade_to(3,0);
     #endif
 
-    gameState = 0x00;
+    gameState = STATE_DEMO;
     return;
 }
 
@@ -116,7 +116,7 @@ void state_exit(){
     } while (1);
     menuMusicCurrentlyPlaying = 0;
     poweroffcheck = 0xff;
-    gameState = 0x01;
+    gameState = STATE_MENU;
 
     // Enable SRAM write
 	POKE(0xA001, 0x80);
