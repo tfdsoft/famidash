@@ -8,9 +8,7 @@ extern uint8_t famistudio_output_buf[11];
 void reset_game_vars(){
 #if !__VS_SYSTEM
 	if (!practice_point_count) {
-		#if !__VS_SYSTEM
 		if (!practice_music_sync)
-		#endif 	// unconditional on VS
 			music_play(song_practice);
 		latest_practice_point = 0;
 	} else {
