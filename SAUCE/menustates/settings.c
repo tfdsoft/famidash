@@ -3,6 +3,14 @@ void set_settings();
 
 #include "charmaps/mainmenu_charmap.h"
 
+#if !__VS_SYSTEM
+#define firstSettingY	5
+#define settingCount	8
+#else	// Despite settings not even being used in the VS version?
+#define	firstSettingY	7
+#define settingCount	7
+#endif
+
 void settings() {
 	settingvalue = 0; 
 	pal_fade_to_withmusic(4,0);
@@ -14,11 +22,7 @@ void settings() {
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	ppu_on_all();
-	#if !__VS_SYSTEM
-	one_vram_buffer('c', NTADR_A(4, 5));	// settingvalue is set to 0 beforehand
-	#else
-	one_vram_buffer('c', NTADR_A(4, 7));	// settingvalue is set to 0 beforehand
-	#endif
+	one_vram_buffer('c', NTADR_A(4, firstSettingY));	// settingvalue is set to 0 beforehand
 	pal_fade_to_withmusic(0,4);
 	while (1) {
 		ppu_wait_nmi();
@@ -27,74 +31,38 @@ void settings() {
 		mouse_and_cursor();
 		 // read the first controller
 		
-	#if !__VS_SYSTEM
-		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 5));
-		else one_vram_buffer('f', NTADR_A(26, 5));
-	#else
-		if (twoplayer) one_vram_buffer('g', NTADR_A(26, 7));
-		else one_vram_buffer('f', NTADR_A(26, 7));
-	#endif
+		if (twoplayer) one_vram_buffer('g', NTADR_A(26, firstSettingY));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY));
 
-	#if !__VS_SYSTEM
-		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 7));
-		else one_vram_buffer('f', NTADR_A(26, 7));
-	#else
-		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, 9));
-		else one_vram_buffer('f', NTADR_A(26, 9));
-	#endif
+		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, firstSettingY+2));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+2));
 
-	#if !__VS_SYSTEM
-		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, 9));
-		else one_vram_buffer('g', NTADR_A(26, 9));
-	#else
-		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, 11));
-		else one_vram_buffer('g', NTADR_A(26, 11));
-	#endif
+		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, firstSettingY+4));
+		else one_vram_buffer('g', NTADR_A(26, firstSettingY+4));
 
-	#if !__VS_SYSTEM
-		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, 11));
-		else one_vram_buffer('g', NTADR_A(26, 11));
-	#else
-		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, 13));
-		else one_vram_buffer('g', NTADR_A(26, 13));
-	#endif
+		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, firstSettingY+6));
+		else one_vram_buffer('g', NTADR_A(26, firstSettingY+6));
 
-	#if !__VS_SYSTEM
-		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, 13));
+		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, firstSettingY+8));
 		else one_vram_buffer('f', NTADR_A(26, 13));
-	#else
-		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, 15));
-		else one_vram_buffer('f', NTADR_A(26, 15));
-	#endif
+
+		if (viseffects) one_vram_buffer('g', NTADR_A(26, firstSettingY+10));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+10));
+
+		if (trails == 1) one_vram_buffer('g', NTADR_A(26, firstSettingY+12));
+		else if (trails == 2) one_vram_buffer('*', NTADR_A(26, firstSettingY+12));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+12));
 
 	#if !__VS_SYSTEM
-		if (viseffects) one_vram_buffer('g', NTADR_A(26, 15));
-		else one_vram_buffer('f', NTADR_A(26, 15));
-	#else
-		if (viseffects) one_vram_buffer('g', NTADR_A(26, 17));
-		else one_vram_buffer('f', NTADR_A(26, 17));
-	#endif
-
-	#if !__VS_SYSTEM
-		if (trails == 1) one_vram_buffer('g', NTADR_A(26, 17));
-		else if (trails == 2) one_vram_buffer('*', NTADR_A(26, 17));
-		else one_vram_buffer('f', NTADR_A(26, 17));
-	#else
-		if (trails == 1) one_vram_buffer('g', NTADR_A(26, 19));
-		else if (trails == 2) one_vram_buffer('*', NTADR_A(26, 19));
-		else one_vram_buffer('f', NTADR_A(26, 19));
-	#endif
-
-	#if !__VS_SYSTEM
-		if (auto_practicepoints) one_vram_buffer('g', NTADR_A(26, 19));
-		else one_vram_buffer('f', NTADR_A(26, 19));
+		if (auto_practicepoints) one_vram_buffer('g', NTADR_A(26, firstSettingY+14));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+14));
 	#endif
 
 		tmp1 = settingvalue;
 
+	#if !__VS_SYSTEM
 		if (mouse.left_press) {
 			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
-			#if !__VS_SYSTEM
 				if (mouse.y >= 0x24 && mouse.y <= 0x2C) {
 					settingvalue = 0; set_settings();
 				}
@@ -119,65 +87,29 @@ void settings() {
 				else if (mouse.y >= 0x94 && mouse.y <= 0x9C) {
 					settingvalue = 7; set_settings();
 				}
-			#else
-				if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
-					settingvalue = 0; set_settings();
-				}
-				else if (mouse.y >= 0x44 && mouse.y <= 0x4C) {
-					settingvalue = 1; set_settings();
-				}
-				else if (mouse.y >= 0x54 && mouse.y <= 0x5C) {
-					settingvalue = 2; set_settings();
-				}
-				else if (mouse.y >= 0x64 && mouse.y <= 0x6C) {
-					settingvalue = 3; set_settings();
-				}
-				else if (mouse.y >= 0x74 && mouse.y <= 0x7C) {
-					settingvalue = 4; set_settings();
-				}
-				else if (mouse.y >= 0x84 && mouse.y <= 0x8C) {
-					settingvalue = 5; set_settings();
-				}
-				else if (mouse.y >= 0x94 && mouse.y <= 0x9C) {
-					settingvalue = 6; set_settings();
-				}
-			#endif
-
 			}
 			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
 				return;
 			}
 
-		}	
+		}
+		#endif
 
 		if (joypad1.press & (PAD_RIGHT | PAD_DOWN)) {
-		#if !__VS_SYSTEM
-			if (settingvalue == 8) { settingvalue = 0;  }
-		#else
-			if (settingvalue == 7) { settingvalue = 0;  }
-		#endif
+			if (settingvalue == settingCount) { settingvalue = 0;  }
 			else { settingvalue++;   }
 		}
 
 		if (joypad1.press & (PAD_LEFT | PAD_UP)) {
-		#if !__VS_SYSTEM
-			if (settingvalue == 0) { settingvalue = 8;  }
-		#else
-			if (settingvalue == 0) { settingvalue = 7;  }
-		#endif
+			if (settingvalue == 0) { settingvalue = settingCount;  }
 			else { settingvalue--;   }
 		}
 
 		if (tmp1 != settingvalue) {
 			// NTADR_A = (NAMETABLE_A|(((y)<<5)|(x)))
 			// (tmp1 * 2) << 5 = tmp1<<6 = (tmp1<<8)>>2
-		#if !__VS_SYSTEM
-			one_vram_buffer(' ', NTADR_A(4, 5)+((tmp1<<8)>>2));
-			one_vram_buffer('c', NTADR_A(4, 5)+((settingvalue<<8)>>2));
-		#else
-			one_vram_buffer(' ', NTADR_A(4, 7)+((tmp1<<8)>>2));
-			one_vram_buffer('c', NTADR_A(4, 7)+((settingvalue<<8)>>2));
-		#endif
+			one_vram_buffer(' ', NTADR_A(4, firstSettingY)+(		(tmp1<<8)>>2));
+			one_vram_buffer('c', NTADR_A(4, firstSettingY)+((settingvalue<<8)>>2));
 		}
 		
 		if (joypad1.press & (PAD_A | PAD_START)) {
