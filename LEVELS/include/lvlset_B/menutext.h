@@ -1,8 +1,6 @@
 
 // Exported by export_levels.py
 
-#include "defines/color1_charmap.h"
-
 const char levelText00[12] = "YOU SHOULDNT";
 const char levelText01[ 7] = "LOOK AT";
 const char levelText02[10] = "GENERATION";

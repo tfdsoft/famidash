@@ -1,5 +1,5 @@
 
-#include "bg_charmap.h"
+#include "charmaps/bg_charmap.h"
 
 // const unsigned char menutext1[]="GEOMETRY DASH";
 // const unsigned char menutext2[]="PRESS START TO LOAD LEVEL ";
@@ -29,5 +29,5 @@ const unsigned char menubgcolors[]={
     0x00
 };
 
-#include "color1_charmap.h"
+#include "charmaps/color1_charmap.h"
 

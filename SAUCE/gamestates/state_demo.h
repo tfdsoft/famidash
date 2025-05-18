@@ -238,7 +238,7 @@ const unsigned char Credits2[629]={
 
 
 
-#include "defines/mainmenu_charmap.h"
+#include "charmaps/mainmenu_charmap.h"
 
 #ifdef FLAG_ENABLE_VER_NUM
 	#ifdef FLAG_BETA_BUILD
@@ -434,7 +434,7 @@ void state_demo(){
 }
 
 
-#include "defines/mainmenu_charmap.h"
+#include "charmaps/mainmenu_charmap.h"
 
 void settings() {
 	settingvalue = 0; 

@@ -2,8 +2,6 @@
 
 #if !__VS_SYSTEM
 
-#include "defines/bgm_charmap.h"
-
 const char sfxSoundTestString00[ 5] = "DEATH";
 const char sfxSoundTestString01[ 5] = "CLICK";
 const char sfxSoundTestString02[14] = "LEVEL$COMPLETE";

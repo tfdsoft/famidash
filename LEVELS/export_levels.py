@@ -450,8 +450,6 @@ def generate_menutext(filteredMetadata : dict, include_path : pathlib.Path):
 		'',
 		'// Exported by export_levels.py',
 		'',
-		'#include "defines/color1_charmap.h"',
-		'',
 		*outputStringsList,
 		'', '',
 		'const char* const levelTextsUpper[] = {',
