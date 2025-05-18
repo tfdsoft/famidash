@@ -79,6 +79,13 @@ const unsigned char vstext[] = "VS";
 #define	TITLEMODE_MINISWING	15
 #define	TITLEMODE_META		0xFF
 
+// System-dependent defines
+#if __VS_SYSTEM
+#define coinCondition coins_inserted
+#else
+#define coinCondition true
+#endif
+
 // Routines start
 
 void state_menu() {
@@ -236,11 +243,7 @@ void state_menu() {
 		}
 	#endif
 
-	while (!(joypad1.press & (PAD_START | PAD_A))
-		#if __VS_SYSTEM
-			|| !coins_inserted
-		#endif
-		){
+	while (!(joypad1.press & (PAD_START | PAD_A)) || !coinCondition){
 
 		#if __VS_SYSTEM
 
@@ -549,12 +552,7 @@ void state_menu() {
 		dec_mouse_timer();
 		tmp3 = 0;	
 		
-		if (
-			joypad1.press_right 
-		#if __VS_SYSTEM
-			&& coins_inserted
-		#endif
-			) {
+		if (joypad1.press_right && coinCondition) {
 			if (menuselection == TITLE_BTN_MAX) menuselection = 0;
 			else menuselection++;
 			tmp3--;
@@ -562,12 +560,7 @@ void state_menu() {
 				menutimer = 0;
 			#endif
 		}
-		if (
-			joypad1.press_left
-		#if __VS_SYSTEM
-			&& coins_inserted
-		#endif
-			) {
+		if (joypad1.press_left && coinCondition) {
 			if (menuselection == 0) menuselection = TITLE_BTN_MAX;
 			else menuselection--;
 			tmp3++;
@@ -576,12 +569,7 @@ void state_menu() {
 			#endif
 		}
 
-		if (
-			tmp3
-		#if __VS_SYSTEM
-			&& coins_inserted
-		#endif
-			) {    // menu selection incremented or decremented
+		if (tmp3 && coinCondition) {    // menu selection incremented or decremented
 			tmp4 = menuselection; ++tmp4;
 			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
 		#if !__VS_SYSTEM
