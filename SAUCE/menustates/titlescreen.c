@@ -555,7 +555,7 @@ void state_menu() {
 			&& coins_inserted
 		#endif
 			) {
-			if (menuselection == TITLE_BTN_COUNT) menuselection = 0;
+			if (menuselection == TITLE_BTN_MAX) menuselection = 0;
 			else menuselection++;
 			tmp3--;
 			#if __VS_SYSTEM
@@ -568,7 +568,7 @@ void state_menu() {
 			&& coins_inserted
 		#endif
 			) {
-			if (menuselection == 0) menuselection = TITLE_BTN_COUNT;
+			if (menuselection == 0) menuselection = TITLE_BTN_MAX;
 			else menuselection--;
 			tmp3++;
 			#if __VS_SYSTEM
@@ -615,7 +615,7 @@ void state_menu() {
 		#if !__VS_SYSTEM
 			if (joypad1.press_select) {
 				tmp2 = 0;
-				gameState = 0;
+				gameState = STATE_DEMO;
 				famistudio_music_stop();
 				music_update();
 				menuMusicCurrentlyPlaying = 0;
@@ -629,7 +629,7 @@ void state_menu() {
 /*
 		if (joypad1.press_b) {
 			oam_clear();
-			gameState = 0xFE;
+			gameState = STATE_EXIT;
 			return;
 		}
 */
@@ -676,7 +676,7 @@ void state_menu() {
 			menutimer++;
 			if (menutimer >= 2000) {
 				menutimer = 0;
-				gameState = 0;
+				gameState = STATE_DEMO;
 				music_update();
 				ppu_off();
 				return;
@@ -693,7 +693,7 @@ void state_menu() {
 		case TITLE_BTN_LEVELMAIN:
 			#if LEVELSET != 'A'
 				tmp2 = 0;
-				gameState = 0xF2;
+				gameState = STATE_PLAYMAIN;
 				music_update();
 				pal_fade_to_withmusic(4,0);
 				ppu_wait_nmi();		
@@ -719,11 +719,11 @@ void state_menu() {
 			return;
 
 		#if !__VS_SYSTEM
-			case TITLE_BTN_SOUNDTEST: gameState = 4; return;
+			case TITLE_BTN_SOUNDTEST: gameState = STATE_SOUNDTEST; return;
 			case TITLE_BTN_SETTINGS: crossPRGBankJump0(settings); return;
 			case TITLE_BTN_INSTRUCTIONS:
 				tmp2 = 0;
-				gameState = 0xF1;
+				gameState = STATE_INSTRUCTIONS;
 				music_update();
 				pal_fade_to_withmusic(4,0);
 				ppu_wait_nmi();		
@@ -736,7 +736,7 @@ void state_menu() {
 					POKE(0x2005, 0x00);
 					mmc3_disable_irq(); // reset scroll before playing
 					last_gameState = gameState;
-					gameState = 0xF0; // fun settings gamestate
+					gameState = STATE_FUNSETTINGS;
 					return;
 				}
 				break;

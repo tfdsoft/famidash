@@ -9,7 +9,7 @@ void code_checker();
 const unsigned char bgmtestscreen[];
 const char TEXT_debug_mode[];
 
-void bgmtest() {
+void state_soundtest() {
 	song = 0;
 	temptemp6 = 0; 	
 	#define sfx tmp4
@@ -59,7 +59,7 @@ void bgmtest() {
 			}
 			if ((mouse.x >= 0x56 && mouse.x <= 0xA5) && (mouse.y >= 0x24 && mouse.y <= 0x2B)) {		
 				code_checker();
-				if (gameState == 0xF0) return;
+				if (gameState == STATE_FUNSETTINGS) return;
 			}
 			if ((mouse.y >= 0x4E && mouse.y <= 0x5C)) {
 				if ((mouse.x >= 0x24 && mouse.x <= 0x2C)) {		
@@ -84,7 +84,7 @@ void bgmtest() {
 					one_vram_buffer(' ', NTADR_A(11, 7));
 					one_vram_buffer(' ', NTADR_A(11, 14));
 					menuMusicCurrentlyPlaying = 1;
-					gameState = 1;
+					gameState = STATE_MENU;
 					return;
 				}
 				else if (mouse.y >= 0x3D && mouse.y <= 0x64) {
@@ -133,14 +133,14 @@ void bgmtest() {
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
 			menuMusicCurrentlyPlaying = 1;
-			gameState = 1;
+			gameState = STATE_MENU;
 			return;
 		}
 		
 		// sound test codes
 		if (joypad1.press_start) {
 			code_checker();
-			if (gameState == 0xF0) return;
+			if (gameState == STATE_FUNSETTINGS) return;
 		}
 	}
 }
@@ -158,7 +158,7 @@ void code_checker() {
 	
 	else if (song == 1 && sfx == 7 && kandokidshack3 == 1) {
 		all_levels_complete = 0xFC;
-		gameState = 0xF0; // fun settings gamestate
+		gameState = STATE_FUNSETTINGS;
 		tmp3--;
 	}		
 	else kandokidshack3 = 0;

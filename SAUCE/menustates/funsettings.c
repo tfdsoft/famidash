@@ -15,7 +15,7 @@ const unsigned char* const gameboytexts[];
 
 const unsigned char gameboy_text_size[];
 
-void funsettings() {
+void state_funsettings() {
 	settingvalue = 0; 
 	pal_fade_to_withmusic(4,0);
 	ppu_off();
