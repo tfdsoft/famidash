@@ -137,8 +137,8 @@ void main(){
 			}
 			*/
 			default: {
-				mmc3_set_prg_bank_1(GET_BANK(state_demo));
-				state_demo();
+				mmc3_set_prg_bank_1(GET_BANK(state_credits));
+				state_credits();
 				break;
 			}
 		}

@@ -105,5 +105,4 @@
 //#include "gamestates/state_sorrynothing.h"
 
 #include "gamestates/state_lvldone.h"
-#include "gamestates/state_demo.h"
 #include "gamestates/state_savefile_editor.h"

@@ -30,4 +30,10 @@ CODE_BANK("XCD_BANK_06")
 
 CODE_BANK("XCD_BANK_02")
 
+#include "defines/menunametable3.h"
+
+#include "menustates/instructions.c"
+#include "menustates/credits.c"
+#include "menustates/settings.c"
+
 CODE_BANK_POP()
