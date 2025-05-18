@@ -615,7 +615,7 @@ void state_menu() {
 		#if !__VS_SYSTEM
 			if (joypad1.press_select) {
 				tmp2 = 0;
-				gameState = STATE_DEMO;
+				gameState = STATE_CREDITS;
 				famistudio_music_stop();
 				music_update();
 				menuMusicCurrentlyPlaying = 0;
@@ -676,7 +676,7 @@ void state_menu() {
 			menutimer++;
 			if (menutimer >= 2000) {
 				menutimer = 0;
-				gameState = STATE_DEMO;
+				gameState = STATE_CREDITS;
 				music_update();
 				ppu_off();
 				return;

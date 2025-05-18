@@ -76,7 +76,7 @@ void state_savefile_validate(){
         pal_fade_to(3,0);
     #endif
 
-    gameState = STATE_DEMO;
+    gameState = STATE_CREDITS;
     return;
 }
 

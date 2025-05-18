@@ -1,5 +1,5 @@
 // game states
-#define STATE_DEMO			0x00
+#define STATE_CREDITS		0x00
 #define STATE_MENU			0x01
 #define STATE_GAME			0x02
 #define STATE_LVLDONE		0x03

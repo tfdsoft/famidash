@@ -25,7 +25,7 @@ void cube_movement(){
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 	
-	if (gameState != STATE_DEMO) {	// Why?
+	if (gameState != STATE_CREDITS) {	// Why?
 	
 	cube_eject();
 	
