@@ -46,13 +46,9 @@ void state_lvldone() {
 	}
 
 	#include "charmaps/endlevel_charmap.h"
-	//multi_vram_buffer_horz((const char*)menutext3,sizeof(menutext3)-1,NTADR_C(6, 16));
-	//multi_vram_buffer_horz((const char*)menutext4,sizeof(menutext4)-1,NTADR_C(8, 18));
-	//multi_vram_buffer_horz((const char*)attemptstext,sizeof(attemptstext)-1,NTADR_C(7, 19));
-	
+
 	tmp1 = 0;
 	tmpptr1 = NULL;
-	//crossPRGBankJump0(increment_attempt_count); WTF WHO PUT THIS HERE
 	#if !__VS_SYSTEM
 	display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
 	#endif
@@ -94,22 +90,6 @@ void state_lvldone() {
 		level_completeness_practice[level] = 100;
 	}
 	
-	
-	if (!coins) {
-		tmp1 = sizeof(coins0) - 1;
-		tmpptr1 = (unsigned char*)coins0;
-	} else if ((coins & 7) == 7) {
-		tmp1 = sizeof(coins3) - 1;
-		tmpptr1 = (unsigned char*)coins3;
-	} else if (((coins & COIN_1) && (coins & COIN_2)) || ((coins & COIN_2) && (coins & COIN_3)) || ((coins & COIN_1) && (coins & COIN_3))) {
-		tmp1 = sizeof(coins2) - 1;
-		tmpptr1 = (unsigned char*)coins2;
-	} else if (coins & COIN_1 || coins & COIN_2 || coins & COIN_3) {
-		tmp1 = sizeof(coins1) - 1;
-		tmpptr1 = (unsigned char*)coins1;
-	}
-	 
-	//if (tmp1) multi_vram_buffer_horz((const char*)tmpptr1,tmp1,NTADR_C(17,18));
 	flush_vram_update2();
 
     set_scroll_x(0x00);
@@ -118,9 +98,6 @@ void state_lvldone() {
 	tmp5 = 0x0000; // speed
 	tmp6 = 0xf000; // real y 
 
-	//	one_vram_buffer(0xD0+coins, NTADR_A(12,9));
-
-	
     set_scroll_y(0xe8);
     ppu_on_all();
 
