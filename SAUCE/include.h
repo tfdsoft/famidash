@@ -40,18 +40,9 @@
 
 // banks set inside level data due to banking
 #include "objdefines.h"   // object defines for easier implementation
-                                    // stolen from the old repo lol
 
-// levels are exported to asm now
-// #include "leveldata.h"    // level data goes here
-
-
-
-
-#pragma rodata-name (push, "RODATA")
 #include "levellist.h"    // level order goes here
 #include "const_levellist.h"    // colors list and icontable for overflow conservation reasons
-#pragma rodata-name (pop)
 
 #include "defines/dialogbox.h"
 
@@ -63,10 +54,6 @@
 #include "METATILES/metatiles.h"  // metatile defines
 #include "defines/sprites.h"    // metasprite defines
 #include "functions/sprite_loading.h"
-
-#pragma rodata-name (push, "XCD_BANK_06")
-#include "defines/endlvltext.h" // end level text, obviously.
-#pragma rodata-name (pop)
 
 //#include "functions/fade_timer.h"
 #include "functions/reset_game_vars.h"
