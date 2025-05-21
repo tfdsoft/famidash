@@ -3,7 +3,7 @@
 const uint8_t difficulty_pal_A[];
 const uint8_t difficulty_pal_B[];
 
-#include "charmaps/color1_charmap.h"
+#include "defines/charmap/color1_charmap.h"
 #include "menutext.h"
 
 const char coin_counter[][3];

@@ -1,7 +1,7 @@
 void code_checker();
 
 #if !__VS_SYSTEM
-#include "charmaps/bgm_charmap.h"
+#include "defines/charmap/bgm_charmap.h"
 #endif
 #include "music_soundTestTables.h"
 #include "sfx_soundTestTables.h"

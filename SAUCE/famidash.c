@@ -77,7 +77,7 @@ void main(){
 
 					//
 					practice_point_count = 0;
-					#include "charmaps/mainmenu_charmap.h"
+					#include "defines/charmap/mainmenu_charmap.h"
 					levelselection();
 				}
 				break;

@@ -1,6 +1,6 @@
 void mouse_and_cursor();
 
-#include "charmaps/mainmenu_charmap.h"
+#include "defines/charmap/mainmenu_charmap.h"
 
 #ifdef FLAG_ENABLE_VER_NUM
 	#ifdef FLAG_BETA_BUILD

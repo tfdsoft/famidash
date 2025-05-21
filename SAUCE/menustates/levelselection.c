@@ -11,7 +11,7 @@ void loop_routine_update();
 
 const uint8_t xbgmlookuptable[];
 
-#include "charmaps/mainmenu_charmap.h"
+#include "defines/charmap/mainmenu_charmap.h"
 
 const uint8_t lvlselect_irq_table[] = {
 	31,
