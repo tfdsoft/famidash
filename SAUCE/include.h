@@ -55,10 +55,9 @@
 
 #include "defines/dialogbox.h"
 
-
-
 #include "famidash.h"   // where everything is declared. don't move this
 
+#include "defines/palette/palettes_PRG.c"
 
 
 #include "METATILES/metatiles.h"  // metatile defines
