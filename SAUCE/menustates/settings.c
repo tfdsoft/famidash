@@ -1,7 +1,7 @@
 void mouse_and_cursor();
 void set_settings();
 
-#include "charmaps/mainmenu_charmap.h"
+#include "defines/charmap/mainmenu_charmap.h"
 
 #if !__VS_SYSTEM
 #define firstSettingY	5

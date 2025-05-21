@@ -140,7 +140,7 @@ $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
 $(TMPDIR)/BUILD_FLAGS.s: BUILD_FLAGS.h defines_to_asm.py LEVELS/include/lvlset_$(LEVELSET)/level_defines.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
 	$(PYTHON) defines_to_asm.py $(TMPDIR)/BUILD_FLAGS.s BUILD_FLAGS.h LEVELS/include/lvlset_$(LEVELSET)/level_defines.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
 
-$(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h SAUCE/*/*.h SAUCE/*/*.c METATILES/metatiles.h LEVELS/include/lvlset_$(LEVELSET)/*.h LIB/headers/*.h MUSIC/EXPORTS/lvlset_$(LEVELSET)/*.h 
+$(TMPDIR)/$(NAME).s: $(TMPDIR) SAUCE/$(NAME).c SAUCE/*.h SAUCE/*/*.h SAUCE/*/*.c SAUCE/*/*/*.h SAUCE/*/*/*.c METATILES/metatiles.h LEVELS/include/lvlset_$(LEVELSET)/*.h LIB/headers/*.h MUSIC/EXPORTS/lvlset_$(LEVELSET)/*.h 
 	$(CC65) $(CC65_DEFINES) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) $(call cc65IncDir,MUSIC/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,LEVELS/include/lvlset_$(LEVELSET)) -E --add-source -o $(TMPDIR)/$(NAME).pp.c
 	$(CC65) $(CC65_DEFINES) -Osir -g --eagerly-inline-funcs SAUCE/$(NAME).c $(call cc65IncDir,LIB/headers) $(call cc65IncDir,.) $(call cc65IncDir,MUSIC/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,LEVELS/include/lvlset_$(LEVELSET)) --add-source -o $(TMPDIR)/$(NAME).s
 

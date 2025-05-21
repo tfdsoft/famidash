@@ -1,7 +1,7 @@
 
 CODE_BANK_PUSH("XCD_BANK_03")
 
-#include "charmaps/bg_charmap.h"
+#include "defines/charmap/bg_charmap.h"
 const char TEXT_nothinghere[] = "SORRY NOTHING HERE YET";
 
 void state_sorrynothing() {

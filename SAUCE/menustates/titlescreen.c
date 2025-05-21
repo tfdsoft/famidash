@@ -46,7 +46,7 @@ const uint8_t menu_irq_table[];
 #include "defines/titlescreen_buttons.c"
 
 // Declarations of strings
-#include "charmaps/mainmenu_charmap.h"	// Set it for the further routine
+#include "defines/charmap/mainmenu_charmap.h"	// Set it for the further routine
 
 const char palsystem[] = "FOR PAL SYSTEMS";
 

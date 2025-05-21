@@ -45,7 +45,7 @@ void state_lvldone() {
 		vram_unrle(leveldone);
 	}
 
-	#include "charmaps/endlevel_charmap.h"
+	#include "defines/charmap/endlevel_charmap.h"
 
 	tmp1 = 0;
 	tmpptr1 = NULL;
@@ -358,7 +358,7 @@ void state_lvldone() {
 	#undef top_scroll
 }
 
-#include "charmaps/endlevel_charmap.h"
+#include "defines/charmap/endlevel_charmap.h"
 void lvl_done_update() {
 	if (menuselection) {
 		one_vram_buffer(0xFF, NTADR_A(8,23));

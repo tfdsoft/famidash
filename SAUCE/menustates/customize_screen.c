@@ -6,7 +6,7 @@ void updateColors();
 const uint8_t loNTAddrTableCustomizeScreen[];
 const uint8_t hiNTAddrTableCustomizeScreen[];
 
-#include "charmaps/mainmenu_customize.h"
+#include "defines/charmap/mainmenu_customize.h"
 
 void customize_screen() {
 #define prev_icon tmp8

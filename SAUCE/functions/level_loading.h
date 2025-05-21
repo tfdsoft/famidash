@@ -1,10 +1,10 @@
 // prototype
 void init_sprites();
 #if !__VS_SYSTEM
-	#include "charmaps/bg_charmap.h"
+	#include "defines/charmap/bg_charmap.h"
 	const unsigned char attempttext[]="PQQRSTQ"; //ATTEMPT
 #endif
-#include "charmaps/luckydraw_charmap.h"
+#include "defines/charmap/luckydraw_charmap.h"
 const unsigned char triggerstext[]="TRIGGERS SURVIVED"; //ATTEMPT
 const unsigned char toptriggerstext[]="TOP TRIGGERS SURVIVED"; //ATTEMPT
 

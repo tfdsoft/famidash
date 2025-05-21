@@ -1,7 +1,7 @@
 #pragma rodata-name (push, "XCD_BANK_02")
 
 #include "menus/h/DialogBox.h"
-#include "charmaps/dialogbox_charmap.h"
+#include "defines/charmap/dialogbox_charmap.h"
 
 void draw_dialog_box(const char * data);
 #define include_nested_dialog_string(data) (__AX__ = (uintptr_t)data, __asm__("jsr pushax "))
@@ -46,5 +46,5 @@ const char dialogBox_newer[] = " newer ";
 const char dialogBox_saveFileMissingCorrupt[] = "  missing or corrupt";
 const char dialogBox_saveIssues[] = "$$INVALID$$SAVE$FILE$$\v\5  your save  file is\v\2\a\v\6 (A;$CREATE$NEW$SAVE)\v\2 (B;$LOAD$ANYWAY$$$$)";
 
-#include "charmaps/no_remap_charmap.h"
+#include "defines/charmap/no_remap_charmap.h"
 #pragma rodata-name (pop)

@@ -1,6 +1,6 @@
 void set_fun_settings();
 
-#include "charmaps/mainmenu_charmap.h"
+#include "defines/charmap/mainmenu_charmap.h"
 
 const unsigned char gameboytext1[];
 const unsigned char gameboytext2[];
