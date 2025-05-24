@@ -50,7 +50,7 @@ def portExprToAsm(expr : str):
 		elif kind in {"mod", "neq", "eqp"}:
 			# those tokens exist but with different symbols,
 			# so replace them
-			outString += {"mod" : ".mod", "neq" : "<>", "eqp" : "="}[kind]
+			outString += {"mod" : " .mod ", "neq" : "<>", "eqp" : "="}[kind]
 
 	return outString
 
