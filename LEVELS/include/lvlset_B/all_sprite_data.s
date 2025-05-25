@@ -3076,7 +3076,7 @@ sprite_data_generationretro:
   .byte $60,$45,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_16"
+.segment "DAT_BANK_15"
 sprite_data_scarletsurge:
   .byte $00,$00,$60,$03,$01
   .byte $00,$00,$80,$03,$bf
@@ -3327,6 +3327,7 @@ sprite_data_scarletsurge:
   .byte $80,$15,$e0,$02,$86
   .byte $a0,$15,$e0,$02,$8f
   .byte $b0,$15,$f0,$02,$b6
+  .byte $d0,$15,$b0,$02,$07
   .byte $d0,$15,$00,$03,$d6
   .byte $e0,$15,$f0,$02,$bf
   .byte $f0,$15,$00,$03,$c6
@@ -3666,6 +3667,7 @@ sprite_data_scarletsurge:
   .byte $20,$2f,$d0,$02,$0b
   .byte $70,$2f,$e0,$02,$96
   .byte $70,$2f,$f0,$02,$bf
+  .byte $90,$2f,$b0,$02,$1a
   .byte $90,$2f,$e0,$02,$8f
   .byte $90,$2f,$f0,$02,$b6
   .byte $b0,$2f,$d8,$02,$0a
@@ -3800,6 +3802,7 @@ sprite_data_scarletsurge:
   .byte $70,$3e,$40,$03,$bf
   .byte $80,$3e,$30,$03,$96
   .byte $90,$3e,$30,$03,$86
+  .byte $90,$3e,$40,$03,$1b
   .byte $a0,$3e,$30,$03,$8f
   .byte $b0,$3e,$40,$03,$b6
   .byte $d0,$3e,$40,$03,$bf
@@ -10285,7 +10288,7 @@ sprite_data_hell:
   .byte $90,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_17"
+.segment "DAT_BANK_16"
 sprite_data_pgclubstep:
   .byte $00,$00,$70,$03,$c5
   .byte $00,$00,$80,$03,$8f
@@ -12174,7 +12177,7 @@ sprite_data_eon:
   .byte $30,$fc,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_16"
+.segment "DAT_BANK_17"
 sprite_data_eighto:
   .byte $00,$00,$40,$03,$85
   .byte $00,$00,$50,$03,$cf
