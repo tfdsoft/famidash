@@ -18,6 +18,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_rainbowdust)
 	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_highlife)
+	.byte .lobyte(level_data_xx)
 	.byte .lobyte(level_data_deathmoon)
 	.byte .lobyte(level_data_supercycles)
 	.byte .lobyte(level_data_clutterfunk2)
@@ -49,6 +50,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_rainbowdust)
 	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_highlife)
+	.byte .hibyte(level_data_xx)
 	.byte .hibyte(level_data_deathmoon)
 	.byte .hibyte(level_data_supercycles)
 	.byte .hibyte(level_data_clutterfunk2)
@@ -80,6 +82,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_rainbowdust))
 	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_highlife))
+	.byte .lobyte(.bank(level_data_xx))
 	.byte .lobyte(.bank(level_data_deathmoon))
 	.byte .lobyte(.bank(level_data_supercycles))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
@@ -138,6 +141,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_rainbowdust)
 	.byte .lobyte(sprite_data_subtleoddities)
 	.byte .lobyte(sprite_data_highlife)
+	.byte .lobyte(sprite_data_xx)
 	.byte .lobyte(sprite_data_deathmoon)
 	.byte .lobyte(sprite_data_supercycles)
 	.byte .lobyte(sprite_data_clutterfunk2)
@@ -169,6 +173,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_rainbowdust)
 	.byte .hibyte(sprite_data_subtleoddities)
 	.byte .hibyte(sprite_data_highlife)
+	.byte .hibyte(sprite_data_xx)
 	.byte .hibyte(sprite_data_deathmoon)
 	.byte .hibyte(sprite_data_supercycles)
 	.byte .hibyte(sprite_data_clutterfunk2)
@@ -200,6 +205,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_rainbowdust))
 	.byte .lobyte(.bank(sprite_data_subtleoddities))
 	.byte .lobyte(.bank(sprite_data_highlife))
+	.byte .lobyte(.bank(sprite_data_xx))
 	.byte .lobyte(.bank(sprite_data_deathmoon))
 	.byte .lobyte(.bank(sprite_data_supercycles))
 	.byte .lobyte(.bank(sprite_data_clutterfunk2))
@@ -234,6 +240,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000AB)		; rainbowdust
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($000154)		; highlife
+	.byte .lobyte($000090)		; xx
 	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($0000B1)		; clutterfunk2
@@ -267,6 +274,7 @@ _level_lengths_md:
 	.byte .hibyte($0000AB)		; rainbowdust
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($000154)		; highlife
+	.byte .hibyte($000090)		; xx
 	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($0000B1)		; clutterfunk2
@@ -300,6 +308,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000AB)		; rainbowdust
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($000154)		; highlife
+	.byte .bankbyte($000090)		; xx
 	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($0000B1)		; clutterfunk2

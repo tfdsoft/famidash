@@ -20,22 +20,23 @@ const char levelText0F[ 5] = "SURGE";
 const char levelText10[ 4] = "DUST";
 const char levelText11[ 8] = "ODDITIES";
 const char levelText12[ 9] = "HIGH LIFE";
-const char levelText13[10] = "DEATH MOON";
-const char levelText14[12] = "SUPER CYCLES";
-const char levelText15[13] = "CLUTTERFUNK 2";
-const char levelText16[11] = "SPEED RACER";
-const char levelText17[ 4] = "HELL";
-const char levelText18[11] = "PG CLUBSTEP";
-const char levelText19[ 3] = "EON";
-const char levelText1A[ 2] = "8O";
-const char levelText1B[ 9] = "STALEMATE";
-const char levelText1C[10] = "SONIC WAVE";
-const char levelText1D[ 9] = "BLOODBATH";
-const char levelText1E[ 9] = "CATACLYSM";
-const char levelText1F[ 9] = "AFTERMATH";
-const char levelText20[13] = "AFTERCATABATH";
-const char levelText21[14] = "SLAUGHTERHOUSE";
-const char levelText22[ 6] = "TEST 4";
+const char levelText13[ 1] = "X";
+const char levelText14[10] = "DEATH MOON";
+const char levelText15[12] = "SUPER CYCLES";
+const char levelText16[13] = "CLUTTERFUNK 2";
+const char levelText17[11] = "SPEED RACER";
+const char levelText18[ 4] = "HELL";
+const char levelText19[11] = "PG CLUBSTEP";
+const char levelText1A[ 3] = "EON";
+const char levelText1B[ 2] = "8O";
+const char levelText1C[ 9] = "STALEMATE";
+const char levelText1D[10] = "SONIC WAVE";
+const char levelText1E[ 9] = "BLOODBATH";
+const char levelText1F[ 9] = "CATACLYSM";
+const char levelText20[ 9] = "AFTERMATH";
+const char levelText21[13] = "AFTERCATABATH";
+const char levelText22[14] = "SLAUGHTERHOUSE";
+const char levelText23[ 6] = "TEST 4";
 
 
 const char* const levelTextsUpper[] = {
@@ -68,6 +69,7 @@ const char* const levelTextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 const uint8_t levelTextsUpperSize[] = {
@@ -83,6 +85,7 @@ const uint8_t levelTextsUpperSize[] = {
 	sizeof(levelText03),
 	sizeof(levelText04),
 	sizeof(levelText05),
+	0,
 	0,
 	0,
 	0,
@@ -133,6 +136,7 @@ const char* const levelTextsLower[] = {
 	levelText20,
 	levelText21,
 	levelText22,
+	levelText23,
 };
 
 const uint8_t levelTextsLowerSize[] = {
@@ -165,4 +169,5 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText20),
 	sizeof(levelText21),
 	sizeof(levelText22),
+	sizeof(levelText23),
 };

@@ -186,6 +186,11 @@
 			vsSystemEnabled: true
 		},
 		{
+			fmsSongName: "holography",
+			lowerText: "HOLOGRAPHY",
+			vsSystemEnabled: true
+		},
+		{
 			fmsSongName: "Sonic blaster",
 			upperText: "SONIC",
 			lowerText: "BLASTER"
