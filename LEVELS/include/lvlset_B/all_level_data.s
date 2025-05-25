@@ -40,7 +40,14 @@
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8177
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8159 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8174 bytes
+	.export level_data_everyend_7
+	level_data_everyend_7:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8174
+
+
+.segment "DAT_BANK_03"	; Total bank size: 8159 bytes
 	.export level_data_subtleoddities
 	level_data_subtleoddities:
 	; Header
@@ -57,13 +64,6 @@
 		.byte 27 ;_____________________ Level height
 	; Level data
 		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8159
-
-
-.segment "DAT_BANK_03"	; Total bank size: 8158 bytes
-	.export level_data_everyend_7
-	level_data_everyend_7:
-	; Level data
-		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8158
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8147 bytes
@@ -147,23 +147,23 @@
 		.incbin "EXPORTS/test4.lz.bin" ; Size: 144
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8009 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8033 bytes
 	.export level_data_everyend
 	level_data_everyend:
 	; Header
 		.byte song_stereo_madness ;___ Song ID
 		.byte 0 ;_____________________ Starting game mode
 		.byte 0 ;_____________________ Starting speed
-		.byte 1 ;_____________________ Disable parallax
+		.byte 0 ;_____________________ Disable parallax
 		.byte _DECO1 ;________________ Deco type
 		.byte _SPIKESA ;______________ Spike set
 		.byte _BLOCKSA ;______________ Block set
 		.byte _SAWBLADESA ;___________ Sawblade set
-		.byte $0F ;___________________ Starting background color
-		.byte $0F ;___________________ Starting ground color
+		.byte $12 ;___________________ Starting background color
+		.byte $02 ;___________________ Starting ground color
 		.byte 57 ;____________________ Level height
 	; Level data
-		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8009
+		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8033
 
 
 .segment "DAT_BANK_09"	; Total bank size: 7735 bytes
@@ -542,11 +542,11 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3539
 
 
-.segment "DAT_BANK_1E"	; Total bank size: 8096 bytes
+.segment "DAT_BANK_1E"	; Total bank size: 8104 bytes
 	.export level_data_everyend_8
 	level_data_everyend_8:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4385
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4393
 
 	.export level_data_sonicwave_4
 	level_data_sonicwave_4:
