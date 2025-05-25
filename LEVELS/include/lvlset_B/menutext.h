@@ -37,7 +37,7 @@ const char levelText20[ 9] = "BLOODBATH";
 const char levelText21[ 9] = "CATACLYSM";
 const char levelText22[ 9] = "AFTERMATH";
 const char levelText23[13] = "AFTERCATABATH";
-const char levelText24[14] = "SLAUGHTERHOUSE";
+const char levelText24[ 9] = "EVERY END";
 const char levelText25[ 6] = "TEST 4";
 
 

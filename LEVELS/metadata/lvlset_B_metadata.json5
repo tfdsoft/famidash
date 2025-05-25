@@ -479,7 +479,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
+/*		{
 			level: "slaughterhouse",
 			lowerText: "SLAUGHTERHOUSE",
 			decoType: "DECO1",
@@ -491,6 +491,22 @@
 			songID: "song_lost",
 			startingGameMode: 0,
 			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		}, */
+		{
+			level: "everyend",
+			lowerText: "EVERY END",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_stereo_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true

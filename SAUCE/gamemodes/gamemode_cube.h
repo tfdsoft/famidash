@@ -17,7 +17,13 @@ void cube_movement(){
 
 
 	fallspeed_big = CUBE_MAX_FALLSPEED;
+	#if LEVELSET != 'A'
+	if (level == everyend) fallspeed_big += 0x0100;
+	#endif
 	fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;
+	#if LEVELSET != 'A'
+	if (level == everyend) fallspeed_mini += 0x0100;
+	#endif
 	gravity_big = CUBE_GRAVITY;
 	gravity_mini = MINI_CUBE_GRAVITY;
 	common_gravity_routine();
@@ -31,17 +37,19 @@ void cube_movement(){
 	
 
 	if (bigboi) {
+/*
 		Generic.x += 15;
 
 		cube_eject();
 
 		Generic.y -= 15;
 
-		cube_eject();
+		cube_eject();			;bigboi disable
 		
 		Generic.x -= 15;
 		
 		cube_eject();
+*/
 	}
 
 	else {
