@@ -40,14 +40,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8177
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8174 bytes
-	.export level_data_everyend_7
-	level_data_everyend_7:
-	; Level data
-		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8174
-
-
-.segment "DAT_BANK_03"	; Total bank size: 8159 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8159 bytes
 	.export level_data_subtleoddities
 	level_data_subtleoddities:
 	; Header
@@ -66,7 +59,7 @@
 		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8159
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8147 bytes
+.segment "DAT_BANK_03"	; Total bank size: 8147 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -83,6 +76,13 @@
 		.byte 27 ;_______________ Level height
 	; Level data
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8147
+
+
+.segment "DAT_BANK_04"	; Total bank size: 8132 bytes
+	.export level_data_everyend_7
+	level_data_everyend_7:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8132
 
 
 .segment "DAT_BANK_05"	; Total bank size: 8115 bytes
@@ -147,7 +147,7 @@
 		.incbin "EXPORTS/test4.lz.bin" ; Size: 144
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8033 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8034 bytes
 	.export level_data_everyend
 	level_data_everyend:
 	; Header
@@ -163,7 +163,7 @@
 		.byte $02 ;___________________ Starting ground color
 		.byte 57 ;____________________ Level height
 	; Level data
-		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8033
+		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8034
 
 
 .segment "DAT_BANK_09"	; Total bank size: 7735 bytes
@@ -542,11 +542,11 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3539
 
 
-.segment "DAT_BANK_1E"	; Total bank size: 8104 bytes
+.segment "DAT_BANK_1E"	; Total bank size: 8167 bytes
 	.export level_data_everyend_8
 	level_data_everyend_8:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4393
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4456
 
 	.export level_data_sonicwave_4
 	level_data_sonicwave_4:
