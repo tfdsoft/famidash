@@ -516,7 +516,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3539
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 7642 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 7657 bytes
 	.export level_data_sonicwave_4
 	level_data_sonicwave_4:
 	; Level data

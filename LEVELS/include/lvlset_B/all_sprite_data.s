@@ -4200,6 +4200,7 @@ sprite_data_funnygameholiday:
   .byte $00,$0b,$30,$03,$3d
   .byte $00,$0b,$50,$03,$92
   .byte $00,$0b,$60,$03,$d2
+  .byte $10,$0b,$f0,$02,$07
   .byte $a0,$0b,$30,$03,$3d
   .byte $40,$0c,$20,$03,$32
   .byte $40,$0c,$30,$03,$3d
@@ -4655,6 +4656,7 @@ sprite_data_funnygameholiday:
   .byte $70,$2b,$40,$03,$86
   .byte $10,$2c,$40,$03,$96
   .byte $20,$2c,$40,$03,$86
+  .byte $40,$2c,$10,$03,$1a
   .byte $d0,$2c,$40,$03,$96
   .byte $e0,$2c,$40,$03,$86
   .byte $90,$2d,$40,$03,$96
@@ -4690,6 +4692,7 @@ sprite_data_funnygameholiday:
   .byte $c0,$2f,$d0,$02,$32
   .byte $d0,$2f,$90,$02,$33
   .byte $d0,$2f,$c0,$02,$9a
+  .byte $20,$30,$60,$02,$1b
   .byte $30,$30,$e0,$02,$32
   .byte $60,$30,$90,$02,$32
   .byte $60,$30,$e0,$02,$35
