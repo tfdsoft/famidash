@@ -143,6 +143,23 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
+		},	
+		{
+			level: "scarletsurge",
+			upperText: "SCARLET",
+			lowerText: "SURGE",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 6,
+			songID: "song_check_out",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},		
 		{
 			level: "rainbowdust",
