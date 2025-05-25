@@ -162,6 +162,23 @@
 			parallaxDisable: true
 		},		
 		{
+			level: "funnygameholiday",
+			upperText: "FUNNYGAME",
+			lowerText: "HOLIDAY",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_stereo_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: false
+		},
+		{
 			level: "rainbowdust",
 			upperText: "RAINBOW",
 			lowerText: "DUST",
