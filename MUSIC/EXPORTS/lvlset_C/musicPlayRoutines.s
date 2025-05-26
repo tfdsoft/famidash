@@ -8,4 +8,4 @@ music_data_locations_hi:
 .endif
 
 music_counts:
-	.byte 3, 2, 2, 3, 4, $FF ;last bank is marked with an FF to always stop bank picking
+	.byte 2, 2, 2, 3, 5, $FF ;last bank is marked with an FF to always stop bank picking
