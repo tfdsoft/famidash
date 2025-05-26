@@ -144,17 +144,17 @@
 	.export level_data_everyend
 	level_data_everyend:
 	; Header
-		.byte song_stereo_madness ;___ Song ID
-		.byte 0 ;_____________________ Starting game mode
-		.byte 0 ;_____________________ Starting speed
-		.byte 0 ;_____________________ Disable parallax
-		.byte _DECO1 ;________________ Deco type
-		.byte _SPIKESA ;______________ Spike set
-		.byte _BLOCKSA ;______________ Block set
-		.byte _SAWBLADESA ;___________ Sawblade set
-		.byte $12 ;___________________ Starting background color
-		.byte $02 ;___________________ Starting ground color
-		.byte 57 ;____________________ Level height
+		.byte song_every_end ;___ Song ID
+		.byte 0 ;________________ Starting game mode
+		.byte 0 ;________________ Starting speed
+		.byte 0 ;________________ Disable parallax
+		.byte _DECO1 ;___________ Deco type
+		.byte _SPIKESA ;_________ Spike set
+		.byte _BLOCKSA ;_________ Block set
+		.byte _SAWBLADESA ;______ Sawblade set
+		.byte $12 ;______________ Starting background color
+		.byte $02 ;______________ Starting ground color
+		.byte 57 ;_______________ Level height
 	; Level data
 		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8074
 

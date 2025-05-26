@@ -191,6 +191,11 @@
 			vsSystemEnabled: true
 		},
 		{
+			fmsSongName: "every end",
+			lowerText: "EVERY END",
+			vsSystemEnabled: true
+		},
+		{
 			fmsSongName: "Sonic blaster",
 			upperText: "SONIC",
 			lowerText: "BLASTER"
