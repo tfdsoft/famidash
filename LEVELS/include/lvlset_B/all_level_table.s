@@ -30,12 +30,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_eighto)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_sonicwave)
-	.byte .lobyte(level_data_bloodbath)
-	.byte .lobyte(level_data_cataclysm)
-	.byte .lobyte(level_data_aftermath)
-	.byte .lobyte(level_data_aftercatabath)
 	.byte .lobyte(level_data_everyend)
-	.byte .lobyte(level_data_test4)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -63,12 +58,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_eighto)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_sonicwave)
-	.byte .hibyte(level_data_bloodbath)
-	.byte .hibyte(level_data_cataclysm)
-	.byte .hibyte(level_data_aftermath)
-	.byte .hibyte(level_data_aftercatabath)
 	.byte .hibyte(level_data_everyend)
-	.byte .hibyte(level_data_test4)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -96,12 +86,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_eighto))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_sonicwave))
-	.byte .lobyte(.bank(level_data_bloodbath))
-	.byte .lobyte(.bank(level_data_cataclysm))
-	.byte .lobyte(.bank(level_data_aftermath))
-	.byte .lobyte(.bank(level_data_aftercatabath))
 	.byte .lobyte(.bank(level_data_everyend))
-	.byte .lobyte(.bank(level_data_test4))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_subtleoddities_0)
@@ -109,10 +94,8 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_deathmoon_2)
 	.byte .lobyte(level_data_eon_3)
 	.byte .lobyte(level_data_sonicwave_4)
-	.byte .lobyte(level_data_aftercatabath_5)
-	.byte .lobyte(level_data_aftercatabath_6)
-	.byte .lobyte(level_data_everyend_7)
-	.byte .lobyte(level_data_everyend_8)
+	.byte .lobyte(level_data_everyend_5)
+	.byte .lobyte(level_data_everyend_6)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_subtleoddities_0)
@@ -120,10 +103,8 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_deathmoon_2)
 	.byte .hibyte(level_data_eon_3)
 	.byte .hibyte(level_data_sonicwave_4)
-	.byte .hibyte(level_data_aftercatabath_5)
-	.byte .hibyte(level_data_aftercatabath_6)
-	.byte .hibyte(level_data_everyend_7)
-	.byte .hibyte(level_data_everyend_8)
+	.byte .hibyte(level_data_everyend_5)
+	.byte .hibyte(level_data_everyend_6)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_subtleoddities_0))
@@ -131,10 +112,8 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_deathmoon_2))
 	.byte .lobyte(.bank(level_data_eon_3))
 	.byte .lobyte(.bank(level_data_sonicwave_4))
-	.byte .lobyte(.bank(level_data_aftercatabath_5))
-	.byte .lobyte(.bank(level_data_aftercatabath_6))
-	.byte .lobyte(.bank(level_data_everyend_7))
-	.byte .lobyte(.bank(level_data_everyend_8))
+	.byte .lobyte(.bank(level_data_everyend_5))
+	.byte .lobyte(.bank(level_data_everyend_6))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
@@ -162,12 +141,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_eighto)
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_sonicwave)
-	.byte .lobyte(sprite_data_bloodbath)
-	.byte .lobyte(sprite_data_cataclysm)
-	.byte .lobyte(sprite_data_aftermath)
-	.byte .lobyte(sprite_data_aftercatabath)
 	.byte .lobyte(sprite_data_everyend)
-	.byte .lobyte(sprite_data_test4)
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
@@ -195,12 +169,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_eighto)
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_sonicwave)
-	.byte .hibyte(sprite_data_bloodbath)
-	.byte .hibyte(sprite_data_cataclysm)
-	.byte .hibyte(sprite_data_aftermath)
-	.byte .hibyte(sprite_data_aftercatabath)
 	.byte .hibyte(sprite_data_everyend)
-	.byte .hibyte(sprite_data_test4)
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
@@ -228,12 +197,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_eighto))
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_sonicwave))
-	.byte .lobyte(.bank(sprite_data_bloodbath))
-	.byte .lobyte(.bank(sprite_data_cataclysm))
-	.byte .lobyte(.bank(sprite_data_aftermath))
-	.byte .lobyte(.bank(sprite_data_aftercatabath))
 	.byte .lobyte(.bank(sprite_data_everyend))
-	.byte .lobyte(.bank(sprite_data_test4))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -264,12 +228,7 @@ _level_lengths_lo:
 	.byte .lobyte($000078)		; eighto
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($0000FB)		; sonicwave
-	.byte .lobyte($0000D5)		; bloodbath
-	.byte .lobyte($00007D)		; cataclysm
-	.byte .lobyte($00007C)		; aftermath
-	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($0002DC)		; everyend
-	.byte .lobyte($00007A)		; test4
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -299,12 +258,7 @@ _level_lengths_md:
 	.byte .hibyte($000078)		; eighto
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($0000FB)		; sonicwave
-	.byte .hibyte($0000D5)		; bloodbath
-	.byte .hibyte($00007D)		; cataclysm
-	.byte .hibyte($00007C)		; aftermath
-	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($0002DC)		; everyend
-	.byte .hibyte($00007A)		; test4
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -334,12 +288,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000078)		; eighto
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($0000FB)		; sonicwave
-	.byte .bankbyte($0000D5)		; bloodbath
-	.byte .bankbyte($00007D)		; cataclysm
-	.byte .bankbyte($00007C)		; aftermath
-	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($0002DC)		; everyend
-	.byte .bankbyte($00007A)		; test4
 
 .endif
 .endif

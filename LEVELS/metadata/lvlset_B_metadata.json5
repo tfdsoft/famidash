@@ -410,92 +410,6 @@
 			parallaxDisable: true
 		},
 		{
-			level: "bloodbath",
-			lowerText: "BLOODBATH",
-			decoType: "DECOCLOUD",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_atthespeedoflight2",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
-			level: "cataclysm",
-			lowerText: "CATACLYSM",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_atthespeedoflight",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x06,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					objectID: 0x1A,
-					offsetY: 8
-				}
-			]
-		},
-		{
-			level: "aftermath",
-			lowerText: "AFTERMATH",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_atthespeedoflight3",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x06,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
-			level: "aftercatabath",
-			lowerText: "AFTERCATABATH",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_atthespeedoflightfull",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x06,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-/*		{
-			level: "slaughterhouse",
-			lowerText: "SLAUGHTERHOUSE",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_lost",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		}, */
-		{
 			level: "everyend",
 			lowerText: "EVERY END",
 			decoType: "DECO1",
@@ -511,22 +425,6 @@
 			startingGroundColor: 0x02,
 			parallaxDisable: false
 		},
-		{
-			level: "test4",
-			lowerText: "TEST 4",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "EASY",
-			stars: 0,
-			songID: "song_atthespeedoflightfull",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02,
-			parallaxDisable: true
-		}
 	],
 	globalObjectOffsets: [
 		/*	Format:

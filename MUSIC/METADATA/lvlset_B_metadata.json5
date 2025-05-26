@@ -69,11 +69,6 @@
 			}
 		},
 		{
-			fmsSongName: "lost",
-			lowerText: "LOST",
-			
-		},
-		{
 			fmsSongName: "Stereo madness 2",
 			upperText: "STEREO ",
 			lowerText: "MADNESS 2",
@@ -89,28 +84,6 @@
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
 			vsSystemEnabled: false
-		},
-		{
-			fmsSongName: "atthespeedoflight",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
-			
-		},
-		{
-			fmsSongName: "atthespeedoflight2",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 2",
-			
-		},
-		{
-			fmsSongName: "atthespeedoflight3",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 3",
-		},
-		{
-			fmsSongName: "atthespeedoflightfull",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT FULL"
 		},
 		{
 			fmsSongName: "stalemate",

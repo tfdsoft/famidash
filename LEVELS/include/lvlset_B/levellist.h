@@ -35,12 +35,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// eighto
 	DEMON,	// stalemate
 	DEMON,	// sonicwave
-	DEMON,	// bloodbath
-	DEMON,	// cataclysm
-	DEMON,	// aftermath
-	DEMON,	// aftercatabath
 	DEMON,	// everyend
-	EASY,	// test4
 };
 
 const uint8_t stars_list[] = {
@@ -69,10 +64,5 @@ const uint8_t stars_list[] = {
 	10,	// eighto
 	10,	// stalemate
 	10,	// sonicwave
-	10,	// bloodbath
-	10,	// cataclysm
-	10,	// aftermath
-	10,	// aftercatabath
 	10,	// everyend
-	0,	// test4
 };

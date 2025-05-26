@@ -8,4 +8,7 @@ copy .\build\vs-sys\famidash.dbg ".\famidash vs.dbg"
 
 copy .\build\b-sides\famidash.nes ".\Famidash B Sides.nes"
 copy .\build\b-sides\famidash.dbg ".\Famidash B Sides.dbg"
+
+copy .\build\c-sides\famidash.nes ".\Famidash C Sides.nes"
+copy .\build\c-sides\famidash.dbg ".\Famidash C Sides.dbg"
 pause
