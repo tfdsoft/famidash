@@ -164,6 +164,12 @@
 			vsSystemEnabled: true
 		},
 		{
+			fmsSongName: "Dance of the violins",
+			upperText: "DANCE OF",
+			lowerText: "THE VIOLINS",
+			vsSystemEnabled: true
+		},
+		{
 			fmsSongName: "every end",
 			lowerText: "EVERY END",
 			vsSystemEnabled: true
@@ -172,7 +178,11 @@
 			fmsSongName: "Sonic blaster",
 			upperText: "SONIC",
 			lowerText: "BLASTER"
-		}
+		},
+		{
+			fmsSongName: "lost",
+			lowerText: "LOST",
+		},			
 	],
 	SFX: [
 		{

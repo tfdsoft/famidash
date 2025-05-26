@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 25
+#define COMMUNITY_LEVEL_COUNT 26
 
 #define stereomadness 0
 #define sonar 1
@@ -19,16 +19,17 @@
 #define funnygameholiday 10
 #define rainbowdust 11
 #define subtleoddities 12
-#define highlife 13
-#define xx 14
-#define deathmoon 15
-#define supercycles 16
-#define clutterfunk2 17
-#define speedracer 18
-#define hell 19
-#define pgclubstep 20
-#define eon 21
-#define eighto 22
-#define stalemate 23
-#define sonicwave 24
-#define everyend 25
+#define danceofviolins 13
+#define highlife 14
+#define xx 15
+#define deathmoon 16
+#define supercycles 17
+#define clutterfunk2 18
+#define speedracer 19
+#define hell 20
+#define pgclubstep 21
+#define eon 22
+#define eighto 23
+#define stalemate 24
+#define sonicwave 25
+#define everyend 26

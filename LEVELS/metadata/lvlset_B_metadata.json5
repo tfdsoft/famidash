@@ -213,6 +213,23 @@
 			parallaxDisable: true
 		},
 		{
+			level: "danceofviolins",
+			upperText: "DANCE OF",
+			lowerText: "VIOLINS",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_dance_of_the_violins",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "highlife",
 			lowerText: "HIGH LIFE",
 			decoType: "DECO1",

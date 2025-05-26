@@ -23,6 +23,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// funnygameholiday
 	HARDER,	// rainbowdust
 	INSANE,	// subtleoddities
+	INSANE,	// danceofviolins
 	INSANE,	// highlife
 	DEMON,	// xx
 	DEMON,	// deathmoon
@@ -52,6 +53,7 @@ const uint8_t stars_list[] = {
 	7,	// funnygameholiday
 	7,	// rainbowdust
 	8,	// subtleoddities
+	8,	// danceofviolins
 	9,	// highlife
 	10,	// xx
 	10,	// deathmoon
