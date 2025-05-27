@@ -21,11 +21,11 @@
 		.incbin "EXPORTS/highlife.lz.0.bin" ; Size: 8192
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8170 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8166 bytes
 	.export level_data_everyend_5
 	level_data_everyend_5:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8170
+		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8166
 
 
 .segment "DAT_BANK_02"	; Total bank size: 8159 bytes
@@ -473,11 +473,11 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3539
 
 
-.segment "DAT_BANK_19"	; Total bank size: 7868 bytes
+.segment "DAT_BANK_19"	; Total bank size: 7855 bytes
 	.export level_data_everyend_6
 	level_data_everyend_6:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4567
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4554
 
 
 .segment "DAT_BANK_1A"	; Total bank size: 7657 bytes
