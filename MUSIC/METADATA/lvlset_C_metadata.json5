@@ -73,7 +73,12 @@
 		{
 			fmsSongName: "Magic Touch",
 			lowerText: "MAGIC TOUCH"
-		},	
+		},
+		{
+			fmsSongName: "holography",
+			lowerText: "HOLOGRAPHY",
+			vsSystemEnabled: true
+		},		
 		{
 			fmsSongName: "Pyrophoric",
 			lowerText: "PYROPHORIC"
@@ -88,20 +93,10 @@
 			lowerText: "ACCELERATE"
 		},
 		{
-			fmsSongName: "Death Moon",
-			lowerText: "DEATH MOON",
+			fmsSongName: "Kratos",
+			lowerText: "KRATOS",
 			vsSystemEnabled: true
-		},
-{
-			fmsSongName: "eighto",
-			lowerText: "EIGHTO",
-			vsSystemEnabled: true
-		},
-		{
-			fmsSongName: "check out",
-			lowerText: "CHECK OUT",
-			vsSystemEnabled: true
-		},		
+		},			
 	],
 	SFX: [
 		{
