@@ -40,7 +40,14 @@
 		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8159
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8147 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8152 bytes
+	.export level_data_everyend_5
+	level_data_everyend_5:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8152
+
+
+.segment "DAT_BANK_03"	; Total bank size: 8147 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -59,7 +66,7 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8147
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8115 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8115 bytes
 	.export level_data_sonicwave
 	level_data_sonicwave:
 	; Header
@@ -76,13 +83,6 @@
 		.byte 27 ;___________________ Level height
 	; Level data
 		.incbin "EXPORTS/sonicwave.lz.0.bin" ; Size: 8115
-
-
-.segment "DAT_BANK_04"	; Total bank size: 8109 bytes
-	.export level_data_everyend_5
-	level_data_everyend_5:
-	; Level data
-		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8109
 
 
 .segment "DAT_BANK_05"	; Total bank size: 8094 bytes
@@ -116,8 +116,8 @@
 		.byte _SPIKESA ;_________ Spike set
 		.byte _BLOCKSA ;_________ Block set
 		.byte _SAWBLADESA ;______ Sawblade set
-		.byte $12 ;______________ Starting background color
-		.byte $02 ;______________ Starting ground color
+		.byte $11 ;______________ Starting background color
+		.byte $11 ;______________ Starting ground color
 		.byte 57 ;_______________ Level height
 	; Level data
 		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8071
@@ -456,11 +456,11 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3539
 
 
-.segment "DAT_BANK_19"	; Total bank size: 7863 bytes
+.segment "DAT_BANK_19"	; Total bank size: 7869 bytes
 	.export level_data_everyend_6
 	level_data_everyend_6:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4562
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4568
 
 
 .segment "DAT_BANK_1A"	; Total bank size: 7657 bytes

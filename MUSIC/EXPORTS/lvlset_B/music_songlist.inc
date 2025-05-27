@@ -1,5 +1,5 @@
-song_subtle_oddities = 0
-song_eighto = 1
+song_chaoz_fantasy_extended = 0
+song_subtle_oddities = 1
 song_stalemate = 2
 song_eon = 3
 song_practice = 4
@@ -9,7 +9,7 @@ song_magic_touch = 7
 song_pyrophoric = 8
 song_every_end = 9
 song_death_moon = 10
-song_chaoz_fantasy_extended = 11
+song_eighto = 11
 song_clubstep = 12
 song_glitch_gremlin = 13
 song_sonic_blaster = 14

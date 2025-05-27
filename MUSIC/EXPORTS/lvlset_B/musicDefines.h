@@ -1,5 +1,5 @@
-#define song_subtle_oddities 0
-#define song_eighto 1
+#define song_chaoz_fantasy_extended 0
+#define song_subtle_oddities 1
 #define song_stalemate 2
 #define song_eon 3
 #define song_practice 4
@@ -9,7 +9,7 @@
 #define song_pyrophoric 8
 #define song_every_end 9
 #define song_death_moon 10
-#define song_chaoz_fantasy_extended 11
+#define song_eighto 11
 #define song_clubstep 12
 #define song_glitch_gremlin 13
 #define song_sonic_blaster 14

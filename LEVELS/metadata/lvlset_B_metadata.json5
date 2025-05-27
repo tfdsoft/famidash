@@ -438,8 +438,8 @@
 			songID: "song_every_end",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02,
+			startingBackgroundColor: 0x11,
+			startingGroundColor: 0x11,
 			parallaxDisable: false
 		},
 	],
