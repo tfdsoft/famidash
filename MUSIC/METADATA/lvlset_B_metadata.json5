@@ -177,6 +177,10 @@
 		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
+		},		
+		{
+			fmsSongName: "endorphins",
+			lowerText: "ENDORPHINS",
 		},			
 	],
 	SFX: [

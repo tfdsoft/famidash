@@ -30,6 +30,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// supercycles
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
+	DEMON,	// endorphinrush
 	DEMON,	// sonicblaster
 	DEMON,	// hell
 	DEMON,	// pgclubstep
@@ -61,6 +62,7 @@ const uint8_t stars_list[] = {
 	10,	// supercycles
 	10,	// clutterfunk2
 	10,	// speedracer
+	10,	// endorphinrush
 	10,	// sonicblaster
 	10,	// hell
 	10,	// pgclubstep
