@@ -9,6 +9,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_cataclysm)
 	.byte .lobyte(level_data_aftermath)
+	.byte .lobyte(level_data_silentclubstep)
 	.byte .lobyte(level_data_aftercatabath)
 	.byte .lobyte(level_data_slaughterhouse)
 
@@ -17,6 +18,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_cataclysm)
 	.byte .hibyte(level_data_aftermath)
+	.byte .hibyte(level_data_silentclubstep)
 	.byte .hibyte(level_data_aftercatabath)
 	.byte .hibyte(level_data_slaughterhouse)
 
@@ -25,6 +27,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_cataclysm))
 	.byte .lobyte(.bank(level_data_aftermath))
+	.byte .lobyte(.bank(level_data_silentclubstep))
 	.byte .lobyte(.bank(level_data_aftercatabath))
 	.byte .lobyte(.bank(level_data_slaughterhouse))
 
@@ -45,6 +48,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_bloodbath)
 	.byte .lobyte(sprite_data_cataclysm)
 	.byte .lobyte(sprite_data_aftermath)
+	.byte .lobyte(sprite_data_silentclubstep)
 	.byte .lobyte(sprite_data_aftercatabath)
 	.byte .lobyte(sprite_data_slaughterhouse)
 
@@ -53,6 +57,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_bloodbath)
 	.byte .hibyte(sprite_data_cataclysm)
 	.byte .hibyte(sprite_data_aftermath)
+	.byte .hibyte(sprite_data_silentclubstep)
 	.byte .hibyte(sprite_data_aftercatabath)
 	.byte .hibyte(sprite_data_slaughterhouse)
 
@@ -61,6 +66,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_bloodbath))
 	.byte .lobyte(.bank(sprite_data_cataclysm))
 	.byte .lobyte(.bank(sprite_data_aftermath))
+	.byte .lobyte(.bank(sprite_data_silentclubstep))
 	.byte .lobyte(.bank(sprite_data_aftercatabath))
 	.byte .lobyte(.bank(sprite_data_slaughterhouse))
 
@@ -72,6 +78,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
 	.byte .lobyte($00007C)		; aftermath
+	.byte .lobyte($000095)		; silentclubstep
 	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($000098)		; slaughterhouse
 
@@ -82,6 +89,7 @@ _level_lengths_md:
 	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
 	.byte .hibyte($00007C)		; aftermath
+	.byte .hibyte($000095)		; silentclubstep
 	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($000098)		; slaughterhouse
 
@@ -92,6 +100,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm
 	.byte .bankbyte($00007C)		; aftermath
+	.byte .bankbyte($000095)		; silentclubstep
 	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($000098)		; slaughterhouse
 

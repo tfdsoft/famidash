@@ -73,6 +73,23 @@
 			parallaxDisable: true
 		},
 		{
+			level: "silentclubstep",
+			upperText: "SILENT",
+			lowerText: "CLUBSTEP",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_clubstep",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "aftercatabath",
 			lowerText: "AFTERCATABATH",
 			decoType: "DECO1",

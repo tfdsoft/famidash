@@ -25,6 +25,11 @@
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
 			vsSystemEnabled: false
+		},	
+		{
+			fmsSongName: "Clubstep",
+			lowerText: "CLUBSTEP",
+			vsSystemEnabled: false
 		},		
 		{
 			fmsSongName: "atthespeedoflight",
@@ -68,12 +73,7 @@
 		{
 			fmsSongName: "Magic Touch",
 			lowerText: "MAGIC TOUCH"
-		},
-		{
-			fmsSongName: "holography",
-			lowerText: "HOLOGRAPHY",
-			vsSystemEnabled: true
-		},		
+		},	
 		{
 			fmsSongName: "Pyrophoric",
 			lowerText: "PYROPHORIC"

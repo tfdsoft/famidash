@@ -14,6 +14,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// bloodbath
 	DEMON,	// cataclysm
 	DEMON,	// aftermath
+	DEMON,	// silentclubstep
 	DEMON,	// aftercatabath
 	DEMON,	// slaughterhouse
 };
@@ -23,6 +24,7 @@ const uint8_t stars_list[] = {
 	10,	// bloodbath
 	10,	// cataclysm
 	10,	// aftermath
+	10,	// silentclubstep
 	10,	// aftercatabath
 	10,	// slaughterhouse
 };

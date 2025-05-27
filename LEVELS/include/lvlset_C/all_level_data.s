@@ -121,7 +121,26 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 62
 
 
-.segment "DAT_BANK_07"	; Total bank size: 7202 bytes
+.segment "DAT_BANK_07"	; Total bank size: 7339 bytes
+	.export level_data_silentclubstep
+	level_data_silentclubstep:
+	; Header
+		.byte song_clubstep ;___ Song ID
+		.byte 0 ;_______________ Starting game mode
+		.byte 0 ;_______________ Starting speed
+		.byte 1 ;_______________ Disable parallax
+		.byte _DECO1 ;__________ Deco type
+		.byte _SPIKESC ;________ Spike set
+		.byte _BLOCKSB ;________ Block set
+		.byte _SAWBLADESA ;_____ Sawblade set
+		.byte $0F ;_____________ Starting background color
+		.byte $0F ;_____________ Starting ground color
+		.byte 57 ;______________ Level height
+	; Level data
+		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5558
+
+
+.segment "DAT_BANK_08"	; Total bank size: 7202 bytes
 	.export level_data_aftercatabath_1
 	level_data_aftercatabath_1:
 	; Level data
