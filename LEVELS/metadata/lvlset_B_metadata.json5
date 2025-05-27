@@ -442,6 +442,22 @@
 			startingGroundColor: 0x11,
 			parallaxDisable: false
 		},
+		{
+			level: "test4",
+			lowerText: "TEST4",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_every_end",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x11,
+			startingGroundColor: 0x11,
+			parallaxDisable: false
+		},
 	],
 	globalObjectOffsets: [
 		/*	Format:

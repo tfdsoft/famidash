@@ -15479,3 +15479,7 @@ sprite_data_everyend:
   .byte $30,$1b,$70,$03,$d1
   .byte $b0,$1d,$80,$03,$0f
   .byte $ff
+
+.segment "DAT_BANK_15"
+sprite_data_test4:
+  .byte $ff

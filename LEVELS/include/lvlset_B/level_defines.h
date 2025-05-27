@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 26
+#define COMMUNITY_LEVEL_COUNT 27
 
 #define stereomadness 0
 #define sonar 1
@@ -33,3 +33,4 @@
 #define stalemate 24
 #define sonicwave 25
 #define everyend 26
+#define test4 27

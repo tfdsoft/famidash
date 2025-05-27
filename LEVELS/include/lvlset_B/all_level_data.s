@@ -21,7 +21,14 @@
 		.incbin "EXPORTS/highlife.lz.0.bin" ; Size: 8192
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8159 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8170 bytes
+	.export level_data_everyend_5
+	level_data_everyend_5:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8170
+
+
+.segment "DAT_BANK_02"	; Total bank size: 8159 bytes
 	.export level_data_subtleoddities
 	level_data_subtleoddities:
 	; Header
@@ -38,13 +45,6 @@
 		.byte 27 ;_____________________ Level height
 	; Level data
 		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8159
-
-
-.segment "DAT_BANK_02"	; Total bank size: 8152 bytes
-	.export level_data_everyend_5
-	level_data_everyend_5:
-	; Level data
-		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8152
 
 
 .segment "DAT_BANK_03"	; Total bank size: 8147 bytes
@@ -85,7 +85,7 @@
 		.incbin "EXPORTS/sonicwave.lz.0.bin" ; Size: 8115
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8094 bytes
+.segment "DAT_BANK_05"	; Total bank size: 8182 bytes
 	.export level_data_deathmoon
 	level_data_deathmoon:
 	; Header
@@ -102,6 +102,23 @@
 		.byte 57 ;________________ Level height
 	; Level data
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8094
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte song_every_end ;___ Song ID
+		.byte 0 ;________________ Starting game mode
+		.byte 0 ;________________ Starting speed
+		.byte 0 ;________________ Disable parallax
+		.byte _DECO1 ;___________ Deco type
+		.byte _SPIKESA ;_________ Spike set
+		.byte _BLOCKSA ;_________ Block set
+		.byte _SAWBLADESA ;______ Sawblade set
+		.byte $11 ;______________ Starting background color
+		.byte $11 ;______________ Starting ground color
+		.byte 57 ;_______________ Level height
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 88
 
 
 .segment "DAT_BANK_06"	; Total bank size: 8071 bytes
@@ -375,7 +392,7 @@
 		.incbin "EXPORTS/generationretro.lz.bin" ; Size: 5202
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8186 bytes
+.segment "DAT_BANK_15"	; Total bank size: 8187 bytes
 	.export level_data_rainbowdust
 	level_data_rainbowdust:
 	; Header
@@ -456,11 +473,11 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3539
 
 
-.segment "DAT_BANK_19"	; Total bank size: 7869 bytes
+.segment "DAT_BANK_19"	; Total bank size: 7868 bytes
 	.export level_data_everyend_6
 	level_data_everyend_6:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4568
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4567
 
 
 .segment "DAT_BANK_1A"	; Total bank size: 7657 bytes

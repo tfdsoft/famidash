@@ -37,6 +37,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// stalemate
 	DEMON,	// sonicwave
 	DEMON,	// everyend
+	DEMON,	// test4
 };
 
 const uint8_t stars_list[] = {
@@ -67,4 +68,5 @@ const uint8_t stars_list[] = {
 	10,	// stalemate
 	10,	// sonicwave
 	10,	// everyend
+	10,	// test4
 };
