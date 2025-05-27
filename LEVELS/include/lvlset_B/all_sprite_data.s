@@ -1221,7 +1221,7 @@ sprite_data_subzero:
   .byte $00,$35,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_18"
+.segment "DAT_BANK_19"
 sprite_data_pyrophoric:
   .byte $00,$00,$60,$03,$86
   .byte $00,$00,$70,$03,$b6

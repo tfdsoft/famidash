@@ -21,14 +21,7 @@
 		.incbin "EXPORTS/highlife.lz.0.bin" ; Size: 8192
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8166 bytes
-	.export level_data_everyend_5
-	level_data_everyend_5:
-	; Level data
-		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8166
-
-
-.segment "DAT_BANK_02"	; Total bank size: 8159 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8159 bytes
 	.export level_data_subtleoddities
 	level_data_subtleoddities:
 	; Header
@@ -45,6 +38,13 @@
 		.byte 27 ;_____________________ Level height
 	; Level data
 		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8159
+
+
+.segment "DAT_BANK_02"	; Total bank size: 8149 bytes
+	.export level_data_everyend_5
+	level_data_everyend_5:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8149
 
 
 .segment "DAT_BANK_03"	; Total bank size: 8147 bytes
@@ -454,7 +454,12 @@
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3389
 
 
-.segment "DAT_BANK_18"	; Total bank size: 8145 bytes
+.segment "DAT_BANK_18"	; Total bank size: 8163 bytes
+	.export level_data_everyend_6
+	level_data_everyend_6:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4624
+
 	.export level_data_sonar
 	level_data_sonar:
 	; Header
@@ -471,13 +476,6 @@
 		.byte 27 ;______________________ Level height
 	; Level data
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3539
-
-
-.segment "DAT_BANK_19"	; Total bank size: 7855 bytes
-	.export level_data_everyend_6
-	level_data_everyend_6:
-	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4554
 
 
 .segment "DAT_BANK_1A"	; Total bank size: 7657 bytes

@@ -246,3 +246,4 @@ Metatile "SMALL_BLOCK_TOP_LEFT_INVIS", 								$00, $00, $00, $00, PAL_0, COL_UP
 Metatile "CHECKERBOARD_18_EVERYEND", 								$42, $43, $50, $51, PAL_0, COL_TOP
 Metatile "CHECKERBOARD_5_EVERYEND", 								$40, $45, $52, $57, PAL_0, COL_RIGHT
 Metatile "BLOCK_EVERY_END_BOTTOM_COL",								$20, $21, $30, $31, PAL_0, COL_BOTTOM
+Metatile "BLOCK_EVERY_END_TOP_COL",									$20, $21, $30, $31, PAL_0, COL_TOP
