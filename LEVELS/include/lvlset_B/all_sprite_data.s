@@ -14197,7 +14197,7 @@ sprite_data_stalemate:
   .byte $70,$38,$f0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_17"
+.segment "DAT_BANK_18"
 sprite_data_sonicwave:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$70,$03,$c1

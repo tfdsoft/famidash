@@ -435,7 +435,12 @@
 		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3322
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8080 bytes
+.segment "DAT_BANK_17"	; Total bank size: 8094 bytes
+	.export level_data_everyend_6
+	level_data_everyend_6:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4705
+
 	.export level_data_supercycles
 	level_data_supercycles:
 	; Header
@@ -452,13 +457,6 @@
 		.byte 27 ;____________ Level height
 	; Level data
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3389
-
-
-.segment "DAT_BANK_18"	; Total bank size: 7974 bytes
-	.export level_data_everyend_6
-	level_data_everyend_6:
-	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4673
 
 
 .segment "DAT_BANK_19"	; Total bank size: 8145 bytes
