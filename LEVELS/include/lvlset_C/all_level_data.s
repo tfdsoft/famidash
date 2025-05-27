@@ -28,7 +28,33 @@
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8168
 
 
-.segment "DAT_BANK_02"	; Total bank size: 7745 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8149 bytes
+	.export level_data_everyend_2
+	level_data_everyend_2:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8149
+
+
+.segment "DAT_BANK_03"	; Total bank size: 8071 bytes
+	.export level_data_everyend
+	level_data_everyend:
+	; Header
+		.byte song_every_end ;___ Song ID
+		.byte 0 ;________________ Starting game mode
+		.byte 0 ;________________ Starting speed
+		.byte 0 ;________________ Disable parallax
+		.byte _DECO1 ;___________ Deco type
+		.byte _SPIKESA ;_________ Spike set
+		.byte _BLOCKSA ;_________ Block set
+		.byte _SAWBLADESA ;______ Sawblade set
+		.byte $11 ;______________ Starting background color
+		.byte $11 ;______________ Starting ground color
+		.byte 57 ;_______________ Level height
+	; Level data
+		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8071
+
+
+.segment "DAT_BANK_04"	; Total bank size: 7745 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -47,7 +73,7 @@
 		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7745
 
 
-.segment "DAT_BANK_03"	; Total bank size: 7735 bytes
+.segment "DAT_BANK_05"	; Total bank size: 7735 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -66,7 +92,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7735
 
 
-.segment "DAT_BANK_04"	; Total bank size: 7416 bytes
+.segment "DAT_BANK_06"	; Total bank size: 7416 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -85,7 +111,7 @@
 		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7416
 
 
-.segment "DAT_BANK_05"	; Total bank size: 7052 bytes
+.segment "DAT_BANK_07"	; Total bank size: 7943 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -104,7 +130,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7052
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8163 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8163 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -140,7 +166,7 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 62
 
 
-.segment "DAT_BANK_08"	; Total bank size: 7339 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 7339 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -159,7 +185,14 @@
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5558
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8093 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 7405 bytes
+	.export level_data_everyend_3
+	level_data_everyend_3:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4744
+
+
+.segment "DAT_BANK_0C"	; Total bank size: 7728 bytes
 	.export level_data_aftercatabath_1
 	level_data_aftercatabath_1:
 	; Level data

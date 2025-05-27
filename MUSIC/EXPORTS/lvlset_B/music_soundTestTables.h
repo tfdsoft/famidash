@@ -36,9 +36,8 @@ const char musicSoundTestString1E[ 6] = "EIGHTO";
 const char musicSoundTestString1F[ 9] = "CHECK$OUT";
 const char musicSoundTestString20[10] = "HOLOGRAPHY";
 const char musicSoundTestString21[11] = "THE$VIOLINS";
-const char musicSoundTestString22[ 9] = "EVERY$END";
-const char musicSoundTestString23[ 7] = "BLASTER";
-const char musicSoundTestString24[ 4] = "LOST";
+const char musicSoundTestString22[ 7] = "BLASTER";
+const char musicSoundTestString23[ 4] = "LOST";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -68,7 +67,6 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
 	musicSoundTestString06,
-	NULL,
 	musicSoundTestString07,
 	NULL,
 };
@@ -100,7 +98,6 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
 	sizeof(musicSoundTestString06),
-	0,
 	sizeof(musicSoundTestString07),
 	0,
 };
@@ -135,7 +132,6 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString21,
 	musicSoundTestString22,
 	musicSoundTestString23,
-	musicSoundTestString24,
 };
 
 const uint8_t xbgmtextsLowerSize[] = {
@@ -167,7 +163,6 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString21),
 	sizeof(musicSoundTestString22),
 	sizeof(musicSoundTestString23),
-	sizeof(musicSoundTestString24),
 };
 
 #else
@@ -212,7 +207,6 @@ const uint8_t xbgmlookuptable[] = {
 	song_check_out,
 	song_holography,
 	song_dance_of_the_violins,
-	song_every_end,
 	song_sonic_blaster,
 	song_lost,
 };
@@ -225,7 +219,6 @@ const uint8_t xbgmlookuptable[] = {
 	song_check_out,
 	song_holography,
 	song_dance_of_the_violins,
-	song_every_end,
 };
 
 #endif

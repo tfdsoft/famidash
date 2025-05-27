@@ -13,6 +13,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_kratos)
 	.byte .lobyte(level_data_aftercatabath)
 	.byte .lobyte(level_data_slaughterhouse)
+	.byte .lobyte(level_data_everyend)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -23,6 +24,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_kratos)
 	.byte .hibyte(level_data_aftercatabath)
 	.byte .hibyte(level_data_slaughterhouse)
+	.byte .hibyte(level_data_everyend)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -33,18 +35,25 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_kratos))
 	.byte .lobyte(.bank(level_data_aftercatabath))
 	.byte .lobyte(.bank(level_data_slaughterhouse))
+	.byte .lobyte(.bank(level_data_everyend))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_aftercatabath_0)
 	.byte .lobyte(level_data_aftercatabath_1)
+	.byte .lobyte(level_data_everyend_2)
+	.byte .lobyte(level_data_everyend_3)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_aftercatabath_0)
 	.byte .hibyte(level_data_aftercatabath_1)
+	.byte .hibyte(level_data_everyend_2)
+	.byte .hibyte(level_data_everyend_3)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_aftercatabath_0))
 	.byte .lobyte(.bank(level_data_aftercatabath_1))
+	.byte .lobyte(.bank(level_data_everyend_2))
+	.byte .lobyte(.bank(level_data_everyend_3))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
@@ -55,6 +64,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_kratos)
 	.byte .lobyte(sprite_data_aftercatabath)
 	.byte .lobyte(sprite_data_slaughterhouse)
+	.byte .lobyte(sprite_data_everyend)
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
@@ -65,6 +75,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_kratos)
 	.byte .hibyte(sprite_data_aftercatabath)
 	.byte .hibyte(sprite_data_slaughterhouse)
+	.byte .hibyte(sprite_data_everyend)
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
@@ -75,6 +86,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_kratos))
 	.byte .lobyte(.bank(sprite_data_aftercatabath))
 	.byte .lobyte(.bank(sprite_data_slaughterhouse))
+	.byte .lobyte(.bank(sprite_data_everyend))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -88,6 +100,7 @@ _level_lengths_lo:
 	.byte .lobyte($000087)		; kratos
 	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($000098)		; slaughterhouse
+	.byte .lobyte($0002DC)		; everyend
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -100,6 +113,7 @@ _level_lengths_md:
 	.byte .hibyte($000087)		; kratos
 	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($000098)		; slaughterhouse
+	.byte .hibyte($0002DC)		; everyend
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -112,6 +126,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000087)		; kratos
 	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($000098)		; slaughterhouse
+	.byte .bankbyte($0002DC)		; everyend
 
 .endif
 .endif

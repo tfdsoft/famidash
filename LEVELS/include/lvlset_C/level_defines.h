@@ -4,7 +4,7 @@
 #define LEVELSET 'C'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 7
+#define COMMUNITY_LEVEL_COUNT 8
 
 #define stereomadness 0
 #define bloodbath 1
@@ -14,3 +14,4 @@
 #define kratos 5
 #define aftercatabath 6
 #define slaughterhouse 7
+#define everyend 8

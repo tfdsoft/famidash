@@ -18,6 +18,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// kratos
 	DEMON,	// aftercatabath
 	DEMON,	// slaughterhouse
+	DEMON,	// everyend
 };
 
 const uint8_t stars_list[] = {
@@ -29,4 +30,5 @@ const uint8_t stars_list[] = {
 	10,	// kratos
 	10,	// aftercatabath
 	10,	// slaughterhouse
+	10,	// everyend
 };

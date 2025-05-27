@@ -96,6 +96,11 @@
 			fmsSongName: "Kratos",
 			lowerText: "KRATOS",
 			vsSystemEnabled: true
+		},	
+		{
+			fmsSongName: "every end",
+			lowerText: "EVERY END",
+			vsSystemEnabled: true
 		},			
 	],
 	SFX: [
