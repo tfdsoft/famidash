@@ -8738,7 +8738,7 @@ sprite_data_deathmoon:
   .byte $f0,$71,$b0,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_19"
+.segment "DAT_BANK_18"
 sprite_data_supercycles:
   .byte $00,$00,$60,$03,$93
   .byte $00,$00,$80,$03,$d3

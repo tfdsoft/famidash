@@ -454,12 +454,14 @@
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3389
 
 
-.segment "DAT_BANK_18"	; Total bank size: 8163 bytes
+.segment "DAT_BANK_18"	; Total bank size: 7974 bytes
 	.export level_data_everyend_6
 	level_data_everyend_6:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4624
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4673
 
+
+.segment "DAT_BANK_19"	; Total bank size: 8145 bytes
 	.export level_data_sonar
 	level_data_sonar:
 	; Header
