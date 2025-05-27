@@ -101,6 +101,11 @@
 			fmsSongName: "every end",
 			lowerText: "EVERY END",
 			vsSystemEnabled: true
+		},	
+		{
+			fmsSongName: "Windfall",
+			lowerText: "WINDFALL",
+			vsSystemEnabled: true
 		},			
 	],
 	SFX: [

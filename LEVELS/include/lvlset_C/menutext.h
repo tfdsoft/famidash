@@ -2,24 +2,27 @@
 // Exported by export_levels.py
 
 const char levelText00[12] = "YOU SHOULDNT";
-const char levelText01[ 6] = "SILENT";
-const char levelText02[ 7] = "BE HERE";
-const char levelText03[ 9] = "BLOODBATH";
-const char levelText04[ 9] = "CATACLYSM";
-const char levelText05[ 9] = "AFTERMATH";
-const char levelText06[ 8] = "CLUBSTEP";
-const char levelText07[ 6] = "KRATOS";
-const char levelText08[13] = "AFTERCATABATH";
-const char levelText09[14] = "SLAUGHTERHOUSE";
-const char levelText0A[ 9] = "EVERY END";
+const char levelText01[ 5] = "WINDY";
+const char levelText02[ 6] = "SILENT";
+const char levelText03[ 7] = "BE HERE";
+const char levelText04[ 9] = "LANDSCAPE";
+const char levelText05[ 9] = "BLOODBATH";
+const char levelText06[ 9] = "CATACLYSM";
+const char levelText07[ 9] = "AFTERMATH";
+const char levelText08[ 8] = "CLUBSTEP";
+const char levelText09[ 6] = "KRATOS";
+const char levelText0A[13] = "AFTERCATABATH";
+const char levelText0B[14] = "SLAUGHTERHOUSE";
+const char levelText0C[ 9] = "EVERY END";
 
 
 const char* const levelTextsUpper[] = {
 	levelText00,
-	NULL,
-	NULL,
-	NULL,
 	levelText01,
+	NULL,
+	NULL,
+	NULL,
+	levelText02,
 	NULL,
 	NULL,
 	NULL,
@@ -28,10 +31,11 @@ const char* const levelTextsUpper[] = {
 
 const uint8_t levelTextsUpperSize[] = {
 	sizeof(levelText00),
-	0,
-	0,
-	0,
 	sizeof(levelText01),
+	0,
+	0,
+	0,
+	sizeof(levelText02),
 	0,
 	0,
 	0,
@@ -40,7 +44,6 @@ const uint8_t levelTextsUpperSize[] = {
 
 
 const char* const levelTextsLower[] = {
-	levelText02,
 	levelText03,
 	levelText04,
 	levelText05,
@@ -49,10 +52,11 @@ const char* const levelTextsLower[] = {
 	levelText08,
 	levelText09,
 	levelText0A,
+	levelText0B,
+	levelText0C,
 };
 
 const uint8_t levelTextsLowerSize[] = {
-	sizeof(levelText02),
 	sizeof(levelText03),
 	sizeof(levelText04),
 	sizeof(levelText05),
@@ -61,4 +65,6 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText08),
 	sizeof(levelText09),
 	sizeof(levelText0A),
+	sizeof(levelText0B),
+	sizeof(levelText0C),
 };

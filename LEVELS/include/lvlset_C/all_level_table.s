@@ -6,6 +6,7 @@
 
 _level_list_lo:
 	.byte .lobyte(level_data_stereomadness)
+	.byte .lobyte(level_data_windylandscape)
 	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_cataclysm)
 	.byte .lobyte(level_data_aftermath)
@@ -17,6 +18,7 @@ _level_list_lo:
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
+	.byte .hibyte(level_data_windylandscape)
 	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_cataclysm)
 	.byte .hibyte(level_data_aftermath)
@@ -28,6 +30,7 @@ _level_list_hi:
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
+	.byte .lobyte(.bank(level_data_windylandscape))
 	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_cataclysm))
 	.byte .lobyte(.bank(level_data_aftermath))
@@ -38,25 +41,29 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_everyend))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_aftercatabath_0)
+	.byte .lobyte(level_data_windylandscape_0)
 	.byte .lobyte(level_data_aftercatabath_1)
-	.byte .lobyte(level_data_everyend_2)
+	.byte .lobyte(level_data_aftercatabath_2)
 	.byte .lobyte(level_data_everyend_3)
+	.byte .lobyte(level_data_everyend_4)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_aftercatabath_0)
+	.byte .hibyte(level_data_windylandscape_0)
 	.byte .hibyte(level_data_aftercatabath_1)
-	.byte .hibyte(level_data_everyend_2)
+	.byte .hibyte(level_data_aftercatabath_2)
 	.byte .hibyte(level_data_everyend_3)
+	.byte .hibyte(level_data_everyend_4)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_aftercatabath_0))
+	.byte .lobyte(.bank(level_data_windylandscape_0))
 	.byte .lobyte(.bank(level_data_aftercatabath_1))
-	.byte .lobyte(.bank(level_data_everyend_2))
+	.byte .lobyte(.bank(level_data_aftercatabath_2))
 	.byte .lobyte(.bank(level_data_everyend_3))
+	.byte .lobyte(.bank(level_data_everyend_4))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
+	.byte .lobyte(sprite_data_windylandscape)
 	.byte .lobyte(sprite_data_bloodbath)
 	.byte .lobyte(sprite_data_cataclysm)
 	.byte .lobyte(sprite_data_aftermath)
@@ -68,6 +75,7 @@ _sprite_list_lo:
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
+	.byte .hibyte(sprite_data_windylandscape)
 	.byte .hibyte(sprite_data_bloodbath)
 	.byte .hibyte(sprite_data_cataclysm)
 	.byte .hibyte(sprite_data_aftermath)
@@ -79,6 +87,7 @@ _sprite_list_hi:
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
+	.byte .lobyte(.bank(sprite_data_windylandscape))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
 	.byte .lobyte(.bank(sprite_data_cataclysm))
 	.byte .lobyte(.bank(sprite_data_aftermath))
@@ -93,6 +102,7 @@ _sprite_list_bank:
 
 _level_lengths_lo:
 	.byte .lobyte($000080)		; stereomadness
+	.byte .lobyte($00009A)		; windylandscape
 	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
 	.byte .lobyte($00007C)		; aftermath
@@ -106,6 +116,7 @@ _level_lengths_lo:
 
 _level_lengths_md:
 	.byte .hibyte($000080)		; stereomadness
+	.byte .hibyte($00009A)		; windylandscape
 	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
 	.byte .hibyte($00007C)		; aftermath
@@ -119,6 +130,7 @@ _level_lengths_md:
 
 _level_lengths_hi:
 	.byte .bankbyte($000080)		; stereomadness
+	.byte .bankbyte($00009A)		; windylandscape
 	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm
 	.byte .bankbyte($00007C)		; aftermath

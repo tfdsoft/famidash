@@ -4,14 +4,15 @@
 #define LEVELSET 'C'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 8
+#define COMMUNITY_LEVEL_COUNT 9
 
 #define stereomadness 0
-#define bloodbath 1
-#define cataclysm 2
-#define aftermath 3
-#define silentclubstep 4
-#define kratos 5
-#define aftercatabath 6
-#define slaughterhouse 7
-#define everyend 8
+#define windylandscape 1
+#define bloodbath 2
+#define cataclysm 3
+#define aftermath 4
+#define silentclubstep 5
+#define kratos 6
+#define aftercatabath 7
+#define slaughterhouse 8
+#define everyend 9

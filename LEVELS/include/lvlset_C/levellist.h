@@ -11,6 +11,7 @@
 
 const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
+	DEMON,	// windylandscape
 	DEMON,	// bloodbath
 	DEMON,	// cataclysm
 	DEMON,	// aftermath
@@ -23,6 +24,7 @@ const uint8_t difficulty_list[] = {
 
 const uint8_t stars_list[] = {
 	1,	// stereomadness
+	10,	// windylandscape
 	10,	// bloodbath
 	10,	// cataclysm
 	10,	// aftermath
