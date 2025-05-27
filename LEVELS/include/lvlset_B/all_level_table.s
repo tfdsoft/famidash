@@ -25,6 +25,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_supercycles)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
+	.byte .lobyte(level_data_sonicblaster)
 	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_eon)
@@ -55,6 +56,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_supercycles)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
+	.byte .hibyte(level_data_sonicblaster)
 	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_eon)
@@ -85,6 +87,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_supercycles))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
+	.byte .lobyte(.bank(level_data_sonicblaster))
 	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_eon))
@@ -142,6 +145,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_supercycles)
 	.byte .lobyte(sprite_data_clutterfunk2)
 	.byte .lobyte(sprite_data_speedracer)
+	.byte .lobyte(sprite_data_sonicblaster)
 	.byte .lobyte(sprite_data_hell)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_eon)
@@ -172,6 +176,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_supercycles)
 	.byte .hibyte(sprite_data_clutterfunk2)
 	.byte .hibyte(sprite_data_speedracer)
+	.byte .hibyte(sprite_data_sonicblaster)
 	.byte .hibyte(sprite_data_hell)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_eon)
@@ -202,6 +207,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_supercycles))
 	.byte .lobyte(.bank(sprite_data_clutterfunk2))
 	.byte .lobyte(.bank(sprite_data_speedracer))
+	.byte .lobyte(.bank(sprite_data_sonicblaster))
 	.byte .lobyte(.bank(sprite_data_hell))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_eon))
@@ -235,6 +241,7 @@ _level_lengths_lo:
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
+	.byte .lobyte($0000A6)		; sonicblaster
 	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000286)		; eon
@@ -267,6 +274,7 @@ _level_lengths_md:
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
+	.byte .hibyte($0000A6)		; sonicblaster
 	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000286)		; eon
@@ -299,6 +307,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
+	.byte .bankbyte($0000A6)		; sonicblaster
 	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000286)		; eon
