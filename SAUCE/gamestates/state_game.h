@@ -441,6 +441,9 @@ void state_game(){
 
 		crossPRGBankJump0(sprite_collide);
 
+		if (retro_mode) { if (gamemode == GAMEMODE_CUBE) gamemode = GAMEMODE_ROBOT; }
+
+
 		#ifdef luckydraw
 			if (level == luckydraw) {
 				if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement);

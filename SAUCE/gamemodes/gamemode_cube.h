@@ -12,10 +12,6 @@ void cube_movement(){
 	// currplayer_vel_y is signed
 	//if(currplayer_vel_y < 0x400){
 
-	if (retro_mode) { if (gamemode == GAMEMODE_CUBE) gamemode = GAMEMODE_ROBOT; }
-
-
-
 	fallspeed_big = CUBE_MAX_FALLSPEED;
 	#if LEVELSET == 'B'
 	if (level == everyend) fallspeed_big += 0x0100;
@@ -34,19 +30,19 @@ void cube_movement(){
 	
 
 	if (bigboi) {
-/*
+
 		Generic.x += 15;
 
 		cube_eject();
 
 		Generic.y -= 15;
 
-		cube_eject();			;bigboi disable
+		cube_eject();		
 		
 		Generic.x -= 15;
 		
 		cube_eject();
-*/
+
 	}
 
 	else {

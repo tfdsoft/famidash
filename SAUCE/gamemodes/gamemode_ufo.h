@@ -39,7 +39,6 @@ void ufo_movement(){
 	ufo_orbed = 0;
 }	
 
-#if !__VS_SYSTEM
 void bigboi_stuff() {
 	if (bigboi) {
 			Generic.y -= 15;
@@ -63,6 +62,5 @@ void bigboi_stuff() {
 		}	
 	}	
 }	
-#endif
 
 CODE_BANK_POP()

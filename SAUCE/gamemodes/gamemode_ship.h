@@ -63,35 +63,5 @@ void ufo_ship_eject() {
 		}
 	//}
 }	
-#if __VS_SYSTEM
-void bigboi_stuff() {
-	if (bigboi) {
-			Generic.y -= 15;
 
-			ufo_ship_eject();		
-		
-			Generic.x += 15;
-
-			ufo_ship_eject();
-
-			Generic.y += 15;
-
-			ufo_ship_eject();			
-	}
-
-	else {
-		if (tallmode) {
-			Generic.y -= 15;
-
-			ufo_ship_eject();
-		}
-		if (longmode) {
-			Generic.x += 15;
-			Generic.y = high_byte(currplayer_y);
-
-			ufo_ship_eject();
-		}
-	}
-}
-#endif
 CODE_BANK_POP()
