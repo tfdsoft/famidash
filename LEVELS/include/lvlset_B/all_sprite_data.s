@@ -4918,7 +4918,7 @@ sprite_data_funnygameholiday:
   .byte $00,$40,$e0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_13"
+.segment "DAT_BANK_11"
 sprite_data_rainbowdust:
   .byte $00,$00,$60,$03,$ee
   .byte $00,$00,$70,$03,$80
@@ -4980,6 +4980,7 @@ sprite_data_rainbowdust:
   .byte $60,$08,$f0,$02,$32
   .byte $60,$08,$70,$03,$32
   .byte $70,$08,$80,$03,$bc
+  .byte $80,$08,$60,$03,$07
   .byte $a0,$08,$10,$03,$32
   .byte $a0,$08,$80,$03,$bd
   .byte $c0,$08,$40,$03,$32
@@ -5047,6 +5048,7 @@ sprite_data_rainbowdust:
   .byte $e0,$0f,$50,$03,$91
   .byte $10,$10,$50,$03,$93
   .byte $40,$10,$50,$03,$96
+  .byte $60,$10,$70,$03,$1a
   .byte $70,$10,$50,$03,$98
   .byte $a0,$10,$50,$03,$9a
   .byte $d0,$10,$50,$03,$91
@@ -5294,7 +5296,8 @@ sprite_data_rainbowdust:
   .byte $50,$2a,$60,$02,$3d
   .byte $50,$2a,$b0,$02,$a8
   .byte $50,$2a,$d0,$02,$2d
-  .byte $80,$2a,$b0,$02,$aa
+  .byte $80,$2a,$b0,$02,$1b
+  .byte $80,$2a,$c0,$02,$aa
   .byte $90,$2a,$60,$02,$3d
   .byte $90,$2a,$d0,$02,$2d
   .byte $a0,$2a,$60,$02,$3d
@@ -13114,7 +13117,7 @@ sprite_data_hell:
   .byte $90,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_11"
+.segment "DAT_BANK_13"
 sprite_data_pgclubstep:
   .byte $00,$00,$70,$03,$c5
   .byte $00,$00,$80,$03,$8f

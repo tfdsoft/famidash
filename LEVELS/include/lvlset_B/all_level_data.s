@@ -333,7 +333,7 @@
 		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2540
 
 
-.segment "DAT_BANK_11"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8171 bytes
 	.export level_data_danceofviolins
 	level_data_danceofviolins:
 	; Header
@@ -371,7 +371,7 @@
 		.incbin "EXPORTS/oceane.lz.bin" ; Size: 2927
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8057 bytes
+.segment "DAT_BANK_13"	; Total bank size: 8067 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -409,7 +409,7 @@
 		.incbin "EXPORTS/generationretro.lz.bin" ; Size: 5202
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_15"	; Total bank size: 8178 bytes
 	.export level_data_rainbowdust
 	level_data_rainbowdust:
 	; Header
@@ -425,7 +425,7 @@
 		.byte $0F ;___________________________ Starting ground color
 		.byte 27 ;____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/rainbowdust.lz.bin" ; Size: 5126
+		.incbin "EXPORTS/rainbowdust.lz.bin" ; Size: 5119
 
 	.export level_data_stereomadness
 	level_data_stereomadness:
