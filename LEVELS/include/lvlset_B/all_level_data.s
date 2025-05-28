@@ -409,7 +409,7 @@
 		.incbin "EXPORTS/generationretro.lz.bin" ; Size: 5202
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8178 bytes
+.segment "DAT_BANK_15"	; Total bank size: 8116 bytes
 	.export level_data_rainbowdust
 	level_data_rainbowdust:
 	; Header
@@ -426,23 +426,6 @@
 		.byte 27 ;____________________________ Level height
 	; Level data
 		.incbin "EXPORTS/rainbowdust.lz.bin" ; Size: 5119
-
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte song_stereo_madness ;___ Song ID
-		.byte 0 ;_____________________ Starting game mode
-		.byte 0 ;_____________________ Starting speed
-		.byte 0 ;_____________________ Disable parallax
-		.byte _DECO1 ;________________ Deco type
-		.byte _SPIKESA ;______________ Spike set
-		.byte _BLOCKSA ;______________ Block set
-		.byte _SAWBLADESA ;___________ Sawblade set
-		.byte $12 ;___________________ Starting background color
-		.byte $02 ;___________________ Starting ground color
-		.byte 27 ;____________________ Level height
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 62
 
 
 .segment "DAT_BANK_16"	; Total bank size: 8183 bytes
@@ -552,7 +535,7 @@
 		.incbin "EXPORTS/ninox.lz.bin" ; Size: 2328
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 8184 bytes
 	.export level_data_subtleoddities_0
 	level_data_subtleoddities_0:
 	; Level data
@@ -574,3 +557,20 @@
 		.byte 27 ;_________________ Level height
 	; Level data
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2236
+
+	.export level_data_stereomadness
+	level_data_stereomadness:
+	; Header
+		.byte song_stereo_madness ;___ Song ID
+		.byte 0 ;_____________________ Starting game mode
+		.byte 0 ;_____________________ Starting speed
+		.byte 0 ;_____________________ Disable parallax
+		.byte _DECO1 ;________________ Deco type
+		.byte _SPIKESA ;______________ Spike set
+		.byte _BLOCKSA ;______________ Block set
+		.byte _SAWBLADESA ;___________ Sawblade set
+		.byte $12 ;___________________ Starting background color
+		.byte $02 ;___________________ Starting ground color
+		.byte 27 ;____________________ Level height
+	; Level data
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 23

@@ -215,7 +215,7 @@ _sprite_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
-	.byte .lobyte($000080)		; stereomadness
+	.byte .lobyte($000001)		; stereomadness
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($00007B)		; ninox
@@ -248,7 +248,7 @@ _level_lengths_lo:
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
-	.byte .hibyte($000080)		; stereomadness
+	.byte .hibyte($000001)		; stereomadness
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($00007B)		; ninox
@@ -281,7 +281,7 @@ _level_lengths_md:
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-	.byte .bankbyte($000080)		; stereomadness
+	.byte .bankbyte($000001)		; stereomadness
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($00007B)		; ninox

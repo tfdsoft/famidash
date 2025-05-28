@@ -116,7 +116,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7735
 
 
-.segment "DAT_BANK_07"	; Total bank size: 7416 bytes
+.segment "DAT_BANK_07"	; Total bank size: 7420 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -132,7 +132,7 @@
 		.byte $0F ;___________ Starting ground color
 		.byte 27 ;____________ Level height
 	; Level data
-		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7416
+		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7420
 
 
 .segment "DAT_BANK_08"	; Total bank size: 7052 bytes
@@ -154,7 +154,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7052
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8163 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8101 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -171,23 +171,6 @@
 		.byte 27 ;________________________ Level height
 	; Level data
 		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6810
-
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte song_practice ;___ Song ID
-		.byte 0 ;_______________ Starting game mode
-		.byte 0 ;_______________ Starting speed
-		.byte 0 ;_______________ Disable parallax
-		.byte _DECO1 ;__________ Deco type
-		.byte _SPIKESA ;________ Spike set
-		.byte _BLOCKSA ;________ Block set
-		.byte _SAWBLADESA ;_____ Sawblade set
-		.byte $12 ;_____________ Starting background color
-		.byte $02 ;_____________ Starting ground color
-		.byte 27 ;______________ Level height
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 62
 
 
 .segment "DAT_BANK_0B"	; Total bank size: 7339 bytes
@@ -216,8 +199,25 @@
 		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4747
 
 
-.segment "DAT_BANK_0D"	; Total bank size: 8093 bytes
+.segment "DAT_BANK_0D"	; Total bank size: 8170 bytes
 	.export level_data_aftercatabath_2
 	level_data_aftercatabath_2:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4541
+
+	.export level_data_stereomadness
+	level_data_stereomadness:
+	; Header
+		.byte song_practice ;___ Song ID
+		.byte 0 ;_______________ Starting game mode
+		.byte 0 ;_______________ Starting speed
+		.byte 0 ;_______________ Disable parallax
+		.byte _DECO1 ;__________ Deco type
+		.byte _SPIKESA ;________ Spike set
+		.byte _BLOCKSA ;________ Block set
+		.byte _SAWBLADESA ;_____ Sawblade set
+		.byte $12 ;_____________ Starting background color
+		.byte $02 ;_____________ Starting ground color
+		.byte 27 ;______________ Level height
+	; Level data
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 62
