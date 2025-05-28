@@ -24,6 +24,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_deathmoon)
 	.byte .lobyte(level_data_supercycles)
 	.byte .lobyte(level_data_clutterfunk2)
+	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_endorphinrush)
 	.byte .lobyte(level_data_sonicblaster)
@@ -56,6 +57,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_deathmoon)
 	.byte .hibyte(level_data_supercycles)
 	.byte .hibyte(level_data_clutterfunk2)
+	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_endorphinrush)
 	.byte .hibyte(level_data_sonicblaster)
@@ -88,6 +90,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_deathmoon))
 	.byte .lobyte(.bank(level_data_supercycles))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
+	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_endorphinrush))
 	.byte .lobyte(.bank(level_data_sonicblaster))
@@ -104,28 +107,31 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_subtleoddities_0)
 	.byte .lobyte(level_data_highlife_1)
 	.byte .lobyte(level_data_deathmoon_2)
-	.byte .lobyte(level_data_futurefunk_3)
+	.byte .lobyte(level_data_motion_3)
 	.byte .lobyte(level_data_futurefunk_4)
-	.byte .lobyte(level_data_eon_5)
-	.byte .lobyte(level_data_sonicwave_6)
+	.byte .lobyte(level_data_futurefunk_5)
+	.byte .lobyte(level_data_eon_6)
+	.byte .lobyte(level_data_sonicwave_7)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_subtleoddities_0)
 	.byte .hibyte(level_data_highlife_1)
 	.byte .hibyte(level_data_deathmoon_2)
-	.byte .hibyte(level_data_futurefunk_3)
+	.byte .hibyte(level_data_motion_3)
 	.byte .hibyte(level_data_futurefunk_4)
-	.byte .hibyte(level_data_eon_5)
-	.byte .hibyte(level_data_sonicwave_6)
+	.byte .hibyte(level_data_futurefunk_5)
+	.byte .hibyte(level_data_eon_6)
+	.byte .hibyte(level_data_sonicwave_7)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_subtleoddities_0))
 	.byte .lobyte(.bank(level_data_highlife_1))
 	.byte .lobyte(.bank(level_data_deathmoon_2))
-	.byte .lobyte(.bank(level_data_futurefunk_3))
+	.byte .lobyte(.bank(level_data_motion_3))
 	.byte .lobyte(.bank(level_data_futurefunk_4))
-	.byte .lobyte(.bank(level_data_eon_5))
-	.byte .lobyte(.bank(level_data_sonicwave_6))
+	.byte .lobyte(.bank(level_data_futurefunk_5))
+	.byte .lobyte(.bank(level_data_eon_6))
+	.byte .lobyte(.bank(level_data_sonicwave_7))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
@@ -147,6 +153,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_deathmoon)
 	.byte .lobyte(sprite_data_supercycles)
 	.byte .lobyte(sprite_data_clutterfunk2)
+	.byte .lobyte(sprite_data_motion)
 	.byte .lobyte(sprite_data_speedracer)
 	.byte .lobyte(sprite_data_endorphinrush)
 	.byte .lobyte(sprite_data_sonicblaster)
@@ -179,6 +186,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_deathmoon)
 	.byte .hibyte(sprite_data_supercycles)
 	.byte .hibyte(sprite_data_clutterfunk2)
+	.byte .hibyte(sprite_data_motion)
 	.byte .hibyte(sprite_data_speedracer)
 	.byte .hibyte(sprite_data_endorphinrush)
 	.byte .hibyte(sprite_data_sonicblaster)
@@ -211,6 +219,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_deathmoon))
 	.byte .lobyte(.bank(sprite_data_supercycles))
 	.byte .lobyte(.bank(sprite_data_clutterfunk2))
+	.byte .lobyte(.bank(sprite_data_motion))
 	.byte .lobyte(.bank(sprite_data_speedracer))
 	.byte .lobyte(.bank(sprite_data_endorphinrush))
 	.byte .lobyte(.bank(sprite_data_sonicblaster))
@@ -246,6 +255,7 @@ _level_lengths_lo:
 	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($0000B1)		; clutterfunk2
+	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($00008B)		; endorphinrush
 	.byte .lobyte($0000A6)		; sonicblaster
@@ -280,6 +290,7 @@ _level_lengths_md:
 	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($0000B1)		; clutterfunk2
+	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($00008B)		; endorphinrush
 	.byte .hibyte($0000A6)		; sonicblaster
@@ -314,6 +325,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($0000B1)		; clutterfunk2
+	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($00008B)		; endorphinrush
 	.byte .bankbyte($0000A6)		; sonicblaster
