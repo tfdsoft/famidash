@@ -21,14 +21,21 @@
 		.incbin "EXPORTS/windylandscape.lz.0.bin" ; Size: 8189
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8176 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8180 bytes
+	.export level_data_everyend_3
+	level_data_everyend_3:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8180
+
+
+.segment "DAT_BANK_02"	; Total bank size: 8176 bytes
 	.export level_data_aftercatabath_1
 	level_data_aftercatabath_1:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8176
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8168 bytes
+.segment "DAT_BANK_03"	; Total bank size: 8168 bytes
 	.export level_data_aftercatabath
 	level_data_aftercatabath:
 	; Header
@@ -45,13 +52,6 @@
 		.byte 27 ;___________________________ Level height
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8168
-
-
-.segment "DAT_BANK_03"	; Total bank size: 8149 bytes
-	.export level_data_everyend_3
-	level_data_everyend_3:
-	; Level data
-		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8149
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8071 bytes
@@ -209,11 +209,11 @@
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5558
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8070 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8073 bytes
 	.export level_data_everyend_4
 	level_data_everyend_4:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4744
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4747
 
 
 .segment "DAT_BANK_0D"	; Total bank size: 8093 bytes
