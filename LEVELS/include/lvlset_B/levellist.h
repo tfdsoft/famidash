@@ -34,6 +34,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// endorphinrush
 	DEMON,	// sonicblaster
 	DEMON,	// hell
+	DEMON,	// thermodynamix
 	DEMON,	// pgclubstep
 	DEMON,	// futurefunk
 	DEMON,	// eon
@@ -68,6 +69,7 @@ const uint8_t stars_list[] = {
 	10,	// endorphinrush
 	10,	// sonicblaster
 	10,	// hell
+	10,	// thermodynamix
 	10,	// pgclubstep
 	10,	// futurefunk
 	10,	// eon
