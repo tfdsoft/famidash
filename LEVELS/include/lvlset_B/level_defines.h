@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 28
+#define COMMUNITY_LEVEL_COUNT 29
 
 #define stereomadness 0
 #define sonar 1
@@ -30,8 +30,9 @@
 #define sonicblaster 21
 #define hell 22
 #define pgclubstep 23
-#define eon 24
-#define eighto 25
-#define stalemate 26
-#define sonicwave 27
-#define test4 28
+#define futurefunk 24
+#define eon 25
+#define eighto 26
+#define stalemate 27
+#define sonicwave 28
+#define test4 29

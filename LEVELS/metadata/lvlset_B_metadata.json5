@@ -391,6 +391,22 @@
 			startingGroundColor: 0x0F
 		},
 		{
+			level: "futurefunk",
+			lowerText: "FUTURE FUNK",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_whats_a_future_funk",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "eon",
 			lowerText: "EON",
 			decoType: "EXTRASPRITES1",

@@ -182,6 +182,13 @@
 			fmsSongName: "endorphins",
 			lowerText: "ENDORPHINS",
 		},			
+		{
+			fmsSongName: "What's a Future Funk?",
+			upperText: "WHATS A",
+			lowerText: "FUTURE FUNK",
+			vsSystemEnabled: true
+		},			
+		
 	],
 	SFX: [
 		{
