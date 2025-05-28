@@ -11958,7 +11958,7 @@ sprite_data_endorphinrush:
   .byte $00,$36,$a0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_18"
+.segment "DAT_BANK_19"
 sprite_data_sonicblaster:
   .byte $00,$00,$40,$03,$8c
   .byte $00,$00,$50,$03,$cc
@@ -12034,9 +12034,7 @@ sprite_data_sonicblaster:
   .byte $40,$08,$f0,$02,$0e
   .byte $50,$08,$18,$03,$0d
   .byte $60,$08,$c0,$02,$10
-  .byte $70,$08,$c0,$02,$fc
   .byte $70,$08,$d0,$02,$8c
-  .byte $80,$08,$c0,$02,$fc
   .byte $80,$08,$d0,$02,$9c
   .byte $80,$08,$f0,$02,$36
   .byte $90,$08,$d0,$02,$91
@@ -12121,11 +12119,7 @@ sprite_data_sonicblaster:
   .byte $80,$10,$f0,$02,$15
   .byte $a0,$10,$e0,$02,$36
   .byte $a0,$10,$30,$03,$13
-  .byte $b0,$10,$30,$03,$fb
-  .byte $c0,$10,$30,$03,$fb
   .byte $e0,$10,$e0,$02,$10
-  .byte $f0,$10,$e0,$02,$fc
-  .byte $00,$11,$e0,$02,$fc
   .byte $30,$11,$d0,$02,$36
   .byte $30,$11,$f8,$02,$25
   .byte $60,$11,$f0,$02,$06
