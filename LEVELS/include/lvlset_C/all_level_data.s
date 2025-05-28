@@ -192,7 +192,7 @@
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5558
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8073 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8088 bytes
 	.export level_data_everyend_4
 	level_data_everyend_4:
 	; Level data
