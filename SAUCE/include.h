@@ -15,8 +15,11 @@
 #include "mapper.h"  // MMC3 functions
 // #include "mapper_irq.h" // MMC3 IRQ functions
 #include "nesdash.h" // custom stuff made specifically for famidash
+#if LEVELSET != 'Z'
 #include "famistudio_cc65.h" // sound driver
-
+#else
+#include "album-famistudio_cc65.h" // sound driver
+#endif
 #include "musicDefines.h" // sound driver C defines
 #include "sfxDefines.h" // sound driver C defines
 
@@ -50,6 +53,7 @@
 
 #include "defines/palette/palettes_PRG.c"
 
+#if LEVELSET != 'Z'
 
 #include "METATILES/metatiles.h"  // metatile defines
 #include "defines/sprites.h"    // metasprite defines
@@ -70,6 +74,7 @@
 
 
 // THE GAME MODE DEFINES //
+
 #include "functions/x_movement.h"
 
 #include "gamemodes/gamemode_ufo.h"
@@ -79,14 +84,25 @@
 #include "gamemodes/gamemode_spider.h"
 #include "gamemodes/gamemode_wave.h"
 
+#endif
+
 // THE MENU STATE DEFINES //
 
 #include "include_menus.h"
 
 // THE GAME STATE DEFINES //
 
+
+#if LEVELSET != 'Z'
 #include "gamestates/state_savefile_validate.h"
 #include "gamestates/state_game.h"
+#include "gamestates/state_lvldone.h"
+#else
+#include "gamestates/album-state_savefile_validate.h"
+#include "gamestates/album-state_game.h"
+#include "gamestates/album-state_lvldone.h"
+#include "gamestates/album-state_demo.h"
+#endif
+
 // #include "gamestates/state_sorrynothing.h"
 // #include "gamestates/state_savefile_editor.h"
-#include "gamestates/state_lvldone.h"
