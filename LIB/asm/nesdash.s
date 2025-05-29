@@ -678,6 +678,7 @@ noSeam:
 	;	No seam can be distinguished by high byte >= 02 or bit 1
 .endproc
 
+.if !__THE_ALBUM
 
 ; char draw_screen();
 .segment "XCD_BANK_02"
@@ -1648,6 +1649,8 @@ ntAddrHiTbl:
 
 .endproc
 
+.endif
+
 ; void __fastcall__ draw_padded_text(const void * data, uint8_t len, uint8_t total_len, uintptr_t ppu_address)
 .segment "CODE_2"
 
@@ -1729,6 +1732,7 @@ ntAddrHiTbl:
 ; void movement();
 .segment "XCD_BANK_01"
 
+.if !__THE_ALBUM
 .import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _wave_movement
 .import _retro_mode
 
@@ -1764,7 +1768,7 @@ ntAddrHiTbl:
 		.byte >(_cube_movement-1), >(_ship_movement-1), >(_ball_movement-1), >(_ufo_movement-1), >(_cube_movement-1), >(_spider_movement-1), >(_wave_movement-1), >(_ball_movement-1), >(_cube_movement-1)
 
 .endproc
-
+.endif
 ; void __fastcall__ music_play(uint8_t song);
 .segment "CODE_2"
 
@@ -2100,6 +2104,8 @@ end:
 	pla
 	jmp mmc3_set_prg_bank_1
 .endproc
+
+.if !__THE_ALBUM
 
 .segment "XCD_BANK_05"
 
@@ -3146,6 +3152,8 @@ drawplayer_common := _drawplayerone::common
 
 .endproc
 
+.endif
+
 .segment "CODE_2"
 
 .export crossPRGBankJump
@@ -3167,6 +3175,7 @@ drawplayer_common := _drawplayerone::common
 	JMP mmc3_set_prg_bank_1
 .endproc
 
+.if !THE_ALBUM
 ; void __fastcall__ playPCM(uint8_t sample);
 .segment "XCD_BANK_00"
 SSDPCM_ptr = ptr1
@@ -3366,9 +3375,9 @@ SSDPCM_getbyte:
 ; Real playback speed and deviation percentage are specified in parentheses
 ; TODO: get proper sample calculations for SSDPCM2
 .include "pcm_metadata.s"
-
 .endproc
 
+.endif
 ; uint16_t hexToDec (uint16_t input)
 .segment "CODE_2"
 
@@ -3803,6 +3812,8 @@ bank:
 .endproc
 
 
+.if !__THE_ALBUM
+
 ; void draw_dialog_box(const char * data);
 .segment "XCD_BANK_02"
 
@@ -3984,7 +3995,7 @@ vert_skip:
 	
 .endproc
 
-
+.endif
 ; Standard for function declaration here:
 ; void init_sprites();
 .segment "CODE"

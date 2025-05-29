@@ -95,6 +95,8 @@ main:
 	--no-print-directory
 	
 z-sides: LEVELSET = Z
+z-sides: CC65_DEFINES += -D__THE_ALBUM=1
+z-sides: CA65_DEFINES += -D__THE_ALBUM=1
 z-sides: OUTDIR = $(OUTDIR_PREFIX)/$@
 z-sides: TMPDIR = $(TMPDIR_PREFIX)/$@
 z-sides:
