@@ -48,6 +48,8 @@
 .segment "DAT_BANK_33"
 	.incbin "music_bank8.dmc"
 
+; PCM includes
+
 ; Constants
 FIRST_MUSIC_BANK = .bank(firstMusicBankPtr)
 FIRST_DMC_BANK = .bank(firstDMCBankPtr)

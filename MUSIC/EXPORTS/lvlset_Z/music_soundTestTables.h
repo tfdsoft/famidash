@@ -36,9 +36,9 @@ const char musicSoundTestString1E[ 9] = "DOMINATOR";
 const char musicSoundTestString1F[10] = "DEADLOCKED";
 const char musicSoundTestString20[10] = "FINGERDASH";
 const char musicSoundTestString21[ 4] = "DASH";
-const char musicSoundTestString22[ 6] = "DECODE";
-const char musicSoundTestString23[ 8] = "PRACTICE";
-const char musicSoundTestString24[ 6] = "WEASEL";
+const char musicSoundTestString22[ 8] = "PRACTICE";
+const char musicSoundTestString23[ 6] = "WEASEL";
+const char musicSoundTestString24[ 6] = "DECODE";
 const char musicSoundTestString25[ 9] = "THE$ANGEL";
 const char musicSoundTestString26[ 8] = "ODDITIES";
 const char musicSoundTestString27[10] = "ACCELERATE";
@@ -72,8 +72,8 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
-	NULL,
 	musicSoundTestString08,
+	NULL,
 	NULL,
 	musicSoundTestString09,
 	NULL,
@@ -107,8 +107,8 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
 	0,
-	0,
 	sizeof(musicSoundTestString08),
+	0,
 	0,
 	sizeof(musicSoundTestString09),
 	0,
@@ -227,9 +227,9 @@ const uint8_t xbgmlookuptable[] = {
 	song_deadlocked,
 	song_fingerdash,
 	song_dash,
-	song_endgame,
 	song_practice,
 	song_scheming_weasel,
+	song_endgame,
 	song_eon,
 	song_subtle_oddities,
 	song_hell,
