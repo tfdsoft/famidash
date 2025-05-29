@@ -128,19 +128,19 @@ def processMetadata(metadata : dict) -> dict:
         CoveringArtist3TextList = [i.get('CoveringArtist3Text') for i in songlist]
         CoveringArtist4TextList = [i.get('CoveringArtist4Text') for i in songlist]
 
-        totalCoveringArtist1234TextList = [i for i in CoveringArtist4TextList + CoveringArtist3TextList + CoveringArtist2TextList + CoveringArtist1TextList if i]
-        totalCoveringArtist1234TextSet = tuple(sorted(set(totalCoveringArtist1234TextList), key=lambda x : totalCoveringArtist1234TextList.index(x)))
+        totalCoveringArtistTextList = [i for i in CoveringArtist4TextList + CoveringArtist3TextList + CoveringArtist2TextList + CoveringArtist1TextList if i]
+        totalCoveringArtistTextSet = tuple(sorted(set(totalCoveringArtistTextList), key=lambda x : totalCoveringArtistTextList.index(x)))
 
         # Get indices, convert to displayable format
         upperOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in upperOrigArtistTextList]
         lowerOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in lowerOrigArtistTextList]
         processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
 
-        CoveringArtist1IdxList = [totalCoveringArtist1234TextSet.index(i) if i else None for i in CoveringArtist1TextList]
-        CoveringArtist2IdxList = [totalCoveringArtist1234TextSet.index(i) if i else None for i in CoveringArtist2TextList]
-        CoveringArtist3IdxList = [totalCoveringArtist1234TextSet.index(i) if i else None for i in CoveringArtist3TextList]
-        CoveringArtist4IdxList = [totalCoveringArtist1234TextSet.index(i) if i else None for i in CoveringArtist4TextList]
-        processedCoveringArtist1234TextList = tuple(map(convertTextToMenuFormat, totalCoveringArtist1234TextSet))
+        CoveringArtist1IdxList = [totalCoveringArtistTextSet.index(i) if i else None for i in CoveringArtist1TextList]
+        CoveringArtist2IdxList = [totalCoveringArtistTextSet.index(i) if i else None for i in CoveringArtist2TextList]
+        CoveringArtist3IdxList = [totalCoveringArtistTextSet.index(i) if i else None for i in CoveringArtist3TextList]
+        CoveringArtist4IdxList = [totalCoveringArtistTextSet.index(i) if i else None for i in CoveringArtist4TextList]
+        processedCoveringArtistTextList = tuple(map(convertTextToMenuFormat, totalCoveringArtistTextSet))
 
 
         # Convert to C
@@ -150,7 +150,7 @@ def processMetadata(metadata : dict) -> dict:
         lowerOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in lowerOrigArtistIdxList]
         lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in lowerOrigArtistIdxList]
 
-        outputCoveringArtist1234StringsList = [f'const char musicSoundCoveringArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedCoveringArtist1234TextList)]
+        outputCoveringArtistStringsList = [f'const char musicSoundCoveringArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedCoveringArtistTextList)]
         CoveringArtist1ArrayList = [f'\tmusicSoundCoveringArtistTestString{i:02X},' if i != None else '\tNULL,' for i in CoveringArtist1IdxList]
         CoveringArtist1SizeArrayList = [f'\tsizeof(musicSoundCoveringArtistTestString{i:02X}),' if i != None else '\t0,' for i in CoveringArtist1IdxList]
         CoveringArtist2ArrayList = [f'\tmusicSoundCoveringArtistTestString{i:02X},' if i != None else '\tNULL,' for i in CoveringArtist2IdxList]
@@ -213,15 +213,15 @@ def processMetadata(metadata : dict) -> dict:
         CoveringArtist2TextList = 0
         CoveringArtist3TextList = 0
         CoveringArtist4TextList = 0
-        totalCoveringArtist1234TextList = 0
-        totalCoveringArtist1234TextSet = 0
+        totalCoveringArtistTextList = 0
+        totalCoveringArtistTextSet = 0
 
         CoveringArtist1IdxList = 0
         CoveringArtist2IdxList = 0
         CoveringArtist3IdxList = 0
         CoveringArtist4IdxList = 0
 
-        outputCoveringArtist1234StringsList = 0
+        outputCoveringArtistStringsList = 0
         CoveringArtist1ArrayList = 0
         CoveringArtist1SizeArrayList = 0
         CoveringArtist2ArrayList = 0
@@ -231,7 +231,7 @@ def processMetadata(metadata : dict) -> dict:
         CoveringArtist4ArrayList = 0
         CoveringArtist4SizeArrayList = 0
         
-        processedCoveringArtist1234TextList = 0
+        processedCoveringArtistTextList = 0
 
 
     # Get SFX names
@@ -288,7 +288,7 @@ def processMetadata(metadata : dict) -> dict:
             'CoveringArtist3Sizes': CoveringArtist3SizeArrayList,
             'CoveringArtist4Ptrs': CoveringArtist4ArrayList,
             'CoveringArtist4Sizes': CoveringArtist4SizeArrayList,
-            'coveringartist1234TestStrings': outputCoveringArtist1234StringsList,
+            'coveringartistTestStrings': outputCoveringArtistStringsList,
             'sfxSoundTestStrings': sfxOutputStringsList,
             'sfxPtrs': sfxArrayList,
             'sfxSizes': sfxSizeArrayList,
@@ -639,7 +639,7 @@ if __name__ == "__main__":
             *processed_soundtest_metadata['lowerOrigArtistSizes'],
             '};',
             '', '',
-            *processed_soundtest_metadata['coveringartist1234TestStrings'],
+            *processed_soundtest_metadata['coveringartistTestStrings'],
             '', '',
             'const char* const xbgmtextsCoveringArtist1[] = {',
             *processed_soundtest_metadata['CoveringArtist1Ptrs'],
