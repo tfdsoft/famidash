@@ -126,16 +126,28 @@ def processMetadata(metadata : dict) -> dict:
     # TODO: artist tables
 
     if args.outputFolder.name == 'lvlset_Z':
+        #ORIGINAL ARTISTS 1+2
+
         # Optimize text usage
         upperOrigArtistTextList = [i.get('upperOrigArtistText') for i in songlist]
         lowerOrigArtistTextList = [i.get('lowerOrigArtistText') for i in songlist]
         totalOrigArtistTextList = [i for i in upperOrigArtistTextList + lowerOrigArtistTextList if i]
         totalOrigArtistTextSet = tuple(sorted(set(totalOrigArtistTextList), key=lambda x : totalOrigArtistTextList.index(x)))
 
+        CoveringArtist1TextList = [i.get('CoveringArtist1Text') for i in songlist]
+        CoveringArtist2TextList = [i.get('CoveringArtist2Text') for i in songlist]
+        totalCoveringArtist12TextList = [i for i in CoveringArtist2TextList + CoveringArtist1TextList if i]
+        totalCoveringArtist12TextSet = tuple(sorted(set(totalCoveringArtist12TextList), key=lambda x : totalCoveringArtist12TextList.index(x)))
+
         # Get indices, convert to displayable format
         upperOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in upperOrigArtistTextList]
         lowerOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in lowerOrigArtistTextList]
         processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
+
+        CoveringArtist1IdxList = [totalCoveringArtist12TextSet.index(i) if i else None for i in CoveringArtist1TextList]
+        CoveringArtist2IdxList = [totalCoveringArtist12TextSet.index(i) if i else None for i in CoveringArtist2TextList]
+        processedCoveringArtist12TextList = tuple(map(convertTextToMenuFormat, totalCoveringArtist12TextSet))
+
 
         # Convert to C
         outputOrigArtistStringsList = [f'const char musicSoundOrigArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedOrigArtistTextList)]
@@ -143,6 +155,42 @@ def processMetadata(metadata : dict) -> dict:
         upperOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in upperOrigArtistIdxList]
         lowerOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in lowerOrigArtistIdxList]
         lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in lowerOrigArtistIdxList]
+
+
+        outputCoveringArtist12StringsList = [f'const char musicSoundCoveringArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedCoveringArtist12TextList)]
+        CoveringArtist1ArrayList = [f'\tmusicSoundCoveringArtistTestString{i:02X},' if i != None else '\tNULL,' for i in CoveringArtist1IdxList]
+        CoveringArtist1SizeArrayList = [f'\tsizeof(musicSoundCoveringArtistTestString{i:02X}),' if i != None else '\t0,' for i in CoveringArtist1IdxList]
+        CoveringArtist2ArrayList = [f'\tmusicSoundCoveringArtistTestString{i:02X},' if i != None else '\tNULL,' for i in CoveringArtist2IdxList]
+        CoveringArtist2SizeArrayList = [f'\tsizeof(musicSoundCoveringArtistTestString{i:02X}),' if i != None else '\t0,' for i in CoveringArtist2IdxList]
+
+        #COVERING ARTISTS 1+2
+
+        # Optimize text usage
+
+
+        # Get indices, convert to displayable format
+
+        # Convert to C
+
+        #COVERING ARTISTS 3+4
+
+        # Optimize text usage
+#        upperOrigArtistTextList = [i.get('upperOrigArtistText') for i in songlist]
+#        lowerOrigArtistTextList = [i.get('lowerOrigArtistText') for i in songlist]
+#        totalOrigArtistTextList = [i for i in upperOrigArtistTextList + lowerOrigArtistTextList if i]
+#        totalOrigArtistTextSet = tuple(sorted(set(totalOrigArtistTextList), key=lambda x : totalOrigArtistTextList.index(x)))
+
+        # Get indices, convert to displayable format
+#        upperOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in upperOrigArtistTextList]
+#        lowerOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in lowerOrigArtistTextList]
+#        processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
+
+        # Convert to C
+#        outputOrigArtistStringsList = [f'const char musicSoundOrigArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedOrigArtistTextList)]
+#        upperOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in upperOrigArtistIdxList]
+#        upperOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in upperOrigArtistIdxList]
+#        lowerOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in lowerOrigArtistIdxList]
+#        lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in lowerOrigArtistIdxList]
 
         # Main system
         OrigArtistArrayList = []
@@ -168,6 +216,24 @@ def processMetadata(metadata : dict) -> dict:
         upperOrigArtistSizeArrayList = []
         lowerOrigArtistArrayList = []
         lowerOrigArtistSizeArrayList = []
+
+       # Optimize text usage
+        CoveringArtist1TextList = []
+        CoveringArtist2TextList = []
+        totalCoveringArtist12TextList = []
+        totalCoveringArtist12TextSet = []
+
+        # Get indices, convert to displayable format
+        CoveringArtist1IdxList = []
+        CoveringArtist2IdxList = []
+        processedCoveringArtist12TextList = []
+
+        # Convert to C
+        outputCoveringArtist12StringsList = []
+        CoveringArtist1ArrayList = []
+        CoveringArtist1SizeArrayList = []
+        CoveringArtist2ArrayList = []
+        CoveringArtist2SizeArrayList = []
 
     # Get SFX names
     sfxTextList = [i['text'] for i in metadata['SFX'] if 'text' in i.keys() and i['text']]
@@ -217,6 +283,11 @@ def processMetadata(metadata : dict) -> dict:
             'lowerOrigArtistPtrs': lowerOrigArtistArrayList,
             'lowerOrigArtistSizes': lowerOrigArtistSizeArrayList,
             'origartistTestStrings': outputOrigArtistStringsList,
+            'CoveringArtist1Ptrs': CoveringArtist1ArrayList,
+            'CoveringArtist1Sizes': CoveringArtist1SizeArrayList,
+            'CoveringArtist2Ptrs': CoveringArtist2ArrayList,
+            'CoveringArtist2Sizes': CoveringArtist2SizeArrayList,
+            'coveringartistTestStrings': outputCoveringArtist12StringsList,
             'sfxSoundTestStrings': sfxOutputStringsList,
             'sfxPtrs': sfxArrayList,
             'sfxSizes': sfxSizeArrayList,
@@ -624,6 +695,24 @@ if __name__ == "__main__":
             *processed_soundtest_metadata['lowerOrigArtistSizes'],
             '};',
             '', '',
+            *processed_soundtest_metadata['coveringartistTestStrings'],
+            '', '',
+            'const char* const xbgmtextsCoveringArtist1[] = {',
+            *processed_soundtest_metadata['CoveringArtist1Ptrs'],
+            '};',
+            '', '',
+            'const uint8_t xbgmtextsCoveringArtist1Size[] = {',
+            *processed_soundtest_metadata['CoveringArtist1Sizes'],
+            '};',
+            '', '',
+            'const char* const xbgmtextsCoveringArtist2[] = {',
+            *processed_soundtest_metadata['CoveringArtist2Ptrs'],
+            '};',
+            '', '',
+            'const uint8_t xbgmtextsCoveringArtist2Size[] = {',
+            *processed_soundtest_metadata['CoveringArtist2Sizes'],
+            '};',
+            '', '',
             '#else',
             '',
             'const char* const xbgmtextsUpper[] = {};',
@@ -634,6 +723,10 @@ if __name__ == "__main__":
             'const uint8_t xbgmtextsOrigArtistUpperSize[] = {};',
             'const char* const xbgmtextsOrigArtistLower[] = {};',
             'const uint8_t xbgmtextsOrigArtistLowerSize[] = {};',
+            'const char* const xbgmtextsCoveringArtist1[] = {};',
+            'const uint8_t xbgmtextsCoveringArtist1Size[] = {};',
+            'const char* const xbgmtextsCoveringArtist2[] = {};',
+            'const uint8_t xbgmtextsCoveringArtist2Size[] = {};',
             '',
             '#endif',
             '', '', '',
