@@ -54,7 +54,9 @@ void state_lvldone() {
 
 }
 
-
+#include "defines/bgm_charmap.h"
+#include "music_soundTestTables.h"
+#include "sfx_soundTestTables.h"
 
 //CODE_BANK_PUSH("XCD_BANK_05")
 
@@ -2072,48 +2074,7 @@ const unsigned char coveringartists4_size[] = {
 
 
 
-
-
-const uint8_t xbgm_lookup_table2[] = {
-	song_menu_theme,
-	song_stereo_madness,
-	song_back_on_track,
-	song_polargeist,
-	song_dry_out,
-	song_base_after_base,
-	song_cant_let_go,
-	song_jumper,
-	song_time_machine,
-	song_cycles,
-	song_xstep, 
-	song_clutterfunk,
-	song_theory_of_everything, 
-	song_electroman_adventures, 
-	song_clubstep,
-	song_electrodynamix,
-	song_hexagon_force,
-	song_blast_processing,
-	song_toe_2,
-	song_geometrical_dominator,
-	song_deadlocked,
-	song_fingerdash,
-	song_dash,
-	song_practice,
-	song_scheming_weasel,	
-	song_endgame,
-	song_eon,
-	song_subtle_oddities,
-	song_hell,
-	song_death_moon,
-	song_eighto,
-	song_whats_a_future_funk,
-};
-
-
-
-
-
-//#include "defines/bgm_charmap.h"
+#include "defines/bgm_charmap.h"
 void bgmtest() {
 	song = 0;
 	temptemp6 = 0; 	
@@ -2218,7 +2179,7 @@ void bgmtest() {
 			return;
 		}
 		if (joypad1.press_a) {
-				if (!temptemp6) { music_play(xbgm_lookup_table2[song]); temptemp6 = 1; songplaying = 1; }
+				if (!temptemp6) { music_play(xbgmlookuptable[song]); temptemp6 = 1; songplaying = 1; }
 				else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
 		}					
 		if (joypad1.press_select) { 
@@ -2243,7 +2204,7 @@ void bgmtest() {
 		}
 		if (joypad1.press_a) {
 			if (music_queue[0] == 0xFF) { 
-				music_play(xbgm_lookup_table2[song]); 
+				music_play(xbgmlookuptable[song]); 
 				music_queue[0] = song;
 				update_text2();
 			}
@@ -2284,8 +2245,6 @@ void bgmtest() {
 	}
 }
 
-#include "music_soundTestTables.h"
-#include "sfx_soundTestTables.h"
 
 void refresh_queue_screen() {
 		if (!tmp4 || tmp4 == 0xFF) {
@@ -2380,7 +2339,7 @@ void colordec() {
 }	
 
 
-#include "defines/mainmenu_charmap.h"
+#include "defines/bgm_charmap.h"
 
 
 const unsigned char gameboytext1[]="  GREY";
@@ -2424,7 +2383,7 @@ void set_fun_settings() {
 
 
 
-#include "defines/color1_charmap.h"
+#include "defines/bgm_charmap.h"
 
 /*
 	Refreshes level name & number
@@ -2437,7 +2396,7 @@ void refreshmenu_part2() {
 
 }
 
-#include "defines/endlevel_charmap.h"
+#include "defines/bgm_charmap.h"
 void lvl_done_update() {
 
 }	
@@ -2528,7 +2487,7 @@ void play_next_queue() {
 
 			music_queue[MAX_SONG_QUEUE_SIZE] = 0xFF;
 
-			if (music_queue[0] != 0xFF) { music_play(xbgm_lookup_table2[music_queue[0]]); }
+			if (music_queue[0] != 0xFF) { music_play(xbgmlookuptable[music_queue[0]]); }
 			else { famistudio_music_stop(); songplaying = 0; }
 				
 			//refresh_queue_screen();
@@ -2538,7 +2497,7 @@ void play_next_queue() {
 
 void check_if_music_stopped() {
 	if (!queuemode) {
-		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgm_lookup_table2[song]); }
+		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgmlookuptable[song]); }
 	}
 	else {
 		if (famistudio_song_speed == 0x80) {
