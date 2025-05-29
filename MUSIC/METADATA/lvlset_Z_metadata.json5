@@ -9,6 +9,7 @@
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
 			lowerText: "MADNESS",
+			lowerOrigArtistText: "FOREVERBOUND",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Stereo Madness",
