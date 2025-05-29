@@ -124,14 +124,14 @@ def processMetadata(metadata : dict) -> dict:
         # Get indices, convert to displayable format
         upperOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in upperOrigArtistTextList]
         lowerOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in lowerOrigArtistTextList]
-        processedTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
+        processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
 
         # Convert to C
-        outputOrigArtistStringsList = [f'const char musicSoundTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedTextList)]
-        upperOrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in upperIdxList]
-        upperOrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in upperIdxList]
-        lowerOrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in lowerIdxList]
-        lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in lowerIdxList]
+        outputOrigArtistStringsList = [f'const char musicSoundOrigArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedOrigArtistTextList)]
+        upperOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in upperOrigArtistIdxList]
+        upperOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in upperOrigArtistIdxList]
+        lowerOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in lowerOrigArtistIdxList]
+        lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in lowerOrigArtistIdxList]
 
 
 
@@ -172,10 +172,15 @@ def processMetadata(metadata : dict) -> dict:
             'songNames': songNameList,
             'vsSongNames': vsSongNameList,
             'soundTestStrings': outputStringsList,
+            'origartistTestStrings': outputOrigArtistStringsList,
             'upperPtrs': upperArrayList,
             'upperSizes': upperSizeArrayList,
             'lowerPtrs': lowerArrayList,
             'lowerSizes': lowerSizeArrayList,
+            'upperOrigArtistPtrs': upperOrigArtistArrayList,
+            'upperOrigArtistSizes': upperOrigArtistSizeArrayList,
+            'lowerOrigArtistPtrs': lowerOrigArtistArrayList,
+            'lowerOrigArtistSizes': lowerOrigArtistSizeArrayList,
 
             'sfxSoundTestStrings': sfxOutputStringsList,
             'sfxPtrs': sfxArrayList,
@@ -502,17 +507,39 @@ if __name__ == "__main__":
         'const char* const xbgmtextsLower[] = {',
         *processed_soundtest_metadata['lowerPtrs'],
         '};',
-        '',
+        '', '',
         'const uint8_t xbgmtextsLowerSize[] = {',
         *processed_soundtest_metadata['lowerSizes'],
         '};',
-        '',
+        '', '',
+        *processed_soundtest_metadata['origartistTestStrings'],
+        '', '',
+        'const char* const xbgmtextsOrigArtistUpper[] = {',
+        *processed_soundtest_metadata['upperOrigArtistPtrs'],
+        '};',
+        '', '',
+        'const uint8_t xbgmtextsOrigArtistUpperSize[] = {',
+        *processed_soundtest_metadata['upperOrigArtistSizes'],
+        '};',
+        '', '',
+        'const char* const xbgmtextsOrigArtistLower[] = {',
+        *processed_soundtest_metadata['lowerOrigArtistPtrs'],
+        '};',
+        '', '',
+        'const uint8_t xbgmtextsOrigArtistLowerSize[] = {',
+        *processed_soundtest_metadata['lowerOrigArtistSizes'],
+        '};',
+        '', '',
         '#else',
         '',
         'const char* const xbgmtextsUpper[] = {};',
         'const uint8_t xbgmtextsUpperSize[] = {};',
         'const char* const xbgmtextsLower[] = {};',
         'const uint8_t xbgmtextsLowerSize[] = {};',
+        'const char* const xbgmtextsOrigArtistUpper[] = {};',
+        'const uint8_t xbgmtextsOrigArtistUpperSize[] = {};',
+        'const char* const xbgmtextsOrigArtistLower[] = {};',
+        'const uint8_t xbgmtextsOrigArtistLowerSize[] = {};',
         '',
         '#endif',
         '', '', '',

@@ -153,6 +153,7 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString2A,
 };
 
+
 const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString0B),
 	sizeof(musicSoundTestString0C),
@@ -188,12 +189,171 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString2A),
 };
 
+
+const char musicSoundOrigArtistTestString00[ 6] = "ROBTOP";
+const char musicSoundOrigArtistTestString01[12] = "FOREVERBOUND";
+const char musicSoundOrigArtistTestString02[ 4] = "DJVI";
+const char musicSoundOrigArtistTestString03[ 4] = "STEP";
+const char musicSoundOrigArtistTestString04[10] = "WATERFLAME";
+const char musicSoundOrigArtistTestString05[ 7] = "DJ$NATE";
+const char musicSoundOrigArtistTestString06[ 4] = "F777";
+const char musicSoundOrigArtistTestString07[ 3] = "MDK";
+
+
+const char* const xbgmtextsOrigArtistUpper[] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+
+const uint8_t xbgmtextsOrigArtistUpperSize[] = {
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+};
+
+
+const char* const xbgmtextsOrigArtistLower[] = {
+	musicSoundOrigArtistTestString00,
+	musicSoundOrigArtistTestString01,
+	musicSoundOrigArtistTestString02,
+	musicSoundOrigArtistTestString03,
+	musicSoundOrigArtistTestString02,
+	musicSoundOrigArtistTestString02,
+	musicSoundOrigArtistTestString02,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString02,
+	musicSoundOrigArtistTestString02,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString05,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString05,
+	musicSoundOrigArtistTestString05,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString05,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString06,
+	musicSoundOrigArtistTestString07,
+	musicSoundOrigArtistTestString07,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+
+const uint8_t xbgmtextsOrigArtistLowerSize[] = {
+	sizeof(musicSoundOrigArtistTestString00),
+	sizeof(musicSoundOrigArtistTestString01),
+	sizeof(musicSoundOrigArtistTestString02),
+	sizeof(musicSoundOrigArtistTestString03),
+	sizeof(musicSoundOrigArtistTestString02),
+	sizeof(musicSoundOrigArtistTestString02),
+	sizeof(musicSoundOrigArtistTestString02),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString02),
+	sizeof(musicSoundOrigArtistTestString02),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString05),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString05),
+	sizeof(musicSoundOrigArtistTestString05),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString05),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString06),
+	sizeof(musicSoundOrigArtistTestString07),
+	sizeof(musicSoundOrigArtistTestString07),
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+};
+
+
 #else
 
 const char* const xbgmtextsUpper[] = {};
 const uint8_t xbgmtextsUpperSize[] = {};
 const char* const xbgmtextsLower[] = {};
 const uint8_t xbgmtextsLowerSize[] = {};
+const char* const xbgmtextsOrigArtistUpper[] = {};
+const uint8_t xbgmtextsOrigArtistUpperSize[] = {};
+const char* const xbgmtextsOrigArtistLower[] = {};
+const uint8_t xbgmtextsOrigArtistLowerSize[] = {};
 
 #endif
 
