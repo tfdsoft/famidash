@@ -5,306 +5,219 @@
 			lowerText: "MENU THEME",
 			lowerOrigArtistText: "ROBTOP",	
 			CoveringArtist1Text: "ZENITH302",
-			CoveringArtist3Text: "ZENITH302",
-			vsSystemEnabled: false
+		},
+		{
+			fmsSongName: "Menu Theme B Sides",
+			lowerText: "MENU B SIDES",
+			lowerOrigArtistText: "ROBTOP",	
+			upperOrigArtistText: "GD COLON",	
+			CoveringArtist1Text: "USERSNIPER",
 		},
 		{
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
 			lowerText: "MADNESS",
 			lowerOrigArtistText: "FOREVERBOUND",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Stereo Madness",
-				trackAuthor: {
-					original: "ForeverBound",
-					cover: "Zenith302, UserSniper",
-				},
-				durationNTSC: 85550,
-				durationPAL: 102840
-			}
+			CoveringArtist1Text: "ZENITH302",
+			CoveringArtist2Text: "USERSNIPER",
 		},
 		{
 			fmsSongName: "Back on Track",
 			upperText: "BACK ON",
 			lowerText: "TRACK",
-			lowerOrigArtistText: "DJVI",			
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Back On Track",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "aquamarine.gay",
-				},
-				durationNTSC: 82817,
-				durationPAL: 99540
-			}
+			lowerOrigArtistText: "DJVI",
+			CoveringArtist1Text: "AQUAMARINE",
 		},
 		{
 			fmsSongName: "Polargeist",
 			lowerText: "POLARGEIST",
-			lowerOrigArtistText: "STEP",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Polargeist",
-				trackAuthor: {
-					original: "Step",
-					cover: "UserSniper, Zenith302, Vikrinox",
-				},
-				durationNTSC: 90700,
-				durationPAL: 109000
-			}
+			lowerOrigArtistText: "STEP W",
+			CoveringArtist1Text: "ZENITH302",
+			CoveringArtist2Text: "USERSNIPER",
+			CoveringArtist3Text: "VIKRINOX",
 		},
 		{
 			fmsSongName: "Dry Out",
 			lowerText: "DRY OUT",
 			lowerOrigArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Dry Out",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "UserSniper",
-				},
-				durationNTSC: 81433,
-				durationPAL: 97880
-			}
+			CoveringArtist1Text: "USERSNIPER",
 		},
 		{
 			fmsSongName: "Base after Base",
 			upperText: "BASE AFTER",
 			lowerText: "BASE",
 			lowerOrigArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Base After Base",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "Zenith302, UserSniper, Vikrinox, alexmush",
-				},
-				durationNTSC: 85000,
-				durationPAL: 102160
-			}
+			CoveringArtist1Text: "VIKRINOX",
+			CoveringArtist2Text: "USERSNIPER",
+			CoveringArtist3Text: "ZENITH302",
+			CoveringArtist4Text: "ALEXMUSH",
 		},
 		{
 			fmsSongName: "Can't Let Go",
 			lowerText: "CANT LET GO",
 			lowerOrigArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Cant Let Go ~ Can't Let Go",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "UserSniper, alexmush",
-				},
-				durationNTSC: 80750,
-				durationPAL: 97040
-			}
+			CoveringArtist1Text: "USERSNIPER",
+			CoveringArtist2Text: "ALEXMUSH",
 		},
 		{
 			fmsSongName: "Jumper",
 			lowerText: "JUMPER",
 			lowerOrigArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Jumper",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "zukinnyk, UserSniper, Zenith302",
-				},
-				durationNTSC: 86467,
-				durationPAL: 104100
-			}
+			CoveringArtist1Text: "ZENITH302",
+			CoveringArtist2Text: "ZUKINNYK",
+			CoveringArtist3Text: "USERSNIPER",
 		},
 		{
 			fmsSongName: "Time Machine",
 			lowerText: "TIME MACHINE",
 			lowerOrigArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Time Machine",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Zenith302, Vikrinox, alexmush",
-				},
-				durationNTSC: 96067,
-				durationPAL: 115460
-			}
+			CoveringArtist1Text: "ZENITH302",
+			CoveringArtist2Text: "VIKRINOX",
+			CoveringArtist3Text: "ALEXMUSH",
 		},
 		{
 			fmsSongName: "Cycles",
 			lowerText: "CYCLES",
 			lowerOrigArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Cycles",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "aquamarine.gay, alexmush",
-				},
-				durationNTSC: 85933,
-				durationPAL: 103280
-			}
+			CoveringArtist1Text: "AQUAMARINE",
+			CoveringArtist2Text: "ALEXMUSH",
 		},
 		{
 			fmsSongName: "xStep",
 			lowerText: "XSTEP",
 			lowerOrigArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "xStep",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "Vikrinox, alexmush",
-				},
-				durationNTSC: 82350,
-				durationPAL: 98980
-			}
+			CoveringArtist1Text: "VIKRINOX",
+			CoveringArtist2Text: "ALEXMUSH",
 		},
 		{
 			fmsSongName: "Clutterfunk",
 			lowerText: "CLUTTERFUNK",
 			lowerOrigArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Clutterfunk",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Zenith302, aquamarine.gay, Vikrinox",
-				},
-				durationNTSC: 96583,
-				durationPAL: 116080
-			}
+			CoveringArtist1Text: "AQUAMARINE",
+			CoveringArtist2Text: "VIKRINOX",
+			CoveringArtist3Text: "ZENITH302",
 		},
 		{
 			fmsSongName: "Theory of Everything",
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING",
 			lowerOrigArtistText: "DJ NATE",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Theory Of Everything",
-				trackAuthor: {
-					original: "Dj-Nate",
-					cover: "leejh20, UserSniper, Vikrinox, Zenith302",
-				},
-				durationNTSC: 89000,
-				durationPAL: 106960
-			}
+			CoveringArtist1Text: "VIKRINOX",
+			CoveringArtist2Text: "USERSNIPER",
+			CoveringArtist3Text: "ZENITH302",			
+			CoveringArtist4Text: "LEEJH20",			
 		},
 		{
 			fmsSongName: "Electroman Adventures",
 			upperText: "ELECTROMAN",
 			lowerText: "ADVENTURES",
 			lowerOrigArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Electroman Adventures",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "cloud54, UserSniper, alexmush",
-				},
-				durationNTSC: 87800,
-				durationPAL: 105520
-			}
+			CoveringArtist1Text: "CLOUD54",
+			CoveringArtist2Text: "USERSNIPER",
+			CoveringArtist3Text: "ALEXMUSH",
+			CoveringArtist4Text: "CRAFTY JUMPER",
 		},
 		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
 			lowerOrigArtistText: "DJ NATE",
-			vsSystemEnabled: true
+			CoveringArtist1Text: "CLOUD54",
 		},
 		{
 			fmsSongName: "Electrodynamix",
 			lowerText: "ELECTRODYNAMIX",
 			lowerOrigArtistText: "DJ NATE",
-			vsSystemEnabled: true
+			CoveringArtist1Text: "AQUAMARINE",
 		},
 		{
 			fmsSongName: "Hexagon Force",
 			upperText: "HEXAGON",
 			lowerText: "FORCE",
 			lowerOrigArtistText: "WATERFLAME",
-			vsSystemEnabled: true
+			CoveringArtist1Text: "VIKRINOX",
+			CoveringArtist2Text: "ALEXMUSH",
 		},
 		{
 			fmsSongName: "Blast processing",
 			upperText: "BLAST",
 			lowerText: "PROCESSING",
 			lowerOrigArtistText: "WATERFLAME",
-			vsSystemEnabled: true
+			CoveringArtist1Text: "ELANGEL378",
 		},
 		{
 			fmsSongName: "TOE 2",
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING 2",
 			lowerOrigArtistText: "DJ NATE",
-			vsSystemEnabled: true
+			CoveringArtist1Text: "VIKRINOX",
 		},
 		{
 			fmsSongName: "Geometrical Dominator",
 			upperText: "GEOMETRICAL",
 			lowerText: "DOMINATOR",
 			lowerOrigArtistText: "WATERFLAME",
-			vsSystemEnabled: true
+			CoveringArtist1Text: "CLOUD54",
+			CoveringArtist2Text: "VIKRINOX",
 		},
 		{
 			fmsSongName: "Deadlocked",
 			lowerText: "DEADLOCKED",
 			lowerOrigArtistText: "F777",
-			vsSystemEnabled: true
+			CoveringArtist1Text: "USERSNIPER",
+			CoveringArtist2Text: "VIKRINOX",
 		},
 		{
 			fmsSongName: "Fingerdash",
 			lowerText: "FINGERDASH",
 			lowerOrigArtistText: "MDK",
-			vsSystemEnabled: true
+			CoveringArtist1Text: "ELANGEL378",
 		},
 		{
 			fmsSongName: "Dash",
 			lowerText: "DASH",
 			lowerOrigArtistText: "MDK",
-			vsSystemEnabled: true
+			CoveringArtist1Text: "CRAFTY JUMPER",
 		},
+		{
+			fmsSongName: "The Challenge",
+			upperText: "THE",
+			lowerText: "CHALLENGE",
+			lowerOrigArtistText: "ROBTOP",
+			CoveringArtist1Text: "ELANGEL378",
+		},		
 		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",
-			vsSystemEnabled: false,
-			nsfData: {
-				trackLabel: "Practice ~ Stay Inside Me",
-				trackAuthor: {
-					original: "OcularNebula",
-					cover: "UserSniper",
-				},
-				durationNTSC: 239817,
-				durationPAL: 288380,
-				looped: true
-			}
+			lowerOrigArtistText: "OCULAR NEBULA",
+			CoveringArtist1Text: "USERSNIPER",
 		},		
 		{
 			fmsSongName: "Scheming Weasel",
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
-			vsSystemEnabled: false
+			lowerOrigArtistText: "KEVIN MACLEOD",
+			CoveringArtist1Text: "USERSNIPER",
 		},	
+		{
+			fmsSongName: "against the odds redux",
+			upperText: "8BIT AGAINST",
+			lowerText: "THE ODDS REDUX",
+			lowerOrigArtistText: "ELITEFERREX",
+			CoveringArtist1Text: "ELANGEL378",
+		},	
+		{
+			fmsSongName: "accelerate",
+			lowerText: "ACCELERATE",
+			lowerOrigArtistText: "ACID NOTATION",
+			CoveringArtist1Text: "ELANGEL378",
+		},
 		{
 			fmsSongName: "endgame",
 			lowerText: "DECODE",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Decode ~ Endgame",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Vikrinox",
-				},
-				durationNTSC: 79283,
-				durationPAL: 95280
-			}
 		},
 		{
 			fmsSongName: "EON",
 			lowerText: "THE ANGEL",
-			vsSystemEnabled: false
 		},			
 		{
 			fmsSongName: "subtle oddities",
@@ -312,24 +225,17 @@
 			lowerText: "ODDITIES",
 		},
 		{
-			fmsSongName: "Hell",
-			lowerText: "ACCELERATE",
-		},
-		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
-			vsSystemEnabled: true
 		},
 		{
 			fmsSongName: "eighto",
 			lowerText: "EIGHTO",
-			vsSystemEnabled: true
 		},
 		{
 			fmsSongName: "What's a Future Funk?",
 			upperText: "WHATS A",
 			lowerText: "FUTURE FUNK",
-			vsSystemEnabled: true
 		},			
 	],
 	SFX: [
