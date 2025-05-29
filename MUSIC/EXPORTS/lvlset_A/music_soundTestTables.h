@@ -190,6 +190,7 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString37,
 };
 
+
 const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString10),
 	sizeof(musicSoundTestString11),
