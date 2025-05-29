@@ -27,7 +27,7 @@
 //
 // This isn't an int main() because i don't use the terminal to
 // debug lmao
-#if LEVELSET != 'Z'
+#if !__THE_ALBUM
 
 void main(){
     ppu_off();
@@ -280,16 +280,7 @@ void main(){
 				}
 				break;
 			}
-			case 0x02: {
-				state_game();
-				use_auto_chrswitch = 0;
-				break;
-			}
-			case 0x03: {
-				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
-				state_lvldone();
-				break;
-			}
+
 			case 0x04: {
 				mmc3_set_prg_bank_1(GET_BANK(bgmtest));
 				bgmtest();

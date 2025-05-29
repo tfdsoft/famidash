@@ -344,6 +344,153 @@ const uint8_t xbgmtextsOrigArtistLowerSize[] = {
 };
 
 
+const char musicSoundCoveringArtistTestString00[ 9] = "ZENITH302";
+
+
+const char* const xbgmtextsCoveringArtist1[] = {
+	musicSoundCoveringArtistTestString00,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+
+const uint8_t xbgmtextsCoveringArtist1Size[] = {
+	sizeof(musicSoundCoveringArtistTestString00),
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+};
+
+
+const char* const xbgmtextsCoveringArtist2[] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};
+
+
+const uint8_t xbgmtextsCoveringArtist2Size[] = {
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+};
+
+
 #else
 
 const char* const xbgmtextsUpper[] = {};
@@ -354,6 +501,10 @@ const char* const xbgmtextsOrigArtistUpper[] = {};
 const uint8_t xbgmtextsOrigArtistUpperSize[] = {};
 const char* const xbgmtextsOrigArtistLower[] = {};
 const uint8_t xbgmtextsOrigArtistLowerSize[] = {};
+const char* const xbgmtextsCoveringArtist1[] = {};
+const uint8_t xbgmtextsCoveringArtist1Size[] = {};
+const char* const xbgmtextsCoveringArtist2[] = {};
+const uint8_t xbgmtextsCoveringArtist2Size[] = {};
 
 #endif
 
