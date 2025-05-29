@@ -4,7 +4,7 @@ CODE_BANK_PUSH("XCD_BANK_03")
 #include "defines/nametable/menunametable_XCD03.c"
 
 
-#if LEVELSET != 'Z'
+#if !__THE_ALBUM
 #include "menustates/common_xcd_bank_03.c"
 #include "menustates/levelselection.c"
 #include "menustates/progressbar.c"
@@ -16,7 +16,7 @@ CODE_BANK_PUSH("XCD_BANK_03")
 
 CODE_BANK("XCD_BANK_05")
 
-#if LEVELSET != 'Z'
+#if !__THE_ALBUM
 #include "menustates/bgmtest.c"
 #endif
 
@@ -28,7 +28,7 @@ CODE_BANK("XCD_BANK_06")
 #include "menustates/playmain.c"
 #endif
 
-#if LEVELSET != 'Z'
+#if !__THE_ALBUM
 #include "menustates/funsettings.c"
 #include "menustates/refreshmenu.c"
 #include "menustates/progressbar_pt2.c"
@@ -37,7 +37,7 @@ CODE_BANK("XCD_BANK_02")
 
 
 
-#if LEVELSET != 'Z'
+#if !__THE_ALBUM
 #include "defines/nametable/menunametable_XCD02.c"
 #include "defines/palette/palettes_XCD02.c"
 #include "menustates/credits.c"

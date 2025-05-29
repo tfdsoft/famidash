@@ -245,7 +245,7 @@ unsigned char practice_famistudio_registers[11 * MAX_PRACTICE_POINTS];
 
 unsigned char practice_music_sync;
 
-#if LEVELSET == 'Z'
+#if __THE_ALBUM
 #define MAX_SONG_QUEUE_SIZE 20
 unsigned char music_queue[MAX_SONG_QUEUE_SIZE];
 #endif
@@ -456,7 +456,7 @@ uint8_t tempplat;
 
 uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 
-#if LEVELSET == 'Z'
+#if __THE_ALBUM
 uint8_t queuemode;
 #endif
 

@@ -15,7 +15,7 @@
 #include "mapper.h"  // MMC3 functions
 // #include "mapper_irq.h" // MMC3 IRQ functions
 #include "nesdash.h" // custom stuff made specifically for famidash
-#if LEVELSET != 'Z'
+#if !__THE_ALBUM
 #include "famistudio_cc65.h" // sound driver
 #else
 #include "album-famistudio_cc65.h" // sound driver
@@ -53,7 +53,7 @@
 
 #include "defines/palette/palettes_PRG.c"
 
-#if LEVELSET != 'Z'
+#if !__THE_ALBUM
 
 #include "METATILES/metatiles.h"  // metatile defines
 #include "defines/sprites.h"    // metasprite defines
@@ -93,7 +93,7 @@
 // THE GAME STATE DEFINES //
 
 
-#if LEVELSET != 'Z'
+#if !__THE_ALBUM
 #include "gamestates/state_savefile_validate.h"
 #include "gamestates/state_game.h"
 #include "gamestates/state_lvldone.h"
