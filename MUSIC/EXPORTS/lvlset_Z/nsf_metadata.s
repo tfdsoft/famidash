@@ -14,8 +14,8 @@ RIFFChunkStart "tlbl"
 .asciiz "Clutterfunk"
 .asciiz "Theory Of Everything"
 .asciiz "Electroman Adventures"
-.asciiz "Decode ~ Endgame"
 .asciiz "Practice ~ Stay Inside Me"
+.asciiz "Decode ~ Endgame"
 .asciiz "Death SFX"
 .asciiz "Click SFX"
 .asciiz "LEVEL COMPLETE! SFX"
@@ -27,8 +27,6 @@ RIFFChunkStart "tlbl"
 .asciiz "Start Level SFX"
 .asciiz "Invalid SFX"
 .asciiz "Achievement Get SFX"
-.asciiz "Geometry Dash Voice Clip"
-.asciiz "FIRE IN THE HOLE! Voice Clip"
 
 RIFFChunkStart "taut"
 .asciiz "Original by ForeverBound, covered by Zenith302, UserSniper"
@@ -44,8 +42,8 @@ RIFFChunkStart "taut"
 .asciiz "Original by Waterflame, covered by Zenith302, aquamarine.gay, Vikrinox"
 .asciiz "Original by Dj-Nate, covered by leejh20, UserSniper, Vikrinox, Zenith302"
 .asciiz "Original by Waterflame, covered by cloud54, UserSniper, alexmush"
-.asciiz "Original by Waterflame, covered by Vikrinox"
 .asciiz "Original by OcularNebula, covered by UserSniper"
+.asciiz "Original by Waterflame, covered by Vikrinox"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
@@ -57,33 +55,31 @@ RIFFChunkStart "taut"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
-.asciiz "VA: MDK"
-.asciiz "VA: Joe"
 
 RIFFChunkStart "time"
 .if REGION = 0
 .dword 85550, 82817, 90700, 81433
 .dword 85000, 80750, 86467, 96067
 .dword 85933, 82350, 96583, 89000
-.dword 87800, 79283, 479634, 383
+.dword 87800, 479634, 79283, 383
 .dword 50, 3167, 683, 100
 .dword 683, 683, 650, 967
-.dword 633, 950, 1150, 1650
+.dword 633, 950
 .else
 .dword 102840, 99540, 109000, 97880
 .dword 102160, 97040, 104100, 115460
 .dword 103280, 98980, 116080, 106960
-.dword 105520, 95280, 576760, 460
+.dword 105520, 576760, 95280, 460
 .dword 40, 3020, 700, 120
 .dword 820, 820, 680, 920
-.dword 640, 1140, 1100, 1650
+.dword 640, 1140
 .endif
 
 RIFFChunkStart "fade"
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
-.dword 0, 0, 4294967295, 0
+.dword 0, 4294967295, 0, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
-.dword 0, 0, 0, 0
+.dword 0, 0
