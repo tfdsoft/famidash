@@ -123,19 +123,45 @@ def processMetadata(metadata : dict) -> dict:
     lowerArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in lowerIdxList]
     lowerSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in lowerIdxList]
 
-    OrigArtistTextList = [i.get('originalArtist') for i in songlist]
-    totalOrigArtistTextList = [i for i in OrigArtistTextList if i]
-    totalOrigArtistTextSet = tuple(sorted(set(totalOrigArtistTextList), key=lambda x : totalOrigArtistTextList.index(x)))
+    # TODO: artist tables
 
-    # Get indices, convert to displayable format
-    OrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in OrigArtistTextList]
-    processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
+    if args.outputFolder.name == 'lvlset_Z':        
+        # Optimize text usage
+        upperOrigArtistTextList = [i.get('upperOrigArtistText') for i in songlist]
+        lowerOrigArtistTextList = [i.get('lowerOrigArtistText') for i in songlist]
+        totalOrigArtistTextList = [i for i in upperOrigArtistTextList + lowerOrigArtistTextList if i]
+        totalOrigArtistTextSet = tuple(sorted(set(totalOrigArtistTextList), key=lambda x : totalOrigArtistTextList.index(x)))
 
-    # Convert to C
-    outputOrigArtistStringsList = [f'const char musicSoundOrigArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedOrigArtistTextList)]
-    OrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in OrigArtistIdxList]
-    OrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in OrigArtistIdxList]
+        # Get indices, convert to displayable format
+        upperOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in upperOrigArtistTextList]
+        lowerOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in lowerOrigArtistTextList]
+        processedTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
 
+        # Convert to C
+        outputOrigArtistStringsList = [f'const char musicSoundTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedTextList)]
+        upperOrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in upperIdxList]
+        upperOrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in upperIdxList]
+        lowerOrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in lowerIdxList]
+        lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in lowerIdxList]
+
+        # Main system
+        OrigArtistArrayList = []
+        OrigArtistSizeArrayList = []
+
+    else:
+        # Main branch system of one artist
+        OrigArtistTextList = [i.get('originalArtist') for i in songlist]
+        totalOrigArtistTextList = [i for i in OrigArtistTextList if i]
+        totalOrigArtistTextSet = tuple(sorted(set(totalOrigArtistTextList), key=lambda x : totalOrigArtistTextList.index(x)))
+
+        # Get indices, convert to displayable format
+        OrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in OrigArtistTextList]
+        processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
+
+        # Convert to C
+        outputOrigArtistStringsList = [f'const char musicSoundOrigArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedOrigArtistTextList)]
+        OrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in OrigArtistIdxList]
+        OrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in OrigArtistIdxList]
 
 
     # Get SFX names
