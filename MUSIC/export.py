@@ -215,7 +215,13 @@ if __name__ == "__main__":
                 help='Output folder for the include files')
     args = parser.parse_args()
     
-    modulePath = musicFolder / "MODULES" / "music_master.fms"
+    print(args.outputFolder)
+    
+    if args.outputFolder.name == 'lvlset_Z':
+        modulePath = musicFolder / "MODULES" / "the album.fms"
+    else:
+        modulePath = musicFolder / "MODULES" / "music_master.fms"
+    
     metadataPath = args.metadata
 
     fsCmd = args.famistudioCommand

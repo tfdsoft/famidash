@@ -80,7 +80,7 @@ endif
 .PHONY: default clean distclean build nsf vs-sys main b-sides
 
 build: $(OUTDIR) $(OUTDIR)/$(NAME).nes
-all: main vs-sys b-sides c-sides
+all: main vs-sys b-sides c-sides z-sides
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
 
 main: LEVELSET = A
@@ -88,6 +88,17 @@ main: OUTDIR = $(OUTDIR_PREFIX)/$@
 main: TMPDIR = $(TMPDIR_PREFIX)/$@
 main:
 	@echo Building main...
+	@$(MAKE) build LEVELSET=$(LEVELSET) \
+	CC65_DEFINES=$(CC65_DEFINES) \
+	CA65_DEFINES=$(CA65_DEFINES) \
+	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
+	--no-print-directory
+	
+z-sides: LEVELSET = Z
+z-sides: OUTDIR = $(OUTDIR_PREFIX)/$@
+z-sides: TMPDIR = $(TMPDIR_PREFIX)/$@
+z-sides:
+	@echo Building the album...
 	@$(MAKE) build LEVELSET=$(LEVELSET) \
 	CC65_DEFINES=$(CC65_DEFINES) \
 	CA65_DEFINES=$(CA65_DEFINES) \

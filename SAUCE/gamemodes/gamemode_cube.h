@@ -13,7 +13,7 @@ void cube_movement(){
 	//if(currplayer_vel_y < 0x400){
 
 	fallspeed_big = CUBE_MAX_FALLSPEED;
-	#if LEVELSET == 'C'
+	#if LEVELSET == 'Z'
 	if (level == everyend) fallspeed_big += 0x0100;
 	#endif
 	fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;

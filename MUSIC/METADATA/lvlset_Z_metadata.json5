@@ -1,0 +1,239 @@
+{
+	songs: [
+		{
+			fmsSongName: "emehT uneM",
+			lowerText: "EMEHT UNEM",
+			vsSystemEnabled: false
+		},
+		{
+			fmsSongName: "Practice",
+			lowerText: "PRACTICE",
+			vsSystemEnabled: false,
+			nsfData: {
+				trackLabel: "Practice ~ Stay Inside Me",
+				trackAuthor: {
+					original: "OcularNebula",
+					cover: "UserSniper"
+				},
+				durationNTSC: 239817,
+				durationPAL: 288380,
+				looped: true
+			}
+		},		
+		{
+			fmsSongName: "Scheming Weasel",
+			upperText: "SCHEMING",
+			lowerText: "WEASEL",
+			vsSystemEnabled: false
+		},	
+		{
+			fmsSongName: "Clubstep",
+			lowerText: "CLUBSTEP",
+			vsSystemEnabled: false
+		},		
+		{
+			fmsSongName: "atthespeedoflight",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT",
+			
+		},
+		{
+			fmsSongName: "atthespeedoflight2",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT 2",
+			
+		},
+		{
+			fmsSongName: "atthespeedoflight3",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT 3",
+		},
+		{
+			fmsSongName: "atthespeedoflightfull",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT FULL"
+		},
+		{
+			fmsSongName: "lost",
+			lowerText: "LOST",
+		},		
+		{
+			fmsSongName: "kesobomb",
+			lowerText: "KESOBOMB",
+			/* no vs system to speak of */
+		},
+		{
+			fmsSongName: "Ninox",
+			lowerText: "NINOX"
+		},
+		{
+			fmsSongName: "Speed Racer",
+			lowerText: "SPEED RACER"
+		},
+		{
+			fmsSongName: "Magic Touch",
+			lowerText: "MAGIC TOUCH"
+		},
+		{
+			fmsSongName: "holography",
+			lowerText: "HOLOGRAPHY",
+			vsSystemEnabled: true
+		},		
+		{
+			fmsSongName: "Pyrophoric",
+			lowerText: "PYROPHORIC"
+		},
+		{
+			fmsSongName: "subtle oddities",
+			upperText: "SUBTLE",
+			lowerText: "ODDITIES"
+		},
+		{
+			fmsSongName: "Hell",
+			lowerText: "ACCELERATE"
+		},
+		{
+			fmsSongName: "Kratos",
+			lowerText: "KRATOS",
+			vsSystemEnabled: true
+		},	
+		{
+			fmsSongName: "every end",
+			lowerText: "EVERY END",
+			vsSystemEnabled: true
+		},	
+		{
+			fmsSongName: "Windfall",
+			lowerText: "WINDFALL",
+			vsSystemEnabled: true
+		},		
+	],
+	SFX: [
+		{
+			text: "DEATH",
+			nsfData: {
+				trackLabel: "Death SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 383,
+				durationPAL: 460
+			}
+		},
+		{
+			text: "CLICK",
+			nsfData: {
+				trackLabel: "Click SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 50,
+				durationPAL: 40
+			}
+		},
+		{
+			text: "LEVEL COMPLETE",
+			nsfData: {
+				trackLabel: "LEVEL COMPLETE! SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 3167,
+				durationPAL: 3020
+			}
+		},
+		{
+			text: "COIN",
+			nsfData: {
+				trackLabel: "Coin SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 683,
+				durationPAL: 700
+			}
+		},
+		{
+			text: "CHEST OPEN",
+			nsfData: {
+				trackLabel: "Chest Open SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 100,
+				durationPAL: 120
+			}
+		},
+		{
+			text: "ORBS",
+			nsfData: {
+				trackLabel: "Orbs SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 683,
+				durationPAL: 820
+			}
+		},
+		{
+			text: "DIAMONDS",
+			nsfData: {
+				trackLabel: "Diamonds SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 683,
+				durationPAL: 820
+			}
+		},
+		{
+			text: "EXIT LEVEL",
+			nsfData: {
+				trackLabel: "Exit Level SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 650,
+				durationPAL: 680
+			}
+		},
+		{
+			text: "START LEVEL",
+			nsfData: {
+				trackLabel: "Start Level SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 967,
+				durationPAL: 920
+			}
+		},
+		{
+			text: "INVALID",
+			nsfData: {
+				trackLabel: "Invalid SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 633,
+				durationPAL: 640
+			}
+		},
+		{
+			text: "ACHIEVEMENT GET",
+			nsfData: {
+				trackLabel: "Achievement Get SFX",
+				trackAuthor: "UserSniper",
+				durationNTSC: 950,
+				durationPAL: 1140
+			}
+		}
+	],
+	PCM: [
+		{
+			segment: "PCM_BANK",
+			path: "MUSIC/PCM/SSDPCM2-geometryDash.pcm",
+			sampleRateNTSC: 4,
+			sampleRatePAL: 3,
+			nsfData: {
+				trackLabel: "Geometry Dash Voice Clip",
+				trackAuthor: "VA: MDK",
+				durationNTSC: 1150,
+				durationPAL: 1100
+			}
+		},
+		{
+			segment: "PCM_BANK_B",
+			path: "MUSIC/PCM/SSDPCM2-fire.pcm",
+			sampleRateNTSC: 10,
+			sampleRatePAL: 8,
+			nsfData: {
+				trackLabel: "FIRE IN THE HOLE! Voice Clip",
+				trackAuthor: "VA: Joe",
+				durationNTSC: 1650,
+				durationPAL: 1650
+			}
+		}
+	],
+	dpcmAligner: "dpcm_C-sides"
+}
