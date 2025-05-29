@@ -247,6 +247,11 @@ unsigned char practice_famistudio_registers[11 * MAX_PRACTICE_POINTS];
 
 unsigned char practice_music_sync;
 
+#if LEVELSET == 'Z'
+#define MAX_SONG_QUEUE_SIZE 20
+unsigned char music_queue[MAX_SONG_QUEUE_SIZE];
+#endif
+
 #define poweroffcheck SRAM_VALIDATE[3]
 // Regular NES RAM
 #pragma bss-name("BSS")
@@ -453,6 +458,10 @@ uint8_t gravity_mod;
 uint8_t tempplat;
 
 uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
+
+#if LEVELSET == 'Z'
+uint8_t queuemode;
+#endif
 
 uint8_t donotresetrng;
 
