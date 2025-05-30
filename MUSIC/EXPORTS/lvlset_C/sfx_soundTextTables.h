@@ -2,45 +2,45 @@
 
 #if !__VS_SYSTEM
 
-const char sfxSoundTestString00[ 5] = "DEATH";
-const char sfxSoundTestString01[ 5] = "CLICK";
-const char sfxSoundTestString02[14] = "LEVEL$COMPLETE";
-const char sfxSoundTestString03[ 4] = "COIN";
-const char sfxSoundTestString04[10] = "CHEST$OPEN";
-const char sfxSoundTestString05[ 4] = "ORBS";
-const char sfxSoundTestString06[ 8] = "DIAMONDS";
-const char sfxSoundTestString07[10] = "EXIT$LEVEL";
-const char sfxSoundTestString08[11] = "START$LEVEL";
-const char sfxSoundTestString09[ 7] = "INVALID";
-const char sfxSoundTestString0A[15] = "ACHIEVEMENT$GET";
+const char sfxSoundTextString00[ 5] = "DEATH";
+const char sfxSoundTextString01[ 5] = "CLICK";
+const char sfxSoundTextString02[14] = "LEVEL$COMPLETE";
+const char sfxSoundTextString03[ 4] = "COIN";
+const char sfxSoundTextString04[10] = "CHEST$OPEN";
+const char sfxSoundTextString05[ 4] = "ORBS";
+const char sfxSoundTextString06[ 8] = "DIAMONDS";
+const char sfxSoundTextString07[10] = "EXIT$LEVEL";
+const char sfxSoundTextString08[11] = "START$LEVEL";
+const char sfxSoundTextString09[ 7] = "INVALID";
+const char sfxSoundTextString0A[15] = "ACHIEVEMENT$GET";
 
 
 const char* const sfxtexts[] = {
-	sfxSoundTestString00,
-	sfxSoundTestString01,
-	sfxSoundTestString02,
-	sfxSoundTestString03,
-	sfxSoundTestString04,
-	sfxSoundTestString05,
-	sfxSoundTestString06,
-	sfxSoundTestString07,
-	sfxSoundTestString08,
-	sfxSoundTestString09,
-	sfxSoundTestString0A,
+	sfxSoundTextString00,
+	sfxSoundTextString01,
+	sfxSoundTextString02,
+	sfxSoundTextString03,
+	sfxSoundTextString04,
+	sfxSoundTextString05,
+	sfxSoundTextString06,
+	sfxSoundTextString07,
+	sfxSoundTextString08,
+	sfxSoundTextString09,
+	sfxSoundTextString0A,
 };
 
 const uint8_t sfxtextSizes[] = {
-	sizeof(sfxSoundTestString00),
-	sizeof(sfxSoundTestString01),
-	sizeof(sfxSoundTestString02),
-	sizeof(sfxSoundTestString03),
-	sizeof(sfxSoundTestString04),
-	sizeof(sfxSoundTestString05),
-	sizeof(sfxSoundTestString06),
-	sizeof(sfxSoundTestString07),
-	sizeof(sfxSoundTestString08),
-	sizeof(sfxSoundTestString09),
-	sizeof(sfxSoundTestString0A),
+	sizeof(sfxSoundTextString00),
+	sizeof(sfxSoundTextString01),
+	sizeof(sfxSoundTextString02),
+	sizeof(sfxSoundTextString03),
+	sizeof(sfxSoundTextString04),
+	sizeof(sfxSoundTextString05),
+	sizeof(sfxSoundTextString06),
+	sizeof(sfxSoundTextString07),
+	sizeof(sfxSoundTextString08),
+	sizeof(sfxSoundTextString09),
+	sizeof(sfxSoundTextString0A),
 };
 
 #else
