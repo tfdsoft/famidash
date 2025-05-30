@@ -300,6 +300,12 @@
 			CoveringArtist1Text: "ELANGEL378",
 		},
 		{
+			fmsSongName: "check out",
+			lowerText: "CHECK OUT",
+			lowerOrigArtistText: "MADHOUSEDUDE",
+			CoveringArtist1Text: "SUSSYSY",
+		},
+		{
 			fmsSongName: "Clubstep Full",
 			upperText: "CLUBSTEP",
 			lowerText: "FULL VERSION",
@@ -319,6 +325,13 @@
 			lowerText: "FULL VERSION",
 			lowerOrigArtistText: "MDK",
 			CoveringArtist1Text: "CRAFTY JUMPER",
+		},
+		{
+			fmsSongName: "Dance of the violins",
+			upperText: "DANCE OF",
+			lowerText: "THE VIOLINS",
+			lowerOrigArtistText: "F777",
+			CoveringArtist1Text: "ELANGEL378",
 		},
 		{
 			fmsSongName: "Death Moon",
@@ -359,6 +372,12 @@
 			lowerText: "ENDGAME",
 			lowerOrigArtistText: "WATERFLAME",
 			CoveringArtist1Text: "VIKRINOX",
+		},
+		{
+			fmsSongName: "endorphins",
+			lowerText: "ENDORPHINS",
+			lowerOrigArtistText: "DUOCORE",
+			CoveringArtist1Text: "SEAGLOWINGPRO",
 		},
 		{
 			fmsSongName: "Fingerbang",
@@ -417,6 +436,12 @@
 			fmsSongName: "haunted woods",
 			lowerText: "HAUNTED WOODS",
 			lowerOrigArtistText: "WATERFLAME",
+			CoveringArtist1Text: "SUSSYSY",
+		},
+		{
+			fmsSongName: "holography",
+			lowerText: "HOLOGRAPHY",
+			lowerOrigArtistText: "GARLAGAN",
 			CoveringArtist1Text: "SUSSYSY",
 		},
 		{
