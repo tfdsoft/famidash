@@ -3206,6 +3206,16 @@ const unsigned char * const Metasprites[]={
 	Bigboy_Portal,
 	Speed_SLOW_Portal,
 	MINICOIN_SPRITE1,
+	nometa,
+	nometa,
+	nometa,
+	nometa,
+	nometa,
+	nometa,
+	nometa,
+	nometa,
+	nometa,
+	nometa,
 	};
 
 
@@ -3326,6 +3336,16 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	MINI_COIN_SPRITES,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 	
 	
 };
@@ -3447,6 +3467,16 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	sizeof(MINI_COIN_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
 };
 
 #pragma rodata-name (pop)
