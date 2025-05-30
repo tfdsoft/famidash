@@ -15,6 +15,7 @@ jobs:
         - { name: VS-System ROM, target: vs-sys }
         - { name: B-Sides MMC3 ROM, target: b-sides }
         - { name: C-Sides MMC3 ROM, target: c-sides }
+        - { name: The Album MMC3 ROM, target: z-sides }
 
     steps:
       - name: Checkout

@@ -6,8 +6,13 @@
 .ifndef __VS_SYSTEM
 	__VS_SYSTEM = 0
 .endif
+.ifndef __THE_ALBUM
+	__THE_ALBUM = 0
+.endif
 .define VS_SYSTEM ::__VS_SYSTEM
 .define ___VS_SYSTEM ::__VS_SYSTEM
+.define THE_ALBUM ::__THE_ALBUM
+.define ___THE_ALBUM ::__THE_ALBUM
 ; The latter is to keep the C compilers happy
 
 ;REMOVED initlib
