@@ -3,8 +3,8 @@ void code_checker();
 #if !__VS_SYSTEM
 #include "defines/charmap/bgm_charmap.h"
 #endif
-#include "music_soundTestTables.h"
-#include "sfx_soundTestTables.h"
+#include "music_soundTextTables.h"
+#include "sfx_soundTextTables.h"
 
 const unsigned char bgmtestscreen[];
 const char TEXT_debug_mode[];

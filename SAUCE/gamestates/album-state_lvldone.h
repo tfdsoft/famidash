@@ -55,8 +55,8 @@ void state_lvldone() {
 }
 
 #include "defines/bgm_charmap.h"
-#include "music_soundTestTables.h"
-#include "sfx_soundTestTables.h"
+#include "music_soundTextTables.h"
+#include "sfx_soundTextTables.h"
 
 //CODE_BANK_PUSH("XCD_BANK_05")
 
