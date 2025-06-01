@@ -213,6 +213,23 @@
 			parallaxDisable: true
 		},
 		{
+			level: "powertrip",
+			upperText: "POWER",
+			lowerText: "TRIP",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_power_trip",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "danceofviolins",
 			upperText: "DANCE OF",
 			lowerText: "VIOLINS",
