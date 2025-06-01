@@ -183,6 +183,10 @@
 			lowerText: "ENDORPHINS",
 		},			
 		{
+			fmsSongName: "Power Trip",
+			lowerText: "POWER TRIP",
+		},			
+		{
 			fmsSongName: "What's a Future Funk?",
 			upperText: "WHATS A",
 			lowerText: "FUTURE FUNK",

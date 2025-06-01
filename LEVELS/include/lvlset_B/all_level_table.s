@@ -18,6 +18,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_funnygameholiday)
 	.byte .lobyte(level_data_rainbowdust)
 	.byte .lobyte(level_data_subtleoddities)
+	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_danceofviolins)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_xx)
@@ -52,6 +53,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_funnygameholiday)
 	.byte .hibyte(level_data_rainbowdust)
 	.byte .hibyte(level_data_subtleoddities)
+	.byte .hibyte(level_data_powertrip)
 	.byte .hibyte(level_data_danceofviolins)
 	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_xx)
@@ -86,6 +88,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_funnygameholiday))
 	.byte .lobyte(.bank(level_data_rainbowdust))
 	.byte .lobyte(.bank(level_data_subtleoddities))
+	.byte .lobyte(.bank(level_data_powertrip))
 	.byte .lobyte(.bank(level_data_danceofviolins))
 	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_xx))
@@ -150,6 +153,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_funnygameholiday)
 	.byte .lobyte(sprite_data_rainbowdust)
 	.byte .lobyte(sprite_data_subtleoddities)
+	.byte .lobyte(sprite_data_powertrip)
 	.byte .lobyte(sprite_data_danceofviolins)
 	.byte .lobyte(sprite_data_highlife)
 	.byte .lobyte(sprite_data_xx)
@@ -184,6 +188,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_funnygameholiday)
 	.byte .hibyte(sprite_data_rainbowdust)
 	.byte .hibyte(sprite_data_subtleoddities)
+	.byte .hibyte(sprite_data_powertrip)
 	.byte .hibyte(sprite_data_danceofviolins)
 	.byte .hibyte(sprite_data_highlife)
 	.byte .hibyte(sprite_data_xx)
@@ -218,6 +223,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_funnygameholiday))
 	.byte .lobyte(.bank(sprite_data_rainbowdust))
 	.byte .lobyte(.bank(sprite_data_subtleoddities))
+	.byte .lobyte(.bank(sprite_data_powertrip))
 	.byte .lobyte(.bank(sprite_data_danceofviolins))
 	.byte .lobyte(.bank(sprite_data_highlife))
 	.byte .lobyte(.bank(sprite_data_xx))
@@ -255,6 +261,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B0)		; funnygameholiday
 	.byte .lobyte($0000AB)		; rainbowdust
 	.byte .lobyte($0000C0)		; subtleoddities
+	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($000090)		; xx
@@ -291,6 +298,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B0)		; funnygameholiday
 	.byte .hibyte($0000AB)		; rainbowdust
 	.byte .hibyte($0000C0)		; subtleoddities
+	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($000090)		; xx
@@ -327,6 +335,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B0)		; funnygameholiday
 	.byte .bankbyte($0000AB)		; rainbowdust
 	.byte .bankbyte($0000C0)		; subtleoddities
+	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($000090)		; xx
