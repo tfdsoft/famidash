@@ -701,6 +701,12 @@
 			CoveringArtist4Text: "ALEXMUSH",
 		},		
 		{
+			fmsSongName: "Tiny Tunes",
+			lowerText: "TINY TUNES",
+			lowerOrigArtistText: "FANTOMENK",
+			CoveringArtist1Text: "SEAGLOWINGPRO",
+		},	
+		{
 			fmsSongName: "ultimatedestruction",
 			upperText: "ULTIMATE",
 			lowerText: "DESTRUCTION",
