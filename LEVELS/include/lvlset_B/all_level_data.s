@@ -533,7 +533,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3539
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 8036 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 8152 bytes
 	.export level_data_powertrip
 	level_data_powertrip:
 	; Header
@@ -549,7 +549,7 @@
 		.byte $0F ;_______________ Starting ground color
 		.byte 27 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/powertrip.lz.bin" ; Size: 4090
+		.incbin "EXPORTS/powertrip.lz.bin" ; Size: 4206
 
 
 .segment "DAT_BANK_1E"	; Total bank size: 8148 bytes
@@ -559,7 +559,7 @@
 		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3711
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8181 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8186 bytes
 	.export level_data_funnygameholiday
 	level_data_funnygameholiday:
 	; Header
@@ -595,7 +595,7 @@
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2236
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7973 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8153 bytes
 	.export level_data_pyrophoric
 	level_data_pyrophoric:
 	; Header
