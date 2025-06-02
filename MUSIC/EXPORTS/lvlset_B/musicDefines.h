@@ -22,10 +22,11 @@
 #define song_kesobomb 21
 #define song_hell 22
 #define song_stereo_madness 23
-#define song_scheming_weasel 24
-#define song_ninox 25
-#define song_speed_racer 26
-#define song_lost 27
-#define song_dance_of_the_violins 28
+#define song_ninox 24
+#define song_speed_racer 25
+#define song_lost 26
+#define song_dance_of_the_violins 27
+#define song_tiny_tunes 28
 #define song_cant_let_go 29
-#define song_max 30
+#define song_scheming_weasel 30
+#define song_max 31

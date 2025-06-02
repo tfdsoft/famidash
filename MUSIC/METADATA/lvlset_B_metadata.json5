@@ -187,6 +187,11 @@
 			lowerText: "FUTURE FUNK",
 			vsSystemEnabled: true
 		},			
+		{
+			fmsSongName: "Tiny Tunes",
+			lowerText: "TINY TUNES",
+			vsSystemEnabled: true
+		},			
 		
 	],
 	SFX: [

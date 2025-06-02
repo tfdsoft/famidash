@@ -162,6 +162,22 @@
 			parallaxDisable: true
 		},		
 		{
+			level: "tinytunes",
+			lowerText: "TINY TUNES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 6,
+			songID: "song_tiny_tunes",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},		
+		{
 			level: "funnygameholiday",
 			upperText: "FUNNYGAME",
 			lowerText: "HOLIDAY",
@@ -214,8 +230,7 @@
 		},
 		{
 			level: "powertrip",
-			upperText: "POWER",
-			lowerText: "TRIP",
+			lowerText: "POWER TRIP",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "A",
