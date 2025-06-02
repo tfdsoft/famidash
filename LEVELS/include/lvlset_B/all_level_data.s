@@ -21,11 +21,11 @@
 		.incbin "EXPORTS/highlife.lz.0.bin" ; Size: 8188
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8167 bytes
 	.export level_data_futurefunk_4
 	level_data_futurefunk_4:
 	; Level data
-		.incbin "EXPORTS/futurefunk.lz.1.bin" ; Size: 8166
+		.incbin "EXPORTS/futurefunk.lz.1.bin" ; Size: 8167
 
 
 .segment "DAT_BANK_02"	; Total bank size: 8161 bytes
@@ -595,11 +595,11 @@
 		.incbin "EXPORTS/powertrip.lz.bin" ; Size: 4206
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7226 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7237 bytes
 	.export level_data_futurefunk_5
 	level_data_futurefunk_5:
 	; Level data
-		.incbin "EXPORTS/futurefunk.lz.2.bin" ; Size: 3927
+		.incbin "EXPORTS/futurefunk.lz.2.bin" ; Size: 3938
 
 	.export level_data_funnygameholiday
 	level_data_funnygameholiday:
