@@ -54,22 +54,14 @@
 			lowerText: "OF LIGHT FULL"
 		},
 		{
+			fmsSongName: "EON",
+			lowerText: "EON",
+			
+		},
+		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
 		},		
-		{
-			fmsSongName: "kesobomb",
-			lowerText: "KESOBOMB",
-			/* no vs system to speak of */
-		},
-		{
-			fmsSongName: "Ninox",
-			lowerText: "NINOX"
-		},
-		{
-			fmsSongName: "Speed Racer",
-			lowerText: "SPEED RACER"
-		},
 		{
 			fmsSongName: "Magic Touch",
 			lowerText: "MAGIC TOUCH"

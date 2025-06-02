@@ -33,7 +33,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_thermodynamix)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_futurefunk)
-	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_eighto)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_sonicwave)
@@ -68,7 +67,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_thermodynamix)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_futurefunk)
-	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_eighto)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_sonicwave)
@@ -103,7 +101,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_thermodynamix))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_futurefunk))
-	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_eighto))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_sonicwave))
@@ -116,8 +113,7 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_motion_3)
 	.byte .lobyte(level_data_futurefunk_4)
 	.byte .lobyte(level_data_futurefunk_5)
-	.byte .lobyte(level_data_eon_6)
-	.byte .lobyte(level_data_sonicwave_7)
+	.byte .lobyte(level_data_sonicwave_6)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_subtleoddities_0)
@@ -126,8 +122,7 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_motion_3)
 	.byte .hibyte(level_data_futurefunk_4)
 	.byte .hibyte(level_data_futurefunk_5)
-	.byte .hibyte(level_data_eon_6)
-	.byte .hibyte(level_data_sonicwave_7)
+	.byte .hibyte(level_data_sonicwave_6)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_subtleoddities_0))
@@ -136,8 +131,7 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_motion_3))
 	.byte .lobyte(.bank(level_data_futurefunk_4))
 	.byte .lobyte(.bank(level_data_futurefunk_5))
-	.byte .lobyte(.bank(level_data_eon_6))
-	.byte .lobyte(.bank(level_data_sonicwave_7))
+	.byte .lobyte(.bank(level_data_sonicwave_6))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
@@ -168,7 +162,6 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_thermodynamix)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_futurefunk)
-	.byte .lobyte(sprite_data_eon)
 	.byte .lobyte(sprite_data_eighto)
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_sonicwave)
@@ -203,7 +196,6 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_thermodynamix)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_futurefunk)
-	.byte .hibyte(sprite_data_eon)
 	.byte .hibyte(sprite_data_eighto)
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_sonicwave)
@@ -238,7 +230,6 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_thermodynamix))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_futurefunk))
-	.byte .lobyte(.bank(sprite_data_eon))
 	.byte .lobyte(.bank(sprite_data_eighto))
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_sonicwave))
@@ -276,7 +267,6 @@ _level_lengths_lo:
 	.byte .lobyte($00008E)		; thermodynamix
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($0001DD)		; futurefunk
-	.byte .lobyte($000286)		; eon
 	.byte .lobyte($000078)		; eighto
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($0000FB)		; sonicwave
@@ -313,7 +303,6 @@ _level_lengths_md:
 	.byte .hibyte($00008E)		; thermodynamix
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($0001DD)		; futurefunk
-	.byte .hibyte($000286)		; eon
 	.byte .hibyte($000078)		; eighto
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($0000FB)		; sonicwave
@@ -350,7 +339,6 @@ _level_lengths_hi:
 	.byte .bankbyte($00008E)		; thermodynamix
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($0001DD)		; futurefunk
-	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($000078)		; eighto
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($0000FB)		; sonicwave
