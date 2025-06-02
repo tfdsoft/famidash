@@ -600,6 +600,12 @@
 			CoveringArtist1Text: "CRAFTY JUMPER",
 		},
 		{
+			fmsSongName: "Press Start",
+			lowerText: "PRESS START",
+			lowerOrigArtistText: "MDK",
+			CoveringArtist1Text: "CRAFTY JUMPER",
+		},
+		{
 			fmsSongName: "Problematic",
 			lowerText: "PROBLEMATIC",
 			lowerOrigArtistText: "NIGHTKILLA",
