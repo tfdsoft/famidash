@@ -13,18 +13,16 @@ const char musicSoundTextString07[ 8] = "OF$LIGHT";
 const char musicSoundTextString08[13] = "OF$LIGHT$PT$2";
 const char musicSoundTextString09[13] = "OF$LIGHT$PT$3";
 const char musicSoundTextString0A[13] = "OF$LIGHT$FULL";
-const char musicSoundTextString0B[ 4] = "LOST";
-const char musicSoundTextString0C[ 8] = "KESOBOMB";
-const char musicSoundTextString0D[ 5] = "NINOX";
-const char musicSoundTextString0E[11] = "SPEED$RACER";
-const char musicSoundTextString0F[11] = "MAGIC$TOUCH";
-const char musicSoundTextString10[10] = "HOLOGRAPHY";
-const char musicSoundTextString11[10] = "PYROPHORIC";
-const char musicSoundTextString12[ 8] = "ODDITIES";
-const char musicSoundTextString13[10] = "ACCELERATE";
-const char musicSoundTextString14[ 6] = "KRATOS";
-const char musicSoundTextString15[ 9] = "EVERY$END";
-const char musicSoundTextString16[ 8] = "WINDFALL";
+const char musicSoundTextString0B[ 3] = "EON";
+const char musicSoundTextString0C[ 4] = "LOST";
+const char musicSoundTextString0D[11] = "MAGIC$TOUCH";
+const char musicSoundTextString0E[10] = "HOLOGRAPHY";
+const char musicSoundTextString0F[10] = "PYROPHORIC";
+const char musicSoundTextString10[ 8] = "ODDITIES";
+const char musicSoundTextString11[10] = "ACCELERATE";
+const char musicSoundTextString12[ 6] = "KRATOS";
+const char musicSoundTextString13[ 9] = "EVERY$END";
+const char musicSoundTextString14[ 8] = "WINDFALL";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -36,8 +34,6 @@ const char* const xbgmtextsUpper[] = {
 	musicSoundTextString01,
 	musicSoundTextString01,
 	musicSoundTextString01,
-	NULL,
-	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -59,8 +55,6 @@ const uint8_t xbgmtextsUpperSize[] = {
 	sizeof(musicSoundTextString01),
 	sizeof(musicSoundTextString01),
 	sizeof(musicSoundTextString01),
-	0,
-	0,
 	0,
 	0,
 	0,
@@ -93,8 +87,6 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTextString12,
 	musicSoundTextString13,
 	musicSoundTextString14,
-	musicSoundTextString15,
-	musicSoundTextString16,
 };
 
 
@@ -117,8 +109,6 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTextString12),
 	sizeof(musicSoundTextString13),
 	sizeof(musicSoundTextString14),
-	sizeof(musicSoundTextString15),
-	sizeof(musicSoundTextString16),
 };
 
 
@@ -146,10 +136,8 @@ const uint8_t xbgmlookuptable[] = {
 	song_atthespeedoflight2,
 	song_atthespeedoflight3,
 	song_atthespeedoflightfull,
+	song_eon,
 	song_lost,
-	song_kesobomb,
-	song_ninox,
-	song_speed_racer,
 	song_magic_touch,
 	song_holography,
 	song_pyrophoric,
