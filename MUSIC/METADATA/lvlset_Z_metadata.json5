@@ -212,6 +212,14 @@
 			CoveringArtist1Text: "ELANGEL378",
 		},
 		{
+			fmsSongName: "Airborne Robots",
+			upperText: "AIRBORNE",
+			lowerText: "ROBOTS",
+			lowerOrigArtistText: "F777",
+			CoveringArtist1Text: "CRAFTY JUMPER",
+			CoveringArtist2Text: "ELANGEL378",
+		},
+		{
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT PT 1",
