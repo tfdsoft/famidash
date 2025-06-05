@@ -345,7 +345,6 @@ void state_demo(){
 	
 	do {
 		oam_clear();
-       	mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
 		check_if_music_stopped_3();
@@ -365,7 +364,6 @@ void state_demo(){
 
 	do {
 		oam_clear();
-		mouse_and_cursor();
 		newrand();
 	    kandoframecnt++;
 		check_if_music_stopped_3();

@@ -405,7 +405,6 @@ CODE_BANK_POP()
 
 CODE_BANK_PUSH("XCD_BANK_04")
 void lvl_done_update();
-void mouse_and_cursor();
 void refresh_queue_screen();
 void text_stuff();
 void play_next_queue();
@@ -464,12 +463,12 @@ void state_lvldone() {
 
 //CODE_BANK_PUSH("XCD_BANK_05")
 
-const unsigned char bgmtestscreen[];
+const unsigned char bgmscreen[];
 const unsigned char SoundQueue[];
 
 
 #include "defines/bgm_charmap.h"
-void bgmtest() {
+void state_soundtest() {
 	song = 0;
 	temptemp6 = 0; 	
 	#define sfx tmp4
@@ -492,7 +491,6 @@ void bgmtest() {
 		music_update();
 		oam_clear();
 		check_if_music_stopped();
-		mouse_and_cursor();
 		 // read the first controller
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	

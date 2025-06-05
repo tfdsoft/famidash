@@ -83,7 +83,6 @@ CODE_BANK_POP()
 CODE_BANK_PUSH("XCD_BANK_01")
 
 void setdefaultoptions();
-void mouse_and_cursor();
 
 void state_exit(){
 }
