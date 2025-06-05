@@ -40,8 +40,8 @@ CODE_BANK("XCD_BANK_02")
 #if !__THE_ALBUM
 #include "defines/nametable/menunametable_XCD02.c"
 #include "defines/palette/palettes_XCD02.c"
-#include "menustates/credits.c"
 #include "menustates/instructions.c"
 #include "menustates/settings.c"
 #endif
+#include "menustates/credits.c"
 CODE_BANK_POP()

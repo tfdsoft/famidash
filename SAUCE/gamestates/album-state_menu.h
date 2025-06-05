@@ -1,31 +1,17 @@
 
 CODE_BANK_PUSH("XCD_BANK_03")
 
+void dec_mouse_timer();
 void check_if_music_stopped();
 void clear_shit();
-void movement();
-void bounds_check();
-void title_cube_shit();
-void title_robot_shit();
-void title_mini_wave_shit();
-void title_wave_shit();
-void title_ufo_shit();
-void title_ball_shit();
-void title_swing_shit();
-void title_ship_shit();
 void refreshmenu();
 void refreshmenu_part2();
 void loop_routine_update();
-void dec_mouse_timer();
-void roll_new_mode();
 void settings();
-void set_title_icon();
 void state_demo();
 void mouse_and_cursor();
 void colorinc();
 void colordec();
-void leveldec();
-void levelinc();
 void set_settings();
 void start_the_level();
 extern uint8_t famistudio_song_speed;
@@ -357,18 +343,12 @@ void state_menu() {
 
 	mmc3_set_8kb_chr(MENUBANK);
 
-	set_title_icon();
-	set_title_icon();
-
-	
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 	
 	
 	
 //	set_scroll_x(0);
 //    set_scroll_y(0);
-
-	kandowatchesyousleep = 0;
 
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
@@ -377,7 +357,6 @@ void state_menu() {
 	menuMusicCurrentlyPlaying = 1;
 
 	settingvalue = 0;
-	practice_point_count = 0;
 	
 	// Enable SRAM write
 	POKE(0xA001, 0x80);
@@ -427,26 +406,10 @@ void state_menu() {
 		
 	}	
 
-	//roll_new_mode();
 	kandoframecnt = 0;
-	teleport_output = 0Xff;
-	currplayer_y_small = 160;
-	currplayer_x_small = 0;
 	titlecolor3 = color3;
 	titlecolor2 = color2;
 	titlecolor1 = color1;
-/*	if (all_levels_complete != 0xFC) {
-		one_vram_buffer(0x19, NTADR_A(27,2));
-		one_vram_buffer(0x1A, NTADR_A(28,2));
-		one_vram_buffer(0x2D, NTADR_A(27,3));
-		one_vram_buffer(0x4D, NTADR_A(28,3));
-	}
-	else {
-		one_vram_buffer(0x1B, NTADR_A(27,2));
-		one_vram_buffer(0x1C, NTADR_A(28,2));
-		one_vram_buffer(0x1D, NTADR_A(27,3));
-		one_vram_buffer(0x1E, NTADR_A(28,3));
-	}	*/
 	while (!(joypad1.press & (PAD_START | PAD_A))){
 
 		check_if_music_stopped2();
@@ -462,11 +425,6 @@ void state_menu() {
 		newrand();
 		newrand();
 		newrand();
-		//temp values:
-		//teleport_output
-		//currplayer_gravity
-		//tmp2 tmp7
-		//tmpi8
 
 
 
@@ -499,107 +457,14 @@ void state_menu() {
 		dec_mouse_timer();
 		tmp3 = 0;	
 		
-		if (joypad1.press_right) {
-			//if (menuselection == 6) menuselection = 0;
-			//else menuselection++;
-			//tmp3--;
-		}
-		if (joypad1.press_left) {
-			//if (menuselection == 0) menuselection = 6;
-			//else menuselection--;
-			//tmp3++;
-		}
-
-		if (tmp3 ) {    // menu selection incremented
-			tmp4 = menuselection; ++tmp4;
-			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-			if (menuselection != 5) {
-				one_vram_buffer('a', tmp5);
-				one_vram_buffer('b', addloNOC(tmp5, 1));
-				one_vram_buffer(' ', NTADR_A(26, 2));
-				one_vram_buffer(' ', NTADR_A(26, 3));
-				
-			}
-			else {
-				one_vram_buffer(0x6F, NTADR_A(26, 2));
-				one_vram_buffer(0x7F, NTADR_A(26, 3));
-				
-			}
-
-			tmp4 += tmp3;   // Get the old index
-			tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-			one_vram_buffer(' ', tmp5);
-			one_vram_buffer(' ', addloNOC(tmp5, 1));
-		}
-/*		if (joypad1.press_select) {
-				tmp2 = 0;
-				gameState = 0;
-				famistudio_music_stop();
-				music_update();
-				menuMusicCurrentlyPlaying = 0;
-				ppu_wait_nmi();
-				return;
-		} */
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
 		edit_irq_table(low_byte(tmp8), 2); 
-
-/*
-		if (joypad1.press_b) {
-			oam_clear();
-			gameState = 0xFE;
-			return;
-		}
-*/
-		if (mouse.left_press) {
-			if ((uint8_t)(currplayer_y_small - 8) <= (uint8_t)mouse.y && (uint8_t)(currplayer_y_small + 8) >= (uint8_t)mouse.y) {
-				if (mouse.x >= currplayer_x_small && (uint8_t)(currplayer_x_small + 16) >= mouse.x) {
-					if (titlemode != 0xFF) {
-						titlemode = 0xFF;		//crossPRGBankJump8(playPCM, 1); 
-						sfx_play(sfx_death,0);
-						ballframe = 0;
-					}
-				}
-			}
-				
-			
-			if ((mouse.y >= 0x5E && mouse.y <= 0x7A)) {
-				if (mouse.x >= 0x41 && mouse.x <= 0x5A) {
-//					menuselection = 6; break;
-				}
-				else if (mouse.x >= 0x6F && mouse.x <= 0x8C) {
-					menuselection = 0; break;
-				}
-				else if (mouse.x >= 0xA1 && mouse.x <= 0xBA) {
-//					menuselection = 1; break;
-				}
-			}				
-			else if ((mouse.y >= 0x8C && mouse.y <= 0x9B)) {
-				if (mouse.x >= 0x46 && mouse.x <= 0x56) {
-//					menuselection = 2; break;
-				}
-				else if (mouse.x >= 0x76 && mouse.x <= 0x86) {
-//					menuselection = 3; break;
-				}				
-				else if (mouse.x >= 0xA6 && mouse.x <= 0xB6) {
-//					menuselection = 4; break;
-				}				
-			}
-			else if ((mouse.y >= 0x0D && mouse.y <= 0x1C)) {
-				if (mouse.x >= 0xD6 && mouse.x <= 0xE4) {
-//					menuselection = 5; break;
-				}
-			}
-		}	
-		
-		
 	}	
-//	set_scroll_y(0);		does this break anything?
-//	set_scroll_x(0);
+
 	if (joypad1.select) cursedmusic = 0x40;
 	oam_clear();
 	ppu_wait_nmi();
 	tmp7 = newrand() & 255;
-	normalorcommlevels = 1;
 	switch (menuselection) {
 		case 0x00:
 			gameState = 0x04;
@@ -607,127 +472,6 @@ void state_menu() {
 	};
 	
 }
-
-
-void leveldec() {
-	--level;
-	//if (level == 0x0B) level = 0x0A;	//THEORY OF EVERYTHING SKIP
-	low_byte(tmp8) = 0xff;
-	tmp4 = 0;
-	if (!normalorcommlevels) {
-		if (level == 0xFF){
-			level = LEVEL_COUNT-1;
-			
-		}
-	}
-	else {
-		if (level < LEVEL_COUNT) level = LEVEL_COUNT2 - 1;
-	}
-	//break;
-	crossPRGBankJump0(refreshmenu);
-}			
-
-void levelinc() {
-	++level;
-	//if (level == 0x0B) level = 0x0C;	//THEORY OF EVERYTHING SKIP
-	low_byte(tmp8) = 0xff;
-	tmp4 = 1;
-	if (!normalorcommlevels) {
-		if (level >= LEVEL_COUNT){
-			level = 0x00;
-			
-		}
-	}
-	else {
-		if (level >= LEVEL_COUNT2){
-			level = LEVEL_COUNT;
-		}
-	}
-	crossPRGBankJump0(refreshmenu);
-}			
-
-void start_the_level() {
-	sfx_play(sfx_start_level, 0);
-	famistudio_music_stop();
-	if (tmp4) edit_irq_table(high_byte(tmp8),2);
-	else edit_irq_table(low_byte(tmp8),2);
-	tmpA = 0;
-	do {
-		oam_clear();
-		draw_both_progress_bars();
-		ppu_wait_nmi();
-		music_update();
-	} while (++tmpA < 30);
-	gameState = 0x02;
-	pal_fade_to(4,0);
-	menuMusicCurrentlyPlaying = 0;
-}			
-
-void set_title_icon() {
-		if (titlemode < 4) {
-			while (tmp7 > 26) {
-				tmp7 = newrand() & 31;
-			}
-			titleicon = tmp7;
-			tmp7 = tmp7 * 2;
-			tmp7 += 40;
-			mmc3_set_2kb_chr_bank_0(retro_mode ? 18 : tmp7);
-		}
-		else if ((titlemode <= 7 && titlemode != 6) || titlemode == 13 || titlemode == 10) {
-			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 20 : 22);	
-		}
-		else if ((titlemode <= 15 && titlemode != 13) || titlemode == 6) {
-			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 24 : 26);		
-		}
-}			
-
-void roll_new_mode() {
-	speed = (newrand() & 3); 
-	if (speed == 0) speed = 1; 
-	currplayer_gravity = GRAVITY_DOWN; 
-	currplayer_x_small = 0x08; 
-	currplayer_y_small = 0xA0;
-	player_vel_y[0] = 0;
-	tmpi8 = 0;
-	teleport_output = 0XFF;
-	tmp7 = titlemode;
-	do {
-		do {
-			titlemode = newrand() & 15;
-		} while (titlemode > 9);
-	} while (titlemode == tmp7);
-	if (titlemode >= 8) {
-		titlemode = (newrand() & 7) + 8;
-	}
-	if (retro_mode && titlemode == 0) titlemode = tmp7;
-	if (retro_mode && titlemode == 2) titlemode = tmp7;
-//	titlemode = 11; //to test
-	if (titlemode == 1 || titlemode == 3 || titlemode == 6 || titlemode == 9 || titlemode == 11 || titlemode == 12) {
-		while (tmp1 > 0xA0 && tmp1 <= 0x20) {
-			tmp1 = newrand() & 0xFF;
-		}
-		currplayer_y_small = tmp1;
-	}
-		
-		
-	ballframe = 0;
-	oam_clear();
-/*
-	while (tmp1 >= 53) {
-		tmp1 = newrand() & 63;
-	}
-	while (tmp2 >= 53) {
-		tmp2 = newrand() & 63;
-	}
-	while (tmp3 >= 53) {
-		tmp3 = newrand() & 63;
-	}
-*/
-//	titlecolor1 = menu_color_table[tmp1];
-//	titlecolor2 = menu_color_table[tmp2];   most of our colors suck
-//	titlecolor3 = menu_color_table[tmp3];
-	set_title_icon();
-}			
 
 void dec_mouse_timer() {
 	kandoframecnt++;
@@ -743,146 +487,6 @@ void loop_routine_update() {
 }		
 
 
-void bounds_check() {
-	if (currplayer_y_small >= 160) {
-		currplayer_y_small = 160;
-	}		
-	else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;	
-}	
-void title_ship_shit() {
-	if (kandoframecnt & 1) { if (!(newrand() & 7)) invert_gravity(currplayer_gravity); }
-
-	currplayer_y_small -= tmpi8;
-
-	if (currplayer_y_small >= 160) {
-		currplayer_y_small = 160;
-	}		
-	else if (currplayer_y_small < 0x08) { 
-		currplayer_y_small = 0x08; 
-		currplayer_gravity = GRAVITY_DOWN;
-		tmpi8 = 0;
-	}					
-
-
-	if (currplayer_gravity) {
-		if (!(kandoframecnt & 7)) { if (tmpi8 < 3) tmpi8++; }
-	}
-
-	else {
-		
-		if (!(kandoframecnt & 7)) { if (tmpi8 > -3) tmpi8--; }
-	}
-}					
-
-void title_swing_shit() {
-	if (kandoframecnt & 1) { 
-		if (!(newrand() & 15)) {
-			invert_gravity(currplayer_gravity); 
-		}
-	}
-
-	if ((kandoframecnt & 3) == 0)
-			if (currplayer_gravity) {
-				currplayer_vel_y_small -= 1;
-				if (currplayer_vel_y_small <= -3) currplayer_vel_y_small = -3;
-			} else {
-				currplayer_vel_y_small += 1;
-				if (currplayer_vel_y_small >= 3) currplayer_vel_y_small = 3;
-			}
-
-			
-	currplayer_y_small += currplayer_vel_y_small;
-
-	bounds_check();
-}
-
-void title_ball_shit() {
-/*
-	if (kandoframecnt & 1 && (currplayer_y_small == 0x08 || currplayer_y_small == 0xA0)) { 
-		if (!(newrand() & 31)) {
-			if (currplayer_y_small == 0x08) { currplayer_gravity = GRAVITY_UP; teleport_output = 0; }
-			else { currplayer_gravity = GRAVITY_DOWN; teleport_output = 0; }
-		}
-	}
-
-	if (currplayer_gravity) { 
-		currplayer_y_small += BALL_Title_Jump_Table[teleport_output];
-		if (teleport_output < 7) teleport_output++;
-	}
-
-	else { 
-		currplayer_y_small -= BALL_Title_Jump_Table[teleport_output];
-		if (teleport_output < 7) teleport_output++;
-	}
-*/
-	bounds_check();
-}
-
-void title_ufo_shit() {
-	if (teleport_output <= 0x1A) {
-		currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
-		teleport_output++;
-	}
-	else currplayer_y_small += 4;
-	if (!(newrand() & 15)) teleport_output = 0;
-	
-	if (currplayer_y_small >= 160) {
-		currplayer_y_small = 160;
-	}		
-	else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
-}	
-void title_cube_shit() {
-	if (teleport_output <= 0x1A) {
-		currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
-		teleport_output++;
-	}
-	else currplayer_y_small += 4;
-
-	if (currplayer_y_small >= (titlemode == 0 ? 160 : 164)) {
-		currplayer_y_small = titlemode == 0 ? 160 : 164;
-		player_vel_y[0] = 0;
-	}		
-	
-	if (currplayer_y_small == (titlemode == 0 ? 160 : 164) && !(newrand() & 15)) { 
-		teleport_output = 0;
-		player_vel_y[0] = 1;
-	}
-	
-	else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
-}					
-
-void title_wave_shit() {
-	tmp2 = newrand() & 63;
-	if (kandoframecnt & 1) { if (tmp2 >= 60) invert_gravity(currplayer_gravity); }
-		
-	if (currplayer_gravity) currplayer_y_small -= speed;
-
-	else currplayer_y_small += speed;
-	bounds_check();
-}
-void title_mini_wave_shit() {
-	tmp2 = newrand() & 63;
-	if (kandoframecnt & 1) { if (tmp2 >= 60) invert_gravity(currplayer_gravity); }
-		
-	if (currplayer_gravity) currplayer_y_small -= (speed << 1);
-
-	else currplayer_y_small += (speed << 1);
-	bounds_check();
-}
-
-void title_robot_shit() {
-	if (kandoframecnt & 1 && !currplayer_gravity) {
-		if (!(newrand() & 15)) { tmpi8 = newrand() & 15; currplayer_gravity = GRAVITY_UP; teleport_output = 0; }
-	}
-
-	if (currplayer_gravity) {
-		if (teleport_output < 0x0C) { currplayer_y_small -= UFO_Title_Jump_Table[teleport_output]; teleport_output++; }
-		if (teleport_output == 0x0C && tmpi8 > 0) { currplayer_y_small -= UFO_Title_Jump_Table[teleport_output]; tmpi8--; }
-		else { currplayer_y_small -= UFO_Title_Jump_Table[teleport_output]; teleport_output++; if (teleport_output > 0x1A) teleport_output = 0x1A; }
-		if (currplayer_y_small >= 160) { currplayer_gravity = GRAVITY_DOWN; tmpi8 = 0; teleport_output = 0; currplayer_y_small = 160; }
-	}
-					
-}
 void clear_shit() {
 	one_vram_buffer(' ', NTADR_A(4,14));	
 	one_vram_buffer(' ', NTADR_A(4,15));	
@@ -902,6 +506,7 @@ void clear_shit() {
 	one_vram_buffer(' ', NTADR_A(18,9));	
 	
 }
+
 
 
 

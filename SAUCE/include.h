@@ -93,16 +93,10 @@
 // THE GAME STATE DEFINES //
 
 
-#if !__THE_ALBUM
-#include "gamestates/state_savefile_validate.h"
-#include "gamestates/state_game.h"
-#include "gamestates/state_lvldone.h"
-#else
-#include "gamestates/album-state_savefile_validate.h"
-#include "gamestates/album-state_game.h"
-#include "gamestates/album-state_lvldone.h"
-#include "gamestates/album-state_demo.h"
-#endif
 
-// #include "gamestates/state_sorrynothing.h"
-// #include "gamestates/state_savefile_editor.h"
+#if !__THE_ALBUM
+#include "gamestates/state_game.h"
+#endif
+#include "gamestates/state_savefile_validate.h"
+#include "gamestates/state_lvldone.h"
+
