@@ -1142,11 +1142,10 @@ void unrle_bgm2() {
 	vram_unrle(SoundQueue);  
 }
 
-#include "defines/mainmenu_customize.h"
 
 
-#include "defines/menunametable.h"
-#include "defines/mainmenu_charmap.h"
+#include "defines/album/menunametable.h"
+#include "defines/charmap/mainmenu_charmap.h"
 
 
 void check_if_music_stopped2() {

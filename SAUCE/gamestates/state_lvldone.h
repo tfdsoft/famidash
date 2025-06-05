@@ -457,7 +457,7 @@ void state_lvldone() {
 
 }
 
-#include "defines/bgm_charmap.h"
+#include "defines/charmap/bgm_charmap.h"
 #include "music_soundTextTables.h"
 #include "sfx_soundTextTables.h"
 
@@ -467,7 +467,7 @@ const unsigned char bgmscreen[];
 const unsigned char SoundQueue[];
 
 
-#include "defines/bgm_charmap.h"
+#include "defines/charmap/bgm_charmap.h"
 void state_soundtest() {
 	song = 0;
 	temptemp6 = 0; 	
@@ -685,7 +685,7 @@ void colordec() {
 }	
 
 
-#include "defines/bgm_charmap.h"
+#include "defines/charmap/bgm_charmap.h"
 
 
 const unsigned char gameboytext1[]="  GREY";
@@ -714,55 +714,6 @@ const unsigned char gameboy_text_size[] = {
 };
 
 
-
-void funsettings() {
-
-}
-
-void set_fun_settings() {
-
-}	
-
-
-
-
-
-
-
-#include "defines/bgm_charmap.h"
-
-/*
-	Refreshes level name & number
-*/
-void refreshmenu() {
-
-};
-
-void refreshmenu_part2() {
-
-}
-
-#include "defines/bgm_charmap.h"
-void lvl_done_update() {
-
-}	
-
-
-#define BAR_TILES 20
-#define CENTER_TILES BAR_TILES - 2
-#define BAR_MAX 100
-#define NUMBER_PER_TILES BAR_MAX / BAR_TILES
-void draw_progress_bar() {
-
-}
-
-#define TOTAL_PIXELS 8 * BAR_TILES // 8 * 20 = 160
-#define PIXELS_PER_UNIT (TOTAL_PIXELS * 10) / (BAR_MAX) // (1600 / 100) = 1.6 | multiplied by 10 because of no floats
-#define PIXELS_PER_PERCENTAGE (PIXELS_PER_UNIT * 256) / 10 // 1.6 * 256 = 409.6
-
-void calculate_sprite_pos() {
-
-}
 
 
 void update_text1() {
