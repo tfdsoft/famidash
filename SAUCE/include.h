@@ -15,11 +15,7 @@
 #include "mapper.h"  // MMC3 functions
 // #include "mapper_irq.h" // MMC3 IRQ functions
 #include "nesdash.h" // custom stuff made specifically for famidash
-#if !__THE_ALBUM
 #include "famistudio_cc65.h" // sound driver
-#else
-#include "album-famistudio_cc65.h" // sound driver
-#endif
 #include "musicDefines.h" // sound driver C defines
 #include "sfxDefines.h" // sound driver C defines
 

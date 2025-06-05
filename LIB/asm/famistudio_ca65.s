@@ -4813,11 +4813,19 @@ famistudio_set_instrument:
 	
 	@randomization_loop:
 		sta @instrument_ptr
+		.if !__THE_ALBUM
 		jsr _newrand
+		.else
+		jsr rand1
+		.endif
 		eor @instrument_ptr
 		and #$1F
 		; Y is 0
+		.if !__THE_ALBUM
 		cmp #$09	;	Ensure shit stays in range
+		.else
+		cmp #$0A
+		.endif
 		bcs @randomization_loop				;__
 	
 	@no_randomization:
@@ -5597,7 +5605,11 @@ famistudio_advance_channel:
 	sta famistudio_slide_step, x
 	
 	@randomization_loop:
+		.if !__THE_ALBUM
 		jsr _newrand
+		.else
+		jsr rand1
+		.endif
 		eor famistudio_chn_note,x
 		cmp #96	;	Ensure shit stays in range
 		bcs @randomization_loop				;__
