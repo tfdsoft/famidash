@@ -9,7 +9,6 @@ void refreshmenu_part2();
 void loop_routine_update();
 void settings();
 void state_demo();
-void mouse_and_cursor();
 void colorinc();
 void colordec();
 void set_settings();
@@ -20,7 +19,7 @@ extern uint8_t famistudio_song_speed;
 
 
 
-const unsigned char bgmtestscreen[468]={
+const unsigned char state_soundtestscreen[468]={
 0x01,0x02,0x01,0x04,0xae,0x02,0x01,0x13,0xae,0x02,0x01,0x09,0xaf,0x02,0x01,0x13,
 0xaf,0x02,0x01,0x06,0x06,0x07,0x04,0x01,0x17,0x06,0x07,0x02,0x01,0x03,0x08,0x09,
 0x05,0x01,0x17,0x08,0x09,0x02,0x01,0x03,0x0c,0xff,0x01,0x19,0x0d,0x02,0x01,0x03,
@@ -86,7 +85,7 @@ const unsigned char SoundQueue[416]={
 
 void unrle_bgm1() {
 	vram_adr(NAMETABLE_A);
-	vram_unrle(bgmtestscreen);  
+	vram_unrle(state_soundtestscreen);  
 }
 void unrle_bgm2() {
 	vram_adr(NAMETABLE_A);
@@ -123,7 +122,7 @@ const uint8_t hiNTAddrTableTitleScreen[]={
 };
 
 void state_menu();
-//void bgmtest();
+//void state_soundtest();
 
 
 const uint8_t BG_Table2[]={
@@ -483,7 +482,6 @@ void loop_routine_update() {
 	ppu_wait_nmi();
 	music_update();
 	oam_clear();
-	mouse_and_cursor();
 }		
 
 
