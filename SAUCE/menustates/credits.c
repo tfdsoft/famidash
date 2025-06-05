@@ -1,8 +1,9 @@
 void mouse_and_cursor();
 
+#include "defines/charmap/mainmenu_charmap.h"
+
 #if !__THE_ALBUM
 
-#include "defines/charmap/mainmenu_charmap.h"
 
 #ifdef FLAG_ENABLE_VER_NUM
 	#ifdef FLAG_BETA_BUILD
@@ -287,7 +288,7 @@ const unsigned char Credits2[629]={
 };
 
 
-#include "defines/mainmenu_charmap.h"
+#include "defines/charmap/mainmenu_charmap.h"
 
 #ifdef FLAG_ENABLE_VER_NUM
 	#ifdef FLAG_BETA_BUILD
@@ -384,18 +385,6 @@ void state_credits(){
 	
 }
 
-
-#include "defines/mainmenu_charmap.h"
-
-
-
-void settings() {
-
-}
-
-
-void set_settings() {
-}	
 
 CODE_BANK_POP()
 
