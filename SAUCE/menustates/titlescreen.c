@@ -1063,7 +1063,7 @@ const uint8_t mysteryFrameTable[] = {0x1D, 0x7D, 0x1F, 0x7F, 0xFF};
 CODE_BANK_PUSH("XCD_BANK_03")
 
 void loop_routine_update();
-void state_demo();
+void state_credits();
 
 
 

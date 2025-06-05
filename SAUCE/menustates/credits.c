@@ -306,7 +306,7 @@ void check_if_music_stopped_3() {
 	if (famistudio_song_speed == 0x80) music_play(song_scheming_weasel);
 }
 
-void state_demo(){
+void state_credits(){
 	mmc3_disable_irq();
 	
     ppu_off();
