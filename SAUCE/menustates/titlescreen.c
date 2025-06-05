@@ -1,4 +1,33 @@
 // Forward declarations of routines
+// Will be replaced during the physics update
+
+#define NTSC_SYS PEEK(0x00)
+
+const char palsystem[] = "FOR PAL SYSTEMS";
+
+extern uint8_t famistudio_song_speed;
+
+const uint8_t BG_Table2[]={
+			0x11,	0x12,	0x13,	0x14,	0x15,	0x16,	0x17,
+	0x18,	0x19,	0x1A,	0x1B,	0x1C
+};
+
+const uint8_t G_Table2[]={
+			0x21,	0x22,	0x23,	0x24,	0x25,	0x26,	0x27,
+	0x28,	0x29,	0x2A,	0x2B,	0x2C
+};
+
+const uint8_t menu_irq_table[] = {
+	180,
+	irqtable_hscroll, 0x00,
+
+	irqtable_end // always end with 0xff
+};
+
+// Button table
+#include "defines/titlescreen_buttons.c"
+
+
 #if !__THE_ALBUM
 
 
@@ -44,13 +73,10 @@ const uint8_t mysteryFrameTable[];
 
 const uint8_t menu_irq_table[];
 
-// Button table
-#include "defines/titlescreen_buttons.c"
 
 // Declarations of strings
 #include "defines/charmap/mainmenu_charmap.h"	// Set it for the further routine
 
-const char palsystem[] = "FOR PAL SYSTEMS";
 
 #if __VS_SYSTEM
 const unsigned char nocoinstext[] = "INSERT COIN";
@@ -58,9 +84,6 @@ const unsigned char coinstext[] = "COINS INSERTED ";
 const unsigned char vstext[] = "VS";
 #endif
 
-// Will be replaced during the physics update
-
-#define NTSC_SYS PEEK(0x00)
 
 // Title screen modes
 #define	TITLEMODE_CUBE		0
@@ -962,15 +985,6 @@ void color_picker() {
 
 // Tables start
 
-const uint8_t BG_Table2[]={
-			0x11,	0x12,	0x13,	0x14,	0x15,	0x16,	0x17,
-	0x18,	0x19,	0x1A,	0x1B,	0x1C
-};
-
-const uint8_t G_Table2[]={
-			0x21,	0x22,	0x23,	0x24,	0x25,	0x26,	0x27,
-	0x28,	0x29,	0x2A,	0x2B,	0x2C
-};
 
 const uint8_t UFO_Title_Jump_Table[]={
 	5,
@@ -1027,33 +1041,29 @@ const uint8_t miniSwingFrameTable[] = {0x3F, 0x1B, 0x3F, 0x3D};
 
 const uint8_t mysteryFrameTable[] = {0x1D, 0x7D, 0x1F, 0x7F, 0xFF};
 
-const uint8_t menu_irq_table[] = {
-	180,
-	irqtable_hscroll, 0x00,
 
-	irqtable_end // always end with 0xff
-};
 
 
 
 #else
 	
 
+//THE ALBUM
+//THE ALBUM
+//THE ALBUM
+//THE ALBUM
+//THE ALBUM
+//THE ALBUM
+//THE ALBUM
+//THE ALBUM
+//THE ALBUM
+//THE ALBUM
+//THE ALBUM
+
 CODE_BANK_PUSH("XCD_BANK_03")
 
-void dec_mouse_timer();
-void check_if_music_stopped();
-void clear_shit();
-void refreshmenu();
-void refreshmenu_part2();
 void loop_routine_update();
-void settings();
 void state_demo();
-void colorinc();
-void colordec();
-void set_settings();
-void start_the_level();
-extern uint8_t famistudio_song_speed;
 
 
 
@@ -1132,239 +1142,21 @@ void unrle_bgm2() {
 	vram_unrle(SoundQueue);  
 }
 
-
-
-
-
-
-const uint8_t loNTAddrTableTitleScreen[]={
-    LSB(NTADR_A(9, 11)),	// -1 = 4
-    LSB(NTADR_A(15, 11)),	// 0
-    LSB(NTADR_A(21, 11)),	// 1 
-    LSB(NTADR_A(9, 17)),	// 2
-    LSB(NTADR_A(15, 17)),	// 3
-    LSB(NTADR_A(21, 17)),	// 3
-    LSB(NTADR_A(27, 1)),	// 4
-    LSB(NTADR_A(9, 11)),	// 5 = 0
-    LSB(NTADR_A(15, 11))	// 5 = 0
-};
-
-const uint8_t hiNTAddrTableTitleScreen[]={
-    MSB(NTADR_A(9, 11)),	// -1 = 4
-    MSB(NTADR_A(15, 11)),	// 0
-    MSB(NTADR_A(21, 11)),	// 1
-    MSB(NTADR_A(9, 17)),	// 2
-    MSB(NTADR_A(15, 17)),	// 3
-    MSB(NTADR_A(21, 17)),	// 3
-    MSB(NTADR_A(27, 1)),	// 4
-    MSB(NTADR_A(9, 11)),	// 5 = 0
-    MSB(NTADR_A(15, 11))	// 5 = 0
-};
-
-void state_menu();
-//void state_soundtest();
-
-
-const uint8_t BG_Table2[]={
-	0x11,
-	0x12,
-	0x13,
-	0x14,
-	0x15,
-	0x16,
-	0x17,
-	0x18,
-	0x19,
-	0x1A,
-	0x1B,
-	0x1C
-};
-
-const uint8_t G_Table2[]={
-	0x21,
-	0x22,
-	0x23,
-	0x24,
-	0x25,
-	0x26,
-	0x27,
-	0x28,
-	0x29,
-	0x2A,
-	0x2B,
-	0x2C
-};
-
-#include "defines/mainmenu_charmap.h"
-
-const uint8_t lvlselect_irq_table[] = {
-	31,
-	irqtable_hscroll, 0x00, // item 0x02 gets modified every frame
-	149,
-	irqtable_hscroll, 0x00,
-
-	irqtable_end // always end with 0xff
-};
-void draw_both_progress_bars();
-void levelselection() {
-
-
-}
-
-
-void draw_progress_bar();
-void draw_full_progress_bar();
-void draw_percentage();
-
-/*
-	all 8 bit tmps:
-
-	tmp1 : x
-	tmp2 : y
-	tmp3 : offset into sprite table
-	tmp4 : needed inside the transitions
-	tmp7 : percentage
-	
-	free 8 bit tmps inside calls:
-	- tmp8
-	damn...
-
-	technically i can use the low byte of 16 bits tmps
-*/
-void draw_both_progress_bars() {
-	
-
-		
-}
-void calculate_sprite_pos();
-void draw_bar_sprites() {
-}
-
-void draw_full_progress_bar() {
-	if (drawBarFlag) crossPRGBankJump0(draw_progress_bar);
-	// end tmp3 need
-
-	// tmp5 is now used for the temporary sprite x pos with subpixels
-	draw_bar_sprites();
-	// end tmp5 usage
-}
-
-void draw_level_progress() {
-
-}
-
-void draw_percentage() {
-
-}
-
 #include "defines/mainmenu_customize.h"
 
-const uint8_t loNTAddrTableCustomizeScreen[] = {
-	LSB(NTADR_A(13, 8)),		// -1 = 3
-	LSB(NTADR_A(4, 14)),		// 0
-	LSB(NTADR_A(13, 14)),		// 1
-	LSB(NTADR_A(22, 14)),		// 2
-	LSB(NTADR_A(13, 8)),		// 3
-	LSB(NTADR_A(4, 14))			// 4 = 0
-};
-
-const uint8_t hiNTAddrTableCustomizeScreen[] = {
-	MSB(NTADR_A(13, 8)),		// -1 = 3
-	MSB(NTADR_A(4, 14)),		// 0
-	MSB(NTADR_A(13, 14)),		// 1
-	MSB(NTADR_A(22, 14)),		// 2
-	MSB(NTADR_A(13, 8)),		// 3
-	MSB(NTADR_A(4, 14))			// 4 = 0
-};
-
-void updateColors() {
-	if (joypad1.press_up) {
-		crossPRGBankJump0(colorinc);
-	}
-	if (joypad1.press_down) { 
-		crossPRGBankJump0(colordec);
-	}
-	//if ((pad[0] & PAD_SELECT) && (pad_new[0] & PAD_A)) icon_colors[settingvalue] = 0x0D;	
-}
-
-void customize_screen() {
-
-}
-
-
-
-
-const uint8_t UFO_Title_Jump_Table[]={
-	5,
-	4,
-	3,
-	3,
-	2,
-	2,
-	2,
-	2,
-	1,
-	1,
-	1,
-	1,
-	1,
-	0,
-	-1,
-	-1,
-	-1,
-	-1,
-	-1,
-	-2,
-	-2,
-	-2,
-	-2,
-	-3,
-	-3,
-	-4,
-	-5,
-};
-
-const uint8_t BALL_Title_Jump_Table[]={
-	1,
-	1,
-	1,
-	2,
-	2,
-	3,
-	3,
-	4,
-};
-	
-const uint8_t menu_color_table[]={
-	0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0x0A, 0x0B, 0x0C, 0x0F, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 0x1C, 0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x29, 0x2A, 0x2B, 0x2C, 0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37, 0x38, 0x39, 0x3A, 0x3B, 0x3C
-};
 
 #include "defines/menunametable.h"
 #include "defines/mainmenu_charmap.h"
 
-const char palsystem[] = "FOR PAL SYSTEMS";
-#define NTSC_SYS PEEK(0x00)
 
 void check_if_music_stopped2() {
 	if (famistudio_song_speed == 0x80) { music_play(song_menu_theme); }
 }
 
 
-const uint8_t menu_irq_table[] = {
-	180,
-	irqtable_hscroll, 0x00,
-
-	irqtable_end // always end with 0xff
-};
 void state_menu() {
 	poweroffcheck = 0xff;
-	if (exitingLevelSelect) {
-		draw_both_progress_bars();
-		pal_fade_to_withmusic(4,0);
-		exitingLevelSelect = 0;
-	} else {	
-		pal_fade_to_withmusic(4,0);
-	}
+	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
 
 	do {
@@ -1383,14 +1175,8 @@ void state_menu() {
 	mmc3_set_8kb_chr(MENUBANK);
 
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	
-	
-	
-//	set_scroll_x(0);
-//    set_scroll_y(0);
 
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
-	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(song_menu_theme);
 	menuMusicCurrentlyPlaying = 1;
@@ -1446,17 +1232,9 @@ void state_menu() {
 	}	
 
 	kandoframecnt = 0;
-	titlecolor3 = color3;
-	titlecolor2 = color2;
-	titlecolor1 = color1;
 	while (!(joypad1.press & (PAD_START | PAD_A))){
 
 		check_if_music_stopped2();
-
-		pal_col(0x11,titlecolor3);
-		pal_col(0x12,titlecolor1);
-		pal_col(0x13,titlecolor2);
-		pal_set_update();
 
 		loop_routine_update();
 		 // read the first controller
@@ -1493,7 +1271,7 @@ void state_menu() {
 			discoframe++;
 			if (discoframe == 12) discoframe = 0;
 		}
-		dec_mouse_timer();
+		kandoframecnt++;
 		tmp3 = 0;	
 		
 		low_byte(tmp8) += CUBE_SPEED_X05>>8;
@@ -1512,11 +1290,6 @@ void state_menu() {
 	
 }
 
-void dec_mouse_timer() {
-	kandoframecnt++;
-	if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-}		
-
 void loop_routine_update() {
 	newrand();
 	ppu_wait_nmi();
@@ -1525,25 +1298,6 @@ void loop_routine_update() {
 }		
 
 
-void clear_shit() {
-	one_vram_buffer(' ', NTADR_A(4,14));	
-	one_vram_buffer(' ', NTADR_A(4,15));	
-	one_vram_buffer(' ', NTADR_A(9,14));	
-	one_vram_buffer(' ', NTADR_A(9,15));	
-	one_vram_buffer(' ', NTADR_A(13,14));	
-	one_vram_buffer(' ', NTADR_A(13,15));	
-	one_vram_buffer(' ', NTADR_A(18,14));	
-	one_vram_buffer(' ', NTADR_A(18,15));	
-	one_vram_buffer(' ', NTADR_A(22,14));	
-	one_vram_buffer(' ', NTADR_A(22,15));	
-	one_vram_buffer(' ', NTADR_A(27,14));	
-	one_vram_buffer(' ', NTADR_A(27,15));	
-	one_vram_buffer(' ', NTADR_A(13,8));	
-	one_vram_buffer(' ', NTADR_A(13,9));	
-	one_vram_buffer(' ', NTADR_A(18,8));	
-	one_vram_buffer(' ', NTADR_A(18,9));	
-	
-}
 
 
 
