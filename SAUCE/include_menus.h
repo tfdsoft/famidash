@@ -9,10 +9,8 @@ CODE_BANK_PUSH("XCD_BANK_03")
 #include "menustates/levelselection.c"
 #include "menustates/progressbar.c"
 #include "menustates/customize_screen.c"
-#include "menustates/titlescreen.c"
-#else
-#include "gamestates/album-state_menu.h"
 #endif
+#include "menustates/titlescreen.c"
 
 CODE_BANK("XCD_BANK_05")
 
