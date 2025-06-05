@@ -82,10 +82,11 @@ void main(){
 				break;
 			}
 
-#if !__THE_ALBUM	
-			
 			case STATE_MENU: {	// To be split into actual state_menu and levelselection
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
+			#if __THE_ALBUM				//the album
+				state_menu();
+			#else						//not the album
 				if (!kandowatchesyousleep) state_menu();
 				else {
 					pal_fade_to_withmusic(4,0);
@@ -98,8 +99,12 @@ void main(){
 					#include "defines/charmap/mainmenu_charmap.h"
 					levelselection();
 				}
-				break;
+			#endif						//end if
+				break;			
 			}
+			
+		#if !__THE_ALBUM		//non-album
+		
 			case STATE_GAME: {
 				state_game();
 				use_auto_chrswitch = 0;
@@ -127,28 +132,15 @@ void main(){
 				break;
 			}
 			#endif
+
+		#endif
+
 			default: {
 				mmc3_set_prg_bank_1(GET_BANK(state_credits));
 				state_credits();
 				break;
 			}
 			
-			
-#else
-	
-
-			case 0x01: {
-				mmc3_set_prg_bank_1(GET_BANK(state_menu));
-				state_menu();
-				break;
-			}
-			default: {
-				mmc3_set_prg_bank_1(GET_BANK(state_demo));
-				state_demo();
-				break;
-			}
-			
-#endif
 
 		}
     }
