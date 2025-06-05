@@ -534,17 +534,13 @@ char bg_coll_slope() {
 	// 45 degrees
 
 	col_slope_LU45:
-		#if !__VS_SYSTEM
 		if (gamemode == GAMEMODE_WAVE && !currplayer_mini) {
 			return 0;
 		}
 		else {
-		#endif
 			tmp7 = (temp_x & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 			tmp4 = (temp_y & 0x0f) ^ 0x0f;
-		#if !__VS_SYSTEM
 		}
-		#endif
 		currplayer_slope_type = SLOPE_45DEG_DOWN_UD;
 		goto col_end;
 
@@ -892,11 +888,7 @@ char bg_coll_U() {
 	}
 
 	if (high_byte(currplayer_vel_y) & 0x80) {
-		#if !__VS_SYSTEM
 		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 10 : 0); // automatically only the low byte
-		#else
-		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
-		#endif
 		
 		storeWordSeparately(
 			add_scroll_y(

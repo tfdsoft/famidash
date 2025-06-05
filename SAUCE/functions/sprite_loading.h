@@ -260,7 +260,6 @@ char sprite_load_special_behavior(){
 			case MASK_SPRITES_OFF:
 				disco_sprites = 0;
 				killSprite_return0;
-			#if !__VS_SYSTEM
 			case GRAVITY_13_PORTAL_INVIS:
 				gravity_mod = 1;
 				killSprite_return0;
@@ -276,7 +275,6 @@ char sprite_load_special_behavior(){
 			case GRAVITY_1X_PORTAL_INVIS:
 				gravity_mod = 0;
 				killSprite_return0;
-			#endif
 		#endif
 		case FORCED_FREECAM_ON:
 			nocamlockforced = 1;

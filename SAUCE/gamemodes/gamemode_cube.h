@@ -270,11 +270,7 @@ void common_gravity_routine() {
 			switch (gravity_mod) {
 				case 0: break;
 				case 1: tempvel /= 3; break;
-				#if !__VS_SYSTEM
 				case 2: tempvel /= 2; break;
-				#else
-				case 2: __AX__ = (tempvel); __AX__ /= 2; tempvel = __AX__; break;
-				#endif
 				case 3: tempvel = (tempvel / 3 * 2); break;
 				case 4: tempvel *= 2; break;
 			};

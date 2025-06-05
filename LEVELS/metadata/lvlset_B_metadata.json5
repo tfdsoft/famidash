@@ -310,6 +310,23 @@
 			parallaxDisable: true
 		},
 		{
+			level: "infinitecircles",
+			upperText: "INFINITE",
+			lowerText: "CIRCLES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_holography",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "deathmoon",
 			lowerText: "DEATH MOON",
 			decoType: "DECO1",
