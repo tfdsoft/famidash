@@ -17,6 +17,7 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// ninox
 	HARD,	// lookatthislevel
 	HARD,	// subzero
+	HARD,	// fofiifofiifofii
 	HARDER,	// pyrophoric
 	HARDER,	// oceane
 	HARDER,	// generationretro
@@ -54,6 +55,7 @@ const uint8_t stars_list[] = {
 	3,	// ninox
 	4,	// lookatthislevel
 	5,	// subzero
+	5,	// fofiifofiifofii
 	6,	// pyrophoric
 	6,	// oceane
 	6,	// generationretro

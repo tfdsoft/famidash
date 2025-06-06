@@ -12,6 +12,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_ninox)
 	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_subzero)
+	.byte .lobyte(level_data_fofiifofiifofii)
 	.byte .lobyte(level_data_pyrophoric)
 	.byte .lobyte(level_data_oceane)
 	.byte .lobyte(level_data_generationretro)
@@ -48,6 +49,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_ninox)
 	.byte .hibyte(level_data_lookatthislevel)
 	.byte .hibyte(level_data_subzero)
+	.byte .hibyte(level_data_fofiifofiifofii)
 	.byte .hibyte(level_data_pyrophoric)
 	.byte .hibyte(level_data_oceane)
 	.byte .hibyte(level_data_generationretro)
@@ -84,6 +86,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_ninox))
 	.byte .lobyte(.bank(level_data_lookatthislevel))
 	.byte .lobyte(.bank(level_data_subzero))
+	.byte .lobyte(.bank(level_data_fofiifofiifofii))
 	.byte .lobyte(.bank(level_data_pyrophoric))
 	.byte .lobyte(.bank(level_data_oceane))
 	.byte .lobyte(.bank(level_data_generationretro))
@@ -147,6 +150,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_ninox)
 	.byte .lobyte(sprite_data_lookatthislevel)
 	.byte .lobyte(sprite_data_subzero)
+	.byte .lobyte(sprite_data_fofiifofiifofii)
 	.byte .lobyte(sprite_data_pyrophoric)
 	.byte .lobyte(sprite_data_oceane)
 	.byte .lobyte(sprite_data_generationretro)
@@ -183,6 +187,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_ninox)
 	.byte .hibyte(sprite_data_lookatthislevel)
 	.byte .hibyte(sprite_data_subzero)
+	.byte .hibyte(sprite_data_fofiifofiifofii)
 	.byte .hibyte(sprite_data_pyrophoric)
 	.byte .hibyte(sprite_data_oceane)
 	.byte .hibyte(sprite_data_generationretro)
@@ -219,6 +224,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_ninox))
 	.byte .lobyte(.bank(sprite_data_lookatthislevel))
 	.byte .lobyte(.bank(sprite_data_subzero))
+	.byte .lobyte(.bank(sprite_data_fofiifofiifofii))
 	.byte .lobyte(.bank(sprite_data_pyrophoric))
 	.byte .lobyte(.bank(sprite_data_oceane))
 	.byte .lobyte(.bank(sprite_data_generationretro))
@@ -258,6 +264,7 @@ _level_lengths_lo:
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($000088)		; subzero
+	.byte .lobyte($00006F)		; fofiifofiifofii
 	.byte .lobyte($000050)		; pyrophoric
 	.byte .lobyte($00005D)		; oceane
 	.byte .lobyte($0000B2)		; generationretro
@@ -296,6 +303,7 @@ _level_lengths_md:
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($000088)		; subzero
+	.byte .hibyte($00006F)		; fofiifofiifofii
 	.byte .hibyte($000050)		; pyrophoric
 	.byte .hibyte($00005D)		; oceane
 	.byte .hibyte($0000B2)		; generationretro
@@ -334,6 +342,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($000088)		; subzero
+	.byte .bankbyte($00006F)		; fofiifofiifofii
 	.byte .bankbyte($000050)		; pyrophoric
 	.byte .bankbyte($00005D)		; oceane
 	.byte .bankbyte($0000B2)		; generationretro

@@ -191,6 +191,11 @@
 			fmsSongName: "Tiny Tunes",
 			lowerText: "TINY TUNES",
 			vsSystemEnabled: true
+		},		
+		{
+			fmsSongName: "Meowstuff",
+			lowerText: "MEOWSTUFF",
+			vsSystemEnabled: true
 		},			
 		
 	],

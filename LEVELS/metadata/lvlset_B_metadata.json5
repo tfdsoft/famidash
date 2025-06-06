@@ -112,6 +112,22 @@
 			startingGroundColor: 0x01
 		},
 		{
+			level: "fofiifofiifofii",
+			upperText: "FOFII",
+			lowerText: "FOFII FOFII",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_meowstuff",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F
+		},
+		{
 			level: "pyrophoric",
 			lowerText: "PYROPHORIC",
 			decoType: "DECO1",
