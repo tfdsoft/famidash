@@ -11,6 +11,7 @@
 
 const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
+	DEMON,	// thermodynamix
 	DEMON,	// eon
 	DEMON,	// windylandscape
 	DEMON,	// bloodbath
@@ -25,6 +26,7 @@ const uint8_t difficulty_list[] = {
 
 const uint8_t stars_list[] = {
 	1,	// stereomadness
+	10,	// thermodynamix
 	10,	// eon
 	10,	// windylandscape
 	10,	// bloodbath

@@ -33,7 +33,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_endorphinrush)
 	.byte .lobyte(level_data_sonicblaster)
 	.byte .lobyte(level_data_hell)
-	.byte .lobyte(level_data_thermodynamix)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_futurefunk)
 	.byte .lobyte(level_data_eighto)
@@ -70,7 +69,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_endorphinrush)
 	.byte .hibyte(level_data_sonicblaster)
 	.byte .hibyte(level_data_hell)
-	.byte .hibyte(level_data_thermodynamix)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_futurefunk)
 	.byte .hibyte(level_data_eighto)
@@ -107,7 +105,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_endorphinrush))
 	.byte .lobyte(.bank(level_data_sonicblaster))
 	.byte .lobyte(.bank(level_data_hell))
-	.byte .lobyte(.bank(level_data_thermodynamix))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_futurefunk))
 	.byte .lobyte(.bank(level_data_eighto))
@@ -171,7 +168,6 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_endorphinrush)
 	.byte .lobyte(sprite_data_sonicblaster)
 	.byte .lobyte(sprite_data_hell)
-	.byte .lobyte(sprite_data_thermodynamix)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_futurefunk)
 	.byte .lobyte(sprite_data_eighto)
@@ -208,7 +204,6 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_endorphinrush)
 	.byte .hibyte(sprite_data_sonicblaster)
 	.byte .hibyte(sprite_data_hell)
-	.byte .hibyte(sprite_data_thermodynamix)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_futurefunk)
 	.byte .hibyte(sprite_data_eighto)
@@ -245,7 +240,6 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_endorphinrush))
 	.byte .lobyte(.bank(sprite_data_sonicblaster))
 	.byte .lobyte(.bank(sprite_data_hell))
-	.byte .lobyte(.bank(sprite_data_thermodynamix))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_futurefunk))
 	.byte .lobyte(.bank(sprite_data_eighto))
@@ -285,7 +279,6 @@ _level_lengths_lo:
 	.byte .lobyte($00008B)		; endorphinrush
 	.byte .lobyte($0000A6)		; sonicblaster
 	.byte .lobyte($0000A2)		; hell
-	.byte .lobyte($00008E)		; thermodynamix
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($0001DD)		; futurefunk
 	.byte .lobyte($000078)		; eighto
@@ -324,7 +317,6 @@ _level_lengths_md:
 	.byte .hibyte($00008B)		; endorphinrush
 	.byte .hibyte($0000A6)		; sonicblaster
 	.byte .hibyte($0000A2)		; hell
-	.byte .hibyte($00008E)		; thermodynamix
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($0001DD)		; futurefunk
 	.byte .hibyte($000078)		; eighto
@@ -363,7 +355,6 @@ _level_lengths_hi:
 	.byte .bankbyte($00008B)		; endorphinrush
 	.byte .bankbyte($0000A6)		; sonicblaster
 	.byte .bankbyte($0000A2)		; hell
-	.byte .bankbyte($00008E)		; thermodynamix
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($0001DD)		; futurefunk
 	.byte .bankbyte($000078)		; eighto
