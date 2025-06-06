@@ -328,7 +328,7 @@
 		.byte song_meowstuff ;___ Song ID
 		.byte 0 ;________________ Starting game mode
 		.byte 0 ;________________ Starting speed
-		.byte 0 ;________________ Disable parallax
+		.byte 1 ;________________ Disable parallax
 		.byte _DECO1 ;___________ Deco type
 		.byte _SPIKESA ;_________ Spike set
 		.byte _BLOCKSB ;_________ Block set

@@ -125,7 +125,8 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "pyrophoric",
@@ -228,8 +229,7 @@
 		},
 		{
 			level: "fireaura",
-			upperText: "FIRE",
-			lowerText: "AURA",
+			lowerText: "FIRE AURA",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "B",
