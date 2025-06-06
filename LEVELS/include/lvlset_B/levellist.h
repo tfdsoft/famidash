@@ -24,6 +24,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// scarletsurge
 	HARDER,	// tinytunes
 	HARDER,	// funnygameholiday
+	HARDER,	// fireaura
 	HARDER,	// rainbowdust
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
@@ -41,9 +42,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// hell
 	DEMON,	// pgclubstep
 	DEMON,	// futurefunk
-	DEMON,	// eighto
-	DEMON,	// stalemate
-	DEMON,	// sonicwave
 	DEMON,	// test4
 };
 
@@ -62,6 +60,7 @@ const uint8_t stars_list[] = {
 	6,	// scarletsurge
 	6,	// tinytunes
 	7,	// funnygameholiday
+	7,	// fireaura
 	7,	// rainbowdust
 	8,	// subtleoddities
 	8,	// powertrip
@@ -79,8 +78,5 @@ const uint8_t stars_list[] = {
 	10,	// hell
 	10,	// pgclubstep
 	10,	// futurefunk
-	10,	// eighto
-	10,	// stalemate
-	10,	// sonicwave
 	10,	// test4
 };
