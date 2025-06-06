@@ -64,6 +64,9 @@ void main(){
 	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;
 	gameState = STATE_SAVEVALIDATE;
+	#if __THE_ALBUM
+		cursedmusic = 0;
+	#endif
     while (1){
 		ppu_wait_nmi();
 		switch (gameState){
