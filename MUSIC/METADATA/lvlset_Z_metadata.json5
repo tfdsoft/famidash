@@ -388,6 +388,20 @@
 			CoveringArtist1Text: "SEAGLOWINGPRO",
 		},
 		{
+			fmsSongName: "Every End PT1",
+			upperText: "EVERY END",
+			lowerText: "PART 1",
+			lowerOrigArtistText: "DIMRAIN47",
+			CoveringArtist1Text: "ELANGEL378",
+		},
+		{
+			fmsSongName: "Every End PT2",
+			upperText: "EVERY END",
+			lowerText: "PART 2",
+			lowerOrigArtistText: "DIMRAIN47",
+			CoveringArtist1Text: "ELANGEL378",
+		},
+		{
 			fmsSongName: "Fingerbang",
 			lowerText: "FINGERBANG",
 			lowerOrigArtistText: "MDK",
