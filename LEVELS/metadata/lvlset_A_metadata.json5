@@ -388,6 +388,23 @@
 			parallaxDisable: true
 		},
 		{
+			level: "dorabaebasic4",
+			upperText: "DORABAE",
+			lowerText: "BASIC4",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "NORMAL",
+			stars: 3,
+			songID: "song_electrodynamix",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: false
+		},
+		{
 			level: "dreamer",
 			lowerText: "DREAMER",
 			decoType: "DECO1",
