@@ -34,6 +34,7 @@ void reset_game_vars(){
 	lohi_arr16_store(practice_cube_2_rotate, get_Y, cube_rotate[1]);
 	
 	idx8_store(practice_nocamlockforced, get_Y, nocamlockforced);
+	idx8_store(practice_song, get_Y, song);
 	idx8_store(practice_player_1_gravity, get_Y, player_gravity[0]);
 	idx8_store(practice_player_2_gravity, get_Y, player_gravity[1]);
 	idx8_store(practice_player_1_mini, get_Y, mini[0]);
@@ -110,6 +111,7 @@ void restore_practice_state() {
 	slope_type[1] = idx8_load(practice_player_2_slope_type, get_Y);
 	
 	nocamlockforced = idx8_load(practice_nocamlockforced, get_Y);
+	song = idx8_load(practice_song, get_Y);
 	disco_sprites = idx8_load(practice_disco_sprites, get_Y);
 	slowmode = idx8_load(practice_slowmode, get_Y);
 	forced_trails = idx8_load(practice_forced_trails, get_Y);

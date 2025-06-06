@@ -90,8 +90,13 @@
 			vsSystemEnabled: true
 		},	
 		{
-			fmsSongName: "every end",
-			lowerText: "EVERY END",
+			fmsSongName: "Every End PT1",
+			lowerText: "EVERY END PT1",
+			vsSystemEnabled: true
+		},	
+		{
+			fmsSongName: "Every End PT2",
+			lowerText: "EVERY END PT2",
 			vsSystemEnabled: true
 		},	
 		{

@@ -168,6 +168,15 @@ void state_game(){
 			if (famistudio_song_speed == 0x80) music_play(song);
 		}		    
 
+		#if LEVELSET == 'C'
+			if (level == everyend) {
+				if (song == song_every_end_pt1 && famistudio_song_speed == 0x80) {
+					song = song_every_end_pt2;
+					music_play(song);
+				}
+			}
+		#endif
+
 		if (((forced_trails == 2) || trails == 2 || !(kandoframecnt & 0x1))) {
 			if (!(kandoframecnt & 1)) {
 				if (old_trail_scroll_y >= scroll_y) {

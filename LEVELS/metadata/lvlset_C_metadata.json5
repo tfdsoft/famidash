@@ -185,7 +185,7 @@
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_every_end",
+			songID: "song_every_end_pt1",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x11,
