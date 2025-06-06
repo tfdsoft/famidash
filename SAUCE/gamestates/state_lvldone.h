@@ -463,8 +463,8 @@ void state_lvldone() {
 
 //CODE_BANK_PUSH("XCD_BANK_05")
 
-const unsigned char bgmscreen[];
-const unsigned char SoundQueue[];
+//const unsigned char bgmscreen[];
+//const unsigned char SoundQueue[];
 
 
 #include "defines/charmap/bgm_charmap.h"
