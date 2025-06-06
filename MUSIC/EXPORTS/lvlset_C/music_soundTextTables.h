@@ -21,8 +21,9 @@ const char musicSoundTextString0F[10] = "PYROPHORIC";
 const char musicSoundTextString10[ 8] = "ODDITIES";
 const char musicSoundTextString11[10] = "ACCELERATE";
 const char musicSoundTextString12[ 6] = "KRATOS";
-const char musicSoundTextString13[ 9] = "EVERY$END";
-const char musicSoundTextString14[ 8] = "WINDFALL";
+const char musicSoundTextString13[13] = "EVERY$END$PT1";
+const char musicSoundTextString14[13] = "EVERY$END$PT2";
+const char musicSoundTextString15[ 8] = "WINDFALL";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -44,6 +45,7 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 const uint8_t xbgmtextsUpperSize[] = {
@@ -61,6 +63,7 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
 	sizeof(musicSoundTextString02),
+	0,
 	0,
 	0,
 	0,
@@ -87,6 +90,7 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTextString12,
 	musicSoundTextString13,
 	musicSoundTextString14,
+	musicSoundTextString15,
 };
 
 
@@ -109,6 +113,7 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTextString12),
 	sizeof(musicSoundTextString13),
 	sizeof(musicSoundTextString14),
+	sizeof(musicSoundTextString15),
 };
 
 
@@ -144,7 +149,8 @@ const uint8_t xbgmlookuptable[] = {
 	song_subtle_oddities,
 	song_hell,
 	song_kratos,
-	song_every_end,
+	song_every_end_pt1,
+	song_every_end_pt2,
 	song_windfall,
 };
 
@@ -153,7 +159,8 @@ const uint8_t xbgmlookuptable[] = {
 const uint8_t xbgmlookuptable[] = {
 	song_holography,
 	song_kratos,
-	song_every_end,
+	song_every_end_pt1,
+	song_every_end_pt2,
 	song_windfall,
 };
 
