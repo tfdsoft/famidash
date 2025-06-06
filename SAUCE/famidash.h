@@ -239,6 +239,7 @@ uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_trail_sprites_visible[9];
 //uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
+uint8_t practice_song[MAX_PRACTICE_POINTS];
 
 unsigned char practice_famistudio_state[200 * MAX_PRACTICE_POINTS];
 unsigned char practice_famistudio_registers[11 * MAX_PRACTICE_POINTS];
