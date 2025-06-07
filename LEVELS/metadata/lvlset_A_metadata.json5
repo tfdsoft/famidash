@@ -45,7 +45,21 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x2A,
-			startingGroundColor: 0x1A
+			startingGroundColor: 0x1A,
+			objectOffsets: [
+				{
+					coordinates: [17, 25],
+					offsetX: +8
+				},
+				{
+					coordinates: [32, 25],
+					offsetX: +8
+				},
+				{
+					coordinates: [48, 25],
+					offsetX: +8
+				}
+			]			
 		},
 		{
 			level: "dryout",

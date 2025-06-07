@@ -403,9 +403,9 @@ sprite_data_backontrack:
 
 .segment "DAT_BANK_21"
 sprite_data_polargeist:
-  .byte $10,$01,$70,$03,$0b
-  .byte $00,$02,$70,$03,$0b
-  .byte $00,$03,$70,$03,$0b
+  .byte $18,$01,$70,$03,$0b
+  .byte $08,$02,$70,$03,$0b
+  .byte $08,$03,$70,$03,$0b
   .byte $40,$03,$70,$03,$2b
   .byte $80,$03,$60,$03,$2b
   .byte $c0,$03,$60,$03,$0b
