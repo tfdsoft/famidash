@@ -247,3 +247,5 @@ Metatile "CHECKERBOARD_18_EVERYEND", 								$42, $43, $50, $51, PAL_0, COL_TOP
 Metatile "CHECKERBOARD_5_EVERYEND", 								$40, $45, $52, $57, PAL_0, COL_RIGHT
 Metatile "BLOCK_EVERY_END_BOTTOM_COL",								$20, $21, $30, $31, PAL_0, COL_BOTTOM
 Metatile "BLOCK_EVERY_END_TOP_COL",									$20, $21, $30, $31, PAL_0, COL_TOP
+Metatile "LEFT_HALF_ORB_OUTLINE", 									$00, $AC, $00, $BC, PAL_0, COL_NONE
+Metatile "RIGHT_HALF_ORB_OUTLINE", 									$AD, $00, $BD, $00, PAL_0, COL_NONE

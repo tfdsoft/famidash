@@ -187,6 +187,16 @@
 			fmsSongName: "Meowstuff",
 			lowerText: "MEOWSTUFF",
 			vsSystemEnabled: true
+		},	
+		{
+			fmsSongName: "Pursuit",
+			lowerText: "PURSUIT",
+			vsSystemEnabled: true
+		},			
+		{
+			fmsSongName: "Windfall",
+			lowerText: "WINDFALL",
+			vsSystemEnabled: true
 		},			
 		
 	],

@@ -126,7 +126,21 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [20, 37],
+					offsetX: +8
+				},
+				{
+					coordinates: [29, 37],
+					offsetX: +8
+				},
+				{
+					coordinates: [38, 37],
+					offsetX: +8
+				},
+			]			
 		},
 		{
 			level: "pyrophoric",
@@ -416,12 +430,18 @@
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_clutterfunk_2",
+			songID: "song_pursuit",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [572, 17],
+					offsetX: -8
+				},			
+			]
 		},
 		{
 			level: "speedracer",
@@ -518,7 +538,13 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [738, 53],
+					offsetX: +8
+				},			
+			]
 		},
 		{
 			level: "test4",
