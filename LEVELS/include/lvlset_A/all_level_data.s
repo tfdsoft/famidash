@@ -350,7 +350,7 @@
 		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3028
 
 
-.segment "DAT_BANK_11"	; Total bank size: 8142 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8169 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -383,7 +383,7 @@
 		.byte $1A ;_________________ Starting ground color
 		.byte 27 ;__________________ Level height
 	; Level data
-		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3078
+		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3105
 
 
 .segment "DAT_BANK_12"	; Total bank size: 8158 bytes

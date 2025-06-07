@@ -249,3 +249,5 @@ Metatile "BLOCK_EVERY_END_BOTTOM_COL",								$20, $21, $30, $31, PAL_0, COL_BOT
 Metatile "BLOCK_EVERY_END_TOP_COL",									$20, $21, $30, $31, PAL_0, COL_TOP
 Metatile "LEFT_HALF_ORB_OUTLINE", 									$00, $AC, $00, $BC, PAL_0, COL_NONE
 Metatile "RIGHT_HALF_ORB_OUTLINE", 									$AD, $00, $BD, $00, PAL_0, COL_NONE
+Metatile "LEFT_HALF_PAD_UP_OUTLINE", 								$00, $00, $00, $AE, PAL_0, COL_NONE
+Metatile "RIGHT_HALF_PAD_UP_OUTLINE", 								$00, $00, $AF, $00, PAL_0, COL_NONE

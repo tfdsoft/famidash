@@ -237,7 +237,37 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x2A,
-			startingGroundColor: 0x1A
+			startingGroundColor: 0x1A,
+			objectOffsets: [
+				{
+					coordinates: [195, 24],			//orb
+					offsetX: +8
+				},
+				{
+					coordinates: [199, 23],			//orb
+					offsetX: +8
+				},
+				{
+					coordinates: [433, 21],			//portal
+					offsetY: -8
+				},
+				{
+					coordinates: [511, 17],			//orb
+					offsetX: +8
+				},
+				{
+					coordinates: [682, 23],			//portal
+					offsetY: -8
+				},
+				{
+					coordinates: [706, 26],			//pad
+					offsetX: +8
+				},
+				{
+					coordinates: [778, 26],			//pad
+					offsetX: +8
+				},
+			]
 		},
 		{
 			level: "cycles",
