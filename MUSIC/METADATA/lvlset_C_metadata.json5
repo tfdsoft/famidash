@@ -56,8 +56,18 @@
 		{
 			fmsSongName: "EON",
 			lowerText: "EON",
-			
 		},
+		{
+			fmsSongName: "stalemate",
+			lowerText: "STALEMATE",
+			
+		},		
+		{
+			fmsSongName: "Sonic blaster",
+			upperText: "SONIC",
+			lowerText: "BLASTER"
+		},
+
 		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
@@ -69,6 +79,11 @@
 		{
 			fmsSongName: "holography",
 			lowerText: "HOLOGRAPHY",
+			vsSystemEnabled: true
+		},
+		{
+			fmsSongName: "eighto",
+			lowerText: "EIGHTO",
 			vsSystemEnabled: true
 		},		
 		{

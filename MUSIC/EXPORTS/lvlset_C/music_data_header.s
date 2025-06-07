@@ -16,15 +16,15 @@
 	.include "music_5.s"
 .segment "DAT_BANK_2C"
 	.include "music_6.s"
+.segment "DAT_BANK_2D"
+	.include "music_7.s"
 
 ; DMC banks
-.segment "DAT_BANK_2D"
+.segment "DAT_BANK_2E"
 	firstDMCBankPtr := *
 	.incbin "music_bank0.dmc"
-.segment "DAT_BANK_2E"
-	.incbin "music_bank1.dmc"
 .segment "DAT_BANK_2F"
-	.incbin "music_bank2.dmc"
+	.incbin "music_bank1.dmc"
 .segment "DAT_BANK_30"
 	.incbin "music_bank3.dmc"
 .segment "DAT_BANK_31"

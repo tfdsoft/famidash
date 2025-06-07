@@ -29,6 +29,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_dash)
 	.byte .lobyte(level_data_retray)
 	.byte .lobyte(level_data_thechallenge)
+	.byte .lobyte(level_data_dorabaebasic4)
 	.byte .lobyte(level_data_dreamer)
 	.byte .lobyte(level_data_groundtospace)
 	.byte .lobyte(level_data_kappaclysm)
@@ -73,6 +74,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_dash)
 	.byte .hibyte(level_data_retray)
 	.byte .hibyte(level_data_thechallenge)
+	.byte .hibyte(level_data_dorabaebasic4)
 	.byte .hibyte(level_data_dreamer)
 	.byte .hibyte(level_data_groundtospace)
 	.byte .hibyte(level_data_kappaclysm)
@@ -117,6 +119,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_dash))
 	.byte .lobyte(.bank(level_data_retray))
 	.byte .lobyte(.bank(level_data_thechallenge))
+	.byte .lobyte(.bank(level_data_dorabaebasic4))
 	.byte .lobyte(.bank(level_data_dreamer))
 	.byte .lobyte(.bank(level_data_groundtospace))
 	.byte .lobyte(.bank(level_data_kappaclysm))
@@ -176,6 +179,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_dash)
 	.byte .lobyte(sprite_data_retray)
 	.byte .lobyte(sprite_data_thechallenge)
+	.byte .lobyte(sprite_data_dorabaebasic4)
 	.byte .lobyte(sprite_data_dreamer)
 	.byte .lobyte(sprite_data_groundtospace)
 	.byte .lobyte(sprite_data_kappaclysm)
@@ -220,6 +224,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_dash)
 	.byte .hibyte(sprite_data_retray)
 	.byte .hibyte(sprite_data_thechallenge)
+	.byte .hibyte(sprite_data_dorabaebasic4)
 	.byte .hibyte(sprite_data_dreamer)
 	.byte .hibyte(sprite_data_groundtospace)
 	.byte .hibyte(sprite_data_kappaclysm)
@@ -264,6 +269,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_dash))
 	.byte .lobyte(.bank(sprite_data_retray))
 	.byte .lobyte(.bank(sprite_data_thechallenge))
+	.byte .lobyte(.bank(sprite_data_dorabaebasic4))
 	.byte .lobyte(.bank(sprite_data_dreamer))
 	.byte .lobyte(.bank(sprite_data_groundtospace))
 	.byte .lobyte(.bank(sprite_data_kappaclysm))
@@ -311,6 +317,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B3)		; dash
 	.byte .lobyte($000066)		; retray
 	.byte .lobyte($000028)		; thechallenge
+	.byte .lobyte($0000A4)		; dorabaebasic4
 	.byte .lobyte($0000AC)		; dreamer
 	.byte .lobyte($0000A3)		; groundtospace
 	.byte .lobyte($000079)		; kappaclysm
@@ -357,6 +364,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B3)		; dash
 	.byte .hibyte($000066)		; retray
 	.byte .hibyte($000028)		; thechallenge
+	.byte .hibyte($0000A4)		; dorabaebasic4
 	.byte .hibyte($0000AC)		; dreamer
 	.byte .hibyte($0000A3)		; groundtospace
 	.byte .hibyte($000079)		; kappaclysm
@@ -403,6 +411,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B3)		; dash
 	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($000028)		; thechallenge
+	.byte .bankbyte($0000A4)		; dorabaebasic4
 	.byte .bankbyte($0000AC)		; dreamer
 	.byte .bankbyte($0000A3)		; groundtospace
 	.byte .bankbyte($000079)		; kappaclysm

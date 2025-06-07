@@ -80,11 +80,7 @@
 			lowerText: "WEASEL",
 			vsSystemEnabled: false
 		},
-		{
-			fmsSongName: "stalemate",
-			lowerText: "STALEMATE",
-			
-		},
+
 		{
 			fmsSongName: "Driving By Night",
 			upperText: "DRIVING BY",
@@ -144,11 +140,6 @@
 			vsSystemEnabled: true
 		},
 		{
-			fmsSongName: "eighto",
-			lowerText: "EIGHTO",
-			vsSystemEnabled: true
-		},
-		{
 			fmsSongName: "check out",
 			lowerText: "CHECK OUT",
 			vsSystemEnabled: true
@@ -190,6 +181,11 @@
 		{
 			fmsSongName: "Tiny Tunes",
 			lowerText: "TINY TUNES",
+			vsSystemEnabled: true
+		},		
+		{
+			fmsSongName: "Meowstuff",
+			lowerText: "MEOWSTUFF",
 			vsSystemEnabled: true
 		},			
 		

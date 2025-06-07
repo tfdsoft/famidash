@@ -17,12 +17,14 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// ninox
 	HARD,	// lookatthislevel
 	HARD,	// subzero
+	HARD,	// fofiifofiifofii
 	HARDER,	// pyrophoric
 	HARDER,	// oceane
 	HARDER,	// generationretro
 	HARDER,	// scarletsurge
 	HARDER,	// tinytunes
 	HARDER,	// funnygameholiday
+	HARDER,	// fireaura
 	HARDER,	// rainbowdust
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
@@ -38,12 +40,8 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// endorphinrush
 	DEMON,	// sonicblaster
 	DEMON,	// hell
-	DEMON,	// thermodynamix
 	DEMON,	// pgclubstep
 	DEMON,	// futurefunk
-	DEMON,	// eighto
-	DEMON,	// stalemate
-	DEMON,	// sonicwave
 	DEMON,	// test4
 };
 
@@ -55,12 +53,14 @@ const uint8_t stars_list[] = {
 	3,	// ninox
 	4,	// lookatthislevel
 	5,	// subzero
+	5,	// fofiifofiifofii
 	6,	// pyrophoric
 	6,	// oceane
 	6,	// generationretro
 	6,	// scarletsurge
 	6,	// tinytunes
 	7,	// funnygameholiday
+	7,	// fireaura
 	7,	// rainbowdust
 	8,	// subtleoddities
 	8,	// powertrip
@@ -76,11 +76,7 @@ const uint8_t stars_list[] = {
 	10,	// endorphinrush
 	10,	// sonicblaster
 	10,	// hell
-	10,	// thermodynamix
 	10,	// pgclubstep
 	10,	// futurefunk
-	10,	// eighto
-	10,	// stalemate
-	10,	// sonicwave
 	10,	// test4
 };
