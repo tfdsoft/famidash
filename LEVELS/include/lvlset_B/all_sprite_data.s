@@ -1901,6 +1901,7 @@ sprite_data_fofiifofiifofii:
   .byte $30,$16,$90,$02,$85
   .byte $30,$16,$a0,$02,$d5
   .byte $90,$16,$90,$02,$f7
+  .byte $b0,$16,$60,$02,$07
   .byte $e0,$16,$80,$02,$f7
   .byte $40,$17,$90,$02,$06
   .byte $80,$17,$70,$02,$9c
@@ -1914,6 +1915,7 @@ sprite_data_fofiifofiifofii:
   .byte $b0,$19,$50,$02,$f7
   .byte $10,$1a,$70,$02,$0b
   .byte $e0,$1a,$40,$02,$f7
+  .byte $00,$1b,$10,$02,$1a
   .byte $30,$1b,$30,$02,$f7
   .byte $30,$1b,$50,$02,$d8
   .byte $60,$1b,$30,$02,$15
@@ -1996,6 +1998,7 @@ sprite_data_fofiifofiifofii:
   .byte $30,$20,$10,$02,$85
   .byte $40,$20,$10,$02,$d4
   .byte $40,$20,$20,$02,$84
+  .byte $50,$20,$60,$02,$1b
   .byte $60,$20,$10,$02,$d3
   .byte $60,$20,$20,$02,$83
   .byte $80,$20,$10,$02,$d2
@@ -7774,7 +7777,7 @@ sprite_data_rainbowdust:
   .byte $b0,$40,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0A"
+.segment "DAT_BANK_22"
 sprite_data_subtleoddities:
   .byte $20,$01,$30,$03,$dd
   .byte $20,$01,$40,$03,$8c

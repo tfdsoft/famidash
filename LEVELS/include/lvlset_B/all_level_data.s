@@ -183,7 +183,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7518
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 7968 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8155 bytes
 	.export level_data_endorphinrush
 	level_data_endorphinrush:
 	; Header
@@ -200,6 +200,23 @@
 		.byte 37 ;________________ Level height
 	; Level data
 		.incbin "EXPORTS/endorphinrush.lz.bin" ; Size: 6542
+
+	.export level_data_lookatthislevel
+	level_data_lookatthislevel:
+	; Header
+		.byte song_driving_by_night ;___ Song ID
+		.byte 0 ;_______________________ Starting game mode
+		.byte 1 ;_______________________ Starting speed
+		.byte 0 ;_______________________ Disable parallax
+		.byte _DECO1 ;__________________ Deco type
+		.byte _SPIKESA ;________________ Spike set
+		.byte _BLOCKSB ;________________ Block set
+		.byte _SAWBLADESA ;_____________ Sawblade set
+		.byte $0F ;_____________________ Starting background color
+		.byte $0F ;_____________________ Starting ground color
+		.byte 27 ;______________________ Level height
+	; Level data
+		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1613
 
 
 .segment "DAT_BANK_0B"	; Total bank size: 7865 bytes
@@ -633,25 +650,8 @@
 		.incbin "EXPORTS/ninox.lz.bin" ; Size: 2328
 
 
-.segment "DAT_BANK_22"	; Total bank size: 8183 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8011 bytes
 	.export level_data_subtleoddities_0
 	level_data_subtleoddities_0:
 	; Level data
 		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2273
-
-	.export level_data_lookatthislevel
-	level_data_lookatthislevel:
-	; Header
-		.byte song_driving_by_night ;___ Song ID
-		.byte 0 ;_______________________ Starting game mode
-		.byte 1 ;_______________________ Starting speed
-		.byte 0 ;_______________________ Disable parallax
-		.byte _DECO1 ;__________________ Deco type
-		.byte _SPIKESA ;________________ Spike set
-		.byte _BLOCKSB ;________________ Block set
-		.byte _SAWBLADESA ;_____________ Sawblade set
-		.byte $0F ;_____________________ Starting background color
-		.byte $0F ;_____________________ Starting ground color
-		.byte 27 ;______________________ Level height
-	; Level data
-		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1613
