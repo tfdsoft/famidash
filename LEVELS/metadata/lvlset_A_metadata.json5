@@ -176,7 +176,53 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x13,
-			startingGroundColor: 0x13
+			startingGroundColor: 0x13,
+			objectOffsets: [
+				{
+					coordinates: [252, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [280, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [305, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [336, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [337, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [446, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [471, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [491, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [503, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [560, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [672, 21],
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "timemachine",
