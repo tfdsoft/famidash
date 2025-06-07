@@ -19,29 +19,28 @@ const char musicSoundTextString0D[ 8] = "CLUBSTEP";
 const char musicSoundTextString0E[ 8] = "PRACTICE";
 const char musicSoundTextString0F[ 9] = "MADNESS$2";
 const char musicSoundTextString10[ 6] = "WEASEL";
-const char musicSoundTextString11[ 9] = "STALEMATE";
-const char musicSoundTextString12[ 5] = "NIGHT";
-const char musicSoundTextString13[ 8] = "EXTENDED";
-const char musicSoundTextString14[13] = "CLUTTERFUNK$2";
-const char musicSoundTextString15[ 7] = "GREMLIN";
-const char musicSoundTextString16[ 8] = "KESOBOMB";
-const char musicSoundTextString17[ 5] = "NINOX";
-const char musicSoundTextString18[11] = "SPEED$RACER";
-const char musicSoundTextString19[11] = "MAGIC$TOUCH";
-const char musicSoundTextString1A[10] = "PYROPHORIC";
-const char musicSoundTextString1B[ 8] = "ODDITIES";
-const char musicSoundTextString1C[10] = "ACCELERATE";
-const char musicSoundTextString1D[10] = "DEATH$MOON";
-const char musicSoundTextString1E[ 6] = "EIGHTO";
-const char musicSoundTextString1F[ 9] = "CHECK$OUT";
-const char musicSoundTextString20[10] = "HOLOGRAPHY";
-const char musicSoundTextString21[11] = "THE$VIOLINS";
-const char musicSoundTextString22[ 7] = "BLASTER";
-const char musicSoundTextString23[ 4] = "LOST";
-const char musicSoundTextString24[10] = "ENDORPHINS";
-const char musicSoundTextString25[10] = "POWER$TRIP";
-const char musicSoundTextString26[11] = "FUTURE$FUNK";
-const char musicSoundTextString27[10] = "TINY$TUNES";
+const char musicSoundTextString11[ 5] = "NIGHT";
+const char musicSoundTextString12[ 8] = "EXTENDED";
+const char musicSoundTextString13[13] = "CLUTTERFUNK$2";
+const char musicSoundTextString14[ 7] = "GREMLIN";
+const char musicSoundTextString15[ 8] = "KESOBOMB";
+const char musicSoundTextString16[ 5] = "NINOX";
+const char musicSoundTextString17[11] = "SPEED$RACER";
+const char musicSoundTextString18[11] = "MAGIC$TOUCH";
+const char musicSoundTextString19[10] = "PYROPHORIC";
+const char musicSoundTextString1A[ 8] = "ODDITIES";
+const char musicSoundTextString1B[10] = "ACCELERATE";
+const char musicSoundTextString1C[10] = "DEATH$MOON";
+const char musicSoundTextString1D[ 9] = "CHECK$OUT";
+const char musicSoundTextString1E[10] = "HOLOGRAPHY";
+const char musicSoundTextString1F[11] = "THE$VIOLINS";
+const char musicSoundTextString20[ 7] = "BLASTER";
+const char musicSoundTextString21[ 4] = "LOST";
+const char musicSoundTextString22[10] = "ENDORPHINS";
+const char musicSoundTextString23[10] = "POWER$TRIP";
+const char musicSoundTextString24[11] = "FUTURE$FUNK";
+const char musicSoundTextString25[10] = "TINY$TUNES";
+const char musicSoundTextString26[ 9] = "MEOWSTUFF";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -53,7 +52,6 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	musicSoundTextString00,
 	musicSoundTextString01,
-	NULL,
 	musicSoundTextString02,
 	musicSoundTextString03,
 	NULL,
@@ -68,13 +66,13 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
-	NULL,
 	musicSoundTextString06,
 	musicSoundTextString07,
 	NULL,
 	NULL,
 	NULL,
 	musicSoundTextString08,
+	NULL,
 	NULL,
 };
 
@@ -87,7 +85,6 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	sizeof(musicSoundTextString00),
 	sizeof(musicSoundTextString01),
-	0,
 	sizeof(musicSoundTextString02),
 	sizeof(musicSoundTextString03),
 	0,
@@ -102,13 +99,13 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
 	0,
-	0,
 	sizeof(musicSoundTextString06),
 	sizeof(musicSoundTextString07),
 	0,
 	0,
 	0,
 	sizeof(musicSoundTextString08),
+	0,
 	0,
 };
 
@@ -144,7 +141,6 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTextString24,
 	musicSoundTextString25,
 	musicSoundTextString26,
-	musicSoundTextString27,
 };
 
 
@@ -179,7 +175,6 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTextString24),
 	sizeof(musicSoundTextString25),
 	sizeof(musicSoundTextString26),
-	sizeof(musicSoundTextString27),
 };
 
 
@@ -207,7 +202,6 @@ const uint8_t xbgmlookuptable[] = {
 	song_practice,
 	song_stereo_madness_2,
 	song_scheming_weasel,
-	song_stalemate,
 	song_driving_by_night,
 	song_chaoz_fantasy_extended,
 	song_clutterfunk_2,
@@ -220,7 +214,6 @@ const uint8_t xbgmlookuptable[] = {
 	song_subtle_oddities,
 	song_hell,
 	song_death_moon,
-	song_eighto,
 	song_check_out,
 	song_holography,
 	song_dance_of_the_violins,
@@ -230,18 +223,19 @@ const uint8_t xbgmlookuptable[] = {
 	song_power_trip,
 	song_whats_a_future_funk,
 	song_tiny_tunes,
+	song_meowstuff,
 };
 
 #else
 
 const uint8_t xbgmlookuptable[] = {
 	song_death_moon,
-	song_eighto,
 	song_check_out,
 	song_holography,
 	song_dance_of_the_violins,
 	song_whats_a_future_funk,
 	song_tiny_tunes,
+	song_meowstuff,
 };
 
 #endif
