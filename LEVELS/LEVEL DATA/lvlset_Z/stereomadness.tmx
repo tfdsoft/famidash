@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="2" height="27" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="2">
+ <editorsettings>
+  <export target="stereomadness.csv" format="csv"/>
+ </editorsettings>
+ <tileset firstgid="1" name="famidash" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="../../../GRAPHICS/famidash.bmp" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="257" name="sprites" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="../../../GRAPHICS/sprites.png" width="256" height="256"/>
+ </tileset>
+ <layer id="1" width="2" height="27">
+  <data encoding="csv">
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1,
+1,1
+</data>
+ </layer>
+ <layer id="2" name="SP" width="2" height="27">
+  <data encoding="csv">
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0,
+0,0
+</data>
+ </layer>
+</map>

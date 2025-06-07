@@ -16,7 +16,6 @@
 // #include "mapper_irq.h" // MMC3 IRQ functions
 #include "nesdash.h" // custom stuff made specifically for famidash
 #include "famistudio_cc65.h" // sound driver
-
 #include "musicDefines.h" // sound driver C defines
 #include "sfxDefines.h" // sound driver C defines
 
@@ -50,6 +49,7 @@
 
 #include "defines/palette/palettes_PRG.c"
 
+#if !__THE_ALBUM
 
 #include "METATILES/metatiles.h"  // metatile defines
 #include "defines/sprites.h"    // metasprite defines
@@ -70,6 +70,7 @@
 
 
 // THE GAME MODE DEFINES //
+
 #include "functions/x_movement.h"
 
 #include "gamemodes/gamemode_ufo.h"
@@ -79,14 +80,19 @@
 #include "gamemodes/gamemode_spider.h"
 #include "gamemodes/gamemode_wave.h"
 
+#endif
+
 // THE MENU STATE DEFINES //
 
 #include "include_menus.h"
 
 // THE GAME STATE DEFINES //
 
-#include "gamestates/state_savefile_validate.h"
+
+
+#if !__THE_ALBUM
 #include "gamestates/state_game.h"
-// #include "gamestates/state_sorrynothing.h"
-// #include "gamestates/state_savefile_editor.h"
+#endif
+#include "gamestates/state_savefile_validate.h"
 #include "gamestates/state_lvldone.h"
+

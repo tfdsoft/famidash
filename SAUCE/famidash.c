@@ -27,6 +27,8 @@
 //
 // This isn't an int main() because i don't use the terminal to
 // debug lmao
+
+
 void main(){
     ppu_off();
     ppu_mask(0x00 | (1 << 1) | (1 << 2));
@@ -61,37 +63,14 @@ void main(){
 
 	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;
-	gameboy_check();
 	gameState = STATE_SAVEVALIDATE;
+	#if __THE_ALBUM
+		cursedmusic = 0;
+	#endif
     while (1){
 		ppu_wait_nmi();
 		switch (gameState){
-			case STATE_MENU: {	// To be split into actual state_menu and levelselection
-				mmc3_set_prg_bank_1(GET_BANK(state_menu));
-				if (!kandowatchesyousleep) state_menu();
-				else {
-					pal_fade_to_withmusic(4,0);
-					ppu_off();
-					pal_bg(splashMenu);
-					kandowatchesyousleep = 1;
 
-					//
-					practice_point_count = 0;
-					#include "defines/charmap/mainmenu_charmap.h"
-					levelselection();
-				}
-				break;
-			}
-			case STATE_GAME: {
-				state_game();
-				use_auto_chrswitch = 0;
-				break;
-			}
-			case STATE_LVLDONE: {
-				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
-				state_lvldone();
-				break;
-			}
 			case STATE_SOUNDTEST: {
 				mmc3_set_prg_bank_1(GET_BANK(state_soundtest));
 				state_soundtest();
@@ -105,13 +84,40 @@ void main(){
 				state_savefile_validate();
 				break;
 			}
-			/* Not implemented
-			case STATE_SAVEEDITOR: {
-				mmc3_set_prg_bank_1(GET_BANK(state_savefile_editor));
-				state_savefile_editor();
+
+			case STATE_MENU: {	// To be split into actual state_menu and levelselection
+				mmc3_set_prg_bank_1(GET_BANK(state_menu));
+			#if __THE_ALBUM				//the album
+				state_menu();
+			#else						//not the album
+				if (!kandowatchesyousleep) state_menu();
+				else {
+					pal_fade_to_withmusic(4,0);
+					ppu_off();
+					pal_bg(splashMenu);
+					kandowatchesyousleep = 1;
+
+					//
+					practice_point_count = 0;
+					#include "defines/charmap/mainmenu_charmap.h"
+					levelselection();
+				}
+			#endif						//end if
+				break;			
+			}
+			
+		#if !__THE_ALBUM		//non-album
+		
+			case STATE_GAME: {
+				state_game();
+				use_auto_chrswitch = 0;
 				break;
 			}
-			*/
+			case STATE_LVLDONE: {
+				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
+				state_lvldone();
+				break;
+			}
 			case STATE_FUNSETTINGS: {
 				mmc3_set_prg_bank_1(GET_BANK(state_funsettings));
 				state_funsettings();
@@ -129,29 +135,19 @@ void main(){
 				break;
 			}
 			#endif
-			/*	Implementation redacted
-			case STATE_EXIT: {
-				mmc3_set_prg_bank_1(GET_BANK(state_exit));
-				state_exit();
-				break;
-			}
-			*/
+
+		#endif
+
 			default: {
 				mmc3_set_prg_bank_1(GET_BANK(state_credits));
 				state_credits();
 				break;
 			}
+			
+
 		}
     }
 }
-// ============================================================
-
-
-// WHY I SPLIT THE GAME LOOP ==================================
-//
-// I like making my code super readable by outsiders, and I
-// felt like this was the best way to do it.
-// ============================================================
 
 void setdefaultoptions() {
 	// Enable SRAM write
