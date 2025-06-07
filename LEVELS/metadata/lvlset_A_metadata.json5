@@ -40,7 +40,13 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x14,
-			startingGroundColor: 0x14
+			startingGroundColor: 0x14,
+			objectOffsets: [
+				{
+					coordinates: [559, 21],
+					offsetY: -8
+				}
+			]
 		},
 		{
 			level: "polargeist",
@@ -68,7 +74,15 @@
 				{
 					coordinates: [48, 25],
 					offsetX: +8
-				}
+				},
+				{
+					coordinates: [321, 20],
+					offsetY: -8
+				},
+				{
+					coordinates: [443, 21],
+					offsetY: -8
+				},
 			]			
 		},
 		{

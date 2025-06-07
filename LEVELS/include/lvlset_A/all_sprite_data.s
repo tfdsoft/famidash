@@ -330,8 +330,8 @@ sprite_data_backontrack:
   .byte $80,$22,$50,$03,$2c
   .byte $a0,$22,$20,$03,$3c
   .byte $a0,$22,$50,$03,$2c
-  .byte $f0,$22,$30,$03,$00
-  .byte $00,$23,$10,$03,$39
+  .byte $f0,$22,$28,$03,$00
+  .byte $00,$23,$00,$03,$39
   .byte $00,$23,$70,$03,$39
   .byte $90,$23,$70,$03,$94
   .byte $90,$23,$80,$03,$c4
@@ -489,7 +489,7 @@ sprite_data_polargeist:
   .byte $a0,$13,$60,$03,$0b
   .byte $c0,$13,$80,$03,$2e
   .byte $e0,$13,$50,$03,$0b
-  .byte $10,$14,$20,$03,$01
+  .byte $10,$14,$18,$03,$01
   .byte $c0,$14,$00,$03,$f3
   .byte $c0,$14,$10,$03,$84
   .byte $c0,$14,$20,$03,$cf
@@ -497,7 +497,7 @@ sprite_data_polargeist:
   .byte $d0,$19,$00,$03,$07
   .byte $20,$1b,$70,$03,$8c
   .byte $20,$1b,$80,$03,$cf
-  .byte $b0,$1b,$30,$03,$00
+  .byte $b0,$1b,$28,$03,$00
   .byte $d0,$1b,$70,$03,$9c
   .byte $d0,$1b,$80,$03,$cc
   .byte $30,$1c,$80,$03,$2e
@@ -3078,7 +3078,7 @@ sprite_data_clutterfunk:
   .byte $80,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_21"
+.segment "DAT_BANK_20"
 sprite_data_theoryofeverything:
   .byte $c0,$00,$70,$03,$0b
   .byte $00,$01,$68,$03,$25

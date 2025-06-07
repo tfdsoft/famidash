@@ -21,7 +21,7 @@
 		.incbin "EXPORTS/dash.lz.0.bin" ; Size: 8173
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8184 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8098 bytes
 	.export level_data_dearnostalgists
 	level_data_dearnostalgists:
 	; Header
@@ -38,11 +38,6 @@
 		.byte 57 ;_______________ Level height
 	; Level data
 		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8098
-
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_02"	; Total bank size: 8031 bytes
@@ -738,7 +733,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1934
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8115 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8188 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -771,10 +766,15 @@
 		.byte $1A ;_______________ Starting ground color
 		.byte 27 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1717
+		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1704
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8057 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8053 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -792,6 +792,8 @@
 	; Level data
 		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1503
 
+
+.segment "DAT_BANK_21"	; Total bank size: 8110 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -807,4 +809,4 @@
 		.byte $14 ;__________________ Starting ground color
 		.byte 27 ;___________________ Level height
 	; Level data
-		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1355
+		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1344
