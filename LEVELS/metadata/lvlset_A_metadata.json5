@@ -14,7 +14,17 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02
+			startingGroundColor: 0x02,
+			objectOffsets: [
+				{
+					coordinates: [418, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [764, 21],
+					offsetY: -8
+				},
+			]	
 		},
 		{
 			level: "backontrack",

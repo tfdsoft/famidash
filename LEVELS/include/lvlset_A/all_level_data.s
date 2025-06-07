@@ -664,7 +664,7 @@
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 941
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 8183 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 8180 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
@@ -680,7 +680,7 @@
 		.byte $02 ;___________________ Starting ground color
 		.byte 27 ;____________________ Level height
 	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1856
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1853
 
 
 .segment "DAT_BANK_1C"	; Total bank size: 8170 bytes
