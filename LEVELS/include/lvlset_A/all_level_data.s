@@ -774,7 +774,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1704
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8048 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8062 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -792,8 +792,6 @@
 	; Level data
 		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1498
 
-
-.segment "DAT_BANK_21"	; Total bank size: 8110 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -809,4 +807,4 @@
 		.byte $14 ;__________________ Starting ground color
 		.byte 27 ;___________________ Level height
 	; Level data
-		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1344
+		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1365

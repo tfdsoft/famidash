@@ -43,7 +43,15 @@
 			startingGroundColor: 0x14,
 			objectOffsets: [
 				{
-					coordinates: [559, 21],
+					coordinates: [102, 26],		//pad
+					offsetX: +8
+				},
+				{
+					coordinates: [111, 26],		//pad
+					offsetX: +8
+				},
+				{
+					coordinates: [559, 21],		//portal
 					offsetY: -8
 				}
 			]

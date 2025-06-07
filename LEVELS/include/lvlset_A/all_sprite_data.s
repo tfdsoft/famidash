@@ -229,11 +229,11 @@ sprite_data_backontrack:
   .byte $60,$04,$60,$03,$2b
   .byte $a0,$04,$50,$03,$2b
   .byte $50,$06,$30,$03,$2d
-  .byte $70,$06,$88,$03,$0a
+  .byte $68,$06,$88,$03,$0a
   .byte $90,$06,$30,$03,$2d
   .byte $b0,$06,$88,$03,$0a
   .byte $d0,$06,$30,$03,$2d
-  .byte $f0,$06,$88,$03,$0a
+  .byte $f8,$06,$88,$03,$0a
   .byte $10,$07,$30,$03,$2d
   .byte $30,$08,$70,$03,$2b
   .byte $c0,$08,$88,$03,$0a
@@ -3078,7 +3078,7 @@ sprite_data_clutterfunk:
   .byte $80,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_20"
+.segment "DAT_BANK_21"
 sprite_data_theoryofeverything:
   .byte $c0,$00,$70,$03,$0b
   .byte $00,$01,$68,$03,$25
