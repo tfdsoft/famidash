@@ -440,7 +440,7 @@
 		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3322
 
 
-.segment "DAT_BANK_18"	; Total bank size: 8106 bytes
+.segment "DAT_BANK_18"	; Total bank size: 8110 bytes
 	.export level_data_tinytunes
 	level_data_tinytunes:
 	; Header
@@ -456,7 +456,7 @@
 		.byte $0F ;_______________ Starting ground color
 		.byte 27 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/tinytunes.lz.bin" ; Size: 4805
+		.incbin "EXPORTS/tinytunes.lz.bin" ; Size: 4809
 
 
 .segment "DAT_BANK_19"	; Total bank size: 8145 bytes
