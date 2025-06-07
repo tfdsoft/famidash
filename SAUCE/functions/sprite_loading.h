@@ -719,15 +719,10 @@ void sprite_collide_lookup() {
 	// Gamemode portals
 	
 	spcl_wht_orb:
-		if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) {
-			if ((controllingplayer->a || controllingplayer->up) && cube_data[currplayer] & 0x02 ) {
+		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
+			if ((controllingplayer->a || controllingplayer->up)) {
 				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
 			}
-			else {
-				if (controllingplayer->press_a || controllingplayer->press_up) {	
-					idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
-				}
-			}				
 		} else {
 			if (controllingplayer->press_a || controllingplayer->press_up) {	
 				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
