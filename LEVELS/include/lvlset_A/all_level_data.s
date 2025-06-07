@@ -774,7 +774,7 @@
 		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8053 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8048 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -790,7 +790,7 @@
 		.byte $16 ;____________ Starting ground color
 		.byte 27 ;_____________ Level height
 	; Level data
-		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1503
+		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1498
 
 
 .segment "DAT_BANK_21"	; Total bank size: 8110 bytes

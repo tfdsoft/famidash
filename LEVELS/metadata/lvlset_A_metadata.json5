@@ -98,7 +98,25 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x16
+			startingGroundColor: 0x16,
+			objectOffsets: [
+				{
+					coordinates: [292, 24],
+					offsetY: -8
+				},
+				{
+					coordinates: [429, 22],
+					offsetY: -8
+				},		
+				{
+					coordinates: [566, 21],
+					offsetY: -8
+				},				
+				{
+					coordinates: [707, 21],
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "baseafterbase",
