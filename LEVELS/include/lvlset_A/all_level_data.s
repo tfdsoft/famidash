@@ -714,7 +714,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2723
 
 
-.segment "DAT_BANK_1E"	; Total bank size: 7972 bytes
+.segment "DAT_BANK_1E"	; Total bank size: 7970 bytes
 	.export level_data_cantletgo
 	level_data_cantletgo:
 	; Header
@@ -730,7 +730,7 @@
 		.byte $04 ;________________ Starting ground color
 		.byte 27 ;_________________ Level height
 	; Level data
-		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1934
+		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1932
 
 
 .segment "DAT_BANK_1F"	; Total bank size: 8188 bytes

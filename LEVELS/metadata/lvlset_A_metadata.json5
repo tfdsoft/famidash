@@ -147,7 +147,21 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x14,
-			startingGroundColor: 0x04
+			startingGroundColor: 0x04,
+			objectOffsets: [
+				{
+					coordinates: [480, 20],
+					offsetY: -8
+				},
+				{
+					coordinates: [590, 21],
+					offsetY: -8
+				},
+				{
+					coordinates: [591, 21],
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "jumper",
