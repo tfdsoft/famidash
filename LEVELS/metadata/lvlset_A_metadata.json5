@@ -327,7 +327,7 @@
 				},
 				{
 					coordinates: [306, 20],		//portal alignment
-					offsetX: -16
+					offsetX: -17
 				},
 				{
 					coordinates: [459, 21],		//portal
