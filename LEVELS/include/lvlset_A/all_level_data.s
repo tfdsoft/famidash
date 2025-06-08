@@ -592,7 +592,7 @@
 		.incbin "EXPORTS/electroman.lz.bin" ; Size: 3889
 
 
-.segment "DAT_BANK_19"	; Total bank size: 8083 bytes
+.segment "DAT_BANK_19"	; Total bank size: 7834 bytes
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
 	; Header
@@ -608,10 +608,8 @@
 		.byte $06 ;________________ Starting ground color
 		.byte 27 ;_________________ Level height
 	; Level data
-		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4042
+		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4176
 
-
-.segment "DAT_BANK_1A"	; Total bank size: 8174 bytes
 	.export level_data_aprettyeasylevel
 	level_data_aprettyeasylevel:
 	; Header
@@ -629,6 +627,8 @@
 	; Level data
 		.incbin "EXPORTS/aprettyeasylevel.lz.bin" ; Size: 3658
 
+
+.segment "DAT_BANK_1A"	; Total bank size: 7616 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -645,23 +645,6 @@
 		.byte 57 ;__________________________ Level height
 	; Level data
 		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 3575
-
-	.export level_data_thechallenge
-	level_data_thechallenge:
-	; Header
-		.byte song_the_challenge ;___ Song ID
-		.byte 0 ;____________________ Starting game mode
-		.byte 0 ;____________________ Starting speed
-		.byte 1 ;____________________ Disable parallax
-		.byte _EXTRASPRITES1 ;_______ Deco type
-		.byte _SPIKESA ;_____________ Spike set
-		.byte _BLOCKSB ;_____________ Block set
-		.byte _SAWBLADESA ;__________ Sawblade set
-		.byte $0F ;__________________ Starting background color
-		.byte $06 ;__________________ Starting ground color
-		.byte 57 ;___________________ Level height
-	; Level data
-		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 941
 
 
 .segment "DAT_BANK_1B"	; Total bank size: 8180 bytes
@@ -738,7 +721,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1932
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8114 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8159 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -772,6 +755,23 @@
 		.byte 27 ;________________ Level height
 	; Level data
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1704
+
+	.export level_data_thechallenge
+	level_data_thechallenge:
+	; Header
+		.byte song_the_challenge ;___ Song ID
+		.byte 0 ;____________________ Starting game mode
+		.byte 0 ;____________________ Starting speed
+		.byte 1 ;____________________ Disable parallax
+		.byte _EXTRASPRITES1 ;_______ Deco type
+		.byte _SPIKESA ;_____________ Spike set
+		.byte _BLOCKSB ;_____________ Block set
+		.byte _SAWBLADESA ;__________ Sawblade set
+		.byte $0F ;__________________ Starting background color
+		.byte $06 ;__________________ Starting ground color
+		.byte 57 ;___________________ Level height
+	; Level data
+		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 941
 
 
 .segment "DAT_BANK_20"	; Total bank size: 8062 bytes

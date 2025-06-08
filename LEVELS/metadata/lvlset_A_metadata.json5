@@ -452,6 +452,66 @@
 					coordinates: [472, 25],		//yellow orb
 					offsetX: -8
 				},
+				{
+					coordinates: [502, 21],		//yellow orb
+					offsetY: +8
+				},
+				{
+					coordinates: [527, 22],		//ship portal
+					offsetX: +8
+				},
+				{
+					coordinates: [599, 21],		//growth portal
+					offsetY: +8
+				},
+				{
+					coordinates: [671, 21],		//mini portal
+					offsetX: -8
+				},
+				{
+					coordinates: [722, 22],		//upsidedown blue pad
+					offsetX: +8
+				},
+				{
+					coordinates: [809, 19],		//yellow orb
+					offsetX: -8
+				},
+				{
+					coordinates: [812, 19],		//shink portal
+					offsetX: +8
+				},
+				{
+					coordinates: [837, 17],		//pad
+					offsetX: +8
+				},
+				{
+					coordinates: [841, 16],		//orb
+					offsetX: -8
+				},
+				{
+					coordinates: [873, 16],		//pad
+					offsetX: -8
+				},
+				{
+					coordinates: [878, 14],		//pad
+					offsetX: -8
+				},
+				{
+					coordinates: [882, 14],		//pad
+					offsetX: -8
+				},
+				{
+					coordinates: [909, 18],		//orb
+					offsetX: +8
+				},
+				{
+					coordinates: [947, 9],		//orb
+					offsetX: +8
+				},
+				{
+					coordinates: [949, 7],		//pad
+					offsetX: +8
+				},
 			]
 		},
 		{
