@@ -59,7 +59,7 @@
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_sonic_blaster",
+			songID: "song_thermodynamix",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,

@@ -118,6 +118,11 @@
 			fmsSongName: "Windfall",
 			lowerText: "WINDFALL",
 			vsSystemEnabled: true
+		},	
+		{
+			fmsSongName: "Thermodynamix",
+			lowerText: "THERMODYNAMIX",
+			vsSystemEnabled: true
 		},		
 	],
 	SFX: [

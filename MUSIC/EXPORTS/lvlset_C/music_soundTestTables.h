@@ -28,6 +28,7 @@ const char musicSoundTestString16[ 6] = "KRATOS";
 const char musicSoundTestString17[13] = "EVERY$END$PT1";
 const char musicSoundTestString18[13] = "EVERY$END$PT2";
 const char musicSoundTestString19[ 8] = "WINDFALL";
+const char musicSoundTestString1A[13] = "THERMODYNAMIX";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -53,6 +54,7 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 const uint8_t xbgmtextsUpperSize[] = {
@@ -73,6 +75,7 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
 	sizeof(musicSoundTestString03),
+	0,
 	0,
 	0,
 	0,
@@ -104,6 +107,7 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString17,
 	musicSoundTestString18,
 	musicSoundTestString19,
+	musicSoundTestString1A,
 };
 
 const uint8_t xbgmtextsLowerSize[] = {
@@ -129,6 +133,7 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString17),
 	sizeof(musicSoundTestString18),
 	sizeof(musicSoundTestString19),
+	sizeof(musicSoundTestString1A),
 };
 
 #else
@@ -169,6 +174,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_every_end_pt1,
 	song_every_end_pt2,
 	song_windfall,
+	song_thermodynamix,
 };
 
 #else
@@ -180,6 +186,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_every_end_pt1,
 	song_every_end_pt2,
 	song_windfall,
+	song_thermodynamix,
 };
 
 #endif

@@ -227,7 +227,7 @@
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
-		.byte song_sonic_blaster ;___ Song ID
+		.byte song_thermodynamix ;___ Song ID
 		.byte 0 ;____________________ Starting game mode
 		.byte 0 ;____________________ Starting speed
 		.byte 1 ;____________________ Disable parallax

@@ -380,9 +380,78 @@
 			startingGroundColor: 0x06,
 			objectOffsets: [
 				{
-					coordinates: [430, 24],
+					coordinates: [107, 23],		//orb
+					offsetX: -8
+				},
+				{
+					coordinates: [130, 22],		//orb
+					offsetX: -8
+				},
+				{
+					coordinates: [204, 24],		//blue pad
+					offsetX: -8
+				},
+				{
+					coordinates: [210, 22],		//orb
+					offsetX: -8
+				},
+				{
+					coordinates: [278, 21],		//upsidedown pad
+					offsetX: -8
+				},
+				{
+					coordinates: [289, 22],		//ship portal
+					offsetX: -4
+				},
+				{
+					coordinates: [357, 22],		//mini portal
+					offsetX: +8,
 					offsetY: -8
-				}
+				},
+				{
+					coordinates: [358, 22],		//ball portal
+					offsetY: -8
+				},
+				{
+					coordinates: [367, 20],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [370, 21],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [373, 22],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [402, 24],		//blue orb
+					offsetY: +8
+				},
+				{
+					coordinates: [405, 20],		//blue orb
+					offsetY: +8
+				},
+				{
+					coordinates: [408, 24],		//blue orb
+					offsetY: +8
+				},
+				{
+					coordinates: [430, 24],		//horizontal normal grav portal
+					offsetY: -8
+				},
+				{
+					coordinates: [464, 25],		//yellow orb
+					offsetX: -8
+				},
+				{
+					coordinates: [468, 25],		//yellow orb
+					offsetX: -8
+				},
+				{
+					coordinates: [472, 25],		//yellow orb
+					offsetX: -8
+				},
 			]
 		},
 		{

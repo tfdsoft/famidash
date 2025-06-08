@@ -34,7 +34,6 @@ Metatile "HALF_SPIKE_LEFT",											$2E, $00, $3E, $00, PAL_0, COL_DEATH_LEFT
 Metatile "HALF_SPIKE_TOP", 											$2C, $2D, $00, $00, PAL_0, COL_DEATH_TOP
 Metatile "HALF_SPIKE_RIGHT", 										$00, $2F, $00, $3F, PAL_0, COL_DEATH_RIGHT
 
-
 Metatile "CHECKERBOARD", 											$40, $41, $50, $51, PAL_0, COL_ALL
 Metatile "CHECKERBOARD_1", 											$44, $45, $56, $57, PAL_0, COL_ALL
 Metatile "CHECKERBOARD_2", 											$46, $43, $56, $53, PAL_0, COL_ALL
@@ -147,10 +146,10 @@ Metatile "CLOUD_RIGHT", 											$4A, $4B, $5A, $5B, PAL_2, COL_DEATH_BOTTOM
 Metatile "CLOUD_RIGHT_TOP", 										$4C, $4D, $5C, $5D, PAL_2, COL_DEATH_TOP
 Metatile "GROUND_EDGE_TOP", 										$0A, $0B, $1A, $1B, PAL_1, COL_FLOOR_CEIL
 Metatile "GROUND_TOP", 												$0B, $0B, $1B, $1B, PAL_1, COL_FLOOR_CEIL
-Metatile "BLANK3", 													$FF, $FF, $FF, $FF, PAL_0, COL_NONE
-Metatile "BLANK4", 													$FF, $FF, $FF, $FF, PAL_0, COL_NONE
-Metatile "BLANK5", 													$FF, $FF, $FF, $FF, PAL_0, COL_NONE
-Metatile "BLANK6", 													$FF, $FF, $FF, $FF, PAL_0, COL_NONE
+Metatile "CHIPPED_BLOCK_LEFT_HALF_WAVYPIT",							$00, $6A, $6E, $7A, PAL_0, COL_RIGHT
+Metatile "CHIPPED_BLOCK_RIGHT_HALF_WAVYPIT",						$6B, $00, $7B, $6E, PAL_0, COL_LEFT
+Metatile "CHIPPED_BLOCK_LEFT_HALF",									$00, $6A, $00, $7A, PAL_0, COL_RIGHT
+Metatile "CHIPPED_BLOCK_RIGHT_HALF",								$6B, $00, $7B, $00, PAL_0, COL_LEFT
 Metatile "BLANK7", 													$FF, $FF, $FF, $FF, PAL_0, COL_NONE
 Metatile "SLOPE_SUPPORT", 											$46, $47, $56, $57, PAL_0, COL_NO_SIDE
 
@@ -253,3 +252,9 @@ Metatile "LEFT_HALF_PAD_UP_OUTLINE", 								$00, $00, $00, $AE, PAL_0, COL_NONE
 Metatile "RIGHT_HALF_PAD_UP_OUTLINE", 								$00, $00, $AF, $00, PAL_0, COL_NONE
 Metatile "LEFT_HALF_PAD_DOWN_OUTLINE",								$00, $BE, $00, $00, PAL_0, COL_NONE
 Metatile "RIGHT_HALF_PAD_DOWN_OUTLINE",								$BF, $00, $00, $00, PAL_0, COL_NONE
+Metatile "TOP_HALF_ORB_OUTLINE", 									$00, $00, $AC, $AD, PAL_0, COL_NONE
+Metatile "BOTTOM_HALF_ORB_OUTLINE", 								$BC, $BD, $00, $00, PAL_0, COL_NONE
+Metatile "LEFT_HALF_SPIKE_HALF", 									$00, $00, $00, $3C, PAL_0, COL_DOWN_RIGHT_SPIKE
+Metatile "RIGHT_HALF_SPIKE_HALF", 									$00, $00, $3D, $00, PAL_0, COL_DOWN_LEFT_SPIKE
+Metatile "LEFT_HALF_HALF_SPIKE_TOP", 								$00, $2C, $00, $00, PAL_0, COL_UP_RIGHT_SPIKE
+Metatile "LEFT_HALF_HALF_SPIKE_TOP", 								$2D, $00, $00, $00, PAL_0, COL_UP_LEFT_SPIKE
