@@ -326,7 +326,7 @@
 		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5340
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8183 bytes
+.segment "DAT_BANK_10"	; Total bank size: 8177 bytes
 	.export level_data_dearnostalgists_2
 	level_data_dearnostalgists_2:
 	; Level data
@@ -347,7 +347,7 @@
 		.byte $14 ;___________ Starting ground color
 		.byte 27 ;____________ Level height
 	; Level data
-		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3028
+		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3022
 
 
 .segment "DAT_BANK_11"	; Total bank size: 8169 bytes

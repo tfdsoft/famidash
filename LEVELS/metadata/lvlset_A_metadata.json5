@@ -290,7 +290,21 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x04,
-			startingGroundColor: 0x14
+			startingGroundColor: 0x14,
+			objectOffsets: [
+				{
+					coordinates: [548, 21],		//portal
+					offsetY: -8
+				},
+				{
+					coordinates: [587, 21],		//portal
+					offsetY: -8
+				},
+				{
+					coordinates: [798, 22],		//portal
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "xstep",
