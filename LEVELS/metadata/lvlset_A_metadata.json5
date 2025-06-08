@@ -528,7 +528,46 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x05,
-			startingGroundColor: 0x15
+			startingGroundColor: 0x15,
+			objectOffsets: [
+				{
+					coordinates: [18, 53],		//orb
+					offsetY: -8
+				},
+				{
+					coordinates: [22, 54],		//pad
+					offsetX: +8
+				},
+				{
+					coordinates: [23, 54],		//pad
+					offsetX: +8
+				},
+				{
+					coordinates: [26, 53],		//pad
+					offsetX: +8
+				},
+				{
+					coordinates: [75, 51],		//normal grav portal
+					offsetY: +8,
+					offsetX: +8
+				},
+				{
+					coordinates: [76, 51],		//ship portal
+					offsetY: +8
+				},
+				{
+					coordinates: [142, 51],		//Growth portal
+					offsetX: +8
+				},
+				{
+					coordinates: [158, 52],		//orb
+					offsetX: -8
+				},
+				{
+					coordinates: [163, 53],		//orb
+					offsetX: -8
+				},
+			]
 		},
 		{
 			level: "electroman",

@@ -628,7 +628,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.lz.bin" ; Size: 3658
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 7616 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 8066 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -644,7 +644,7 @@
 		.byte $15 ;_________________________ Starting ground color
 		.byte 57 ;__________________________ Level height
 	; Level data
-		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 3575
+		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 3609
 
 
 .segment "DAT_BANK_1B"	; Total bank size: 8180 bytes
@@ -774,7 +774,7 @@
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 941
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8062 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7646 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header

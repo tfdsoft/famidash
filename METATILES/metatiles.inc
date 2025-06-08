@@ -150,7 +150,7 @@ Metatile "CHIPPED_BLOCK_LEFT_HALF_WAVYPIT",							$00, $6A, $6E, $7A, PAL_0, COL
 Metatile "CHIPPED_BLOCK_RIGHT_HALF_WAVYPIT",						$6B, $00, $7B, $6E, PAL_0, COL_LEFT
 Metatile "CHIPPED_BLOCK_LEFT_HALF",									$00, $6A, $00, $7A, PAL_0, COL_RIGHT
 Metatile "CHIPPED_BLOCK_RIGHT_HALF",								$6B, $00, $7B, $00, PAL_0, COL_LEFT
-Metatile "BLANK7", 													$FF, $FF, $FF, $FF, PAL_0, COL_NONE
+Metatile "DOUBLE_HALF_PAD_UP_OUTLINE", 								$00, $00, $AF, $AE, PAL_0, COL_NONE
 Metatile "SLOPE_SUPPORT", 											$46, $47, $56, $57, PAL_0, COL_NO_SIDE
 
 Metatile "44DEG_RIGHT_DOWN", 										$00, $80, $90, $BB, PAL_0, COL_SLOPE_RD45
@@ -258,3 +258,4 @@ Metatile "LEFT_HALF_SPIKE_HALF", 									$00, $00, $00, $3C, PAL_0, COL_DOWN_RI
 Metatile "RIGHT_HALF_SPIKE_HALF", 									$00, $00, $3D, $00, PAL_0, COL_DOWN_LEFT_SPIKE
 Metatile "LEFT_HALF_HALF_SPIKE_TOP", 								$00, $2C, $00, $00, PAL_0, COL_UP_RIGHT_SPIKE
 Metatile "RIGHT_HALF_HALF_SPIKE_TOP", 								$2D, $00, $00, $00, PAL_0, COL_UP_LEFT_SPIKE
+
