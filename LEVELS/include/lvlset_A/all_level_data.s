@@ -326,7 +326,7 @@
 		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5340
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8177 bytes
+.segment "DAT_BANK_10"	; Total bank size: 8175 bytes
 	.export level_data_dearnostalgists_2
 	level_data_dearnostalgists_2:
 	; Level data
@@ -347,7 +347,7 @@
 		.byte $14 ;___________ Starting ground color
 		.byte 27 ;____________ Level height
 	; Level data
-		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3022
+		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3020
 
 
 .segment "DAT_BANK_11"	; Total bank size: 8169 bytes
@@ -532,7 +532,7 @@
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3673
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8014 bytes
+.segment "DAT_BANK_17"	; Total bank size: 8016 bytes
 	.export level_data_xstep
 	level_data_xstep:
 	; Header
@@ -548,7 +548,7 @@
 		.byte $0C ;___________ Starting ground color
 		.byte 27 ;____________ Level height
 	; Level data
-		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4348
+		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4350
 
 	.export level_data_rainbowtylenol_1
 	level_data_rainbowtylenol_1:

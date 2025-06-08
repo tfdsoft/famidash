@@ -293,6 +293,10 @@
 			startingGroundColor: 0x14,
 			objectOffsets: [
 				{
+					coordinates: [396, 22],		//upsidedown pad
+					offsetX: -8
+				},
+				{
 					coordinates: [548, 21],		//portal
 					offsetY: -8
 				},
@@ -340,6 +344,10 @@
 				},
 				{
 					coordinates: [508, 23],		//orb
+					offsetX: -8
+				},
+				{
+					coordinates: [574, 18],		//upsidedown pad
 					offsetX: -8
 				},
 				{
