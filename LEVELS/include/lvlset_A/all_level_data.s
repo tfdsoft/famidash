@@ -592,7 +592,7 @@
 		.incbin "EXPORTS/electroman.lz.bin" ; Size: 3889
 
 
-.segment "DAT_BANK_19"	; Total bank size: 7834 bytes
+.segment "DAT_BANK_19"	; Total bank size: 7832 bytes
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
 	; Header
@@ -608,7 +608,7 @@
 		.byte $06 ;________________ Starting ground color
 		.byte 27 ;_________________ Level height
 	; Level data
-		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4176
+		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4174
 
 	.export level_data_aprettyeasylevel
 	level_data_aprettyeasylevel:
