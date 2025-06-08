@@ -319,7 +319,38 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x1C,
-			startingGroundColor: 0x0C
+			startingGroundColor: 0x0C,
+			objectOffsets: [
+				{
+					coordinates: [228, 21],		//portal
+					offsetY: -8
+				},
+				{
+					coordinates: [306, 20],		//portal alignment
+					offsetX: -16
+				},
+				{
+					coordinates: [459, 21],		//portal
+					offsetY: -8
+				},
+				{
+					coordinates: [460, 21],		//portal / alignment
+					offsetY: -8,
+					offsetX: -17
+				},
+				{
+					coordinates: [508, 23],		//orb
+					offsetX: -8
+				},
+				{
+					coordinates: [613, 19],		//ball portal
+					offsetY: -8
+				},
+				{
+					coordinates: [765, 19],		//portal alignment
+					offsetX: -17
+				},
+			]
 		},
 		{
 			level: "clutterfunk",

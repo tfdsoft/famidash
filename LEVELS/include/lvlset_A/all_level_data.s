@@ -532,7 +532,7 @@
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3673
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8006 bytes
+.segment "DAT_BANK_17"	; Total bank size: 8014 bytes
 	.export level_data_xstep
 	level_data_xstep:
 	; Header
@@ -548,7 +548,7 @@
 		.byte $0C ;___________ Starting ground color
 		.byte 27 ;____________ Level height
 	; Level data
-		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4340
+		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4348
 
 	.export level_data_rainbowtylenol_1
 	level_data_rainbowtylenol_1:
