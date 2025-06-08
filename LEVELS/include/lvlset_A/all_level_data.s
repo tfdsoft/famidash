@@ -21,7 +21,7 @@
 		.incbin "EXPORTS/dash.lz.0.bin" ; Size: 8173
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8184 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8098 bytes
 	.export level_data_dearnostalgists
 	level_data_dearnostalgists:
 	; Header
@@ -38,11 +38,6 @@
 		.byte 57 ;_______________ Level height
 	; Level data
 		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8098
-
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_02"	; Total bank size: 8031 bytes
@@ -119,7 +114,7 @@
 		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 6949
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8165 bytes
+.segment "DAT_BANK_05"	; Total bank size: 8180 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -628,7 +623,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.lz.bin" ; Size: 3658
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 8066 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 8185 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -644,7 +639,12 @@
 		.byte $15 ;_________________________ Starting ground color
 		.byte 57 ;__________________________ Level height
 	; Level data
-		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 3609
+		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 3642
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_1B"	; Total bank size: 8180 bytes

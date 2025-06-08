@@ -567,6 +567,54 @@
 					coordinates: [163, 53],		//orb
 					offsetX: -8
 				},
+				{
+					coordinates: [359, 52],		//orb
+					offsetY: +8
+				},
+				{
+					coordinates: [369, 54],		//orb
+					offsetY: +8
+				},
+				{
+					coordinates: [403, 53],		//orb
+					offsetY: -8
+				},
+				{
+					coordinates: [422, 52],		//orb
+					offsetY: -8
+				},
+				{
+					coordinates: [439, 52],		//orb
+					offsetX: -8
+				},
+				{
+					coordinates: [460, 49],		//mini portal
+					offsetX: -8
+				},
+				{
+					coordinates: [498, 49],		//growth portal
+					offsetX: -8
+				},
+				{
+					coordinates: [513, 54],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [695, 26],		//growth portal
+					offsetY: -8
+				},
+				{
+					coordinates: [698, 26],		//cube portal
+					offsetY: -8
+				},
+				{
+					coordinates: [747, 28],		//yellow orb
+					offsetY: -8
+				},
+				{
+					coordinates: [800, 26],		//blue orb
+					offsetY: +8
+				},
 			]
 		},
 		{
