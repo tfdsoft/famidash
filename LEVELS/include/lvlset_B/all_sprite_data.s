@@ -6,7 +6,7 @@
 sprite_data_stereomadness:
   .byte $ff
 
-.segment "DAT_BANK_21"
+.segment "DAT_BANK_0C"
 sprite_data_sonar:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$80,$03,$c1
@@ -62,8 +62,7 @@ sprite_data_sonar:
   .byte $60,$16,$30,$03,$d6
   .byte $60,$16,$60,$03,$4a
   .byte $c0,$16,$30,$03,$33
-  .byte $30,$17,$20,$03,$00
-  .byte $30,$17,$30,$03,$00
+  .byte $30,$17,$28,$03,$00
   .byte $a0,$17,$30,$03,$4a
   .byte $e0,$17,$30,$03,$97
   .byte $e0,$17,$40,$03,$d7
@@ -152,8 +151,7 @@ sprite_data_sonar:
   .byte $30,$26,$40,$03,$4a
   .byte $80,$26,$20,$03,$4a
   .byte $a0,$26,$60,$03,$4a
-  .byte $00,$27,$20,$03,$00
-  .byte $00,$27,$30,$03,$00
+  .byte $00,$27,$28,$03,$00
   .byte $50,$27,$10,$03,$4a
   .byte $90,$27,$40,$03,$4a
   .byte $b0,$27,$40,$03,$83
@@ -974,7 +972,7 @@ sprite_data_darkparadise:
   .byte $d0,$26,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0C"
+.segment "DAT_BANK_21"
 sprite_data_ninox:
   .byte $a0,$00,$60,$03,$2a
   .byte $f0,$00,$50,$03,$2a

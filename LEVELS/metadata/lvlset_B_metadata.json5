@@ -32,7 +32,17 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x01,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [371, 21],		//cube portal
+					offsetY: -8
+				},
+				{
+					coordinates: [624, 21],		//cube portal
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "leveleasy",

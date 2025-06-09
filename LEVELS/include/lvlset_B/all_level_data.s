@@ -238,7 +238,7 @@
 		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6464
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 7577 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 7572 bytes
 	.export level_data_fireaura
 	level_data_fireaura:
 	; Header
@@ -631,7 +631,7 @@
 		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 2555
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8176 bytes
+.segment "DAT_BANK_21"	; Total bank size: 8171 bytes
 	.export level_data_ninox
 	level_data_ninox:
 	; Header
