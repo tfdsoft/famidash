@@ -880,7 +880,7 @@ sprite_data_baseafterbase:
   .byte $70,$05,$40,$03,$2b
   .byte $d0,$05,$80,$03,$2e
   .byte $00,$06,$80,$03,$30
-  .byte $20,$06,$40,$03,$0b
+  .byte $20,$06,$48,$03,$0b
   .byte $60,$06,$38,$03,$0a
   .byte $d0,$07,$60,$03,$2b
   .byte $20,$08,$10,$03,$2d
@@ -904,7 +904,7 @@ sprite_data_baseafterbase:
   .byte $90,$0a,$30,$03,$2d
   .byte $90,$0a,$80,$03,$2e
   .byte $d0,$0a,$80,$03,$2e
-  .byte $e0,$0a,$30,$03,$0b
+  .byte $e0,$0a,$28,$03,$0b
   .byte $30,$0b,$30,$03,$2d
   .byte $30,$0b,$80,$03,$2e
   .byte $50,$0b,$00,$03,$2d
@@ -938,7 +938,7 @@ sprite_data_baseafterbase:
   .byte $10,$10,$40,$03,$0b
   .byte $10,$11,$20,$03,$2b
   .byte $b0,$11,$80,$03,$2e
-  .byte $d0,$11,$50,$03,$0b
+  .byte $d0,$11,$58,$03,$0b
   .byte $00,$12,$80,$03,$2e
   .byte $10,$12,$60,$03,$0b
   .byte $30,$12,$80,$03,$30
@@ -10841,7 +10841,7 @@ sprite_data_lostinthewoods:
   .byte $20,$27,$80,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_09"
+.segment "DAT_BANK_0A"
 sprite_data_bloodbathbutno:
   .byte $00,$00,$70,$03,$18
   .byte $00,$00,$88,$03,$0d

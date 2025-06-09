@@ -140,7 +140,21 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x11,
-			startingGroundColor: 0x11
+			startingGroundColor: 0x11,
+			objectOffsets: [
+				{
+					coordinates: [98, 22],		//yellow orb
+					offsetY: +8
+				},
+				{
+					coordinates: [174, 21],		//yellow orb
+					offsetY: -8
+				},
+				{
+					coordinates: [285, 23],		//yellow orb
+					offsetY: +8
+				},
+			]
 		},
 		{
 			level: "cantletgo",
