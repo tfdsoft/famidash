@@ -839,7 +839,55 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [171, 20],		//ball portal
+					offsetY: -8
+				},
+				{
+					coordinates: [212, 19],		//gravity portal
+					offsetX: +16,
+					offsetY: +8
+				},
+				{
+					coordinates: [213, 19],		//ship portal
+					offsetY: +8
+				},
+				{
+					coordinates: [214, 19],		//speed portal
+					offsetY: +14,
+					offsetX: -12
+				},
+				{
+					coordinates: [227, 19],		//speed portal
+					offsetY: +8
+				},
+				{
+					coordinates: [234, 19],		//speed portal
+					offsetY: +8
+				},
+				{
+					coordinates: [301, 19],		//speed portal
+					offsetY: +8
+				},
+				{
+					coordinates: [306, 19],		//speed portal
+					offsetY: +8
+				},
+				{
+					coordinates: [308, 19],		//wave portal
+					offsetX: -8
+				},
+				{
+					coordinates: [477, 25],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [478, 24],		//mini portal
+					offsetX: -16
+				},
+			]
 		},
 		{
 			level: "thechallenge",
