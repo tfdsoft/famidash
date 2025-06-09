@@ -268,3 +268,4 @@ Metatile "LEFT_HALF_SPIKE_TOP", 									$00, $24, $00, $34, PAL_0, COL_UP_RIGHT
 Metatile "RIGHT_HALF_SPIKE_TOP", 									$25, $00, $35, $00, PAL_0, COL_UP_LEFT_SPIKE
 Metatile "DOUBLE_HALF_SPIKE_TOP", 									$29, $28, $39, $38, PAL_0, COL_DEATH
 Metatile "SOLID_EMPTY_TILE",										$00, $00, $00, $00, PAL_0, COL_ALL
+Metatile "CHECKERBOARD_6_POLARGEIST", 								$44, $41, $56, $53, PAL_0, COL_LEFT

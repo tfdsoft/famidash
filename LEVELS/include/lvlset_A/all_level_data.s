@@ -721,7 +721,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1932
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8159 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8167 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -754,7 +754,7 @@
 		.byte $1A ;_______________ Starting ground color
 		.byte 27 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1704
+		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
 	.export level_data_thechallenge
 	level_data_thechallenge:
