@@ -631,7 +631,51 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
-			startingGroundColor: 0x01
+			startingGroundColor: 0x01,
+			objectOffsets: [
+				{
+					coordinates: [117, 19],		//shrink portal
+					offsetX: -12
+				},
+				{
+					coordinates: [292, 17],		//growth portal
+					offsetY: -16,
+					offsetX: +4
+				},
+				{
+					coordinates: [409, 19],		//normal grav portal
+					offsetX: -16
+				},
+				{
+					coordinates: [526, 21],		//UFO portal
+					offsetY: -8
+				},
+				{
+					coordinates: [527, 21],		//Growth portal
+					offsetY: -8,
+					offsetX: -16
+				},
+				{
+					coordinates: [583, 21],		//UFO portal
+					offsetY: -8
+				},
+				{
+					coordinates: [819, 21],		//growth portal
+					offsetX: -12
+				},
+				{
+					coordinates: [836, 24],		//blue orb
+					offsetX: +8
+				},
+				{
+					coordinates: [839, 19],		//blue orb
+					offsetY: +8
+				},
+				{
+					coordinates: [843, 19],		//blue orb
+					offsetY: +8
+				},
+			]
 		},
 		{
 			level: "clubstep",
