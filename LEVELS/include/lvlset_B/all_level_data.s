@@ -295,7 +295,7 @@
 		.incbin "EXPORTS/xx.lz.bin" ; Size: 6203
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8133 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8141 bytes
 	.export level_data_leveleasy
 	level_data_leveleasy:
 	; Header
@@ -311,7 +311,7 @@
 		.byte $1C ;___________________ Starting ground color
 		.byte 27 ;____________________ Level height
 	; Level data
-		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2102
+		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2110
 
 
 .segment "DAT_BANK_10"	; Total bank size: 8186 bytes

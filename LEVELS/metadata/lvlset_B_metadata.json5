@@ -47,7 +47,17 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x2C,
-			startingGroundColor: 0x1C
+			startingGroundColor: 0x1C,
+			objectOffsets: [
+				{
+					coordinates: [752, 26],		//yellow pad
+					offsetX: -8
+				},
+				{
+					coordinates: [753, 26],		//yellow pad
+					offsetX: -8
+				},
+			]
 		},
 		{
 			level: "darkparadise",
