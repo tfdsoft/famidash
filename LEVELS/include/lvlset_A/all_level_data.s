@@ -592,7 +592,7 @@
 		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3666
 
 
-.segment "DAT_BANK_19"	; Total bank size: 8157 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8164 bytes
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
 	; Header
@@ -625,7 +625,7 @@
 		.byte $01 ;__________________________ Starting ground color
 		.byte 27 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/electroman.lz.bin" ; Size: 3984
+		.incbin "EXPORTS/electroman.lz.bin" ; Size: 3991
 
 
 .segment "DAT_BANK_1A"	; Total bank size: 8115 bytes
