@@ -183,7 +183,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7518
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8155 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8149 bytes
 	.export level_data_endorphinrush
 	level_data_endorphinrush:
 	; Header
@@ -199,7 +199,7 @@
 		.byte $0F ;_______________ Starting ground color
 		.byte 37 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/endorphinrush.lz.bin" ; Size: 6542
+		.incbin "EXPORTS/endorphinrush.lz.bin" ; Size: 6536
 
 	.export level_data_lookatthislevel
 	level_data_lookatthislevel:
