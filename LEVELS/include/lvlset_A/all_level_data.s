@@ -350,23 +350,23 @@
 		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3020
 
 
-.segment "DAT_BANK_11"	; Total bank size: 8169 bytes
-	.export level_data_electrodynamix
-	level_data_electrodynamix:
+.segment "DAT_BANK_11"	; Total bank size: 8182 bytes
+	.export level_data_kappaclysm
+	level_data_kappaclysm:
 	; Header
-		.byte song_electrodynamix ;___ Song ID
-		.byte 0 ;_____________________ Starting game mode
-		.byte 0 ;_____________________ Starting speed
-		.byte 0 ;_____________________ Disable parallax
-		.byte _DECO1 ;________________ Deco type
-		.byte _SPIKESA ;______________ Spike set
-		.byte _BLOCKSB ;______________ Block set
-		.byte _SAWBLADESA ;___________ Sawblade set
-		.byte $02 ;___________________ Starting background color
-		.byte $12 ;___________________ Starting ground color
-		.byte 27 ;____________________ Level height
+		.byte song_atthespeedoflight ;___ Song ID
+		.byte 0 ;________________________ Starting game mode
+		.byte 0 ;________________________ Starting speed
+		.byte 1 ;________________________ Disable parallax
+		.byte _DECOCLOUD ;_______________ Deco type
+		.byte _SPIKESC ;_________________ Spike set
+		.byte _BLOCKSB ;_________________ Block set
+		.byte _SAWBLADESA ;______________ Sawblade set
+		.byte $0F ;______________________ Starting background color
+		.byte $0F ;______________________ Starting ground color
+		.byte 27 ;_______________________ Level height
 	; Level data
-		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5064
+		.incbin "EXPORTS/kappaclysm.lz.bin" ; Size: 5077
 
 	.export level_data_timemachine
 	level_data_timemachine:
@@ -386,23 +386,23 @@
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3105
 
 
-.segment "DAT_BANK_12"	; Total bank size: 8158 bytes
-	.export level_data_kappaclysm
-	level_data_kappaclysm:
+.segment "DAT_BANK_12"	; Total bank size: 8176 bytes
+	.export level_data_electrodynamix
+	level_data_electrodynamix:
 	; Header
-		.byte song_atthespeedoflight ;___ Song ID
-		.byte 0 ;________________________ Starting game mode
-		.byte 0 ;________________________ Starting speed
-		.byte 1 ;________________________ Disable parallax
-		.byte _DECOCLOUD ;_______________ Deco type
-		.byte _SPIKESC ;_________________ Spike set
-		.byte _BLOCKSB ;_________________ Block set
-		.byte _SAWBLADESA ;______________ Sawblade set
-		.byte $0F ;______________________ Starting background color
-		.byte $0F ;______________________ Starting ground color
-		.byte 27 ;_______________________ Level height
+		.byte song_electrodynamix ;___ Song ID
+		.byte 0 ;_____________________ Starting game mode
+		.byte 0 ;_____________________ Starting speed
+		.byte 0 ;_____________________ Disable parallax
+		.byte _DECO1 ;________________ Deco type
+		.byte _SPIKESA ;______________ Spike set
+		.byte _BLOCKSB ;______________ Block set
+		.byte _SAWBLADESA ;___________ Sawblade set
+		.byte $02 ;___________________ Starting background color
+		.byte $12 ;___________________ Starting ground color
+		.byte 27 ;____________________ Level height
 	; Level data
-		.incbin "EXPORTS/kappaclysm.lz.bin" ; Size: 5046
+		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5064
 
 
 .segment "DAT_BANK_13"	; Total bank size: 8184 bytes
