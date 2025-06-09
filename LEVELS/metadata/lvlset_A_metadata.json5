@@ -1113,7 +1113,73 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02
+			startingGroundColor: 0x02,
+			objectOffsets: [
+				{
+					coordinates: [87, 21],		//gravity portal
+					offsetY: -8
+				},
+				{
+					coordinates: [205, 16],		//gravity portal
+					offsetY: -8
+				},
+				{
+					coordinates: [218, 21],		//gravity portal
+					offsetY: -8
+				},
+				{
+					coordinates: [227, 17],		//gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [231, 19],		//gravity portal
+					offsetY: -8
+				},
+				{
+					coordinates: [255, 16],		//gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [264, 20],		//gravity portal
+					offsetY: -8
+				},
+				{
+					coordinates: [277, 14],		//gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [326, 15],		//gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [343, 23],		//gravity portal
+					offsetY: -8
+				},
+				{
+					coordinates: [417, 15],		//gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [468, 21],		//gravity portal
+					offsetY: -8
+				},
+				{
+					coordinates: [518, 14],		//gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [532, 20],		//gravity portal
+					offsetY: -8
+				},
+				{
+					coordinates: [648, 14],		//gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [657, 16],		//gravity portal
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "thelightningroad",
