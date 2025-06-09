@@ -57,9 +57,9 @@ uint8_t sprite_heights[]={
 	0x12,	0x12,	0x03,	0x03,	0x12,	0x12,	0x03,	0x03,	// 50 - 57
 	0x30,	0x10,	SPBH,	0x12,	0x12,	0x12,	0x12,	0x30,	// 58 - 5F
 	0x30,	0x30,	0x30,	0x30,	0x30,	0x02,	0x10,	SPBH,	// 60 - 67
-	0x10,	SPBH,	0x30,	0x30,	0x30,	0x20,	0x08,	0x00,	// 68 - 6F
+	0x10,	SPBH,	0x30,	0x30,	0x30,	0x20,	0x08,	SPBH,	// 68 - 6F
 	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x10,	SPBH,	0x10,	// 70 - 77
-	SPBH,	0x12,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 78 - 7F
+	SPBH,	0x12,	0x00,	0x00,	0x00,	0x00,	SPBH,	0x00,	// 78 - 7F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 88 - 8F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 90 - 97
@@ -664,11 +664,11 @@ void sprite_collide_lookup() {
 		&&spcl_gv12_pt,	&&spcl_gv23_pt,	&&spcl_gv2x_pt,	&&spcl_gv1x_pt,	// 0x60 - 0x63
 		&&spcl_rndmode,	&&spcl_grn_pad,	&&spcl_tlpt_pt,	&&spcl_default,	// 0x64 - 0x67
 		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tall_pt,	&&spcl_long_pt,	// 0x68 - 0x6B
-		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
+		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_invi_on,	// 0x6C - 0x6F
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
 		&&spcl_default,	&&spcl_wht_orb,	&&spcl_default,	&&spcl_default,	// 0x78 - 0x7B
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x7C - 0x7F
+		&&spcl_default,	&&spcl_default,	&&spcl_invioff //,	&&spcl_invioff	// 0x7C - 0x7F
 	};
 	static void * const sprite_collide_jump_table_1[] = {
 		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x80 - 0x83
@@ -728,6 +728,14 @@ void sprite_collide_lookup() {
 				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
 			}
 		}
+		return;
+	
+	spcl_invi_on:
+		player_invis = 1;
+		return;
+	
+	spcl_invioff:
+		player_invis = 0;
 		return;
 	
 	spcl_cube:

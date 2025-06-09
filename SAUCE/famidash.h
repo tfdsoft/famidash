@@ -240,6 +240,7 @@ uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
 uint8_t practice_song[MAX_PRACTICE_POINTS];
+uint8_t practice_player_invis[MAX_PRACTICE_POINTS];
 
 unsigned char practice_famistudio_state[200 * MAX_PRACTICE_POINTS];
 unsigned char practice_famistudio_registers[11 * MAX_PRACTICE_POINTS];
@@ -453,6 +454,8 @@ uint8_t tempplat;
 uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 
 uint8_t donotresetrng;
+
+uint8_t player_invis;
 
 extern uint16_t min_scroll_y;
 extern uint16_t seam_scroll_y;

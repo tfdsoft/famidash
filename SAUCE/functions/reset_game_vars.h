@@ -55,6 +55,7 @@ void reset_game_vars(){
 	lohi_arr16_store(practice_target_scroll_y, get_Y, target_scroll_y);
 	lohi_arr16_store(practice_min_scroll_y, get_Y, min_scroll_y);
 
+	idx8_store(practice_player_invis, get_Y, player_invis);
 	idx8_store(practice_player_gamemode, get_Y, gamemode);
 	idx8_store(practice_dual, get_Y, dual);
 	idx8_store(practice_speed, get_Y, speed);
@@ -128,6 +129,7 @@ void restore_practice_state() {
 	target_scroll_y = lohi_arr16_load(practice_target_scroll_y, get_Y);
 	min_scroll_y = lohi_arr16_load(practice_min_scroll_y, get_Y);
 
+	player_invis = idx8_load(practice_player_invis, get_Y);
 	gamemode = idx8_load(practice_player_gamemode, get_Y);
 	dual = idx8_load(practice_dual, get_Y);
 	speed = idx8_load(practice_speed, get_Y);

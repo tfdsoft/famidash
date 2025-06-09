@@ -20,16 +20,16 @@ void draw_sprites(){
 	// draw player
 	if (!invisible) {
 		if (dual) {
-			if (kandoframecnt & 1) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone); }
-			else { crossPRGBankJump0(drawplayerone); crossPRGBankJump0(drawplayertwo); }
+			if (kandoframecnt & 1 && !player_invis) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone); }
+			else if (!player_invis) { crossPRGBankJump0(drawplayerone); crossPRGBankJump0(drawplayertwo); }
 		}
 #ifdef FLAG_KANDO_FUN_STUFF
-		else if (bigboi) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); minus15y(); crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); plus15y(); }
-		else if (longmode && !tallmode) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
-		else if (tallmode && !longmode) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); }
-		else if (tallmode && longmode) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
+		else if (bigboi && !player_invis) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); minus15y(); crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); plus15y(); }
+		else if (longmode && !tallmode && !player_invis) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
+		else if (tallmode && !longmode && !player_invis) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); }
+		else if (tallmode && longmode && !player_invis) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
 #endif
-		else crossPRGBankJump0(drawplayerone);
+		else if (!player_invis) crossPRGBankJump0(drawplayerone);
 	}
 
 	// the level sprites
