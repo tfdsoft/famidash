@@ -1244,7 +1244,25 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x2A,
-			startingGroundColor: 0x00
+			startingGroundColor: 0x00,
+			objectOffsets: [
+				{
+					coordinates: [198, 19],		//grav portal
+					offsetX: +16
+				},
+				{
+					coordinates: [323, 16],		//grav portal
+					offsetX: +16
+				},
+				{
+					coordinates: [660, 18],		//grav portal
+					offsetX: +16
+				},
+				{
+					coordinates: [868, 23],		//speed portal
+					offsetY: +8
+				},
+			]
 		},
 		{
 			level: "demonpark",

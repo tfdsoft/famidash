@@ -568,7 +568,7 @@
 		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 3672
 
 
-.segment "DAT_BANK_18"	; Total bank size: 7943 bytes
+.segment "DAT_BANK_18"	; Total bank size: 7949 bytes
 	.export level_data_nightmare
 	level_data_nightmare:
 	; Header
@@ -584,7 +584,7 @@
 		.byte $00 ;_______________ Starting ground color
 		.byte 27 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/nightmare.lz.bin" ; Size: 4277
+		.incbin "EXPORTS/nightmare.lz.bin" ; Size: 4283
 
 	.export level_data_rainbowtylenol_1
 	level_data_rainbowtylenol_1:
