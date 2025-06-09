@@ -856,7 +856,41 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x06,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [52, 51],		//pink orb
+					offsetX: +8
+				},
+				{
+					coordinates: [55, 51],		//pink orb
+					offsetX: +8
+				},
+				{
+					coordinates: [59, 52],		//dash orb
+					offsetX: +8
+				},
+				{
+					coordinates: [66, 52],		//green orb
+					offsetY: -8
+				},
+				{
+					coordinates: [70, 51],		//green orb
+					offsetY: -8
+				},
+				{
+					coordinates: [95, 50],		//green orb
+					offsetX: +8
+				},
+				{
+					coordinates: [142, 44],		//gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [181, 47],		//yellow orb
+					offsetY: +8
+				},
+			]
 		},
 		{
 			level: "dorabaebasic4",

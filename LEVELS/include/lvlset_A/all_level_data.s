@@ -721,7 +721,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1932
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8167 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8122 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -755,23 +755,6 @@
 		.byte 27 ;________________ Level height
 	; Level data
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
-
-	.export level_data_thechallenge
-	level_data_thechallenge:
-	; Header
-		.byte song_the_challenge ;___ Song ID
-		.byte 0 ;____________________ Starting game mode
-		.byte 0 ;____________________ Starting speed
-		.byte 1 ;____________________ Disable parallax
-		.byte _EXTRASPRITES1 ;_______ Deco type
-		.byte _SPIKESA ;_____________ Spike set
-		.byte _BLOCKSB ;_____________ Block set
-		.byte _SAWBLADESA ;__________ Sawblade set
-		.byte $0F ;__________________ Starting background color
-		.byte $06 ;__________________ Starting ground color
-		.byte 57 ;___________________ Level height
-	; Level data
-		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 941
 
 
 .segment "DAT_BANK_20"	; Total bank size: 7616 bytes
@@ -808,3 +791,22 @@
 		.byte 27 ;___________________ Level height
 	; Level data
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1365
+
+
+.segment "DAT_BANK_22"	; Total bank size: 3873 bytes
+	.export level_data_thechallenge
+	level_data_thechallenge:
+	; Header
+		.byte song_the_challenge ;___ Song ID
+		.byte 0 ;____________________ Starting game mode
+		.byte 0 ;____________________ Starting speed
+		.byte 1 ;____________________ Disable parallax
+		.byte _EXTRASPRITES1 ;_______ Deco type
+		.byte _SPIKESA ;_____________ Spike set
+		.byte _BLOCKSB ;_____________ Block set
+		.byte _SAWBLADESA ;__________ Sawblade set
+		.byte $0F ;__________________ Starting background color
+		.byte $06 ;__________________ Starting ground color
+		.byte 57 ;___________________ Level height
+	; Level data
+		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 980

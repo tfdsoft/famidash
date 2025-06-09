@@ -316,7 +316,7 @@ _level_lengths_lo:
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
 	.byte .lobyte($000066)		; retray
-	.byte .lobyte($000028)		; thechallenge
+	.byte .lobyte($000027)		; thechallenge
 	.byte .lobyte($0000A4)		; dorabaebasic4
 	.byte .lobyte($0000AC)		; dreamer
 	.byte .lobyte($0000A3)		; groundtospace
@@ -363,7 +363,7 @@ _level_lengths_md:
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
 	.byte .hibyte($000066)		; retray
-	.byte .hibyte($000028)		; thechallenge
+	.byte .hibyte($000027)		; thechallenge
 	.byte .hibyte($0000A4)		; dorabaebasic4
 	.byte .hibyte($0000AC)		; dreamer
 	.byte .hibyte($0000A3)		; groundtospace
@@ -410,7 +410,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
 	.byte .bankbyte($000066)		; retray
-	.byte .bankbyte($000028)		; thechallenge
+	.byte .bankbyte($000027)		; thechallenge
 	.byte .bankbyte($0000A4)		; dorabaebasic4
 	.byte .bankbyte($0000AC)		; dreamer
 	.byte .bankbyte($0000A3)		; groundtospace
