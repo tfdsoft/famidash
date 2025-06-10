@@ -8919,7 +8919,7 @@ sprite_data_dreamer:
   .byte $a0,$42,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_08"
+.segment "DAT_BANK_0A"
 sprite_data_groundtospace:
   .byte $00,$00,$60,$03,$83
   .byte $00,$00,$70,$03,$c0
@@ -8959,7 +8959,7 @@ sprite_data_groundtospace:
   .byte $20,$06,$50,$03,$82
   .byte $40,$06,$f0,$02,$32
   .byte $a0,$06,$d0,$02,$32
-  .byte $b0,$06,$20,$03,$0b
+  .byte $a8,$06,$20,$03,$0b
   .byte $10,$07,$30,$03,$81
   .byte $30,$07,$00,$03,$32
   .byte $50,$07,$20,$03,$2c
@@ -9045,8 +9045,7 @@ sprite_data_groundtospace:
   .byte $70,$12,$90,$02,$8f
   .byte $80,$12,$30,$02,$36
   .byte $80,$12,$a0,$02,$46
-  .byte $a0,$12,$90,$02,$16
-  .byte $a0,$12,$a0,$02,$16
+  .byte $a0,$12,$98,$02,$16
   .byte $b0,$12,$d0,$02,$36
   .byte $c0,$12,$70,$02,$36
   .byte $f0,$12,$90,$02,$04
@@ -9117,9 +9116,8 @@ sprite_data_groundtospace:
   .byte $80,$1f,$a0,$02,$36
   .byte $80,$1f,$d0,$02,$0b
   .byte $c0,$1f,$90,$02,$36
-  .byte $f0,$1f,$c0,$02,$15
   .byte $f0,$1f,$d0,$02,$01
-  .byte $f0,$1f,$e0,$02,$15
+  .byte $f0,$1f,$d8,$02,$15
   .byte $20,$20,$e0,$02,$33
   .byte $b0,$20,$d0,$02,$91
   .byte $d0,$20,$f0,$02,$33
@@ -9141,7 +9139,7 @@ sprite_data_groundtospace:
   .byte $80,$27,$e0,$02,$33
   .byte $c0,$27,$d0,$02,$08
   .byte $70,$28,$e0,$02,$33
-  .byte $10,$29,$a0,$02,$1a
+  .byte $10,$29,$a8,$02,$1a
   .byte $10,$29,$d0,$02,$18
   .byte $70,$29,$e0,$02,$33
   .byte $c0,$29,$d0,$02,$19
@@ -9161,7 +9159,7 @@ sprite_data_groundtospace:
   .byte $30,$2c,$e0,$02,$b3
   .byte $70,$2c,$c0,$02,$3c
   .byte $90,$2c,$f0,$02,$4a
-  .byte $f0,$2c,$e0,$02,$08
+  .byte $f0,$2c,$d8,$02,$08
   .byte $10,$2d,$f0,$02,$4a
   .byte $80,$2d,$d0,$02,$3c
   .byte $80,$2d,$20,$03,$2c
@@ -9211,9 +9209,9 @@ sprite_data_groundtospace:
   .byte $60,$34,$30,$03,$2c
   .byte $90,$34,$f0,$02,$4a
   .byte $a0,$34,$d0,$02,$3c
-  .byte $c0,$34,$e0,$02,$08
+  .byte $d0,$34,$e0,$02,$08
   .byte $d0,$34,$e0,$02,$00
-  .byte $d0,$34,$f0,$02,$14
+  .byte $d0,$34,$e8,$02,$14
   .byte $20,$35,$d0,$02,$36
   .byte $40,$35,$10,$03,$2c
   .byte $60,$35,$d0,$02,$f0
@@ -9280,7 +9278,7 @@ sprite_data_groundtospace:
   .byte $f0,$39,$f0,$02,$2c
   .byte $00,$3a,$c0,$02,$36
   .byte $10,$3a,$f0,$02,$b5
-  .byte $40,$3a,$e0,$02,$06
+  .byte $48,$3a,$e0,$02,$06
   .byte $40,$3a,$f0,$02,$b6
   .byte $50,$3a,$90,$02,$36
   .byte $70,$3a,$f0,$02,$b7
@@ -10838,7 +10836,7 @@ sprite_data_lostinthewoods:
   .byte $20,$27,$80,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_0A"
+.segment "DAT_BANK_08"
 sprite_data_bloodbathbutno:
   .byte $00,$00,$70,$03,$18
   .byte $00,$00,$88,$03,$0d

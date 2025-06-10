@@ -1076,7 +1076,41 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [107, 20],		//yellow orb
+					offsetX: -8
+				},
+				{
+					coordinates: [298, 12],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [511, 16],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [657, 12],		//coin
+					offsetY: +8
+				},
+				{
+					coordinates: [719, 16],		//grav portal
+					offsetY: -8
+				},
+				{
+					coordinates: [844, 16],		//grav portal
+					offsetX: +16
+				},
+				{
+					coordinates: [845, 17],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [932, 16],		//pink orb
+					offsetX: +8
+				},
+			]
 		},
 		{
 			level: "kappaclysm",

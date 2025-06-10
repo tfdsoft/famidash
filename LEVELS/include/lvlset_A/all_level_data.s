@@ -95,7 +95,7 @@
 		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8180 bytes
 	.export level_data_groundtospace
 	level_data_groundtospace:
 	; Header
@@ -111,7 +111,7 @@
 		.byte $02 ;____________________ Starting ground color
 		.byte 27 ;_____________________ Level height
 	; Level data
-		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 6949
+		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 6944
 
 
 .segment "DAT_BANK_05"	; Total bank size: 8180 bytes
@@ -207,7 +207,7 @@
 		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 2023
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8128 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8123 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
