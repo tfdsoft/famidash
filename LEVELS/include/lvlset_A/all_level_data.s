@@ -21,7 +21,7 @@
 		.incbin "EXPORTS/dash.lz.0.bin" ; Size: 8173
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8184 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8098 bytes
 	.export level_data_dearnostalgists
 	level_data_dearnostalgists:
 	; Header
@@ -38,11 +38,6 @@
 		.byte 57 ;_______________ Level height
 	; Level data
 		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8098
-
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_02"	; Total bank size: 8031 bytes
@@ -386,7 +381,7 @@
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3105
 
 
-.segment "DAT_BANK_12"	; Total bank size: 8176 bytes
+.segment "DAT_BANK_12"	; Total bank size: 8171 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -496,7 +491,7 @@
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3196
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8076 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8188 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -529,7 +524,12 @@
 		.byte $0F ;_____________ Starting ground color
 		.byte 27 ;______________ Level height
 	; Level data
-		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3673
+		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3699
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_17"	; Total bank size: 8022 bytes

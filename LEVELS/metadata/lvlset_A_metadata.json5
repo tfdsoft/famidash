@@ -989,7 +989,77 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [161, 24],		//shrink portal
+					offsetX: +16
+				},
+				{
+					coordinates: [322, 20],		//cube portal
+					offsetY: +8
+				},
+				{
+					coordinates: [432, 24],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [445, 24],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [457, 20],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [470, 20],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [497, 22],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [653, 20],		//ship portal
+					offsetY: +8
+				},
+				{
+					coordinates: [777, 22],		//cube portal
+					offsetY: -16
+				},
+				{
+					coordinates: [777, 23],		//speed portal
+					offsetY: -24
+				},
+				{
+					coordinates: [876, 22],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [877, 20],		//normal grav portal
+					offsetY: +16
+				},
+				{
+					coordinates: [877, 22],		//mini portal
+					offsetY: -16
+				},
+				{
+					coordinates: [1037, 19],		//growth portal
+					offsetX: +8
+				},
+				{
+					coordinates: [1037, 22],		//growth portal
+					offsetX: +8
+				},
+				{
+					coordinates: [1038, 19],		//cube portal
+					offsetX: -8
+				},
+				{
+					coordinates: [1038, 22],		//cube portal
+					offsetX: -8
+				},
+			]
 		},
 		{
 			level: "groundtospace",
