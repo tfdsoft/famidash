@@ -338,7 +338,7 @@
 		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2540
 
 
-.segment "DAT_BANK_12"	; Total bank size: 8083 bytes
+.segment "DAT_BANK_12"	; Total bank size: 8188 bytes
 	.export level_data_fofiifofiifofii
 	level_data_fofiifofiifofii:
 	; Header
@@ -354,7 +354,24 @@
 		.byte $0F ;______________ Starting ground color
 		.byte 47 ;_______________ Level height
 	; Level data
-		.incbin "EXPORTS/fofiifofiifofii.lz.bin" ; Size: 5432
+		.incbin "EXPORTS/fofiifofiifofii.lz.bin" ; Size: 5449
+
+	.export level_data_test4
+	level_data_test4:
+	; Header
+		.byte song_sonic_blaster ;___ Song ID
+		.byte 0 ;____________________ Starting game mode
+		.byte 0 ;____________________ Starting speed
+		.byte 0 ;____________________ Disable parallax
+		.byte _DECO1 ;_______________ Deco type
+		.byte _SPIKESA ;_____________ Spike set
+		.byte _BLOCKSA ;_____________ Block set
+		.byte _SAWBLADESA ;__________ Sawblade set
+		.byte $11 ;__________________ Starting background color
+		.byte $11 ;__________________ Starting ground color
+		.byte 57 ;___________________ Level height
+	; Level data
+		.incbin "EXPORTS/test4.lz.bin" ; Size: 88
 
 
 .segment "DAT_BANK_13"	; Total bank size: 8171 bytes
@@ -395,7 +412,7 @@
 		.incbin "EXPORTS/oceane.lz.bin" ; Size: 2927
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8186 bytes
+.segment "DAT_BANK_15"	; Total bank size: 8098 bytes
 	.export level_data_generationretro
 	level_data_generationretro:
 	; Header
@@ -412,23 +429,6 @@
 		.byte 27 ;____________________ Level height
 	; Level data
 		.incbin "EXPORTS/generationretro.lz.bin" ; Size: 5202
-
-	.export level_data_test4
-	level_data_test4:
-	; Header
-		.byte song_sonic_blaster ;___ Song ID
-		.byte 0 ;____________________ Starting game mode
-		.byte 0 ;____________________ Starting speed
-		.byte 0 ;____________________ Disable parallax
-		.byte _DECO1 ;_______________ Deco type
-		.byte _SPIKESA ;_____________ Spike set
-		.byte _BLOCKSA ;_____________ Block set
-		.byte _SAWBLADESA ;__________ Sawblade set
-		.byte $11 ;__________________ Starting background color
-		.byte $11 ;__________________ Starting ground color
-		.byte 57 ;___________________ Level height
-	; Level data
-		.incbin "EXPORTS/test4.lz.bin" ; Size: 88
 
 
 .segment "DAT_BANK_16"	; Total bank size: 7965 bytes

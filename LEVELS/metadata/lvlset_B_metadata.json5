@@ -150,15 +150,51 @@
 			objectOffsets: [
 				{
 					coordinates: [20, 37],
-					offsetX: +8
+					offsetX: +8				//yellow orb
 				},
 				{
 					coordinates: [29, 37],
-					offsetX: +8
+					offsetX: +8				//yellow orb
 				},
 				{
 					coordinates: [38, 37],
-					offsetX: +8
+					offsetX: +8				//yellow orb
+				},
+				{
+					coordinates: [257, 33],
+					offsetX: +8				//yellow orb
+				},
+				{
+					coordinates: [340, 36],
+					offsetX: -8				//red orb
+				},
+				{
+					coordinates: [345, 33],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [363, 28],
+					offsetX: +8				//coin
+				},
+				{
+					coordinates: [432, 23],
+					offsetX: +8				//coin
+				},
+				{
+					coordinates: [442, 27],
+					offsetX: +8				//yellow orb
+				},
+				{
+					coordinates: [446, 27],
+					offsetX: +8				//yellow orb
+				},
+				{
+					coordinates: [449, 25],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [623, 18],
+					offsetY: -8				//speed portal
 				},
 			]			
 		},
