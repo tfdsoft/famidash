@@ -898,8 +898,12 @@
 					offsetY: -8
 				},
 				{
-					coordinates: [478, 24],		//mini portal
-					offsetX: -16
+					coordinates: [498, 22],		//mini portal
+					offsetY: -8
+				},
+				{
+					coordinates: [499, 22],		//mini portal
+					offsetY: -8
 				},
 			]
 		},
