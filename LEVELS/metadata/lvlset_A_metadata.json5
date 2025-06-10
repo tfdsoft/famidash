@@ -973,7 +973,38 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: false
+			parallaxDisable: false,
+			objectOffsets: [
+				{
+					coordinates: [470, 44],		//cube portal
+					offsetY: -8
+				},
+				{
+					coordinates: [541, 38],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [621, 39],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [796, 38],		//growth portal
+					offsetY: -8,
+					offsetX: +16
+				},
+				{
+					coordinates: [797, 38],		//cube portal
+					offsetY: -8
+				},
+				{
+					coordinates: [857, 37],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [957, 40],		//speed portal
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "dreamer",

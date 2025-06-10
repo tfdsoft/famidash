@@ -218,7 +218,7 @@ sprite_data_stereomadness:
   .byte $d0,$37,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1D"
+.segment "DAT_BANK_1F"
 sprite_data_backontrack:
   .byte $d0,$00,$88,$03,$0a
   .byte $30,$02,$70,$03,$2b
@@ -7063,7 +7063,7 @@ sprite_data_fingerdash:
   .byte $10,$39,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0E"
+.segment "DAT_BANK_1D"
 sprite_data_dash:
   .byte $80,$00,$f0,$02,$f5
   .byte $80,$00,$00,$03,$87
@@ -7579,7 +7579,7 @@ sprite_data_dash:
   .byte $90,$45,$40,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_1F"
+.segment "DAT_BANK_22"
 sprite_data_retray:
   .byte $00,$00,$50,$03,$8f
   .byte $00,$00,$60,$03,$cf
@@ -7823,7 +7823,7 @@ sprite_data_thechallenge:
   .byte $10,$0f,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1D"
+.segment "DAT_BANK_0E"
 sprite_data_dorabaebasic4:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$70,$03,$bf
@@ -7907,33 +7907,24 @@ sprite_data_dorabaebasic4:
   .byte $f0,$0a,$80,$03,$d8
   .byte $10,$0b,$70,$03,$b6
   .byte $10,$0b,$80,$03,$d9
-  .byte $20,$0b,$70,$03,$32
   .byte $30,$0b,$88,$03,$0a
-  .byte $40,$0b,$50,$03,$32
   .byte $40,$0b,$78,$03,$0a
   .byte $50,$0b,$68,$03,$0a
-  .byte $60,$0b,$30,$03,$32
   .byte $60,$0b,$58,$03,$0a
   .byte $70,$0b,$48,$03,$0a
-  .byte $80,$0b,$10,$03,$32
   .byte $80,$0b,$38,$03,$0a
   .byte $90,$0b,$28,$03,$0a
-  .byte $a0,$0b,$f0,$02,$32
   .byte $a0,$0b,$18,$03,$0a
   .byte $b0,$0b,$08,$03,$0a
   .byte $c0,$0b,$f8,$02,$0a
   .byte $d0,$0b,$70,$03,$b0
   .byte $d0,$0b,$80,$03,$d4
-  .byte $e0,$0b,$f0,$02,$32
   .byte $e0,$0b,$80,$03,$e8
   .byte $f0,$0b,$80,$03,$d4
-  .byte $00,$0c,$00,$03,$32
   .byte $00,$0c,$80,$03,$e8
   .byte $10,$0c,$80,$03,$d4
-  .byte $20,$0c,$10,$03,$32
   .byte $20,$0c,$80,$03,$e8
   .byte $30,$0c,$80,$03,$d4
-  .byte $40,$0c,$20,$03,$32
   .byte $40,$0c,$80,$03,$e8
   .byte $50,$0c,$60,$03,$a0
   .byte $50,$0c,$80,$03,$d1
@@ -8051,8 +8042,7 @@ sprite_data_dorabaebasic4:
   .byte $20,$1d,$e0,$02,$e0
   .byte $30,$1d,$e0,$02,$ea
   .byte $40,$1d,$e0,$02,$da
-  .byte $60,$1d,$b0,$02,$00
-  .byte $60,$1d,$c0,$02,$00
+  .byte $60,$1d,$b8,$02,$00
   .byte $80,$1d,$e0,$02,$e0
   .byte $90,$1d,$e0,$02,$e1
   .byte $a0,$1d,$e0,$02,$d1
@@ -8093,7 +8083,7 @@ sprite_data_dorabaebasic4:
   .byte $c0,$21,$90,$02,$a0
   .byte $c0,$21,$a0,$02,$e0
   .byte $d0,$21,$50,$02,$01
-  .byte $d0,$21,$60,$02,$14
+  .byte $d0,$21,$58,$02,$14
   .byte $d0,$21,$90,$02,$90
   .byte $d0,$21,$a0,$02,$d0
   .byte $e0,$21,$90,$02,$80
@@ -8111,7 +8101,7 @@ sprite_data_dorabaebasic4:
   .byte $d0,$24,$60,$02,$18
   .byte $70,$25,$80,$02,$86
   .byte $70,$26,$70,$02,$91
-  .byte $d0,$26,$70,$02,$20
+  .byte $d0,$26,$68,$02,$20
   .byte $70,$27,$80,$02,$a0
   .byte $70,$27,$90,$02,$e0
   .byte $80,$27,$80,$02,$8f
@@ -8232,10 +8222,10 @@ sprite_data_dorabaebasic4:
   .byte $90,$31,$40,$02,$cf
   .byte $b0,$31,$30,$02,$8f
   .byte $b0,$31,$40,$02,$d6
-  .byte $c0,$31,$60,$02,$19
+  .byte $d0,$31,$58,$02,$19
   .byte $d0,$31,$30,$02,$96
   .byte $d0,$31,$40,$02,$cf
-  .byte $d0,$31,$60,$02,$00
+  .byte $d0,$31,$58,$02,$00
   .byte $f0,$31,$30,$02,$8f
   .byte $f0,$31,$40,$02,$d6
   .byte $10,$32,$30,$02,$96
@@ -8300,7 +8290,7 @@ sprite_data_dorabaebasic4:
   .byte $80,$35,$30,$02,$b0
   .byte $90,$35,$30,$02,$bf
   .byte $90,$35,$40,$02,$02
-  .byte $90,$35,$50,$02,$16
+  .byte $90,$35,$48,$02,$16
   .byte $a0,$35,$30,$02,$b0
   .byte $b0,$35,$30,$02,$bf
   .byte $c0,$35,$30,$02,$b0
@@ -8349,7 +8339,7 @@ sprite_data_dorabaebasic4:
   .byte $f0,$3a,$80,$02,$0b
   .byte $50,$3b,$80,$02,$0b
   .byte $d0,$3b,$70,$02,$01
-  .byte $d0,$3b,$80,$02,$15
+  .byte $d0,$3b,$78,$02,$15
   .byte $60,$3c,$80,$02,$98
   .byte $70,$3c,$80,$02,$9a
   .byte $80,$3c,$80,$02,$ab

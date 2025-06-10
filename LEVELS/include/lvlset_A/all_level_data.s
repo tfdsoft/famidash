@@ -283,7 +283,7 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5892
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8130 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8170 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -702,6 +702,25 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2723
 
 
+.segment "DAT_BANK_1D"	; Total bank size: 8173 bytes
+	.export level_data_thechallenge
+	level_data_thechallenge:
+	; Header
+		.byte song_the_challenge ;___ Song ID
+		.byte 0 ;____________________ Starting game mode
+		.byte 0 ;____________________ Starting speed
+		.byte 1 ;____________________ Disable parallax
+		.byte _EXTRASPRITES1 ;_______ Deco type
+		.byte _SPIKESA ;_____________ Spike set
+		.byte _BLOCKSB ;_____________ Block set
+		.byte _SAWBLADESA ;__________ Sawblade set
+		.byte $0F ;__________________ Starting background color
+		.byte $06 ;__________________ Starting ground color
+		.byte 57 ;___________________ Level height
+	; Level data
+		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 980
+
+
 .segment "DAT_BANK_1E"	; Total bank size: 7970 bytes
 	.export level_data_cantletgo
 	level_data_cantletgo:
@@ -721,7 +740,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1932
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8092 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8122 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -791,22 +810,3 @@
 		.byte 27 ;___________________ Level height
 	; Level data
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1365
-
-
-.segment "DAT_BANK_22"	; Total bank size: 3873 bytes
-	.export level_data_thechallenge
-	level_data_thechallenge:
-	; Header
-		.byte song_the_challenge ;___ Song ID
-		.byte 0 ;____________________ Starting game mode
-		.byte 0 ;____________________ Starting speed
-		.byte 1 ;____________________ Disable parallax
-		.byte _EXTRASPRITES1 ;_______ Deco type
-		.byte _SPIKESA ;_____________ Spike set
-		.byte _BLOCKSB ;_____________ Block set
-		.byte _SAWBLADESA ;__________ Sawblade set
-		.byte $0F ;__________________ Starting background color
-		.byte $06 ;__________________ Starting ground color
-		.byte 57 ;___________________ Level height
-	; Level data
-		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 980
