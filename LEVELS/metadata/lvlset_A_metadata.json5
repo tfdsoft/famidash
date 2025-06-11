@@ -1278,10 +1278,101 @@
 			stars: 7,
 			songID: "song_infernoplex",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 3,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [24, 25],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [50, 23],
+					offsetX: +8				//pink orb
+				},
+				{
+					coordinates: [65, 21],
+					offsetX: -8				//pink orb
+				},
+				{
+					coordinates: [138, 21],
+					offsetY: -8,				//wave
+					offsetX: -8
+				},
+				{
+					coordinates: [138, 20],
+					offsetY: +8,				//gravity
+					offsetX: -8
+				},
+				{
+					coordinates: [277, 20],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [326, 25],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [383, 25],
+					offsetY: -16				//dual portal
+				},
+				{
+					coordinates: [406, 19],
+					offsetX: +8				//diamond
+				},
+				{
+					coordinates: [406, 25],
+					offsetX: +8				//diamond
+				},
+				{
+					coordinates: [524, 20],
+					offsetY: +8				//speed
+				},
+				{
+					coordinates: [524, 21],
+					offsetY: -8				//single portal
+				},
+				{
+					coordinates: [524, 23],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [525, 20],
+					offsetY: +8,				//mini portal
+					offsetX: -16
+				},
+				{
+					coordinates: [526, 20],
+					offsetY: +8,				//gravity portal
+					offsetX: -32
+				},
+				{
+					coordinates: [615, 25],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [616, 24],
+					offsetX: -16				//growth portal
+				},
+				{
+					coordinates: [652, 20],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [935, 19],
+					offsetY: +8,				//growth portal
+					offsetX: +16
+				},
+				{
+					coordinates: [936, 19],
+					offsetY: +8				//ball portal
+				},
+				{
+					coordinates: [1048, 22],
+					offsetY: -8				//speed portal
+				},
+			]
 		},
 		{
 			level: "lostinthewoods",

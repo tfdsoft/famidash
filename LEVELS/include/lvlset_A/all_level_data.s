@@ -302,13 +302,13 @@
 		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5569
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8181 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8153 bytes
 	.export level_data_revolution
 	level_data_revolution:
 	; Header
 		.byte song_infernoplex ;___ Song ID
 		.byte 0 ;__________________ Starting game mode
-		.byte 0 ;__________________ Starting speed
+		.byte 3 ;__________________ Starting speed
 		.byte 1 ;__________________ Disable parallax
 		.byte _DECO1 ;_____________ Deco type
 		.byte _SPIKESA ;___________ Spike set
@@ -318,7 +318,7 @@
 		.byte $0F ;________________ Starting ground color
 		.byte 27 ;_________________ Level height
 	; Level data
-		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5340
+		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5362
 
 
 .segment "DAT_BANK_10"	; Total bank size: 8175 bytes
@@ -381,7 +381,7 @@
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3105
 
 
-.segment "DAT_BANK_12"	; Total bank size: 8171 bytes
+.segment "DAT_BANK_12"	; Total bank size: 7920 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -776,7 +776,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7616 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7932 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
