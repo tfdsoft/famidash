@@ -17,11 +17,11 @@
 			startingGroundColor: 0x02,
 			objectOffsets: [
 				{
-					coordinates: [418, 21],
+					coordinates: [418, 21],		//cube portal
 					offsetY: -8
 				},
 				{
-					coordinates: [764, 21],
+					coordinates: [764, 21],		//ship portal
 					offsetY: -8
 				},
 			]	
@@ -1285,15 +1285,15 @@
 			objectOffsets: [
 				{
 					coordinates: [24, 25],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [50, 23],
-					offsetX: +8				//pink orb
+					offsetX: +8					//pink orb
 				},
 				{
 					coordinates: [65, 21],
-					offsetX: -8				//pink orb
+					offsetX: -8					//pink orb
 				},
 				{
 					coordinates: [138, 21],
@@ -1307,11 +1307,11 @@
 				},
 				{
 					coordinates: [277, 20],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [326, 25],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [383, 25],
@@ -1319,23 +1319,23 @@
 				},
 				{
 					coordinates: [406, 19],
-					offsetX: +8				//diamond
+					offsetX: +8					//diamond
 				},
 				{
 					coordinates: [406, 25],
-					offsetX: +8				//diamond
+					offsetX: +8					//diamond
 				},
 				{
 					coordinates: [524, 20],
-					offsetY: +8				//speed
+					offsetY: +8					//speed
 				},
 				{
 					coordinates: [524, 21],
-					offsetY: -8				//single portal
+					offsetY: -8					//single portal
 				},
 				{
 					coordinates: [524, 23],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [525, 20],
@@ -1349,7 +1349,7 @@
 				},
 				{
 					coordinates: [615, 25],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [616, 24],
@@ -1357,7 +1357,7 @@
 				},
 				{
 					coordinates: [652, 20],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [935, 19],
@@ -1366,11 +1366,11 @@
 				},
 				{
 					coordinates: [936, 19],
-					offsetY: +8				//ball portal
+					offsetY: +8					//ball portal
 				},
 				{
 					coordinates: [1048, 22],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 			]
 		},
@@ -1406,7 +1406,169 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [38, 16],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [46, 16],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [57, 16],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [75, 14],
+					offsetY: -8				//grav portal
+				},
+				{
+					coordinates: [98, 16],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [98, 18],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [102, 15],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [102, 17],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [164, 15],
+					offsetY: -8				//grav portal
+				},
+				{
+					coordinates: [191, 16],
+					offsetY: +8				//grav portal
+				},
+				{
+					coordinates: [226, 15],
+					offsetY: +8				//mini portal
+				},
+				{
+					coordinates: [228, 15],
+					offsetY: +8				//growth portal
+				},
+				{
+					coordinates: [230, 15],
+					offsetY: +8				//mini portal
+				},
+				{
+					coordinates: [232, 15],
+					offsetY: +8				//growth portal
+				},
+				{
+					coordinates: [234, 15],
+					offsetY: +8				//mini portal
+				},
+				{
+					coordinates: [236, 15],
+					offsetY: +8				//growth portal
+				},
+				{
+					coordinates: [240, 15],
+					offsetY: +8				//ball portal
+				},
+				{
+					coordinates: [357, 30],
+					offsetX: -8				//yellow orb
+				},
+				{
+					coordinates: [373, 30],
+					offsetX: -8				//yellow orb
+				},
+				{
+					coordinates: [415, 31],
+					offsetX: -8				//yellow orb
+				},
+				{
+					coordinates: [426, 30],
+					offsetX: +8				//yellow orb
+				},
+				{
+					coordinates: [462, 30],
+					offsetY: -8				//grav portal
+				},
+				{
+					coordinates: [480, 29],
+					offsetY: -8				//growth portal
+				},
+				{
+					coordinates: [487, 30],
+					offsetY: -8				//ufo portal
+				},
+				{
+					coordinates: [544, 28],
+					offsetY: +8				//speed portal
+				},
+				{
+					coordinates: [544, 30],
+					offsetY: +8				//speed portal
+				},
+				{
+					coordinates: [567, 30],
+					offsetY: +8				//speed portal
+				},
+				{
+					coordinates: [624, 31],
+					offsetY: +8				//mini portal
+				},
+				{
+					coordinates: [641, 30],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [654, 30],
+					offsetY: +8				//speed portal
+				},
+				{
+					coordinates: [689, 31],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [702, 30],
+					offsetY: +8				//speed portal
+				},
+				{
+					coordinates: [722, 33],
+					offsetY: +8				//blue orb
+				},
+				{
+					coordinates: [724, 31],
+					offsetY: +8				//blue orb
+				},
+				{
+					coordinates: [726, 33],
+					offsetY: +8				//blue orb
+				},
+				{
+					coordinates: [739, 32],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [800, 31],
+					offsetX: +16			//growth portal
+				},
+				{
+					coordinates: [801, 32],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [845, 30],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [852, 30],
+					offsetY: -8				//speed portal
+				},
+			]
 		},
 		{
 			level: "rainbowtylenol",
