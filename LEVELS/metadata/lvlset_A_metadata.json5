@@ -1526,7 +1526,107 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [29, 24],
+					offsetX: -8				//pink orb
+				},
+				{
+					coordinates: [30, 21],
+					offsetY: -8				//pink orb
+				},
+				{
+					coordinates: [118, 21],
+					offsetY: -8				//cube portal
+				},
+				{
+					coordinates: [118, 20],
+					offsetY: +8				//normal grav portal
+				},
+				{
+					coordinates: [155, 20],
+					offsetX: +16				//normal grav portal
+				},
+				{
+					coordinates: [156, 21],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [187, 21],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [188, 20],
+					offsetX: -16				//mini portal
+				},
+				{
+					coordinates: [212, 22],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [240, 20],
+					offsetY: +8				//speed portal
+				},
+				{
+					coordinates: [291, 23],
+					offsetY: +8				//speed portal
+				},
+				{
+					coordinates: [316, 22],
+					offsetY: +8				//dual portal
+				},
+				{
+					coordinates: [366, 20],
+					offsetY: +8				//single portal
+				},
+				{
+					coordinates: [366, 21],
+					offsetY: -8				//normal grav portal
+				},
+				{
+					coordinates: [381, 20],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [405, 17],
+					offsetY: +8				//speed portal
+				},
+				{
+					coordinates: [436, 24],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [483, 19],
+					offsetX: -16,				//speed portal
+					offsetY: -8,
+				},
+				{
+					coordinates: [483, 21],
+					offsetX: -16,				//speed portal
+					offsetY: -8,
+				},
+				{
+					coordinates: [499, 18],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [522, 16],
+					offsetY: +16				//reverse grav portal
+				},
+				{
+					coordinates: [526, 21],
+					offsetY: -8				//speed portal
+				},
+				{
+					coordinates: [527, 20],
+					offsetX: -16				//normal gravity portal
+				},
+				{
+					coordinates: [551, 21],
+					offsetY: -8				//speed portal
+				},
+			]
 		},
 		{
 			level: "firetemple",
