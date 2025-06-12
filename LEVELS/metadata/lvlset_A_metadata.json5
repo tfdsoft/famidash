@@ -704,7 +704,153 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x06,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			objectOffsets: [
+				{
+					coordinates: [19, 36],
+					offsetY: -8				//yellow orb
+				},
+				{
+					coordinates: [71, 38],
+					offsetX: -8				//yellow orb
+				},
+				{
+					coordinates: [83, 33],
+					offsetX: +8				//yellow orb
+				},
+				{
+					coordinates: [85, 30],
+					offsetX: +8				//yellow orb
+				},
+				{
+					coordinates: [93, 34],
+					offsetX: +8				//blue orb
+				},
+				{
+					coordinates: [118, 34],
+					offsetX: +8				//blue orb
+				},
+				{
+					coordinates: [143, 36],
+					offsetY: -8				//yellow
+				},
+				{
+					coordinates: [200, 33],
+					offsetY: -8				//yellow
+				},
+				{
+					coordinates: [314, 19],
+					offsetX: +8				//yellow
+				},
+				{
+					coordinates: [318, 18],
+					offsetX: +8				//blue
+				},
+				{
+					coordinates: [320, 14],
+					offsetX: +8				//blue
+				},
+				{
+					coordinates: [322, 18],
+					offsetX: +8				//blue
+				},
+				{
+					coordinates: [324, 14],
+					offsetX: +8				//blue
+				},
+				{
+					coordinates: [336, 26],
+					offsetX: -8				//pink pad
+				},
+				{
+					coordinates: [357, 25],
+					offsetX: +8				//blue
+				},
+				{
+					coordinates: [361, 25],
+					offsetX: -8				//blue
+				},
+				{
+					coordinates: [363, 30],
+					offsetX: +8				//blue
+				},
+				{
+					coordinates: [384, 36],
+					offsetY: -8				//yellow
+				},
+				{
+					coordinates: [457, 34],
+					offsetX: +8				//pink
+				},
+				{
+					coordinates: [461, 34],
+					offsetX: +8				//yellow
+				},
+				{
+					coordinates: [524, 33],
+					offsetX: +16				//cube portal
+				},
+				{
+					coordinates: [538, 34],
+					offsetY: -8				//blue
+				},
+				{
+					coordinates: [542, 34],
+					offsetY: -8				//blue
+				},
+				{
+					coordinates: [615, 23],
+					offsetY: -16				//grav portal
+				},
+				{
+					coordinates: [662, 24],
+					offsetY: +8				//grav portal
+				},
+				{
+					coordinates: [662, 25],
+					offsetY: -8				//ship portal
+				},
+				{
+					coordinates: [719, 23],
+					offsetY: +8				//grav portal
+				},
+				{
+					coordinates: [725, 26],
+					offsetY: +8				//grav portal
+				},
+				{
+					coordinates: [732, 22],
+					offsetY: +8				//grav portal
+				},
+				{
+					coordinates: [738, 26],
+					offsetY: -16				//grav portal
+				},
+				{
+					coordinates: [739, 25],
+					offsetX: -16				//growth portal
+				},
+				{
+					coordinates: [768, 33],
+					offsetY: -8				//ship portal
+				},
+				{
+					coordinates: [778, 35],
+					offsetX: +8				//grav
+				},
+				{
+					coordinates: [786, 34],
+					offsetX: -8				//grav
+				},
+				{
+					coordinates: [816, 32],
+					offsetY: +16				//grav
+				},
+				{
+					coordinates: [829, 28],
+					offsetX: +8				//blue
+				},
+			]
 		},
 		{
 			level: "electrodynamix",
