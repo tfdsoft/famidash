@@ -2257,6 +2257,10 @@
 					offsetX: -16				//mini portal
 				},
 				{
+					coordinates: [212, 21],
+					offsetX: +10				//grav portal
+				},
+				{
 					coordinates: [212, 22],
 					offsetY: -8				//speed portal
 				},
