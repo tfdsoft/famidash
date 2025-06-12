@@ -865,7 +865,109 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
-			startingGroundColor: 0x12
+			startingGroundColor: 0x12,
+			objectOffsets: [
+				{
+					coordinates: [11, 24],
+					offsetX: +8				//yellow orb
+				},
+				{
+					coordinates: [39, 22],
+					offsetY: +8				//yellow orb
+				},
+				{
+					coordinates: [78, 23],
+					offsetY: -8				//speed
+				},
+				{
+					coordinates: [101, 23],
+					offsetX: +8				//yellow orb
+				},
+				{
+					coordinates: [108, 21],
+					offsetX: -8				//deco
+				},
+				{
+					coordinates: [108, 23],
+					offsetX: -8				//pink
+				},
+				{
+					coordinates: [197, 25],
+					offsetX: -8				//pink
+				},
+				{
+					coordinates: [274, 19],
+					offsetY: +8				//ship
+				},
+				{
+					coordinates: [348, 21],
+					offsetY: -8				//music note
+				},
+				{
+					coordinates: [360, 19],
+					offsetX: +16				//shrink
+				},
+				{
+					coordinates: [441, 19],
+					offsetY: -8				//coin
+				},
+				{
+					coordinates: [469, 20],
+					offsetX: +16				//growth
+				},
+				{
+					coordinates: [540, 20],
+					offsetX: -8				//blue
+				},
+				{
+					coordinates: [632, 26],
+					offsetY: -8				//coin
+				},
+				{
+					coordinates: [659, 20],
+					offsetX: -16				//mini
+				},
+				{
+					coordinates: [664, 21],
+					offsetY: -8				//speed
+				},
+				{
+					coordinates: [724, 22],
+					offsetY: -16				//grow
+				},
+				{
+					coordinates: [725, 21],
+					offsetX: -16				//grav
+				},
+				{
+					coordinates: [784, 21],
+					offsetX: +16				//mini
+				},
+				{
+					coordinates: [843, 22],
+					offsetY: -8				//ball
+				},
+				{
+					coordinates: [859, 24],
+					offsetX: +8				//yellow
+				},
+				{
+					coordinates: [874, 21],
+					offsetY: -8				//yellow
+				},
+				{
+					coordinates: [878, 22],
+					offsetY: +8				//blue
+				},
+				{
+					coordinates: [902, 22],
+					offsetY: -16				//grav
+				},
+				{
+					coordinates: [903, 21],
+					offsetX: -16				//growth
+				},
+			]
 		},
 		{
 			level: "hexagonforce",
