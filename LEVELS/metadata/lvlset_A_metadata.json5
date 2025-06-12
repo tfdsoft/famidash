@@ -2258,7 +2258,8 @@
 				},
 				{
 					coordinates: [212, 21],
-					offsetX: +10				//grav portal
+					offsetX: +10,				//grav portal
+					offsetY: -8
 				},
 				{
 					coordinates: [212, 22],

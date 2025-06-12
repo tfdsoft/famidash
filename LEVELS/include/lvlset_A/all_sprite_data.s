@@ -15250,7 +15250,7 @@ sprite_data_problematic:
   .byte $00,$0d,$f0,$02,$9b
   .byte $20,$0d,$f0,$02,$8f
   .byte $30,$0d,$f0,$02,$bb
-  .byte $4a,$0d,$30,$03,$08
+  .byte $4a,$0d,$28,$03,$08
   .byte $40,$0d,$38,$03,$20
   .byte $50,$0d,$f0,$02,$bf
   .byte $70,$0d,$f0,$02,$9b
