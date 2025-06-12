@@ -9,6 +9,12 @@
 .define VS_SYSTEM ::__VS_SYSTEM
 .define ___VS_SYSTEM ::__VS_SYSTEM
 ; The latter is to keep the C compilers happy
+.ifndef __MAIN
+	__MAIN = 0
+.endif
+.define MAIN ::__MAIN
+.define ___MAIN ::__MAIN
+; The latter is to keep the C compilers happy
 
 ;REMOVED initlib
 ;this called the CONDES function
@@ -434,11 +440,18 @@ _GAME_CHR:
     .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (34) 
     .incbin "GRAPHICS/Level Sprites/bankblankcloud2.chr" ; 1kb
 
-    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (36) 
-    .incbin "GRAPHICS/Level Sprites/bankblankfingerdash.chr" ; 1kb
-    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (38) 
-    .incbin "GRAPHICS/Level Sprites/bankblankfingerdash2.chr" ; 1kb
-
+    .if __MAIN
+		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (36) 
+		.incbin "GRAPHICS/Level Sprites/bankblankfingerdash.chr" ; 1kb
+		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (38) 
+		.incbin "GRAPHICS/Level Sprites/bankblankfingerdash2.chr" ; 1kb
+	.else
+		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (36) 
+		.incbin "GRAPHICS/Level Sprites/bankblankextra.chr" ; 1kb
+		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (38) 
+		.incbin "GRAPHICS/Level Sprites/bankblankextra2.chr" ; 1kb
+	.endif
+	
     .repeat 15, I   ; banks 40 - 69
         .incbin .sprintf("GRAPHICS/Icons/bankicon%02X.chr", I)  ; 1kb
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb

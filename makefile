@@ -84,6 +84,8 @@ all: main vs-sys b-sides c-sides
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
 
 main: LEVELSET = A
+main: CC65_DEFINES += -D__MAIN=1
+main: CA65_DEFINES += -D__MAIN=1
 main: OUTDIR = $(OUTDIR_PREFIX)/$@
 main: TMPDIR = $(TMPDIR_PREFIX)/$@
 main:
