@@ -984,7 +984,202 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
 			startingGroundColor: 0x12,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [199, 28],
+					offsetY: +8				//ball
+				},
+				{
+					coordinates: [200, 28],
+					offsetY: +8,				//gravity
+					offsetX: -16
+				},
+				{
+					coordinates: [250, 28],
+					offsetY: +8				//blue
+				},
+				{
+					coordinates: [253, 33],
+					offsetX: +8				//yellow
+				},
+				{
+					coordinates: [275, 30],
+					offsetY: -8				//cube
+				},
+				{
+					coordinates: [296, 32],
+					offsetY: +8				//grav
+				},
+				{
+					coordinates: [351, 25],
+					offsetY: -8				//dual
+				},
+				{
+					coordinates: [422, 23],
+					offsetX: +8				//yellow
+				},
+				{
+					coordinates: [422, 24],
+					offsetX: +8				//deco
+				},
+				{
+					coordinates: [422, 29],
+					offsetX: +8				//deco
+				},
+				{
+					coordinates: [427, 23],
+					offsetY: +8				//ship
+				},
+				{
+					coordinates: [427, 27],
+					offsetY: -8				//ship
+				},
+				{
+					coordinates: [502, 26],
+					offsetX: +16,				//single
+					offsetY: -8
+				},
+				{
+					coordinates: [503, 26],
+					offsetX: +8,				//grav
+					offsetY: -8
+				},
+				{
+					coordinates: [504, 26],
+					offsetX: -8,				//cube
+					offsetY: -8
+				},
+				{
+					coordinates: [553, 23],
+					offsetY: +16				//x deco
+				},
+				{
+					coordinates: [555, 25],
+					offsetY: +16				//x deco
+				},
+				{
+					coordinates: [570, 27],
+					offsetX: -8				//yellow
+				},
+				{
+					coordinates: [573, 23],
+					offsetX: +16				//ufo
+				},
+				{
+					coordinates: [579, 24],
+					offsetY: -8				//speed
+				},
+				{
+					coordinates: [580, 23],
+					offsetX: -16				//mini
+				},
+				{
+					coordinates: [639, 23],
+					offsetX: +16				//dual
+				},
+				{
+					coordinates: [640, 24],
+					offsetY: -8				//speed
+				},
+				{
+					coordinates: [641, 23],
+					offsetX: -16				//ball
+				},
+				{
+					coordinates: [670, 22],
+					offsetX: +8				//yellow pad
+				},
+				{
+					coordinates: [670, 27],
+					offsetX: +8				//yellow pad
+				},
+				{
+					coordinates: [683, 23],
+					offsetY: +8				//ship
+				},
+				{
+					coordinates: [708, 23],
+					offsetX: +16,				//single
+					offsetY: +8
+				},
+				{
+					coordinates: [709, 23],
+					offsetY: +8				//grav
+				},
+				{
+					coordinates: [710, 23],
+					offsetX: -16,				//growth
+					offsetY: +8
+				},
+				{
+					coordinates: [751, 28],
+					offsetY: +8,				//coin
+					offsetX: +8
+				},
+				{
+					coordinates: [793, 25],
+					offsetY: -8				//speed
+				},
+				{
+					coordinates: [874, 24],
+					offsetX: -8				//blue orb
+				},
+				{
+					coordinates: [883, 20],
+					offsetY: +16				//x deco
+				},
+				{
+					coordinates: [910, 19],
+					offsetY: +8				//grav
+				},
+				{
+					coordinates: [918, 20],
+					offsetY: -8				//grav
+				},
+				{
+					coordinates: [942, 14],
+					offsetX: +16				//ship
+				},
+				{
+					coordinates: [942, 15],
+					offsetX: +16,				//mini
+					offsetY: -16
+				},
+				{
+					coordinates: [943, 15],
+					offsetY: -8				//speed
+				},
+				{
+					coordinates: [944, 14],
+					offsetX: -16				//dual
+				},
+				{
+					coordinates: [980, 15],
+					offsetY: +8				//deco
+				},
+				{
+					coordinates: [981, 15],
+					offsetY: +8				//deco
+				},
+				{
+					coordinates: [994, 15],
+					offsetX: +8,				//single
+					offsetY: -8
+				},
+				{
+					coordinates: [995, 14],
+					offsetY: +8				//grav
+				},
+				{
+					coordinates: [995, 15],
+					offsetY: -8				//growth
+				},
+				{
+					coordinates: [1022, 18],
+					offsetY: +8				//coin
+				},
+			]
 		},
 		{
 			level: "blastprocessing",

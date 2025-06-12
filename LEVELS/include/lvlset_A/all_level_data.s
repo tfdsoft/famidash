@@ -95,7 +95,26 @@
 		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8180 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8178 bytes
+	.export level_data_hexagonforce
+	level_data_hexagonforce:
+	; Header
+		.byte song_hexagon_force ;___ Song ID
+		.byte 0 ;____________________ Starting game mode
+		.byte 0 ;____________________ Starting speed
+		.byte 1 ;____________________ Disable parallax
+		.byte _DECO1 ;_______________ Deco type
+		.byte _SPIKESB ;_____________ Spike set
+		.byte _BLOCKSB ;_____________ Block set
+		.byte _SAWBLADESA ;__________ Sawblade set
+		.byte $02 ;__________________ Starting background color
+		.byte $12 ;__________________ Starting ground color
+		.byte 40 ;___________________ Level height
+	; Level data
+		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6967
+
+
+.segment "DAT_BANK_05"	; Total bank size: 8180 bytes
 	.export level_data_groundtospace
 	level_data_groundtospace:
 	; Header
@@ -112,25 +131,6 @@
 		.byte 27 ;_____________________ Level height
 	; Level data
 		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 6944
-
-
-.segment "DAT_BANK_05"	; Total bank size: 8180 bytes
-	.export level_data_hexagonforce
-	level_data_hexagonforce:
-	; Header
-		.byte song_hexagon_force ;___ Song ID
-		.byte 0 ;____________________ Starting game mode
-		.byte 0 ;____________________ Starting speed
-		.byte 1 ;____________________ Disable parallax
-		.byte _DECO1 ;_______________ Deco type
-		.byte _SPIKESB ;_____________ Spike set
-		.byte _BLOCKSB ;_____________ Block set
-		.byte _SAWBLADESA ;__________ Sawblade set
-		.byte $02 ;__________________ Starting background color
-		.byte $12 ;__________________ Starting ground color
-		.byte 40 ;___________________ Level height
-	; Level data
-		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6914
 
 
 .segment "DAT_BANK_06"	; Total bank size: 8161 bytes
@@ -755,7 +755,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7932 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7892 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
