@@ -401,7 +401,7 @@
 	; Header
 		.byte song_glitch_gremlin ;___ Song ID
 		.byte 0 ;_____________________ Starting game mode
-		.byte 0 ;_____________________ Starting speed
+		.byte 1 ;_____________________ Starting speed
 		.byte 1 ;_____________________ Disable parallax
 		.byte _EXTRASPRITES1 ;________ Deco type
 		.byte _SPIKESA ;______________ Spike set
