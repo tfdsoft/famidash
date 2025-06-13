@@ -17836,7 +17836,6 @@ sprite_data_pgclubstep:
 sprite_data_futurefunk:
   .byte $00,$00,$10,$03,$96
   .byte $00,$00,$20,$03,$c6
-  .byte $50,$00,$50,$03,$79
   .byte $e0,$00,$70,$03,$0b
   .byte $60,$01,$10,$03,$aa
   .byte $60,$01,$20,$03,$da
