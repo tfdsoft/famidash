@@ -2771,10 +2771,10 @@ struct SpriteFrame {
 
 
 const struct SpriteFrame Skull_Open_Sprites[]={
-	{4, Skull_Trigger_1},
+	{1, Skull_Trigger_1},
 	{4, Skull_Trigger_2},
 	{4, Skull_Trigger_3},
-	{4, Skull_Trigger_4},
+	{1, Skull_Trigger_4},
 };
 
 
