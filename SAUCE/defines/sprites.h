@@ -3,6 +3,36 @@
 // a 16x16 pixel metasprite
 
 
+const unsigned char Skull_Trigger_1[]={
+
+	  0,  0,0XC9,1,
+	  8,  0,0xC9,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Skull_Trigger_2[]={
+
+	  0,  0,0XE9,1,
+	  8,  0,0xE9,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Skull_Trigger_3[]={
+
+	  0,  0,0XED,1,
+	  8,  0,0xED,1|OAM_FLIP_H,
+	0x80
+};
+const unsigned char Skull_Trigger_4[]={
+
+	  0,  0,0XF7,1,
+	  8,  0,0xF7,1|OAM_FLIP_H,
+	0x80
+};
+
+
+const unsigned char * const Skull_Open_Sprites[] = {Skull_Trigger_1, Skull_Trigger_2, Skull_Trigger_3, Skull_Trigger_4};
+const unsigned char * const Skull_Close_Sprites[] = {Skull_Trigger_4, Skull_Trigger_3, Skull_Trigger_2, Skull_Trigger_1};
+
+
 const unsigned char MINICOIN_SPRITE1[]={
 	  4,  -4,0xE9,0,
 	0x80
