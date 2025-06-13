@@ -2771,19 +2771,13 @@ struct SpriteFrame {
 
 
 const struct SpriteFrame Skull_Open_Sprites[]={
-	{5, Skull_Trigger_1},
-	{5, Skull_Trigger_2},
-	{5, Skull_Trigger_3},
-	{5, Skull_Trigger_4},
+	{4, Skull_Trigger_1},
+	{4, Skull_Trigger_2},
+	{4, Skull_Trigger_3},
+	{4, Skull_Trigger_4},
 };
 
 
-const struct SpriteFrame Skull_Close_Sprites[]={
-	{5, Skull_Trigger_4},
-	{5, Skull_Trigger_3},
-	{5, Skull_Trigger_2},
-	{5, Skull_Trigger_1},
-};
 
 const struct SpriteFrame COIN_SPRITES[]={
 	{5, COIN_SPRITE},
