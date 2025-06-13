@@ -612,7 +612,7 @@
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2236
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8098 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8073 bytes
 	.export level_data_pyrophoric
 	level_data_pyrophoric:
 	; Header
