@@ -400,6 +400,7 @@ uint8_t activesprites_realx[max_loaded_sprites];
 uint8_t activesprites_realy[max_loaded_sprites];
 uint8_t activesprites_active[max_loaded_sprites];
 uint8_t activesprites_activated[max_loaded_sprites];
+uint8_t activesprites_animated[max_loaded_sprites];
 
 
 
@@ -456,8 +457,6 @@ uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu 
 uint8_t donotresetrng;
 
 uint8_t player_invis;
-
-uint8_t animate_skull;
 
 extern uint16_t min_scroll_y;
 extern uint16_t seam_scroll_y;

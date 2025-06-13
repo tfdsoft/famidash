@@ -98,11 +98,11 @@ void draw_sprites(){
 			animation_frame_count = idx8_dec(activesprites_anim_frame_count, index);
 			if ((int8_t)animation_frame_count < 0) {
 
-				if ((activesprites_type[index] == WHITE_DEATH_ORB && animate_skull == 1) || activesprites_type[index] != WHITE_DEATH_ORB) {
+				if ((activesprites_type[index] == WHITE_DEATH_ORB && activesprites_animated[index] == 1) || activesprites_type[index] != WHITE_DEATH_ORB) {
 					animation_frame = idx8_inc(activesprites_anim_frame, index);
 				}
 
-				else if (activesprites_type[index] == WHITE_DEATH_ORB && animate_skull == 2) { if (activesprites_anim_frame[index]) { animation_frame = idx8_dec(activesprites_anim_frame, index); } else { animation_frame = activesprites_anim_frame[index]; } }
+				else if (activesprites_type[index] == WHITE_DEATH_ORB && activesprites_animated[index] == 2) { if (activesprites_anim_frame[index]) { animation_frame = idx8_dec(activesprites_anim_frame, index); } else { animation_frame = activesprites_anim_frame[index]; } }
 
 				else { animation_frame = activesprites_anim_frame[index]; }
 

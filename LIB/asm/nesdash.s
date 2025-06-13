@@ -1881,7 +1881,7 @@ play:
 
 .import _activesprites_x_lo, _activesprites_x_hi
 .import _activesprites_y_lo, _activesprites_y_hi
-.import _activesprites_type, _activesprites_activated
+.import _activesprites_type, _activesprites_activated, _activesprites_animated
 .import _activesprites_realx, _activesprites_realy
 
 .export _load_next_sprite := load_next_sprite
@@ -1924,6 +1924,7 @@ play:
     
     lda #0
     sta _activesprites_activated,x
+	sta _activesprites_animated,x
 
     ; Increment to the next sprite index - 
     ; Add the 5 back to the pointer

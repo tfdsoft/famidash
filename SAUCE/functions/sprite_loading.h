@@ -719,14 +719,16 @@ void sprite_collide_lookup() {
 	// Gamemode portals
 	
 	spcl_wht_orb:
-		animate_skull = 1;
+		activesprites_animated[index] = 1;
 		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
 			if ((controllingplayer->a || controllingplayer->up)) {
 				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
+				activesprites_animated[index] = 0;
 			}
 		} else {
 			if (controllingplayer->press_a || controllingplayer->press_up) {	
 				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
+				activesprites_animated[index] = 0;
 			}
 		}
 		return;
@@ -1188,7 +1190,7 @@ void sprite_collide(){
 				sprite_collide_lookup();
 			}
 			
-			else if (activesprites_type[index] == WHITE_DEATH_ORB && animate_skull == 1) animate_skull = 2;
+			else if (activesprites_type[index] == WHITE_DEATH_ORB && activesprites_animated[index] == 1) activesprites_animated[index] = 2;
 		}
 	} while (++index < max_loaded_sprites);
 	if (gamemode != GAMEMODE_WAVE) {
