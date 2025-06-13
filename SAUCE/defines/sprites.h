@@ -5,26 +5,26 @@
 
 const unsigned char Skull_Trigger_1[]={
 
-	  0,  0,0XC9,1,
-	  8,  0,0xC9,1|OAM_FLIP_H,
+	  0,  0,0XC9,2,
+	  8,  0,0xC9,2|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Skull_Trigger_2[]={
 
-	  0,  0,0XE9,1,
-	  8,  0,0xE9,1|OAM_FLIP_H,
+	  0,  0,0XE9,2,
+	  8,  0,0xE9,2|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Skull_Trigger_3[]={
 
-	  0,  0,0XED,1,
-	  8,  0,0xED,1|OAM_FLIP_H,
+	  0,  0,0XED,2,
+	  8,  0,0xED,2|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Skull_Trigger_4[]={
 
-	  0,  0,0XF7,1,
-	  8,  0,0xF7,1|OAM_FLIP_H,
+	  0,  0,0XF7,2,
+	  8,  0,0xF7,2|OAM_FLIP_H,
 	0x80
 };
 
