@@ -118,8 +118,6 @@ void reset_level() {
 		activesprites_anim_frame[tmp1] = 0;
 	}
 
-	animate_skull = 0;
-
 	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
 
 	currplayer_gravity = GRAVITY_DOWN;
