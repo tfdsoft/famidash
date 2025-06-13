@@ -457,6 +457,8 @@ uint8_t donotresetrng;
 
 uint8_t player_invis;
 
+uint8_t animate_skull;
+
 extern uint16_t min_scroll_y;
 extern uint16_t seam_scroll_y;
 

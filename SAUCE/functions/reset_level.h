@@ -114,6 +114,12 @@ void reset_level() {
 
 	memfill(jimsheatballalive, 0, MAX_FIREBALLS);
 
+	for (tmp1 = 0; tmp1 < max_loaded_sprites; tmp1++) {
+		activesprites_anim_frame[tmp1] = 0;
+	}
+
+	animate_skull = 0;
+
 	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
 
 	currplayer_gravity = GRAVITY_DOWN;

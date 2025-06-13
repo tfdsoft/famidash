@@ -29,9 +29,6 @@ const unsigned char Skull_Trigger_4[]={
 };
 
 
-const unsigned char * const Skull_Open_Sprites[] = {Skull_Trigger_1, Skull_Trigger_2, Skull_Trigger_3, Skull_Trigger_4};
-const unsigned char * const Skull_Close_Sprites[] = {Skull_Trigger_4, Skull_Trigger_3, Skull_Trigger_2, Skull_Trigger_1};
-
 
 const unsigned char MINICOIN_SPRITE1[]={
 	  4,  -4,0xE9,0,
@@ -2772,6 +2769,22 @@ struct SpriteFrame {
 	const uint8_t* ptr;
 };
 
+
+const struct SpriteFrame Skull_Open_Sprites[]={
+	{5, Skull_Trigger_1},
+	{5, Skull_Trigger_2},
+	{5, Skull_Trigger_3},
+	{5, Skull_Trigger_4},
+};
+
+
+const struct SpriteFrame Skull_Close_Sprites[]={
+	{5, Skull_Trigger_4},
+	{5, Skull_Trigger_3},
+	{5, Skull_Trigger_2},
+	{5, Skull_Trigger_1},
+};
+
 const struct SpriteFrame COIN_SPRITES[]={
 	{5, COIN_SPRITE},
 	{5, COIN_1_SPRITE},
@@ -3278,7 +3291,7 @@ const unsigned char * const Metasprites[]={
 	nometa,
 	nometa,
 	nometa,
-	White_Death_Orb,
+	Skull_Trigger_1,
 	};
 
 
@@ -3409,7 +3422,7 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
-	WHITE_DEATH_ORB_SPRITES,
+	Skull_Open_Sprites,
 	
 };
 
@@ -3540,7 +3553,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	sizeof(WHITE_DEATH_ORB_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	sizeof(Skull_Open_Sprites) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 };
 
 #pragma rodata-name (pop)

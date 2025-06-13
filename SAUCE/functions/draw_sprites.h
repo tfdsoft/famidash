@@ -97,16 +97,27 @@ void draw_sprites(){
 			// If this frame has expired, then move to the next animation frame
 			animation_frame_count = idx8_dec(activesprites_anim_frame_count, index);
 			if ((int8_t)animation_frame_count < 0) {
-				animation_frame = idx8_inc(activesprites_anim_frame, index);
+
+				if ((activesprites_type[index] == WHITE_DEATH_ORB && animate_skull == 1) || activesprites_type[index] != WHITE_DEATH_ORB) {
+					animation_frame = idx8_inc(activesprites_anim_frame, index);
+				}
+
+				else if (activesprites_type[index] == WHITE_DEATH_ORB && animate_skull == 2) { if (activesprites_anim_frame[index]) { animation_frame = idx8_dec(activesprites_anim_frame, index); } else { animation_frame = activesprites_anim_frame[index]; } }
+
+				else { animation_frame = activesprites_anim_frame[index]; }
+
 				// if the animation frame is past the length, wrap it around back to zero
 				if (animation_frame >= animation_frame_length[spr_type]) {
-					activesprites_anim_frame[index] = 0;
-					animation_frame = 0;
+					if (activesprites_type[index] != WHITE_DEATH_ORB) {
+						activesprites_anim_frame[index] = 0;
+						animation_frame = 0;
+					}
+					else { activesprites_anim_frame[index]--; animation_frame--; }
 				}
 				// and then set the animation_frame_count to be reloaded
 				needs_reload = 1;
 			} else {
-				animation_frame = activesprites_anim_frame[index];
+					animation_frame = activesprites_anim_frame[index];
 			}
 			
 			// Now load the data for this frame of animation
