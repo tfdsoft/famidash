@@ -181,9 +181,10 @@
 			originalArtist: "F777",
 		},
 		{
-			fmsSongName: "lost",
-			lowerText: "LOST",
-			originalArtist: "CRIM3S",
+			fmsSongName: "Infinite Power",
+			upperText: "INFINITE",
+			lowerText: "POWER",
+			originalArtist: "THEFATRAT",
 		},		
 		{
 			fmsSongName: "endorphins",

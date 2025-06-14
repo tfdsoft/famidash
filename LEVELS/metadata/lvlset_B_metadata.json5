@@ -545,7 +545,7 @@
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_holography",
+			songID: "song_infinite_power",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,

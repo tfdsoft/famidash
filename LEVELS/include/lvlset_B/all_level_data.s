@@ -499,17 +499,17 @@
 	.export level_data_infinitecircles
 	level_data_infinitecircles:
 	; Header
-		.byte song_holography ;___ Song ID
-		.byte 0 ;_________________ Starting game mode
-		.byte 0 ;_________________ Starting speed
-		.byte 1 ;_________________ Disable parallax
-		.byte _DECO1 ;____________ Deco type
-		.byte _SPIKESA ;__________ Spike set
-		.byte _BLOCKSB ;__________ Block set
-		.byte _SAWBLADESA ;_______ Sawblade set
-		.byte $0F ;_______________ Starting background color
-		.byte $0F ;_______________ Starting ground color
-		.byte 57 ;________________ Level height
+		.byte song_infinite_power ;___ Song ID
+		.byte 0 ;_____________________ Starting game mode
+		.byte 0 ;_____________________ Starting speed
+		.byte 1 ;_____________________ Disable parallax
+		.byte _DECO1 ;________________ Deco type
+		.byte _SPIKESA ;______________ Spike set
+		.byte _BLOCKSB ;______________ Block set
+		.byte _SAWBLADESA ;___________ Sawblade set
+		.byte $0F ;___________________ Starting background color
+		.byte $0F ;___________________ Starting ground color
+		.byte 57 ;____________________ Level height
 	; Level data
 		.incbin "EXPORTS/infinitecircles.lz.bin" ; Size: 4352
 
