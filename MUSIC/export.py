@@ -12,7 +12,6 @@ totalSizeRegex = "Info: Total assembly file size: (.+) bytes\\."
 youMustSetRegex = "Info: ([^\n]+, you must set [^\n]+\\.)"
 actualOptionRegex = "set (FAMISTUDIO_[^ \n=]+ = [^ \n.]+)"
 
-songNameRegex = 'Song[^\n]+Name="([^"]+)'
 fsTxtIndentRegex = r'^(?P<indent>\t*)'
 fsTxtLineRegex = r'^(?P<indent>\t*)(?P<type>\S+)\s+(?P<properties>.*)$'
 fsTxtPropRegex = r'(?:(\S+)="([^"]*)"\s*)'
@@ -328,7 +327,10 @@ if __name__ == "__main__":
     proc = subprocess.run([*fsCmd, modulePath, 'famistudio-txt-export', fsTxtPath], capture_output=True)
     checkErr(proc)
     if fsTxtPath.is_file():
-        fsTxt = fsTxtPath.read_text()
+        fsTxtData = parseFSTextFile(fsTxtPath)
+        fsTxtData = tidyUpFSTextData(fsTxtData)
+        # Assume there's only one project that got exported
+        fsTxtData = fsTxtData['Project'][0]
         fsTxtPath.unlink(missing_ok = True)
     else:
         print("Somehow the famistudio-txt-export process didn't create a valid text file.")
@@ -336,7 +338,7 @@ if __name__ == "__main__":
     
     dpcmAlignerName = processed_metadata['dpcmAlignerName']
 
-    songNames = re.findall(songNameRegex, fsTxt)
+    songNames = [song['Name'] for song in fsTxtData['Song']]
     neededSongNames = sorted(i['fmsSongName'] for i in processed_metadata['filteredSongList'])
     if any(i not in songNames for i in neededSongNames):
         print('Songs ', ", ".join([f'"{i}"' for i in neededSongNames if i not in songNames]), ' not found in FamiStudio module. Please check the song names', sep="")
