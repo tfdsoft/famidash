@@ -330,6 +330,129 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+
+		{
+			level: "dorabaebasic10",
+			upperText: "DORABAEBASIC",
+			lowerText: "10",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_sonic_blaster",
+			startingGameMode: 0,
+			startingSpeed: 2,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [136, 24],		//arrow
+					offsetY: -3,
+					offsetX: -5
+				},
+				{
+					coordinates: [138, 23],		//arrow
+					offsetY: -5,
+					offsetX: -11
+				},
+				{
+					coordinates: [140, 22],		//arrow
+					offsetY: -8,
+					offsetX: -16
+				},
+				{
+					coordinates: [142, 21],		//arrow
+					offsetY: -11,
+					offsetX: -21
+				},
+				{
+					coordinates: [144, 20],		//arrow
+					offsetY: -13,
+					offsetX: -27
+				},
+				{
+					coordinates: [130, 24],		//blue gravity portal
+					offsetX: +16
+				},
+				{
+					coordinates: [173, 17],		//3x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [364, 18],		//2x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [501, 17],		//arrow
+					offsetX: +8
+				},
+				{
+					coordinates: [501, 19],		//arrow
+					offsetX: -8
+				},
+				{
+					coordinates: [507, 16],		//1x speed portal
+					offsetY: +8
+				},
+				{
+					coordinates: [525, 22],		//big portal
+					offsetY: -24
+				},
+				{
+					coordinates: [525, 20],		//dual portal
+					offsetY: +8
+				},
+				{
+					coordinates: [624, 20],		//blue gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [624, 21],		//undual portal
+					offsetY: -8
+				},
+				{
+					coordinates: [671, 24],		//arrow
+					offsetX: -8
+				},
+				{
+					coordinates: [668, 25],		//arrow
+					offsetY: +8
+				},
+				{
+					coordinates: [700, 25],		//1x speed portal
+					offsetY: -2
+				},
+				{
+					coordinates: [713, 19],		//3x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [712, 18],		//dual portal
+					offsetY: +2,
+					offsetX: +16
+				},
+				{
+					coordinates: [758, 18],		//blue gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [758, 19],		//undual portal
+					offsetY: -8
+				},
+				{
+					coordinates: [894, 17],		//0.5x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [879, 23],		//arrow
+					offsetY: +8
+				},
+			]
+		},
+		
 		{
 			level: "subtleoddities",
 			upperText: "SUBTLE",
