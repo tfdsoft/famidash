@@ -166,7 +166,26 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7735
 
 
-.segment "DAT_BANK_09"	; Total bank size: 7420 bytes
+.segment "DAT_BANK_09"	; Total bank size: 7518 bytes
+	.export level_data_pgclubstep
+	level_data_pgclubstep:
+	; Header
+		.byte song_clubstep ;___ Song ID
+		.byte 0 ;_______________ Starting game mode
+		.byte 0 ;_______________ Starting speed
+		.byte 0 ;_______________ Disable parallax
+		.byte _DECO1 ;__________ Deco type
+		.byte _SPIKESA ;________ Spike set
+		.byte _BLOCKSB ;________ Block set
+		.byte _SAWBLADESA ;_____ Sawblade set
+		.byte $0F ;_____________ Starting background color
+		.byte $0F ;_____________ Starting ground color
+		.byte 50 ;______________ Level height
+	; Level data
+		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7518
+
+
+.segment "DAT_BANK_0A"	; Total bank size: 7420 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -185,7 +204,7 @@
 		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7420
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8083 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8083 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -204,7 +223,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7052
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8101 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8101 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -223,7 +242,7 @@
 		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6810
 
 
-.segment "DAT_BANK_0D"	; Total bank size: 7327 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 7441 bytes
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
@@ -241,13 +260,8 @@
 	; Level data
 		.incbin "EXPORTS/thermodynamix.lz.bin" ; Size: 6535
 
-	.export level_data_eon_1
-	level_data_eon_1:
-	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792
 
-
-.segment "DAT_BANK_0F"	; Total bank size: 7522 bytes
+.segment "DAT_BANK_10"	; Total bank size: 7442 bytes
 	.export level_data_eighto
 	level_data_eighto:
 	; Header
@@ -266,7 +280,7 @@
 		.incbin "EXPORTS/eighto.lz.bin" ; Size: 5741
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8165 bytes
+.segment "DAT_BANK_11"	; Total bank size: 6350 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -284,8 +298,13 @@
 	; Level data
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5558
 
+	.export level_data_eon_1
+	level_data_eon_1:
+	; Level data
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792
 
-.segment "DAT_BANK_11"	; Total bank size: 8071 bytes
+
+.segment "DAT_BANK_12"	; Total bank size: 8067 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -303,27 +322,29 @@
 	; Level data
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5221
 
-	.export level_data_windylandscape_2
-	level_data_windylandscape_2:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 189
 
-
-.segment "DAT_BANK_12"	; Total bank size: 8088 bytes
+.segment "DAT_BANK_13"	; Total bank size: 8088 bytes
 	.export level_data_everyend_6
 	level_data_everyend_6:
 	; Level data
 		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4747
 
 
-.segment "DAT_BANK_14"	; Total bank size: 7522 bytes
+.segment "DAT_BANK_14"	; Total bank size: 7941 bytes
+	.export level_data_windylandscape_2
+	level_data_windylandscape_2:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 189
+
+
+.segment "DAT_BANK_15"	; Total bank size: 7522 bytes
 	.export level_data_aftercatabath_4
 	level_data_aftercatabath_4:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4541
 
 
-.segment "DAT_BANK_15"	; Total bank size: 3711 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8153 bytes
 	.export level_data_sonicwave_0
 	level_data_sonicwave_0:
 	; Level data

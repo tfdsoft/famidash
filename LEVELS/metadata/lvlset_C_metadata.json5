@@ -19,6 +19,21 @@
 	],
 	community_levels: [
 		{
+			level: "pgclubstep",
+			lowerText: "PG CLUBSTEP",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_clubstep",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F
+		},
+		{
 			level: "stalemate",
 			lowerText: "STALEMATE",
 			decoType: "DECO1",

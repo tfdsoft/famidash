@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 33
+#define COMMUNITY_LEVEL_COUNT 32
 
 #define stereomadness 0
 #define sonar 1
@@ -37,6 +37,5 @@
 #define endorphinrush 28
 #define sonicblaster 29
 #define hell 30
-#define pgclubstep 31
-#define futurefunk 32
-#define test4 33
+#define futurefunk 31
+#define test4 32
