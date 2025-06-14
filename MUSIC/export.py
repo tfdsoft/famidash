@@ -13,6 +13,9 @@ youMustSetRegex = "Info: ([^\n]+, you must set [^\n]+\\.)"
 actualOptionRegex = "set (FAMISTUDIO_[^ \n=]+ = [^ \n.]+)"
 
 songNameRegex = 'Song[^\n]+Name="([^"]+)'
+fsTxtIndentRegex = r'^(?P<indent>\t*)'
+fsTxtLineRegex = r'^(?P<indent>\t*)(?P<type>\S+)\s+(?P<properties>.*)$'
+fsTxtPropRegex = r'(?:(\S+)="([^"]*)"\s*)'
 
 exportStemPrefix = "music"
 
@@ -43,6 +46,14 @@ def batched(iterable, n, *, strict=False):
         if strict and len(batch) != n:
             raise ValueError('batched(): incomplete batch')
         yield batch
+
+def pairwise(iterable):
+    iterator = iter(iterable)
+    a = next(iterator, None)
+
+    for b in iterator:
+        yield a, b
+        a = b
 
 # Local version of FamiStudio function
 # Source code @ https://github.com/BleuBleu/FamiStudio/blob/master/FamiStudio/Source/Utils/Utils.cs
@@ -193,6 +204,54 @@ def processMetadata(metadata : dict) -> dict:
         },
         'dpcmAlignerName': metadata['dpcmAligner']
     }
+
+
+def parseFSTextFile(file : pathlib.Path | list[str], indent = 0, indentArr = None):
+    output = []
+    if isinstance(file, pathlib.Path):
+        filedata = list(file.open())
+    else:
+        filedata = file.copy()
+    if not indentArr:
+        indentArr = [len(re.match(fsTxtIndentRegex, line)['indent']) for line in filedata]
+    indentIdxs = [idx for idx, ind in enumerate(indentArr) if ind == indent]
+    indentIdxs.append(len(indentArr))
+    for lineStart, lineEnd in pairwise(indentIdxs):
+        data = re.match(fsTxtLineRegex, filedata[lineStart]).groupdict()
+
+        linetype = data['type']
+        lineobj = {"__type": linetype}
+
+        properties = re.findall(fsTxtPropRegex, data['properties'])
+        lineobj.update(properties)
+        
+        if lineStart < lineEnd - 1:
+            # Recursion
+            lineobj['__subordinates'] = parseFSTextFile(filedata[lineStart+1:lineEnd], indent+1, indentArr[lineStart+1:lineEnd])
+        output.append(lineobj)
+    return output
+        
+def tidyUpFSTextData(data : list, uppermostLevel = True):
+    objtypes = set()
+    for obj in data:
+        objtypes.add(obj['__type'])
+        if '__subordinates' in obj.keys():
+            # Recurse to tidy up shit
+            subordinates = tidyUpFSTextData(obj['__subordinates'], False)
+            # Get types of subordinates
+            subtypes = {i['__type'] for i in subordinates}
+            subtypes = {i : [] for i in subtypes}
+            # Remove old subordinates
+            obj.pop('__subordinates')
+            obj.update(subtypes)
+            # Sort subordinates per category
+            for i in subordinates:
+                type = i.pop('__type')
+                obj[type].append(i)
+    if not uppermostLevel:
+        return data
+    else:
+        return {objtype : [obj for obj in data if obj.pop('__type') == objtype] for objtype in objtypes}
 
 
 if __name__ == "__main__":
