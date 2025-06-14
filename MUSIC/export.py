@@ -113,6 +113,21 @@ def processMetadata(metadata : dict) -> dict:
     lowerArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in lowerIdxList]
     lowerSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in lowerIdxList]
 
+    OrigArtistTextList = [i.get('originalArtist') for i in songlist]
+    totalOrigArtistTextList = [i for i in OrigArtistTextList if i]
+    totalOrigArtistTextSet = tuple(sorted(set(totalOrigArtistTextList), key=lambda x : totalOrigArtistTextList.index(x)))
+
+    # Get indices, convert to displayable format
+    OrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in OrigArtistTextList]
+    processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
+
+    # Convert to C
+    outputOrigArtistStringsList = [f'const char musicSoundOrigArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedOrigArtistTextList)]
+    OrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in OrigArtistIdxList]
+    OrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in OrigArtistIdxList]
+
+
+
     # Get SFX names
     sfxTextList = [i['text'] for i in metadata['SFX'] if 'text' in i.keys() and i['text']]
     sfxTextSet = tuple(sorted(set(sfxTextList), key=lambda x : sfxTextList.index(x)))
@@ -150,10 +165,14 @@ def processMetadata(metadata : dict) -> dict:
             'songNames': songNameList,
             'vsSongNames': vsSongNameList,
             'soundTestStrings': outputStringsList,
+            'origartistTestStrings': outputOrigArtistStringsList,
             'upperPtrs': upperArrayList,
             'upperSizes': upperSizeArrayList,
             'lowerPtrs': lowerArrayList,
             'lowerSizes': lowerSizeArrayList,
+            'OrigArtistPtrs': OrigArtistArrayList,
+            'OrigArtistSizes': OrigArtistSizeArrayList,
+
 
             'sfxSoundTestStrings': sfxOutputStringsList,
             'sfxPtrs': sfxArrayList,
@@ -479,12 +498,24 @@ if __name__ == "__main__":
         *processed_soundtest_metadata['lowerSizes'],
         '};',
         '',
+        *processed_soundtest_metadata['origartistTestStrings'],
+        '', '',
+        'const char* const xbgmtextsOrigArtist[] = {',
+        *processed_soundtest_metadata['OrigArtistPtrs'],
+        '};',
+        '', '',
+        'const uint8_t xbgmtextsOrigArtistSize[] = {',
+        *processed_soundtest_metadata['OrigArtistSizes'],
+        '};',
+        '', '',
         '#else',
-        '',
+        '',        
         'const char* const xbgmtextsUpper[] = {};',
         'const uint8_t xbgmtextsUpperSize[] = {};',
         'const char* const xbgmtextsLower[] = {};',
         'const uint8_t xbgmtextsLowerSize[] = {};',
+        'const char* const xbgmtextsOrigArtist[] = {};',
+        'const uint8_t xbgmtextsOrigArtistSize[] = {};',
         '',
         '#endif',
         '', '', '',

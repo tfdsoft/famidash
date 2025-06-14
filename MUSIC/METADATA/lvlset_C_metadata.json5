@@ -3,12 +3,13 @@
 		{
 			fmsSongName: "emehT uneM",
 			lowerText: "EMEHT UNEM",
-			vsSystemEnabled: false
+			originalArtist: "ROBTOP",
+			
 		},
 		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",
-			vsSystemEnabled: false,
+			originalArtist: "OCULARNEBULA",
 			nsfData: {
 				trackLabel: "Practice ~ Stay Inside Me",
 				trackAuthor: {
@@ -24,105 +25,116 @@
 			fmsSongName: "Scheming Weasel",
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
-			vsSystemEnabled: false
+			originalArtist: "KEVIN MACLEOD",
+			
 		},	
 		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
-			vsSystemEnabled: false
+			originalArtist: "DJ NATE",
+			
 		},		
 		{
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT",
-			
+			originalArtist: "DIMRAIN47",
 		},
 		{
 			fmsSongName: "atthespeedoflight2",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT PT 2",
-			
+			originalArtist: "DIMRAIN47",
 		},
 		{
 			fmsSongName: "atthespeedoflight3",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT PT 3",
+			originalArtist: "DIMRAIN47",
 		},
 		{
 			fmsSongName: "atthespeedoflightfull",
 			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT FULL"
+			lowerText: "OF LIGHT FULL",
+			originalArtist: "DIMRAIN47",
 		},
 		{
 			fmsSongName: "EON",
-			lowerText: "EON",
+			lowerText: "THE ANGEL",
+			originalArtist: "CACOLA",
 		},
 		{
 			fmsSongName: "stalemate",
 			lowerText: "STALEMATE",
-			
+			originalArtist: "KAYOSZX",
 		},		
 		{
 			fmsSongName: "Sonic blaster",
 			upperText: "SONIC",
-			lowerText: "BLASTER"
+			lowerText: "BLASTER",
+			originalArtist: "F777",
 		},
 
 		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
+			originalArtist: "CRIM3S",
 		},		
 		{
 			fmsSongName: "Magic Touch",
-			lowerText: "MAGIC TOUCH"
+			lowerText: "MAGIC TOUCH",
+			originalArtist: "ROMOS",
 		},
 		{
 			fmsSongName: "holography",
 			lowerText: "HOLOGRAPHY",
-			vsSystemEnabled: true
+			originalArtist: "GARLAGAN",
 		},
 		{
 			fmsSongName: "eighto",
 			lowerText: "EIGHTO",
-			vsSystemEnabled: true
+			originalArtist: "JOMEKKA",
 		},		
 		{
 			fmsSongName: "Pyrophoric",
-			lowerText: "PYROPHORIC"
+			lowerText: "PYROPHORIC",
+			originalArtist: "NERDBOY628",
 		},
 		{
 			fmsSongName: "subtle oddities",
 			upperText: "SUBTLE",
-			lowerText: "ODDITIES"
+			lowerText: "ODDITIES",
+			originalArtist: "LEMON DEMON",
 		},
 		{
 			fmsSongName: "Hell",
-			lowerText: "ACCELERATE"
+			lowerText: "ACCELERATE",
+			originalArtist: "ACID NOTATION",
 		},
 		{
 			fmsSongName: "Kratos",
 			lowerText: "KRATOS",
-			vsSystemEnabled: true
+			originalArtist: "SHAPPY",
 		},	
 		{
 			fmsSongName: "Every End PT1",
 			lowerText: "EVERY END PT1",
-			vsSystemEnabled: true
+			originalArtist: "DIMRAIN47",
 		},	
 		{
 			fmsSongName: "Every End PT2",
 			lowerText: "EVERY END PT2",
-			vsSystemEnabled: true
+			originalArtist: "DIMRAIN47",
 		},	
 		{
 			fmsSongName: "Windfall",
 			lowerText: "WINDFALL",
-			vsSystemEnabled: true
+			originalArtist: "THEFATRAT",
 		},	
 		{
 			fmsSongName: "Thermodynamix",
 			lowerText: "THERMODYNAMIX",
-			vsSystemEnabled: true
+			originalArtist: "DJ NATE",
 		},		
 	],
 	SFX: [

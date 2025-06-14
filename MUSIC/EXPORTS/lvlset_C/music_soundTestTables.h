@@ -14,7 +14,7 @@ const char musicSoundTestString08[ 8] = "OF$LIGHT";
 const char musicSoundTestString09[13] = "OF$LIGHT$PT$2";
 const char musicSoundTestString0A[13] = "OF$LIGHT$PT$3";
 const char musicSoundTestString0B[13] = "OF$LIGHT$FULL";
-const char musicSoundTestString0C[ 3] = "EON";
+const char musicSoundTestString0C[ 9] = "THE$ANGEL";
 const char musicSoundTestString0D[ 9] = "STALEMATE";
 const char musicSoundTestString0E[ 7] = "BLASTER";
 const char musicSoundTestString0F[ 4] = "LOST";
@@ -136,12 +136,87 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString1A),
 };
 
+const char musicSoundOrigArtistTestString00[ 6] = "ROBTOP";
+const char musicSoundOrigArtistTestString01[12] = "OCULARNEBULA";
+const char musicSoundOrigArtistTestString02[13] = "KEVIN$MACLEOD";
+const char musicSoundOrigArtistTestString03[ 7] = "DJ$NATE";
+const char musicSoundOrigArtistTestString04[ 9] = "DIMRAIN47";
+const char musicSoundOrigArtistTestString05[ 6] = "CACOLA";
+const char musicSoundOrigArtistTestString06[ 7] = "KAYOSZX";
+const char musicSoundOrigArtistTestString07[ 4] = "F777";
+const char musicSoundOrigArtistTestString08[ 6] = "CRIM3S";
+const char musicSoundOrigArtistTestString09[ 5] = "ROMOS";
+const char musicSoundOrigArtistTestString0A[ 8] = "GARLAGAN";
+const char musicSoundOrigArtistTestString0B[ 7] = "JOMEKKA";
+const char musicSoundOrigArtistTestString0C[10] = "NERDBOY628";
+const char musicSoundOrigArtistTestString0D[11] = "LEMON$DEMON";
+const char musicSoundOrigArtistTestString0E[13] = "ACID$NOTATION";
+const char musicSoundOrigArtistTestString0F[ 6] = "SHAPPY";
+const char musicSoundOrigArtistTestString10[ 9] = "THEFATRAT";
+
+
+const char* const xbgmtextsOrigArtist[] = {
+	musicSoundOrigArtistTestString00,
+	musicSoundOrigArtistTestString01,
+	musicSoundOrigArtistTestString02,
+	musicSoundOrigArtistTestString03,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString05,
+	musicSoundOrigArtistTestString06,
+	musicSoundOrigArtistTestString07,
+	musicSoundOrigArtistTestString08,
+	musicSoundOrigArtistTestString09,
+	musicSoundOrigArtistTestString0A,
+	musicSoundOrigArtistTestString0B,
+	musicSoundOrigArtistTestString0C,
+	musicSoundOrigArtistTestString0D,
+	musicSoundOrigArtistTestString0E,
+	musicSoundOrigArtistTestString0F,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString04,
+	musicSoundOrigArtistTestString10,
+	musicSoundOrigArtistTestString03,
+};
+
+
+const uint8_t xbgmtextsOrigArtistSize[] = {
+	sizeof(musicSoundOrigArtistTestString00),
+	sizeof(musicSoundOrigArtistTestString01),
+	sizeof(musicSoundOrigArtistTestString02),
+	sizeof(musicSoundOrigArtistTestString03),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString05),
+	sizeof(musicSoundOrigArtistTestString06),
+	sizeof(musicSoundOrigArtistTestString07),
+	sizeof(musicSoundOrigArtistTestString08),
+	sizeof(musicSoundOrigArtistTestString09),
+	sizeof(musicSoundOrigArtistTestString0A),
+	sizeof(musicSoundOrigArtistTestString0B),
+	sizeof(musicSoundOrigArtistTestString0C),
+	sizeof(musicSoundOrigArtistTestString0D),
+	sizeof(musicSoundOrigArtistTestString0E),
+	sizeof(musicSoundOrigArtistTestString0F),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString04),
+	sizeof(musicSoundOrigArtistTestString10),
+	sizeof(musicSoundOrigArtistTestString03),
+};
+
+
 #else
 
 const char* const xbgmtextsUpper[] = {};
 const uint8_t xbgmtextsUpperSize[] = {};
 const char* const xbgmtextsLower[] = {};
 const uint8_t xbgmtextsLowerSize[] = {};
+const char* const xbgmtextsOrigArtist[] = {};
+const uint8_t xbgmtextsOrigArtistSize[] = {};
 
 #endif
 
@@ -180,13 +255,6 @@ const uint8_t xbgmlookuptable[] = {
 #else
 
 const uint8_t xbgmlookuptable[] = {
-	song_holography,
-	song_eighto,
-	song_kratos,
-	song_every_end_pt1,
-	song_every_end_pt2,
-	song_windfall,
-	song_thermodynamix,
 };
 
 #endif

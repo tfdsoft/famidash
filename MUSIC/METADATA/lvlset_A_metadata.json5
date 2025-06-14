@@ -3,6 +3,7 @@
 		{
 			fmsSongName: "Menu Theme",
 			lowerText: "MENU",
+			originalArtist: "ROBTOP",
 			vsSystemEnabled: false,
 			nsfData: {
 				trackLabel: "Menu Theme",
@@ -19,6 +20,7 @@
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
 			lowerText: "MADNESS",
+			originalArtist: "FOREVERBOUND",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Stereo Madness",
@@ -34,6 +36,7 @@
 			fmsSongName: "Back on Track",
 			upperText: "BACK ON",
 			lowerText: "TRACK",
+			originalArtist: "DJVI",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Back On Track",
@@ -48,6 +51,7 @@
 		{
 			fmsSongName: "Polargeist",
 			lowerText: "POLARGEIST",
+			originalArtist: "STEP",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Polargeist",
@@ -62,6 +66,7 @@
 		{
 			fmsSongName: "Dry Out",
 			lowerText: "DRY OUT",
+			originalArtist: "DJVI",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Dry Out",
@@ -77,6 +82,7 @@
 			fmsSongName: "Base after Base",
 			upperText: "BASE AFTER",
 			lowerText: "BASE",
+			originalArtist: "DJVI",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Base After Base",
@@ -91,6 +97,7 @@
 		{
 			fmsSongName: "Can't Let Go",
 			lowerText: "CANT LET GO",
+			originalArtist: "DJVI",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Cant Let Go ~ Can't Let Go",
@@ -105,6 +112,7 @@
 		{
 			fmsSongName: "Jumper",
 			lowerText: "JUMPER",
+			originalArtist: "WATERFLAME",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Jumper",
@@ -119,6 +127,7 @@
 		{
 			fmsSongName: "Time Machine",
 			lowerText: "TIME MACHINE",
+			originalArtist: "WATERFLAME",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Time Machine",
@@ -133,6 +142,7 @@
 		{
 			fmsSongName: "Cycles",
 			lowerText: "CYCLES",
+			originalArtist: "DJVI",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Cycles",
@@ -147,6 +157,7 @@
 		{
 			fmsSongName: "xStep",
 			lowerText: "XSTEP",
+			originalArtist: "DJVI",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "xStep",
@@ -161,6 +172,7 @@
 		{
 			fmsSongName: "Clutterfunk",
 			lowerText: "CLUTTERFUNK",
+			originalArtist: "WATERFLAME",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Clutterfunk",
@@ -176,6 +188,7 @@
 			fmsSongName: "Theory of Everything",
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING",
+			originalArtist: "DJ NATE",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Theory Of Everything",
@@ -191,6 +204,7 @@
 			fmsSongName: "Electroman Adventures",
 			upperText: "ELECTROMAN",
 			lowerText: "ADVENTURES",
+			originalArtist: "WATERFLAME",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Electroman Adventures",
@@ -205,55 +219,56 @@
 		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
-			vsSystemEnabled: true
+			originalArtist: "DJ NATE",
 		},
 		{
 			fmsSongName: "Electrodynamix",
 			lowerText: "ELECTRODYNAMIX",
-			vsSystemEnabled: true
+			originalArtist: "DJ NATE",
 		},
 		{
 			fmsSongName: "Hexagon Force",
 			upperText: "HEXAGON",
 			lowerText: "FORCE",
-			vsSystemEnabled: true
+			originalArtist: "WATERFLAME",
 		},
 		{
 			fmsSongName: "Blast processing",
 			upperText: "BLAST",
 			lowerText: "PROCESSING",
-			vsSystemEnabled: true
+			originalArtist: "WATERFLAME",
 		},
 		{
 			fmsSongName: "TOE 2",
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING 2",
-			vsSystemEnabled: true
+			originalArtist: "DJ NATE",
 		},
 		{
 			fmsSongName: "Geometrical Dominator",
 			upperText: "GEOMETRICAL",
 			lowerText: "DOMINATOR",
-			vsSystemEnabled: true
+			originalArtist: "WATERFLAME",
 		},
 		{
 			fmsSongName: "Deadlocked",
 			lowerText: "DEADLOCKED",
-			vsSystemEnabled: true
+			originalArtist: "F777",
 		},
 		{
 			fmsSongName: "Fingerdash",
 			lowerText: "FINGERDASH",
-			vsSystemEnabled: true
+			originalArtist: "MDK",
 		},
 		{
 			fmsSongName: "Dash",
 			lowerText: "DASH",
-			vsSystemEnabled: true
+			originalArtist: "MDK",
 		},
 		{
 			fmsSongName: "endgame",
 			lowerText: "DECODE",
+			originalArtist: "WATERFLAME",
 			vsSystemEnabled: true,
 			nsfData: {
 				trackLabel: "Decode ~ Endgame",
@@ -268,6 +283,7 @@
 		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",
+			originalArtist: "OCULARNEBULA",
 			vsSystemEnabled: false,
 			nsfData: {
 				trackLabel: "Practice ~ Stay Inside Me",
@@ -281,78 +297,84 @@
 			}
 		},
 		{
+			fmsSongName: "Scheming Weasel",
+			upperText: "SCHEMING",
+			lowerText: "WEASEL",
+			originalArtist: "KEVIN MACLEOD",
+			vsSystemEnabled: false
+		},
+		{
 			fmsSongName: "retray",
-			lowerText: "RETRAY",
-			vsSystemEnabled: true
+			lowerText: "GOLDEN HAZE",
+			originalArtist: "DETIOUSMUSIC",
 		},
 		{
 			fmsSongName: "infernoplex",
 			lowerText: "INFERNOPLEX",
-			vsSystemEnabled: true
+			originalArtist: "DIMRAIN47",
 		},
 		{
 			fmsSongName: "Problematic",
 			lowerText: "PROBLEMATIC",
-			vsSystemEnabled: true
-		},
-		{
-			fmsSongName: "Scheming Weasel",
-			upperText: "SCHEMING",
-			lowerText: "WEASEL",
-			vsSystemEnabled: false
+			originalArtist: "NIGHTKILLA",
 		},
 		{
 			fmsSongName: "The Challenge",
 			upperText: "THE",
 			lowerText: "CHALLENGE",
-			vsSystemEnabled: true
+			originalArtist: "ROBTOP",
 		},
 		{
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT",
-			vsSystemEnabled: true
+			originalArtist: "DIMRAIN47",
 		},
 		{
 			fmsSongName: "atthespeedoflight2",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT PT 2",
-			vsSystemEnabled: true
+			originalArtist: "DIMRAIN47",
 		},
 		{
 			fmsSongName: "midnight",
 			lowerText: "MIDNIGHT",
-			vsSystemEnabled: true
+			originalArtist: "CORNANDBEANS",
 		},
 		{	
 			fmsSongName: "crackdown",
 			upperText: "OKIBA",
 			lowerText: "CRACKDOWN",
-			vsSystemEnabled: true
+			originalArtist: "BOSSFIGHT",
 		},
 		{
 			fmsSongName: "haunted woods",
 			lowerText: "HAUNTED WOODS",
+			originalArtist: "WATERFLAME",
 		},
 		{
 			fmsSongName: "just right",
 			lowerText: "JUST RIGHT",
+			originalArtist: "DAN HARRISON B",
 			vsSystemEnabled: false
 		},
 		{
 			fmsSongName: "against the odds redux",
 			upperText: "8 BIT AGAINST",
 			lowerText: "THE ODDS REDUX",
+			originalArtist: "ELITEFERREX",
 		},
 		{
 			fmsSongName: "Ground to Space",
 			upperText: "GROUND TO",
-			lowerText: "SPACE"
+			lowerText: "SPACE",
+			originalArtist: "SEAGLOWINGPRO",
 		},
 		{
 			fmsSongName: "rainbow tylenol",
 			upperText: "RAINBOW",
-			lowerText: "TYLENOL"
+			lowerText: "TYLENOL",
+			originalArtist: "KITSUNE2",
 		},
 	],
 	SFX: [
