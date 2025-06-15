@@ -190,6 +190,11 @@
 			fmsSongName: "endorphins",
 			lowerText: "ENDORPHINS",
 			originalArtist: "DUOCORE",
+		},	
+		{
+			fmsSongName: "Infiltration",
+			lowerText: "INFILTRATION",
+			originalArtist: "PARAGONX9",
 		},			
 		{
 			fmsSongName: "Power Trip",

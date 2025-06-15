@@ -341,7 +341,7 @@
 			sawSet: "A",
 			difficulty: "INSANE",
 			stars: 8,
-			songID: "song_sonic_blaster",
+			songID: "song_infiltration",
 			startingGameMode: 0,
 			startingSpeed: 2,
 			startingBackgroundColor: 0x0F,

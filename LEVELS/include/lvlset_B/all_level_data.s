@@ -280,17 +280,17 @@
 	.export level_data_dorabaebasic10
 	level_data_dorabaebasic10:
 	; Header
-		.byte song_sonic_blaster ;___ Song ID
-		.byte 0 ;____________________ Starting game mode
-		.byte 2 ;____________________ Starting speed
-		.byte 1 ;____________________ Disable parallax
-		.byte _DECO1 ;_______________ Deco type
-		.byte _SPIKESC ;_____________ Spike set
-		.byte _BLOCKSB ;_____________ Block set
-		.byte _SAWBLADESA ;__________ Sawblade set
-		.byte $0F ;__________________ Starting background color
-		.byte $0F ;__________________ Starting ground color
-		.byte 27 ;___________________ Level height
+		.byte song_infiltration ;___ Song ID
+		.byte 0 ;___________________ Starting game mode
+		.byte 2 ;___________________ Starting speed
+		.byte 1 ;___________________ Disable parallax
+		.byte _DECO1 ;______________ Deco type
+		.byte _SPIKESC ;____________ Spike set
+		.byte _BLOCKSB ;____________ Block set
+		.byte _SAWBLADESA ;_________ Sawblade set
+		.byte $0F ;_________________ Starting background color
+		.byte $0F ;_________________ Starting ground color
+		.byte 27 ;__________________ Level height
 	; Level data
 		.incbin "EXPORTS/dorabaebasic10.lz.bin" ; Size: 6116
 
