@@ -4,19 +4,21 @@ import sys
 import pathlib
 import itertools
 
-famistudioHelpRegex = "FamiStudio (.+) Command-Line Usage"
+famistudioHelpRegex = r"FamiStudio (?P<version>.+) Command-Line Usage"
 
-instSizeRegex = "Info: Instruments size : (.+) bytes\\."
-songSizeRegex = "Info: Song '(.+)' size: (.+) bytes\\."
-totalSizeRegex = "Info: Total assembly file size: (.+) bytes\\."
+instSizeRegex = "Info: Instruments size : (?P<instSize>.+) bytes\\."
+songSizeRegex = "Info: Song '(?P<songName>.+)' size: (?P<songSize>.+) bytes\\."
+totalSizeRegex = "Info: Total assembly file size: (?P<totalSize>.+) bytes\\."
 youMustSetRegex = "Info: ([^\n]+, you must set [^\n]+\\.)"
 actualOptionRegex = "set (FAMISTUDIO_[^ \n=]+ = [^ \n.]+)"
 
-songNameRegex = 'Song[^\n]+Name="([^"]+)'
+fsTxtIndentRegex = r'^(?P<indent>\t*)'
+fsTxtLineRegex = r'^(?P<indent>\t*)(?P<type>\S+)\s+(?P<properties>.*)$'
+fsTxtPropRegex = r'(?:(\S+)="([^"]*)"\s*)'
 
 exportStemPrefix = "music"
 
-dpcmFileNameRegex = f'{exportStemPrefix}_(.+)_bank(.+).dmc'
+dpcmFileNameRegex = f'{exportStemPrefix}_(?P<musicBank>.+)_bank(?P<dpcmBank>.+).dmc'
 
 finalSongInListName = "max"
 
@@ -43,6 +45,14 @@ def batched(iterable, n, *, strict=False):
         if strict and len(batch) != n:
             raise ValueError('batched(): incomplete batch')
         yield batch
+
+def pairwise(iterable):
+    iterator = iter(iterable)
+    a = next(iterator, None)
+
+    for b in iterator:
+        yield a, b
+        a = b
 
 # Local version of FamiStudio function
 # Source code @ https://github.com/BleuBleu/FamiStudio/blob/master/FamiStudio/Source/Utils/Utils.cs
@@ -195,6 +205,52 @@ def processMetadata(metadata : dict) -> dict:
     }
 
 
+def parseFSTextFile(file : pathlib.Path | list[str], indent = 0, indentArr = None):
+    output = []
+    if isinstance(file, pathlib.Path):
+        filedata = list(file.open())
+    else:
+        filedata = file.copy()
+    if not indentArr:
+        indentArr = [len(re.match(fsTxtIndentRegex, line)['indent']) for line in filedata]
+    indentIdxs = [idx for idx, ind in enumerate(indentArr) if ind == indent]
+    indentIdxs.append(len(indentArr))
+    for lineStart, lineEnd in pairwise(indentIdxs):
+        data = re.match(fsTxtLineRegex, filedata[lineStart]).groupdict()
+
+        linetype = data['type']
+        properties = re.findall(fsTxtPropRegex, data['properties'])
+        lineobj = {"__type": linetype, **dict(properties)}
+        
+        if lineStart < lineEnd - 1:
+            # Recursion
+            lineobj['__subordinates'] = parseFSTextFile(filedata[lineStart+1:lineEnd], indent+1, indentArr[lineStart+1:lineEnd])
+        output.append(lineobj)
+    return output
+        
+def tidyUpFSTextData(data : list, uppermostLevel = True):
+    objtypes = set()
+    for obj in data:
+        objtypes.add(obj['__type'])
+        if '__subordinates' in obj.keys():
+            # Recurse to tidy up shit
+            subordinates = tidyUpFSTextData(obj['__subordinates'], False)
+            # Get types of subordinates
+            subtypes = {i['__type'] for i in subordinates}
+            subtypes = {i : [] for i in subtypes}
+            # Remove old subordinates
+            obj.pop('__subordinates')
+            obj.update(subtypes)
+            # Sort subordinates per category
+            for i in subordinates:
+                type = i.pop('__type')
+                obj[type].append(i)
+    if not uppermostLevel:
+        return data
+    else:
+        return {objtype : [obj for obj in data if obj.pop('__type') == objtype] for objtype in objtypes}
+
+
 if __name__ == "__main__":
     # install binpacking and pyjson5
     install_list = []
@@ -255,7 +311,7 @@ if __name__ == "__main__":
     print("\n==== Checking FamiStudio version...")
     proc = subprocess.run([*fsCmd, '-help'], capture_output=True)
     checkErr(proc)
-    fsVer = re.findall(famistudioHelpRegex, proc.stdout.decode())[0]
+    fsVer = re.search(famistudioHelpRegex, proc.stdout.decode())['version']
     fsVer = [int(x) for x in fsVer.split(".")]
     fsVer = fsVer[0]*1000_000 + fsVer[1]*1000 + fsVer[2]
     if (fsVer < 400_300_0):
@@ -269,7 +325,10 @@ if __name__ == "__main__":
     proc = subprocess.run([*fsCmd, modulePath, 'famistudio-txt-export', fsTxtPath], capture_output=True)
     checkErr(proc)
     if fsTxtPath.is_file():
-        fsTxt = fsTxtPath.read_text()
+        fsTxtData = parseFSTextFile(fsTxtPath)
+        fsTxtData = tidyUpFSTextData(fsTxtData)
+        # Assume there's only one project that got exported
+        fsTxtData = fsTxtData['Project'][0]
         fsTxtPath.unlink(missing_ok = True)
     else:
         print("Somehow the famistudio-txt-export process didn't create a valid text file.")
@@ -277,7 +336,7 @@ if __name__ == "__main__":
     
     dpcmAlignerName = processed_metadata['dpcmAlignerName']
 
-    songNames = re.findall(songNameRegex, fsTxt)
+    songNames = [song['Name'] for song in fsTxtData['Song']]
     neededSongNames = sorted(i['fmsSongName'] for i in processed_metadata['filteredSongList'])
     if any(i not in songNames for i in neededSongNames):
         print('Songs ', ", ".join([f'"{i}"' for i in neededSongNames if i not in songNames]), ' not found in FamiStudio module. Please check the song names', sep="")
@@ -309,21 +368,28 @@ if __name__ == "__main__":
     cmdOutput = proc.stdout.decode()
     
     # Get size of all instruments
-    instsize = re.findall(instSizeRegex, cmdOutput)
-    if (len(instsize) != 1):
+    instsize = re.search(instSizeRegex, cmdOutput)
+    if (not instsize):
         print("Instrument size not correctly present in the FamiStudio command output.")
         exit(3)
-    instsize = int(instsize[0])
+    instsize = int(instsize['instSize'])
     print(f"== Total maximum size of data in a bank is {8192 - (instsize / 5 * 3)} bytes")
 
     # Get song sizes in bytes
-    songsizestrings = re.findall(songSizeRegex, cmdOutput)
-    songsizes = [(songNames.index(i[0]), i[0], int(i[1])) for i in songsizestrings if i[0] != dpcmAlignerName]
-    bins = binpacking.to_constant_volume(songsizes, 8192-(instsize / 5 * 3), 2)
-    for i in range(len(bins)):
-        print(f"== Bank {i}:")
-        print("\t- Songs: "+", ".join([j[1] for j in bins[i]]))
-        print("\t- Total approx. size:", sum([j[2] for j in bins[i]]), "bytes")
+    songsizestrings = re.finditer(songSizeRegex, cmdOutput)
+    songsizes = [[
+            songNames.index(match['songName']),
+            match['songName'],
+            int(match['songSize'])
+        ] for match in songsizestrings if match['songName'] != dpcmAlignerName]
+    SONG_IDX_IDX = 0
+    SONG_NAME_IDX = 1
+    SONG_SIZE_IDX = 2
+    bins = binpacking.to_constant_volume(songsizes, 8192-(instsize / 5 * 3), SONG_SIZE_IDX)
+    for idx, bank in enumerate(bins):
+        print(f"== Bank {idx}:")
+        print("\t- Songs: "+", ".join([j[SONG_NAME_IDX] for j in bank]))
+        print("\t- Total approx. size:", sum([j[SONG_SIZE_IDX] for j in bank]), "bytes")
 
     # Export the music_X.s files
     exportPath = args.outputFolder
@@ -384,22 +450,25 @@ if __name__ == "__main__":
     # Check the DPCM files for being identical
     print("\n==== Checking if the DPCM files are identical...")
     
-    dpcmFiles = [(i, re.findall(dpcmFileNameRegex, i.name)[0]) for i in dpcmFiles]
+    dpcmFiles = [{
+        "path": i,
+        **re.search(dpcmFileNameRegex, i.name).groupdict()
+    } for i in dpcmFiles]
     dpcmError = False
-    dpcmBanks = list(set([i[1][1] for i in dpcmFiles]))
+    dpcmBanks = list(set([i['dpcmBank'] for i in dpcmFiles]))
     for bank in dpcmBanks:
         bankDpcmError = False
-        dpcmFilesOfBank = list(set(filter(lambda x : x[1][1] == bank, dpcmFiles)))
+        dpcmFilesOfBank = [file for file in dpcmFiles if file['dpcmBank'] == bank]
         for file in dpcmFilesOfBank:
-            if not(filecmp.cmp(file[0], dpcmFilesOfBank[0][0], shallow=False)):
-                print(f"DPCM Data Bank {file[1][1]} of music data bank {file[1][0]} differs from that of music data bank 0.")
+            if not(filecmp.cmp(file['path'], dpcmFilesOfBank[0]['path'], shallow=False)):
+                print(f"DPCM Data Bank {file['dpcmBank']} of music data bank {file['musicBank']} differs from that of music data bank 0.")
                 bankDpcmError = True
                 dpcmError = True
         if not bankDpcmError:
             (exportPath / f"{exportStemPrefix}_bank{bank}.dmc").unlink(missing_ok = True)
-            dpcmFilesOfBank[0][0].rename(exportPath / f"{exportStemPrefix}_bank{bank}.dmc")
+            dpcmFilesOfBank[0]['path'].rename(exportPath / f"{exportStemPrefix}_bank{bank}.dmc")
             dpcmFilesOfBank.pop(0)
-        [i[0].unlink(missing_ok = True) for i in dpcmFilesOfBank]
+        [i['path'].unlink(missing_ok = True) for i in dpcmFilesOfBank]
 
     if dpcmError:
         ValueError("DPCM files were not identical. Please check the dpcm aligner for containing all samples.")
