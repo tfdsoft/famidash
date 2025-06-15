@@ -276,7 +276,7 @@
 		.incbin "EXPORTS/xx.lz.bin" ; Size: 6203
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8127 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8136 bytes
 	.export level_data_dorabaebasic10
 	level_data_dorabaebasic10:
 	; Header
@@ -292,7 +292,7 @@
 		.byte $0F ;_________________ Starting ground color
 		.byte 27 ;__________________ Level height
 	; Level data
-		.incbin "EXPORTS/dorabaebasic10.lz.bin" ; Size: 6116
+		.incbin "EXPORTS/dorabaebasic10.lz.bin" ; Size: 6125
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 8141 bytes
