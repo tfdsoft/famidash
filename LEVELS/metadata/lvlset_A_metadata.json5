@@ -274,6 +274,22 @@
 					offsetY: -8
 				},
 				{
+					coordinates: [510, 20],			//spikes
+					offsetY: -8
+				},
+				{
+					coordinates: [511, 20],			//spikes
+					offsetY: -8
+				},
+				{
+					coordinates: [512, 20],			//spikes
+					offsetY: -8
+				},
+				{
+					coordinates: [513, 20],			//spikes
+					offsetY: -8
+				},
+				{
 					coordinates: [511, 17],			//orb
 					offsetX: +8
 				},
@@ -339,6 +355,34 @@
 			startingBackgroundColor: 0x1C,
 			startingGroundColor: 0x0C,
 			objectOffsets: [
+				{
+					coordinates: [35, 18],		//chain deco
+					offsetY: +8
+				},
+				{
+					coordinates: [37, 18],		//chain deco
+					offsetY: +8
+				},
+				{
+					coordinates: [41, 19],		//chain deco
+					offsetY: +8
+				},
+				{
+					coordinates: [42, 20],		//chain deco
+					offsetY: +8
+				},
+				{
+					coordinates: [52, 24],		//deco
+					offsetX: +8
+				},
+				{
+					coordinates: [57, 24],		//deco
+					offsetX: +8
+				},
+				{
+					coordinates: [65, 24],		//deco
+					offsetX: +8
+				},
 				{
 					coordinates: [228, 21],		//portal
 					offsetY: -8
