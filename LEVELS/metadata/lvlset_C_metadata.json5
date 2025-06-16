@@ -101,7 +101,49 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [476, 11],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [480, 10],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [484, 9],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [615, 9],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [617, 0],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [619, 11],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [639, 11],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [643, 10],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [647, 9],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [652, 10],		//deco
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "hi",

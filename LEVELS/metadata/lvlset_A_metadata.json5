@@ -17,7 +17,63 @@
 			startingGroundColor: 0x02,
 			objectOffsets: [
 				{
+					coordinates: [128, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [132, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [136, 23],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [140, 22],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [144, 21],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [218, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [222, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [226, 23],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [230, 22],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [234, 21],		//deco
+					offsetY: -8
+				},
+				{
 					coordinates: [418, 21],		//cube portal
+					offsetY: -8
+				},
+				{
+					coordinates: [646, 26],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [650, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [654, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [658, 23],		//deco
 					offsetY: -8
 				},
 				{
@@ -51,9 +107,77 @@
 					offsetX: +8
 				},
 				{
+					coordinates: [172, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [176, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [180, 23],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [311, 23],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [313, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [315, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [335, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [339, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [343, 23],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [348, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [407, 23],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [409, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [411, 25],		//deco
+					offsetY: -8
+				},
+				{
 					coordinates: [559, 21],		//portal
 					offsetY: -8
-				}
+				},
+				{
+					coordinates: [693, 26],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [697, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [701, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [710, 24],		//deco
+					offsetY: -8
+				},
 			]
 		},
 		{
@@ -170,6 +294,34 @@
 					coordinates: [285, 23],		//yellow orb
 					offsetY: +8
 				},
+				{
+					coordinates: [426, 18],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [428, 19],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [431, 20],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [434, 21],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [441, 22],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [446, 22],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [451, 22],		//deco
+					offsetY: -8
+				},
 			]
 		},
 		{
@@ -187,6 +339,18 @@
 			startingBackgroundColor: 0x14,
 			startingGroundColor: 0x04,
 			objectOffsets: [
+				{
+					coordinates: [33, 24],
+					offsetY: -8
+				},
+				{
+					coordinates: [36, 22],
+					offsetY: -8
+				},
+				{
+					coordinates: [39, 20],
+					offsetY: -8
+				},
 				{
 					coordinates: [480, 20],
 					offsetY: -8

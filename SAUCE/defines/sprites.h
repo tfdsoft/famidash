@@ -3228,15 +3228,15 @@ const unsigned char * const Metasprites[]={
 	Medium_Light_Right,
 	Medium_Light_Left,
 	
-	Long_Light_Right, //short light shifted down 8px
-	Long_Light_Left, //chain shifted down 8px
-	Short_Light_U,
-	Chain_U,
+	nometa, 
+	nometa, 
+	nometa,
+	nometa,
 	Black_Orb,
 	Dash_Orb,
 	Dash_Gravity_Orb,
-	BG_Spike_Group2,
-	Diamond_Shifted_Right,
+	nometa,
+	nometa,
 	Pulsing_Ball,
 	Music_Note,
 	Portal_Gamemode_Swing,
