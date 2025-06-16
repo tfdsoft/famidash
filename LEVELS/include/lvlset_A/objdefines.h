@@ -132,7 +132,7 @@
 #define INVIS_TELEPORT_PORTAL_UPWARDS_EXIT		0x78
 #define WHITE_DEATH_ORB				0x79
 
-#define PLAYER_INVIS_OFF			0x7E
+#define PLAYER_INVIS_OFF			0x7F
 
 #define FORCED_FREECAM_ON			0xDD
 #define X_SCROLL_SETTING			0xDE	//bottom floor is 0xB0, reset to standard at 0x50

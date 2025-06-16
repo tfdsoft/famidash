@@ -668,33 +668,34 @@ void sprite_collide_lookup() {
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
 		&&spcl_default,	&&spcl_wht_orb,	&&spcl_default,	&&spcl_default,	// 0x78 - 0x7B
-		&&spcl_default,	&&spcl_default,	&&spcl_invioff //,	&&spcl_invioff	// 0x7C - 0x7F
+		&&spcl_default,	&&spcl_default,	&&spcl_default //,	&&spcl_invioff	// 0x7C - 0x7F
 	};
 	static void * const sprite_collide_jump_table_1[] = {
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x80 - 0x83
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x84 - 0x87
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x88 - 0x8B
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x8C - 0x8F
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x90 - 0x93
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x94 - 0x97
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x98 - 0x9B
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x9C - 0x9F
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xA0 - 0xA3
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xA4 - 0xA7
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xA8 - 0xAB
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xAC - 0xAF
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xB0 - 0xB3
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xB4 - 0xB7
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xB8 - 0xBB
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xBC - 0xBF
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xC0 - 0xC3
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xC4 - 0xC7
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xC8 - 0xCB
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xCC - 0xCF
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xD0 - 0xD3
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xD4 - 0xD7
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xD8 - 0xDB
-		// &&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xDC - 0xDF
+		&&spcl_invioff,													// 0x7F
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x80 - 0x83
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x84 - 0x87
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x88 - 0x8B
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x8C - 0x8F
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x90 - 0x93
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x94 - 0x97
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x98 - 0x9B
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x9C - 0x9F
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xA0 - 0xA3
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xA4 - 0xA7
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xA8 - 0xAB
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xAC - 0xAF
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xB0 - 0xB3
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xB4 - 0xB7
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xB8 - 0xBB
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xBC - 0xBF
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xC0 - 0xC3
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xC4 - 0xC7
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xC8 - 0xCB
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xCC - 0xCF
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xD0 - 0xD3
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xD4 - 0xD7
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xD8 - 0xDB
+		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xDC - 0xDF
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xE0 - 0xE3
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xE4 - 0xE7
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xE8 - 0xEB
@@ -702,16 +703,16 @@ void sprite_collide_lookup() {
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0xF0 - 0xF3
 		&&spcl_default,	&&spcl_default,	&&spcl_f_block,	&&spcl_j_block,	// 0xF4 - 0xF7
 		&&spcl_h_block,	&&spcl_s_block,	&&spcl_d_block,	&&spcl_gvup_pt,	// 0xF8 - 0xFB
-		&&spcl_gvdn_pt,	&&spcl_gvdn_pd,	&&spcl_gvup_pd,	&&spcl_default,	// 0xFC - 0xFF
+		&&spcl_gvdn_pt,	&&spcl_gvdn_pd,	&&spcl_gvup_pd //,	&&spcl_default,	// 0xFC - 0xFF
 	};
 	if (activesprites_activated[index] && !dual && !(options & platformer))
 		return;
 	
 	// Instead of the giant ass switch : case that used to be here
-	if (collided < 0x80)
+	if (collided < 0x7F)
 		goto *sprite_collide_jump_table_0[collided];
-	else if (collided >= 0xE0)
-		jumpInTableWithOffset(sprite_collide_jump_table_1, collided, (0xE0 - 0x80));
+	else if (collided >= 0x7F)
+		jumpInTableWithOffset(sprite_collide_jump_table_1, collided, 0x7F);
 
 	spcl_default:
 		return;
