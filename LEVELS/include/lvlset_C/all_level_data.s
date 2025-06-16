@@ -280,7 +280,7 @@
 		.incbin "EXPORTS/eighto.lz.bin" ; Size: 5741
 
 
-.segment "DAT_BANK_11"	; Total bank size: 6350 bytes
+.segment "DAT_BANK_11"	; Total bank size: 5558 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -298,13 +298,8 @@
 	; Level data
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5558
 
-	.export level_data_eon_1
-	level_data_eon_1:
-	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792
 
-
-.segment "DAT_BANK_12"	; Total bank size: 8067 bytes
+.segment "DAT_BANK_12"	; Total bank size: 8107 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -337,14 +332,38 @@
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 189
 
 
-.segment "DAT_BANK_15"	; Total bank size: 7522 bytes
+.segment "DAT_BANK_15"	; Total bank size: 7662 bytes
+	.export level_data_hi
+	level_data_hi:
+	; Header
+		.byte song_eighto ;___ Song ID
+		.byte 0 ;_____________ Starting game mode
+		.byte 0 ;_____________ Starting speed
+		.byte 1 ;_____________ Disable parallax
+		.byte _DECO1 ;________ Deco type
+		.byte _SPIKESC ;______ Spike set
+		.byte _BLOCKSB ;______ Block set
+		.byte _SAWBLADESA ;___ Sawblade set
+		.byte $0F ;___________ Starting background color
+		.byte $0F ;___________ Starting ground color
+		.byte 40 ;____________ Level height
+	; Level data
+		.incbin "EXPORTS/hi.lz.bin" ; Size: 4681
+
+
+.segment "DAT_BANK_16"	; Total bank size: 8179 bytes
 	.export level_data_aftercatabath_4
 	level_data_aftercatabath_4:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4541
 
+	.export level_data_eon_1
+	level_data_eon_1:
+	; Level data
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792
 
-.segment "DAT_BANK_16"	; Total bank size: 8153 bytes
+
+.segment "DAT_BANK_17"	; Total bank size: 8153 bytes
 	.export level_data_sonicwave_0
 	level_data_sonicwave_0:
 	; Level data

@@ -11,6 +11,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_sonicwave)
 	.byte .lobyte(level_data_thermodynamix)
 	.byte .lobyte(level_data_eighto)
+	.byte .lobyte(level_data_hi)
 	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_windylandscape)
 	.byte .lobyte(level_data_bloodbath)
@@ -29,6 +30,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_sonicwave)
 	.byte .hibyte(level_data_thermodynamix)
 	.byte .hibyte(level_data_eighto)
+	.byte .hibyte(level_data_hi)
 	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_windylandscape)
 	.byte .hibyte(level_data_bloodbath)
@@ -47,6 +49,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_sonicwave))
 	.byte .lobyte(.bank(level_data_thermodynamix))
 	.byte .lobyte(.bank(level_data_eighto))
+	.byte .lobyte(.bank(level_data_hi))
 	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_windylandscape))
 	.byte .lobyte(.bank(level_data_bloodbath))
@@ -92,6 +95,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_sonicwave)
 	.byte .lobyte(sprite_data_thermodynamix)
 	.byte .lobyte(sprite_data_eighto)
+	.byte .lobyte(sprite_data_hi)
 	.byte .lobyte(sprite_data_eon)
 	.byte .lobyte(sprite_data_windylandscape)
 	.byte .lobyte(sprite_data_bloodbath)
@@ -110,6 +114,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_sonicwave)
 	.byte .hibyte(sprite_data_thermodynamix)
 	.byte .hibyte(sprite_data_eighto)
+	.byte .hibyte(sprite_data_hi)
 	.byte .hibyte(sprite_data_eon)
 	.byte .hibyte(sprite_data_windylandscape)
 	.byte .hibyte(sprite_data_bloodbath)
@@ -128,6 +133,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_sonicwave))
 	.byte .lobyte(.bank(sprite_data_thermodynamix))
 	.byte .lobyte(.bank(sprite_data_eighto))
+	.byte .lobyte(.bank(sprite_data_hi))
 	.byte .lobyte(.bank(sprite_data_eon))
 	.byte .lobyte(.bank(sprite_data_windylandscape))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
@@ -149,6 +155,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000FB)		; sonicwave
 	.byte .lobyte($00008E)		; thermodynamix
 	.byte .lobyte($000078)		; eighto
+	.byte .lobyte($00009A)		; hi
 	.byte .lobyte($000286)		; eon
 	.byte .lobyte($00009A)		; windylandscape
 	.byte .lobyte($0000D5)		; bloodbath
@@ -169,6 +176,7 @@ _level_lengths_md:
 	.byte .hibyte($0000FB)		; sonicwave
 	.byte .hibyte($00008E)		; thermodynamix
 	.byte .hibyte($000078)		; eighto
+	.byte .hibyte($00009A)		; hi
 	.byte .hibyte($000286)		; eon
 	.byte .hibyte($00009A)		; windylandscape
 	.byte .hibyte($0000D5)		; bloodbath
@@ -189,6 +197,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000FB)		; sonicwave
 	.byte .bankbyte($00008E)		; thermodynamix
 	.byte .bankbyte($000078)		; eighto
+	.byte .bankbyte($00009A)		; hi
 	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($00009A)		; windylandscape
 	.byte .bankbyte($0000D5)		; bloodbath
