@@ -237,6 +237,18 @@
 					offsetY: -8
 				},
 				{
+					coordinates: [374, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [381, 26],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [388, 26],		//deco
+					offsetY: -8
+				},
+				{
 					coordinates: [446, 21],
 					offsetY: -8
 				},
@@ -1921,6 +1933,22 @@
 			parallaxDisable: true,
 			objectOffsets: [
 				{
+					coordinates: [26, 21],		//yellow orb
+					offsetY: +8
+				},
+				{
+					coordinates: [30, 22],		//yellow orb
+					offsetY: +8
+				},
+				{
+					coordinates: [134, 3],		//yellow orb
+					offsetY: +8
+				},
+				{
+					coordinates: [136, 3],		//yellow orb
+					offsetY: +8
+				},
+				{
 					coordinates: [107, 20],		//yellow orb
 					offsetX: -8
 				},
@@ -2506,7 +2534,13 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			objectOffsets: [
+				{
+					coordinates: [74, 26],		//deco
+					offsetY: +8
+				},
+			]
 		},
 		{
 			level: "nightmare",
@@ -2523,6 +2557,26 @@
 			startingBackgroundColor: 0x2A,
 			startingGroundColor: 0x00,
 			objectOffsets: [
+				{
+					coordinates: [103, 23],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [123, 21],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [125, 21],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [144, 21],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [148, 21],		//deco
+					offsetY: -8
+				},
 				{
 					coordinates: [198, 19],		//grav portal
 					offsetX: +16
@@ -2554,7 +2608,65 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x06
+			startingGroundColor: 0x06,
+			objectOffsets: [
+				{
+					coordinates: [314, 18],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [314, 21],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [315, 18],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [315, 21],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [459, 15],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [491, 14],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [584, 10],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [597, 13],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [601, 13],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [602, 9],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [616, 11],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [619, 11],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [622, 12],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [625, 12],		//deco
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "decode",
@@ -2570,7 +2682,45 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x06,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [314, 10],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [324, 10],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [330, 9],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [335, 11],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [337, 10],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [341, 11],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [346, 10],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [352, 10],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [360, 9],		//deco
+					offsetY: +8
+				},
+			]
 		},
 		{
 			level: "dearnostalgists",
@@ -2775,17 +2925,9 @@
 			offsetX: -8
 		},
 		{
-			objectID: 0x40, /* Right long post */
-			offsetX: -16
-		},
-		{
 			objectID: [0x0A, 0x0D, 0x25, 0x52, 0x56, 0xFD], /* Bottom pads */
 			offsetY: 8
 		},
-		{
-			objectID: [0x42, 0x43, 0x47], /* Some specific deco*/
-			offsetY: -8
-		}
 	],
 	levelSetDefineName: "A"
 }

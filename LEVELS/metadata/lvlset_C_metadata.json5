@@ -63,7 +63,13 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [996, 19],		//deco
+					offsetY: +8
+				},
+			]
 		},	
 		{
 			level: "thermodynamix",
@@ -305,17 +311,9 @@
 			offsetX: -8
 		},
 		{
-			objectID: 0x40, /* Right long post */
-			offsetX: -16
-		},
-		{
 			objectID: [0x0A, 0x0D, 0x25, 0x52, 0x56, 0xFD], /* Bottom pads */
 			offsetY: 8
 		},
-		{
-			objectID: [0x42, 0x43, 0x47], /* Some specific deco*/
-			offsetY: -8
-		}
 	],
 	levelSetDefineName: "C"
 }

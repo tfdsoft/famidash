@@ -98,7 +98,81 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02
+			startingGroundColor: 0x02,
+			objectOffsets: [
+				{
+					coordinates: [167, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [171, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [213, 22],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [217, 22],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [346, 21],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [350, 21],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [377, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [381, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [383, 19],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [389, 19],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [389, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [393, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [411, 26],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [418, 19],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [418, 26],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [427, 19],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [429, 25],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [435, 25],		//deco
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "lookatthislevel",
@@ -796,17 +870,9 @@
 			offsetX: -8
 		},
 		{
-			objectID: 0x40, /* Right long post */
-			offsetX: -16
-		},
-		{
 			objectID: [0x0A, 0x0D, 0x25, 0x52, 0x56, 0xFD], /* Bottom pads */
 			offsetY: 8
 		},
-		{
-			objectID: [0x42, 0x43, 0x47], /* Some specific deco*/
-			offsetY: -8
-		}
 	],
 	levelSetDefineName: "B"
 }
