@@ -91,6 +91,22 @@
 					coordinates: [443, 21],
 					offsetY: -8
 				},
+				{
+					coordinates: [568, 26],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [576, 24],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [584, 22],		//deco
+					offsetY: -8
+				},
+				{
+					coordinates: [709, 25],		//deco
+					offsetY: +8
+				},
 			]			
 		},
 		{

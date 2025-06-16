@@ -311,7 +311,45 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [981, 21],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [988, 20],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [1017, 23],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [1046, 22],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [1050, 23],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [1058, 24],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [1083, 20],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [1087, 21],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [1105, 21],		//deco
+					offsetY: +8
+				},
+			]
 		},
 		{
 			level: "rainbowdust",
@@ -328,7 +366,21 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [70, 22],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [73, 24],		//deco
+					offsetY: +8
+				},
+				{
+					coordinates: [76, 22],		//deco
+					offsetY: +8
+				},
+			]
 		},
 
 		{
