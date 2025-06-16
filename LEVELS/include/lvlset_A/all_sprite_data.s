@@ -11030,7 +11030,7 @@ sprite_data_bloodbathbutno:
   .byte $70,$18,$d0,$02,$86
   .byte $a0,$18,$d0,$02,$8f
   .byte $b0,$18,$00,$03,$2c
-  .byte $30,$19,$f0,$02,$2c
+  .byte $30,$19,$f8,$02,$2c
   .byte $40,$19,$d0,$02,$86
   .byte $70,$19,$d0,$02,$8f
   .byte $70,$19,$f0,$02,$2c
@@ -11039,7 +11039,7 @@ sprite_data_bloodbathbutno:
   .byte $00,$1a,$d0,$02,$86
   .byte $30,$1a,$d0,$02,$8f
   .byte $40,$1a,$f0,$02,$2c
-  .byte $80,$1a,$f0,$02,$2c
+  .byte $80,$1a,$f8,$02,$2c
   .byte $a8,$1a,$f0,$02,$0b
   .byte $b0,$1a,$d0,$02,$86
   .byte $e0,$1a,$d0,$02,$8f

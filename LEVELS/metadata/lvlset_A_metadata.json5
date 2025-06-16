@@ -2080,8 +2080,20 @@
 					offsetX: -8				//yellow orb
 				},
 				{
+					coordinates: [384, 39],
+					offsetY: -8				//deco
+				},
+				{
+					coordinates: [403, 30],
+					offsetY: +8				//deco
+				},
+				{
 					coordinates: [415, 31],
 					offsetX: -8				//yellow orb
+				},
+				{
+					coordinates: [424, 30],
+					offsetY: +8				//deco
 				},
 				{
 					coordinates: [426, 30],
