@@ -299,68 +299,37 @@
 			startingGroundColor: 0x0C,
 			objectOffsets: [
 				{
-					coordinates: [35, 18],		//chain deco
+					coordinates: [
+						[35, 18],	[37, 18],	[41, 19],	[42, 20],		//chain deco
+					],
 					offsetY: +8
 				},
 				{
-					coordinates: [37, 18],		//chain deco
-					offsetY: +8
-				},
-				{
-					coordinates: [41, 19],		//chain deco
-					offsetY: +8
-				},
-				{
-					coordinates: [42, 20],		//chain deco
-					offsetY: +8
-				},
-				{
-					coordinates: [52, 24],		//deco
-					offsetX: +8
-				},
-				{
-					coordinates: [57, 24],		//deco
-					offsetX: +8
-				},
-				{
-					coordinates: [65, 24],		//deco
-					offsetX: +8
-				},
-				{
-					coordinates: [228, 21],		//portal
+					coordinates: [
+						[228, 21],	[459, 21],		//portal	//portal
+						[460, 21],		//portal / alignment
+						[613, 19],		//ball portal
+					],
 					offsetY: -8
 				},
 				{
-					coordinates: [306, 20],		//portal alignment
-					offsetX: -17
+					coordinates: [
+						[52, 24],	[57, 24],	[65, 24],		//deco
+					],
+					offsetX: +8
 				},
 				{
-					coordinates: [459, 21],		//portal
-					offsetY: -8
-				},
-				{
-					coordinates: [460, 21],		//portal / alignment
-					offsetY: -8,
-					offsetX: -17
-				},
-				{
-					coordinates: [508, 23],		//orb
+					coordinates: [
+						[508, 23],		//orb
+						[573, 18],		//upsidedown post
+						[574, 18],		//upsidedown pad
+					],
 					offsetX: -8
 				},
 				{
-					coordinates: [573, 18],		//upsidedown post
-					offsetX: -8
-				},
-				{
-					coordinates: [574, 18],		//upsidedown pad
-					offsetX: -8
-				},
-				{
-					coordinates: [613, 19],		//ball portal
-					offsetY: -8
-				},
-				{
-					coordinates: [765, 19],		//portal alignment
+					coordinates: [
+						[306, 20],	[460, 21],	[765, 19],		//portal alignment
+					],
 					offsetX: -17
 				},
 			]
@@ -381,138 +350,48 @@
 			startingGroundColor: 0x06,
 			objectOffsets: [
 				{
-					coordinates: [107, 23],		//orb
+					coordinates: [
+						[107, 23],	[130, 22],	[210, 22],	[841, 16],	[878, 14],	[882, 14],		//orb
+						[204, 24],		//blue pad
+						[278, 21],		//upsidedown pad
+						[464, 25],	[468, 25],	[472, 25],	[809, 19],		//yellow orb
+						[671, 21],		//mini portal
+						[873, 16],		//pad
+					],
 					offsetX: -8
 				},
 				{
-					coordinates: [130, 22],		//orb
-					offsetX: -8
+					coordinates: [
+						[367, 20],	[370, 21],	[373, 22],		//yellow orb
+						[527, 22],		//ship portal
+						[722, 22],		//upsidedown blue pad
+						[812, 19],		//shink portal
+						[837, 17],	[949, 7],		//pad
+						[909, 18],	[947, 9],		//orb
+						[357, 22],		//mini portal
+					],
+					offsetX: +8
 				},
 				{
-					coordinates: [204, 24],		//blue pad
-					offsetX: -8
+					coordinates: [
+						[358, 22],		//ball portal
+						[430, 24],		//horizontal normal grav portal
+						[357, 22],		//mini portal
+					],
+					offsetY: -8
 				},
 				{
-					coordinates: [210, 22],		//orb
-					offsetX: -8
-				},
-				{
-					coordinates: [278, 21],		//upsidedown pad
-					offsetX: -8
-				},
+					coordinates: [
+						[402, 24],	[405, 20],	[408, 24],		//blue orb
+						[502, 21],		//yellow orb
+						[599, 21],		//growth portal
+					],
+					offsetY: +8
+				},			
 				{
 					coordinates: [289, 22],		//ship portal
 					offsetX: -4
-				},
-				{
-					coordinates: [357, 22],		//mini portal
-					offsetX: +8,
-					offsetY: -8
-				},
-				{
-					coordinates: [358, 22],		//ball portal
-					offsetY: -8
-				},
-				{
-					coordinates: [367, 20],		//yellow orb
-					offsetX: +8
-				},
-				{
-					coordinates: [370, 21],		//yellow orb
-					offsetX: +8
-				},
-				{
-					coordinates: [373, 22],		//yellow orb
-					offsetX: +8
-				},
-				{
-					coordinates: [402, 24],		//blue orb
-					offsetY: +8
-				},
-				{
-					coordinates: [405, 20],		//blue orb
-					offsetY: +8
-				},
-				{
-					coordinates: [408, 24],		//blue orb
-					offsetY: +8
-				},
-				{
-					coordinates: [430, 24],		//horizontal normal grav portal
-					offsetY: -8
-				},
-				{
-					coordinates: [464, 25],		//yellow orb
-					offsetX: -8
-				},
-				{
-					coordinates: [468, 25],		//yellow orb
-					offsetX: -8
-				},
-				{
-					coordinates: [472, 25],		//yellow orb
-					offsetX: -8
-				},
-				{
-					coordinates: [502, 21],		//yellow orb
-					offsetY: +8
-				},
-				{
-					coordinates: [527, 22],		//ship portal
-					offsetX: +8
-				},
-				{
-					coordinates: [599, 21],		//growth portal
-					offsetY: +8
-				},
-				{
-					coordinates: [671, 21],		//mini portal
-					offsetX: -8
-				},
-				{
-					coordinates: [722, 22],		//upsidedown blue pad
-					offsetX: +8
-				},
-				{
-					coordinates: [809, 19],		//yellow orb
-					offsetX: -8
-				},
-				{
-					coordinates: [812, 19],		//shink portal
-					offsetX: +8
-				},
-				{
-					coordinates: [837, 17],		//pad
-					offsetX: +8
-				},
-				{
-					coordinates: [841, 16],		//orb
-					offsetX: -8
-				},
-				{
-					coordinates: [873, 16],		//pad
-					offsetX: -8
-				},
-				{
-					coordinates: [878, 14],		//orb
-					offsetX: -8
-				},
-				{
-					coordinates: [882, 14],		//orb
-					offsetX: -8
-				},
-				{
-					coordinates: [909, 18],		//orb
-					offsetX: +8
-				},
-				{
-					coordinates: [947, 9],		//orb
-					offsetX: +8
-				},
-				{
-					coordinates: [949, 7],		//pad
-					offsetX: +8
-				},
+				},				
 			]
 		},
 		{
