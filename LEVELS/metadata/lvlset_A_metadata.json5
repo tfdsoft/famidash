@@ -2392,7 +2392,149 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [46, 41],		//J block
+					offsetY: +8
+				},
+				{
+					coordinates: [47, 41],		//J block
+					offsetY: +8
+				},
+				{
+					coordinates: [48, 41],		//J block
+					offsetY: +8
+				},
+				{
+					coordinates: [49, 41],		//J block
+					offsetY: +8
+				},
+				{
+					coordinates: [60, 43],		//blue orb
+					offsetY: +8
+				},
+				{
+					coordinates: [138, 27],		//yellow orb
+					offsetY: -8
+				},
+				{
+					coordinates: [140, 25],		//green orb
+					offsetY: -8
+				},
+				{
+					coordinates: [151, 26],		//green orb
+					offsetX: -8
+				},
+				{
+					coordinates: [158, 23],		//green orb
+					offsetY: +8
+				},
+				{
+					coordinates: [172, 28],		//green orb
+					offsetY: +8
+				},
+				{
+					coordinates: [208, 21],		//green orb
+					offsetX: -8
+				},
+				{
+					coordinates: [210, 23],		//green orb
+					offsetX: -8
+				},
+				{
+					coordinates: [212, 21],		//yellow orb
+					offsetX: -8
+				},
+				{
+					coordinates: [259, 26],		//yellow orb
+					offsetX: -8
+				},
+				{
+					coordinates: [263, 25],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [273, 25],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [277, 25],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [284, 25],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [296, 23],		//spider orb
+					offsetX: -8
+				},
+				{
+					coordinates: [300, 25],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [311, 25],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [315, 24],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [322, 24],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [329, 23],		//green orb
+					offsetY: +8
+				},
+				{
+					coordinates: [335, 27],		//yellow orb
+					offsetX: -8
+				},
+				{
+					coordinates: [338, 24],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [347, 23],		//grav portal
+					offsetX: +16
+				},
+				{
+					coordinates: [348, 24],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [352, 24],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [358, 23],		//grav portal
+					offsetX: +16
+				},
+				{
+					coordinates: [359, 24],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [376, 24],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [397, 24],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [423, 22],		//speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [559, 25],		//speed portal
+					offsetY: -8
+				},
+			]
 		},
 		{
 			level: "bloodbathbutno",

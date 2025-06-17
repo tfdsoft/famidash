@@ -171,7 +171,26 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1932
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8168 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8170 bytes
+	.export level_data_lostinthewoods
+	level_data_lostinthewoods:
+	; Header
+		.byte song_haunted_woods ;___ Song ID
+		.byte 0 ;____________________ Starting game mode
+		.byte 1 ;____________________ Starting speed
+		.byte 1 ;____________________ Disable parallax
+		.byte _DECO1 ;_______________ Deco type
+		.byte _SPIKESA ;_____________ Spike set
+		.byte _BLOCKSB ;_____________ Block set
+		.byte _SAWBLADESA ;__________ Sawblade set
+		.byte $0F ;__________________ Starting background color
+		.byte $0F ;__________________ Starting ground color
+		.byte 47 ;___________________ Level height
+	; Level data
+		.incbin "EXPORTS/lostinthewoods.lz.bin" ; Size: 6144
+
+
+.segment "DAT_BANK_0A"	; Total bank size: 8165 bytes
 	.export level_data_sunshine
 	level_data_sunshine:
 	; Header
@@ -188,25 +207,6 @@
 		.byte 47 ;________________ Level height
 	; Level data
 		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6142
-
-
-.segment "DAT_BANK_0A"	; Total bank size: 8140 bytes
-	.export level_data_lostinthewoods
-	level_data_lostinthewoods:
-	; Header
-		.byte song_haunted_woods ;___ Song ID
-		.byte 0 ;____________________ Starting game mode
-		.byte 1 ;____________________ Starting speed
-		.byte 1 ;____________________ Disable parallax
-		.byte _DECO1 ;_______________ Deco type
-		.byte _SPIKESA ;_____________ Spike set
-		.byte _BLOCKSB ;_____________ Block set
-		.byte _SAWBLADESA ;__________ Sawblade set
-		.byte $0F ;__________________ Starting background color
-		.byte $0F ;__________________ Starting ground color
-		.byte 47 ;___________________ Level height
-	; Level data
-		.incbin "EXPORTS/lostinthewoods.lz.bin" ; Size: 6117
 
 	.export level_data_baseafterbase
 	level_data_baseafterbase:
