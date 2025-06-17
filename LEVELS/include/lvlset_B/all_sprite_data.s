@@ -5061,7 +5061,7 @@ sprite_data_scarletsurge:
   .byte $80,$57,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_16"
+.segment "DAT_BANK_15"
 sprite_data_tinytunes:
   .byte $00,$00,$80,$03,$bf
   .byte $a0,$00,$88,$03,$0a
@@ -7775,7 +7775,7 @@ sprite_data_rainbowdust:
   .byte $b0,$40,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_15"
+.segment "DAT_BANK_16"
 sprite_data_dorabaebasic10:
   .byte $00,$00,$80,$03,$98
   .byte $d0,$00,$80,$03,$0b
@@ -7797,6 +7797,7 @@ sprite_data_dorabaebasic10:
   .byte $a0,$03,$60,$03,$a4
   .byte $c0,$03,$60,$03,$94
   .byte $a0,$05,$30,$03,$02
+  .byte $d0,$05,$30,$03,$07
   .byte $f0,$05,$60,$03,$a4
   .byte $10,$06,$60,$03,$a0
   .byte $40,$06,$20,$03,$0c
@@ -7847,6 +7848,7 @@ sprite_data_dorabaebasic10:
   .byte $a0,$0c,$40,$03,$9a
   .byte $c0,$0c,$40,$03,$8f
   .byte $d0,$0c,$40,$03,$ba
+  .byte $f0,$0c,$b0,$02,$1a
   .byte $f0,$0c,$40,$03,$bf
   .byte $00,$0d,$40,$03,$9a
   .byte $20,$0d,$40,$03,$8f
@@ -8003,6 +8005,7 @@ sprite_data_dorabaebasic10:
   .byte $70,$1a,$40,$03,$84
   .byte $90,$1a,$40,$03,$8f
   .byte $a0,$1a,$40,$03,$b4
+  .byte $c0,$1a,$10,$03,$1b
   .byte $c0,$1a,$40,$03,$bf
   .byte $d0,$1a,$40,$03,$84
   .byte $f0,$1a,$40,$03,$8f
