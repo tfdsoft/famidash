@@ -325,7 +325,7 @@
 		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4747
 
 
-.segment "DAT_BANK_14"	; Total bank size: 7941 bytes
+.segment "DAT_BANK_14"	; Total bank size: 7956 bytes
 	.export level_data_windylandscape_2
 	level_data_windylandscape_2:
 	; Level data
