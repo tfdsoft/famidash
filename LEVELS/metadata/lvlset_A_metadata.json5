@@ -17,69 +17,16 @@
 			startingGroundColor: 0x02,
 			objectOffsets: [
 				{
-					coordinates: [128, 25],		//deco
+					coordinates: [
+						[128, 25], [132, 24], [136, 23], [140, 22],
+						[144, 21], [218, 25], [222, 24], [226, 23],
+						[230, 22], [234, 21], [646, 26], [650, 25],
+						[654, 24], [658, 23],	//deco
+						[418, 21],				//cube portal
+						[764, 21],				//ship portal
+					],
 					offsetY: -8
-				},
-				{
-					coordinates: [132, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [136, 23],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [140, 22],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [144, 21],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [218, 25],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [222, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [226, 23],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [230, 22],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [234, 21],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [418, 21],		//cube portal
-					offsetY: -8
-				},
-				{
-					coordinates: [646, 26],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [650, 25],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [654, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [658, 23],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [764, 21],		//ship portal
-					offsetY: -8
-				},
+				}
 			]	
 		},
 		{

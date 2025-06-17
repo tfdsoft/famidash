@@ -313,14 +313,24 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSet
 
 			if 'coordinates' in setting.keys():
 				coordinates = tuple(setting['coordinates'])
-				if not isinstance(coordinates, Iterable) or len(coordinates) != 2:
+				if not isinstance(coordinates, Iterable):
 					print (f"Coordinates invalid in setting {setting}")
 					continue
 
-				if coordinates not in outDict.keys() or setting.get('override'):
-					outDict[coordinates] = [offset, setting.get('override', False)]
-				else:	# add up
-					outDict[coordinates] = [[outDict[coordinates][i] + offset[i] for i in range(2)], False]
+				if len(coordinates) == 2 and all([isinstance(i, int) for i in coordinates]):
+					coordinates = [coordinates]
+
+				for coordinate in coordinates:
+					if not isinstance(coordinate, Iterable) or len(coordinate) != 2:
+						print (f"Coordinates [{coordinate}] invalid in setting {setting}")
+						continue
+
+					coordinate = tuple(coordinate)
+
+					if coordinate not in outDict.keys() or setting.get('override'):
+						outDict[coordinate] = [offset, setting.get('override', False)]
+					else:	# add up
+						outDict[coordinate] = [[outDict[coordinate][i] + offset[i] for i in range(2)], False]
 			elif 'objectID' in setting.keys():
 				objIDs = setting['objectID']
 				if isinstance(objIDs, int):
