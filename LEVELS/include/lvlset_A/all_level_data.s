@@ -59,7 +59,7 @@
 		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8031
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8164 bytes
+.segment "DAT_BANK_03"	; Total bank size: 7480 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -76,23 +76,6 @@
 		.byte 27 ;________________ Level height
 	; Level data
 		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7480
-
-	.export level_data_luckydraw
-	level_data_luckydraw:
-	; Header
-		.byte song_electroman_adventures ;___ Song ID
-		.byte 0 ;____________________________ Starting game mode
-		.byte 0 ;____________________________ Starting speed
-		.byte 1 ;____________________________ Disable parallax
-		.byte _DECOCLOUD ;___________________ Deco type
-		.byte _SPIKESB ;_____________________ Spike set
-		.byte _BLOCKSB ;_____________________ Block set
-		.byte _LETTERBANK ;__________________ Sawblade set
-		.byte $0F ;__________________________ Starting background color
-		.byte $0F ;__________________________ Starting ground color
-		.byte 27 ;___________________________ Level height
-	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8178 bytes
@@ -453,7 +436,7 @@
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3196
 
 
-.segment "DAT_BANK_14"	; Total bank size: 8096 bytes
+.segment "DAT_BANK_14"	; Total bank size: 8188 bytes
 	.export level_data_blastprocessing
 	level_data_blastprocessing:
 	; Header
@@ -486,7 +469,12 @@
 		.byte $0F ;___________________ Starting ground color
 		.byte 57 ;____________________ Level height
 	; Level data
-		.incbin "EXPORTS/dorabaebasic4.lz.bin" ; Size: 3305
+		.incbin "EXPORTS/dorabaebasic4.lz.bin" ; Size: 3311
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_15"	; Total bank size: 8004 bytes
@@ -508,7 +496,7 @@
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4703
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8188 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8102 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -542,11 +530,6 @@
 		.byte 27 ;______________ Level height
 	; Level data
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3699
-
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_17"	; Total bank size: 8022 bytes
@@ -717,6 +700,25 @@
 		.byte 27 ;____________ Level height
 	; Level data
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2723
+
+
+.segment "DAT_BANK_1D"	; Total bank size: 8172 bytes
+	.export level_data_luckydraw
+	level_data_luckydraw:
+	; Header
+		.byte song_electroman_adventures ;___ Song ID
+		.byte 0 ;____________________________ Starting game mode
+		.byte 0 ;____________________________ Starting speed
+		.byte 1 ;____________________________ Disable parallax
+		.byte _DECOCLOUD ;___________________ Deco type
+		.byte _SPIKESB ;_____________________ Spike set
+		.byte _BLOCKSB ;_____________________ Block set
+		.byte _LETTERBANK ;__________________ Sawblade set
+		.byte $0F ;__________________________ Starting background color
+		.byte $0F ;__________________________ Starting ground color
+		.byte 27 ;___________________________ Level height
+	; Level data
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684
 
 
 .segment "DAT_BANK_1F"	; Total bank size: 8122 bytes

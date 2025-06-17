@@ -7922,6 +7922,7 @@ sprite_data_dorabaebasic4:
   .byte $60,$0c,$20,$03,$00
   .byte $c0,$0c,$20,$03,$12
   .byte $e0,$0c,$40,$03,$e0
+  .byte $00,$0d,$40,$03,$07
   .byte $10,$0d,$40,$03,$e8
   .byte $70,$0d,$40,$03,$11
   .byte $70,$0d,$50,$03,$d1
@@ -8019,6 +8020,7 @@ sprite_data_dorabaebasic4:
   .byte $f0,$15,$30,$03,$a1
   .byte $00,$16,$30,$03,$91
   .byte $80,$16,$38,$03,$0a
+  .byte $d0,$16,$f0,$02,$1a
   .byte $a0,$1a,$50,$03,$94
   .byte $e0,$1b,$f0,$02,$03
   .byte $40,$1c,$e0,$02,$03
@@ -8335,6 +8337,7 @@ sprite_data_dorabaebasic4:
   .byte $70,$3c,$80,$02,$9a
   .byte $80,$3c,$80,$02,$ab
   .byte $80,$3c,$90,$02,$b0
+  .byte $c0,$3d,$50,$02,$1b
   .byte $f0,$3f,$80,$02,$0f
   .byte $ff
 
