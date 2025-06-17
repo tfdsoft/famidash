@@ -2944,6 +2944,9 @@ sprite_data_eighto:
   .byte $d0,$2c,$f0,$02,$81
   .byte $f0,$2c,$00,$03,$bd
   .byte $50,$2d,$40,$03,$36
+  .byte $80,$2d,$40,$03,$07
+  .byte $90,$2d,$30,$03,$1a
+  .byte $a0,$2d,$40,$03,$1b
   .byte $70,$2e,$50,$03,$0f
   .byte $ff
 
