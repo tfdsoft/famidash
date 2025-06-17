@@ -46,83 +46,19 @@
 			startingGroundColor: 0x14,
 			objectOffsets: [
 				{
-					coordinates: [102, 26],		//pad
+					coordinates: [ 			
+						[102, 26],	[111, 26],														//pads
+					],
 					offsetX: +8
 				},
 				{
-					coordinates: [111, 26],		//pad
-					offsetX: +8
-				},
-				{
-					coordinates: [172, 25],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [176, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [180, 23],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [311, 23],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [313, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [315, 25],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [335, 25],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [339, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [343, 23],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [348, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [407, 23],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [409, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [411, 25],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [559, 21],		//portal
-					offsetY: -8
-				},
-				{
-					coordinates: [693, 26],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [697, 25],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [701, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [710, 24],		//deco
+					coordinates: [			
+						[172, 25],	[176, 24],	[180, 23],	[311, 23],	[313, 24],	[315, 25],		//deco
+						[335, 25],	[339, 24],	[343, 23],	[348, 24],	[407, 23],	[409, 24],		//deco
+						[411, 25],																	//deco
+						[559, 21],																	//portal
+						[693, 26],	[697, 25],	[701, 24],	[710, 24],								//deco						
+					],
 					offsetY: -8
 				},
 			]
@@ -143,39 +79,20 @@
 			startingGroundColor: 0x1A,
 			objectOffsets: [
 				{
-					coordinates: [17, 25],
+					coordinates: [
+						[17, 25], [32, 25], [48, 25],
+					],
 					offsetX: +8
 				},
 				{
-					coordinates: [32, 25],
-					offsetX: +8
-				},
-				{
-					coordinates: [48, 25],
-					offsetX: +8
-				},
-				{
-					coordinates: [321, 20],
+					coordinates: [
+						[321, 20],	[443, 21],
+						[568, 26],	[576, 24],	[584, 22],		//deco
+					],
 					offsetY: -8
 				},
 				{
-					coordinates: [443, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [568, 26],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [576, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [584, 22],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [709, 25],		//deco
+					coordinates: [709, 25],						//deco
 					offsetY: +8
 				},
 			]			
@@ -196,19 +113,9 @@
 			startingGroundColor: 0x16,
 			objectOffsets: [
 				{
-					coordinates: [292, 24],
-					offsetY: -8
-				},
-				{
-					coordinates: [429, 22],
-					offsetY: -8
-				},		
-				{
-					coordinates: [566, 21],
-					offsetY: -8
-				},				
-				{
-					coordinates: [707, 21],
+					coordinates: [
+						[292, 24],	[429, 22],	[566, 21],	[707, 21],
+					],
 					offsetY: -8
 				},
 			]
@@ -230,43 +137,17 @@
 			startingGroundColor: 0x11,
 			objectOffsets: [
 				{
-					coordinates: [98, 22],		//yellow orb
+					coordinates: [
+						[98, 22],	[285, 23],								//yellow orb
+					],
 					offsetY: +8
 				},
 				{
-					coordinates: [174, 21],		//yellow orb
-					offsetY: -8
-				},
-				{
-					coordinates: [285, 23],		//yellow orb
-					offsetY: +8
-				},
-				{
-					coordinates: [426, 18],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [428, 19],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [431, 20],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [434, 21],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [441, 22],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [446, 22],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [451, 22],		//deco
+					coordinates: [
+						[174, 21],											//yellow orb
+						[426, 18],	[428, 19],	[431, 20],	[434, 21],		//deco
+						[441, 22],	[446, 22],	[451, 22],					//deco
+					],
 					offsetY: -8
 				},
 			]
@@ -287,27 +168,9 @@
 			startingGroundColor: 0x04,
 			objectOffsets: [
 				{
-					coordinates: [33, 24],
-					offsetY: -8
-				},
-				{
-					coordinates: [36, 22],
-					offsetY: -8
-				},
-				{
-					coordinates: [39, 20],
-					offsetY: -8
-				},
-				{
-					coordinates: [480, 20],
-					offsetY: -8
-				},
-				{
-					coordinates: [590, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [591, 21],
+					coordinates: [
+						[33, 24],	[36, 22],	[39, 20],	[480, 20],	[590, 21],	[591, 21],
+					],
 					offsetY: -8
 				},
 			]
@@ -328,59 +191,11 @@
 			startingGroundColor: 0x13,
 			objectOffsets: [
 				{
-					coordinates: [252, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [280, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [305, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [336, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [337, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [374, 24],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [381, 26],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [388, 26],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [446, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [471, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [491, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [503, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [560, 21],
-					offsetY: -8
-				},
-				{
-					coordinates: [672, 21],
+					coordinates:	[
+						[252, 21],	[280, 21],	[305, 21],	[336, 21],	[337, 21],	
+						[374, 24],	[381, 26],	[388, 26],										//deco
+						[446, 21],	[471, 21],	[491, 21],	[503, 21],	[560, 21],	[672, 21],
+					],
 					offsetY: -8
 				},
 			]
@@ -401,248 +216,32 @@
 			startingGroundColor: 0x1A,
 			objectOffsets: [
 				{
-					coordinates: [75, 21],			//deco
+					coordinates: [
+						[75, 21],	[316, 18],	[456, 17],	[490, 16],	[495, 15],						//deco
+						[651, 16],	[655, 17],	[660, 16],	[663, 15],	[668, 17],	[673, 17],			//deco
+						[885, 17],	[890, 18],	[891, 18],	[894, 17],	[898, 17],	[901, 16],			//deco
+						[905, 16],	[908, 15],	[911, 17],	[914, 16],	[916, 16],						//deco
+					],
 					offsetY: +8
 				},
 				{
-					coordinates: [195, 24],			//orb
+					coordinates: [
+						[195, 24],	[199, 23],	[511, 17],												//orb
+						[706, 26],	[778, 26],															//pad
+					],
 					offsetX: +8
 				},
 				{
-					coordinates: [199, 23],			//orb
-					offsetX: +8
-				},
-				{
-					coordinates: [313, 26],			//deco
+					coordinates: [
+						[313, 26],	[316, 24],	[319, 25],	[323, 24],	[328, 25],	[331, 26],			//deco
+						[450, 24],	[453, 25],	[456, 23],	[459, 24],	[462, 22],	[490, 22],			//deco
+						[492, 23],	[495, 21],	[497, 22],	[503, 20],	[507, 20],						//deco
+						[510, 20],	[511, 20],	[512, 20],	[513, 20],									//spikes
+						[516, 20],	[523, 24],	[524, 24],	[529, 25],	[562, 26],	[566, 25],			//deco
+						[598, 26],	[599, 26],	[603, 25],	[620, 26],	[621, 26],	[629, 24],			//deco
+						[682, 23],																		//portal
+					],
 					offsetY: -8
-				},
-				{
-					coordinates: [316, 18],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [316, 24],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [319, 25],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [323, 24],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [328, 25],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [331, 26],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [450, 24],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [453, 25],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [456, 17],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [456, 23],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [459, 24],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [462, 22],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [490, 16],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [490, 22],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [492, 23],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [495, 15],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [495, 21],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [497, 22],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [503, 20],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [507, 20],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [511, 17],			//orb
-					offsetX: +8
-				},
-				{
-					coordinates: [510, 20],			//spikes
-					offsetY: -8
-				},
-				{
-					coordinates: [511, 20],			//spikes
-					offsetY: -8
-				},
-				{
-					coordinates: [512, 20],			//spikes
-					offsetY: -8
-				},
-				{
-					coordinates: [513, 20],			//spikes
-					offsetY: -8
-				},
-				{
-					coordinates: [516, 20],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [523, 24],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [524, 24],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [529, 25],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [562, 26],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [566, 25],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [598, 26],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [599, 26],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [603, 25],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [620, 26],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [621, 26],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [629, 24],			//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [651, 16],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [655, 17],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [660, 16],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [663, 15],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [668, 17],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [673, 17],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [682, 23],			//portal
-					offsetY: -8
-				},
-				{
-					coordinates: [706, 26],			//pad
-					offsetX: +8
-				},
-				{
-					coordinates: [778, 26],			//pad
-					offsetX: +8
-				},
-				{
-					coordinates: [885, 17],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [890, 18],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [891, 18],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [894, 17],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [898, 17],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [901, 16],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [905, 16],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [908, 15],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [911, 17],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [914, 16],			//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [916, 16],			//deco
-					offsetY: +8
 				},
 			]
 		},
@@ -662,128 +261,25 @@
 			startingGroundColor: 0x14,
 			objectOffsets: [
 				{
-					coordinates: [43, 19],		//deco
+					coordinates: [
+						[43, 19],	[48, 19],	[81, 18],	[83, 18],	[85, 18],	[87, 18],		//deco
+						[89, 18],	[346, 20],	[350, 20],	[357, 20],	[360, 20],	[375, 22],		//deco
+						[377, 22],	[382, 22],	[384, 22],	[385, 20],	[396, 20],	[400, 20],		//deco
+						[403, 20],	[708, 19],	[711, 19],	[721, 20],	[725, 20],					//deco
+					],
 					offsetY: +8
 				},
 				{
-					coordinates: [48, 19],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [81, 18],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [83, 18],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [85, 18],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [87, 18],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [89, 18],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [157, 24],		//deco
+					coordinates: [
+						[157, 24],	[160, 22],	[351, 25],	[356, 25],		//deco
+						[548, 21],	[587, 21],	[798, 22],		//portal
+					],
 					offsetY: -8
 				},
-				{
-					coordinates: [160, 22],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [346, 20],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [350, 20],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [351, 25],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [356, 25],		//deco
-					offsetY: -8
-				},
-				{
-					coordinates: [357, 20],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [360, 20],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [375, 22],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [377, 22],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [382, 22],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [384, 22],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [385, 20],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [396, 20],		//deco
-					offsetY: +8
-				},
+				
 				{
 					coordinates: [396, 22],		//upsidedown pad
 					offsetX: -8
-				},
-				{
-					coordinates: [400, 20],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [403, 20],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [548, 21],		//portal
-					offsetY: -8
-				},
-				{
-					coordinates: [587, 21],		//portal
-					offsetY: -8
-				},
-				{
-					coordinates: [708, 19],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [711, 19],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [721, 20],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [725, 20],		//deco
-					offsetY: +8
-				},
-				{
-					coordinates: [798, 22],		//portal
-					offsetY: -8
 				},
 			]
 		},
