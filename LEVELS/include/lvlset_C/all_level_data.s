@@ -325,14 +325,7 @@
 		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4747
 
 
-.segment "DAT_BANK_14"	; Total bank size: 7981 bytes
-	.export level_data_windylandscape_2
-	level_data_windylandscape_2:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 189
-
-
-.segment "DAT_BANK_15"	; Total bank size: 7682 bytes
+.segment "DAT_BANK_14"	; Total bank size: 7983 bytes
 	.export level_data_hi
 	level_data_hi:
 	; Header
@@ -348,7 +341,12 @@
 		.byte $0F ;___________ Starting ground color
 		.byte 40 ;____________ Level height
 	; Level data
-		.incbin "EXPORTS/hi.lz.bin" ; Size: 4686
+		.incbin "EXPORTS/hi.lz.bin" ; Size: 4708
+
+	.export level_data_windylandscape_2
+	level_data_windylandscape_2:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 189
 
 
 .segment "DAT_BANK_16"	; Total bank size: 8179 bytes
