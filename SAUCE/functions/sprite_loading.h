@@ -59,7 +59,7 @@ uint8_t sprite_heights[]={
 	0x34,	0x34,	0x34,	0x34,	0x34,	0x02,	0x10,	SPBH,	// 60 - 67
 	0x10,	SPBH,	0x34,	0x34,	0x34,	0x20,	0x08,	SPBH,	// 68 - 6F
 	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x10,	SPBH,	0x10,	// 70 - 77
-	SPBH,	0x12,	0x00,	0x00,	0x00,	0x00,	SPBH,	0x00,	// 78 - 7F
+	SPBH,	0x12,	0x12,	0x00,	0x00,	0x00,	SPBH,	0x00,	// 78 - 7F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 88 - 8F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 90 - 97
@@ -166,7 +166,7 @@ uint8_t sprite_y_offset[]={
 	-0x02,	-0x02,	-0x02,	-0x02,	-0x02,	0x00,	0x00,	0x00,	// 60 - 67
 	0x00,	0x00,	-0x02,	-0x02,	-0x02,	0x00,	0x04,	0x00,	// 68 - 6F
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 70 - 77
-	0x00,	-0x01,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 78 - 7F
+	0x00,	-0x01,	-0x01,	0x00,	0x00,	0x00,	0x00,	0x00,	// 78 - 7F
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 80 - 87
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 88 - 8F
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 90 - 97
@@ -667,7 +667,7 @@ void sprite_collide_lookup() {
 		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_invi_on,	// 0x6C - 0x6F
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
-		&&spcl_default,	&&spcl_wht_orb,	&&spcl_default,	&&spcl_default,	// 0x78 - 0x7B
+		&&spcl_default,	&&spcl_skl_orb,	&&spcl_wht_orb,	&&spcl_default,	// 0x78 - 0x7B
 		&&spcl_default,	&&spcl_default,	&&spcl_default //,	&&spcl_invioff	// 0x7C - 0x7F
 	};
 	static void * const sprite_collide_jump_table_1[] = {
@@ -720,7 +720,7 @@ void sprite_collide_lookup() {
 
 	// Gamemode portals
 	
-	spcl_wht_orb:
+	spcl_skl_orb:
 		activesprites_animated[index] = 1;
 		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
 			if ((controllingplayer->a || controllingplayer->up)) {
@@ -733,6 +733,21 @@ void sprite_collide_lookup() {
 				activesprites_animated[index] = 0;
 			}
 		}
+		return;
+	
+	spcl_wht_orb:
+		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
+			if ((controllingplayer->a || controllingplayer->up)) {
+				currplayer_vel_y = currplayer_gravity ? -1 : 1;
+				activesprites_activated[index] = 1;
+			}
+		} else {
+			if (controllingplayer->press_a || controllingplayer->press_up) {	
+				currplayer_vel_y = currplayer_gravity ? -1 : 1;
+				activesprites_activated[index] = 1;
+			}
+		}
+
 		return;
 	
 	spcl_invi_on:
@@ -1193,7 +1208,7 @@ void sprite_collide(){
 				sprite_collide_lookup();
 			}
 			
-			else if (activesprites_type[index] == WHITE_DEATH_ORB && activesprites_animated[index] == 1) activesprites_animated[index] = 2;
+			else if (activesprites_type[index] == SKULL_ORB && activesprites_animated[index] == 1) activesprites_animated[index] = 2;
 		}
 	} while (++index < max_loaded_sprites);
 	if (gamemode != GAMEMODE_WAVE) {

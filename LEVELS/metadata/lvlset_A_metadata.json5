@@ -1796,7 +1796,33 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x01,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [16, 21],		//x deco
+					offsetY: +16
+				},
+				{
+					coordinates: [41, 22],		//yellow orb
+					offsetY: -8
+				},
+				{
+					coordinates: [51, 18],		//x deco
+					offsetY: +16
+				},
+				{
+					coordinates: [52, 15],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [74, 17],		//blue orb
+					offsetX: -8
+				},
+				{
+					coordinates: [93, 19],		//blue orb
+					offsetX: -8
+				},
+			]
 		},
 		{
 			level: "geometricaldominator",

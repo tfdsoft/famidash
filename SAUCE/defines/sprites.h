@@ -2116,34 +2116,6 @@ const unsigned char Dash_Gravity_Orb_45Deg_DOWN[]={
 	0x80
 };
 
-
-
-const unsigned char White_Death_Orb[]={
-
-	  0,  0,0x99,2,
-	  8,  0,0x9B,2|OAM_FLIP_H,
-	0x80
-};
-
-const unsigned char White_Death_Orb2[]={
-
-	  0,  0,0x9B,2,
-	  8,  0,0x9D,2|OAM_FLIP_H,
-	0x80
-};
-const unsigned char White_Death_Orb3[]={
-
-	  0,  0,0x9D,2,
-	  8,  0,0x9F,2|OAM_FLIP_H,
-	0x80
-};
-const unsigned char White_Death_Orb4[]={
-
-	  0,  0,0x9F,2,
-	  8,  0,0x99,2|OAM_FLIP_H,
-	0x80
-};
-
 const unsigned char Yellow_Jump_Orb[]={
 
 	  0,  0,0x99,1,
@@ -2167,6 +2139,30 @@ const unsigned char Yellow_Jump_Orb4[]={
 
 	  0,  0,0x9F,1,
 	  8,  0,0x99,1|OAM_FLIP_H,
+	0x80
+};
+
+
+
+const unsigned char WHITE_ORB1[]={
+	  0,  0,0x99,2,
+	  8,  0,0x9B,2|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char WHITE_ORB2[]={
+	  0,  0,0x9B,2,
+	  8,  0,0x9D,2|OAM_FLIP_H,
+	0x80
+};
+const unsigned char WHITE_ORB3[]={
+	  0,  0,0x9D,2,
+	  8,  0,0x9F,2|OAM_FLIP_H,
+	0x80
+};
+const unsigned char WHITE_ORB4[]={
+	  0,  0,0x9F,2,
+	  8,  0,0x99,2|OAM_FLIP_H,
 	0x80
 };
 
@@ -2869,11 +2865,11 @@ const struct SpriteFrame YELLOW_ORB_SPRITES[]={
 	{5, Yellow_Jump_Orb3},
 	{5, Yellow_Jump_Orb4},
 };
-const struct SpriteFrame WHITE_DEATH_ORB_SPRITES[]={
-	{5, White_Death_Orb},
-	{5, White_Death_Orb2},
-	{5, White_Death_Orb3},
-	{5, White_Death_Orb4},
+const struct SpriteFrame WHITE_ORB_SPRITES[]={
+	{5, WHITE_ORB1},
+	{5, WHITE_ORB2},
+	{5, WHITE_ORB3},
+	{5, WHITE_ORB4},
 };
 const struct SpriteFrame BLUE_ORB_SPRITES[]={
 	{5, Blue_Jump_Orb},
@@ -3286,6 +3282,7 @@ const unsigned char * const Metasprites[]={
 	nometa,
 	nometa,
 	Skull_Trigger_1,
+	WHITE_ORB,
 	};
 
 
@@ -3417,7 +3414,7 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	Skull_Open_Sprites,
-	
+	WHITE_ORB_SPRITES,
 };
 
 // Number of UNIQUE animation frames
@@ -3548,6 +3545,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	sizeof(Skull_Open_Sprites) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	sizeof(WHITE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 };
 
 #pragma rodata-name (pop)

@@ -245,7 +245,26 @@
 		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6082
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8142 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8184 bytes
+	.export level_data_toe2
+	level_data_toe2:
+	; Header
+		.byte song_toe_2 ;____ Song ID
+		.byte 0 ;_____________ Starting game mode
+		.byte 0 ;_____________ Starting speed
+		.byte 1 ;_____________ Disable parallax
+		.byte _DECO1 ;________ Deco type
+		.byte _SPIKESA ;______ Spike set
+		.byte _BLOCKSB ;______ Block set
+		.byte _SAWBLADESA ;___ Sawblade set
+		.byte $01 ;___________ Starting background color
+		.byte $01 ;___________ Starting ground color
+		.byte 27 ;____________ Level height
+	; Level data
+		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5938
+
+
+.segment "DAT_BANK_0D"	; Total bank size: 8142 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -262,25 +281,6 @@
 		.byte 27 ;_____________ Level height
 	; Level data
 		.incbin "EXPORTS/decode.lz.bin" ; Size: 5896
-
-
-.segment "DAT_BANK_0D"	; Total bank size: 8138 bytes
-	.export level_data_toe2
-	level_data_toe2:
-	; Header
-		.byte song_toe_2 ;____ Song ID
-		.byte 0 ;_____________ Starting game mode
-		.byte 0 ;_____________ Starting speed
-		.byte 1 ;_____________ Disable parallax
-		.byte _DECO1 ;________ Deco type
-		.byte _SPIKESA ;______ Spike set
-		.byte _BLOCKSB ;______ Block set
-		.byte _SAWBLADESA ;___ Sawblade set
-		.byte $01 ;___________ Starting background color
-		.byte $01 ;___________ Starting ground color
-		.byte 27 ;____________ Level height
-	; Level data
-		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5892
 
 
 .segment "DAT_BANK_0E"	; Total bank size: 7970 bytes

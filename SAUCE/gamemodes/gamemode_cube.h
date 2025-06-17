@@ -189,12 +189,12 @@ void cube_movement(){
 			tmp9 = 0;
 			do {
 				if (!jimsheatballalive[tmp9]) {
+					jimsheatballframe[tmp9] = 0;
 					jimsheatballalive[tmp9] = 1;
 					if (controllingplayer->up) idx16_store_NOC(jimsheatball_vel_y, tmp9, (JIMSHEATBALL_JUMP_VEL / 4) * 7);
 					else idx16_store_NOC(jimsheatball_vel_y, tmp9, JIMSHEATBALL_JUMP_VEL);
 					idx16_store_NOC(jimsheatballx, tmp9, high_byte(old_x));
 					idx16_store_hi_NOC(jimsheatbally, tmp9, high_byte(player_y[0]));
-					jimsheatballframe[tmp9] = 0;
 					break;
 				}
 			} while (++tmp9 < MAX_FIREBALLS);
@@ -281,7 +281,7 @@ void common_gravity_routine() {
 	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
 	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x*2; currplayer_y -= currplayer_vel_y; }	
 	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x*2; currplayer_y += currplayer_vel_y; }	
-	else currplayer_vel_y = 1;
+	else currplayer_vel_y = currplayer_gravity ? -1 : 1;
 }
 
 
