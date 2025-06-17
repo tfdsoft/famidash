@@ -760,6 +760,7 @@ void sprite_collide_lookup() {
 		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
 		gamemode = collided;
 		activesprites_activated[index] = 1;
+		retrofireballclear();
 		return;
 
 	spcl_robot:
