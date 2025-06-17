@@ -80,8 +80,8 @@
 #define BLACK_ORB				0x44
 #define DASH_ORB				0x45
 #define DASH_GRAVITY_ORB			0x46
-#define BG_SPIKE_GROUP2_UP8			0x47
-#define DIAMOND_SHIFTED_			0x48
+#define INVIS_GRAVITY_DOWN_PORTAL			0x47
+#define INVIS_GRAVITY_UP_PORTAL			0x48
 #define PULSE_ORB				0x49
 #define MUSIC_NOTE				0x4A
 #define SWING_MODE				0x4B
