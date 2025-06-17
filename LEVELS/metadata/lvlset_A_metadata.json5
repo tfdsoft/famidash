@@ -411,89 +411,39 @@
 			startingGroundColor: 0x15,
 			objectOffsets: [
 				{
-					coordinates: [18, 53],		//orb
+					coordinates: [
+						[18, 53],	[403, 53],	[422, 52],		//orb
+						[695, 26],		//growth portal
+						[698, 26],		//cube portal
+						[747, 28],		//yellow orb
+					],
 					offsetY: -8
 				},
 				{
-					coordinates: [22, 54],		//pad
-					offsetX: +8
-				},
-				{
-					coordinates: [23, 54],		//pad
-					offsetX: +8
-				},
-				{
-					coordinates: [26, 53],		//pad
-					offsetX: +8
-				},
-				{
-					coordinates: [75, 51],		//normal grav portal
+					coordinates: [
+						[75, 51],		//normal grav portal
+						[76, 51],		//ship portal
+						[359, 52],	[369, 54],		//orb
+						[800, 26],		//blue orb
+					],
 					offsetY: +8,
+				},
+				{
+					coordinates: [
+						[158, 52],	[163, 53],	[439, 52],		//orb
+						[460, 49],		//mini portal
+						[498, 49],		//growth portal
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[22, 54],	[23, 54],	[26, 53],		//pad
+						[142, 51],		//Growth portal
+						[513, 54],		//yellow orb
+						[75, 51],		//normal grav portal
+					],
 					offsetX: +8
-				},
-				{
-					coordinates: [76, 51],		//ship portal
-					offsetY: +8
-				},
-				{
-					coordinates: [142, 51],		//Growth portal
-					offsetX: +8
-				},
-				{
-					coordinates: [158, 52],		//orb
-					offsetX: -8
-				},
-				{
-					coordinates: [163, 53],		//orb
-					offsetX: -8
-				},
-				{
-					coordinates: [359, 52],		//orb
-					offsetY: +8
-				},
-				{
-					coordinates: [369, 54],		//orb
-					offsetY: +8
-				},
-				{
-					coordinates: [403, 53],		//orb
-					offsetY: -8
-				},
-				{
-					coordinates: [422, 52],		//orb
-					offsetY: -8
-				},
-				{
-					coordinates: [439, 52],		//orb
-					offsetX: -8
-				},
-				{
-					coordinates: [460, 49],		//mini portal
-					offsetX: -8
-				},
-				{
-					coordinates: [498, 49],		//growth portal
-					offsetX: -8
-				},
-				{
-					coordinates: [513, 54],		//yellow orb
-					offsetX: +8
-				},
-				{
-					coordinates: [695, 26],		//growth portal
-					offsetY: -8
-				},
-				{
-					coordinates: [698, 26],		//cube portal
-					offsetY: -8
-				},
-				{
-					coordinates: [747, 28],		//yellow orb
-					offsetY: -8
-				},
-				{
-					coordinates: [800, 26],		//blue orb
-					offsetY: +8
 				},
 			]
 		},
