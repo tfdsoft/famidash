@@ -1740,7 +1740,46 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
 			startingGroundColor: 0x12,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [31, 26],		//yellow pad
+					offsetX: -8
+				},
+				{
+					coordinates: [445, 21],		//grav portal
+					offsetX: -12
+				},
+				{
+					coordinates: [553, 20],		//single portal
+					offsetY: +8
+				},
+				{
+					coordinates: [554, 20],		//grav portal
+					offsetY: +8,
+					offsetX: -16
+				},
+				{
+					coordinates: [609, 22],		//cube portal
+					offsetY: -8
+				},
+				{
+					coordinates: [794, 21],		//ball portal
+					offsetY: -8
+				},
+				{
+					coordinates: [905, 21],		//cube portal
+					offsetY: -8
+				},
+				{
+					coordinates: [938, 21],		//blue orb
+					offsetX: +8
+				},
+				{
+					coordinates: [978, 18],		//yellow orb
+					offsetY: +8
+				},
+			]
 		},
 		{
 			level: "toe2",

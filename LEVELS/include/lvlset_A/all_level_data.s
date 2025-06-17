@@ -436,7 +436,7 @@
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3196
 
 
-.segment "DAT_BANK_14"	; Total bank size: 8188 bytes
+.segment "DAT_BANK_14"	; Total bank size: 8144 bytes
 	.export level_data_blastprocessing
 	level_data_blastprocessing:
 	; Header
@@ -452,7 +452,7 @@
 		.byte $12 ;_____________________ Starting ground color
 		.byte 27 ;______________________ Level height
 	; Level data
-		.incbin "EXPORTS/blastprocessing.lz.bin" ; Size: 4791
+		.incbin "EXPORTS/blastprocessing.lz.bin" ; Size: 4833
 
 	.export level_data_dorabaebasic4
 	level_data_dorabaebasic4:
@@ -470,11 +470,6 @@
 		.byte 57 ;____________________ Level height
 	; Level data
 		.incbin "EXPORTS/dorabaebasic4.lz.bin" ; Size: 3311
-
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_15"	; Total bank size: 8004 bytes
@@ -496,7 +491,7 @@
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4703
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8102 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8188 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -530,6 +525,11 @@
 		.byte 27 ;______________ Level height
 	; Level data
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3699
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_17"	; Total bank size: 8022 bytes
