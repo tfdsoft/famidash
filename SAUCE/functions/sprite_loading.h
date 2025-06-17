@@ -753,7 +753,7 @@ void sprite_collide_lookup() {
 	
 	spcl_shipufo:
 		settrailstuff();
-		currplayer_vel_y /= 2;
+		//currplayer_vel_y /= 2;
 		// intentional leak
 	spcl_ball:
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
