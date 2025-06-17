@@ -1332,7 +1332,7 @@
 				},
 				{
 					coordinates: [524, 33],
-					offsetX: +16				//cube portal
+					offsetX: +16			//cube portal
 				},
 				{
 					coordinates: [538, 34],
@@ -1344,7 +1344,7 @@
 				},
 				{
 					coordinates: [615, 23],
-					offsetY: -16				//grav portal
+					offsetY: -16			//grav portal
 				},
 				{
 					coordinates: [662, 24],
@@ -1368,11 +1368,11 @@
 				},
 				{
 					coordinates: [738, 26],
-					offsetY: -16				//grav portal
+					offsetY: -16			//grav portal
 				},
 				{
 					coordinates: [739, 25],
-					offsetX: -16				//growth portal
+					offsetX: -16			//growth portal
 				},
 				{
 					coordinates: [768, 33],
@@ -1388,7 +1388,7 @@
 				},
 				{
 					coordinates: [816, 32],
-					offsetY: +16				//grav
+					offsetY: +16			//grav
 				},
 				{
 					coordinates: [829, 28],
@@ -1449,7 +1449,7 @@
 				},
 				{
 					coordinates: [360, 19],
-					offsetX: +16				//shrink
+					offsetX: +16			//shrink
 				},
 				{
 					coordinates: [441, 19],
@@ -1457,7 +1457,7 @@
 				},
 				{
 					coordinates: [469, 20],
-					offsetX: +16				//growth
+					offsetX: +16			//growth
 				},
 				{
 					coordinates: [540, 20],
@@ -1469,7 +1469,7 @@
 				},
 				{
 					coordinates: [659, 20],
-					offsetX: -16				//mini
+					offsetX: -16			//mini
 				},
 				{
 					coordinates: [664, 21],
@@ -1477,15 +1477,15 @@
 				},
 				{
 					coordinates: [724, 22],
-					offsetY: -16				//grow
+					offsetY: -16			//grow
 				},
 				{
 					coordinates: [725, 21],
-					offsetX: -16				//grav
+					offsetX: -16			//grav
 				},
 				{
 					coordinates: [784, 21],
-					offsetX: +16				//mini
+					offsetX: +16			//mini
 				},
 				{
 					coordinates: [843, 22],
@@ -1505,11 +1505,11 @@
 				},
 				{
 					coordinates: [902, 22],
-					offsetY: -16				//grav
+					offsetY: -16			//grav
 				},
 				{
 					coordinates: [903, 21],
-					offsetX: -16				//growth
+					offsetX: -16			//growth
 				},
 			]
 		},
@@ -1532,7 +1532,7 @@
 			objectOffsets: [
 				{
 					coordinates: [199, 28],
-					offsetY: +8				//ball
+					offsetY: +8					//ball
 				},
 				{
 					coordinates: [200, 28],
@@ -1541,43 +1541,43 @@
 				},
 				{
 					coordinates: [250, 28],
-					offsetY: +8				//blue
+					offsetY: +8					//blue
 				},
 				{
 					coordinates: [253, 33],
-					offsetX: +8				//yellow
+					offsetX: +8					//yellow
 				},
 				{
 					coordinates: [275, 30],
-					offsetY: -8				//cube
+					offsetY: -8					//cube
 				},
 				{
 					coordinates: [296, 32],
-					offsetY: +8				//grav
+					offsetY: +8					//grav
 				},
 				{
 					coordinates: [351, 25],
-					offsetY: -8				//dual
+					offsetY: -8					//dual
 				},
 				{
 					coordinates: [422, 23],
-					offsetX: +8				//yellow
+					offsetX: +8					//yellow
 				},
 				{
 					coordinates: [422, 24],
-					offsetX: +8				//deco
+					offsetX: +8					//deco
 				},
 				{
 					coordinates: [422, 29],
-					offsetX: +8				//deco
+					offsetX: +8					//deco
 				},
 				{
 					coordinates: [427, 23],
-					offsetY: +8				//ship
+					offsetY: +8					//ship
 				},
 				{
 					coordinates: [427, 27],
-					offsetY: -8				//ship
+					offsetY: -8					//ship
 				},
 				{
 					coordinates: [502, 26],
@@ -1604,7 +1604,7 @@
 				},
 				{
 					coordinates: [570, 27],
-					offsetX: -8				//yellow
+					offsetX: -8					//yellow
 				},
 				{
 					coordinates: [573, 23],
@@ -1612,7 +1612,7 @@
 				},
 				{
 					coordinates: [579, 24],
-					offsetY: -8				//speed
+					offsetY: -8					//speed
 				},
 				{
 					coordinates: [580, 23],
@@ -1624,7 +1624,7 @@
 				},
 				{
 					coordinates: [640, 24],
-					offsetY: -8				//speed
+					offsetY: -8					//speed
 				},
 				{
 					coordinates: [641, 23],
@@ -1632,15 +1632,15 @@
 				},
 				{
 					coordinates: [670, 22],
-					offsetX: +8				//yellow pad
+					offsetX: +8					//yellow pad
 				},
 				{
 					coordinates: [670, 27],
-					offsetX: +8				//yellow pad
+					offsetX: +8					//yellow pad
 				},
 				{
 					coordinates: [683, 23],
-					offsetY: +8				//ship
+					offsetY: +8					//ship
 				},
 				{
 					coordinates: [708, 23],
@@ -1649,7 +1649,7 @@
 				},
 				{
 					coordinates: [709, 23],
-					offsetY: +8				//grav
+					offsetY: +8					//grav
 				},
 				{
 					coordinates: [710, 23],
@@ -1663,11 +1663,11 @@
 				},
 				{
 					coordinates: [793, 25],
-					offsetY: -8				//speed
+					offsetY: -8					//speed
 				},
 				{
 					coordinates: [874, 24],
-					offsetX: -8				//blue orb
+					offsetX: -8					//blue orb
 				},
 				{
 					coordinates: [883, 20],
@@ -1675,11 +1675,11 @@
 				},
 				{
 					coordinates: [910, 19],
-					offsetY: +8				//grav
+					offsetY: +8					//grav
 				},
 				{
 					coordinates: [918, 20],
-					offsetY: -8				//grav
+					offsetY: -8					//grav
 				},
 				{
 					coordinates: [942, 14],
@@ -1692,7 +1692,7 @@
 				},
 				{
 					coordinates: [943, 15],
-					offsetY: -8				//speed
+					offsetY: -8					//speed
 				},
 				{
 					coordinates: [944, 14],
@@ -1700,11 +1700,11 @@
 				},
 				{
 					coordinates: [980, 15],
-					offsetY: +8				//deco
+					offsetY: +8					//deco
 				},
 				{
 					coordinates: [981, 15],
-					offsetY: +8				//deco
+					offsetY: +8					//deco
 				},
 				{
 					coordinates: [994, 15],
@@ -1713,15 +1713,15 @@
 				},
 				{
 					coordinates: [995, 14],
-					offsetY: +8				//grav
+					offsetY: +8					//grav
 				},
 				{
 					coordinates: [995, 15],
-					offsetY: -8				//growth
+					offsetY: -8					//growth
 				},
 				{
 					coordinates: [1022, 18],
-					offsetY: +8				//coin
+					offsetY: +8					//coin
 				},
 			]
 		},
@@ -1815,12 +1815,235 @@
 					offsetX: +8
 				},
 				{
-					coordinates: [74, 17],		//blue orb
+					coordinates: [112, 19],
+					offsetY: -8					//speed
+				},
+				{
+					coordinates: [113, 18],
+					offsetX: -16				//mini
+				},
+				{
+					coordinates: [158, 17],
+					offsetX: +16				//grav
+				},
+				{
+					coordinates: [159, 18],
+					offsetY: -8					//speed
+				},
+				{
+					coordinates: [160, 17],
+					offsetX: -16				//grow
+				},
+				{
+					coordinates: [183, 16],
+					offsetY: +8					//grav
+				},
+				{
+					coordinates: [187, 19],
+					offsetY: +8					//grav
+				},
+				{
+					coordinates: [191, 18],
+					offsetY: -8					//speed
+				},
+				{
+					coordinates: [202, 19],		//x deco
+					offsetY: -16
+				},
+				{
+					coordinates: [206, 19],		//x deco
+					offsetY: -16
+				},
+				{
+					coordinates: [236, 18],
+					offsetY: -8					//speed
+				},
+				{
+					coordinates: [237, 17],
+					offsetX: -16					//grav
+				},
+				{
+					coordinates: [245, 15],
+					offsetY: -8					//grav
+				},
+				{
+					coordinates: [255, 20],
+					offsetY: -8					//grav
+				},
+				{
+					coordinates: [256, 20],
+					offsetY: -8,					//mini
+					offsetX: -16
+				},
+				{
+					coordinates: [262, 17],
+					offsetY: +8					//deco
+				},
+				{
+					coordinates: [268, 21],
+					offsetY: -8					//deco
+				},
+				{
+					coordinates: [272, 18],
+					offsetY: +8					//deco
+				},
+				{
+					coordinates: [275, 18],
+					offsetY: +8					//cube
+				},
+				{
+					coordinates: [275, 19],
+					offsetY: -8					//growth
+				},
+				{
+					coordinates: [283, 21],		//x deco
+					offsetY: -16
+				},
+				{
+					coordinates: [287, 21],		//x deco
+					offsetY: -16
+				},
+				{
+					coordinates: [329, 17],		//x deco
+					offsetY: -16
+				},
+				{
+					coordinates: [339, 14],		//x deco
+					offsetX: -16
+				},
+				{
+					coordinates: [340, 18],		//yellow orb
 					offsetX: -8
 				},
 				{
-					coordinates: [93, 19],		//blue orb
-					offsetX: -8
+					coordinates: [341, 18],		//x deco
+					offsetX: -24
+				},
+				{
+					coordinates: [341, 21],		//yellow orb
+					offsetY: +8
+				},
+				{
+					coordinates: [388, 20],
+					offsetY: +8					//grav
+				},
+				{
+					coordinates: [397, 18],
+					offsetX: +16					//mini
+				},
+				{
+					coordinates: [417, 23],
+					offsetX: +16					//growth
+				},
+				{
+					coordinates: [434, 23],
+					offsetX: -8					//deco
+				},
+				{
+					coordinates: [440, 24],
+					offsetX: +8					//deco
+				},
+				{
+					coordinates: [448, 19],
+					offsetX: -8					//deco
+				},
+				{
+					coordinates: [459, 23],		//x deco
+					offsetY: +16
+				},
+				{
+					coordinates: [501, 20],
+					offsetY: -8					//speed
+				},
+				{
+					coordinates: [507, 20],
+					offsetY: -8					//deco
+				},
+				{
+					coordinates: [634, 23],
+					offsetX: +8					//coin
+				},
+				{
+					coordinates: [645, 19],
+					offsetX: -16					//mini
+				},
+				{
+					coordinates: [679, 19],
+					offsetY: +8					//speed
+				},
+				{
+					coordinates: [679, 20],
+					offsetY: -8					//cube
+				},
+				{
+					coordinates: [679, 21],
+					offsetY: -8					//speed
+				},
+				{
+					coordinates: [680, 20],
+					offsetY: -8,					//growth
+					offsetX: -16
+				},
+				{
+					coordinates: [710, 23],		//x deco
+					offsetY: -16
+				},
+				{
+					coordinates: [713, 21],		//deco
+					offsetX: +8
+				},
+				{
+					coordinates: [718, 16],		//x deco
+					offsetY: +16
+				},
+				{
+					coordinates: [723, 21],		//deco
+					offsetX: +8
+				},
+				{
+					coordinates: [730, 19],		//x deco
+					offsetY: +16
+				},
+				{
+					coordinates: [762, 17],		//ship
+					offsetY: +8
+				},
+				{
+					coordinates: [797, 18],		//grav
+					offsetX: +16
+				},
+				{
+					coordinates: [798, 19],
+					offsetY: -8					//speed
+				},
+				{
+					coordinates: [810, 16],		//x deco
+					offsetY: +16
+				},
+				{
+					coordinates: [845, 16],		//mini
+					offsetX: +16
+				},
+				{
+					coordinates: [869, 16],		//grav
+					offsetY: +8
+				},
+				{
+					coordinates: [895, 16],		//grav
+					offsetX: +16
+				},
+				{
+					coordinates: [896, 17],
+					offsetY: -8					//speed
+				},
+				{
+					coordinates: [925, 15],
+					offsetY: +8					//cube
+				},
+				{
+					coordinates: [926, 15],
+					offsetY: +8,					//growth
+					offsetX: -16
 				},
 			]
 		},
@@ -2075,55 +2298,55 @@
 			parallaxDisable: true,
 			objectOffsets: [
 				{
-					coordinates: [161, 24],		//shrink portal
+					coordinates: [161, 24],			//shrink portal
 					offsetX: +16
 				},
 				{
-					coordinates: [322, 20],		//cube portal
+					coordinates: [322, 20],			//cube portal
 					offsetY: +8
 				},
 				{
-					coordinates: [432, 24],		//yellow orb
+					coordinates: [432, 24],			//yellow orb
 					offsetX: +8
 				},
 				{
-					coordinates: [445, 24],		//yellow orb
+					coordinates: [445, 24],			//yellow orb
 					offsetX: +8
 				},
 				{
-					coordinates: [457, 20],		//yellow orb
+					coordinates: [457, 20],			//yellow orb
 					offsetX: +8
 				},
 				{
-					coordinates: [470, 20],		//yellow orb
+					coordinates: [470, 20],			//yellow orb
 					offsetX: +8
 				},
 				{
-					coordinates: [497, 22],		//speed portal
+					coordinates: [497, 22],			//speed portal
 					offsetY: -8
 				},
 				{
-					coordinates: [653, 20],		//ship portal
+					coordinates: [653, 20],			//ship portal
 					offsetY: +8
 				},
 				{
-					coordinates: [777, 22],		//cube portal
-					offsetY: -16
+					coordinates: [777, 22],			//cube portal
+					offsetY: -16	
 				},
 				{
-					coordinates: [777, 23],		//speed portal
+					coordinates: [777, 23],			//speed portal
 					offsetY: -24
 				},
 				{
-					coordinates: [876, 22],		//speed portal
+					coordinates: [876, 22],			//speed portal
 					offsetY: -8
 				},
 				{
-					coordinates: [877, 20],		//normal grav portal
+					coordinates: [877, 20],			//normal grav portal
 					offsetY: +16
 				},
 				{
-					coordinates: [877, 22],		//mini portal
+					coordinates: [877, 22],			//mini portal
 					offsetY: -16
 				},
 				{
@@ -3127,19 +3350,19 @@
 			objectOffsets: [
 				{
 					coordinates: [29, 24],
-					offsetX: -8				//pink orb
+					offsetX: -8					//pink orb
 				},
 				{
 					coordinates: [30, 21],
-					offsetY: -8				//pink orb
+					offsetY: -8					//pink orb
 				},
 				{
 					coordinates: [118, 21],
-					offsetY: -8				//cube portal
+					offsetY: -8					//cube portal
 				},
 				{
 					coordinates: [118, 20],
-					offsetY: +8				//normal grav portal
+					offsetY: +8					//normal grav portal
 				},
 				{
 					coordinates: [155, 20],
@@ -3147,11 +3370,11 @@
 				},
 				{
 					coordinates: [156, 21],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [187, 21],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [188, 20],
@@ -3164,39 +3387,39 @@
 				},
 				{
 					coordinates: [212, 22],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [240, 20],
-					offsetY: +8				//speed portal
+					offsetY: +8					//speed portal
 				},
 				{
 					coordinates: [291, 23],
-					offsetY: +8				//speed portal
+					offsetY: +8					//speed portal
 				},
 				{
 					coordinates: [316, 22],
-					offsetY: +8				//dual portal
+					offsetY: +8					//dual portal
 				},
 				{
 					coordinates: [366, 20],
-					offsetY: +8				//single portal
+					offsetY: +8					//single portal
 				},
 				{
 					coordinates: [366, 21],
-					offsetY: -8				//normal grav portal
+					offsetY: -8					//normal grav portal
 				},
 				{
 					coordinates: [381, 20],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [405, 17],
-					offsetY: +8				//speed portal
-				},
+					offsetY: +8					//speed portal
+				},	
 				{
 					coordinates: [436, 24],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [483, 19],
@@ -3210,7 +3433,7 @@
 				},
 				{
 					coordinates: [499, 18],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [522, 16],
@@ -3218,7 +3441,7 @@
 				},
 				{
 					coordinates: [526, 21],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 				{
 					coordinates: [527, 20],
@@ -3226,7 +3449,7 @@
 				},
 				{
 					coordinates: [551, 21],
-					offsetY: -8				//speed portal
+					offsetY: -8					//speed portal
 				},
 			]
 		},
