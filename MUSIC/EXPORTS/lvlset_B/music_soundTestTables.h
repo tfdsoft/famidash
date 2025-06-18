@@ -46,6 +46,7 @@ const char musicSoundTestString28[10] = "TINY$TUNES";
 const char musicSoundTestString29[ 9] = "MEOWSTUFF";
 const char musicSoundTestString2A[ 7] = "PURSUIT";
 const char musicSoundTestString2B[ 8] = "WINDFALL";
+const char musicSoundTestString2C[11] = "XENOGENESIS";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -82,6 +83,7 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 const uint8_t xbgmtextsUpperSize[] = {
@@ -114,6 +116,7 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
 	sizeof(musicSoundTestString0A),
+	0,
 	0,
 	0,
 	0,
@@ -155,6 +158,7 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString29,
 	musicSoundTestString2A,
 	musicSoundTestString2B,
+	musicSoundTestString2C,
 };
 
 const uint8_t xbgmtextsLowerSize[] = {
@@ -191,6 +195,7 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString29),
 	sizeof(musicSoundTestString2A),
 	sizeof(musicSoundTestString2B),
+	sizeof(musicSoundTestString2C),
 };
 
 const char musicSoundOrigArtistTestString00[ 8] = "GD$COLON";
@@ -255,6 +260,7 @@ const char* const xbgmtextsOrigArtist[] = {
 	musicSoundOrigArtistTestString19,
 	musicSoundOrigArtistTestString16,
 	musicSoundOrigArtistTestString14,
+	musicSoundOrigArtistTestString14,
 };
 
 
@@ -291,6 +297,7 @@ const uint8_t xbgmtextsOrigArtistSize[] = {
 	sizeof(musicSoundOrigArtistTestString18),
 	sizeof(musicSoundOrigArtistTestString19),
 	sizeof(musicSoundOrigArtistTestString16),
+	sizeof(musicSoundOrigArtistTestString14),
 	sizeof(musicSoundOrigArtistTestString14),
 };
 
@@ -346,6 +353,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_meowstuff,
 	song_pursuit,
 	song_windfall,
+	song_xenogenesis,
 };
 
 #else
