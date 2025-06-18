@@ -1252,35 +1252,31 @@
 					offsetX: +16
 				},
 				{
-					coordinates: [322, 20],			//cube portal
+					coordinates: [
+						[322, 20],			//cube portal
+						[653, 20],			//ship portal
+					],
 					offsetY: +8
 				},
 				{
-					coordinates: [432, 24],			//yellow orb
+					coordinates: [
+						[432, 24],	[445, 24],	[457, 20],	[470, 20],			//yellow orb
+						[1037, 19],	[1037, 22],		//growth portal
+					],
 					offsetX: +8
 				},
 				{
-					coordinates: [445, 24],			//yellow orb
-					offsetX: +8
-				},
-				{
-					coordinates: [457, 20],			//yellow orb
-					offsetX: +8
-				},
-				{
-					coordinates: [470, 20],			//yellow orb
-					offsetX: +8
-				},
-				{
-					coordinates: [497, 22],			//speed portal
+					coordinates: [
+						[497, 22],			//speed portal
+						[876, 22],			//speed portal
+					],
 					offsetY: -8
 				},
 				{
-					coordinates: [653, 20],			//ship portal
-					offsetY: +8
-				},
-				{
-					coordinates: [777, 22],			//cube portal
+					coordinates: [
+						[777, 22],			//cube portal
+						[877, 22],			//mini portal
+					],
 					offsetY: -16	
 				},
 				{
@@ -1288,31 +1284,14 @@
 					offsetY: -24
 				},
 				{
-					coordinates: [876, 22],			//speed portal
-					offsetY: -8
-				},
-				{
 					coordinates: [877, 20],			//normal grav portal
 					offsetY: +16
 				},
 				{
-					coordinates: [877, 22],			//mini portal
-					offsetY: -16
-				},
-				{
-					coordinates: [1037, 19],		//growth portal
-					offsetX: +8
-				},
-				{
-					coordinates: [1037, 22],		//growth portal
-					offsetX: +8
-				},
-				{
-					coordinates: [1038, 19],		//cube portal
-					offsetX: -8
-				},
-				{
-					coordinates: [1038, 22],		//cube portal
+					coordinates: [
+						[1038, 19],		//cube portal
+						[1038, 22],		//cube portal
+					],
 					offsetX: -8
 				},
 			]
