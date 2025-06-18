@@ -799,251 +799,77 @@
 			parallaxDisable: true,
 			objectOffsets: [
 				{
-					coordinates: [16, 21],		//x deco
+					coordinates: [
+						[16, 21],	[51, 18],	[459, 23],	[730, 19],	[810, 16],	[718, 16],		//x deco
+					],
 					offsetY: +16
 				},
 				{
-					coordinates: [41, 22],		//yellow orb
+					coordinates: [
+						[41, 22],		//yellow orb
+						[159, 18],	[112, 19],	[191, 18],	[236, 18],	[501, 20],	[679, 21],	[798, 19],	[896, 17],		//speed
+						[245, 15],	[255, 20],		//grav
+						[256, 20],		//mini
+						[268, 21],		//deco
+						[275, 19],	[680, 20],		//growth						
+						[507, 20],			//deco
+						[679, 20],		//cube				
+					],
 					offsetY: -8
 				},
 				{
-					coordinates: [51, 18],		//x deco
-					offsetY: +16
-				},
-				{
-					coordinates: [52, 15],		//yellow orb
+					coordinates: [
+						[52, 15],		//yellow orb
+						[440, 24],	[713, 21],	[723, 21],		//deco
+						[634, 23],		//coin					
+					],
 					offsetX: +8
 				},
 				{
-					coordinates: [112, 19],
-					offsetY: -8					//speed
+					coordinates: [
+						[113, 18],	[256, 20],	[645, 19],		//mini
+						[160, 17],	[680, 20],	[926, 15],		//growth
+						[237, 17],			//grav
+						[339, 14],		//x deco
+					],
+					offsetX: -16	
 				},
 				{
-					coordinates: [113, 18],
-					offsetX: -16				//mini
+					coordinates: [
+						[158, 17],	[797, 18],	[895, 16],		//grav
+						[397, 18],	[845, 16],		//mini
+						[417, 23],		//growth
+					],
+					offsetX: +16		
 				},
 				{
-					coordinates: [158, 17],
-					offsetX: +16				//grav
+					coordinates: [
+						[183, 16],	[187, 19],	[388, 20],	[869, 16],		//grav
+						[925, 15],	[275, 18],		//cube
+						[262, 17],	[272, 18],		//deco
+						[341, 21],		//yellow orb
+						[679, 19],		//speed
+						[762, 17],		//ship
+						[926, 15],		//growth
+					],
+					offsetY: +8			
 				},
 				{
-					coordinates: [159, 18],
-					offsetY: -8					//speed
-				},
-				{
-					coordinates: [160, 17],
-					offsetX: -16				//grow
-				},
-				{
-					coordinates: [183, 16],
-					offsetY: +8					//grav
-				},
-				{
-					coordinates: [187, 19],
-					offsetY: +8					//grav
-				},
-				{
-					coordinates: [191, 18],
-					offsetY: -8					//speed
-				},
-				{
-					coordinates: [202, 19],		//x deco
+					coordinates: [
+						[202, 19],	[206, 19],	[283, 21],	[287, 21],	[329, 17],	[710, 23],		//x deco
+					],
 					offsetY: -16
 				},
 				{
-					coordinates: [206, 19],		//x deco
-					offsetY: -16
-				},
-				{
-					coordinates: [236, 18],
-					offsetY: -8					//speed
-				},
-				{
-					coordinates: [237, 17],
-					offsetX: -16					//grav
-				},
-				{
-					coordinates: [245, 15],
-					offsetY: -8					//grav
-				},
-				{
-					coordinates: [255, 20],
-					offsetY: -8					//grav
-				},
-				{
-					coordinates: [256, 20],
-					offsetY: -8,					//mini
-					offsetX: -16
-				},
-				{
-					coordinates: [262, 17],
-					offsetY: +8					//deco
-				},
-				{
-					coordinates: [268, 21],
-					offsetY: -8					//deco
-				},
-				{
-					coordinates: [272, 18],
-					offsetY: +8					//deco
-				},
-				{
-					coordinates: [275, 18],
-					offsetY: +8					//cube
-				},
-				{
-					coordinates: [275, 19],
-					offsetY: -8					//growth
-				},
-				{
-					coordinates: [283, 21],		//x deco
-					offsetY: -16
-				},
-				{
-					coordinates: [287, 21],		//x deco
-					offsetY: -16
-				},
-				{
-					coordinates: [329, 17],		//x deco
-					offsetY: -16
-				},
-				{
-					coordinates: [339, 14],		//x deco
-					offsetX: -16
-				},
-				{
-					coordinates: [340, 18],		//yellow orb
+					coordinates: [
+						[340, 18],		//yellow orb
+						[434, 23],	[448, 19],		//deco						
+					],
 					offsetX: -8
 				},
 				{
 					coordinates: [341, 18],		//x deco
 					offsetX: -24
-				},
-				{
-					coordinates: [341, 21],		//yellow orb
-					offsetY: +8
-				},
-				{
-					coordinates: [388, 20],
-					offsetY: +8					//grav
-				},
-				{
-					coordinates: [397, 18],
-					offsetX: +16					//mini
-				},
-				{
-					coordinates: [417, 23],
-					offsetX: +16					//growth
-				},
-				{
-					coordinates: [434, 23],
-					offsetX: -8					//deco
-				},
-				{
-					coordinates: [440, 24],
-					offsetX: +8					//deco
-				},
-				{
-					coordinates: [448, 19],
-					offsetX: -8					//deco
-				},
-				{
-					coordinates: [459, 23],		//x deco
-					offsetY: +16
-				},
-				{
-					coordinates: [501, 20],
-					offsetY: -8					//speed
-				},
-				{
-					coordinates: [507, 20],
-					offsetY: -8					//deco
-				},
-				{
-					coordinates: [634, 23],
-					offsetX: +8					//coin
-				},
-				{
-					coordinates: [645, 19],
-					offsetX: -16					//mini
-				},
-				{
-					coordinates: [679, 19],
-					offsetY: +8					//speed
-				},
-				{
-					coordinates: [679, 20],
-					offsetY: -8					//cube
-				},
-				{
-					coordinates: [679, 21],
-					offsetY: -8					//speed
-				},
-				{
-					coordinates: [680, 20],
-					offsetY: -8,					//growth
-					offsetX: -16
-				},
-				{
-					coordinates: [710, 23],		//x deco
-					offsetY: -16
-				},
-				{
-					coordinates: [713, 21],		//deco
-					offsetX: +8
-				},
-				{
-					coordinates: [718, 16],		//x deco
-					offsetY: +16
-				},
-				{
-					coordinates: [723, 21],		//deco
-					offsetX: +8
-				},
-				{
-					coordinates: [730, 19],		//x deco
-					offsetY: +16
-				},
-				{
-					coordinates: [762, 17],		//ship
-					offsetY: +8
-				},
-				{
-					coordinates: [797, 18],		//grav
-					offsetX: +16
-				},
-				{
-					coordinates: [798, 19],
-					offsetY: -8					//speed
-				},
-				{
-					coordinates: [810, 16],		//x deco
-					offsetY: +16
-				},
-				{
-					coordinates: [845, 16],		//mini
-					offsetX: +16
-				},
-				{
-					coordinates: [869, 16],		//grav
-					offsetY: +8
-				},
-				{
-					coordinates: [895, 16],		//grav
-					offsetX: +16
-				},
-				{
-					coordinates: [896, 17],
-					offsetY: -8					//speed
-				},
-				{
-					coordinates: [925, 15],
-					offsetY: +8					//cube
-				},
-				{
-					coordinates: [926, 15],
-					offsetY: +8,					//growth
-					offsetX: -16
 				},
 			]
 		},
