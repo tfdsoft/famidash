@@ -1335,19 +1335,10 @@
 			parallaxDisable: true,
 			objectOffsets: [
 				{
-					coordinates: [26, 21],		//yellow orb
-					offsetY: +8
-				},
-				{
-					coordinates: [30, 22],		//yellow orb
-					offsetY: +8
-				},
-				{
-					coordinates: [134, 3],		//yellow orb
-					offsetY: +8
-				},
-				{
-					coordinates: [136, 3],		//yellow orb
+					coordinates: [
+						[26, 21],	[30, 22],	[134, 3],	[136, 3],		//yellow orb
+						[657, 12],		//coin
+					],
 					offsetY: +8
 				},
 				{
@@ -1355,32 +1346,19 @@
 					offsetX: -8
 				},
 				{
-					coordinates: [298, 12],		//speed portal
-					offsetY: -8
+					coordinates: [932, 16],		//pink orb
+					offsetX: +8
 				},
 				{
-					coordinates: [511, 16],		//speed portal
-					offsetY: -8
-				},
-				{
-					coordinates: [657, 12],		//coin
-					offsetY: +8
-				},
-				{
-					coordinates: [719, 16],		//grav portal
+					coordinates: [
+						[298, 12],	[511, 16],	[845, 17],		//speed portal
+						[719, 16],		//grav portal
+					],
 					offsetY: -8
 				},
 				{
 					coordinates: [844, 16],		//grav portal
 					offsetX: +16
-				},
-				{
-					coordinates: [845, 17],		//speed portal
-					offsetY: -8
-				},
-				{
-					coordinates: [932, 16],		//pink orb
-					offsetX: +8
 				},
 			]
 		},
