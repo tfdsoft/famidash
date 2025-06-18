@@ -1093,8 +1093,7 @@
 				},
 				{
 					coordinates: [
-						[497, 22],			//speed portal
-						[876, 22],			//speed portal
+						[497, 22],	[876, 22],			//speed portal						
 					],
 					offsetY: -8
 				},
@@ -1115,8 +1114,7 @@
 				},
 				{
 					coordinates: [
-						[1038, 19],		//cube portal
-						[1038, 22],		//cube portal
+						[1038, 19],	[1038, 22],		//cube portal
 					],
 					offsetX: -8
 				},
