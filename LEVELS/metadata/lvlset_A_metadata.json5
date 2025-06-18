@@ -1379,94 +1379,49 @@
 			parallaxDisable: true,
 			objectOffsets: [
 				{
-					coordinates: [50, 21],		//ball portal
+					coordinates: [
+						[50, 21],		//ball portal
+						[180, 19],		//speed portal
+						[393, 24],		//yellow orb
+						[401, 20],		//normal grav portal
+						[402, 20],		//growth portal
+						[697, 22],		//ship portal
+					],
 					offsetY: +8
 				},
 				{
-					coordinates: [142, 22],		//speed portal
+					coordinates: [
+						[142, 22],	[208, 23],	[241, 22],	[269, 22],	[331, 23],	[371, 22],		//speed portal
+						[402, 21],		//ball portal
+						[697, 23],		//normal grav portal
+					],
 					offsetY: -8
 				},
 				{
-					coordinates: [180, 19],		//speed portal
-					offsetY: +8
-				},
-				{
-					coordinates: [207, 22],		//growth portal
+					coordinates: [
+						[207, 22],	[268, 21],		//growth portal
+					],
 					offsetX: +16
 				},
 				{
-					coordinates: [208, 23],		//speed portal
-					offsetY: -8
-				},
-				{
-					coordinates: [241, 22],		//speed portal
-					offsetY: -8
-				},
-				{
-					coordinates: [242, 21],		//shrink portal
+					coordinates: [
+						[242, 21],	[372, 21],		//mini portal
+						[332, 22],	[402, 20],		//growth portal
+						[402, 21],					//ball portal
+					],
 					offsetX: -16
 				},
+
 				{
-					coordinates: [268, 21],		//growth portal
-					offsetX: +16
-				},
-				{
-					coordinates: [269, 22],		//speed portal
-					offsetY: -8
-				},
-				{
-					coordinates: [331, 23],		//speed portal
-					offsetY: -8
-				},
-				{
-					coordinates: [332, 22],		//growth portal
-					offsetX: -16
-				},
-				{
-					coordinates: [371, 22],		//speed portal
-					offsetY: -8
-				},
-				{
-					coordinates: [372, 21],		//mini portal
-					offsetX: -16
-				},
-				{
-					coordinates: [390, 25],		//yellow pad
+					coordinates: [
+						[390, 25],		//yellow pad
+						[600, 22],		//wave portal
+					],
 					offsetX: -8
-				},
-				{
-					coordinates: [393, 24],		//yellow orb
-					offsetY: +8
-				},
-				{
-					coordinates: [401, 20],		//normal grav portal
-					offsetY: +8
-				},
-				{
-					coordinates: [402, 20],		//growth portal
-					offsetY: +8,
-					offsetX: -16
-				},
-				{
-					coordinates: [402, 21],		//ball portal
-					offsetY: -8,
-					offsetX: -16
 				},
 				{
 					coordinates: [432, 18],		//shrink portal
 					offsetY: +6
-				},
-				{
-					coordinates: [600, 22],		//wave portal
-					offsetX: -8
-				},
-				{
-					coordinates: [697, 22],		//ship portal
-					offsetY: +8
-				},
-				{
-					coordinates: [697, 23],		//normal grav portal
-					offsetY: -8
 				},
 			]
 		},
