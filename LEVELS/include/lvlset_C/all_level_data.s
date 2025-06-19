@@ -329,17 +329,17 @@
 	.export level_data_hi
 	level_data_hi:
 	; Header
-		.byte song_eighto ;___ Song ID
-		.byte 0 ;_____________ Starting game mode
-		.byte 0 ;_____________ Starting speed
-		.byte 1 ;_____________ Disable parallax
-		.byte _DECO1 ;________ Deco type
-		.byte _SPIKESC ;______ Spike set
-		.byte _BLOCKSB ;______ Block set
-		.byte _SAWBLADESA ;___ Sawblade set
-		.byte $0F ;___________ Starting background color
-		.byte $0F ;___________ Starting ground color
-		.byte 40 ;____________ Level height
+		.byte song_miami_hotline_vol_3 ;___ Song ID
+		.byte 0 ;__________________________ Starting game mode
+		.byte 0 ;__________________________ Starting speed
+		.byte 1 ;__________________________ Disable parallax
+		.byte _DECO1 ;_____________________ Deco type
+		.byte _SPIKESC ;___________________ Spike set
+		.byte _BLOCKSB ;___________________ Block set
+		.byte _SAWBLADESA ;________________ Sawblade set
+		.byte $0F ;________________________ Starting background color
+		.byte $0F ;________________________ Starting ground color
+		.byte 40 ;_________________________ Level height
 	; Level data
 		.incbin "EXPORTS/hi.lz.bin" ; Size: 4708
 

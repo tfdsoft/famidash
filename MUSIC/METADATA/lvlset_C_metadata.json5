@@ -136,6 +136,12 @@
 			lowerText: "THERMODYNAMIX",
 			originalArtist: "DJ NATE",
 		},		
+		{
+			fmsSongName: "Miami Hotline Vol. 3",
+			upperText: "MIAMI HOTLINE",
+			lowerText: "VOL 3",
+			originalArtist: "DEMONICITY",
+		},		
 	],
 	SFX: [
 		{
