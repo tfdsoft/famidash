@@ -94,13 +94,13 @@ void refreshmenu() {
 #else
 
 	const uint8_t difficulty_pal_A[] ={
-		0x16,	// easy demon
-		0x16,	// medium demon
-		0x16,	// hard demon
-		0x16,	// insane demon
-		0x16,	// extreme demon
-		0x16,	// impossible demon
-		0x16,	// grandpa demon
+        0x13,    // easy demon
+        0x14,    // medium demon
+        0x16,    // hard demon
+        0x16,    // insane demon
+        0x06,    // extreme demon
+        0x06,    // impossible demon
+        0x03,    // grandpa demon
 	};
 
 	const uint8_t difficulty_pal_B[] ={
