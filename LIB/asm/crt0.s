@@ -470,7 +470,11 @@ _GAME_CHR:
     
     .incbin "GRAPHICS/Menus/cursors.chr" ; 2kb (96)
 
-    .incbin "GRAPHICS/Menus/menus.chr"    ; 4kb (98)
+    .if _LEVELSET = 'C'
+		.incbin "GRAPHICS/Menus/C-menus.chr"    ; 4kb (98)
+	.else
+		.incbin "GRAPHICS/Menus/menus.chr"    ; 4kb (98)
+	.endif
     .incbin "GRAPHICS/Menus/menuicons.chr"    ; 4kb (102)
     .incbin "GRAPHICS/Menus/levelcomplete.chr"    ; 4kb (106)
     .incbin "GRAPHICS/Menus/practicecomplete.chr"    ; 1kb (110)

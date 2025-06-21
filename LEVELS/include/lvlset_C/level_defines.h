@@ -8,12 +8,12 @@
 
 #define stereomadness 0
 #define pgclubstep 1
-#define stalemate 2
-#define sonicwave 3
-#define thermodynamix 4
-#define eighto 5
-#define hi 6
-#define eon 7
+#define thermodynamix 2
+#define stalemate 3
+#define eighto 4
+#define hi 5
+#define eon 6
+#define sonicwave 7
 #define windylandscape 8
 #define bloodbath 9
 #define cataclysm 10

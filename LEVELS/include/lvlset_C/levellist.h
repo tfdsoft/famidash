@@ -8,36 +8,43 @@
 #define INSANE 4
 #define DEMON 5
 #define AUTO 6
+#define EASYDEMON 0
+#define MEDIUMDEMON 1
+#define HARDDEMON 2
+#define INSANEDEMON 3
+#define EXTREMEDEMON 4
+#define IMPOSSIBLEDEMON 5
+#define GRANDPADEMON 6
 
 const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
-	DEMON,	// pgclubstep
-	DEMON,	// stalemate
-	DEMON,	// sonicwave
-	DEMON,	// thermodynamix
-	DEMON,	// eighto
-	DEMON,	// hi
-	DEMON,	// eon
-	DEMON,	// windylandscape
-	DEMON,	// bloodbath
-	DEMON,	// cataclysm
-	DEMON,	// aftermath
-	DEMON,	// silentclubstep
-	DEMON,	// kratos
-	DEMON,	// aftercatabath
-	DEMON,	// slaughterhouse
-	DEMON,	// everyend
+	HARDDEMON,	// pgclubstep
+	HARDDEMON,	// thermodynamix
+	INSANEDEMON,	// stalemate
+	INSANEDEMON,	// eighto
+	INSANEDEMON,	// hi
+	INSANEDEMON,	// eon
+	EXTREMEDEMON,	// sonicwave
+	EXTREMEDEMON,	// windylandscape
+	EXTREMEDEMON,	// bloodbath
+	IMPOSSIBLEDEMON,	// cataclysm
+	IMPOSSIBLEDEMON,	// aftermath
+	IMPOSSIBLEDEMON,	// silentclubstep
+	IMPOSSIBLEDEMON,	// kratos
+	GRANDPADEMON,	// aftercatabath
+	GRANDPADEMON,	// slaughterhouse
+	GRANDPADEMON,	// everyend
 };
 
 const uint8_t stars_list[] = {
 	1,	// stereomadness
 	10,	// pgclubstep
-	10,	// stalemate
-	10,	// sonicwave
 	10,	// thermodynamix
+	10,	// stalemate
 	10,	// eighto
 	10,	// hi
 	10,	// eon
+	10,	// sonicwave
 	10,	// windylandscape
 	10,	// bloodbath
 	10,	// cataclysm

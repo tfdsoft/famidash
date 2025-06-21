@@ -260,8 +260,8 @@
 	; Level data
 		.incbin "EXPORTS/thermodynamix.lz.bin" ; Size: 6535
 
-	.export level_data_eon_1
-	level_data_eon_1:
+	.export level_data_eon_0
+	level_data_eon_0:
 	; Level data
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792
 
@@ -362,7 +362,7 @@
 
 
 .segment "DAT_BANK_17"	; Total bank size: 8153 bytes
-	.export level_data_sonicwave_0
-	level_data_sonicwave_0:
+	.export level_data_sonicwave_1
+	level_data_sonicwave_1:
 	; Level data
 		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3711
