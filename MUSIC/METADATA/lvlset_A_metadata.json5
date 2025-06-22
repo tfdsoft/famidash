@@ -378,7 +378,8 @@
 		},
 		{
 			fmsSongName: "stalemate greif cut",
-			lowerText: "STALEMATE",
+			upperText: "STALEMATE",
+			lowerText: "GREIF CUT",
 			originalArtist: "KAYOSZX",
 		},			
 	],
