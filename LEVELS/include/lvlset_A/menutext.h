@@ -50,8 +50,8 @@ const char levelText2D[10] = "REVOLUTION";
 const char levelText2E[ 9] = "THE WOODS";
 const char levelText2F[ 6] = "BUT NO";
 const char levelText30[ 7] = "TYLENOL";
-const char levelText31[10] = "EASY LEVEL";
-const char levelText32[ 5] = "GREIF";
+const char levelText31[ 5] = "GREIF";
+const char levelText32[10] = "EASY LEVEL";
 const char levelText33[ 4] = "ROAD";
 const char levelText34[13] = "THE NIGHTMARE";
 const char levelText35[10] = "DEMON PARK";
@@ -97,8 +97,8 @@ const char* const levelTextsUpper[] = {
 	levelText0B,
 	levelText0C,
 	levelText0D,
-	levelText0E,
 	NULL,
+	levelText0E,
 	levelText0F,
 	NULL,
 	NULL,
@@ -144,8 +144,8 @@ const uint8_t levelTextsUpperSize[] = {
 	sizeof(levelText0B),
 	sizeof(levelText0C),
 	sizeof(levelText0D),
-	sizeof(levelText0E),
 	0,
+	sizeof(levelText0E),
 	sizeof(levelText0F),
 	0,
 	0,

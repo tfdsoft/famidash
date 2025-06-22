@@ -39,8 +39,8 @@
 #define lostinthewoods 30
 #define bloodbathbutno 31
 #define rainbowtylenol 32
-#define aprettyeasylevel 33
-#define greif 34
+#define greif 33
+#define aprettyeasylevel 34
 #define thelightningroad 35
 #define nightmare 36
 #define demonpark 37

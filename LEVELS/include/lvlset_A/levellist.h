@@ -50,8 +50,8 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// lostinthewoods
 	INSANE,	// bloodbathbutno
 	INSANE,	// rainbowtylenol
-	INSANE,	// aprettyeasylevel
 	INSANE,	// greif
+	INSANE,	// aprettyeasylevel
 	DEMON,	// thelightningroad
 	DEMON,	// nightmare
 	DEMON,	// demonpark
@@ -97,8 +97,8 @@ const uint8_t stars_list[] = {
 	8,	// lostinthewoods
 	8,	// bloodbathbutno
 	8,	// rainbowtylenol
+	8,	// greif
 	9,	// aprettyeasylevel
-	9,	// greif
 	10,	// thelightningroad
 	10,	// nightmare
 	10,	// demonpark

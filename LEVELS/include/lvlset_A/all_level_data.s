@@ -114,7 +114,7 @@
 		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6959
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8180 bytes
+.segment "DAT_BANK_05"	; Total bank size: 8191 bytes
 	.export level_data_groundtospace
 	level_data_groundtospace:
 	; Header
@@ -131,6 +131,11 @@
 		.byte 27 ;_____________________ Level height
 	; Level data
 		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 6944
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_06"	; Total bank size: 8116 bytes
@@ -508,7 +513,7 @@
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4703
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8188 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8102 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -542,11 +547,6 @@
 		.byte 27 ;______________ Level height
 	; Level data
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3699
-
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
 .segment "DAT_BANK_17"	; Total bank size: 8022 bytes
@@ -717,7 +717,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2723
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8046 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 7630 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -736,7 +736,7 @@
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1892
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8188 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8183 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
@@ -772,7 +772,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8172 bytes
+.segment "DAT_BANK_21"	; Total bank size: 8187 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -808,7 +808,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1365
 
 
-.segment "DAT_BANK_22"	; Total bank size: 7586 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8092 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header

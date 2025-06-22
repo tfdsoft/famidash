@@ -1443,6 +1443,59 @@
 			parallaxDisable: true
 		},
 		{
+			level: "greif",
+			lowerText: "GREIF",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_stalemate_greif_cut",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[44, 25],	[75, 17],	[86,25],	[95, 17],	//grav portals
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[75, 17],	[95, 17],
+						[157, 19],						//growth portal
+						[177, 20],	[198, 20],	[228, 20],	[246, 20],			//speed portal
+						[388, 20],				//ship portal
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[231, 22],	[239, 53],					//deco
+						[267, 22],	[314, 21],	[462, 14],	[636, 8],						//speed
+						[506, 11],						//ball portal
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[266, 21],	[635, 7],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[637, 7],			//dual portal
+					],
+					offsetX: -16
+				},
+			],
+		},			
+		{
 			level: "aprettyeasylevel",
 			upperText: "A PRETTY",
 			lowerText: "EASY LEVEL",
@@ -1474,22 +1527,6 @@
 				},
 			]
 		},
-		{
-			level: "greif",
-			lowerText: "GREIF",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "INSANE",
-			stars: 9,
-			songID: "song_stalemate_greif_cut",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},		
 		{
 			level: "thelightningroad",
 			upperText: "THE LIGHTNING",
