@@ -8,6 +8,13 @@
 #define INSANE 4
 #define DEMON 5
 #define AUTO 6
+#define EASYDEMON 0
+#define MEDIUMDEMON 1
+#define HARDDEMON 2
+#define INSANEDEMON 3
+#define EXTREMEDEMON 4
+#define IMPOSSIBLEDEMON 5
+#define GRANDPADEMON 6
 
 const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
