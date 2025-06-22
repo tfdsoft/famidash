@@ -56,6 +56,7 @@ const char musicSoundTestString32[10] = "JUST$RIGHT";
 const char musicSoundTestString33[14] = "THE$ODDS$REDUX";
 const char musicSoundTestString34[ 5] = "SPACE";
 const char musicSoundTestString35[ 7] = "TYLENOL";
+const char musicSoundTestString36[ 9] = "STALEMATE";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -98,6 +99,7 @@ const char* const xbgmtextsUpper[] = {
 	musicSoundTestString0C,
 	musicSoundTestString0D,
 	musicSoundTestString0E,
+	NULL,
 };
 
 const uint8_t xbgmtextsUpperSize[] = {
@@ -140,6 +142,7 @@ const uint8_t xbgmtextsUpperSize[] = {
 	sizeof(musicSoundTestString0C),
 	sizeof(musicSoundTestString0D),
 	sizeof(musicSoundTestString0E),
+	0,
 };
 
 
@@ -183,6 +186,7 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString33,
 	musicSoundTestString34,
 	musicSoundTestString35,
+	musicSoundTestString36,
 };
 
 const uint8_t xbgmtextsLowerSize[] = {
@@ -225,6 +229,7 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString33),
 	sizeof(musicSoundTestString34),
 	sizeof(musicSoundTestString35),
+	sizeof(musicSoundTestString36),
 };
 
 const char musicSoundOrigArtistTestString00[ 6] = "ROBTOP";
@@ -246,6 +251,7 @@ const char musicSoundOrigArtistTestString0F[14] = "DAN$HARRISON$B";
 const char musicSoundOrigArtistTestString10[11] = "ELITEFERREX";
 const char musicSoundOrigArtistTestString11[13] = "SEAGLOWINGPRO";
 const char musicSoundOrigArtistTestString12[ 8] = "KITSUNE2";
+const char musicSoundOrigArtistTestString13[ 7] = "KAYOSZX";
 
 
 const char* const xbgmtextsOrigArtist[] = {
@@ -288,6 +294,7 @@ const char* const xbgmtextsOrigArtist[] = {
 	musicSoundOrigArtistTestString10,
 	musicSoundOrigArtistTestString11,
 	musicSoundOrigArtistTestString12,
+	musicSoundOrigArtistTestString13,
 };
 
 
@@ -331,6 +338,7 @@ const uint8_t xbgmtextsOrigArtistSize[] = {
 	sizeof(musicSoundOrigArtistTestString10),
 	sizeof(musicSoundOrigArtistTestString11),
 	sizeof(musicSoundOrigArtistTestString12),
+	sizeof(musicSoundOrigArtistTestString13),
 };
 
 
@@ -391,6 +399,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_against_the_odds_redux,
 	song_ground_to_space,
 	song_rainbow_tylenol,
+	song_stalemate_greif_cut,
 };
 
 #else

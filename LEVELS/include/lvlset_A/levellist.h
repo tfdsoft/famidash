@@ -8,6 +8,13 @@
 #define INSANE 4
 #define DEMON 5
 #define AUTO 6
+#define EASYDEMON 0
+#define MEDIUMDEMON 1
+#define HARDDEMON 2
+#define INSANEDEMON 3
+#define EXTREMEDEMON 4
+#define IMPOSSIBLEDEMON 5
+#define GRANDPADEMON 6
 
 const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
@@ -44,6 +51,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// bloodbathbutno
 	INSANE,	// rainbowtylenol
 	INSANE,	// aprettyeasylevel
+	INSANE,	// greif
 	DEMON,	// thelightningroad
 	DEMON,	// nightmare
 	DEMON,	// demonpark
@@ -90,6 +98,7 @@ const uint8_t stars_list[] = {
 	8,	// bloodbathbutno
 	8,	// rainbowtylenol
 	9,	// aprettyeasylevel
+	9,	// greif
 	10,	// thelightningroad
 	10,	// nightmare
 	10,	// demonpark

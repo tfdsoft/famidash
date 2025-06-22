@@ -1475,6 +1475,22 @@
 			]
 		},
 		{
+			level: "greif",
+			lowerText: "GREIF",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 9,
+			songID: "song_stalemate_greif_cut",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},		
+		{
 			level: "thelightningroad",
 			upperText: "THE LIGHTNING",
 			lowerText: "ROAD",
