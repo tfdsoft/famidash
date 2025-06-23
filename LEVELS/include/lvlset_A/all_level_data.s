@@ -59,7 +59,7 @@
 		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8031
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8164 bytes
+.segment "DAT_BANK_03"	; Total bank size: 7535 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -75,24 +75,7 @@
 		.byte $0F ;_______________ Starting ground color
 		.byte 27 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7480
-
-	.export level_data_luckydraw
-	level_data_luckydraw:
-	; Header
-		.byte song_electroman_adventures ;___ Song ID
-		.byte 0 ;____________________________ Starting game mode
-		.byte 0 ;____________________________ Starting speed
-		.byte 1 ;____________________________ Disable parallax
-		.byte _DECOCLOUD ;___________________ Deco type
-		.byte _SPIKESB ;_____________________ Spike set
-		.byte _BLOCKSB ;_____________________ Block set
-		.byte _LETTERBANK ;__________________ Sawblade set
-		.byte $0F ;__________________________ Starting background color
-		.byte $0F ;__________________________ Starting ground color
-		.byte 27 ;___________________________ Level height
-	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684
+		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7535
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8170 bytes
@@ -772,7 +755,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8187 bytes
+.segment "DAT_BANK_21"	; Total bank size: 8182 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -808,7 +791,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1365
 
 
-.segment "DAT_BANK_22"	; Total bank size: 8092 bytes
+.segment "DAT_BANK_23"	; Total bank size: 3426 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -825,3 +808,20 @@
 		.byte 57 ;___________________ Level height
 	; Level data
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 980
+
+	.export level_data_luckydraw
+	level_data_luckydraw:
+	; Header
+		.byte song_electroman_adventures ;___ Song ID
+		.byte 0 ;____________________________ Starting game mode
+		.byte 0 ;____________________________ Starting speed
+		.byte 1 ;____________________________ Disable parallax
+		.byte _DECOCLOUD ;___________________ Deco type
+		.byte _SPIKESB ;_____________________ Spike set
+		.byte _BLOCKSB ;_____________________ Block set
+		.byte _LETTERBANK ;__________________ Sawblade set
+		.byte $0F ;__________________________ Starting background color
+		.byte $0F ;__________________________ Starting ground color
+		.byte 27 ;___________________________ Level height
+	; Level data
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684

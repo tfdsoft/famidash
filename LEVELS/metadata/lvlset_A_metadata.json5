@@ -970,7 +970,57 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [	
+						[732, 22],	//growth portal
+						[783, 21],	//mini portal
+					],
+					offsetX: -16
+				},
+				{
+					coordinates: [	
+						[830, 21],	//growth portal
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [	
+						[90, 20],	[203, 14],	[243, 14],		//s block
+					],
+					offsetY: +16
+				},
+				{
+					coordinates: [	
+						[622, 22],	[651, 21],	[722, 23], [782, 22], [831, 22],	//speed
+						[713, 25],		//mini coin
+						[798, 21],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [	
+						[193, 20],	[839, 22],	//dash orb
+						[203, 19],		//teleport portal
+						[510, 17],		//coin
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [	
+						[310, 18],		//black orb					
+						[662, 23],	[667, 20],	[691, 20],	[705, 20],	[713, 25],		//mini coin
+						[325, 20],	[382, 22],	[389, 16],	[397, 16],	[412, 22],	[415, 16],	[418, 22],	[430, 22],	[433, 16],	[730, 19],	[733, 25],	[736, 21],	[764, 19],		//deco
+						[304, 19],			//deco
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [214, 15],
+					offsetX: -8
+				},
+			],
 		},
 		{
 			level: "dash",
