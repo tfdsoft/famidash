@@ -626,13 +626,16 @@
 				{
 					coordinates: [
 						[659, 20],					//mini
-						[724, 22],	[903, 21],		//growth
 						[725, 21],					//grav
+						[903, 21],		//growth
 					],
 					offsetX: -16	
 				},
 				{
-					coordinates: [902, 22],		//grav
+					coordinates: [
+						[902, 22],		//grav
+						[724, 22],	//growth
+					],
 					offsetY: -16	
 				},
 			]
@@ -954,7 +957,16 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [	
+						[28, 19],	//mini
+						[38, 21],	//growth
+					],
+					offsetY: +16
+				},
+			],
 		},
 		{
 			level: "fingerdash",
