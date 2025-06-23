@@ -1490,7 +1490,28 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[227, 20],	[264, 18],
+					],
+					offsetX: -16
+				},
+				{
+					coordinates: [
+						[666, 20],	
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[741, 17],	
+					],
+					offsetX: +32,
+					offsetY: -16
+				},
+			],
 		},
 		{
 			level: "greif",
