@@ -43,6 +43,22 @@
 			]
 		},
 		{
+			level: "darkparadise",
+			lowerText: "DARK PARADISE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASY",
+			stars: 2,
+			songID: "song_xenogenesis",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x01,
+			startingGroundColor: 0x01,
+			parallaxDisable: true
+		},
+		{
 			level: "leveleasy",
 			lowerText: "LEVEL EASY",
 			decoType: "DECO1",
@@ -65,22 +81,6 @@
 					offsetX: -8
 				},
 			]
-		},
-		{
-			level: "darkparadise",
-			lowerText: "DARK PARADISE",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "EASY",
-			stars: 2,
-			songID: "song_xenogenesis",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x01,
-			startingGroundColor: 0x01,
-			parallaxDisable: true
 		},
 		{
 			level: "ninox",

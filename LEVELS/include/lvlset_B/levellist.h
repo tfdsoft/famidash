@@ -19,8 +19,8 @@
 const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
 	EASY,	// sonar
-	NORMAL,	// leveleasy
 	EASY,	// darkparadise
+	NORMAL,	// leveleasy
 	NORMAL,	// ninox
 	HARD,	// lookatthislevel
 	HARD,	// subzero
@@ -55,8 +55,8 @@ const uint8_t difficulty_list[] = {
 const uint8_t stars_list[] = {
 	1,	// stereomadness
 	2,	// sonar
-	3,	// leveleasy
 	2,	// darkparadise
+	3,	// leveleasy
 	3,	// ninox
 	4,	// lookatthislevel
 	5,	// subzero

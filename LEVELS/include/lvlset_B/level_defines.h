@@ -8,8 +8,8 @@
 
 #define stereomadness 0
 #define sonar 1
-#define leveleasy 2
-#define darkparadise 3
+#define darkparadise 2
+#define leveleasy 3
 #define ninox 4
 #define lookatthislevel 5
 #define subzero 6

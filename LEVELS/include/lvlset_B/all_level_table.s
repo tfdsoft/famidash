@@ -7,8 +7,8 @@
 _level_list_lo:
 	.byte .lobyte(level_data_stereomadness)
 	.byte .lobyte(level_data_sonar)
-	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_darkparadise)
+	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_ninox)
 	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_subzero)
@@ -42,8 +42,8 @@ _level_list_lo:
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
 	.byte .hibyte(level_data_sonar)
-	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_darkparadise)
+	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_ninox)
 	.byte .hibyte(level_data_lookatthislevel)
 	.byte .hibyte(level_data_subzero)
@@ -77,8 +77,8 @@ _level_list_hi:
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
 	.byte .lobyte(.bank(level_data_sonar))
-	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_darkparadise))
+	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_ninox))
 	.byte .lobyte(.bank(level_data_lookatthislevel))
 	.byte .lobyte(.bank(level_data_subzero))
@@ -136,8 +136,8 @@ _level_chunk_list_bank:
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
 	.byte .lobyte(sprite_data_sonar)
-	.byte .lobyte(sprite_data_leveleasy)
 	.byte .lobyte(sprite_data_darkparadise)
+	.byte .lobyte(sprite_data_leveleasy)
 	.byte .lobyte(sprite_data_ninox)
 	.byte .lobyte(sprite_data_lookatthislevel)
 	.byte .lobyte(sprite_data_subzero)
@@ -171,8 +171,8 @@ _sprite_list_lo:
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
 	.byte .hibyte(sprite_data_sonar)
-	.byte .hibyte(sprite_data_leveleasy)
 	.byte .hibyte(sprite_data_darkparadise)
+	.byte .hibyte(sprite_data_leveleasy)
 	.byte .hibyte(sprite_data_ninox)
 	.byte .hibyte(sprite_data_lookatthislevel)
 	.byte .hibyte(sprite_data_subzero)
@@ -206,8 +206,8 @@ _sprite_list_hi:
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
 	.byte .lobyte(.bank(sprite_data_sonar))
-	.byte .lobyte(.bank(sprite_data_leveleasy))
 	.byte .lobyte(.bank(sprite_data_darkparadise))
+	.byte .lobyte(.bank(sprite_data_leveleasy))
 	.byte .lobyte(.bank(sprite_data_ninox))
 	.byte .lobyte(.bank(sprite_data_lookatthislevel))
 	.byte .lobyte(.bank(sprite_data_subzero))
@@ -244,8 +244,8 @@ _sprite_list_bank:
 _level_lengths_lo:
 	.byte .lobyte($000001)		; stereomadness
 	.byte .lobyte($00008D)		; sonar
-	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($000064)		; darkparadise
+	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($000088)		; subzero
@@ -281,8 +281,8 @@ _level_lengths_lo:
 _level_lengths_md:
 	.byte .hibyte($000001)		; stereomadness
 	.byte .hibyte($00008D)		; sonar
-	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($000064)		; darkparadise
+	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($000088)		; subzero
@@ -318,8 +318,8 @@ _level_lengths_md:
 _level_lengths_hi:
 	.byte .bankbyte($000001)		; stereomadness
 	.byte .bankbyte($00008D)		; sonar
-	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($000064)		; darkparadise
+	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($000088)		; subzero
