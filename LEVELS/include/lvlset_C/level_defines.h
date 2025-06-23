@@ -4,7 +4,7 @@
 #define LEVELSET 'C'
 
 #define OFFICIAL_LEVEL_COUNT 1
-#define COMMUNITY_LEVEL_COUNT 16
+#define COMMUNITY_LEVEL_COUNT 17
 
 #define stereomadness 0
 #define pgclubstep 1
@@ -12,14 +12,15 @@
 #define stalemate 3
 #define eighto 4
 #define hi 5
-#define eon 6
-#define sonicwave 7
-#define windylandscape 8
-#define bloodbath 9
-#define cataclysm 10
-#define aftermath 11
-#define silentclubstep 12
-#define kratos 13
-#define aftercatabath 14
-#define slaughterhouse 15
-#define everyend 16
+#define Jawbreaker 6
+#define eon 7
+#define sonicwave 8
+#define windylandscape 9
+#define bloodbath 10
+#define cataclysm 11
+#define aftermath 12
+#define silentclubstep 13
+#define kratos 14
+#define aftercatabath 15
+#define slaughterhouse 16
+#define everyend 17

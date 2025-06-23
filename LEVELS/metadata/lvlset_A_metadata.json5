@@ -1036,7 +1036,45 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [	
+						[87, 32],	//ball portal
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [	
+						[232, 25],	//grav
+						[922, 17],	//mini
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [	
+						[234, 25],	//cube
+						[250, 25],	//robot
+						[1027, 19],	//wave
+						[1054, 19],	//growth
+						[414, 23],	[443, 12],	//grav
+					],
+					offsetX: -16
+				},
+				{
+					coordinates: [	
+						[90, 29],	//speed
+						[729, 16],	[739, 20],	[759, 20],	//deco
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [	
+						[98, 30],	[164, 31],	[233, 26],	[249, 26],	[534, 22],	[701, 19],	[918, 18],	//speed
+					],
+					offsetY: -8
+				},
+			],
 		}
 	],
 	community_levels: [
