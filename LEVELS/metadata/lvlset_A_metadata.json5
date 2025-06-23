@@ -888,7 +888,57 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[1014, 21],	
+					],
+					offsetY: -16
+				},
+				{
+					coordinates: [
+						[977, 17],
+					],
+					offsetY: +24
+				},
+				{
+					coordinates: [
+						[371, 12],
+					],
+					offsetY: +16
+				},
+				{
+					coordinates: [
+						[911, 17],	[939, 18],
+					],
+					offsetX: -16
+				},
+				{
+					coordinates: [
+						[399, 17], [652, 16],	[736, 16],	[871, 18],	[938, 19],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[910, 17], [911, 17],	[977, 18],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[665, 17], [674, 16],	[683, 17], [692, 16], [701, 17],		//deco
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[707, 16], 	[714, 19], 	[721, 16], 		[728, 18], 		//deco
+					],
+					offsetX: +8
+				},
+			],
 		},
 		{
 			level: "deadlocked",

@@ -1983,7 +1983,7 @@ sprite_data_timemachine:
   .byte $40,$3e,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0B"
+.segment "DAT_BANK_1E"
 sprite_data_cycles:
   .byte $00,$01,$80,$03,$2b
   .byte $20,$01,$20,$03,$2d
@@ -6094,7 +6094,7 @@ sprite_data_geometricaldominator:
   .byte $00,$17,$c0,$02,$91
   .byte $00,$17,$d0,$02,$2b
   .byte $20,$17,$c0,$02,$81
-  .byte $30,$17,$a0,$02,$37
+  .byte $30,$17,$b0,$02,$37
   .byte $30,$17,$b0,$02,$0b
   .byte $50,$17,$f0,$02,$0b
   .byte $80,$17,$c0,$02,$95
@@ -6109,7 +6109,7 @@ sprite_data_geometricaldominator:
   .byte $90,$18,$c0,$02,$b0
   .byte $a0,$18,$f0,$02,$0b
   .byte $f0,$18,$e0,$02,$04
-  .byte $f0,$18,$f0,$02,$16
+  .byte $f0,$18,$e8,$02,$16
   .byte $30,$19,$e0,$02,$35
   .byte $a0,$19,$d0,$02,$a3
   .byte $a0,$19,$00,$03,$b6
@@ -6231,25 +6231,25 @@ sprite_data_geometricaldominator:
   .byte $30,$28,$e0,$02,$33
   .byte $80,$28,$f0,$02,$2b
   .byte $90,$28,$b0,$02,$3b
-  .byte $c0,$28,$e0,$02,$03
+  .byte $c0,$28,$d8,$02,$03
   .byte $10,$29,$00,$03,$2c
   .byte $70,$29,$e0,$02,$a3
   .byte $70,$29,$20,$03,$2c
   .byte $90,$29,$e0,$02,$93
-  .byte $90,$29,$f0,$02,$3c
-  .byte $20,$2a,$e0,$02,$2c
-  .byte $b0,$2a,$f0,$02,$3c
-  .byte $40,$2b,$e0,$02,$2c
-  .byte $d0,$2b,$f0,$02,$3c
-  .byte $30,$2c,$e0,$02,$4a
+  .byte $88,$29,$f0,$02,$3c
+  .byte $18,$2a,$e0,$02,$2c
+  .byte $a8,$2a,$f0,$02,$3c
+  .byte $38,$2b,$e0,$02,$2c
+  .byte $c8,$2b,$f0,$02,$3c
+  .byte $38,$2c,$e0,$02,$4a
   .byte $90,$2c,$00,$03,$83
-  .byte $a0,$2c,$10,$03,$4a
-  .byte $10,$2d,$e0,$02,$4a
+  .byte $a8,$2c,$10,$03,$4a
+  .byte $18,$2d,$e0,$02,$4a
   .byte $30,$2d,$00,$03,$93
   .byte $50,$2d,$00,$03,$80
-  .byte $80,$2d,$00,$03,$4a
+  .byte $88,$2d,$00,$03,$4a
   .byte $00,$2e,$d0,$02,$00
-  .byte $00,$2e,$e0,$02,$15
+  .byte $00,$2e,$d8,$02,$15
   .byte $70,$2e,$28,$03,$0a
   .byte $80,$2e,$e0,$02,$90
   .byte $80,$2e,$10,$03,$ba
@@ -6348,22 +6348,20 @@ sprite_data_geometricaldominator:
   .byte $40,$36,$20,$03,$0b
   .byte $50,$36,$00,$03,$bf
   .byte $70,$36,$f0,$02,$24
-  .byte $70,$36,$00,$03,$16
+  .byte $70,$36,$f8,$02,$16
   .byte $c0,$36,$20,$03,$33
   .byte $00,$37,$00,$03,$a6
   .byte $00,$37,$10,$03,$b0
   .byte $30,$37,$00,$03,$96
   .byte $d0,$37,$e0,$02,$33
   .byte $10,$38,$e0,$02,$33
-  .byte $e0,$38,$f0,$02,$03
+  .byte $e0,$38,$f8,$02,$03
   .byte $e0,$38,$00,$03,$14
-  .byte $e0,$38,$10,$03,$03
-  .byte $e0,$38,$20,$03,$14
-  .byte $f0,$38,$f0,$02,$18
+  .byte $e0,$38,$f8,$02,$18
   .byte $80,$39,$00,$03,$95
   .byte $a0,$3a,$00,$03,$02
-  .byte $a0,$3a,$10,$03,$16
-  .byte $b0,$3a,$00,$03,$19
+  .byte $a0,$3a,$08,$03,$16
+  .byte $a0,$3a,$00,$03,$19
   .byte $10,$3b,$10,$03,$4a
   .byte $40,$3b,$10,$03,$a9
   .byte $60,$3b,$10,$03,$99
@@ -6371,15 +6369,15 @@ sprite_data_geometricaldominator:
   .byte $10,$3c,$10,$03,$4a
   .byte $b0,$3c,$20,$03,$4a
   .byte $c0,$3c,$48,$03,$0a
-  .byte $10,$3d,$f0,$02,$18
-  .byte $10,$3d,$00,$03,$01
+  .byte $10,$3d,$08,$03,$18
+  .byte $10,$3d,$08,$03,$01
   .byte $10,$3d,$10,$03,$15
   .byte $60,$3d,$20,$03,$33
   .byte $80,$3d,$10,$03,$80
   .byte $a0,$3d,$10,$03,$93
   .byte $a0,$3e,$50,$03,$1b
   .byte $60,$3f,$20,$03,$04
-  .byte $60,$3f,$30,$03,$19
+  .byte $60,$3f,$20,$03,$19
   .byte $f0,$40,$50,$03,$49
   .byte $f0,$40,$68,$03,$0a
   .byte $00,$41,$30,$03,$49
@@ -13036,7 +13034,7 @@ sprite_data_aprettyeasylevel:
   .byte $00,$2b,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_06"
+.segment "DAT_BANK_1E"
 sprite_data_thelightningroad:
   .byte $00,$00,$70,$03,$8f
   .byte $00,$00,$80,$03,$cf
@@ -13837,7 +13835,7 @@ sprite_data_nightmare:
   .byte $40,$3b,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_06"
 sprite_data_demonpark:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$d6
@@ -15458,7 +15456,7 @@ sprite_data_dearnostalgists:
   .byte $c0,$84,$00,$02,$8f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_0B"
 sprite_data_problematic:
   .byte $00,$00,$50,$03,$9b
   .byte $00,$00,$60,$03,$bb

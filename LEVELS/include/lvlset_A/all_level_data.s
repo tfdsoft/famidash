@@ -138,7 +138,7 @@
 		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 86
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8116 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8161 bytes
 	.export level_data_deadlocked
 	level_data_deadlocked:
 	; Header
@@ -248,7 +248,7 @@
 		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 2023
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8168 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8155 bytes
 	.export level_data_geometricaldominator
 	level_data_geometricaldominator:
 	; Header
@@ -264,7 +264,7 @@
 		.byte $0F ;__________________________ Starting ground color
 		.byte 27 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6082
+		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6029
 
 
 .segment "DAT_BANK_0C"	; Total bank size: 8171 bytes
