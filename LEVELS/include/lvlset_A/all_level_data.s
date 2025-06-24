@@ -116,7 +116,7 @@
 		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 6944
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8157 bytes
 	.export level_data_deadlocked
 	level_data_deadlocked:
 	; Header
@@ -132,7 +132,7 @@
 		.byte $0F ;_______________ Starting ground color
 		.byte 27 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6395
+		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6391
 
 
 .segment "DAT_BANK_07"	; Total bank size: 8173 bytes
@@ -700,7 +700,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2723
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 7946 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 7580 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
