@@ -50,7 +50,7 @@
 		.byte 1 ;______________________ Disable parallax
 		.byte _EXTRASPRITES1 ;_________ Deco type
 		.byte _SPIKESA ;_______________ Spike set
-		.byte _BLOCKSB ;_______________ Block set
+		.byte _BLOCKSD ;_______________ Block set
 		.byte _SAWBLADESA ;____________ Sawblade set
 		.byte $12 ;____________________ Starting background color
 		.byte $02 ;____________________ Starting ground color
@@ -638,7 +638,7 @@
 		.byte 0 ;__________________ Disable parallax
 		.byte _DECOCLOUD ;_________ Deco type
 		.byte _SPIKESB ;___________ Spike set
-		.byte _BLOCKSD ;___________ Block set
+		.byte _BLOCKSB ;___________ Block set
 		.byte _SAWBLADESA ;________ Sawblade set
 		.byte $16 ;________________ Starting background color
 		.byte $06 ;________________ Starting ground color
