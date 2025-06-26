@@ -223,17 +223,17 @@
 	.export level_data_fireaura
 	level_data_fireaura:
 	; Header
-		.byte song_stereo_madness ;___ Song ID
-		.byte 0 ;_____________________ Starting game mode
-		.byte 0 ;_____________________ Starting speed
-		.byte 1 ;_____________________ Disable parallax
-		.byte _DECO1 ;________________ Deco type
-		.byte _SPIKESA ;______________ Spike set
-		.byte _BLOCKSB ;______________ Block set
-		.byte _SAWBLADESA ;___________ Sawblade set
-		.byte $0F ;___________________ Starting background color
-		.byte $0F ;___________________ Starting ground color
-		.byte 27 ;____________________ Level height
+		.byte song_fire_aura ;___ Song ID
+		.byte 0 ;________________ Starting game mode
+		.byte 0 ;________________ Starting speed
+		.byte 1 ;________________ Disable parallax
+		.byte _DECO1 ;___________ Deco type
+		.byte _SPIKESA ;_________ Spike set
+		.byte _BLOCKSB ;_________ Block set
+		.byte _SAWBLADESA ;______ Sawblade set
+		.byte $0F ;______________ Starting background color
+		.byte $0F ;______________ Starting ground color
+		.byte 27 ;_______________ Level height
 	; Level data
 		.incbin "EXPORTS/fireaura.lz.bin" ; Size: 6446
 

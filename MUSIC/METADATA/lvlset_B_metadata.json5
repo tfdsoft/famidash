@@ -235,6 +235,11 @@
 			fmsSongName: "Xenogenesis",
 			lowerText: "XENOGENESIS",
 			originalArtist: "THEFATRAT",
+		},		
+		{
+			fmsSongName: "Fire Aura",
+			lowerText: "FIRE AURA",
+			originalArtist: "KID2WILL",
 		},			
 		
 	],

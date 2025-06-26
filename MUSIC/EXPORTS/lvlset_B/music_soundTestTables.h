@@ -47,6 +47,7 @@ const char musicSoundTestString29[ 9] = "MEOWSTUFF";
 const char musicSoundTestString2A[ 7] = "PURSUIT";
 const char musicSoundTestString2B[ 8] = "WINDFALL";
 const char musicSoundTestString2C[11] = "XENOGENESIS";
+const char musicSoundTestString2D[ 9] = "FIRE$AURA";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -84,6 +85,7 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 };
 
 const uint8_t xbgmtextsUpperSize[] = {
@@ -116,6 +118,7 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
 	sizeof(musicSoundTestString0A),
+	0,
 	0,
 	0,
 	0,
@@ -159,6 +162,7 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString2A,
 	musicSoundTestString2B,
 	musicSoundTestString2C,
+	musicSoundTestString2D,
 };
 
 const uint8_t xbgmtextsLowerSize[] = {
@@ -196,6 +200,7 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString2A),
 	sizeof(musicSoundTestString2B),
 	sizeof(musicSoundTestString2C),
+	sizeof(musicSoundTestString2D),
 };
 
 const char musicSoundOrigArtistTestString00[ 8] = "GD$COLON";
@@ -224,6 +229,7 @@ const char musicSoundOrigArtistTestString16[10] = "BOOM$KITTY";
 const char musicSoundOrigArtistTestString17[ 8] = "LEMKUUJA";
 const char musicSoundOrigArtistTestString18[ 9] = "FANTOMENK";
 const char musicSoundOrigArtistTestString19[ 7] = "DAVINCE";
+const char musicSoundOrigArtistTestString1A[ 8] = "KID2WILL";
 
 
 const char* const xbgmtextsOrigArtist[] = {
@@ -261,6 +267,7 @@ const char* const xbgmtextsOrigArtist[] = {
 	musicSoundOrigArtistTestString16,
 	musicSoundOrigArtistTestString14,
 	musicSoundOrigArtistTestString14,
+	musicSoundOrigArtistTestString1A,
 };
 
 
@@ -299,6 +306,7 @@ const uint8_t xbgmtextsOrigArtistSize[] = {
 	sizeof(musicSoundOrigArtistTestString16),
 	sizeof(musicSoundOrigArtistTestString14),
 	sizeof(musicSoundOrigArtistTestString14),
+	sizeof(musicSoundOrigArtistTestString1A),
 };
 
 
@@ -354,6 +362,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_pursuit,
 	song_windfall,
 	song_xenogenesis,
+	song_fire_aura,
 };
 
 #else
