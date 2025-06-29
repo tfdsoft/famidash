@@ -23,7 +23,6 @@ const uint8_t difficulty_list[] = {
 	INSANEDEMON,	// stalemate
 	INSANEDEMON,	// eighto
 	INSANEDEMON,	// hi
-	INSANEDEMON,	// Jawbreaker
 	INSANEDEMON,	// eon
 	EXTREMEDEMON,	// sonicwave
 	EXTREMEDEMON,	// windylandscape
@@ -44,7 +43,6 @@ const uint8_t stars_list[] = {
 	10,	// stalemate
 	10,	// eighto
 	10,	// hi
-	10,	// Jawbreaker
 	10,	// eon
 	10,	// sonicwave
 	10,	// windylandscape

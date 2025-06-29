@@ -631,7 +631,7 @@ static void sprite_gamemode_controller_check() {
 	}
 }
 
-#define PORTAL_TO_TOP_DIFF 0x38
+#define PORTAL_TO_TOP_DIFF 0x3A
 
 
 void sprite_collide_lookup() {

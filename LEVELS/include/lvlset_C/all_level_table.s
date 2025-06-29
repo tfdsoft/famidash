@@ -11,7 +11,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_eighto)
 	.byte .lobyte(level_data_hi)
-	.byte .lobyte(level_data_Jawbreaker)
 	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_sonicwave)
 	.byte .lobyte(level_data_windylandscape)
@@ -31,7 +30,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_eighto)
 	.byte .hibyte(level_data_hi)
-	.byte .hibyte(level_data_Jawbreaker)
 	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_sonicwave)
 	.byte .hibyte(level_data_windylandscape)
@@ -51,7 +49,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_eighto))
 	.byte .lobyte(.bank(level_data_hi))
-	.byte .lobyte(.bank(level_data_Jawbreaker))
 	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_sonicwave))
 	.byte .lobyte(.bank(level_data_windylandscape))
@@ -98,7 +95,6 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_eighto)
 	.byte .lobyte(sprite_data_hi)
-	.byte .lobyte(sprite_data_Jawbreaker)
 	.byte .lobyte(sprite_data_eon)
 	.byte .lobyte(sprite_data_sonicwave)
 	.byte .lobyte(sprite_data_windylandscape)
@@ -118,7 +114,6 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_eighto)
 	.byte .hibyte(sprite_data_hi)
-	.byte .hibyte(sprite_data_Jawbreaker)
 	.byte .hibyte(sprite_data_eon)
 	.byte .hibyte(sprite_data_sonicwave)
 	.byte .hibyte(sprite_data_windylandscape)
@@ -138,7 +133,6 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_eighto))
 	.byte .lobyte(.bank(sprite_data_hi))
-	.byte .lobyte(.bank(sprite_data_Jawbreaker))
 	.byte .lobyte(.bank(sprite_data_eon))
 	.byte .lobyte(.bank(sprite_data_sonicwave))
 	.byte .lobyte(.bank(sprite_data_windylandscape))
@@ -161,7 +155,6 @@ _level_lengths_lo:
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($000078)		; eighto
 	.byte .lobyte($00009A)		; hi
-	.byte .lobyte($000086)		; Jawbreaker
 	.byte .lobyte($000286)		; eon
 	.byte .lobyte($0000FB)		; sonicwave
 	.byte .lobyte($00009A)		; windylandscape
@@ -183,7 +176,6 @@ _level_lengths_md:
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($000078)		; eighto
 	.byte .hibyte($00009A)		; hi
-	.byte .hibyte($000086)		; Jawbreaker
 	.byte .hibyte($000286)		; eon
 	.byte .hibyte($0000FB)		; sonicwave
 	.byte .hibyte($00009A)		; windylandscape
@@ -205,7 +197,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($000078)		; eighto
 	.byte .bankbyte($00009A)		; hi
-	.byte .bankbyte($000086)		; Jawbreaker
 	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($0000FB)		; sonicwave
 	.byte .bankbyte($00009A)		; windylandscape
