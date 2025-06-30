@@ -1821,8 +1821,28 @@
 			startingGroundColor: 0x0F,
 			objectOffsets: [
 				{
-					coordinates: [74, 26],		//deco
+					coordinates: [
+						[74, 26],		//deco
+						[708, 26],		//ship
+					],
 					offsetY: +8
+				},
+				{
+					coordinates: [
+						[708, 27],		//grav
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [206, 14],		//grav
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[268, 20],	[495, 18],		//grav
+						[428, 18],		//ball
+					],
+					offsetX: -16
 				},
 			]
 		},

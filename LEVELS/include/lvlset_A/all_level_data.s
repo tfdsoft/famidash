@@ -664,7 +664,7 @@
 		.incbin "EXPORTS/electroman.lz.bin" ; Size: 3991
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8170 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 8115 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -680,7 +680,7 @@
 		.byte $0F ;____________ Starting ground color
 		.byte 35 ;_____________ Level height
 	; Level data
-		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2731
+		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2776
 
 	.export level_data_retray
 	level_data_retray:

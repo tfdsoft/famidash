@@ -7828,7 +7828,7 @@ sprite_data_thechallenge:
   .byte $10,$0f,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1D"
+.segment "DAT_BANK_1C"
 sprite_data_dorabaebasic4:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$70,$03,$bf
@@ -13156,7 +13156,7 @@ sprite_data_thelightningroad:
   .byte $40,$0c,$80,$02,$90
   .byte $60,$0c,$80,$02,$80
   .byte $b0,$0c,$70,$02,$a1
-  .byte $e0,$0c,$40,$02,$08
+  .byte $f0,$0c,$40,$02,$08
   .byte $e0,$0c,$70,$02,$80
   .byte $f0,$0c,$40,$02,$00
   .byte $30,$0d,$70,$02,$02
@@ -13187,7 +13187,7 @@ sprite_data_thelightningroad:
   .byte $70,$10,$d0,$02,$80
   .byte $80,$10,$a0,$02,$05
   .byte $b0,$10,$a0,$02,$00
-  .byte $c0,$10,$a0,$02,$08
+  .byte $b0,$10,$a0,$02,$08
   .byte $30,$11,$50,$03,$a3
   .byte $50,$11,$f8,$02,$0a
   .byte $60,$11,$50,$03,$80
@@ -13250,7 +13250,7 @@ sprite_data_thelightningroad:
   .byte $30,$1a,$80,$02,$09
   .byte $70,$1a,$80,$02,$08
   .byte $b0,$1a,$80,$02,$09
-  .byte $c0,$1a,$80,$02,$02
+  .byte $b0,$1a,$80,$02,$02
   .byte $f0,$1a,$70,$02,$0c
   .byte $50,$1b,$70,$02,$0c
   .byte $60,$1b,$a0,$02,$90
@@ -13283,7 +13283,7 @@ sprite_data_thelightningroad:
   .byte $c0,$1e,$70,$02,$0c
   .byte $d0,$1e,$70,$02,$0c
   .byte $e0,$1e,$80,$02,$00
-  .byte $f0,$1e,$80,$02,$08
+  .byte $e0,$1e,$80,$02,$08
   .byte $f0,$1e,$a0,$02,$a3
   .byte $20,$1f,$a0,$02,$80
   .byte $80,$1f,$b0,$02,$90
@@ -13352,8 +13352,8 @@ sprite_data_thelightningroad:
   .byte $50,$2b,$00,$03,$a3
   .byte $70,$2b,$70,$03,$1b
   .byte $e0,$2b,$00,$03,$90
-  .byte $40,$2c,$00,$03,$01
-  .byte $40,$2c,$10,$03,$08
+  .byte $40,$2c,$08,$03,$01
+  .byte $40,$2c,$08,$03,$08
   .byte $50,$2c,$f0,$02,$a1
   .byte $70,$2c,$28,$03,$0a
   .byte $c0,$2c,$08,$03,$0a
@@ -14223,7 +14223,7 @@ sprite_data_demonpark:
   .byte $70,$3e,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1C"
+.segment "DAT_BANK_1D"
 sprite_data_decode:
   .byte $00,$00,$70,$03,$c6
   .byte $00,$00,$80,$03,$96
