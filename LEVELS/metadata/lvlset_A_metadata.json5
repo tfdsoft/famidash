@@ -2027,7 +2027,53 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[216, 24],	[312, 24],	[641, 22],	[745, 20],		//speed
+						[434, 21],	//dual
+						[589, 21],	//single
+						[701, 21],	//grav
+					],
+					offsetY: -8
+				},		
+				{
+					coordinates: [
+						[456, 21],	[457, 21],	[490, 21],
+					],
+					offsetY: -16
+				},		
+				{
+					coordinates: [456, 20],
+					offsetX: +16
+				},	
+				{
+					coordinates: [
+						[509, 20],	[590, 20],	[746, 19],	
+					],
+					offsetX: -16
+				},
+				{
+					coordinates: [
+						[591, 20],
+					],
+					offsetX: -32
+				},	
+				{
+					coordinates: [
+						[508, 20],	[509, 20],	[558, 20],	[589, 20],	[590, 20],	[591, 20],	[701, 20],	
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[865, 24],
+					],
+					offsetX: +8
+				},
+					
+			],
 		},
 		{
 			level: "foresttemple",
