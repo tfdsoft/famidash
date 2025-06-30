@@ -190,7 +190,7 @@
 		.incbin "EXPORTS/lostinthewoods.lz.bin" ; Size: 6144
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8165 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8162 bytes
 	.export level_data_sunshine
 	level_data_sunshine:
 	; Header
@@ -206,7 +206,7 @@
 		.byte $12 ;_______________ Starting ground color
 		.byte 47 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6142
+		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6139
 
 	.export level_data_baseafterbase
 	level_data_baseafterbase:
@@ -700,7 +700,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2723
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 7580 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 7575 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header

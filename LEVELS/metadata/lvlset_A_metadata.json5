@@ -1455,7 +1455,50 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
 			startingGroundColor: 0x12,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[0, 45],				//robot
+					],
+					offsetY: -16
+				},
+				{
+					coordinates: [
+						[125, 38],				//s block
+						[320, 34],				//cube
+					],
+					offsetX: -16
+				},
+				{
+					coordinates: [
+						[168, 38],	[350, 33],	[654, 31],			//growth
+						[318, 34],	[639, 28],				//mini
+						
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[53, 33],	[58, 31],				//yellow orb
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[116, 38],	[224, 38],	[228, 38],	[250, 36],	[267, 35],	[319, 35],	[420, 36],	[472, 36],	[749, 36],	[766, 28],	//speed
+						[277, 37],	[385, 34],			//deco
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[95, 40],	[124, 38],	[890, 26],	[895, 26],	//speed
+						[458, 37],	//red pad
+					],
+					offsetY: +8
+				},
+			],
 		},
 		{
 			level: "revolution",
