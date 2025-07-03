@@ -42,6 +42,7 @@ const uint8_t difficulty_list[] = {
 	EASY,	// retray
 	NORMAL,	// thechallenge
 	NORMAL,	// dorabaebasic4
+	NORMAL,	// dorabaebasic6
 	HARD,	// dreamer
 	HARD,	// groundtospace
 	HARDER,	// kappaclysm
@@ -89,6 +90,7 @@ const uint8_t stars_list[] = {
 	2,	// retray
 	3,	// thechallenge
 	3,	// dorabaebasic4
+	3,	// dorabaebasic6
 	4,	// dreamer
 	5,	// groundtospace
 	6,	// kappaclysm

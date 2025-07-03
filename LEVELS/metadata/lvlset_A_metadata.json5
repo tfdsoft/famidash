@@ -1271,6 +1271,135 @@
 			]
 		},
 		{
+			level: "dorabaebasic6",
+			upperText: "DORABAE",
+			lowerText: "BASIC6",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "NORMAL",
+			stars: 3,
+			songID: "song_theory_of_everything",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [186, 22],		//1x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [185, 21],		//ufo portal
+					offsetX: +16
+				},
+				{
+					coordinates: [261, 20],		//ship portal
+					offsetY: +8
+				},
+				{
+					coordinates: [413, 18],		//ship portal
+					offsetX: +8
+				},
+				{
+					coordinates: [414, 18],		//blue gravity portal
+					offsetX: -8
+				},
+				{
+					coordinates: [453, 18],		//dual portal
+					offsetY: +8
+				},
+				{
+					coordinates: [453, 19],		//cube portal
+					offsetY: -8
+				},
+				{
+					coordinates: [511, 19],		//blue gravity portal
+					offsetX: -3
+				},
+				{
+					coordinates: [510, 18],		//undual portal
+					offsetY: +16
+				},
+				{
+					coordinates: [510, 20],		//2x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [606, 17],		//ship portal
+					offsetY: +8,
+					offsetX: +8
+				},
+				{
+					coordinates: [678, 18],		//cube portal
+					offsetY: +8,
+					offsetX: +8
+				},
+				{
+					coordinates: [678, 19],		//0.5x speed poratl
+					offsetX: +8
+				},
+				{
+					coordinates: [696, 18],		//black bg trigger
+					offsetX: +8
+				},
+				{
+					coordinates: [697, 18],		//black bg trigger
+					offsetX: +8
+				},
+				{
+					coordinates: [698, 18],		//black bg trigger
+					offsetX: +8
+				},
+				{
+					coordinates: [699, 18],		//black bg trigger
+					offsetX: +8
+				},
+				{
+					coordinates: [700, 18],		//black bg trigger
+					offsetX: +8
+				},
+				{
+					coordinates: [701, 18],		//black bg trigger
+					offsetX: +8
+				},
+				{
+					coordinates: [702, 18],		//black bg trigger
+					offsetX: +8
+				},
+				{
+					coordinates: [703, 18],		//black bg trigger
+					offsetX: +8
+				},
+				{
+					coordinates: [704, 18],		//black bg trigger
+					offsetX: +8
+				},
+				{
+					coordinates: [696, 13],		//ufo portal
+					offsetY: +8
+				},
+				{
+					coordinates: [751, 13],		//ship portal
+					offsetY: +8
+				},
+				{
+					coordinates: [809, 13],		//ball portal
+					offsetY: +8
+				},
+				{
+					coordinates: [851, 16],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [860, 15],		//0.5x speed portal
+					offsetY: -8
+				},
+			]
+		},
+		{
 			level: "dreamer",
 			lowerText: "DREAMER",
 			decoType: "DECO1",
