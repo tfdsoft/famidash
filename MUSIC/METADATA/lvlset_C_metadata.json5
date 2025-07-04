@@ -1,4 +1,5 @@
 {
+	songModule: "music_master.fms",
 	songs: [
 		{
 			fmsSongName: "emehT uneM",

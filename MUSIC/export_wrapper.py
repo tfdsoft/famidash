@@ -61,8 +61,8 @@ if __name__ == "__main__":
 					crit = lambda x: True
 				if verbose:
 					print(f"Checking {prefix}/{spec}")
-				if (pathlib.Path(prefix) / spec).is_file() and crit((pathlib.Path(prefix) / spec).resolve()):
-					return (pathlib.Path(prefix) / spec).resolve()
+				if (pathlib.Path(prefix) / spec).is_file() and crit((pathlib.Path(prefix) / spec)):
+					return (pathlib.Path(prefix) / spec)
 		return None
 
 	def getFSVer(text):
@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
 		if filename.name == "FamiStudio.dll":
 			return ['dotnet', filename]
-		elif filename.name == "famistudio":
+		elif filename.name in ["famistudio", "FamiStudio"]:
 			return [filename]
 		elif filename.name == "flatpak":
 			if len(getFSFromFlatpak(filename)) > 0:
@@ -109,6 +109,10 @@ if __name__ == "__main__":
 		if verbose:
 			print(f'Checking version of "{executable}"... ', end='', flush=True)
 		cmd = getFSCmdFromStem(executable)
+		if not cmd:
+			if verbose:
+				print(f'Executable invalid')
+			return False
 		proc = subprocess.run([*cmd, '-help'], capture_output=True)
 		if proc.returncode != 0:
 			if verbose:
