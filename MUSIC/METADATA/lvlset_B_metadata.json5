@@ -1,4 +1,5 @@
 {
+	songModule: "music_master.fms",
 	songs: [
 		{
 			fmsSongName: "Menu Theme (2.2)",

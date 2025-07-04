@@ -201,7 +201,8 @@ def processMetadata(metadata : dict) -> dict:
             'sampleRatePAL': sampleRatePALList,
             'headerData': pcmHeaderList
         },
-        'dpcmAlignerName': metadata['dpcmAligner']
+        'dpcmAlignerName': metadata['dpcmAligner'],
+        'songModule': metadata['songModule']
     }
 
 
@@ -290,7 +291,6 @@ if __name__ == "__main__":
                 help='Output folder for the include files')
     args = parser.parse_args()
     
-    modulePath = musicFolder / "MODULES" / "music_master.fms"
     metadataPath = args.metadata
 
     fsCmd = args.famistudioCommand
@@ -307,6 +307,8 @@ if __name__ == "__main__":
     print("\n==== Processing metadata...")
     processed_metadata = processMetadata(metadata)
 
+    modulePath = musicFolder / "MODULES" / processed_metadata['songModule']
+    
     # Check FamiStudio version
     print("\n==== Checking FamiStudio version...")
     proc = subprocess.run([*fsCmd, '-help'], capture_output=True)
