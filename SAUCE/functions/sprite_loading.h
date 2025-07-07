@@ -772,7 +772,7 @@ void sprite_collide_lookup() {
 		// intentional leak
 	spcl_ball:
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
-		currplayer_vel_y /= 2;
+		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
 		gamemode = collided;
 		activesprites_activated[index] = 1;
 		retrofireballclear();
