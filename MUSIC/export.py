@@ -317,7 +317,10 @@ if __name__ == "__main__":
     fsVer = [int(x) for x in fsVer.split(".")]
     fsVer = fsVer[0]*1000_000 + fsVer[1]*1000 + fsVer[2]
     if (fsVer < 400_300_0):
-        print("FamiStudio version is less than 4.3.0, please update")
+        print("FamiStudio is older than 4.3.0, please upgrade to version 4.3.X.")
+        exit(1)
+    elif (fsVer >= 400_400_0): # DPCM exports got borked lmoa
+        print("FamiStudio is newer than 4.4.0, please downgrade to version 4.3.X.")
         exit(1)
 
     # Get FamiStudio text file

@@ -70,6 +70,8 @@ if __name__ == "__main__":
 		fsVer = fsVer[0]*1000_000 + fsVer[1]*1000 + fsVer[2]
 		return fsVer
 
+	verifyFSVer = lambda fsVer : fsVer >= 400_300_0 and fsVer < 400_400_0	# 4.4.0 has broken some things
+
 	def getFSFromFlatpak(flatpak):
 		proc = subprocess.run([flatpak, '--version'], capture_output=True)
 		if (proc.returncode == 0):
@@ -79,7 +81,7 @@ if __name__ == "__main__":
 			if (proc.returncode == 0 and len(flatpakList.stdout.decode())):
 				# Split the data
 				flatpakList = [i.split() for i in flatpakList.stdout.decode().splitlines()]
-				flatpakFSList = list(filter(lambda x : len(x) == 2 and x[0] == 'org.famistudio.FamiStudio' and getFSVer(x[1]) >= 400_300_0, flatpakList))
+				flatpakFSList = list(filter(lambda x : len(x) == 2 and x[0] == 'org.famistudio.FamiStudio' and verifyFSVer(getFSVer(x[1])), flatpakList))
 				if verbose:
 					print(f'List of FamiStudio >= 4.3.0 from flatpak instance at "{flatpak}":')
 					print(flatpakFSList)
@@ -99,31 +101,33 @@ if __name__ == "__main__":
 			if len(getFSFromFlatpak(filename)) > 0:
 				return [filename, 'run', 'org.famistudio.FamiStudio']
 			else:
-				print("flatpak has been specified, but it does not have org.famistudio.FamiStudio >= 4.3.0")
+				print("\tflatpak has been specified, but it does not have org.famistudio.FamiStudio compatible with this script.")
+				print("\tCheck the contributor documentation for version details.")
 				return None
 		else:
-			print(f"The filename provided \"{filename.name}\" is invalid.")
+			print(f"\tThe filename provided \"{filename.name}\" is invalid.")
 			return None
 
 	def checkFSVersion(executable):
 		if verbose:
-			print(f'Checking version of "{executable}"... ', end='', flush=True)
+			print(f'\tChecking version of "{executable}"... ', end='', flush=True)
 		cmd = getFSCmdFromStem(executable)
 		if not cmd:
 			if verbose:
-				print(f'Executable invalid')
+				print(f'\tExecutable invalid')
 			return False
 		proc = subprocess.run([*cmd, '-help'], capture_output=True)
 		if proc.returncode != 0:
 			if verbose:
-				print(f'Executable invalid')
+				print(f'\tExecutable invalid')
 			return False
 		fsVerStr = re.findall(famistudioHelpRegex, proc.stdout.decode())[0]
 		fsVer = [int(x) for x in fsVerStr.split(".")]
 		fsVer = fsVer[0]*1000_000 + fsVer[1]*1000 + fsVer[2]
-		if (fsVer < 400_300_0):
+		if (not verifyFSVer(fsVer)):
 			if verbose:
-				print(f'Found valid executable but its version {fsVerStr} < 4.3.0')
+				print(f'Found valid executable but its version {fsVerStr} is not compatible with this script.')
+				print("\tCheck the contributor documentation for version details.")
 			return False
 		if verbose:
 			print(f'Found valid executable version {fsVerStr}')
@@ -177,6 +181,7 @@ if __name__ == "__main__":
 		help='Increase verbosity of wrapper script')
 	args = parser.parse_args()
 
+	verbose = args.verbose
 
 	def getFamiStudio():
 		# Order of precedence:
@@ -204,10 +209,10 @@ if __name__ == "__main__":
 	if fsCmd == None:
 		parser.print_help()
 		print("")
-		print("No FamiStudio instances found.")
+		print("No valid FamiStudio instances found.")
+		print("Rerun with the -v flag to get more information.")
 		exit(1)
 
-	verbose = args.verbose
 
 	if args.exportAll:
 		levelSet = "all"
