@@ -13,6 +13,8 @@
         .globalzp       tmp1, tmp2, tmp3, tmp4
         .globalzp       regbank
 
+        .export c_sp := sp
+
 ; The size of the register bank
 regbanksize     = 6
 
