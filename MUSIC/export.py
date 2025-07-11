@@ -106,119 +106,63 @@ def processMetadata(metadata : dict) -> dict:
     vsSongNameList = ['song_' + makeNiceAsmName(i.get('fmsSongName'), False) for i in songlist if i.get('vsSystemEnabled') == True]
 
     # Optimize text usage
-    upperTextList = [i.get('upperText') for i in songlist]
-    lowerTextList = [i.get('lowerText') for i in songlist]
-    totalTextList = [i for i in upperTextList + lowerTextList if i]
+    if args.outputFolder.name != 'lvlset_Z':
+        # Main system
+        textKeyList = ['upperText', 'lowerText', 'originalArtist']
+    else:
+        # The album
+        textKeyList = [
+            'upperText', 'lowerText', 'upperOrigArtistText', 'lowerOrigArtistText',
+            'CoveringArtist1Text', 'CoveringArtist2Text', 'CoveringArtist3Text', 'CoveringArtist4Text'
+        ]
+    totalTextList = []
+    textLists = {}
+    for key in textKeyList:
+        # Get text
+        textLists[key] = [i.get(key) for i in songlist]
+        totalTextList += [i for i in textLists[key] if i]
     totalTextSet = tuple(sorted(set(totalTextList), key=lambda x : totalTextList.index(x)))
+    idxLists = {key: 
+            [totalTextSet.index(i) if i else None for i in textLists[key]]
+        for key in textKeyList}
 
-    # Get indices, convert to displayable format
-    upperIdxList = [totalTextSet.index(i) if i else None for i in upperTextList]
-    lowerIdxList = [totalTextSet.index(i) if i else None for i in lowerTextList]
+    # Convert to displayable format
     processedTextList = tuple(map(convertTextToMenuFormat, totalTextSet))
 
     # Convert to C
     outputStringsList = [f'const char musicSoundTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedTextList)]
-    upperArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in upperIdxList]
-    upperSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in upperIdxList]
-    lowerArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in lowerIdxList]
-    lowerSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in lowerIdxList]
+    upperArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['upperText']]
+    upperSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['upperText']]
+    lowerArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['lowerText']]
+    lowerSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['lowerText']]
 
     # TODO: artist tables
 
     if args.outputFolder.name == 'lvlset_Z':
-        #ORIGINAL ARTISTS 1+2
-
-        # Optimize text usage
-        upperOrigArtistTextList = [i.get('upperOrigArtistText') for i in songlist]
-        lowerOrigArtistTextList = [i.get('lowerOrigArtistText') for i in songlist]
-        totalOrigArtistTextList = [i for i in upperOrigArtistTextList + lowerOrigArtistTextList if i]
-        totalOrigArtistTextSet = tuple(sorted(set(totalOrigArtistTextList), key=lambda x : totalOrigArtistTextList.index(x)))
-
-        CoveringArtist1TextList = [i.get('CoveringArtist1Text') for i in songlist]
-        CoveringArtist2TextList = [i.get('CoveringArtist2Text') for i in songlist]
-        CoveringArtist3TextList = [i.get('CoveringArtist3Text') for i in songlist]
-        CoveringArtist4TextList = [i.get('CoveringArtist4Text') for i in songlist]
-
-        totalCoveringArtistTextList = [i for i in CoveringArtist4TextList + CoveringArtist3TextList + CoveringArtist2TextList + CoveringArtist1TextList if i]
-        totalCoveringArtistTextSet = tuple(sorted(set(totalCoveringArtistTextList), key=lambda x : totalCoveringArtistTextList.index(x)))
-
-        # Get indices, convert to displayable format
-        upperOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in upperOrigArtistTextList]
-        lowerOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in lowerOrigArtistTextList]
-        processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
-
-        CoveringArtist1IdxList = [totalCoveringArtistTextSet.index(i) if i else None for i in CoveringArtist1TextList]
-        CoveringArtist2IdxList = [totalCoveringArtistTextSet.index(i) if i else None for i in CoveringArtist2TextList]
-        CoveringArtist3IdxList = [totalCoveringArtistTextSet.index(i) if i else None for i in CoveringArtist3TextList]
-        CoveringArtist4IdxList = [totalCoveringArtistTextSet.index(i) if i else None for i in CoveringArtist4TextList]
-        processedCoveringArtistTextList = tuple(map(convertTextToMenuFormat, totalCoveringArtistTextSet))
-
-
         # Convert to C
-        outputOrigArtistStringsList = [f'const char musicSoundOrigArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedOrigArtistTextList)]
-        upperOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in upperOrigArtistIdxList]
-        upperOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in upperOrigArtistIdxList]
-        lowerOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in lowerOrigArtistIdxList]
-        lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in lowerOrigArtistIdxList]
+        upperOrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['upperOrigArtistText']]
+        upperOrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['upperOrigArtistText']]
+        lowerOrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['lowerOrigArtistText']]
+        lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['lowerOrigArtistText']]
 
-        outputCoveringArtistStringsList = [f'const char musicSoundCoveringArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedCoveringArtistTextList)]
-        CoveringArtist1ArrayList = [f'\tmusicSoundCoveringArtistTestString{i:02X},' if i != None else '\tNULL,' for i in CoveringArtist1IdxList]
-        CoveringArtist1SizeArrayList = [f'\tsizeof(musicSoundCoveringArtistTestString{i:02X}),' if i != None else '\t0,' for i in CoveringArtist1IdxList]
-        CoveringArtist2ArrayList = [f'\tmusicSoundCoveringArtistTestString{i:02X},' if i != None else '\tNULL,' for i in CoveringArtist2IdxList]
-        CoveringArtist2SizeArrayList = [f'\tsizeof(musicSoundCoveringArtistTestString{i:02X}),' if i != None else '\t0,' for i in CoveringArtist2IdxList]
+        CoveringArtist1ArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['CoveringArtist1Text']]
+        CoveringArtist1SizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['CoveringArtist1Text']]
+        CoveringArtist2ArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['CoveringArtist2Text']]
+        CoveringArtist2SizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['CoveringArtist2Text']]
 
-        CoveringArtist3ArrayList = [f'\tmusicSoundCoveringArtistTestString{i:02X},' if i != None else '\tNULL,' for i in CoveringArtist3IdxList]
-        CoveringArtist3SizeArrayList = [f'\tsizeof(musicSoundCoveringArtistTestString{i:02X}),' if i != None else '\t0,' for i in CoveringArtist3IdxList]
-        CoveringArtist4ArrayList = [f'\tmusicSoundCoveringArtistTestString{i:02X},' if i != None else '\tNULL,' for i in CoveringArtist4IdxList]
-        CoveringArtist4SizeArrayList = [f'\tsizeof(musicSoundCoveringArtistTestString{i:02X}),' if i != None else '\t0,' for i in CoveringArtist4IdxList]
-
-        #COVERING ARTISTS 1+2
-
-        # Optimize text usage
-
-
-        # Get indices, convert to displayable format
-
-        # Convert to C
-
-        #COVERING ARTISTS 3+4
-
-        # Optimize text usage
-#        upperOrigArtistTextList = [i.get('upperOrigArtistText') for i in songlist]
-#        lowerOrigArtistTextList = [i.get('lowerOrigArtistText') for i in songlist]
-#        totalOrigArtistTextList = [i for i in upperOrigArtistTextList + lowerOrigArtistTextList if i]
-#        totalOrigArtistTextSet = tuple(sorted(set(totalOrigArtistTextList), key=lambda x : totalOrigArtistTextList.index(x)))
-
-        # Get indices, convert to displayable format
-#        upperOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in upperOrigArtistTextList]
-#        lowerOrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in lowerOrigArtistTextList]
-#        processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
-
-        # Convert to C
-#        outputOrigArtistStringsList = [f'const char musicSoundOrigArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedOrigArtistTextList)]
-#        upperOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in upperOrigArtistIdxList]
-#        upperOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in upperOrigArtistIdxList]
-#        lowerOrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in lowerOrigArtistIdxList]
-#        lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in lowerOrigArtistIdxList]
+        CoveringArtist3ArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['CoveringArtist3Text']]
+        CoveringArtist3SizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['CoveringArtist3Text']]
+        CoveringArtist4ArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['CoveringArtist4Text']]
+        CoveringArtist4SizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['CoveringArtist4Text']]
 
         # Main system
         OrigArtistArrayList = 0
         OrigArtistSizeArrayList = 0
 
     else:
-        # Main branch system of one artist
-        OrigArtistTextList = [i.get('originalArtist') for i in songlist]
-        totalOrigArtistTextList = [i for i in OrigArtistTextList if i]
-        totalOrigArtistTextSet = tuple(sorted(set(totalOrigArtistTextList), key=lambda x : totalOrigArtistTextList.index(x)))
-
-        # Get indices, convert to displayable format
-        OrigArtistIdxList = [totalOrigArtistTextSet.index(i) if i else None for i in OrigArtistTextList]
-        processedOrigArtistTextList = tuple(map(convertTextToMenuFormat, totalOrigArtistTextSet))
-
         # Convert to C
-        outputOrigArtistStringsList = [f'const char musicSoundOrigArtistTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedOrigArtistTextList)]
-        OrigArtistArrayList = [f'\tmusicSoundOrigArtistTestString{i:02X},' if i != None else '\tNULL,' for i in OrigArtistIdxList]
-        OrigArtistSizeArrayList = [f'\tsizeof(musicSoundOrigArtistTestString{i:02X}),' if i != None else '\t0,' for i in OrigArtistIdxList]
+        OrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['originalArtist']]
+        OrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['originalArtist']]
 
         # Album system
         upperOrigArtistArrayList = 0
@@ -226,19 +170,6 @@ def processMetadata(metadata : dict) -> dict:
         lowerOrigArtistArrayList = 0
         lowerOrigArtistSizeArrayList = 0
         
-        CoveringArtist1TextList = 0
-        CoveringArtist2TextList = 0
-        CoveringArtist3TextList = 0
-        CoveringArtist4TextList = 0
-        totalCoveringArtistTextList = 0
-        totalCoveringArtistTextSet = 0
-
-        CoveringArtist1IdxList = 0
-        CoveringArtist2IdxList = 0
-        CoveringArtist3IdxList = 0
-        CoveringArtist4IdxList = 0
-
-        outputCoveringArtistStringsList = 0
         CoveringArtist1ArrayList = 0
         CoveringArtist1SizeArrayList = 0
         CoveringArtist2ArrayList = 0
@@ -248,9 +179,6 @@ def processMetadata(metadata : dict) -> dict:
         CoveringArtist3SizeArrayList = 0
         CoveringArtist4ArrayList = 0
         CoveringArtist4SizeArrayList = 0
-        
-        processedCoveringArtistTextList = 0
-
 
     # Get SFX names
     sfxTextList = [i['text'] for i in metadata['SFX'] if 'text' in i.keys() and i['text']]
@@ -293,13 +221,17 @@ def processMetadata(metadata : dict) -> dict:
             'upperSizes': upperSizeArrayList,
             'lowerPtrs': lowerArrayList,
             'lowerSizes': lowerSizeArrayList,
+
+            # Main system
             'OrigArtistPtrs': OrigArtistArrayList,
             'OrigArtistSizes': OrigArtistSizeArrayList,
+
+            # Album system
             'upperOrigArtistPtrs': upperOrigArtistArrayList,
             'upperOrigArtistSizes': upperOrigArtistSizeArrayList,
             'lowerOrigArtistPtrs': lowerOrigArtistArrayList,
             'lowerOrigArtistSizes': lowerOrigArtistSizeArrayList,
-            'origartistTestStrings': outputOrigArtistStringsList,
+
             'CoveringArtist1Ptrs': CoveringArtist1ArrayList,
             'CoveringArtist1Sizes': CoveringArtist1SizeArrayList,
             'CoveringArtist2Ptrs': CoveringArtist2ArrayList,
@@ -308,7 +240,7 @@ def processMetadata(metadata : dict) -> dict:
             'CoveringArtist3Sizes': CoveringArtist3SizeArrayList,
             'CoveringArtist4Ptrs': CoveringArtist4ArrayList,
             'CoveringArtist4Sizes': CoveringArtist4SizeArrayList,
-            'coveringartistTestStrings': outputCoveringArtistStringsList,
+
             'sfxSoundTestStrings': sfxOutputStringsList,
             'sfxPtrs': sfxArrayList,
             'sfxSizes': sfxSizeArrayList,
@@ -702,8 +634,6 @@ if __name__ == "__main__":
             *processed_soundtest_metadata['lowerSizes'],
             '};',
             '', '',
-            *processed_soundtest_metadata['origartistTestStrings'],
-            '', '',
             'const char* const xbgmtextsOrigArtistUpper[] = {',
             *processed_soundtest_metadata['upperOrigArtistPtrs'],
             '};',
@@ -719,8 +649,6 @@ if __name__ == "__main__":
             'const uint8_t xbgmtextsOrigArtistLowerSize[] = {',
             *processed_soundtest_metadata['lowerOrigArtistSizes'],
             '};',
-            '', '',
-            *processed_soundtest_metadata['coveringartistTestStrings'],
             '', '',
             'const char* const xbgmtextsCoveringArtist1[] = {',
             *processed_soundtest_metadata['CoveringArtist1Ptrs'],
@@ -811,8 +739,6 @@ if __name__ == "__main__":
             'const uint8_t xbgmtextsLowerSize[] = {',
             *processed_soundtest_metadata['lowerSizes'],
             '};',
-            '',
-            *processed_soundtest_metadata['origartistTestStrings'],
             '', ''
             'const char* const xbgmtextsOrigArtist[] = {',
             *processed_soundtest_metadata['OrigArtistPtrs'],
