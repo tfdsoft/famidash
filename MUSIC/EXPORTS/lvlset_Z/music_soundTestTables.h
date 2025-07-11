@@ -189,6 +189,7 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString2A),
 };
 
+
 const char musicSoundOrigArtistTestString00[ 6] = "ROBTOP";
 const char musicSoundOrigArtistTestString01[12] = "FOREVERBOUND";
 const char musicSoundOrigArtistTestString02[ 4] = "DJVI";
