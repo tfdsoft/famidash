@@ -232,7 +232,6 @@ const char musicSoundOrigArtistTestString18[ 9] = "FANTOMENK";
 const char musicSoundOrigArtistTestString19[ 7] = "DAVINCE";
 const char musicSoundOrigArtistTestString1A[ 8] = "KID2WILL";
 
-
 const char* const xbgmtextsOrigArtist[] = {
 	musicSoundOrigArtistTestString00,
 	musicSoundOrigArtistTestString01,

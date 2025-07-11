@@ -255,7 +255,6 @@ const char musicSoundOrigArtistTestString11[13] = "SEAGLOWINGPRO";
 const char musicSoundOrigArtistTestString12[ 8] = "KITSUNE2";
 const char musicSoundOrigArtistTestString13[ 7] = "KAYOSZX";
 
-
 const char* const xbgmtextsOrigArtist[] = {
 	musicSoundOrigArtistTestString00,
 	musicSoundOrigArtistTestString01,
