@@ -31,6 +31,24 @@ const char musicSoundTestString19[13] = "EVERY$END$PT2";
 const char musicSoundTestString1A[ 8] = "WINDFALL";
 const char musicSoundTestString1B[13] = "THERMODYNAMIX";
 const char musicSoundTestString1C[ 5] = "VOL$3";
+const char musicSoundTestString1D[ 6] = "ROBTOP";
+const char musicSoundTestString1E[12] = "OCULARNEBULA";
+const char musicSoundTestString1F[13] = "KEVIN$MACLEOD";
+const char musicSoundTestString20[ 7] = "DJ$NATE";
+const char musicSoundTestString21[ 9] = "DIMRAIN47";
+const char musicSoundTestString22[ 6] = "CACOLA";
+const char musicSoundTestString23[ 7] = "KAYOSZX";
+const char musicSoundTestString24[ 4] = "F777";
+const char musicSoundTestString25[ 6] = "CRIM3S";
+const char musicSoundTestString26[ 5] = "ROMOS";
+const char musicSoundTestString27[ 8] = "GARLAGAN";
+const char musicSoundTestString28[ 7] = "JOMEKKA";
+const char musicSoundTestString29[10] = "NERDBOY628";
+const char musicSoundTestString2A[11] = "LEMON$DEMON";
+const char musicSoundTestString2B[13] = "ACID$NOTATION";
+const char musicSoundTestString2C[ 6] = "SHAPPY";
+const char musicSoundTestString2D[ 9] = "THEFATRAT";
+const char musicSoundTestString2E[10] = "DEMONICITY";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -143,78 +161,59 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString1C),
 };
 
-const char musicSoundOrigArtistTestString00[ 6] = "ROBTOP";
-const char musicSoundOrigArtistTestString01[12] = "OCULARNEBULA";
-const char musicSoundOrigArtistTestString02[13] = "KEVIN$MACLEOD";
-const char musicSoundOrigArtistTestString03[ 7] = "DJ$NATE";
-const char musicSoundOrigArtistTestString04[ 9] = "DIMRAIN47";
-const char musicSoundOrigArtistTestString05[ 6] = "CACOLA";
-const char musicSoundOrigArtistTestString06[ 7] = "KAYOSZX";
-const char musicSoundOrigArtistTestString07[ 4] = "F777";
-const char musicSoundOrigArtistTestString08[ 6] = "CRIM3S";
-const char musicSoundOrigArtistTestString09[ 5] = "ROMOS";
-const char musicSoundOrigArtistTestString0A[ 8] = "GARLAGAN";
-const char musicSoundOrigArtistTestString0B[ 7] = "JOMEKKA";
-const char musicSoundOrigArtistTestString0C[10] = "NERDBOY628";
-const char musicSoundOrigArtistTestString0D[11] = "LEMON$DEMON";
-const char musicSoundOrigArtistTestString0E[13] = "ACID$NOTATION";
-const char musicSoundOrigArtistTestString0F[ 6] = "SHAPPY";
-const char musicSoundOrigArtistTestString10[ 9] = "THEFATRAT";
-const char musicSoundOrigArtistTestString11[10] = "DEMONICITY";
-
 const char* const xbgmtextsOrigArtist[] = {
-	musicSoundOrigArtistTestString00,
-	musicSoundOrigArtistTestString01,
-	musicSoundOrigArtistTestString02,
-	musicSoundOrigArtistTestString03,
-	musicSoundOrigArtistTestString04,
-	musicSoundOrigArtistTestString04,
-	musicSoundOrigArtistTestString04,
-	musicSoundOrigArtistTestString04,
-	musicSoundOrigArtistTestString05,
-	musicSoundOrigArtistTestString06,
-	musicSoundOrigArtistTestString07,
-	musicSoundOrigArtistTestString08,
-	musicSoundOrigArtistTestString09,
-	musicSoundOrigArtistTestString0A,
-	musicSoundOrigArtistTestString0B,
-	musicSoundOrigArtistTestString0C,
-	musicSoundOrigArtistTestString0D,
-	musicSoundOrigArtistTestString0E,
-	musicSoundOrigArtistTestString0F,
-	musicSoundOrigArtistTestString04,
-	musicSoundOrigArtistTestString04,
-	musicSoundOrigArtistTestString10,
-	musicSoundOrigArtistTestString03,
-	musicSoundOrigArtistTestString11,
+	musicSoundTestString1D,
+	musicSoundTestString1E,
+	musicSoundTestString1F,
+	musicSoundTestString20,
+	musicSoundTestString21,
+	musicSoundTestString21,
+	musicSoundTestString21,
+	musicSoundTestString21,
+	musicSoundTestString22,
+	musicSoundTestString23,
+	musicSoundTestString24,
+	musicSoundTestString25,
+	musicSoundTestString26,
+	musicSoundTestString27,
+	musicSoundTestString28,
+	musicSoundTestString29,
+	musicSoundTestString2A,
+	musicSoundTestString2B,
+	musicSoundTestString2C,
+	musicSoundTestString21,
+	musicSoundTestString21,
+	musicSoundTestString2D,
+	musicSoundTestString20,
+	musicSoundTestString2E,
 };
 
 
 const uint8_t xbgmtextsOrigArtistSize[] = {
-	sizeof(musicSoundOrigArtistTestString00),
-	sizeof(musicSoundOrigArtistTestString01),
-	sizeof(musicSoundOrigArtistTestString02),
-	sizeof(musicSoundOrigArtistTestString03),
-	sizeof(musicSoundOrigArtistTestString04),
-	sizeof(musicSoundOrigArtistTestString04),
-	sizeof(musicSoundOrigArtistTestString04),
-	sizeof(musicSoundOrigArtistTestString04),
-	sizeof(musicSoundOrigArtistTestString05),
-	sizeof(musicSoundOrigArtistTestString06),
-	sizeof(musicSoundOrigArtistTestString07),
-	sizeof(musicSoundOrigArtistTestString08),
-	sizeof(musicSoundOrigArtistTestString09),
-	sizeof(musicSoundOrigArtistTestString0A),
-	sizeof(musicSoundOrigArtistTestString0B),
-	sizeof(musicSoundOrigArtistTestString0C),
-	sizeof(musicSoundOrigArtistTestString0D),
-	sizeof(musicSoundOrigArtistTestString0E),
-	sizeof(musicSoundOrigArtistTestString0F),
-	sizeof(musicSoundOrigArtistTestString04),
-	sizeof(musicSoundOrigArtistTestString04),
-	sizeof(musicSoundOrigArtistTestString10),
-	sizeof(musicSoundOrigArtistTestString03),
-	sizeof(musicSoundOrigArtistTestString11),
+	sizeof(musicSoundTestString1D),
+	sizeof(musicSoundTestString1E),
+	sizeof(musicSoundTestString1F),
+	sizeof(musicSoundTestString20),
+	sizeof(musicSoundTestString21),
+	sizeof(musicSoundTestString21),
+	sizeof(musicSoundTestString21),
+	sizeof(musicSoundTestString21),
+	sizeof(musicSoundTestString22),
+	sizeof(musicSoundTestString23),
+	sizeof(musicSoundTestString24),
+	sizeof(musicSoundTestString25),
+	sizeof(musicSoundTestString26),
+	sizeof(musicSoundTestString27),
+	sizeof(musicSoundTestString28),
+	sizeof(musicSoundTestString29),
+	sizeof(musicSoundTestString2A),
+	sizeof(musicSoundTestString2B),
+	sizeof(musicSoundTestString2C),
+	sizeof(musicSoundTestString21),
+	sizeof(musicSoundTestString21),
+	sizeof(musicSoundTestString2D),
+	sizeof(musicSoundTestString20),
+	sizeof(musicSoundTestString2E),
 };
 
 
