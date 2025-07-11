@@ -155,30 +155,28 @@ def processMetadata(metadata : dict) -> dict:
         CoveringArtist4ArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['CoveringArtist4Text']]
         CoveringArtist4SizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['CoveringArtist4Text']]
 
-        # Main system
-        OrigArtistArrayList = 0
-        OrigArtistSizeArrayList = 0
+        # Package into the main system
+        OrigArtistArrayList = {
+            'OrigArtistUpper': upperOrigArtistArrayList,
+            'OrigArtistLower': lowerOrigArtistArrayList,
+            'CoveringArtist1': CoveringArtist1ArrayList,
+            'CoveringArtist2': CoveringArtist2ArrayList,
+            'CoveringArtist3': CoveringArtist3ArrayList,
+            'CoveringArtist4': CoveringArtist4ArrayList,
+        }
+        OrigArtistSizeArrayList = {
+            'OrigArtistUpper': upperOrigArtistSizeArrayList,
+            'OrigArtistLower': lowerOrigArtistSizeArrayList,
+            'CoveringArtist1': CoveringArtist1SizeArrayList,
+            'CoveringArtist2': CoveringArtist2SizeArrayList,
+            'CoveringArtist3': CoveringArtist3SizeArrayList,
+            'CoveringArtist4': CoveringArtist4SizeArrayList,
+        }
 
     else:
         # Convert to C
         OrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['originalArtist']]
         OrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['originalArtist']]
-
-        # Album system
-        upperOrigArtistArrayList = 0
-        upperOrigArtistSizeArrayList = 0
-        lowerOrigArtistArrayList = 0
-        lowerOrigArtistSizeArrayList = 0
-        
-        CoveringArtist1ArrayList = 0
-        CoveringArtist1SizeArrayList = 0
-        CoveringArtist2ArrayList = 0
-        CoveringArtist2SizeArrayList = 0
-
-        CoveringArtist3ArrayList = 0
-        CoveringArtist3SizeArrayList = 0
-        CoveringArtist4ArrayList = 0
-        CoveringArtist4SizeArrayList = 0
 
     # Get SFX names
     sfxTextList = [i['text'] for i in metadata['SFX'] if 'text' in i.keys() and i['text']]
@@ -225,21 +223,6 @@ def processMetadata(metadata : dict) -> dict:
             # Main system
             'OrigArtistPtrs': OrigArtistArrayList,
             'OrigArtistSizes': OrigArtistSizeArrayList,
-
-            # Album system
-            'upperOrigArtistPtrs': upperOrigArtistArrayList,
-            'upperOrigArtistSizes': upperOrigArtistSizeArrayList,
-            'lowerOrigArtistPtrs': lowerOrigArtistArrayList,
-            'lowerOrigArtistSizes': lowerOrigArtistSizeArrayList,
-
-            'CoveringArtist1Ptrs': CoveringArtist1ArrayList,
-            'CoveringArtist1Sizes': CoveringArtist1SizeArrayList,
-            'CoveringArtist2Ptrs': CoveringArtist2ArrayList,
-            'CoveringArtist2Sizes': CoveringArtist2SizeArrayList,
-            'CoveringArtist3Ptrs': CoveringArtist3ArrayList,
-            'CoveringArtist3Sizes': CoveringArtist3SizeArrayList,
-            'CoveringArtist4Ptrs': CoveringArtist4ArrayList,
-            'CoveringArtist4Sizes': CoveringArtist4SizeArrayList,
 
             'sfxSoundTestStrings': sfxOutputStringsList,
             'sfxPtrs': sfxArrayList,
@@ -629,57 +612,57 @@ if __name__ == "__main__":
             'const char* const xbgmtextsLower[] = {',
             *processed_soundtest_metadata['lowerPtrs'],
             '};',
-            '', '',
+            '',
             'const uint8_t xbgmtextsLowerSize[] = {',
             *processed_soundtest_metadata['lowerSizes'],
             '};',
             '', '',
             'const char* const xbgmtextsOrigArtistUpper[] = {',
-            *processed_soundtest_metadata['upperOrigArtistPtrs'],
+            *processed_soundtest_metadata['OrigArtistPtrs']['OrigArtistUpper'],
             '};',
-            '', '',
+            '',
             'const uint8_t xbgmtextsOrigArtistUpperSize[] = {',
-            *processed_soundtest_metadata['upperOrigArtistSizes'],
+            *processed_soundtest_metadata['OrigArtistSizes']['OrigArtistUpper'],
             '};',
             '', '',
             'const char* const xbgmtextsOrigArtistLower[] = {',
-            *processed_soundtest_metadata['lowerOrigArtistPtrs'],
+            *processed_soundtest_metadata['OrigArtistPtrs']['OrigArtistLower'],
             '};',
-            '', '',
+            '',
             'const uint8_t xbgmtextsOrigArtistLowerSize[] = {',
-            *processed_soundtest_metadata['lowerOrigArtistSizes'],
+            *processed_soundtest_metadata['OrigArtistSizes']['OrigArtistLower'],
             '};',
             '', '',
             'const char* const xbgmtextsCoveringArtist1[] = {',
-            *processed_soundtest_metadata['CoveringArtist1Ptrs'],
+            *processed_soundtest_metadata['OrigArtistPtrs']['CoveringArtist1'],
             '};',
-            '', '',
+            '',
             'const uint8_t xbgmtextsCoveringArtist1Size[] = {',
-            *processed_soundtest_metadata['CoveringArtist1Sizes'],
+            *processed_soundtest_metadata['OrigArtistSizes']['CoveringArtist1'],
             '};',
             '', '',
             'const char* const xbgmtextsCoveringArtist2[] = {',
-            *processed_soundtest_metadata['CoveringArtist2Ptrs'],
+            *processed_soundtest_metadata['OrigArtistPtrs']['CoveringArtist2'],
             '};',
-            '', '',
+            '',
             'const uint8_t xbgmtextsCoveringArtist2Size[] = {',
-            *processed_soundtest_metadata['CoveringArtist2Sizes'],
+            *processed_soundtest_metadata['OrigArtistSizes']['CoveringArtist2'],
             '};',
             '', '',
             'const char* const xbgmtextsCoveringArtist3[] = {',
-            *processed_soundtest_metadata['CoveringArtist3Ptrs'],
+            *processed_soundtest_metadata['OrigArtistPtrs']['CoveringArtist3'],
             '};',
-            '', '',
+            '',
             'const uint8_t xbgmtextsCoveringArtist3Size[] = {',
-            *processed_soundtest_metadata['CoveringArtist3Sizes'],
+            *processed_soundtest_metadata['OrigArtistSizes']['CoveringArtist3'],
             '};',
             '', '',
             'const char* const xbgmtextsCoveringArtist4[] = {',
-            *processed_soundtest_metadata['CoveringArtist4Ptrs'],
+            *processed_soundtest_metadata['OrigArtistPtrs']['CoveringArtist4'],
             '};',
-            '', '',
+            '',
             'const uint8_t xbgmtextsCoveringArtist4Size[] = {',
-            *processed_soundtest_metadata['CoveringArtist4Sizes'],
+            *processed_soundtest_metadata['OrigArtistSizes']['CoveringArtist4'],
             '};',
             '', '',
             '#else',
@@ -735,7 +718,7 @@ if __name__ == "__main__":
             'const char* const xbgmtextsLower[] = {',
             *processed_soundtest_metadata['lowerPtrs'],
             '};',
-            '', '',
+            '',
             'const uint8_t xbgmtextsLowerSize[] = {',
             *processed_soundtest_metadata['lowerSizes'],
             '};',
@@ -743,7 +726,7 @@ if __name__ == "__main__":
             'const char* const xbgmtextsOrigArtist[] = {',
             *processed_soundtest_metadata['OrigArtistPtrs'],
             '};',
-            '', '',
+            '',
             'const uint8_t xbgmtextsOrigArtistSize[] = {',
             *processed_soundtest_metadata['OrigArtistSizes'],
             '};',

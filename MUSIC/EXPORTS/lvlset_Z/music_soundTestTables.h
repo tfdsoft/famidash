@@ -571,7 +571,6 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString87,
 };
 
-
 const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString2C),
 	sizeof(musicSoundTestString2D),
@@ -812,7 +811,6 @@ const char* const xbgmtextsOrigArtistUpper[] = {
 	NULL,
 	NULL,
 };
-
 
 const uint8_t xbgmtextsOrigArtistUpperSize[] = {
 	0,
@@ -1055,7 +1053,6 @@ const char* const xbgmtextsOrigArtistLower[] = {
 	musicSoundTestString8F,
 };
 
-
 const uint8_t xbgmtextsOrigArtistLowerSize[] = {
 	sizeof(musicSoundTestString8B),
 	sizeof(musicSoundTestString8B),
@@ -1296,7 +1293,6 @@ const char* const xbgmtextsCoveringArtist1[] = {
 	musicSoundTestStringAF,
 	musicSoundTestStringA6,
 };
-
 
 const uint8_t xbgmtextsCoveringArtist1Size[] = {
 	sizeof(musicSoundTestStringC2),
@@ -1539,7 +1535,6 @@ const char* const xbgmtextsCoveringArtist2[] = {
 	NULL,
 };
 
-
 const uint8_t xbgmtextsCoveringArtist2Size[] = {
 	0,
 	0,
@@ -1781,7 +1776,6 @@ const char* const xbgmtextsCoveringArtist3[] = {
 	NULL,
 };
 
-
 const uint8_t xbgmtextsCoveringArtist3Size[] = {
 	0,
 	0,
@@ -2022,7 +2016,6 @@ const char* const xbgmtextsCoveringArtist4[] = {
 	NULL,
 	NULL,
 };
-
 
 const uint8_t xbgmtextsCoveringArtist4Size[] = {
 	0,
