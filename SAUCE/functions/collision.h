@@ -405,7 +405,7 @@ char bg_coll_slope();
 char bg_side_coll_common() {
 	tmp1 = Generic.y + (currplayer_mini ? (byte(0x10 - Generic.height) >> 1) : 0) + (Generic.height >> 1);
 
-	if (currplayer_mini && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT)) {
+	if (currplayer_mini && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA)) {
 		tmp1 += (currplayer_gravity ? 3 : -2);
 	}
 	
@@ -692,7 +692,7 @@ char bg_coll_slope() {
 	if ((uint8_t)(tmp4) >= tmp7) {
 			tmp8 = tmp4 - tmp7;
 
-			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT) {
+			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA) {
 				if ((controllingplayer->a || controllingplayer->up)) {
 					make_cube_jump_higher = 1;
 					

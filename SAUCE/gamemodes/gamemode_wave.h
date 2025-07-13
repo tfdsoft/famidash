@@ -4,7 +4,9 @@ CODE_BANK_PUSH("XCD_BANK_01")
 void wave_eject();
 void wave_movement(){
 
-	if (!dashing[currplayer]) {
+	tmp1 = dashing[currplayer];
+
+	if (!tmp1) {
 		
 		currplayer_vel_y = !currplayer_mini ? 
 			(currplayer_gravity ? -currplayer_vel_x : currplayer_vel_x) :
@@ -19,10 +21,10 @@ void wave_movement(){
 		}
 
 	}	
-	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
-	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
-	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else if (tmp1 == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
+	else if (tmp1 == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else if (tmp1 == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
+	else if (tmp1 == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
 	else currplayer_vel_y = 1;
 
 	Generic.x = high_byte(currplayer_x) + 4;
