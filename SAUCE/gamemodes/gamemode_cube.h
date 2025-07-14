@@ -259,7 +259,8 @@ void cube_movement(){
 void common_gravity_routine() {
 	register int16_t tempvel;
 	register uint8_t temp_gr;
-	if (!dashing[currplayer]) {
+	tmp1 = dashing[currplayer];
+	if (!tmp1) {
 		temp_gr = currplayer_gravity;
 		if(!currplayer_gravity ? ((!currplayer_mini ? fallspeed_big : fallspeed_mini) < currplayer_vel_y) : (-(!currplayer_mini ? fallspeed_big : fallspeed_mini) > currplayer_vel_y)){
 			temp_gr = !temp_gr; 
@@ -277,10 +278,10 @@ void common_gravity_routine() {
 	}
 	
 	
-	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
-	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x*2; currplayer_y -= currplayer_vel_y; }	
-	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x*2; currplayer_y += currplayer_vel_y; }	
+	else if (tmp1 == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
+	else if (tmp1 == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else if (tmp1 == 4) { currplayer_vel_y = currplayer_vel_x*2; currplayer_y -= currplayer_vel_y; }	
+	else if (tmp1 == 5) { currplayer_vel_y = currplayer_vel_x*2; currplayer_y += currplayer_vel_y; }	
 	else currplayer_vel_y = currplayer_gravity ? -1 : 1;
 }
 
