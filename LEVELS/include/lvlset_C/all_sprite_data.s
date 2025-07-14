@@ -8405,7 +8405,7 @@ sprite_data_aftercatabath:
 
 .segment "DAT_BANK_0C"
 sprite_data_slaughterhouse:
-  .byte $00,$00,$d0,$02,$18
+  .byte $00,$00,$f0,$01,$18
   .byte $00,$00,$e0,$02,$fe
   .byte $00,$00,$00,$03,$8f
   .byte $00,$00,$10,$03,$cf
