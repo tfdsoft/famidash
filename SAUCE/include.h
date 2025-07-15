@@ -40,6 +40,7 @@
 // banks set inside level data due to banking
 #include "objdefines.h"   // object defines for easier implementation
 
+#include "defines/difficulty.h"
 #include "levellist.h"    // level order goes here
 #include "const_levellist.h"    // colors list and icontable for overflow conservation reasons
 
