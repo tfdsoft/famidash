@@ -22,7 +22,7 @@ CODE_BANK("XCD_BANK_06")
 
 #include "defines/nametable/menunametable_XCD06.c"
 
-#if LEVELSET != 'A' && LEVELSET != 'Z'
+#if LEVELSET != 'A' && LEVELSET != 0xA1B73
 #include "menustates/playmain.c"
 #endif
 

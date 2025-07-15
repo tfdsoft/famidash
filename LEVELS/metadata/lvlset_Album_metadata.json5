@@ -48,5 +48,5 @@
 			offsetY: -8
 		}
 	],
-	levelSetDefineName: "Z"
+	levelSetDefineName: 0xA1B73
 }
