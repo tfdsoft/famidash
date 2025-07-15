@@ -1,5 +1,6 @@
 {
 	songModule: "the album.fms",
+	extendedMetadata: true,
 	songs: [
 		{
 			fmsSongName: "Menu Theme",
