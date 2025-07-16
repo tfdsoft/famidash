@@ -4,14 +4,14 @@
 		{
 			fmsSongName: "Menu Theme (2.2)",
 			lowerText: "MENU",
-			originalArtist: "GD COLON",
+			originalArtistText: "GD COLON",
 			vsSystemEnabled: false
 		},
 		{
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
 			lowerText: "MADNESS",
-			originalArtist: "FOREVERBOUND",
+			originalArtistText: "FOREVERBOUND",
 			nsfData: {
 				trackLabel: "Stereo Madness",
 				trackAuthor: {
@@ -25,7 +25,7 @@
 		{
 			fmsSongName: "Can't Let Go",
 			lowerText: "CANT LET GO",
-			originalArtist: "DJVI",
+			originalArtistText: "DJVI",
 			nsfData: {
 				trackLabel: "Cant Let Go ~ Can't Let Go",
 				trackAuthor: {
@@ -39,7 +39,7 @@
 		{
 			fmsSongName: "Cycles",
 			lowerText: "CYCLES",
-			originalArtist: "DJVI",
+			originalArtistText: "DJVI",
 			nsfData: {
 				trackLabel: "Cycles",
 				trackAuthor: {
@@ -53,12 +53,12 @@
 		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
-			originalArtist: "DJ NATE",
+			originalArtistText: "DJ NATE",
 		},
 		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",
-			originalArtist: "OCULARNEBULAR",
+			originalArtistText: "OCULARNEBULAR",
 			
 			nsfData: {
 				trackLabel: "Practice ~ Stay Inside Me",
@@ -75,13 +75,13 @@
 			fmsSongName: "Stereo madness 2",
 			upperText: "STEREO ",
 			lowerText: "MADNESS 2",
-			originalArtist: "FOREVERBOUND",
+			originalArtistText: "FOREVERBOUND",
 		},
 		{
 			fmsSongName: "Scheming Weasel",
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
-			originalArtist: "KEVIN MACLEOD",
+			originalArtistText: "KEVIN MACLEOD",
 			vsSystemEnabled: false
 		},
 
@@ -89,158 +89,158 @@
 			fmsSongName: "Driving By Night",
 			upperText: "DRIVING BY",
 			lowerText: "NIGHT",
-			originalArtist: "REINNBOW",
+			originalArtistText: "REINNBOW",
 			
 		},
 		{
 			fmsSongName: "Chaoz Fantasy Extended",
 			upperText: "CHAOZ FANTASY",
 			lowerText: "EXTENDED",
-			originalArtist: "PARAGONX9",
+			originalArtistText: "PARAGONX9",
 			
 		},
 		{
 			fmsSongName: "clutterfunk 2",
 			lowerText: "CLUTTERFUNK 2",
-			originalArtist: "WATERFLAME",
+			originalArtistText: "WATERFLAME",
 			/* no vs system to speak of */
 		},
 		{
 			fmsSongName: "Glitch Gremlin",
 			upperText: "GLITCH",
 			lowerText: "GREMLIN",
-			originalArtist: "BOSSFIGHT",
+			originalArtistText: "BOSSFIGHT",
 			/* no vs system to speak of */
 		},
 		{
 			fmsSongName: "kesobomb",
 			lowerText: "KESOBOMB",
-			originalArtist: "RYMDCRAFT",
+			originalArtistText: "RYMDCRAFT",
 			/* no vs system to speak of */
 		},
 		{
 			fmsSongName: "Ninox",
 			lowerText: "NINOX",
-			originalArtist: "MEGANEKO",
+			originalArtistText: "MEGANEKO",
 		},
 		{
 			fmsSongName: "Speed Racer",
 			upperText: "CHAOZ",
 			lowerText: "IMPACT",
-			originalArtist: "PARAGONX9",
+			originalArtistText: "PARAGONX9",
 		},
 		{
 			fmsSongName: "Magic Touch",
 			lowerText: "MAGIC TOUCH",
-			originalArtist: "ROMOS",
+			originalArtistText: "ROMOS",
 		},
 		{
 			fmsSongName: "Pyrophoric",
 			lowerText: "PYROPHORIC",
-			originalArtist: "NERDBOY628",
+			originalArtistText: "NERDBOY628",
 		},
 		{
 			fmsSongName: "subtle oddities",
 			upperText: "SUBTLE",
 			lowerText: "ODDITIES",
-			originalArtist: "LEMON DEMON",
+			originalArtistText: "LEMON DEMON",
 		},
 		{
 			fmsSongName: "Hell",
 			lowerText: "ACCELERATE",
-			originalArtist: "ACID NOTATION",
+			originalArtistText: "ACID NOTATION",
 		},
 		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
-			originalArtist: "SOUNDHOLICK",
+			originalArtistText: "SOUNDHOLICK",
 			
 		},
 		{
 			fmsSongName: "check out",
 			lowerText: "CHECK OUT",
-			originalArtist: "MADHOUSEDUDE",
+			originalArtistText: "MADHOUSEDUDE",
 			
 		},
 		{
 			fmsSongName: "holography",
 			lowerText: "HOLOGRAPHY",
-			originalArtist: "GARLAGAN",
+			originalArtistText: "GARLAGAN",
 			
 		},
 		{
 			fmsSongName: "Dance of the violins",
 			upperText: "DANCE OF",
 			lowerText: "THE VIOLINS",
-			originalArtist: "F777",
+			originalArtistText: "F777",
 			
 		},
 		{
 			fmsSongName: "Sonic blaster",
 			upperText: "SONIC",
 			lowerText: "BLASTER",
-			originalArtist: "F777",
+			originalArtistText: "F777",
 		},
 		{
 			fmsSongName: "Infinite Power",
 			upperText: "INFINITE",
 			lowerText: "POWER",
-			originalArtist: "THEFATRAT",
+			originalArtistText: "THEFATRAT",
 		},		
 		{
 			fmsSongName: "endorphins",
 			lowerText: "ENDORPHINS",
-			originalArtist: "DUOCORE",
+			originalArtistText: "DUOCORE",
 		},	
 		{
 			fmsSongName: "Infiltration",
 			lowerText: "INFILTRATION",
-			originalArtist: "PARAGONX9",
+			originalArtistText: "PARAGONX9",
 		},			
 		{
 			fmsSongName: "Power Trip",
 			lowerText: "POWER TRIP",
-			originalArtist: "BOOM KITTY",
+			originalArtistText: "BOOM KITTY",
 		},			
 		{
 			fmsSongName: "What's a Future Funk?",
 			upperText: "WHATS A",
 			lowerText: "FUTURE FUNK",
-			originalArtist: "LEMKUUJA",
+			originalArtistText: "LEMKUUJA",
 			
 		},			
 		{
 			fmsSongName: "Tiny Tunes",
 			lowerText: "TINY TUNES",
-			originalArtist: "FANTOMENK",
+			originalArtistText: "FANTOMENK",
 			
 		},		
 		{
 			fmsSongName: "Meowstuff",
 			lowerText: "MEOWSTUFF",
-			originalArtist: "DAVINCE",
+			originalArtistText: "DAVINCE",
 			
 		},	
 		{
 			fmsSongName: "Pursuit",
 			lowerText: "PURSUIT",
-			originalArtist: "BOOM KITTY",
+			originalArtistText: "BOOM KITTY",
 			
 		},			
 		{
 			fmsSongName: "Windfall",
 			lowerText: "WINDFALL",
-			originalArtist: "THEFATRAT",
+			originalArtistText: "THEFATRAT",
 		},		
 		{
 			fmsSongName: "Xenogenesis",
 			lowerText: "XENOGENESIS",
-			originalArtist: "THEFATRAT",
+			originalArtistText: "THEFATRAT",
 		},		
 		{
 			fmsSongName: "Fire Aura",
 			lowerText: "FIRE AURA",
-			originalArtist: "KID2WILL",
+			originalArtistText: "KID2WILL",
 		},			
 		
 	],

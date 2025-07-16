@@ -111,12 +111,12 @@ def processMetadata(metadata : dict) -> dict:
     # Optimize text usage
     if not extMeta:
         # Main system
-        textKeyList = ['upperText', 'lowerText', 'originalArtist']
+        textKeyList = ['upperText', 'lowerText', 'originalArtistText']
     else:
         # The album
         textKeyList = [
             'upperText', 'lowerText', 'upperOrigArtistText', 'lowerOrigArtistText',
-            'CoveringArtist1Text', 'CoveringArtist2Text', 'CoveringArtist3Text', 'CoveringArtist4Text'
+            'coveringArtist1Text', 'coveringArtist2Text', 'coveringArtist3Text', 'coveringArtist4Text'
         ]
     totalTextList = []
     textLists = {}
@@ -134,52 +134,16 @@ def processMetadata(metadata : dict) -> dict:
 
     # Convert to C
     outputStringsList = [f'const char musicSoundTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedTextList)]
-    upperArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['upperText']]
-    upperSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['upperText']]
-    lowerArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['lowerText']]
-    lowerSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['lowerText']]
+
+    pointerArrays = {key: 
+            [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists[key]]
+        for key in textKeyList}
+
+    sizeArrays = {key: 
+            [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists[key]]
+        for key in textKeyList}
 
     # TODO: artist tables
-
-    if extMeta:
-        # Convert to C
-        upperOrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['upperOrigArtistText']]
-        upperOrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['upperOrigArtistText']]
-        lowerOrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['lowerOrigArtistText']]
-        lowerOrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['lowerOrigArtistText']]
-
-        CoveringArtist1ArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['CoveringArtist1Text']]
-        CoveringArtist1SizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['CoveringArtist1Text']]
-        CoveringArtist2ArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['CoveringArtist2Text']]
-        CoveringArtist2SizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['CoveringArtist2Text']]
-
-        CoveringArtist3ArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['CoveringArtist3Text']]
-        CoveringArtist3SizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['CoveringArtist3Text']]
-        CoveringArtist4ArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['CoveringArtist4Text']]
-        CoveringArtist4SizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['CoveringArtist4Text']]
-
-        # Package into the main system
-        OrigArtistArrayList = {
-            'OrigArtistUpper': upperOrigArtistArrayList,
-            'OrigArtistLower': lowerOrigArtistArrayList,
-            'CoveringArtist1': CoveringArtist1ArrayList,
-            'CoveringArtist2': CoveringArtist2ArrayList,
-            'CoveringArtist3': CoveringArtist3ArrayList,
-            'CoveringArtist4': CoveringArtist4ArrayList,
-        }
-        OrigArtistSizeArrayList = {
-            'OrigArtistUpper': upperOrigArtistSizeArrayList,
-            'OrigArtistLower': lowerOrigArtistSizeArrayList,
-            'CoveringArtist1': CoveringArtist1SizeArrayList,
-            'CoveringArtist2': CoveringArtist2SizeArrayList,
-            'CoveringArtist3': CoveringArtist3SizeArrayList,
-            'CoveringArtist4': CoveringArtist4SizeArrayList,
-        }
-
-    else:
-        # Convert to C
-        OrigArtistArrayList = [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists['originalArtist']]
-        OrigArtistSizeArrayList = [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists['originalArtist']]
 
     # Get SFX names
     sfxTextList = [i['text'] for i in metadata['SFX'] if 'text' in i.keys() and i['text']]
@@ -217,15 +181,10 @@ def processMetadata(metadata : dict) -> dict:
         'soundTestData': {
             'songNames': songNameList,
             'vsSongNames': vsSongNameList,
-            'soundTestStrings': outputStringsList,
-            'upperPtrs': upperArrayList,
-            'upperSizes': upperSizeArrayList,
-            'lowerPtrs': lowerArrayList,
-            'lowerSizes': lowerSizeArrayList,
-
-            # Main system
-            'OrigArtistPtrs': OrigArtistArrayList,
-            'OrigArtistSizes': OrigArtistSizeArrayList,
+            
+            'musicSoundTestStrings': outputStringsList,
+            'musicPtrs': pointerArrays,
+            'musicSizes': sizeArrays,
 
             'sfxSoundTestStrings': sfxOutputStringsList,
             'sfxPtrs': sfxArrayList,
@@ -234,6 +193,7 @@ def processMetadata(metadata : dict) -> dict:
         'nsfMetadata': {
             'trackLabelList': trackLabelList,
             'trackAuthorList': trackAuthorList,
+
             'durationNTSCList': durationNTSCList,
             'durationPALList': durationPALList,
             'durationFadeList': durationFadeList
@@ -562,222 +522,108 @@ if __name__ == "__main__":
     lastAfterDatBank = lastDatBank + 1
     firstDmcBank = lastAfterDatBank - len([i for i in dpcmBanks if i != dmcBankMetaUnused])
     firstMusBank = firstDmcBank - len(bins)
-    header_data = [
-        '; Generated by export.py using data in metadata.json',
-        '',
-        '; Music data banks',
-        f'.segment "{datBankSegPrefix}{firstMusBank:02X}"',
-        '\tfirstMusicBankPtr := *',
-        f'\t.include "{exportStemPrefix}_0.s"'
-    ]
-    if (len(bins) > 1):
-        header_data += [f'.segment "{datBankSegPrefix}{i+firstMusBank:02X}"\n\t.include "{exportStemPrefix}_{i}.s"' for i in range(1, len(bins))]
+
+    header_music_bank_data = []
+    for i in range(1, len(bins)):   # The first music bank is special
+        header_music_bank_data += [
+            f'.segment "{datBankSegPrefix}{i+firstMusBank:02X}"',
+            f'\t.include "{exportStemPrefix}_{i}.s"'
+        ]
 
     if (len(dpcmBanks)):
-        header_data += [
-            '',
-            '; DMC banks',
+        header_dmc_bank_data = [
+            '', '; DMC banks',
             f'.segment "{datBankSegPrefix}{firstDmcBank:02X}"',
             '\tfirstDMCBankPtr := *',
             f'\t.incbin "{exportStemPrefix}_bank{dpcmBanks[0]}.dmc"',
         ]
-        header_data += [f'.segment "{datBankSegPrefix}{i+firstDmcBank:02X}"\n\t.incbin "{exportStemPrefix}_bank{bank}.dmc"' for i, bank in enumerate(dpcmBanks[1:], 1) if bank != dmcBankMetaUnused]
+        for i, bank in enumerate(dpcmBanks[1:], 1):
+            if bank != dmcBankMetaUnused:
+                header_dmc_bank_data += [
+                    f'.segment "{datBankSegPrefix}{i+firstDmcBank:02X}"',
+                    f'\t.incbin "{exportStemPrefix}_bank{bank}.dmc"'
+                ]
+        header_dmc_bank_constant = ['FIRST_DMC_BANK = .bank(firstDMCBankPtr)']
+    else:
+        header_dmc_bank_data = []
+        header_dmc_bank_constant = []
 
-    header_data += processed_metadata['pcmMetadata']['headerData']
-
-    header_data += [
-        '',
-        '; Constants',
+    header_data = [
+        '; Generated by export.py using data in metadata.json',
+        '', '; Music data banks',
+        f'.segment "{datBankSegPrefix}{firstMusBank:02X}"',
+        '\tfirstMusicBankPtr := *',
+        f'\t.include "{exportStemPrefix}_0.s"',
+        *header_music_bank_data,
+        *header_dmc_bank_data,
+        *processed_metadata['pcmMetadata']['headerData'],
+        '', '; Constants',
         'FIRST_MUSIC_BANK = .bank(firstMusicBankPtr)',
+        *header_dmc_bank_constant,
+        ''
     ]
-    if (len(dpcmBanks)):
-        header_data.append('FIRST_DMC_BANK = .bank(firstDMCBankPtr)')
 
     (exportPath / "music_data_header.s").write_text("\n".join(header_data))
 
     print(f"== {exportStemPrefix}_soundTestTables.h")
     processed_soundtest_metadata = processed_metadata['soundTestData']
-    if extMeta:
-        soundTestTextData = [
-            '// Generated by export.py using data in metadata.json',
-            '',
-            '#if !__VS_SYSTEM',
-            '',
-            *processed_soundtest_metadata['soundTestStrings'],
-            '', '',
-            'const char* const xbgmtextsUpper[] = {',
-            *processed_soundtest_metadata['upperPtrs'],
+
+    mainArrays = []
+    vsArrays = []
+
+    for key in processed_soundtest_metadata['musicPtrs'].keys():
+        arrName = key[0].upper() + key[1:-4] # remove the Text at the end
+        mainArrays += [
+            '', f'const char* const xbgmtexts{arrName}[] = {{',
+            *processed_soundtest_metadata['musicPtrs'][key],
             '};',
-            '',
-            'const uint8_t xbgmtextsUpperSize[] = {',
-            *processed_soundtest_metadata['upperSizes'],
+            '', f'const uint8_t xbgmtexts{arrName}Size[] = {{',
+            *processed_soundtest_metadata['musicSizes'][key],
             '};',
-            '', '',
-            'const char* const xbgmtextsLower[] = {',
-            *processed_soundtest_metadata['lowerPtrs'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsLowerSize[] = {',
-            *processed_soundtest_metadata['lowerSizes'],
-            '};',
-            '', '',
-            'const char* const xbgmtextsOrigArtistUpper[] = {',
-            *processed_soundtest_metadata['OrigArtistPtrs']['OrigArtistUpper'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsOrigArtistUpperSize[] = {',
-            *processed_soundtest_metadata['OrigArtistSizes']['OrigArtistUpper'],
-            '};',
-            '', '',
-            'const char* const xbgmtextsOrigArtistLower[] = {',
-            *processed_soundtest_metadata['OrigArtistPtrs']['OrigArtistLower'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsOrigArtistLowerSize[] = {',
-            *processed_soundtest_metadata['OrigArtistSizes']['OrigArtistLower'],
-            '};',
-            '', '',
-            'const char* const xbgmtextsCoveringArtist1[] = {',
-            *processed_soundtest_metadata['OrigArtistPtrs']['CoveringArtist1'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsCoveringArtist1Size[] = {',
-            *processed_soundtest_metadata['OrigArtistSizes']['CoveringArtist1'],
-            '};',
-            '', '',
-            'const char* const xbgmtextsCoveringArtist2[] = {',
-            *processed_soundtest_metadata['OrigArtistPtrs']['CoveringArtist2'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsCoveringArtist2Size[] = {',
-            *processed_soundtest_metadata['OrigArtistSizes']['CoveringArtist2'],
-            '};',
-            '', '',
-            'const char* const xbgmtextsCoveringArtist3[] = {',
-            *processed_soundtest_metadata['OrigArtistPtrs']['CoveringArtist3'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsCoveringArtist3Size[] = {',
-            *processed_soundtest_metadata['OrigArtistSizes']['CoveringArtist3'],
-            '};',
-            '', '',
-            'const char* const xbgmtextsCoveringArtist4[] = {',
-            *processed_soundtest_metadata['OrigArtistPtrs']['CoveringArtist4'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsCoveringArtist4Size[] = {',
-            *processed_soundtest_metadata['OrigArtistSizes']['CoveringArtist4'],
-            '};',
-            '', '',
-            '#else',
-            '',
-            'const char* const xbgmtextsUpper[] = {};',
-            'const uint8_t xbgmtextsUpperSize[] = {};',
-            'const char* const xbgmtextsLower[] = {};',
-            'const uint8_t xbgmtextsLowerSize[] = {};',
-            'const char* const xbgmtextsOrigArtistUpper[] = {};',
-            'const uint8_t xbgmtextsOrigArtistUpperSize[] = {};',
-            'const char* const xbgmtextsOrigArtistLower[] = {};',
-            'const uint8_t xbgmtextsOrigArtistLowerSize[] = {};',
-            'const char* const xbgmtextsCoveringArtist1[] = {};',
-            'const uint8_t xbgmtextsCoveringArtist1Size[] = {};',
-            'const char* const xbgmtextsCoveringArtist2[] = {};',
-            'const uint8_t xbgmtextsCoveringArtist2Size[] = {};',
-            'const char* const xbgmtextsCoveringArtist3[] = {};',
-            'const uint8_t xbgmtextsCoveringArtist3Size[] = {};',
-            'const char* const xbgmtextsCoveringArtist4[] = {};',
-            'const uint8_t xbgmtextsCoveringArtist4Size[] = {};',
-            '',
-            '#endif',
-            '', '', '',
-            'CODE_BANK_PUSH("RODATA")',
-            '',
-            '#if !__VS_SYSTEM',
-            '',
-            'const uint8_t xbgmlookuptable[] = {',
-            *[f"\t{i}," for i in processed_soundtest_metadata['songNames']],
-            '};', '', '#else', '',
-            'const uint8_t xbgmlookuptable[] = {',
-            *[f"\t{i}," for i in processed_soundtest_metadata['vsSongNames']],
-            '};', '', '#endif', '', 
-            'CODE_BANK_POP()',
             ''
         ]
-    else:
-        soundTestTextData = [
-            '// Generated by export.py using data in metadata.json',
-            '',
-            '#if !__VS_SYSTEM',
-            '',
-            *processed_soundtest_metadata['soundTestStrings'],
-            '', '',
-            'const char* const xbgmtextsUpper[] = {',
-            *processed_soundtest_metadata['upperPtrs'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsUpperSize[] = {',
-            *processed_soundtest_metadata['upperSizes'],
-            '};',
-            '', '',
-            'const char* const xbgmtextsLower[] = {',
-            *processed_soundtest_metadata['lowerPtrs'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsLowerSize[] = {',
-            *processed_soundtest_metadata['lowerSizes'],
-            '};',
-            '', ''
-            'const char* const xbgmtextsOrigArtist[] = {',
-            *processed_soundtest_metadata['OrigArtistPtrs'],
-            '};',
-            '',
-            'const uint8_t xbgmtextsOrigArtistSize[] = {',
-            *processed_soundtest_metadata['OrigArtistSizes'],
-            '};',
-            '', '',
-            '#else',
-            '',        
-            'const char* const xbgmtextsUpper[] = {};',
-            'const uint8_t xbgmtextsUpperSize[] = {};',
-            'const char* const xbgmtextsLower[] = {};',
-            'const uint8_t xbgmtextsLowerSize[] = {};',
-            'const char* const xbgmtextsOrigArtist[] = {};',
-            'const uint8_t xbgmtextsOrigArtistSize[] = {};',
-            '',
-            '#endif',
-            '', '', '',
-            'CODE_BANK_PUSH("RODATA")',
-            '',
-            '#if !__VS_SYSTEM',
-            '',
-            'const uint8_t xbgmlookuptable[] = {',
-            *[f"\t{i}," for i in processed_soundtest_metadata['songNames']],
-            '};', '', '#else', '',
-            'const uint8_t xbgmlookuptable[] = {',
-            *[f"\t{i}," for i in processed_soundtest_metadata['vsSongNames']],
-            '};', '', '#endif', '', 
-            'CODE_BANK_POP()',
-            ''
+        vsArrays += [
+            f'const char* const xbgmtexts{arrName}[] = {{}};',
+            f'const uint8_t xbgmtexts{arrName}Size[] = {{}};',
         ]
+
+    soundTestTextData = [
+        '// Generated by export.py using data in metadata.json',
+        '', '#if !__VS_SYSTEM',
+        '', *processed_soundtest_metadata['musicSoundTestStrings'],
+        '', *mainArrays,
+        '', '#else',
+        '', *vsArrays,
+        '', '#endif',
+        '', '', '',
+        'CODE_BANK_PUSH("RODATA")',
+        '', '#if !__VS_SYSTEM',
+        '', 'const uint8_t xbgmlookuptable[] = {',
+        *[f"\t{i}," for i in processed_soundtest_metadata['songNames']],
+        '};',
+        '', '#else',
+        '', 'const uint8_t xbgmlookuptable[] = {',
+        *[f"\t{i}," for i in processed_soundtest_metadata['vsSongNames']],
+        '};',
+        '', '#endif',
+        '', 'CODE_BANK_POP()',
+        ''
+    ]
     (exportPath / f"{exportStemPrefix}_soundTestTables.h").write_text("\n".join(soundTestTextData))
 
     print(f"== sfx_soundTestTables.h")
     soundTestSfxTextData = [
         '// Generated by export.py using data in metadata.json',
+        '', '#if !__VS_SYSTEM',
+        '', *processed_soundtest_metadata['sfxSoundTestStrings'],
         '',
-        '#if !__VS_SYSTEM',
-        '',
-        *processed_soundtest_metadata['sfxSoundTestStrings'],
-        '', '',
-        'const char* const sfxtexts[] = {',
+        '', 'const char* const sfxtexts[] = {',
         *processed_soundtest_metadata['sfxPtrs'],
         '};',
-        '',
-        'const uint8_t sfxtextSizes[] = {',
+        '', 'const uint8_t sfxtextSizes[] = {',
         *processed_soundtest_metadata['sfxSizes'],
         '};',
-        '',
-        '#else',
+        '', '#else',
         '',
         'const char* const sfxtexts[] = {};',
         'const uint8_t sfxtextSizes[] = {};',
@@ -790,14 +636,11 @@ if __name__ == "__main__":
     print("== pcm_metadataTables.s")
     pcmMetadataText = [
         '; Generated by export.py using data in metadata.json',
-        '',
-        'Bank:',
+        '', 'Bank:',
         *processed_metadata['pcmMetadata']['bankTable'],
-        '',
-        'SampleRate_NTSC:   ; Also applies to Dendy, as it is derived from the CPU speed',
+        '', 'SampleRate_NTSC:   ; Also applies to Dendy, as it is derived from the CPU speed',
         *processed_metadata['pcmMetadata']['sampleRateNTSC'],
-        '',
-        'SampleRate_PAL:',
+        '', 'SampleRate_PAL:',
         *processed_metadata['pcmMetadata']['sampleRatePAL'],
         ''
     ]
