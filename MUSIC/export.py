@@ -3,6 +3,7 @@
 import sys
 import pathlib
 import itertools
+from collections.abc import Iterable
 
 famistudioHelpRegex = r"FamiStudio (?P<version>.+) Command-Line Usage"
 
@@ -114,10 +115,35 @@ def processMetadata(metadata : dict) -> dict:
         textKeyList = ['upperText', 'lowerText', 'originalArtistText']
     else:
         # The album
+        # First, generate the artist entries
+        artistMappingTable = metadata.get('artistTextMappingTable', {})
+        artistMetadataKeys = {
+            'original': [f'{i}OrigArtistText' for i in ['upper', 'lower']],
+            'covering': [f'coveringArtist{i}Text' for i in range(1, 4+1)]
+        }
+        for entry in songlist:
+            for artistType in ['original', 'covering']:
+                artistData = entry.get('originalArtist', [])
+                if not isinstance(artistData, list):
+                    artistData = [artistData]
+                for key, artist in zip(artistMetadataKeys[artistType], artistData):
+                    # Cut off if too many artists; possibly make a better system for more artists later
+                    if key not in entry.keys(): # If the text already exists, do not replace
+                        entry[key] = (
+                            artist.upper() if artist not in artistMappingTable
+                            else artistMappingTable[artist]
+                        )
+        # Finally, the corresponding metadata keys
         textKeyList = [
-            'upperText', 'lowerText', 'upperOrigArtistText', 'lowerOrigArtistText',
-            'coveringArtist1Text', 'coveringArtist2Text', 'coveringArtist3Text', 'coveringArtist4Text'
+            'upperText', 'lowerText',
+            *artistMetadataKeys['original'],
+            *artistMetadataKeys['covering']
         ]
+
+        # TODO eventually: generate NSF metadata from this
+
+
+
     totalTextList = []
     textLists = {}
     for key in textKeyList:
@@ -142,8 +168,6 @@ def processMetadata(metadata : dict) -> dict:
     sizeArrays = {key: 
             [f'\tsizeof(musicSoundTestString{i:02X}),' if i != None else '\t0,' for i in idxLists[key]]
         for key in textKeyList}
-
-    # TODO: artist tables
 
     # Get SFX names
     sfxTextList = [i['text'] for i in metadata['SFX'] if 'text' in i.keys() and i['text']]
@@ -280,7 +304,6 @@ if __name__ == "__main__":
     import pyjson5
     import time
     import multiprocessing
-    from collections.abc import Iterable
     
     def checkErr(proc : subprocess.CompletedProcess):
         if (proc.returncode != 0):
