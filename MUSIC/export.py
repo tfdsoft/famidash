@@ -123,7 +123,7 @@ def processMetadata(metadata : dict) -> dict:
         }
         for entry in songlist:
             for artistType in ['original', 'covering']:
-                artistData = entry.get('originalArtist', [])
+                artistData = entry.get(f'{artistType}Artist', [])
                 if not isinstance(artistData, list):
                     artistData = [artistData]
                 for key, artist in zip(artistMetadataKeys[artistType], artistData):
