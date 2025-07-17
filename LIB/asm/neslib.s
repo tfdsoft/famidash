@@ -118,40 +118,64 @@ nmi:
   
   
   lda _pauseStatus
-  bne @calc
+  bne @readJoypadCycleAligned
   lda _kandokidshack4
   cmp #$0f
   beq @calc2
   lda _slowmode
-  beq @calc
+  beq @readJoypadCycleAligned
 @calc2:
   lda _kandoframecnt
   and #$01
   bne @skipAll
   
-@calc:
+@readJoypadCycleAligned:
   .if !VS_SYSTEM
+  	; The only reason we need legacy joypad reading is Nestopia
+  	; Nestopia doesn't support the SNES Mouse
+  	; Therefore this is the only 100% accurate way to determine
+  	; if we are on Nestopia
 	  lda noMouse
-	  bne @SkipMouse
+	  bne @readJoypadLegacy
 	  ; Read the raw controller data synced with OAM DMA to prevent
 	  ; DMC DMA bugs
   	jsr oam_and_readjoypad
 
+  	; Since we have to have a mouse in port 2 to get here,
+  	; Check if the signature is correct
 	  lda <(mouse + kMouseButtons)
 	  and #$0f
 	  cmp #$01
-	  beq :+
+	  beq @readJoypadFinish
+
+	  ; If it isn't, say that we don't have a mouse anymore
+	  inc noMouse
+	  bne @readJoypadFinish	; = BRA
   .endif
-@SkipMouse:
+@readJoypadLegacy:
 	LDA #>OAM_BUF
-  	STA PPU_OAM_DMA
-	sta noMouse ; it checks for non zero, not just 1
-	lda #$0
-	sta <(mouse + kMouseButtons)
+  STA PPU_OAM_DMA
+
+	; save the previous controller state for calcuating the previous results
 	lda <joypad1
 	sta TEMP + 4
-    jsr _pad_poll
-  :
+  lda <joypad2
+  sta TEMP + 5
+
+	lda #$0
+	sta <(mouse + kMouseButtons)
+
+	; Poll controller port 1
+	tay
+  jsr pad_poll
+  sta joypad1
+
+  ; Poll controller port 2
+  iny
+  jsr pad_poll
+  sta <(mouse + kMouseZero)	; where calculate_extra_fields expects it to be
+
+@readJoypadFinish:
   ; Calculate the press/release for the controllers
   ; and also update mouse X/Y coords after the timing sensitive parts
   ; of NMI are complete
@@ -1080,7 +1104,8 @@ __vram_write:
 ;uint8_t __fastcall__ pad_poll(uint8_t pad);
 
 _pad_poll:
-	ldy #$00
+	tay
+pad_poll:	; Supply the arg in Y for the asm version
 	ldx #3
 @padPollPort:
 	lda #1
@@ -1104,7 +1129,6 @@ _pad_poll:
 	beq @done
 	lda <PAD_BUF+1
 @done:
-	sta <joypad1
 	ldx #0
 	rts
 
