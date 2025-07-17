@@ -278,6 +278,8 @@ if __name__ == "__main__":
     import argparse
     import binpacking
     import pyjson5
+    import time
+    import multiprocessing
     from collections.abc import Iterable
     
     def checkErr(proc : subprocess.CompletedProcess):
@@ -408,26 +410,26 @@ if __name__ == "__main__":
     exportPath = args.outputFolder
     if not exportPath.is_dir():
         exportPath.mkdir(parents=True)
-    
-    dpcmFiles = []
-    optionsToSet = []
-    masterSonglist = []
 
     print("\n==== Running export processes of each music data bank...")
+    
+    dpcmFiles = [None] * len(bins)
+    optionsToSet = [None] * len(bins)
+    masterSonglist = [None] * len(bins)
 
-    for i in range(len(bins)):
-        idxs, names, _ = zip(*sorted(bins[i]))
+    def exportMusicBank(bank : int):
+        idxs, names, _ = zip(*sorted(bins[bank]))
         idxs = ','.join(map(str, idxs))
         names = list(map(makeNiceAsmName, names))
 
-        asmExportStem = f"{exportStemPrefix}_{i}"
+        asmExportStem = f"{exportStemPrefix}_{bank}"
         asmExportPath = exportPath / f"{asmExportStem}.s"
 
         proc = subprocess.run([*fsCmd, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
         output = proc.stdout.decode()
         checkErr(proc)
 
-        print(f"== Info on bank {i}:")
+        print(f"== Info on bank {bank}:")
         print("\t" + re.search(totalSizeRegex, output).group())
 
         # Run the asm file through a few regexes:
@@ -437,7 +439,7 @@ if __name__ == "__main__":
             # Decrement song count
             (None, asmAmountOfSongsRegex, lambda x : f'{x.group(1)}{int(x.group(2)) - 1}'),
             # Make the label unique
-            (None, asmMusicDataName, f"{asmMusicDataName}{i}"),
+            (None, asmMusicDataName, f"{asmMusicDataName}{bank}"),
             # Remove DPCM aligner from header
             (asmDpcmSongHeaderIdxRegex(dpcmAlignerName), asmDpcmSongHeaderMatchRegex(dpcmAlignerName), "; The DPCM aligner used to be here\n"),
             # Remove DPCM aligner song data
@@ -454,11 +456,26 @@ if __name__ == "__main__":
                 asmExportData = re.sub(og, repl, asmExportData)
         asmExportPath.write_text(asmExportData)
 
-        dpcmFiles += exportPath.glob(f"{asmExportStem}*.dmc")
-        optionsToSet += re.findall(youMustSetRegex, output)
-        masterSonglist += names
+        return [
+            list(exportPath.glob(f"{asmExportStem}*.dmc")),   # 0: dpcmFiles
+            list(re.findall(youMustSetRegex, output)),        # 1: optionsToSet
+            list(names)                                       # 2: masterSonglist
+        ]
+
+
+    timeStart = time.time_ns()
+
+    with multiprocessing.Pool() as pool:
+        dpcmFiles, optionsToSet, masterSonglist = zip(*pool.map(exportMusicBank, range(len(bins))))
+
+    # Flatten lists
+    dpcmFiles = list(itertools.chain.from_iterable(dpcmFiles))
+    optionsToSet = list(itertools.chain.from_iterable(optionsToSet))
+    masterSonglist = list(itertools.chain.from_iterable(masterSonglist))
 
     masterSonglist.append(finalSongInListName)
+
+    print(f"\n== Export took {round((time.time_ns() - timeStart) / 1000000000, ndigits=4)} seconds")
 
     # Check the DPCM files for being identical
     print("\n==== Checking if the DPCM files are identical...")
