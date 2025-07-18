@@ -278,6 +278,50 @@ def tidyUpFSTextData(data : list, uppermostLevel = True):
     else:
         return {objtype : [obj for obj in data if obj.pop('__type') == objtype] for objtype in objtypes}
 
+def exportMusicBank(bin_, fsCmd, modulePath, dpcmidx, bank : int):
+        idxs, names, _ = zip(*sorted(bin_))
+        idxs = ','.join(map(str, idxs))
+        names = list(map(makeNiceAsmName, names))
+
+        asmExportStem = f"{exportStemPrefix}_{bank}"
+        asmExportPath = exportPath / f"{asmExportStem}.s"
+
+        proc = subprocess.run([*fsCmd, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
+        output = proc.stdout.decode()
+        checkErr(proc)
+
+        print(f"== Info on bank {bank}:")
+        print("\t" + re.search(totalSizeRegex, output).group())
+
+        # Run the asm file through a few regexes:
+        captData = []
+        asmExportData = asmExportPath.read_text()
+        for capt, og, repl in [
+            # Decrement song count
+            (None, asmAmountOfSongsRegex, lambda x : f'{x.group(1)}{int(x.group(2)) - 1}'),
+            # Make the label unique
+            (None, asmMusicDataName, f"{asmMusicDataName}{bank}"),
+            # Remove DPCM aligner from header
+            (asmDpcmSongHeaderIdxRegex(dpcmAlignerName), asmDpcmSongHeaderMatchRegex(dpcmAlignerName), "; The DPCM aligner used to be here\n"),
+            # Remove DPCM aligner song data
+            (None, lambda : asmDpcmSongMatchRegex(captData[2][0]), "; The DPCM aligner used to be here\n")
+        ]:
+            if capt != None:
+                captData.append(re.findall(capt, asmExportData))
+            else:
+                captData.append(None)
+
+            if callable(og):
+                asmExportData = re.sub(og(), repl, asmExportData)
+            else:
+                asmExportData = re.sub(og, repl, asmExportData)
+        asmExportPath.write_text(asmExportData)
+
+        return [
+            list(exportPath.glob(f"{asmExportStem}*.dmc")),   # 0: dpcmFiles
+            list(re.findall(youMustSetRegex, output)),        # 1: optionsToSet
+            list(names)                                       # 2: masterSonglist
+        ]
 
 if __name__ == "__main__":
     # install binpacking and pyjson5
@@ -440,55 +484,11 @@ if __name__ == "__main__":
     optionsToSet = [None] * len(bins)
     masterSonglist = [None] * len(bins)
 
-    def exportMusicBank(bank : int):
-        idxs, names, _ = zip(*sorted(bins[bank]))
-        idxs = ','.join(map(str, idxs))
-        names = list(map(makeNiceAsmName, names))
-
-        asmExportStem = f"{exportStemPrefix}_{bank}"
-        asmExportPath = exportPath / f"{asmExportStem}.s"
-
-        proc = subprocess.run([*fsCmd, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
-        output = proc.stdout.decode()
-        checkErr(proc)
-
-        print(f"== Info on bank {bank}:")
-        print("\t" + re.search(totalSizeRegex, output).group())
-
-        # Run the asm file through a few regexes:
-        captData = []
-        asmExportData = asmExportPath.read_text()
-        for capt, og, repl in [
-            # Decrement song count
-            (None, asmAmountOfSongsRegex, lambda x : f'{x.group(1)}{int(x.group(2)) - 1}'),
-            # Make the label unique
-            (None, asmMusicDataName, f"{asmMusicDataName}{bank}"),
-            # Remove DPCM aligner from header
-            (asmDpcmSongHeaderIdxRegex(dpcmAlignerName), asmDpcmSongHeaderMatchRegex(dpcmAlignerName), "; The DPCM aligner used to be here\n"),
-            # Remove DPCM aligner song data
-            (None, lambda : asmDpcmSongMatchRegex(captData[2][0]), "; The DPCM aligner used to be here\n")
-        ]:
-            if capt != None:
-                captData.append(re.findall(capt, asmExportData))
-            else:
-                captData.append(None)
-
-            if callable(og):
-                asmExportData = re.sub(og(), repl, asmExportData)
-            else:
-                asmExportData = re.sub(og, repl, asmExportData)
-        asmExportPath.write_text(asmExportData)
-
-        return [
-            list(exportPath.glob(f"{asmExportStem}*.dmc")),   # 0: dpcmFiles
-            list(re.findall(youMustSetRegex, output)),        # 1: optionsToSet
-            list(names)                                       # 2: masterSonglist
-        ]
-
-
     timeStart = time.time_ns()
 
-    dpcmFiles, optionsToSet, masterSonglist = zip(*[exportMusicBank(bank) for bank in range(len(bins))])
+    with multiprocessing.Pool() as pool:
+        dpcmFiles, optionsToSet, masterSonglist = zip(*pool.starmap(exportMusicBank, 
+            [[bins[bank], fsCmd, modulePath, dpcmidx, bank] for bank in range(len(bins))]))
 
     # Flatten lists
     dpcmFiles = list(itertools.chain.from_iterable(dpcmFiles))
