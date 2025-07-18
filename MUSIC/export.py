@@ -3,6 +3,8 @@
 import sys
 import pathlib
 import itertools
+import subprocess
+import re
 from collections.abc import Iterable
 
 famistudioHelpRegex = r"FamiStudio (?P<version>.+) Command-Line Usage"
@@ -328,8 +330,6 @@ if __name__ == "__main__":
     install_list = []
 
     import importlib.util
-    import subprocess
-    import sys
     spec = importlib.util.find_spec('binpacking')
     if spec is None:
         install_list.append('binpacking')
@@ -342,7 +342,6 @@ if __name__ == "__main__":
         subprocess.check_call([sys.executable, '-m', 'pip', 'install', *install_list])
 
     import os, filecmp
-    import re
     import argparse
     import binpacking
     import pyjson5
