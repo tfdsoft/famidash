@@ -974,6 +974,7 @@ void sprite_collide_lookup() {
 	// Coins
 	spcl_coin_1:
 		if (practice_point_count) return;
+		if (coin1_timer) return;
 		coins |= COIN_1;
 		coin1_timer = 1;
 		coin1_speed = 0x0200;
@@ -981,6 +982,7 @@ void sprite_collide_lookup() {
 
 	spcl_coin_2:
 		if (practice_point_count) return;
+		if (coin2_timer) return;
 		coins |= COIN_2;
 		coin2_timer = 1;
 		coin2_speed = 0x0200;
@@ -988,6 +990,7 @@ void sprite_collide_lookup() {
 
 	spcl_coin_3:
 		if (practice_point_count) return;
+		if (coin3_timer) return;
 		coins |= COIN_3;
 		coin3_timer = 1;
 		coin3_speed = 0x0200;
