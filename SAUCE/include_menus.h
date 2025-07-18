@@ -14,7 +14,9 @@ CODE_BANK_PUSH("XCD_BANK_03")
 
 CODE_BANK("XCD_BANK_05")
 
-#if !__THE_ALBUM
+#if __THE_ALBUM
+#include "menustates/bgmtest_album.c"
+#else
 #include "menustates/bgmtest.c"
 #endif
 
@@ -31,9 +33,8 @@ CODE_BANK("XCD_BANK_06")
 #include "menustates/refreshmenu.c"
 #include "menustates/progressbar_pt2.c"
 #endif
+
 CODE_BANK("XCD_BANK_02")
-
-
 
 #if !__THE_ALBUM
 #include "defines/nametable/menunametable_XCD02.c"
@@ -41,5 +42,6 @@ CODE_BANK("XCD_BANK_02")
 #include "menustates/instructions.c"
 #include "menustates/settings.c"
 #endif
+
 #include "menustates/credits.c"
 CODE_BANK_POP()

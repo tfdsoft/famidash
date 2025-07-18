@@ -479,10 +479,6 @@ if __name__ == "__main__":
         exportPath.mkdir(parents=True)
 
     print("\n==== Running export processes of each music data bank...")
-    
-    dpcmFiles = [None] * len(bins)
-    optionsToSet = [None] * len(bins)
-    masterSonglist = [None] * len(bins)
 
     timeStart = time.time_ns()
 

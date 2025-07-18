@@ -66,12 +66,6 @@ void state_savefile_validate(){
     return;
 }
 
-
-
-CODE_BANK_POP()
-
-
-
 #else
 	
 //THE ALBUM
@@ -122,7 +116,6 @@ void state_savefile_validate(){
 }
 
 
+#endif
 
 CODE_BANK_POP()
-
-#endif
