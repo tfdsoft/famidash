@@ -57,6 +57,13 @@ def pairwise(iterable):
         yield a, b
         a = b
 
+
+def checkErr(proc : subprocess.CompletedProcess):
+    if (proc.returncode != 0):
+        print(f"AN ERROR HAS OCCURED WITHIN A SUBPROCESS!\n======\nstdout dump:\n===\n{proc.stdout.decode()}\n===\nstderr dump:\n===\n{proc.stderr.decode()}\n===")
+        proc.check_returncode() # exits
+
+
 # Local version of FamiStudio function
 # Source code @ https://github.com/BleuBleu/FamiStudio/blob/master/FamiStudio/Source/Utils/Utils.cs
 # Function name: Utils.MakeNiceAsmName
@@ -347,11 +354,6 @@ if __name__ == "__main__":
     import pyjson5
     import time
     import multiprocessing
-    
-    def checkErr(proc : subprocess.CompletedProcess):
-        if (proc.returncode != 0):
-            print(f"AN ERROR HAS OCCURED WITHIN A SUBPROCESS!\n======\nstdout dump:\n===\n{proc.stdout.decode()}\n===\nstderr dump:\n===\n{proc.stderr.decode()}\n===")
-            proc.check_returncode() # exits
     
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--famistudioCommand', required=True, nargs="+",
