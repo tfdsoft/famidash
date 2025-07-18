@@ -364,14 +364,14 @@
 			upperText: "EVERY END",
 			lowerText: "PART 1",
 			originalArtist: "Dimrain47",
-			coveringArtist: "ElAngel378",
+			coveringArtist: ["ElAngel378","UserSniper"]
 		},
 		{
 			fmsSongName: "Every End PT2",
 			upperText: "EVERY END",
 			lowerText: "PART 2",
 			originalArtist: "Dimrain47",
-			coveringArtist: "ElAngel378",
+			coveringArtist: ["ElAngel378","UserSniper"]
 		},
 		{
 			fmsSongName: "Fingerbang",
