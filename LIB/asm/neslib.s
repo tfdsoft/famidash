@@ -10,7 +10,7 @@
 ;minor change %%, added ldx #0 to functions returning char
 ;removed sprid from c functions to speed them up
 
-  .import _use_auto_chrswitch
+	.import _use_auto_chrswitch
 
 	.export _pal_all,_pal_bg,_pal_spr,_pal_clear
 	.export _pal_bright
@@ -63,15 +63,15 @@ nmi:
 	; ora #%11100000		;	Enable dark emphasis
 	; sta PPU_MASK
 
-  ; If nametables are updating, don't do the palette update this frame
+	; If nametables are updating, don't do the palette update this frame
 	lda <NAME_UPD_ENABLE
 	beq @checkPal
-  ; don't run palette switches on the same frame that we flush vram to save time
-  lda VRAM_BUF
-  cmp #$ff
-  beq @checkPal
-	  jsr _flush_vram_update2
-    jmp @skipUpd
+	; don't run palette switches on the same frame that we flush vram to save time
+	lda VRAM_BUF
+	cmp #$ff
+	beq @checkPal
+		jsr _flush_vram_update2
+		jmp @skipUpd
 @checkPal:
 	lda <PAL_UPDATE		;update palette if needed
 	bne @updPal
@@ -86,8 +86,8 @@ nmi:
 	sta PPU_ADDR
 	stx PPU_ADDR
 
-  lda #<PAL_BUF-1
-  jsr palette_popslide_buffer
+	lda #<PAL_BUF-1
+	jsr palette_popslide_buffer
 
 @skipUpd:
 
@@ -103,60 +103,84 @@ nmi:
 	lda <PPU_CTRL_VAR
 	sta PPU_CTRL
 
-  lda _use_auto_chrswitch
-  beq :+
-    jsr _set_tile_banks
-  :
+	lda _use_auto_chrswitch
+	beq :+
+		jsr _set_tile_banks
+	:
 
-  lda #0
-  sta mmc3IRQTableIndex
-  sta mmc3IRQJoever
+	lda #0
+	sta mmc3IRQTableIndex
+	sta mmc3IRQJoever
 
-  jsr irq_parser ; needs to happen inside v-blank... 
-                   ; so goes before the music
-            ; but, if screen is off this should be skipped
-  
-  
-  lda _pauseStatus
-  bne @calc
-  lda _kandokidshack4
-  cmp #$0f
-  beq @calc2
-  lda _slowmode
-  beq @calc
+	jsr irq_parser ; needs to happen inside v-blank... 
+									 ; so goes before the music
+						; but, if screen is off this should be skipped
+	
+	
+	lda _pauseStatus
+	bne @readJoypadCycleAligned
+	lda _kandokidshack4
+	cmp #$0f
+	beq @calc2
+	lda _slowmode
+	beq @readJoypadCycleAligned
 @calc2:
-  lda _kandoframecnt
-  and #$01
-  bne @skipAll
-  
-@calc:
-  .if !VS_SYSTEM
-	  lda noMouse
-	  bne @SkipMouse
-	  ; Read the raw controller data synced with OAM DMA to prevent
-	  ; DMC DMA bugs
-  	jsr oam_and_readjoypad
+	lda _kandoframecnt
+	and #$01
+	bne @skipAll
+	
+@readJoypadCycleAligned:
+	.if !VS_SYSTEM
+		; The only reason we need legacy joypad reading is Nestopia
+		; Nestopia doesn't support the SNES Mouse
+		; Therefore this is the only 100% accurate way to determine
+		; if we are on Nestopia
+		lda noMouse
+		bne @readJoypadLegacy
+		; Read the raw controller data synced with OAM DMA to prevent
+		; DMC DMA bugs
+		jsr oam_and_readjoypad
 
-	  lda <(mouse + kMouseButtons)
-	  and #$0f
-	  cmp #$01
-	  beq :+
-  .endif
-@SkipMouse:
+		; Since we have to have a mouse in port 2 to get here,
+		; Check if the signature is correct
+		lda <(mouse + kMouseButtons)
+		and #$0f
+		cmp #$01
+		beq @readJoypadFinish
+
+		; If it isn't, say that we don't have a mouse anymore
+		inc noMouse
+		bne @readJoypadFinish	; = BRA
+	.endif
+@readJoypadLegacy:
 	LDA #>OAM_BUF
-  	STA PPU_OAM_DMA
-	sta noMouse ; it checks for non zero, not just 1
-	lda #$0
-	sta <(mouse + kMouseButtons)
+	STA PPU_OAM_DMA
+
+	; save the previous controller state for calcuating the previous results
 	lda <joypad1
 	sta TEMP + 4
-    jsr _pad_poll
-  :
-  ; Calculate the press/release for the controllers
-  ; and also update mouse X/Y coords after the timing sensitive parts
-  ; of NMI are complete
+	lda <joypad2
+	sta TEMP + 5
 
-  jsr calculate_extra_fields
+	lda #$0
+	sta <(mouse + kMouseButtons)
+
+	; Poll controller port 1
+	tay
+	jsr pad_poll
+	sta joypad1
+
+	; Poll controller port 2
+	iny
+	jsr pad_poll
+	sta <(mouse + kMouseZero)	; where calculate_extra_fields expects it to be
+
+@readJoypadFinish:
+	; Calculate the press/release for the controllers
+	; and also update mouse X/Y coords after the timing sensitive parts
+	; of NMI are complete
+
+	jsr calculate_extra_fields
 
 @skipAll:
 	
@@ -256,13 +280,13 @@ pal_copy:
 	dec <LEN
 	bne @0
 
-  ldx #32 - 1
+	ldx #32 - 1
 @loop:
-    ldy PAL_BUF_RAW,x
-    lda (PAL_PTR),y
-    sta PAL_BUF,x
-    dex
-    bpl @loop
+		ldy PAL_BUF_RAW,x
+		lda (PAL_PTR),y
+		sta PAL_BUF,x
+		dex
+		bpl @loop
 
 	inc <PAL_UPDATE
 
@@ -368,20 +392,20 @@ _pal_clear:
 ;void __fastcall__ pal_bright(uint8_t bright);
 
 _pal_bright:
-  tax
+	tax
 	lda palBrightTableL,x
 	sta <PAL_PTR
 	lda palBrightTableH,x	;MSB is never zero
 	sta <PAL_PTR+1
-  ldx #32 - 1
+	ldx #32 - 1
 @loop:
-    ldy PAL_BUF_RAW, x
-    lda (PAL_PTR), y
-    sta PAL_BUF,x
-    dex
-    bpl @loop
+		ldy PAL_BUF_RAW, x
+		lda (PAL_PTR), y
+		sta PAL_BUF,x
+		dex
+		bpl @loop
 	sta <PAL_UPDATE
-  rts
+	rts
 	; jsr _pal_spr_bright
 	; txa
 	; jmp _pal_bg_bright
@@ -933,31 +957,31 @@ _split:
 	rts
 
 .proc palette_popslide_buffer
-  tsx
-  stx SP_TEMP
-  tax
-  txs
-  ; global bg color
-  pla
-  tax
-  stx PPU_DATA
-  ; each palette
+	tsx
+	stx SP_TEMP
+	tax
+	txs
+	; global bg color
+	pla
+	tax
+	stx PPU_DATA
+	; each palette
 .repeat 8, I
-  pla
-  sta PPU_DATA
-  pla
-  sta PPU_DATA
-  pla
-  sta PPU_DATA
-  .if I <> 7
-  pla
-  stx PPU_DATA
-  .endif
+	pla
+	sta PPU_DATA
+	pla
+	sta PPU_DATA
+	pla
+	sta PPU_DATA
+	.if I <> 7
+	pla
+	stx PPU_DATA
+	.endif
 .endrepeat
-  
-  ldx SP_TEMP
-  txs
-  rts
+	
+	ldx SP_TEMP
+	txs
+	rts
 .endproc
 
 ;void __fastcall__ bank_spr(uint8_t n);
@@ -1080,7 +1104,8 @@ __vram_write:
 ;uint8_t __fastcall__ pad_poll(uint8_t pad);
 
 _pad_poll:
-	ldy #$00
+	tay
+pad_poll:	; Supply the arg in Y for the asm version
 	ldx #3
 @padPollPort:
 	lda #1
@@ -1104,7 +1129,6 @@ _pad_poll:
 	beq @done
 	lda <PAD_BUF+1
 @done:
-	sta <joypad1
 	ldx #0
 	rts
 
@@ -1539,12 +1563,12 @@ palBrightTable8:
 
 ; Quick macros to reserve a value and export it for usage in C
 .macro RESERVE name, size
-  .export .ident(.sprintf("_%s", .string(name))) = .ident(.string(name)) 
-  .ident(.string(name)): .res size
+	.export .ident(.sprintf("_%s", .string(name))) = .ident(.string(name)) 
+	.ident(.string(name)): .res size
 .endmacro
 .macro RESERVE_ZP name, size
-  .exportzp .ident(.sprintf("_%s", .string(name))) = .ident(.string(name)) 
-  .ident(.string(name)): .res size
+	.exportzp .ident(.sprintf("_%s", .string(name))) = .ident(.string(name)) 
+	.ident(.string(name)): .res size
 .endmacro
 
 
@@ -1554,10 +1578,10 @@ palBrightTable8:
 
 ; NOTE: These must be zero page and adjacent; the code relies on joypad1_down following mouse.
 RESERVE_ZP mouse, 4
-  kMouseZero = 0
-  kMouseButtons = 1
-  kMouseY = 2
-  kMouseX = 3
+	kMouseZero = 0
+	kMouseButtons = 1
+	kMouseY = 2
+	kMouseX = 3
 RESERVE_ZP joypad1, 3
 ; Overlay the second joypad with the mouse memory.
 ; If the mouse isn't detected, then we copy data to the joypad struct.
@@ -1586,79 +1610,79 @@ CONTROLLER_PORT = CTRL_PORT1
 .if !VS_SYSTEM ; not used for the VS System version of the game fsr
 
 .proc oam_and_readjoypad
-  ; save the previous controller state for calcuating the previous results
-  lda joypad1
-  sta TEMP + 4
+	; save the previous controller state for calcuating the previous results
+	lda joypad1
+	sta TEMP + 4
 
-  ; and do the same for the controller 2
-  lda joypad2
-  sta TEMP + 5
+	; and do the same for the controller 2
+	lda joypad2
+	sta TEMP + 5
 
-  ; Save the previous mouse state so we can calculate the next frames press/release
-  lda mouse + kMouseY
-  sta TEMP + 0
-  lda mouse + kMouseX
-  sta TEMP + 1
-  lda mouse + kMouseButtons
-  sta TEMP + 2
+	; Save the previous mouse state so we can calculate the next frames press/release
+	lda mouse + kMouseY
+	sta TEMP + 0
+	lda mouse + kMouseX
+	sta TEMP + 1
+	lda mouse + kMouseButtons
+	sta TEMP + 2
 
-  ; Strobe the joypads.
-  LDX #$00
-  LDY #$01
-  STY mouse
-  STY CTRL_PORT1
+	; Strobe the joypads.
+	LDX #$00
+	LDY #$01
+	STY mouse
+	STY CTRL_PORT1
 
  .if 0
-  ; Clock official mouse sensitivity. NOTE: This can be removed if not needed.
-  LDA advance_sensitivity
-  BEQ :+
-  LDA MOUSE_PORT
-  STX advance_sensitivity
+	; Clock official mouse sensitivity. NOTE: This can be removed if not needed.
+	LDA advance_sensitivity
+	BEQ :+
+	LDA MOUSE_PORT
+	STX advance_sensitivity
  :
  .endif
 
-  STX CTRL_PORT1
+	STX CTRL_PORT1
 
-  LDA #>OAM_BUF
-  STA PPU_OAM_DMA
+	LDA #>OAM_BUF
+	STA PPU_OAM_DMA
  
-  ; Desync cycles: 432, 576, 672, 848, 432*2-4 (860)
+	; Desync cycles: 432, 576, 672, 848, 432*2-4 (860)
 
-  ; DMC DMA:         ; PUT GET PUT GET        ; Starts: 0
-
- :
-  LDA mouse_mask     ; get put get*     *576  ; Starts: 4, 158, 312, 466, [620]
-  AND MOUSE_PORT   ; put get put GET
-  CMP #$01           ; put get
-  ROL mouse,X        ; put get put get* PUT GET  *432
-  BCC :-             ; put get (put)
-
-  INX                ; put get
-  CPX #$04           ; put get
-  STY mouse,X        ; put get put GET
-  BNE :-             ; put get (put)
+	; DMC DMA:         ; PUT GET PUT GET        ; Starts: 0
 
  :
-  LDA CONTROLLER_PORT ; put get put GET        ; Starts: 619
-  AND #$03           ; put get*         *672
-  CMP #$01           ; put get
-  ROL joypad1 ; put get put get put    ; This can desync, but we finish before it matters.
-  BCC :-             ; get put (get)
+	LDA mouse_mask     ; get put get*     *576  ; Starts: 4, 158, 312, 466, [620]
+	AND MOUSE_PORT   ; put get put GET
+	CMP #$01           ; put get
+	ROL mouse,X        ; put get put get* PUT GET  *432
+	BCC :-             ; put get (put)
+
+	INX                ; put get
+	CPX #$04           ; put get
+	STY mouse,X        ; put get put GET
+	BNE :-             ; put get (put)
+
+ :
+	LDA CONTROLLER_PORT ; put get put GET        ; Starts: 619
+	AND #$03           ; put get*         *672
+	CMP #$01           ; put get
+	ROL joypad1 ; put get put get put    ; This can desync, but we finish before it matters.
+	BCC :-             ; get put (get)
 
  .if 0 ; TODO support SNES extra buttons 
-  STY joypad1+1 ; get put get
-  NOP                ; put get
+	STY joypad1+1 ; get put get
+	NOP                ; put get
  :
-  LDA CONTROLLER_PORT ; put get* put GET *848  ; Starts: 751, [879]
-  AND #$03           ; put get
-  CMP #$01           ; put get
-  ROL joypad1+1 ; put get put get put    ; This can desync, but we finish before it matters.
-  BCC :-             ; get* put (get)   *860
+	LDA CONTROLLER_PORT ; put get* put GET *848  ; Starts: 751, [879]
+	AND #$03           ; put get
+	CMP #$01           ; put get
+	ROL joypad1+1 ; put get put get put    ; This can desync, but we finish before it matters.
+	BCC :-             ; get* put (get)   *860
 
-  ; NEXT: 878
+	; NEXT: 878
  .endif ; CONTROLLER_SIZE = 2
 
-  rts
+	rts
 .endproc
 
 .endif
@@ -1666,106 +1690,106 @@ CONTROLLER_PORT = CTRL_PORT1
 .segment "STARTUP"
 
 .proc calculate_extra_fields
-  ; calculate the press/release state for the controller buttons
+	; calculate the press/release state for the controller buttons
 
-  ; Pressed
-  lda TEMP+4
-  eor #%11111111
-  and joypad1
-  sta joypad1 + 1
+	; Pressed
+	lda TEMP+4
+	eor #%11111111
+	and joypad1
+	sta joypad1 + 1
 
-  ; Released
-  lda joypad1
-  eor #%11111111
-  and TEMP+4
-  sta joypad1 + 2
+	; Released
+	lda joypad1
+	eor #%11111111
+	and TEMP+4
+	sta joypad1 + 2
 
-  ; Check the report to see if we have a snes mouse plugged in
-  lda mouse + kMouseButtons
-  and #$0f
-  cmp #$01
-  beq snes_mouse_detected
-    ; treat this as a standard NES controller instead and
-    ; calculate the press/release for it
-    lda mouse + kMouseZero
-    sta joypad2
-    ; Pressed
-    lda TEMP+5
-    eor #%11111111
-    and joypad2
-    sta joypad2 + 1
+	; Check the report to see if we have a snes mouse plugged in
+	lda mouse + kMouseButtons
+	and #$0f
+	cmp #$01
+	beq snes_mouse_detected
+		; treat this as a standard NES controller instead and
+		; calculate the press/release for it
+		lda mouse + kMouseZero
+		sta joypad2
+		; Pressed
+		lda TEMP+5
+		eor #%11111111
+		and joypad2
+		sta joypad2 + 1
 
-    ; Released
-    lda joypad2
-    eor #%11111111
-    and TEMP+5
-    sta joypad2 + 2
+		; Released
+		lda joypad2
+		eor #%11111111
+		and TEMP+5
+		sta joypad2 + 2
 
-    ; no snes mouse, so leave the first field empty
-    lda #0
-    sta mouse + kMouseZero
+		; no snes mouse, so leave the first field empty
+		lda #0
+		sta mouse + kMouseZero
 	lda #1
 	sta noMouse
-    rts
+		rts
 snes_mouse_detected:
 .if !VS_SYSTEM
-  ; convert the X/Y displacement into X/Y positions on the screen
-  ldx #1
+	; convert the X/Y displacement into X/Y positions on the screen
+	ldx #1
 loop:
-    lda mouse + kMouseY,x
-    bpl :+
-      ; subtract the negative number instead
-      and #$7f
-      sta mouse + kMouseZero ; reuse this value as a temp value
-      lda TEMP,x
-      sec 
-      sbc mouse + kMouseZero
-      ; check if we underflowed
-      bcc wrappednegative
-      ; check the lower bounds
-      cmp MouseBoundsMin,x
-      bcs setvalue ; didn't wrap so set the value now
-    wrappednegative:
-      lda MouseBoundsMin,x
-      jmp setvalue
-    :
-    ; add the positive number
-    clc
-    adc TEMP,x
-    ; check if we wrapped, set to the max bounds if we did
-    bcs wrapped
-    ; check the upper bounds
-    cmp MouseBoundsMax,x
-    bcc setvalue ; didn't wrap so set the value
+		lda mouse + kMouseY,x
+		bpl :+
+			; subtract the negative number instead
+			and #$7f
+			sta mouse + kMouseZero ; reuse this value as a temp value
+			lda TEMP,x
+			sec 
+			sbc mouse + kMouseZero
+			; check if we underflowed
+			bcc wrappednegative
+			; check the lower bounds
+			cmp MouseBoundsMin,x
+			bcs setvalue ; didn't wrap so set the value now
+		wrappednegative:
+			lda MouseBoundsMin,x
+			jmp setvalue
+		:
+		; add the positive number
+		clc
+		adc TEMP,x
+		; check if we wrapped, set to the max bounds if we did
+		bcs wrapped
+		; check the upper bounds
+		cmp MouseBoundsMax,x
+		bcc setvalue ; didn't wrap so set the value
 wrapped:
-    lda MouseBoundsMax,x
+		lda MouseBoundsMax,x
 setvalue:
-    sta mouse + kMouseY,x
-    dex
-    bpl loop
-  ; calculate newly pressed buttons and shift it into byte zero
-  lda TEMP+2
-  eor #%11000000
-  and mouse + kMouseButtons
-  rol
-  ror mouse + kMouseZero
-  rol
-  ror mouse + kMouseZero
-  
-  ; calculate newly released buttons
-  lda mouse + kMouseButtons
-  eor #%11000000
-  and TEMP+2
-  rol
-  ror mouse + kMouseZero
-  rol
-  ror mouse + kMouseZero
+		sta mouse + kMouseY,x
+		dex
+		bpl loop
+	; calculate newly pressed buttons and shift it into byte zero
+	lda TEMP+2
+	eor #%11000000
+	and mouse + kMouseButtons
+	rol
+	ror mouse + kMouseZero
+	rol
+	ror mouse + kMouseZero
+	
+	; calculate newly released buttons
+	lda mouse + kMouseButtons
+	eor #%11000000
+	and TEMP+2
+	rol
+	ror mouse + kMouseZero
+	rol
+	ror mouse + kMouseZero
 
-  ; Set the connected bit
-  sec
-  ror mouse + kMouseZero
+	; Set the connected bit
+	sec
+	ror mouse + kMouseZero
 .endif
-  rts
+	rts
 
 MOUSE_Y_MINIMUM = 1
 MOUSE_X_MINIMUM = 1
@@ -1773,9 +1797,9 @@ MOUSE_Y_MAXIMUM = 239
 MOUSE_X_MAXIMUM = 255
 
 MouseBoundsMin:
-  .byte MOUSE_Y_MINIMUM, MOUSE_X_MINIMUM
+	.byte MOUSE_Y_MINIMUM, MOUSE_X_MINIMUM
 MouseBoundsMax:
-  .byte MOUSE_Y_MAXIMUM, MOUSE_X_MAXIMUM
+	.byte MOUSE_Y_MAXIMUM, MOUSE_X_MAXIMUM
 .endproc
 
 .popseg
@@ -1789,7 +1813,7 @@ MouseBoundsMax:
 	; if no parallax is 1, then it will maybe add an offset to the chr
 	; other wise it will add 0 (effectively disabling it without branching)
 
-  lda #1
+	lda #1
 	and _parallax_scroll_x
 	sta CHRBANK_TEMP
 	clc
