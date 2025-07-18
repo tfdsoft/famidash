@@ -478,7 +478,7 @@
 			upperText: "INFINITE",
 			lowerText: "POWER",
 			originalArtist: "TheFatRat",
-			coveringArtist: "ElAngel378",
+			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "jack russel",
