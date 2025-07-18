@@ -287,7 +287,7 @@ def tidyUpFSTextData(data : list, uppermostLevel = True):
     else:
         return {objtype : [obj for obj in data if obj.pop('__type') == objtype] for objtype in objtypes}
 
-def exportMusicBank(bin_, fsCmd, modulePath, exportPath, dpcmidx, bank : int):
+def exportMusicBank(bin_, fsCmd, modulePath, exportPath, dpcmidx, dpcmAlignerName, bank : int):
         idxs, names, _ = zip(*sorted(bin_))
         idxs = ','.join(map(str, idxs))
         names = list(map(makeNiceAsmName, names))
@@ -485,7 +485,7 @@ if __name__ == "__main__":
 
     with multiprocessing.Pool() as pool:
         dpcmFiles, optionsToSet, masterSonglist = zip(*pool.starmap(exportMusicBank, 
-            [[bins[bank], fsCmd, modulePath, exportPath, dpcmidx, bank] for bank in range(len(bins))]))
+            [[bins[bank], fsCmd, modulePath, exportPath, dpcmidx, dpcmAlignerName, bank] for bank in range(len(bins))]))
 
     # Flatten lists
     dpcmFiles = list(itertools.chain.from_iterable(dpcmFiles))
