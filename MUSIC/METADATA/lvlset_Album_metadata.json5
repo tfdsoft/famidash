@@ -386,6 +386,12 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
+			fmsSongName: "Fire Aura",
+			lowerText: "FIRE AURA",
+			originalArtist: "Kid2Will",
+			coveringArtist: "Vikrinox",
+		},
+		{
 			fmsSongName: "FREEDOM DiVE",
 			upperText: "FREEDOM",
 			lowerText: "DIVE",
@@ -460,6 +466,19 @@
 			lowerText: "ISOLATION",
 			originalArtist: "NightHawk22",
 			coveringArtist: ["Crafty Jumper", "SeaGlowingPro"]
+		},
+		{
+			fmsSongName: "Infiltration",
+			lowerText: "INFILTRATION",
+			originalArtist: "ParagonX9",
+			coveringArtist: "Cloud54",
+		},
+		{
+			fmsSongName: "Infinite Power",
+			upperText: "INFINITE",
+			lowerText: "POWER",
+			originalArtist: "TheFatRat",
+			coveringArtist: "ElAngel378",
 		},
 		{
 			fmsSongName: "jack russel",
@@ -557,6 +576,13 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
+			fmsSongName: "Miami Hotline Vol. 3",
+			upperText: "MIAMI HOTLINE",
+			lowerText: "VOL 3",
+			originalArtist: "Demonicity",
+			coveringArtist: "NerdBoy628",
+		},
+		{
 			fmsSongName: "midnight",
 			lowerText: "MIDNIGHT",
 			originalArtist: "cornandbeans",
@@ -599,6 +625,12 @@
 			lowerText: "PROBLEMATIC",
 			originalArtist: "NIGHTkilla",
 			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Pursuit",
+			lowerText: "PURSUIT",
+			originalArtist: "BoomKitty",
+			coveringArtist: "CraftyJumper",
 		},
 		{
 			fmsSongName: "Pyrophoric",
@@ -673,6 +705,12 @@
 			coveringArtist: "Crafty Jumper",
 		},	
 		{
+			fmsSongName: "Thermodynamix",
+			lowerText: "THERMODYNAMIX",
+			originalArtist: "Dj-Nate",
+			coveringArtist: "Vikrinox",
+		},	
+		{
 			fmsSongName: "Thoughts",
 			lowerText: "THOUGHTS",
 			originalArtist: "Crafty Jumper",
@@ -717,6 +755,12 @@
 			lowerText: "WINDFALL",
 			originalArtist: "TheFatRat",
 			coveringArtist: "SeaGlowingPro",
+		},	
+		{
+			fmsSongName: "Xenogenesis",
+			lowerText: "XENOGENESIS",
+			originalArtist: "TheFatRat",
+			coveringArtist: "Ranedom",
 		},	
 		{
 			fmsSongName: "XO",

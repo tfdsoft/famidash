@@ -12,6 +12,6 @@ copy .\build\b-sides\famidash.dbg ".\Famidash B Sides.dbg"
 copy .\build\c-sides\famidash.nes ".\Famidash C Sides.nes"
 copy .\build\c-sides\famidash.dbg ".\Famidash C Sides.dbg"
 
-copy .\build\z-sides\famidash.nes ".\Famidash - The Album.nes"
-copy .\build\z-sides\famidash.dbg ".\Famidash - The Album.dbg"
+copy .\build\album\famidash.nes ".\Famidash - The Album.nes"
+copy .\build\album\famidash.dbg ".\Famidash - The Album.dbg"
 pause

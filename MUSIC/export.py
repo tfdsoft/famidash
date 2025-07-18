@@ -488,8 +488,7 @@ if __name__ == "__main__":
 
     timeStart = time.time_ns()
 
-    with multiprocessing.Pool() as pool:
-        dpcmFiles, optionsToSet, masterSonglist = zip(*pool.map(exportMusicBank, range(len(bins))))
+    dpcmFiles, optionsToSet, masterSonglist = zip(*[exportMusicBank(bank) for bank in range(len(bins))])
 
     # Flatten lists
     dpcmFiles = list(itertools.chain.from_iterable(dpcmFiles))
