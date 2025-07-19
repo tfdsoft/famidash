@@ -156,13 +156,18 @@ void _display_attempt_counter (uint32_t args);
 
 #define GET_BANK(sym) (__asm__("ldx #0\nlda #<.bank(%v)", sym), __A__)
 
-#define uint32_inc(long) (__asm__("inc %v+0 \n bne %s", long, __LINE__), __asm__("inc %v+1 \n bne %s", long, __LINE__), __asm__("inc %v+2 \n bne %s", long, __LINE__), __asm__("inc %v+3 \n  %s:", long, __LINE__))
+#define uint32_inc(long) (\
+	__asm__("inc %v+0 \n bne %s", long, __LINE__), \
+	__asm__("inc %v+1 \n bne %s", long, __LINE__), \
+	__asm__("inc %v+2 \n bne %s", long, __LINE__), \
+	__asm__("inc %v+3 \n  %s:", long, __LINE__) \
+)
 
 // store a word's high and low bytes into separate places
 #define storeWordSeparately(word, low, high) \
-                            (__AX__ = word, \
-                            __asm__("STA %v", low), \
-                            __asm__("STX %v", high))
+							(__AX__ = word, \
+							__asm__("STA %v", low), \
+							__asm__("STX %v", high))
 
 extern uint8_t auto_fs_updates;
 #define pal_fade_to_withmusic(from, to) (++auto_fs_updates, pal_fade_to(from, to), auto_fs_updates = 0)
@@ -176,10 +181,10 @@ extern uint8_t PAL_BUF_RAW[32];
 extern uint8_t PAL_BUF[32];
 #pragma zpsym("PAL_UPDATE")
 #define pal_col(index, color) ( \
-    PAL_BUF_RAW[index&0x1F] = (color), \
-    __A__ = (color), __asm__("tay"), \
-    __asm__("lda (%v), y", PAL_PTR), \
-    PAL_BUF[index&0x1F] = __A__)
+	PAL_BUF_RAW[index&0x1F] = (color), \
+	__A__ = (color), __asm__("tay"), \
+	__asm__("lda (%v), y", PAL_PTR), \
+	PAL_BUF[index&0x1F] = __A__)
 
 #define pal_set_update() ++PAL_UPDATE;
 
@@ -192,27 +197,27 @@ extern uint8_t PAL_BUF[32];
 #define DO_PRAGMA(x) DO_PRAGMA_(x)
 
 #define CODE_BANK_PUSH(bank) \
-  DO_PRAGMA(code-name(push, bank ))\
-  DO_PRAGMA(data-name(push, bank ))\
-  DO_PRAGMA(rodata-name(push, bank ))
+	DO_PRAGMA(code-name(push, bank ))\
+	DO_PRAGMA(data-name(push, bank ))\
+	DO_PRAGMA(rodata-name(push, bank ))
 
 #define CODE_BANK_POP() \
-  DO_PRAGMA(code-name(pop))\
-  DO_PRAGMA(data-name(pop))\
-  DO_PRAGMA(rodata-name(pop))
+	DO_PRAGMA(code-name(pop))\
+	DO_PRAGMA(data-name(pop))\
+	DO_PRAGMA(rodata-name(pop))
 
 #define CODE_BANK(bank) \
-  DO_PRAGMA(code-name(bank ))\
-  DO_PRAGMA(data-name(bank ))\
-  DO_PRAGMA(rodata-name(bank ))
+	DO_PRAGMA(code-name(bank ))\
+	DO_PRAGMA(data-name(bank ))\
+	DO_PRAGMA(rodata-name(bank ))
 
 
 #define swapbyte(a, b) do { \
-  __A__ = (a); \
-  __asm__("pha"); \
-  (a) = (b); \
-  __asm__("pla"); \
-  (b) = __A__; \
+	__A__ = (a); \
+	__asm__("pha"); \
+	(a) = (b); \
+	__asm__("pla"); \
+	(b) = __A__; \
 } while(0);
 
 // Get the current value of Y (overwrites __A__ tho)
@@ -228,9 +233,9 @@ extern uint8_t PAL_BUF[32];
 
 // holy fuck i am a genius
 #define do_if_flag_common(func, opcode) do { \
-__asm__("j" opcode " %s", __LINE__); \
-do func while(0); \
- __asm__("%s:", __LINE__); \
+	__asm__("j" opcode " %s", __LINE__); \
+	do func while(0); \
+	__asm__("%s:", __LINE__); \
 } while(0)
 
 #define do_if_c_set(func) do_if_flag_common(func, "cc")
@@ -268,8 +273,8 @@ do func while(0); \
 #define clc_sbc(a, b) (__A__ = (a), __asm__("clc \nsbc %v", b), __A__)
 
 #define jumpInTableWithOffset(tbl, val, off) ( \
-  __A__ = val << 1, \
-  __asm__("tay \n lda %v-%w, y \n ldx %v-%w+1, y \n jsr callax ", tbl, (off * 2), tbl, (off * 2)))
+	__A__ = val << 1, \
+	__asm__("tay \n lda %v-%w, y \n ldx %v-%w+1, y \n jsr callax ", tbl, (off * 2), tbl, (off * 2)))
 
 extern uint8_t shiftBy4table[16];
 #define shlNibble4(nibble) (idx8_load(shiftBy4table, nibble))
