@@ -148,6 +148,12 @@
 			originalArtistText: "SEAGLOWINGPRO",
 		},		
 		{
+			fmsSongName: "Invisible Light",
+			upperText: "INVISIBLE",
+			lowerText: "LIGHT",
+			originalArtistText: "NIGHTKILLA",
+		},		
+		{
 			fmsSongName: "Miami Hotline Vol. 3",
 			upperText: "MIAMI HOTLINE",
 			lowerText: "VOL 3",

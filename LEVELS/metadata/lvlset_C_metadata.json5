@@ -46,6 +46,23 @@
 			]	
 		},	
 		{
+			level: "invisiblelight",
+			upperText: "INVISIBLE",
+			lowerText: "LIGHT",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "MEDIUMDEMON",
+			stars: 10,
+			songID: "song_invisible_light",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "pgclubstep",
 			lowerText: "PG CLUBSTEP",
 			decoType: "DECO1",
