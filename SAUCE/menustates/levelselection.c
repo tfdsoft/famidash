@@ -218,7 +218,11 @@ void leveldec() {
 	if (!normalorcommlevels) {
 		if (level == 0xFF) level = LEVEL_COUNT-1;
 	} else {
+		#if __C_SIDES
+		if (level < ((LEVEL_COUNT + 1) - retrayunlock)) level = LEVEL_COUNT2 - 1;
+		#else
 		if (level < LEVEL_COUNT) level = LEVEL_COUNT2 - 1;
+		#endif
 	}
 	crossPRGBankJump0(refreshmenu);
 }			
@@ -230,7 +234,11 @@ void levelinc() {
 	if (!normalorcommlevels) {
 		if (level >= LEVEL_COUNT) level = 0x00;
 	} else {
+		#if __C_SIDES
+		if (level >= LEVEL_COUNT2) level = ((LEVEL_COUNT + 1) - retrayunlock);
+		#else
 		if (level >= LEVEL_COUNT2) level = LEVEL_COUNT;
+		#endif
 	}
 	crossPRGBankJump0(refreshmenu);
 }

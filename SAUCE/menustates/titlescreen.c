@@ -725,7 +725,12 @@ void state_menu() {
 			if (!tmp7) crossPRGBankJump8(playPCM, 1);
 			else crossPRGBankJump8(playPCM, 0);
 
+			#if __C_SIDES
+			if (normalorcommlevels) level = LEVEL_COUNT + (1-retrayunlock);
+			#else
 			if (normalorcommlevels) level = LEVEL_COUNT;
+			#endif
+			
 			else level = 0;
 
 			levelselection();

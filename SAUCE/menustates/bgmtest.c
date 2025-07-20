@@ -147,6 +147,10 @@ void state_soundtest() {
 		}
 	}
 }
+
+
+const char TEXT_kill_yourself[] = "RETRAY UNLOCKED";
+
 #define sfx tmp4
 void code_checker() {
 	last_gameState = gameState;
@@ -165,6 +169,15 @@ void code_checker() {
 		tmp3--;
 	}		
 	else kandokidshack3 = 0;
+
+	#if __C_SIDES
+		// retray in c-sides
+		if (song == 3 && sfx == sfx_diamonds){
+			retrayunlock = 1;
+			multi_vram_buffer_horz(TEXT_kill_yourself, sizeof(TEXT_kill_yourself)-1, NTADR_A(7,26));
+			tmp3--;
+		}
+	#endif
 	
 /*   debug code disabled
 	if (song == 0xB && sfx == 0x7) {

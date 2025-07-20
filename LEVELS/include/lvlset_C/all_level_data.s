@@ -73,7 +73,7 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8138
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8178 bytes
+.segment "DAT_BANK_05"	; Total bank size: 8177 bytes
 	.export level_data_sonicwave
 	level_data_sonicwave:
 	; Header
@@ -242,7 +242,7 @@
 		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6810
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 7327 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 7401 bytes
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
@@ -259,11 +259,6 @@
 		.byte 27 ;___________________ Level height
 	; Level data
 		.incbin "EXPORTS/thermodynamix.lz.bin" ; Size: 6535
-
-	.export level_data_eon_0
-	level_data_eon_0:
-	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792
 
 
 .segment "DAT_BANK_10"	; Total bank size: 7442 bytes
@@ -285,7 +280,7 @@
 		.incbin "EXPORTS/eighto.lz.bin" ; Size: 5741
 
 
-.segment "DAT_BANK_11"	; Total bank size: 5558 bytes
+.segment "DAT_BANK_11"	; Total bank size: 6350 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -302,6 +297,11 @@
 		.byte 57 ;______________ Level height
 	; Level data
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5558
+
+	.export level_data_eon_0
+	level_data_eon_0:
+	; Level data
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792
 
 
 .segment "DAT_BANK_12"	; Total bank size: 8067 bytes
@@ -354,14 +354,31 @@
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 189
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8143 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8170 bytes
 	.export level_data_aftercatabath_4
 	level_data_aftercatabath_4:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4541
 
+	.export level_data_retray
+	level_data_retray:
+	; Header
+		.byte song_retray ;___ Song ID
+		.byte 0 ;_____________ Starting game mode
+		.byte 1 ;_____________ Starting speed
+		.byte 1 ;_____________ Disable parallax
+		.byte _DECO1 ;________ Deco type
+		.byte _SPIKESA ;______ Spike set
+		.byte _BLOCKSB ;______ Block set
+		.byte _SAWBLADESA ;___ Sawblade set
+		.byte $0F ;___________ Starting background color
+		.byte $0F ;___________ Starting ground color
+		.byte 27 ;____________ Level height
+	; Level data
+		.incbin "EXPORTS/retray.lz.bin" ; Size: 2723
 
-.segment "DAT_BANK_17"	; Total bank size: 8153 bytes
+
+.segment "DAT_BANK_17"	; Total bank size: 8189 bytes
 	.export level_data_sonicwave_1
 	level_data_sonicwave_1:
 	; Level data

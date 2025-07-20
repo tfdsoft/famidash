@@ -171,6 +171,9 @@ uint8_t exitingLevelSelect;
 uint8_t drawBarFlag;
 uint8_t exitPortalTimer;
 uint8_t menu_music;
+
+
+
 #if !__VS_SYSTEM
 uint8_t auto_practicepoints;
 #endif
@@ -253,6 +256,13 @@ unsigned char music_queue[MAX_SONG_QUEUE_SIZE];
 #endif
 
 #define poweroffcheck SRAM_VALIDATE[3]
+
+
+#if __C_SIDES
+// i will write variables this way until the day i die
+unsigned char retrayunlock;
+#endif
+
 // Regular NES RAM
 #pragma bss-name("BSS")
 
@@ -499,3 +509,6 @@ struct Base {
 
 struct Base Generic;
 struct Base Generic2;
+
+
+
