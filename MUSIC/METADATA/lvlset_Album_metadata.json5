@@ -374,6 +374,13 @@
 			coveringArtist: ["ElAngel378","UserSniper"]
 		},
 		{
+			fmsSongName: "Every Madness",
+			upperText: "EVERY",
+			lowerText: "MADNESS",
+			originalArtist: "SEAGLOWINGPRO",
+			coveringArtist: "SEAGLOWINGPRO"
+		},
+		{
 			fmsSongName: "Fingerbang",
 			lowerText: "FINGERBANG",
 			originalArtist: "MDK",
@@ -479,6 +486,13 @@
 			lowerText: "POWER",
 			originalArtist: "TheFatRat",
 			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
+		},
+		{
+			fmsSongName: "Invisible Light",
+			upperText: "INVISIBLE",
+			lowerText: "LIGHT",
+			originalArtist: "NK",
+			coveringArtist: "Cloud54"
 		},
 		{
 			fmsSongName: "jack russel",
@@ -587,6 +601,12 @@
 			lowerText: "MIDNIGHT",
 			originalArtist: "cornandbeans",
 			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "Nine Circles",
+			lowerText: "NINE CIRCLES",
+			originalArtist: "NK",
+			coveringArtist: ["Cloud54", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Ninox",
