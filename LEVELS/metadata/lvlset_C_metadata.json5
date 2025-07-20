@@ -50,6 +50,55 @@
 			parallaxDisable: true
 		},
 		{
+			level: "ninecircles",
+			lowerText: "NINE CIRCLES",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDDEMON",
+			stars: 10,
+			songID: "song_nine_circles",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+						coordinates: [119, 20],		//2x speed portal
+						offsetY: -8
+				},
+				{
+						coordinates: [404, 19],		//0.5x speed portal
+						offsetY: -8
+				},
+				{
+						coordinates: [460, 20],		//3x speed portal
+						offsetY: -8
+				},
+				{
+						coordinates: [973, 19],		//cube portal
+						offsetY: +8
+				},
+				{
+						coordinates: [974, 19],		//big portal
+						offsetY: +8,
+						offsetX: -16
+				},
+				{
+						coordinates: [974, 20],		//blue gravity portal
+						offsetY: -8,
+						offsetX: -16
+				},
+				{
+						coordinates: [975, 20],		//undual portal
+						offsetY: -8,
+						offsetX: -24
+				},
+			]
+		},		
+		{
 			level: "stalemate",
 			lowerText: "STALEMATE",
 			decoType: "DECO1",

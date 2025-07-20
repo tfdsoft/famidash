@@ -8,6 +8,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_stereomadness)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_thermodynamix)
+	.byte .lobyte(level_data_ninecircles)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_eighto)
 	.byte .lobyte(level_data_hi)
@@ -27,6 +28,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_thermodynamix)
+	.byte .hibyte(level_data_ninecircles)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_eighto)
 	.byte .hibyte(level_data_hi)
@@ -46,6 +48,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_thermodynamix))
+	.byte .lobyte(.bank(level_data_ninecircles))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_eighto))
 	.byte .lobyte(.bank(level_data_hi))
@@ -92,6 +95,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_thermodynamix)
+	.byte .lobyte(sprite_data_ninecircles)
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_eighto)
 	.byte .lobyte(sprite_data_hi)
@@ -111,6 +115,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_thermodynamix)
+	.byte .hibyte(sprite_data_ninecircles)
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_eighto)
 	.byte .hibyte(sprite_data_hi)
@@ -130,6 +135,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_thermodynamix))
+	.byte .lobyte(.bank(sprite_data_ninecircles))
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_eighto))
 	.byte .lobyte(.bank(sprite_data_hi))
@@ -152,6 +158,7 @@ _level_lengths_lo:
 	.byte .lobyte($000080)		; stereomadness
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($00008E)		; thermodynamix
+	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($000078)		; eighto
 	.byte .lobyte($00009A)		; hi
@@ -173,6 +180,7 @@ _level_lengths_md:
 	.byte .hibyte($000080)		; stereomadness
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($00008E)		; thermodynamix
+	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($000078)		; eighto
 	.byte .hibyte($00009A)		; hi
@@ -194,6 +202,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000080)		; stereomadness
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($00008E)		; thermodynamix
+	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($000078)		; eighto
 	.byte .bankbyte($00009A)		; hi
