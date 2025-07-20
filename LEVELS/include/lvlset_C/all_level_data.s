@@ -266,7 +266,7 @@
 		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6810
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 6535 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 7741 bytes
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
@@ -322,6 +322,23 @@
 	; Level data
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5558
 
+	.export level_data_everymadness
+	level_data_everymadness:
+	; Header
+		.byte song_every_madness ;___ Song ID
+		.byte 0 ;____________________ Starting game mode
+		.byte 0 ;____________________ Starting speed
+		.byte 0 ;____________________ Disable parallax
+		.byte _DECO1 ;_______________ Deco type
+		.byte _SPIKESA ;_____________ Spike set
+		.byte _BLOCKSA ;_____________ Block set
+		.byte _SAWBLADESA ;__________ Sawblade set
+		.byte $12 ;__________________ Starting background color
+		.byte $02 ;__________________ Starting ground color
+		.byte 27 ;___________________ Level height
+	; Level data
+		.incbin "EXPORTS/everymadness.lz.bin" ; Size: 2607
+
 
 .segment "DAT_BANK_13"	; Total bank size: 8067 bytes
 	.export level_data_stalemate
@@ -368,16 +385,11 @@
 		.incbin "EXPORTS/hi.lz.bin" ; Size: 4707
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8029 bytes
+.segment "DAT_BANK_17"	; Total bank size: 8143 bytes
 	.export level_data_aftercatabath_4
 	level_data_aftercatabath_4:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4541
-
-	.export level_data_eon_0
-	level_data_eon_0:
-	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792
 
 
 .segment "DAT_BANK_18"	; Total bank size: 7857 bytes
@@ -385,3 +397,10 @@
 	level_data_sonicwave_1:
 	; Level data
 		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3711
+
+
+.segment "DAT_BANK_19"	; Total bank size: 5154 bytes
+	.export level_data_eon_0
+	level_data_eon_0:
+	; Level data
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792

@@ -19,6 +19,33 @@
 	],
 	community_levels: [
 		{
+			level: "everymadness",
+			upperText: "EVERY",
+			lowerText: "MADNESS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_every_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			objectOffsets: [
+				{
+					coordinates: [
+						[128, 25], [132, 24], [136, 23], [140, 22],
+						[144, 21], [218, 25], [222, 24], [226, 23],
+						[230, 22], [234, 21], [646, 26], [650, 25],
+						[654, 24], [658, 23],	//deco
+					],
+					offsetY: -8
+				}
+			]	
+		},	
+		{
 			level: "pgclubstep",
 			lowerText: "PG CLUBSTEP",
 			decoType: "DECO1",
