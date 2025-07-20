@@ -417,7 +417,7 @@
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3105
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8187 bytes
+.segment "DAT_BANK_13"	; Total bank size: 8092 bytes
 	.export level_data_problematic
 	level_data_problematic:
 	; Header
@@ -451,11 +451,6 @@
 		.byte 27 ;_____________________ Level height
 	; Level data
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3196
-
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 95
 
 
 .segment "DAT_BANK_14"	; Total bank size: 8144 bytes
@@ -700,7 +695,26 @@
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2776
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 7891 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 8135 bytes
+	.export level_data_retray
+	level_data_retray:
+	; Header
+		.byte song_retray ;___ Song ID
+		.byte 0 ;_____________ Starting game mode
+		.byte 1 ;_____________ Starting speed
+		.byte 1 ;_____________ Disable parallax
+		.byte _DECO1 ;________ Deco type
+		.byte _SPIKESA ;______ Spike set
+		.byte _BLOCKSB ;______ Block set
+		.byte _SAWBLADESA ;___ Sawblade set
+		.byte $0F ;___________ Starting background color
+		.byte $0F ;___________ Starting ground color
+		.byte 27 ;____________ Level height
+	; Level data
+		.incbin "EXPORTS/retray.lz.bin" ; Size: 2723
+
+
+.segment "DAT_BANK_1F"	; Total bank size: 8076 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -719,7 +733,7 @@
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1892
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8158 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8183 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
@@ -755,7 +769,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1712
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8191 bytes
+.segment "DAT_BANK_21"	; Total bank size: 7922 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -773,25 +787,8 @@
 	; Level data
 		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1498
 
-	.export level_data_luckydraw
-	level_data_luckydraw:
-	; Header
-		.byte song_electroman_adventures ;___ Song ID
-		.byte 0 ;____________________________ Starting game mode
-		.byte 0 ;____________________________ Starting speed
-		.byte 1 ;____________________________ Disable parallax
-		.byte _DECOCLOUD ;___________________ Deco type
-		.byte _SPIKESB ;_____________________ Spike set
-		.byte _BLOCKSB ;_____________________ Block set
-		.byte _LETTERBANK ;__________________ Sawblade set
-		.byte $0F ;__________________________ Starting background color
-		.byte $0F ;__________________________ Starting ground color
-		.byte 27 ;___________________________ Level height
-	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684
 
-
-.segment "DAT_BANK_22"	; Total bank size: 8076 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8191 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -809,8 +806,13 @@
 	; Level data
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1365
 
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 95
 
-.segment "DAT_BANK_23"	; Total bank size: 3718 bytes
+
+.segment "DAT_BANK_23"	; Total bank size: 7650 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -827,3 +829,20 @@
 		.byte 57 ;___________________ Level height
 	; Level data
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 980
+
+	.export level_data_luckydraw
+	level_data_luckydraw:
+	; Header
+		.byte song_electroman_adventures ;___ Song ID
+		.byte 0 ;____________________________ Starting game mode
+		.byte 0 ;____________________________ Starting speed
+		.byte 1 ;____________________________ Disable parallax
+		.byte _DECOCLOUD ;___________________ Deco type
+		.byte _SPIKESB ;_____________________ Spike set
+		.byte _BLOCKSB ;_____________________ Block set
+		.byte _LETTERBANK ;__________________ Sawblade set
+		.byte $0F ;__________________________ Starting background color
+		.byte $0F ;__________________________ Starting ground color
+		.byte 27 ;___________________________ Level height
+	; Level data
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684

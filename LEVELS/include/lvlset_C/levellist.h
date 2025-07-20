@@ -3,7 +3,6 @@
 
 const uint8_t difficulty_list[] = {
 	EASY,	// stereomadness
-	GRANDPADEMON,	// retray
 	HARDDEMON,	// pgclubstep
 	HARDDEMON,	// thermodynamix
 	INSANEDEMON,	// stalemate
@@ -24,7 +23,6 @@ const uint8_t difficulty_list[] = {
 
 const uint8_t stars_list[] = {
 	1,	// stereomadness
-	2,	// retray
 	10,	// pgclubstep
 	10,	// thermodynamix
 	10,	// stalemate

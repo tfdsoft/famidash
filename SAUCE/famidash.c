@@ -209,8 +209,5 @@ void setdefaultoptions() {
 	auto_practicepoints = 1;
 	practice_music_sync = 0;
 	#endif
-	#if __C_SIDES
-	retrayunlock = 0;
-	#endif
 	return;
 }

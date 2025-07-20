@@ -135,8 +135,6 @@ b-sides:
 	--no-print-directory
 
 c-sides: LEVELSET = C
-c-sides: CC65_DEFINES += -D__C_SIDES=1
-c-sides: CA65_DEFINES += -D__C_SIDES=1
 c-sides: OUTDIR = $(OUTDIR_PREFIX)/$@
 c-sides: TMPDIR = $(TMPDIR_PREFIX)/$@
 c-sides:

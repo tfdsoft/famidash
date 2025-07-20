@@ -304,7 +304,11 @@
 			originalArtistText: "KEVIN MACLEOD",
 			vsSystemEnabled: false
 		},
-		
+		{
+			fmsSongName: "retray",
+			lowerText: "GOLDEN HAZE",
+			originalArtistText: "DETIOUSMUSIC",
+		},
 		{
 			fmsSongName: "infernoplex",
 			lowerText: "INFERNOPLEX",
