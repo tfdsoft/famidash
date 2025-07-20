@@ -9,6 +9,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_everymadness)
 	.byte .lobyte(level_data_invisiblelight)
 	.byte .lobyte(level_data_pgclubstep)
+	.byte .lobyte(level_data_deadlyclubstep)
 	.byte .lobyte(level_data_thermodynamix)
 	.byte .lobyte(level_data_ninecircles)
 	.byte .lobyte(level_data_stalemate)
@@ -31,6 +32,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_everymadness)
 	.byte .hibyte(level_data_invisiblelight)
 	.byte .hibyte(level_data_pgclubstep)
+	.byte .hibyte(level_data_deadlyclubstep)
 	.byte .hibyte(level_data_thermodynamix)
 	.byte .hibyte(level_data_ninecircles)
 	.byte .hibyte(level_data_stalemate)
@@ -53,6 +55,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_everymadness))
 	.byte .lobyte(.bank(level_data_invisiblelight))
 	.byte .lobyte(.bank(level_data_pgclubstep))
+	.byte .lobyte(.bank(level_data_deadlyclubstep))
 	.byte .lobyte(.bank(level_data_thermodynamix))
 	.byte .lobyte(.bank(level_data_ninecircles))
 	.byte .lobyte(.bank(level_data_stalemate))
@@ -102,6 +105,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_everymadness)
 	.byte .lobyte(sprite_data_invisiblelight)
 	.byte .lobyte(sprite_data_pgclubstep)
+	.byte .lobyte(sprite_data_deadlyclubstep)
 	.byte .lobyte(sprite_data_thermodynamix)
 	.byte .lobyte(sprite_data_ninecircles)
 	.byte .lobyte(sprite_data_stalemate)
@@ -124,6 +128,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_everymadness)
 	.byte .hibyte(sprite_data_invisiblelight)
 	.byte .hibyte(sprite_data_pgclubstep)
+	.byte .hibyte(sprite_data_deadlyclubstep)
 	.byte .hibyte(sprite_data_thermodynamix)
 	.byte .hibyte(sprite_data_ninecircles)
 	.byte .hibyte(sprite_data_stalemate)
@@ -146,6 +151,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_everymadness))
 	.byte .lobyte(.bank(sprite_data_invisiblelight))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
+	.byte .lobyte(.bank(sprite_data_deadlyclubstep))
 	.byte .lobyte(.bank(sprite_data_thermodynamix))
 	.byte .lobyte(.bank(sprite_data_ninecircles))
 	.byte .lobyte(.bank(sprite_data_stalemate))
@@ -171,6 +177,7 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($0000A0)		; invisiblelight
 	.byte .lobyte($000094)		; pgclubstep
+	.byte .lobyte($000093)		; deadlyclubstep
 	.byte .lobyte($00008E)		; thermodynamix
 	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000092)		; stalemate
@@ -195,6 +202,7 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($0000A0)		; invisiblelight
 	.byte .hibyte($000094)		; pgclubstep
+	.byte .hibyte($000093)		; deadlyclubstep
 	.byte .hibyte($00008E)		; thermodynamix
 	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000092)		; stalemate
@@ -219,6 +227,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($0000A0)		; invisiblelight
 	.byte .bankbyte($000094)		; pgclubstep
+	.byte .bankbyte($000093)		; deadlyclubstep
 	.byte .bankbyte($00008E)		; thermodynamix
 	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000092)		; stalemate

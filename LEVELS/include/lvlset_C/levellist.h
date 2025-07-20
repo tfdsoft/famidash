@@ -6,6 +6,7 @@ const uint8_t difficulty_list[] = {
 	EASYDEMON,	// everymadness
 	MEDIUMDEMON,	// invisiblelight
 	HARDDEMON,	// pgclubstep
+	HARDDEMON,	// deadlyclubstep
 	HARDDEMON,	// thermodynamix
 	HARDDEMON,	// ninecircles
 	INSANEDEMON,	// stalemate
@@ -29,6 +30,7 @@ const uint8_t stars_list[] = {
 	10,	// everymadness
 	10,	// invisiblelight
 	10,	// pgclubstep
+	10,	// deadlyclubstep
 	10,	// thermodynamix
 	10,	// ninecircles
 	10,	// stalemate

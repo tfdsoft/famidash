@@ -364,7 +364,26 @@
 		.incbin "EXPORTS/everymadness.lz.bin" ; Size: 2607
 
 
-.segment "DAT_BANK_14"	; Total bank size: 8067 bytes
+.segment "DAT_BANK_14"	; Total bank size: 8133 bytes
+	.export level_data_deadlyclubstep
+	level_data_deadlyclubstep:
+	; Header
+		.byte song_clubstep ;___ Song ID
+		.byte 0 ;_______________ Starting game mode
+		.byte 0 ;_______________ Starting speed
+		.byte 0 ;_______________ Disable parallax
+		.byte _DECO1 ;__________ Deco type
+		.byte _SPIKESA ;________ Spike set
+		.byte _BLOCKSB ;________ Block set
+		.byte _SAWBLADESA ;_____ Sawblade set
+		.byte $0F ;_____________ Starting background color
+		.byte $0F ;_____________ Starting ground color
+		.byte 40 ;______________ Level height
+	; Level data
+		.incbin "EXPORTS/deadlyclubstep.lz.bin" ; Size: 5287
+
+
+.segment "DAT_BANK_15"	; Total bank size: 8067 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -383,14 +402,14 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5221
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8092 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8092 bytes
 	.export level_data_everyend_6
 	level_data_everyend_6:
 	; Level data
 		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4751
 
 
-.segment "DAT_BANK_16"	; Total bank size: 7793 bytes
+.segment "DAT_BANK_17"	; Total bank size: 7793 bytes
 	.export level_data_hi
 	level_data_hi:
 	; Header
@@ -409,14 +428,14 @@
 		.incbin "EXPORTS/hi.lz.bin" ; Size: 4707
 
 
-.segment "DAT_BANK_18"	; Total bank size: 7537 bytes
+.segment "DAT_BANK_19"	; Total bank size: 7537 bytes
 	.export level_data_aftercatabath_4
 	level_data_aftercatabath_4:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4541
 
 
-.segment "DAT_BANK_19"	; Total bank size: 7857 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 7857 bytes
 	.export level_data_sonicwave_1
 	level_data_sonicwave_1:
 	; Level data
