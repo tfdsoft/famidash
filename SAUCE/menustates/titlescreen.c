@@ -224,7 +224,7 @@ void state_menu() {
 	vram_unrle(game_start_screen);
 
 	set_scroll_x(0);
-
+	set_scroll_y(0);
 	speed = 1;
  	ppu_on_all();
 	joypad1.press = 0;

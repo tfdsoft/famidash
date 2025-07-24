@@ -25,6 +25,8 @@ void state_credits(){
 	vram_unrle(Credits);
 	vram_adr(NAMETABLE_B);
 	vram_unrle(Credits2);
+	vram_adr(NAMETABLE_D);
+	vram_unrle(Credits3);
 
 	multi_vram_buffer_horz(ver, sizeof(ver)-1, NTADR_A(1,24));
 	one_vram_buffer(FLAG_MAJ_VER, NTADR_A(6,24));
@@ -126,6 +128,56 @@ void state_credits(){
 		tmp1++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;				
 	} while (tmp1 != 0);
+
+	tmp1 = 0;
+	do {
+		oam_clear();
+		mouse_and_cursor();
+		newrand();
+	    kandoframecnt++;
+		#if __VS_SYSTEM
+			crossPRGBankJump0(check_if_music_stopped);
+		#endif
+		music_update();
+		if (!forced_credits &&
+			(joypad1.press || ((mouse.connected)
+				? mouse.left_press || mouse.right_press
+				: joypad2.press))) {
+				gameState = STATE_MENU; return;
+		}
+		
+		ppu_wait_nmi();
+		tmp1++;
+		set_scroll_y(tmp1<<2);
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;				
+	} while (tmp1 < 64);
+
+	tmp1 = 0;
+	set_scroll_y(-256);
+	do {
+		oam_clear();
+		mouse_and_cursor();
+		newrand();
+		kandoframecnt++;
+		if (!forced_credits &&
+			(joypad1.press || ((mouse.connected)
+				? mouse.left_press || mouse.right_press
+				: joypad2.press))) {
+					gameState = STATE_MENU; return;
+		}
+		ppu_wait_nmi();
+		#if __VS_SYSTEM
+			crossPRGBankJump0(check_if_music_stopped);
+		#endif
+		music_update();
+		tmp1++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;				
+	} while (tmp1 != 0);
+
+
+
+
+
 	forced_credits = 0;
 	gameState = STATE_MENU;
 	return; 
@@ -298,7 +350,7 @@ const unsigned char Credits2[629]={
 	#endif
 #endif
 
-const unsigned char palette_Credits[16]={ 0x11,0x0f,0x10,0x30,0x11,0x0f,0x2a,0x3A,0x11,0x28,0x17,0x0f,0x11,0x0f,0x11,0x21 };
+const unsigned char palette_Credits[16]={ 0x0C,0x0f,0x10,0x30,0x0C,0x0f,0x2a,0x3A,0x0C,0x28,0x17,0x0f,0x0C,0x0f,0x0C,0x21 };
 
 
 
