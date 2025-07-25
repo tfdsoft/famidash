@@ -71,7 +71,7 @@
 			sawSet: "A",
 			difficulty: "MEDIUMDEMON",
 			stars: 10,
-			songID: "song_invisible_light",
+			songID: "song_blacklight",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,

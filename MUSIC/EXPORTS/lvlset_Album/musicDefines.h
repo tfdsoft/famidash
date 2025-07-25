@@ -83,7 +83,7 @@
 #define song_chaozfantasy 82
 #define song_eighto 83
 #define song_just_right 84
-#define song_invisible_light 85
+#define song_blacklight 85
 #define song_menu_theme_b_sides 86
 #define song_cycles 87
 #define song_glitch_gremlin 88

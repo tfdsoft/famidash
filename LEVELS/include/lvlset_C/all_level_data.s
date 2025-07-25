@@ -291,17 +291,17 @@
 	.export level_data_invisiblelight
 	level_data_invisiblelight:
 	; Header
-		.byte song_invisible_light ;___ Song ID
-		.byte 0 ;______________________ Starting game mode
-		.byte 0 ;______________________ Starting speed
-		.byte 1 ;______________________ Disable parallax
-		.byte _DECO1 ;_________________ Deco type
-		.byte _SPIKESA ;_______________ Spike set
-		.byte _BLOCKSB ;_______________ Block set
-		.byte _SAWBLADESA ;____________ Sawblade set
-		.byte $0F ;____________________ Starting background color
-		.byte $0F ;____________________ Starting ground color
-		.byte 57 ;_____________________ Level height
+		.byte song_blacklight ;___ Song ID
+		.byte 0 ;_________________ Starting game mode
+		.byte 0 ;_________________ Starting speed
+		.byte 1 ;_________________ Disable parallax
+		.byte _DECO1 ;____________ Deco type
+		.byte _SPIKESA ;__________ Spike set
+		.byte _BLOCKSB ;__________ Block set
+		.byte _SAWBLADESA ;_______ Sawblade set
+		.byte $0F ;_______________ Starting background color
+		.byte $0F ;_______________ Starting ground color
+		.byte 57 ;________________ Level height
 	; Level data
 		.incbin "EXPORTS/invisiblelight.lz.bin" ; Size: 6798
 

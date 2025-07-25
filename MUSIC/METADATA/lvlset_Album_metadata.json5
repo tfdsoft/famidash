@@ -244,6 +244,12 @@
 			coveringArtist: "Clickerty",
 		},
 		{
+			fmsSongName: "Blacklight",
+			lowerText: "BLACKLIGHT",
+			originalArtist: "RUKKUS",
+			coveringArtist: "Cloud54"
+		},
+		{
 			fmsSongName: "candyland",
 			lowerText: "CANDYLAND",
 			originalArtist: "Tobu",
@@ -488,13 +494,6 @@
 			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
 		},
 		{
-			fmsSongName: "Invisible Light",
-			upperText: "INVISIBLE",
-			lowerText: "LIGHT",
-			originalArtist: "NK",
-			coveringArtist: "Cloud54"
-		},
-		{
 			fmsSongName: "jack russel",
 			lowerText: "JACK RUSSEL",
 			originalArtist: "Bossfight",
@@ -605,7 +604,7 @@
 		{
 			fmsSongName: "Nine Circles",
 			lowerText: "NINE CIRCLES",
-			originalArtist: "NK",
+			originalArtist: "RUKKUS",
 			coveringArtist: ["Cloud54", "SeaGlowingPro"]
 		},
 		{

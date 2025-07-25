@@ -42,7 +42,7 @@ music_data_famidash_music34:
 	.word @song3ch3
 	.word @song3ch4
 	.word 245,204
-; 04 : Invisible Light
+; 04 : Blacklight
 	.word @song4ch0
 	.word @song4ch1
 	.word @song4ch2

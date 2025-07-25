@@ -20,7 +20,7 @@ music_data_famidash_music10:
 	.byte 4
 	.word @instruments
 	.word @samples-5
-; 00 : Invisible Light
+; 00 : Blacklight
 	.word @song0ch0
 	.word @song0ch1
 	.word @song0ch2

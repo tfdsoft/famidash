@@ -19,7 +19,7 @@
 #define song_clubstep 18
 #define song_atthespeedoflight 19
 #define song_sonic_blaster 20
-#define song_invisible_light 21
+#define song_blacklight 21
 #define song_stalemate 22
 #define song_fairydust 23
 #define song_hell 24
