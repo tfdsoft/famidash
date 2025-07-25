@@ -26,7 +26,6 @@ void cube_movement(){
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 	
-	if (gameState != STATE_CREDITS) {	// Why?
 	
 	cube_eject();
 	
@@ -252,7 +251,6 @@ void cube_movement(){
 	currplayer_vel_x = player_vel_x[currplayer & 0x7F];
 	currplayer_vel_y = player_vel_y[currplayer & 0x7F];
 	currplayer_gravity = player_gravity[currplayer];
-	}
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 }	
