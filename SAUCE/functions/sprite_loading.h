@@ -705,7 +705,7 @@ void sprite_collide_lookup() {
 		&&spcl_h_block,	&&spcl_s_block,	&&spcl_d_block,	&&spcl_gvup_pt,	// 0xF8 - 0xFB
 		&&spcl_gvdn_pt,	&&spcl_gvdn_pd,	&&spcl_gvup_pd //,	&&spcl_default,	// 0xFC - 0xFF
 	};
-	if (activesprites_activated[index] && !dual && !(options & platformer))
+	if (activesprites_activated[index] && !dual && !(options & platformer) && !force_platformer)
 		return;
 	
 	// Instead of the giant ass switch : case that used to be here

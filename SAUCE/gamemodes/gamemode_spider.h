@@ -36,27 +36,23 @@ void spider_movement(){
 }	
 	else {
 		if(((controllingplayer->press_a || controllingplayer->press_up) || cube_data[currplayer] & 2) && currplayer_vel_y == 0 && !orbed[currplayer]) {
-			jumps++;
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);
+			jumps++;
 			currplayer_gravity = GRAVITY_DOWN;
-
 			spider_down_wait();
-
 			high_byte(currplayer_y) -= eject_D;
-			
 			currplayer_vel_y = 0;
-
-
 		}
 	}		
 	
 
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
-	if (currplayer_gravity) {
+
+/*	if (currplayer_gravity) {
 		Generic.y = high_byte(currplayer_y) - 2;
 	} else {
 		Generic.y = high_byte(currplayer_y) + 1;
-	}		
+	}		*/   									//this seemed to be unused??
 
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(currplayer_y); // the rest should be the same

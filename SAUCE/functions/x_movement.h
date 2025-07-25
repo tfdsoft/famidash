@@ -53,7 +53,7 @@ void x_movement_coll() {
 	if (high_byte(currplayer_x) > 0x10) {
 		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
 		if (bg_coll_R()) {
-			if (!(options & platformer)) {idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);}
+			if (!(options & platformer) && !force_platformer) {idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);}
 			else {currplayer_vel_x = 0; }
 		}
 	}
@@ -69,7 +69,7 @@ void x_movement(){
 	
 	currplayer_vel_x = speed_table[speed & 0x7F];
 	
-	if (controllingplayer->hold & PAD_LEFT) currplayer_vel_x = 0;
+//	if (controllingplayer->hold & PAD_LEFT) currplayer_vel_x = 0;
 	
 	if (dashing[currplayer] == 4 || dashing[currplayer] == 5) {	
 		if (currplayer_y < 0x0600 && scroll_y == min_scroll_y){
@@ -99,7 +99,7 @@ void x_movement(){
 	Generic.x = high_byte(currplayer_x); // this is much faster than passing a pointer to player
 	Generic.y = high_byte(currplayer_y);
 
-	if (!(options & platformer)) {
+	if (!(options & platformer) && !force_platformer) {
 		if ((controllingplayer->left) && !twoplayer && DEBUG_MODE) currplayer_x -= currplayer_vel_x;
 		else currplayer_x += currplayer_vel_x;
 	} else {

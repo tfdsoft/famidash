@@ -215,7 +215,7 @@ shiftBy4table:
 .global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
 .import _current_deco_type, _current_spike_set, _current_block_set, _current_saw_set
 .import _song, _speed, _lastgcolortype, _lastbgcolortype
-.import _level_data_bank, _sprite_data_bank
+.import _level_data_bank, _sprite_data_bank, _force_platformer
 .import _discomode
 
 .export _init_rld
@@ -257,6 +257,10 @@ _init_rld:
 
 	LDA (ptr1),y		;
 	STA _no_parallax	;	Parallax disable
+	INCW ptr1			;__
+
+	LDA (ptr1),y		;
+	STA _force_platformer	;	force platformer
 	INCW ptr1			;__
 
 	LDA (ptr1),y			;
@@ -747,7 +751,7 @@ switch:
 ; [Subroutine]
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
 .import _increase_parallax_scroll_column
-.import _no_parallax, _invisblocks
+.import _no_parallax, _invisblocks, _force_platformer
 
 .proc draw_screen_R_tiles
 
@@ -1044,7 +1048,7 @@ ntAddrHiTbl:
 
 ; [Subroutine]
 .global metatiles_attr
-.import _no_parallax, _invisblocks
+.import _no_parallax, _invisblocks, _force_platformer
 
 .proc draw_screen_R_attributes
 	AttrWriteSize	= 3*8
@@ -1256,7 +1260,7 @@ ntAddrHiTbl:
 
 ; [Subroutine]
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
-.import _no_parallax, _invisblocks
+.import _no_parallax, _invisblocks, _force_platformer
 .import _scroll_y
 
 .proc draw_screen_UD_tiles_frame0

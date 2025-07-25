@@ -86,7 +86,7 @@ void decrement_was_on_slope() {
 
 void state_game(){
 	#ifdef luckydraw
-	if (level == luckydraw && (options & platformer)) { options ^= platformer; tempplat = 1; }
+	if (level == luckydraw && (options & platformer) ) { options ^= platformer; tempplat = 1; }
 	#endif
 	coin1_timer = 0;
 	coin2_timer = 0;
@@ -163,7 +163,7 @@ void state_game(){
 		if ((kandoframecnt & 0x1F) == 0x10 ) mmc3_set_2kb_chr_bank_1(current_deco_type + 2);		//DECO
 		else if ((kandoframecnt & 0x1F) == 0x00) mmc3_set_2kb_chr_bank_1(current_deco_type);		//OR ADDITIONAL SPRITES									//
 
-		if ((options & platformer) && !practice_point_count) {
+		if (((options & platformer) || force_platformer) && !practice_point_count) {
 			
 			if (famistudio_song_speed == 0x80) music_play(song);
 		}		    
@@ -252,7 +252,7 @@ void state_game(){
 				if (mouse.left) joypad1.a = 1;
 			}
 
-			if (options & platformer) twoplayer = 0;
+			if (options & platformer || force_platformer) twoplayer = 0;
 
 			if ((options & oneptwoplayer) && twoplayer) {
 				// yo actually wtf is this
@@ -418,7 +418,7 @@ void state_game(){
 		}
 		#endif
 
-		if (joypad1.press_right && DEBUG_MODE && !(options & platformer)) {
+		if (joypad1.press_right && DEBUG_MODE && !(options & platformer) && !force_platformer) {
 			invert_gravity(currplayer_gravity);
 		}
 		
@@ -559,7 +559,7 @@ void state_game(){
 				currplayer_last_slope_type = last_slope_type[1];
 			}
 
-			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer)) invert_gravity(currplayer_gravity);			//DEBUG GRAVITY
+			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer) && !force_platformer) invert_gravity(currplayer_gravity);			//DEBUG GRAVITY
 			if (((controllingplayer->press_a || controllingplayer->press_up)) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			
 			decrement_was_on_slope();		
@@ -576,8 +576,8 @@ void state_game(){
 			#endif
 			crossPRGBankJump0(movement);
 
-			if (dual && (options & platformer) && !twoplayer) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
-			else if (dual && !(options & platformer)) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
+			if (dual && ((options & platformer) || force_platformer) && !twoplayer) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
+			else if (dual && !(options & platformer) && !force_platformer) { currplayer_x = player_x[0]; currplayer_vel_x = player_vel_x[0]; }
 
 			processXMovement = 0;
 			runthecolls();

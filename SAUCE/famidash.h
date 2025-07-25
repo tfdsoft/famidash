@@ -420,6 +420,7 @@ uint8_t player_old_posy[9];
 uint8_t discorefreshrate;
 uint8_t discoframe;
 uint8_t no_parallax;
+uint8_t force_platformer;
 uint8_t outline_color;
 uint8_t forced_trails;
 

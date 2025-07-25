@@ -17,6 +17,7 @@ void reset_level() {
 	jumps = 0;
 	ufo_orbed = 0;
 	slowmode = 0;
+	force_platformer = 0;
 	player_invis = 0;
 	slope_type[0] = SLOPE_NONE;
 	slope_type[1] = SLOPE_NONE;
@@ -98,7 +99,7 @@ void reset_level() {
 	set_scroll_y(scroll_y);
 	init_rld(level);
 
-	if (!(options & platformer)) {
+	if (!(options & platformer) && !force_platformer) {
 	player_x[0] = 0x0000;
 	player_x[1] = 0x0000;
 	currplayer_x = 0x0000;

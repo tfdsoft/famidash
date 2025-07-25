@@ -178,6 +178,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			f"{metadata['startingGameMode']}",
 			f"{metadata['startingSpeed']}",
 			f"{int(bool(metadata.get('parallaxDisable')))}",
+			f"{int(bool(metadata.get('forcePlatformer')))}",
 			f"_{metadata['decoType']}",
 			getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
 			getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
@@ -188,7 +189,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 		]
 		maxHeaderStrLen = max(map(len, header))
 		headerDataDesc = [
-			"Song ID", "Starting game mode", "Starting speed", "Disable parallax",
+			"Song ID", "Starting game mode", "Starting speed", "Disable parallax", "Force platformer",
 			"Deco type", "Spike set", "Block set", "Sawblade set",
 			"Starting background color", "Starting ground color", "Level height"]
 		header = [f"{i} ;{'_'*(maxHeaderStrLen-len(i)+3)} {headerDataDesc[idx]}" for idx, i in enumerate(header)]
