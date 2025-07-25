@@ -229,6 +229,228 @@
 				},
 			]
 		},		
+
+		{
+			level: "fairydust",
+			lowerText: "FAIRYDUST",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDDEMON",
+			stars: 10,
+			songID: "song_fairydust",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [9, 26],		//pink orb
+					offsetY: +8
+				},
+				{
+					coordinates: [34, 19],		//star
+					offsetY: +8
+				},
+				{
+					coordinates: [39, 26],		//yellow orb
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[63, 24], [67, 20], [71, 22], [74, 24],
+						[78, 21], [83, 24], [86, 21], [91, 22],
+						[102, 26], [103, 26], [110, 21], //stars and pads
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [80, 20],		//normal pulse rod
+					offsetY: +16
+				},
+				{
+					coordinates: [105, 20],		//blue gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [106, 20],		//pink orb
+					offsetY: +8
+				},
+				{
+					coordinates: [120, 19],		//2x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [131, 18],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [140, 17],		//blue pad
+					offsetX: +8
+				},
+				{
+					coordinates: [148, 18],		//arrow
+					offsetY: +8
+				},
+				{
+					coordinates: [156, 20],		//0.5x speed portal
+					offsetY: +8
+				},
+				{
+					coordinates: [171, 21],		//yellow gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [179, 18],		//1x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [206, 21],		//tall pulse rod
+					offsetY: -5
+				},
+				{
+					coordinates: [231, 19],		//3x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [232, 18],		//wave portal
+					offsetX: -16
+				},
+				{
+					coordinates: [319, 19],		//arrow
+					offsetY: +8
+				},
+				{
+					coordinates: [320, 20],		//arrow
+					offsetY: +8
+				},
+				{
+					coordinates: [321, 21],		//arrow
+					offsetY: +8
+				},
+				{
+					coordinates: [322, 22],		//arrow
+					offsetY: +8
+				},
+				{
+					coordinates: [344, 19],		//dual portal
+					offsetX: +8
+				},
+				{
+					coordinates: [382, 17],		//blue gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [381, 17],		//mini portal
+					offsetY: +8,
+					offsetX: +16
+				},
+				{
+					coordinates: [381, 18],		//undual portal
+					offsetY: -8,
+					offsetX: +16
+				},
+				{
+					coordinates: [402, 15],		//big portal
+					offsetY: +8
+				},
+				{
+					coordinates: [402, 17],		//big portal
+					offsetY: +8
+				},
+				{
+					coordinates: [415, 20],		//mini portal
+					offsetY: +8
+				},
+				{
+					coordinates: [516, 21],		//0.5x speed portal
+					offsetX: +8
+				},
+				{
+					coordinates: [539, 19],		//dual portal
+					offsetY: +8
+				},
+				{
+					coordinates: [589, 19],		//undual portal
+					offsetY: +8
+				},
+				{
+					coordinates: [589, 20],		//blue gravity portal
+					offsetY: -8,
+					offsetX: +8
+				},
+				{
+					coordinates: [590, 19],		//mini portal
+					offsetY: +8
+				},
+				{
+					coordinates: [664, 19],		//dual portal
+					offsetY: +8
+				},
+				{
+					coordinates: [702, 20],		//big portal
+					offsetY: -8,
+					offsetX: +16
+				},
+				{
+					coordinates: [703, 19],		//2x speed portal
+					offsetX: +8
+				},
+				{
+					coordinates: [703, 20],		//undual portal
+					offsetY: -8
+				},
+				{
+					coordinates: [703, 21],		//2x speed portal
+					offsetX: +8
+				},
+				{
+					coordinates: [704, 20],		//blue gravity portal
+					offsetY: -8,
+					offsetX: -16
+				},
+				{
+					coordinates: [732, 19],		//3x speed portal
+					offsetX: +8
+				},
+				{
+					coordinates: [732, 18],		//cube portal
+					offsetY: +8,
+					offsetX: +8
+				},
+				{
+					coordinates: [733, 18],		//cube portal
+					offsetY: +8,
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[736, 20], [738, 19], [740, 19], [742, 20], //stars
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [743, 20],		//ship portal
+					offsetY: -8,
+					offsetX: -16
+				},
+				{
+					coordinates: [761, 19],		//cube portal
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[762, 19], [762, 20], [762, 21], [762, 22], //stars
+					],
+					offsetX: +24
+				},
+			]
+		},
+
+
+
 		{
 			level: "stalemate",
 			lowerText: "STALEMATE",
