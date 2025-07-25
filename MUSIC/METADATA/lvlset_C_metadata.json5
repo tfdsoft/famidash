@@ -164,6 +164,13 @@
 			lowerText: "VOL 3",
 			originalArtistText: "DEMONICITY",
 		},		
+		{	
+			fmsSongName: "crackdown",
+			upperText: "OKIBA",
+			lowerText: "CRACKDOWN",
+			originalArtistText: "BOSSFIGHT",
+		},
+		
 	],
 	SFX: [
 		{

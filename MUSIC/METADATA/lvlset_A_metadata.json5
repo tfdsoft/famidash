@@ -342,12 +342,6 @@
 			lowerText: "MIDNIGHT",
 			originalArtistText: "CORNANDBEANS",
 		},
-		{	
-			fmsSongName: "crackdown",
-			upperText: "OKIBA",
-			lowerText: "CRACKDOWN",
-			originalArtistText: "BOSSFIGHT",
-		},
 		{
 			fmsSongName: "haunted woods",
 			lowerText: "HAUNTED WOODS",
