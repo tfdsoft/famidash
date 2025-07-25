@@ -2432,7 +2432,11 @@ drawplayer_center_offsets:
 			;	}
 		LDA _options
 		and #$04  ;platformer
-		beq	@ball2
+		bne	@ball3
+		lda _force_platformer
+		beq @ball2
+		
+	@ball3:	
 		lda _player_vel_x
 		bne @ball2
 		lda #0
