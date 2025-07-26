@@ -73,6 +73,7 @@ void main(){
 			case STATE_SOUNDTEST: {
 				mmc3_set_prg_bank_1(GET_BANK(state_soundtest));
 				state_soundtest();
+				trans_last_gameState = STATE_SOUNDTEST;
 				break;
 			}
 			case STATE_SAVEVALIDATE: {
@@ -81,12 +82,14 @@ void main(){
 				#endif
 				mmc3_set_prg_bank_1(GET_BANK(state_savefile_validate));
 				state_savefile_validate();
+				trans_last_gameState = STATE_SAVEVALIDATE;
 				break;
 			}
 
 			case STATE_MENU: {
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
 				state_menu();
+				trans_last_gameState = STATE_MENU;
 				break;			
 			}
 			
@@ -95,32 +98,38 @@ void main(){
 			case STATE_GAME: {
 				state_game();
 				use_auto_chrswitch = 0;
+				trans_last_gameState = STATE_GAME;
 				break;
 			}
 			case STATE_LVLDONE: {
 				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
 				state_lvldone();
+				trans_last_gameState = STATE_LVLDONE;
 				break;
 			}
 			case STATE_FUNSETTINGS: {
 				mmc3_set_prg_bank_1(GET_BANK(state_funsettings));
 				state_funsettings();
+				trans_last_gameState = STATE_FUNSETTINGS;
 				break;
 			}
 			case STATE_INSTRUCTIONS: {
 				mmc3_set_prg_bank_1(GET_BANK(state_instructions));
 				state_instructions();
+				trans_last_gameState = STATE_INSTRUCTIONS;
 				break;
 			}
 			case STATE_LEVELSELECT: {
 				mmc3_set_prg_bank_1(GET_BANK(state_levelselect));
 				state_levelselect();
+				trans_last_gameState = STATE_LEVELSELECT;
 				break;
 			}
 			#if LEVELSET != 'A'
 			case STATE_PLAYMAIN: {
 				mmc3_set_prg_bank_1(GET_BANK(state_playmain));
 				state_playmain();
+				trans_last_gameState = STATE_PLAYMAIN;
 				break;
 			}
 			#endif
@@ -129,6 +138,7 @@ void main(){
 			case STATE_SETTINGS: {
 				mmc3_set_prg_bank_1(GET_BANK(state_settings));
 				state_settings();
+				trans_last_gameState = STATE_SETTINGS;
 				break;
 			}
 			#endif
@@ -138,6 +148,7 @@ void main(){
 			default: {
 				mmc3_set_prg_bank_1(GET_BANK(state_credits));
 				state_credits();
+				trans_last_gameState = STATE_CREDITS;
 				break;
 			}
 			

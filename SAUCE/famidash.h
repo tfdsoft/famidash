@@ -430,6 +430,8 @@ uint8_t attemptCounter[7];
 uint8_t triggers_hit[3];
 uint8_t pauseStatus;
 
+uint8_t trans_last_gameState;	// This is transitional and is to be removed after gamestate reform
+
 /*
 uint8_t gnd_palette_transition_timer;
 uint8_t original_gnd_palette_idx_0;
