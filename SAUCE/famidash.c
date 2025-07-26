@@ -139,8 +139,9 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_settings));
 				state_settings();
 				trans_last_gameState = STATE_SETTINGS;
-				pal_fade_to_withmusic(4,0);
+				pal_fade_to(4,0);
 				ppu_off();
+				auto_fs_updates = 0;
 				break;
 			}
 			#endif
@@ -153,6 +154,7 @@ void main(){
 				trans_last_gameState = STATE_CREDITS;
 				pal_fade_to(4,0);
 				ppu_off();
+				auto_fs_updates = 0;
 				break;
 			}
 			
