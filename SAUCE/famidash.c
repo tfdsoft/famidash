@@ -149,6 +149,8 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_credits));
 				state_credits();
 				trans_last_gameState = STATE_CREDITS;
+				pal_fade_to(4,0);
+				ppu_off();
 				break;
 			}
 			

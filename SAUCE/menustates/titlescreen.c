@@ -118,12 +118,14 @@ void state_menu() {
 	#if __VS_SYSTEM
 		menuselection = TITLE_BTN_LEVELMAIN;
 	#endif
-	if (exitingLevelSelect) {
-		draw_both_progress_bars();
-		pal_fade_to_withmusic(4,0);
-		exitingLevelSelect = 0;
-	} else {	
-		pal_fade_to_withmusic(4,0);
+	if (trans_last_gameState != STATE_CREDITS) {
+		if (exitingLevelSelect) {
+			draw_both_progress_bars();
+			pal_fade_to_withmusic(4,0);
+			exitingLevelSelect = 0;
+		} else {
+			pal_fade_to_withmusic(4,0);
+		}
 	}
 	mmc3_disable_irq();
 
@@ -153,8 +155,7 @@ void state_menu() {
 		#endif
 	#endif
 
-	
-	ppu_off();
+	if (trans_last_gameState != STATE_CREDITS) { ppu_off(); }
 
 	#if !__VS_SYSTEM
 	gamemode = 0;
