@@ -2338,7 +2338,7 @@ drawplayer_center_offsets:
 			beq @noflip
 
 			LDA _gameState
-			cmp #1
+			cmp #1	; STATE_MENU
 			bne @normalicon
 			LDA _titleicon
 			jmp @domore
@@ -2369,7 +2369,7 @@ drawplayer_center_offsets:
 			AND #$C0
 			PHA
 			lda _gameState
-			cmp #1
+			cmp #1	; STATE_MENU
 			bne @continue
 			pla
 			ora #$20

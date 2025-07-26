@@ -111,7 +111,7 @@ void state_savefile_validate(){
     pal_bright(3);
     pal_fade_to(3,0);
 
-    gameState = 0x00;
+    gameState = STATE_CREDITS;
     return;
 }
 

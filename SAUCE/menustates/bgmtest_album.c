@@ -104,7 +104,7 @@ void state_soundtest() {
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
 			menuMusicCurrentlyPlaying = 1;
-			gameState = 1;
+			gameState = STATE_MENU;
 			return;
 		}
 		if (joypad1.press_a) {

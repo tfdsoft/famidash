@@ -1210,7 +1210,7 @@ void state_menu() {
 	tmp7 = newrand() & 255;
 	switch (menuselection) {
 		case 0x00:
-			gameState = 0x04;
+			gameState = STATE_SOUNDTEST;
 			return;
 	};
 	
