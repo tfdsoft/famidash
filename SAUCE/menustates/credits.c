@@ -85,27 +85,41 @@ void state_credits(){
 	ppu_wait_nmi();
 	
 	tmp1 = 0;
-	do credits_loop(); while (tmp1 != 0);
+	do {
+		credits_loop();
+		if (gameState != STATE_CREDITS) return;
+	} while (tmp1 != 0);
+
 	#if !__THE_ALBUM
+		// tmp1 = 0; redundant since that's the loop condition
 		do {
 			credits_loop();
 			set_scroll_x(tmp1<<2);
+			if (gameState != STATE_CREDITS) return;
 		} while (tmp1 < 64);
 
 		set_scroll_x(256);
 		tmp1 = 0;
-		do credits_loop(); while (tmp1 != 0);
+		do {
+			credits_loop();
+			if (gameState != STATE_CREDITS) return;
+		} while (tmp1 != 0);
 
 		// tmp1 = 0; redundant since that's the loop condition
 		do {
 			credits_loop();
 			set_scroll_y(tmp1<<2);
+			if (gameState != STATE_CREDITS) return;
 		} while (tmp1 < (0xF0 >> 2));
 
 		tmp1 = 0;
 		set_scroll_y(256);
 	#endif
-	do credits_loop(); while (tmp1 != 0);
+
+	do {
+		credits_loop();
+		if (gameState != STATE_CREDITS) return;
+	} while (tmp1 != 0);
 
 	forced_credits = 0;
 	gameState = STATE_MENU;
