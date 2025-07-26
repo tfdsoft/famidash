@@ -208,7 +208,8 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 				all([int(
 						path.is_file() and
 						level_cache["split_huff_sizes"][id] == path.stat().st_size and
-						level_cache["split_huff_hashes"][id] == sha256(path.read_bytes())
+						level_cache["split_huff_hashes"][id] == sha256(path.read_bytes()) and
+						level_cache["split_huff_sizes"][id] < 8192 - (len(header) if id == 0 else 0)	# Check that it fits, maybe the header size changed
 					) for id, path in (
 						[(j, cached_data_path.with_suffix(f".{j}.bin")) for j in range(level_cache["split_count"])]
 					)])
