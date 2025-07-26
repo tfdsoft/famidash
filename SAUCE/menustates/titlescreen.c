@@ -126,8 +126,8 @@ void state_menu() {
 		} else {
 			pal_fade_to_withmusic(4,0);
 		}
+		mmc3_disable_irq();
 	}
-	mmc3_disable_irq();
 
 	do {
 		discoframe = newrand() & 15;
@@ -627,6 +627,7 @@ void state_menu() {
 				music_update();
 				menuMusicCurrentlyPlaying = 0;
 				// TODO: maybe fade out
+				mmc3_disable_irq();
 				ppu_off();
 				pal_bright(0);
 				return;
@@ -688,6 +689,7 @@ void state_menu() {
 				gameState = STATE_CREDITS;
 				music_update();
 				// TODO: maybe fade out
+				mmc3_disable_irq();
 				ppu_off();
 				pal_bright(0);
 				return;
@@ -1083,14 +1085,16 @@ void check_if_music_stopped2() {
 
 void state_menu() {
 	poweroffcheck = 0xff;
-	pal_fade_to_withmusic(4,0);
-	mmc3_disable_irq();
+	if (trans_last_gameState != STATE_CREDITS) {
+		pal_fade_to_withmusic(4,0);
+		mmc3_disable_irq();
+	}
 
 	do {
 		discoframe = newrand() & 15;
 	} while (discoframe > 11);
 
-	ppu_off();
+	if (trans_last_gameState != STATE_CREDITS)	ppu_off();
 
 	gamemode = 0;
 

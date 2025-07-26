@@ -67,8 +67,6 @@ void state_credits(){
 		// one_vram_buffer(0x18, NTADR_A(9,24)); // dot
 		// one_vram_buffer(FLAG_MAJ_VER, NTADR_A(10,24));
 	#endif
-	
-	mmc3_disable_irq();
 
 	ppu_on_all();
 	ppu_wait_nmi();

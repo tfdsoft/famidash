@@ -32,8 +32,6 @@ void state_savefile_validate(){
         include_nested_dialog_string(dialogBox_saveFileSafetyHeader);
         draw_dialog_box(dialogBox_pleasePressB);    // also loads the palette
 
-        mmc3_disable_irq();
-
         set_scroll_x(0);
 
         ppu_on_all();
