@@ -26,14 +26,14 @@ void state_savefile_validate(){
     // if poweroff check is not zero //
 
     #if !__VS_SYSTEM && !__THE_ALBUM
-        auto_fs_updates = 1;
+        auto_fs_updates++;
 
         mmc3_set_8kb_chr(MENUBANK);
         mmc3_set_2kb_chr_bank_0(0xFF);  
         mmc3_set_2kb_chr_bank_1(MOUSEBANK); 
 
         include_nested_dialog_string(dialogBox_saveFileSafetyHeader);
-        draw_dialog_box(dialogBox_pleasePressB);
+        draw_dialog_box(dialogBox_pleasePressB);    // also loads the palette
 
         mmc3_disable_irq();
 

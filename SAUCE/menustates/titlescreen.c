@@ -625,7 +625,9 @@ void state_menu() {
 				famistudio_music_stop();
 				music_update();
 				menuMusicCurrentlyPlaying = 0;
-				ppu_wait_nmi();
+				// TODO: maybe fade out
+				ppu_off();
+				pal_bright(0);
 				return;
 			}
 		#endif
@@ -684,7 +686,9 @@ void state_menu() {
 				menutimer = 0;
 				gameState = STATE_CREDITS;
 				music_update();
+				// TODO: maybe fade out
 				ppu_off();
+				pal_bright(0);
 				return;
 			}			
 		#endif
