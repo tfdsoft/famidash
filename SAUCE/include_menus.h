@@ -1,14 +1,16 @@
 
 CODE_BANK_PUSH("XCD_BANK_03")
 
-#include "defines/nametable/menunametable_XCD03.c"
 
 
 #if !__THE_ALBUM
+#include "defines/nametable/menunametable_XCD03.c"
 #include "menustates/common_xcd_bank_03.c"
 #include "menustates/levelselection.c"
 #include "menustates/progressbar.c"
 #include "menustates/customize_screen.c"
+#else
+#include "defines/album_nametable/menunametable_XCD03.c"
 #endif
 #include "menustates/titlescreen.c"
 
@@ -36,11 +38,14 @@ CODE_BANK("XCD_BANK_06")
 
 CODE_BANK("XCD_BANK_02")
 
+#include "defines/palette/palettes_XCD02.c"
+
 #if !__THE_ALBUM
 #include "defines/nametable/menunametable_XCD02.c"
-#include "defines/palette/palettes_XCD02.c"
 #include "menustates/instructions.c"
 #include "menustates/settings.c"
+#else
+#include "defines/album_nametable/menunametable_XCD02.c"
 #endif
 
 #include "menustates/credits.c"

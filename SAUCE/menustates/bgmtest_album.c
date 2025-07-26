@@ -30,10 +30,6 @@ const uint8_t difficulty_pal_B[] ={
 	0x0F,	// auto
 };
 
-void state_playmain() {
-	
-}
-
 void refreshmenu();
 void refreshmenu_part2();
 void code_checker();
@@ -52,11 +48,6 @@ void state_lvldone() {
 #include "defines/charmap/bgm_charmap.h"
 #include "music_soundTestTables.h"
 #include "sfx_soundTestTables.h"
-
-//CODE_BANK_PUSH("XCD_BANK_05")
-
-//const unsigned char bgmscreen[];
-//const unsigned char SoundQueue[];
 
 
 #include "defines/charmap/bgm_charmap.h"

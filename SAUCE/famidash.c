@@ -87,9 +87,9 @@ void main(){
 
 			case STATE_MENU: {	// To be split into actual state_menu and levelselection
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
-			#if __THE_ALBUM				//the album
+			#if __THE_ALBUM
 				state_menu();
-			#else						//not the album
+			#else	//not the album
 				if (!kandowatchesyousleep) state_menu();
 				else {
 					pal_fade_to_withmusic(4,0);
@@ -102,11 +102,11 @@ void main(){
 					#include "defines/charmap/mainmenu_charmap.h"
 					levelselection();
 				}
-			#endif						//end if
+			#endif
 				break;			
 			}
 			
-		#if !__THE_ALBUM		//non-album
+		#if !__THE_ALBUM		//non-album states
 		
 			case STATE_GAME: {
 				state_game();
