@@ -732,7 +732,7 @@ void state_menu() {
 
 		#if !__VS_SYSTEM
 			case TITLE_BTN_SOUNDTEST: gameState = STATE_SOUNDTEST; return;
-			case TITLE_BTN_SETTINGS: crossPRGBankJump0(settings); return;
+			case TITLE_BTN_SETTINGS: gameState = STATE_SETTINGS; return;
 			case TITLE_BTN_INSTRUCTIONS:
 				tmp2 = 0;
 				gameState = STATE_INSTRUCTIONS;

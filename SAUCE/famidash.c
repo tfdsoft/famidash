@@ -126,6 +126,14 @@ void main(){
 			}
 			#endif
 
+			#if !__VS_SYSTEM
+			case STATE_SETTINGS: {
+				mmc3_set_prg_bank_1(GET_BANK(state_settings));
+				state_settings();
+				break;
+			}
+			#endif
+
 		#endif
 
 			default: {

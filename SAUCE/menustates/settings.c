@@ -11,7 +11,7 @@ void set_settings();
 #define settingCount	7
 #endif
 
-void settings() {
+void state_settings() {
 	settingvalue = 0; 
 	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
@@ -89,7 +89,7 @@ void settings() {
 				}
 			}
 			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
-				return;
+				break;
 			}
 
 		}
@@ -122,12 +122,13 @@ void settings() {
 		if (twoplayer) options &= ~platformer;		
 
 		if (joypad1.press_b) {
-			return;
+			break;
 		}
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 				
 	}
+	gameState = STATE_MENU;
 }
 
 const uint8_t xbgmlookuptable[];
