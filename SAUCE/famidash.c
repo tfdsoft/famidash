@@ -30,43 +30,42 @@
 
 
 void main(){
+	// Black out the PPU
     ppu_off();
+    // Set brightness to nothing while at it
+    pal_bright(0);
+    // Enable both sprites and BG in the leftmost 8 pixels
     ppu_mask(0x00 | (1 << 1) | (1 << 2));
-	mmc3_set_8kb_chr(MENUBANK);
+    // use the second set of tiles for sprites
+	// both bg and sprites are set to 0 by default
+	bank_spr(1);
+	// do at least once
+    set_vram_buffer();
+    // Set *a* palette
+	pal_spr(paletteDefaultSP);
+
+    // Initialize mapper
+    mmc3_disable_irq();
+
+    // Initialize controllers
+	mouse.x = 0x78;
+	mouse.y = 0x60;
+	mouse_mask = 1;
 
 	// disable debug mode toggle
 	options &= ~debugtoggle;
 
-    //pal_bg(paletteDefault);
-    //pal_spr(paletteDefaultSP);
-    // use the second set of tiles for sprites
-	// both bg and sprites are set to 0 by default
-	bank_spr(1);
-
-	mouse.x = 0x78;
-	mouse.y = 0x60;
-	mouse_mask = 1;
-    set_vram_buffer(); // do at least once
-
-    // ppu_on_all();
-    // pal_fade_to(4,0);
-
 	// assigning value at startup as opposed to compile time
 	// is needed for cc65 to export the label for mesen
 	gameState = STATE_SAVEVALIDATE;
-	
-	// These are done at init time
-    // level = 0x00;
-	// auto_fs_updates = 0;
+	auto_fs_updates = 0;
 
-	//mmc3_set_prg_bank_1(GET_BANK(playPCM));
-	//playPCM(0);
-
-	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;
+
 	#if __THE_ALBUM
 		cursedmusic = 0;
 	#endif
+
     while (1){
 		ppu_wait_nmi();
 		switch (gameState){
@@ -144,6 +143,7 @@ void main(){
 			
 
 		}
+
     }
 }
 
