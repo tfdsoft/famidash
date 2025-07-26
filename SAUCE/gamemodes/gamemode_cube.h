@@ -14,8 +14,8 @@ void cube_movement(){
 
 	fallspeed_big = CUBE_MAX_FALLSPEED;
 
-	#if LEVELSET == 'C'
-	if (level == everyend) fallspeed_big += 0x0100;
+	#ifdef level_everyend
+		if (level == level_everyend) fallspeed_big += 0x0100;
 	#endif
 
 	fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;

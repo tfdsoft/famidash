@@ -4,9 +4,11 @@ void init_sprites();
 	#include "defines/charmap/bg_charmap.h"
 	const unsigned char attempttext[]="PQQRSTQ"; //ATTEMPT
 #endif
-#include "defines/charmap/luckydraw_charmap.h"
-const unsigned char triggerstext[]="TRIGGERS SURVIVED"; //ATTEMPT
-const unsigned char toptriggerstext[]="TOP TRIGGERS SURVIVED"; //ATTEMPT
+#ifdef level_luckydraw
+	#include "defines/charmap/luckydraw_charmap.h"
+	const unsigned char triggerstext[]="TRIGGERS SURVIVED"; //ATTEMPT
+	const unsigned char toptriggerstext[]="TOP TRIGGERS SURVIVED"; //ATTEMPT
+#endif
 
 
 //const unsigned char whartxt[]="wxyz";	// WHAR
@@ -150,8 +152,8 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 //			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
 //
 //		else {
-			#ifdef luckydraw
-			if (level == luckydraw && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
+			#ifdef level_luckydraw
+			if (level == level_luckydraw && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
 				multi_vram_buffer_horz((const char*)triggerstext,sizeof(triggerstext)-1,NTADR_C(1, 17));
 				one_vram_buffer(0xF5+triggers_hit[2], NTADR_C(20,17));
 				one_vram_buffer(0xF5+triggers_hit[1], NTADR_C(21,17));

@@ -6,4 +6,4 @@
 #define OFFICIAL_LEVEL_COUNT 1
 #define COMMUNITY_LEVEL_COUNT 0
 
-#define stereomadness 0
+#define level_stereomadness 0

@@ -1834,9 +1834,9 @@ MouseBoundsMax:
 	lda _no_parallax
 	beq @asdf
 
-	.ifdef _luckydraw
+	.ifdef _level_luckydraw
 		lda _level
-		cmp #::_luckydraw
+		cmp #::_level_luckydraw
 		beq @slop
 	.endif
 	

@@ -85,8 +85,8 @@ void decrement_was_on_slope() {
 
 
 void state_game(){
-	#ifdef luckydraw
-	if (level == luckydraw && (options & platformer) ) { options ^= platformer; tempplat = 1; }
+	#ifdef level_luckydraw
+	if (level == level_luckydraw && (options & platformer) ) { options ^= platformer; tempplat = 1; }
 	#endif
 	coin1_timer = 0;
 	coin2_timer = 0;
@@ -150,8 +150,8 @@ void state_game(){
 	pal_set_update();
 
     while (1) {
-    	#ifdef luckydraw
-			if (level == luckydraw) { dblocked[0] = 1; }
+    	#ifdef level_luckydraw
+			if (level == level_luckydraw) { dblocked[0] = 1; }
 		#endif
 		newrand();
 		if (kandokidshack2 && !(kandoframecnt & 0x0F)) { icon == MAX_ICONS-1 ? icon = 0 : icon++; 	iconbank = (icon<<1) + 40; }
@@ -168,8 +168,8 @@ void state_game(){
 			if (famistudio_song_speed == 0x80) music_play(song);
 		}		    
 
-		#if LEVELSET == 'C'
-			if (level == everyend) {
+		#ifdef level_everyend
+			if (level == level_everyend) {
 				if (song == song_every_end_pt1 && famistudio_song_speed == 0x80) {
 					song = song_every_end_pt2;
 					music_play(song);
@@ -453,8 +453,8 @@ void state_game(){
 		if (retro_mode) { if (gamemode == GAMEMODE_CUBE) gamemode = GAMEMODE_ROBOT; }
 
 
-		#ifdef luckydraw
-			if (level == luckydraw) {
+		#ifdef level_luckydraw
+			if (level == level_luckydraw) {
 				if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement);
 			} else
 		#endif
@@ -569,8 +569,8 @@ void state_game(){
 
 			crossPRGBankJump0(sprite_collide);
 
-			#ifdef luckydraw
-				if (level == luckydraw) {
+			#ifdef level_luckydraw
+				if (level == level_luckydraw) {
 					if (!(cube_data[currplayer] & 1)) crossPRGBankJump0(movement);
 				} else
 			#endif

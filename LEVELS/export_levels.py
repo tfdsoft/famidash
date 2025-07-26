@@ -585,7 +585,7 @@ def generate_space_defines(filteredOfficialMetadata, filteredCommunityMetadata, 
 	official_level_count = len(offLevelList)
 	community_level_count = len(commLevelList)
 
-	levelDefineList = [f"#define {i} {idx}" for idx, i in enumerate(offLevelList + commLevelList)]
+	levelDefineList = [f"#define level_{i} {idx}" for idx, i in enumerate(offLevelList + commLevelList)]
 
 	if isinstance(levelSetDefineName, int) or isinstance(levelSetDefineName, float):
 		levelSetDefineName = f"{levelSetDefineName}"
