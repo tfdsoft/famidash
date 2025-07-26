@@ -29,7 +29,6 @@ void state_levelselect() {
 	mmc3_set_8kb_chr(MENUBANK);
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	pal_fade_to_withmusic(4,0);
 	mmc3_disable_irq();
 	disco_sprites = 0;
 
@@ -37,7 +36,6 @@ void state_levelselect() {
 	write_irq_table(lvlselect_irq_table);
 	set_irq_ptr(irqTable);
 	oam_clear();
-	ppu_off();
 	pal_bright(0);
 	// pal_bg(paletteMenu);
 	set_scroll_x(0);
@@ -76,6 +74,8 @@ void state_levelselect() {
 	triggers_hit[0] = 0;
 	triggers_hit[1] = 0;
 	triggers_hit[2] = 0;
+
+	practice_point_count = 0;
 
 	// one_vram_buffer(0xb0+kandokidshackTENS, NTADR_A(17,17));
 	// one_vram_buffer(0xb0+kandokidshackONES, NTADR_A(18,17));

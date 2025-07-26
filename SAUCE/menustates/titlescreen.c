@@ -726,7 +726,8 @@ void state_menu() {
 			if (normalorcommlevels) level = LEVEL_COUNT;
 			else level = 0;
 
-			state_levelselect();
+			pal_fade_to_withmusic(4,0);
+			ppu_off();
 			return;
 
 		#if !__VS_SYSTEM

@@ -301,6 +301,11 @@ void state_lvldone() {
 						menuselection = 0;
 						//oam_clear();
 						menuMusicCurrentlyPlaying = 0;
+						pal_fade_to_withmusic(4,0);
+						ppu_off();
+						pal_bg(splashMenu);
+
+						practice_point_count = 0;
 						return;
 					}
 				}
@@ -322,6 +327,11 @@ void state_lvldone() {
 
 					//oam_clear();
 					menuMusicCurrentlyPlaying = 0;
+					pal_fade_to_withmusic(4,0);
+					ppu_off();
+					pal_bg(splashMenu);
+
+					practice_point_count = 0;
 					return;
 			#if !__VS_SYSTEM
 				} else {
