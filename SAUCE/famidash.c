@@ -139,6 +139,8 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_settings));
 				state_settings();
 				trans_last_gameState = STATE_SETTINGS;
+				pal_fade_to_withmusic(4,0);
+				ppu_off();
 				break;
 			}
 			#endif

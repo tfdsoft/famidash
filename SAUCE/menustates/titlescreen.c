@@ -118,7 +118,7 @@ void state_menu() {
 	#if __VS_SYSTEM
 		menuselection = TITLE_BTN_LEVELMAIN;
 	#endif
-	if (trans_last_gameState != STATE_CREDITS) {
+	if (trans_last_gameState != STATE_CREDITS && trans_last_gameState != STATE_SETTINGS) {
 		if (exitingLevelSelect) {
 			draw_both_progress_bars();
 			pal_fade_to_withmusic(4,0);
@@ -155,7 +155,8 @@ void state_menu() {
 		#endif
 	#endif
 
-	if (trans_last_gameState != STATE_CREDITS) { ppu_off(); }
+	if (trans_last_gameState != STATE_CREDITS && trans_last_gameState != STATE_SETTINGS)
+		ppu_off();
 
 	#if !__VS_SYSTEM
 	gamemode = 0;
@@ -734,7 +735,12 @@ void state_menu() {
 
 		#if !__VS_SYSTEM
 			case TITLE_BTN_SOUNDTEST: gameState = STATE_SOUNDTEST; return;
-			case TITLE_BTN_SETTINGS: gameState = STATE_SETTINGS; return;
+			case TITLE_BTN_SETTINGS: 
+				gameState = STATE_SETTINGS;
+				pal_fade_to_withmusic(4,0);
+				mmc3_disable_irq();
+				ppu_off();
+				return;
 			case TITLE_BTN_INSTRUCTIONS:
 				tmp2 = 0;
 				gameState = STATE_INSTRUCTIONS;
@@ -1085,7 +1091,7 @@ void check_if_music_stopped2() {
 
 void state_menu() {
 	poweroffcheck = 0xff;
-	if (trans_last_gameState != STATE_CREDITS) {
+	if (trans_last_gameState != STATE_CREDITS && trans_last_gameState != STATE_SETTINGS) {
 		pal_fade_to_withmusic(4,0);
 		mmc3_disable_irq();
 	}
@@ -1094,7 +1100,8 @@ void state_menu() {
 		discoframe = newrand() & 15;
 	} while (discoframe > 11);
 
-	if (trans_last_gameState != STATE_CREDITS)	ppu_off();
+	if (trans_last_gameState != STATE_CREDITS && trans_last_gameState != STATE_SETTINGS)
+		ppu_off();
 
 	gamemode = 0;
 
