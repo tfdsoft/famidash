@@ -28,7 +28,6 @@ void credits_loop() {
 	#elif __THE_ALBUM
 		check_if_music_stopped_3();
 	#endif
-	music_update();
 	if (!forced_credits &&
 		(joypad1.press || ((mouse.connected)
 			? mouse.left_press || mouse.right_press
@@ -41,6 +40,8 @@ void credits_loop() {
 }
 
 void state_credits(){
+	auto_fs_updates++;
+
 	oam_clear();
 	
 	mmc3_set_8kb_chr(MENUBANK);
@@ -123,6 +124,8 @@ void state_credits(){
 
 	forced_credits = 0;
 	gameState = STATE_MENU;
+
+	auto_fs_updates = 0;
 	return; 
 	
 }
