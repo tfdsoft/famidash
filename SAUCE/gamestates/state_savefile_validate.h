@@ -26,6 +26,8 @@ void state_savefile_validate(){
     // if poweroff check is not zero //
 
     #if !__VS_SYSTEM && !__THE_ALBUM
+        auto_fs_updates = 1;
+
         mmc3_set_8kb_chr(MENUBANK);
         mmc3_set_2kb_chr_bank_0(0xFF);  
         mmc3_set_2kb_chr_bank_1(MOUSEBANK); 
@@ -37,11 +39,11 @@ void state_savefile_validate(){
 
         ppu_on_all();
 
-        pal_fade_to_withmusic(0,4);
+        pal_fade_to(0,4);
+
 
         do {
             ppu_wait_nmi();
-            music_update();
             oam_clear();
             mouse_and_cursor();
             newrand();
@@ -50,8 +52,10 @@ void state_savefile_validate(){
             if (kandoframecnt & 1 && mouse_timer) mouse_timer--;    
         } while (1);
 
-        pal_fade_to_withmusic(4,0);
+        pal_fade_to(4,0);
         ppu_off();
+
+        auto_fs_updates = 0;
     #endif
 
     gameState = STATE_CREDITS;
