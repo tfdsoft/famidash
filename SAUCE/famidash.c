@@ -51,8 +51,9 @@ void main(){
     // ppu_on_all();
     // pal_fade_to(4,0);
 
-	// needed for cc65 to export the label for mesen
-    gameState = STATE_MENU;
+	// assigning value at startup as opposed to compile time
+	// is needed for cc65 to export the label for mesen
+	gameState = STATE_SAVEVALIDATE;
 	
 	// These are done at init time
     // level = 0x00;
@@ -63,7 +64,6 @@ void main(){
 
 	pal_spr(paletteDefaultSP);
 	menuMusicCurrentlyPlaying = 0;
-	gameState = STATE_SAVEVALIDATE;
 	#if __THE_ALBUM
 		cursedmusic = 0;
 	#endif
