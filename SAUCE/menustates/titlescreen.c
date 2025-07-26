@@ -182,8 +182,6 @@ void state_menu() {
 //	set_scroll_x(0);
 //    set_scroll_y(0);
 
-	kandowatchesyousleep = 0;
-
 	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 	//mmc3_set_prg_bank_1(GET_BANK(state_menu));
 
@@ -720,7 +718,7 @@ void state_menu() {
 			POKE(0x2005, 0x00);
 			POKE(0x2005, 0x00);
 			mmc3_disable_irq(); // reset scroll before playing
-			kandowatchesyousleep = 1;
+			gameState = STATE_LEVELSELECT;
 
 			if (!tmp7) crossPRGBankJump8(playPCM, 1);
 			else crossPRGBankJump8(playPCM, 0);
@@ -728,7 +726,7 @@ void state_menu() {
 			if (normalorcommlevels) level = LEVEL_COUNT;
 			else level = 0;
 
-			levelselection();
+			state_levelselect();
 			return;
 
 		#if !__VS_SYSTEM

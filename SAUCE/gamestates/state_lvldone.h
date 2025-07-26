@@ -297,9 +297,8 @@ void state_lvldone() {
 					if (mouse.x >= 0xA6 && mouse.x <= 0xc3) {
 						sfx_play(sfx_exit_level, 0);
 						music_update();
-						gameState = STATE_MENU;
+						gameState = STATE_LEVELSELECT;
 						menuselection = 0;
-						kandowatchesyousleep = 1;
 						//oam_clear();
 						menuMusicCurrentlyPlaying = 0;
 						return;
@@ -318,9 +317,8 @@ void state_lvldone() {
 
 					sfx_play(sfx_exit_level, 0);
 					music_update();
-					gameState = STATE_MENU;
+					gameState = STATE_LEVELSELECT;
 					menuselection = 0;
-					kandowatchesyousleep = 1;
 
 					//oam_clear();
 					menuMusicCurrentlyPlaying = 0;

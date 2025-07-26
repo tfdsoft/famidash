@@ -5,6 +5,7 @@
 #define STATE_LVLDONE		0x03
 #define STATE_SOUNDTEST		0x04
 #define STATE_SAVEVALIDATE	0x05
+#define STATE_LEVELSELECT	0x06
 #define STATE_FUNSETTINGS	0xF0
 #define STATE_INSTRUCTIONS	0xF1
 #if LVLSET != 'A'
@@ -457,8 +458,6 @@ uint8_t gravity_mod;
 #endif
 
 uint8_t tempplat;
-
-uint8_t kandowatchesyousleep;	//variable to say whether to go back to main menu or level select
 
 #if __THE_ALBUM
 uint8_t queuemode;

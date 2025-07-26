@@ -85,24 +85,9 @@ void main(){
 				break;
 			}
 
-			case STATE_MENU: {	// To be split into actual state_menu and levelselection
+			case STATE_MENU: {
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
-			#if __THE_ALBUM
 				state_menu();
-			#else	//not the album
-				if (!kandowatchesyousleep) state_menu();
-				else {
-					pal_fade_to_withmusic(4,0);
-					ppu_off();
-					pal_bg(splashMenu);
-					kandowatchesyousleep = 1;
-
-					//
-					practice_point_count = 0;
-					#include "defines/charmap/mainmenu_charmap.h"
-					levelselection();
-				}
-			#endif
 				break;			
 			}
 			
@@ -126,6 +111,17 @@ void main(){
 			case STATE_INSTRUCTIONS: {
 				mmc3_set_prg_bank_1(GET_BANK(state_instructions));
 				state_instructions();
+				break;
+			}
+			case STATE_LEVELSELECT: {
+				mmc3_set_prg_bank_1(GET_BANK(state_levelselect));
+				pal_fade_to_withmusic(4,0);
+				ppu_off();
+				pal_bg(splashMenu);
+
+				practice_point_count = 0;
+				#include "defines/charmap/mainmenu_charmap.h"
+				state_levelselect();
 				break;
 			}
 			#if LEVELSET != 'A'

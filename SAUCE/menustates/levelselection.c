@@ -23,7 +23,7 @@ const uint8_t lvlselect_irq_table[] = {
 };
 
 
-void levelselection() {
+void state_levelselect() {
 	if (tempplat == 1) { tempplat = 0; options |= platformer; }
 	slowmode = 0;
 	mmc3_set_8kb_chr(MENUBANK);
@@ -53,7 +53,7 @@ void levelselection() {
 			vram_unrle(gameover);
 			tmp5 = 200;
 			ppu_on_all();		
-	//		kandowatchesyousleep = 0;
+	//		gameState = STATE_MENU;
 	//		exitingLevelSelect = 1;
 	//		cube_data[0] = 0;
 	//		cube_data[1] = 0;
@@ -111,7 +111,7 @@ void levelselection() {
 				tmp5--;
 			}
 			ppu_off();
-			kandowatchesyousleep = 0;
+			gameState = STATE_MENU;
 			exitingLevelSelect = 1;
 			cube_data[0] = 0;
 			cube_data[1] = 0;
@@ -160,7 +160,7 @@ void levelselection() {
 			menutimer++;
 			if (menutimer >= 2000) {
 				exitingLevelSelect = 1;
-				kandowatchesyousleep = 0;
+				gameState = STATE_MENU;
 				return;
 			}
 		#endif
@@ -175,7 +175,7 @@ void levelselection() {
 
 		if (joypad1.press_b){
 			exitingLevelSelect = 1;
-			kandowatchesyousleep = 0;
+			gameState = STATE_MENU;
 			#if __VS_SYSTEM
 				menutimer = 0;
 			#endif
