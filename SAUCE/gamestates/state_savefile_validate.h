@@ -9,9 +9,6 @@ void setdefaultoptions();
 void mouse_and_cursor();
 
 void state_savefile_validate(){
-    // startup
-    set_scroll_x(0);
-    ppu_wait_nmi();
 
     // if save file version is incorrect //
     if ((SRAM_VALIDATE[2] != FLAG_SAVE_VER) && SRAM_VALIDATE[2] != 0x00) {
@@ -36,6 +33,8 @@ void state_savefile_validate(){
         draw_dialog_box(dialogBox_pleasePressB);    // also loads the palette
 
         mmc3_disable_irq();
+
+        set_scroll_x(0);
 
         ppu_on_all();
 
