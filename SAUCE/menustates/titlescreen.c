@@ -118,15 +118,16 @@ void state_menu() {
 	#if __VS_SYSTEM
 		menuselection = TITLE_BTN_LEVELMAIN;
 	#endif
-	if (trans_last_gameState != STATE_CREDITS && trans_last_gameState != STATE_SETTINGS) {
-		if (exitingLevelSelect) {
-			draw_both_progress_bars();
+	switch (trans_last_gameState) {
+		case STATE_CREDITS:
+		case STATE_SETTINGS:
+		case STATE_INSTRUCTIONS:
+			break;
+
+		default:
 			pal_fade_to_withmusic(4,0);
-			exitingLevelSelect = 0;
-		} else {
-			pal_fade_to_withmusic(4,0);
-		}
-		mmc3_disable_irq();
+			mmc3_disable_irq();
+			break;
 	}
 
 	do {
@@ -155,8 +156,16 @@ void state_menu() {
 		#endif
 	#endif
 
-	if (trans_last_gameState != STATE_CREDITS && trans_last_gameState != STATE_SETTINGS)
-		ppu_off();
+	switch (trans_last_gameState) {
+		case STATE_CREDITS:
+		case STATE_SETTINGS:
+		case STATE_INSTRUCTIONS:
+			break;
+
+		default:
+			ppu_off();
+			break;
+	}
 
 	#if !__VS_SYSTEM
 	gamemode = 0;
@@ -744,9 +753,9 @@ void state_menu() {
 			case TITLE_BTN_INSTRUCTIONS:
 				tmp2 = 0;
 				gameState = STATE_INSTRUCTIONS;
-				music_update();
 				pal_fade_to_withmusic(4,0);
-				ppu_wait_nmi();		
+				mmc3_disable_irq();
+				ppu_off();
 				break;
 			case TITLE_BTN_FUNSETTINGS:
 				if (all_levels_complete != 0xFC)
@@ -1091,17 +1100,32 @@ void check_if_music_stopped2() {
 
 void state_menu() {
 	poweroffcheck = 0xff;
-	if (trans_last_gameState != STATE_CREDITS && trans_last_gameState != STATE_SETTINGS) {
-		pal_fade_to_withmusic(4,0);
-		mmc3_disable_irq();
+	switch (trans_last_gameState) {
+		case STATE_CREDITS:
+		case STATE_SETTINGS:
+		case STATE_INSTRUCTIONS:
+			break;
+
+		default:
+			pal_fade_to_withmusic(4,0);
+			mmc3_disable_irq();
+			break;
 	}
 
 	do {
 		discoframe = newrand() & 15;
 	} while (discoframe > 11);
 
-	if (trans_last_gameState != STATE_CREDITS && trans_last_gameState != STATE_SETTINGS)
-		ppu_off();
+	switch (trans_last_gameState) {
+		case STATE_CREDITS:
+		case STATE_SETTINGS:
+		case STATE_INSTRUCTIONS:
+			break;
+
+		default:
+			ppu_off();
+			break;
+	}
 
 	gamemode = 0;
 

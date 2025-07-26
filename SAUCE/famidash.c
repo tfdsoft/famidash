@@ -117,6 +117,9 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_instructions));
 				state_instructions();
 				trans_last_gameState = STATE_INSTRUCTIONS;
+				pal_fade_to(4,0);
+				ppu_off();
+				auto_fs_updates = 0;
 				break;
 			}
 			case STATE_LEVELSELECT: {
