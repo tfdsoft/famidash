@@ -2,40 +2,35 @@ const unsigned char palette_Credits2[];
 const unsigned char playmain[];
 
 void state_playmain(){
-	mmc3_disable_irq();
-	
-	ppu_off();
-	pal_bright(0);
+	auto_fs_updates++;
     
+	oam_clear();
+
+	mmc3_set_8kb_chr(MENUBANK);
+	mmc3_set_2kb_chr_bank_0(0xFF);	
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
+	
 	pal_bg(palette_Credits2);
 	
 	vram_adr(NAMETABLE_A);
 	vram_unrle(playmain);
 
-	// __asm__("LDA mmc3PRG1Bank \nPHA ");
-    // mmc3_set_prg_bank_1(0);
-    // vram_adr(NAMETABLE_A);
-	//    vram_unrle(dem_funnies);
-    // __asm__("PLA \n JSR %v ", mmc3_set_prg_bank_1);
-
-	oam_clear();
-	mmc3_set_8kb_chr(MENUBANK);
-	mmc3_set_2kb_chr_bank_0(0xFF);	
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);	
 	ppu_on_all();
-	music_update();
+	
 	pal_fade_to(0,4);
-	tmp1 = 0;
 
 	do {
 		oam_clear();
 		mouse_and_cursor();
-		music_update();
+
 		ppu_wait_nmi();
+		
 		newrand();
 		kandoframecnt++;
 	} while (!joypad1.press && !mouse.left_press);
+
 	gameState = STATE_MENU;
+
 	return;
 }	
 

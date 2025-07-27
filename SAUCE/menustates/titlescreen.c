@@ -122,6 +122,7 @@ void state_menu() {
 		case STATE_CREDITS:
 		case STATE_SETTINGS:
 		case STATE_INSTRUCTIONS:
+		case STATE_PLAYMAIN:
 			break;
 
 		default:
@@ -160,6 +161,7 @@ void state_menu() {
 		case STATE_CREDITS:
 		case STATE_SETTINGS:
 		case STATE_INSTRUCTIONS:
+		case STATE_PLAYMAIN:
 			break;
 
 		default:
@@ -719,7 +721,8 @@ void state_menu() {
 				gameState = STATE_PLAYMAIN;
 				music_update();
 				pal_fade_to_withmusic(4,0);
-				ppu_wait_nmi();		
+				mmc3_disable_irq();
+				ppu_off();
 				break;
 				// no fall through lmao
 			#else
@@ -746,6 +749,7 @@ void state_menu() {
 			case TITLE_BTN_SOUNDTEST: gameState = STATE_SOUNDTEST; return;
 			case TITLE_BTN_SETTINGS: 
 				gameState = STATE_SETTINGS;
+				music_update();
 				pal_fade_to_withmusic(4,0);
 				mmc3_disable_irq();
 				ppu_off();
@@ -753,6 +757,7 @@ void state_menu() {
 			case TITLE_BTN_INSTRUCTIONS:
 				tmp2 = 0;
 				gameState = STATE_INSTRUCTIONS;
+				music_update();
 				pal_fade_to_withmusic(4,0);
 				mmc3_disable_irq();
 				ppu_off();
@@ -1104,6 +1109,7 @@ void state_menu() {
 		case STATE_CREDITS:
 		case STATE_SETTINGS:
 		case STATE_INSTRUCTIONS:
+		case STATE_PLAYMAIN:
 			break;
 
 		default:
@@ -1120,6 +1126,7 @@ void state_menu() {
 		case STATE_CREDITS:
 		case STATE_SETTINGS:
 		case STATE_INSTRUCTIONS:
+		case STATE_PLAYMAIN:
 			break;
 
 		default:
