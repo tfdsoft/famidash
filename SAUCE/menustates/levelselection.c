@@ -65,8 +65,6 @@ void state_levelselect() {
 	set_scroll_x(0);
 	set_scroll_y(0);  
 
-	memfill(attemptCounter, 0, sizeof(attemptCounter));
-
 	tmp8 = 0xff00;
 	tmp4 = 1;
 	crossPRGBankJump0(refreshmenu);

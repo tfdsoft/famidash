@@ -103,7 +103,6 @@ void state_lvldone() {
 
 	sfx_play(sfx_level_complete, 0);
 	menuselection = 1;
-	practice_point_count = 0;
 
 	#if __VS_SYSTEM
 	coins_inserted--;
@@ -287,9 +286,6 @@ void state_lvldone() {
 					if (mouse.x >= 0x36 && mouse.x <= 0x53) {
 						sfx_play(sfx_start_level, 0);
 						gameState = STATE_GAME;
-						pal_fade_to_withmusic(4,0);
-						memfill(attemptCounter, 0, sizeof(attemptCounter));
-
 						//oam_clear();
 						coins = 0;
 						return;					
@@ -301,10 +297,6 @@ void state_lvldone() {
 						menuselection = 0;
 						//oam_clear();
 						menuMusicCurrentlyPlaying = 0;
-						pal_fade_to_withmusic(4,0);
-						ppu_off();
-
-						practice_point_count = 0;
 						return;
 					}
 				}
@@ -326,20 +318,13 @@ void state_lvldone() {
 
 					//oam_clear();
 					menuMusicCurrentlyPlaying = 0;
-					pal_fade_to_withmusic(4,0);
-					ppu_off();
-
-					practice_point_count = 0;
 					return;
 			#if !__VS_SYSTEM
 				} else {
 					
 					sfx_play(sfx_start_level, 0);
 					gameState = STATE_GAME;
-					pal_fade_to_withmusic(4,0);
-					memfill(attemptCounter, 0, sizeof(attemptCounter));
 					coins = 0;
-
 
 					//oam_clear();
 					return;

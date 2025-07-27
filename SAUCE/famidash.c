@@ -105,6 +105,8 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
 				state_lvldone();
 				trans_last_gameState = STATE_LVLDONE;
+				pal_fade_to_withmusic(4,0);
+				ppu_off();
 				break;
 			}
 			case STATE_FUNSETTINGS: {

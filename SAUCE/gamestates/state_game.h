@@ -97,6 +97,8 @@ void state_game(){
 	kandokidshack4 = 0;
 	animating = 0;
 	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
+	memfill(attemptCounter, 0, sizeof(attemptCounter));
+	practice_point_count = 0;
 	orbactive = 0;
 	
 	outline_color = 0x30;
