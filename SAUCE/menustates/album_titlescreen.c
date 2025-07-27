@@ -50,6 +50,39 @@ void check_if_music_stopped2() {
 
 
 void state_menu() {
+	auto_fs_updates++;
+
+	oam_clear();
+
+	mmc3_set_8kb_chr(MENUBANK);
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
+
+	// Palette
+	if (all_levels_complete == 0xFC) pal_bg(splashMenu2);
+	else pal_bg (splashMenu);
+
+	// Tilemap 1
+    vram_adr(NAMETABLE_A);
+    vram_unrle(game_start_screen);
+	vram_adr(NAMETABLE_B);
+    vram_unrle(game_start_screen);
+
+    // Tilemap 2
+	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
+
+	// Tilemap 3
+	tmp4 = menuselection; ++tmp4;
+	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
+	if (menuselection != TITLE_BTN_FUNSETTINGS) {
+		one_vram_buffer('a', tmp5);
+		one_vram_buffer('b', addloNOC(tmp5, 1));
+		one_vram_buffer(' ', NTADR_A(26, 2));
+		one_vram_buffer(' ', NTADR_A(26, 3));
+	} else {
+		one_vram_buffer(0x6F, NTADR_A(26, 2));
+		one_vram_buffer(0x7F, NTADR_A(26, 3));
+	}
+
 	poweroffcheck = 0xff;
 
 	do {
@@ -57,70 +90,31 @@ void state_menu() {
 	} while (discoframe > 11);
 
 	gamemode = 0;
-
-	if (all_levels_complete == 0xFC) pal_bg(splashMenu2);
-	else pal_bg (splashMenu);
 	
 	newrand();
-
-	mmc3_set_8kb_chr(MENUBANK);
-
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-
-	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(song_menu_theme);
 	menuMusicCurrentlyPlaying = 1;
 
 	settingvalue = 0;
 	
-	// Enable SRAM write
-	POKE(0xA001, 0x80);
+	tmp8 = 0;
 
+	//invisible = 0;
+
+	speed = 1;
+	joypad1.press = 0;
+	
 	write_irq_table(menu_irq_table);
 	//edit_irq_table(2, low_byte(tmp8));
 	set_irq_ptr(irqTable);
-	tmp8 = 0;
 	
-
-	menuMusicCurrentlyPlaying = 1;
-	//invisible = 0;
-	
-
-	oam_clear();
-
-	//POKE(0x200, 175);
-	//POKE(0x201, 0x02); // Use the second tile in the BG side which is pure black
-	//POKE(0x202, 0b00100000); // second palette
-	//POKE(0x203, 0x00);
-	
-	// Expand the data for the menu nametable while the PPU is still off
-    vram_adr(NAMETABLE_A);
-    vram_unrle(game_start_screen);
-	vram_adr(NAMETABLE_B);
-    vram_unrle(game_start_screen);
-
 	set_scroll_x(0);
 
-	speed = 1;
  	ppu_on_all();
-	joypad1.press = 0;
-	pal_fade_to_withmusic(0,4);
+	
+	pal_fade_to(0,4);
 
-	tmp4 = menuselection; ++tmp4;
-	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
-	if (menuselection != 5) {
-		one_vram_buffer('a', tmp5);
-		one_vram_buffer('b', addloNOC(tmp5, 1));
-		one_vram_buffer(' ', NTADR_A(26, 2));
-		one_vram_buffer(' ', NTADR_A(26, 3));
-		
-	}
-	else {
-		one_vram_buffer(0x6F, NTADR_A(26, 2));
-		one_vram_buffer(0x7F, NTADR_A(26, 3));
-		
-	}	
 
 	kandoframecnt = 0;
 	while (!(joypad1.press & (PAD_START | PAD_A))){
@@ -133,9 +127,6 @@ void state_menu() {
 		newrand();
 		newrand();
 		newrand();
-
-
-
 
 		//if ((pad[0] & PAD_LEFT) && (pad[0] & PAD_DOWN) && (pad[0] & PAD_SELECT) && (pad_new[0] & PAD_B)) { color_emphasis(COL_EMP_GREY); color_emphasis(COL_EMP_GREEN); }
 		if (!(kandoframecnt & 127)) {
@@ -173,21 +164,15 @@ void state_menu() {
 	oam_clear();
 	ppu_wait_nmi();
 	tmp7 = newrand() & 255;
-	switch (menuselection) {
-		case 0x00:
-			gameState = STATE_SOUNDTEST;
-			pal_fade_to_withmusic(4,0);
-			mmc3_disable_irq();
-			ppu_off();
-			return;
-	};
-	
+
+	gameState = STATE_SOUNDTEST;
+	return;
+		
 }
 
 void loop_routine_update() {
 	newrand();
 	ppu_wait_nmi();
-	music_update();
 	oam_clear();
 }		
 

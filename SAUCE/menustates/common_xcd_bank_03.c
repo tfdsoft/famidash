@@ -24,7 +24,6 @@ void loop_routine_update() {
 	#if __VS_SYSTEM
 	check_if_music_stopped();
 	#endif
-	if (!auto_fs_updates) music_update();
 	oam_clear();
 	mouse_and_cursor();
 }		

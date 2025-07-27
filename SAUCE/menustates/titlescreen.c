@@ -112,16 +112,10 @@ const unsigned char vstext[] = "VS";
 void state_menu() {
 	auto_fs_updates++;
 
-	poweroffcheck = 0xff;
-	#if __VS_SYSTEM
-		menuselection = TITLE_BTN_LEVELMAIN;
-	#endif
+	oam_clear();
 
-	do {
-		discoframe = newrand() & 15;
-	} while (discoframe > 11);
-
-	if (joypad1.select) nestopia = 1;
+	mmc3_set_8kb_chr(MENUBANK);
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 
 	#if !__VS_SYSTEM
 		#if LEVELSET == 'A'
@@ -142,74 +136,23 @@ void state_menu() {
 			all_levels_complete = 0xFC;
 		#endif
 	#endif
-
-	#if !__VS_SYSTEM
-	gamemode = 0;
-	#endif
-
+	// Palette
 	if (all_levels_complete == 0xFC) pal_bg(splashMenu2);
 	else pal_bg (splashMenu);
 	
-	newrand();
-
-	#if __VS_SYSTEM
-	color_picker();
-	#endif
-
-	mmc3_set_8kb_chr(MENUBANK);
-
-	set_title_icon();
-	set_title_icon();
-
-	
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	
-
-	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
-
-	#if __VS_SYSTEM
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(idx8_load(xbgmlookuptable, newrand() & 31));
-	#else
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menu_music]);
-	#endif
-	menuMusicCurrentlyPlaying = 1;
-
-	settingvalue = 0;
-	practice_point_count = 0;
-	
-	// Enable SRAM write
-	POKE(0xA001, 0x80);
-
-	write_irq_table(menu_irq_table);
-	//edit_irq_table(2, low_byte(tmp8));
-	set_irq_ptr(irqTable);
-	tmp8 = 0;
-	
-
-	menuMusicCurrentlyPlaying = 1;
-	//invisible = 0;
-	
-
-	oam_clear();
-
-	//POKE(0x200, 175);
-	//POKE(0x201, 0x02); // Use the second tile in the BG side which is pure black
-	//POKE(0x202, 0b00100000); // second palette
-	//POKE(0x203, 0x00);
-	
-	// Expand the data for the menu nametable while the PPU is still off
+	// Tilemap 1
 	vram_adr(NAMETABLE_A);
 	vram_unrle(game_start_screen);
 	vram_adr(NAMETABLE_B);
 	vram_unrle(game_start_screen);
 
-	set_scroll_x(0);
-	set_scroll_y(0);
-	speed = 1;
- 	ppu_on_all();
-	joypad1.press = 0;
-	pal_fade_to_withmusic(0,4);
+	// Tilemap 2
+	if (!NTSC_SYS) multi_vram_buffer_horz(palsystem, sizeof(palsystem)-1, NTADR_A(9,7));
 
+	// Tilemap 3
+	#if __VS_SYSTEM
+		menuselection = TITLE_BTN_LEVELMAIN;
+	#endif
 	tmp4 = menuselection; ++tmp4;
 	tmp5 = loNTAddrTableTitleScreen[tmp4]|(hiNTAddrTableTitleScreen[tmp4]<<8);
 	#if __VS_SYSTEM
@@ -226,14 +169,8 @@ void state_menu() {
 			one_vram_buffer(0x7F, NTADR_A(26, 3));
 		}
 	#endif
-	roll_new_mode();
-	kandoframecnt = 0;
-	teleport_output = 0Xff;
-	currplayer_y_small = 160;
-	currplayer_x_small = 0;
-	titlecolor3 = color3;
-	titlecolor2 = color2;
-	titlecolor1 = color1;
+
+	// Tilemap 4
 	#if !__VS_SYSTEM
 		if (all_levels_complete != 0xFC) {
 			one_vram_buffer(0x19, NTADR_A(27,2));
@@ -247,6 +184,63 @@ void state_menu() {
 			one_vram_buffer(0x1E, NTADR_A(28,3));
 		}
 	#endif
+
+	poweroffcheck = 0xff;
+
+	do {
+		discoframe = newrand() & 15;
+	} while (discoframe > 11);
+
+	if (joypad1.select) nestopia = 1;
+
+	#if !__VS_SYSTEM
+	gamemode = 0;
+	#endif
+
+	newrand();
+
+	#if __VS_SYSTEM
+	color_picker();
+	#endif
+
+
+	set_title_icon();
+	set_title_icon();
+
+	#if __VS_SYSTEM
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(idx8_load(xbgmlookuptable, newrand() & 31));
+	#else
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menu_music]);
+	#endif
+	menuMusicCurrentlyPlaying = 1;
+
+	settingvalue = 0;
+	practice_point_count = 0;
+	
+	tmp8 = 0;
+	
+	kandoframecnt = 0;
+	teleport_output = 0Xff;
+	currplayer_y_small = 160;
+	currplayer_x_small = 0;
+	titlecolor3 = color3;
+	titlecolor2 = color2;
+	titlecolor1 = color1;
+
+	speed = 1;
+	joypad1.press = 0;
+	
+	write_irq_table(menu_irq_table);
+	//edit_irq_table(2, low_byte(tmp8));
+	set_irq_ptr(irqTable);
+
+	set_scroll_x(0);
+	set_scroll_y(0);
+ 	ppu_on_all();
+	pal_fade_to(0,4);
+
+	roll_new_mode();
+
 
 	while (1){
 
@@ -612,10 +606,6 @@ void state_menu() {
 				famistudio_music_stop();
 				music_update();
 				menuMusicCurrentlyPlaying = 0;
-				// TODO: maybe fade out
-				mmc3_disable_irq();
-				ppu_off();
-				pal_bright(0);
 				return;
 			}
 		#endif
@@ -676,11 +666,6 @@ void state_menu() {
 			if (menutimer >= 2000) {
 				menutimer = 0;
 				gameState = STATE_CREDITS;
-				music_update();
-				// TODO: maybe fade out
-				mmc3_disable_irq();
-				ppu_off();
-				pal_bright(0);
 				return;
 			}			
 		#endif
@@ -707,10 +692,6 @@ void state_menu() {
 			#if LEVELSET != 'A'
 				tmp2 = 0;
 				gameState = STATE_PLAYMAIN;
-				music_update();
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq();
-				ppu_off();
 				break;
 				// no fall through lmao
 			#else
@@ -725,49 +706,34 @@ void state_menu() {
 
 			gameState = STATE_LEVELSELECT;
 
+			auto_fs_updates = 0;
 			if (!tmp7) crossPRGBankJump8(playPCM, 1);
 			else crossPRGBankJump8(playPCM, 0);
+			auto_fs_updates++;
 
 			if (normalorcommlevels) level = LEVEL_COUNT;
 			else level = 0;
 
-			pal_fade_to_withmusic(4,0);
-			ppu_off();
 			return;
 
 		#if !__VS_SYSTEM
 			case TITLE_BTN_SOUNDTEST:
 				gameState = STATE_SOUNDTEST;
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq();
-				ppu_off();
 				return;
 			case TITLE_BTN_SETTINGS: 
 				gameState = STATE_SETTINGS;
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq();
-				ppu_off();
 				return;
 			case TITLE_BTN_INSTRUCTIONS:
 				tmp2 = 0;
 				gameState = STATE_INSTRUCTIONS;
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq();
-				ppu_off();
 				break;
 			case TITLE_BTN_FUNSETTINGS:
 				last_gameState = gameState;
 				gameState = STATE_FUNSETTINGS;
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq(); // reset scroll before playing
-				ppu_off();
 				return;
 		#endif
 			case TITLE_BTN_CUSTOMIZE: 
 				gameState = STATE_CUSTOMIZE;
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq();
-				ppu_off();
 				return;
 	};
 	
