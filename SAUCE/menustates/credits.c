@@ -40,8 +40,6 @@ void credits_loop() {
 }
 
 void state_credits(){
-	auto_fs_updates++;
-
 	oam_clear();
 	
 	mmc3_set_8kb_chr(MENUBANK);
@@ -123,7 +121,6 @@ void state_credits(){
 	forced_credits = 0;
 	gameState = STATE_MENU;
 
-	auto_fs_updates = 0;
 	return; 
 	
 }

@@ -10,8 +10,6 @@ const unsigned char bgmtestscreen[];
 const char TEXT_debug_mode[];
 
 void state_soundtest() {
-	auto_fs_updates++;
-
   	famistudio_music_stop();
   	music_update();
 

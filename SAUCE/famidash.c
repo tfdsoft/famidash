@@ -58,7 +58,7 @@ void main(){
 	// assigning value at startup as opposed to compile time
 	// is needed for cc65 to export the label for mesen
 	gameState = STATE_SAVEVALIDATE;
-	auto_fs_updates = 0;
+	auto_fs_updates = 1;
 
 	menuMusicCurrentlyPlaying = 0;
 
@@ -159,7 +159,7 @@ void main(){
 		if (!forceNoFadeOut) pal_fade_to(4,0);
 		mmc3_disable_irq();
 		ppu_off();
-		auto_fs_updates = 0;
+		auto_fs_updates = 1;
     }
 }
 

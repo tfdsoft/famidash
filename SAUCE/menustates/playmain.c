@@ -2,8 +2,6 @@ const unsigned char palette_Credits2[];
 const unsigned char playmain[];
 
 void state_playmain(){
-	auto_fs_updates++;
-    
 	oam_clear();
 
 	mmc3_set_8kb_chr(MENUBANK);

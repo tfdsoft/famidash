@@ -170,7 +170,6 @@ void _display_attempt_counter (uint32_t args);
 							__asm__("STX %v", high))
 
 extern uint8_t auto_fs_updates;
-#define pal_fade_to_withmusic(from, to) (++auto_fs_updates, pal_fade_to(from, to), auto_fs_updates = 0)
 
 // set palette color, index 0..31
 // completely inlines and replaces neslib's

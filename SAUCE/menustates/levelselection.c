@@ -24,8 +24,6 @@ const uint8_t lvlselect_irq_table[] = {
 
 
 void state_levelselect() {
-	auto_fs_updates++;
-
 	oam_clear();
 
 	mmc3_set_8kb_chr(MENUBANK);

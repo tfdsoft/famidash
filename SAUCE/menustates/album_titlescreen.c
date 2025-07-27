@@ -50,8 +50,6 @@ void check_if_music_stopped2() {
 
 
 void state_menu() {
-	auto_fs_updates++;
-
 	oam_clear();
 
 	mmc3_set_8kb_chr(MENUBANK);

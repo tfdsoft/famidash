@@ -23,8 +23,6 @@ void state_savefile_validate(){
     // if poweroff check is not zero //
 
     #if !__VS_SYSTEM && !__THE_ALBUM
-        auto_fs_updates++;
-
         mmc3_set_8kb_chr(MENUBANK);
         mmc3_set_2kb_chr_bank_0(0xFF);  
         mmc3_set_2kb_chr_bank_1(MOUSEBANK); 

@@ -1,8 +1,6 @@
 #include "defines/charmap/mainmenu_charmap.h"
 
 void state_gameover() {
-	auto_fs_updates++;
-
 	oam_clear();
 
 	mmc3_set_8kb_chr(MENUBANK);

@@ -16,8 +16,6 @@ const unsigned char* const gameboytexts[];
 const unsigned char gameboy_text_size[];
 
 void state_funsettings() {
-	auto_fs_updates++;
-	
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 

@@ -3,8 +3,6 @@ void mouse_and_cursor();
 const unsigned char palette_Credits[];
 
 void state_instructions(){
-	auto_fs_updates++;
-
 	oam_clear();
 		
 	mmc3_set_8kb_chr(MENUBANK);

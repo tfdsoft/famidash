@@ -11,8 +11,6 @@ void state_lvldone() {
 	#define delay_timer tmpptr1
 	#define top_scroll scroll_x
 
-	auto_fs_updates++;
-
 	oam_clear();
 
 	mmc3_set_1kb_chr_bank_0(LEVELCOMPLETEBANK);

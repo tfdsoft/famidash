@@ -9,8 +9,6 @@ const uint8_t hiNTAddrTableCustomizeScreen[];
 #include "defines/charmap/mainmenu_customize.h"
 
 void state_customize() {
-	auto_fs_updates++;
-	
 	#define prev_icon tmp8
 
 	mmc3_set_8kb_chr(MENUICONBANK);

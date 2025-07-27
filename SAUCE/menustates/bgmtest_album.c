@@ -52,8 +52,6 @@ void state_lvldone() {
 
 #include "defines/charmap/bgm_charmap.h"
 void state_soundtest() {
-	auto_fs_updates++;
-
   	famistudio_music_stop();
   	music_update();
 

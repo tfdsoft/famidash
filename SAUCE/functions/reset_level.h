@@ -4,6 +4,7 @@ extern unsigned char* PARALLAX_CHR;
 void music_restore();
 
 void death_animation() {
+	auto_fs_updates++;
 	if (!practice_point_count || practice_music_sync) famistudio_music_stop();
 
 	tmp1 = 30;
@@ -18,7 +19,6 @@ void death_animation() {
 		sfx_play(sfx_death, 0);
 		while (tmp1 != 0){
 			ppu_wait_nmi();
-			music_update();
 			dual == 1 ? oam_clear_two_players() : oam_clear_player();
 			
 			if (robotjumpframe[0] < 20) {
@@ -37,13 +37,14 @@ void death_animation() {
 		}					
 	}
 
-	pal_fade_to_withmusic(4,0);
+	pal_fade_to(4,0);
 	oam_clear();
 	ppu_off(); // reset the level when you get to this point, and change this later
+	auto_fs_updates = 0;
 }
 
 void reset_level() {
-	++auto_fs_updates;
+	auto_fs_updates++;
 
 	#if !__VS_SYSTEM
 	gameState = STATE_GAME; //fix for dying as the end trigger triggers
@@ -155,11 +156,11 @@ void reset_level() {
 
 	if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
 	ppu_on_all();
-	pal_fade_to_withmusic(0,4);
+	pal_fade_to(0,4);
 	if (!practice_point_count) {
 		music_play(song);
 	} else if (practice_music_sync) {
 		crossPRGBankJump0(music_restore);
 	}		
-
+	auto_fs_updates = 0;
 }
