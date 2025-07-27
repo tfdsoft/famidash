@@ -74,9 +74,6 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_soundtest));
 				state_soundtest();
 				trans_last_gameState = STATE_SOUNDTEST;
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq();
-				ppu_off();
 				break;
 			}
 			case STATE_SAVEVALIDATE: {
@@ -120,9 +117,6 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_instructions));
 				state_instructions();
 				trans_last_gameState = STATE_INSTRUCTIONS;
-				pal_fade_to(4,0);
-				ppu_off();
-				auto_fs_updates = 0;
 				break;
 			}
 			case STATE_LEVELSELECT: {
@@ -136,9 +130,6 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_playmain));
 				state_playmain();
 				trans_last_gameState = STATE_PLAYMAIN;
-				pal_fade_to(4,0);
-				ppu_off();
-				auto_fs_updates = 0;
 				break;
 			}
 			#endif
@@ -148,9 +139,6 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_settings));
 				state_settings();
 				trans_last_gameState = STATE_SETTINGS;
-				pal_fade_to(4,0);
-				ppu_off();
-				auto_fs_updates = 0;
 				break;
 			}
 			#endif
@@ -161,13 +149,28 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_credits));
 				state_credits();
 				trans_last_gameState = STATE_CREDITS;
-				pal_fade_to(4,0);
-				ppu_off();
-				auto_fs_updates = 0;
 				break;
 			}
 			
 
+		}
+		switch (trans_last_gameState) {
+			case STATE_SOUNDTEST:
+			case STATE_FUNSETTINGS:
+				pal_fade_to_withmusic(4,0);
+				mmc3_disable_irq();
+				ppu_off();
+				break;
+
+
+			case STATE_INSTRUCTIONS:
+			case STATE_PLAYMAIN:
+			case STATE_SETTINGS:
+			case STATE_CREDITS:
+				pal_fade_to(4,0);
+				ppu_off();
+				auto_fs_updates = 0;
+				break;
 		}
 
     }

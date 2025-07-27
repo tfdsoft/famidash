@@ -120,6 +120,7 @@ void state_menu() {
 		case STATE_INSTRUCTIONS:
 		case STATE_PLAYMAIN:
 		case STATE_SOUNDTEST:
+		case STATE_FUNSETTINGS:
 			break;
 
 		default:
@@ -160,6 +161,7 @@ void state_menu() {
 		case STATE_INSTRUCTIONS:
 		case STATE_PLAYMAIN:
 		case STATE_SOUNDTEST:
+		case STATE_FUNSETTINGS:
 			break;
 
 		default:

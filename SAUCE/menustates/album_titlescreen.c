@@ -53,9 +53,6 @@ void state_menu() {
 	poweroffcheck = 0xff;
 	switch (trans_last_gameState) {
 		case STATE_CREDITS:
-		case STATE_SETTINGS:
-		case STATE_INSTRUCTIONS:
-		case STATE_PLAYMAIN:
 		case STATE_SOUNDTEST:
 			break;
 
@@ -71,9 +68,6 @@ void state_menu() {
 
 	switch (trans_last_gameState) {
 		case STATE_CREDITS:
-		case STATE_SETTINGS:
-		case STATE_INSTRUCTIONS:
-		case STATE_PLAYMAIN:
 		case STATE_SOUNDTEST:
 			break;
 

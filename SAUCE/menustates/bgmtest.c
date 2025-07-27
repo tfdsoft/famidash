@@ -10,12 +10,6 @@ const unsigned char bgmtestscreen[];
 const char TEXT_debug_mode[];
 
 void state_soundtest() {
-	if (trans_last_gameState == STATE_FUNSETTINGS) {
-		pal_fade_to_withmusic(4,0);
-		mmc3_disable_irq();
-		ppu_off();
-	}
-
   	famistudio_music_stop();
   	music_update();
 
