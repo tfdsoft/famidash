@@ -747,10 +747,12 @@ void state_menu() {
 				normalorcommlevels = 0;
 				// fall through lmao
 			#endif
-		case TITLE_BTN_LEVELCOMM:
+		case TITLE_BTN_LEVELCOMM: 
+			// Reset scroll before playing PCM
 			POKE(0x2005, 0x00);
 			POKE(0x2005, 0x00);
-			mmc3_disable_irq(); // reset scroll before playing
+			mmc3_disable_irq();
+
 			gameState = STATE_LEVELSELECT;
 
 			if (!tmp7) crossPRGBankJump8(playPCM, 1);

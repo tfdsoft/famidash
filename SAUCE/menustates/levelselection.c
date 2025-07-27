@@ -24,22 +24,11 @@ const uint8_t lvlselect_irq_table[] = {
 
 
 void state_levelselect() {
-	if (tempplat == 1) { tempplat = 0; options |= platformer; }
-	slowmode = 0;
+	oam_clear();
+
 	mmc3_set_8kb_chr(MENUBANK);
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	mmc3_disable_irq();
-	disco_sprites = 0;
-
-	pal_bg(oldsplashMenu);
-	write_irq_table(lvlselect_irq_table);
-	set_irq_ptr(irqTable);
-	oam_clear();
-	pal_bright(0);
-	// pal_bg(paletteMenu);
-	set_scroll_x(0);
-	set_scroll_y(0);  
 
 	#if __VS_SYSTEM
 		menutimer = 0;
@@ -58,14 +47,27 @@ void state_levelselect() {
 		} else {
 	#endif
 
+	pal_bg(oldsplashMenu);
+
+	if (tempplat == 1) { tempplat = 0; options |= platformer; }
+	slowmode = 0;
+	disco_sprites = 0;
+	
 	vram_adr(NAMETABLE_A);
 	vram_unrle(level_select_screen); 
 	vram_adr(NAMETABLE_B);
 	vram_unrle(level_select_screen);
+	
+	write_irq_table(lvlselect_irq_table);
+	set_irq_ptr(irqTable);
+	edit_irq_table(high_byte(tmp8),2);
+
+	set_scroll_x(0);
+	set_scroll_y(0);  
+
 	memfill(attemptCounter, 0, sizeof(attemptCounter));
 
 	tmp8 = 0xff00;
-	edit_irq_table(high_byte(tmp8),2);
 	tmp4 = 1;
 	crossPRGBankJump0(refreshmenu);
 	top_triggers = 0;
@@ -74,6 +76,10 @@ void state_levelselect() {
 	triggers_hit[1] = 0;
 	triggers_hit[2] = 0;
 
+	drawBarFlag = 2;
+	low_byte(tmpA) = 1;
+	draw_both_progress_bars();
+	
 	practice_point_count = 0;
 
 	// one_vram_buffer(0xb0+kandokidshackTENS, NTADR_A(17,17));
@@ -90,9 +96,6 @@ void state_levelselect() {
 	menuMusicCurrentlyPlaying = 1;
 
 	ppu_on_all();
-	drawBarFlag = 2;
-	low_byte(tmpA) = 1;
-	draw_both_progress_bars();
 	
 	#if __VS_SYSTEM
 	}	// end the else statement
