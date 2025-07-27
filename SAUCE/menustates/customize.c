@@ -8,7 +8,7 @@ const uint8_t hiNTAddrTableCustomizeScreen[];
 
 #include "defines/charmap/mainmenu_customize.h"
 
-void customize_screen() {
+void state_customize() {
 #define prev_icon tmp8
 	settingvalue = 3; 
 	pal_fade_to_withmusic(4,0);
@@ -147,7 +147,8 @@ void customize_screen() {
 					
 				}
 			}
-			if ((mouse.x >= 0x35 && mouse.x <= 0xBC) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		
+			if ((mouse.x >= 0x35 && mouse.x <= 0xBC) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {
+				gameState = STATE_MENU;	
 				return;			//go back
 			}
 		}
@@ -224,13 +225,17 @@ void customize_screen() {
 		}
 
 		if (joypad1.press_b) {
+			gameState = STATE_MENU;
 			return;
 		}
 		dec_mouse_timer();
 		hold_timer++;
 		#if __VS_SYSTEM
 		menutimer++;
-		if (menutimer >= 2000) return;						
+		if (menutimer >= 2000) {
+			gameState = STATE_MENU;
+			return;
+		}
 		#endif
 	}
 #undef prev_icon

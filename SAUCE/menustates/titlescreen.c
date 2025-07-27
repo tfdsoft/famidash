@@ -789,7 +789,9 @@ void state_menu() {
 				ppu_off();
 				return;
 		#endif
-			case TITLE_BTN_CUSTOMIZE: customize_screen(); return;
+			case TITLE_BTN_CUSTOMIZE: 
+				gameState = STATE_CUSTOMIZE;
+				return;
 	};
 	
 }

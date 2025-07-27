@@ -8,7 +8,7 @@ CODE_BANK_PUSH("XCD_BANK_03")
 #include "menustates/common_xcd_bank_03.c"
 #include "menustates/levelselection.c"
 #include "menustates/progressbar.c"
-#include "menustates/customize_screen.c"
+#include "menustates/customize.c"
 #include "menustates/titlescreen.c"
 #else
 #include "defines/album_nametable/menunametable_XCD03.c"

@@ -125,6 +125,12 @@ void main(){
 				trans_last_gameState = STATE_LEVELSELECT;
 				break;
 			}
+			case STATE_CUSTOMIZE: {
+				mmc3_set_prg_bank_1(GET_BANK(state_customize));
+				state_customize();
+				trans_last_gameState = STATE_CUSTOMIZE;
+				break;
+			}
 			#if LEVELSET != 'A'
 			case STATE_PLAYMAIN: {
 				mmc3_set_prg_bank_1(GET_BANK(state_playmain));
