@@ -9,22 +9,21 @@ const uint8_t hiNTAddrTableCustomizeScreen[];
 #include "defines/charmap/mainmenu_customize.h"
 
 void state_customize() {
-#define prev_icon tmp8
-	settingvalue = 3; 
-	pal_fade_to_withmusic(4,0);
-	mmc3_disable_irq();
-	ppu_off();
-	pal_bg(paletteMenu);
-	pal_col(0x00, 0x00);
-	pal_set_update();
+	auto_fs_updates++;
+	
+	#define prev_icon tmp8
+
 	mmc3_set_8kb_chr(MENUICONBANK);
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
+
+	pal_bg(paletteMenu);
+	pal_col(0x00, 0x00);
+	pal_set_update();
+
 	vram_adr(NAMETABLE_A);
-	vram_unrle(customizescreen);   	
-	#if __VS_SYSTEM
-	menutimer = 0;
-	#endif
+	vram_unrle(customizescreen);
+
 	kandokidshack = 0;
 	kandokidshack2 = 0;
 	tmp2 = 0;
@@ -46,23 +45,29 @@ void state_customize() {
 	while (tmp2 < LEVEL_COUNT2); 
 	#endif
 
-	
 	printDecimal(kandokidshack2, 2, 0xD0, 0xFF, NTADR_A(26,4));
 	printDecimal(kandokidshack, 2, 0xD0, 0xFF, NTADR_A(26,5));
-
+	
 	one_vram_buffer('h', NTADR_A(13, 8));		
 	one_vram_buffer('i', NTADR_A(13, 9));
 	one_vram_buffer('f', NTADR_A(18, 8));
 	one_vram_buffer('g', NTADR_A(18, 9));
-	prev_icon = !icon;
-	ppu_on_all();
-	pal_fade_to_withmusic(0,4);
 	tmp1 = iconTable[icon] + 'a';
 	one_vram_buffer(tmp1, NTADR_A(15, 8));
 	one_vram_buffer(++tmp1, NTADR_A(16, 8));
 	one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(15, 9));
 	one_vram_buffer(++tmp1, NTADR_A(16, 9));
-	prev_icon = icon;	
+
+	settingvalue = 3;
+	#if __VS_SYSTEM
+	menutimer = 0;
+	#endif
+	prev_icon = icon;
+
+	ppu_on_all();
+
+	pal_fade_to(0,4);
+
 	while (1) {
 		tmp3 = 0;
 		check_if_music_stopped();
@@ -149,7 +154,7 @@ void state_customize() {
 			}
 			if ((mouse.x >= 0x35 && mouse.x <= 0xBC) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {
 				gameState = STATE_MENU;	
-				return;			//go back
+				return;
 			}
 		}
 	#endif

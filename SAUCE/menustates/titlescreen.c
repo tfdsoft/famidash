@@ -121,6 +121,7 @@ void state_menu() {
 		case STATE_PLAYMAIN:
 		case STATE_SOUNDTEST:
 		case STATE_FUNSETTINGS:
+		case STATE_CUSTOMIZE:
 			break;
 
 		default:
@@ -162,6 +163,7 @@ void state_menu() {
 		case STATE_PLAYMAIN:
 		case STATE_SOUNDTEST:
 		case STATE_FUNSETTINGS:
+		case STATE_CUSTOMIZE:
 			break;
 
 		default:
@@ -791,6 +793,9 @@ void state_menu() {
 		#endif
 			case TITLE_BTN_CUSTOMIZE: 
 				gameState = STATE_CUSTOMIZE;
+				pal_fade_to_withmusic(4,0);
+				mmc3_disable_irq();
+				ppu_off();
 				return;
 	};
 	

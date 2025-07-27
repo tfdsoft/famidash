@@ -167,7 +167,9 @@ void main(){
 			case STATE_PLAYMAIN:
 			case STATE_SETTINGS:
 			case STATE_CREDITS:
+			case STATE_CUSTOMIZE:
 				pal_fade_to(4,0);
+				mmc3_disable_irq();
 				ppu_off();
 				auto_fs_updates = 0;
 				break;
