@@ -67,8 +67,8 @@ void main(){
 	#endif
 
     while (1){
+    	forceNoFadeOut = 0;
 		switch (gameState){
-
 			case STATE_SOUNDTEST: {
 				mmc3_set_prg_bank_1(GET_BANK(state_soundtest));
 				state_soundtest();
@@ -98,7 +98,7 @@ void main(){
 				state_game();
 				use_auto_chrswitch = 0;
 				trans_last_gameState = STATE_GAME;
-				ppu_off();
+				if (gameState == STATE_LVLDONE)	forceNoFadeOut = 1;
 				break;
 			}
 			case STATE_LVLDONE: {
@@ -179,10 +179,12 @@ void main(){
 			case STATE_CUSTOMIZE:
 			case STATE_LEVELSELECT:
 			case STATE_LVLDONE:
+			case STATE_GAME:
+			case STATE_SAVEVALIDATE:
 			#if __VS_SYSTEM
 			case STATE_GAMEOVER:
 			#endif
-				pal_fade_to(4,0);
+				if (!forceNoFadeOut) pal_fade_to(4,0);
 				mmc3_disable_irq();
 				ppu_off();
 				auto_fs_updates = 0;

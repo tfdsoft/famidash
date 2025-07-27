@@ -51,30 +51,10 @@ void check_if_music_stopped2() {
 
 void state_menu() {
 	poweroffcheck = 0xff;
-	switch (trans_last_gameState) {
-		case STATE_CREDITS:
-		case STATE_SOUNDTEST:
-			break;
-
-		default:
-			pal_fade_to_withmusic(4,0);
-			mmc3_disable_irq();
-			break;
-	}
 
 	do {
 		discoframe = newrand() & 15;
 	} while (discoframe > 11);
-
-	switch (trans_last_gameState) {
-		case STATE_CREDITS:
-		case STATE_SOUNDTEST:
-			break;
-
-		default:
-			ppu_off();
-			break;
-	}
 
 	gamemode = 0;
 

@@ -429,10 +429,10 @@ void state_game(){
 
 		if (joypad1.select && DEBUG_MODE) {
 		    if (++END_LEVEL_TIMER > 60) {
-			END_LEVEL_TIMER = 0;
-			gameState = STATE_LVLDONE;
-			//DEBUG_MODE = 0;
-			famistudio_music_stop();
+				END_LEVEL_TIMER = 0;
+				gameState = STATE_LVLDONE;
+				//DEBUG_MODE = 0;
+				famistudio_music_stop();
 		    }
 		} else {
 		    END_LEVEL_TIMER = 0;

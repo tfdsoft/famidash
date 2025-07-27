@@ -48,11 +48,8 @@ void state_savefile_validate(){
             kandoframecnt++;
             if (kandoframecnt & 1 && mouse_timer) mouse_timer--;    
         } while (1);
-
-        pal_fade_to(4,0);
-        ppu_off();
-
-        auto_fs_updates = 0;
+    #else
+        forceNoFadeOut = 1; // not really a state here lmoa
     #endif
 
     gameState = STATE_CREDITS;

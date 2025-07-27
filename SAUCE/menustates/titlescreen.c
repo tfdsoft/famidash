@@ -110,26 +110,12 @@ const unsigned char vstext[] = "VS";
 // Routines start
 
 void state_menu() {
+	auto_fs_updates++;
+
 	poweroffcheck = 0xff;
 	#if __VS_SYSTEM
 		menuselection = TITLE_BTN_LEVELMAIN;
 	#endif
-	switch (trans_last_gameState) {
-		case STATE_CREDITS:
-		case STATE_SETTINGS:
-		case STATE_INSTRUCTIONS:
-		case STATE_PLAYMAIN:
-		case STATE_SOUNDTEST:
-		case STATE_FUNSETTINGS:
-		case STATE_CUSTOMIZE:
-		case STATE_LEVELSELECT:
-			break;
-
-		default:
-			pal_fade_to_withmusic(4,0);
-			mmc3_disable_irq();
-			break;
-	}
 
 	do {
 		discoframe = newrand() & 15;
@@ -156,22 +142,6 @@ void state_menu() {
 			all_levels_complete = 0xFC;
 		#endif
 	#endif
-
-	switch (trans_last_gameState) {
-		case STATE_CREDITS:
-		case STATE_SETTINGS:
-		case STATE_INSTRUCTIONS:
-		case STATE_PLAYMAIN:
-		case STATE_SOUNDTEST:
-		case STATE_FUNSETTINGS:
-		case STATE_CUSTOMIZE:
-		case STATE_LEVELSELECT:
-			break;
-
-		default:
-			ppu_off();
-			break;
-	}
 
 	#if !__VS_SYSTEM
 	gamemode = 0;
@@ -774,7 +744,6 @@ void state_menu() {
 				return;
 			case TITLE_BTN_SETTINGS: 
 				gameState = STATE_SETTINGS;
-				music_update();
 				pal_fade_to_withmusic(4,0);
 				mmc3_disable_irq();
 				ppu_off();
@@ -782,7 +751,6 @@ void state_menu() {
 			case TITLE_BTN_INSTRUCTIONS:
 				tmp2 = 0;
 				gameState = STATE_INSTRUCTIONS;
-				music_update();
 				pal_fade_to_withmusic(4,0);
 				mmc3_disable_irq();
 				ppu_off();
