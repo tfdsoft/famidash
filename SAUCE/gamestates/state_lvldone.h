@@ -10,14 +10,17 @@ void state_lvldone() {
 	#define delay_spr_0 tmp4
 	#define delay_timer tmpptr1
 	#define top_scroll scroll_x
-	oam_clear();
-    ppu_off();
 
-	delay_spr_0 = 0x20;
-	#if __VS_SYSTEM
-	menutimer = 0;
-	#endif
-	current_state = 0;
+	auto_fs_updates++;
+
+	oam_clear();
+
+	mmc3_set_1kb_chr_bank_0(LEVELCOMPLETEBANK);
+	mmc3_set_1kb_chr_bank_1(PRACTICECOMPLETEBANK);
+	mmc3_set_1kb_chr_bank_2(LEVELCOMPLETEBANK+2);
+	mmc3_set_1kb_chr_bank_3(LEVELCOMPLETEBANK+3);
+	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
+
 	// Set palettes back to natural colors since we aren't fading back in
 	pal_bright(4);
 	pal_bg(paletteMenu);
@@ -26,12 +29,7 @@ void state_lvldone() {
 	pal_set_update();
     //pal_spr(paletteMenu);
 	pal_spr(paletteDefaultSP);
-	mmc3_set_1kb_chr_bank_0(LEVELCOMPLETEBANK);
-	mmc3_set_1kb_chr_bank_1(PRACTICECOMPLETEBANK);
-	mmc3_set_1kb_chr_bank_2(LEVELCOMPLETEBANK+2);
-	mmc3_set_1kb_chr_bank_3(LEVELCOMPLETEBANK+3);
-	
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
+
 	// Make a nametable for the chain
     vram_adr(NAMETABLE_C);
 	vram_fill(0xfe, 0x3c0);
@@ -44,19 +42,12 @@ void state_lvldone() {
 	} else {
 		vram_unrle(leveldone);
 	}
-
-	#include "defines/charmap/endlevel_charmap.h"
-
-	tmp1 = 0;
-	tmpptr1 = NULL;
 	#if !__VS_SYSTEM
 	display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
 	#endif
-	
-	hexToDec(jumps);
 
+	hexToDec(jumps);
 	tmp1 = 0;
-	
 	if (hexToDecOutputBuffer[4]) {
 		one_vram_buffer(0xD0+hexToDecOutputBuffer[4], NTADR_A(18,15));
 		tmp1++;
@@ -77,6 +68,13 @@ void state_lvldone() {
 		tmp1++;
 	}
 	one_vram_buffer(0xD0+hexToDecOutputBuffer[0], NTADR_A(18+tmp1,15));
+	flush_vram_update2();
+
+	delay_spr_0 = 0x20;
+	#if __VS_SYSTEM
+	menutimer = 0;
+	#endif
+	current_state = 0;
 	
 	if (!practice_point_count) {
 		LEVELCOMPLETE[level] = 1;
@@ -89,16 +87,18 @@ void state_lvldone() {
 	} else {
 		level_completeness_practice[level] = 100;
 	}
+
+	#include "defines/charmap/endlevel_charmap.h"
+
+	tmp1 = 0;
+	tmpptr1 = NULL;
 	
-	flush_vram_update2();
-
-    set_scroll_x(0x00);
-
-
 	tmp5 = 0x0000; // speed
 	tmp6 = 0xf000; // real y 
 
+    set_scroll_x(0);
     set_scroll_y(0xe8);
+
     ppu_on_all();
 
 	sfx_play(sfx_level_complete, 0);
@@ -111,8 +111,6 @@ void state_lvldone() {
 	while (1) {
 		ppu_wait_nmi();
 		
-		music_update();
-
  		// read the first controller
 
 		kandoframecnt++;

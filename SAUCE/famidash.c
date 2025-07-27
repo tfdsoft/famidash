@@ -67,7 +67,6 @@ void main(){
 	#endif
 
     while (1){
-		ppu_wait_nmi();
 		switch (gameState){
 
 			case STATE_SOUNDTEST: {
@@ -99,14 +98,13 @@ void main(){
 				state_game();
 				use_auto_chrswitch = 0;
 				trans_last_gameState = STATE_GAME;
+				ppu_off();
 				break;
 			}
 			case STATE_LVLDONE: {
 				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
 				state_lvldone();
 				trans_last_gameState = STATE_LVLDONE;
-				pal_fade_to_withmusic(4,0);
-				ppu_off();
 				break;
 			}
 			case STATE_FUNSETTINGS: {
@@ -125,9 +123,6 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_levelselect));
 				state_levelselect();
 				trans_last_gameState = STATE_LEVELSELECT;
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq();
-				ppu_off();
 				break;
 			}
 			case STATE_CUSTOMIZE: {
@@ -182,6 +177,8 @@ void main(){
 			case STATE_SETTINGS:
 			case STATE_CREDITS:
 			case STATE_CUSTOMIZE:
+			case STATE_LEVELSELECT:
+			case STATE_LVLDONE:
 			#if __VS_SYSTEM
 			case STATE_GAMEOVER:
 			#endif

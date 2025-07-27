@@ -24,6 +24,8 @@ const uint8_t lvlselect_irq_table[] = {
 
 
 void state_levelselect() {
+	auto_fs_updates++;
+
 	oam_clear();
 
 	mmc3_set_8kb_chr(MENUBANK);
@@ -82,9 +84,7 @@ void state_levelselect() {
 
 	ppu_on_all();
 
-	ppu_wait_nmi();
-	ppu_wait_nmi();
-	pal_fade_to_withmusic(0,4);
+	pal_fade_to(0,4);
 
 	while (1){
 		loop_routine_update();
@@ -218,7 +218,6 @@ void start_the_level() {
 		oam_clear();
 		draw_both_progress_bars();
 		ppu_wait_nmi();
-		music_update();
 	} while (++tmpA < 30);
 	gameState = STATE_GAME;
 	menuMusicCurrentlyPlaying = 0;
