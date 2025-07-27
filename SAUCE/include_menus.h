@@ -9,10 +9,11 @@ CODE_BANK_PUSH("XCD_BANK_03")
 #include "menustates/levelselection.c"
 #include "menustates/progressbar.c"
 #include "menustates/customize_screen.c"
+#include "menustates/titlescreen.c"
 #else
 #include "defines/album_nametable/menunametable_XCD03.c"
+#include "menustates/album_titlescreen.c"
 #endif
-#include "menustates/titlescreen.c"
 
 CODE_BANK("XCD_BANK_05")
 
