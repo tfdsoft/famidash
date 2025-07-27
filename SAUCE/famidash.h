@@ -170,7 +170,6 @@ uint8_t invisblocks;
 uint8_t cam_seesaw;
 uint8_t forced_credits;
 extern uint8_t extceil;
-uint8_t exitingLevelSelect;
 uint8_t drawBarFlag;
 uint8_t exitPortalTimer;
 uint8_t menu_music;

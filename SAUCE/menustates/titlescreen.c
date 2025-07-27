@@ -124,6 +124,8 @@ void state_menu() {
 		case STATE_CUSTOMIZE:
 			break;
 
+		case STATE_LEVELSELECT:
+			draw_both_progress_bars();
 		default:
 			pal_fade_to_withmusic(4,0);
 			mmc3_disable_irq();

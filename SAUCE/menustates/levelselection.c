@@ -52,7 +52,6 @@ void state_levelselect() {
 			tmp5 = 200;
 			ppu_on_all();		
 	//		gameState = STATE_MENU;
-	//		exitingLevelSelect = 1;
 	//		cube_data[0] = 0;
 	//		cube_data[1] = 0;
 	//		return;
@@ -112,7 +111,6 @@ void state_levelselect() {
 			}
 			ppu_off();
 			gameState = STATE_MENU;
-			exitingLevelSelect = 1;
 			cube_data[0] = 0;
 			cube_data[1] = 0;
 			return;
@@ -159,7 +157,6 @@ void state_levelselect() {
 		#if __VS_SYSTEM
 			menutimer++;
 			if (menutimer >= 2000) {
-				exitingLevelSelect = 1;
 				gameState = STATE_MENU;
 				return;
 			}
@@ -174,7 +171,6 @@ void state_levelselect() {
 		}
 
 		if (joypad1.press_b){
-			exitingLevelSelect = 1;
 			gameState = STATE_MENU;
 			#if __VS_SYSTEM
 				menutimer = 0;
