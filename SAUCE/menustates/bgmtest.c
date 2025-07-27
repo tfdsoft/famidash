@@ -94,6 +94,9 @@ void state_soundtest() {
 					one_vram_buffer(' ', NTADR_A(11, 14));
 					menuMusicCurrentlyPlaying = 1;
 					gameState = STATE_MENU;
+					pal_fade_to_withmusic(4,0);
+					mmc3_disable_irq();
+					ppu_off();
 					return;
 				}
 				else if (mouse.y >= 0x3D && mouse.y <= 0x64) {
@@ -146,6 +149,9 @@ void state_soundtest() {
 			one_vram_buffer(' ', NTADR_A(11, 17));
 			menuMusicCurrentlyPlaying = 1;
 			gameState = STATE_MENU;
+			pal_fade_to_withmusic(4,0);
+			mmc3_disable_irq();
+			ppu_off();
 			return;
 		}
 		
