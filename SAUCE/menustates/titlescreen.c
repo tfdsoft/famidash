@@ -742,7 +742,12 @@ void state_menu() {
 			return;
 
 		#if !__VS_SYSTEM
-			case TITLE_BTN_SOUNDTEST: gameState = STATE_SOUNDTEST; return;
+			case TITLE_BTN_SOUNDTEST:
+				gameState = STATE_SOUNDTEST;
+				pal_fade_to_withmusic(4,0);
+				mmc3_disable_irq();
+				ppu_off();
+				return;
 			case TITLE_BTN_SETTINGS: 
 				gameState = STATE_SETTINGS;
 				music_update();

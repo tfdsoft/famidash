@@ -52,22 +52,24 @@ void state_lvldone() {
 
 #include "defines/charmap/bgm_charmap.h"
 void state_soundtest() {
+  	famistudio_music_stop();
+  	music_update();
+
+	pal_bg(paletteMenu);
+
+	crossPRGBankJump0(unrle_bgm1); 	
+	update_text1();
+	
 	song = 0;
 	temptemp6 = 0; 	
 	#define sfx tmp4
 	sfx = 0;
 	settingvalue = 0;
-  	famistudio_music_stop();
-  	music_update();
 	menuMusicCurrentlyPlaying=0;
-	pal_fade_to_withmusic(4,0);
-	mmc3_disable_irq();
-	ppu_off();
-	pal_bg(paletteMenu);
-	crossPRGBankJump0(unrle_bgm1); 	
+	
 	ppu_on_all();
 	pal_fade_to_withmusic(0,4);
-	update_text1();
+	
 	while (1) {
 		//rand8();
 		ppu_wait_nmi();

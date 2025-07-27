@@ -10,22 +10,31 @@ const unsigned char bgmtestscreen[];
 const char TEXT_debug_mode[];
 
 void state_soundtest() {
+	if (trans_last_gameState == STATE_FUNSETTINGS) {
+		pal_fade_to_withmusic(4,0);
+		mmc3_disable_irq();
+		ppu_off();
+	}
+
+  	famistudio_music_stop();
+  	music_update();
+
+	pal_bg(paletteMenu);
+
+	vram_adr(NAMETABLE_A);
+	vram_unrle(bgmtestscreen);
+
 	song = 0;
 	temptemp6 = 0; 	
 	#define sfx tmp4
 	sfx = 0;
 	settingvalue = 0;
-  	famistudio_music_stop();
-  	music_update();
 	menuMusicCurrentlyPlaying=0;
-	pal_fade_to_withmusic(4,0);
-	mmc3_disable_irq();
-	ppu_off();
-	pal_bg(paletteMenu);
-	vram_adr(NAMETABLE_A);
-	vram_unrle(bgmtestscreen);   	
+
 	ppu_on_all();
+	
 	pal_fade_to_withmusic(0,4);
+	
 	while (1) {
 		
 		ppu_wait_nmi();

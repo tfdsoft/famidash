@@ -200,6 +200,9 @@ void state_menu() {
 	switch (menuselection) {
 		case 0x00:
 			gameState = STATE_SOUNDTEST;
+			pal_fade_to_withmusic(4,0);
+			mmc3_disable_irq();
+			ppu_off();
 			return;
 	};
 	
