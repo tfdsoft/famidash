@@ -74,6 +74,9 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_soundtest));
 				state_soundtest();
 				trans_last_gameState = STATE_SOUNDTEST;
+				pal_fade_to_withmusic(4,0);
+				mmc3_disable_irq();
+				ppu_off();
 				break;
 			}
 			case STATE_SAVEVALIDATE: {

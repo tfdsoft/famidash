@@ -769,11 +769,11 @@ void state_menu() {
 				if (all_levels_complete != 0xFC)
 					sfx_play(sfx_invalid, 0);
 				else {
-					POKE(0x2005, 0x00);
-					POKE(0x2005, 0x00);
-					mmc3_disable_irq(); // reset scroll before playing
 					last_gameState = gameState;
 					gameState = STATE_FUNSETTINGS;
+					pal_fade_to_withmusic(4,0);
+					mmc3_disable_irq(); // reset scroll before playing
+					ppu_off();
 					return;
 				}
 				break;

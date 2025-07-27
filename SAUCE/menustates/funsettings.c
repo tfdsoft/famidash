@@ -16,18 +16,23 @@ const unsigned char* const gameboytexts[];
 const unsigned char gameboy_text_size[];
 
 void state_funsettings() {
-	settingvalue = 0; 
-	pal_fade_to_withmusic(4,0);
-	ppu_off();
-	pal_bg(paletteMenu);
-	vram_adr(NAMETABLE_A);
-	vram_unrle(funsettingscreen);   
-	//kandotemp4 = 0;
+
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	ppu_on_all();
+
+	pal_bg(paletteMenu);
+
+	vram_adr(NAMETABLE_A);
+	vram_unrle(funsettingscreen);
 	one_vram_buffer('c', NTADR_A(4, 5));	// settingvalue is set to 0 by default	
+
+	//kandotemp4 = 0;
+	settingvalue = 0; 
+
+	ppu_on_all();
+
 	pal_fade_to_withmusic(0,4);
+	
 	while (1) {
 		ppu_wait_nmi();
 		music_update();
