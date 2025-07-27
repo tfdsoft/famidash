@@ -274,7 +274,7 @@ void state_menu() {
 		}
 	#endif
 
-	while (!(joypad1.press & (PAD_START | PAD_A)) || !coinCondition){
+	while (1){
 
 		#if __VS_SYSTEM
 
@@ -687,12 +687,15 @@ void state_menu() {
 				}
 			} else if ((mouse.y >= 0x0D && mouse.y <= 0x1C)) {
 				if (mouse.x >= 0xD6 && mouse.x <= 0xE4) {
-					menuselection = TITLE_BTN_FUNSETTINGS; break;
+					if (all_levels_complete != 0xFC)
+						sfx_play(sfx_invalid, 0);
+					else
+						menuselection = TITLE_BTN_FUNSETTINGS;
+					break;
 				}
 			}
 		}	
 		#endif
-
 
 		#if __VS_SYSTEM
 			menutimer++;
@@ -707,7 +710,18 @@ void state_menu() {
 				return;
 			}			
 		#endif
-	}	
+
+		if ((joypad1.press & (PAD_START | PAD_A)) && coinCondition) {
+			#ifdef TITLE_BTN_FUNSETTINGS
+			if (menuselection == TITLE_BTN_FUNSETTINGS && all_levels_complete != 0xFC) {
+				sfx_play(sfx_invalid, 0);
+			} else
+			#endif
+			{
+				break;
+			}
+		}
+	}
 //	set_scroll_y(0);		does this break anything?
 //	set_scroll_x(0);
 	oam_clear();
@@ -768,17 +782,12 @@ void state_menu() {
 				ppu_off();
 				break;
 			case TITLE_BTN_FUNSETTINGS:
-				if (all_levels_complete != 0xFC)
-					sfx_play(sfx_invalid, 0);
-				else {
-					last_gameState = gameState;
-					gameState = STATE_FUNSETTINGS;
-					pal_fade_to_withmusic(4,0);
-					mmc3_disable_irq(); // reset scroll before playing
-					ppu_off();
-					return;
-				}
-				break;
+				last_gameState = gameState;
+				gameState = STATE_FUNSETTINGS;
+				pal_fade_to_withmusic(4,0);
+				mmc3_disable_irq(); // reset scroll before playing
+				ppu_off();
+				return;
 		#endif
 			case TITLE_BTN_CUSTOMIZE: customize_screen(); return;
 	};
