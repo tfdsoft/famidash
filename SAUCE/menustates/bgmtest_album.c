@@ -265,37 +265,6 @@ void colordec() {
 }	
 
 
-#include "defines/charmap/bgm_charmap.h"
-
-
-const unsigned char gameboytext1[]="  GREY";
-const unsigned char gameboytext2[]="   RED";
-const unsigned char gameboytext3[]=" GREEN";
-const unsigned char gameboytext4[]="  BLUE";
-const unsigned char gameboytext5[]="YELLOW";
-const unsigned char gameboytext6[]="PURPLE";
-const unsigned char gameboytext7[]="  CYAN";
-const unsigned char gameboytext8[]="  DARK";
-
-const unsigned char* const gameboytexts[] = {
-	0, gameboytext1, gameboytext2, gameboytext3, gameboytext4, gameboytext5, gameboytext6, gameboytext7, gameboytext8
-};
-
-const unsigned char gameboy_text_size[] = {
-	0,
-	sizeof(gameboytext1) - 1,
-	sizeof(gameboytext2) - 1,
-	sizeof(gameboytext3) - 1,
-	sizeof(gameboytext4) - 1,
-	sizeof(gameboytext5) - 1,
-	sizeof(gameboytext6) - 1,
-	sizeof(gameboytext7) - 1,
-	sizeof(gameboytext8) - 1
-};
-
-
-
-
 void update_text1() {
 	__A__ = idx16_load_hi_NOC(xbgmtextsUpper, song);
 	if (__A__) draw_padded_text(xbgmtextsUpper[song & 0x7F], xbgmtextsUpperSize[song], 14, NTADR_A(9, 7));
