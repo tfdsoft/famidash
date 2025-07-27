@@ -122,10 +122,9 @@ void state_menu() {
 		case STATE_SOUNDTEST:
 		case STATE_FUNSETTINGS:
 		case STATE_CUSTOMIZE:
+		case STATE_LEVELSELECT:
 			break;
 
-		case STATE_LEVELSELECT:
-			draw_both_progress_bars();
 		default:
 			pal_fade_to_withmusic(4,0);
 			mmc3_disable_irq();
@@ -166,6 +165,7 @@ void state_menu() {
 		case STATE_SOUNDTEST:
 		case STATE_FUNSETTINGS:
 		case STATE_CUSTOMIZE:
+		case STATE_LEVELSELECT:
 			break;
 
 		default:

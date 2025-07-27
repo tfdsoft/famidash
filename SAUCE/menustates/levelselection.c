@@ -161,6 +161,10 @@ void state_levelselect() {
 			menutimer++;
 			if (menutimer >= 2000) {
 				gameState = STATE_MENU;
+				draw_both_progress_bars();
+				pal_fade_to_withmusic(4,0);
+				mmc3_disable_irq();
+				ppu_off();
 				return;
 			}
 		#endif
@@ -178,6 +182,10 @@ void state_levelselect() {
 			#if __VS_SYSTEM
 				menutimer = 0;
 			#endif
+			draw_both_progress_bars();
+			pal_fade_to_withmusic(4,0);
+			mmc3_disable_irq();
+			ppu_off();
 			return;
 		}
 		
