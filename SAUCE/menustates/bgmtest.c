@@ -10,6 +10,8 @@ const unsigned char bgmtestscreen[];
 const char TEXT_debug_mode[];
 
 void state_soundtest() {
+	auto_fs_updates++;
+
   	famistudio_music_stop();
   	music_update();
 
@@ -27,12 +29,11 @@ void state_soundtest() {
 
 	ppu_on_all();
 	
-	pal_fade_to_withmusic(0,4);
+	pal_fade_to(0,4);
 	
 	while (1) {
 		
 		ppu_wait_nmi();
-		music_update();
 		oam_clear();
 		crossPRGBankJump0(check_if_music_stopped);
 		mouse_and_cursor();

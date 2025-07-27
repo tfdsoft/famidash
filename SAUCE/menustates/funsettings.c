@@ -16,6 +16,7 @@ const unsigned char* const gameboytexts[];
 const unsigned char gameboy_text_size[];
 
 void state_funsettings() {
+	auto_fs_updates++;
 
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
@@ -31,11 +32,10 @@ void state_funsettings() {
 
 	ppu_on_all();
 
-	pal_fade_to_withmusic(0,4);
+	pal_fade_to(0,4);
 	
 	while (1) {
 		ppu_wait_nmi();
-		music_update();
 		oam_clear();
 		crossPRGBankJump0(check_if_music_stopped);
 		mouse_and_cursor();

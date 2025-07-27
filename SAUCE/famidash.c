@@ -157,12 +157,6 @@ void main(){
 		switch (trans_last_gameState) {
 			case STATE_SOUNDTEST:
 			case STATE_FUNSETTINGS:
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq();
-				ppu_off();
-				break;
-
-
 			case STATE_INSTRUCTIONS:
 			case STATE_PLAYMAIN:
 			case STATE_SETTINGS:
