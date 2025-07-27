@@ -5,7 +5,6 @@
 .segment "RODATA_2"
 
 _level_list_lo:
-	.byte .lobyte(level_data_stereomadness)
 	.byte .lobyte(level_data_everymadness)
 	.byte .lobyte(level_data_dearnostalgists)
 	.byte .lobyte(level_data_invisiblelight)
@@ -30,7 +29,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_everyend)
 
 _level_list_hi:
-	.byte .hibyte(level_data_stereomadness)
 	.byte .hibyte(level_data_everymadness)
 	.byte .hibyte(level_data_dearnostalgists)
 	.byte .hibyte(level_data_invisiblelight)
@@ -55,7 +53,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_everyend)
 
 _level_list_bank:
-	.byte .lobyte(.bank(level_data_stereomadness))
 	.byte .lobyte(.bank(level_data_everymadness))
 	.byte .lobyte(.bank(level_data_dearnostalgists))
 	.byte .lobyte(.bank(level_data_invisiblelight))
@@ -110,7 +107,6 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_everyend_7))
 
 _sprite_list_lo:
-	.byte .lobyte(sprite_data_stereomadness)
 	.byte .lobyte(sprite_data_everymadness)
 	.byte .lobyte(sprite_data_dearnostalgists)
 	.byte .lobyte(sprite_data_invisiblelight)
@@ -135,7 +131,6 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_everyend)
 
 _sprite_list_hi:
-	.byte .hibyte(sprite_data_stereomadness)
 	.byte .hibyte(sprite_data_everymadness)
 	.byte .hibyte(sprite_data_dearnostalgists)
 	.byte .hibyte(sprite_data_invisiblelight)
@@ -160,7 +155,6 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_everyend)
 
 _sprite_list_bank:
-	.byte .lobyte(.bank(sprite_data_stereomadness))
 	.byte .lobyte(.bank(sprite_data_everymadness))
 	.byte .lobyte(.bank(sprite_data_dearnostalgists))
 	.byte .lobyte(.bank(sprite_data_invisiblelight))
@@ -188,7 +182,6 @@ _sprite_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
-	.byte .lobyte($000080)		; stereomadness
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($000155)		; dearnostalgists
 	.byte .lobyte($0000A0)		; invisiblelight
@@ -215,7 +208,6 @@ _level_lengths_lo:
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
-	.byte .hibyte($000080)		; stereomadness
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($000155)		; dearnostalgists
 	.byte .hibyte($0000A0)		; invisiblelight
@@ -242,7 +234,6 @@ _level_lengths_md:
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-	.byte .bankbyte($000080)		; stereomadness
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($000155)		; dearnostalgists
 	.byte .bankbyte($0000A0)		; invisiblelight

@@ -5,7 +5,6 @@
 .segment "RODATA_2"
 
 _level_list_lo:
-	.byte .lobyte(level_data_stereomadness)
 	.byte .lobyte(level_data_sonar)
 	.byte .lobyte(level_data_darkparadise)
 	.byte .lobyte(level_data_leveleasy)
@@ -40,7 +39,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_test4)
 
 _level_list_hi:
-	.byte .hibyte(level_data_stereomadness)
 	.byte .hibyte(level_data_sonar)
 	.byte .hibyte(level_data_darkparadise)
 	.byte .hibyte(level_data_leveleasy)
@@ -75,7 +73,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_test4)
 
 _level_list_bank:
-	.byte .lobyte(.bank(level_data_stereomadness))
 	.byte .lobyte(.bank(level_data_sonar))
 	.byte .lobyte(.bank(level_data_darkparadise))
 	.byte .lobyte(.bank(level_data_leveleasy))
@@ -134,7 +131,6 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_futurefunk_5))
 
 _sprite_list_lo:
-	.byte .lobyte(sprite_data_stereomadness)
 	.byte .lobyte(sprite_data_sonar)
 	.byte .lobyte(sprite_data_darkparadise)
 	.byte .lobyte(sprite_data_leveleasy)
@@ -169,7 +165,6 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_test4)
 
 _sprite_list_hi:
-	.byte .hibyte(sprite_data_stereomadness)
 	.byte .hibyte(sprite_data_sonar)
 	.byte .hibyte(sprite_data_darkparadise)
 	.byte .hibyte(sprite_data_leveleasy)
@@ -204,7 +199,6 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_test4)
 
 _sprite_list_bank:
-	.byte .lobyte(.bank(sprite_data_stereomadness))
 	.byte .lobyte(.bank(sprite_data_sonar))
 	.byte .lobyte(.bank(sprite_data_darkparadise))
 	.byte .lobyte(.bank(sprite_data_leveleasy))
@@ -242,7 +236,6 @@ _sprite_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
-	.byte .lobyte($000001)		; stereomadness
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($000090)		; leveleasy
@@ -279,7 +272,6 @@ _level_lengths_lo:
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
-	.byte .hibyte($000001)		; stereomadness
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($000090)		; leveleasy
@@ -316,7 +308,6 @@ _level_lengths_md:
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-	.byte .bankbyte($000001)		; stereomadness
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($000090)		; leveleasy

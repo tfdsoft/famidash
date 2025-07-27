@@ -2,7 +2,6 @@
 // Exported by export_levels.py
 
 const uint8_t difficulty_list[] = {
-	EASY,	// stereomadness
 	EASYDEMON,	// everymadness
 	EASYDEMON,	// dearnostalgists
 	MEDIUMDEMON,	// invisiblelight
@@ -28,7 +27,6 @@ const uint8_t difficulty_list[] = {
 };
 
 const uint8_t stars_list[] = {
-	1,	// stereomadness
 	10,	// everymadness
 	10,	// dearnostalgists
 	10,	// invisiblelight

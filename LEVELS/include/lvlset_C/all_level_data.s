@@ -490,23 +490,3 @@
 	level_data_sonicwave_2:
 	; Level data
 		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3711
-
-
-.segment "DAT_BANK_1E"	; Total bank size: 8192 bytes
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte song_practice ;___ Song ID
-		.byte 0 ;_______________ Starting game mode
-		.byte 0 ;_______________ Starting speed
-		.byte 0 ;_______________ Disable parallax
-		.byte 0 ;_______________ Force platformer
-		.byte _DECO1 ;__________ Deco type
-		.byte _SPIKESA ;________ Spike set
-		.byte _BLOCKSA ;________ Block set
-		.byte _SAWBLADESA ;_____ Sawblade set
-		.byte $12 ;_____________ Starting background color
-		.byte $02 ;_____________ Starting ground color
-		.byte 27 ;______________ Level height
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 63

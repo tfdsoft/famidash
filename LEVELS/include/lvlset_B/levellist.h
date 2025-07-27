@@ -2,7 +2,6 @@
 // Exported by export_levels.py
 
 const uint8_t difficulty_list[] = {
-	EASY,	// stereomadness
 	EASY,	// sonar
 	EASY,	// darkparadise
 	NORMAL,	// leveleasy
@@ -38,7 +37,6 @@ const uint8_t difficulty_list[] = {
 };
 
 const uint8_t stars_list[] = {
-	1,	// stereomadness
 	2,	// sonar
 	2,	// darkparadise
 	3,	// leveleasy

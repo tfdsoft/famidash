@@ -217,9 +217,14 @@ void leveldec() {
 	low_byte(tmp8) = 0xff;
 	tmp4 = 0;
 	if (!normalorcommlevels) {
-		if (level == 0xFF) level = LEVEL_COUNT-1;
+		if (level == 0xFF) level = LEVEL_COUNT - 1;
 	} else {
-		if (level < LEVEL_COUNT) level = LEVEL_COUNT2 - 1;
+		#if LEVEL_COUNT > 0
+			if (level < LEVEL_COUNT)
+		#else
+			if (level == 0xFF)
+		#endif
+				level = LEVEL_COUNT2 - 1;
 	}
 	crossPRGBankJump0(refreshmenu);
 }			
@@ -229,7 +234,10 @@ void levelinc() {
 	low_byte(tmp8) = 0xff;
 	tmp4 = 1;
 	if (!normalorcommlevels) {
-		if (level >= LEVEL_COUNT) level = 0x00;
+		#if LEVEL_COUNT > 0	// technically has no effect, but it silences the warning
+			if (level >= LEVEL_COUNT)
+		#endif
+				level = 0x00;
 	} else {
 		if (level >= LEVEL_COUNT2) level = LEVEL_COUNT;
 	}

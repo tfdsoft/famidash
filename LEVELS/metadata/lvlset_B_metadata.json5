@@ -1,22 +1,4 @@
 {
-	official_levels:  [
-		{
-			level: "stereomadness",
-			upperText: "YOU SHOULDNT",
-			lowerText: "BE HERE",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "A",
-			sawSet: "A",
-			difficulty: "EASY",
-			stars: 1,
-			songID: "song_stereo_madness",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02
-		}
-	],
 	community_levels: [
 		{
 			level: "sonar",

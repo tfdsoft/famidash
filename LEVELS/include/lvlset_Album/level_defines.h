@@ -3,7 +3,6 @@
 
 #define LEVELSET 662387
 
-#define OFFICIAL_LEVEL_COUNT 1
+#define OFFICIAL_LEVEL_COUNT 0
 #define COMMUNITY_LEVEL_COUNT 0
 
-#define level_stereomadness 0
