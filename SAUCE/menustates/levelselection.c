@@ -32,19 +32,6 @@ void state_levelselect() {
 
 	#if __VS_SYSTEM
 		menutimer = 0;
-		if (!coins_inserted) {
-			pal_bg(gameoverpalette);
-			vram_adr(NAMETABLE_A);
-			vram_unrle(gameover); 
-			vram_adr(NAMETABLE_B);
-			vram_unrle(gameover);
-			tmp5 = 200;
-			ppu_on_all();		
-	//		gameState = STATE_MENU;
-	//		cube_data[0] = 0;
-	//		cube_data[1] = 0;
-	//		return;
-		} else {
 	#endif
 
 	pal_bg(oldsplashMenu);
@@ -94,29 +81,10 @@ void state_levelselect() {
 	menuMusicCurrentlyPlaying = 1;
 
 	ppu_on_all();
-	
-	#if __VS_SYSTEM
-	}	// end the else statement
-	#endif
 
 	ppu_wait_nmi();
 	ppu_wait_nmi();
 	pal_fade_to_withmusic(0,4);
-
-	#if __VS_SYSTEM
-		if (!coins_inserted) {
-			while (tmp5) {
-				ppu_wait_nmi();
-				music_update();
-				tmp5--;
-			}
-			ppu_off();
-			gameState = STATE_MENU;
-			cube_data[0] = 0;
-			cube_data[1] = 0;
-			return;
-		} else {
-	#endif
 
 	while (1){
 		loop_routine_update();
@@ -205,9 +173,6 @@ void state_levelselect() {
 
 		dec_mouse_timer();
 	}
-	#if __VS_SYSTEM	
-	}	// end the else statement
-	#endif
 
 }
 

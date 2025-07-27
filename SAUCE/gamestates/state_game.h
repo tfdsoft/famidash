@@ -634,7 +634,7 @@ void state_game(){
 				reset_level();
 				#if __VS_SYSTEM
 					if (!coins_inserted) {
-						gameState = STATE_MENU; 
+						gameState = STATE_GAMEOVER; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
 						gameboy_check();

@@ -10,6 +10,9 @@ CODE_BANK_PUSH("XCD_BANK_03")
 #include "menustates/progressbar.c"
 #include "menustates/customize.c"
 #include "menustates/titlescreen.c"
+	#if __VS_SYSTEM
+	#include "menustates/gameover.c"
+	#endif
 #else
 #include "defines/album_nametable/menunametable_XCD03.c"
 #include "menustates/album_titlescreen.c"

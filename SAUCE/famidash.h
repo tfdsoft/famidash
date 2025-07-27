@@ -13,6 +13,9 @@
 #if LVLSET != 'A'
 #define STATE_PLAYMAIN		0xF2
 #endif
+#if __VS_SYSTEM
+#define STATE_GAMEOVER		0xF3
+#endif
 /* Unused game states
 #define STATE_SAVEEDITOR	0x06
 #define STATE_EXIT			0xFE

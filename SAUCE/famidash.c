@@ -154,6 +154,15 @@ void main(){
 			}
 			#endif
 
+			#if __VS_SYSTEM
+			case STATE_GAMEOVER: {
+				mmc3_set_prg_bank_1(GET_BANK(state_gameover));
+				state_gameover();
+				trans_last_gameState = STATE_GAMEOVER;
+				break;
+			}
+			#endif
+
 		#endif
 
 			default: {
@@ -173,6 +182,9 @@ void main(){
 			case STATE_SETTINGS:
 			case STATE_CREDITS:
 			case STATE_CUSTOMIZE:
+			#if __VS_SYSTEM
+			case STATE_GAMEOVER:
+			#endif
 				pal_fade_to(4,0);
 				mmc3_disable_irq();
 				ppu_off();

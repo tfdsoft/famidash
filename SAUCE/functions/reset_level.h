@@ -71,7 +71,7 @@ void reset_level() {
 	minicoins = 0;
 	currplayer_slope_frames = 0;
 	make_cube_jump_higher = 0;
-	
+
 	#if __VS_SYSTEM
 	if (!coins_inserted) return;
 	#endif
@@ -158,8 +158,7 @@ void reset_level() {
 	pal_fade_to_withmusic(0,4);
 	if (!practice_point_count) {
 		music_play(song);
-	}
-	else if (practice_music_sync) {
+	} else if (practice_music_sync) {
 		crossPRGBankJump0(music_restore);
 	}		
 
