@@ -303,7 +303,6 @@ void state_lvldone() {
 						menuMusicCurrentlyPlaying = 0;
 						pal_fade_to_withmusic(4,0);
 						ppu_off();
-						pal_bg(splashMenu);
 
 						practice_point_count = 0;
 						return;
@@ -329,7 +328,6 @@ void state_lvldone() {
 					menuMusicCurrentlyPlaying = 0;
 					pal_fade_to_withmusic(4,0);
 					ppu_off();
-					pal_bg(splashMenu);
 
 					practice_point_count = 0;
 					return;
