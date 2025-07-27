@@ -98,7 +98,6 @@ void state_game(){
 	animating = 0;
 	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
 	orbactive = 0;
-	mmc3_disable_irq();
 	
 	outline_color = 0x30;
 
@@ -107,7 +106,6 @@ void state_game(){
 
 	// set_tile_banks();
 	
-	ppu_off();
 	nocamlock = 0;
 	use_auto_chrswitch = 1;
 
@@ -116,6 +114,7 @@ void state_game(){
 
 	crossPRGBankJump8(load_ground,0);
 
+	oam_clear();
     
 	currplayer = 0;
 	controllingplayer = &joypad1;
@@ -629,6 +628,7 @@ void state_game(){
 		if (!DEBUG_MODE && kandodebugmode != 2) {
 		if (high_byte(player_x[0]) > 0x20) {
 			if (cube_data[0] & 1 || cube_data[1] & 1) { 
+				death_animation();
 				reset_level();
 				#if __VS_SYSTEM
 					if (!coins_inserted) {

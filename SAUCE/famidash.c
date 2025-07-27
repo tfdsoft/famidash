@@ -123,6 +123,9 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_levelselect));
 				state_levelselect();
 				trans_last_gameState = STATE_LEVELSELECT;
+				pal_fade_to_withmusic(4,0);
+				mmc3_disable_irq();
+				ppu_off();
 				break;
 			}
 			case STATE_CUSTOMIZE: {

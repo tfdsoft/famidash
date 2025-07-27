@@ -162,9 +162,6 @@ void state_levelselect() {
 			if (menutimer >= 2000) {
 				gameState = STATE_MENU;
 				draw_both_progress_bars();
-				pal_fade_to_withmusic(4,0);
-				mmc3_disable_irq();
-				ppu_off();
 				return;
 			}
 		#endif
@@ -183,9 +180,6 @@ void state_levelselect() {
 				menutimer = 0;
 			#endif
 			draw_both_progress_bars();
-			pal_fade_to_withmusic(4,0);
-			mmc3_disable_irq();
-			ppu_off();
 			return;
 		}
 		
@@ -264,6 +258,5 @@ void start_the_level() {
 		music_update();
 	} while (++tmpA < 30);
 	gameState = STATE_GAME;
-	pal_fade_to(4,0);
 	menuMusicCurrentlyPlaying = 0;
-}			
+}

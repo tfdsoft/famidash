@@ -3,9 +3,47 @@ extern unsigned char* PARALLAX_CHR;
 
 void music_restore();
 
-void reset_level() {
-	// unsigned char i;
+void death_animation() {
 	if (!practice_point_count || practice_music_sync) famistudio_music_stop();
+
+	tmp1 = 30;
+	if (!DEBUG_MODE) {
+		if (cube_data[0] & 1) tmp2 = 0;
+		else if (cube_data[1] & 1) tmp2 = 1;
+
+		#if __VS_SYSTEM
+		coins_inserted--;
+		#endif
+		update_level_completeness();
+		sfx_play(sfx_death, 0);
+		while (tmp1 != 0){
+			ppu_wait_nmi();
+			music_update();
+			dual == 1 ? oam_clear_two_players() : oam_clear_player();
+			
+			if (robotjumpframe[0] < 20) {
+				if (!retro_mode) oam_meta_spr(high_byte(player_x[tmp2])-2, high_byte(player_y[tmp2])-2, Explode_Sprites[robotjumpframe[0] & 0x7F]);
+				else oam_meta_spr(high_byte(player_x[tmp2])-2, high_byte(player_y[tmp2])-2, ExplodeR_Sprites[robotjumpframe[0] & 0x7F]);
+				++robotjumpframe[0];
+			}
+//			pad_poll(0);
+			if (practice_point_count > 1 && (((mouse.connected ? 0 : joypad2.press) | joypad1.press) & PAD_SELECT)) {
+				curr_practice_point--;
+				if (curr_practice_point >= practice_point_count)
+					curr_practice_point = practice_point_count - 1;
+			}	
+
+			--tmp1;
+		}					
+	}
+
+	pal_fade_to_withmusic(4,0);
+	oam_clear();
+	ppu_off(); // reset the level when you get to this point, and change this later
+}
+
+void reset_level() {
+	++auto_fs_updates;
 
 	#if !__VS_SYSTEM
 	gameState = STATE_GAME; //fix for dying as the end trigger triggers
@@ -33,62 +71,7 @@ void reset_level() {
 	minicoins = 0;
 	currplayer_slope_frames = 0;
 	make_cube_jump_higher = 0;
-	tmp1 = 30;
-	if (!DEBUG_MODE && (cube_data[0] & 1)) {
-		#if __VS_SYSTEM
-		coins_inserted--;
-		#endif
-		update_level_completeness();
-		sfx_play(sfx_death, 0);
-		while (tmp1 != 0){
-			ppu_wait_nmi();
-			music_update();
-			dual == 1 ? oam_clear_two_players() : oam_clear_player();
-			
-			if (robotjumpframe[0] < 20) {
-				if (!retro_mode) oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, Explode_Sprites[robotjumpframe[0] & 0x7F]);
-				else oam_meta_spr(high_byte(player_x[0])-2, high_byte(player_y[0])-2, ExplodeR_Sprites[robotjumpframe[0] & 0x7F]);
-				++robotjumpframe[0];
-			}
-//			pad_poll(0);
-			if (practice_point_count > 1 && (((mouse.connected ? 0 : joypad2.press) | joypad1.press) & PAD_SELECT)) {
-				curr_practice_point--;
-				if (curr_practice_point >= practice_point_count)
-					curr_practice_point = practice_point_count - 1;
-			}	
-
-			--tmp1;
-		}
-	}
-	else if (!DEBUG_MODE && (cube_data[1] & 1)) {
-		#if __VS_SYSTEM
-		coins_inserted--;
-		#endif
-		update_level_completeness();
-		sfx_play(sfx_death, 0);
-		while (tmp1 != 0){
-			ppu_wait_nmi();
-			music_update();
-			dual == 1 ? oam_clear_two_players() : oam_clear_player();
-			if (robotjumpframe[0] < 20) {
-				if (!retro_mode) oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, Explode_Sprites2[robotjumpframe[0] & 0x7F]);
-				else oam_meta_spr(high_byte(player_x[1])-2, high_byte(player_y[1])-2, ExplodeR_Sprites2[robotjumpframe[0] & 0x7F]);
-				
-				++robotjumpframe[0];
-			}
-			if (practice_point_count > 1 && (((mouse.connected ? 0 : joypad2.press) | joypad1.press) & PAD_SELECT)) {
-				curr_practice_point--;
-				if (curr_practice_point >= practice_point_count)
-					curr_practice_point = practice_point_count - 1;
-			}						
-			--tmp1;
-		}
-	}
-	pal_fade_to_withmusic(4,0);
-	oam_clear();
-	++auto_fs_updates;
-	ppu_off(); // reset the level when you get to this point, and change this later
-
+	
 	#if __VS_SYSTEM
 	if (!coins_inserted) return;
 	#endif
