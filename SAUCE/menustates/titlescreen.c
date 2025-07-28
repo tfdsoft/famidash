@@ -1,29 +1,3 @@
-// Forward declarations of routines
-// Will be replaced during the physics update
-
-#define NTSC_SYS PEEK(0x00)
-
-const char palsystem[] = "FOR PAL SYSTEMS";
-
-extern uint8_t famistudio_song_speed;
-
-const uint8_t BG_Table2[]={
-			0x11,	0x12,	0x13,	0x14,	0x15,	0x16,	0x17,
-	0x18,	0x19,	0x1A,	0x1B,	0x1C
-};
-
-const uint8_t G_Table2[]={
-			0x21,	0x22,	0x23,	0x24,	0x25,	0x26,	0x27,
-	0x28,	0x29,	0x2A,	0x2B,	0x2C
-};
-
-const uint8_t menu_irq_table[] = {
-	180,
-	irqtable_hscroll, 0x00,
-
-	irqtable_end // always end with 0xff
-};
-
 // Button table
 #include "defines/titlescreen_buttons.c"
 
@@ -80,6 +54,8 @@ const unsigned char coinstext[] = "COINS INSERTED ";
 const unsigned char vstext[] = "VS";
 #endif
 
+const char palsystem[] = "FOR PAL SYSTEMS";
+
 
 // Title screen modes
 #define	TITLEMODE_CUBE		0
@@ -106,6 +82,8 @@ const unsigned char vstext[] = "VS";
 #else
 #define coinCondition true
 #endif
+
+#define NTSC_SYS PEEK(0x00)
 
 // Routines start
 
@@ -963,6 +941,22 @@ void color_picker() {
 
 // Tables start
 
+const uint8_t BG_Table2[]={
+			0x11,	0x12,	0x13,	0x14,	0x15,	0x16,	0x17,
+	0x18,	0x19,	0x1A,	0x1B,	0x1C
+};
+
+const uint8_t G_Table2[]={
+			0x21,	0x22,	0x23,	0x24,	0x25,	0x26,	0x27,
+	0x28,	0x29,	0x2A,	0x2B,	0x2C
+};
+
+const uint8_t menu_irq_table[] = {
+	180,
+	irqtable_hscroll, 0x00,
+
+	irqtable_end // always end with 0xff
+};
 
 const uint8_t UFO_Title_Jump_Table[]={
 	5,

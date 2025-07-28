@@ -10,18 +10,9 @@ void dec_mouse_timer();
 void loop_routine_update();
 
 const uint8_t xbgmlookuptable[];
+const uint8_t lvlselect_irq_table[];
 
 #include "defines/charmap/mainmenu_charmap.h"
-
-const uint8_t lvlselect_irq_table[] = {
-	31,
-	irqtable_hscroll, 0x00, // item 0x02 gets modified every frame
-	149,
-	irqtable_hscroll, 0x00,
-
-	irqtable_end // always end with 0xff
-};
-
 
 void state_levelselect() {
 	oam_clear();
@@ -220,3 +211,12 @@ void start_the_level() {
 	gameState = STATE_GAME;
 	menuMusicCurrentlyPlaying = 0;
 }
+
+const uint8_t lvlselect_irq_table[] = {
+	31,
+	irqtable_hscroll, 0x00, // item 0x02 gets modified every frame
+	149,
+	irqtable_hscroll, 0x00,
+
+	irqtable_end // always end with 0xff
+};

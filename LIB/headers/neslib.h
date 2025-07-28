@@ -97,7 +97,7 @@ void __fastcall__ oam_clear_two_players();
 // Note: sprid removed for speed
 
 void __fastcall__ _oam_spr(uint32_t args);
-#define oam_spr(x, y, chrnum, attr)(storeBytesToSreg(x, y), __AX__ = (chrnum<<8)|attr, _oam_spr(__EAX__))
+#define oam_spr(x, y, chrnum, attr)(storeBytesToSreg(x, y), __A__ = chrnum, __AX__ <<= 8, __A__ |= attr, _oam_spr(__EAX__))
 
 
 //set metasprite in OAM buffer (normal)

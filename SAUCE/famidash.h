@@ -473,6 +473,8 @@ uint8_t donotresetrng;
 
 uint8_t player_invis;
 
+extern uint8_t famistudio_song_speed;
+
 extern uint16_t min_scroll_y;
 extern uint16_t seam_scroll_y;
 

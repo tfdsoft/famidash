@@ -3282,7 +3282,7 @@ const unsigned char * const Metasprites[]={
 	nometa,
 	nometa,
 	Skull_Trigger_1,
-	WHITE_ORB,
+	WHITE_ORB1,
 	};
 
 

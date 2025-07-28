@@ -1,53 +1,28 @@
-// Forward declarations of routines
-// Will be replaced during the physics update
-
-#define NTSC_SYS PEEK(0x00)
-
-const char palsystem[] = "FOR PAL SYSTEMS";
-
-extern uint8_t famistudio_song_speed;
-
-const uint8_t BG_Table2[]={
-			0x11,	0x12,	0x13,	0x14,	0x15,	0x16,	0x17,
-	0x18,	0x19,	0x1A,	0x1B,	0x1C
-};
-
-const uint8_t G_Table2[]={
-			0x21,	0x22,	0x23,	0x24,	0x25,	0x26,	0x27,
-	0x28,	0x29,	0x2A,	0x2B,	0x2C
-};
-
-const uint8_t menu_irq_table[] = {
-	180,
-	irqtable_hscroll, 0x00,
-
-	irqtable_end // always end with 0xff
-};
-
 // Button table
 #include "defines/titlescreen_buttons.c"
-
-CODE_BANK_PUSH("XCD_BANK_03")
 
 void loop_routine_update();
 void state_credits();
 
-void unrle_bgm1() {
-	vram_adr(NAMETABLE_A);
-	vram_unrle(state_soundtestscreen);  
-}
-void unrle_bgm2() {
-	vram_adr(NAMETABLE_A);
-	vram_unrle(SoundQueue);  
-}
+void unrle_bgm1();
+void unrle_bgm2();
 
-#include "defines/charmap/mainmenu_charmap.h"
+void check_if_music_stopped2();
 
 
-void check_if_music_stopped2() {
-	if (famistudio_song_speed == 0x80) { music_play(song_menu_theme); }
-}
+// Forward declarations of tables
 
+const uint8_t BG_Table2[];
+const uint8_t G_Table2[];
+
+const uint8_t menu_irq_table[];
+
+// Declarations of strings
+#include "defines/charmap/mainmenu_charmap.h"	// Set it for the further routine
+const char palsystem[] = "FOR PAL SYSTEMS";
+
+// TO BE REPLACE in physics update
+#define NTSC_SYS PEEK(0x00)
 
 void state_menu() {
 	oam_clear();
@@ -174,10 +149,33 @@ void loop_routine_update() {
 	oam_clear();
 }		
 
+void unrle_bgm1() {
+	vram_adr(NAMETABLE_A);
+	vram_unrle(state_soundtestscreen);  
+}
+void unrle_bgm2() {
+	vram_adr(NAMETABLE_A);
+	vram_unrle(SoundQueue);  
+}
+
+void check_if_music_stopped2() {
+	if (famistudio_song_speed == 0x80) { music_play(song_menu_theme); }
+}
 
 
+const uint8_t BG_Table2[]={
+			0x11,	0x12,	0x13,	0x14,	0x15,	0x16,	0x17,
+	0x18,	0x19,	0x1A,	0x1B,	0x1C
+};
 
+const uint8_t G_Table2[]={
+			0x21,	0x22,	0x23,	0x24,	0x25,	0x26,	0x27,
+	0x28,	0x29,	0x2A,	0x2B,	0x2C
+};
 
+const uint8_t menu_irq_table[] = {
+	180,
+	irqtable_hscroll, 0x00,
 
-
-CODE_BANK_POP()
+	irqtable_end // always end with 0xff
+};
