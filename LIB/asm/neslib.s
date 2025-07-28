@@ -168,7 +168,7 @@ nmi:
 	; Poll controller port 1
 	tay
 	jsr pad_poll
-	sta joypad1
+	sta <joypad1
 
 	; Poll controller port 2
 	iny

@@ -3238,15 +3238,18 @@ SSDPCM_amphi:
     sta SSDPCM_wait
 	ldx Bank, y
 
-    lda #128
-    sta SSDPCM_amp
-    ;enable DMC but disable DPCM
+    ; enable DMC but disable DPCM
     lda #%00000000
     sta FAMISTUDIO_APU_DMC_FREQ
     lda #%00001011
     sta FAMISTUDIO_APU_SND_CHN
+    ; disable automatic FS updates
+    lda	auto_fs_updates
+    pha
     lda #0
-	sta SSDPCM_ptr
+    tay
+    sta auto_fs_updates
+    ; continue enabling DMC but disabling DPCM
     sta FAMISTUDIO_APU_DMC_LEN
     lda #%00011011
     sta FAMISTUDIO_APU_SND_CHN
@@ -3256,9 +3259,10 @@ SSDPCM_amphi:
     lda #%00110000
     sta FAMISTUDIO_APU_PL1_VOL
     sta FAMISTUDIO_APU_PL2_VOL
-    ;init pcm
- 	ldy #0
 
+    ;init pcm
+    lda #128
+    sta SSDPCM_amp
     lda #>$BFFF		;	2
     sta SSDPCM_ptr+1	;__	3
     lda #<$BFFF		;	2
@@ -3286,8 +3290,13 @@ SSDPCM_amphi:
 
 
 @DoneWithPCM:
+	; Re-enable all channels
     lda #%00011111
     sta FAMISTUDIO_APU_SND_CHN
+    ; Re-enable automatic FS updates
+    pla
+    sta	auto_fs_updates
+
     lda #<FIRST_DMC_BANK
 	jmp mmc3_set_prg_bank_0
 
