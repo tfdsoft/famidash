@@ -219,11 +219,64 @@ uint8_t name##_ex[size]
 	__asm__("lda %v, y \n ldx %v, y", arr##_lo, arr##_md), \
 	__EAX__)
 
+#define	lohi_arr32_load_loword(arr, idx) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__asm__("lda %v, y \n ldx %v, y", arr##_lo, arr##_md), \
+	__AX__)
+
+#define	lohi_arr32_load_hiword(arr, idx) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__asm__("lda %v, y \n ldx %v, y", arr##_hi, arr##_ex), \
+	__AX__)
+
+#define lohi_arr32_load_to(arr, idx, target) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__asm__("lda %v, y \n ldx %v, y", arr##_lo, arr##_md), \
+	low_word(target) = __AX__, \
+	__asm__("lda %v, y \n ldx %v, y", arr##_hi, arr##_ex), \
+	high_word(target) = __AX__)
+
 #define	lohi_arr32_store(arr, idx, long) ( \
 	__A__ = idx, \
 	__asm__("tay"), \
 	__EAX__ = long, \
 	__asm__("sta %v, y \n txa \n sta %v, y", arr##_lo, arr##_md), \
 	__asm__("lda sreg \n ldx sreg+1"), \
+	__asm__("sta %v, y \n txa \n sta %v, y", arr##_hi, arr##_ex) \
+	)
+
+#define	lohi_arr32_store_split(arr, idx, long) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__AX__ = LSW(long), \
+	__asm__("sta %v, y \n txa \n sta %v, y", arr##_lo, arr##_md), \
+	__AX__ = MSW(long), \
+	__asm__("sta %v, y \n txa \n sta %v, y", arr##_hi, arr##_ex) \
+	)
+
+#define	lohi_arr32_store_from(arr, idx, long) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__AX__ = low_word(long), \
+	__asm__("sta %v, y \n txa \n sta %v, y", arr##_lo, arr##_md), \
+	__AX__ = high_word(long), \
+	__asm__("sta %v, y \n txa \n sta %v, y", arr##_hi, arr##_ex) \
+	)
+
+
+#define	lohi_arr32_store_loword(arr, idx, word) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__AX__ = word, \
+	__asm__("sta %v, y \n txa \n sta %v, y", arr##_lo, arr##_md), \
+	)
+
+#define	lohi_arr32_store_hiword(arr, idx, word) ( \
+	__A__ = idx, \
+	__asm__("tay"), \
+	__AX__ = word, \
 	__asm__("sta %v, y \n txa \n sta %v, y", arr##_hi, arr##_ex) \
 	)

@@ -5,7 +5,7 @@ extern uint16_t old_draw_scroll_y;
 extern uint8_t famistudio_output_buf[11];
 #endif
 
-void reset_game_vars(){
+void store_practice_state(){
 #if !__VS_SYSTEM
 	if (!practice_point_count) {
 		if (!practice_music_sync)
@@ -48,7 +48,7 @@ void reset_game_vars(){
 	idx8_store(practice_player_1_last_slope_type, get_Y, last_slope_type[0]);
 	idx8_store(practice_player_2_last_slope_type, get_Y, last_slope_type[1]);
 
-	lohi_arr32_store(practice_scroll_x, get_Y, scroll_x);
+	lohi_arr32_store_from(practice_scroll_x, get_Y, scroll_x);
 	lohi_arr16_store(practice_scroll_y, get_Y, scroll_y);
 	lohi_arr16_store(practice_seam_scroll_y, get_Y, seam_scroll_y);
 	lohi_arr16_store(practice_old_draw_scroll_y, get_Y, old_draw_scroll_y);
@@ -79,7 +79,7 @@ void reset_game_vars(){
 }
 
 
-void restore_practice_state() {
+void load_practice_state() {
 #if !__VS_SYSTEM
 	tmp2 = curr_practice_point;
 	player_x[0] = lohi_arr16_load(practice_player_1_x, tmp2);
@@ -122,7 +122,7 @@ void restore_practice_state() {
 		idx8_load(practice_player_1_last_slope_type, get_Y);
 	last_slope_type[1] = idx8_load(practice_player_2_last_slope_type, get_Y);
 
-	scroll_x = lohi_arr32_load(practice_scroll_x, get_Y);
+	lohi_arr32_load_to(practice_scroll_x, get_Y, scroll_x);
 	old_trail_scroll_y = scroll_y =	lohi_arr16_load(practice_scroll_y, get_Y);
 	old_draw_scroll_y = lohi_arr16_load(practice_old_draw_scroll_y, get_Y);
 	seam_scroll_y = lohi_arr16_load(practice_seam_scroll_y, get_Y);

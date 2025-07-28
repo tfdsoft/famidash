@@ -334,8 +334,8 @@ void state_game(){
 
 					else if ((controllingplayer->press_b || mouse.left_press) && !(controllingplayer->up) && !(controllingplayer->down)) {
 						famistudio_music_pause(0);
-						mmc3_set_prg_bank_1(GET_BANK(reset_game_vars));
-						reset_game_vars();
+						mmc3_set_prg_bank_1(GET_BANK(store_practice_state));
+						store_practice_state();
 						//practice_point_count = 1;
 						joypad1.press = PAD_START;
 						orbed[currplayer] = 1;
@@ -406,16 +406,16 @@ void state_game(){
 				curr_practice_point = practice_point_count - 1;
 		}
   		#endif	//no practice in arcade
-		if ((controllingplayer->press_b) && practice_point_count && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(reset_game_vars);
+		if ((controllingplayer->press_b) && practice_point_count && !(twoplayer && (options & oneptwoplayer))) crossPRGBankJump0(store_practice_state);
 
 		#if !__VS_SYSTEM
 		if (auto_practicepoints && auto_practicepoint_timer) auto_practicepoint_timer--;
 
 		if (practice_point_count && !auto_practicepoint_timer) { 
 			if (gamemode == 0 || gamemode == 2 || gamemode == 4 || gamemode == 5 || gamemode == 8) {
-				if (currplayer_vel_y == 0) crossPRGBankJump0(reset_game_vars); 
+				if (currplayer_vel_y == 0) crossPRGBankJump0(store_practice_state); 
 			}
-			else crossPRGBankJump0(reset_game_vars); 
+			else crossPRGBankJump0(store_practice_state); 
 		}
 		#endif
 
