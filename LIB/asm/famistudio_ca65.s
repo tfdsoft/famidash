@@ -7683,7 +7683,8 @@ famistudio_rhythm_lut:
 
 ; Required to fetch the extra parameter from the C stack
 .import popa
-
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+.if 0   ;*  ORIGINAL BEGIN
 .export _famistudio_init
 _famistudio_init:
     ; A = ptr[lo]; X = ptr[hi]; SP[0] = platform
@@ -7694,7 +7695,8 @@ _famistudio_init:
     jsr popa
     ldy @tmp
     jmp famistudio_init
-
+.endif  ;*  ORIGINAL END
+;!!! FAMISTUDIO DRIVER MODIFICATION END
 
 ; A = song_index; So we can safely re-export the symbol
 .export _famistudio_music_play=famistudio_music_play
@@ -7707,10 +7709,16 @@ _famistudio_init:
 
 .if FAMISTUDIO_CFG_SFX_SUPPORT
 
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+.if 0   ;*  ORIGINAL BEGIN
 .export _famistudio_sfx_init
 .export _famistudio_sfx_play
+.endif  ;*  ORIGINAL END
+;!!! FAMISTUDIO DRIVER MODIFICATION END
 .export _famistudio_sfx_sample_play
 
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+.if 0   ;*  ORIGINAL BEGIN
 _famistudio_sfx_init:
     ; A = ptr[lo]; X = ptr[hi]
     @tmp = famistudio_r0
@@ -7724,6 +7732,8 @@ _famistudio_sfx_play:
     tax
     jsr popa
     jmp famistudio_sfx_play
+.endif  ;*  ORIGINAL END
+;!!! FAMISTUDIO DRIVER MODIFICATION END
 
 ; A = sample_index; So we can safely re-export the symbol
 .export _famistudio_sfx_sample_play=famistudio_sfx_sample_play
