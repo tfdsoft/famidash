@@ -156,11 +156,11 @@ void main(){
 			
 
 		}
+		auto_fs_updates = 1;
 		if (!forceNoFadeOut) pal_fade_to(4,0);
 		mmc3_disable_irq();
 		ppu_off();
 		if (forceNoFadeOut) flush_vram_update2();
-		auto_fs_updates = 1;
     }
 }
 

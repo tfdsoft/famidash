@@ -341,7 +341,7 @@ void state_game(){
 						orbed[currplayer] = 1;
 					}
 					if (joypad1.press_select || exittimer == 100) { 
-						gameState = STATE_MENU; 
+						gameState = STATE_LEVELSELECT; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
 						gameboy_check();
