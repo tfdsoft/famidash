@@ -73,7 +73,7 @@ void store_practice_state(){
 		memcpy(practice_famistudio_state + (200 * tmp1), famistudio_state, 200);
 		memcpy(practice_famistudio_registers + (11 * tmp1), famistudio_output_buf, 11);
     }
-	long_temp_x = high_byte(player_x[0]);
+	practice_sprite_x_pos = high_byte(player_x[0]);
 	auto_practicepoint_timer = 200;
 #endif
 }
@@ -140,7 +140,7 @@ void load_practice_state() {
 //		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);
 //	} while (++tmp2 < 9);
 	orbactive = idx8_load(practice_orbactive, get_Y);
-	long_temp_x = idx8_load(practice_player_1_x_hi, get_Y);
+	practice_sprite_x_pos = idx8_load(practice_player_1_x_hi, get_Y);
 
 	outline_color = idx8_load(practice_outline_color, get_Y);
 

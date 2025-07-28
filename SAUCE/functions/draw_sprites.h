@@ -39,11 +39,11 @@ void draw_sprites(){
 
 	if (practice_point_count) {
 		tmp3 = practice_player_1_y_hi[curr_practice_point];
-		if (long_temp_x > 10) { 
-			long_temp_x -= 3;
-			oam_meta_spr(long_temp_x, tmp3 - 1, Practice_Sprites[0]);
+		if (practice_sprite_x_pos > 10) { 
+			practice_sprite_x_pos -= 3;
+			oam_meta_spr(practice_sprite_x_pos, tmp3 - 1, Practice_Sprites[0]);
 		}
-		// else if (long_temp_x < 10) {}
+		// else if (practice_sprite_x_pos < 10) {}
 	}
 
 	if (retro_mode) {

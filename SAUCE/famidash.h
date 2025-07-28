@@ -274,7 +274,7 @@ int16_t player_vel_x[2];
 int16_t player_vel_y[2];
 uint8_t player_gravity[2];
 
-uint8_t long_temp_x;
+uint8_t practice_sprite_x_pos;
 
 uint8_t kandokidshack;
 uint8_t kandokidshack2;
