@@ -155,6 +155,8 @@ uint8_t options;
 #define sfxoff 0x40
 #define musicoff 0x80
 
+uint8_t practice_music_sync;
+
 uint8_t icon;
 uint8_t icon_colors[3];
 
@@ -247,10 +249,9 @@ uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
 uint8_t practice_song[MAX_PRACTICE_POINTS];
 uint8_t practice_player_invis[MAX_PRACTICE_POINTS];
 
-unsigned char practice_famistudio_state[200 * MAX_PRACTICE_POINTS];
-unsigned char practice_famistudio_registers[11 * MAX_PRACTICE_POINTS];
+uint8_t practice_famistudio_state[FAMISTUDIO_STATE_SIZE * MAX_PRACTICE_POINTS];
+uint8_t practice_famistudio_registers[FAMISTUDIO_OUTPUT_BUF_SIZE * MAX_PRACTICE_POINTS];
 
-unsigned char practice_music_sync;
 
 #if __THE_ALBUM
 #define MAX_SONG_QUEUE_SIZE 20
@@ -261,10 +262,7 @@ unsigned char music_queue[MAX_SONG_QUEUE_SIZE];
 // Regular NES RAM
 #pragma bss-name("BSS")
 
-extern unsigned char famistudio_state[200];
 uint8_t last_gameState;
-
-//extern uint8_t famistudio_state[0xbf];
 
 
 

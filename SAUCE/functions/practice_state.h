@@ -1,8 +1,21 @@
 CODE_BANK_PUSH("XCD_BANK_04")
 
-extern uint16_t old_draw_scroll_y;
 #if !__VS_SYSTEM
-extern uint8_t famistudio_output_buf[11];
+const uint8_t multBufLookup[] = {0, 11, 22, 33, 44, 55, 66, 77};
+
+const uint8_t multStateLookup_lo[] = {
+	LSB(0*FAMISTUDIO_STATE_SIZE),	LSB(1*FAMISTUDIO_STATE_SIZE),	LSB(2*FAMISTUDIO_STATE_SIZE),	LSB(3*FAMISTUDIO_STATE_SIZE),
+	LSB(4*FAMISTUDIO_STATE_SIZE),	LSB(5*FAMISTUDIO_STATE_SIZE),	LSB(6*FAMISTUDIO_STATE_SIZE),	LSB(7*FAMISTUDIO_STATE_SIZE),
+};
+const uint8_t multStateLookup_hi[] = {
+	MSB(0*FAMISTUDIO_STATE_SIZE),	MSB(1*FAMISTUDIO_STATE_SIZE),	MSB(2*FAMISTUDIO_STATE_SIZE),	MSB(3*FAMISTUDIO_STATE_SIZE),
+	MSB(4*FAMISTUDIO_STATE_SIZE),	MSB(5*FAMISTUDIO_STATE_SIZE),	MSB(6*FAMISTUDIO_STATE_SIZE),	MSB(7*FAMISTUDIO_STATE_SIZE),
+};
+
+extern uint16_t old_draw_scroll_y;
+
+extern uint8_t famistudio_state[FAMISTUDIO_STATE_SIZE];
+extern uint8_t famistudio_output_buf[FAMISTUDIO_OUTPUT_BUF_SIZE];
 #endif
 
 void store_practice_state(){
@@ -70,8 +83,8 @@ void store_practice_state(){
 	idx8_store(practice_gravity_mod, get_Y, gravity_mod);
 
 	if (practice_music_sync) {
-		memcpy(practice_famistudio_state + (200 * tmp1), famistudio_state, 200);
-		memcpy(practice_famistudio_registers + (11 * tmp1), famistudio_output_buf, 11);
+		memcpy(practice_famistudio_state + lohi_arr16_load(multStateLookup, tmp1), famistudio_state, FAMISTUDIO_STATE_SIZE);
+		memcpy(practice_famistudio_registers + multBufLookup[tmp1], famistudio_output_buf, FAMISTUDIO_OUTPUT_BUF_SIZE);
     }
 	practice_sprite_x_pos = high_byte(player_x[0]);
 	auto_practicepoint_timer = 200;
@@ -184,25 +197,33 @@ void load_practice_state() {
 void music_restore() {
 	#if !__VS_SYSTEM
 		famistudio_music_stop();
-		POKE(0x4000, practice_famistudio_registers[0 + (11 * tmp2)]);
+		
+		// Copy famistudio music state
+		memcpy(famistudio_state, practice_famistudio_state + lohi_arr16_load(multStateLookup, tmp2), FAMISTUDIO_STATE_SIZE);
+
+		// Copy the registers
+		memcpy(famistudio_output_buf, practice_famistudio_registers + multBufLookup[tmp2], FAMISTUDIO_OUTPUT_BUF_SIZE);
+
+		// Clear all sfx (only 1 stream is enabled, that's all we need to clear)
+		famistudio_sfx_clear_channel(FAMISTUDIO_SFX_CH0);
+		// famistudio_sfx_clear_channel(FAMISTUDIO_SFX_CH1);
+		// famistudio_sfx_clear_channel(FAMISTUDIO_SFX_CH2);
+		// famistudio_sfx_clear_channel(FAMISTUDIO_SFX_CH3);
+
+		// Output to APU
+		POKE(0x4000, famistudio_output_buf[0]);
 		POKE(0x4001, 0x08);
-		POKE(0x4002, practice_famistudio_registers[1 + (11 * tmp2)]);
-		if (famistudio_output_buf+2 != practice_famistudio_registers[2 + (11 * tmp2)]) {
-			POKE(0x4003, practice_famistudio_registers[2 + (11 * tmp2)]);
-		}
-		POKE(0x4004, practice_famistudio_registers[3 + (11 * tmp2)]);
+		POKE(0x4002, famistudio_output_buf[1]);
+		POKE(0x4003, famistudio_output_buf[2]);
+		POKE(0x4004, famistudio_output_buf[3]);
 		POKE(0x4005, 0x08);
-		POKE(0x4006, practice_famistudio_registers[4 + (11 * tmp2)]);
-		if (famistudio_output_buf+5 != practice_famistudio_registers[5 + (11 * tmp2)]) {
-			POKE(0x4007, practice_famistudio_registers[5 + (11 * tmp2)]);
-		}
-		POKE(0x4008, practice_famistudio_registers[6 + (11 * tmp2)]);
-		POKE(0x400a, practice_famistudio_registers[7 + (11 * tmp2)]);
-		POKE(0x400b, practice_famistudio_registers[8 + (11 * tmp2)]);
-		POKE(0x400c, practice_famistudio_registers[9 + (11 * tmp2)]);
-		POKE(0x400e, practice_famistudio_registers[10 + (11 * tmp2)]);
-		memcpy(famistudio_state, practice_famistudio_state + (200 * tmp2), 200);
-		memcpy(famistudio_output_buf, practice_famistudio_registers + (11 * tmp2), 11);
+		POKE(0x4006, famistudio_output_buf[4]);
+		POKE(0x4007, famistudio_output_buf[5]);
+		POKE(0x4008, famistudio_output_buf[6]);
+		POKE(0x400a, famistudio_output_buf[7]);
+		POKE(0x400b, famistudio_output_buf[8]);
+		POKE(0x400c, famistudio_output_buf[9]);
+		POKE(0x400e, famistudio_output_buf[10]);
 	#endif
 }	
 

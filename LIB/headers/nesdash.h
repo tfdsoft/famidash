@@ -148,6 +148,18 @@ void increment_attempt_count();
 #define display_attempt_counter(zeroChr, ppu_address) (storeByteToSreg(zeroChr), __AX__ = ppu_address, _display_attempt_counter(__EAX__))
 void _display_attempt_counter (uint32_t args);
 
+/**
+ * ======================================================================================================================
+ * FAMISTUDIO_SFX_CLEAR_CHANNEL (internal)
+ * 
+ *  Clears output buffer of a sound effect.
+ * 
+ *  [in] x: Offset of the sound effect stream.
+ * ======================================================================================================================
+ */
+void __fastcall__ _famistudio_sfx_clear_channel(unsigned int args);
+#define famistudio_sfx_clear_channel(channel) (__A__ = channel, __AX__ <<= 8, _famistudio_sfx_clear_channel(__AX__))
+
 #define low_word(a) *((uint16_t*)&a)
 #define high_word(a) *((uint16_t*)&a+1)
 

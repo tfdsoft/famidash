@@ -834,7 +834,8 @@ FAMISTUDIO_FIRST_POSITIVE_SLIDE_CHANNEL = 3
 ;======================================================================================================================
 
 .segment .string(FAMISTUDIO_CA65_RAM_SEGMENT)
-START_ADDR = *
+_famistudio_state = *
+.export _famistudio_state
 famistudio_env_value:             .res FAMISTUDIO_NUM_ENVELOPES
 famistudio_env_repeat:            .res FAMISTUDIO_NUM_ENVELOPES
 famistudio_env_addr_lo:           .res FAMISTUDIO_NUM_ENVELOPES
@@ -1022,8 +1023,9 @@ famistudio_sfx_ptr_hi = famistudio_sfx_base_addr + 2
 famistudio_sfx_offset = famistudio_sfx_base_addr + 3
 famistudio_sfx_buffer = famistudio_sfx_base_addr + 4
 
+; .out .sprintf("SIZE OF FAMISTUDIO RAM IS %d", _famistudio_output_buf - _famistudio_state)
+
 .endif 
-.out .sprintf("SIZE OF FAMISTUDIO RAM %d", * - START_ADDR)
 ;======================================================================================================================
 ; ZEROPAGE VARIABLES
 ;
@@ -7726,6 +7728,10 @@ _famistudio_sfx_play:
 ; A = sample_index; So we can safely re-export the symbol
 .export _famistudio_sfx_sample_play=famistudio_sfx_sample_play
 
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+;*  MODIFIED
+.export __famistudio_sfx_clear_channel := famistudio_sfx_clear_channel
+;!!! FAMISTUDIO DRIVER MODIFICATION END
 .endif
 .endif
 

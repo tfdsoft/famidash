@@ -370,9 +370,6 @@ detectNTSC:
 	.include "lz.s"
 
 CURSED_MUSIC_ENABLE = 1
-.segment "BSS"
-.export _famistudio_state
-_famistudio_state = *
 .include "famistudio_ca65.s"
 
 
