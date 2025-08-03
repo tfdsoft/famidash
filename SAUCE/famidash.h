@@ -55,7 +55,6 @@ uint8_t tmp8;
 uint8_t tmp9;
 uint16_t tmpA;
 uint16_t tmpB;
-uint8_t temptemp5;
 int16_t tmpfallspeed;
 int16_t tmpgravity;
 uint8_t iconbank1;
@@ -439,6 +438,7 @@ uint8_t no_parallax;
 uint8_t force_platformer;
 uint8_t outline_color;
 uint8_t forced_trails;
+uint8_t skipProcessingCubeRotationLogic;
 
 uint8_t attemptCounter[7];
 uint8_t triggers_hit[3];

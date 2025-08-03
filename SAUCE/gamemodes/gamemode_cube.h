@@ -17,7 +17,7 @@ void cube_movement(){
 
 	#ifdef level_everyend
 		if (level == level_everyend) {
-			tmpfallspeed += (currplayer_table_idx & TBLIDX_GRAV) ? -0x0100 : 0x0100;	// TODO!!
+			tmpfallspeed += (currplayer_table_idx & TBLIDX_GRAV) ? -0x0100 : 0x0100;	// !!TODO
 		}
 	#endif
 
