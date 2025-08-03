@@ -1,6 +1,6 @@
 ; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
 .importzp _gamemode
-.importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9, _temptemp5  ; C-safe temp storage
+.importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9  ; C-safe temp storage
 .import pusha, pushax, callptr4
 .import _scroll_x, _cursedmusic
 
@@ -2134,7 +2134,8 @@ end:
 .segment "XCD_BANK_05"
 
 .import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y, _player_mini
-.import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _retro_mode, _icon, _gameState, _titleicon
+.import _ballframe, _robotframe, _robotjumpframe, _spiderframe
+.import _retro_mode, _icon, _gameState, _titleicon, _skipProcessingCubeRotationLogic
 .import _CUBE_GRAVITY_lo
 .importzp _cube_rotate, _was_on_slope_counter
 .import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2, _SPIDER_ALT, _SPIDER_ALT2
@@ -2289,7 +2290,7 @@ drawplayer_center_offsets:
 
         BIT _cube_data
         BMI @round
-		ldx _temptemp5			;player trails?
+		ldx _skipProcessingCubeRotationLogic			;player trails?
 		bne	@fin			;if so, get out of here
 		LDA _player_vel_y+1		;	if player_vel_y == 0
 		ORA _player_vel_y+0		;
@@ -2796,7 +2797,7 @@ drawplayer_common := _drawplayerone::common
 
         BIT _cube_data+1
         BMI @round
-	;	ldx _temptemp5		;PLAYER TRAILS are disabled for 2 player mode anyway
+	;	ldx _skipProcessingCubeRotationLogic		;PLAYER TRAILS are disabled for 2 player mode anyway
 	;	bne	@fin		
 
 		LDA _player_vel_y+3		;	if player_vel_y == 0

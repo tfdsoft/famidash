@@ -158,7 +158,7 @@ void draw_sprites(){
 			trail_loop();
 		}
 		else if ((forced_trails == 2 || trails == 2) && !(kandoframecnt & 1)) {
-			temptemp5++;
+			skipProcessingCubeRotationLogic++;
 			tmp6 = currplayer_vel_x << 1;
 			
 			tmpA = player_x[0];
@@ -190,7 +190,7 @@ void draw_sprites(){
 			
 			player_x[0] = tmpA;
 			player_y[0] = tmpB;
-			temptemp5--;		
+			skipProcessingCubeRotationLogic--;		
 		}
 	}
 	}
