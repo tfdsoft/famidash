@@ -720,12 +720,12 @@ void sprite_collide_lookup() {
 	spcl_wht_orb:
 		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
 			if ((controllingplayer->a || controllingplayer->up)) {
-				currplayer_vel_y = currplayer_gravity ? -1 : 1;	// !!TODO
+				currplayer_vel_y = 0;
 				activesprites_activated[index] = 1;
 			}
 		} else {
 			if (controllingplayer->press_a || controllingplayer->press_up) {	
-				currplayer_vel_y = currplayer_gravity ? -1 : 1;	// !!TODO
+				currplayer_vel_y = 0;
 				activesprites_activated[index] = 1;
 			}
 		}
