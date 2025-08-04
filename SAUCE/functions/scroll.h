@@ -7,8 +7,8 @@ CODE_BANK_PUSH("XCD_BANK_04")
 
 #define player0_y currplayer_y
 #define player1_y player_y[1]
-void do_the_scroll_thing(){
 
+void process_x_scroll() {
 	switch (cam_seesaw) {
 		case 1:
 			if (curr_x_scroll_stop < 0xD000) target_x_scroll_stop = 0xD000;
@@ -24,8 +24,7 @@ void do_the_scroll_thing(){
 	if (!kandodebugmode) {
 		if (curr_x_scroll_stop < target_x_scroll_stop) curr_x_scroll_stop += 0x200;
 		else if (curr_x_scroll_stop > target_x_scroll_stop) curr_x_scroll_stop -= 0x200;		
-	}
-	else {
+	} else {
 		if (curr_x_scroll_stop < target_x_scroll_stop) curr_x_scroll_stop += 0x180;
 		else if (curr_x_scroll_stop > target_x_scroll_stop) curr_x_scroll_stop -= 0x180;		
 	}		
@@ -39,8 +38,7 @@ void do_the_scroll_thing(){
 		}
 		high_byte(player0_x) = high_byte(player0_x) - tmp1;
 		high_byte(player1_x) = high_byte(player1_x) - tmp1;
-	}
-	else if (player0_x < 0x0200){ // change x scroll
+	} else if (player0_x < 0x0200){ // change x scroll
 		tmp1 = MSB(player0_x + 0x0200);
 		scroll_x = scroll_x - tmp1;
 		if (tmp1) {
@@ -53,12 +51,10 @@ void do_the_scroll_thing(){
 		high_byte(player0_x) = high_byte(player0_x) + tmp1;
 		high_byte(player1_x) = high_byte(player1_x) + tmp1;
 	}
+}
 
 
-	
-	
-	
-	
+void process_y_scroll() {
 	if ((!dual || twoplayer) && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || nocamlock || nocamlockforced)) {
 			if (exitPortalTimer) exitPortalTimer--;
 			if (player0_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
@@ -82,8 +78,7 @@ void do_the_scroll_thing(){
 				}
 			}
 			if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF; // 2F0 overflows into 300 (add_scroll_y)
-	}
-	else {			//ship stuff
+	} else {			//ship stuff
 		if (high_byte(target_scroll_y) >= 0xf0) {
 			target_scroll_y += 0x10;
 		}
@@ -105,6 +100,11 @@ void do_the_scroll_thing(){
 			high_byte(player1_y) += 1;
 		}
 	}
+}
+
+void do_the_scroll_thing(){
+	process_x_scroll();
+	process_y_scroll();
 
     set_scroll_x(scroll_x);
     set_scroll_y(scroll_y);
