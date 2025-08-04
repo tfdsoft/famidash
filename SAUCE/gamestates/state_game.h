@@ -54,29 +54,33 @@ void decrement_was_on_slope() {
 		currplayer_was_on_slope_counter--;
 		
 		if (!currplayer_was_on_slope_counter) {
-			switch (gamemode) {
-				case 2:
-					switch (currplayer_slope_type) {
-						case SLOPE_22DEG_UP:
-						case SLOPE_22DEG_UP_UD:
-							// !!TODO
-							currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? 0x050 : -0x050);
-							break;
-						case SLOPE_66DEG_UP:
-						case SLOPE_66DEG_UP_UD:
-							// !!TODO
-							currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? -0x150 : 0x150);
-					}
-					break;
-				case 0:
-					switch (currplayer_slope_type) {
-						case SLOPE_22DEG_UP:
-						case SLOPE_22DEG_UP_UD:
-							// !!TODO
-							currplayer_vel_y += ((currplayer_slope_type & SLOPE_UPSIDEDOWN) ? 0x100 : -0x100);
-							break;
-					}
-					break;
+			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL) {
+				// Set carry to 1 if slope is upside down
+				__A__ = (currplayer_slope_type & SLOPE_UPSIDEDOWN) + (256 - SLOPE_UPSIDEDOWN);
+				__A__ = currplayer_table_idx & ~TBLIDX_GRAV;
+				__asm__ ("adc #0 \n tay");
+				// Thus, gravity in the table index is replaced with SLOPE_UPSIDEDOWN
+				switch (gamemode) {
+					case GAMEMODE_BALL:
+						switch (currplayer_slope_type) {
+							case SLOPE_22DEG_UP:
+							case SLOPE_22DEG_UP_UD:
+								currplayer_vel_y += EXIT_SLOPE_BALL_22(get_Y);
+								break;
+							case SLOPE_66DEG_UP:
+							case SLOPE_66DEG_UP_UD:
+								currplayer_vel_y += EXIT_SLOPE_BALL_66(get_Y);
+						}
+						break;
+					case GAMEMODE_CUBE:
+						switch (currplayer_slope_type) {
+							case SLOPE_22DEG_UP:
+							case SLOPE_22DEG_UP_UD:
+								currplayer_vel_y += EXIT_SLOPE_CUBE_22(get_Y);
+								break;
+						}
+						break;
+				}
 			}
 			currplayer_slope_type = 0;
 		}
