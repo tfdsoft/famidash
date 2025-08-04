@@ -1531,47 +1531,8 @@ palBrightTable8:
 .export .ident(.sprintf("palBrightTable%d", I))
 .endrepeat
 
-
-; Quick macros to reserve a value and export it for usage in C
-.macro RESERVE name, size
-	.export .ident(.sprintf("_%s", .string(name))) = .ident(.string(name)) 
-	.ident(.string(name)): .res size
-.endmacro
-.macro RESERVE_ZP name, size
-	.exportzp .ident(.sprintf("_%s", .string(name))) = .ident(.string(name)) 
-	.ident(.string(name)): .res size
-.endmacro
-
-
 .pushseg
 
-.segment "ZEROPAGE"
-
-; NOTE: These must be zero page and adjacent; the code relies on joypad1_down following mouse.
-RESERVE_ZP mouse, 4
-	kMouseZero = 0
-	kMouseButtons = 1
-	kMouseY = 2
-	kMouseX = 3
-RESERVE_ZP joypad1, 3
-; Overlay the second joypad with the mouse memory.
-; If the mouse isn't detected, then we copy data to the joypad struct.
-joypad2 = mouse + 1
-.exportzp _joypad2 := joypad2
-
-; Store a pointer to the current controlling player's joypad
-; for fast access
-RESERVE_ZP controllingplayer, 2
-
-; Bitmask indicating which $4016/7 bit the mouse is on.
-; Must be in ZP for now for timing reasons
-RESERVE_ZP mouse_mask, 1
-
-.if 0
-.segment "BSS"
-; NOTE: These variables are not page-sensitive and can be absolute.
-advance_sensitivity: .res 1  ; Bool.
-.endif
 
 .segment "OAMALIGN"
 

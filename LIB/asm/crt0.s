@@ -30,7 +30,9 @@
     .export _exit,__STARTUP__:absolute=1
 	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
 	.export _PAL_BUF_RAW := PAL_BUF_RAW, _PAL_PTR := PAL_PTR
-	.export _framerate := framerate, _cpuRegion := cpuRegion, _fullRegion := fullRegion
+	.exportzp _framerate := framerate, _cpuRegion := cpuRegion, _fullRegion := fullRegion
+	.exportzp _mouse := mouse, _joypad1 := joypad1, _joypad2 := joypad2
+	.exportzp _controllingplayer := controllingplayer, _mouse_mask := mouse_mask
 	.import push0,popa,popax,_main
 
 ; Linker generated symbols
@@ -90,18 +92,11 @@ PAL_PTR:            .res 2
 SCROLL_X: 			.res 1
 SCROLL_Y: 			.res 1
 SCROLL_X1: 			.res 1
-SCROLL_Y1: 			.res 1
-PAD_STATE: 			.res 2		;one byte per controller
-PAD_STATE2: 		.res 2		;one byte per controller
-PAD_STATEP: 		.res 2
-PAD_STATEP2: 		.res 2
-PAD_STATET: 		.res 2
-PAD_STATET2: 		.res 2
+; SCROLL_Y1: 			.res 1
 PPU_CTRL_VAR: 		.res 1
 PPU_CTRL_VAR1: 		.res 1
 PPU_MASK_VAR: 		.res 1
 RAND_SEED: 			.res 5
-
 TEMP: 				.res 11
 SPRID:				.res 1
 
@@ -129,6 +124,19 @@ VRAM_INDEX:			.res 1
 ; META_PTR2:		.res 2
 ; DATA_PTR:			.res 2
 ; META_VAR:			.res 1
+
+; NOTE: These must be zero page and adjacent; the code relies on joypad1_down following mouse.
+mouse:				.res 4
+joypad1:			.res 3
+joypad2 			:= mouse + 1
+controllingplayer:	.res 2
+mouse_mask:			.res 1
+	kMouseZero = 0
+	kMouseButtons = 1
+	kMouseY = 2
+	kMouseX = 3
+; NOTE: This variable is not page-sensitive and can be absolute.
+; advance_sensitivity: .res 1  ; Bool.
 
 xargs:				.res 4
 noMouse:			.res 1

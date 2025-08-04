@@ -97,9 +97,6 @@ sprite_data = _sprite_data
 .export _auto_fs_updates := auto_fs_updates
 .export _hexToDecOutputBuffer := hexToDecOutputBuffer
 
-; .export _pad = PAD_STATEP
-; .export _pad_new = PAD_STATET
-
 ; Standard for function declaration here:
 ; C function name
 ; .segment declaration

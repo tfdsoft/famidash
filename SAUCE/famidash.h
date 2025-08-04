@@ -70,6 +70,32 @@ int8_t tmpi8;
 #pragma zpsym("tmpptr1")
 #pragma zpsym("tmpptr2")
 
+// Direct access to cc65 tmp / ptr variables,
+// The other part of the aliasing is done in zeropage.inc
+extern uint8_t cc65_tmp1;
+extern uint8_t cc65_tmp2;
+extern uint8_t cc65_tmp3;
+extern uint8_t cc65_tmp4;
+extern uint16_t cc65_ptr1;
+extern uint16_t cc65_ptr2;
+extern uint16_t cc65_ptr3;
+extern uint16_t cc65_ptr4;
+
+extern void * cc65_sp;
+extern uint16_t cc65_sreg;
+
+#pragma zpsym("cc65_tmp1")
+#pragma zpsym("cc65_tmp2")
+#pragma zpsym("cc65_tmp3")
+#pragma zpsym("cc65_tmp4")
+#pragma zpsym("cc65_ptr1")
+#pragma zpsym("cc65_ptr2")
+#pragma zpsym("cc65_ptr3")
+#pragma zpsym("cc65_ptr4")
+
+#pragma zpsym("cc65_sp")
+#pragma zpsym("cc65_sreg")
+
 extern volatile unsigned char VRAM_UPDATE;
 #pragma zpsym ("VRAM_UPDATE")
 
