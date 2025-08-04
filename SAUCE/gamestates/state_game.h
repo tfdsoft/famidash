@@ -275,8 +275,7 @@ void state_game(){
 			}
 			
 			if (!(joypad1.a) && !(joypad1.up)) {
-				// !!TODO
-				if (dashing[0]) currplayer_vel_y = currplayer_gravity ? -0x0100 : 0x0100;
+				if (dashing[0]) currplayer_vel_y = DASH_END_VEL_RESET(currplayer_table_idx);
 				dashing[0] = 0;
 			}
 

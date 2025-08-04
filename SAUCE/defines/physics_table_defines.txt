@@ -115,3 +115,5 @@ fxp8 pw=-1 sz=16 [g] EXIT_SLOPE_BALL_22 -18.75
 #intentionally inverted
 fxp8 pw=-1 [g] EXIT_SLOPE_BALL_66 78.75
 fxp8 pw=-1 [g] EXIT_SLOPE_CUBE_22 -60
+
+fxp8 pw=-1 [g] DASH_END_VEL_RESET 60
