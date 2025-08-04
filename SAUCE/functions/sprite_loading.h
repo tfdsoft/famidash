@@ -1127,7 +1127,7 @@ void sprite_collide(){
 		Generic.width = CUBE_WIDTH[currplayer_mini];
 		Generic.height = CUBE_HEIGHT[currplayer_mini]; 
 	} else {
-		Generic.width = WAVE_WIDTH[currplayer_mini];
+		Generic.width = WAVE_WIDTH;
 		Generic.height = CUBE_HEIGHT[currplayer_mini];	// Why not wave height?
 	}
 
@@ -1211,7 +1211,7 @@ void sprite_collide(){
 	if (gamemode != GAMEMODE_WAVE) {
 		Generic.width = CUBE_WIDTH[currplayer_mini]; 
 	} else {
-		Generic.width = WAVE_WIDTH[currplayer_mini];
+		Generic.width = WAVE_WIDTH;
 	}
 	Generic.height = CUBE_HEIGHT[currplayer_mini];
 }
