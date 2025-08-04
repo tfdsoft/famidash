@@ -41,6 +41,8 @@ const uint16_t sprite_gamemode_adjust_heights_60_MG[] = {0xD004, 0xA004, 0x5004,
 const uint16_t * const sprite_gamemode_adjust_heights[] = {sprite_gamemode_adjust_heights_50_mg, sprite_gamemode_adjust_heights_50_mG, sprite_gamemode_adjust_heights_50_Mg, sprite_gamemode_adjust_heights_50_MG, sprite_gamemode_adjust_heights_60_mg, sprite_gamemode_adjust_heights_60_mG, sprite_gamemode_adjust_heights_60_Mg, sprite_gamemode_adjust_heights_60_MG};
 #define sprite_gamemode_adjust_heights(table_idx) sprite_gamemode_adjust_heights[table_idx & 0x7F]
 
+#pragma rodata-name("XCD_BANK_00")
+
 const uint8_t PAD_HEIGHT_BLUE_lo[] = {0x5B, 0xA5, 0x5B, 0xA5, 0xA0, 0x60, 0xA0, 0x60};
 const uint8_t PAD_HEIGHT_BLUE_hi[] = {0x04, 0xFB, 0x04, 0xFB, 0x03, 0xFC, 0x03, 0xFC};
 #define PAD_HEIGHT_BLUE(table_idx) (lohi_arr16_load(PAD_HEIGHT_BLUE, table_idx))
@@ -174,3 +176,19 @@ const uint8_t JIMSHEATBALL_JUMP_VEL_hi[] = {0xFB, 0xFC};
 const uint8_t JIMSHEATBALL_JUMP_VEL_d4x7_lo[] = {0x82, 0xC4};
 const uint8_t JIMSHEATBALL_JUMP_VEL_d4x7_hi[] = {0xF8, 0xF9};
 #define JIMSHEATBALL_JUMP_VEL_d4x7(framerate) (lohi_arr16_load(JIMSHEATBALL_JUMP_VEL_d4x7, framerate))
+
+const uint8_t MAKE_CUBE_JUMP_HIGHER_lo[] = {0x66, 0x9A, 0x66, 0x9A, 0x80, 0x80, 0x80, 0x80};
+const uint8_t MAKE_CUBE_JUMP_HIGHER_hi[] = {0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00};
+#define MAKE_CUBE_JUMP_HIGHER(table_idx) (lohi_arr16_load(MAKE_CUBE_JUMP_HIGHER, table_idx))
+
+const uint8_t EXIT_SLOPE_BALL_22_lo[] = {0xA0, 0x60, 0xA0, 0x60, 0xB0, 0x50, 0xB0, 0x50};
+const uint8_t EXIT_SLOPE_BALL_22_hi[] = {0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00};
+#define EXIT_SLOPE_BALL_22(table_idx) (lohi_arr16_load(EXIT_SLOPE_BALL_22, table_idx))
+
+const uint8_t EXIT_SLOPE_BALL_66_lo[] = {0x94, 0x6C, 0x94, 0x6C, 0x50, 0xB0, 0x50, 0xB0};
+const uint8_t EXIT_SLOPE_BALL_66_hi[] = {0x01, 0xFE, 0x01, 0xFE, 0x01, 0xFE, 0x01, 0xFE};
+#define EXIT_SLOPE_BALL_66(table_idx) (lohi_arr16_load(EXIT_SLOPE_BALL_66, table_idx))
+
+const uint8_t EXIT_SLOPE_CUBE_22_lo[] = {0xCC, 0x34, 0xCC, 0x34, 0x00, 0x00, 0x00, 0x00};
+const uint8_t EXIT_SLOPE_CUBE_22_hi[] = {0xFE, 0x01, 0xFE, 0x01, 0xFF, 0x01, 0xFF, 0x01};
+#define EXIT_SLOPE_CUBE_22(table_idx) (lohi_arr16_load(EXIT_SLOPE_CUBE_22, table_idx))

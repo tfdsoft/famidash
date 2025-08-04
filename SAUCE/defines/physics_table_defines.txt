@@ -68,6 +68,8 @@ fxp8 tbl uninum be pw=-1 [gm] sprite_gamemode_adjust_heights {
 	-491.25000 -405.00000 -341.25000 -318.75000 -528.75000 -318.75000  0 -217.50000
 }
 
+segment XCD_BANK_00
+
 fxp8 pw=-1 [g] PAD_HEIGHT_BLUE 217.5
 fxp8 pw=-1 [g] ORB_BALL_HEIGHT_BLUE 97.5
 fxp8 pw=-1 [] POS_DUAL_CAP_CHECK 138.75
@@ -106,3 +108,10 @@ fxp8 pw=-2 sz=16 [] JIMSHEATBALL_GRAVITY 731.25
 fxp8 pw=-1 [] JIMSHEATBALL_JUMP_VEL -213.75
 # literally the above / 4 * 7
 fxp8 pw=-1 [] JIMSHEATBALL_JUMP_VEL_d4x7 -374.0625
+
+fxp8 pw=-1 [g] MAKE_CUBE_JUMP_HIGHER -30
+
+fxp8 pw=-1 sz=16 [g] EXIT_SLOPE_BALL_22 -18.75
+#intentionally inverted
+fxp8 pw=-1 [g] EXIT_SLOPE_BALL_66 78.75
+fxp8 pw=-1 [g] EXIT_SLOPE_CUBE_22 -60
