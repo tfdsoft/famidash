@@ -157,7 +157,7 @@ $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/$(NAME).o $(TMPDIR)/crt0.o $(CFG)
 	$(LD65) -C $(CFG) -o $(OUTDIR)/$(NAME).nes $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0.o $(NAME).o nes.lib --dbgfile $(OUTDIR)/famidash.dbg
 	@echo $(NAME).nes created
 
-$(TMPDIR)/crt0.o: GRAPHICS/*.chr LIB/asm/*.s LEVELS/include/lvlset_$(LEVELSET)/*.s METATILES/*.s METATILES/*.inc MUSIC/EXPORTS/lvlset_$(LEVELSET)/*.s MUSIC/EXPORTS/lvlset_$(LEVELSET)/music_bank*.dmc $(TMPDIR)/BUILD_FLAGS.s
+$(TMPDIR)/crt0.o: GRAPHICS/*.chr LIB/asm/*.* LEVELS/include/lvlset_$(LEVELSET)/*.s METATILES/*.s METATILES/*.inc MUSIC/EXPORTS/lvlset_$(LEVELSET)/*.s MUSIC/EXPORTS/lvlset_$(LEVELSET)/music_bank*.dmc $(TMPDIR)/BUILD_FLAGS.s
 	$(CA65) $(CA65_DEFINES) LIB/asm/crt0.s -l $(OUTDIR)/crt0.lst --cpu 6502X -g $(call ca65IncDir,.) $(call ca65IncDir,MUSIC/EXPORTS/lvlset_$(LEVELSET)) $(call ca65IncDir,LEVELS/include/lvlset_$(LEVELSET)) $(call ca65IncDir,$(TMPDIR)) -o $(TMPDIR)/crt0.o
 
 $(TMPDIR)/$(NAME).o: $(TMPDIR)/$(NAME).s
@@ -177,7 +177,7 @@ $(TMPDIR)/$(NAME)_prg.bin $(TMPDIR)/$(NAME)_nsfprg.bin $(TMPDIR)/$(NAME)_meta.bi
 	$(LD65) -C $(NSF_CFG) -o $(TMPDIR)/$(NAME) $(call ld65IncDir,$(TMPDIR)) $(call ld65IncDir,LIB) crt0_nsf.o $(NAME).o nes.lib --dbgfile $(OUTDIR)/famidash_nsf.dbg
 	@echo $(NAME).nsf created
 
-$(TMPDIR)/crt0_nsf.o: NSF/*.* LIB/asm/*.inc MUSIC/EXPORTS/lvlset_$(LEVELSET)/*.s
+$(TMPDIR)/crt0_nsf.o: NSF/*.* LIB/asm/*.* MUSIC/EXPORTS/lvlset_$(LEVELSET)/*.s
 	$(CA65) $(CA65_DEFINES) NSF/crt0.s -l $(OUTDIR)/crt0_nsf.lst --cpu 6502X -g $(call ca65IncDir,.) $(call ca65IncDir,MUSIC/EXPORTS/lvlset_$(LEVELSET)) $(call ca65IncDir,LEVELS/include/lvlset_$(LEVELSET)) $(call ca65IncDir,$(TMPDIR)) $(call ca65IncDir,LIB/asm) -o $(TMPDIR)/crt0_nsf.o
 
 clean:
