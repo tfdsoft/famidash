@@ -318,7 +318,7 @@
 		.incbin "EXPORTS/revolution.lz.bin" ; Size: 5363
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8150 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8161 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -353,7 +353,7 @@
 		.byte $0F ;_________________________ Starting ground color
 		.byte 27 ;__________________________ Level height
 	; Level data
-		.incbin "EXPORTS/dorabaebasic6.lz.bin" ; Size: 3029
+		.incbin "EXPORTS/dorabaebasic6.lz.bin" ; Size: 3040
 
 
 .segment "DAT_BANK_10"	; Total bank size: 8184 bytes
@@ -394,7 +394,7 @@
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3106
 
 
-.segment "DAT_BANK_11"	; Total bank size: 8094 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8189 bytes
 	.export level_data_problematic
 	level_data_problematic:
 	; Header
@@ -430,6 +430,11 @@
 		.byte 27 ;_____________________ Level height
 	; Level data
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3197
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 95
 
 
 .segment "DAT_BANK_12"	; Total bank size: 8146 bytes
@@ -805,7 +810,7 @@
 		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1499
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8192 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8112 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -823,11 +828,6 @@
 		.byte 27 ;___________________ Level height
 	; Level data
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1366
-
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 95
 
 
 .segment "DAT_BANK_21"	; Total bank size: 6541 bytes
