@@ -7,6 +7,9 @@ optionalFlagRegex = \
 		f"{marker}[ \t]*=[ \t]*(?P<{name}>{data})" if data else f"(?P<{name}>{marker})"
 		for marker, name, data in [
 			("sz", "size", r".*"),
+			("vel", "velocity", None),
+			("accel", "acceleration", None),
+			("time", "time", None),
 			("pw", "power", r"-?\d+"),
 			("tbl", "table", None),
 			("uninum", "unifiedNumber", None),
@@ -59,7 +62,7 @@ def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> li
 		num *= 2 ** int(re.match(fxpRegex, source['type'])['fracBits'])	# Convert to fixed point
 		maxNum *= 2 ** int(re.match(fxpRegex, source['type'])['fracBits'])
 
-	if source['power'] == None or parseNum(source['power']) == 0:
+	if parseNum(source['power']) == 0:
 		ntscVal = palVal = num
 		maxVal = maxNum
 	else:
@@ -231,10 +234,20 @@ def processCTableCommand(source : dict) -> str:
 	if len(source['value']) == 1:
 		source['value'] = source['value'][0]
 
+	if source['power'] == None:
+		if source['time']:
+			source['power'] = '1'
+		elif source['velocity']:
+			source['power'] = '-1'
+		elif source['acceleration']:
+			source['power'] = '-2'
+		else:
+			source['power'] = '0'
+
 	flags = {
 		'g': 'g' in source['flags'],
 		'm': 'm' in source['flags'],
-		'r': not (source['power'] == None or int(source['power']) == 0)
+		'r': not (int(source['power']) == 0)
 	}
 
 	size_override = -1 if source['size'] == None else int(source['size'])
