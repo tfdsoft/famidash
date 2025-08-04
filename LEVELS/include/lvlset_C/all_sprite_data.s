@@ -4410,6 +4410,7 @@ sprite_data_fairydust:
   .byte $70,$18,$c0,$02,$bf
   .byte $80,$18,$c0,$02,$84
   .byte $a0,$18,$c0,$02,$8f
+  .byte $a0,$18,$10,$03,$07
   .byte $b0,$18,$c0,$02,$b4
   .byte $d0,$18,$c0,$02,$bf
   .byte $e0,$18,$c0,$02,$84
@@ -4453,6 +4454,7 @@ sprite_data_fairydust:
   .byte $e0,$1b,$d0,$02,$84
   .byte $00,$1c,$d0,$02,$8f
   .byte $10,$1c,$d0,$02,$b4
+  .byte $20,$1c,$60,$03,$1a
   .byte $30,$1c,$d0,$02,$bf
   .byte $40,$1c,$d0,$02,$84
   .byte $60,$1c,$d0,$02,$8f
@@ -4681,6 +4683,7 @@ sprite_data_fairydust:
   .byte $c0,$2e,$d0,$02,$8f
   .byte $d0,$2e,$d0,$02,$b4
   .byte $f0,$2e,$d0,$02,$bf
+  .byte $f8,$2e,$f0,$02,$1b
   .byte $00,$2f,$d0,$02,$84
   .byte $20,$2f,$d0,$02,$8f
   .byte $30,$2f,$d0,$02,$b4

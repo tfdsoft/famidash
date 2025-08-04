@@ -435,6 +435,10 @@
 					offsetX: -16
 				},
 				{
+					coordinates: [751, 17],		//coin
+					offsetX: +8
+				},
+				{
 					coordinates: [761, 19],		//cube portal
 					offsetY: +8
 				},
