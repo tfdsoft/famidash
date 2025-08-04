@@ -424,7 +424,7 @@
 		.incbin "EXPORTS/deadlyclubstep.lz.bin" ; Size: 5288
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8068 bytes
+.segment "DAT_BANK_17"	; Total bank size: 8008 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
