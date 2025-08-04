@@ -139,7 +139,12 @@ def generateOptimizedNumArray(source : dict, flags : dict, value) -> tuple:
 	if type(source['value']) in [list]:
 		maxVal = max(map(parseNum, source['value']), key=abs)
 
-	if flags['g'] and not (flags['m'] or flags['r']):
+	if not (flags['g'] or flags['m'] or flags['r']):
+		value = generateCNumArray(parseNum(value), source, maxVal)
+		numTable = (value[0][0], )
+		comment = "// Constant"
+		argument = None
+	elif flags['g'] and not (flags['m'] or flags['r']):
 		value = generateCNumArray(parseNum(value), source, maxVal)
 		numTable = value[0]
 		comment = "// Depends on gravity"
@@ -167,7 +172,16 @@ def generateOptimizedNumArray(source : dict, flags : dict, value) -> tuple:
 
 def generateCTable(source : dict, numTable : tuple, argument : str, comment : str, size : int, name : str, unifiedNumber : bool, standalone : bool = True) -> str:
 	if (size == 8):
-		return (comment + '\n' if comment else '') + f'const uint8_t {name}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};' + (f'\n#define {name}({argument}) {name}[{argument}]' if standalone else '')
+		outString = []
+		if comment:
+			outString.append(comment)
+		if (bytesEqual(numTable, 0)):
+			outString.append(f'#define {name} 0x{numTable[0]:02X}')
+		else:
+			outString.append(f'const uint8_t {name}[] = {{{", ".join(f"0x{i:02X}" for i in numTable)}}};')
+			if standalone:
+				outString.append(f'#define {name}({argument}) {name}[{argument}]')
+		return "\n".join(outString)
 	elif (size >= 16 and size <= 32):
 		if not unifiedNumber:
 			outString = []

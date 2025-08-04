@@ -74,8 +74,8 @@ void x_movement(){
 	}
 
 	if (gamemode == GAMEMODE_WAVE) { // wave
-		Generic.width = WAVE_WIDTH[currplayer_mini];
-		Generic.height = WAVE_HEIGHT[currplayer_mini];
+		Generic.width = WAVE_WIDTH;
+		Generic.height = WAVE_HEIGHT;
 	} else {
 		Generic.width = CUBE_WIDTH[currplayer_mini];
 		Generic.height = CUBE_HEIGHT[currplayer_mini];
