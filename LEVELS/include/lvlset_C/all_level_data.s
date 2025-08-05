@@ -22,21 +22,7 @@
 		.incbin "EXPORTS/windylandscape.lz.0.bin" ; Size: 8189
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8176 bytes
-	.export level_data_aftercatabath_4
-	level_data_aftercatabath_4:
-	; Level data
-		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8176
-
-
-.segment "DAT_BANK_02"	; Total bank size: 8170 bytes
-	.export level_data_everyend_6
-	level_data_everyend_6:
-	; Level data
-		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8170
-
-
-.segment "DAT_BANK_03"	; Total bank size: 8169 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8168 bytes
 	.export level_data_aftercatabath
 	level_data_aftercatabath:
 	; Header
@@ -53,10 +39,24 @@
 		.byte $0F ;__________________________ Starting ground color
 		.byte 27 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8169
+		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8168
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8139 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8165 bytes
+	.export level_data_everyend_6
+	level_data_everyend_6:
+	; Level data
+		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8165
+
+
+.segment "DAT_BANK_03"	; Total bank size: 8164 bytes
+	.export level_data_aftercatabath_4
+	level_data_aftercatabath_4:
+	; Level data
+		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8164
+
+
+.segment "DAT_BANK_04"	; Total bank size: 8142 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -73,10 +73,10 @@
 		.byte $0F ;______________ Starting ground color
 		.byte 27 ;_______________ Level height
 	; Level data
-		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8139
+		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8142
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8116 bytes
+.segment "DAT_BANK_05"	; Total bank size: 8119 bytes
 	.export level_data_sonicwave
 	level_data_sonicwave:
 	; Header
@@ -93,10 +93,10 @@
 		.byte $0F ;__________________ Starting ground color
 		.byte 27 ;___________________ Level height
 	; Level data
-		.incbin "EXPORTS/sonicwave.lz.0.bin" ; Size: 8116
+		.incbin "EXPORTS/sonicwave.lz.0.bin" ; Size: 8119
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8096 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8094 bytes
 	.export level_data_dearnostalgists
 	level_data_dearnostalgists:
 	; Header
@@ -113,10 +113,10 @@
 		.byte $1C ;______________ Starting ground color
 		.byte 57 ;_______________ Level height
 	; Level data
-		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8096
+		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8094
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8052 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8051 bytes
 	.export level_data_everyend
 	level_data_everyend:
 	; Header
@@ -133,7 +133,7 @@
 		.byte $11 ;__________________ Starting ground color
 		.byte 57 ;___________________ Level height
 	; Level data
-		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8052
+		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8051
 
 
 .segment "DAT_BANK_08"	; Total bank size: 8166 bytes
@@ -321,7 +321,7 @@
 		.incbin "EXPORTS/invisiblelight.lz.bin" ; Size: 6799
 
 
-.segment "DAT_BANK_12"	; Total bank size: 7328 bytes
+.segment "DAT_BANK_12"	; Total bank size: 7335 bytes
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
@@ -343,7 +343,7 @@
 	.export level_data_eon_1
 	level_data_eon_1:
 	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 792
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 799
 
 
 .segment "DAT_BANK_14"	; Total bank size: 7523 bytes
@@ -444,18 +444,18 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5222
 
 
-.segment "DAT_BANK_18"	; Total bank size: 8151 bytes
+.segment "DAT_BANK_18"	; Total bank size: 8158 bytes
 	.export level_data_dearnostalgists_0
 	level_data_dearnostalgists_0:
 	; Level data
-		.incbin "EXPORTS/dearnostalgists.lz.1.bin" ; Size: 5155
+		.incbin "EXPORTS/dearnostalgists.lz.1.bin" ; Size: 5162
 
 
-.segment "DAT_BANK_19"	; Total bank size: 8092 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8095 bytes
 	.export level_data_everyend_7
 	level_data_everyend_7:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4751
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4754
 
 
 .segment "DAT_BANK_1A"	; Total bank size: 7794 bytes
@@ -478,15 +478,15 @@
 		.incbin "EXPORTS/hi.lz.bin" ; Size: 4708
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8107 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 8133 bytes
 	.export level_data_aftercatabath_5
 	level_data_aftercatabath_5:
 	; Level data
-		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4541
+		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4567
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 7857 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 7835 bytes
 	.export level_data_sonicwave_2
 	level_data_sonicwave_2:
 	; Level data
-		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3711
+		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3689

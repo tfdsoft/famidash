@@ -22,7 +22,7 @@
 		.incbin "EXPORTS/dash.lz.0.bin" ; Size: 8153
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8032 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8029 bytes
 	.export level_data_rainbowtylenol
 	level_data_rainbowtylenol:
 	; Header
@@ -39,7 +39,7 @@
 		.byte $02 ;____________________ Starting ground color
 		.byte 27 ;_____________________ Level height
 	; Level data
-		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8032
+		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8029
 
 
 .segment "DAT_BANK_02"	; Total bank size: 7536 bytes
@@ -533,7 +533,7 @@
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3700
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8024 bytes
+.segment "DAT_BANK_15"	; Total bank size: 8032 bytes
 	.export level_data_xstep
 	level_data_xstep:
 	; Header
@@ -552,26 +552,13 @@
 	; Level data
 		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4351
 
-	.export level_data_theoryofeverything
-	level_data_theoryofeverything:
-	; Header
-		.byte song_theory_of_everything ;___ Song ID
-		.byte 0 ;___________________________ Starting game mode
-		.byte 0 ;___________________________ Starting speed
-		.byte 0 ;___________________________ Disable parallax
-		.byte 0 ;___________________________ Force platformer
-		.byte _DECOCLOUD ;__________________ Deco type
-		.byte _SPIKESB ;____________________ Spike set
-		.byte _BLOCKSB ;____________________ Block set
-		.byte _SAWBLADESA ;_________________ Sawblade set
-		.byte $05 ;_________________________ Starting background color
-		.byte $15 ;_________________________ Starting ground color
-		.byte 57 ;__________________________ Level height
+	.export level_data_rainbowtylenol_1
+	level_data_rainbowtylenol_1:
 	; Level data
-		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 3673
+		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3681
 
 
-.segment "DAT_BANK_16"	; Total bank size: 7950 bytes
+.segment "DAT_BANK_16"	; Total bank size: 7957 bytes
 	.export level_data_nightmare
 	level_data_nightmare:
 	; Header
@@ -590,10 +577,23 @@
 	; Level data
 		.incbin "EXPORTS/nightmare.lz.bin" ; Size: 4284
 
-	.export level_data_rainbowtylenol_1
-	level_data_rainbowtylenol_1:
+	.export level_data_theoryofeverything
+	level_data_theoryofeverything:
+	; Header
+		.byte song_theory_of_everything ;___ Song ID
+		.byte 0 ;___________________________ Starting game mode
+		.byte 0 ;___________________________ Starting speed
+		.byte 0 ;___________________________ Disable parallax
+		.byte 0 ;___________________________ Force platformer
+		.byte _DECOCLOUD ;__________________ Deco type
+		.byte _SPIKESB ;____________________ Spike set
+		.byte _BLOCKSB ;____________________ Block set
+		.byte _SAWBLADESA ;_________________ Sawblade set
+		.byte $05 ;_________________________ Starting background color
+		.byte $15 ;_________________________ Starting ground color
+		.byte 57 ;__________________________ Level height
 	; Level data
-		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3666
+		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 3673
 
 
 .segment "DAT_BANK_17"	; Total bank size: 7907 bytes
