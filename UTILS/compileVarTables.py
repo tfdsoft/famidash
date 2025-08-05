@@ -45,7 +45,8 @@ PAL_FRAMERATE = (26601712.5) / 5 / 106392
 
 NTSC_FRAMERATE_APPROX = 60
 # defines PAL rate as the same ratio as real PAL / NTSC, but assuming that NTSC is 60Hz
-PAL_FRAMERATE_APPROX = (26601712.5) / 5 / 106392 * (60 / ((236250000 / 11) / 4 / 89341.5))
+# PAL_FRAMERATE_APPROX = (26601712.5) / 5 / 106392 * (60 / ((236250000 / 11) / 4 / 89341.5))
+PAL_FRAMERATE_APPROX = 50
 
 def generateCNumArray(num : int|float, source : dict, maxNum : int = None) -> list:
 	if not maxNum:
