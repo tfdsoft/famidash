@@ -305,3 +305,8 @@ extern uint8_t PAL_BUF[32];
 extern uint8_t shiftBy4table[16];
 #define shlNibble4(nibble) (idx8_load(shiftBy4table, nibble))
 #define shlNibble12(nibble) (idx8_load(shiftBy4table, nibble), __AX__ <<= 8)
+
+// Result in __AX__
+#define signExtend8to16(value) {__AX__ = 0; __A__ = value; do_if_negative({__asm__("dex");});}
+// The one above compiles optimally, the one below doesn't
+#define signExtend8to16inline(value) (__AX__ = 0, __A__ = value, (__A__ < 0) ? (__AX__ - 0x100) : (__AX__))
