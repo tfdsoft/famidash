@@ -115,7 +115,7 @@ uint8_t sprite_widths[]={
 
 // Offset goes for x to the rigth and for y down, for moving it in the other direction, put a negative value (0x80-0xff) 
 
-uint8_t sprite_x_offset[]={
+int8_t sprite_x_offset[]={
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 00 - 07
 	0x01,	0x01,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 08 - 0F
 	0x04,	0x04,	0x04,	0x04,	0x00,	0x00,	0x00,	0x00,	// 10 - 17
@@ -150,7 +150,7 @@ uint8_t sprite_x_offset[]={
 	0x00,	0x08,	-0x07,	0x00,	0x00,	0x00,	0x00,	0x00,	// F8 - FF
 };
 
-uint8_t sprite_y_offset[]={
+int8_t sprite_y_offset[]={
 	-0x02,	-0x02,	-0x02,	-0x02,	-0x02,	-0x01,	-0x01,	0x00,	// 00 - 07
 	0x04,	0x04,	0x05,	-0x01,	0x00,	0x05,	0x00,	0x00,	// 08 - 0F
 	0x01,	0x01,	0x01,	0x01,	-0x02,	-0x02,	-0x02,	-0x02,	// 10 - 17
@@ -1198,8 +1198,19 @@ void sprite_collide(){
 			Generic2.height = tmp2;	
 			Generic2.width  = tmp9;
 
-			Generic2.x = activesprites_realx[index] + sprite_x_offset[tmp4];
-			Generic2.y = activesprites_realy[index] + sprite_y_offset[tmp4];
+			signExtend8to16(idx8_load(sprite_x_offset, tmp4));
+			cc65_ptr2 = __AX__ + activesprites_realx[index];
+			if (high_byte(cc65_ptr2) != 0)
+				Generic2.x = (high_byte(cc65_ptr2) >= 0x80 ? 0x00 : 0xFF);
+			else
+				Generic2.x = low_byte(cc65_ptr2);
+
+			signExtend8to16(idx8_load(sprite_y_offset, tmp4));
+			cc65_ptr2 = __AX__ + activesprites_realy[index];
+			if (high_byte(cc65_ptr2) != 0)
+				Generic2.y = (high_byte(cc65_ptr2) >= 0x80 ? 0x00 : 0xFF);
+			else
+				Generic2.y = low_byte(cc65_ptr2);
 			
 			if (check_collision()) {
 				sprite_collide_lookup();
