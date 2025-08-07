@@ -77,6 +77,7 @@ void reset_level() {
 	if (!coins_inserted) return;
 	#endif
 
+	scroll_y_subpx = 0;
 	scroll_y = 0x2EF;
 	seam_scroll_y = (0x2EF - 0x78); // [temp]
 	set_scroll_x(scroll_x);

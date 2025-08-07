@@ -57,23 +57,35 @@ void process_x_scroll() {
 void process_y_scroll() {
 	if ((!dual || twoplayer) && (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || nocamlock || nocamlockforced)) {
 			if (exitPortalTimer) exitPortalTimer--;
-			if (player0_y < 0x4000 && (scroll_y > min_scroll_y)){ // change y scroll (upward)
-				tmp1 = MSB(0x4000 - player0_y);
-				if (exitPortalTimer && tmp1 >= (11 - exitPortalTimer)) tmp1 = 11 - exitPortalTimer;
-				scroll_y = sub_scroll_y(tmp1, scroll_y);
+			if (player0_y < 0x4000 && 
+				(scroll_y >= min_scroll_y && (scroll_y_subpx || scroll_y != min_scroll_y))
+				){
+				// change y scroll (upward)
+				cc65_ptr1 = 0x4000 - player0_y;
+				if (exitPortalTimer) {
+					cc65_tmp1 = (11 - exitPortalTimer);
+					if (MSB(cc65_ptr1) >= cc65_tmp1) cc65_ptr1 = (cc65_tmp1) << 8;
+				}
+				scroll_y_subpx -= LSB(cc65_ptr1);
+				do_if_borrow({++high_byte(cc65_ptr1);});
+				scroll_y = sub_scroll_y(MSB(cc65_ptr1), scroll_y);
 
-				high_byte(player0_y) = high_byte(player0_y) + tmp1;
-				high_byte(player1_y) = high_byte(player1_y) + tmp1;
+				player0_y = player1_y = 0x4000;	// This is how actual compensation does it anyway
 			}
 			cap_scroll_y_at_top();
 
-			if (scroll_y < 0x2EF && high_byte(player0_y) >= MSB(0xA000)){ // change y scroll (downward)
-				tmp1 = MSB(player0_y - 0xA000);
-				if (exitPortalTimer && tmp1 >= (11 - exitPortalTimer)) tmp1 = 11 - exitPortalTimer;
-				scroll_y = add_scroll_y(tmp1, scroll_y);
+			if (scroll_y < 0x2EF && high_byte(player0_y) >= MSB(0xA000)){
+				// change y scroll (downward)
+				cc65_ptr1 = player0_y - 0xA000;
+				if (exitPortalTimer) {
+					cc65_tmp1 = (11 - exitPortalTimer);
+					if (MSB(cc65_ptr1) >= cc65_tmp1) cc65_ptr1 = (cc65_tmp1) << 8;
+				}
+				scroll_y_subpx += LSB(cc65_ptr1);
+				do_if_carry({++high_byte(cc65_ptr1);});
+				scroll_y = add_scroll_y(MSB(cc65_ptr1), scroll_y);
 
-				high_byte(player0_y) = high_byte(player0_y) - tmp1;
-				high_byte(player1_y) = high_byte(player1_y) - tmp1;
+				player0_y = player1_y = 0xA000;	// This is how actual compensation does it anyway
 			}
 			cap_scroll_y_at_bottom();
 	} else {			//ship stuff
@@ -83,13 +95,13 @@ void process_y_scroll() {
 		if (target_scroll_y > scroll_y) {
 			scroll_y = add_scroll_y(2, scroll_y);
 			high_byte(player0_y) -= 2;
-			high_byte(player1_y) -= 2;
+			high_byte(player1_y) -= 2;	// !!TODO
 		}
 		if (target_scroll_y < scroll_y) {
 			scroll_y = sub_scroll_y(2, scroll_y);
 			
 			high_byte(player0_y) += 2;
-			high_byte(player1_y) += 2;
+			high_byte(player1_y) += 2;	// !!TODO
 		}
 		cap_scroll_y_at_top();
 		cap_scroll_y_at_bottom();

@@ -1997,7 +1997,7 @@ early_exit:
 .segment "XCD_BANK_04"
 
 .importzp _currplayer_y
-.import _scroll_y, _player_y
+.import _scroll_y, _player_y, _scroll_y_subpx
 
 .export _cap_scroll_y_at_top
 .proc _cap_scroll_y_at_top
@@ -2021,22 +2021,29 @@ doit:
 	sta     _scroll_y+1		;__
 	jsr     __sub_scroll_y_ext
 	jsr     _calculate_linear_scroll_y
-	eor     #$FF
+	eor     #$FF			;__	Make the ADCs into SBCs
 	tay
 
+	lda     _currplayer_y	;
 	sec						;
-	adc     _currplayer_y+1	;	Compensate currplayer_y
-	sta     _currplayer_y+1	;__
-
-	tya
-	sec						;
-	adc     _player_y+1		;	Compensate player_y[0]
+	sbc     _scroll_y_subpx	;
+	sta     _currplayer_y	;	Compensate currplayer_y
+	sta		_player_y+1		;	(Apparently guaranteed to be 0)
+	tya						;
+	adc     _currplayer_y+1	;
+	sta     _currplayer_y+1	;
 	sta     _player_y+1		;__
 
-	tya
+	lda     _player_y+2		;
 	sec						;
-	adc     _player_y+2+1	;	Compensate player_y[1]
+	sbc     _scroll_y_subpx	;
+	sta     _player_y+2		;	Compensate player_y[1]
+	tya						;
+	adc     _player_y+2+1	;
 	sta     _player_y+2+1	;__
+
+	lda     #0
+	sta     _scroll_y_subpx
 
 	; we can't do anything with the high byte of the diff anyway
 
@@ -2048,13 +2055,15 @@ doit:
 .segment "XCD_BANK_04"
 
 .importzp _currplayer_y
-.import _scroll_y
+.import _scroll_y, _player_y, _scroll_y_subpx
 
 .export _cap_scroll_y_at_bottom
 .proc _cap_scroll_y_at_bottom
 check:
+	lda     _scroll_y_subpx	;
+	cmp     #0              ;
 	lda     _scroll_y		;
-	cmp     #<$02F0			;	if (scroll_y > 0x2EF)
+	sbc     #<$02F0			;	if (scroll_y > 0x2EF)
 	lda     _scroll_y+1		;
 	sbc     #>$02F0			;__
 	bcs     doit
@@ -2077,19 +2086,26 @@ doit:
 	jsr     _calculate_linear_scroll_y	;__
 	tay
 
+	lda     _currplayer_y	;
 	clc						;
-	adc     _currplayer_y+1	;	Compensate currplayer_y
-	sta     _currplayer_y+1	;__
-
-	tya
-	clc						;
-	adc     _player_y+1		;	Compensate player_y[0]
+	adc     _scroll_y_subpx	;
+	sta     _currplayer_y	;	Compensate currplayer_y
+	sta		_player_y+1		;	(Apparently guaranteed to be 0)
+	tya						;
+	adc     _currplayer_y+1	;
+	sta     _currplayer_y+1	;
 	sta     _player_y+1		;__
 
-	tya
+	lda     _player_y+2		;
 	clc						;
-	adc     _player_y+2+1	;	Compensate player_y[1]
+	adc     _scroll_y_subpx	;
+	sta     _player_y+2		;	Compensate player_y[1]
+	tya						;
+	adc     _player_y+2+1	;
 	sta     _player_y+2+1	;__
+
+	lda     #0
+	sta     _scroll_y_subpx
 	; we can't do anything with the high byte of the diff anyway
 
 	rts
