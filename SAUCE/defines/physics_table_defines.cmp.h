@@ -117,6 +117,18 @@ const uint8_t SWING_MAX_FALLSPEED_lo[] = {0x06, 0xFA, 0x06, 0xFA, 0x30, 0xD0, 0x
 const uint8_t SWING_MAX_FALLSPEED_hi[] = {0x05, 0xFA, 0x05, 0xFA, 0x04, 0xFB, 0x04, 0xFB};
 #define SWING_MAX_FALLSPEED(table_idx) (lohi_arr16_load(SWING_MAX_FALLSPEED, table_idx))
 
+#pragma rodata-name("XCD_BANK_04")
+
+// Depends on framerate
+const uint8_t SHIP_SCROLL_SPEED_lo[] = {0x66, 0x00};
+#define SHIP_SCROLL_SPEED_hi 0x02
+#define SHIP_SCROLL_SPEED(framerate) ( \
+	__A__ = framerate, \
+	__asm__("tay"), \
+	__asm__("ldx #%b \n lda %v, y", (uint8_t)SHIP_SCROLL_SPEED_hi, SHIP_SCROLL_SPEED_lo), \
+	__AX__ \
+)
+
 #pragma rodata-name("RODATA")
 
 const uint8_t CUBE_GRAVITY_lo[] = {0x9A, 0x66, 0xA0, 0x60, 0x6B, 0x95, 0x6F, 0x91};
