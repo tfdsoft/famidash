@@ -93,15 +93,24 @@ void process_y_scroll() {
 			target_scroll_y += 0x10;
 		}
 		if (target_scroll_y > scroll_y) {
-			scroll_y = add_scroll_y(2, scroll_y);
-			high_byte(player0_y) -= 2;
-			high_byte(player1_y) -= 2;	// !!TODO
+			cc65_ptr1 = SHIP_SCROLL_SPEED(framerate);
+			
+			player0_y = player0_y - cc65_ptr1;
+			player1_y = player1_y - cc65_ptr1;
+
+			scroll_y_subpx += LSB(cc65_ptr1);
+			do_if_carry({++high_byte(cc65_ptr1);});
+			scroll_y = add_scroll_y(MSB(cc65_ptr1), scroll_y);
 		}
 		if (target_scroll_y < scroll_y) {
-			scroll_y = sub_scroll_y(2, scroll_y);
+			cc65_ptr1 = SHIP_SCROLL_SPEED(framerate);
 			
-			high_byte(player0_y) += 2;
-			high_byte(player1_y) += 2;	// !!TODO
+			player0_y = player0_y + cc65_ptr1;
+			player1_y = player1_y + cc65_ptr1;
+
+			scroll_y_subpx -= LSB(cc65_ptr1);
+			do_if_carry({++high_byte(cc65_ptr1);});
+			scroll_y = sub_scroll_y(MSB(cc65_ptr1), scroll_y);
 		}
 		cap_scroll_y_at_top();
 		cap_scroll_y_at_bottom();
