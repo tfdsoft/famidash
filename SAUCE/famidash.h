@@ -261,6 +261,7 @@ int8_t practice_player_2_last_slope_type[MAX_PRACTICE_POINTS];
 
 lohi_arr32_decl(practice_scroll_x, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_scroll_y, MAX_PRACTICE_POINTS);
+uint8_t practice_scroll_y_subpx[MAX_PRACTICE_POINTS];
 lohi_arr16_decl(practice_min_scroll_y, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_seam_scroll_y, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_old_draw_scroll_y, MAX_PRACTICE_POINTS);
@@ -401,6 +402,7 @@ uint8_t parallax_scroll_x;
 uint8_t invincible_counter;
 uint32_t scroll_x; // gotta love massive levels amirite fellas
 uint16_t scroll_y;
+uint8_t scroll_y_subpx;
 uint16_t old_trail_scroll_y;
 uint16_t target_scroll_y;
 //uint16_t reload_target_scroll_y;
