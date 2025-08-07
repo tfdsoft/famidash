@@ -99,6 +99,12 @@ uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
 void cap_scroll_y_at_top();
 
 /**
+ * @brief Caps the Y scroll at 0x2EF
+ */
+void cap_scroll_y_at_bottom();
+
+
+/**
  * @brief Play a raw PCM sample. Hangs the game until done.
  *
  * @note Sample parameters (offset, bank, sample rate) are specified in tables inside the routine and found by the @c sample parameter. 

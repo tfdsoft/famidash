@@ -1992,11 +1992,12 @@ early_exit:
 	RTS
 .endproc
 
+
 ; void cap_scroll_y_at_top();
-.segment "CODE_2"
+.segment "XCD_BANK_04"
 
 .importzp _currplayer_y
-.import _scroll_y
+.import _scroll_y, _player_y
 
 .export _cap_scroll_y_at_top
 .proc _cap_scroll_y_at_top
@@ -2009,7 +2010,7 @@ check:
 	rts
 
 doit:
-	; compensate currplayer_y
+	; compensate currplayer_y and player_y
 	lda     _scroll_y
 	ldx     _scroll_y+1
 	sta     sreg
@@ -2021,9 +2022,74 @@ doit:
 	jsr     __sub_scroll_y_ext
 	jsr     _calculate_linear_scroll_y
 	eor     #$FF
-	sec
-	adc     _currplayer_y+1
-	sta     _currplayer_y+1
+	tay
+
+	sec						;
+	adc     _currplayer_y+1	;	Compensate currplayer_y
+	sta     _currplayer_y+1	;__
+
+	tya
+	sec						;
+	adc     _player_y+1		;	Compensate player_y[0]
+	sta     _player_y+1		;__
+
+	tya
+	sec						;
+	adc     _player_y+2+1	;	Compensate player_y[1]
+	sta     _player_y+2+1	;__
+
+	; we can't do anything with the high byte of the diff anyway
+
+	rts
+.endproc
+
+
+; void cap_scroll_y_at_bottom();
+.segment "XCD_BANK_04"
+
+.importzp _currplayer_y
+.import _scroll_y
+
+.export _cap_scroll_y_at_bottom
+.proc _cap_scroll_y_at_bottom
+check:
+	lda     _scroll_y		;
+	cmp     #<$02F0			;	if (scroll_y > 0x2EF)
+	lda     _scroll_y+1		;
+	sbc     #>$02F0			;__
+	bcs     doit
+	rts
+
+doit:
+	; compensate currplayer_y
+	ldx     _scroll_y
+	ldy     _scroll_y+1
+
+	lda     #<$02EF			;
+	sta     sreg			;
+	sta     _scroll_y		;	scroll_y = 0x2EF
+	lda     #>$02EF			;
+	sta     sreg+1			;
+	sta     _scroll_y+1		;__
+
+	tya									;
+	jsr     __sub_scroll_y_ext			;	Get difference
+	jsr     _calculate_linear_scroll_y	;__
+	tay
+
+	clc						;
+	adc     _currplayer_y+1	;	Compensate currplayer_y
+	sta     _currplayer_y+1	;__
+
+	tya
+	clc						;
+	adc     _player_y+1		;	Compensate player_y[0]
+	sta     _player_y+1		;__
+
+	tya
+	clc						;
+	adc     _player_y+2+1	;	Compensate player_y[1]
+	sta     _player_y+2+1	;__
 	; we can't do anything with the high byte of the diff anyway
 
 	rts
