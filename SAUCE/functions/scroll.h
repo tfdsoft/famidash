@@ -67,19 +67,17 @@ void process_y_scroll() {
 			}
 			cap_scroll_y_at_top();
 
-			
-			if (high_byte(player0_y) >= MSB(0xA000)){ // change y scroll (upward)
+			if (scroll_y < 0x2EF && high_byte(player0_y) >= MSB(0xA000)){ // change y scroll (downward)
 				tmp1 = MSB(player0_y - 0xA000);
 				if (exitPortalTimer && tmp1 >= (11 - exitPortalTimer)) tmp1 = 11 - exitPortalTimer;
 				scroll_y = add_scroll_y(tmp1, scroll_y);
-				if (high_byte(scroll_y) < MSB(0x300)) {
-					high_byte(player0_y) = high_byte(player0_y) - tmp1;
-					high_byte(player1_y) = high_byte(player1_y) - tmp1;
-				}
+
+				high_byte(player0_y) = high_byte(player0_y) - tmp1;
+				high_byte(player1_y) = high_byte(player1_y) - tmp1;
 			}
-			if (high_byte(scroll_y) >= MSB(0x300)) scroll_y = 0x2EF; // 2F0 overflows into 300 (add_scroll_y)
+			cap_scroll_y_at_bottom();
 	} else {			//ship stuff
-		if (high_byte(target_scroll_y) >= 0xf0) {
+		if (low_byte(target_scroll_y) >= 0xf0) {
 			target_scroll_y += 0x10;
 		}
 		if (target_scroll_y > scroll_y) {
@@ -94,11 +92,7 @@ void process_y_scroll() {
 			high_byte(player1_y) += 2;
 		}
 		cap_scroll_y_at_top();
-		while (scroll_y > 0x2EF) {		//down
-			scroll_y = sub_scroll_y(1, scroll_y);
-			high_byte(player0_y) += 1;
-			high_byte(player1_y) += 1;
-		}
+		cap_scroll_y_at_bottom();
 	}
 }
 
