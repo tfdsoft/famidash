@@ -30,6 +30,7 @@
     .export _exit,__STARTUP__:absolute=1
 	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
 	.export _PAL_BUF_RAW := PAL_BUF_RAW, _PAL_PTR := PAL_PTR
+	.export _trueFramerate := trueFramerate, _trueCpuRegion := trueCpuRegion, _trueFullRegion := trueFullRegion
 	.exportzp _framerate := framerate, _cpuRegion := cpuRegion, _fullRegion := fullRegion
 	.exportzp _mouse := mouse, _joypad1 := joypad1, _joypad2 := joypad2
 	.exportzp _controllingplayer := controllingplayer, _mouse_mask := mouse_mask
@@ -135,8 +136,6 @@ mouse_mask:			.res 1
 	kMouseButtons = 1
 	kMouseY = 2
 	kMouseX = 3
-; NOTE: This variable is not page-sensitive and can be absolute.
-; advance_sensitivity: .res 1  ; Bool.
 
 xargs:				.res 4
 noMouse:			.res 1
@@ -144,7 +143,14 @@ noMouse:			.res 1
 framerate:			.res 1	;	1 = ~60Hz (NTSC), 0 = ~50Hz (PAL, Dendy)
 cpuRegion:			.res 1	;	1 = NTSC speed (also on Dendy), 0 = PAL speed
 fullRegion:			.res 1	;	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = WTF
- 
+
+.segment "BSS"
+trueFramerate:		.res 1
+trueCpuRegion:		.res 1
+trueFullRegion:		.res 1
+; NOTE: This variable is not page-sensitive and can be absolute.
+; advance_sensitivity: .res 1  ; Bool.
+
 ;
 ; NES 2.0 header
 ;
@@ -333,13 +339,17 @@ clearVRAM:
 	lda #%00000110
 	sta <PPU_MASK_VAR
 
-	jsr	getTVSystem	;	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = unknown
-	sta	fullRegion	;__
-	eor	#3			;__ 0 = unknown, 1 = Dendy, 2 = PAL, 3 = NTSC
-	cmp	#3			;	Set framerate to 1 if value <= NTSC
-	rol	framerate	;__	(so 50Hz systems - PAL, Dendy and unknown get 0)
-	and	#1			;	Set framerate to the last bit of the value
-	sta	cpuRegion	;__	(so 1 = NTSC / Dendy, 0 = PAL / unknown)
+	jsr	getTVSystem		;	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = unknown
+	sta	fullRegion		;
+	sta	trueFramerate	;__
+	eor	#3				;__ 0 = unknown, 1 = Dendy, 2 = PAL, 3 = NTSC
+	cmp	#3				;
+	rol	trueFramerate	;	Set framerate to 1 if value <= NTSC
+	cmp	#3				;	(so 50Hz systems - PAL, Dendy and unknown get 0)
+	rol	framerate		;__
+	and	#1				;	Set framerate to the last bit of the value
+	sta	cpuRegion		;	(so 1 = NTSC / Dendy, 0 = PAL / unknown)
+	sta	trueCpuRegion	;__
 	;__	As a result of the code above, an unknown region will behave like PAL
 
 	jsr _ppu_off
