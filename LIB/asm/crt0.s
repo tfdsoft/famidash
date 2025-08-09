@@ -341,7 +341,7 @@ clearVRAM:
 
 	jsr	getTVSystem		;	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = unknown
 	sta	fullRegion		;
-	sta	trueFramerate	;__
+	sta	trueFullRegion	;__
 	eor	#3				;__ 0 = unknown, 1 = Dendy, 2 = PAL, 3 = NTSC
 	cmp	#3				;
 	rol	trueFramerate	;	Set framerate to 1 if value <= NTSC

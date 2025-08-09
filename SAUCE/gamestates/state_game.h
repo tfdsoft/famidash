@@ -113,6 +113,11 @@ void state_game(){
 	lastgcolortype = 0xFF;
 	lastbgcolortype = 0xFF;
 
+	if (trueFramerate == SPEED_PAL && options & fullpalspeed)
+		framerate = SPEED_PAL;
+	else
+		framerate = SPEED_NTSC;
+
 	// set_tile_banks();
 	
 	nocamlock = 0;
