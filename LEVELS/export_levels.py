@@ -27,6 +27,7 @@ import pyjson5
 import aart_lz
 import json
 import hashlib
+import xml.etree.ElementTree as eltree
 from collections.abc import Iterable
 
 own_path = pathlib.Path(sys.path[0]).resolve()
@@ -110,7 +111,41 @@ def split_rle_data_into_compressed_banks(data : Iterable[int], first_meta_ptr : 
 		data = data[og_size:]
 		meta_ptr += 1
 	return out_data
-	
+
+
+def getCsvDataFromTmx(fileHandle, layerNames) -> list:
+	tree = eltree.parse(fileHandle)
+	root = tree.getroot()
+
+	# get tileset data
+	tilesetFirstGIDs = [int(child.attrib.get('firstgid')) for child in root if child.tag == 'tileset']
+
+	# get layer data
+	layers = [child for child in root if child.tag == 'layer']
+	layers = [elem for elem in layers if elem.attrib.get('name', '') in layerNames]
+	layers.sort(key=lambda x : int(x.attrib.get('id')))
+	# assume the first layer
+	csvData = [data for data in layers[0] if data.attrib.get('encoding') == 'csv']
+	# assume the first data structure
+	lines = list(csv.reader(csvData[0].text.strip().splitlines()))
+
+	# get local tileset IDs
+	lookup = {0: -1}
+	for line in lines:
+		idx = 0
+		while idx < len(line):
+			if not line[idx]:
+				line.pop(idx)
+				continue
+			tile = int(line[idx])
+			if lookup.get(tile, None) == None:
+				i = 0
+				while i < len(tilesetFirstGIDs) and tilesetFirstGIDs[i+1] <= tile:
+					i += 1
+				lookup[tile] = tile - tilesetFirstGIDs[i]
+			line[idx] = lookup[tile]
+			idx += 1
+	return lines
 
 def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : pathlib.Path) -> tuple:
 	# data for all levels, each gets a tuple, they are then binpacked
@@ -137,8 +172,14 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 	for metadata in levels:
 		level = metadata['level']
 		lines = []
-		with open(folder / f"{level}_.csv") as f:
-			lines = list(csv.reader(f))
+		try:
+			with open(folder / f"{level}.tmx") as f:
+				lines = getCsvDataFromTmx(f, ['', 'BG'])
+			inputFileType = "TMX"
+		except:
+			with open(folder / f"{level}_.csv") as f:
+				lines = list(csv.reader(f))
+			inputFileType = "CSV"
 		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
 		rle_data = vertical_rle_with_single_tile(lines)
 		cached_data_path = (include_path / "EXPORTS" / f"{level}.lz.bin")
@@ -162,14 +203,14 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 		):
 			lz_data = cached_data_path.read_bytes()
 			if (level_cache.get("lz_hash") == sha256(lz_data)):
-				print(f'Loading cached level: {level}; ', end = "", flush = True)
+				print(f'Loading cached {inputFileType} level: {level}; ', end = "", flush = True)
 			else:
-				print(f'Loading level: {level}; ', end = "", flush = True)
+				print(f'Loading {inputFileType} level: {level}; ', end = "", flush = True)
 				lz_data = aart_lz.compress(rle_data)
 				cached_data_path.write_bytes(lz_data)
 				level_cache = {}
 		else:
-			print(f'Loading level: {level}; ', end = "", flush = True)
+			print(f'Loading {inputFileType} level: {level}; ', end = "", flush = True)
 			lz_data = aart_lz.compress(rle_data)
 			cached_data_path.write_bytes(lz_data)
 			level_cache = {}
@@ -350,9 +391,14 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSet
 	for num, metadata in enumerate(levels):
 		level = metadata['level']
 		localOffsetSettings = getDictFromOffsetSettings(metadata.get('objectOffsets', []), globalOffsetSettingDict)
-		lines = []
-		with open(folder / f"{level}_SP.csv") as f:
-			lines = list(csv.reader(f))
+		try:
+			with open(folder / f"{level}.tmx") as f:
+				lines = getCsvDataFromTmx(f, ['SP'])
+			inputFileType = "TMX"
+		except:
+			with open(folder / f"{level}_SP.csv") as f:
+				lines = list(csv.reader(f))
+			inputFileType = "CSV"
 		level_data = []
 		rows = len(lines)
 		columns = len(lines[0])
@@ -395,7 +441,7 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSet
 
 		level_data.append([0xff]) # add terminator byte
 		all_data.append((level, len(level_data) * 5 - 4, level_data, num))
-		print(f"Sprite data for {level} is {len(level_data) * 5 - 4} bytes long")
+		print(f"Sprite data for {level} from {inputFileType} is {len(level_data) * 5 - 4} bytes long")
 
 	banked_data = []
 	for (id, length, data, num) in all_data:
