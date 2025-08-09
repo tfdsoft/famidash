@@ -140,7 +140,7 @@ def getCsvDataFromTmx(fileHandle, layerNames) -> list:
 			tile = int(line[idx])
 			if lookup.get(tile, None) == None:
 				i = 0
-				while i < len(tilesetFirstGIDs) and tilesetFirstGIDs[i+1] <= tile:
+				while i+1 < len(tilesetFirstGIDs) and tilesetFirstGIDs[i+1] <= tile:
 					i += 1
 				lookup[tile] = tile - tilesetFirstGIDs[i]
 			line[idx] = lookup[tile]
