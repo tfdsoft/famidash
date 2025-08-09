@@ -47,7 +47,9 @@ CODE_BANK("XCD_BANK_02")
 #if !__THE_ALBUM
 #include "defines/nametable/menunametable_XCD02.c"
 #include "menustates/instructions.c"
-#include "menustates/settings.c"
+	#if !__VS_SYSTEM
+	#include "menustates/settings.c"
+	#endif
 #else
 #include "defines/album_nametable/menunametable_XCD02.c"
 #endif
