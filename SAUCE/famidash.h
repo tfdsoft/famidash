@@ -194,6 +194,7 @@ uint8_t options;
 #define jumpsound 0x02
 #define platformer 0x04
 #define debugtoggle 0x08
+#define fullpalspeed 0x10
 
 #define sfxoff 0x40
 #define musicoff 0x80

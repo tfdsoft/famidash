@@ -3,8 +3,19 @@ void set_settings();
 
 #include "defines/charmap/mainmenu_charmap.h"
 
-#define firstSettingY	5
-#define settingCount	8
+#define firstSettingY	3
+#define settingCount	9
+
+#define SETTINGS_BTN_2PLAYER	0
+#define SETTINGS_BTN_P1CTRLP2	1
+#define SETTINGS_BTN_SFX		2
+#define SETTINGS_BTN_MUSIC		3
+#define SETTINGS_BTN_VFX		4
+#define SETTINGS_BTN_CLICKSFX	5
+#define SETTINGS_BTN_XTRATRAILS	6
+#define SETTINGS_BTN_AUTOCHKPTS	7
+#define SETTINGS_BTN_PALFULLSPD	8
+#define SETTINGS_BTN_WIPESAVE	9
 
 void state_settings() {
 	mmc3_set_2kb_chr_bank_0(0xFF);
@@ -14,7 +25,12 @@ void state_settings() {
 
 	vram_adr(NAMETABLE_A);
 	vram_unrle(settingscreen);
+
 	one_vram_buffer('c', NTADR_A(4, firstSettingY));	// settingvalue is set to 0
+
+	if (framerate == SPEED_NTSC) {
+		one_vram_buffer_horz_repeat(0xFF, 27-6+1, NTADR_A(6, firstSettingY+16));
+	}
 
 	settingvalue = 0;
 
@@ -27,30 +43,35 @@ void state_settings() {
 		mouse_and_cursor();
 		 // read the first controller
 		
-		if (twoplayer) one_vram_buffer('g', NTADR_A(26, firstSettingY));
-		else one_vram_buffer('f', NTADR_A(26, firstSettingY));
+		if (twoplayer) one_vram_buffer('g', NTADR_A(26, firstSettingY+(SETTINGS_BTN_2PLAYER*2)));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+(SETTINGS_BTN_2PLAYER*2)));
 
-		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, firstSettingY+2));
-		else one_vram_buffer('f', NTADR_A(26, firstSettingY+2));
+		if (options & oneptwoplayer) one_vram_buffer('g', NTADR_A(26, firstSettingY+(SETTINGS_BTN_P1CTRLP2*2)));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+(SETTINGS_BTN_P1CTRLP2*2)));
 
-		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, firstSettingY+4));
-		else one_vram_buffer('g', NTADR_A(26, firstSettingY+4));
+		if (options & sfxoff) one_vram_buffer('f', NTADR_A(26, firstSettingY+(SETTINGS_BTN_SFX*2)));
+		else one_vram_buffer('g', NTADR_A(26, firstSettingY+(SETTINGS_BTN_SFX*2)));
 
-		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, firstSettingY+6));
-		else one_vram_buffer('g', NTADR_A(26, firstSettingY+6));
+		if (options & musicoff) one_vram_buffer('f', NTADR_A(26, firstSettingY+(SETTINGS_BTN_MUSIC*2)));
+		else one_vram_buffer('g', NTADR_A(26, firstSettingY+(SETTINGS_BTN_MUSIC*2)));
 
-		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, firstSettingY+8));
-		else one_vram_buffer('f', NTADR_A(26, 13));
+		if (options & jumpsound) one_vram_buffer('g', NTADR_A(26, firstSettingY+(SETTINGS_BTN_CLICKSFX*2)));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+(SETTINGS_BTN_CLICKSFX*2)));
 
-		if (viseffects) one_vram_buffer('g', NTADR_A(26, firstSettingY+10));
-		else one_vram_buffer('f', NTADR_A(26, firstSettingY+10));
+		if (viseffects) one_vram_buffer('g', NTADR_A(26, firstSettingY+(SETTINGS_BTN_VFX*2)));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+(SETTINGS_BTN_VFX*2)));
 
-		if (trails == 1) one_vram_buffer('g', NTADR_A(26, firstSettingY+12));
-		else if (trails == 2) one_vram_buffer('*', NTADR_A(26, firstSettingY+12));
-		else one_vram_buffer('f', NTADR_A(26, firstSettingY+12));
+		if (trails == 1) one_vram_buffer('g', NTADR_A(26, firstSettingY+(SETTINGS_BTN_XTRATRAILS*2)));
+		else if (trails == 2) one_vram_buffer('*', NTADR_A(26, firstSettingY+(SETTINGS_BTN_XTRATRAILS*2)));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+(SETTINGS_BTN_XTRATRAILS*2)));
 
-		if (auto_practicepoints) one_vram_buffer('g', NTADR_A(26, firstSettingY+14));
-		else one_vram_buffer('f', NTADR_A(26, firstSettingY+14));
+		if (auto_practicepoints) one_vram_buffer('g', NTADR_A(26, firstSettingY+(SETTINGS_BTN_AUTOCHKPTS*2)));
+		else one_vram_buffer('f', NTADR_A(26, firstSettingY+(SETTINGS_BTN_AUTOCHKPTS*2)));
+
+		if (framerate != SPEED_NTSC) {
+			if (options & fullpalspeed) one_vram_buffer('g', NTADR_A(26, firstSettingY+(SETTINGS_BTN_PALFULLSPD*2)));
+			else one_vram_buffer('f', NTADR_A(26, firstSettingY+(SETTINGS_BTN_PALFULLSPD*2)));
+		}
 
 		tmp1 = settingvalue;
 
@@ -88,13 +109,21 @@ void state_settings() {
 		}
 
 		if (joypad1.press & (PAD_RIGHT | PAD_DOWN)) {
-			if (settingvalue == settingCount) { settingvalue = 0;  }
-			else { settingvalue++;   }
+			if (settingvalue == settingCount)
+				settingvalue = 0;
+			else if (framerate == SPEED_NTSC && settingvalue == SETTINGS_BTN_PALFULLSPD-1)
+				settingvalue = SETTINGS_BTN_PALFULLSPD+1;	// Skip full PAL speed on NTSC
+			else
+				settingvalue++;
 		}
 
 		if (joypad1.press & (PAD_LEFT | PAD_UP)) {
-			if (settingvalue == 0) { settingvalue = settingCount;  }
-			else { settingvalue--;   }
+			if (settingvalue == 0)
+				settingvalue = settingCount;
+			else if (framerate == SPEED_NTSC && settingvalue == SETTINGS_BTN_PALFULLSPD+1)
+			 	settingvalue = SETTINGS_BTN_PALFULLSPD-1;	// Skip full PAL speed on NTSC
+			else
+				settingvalue--;
 		}
 
 		if (tmp1 != settingvalue) {
@@ -127,23 +156,25 @@ const uint8_t xbgmlookuptable[];
 
 void set_settings() {
 	switch (settingvalue) {
-		case 0: // oneptwoplayer
+		case SETTINGS_BTN_2PLAYER:
 			twoplayer ^= 1; break;
-		case 1: // oneptwoplayer
+		case SETTINGS_BTN_P1CTRLP2:
 			options ^= oneptwoplayer; break;
-		case 2: // sfxoff
+		case SETTINGS_BTN_SFX:
 			options ^= sfxoff; break;
-		case 3: // musicoff
+		case SETTINGS_BTN_MUSIC:
 			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgmlookuptable[menu_music]); } break;
-		case 4: // jumpsound
+		case SETTINGS_BTN_CLICKSFX:
 			options ^= jumpsound; break;
-		case 5:
+		case SETTINGS_BTN_VFX:
 			viseffects ^= 1; if (!viseffects) trails = 0; break;
-		case 6:
+		case SETTINGS_BTN_XTRATRAILS:
 			trails = trails == 2 ? 0 : trails + 1; break;					
-		case 7:
+		case SETTINGS_BTN_AUTOCHKPTS:
 			auto_practicepoints ^= 1; break;
-		case 8:
+		case SETTINGS_BTN_PALFULLSPD:
+			options ^= fullpalspeed; break;
+		case SETTINGS_BTN_WIPESAVE:
 			if (joypad1.a && joypad1.press_start) {
 				setdefaultoptions();
 				__asm__("JMP ($FFFC)");	// restart the game lmao	
