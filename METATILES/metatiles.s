@@ -8,7 +8,7 @@
 .export _metatiles_attr := metatiles_attr
 .export _metatiles_coll := metatiles_coll
 
-.segment "XCD_BANK_02"	; same one as draw_screen, where they are used
+.segment _BACKGROUND_RENDER_BANK
 
 metatiles_top_left:
 .repeat METATILES_COUNT, I

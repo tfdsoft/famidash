@@ -1,4 +1,4 @@
-CODE_BANK_PUSH("XCD_BANK_04")
+CODE_BANK_PUSH(SPRITE_RENDER_BANK)
 
 void reset_level();
 void minus15y();

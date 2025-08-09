@@ -1,4 +1,4 @@
-#pragma rodata-name (push, "XCD_BANK_02")
+#pragma rodata-name (push, DIALOG_BOX_BANK)
 
 #include "menus/h/DialogBox.h"
 #include "defines/charmap/dialogbox_charmap.h"

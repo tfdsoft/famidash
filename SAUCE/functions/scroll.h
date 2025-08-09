@@ -1,5 +1,5 @@
 
-CODE_BANK_PUSH("XCD_BANK_04")
+CODE_BANK_PUSH(SCROLL_BANK)
 
 
 #define player0_x currplayer_x

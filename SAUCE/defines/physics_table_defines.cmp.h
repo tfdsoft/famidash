@@ -71,7 +71,7 @@ const uint8_t NEG_DUAL_CAP_CHECK_lo[] = {0x3A, 0xB0};
 	__AX__ \
 )
 
-#pragma rodata-name("XCD_BANK_01")
+#pragma rodata-name(MOVEMENT_BANK)
 
 const uint8_t JUMP_VEL_lo[] = {0x53, 0xAD, 0x3A, 0xC6, 0x70, 0x90, 0x30, 0xD0};
 const uint8_t JUMP_VEL_hi[] = {0xF9, 0x06, 0xFA, 0x05, 0xFA, 0x05, 0xFB, 0x04};
@@ -117,7 +117,7 @@ const uint8_t SWING_MAX_FALLSPEED_lo[] = {0x06, 0xFA, 0x06, 0xFA, 0x30, 0xD0, 0x
 const uint8_t SWING_MAX_FALLSPEED_hi[] = {0x05, 0xFA, 0x05, 0xFA, 0x04, 0xFB, 0x04, 0xFB};
 #define SWING_MAX_FALLSPEED(table_idx) (lohi_arr16_load(SWING_MAX_FALLSPEED, table_idx))
 
-#pragma rodata-name("XCD_BANK_04")
+#pragma rodata-name(SCROLL_BANK)
 
 // Depends on framerate
 const uint8_t SHIP_SCROLL_SPEED_lo[] = {0x66, 0x00};

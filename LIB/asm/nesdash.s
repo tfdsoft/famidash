@@ -107,7 +107,7 @@ sprite_data = _sprite_data
 ; the function itself
 
 ; void __fastcall__ oam_meta_spr_flipped(uint8_t x,uint8_t y,const void *data);
-.segment "XCD_BANK_05"
+.segment _PLAYER_RENDER_BANK
 
 .export __oam_meta_spr_flipped
 .proc __oam_meta_spr_flipped
@@ -576,7 +576,7 @@ single_rle_byte:
 
 
 
-.segment "XCD_BANK_02"	; dep of: _draw_screen
+.segment _BACKGROUND_RENDER_BANK
 
 .proc writeToCollisionMap
 	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
@@ -628,7 +628,7 @@ single_rle_byte:
 
 
 ; [Not used in C]
-.segment "XCD_BANK_02"	; dep of: _draw_screen
+.segment _BACKGROUND_RENDER_BANK
 
 .import _scroll_y
 
@@ -682,7 +682,7 @@ noSeam:
 .if !__THE_ALBUM
 
 ; char draw_screen();
-.segment "XCD_BANK_02"
+.segment _BACKGROUND_RENDER_BANK
 
 .global dsrt_fr1O : zp
 
@@ -1596,7 +1596,7 @@ ntAddrHiTbl:
 
 
 ; void __fastcall__ load_ground(uint8_t id);
-.segment "XCD_BANK_06"
+.segment _GROUND_BANK
 
 .import _ground
 
@@ -1731,7 +1731,7 @@ ntAddrHiTbl:
 .endproc
 
 ; void movement();
-.segment "XCD_BANK_01"
+.segment _MOVEMENT_BANK
 
 .if !__THE_ALBUM
 .import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _wave_movement
@@ -1994,7 +1994,7 @@ early_exit:
 
 
 ; void cap_scroll_y_at_top();
-.segment "XCD_BANK_04"
+.segment _SCROLL_BANK
 
 .importzp _currplayer_y
 .import _scroll_y, _player_y, _scroll_y_subpx
@@ -2052,7 +2052,7 @@ doit:
 
 
 ; void cap_scroll_y_at_bottom();
-.segment "XCD_BANK_04"
+.segment _SCROLL_BANK
 
 .importzp _currplayer_y
 .import _scroll_y, _player_y, _scroll_y_subpx
@@ -2210,7 +2210,7 @@ end:
 
 .if !__THE_ALBUM
 
-.segment "XCD_BANK_05"
+.segment _PLAYER_RENDER_BANK
 
 .import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y, _player_mini
 .import _ballframe, _robotframe, _robotjumpframe, _spiderframe
@@ -2280,7 +2280,7 @@ drawplayer_center_offsets:
 	.byte	4,	4,	4,	4,	4,	4,	4,	4,	4; mini 
 
 ; void drawplayerone();
-.segment "XCD_BANK_05"
+.segment _PLAYER_RENDER_BANK
 
 .export _drawplayerone
 .proc _drawplayerone
@@ -2783,7 +2783,7 @@ drawplayer_center_offsets:
 drawplayer_common := _drawplayerone::common
 
 ; void drawplayertwo();
-.segment "XCD_BANK_05"
+.segment _PLAYER_RENDER_BANK
 
 .import _CUBE2, _SHIP2, _BALL2, _ROBOT2, _UFO2, _SPIDER2, _WAVE2, _SWING2
 .import _MINI_CUBE2, _MINI_SHIP2, _MINI_BALL2, _MINI_ROBOT2, _MINI_UFO2, _MINI_SPIDER2, _MINI_WAVE2, _MINI_SWING2
@@ -3869,7 +3869,7 @@ bank:
 
 
 ; void display_attempt_counter (uint8_t zeroChr, uintptr_t ppu_address);
-.segment "XCD_BANK_06"	; Same as state_lvldone	
+.segment _LVLDONE_BANK
 
 .import _attemptCounter
 
@@ -3942,7 +3942,7 @@ bank:
 .if !__THE_ALBUM
 
 ; void draw_dialog_box(const char * data);
-.segment "XCD_BANK_02"
+.segment _DIALOG_BOX_BANK
 
 .import popax	; Unfortunately
 .import _paletteSettings

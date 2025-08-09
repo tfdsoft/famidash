@@ -32,7 +32,7 @@
 #include "mouse.h"
 //#include "mouse.c"
 #pragma rodata-name (pop)
-#pragma rodata-name (push, "XCD_BANK_06")
+#pragma rodata-name (push, GROUND_BANK)
 #include "grounddata.h"
 #include "groundlist.h"
 #pragma rodata-name (pop)

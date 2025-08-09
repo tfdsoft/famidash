@@ -1,5 +1,5 @@
 
-CODE_BANK_PUSH("XCD_BANK_01")
+CODE_BANK_PUSH(MOVEMENT_BANK)
 
 void wave_eject();
 void wave_movement(){

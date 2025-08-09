@@ -25,7 +25,7 @@ lineParseRegex = re.compile(r'^[\t ]*(?!#|$)' +
 			r'?\[(?P<flags>\w*)\][\t ]+(?P<name>\w+)[\t ]+' +
 			r'(?:{(?s:(?P<mltLnValue>.*?))}.*|(?P<value>.*))',
 		
-		r'(?P<segCmd>segment)[\t ]+(?P<segVal>\w+)'
+		r'(?P<segCmd>segment)[\t ]+(?P<segVal>[\w"]+)'
 	]) + '$', re.MULTILINE)		# matches each command
 
 fxpRegex = re.compile(r'^fxp(?P<fracBits>\d+)')	# matches fxp type, gets the amount of bits
@@ -331,7 +331,7 @@ def processCommand(source : dict) -> str:
 	if source['type']:
 		return processCTableCommand(source)
 	elif source['segCmd']:
-		return f'#pragma rodata-name("{source["segVal"]}")'
+		return f'#pragma rodata-name({source["segVal"]})'
 
 if __name__ == "__main__":
 	import sys, argparse

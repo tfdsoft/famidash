@@ -1,4 +1,4 @@
-CODE_BANK_PUSH("XCD_BANK_06")
+CODE_BANK_PUSH(LVLDONE_BANK)
 
 void checkcointimer();
 void checkcoinproceed();
