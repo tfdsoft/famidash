@@ -41,6 +41,14 @@
 #define TBLIDX_MINI	0b010
 #define	TBLIDX_NTSC	0b100
 
+// applies to both framerate and CPU region
+#define SPEED_PAL	0
+#define SPEED_NTSC	1
+
+#define REGION_NTSC		0
+#define REGION_PAL		1
+#define REGION_DENDY	2
+
 // Zeropage variables
 #pragma bss-name("ZEROPAGE")
 
@@ -300,9 +308,11 @@ unsigned char music_queue[MAX_SONG_QUEUE_SIZE];
 // Regular NES RAM
 #pragma bss-name("BSS")
 
+extern uint8_t trueFramerate;
+extern uint8_t trueCpuRegion;
+extern uint8_t trueFullRegion;
+
 uint8_t last_gameState;
-
-
 
 uint16_t player_x[2];
 uint16_t player_y[2];
