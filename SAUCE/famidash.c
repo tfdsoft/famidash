@@ -156,6 +156,9 @@ void main(){
 			
 
 		}
+		framerate = trueFramerate;
+		cpuRegion = trueCpuRegion;
+		fullRegion = trueFullRegion;
 		nmi_fs_updates_on();
 		if (!forceNoFadeOut) pal_fade_out();
 		mmc3_disable_irq();
