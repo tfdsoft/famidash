@@ -3,13 +3,8 @@ void set_settings();
 
 #include "defines/charmap/mainmenu_charmap.h"
 
-#if !__VS_SYSTEM
 #define firstSettingY	5
 #define settingCount	8
-#else	// Despite settings not even being used in the VS version?
-#define	firstSettingY	7
-#define settingCount	7
-#endif
 
 void state_settings() {
 	mmc3_set_2kb_chr_bank_0(0xFF);
@@ -54,14 +49,11 @@ void state_settings() {
 		else if (trails == 2) one_vram_buffer('*', NTADR_A(26, firstSettingY+12));
 		else one_vram_buffer('f', NTADR_A(26, firstSettingY+12));
 
-	#if !__VS_SYSTEM
 		if (auto_practicepoints) one_vram_buffer('g', NTADR_A(26, firstSettingY+14));
 		else one_vram_buffer('f', NTADR_A(26, firstSettingY+14));
-	#endif
 
 		tmp1 = settingvalue;
 
-	#if !__VS_SYSTEM
 		if (mouse.left_press) {
 			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
 				if (mouse.y >= 0x24 && mouse.y <= 0x2C) {
@@ -94,7 +86,6 @@ void state_settings() {
 			}
 
 		}
-		#endif
 
 		if (joypad1.press & (PAD_RIGHT | PAD_DOWN)) {
 			if (settingvalue == settingCount) { settingvalue = 0;  }
@@ -143,11 +134,7 @@ void set_settings() {
 		case 2: // sfxoff
 			options ^= sfxoff; break;
 		case 3: // musicoff
-			#if __VS_SYSTEM
-			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(idx8_load(xbgmlookuptable, newrand() & 31)); } break;
-			#else
 			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgmlookuptable[menu_music]); } break;
-			#endif
 		case 4: // jumpsound
 			options ^= jumpsound; break;
 		case 5:
@@ -155,10 +142,8 @@ void set_settings() {
 		case 6:
 			trails = trails == 2 ? 0 : trails + 1; break;					
 		case 7:
-	#if !__VS_SYSTEM
 			auto_practicepoints ^= 1; break;
 		case 8:
-	#endif
 			if (joypad1.a && joypad1.press_start) {
 				setdefaultoptions();
 				__asm__("JMP ($FFFC)");	// restart the game lmao	
