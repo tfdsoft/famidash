@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 32
+#define COMMUNITY_LEVEL_COUNT 31
 
 #define level_sonar 0
 #define level_darkparadise 1
@@ -12,7 +12,7 @@
 #define level_ninox 3
 #define level_lookatthislevel 4
 #define level_subzero 5
-#define level_fofiifofiifofii 6
+#define level_fofii_fofii_fofii 6
 #define level_pyrophoric 7
 #define level_oceane 8
 #define level_generationretro 9
@@ -37,4 +37,3 @@
 #define level_sonicblaster 28
 #define level_hell 29
 #define level_futurefunk 30
-#define level_test4 31

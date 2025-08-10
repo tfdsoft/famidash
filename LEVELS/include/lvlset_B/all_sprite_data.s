@@ -1733,7 +1733,7 @@ sprite_data_subzero:
   .byte $ff
 
 .segment "DAT_BANK_22"
-sprite_data_fofiifofiifofii:
+sprite_data_fofii_fofii_fofii:
   .byte $00,$00,$70,$03,$bf
   .byte $00,$00,$88,$03,$fd
   .byte $40,$00,$f0,$02,$fe
@@ -19471,8 +19471,4 @@ sprite_data_futurefunk:
   .byte $00,$b9,$00,$02,$06
   .byte $30,$b9,$f0,$01,$06
   .byte $10,$ba,$f0,$01,$0f
-  .byte $ff
-
-.segment "DAT_BANK_00"
-sprite_data_test4:
   .byte $ff

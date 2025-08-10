@@ -125,7 +125,7 @@
 			startingGroundColor: 0x01
 		},
 		{
-			level: "fofiifofiifofii",
+			level: "fofii_fofii_fofii",
 			upperText: "FOFII",
 			lowerText: "FOFII FOFII",
 			decoType: "DECO1",
@@ -659,22 +659,6 @@
 					offsetX: +8
 				},			
 			]
-		},
-		{
-			level: "test4",
-			lowerText: "TEST4",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "A",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_sonic_blaster",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x11,
-			startingGroundColor: 0x11,
-			parallaxDisable: false
 		},
 	],
 	globalObjectOffsets: [
