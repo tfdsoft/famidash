@@ -33,8 +33,8 @@
 #		segment: sets the segment for the following data
 #		Arguments: the bank to set, set to RODATA in the beginning
 
-int [m] CUBE_WIDTH 0x0F 0x04
-int [m] CUBE_HEIGHT 0x0F 0x03
+int [m] CUBE_WIDTH 0x0F 0x08
+int [m] CUBE_HEIGHT 0x0F 0x07
 
 int [] WAVE_WIDTH 0x04
 int [] WAVE_HEIGHT 0x04

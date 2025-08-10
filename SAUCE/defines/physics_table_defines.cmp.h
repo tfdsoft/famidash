@@ -3,11 +3,11 @@
 
 
 // Depends on mini
-const uint8_t CUBE_WIDTH[] = {0x0F, 0x04};
+const uint8_t CUBE_WIDTH[] = {0x0F, 0x08};
 #define CUBE_WIDTH(mini) CUBE_WIDTH[mini]
 
 // Depends on mini
-const uint8_t CUBE_HEIGHT[] = {0x0F, 0x03};
+const uint8_t CUBE_HEIGHT[] = {0x0F, 0x07};
 #define CUBE_HEIGHT(mini) CUBE_HEIGHT[mini]
 
 // Constant
