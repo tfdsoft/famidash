@@ -184,7 +184,7 @@ _sprite_list_bank:
 _level_lengths_lo:
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($000155)		; dearnostalgists
-	.byte .lobyte($0000A0)		; invisiblelight
+	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
 	.byte .lobyte($00008E)		; thermodynamix
@@ -210,7 +210,7 @@ _level_lengths_lo:
 _level_lengths_md:
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($000155)		; dearnostalgists
-	.byte .hibyte($0000A0)		; invisiblelight
+	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
 	.byte .hibyte($00008E)		; thermodynamix
@@ -236,7 +236,7 @@ _level_lengths_md:
 _level_lengths_hi:
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($000155)		; dearnostalgists
-	.byte .bankbyte($0000A0)		; invisiblelight
+	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep
 	.byte .bankbyte($00008E)		; thermodynamix

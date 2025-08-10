@@ -301,7 +301,7 @@
 		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6811
 
 
-.segment "DAT_BANK_10"	; Total bank size: 7705 bytes
+.segment "DAT_BANK_10"	; Total bank size: 7678 bytes
 	.export level_data_invisiblelight
 	level_data_invisiblelight:
 	; Header
@@ -318,7 +318,7 @@
 		.byte $0F ;_______________ Starting ground color
 		.byte 57 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/invisiblelight.lz.bin" ; Size: 6799
+		.incbin "EXPORTS/invisiblelight.lz.bin" ; Size: 6772
 
 
 .segment "DAT_BANK_12"	; Total bank size: 7335 bytes
