@@ -3,18 +3,18 @@
 
 
 // Depends on mini
-const uint8_t CUBE_WIDTH[] = {0x0F, 0x08};
+const uint8_t CUBE_WIDTH[] = {0x0F, 0x04};
 #define CUBE_WIDTH(mini) CUBE_WIDTH[mini]
 
 // Depends on mini
-const uint8_t CUBE_HEIGHT[] = {0x0F, 0x07};
+const uint8_t CUBE_HEIGHT[] = {0x0F, 0x03};
 #define CUBE_HEIGHT(mini) CUBE_HEIGHT[mini]
 
 // Constant
-#define WAVE_WIDTH 0x08
+#define WAVE_WIDTH 0x04
 
 // Constant
-#define WAVE_HEIGHT 0x08
+#define WAVE_HEIGHT 0x04
 
 // These tables have been generated in big-endian.
 // Use the corresponding macros to fetch data.

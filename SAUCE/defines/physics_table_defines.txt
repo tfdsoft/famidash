@@ -33,11 +33,11 @@
 #		segment: sets the segment for the following data
 #		Arguments: the bank to set, set to RODATA in the beginning
 
-int [m] CUBE_WIDTH 0x0F 0x08
-int [m] CUBE_HEIGHT 0x0F 0x07
+int [m] CUBE_WIDTH 0x0F 0x04
+int [m] CUBE_HEIGHT 0x0F 0x03
 
-int [] WAVE_WIDTH 0x08
-int [] WAVE_HEIGHT 0x08
+int [] WAVE_WIDTH 0x04
+int [] WAVE_HEIGHT 0x04
 
 fxp8 tbl uninum be vel [] CUBE_SPEED {
 	166.0181582 133.8912134 206.4516129 249.5126706 306.9544365 85.78125 # 1, .5, 2, 3, 4, Slow
