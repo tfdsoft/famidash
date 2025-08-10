@@ -11,10 +11,10 @@ const uint8_t CUBE_HEIGHT[] = {0x0F, 0x07};
 #define CUBE_HEIGHT(mini) CUBE_HEIGHT[mini]
 
 // Constant
-#define WAVE_WIDTH 0x04
+#define WAVE_WIDTH 0x08
 
 // Constant
-#define WAVE_HEIGHT 0x04
+#define WAVE_HEIGHT 0x08
 
 // These tables have been generated in big-endian.
 // Use the corresponding macros to fetch data.
