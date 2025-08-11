@@ -1,4 +1,4 @@
-To add / edit music, edit MODULES/MODULES/music_master.dnm in Dn-FamiTracker 0.5.0.2; it's also possible to add music via FamiStudio 4.3.0..4.3.3 in the MODULES/MODULES/music_master.fms file.
+To add / edit music, edit MODULES/MODULES/music_master.dnm in Dn-FamiTracker 0.5.0.2; it's also possible to add music via FamiStudio >= 4.4.2 in the MODULES/MODULES/music_master.fms file.
 
 When adding / editing anything in the modules, add it to the changelog and describe it in exact detail. If you edited something and didn't add it to the changelog, @alexmush will personally shit your pants.
 
@@ -9,7 +9,7 @@ IT IS NOT RECOMMENDED FOR 2 PEOPLE TO WORK SIMULTANEOUSLY ON THE .dnm, SINCE MER
 You can, however, add new songs easily in FamiStudio to merge 2 diverging branches.
 
 OPEN THE MODULE IN DN-FT 0.5.0.1 OR NEWER. 0.5.0.0 BREAKS SHIT
-DO NOT USE FamiStudio 4.4.0 OR NEWER. ITS DPCM EXPORTS ARE DIFFERENT AND ARE CURRENTLY NOT SUPPORTED BY THIS SCRIPT.
+DO NOT USE FamiStudio 4.4.0 OR 4.4.1. ITS DPCM EXPORTS ARE DIFFERENT. USE VERSION 4.4.2 OR GREATER.
 
 .dnm modules are imported into FamiStudio after they're done, so please do not use unsupported by FS effects (full list at https://famistudio.org/doc/import/#famitracker-text-or-binary)
 
@@ -21,7 +21,7 @@ If you worked in Deeznuts-FT:
 	1. Copy the song into MODULES/music_master.dnm
 	2. While still in Dn-FT, export MODULES/music_master.dnm as .txt into the INTERMEDIATES folder
 	3. Run the adjust_ft_txt.py script (run it anywhere)
-	4. Import ONLY THE SONGS AND INSTRUMENTS YOU HAVE ADDED/MODIFIED into FamiStudio 4.3.x.
+	4. Import ONLY THE SONGS AND INSTRUMENTS YOU HAVE ADDED/MODIFIED into FamiStudio 4.4.2.
 	5. Hand-correct things that FS gave warnings about.
 
 After this, the same precautions and actions follow, no matter where you worked before:

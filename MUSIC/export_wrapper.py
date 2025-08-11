@@ -70,12 +70,12 @@ if __name__ == "__main__":
 		fsVer = fsVer[0]*1000_000 + fsVer[1]*1000 + fsVer[2]
 		return fsVer
 
-	verifyFSVer = lambda fsVer : fsVer >= 400_300_0 and fsVer < 400_400_0	# 4.4.0 has broken some things
+	verifyFSVer = lambda fsVer : fsVer >= 400_400_2	# 4.4.0 and 4.4.1 are broken lmoa
 
-	def getFSFromFlatpak(flatpak):
+	def getFSFromFlatpak(flatpak):	# still unused due to Flatpak FS not accepting cmdline args
 		proc = subprocess.run([flatpak, '--version'], capture_output=True)
 		if (proc.returncode == 0):
-			# Search for org.famistudio.FamiStudio >= 4.3.0
+			# Search for org.famistudio.FamiStudio >= 4.4.2
 			flatpakAppName = 'org.famistudio.FamiStudio'
 			flatpakList = subprocess.run(['flatpak', 'list', '--columns=application,version'], capture_output=True)
 			if (proc.returncode == 0 and len(flatpakList.stdout.decode())):
@@ -83,7 +83,7 @@ if __name__ == "__main__":
 				flatpakList = [i.split() for i in flatpakList.stdout.decode().splitlines()]
 				flatpakFSList = list(filter(lambda x : len(x) == 2 and x[0] == 'org.famistudio.FamiStudio' and verifyFSVer(getFSVer(x[1])), flatpakList))
 				if verbose:
-					print(f'List of FamiStudio >= 4.3.0 from flatpak instance at "{flatpak}":')
+					print(f'List of FamiStudio >= 4.4.2 from flatpak instance at "{flatpak}":')
 					print(flatpakFSList)
 				return flatpakFSList
 

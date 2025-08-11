@@ -295,7 +295,7 @@ def exportMusicBank(bin_, fsCmd, modulePath, exportPath, dpcmidx, dpcmAlignerNam
         asmExportStem = f"{exportStemPrefix}_{bank}"
         asmExportPath = exportPath / f"{asmExportStem}.s"
 
-        proc = subprocess.run([*fsCmd, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', f'-export-songs:{dpcmidx},{idxs}'], capture_output=True)
+        proc = subprocess.run([*fsCmd, modulePath, 'famistudio-asm-export', asmExportPath, '-famistudio-asm-format:ca65', f'-export-songs:{dpcmidx},{idxs}', 'famistudio-asm-dpcm-export-mode:minimum'], capture_output=True)
         output = proc.stdout.decode()
         checkErr(proc)
 
@@ -357,7 +357,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     parser.add_argument('-f', '--famistudioCommand', required=True, nargs="+",
-                help='Command to launch FamiStudio >= 4.3.0')
+                help='Command to launch FamiStudio >= 4.4.2')
     parser.add_argument('-m', '--metadata', type=pathlib.Path, required=True,
                 help='Path to json5 file with music metadata specifications')
     parser.add_argument('-o', '--outputFolder', type=pathlib.Path, required=True,
@@ -390,11 +390,8 @@ if __name__ == "__main__":
     fsVer = re.search(famistudioHelpRegex, proc.stdout.decode())['version']
     fsVer = [int(x) for x in fsVer.split(".")]
     fsVer = fsVer[0]*1000_000 + fsVer[1]*1000 + fsVer[2]
-    if (fsVer < 400_300_0):
-        print("FamiStudio is older than 4.3.0, please upgrade to version 4.3.X.")
-        exit(1)
-    elif (fsVer >= 400_400_0): # DPCM exports got borked lmoa
-        print("FamiStudio is newer than 4.4.0, please downgrade to version 4.3.X.")
+    if (fsVer < 400_400_2):
+        print("FamiStudio is older than 4.4.2, please upgrade to version 4.4.2.")
         exit(1)
 
     # Get FamiStudio text file
