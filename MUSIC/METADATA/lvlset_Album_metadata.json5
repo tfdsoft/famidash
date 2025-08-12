@@ -224,13 +224,6 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
-			fmsSongName: "Back on Track Full",
-			upperText: "BACK ON",
-			lowerText: "TRACK FULL",
-			originalArtist: "DJVI",
-			coveringArtist: ["SeaGlowingPro", "aquamarine.gay"]
-		},
-		{
 			fmsSongName: "Beast Mode (GDW Cut)",
 			upperText: "BEAST MODE",
 			lowerText: "GDW CUT",
@@ -280,13 +273,6 @@
 			coveringArtist: "sussysy",
 		},
 		{
-			fmsSongName: "Clubstep Full",
-			upperText: "CLUBSTEP",
-			lowerText: "FULL VERSION",
-			originalArtist: "Dj-Nate",
-			coveringArtist: ["SeaGlowingPro", "cloud54"]
-		},
-		{
 			fmsSongName: "clutterfunk 2",
 			lowerText: "CLUTTERFUNK 2",
 			originalArtist: "Waterflame",
@@ -313,22 +299,8 @@
 			coveringArtist: "NerdBoy628",
 		},
 		{
-			fmsSongName: "Dry Out Full",
-			upperText: "DRY OUT",
-			lowerText: "FULL VERSION",
-			originalArtist: "DJVI",
-			coveringArtist: ["SeaGlowingPro", "UserSniper"]
-		},
-		{
-			fmsSongName: "eighto",
-			lowerText: "EIGHTO",
-			originalArtist: "Jomekka",
-			coveringArtist: "sussysy",
-		},
-		{
 			fmsSongName: "eighto full",
-			upperText: "EIGHTO",
-			lowerText: "FULL VERSION",
+			lowerText: "EIGHTO",
 			originalArtist: "Jomekka",
 			coveringArtist: "sussysy",
 		},
@@ -434,15 +406,8 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
-			fmsSongName: "infernoplex",
-			lowerText: "INFERNOPLEX",
-			originalArtist: "Dimrain47",
-			coveringArtist: "cloud54",
-		},
-		{
 			fmsSongName: "Infernoplex full",
-			upperText: "INFERNOPLEX",
-			lowerText: "FULL VERSION",
+			lowerText: "INFERNOPLEX",
 			originalArtist: "Dimrain47",
 			coveringArtist: ["cloud54", "SeaGlowingPro"]
 		},
@@ -470,16 +435,9 @@
 			lowerText: "JACK RUSSEL",
 			originalArtist: "Bossfight",
 			coveringArtist: "NerdBoy628",
-		},
+		},	
 		{
-			fmsSongName: "Jumper Full",
-			upperText: "JUMPER",
-			lowerText: "FULL VERSION",
-			originalArtist: "Waterflame",
-			coveringArtist: ["SeaGlowingPro", "Zenith302", "zukinnyk", "UserSniper"]
-		},		
-		{
-			fmsSongName: "just right",
+			fmsSongName: "Just Right Full",
 			lowerText: "JUST RIGHT",
 			originalArtist: ["Tessa Violet", "dan harrison b."],
 			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
@@ -526,12 +484,6 @@
 			fmsSongName: "Mayhem",
 			lowerText: "MAYHEM",
 			originalArtist: "Crafty Jumper",
-			coveringArtist: "Crafty Jumper",
-		},
-		{
-			fmsSongName: "Megalovania",
-			lowerText: "MEGALOVANIA",
-			originalArtist: "Toby Fox",
 			coveringArtist: "Crafty Jumper",
 		},
 		{
@@ -643,15 +595,8 @@
 			coveringArtist: "ElAngel378",
 		},	
 		{
-			fmsSongName: "stalemate",
-			lowerText: "STALEMATE",
-			originalArtist: "KayoszX",
-			coveringArtist: "ElAngel378",
-		},	
-		{
 			fmsSongName: "Stalemate Full",
-			upperText: "STALEMATE",
-			lowerText: "FULL VERSION",
+			lowerText: "STALEMATE",
 			originalArtist: "KayoszX",
 			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
 		},	
@@ -686,13 +631,6 @@
 			lowerText: "THERMODYNAMIX",
 			originalArtist: "Dj-Nate",
 			coveringArtist: "Vikrinox",
-		},	
-		{
-			fmsSongName: "Time Machine Full",
-			upperText: "TIME MACHINE",
-			lowerText: "FULL VERSION",
-			originalArtist: "Waterflame",
-			coveringArtist: ["SeaGlowingPro", "Zenith302", "Vikrinox", "alexmush"]
 		},		
 		{
 			fmsSongName: "Tiny Tunes",
