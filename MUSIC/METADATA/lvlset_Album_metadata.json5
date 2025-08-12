@@ -128,7 +128,7 @@
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING 2",
 			originalArtist: "Dj-Nate",
-			coveringArtist: "Vikrinox",
+			coveringArtist: ["UserSniper","Abstract"]
 		},
 		{
 			fmsSongName: "Geometrical Dominator",
