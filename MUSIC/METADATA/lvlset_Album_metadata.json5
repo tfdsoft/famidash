@@ -256,20 +256,6 @@
 			coveringArtist: "NerdBoy628",
 		},
 		{
-			fmsSongName: "Can't Electroman",
-			upperText: "CANT",
-			lowerText: "ELECTROMAN",
-			originalArtist: "DJVI",
-			coveringArtist: "Crafty Jumper",
-		},
-		{
-			fmsSongName: "Can't Let Go remix",
-			upperText: "CANT LET GO",
-			lowerText: "MIX",
-			originalArtist: "DJVI",
-			coveringArtist: "Crafty Jumper",
-		},
-		{
 			fmsSongName: "Chaoz Airflow",
 			lowerText: "CHAOZ AIRFLOW",
 			originalArtist: "ParagonX9",
@@ -430,13 +416,6 @@
 			coveringArtist: ["Crafty Jumper", "ElAngel378"]
 		},
 		{
-			fmsSongName: "Ground to Krusty Krab",
-			upperText: "GROUND TO",
-			lowerText: "KRUSTY KRAB",
-			originalArtist: "SeaGlowingPro",
-			coveringArtist: "SeaGlowingPro",
-		},
-		{
 			fmsSongName: "Ground to Space",
 			upperText: "GROUND TO",
 			lowerText: "SPACE",
@@ -513,13 +492,6 @@
 			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
 		},		
 		{
-			fmsSongName: "Just Right Full",
-			upperText: "JUST RIGHT",
-			lowerText: "FULL VERSION",
-			originalArtist: ["Tessa Violet", "dan harrison b."],
-			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
-		},		
-		{
 			fmsSongName: "kesobomb",
 			lowerText: "KESOBOMB",
 			originalArtist: "Rymdkraft",
@@ -556,13 +528,6 @@
 			lowerText: "MAGIC TOUCH",
 			originalArtist: "Romos",
 			coveringArtist: "SeaGlowingPro",
-		},
-		{
-			fmsSongName: "Mayhem Short",
-			upperText: "MAYHEM",
-			lowerText: "SHORT VERSION",
-			originalArtist: "Crafty Jumper",
-			coveringArtist: "Crafty Jumper",
 		},
 		{
 			fmsSongName: "Mayhem",
@@ -728,12 +693,6 @@
 			lowerText: "THERMODYNAMIX",
 			originalArtist: "Dj-Nate",
 			coveringArtist: "Vikrinox",
-		},	
-		{
-			fmsSongName: "Thoughts",
-			lowerText: "THOUGHTS",
-			originalArtist: "Crafty Jumper",
-			coveringArtist: "Crafty Jumper",
 		},	
 		{
 			fmsSongName: "Time Machine Full",
