@@ -43,6 +43,7 @@ void death_animation() {
 	nmi_fs_updates_off();
 }
 
+CODE_BANK_PUSH(RESETLEVEL_BANK)
 void reset_level() {
 	nmi_fs_updates_on();
 
@@ -147,7 +148,7 @@ void reset_level() {
 	}
 	update_currplayer_table_idx();
 
-	unrle_first_screen();
+	crossPRGBankJump0(unrle_first_screen);	// For bank saving
 
 	if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
 	ppu_on_all();
@@ -159,3 +160,5 @@ void reset_level() {
 	}		
 	nmi_fs_updates_off();
 }
+
+CODE_BANK_POP()

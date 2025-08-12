@@ -133,6 +133,7 @@ void state_game(){
 	currplayer = 0;
 	controllingplayer = &joypad1;
 //	current_transition_timer_length = 0;
+	mmc3_set_prg_bank_1(GET_BANK(reset_level));
 	reset_level();
 	update_currplayer_table_idx();
 
@@ -643,8 +644,9 @@ void state_game(){
 		if (DEBUG_MODE) gray_line();
 		if (!DEBUG_MODE && kandodebugmode != 2) {
 		if (high_byte(player_x[0]) > 0x20) {
-			if (cube_data[0] & 1 || cube_data[1] & 1) { 
+			if (cube_data[0] & 1 || cube_data[1] & 1) {
 				death_animation();
+				mmc3_set_prg_bank_1(GET_BANK(reset_level));
 				reset_level();
 				#if __VS_SYSTEM
 					if (!coins_inserted) {

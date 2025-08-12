@@ -288,8 +288,8 @@ clearRAM:
 
 	jsr initialize_mapper
 
-    ; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
-	jsr	copydata	; Sets all the initial values of variables
+	; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
+	; jsr	copydata	; Sets all the initial values of variables
 
     lda #<(__C_STACK_START__+__C_STACK_SIZE__) ;changed
     sta	sp
