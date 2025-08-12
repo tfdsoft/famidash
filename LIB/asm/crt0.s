@@ -381,7 +381,6 @@ finish:
 
 	.include "all_level_data.s"
 	.include "all_sprite_data.s"
-;	.include "level_header.s"
 	.include "all_level_table.s"
 	
 	.include "mapper.s"
