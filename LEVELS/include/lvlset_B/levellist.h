@@ -17,6 +17,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// funnygameholiday
 	HARDER,	// fireaura
 	HARDER,	// rainbowdust
+	HARDER,	// thesteamworks
 	INSANE,	// dorabaebasic10
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
@@ -51,6 +52,7 @@ const uint8_t stars_list[] = {
 	7,	// funnygameholiday
 	7,	// fireaura
 	7,	// rainbowdust
+	7,	// thesteamworks
 	8,	// dorabaebasic10
 	8,	// subtleoddities
 	8,	// powertrip

@@ -20,6 +20,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_funnygameholiday)
 	.byte .lobyte(level_data_fireaura)
 	.byte .lobyte(level_data_rainbowdust)
+	.byte .lobyte(level_data_thesteamworks)
 	.byte .lobyte(level_data_dorabaebasic10)
 	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_powertrip)
@@ -53,6 +54,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_funnygameholiday)
 	.byte .hibyte(level_data_fireaura)
 	.byte .hibyte(level_data_rainbowdust)
+	.byte .hibyte(level_data_thesteamworks)
 	.byte .hibyte(level_data_dorabaebasic10)
 	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_powertrip)
@@ -86,6 +88,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_funnygameholiday))
 	.byte .lobyte(.bank(level_data_fireaura))
 	.byte .lobyte(.bank(level_data_rainbowdust))
+	.byte .lobyte(.bank(level_data_thesteamworks))
 	.byte .lobyte(.bank(level_data_dorabaebasic10))
 	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_powertrip))
@@ -104,28 +107,31 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_futurefunk))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_subtleoddities_0)
-	.byte .lobyte(level_data_highlife_1)
-	.byte .lobyte(level_data_deathmoon_2)
-	.byte .lobyte(level_data_motion_3)
-	.byte .lobyte(level_data_futurefunk_4)
+	.byte .lobyte(level_data_thesteamworks_0)
+	.byte .lobyte(level_data_subtleoddities_1)
+	.byte .lobyte(level_data_highlife_2)
+	.byte .lobyte(level_data_deathmoon_3)
+	.byte .lobyte(level_data_motion_4)
 	.byte .lobyte(level_data_futurefunk_5)
+	.byte .lobyte(level_data_futurefunk_6)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_subtleoddities_0)
-	.byte .hibyte(level_data_highlife_1)
-	.byte .hibyte(level_data_deathmoon_2)
-	.byte .hibyte(level_data_motion_3)
-	.byte .hibyte(level_data_futurefunk_4)
+	.byte .hibyte(level_data_thesteamworks_0)
+	.byte .hibyte(level_data_subtleoddities_1)
+	.byte .hibyte(level_data_highlife_2)
+	.byte .hibyte(level_data_deathmoon_3)
+	.byte .hibyte(level_data_motion_4)
 	.byte .hibyte(level_data_futurefunk_5)
+	.byte .hibyte(level_data_futurefunk_6)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_subtleoddities_0))
-	.byte .lobyte(.bank(level_data_highlife_1))
-	.byte .lobyte(.bank(level_data_deathmoon_2))
-	.byte .lobyte(.bank(level_data_motion_3))
-	.byte .lobyte(.bank(level_data_futurefunk_4))
+	.byte .lobyte(.bank(level_data_thesteamworks_0))
+	.byte .lobyte(.bank(level_data_subtleoddities_1))
+	.byte .lobyte(.bank(level_data_highlife_2))
+	.byte .lobyte(.bank(level_data_deathmoon_3))
+	.byte .lobyte(.bank(level_data_motion_4))
 	.byte .lobyte(.bank(level_data_futurefunk_5))
+	.byte .lobyte(.bank(level_data_futurefunk_6))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_sonar)
@@ -143,6 +149,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_funnygameholiday)
 	.byte .lobyte(sprite_data_fireaura)
 	.byte .lobyte(sprite_data_rainbowdust)
+	.byte .lobyte(sprite_data_thesteamworks)
 	.byte .lobyte(sprite_data_dorabaebasic10)
 	.byte .lobyte(sprite_data_subtleoddities)
 	.byte .lobyte(sprite_data_powertrip)
@@ -176,6 +183,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_funnygameholiday)
 	.byte .hibyte(sprite_data_fireaura)
 	.byte .hibyte(sprite_data_rainbowdust)
+	.byte .hibyte(sprite_data_thesteamworks)
 	.byte .hibyte(sprite_data_dorabaebasic10)
 	.byte .hibyte(sprite_data_subtleoddities)
 	.byte .hibyte(sprite_data_powertrip)
@@ -209,6 +217,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_funnygameholiday))
 	.byte .lobyte(.bank(sprite_data_fireaura))
 	.byte .lobyte(.bank(sprite_data_rainbowdust))
+	.byte .lobyte(.bank(sprite_data_thesteamworks))
 	.byte .lobyte(.bank(sprite_data_dorabaebasic10))
 	.byte .lobyte(.bank(sprite_data_subtleoddities))
 	.byte .lobyte(.bank(sprite_data_powertrip))
@@ -245,6 +254,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B0)		; funnygameholiday
 	.byte .lobyte($0000BF)		; fireaura
 	.byte .lobyte($0000AB)		; rainbowdust
+	.byte .lobyte($0000CC)		; thesteamworks
 	.byte .lobyte($000097)		; dorabaebasic10
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($0000C0)		; powertrip
@@ -280,6 +290,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B0)		; funnygameholiday
 	.byte .hibyte($0000BF)		; fireaura
 	.byte .hibyte($0000AB)		; rainbowdust
+	.byte .hibyte($0000CC)		; thesteamworks
 	.byte .hibyte($000097)		; dorabaebasic10
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($0000C0)		; powertrip
@@ -315,6 +326,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B0)		; funnygameholiday
 	.byte .bankbyte($0000BF)		; fireaura
 	.byte .bankbyte($0000AB)		; rainbowdust
+	.byte .bankbyte($0000CC)		; thesteamworks
 	.byte .bankbyte($000097)		; dorabaebasic10
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($0000C0)		; powertrip

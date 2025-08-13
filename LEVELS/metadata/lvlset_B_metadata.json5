@@ -310,7 +310,76 @@
 				},
 			]
 		},
-
+		{
+			level: "thesteamworks",
+			lowerText: "THE STEAMWORKS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_meltdown",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [111, 17],
+					offsetX: +8
+				},
+				{
+					coordinates: [112, 18],
+					offsetY: -8
+				},
+				{
+					coordinates: [171, 17],
+					offsetX: +8
+				},
+				{
+					coordinates: [244, 14],
+					offsetX: +8
+				},
+				{
+					coordinates: [251, 15],
+					offsetY: -8
+				},
+				{
+					coordinates: [424, 14],
+					offsetY: -8
+				},
+				{
+					coordinates: [762, 13],
+					offsetY: +8
+				},
+				{
+					coordinates: [787, 13],
+					offsetY: +8
+				},
+				{
+					coordinates: [806, 15],
+					offsetX: +8
+				},
+				{
+					coordinates: [840, 15],
+					offsetY: -8
+				},
+				{
+					coordinates: [952, 14],
+					offsetY: -8
+				},
+				{
+					coordinates: [962, 16],
+					offsetY: +8
+				},
+				{
+					coordinates: [1091, 14],
+					offsetY: -8
+				},
+			]
+		},		
 		{
 			level: "dorabaebasic10",
 			upperText: "DORABAEBASIC",

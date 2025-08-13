@@ -242,7 +242,12 @@
 			lowerText: "FIRE AURA",
 			originalArtistText: "KID2WILL",
 		},			
-		
+		{
+			fmsSongName: "Meltdown",
+			lowerText: "MELTDOWN",
+			originalArtist: ["MasterSword","Remix"],
+			coveringArtist: ["Kanako","Ketsukane"]
+		},				
 	],
 	SFX: [
 		{

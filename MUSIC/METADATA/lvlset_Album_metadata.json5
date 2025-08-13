@@ -494,6 +494,12 @@
 			coveringArtist: "Crafty Jumper",
 		},
 		{
+			fmsSongName: "Meltdown",
+			lowerText: "MELTDOWN",
+			originalArtist: ["MasterSword","Remix"],
+			coveringArtist: ["Kanako","Ketsukane"]
+		},
+		{
 			fmsSongName: "Metamorphosis",
 			lowerText: "METAMORPHOSIS",
 			originalArtist: "INTERWORLD",

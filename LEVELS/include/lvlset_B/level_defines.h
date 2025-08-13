@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 31
+#define COMMUNITY_LEVEL_COUNT 32
 
 #define level_sonar 0
 #define level_darkparadise 1
@@ -21,19 +21,20 @@
 #define level_funnygameholiday 12
 #define level_fireaura 13
 #define level_rainbowdust 14
-#define level_dorabaebasic10 15
-#define level_subtleoddities 16
-#define level_powertrip 17
-#define level_danceofviolins 18
-#define level_highlife 19
-#define level_xx 20
-#define level_infinitecircles 21
-#define level_deathmoon 22
-#define level_supercycles 23
-#define level_clutterfunk2 24
-#define level_motion 25
-#define level_speedracer 26
-#define level_endorphinrush 27
-#define level_sonicblaster 28
-#define level_hell 29
-#define level_futurefunk 30
+#define level_thesteamworks 15
+#define level_dorabaebasic10 16
+#define level_subtleoddities 17
+#define level_powertrip 18
+#define level_danceofviolins 19
+#define level_highlife 20
+#define level_xx 21
+#define level_infinitecircles 22
+#define level_deathmoon 23
+#define level_supercycles 24
+#define level_clutterfunk2 25
+#define level_motion 26
+#define level_speedracer 27
+#define level_endorphinrush 28
+#define level_sonicblaster 29
+#define level_hell 30
+#define level_futurefunk 31
