@@ -1934,6 +1934,133 @@
 			]
 		},
 		{
+			level: "extraordinaryexcitement",
+			upperText: "EXTRAORDINARY",
+			lowerText: "EXCITEMENT",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 9,
+			songID: "song_extraordinary_excitement",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [65, 26],		//normal pulsing thing
+					offsetX: +8
+				},
+				{
+					coordinates: [140, 20],		//2x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [172, 18],		//green orb
+					offsetX: +8
+				},
+				{
+					coordinates: [194, 19],		//yellow orb
+					offsetX: +8
+				},
+				{
+					coordinates: [239, 17],		//arrow
+					offsetY: +8
+				},
+				{
+					coordinates: [251, 19],		//arrow
+					offsetX: +8
+				},
+				{
+					coordinates: [255, 18],		//yellow gravity portal
+					offsetX: -8
+				},
+				{
+					coordinates: [257, 15],		//red orb
+					offsetX: +8
+				},
+				{
+					coordinates: [261, 18],		//blue gravity portal
+					offsetX: -8
+				},
+				{
+					coordinates: [263, 15],		//green orb
+					offsetX: +8
+				},
+				{
+					coordinates: [266, 18],		//ship portal
+					offsetX: +8
+				},
+				{
+					coordinates: [480, 13],		//3x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [555, 16],		//mini portal
+					offsetX: +8
+				},
+				{
+					coordinates: [582, 12],		//big portal
+					offsetX: +8
+				},
+				{
+					coordinates: [583, 12],		//spider portal
+					offsetX: -8
+				},
+				{
+					coordinates: [588, 8],		//chain
+					offsetX: +8
+				},
+				{
+					coordinates: [615, 11],		//spider orb
+					offsetX: +8
+				},
+				{
+					coordinates: [622, 13],		//spider orb
+					offsetX: +8
+				},
+				{
+					coordinates: [664, 10],		//yellow gravity portal
+					offsetY: +8
+				},
+				{
+					coordinates: [685, 12],		//big portal
+					offsetX: +8
+				},
+				{
+					coordinates: [686, 12],		//cube portal
+					offsetX: -8
+				},
+				{
+					coordinates: [893, 10],		//mini portal
+					offsetX: +16
+				},
+				{
+					coordinates: [894, 11],		//4x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [1201, 13],		//big portal
+					offsetX: +8
+				},
+				{
+					coordinates: [1401, 18],		//big portal
+					offsetX: +16
+				},
+				{
+					coordinates: [1402, 19],		//1x speed portal
+					offsetY: -8
+				},
+				{
+					coordinates: [1403, 18],		//blue gravity portal
+					offsetX: -16
+				},
+			]
+		},
+		{
 			level: "thelightningroad",
 			upperText: "THE LIGHTNING",
 			lowerText: "ROAD",

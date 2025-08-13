@@ -376,6 +376,12 @@
 			upperText: "STALEMATE",
 			lowerText: "GREIF CUT",
 			originalArtistText: "KAYOSZX",
+		},		
+		{
+			fmsSongName: "Extraordinary Excitement",
+			upperText: "EXTRAORDINARY",
+			lowerText: "EXCITEMENT",
+			originalArtistText: "SEAGLOWINGPRO",
 		},			
 	],
 	SFX: [
