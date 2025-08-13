@@ -221,6 +221,10 @@ _init_rld:
 
 	; Get pointers:
 	TAY						;__ Load pointer to tables
+
+	LDA	mmc3PRG1Bank		;	Save PRG1 bank
+	PHA						;__
+
 	LDA _sprite_list_lo,y	;
 	STA _sprite_data+0		;__	Get low pointer to sprite data 
 	LDA _sprite_list_hi,y	;
@@ -374,13 +378,17 @@ SetupNextRLEByte:
 
     jsr	LZ_get_byte		;
     STA rld_value		;__	Load rld_value
-	RTS
+	
+	pla						;	Restore PRG1 bank
+	jmp	mmc3_set_prg_bank_1	;__
 single_rle_byte:
 	and #$7f
 	sta rld_value
 	lda #0
 	sta rld_run
-	rts
+
+	pla						;	Restore PRG1 bank
+	jmp	mmc3_set_prg_bank_1	;__
 
 ; void unrle_next_column();
 .segment "CODE_2"
@@ -3749,75 +3757,78 @@ SSDPCM_getbyte:
 .endproc
 
 ; [Not used in C]
-.segment "CODE"
+;	.segment "CODE"
+;	
+;	.import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK__
+;	
+;	.global copydata
+;	.proc copydata
+;	
+;		seg_count = 1
+;		
+;		current_area = tmp1
+;		current_bank = tmp2
+;		
+;		src = sreg
+;		dest = xargs+0
+;		
+;		start:
+;			lda	#0
+;			sta	current_bank
+;			ldy	#<seg_count
+;			
+;		loop:
+;			lda	load_lo-1,	y
+;			sta	src+0
+;			lda	load_hi-1,	y
+;			sta	src+1
+;			
+;			lda	run_lo-1,	y
+;			sta	dest+0
+;			lda	run_hi-1,	y
+;			sta	dest+1
+;			
+;			lda	bank-1,	y
+;			beq	@no_bankswitch
+;				cmp	current_bank
+;				beq	@no_bankswitch
+;					jsr	mmc3_tmp_prg_bank_1	; only allowed because this is run on init
+;					sta	current_bank
+;			@no_bankswitch:
+;			
+;			lda	size_lo-1,	y
+;			ldx	size_hi-1,	y
+;			sty	current_area
+;			jsr	__memcpy
+;			
+;			ldy	current_area
+;			dey
+;			bne	loop
+;			
+;		rts
 
-.import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK__
+;	load_lo:
+;		.byte	<__DATA_LOAD__
 
-.global copydata
-.proc copydata
+;	load_hi:
+;		.byte	>__DATA_LOAD__
 
-	seg_count = 1
+;	run_lo:
+;		.byte	<__DATA_RUN__
 
-	current_area = tmp1
-	current_bank = tmp2
+;	run_hi:
+;		.byte	>__DATA_RUN__
 
-	src = sreg
-	dest = xargs+0
+;	size_lo:
+;		.byte	<__DATA_SIZE__
 
-	start:
-		lda	#0
-		sta	current_bank
-		ldy	#<seg_count
+;	size_hi:
+;		.byte	>__DATA_SIZE__
 
-	loop:
-		lda	load_lo-1,	y
-		sta	src+0
-		lda	load_hi-1,	y
-		sta	src+1
-		
-		lda	run_lo-1,	y
-		sta	dest+0
-		lda	run_hi-1,	y
-		sta	dest+1
+;	bank:
+;		.byte	<__DATA_LOAD_BANK__
 
-		lda	bank-1,	y
-		beq	@no_bankswitch
-			cmp	current_bank
-			beq	@no_bankswitch
-				jsr	mmc3_tmp_prg_bank_1	; only allowed because this is run on init
-				sta	current_bank
-		@no_bankswitch:
-
-		lda	size_lo-1,	y
-		ldx	size_hi-1,	y
-		sty	current_area
-		jsr	__memcpy
-
-		ldy	current_area
-		dey
-		bne	loop
-
-	rts
-
-load_lo:
-	.byte	<__DATA_LOAD__
-load_hi:
-	.byte	>__DATA_LOAD__
-
-run_lo:
-	.byte	<__DATA_RUN__
-run_hi:
-	.byte	>__DATA_RUN__
-
-size_lo:
-	.byte	<__DATA_SIZE__
-size_hi:
-	.byte	>__DATA_SIZE__
-
-bank:
-	.byte	<__DATA_LOAD_BANK__
-
-.endproc
+;	.endproc
 
 
 ; void increment_attempt_count();

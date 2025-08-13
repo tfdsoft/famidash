@@ -66,13 +66,13 @@ args = parser.parse_args()
 if args.file:
 	filepath = args.file
 else:
-	if not pathlib.Path(ownPath / 'BUILD' / args.subfolder).is_dir():
+	if not pathlib.Path(rootPath / 'BUILD' / args.subfolder).is_dir():
 		print("The subfolder argument is invalid. Please specify a subfolder that exists.")
 		exit(1)
-	if not pathlib.Path(ownPath / 'BUILD' / args.subfolder / 'famidash.dbg').is_file():
+	if not pathlib.Path(rootPath / 'BUILD' / args.subfolder / 'famidash.dbg').is_file():
 		print(f"The subfolder 'BUILD/{args.subfolder}' does not have a famidash.dbg file. Please specify a subfolder that has one.")
 		exit(1)
-	filepath = ownPath / 'BUILD' / args.subfolder / 'famidash.dbg'
+	filepath = rootPath / 'BUILD' / args.subfolder / 'famidash.dbg'
 
 showall = args.only_diff
 

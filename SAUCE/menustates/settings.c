@@ -77,29 +77,24 @@ void state_settings() {
 
 		if (mouse.left_press) {
 			if (mouse.x >= 0x2D && mouse.x <= 0xDD) {
-				if (mouse.y >= 0x24 && mouse.y <= 0x2C) {
+				if (mouse.y >= 0x14 && mouse.y <= 0x1C) {
 					settingvalue = 0; set_settings();
-				}
-				else if (mouse.y >= 0x34 && mouse.y <= 0x4C) {
+				} else if (mouse.y >= 0x24 && mouse.y <= 0x2C) {
 					settingvalue = 1; set_settings();
-				}
-				else if (mouse.y >= 0x44 && mouse.y <= 0x4C) {
+				} else if (mouse.y >= 0x34 && mouse.y <= 0x3C) {
 					settingvalue = 2; set_settings();
-				}
-				else if (mouse.y >= 0x54 && mouse.y <= 0x5C) {
+				} else if (mouse.y >= 0x44 && mouse.y <= 0x4C) {
 					settingvalue = 3; set_settings();
-				}
-				else if (mouse.y >= 0x64 && mouse.y <= 0x6C) {
+				} else if (mouse.y >= 0x54 && mouse.y <= 0x5C) {
 					settingvalue = 4; set_settings();
-				}
-				else if (mouse.y >= 0x74 && mouse.y <= 0x7C) {
+				} else if (mouse.y >= 0x64 && mouse.y <= 0x6C) {
 					settingvalue = 5; set_settings();
-				}
-				else if (mouse.y >= 0x84 && mouse.y <= 0x8C) {
+				} else if (mouse.y >= 0x74 && mouse.y <= 0x7C) {
 					settingvalue = 6; set_settings();
-				}
-				else if (mouse.y >= 0x94 && mouse.y <= 0x9C) {
+				} else if (mouse.y >= 0x84 && mouse.y <= 0x8C) {
 					settingvalue = 7; set_settings();
+				} else if (mouse.y >= 0x94 && mouse.y <= 0x9C) {
+					settingvalue = 8; set_settings();
 				}
 			}
 			if ((mouse.x >= 0x1D && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC4)) {		

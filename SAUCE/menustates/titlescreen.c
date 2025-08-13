@@ -627,9 +627,10 @@ void state_menu() {
 				if (mouse.x >= 0xD6 && mouse.x <= 0xE4) {
 					if (all_levels_complete != 0xFC)
 						sfx_play(sfx_invalid, 0);
-					else
+					else {
 						menuselection = TITLE_BTN_FUNSETTINGS;
-					break;
+						break;
+					}
 				}
 			}
 		}	

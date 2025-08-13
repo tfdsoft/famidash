@@ -177,14 +177,14 @@ void set_fun_settings() {
 	};
 }
 
-const unsigned char gameboytext1[]="  GREY";
-const unsigned char gameboytext2[]="   RED";
-const unsigned char gameboytext3[]=" GREEN";
-const unsigned char gameboytext4[]="  BLUE";
+const unsigned char gameboytext1[]="$$GREY";
+const unsigned char gameboytext2[]="$$$RED";
+const unsigned char gameboytext3[]="$GREEN";
+const unsigned char gameboytext4[]="$$BLUE";
 const unsigned char gameboytext5[]="YELLOW";
 const unsigned char gameboytext6[]="PURPLE";
-const unsigned char gameboytext7[]="  CYAN";
-const unsigned char gameboytext8[]="  DARK";
+const unsigned char gameboytext7[]="$$CYAN";
+const unsigned char gameboytext8[]="$$DARK";
 
 const unsigned char* const gameboytexts[] = {
 	0, gameboytext1, gameboytext2, gameboytext3, gameboytext4, gameboytext5, gameboytext6, gameboytext7, gameboytext8

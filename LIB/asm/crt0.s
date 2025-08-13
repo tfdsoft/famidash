@@ -288,8 +288,8 @@ clearRAM:
 
 	jsr initialize_mapper
 
-    ; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
-	jsr	copydata	; Sets all the initial values of variables
+	; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
+	; jsr	copydata	; Sets all the initial values of variables
 
     lda #<(__C_STACK_START__+__C_STACK_SIZE__) ;changed
     sta	sp
@@ -381,7 +381,6 @@ finish:
 
 	.include "all_level_data.s"
 	.include "all_sprite_data.s"
-;	.include "level_header.s"
 	.include "all_level_table.s"
 	
 	.include "mapper.s"
