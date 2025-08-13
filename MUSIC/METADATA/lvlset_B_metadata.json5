@@ -246,8 +246,12 @@
 			fmsSongName: "Meltdown",
 			lowerText: "MELTDOWN",
 			originalArtist: ["MasterSword","Remix"],
-			coveringArtist: ["Kanako","Ketsukane"]
-		},				
+		},		
+		{
+			fmsSongName: "Factory Time",
+			lowerText: "FACTORY TIME",
+			originalArtist: "Nerdboy628",
+		},		
 	],
 	SFX: [
 		{

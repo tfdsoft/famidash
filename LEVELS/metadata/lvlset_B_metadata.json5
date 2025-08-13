@@ -311,6 +311,33 @@
 			]
 		},
 		{
+			level: "factorytime",
+			lowerText: "FACTORY TIME",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_factory_time",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			objectOffsets: [
+				{
+					coordinates: [
+						[169, 17], [170, 17], [184, 17], [185, 17], [188, 17], [189, 17], [193, 17], [194, 17], 
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [397, 26],
+					offsetX: -8
+				},
+			]
+		},	
+		{
 			level: "thesteamworks",
 			lowerText: "THE STEAMWORKS",
 			decoType: "DECO1",

@@ -212,7 +212,7 @@
 		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1614
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 7891 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8016 bytes
 	.export level_data_clutterfunk2
 	level_data_clutterfunk2:
 	; Header
@@ -652,14 +652,32 @@
 		.incbin "EXPORTS/ninox.lz.bin" ; Size: 2329
 
 
-.segment "DAT_BANK_23"	; Total bank size: 7926 bytes
+.segment "DAT_BANK_23"	; Total bank size: 8014 bytes
+	.export level_data_factorytime
+	level_data_factorytime:
+	; Header
+		.byte song_factory_time ;___ Song ID
+		.byte 0 ;___________________ Starting game mode
+		.byte 0 ;___________________ Starting speed
+		.byte 0 ;___________________ Disable parallax
+		.byte 0 ;___________________ Force platformer
+		.byte _DECO1 ;______________ Deco type
+		.byte _SPIKESA ;____________ Spike set
+		.byte _BLOCKSA ;____________ Block set
+		.byte _SAWBLADESA ;_________ Sawblade set
+		.byte $12 ;_________________ Starting background color
+		.byte $02 ;_________________ Starting ground color
+		.byte 27 ;__________________ Level height
+	; Level data
+		.incbin "EXPORTS/factorytime.lz.bin" ; Size: 2329
+
 	.export level_data_subtleoddities_1
 	level_data_subtleoddities_1:
 	; Level data
 		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2273
 
 
-.segment "DAT_BANK_24"	; Total bank size: 4463 bytes
+.segment "DAT_BANK_24"	; Total bank size: 8130 bytes
 	.export level_data_subzero
 	level_data_subzero:
 	; Header
