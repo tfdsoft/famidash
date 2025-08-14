@@ -286,6 +286,13 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
+			fmsSongName: "Dash Full",
+			upperText: "DASH",
+			lowerText: "FULL VERSION",
+			originalArtist: "MDK",
+			coveringArtist: "Crafty Jumper",
+		},		
+		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
 			originalArtist: "SoundHolicK",
@@ -500,6 +507,12 @@
 			coveringArtist: "Crafty Jumper",
 		},
 		{
+			fmsSongName: "Megalovania",
+			lowerText: "MEGALOVANIA",
+			originalArtist: "Toby Fox",
+			coveringArtist: "Crafty Jumper",
+		},		
+		{
 			fmsSongName: "Meltdown",
 			lowerText: "MELTDOWN",
 			originalArtist: ["MasterSword","Remix"],
@@ -646,10 +659,10 @@
 			coveringArtist: "Crafty Jumper",
 		},	
 		{
-			fmsSongName: "Thermodynamix",
+			fmsSongName: "Thermodynamix Full",
 			lowerText: "THERMODYNAMIX",
 			originalArtist: "Dj-Nate",
-			coveringArtist: "Vikrinox",
+			coveringArtist: ["Vikrinox","SeaGlowingPro"]
 		},		
 		{
 			fmsSongName: "Tiny Tunes",
