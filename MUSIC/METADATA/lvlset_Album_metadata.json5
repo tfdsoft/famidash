@@ -196,30 +196,9 @@
 			coveringArtist: ["Crafty Jumper", "ElAngel378"]
 		},
 		{
-			fmsSongName: "atthespeedoflight",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 1",
-			originalArtist: "Dimrain47",
-			coveringArtist: "ElAngel378",
-		},
-		{
-			fmsSongName: "atthespeedoflight2",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 2",
-			originalArtist: "Dimrain47",
-			coveringArtist: "ElAngel378",
-		},
-		{
-			fmsSongName: "atthespeedoflight3",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 3",
-			originalArtist: "Dimrain47",
-			coveringArtist: "ElAngel378",
-		},
-		{
 			fmsSongName: "atthespeedoflightfull",
 			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT FULL",
+			lowerText: "OF LIGHT",
 			originalArtist: "Dimrain47",
 			coveringArtist: "ElAngel378",
 		},
