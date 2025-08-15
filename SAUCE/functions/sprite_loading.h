@@ -656,10 +656,9 @@ void sprite_collide_lookup() {
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
 		&&spcl_default,	&&spcl_skl_orb,	&&spcl_wht_orb,	&&spcl_default,	// 0x78 - 0x7B
-		&&spcl_default,	&&spcl_default,	&&spcl_default //,	&&spcl_invioff	// 0x7C - 0x7F
+		&&spcl_default,	&&spcl_default,	&&spcl_default //,	&&spcl_default	// 0x7C - 0x7F
 	};
 	static void * const sprite_collide_jump_table_1[] = {
-//		&&spcl_invioff,													// 0x7F
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x80 - 0x83
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x84 - 0x87
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x88 - 0x8B
@@ -699,7 +698,7 @@ void sprite_collide_lookup() {
 	// Instead of the giant ass switch : case that used to be here
 	if (collided < 0x7F)
 		goto *sprite_collide_jump_table_0[collided];
-	else if (collided == 0x7F) goto spcl_default;
+	else if (collided == 0x7F) return;
 	else if (collided >= 0x80)
 		jumpInTableWithOffset(sprite_collide_jump_table_1, collided, 0);
 
