@@ -59,7 +59,7 @@ uint8_t sprite_heights[]={
 	0x34,	0x34,	0x34,	0x34,	0x34,	0x02,	0x10,	SPBH,	// 60 - 67
 	0x10,	SPBH,	0x34,	0x34,	0x34,	0x20,	0x08,	SPBH,	// 68 - 6F
 	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x10,	SPBH,	0x10,	// 70 - 77
-	SPBH,	0x12,	0x12,	0x00,	0x00,	0x00,	SPBH,	0x00,	// 78 - 7F
+	SPBH,	0x12,	0x12,	0x00,	0x00,	0x00,	SPBH,	SPBH,	// 78 - 7F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 88 - 8F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 90 - 97
@@ -259,6 +259,12 @@ char sprite_load_special_behavior(){
 				killSprite_return0;
 			case MASK_SPRITES_OFF:
 				disco_sprites = 0;
+				killSprite_return0;
+			case PLAYER_INVIS_ON:
+				player_invis = 1;
+				killSprite_return0;
+			case PLAYER_INVIS_OFF:
+				player_invis = 0;
 				killSprite_return0;
 			case GRAVITY_13_PORTAL_INVIS:
 				gravity_mod = 1;
@@ -646,7 +652,7 @@ void sprite_collide_lookup() {
 		&&spcl_gv12_pt,	&&spcl_gv23_pt,	&&spcl_gv2x_pt,	&&spcl_gv1x_pt,	// 0x60 - 0x63
 		&&spcl_rndmode,	&&spcl_grn_pad,	&&spcl_tlpt_pt,	&&spcl_default,	// 0x64 - 0x67
 		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tall_pt,	&&spcl_long_pt,	// 0x68 - 0x6B
-		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_invi_on,	// 0x6C - 0x6F
+		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
 		&&spcl_default,	&&spcl_skl_orb,	&&spcl_wht_orb,	&&spcl_default,	// 0x78 - 0x7B
@@ -693,7 +699,7 @@ void sprite_collide_lookup() {
 	// Instead of the giant ass switch : case that used to be here
 	if (collided < 0x7F)
 		goto *sprite_collide_jump_table_0[collided];
-	else if (collided == 0x7F) goto spcl_invioff;
+	else if (collided == 0x7F) goto spcl_default;
 	else if (collided >= 0x80)
 		jumpInTableWithOffset(sprite_collide_jump_table_1, collided, 0);
 
@@ -730,14 +736,6 @@ void sprite_collide_lookup() {
 			}
 		}
 
-		return;
-	
-	spcl_invi_on:
-		player_invis = 1;
-		return;
-	
-	spcl_invioff:
-		player_invis = 0;
 		return;
 	
 	spcl_cube:
