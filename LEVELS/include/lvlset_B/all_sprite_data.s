@@ -20232,9 +20232,11 @@ sprite_data_futurefunk:
   .byte $90,$b3,$50,$01,$89
   .byte $a0,$b3,$30,$01,$36
   .byte $b0,$b3,$50,$01,$8f
+  .byte $f0,$b7,$00,$02,$6f
   .byte $90,$b8,$18,$02,$25
   .byte $d0,$b8,$10,$02,$06
   .byte $00,$b9,$00,$02,$06
   .byte $30,$b9,$f0,$01,$06
+  .byte $10,$ba,$e0,$01,$7f
   .byte $10,$ba,$f0,$01,$0f
   .byte $ff
