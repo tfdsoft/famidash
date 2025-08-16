@@ -66,11 +66,12 @@ void process_y_scroll() {
 					cc65_tmp1 = (11 - exitPortalTimer);
 					if (MSB(cc65_ptr1) >= cc65_tmp1) cc65_ptr1 = (cc65_tmp1) << 8;
 				}
+				player0_y += cc65_ptr1;
+				player1_y += cc65_ptr1;
+
 				scroll_y_subpx -= LSB(cc65_ptr1);
 				do_if_borrow({++high_byte(cc65_ptr1);});
 				scroll_y = sub_scroll_y(MSB(cc65_ptr1), scroll_y);
-
-				player0_y = player1_y = 0x4000;	// This is how actual compensation does it anyway
 			}
 			cap_scroll_y_at_top();
 
@@ -81,11 +82,12 @@ void process_y_scroll() {
 					cc65_tmp1 = (11 - exitPortalTimer);
 					if (MSB(cc65_ptr1) >= cc65_tmp1) cc65_ptr1 = (cc65_tmp1) << 8;
 				}
+				player0_y = player0_y - cc65_ptr1;
+				player1_y = player1_y - cc65_ptr1;
+
 				scroll_y_subpx += LSB(cc65_ptr1);
 				do_if_carry({++high_byte(cc65_ptr1);});
 				scroll_y = add_scroll_y(MSB(cc65_ptr1), scroll_y);
-
-				player0_y = player1_y = 0xA000;	// This is how actual compensation does it anyway
 			}
 			cap_scroll_y_at_bottom();
 	} else {			//ship stuff
