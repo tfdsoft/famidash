@@ -674,6 +674,10 @@ char bg_coll_slope() {
 		goto col_end;	
 
 	col_slope_LU66_TOP:
+		if (gamemode == GAMEMODE_WAVE && currplayer_mini) {
+			return 0;
+		}
+
 		if ((uint8_t)(temp_x & 0x0f) >= 0x08) return 0;
 		tmp7 = (((temp_x & 0x07) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 		tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
@@ -682,6 +686,9 @@ char bg_coll_slope() {
 		goto col_end;		
 
 	col_slope_LU66_BOT:
+		if (gamemode == GAMEMODE_WAVE && currplayer_mini) {
+			return 0;
+		}
 		if ((uint8_t)(temp_x & 0x0f) < 0x08) return 1;
 		tmp7 = (((temp_x & 0x0f) << 1) & 0x0f);	// = 0x0F - (temp_x & 0x0F)
 		tmp4 = ((temp_y) & 0x0f) ^ 0x0f;
