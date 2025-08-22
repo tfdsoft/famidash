@@ -362,10 +362,10 @@ _init_rld:
 		ADC #<(1+57-1)			;__
 		SEC
 	@min_scroll_y_loop:
+		TAX
 		SBC	#15				;__
 		BCC	@min_scroll_y_fin
 		INC	min_scroll_y+1
-		TAX
 		BCS	@min_scroll_y_loop	; = BRA
 	@min_scroll_y_fin:
 		LDA	shiftBy4table, X
