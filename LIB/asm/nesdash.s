@@ -696,10 +696,7 @@ noSeam:
 ;   Attributes
 
 	frame_free = 0
-	frame_R_attr = 2
-	frame_UD_tiles_separate_1 = 3
-	frame_UD_attr_unified = 4
-	frame_UD_attr_separate = 5
+	frame_R_attr = 1
 
 start:
 	LDX drawing_frame		;	If something is being drawn, continue
@@ -731,11 +728,8 @@ jmpto_draw_screen_UD_tiles:
 	JMP draw_screen_UD_tiles_frame0
 
 switch:
-	DEX									;
 	DEX									;	if drawing_frame == 2, do frame 2
 	jeq	draw_screen_R_attributes		;__ of drawing the right edge (attributes)
-	DEX									;	if drawing_frame == 3, do frame 1
-	jeq	draw_screen_UD_tiles_frame1		;__	of drawing the up/down tiles (copy the lower tiles)
 
 
 ; [Subroutine]
@@ -1575,32 +1569,6 @@ write_loop:	; literally the same for both unified and separate writes
 
 .endproc
 
-
-.proc draw_screen_UD_tiles_frame1
-	Separate2WritesSize = (16*2)+((2+1)*2)	; Contains 32 tiles in total, in 2 writes
-	@start:
-		LDA	VRAM_INDEX
-		CLC
-		ADC	#Separate2WritesSize
-		STA	VRAM_INDEX
-		TAX
-
-		LDY	#Separate2WritesSize
-	@loop:
-		DEX
-		LDA	columnBuffer-1,	Y
-		STA	VRAM_BUF,	X
-		DEY
-		BNE	@loop
-	@fin:
-		LDA	#$FF
-		STA	VRAM_BUF+Separate2WritesSize, X
-
-		LDA	#1
-		LDX	#frame_free
-		STX	drawing_frame
-		RTS
-.endproc
 
 .endproc
 
