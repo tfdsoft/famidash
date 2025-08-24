@@ -272,7 +272,6 @@ lohi_arr32_decl(practice_scroll_x, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_scroll_y, MAX_PRACTICE_POINTS);
 uint8_t practice_scroll_y_subpx[MAX_PRACTICE_POINTS];
 lohi_arr16_decl(practice_min_scroll_y, MAX_PRACTICE_POINTS);
-lohi_arr16_decl(practice_seam_scroll_y, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_old_draw_scroll_y, MAX_PRACTICE_POINTS);
 lohi_arr16_decl(practice_target_scroll_y, MAX_PRACTICE_POINTS);
 
@@ -414,8 +413,10 @@ uint8_t invincible_counter;
 uint32_t scroll_x; // gotta love massive levels amirite fellas
 uint16_t scroll_y;
 uint8_t scroll_y_subpx;
+uint16_t min_scroll_y;
 uint16_t old_trail_scroll_y;
 uint16_t target_scroll_y;
+extern uint16_t seam_scroll_y;
 //uint16_t reload_target_scroll_y;
 uint8_t song;
 uint8_t songplaying;
@@ -524,9 +525,6 @@ uint8_t donotresetrng;
 uint8_t player_invis;
 
 extern uint8_t famistudio_song_speed;
-
-extern uint16_t min_scroll_y;
-extern uint16_t seam_scroll_y;
 
 extern volatile uint8_t hexToDecOutputBuffer[5];
 

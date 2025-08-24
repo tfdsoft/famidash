@@ -67,11 +67,11 @@ sprite_data = _sprite_data
 	; variables related to the vertical seam / level height
 	extceil:			.res 1
 	rld_load_value:		.res 1
-	min_scroll_y:		.res 2
 
 	; variables related to both the above and below
 	old_draw_scroll_y:	.res 2
 	seam_scroll_y:		.res 2
+	debt_seam_scroll_y:	.res 2
 	
 	; variables related to draw_screen
 	rld_column:			.res 1
@@ -88,7 +88,6 @@ sprite_data = _sprite_data
  
 
 .export _extceil := extceil
-.export _min_scroll_y := min_scroll_y
 .export	_seam_scroll_y := seam_scroll_y
 .export _old_draw_scroll_y := old_draw_scroll_y
 
@@ -218,11 +217,13 @@ shiftBy4table:
 ; void __fastcall__ init_rld(uint8_t level);
 .segment "CODE"
 
-.global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
+.global _level_list_lo, _level_list_hi, _level_list_bank
+.global _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
 .import _current_deco_type, _current_spike_set, _current_block_set, _current_saw_set
 .import _song, _speed, _lastgcolortype, _lastbgcolortype
 .import _level_data_bank, _sprite_data_bank, _force_platformer
 .import _discomode
+.import _min_scroll_y
 
 .export _init_rld
 _init_rld:
@@ -331,10 +332,12 @@ _init_rld:
 	LDA	(PAL_PTR),y			;	Store it into the buffer
 	STA	PAL_BUF+5			;__
 	INC <PAL_UPDATE			;__ Yes, we do need to update the palette
-
 	
 	ldy #0
 	incw ptr1
+
+	sty debt_seam_scroll_y
+	sty debt_seam_scroll_y+1
 
 	.if USE_ILLEGAL_OPCODES
 		lax (ptr1),y
@@ -354,7 +357,7 @@ _init_rld:
 
 	@min_scroll_y_calc:
 		LDA	#$00			;
-		STA	min_scroll_y+1	;__
+		STA	_min_scroll_y+1	;__
 		
 		TXA						;
 		EOR	#$FF				;	Get 57 - level height
@@ -365,12 +368,12 @@ _init_rld:
 		TAX
 		SBC	#15				;__
 		BCC	@min_scroll_y_fin
-		INC	min_scroll_y+1
+		INC	_min_scroll_y+1
 		BCS	@min_scroll_y_loop	; = BRA
 	@min_scroll_y_fin:
 		LDA	shiftBy4table, X
 		ORA #$08
-		STA min_scroll_y
+		STA _min_scroll_y
 
 	incw ptr1
 
@@ -479,6 +482,7 @@ single_rle_byte:
 
 	jmp	LZ_init_decomp
 .endproc
+
 
 ; void __fastcall__ dummy_unrle_columns(uint16_t columns);
 .segment "CODE_2"
@@ -624,58 +628,6 @@ single_rle_byte:
 .endproc
 
 
-; [Not used in C]
-.segment _BACKGROUND_RENDER_BANK
-
-.import _scroll_y
-
-.export get_seam_scroll_y
-.proc get_seam_scroll_y
-	; No inputs
-	; Returns seam_scroll_y in AX
-start:
-	BIT	extceil
-	BPL	noSeam
-
-yesSeam:
-	; Seam position:
-	; Y ≥	| Y <	| A		| B		|
-	; 	0	|  $78	|	0	|	1	|
-	;  $78	| $178	|  2/0	|	1	|
-	; $178	| $278	|	2	|  3/1	|
-	; $278	| $2F0	|	2	|	3	|
-
-	; Get seam position
-	LDA	_scroll_y
-	LDX	_scroll_y+1
-	SEC
-	SBC	#$78	;
-	BCS	:+		;	AX = scroll_y - $78
-		SBC #$10-1;	(with valid scroll_y coordinates)
-		DEX		;__
-	:
-	STA	seam_scroll_y
-	STX seam_scroll_y+1
-
-	RTS
-
-noSeam:
-	; The level's ceiling ≤ 27 blocks, no need for a seam
-	LDA	#$78
-	LDX #$02
-	STA	seam_scroll_y
-	STX	seam_scroll_y+1
-	RTS
-
-	; Total seam system:
-	; High byte	| Seam screen	| A		| B		|
-	;	FF		|	There isn't	|	0	| 	1	|
-	;	00		|		00		|  2/0	|	1	|
-	;	01		|		01		|	2	|  3/1	|
-	;	02		|	There isn't	|	2	|	3	|
-	;	No seam can be distinguished by high byte >= 02 or bit 1
-.endproc
-
 .if !__THE_ALBUM
 
 ; char draw_screen();
@@ -687,13 +639,18 @@ noSeam:
 ; Write architecture:
 
 ; Frame 0:
-;   Write 0 updates the upper nametable's left tiles
-;   Write 1 updates the lower nametable's left tiles
+;   Rightwards rendering, all the tiles
 ; Frame 1:
-;   Write 0 updates the upper nametable's right tiles
-;   Write 1 updates the lower nametable's right tiles
-; Frame 2:
-;   Attributes
+;   Rightwards rendering, all the attributes
+
+; Seam system:
+; Seam position:
+; Y ≥	| Y <	| High byte	| Seam screen	| A		| B		|
+; 	0	|  $78	|	FF		|	There isn't	|	0	|	1	|
+;  $78	| $178	|	00		|		00		|  2/0	|	1	|
+; $178	| $278	|	01		|		01		|	2	|  3/1	|
+; $278	| $2F0	|	02		|	There isn't	|	2	|	3	|
+;	No seam can be distinguished by high byte >= 02 or bit 1
 
 	frame_free = 0
 	frame_R_attr = 1
@@ -728,7 +685,7 @@ jmpto_draw_screen_UD_tiles:
 	JMP draw_screen_UD_tiles_frame0
 
 switch:
-	DEX									;	if drawing_frame == 2, do frame 2
+	DEX									;	if drawing_frame == 1, do frame 1
 	jeq	draw_screen_R_attributes		;__ of drawing the right edge (attributes)
 
 
@@ -1234,6 +1191,11 @@ ntAddrHiTbl:
 		ORA	tmp1
 		BNE	calc_new_seam_pos
 
+		LDA	debt_seam_scroll_y+1
+		TAY
+		ORA	debt_seam_scroll_y
+		BNE	calc_new_seam_pos
+
 		TAX		;	A is 0
 		RTS		;__
 
@@ -1253,9 +1215,21 @@ ntAddrHiTbl:
 			JSR	@calc_diff			;__	Calculate difference
 			CMP	#$38				;
 			TXA						;	If the difference is less than
-			LDX	#2					;	($78 - $40), we went too far
-			SBC	#$00				;	Also load the scrolling direction offset
-			BCS	@fin				;__
+			SBC	#$00				;	($78 - $40), we went too far
+			BCC	@ret0				;__
+			JSR	@get_debt				;__	Get debt (not adjusted for inflation)
+			SBC	#$10					;__	Carry is set
+			TAY							;	AX -= 0x10 (we *are* moving the seam after all)
+			TXA							;
+			SBC #0						;__
+			BCS	:+						;
+				LDA	#0					;	Cap at 0
+				TAY						;
+			:							;__
+			STA	debt_seam_scroll_y+1	;	Store debt
+			STY	debt_seam_scroll_y		;__
+			LDX	#2						;__	Load scrolling direction offset
+			JMP	@fin
 		
 		@ret0:		;
 			LDA	#0	;	Return 0
@@ -1271,6 +1245,25 @@ ntAddrHiTbl:
 			LDA	_scroll_y+1			;	(doesn't need to be linearized due to its indended range)
 			JMP	__sub_scroll_y_ext	;__
 		
+		@get_debt:	;__	[Subroutine]
+			LDA	_scroll_y				;
+			SEC							;
+			SBC	old_draw_scroll_y		;
+			TAY							;
+			LDA	_scroll_y+1				;
+			SBC	old_draw_scroll_y+1		;
+			TAX							;
+			TYA							;	AX = scroll_y - old_scroll_y + debt
+			CLC							;
+			ADC	debt_seam_scroll_y		;
+			TAY							;
+			TXA							;
+			ADC	debt_seam_scroll_y+1	;
+			TAX							;
+			TYA							;
+			SEC							;
+			RTS							;__
+
 		@up:
 			STA	this_seam_pos+0		;	Store old seam position
 			STX	this_seam_pos+1		;__
@@ -1281,7 +1274,19 @@ ntAddrHiTbl:
 			LDX	#0					;	($78 + $40), we went too far
 			SBC	#$00				;	Also load scrolling direction offset
 			BCS	@ret0				;__
-		
+			JSR	@get_debt				;__	Get debt (not adjusted for inflation)
+			ADC	#$10-1					;__	Carry is set
+			TAY							;	AX += 0x10 (we *are* moving the seam after all)
+			TXA							;
+			ADC #0						;__
+			BCC	:+						;
+				LDA	#0					;	Cap at 0
+				TAY						;
+			:							;__
+			STA	debt_seam_scroll_y+1	;	Store debt
+			STY	debt_seam_scroll_y		;__
+			LDX	#0						;__	Load scrolling direction offset
+
 		@fin:
 			STX	scroll_direction
 
@@ -2226,7 +2231,7 @@ early_exit:
 .segment _SCROLL_BANK
 
 .importzp _currplayer_y
-.import _scroll_y, _player_y, _scroll_y_subpx
+.import _scroll_y, _player_y, _scroll_y_subpx, _min_scroll_y
 
 .export _cap_scroll_y_at_top
 .proc _cap_scroll_y_at_top
