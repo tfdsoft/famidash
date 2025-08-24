@@ -853,8 +853,16 @@ FinishRendering:
 	ora	#$80
 	sta	buf_curSeqMode
 
-	LDA #1
-	LDX #0
+	lda	VRAM_INDEX
+	clc
+	adc	#TileEnd
+	sta	VRAM_INDEX
+
+	lda	#1				;	If system == PAL,
+	cmp	trueFullRegion	;	Draw attributes on the same frame
+	jeq	_draw_screen	;	(Doing it on NTSC and Dendy is VERY risky due to very tight NMI timing)
+	ldx	#0				;__	Otherwise return 1
+
 	RTS
 
 
