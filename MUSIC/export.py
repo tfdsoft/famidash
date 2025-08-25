@@ -450,7 +450,7 @@ if __name__ == "__main__":
         exit(3)
     instsize = int(instsize['instSize'])
     if extMeta:
-        maxDataInBank = 8192 - (instsize / 8 * 3)
+        maxDataInBank = 8192 - (instsize / 9 * 3)
     else:
         maxDataInBank = 8192 - (instsize / 5 * 3)
     print(f"== Total maximum size of data in a bank is {maxDataInBank} bytes")

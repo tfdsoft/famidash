@@ -265,13 +265,6 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
-			fmsSongName: "Dash Full",
-			upperText: "DASH",
-			lowerText: "FULL VERSION",
-			originalArtist: "MDK",
-			coveringArtist: "Crafty Jumper",
-		},		
-		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
 			originalArtist: "SoundHolicK",
@@ -336,6 +329,12 @@
 			originalArtist: "Nerdboy628",
 			coveringArtist: "Nerdboy628",
 		},
+		{
+			fmsSongName: "Fairydust",
+			lowerText: "FAIRYDUST",
+			originalArtist: "NIGHTKILLA",
+			coveringArtist: "ElAngel378",
+		},		
 		{
 			fmsSongName: "Fingerbang",
 			lowerText: "FINGERBANG",
