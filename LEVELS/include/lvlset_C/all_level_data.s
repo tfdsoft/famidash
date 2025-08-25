@@ -161,7 +161,7 @@
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 192
 
 
-.segment "DAT_BANK_09"	; Total bank size: 7746 bytes
+.segment "DAT_BANK_09"	; Total bank size: 7862 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -178,7 +178,7 @@
 		.byte $0F ;___________ Starting ground color
 		.byte 27 ;____________ Level height
 	; Level data
-		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7746
+		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7862
 
 
 .segment "DAT_BANK_0A"	; Total bank size: 7736 bytes
@@ -221,7 +221,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7519
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 7421 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 7411 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -238,7 +238,7 @@
 		.byte $0F ;___________ Starting ground color
 		.byte 27 ;____________ Level height
 	; Level data
-		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7421
+		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7411
 
 
 .segment "DAT_BANK_0D"	; Total bank size: 8084 bytes
@@ -261,7 +261,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7053
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8121 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8166 bytes
 	.export level_data_fairydust
 	level_data_fairydust:
 	; Header
