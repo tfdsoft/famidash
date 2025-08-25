@@ -100,6 +100,21 @@
 			
 		},
 		{
+			fmsSongName: "endgame",
+			lowerText: "DECODE",
+			originalArtistText: "WATERFLAME",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Decode ~ Endgame",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "Vikrinox"
+				},
+				durationNTSC: 79283,
+				durationPAL: 95280
+			}
+		},		
+		{
 			fmsSongName: "clutterfunk 2",
 			lowerText: "CLUTTERFUNK 2",
 			originalArtistText: "WATERFLAME",

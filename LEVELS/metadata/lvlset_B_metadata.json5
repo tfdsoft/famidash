@@ -582,6 +582,31 @@
 			parallaxDisable: true
 		},
 		{
+			level: "decode",
+			lowerText: "DECODE",
+			decoType: "DECOCLOUD",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_endgame",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x06,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[314, 10],	[324, 10],	[330, 9],	[335, 11],	[337, 10],		//deco
+						[341, 11],	[346, 10],	[352, 10],	[360, 9],		//deco
+					],
+					offsetY: +8
+				},
+			]
+		},		
+		{
 			level: "infinitecircles",
 			upperText: "INFINITE",
 			lowerText: "CIRCLES",

@@ -25,6 +25,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// danceofviolins
 	INSANE,	// highlife
 	DEMON,	// xx
+	DEMON,	// decode
 	DEMON,	// infinitecircles
 	DEMON,	// deathmoon
 	DEMON,	// supercycles
@@ -61,6 +62,7 @@ const uint8_t stars_list[] = {
 	8,	// danceofviolins
 	9,	// highlife
 	10,	// xx
+	10,	// decode
 	10,	// infinitecircles
 	10,	// deathmoon
 	10,	// supercycles

@@ -338,7 +338,7 @@
 			level: "clutterfunk",
 			lowerText: "CLUTTERFUNK",
 			decoType: "DECOCLOUD",
-			spikeSet: "B",
+			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "INSANE",
@@ -351,47 +351,78 @@
 			objectOffsets: [
 				{
 					coordinates: [
-						[107, 23],	[130, 22],	[210, 22],	[841, 16],	[878, 14],	[882, 14],		//orb
+						[107, 23],	[130, 22],	[210, 22],	[843, 16],	[880, 14],	[884, 14],		//orb
 						[204, 24],		//blue pad
 						[278, 21],		//upsidedown pad
-						[464, 25],	[468, 25],	[472, 25],	[809, 19],		//yellow orb
-						[671, 21],		//mini portal
-						[873, 16],		//pad
+						[466, 25],	[470, 25],	[474, 25],	[811, 19],		//yellow orb
+						[673, 21],		//mini portal
+						[875, 16],		//pad
+						[840, 17], [952, 7],//deco
 					],
 					offsetX: -8
 				},
 				{
 					coordinates: [
-						[367, 20],	[370, 21],	[373, 22],		//yellow orb
-						[527, 22],		//ship portal
-						[722, 22],		//upsidedown blue pad
-						[812, 19],		//shink portal
-						[837, 17],	[949, 7],		//pad
-						[909, 18],	[947, 9],		//orb
-						[357, 22],		//mini portal
+						[89, 25],		//pulse rod
+						[369, 20],	[372, 21],	[375, 22],		//yellow orb
+						[529, 22],		//ship portal
+						[724, 22],		//upsidedown blue pad
+						[839, 17],	[951, 7],		//pad
+						[911, 18],	[949, 9],		//orb
+						[359, 22],		//mini portal
+						[171, 19],  [183, 24],
+						[187, 24],  [192, 23],
+						[220, 19], [224, 19], [228, 19], [285, 24], [677, 26], [724, 20],
+						[734, 22], [737, 13], [752, 24], [766, 17], [789, 18], [807, 18],
+						[813, 16], [816, 25], [874, 16], //deco
+						[637, 20], [644, 23], [652, 19], [660, 23], [815, 19],   //gravity portals
+						[827, 19], [862, 15], [880, 10], [884, 10], [882, 22], [899, 15],
+						[911, 22], [915, 22], [919, 22], [917, 10], [935, 11],//chains
 					],
 					offsetX: +8
 				},
 				{
 					coordinates: [
-						[358, 22],		//ball portal
-						[430, 24],		//horizontal normal grav portal
-						[357, 22],		//mini portal
+						[360, 22],		//ball portal
+						[432, 24],		//horizontal normal grav portal
+						[359, 22],		//mini portal
 					],
 					offsetY: -8
 				},
 				{
 					coordinates: [
-						[402, 24],	[405, 20],	[408, 24],		//blue orb
-						[502, 21],		//yellow orb
-						[599, 21],		//growth portal
+						[404, 24],	[407, 20],	[410, 24],		//blue orb
+						[504, 21],		//yellow orb
+						[601, 21],		//growth portal
 					],
 					offsetY: +8
 				},			
 				{
 					coordinates: [289, 22],		//ship portal
 					offsetX: -4
-				},				
+				},
+				{
+					coordinates: [125, 22],		//pulse rod
+					offsetX: +4
+				},
+				{
+					coordinates: [394, 20],		//pulse rod
+					offsetX: +4
+				},
+				{
+					coordinates: [
+						[22, 25],  [138, 23],  [207, 23],  [232, 18],  [246, 23],
+						[250, 23], [263, 19],  [702, 25],	[717, 25], [831, 21],
+						[866, 11], [903, 17], [939, 13], [946, 10], //deco
+						[815, 18], //mini portal
+					],
+					offsetY: +16
+				},	
+				{
+					coordinates: [654, 24],		//coin2
+					offsetY: -3,
+					offsetX: +3
+				},
 			]
 		},
 		{
@@ -399,7 +430,7 @@
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING",
 			decoType: "DECOCLOUD",
-			spikeSet: "B",
+			spikeSet: "C",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "INSANE",
@@ -415,7 +446,7 @@
 						[18, 53],	[403, 53],	[422, 52],		//orb
 						[695, 26],		//growth portal
 						[698, 26],		//cube portal
-						[747, 28],		//yellow orb
+						[748, 29],		//yellow orb
 					],
 					offsetY: -8
 				},
@@ -424,15 +455,29 @@
 						[75, 51],		//normal grav portal
 						[76, 51],		//ship portal
 						[359, 52],	[369, 54],		//orb
-						[800, 26],		//blue orb
+						[801, 27],		//blue orb
+						[107, 51], [109, 51], [111, 51], [117, 51],
+						[271, 45],	[271, 48], [271, 51], [337, 54],
+						[469, 48], [466, 49], [464, 50], [472, 49],
+						[508, 49], [510, 55], [601, 20], [601, 23], [601, 26],
+						[670, 20], [670, 23], [670, 26], [687, 20], [687, 23], [687, 26],
+						//deco
 					],
 					offsetY: +8,
+				},
+				{
+					coordinates: [
+						[43, 54], [153, 53], [170, 55], [521, 52], [753, 26],		//pulse rod
+					],
+					offsetY: +16,
 				},
 				{
 					coordinates: [
 						[158, 52],	[163, 53],	[439, 52],		//orb
 						[460, 49],		//mini portal
 						[498, 49],		//growth portal
+						[251, 50], [304, 46], [304, 53], [392, 48], [446, 51],
+						[518, 52], [839, 27], [795, 26], //deco
 					],
 					offsetX: -8
 				},
@@ -2164,31 +2209,6 @@
 						[314, 21],	[315, 21],	[459, 15],	[491, 14],	[584, 10],	[597, 13],	[601, 13],	[616, 11],	[619, 11],	[622, 12],	[625, 12],		//deco
 					],
 					offsetY: -8
-				},
-			]
-		},
-		{
-			level: "decode",
-			lowerText: "DECODE",
-			decoType: "DECOCLOUD",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_endgame",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x06,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					coordinates: [
-						[314, 10],	[324, 10],	[330, 9],	[335, 11],	[337, 10],		//deco
-						[341, 11],	[346, 10],	[352, 10],	[360, 9],		//deco
-					],
-					offsetY: +8
 				},
 			]
 		},

@@ -28,6 +28,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_danceofviolins)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_xx)
+	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_infinitecircles)
 	.byte .lobyte(level_data_deathmoon)
 	.byte .lobyte(level_data_supercycles)
@@ -63,6 +64,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_danceofviolins)
 	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_xx)
+	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_infinitecircles)
 	.byte .hibyte(level_data_deathmoon)
 	.byte .hibyte(level_data_supercycles)
@@ -98,6 +100,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_danceofviolins))
 	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_xx))
+	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_infinitecircles))
 	.byte .lobyte(.bank(level_data_deathmoon))
 	.byte .lobyte(.bank(level_data_supercycles))
@@ -160,6 +163,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_danceofviolins)
 	.byte .lobyte(sprite_data_highlife)
 	.byte .lobyte(sprite_data_xx)
+	.byte .lobyte(sprite_data_decode)
 	.byte .lobyte(sprite_data_infinitecircles)
 	.byte .lobyte(sprite_data_deathmoon)
 	.byte .lobyte(sprite_data_supercycles)
@@ -195,6 +199,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_danceofviolins)
 	.byte .hibyte(sprite_data_highlife)
 	.byte .hibyte(sprite_data_xx)
+	.byte .hibyte(sprite_data_decode)
 	.byte .hibyte(sprite_data_infinitecircles)
 	.byte .hibyte(sprite_data_deathmoon)
 	.byte .hibyte(sprite_data_supercycles)
@@ -230,6 +235,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_danceofviolins))
 	.byte .lobyte(.bank(sprite_data_highlife))
 	.byte .lobyte(.bank(sprite_data_xx))
+	.byte .lobyte(.bank(sprite_data_decode))
 	.byte .lobyte(.bank(sprite_data_infinitecircles))
 	.byte .lobyte(.bank(sprite_data_deathmoon))
 	.byte .lobyte(.bank(sprite_data_supercycles))
@@ -268,6 +274,7 @@ _level_lengths_lo:
 	.byte .lobyte($000096)		; danceofviolins
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($000090)		; xx
+	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($00006F)		; infinitecircles
 	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($000088)		; supercycles
@@ -305,6 +312,7 @@ _level_lengths_md:
 	.byte .hibyte($000096)		; danceofviolins
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($000090)		; xx
+	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($00006F)		; infinitecircles
 	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($000088)		; supercycles
@@ -342,6 +350,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000096)		; danceofviolins
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($000090)		; xx
+	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($00006F)		; infinitecircles
 	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($000088)		; supercycles

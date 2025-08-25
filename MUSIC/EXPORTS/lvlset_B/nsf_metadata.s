@@ -5,6 +5,7 @@ RIFFChunkStart "tlbl"
 .asciiz "Cant Let Go ~ Can't Let Go"
 .asciiz "Cycles"
 .asciiz "Practice ~ Stay Inside Me"
+.asciiz "Decode ~ Endgame"
 .asciiz "Death SFX"
 .asciiz "Click SFX"
 .asciiz "LEVEL COMPLETE! SFX"
@@ -24,6 +25,7 @@ RIFFChunkStart "taut"
 .asciiz "Original by DJVI, covered by UserSniper, alexmush"
 .asciiz "Original by DJVI, covered by aquamarine.gay, alexmush"
 .asciiz "Original by OcularNebula, covered by UserSniper"
+.asciiz "Original by Waterflame, covered by Vikrinox"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
@@ -41,16 +43,16 @@ RIFFChunkStart "taut"
 RIFFChunkStart "time"
 .if REGION = 0
 .dword 85550, 80750, 85933, 479634
-.dword 383, 50, 3167, 683
-.dword 100, 683, 683, 650
-.dword 967, 633, 950, 1150
-.dword 1650
+.dword 79283, 383, 50, 3167
+.dword 683, 100, 683, 683
+.dword 650, 967, 633, 950
+.dword 1150, 1650
 .else
 .dword 102840, 97040, 103280, 576760
-.dword 460, 40, 3020, 700
-.dword 120, 820, 820, 680
-.dword 920, 640, 1140, 1100
-.dword 1650
+.dword 95280, 460, 40, 3020
+.dword 700, 120, 820, 820
+.dword 680, 920, 640, 1140
+.dword 1100, 1650
 .endif
 
 RIFFChunkStart "fade"
@@ -58,4 +60,4 @@ RIFFChunkStart "fade"
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
-.dword 0
+.dword 0, 0
