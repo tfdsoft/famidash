@@ -3,25 +3,51 @@ CODE_BANK_PUSH(MOVEMENT_BANK)
 
 void bigboi_stuff();
 void ufo_ship_eject();
-void ship_movement(){
 
-	tmpfallspeed = SHIP_MAX_FALLSPEED(currplayer_table_idx);
-	if (controllingplayer->a || controllingplayer->up) {
-		tmpgravity = SHIP_GRAVITY_UP(currplayer_table_idx);
+void is_player_falling() {
+	tmp1 = (currplayer_gravity ? (currplayer_vel_y < 0) : (currplayer_vel_y > 0));
+}
+
+void ship_movement(){
+	is_player_falling();
+
+	if (controllingplayer->a || controllingplayer->up) { // holding
+		tmpgravity = SHIP_GRAVITY_BASE(currplayer_table_idx);
+	} else if (
+		!(controllingplayer->a || controllingplayer->up) && // not holding
+		!tmp1 // not falling
+	){
+		tmpgravity = SHIP_GRAVITY_AFTER_HOLD(currplayer_table_idx);
 	} else {
 		tmpgravity = SHIP_GRAVITY(currplayer_table_idx);
 	}
-	common_gravity_routine();
 
-	tmpfallspeed = SHIP_MAX_FALLSPEED(currplayer_table_idx&~TBLIDX_GRAV);
-	if (controllingplayer->a || controllingplayer->up) {
-		tmpgravity = SHIP_GRAVITY_UP(currplayer_table_idx&~TBLIDX_GRAV);
-	} else {
-		tmpgravity = SHIP_GRAVITY(currplayer_table_idx&~TBLIDX_GRAV);
+	if ((controllingplayer->a || controllingplayer->up) && // holding
+		tmp1 // falling
+	){
+		tmpgravity = SHIP_GRAVITY_HOLD_FALL(currplayer_table_idx);
 	}
 
-	if(currplayer_vel_y > tmpfallspeed) currplayer_vel_y -= tmpgravity;
-	if(currplayer_vel_y < -tmpfallspeed) currplayer_vel_y += tmpgravity;
+	if ((controllingplayer->a || controllingplayer->up) ^ (currplayer_gravity ? 1 : 0)) {
+		tmpgravity = -tmpgravity;
+	}
+
+	common_gravity_routine();
+
+	#define tmpfallspeedtop tmpA
+	#define tmpfallspeedbot tmpB
+
+	tmpfallspeedtop = SHIP_MAX_FALLSPEED_HOLD(currplayer_table_idx&~TBLIDX_GRAV); // Bottom cap
+	tmpfallspeedbot = SHIP_MAX_FALLSPEED(currplayer_table_idx&~TBLIDX_GRAV); // Top cap
+
+	tmpfallspeed = (currplayer_gravity ? tmpfallspeedbot : tmpfallspeedtop);
+	if(currplayer_vel_y < -tmpfallspeed) currplayer_vel_y = -tmpfallspeed;
+	
+	tmpfallspeed = (currplayer_gravity ? tmpfallspeedtop : tmpfallspeedbot);
+	if(currplayer_vel_y > tmpfallspeed) currplayer_vel_y = tmpfallspeed;
+
+	#undef tmpfallspeedtop
+	#undef tmpfallspeedbot
 
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
@@ -29,14 +55,6 @@ void ship_movement(){
 	ufo_ship_eject();
 
 	bigboi_stuff();
-
-	// check collision down a little lower than CUBE
-	Generic.y = high_byte(currplayer_y); // the rest should be the same
-	Generic.x = high_byte(currplayer_x); // the rest should be the same
-	
-	if(controllingplayer->a || controllingplayer->up) {
-		currplayer_vel_y = SHIP_GRAVITY_UP(currplayer_table_idx^TBLIDX_GRAV) * 2 + currplayer_vel_y;
-	}	
 }
 
 void ufo_ship_eject() {
