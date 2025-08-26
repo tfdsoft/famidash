@@ -2367,6 +2367,22 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+/*		{
+			level: "test8",
+			lowerText: "TEST8",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_electroman_adventures",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			parallaxDisable: false
+		}, */
 	],
 	globalObjectOffsets: [
 		/*	Format:
