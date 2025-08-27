@@ -1,4 +1,3 @@
-extern unsigned char drawing_frame;
 extern unsigned char* PARALLAX_CHR;
 
 void music_restore();
@@ -118,7 +117,6 @@ void reset_level() {
 	dual = twoplayer ? 1 : 0;
 	player_gravity[0] = GRAVITY_DOWN;
 	scroll_x = 0;
-	drawing_frame = 0;
 	gravity_mod = 0;
 	disco_sprites = 0;
 	player_mini[0] = player_mini[1] = currplayer_mini = 0;

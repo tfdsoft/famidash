@@ -75,7 +75,6 @@ sprite_data = _sprite_data
 	
 	; variables related to draw_screen
 	rld_column:			.res 1
-	drawing_frame:		.res 1
 	parallax_scroll_column: .res 1
 	parallax_scroll_column_start: .res 1
 
@@ -91,7 +90,6 @@ sprite_data = _sprite_data
 .export	_seam_scroll_y := seam_scroll_y
 .export _old_draw_scroll_y := old_draw_scroll_y
 
-.export _drawing_frame := drawing_frame
 .export _parallax_scroll_column := parallax_scroll_column
 .export _parallax_scroll_column_start := parallax_scroll_column_start
 
@@ -652,20 +650,14 @@ single_rle_byte:
 ; $278	| $2F0	|	02		|	There isn't	|	2	|	3	|
 ;	No seam can be distinguished by high byte >= 02 or bit 1
 
-	frame_free = 0
-	frame_R_attr = 1
-
 start:
-	LDX drawing_frame		;	If something is being drawn, continue
-	BNE switch				;__
-
 	LDA _scroll_x			;
 	LSR						;
 	LSR						;	If X == rld column and we are free,
 	LSR						;	start drawing the right edge
 	LSR						;
 	CMP rld_column			;
-	BEQ draw_screen_R_tiles	;__
+	BEQ draw_screen_R		;__
 
 	;
 	;	The drawing_frame is 0, but we don't have the right edge to update
@@ -684,31 +676,36 @@ start:
 jmpto_draw_screen_UD_tiles:
 	JMP draw_screen_UD_tiles_frame0
 
-switch:
-	DEX									;	if drawing_frame == 1, do frame 1
-	jeq	draw_screen_R_attributes		;__ of drawing the right edge (attributes)
-
-
 ; [Subroutine]
-.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
+.global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 .import _increase_parallax_scroll_column
 .import _no_parallax, _invisblocks, _force_platformer
 
-.proc draw_screen_R_tiles
+.proc draw_screen_R
 
 	TileWriteSize	= 15*2
+	AttrDataSize	= 16
+	AttrAddrSize	= 4
 
 	.repeat 4, I
 	.ident(.sprintf("TileOff%d", I))	= TileWriteSize*I
 	.endrepeat
 	TileEnd			= 0+(TileWriteSize*4)
 
+	AttrOffData		= 0+TileEnd
+	AttrOffAddr		= 0+TileEnd	; +AttrDataSize done by attributeCalc
+	AttrEnd			= 0+TileEnd+AttrDataSize+AttrAddrSize
+
+	TotalEnd		= AttrEnd-AttrDataSize
+
 	;__	Main rendering variables
 
 	CurrentRow = tmp1
 	LoopCount = tmp2
 	InvisBlMask = tmp3
+	NametableAddrHi = ptr3+0
 	SeamValue = ptr3+1
+
 
 	;__	Parallax rendering variables
 
@@ -717,9 +714,18 @@ switch:
 	ParallaxExtent = tmp3
 	SeamValueTmp = tmp4
 
-frame0:
-	LDA #frame_R_attr
-	STA drawing_frame
+
+	; Write architecture:
+
+	; Instruction buffer:
+	;	| Instruct.	| Tile Addr Hi 0|  Tile Addr Lo	| Tile Addr Hi 1| Attr Addr Hi 0| Attr Addr Hi 1|
+	;	|	0	1	|		2		|		3		|		4		|		5		|		6		|
+	; VRAM buffer:
+	;	| Data 0	| Data 1	| ...	| Data 15	| Addr Lo 0	| Addr Lo 1	| Addr Lo 2	| Addr Lo 3	|
+	;	|	0		|	1		| 2-14	|	15		|	16		|	17		|	18		| 	19		|
+
+
+start:
 	; Switch banks
 	crossPRGBankJSR ,_unrle_next_column,_level_data_bank
 	JSR writeToCollisionMap
@@ -763,8 +769,6 @@ write_start:
 	ADC #TileWriteSize - 1
 	TAX
 
-	; In-house replacement of get_ppu_addr, only counts X
-	; Address is big-endian
 	LDA rld_column ;   000xxxx0 - the left tiles of the metatiles
 	AND #$0F
 	ASL         ;__
@@ -774,10 +778,16 @@ write_start:
 	lda _scroll_x + 1 ; high byte
 	and #%00000001
 	tay
-	lda	ntAddrHiTbl,y
+	; Tiles
+	lda	tileNtAddrHiTbl,y
 	STA	instBufWriteBuffer+2
 	ORA #$08        ; 2nd nametable
 	STA	instBufWriteBuffer+4
+	; Attributes
+	lda	attrNtAddrHiTbl, Y
+	sta	instBufWriteBuffer+5
+	ora #$08			; 2nd nametable
+	sta	instBufWriteBuffer+6
 
 	; Set instruction
 	lda	#<(fl_lvlRenderRTiles-1)
@@ -815,7 +825,7 @@ write_start:
 RenderParallax:
 
 	lda	_no_parallax		;	Skip parallax rendering
-	bne	FinishRendering		;__	if there is none
+	bne	StartAttributes		;__	if there is none
 
 	; Loop through the vram writes and find any $00 tiles and replace them with parallax
 	; Calculate the end of the parallax column offset
@@ -832,6 +842,58 @@ RenderParallax:
 	; move to the next scroll column for next frame
 	jsr _increase_parallax_scroll_column
 
+StartAttributes:
+	; Seam pos for attributes:
+	; ( <seam_scroll_y & $E0 | >seam_scroll_y & 3) ^ column
+	LDA seam_scroll_y
+	AND #$E0
+	STA SeamValue
+	LDA seam_scroll_y+1
+	AND #$03	; add bit 1 to not use if no seam
+	ORA SeamValue
+	STA SeamValue
+
+	LDY	#>collMap2		;__	Get the default value
+	AND #$03			;	Bits 0 and 1 are directly from >seam_scroll_y
+	CMP	#$03			;	For value $FF start at screen 0, otherwise screen 2
+	BNE	:+				;
+		LDY	#>collMap0	;	Get high byte of starting value
+	:					;	(the screen)
+	STY	ptr1+1			;__
+
+	LDA rld_column		;
+	AND #$0E			;	Get column (w/o highest bit cuz attributes)
+	; ADC #<collMap0	; the low byte is 0
+	STA ptr1			;__
+	EOR	SeamValue		;	The only overlapping bit is bit 1,
+	STA	SeamValue		;__	if it's invalid the seam won't be drawn
+
+	JSR attributeCalc
+
+	; Increment screen (we always increment)
+	INC ptr1+1
+
+	DEC	SeamValue
+
+	JSR attributeCalc
+
+	LDA rld_column
+	LSR
+	ORA #$C0
+	
+	; Store address
+	LDX VRAM_INDEX
+	CLC
+	addressLoop:
+		; Low byte
+		STA VRAM_BUF+AttrOffAddr,	X
+		INX
+
+		; C is cleared by BCC
+		ADC #$08
+		CMP	#$E0
+		BCC addressLoop
+
 FinishRendering:
 
 	; Update rld_column
@@ -846,7 +908,7 @@ FinishRendering:
 		sta rld_column
 	.endif
 
-	ldx	#5
+	ldx	#7
 	jsr	transferWriteToInstBuf
 
 	lda	buf_curSeqMode
@@ -855,13 +917,11 @@ FinishRendering:
 
 	lda	VRAM_INDEX
 	clc
-	adc	#TileEnd
+	adc	#TotalEnd
 	sta	VRAM_INDEX
 
-	lda	#1				;	If system == PAL,
-	cmp	trueFullRegion	;	Draw attributes on the same frame
-	jeq	_draw_screen	;	(Doing it on NTSC and Dendy is VERY risky due to very tight NMI timing)
-	ldx	#0				;__	Otherwise return 1
+	lda	#1				;	Return 1
+	ldx	#0				;__
 
 	RTS
 
@@ -884,9 +944,9 @@ RenderParallaxSub:
 			iny		;	If not at beginning, start with 3 instead of 0
 			iny		;__	(shift accordingly)
 		:
-		lda	#$FF		;	No seam
-		sta	SeamValueTmp;__
-		bne	@afterSeam	;__	= BRA
+		lda	#$FF			;	No seam
+		sta	SeamValueTmp	;__
+		bne	@afterSeam		;__	= BRA
 	@yesSeam:
 		lda	SeamValue
 		; carry is clear
@@ -946,162 +1006,6 @@ RenderParallaxSub:
 		:								;
 		tay								;
 		jmp	@noSeamColl					;__
-
-; Column striped parallax data definition
-; add to the tile for the next row, up to 6.
-ParallaxBuffer:
-	ParallaxBufferLCol0:
-		.byte $80, $a0, $86, $a6, $8c, $90, $b0, $96, $b6, $80, $a0, $86, $a6, $8c
-	ParallaxBufferRCol0:
-		.byte $81, $a1, $87, $a7, $8d, $91, $b1, $97, $b7, $81, $a1, $87, $a7, $8d
-	ParallaxBufferLCol1:
-		.byte $82, $a2, $88, $a8, $8e, $92, $b2, $98, $b8, $82, $a2, $88, $a8, $8e
-	ParallaxBufferRCol1:
-		.byte $83, $a3, $89, $a9, $9c, $93, $b3, $99, $b9, $83, $a3, $89, $a9, $9c
-	ParallaxBufferLCol2:
-		.byte $84, $a4, $8a, $aa, $9d, $94, $b4, $9a, $ba, $84, $a4, $8a, $aa, $9d
-	ParallaxBufferRCol2:
-		.byte $85, $a5, $8b, $ab, $9e, $95, $b5, $9b, $bb, $85, $a5, $8b, $ab, $9e
-	ParallaxBufferLeftOffset:
-		.byte ParallaxBufferLCol0 - ParallaxBuffer
-		.byte ParallaxBufferLCol1 - ParallaxBuffer
-		.byte ParallaxBufferLCol2 - ParallaxBuffer
-	ParallaxBufferRightOffset:
-		.byte ParallaxBufferRCol0 - ParallaxBuffer
-		.byte ParallaxBufferRCol1 - ParallaxBuffer
-		.byte ParallaxBufferRCol2 - ParallaxBuffer
-
-ParallaxBufferStartTable:
-	.byte	0,	6,	3,	0,	6
-
-SeamTable:
-	.byte	0,	15
-
-ntAddrHiTbl:
-	.byte	$24,	$20
-.endproc
-
-; [Subroutine]
-.global metatiles_attr
-.import _no_parallax, _invisblocks, _force_platformer
-
-.proc draw_screen_R_attributes
-	AttrDataSize	= 16
-	AttrAddrSize	= 4
-
-	AttrOffData		= 0
-	AttrOffAddr		= 0+AttrDataSize
-	AttrEnd			= 0+AttrDataSize+AttrAddrSize
-
-	NametableAddrHi = tmp1
-	LoopCount		= tmp2
-	DecRldColumn	= ptr3+0
-	SeamValue		= ptr3+1
-	; Attribute write architecture:
-
-	; Instruction buffer:
-	;	| Instruct.	| Addr Hi 0	| Addr Hi 1	|
-	;	|	0	1	|	2		|	3		|
-	; VRAM buffer:
-	;	| Data 0	| Data 1	| ...	| Data 15	| Addr Lo 0	| Addr Lo 1	| Addr Lo 2	| Addr Lo 3	|
-	;	|	0		|	1		| 2-14	|	15		|	16		|	17		|	18		| 	19		|
-
-
-	; Decremented rld_column, very useful
-	LDX rld_column
-	DEX
-	.if USE_ILLEGAL_OPCODES
-		LDA #$0F
-		SAX DecRldColumn
-	.else
-		TXA
-		AND #$0F
-		STA DecRldColumn
-	.endif
-
-	; Seam pos for attributes:
-	; ( <seam_scroll_y & $E0 | >seam_scroll_y & 3) ^ column
-	LDA seam_scroll_y
-	AND #$E0
-	STA SeamValue
-	LDA seam_scroll_y+1
-	AND #$03	; add bit 1 to not use if no seam
-	ORA SeamValue
-	STA SeamValue
-
-	LDY	#>collMap2		;__	Get the default value
-	AND #$03			;	Bits 0 and 1 are directly from >seam_scroll_y
-	CMP	#$03			;	For value $FF start at screen 0, otherwise screen 2
-	BNE	:+				;
-		LDY	#>collMap0	;	Get high byte of starting value
-	:					;	(the screen)
-	STY	ptr1+1			;__
-
-	LDA DecRldColumn	;
-	AND #$0E			;	Get column (w/o highest bit cuz attributes)
-	; ADC #<collMap0	; the low byte is 0
-	STA ptr1			;__
-	EOR	SeamValue		;	The only overlapping bit is bit 1,
-	STA	SeamValue		;__	if it's invalid the seam won't be drawn
-
-	JSR attributeCalc
-
-	; Increment screen (we always increment)
-	INC ptr1+1
-
-	DEC	SeamValue
-
-	JSR attributeCalc
-
-	; Get address hi byte (either left or right side)
-	lda _scroll_x + 1 	; high byte
-	and #%00000001		;
-	tay					;	5 cycles, 6 bytes
-	lda	ntAddrHiTbl, Y	;__
-	sta	instBufWriteBuffer+2
-	ora #$08			; 2nd nametable
-	sta	instBufWriteBuffer+3
-
-	; Set instruction
-	lda	#<(fl_lvlRenderRAttr-1)
-	sta	instBufWriteBuffer+0
-	lda	#>(fl_lvlRenderRAttr-1)
-	sta	instBufWriteBuffer+1
-	
-	LDA DecRldColumn
-	LSR
-	ORA #$C0
-	
-	; Store address
-	LDX VRAM_INDEX	; Already offset
-	CLC
-	addressLoop:
-		; Low byte
-		STA VRAM_BUF,	X
-		INX
-
-		; C is cleared by BCC
-		ADC #$08
-		CMP	#$E0
-		BCC addressLoop
-	
-	LDY #16
-
-	STX VRAM_INDEX  ; State that the block is now occupied
-
-	ldx	#4
-	jsr	transferWriteToInstBuf
-
-	lda	buf_curSeqMode
-	ora	#$80
-	sta	buf_curSeqMode
-
-	; Reset frame counter
-	LDX #frame_free
-	STX drawing_frame
-
-	LDA #1
-	RTS
 
 attributeCalc:
 	LDA #8 - 1
@@ -1167,7 +1071,40 @@ attributeCalc:
 		BPL attributeLoop
 	RTS
 
-ntAddrHiTbl:
+; Column striped parallax data definition
+; add to the tile for the next row, up to 6.
+ParallaxBuffer:
+	ParallaxBufferLCol0:
+		.byte $80, $a0, $86, $a6, $8c, $90, $b0, $96, $b6, $80, $a0, $86, $a6, $8c
+	ParallaxBufferRCol0:
+		.byte $81, $a1, $87, $a7, $8d, $91, $b1, $97, $b7, $81, $a1, $87, $a7, $8d
+	ParallaxBufferLCol1:
+		.byte $82, $a2, $88, $a8, $8e, $92, $b2, $98, $b8, $82, $a2, $88, $a8, $8e
+	ParallaxBufferRCol1:
+		.byte $83, $a3, $89, $a9, $9c, $93, $b3, $99, $b9, $83, $a3, $89, $a9, $9c
+	ParallaxBufferLCol2:
+		.byte $84, $a4, $8a, $aa, $9d, $94, $b4, $9a, $ba, $84, $a4, $8a, $aa, $9d
+	ParallaxBufferRCol2:
+		.byte $85, $a5, $8b, $ab, $9e, $95, $b5, $9b, $bb, $85, $a5, $8b, $ab, $9e
+	ParallaxBufferLeftOffset:
+		.byte ParallaxBufferLCol0 - ParallaxBuffer
+		.byte ParallaxBufferLCol1 - ParallaxBuffer
+		.byte ParallaxBufferLCol2 - ParallaxBuffer
+	ParallaxBufferRightOffset:
+		.byte ParallaxBufferRCol0 - ParallaxBuffer
+		.byte ParallaxBufferRCol1 - ParallaxBuffer
+		.byte ParallaxBufferRCol2 - ParallaxBuffer
+
+ParallaxBufferStartTable:
+	.byte	0,	6,	3,	0,	6
+
+SeamTable:
+	.byte	0,	15
+
+tileNtAddrHiTbl:
+	.byte	$24,	$20
+
+attrNtAddrHiTbl:
 	.byte	$27,	$23
 .endproc
 
@@ -1345,7 +1282,7 @@ ntAddrHiTbl:
 			TAX					;__
 			TYA					;	Get X of nametable
 			AND	#$03			;__
-			ORA	draw_screen_R_tiles::ntAddrHiTbl, X
+			ORA	draw_screen_R::tileNtAddrHiTbl, X
 			LDY	this_seam_pos+1	;
 			BEQ	:+				;	Get Y of nametable
 				ORA	#$08		;__
@@ -1376,8 +1313,7 @@ ntAddrHiTbl:
 		jsr transferWriteToInstBuf
 
 		LDA #1
-		LDX	#frame_free
-		STX	drawing_frame
+		LDX	#0
 
 		RTS
 
@@ -1496,9 +1432,6 @@ ntAddrHiTbl:
 			ADC	#SeparateWriteSize-32	;
 			STA	VRAM_INDEX				;__
 
-			LDA	#frame_free
-			STA	drawing_frame
-
 			; TODO eventually: parallax
 
 			lda	#<(fl_seqLvlUDTiles-1)
@@ -1597,6 +1530,14 @@ write_loop:	; literally the same for both unified and separate writes
 	.endrepeat
 	TileEnd			= 0+(TileWriteSize*4)
 
+	AttrDataOff0	= TileEnd+0
+	AttrDataOff1	= TileEnd+4
+	AttrDataOff2	= TileEnd+8
+	AttrDataOff3	= TileEnd+12
+	AttrAddrOff		= TileEnd+16
+	
+	TotalSize	= TileEnd+20
+
 
 	lda	PPU_CTRL_VAR	;
 	ora	#$04			;	Set vertical orientation
@@ -1651,43 +1592,18 @@ write_loop:	; literally the same for both unified and separate writes
 		sta	PPU_DATA
 	.endrepeat
 
-	tya
-	clc
-	adc	#TileEnd
-	tay
-
-	rts	; Ropslide to next routine
-
-.endproc
-
-
-; [Not available in C]
-.segment "WRAMCODE"
-
-.proc fl_lvlRenderRAttr
-	
-	DataOff0 = 0
-	DataOff1 = 4
-	DataOff2 = 8
-	DataOff3 = 12
-	AddrOff = 16
-	TotalSize = 20
-
-
-	lda	PPU_CTRL_VAR	;
-	ora	#$04			;	Set vertical orientation
-	sta	PPU_CTRL		;__
+	;__	Attributes:
 
 	pla		;	Load first high byte of VRAM address
 	tax		;__
 
 	.repeat	4,	I
 		stx	PPU_ADDR
-		lda	VRAM_BUF+AddrOff+I,	y
+		lda	VRAM_BUF+AttrAddrOff+I,	y
 		sta	PPU_ADDR
-		lda	VRAM_BUF+DataOff0+I,	y
+		lda	VRAM_BUF+AttrDataOff0+I,	y
 		sta	PPU_DATA
-		lda	VRAM_BUF+DataOff1+I,	y
+		lda	VRAM_BUF+AttrDataOff1+I,	y
 		sta	PPU_DATA
 	.endrepeat
 
@@ -1696,11 +1612,11 @@ write_loop:	; literally the same for both unified and separate writes
 
 	.repeat	4,	I
 		stx	PPU_ADDR
-		lda	VRAM_BUF+AddrOff+I,	y
+		lda	VRAM_BUF+AttrAddrOff+I,	y
 		sta	PPU_ADDR
-		lda	VRAM_BUF+DataOff2+I,	y
+		lda	VRAM_BUF+AttrDataOff2+I,	y
 		sta	PPU_DATA
-		lda	VRAM_BUF+DataOff3+I,	y
+		lda	VRAM_BUF+AttrDataOff3+I,	y
 		sta	PPU_DATA
 	.endrepeat
 
