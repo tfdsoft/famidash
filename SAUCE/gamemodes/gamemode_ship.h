@@ -11,10 +11,12 @@ void is_player_falling() {
 void ship_movement(){
 	is_player_falling();
 
-	if (controllingplayer->a || controllingplayer->up) { // holding
+	tmp2 = (controllingplayer->a || controllingplayer->up); // input
+
+	if (tmp2) { // holding
 		tmpgravity = SHIP_GRAVITY_BASE(currplayer_table_idx);
 	} else if (
-		!(controllingplayer->a || controllingplayer->up) && // not holding
+		!tmp2 && // not holding
 		!tmp1 // not falling
 	){
 		tmpgravity = SHIP_GRAVITY_AFTER_HOLD(currplayer_table_idx);
@@ -22,13 +24,13 @@ void ship_movement(){
 		tmpgravity = SHIP_GRAVITY(currplayer_table_idx);
 	}
 
-	if ((controllingplayer->a || controllingplayer->up) && // holding
+	if (tmp2 && // holding
 		tmp1 // falling
 	){
 		tmpgravity = SHIP_GRAVITY_HOLD_FALL(currplayer_table_idx);
 	}
 
-	if ((controllingplayer->a || controllingplayer->up) ^ (currplayer_gravity ? 1 : 0)) {
+	if (tmp2 ^ (currplayer_gravity ? 1 : 0)) {
 		tmpgravity = -tmpgravity;
 	}
 
@@ -45,6 +47,8 @@ void ship_movement(){
 	
 	tmpfallspeed = (currplayer_gravity ? tmpfallspeedtop : tmpfallspeedbot);
 	if(currplayer_vel_y > tmpfallspeed) currplayer_vel_y = tmpfallspeed;
+
+	tmpfallspeed = tmpfallspeedtop;
 
 	#undef tmpfallspeedtop
 	#undef tmpfallspeedbot
