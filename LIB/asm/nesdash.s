@@ -677,6 +677,68 @@ jmpto_draw_screen_UD_tiles:
 	JMP draw_screen_UD_tiles_frame0
 
 ; [Subroutine]
+.proc attributeCalc
+	LoopCount = tmp2
+	AttrCntInc = tmp4
+	SeamValue = ptr3+1
+	TmpVRAM_INDEX = ptr4+0
+
+	STA LoopCount
+	loop:
+		; Read lower right metatile
+		LDY #$11
+		lda	(ptr1),Y
+		tax
+		; Read lower left metatile
+		dey
+		LDA (ptr1), Y
+		tay
+		; Get their attributes
+		lda metatiles_attr,x	; Lower right
+		ASL
+		ASL
+		ora metatiles_attr,y	; Lower left
+		STA tmp3
+
+		; Read upper right metatile
+		LDY #$01
+		LDA	(ptr1),Y
+		tax
+		; Read upper left metatile
+		dey
+		LDA (ptr1), Y
+		tay
+		; Get their attributes
+		lda metatiles_attr,x	; Upper right
+		ASL
+		ASL
+		ora metatiles_attr,y	; Upper left
+
+		; Combine
+		LDY tmp3	; Y has the lower metatile attrs, will shift by 4
+		ORA shiftBy4table,Y
+		LDX TmpVRAM_INDEX
+		STA VRAM_BUF,	X
+
+		; Increment pointer
+		LDA	ptr1
+		CMP SeamValue
+		BNE :+
+			DEC ptr1+1
+			DEC ptr1+1
+		:
+		CLC
+		ADC AttrCntInc
+		STA	ptr1
+
+		INC TmpVRAM_INDEX
+		DEC LoopCount
+		BPL loop
+	RTS
+.endproc
+
+
+; [Subroutine]
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
 .import _increase_parallax_scroll_column
 .import _no_parallax, _invisblocks, _force_platformer
@@ -693,7 +755,7 @@ jmpto_draw_screen_UD_tiles:
 	TileEnd			= 0+(TileWriteSize*4)
 
 	AttrOffData		= 0+TileEnd
-	AttrOffAddr		= 0+TileEnd	; +AttrDataSize done by attributeCalc
+	AttrOffAddr		= 0+TileEnd+AttrDataSize
 	AttrEnd			= 0+TileEnd+AttrDataSize+AttrAddrSize
 
 	TotalEnd		= AttrEnd-AttrDataSize
@@ -703,8 +765,10 @@ jmpto_draw_screen_UD_tiles:
 	CurrentRow = tmp1
 	LoopCount = tmp2
 	InvisBlMask = tmp3
+	AttrCntInc = tmp4
 	NametableAddrHi = ptr3+0
 	SeamValue = ptr3+1
+	AttrCalcTmpVRAM_INDEX = ptr4+0
 
 
 	;__	Parallax rendering variables
@@ -868,6 +932,15 @@ StartAttributes:
 	EOR	SeamValue		;	The only overlapping bit is bit 1,
 	STA	SeamValue		;__	if it's invalid the seam won't be drawn
 
+	LDA	VRAM_INDEX
+	CLC
+	ADC	#AttrOffData
+	STA	AttrCalcTmpVRAM_INDEX
+
+	LDA	#$20
+	STA	AttrCntInc
+
+	LDA #8 - 1
 	JSR attributeCalc
 
 	; Increment screen (we always increment)
@@ -875,6 +948,7 @@ StartAttributes:
 
 	DEC	SeamValue
 
+	LDA #8 - 1
 	JSR attributeCalc
 
 	LDA rld_column
@@ -1007,69 +1081,6 @@ RenderParallaxSub:
 		tay								;
 		jmp	@noSeamColl					;__
 
-attributeCalc:
-	LDA #8 - 1
-	STA LoopCount
-
-	attributeLoop:
-		; Read lower right metatile
-		LDY #$11
-		.if USE_ILLEGAL_OPCODES
-			lax (ptr1),y
-		.else
-			lda	(ptr1),Y
-			tax
-		.endif
-		; Read lower left metatile
-		dey
-		LDA (ptr1), Y
-		tay
-		; Get their attributes
-		lda metatiles_attr,x	; Lower right
-		ASL
-		ASL
-		ora metatiles_attr,y	; Lower left
-		STA tmp3
-
-		; Read upper right metatile
-		LDY #$01
-		.if USE_ILLEGAL_OPCODES
-			lax (ptr1),y
-		.else
-			LDA	(ptr1),Y
-			tax
-		.endif
-		; Read upper left metatile
-		dey
-		LDA (ptr1), Y
-		tay
-		; Get their attributes
-		lda metatiles_attr,x	; Upper right
-		ASL
-		ASL
-		ora metatiles_attr,y	; Upper left
-
-		; Combine
-		LDY tmp3	; Y has the lower metatile attrs, will shift by 4
-		ORA shiftBy4table,Y
-		LDX VRAM_INDEX
-		STA VRAM_BUF+AttrOffData,	X
-
-		; Increment pointer
-		LDA	ptr1
-		CMP SeamValue
-		BNE :+
-			DEC ptr1+1
-			DEC ptr1+1
-		:
-		CLC
-		ADC #$20
-		STA	ptr1
-
-		INC VRAM_INDEX
-		DEC LoopCount
-		BPL attributeLoop
-	RTS
 
 ; Column striped parallax data definition
 ; add to the tile for the next row, up to 6.
