@@ -34,27 +34,23 @@ void ship_movement(){
 		tmpgravity = -tmpgravity;
 	}
 
+	// This because it is bigger and its needed
+	tmpfallspeed = 0x4443;
+
 	common_gravity_routine();
 
-	#define tmpfallspeedtop tmpA
-	#define tmpfallspeedbot tmpB
-
-	tmpfallspeedtop = SHIP_MAX_FALLSPEED_HOLD(currplayer_table_idx&~TBLIDX_GRAV); // Bottom cap
-	tmpfallspeedbot = SHIP_MAX_FALLSPEED(currplayer_table_idx&~TBLIDX_GRAV); // Top cap
-
-	tmpfallspeed = (currplayer_gravity ? tmpfallspeedbot : tmpfallspeedtop);
-	if(currplayer_vel_y < -tmpfallspeed) currplayer_vel_y = -tmpfallspeed;
-	
-	tmpfallspeed = (currplayer_gravity ? tmpfallspeedtop : tmpfallspeedbot);
-	if(currplayer_vel_y > tmpfallspeed) currplayer_vel_y = tmpfallspeed;
-
-	tmpfallspeed = tmpfallspeedtop;
-
-	#undef tmpfallspeedtop
-	#undef tmpfallspeedbot
+	// Sorry alex but cc65 didn't want to cooperate and i almost go crazy
+	if (currplayer_gravity) {
+		if(currplayer_vel_y < -0x0369) currplayer_vel_y = -0x0369;
+		if(currplayer_vel_y > 0x0443) currplayer_vel_y = 0x0443;
+	} else {
+		if(currplayer_vel_y < -0x0443) currplayer_vel_y = -0x0443;
+		if(currplayer_vel_y > 0x0369) currplayer_vel_y = 0x0369;
+	}
 
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
+
 	
 	ufo_ship_eject();
 
