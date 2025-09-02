@@ -216,6 +216,13 @@
 			coveringArtist: "Clickerty",
 		},
 		{
+			fmsSongName: "Bit Of A Vibe",
+			upperText: "BIT OF",
+			lowerText: "A VIBE",
+			originalArtist: "Clickerty",
+			coveringArtist: "Clickerty",
+		},
+		{
 			fmsSongName: "Blacklight",
 			lowerText: "BLACKLIGHT",
 			originalArtist: "RUKKUS",
@@ -257,6 +264,12 @@
 			originalArtist: "Waterflame",
 			coveringArtist: "cloud54",
 		},
+		{
+			fmsSongName: "Cryogenic",
+			lowerText: "CRYOGENIC",
+			originalArtist: "NerdBoy628",
+			coveringArtist: "NerdBoy628",
+		},		
 		{
 			fmsSongName: "Dance of the violins",
 			upperText: "DANCE OF",
@@ -352,6 +365,12 @@
 			lowerText: "FIRE AURA",
 			originalArtist: "Kid2Will",
 			coveringArtist: "Vikrinox",
+		},
+		{
+			fmsSongName: "Free Mind",
+			lowerText: "FREE MIND",
+			originalArtist: "ElAngel378",
+			coveringArtist: "ElAngel378",
 		},
 		{
 			fmsSongName: "FREEDOM DiVE",
