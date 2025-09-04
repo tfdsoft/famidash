@@ -99,15 +99,71 @@
 			lowerText: "THIS LEVEL",
 			decoType: "DECO1",
 			spikeSet: "A",
-			blockSet: "B",
+			blockSet: "A",
 			sawSet: "A",
 			difficulty: "HARD",
-			stars: 4,
+			stars: 4,			
 			songID: "song_driving_by_night",
 			startingGameMode: 0,
-			startingSpeed: 1,
+			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{ coordinates: [161, 18], offsetX: +4 }, //pad
+				{ coordinates: [172, 16], offsetX: +8 }, //circle
+				{ coordinates: [180, 17], offsetX: +8 }, //circle
+				{ coordinates: [189, 16], offsetX: +8 }, //circle
+				{ coordinates: [197, 16], offsetX: +8 }, //circle
+				{ coordinates: [198, 16], offsetX: -8 }, //arrow
+				{ coordinates: [200, 16], offsetX: +8 }, //circle
+				{ coordinates: [201, 16], offsetX: -8 }, //arrow
+				{ coordinates: [203, 16], offsetX: +8 }, //circle
+				{ coordinates: [204, 16], offsetX: -8 }, //arrow
+				{ coordinates: [211, 17], offsetX: +8 }, //circle
+				{ coordinates: [219, 16], offsetX: +8 }, //circle
+				{ coordinates: [227, 17], offsetX: +8 }, //circle
+				{ coordinates: [235, 18], offsetX: +8 }, //circle
+				{ coordinates: [236, 18], offsetX: -8 }, //arrow
+				{ coordinates: [238, 18], offsetX: +8 }, //circle
+				{ coordinates: [239, 18], offsetX: -8 }, //arrow
+				{ coordinates: [241, 18], offsetX: +8 }, //circle
+				{ coordinates: [242, 18], offsetX: -8 }, //arrow
+				{ coordinates: [249, 16], offsetX: +8 }, //circle
+				{ coordinates: [257, 17], offsetX: +8 }, //circle
+				{ coordinates: [264, 16], offsetX: -15 }, //portal
+				{ coordinates: [269, 17], offsetX: +8 }, //circle
+				{ coordinates: [277, 16], offsetX: +8 }, //circle
+				{ coordinates: [285, 17], offsetX: +8 }, //circle
+				{ coordinates: [286, 17], offsetX: -8 }, //arrow
+				{ coordinates: [288, 17], offsetX: +8 }, //circle
+				{ coordinates: [289, 17], offsetX: -8 }, //arrow
+				{ coordinates: [291, 17], offsetX: +8 }, //circle
+				{ coordinates: [292, 17], offsetX: -8 }, //arrow
+				{ coordinates: [299, 16], offsetX: +8 }, //circle
+				{ coordinates: [307, 17], offsetX: +8 }, //circle
+				{ coordinates: [315, 16], offsetX: +8 }, //circle
+				{ coordinates: [323, 16], offsetX: +8 }, //circle
+				{ coordinates: [324, 16], offsetX: -8 }, //arrow
+				{ coordinates: [326, 16], offsetX: +8 }, //circle
+				{ coordinates: [327, 16], offsetX: -8 }, //arrow
+				{ coordinates: [329, 16], offsetX: +8 }, //circle
+				{ coordinates: [330, 16], offsetX: -8 }, //arrow
+				{ coordinates: [337, 17], offsetX: +8 }, //circle
+				{ coordinates: [345, 16], offsetX: +8 }, //circle
+				{ coordinates: [353, 16], offsetX: +8 }, //circle
+				{ coordinates: [354, 16], offsetX: -8 }, //arrow
+				{ coordinates: [356, 16], offsetX: +8 }, //circle
+				{ coordinates: [357, 16], offsetX: -8 }, //arrow
+				{ coordinates: [359, 16], offsetX: +8 }, //circle
+				{ coordinates: [360, 16], offsetX: -8 }, //arrow
+				{ coordinates: [363, 15], offsetX: -15 }, //portal
+				{ coordinates: [380, 16], offsetX: +16 }, //circle (sign)
+				{ coordinates: [403, 18], offsetX: +16 }, //circle (sign)
+				{ coordinates: [447, 13], offsetX: +16 }, //circle (sign)
+				{ coordinates: [485, 17], offsetX: +16 }, //circle (sign)
+				{ coordinates: [522, 18], offsetX: +16 }, //circle (sign)
+			],
 		},
 		{
 			level: "subzero",

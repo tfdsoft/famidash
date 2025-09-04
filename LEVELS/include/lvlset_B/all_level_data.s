@@ -174,7 +174,7 @@
 		.incbin "EXPORTS/scarletsurge.lz.bin" ; Size: 7570
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8151 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8088 bytes
 	.export level_data_endorphinrush
 	level_data_endorphinrush:
 	; Header
@@ -193,26 +193,8 @@
 	; Level data
 		.incbin "EXPORTS/endorphinrush.lz.bin" ; Size: 6537
 
-	.export level_data_lookatthislevel
-	level_data_lookatthislevel:
-	; Header
-		.byte song_driving_by_night ;___ Song ID
-		.byte 0 ;_______________________ Starting game mode
-		.byte 1 ;_______________________ Starting speed
-		.byte 0 ;_______________________ Disable parallax
-		.byte 0 ;_______________________ Force platformer
-		.byte _DECO1 ;__________________ Deco type
-		.byte _SPIKESA ;________________ Spike set
-		.byte _BLOCKSB ;________________ Block set
-		.byte _SAWBLADESA ;_____________ Sawblade set
-		.byte $0F ;_____________________ Starting background color
-		.byte $0F ;_____________________ Starting ground color
-		.byte 27 ;______________________ Level height
-	; Level data
-		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1614
 
-
-.segment "DAT_BANK_0B"	; Total bank size: 8016 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8140 bytes
 	.export level_data_clutterfunk2
 	level_data_clutterfunk2:
 	; Header
@@ -230,6 +212,24 @@
 		.byte 27 ;___________________ Level height
 	; Level data
 		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6465
+
+	.export level_data_lookatthislevel
+	level_data_lookatthislevel:
+	; Header
+		.byte song_driving_by_night ;___ Song ID
+		.byte 0 ;_______________________ Starting game mode
+		.byte 0 ;_______________________ Starting speed
+		.byte 1 ;_______________________ Disable parallax
+		.byte 0 ;_______________________ Force platformer
+		.byte _DECO1 ;__________________ Deco type
+		.byte _SPIKESA ;________________ Spike set
+		.byte _BLOCKSA ;________________ Block set
+		.byte _SAWBLADESA ;_____________ Sawblade set
+		.byte $0F ;_____________________ Starting background color
+		.byte $0F ;_____________________ Starting ground color
+		.byte 27 ;______________________ Level height
+	; Level data
+		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1675
 
 
 .segment "DAT_BANK_0C"	; Total bank size: 7848 bytes
@@ -332,7 +332,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2111
 
 
-.segment "DAT_BANK_11"	; Total bank size: 8178 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8170 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -350,6 +350,11 @@
 		.byte 27 ;_____________ Level height
 	; Level data
 		.incbin "EXPORTS/decode.lz.bin" ; Size: 5897
+
+	.export level_data_subtleoddities_1
+	level_data_subtleoddities_1:
+	; Level data
+		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2273
 
 
 .segment "DAT_BANK_12"	; Total bank size: 8078 bytes
@@ -654,7 +659,7 @@
 		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2550
 
 
-.segment "DAT_BANK_24"	; Total bank size: 8062 bytes
+.segment "DAT_BANK_24"	; Total bank size: 8105 bytes
 	.export level_data_ninox
 	level_data_ninox:
 	; Header
@@ -690,11 +695,6 @@
 		.byte 27 ;__________________ Level height
 	; Level data
 		.incbin "EXPORTS/factorytime.lz.bin" ; Size: 2329
-
-	.export level_data_subtleoddities_1
-	level_data_subtleoddities_1:
-	; Level data
-		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2273
 
 
 .segment "DAT_BANK_25"	; Total bank size: 8130 bytes
