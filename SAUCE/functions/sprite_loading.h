@@ -747,11 +747,10 @@ void sprite_collide_lookup() {
 	
 	spcl_shipufo:
 		settrailstuff();
-		if (gamemode != collided) currplayer_vel_y /= 2;
 		// intentional leak
 	spcl_ball:
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
-		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
+		if (gamemode != collided) currplayer_vel_y /= 2;
 		gamemode = collided;
 		activesprites_activated[index] = 1;
 		retrofireballclear();
@@ -1239,20 +1238,7 @@ void retrofireballclear() {
 
 void dual_cap_check() {
 	if (dual && !twoplayer) {
-		if (currplayer == 0) {
-			if (POS_DUAL_CAP_CHECK(framerate) < player_vel_y[1]) {
-				player_vel_y[1] = POS_DUAL_CAP_CHECK(framerate);
-			} else if (NEG_DUAL_CAP_CHECK(framerate) >= player_vel_y[1]) {
-				player_vel_y[1] = NEG_DUAL_CAP_CHECK(framerate);
-			}
-		}
-		else {
-			if (POS_DUAL_CAP_CHECK(framerate) < player_vel_y[0]) {
-				player_vel_y[0] = POS_DUAL_CAP_CHECK(framerate);
-			} else if (NEG_DUAL_CAP_CHECK(framerate) >= player_vel_y[0]) {
-				player_vel_y[0] = NEG_DUAL_CAP_CHECK(framerate);
-			}
-		}					
+		player_vel_y[!currplayer] /= 2;
 	}
 }				
 
