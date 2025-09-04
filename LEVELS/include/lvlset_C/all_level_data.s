@@ -96,7 +96,7 @@
 		.incbin "EXPORTS/sonicwave.lz.0.bin" ; Size: 8119
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8094 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8088 bytes
 	.export level_data_dearnostalgists
 	level_data_dearnostalgists:
 	; Header
@@ -113,7 +113,7 @@
 		.byte $1C ;______________ Starting ground color
 		.byte 57 ;_______________ Level height
 	; Level data
-		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8094
+		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8088
 
 
 .segment "DAT_BANK_07"	; Total bank size: 8051 bytes
@@ -444,11 +444,11 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5222
 
 
-.segment "DAT_BANK_18"	; Total bank size: 8158 bytes
+.segment "DAT_BANK_18"	; Total bank size: 8151 bytes
 	.export level_data_dearnostalgists_0
 	level_data_dearnostalgists_0:
 	; Level data
-		.incbin "EXPORTS/dearnostalgists.lz.1.bin" ; Size: 5162
+		.incbin "EXPORTS/dearnostalgists.lz.1.bin" ; Size: 5155
 
 
 .segment "DAT_BANK_19"	; Total bank size: 8095 bytes
