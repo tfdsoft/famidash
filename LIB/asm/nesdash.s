@@ -153,15 +153,10 @@ loop:
 	iny
 	EOR xargs+0
 	sta OAM_BUF+2,x
-	.if USE_ILLEGAL_OPCODES
-		txa			;	aka X += 4
-		axs #<-4	;__
-	.else
-		inx
-		inx
-		inx
-		inx
-	.endif
+	inx
+	inx
+	inx
+	inx
 	jmp loop
 
 end:
@@ -337,12 +332,8 @@ _init_rld:
 	sty debt_seam_scroll_y
 	sty debt_seam_scroll_y+1
 
-	.if USE_ILLEGAL_OPCODES
-		lax (ptr1),y
-	.else
-		LDA	(ptr1),y
-		TAX
-	.endif
+	LDA	(ptr1),y
+	TAX
 	EOR #$FF			;
 	CLC					;	Level height
 	ADC #$01			;
@@ -973,14 +964,9 @@ FinishRendering:
 	; Update rld_column
 	ldx rld_column
 	inx
-	.if USE_ILLEGAL_OPCODES
-		lda #$0F
-		sax rld_column
-	.else
-		txa
-		and #$0F
-		sta rld_column
-	.endif
+	txa
+	and #$0F
+	sta rld_column
 
 	ldx	#7
 	jsr	transferWriteToInstBuf
@@ -2545,12 +2531,8 @@ drawplayer_center_offsets:
 		BNE @no_round		    ;__
         @round:	    
 			STA	_cube_rotate+0	;__ low_byte = 0
-			.if USE_ILLEGAL_OPCODES
-				LAX _cube_rotate+1	;	LAX abs is apparently stable
-			.else
-				LDA _cube_rotate+1
-				TAX
-			.endif
+			LDA _cube_rotate+1
+			TAX
 			SEC					;
 			SBC #12				;
 			BCC :+				;	Limit table idx to 0..12
@@ -3053,12 +3035,8 @@ drawplayer_common := _drawplayerone::common
 		BNE @no_round			;__
 		@round:
 			STA	_cube_rotate+2	;__ low_byte = 0
-			.if USE_ILLEGAL_OPCODES
-				LAX _cube_rotate+3	;	LAX abs is apparently stable
-			.else
-				LDA _cube_rotate+3	;
-				TAX
-			.endif
+			LDA _cube_rotate+3	;
+			TAX
 			SEC					;
 			SBC #12				;
 			BCC :+				;	Limit table idx to 0..12
@@ -3422,12 +3400,9 @@ drawplayer_common := _drawplayerone::common
 	LDA #$00
 	STA ptr1
 
-	.if USE_ILLEGAL_OPCODES
-		LAX (ptr1),Y
-	.else
-		LDA (ptr1),Y
-		TAX
-	.endif
+
+	LDA (ptr1),Y
+	TAX
 	LDA metatiles_coll,X	;	return is_solid[collision];
 	STA _collision	;
 	RTS				;__

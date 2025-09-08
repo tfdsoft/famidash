@@ -55,21 +55,6 @@
 
 
 
-// OPTIMIZATION SETTINGS ======================================
-// Speed up parts of the game with these flag(s).
-//
-// Use Illegal Opcodes
-// set this to 1 to *slightly* speed up some code in nesdash.s.
-// real Famicoms/NESs should have no problems executing code
-// with such opcodes, but clone CPUs in Famiclones such as
-// Dendy as well as some emulators do not execute those
-// reliably, therefore we advise to have it turned off for
-// maximum hardware compatibility.
-#define USE_ILLEGAL_OPCODES 0
-// ============================================================
-
-
-
 // ADVANCED SETTINGS ==========================================
 // !! ONLY CHANGE IF YOU KNOW WHAT YOU'RE DOING !!
 //
