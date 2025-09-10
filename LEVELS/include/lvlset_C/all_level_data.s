@@ -281,7 +281,7 @@
 		.incbin "EXPORTS/fairydust.lz.bin" ; Size: 6830
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8017 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8067 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -366,7 +366,7 @@
 		.incbin "EXPORTS/eighto.lz.bin" ; Size: 5742
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8167 bytes
+.segment "DAT_BANK_15"	; Total bank size: 8189 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -401,7 +401,7 @@
 		.byte $02 ;__________________ Starting ground color
 		.byte 27 ;___________________ Level height
 	; Level data
-		.incbin "EXPORTS/everymadness.lz.bin" ; Size: 2608
+		.incbin "EXPORTS/everymadness.lz.bin" ; Size: 2630
 
 
 .segment "DAT_BANK_16"	; Total bank size: 8134 bytes
