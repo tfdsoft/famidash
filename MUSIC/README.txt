@@ -1,6 +1,6 @@
 To add / edit music, edit MODULES/MODULES/music_master.dnm in Dn-FamiTracker 0.5.0.2; it's also possible to add music via FamiStudio >= 4.4.2 in the MODULES/MODULES/music_master.fms file.
 
-When adding / editing anything in the modules, add it to the changelog and describe it in exact detail. If you edited something and didn't add it to the changelog, @alexmush will personally shit your pants.
+When adding / editing anything in the modules, add it to the changelog and describe it in exact detail. If you edited something and didn't add it to the changelog, one of the music maintainers will personally shit your pants.
 
 IT IS NOT RECOMMENDED FOR 2 PEOPLE TO WORK SIMULTANEOUSLY ON THE .dnm, SINCE MERGING THAT IS ONE HELL OF A HASSLE.
 
@@ -46,4 +46,4 @@ After this, the same precautions and actions follow, no matter where you worked 
 	10. Test the game.
 	11. If the song did not appear anywhere during the export process, refer to step 4.
 	12. If the compilation errors out due to an overflow in DAT_BANK_XX, congratulations, you've run out of space! Refer to step 13.
-	13. If anything odd went on in any of these steps, ping @alexmush and they'll probably respond within 48 hours (response times will vary)
+	13. If anything odd went on in any of these steps, ping @kandowontu and you'll probably get a response within 120 hours (response times will vary)
