@@ -272,7 +272,7 @@
 		.incbin "EXPORTS/hell.lz.bin" ; Size: 6276
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 7285 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8185 bytes
 	.export level_data_xx
 	level_data_xx:
 	; Header
@@ -292,7 +292,7 @@
 		.incbin "EXPORTS/xx.lz.bin" ; Size: 6204
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8137 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 7207 bytes
 	.export level_data_dorabaebasic10
 	level_data_dorabaebasic10:
 	; Header
@@ -417,7 +417,7 @@
 		.incbin "EXPORTS/danceofviolins.lz.bin" ; Size: 5321
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8154 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8148 bytes
 	.export level_data_oceane
 	level_data_oceane:
 	; Header
@@ -434,7 +434,7 @@
 		.byte $0F ;______________ Starting ground color
 		.byte 27 ;_______________ Level height
 	; Level data
-		.incbin "EXPORTS/oceane.lz.bin" ; Size: 2928
+		.incbin "EXPORTS/oceane.lz.bin" ; Size: 2922
 
 
 .segment "DAT_BANK_17"	; Total bank size: 8099 bytes

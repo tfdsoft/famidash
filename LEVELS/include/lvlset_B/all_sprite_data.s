@@ -748,7 +748,7 @@ sprite_data_darkparadise:
   .byte $d0,$26,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0E"
+.segment "DAT_BANK_0F"
 sprite_data_leveleasy:
   .byte $00,$00,$70,$03,$ac
   .byte $00,$00,$80,$03,$e1
@@ -3085,7 +3085,7 @@ sprite_data_pyrophoric:
   .byte $d0,$1d,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0F"
+.segment "DAT_BANK_0E"
 sprite_data_oceane:
   .byte $00,$00,$d0,$02,$80
   .byte $00,$00,$e0,$02,$b6
@@ -3220,6 +3220,7 @@ sprite_data_oceane:
   .byte $40,$0b,$10,$03,$10
   .byte $50,$0b,$d0,$02,$80
   .byte $50,$0b,$e0,$02,$b1
+  .byte $90,$0b,$50,$03,$0b
   .byte $a0,$0b,$e0,$02,$b8
   .byte $a0,$0b,$50,$03,$0b
   .byte $f0,$0b,$30,$03,$01
@@ -3404,23 +3405,16 @@ sprite_data_oceane:
   .byte $00,$1c,$d0,$02,$93
   .byte $10,$1c,$d0,$02,$83
   .byte $20,$1c,$d0,$02,$82
-  .byte $60,$1c,$e0,$02,$31
   .byte $70,$1c,$d0,$02,$a1
-  .byte $70,$1c,$80,$03,$2e
   .byte $80,$1c,$d0,$02,$91
   .byte $90,$1c,$d0,$02,$81
-  .byte $90,$1c,$e0,$02,$2f
   .byte $a0,$1c,$d0,$02,$82
-  .byte $b0,$1c,$80,$03,$30
   .byte $c0,$1c,$d0,$02,$93
   .byte $d0,$1c,$d0,$02,$83
   .byte $e0,$1c,$d0,$02,$82
-  .byte $e0,$1c,$80,$03,$2e
   .byte $10,$1d,$d0,$02,$a1
-  .byte $10,$1d,$e0,$02,$2f
   .byte $20,$1d,$d0,$02,$91
   .byte $30,$1d,$d0,$02,$81
-  .byte $30,$1d,$80,$03,$30
   .byte $40,$1d,$d0,$02,$82
   .byte $60,$1d,$10,$03,$08
   .byte $70,$1d,$d0,$02,$93
