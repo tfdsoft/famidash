@@ -394,8 +394,11 @@ finish:
 CURSED_MUSIC_ENABLE = 1
 .include "famistudio_ca65.s"
 
-
+.if !__THE_ALBUM
 .segment "SFX_BANK"
+.else
+.segment "XCD_BANK_06"
+.endif
 	.include "sfx.s"
 
 .segment "COLLMAP0"
