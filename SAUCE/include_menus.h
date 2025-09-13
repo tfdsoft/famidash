@@ -40,17 +40,19 @@ CODE_BANK("XCD_BANK_06")
 #include "menustates/progressbar_pt2.c"
 #endif
 
+
+#if !__THE_ALBUM
 CODE_BANK("XCD_BANK_02")
 
 #include "defines/palette/palettes_XCD02.c"
-
-#if !__THE_ALBUM
 #include "defines/nametable/menunametable_XCD02.c"
 #include "menustates/instructions.c"
 	#if !__VS_SYSTEM
 	#include "menustates/settings.c"
 	#endif
 #else
+CODE_BANK("XCD_BANK_03")
+#include "defines/palette/palettes_XCD02.c"
 #include "defines/album_nametable/menunametable_XCD02.c"
 #endif
 

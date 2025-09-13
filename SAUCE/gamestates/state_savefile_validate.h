@@ -1,9 +1,8 @@
 #if !__THE_ALBUM
 CODE_BANK_PUSH("XCD_BANK_02")
 #else
-CODE_BANK_PUSH("XCD_BANK_01")
+CODE_BANK_PUSH("XCD_BANK_03")
 #endif
-
 void setdefaultoptions();
 
 void mouse_and_cursor();

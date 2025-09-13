@@ -583,7 +583,7 @@ single_rle_byte:
 
 
 
-
+.if !__THE_ALBUM
 .segment _BACKGROUND_RENDER_BANK
 
 .proc writeToCollisionMap
@@ -686,8 +686,6 @@ noSeam:
 	;	02		|	There isn't	|	2	|	3	|
 	;	No seam can be distinguished by high byte >= 02 or bit 1
 .endproc
-
-.if !__THE_ALBUM
 
 ; char draw_screen();
 .segment _BACKGROUND_RENDER_BANK
@@ -1738,10 +1736,10 @@ ntAddrHiTbl:
 
 .endproc
 
+.if !__THE_ALBUM
 ; void movement();
 .segment _MOVEMENT_BANK
 
-.if !__THE_ALBUM
 .import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _wave_movement
 .import _retro_mode
 
@@ -3832,6 +3830,7 @@ SSDPCM_getbyte:
 
 
 ; void increment_attempt_count();
+.if !__THE_ALBUM
 .segment "XCD_BANK_00"
 
 .import _attemptCounter
@@ -3877,7 +3876,6 @@ SSDPCM_getbyte:
 	finish:
 	rts
 .endproc
-
 
 ; void display_attempt_counter (uint8_t zeroChr, uintptr_t ppu_address);
 .segment _LVLDONE_BANK
@@ -3948,6 +3946,7 @@ SSDPCM_getbyte:
 
 		jmp	__one_vram_buffer
 .endproc
+.endif
 
 
 .if !__THE_ALBUM

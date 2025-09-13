@@ -376,9 +376,9 @@ finish:
 	jmp _main			;no parameters
  
 	.include "get_tv_system.s"
-
+.if !__THE_ALBUM
 	.include "METATILES/metatiles.s"
-
+.endif
 	.include "music_data_header.s"
 
 	.include "all_level_data.s"

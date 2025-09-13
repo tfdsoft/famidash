@@ -33,8 +33,6 @@ asmDpcmSongMatchRegex = lambda x : r'(?ms:(^@song' + x + r'\S*:.*?)(?=^@song(?!'
 
 datBankSegPrefix = "DAT_BANK_"
 dmcBankMetaUnused = 63  # a special dmc bank for shit to go unused
-lastDatBank = 0x33
-
 musicFolder = pathlib.Path(sys.path[0]).resolve()
 tmpFolder = (musicFolder.parent / "TMP").resolve()
 
@@ -364,6 +362,7 @@ if __name__ == "__main__":
                 help='Output folder for the include files')
     args = parser.parse_args()
     
+    
     metadataPath = args.metadata
 
     fsCmd = args.famistudioCommand
@@ -413,6 +412,12 @@ if __name__ == "__main__":
     dpcmAlignerName = processed_metadata['dpcmAlignerName']
 
     songNames = [song['Name'] for song in fsTxtData['Song']]
+    
+    if len(songNames) > 150:
+        lastDatBank = 0x36
+    else:
+        lastDatBank = 0x33
+    
     neededSongNames = sorted(i['fmsSongName'] for i in processed_metadata['filteredSongList'])
     if any(i not in songNames for i in neededSongNames):
         print('Songs ', ", ".join([f'"{i}"' for i in neededSongNames if i not in songNames]), ' not found in FamiStudio module. Please check the song names', sep="")

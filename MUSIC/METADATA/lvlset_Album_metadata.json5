@@ -502,7 +502,19 @@
 			lowerText: "MAGIC TOUCH",
 			originalArtist: "Romos",
 			coveringArtist: "SeaGlowingPro",
-		},	
+		},
+		{
+			fmsSongName: "Mayhem",
+			lowerText: "MAYHEM",
+			originalArtist: "Crafty Jumper",
+			coveringArtist: "Crafty Jumper",
+		},
+		{
+			fmsSongName: "Megalovania",
+			lowerText: "MEGALOVANIA",
+			originalArtist: "Toby Fox",
+			coveringArtist: "Crafty Jumper",
+		},		
 		{
 			fmsSongName: "Meltdown",
 			lowerText: "MELTDOWN",

@@ -1,4 +1,4 @@
-
+#if !__THE_ALBUM
 CODE_BANK_PUSH("XCD_BANK_01")
 
 #define SLOPE_NONE			0b0000
@@ -1081,3 +1081,4 @@ void commonly_used_death_check() {
 
 
 CODE_BANK_POP()
+#endif

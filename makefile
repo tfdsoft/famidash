@@ -70,6 +70,7 @@ TMPDIR_PREFIX = TMP
 OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= CONFIG/mmc3.cfg
+CFG2 ?= CONFIG/mmc3-album.cfg
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -106,7 +107,7 @@ album:
 	@$(MAKE) build LEVELSET=$(LEVELSET) \
 	CC65_DEFINES=$(CC65_DEFINES) \
 	CA65_DEFINES=$(CA65_DEFINES) \
-	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
+	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG2) \
 	--no-print-directory
 
 vs-sys: LEVELSET = A
