@@ -22,7 +22,7 @@
 			coveringArtist: ["Zenith302", "UserSniper"]
 		},
 		{
-			fmsSongName: "Back on Track",
+			fmsSongName: "Back on Track Full",
 			upperText: "BACK ON",
 			lowerText: "TRACK",
 			originalArtist: "DJVI",
@@ -35,7 +35,7 @@
 			coveringArtist: ["Zenith302", "UserSniper", "Vikrinox"]
 		},
 		{
-			fmsSongName: "Dry Out",
+			fmsSongName: "Dry Out Full",
 			lowerText: "DRY OUT",
 			originalArtist: "DJVI",
 			coveringArtist: "UserSniper",
@@ -54,13 +54,13 @@
 			coveringArtist: ["UserSniper", "alexmush"]
 		},
 		{
-			fmsSongName: "Jumper",
+			fmsSongName: "Jumper Full",
 			lowerText: "JUMPER",
 			originalArtist: "Waterflame",
 			coveringArtist: ["Zenith302", "zukinnyk", "UserSniper"]
 		},
 		{
-			fmsSongName: "Time Machine",
+			fmsSongName: "Time Machine Full",
 			lowerText: "TIME MACHINE",
 			originalArtist: "Waterflame",
 			coveringArtist: ["Zenith302", "Vikrinox", "alexmush"]
@@ -98,7 +98,7 @@
 			coveringArtist: ["cloud54", "UserSniper", "alexmush", "Crafty Jumper"]
 		},
 		{
-			fmsSongName: "Clubstep",
+			fmsSongName: "Clubstep Full",
 			lowerText: "CLUBSTEP",
 			originalArtist: "Dj-Nate",
 			coveringArtist: "cloud54",
@@ -150,7 +150,7 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
-			fmsSongName: "Dash",
+			fmsSongName: "Dash Full",
 			lowerText: "DASH",
 			originalArtist: "MDK",
 			coveringArtist: "Crafty Jumper",
@@ -326,8 +326,8 @@
 			fmsSongName: "Every Madness",
 			upperText: "EVERY",
 			lowerText: "MADNESS",
-			originalArtist: "SEAGLOWINGPRO",
-			coveringArtist: "SEAGLOWINGPRO"
+			originalArtist: "Cloud54",
+			coveringArtist: "Cloud54"
 		},
 		{
 			fmsSongName: "Extraordinary Excitement",
