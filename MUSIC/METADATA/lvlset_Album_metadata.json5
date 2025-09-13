@@ -176,6 +176,12 @@
 			coveringArtist: "UserSniper",
 		},	
 		{
+			fmsSongName: "2NES",
+			lowerText: "2NES",
+			originalArtist: "Ranedom",
+			coveringArtist: "Ranedom",
+		},		
+		{
 			fmsSongName: "against the odds redux",
 			upperText: "8BIT AGAINST",
 			lowerText: "THE ODDS REDUX",
@@ -496,19 +502,7 @@
 			lowerText: "MAGIC TOUCH",
 			originalArtist: "Romos",
 			coveringArtist: "SeaGlowingPro",
-		},
-		{
-			fmsSongName: "Mayhem",
-			lowerText: "MAYHEM",
-			originalArtist: "Crafty Jumper",
-			coveringArtist: "Crafty Jumper",
-		},
-		{
-			fmsSongName: "Megalovania",
-			lowerText: "MEGALOVANIA",
-			originalArtist: "Toby Fox",
-			coveringArtist: "Crafty Jumper",
-		},		
+		},	
 		{
 			fmsSongName: "Meltdown",
 			lowerText: "MELTDOWN",
