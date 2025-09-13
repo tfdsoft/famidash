@@ -414,7 +414,7 @@ if __name__ == "__main__":
     songNames = [song['Name'] for song in fsTxtData['Song']]
     
     if len(songNames) > 150:
-        lastDatBank = 0x3A
+        lastDatBank = 0x3B
     else:
         lastDatBank = 0x33
     
