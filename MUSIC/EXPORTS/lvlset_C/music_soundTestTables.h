@@ -55,7 +55,7 @@ const char musicSoundTestString31[13] = "ACID$NOTATION";
 const char musicSoundTestString32[ 6] = "SHAPPY";
 const char musicSoundTestString33[ 9] = "THEFATRAT";
 const char musicSoundTestString34[10] = "NIGHTKILLA";
-const char musicSoundTestString35[13] = "SEAGLOWINGPRO";
+const char musicSoundTestString35[ 7] = "CLOUD54";
 const char musicSoundTestString36[10] = "DEMONICITY";
 const char musicSoundTestString37[ 9] = "BOSSFIGHT";
 
