@@ -28,12 +28,20 @@ void credits_loop() {
 	#elif __THE_ALBUM
 		check_if_music_stopped_3();
 	#endif
+
+	#if !__THE_ALBUM
 	if (!forced_credits &&
 		(joypad1.press || ((mouse.connected)
 			? mouse.left_press || mouse.right_press
 			: joypad2.press))) {
 			gameState = STATE_MENU; return;
 	}
+	#else
+	if (!forced_credits &&
+		(joypad1.press || joypad2.press)) {
+			gameState = STATE_MENU; return;
+	}		
+	#endif
 	ppu_wait_nmi();
 	tmp1++;
 	if (kandoframecnt & 1 && mouse_timer) mouse_timer--;

@@ -105,7 +105,7 @@ sprite_data = _sprite_data
 ; <empty line>
 ; .export declaration
 ; the function itself
-
+.if !__THE_ALBUM
 ; void __fastcall__ oam_meta_spr_flipped(uint8_t x,uint8_t y,const void *data);
 .segment _PLAYER_RENDER_BANK
 
@@ -170,7 +170,7 @@ end:
 	stx SPRID
 	rts
 .endproc
-
+.endif
 .segment "RODATA"
 
 .export _shiftBy4table := shiftBy4table
@@ -1998,7 +1998,7 @@ early_exit:
 	RTS
 .endproc
 
-
+.if !__THE_ALBUM
 ; void cap_scroll_y_at_top();
 .segment _SCROLL_BANK
 
@@ -2116,7 +2116,7 @@ doit:
 
 	rts
 .endproc
-
+.endif
 
 ; void check_spr_objects();
 .segment "CODE_2"

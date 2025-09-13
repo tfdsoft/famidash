@@ -48,10 +48,11 @@ void main(){
     mmc3_disable_irq();
 
     // Initialize controllers
+	#if !__THE_ALBUM
 	mouse.x = 0x78;
 	mouse.y = 0x60;
 	mouse_mask = 1;
-
+	#endif
 	// disable debug mode toggle
 	options &= ~debugtoggle;
 

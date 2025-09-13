@@ -131,6 +131,7 @@ void state_menu() {
 	}	
 
 	if (joypad1.select) cursedmusic = 0x40;
+	else cursedmusic = 0x00;
 	oam_clear();
 	ppu_wait_nmi();
 	tmp7 = newrand() & 255;

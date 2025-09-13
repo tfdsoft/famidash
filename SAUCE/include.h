@@ -29,8 +29,10 @@
 #pragma rodata-name (pop)
 #endif
 // grounds go here
+#if !__THE_ALBUM
 #pragma rodata-name (push, "XCD_BANK_05")
 #include "mouse.h"
+#endif
 //#include "mouse.c"
 #pragma rodata-name (pop)
 #if !__THE_ALBUM
