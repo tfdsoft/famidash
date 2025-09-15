@@ -697,7 +697,7 @@
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2777
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 8174 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 8171 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -714,7 +714,7 @@
 		.byte $15 ;_________________________ Starting ground color
 		.byte 57 ;__________________________ Level height
 	; Level data
-		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 4133
+		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 4130
 
 
 .segment "DAT_BANK_1C"	; Total bank size: 8167 bytes
