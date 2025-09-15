@@ -191,16 +191,15 @@
 			
 		},
 		{
-			fmsSongName: "Sonic blaster",
-			upperText: "SONIC",
-			lowerText: "BLASTER",
-			originalArtistText: "F777",
-		},
-		{
 			fmsSongName: "Infinite Power",
 			upperText: "INFINITE",
 			lowerText: "POWER",
 			originalArtistText: "THEFATRAT",
+		},	
+		{
+			fmsSongName: "Fantasy",
+			lowerText: "FANTASY",
+			originalArtistText: "CLOUDFIELD",
 		},		
 		{
 			fmsSongName: "endorphins",

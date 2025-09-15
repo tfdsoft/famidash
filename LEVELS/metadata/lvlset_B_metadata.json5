@@ -180,6 +180,72 @@
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x01
 		},
+			{
+			level: "moonlight",
+			lowerText: "MOONLIGHT",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_fantasy",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [159, 14],
+					offsetY: +8
+				},
+				{
+					coordinates: [250, 14],
+					offsetY: +8
+				},
+				{
+					coordinates: [282, 14],
+					offsetX: +8
+				},
+				{
+					coordinates: [334, 13],
+					offsetY: +8
+				},
+				{
+					coordinates: [397, 15],
+					offsetY: +8
+				},
+				{
+					coordinates: [419, 14],
+					offsetY: +8
+				},
+				{
+					coordinates: [430, 11],
+					offsetY: +8
+				},
+				{
+					coordinates: [431, 11],
+					offsetY: +8
+				},
+				{
+					coordinates: [432, 11],
+					offsetY: +8
+				},
+				{
+					coordinates: [475, 13],
+					offsetY: +8
+				},
+				{
+					coordinates: [596, 14],
+					offsetY: -8
+				},
+				{
+					coordinates: [608, 12],
+					offsetY: +8
+				},
+			]
+		},	
 		{
 			level: "fofii_fofii_fofii",
 			upperText: "FOFII",
@@ -782,23 +848,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
-			level: "sonicblaster",
-			upperText: "SONIC",
-			lowerText: "BLASTER",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_sonic_blaster",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},		
+	
 		{
 			level: "hell",
 			lowerText: "HELL",

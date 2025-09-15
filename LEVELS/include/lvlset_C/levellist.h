@@ -4,6 +4,7 @@
 const uint8_t difficulty_list[] = {
 	EASYDEMON,	// everymadness
 	EASYDEMON,	// dearnostalgists
+	EASYDEMON,	// sonicblaster
 	MEDIUMDEMON,	// invisiblelight
 	HARDDEMON,	// pgclubstep
 	HARDDEMON,	// deadlyclubstep
@@ -29,6 +30,7 @@ const uint8_t difficulty_list[] = {
 const uint8_t stars_list[] = {
 	10,	// everymadness
 	10,	// dearnostalgists
+	10,	// sonicblaster
 	10,	// invisiblelight
 	10,	// pgclubstep
 	10,	// deadlyclubstep

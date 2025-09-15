@@ -80,38 +80,12 @@
 			fmsSongName: "lost",
 			lowerText: "LOST",
 			originalArtistText: "CRIM3S",
-		},		
-		{
-			fmsSongName: "Magic Touch",
-			lowerText: "MAGIC TOUCH",
-			originalArtistText: "ROMOS",
-		},
-		{
-			fmsSongName: "holography",
-			lowerText: "HOLOGRAPHY",
-			originalArtistText: "GARLAGAN",
-		},
+		},	
 		{
 			fmsSongName: "eighto",
 			lowerText: "EIGHTO",
 			originalArtistText: "JOMEKKA",
 		},		
-		{
-			fmsSongName: "Pyrophoric",
-			lowerText: "PYROPHORIC",
-			originalArtistText: "NERDBOY628",
-		},
-		{
-			fmsSongName: "subtle oddities",
-			upperText: "SUBTLE",
-			lowerText: "ODDITIES",
-			originalArtistText: "LEMON DEMON",
-		},
-		{
-			fmsSongName: "Hell",
-			lowerText: "ACCELERATE",
-			originalArtistText: "ACID NOTATION",
-		},
 		{
 			fmsSongName: "Kratos",
 			lowerText: "KRATOS",

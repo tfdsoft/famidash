@@ -11,6 +11,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_ninox)
 	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_subzero)
+	.byte .lobyte(level_data_moonlight)
 	.byte .lobyte(level_data_fofii_fofii_fofii)
 	.byte .lobyte(level_data_pyrophoric)
 	.byte .lobyte(level_data_oceane)
@@ -36,7 +37,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_endorphinrush)
-	.byte .lobyte(level_data_sonicblaster)
 	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_futurefunk)
 
@@ -47,6 +47,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_ninox)
 	.byte .hibyte(level_data_lookatthislevel)
 	.byte .hibyte(level_data_subzero)
+	.byte .hibyte(level_data_moonlight)
 	.byte .hibyte(level_data_fofii_fofii_fofii)
 	.byte .hibyte(level_data_pyrophoric)
 	.byte .hibyte(level_data_oceane)
@@ -72,7 +73,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_endorphinrush)
-	.byte .hibyte(level_data_sonicblaster)
 	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_futurefunk)
 
@@ -83,6 +83,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_ninox))
 	.byte .lobyte(.bank(level_data_lookatthislevel))
 	.byte .lobyte(.bank(level_data_subzero))
+	.byte .lobyte(.bank(level_data_moonlight))
 	.byte .lobyte(.bank(level_data_fofii_fofii_fofii))
 	.byte .lobyte(.bank(level_data_pyrophoric))
 	.byte .lobyte(.bank(level_data_oceane))
@@ -108,7 +109,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_endorphinrush))
-	.byte .lobyte(.bank(level_data_sonicblaster))
 	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_futurefunk))
 
@@ -146,6 +146,7 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_ninox)
 	.byte .lobyte(sprite_data_lookatthislevel)
 	.byte .lobyte(sprite_data_subzero)
+	.byte .lobyte(sprite_data_moonlight)
 	.byte .lobyte(sprite_data_fofii_fofii_fofii)
 	.byte .lobyte(sprite_data_pyrophoric)
 	.byte .lobyte(sprite_data_oceane)
@@ -171,7 +172,6 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_motion)
 	.byte .lobyte(sprite_data_speedracer)
 	.byte .lobyte(sprite_data_endorphinrush)
-	.byte .lobyte(sprite_data_sonicblaster)
 	.byte .lobyte(sprite_data_hell)
 	.byte .lobyte(sprite_data_futurefunk)
 
@@ -182,6 +182,7 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_ninox)
 	.byte .hibyte(sprite_data_lookatthislevel)
 	.byte .hibyte(sprite_data_subzero)
+	.byte .hibyte(sprite_data_moonlight)
 	.byte .hibyte(sprite_data_fofii_fofii_fofii)
 	.byte .hibyte(sprite_data_pyrophoric)
 	.byte .hibyte(sprite_data_oceane)
@@ -207,7 +208,6 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_motion)
 	.byte .hibyte(sprite_data_speedracer)
 	.byte .hibyte(sprite_data_endorphinrush)
-	.byte .hibyte(sprite_data_sonicblaster)
 	.byte .hibyte(sprite_data_hell)
 	.byte .hibyte(sprite_data_futurefunk)
 
@@ -218,6 +218,7 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_ninox))
 	.byte .lobyte(.bank(sprite_data_lookatthislevel))
 	.byte .lobyte(.bank(sprite_data_subzero))
+	.byte .lobyte(.bank(sprite_data_moonlight))
 	.byte .lobyte(.bank(sprite_data_fofii_fofii_fofii))
 	.byte .lobyte(.bank(sprite_data_pyrophoric))
 	.byte .lobyte(.bank(sprite_data_oceane))
@@ -243,7 +244,6 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_motion))
 	.byte .lobyte(.bank(sprite_data_speedracer))
 	.byte .lobyte(.bank(sprite_data_endorphinrush))
-	.byte .lobyte(.bank(sprite_data_sonicblaster))
 	.byte .lobyte(.bank(sprite_data_hell))
 	.byte .lobyte(.bank(sprite_data_futurefunk))
 
@@ -257,6 +257,7 @@ _level_lengths_lo:
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($000088)		; subzero
+	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
 	.byte .lobyte($000050)		; pyrophoric
 	.byte .lobyte($00005D)		; oceane
@@ -282,7 +283,6 @@ _level_lengths_lo:
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($00008B)		; endorphinrush
-	.byte .lobyte($0000A6)		; sonicblaster
 	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($0001DD)		; futurefunk
 
@@ -295,6 +295,7 @@ _level_lengths_md:
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($000088)		; subzero
+	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
 	.byte .hibyte($000050)		; pyrophoric
 	.byte .hibyte($00005D)		; oceane
@@ -320,7 +321,6 @@ _level_lengths_md:
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($00008B)		; endorphinrush
-	.byte .hibyte($0000A6)		; sonicblaster
 	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($0001DD)		; futurefunk
 
@@ -333,6 +333,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($000088)		; subzero
+	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii
 	.byte .bankbyte($000050)		; pyrophoric
 	.byte .bankbyte($00005D)		; oceane
@@ -358,7 +359,6 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($00008B)		; endorphinrush
-	.byte .bankbyte($0000A6)		; sonicblaster
 	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($0001DD)		; futurefunk
 

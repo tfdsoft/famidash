@@ -7,6 +7,7 @@
 _level_list_lo:
 	.byte .lobyte(level_data_everymadness)
 	.byte .lobyte(level_data_dearnostalgists)
+	.byte .lobyte(level_data_sonicblaster)
 	.byte .lobyte(level_data_invisiblelight)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_deadlyclubstep)
@@ -31,6 +32,7 @@ _level_list_lo:
 _level_list_hi:
 	.byte .hibyte(level_data_everymadness)
 	.byte .hibyte(level_data_dearnostalgists)
+	.byte .hibyte(level_data_sonicblaster)
 	.byte .hibyte(level_data_invisiblelight)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_deadlyclubstep)
@@ -55,6 +57,7 @@ _level_list_hi:
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_everymadness))
 	.byte .lobyte(.bank(level_data_dearnostalgists))
+	.byte .lobyte(.bank(level_data_sonicblaster))
 	.byte .lobyte(.bank(level_data_invisiblelight))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_deadlyclubstep))
@@ -109,6 +112,7 @@ _level_chunk_list_bank:
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_everymadness)
 	.byte .lobyte(sprite_data_dearnostalgists)
+	.byte .lobyte(sprite_data_sonicblaster)
 	.byte .lobyte(sprite_data_invisiblelight)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_deadlyclubstep)
@@ -133,6 +137,7 @@ _sprite_list_lo:
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_everymadness)
 	.byte .hibyte(sprite_data_dearnostalgists)
+	.byte .hibyte(sprite_data_sonicblaster)
 	.byte .hibyte(sprite_data_invisiblelight)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_deadlyclubstep)
@@ -157,6 +162,7 @@ _sprite_list_hi:
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_everymadness))
 	.byte .lobyte(.bank(sprite_data_dearnostalgists))
+	.byte .lobyte(.bank(sprite_data_sonicblaster))
 	.byte .lobyte(.bank(sprite_data_invisiblelight))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_deadlyclubstep))
@@ -184,6 +190,7 @@ _sprite_list_bank:
 _level_lengths_lo:
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($000155)		; dearnostalgists
+	.byte .lobyte($0000A6)		; sonicblaster
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
@@ -210,6 +217,7 @@ _level_lengths_lo:
 _level_lengths_md:
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($000155)		; dearnostalgists
+	.byte .hibyte($0000A6)		; sonicblaster
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
@@ -236,6 +244,7 @@ _level_lengths_md:
 _level_lengths_hi:
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($000155)		; dearnostalgists
+	.byte .bankbyte($0000A6)		; sonicblaster
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep

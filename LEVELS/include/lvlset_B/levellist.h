@@ -8,6 +8,7 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// ninox
 	HARD,	// lookatthislevel
 	HARD,	// subzero
+	HARD,	// moonlight
 	HARD,	// fofii_fofii_fofii
 	HARDER,	// pyrophoric
 	HARDER,	// oceane
@@ -33,7 +34,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// motion
 	DEMON,	// speedracer
 	DEMON,	// endorphinrush
-	DEMON,	// sonicblaster
 	DEMON,	// hell
 	DEMON,	// futurefunk
 };
@@ -45,6 +45,7 @@ const uint8_t stars_list[] = {
 	3,	// ninox
 	4,	// lookatthislevel
 	5,	// subzero
+	5,	// moonlight
 	5,	// fofii_fofii_fofii
 	6,	// pyrophoric
 	6,	// oceane
@@ -70,7 +71,6 @@ const uint8_t stars_list[] = {
 	10,	// motion
 	10,	// speedracer
 	10,	// endorphinrush
-	10,	// sonicblaster
 	10,	// hell
 	10,	// futurefunk
 };
