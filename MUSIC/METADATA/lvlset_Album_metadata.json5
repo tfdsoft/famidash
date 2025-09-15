@@ -11,7 +11,7 @@
 		{
 			fmsSongName: "Menu Theme B Sides",
 			lowerText: "MENU B SIDES",
-			originalArtist: ["RobTop", "GD Colon"],
+			originalArtist: ["RobTop", "MudStep"],
 			coveringArtist: "UserSniper",
 		},
 		{
@@ -141,7 +141,7 @@
 			fmsSongName: "Deadlocked",
 			lowerText: "DEADLOCKED",
 			originalArtist: "F777",
-			coveringArtist: ["UserSniper", "Vikrinox"]
+			coveringArtist: ["UserSniper", "Vikrinox", "ElAngel378"]
 		},
 		{
 			fmsSongName: "Fingerdash",
@@ -353,7 +353,13 @@
 			lowerText: "FAIRYDUST",
 			originalArtist: "NIGHTKILLA",
 			coveringArtist: "ElAngel378",
-		},		
+		},	
+		{
+			fmsSongName: "Fantasy",
+			lowerText: "FANTASY",
+			originalArtist: ["CLOUDFIELD","REICHUU"],
+			coveringArtist: "ElAngel378",
+		},				
 		{
 			fmsSongName: "Fingerbang",
 			lowerText: "FINGERBANG",
