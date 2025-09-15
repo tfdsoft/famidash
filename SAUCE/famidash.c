@@ -63,13 +63,6 @@ void main(){
 
 	menuMusicCurrentlyPlaying = 0;
 
-	#if __THE_ALBUM
-		cursedmusic = 0;
-		for (tmp1 = 0; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {
-			music_queue[tmp1] = 0xFF;
-		};
-	#endif
-
 
 
     while (1){
@@ -90,6 +83,12 @@ void main(){
 			}
 
 			case STATE_MENU: {
+				#if __THE_ALBUM
+					cursedmusic = 0;
+					for (tmp1 = 0; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {
+						music_queue[tmp1] = 0xFF;
+					};
+				#endif
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
 				state_menu();
 				break;			
