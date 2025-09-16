@@ -731,6 +731,12 @@ jmpto_draw_screen_UD_tiles:
 
 ; [Subroutine]
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right, metatiles_attr
+
+.import RUNMOD_fl_lvlRenderRTiles_TileAddrLo0
+.import RUNMOD_fl_lvlRenderRTiles_TileAddrHi0_0, RUNMOD_fl_lvlRenderRTiles_TileAddrHi0_1
+.import RUNMOD_fl_lvlRenderRTiles_TileAddrHi1_0, RUNMOD_fl_lvlRenderRTiles_TileAddrHi1_1
+.import RUNMOD_fl_lvlRenderRTiles_AttrHi0, RUNMOD_fl_lvlRenderRTiles_AttrHi1
+
 .import _increase_parallax_scroll_column
 .import _no_parallax, _invisblocks, _force_platformer
 
@@ -773,8 +779,8 @@ jmpto_draw_screen_UD_tiles:
 	; Write architecture:
 
 	; Instruction buffer:
-	;	| Instruct.	| Tile Addr Hi 0|  Tile Addr Lo	| Tile Addr Hi 1| Attr Addr Hi 0| Attr Addr Hi 1|
-	;	|	0	1	|		2		|		3		|		4		|		5		|		6		|
+	;	| Instruct.	|
+	;	|	0	1	|
 	; VRAM buffer:
 	;	| Data 0	| Data 1	| ...	| Data 15	| Addr Lo 0	| Addr Lo 1	| Addr Lo 2	| Addr Lo 3	|
 	;	|	0		|	1		| 2-14	|	15		|	16		|	17		|	18		| 	19		|
@@ -827,7 +833,7 @@ write_start:
 	LDA rld_column ;   000xxxx0 - the left tiles of the metatiles
 	AND #$0F
 	ASL         ;__
-	STA instBufWriteBuffer+3
+	STA	RUNMOD_fl_lvlRenderRTiles_TileAddrLo0+1
 
 	; Get nametable
 	lda _scroll_x + 1 ; high byte
@@ -835,14 +841,16 @@ write_start:
 	tay
 	; Tiles
 	lda	tileNtAddrHiTbl,y
-	STA	instBufWriteBuffer+2
+	STA	RUNMOD_fl_lvlRenderRTiles_TileAddrHi0_0+1
+	STA	RUNMOD_fl_lvlRenderRTiles_TileAddrHi0_1+1
 	ORA #$08        ; 2nd nametable
-	STA	instBufWriteBuffer+4
+	STA	RUNMOD_fl_lvlRenderRTiles_TileAddrHi1_0+1
+	STA	RUNMOD_fl_lvlRenderRTiles_TileAddrHi1_1+1
 	; Attributes
 	lda	attrNtAddrHiTbl, Y
-	sta	instBufWriteBuffer+5
+	sta	RUNMOD_fl_lvlRenderRTiles_AttrHi0+1
 	ora #$08			; 2nd nametable
-	sta	instBufWriteBuffer+6
+	sta	RUNMOD_fl_lvlRenderRTiles_AttrHi1+1
 
 	; Set instruction
 	lda	#<(fl_lvlRenderRTiles-1)
@@ -968,7 +976,7 @@ FinishRendering:
 	and #$0F
 	sta rld_column
 
-	ldx	#7
+	ldx	#2
 	jsr	transferWriteToInstBuf
 
 	lda	buf_curSeqMode
@@ -1535,17 +1543,19 @@ write_loop:	; literally the same for both unified and separate writes
 	
 	TotalSize	= TileEnd+20
 
+	SelfMod		= 0
+
 
 	lda	PPU_CTRL_VAR	;
 	ora	#$04			;	Set vertical orientation
 	sta	PPU_CTRL		;__
 
-	pla
+	RUNMOD_TileAddrHi0_0:
+	lda	#SelfMod
 	sta	PPU_ADDR
-	sta	NAME_UPD_PTR
-	pla
-	sta	PPU_ADDR
-	tax
+	RUNMOD_TileAddrLo0:
+	ldx	#SelfMod
+	stx	PPU_ADDR
 
 	.repeat 15, J
 		lda	VRAM_BUF+TileOff3+TileOff1-J-1,	y
@@ -1553,8 +1563,21 @@ write_loop:	; literally the same for both unified and separate writes
 		lda	VRAM_BUF+TileOff2+TileOff1-J-1,	y
 		sta	PPU_DATA
 	.endrepeat
-	
-	lda	NAME_UPD_PTR
+
+	RUNMOD_TileAddrHi1_0:
+	lda	#SelfMod
+	sta	PPU_ADDR
+	stx	PPU_ADDR
+
+	.repeat 15, J
+		lda	VRAM_BUF+TileOff3+TileOff1-15-J-1,	y
+		sta	PPU_DATA
+		lda	VRAM_BUF+TileOff2+TileOff1-15-J-1,	y
+		sta	PPU_DATA
+	.endrepeat
+
+	RUNMOD_TileAddrHi0_1:
+	lda	#SelfMod
 	sta	PPU_ADDR
 	inx
 	stx	PPU_ADDR
@@ -1565,22 +1588,10 @@ write_loop:	; literally the same for both unified and separate writes
 		sta	PPU_DATA
 	.endrepeat
 
-	pla
-	sta	PPU_ADDR
-	sta	NAME_UPD_PTR
-	dex
-	stx	PPU_ADDR
-
-	.repeat 15, J
-		lda	VRAM_BUF+TileOff3+TileOff1-15-J-1,	y
-		sta	PPU_DATA
-		lda	VRAM_BUF+TileOff2+TileOff1-15-J-1,	y
-		sta	PPU_DATA
-	.endrepeat
 	
-	lda	NAME_UPD_PTR
+	RUNMOD_TileAddrHi1_1:
+	lda	#SelfMod
 	sta	PPU_ADDR
-	inx
 	stx	PPU_ADDR
 	.repeat 15, J
 		lda	VRAM_BUF+TileOff1+TileOff1-15-J-1,	y
@@ -1591,8 +1602,8 @@ write_loop:	; literally the same for both unified and separate writes
 
 	;__	Attributes:
 
-	pla		;	Load first high byte of VRAM address
-	tax		;__
+	RUNMOD_AttrHi0:
+	ldx	#SelfMod	;__	Load first high byte of VRAM address
 
 	.repeat	4,	I
 		stx	PPU_ADDR
@@ -1604,8 +1615,8 @@ write_loop:	; literally the same for both unified and separate writes
 		sta	PPU_DATA
 	.endrepeat
 
-	pla		;	Load second high byte of VRAM address
-	tax		;__
+	RUNMOD_AttrHi1:
+	ldx	#SelfMod	;__	Load second high byte of VRAM address
 
 	.repeat	4,	I
 		stx	PPU_ADDR
@@ -1623,6 +1634,15 @@ write_loop:	; literally the same for both unified and separate writes
 	tay
 
 	rts	; Ropslide to next routine
+
+
+	.export RUNMOD_fl_lvlRenderRTiles_TileAddrLo0 := RUNMOD_TileAddrLo0
+	.export RUNMOD_fl_lvlRenderRTiles_TileAddrHi0_0 := RUNMOD_TileAddrHi0_0
+	.export RUNMOD_fl_lvlRenderRTiles_TileAddrHi0_1 := RUNMOD_TileAddrHi0_1
+	.export RUNMOD_fl_lvlRenderRTiles_TileAddrHi1_0 := RUNMOD_TileAddrHi1_0
+	.export RUNMOD_fl_lvlRenderRTiles_TileAddrHi1_1 := RUNMOD_TileAddrHi1_1
+	.export RUNMOD_fl_lvlRenderRTiles_AttrHi0 := RUNMOD_AttrHi0
+	.export RUNMOD_fl_lvlRenderRTiles_AttrHi1 := RUNMOD_AttrHi1
 .endproc
 
 
