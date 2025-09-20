@@ -602,9 +602,15 @@
 			originalArtist: "BoomKitty",
 			coveringArtist: "CraftyJumper",
 		},
-		{
+        {
 			fmsSongName: "Pyrophoric",
 			lowerText: "PYROPHORIC",
+			originalArtist: "NerdBoy628",
+		},
+		{
+			fmsSongName: "Pyrophoric (apparently too many creative liberties mix)",
+			upperText: "PYROPHORIC",
+            lowerText: "REMIX",
 			originalArtist: "NerdBoy628",
 			coveringArtist: "alexmush",
 		},

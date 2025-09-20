@@ -6,7 +6,7 @@
 #define song_driving_by_night 5
 #define song_thermodynamix_full 6
 #define song_every_end_pt2 7
-#define song_lost 8
+#define song_glint 8
 #define song_freedom_dive 9
 #define song_repmuj 10
 #define song_accelerate 11
@@ -17,7 +17,7 @@
 #define song_subtle_oddities 16
 #define song_atthespeedoflightfull 17
 #define song_chaozfantasy 18
-#define song_pyrophoric 19
+#define song_pyrophoric_apparently_too_many_creative_liberties_mix 19
 #define song_the_angel 20
 #define song_miami_hotline_vol_3 21
 #define song_time_machine_full 22
@@ -98,9 +98,9 @@
 #define song_midnight 97
 #define song_dance_of_the_violins 98
 #define song_fairydust 99
-#define song_glint 100
-#define song_jumper_full 101
-#define song_ninox 102
+#define song_jumper_full 100
+#define song_ninox 101
+#define song_pyrophoric 102
 #define song_tiny_tunes 103
 #define song_chaoz_impact 104
 #define song_flow 105
@@ -111,9 +111,10 @@
 #define song_cant_let_go 110
 #define song_the_challenge 111
 #define song_golden_haze 112
-#define song_youve_been_trolled 113
-#define song_space_pirates_gdw_cut 114
-#define song_beast_mode_gdw_cut 115
-#define song_machina_gdw_cut 116
-#define song_years_gdw_cut 117
-#define song_max 118
+#define song_lost 113
+#define song_youve_been_trolled 114
+#define song_space_pirates_gdw_cut 115
+#define song_beast_mode_gdw_cut 116
+#define song_machina_gdw_cut 117
+#define song_years_gdw_cut 118
+#define song_max 119
