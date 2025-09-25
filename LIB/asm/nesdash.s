@@ -736,6 +736,8 @@ jmpto_draw_screen_UD_tiles:
 .import RUNMOD_fl_lvlRenderRTiles_TileAddrHi0_0, RUNMOD_fl_lvlRenderRTiles_TileAddrHi0_1
 .import RUNMOD_fl_lvlRenderRTiles_TileAddrHi1_0, RUNMOD_fl_lvlRenderRTiles_TileAddrHi1_1
 .import RUNMOD_fl_lvlRenderRTiles_AttrHi0, RUNMOD_fl_lvlRenderRTiles_AttrHi1
+.import RUNMOD_fl_lvlRenderRTiles_TileDataL_Top, RUNMOD_fl_lvlRenderRTiles_TileDataR_Top
+.import RUNMOD_fl_lvlRenderRTiles_TileDataL_Bot, RUNMOD_fl_lvlRenderRTiles_TileDataR_Bot
 
 .import _increase_parallax_scroll_column
 .import _no_parallax, _invisblocks, _force_platformer
@@ -746,14 +748,14 @@ jmpto_draw_screen_UD_tiles:
 	AttrDataSize	= 16
 	AttrAddrSize	= 4
 
-	.repeat 4, I
-	.ident(.sprintf("TileOff%d", I))	= TileWriteSize*I
-	.endrepeat
+	TileStart		= 0+(TileWriteSize*0)
+	TileOffL		= 0+(TileWriteSize*0)
+	TileOffR		= 0+(TileWriteSize*2)
 	TileEnd			= 0+(TileWriteSize*4)
 
-	AttrOffData		= 0+TileEnd
-	AttrOffAddr		= 0+TileEnd+AttrDataSize
-	AttrEnd			= 0+TileEnd+AttrDataSize+AttrAddrSize
+	AttrOffData		= 0
+	AttrOffAddr		= 0+AttrDataSize
+	AttrEnd			= 0+AttrDataSize+AttrAddrSize
 
 	TotalEnd		= AttrEnd-AttrDataSize
 
@@ -827,7 +829,7 @@ write_start:
 	; Writing to the VRAM buffer starts here
 	LDA VRAM_INDEX
 	CLC
-	ADC #TileWriteSize - 1
+	ADC #(TileWriteSize * 2) - 1
 	TAX
 
 	LDA rld_column ;   000xxxx0 - the left tiles of the metatiles
@@ -865,14 +867,15 @@ write_start:
 	and	InvisBlMask
 	tay
 	; y is the metatile id
-	lda metatiles_bot_right, y
-	STA VRAM_BUF+TileOff0, X
 	lda metatiles_top_right, y
-	STA VRAM_BUF+TileOff1, X
-	lda metatiles_bot_left, y
-	STA VRAM_BUF+TileOff2, X
+	STA VRAM_BUF+TileOffR, X
 	lda metatiles_top_left, y
-	STA VRAM_BUF+TileOff3, X
+	STA VRAM_BUF+TileOffL, X
+	DEX
+	lda metatiles_bot_right, y
+	STA VRAM_BUF+TileOffR, X
+	lda metatiles_bot_left, y
+	STA VRAM_BUF+TileOffL, X
 	
 	LDA CurrentRow
 	CMP SeamValue
@@ -894,16 +897,36 @@ RenderParallax:
 	; Calculate the end of the parallax column offset
 	ldy parallax_scroll_column
 	lda ParallaxBufferLeftOffset, y
-	ldx #TileOff2 + TileWriteSize - 1
+	ldx #TileOffL + 2 * TileWriteSize - 1
 	jsr RenderParallaxSub
 
 	ldy parallax_scroll_column
 	lda ParallaxBufferRightOffset, y
-	ldx #TileOff0 + TileWriteSize - 1
+	ldx #TileOffR + 2 * TileWriteSize - 1
 	jsr RenderParallaxSub
 
 	; move to the next scroll column for next frame
 	jsr _increase_parallax_scroll_column
+
+RuntimeModifiedTiles:
+	LDX	#TileWriteSize
+	LDY #0
+
+	CLC
+	@loop:
+		LDA VRAM_BUF+TileOffL+TileWriteSize-1,	X
+		STA	RUNMOD_fl_lvlRenderRTiles_TileDataL_Top+1,	Y
+		LDA VRAM_BUF+TileOffR+TileWriteSize-1,	X
+		STA	RUNMOD_fl_lvlRenderRTiles_TileDataR_Top+1,	Y
+		LDA	VRAM_BUF+TileOffL-1,	X
+		STA	RUNMOD_fl_lvlRenderRTiles_TileDataL_Bot+1,	Y
+		LDA	VRAM_BUF+TileOffR-1,	X
+		STA	RUNMOD_fl_lvlRenderRTiles_TileDataR_Bot+1,	Y
+		TYA
+		ADC	#5
+		TAY
+		DEX
+		BNE @loop
 
 StartAttributes:
 	; Seam pos for attributes:
@@ -1035,18 +1058,19 @@ RenderParallaxSub:
 	
 	@loop:
 		; Replace the top tile
-		lda VRAM_BUF+TileOff1,	x
+		lda VRAM_BUF+TileStart,	x
 		bne :+
 			; empty tile, so replace it with the parallax for this
 			lda ParallaxBuffer+0,	y
-			sta VRAM_BUF+TileOff1,	x
+			sta VRAM_BUF,	x
 		:
 		; Replace the bottom tile
-		lda VRAM_BUF+TileOff0,	x
+		dex
+		lda VRAM_BUF,	x
 		bne :+
 			; empty tile, so replace it with the parallax for this
 			lda ParallaxBuffer+5,	y	;__	Offset of half the size
-			sta VRAM_BUF+TileOff0,	x
+			sta VRAM_BUF+TileStart,	x
 		:
 		iny
 		cpy ParallaxExtent
@@ -1528,12 +1552,7 @@ write_loop:	; literally the same for both unified and separate writes
 .segment "WRAMCODE"
 
 .proc fl_lvlRenderRTiles
-	TileWriteSize	= 15*2
-
-	.repeat 4, I
-	.ident(.sprintf("TileOff%d", I))	= TileWriteSize*I
-	.endrepeat
-	TileEnd			= 0+(TileWriteSize*4)
+	TileEnd			= 0
 
 	AttrDataOff0	= TileEnd+0
 	AttrDataOff1	= TileEnd+4
@@ -1557,10 +1576,10 @@ write_loop:	; literally the same for both unified and separate writes
 	ldx	#SelfMod
 	stx	PPU_ADDR
 
-	.repeat 15, J
-		lda	VRAM_BUF+TileOff3+TileOff1-J-1,	y
-		sta	PPU_DATA
-		lda	VRAM_BUF+TileOff2+TileOff1-J-1,	y
+	RUNMOD_TileDataL_Top:
+	; Upper left write
+	.repeat 30
+		lda	#SelfMod
 		sta	PPU_DATA
 	.endrepeat
 
@@ -1569,10 +1588,10 @@ write_loop:	; literally the same for both unified and separate writes
 	sta	PPU_ADDR
 	stx	PPU_ADDR
 
-	.repeat 15, J
-		lda	VRAM_BUF+TileOff3+TileOff1-15-J-1,	y
-		sta	PPU_DATA
-		lda	VRAM_BUF+TileOff2+TileOff1-15-J-1,	y
+	RUNMOD_TileDataL_Bot:
+	; Lower left write
+	.repeat 30
+		lda	#SelfMod
 		sta	PPU_DATA
 	.endrepeat
 
@@ -1581,10 +1600,11 @@ write_loop:	; literally the same for both unified and separate writes
 	sta	PPU_ADDR
 	inx
 	stx	PPU_ADDR
-	.repeat 15, J
-		lda	VRAM_BUF+TileOff1+TileOff1-J-1,	y
-		sta	PPU_DATA
-		lda	VRAM_BUF+TileOff0+TileOff1-J-1,	y
+
+	RUNMOD_TileDataR_Top:
+	; Upper right write
+	.repeat 30
+		lda	#SelfMod
 		sta	PPU_DATA
 	.endrepeat
 
@@ -1593,13 +1613,13 @@ write_loop:	; literally the same for both unified and separate writes
 	lda	#SelfMod
 	sta	PPU_ADDR
 	stx	PPU_ADDR
-	.repeat 15, J
-		lda	VRAM_BUF+TileOff1+TileOff1-15-J-1,	y
-		sta	PPU_DATA
-		lda	VRAM_BUF+TileOff0+TileOff1-15-J-1,	y
+
+	RUNMOD_TileDataR_Bot:
+	; Lower right write
+	.repeat 30
+		lda	#SelfMod
 		sta	PPU_DATA
 	.endrepeat
-
 	;__	Attributes:
 
 	RUNMOD_AttrHi0:
@@ -1643,6 +1663,10 @@ write_loop:	; literally the same for both unified and separate writes
 	.export RUNMOD_fl_lvlRenderRTiles_TileAddrHi1_1 := RUNMOD_TileAddrHi1_1
 	.export RUNMOD_fl_lvlRenderRTiles_AttrHi0 := RUNMOD_AttrHi0
 	.export RUNMOD_fl_lvlRenderRTiles_AttrHi1 := RUNMOD_AttrHi1
+	.export RUNMOD_fl_lvlRenderRTiles_TileDataL_Top := RUNMOD_TileDataL_Top
+	.export RUNMOD_fl_lvlRenderRTiles_TileDataL_Bot := RUNMOD_TileDataL_Bot
+	.export RUNMOD_fl_lvlRenderRTiles_TileDataR_Top := RUNMOD_TileDataR_Top
+	.export RUNMOD_fl_lvlRenderRTiles_TileDataR_Bot := RUNMOD_TileDataR_Bot
 .endproc
 
 
