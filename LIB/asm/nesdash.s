@@ -896,13 +896,8 @@ RenderParallax:
 	; Loop through the vram writes and find any $00 tiles and replace them with parallax
 	; Calculate the end of the parallax column offset
 	ldy parallax_scroll_column
-	lda ParallaxBufferLeftOffset, y
-	ldx #TileOffL + 2 * TileWriteSize - 1
-	jsr RenderParallaxSub
-
-	ldy parallax_scroll_column
-	lda ParallaxBufferRightOffset, y
-	ldx #TileOffR + 2 * TileWriteSize - 1
+	lda ParallaxBufferOffset, y
+	ldx #2 * TileWriteSize
 	jsr RenderParallaxSub
 
 	; move to the next scroll column for next frame
@@ -1053,37 +1048,47 @@ RenderParallaxSub:
 	adc ParallaxBufferStartTable,	y
 	tay
 
-	lda #TileWriteSize
-	sta LoopCount
-	
 	@loop:
-		; Replace the top tile
-		lda VRAM_BUF+TileStart,	x
+		; Replace the top left tile
+		lda VRAM_BUF+TileOffL-1,	x
 		bne :+
 			; empty tile, so replace it with the parallax for this
 			lda ParallaxBuffer+0,	y
-			sta VRAM_BUF,	x
+			sta VRAM_BUF+TileOffL-1,	x
 		:
-		; Replace the bottom tile
+		; Replace the top right tile
+		lda VRAM_BUF+TileOffR-1,	x
+		bne :+
+			; empty tile, so replace it with the parallax for this
+			lda ParallaxBuffer+ParallaxBufferRightOffset+0,	y
+			sta VRAM_BUF+TileOffR-1,	x
+		:
+		; Replace the bottom left tile
 		dex
-		lda VRAM_BUF,	x
+		lda VRAM_BUF+TileOffL-1,	x
 		bne :+
 			; empty tile, so replace it with the parallax for this
 			lda ParallaxBuffer+5,	y	;__	Offset of half the size
-			sta VRAM_BUF+TileStart,	x
+			sta VRAM_BUF+TileOffL-1,	x
+		:
+		; Replace the bottom right tile
+		lda VRAM_BUF+TileOffR-1,	x
+		bne :+
+			; empty tile, so replace it with the parallax for this
+			lda ParallaxBuffer+ParallaxBufferRightOffset+5,	y	;__	Offset of half the size
+			sta VRAM_BUF+TileOffR-1,	x
 		:
 		iny
 		cpy ParallaxExtent
 		bne :+
 			ldy ParallaxBufferStart
 		:
-		dex
 
 		dec SeamValueTmp
 		beq	@seamColl
 
 		@noSeamColl:
-		dec LoopCount
+		dex
 		bne @loop
 	rts
 
@@ -1115,14 +1120,12 @@ ParallaxBuffer:
 		.byte $84, $a4, $8a, $aa, $9d, $94, $b4, $9a, $ba, $84, $a4, $8a, $aa, $9d
 	ParallaxBufferRCol2:
 		.byte $85, $a5, $8b, $ab, $9e, $95, $b5, $9b, $bb, $85, $a5, $8b, $ab, $9e
-	ParallaxBufferLeftOffset:
+	ParallaxBufferOffset:
 		.byte ParallaxBufferLCol0 - ParallaxBuffer
 		.byte ParallaxBufferLCol1 - ParallaxBuffer
 		.byte ParallaxBufferLCol2 - ParallaxBuffer
-	ParallaxBufferRightOffset:
-		.byte ParallaxBufferRCol0 - ParallaxBuffer
-		.byte ParallaxBufferRCol1 - ParallaxBuffer
-		.byte ParallaxBufferRCol2 - ParallaxBuffer
+	ParallaxBufferLeftOffset = 0
+	ParallaxBufferRightOffset = <(ParallaxBufferRCol0 - ParallaxBufferLCol0)
 
 ParallaxBufferStartTable:
 	.byte	0,	6,	3,	0,	6
