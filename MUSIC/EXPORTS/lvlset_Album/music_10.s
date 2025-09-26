@@ -19,7 +19,7 @@ music_data_famidash_music10:
 	.word @instruments
 	.word @samples-5
 ; The DPCM aligner used to be here
-; 01 : Pyrophoric
+; 01 : Pyrophoric (apparently too many creative liberties mix)
 	.word @song1ch0
 	.word @song1ch1
 	.word @song1ch2
