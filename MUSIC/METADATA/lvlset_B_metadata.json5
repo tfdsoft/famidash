@@ -8,35 +8,6 @@
 			vsSystemEnabled: false
 		},
 		{
-			fmsSongName: "Stereo Madness",
-			upperText: "STEREO ",
-			lowerText: "MADNESS",
-			originalArtistText: "FOREVERBOUND",
-			nsfData: {
-				trackLabel: "Stereo Madness",
-				trackAuthor: {
-					original: "ForeverBound",
-					cover: "Zenith302, UserSniper",
-				},
-				durationNTSC: 85550,
-				durationPAL: 102840
-			}
-		},
-		{
-			fmsSongName: "Can't Let Go",
-			lowerText: "CANT LET GO",
-			originalArtistText: "DJVI",
-			nsfData: {
-				trackLabel: "Cant Let Go ~ Can't Let Go",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "UserSniper, alexmush"
-				},
-				durationNTSC: 80750,
-				durationPAL: 97040
-			}
-		},
-		{
 			fmsSongName: "Cycles",
 			lowerText: "CYCLES",
 			originalArtistText: "DJVI",
@@ -240,12 +211,12 @@
 			lowerText: "PURSUIT",
 			originalArtistText: "BOOM KITTY",
 			
-		},			
+		},
 		{
-			fmsSongName: "Windfall",
-			lowerText: "WINDFALL",
-			originalArtistText: "THEFATRAT",
-		},		
+			fmsSongName: "Problematic",
+			lowerText: "PROBLEMATIC",
+			originalArtistText: "NIGHTKILLA",
+		},	
 		{
 			fmsSongName: "Xenogenesis",
 			lowerText: "XENOGENESIS",

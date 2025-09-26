@@ -1245,6 +1245,30 @@
 			]
 		},
 		{
+			level: "leveleasy",
+			lowerText: "LEVEL EASY",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "NORMAL",
+			stars: 3,
+			songID: "song_stereo_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x2C,
+			startingGroundColor: 0x1C,
+			objectOffsets: [
+				{
+					coordinates: [
+						[752, 26],		//yellow pad
+						[753, 26],		//yellow pad
+					],
+					offsetX: -8
+				},
+			]
+		},	
+		{
 			level: "thechallenge",
 			upperText: "THE",
 			lowerText: "CHALLENGE",
@@ -1553,6 +1577,21 @@
 			]
 		},
 		{
+			level: "subzero",
+			lowerText: "SUBZERO",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_cant_let_go",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x01,
+			startingGroundColor: 0x01
+		},		
+		{
 			level: "kappaclysm",
 			lowerText: "KAPPACLYSM",
 			decoType: "DECOCLOUD",
@@ -1748,6 +1787,24 @@
 				},
 			]
 		},
+		
+		{
+			level: "funnygameholiday",
+			upperText: "FUNNYGAME",
+			lowerText: "HOLIDAY",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_stereo_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: false
+		},		
 		{
 			level: "lostinthewoods",
 			upperText: "LOST IN",
@@ -2212,67 +2269,7 @@
 				},
 			]
 		},
-		{
-			level: "problematic",
-			lowerText: "PROBLEMATIC",
-			decoType: "DECO1",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_problematic",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					coordinates: [29, 24],			//pink orb
-					offsetX: -8		
-				},
-				{
-					coordinates: [
-						[30, 21],		//pink orb
-						[118, 21],		//cube portal
-						[156, 21],	[187, 21],	[212, 22],	[381, 20],	[436, 24],	[483, 19],	[483, 21],	[499, 18],	[526, 21],	[551, 21],		//speed portal
-						[212, 21],	[366, 21],		//grav portal
-						
-					],
-					offsetY: -8			
-				},
-				{
-					coordinates: [
-						[118, 20],		//normal grav portal
-						[240, 20],	[291, 23],	[405, 17],		//speed portal
-						[316, 22],		//dual portal
-						[366, 20],		//single portal
-					],
-					offsetY: +8			
-				},
-				{
-					coordinates: [155, 20],		//normal grav portal
-					offsetX: +16		
-				},
-				{
-					coordinates: [
-						[188, 20],			//mini portal
-						[483, 19],	[483, 21],		//speed portal
-						[527, 20],		//normal gravity portal
-					],
-					offsetX: -16	
-				},
-				{
-					coordinates: [212, 21],		//grav portal
-					offsetX: +10,		
-				},
-				{
-					coordinates: [522, 16],		//reverse grav portal
-					offsetY: +16		
-				},
-			]
-		},
+
 		{
 			level: "firetemple",
 			lowerText: "FIRE TEMPLE",
@@ -2351,22 +2348,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
-			level: "luckydraw",
-			lowerText: "LUCKY DRAW",
-			decoType: "DECOCLOUD",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "LETTERBANK",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_electroman_adventures",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
+
 /*		{
 			level: "test8",
 			lowerText: "TEST8",

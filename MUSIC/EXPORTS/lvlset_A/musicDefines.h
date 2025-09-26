@@ -36,5 +36,4 @@
 #define song_ground_to_space 35
 #define song_retray 36
 #define song_scheming_weasel 37
-#define song_problematic 38
-#define song_max 39
+#define song_max 38

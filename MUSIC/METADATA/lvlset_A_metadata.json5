@@ -299,11 +299,7 @@
 			lowerText: "INFERNOPLEX",
 			originalArtistText: "DIMRAIN47",
 		},
-		{
-			fmsSongName: "Problematic",
-			lowerText: "PROBLEMATIC",
-			originalArtistText: "NIGHTKILLA",
-		},
+
 		{
 			fmsSongName: "The Challenge",
 			upperText: "THE",

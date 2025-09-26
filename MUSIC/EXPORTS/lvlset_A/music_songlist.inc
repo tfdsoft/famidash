@@ -36,5 +36,4 @@ song_theory_of_everything = 34
 song_ground_to_space = 35
 song_retray = 36
 song_scheming_weasel = 37
-song_problematic = 38
-song_max = 39
+song_max = 38

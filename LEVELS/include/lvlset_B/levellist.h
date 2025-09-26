@@ -4,10 +4,8 @@
 const uint8_t difficulty_list[] = {
 	EASY,	// sonar
 	EASY,	// darkparadise
-	NORMAL,	// leveleasy
 	NORMAL,	// ninox
 	HARD,	// lookatthislevel
-	HARD,	// subzero
 	HARD,	// moonlight
 	HARD,	// fofii_fofii_fofii
 	HARDER,	// pyrophoric
@@ -15,7 +13,6 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// generationretro
 	HARDER,	// scarletsurge
 	HARDER,	// tinytunes
-	HARDER,	// funnygameholiday
 	HARDER,	// fireaura
 	HARDER,	// rainbowdust
 	HARDER,	// factorytime
@@ -26,6 +23,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// danceofviolins
 	INSANE,	// highlife
 	DEMON,	// xx
+	DEMON,	// problematic
 	DEMON,	// decode
 	DEMON,	// infinitecircles
 	DEMON,	// deathmoon
@@ -36,15 +34,14 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// endorphinrush
 	DEMON,	// hell
 	DEMON,	// futurefunk
+	DEMON,	// luckydraw
 };
 
 const uint8_t stars_list[] = {
 	2,	// sonar
 	2,	// darkparadise
-	3,	// leveleasy
 	3,	// ninox
 	4,	// lookatthislevel
-	5,	// subzero
 	5,	// moonlight
 	5,	// fofii_fofii_fofii
 	6,	// pyrophoric
@@ -52,7 +49,6 @@ const uint8_t stars_list[] = {
 	6,	// generationretro
 	6,	// scarletsurge
 	6,	// tinytunes
-	7,	// funnygameholiday
 	7,	// fireaura
 	7,	// rainbowdust
 	7,	// factorytime
@@ -63,6 +59,7 @@ const uint8_t stars_list[] = {
 	8,	// danceofviolins
 	9,	// highlife
 	10,	// xx
+	10,	// problematic
 	10,	// decode
 	10,	// infinitecircles
 	10,	// deathmoon
@@ -73,4 +70,5 @@ const uint8_t stars_list[] = {
 	10,	// endorphinrush
 	10,	// hell
 	10,	// futurefunk
+	10,	// luckydraw
 };

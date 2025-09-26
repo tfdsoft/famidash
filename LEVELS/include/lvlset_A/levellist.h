@@ -25,14 +25,17 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// fingerdash
 	INSANE,	// dash
 	EASY,	// retray
+	NORMAL,	// leveleasy
 	NORMAL,	// thechallenge
 	NORMAL,	// dorabaebasic4
 	NORMAL,	// dorabaebasic6
 	HARD,	// dreamer
 	HARD,	// groundtospace
+	HARD,	// subzero
 	HARDER,	// kappaclysm
 	HARDER,	// sunshine
 	HARDER,	// revolution
+	HARDER,	// funnygameholiday
 	INSANE,	// lostinthewoods
 	INSANE,	// bloodbathbutno
 	INSANE,	// rainbowtylenol
@@ -42,10 +45,8 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// thelightningroad
 	DEMON,	// nightmare
 	DEMON,	// demonpark
-	DEMON,	// problematic
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
-	DEMON,	// luckydraw
 };
 
 const uint8_t stars_list[] = {
@@ -72,14 +73,17 @@ const uint8_t stars_list[] = {
 	12,	// fingerdash
 	12,	// dash
 	2,	// retray
+	3,	// leveleasy
 	3,	// thechallenge
 	3,	// dorabaebasic4
 	3,	// dorabaebasic6
 	4,	// dreamer
 	5,	// groundtospace
+	5,	// subzero
 	6,	// kappaclysm
 	7,	// sunshine
 	7,	// revolution
+	7,	// funnygameholiday
 	8,	// lostinthewoods
 	8,	// bloodbathbutno
 	8,	// rainbowtylenol
@@ -89,8 +93,6 @@ const uint8_t stars_list[] = {
 	10,	// thelightningroad
 	10,	// nightmare
 	10,	// demonpark
-	10,	// problematic
 	10,	// firetemple
 	10,	// foresttemple
-	10,	// luckydraw
 };
