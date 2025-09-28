@@ -281,7 +281,7 @@
 		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8051
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8029 bytes
+.segment "DAT_BANK_10"	; Total bank size: 8031 bytes
 	.export level_data_rainbowtylenol
 	level_data_rainbowtylenol:
 	; Header
@@ -298,7 +298,7 @@
 		.byte $02 ;____________________ Starting ground color
 		.byte 27 ;_____________________ Level height
 	; Level data
-		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8029
+		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8031
 
 
 .segment "DAT_BANK_11"	; Total bank size: 8175 bytes
