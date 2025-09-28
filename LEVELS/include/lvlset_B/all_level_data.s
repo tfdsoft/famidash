@@ -549,7 +549,7 @@
 		.incbin "EXPORTS/futurefunk.lz.2.bin" ; Size: 3837
 
 
-.segment "DAT_BANK_1E"	; Total bank size: 8144 bytes
+.segment "DAT_BANK_1E"	; Total bank size: 8141 bytes
 	.export level_data_darkparadise
 	level_data_darkparadise:
 	; Header
@@ -566,7 +566,7 @@
 		.byte $01 ;________________ Starting ground color
 		.byte 27 ;_________________ Level height
 	; Level data
-		.incbin "EXPORTS/darkparadise.lz.bin" ; Size: 4343
+		.incbin "EXPORTS/darkparadise.lz.bin" ; Size: 4340
 
 
 .segment "DAT_BANK_1F"	; Total bank size: 8178 bytes

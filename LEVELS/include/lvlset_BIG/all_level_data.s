@@ -1428,7 +1428,7 @@
 		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3689
 
 
-.segment "DAT_BANK_3F"	; Total bank size: 8024 bytes
+.segment "DAT_BANK_3F"	; Total bank size: 8021 bytes
 	.export level_data_darkparadise
 	level_data_darkparadise:
 	; Header
@@ -1445,7 +1445,7 @@
 		.byte $01 ;________________ Starting ground color
 		.byte 27 ;_________________ Level height
 	; Level data
-		.incbin "EXPORTS/darkparadise.lz.bin" ; Size: 4343
+		.incbin "EXPORTS/darkparadise.lz.bin" ; Size: 4340
 
 	.export level_data_rainbowtylenol_2
 	level_data_rainbowtylenol_2:
