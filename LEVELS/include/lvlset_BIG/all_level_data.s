@@ -563,7 +563,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1933
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 8183 bytes
 	.export level_data_xx
 	level_data_xx:
 	; Header
@@ -580,7 +580,7 @@
 		.byte $0F ;_______________ Starting ground color
 		.byte 57 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/xx.lz.bin" ; Size: 6204
+		.incbin "EXPORTS/xx.lz.bin" ; Size: 6202
 
 
 .segment "DAT_BANK_1C"	; Total bank size: 8171 bytes

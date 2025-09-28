@@ -247,7 +247,7 @@
 		.incbin "EXPORTS/hell.lz.bin" ; Size: 6276
 
 
-.segment "DAT_BANK_0D"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_0D"	; Total bank size: 8183 bytes
 	.export level_data_xx
 	level_data_xx:
 	; Header
@@ -264,7 +264,7 @@
 		.byte $0F ;_______________ Starting ground color
 		.byte 57 ;________________ Level height
 	; Level data
-		.incbin "EXPORTS/xx.lz.bin" ; Size: 6204
+		.incbin "EXPORTS/xx.lz.bin" ; Size: 6202
 
 
 .segment "DAT_BANK_0E"	; Total bank size: 6126 bytes
