@@ -876,5 +876,5 @@
 	],
 	PCM: [
 	],
-	dpcmAligner: "dpcm",
+	dpcmAligner: "dpcm_ALBUM",
 }

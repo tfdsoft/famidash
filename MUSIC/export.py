@@ -415,7 +415,10 @@ if __name__ == "__main__":
     if dpcmAlignerName == "dpcm_BIG":
     # special case if aligner is dpcm_BIG
         lastDatBank = 0x73    
-    elif len(songNames) > 150:
+    elif dpcmAlignerName == "dpcm_HUGE":
+    # special case if aligner is dpcm_BIG
+        lastDatBank = 0xF3    
+    elif dpcmAlignerName == "dpcm_ALBUM":
         lastDatBank = 0x3B
     else:
         lastDatBank = 0x33
