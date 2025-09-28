@@ -88,8 +88,8 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// hi
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
-	EXTREMEDEMON,	// sonicwave
-	EXTREMEDEMON,	// bloodbath
+	DEMON,	// sonicwave
+	DEMON,	// bloodbath
 	DEMON,	// luckydraw
 };
 
