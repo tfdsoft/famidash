@@ -76,9 +76,20 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// speedracer
 	DEMON,	// endorphinrush
 	DEMON,	// hell
-	DEMON,	// futurefunk
+	DEMON,	// everymadness
+	DEMON,	// sonicblaster
+	DEMON,	// invisiblelight
+	DEMON,	// pgclubstep
+	DEMON,	// deadlyclubstep
+	DEMON,	// thermodynamix
+	DEMON,	// ninecircles
+	DEMON,	// fairydust
+	DEMON,	// stalemate
+	DEMON,	// hi
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
+	EXTREMEDEMON,	// sonicwave
+	EXTREMEDEMON,	// bloodbath
 	DEMON,	// luckydraw
 };
 
@@ -157,8 +168,19 @@ const uint8_t stars_list[] = {
 	10,	// speedracer
 	10,	// endorphinrush
 	10,	// hell
-	10,	// futurefunk
+	10,	// everymadness
+	10,	// sonicblaster
+	10,	// invisiblelight
+	10,	// pgclubstep
+	10,	// deadlyclubstep
+	10,	// thermodynamix
+	10,	// ninecircles
+	10,	// fairydust
+	10,	// stalemate
+	10,	// hi
 	10,	// firetemple
 	10,	// foresttemple
+	10,	// sonicwave
+	10,	// bloodbath
 	10,	// luckydraw
 };

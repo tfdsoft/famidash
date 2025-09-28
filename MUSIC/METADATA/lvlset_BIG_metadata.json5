@@ -502,13 +502,6 @@
 			originalArtistText: "BOOM KITTY",
 		},			
 		{
-			fmsSongName: "What's a Future Funk?",
-			upperText: "WHATS A",
-			lowerText: "FUTURE FUNK",
-			originalArtistText: "LEMKUUJA",
-			
-		},			
-		{
 			fmsSongName: "Tiny Tunes",
 			lowerText: "TINY TUNES",
 			originalArtistText: "FANTOMENK",
@@ -551,7 +544,49 @@
 			lowerText: "FACTORY TIME",
 			originalArtist: "Visager",
 		},			
-		
+		{
+			fmsSongName: "stalemate",
+			lowerText: "STALEMATE",
+			originalArtistText: "KAYOSZX",
+		},		
+		{
+			fmsSongName: "Sonic blaster",
+			upperText: "SONIC",
+			lowerText: "BLASTER",
+			originalArtistText: "F777",
+		},
+
+		{
+			fmsSongName: "Thermodynamix",
+			lowerText: "THERMODYNAMIX",
+			originalArtistText: "DJ NATE",
+		},	
+		{
+			fmsSongName: "Nine Circles",
+			lowerText: "NINE CIRCLES",
+			originalArtistText: "NIGHTKILLA",
+		},		
+		{
+			fmsSongName: "Every Madness",
+			lowerText: "EVERY MADNESS",
+			originalArtistText: "CLOUD54",
+		},		
+		{
+			fmsSongName: "Blacklight",
+			lowerText: "BLACKLIGHT",
+			originalArtistText: "NIGHTKILLA",
+		},		
+		{
+			fmsSongName: "Fairydust",
+			lowerText: "FAIRYDUST",
+			originalArtistText: "NIGHTKILLA",
+		},		
+		{
+			fmsSongName: "Miami Hotline Vol. 3",
+			upperText: "MIAMI HOTLINE",
+			lowerText: "VOL 3",
+			originalArtistText: "DEMONICITY",
+		},			
 	],
 	SFX: [
 		{

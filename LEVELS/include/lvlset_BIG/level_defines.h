@@ -4,7 +4,7 @@
 #define LEVELSET 'A'
 
 #define OFFICIAL_LEVEL_COUNT 22
-#define COMMUNITY_LEVEL_COUNT 56
+#define COMMUNITY_LEVEL_COUNT 67
 
 #define level_stereomadness 0
 #define level_backontrack 1
@@ -80,7 +80,18 @@
 #define level_speedracer 71
 #define level_endorphinrush 72
 #define level_hell 73
-#define level_futurefunk 74
-#define level_firetemple 75
-#define level_foresttemple 76
-#define level_luckydraw 77
+#define level_everymadness 74
+#define level_sonicblaster 75
+#define level_invisiblelight 76
+#define level_pgclubstep 77
+#define level_deadlyclubstep 78
+#define level_thermodynamix 79
+#define level_ninecircles 80
+#define level_fairydust 81
+#define level_stalemate 82
+#define level_hi 83
+#define level_firetemple 84
+#define level_foresttemple 85
+#define level_sonicwave 86
+#define level_bloodbath 87
+#define level_luckydraw 88

@@ -548,7 +548,7 @@ music_data_famidash_music6:
 	.byte $81, $00, $81, $1c, $81, $00, $81, $16, $81, $00, $81, $30, $81, $00, $81, $16
 	.byte $41, $0d
 	.word @song0ref1266
-	.byte $1c, $81, $16, $81, $00, $81, $1d, $9d, $44, $00
+	.byte $1c, $81, $16, $81, $00, $81, $9f, $44, $00
 ; The DPCM aligner used to be here
 @song2ch0:
 	.byte $46, $03, $bf, $7a, $4f, $00

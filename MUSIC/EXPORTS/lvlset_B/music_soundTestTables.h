@@ -2,8 +2,8 @@
 
 #if !__VS_SYSTEM
 
-const char musicSoundTestString00[ 7] = "STEREO$";
-const char musicSoundTestString01[ 8] = "SCHEMING";
+const char musicSoundTestString00[ 8] = "SCHEMING";
+const char musicSoundTestString01[ 7] = "STEREO$";
 const char musicSoundTestString02[10] = "DRIVING$BY";
 const char musicSoundTestString03[13] = "CHAOZ$FANTASY";
 const char musicSoundTestString04[ 6] = "GLITCH";
@@ -16,8 +16,8 @@ const char musicSoundTestString0A[ 4] = "MENU";
 const char musicSoundTestString0B[ 6] = "CYCLES";
 const char musicSoundTestString0C[ 8] = "CLUBSTEP";
 const char musicSoundTestString0D[ 8] = "PRACTICE";
-const char musicSoundTestString0E[ 9] = "MADNESS$2";
-const char musicSoundTestString0F[ 6] = "WEASEL";
+const char musicSoundTestString0E[ 6] = "WEASEL";
+const char musicSoundTestString0F[ 9] = "MADNESS$2";
 const char musicSoundTestString10[ 5] = "NIGHT";
 const char musicSoundTestString11[ 8] = "EXTENDED";
 const char musicSoundTestString12[ 6] = "DECODE";
@@ -52,8 +52,8 @@ const char musicSoundTestString2E[ 7] = "MUDSTEP";
 const char musicSoundTestString2F[ 4] = "DJVI";
 const char musicSoundTestString30[ 7] = "DJ$NATE";
 const char musicSoundTestString31[13] = "OCULARNEBULAR";
-const char musicSoundTestString32[12] = "FOREVERBOUND";
-const char musicSoundTestString33[13] = "KEVIN$MACLEOD";
+const char musicSoundTestString32[13] = "KEVIN$MACLEOD";
+const char musicSoundTestString33[12] = "FOREVERBOUND";
 const char musicSoundTestString34[ 8] = "REINNBOW";
 const char musicSoundTestString35[ 9] = "PARAGONX9";
 const char musicSoundTestString36[10] = "WATERFLAME";
@@ -338,8 +338,8 @@ const uint8_t xbgmlookuptable[] = {
 	song_cycles,
 	song_clubstep,
 	song_practice,
-	song_stereo_madness_2,
 	song_scheming_weasel,
+	song_stereo_madness_2,
 	song_driving_by_night,
 	song_chaoz_fantasy_extended,
 	song_endgame,
