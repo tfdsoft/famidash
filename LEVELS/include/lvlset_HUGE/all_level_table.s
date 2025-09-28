@@ -79,21 +79,30 @@ _level_list_lo:
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_endorphinrush)
 	.byte .lobyte(level_data_hell)
+	.byte .lobyte(level_data_futurefunk)
 	.byte .lobyte(level_data_everymadness)
 	.byte .lobyte(level_data_sonicblaster)
 	.byte .lobyte(level_data_invisiblelight)
+	.byte .lobyte(level_data_dearnostalgists)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_deadlyclubstep)
 	.byte .lobyte(level_data_thermodynamix)
 	.byte .lobyte(level_data_ninecircles)
 	.byte .lobyte(level_data_fairydust)
 	.byte .lobyte(level_data_stalemate)
+	.byte .lobyte(level_data_eighto)
 	.byte .lobyte(level_data_hi)
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_sonicwave)
+	.byte .lobyte(level_data_eon)
+	.byte .lobyte(level_data_windylandscape)
 	.byte .lobyte(level_data_bloodbath)
-	.byte .lobyte(level_data_luckydraw)
+	.byte .lobyte(level_data_cataclysm)
+	.byte .lobyte(level_data_aftermath)
+	.byte .lobyte(level_data_silentclubstep)
+	.byte .lobyte(level_data_kratos)
+	.byte .lobyte(level_data_everyend)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -170,21 +179,30 @@ _level_list_hi:
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_endorphinrush)
 	.byte .hibyte(level_data_hell)
+	.byte .hibyte(level_data_futurefunk)
 	.byte .hibyte(level_data_everymadness)
 	.byte .hibyte(level_data_sonicblaster)
 	.byte .hibyte(level_data_invisiblelight)
+	.byte .hibyte(level_data_dearnostalgists)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_deadlyclubstep)
 	.byte .hibyte(level_data_thermodynamix)
 	.byte .hibyte(level_data_ninecircles)
 	.byte .hibyte(level_data_fairydust)
 	.byte .hibyte(level_data_stalemate)
+	.byte .hibyte(level_data_eighto)
 	.byte .hibyte(level_data_hi)
 	.byte .hibyte(level_data_firetemple)
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_sonicwave)
+	.byte .hibyte(level_data_eon)
+	.byte .hibyte(level_data_windylandscape)
 	.byte .hibyte(level_data_bloodbath)
-	.byte .hibyte(level_data_luckydraw)
+	.byte .hibyte(level_data_cataclysm)
+	.byte .hibyte(level_data_aftermath)
+	.byte .hibyte(level_data_silentclubstep)
+	.byte .hibyte(level_data_kratos)
+	.byte .hibyte(level_data_everyend)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -261,21 +279,30 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_endorphinrush))
 	.byte .lobyte(.bank(level_data_hell))
+	.byte .lobyte(.bank(level_data_futurefunk))
 	.byte .lobyte(.bank(level_data_everymadness))
 	.byte .lobyte(.bank(level_data_sonicblaster))
 	.byte .lobyte(.bank(level_data_invisiblelight))
+	.byte .lobyte(.bank(level_data_dearnostalgists))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_deadlyclubstep))
 	.byte .lobyte(.bank(level_data_thermodynamix))
 	.byte .lobyte(.bank(level_data_ninecircles))
 	.byte .lobyte(.bank(level_data_fairydust))
 	.byte .lobyte(.bank(level_data_stalemate))
+	.byte .lobyte(.bank(level_data_eighto))
 	.byte .lobyte(.bank(level_data_hi))
 	.byte .lobyte(.bank(level_data_firetemple))
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_sonicwave))
+	.byte .lobyte(.bank(level_data_eon))
+	.byte .lobyte(.bank(level_data_windylandscape))
 	.byte .lobyte(.bank(level_data_bloodbath))
-	.byte .lobyte(.bank(level_data_luckydraw))
+	.byte .lobyte(.bank(level_data_cataclysm))
+	.byte .lobyte(.bank(level_data_aftermath))
+	.byte .lobyte(.bank(level_data_silentclubstep))
+	.byte .lobyte(.bank(level_data_kratos))
+	.byte .lobyte(.bank(level_data_everyend))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_dash_0)
@@ -286,7 +313,14 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_extraordinaryexcitement_5)
 	.byte .lobyte(level_data_deathmoon_6)
 	.byte .lobyte(level_data_motion_7)
-	.byte .lobyte(level_data_sonicwave_8)
+	.byte .lobyte(level_data_futurefunk_8)
+	.byte .lobyte(level_data_futurefunk_9)
+	.byte .lobyte(level_data_dearnostalgists_10)
+	.byte .lobyte(level_data_sonicwave_11)
+	.byte .lobyte(level_data_eon_12)
+	.byte .lobyte(level_data_windylandscape_13)
+	.byte .lobyte(level_data_everyend_14)
+	.byte .lobyte(level_data_everyend_15)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_dash_0)
@@ -297,7 +331,14 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_extraordinaryexcitement_5)
 	.byte .hibyte(level_data_deathmoon_6)
 	.byte .hibyte(level_data_motion_7)
-	.byte .hibyte(level_data_sonicwave_8)
+	.byte .hibyte(level_data_futurefunk_8)
+	.byte .hibyte(level_data_futurefunk_9)
+	.byte .hibyte(level_data_dearnostalgists_10)
+	.byte .hibyte(level_data_sonicwave_11)
+	.byte .hibyte(level_data_eon_12)
+	.byte .hibyte(level_data_windylandscape_13)
+	.byte .hibyte(level_data_everyend_14)
+	.byte .hibyte(level_data_everyend_15)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_dash_0))
@@ -308,7 +349,14 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement_5))
 	.byte .lobyte(.bank(level_data_deathmoon_6))
 	.byte .lobyte(.bank(level_data_motion_7))
-	.byte .lobyte(.bank(level_data_sonicwave_8))
+	.byte .lobyte(.bank(level_data_futurefunk_8))
+	.byte .lobyte(.bank(level_data_futurefunk_9))
+	.byte .lobyte(.bank(level_data_dearnostalgists_10))
+	.byte .lobyte(.bank(level_data_sonicwave_11))
+	.byte .lobyte(.bank(level_data_eon_12))
+	.byte .lobyte(.bank(level_data_windylandscape_13))
+	.byte .lobyte(.bank(level_data_everyend_14))
+	.byte .lobyte(.bank(level_data_everyend_15))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
@@ -385,21 +433,30 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_speedracer)
 	.byte .lobyte(sprite_data_endorphinrush)
 	.byte .lobyte(sprite_data_hell)
+	.byte .lobyte(sprite_data_futurefunk)
 	.byte .lobyte(sprite_data_everymadness)
 	.byte .lobyte(sprite_data_sonicblaster)
 	.byte .lobyte(sprite_data_invisiblelight)
+	.byte .lobyte(sprite_data_dearnostalgists)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_deadlyclubstep)
 	.byte .lobyte(sprite_data_thermodynamix)
 	.byte .lobyte(sprite_data_ninecircles)
 	.byte .lobyte(sprite_data_fairydust)
 	.byte .lobyte(sprite_data_stalemate)
+	.byte .lobyte(sprite_data_eighto)
 	.byte .lobyte(sprite_data_hi)
 	.byte .lobyte(sprite_data_firetemple)
 	.byte .lobyte(sprite_data_foresttemple)
 	.byte .lobyte(sprite_data_sonicwave)
+	.byte .lobyte(sprite_data_eon)
+	.byte .lobyte(sprite_data_windylandscape)
 	.byte .lobyte(sprite_data_bloodbath)
-	.byte .lobyte(sprite_data_luckydraw)
+	.byte .lobyte(sprite_data_cataclysm)
+	.byte .lobyte(sprite_data_aftermath)
+	.byte .lobyte(sprite_data_silentclubstep)
+	.byte .lobyte(sprite_data_kratos)
+	.byte .lobyte(sprite_data_everyend)
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
@@ -476,21 +533,30 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_speedracer)
 	.byte .hibyte(sprite_data_endorphinrush)
 	.byte .hibyte(sprite_data_hell)
+	.byte .hibyte(sprite_data_futurefunk)
 	.byte .hibyte(sprite_data_everymadness)
 	.byte .hibyte(sprite_data_sonicblaster)
 	.byte .hibyte(sprite_data_invisiblelight)
+	.byte .hibyte(sprite_data_dearnostalgists)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_deadlyclubstep)
 	.byte .hibyte(sprite_data_thermodynamix)
 	.byte .hibyte(sprite_data_ninecircles)
 	.byte .hibyte(sprite_data_fairydust)
 	.byte .hibyte(sprite_data_stalemate)
+	.byte .hibyte(sprite_data_eighto)
 	.byte .hibyte(sprite_data_hi)
 	.byte .hibyte(sprite_data_firetemple)
 	.byte .hibyte(sprite_data_foresttemple)
 	.byte .hibyte(sprite_data_sonicwave)
+	.byte .hibyte(sprite_data_eon)
+	.byte .hibyte(sprite_data_windylandscape)
 	.byte .hibyte(sprite_data_bloodbath)
-	.byte .hibyte(sprite_data_luckydraw)
+	.byte .hibyte(sprite_data_cataclysm)
+	.byte .hibyte(sprite_data_aftermath)
+	.byte .hibyte(sprite_data_silentclubstep)
+	.byte .hibyte(sprite_data_kratos)
+	.byte .hibyte(sprite_data_everyend)
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
@@ -567,21 +633,30 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_speedracer))
 	.byte .lobyte(.bank(sprite_data_endorphinrush))
 	.byte .lobyte(.bank(sprite_data_hell))
+	.byte .lobyte(.bank(sprite_data_futurefunk))
 	.byte .lobyte(.bank(sprite_data_everymadness))
 	.byte .lobyte(.bank(sprite_data_sonicblaster))
 	.byte .lobyte(.bank(sprite_data_invisiblelight))
+	.byte .lobyte(.bank(sprite_data_dearnostalgists))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_deadlyclubstep))
 	.byte .lobyte(.bank(sprite_data_thermodynamix))
 	.byte .lobyte(.bank(sprite_data_ninecircles))
 	.byte .lobyte(.bank(sprite_data_fairydust))
 	.byte .lobyte(.bank(sprite_data_stalemate))
+	.byte .lobyte(.bank(sprite_data_eighto))
 	.byte .lobyte(.bank(sprite_data_hi))
 	.byte .lobyte(.bank(sprite_data_firetemple))
 	.byte .lobyte(.bank(sprite_data_foresttemple))
 	.byte .lobyte(.bank(sprite_data_sonicwave))
+	.byte .lobyte(.bank(sprite_data_eon))
+	.byte .lobyte(.bank(sprite_data_windylandscape))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
-	.byte .lobyte(.bank(sprite_data_luckydraw))
+	.byte .lobyte(.bank(sprite_data_cataclysm))
+	.byte .lobyte(.bank(sprite_data_aftermath))
+	.byte .lobyte(.bank(sprite_data_silentclubstep))
+	.byte .lobyte(.bank(sprite_data_kratos))
+	.byte .lobyte(.bank(sprite_data_everyend))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -661,21 +736,30 @@ _level_lengths_lo:
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($00008B)		; endorphinrush
 	.byte .lobyte($0000A2)		; hell
+	.byte .lobyte($0001DD)		; futurefunk
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($0000A6)		; sonicblaster
 	.byte .lobyte($000097)		; invisiblelight
+	.byte .lobyte($000155)		; dearnostalgists
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
 	.byte .lobyte($00008E)		; thermodynamix
 	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000082)		; fairydust
 	.byte .lobyte($000092)		; stalemate
+	.byte .lobyte($000078)		; eighto
 	.byte .lobyte($00009A)		; hi
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($0000FB)		; sonicwave
+	.byte .lobyte($000286)		; eon
+	.byte .lobyte($00009A)		; windylandscape
 	.byte .lobyte($0000D5)		; bloodbath
-	.byte .lobyte($000089)		; luckydraw
+	.byte .lobyte($00007D)		; cataclysm
+	.byte .lobyte($00007C)		; aftermath
+	.byte .lobyte($000095)		; silentclubstep
+	.byte .lobyte($000087)		; kratos
+	.byte .lobyte($0002DC)		; everyend
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -754,21 +838,30 @@ _level_lengths_md:
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($00008B)		; endorphinrush
 	.byte .hibyte($0000A2)		; hell
+	.byte .hibyte($0001DD)		; futurefunk
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($0000A6)		; sonicblaster
 	.byte .hibyte($000097)		; invisiblelight
+	.byte .hibyte($000155)		; dearnostalgists
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
 	.byte .hibyte($00008E)		; thermodynamix
 	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000082)		; fairydust
 	.byte .hibyte($000092)		; stalemate
+	.byte .hibyte($000078)		; eighto
 	.byte .hibyte($00009A)		; hi
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($0000FB)		; sonicwave
+	.byte .hibyte($000286)		; eon
+	.byte .hibyte($00009A)		; windylandscape
 	.byte .hibyte($0000D5)		; bloodbath
-	.byte .hibyte($000089)		; luckydraw
+	.byte .hibyte($00007D)		; cataclysm
+	.byte .hibyte($00007C)		; aftermath
+	.byte .hibyte($000095)		; silentclubstep
+	.byte .hibyte($000087)		; kratos
+	.byte .hibyte($0002DC)		; everyend
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -847,21 +940,30 @@ _level_lengths_hi:
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($00008B)		; endorphinrush
 	.byte .bankbyte($0000A2)		; hell
+	.byte .bankbyte($0001DD)		; futurefunk
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($0000A6)		; sonicblaster
 	.byte .bankbyte($000097)		; invisiblelight
+	.byte .bankbyte($000155)		; dearnostalgists
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep
 	.byte .bankbyte($00008E)		; thermodynamix
 	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000082)		; fairydust
 	.byte .bankbyte($000092)		; stalemate
+	.byte .bankbyte($000078)		; eighto
 	.byte .bankbyte($00009A)		; hi
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($0000FB)		; sonicwave
+	.byte .bankbyte($000286)		; eon
+	.byte .bankbyte($00009A)		; windylandscape
 	.byte .bankbyte($0000D5)		; bloodbath
-	.byte .bankbyte($000089)		; luckydraw
+	.byte .bankbyte($00007D)		; cataclysm
+	.byte .bankbyte($00007C)		; aftermath
+	.byte .bankbyte($000095)		; silentclubstep
+	.byte .bankbyte($000087)		; kratos
+	.byte .bankbyte($0002DC)		; everyend
 
 .endif
 .endif

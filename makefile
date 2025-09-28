@@ -160,6 +160,8 @@ big:
 	--no-print-directory
 
 huge: LEVELSET = HUGE
+huge: CC65_DEFINES += -D__HUGE_ROM=1
+huge: CA65_DEFINES += -D__HUGE_ROM=1
 huge: OUTDIR = $(OUTDIR_PREFIX)/$@
 huge: TMPDIR = $(TMPDIR_PREFIX)/$@
 huge:

@@ -24,18 +24,26 @@ CODE_BANK_PUSH("XCD_BANK_05")
 CODE_BANK("XCD_BANK_06")
 #include "menustates/bgmtest_album.c"
 #else
+#if __HUGE_ROM
+CODE_BANK("XCD_BANK_07")
+#else
 CODE_BANK("XCD_BANK_05")
+#endif
 #include "menustates/bgmtest.c"
 #endif
 
+#if __HUGE_ROM
+CODE_BANK("XCD_BANK_08")
+#include "defines/nametable/menunametable_XCD06.c"
+#else
 #if !__THE_ALBUM
 CODE_BANK("XCD_BANK_06")
 
 #include "defines/nametable/menunametable_XCD06.c"
 
 #endif
-
-#if LEVELSET != 'A' && LEVELSET != 0xA1B73
+#endif
+#if LEVELSET != 'A' && !__HUGE_ROM && !__THE_ALBUM
 CODE_BANK("XCD_BANK_06")
 #include "menustates/playmain.c"
 #endif

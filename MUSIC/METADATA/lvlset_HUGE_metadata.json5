@@ -313,18 +313,6 @@
 			originalArtistText: "ROBTOP",
 		},
 		{
-			fmsSongName: "atthespeedoflight",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "atthespeedoflight2",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 2",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
 			fmsSongName: "midnight",
 			lowerText: "MIDNIGHT",
 			originalArtistText: "CORNANDBEANS",
@@ -545,6 +533,29 @@
 			originalArtist: "Visager",
 		},			
 		{
+			fmsSongName: "atthespeedoflight",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT",
+			originalArtistText: "DIMRAIN47",
+		},
+		{
+			fmsSongName: "atthespeedoflight2",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT 2",
+			originalArtistText: "DIMRAIN47",
+		},
+		{
+			fmsSongName: "atthespeedoflight3",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT 3",
+			originalArtistText: "DIMRAIN47",
+		},
+		{
+			fmsSongName: "EON",
+			lowerText: "THE ANGEL",
+			originalArtistText: "CACOLA",
+		},
+		{
 			fmsSongName: "stalemate",
 			lowerText: "STALEMATE",
 			originalArtistText: "KAYOSZX",
@@ -556,6 +567,31 @@
 			originalArtistText: "F777",
 		},
 
+//		{
+//			fmsSongName: "eighto",
+//			lowerText: "EIGHTO",
+//			originalArtistText: "JOMEKKA",
+//		},		
+		{
+			fmsSongName: "Kratos",
+			lowerText: "KRATOS",
+			originalArtistText: "SHAPPY",
+		},	
+		{
+			fmsSongName: "Every End PT1",
+			lowerText: "EVERY END PT1",
+			originalArtistText: "DIMRAIN47",
+		},	
+		{
+			fmsSongName: "Every End PT2",
+			lowerText: "EVERY END PT2",
+			originalArtistText: "DIMRAIN47",
+		},	
+		{
+			fmsSongName: "Windfall",
+			lowerText: "WINDFALL",
+			originalArtistText: "THEFATRAT",
+		},	
 		{
 			fmsSongName: "Thermodynamix",
 			lowerText: "THERMODYNAMIX",
@@ -583,10 +619,30 @@
 		},		
 		{
 			fmsSongName: "Miami Hotline Vol. 3",
-			upperText: "MIAMI HOTLINE",
+			upperText: "MIAMI HOTLINE 3",
 			lowerText: "VOL 3",
 			originalArtistText: "DEMONICITY",
+		},		
+		{
+			fmsSongName: "eighto",
+			lowerText: "EIGHTO",
+			originalArtistText: "JOMEKKA",
+		},		
+
+		{	
+			fmsSongName: "crackdown",
+			upperText: "OKIBA",
+			lowerText: "CRACKDOWN",
+			originalArtistText: "BOSSFIGHT",
+		},
+		{
+			fmsSongName: "What's a Future Funk?",
+			upperText: "WHATS A",
+			lowerText: "FUTURE FUNK",
+			originalArtistText: "LEMKUUJA",
+			
 		},			
+				
 	],
 	SFX: [
 		{

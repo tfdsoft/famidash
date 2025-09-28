@@ -1848,7 +1848,7 @@ found_bank:
 .include "musicPlayRoutines.s"
 .endproc
 
-.segment "CODE_2"
+.segment "CODE"
 
 .proc famistudio_dpcm_bank_callback
 	clc
@@ -1858,7 +1858,7 @@ found_bank:
 
 
 ; void __fastcall__ sfx_play(uint8_t sfx_index, uint8_t channel);
-.segment "CODE_2"
+.segment "CODE"
 
 .import _options
 
@@ -1894,7 +1894,7 @@ play:
 .endproc
 
 ; void music_update();
-.segment "CODE_2"
+.segment "CODE"
 
 .export _music_update
 .proc _music_update
@@ -1975,7 +1975,7 @@ early_exit:
 .endproc
 
 ; uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
-.segment "CODE_2"
+.segment "CODE"
 
 .export _calculate_linear_scroll_y
 .proc _calculate_linear_scroll_y
