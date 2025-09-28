@@ -180,7 +180,7 @@ shiftBy4table:
 	.byte $80, $90, $A0, $B0
 	.byte $C0, $D0, $E0, $F0
 
-.segment "CODE_2"
+.segment "CODE"
 
 .export __one_vram_buffer_repeat
 .proc __one_vram_buffer_repeat
@@ -391,7 +391,7 @@ single_rle_byte:
 	jmp	mmc3_set_prg_bank_1	;__
 
 ; void unrle_next_column();
-.segment "CODE_2"
+.segment "CODE"
 
 .export _unrle_next_column
 .proc _unrle_next_column
@@ -463,7 +463,7 @@ single_rle_byte:
 .endproc
 
 ; Function not available in C
-.segment "CODE_2"
+.segment "CODE"
 
 .proc loadLevelContinuation
 	; Meta sequence: load new level chunk
@@ -482,7 +482,7 @@ single_rle_byte:
 .endproc
 
 ; void __fastcall__ dummy_unrle_columns(uint16_t columns);
-.segment "CODE_2"
+.segment "CODE"
 
 .import umul8x16r24m
 
@@ -1659,7 +1659,7 @@ ntAddrHiTbl:
 .endif
 
 ; void __fastcall__ draw_padded_text(const void * data, uint8_t len, uint8_t total_len, uintptr_t ppu_address)
-.segment "CODE_2"
+.segment "CODE"
 
 .export __draw_padded_text
 .proc __draw_padded_text
@@ -1777,7 +1777,7 @@ ntAddrHiTbl:
 .endproc
 .endif
 ; void __fastcall__ music_play(uint8_t song);
-.segment "CODE_2"
+.segment "CODE"
 
 .import _options
 

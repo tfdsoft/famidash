@@ -16,6 +16,7 @@ RIFFChunkStart "tlbl"
 .asciiz "Theory Of Everything"
 .asciiz "Electroman Adventures"
 .asciiz "Practice ~ Stay Inside Me"
+.asciiz "Decode ~ Endgame"
 .asciiz "Death SFX"
 .asciiz "Click SFX"
 .asciiz "LEVEL COMPLETE! SFX"
@@ -46,6 +47,7 @@ RIFFChunkStart "taut"
 .asciiz "Original by Dj-Nate, covered by leejh20, UserSniper, Vikrinox, Zenith302"
 .asciiz "Original by Waterflame, covered by cloud54, UserSniper, alexmush"
 .asciiz "Original by OcularNebula, covered by UserSniper"
+.asciiz "Original by Waterflame, covered by Vikrinox"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
@@ -65,18 +67,20 @@ RIFFChunkStart "time"
 .dword 60034, 85550, 82817, 90700
 .dword 81433, 85000, 80750, 86467
 .dword 96067, 85933, 82350, 96583
-.dword 89000, 87800, 479634, 383
-.dword 50, 3167, 683, 100
-.dword 683, 683, 650, 967
-.dword 633, 950, 1150, 1650
+.dword 89000, 87800, 479634, 79283
+.dword 383, 50, 3167, 683
+.dword 100, 683, 683, 650
+.dword 967, 633, 950, 1150
+.dword 1650
 .else
 .dword 72160, 102840, 99540, 109000
 .dword 97880, 102160, 97040, 104100
 .dword 115460, 103280, 98980, 116080
-.dword 106960, 105520, 576760, 460
-.dword 40, 3020, 700, 120
-.dword 820, 820, 680, 920
-.dword 640, 1140, 1100, 1650
+.dword 106960, 105520, 576760, 95280
+.dword 460, 40, 3020, 700
+.dword 120, 820, 820, 680
+.dword 920, 640, 1140, 1100
+.dword 1650
 .endif
 
 RIFFChunkStart "fade"
@@ -87,3 +91,4 @@ RIFFChunkStart "fade"
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
+.dword 0

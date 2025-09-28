@@ -412,8 +412,10 @@ if __name__ == "__main__":
     dpcmAlignerName = processed_metadata['dpcmAlignerName']
 
     songNames = [song['Name'] for song in fsTxtData['Song']]
-    
-    if len(songNames) > 150:
+    if dpcmAlignerName == "dpcm_BIG":
+    # special case if aligner is dpcm_BIG
+        lastDatBank = 0x73    
+    elif len(songNames) > 150:
         lastDatBank = 0x3B
     else:
         lastDatBank = 0x33

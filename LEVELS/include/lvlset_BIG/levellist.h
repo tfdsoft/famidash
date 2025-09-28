@@ -25,28 +25,61 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// fingerdash
 	INSANE,	// dash
 	EASY,	// retray
+	EASY,	// sonar
+	EASY,	// darkparadise
 	NORMAL,	// leveleasy
 	NORMAL,	// thechallenge
 	NORMAL,	// dorabaebasic4
+	NORMAL,	// ninox
 	NORMAL,	// dorabaebasic6
 	HARD,	// dreamer
+	HARD,	// lookatthislevel
 	HARD,	// groundtospace
 	HARD,	// subzero
+	HARD,	// moonlight
+	HARD,	// fofii_fofii_fofii
+	HARDER,	// pyrophoric
+	HARDER,	// oceane
+	HARDER,	// generationretro
+	HARDER,	// scarletsurge
+	HARDER,	// tinytunes
 	HARDER,	// kappaclysm
 	HARDER,	// sunshine
 	HARDER,	// revolution
 	HARDER,	// funnygameholiday
+	HARDER,	// fireaura
+	HARDER,	// rainbowdust
+	HARDER,	// factorytime
+	HARDER,	// thesteamworks
 	INSANE,	// lostinthewoods
 	INSANE,	// bloodbathbutno
 	INSANE,	// rainbowtylenol
 	INSANE,	// greif
+	INSANE,	// dorabaebasic10
+	INSANE,	// subtleoddities
+	INSANE,	// powertrip
+	INSANE,	// danceofviolins
 	INSANE,	// aprettyeasylevel
+	INSANE,	// highlife
 	INSANE,	// extraordinaryexcitement
 	DEMON,	// thelightningroad
 	DEMON,	// nightmare
 	DEMON,	// demonpark
+	DEMON,	// xx
+	DEMON,	// problematic
+	DEMON,	// decode
+	DEMON,	// infinitecircles
+	DEMON,	// deathmoon
+	DEMON,	// supercycles
+	DEMON,	// clutterfunk2
+	DEMON,	// motion
+	DEMON,	// speedracer
+	DEMON,	// endorphinrush
+	DEMON,	// hell
+	DEMON,	// futurefunk
 	DEMON,	// firetemple
 	DEMON,	// foresttemple
+	DEMON,	// luckydraw
 };
 
 const uint8_t stars_list[] = {
@@ -73,26 +106,59 @@ const uint8_t stars_list[] = {
 	12,	// fingerdash
 	12,	// dash
 	2,	// retray
+	2,	// sonar
+	2,	// darkparadise
 	3,	// leveleasy
 	3,	// thechallenge
 	3,	// dorabaebasic4
+	3,	// ninox
 	3,	// dorabaebasic6
 	4,	// dreamer
+	4,	// lookatthislevel
 	5,	// groundtospace
 	5,	// subzero
+	5,	// moonlight
+	5,	// fofii_fofii_fofii
+	6,	// pyrophoric
+	6,	// oceane
+	6,	// generationretro
+	6,	// scarletsurge
+	6,	// tinytunes
 	6,	// kappaclysm
 	7,	// sunshine
 	7,	// revolution
 	7,	// funnygameholiday
+	7,	// fireaura
+	7,	// rainbowdust
+	7,	// factorytime
+	7,	// thesteamworks
 	8,	// lostinthewoods
 	8,	// bloodbathbutno
 	8,	// rainbowtylenol
 	8,	// greif
+	8,	// dorabaebasic10
+	8,	// subtleoddities
+	8,	// powertrip
+	8,	// danceofviolins
 	9,	// aprettyeasylevel
+	9,	// highlife
 	9,	// extraordinaryexcitement
 	10,	// thelightningroad
 	10,	// nightmare
 	10,	// demonpark
+	10,	// xx
+	10,	// problematic
+	10,	// decode
+	10,	// infinitecircles
+	10,	// deathmoon
+	10,	// supercycles
+	10,	// clutterfunk2
+	10,	// motion
+	10,	// speedracer
+	10,	// endorphinrush
+	10,	// hell
+	10,	// futurefunk
 	10,	// firetemple
 	10,	// foresttemple
+	10,	// luckydraw
 };

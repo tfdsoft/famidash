@@ -43,12 +43,6 @@
 			}
 		},
 		{
-			fmsSongName: "Stereo madness 2",
-			upperText: "STEREO ",
-			lowerText: "MADNESS 2",
-			originalArtistText: "FOREVERBOUND",
-		},
-		{
 			fmsSongName: "Scheming Weasel",
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
@@ -56,6 +50,12 @@
 			vsSystemEnabled: false
 		},
 
+		{
+			fmsSongName: "Stereo madness 2",
+			upperText: "STEREO ",
+			lowerText: "MADNESS 2",
+			originalArtistText: "FOREVERBOUND",
+		},
 		{
 			fmsSongName: "Driving By Night",
 			upperText: "DRIVING BY",

@@ -28,28 +28,61 @@ _level_list_lo:
 	.byte .lobyte(level_data_fingerdash)
 	.byte .lobyte(level_data_dash)
 	.byte .lobyte(level_data_retray)
+	.byte .lobyte(level_data_sonar)
+	.byte .lobyte(level_data_darkparadise)
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_thechallenge)
 	.byte .lobyte(level_data_dorabaebasic4)
+	.byte .lobyte(level_data_ninox)
 	.byte .lobyte(level_data_dorabaebasic6)
 	.byte .lobyte(level_data_dreamer)
+	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_groundtospace)
 	.byte .lobyte(level_data_subzero)
+	.byte .lobyte(level_data_moonlight)
+	.byte .lobyte(level_data_fofii_fofii_fofii)
+	.byte .lobyte(level_data_pyrophoric)
+	.byte .lobyte(level_data_oceane)
+	.byte .lobyte(level_data_generationretro)
+	.byte .lobyte(level_data_scarletsurge)
+	.byte .lobyte(level_data_tinytunes)
 	.byte .lobyte(level_data_kappaclysm)
 	.byte .lobyte(level_data_sunshine)
 	.byte .lobyte(level_data_revolution)
 	.byte .lobyte(level_data_funnygameholiday)
+	.byte .lobyte(level_data_fireaura)
+	.byte .lobyte(level_data_rainbowdust)
+	.byte .lobyte(level_data_factorytime)
+	.byte .lobyte(level_data_thesteamworks)
 	.byte .lobyte(level_data_lostinthewoods)
 	.byte .lobyte(level_data_bloodbathbutno)
 	.byte .lobyte(level_data_rainbowtylenol)
 	.byte .lobyte(level_data_greif)
+	.byte .lobyte(level_data_dorabaebasic10)
+	.byte .lobyte(level_data_subtleoddities)
+	.byte .lobyte(level_data_powertrip)
+	.byte .lobyte(level_data_danceofviolins)
 	.byte .lobyte(level_data_aprettyeasylevel)
+	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_extraordinaryexcitement)
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
 	.byte .lobyte(level_data_demonpark)
+	.byte .lobyte(level_data_xx)
+	.byte .lobyte(level_data_problematic)
+	.byte .lobyte(level_data_decode)
+	.byte .lobyte(level_data_infinitecircles)
+	.byte .lobyte(level_data_deathmoon)
+	.byte .lobyte(level_data_supercycles)
+	.byte .lobyte(level_data_clutterfunk2)
+	.byte .lobyte(level_data_motion)
+	.byte .lobyte(level_data_speedracer)
+	.byte .lobyte(level_data_endorphinrush)
+	.byte .lobyte(level_data_hell)
+	.byte .lobyte(level_data_futurefunk)
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_foresttemple)
+	.byte .lobyte(level_data_luckydraw)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -75,28 +108,61 @@ _level_list_hi:
 	.byte .hibyte(level_data_fingerdash)
 	.byte .hibyte(level_data_dash)
 	.byte .hibyte(level_data_retray)
+	.byte .hibyte(level_data_sonar)
+	.byte .hibyte(level_data_darkparadise)
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_thechallenge)
 	.byte .hibyte(level_data_dorabaebasic4)
+	.byte .hibyte(level_data_ninox)
 	.byte .hibyte(level_data_dorabaebasic6)
 	.byte .hibyte(level_data_dreamer)
+	.byte .hibyte(level_data_lookatthislevel)
 	.byte .hibyte(level_data_groundtospace)
 	.byte .hibyte(level_data_subzero)
+	.byte .hibyte(level_data_moonlight)
+	.byte .hibyte(level_data_fofii_fofii_fofii)
+	.byte .hibyte(level_data_pyrophoric)
+	.byte .hibyte(level_data_oceane)
+	.byte .hibyte(level_data_generationretro)
+	.byte .hibyte(level_data_scarletsurge)
+	.byte .hibyte(level_data_tinytunes)
 	.byte .hibyte(level_data_kappaclysm)
 	.byte .hibyte(level_data_sunshine)
 	.byte .hibyte(level_data_revolution)
 	.byte .hibyte(level_data_funnygameholiday)
+	.byte .hibyte(level_data_fireaura)
+	.byte .hibyte(level_data_rainbowdust)
+	.byte .hibyte(level_data_factorytime)
+	.byte .hibyte(level_data_thesteamworks)
 	.byte .hibyte(level_data_lostinthewoods)
 	.byte .hibyte(level_data_bloodbathbutno)
 	.byte .hibyte(level_data_rainbowtylenol)
 	.byte .hibyte(level_data_greif)
+	.byte .hibyte(level_data_dorabaebasic10)
+	.byte .hibyte(level_data_subtleoddities)
+	.byte .hibyte(level_data_powertrip)
+	.byte .hibyte(level_data_danceofviolins)
 	.byte .hibyte(level_data_aprettyeasylevel)
+	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_extraordinaryexcitement)
 	.byte .hibyte(level_data_thelightningroad)
 	.byte .hibyte(level_data_nightmare)
 	.byte .hibyte(level_data_demonpark)
+	.byte .hibyte(level_data_xx)
+	.byte .hibyte(level_data_problematic)
+	.byte .hibyte(level_data_decode)
+	.byte .hibyte(level_data_infinitecircles)
+	.byte .hibyte(level_data_deathmoon)
+	.byte .hibyte(level_data_supercycles)
+	.byte .hibyte(level_data_clutterfunk2)
+	.byte .hibyte(level_data_motion)
+	.byte .hibyte(level_data_speedracer)
+	.byte .hibyte(level_data_endorphinrush)
+	.byte .hibyte(level_data_hell)
+	.byte .hibyte(level_data_futurefunk)
 	.byte .hibyte(level_data_firetemple)
 	.byte .hibyte(level_data_foresttemple)
+	.byte .hibyte(level_data_luckydraw)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -122,43 +188,97 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_fingerdash))
 	.byte .lobyte(.bank(level_data_dash))
 	.byte .lobyte(.bank(level_data_retray))
+	.byte .lobyte(.bank(level_data_sonar))
+	.byte .lobyte(.bank(level_data_darkparadise))
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_thechallenge))
 	.byte .lobyte(.bank(level_data_dorabaebasic4))
+	.byte .lobyte(.bank(level_data_ninox))
 	.byte .lobyte(.bank(level_data_dorabaebasic6))
 	.byte .lobyte(.bank(level_data_dreamer))
+	.byte .lobyte(.bank(level_data_lookatthislevel))
 	.byte .lobyte(.bank(level_data_groundtospace))
 	.byte .lobyte(.bank(level_data_subzero))
+	.byte .lobyte(.bank(level_data_moonlight))
+	.byte .lobyte(.bank(level_data_fofii_fofii_fofii))
+	.byte .lobyte(.bank(level_data_pyrophoric))
+	.byte .lobyte(.bank(level_data_oceane))
+	.byte .lobyte(.bank(level_data_generationretro))
+	.byte .lobyte(.bank(level_data_scarletsurge))
+	.byte .lobyte(.bank(level_data_tinytunes))
 	.byte .lobyte(.bank(level_data_kappaclysm))
 	.byte .lobyte(.bank(level_data_sunshine))
 	.byte .lobyte(.bank(level_data_revolution))
 	.byte .lobyte(.bank(level_data_funnygameholiday))
+	.byte .lobyte(.bank(level_data_fireaura))
+	.byte .lobyte(.bank(level_data_rainbowdust))
+	.byte .lobyte(.bank(level_data_factorytime))
+	.byte .lobyte(.bank(level_data_thesteamworks))
 	.byte .lobyte(.bank(level_data_lostinthewoods))
 	.byte .lobyte(.bank(level_data_bloodbathbutno))
 	.byte .lobyte(.bank(level_data_rainbowtylenol))
 	.byte .lobyte(.bank(level_data_greif))
+	.byte .lobyte(.bank(level_data_dorabaebasic10))
+	.byte .lobyte(.bank(level_data_subtleoddities))
+	.byte .lobyte(.bank(level_data_powertrip))
+	.byte .lobyte(.bank(level_data_danceofviolins))
 	.byte .lobyte(.bank(level_data_aprettyeasylevel))
+	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement))
 	.byte .lobyte(.bank(level_data_thelightningroad))
 	.byte .lobyte(.bank(level_data_nightmare))
 	.byte .lobyte(.bank(level_data_demonpark))
+	.byte .lobyte(.bank(level_data_xx))
+	.byte .lobyte(.bank(level_data_problematic))
+	.byte .lobyte(.bank(level_data_decode))
+	.byte .lobyte(.bank(level_data_infinitecircles))
+	.byte .lobyte(.bank(level_data_deathmoon))
+	.byte .lobyte(.bank(level_data_supercycles))
+	.byte .lobyte(.bank(level_data_clutterfunk2))
+	.byte .lobyte(.bank(level_data_motion))
+	.byte .lobyte(.bank(level_data_speedracer))
+	.byte .lobyte(.bank(level_data_endorphinrush))
+	.byte .lobyte(.bank(level_data_hell))
+	.byte .lobyte(.bank(level_data_futurefunk))
 	.byte .lobyte(.bank(level_data_firetemple))
 	.byte .lobyte(.bank(level_data_foresttemple))
+	.byte .lobyte(.bank(level_data_luckydraw))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_dash_0)
-	.byte .lobyte(level_data_rainbowtylenol_1)
-	.byte .lobyte(level_data_extraordinaryexcitement_2)
+	.byte .lobyte(level_data_thesteamworks_1)
+	.byte .lobyte(level_data_rainbowtylenol_2)
+	.byte .lobyte(level_data_subtleoddities_3)
+	.byte .lobyte(level_data_highlife_4)
+	.byte .lobyte(level_data_extraordinaryexcitement_5)
+	.byte .lobyte(level_data_deathmoon_6)
+	.byte .lobyte(level_data_motion_7)
+	.byte .lobyte(level_data_futurefunk_8)
+	.byte .lobyte(level_data_futurefunk_9)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_dash_0)
-	.byte .hibyte(level_data_rainbowtylenol_1)
-	.byte .hibyte(level_data_extraordinaryexcitement_2)
+	.byte .hibyte(level_data_thesteamworks_1)
+	.byte .hibyte(level_data_rainbowtylenol_2)
+	.byte .hibyte(level_data_subtleoddities_3)
+	.byte .hibyte(level_data_highlife_4)
+	.byte .hibyte(level_data_extraordinaryexcitement_5)
+	.byte .hibyte(level_data_deathmoon_6)
+	.byte .hibyte(level_data_motion_7)
+	.byte .hibyte(level_data_futurefunk_8)
+	.byte .hibyte(level_data_futurefunk_9)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_dash_0))
-	.byte .lobyte(.bank(level_data_rainbowtylenol_1))
-	.byte .lobyte(.bank(level_data_extraordinaryexcitement_2))
+	.byte .lobyte(.bank(level_data_thesteamworks_1))
+	.byte .lobyte(.bank(level_data_rainbowtylenol_2))
+	.byte .lobyte(.bank(level_data_subtleoddities_3))
+	.byte .lobyte(.bank(level_data_highlife_4))
+	.byte .lobyte(.bank(level_data_extraordinaryexcitement_5))
+	.byte .lobyte(.bank(level_data_deathmoon_6))
+	.byte .lobyte(.bank(level_data_motion_7))
+	.byte .lobyte(.bank(level_data_futurefunk_8))
+	.byte .lobyte(.bank(level_data_futurefunk_9))
 
 _sprite_list_lo:
 	.byte .lobyte(sprite_data_stereomadness)
@@ -184,28 +304,61 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_fingerdash)
 	.byte .lobyte(sprite_data_dash)
 	.byte .lobyte(sprite_data_retray)
+	.byte .lobyte(sprite_data_sonar)
+	.byte .lobyte(sprite_data_darkparadise)
 	.byte .lobyte(sprite_data_leveleasy)
 	.byte .lobyte(sprite_data_thechallenge)
 	.byte .lobyte(sprite_data_dorabaebasic4)
+	.byte .lobyte(sprite_data_ninox)
 	.byte .lobyte(sprite_data_dorabaebasic6)
 	.byte .lobyte(sprite_data_dreamer)
+	.byte .lobyte(sprite_data_lookatthislevel)
 	.byte .lobyte(sprite_data_groundtospace)
 	.byte .lobyte(sprite_data_subzero)
+	.byte .lobyte(sprite_data_moonlight)
+	.byte .lobyte(sprite_data_fofii_fofii_fofii)
+	.byte .lobyte(sprite_data_pyrophoric)
+	.byte .lobyte(sprite_data_oceane)
+	.byte .lobyte(sprite_data_generationretro)
+	.byte .lobyte(sprite_data_scarletsurge)
+	.byte .lobyte(sprite_data_tinytunes)
 	.byte .lobyte(sprite_data_kappaclysm)
 	.byte .lobyte(sprite_data_sunshine)
 	.byte .lobyte(sprite_data_revolution)
 	.byte .lobyte(sprite_data_funnygameholiday)
+	.byte .lobyte(sprite_data_fireaura)
+	.byte .lobyte(sprite_data_rainbowdust)
+	.byte .lobyte(sprite_data_factorytime)
+	.byte .lobyte(sprite_data_thesteamworks)
 	.byte .lobyte(sprite_data_lostinthewoods)
 	.byte .lobyte(sprite_data_bloodbathbutno)
 	.byte .lobyte(sprite_data_rainbowtylenol)
 	.byte .lobyte(sprite_data_greif)
+	.byte .lobyte(sprite_data_dorabaebasic10)
+	.byte .lobyte(sprite_data_subtleoddities)
+	.byte .lobyte(sprite_data_powertrip)
+	.byte .lobyte(sprite_data_danceofviolins)
 	.byte .lobyte(sprite_data_aprettyeasylevel)
+	.byte .lobyte(sprite_data_highlife)
 	.byte .lobyte(sprite_data_extraordinaryexcitement)
 	.byte .lobyte(sprite_data_thelightningroad)
 	.byte .lobyte(sprite_data_nightmare)
 	.byte .lobyte(sprite_data_demonpark)
+	.byte .lobyte(sprite_data_xx)
+	.byte .lobyte(sprite_data_problematic)
+	.byte .lobyte(sprite_data_decode)
+	.byte .lobyte(sprite_data_infinitecircles)
+	.byte .lobyte(sprite_data_deathmoon)
+	.byte .lobyte(sprite_data_supercycles)
+	.byte .lobyte(sprite_data_clutterfunk2)
+	.byte .lobyte(sprite_data_motion)
+	.byte .lobyte(sprite_data_speedracer)
+	.byte .lobyte(sprite_data_endorphinrush)
+	.byte .lobyte(sprite_data_hell)
+	.byte .lobyte(sprite_data_futurefunk)
 	.byte .lobyte(sprite_data_firetemple)
 	.byte .lobyte(sprite_data_foresttemple)
+	.byte .lobyte(sprite_data_luckydraw)
 
 _sprite_list_hi:
 	.byte .hibyte(sprite_data_stereomadness)
@@ -231,28 +384,61 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_fingerdash)
 	.byte .hibyte(sprite_data_dash)
 	.byte .hibyte(sprite_data_retray)
+	.byte .hibyte(sprite_data_sonar)
+	.byte .hibyte(sprite_data_darkparadise)
 	.byte .hibyte(sprite_data_leveleasy)
 	.byte .hibyte(sprite_data_thechallenge)
 	.byte .hibyte(sprite_data_dorabaebasic4)
+	.byte .hibyte(sprite_data_ninox)
 	.byte .hibyte(sprite_data_dorabaebasic6)
 	.byte .hibyte(sprite_data_dreamer)
+	.byte .hibyte(sprite_data_lookatthislevel)
 	.byte .hibyte(sprite_data_groundtospace)
 	.byte .hibyte(sprite_data_subzero)
+	.byte .hibyte(sprite_data_moonlight)
+	.byte .hibyte(sprite_data_fofii_fofii_fofii)
+	.byte .hibyte(sprite_data_pyrophoric)
+	.byte .hibyte(sprite_data_oceane)
+	.byte .hibyte(sprite_data_generationretro)
+	.byte .hibyte(sprite_data_scarletsurge)
+	.byte .hibyte(sprite_data_tinytunes)
 	.byte .hibyte(sprite_data_kappaclysm)
 	.byte .hibyte(sprite_data_sunshine)
 	.byte .hibyte(sprite_data_revolution)
 	.byte .hibyte(sprite_data_funnygameholiday)
+	.byte .hibyte(sprite_data_fireaura)
+	.byte .hibyte(sprite_data_rainbowdust)
+	.byte .hibyte(sprite_data_factorytime)
+	.byte .hibyte(sprite_data_thesteamworks)
 	.byte .hibyte(sprite_data_lostinthewoods)
 	.byte .hibyte(sprite_data_bloodbathbutno)
 	.byte .hibyte(sprite_data_rainbowtylenol)
 	.byte .hibyte(sprite_data_greif)
+	.byte .hibyte(sprite_data_dorabaebasic10)
+	.byte .hibyte(sprite_data_subtleoddities)
+	.byte .hibyte(sprite_data_powertrip)
+	.byte .hibyte(sprite_data_danceofviolins)
 	.byte .hibyte(sprite_data_aprettyeasylevel)
+	.byte .hibyte(sprite_data_highlife)
 	.byte .hibyte(sprite_data_extraordinaryexcitement)
 	.byte .hibyte(sprite_data_thelightningroad)
 	.byte .hibyte(sprite_data_nightmare)
 	.byte .hibyte(sprite_data_demonpark)
+	.byte .hibyte(sprite_data_xx)
+	.byte .hibyte(sprite_data_problematic)
+	.byte .hibyte(sprite_data_decode)
+	.byte .hibyte(sprite_data_infinitecircles)
+	.byte .hibyte(sprite_data_deathmoon)
+	.byte .hibyte(sprite_data_supercycles)
+	.byte .hibyte(sprite_data_clutterfunk2)
+	.byte .hibyte(sprite_data_motion)
+	.byte .hibyte(sprite_data_speedracer)
+	.byte .hibyte(sprite_data_endorphinrush)
+	.byte .hibyte(sprite_data_hell)
+	.byte .hibyte(sprite_data_futurefunk)
 	.byte .hibyte(sprite_data_firetemple)
 	.byte .hibyte(sprite_data_foresttemple)
+	.byte .hibyte(sprite_data_luckydraw)
 
 _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_stereomadness))
@@ -278,30 +464,63 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_fingerdash))
 	.byte .lobyte(.bank(sprite_data_dash))
 	.byte .lobyte(.bank(sprite_data_retray))
+	.byte .lobyte(.bank(sprite_data_sonar))
+	.byte .lobyte(.bank(sprite_data_darkparadise))
 	.byte .lobyte(.bank(sprite_data_leveleasy))
 	.byte .lobyte(.bank(sprite_data_thechallenge))
 	.byte .lobyte(.bank(sprite_data_dorabaebasic4))
+	.byte .lobyte(.bank(sprite_data_ninox))
 	.byte .lobyte(.bank(sprite_data_dorabaebasic6))
 	.byte .lobyte(.bank(sprite_data_dreamer))
+	.byte .lobyte(.bank(sprite_data_lookatthislevel))
 	.byte .lobyte(.bank(sprite_data_groundtospace))
 	.byte .lobyte(.bank(sprite_data_subzero))
+	.byte .lobyte(.bank(sprite_data_moonlight))
+	.byte .lobyte(.bank(sprite_data_fofii_fofii_fofii))
+	.byte .lobyte(.bank(sprite_data_pyrophoric))
+	.byte .lobyte(.bank(sprite_data_oceane))
+	.byte .lobyte(.bank(sprite_data_generationretro))
+	.byte .lobyte(.bank(sprite_data_scarletsurge))
+	.byte .lobyte(.bank(sprite_data_tinytunes))
 	.byte .lobyte(.bank(sprite_data_kappaclysm))
 	.byte .lobyte(.bank(sprite_data_sunshine))
 	.byte .lobyte(.bank(sprite_data_revolution))
 	.byte .lobyte(.bank(sprite_data_funnygameholiday))
+	.byte .lobyte(.bank(sprite_data_fireaura))
+	.byte .lobyte(.bank(sprite_data_rainbowdust))
+	.byte .lobyte(.bank(sprite_data_factorytime))
+	.byte .lobyte(.bank(sprite_data_thesteamworks))
 	.byte .lobyte(.bank(sprite_data_lostinthewoods))
 	.byte .lobyte(.bank(sprite_data_bloodbathbutno))
 	.byte .lobyte(.bank(sprite_data_rainbowtylenol))
 	.byte .lobyte(.bank(sprite_data_greif))
+	.byte .lobyte(.bank(sprite_data_dorabaebasic10))
+	.byte .lobyte(.bank(sprite_data_subtleoddities))
+	.byte .lobyte(.bank(sprite_data_powertrip))
+	.byte .lobyte(.bank(sprite_data_danceofviolins))
 	.byte .lobyte(.bank(sprite_data_aprettyeasylevel))
+	.byte .lobyte(.bank(sprite_data_highlife))
 	.byte .lobyte(.bank(sprite_data_extraordinaryexcitement))
 	.byte .lobyte(.bank(sprite_data_thelightningroad))
 	.byte .lobyte(.bank(sprite_data_nightmare))
 	.byte .lobyte(.bank(sprite_data_demonpark))
+	.byte .lobyte(.bank(sprite_data_xx))
+	.byte .lobyte(.bank(sprite_data_problematic))
+	.byte .lobyte(.bank(sprite_data_decode))
+	.byte .lobyte(.bank(sprite_data_infinitecircles))
+	.byte .lobyte(.bank(sprite_data_deathmoon))
+	.byte .lobyte(.bank(sprite_data_supercycles))
+	.byte .lobyte(.bank(sprite_data_clutterfunk2))
+	.byte .lobyte(.bank(sprite_data_motion))
+	.byte .lobyte(.bank(sprite_data_speedracer))
+	.byte .lobyte(.bank(sprite_data_endorphinrush))
+	.byte .lobyte(.bank(sprite_data_hell))
+	.byte .lobyte(.bank(sprite_data_futurefunk))
 	.byte .lobyte(.bank(sprite_data_firetemple))
 	.byte .lobyte(.bank(sprite_data_foresttemple))
+	.byte .lobyte(.bank(sprite_data_luckydraw))
 
-.define MID_LEVEL_LENGTHS_ENABLED 0
+.define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
@@ -328,28 +547,61 @@ _level_lengths_lo:
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
 	.byte .lobyte($000066)		; retray
+	.byte .lobyte($00008D)		; sonar
+	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($000027)		; thechallenge
 	.byte .lobyte($0000A4)		; dorabaebasic4
+	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($000090)		; dorabaebasic6
 	.byte .lobyte($0000AC)		; dreamer
+	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($0000A3)		; groundtospace
 	.byte .lobyte($000088)		; subzero
+	.byte .lobyte($000079)		; moonlight
+	.byte .lobyte($00006F)		; fofii_fofii_fofii
+	.byte .lobyte($000050)		; pyrophoric
+	.byte .lobyte($00005D)		; oceane
+	.byte .lobyte($0000B2)		; generationretro
+	.byte .lobyte($0000E1)		; scarletsurge
+	.byte .lobyte($000082)		; tinytunes
 	.byte .lobyte($000079)		; kappaclysm
 	.byte .lobyte($0000A5)		; sunshine
 	.byte .lobyte($0000BB)		; revolution
 	.byte .lobyte($0000B0)		; funnygameholiday
+	.byte .lobyte($0000BF)		; fireaura
+	.byte .lobyte($0000AB)		; rainbowdust
+	.byte .lobyte($000090)		; factorytime
+	.byte .lobyte($0000CC)		; thesteamworks
 	.byte .lobyte($000066)		; lostinthewoods
 	.byte .lobyte($000090)		; bloodbathbutno
 	.byte .lobyte($0000B5)		; rainbowtylenol
 	.byte .lobyte($000069)		; greif
+	.byte .lobyte($000097)		; dorabaebasic10
+	.byte .lobyte($0000C0)		; subtleoddities
+	.byte .lobyte($0000C0)		; powertrip
+	.byte .lobyte($000096)		; danceofviolins
 	.byte .lobyte($000070)		; aprettyeasylevel
+	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
 	.byte .lobyte($0000A2)		; demonpark
+	.byte .lobyte($000090)		; xx
+	.byte .lobyte($00006E)		; problematic
+	.byte .lobyte($00008A)		; decode
+	.byte .lobyte($00006F)		; infinitecircles
+	.byte .lobyte($000125)		; deathmoon
+	.byte .lobyte($000088)		; supercycles
+	.byte .lobyte($0000B1)		; clutterfunk2
+	.byte .lobyte($0000A6)		; motion
+	.byte .lobyte($000080)		; speedracer
+	.byte .lobyte($00008B)		; endorphinrush
+	.byte .lobyte($0000A2)		; hell
+	.byte .lobyte($0001DD)		; futurefunk
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000090)		; foresttemple
+	.byte .lobyte($000089)		; luckydraw
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -377,28 +629,61 @@ _level_lengths_md:
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
 	.byte .hibyte($000066)		; retray
+	.byte .hibyte($00008D)		; sonar
+	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($000027)		; thechallenge
 	.byte .hibyte($0000A4)		; dorabaebasic4
+	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($000090)		; dorabaebasic6
 	.byte .hibyte($0000AC)		; dreamer
+	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($0000A3)		; groundtospace
 	.byte .hibyte($000088)		; subzero
+	.byte .hibyte($000079)		; moonlight
+	.byte .hibyte($00006F)		; fofii_fofii_fofii
+	.byte .hibyte($000050)		; pyrophoric
+	.byte .hibyte($00005D)		; oceane
+	.byte .hibyte($0000B2)		; generationretro
+	.byte .hibyte($0000E1)		; scarletsurge
+	.byte .hibyte($000082)		; tinytunes
 	.byte .hibyte($000079)		; kappaclysm
 	.byte .hibyte($0000A5)		; sunshine
 	.byte .hibyte($0000BB)		; revolution
 	.byte .hibyte($0000B0)		; funnygameholiday
+	.byte .hibyte($0000BF)		; fireaura
+	.byte .hibyte($0000AB)		; rainbowdust
+	.byte .hibyte($000090)		; factorytime
+	.byte .hibyte($0000CC)		; thesteamworks
 	.byte .hibyte($000066)		; lostinthewoods
 	.byte .hibyte($000090)		; bloodbathbutno
 	.byte .hibyte($0000B5)		; rainbowtylenol
 	.byte .hibyte($000069)		; greif
+	.byte .hibyte($000097)		; dorabaebasic10
+	.byte .hibyte($0000C0)		; subtleoddities
+	.byte .hibyte($0000C0)		; powertrip
+	.byte .hibyte($000096)		; danceofviolins
 	.byte .hibyte($000070)		; aprettyeasylevel
+	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
 	.byte .hibyte($0000A2)		; demonpark
+	.byte .hibyte($000090)		; xx
+	.byte .hibyte($00006E)		; problematic
+	.byte .hibyte($00008A)		; decode
+	.byte .hibyte($00006F)		; infinitecircles
+	.byte .hibyte($000125)		; deathmoon
+	.byte .hibyte($000088)		; supercycles
+	.byte .hibyte($0000B1)		; clutterfunk2
+	.byte .hibyte($0000A6)		; motion
+	.byte .hibyte($000080)		; speedracer
+	.byte .hibyte($00008B)		; endorphinrush
+	.byte .hibyte($0000A2)		; hell
+	.byte .hibyte($0001DD)		; futurefunk
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000090)		; foresttemple
+	.byte .hibyte($000089)		; luckydraw
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -426,28 +711,61 @@ _level_lengths_hi:
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
 	.byte .bankbyte($000066)		; retray
+	.byte .bankbyte($00008D)		; sonar
+	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($000027)		; thechallenge
 	.byte .bankbyte($0000A4)		; dorabaebasic4
+	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($000090)		; dorabaebasic6
 	.byte .bankbyte($0000AC)		; dreamer
+	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($0000A3)		; groundtospace
 	.byte .bankbyte($000088)		; subzero
+	.byte .bankbyte($000079)		; moonlight
+	.byte .bankbyte($00006F)		; fofii_fofii_fofii
+	.byte .bankbyte($000050)		; pyrophoric
+	.byte .bankbyte($00005D)		; oceane
+	.byte .bankbyte($0000B2)		; generationretro
+	.byte .bankbyte($0000E1)		; scarletsurge
+	.byte .bankbyte($000082)		; tinytunes
 	.byte .bankbyte($000079)		; kappaclysm
 	.byte .bankbyte($0000A5)		; sunshine
 	.byte .bankbyte($0000BB)		; revolution
 	.byte .bankbyte($0000B0)		; funnygameholiday
+	.byte .bankbyte($0000BF)		; fireaura
+	.byte .bankbyte($0000AB)		; rainbowdust
+	.byte .bankbyte($000090)		; factorytime
+	.byte .bankbyte($0000CC)		; thesteamworks
 	.byte .bankbyte($000066)		; lostinthewoods
 	.byte .bankbyte($000090)		; bloodbathbutno
 	.byte .bankbyte($0000B5)		; rainbowtylenol
 	.byte .bankbyte($000069)		; greif
+	.byte .bankbyte($000097)		; dorabaebasic10
+	.byte .bankbyte($0000C0)		; subtleoddities
+	.byte .bankbyte($0000C0)		; powertrip
+	.byte .bankbyte($000096)		; danceofviolins
 	.byte .bankbyte($000070)		; aprettyeasylevel
+	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
 	.byte .bankbyte($0000A2)		; demonpark
+	.byte .bankbyte($000090)		; xx
+	.byte .bankbyte($00006E)		; problematic
+	.byte .bankbyte($00008A)		; decode
+	.byte .bankbyte($00006F)		; infinitecircles
+	.byte .bankbyte($000125)		; deathmoon
+	.byte .bankbyte($000088)		; supercycles
+	.byte .bankbyte($0000B1)		; clutterfunk2
+	.byte .bankbyte($0000A6)		; motion
+	.byte .bankbyte($000080)		; speedracer
+	.byte .bankbyte($00008B)		; endorphinrush
+	.byte .bankbyte($0000A2)		; hell
+	.byte .bankbyte($0001DD)		; futurefunk
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000090)		; foresttemple
+	.byte .bankbyte($000089)		; luckydraw
 
 .endif
 .endif
