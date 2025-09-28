@@ -51,4 +51,8 @@
 #define RESETLEVEL_BANK "XCD_BANK_05"
 #endif
 #define GROUND_BANK "XCD_BANK_06"
+#if !__HUGE_ROM
 #define LVLDONE_BANK "XCD_BANK_06"
+#else
+#define LVLDONE_BANK "XCD_BANK_08"
+#endif	
