@@ -90,7 +90,6 @@ CODE_BANK_PUSH("XCD_BANK_07")
 void refreshmenu();
 void refreshmenu_part2();
 void code_checker();
-void check_if_music_stopped();
 void set_fun_settings();
 
 
@@ -100,6 +99,41 @@ void set_fun_settings();
 
 
 #include "defines/charmap/bgm_charmap.h"
+
+
+void play_next_queue() {
+			tmp1 = 0;
+
+			for (tmp1 = 0; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {		
+				tmp2 = tmp1 + 1;
+				music_queue[tmp1] = music_queue[tmp2];
+			}
+
+			music_queue[MAX_SONG_QUEUE_SIZE] = 0xFF;
+
+			if (music_queue[0] != 0xFF) { music_play(xbgmlookuptable[music_queue[0]]); }
+			else { famistudio_music_stop(); songplaying = 0; }
+				
+			//refresh_queue_screen();
+			tmp4 = 0xFF;
+}			
+
+
+void check_if_music_stopped2() {
+	if (!queuemode) {
+		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgmlookuptable[song]); }
+	}
+	else {
+		if (famistudio_song_speed == 0x80) {
+
+			play_next_queue();
+
+		}
+	}
+}	
+
+
+
 void state_soundtest() {
   	famistudio_music_stop();
   	music_update();
@@ -123,7 +157,7 @@ void state_soundtest() {
 		//rand8();
 		ppu_wait_nmi();
 		oam_clear();
-		crossPRGBankJump0(check_if_music_stopped);
+		check_if_music_stopped2();
 		 // read the first controller
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
@@ -331,22 +365,6 @@ void update_text2() {
 	tmp4 = 2;
 }	
 
-void play_next_queue() {
-			tmp1 = 0;
-
-			for (tmp1 = 0; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {		
-				tmp2 = tmp1 + 1;
-				music_queue[tmp1] = music_queue[tmp2];
-			}
-
-			music_queue[MAX_SONG_QUEUE_SIZE] = 0xFF;
-
-			if (music_queue[0] != 0xFF) { music_play(xbgmlookuptable[music_queue[0]]); }
-			else { famistudio_music_stop(); songplaying = 0; }
-				
-			//refresh_queue_screen();
-			tmp4 = 0xFF;
-}			
 
 
 
