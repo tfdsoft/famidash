@@ -26,7 +26,7 @@ CODE_BANK("XCD_BANK_06")
 #else
 #if __HUGE_ROM
 CODE_BANK("XCD_BANK_07")
-#include "menustates/bgmtest_HUGE.c"
+#include "menustates/bgmtest_huge.c"
 #else
 CODE_BANK("XCD_BANK_05")
 #include "menustates/bgmtest.c"
