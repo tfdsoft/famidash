@@ -891,7 +891,7 @@
 			objectOffsets: [
 				{
 					coordinates: [738, 53],
-					offsetX: +8
+					offsetX: -8
 				},			
 			]
 		},
