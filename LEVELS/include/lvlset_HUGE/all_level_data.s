@@ -1934,7 +1934,7 @@
 		.byte 0 ;__________________ Force platformer
 		.byte _DECO1 ;_____________ Deco type
 		.byte _SPIKESA ;___________ Spike set
-		.byte _BLOCKSB ;___________ Block set
+		.byte _BLOCKSA ;___________ Block set
 		.byte _SAWBLADESA ;________ Sawblade set
 		.byte $01 ;________________ Starting background color
 		.byte $01 ;________________ Starting ground color
