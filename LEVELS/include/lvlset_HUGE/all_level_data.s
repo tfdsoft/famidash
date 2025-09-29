@@ -160,7 +160,7 @@
 	.export level_data_eon
 	level_data_eon:
 	; Header
-		.byte song_eon ;_________ Song ID
+		.byte song_the_angel ;___ Song ID
 		.byte 0 ;________________ Starting game mode
 		.byte 1 ;________________ Starting speed
 		.byte 1 ;________________ Disable parallax
@@ -245,18 +245,18 @@
 	.export level_data_dearnostalgists
 	level_data_dearnostalgists:
 	; Header
-		.byte song_crackdown ;___ Song ID
-		.byte 0 ;________________ Starting game mode
-		.byte 2 ;________________ Starting speed
-		.byte 1 ;________________ Disable parallax
-		.byte 0 ;________________ Force platformer
-		.byte _EXTRASPRITES1 ;___ Deco type
-		.byte _SPIKESC ;_________ Spike set
-		.byte _BLOCKSA ;_________ Block set
-		.byte _SAWBLADESA ;______ Sawblade set
-		.byte $2C ;______________ Starting background color
-		.byte $1C ;______________ Starting ground color
-		.byte 57 ;_______________ Level height
+		.byte song_okiba_crackdown ;___ Song ID
+		.byte 0 ;______________________ Starting game mode
+		.byte 2 ;______________________ Starting speed
+		.byte 1 ;______________________ Disable parallax
+		.byte 0 ;______________________ Force platformer
+		.byte _EXTRASPRITES1 ;_________ Deco type
+		.byte _SPIKESC ;_______________ Spike set
+		.byte _BLOCKSA ;_______________ Block set
+		.byte _SAWBLADESA ;____________ Sawblade set
+		.byte $2C ;____________________ Starting background color
+		.byte $1C ;____________________ Starting ground color
+		.byte 57 ;_____________________ Level height
 	; Level data
 		.incbin "EXPORTS/dearnostalgists.lz.0.bin" ; Size: 8091
 
@@ -706,18 +706,18 @@
 	.export level_data_hell
 	level_data_hell:
 	; Header
-		.byte song_hell ;________ Song ID
-		.byte 0 ;________________ Starting game mode
-		.byte 0 ;________________ Starting speed
-		.byte 1 ;________________ Disable parallax
-		.byte 0 ;________________ Force platformer
-		.byte _EXTRASPRITES1 ;___ Deco type
-		.byte _SPIKESA ;_________ Spike set
-		.byte _BLOCKSB ;_________ Block set
-		.byte _SAWBLADESA ;______ Sawblade set
-		.byte $0F ;______________ Starting background color
-		.byte $0F ;______________ Starting ground color
-		.byte 36 ;_______________ Level height
+		.byte song_accelerate ;___ Song ID
+		.byte 0 ;_________________ Starting game mode
+		.byte 0 ;_________________ Starting speed
+		.byte 1 ;_________________ Disable parallax
+		.byte 0 ;_________________ Force platformer
+		.byte _EXTRASPRITES1 ;____ Deco type
+		.byte _SPIKESA ;__________ Spike set
+		.byte _BLOCKSB ;__________ Block set
+		.byte _SAWBLADESA ;_______ Sawblade set
+		.byte $0F ;_______________ Starting background color
+		.byte $0F ;_______________ Starting ground color
+		.byte 36 ;________________ Level height
 	; Level data
 		.incbin "EXPORTS/hell.lz.bin" ; Size: 6276
 
@@ -1000,18 +1000,18 @@
 	.export level_data_speedracer
 	level_data_speedracer:
 	; Header
-		.byte song_speed_racer ;___ Song ID
-		.byte 0 ;__________________ Starting game mode
-		.byte 0 ;__________________ Starting speed
-		.byte 1 ;__________________ Disable parallax
-		.byte 0 ;__________________ Force platformer
-		.byte _EXTRASPRITES1 ;_____ Deco type
-		.byte _SPIKESA ;___________ Spike set
-		.byte _BLOCKSB ;___________ Block set
-		.byte _SAWBLADESA ;________ Sawblade set
-		.byte $0F ;________________ Starting background color
-		.byte $0F ;________________ Starting ground color
-		.byte 27 ;_________________ Level height
+		.byte song_chaoz_impact ;___ Song ID
+		.byte 0 ;___________________ Starting game mode
+		.byte 0 ;___________________ Starting speed
+		.byte 1 ;___________________ Disable parallax
+		.byte 0 ;___________________ Force platformer
+		.byte _EXTRASPRITES1 ;______ Deco type
+		.byte _SPIKESA ;____________ Spike set
+		.byte _BLOCKSB ;____________ Block set
+		.byte _SAWBLADESA ;_________ Sawblade set
+		.byte $0F ;_________________ Starting background color
+		.byte $0F ;_________________ Starting ground color
+		.byte 27 ;__________________ Level height
 	; Level data
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5647
 
@@ -1076,18 +1076,18 @@
 	.export level_data_retray
 	level_data_retray:
 	; Header
-		.byte song_retray ;___ Song ID
-		.byte 0 ;_____________ Starting game mode
-		.byte 1 ;_____________ Starting speed
-		.byte 1 ;_____________ Disable parallax
-		.byte 0 ;_____________ Force platformer
-		.byte _DECO1 ;________ Deco type
-		.byte _SPIKESA ;______ Spike set
-		.byte _BLOCKSB ;______ Block set
-		.byte _SAWBLADESA ;___ Sawblade set
-		.byte $0F ;___________ Starting background color
-		.byte $0F ;___________ Starting ground color
-		.byte 27 ;____________ Level height
+		.byte song_golden_haze ;___ Song ID
+		.byte 0 ;__________________ Starting game mode
+		.byte 1 ;__________________ Starting speed
+		.byte 1 ;__________________ Disable parallax
+		.byte 0 ;__________________ Force platformer
+		.byte _DECO1 ;_____________ Deco type
+		.byte _SPIKESA ;___________ Spike set
+		.byte _BLOCKSB ;___________ Block set
+		.byte _SAWBLADESA ;________ Sawblade set
+		.byte $0F ;________________ Starting background color
+		.byte $0F ;________________ Starting ground color
+		.byte 27 ;_________________ Level height
 	; Level data
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2724
 
@@ -1284,18 +1284,18 @@
 	.export level_data_rainbowdust
 	level_data_rainbowdust:
 	; Header
-		.byte song_chaoz_fantasy_extended ;___ Song ID
-		.byte 0 ;_____________________________ Starting game mode
-		.byte 1 ;_____________________________ Starting speed
-		.byte 1 ;_____________________________ Disable parallax
-		.byte 0 ;_____________________________ Force platformer
-		.byte _DECO1 ;________________________ Deco type
-		.byte _SPIKESC ;______________________ Spike set
-		.byte _BLOCKSB ;______________________ Block set
-		.byte _SAWBLADESA ;___________________ Sawblade set
-		.byte $0F ;___________________________ Starting background color
-		.byte $0F ;___________________________ Starting ground color
-		.byte 27 ;____________________________ Level height
+		.byte song_chaozfantasy ;___ Song ID
+		.byte 0 ;___________________ Starting game mode
+		.byte 1 ;___________________ Starting speed
+		.byte 1 ;___________________ Disable parallax
+		.byte 0 ;___________________ Force platformer
+		.byte _DECO1 ;______________ Deco type
+		.byte _SPIKESC ;____________ Spike set
+		.byte _BLOCKSB ;____________ Block set
+		.byte _SAWBLADESA ;_________ Sawblade set
+		.byte $0F ;_________________ Starting background color
+		.byte $0F ;_________________ Starting ground color
+		.byte 27 ;__________________ Level height
 	; Level data
 		.incbin "EXPORTS/rainbowdust.lz.bin" ; Size: 5120
 

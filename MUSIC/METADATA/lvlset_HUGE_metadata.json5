@@ -1,648 +1,824 @@
 {
-	songModule: "music_master.fms",
+	songModule: "the album.fms",
 	songs: [
 		{
 			fmsSongName: "Menu Theme",
-			lowerText: "MENU",
-			originalArtistText: "ROBTOP",
-			vsSystemEnabled: false,
-			nsfData: {
-				trackLabel: "Menu Theme",
-				trackAuthor: {
-					original: "RobTop",
-					cover: "Zenith302"
-				},
-				durationNTSC: 30017,
-				durationPAL: 36080,
-				looped: true
-			}
+			lowerText: "MENU THEME",
+			originalArtist: "RobTop",
+			coveringArtist: "Zenith302",
+		},
+		{
+			fmsSongName: "Menu Theme B Sides",
+			lowerText: "MENU B SIDES",
+			originalArtist: ["RobTop", "MudStep"],
+			coveringArtist: "UserSniper",
 		},
 		{
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
 			lowerText: "MADNESS",
-			originalArtistText: "FOREVERBOUND",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Stereo Madness",
-				trackAuthor: {
-					original: "ForeverBound",
-					cover: "Zenith302, UserSniper"
-				},
-				durationNTSC: 85550,
-				durationPAL: 102840
-			}
+			originalArtist: "ForeverBound",
+			coveringArtist: ["Zenith302", "UserSniper"]
 		},
 		{
 			fmsSongName: "Back on Track",
 			upperText: "BACK ON",
 			lowerText: "TRACK",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Back On Track",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "aquamarine.gay"
-				},
-				durationNTSC: 82817,
-				durationPAL: 99540
-			}
+			originalArtist: "DJVI",
+			coveringArtist: "aquamarine.gay",
 		},
 		{
 			fmsSongName: "Polargeist",
 			lowerText: "POLARGEIST",
-			originalArtistText: "STEP",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Polargeist",
-				trackAuthor: {
-					original: "Step",
-					cover: "UserSniper, Zenith302, Vikrinox"
-				},
-				durationNTSC: 90700,
-				durationPAL: 109000
-			}
+			originalArtist: "Step",
+			coveringArtist: ["Zenith302", "UserSniper", "Vikrinox"]
 		},
 		{
 			fmsSongName: "Dry Out",
 			lowerText: "DRY OUT",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Dry Out",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "UserSniper"
-				},
-				durationNTSC: 81433,
-				durationPAL: 97880
-			}
+			originalArtist: "DJVI",
+			coveringArtist: "UserSniper",
 		},
 		{
 			fmsSongName: "Base after Base",
 			upperText: "BASE AFTER",
 			lowerText: "BASE",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Base After Base",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "Zenith302, UserSniper, Vikrinox, alexmush"
-				},
-				durationNTSC: 85000,
-				durationPAL: 102160
-			}
+			originalArtist: "DJVI",
+			coveringArtist: ["Vikrinox", "UserSniper", "Zenith302", "alexmush"]
 		},
 		{
 			fmsSongName: "Can't Let Go",
 			lowerText: "CANT LET GO",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Cant Let Go ~ Can't Let Go",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "UserSniper, alexmush"
-				},
-				durationNTSC: 80750,
-				durationPAL: 97040
-			}
+			originalArtist: "DJVI",
+			coveringArtist: ["UserSniper", "alexmush"]
 		},
 		{
 			fmsSongName: "Jumper",
 			lowerText: "JUMPER",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Jumper",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "zukinnyk, UserSniper, Zenith302"
-				},
-				durationNTSC: 86467,
-				durationPAL: 104100
-			}
+			originalArtist: "Waterflame",
+			coveringArtist: ["Zenith302", "zukinnyk", "UserSniper"]
 		},
 		{
 			fmsSongName: "Time Machine",
 			lowerText: "TIME MACHINE",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Time Machine",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Zenith302, Vikrinox, alexmush"
-				},
-				durationNTSC: 96067,
-				durationPAL: 115460
-			}
+			originalArtist: "Waterflame",
+			coveringArtist: ["Zenith302", "Vikrinox", "alexmush"]
 		},
 		{
 			fmsSongName: "Cycles",
 			lowerText: "CYCLES",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Cycles",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "aquamarine.gay, alexmush"
-				},
-				durationNTSC: 85933,
-				durationPAL: 103280
-			}
+			originalArtist: "DJVI",
+			coveringArtist: ["aquamarine.gay", "alexmush"]
 		},
 		{
 			fmsSongName: "xStep",
 			lowerText: "XSTEP",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "xStep",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "Vikrinox, alexmush"
-				},
-				durationNTSC: 82350,
-				durationPAL: 98980
-			}
+			originalArtist: "DJVI",
+			coveringArtist: ["Vikrinox", "alexmush"]
 		},
 		{
 			fmsSongName: "Clutterfunk",
 			lowerText: "CLUTTERFUNK",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Clutterfunk",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Zenith302, aquamarine.gay, Vikrinox"
-				},
-				durationNTSC: 96583,
-				durationPAL: 116080
-			}
+			originalArtist: "Waterflame",
+			coveringArtist: ["aquamarine.gay", "Vikrinox", "Zenith302"]
 		},
 		{
 			fmsSongName: "Theory of Everything",
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING",
-			originalArtistText: "DJ NATE",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Theory Of Everything",
-				trackAuthor: {
-					original: "Dj-Nate",
-					cover: "leejh20, UserSniper, Vikrinox, Zenith302"
-				},
-				durationNTSC: 89000,
-				durationPAL: 106960
-			}
+			originalArtist: "Dj-Nate",
+			coveringArtist: ["Vikrinox", "UserSniper", "Zenith302", "leejh20"]
 		},
 		{
 			fmsSongName: "Electroman Adventures",
 			upperText: "ELECTROMAN",
 			lowerText: "ADVENTURES",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Electroman Adventures",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "cloud54, UserSniper, alexmush"
-				},
-				durationNTSC: 87800,
-				durationPAL: 105520
-			}
+			originalArtist: "Waterflame",
+			coveringArtist: ["cloud54", "UserSniper", "alexmush", "Crafty Jumper"]
 		},
 		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
-			originalArtistText: "DJ NATE",
+			originalArtist: "Dj-Nate",
+			coveringArtist: "cloud54",
 		},
 		{
 			fmsSongName: "Electrodynamix",
 			lowerText: "ELECTRODYNAMIX",
-			originalArtistText: "DJ NATE",
+			originalArtist: "Dj-Nate",
+			coveringArtist: "aquamarine.gay",
 		},
 		{
 			fmsSongName: "Hexagon Force",
 			upperText: "HEXAGON",
 			lowerText: "FORCE",
-			originalArtistText: "WATERFLAME",
+			originalArtist: "Waterflame",
+			coveringArtist: ["Vikrinox", "alexmush"]
 		},
 		{
 			fmsSongName: "Blast processing",
 			upperText: "BLAST",
 			lowerText: "PROCESSING",
-			originalArtistText: "WATERFLAME",
+			originalArtist: "Waterflame",
+			coveringArtist: "ElAngel378",
 		},
 		{
 			fmsSongName: "TOE 2",
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING 2",
-			originalArtistText: "DJ NATE",
+			originalArtist: "Dj-Nate",
+			coveringArtist: ["UserSniper","Abstract"]
 		},
 		{
 			fmsSongName: "Geometrical Dominator",
 			upperText: "GEOMETRICAL",
 			lowerText: "DOMINATOR",
-			originalArtistText: "WATERFLAME",
+			originalArtist: "Waterflame",
+			coveringArtist: ["cloud54", "Vikrinox"]
 		},
 		{
 			fmsSongName: "Deadlocked",
 			lowerText: "DEADLOCKED",
-			originalArtistText: "F777",
+			originalArtist: "F777",
+			coveringArtist: ["UserSniper", "Vikrinox", "ElAngel378"]
 		},
 		{
 			fmsSongName: "Fingerdash",
 			lowerText: "FINGERDASH",
-			originalArtistText: "MDK",
+			originalArtist: "MDK",
+			coveringArtist: "ElAngel378",
 		},
 		{
 			fmsSongName: "Dash",
 			lowerText: "DASH",
-			originalArtistText: "MDK",
+			originalArtist: "MDK",
+			coveringArtist: "Crafty Jumper",
 		},
-		{
-			fmsSongName: "Practice",
-			lowerText: "PRACTICE",
-			originalArtistText: "OCULARNEBULA",
-			vsSystemEnabled: false,
-			nsfData: {
-				trackLabel: "Practice ~ Stay Inside Me",
-				trackAuthor: {
-					original: "OcularNebula",
-					cover: "UserSniper"
-				},
-				durationNTSC: 239817,
-				durationPAL: 288380,
-				looped: true
-			}
-		},
-		{
-			fmsSongName: "Scheming Weasel",
-			upperText: "SCHEMING",
-			lowerText: "WEASEL",
-			originalArtistText: "KEVIN MACLEOD",
-			vsSystemEnabled: false
-		},
-		{
-			fmsSongName: "retray",
-			lowerText: "GOLDEN HAZE",
-			originalArtistText: "DETIOUSMUSIC",
-		},
-		{
-			fmsSongName: "infernoplex",
-			lowerText: "INFERNOPLEX",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "Stereo madness 2",
-			upperText: "STEREO ",
-			lowerText: "MADNESS 2",
-			originalArtistText: "FOREVERBOUND",
-		},
-
 		{
 			fmsSongName: "The Challenge",
 			upperText: "THE",
 			lowerText: "CHALLENGE",
-			originalArtistText: "ROBTOP",
-		},
+			originalArtist: "RobTop",
+			coveringArtist: "ElAngel378",
+		},		
 		{
-			fmsSongName: "midnight",
-			lowerText: "MIDNIGHT",
-			originalArtistText: "CORNANDBEANS",
-		},
+			fmsSongName: "Practice",
+			lowerText: "PRACTICE",
+			originalArtist: "OcularNebula",
+			coveringArtist: "UserSniper",
+		},		
 		{
-			fmsSongName: "haunted woods",
-			lowerText: "HAUNTED WOODS",
-			originalArtistText: "WATERFLAME",
-		},
+			fmsSongName: "Scheming Weasel",
+			upperText: "SCHEMING",
+			lowerText: "WEASEL",
+			originalArtist: "Kevin MacLeod",
+			coveringArtist: "UserSniper",
+		},	
 		{
-			fmsSongName: "just right",
-			lowerText: "JUST RIGHT",
-			originalArtistText: "DAN HARRISON B",
-			vsSystemEnabled: false
-		},
+			fmsSongName: "2NES",
+			lowerText: "2NES",
+			originalArtist: "Ranedom",
+			coveringArtist: "Ranedom",
+		},		
 		{
 			fmsSongName: "against the odds redux",
-			upperText: "8 BIT AGAINST",
+			upperText: "8BIT AGAINST",
 			lowerText: "THE ODDS REDUX",
-			originalArtistText: "ELITEFERREX",
+			originalArtist: "EliteFerrex",
+			coveringArtist: "ElAngel378",
+		},	
+		{
+			fmsSongName: "accelerate",
+			lowerText: "ACCELERATE",
+			originalArtist: "Acid-Notation",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Airborne Robots",
+			upperText: "AIRBORNE",
+			lowerText: "ROBOTS",
+			originalArtist: "F777",
+			coveringArtist: ["Crafty Jumper", "ElAngel378"]
+		},
+		{
+			fmsSongName: "atthespeedoflight",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT1",
+			originalArtist: "Dimrain47",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "atthespeedoflight2",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT2",
+			originalArtist: "Dimrain47",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "atthespeedoflight3",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT3",
+			originalArtist: "Dimrain47",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "atthespeedoflightfull",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT",
+			originalArtist: "Dimrain47",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Beast Mode (GDW Cut)",
+			upperText: "BEAST MODE",
+			lowerText: "GDW CUT",
+			originalArtist: "Dex Arson",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Beep Beep",
+			lowerText: "BEEP BEEP",
+			originalArtist: "Schtiffles",
+			coveringArtist: "Clickerty",
+		},
+		{
+			fmsSongName: "Bit Of A Vibe",
+			upperText: "BIT OF",
+			lowerText: "A VIBE",
+			originalArtist: "Clickerty",
+			coveringArtist: "Clickerty",
+		},
+		{
+			fmsSongName: "Blacklight",
+			lowerText: "BLACKLIGHT",
+			originalArtist: "RUKKUS",
+			coveringArtist: "Cloud54"
+		},
+		{
+			fmsSongName: "candyland",
+			lowerText: "CANDYLAND",
+			originalArtist: "Tobu",
+			coveringArtist: "NerdBoy628",
+		},
+		{
+			fmsSongName: "Chaoz Airflow",
+			lowerText: "CHAOZ AIRFLOW",
+			originalArtist: "ParagonX9",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "ChaozFantasy",
+			lowerText: "CHAOZ FANTASY",
+			originalArtist: "ParagonX9",
+			coveringArtist: ["UserSniper", "SeaGlowingPro"]
+		},
+		{
+			fmsSongName: "Chaoz Impact",
+			lowerText: "CHAOZ IMPACT",
+			originalArtist: "ParagonX9",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "check out",
+			lowerText: "CHECK OUT",
+			originalArtist: "MadhouseDUDE",
+			coveringArtist: "sussysy",
+		},
+		{
+			fmsSongName: "clutterfunk 2",
+			lowerText: "CLUTTERFUNK 2",
+			originalArtist: "Waterflame",
+			coveringArtist: "cloud54",
+		},
+		{
+			fmsSongName: "Cryogenic",
+			lowerText: "CRYOGENIC",
+			originalArtist: "NerdBoy628",
+			coveringArtist: "NerdBoy628",
+		},		
+		{
+			fmsSongName: "Dance of the violins",
+			upperText: "DANCE OF",
+			lowerText: "THE VIOLINS",
+			originalArtist: "F777",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Death Moon",
+			lowerText: "DEATH MOON",
+			originalArtist: "SoundHolicK",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Driving By Night",
+			upperText: "DRIVING BY",
+			lowerText: "NIGHT",
+			originalArtist: "Reinn",
+			coveringArtist: "NerdBoy628",
+		},
+		{
+			fmsSongName: "eighto",
+			upperText: "EIGHTO",
+			lowerText: "8O CUT",
+			originalArtist: "Jomekka",
+			coveringArtist: "sussysy",
+		},
+		{
+			fmsSongName: "eighto full",
+			lowerText: "EIGHTO",
+			originalArtist: "Jomekka",
+			coveringArtist: "sussysy",
+		},
+		{
+			fmsSongName: "endgame",
+			lowerText: "ENDGAME",
+			originalArtist: "Waterflame",
+			coveringArtist: "Vikrinox",
+		},
+		{
+			fmsSongName: "endorphins",
+			lowerText: "ENDORPHINS",
+			originalArtist: "DuoCore",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "Every End PT1",
+			upperText: "EVERY END",
+			lowerText: "PART 1",
+			originalArtist: "Dimrain47",
+			coveringArtist: ["ElAngel378","UserSniper"]
+		},
+		{
+			fmsSongName: "Every End PT2",
+			upperText: "EVERY END",
+			lowerText: "PART 2",
+			originalArtist: "Dimrain47",
+			coveringArtist: ["ElAngel378","UserSniper"]
+		},
+		{
+			fmsSongName: "Every Madness",
+			upperText: "EVERY",
+			lowerText: "MADNESS",
+			originalArtist: "Cloud54",
+			coveringArtist: "Cloud54"
+		},
+		{
+			fmsSongName: "Extraordinary Excitement",
+			upperText: "EXTRAORDINARY",
+			lowerText: "EXCITEMENT",
+			originalArtist: "SEAGLOWINGPRO",
+			coveringArtist: "SEAGLOWINGPRO"
+		},
+		{
+			fmsSongName: "Factory Time",
+			lowerText: "FACTORY TIME",
+			originalArtist: "Visager",
+			coveringArtist: "Nerdboy628",
+		},
+		{
+			fmsSongName: "Fairydust",
+			lowerText: "FAIRYDUST",
+			originalArtist: "NIGHTKILLA",
+			coveringArtist: "ElAngel378",
+		},	
+		{
+			fmsSongName: "Fantasy",
+			lowerText: "FANTASY",
+			originalArtist: ["CLOUDFIELD","REICHUU"],
+			coveringArtist: "ElAngel378",
+		},				
+		{
+			fmsSongName: "Fingerbang",
+			lowerText: "FINGERBANG",
+			originalArtist: "MDK",
+			coveringArtist: ["Crafty Jumper", "ElAngel378"]
+		},
+		{
+			fmsSongName: "Flow",
+			lowerText: "FLOW",
+			originalArtist: "Creo",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "Fire Aura",
+			lowerText: "FIRE AURA",
+			originalArtist: "Kid2Will",
+			coveringArtist: "Vikrinox",
+		},
+		{
+			fmsSongName: "Free Mind",
+			lowerText: "FREE MIND",
+			originalArtist: "ElAngel378",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "FREEDOM DiVE",
+			upperText: "FREEDOM",
+			lowerText: "DIVE",
+			originalArtist: "XI",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "Glint",
+			lowerText: "GLINT",
+			originalArtist: "Dominuus",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "Glitch Gremlin",
+			lowerText: "GLITCH GREMLIN",
+			originalArtist: "Bossfight",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "Golden Haze",
+			lowerText: "GOLDEN HAZE",
+			originalArtist: "Detious",
+			coveringArtist: ["Crafty Jumper", "ElAngel378"]
 		},
 		{
 			fmsSongName: "Ground to Space",
 			upperText: "GROUND TO",
 			lowerText: "SPACE",
-			originalArtistText: "SEAGLOWINGPRO",
+			originalArtist: "SeaGlowingPro",
+			coveringArtist: "SeaGlowingPro",
 		},
 		{
-			fmsSongName: "rainbow tylenol",
-			upperText: "RAINBOW",
-			lowerText: "TYLENOL",
-			originalArtistText: "KITSUNE2",
-		},
-		{
-			fmsSongName: "stalemate greif cut",
-			upperText: "STALEMATE",
-			lowerText: "GREIF CUT",
-			originalArtistText: "KAYOSZX",
-		},		
-		{
-			fmsSongName: "Extraordinary Excitement",
-			upperText: "EXTRAORDINARY",
-			lowerText: "EXCITEMENT",
-			originalArtistText: "SEAGLOWINGPRO",
-		},			
-		{
-			fmsSongName: "Driving By Night",
-			upperText: "DRIVING BY",
-			lowerText: "NIGHT",
-			originalArtistText: "REINNBOW",
-			
-		},
-		{
-			fmsSongName: "Chaoz Fantasy Extended",
-			upperText: "CHAOZ FANTASY",
-			lowerText: "EXTENDED",
-			originalArtistText: "PARAGONX9",
-			
-		},
-		{
-			fmsSongName: "endgame",
-			lowerText: "DECODE",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Decode ~ Endgame",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Vikrinox"
-				},
-				durationNTSC: 79283,
-				durationPAL: 95280
-			}
-		},		
-		{
-			fmsSongName: "clutterfunk 2",
-			lowerText: "CLUTTERFUNK 2",
-			originalArtistText: "WATERFLAME",
-			/* no vs system to speak of */
-		},
-		{
-			fmsSongName: "Glitch Gremlin",
-			upperText: "GLITCH",
-			lowerText: "GREMLIN",
-			originalArtistText: "BOSSFIGHT",
-			/* no vs system to speak of */
-		},
-		{
-			fmsSongName: "kesobomb",
-			lowerText: "KESOBOMB",
-			originalArtistText: "RYMDCRAFT",
-			/* no vs system to speak of */
-		},
-		{
-			fmsSongName: "Ninox",
-			lowerText: "NINOX",
-			originalArtistText: "MEGANEKO",
-		},
-		{
-			fmsSongName: "Speed Racer",
-			upperText: "CHAOZ",
-			lowerText: "IMPACT",
-			originalArtistText: "PARAGONX9",
-		},
-		{
-			fmsSongName: "Magic Touch",
-			lowerText: "MAGIC TOUCH",
-			originalArtistText: "ROMOS",
-		},
-		{
-			fmsSongName: "Pyrophoric",
-			lowerText: "PYROPHORIC",
-			originalArtistText: "NERDBOY628",
-		},
-		{
-			fmsSongName: "subtle oddities",
-			upperText: "SUBTLE",
-			lowerText: "ODDITIES",
-			originalArtistText: "LEMON DEMON",
-		},
-		{
-			fmsSongName: "Hell",
-			lowerText: "ACCELERATE",
-			originalArtistText: "ACID NOTATION",
-		},
-		{
-			fmsSongName: "Death Moon",
-			lowerText: "DEATH MOON",
-			originalArtistText: "SOUNDHOLICK",
-			
-		},
-		{
-			fmsSongName: "check out",
-			lowerText: "CHECK OUT",
-			originalArtistText: "MADHOUSEDUDE",
-			
+			fmsSongName: "haunted woods",
+			lowerText: "HAUNTED WOODS",
+			originalArtist: "Waterflame",
+			coveringArtist: "sussysy",
 		},
 		{
 			fmsSongName: "holography",
 			lowerText: "HOLOGRAPHY",
-			originalArtistText: "GARLAGAN",
-			
+			originalArtist: "garlagan",
+			coveringArtist: "sussysy",
 		},
 		{
-			fmsSongName: "Dance of the violins",
-			upperText: "DANCE OF",
-			lowerText: "THE VIOLINS",
-			originalArtistText: "F777",
-			
+			fmsSongName: "Idols",
+			lowerText: "IDOLS",
+			originalArtist: "Virtual Riot",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "infernoplex",
+			upperText: "INFERNOPLEX",
+			lowerText: "INFERNOPLEX CUT",
+			originalArtist: "Dimrain47",
+			coveringArtist: ["cloud54", "SeaGlowingPro"]
+		},
+		{
+			fmsSongName: "Infernoplex full",
+			lowerText: "INFERNOPLEX",
+			originalArtist: "Dimrain47",
+			coveringArtist: ["cloud54", "SeaGlowingPro"]
+		},
+		{
+			fmsSongName: "Isolation",
+			lowerText: "ISOLATION",
+			originalArtist: "NightHawk22",
+			coveringArtist: ["Crafty Jumper", "SeaGlowingPro"]
+		},
+		{
+			fmsSongName: "Infiltration",
+			lowerText: "INFILTRATION",
+			originalArtist: "ParagonX9",
+			coveringArtist: "Cloud54",
 		},
 		{
 			fmsSongName: "Infinite Power",
 			upperText: "INFINITE",
 			lowerText: "POWER",
-			originalArtistText: "THEFATRAT",
-		},	
-		{
-			fmsSongName: "Fantasy",
-			lowerText: "FANTASY",
-			originalArtistText: "CLOUDFIELD",
-		},		
-		{
-			fmsSongName: "endorphins",
-			lowerText: "ENDORPHINS",
-			originalArtistText: "DUOCORE",
-		},	
-		{
-			fmsSongName: "Infiltration",
-			lowerText: "INFILTRATION",
-			originalArtistText: "PARAGONX9",
-		},			
-		{
-			fmsSongName: "Power Trip",
-			lowerText: "POWER TRIP",
-			originalArtistText: "BOOM KITTY",
-		},			
-		{
-			fmsSongName: "Tiny Tunes",
-			lowerText: "TINY TUNES",
-			originalArtistText: "FANTOMENK",
-			
-		},		
-		{
-			fmsSongName: "Meowstuff",
-			lowerText: "MEOWSTUFF",
-			originalArtistText: "DAVINCE",
-			
-		},	
-		{
-			fmsSongName: "Pursuit",
-			lowerText: "PURSUIT",
-			originalArtistText: "BOOM KITTY",
-			
+			originalArtist: "TheFatRat",
+			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
 		},
 		{
-			fmsSongName: "Problematic",
-			lowerText: "PROBLEMATIC",
-			originalArtistText: "NIGHTKILLA",
+			fmsSongName: "jack russel",
+			lowerText: "JACK RUSSEL",
+			originalArtist: "Bossfight",
+			coveringArtist: "NerdBoy628",
 		},	
 		{
-			fmsSongName: "Xenogenesis",
-			lowerText: "XENOGENESIS",
-			originalArtistText: "THEFATRAT",
+			fmsSongName: "just right",
+			upperText: "JUST RIGHT",
+			lowerText: "SUNSHINE CUT",
+			originalArtist: ["Tessa Violet", "dan harrison b."],
+			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
 		},		
 		{
-			fmsSongName: "Fire Aura",
-			lowerText: "FIRE AURA",
-			originalArtistText: "KID2WILL",
-		},			
+			fmsSongName: "Just Right Full",
+			lowerText: "JUST RIGHT",
+			originalArtist: ["Tessa Violet", "dan harrison b."],
+			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
+		},		
+		{
+			fmsSongName: "kesobomb",
+			lowerText: "KESOBOMB",
+			originalArtist: "Rymdkraft",
+			coveringArtist: "NerdBoy628",
+		},
+		{
+			fmsSongName: "Kratos",
+			lowerText: "KRATOS",
+			originalArtist: "Shappy",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "lost",
+			lowerText: "LOST",
+			originalArtist: "Crim3s",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "ludicrous speed",
+			upperText: "LUDICROUS",
+			lowerText: "SPEED",
+			originalArtist: "F777",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Machina (GDW Cut)",
+			upperText: "MACHINA",
+			lowerText: "GDW CUT",
+			originalArtist: "Dex Arson",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Magic Touch",
+			lowerText: "MAGIC TOUCH",
+			originalArtist: "Romos",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "Mayhem",
+			lowerText: "MAYHEM",
+			originalArtist: "Crafty Jumper",
+			coveringArtist: "Crafty Jumper",
+		},
+		{
+			fmsSongName: "Megalovania",
+			lowerText: "MEGALOVANIA",
+			originalArtist: "Toby Fox",
+			coveringArtist: "Crafty Jumper",
+		},		
 		{
 			fmsSongName: "Meltdown",
 			lowerText: "MELTDOWN",
 			originalArtist: ["MasterSword","Remix"],
-		},		
-		{
-			fmsSongName: "Factory Time",
-			lowerText: "FACTORY TIME",
-			originalArtist: "Visager",
-		},			
-		{
-			fmsSongName: "atthespeedoflight",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
-			originalArtistText: "DIMRAIN47",
+			coveringArtist: ["Kanako","Ketsukane"]
 		},
 		{
-			fmsSongName: "atthespeedoflight2",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 2",
-			originalArtistText: "DIMRAIN47",
+			fmsSongName: "Metamorphosis",
+			lowerText: "METAMORPHOSIS",
+			originalArtist: "INTERWORLD",
+			coveringArtist: "ElAngel378",
 		},
 		{
-			fmsSongName: "atthespeedoflight3",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 3",
-			originalArtistText: "DIMRAIN47",
+			fmsSongName: "Meowstuff",
+			lowerText: "MEOWSTUFF",
+			originalArtist: "Davince",
+			coveringArtist: "SeaGlowingPro",
 		},
 		{
-			fmsSongName: "EON",
-			lowerText: "THE ANGEL",
-			originalArtistText: "CACOLA",
+			fmsSongName: "Miami Hotline Vol. 3",
+			upperText: "MIAMI HOTLINE",
+			lowerText: "VOL 3",
+			originalArtist: "Demonicity",
+			coveringArtist: "NerdBoy628",
 		},
 		{
-			fmsSongName: "stalemate",
-			lowerText: "STALEMATE",
-			originalArtistText: "KAYOSZX",
-		},		
-		{
-			fmsSongName: "Sonic blaster",
-			upperText: "SONIC",
-			lowerText: "BLASTER",
-			originalArtistText: "F777",
+			fmsSongName: "midnight",
+			lowerText: "MIDNIGHT",
+			originalArtist: "cornandbeans",
+			coveringArtist: "SeaGlowingPro",
 		},
-
-//		{
-//			fmsSongName: "eighto",
-//			lowerText: "EIGHTO",
-//			originalArtistText: "JOMEKKA",
-//		},		
-		{
-			fmsSongName: "Kratos",
-			lowerText: "KRATOS",
-			originalArtistText: "SHAPPY",
-		},	
-		{
-			fmsSongName: "Every End PT1",
-			lowerText: "EVERY END PT1",
-			originalArtistText: "DIMRAIN47",
-		},	
-		{
-			fmsSongName: "Every End PT2",
-			lowerText: "EVERY END PT2",
-			originalArtistText: "DIMRAIN47",
-		},	
-		{
-			fmsSongName: "Windfall",
-			lowerText: "WINDFALL",
-			originalArtistText: "THEFATRAT",
-		},	
-		{
-			fmsSongName: "Thermodynamix",
-			lowerText: "THERMODYNAMIX",
-			originalArtistText: "DJ NATE",
-		},	
 		{
 			fmsSongName: "Nine Circles",
 			lowerText: "NINE CIRCLES",
-			originalArtistText: "NIGHTKILLA",
-		},		
+			originalArtist: "RUKKUS",
+			coveringArtist: ["Cloud54", "SeaGlowingPro"]
+		},
 		{
-			fmsSongName: "Every Madness",
-			lowerText: "EVERY MADNESS",
-			originalArtistText: "CLOUD54",
-		},		
+			fmsSongName: "Ninox",
+			lowerText: "NINOX",
+			originalArtist: "meganeko",
+			coveringArtist: "SeaGlowingPro",
+		},
 		{
-			fmsSongName: "Blacklight",
-			lowerText: "BLACKLIGHT",
-			originalArtistText: "NIGHTKILLA",
-		},		
-		{
-			fmsSongName: "Fairydust",
-			lowerText: "FAIRYDUST",
-			originalArtistText: "NIGHTKILLA",
-		},		
-		{
-			fmsSongName: "Miami Hotline Vol. 3",
-			upperText: "MIAMI HOTLINE 3",
-			lowerText: "VOL 3",
-			originalArtistText: "DEMONICITY",
-		},		
-		{
-			fmsSongName: "eighto",
-			lowerText: "EIGHTO",
-			originalArtistText: "JOMEKKA",
-		},		
-
-		{	
-			fmsSongName: "crackdown",
+			fmsSongName: "okiba crackdown",
 			upperText: "OKIBA",
 			lowerText: "CRACKDOWN",
-			originalArtistText: "BOSSFIGHT",
+			originalArtist: "Bossfight",
+			coveringArtist: "sussysy",
 		},
+		{
+			fmsSongName: "Payload (GDW Cut)",
+			upperText: "PAYLOAD",
+			lowerText: "GDW CUT",
+			originalArtist: "Dex Arson",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Power Trip",
+			lowerText: "POWER TRIP",
+			originalArtist: "Boom Kitty",
+			coveringArtist: "Crafty Jumper",
+		},
+		{
+			fmsSongName: "Press Start",
+			lowerText: "PRESS START",
+			originalArtist: "MDK",
+			coveringArtist: "Crafty Jumper",
+		},
+		{
+			fmsSongName: "Problematic",
+			lowerText: "PROBLEMATIC",
+			originalArtist: "NIGHTkilla",
+			coveringArtist: "ElAngel378",
+		},
+		{
+			fmsSongName: "Pursuit",
+			lowerText: "PURSUIT",
+			originalArtist: "BoomKitty",
+			coveringArtist: "CraftyJumper",
+		},
+        {
+			fmsSongName: "Pyrophoric",
+			lowerText: "PYROPHORIC",
+			originalArtist: "NerdBoy628",
+		},
+		{
+			fmsSongName: "Pyrophoric (apparently too many creative liberties mix)",
+			upperText: "PYROPHORIC",
+            lowerText: "REMIX",
+			originalArtist: "NerdBoy628",
+			coveringArtist: "alexmush",
+		},
+		{
+			fmsSongName: "rainbow tylenol",
+			upperText: "RAINBOW",
+			lowerText: "TYLENOL",
+			originalArtist: "Kitsune²",
+			coveringArtist: "Clickerty",
+		},		
+		{
+			fmsSongName: "Round 1 (GDW Cut)",
+			upperText: "ROUND 1",
+			lowerText: "GDW CUT",
+			originalArtist: "Dex Arson",
+			coveringArtist: "SeaGlowingPro",
+		},	
+		{
+			fmsSongName: "Sonic blaster",
+			lowerText: "SONIC BLASTER",
+			originalArtist: "F777",
+			coveringArtist: "ElAngel378",
+		},	
+		{
+			fmsSongName: "Space Pirates (GDW Cut)",
+			upperText: "SPACE PIRATES",
+			lowerText: "GDW CUT",
+			originalArtist: "Waterflame",
+			coveringArtist: "ElAngel378",
+		},	
+		{
+			fmsSongName: "stalemate",
+			upperText: "STALEMATE",
+			lowerText: "STALEMATE CUT",
+			originalArtist: "KayoszX",
+			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
+		},	
+		{
+			fmsSongName: "stalemate greif cut",
+			upperText: "STALEMATE",
+			lowerText: "GREIF CUT",
+			originalArtist: "KayoszX",
+			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
+		},	
+		{
+			fmsSongName: "Stalemate Full",
+			lowerText: "STALEMATE",
+			originalArtist: "KayoszX",
+			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
+		},	
+		{
+			fmsSongName: "Stereo madness 2",
+			upperText: "STEREO",
+			lowerText: "MADNESS 2",
+			originalArtist: "ForeverBound",
+			coveringArtist: "ElAngel378",
+		},	
+		{
+			fmsSongName: "subtle oddities",
+			upperText: "SUBTLE",
+			lowerText: "ODDITIES",
+			originalArtist: "Lemon Demon",
+			coveringArtist: "DWEDIT",
+		},	
+		{
+			fmsSongName: "The Angel",
+			lowerText: "THE ANGEL",
+			originalArtist: "Cacola",
+			coveringArtist: "ElAngel378",
+		},	
+		{
+			fmsSongName: "The Seven Seas",
+			lowerText: "THE SEVEN SEAS",
+			originalArtist: "F777",
+			coveringArtist: "Crafty Jumper",
+		},	
+		{
+			fmsSongName: "Thermodynamix",
+			upperText: "THERMODYNAMIX",
+			lowerText: "THERMODYNAMIX CUT",
+			originalArtist: "Dj-Nate",
+			coveringArtist: ["Vikrinox","SeaGlowingPro"]
+		},		
+		{
+			fmsSongName: "Thermodynamix Full",
+			lowerText: "THERMODYNAMIX",
+			originalArtist: "Dj-Nate",
+			coveringArtist: ["Vikrinox","SeaGlowingPro"]
+		},		
+		{
+			fmsSongName: "Tiny Tunes",
+			lowerText: "TINY TUNES",
+			originalArtist: "FantomenK",
+			coveringArtist: "SeaGlowingPro",
+		},	
+		{
+			fmsSongName: "ultimatedestruction",
+			upperText: "ULTIMATE",
+			lowerText: "DESTRUCTION",
+			originalArtist: "TMM43",
+			coveringArtist: "UserSniper",
+		},	
+		{
+			fmsSongName: "Youve been Trolled",
+			upperText: "YOUVE BEEN",
+			lowerText: "TROLLED",
+			originalArtist: "TheClydeCash",
+			coveringArtist: "SeaGlowingPro",
+		},	
 		{
 			fmsSongName: "What's a Future Funk?",
 			upperText: "WHATS A",
 			lowerText: "FUTURE FUNK",
-			originalArtistText: "LEMKUUJA",
-			
-		},			
-				
+			originalArtist: "LemKuuja",
+			coveringArtist: "SeaGlowingPro",
+		},	
+		{
+			fmsSongName: "Windfall",
+			lowerText: "WINDFALL",
+			originalArtist: "TheFatRat",
+			coveringArtist: "SeaGlowingPro",
+		},	
+		{
+			fmsSongName: "Xenogenesis",
+			lowerText: "XENOGENESIS",
+			originalArtist: "TheFatRat",
+			coveringArtist: "Ranedom",
+		},	
+		{
+			fmsSongName: "XO",
+			lowerText: "XO",
+			originalArtist: ["Eden", "Aaron Musselwhite"],
+			coveringArtist: "SeaGlowingPro",
+			upperOrigArtistText: "EDEN     AARON",
+			lowerOrigArtistText: "   MUSSELWHITE"
+		},	
+		{
+			fmsSongName: "Years (GDW Cut)",
+			upperText: "YEARS",
+			lowerText: "GDW CUT",
+			originalArtist: "Dex Arson",
+			coveringArtist: "ElAngel378",
+		},		
+		{
+			fmsSongName: "emehT uneM",
+			lowerText: "EMEHT UNEM",
+			originalArtist: "RobTop",
+			coveringArtist: "Crafty Jumper",
+		},	
+		{
+			fmsSongName: "ssendaM oeretS",
+			lowerText: "SSENDAM OERETS",
+			originalArtist: "ForeverBound",
+			coveringArtist: "Crafty Jumper",
+		},	
+		{
+			fmsSongName: "hsaD",
+			lowerText: "HSAD",
+			originalArtist: "MDK",
+			coveringArtist: "Crafty Jumper",
+		},	
+		{
+			fmsSongName: "repmuJ",
+			lowerText: "REPMUJ",
+			originalArtist: "Waterflame",
+			coveringArtist: "SeaGlowingPro",
+		},					
 	],
 	SFX: [
 		{
