@@ -300,7 +300,7 @@ uint8_t practice_famistudio_registers[FAMISTUDIO_OUTPUT_BUF_SIZE * MAX_PRACTICE_
 
 // practice_table_idx not needed as it is formed from other existing variables
 
-#if __THE_ALBUM
+#if __THE_ALBUM || __HUGE_ROM
 #define MAX_SONG_QUEUE_SIZE 20
 unsigned char music_queue[MAX_SONG_QUEUE_SIZE];
 #endif
@@ -515,7 +515,7 @@ uint8_t gravity_mod;
 
 uint8_t tempplat;
 
-#if __THE_ALBUM
+#if __THE_ALBUM || __HUGE_ROM
 uint8_t queuemode;
 #endif
 

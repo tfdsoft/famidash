@@ -1,5 +1,6 @@
 {
 	songModule: "the album.fms",
+	extendedMetadata: true,
 	songs: [
 		{
 			fmsSongName: "Menu Theme",
@@ -25,7 +26,7 @@
 			upperText: "BACK ON",
 			lowerText: "TRACK",
 			originalArtist: "DJVI",
-			coveringArtist: "aquamarine.gay",
+			coveringArtist: "aquamarine",
 		},
 		{
 			fmsSongName: "Polargeist",
@@ -68,7 +69,7 @@
 			fmsSongName: "Cycles",
 			lowerText: "CYCLES",
 			originalArtist: "DJVI",
-			coveringArtist: ["aquamarine.gay", "alexmush"]
+			coveringArtist: ["aquamarine", "alexmush"]
 		},
 		{
 			fmsSongName: "xStep",
@@ -80,13 +81,13 @@
 			fmsSongName: "Clutterfunk",
 			lowerText: "CLUTTERFUNK",
 			originalArtist: "Waterflame",
-			coveringArtist: ["aquamarine.gay", "Vikrinox", "Zenith302"]
+			coveringArtist: ["aquamarine", "Vikrinox", "Zenith302"]
 		},
 		{
 			fmsSongName: "Theory of Everything",
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING",
-			originalArtist: "Dj-Nate",
+			originalArtist: "Dj Nate",
 			coveringArtist: ["Vikrinox", "UserSniper", "Zenith302", "leejh20"]
 		},
 		{
@@ -99,14 +100,14 @@
 		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
-			originalArtist: "Dj-Nate",
+			originalArtist: "Dj Nate",
 			coveringArtist: "cloud54",
 		},
 		{
 			fmsSongName: "Electrodynamix",
 			lowerText: "ELECTRODYNAMIX",
-			originalArtist: "Dj-Nate",
-			coveringArtist: "aquamarine.gay",
+			originalArtist: "Dj Nate",
+			coveringArtist: "aquamarine",
 		},
 		{
 			fmsSongName: "Hexagon Force",
@@ -126,7 +127,7 @@
 			fmsSongName: "TOE 2",
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING 2",
-			originalArtist: "Dj-Nate",
+			originalArtist: "Dj Nate",
 			coveringArtist: ["UserSniper","Abstract"]
 		},
 		{
@@ -190,7 +191,7 @@
 		{
 			fmsSongName: "accelerate",
 			lowerText: "ACCELERATE",
-			originalArtist: "Acid-Notation",
+			originalArtist: "Acid Notation",
 			coveringArtist: "ElAngel378",
 		},
 		{
@@ -464,7 +465,7 @@
 		{
 			fmsSongName: "infernoplex",
 			upperText: "INFERNOPLEX",
-			lowerText: "INFERNOPLEX CUT",
+			lowerText: "CUT",
 			originalArtist: "Dimrain47",
 			coveringArtist: ["cloud54", "SeaGlowingPro"]
 		},
@@ -503,13 +504,13 @@
 			fmsSongName: "just right",
 			upperText: "JUST RIGHT",
 			lowerText: "SUNSHINE CUT",
-			originalArtist: ["Tessa Violet", "dan harrison b."],
+			originalArtist: ["Tessa Violet", "dan harrison b"],
 			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
 		},		
 		{
 			fmsSongName: "Just Right Full",
 			lowerText: "JUST RIGHT",
-			originalArtist: ["Tessa Violet", "dan harrison b."],
+			originalArtist: ["Tessa Violet", "dan harrison b"],
 			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
 		},		
 		{
@@ -731,14 +732,14 @@
 		{
 			fmsSongName: "Thermodynamix",
 			upperText: "THERMODYNAMIX",
-			lowerText: "THERMODYNAMIX CUT",
-			originalArtist: "Dj-Nate",
+			lowerText: "CUT",
+			originalArtist: "Dj Nate",
 			coveringArtist: ["Vikrinox","SeaGlowingPro"]
 		},		
 		{
 			fmsSongName: "Thermodynamix Full",
 			lowerText: "THERMODYNAMIX",
-			originalArtist: "Dj-Nate",
+			originalArtist: "Dj Nate",
 			coveringArtist: ["Vikrinox","SeaGlowingPro"]
 		},		
 		{
