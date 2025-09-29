@@ -65,29 +65,29 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// thelightningroad
 	DEMON,	// nightmare
 	DEMON,	// demonpark
+	DEMON,	// supercycles
 	DEMON,	// xx
 	DEMON,	// problematic
-	DEMON,	// decode
 	DEMON,	// infinitecircles
+	DEMON,	// sonicblaster
+	DEMON,	// decode
 	DEMON,	// deathmoon
-	DEMON,	// supercycles
 	DEMON,	// clutterfunk2
 	DEMON,	// motion
 	DEMON,	// speedracer
 	DEMON,	// endorphinrush
-	DEMON,	// hell
 	DEMON,	// everymadness
-	DEMON,	// sonicblaster
+	DEMON,	// hell
 	DEMON,	// invisiblelight
+	DEMON,	// firetemple
 	DEMON,	// pgclubstep
 	DEMON,	// deadlyclubstep
 	DEMON,	// thermodynamix
+	DEMON,	// foresttemple
 	DEMON,	// ninecircles
 	DEMON,	// fairydust
 	DEMON,	// stalemate
 	DEMON,	// hi
-	DEMON,	// firetemple
-	DEMON,	// foresttemple
 	DEMON,	// sonicwave
 	DEMON,	// bloodbath
 	DEMON,	// luckydraw
@@ -157,29 +157,29 @@ const uint8_t stars_list[] = {
 	10,	// thelightningroad
 	10,	// nightmare
 	10,	// demonpark
+	10,	// supercycles
 	10,	// xx
 	10,	// problematic
-	10,	// decode
 	10,	// infinitecircles
+	10,	// sonicblaster
+	10,	// decode
 	10,	// deathmoon
-	10,	// supercycles
 	10,	// clutterfunk2
 	10,	// motion
 	10,	// speedracer
 	10,	// endorphinrush
-	10,	// hell
 	10,	// everymadness
-	10,	// sonicblaster
+	10,	// hell
 	10,	// invisiblelight
+	10,	// firetemple
 	10,	// pgclubstep
 	10,	// deadlyclubstep
 	10,	// thermodynamix
+	10,	// foresttemple
 	10,	// ninecircles
 	10,	// fairydust
 	10,	// stalemate
 	10,	// hi
-	10,	// firetemple
-	10,	// foresttemple
 	10,	// sonicwave
 	10,	// bloodbath
 	10,	// luckydraw

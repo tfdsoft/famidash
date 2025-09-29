@@ -68,29 +68,29 @@ _level_list_lo:
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
 	.byte .lobyte(level_data_demonpark)
+	.byte .lobyte(level_data_supercycles)
 	.byte .lobyte(level_data_xx)
 	.byte .lobyte(level_data_problematic)
-	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_infinitecircles)
+	.byte .lobyte(level_data_sonicblaster)
+	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_deathmoon)
-	.byte .lobyte(level_data_supercycles)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_endorphinrush)
-	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_everymadness)
-	.byte .lobyte(level_data_sonicblaster)
+	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_invisiblelight)
+	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_deadlyclubstep)
 	.byte .lobyte(level_data_thermodynamix)
+	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_ninecircles)
 	.byte .lobyte(level_data_fairydust)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_hi)
-	.byte .lobyte(level_data_firetemple)
-	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_sonicwave)
 	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_luckydraw)
@@ -159,29 +159,29 @@ _level_list_hi:
 	.byte .hibyte(level_data_thelightningroad)
 	.byte .hibyte(level_data_nightmare)
 	.byte .hibyte(level_data_demonpark)
+	.byte .hibyte(level_data_supercycles)
 	.byte .hibyte(level_data_xx)
 	.byte .hibyte(level_data_problematic)
-	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_infinitecircles)
+	.byte .hibyte(level_data_sonicblaster)
+	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_deathmoon)
-	.byte .hibyte(level_data_supercycles)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_endorphinrush)
-	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_everymadness)
-	.byte .hibyte(level_data_sonicblaster)
+	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_invisiblelight)
+	.byte .hibyte(level_data_firetemple)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_deadlyclubstep)
 	.byte .hibyte(level_data_thermodynamix)
+	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_ninecircles)
 	.byte .hibyte(level_data_fairydust)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_hi)
-	.byte .hibyte(level_data_firetemple)
-	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_sonicwave)
 	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_luckydraw)
@@ -250,29 +250,29 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_thelightningroad))
 	.byte .lobyte(.bank(level_data_nightmare))
 	.byte .lobyte(.bank(level_data_demonpark))
+	.byte .lobyte(.bank(level_data_supercycles))
 	.byte .lobyte(.bank(level_data_xx))
 	.byte .lobyte(.bank(level_data_problematic))
-	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_infinitecircles))
+	.byte .lobyte(.bank(level_data_sonicblaster))
+	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_deathmoon))
-	.byte .lobyte(.bank(level_data_supercycles))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_endorphinrush))
-	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_everymadness))
-	.byte .lobyte(.bank(level_data_sonicblaster))
+	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_invisiblelight))
+	.byte .lobyte(.bank(level_data_firetemple))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_deadlyclubstep))
 	.byte .lobyte(.bank(level_data_thermodynamix))
+	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_ninecircles))
 	.byte .lobyte(.bank(level_data_fairydust))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_hi))
-	.byte .lobyte(.bank(level_data_firetemple))
-	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_sonicwave))
 	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_luckydraw))
@@ -374,29 +374,29 @@ _sprite_list_lo:
 	.byte .lobyte(sprite_data_thelightningroad)
 	.byte .lobyte(sprite_data_nightmare)
 	.byte .lobyte(sprite_data_demonpark)
+	.byte .lobyte(sprite_data_supercycles)
 	.byte .lobyte(sprite_data_xx)
 	.byte .lobyte(sprite_data_problematic)
-	.byte .lobyte(sprite_data_decode)
 	.byte .lobyte(sprite_data_infinitecircles)
+	.byte .lobyte(sprite_data_sonicblaster)
+	.byte .lobyte(sprite_data_decode)
 	.byte .lobyte(sprite_data_deathmoon)
-	.byte .lobyte(sprite_data_supercycles)
 	.byte .lobyte(sprite_data_clutterfunk2)
 	.byte .lobyte(sprite_data_motion)
 	.byte .lobyte(sprite_data_speedracer)
 	.byte .lobyte(sprite_data_endorphinrush)
-	.byte .lobyte(sprite_data_hell)
 	.byte .lobyte(sprite_data_everymadness)
-	.byte .lobyte(sprite_data_sonicblaster)
+	.byte .lobyte(sprite_data_hell)
 	.byte .lobyte(sprite_data_invisiblelight)
+	.byte .lobyte(sprite_data_firetemple)
 	.byte .lobyte(sprite_data_pgclubstep)
 	.byte .lobyte(sprite_data_deadlyclubstep)
 	.byte .lobyte(sprite_data_thermodynamix)
+	.byte .lobyte(sprite_data_foresttemple)
 	.byte .lobyte(sprite_data_ninecircles)
 	.byte .lobyte(sprite_data_fairydust)
 	.byte .lobyte(sprite_data_stalemate)
 	.byte .lobyte(sprite_data_hi)
-	.byte .lobyte(sprite_data_firetemple)
-	.byte .lobyte(sprite_data_foresttemple)
 	.byte .lobyte(sprite_data_sonicwave)
 	.byte .lobyte(sprite_data_bloodbath)
 	.byte .lobyte(sprite_data_luckydraw)
@@ -465,29 +465,29 @@ _sprite_list_hi:
 	.byte .hibyte(sprite_data_thelightningroad)
 	.byte .hibyte(sprite_data_nightmare)
 	.byte .hibyte(sprite_data_demonpark)
+	.byte .hibyte(sprite_data_supercycles)
 	.byte .hibyte(sprite_data_xx)
 	.byte .hibyte(sprite_data_problematic)
-	.byte .hibyte(sprite_data_decode)
 	.byte .hibyte(sprite_data_infinitecircles)
+	.byte .hibyte(sprite_data_sonicblaster)
+	.byte .hibyte(sprite_data_decode)
 	.byte .hibyte(sprite_data_deathmoon)
-	.byte .hibyte(sprite_data_supercycles)
 	.byte .hibyte(sprite_data_clutterfunk2)
 	.byte .hibyte(sprite_data_motion)
 	.byte .hibyte(sprite_data_speedracer)
 	.byte .hibyte(sprite_data_endorphinrush)
-	.byte .hibyte(sprite_data_hell)
 	.byte .hibyte(sprite_data_everymadness)
-	.byte .hibyte(sprite_data_sonicblaster)
+	.byte .hibyte(sprite_data_hell)
 	.byte .hibyte(sprite_data_invisiblelight)
+	.byte .hibyte(sprite_data_firetemple)
 	.byte .hibyte(sprite_data_pgclubstep)
 	.byte .hibyte(sprite_data_deadlyclubstep)
 	.byte .hibyte(sprite_data_thermodynamix)
+	.byte .hibyte(sprite_data_foresttemple)
 	.byte .hibyte(sprite_data_ninecircles)
 	.byte .hibyte(sprite_data_fairydust)
 	.byte .hibyte(sprite_data_stalemate)
 	.byte .hibyte(sprite_data_hi)
-	.byte .hibyte(sprite_data_firetemple)
-	.byte .hibyte(sprite_data_foresttemple)
 	.byte .hibyte(sprite_data_sonicwave)
 	.byte .hibyte(sprite_data_bloodbath)
 	.byte .hibyte(sprite_data_luckydraw)
@@ -556,29 +556,29 @@ _sprite_list_bank:
 	.byte .lobyte(.bank(sprite_data_thelightningroad))
 	.byte .lobyte(.bank(sprite_data_nightmare))
 	.byte .lobyte(.bank(sprite_data_demonpark))
+	.byte .lobyte(.bank(sprite_data_supercycles))
 	.byte .lobyte(.bank(sprite_data_xx))
 	.byte .lobyte(.bank(sprite_data_problematic))
-	.byte .lobyte(.bank(sprite_data_decode))
 	.byte .lobyte(.bank(sprite_data_infinitecircles))
+	.byte .lobyte(.bank(sprite_data_sonicblaster))
+	.byte .lobyte(.bank(sprite_data_decode))
 	.byte .lobyte(.bank(sprite_data_deathmoon))
-	.byte .lobyte(.bank(sprite_data_supercycles))
 	.byte .lobyte(.bank(sprite_data_clutterfunk2))
 	.byte .lobyte(.bank(sprite_data_motion))
 	.byte .lobyte(.bank(sprite_data_speedracer))
 	.byte .lobyte(.bank(sprite_data_endorphinrush))
-	.byte .lobyte(.bank(sprite_data_hell))
 	.byte .lobyte(.bank(sprite_data_everymadness))
-	.byte .lobyte(.bank(sprite_data_sonicblaster))
+	.byte .lobyte(.bank(sprite_data_hell))
 	.byte .lobyte(.bank(sprite_data_invisiblelight))
+	.byte .lobyte(.bank(sprite_data_firetemple))
 	.byte .lobyte(.bank(sprite_data_pgclubstep))
 	.byte .lobyte(.bank(sprite_data_deadlyclubstep))
 	.byte .lobyte(.bank(sprite_data_thermodynamix))
+	.byte .lobyte(.bank(sprite_data_foresttemple))
 	.byte .lobyte(.bank(sprite_data_ninecircles))
 	.byte .lobyte(.bank(sprite_data_fairydust))
 	.byte .lobyte(.bank(sprite_data_stalemate))
 	.byte .lobyte(.bank(sprite_data_hi))
-	.byte .lobyte(.bank(sprite_data_firetemple))
-	.byte .lobyte(.bank(sprite_data_foresttemple))
 	.byte .lobyte(.bank(sprite_data_sonicwave))
 	.byte .lobyte(.bank(sprite_data_bloodbath))
 	.byte .lobyte(.bank(sprite_data_luckydraw))
@@ -650,29 +650,29 @@ _level_lengths_lo:
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
 	.byte .lobyte($0000A2)		; demonpark
+	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($000090)		; xx
 	.byte .lobyte($00006E)		; problematic
-	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($00006F)		; infinitecircles
+	.byte .lobyte($0000A6)		; sonicblaster
+	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($000125)		; deathmoon
-	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($00008B)		; endorphinrush
-	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($000090)		; everymadness
-	.byte .lobyte($0000A6)		; sonicblaster
+	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($000097)		; invisiblelight
+	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
 	.byte .lobyte($00008E)		; thermodynamix
+	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000082)		; fairydust
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($00009A)		; hi
-	.byte .lobyte($00008D)		; firetemple
-	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($0000FB)		; sonicwave
 	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($000089)		; luckydraw
@@ -743,29 +743,29 @@ _level_lengths_md:
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
 	.byte .hibyte($0000A2)		; demonpark
+	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($000090)		; xx
 	.byte .hibyte($00006E)		; problematic
-	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($00006F)		; infinitecircles
+	.byte .hibyte($0000A6)		; sonicblaster
+	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($000125)		; deathmoon
-	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($00008B)		; endorphinrush
-	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($000090)		; everymadness
-	.byte .hibyte($0000A6)		; sonicblaster
+	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($000097)		; invisiblelight
+	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
 	.byte .hibyte($00008E)		; thermodynamix
+	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000082)		; fairydust
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($00009A)		; hi
-	.byte .hibyte($00008D)		; firetemple
-	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($0000FB)		; sonicwave
 	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($000089)		; luckydraw
@@ -836,29 +836,29 @@ _level_lengths_hi:
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
 	.byte .bankbyte($0000A2)		; demonpark
+	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($000090)		; xx
 	.byte .bankbyte($00006E)		; problematic
-	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($00006F)		; infinitecircles
+	.byte .bankbyte($0000A6)		; sonicblaster
+	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($000125)		; deathmoon
-	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($00008B)		; endorphinrush
-	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($000090)		; everymadness
-	.byte .bankbyte($0000A6)		; sonicblaster
+	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($000097)		; invisiblelight
+	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep
 	.byte .bankbyte($00008E)		; thermodynamix
+	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000082)		; fairydust
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($00009A)		; hi
-	.byte .bankbyte($00008D)		; firetemple
-	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($0000FB)		; sonicwave
 	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($000089)		; luckydraw
