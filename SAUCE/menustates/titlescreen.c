@@ -84,6 +84,11 @@ const char palsystem[] = "FOR PAL SYSTEMS";
 #endif
 
 // Routines start
+#if __HUGE_ROM
+void check_if_music_stopped2() {
+	if (famistudio_song_speed == 0x80) { music_play(song_menu_theme); }
+}
+#endif
 
 void state_menu() {
 	oam_clear();
@@ -217,6 +222,10 @@ void state_menu() {
 
 
 	while (1){
+
+		#if __HUGE_ROM
+			check_if_music_stopped2();
+		#endif
 
 		#if __VS_SYSTEM
 

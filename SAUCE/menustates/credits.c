@@ -10,7 +10,7 @@ void mouse_and_cursor();
 	#endif
 #endif
 
-#if __THE_ALBUM
+#if __THE_ALBUM || __HUGE_ROM
 void check_if_music_stopped_3() {
 	if (famistudio_song_speed == 0x80) music_play(song_scheming_weasel);
 }
@@ -25,7 +25,7 @@ void credits_loop() {
     kandoframecnt++;
 	#if __VS_SYSTEM
 		crossPRGBankJump0(check_if_music_stopped);
-	#elif __THE_ALBUM
+	#elif __THE_ALBUM || __HUGE_ROM
 		check_if_music_stopped_3();
 	#endif
 

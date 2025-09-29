@@ -119,7 +119,7 @@ void play_next_queue() {
 }			
 
 
-void check_if_music_stopped2() {
+void check_if_music_stopped_huge() {
 	if (!queuemode) {
 		if (songplaying && famistudio_song_speed == 0x80) { music_play(xbgmlookuptable[song]); }
 	}
@@ -157,7 +157,7 @@ void state_soundtest() {
 		//rand8();
 		ppu_wait_nmi();
 		oam_clear();
-		check_if_music_stopped2();
+		check_if_music_stopped_huge();
 		 // read the first controller
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
