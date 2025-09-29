@@ -150,8 +150,8 @@
 
 
 .segment "DAT_BANK_08"	; Total bank size: 8150 bytes
-	.export level_data_futurefunk_8
-	level_data_futurefunk_8:
+	.export level_data_futurefunk_9
+	level_data_futurefunk_9:
 	; Level data
 		.incbin "EXPORTS/futurefunk.lz.1.bin" ; Size: 8150
 
@@ -320,8 +320,8 @@
 	; Level data
 		.incbin "EXPORTS/sonicblaster.lz.bin" ; Size: 7983
 
-	.export level_data_windylandscape_13
-	level_data_windylandscape_13:
+	.export level_data_windylandscape_12
+	level_data_windylandscape_12:
 	; Level data
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 192
 
@@ -1218,8 +1218,8 @@
 
 
 .segment "DAT_BANK_3C"	; Total bank size: 8176 bytes
-	.export level_data_dearnostalgists_10
-	level_data_dearnostalgists_10:
+	.export level_data_dearnostalgists_7
+	level_data_dearnostalgists_7:
 	; Level data
 		.incbin "EXPORTS/dearnostalgists.lz.1.bin" ; Size: 5155
 
@@ -1650,8 +1650,8 @@
 	; Level data
 		.incbin "EXPORTS/infinitecircles.lz.bin" ; Size: 4353
 
-	.export level_data_futurefunk_9
-	level_data_futurefunk_9:
+	.export level_data_futurefunk_10
+	level_data_futurefunk_10:
 	; Level data
 		.incbin "EXPORTS/futurefunk.lz.2.bin" ; Size: 3837
 
@@ -1695,8 +1695,8 @@
 	; Level data
 		.incbin "EXPORTS/darkparadise.lz.bin" ; Size: 4340
 
-	.export level_data_sonicwave_11
-	level_data_sonicwave_11:
+	.export level_data_sonicwave_13
+	level_data_sonicwave_13:
 	; Level data
 		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3689
 
@@ -1885,8 +1885,8 @@
 
 
 .segment "DAT_BANK_59"	; Total bank size: 8192 bytes
-	.export level_data_motion_7
-	level_data_motion_7:
+	.export level_data_motion_8
+	level_data_motion_8:
 	; Level data
 		.incbin "EXPORTS/motion.lz.1.bin" ; Size: 184
 
@@ -2022,7 +2022,7 @@
 
 
 .segment "DAT_BANK_63"	; Total bank size: 5479 bytes
-	.export level_data_eon_12
-	level_data_eon_12:
+	.export level_data_eon_11
+	level_data_eon_11:
 	; Level data
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 799
