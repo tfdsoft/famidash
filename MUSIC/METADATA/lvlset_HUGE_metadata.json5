@@ -230,6 +230,13 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
+			fmsSongName: "Back on Track Full",
+			upperText: "BACK ON",
+			lowerText: "TRACK FULL",
+			originalArtist: "DJVI",
+			coveringArtist: "aquamarine",
+		},		
+		{
 			fmsSongName: "Beast Mode (GDW Cut)",
 			upperText: "BEAST MODE",
 			lowerText: "GDW CUT",
@@ -286,6 +293,13 @@
 			coveringArtist: "sussysy",
 		},
 		{
+			fmsSongName: "Clubstep Full",
+			lowerText: "CLUBSTEP FULL",
+			originalArtist: "Dj Nate",
+			coveringArtist: "cloud54",
+		},
+		
+		{
 			fmsSongName: "clutterfunk 2",
 			lowerText: "CLUTTERFUNK 2",
 			originalArtist: "Waterflame",
@@ -305,6 +319,12 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
+			fmsSongName: "Dash Full",
+			lowerText: "DASH FULL",
+			originalArtist: "MDK",
+			coveringArtist: "Crafty Jumper",
+		},		
+		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
 			originalArtist: "SoundHolicK",
@@ -317,6 +337,12 @@
 			originalArtist: "Reinn",
 			coveringArtist: "NerdBoy628",
 		},
+		{
+			fmsSongName: "Dry Out Full",
+			lowerText: "DRY OUT FULL",
+			originalArtist: "DJVI",
+			coveringArtist: "UserSniper",
+		},		
 		{
 			fmsSongName: "eighto",
 			upperText: "EIGHTO",
@@ -467,7 +493,7 @@
 			upperText: "INFERNOPLEX",
 			lowerText: "CUT",
 			originalArtist: "Dimrain47",
-			coveringArtist: ["cloud54", "SeaGlowingPro"]
+			coveringArtist: "cloud54",
 		},
 		{
 			fmsSongName: "Infernoplex full",
@@ -500,6 +526,13 @@
 			originalArtist: "Bossfight",
 			coveringArtist: "NerdBoy628",
 		},	
+
+		{
+			fmsSongName: "Jumper Full",
+			lowerText: "JUMPER FULL",
+			originalArtist: "Waterflame",
+			coveringArtist: ["Zenith302", "zukinnyk", "UserSniper"]
+		},		
 		{
 			fmsSongName: "just right",
 			upperText: "JUST RIGHT",
@@ -734,7 +767,7 @@
 			upperText: "THERMODYNAMIX",
 			lowerText: "CUT",
 			originalArtist: "Dj Nate",
-			coveringArtist: ["Vikrinox","SeaGlowingPro"]
+			coveringArtist: "Vikrinox",
 		},		
 		{
 			fmsSongName: "Thermodynamix Full",
@@ -742,6 +775,13 @@
 			originalArtist: "Dj Nate",
 			coveringArtist: ["Vikrinox","SeaGlowingPro"]
 		},		
+		{
+			fmsSongName: "Time Machine Full",
+			upperText: "TIME MACHINE",
+			lowerText: "FULL",
+			originalArtist: "Waterflame",
+			coveringArtist: ["Zenith302", "Vikrinox", "alexmush"]
+		},
 		{
 			fmsSongName: "Tiny Tunes",
 			lowerText: "TINY TUNES",
