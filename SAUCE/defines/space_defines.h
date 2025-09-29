@@ -14,7 +14,7 @@
 #define MAX_FIREBALLS 20
 #define MAX_PRACTICE_POINTS 8
 #define max_loaded_sprites 16
-#define MAX_LEVEL_COMPLETE 0x60
+#define MAX_LEVEL_COMPLETE 0x80
 
 #define NINJABANK 94
 #define MOUSEBANK 96
