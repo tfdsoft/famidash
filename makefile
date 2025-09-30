@@ -87,8 +87,6 @@ all: main vs-sys b-sides c-sides album big huge
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
 
 main: LEVELSET = A
-main: CC65_DEFINES += -D__MAIN=1
-main: CA65_DEFINES += -D__MAIN=1
 main: OUTDIR = $(OUTDIR_PREFIX)/$@
 main: TMPDIR = $(TMPDIR_PREFIX)/$@
 main:
@@ -149,8 +147,6 @@ c-sides:
 	--no-print-directory
 
 big: LEVELSET = BIG
-big: CC65_DEFINES += -D__BIG_ROM=1
-big: CA65_DEFINES += -D__BIG_ROM=1
 big: OUTDIR = $(OUTDIR_PREFIX)/$@
 big: TMPDIR = $(TMPDIR_PREFIX)/$@
 big:

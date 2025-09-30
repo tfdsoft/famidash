@@ -3997,5 +3997,5 @@
 			offsetY: 8
 		},
 	],
-	levelSetDefineName: "A"
+	levelSetDefineName: 0x141006E	/* HIOOGE ~ HUGE */
 }

@@ -44,7 +44,7 @@ CODE_BANK("XCD_BANK_06")
 
 #endif
 #endif
-#if LEVELSET != 'A' && !__HUGE_ROM && !__THE_ALBUM
+#if OFFICIAL_LEVEL_COUNT == 0 && TOTAL_LEVEL_COUNT != 0	// A levelset has levels but no official ones
 CODE_BANK("XCD_BANK_06")
 #include "menustates/playmain.c"
 #endif

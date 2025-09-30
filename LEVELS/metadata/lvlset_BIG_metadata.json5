@@ -3795,5 +3795,5 @@
 			offsetY: 8
 		},
 	],
-	levelSetDefineName: "A"
+	levelSetDefineName: 0xB16	/* BIG */
 }

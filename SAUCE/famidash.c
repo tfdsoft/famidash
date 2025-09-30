@@ -127,7 +127,7 @@ void main(){
 				state_customize();
 				break;
 			}
-			#if LEVELSET != 'A'
+			#if OFFICIAL_LEVEL_COUNT == 0 && TOTAL_LEVEL_COUNT != 0	// A levelset has levels but no official ones
 			case STATE_PLAYMAIN: {
 				mmc3_set_prg_bank_1(GET_BANK(state_playmain));
 				state_playmain();

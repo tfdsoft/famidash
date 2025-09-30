@@ -12,23 +12,12 @@
 .ifndef __HUGE_ROM
 	__HUGE_ROM = 0
 .endif
-.ifndef __BIG_ROM
-	__BIG_ROM = 0
-.endif
 .define VS_SYSTEM ::__VS_SYSTEM
 .define ___VS_SYSTEM ::__VS_SYSTEM
 .define THE_ALBUM ::__THE_ALBUM
 .define ___THE_ALBUM ::__THE_ALBUM
 .define HUGE_ROM ::__HUGE_ROM
 .define ___HUGE_ROM ::__HUGE_ROM
-.define BIG_ROM ::__BIG_ROM
-.define ___BIG_ROM ::__BIG_ROM
-; The latter is to keep the C compilers happy
-.ifndef __MAIN
-	__MAIN = 0
-.endif
-.define MAIN ::__MAIN
-.define ___MAIN ::__MAIN
 ; The latter is to keep the C compilers happy
 
 ;REMOVED initlib
@@ -473,7 +462,7 @@ _GAME_CHR:
     .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (34) 
     .incbin "GRAPHICS/Level Sprites/bankblankcloud2.chr" ; 1kb
 
-    .if (__MAIN || __HUGE_ROM || __BIG_ROM)
+    .if (_LEVELSET = 'A') || (_LEVELSET = $B16) || (_LEVELSET = $141006E)	; A or BIG or HUGE
 		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (36) 
 		.incbin "GRAPHICS/Level Sprites/bankblankfingerdash.chr" ; 1kb
 		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (38) 
