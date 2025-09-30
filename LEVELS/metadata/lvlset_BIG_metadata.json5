@@ -2901,6 +2901,22 @@
 			]
 		},
 		{
+			level: "supercycles",
+			lowerText: "SUPER CYCLES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_cycles",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			parallaxDisable: true
+		},
+		{
 			level: "xx",
 			lowerText: "X",
 			decoType: "EXTRASPRITES1",
@@ -2976,7 +2992,41 @@
 					offsetY: +16		
 				},
 			]
-		},		
+		},	
+		{
+			level: "infinitecircles",
+			upperText: "INFINITE",
+			lowerText: "CIRCLES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_infinite_power",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
+			level: "sonicblaster",
+			upperText: "SONIC",
+			lowerText: "BLASTER",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_sonic_blaster",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
 		{
 			level: "decode",
 			lowerText: "DECODE",
@@ -3003,23 +3053,6 @@
 			]
 		},		
 		{
-			level: "infinitecircles",
-			upperText: "INFINITE",
-			lowerText: "CIRCLES",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_infinite_power",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
 			level: "deathmoon",
 			lowerText: "DEATH MOON",
 			decoType: "DECO1",
@@ -3033,22 +3066,6 @@
 			startingSpeed: 3,
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
-			level: "supercycles",
-			lowerText: "SUPER CYCLES",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_cycles",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02,
 			parallaxDisable: true
 		},
 		{
@@ -3122,24 +3139,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-	
-		{
-			level: "hell",
-			lowerText: "HELL",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_hell",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-
 		{
 			level: "everymadness",
 			upperText: "EVERY",
@@ -3166,24 +3165,23 @@
 					offsetY: -8
 				}
 			]	
-		},	
+		},		
 		{
-			level: "sonicblaster",
-			upperText: "SONIC",
-			lowerText: "BLASTER",
-			decoType: "DECO1",
-			spikeSet: "C",
+			level: "hell",
+			lowerText: "HELL",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_sonic_blaster",
+			songID: "song_hell",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
-		},			
+		},
 		{
 			level: "invisiblelight",
 			upperText: "INVISIBLE",
@@ -3200,6 +3198,68 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
+		},
+		{
+			level: "firetemple",
+			lowerText: "FIRE TEMPLE",
+			decoType: "DECO1",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_base_after_base",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[216, 24],	[312, 24],	[641, 22],	[745, 20],		//speed
+						[434, 21],	//dual
+						[589, 21],	//single
+						[701, 21],	//grav
+					],
+					offsetY: -8
+				},		
+				{
+					coordinates: [
+						[456, 21],	[457, 21],	[490, 21],
+					],
+					offsetY: -16
+				},		
+				{
+					coordinates: [456, 20],
+					offsetX: +16
+				},	
+				{
+					coordinates: [
+						[509, 20],	[590, 20],	[746, 19],	
+					],
+					offsetX: -16
+				},
+				{
+					coordinates: [
+						[591, 20],
+					],
+					offsetX: -32
+				},	
+				{
+					coordinates: [
+						[508, 20],	[509, 20],	[558, 20],	[589, 20],	[590, 20],	[591, 20],	[701, 20],	
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[865, 24],
+					],
+					offsetX: +8
+				},
+					
+			],
 		},
 		{
 			level: "pgclubstep",
@@ -3313,6 +3373,22 @@
 			difficulty: "DEMON",
 			stars: 10,
 			songID: "song_thermodynamix",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
+			level: "foresttemple",
+			lowerText: "FOREST TEMPLE",
+			decoType: "DECO1",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_haunted_woods",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
@@ -3626,85 +3702,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
-			level: "firetemple",
-			lowerText: "FIRE TEMPLE",
-			decoType: "DECO1",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_base_after_base",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					coordinates: [
-						[216, 24],	[312, 24],	[641, 22],	[745, 20],		//speed
-						[434, 21],	//dual
-						[589, 21],	//single
-						[701, 21],	//grav
-					],
-					offsetY: -8
-				},		
-				{
-					coordinates: [
-						[456, 21],	[457, 21],	[490, 21],
-					],
-					offsetY: -16
-				},		
-				{
-					coordinates: [456, 20],
-					offsetX: +16
-				},	
-				{
-					coordinates: [
-						[509, 20],	[590, 20],	[746, 19],	
-					],
-					offsetX: -16
-				},
-				{
-					coordinates: [
-						[591, 20],
-					],
-					offsetX: -32
-				},	
-				{
-					coordinates: [
-						[508, 20],	[509, 20],	[558, 20],	[589, 20],	[590, 20],	[591, 20],	[701, 20],	
-					],
-					offsetY: +8
-				},
-				{
-					coordinates: [
-						[865, 24],
-					],
-					offsetX: +8
-				},
-					
-			],
-		},
-		{
-			level: "foresttemple",
-			lowerText: "FOREST TEMPLE",
-			decoType: "DECO1",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_haunted_woods",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-
 		{
 			level: "sonicwave",
 			lowerText: "SONIC WAVE",
