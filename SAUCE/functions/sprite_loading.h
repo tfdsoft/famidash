@@ -355,8 +355,8 @@ char sprite_load_special_behavior(){
 			}
 
 		case COINGOTTEN3:
-			#ifdef fingerdash
-				if (level == fingerdash && minicoins != 10) {
+			#ifdef level_fingerdash
+				if (level == level_fingerdash && minicoins != 10) {
 					activesprites_type[index] = 0xFF;
 					return 0x10;
 				}

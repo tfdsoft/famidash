@@ -149,6 +149,8 @@ c-sides:
 	--no-print-directory
 
 big: LEVELSET = BIG
+big: CC65_DEFINES += -D__BIG_ROM=1
+big: CA65_DEFINES += -D__BIG_ROM=1
 big: OUTDIR = $(OUTDIR_PREFIX)/$@
 big: TMPDIR = $(TMPDIR_PREFIX)/$@
 big:
