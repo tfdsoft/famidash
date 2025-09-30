@@ -264,14 +264,17 @@ void state_soundtest() {
 void refresh_queue_screen() {
 	switch (tmp4) {
 
+		case 0:
+		case 0xFF:
+				update_text2();
+				tmp4 = 1;
+				break;
 		case 1:
 				update_text3();
 				tmp4 = 3;
 				break;
-		case 0:
-		case 0xFF:
 		case 2:
-			for (tmp1 = 0; tmp1 < 4; tmp1++) {			//limited to 5??
+			for (tmp1 = 2; tmp1 < 4; tmp1++) {			//limited to 5??
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));		
 			if (music_queue[tmp1] != 0xFF) {
 				tmp3 = music_queue[tmp1];
@@ -288,7 +291,17 @@ void refresh_queue_screen() {
 			}
 			break;
 		case 3:
-			for (tmp1 = 4; tmp1 < 8; tmp1++) {			//limited to 5??
+			for (tmp1 = 4; tmp1 < 6; tmp1++) {			//limited to 5??
+			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+			if (music_queue[tmp1] != 0xFF) {
+				text_stuff();			
+			}
+			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+			tmp4 = 4;
+			}
+			break;
+		case 4:
+			for (tmp1 = 6; tmp1 < 8; tmp1++) {			//limited to 5??
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			if (music_queue[tmp1] != 0xFF) {
 				text_stuff();			
@@ -297,16 +310,6 @@ void refresh_queue_screen() {
 			tmp4 = 5;
 			}
 			break;
-//		case 4:
-//			for (tmp1 = 6; tmp1 < 8; tmp1++) {			//limited to 5??
-//			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-//			if (music_queue[tmp1] != 0xFF) {
-//				text_stuff();			
-//			}
-//			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-//			tmp4 = 5;
-//			}
-//			break;
 		case 5:
 			for (tmp1 = 8; tmp1 < 10; tmp1++) {			//limited to 5??
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
