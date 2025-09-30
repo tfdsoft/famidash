@@ -237,13 +237,6 @@
 			coveringArtist: "aquamarine",
 		},		
 		{
-			fmsSongName: "Beast Mode (GDW Cut)",
-			upperText: "BEAST MODE",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},
-		{
 			fmsSongName: "Beep Beep",
 			lowerText: "BEEP BEEP",
 			originalArtist: "Schtiffles",
@@ -572,13 +565,6 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
-			fmsSongName: "Machina (GDW Cut)",
-			upperText: "MACHINA",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},
-		{
 			fmsSongName: "Magic Touch",
 			lowerText: "MAGIC TOUCH",
 			originalArtist: "Romos",
@@ -647,13 +633,6 @@
 			coveringArtist: "sussysy",
 		},
 		{
-			fmsSongName: "Payload (GDW Cut)",
-			upperText: "PAYLOAD",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},
-		{
 			fmsSongName: "Power Trip",
 			lowerText: "POWER TRIP",
 			originalArtist: "Boom Kitty",
@@ -697,23 +676,9 @@
 			coveringArtist: "Clickerty",
 		},		
 		{
-			fmsSongName: "Round 1 (GDW Cut)",
-			upperText: "ROUND 1",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},	
-		{
 			fmsSongName: "Sonic blaster",
 			lowerText: "SONIC BLASTER",
 			originalArtist: "F777",
-			coveringArtist: "ElAngel378",
-		},	
-		{
-			fmsSongName: "Space Pirates (GDW Cut)",
-			upperText: "SPACE PIRATES",
-			lowerText: "GDW CUT",
-			originalArtist: "Waterflame",
 			coveringArtist: "ElAngel378",
 		},	
 		{
@@ -828,37 +793,6 @@
 			coveringArtist: "SeaGlowingPro",
 			upperOrigArtistText: "EDEN     AARON",
 			lowerOrigArtistText: "   MUSSELWHITE"
-		},	
-		{
-			fmsSongName: "Years (GDW Cut)",
-			upperText: "YEARS",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},		
-		{
-			fmsSongName: "emehT uneM",
-			lowerText: "EMEHT UNEM",
-			originalArtist: "RobTop",
-			coveringArtist: "Crafty Jumper",
-		},	
-		{
-			fmsSongName: "ssendaM oeretS",
-			lowerText: "SSENDAM OERETS",
-			originalArtist: "ForeverBound",
-			coveringArtist: "Crafty Jumper",
-		},	
-		{
-			fmsSongName: "hsaD",
-			lowerText: "HSAD",
-			originalArtist: "MDK",
-			coveringArtist: "Crafty Jumper",
-		},	
-		{
-			fmsSongName: "repmuJ",
-			lowerText: "REPMUJ",
-			originalArtist: "Waterflame",
-			coveringArtist: "SeaGlowingPro",
 		},					
 	],
 	SFX: [
