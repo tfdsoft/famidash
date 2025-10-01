@@ -216,10 +216,12 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			level_cache = {}
 		header = [
 			metadata['songID'],
-			f"{metadata['startingGameMode']}",
-			f"{metadata['startingSpeed']}",
-			f"{int(bool(metadata.get('parallaxDisable')))}",
-			f"{int(bool(metadata.get('forcePlatformer')))}",
+			f"({metadata['startingSpeed']} << 4) | {metadata['startingGameMode']}",
+			" | ".join ([
+				f"({int(bool(metadata.get(name)))} << {idx})"
+				for idx, name in enumerate(
+					['parallaxDisable', 'forcePlatformer'])
+			]),
 			f"_{metadata['decoType']}",
 			getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
 			getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
@@ -230,7 +232,8 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 		]
 		maxHeaderStrLen = max(map(len, header))
 		headerDataDesc = [
-			"Song ID", "Starting game mode", "Starting speed", "Disable parallax", "Force platformer",
+			"Song ID", "Starting game mode and speed",
+				", ".join(["Disable parallax", "Force platformer"][::-1]),
 			"Deco type", "Spike set", "Block set", "Sawblade set",
 			"Starting background color", "Starting ground color", "Level height"]
 		header = [f"{i} ;{'_'*(maxHeaderStrLen-len(i)+3)} {headerDataDesc[idx]}" for idx, i in enumerate(header)]
@@ -325,7 +328,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			out_str.append("\t; Header")
 			out_str += [f"\t\t.byte {i}" for i in hdr]
 		out_str.append("\t; Level data")
-		out_str.append(f'\t\t.incbin "{cached_data_path.relative_to(include_path).as_posix()}" ; Size: {length}')
+		out_str.append(f'\t\t.incbin "{cached_data_path.relative_to(include_path).as_posix()}" ; Size: {length - (0 if (hdr == None) else len(hdr))}')
 		out_str.append("")
 		
 		banked_level_data.append((length, "\n".join(out_str), f"level_data_{id}", "level", []))

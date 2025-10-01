@@ -673,7 +673,7 @@ void state_menu() {
 	normalorcommlevels = 1;
 	switch (menuselection) {
 		case TITLE_BTN_LEVELMAIN:
-			#if LEVELSET != 'A'
+			#if OFFICIAL_LEVEL_COUNT == 0
 				tmp2 = 0;
 				gameState = STATE_PLAYMAIN;
 				break;

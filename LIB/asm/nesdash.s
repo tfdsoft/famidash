@@ -248,20 +248,24 @@ _init_rld:
 	STA _song			;   Song ID
 	INCW ptr1			;__
 
-	LDA (ptr1),y		;
-	STA _gamemode		;   Starting game mode
+	LDA (ptr1),y		;	Starting gamemode and speed
+	TAX					;__
+	LSR					;
+	LSR					;
+	LSR					;	Get speed
+	LSR					;
+	STA	_speed			;__
+	TXA					;
+	AND	#$0F			;
+	STA	_gamemode		;	Get just the gamemode
 	INCW ptr1			;__
 
-	LDA (ptr1),y		;
-	STA _speed			;   Starting speed
-	INCW ptr1			;__
+	STY	_no_parallax	;__	Y = 0
 
-	LDA (ptr1),y		;
-	STA _no_parallax	;	Parallax disable
-	INCW ptr1			;__
-
-	LDA (ptr1),y		;
-	STA _force_platformer	;	force platformer
+	LDA (ptr1),y		;__	Force platformer, Parallax disable
+	LSR					;__	Parallax disable in carry
+	ROL _no_parallax	;__	Store where it needs to go
+	STA _force_platformer	;	The rest is force platformer, store it
 	INCW ptr1			;__
 
 	LDA (ptr1),y			;
