@@ -22,15 +22,6 @@ _level_chunk_list_hi:
 _level_chunk_list_bank:
 
 
-_sprite_list_lo:
-
-
-_sprite_list_hi:
-
-
-_sprite_list_bank:
-
-
 .define MID_LEVEL_LENGTHS_ENABLED 0
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 

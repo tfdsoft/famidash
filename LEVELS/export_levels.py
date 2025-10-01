@@ -215,6 +215,9 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			cached_data_path.write_bytes(lz_data)
 			level_cache = {}
 		header = [
+			f"<sprite_data_{level}",
+			f">sprite_data_{level}",
+			f"<(.bank(sprite_data_{level}))",
 			metadata['songID'],
 			f"({metadata['startingSpeed']} << 4) | {metadata['startingGameMode']}",
 			" | ".join ([
@@ -232,6 +235,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 		]
 		maxHeaderStrLen = max(map(len, header))
 		headerDataDesc = [
+			"Sprite data ptr, low byte", "Sprite data ptr, high byte", "Sprite data bank",
 			"Song ID", "Starting game mode and speed",
 				", ".join(["Disable parallax", "Force platformer"][::-1]),
 			"Deco type", "Spike set", "Block set", "Sawblade set",
@@ -570,19 +574,11 @@ def generate_level_table(levels, bg_exp_data, include_path):
 	
 	level_list_lo = '\n'.join(
 		[f"\t.byte .lobyte(level_data_{x})" for x in levels])
-	sprite_list_lo = '\n'.join(
-		[f"\t.byte .lobyte(sprite_data_{x})" for x in levels])
-	
 	level_list_hi = '\n'.join(
 		[f"\t.byte .hibyte(level_data_{x})" for x in levels])
-	sprite_list_hi = '\n'.join(
-		[f"\t.byte .hibyte(sprite_data_{x})" for x in levels])
-	
 	level_list_bank = '\n'.join(
 		[f"\t.byte .lobyte(.bank(level_data_{x}))" for x in levels])
-	sprite_list_bank = '\n'.join(
-		[f"\t.byte .lobyte(.bank(sprite_data_{x}))" for x in levels])
-	
+
 	level_chunk_list_lo = '\n'.join(
 		[f"\t.byte .lobyte(level_data_{x})" for x in bg_exp_data[2]])
 	level_chunk_list_hi = '\n'.join(
@@ -614,10 +610,6 @@ def generate_level_table(levels, bg_exp_data, include_path):
 		'_level_chunk_list_lo:',	level_chunk_list_lo,	'',	
 		'_level_chunk_list_hi:',	level_chunk_list_hi,	'',	
 		'_level_chunk_list_bank:',	level_chunk_list_bank,	'',	
-
-		'_sprite_list_lo:',		sprite_list_lo,		'',	
-		'_sprite_list_hi:',		sprite_list_hi,		'',	
-		'_sprite_list_bank:',	sprite_list_bank,	'',	
 
 		f'.define MID_LEVEL_LENGTHS_ENABLED {"1" if mid_widths_enabled else "0"}',
 		f'.define HIGH_LEVEL_LENGTHS_ENABLED {"1" if hi_widths_enabled else "0"}',

@@ -225,12 +225,6 @@ _init_rld:
 	LDA	mmc3PRG1Bank		;	Save PRG1 bank
 	PHA						;__
 
-	LDA _sprite_list_lo,y	;
-	STA _sprite_data+0		;__	Get low pointer to sprite data 
-	LDA _sprite_list_hi,y	;
-	STA _sprite_data+1		;__	Get high pointer to sprite data 
-	LDA _sprite_list_bank,y	;
-	STA _sprite_data_bank	;__	Get sprite data bank
 	LDA _level_list_lo,y	;
 	STA	ptr1+0				;__	Get low pointer to level data
 	LDA _level_list_hi,y	;
@@ -244,6 +238,18 @@ _init_rld:
 	STY rld_column		;__ Reset scrolling
 
 	; Read header
+
+
+	LDA (ptr1),y			;
+	STA _sprite_data+0		;	Get low pointer to sprite data
+	INCW ptr1				;__
+	LDA (ptr1),y			;
+	STA _sprite_data+1		;	Get high pointer to sprite data 
+	INCW ptr1				;__
+	LDA (ptr1),y			;
+	STA _sprite_data_bank	;	Get sprite data bank
+	INCW ptr1				;__
+
 	LDA (ptr1),y		;
 	STA _song			;   Song ID
 	INCW ptr1			;__

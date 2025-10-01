@@ -4606,7 +4606,7 @@ sprite_data_clubstep:
   .byte $80,$38,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_44"
+.segment "DAT_BANK_46"
 sprite_data_electrodynamix:
   .byte $00,$00,$60,$03,$99
   .byte $00,$00,$80,$03,$c9
@@ -9309,7 +9309,7 @@ sprite_data_thechallenge:
   .byte $10,$0f,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_33"
+.segment "DAT_BANK_57"
 sprite_data_dorabaebasic4:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$70,$03,$bf
@@ -17383,7 +17383,7 @@ sprite_data_revolution:
   .byte $30,$48,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_51"
+.segment "DAT_BANK_52"
 sprite_data_funnygameholiday:
   .byte $00,$00,$80,$03,$bd
   .byte $b0,$00,$40,$03,$36
@@ -24037,7 +24037,7 @@ sprite_data_powertrip:
   .byte $a0,$4a,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_2B"
+.segment "DAT_BANK_2C"
 sprite_data_danceofviolins:
   .byte $00,$00,$10,$03,$84
   .byte $00,$00,$20,$03,$b4
@@ -28777,7 +28777,7 @@ sprite_data_demonpark:
   .byte $70,$3e,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_46"
+.segment "DAT_BANK_47"
 sprite_data_supercycles:
   .byte $00,$00,$60,$03,$93
   .byte $00,$00,$80,$03,$d3
@@ -30154,7 +30154,7 @@ sprite_data_problematic:
   .byte $80,$2a,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_52"
+.segment "DAT_BANK_53"
 sprite_data_infinitecircles:
   .byte $00,$00,$60,$03,$96
   .byte $00,$00,$70,$03,$b0
@@ -30947,7 +30947,7 @@ sprite_data_infinitecircles:
   .byte $00,$2b,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_53"
+.segment "DAT_BANK_51"
 sprite_data_sonicblaster:
   .byte $00,$00,$40,$03,$8c
   .byte $00,$00,$50,$03,$cc
@@ -36496,7 +36496,7 @@ sprite_data_endorphinrush:
   .byte $00,$36,$a0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_1C"
+.segment "DAT_BANK_1B"
 sprite_data_everymadness:
   .byte $20,$03,$f0,$02,$2b
   .byte $50,$03,$80,$03,$30
@@ -39782,7 +39782,7 @@ sprite_data_thermodynamix:
   .byte $d0,$36,$10,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_5F"
+.segment "DAT_BANK_51"
 sprite_data_foresttemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$ba
