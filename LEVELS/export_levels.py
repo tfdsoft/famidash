@@ -173,11 +173,11 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 		level = metadata['level']
 		lines = []
 		try:
-			with open(folder / f"{level}.tmx") as f:
+			with open(*folder.glob(f"{level}.tmx", case_sensitive=False)) as f:
 				lines = getCsvDataFromTmx(f, ['', 'BG'])
 			inputFileType = "TMX"
 		except:
-			with open(folder / f"{level}_.csv") as f:
+			with open(*folder.glob(f"{level}_.csv", case_sensitive=False)) as f:
 				lines = list(csv.reader(f))
 			inputFileType = "CSV"
 		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
@@ -392,11 +392,11 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSet
 		level = metadata['level']
 		localOffsetSettings = getDictFromOffsetSettings(metadata.get('objectOffsets', []), globalOffsetSettingDict)
 		try:
-			with open(folder / f"{level}.tmx") as f:
+			with open(*folder.glob(f"{level}.tmx", case_sensitive=False)) as f:
 				lines = getCsvDataFromTmx(f, ['SP'])
 			inputFileType = "TMX"
 		except:
-			with open(folder / f"{level}_SP.csv") as f:
+			with open(*folder.glob(f"{level}_SP.csv", case_sensitive=False)) as f:
 				lines = list(csv.reader(f))
 			inputFileType = "CSV"
 		level_data = []
