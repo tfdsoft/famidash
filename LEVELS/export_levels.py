@@ -169,15 +169,17 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 	if not cached_data_subfolder.is_dir():
 		cached_data_subfolder.mkdir(parents=True)
 
+	all_level_files = list(folder.glob("*"))
+
 	for metadata in levels:
 		level = metadata['level']
 		lines = []
 		try:
-			with open(*folder.glob(f"{level}.tmx", case_sensitive=False)) as f:
+			with open(*filter(lambda x : x.name.lower() == f"{level}.tmx".lower(), all_level_files)) as f:
 				lines = getCsvDataFromTmx(f, ['', 'BG'])
 			inputFileType = "TMX"
 		except:
-			with open(*folder.glob(f"{level}_.csv", case_sensitive=False)) as f:
+			with open(*filter(lambda x : x.name.lower() == f"{level}_.csv".lower(), all_level_files)) as f:
 				lines = list(csv.reader(f))
 			inputFileType = "CSV"
 		level_widths.append(math.ceil(len(lines[0]) * 16 / 100))	# the width of the level in tiles
@@ -395,15 +397,17 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSet
 
 	globalOffsetSettingDict = getDictFromOffsetSettings(globalOffsetSettings)
 
+	all_level_files = list(folder.glob("*"))
+
 	for num, metadata in enumerate(levels):
 		level = metadata['level']
 		localOffsetSettings = getDictFromOffsetSettings(metadata.get('objectOffsets', []), globalOffsetSettingDict)
 		try:
-			with open(*folder.glob(f"{level}.tmx", case_sensitive=False)) as f:
+			with open(*filter(lambda x : x.name.lower() == f"{level}.tmx".lower(), all_level_files)) as f:
 				lines = getCsvDataFromTmx(f, ['SP'])
 			inputFileType = "TMX"
 		except:
-			with open(*folder.glob(f"{level}_SP.csv", case_sensitive=False)) as f:
+			with open(*filter(lambda x : x.name.lower() == f"{level}_SP.csv".lower(), all_level_files)) as f:
 				lines = list(csv.reader(f))
 			inputFileType = "CSV"
 		level_data = []
