@@ -235,6 +235,7 @@ _init_rld:
 	JSR mmc3_set_prg_bank_1
 
 	LDY #$00			;-  For both (zp),y addressing and rld_column
+	STY	_no_parallax	;__	Reset bit-value variables
 	STY rld_column		;__ Reset scrolling
 
 	; Read header
@@ -242,17 +243,17 @@ _init_rld:
 
 	LDA (ptr1),y			;
 	STA _sprite_data+0		;	Get low pointer to sprite data
-	INCW ptr1				;__
+	INY						;__
 	LDA (ptr1),y			;
 	STA _sprite_data+1		;	Get high pointer to sprite data 
-	INCW ptr1				;__
+	INY						;__
 	LDA (ptr1),y			;
 	STA _sprite_data_bank	;	Get sprite data bank
-	INCW ptr1				;__
+	INY						;__
 
 	LDA (ptr1),y		;
 	STA _song			;   Song ID
-	INCW ptr1			;__
+	INY					;__
 
 	LDA (ptr1),y		;	Starting gamemode and speed
 	TAX					;__
@@ -264,31 +265,38 @@ _init_rld:
 	TXA					;
 	AND	#$0F			;
 	STA	_gamemode		;	Get just the gamemode
-	INCW ptr1			;__
-
-	STY	_no_parallax	;__	Y = 0
+	INY					;__
 
 	LDA (ptr1),y		;__	Force platformer, Parallax disable
 	LSR					;__	Parallax disable in carry
 	ROL _no_parallax	;__	Store where it needs to go
 	STA _force_platformer	;	The rest is force platformer, store it
-	INCW ptr1			;__
+	INY					;__
 
 	LDA (ptr1),y			;
 	STA _current_deco_type	;	Deco type
-	INCW ptr1				;__
+	INY						;__
 	
 	LDA (ptr1),y			;
 	STA _current_spike_set	;	Spike set
-	INCW ptr1				;__
+	INY						;__
 
 	LDA (ptr1),y			;
 	STA _current_block_set	;	Block set
-	INCW ptr1				;__
+	INY						;__
 
 	LDA (ptr1),y			;
-	STA _current_saw_set	;	Saw set
-	INCW ptr1				;__
+	STA _current_saw_set	;__	Saw set
+
+	TYA						;
+	SEC						;
+	ADC	ptr1				;
+	STA	ptr1				;	Add Y to the ptr since we're gonna use Y
+	BCC	:+					;	SEC for additional increment
+		INC	ptr1+1			;
+	:						;__
+	LDY	#$00				;__
+	
 
 	;	Deal with the starting BG color
 	LDA (ptr1),y			;	Starting BG color
@@ -337,12 +345,8 @@ _init_rld:
 	ldy #0
 	incw ptr1
 
-	.if USE_ILLEGAL_OPCODES
-		lax (ptr1),y
-	.else
-		LDA	(ptr1),y
-		TAX
-	.endif
+	LDA	(ptr1),y
+	TAX
 	EOR #$FF			;
 	CLC					;	Level height
 	ADC #$01			;
