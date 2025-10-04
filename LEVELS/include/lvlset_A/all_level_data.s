@@ -534,7 +534,7 @@
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4692
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8172 bytes
+.segment "DAT_BANK_15"	; Total bank size: 8166 bytes
 	.export level_data_extraordinaryexcitement_2
 	level_data_extraordinaryexcitement_2:
 	; Level data
@@ -557,7 +557,7 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3191
+		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3185
 
 
 .segment "DAT_BANK_16"	; Total bank size: 8106 bytes
