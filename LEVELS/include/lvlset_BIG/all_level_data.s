@@ -1151,7 +1151,7 @@
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3094
 
 
-.segment "DAT_BANK_31"	; Total bank size: 8096 bytes
+.segment "DAT_BANK_31"	; Total bank size: 8102 bytes
 	.export level_data_problematic
 	level_data_problematic:
 	; Header
@@ -1188,7 +1188,7 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3185
+		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3191
 
 
 .segment "DAT_BANK_32"	; Total bank size: 8179 bytes
