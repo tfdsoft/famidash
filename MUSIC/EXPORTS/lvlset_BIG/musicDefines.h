@@ -67,11 +67,11 @@
 #define song_ground_to_space 66
 #define song_dance_of_the_violins 67
 #define song_meowstuff 68
-#define song_jumper 69
+#define song_dry_out 69
 #define song_speed_racer 70
 #define song_tiny_tunes 71
 #define song_fairydust 72
-#define song_dry_out 73
+#define song_jumper 73
 #define song_scheming_weasel 74
 #define song_problematic 75
 #define song_max 76

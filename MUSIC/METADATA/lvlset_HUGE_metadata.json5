@@ -38,7 +38,7 @@
 			fmsSongName: "Dry Out",
 			lowerText: "DRY OUT",
 			originalArtist: "DJVI",
-			coveringArtist: "UserSniper",
+			coveringArtist: ["UserSniper", "Crafty Jumper"]
 		},
 		{
 			fmsSongName: "Base after Base",
