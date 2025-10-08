@@ -60,6 +60,24 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},			
+
+		{
+			level: "endorphinrush",
+			upperText: "ENDORPHIN",
+			lowerText: "RUSH",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_endorphins",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},		
 		{
 			level: "invisiblelight",
 			upperText: "INVISIBLE",

@@ -82,6 +82,12 @@
 			originalArtistText: "CRIM3S",
 		},	
 		{
+			fmsSongName: "endorphins",
+			lowerText: "ENDORPHINS",
+			originalArtistText: "DUOCORE",
+		},	
+		
+		{
 			fmsSongName: "eighto",
 			lowerText: "EIGHTO",
 			originalArtistText: "JOMEKKA",

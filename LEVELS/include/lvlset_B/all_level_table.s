@@ -16,6 +16,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_generationretro)
 	.byte .lobyte(level_data_scarletsurge)
 	.byte .lobyte(level_data_tinytunes)
+	.byte .lobyte(level_data_cryogenic)
 	.byte .lobyte(level_data_fireaura)
 	.byte .lobyte(level_data_rainbowdust)
 	.byte .lobyte(level_data_factorytime)
@@ -34,7 +35,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_speedracer)
-	.byte .lobyte(level_data_endorphinrush)
 	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_futurefunk)
 	.byte .lobyte(level_data_luckydraw)
@@ -51,6 +51,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_generationretro)
 	.byte .hibyte(level_data_scarletsurge)
 	.byte .hibyte(level_data_tinytunes)
+	.byte .hibyte(level_data_cryogenic)
 	.byte .hibyte(level_data_fireaura)
 	.byte .hibyte(level_data_rainbowdust)
 	.byte .hibyte(level_data_factorytime)
@@ -69,7 +70,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_speedracer)
-	.byte .hibyte(level_data_endorphinrush)
 	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_futurefunk)
 	.byte .hibyte(level_data_luckydraw)
@@ -86,6 +86,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_generationretro))
 	.byte .lobyte(.bank(level_data_scarletsurge))
 	.byte .lobyte(.bank(level_data_tinytunes))
+	.byte .lobyte(.bank(level_data_cryogenic))
 	.byte .lobyte(.bank(level_data_fireaura))
 	.byte .lobyte(.bank(level_data_rainbowdust))
 	.byte .lobyte(.bank(level_data_factorytime))
@@ -104,37 +105,39 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_speedracer))
-	.byte .lobyte(.bank(level_data_endorphinrush))
 	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_futurefunk))
 	.byte .lobyte(.bank(level_data_luckydraw))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_thesteamworks_0)
-	.byte .lobyte(level_data_subtleoddities_1)
-	.byte .lobyte(level_data_highlife_2)
-	.byte .lobyte(level_data_deathmoon_3)
-	.byte .lobyte(level_data_motion_4)
-	.byte .lobyte(level_data_futurefunk_5)
+	.byte .lobyte(level_data_cryogenic_0)
+	.byte .lobyte(level_data_thesteamworks_1)
+	.byte .lobyte(level_data_subtleoddities_2)
+	.byte .lobyte(level_data_highlife_3)
+	.byte .lobyte(level_data_deathmoon_4)
+	.byte .lobyte(level_data_motion_5)
 	.byte .lobyte(level_data_futurefunk_6)
+	.byte .lobyte(level_data_futurefunk_7)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_thesteamworks_0)
-	.byte .hibyte(level_data_subtleoddities_1)
-	.byte .hibyte(level_data_highlife_2)
-	.byte .hibyte(level_data_deathmoon_3)
-	.byte .hibyte(level_data_motion_4)
-	.byte .hibyte(level_data_futurefunk_5)
+	.byte .hibyte(level_data_cryogenic_0)
+	.byte .hibyte(level_data_thesteamworks_1)
+	.byte .hibyte(level_data_subtleoddities_2)
+	.byte .hibyte(level_data_highlife_3)
+	.byte .hibyte(level_data_deathmoon_4)
+	.byte .hibyte(level_data_motion_5)
 	.byte .hibyte(level_data_futurefunk_6)
+	.byte .hibyte(level_data_futurefunk_7)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_thesteamworks_0))
-	.byte .lobyte(.bank(level_data_subtleoddities_1))
-	.byte .lobyte(.bank(level_data_highlife_2))
-	.byte .lobyte(.bank(level_data_deathmoon_3))
-	.byte .lobyte(.bank(level_data_motion_4))
-	.byte .lobyte(.bank(level_data_futurefunk_5))
+	.byte .lobyte(.bank(level_data_cryogenic_0))
+	.byte .lobyte(.bank(level_data_thesteamworks_1))
+	.byte .lobyte(.bank(level_data_subtleoddities_2))
+	.byte .lobyte(.bank(level_data_highlife_3))
+	.byte .lobyte(.bank(level_data_deathmoon_4))
+	.byte .lobyte(.bank(level_data_motion_5))
 	.byte .lobyte(.bank(level_data_futurefunk_6))
+	.byte .lobyte(.bank(level_data_futurefunk_7))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -151,6 +154,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B2)		; generationretro
 	.byte .lobyte($0000E1)		; scarletsurge
 	.byte .lobyte($000082)		; tinytunes
+	.byte .lobyte($000099)		; cryogenic
 	.byte .lobyte($0000BF)		; fireaura
 	.byte .lobyte($0000AB)		; rainbowdust
 	.byte .lobyte($000090)		; factorytime
@@ -169,7 +173,6 @@ _level_lengths_lo:
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($000080)		; speedracer
-	.byte .lobyte($00008B)		; endorphinrush
 	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($0001DD)		; futurefunk
 	.byte .lobyte($000089)		; luckydraw
@@ -188,6 +191,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B2)		; generationretro
 	.byte .hibyte($0000E1)		; scarletsurge
 	.byte .hibyte($000082)		; tinytunes
+	.byte .hibyte($000099)		; cryogenic
 	.byte .hibyte($0000BF)		; fireaura
 	.byte .hibyte($0000AB)		; rainbowdust
 	.byte .hibyte($000090)		; factorytime
@@ -206,7 +210,6 @@ _level_lengths_md:
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($000080)		; speedracer
-	.byte .hibyte($00008B)		; endorphinrush
 	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($0001DD)		; futurefunk
 	.byte .hibyte($000089)		; luckydraw
@@ -225,6 +228,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B2)		; generationretro
 	.byte .bankbyte($0000E1)		; scarletsurge
 	.byte .bankbyte($000082)		; tinytunes
+	.byte .bankbyte($000099)		; cryogenic
 	.byte .bankbyte($0000BF)		; fireaura
 	.byte .bankbyte($0000AB)		; rainbowdust
 	.byte .bankbyte($000090)		; factorytime
@@ -243,7 +247,6 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($000080)		; speedracer
-	.byte .bankbyte($00008B)		; endorphinrush
 	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($0001DD)		; futurefunk
 	.byte .bankbyte($000089)		; luckydraw

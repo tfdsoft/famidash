@@ -173,11 +173,6 @@
 			originalArtistText: "CLOUDFIELD",
 		},		
 		{
-			fmsSongName: "endorphins",
-			lowerText: "ENDORPHINS",
-			originalArtistText: "DUOCORE",
-		},	
-		{
 			fmsSongName: "Infiltration",
 			lowerText: "INFILTRATION",
 			originalArtistText: "PARAGONX9",
@@ -236,6 +231,11 @@
 			fmsSongName: "Factory Time",
 			lowerText: "FACTORY TIME",
 			originalArtist: "Visager",
+		},		
+		{
+			fmsSongName: "Cryogenic",
+			lowerText: "CRYOGENIC",
+			originalArtist: "NERDBOY628",
 		},		
 	],
 	SFX: [

@@ -13,6 +13,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// generationretro
 	HARDER,	// scarletsurge
 	HARDER,	// tinytunes
+	HARDER,	// cryogenic
 	HARDER,	// fireaura
 	HARDER,	// rainbowdust
 	HARDER,	// factorytime
@@ -31,7 +32,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// clutterfunk2
 	DEMON,	// motion
 	DEMON,	// speedracer
-	DEMON,	// endorphinrush
 	DEMON,	// hell
 	DEMON,	// futurefunk
 	DEMON,	// luckydraw
@@ -49,6 +49,7 @@ const uint8_t stars_list[] = {
 	6,	// generationretro
 	6,	// scarletsurge
 	6,	// tinytunes
+	6,	// cryogenic
 	7,	// fireaura
 	7,	// rainbowdust
 	7,	// factorytime
@@ -67,7 +68,6 @@ const uint8_t stars_list[] = {
 	10,	// clutterfunk2
 	10,	// motion
 	10,	// speedracer
-	10,	// endorphinrush
 	10,	// hell
 	10,	// futurefunk
 	10,	// luckydraw
