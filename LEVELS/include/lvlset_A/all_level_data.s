@@ -44,7 +44,7 @@
 		.incbin "EXPORTS/extraordinaryexcitement.lz.0.bin" ; Size: 8141
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8030 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8128 bytes
 	.export level_data_rainbowtylenol
 	level_data_rainbowtylenol:
 	; Header
@@ -62,7 +62,12 @@
 		.byte $02 ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8017
+		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8020
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 95
 
 
 .segment "DAT_BANK_03"	; Total bank size: 7953 bytes
@@ -600,7 +605,7 @@
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3688
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8128 bytes
+.segment "DAT_BANK_17"	; Total bank size: 8031 bytes
 	.export level_data_xstep
 	level_data_xstep:
 	; Header
@@ -623,12 +628,7 @@
 	.export level_data_rainbowtylenol_1
 	level_data_rainbowtylenol_1:
 	; Level data
-		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3681
-
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 95
+		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3679
 
 
 .segment "DAT_BANK_18"	; Total bank size: 7945 bytes
