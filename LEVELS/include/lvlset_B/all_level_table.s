@@ -12,11 +12,11 @@ _level_list_lo:
 	.byte .lobyte(level_data_moonlight)
 	.byte .lobyte(level_data_fofii_fofii_fofii)
 	.byte .lobyte(level_data_pyrophoric)
+	.byte .lobyte(level_data_cryogenic)
 	.byte .lobyte(level_data_oceane)
 	.byte .lobyte(level_data_generationretro)
 	.byte .lobyte(level_data_scarletsurge)
 	.byte .lobyte(level_data_tinytunes)
-	.byte .lobyte(level_data_cryogenic)
 	.byte .lobyte(level_data_fireaura)
 	.byte .lobyte(level_data_rainbowdust)
 	.byte .lobyte(level_data_factorytime)
@@ -47,11 +47,11 @@ _level_list_hi:
 	.byte .hibyte(level_data_moonlight)
 	.byte .hibyte(level_data_fofii_fofii_fofii)
 	.byte .hibyte(level_data_pyrophoric)
+	.byte .hibyte(level_data_cryogenic)
 	.byte .hibyte(level_data_oceane)
 	.byte .hibyte(level_data_generationretro)
 	.byte .hibyte(level_data_scarletsurge)
 	.byte .hibyte(level_data_tinytunes)
-	.byte .hibyte(level_data_cryogenic)
 	.byte .hibyte(level_data_fireaura)
 	.byte .hibyte(level_data_rainbowdust)
 	.byte .hibyte(level_data_factorytime)
@@ -82,11 +82,11 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_moonlight))
 	.byte .lobyte(.bank(level_data_fofii_fofii_fofii))
 	.byte .lobyte(.bank(level_data_pyrophoric))
+	.byte .lobyte(.bank(level_data_cryogenic))
 	.byte .lobyte(.bank(level_data_oceane))
 	.byte .lobyte(.bank(level_data_generationretro))
 	.byte .lobyte(.bank(level_data_scarletsurge))
 	.byte .lobyte(.bank(level_data_tinytunes))
-	.byte .lobyte(.bank(level_data_cryogenic))
 	.byte .lobyte(.bank(level_data_fireaura))
 	.byte .lobyte(.bank(level_data_rainbowdust))
 	.byte .lobyte(.bank(level_data_factorytime))
@@ -150,11 +150,11 @@ _level_lengths_lo:
 	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
 	.byte .lobyte($000050)		; pyrophoric
+	.byte .lobyte($000099)		; cryogenic
 	.byte .lobyte($00005D)		; oceane
 	.byte .lobyte($0000B2)		; generationretro
 	.byte .lobyte($0000E1)		; scarletsurge
 	.byte .lobyte($000082)		; tinytunes
-	.byte .lobyte($000099)		; cryogenic
 	.byte .lobyte($0000BF)		; fireaura
 	.byte .lobyte($0000AB)		; rainbowdust
 	.byte .lobyte($000090)		; factorytime
@@ -187,11 +187,11 @@ _level_lengths_md:
 	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
 	.byte .hibyte($000050)		; pyrophoric
+	.byte .hibyte($000099)		; cryogenic
 	.byte .hibyte($00005D)		; oceane
 	.byte .hibyte($0000B2)		; generationretro
 	.byte .hibyte($0000E1)		; scarletsurge
 	.byte .hibyte($000082)		; tinytunes
-	.byte .hibyte($000099)		; cryogenic
 	.byte .hibyte($0000BF)		; fireaura
 	.byte .hibyte($0000AB)		; rainbowdust
 	.byte .hibyte($000090)		; factorytime
@@ -224,11 +224,11 @@ _level_lengths_hi:
 	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii
 	.byte .bankbyte($000050)		; pyrophoric
+	.byte .bankbyte($000099)		; cryogenic
 	.byte .bankbyte($00005D)		; oceane
 	.byte .bankbyte($0000B2)		; generationretro
 	.byte .bankbyte($0000E1)		; scarletsurge
 	.byte .bankbyte($000082)		; tinytunes
-	.byte .bankbyte($000099)		; cryogenic
 	.byte .bankbyte($0000BF)		; fireaura
 	.byte .bankbyte($0000AB)		; rainbowdust
 	.byte .bankbyte($000090)		; factorytime

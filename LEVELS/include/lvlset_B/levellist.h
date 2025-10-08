@@ -9,11 +9,11 @@ const uint8_t difficulty_list[] = {
 	HARD,	// moonlight
 	HARD,	// fofii_fofii_fofii
 	HARDER,	// pyrophoric
+	HARDER,	// cryogenic
 	HARDER,	// oceane
 	HARDER,	// generationretro
 	HARDER,	// scarletsurge
 	HARDER,	// tinytunes
-	HARDER,	// cryogenic
 	HARDER,	// fireaura
 	HARDER,	// rainbowdust
 	HARDER,	// factorytime
@@ -45,11 +45,11 @@ const uint8_t stars_list[] = {
 	5,	// moonlight
 	5,	// fofii_fofii_fofii
 	6,	// pyrophoric
+	6,	// cryogenic
 	6,	// oceane
 	6,	// generationretro
 	6,	// scarletsurge
 	6,	// tinytunes
-	6,	// cryogenic
 	7,	// fireaura
 	7,	// rainbowdust
 	7,	// factorytime

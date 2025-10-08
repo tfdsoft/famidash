@@ -13,11 +13,11 @@
 #define level_moonlight 4
 #define level_fofii_fofii_fofii 5
 #define level_pyrophoric 6
-#define level_oceane 7
-#define level_generationretro 8
-#define level_scarletsurge 9
-#define level_tinytunes 10
-#define level_cryogenic 11
+#define level_cryogenic 7
+#define level_oceane 8
+#define level_generationretro 9
+#define level_scarletsurge 10
+#define level_tinytunes 11
 #define level_fireaura 12
 #define level_rainbowdust 13
 #define level_factorytime 14
