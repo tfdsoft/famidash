@@ -1098,6 +1098,7 @@ void sprite_collide_lookup() {
 
 	spcl_blckorb:
 		table_offset = black_orb;
+		if (gamemode == GAMEMODE_SPIDER) goto spcl_spiderskip_orb_cmn;
 		goto spcl_orb_cmn;
 
 	spcl_red_orb:
@@ -1106,6 +1107,7 @@ void sprite_collide_lookup() {
 
 	spcl_orb_cmn:
 		ufo_orbed = 1;			
+	spcl_spiderskip_orb_cmn
 		if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) {
 			sprite_gamemode_main();
 		} else {
