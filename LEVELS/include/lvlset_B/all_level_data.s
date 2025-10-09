@@ -374,7 +374,7 @@
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5635
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8188 bytes
+.segment "DAT_BANK_15"	; Total bank size: 8163 bytes
 	.export level_data_fofii_fofii_fofii
 	level_data_fofii_fofii_fofii:
 	; Header
@@ -512,7 +512,7 @@
 		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3308
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 7527 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 7562 bytes
 	.export level_data_tinytunes
 	level_data_tinytunes:
 	; Header

@@ -117,12 +117,23 @@ void x_movement(){
 	} 
 
 
-	if (currplayer_y < 0x0600 && !dual && !twoplayer){
-		idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
-	}
-	
+	if (!wrap_mode) {
+		if (currplayer_y < 0x0600 && !dual && !twoplayer){
+			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
+		}
+		
 
-	else if (!(controllingplayer->hold & (PAD_A | PAD_UP))) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+		else if (!(controllingplayer->hold & (PAD_A | PAD_UP))) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+	}
+	else {
+		if (currplayer_y < 0x0600 && !dual && !twoplayer){
+			currplayer_y = 0xF900;
+		}		
+		else if (currplayer_y > 0xF900 && !dual && !twoplayer){
+			currplayer_y = 0x0600;
+		}		
+		else if (!(controllingplayer->hold & (PAD_A | PAD_UP))) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+	}
 }
 
 

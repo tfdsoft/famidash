@@ -60,6 +60,7 @@ void reset_level() {
 	black_orbed[0] = 0;
 	black_orbed[1] = 0;
 	slowmode = 0;
+	wrap_mode = 0;
 	force_platformer = 0;
 	player_invis = 0;
 	slope_type[0] = SLOPE_NONE;

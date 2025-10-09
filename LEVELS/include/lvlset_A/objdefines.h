@@ -134,6 +134,8 @@
 #define WHITE_ORB				0x7A
 
 #define PLAYER_INVIS_OFF			0x7F
+#define WRAP_MODE_ON				0x8E
+#define WRAP_MODE_OFF				0x9E
 
 #define FORCED_FREECAM_ON			0xDD
 #define X_SCROLL_SETTING			0xDE	//bottom floor is 0xB0, reset to standard at 0x50

@@ -443,6 +443,7 @@ uint8_t black_orbed[2];
 
 uint8_t dashing[2];
 
+uint8_t wrap_mode;
 uint8_t minicoins;
 
 #if !__VS_SYSTEM

@@ -13360,7 +13360,7 @@ sprite_data_xx:
   .byte $f0,$37,$80,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_15"
+.segment "DAT_BANK_1C"
 sprite_data_skeletalshenanigans:
   .byte $00,$00,$50,$03,$b7
   .byte $00,$00,$60,$03,$dd
@@ -13630,6 +13630,7 @@ sprite_data_skeletalshenanigans:
   .byte $e0,$27,$98,$02,$0a
   .byte $20,$28,$80,$02,$35
   .byte $70,$28,$70,$02,$f5
+  .byte $80,$28,$50,$02,$8e
   .byte $80,$28,$60,$02,$b8
   .byte $80,$28,$70,$02,$a7
   .byte $80,$28,$80,$02,$f3
@@ -13765,6 +13766,7 @@ sprite_data_skeletalshenanigans:
   .byte $00,$40,$b0,$02,$b0
   .byte $10,$40,$f0,$01,$36
   .byte $10,$40,$70,$02,$71
+  .byte $10,$40,$80,$02,$9e
   .byte $20,$40,$70,$02,$f4
   .byte $20,$40,$a0,$02,$a0
   .byte $40,$40,$a0,$02,$a2
@@ -14341,7 +14343,7 @@ sprite_data_problematic:
   .byte $80,$2a,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1C"
+.segment "DAT_BANK_15"
 sprite_data_decode:
   .byte $00,$00,$70,$03,$c6
   .byte $00,$00,$80,$03,$96

@@ -61,9 +61,9 @@ uint8_t sprite_heights[]={
 	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x10,	SPBH,	0x10,	// 70 - 77
 	SPBH,	0x12,	0x12,	0x00,	0x00,	0x00,	SPBH,	SPBH,	// 78 - 7F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
-	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 88 - 8F
+	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	SPBH,	COLR,	// 88 - 8F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 90 - 97
-	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	0x00,	COLR,	// 98 - 9F
+	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	SPBH,	COLR,	// 98 - 9F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// A0 - A7
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	COLR,	OUTL,	// A8 - AF
 	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	OUTL,	// B0 - B7
@@ -265,6 +265,12 @@ char sprite_load_special_behavior(){
 				killSprite_return0;
 			case PLAYER_INVIS_OFF:
 				player_invis = 0;
+				killSprite_return0;
+			case WRAP_MODE_ON:
+				wrap_mode = 1;
+				killSprite_return0;
+			case WRAP_MODE_OFF:
+				wrap_mode = 0;
 				killSprite_return0;
 			case GRAVITY_13_PORTAL_INVIS:
 				gravity_mod = 1;
