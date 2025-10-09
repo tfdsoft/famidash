@@ -55,7 +55,8 @@ void reset_level() {
 	was_on_slope_counter[0] = 0;
 	was_on_slope_counter[1] = 0;
 	jumps = 0;
-	ufo_orbed = 0;
+	ufo_orbed[0] = 0;
+	ufo_orbed[1] = 0;
 	slowmode = 0;
 	force_platformer = 0;
 	player_invis = 0;

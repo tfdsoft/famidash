@@ -438,7 +438,7 @@ uint16_t menutimer;
 uint8_t orbactive;
 uint8_t trail_sprites_visible[9];
 
-uint8_t ufo_orbed;
+uint8_t ufo_orbed[2];
 
 uint8_t dashing[2];
 

@@ -93,13 +93,13 @@ void ball_movement(){
 		}
 	}
 	else {
-		if ((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed){
+		if ((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed[currplayer]){
 			invert_gravity(currplayer_gravity);
 			update_currplayer_table_idx();
 			bg_coll_floor_spikes();
 		}
 	}		
-	ufo_orbed = 0;
+	ufo_orbed[currplayer] = 0;
 }
 
 void ball_eject() {
