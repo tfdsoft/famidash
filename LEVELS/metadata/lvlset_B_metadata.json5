@@ -758,6 +758,22 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
+		},	
+		{
+			level: "xx",
+			lowerText: "X",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_holography",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
 		},
 		{
 			level: "skeletalshenanigans",
@@ -767,7 +783,7 @@
 			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
-			difficulty: "MEDIUMDEMON",
+			difficulty: "DEMON",
 			stars: 10,
 			songID: "song_slash_inferno",
 			startingGameMode: 5,
@@ -819,23 +835,7 @@
 					offsetX: -16
 				},
 			]
-		},		
-		{
-			level: "xx",
-			lowerText: "X",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_holography",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
+		},			
 		{
 			level: "problematic",
 			lowerText: "PROBLEMATIC",

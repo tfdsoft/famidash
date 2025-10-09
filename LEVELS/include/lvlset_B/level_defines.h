@@ -27,8 +27,8 @@
 #define level_powertrip 18
 #define level_danceofviolins 19
 #define level_highlife 20
-#define level_skeletalshenanigans 21
-#define level_xx 22
+#define level_xx 21
+#define level_skeletalshenanigans 22
 #define level_problematic 23
 #define level_decode 24
 #define level_infinitecircles 25
