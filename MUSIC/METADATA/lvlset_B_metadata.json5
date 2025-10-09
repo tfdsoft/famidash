@@ -8,20 +8,6 @@
 			vsSystemEnabled: false
 		},
 		{
-			fmsSongName: "Cycles",
-			lowerText: "CYCLES",
-			originalArtistText: "DJVI",
-			nsfData: {
-				trackLabel: "Cycles",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "aquamarine.gay, alexmush"
-				},
-				durationNTSC: 85933,
-				durationPAL: 103280
-			}
-		},
-		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
 			originalArtistText: "DJ NATE",
@@ -225,17 +211,23 @@
 		{
 			fmsSongName: "Meltdown",
 			lowerText: "MELTDOWN",
-			originalArtist: ["MasterSword","Remix"],
+			originalArtistText: "MASTERSWORD"
 		},		
 		{
 			fmsSongName: "Factory Time",
 			lowerText: "FACTORY TIME",
-			originalArtist: "Visager",
+			originalArtistText: "VISAGER",
 		},		
 		{
 			fmsSongName: "Cryogenic",
 			lowerText: "CRYOGENIC",
-			originalArtist: "NERDBOY628",
+			originalArtistText: "NERDBOY628",
+		},		
+		{
+			fmsSongName: "Slash Inferno",
+			upperText: "SLASH",
+			lowerText: "INFERNO",
+			originalArtistText: "WF TEM BKIT"
 		},		
 	],
 	SFX: [

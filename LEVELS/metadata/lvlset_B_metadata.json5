@@ -760,6 +760,67 @@
 			parallaxDisable: true
 		},
 		{
+			level: "skeletalshenanigans",
+			upperText: "SKELETAL",
+			lowerText: "SHENANIGANS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "MEDIUMDEMON",
+			stars: 10,
+			songID: "song_slash_inferno",
+			startingGameMode: 5,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x07,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[2, 15], [199, 11], [1238, 18],
+					],
+					offsetY: +8,
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[0, 26], [6, 15], [7, 16], [42, 14], [47, 13], [70, 13], [74, 15],
+						[239, 15], [258, 14], [422, 10], [423, 9], [430, 9], [438, 8], [451, 11],
+						[952, 7], [1095, 17], [1179, 14], [1184, 17], [1189, 15], [1194, 17],
+						[1243, 15], [1258, 13],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[19, 15], [67, 17], [95, 17], [100, 14], [156, 16], [161, 15], [215, 17],
+						[234, 15], [374, 9], [386, 11], [398, 12], [400, 10], [439, 11], [457, 9],
+						[490, 9], [515, 11], [549, 5], [579, 11], [607, 11], [1016, 10], [1042, 9],
+						[1175, 17], [1214, 16], [1219, 16], [1224, 15], [1234, 17], [1264, 13],
+						[1287, 14],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[127, 15], [343, 16], [439, 9], [638, 11],
+					],
+					offsetY: -8
+				},
+				{
+						coordinates: [131, 17],
+						offsetY: +3
+				},
+				{
+					coordinates: [
+						[401, 10], [639, 11], [1115, 21], [1151, 11],
+					],
+					offsetX: -16
+				},
+			]
+		},		
+		{
 			level: "xx",
 			lowerText: "X",
 			decoType: "EXTRASPRITES1",
@@ -895,22 +956,6 @@
 			parallaxDisable: true
 		},
 		{
-			level: "supercycles",
-			lowerText: "SUPER CYCLES",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_cycles",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02,
-			parallaxDisable: true
-		},
-		{
 			level: "clutterfunk2",
 			lowerText: "CLUTTERFUNK 2",
 			decoType: "DECO1",
@@ -964,7 +1009,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-	
 		{
 			level: "hell",
 			lowerText: "HELL",

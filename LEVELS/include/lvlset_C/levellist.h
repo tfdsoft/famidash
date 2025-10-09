@@ -3,6 +3,7 @@
 
 const uint8_t difficulty_list[] = {
 	EASYDEMON,	// everymadness
+	EASYDEMON,	// supercycles
 	EASYDEMON,	// dearnostalgists
 	EASYDEMON,	// sonicblaster
 	EASYDEMON,	// endorphinrush
@@ -23,13 +24,13 @@ const uint8_t difficulty_list[] = {
 	IMPOSSIBLEDEMON,	// aftermath
 	IMPOSSIBLEDEMON,	// silentclubstep
 	IMPOSSIBLEDEMON,	// kratos
-	GRANDPADEMON,	// aftercatabath
 	GRANDPADEMON,	// slaughterhouse
 	GRANDPADEMON,	// everyend
 };
 
 const uint8_t stars_list[] = {
 	10,	// everymadness
+	10,	// supercycles
 	10,	// dearnostalgists
 	10,	// sonicblaster
 	10,	// endorphinrush
@@ -50,7 +51,6 @@ const uint8_t stars_list[] = {
 	10,	// aftermath
 	10,	// silentclubstep
 	10,	// kratos
-	10,	// aftercatabath
 	10,	// slaughterhouse
 	10,	// everyend
 };

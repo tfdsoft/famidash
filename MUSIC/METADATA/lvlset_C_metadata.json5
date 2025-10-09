@@ -8,6 +8,21 @@
 			
 		},
 		{
+			fmsSongName: "Cycles",
+			lowerText: "CYCLES",
+			originalArtistText: "DJVI",
+			nsfData: {
+				trackLabel: "Cycles",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "aquamarine.gay, alexmush"
+				},
+				durationNTSC: 85933,
+				durationPAL: 103280
+			}
+		},
+		
+		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",
 			originalArtistText: "OCULARNEBULA",
@@ -38,7 +53,7 @@
 		{
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
+			lowerText: "OF LIGHT PT 1",
 			originalArtistText: "DIMRAIN47",
 		},
 		{
@@ -51,12 +66,6 @@
 			fmsSongName: "atthespeedoflight3",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT PT 3",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "atthespeedoflightfull",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT FULL",
 			originalArtistText: "DIMRAIN47",
 		},
 		{

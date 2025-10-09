@@ -23,12 +23,12 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// powertrip
 	INSANE,	// danceofviolins
 	INSANE,	// highlife
+	MEDIUMDEMON,	// skeletalshenanigans
 	DEMON,	// xx
 	DEMON,	// problematic
 	DEMON,	// decode
 	DEMON,	// infinitecircles
 	DEMON,	// deathmoon
-	DEMON,	// supercycles
 	DEMON,	// clutterfunk2
 	DEMON,	// motion
 	DEMON,	// speedracer
@@ -59,12 +59,12 @@ const uint8_t stars_list[] = {
 	8,	// powertrip
 	8,	// danceofviolins
 	9,	// highlife
+	10,	// skeletalshenanigans
 	10,	// xx
 	10,	// problematic
 	10,	// decode
 	10,	// infinitecircles
 	10,	// deathmoon
-	10,	// supercycles
 	10,	// clutterfunk2
 	10,	// motion
 	10,	// speedracer

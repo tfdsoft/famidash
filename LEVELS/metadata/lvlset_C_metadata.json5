@@ -28,6 +28,22 @@
 			]	
 		},	
 		{
+			level: "supercycles",
+			lowerText: "SUPER CYCLES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_cycles",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			parallaxDisable: true
+		},		
+		{
 			level: "dearnostalgists",
 			lowerText: " DEAR NOSTALGISTS",
 			decoType: "EXTRASPRITES1",
@@ -727,22 +743,22 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
-			level: "aftercatabath",
-			lowerText: "AFTERCATABATH",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "GRANDPADEMON",
-			stars: 10,
-			songID: "song_atthespeedoflightfull",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x06,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
+//		{
+//			level: "aftercatabath",
+//			lowerText: "AFTERCATABATH",
+//			decoType: "DECO1",
+//			spikeSet: "C",
+//			blockSet: "B",
+//			sawSet: "A",
+//			difficulty: "GRANDPADEMON",
+//			stars: 10,
+//			songID: "song_atthespeedoflightfull",
+//			startingGameMode: 0,
+//			startingSpeed: 1,
+//			startingBackgroundColor: 0x06,
+//			startingGroundColor: 0x0F,
+//			parallaxDisable: true
+//		},
 		{
 			level: "slaughterhouse",
 			lowerText: "SLAUGHTERHOUSE",
