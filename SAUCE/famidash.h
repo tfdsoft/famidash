@@ -340,6 +340,7 @@ uint8_t CREDITS2_PREV;
 uint16_t exittimer;
 uint16_t jumps;
 uint8_t orbed[2];
+uint8_t spidered[2];
 uint8_t speed;
 uint8_t shuffle_offset;
 uint8_t count;
