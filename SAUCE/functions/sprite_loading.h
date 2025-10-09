@@ -455,7 +455,8 @@ static void sprite_gamemode_main() {
 		if (gamemode == BALL_MODE) ball_switched[currplayer] = 1;
 		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
 			if (gamemode == ROBOT_MODE) orbed[currplayer] = 1;
-			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+			if (collided == BLACK_ORB && gamemode == GAMEMODE_SPIDER) { }
+			else idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			settrailstuff();
 			clear_slope_stuff();
 
@@ -1098,7 +1099,6 @@ void sprite_collide_lookup() {
 
 	spcl_blckorb:
 		table_offset = black_orb;
-		if (gamemode == GAMEMODE_SPIDER) goto spcl_spiderskip_orb_cmn;
 		goto spcl_orb_cmn;
 
 	spcl_red_orb:
@@ -1107,7 +1107,6 @@ void sprite_collide_lookup() {
 
 	spcl_orb_cmn:
 		ufo_orbed = 1;			
-	spcl_spiderskip_orb_cmn
 		if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) {
 			sprite_gamemode_main();
 		} else {
