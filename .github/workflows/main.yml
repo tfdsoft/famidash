@@ -6,19 +6,6 @@ jobs:
   build_rom:
     runs-on: ubuntu-latest
     name: Compile ROM
-
-    strategy:
-      fail-fast: false
-      matrix:
-        target:
-        - { name: Main MMC3 ROM, target: main }
-        - { name: VS-System ROM, target: vs-sys }
-        - { name: B-Sides MMC3 ROM, target: b-sides }
-        - { name: C-Sides MMC3 ROM, target: c-sides }
-        - { name: The Album MMC3 ROM, target: album }
-        - { name: The BIG MMC3 ROM, target: big }
-        - { name: The HUGE MMC3 ROM, target: huge }
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,9 +15,9 @@ jobs:
         run: |
           echo "${{ github.workspace }}/opt/cc65/bin" >> $GITHUB_PATH
       - name: Build the game
-        run: make ${{matrix.target.target}}
+        run: make
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: famidash.${{ matrix.target.target }}.nes
-          path: BUILD/${{ matrix.target.target }}/famidash.nes
+          name: famidash.nes
+          path: BUILD/famidash.nes
