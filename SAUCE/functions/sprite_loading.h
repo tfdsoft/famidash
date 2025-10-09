@@ -413,10 +413,11 @@ void animate_coin_3() {
 }
 
 void common_dash_orb_routine() {
-	if (gamemode == GAMEMODE_UFO || gamemode == GAMEMODE_SPIDER) {
-		if (currplayer_vel_y != 0) invert_gravity(currplayer_gravity);
-	}
-	else invert_gravity(currplayer_gravity);
+//	if (gamemode == GAMEMODE_UFO) {
+//		if (currplayer_vel_y != 0) invert_gravity(currplayer_gravity);		;why was this here??
+//	}
+//	else 
+	invert_gravity(currplayer_gravity);
 	update_currplayer_table_idx();
 }
 
