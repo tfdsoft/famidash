@@ -27,150 +27,114 @@
 //
 // This isn't an int main() because i don't use the terminal to
 // debug lmao
-
-
 void main(){
-	// Black out the PPU
     ppu_off();
-    // Set brightness to nothing while at it
-    pal_bright(0);
-    // Enable both sprites and BG in the leftmost 8 pixels
     ppu_mask(0x00 | (1 << 1) | (1 << 2));
+	mmc3_set_8kb_chr(MENUBANK);
+
+	// disable debug mode toggle
+	options &= debugtoggle^0xFF;
+
+    //pal_bg(paletteDefault);
+    //pal_spr(paletteDefaultSP);
     // use the second set of tiles for sprites
 	// both bg and sprites are set to 0 by default
 	bank_spr(1);
-	// do at least once
-    set_vram_buffer();
-    // Set *a* palette
-	pal_spr(paletteDefaultSP);
 
-    // Initialize mapper
-    mmc3_disable_irq();
-
-    // Initialize controllers
-	#if !__THE_ALBUM
 	mouse.x = 0x78;
 	mouse.y = 0x60;
 	mouse_mask = 1;
-	#endif
-	// disable debug mode toggle
-	options &= ~debugtoggle;
+    set_vram_buffer(); // do at least once
 
-	// assigning value at startup as opposed to compile time
-	// is needed for cc65 to export the label for mesen
-	gameState = STATE_SAVEVALIDATE;
-	nmi_fs_updates_on();
+    // ppu_on_all();
+    // pal_fade_to(4,0);
 
-	menuMusicCurrentlyPlaying = 0;
+	// These are done at init time
+    // gameState = 0x01;
+    // level = 0x00;
+	// auto_fs_updates = 0;
+
+	//mmc3_set_prg_bank_1(GET_BANK(playPCM));
+	//playPCM(0);
 
 
-
+	pal_spr(paletteDefaultSP);
+	kandotemp = 0;
+	crossPRGBankJump0(gameboy_check);
+	gameState = 0x05;
     while (1){
-    	forceNoFadeOut = 0;
+        ppu_wait_nmi();
 		switch (gameState){
-			case STATE_SOUNDTEST: {
-				mmc3_set_prg_bank_1(GET_BANK(state_soundtest));
-				state_soundtest();
-				break;
-			}
-			case STATE_SAVEVALIDATE: {
-				#if !__VS_SYSTEM
-					music_play(song_scheming_weasel);
-				#endif
-				mmc3_set_prg_bank_1(GET_BANK(state_savefile_validate));
-				state_savefile_validate();
-				break;
-			}
-
-			case STATE_MENU: {
-				#if __THE_ALBUM || __HUGE_ROM
-					cursedmusic = 0;
-					for (tmp1 = 0; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {
-						music_queue[tmp1] = 0xFF;
-					};
-				#endif
+			case 0x01: {
 				mmc3_set_prg_bank_1(GET_BANK(state_menu));
-				state_menu();
-				break;			
+				if (!kandowatchesyousleep) state_menu();
+				else {
+					pal_fade_to_withmusic(4,0);
+					ppu_off();
+					pal_bg(splashMenu);
+					kandowatchesyousleep = 1;
+
+					//
+					has_practice_point = 0;
+					#include "defines/mainmenu_charmap.h"
+					levelselection();
+				}
+				break;
 			}
-			
-		#if !__THE_ALBUM		//non-album states
-		
-			case STATE_GAME: {
+			case 0x02: {
 				state_game();
 				use_auto_chrswitch = 0;
-				if (gameState == STATE_LVLDONE)	forceNoFadeOut = 1;
 				break;
 			}
-			case STATE_LVLDONE: {
+			case 0x03: {
 				mmc3_set_prg_bank_1(GET_BANK(state_lvldone));
 				state_lvldone();
 				break;
 			}
-			case STATE_FUNSETTINGS: {
-				mmc3_set_prg_bank_1(GET_BANK(state_funsettings));
-				state_funsettings();
+			case 0x04: {
+				mmc3_set_prg_bank_1(GET_BANK(bgmtest));
+				bgmtest();
 				break;
 			}
-			case STATE_INSTRUCTIONS: {
-				mmc3_set_prg_bank_1(GET_BANK(state_instructions));
-				state_instructions();
+			case 0x05: {
+				mmc3_set_prg_bank_1(GET_BANK(state_savefile_validate));
+				state_savefile_validate();
 				break;
 			}
-			case STATE_LEVELSELECT: {
-				mmc3_set_prg_bank_1(GET_BANK(state_levelselect));
-				state_levelselect();
+			case 0x06: {
+				mmc3_set_prg_bank_1(GET_BANK(state_savefile_editor));
+				state_savefile_editor();
 				break;
 			}
-			case STATE_CUSTOMIZE: {
-				mmc3_set_prg_bank_1(GET_BANK(state_customize));
-				state_customize();
-				break;
-			}
-			#if OFFICIAL_LEVEL_COUNT == 0 && TOTAL_LEVEL_COUNT != 0	// A levelset has levels but no official ones
-			case STATE_PLAYMAIN: {
-				mmc3_set_prg_bank_1(GET_BANK(state_playmain));
-				state_playmain();
-				break;
-			}
-			#endif
 
-			#if !__VS_SYSTEM
-			case STATE_SETTINGS: {
-				mmc3_set_prg_bank_1(GET_BANK(state_settings));
-				state_settings();
+
+			case 0xF0: {
+				mmc3_set_prg_bank_1(GET_BANK(funsettings));
+				funsettings();
 				break;
 			}
-			#endif
 
-			#if __VS_SYSTEM
-			case STATE_GAMEOVER: {
-				mmc3_set_prg_bank_1(GET_BANK(state_gameover));
-				state_gameover();
+			case 0xFE: {
+				mmc3_set_prg_bank_1(GET_BANK(state_exit));
+				state_exit();
 				break;
 			}
-			#endif
-
-		#endif
-
 			default: {
-				mmc3_set_prg_bank_1(GET_BANK(state_credits));
-				state_credits();
+				mmc3_set_prg_bank_1(GET_BANK(state_demo));
+				state_demo();
 				break;
 			}
-			
-
 		}
-		framerate = trueFramerate;
-		cpuRegion = trueCpuRegion;
-		fullRegion = trueFullRegion;
-		nmi_fs_updates_on();
-		if (!forceNoFadeOut) pal_fade_out();
-		mmc3_disable_irq();
-		ppu_off();
-		if (forceNoFadeOut) flush_vram_update2();
     }
 }
+// ============================================================
+
+
+// WHY I SPLIT THE GAME LOOP ==================================
+//
+// I like making my code super readable by outsiders, and I
+// felt like this was the best way to do it.
+// ============================================================
 
 void setdefaultoptions() {
 	// Enable SRAM write
@@ -201,19 +165,19 @@ void setdefaultoptions() {
 	//oneptwoplayer = 0;
 	//platformer = 0;
 	options = 0; 
-	tmp2 = 0;
-	do {
-		coin1_obtained[tmp2] = 0;
-		coin2_obtained[tmp2] = 0;
-		coin3_obtained[tmp2] = 0;
-		LEVELCOMPLETE[tmp2] = 0;
-		level_completeness_normal[tmp2] = 0;
-		level_completeness_practice[tmp2] = 0;
-	} while (++tmp2 < (MAX_LEVEL_COMPLETE));
-	tmp2 = 0;
-	do {
-		achievements[tmp2] = 0;
-	} while (++tmp2 < (sizeof(achievements)));
+		tmp2 = 0;
+		do {
+			coin1_obtained[tmp2] = 0;
+			coin2_obtained[tmp2] = 0;
+			coin3_obtained[tmp2] = 0;
+			LEVELCOMPLETE[tmp2] = 0;
+			level_completeness_normal[tmp2] = 0;
+			level_completeness_practice[tmp2] = 0;
+		} while (++tmp2 < (0x40));
+		tmp2 = 0;
+		do {
+			achievements[tmp2] = 0;
+		} while (++tmp2 < (0x20));
 	invisible = 0;
 	color1 = 0x2A;
 	color2 = 0X2C;		
@@ -227,10 +191,5 @@ void setdefaultoptions() {
 	viseffects = 1;
 	invisblocks = 0;
 	cam_seesaw = 0;
-	menu_music = 0;
-	#if !__VS_SYSTEM
-	auto_practicepoints = 1;
-	practice_music_sync = 0;
-	#endif
 	return;
 }

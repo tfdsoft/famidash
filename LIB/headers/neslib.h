@@ -50,6 +50,10 @@ void __fastcall__ pal_bright(uint8_t bright);
 
 void __fastcall__ ppu_wait_nmi();
 
+//wait virtual frame, it is always 50hz, frame-to-frame in PAL, frameskip in NTSC
+//don't use this one
+void __fastcall__ ppu_wait_frame();
+
 //turn off rendering, nmi still enabled when rendering is disabled
 
 void __fastcall__ ppu_off();
@@ -93,7 +97,7 @@ void __fastcall__ oam_clear_two_players();
 // Note: sprid removed for speed
 
 void __fastcall__ _oam_spr(uint32_t args);
-#define oam_spr(x, y, chrnum, attr)(storeBytesToSreg(x, y), __A__ = chrnum, __AX__ <<= 8, __A__ |= attr, _oam_spr(__EAX__))
+#define oam_spr(x, y, chrnum, attr)(storeBytesToSreg(x, y), __AX__ = (chrnum<<8)|attr, _oam_spr(__EAX__))
 
 
 //set metasprite in OAM buffer (normal)
@@ -104,9 +108,6 @@ void __fastcall__ _oam_spr(uint32_t args);
 
 void __fastcall__ _oam_meta_spr(uint32_t args);
 #define oam_meta_spr(x, y, data)(storeBytesToSreg(x, y), __AX__ = (uintptr_t)data, _oam_meta_spr(__EAX__))
-
-void __fastcall__ _oam_meta_spr_disco(uint32_t args);
-#define oam_meta_spr_disco(x, y, data)(storeBytesToSreg(x, y), __AX__ = (uintptr_t)data, _oam_meta_spr_disco(__EAX__))
 
 //hide all remaining sprites from given offset
 // Note: sprid removed for speed
@@ -127,7 +128,7 @@ uint8_t __fastcall__ oam_get();
 
 //poll controller and return flags like PAD_LEFT etc, input is pad number (0 or 1)
 
-uint8_t __fastcall__ pad_poll(uint8_t pad);
+// uint8_t __fastcall__ pad_poll(uint8_t pad);
 
 //poll controller in trigger mode, a flag is set only on button down, not hold
 //if you need to poll the pad in both normal and trigger mode, poll it in the
@@ -169,7 +170,7 @@ void __fastcall__ bank_spr(uint8_t n);
 
 uint8_t __fastcall__ newrand();
 //uint8_t __fastcall__ rand8();
-// uint16_t  __fastcall__ rand16();
+uint16_t  __fastcall__ rand16();
 
 //set random seed
 
@@ -249,13 +250,8 @@ struct pad {
             unsigned char left : 1;
             unsigned char down : 1;
             unsigned char up : 1;
-            #if __VS_SYSTEM
-            unsigned char select : 1;
-            unsigned char start : 1;
-            #else
             unsigned char start : 1;
             unsigned char select : 1;
-            #endif
             unsigned char b : 1;
             unsigned char a : 1;
         };
@@ -267,13 +263,8 @@ struct pad {
             unsigned char press_left : 1;
             unsigned char press_down : 1;
             unsigned char press_up : 1;
-            #if __VS_SYSTEM
-            unsigned char press_select : 1;
-            unsigned char press_start : 1;
-            #else
             unsigned char press_start : 1;
             unsigned char press_select : 1;
-            #endif
             unsigned char press_b : 1;
             unsigned char press_a : 1;
         };
@@ -285,13 +276,8 @@ struct pad {
             unsigned char release_left : 1;
             unsigned char release_down : 1;
             unsigned char release_up : 1;
-            #if __VS_SYSTEM
-            unsigned char release_select : 1;
-            unsigned char release_start : 1;
-            #else
             unsigned char release_start : 1;
             unsigned char release_select : 1;
-            #endif
             unsigned char release_b : 1;
             unsigned char release_a : 1;
         };
@@ -314,13 +300,8 @@ extern struct pad* controllingplayer;
 
 #define PAD_A			0x80
 #define PAD_B			0x40
-#if __VS_SYSTEM
-#define PAD_START		0x20
-#define PAD_SELECT		0x10
-#else
 #define PAD_SELECT		0x20
 #define PAD_START		0x10
-#endif
 #define PAD_UP			0x08
 #define PAD_DOWN		0x04
 #define PAD_LEFT		0x02

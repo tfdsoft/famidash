@@ -21,18 +21,7 @@
 #define FAMISTUDIO_PLATFORM_PAL 0
 #define FAMISTUDIO_PLATFORM_NTSC 1
 
-// call `famistudio_init` with the parameters listed below
-// void famistudio_init(unsigned char platform, unsigned char* music_data);
-#define famistudio_init(platform, music_data)         \
-    (__AX__ = ((unsigned int)(music_data))),          \
-    __asm__ ("pha\n"),                                \
-    __asm__ ("txa\n"),                                \
-    __asm__ ("tay\n"),                                \
-    __asm__ ("pla\n"),                                \
-    __asm__ ("tax\n"),                                \
-    __asm__ ("lda #%b\n", (unsigned char)(platform)), \
-    __asm__ ("jsr _famistudio_init\n");
-
+void __fastcall__ famistudio_init(unsigned char platform, void* music_data);
 
 /**
  * ======================================================================================================================
@@ -72,7 +61,7 @@ void __fastcall__ famistudio_music_pause(unsigned char mode);
  * ======================================================================================================================
  */
 
-void __fastcall__ famistudio_music_stop();
+void __fastcall__ famistudio_music_stop(void);
 
 /**
  * ======================================================================================================================
@@ -85,7 +74,7 @@ void __fastcall__ famistudio_music_stop();
  * ======================================================================================================================
  */
 
-void __fastcall__ famistudio_update();
+void __fastcall__ famistudio_update(void);
 
 
 
@@ -99,16 +88,7 @@ void __fastcall__ famistudio_update();
  * ======================================================================================================================
  */
 
-// call `famistudio_sfx_init` with the parameters listed below
-// void famistudio_sfx_init(unsigned char sfx_data[]);
-#define famistudio_sfx_init(sfx_data)      \
-    (__AX__ = ((unsigned int)(sfx_data))), \
-    __asm__ ("pha\n"),                     \
-    __asm__ ("txa\n"),                     \
-    __asm__ ("tay\n"),                     \
-    __asm__ ("pla\n"),                     \
-    __asm__ ("tax\n"),                     \
-    __asm__ ("jsr _famistudio_sfx_init\n");
+void __fastcall__ famistudio_sfx_init(void* sfx_data);
 
 
 /**
@@ -128,12 +108,7 @@ void __fastcall__ famistudio_update();
 #define FAMISTUDIO_SFX_CH2 30 // 2 * FAMISTUDIO_SFX_STRUCT_SIZE
 #define FAMISTUDIO_SFX_CH3 45 // 3 * FAMISTUDIO_SFX_STRUCT_SIZE
 
-// call `famistudio_sfx_play` with the parameters listed below
-// void famistudio_sfx_play(unsigned char sfx_index, unsigned char channel);
-#define famistudio_sfx_play(sfx_index, channel)                          \
-    (__AX__ = ((unsigned char)(channel)<<8)|(unsigned char)(sfx_index)), \
-    __asm__ ("jsr _famistudio_sfx_play\n");
-
+void __fastcall__ famistudio_sfx_play(unsigned char sfx_index, unsigned char channel);
 
 /**
  * ======================================================================================================================

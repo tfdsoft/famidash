@@ -1,19 +1,22 @@
 ; Custom routines implemented specifically for famidash (some are totally not stolen from famitower)
 .importzp _gamemode
-.importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9  ; C-safe temp storage
+.importzp _tmp1, _tmp2, _tmp3, _tmp4, _tmp5, _tmp6, _tmp7, _tmp8, _tmp9, _temptemp5  ; C-safe temp storage
 .import pusha, pushax, callptr4
 .import _scroll_x, _cursedmusic
 
-.if VS_SYSTEM
-	.import _draw_arrow
-.endif
-
 .macpack longbranch
 
-.importzp _sprite_data
+.importzp _level_data, _sprite_data
+level_data = _level_data
 sprite_data = _sprite_data
 
 .define gamemode_count 9
+
+.ifndef _USE_ILLEGAL_OPCODES
+.define _USE_ILLEGAL_OPCODES 0
+.endif
+
+.define USE_ILLEGAL_OPCODES ::_USE_ILLEGAL_OPCODES
 
 .macro INCW addr
 	INC addr
@@ -26,6 +29,13 @@ sprite_data = _sprite_data
 	INCW addr
 .endmacro
 
+.macro incw_check addr
+	INC addr
+	BNE :+
+		jsr incwlvl_checkC000
+:
+.endmacro
+
 ; You get your arguments back in ptr3
 .macro crossPRGBankJSR inArgCount, routine, bank
 	.ifblank routine
@@ -35,7 +45,7 @@ sprite_data = _sprite_data
 	.ifnblank bank
 		LDY bank
 	.else
-		LDY #.bank(routine)
+		LDY #^routine
 	.endif
 
 	.ifnblank inArgCount
@@ -54,8 +64,8 @@ sprite_data = _sprite_data
 
 
 .segment "ZEROPAGE"
-	rld_value:      	.res 1
-	rld_run:        	.res 1
+	rld_value:      .res 1
+	rld_run:        .res 1
 
 .segment "BSS"
 	; column buffer, to be pushed to the collision map
@@ -88,7 +98,6 @@ sprite_data = _sprite_data
 .export _extceil := extceil
 .export _min_scroll_y := min_scroll_y
 .export	_seam_scroll_y := seam_scroll_y
-.export _old_draw_scroll_y := old_draw_scroll_y
 
 .export _drawing_frame := drawing_frame
 .export _parallax_scroll_column := parallax_scroll_column
@@ -96,6 +105,9 @@ sprite_data = _sprite_data
 
 .export _auto_fs_updates := auto_fs_updates
 .export _hexToDecOutputBuffer := hexToDecOutputBuffer
+
+; .export _pad = PAD_STATEP
+; .export _pad_new = PAD_STATET
 
 ; Standard for function declaration here:
 ; C function name
@@ -105,9 +117,9 @@ sprite_data = _sprite_data
 ; <empty line>
 ; .export declaration
 ; the function itself
-.if !__THE_ALBUM
+
 ; void __fastcall__ oam_meta_spr_flipped(uint8_t x,uint8_t y,const void *data);
-.segment _PLAYER_RENDER_BANK
+.segment "XCD_BANK_05"
 
 .export __oam_meta_spr_flipped
 .proc __oam_meta_spr_flipped
@@ -170,8 +182,8 @@ end:
 	stx SPRID
 	rts
 .endproc
-.endif
-.segment "RODATA"
+
+.segment "RODATA_2"
 
 .export _shiftBy4table := shiftBy4table
 shiftBy4table:
@@ -180,7 +192,7 @@ shiftBy4table:
 	.byte $80, $90, $A0, $B0
 	.byte $C0, $D0, $E0, $F0
 
-.segment "CODE"
+.segment "CODE_2"
 
 .export __one_vram_buffer_repeat
 .proc __one_vram_buffer_repeat
@@ -207,12 +219,11 @@ shiftBy4table:
 .endproc
 
 ; void __fastcall__ init_rld(uint8_t level);
-.segment "CODE"
+.segment "CODE_2"
 
 .global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
-.import _current_deco_type, _current_spike_set, _current_block_set, _current_saw_set
 .import _song, _speed, _lastgcolortype, _lastbgcolortype
-.import _level_data_bank, _sprite_data_bank, _force_platformer
+.import _level_data_bank, _sprite_data_bank
 .import _discomode
 
 .export _init_rld
@@ -221,132 +232,99 @@ _init_rld:
 
 	; Get pointers:
 	TAY						;__ Load pointer to tables
-
-	LDA	mmc3PRG1Bank		;	Save PRG1 bank
-	PHA						;__
-
+	LDA _sprite_list_lo,y	;
+	STA _sprite_data+0		;__	Get low pointer to sprite data 
+	LDA _sprite_list_hi,y	;
+	STA _sprite_data+1		;__	Get high pointer to sprite data 
+	LDA _sprite_list_bank,y	;   Get sprite data bank
+	; CLC                     ;
+	; ADC #<FIRST_SPRITE_BANK ;
+	STA _sprite_data_bank	;__
 	LDA _level_list_lo,y	;
-	STA	ptr1+0				;__	Get low pointer to level data
+	STA _level_data+0		;__	Get low pointer to level data 
 	LDA _level_list_hi,y	;
-	STA	ptr1+1				;__	Get high pointer to level data 
-	LDA _level_list_bank,y	;
-	STA _level_data_bank	;__	Get level data bank
+	STA _level_data+1		;__	Get high pointer to level data 
+	LDA _level_list_bank,y	;   Get level data bank
+	STA _level_data_bank	;__
 	
 	JSR mmc3_set_prg_bank_1
 
 	LDY #$00			;-  For both (zp),y addressing and rld_column
-	STY	_no_parallax	;__	Reset bit-value variables
 	STY rld_column		;__ Reset scrolling
 
 	; Read header
+	LDA (level_data),y	;
+	STA _song			;   Song number
+	incw_check level_data
 
+	LDA (level_data),y	;
+	STA _gamemode		;   Starting level number
+	incw_check level_data
 
-	LDA (ptr1),y			;
-	STA _sprite_data+0		;	Get low pointer to sprite data
-	INY						;__
-	LDA (ptr1),y			;
-	STA _sprite_data+1		;	Get high pointer to sprite data 
-	INY						;__
-	LDA (ptr1),y			;
-	STA _sprite_data_bank	;	Get sprite data bank
-	INY						;__
+	LDA (level_data),y	;
+	STA _speed			;   Starting speed
+	incw_check level_data
 
-	LDA (ptr1),y		;
-	STA _song			;   Song ID
-	INY					;__
-
-	LDA (ptr1),y		;	Starting gamemode and speed
-	TAX					;__
-	LSR					;
-	LSR					;
-	LSR					;	Get speed
-	LSR					;
-	STA	_speed			;__
-	TXA					;
-	AND	#$0F			;
-	STA	_gamemode		;	Get just the gamemode
-	INY					;__
-
-	LDA (ptr1),y		;__	Force platformer, Parallax disable
-	LSR					;__	Parallax disable in carry
-	ROL _no_parallax	;__	Store where it needs to go
-	STA _force_platformer	;	The rest is force platformer, store it
-	INY					;__
-
-	LDA (ptr1),y			;
-	STA _current_deco_type	;	Deco type
-	INY						;__
-	
-	LDA (ptr1),y			;
-	STA _current_spike_set	;	Spike set
-	INY						;__
-
-	LDA (ptr1),y			;
-	STA _current_block_set	;	Block set
-	INY						;__
-
-	LDA (ptr1),y			;
-	STA _current_saw_set	;__	Saw set
-
-	TYA						;
-	SEC						;
-	ADC	ptr1				;
-	STA	ptr1				;	Add Y to the ptr since we're gonna use Y
-	BCC	:+					;	SEC for additional increment
-		INC	ptr1+1			;
-	:						;__
-	LDY	#$00				;__
-	
-
-	;	Deal with the starting BG color
-	LDA (ptr1),y			;	Starting BG color
-	AND #$3F				;	Store normal color to slot 0
+	LDA _discomode
+	BNE @noset
+	LDA (level_data),y	;	Starting BG color
+	AND #$3F			;	Store normal color (pal_col(0, tmp2))
 	STA PAL_BUF_RAW+0		;__
-	LDX _lastbgcolortype	;
-	INX						;
-	BNE :+					;	Replace lastbgcolortype if == 0xFF
-		STA _lastbgcolortype;
-	:						;__
-	TAY						;
-	LDA (PAL_PTR),y			;	Store it to the buffer
-	STA PAL_BUF+0			;__
-	;	Now fade it
-	LDA palBrightTable3, Y	;
-	STA PAL_BUF_RAW+1		;	Store faded color to slots 1 and 9
-	STA PAL_BUF_RAW+9		;__
-	TAY						;
-	LDA (PAL_PTR),y			;	Store it into the buffer
-	STA PAL_BUF+1			;
-	STA PAL_BUF+9			;__
-	incw ptr1				;	Move on
-	LDY #0					;__
+	ldx _lastbgcolortype
+	cpx #$ff
+	bne @noset
+	STA _lastbgcolortype
+@noset:
+	TAX
+	lda _discomode
+	bne @nostore
+	LDA palBrightTable3, X
+	STA PAL_BUF_RAW+1		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
+	STA PAL_BUF_RAW+9		;__	Store faded color (pal_col(1, oneShadeDarker(tmp2))
+@nostore:
+	txa
+	incw_check level_data
 
-	;	Deal with the starting ground color
-	LDA (ptr1),y			;	Starting ground color
-	AND #$3F				;	Store normal color to slot 6
+	LDA (level_data),y	;	Starting ground color
+	AND #$3F			;	Store normal color (pal_col(6, tmp2))
 	STA PAL_BUF_RAW+6		;__
-	LDX _lastgcolortype		;
-	INX						;
-	BNE :+					;	Replace lastgcolortype if == 0xFF
-		STA	_lastgcolortype	;
-	:						;__
-	TAY						;
-	LDA (PAL_PTR),y			;	Store it into the buffer
-	STA PAL_BUF+6			;__
-	;	Now fade it
-	LDA palBrightTable3, Y	;	Store faded color to slot 5
-	STA PAL_BUF_RAW+5		;__
-	TAY						;
-	LDA	(PAL_PTR),y			;	Store it into the buffer
-	STA	PAL_BUF+5			;__
-	INC <PAL_UPDATE			;__ Yes, we do need to update the palette
+	ldx _lastgcolortype
+	cpx #$ff
+	bne @noset2
+	STA	_lastgcolortype
+@noset2:
+	TAX
+	LDA palBrightTable3, X
+	STA PAL_BUF_RAW+5		;__	Store faded color (pal_col(5, oneShadeDarker(tmp2)))
+	INC <PAL_UPDATE		;__ Yes, we do need to update the palette
 
+	; Copy all the raw colors into the buffer for the current brightness
+	ldy PAL_BUF_RAW+0
+	lda (PAL_PTR),y
+	sta PAL_BUF+0
+	ldy PAL_BUF_RAW+1
+	lda (PAL_PTR),y
+	sta PAL_BUF+1
+	ldy PAL_BUF_RAW+5
+	lda (PAL_PTR),y
+	sta PAL_BUF+5
+	ldy PAL_BUF_RAW+6
+	lda (PAL_PTR),y
+	sta PAL_BUF+6
+	ldy PAL_BUF_RAW+9
+	lda (PAL_PTR),y
+	sta PAL_BUF+9
+	
 	
 	ldy #0
-	incw ptr1
+	incw_check level_data
 
-	LDA	(ptr1),y
-	TAX
+	.if USE_ILLEGAL_OPCODES
+		lax (level_data),y
+	.else
+		LDA	(level_data),y
+		TAX
+	.endif
 	EOR #$FF			;
 	CLC					;	Level height
 	ADC #$01			;
@@ -367,53 +345,62 @@ _init_rld:
 		ADC #<(1+57-1)			;__
 		SEC
 	@min_scroll_y_loop:
-		TAX
 		SBC	#15				;__
 		BCC	@min_scroll_y_fin
 		INC	min_scroll_y+1
+		TAX
 		BCS	@min_scroll_y_loop	; = BRA
 	@min_scroll_y_fin:
 		LDA	shiftBy4table, X
 		ORA #$08
 		STA min_scroll_y
 
-	incw ptr1
+	incw_check level_data
 
 SetupNextRLEByte:
-	ldx	ptr1+0		;	LZ data ptr
-	ldy	ptr1+1		;__
-
-	jsr	LZ_init_decomp
-
-    jsr	LZ_get_byte		;
-	cmp	#$00			;
-    bmi single_rle_byte	;	Load rld_run
+    LDA (level_data),y	;
+    bmi single_rle_byte	;	Load rld_run, ++level_data
     STA rld_run			;__ 
+    incw_check level_data	;__
 
-    jsr	LZ_get_byte		;
-    STA rld_value		;__	Load rld_value
-	
-	pla						;	Restore PRG1 bank
-	jmp	mmc3_set_prg_bank_1	;__
+    LDA (level_data),y	;
+    STA rld_value		;   Load rld_value, ++level_data
+    ; JMP incwlvl_checkC000
+
+    INC level_data
+    BNE :+
+incwlvl_checkC000:  ; clobbers nothing
+		INC level_data+1
+		bit level_data+1
+		; since the high byte will only be $Ax or $Bx, when bit 6 is set then its rolled over to $c0
+		bvc :+
+		pha 
+			; switch banks
+			LDA #$A0            ;   Reset memory-mapped ptr
+			STA level_data+1    ;__
+			INC _level_data_bank ;_ Increment bank
+			LDA _level_data_bank
+			jsr mmc3_set_prg_bank_1 ;__ Switch the bank
+		pla
+	:   
+	RTS
 single_rle_byte:
 	and #$7f
 	sta rld_value
 	lda #0
 	sta rld_run
-
-	pla						;	Restore PRG1 bank
-	jmp	mmc3_set_prg_bank_1	;__
+	incw_check level_data
+	rts
 
 ; void unrle_next_column();
-.segment "CODE"
+.segment "CODE_2"
 
 .export _unrle_next_column
 .proc _unrle_next_column
 
-	col_idx = tmp1
-
 	; Count up to zero to remove a cmp instruction
 	ldx rld_load_value
+	ldy #$00
 	lda rld_value
 
 	@FirstLoop:
@@ -425,39 +412,28 @@ single_rle_byte:
 		bpl @End ; Guaranteed jump
 	
 	@UpdateValueRun:
-		stx	col_idx
-
-	@ReadNewVal:
 		; if bit 7 of the byte is set, then its a run of length 1
 		; otherwise this is a length < 127 byte and we need to read another
-		jsr	LZ_get_byte			;
-		cmp	#$00				;
-		bmi @SingleByteRun		;	Load rld_run
-		sta rld_run				;__
+		lda (level_data), y
+		bmi @SingleByteRun
+		sta rld_run               ;__ Load rld_run, ++level_data
+		incw_check level_data     ;__
 
-		jsr	LZ_get_byte			;
-		cmp	rld_run				;	Load rld_value
-		beq	@ParseMetaSeq		;	or meta sequence
-	@noMetaSeq:					;
-		sta rld_value			;__
-	
-		ldx	col_idx
+		lda (level_data), y       ;
+		sta rld_value             ;   Load rld_value, ++level_data
+		incw_check level_data
+
+		lda rld_value
 		inx 
 		bmi @FirstLoop
 		bpl @End ; Unconditional
-
-	@ParseMetaSeq:
-		cmp	#$7F			;
-		bne @noMetaSeq		;	Parse meta sequences
-		jsr	loadLevelContinuation
-		jmp	@ReadNewVal		;__
-
+	
 	@SingleByteRun:
 		and #$7f
 		sta rld_value
-		ldy	#$00
+		; y = 0
 		sty rld_run
-		ldx col_idx
+		incw_check level_data
 		inx 
 		bmi @FirstLoop
 		; and then fallthrough to copying to the collision map
@@ -476,27 +452,8 @@ single_rle_byte:
 	rts
 .endproc
 
-; Function not available in C
-.segment "CODE"
-
-.proc loadLevelContinuation
-	; Meta sequence: load new level chunk
-	jsr	LZ_get_byte			;	Get Meta Level ID
-	tay						;__
-
-	lda	_level_chunk_list_bank, y	;
-	sta	_level_data_bank			;	Get new data bank
-	jsr	mmc3_set_prg_bank_1			;__
-
-	ldx	_level_chunk_list_lo, y		;__	Get new data low ptr
-	lda	_level_chunk_list_hi, y		;	Get new data high ptr
-	tay								;__
-
-	jmp	LZ_init_decomp
-.endproc
-
 ; void __fastcall__ dummy_unrle_columns(uint16_t columns);
-.segment "CODE"
+.segment "CODE_2"
 
 .import umul8x16r24m
 
@@ -509,15 +466,13 @@ single_rle_byte:
 	mulRes1 = ptr1+1
 	mulRes2 = sreg
 	start:
-		sta mulIn0			;
-		stx mulIn0+1		;	Multiply the
-		and #$0F			;	amount of columns
-		sta rld_column		;__
-		lda rld_load_value	;
-		eor #$FF			;
-		sec					;	by level height
-		adc #0				;
-		sta mulIn1			;__
+		; Multiply columns by level height
+		sta mulIn0
+		stx mulIn0+1
+		and #$0F
+		sta rld_column
+		lda #27
+		sta mulIn1
 		jsr umul8x16r24m
 		; result now in ptr1:sreg[0],
 		; y = 0 
@@ -538,16 +493,14 @@ single_rle_byte:
 		beq end_early
 		
 	loop:
-		jsr	LZ_get_byte	; either single-run value or run
-		cmp	#$00
+		lda (level_data),y	; either single-run value or run
 		bmi single_byte
-		sta rld_run
 
-		jsr	LZ_get_byte			;
-			cmp	rld_run			;	Load rld_value
-			beq	parseMetaSeq	;	or meta sequence
-		loop_noMetaSeq:			;
-			tax					;__
+		incw_check level_data
+		sta rld_run
+		lda (level_data),y	; value
+		tax
+		incw_check level_data
 
 		lda mulRes0
 		clc	; subtract 1 extra
@@ -572,6 +525,8 @@ single_rle_byte:
 
 
 	single_byte:
+		incw_check level_data
+
 		dec mulRes0
 		ldx mulRes0
 		inx	; less bytes then cpx #$ff
@@ -584,21 +539,15 @@ single_rle_byte:
 	end_single:
 		and #$7F
 		sta rld_value
-		lda	#$00
-		sta rld_run	; y is still 0
+		sty rld_run	; y is still 0
 		rts
 
-	parseMetaSeq:
-		cmp	#$7F			;
-		bne loop_noMetaSeq	;	Parse meta sequences
-		jsr	loadLevelContinuation
-		jmp	loop			;__
 .endproc
 
 
 
-.if !__THE_ALBUM
-.segment _BACKGROUND_RENDER_BANK
+
+.segment "XCD_BANK_02"	; dep of: _draw_screen
 
 .proc writeToCollisionMap
 	; We have 27 writes to make to the collision map, thats 27 * 6 bytes for an unrolled loop.
@@ -650,7 +599,7 @@ single_rle_byte:
 
 
 ; [Not used in C]
-.segment _BACKGROUND_RENDER_BANK
+.segment "XCD_BANK_02"	; dep of: _draw_screen
 
 .import _scroll_y
 
@@ -701,8 +650,9 @@ noSeam:
 	;	No seam can be distinguished by high byte >= 02 or bit 1
 .endproc
 
+
 ; char draw_screen();
-.segment _BACKGROUND_RENDER_BANK
+.segment "XCD_BANK_02"
 
 .global dsrt_fr1O : zp
 
@@ -768,7 +718,7 @@ switch:
 ; [Subroutine]
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
 .import _increase_parallax_scroll_column
-.import _no_parallax, _invisblocks, _force_platformer
+.import _no_parallax, _invisblocks
 
 .proc draw_screen_R_tiles
 
@@ -1065,7 +1015,7 @@ ntAddrHiTbl:
 
 ; [Subroutine]
 .global metatiles_attr
-.import _no_parallax, _invisblocks, _force_platformer
+.import _no_parallax, _invisblocks
 
 .proc draw_screen_R_attributes
 	AttrWriteSize	= 3*8
@@ -1277,7 +1227,7 @@ ntAddrHiTbl:
 
 ; [Subroutine]
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
-.import _no_parallax, _invisblocks, _force_platformer
+.import _no_parallax, _invisblocks
 .import _scroll_y
 
 .proc draw_screen_UD_tiles_frame0
@@ -1616,7 +1566,7 @@ ntAddrHiTbl:
 
 
 ; void __fastcall__ load_ground(uint8_t id);
-.segment _GROUND_BANK
+.segment "LVL_BANK_00"
 
 .import _ground
 
@@ -1625,12 +1575,14 @@ ntAddrHiTbl:
 	;A = ground num
 	ASL						;
 	TAX						;
-	LDA _ground, X			;	ptr1 = ground[id]
-	STA ptr1				;	(we're already within the correct bank)
+	LDA	#$00				;
+	TAY						;	ptr1 = ground[id]
+	JSR	mmc3_set_prg_bank_1	;	mmc3_set_prg_bank_1(0)
+	LDA _ground, X			;	Y = 0
+	STA ptr1				;
 	LDA _ground+1, X		;
 	STA ptr1+1				;__
 	LDX #<-48				;__	X = idx @ collmap data, count up to 0
-	LDY	#$00				;__	Y = 0
 
 	ground_ptr = ground-($100-48)
 
@@ -1670,10 +1622,8 @@ ntAddrHiTbl:
 
 .endproc
 
-.endif
-
 ; void __fastcall__ draw_padded_text(const void * data, uint8_t len, uint8_t total_len, uintptr_t ppu_address)
-.segment "CODE"
+.segment "CODE_2"
 
 .export __draw_padded_text
 .proc __draw_padded_text
@@ -1750,9 +1700,8 @@ ntAddrHiTbl:
 
 .endproc
 
-.if !__THE_ALBUM
 ; void movement();
-.segment _MOVEMENT_BANK
+.segment "XCD_BANK_01"
 
 .import _cube_movement, _ship_movement, _ball_movement, _ufo_movement, _robot_movement, _spider_movement, _wave_movement
 .import _retro_mode
@@ -1789,11 +1738,11 @@ ntAddrHiTbl:
 		.byte >(_cube_movement-1), >(_ship_movement-1), >(_ball_movement-1), >(_ufo_movement-1), >(_cube_movement-1), >(_spider_movement-1), >(_wave_movement-1), >(_ball_movement-1), >(_cube_movement-1)
 
 .endproc
-.endif
-; void __fastcall__ music_play(uint8_t song);
-.segment "CODE"
 
-.import _options
+; void __fastcall__ music_play(uint8_t song);
+.segment "CODE_2"
+
+.import _options, FIRST_MUSIC_BANK
 
 .export _music_play
 .proc _music_play  
@@ -1813,14 +1762,7 @@ ntAddrHiTbl:
     bit _options ; sets N flag to bit 7 of _options without affecting A  
     bpl musicon
     rts  
-musicon:
-	TAY
-	LDA	auto_fs_updates
-	PHA
-	LDA #0
-	STA	auto_fs_updates
-	TYA
-
+musicon:  
     LDY #<FIRST_MUSIC_BANK
     tsx
 bank_loop:
@@ -1846,25 +1788,36 @@ found_bank:
 			LDA	music_data_locations_hi-FIRST_MUSIC_BANK, Y
 			TAY
 		.endif
-        LDA cpuRegion
+        LDA NTSC_MODE
         JSR famistudio_init
-	:
+    :
+    PLA
+    JSR famistudio_music_play
+    
+    JMP _mmc3_pop_prg_bank_1
 
-	PLA
-	JSR famistudio_music_play
+; Tables currently generated manually
 
-	PLA
-	STA	auto_fs_updates
-
-	JMP _mmc3_pop_prg_bank_1
-
-; Tables generated by export.py
-.include "musicPlayRoutines.s"
+.if .not(useConstInitPtr)
+music_data_locations_lo:
+	.out "shit"
+	.byte <music_data_famidash_music1, <music_data_famidash_music2, <music_data_famidash_music3, <music_data_famidash_music4, <music_data_famidash_music5
+music_data_locations_hi:
+	.byte >music_data_famidash_music1, >music_data_famidash_music2, >music_data_famidash_music3, >music_data_famidash_music4, >music_data_famidash_music5
+.endif
+music_counts:
+	.byte 2, 3, 3, 4, $FF ;last bank is marked with an FF to always stop bank picking
 .endproc
 
-.segment "CODE"
+.segment "CODE_2"
 
+.import _disable_dpcm_bankswitch
 .proc famistudio_dpcm_bank_callback
+	; ldx _disable_dpcm_bankswitch
+	; beq :+
+	; 	sec
+	; 	rts
+	; :
 	clc
 	adc #<FIRST_DMC_BANK
 	jmp mmc3_set_prg_bank_0
@@ -1872,14 +1825,14 @@ found_bank:
 
 
 ; void __fastcall__ sfx_play(uint8_t sfx_index, uint8_t channel);
-.segment "CODE"
+.segment "CODE_2"
 
 .import _options
 
 .export __sfx_play
 .proc __sfx_play  
-    ; a = sfx
-	; x = channel
+    ; x = sfx
+	; a = channel
 
     bit _options ; bit 6 is copied to the overflow flag  
     bvc play  
@@ -1890,25 +1843,17 @@ play:
 	lda	mmc3PRG1Bank
 	pha
 	lda #<.bank(sounds)
-	jsr mmc3_set_prg_bank_1
-
-	lda	auto_fs_updates
-	pha
-	lda	#0
-	sta	auto_fs_updates
+    jsr mmc3_set_prg_bank_1
 
 	tya
     jsr famistudio_sfx_play
-
-    pla
-    sta	auto_fs_updates
 
 	pla
 	jmp mmc3_set_prg_bank_1
 .endproc
 
 ; void music_update();
-.segment "CODE"
+.segment "CODE_2"
 
 .export _music_update
 .proc _music_update
@@ -1925,7 +1870,7 @@ play:
 
 .import _activesprites_x_lo, _activesprites_x_hi
 .import _activesprites_y_lo, _activesprites_y_hi
-.import _activesprites_type, _activesprites_activated, _activesprites_animated
+.import _activesprites_type, _activesprites_activated
 .import _activesprites_realx, _activesprites_realy
 
 .export _load_next_sprite := load_next_sprite
@@ -1968,7 +1913,6 @@ play:
     
     lda #0
     sta _activesprites_activated,x
-	sta _activesprites_animated,x
 
     ; Increment to the next sprite index - 
     ; Add the 5 back to the pointer
@@ -1989,7 +1933,7 @@ early_exit:
 .endproc
 
 ; uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
-.segment "CODE"
+.segment "CODE_2"
 
 .export _calculate_linear_scroll_y
 .proc _calculate_linear_scroll_y
@@ -2012,12 +1956,11 @@ early_exit:
 	RTS
 .endproc
 
-.if !__THE_ALBUM
 ; void cap_scroll_y_at_top();
-.segment _SCROLL_BANK
+.segment "CODE_2"
 
 .importzp _currplayer_y
-.import _scroll_y, _player_y, _scroll_y_subpx
+.import _scroll_y
 
 .export _cap_scroll_y_at_top
 .proc _cap_scroll_y_at_top
@@ -2030,7 +1973,7 @@ check:
 	rts
 
 doit:
-	; compensate currplayer_y and player_y
+	; compensate currplayer_y
 	lda     _scroll_y
 	ldx     _scroll_y+1
 	sta     sreg
@@ -2041,96 +1984,15 @@ doit:
 	sta     _scroll_y+1		;__
 	jsr     __sub_scroll_y_ext
 	jsr     _calculate_linear_scroll_y
-	eor     #$FF			;__	Make the ADCs into SBCs
-	tay
-
-	lda     _currplayer_y	;
-	sec						;
-	sbc     _scroll_y_subpx	;
-	sta     _currplayer_y	;	Compensate currplayer_y
-	sta		_player_y+1		;	(Apparently guaranteed to be 0)
-	tya						;
-	adc     _currplayer_y+1	;
-	sta     _currplayer_y+1	;
-	sta     _player_y+1		;__
-
-	lda     _player_y+2		;
-	sec						;
-	sbc     _scroll_y_subpx	;
-	sta     _player_y+2		;	Compensate player_y[1]
-	tya						;
-	adc     _player_y+2+1	;
-	sta     _player_y+2+1	;__
-
-	lda     #0
-	sta     _scroll_y_subpx
-
+	eor     #$FF
+	sec
+	adc     _currplayer_y+1
+	sta     _currplayer_y+1
 	; we can't do anything with the high byte of the diff anyway
 
 	rts
 .endproc
 
-
-; void cap_scroll_y_at_bottom();
-.segment _SCROLL_BANK
-
-.importzp _currplayer_y
-.import _scroll_y, _player_y, _scroll_y_subpx
-
-.export _cap_scroll_y_at_bottom
-.proc _cap_scroll_y_at_bottom
-check:
-	lda     _scroll_y_subpx	;
-	cmp     #0              ;
-	lda     _scroll_y		;
-	sbc     #<$02F0			;	if (scroll_y > 0x2EF)
-	lda     _scroll_y+1		;
-	sbc     #>$02F0			;__
-	bcs     doit
-	rts
-
-doit:
-	; compensate currplayer_y
-	ldx     _scroll_y
-	ldy     _scroll_y+1
-
-	lda     #<$02EF			;
-	sta     sreg			;
-	sta     _scroll_y		;	scroll_y = 0x2EF
-	lda     #>$02EF			;
-	sta     sreg+1			;
-	sta     _scroll_y+1		;__
-
-	tya									;
-	jsr     __sub_scroll_y_ext			;	Get difference
-	jsr     _calculate_linear_scroll_y	;__
-	tay
-
-	lda     _currplayer_y	;
-	clc						;
-	adc     _scroll_y_subpx	;
-	sta     _currplayer_y	;	Compensate currplayer_y
-	sta		_player_y+1		;	(Apparently guaranteed to be 0)
-	tya						;
-	adc     _currplayer_y+1	;
-	sta     _currplayer_y+1	;
-	sta     _player_y+1		;__
-
-	lda     _player_y+2		;
-	clc						;
-	adc     _scroll_y_subpx	;
-	sta     _player_y+2		;	Compensate player_y[1]
-	tya						;
-	adc     _player_y+2+1	;
-	sta     _player_y+2+1	;__
-
-	lda     #0
-	sta     _scroll_y_subpx
-	; we can't do anything with the high byte of the diff anyway
-
-	rts
-.endproc
-.endif
 
 ; void check_spr_objects();
 .segment "CODE_2"
@@ -2228,15 +2090,14 @@ end:
 	jmp mmc3_set_prg_bank_1
 .endproc
 
-.if !__THE_ALBUM
+.segment "XCD_BANK_05"
 
-.segment _PLAYER_RENDER_BANK
+.define CUBE_GRAVITY $6B
+.define MINI_CUBE_GRAVITY $6F
 
-.import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y, _player_mini
-.import _ballframe, _robotframe, _robotjumpframe, _spiderframe
-.import _retro_mode, _icon, _gameState, _titleicon, _skipProcessingCubeRotationLogic
-.import _CUBE_GRAVITY_lo
-.importzp _cube_rotate, _was_on_slope_counter
+.import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y
+.import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _retro_mode, _icon, _gameState, _titleicon
+.importzp _cube_rotate, _mini
 .import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2, _SPIDER_ALT, _SPIDER_ALT2
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT
 .importzp _cube_data, _slope_frames, _slope_type
@@ -2295,19 +2156,19 @@ drawcube_sprite_none:
 
 
 drawplayer_center_offsets:
-	;		Cub	Shp Bal	UFO	RBT	SPI	Wav
-	.byte	8,	8,	8,	8,	4,	4,	8,	8,	8; normal size
-	.byte	4,	4,	4,	4,	4,	4,	4,	4,	4; mini 
+	;		Cub	Bal Shp	Bal	UFO	RBT	SPI	Wav
+	.byte	8,	8,	8,	8,	8,	8,	8,	8,	8,	8; normal size
+	.byte	0,	12,	4,	0,	12,	12,	12,	12,	12,	12; mini 
 
 ; void drawplayerone();
-.segment _PLAYER_RENDER_BANK
+.segment "XCD_BANK_05"
 
 .export _drawplayerone
 .proc _drawplayerone
 
     LDX _cube_data
-    LDA _slope_frames+0
-    ORA _slope_type+0
+    LDA _slope_frames
+    ORA _slope_type
     BEQ :+
         TXA
         ORA #%10000000
@@ -2328,7 +2189,7 @@ drawplayer_center_offsets:
 	STX sreg+1			;__
 
 	; Set up base pointer for jump tables
-	LDA _player_mini;
+	LDA _mini       ;
 	BEQ :+          ;   Add 8 if mini mode 
 		LDA #gamemode_count
 	:               ;__
@@ -2389,7 +2250,7 @@ drawplayer_center_offsets:
 
         BIT _cube_data
         BMI @round
-		ldx _skipProcessingCubeRotationLogic			;player trails?
+		ldx _temptemp5			;player trails?
 		bne	@fin			;if so, get out of here
 		LDA _player_vel_y+1		;	if player_vel_y == 0
 		ORA _player_vel_y+0		;
@@ -2421,19 +2282,14 @@ drawplayer_center_offsets:
             JMP @fin_nold
 
 		@no_round:
-		LDA	_framerate	;
-		ASL				;	Physics table index
-		ASL				;	(just the framerate)
-		TAY				;__
-
 		LDA _cube_rotate
+		CLC
 
 		LDX _player_gravity+0
 		BNE @subtract
 
-			CLC						;
-			ADC _CUBE_GRAVITY_lo,Y	;
-			STA _cube_rotate		;
+			ADC #<CUBE_GRAVITY      ;
+			STA _cube_rotate        ;
 			BCC @fin				;   cube_rotate[0] += CUBE_GRAVITY;
 				LDX _cube_rotate+1	;
 				INX					;__
@@ -2444,8 +2300,7 @@ drawplayer_center_offsets:
 				JMP @fin_nold
 
 		@subtract:
-			SEC						;
-			SBC _CUBE_GRAVITY_lo,Y	; 	
+			SBC #<CUBE_GRAVITY-1	; 	
 			STA _cube_rotate		;
 			BCS @fin				;	cube_rotate[0] -= CUBE_GRAVITY;
 				DEC _cube_rotate+1	;
@@ -2461,7 +2316,7 @@ drawplayer_center_offsets:
 			beq @noflip
 
 			LDA _gameState
-			cmp #1	; STATE_MENU
+			cmp #1
 			bne @normalicon
 			LDA _titleicon
 			jmp @domore
@@ -2470,11 +2325,9 @@ drawplayer_center_offsets:
 			LDA _icon
 
 		@domore:
-			cmp #$12
+			cmp #$13
 			beq @noflip
-			cmp #$16
-			beq @noflip
-   			cmp #$0F
+			cmp #$17
 			beq @noflip
 			cmp #2
 			bne	@norm
@@ -2492,7 +2345,7 @@ drawplayer_center_offsets:
 			AND #$C0
 			PHA
 			lda _gameState
-			cmp #1	; STATE_MENU
+			cmp #1
 			bne @continue
 			pla
 			ora #$20
@@ -2523,7 +2376,7 @@ drawplayer_center_offsets:
 		CMP	#$08				;	if (high_byte(cube_rotate) >= 0x08) {
 		BCC :++					;__
 			CMP #$80			;	if (high_byte(cube_rotate) < 0x80)
-			BCS	:+				;__
+			BCC	:+				;__
 				LDY #$07		;	cube_rotate[0] = 0x07FF
 				DEX				;__
 			:					;__	else 0x0000 (Y and X still remain at 0)
@@ -2555,11 +2408,7 @@ drawplayer_center_offsets:
 			;	}
 		LDA _options
 		and #$04  ;platformer
-		bne	@ball3
-		lda _force_platformer
-		beq @ball2
-		
-	@ball3:	
+		beq	@ball2
 		lda _player_vel_x
 		bne @ball2
 		lda #0
@@ -2617,14 +2466,9 @@ drawplayer_center_offsets:
 			;	} else {
 			;		[index from ROBOT_JUMP/MINI_ROBOT_JUMP using robotjumpframe[0]]
 			; 	}
-			LDA _was_on_slope_counter
-			BNE @ignoreJump
 			LDA _player_vel_y+1	;
 			ORA _player_vel_y	;	if (player_vel_y[0] == 0) {
 			BNE @jump			;__
-		@ignoreJump:
-			LDA _retro_mode
-			BNE @jim
 			LDA _options
 			and #$04
 			beq	@cont1
@@ -2653,18 +2497,6 @@ drawplayer_center_offsets:
 			ADC _robotjumpframe
 			TAY				;__
 			JMP fin
-		@jim:
-			LDA #0
-			LDY _robotframe	;	[load robotframe[0] into Y]
-			SEC				;	robotframe[0]++; (A is 0, so set the carry and bam)
-			ADC _robotframe	;__
-			CMP #15			;
-			BCC @JIMMOMENT	;	if (robotframe[0] > 14) { robotframe[0] = 0; }	
-				LDA #$00	;__
-			@JIMMOMENT:		;
-			STA _robotframe	;__
-			JMP fin
-
 	spider:
 		; C code:
 			;	if (player_vel_y[0] == 0 ) {
@@ -2696,7 +2528,7 @@ drawplayer_center_offsets:
 			STA _spiderframe;__
 			JMP fin
 		@jump:				;	} else { SPIDER_JUMP[0] = SPIDER[8]
-			LDA #16			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
+			LDA #17			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe
 			TAY				;__
@@ -2736,7 +2568,7 @@ drawplayer_center_offsets:
             ; 7 - A = -A + 7
 			; -A = (A ^ 0xFF) + 1
 			; 7 - A = (A ^ 0xFF) + 8
-            LDY _player_mini
+            LDY _mini
             BNE :+
 			EOR #$FF
 			CLC
@@ -2766,7 +2598,7 @@ drawplayer_center_offsets:
 		TAY					;__
 
 		; ; CENTERING DEBUGGING ONLY
-		; lda <FRAME_CNT
+		; lda <FRAME_CNT1
 		; and #$01
 		; beq :+
 		; 	lda #$40
@@ -2796,14 +2628,14 @@ drawplayer_center_offsets:
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING_ALT, >_MINI_CUBE
 
     rounding_slope_table:
-		;     45v  22v  66v  45^  22^  66^  nothing
-        .byte $09, $08, $09, $00, $03, $04, $08, $00
-		.byte $09, $16, $1a, $00, $03, $1a, $17		;upsidedown
+		;     45^  45v  22^  22v  66^  66v  nothing
+        .byte $03, $09, $0a, $08, $08, $09, $00, $00
+		.byte $03, $09, $1a, $16, $17, $1a 		;upsidedown
 .endproc
 drawplayer_common := _drawplayerone::common
 
 ; void drawplayertwo();
-.segment _PLAYER_RENDER_BANK
+.segment "XCD_BANK_05"
 
 .import _CUBE2, _SHIP2, _BALL2, _ROBOT2, _UFO2, _SPIDER2, _WAVE2, _SWING2
 .import _MINI_CUBE2, _MINI_SHIP2, _MINI_BALL2, _MINI_ROBOT2, _MINI_UFO2, _MINI_SPIDER2, _MINI_WAVE2, _MINI_SWING2
@@ -2811,20 +2643,6 @@ drawplayer_common := _drawplayerone::common
 .export _drawplayertwo
 .proc _drawplayertwo
 
-
-    LDX _cube_data+1
-    LDA _slope_frames+1
-    ORA _slope_type+1
-    BEQ :+
-        TXA
-        ORA #%10000000
-        BNE @skipClearBit
-    :
-        TXA
-        AND #%01111111
-    @skipClearBit:
-    sta _cube_data+1
-    
 	LDA _player_gravity+1
 	BEQ :+
 		LDA #$80
@@ -2835,7 +2653,7 @@ drawplayer_common := _drawplayerone::common
 	STX sreg+1			;__
 
 	; Set up base pointer for jump tables
-	LDA _player_mini+1;
+	LDA _mini       ;
 	BEQ :+          ;   Add 8 if mini mode 
 		LDA #gamemode_count
 	:               ;__
@@ -2894,15 +2712,12 @@ drawplayer_common := _drawplayerone::common
 			; 		cap the mf at 0..23
 		@rounding_table = drawcube_rounding_table
 
-        BIT _cube_data+1
-        BMI @round
-	;	ldx _skipProcessingCubeRotationLogic		;PLAYER TRAILS are disabled for 2 player mode anyway
+	;	ldx _temptemp5		;PLAYER TRAILS are disabled for 2 player mode anyway
 	;	bne	@fin		
 
 		LDA _player_vel_y+3		;	if player_vel_y == 0
 		ORA _player_vel_y+2		;
 		BNE @no_round			;__
-		@round:
 			STA	_cube_rotate+2	;__ low_byte = 0
 			.if USE_ILLEGAL_OPCODES
 				LAX _cube_rotate+3	;	LAX abs is apparently stable
@@ -2919,30 +2734,19 @@ drawplayer_common := _drawplayerone::common
 			LDA _cube_rotate+3	;	Round the cube rotation
 			ADC @rounding_table, X
 			STA _cube_rotate+3	;
-			BIT _cube_data+1
-			BPL :+
-				LDY _slope_type+1
-				CLC
-				ADC rounding_slope_table-1, y
-			: 
 			TAX					;__
 			JMP @fin_nold
 
 		@no_round:
-		LDA	_framerate	;
-		ASL				;	Physics table index
-		ASL				;	(just the framerate)
-		TAY				;__
-
 		LDA _cube_rotate+2
+		CLC
 
 		LDX _player_gravity+1
 		BNE @subtract
 
-			CLC						;
-			ADC _CUBE_GRAVITY_lo,Y	;
-			STA _cube_rotate+2		;	cube_rotate[0] += CUBE_GRAVITY;
-			BCC @fin				;
+			ADC #<CUBE_GRAVITY      ;
+			STA _cube_rotate+2		;
+			BCC @fin				;   cube_rotate[0] += CUBE_GRAVITY;
 				LDX _cube_rotate+3	;
 				INX					;__
 				CPX #24				;
@@ -2952,10 +2756,9 @@ drawplayer_common := _drawplayerone::common
 				JMP @fin_nold
 
 		@subtract:
-			SEC						;
-			SBC _CUBE_GRAVITY_lo,Y	; 	
-			STA _cube_rotate+2		;	cube_rotate[0] -= CUBE_GRAVITY;
-			BCS @fin				;
+			SBC #<CUBE_GRAVITY-1	; 	
+			STA _cube_rotate+2		;
+			BCS @fin				;	cube_rotate[0] -= CUBE_GRAVITY;
 				DEC _cube_rotate+3	;
 				BPL @fin			;__
 				LDA #23				;	Cap at 0
@@ -2968,11 +2771,9 @@ drawplayer_common := _drawplayerone::common
 			cmp #8
 			beq @noflip	
 			LDA _icon
-			cmp #$12
+			cmp #$13
 			beq @noflip
-			cmp #$16
-			beq @noflip
-   			cmp #$0F
+			cmp #$17
 			beq @noflip
 			cmp #2
 			bne	@norm
@@ -3011,7 +2812,7 @@ drawplayer_common := _drawplayerone::common
 		CMP	#$08				;	if (high_byte(cube_rotate) >= 0x08) {
 		BCC :++					;__
 			CMP #$80			;	if (high_byte(cube_rotate) < 0x80)
-			BCS	:+				;__
+			BCC	:+				;__
 				LDY #$07		;	cube_rotate[1] = 0x07FF
 				DEX				;__
 			:					;__	else 0x0000 (Y and X still remain at 0)
@@ -3100,12 +2901,9 @@ drawplayer_common := _drawplayerone::common
 			;	} else {
 			;		[index from ROBOT_JUMP/MINI_ROBOT_JUMP using robotjumpframe[1]]
 			; 	}
-			LDA _was_on_slope_counter+1
-			BNE @ignoreJump
 			LDA _player_vel_y+3	;
 			ORA _player_vel_y+2	;	if (player_vel_y[1] == 0 || player_vel_y[1] == CUBE_GRAVITY) {
 			BNE @jump
-		@ignoreJump:
 			LDA _options
 			and #$04
 			beq	@cont1
@@ -3165,7 +2963,7 @@ drawplayer_common := _drawplayerone::common
 			STA _spiderframe+1;__
 			JMP drawplayer_common
 		@jump:				;	} else { SPIDER_JUMP[0] = SPIDER[8]
-			LDA #16			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
+			LDA #17			; ! This is the sizeof ROBOT / MINI_ROBOT, change it as needed
 			CLC				;	ROBOT_JUMP[X] = ROBOT[X+20]
 			ADC _robotjumpframe
 			TAY				;__
@@ -3204,7 +3002,7 @@ drawplayer_common := _drawplayerone::common
             ; 7 - A = -A + 7
 			; -A = (A ^ 0xFF) + 1
 			; 7 - A = (A ^ 0xFF) + 8
-            LDY _player_mini+1
+            LDY _mini
             BNE :+
 			EOR #$FF
 			CLC
@@ -3235,12 +3033,6 @@ drawplayer_common := _drawplayerone::common
     sprite_table_table_hi2:
         .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT2, >_SPIDER_ALT2, >_WAVE2, >_SWING2, <_CUBE2
         .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL_ALT, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE2, >_MINI_SWING_ALT, <_MINI_CUBE2
-    rounding_slope_table:
-		;     45v  22v  66v  45^  22^  66^  nothing
-        .byte $09, $08, $09, $00, $03, $04, $08, $00
-		.byte $09, $16, $1a, $00, $03, $1a, $17		;upsidedown
-
-
 .endproc
 
 ; char bg_collision_sub();
@@ -3290,8 +3082,6 @@ drawplayer_common := _drawplayerone::common
 
 .endproc
 
-.endif
-
 .segment "CODE_2"
 
 .export crossPRGBankJump
@@ -3313,72 +3103,31 @@ drawplayer_common := _drawplayerone::common
 	JMP mmc3_set_prg_bank_1
 .endproc
 
-.if !THE_ALBUM
 ; void __fastcall__ playPCM(uint8_t sample);
 .segment "XCD_BANK_00"
-SSDPCM_ptr = ptr1
-SSDPCM_bank_num = tmp1
-SSDPCM_amp = tmp2
-SSDPCM_wait = tmp3
-SSDPCM_delta_add = ptr2
-
-SSDPCM_luts:
-.repeat 256, I
-	.byte ((I>>6)&3)
-.endrepeat 
-.repeat 256, I
-	.byte ((I>>4)&3)
-.endrepeat 
-.repeat 256, I
-	.byte ((I>>2)&3)
-.endrepeat 
-.repeat 256, I
-	.byte ((I>>0)&3)
-.endrepeat 
-
-SSDPCM_amps:
-.repeat 64, I
-	.byte (-1*I)&$ff
-	.byte (0*I)&$ff
-	.byte (1*I)&$ff
-	.byte (2*I)&$ff
-.endrepeat
-
-SSDPCM_amplo:
-.repeat 64, I
-	.lobytes SSDPCM_amps+(I*4) 
-.endrepeat
-SSDPCM_amphi:
-.repeat 64, I
-	.hibytes SSDPCM_amps+(I*4) 
-.endrepeat
 
 .export _playPCM
 .proc _playPCM
+PCM_ptr = ptr1
     ; A = Sample
 	tay
-	ldx	cpuRegion
+	ldx	NTSC_MODE
 	bne :+
 		clc
 		adc #(SampleRate_PAL-SampleRate_NTSC)
 	:
 	tax
 	lda SampleRate_NTSC, x
-    sta SSDPCM_wait
+    sta tmp1
 	ldx Bank, y
 
-    ; enable DMC but disable DPCM
+    ;enable DMC but disable DPCM
     lda #%00000000
     sta FAMISTUDIO_APU_DMC_FREQ
     lda #%00001011
     sta FAMISTUDIO_APU_SND_CHN
-    ; disable automatic FS updates
-    lda	auto_fs_updates
-    pha
     lda #0
-    tay
-    sta auto_fs_updates
-    ; continue enabling DMC but disabling DPCM
+	sta PCM_ptr
     sta FAMISTUDIO_APU_DMC_LEN
     lda #%00011011
     sta FAMISTUDIO_APU_SND_CHN
@@ -3388,122 +3137,52 @@ SSDPCM_amphi:
     lda #%00110000
     sta FAMISTUDIO_APU_PL1_VOL
     sta FAMISTUDIO_APU_PL2_VOL
-
     ;init pcm
-    lda #128
-    sta SSDPCM_amp
-    lda #>$BFFF		;	2
-    sta SSDPCM_ptr+1	;__	3
-    lda #<$BFFF		;	2
-    sta SSDPCM_ptr	;__	3
-
-    txa		;__	2
-    jsr mmc3_set_prg_bank_0	;__	35
+;    lda #<GeometryDashPCM
+ ;   sta PCM_ptr
+ ;   ldx #<.bank(GeometryDashPCM)
+ 	ldy #0
 
     ;play pcm
 @RestartPtr:
-	jsr SSDPCM_getbyte
-	tax
-	lda SSDPCM_amplo, x
-	sta SSDPCM_delta_add
-	lda SSDPCM_amphi, x
-	sta SSDPCM_delta_add+1
-	cpx #$ff
-	bne :+
-    jmp @DoneWithPCM
-:
-.repeat 128/4
-	jsr SSDPCM_dobyte
-.endrepeat
-	jmp @RestartPtr
-
-
-@DoneWithPCM:
-	; Re-enable all channels
-    lda #%00011111
-    sta FAMISTUDIO_APU_SND_CHN
-    ; Re-enable automatic FS updates
-    pla
-    sta	auto_fs_updates
-
-    lda #<FIRST_DMC_BANK
-	jmp mmc3_set_prg_bank_0
-
-
-SSDPCM_dobyte:
-    jsr SSDPCM_getbyte
-	tax
-	ldy SSDPCM_luts, x ; 4
-	lda SSDPCM_amp ; 2
-	clc ; 2
-	adc (SSDPCM_delta_add), y ; 5
-	sta SSDPCM_amp ; 3
-	lsr ; 2
-	jsr SSDPCM_store_pcm ; 6
-
-	ldy SSDPCM_luts+256, x
-	lda SSDPCM_amp
-	clc
-	adc (SSDPCM_delta_add), y
-	sta SSDPCM_amp
-	lsr
-	jsr SSDPCM_store_pcm
-
-	ldy SSDPCM_luts+512, x
-	lda SSDPCM_amp
-	clc
-	adc (SSDPCM_delta_add), y
-	sta SSDPCM_amp
-	lsr
-	jsr SSDPCM_store_pcm
-
-	ldy SSDPCM_luts+768, x
-	lda SSDPCM_amp
-	clc
-	adc (SSDPCM_delta_add), y
-	sta SSDPCM_amp
-	lsr
-	jsr SSDPCM_store_pcm
-	rts
-
-
-SSDPCM_store_pcm:
-    ; 4+2+5+2+3+2+6 = 24 cycles
-    sta $4011 ; 4
-    nop
-    nop
-    nop
-    lda SSDPCM_wait	; 3 
-    sec
+    lda #>$C000
+    sta PCM_ptr+1
+@LoadBank:
+    txa
+    jsr mmc3_set_prg_bank_0
+    inx
+@LoadSample:
+    lda tmp1	; 3
+	sec			; 2
 @Delay:
 	sbc #1		;	5n cycles
 	bcs @Delay	;__
-    rts
-
-SSDPCM_getbyte:
- inc SSDPCM_ptr
- bne @g1
- inc SSDPCM_ptr+1
-@g1:
- lda SSDPCM_ptr
- cmp #$00
- bne @g2
- lda SSDPCM_ptr+1
- cmp #$C0+$20
- bne @g2
-
- lda #$80
- sta SSDPCM_ptr+1
- lda SSDPCM_getbyte
- pha
- inc SSDPCM_getbyte
- pla
- jsr mmc3_set_prg_bank_0
-
-@g2:
- ldy #0
- lda (SSDPCM_ptr), y
- rts
+	; 	beq	@noburn	; 2/3
+	; 7x jsr BurnCycles	; 26
+	; @noburn:
+	; 	php			;
+	; 	plp			;
+	; 	php			;	17
+	; 	plp			;
+	; 	bit PCM_ptr	;__
+	;	old code: if smp == 0 - 22 cycles, if not - 204 cycles
+	;	new: 
+	
+    lda (PCM_ptr),y
+    beq @DoneWithPCM
+    sta $4011
+    iny
+    bne @LoadSample
+    inc PCM_ptr+1
+    lda PCM_ptr+1
+    cmp #>($c000+$2000)
+    bcc @LoadSample
+    jmp @RestartPtr
+@DoneWithPCM:
+    lda #%00011111
+    sta FAMISTUDIO_APU_SND_CHN
+    lda #<FIRST_DMC_BANK
+	jmp mmc3_set_prg_bank_0
 
 ; BurnCycles:	; 6 for JSR
 ;     php	;	7
@@ -3512,19 +3191,19 @@ SSDPCM_getbyte:
 ;     plp	;__
 ;     rts	;	6
 
-; Sample rate calculations go per this formula:
-; ((Region Clock / Sample Rate)-Sample Load Time)/5
-; Sample Load Time is:
-; 58 cycles?
-; A reverse calculation is:
-; Region Clock / ((Ans)*5+Sample Load Time)
-; The target sample speed is specified after each value,
-; Real playback speed and deviation percentage are specified in parentheses
-; TODO: get proper sample calculations for SSDPCM2
-.include "pcm_metadata.s"
+Bank:
+    .byte <.bank(GeometryDashPCMA)
+    .byte <.bank(GeometryDashPCMB)
+
+SampleRate_NTSC:	; Also applies to Dendy, as it is derived from the CPU speed
+	.byte 3		;(22-5+1)/5-1
+	.byte 40	;((NTSC Clock / 8000)-5+1)/5-1
+SampleRate_PAL:
+	.byte 2
+	.byte 37	;((PAL Clock / 8000)-5+1)/5-1
 .endproc
 
-.endif
+
 ; uint16_t hexToDec (uint16_t input)
 .segment "CODE_2"
 
@@ -3651,12 +3330,12 @@ SSDPCM_getbyte:
 ; void update_level_completeness();
 .segment "CODE_2"
 
-.import _level, _practice_point_count
+.import _level, _has_practice_point
 .import _level_completeness_normal
 
 .export _update_level_completeness
 .proc _update_level_completeness
-	levelsInTable = ::_MAX_LEVEL_COMPLETE
+	levelsInTable = $40
 
 	levelLengthLo = ptr1+0
 	levelLengthMd = ptr1+1
@@ -3751,7 +3430,7 @@ SSDPCM_getbyte:
 			LDY #99		;	100% is reserved for complete levels only
 		:				;__
 
-		LDA _practice_point_count	;
+		LDA _has_practice_point	;
 		BEQ :+					;
 			LDA #levelsInTable	;	Calculate whether to store 
 		:						;	the new completeness in the
@@ -3769,82 +3448,78 @@ SSDPCM_getbyte:
 .endproc
 
 ; [Not used in C]
-;	.segment "CODE"
-;	
-;	.import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK__
-;	
-;	.global copydata
-;	.proc copydata
-;	
-;		seg_count = 1
-;		
-;		current_area = tmp1
-;		current_bank = tmp2
-;		
-;		src = sreg
-;		dest = xargs+0
-;		
-;		start:
-;			lda	#0
-;			sta	current_bank
-;			ldy	#<seg_count
-;			
-;		loop:
-;			lda	load_lo-1,	y
-;			sta	src+0
-;			lda	load_hi-1,	y
-;			sta	src+1
-;			
-;			lda	run_lo-1,	y
-;			sta	dest+0
-;			lda	run_hi-1,	y
-;			sta	dest+1
-;			
-;			lda	bank-1,	y
-;			beq	@no_bankswitch
-;				cmp	current_bank
-;				beq	@no_bankswitch
-;					jsr	mmc3_tmp_prg_bank_1	; only allowed because this is run on init
-;					sta	current_bank
-;			@no_bankswitch:
-;			
-;			lda	size_lo-1,	y
-;			ldx	size_hi-1,	y
-;			sty	current_area
-;			jsr	__memcpy
-;			
-;			ldy	current_area
-;			dey
-;			bne	loop
-;			
-;		rts
+.segment "CODE_2"
 
-;	load_lo:
-;		.byte	<__DATA_LOAD__
+.import	__DATA_LOAD__,	__DATA_RUN__,	__DATA_SIZE__,	__DATA_LOAD_BANK__
 
-;	load_hi:
-;		.byte	>__DATA_LOAD__
+.global copydata
+.proc copydata
 
-;	run_lo:
-;		.byte	<__DATA_RUN__
+	seg_count = 1
 
-;	run_hi:
-;		.byte	>__DATA_RUN__
+	current_area = tmp1
+	current_bank = tmp2
 
-;	size_lo:
-;		.byte	<__DATA_SIZE__
+	src = sreg
+	dest = xargs+0
 
-;	size_hi:
-;		.byte	>__DATA_SIZE__
+	start:
+		lda	#0
+		sta	current_bank
+		ldy	#<seg_count
 
-;	bank:
-;		.byte	<__DATA_LOAD_BANK__
+	loop:
+		lda	load_lo-1,	y
+		sta	src+0
+		lda	load_hi-1,	y
+		sta	src+1
+		
+		lda	run_lo-1,	y
+		sta	dest+0
+		lda	run_hi-1,	y
+		sta	dest+1
 
-;	.endproc
+		lda	bank-1,	y
+		beq	@no_bankswitch
+			cmp	current_bank
+			beq	@no_bankswitch
+				jsr	mmc3_tmp_prg_bank_1	; only allowed because this is run on init
+				sta	current_bank
+		@no_bankswitch:
+
+		lda	size_lo-1,	y
+		ldx	size_hi-1,	y
+		sty	current_area
+		jsr	__memcpy
+
+		ldy	current_area
+		dey
+		bne	loop
+
+	rts
+
+load_lo:
+	.byte	<__DATA_LOAD__
+load_hi:
+	.byte	>__DATA_LOAD__
+
+run_lo:
+	.byte	<__DATA_RUN__
+run_hi:
+	.byte	>__DATA_RUN__
+
+size_lo:
+	.byte	<__DATA_SIZE__
+size_hi:
+	.byte	>__DATA_SIZE__
+
+bank:
+	.byte	<__DATA_LOAD_BANK__
+
+.endproc
 
 
 ; void increment_attempt_count();
-.if !__THE_ALBUM
 .segment "XCD_BANK_00"
 
 .import _attemptCounter
@@ -3891,8 +3566,9 @@ SSDPCM_getbyte:
 	rts
 .endproc
 
+
 ; void display_attempt_counter (uint8_t zeroChr, uintptr_t ppu_address);
-.segment _LVLDONE_BANK
+.segment "LVL_BANK_00"	; Same as state_lvldone	
 
 .import _attemptCounter
 
@@ -3949,7 +3625,6 @@ SSDPCM_getbyte:
 
 	use_one_vram_buffer:
 		lda	_attemptCounter+0
-
 		clc
 		adc	zeroChr
 		sta	sreg	; doesn't matter, it's not used anymore anyway
@@ -3960,13 +3635,10 @@ SSDPCM_getbyte:
 
 		jmp	__one_vram_buffer
 .endproc
-.endif
 
-
-.if !__THE_ALBUM
 
 ; void draw_dialog_box(const char * data);
-.segment _DIALOG_BOX_BANK
+.segment "XCD_BANK_02"
 
 .import popax	; Unfortunately
 .import _paletteSettings
@@ -4146,12 +3818,10 @@ vert_skip:
 	
 .endproc
 
-.endif
 
-
-
+; Standard for function declaration here:
 ; void init_sprites();
-.segment "CODE_2"
+.segment "CODE"
 
 .importzp _sprite_data	
 .import _sprite_data_bank
@@ -4170,7 +3840,7 @@ vert_skip:
 	LDA	_sprite_data_bank		;	Switch to the correct bank
 	JSR	mmc3_set_prg_bank_1		;__
 	
-	LDX	#::_max_loaded_sprites
+	LDX	#16			;! THIS IS THE SPRITE SLOT COUNT, CHANGE AS NEEDED
 	LDA	#$FF		;
 	clear_spritetype_loop:				;
 		STA	_activesprites_type-1,	X	;	Clear sprites to load them
@@ -4232,53 +3902,18 @@ vert_skip:
 	high_byte_setup:
 		LDX	_scroll_x+1
 		BEQ	low_byte_setup
-		BNE @entrypoint	; BRA
-			@data_comparison_loop:
-				LDA	#5-1				;
-				ADC	sprite_data			;	Relies on set carry
-				STA	sprite_data			;__
-				BCC	@entrypoint			;	Overflow
-					INC	sprite_data+1	;__
-		
-			@entrypoint:
-				TXA						;
-				CMP	(sprite_data),	y	;	return if scroll_x <= sprite x
-				BEQ	@return				;
-				BCS	@data_comparison_loop;__
-			
-			@return:
-	low_byte_setup:	
-		STX	x_counter
+			JSR	data_comparison_entrypoint
+	low_byte_setup:
+		DEY
 		LDX	_scroll_x
-		BEQ @skip
-		BNE @entrypoint
-			@data_comparison_loop:
-				LDA	#5-1				;
-				ADC	sprite_data			;	Relies on set carry
-				STA	sprite_data			;__
-				BCC	@entrypoint			;	Overflow
-					INC	sprite_data+1	;__
-		
-			@entrypoint:
-				DEY
-				TXA						;
-				CMP	(sprite_data),	y	;	return if scroll_x <= sprite x
-				INY						;
-				LDA	x_counter			;
-				SBC	(sprite_data),	y	;
-				BEQ	@return				;
-				BCS	@data_comparison_loop;__
-			
-			@return:
-		@skip:
-		
+		BEQ :+
+			JSR	data_comparison_entrypoint
+		:
 
 	; BAM, the pointer is adjusted
 	; Load the sprites now
 	
-	DEY	; Y is 1
-	
-	LDX	#::_max_loaded_sprites
+	LDX	#16			;! THIS IS THE SPRITE SLOT COUNT, CHANGE AS NEEDED
 	loading_loop:
 		;__	Y is 0
 		LDA	(sprite_data),	y	;
@@ -4300,38 +3935,40 @@ vert_skip:
 	
 	PLA
 	JMP mmc3_set_prg_bank_1
+	
+	data_comparison_loop:	; Compares X with a byte of sprite data, until it >= A
+	
+		LDA	#5-1				;
+		ADC	sprite_data			;	Relies on set carry
+		STA	sprite_data			;__
+		BCC	@entrypoint			;	Overflow
+			INC	sprite_data+1	;__
+	
+		@entrypoint:
+		TXA						;
+		CMP	(sprite_data),	y	;	return if scroll_x <= sprite x
+		BEQ	@return				;
+		BCS	data_comparison_loop;__
+		
+		@return:
+			RTS
+		
+		data_comparison_entrypoint := @entrypoint
 		
 .endproc
 
 
-; void update_currplayer_table_idx();
-.segment "CODE_2"
-
-.importzp _currplayer_mini, _currplayer_gravity, _currplayer_table_idx
-
-.export _update_currplayer_table_idx
-.proc _update_currplayer_table_idx
-	LDA	_currplayer_gravity		;__	A = gggggggg;	C = ?
-	AND	#$80					;__	A = g-------;	C = ?
-	ORA	framerate				;__	A = g------f;	C = ?
-	ASL							;__	A = ------f-;	C = g
-	ORA	_currplayer_mini		;__	A = ------fm;	C = g
-	ROL							;__	A = -----fmg;	C = 0
-	STA	_currplayer_table_idx	;__	Store the result
-	RTS
-.endproc
-
-; void set_tile_banks();
+; void set_tile_banks(void);
 ; 
 ;	if (!no_parallax) {
-;		mmc3_set_1kb_chr_bank_0(current_spike_set + (parallax_scroll_x & 1));
-;		mmc3_set_1kb_chr_bank_1(current_block_set + (parallax_scroll_x & 1));	//tile graphics
+;		mmc3_set_1kb_chr_bank_0(spike_set[level] + (parallax_scroll_x & 1));
+;		mmc3_set_1kb_chr_bank_1(block_set[level] + (parallax_scroll_x & 1));	//tile graphics
 ;		mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
-;		mmc3_set_1kb_chr_bank_3(current_saw_set + (parallax_scroll_x & 1));
+;		mmc3_set_1kb_chr_bank_3(saw_set[level] + (parallax_scroll_x & 1));
 ;	}
 ;	else {
-;		mmc3_set_1kb_chr_bank_0(current_spike_set);
-;		mmc3_set_1kb_chr_bank_1(current_block_set);	//tile graphics
+;		mmc3_set_1kb_chr_bank_0(spike_set[level]);
+;		mmc3_set_1kb_chr_bank_1(block_set[level]);	//tile graphics
 ;		mmc3_set_1kb_chr_bank_2(SLOPESA);
-;		mmc3_set_1kb_chr_bank_3(current_saw_set);
+;		mmc3_set_1kb_chr_bank_3(saw_set[level]);
 ;	}

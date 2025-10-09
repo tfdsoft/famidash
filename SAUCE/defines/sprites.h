@@ -1,52 +1,6 @@
-#pragma rodata-name (push, SPRITE_RENDER_BANK)
+#pragma rodata-name (push, "XCD_BANK_04")
 
 // a 16x16 pixel metasprite
-
-
-const unsigned char Skull_Trigger_1[]={
-
-	  0,  0,0XC9,2,
-	  8,  0,0xC9,2|OAM_FLIP_H,
-	0x80
-};
-const unsigned char Skull_Trigger_2[]={
-
-	  0,  0,0XE9,2,
-	  8,  0,0xE9,2|OAM_FLIP_H,
-	0x80
-};
-const unsigned char Skull_Trigger_3[]={
-
-	  0,  0,0XED,2,
-	  8,  0,0xED,2|OAM_FLIP_H,
-	0x80
-};
-const unsigned char Skull_Trigger_4[]={
-
-	  0,  0,0XF7,2,
-	  8,  0,0xF7,2|OAM_FLIP_H,
-	0x80
-};
-
-
-
-const unsigned char MINICOIN_SPRITE1[]={
-	  4,  -4,0xE9,0,
-	0x80
-};
-const unsigned char MINICOIN_SPRITE2[]={
-	  4,  -4,0xED,0,
-	0x80
-};
-const unsigned char MINICOIN_SPRITE3[]={
-	  4,  -4,0xF7,0,
-	0x80
-};
-const unsigned char MINICOIN_SPRITE4[]={
-	  4,  -4,0xED,0|OAM_FLIP_H,
-	0x80
-};
-
 
 const unsigned char Heat_Ball_1[]={
 
@@ -176,20 +130,13 @@ const unsigned char Practice_Diamond[]={
 
 const unsigned char * const Practice_Sprites[] = {Practice_Diamond};
 
-// This singular sprite is stored as 4 defines instead,
-// passed directly to oam_spr
+const unsigned char Trail_Circ[]={
 
-#define Trail_Circ_X (0)
-#define Trail_Circ_Y (-4)
-#define Trail_Circ_CHR (0xF9)
-#define Trail_Circ_Attr (3)
-// const unsigned char Trail_Circ[]={
-
-// 	  0,  -4,0xF9,3,
-// 	0x80
-// };
+	  0,  -4,0xF9,3,
+	0x80
+};
 #pragma rodata-name (pop)
-#pragma rodata-name (push, PLAYER_RENDER_BANK)
+#pragma rodata-name (push, "XCD_BANK_05")
 
 // const unsigned char * const Trail_Circle[] = {Trail_Circ};
 
@@ -250,13 +197,13 @@ const unsigned char * const MINI_CUBE2[] = {Mini_Cube2_0, Mini_Cube2_1, Mini_Cub
 
 const unsigned char Mini_Ball[]={
 
-	 -4,  4,0x3D,3|OAM_FLIP_V,
+	 -12,  4,0x0B,3|OAM_FLIP_V,
 	0x80
 };
 
 const unsigned char Mini_Ball_Alt[]={
 
-	 -4,  4,0x3D,3|OAM_FLIP_V,
+	 -12,  4,0x0B,3|OAM_FLIP_V,
 	0x80
 };
 
@@ -265,8 +212,8 @@ const unsigned char * const MINI_BALL_ALT[]={Mini_Ball_Alt, Mini_Ball_Alt, Mini_
 	
 const unsigned char WAVE_0[]={//DOWN
 
-	 -8,  0,0x2D,3,
-	  0,  0,0x2F,3,
+	 -8,  0,0x3B,3,
+	  0,  0,0x3D,3,
 	0x80
 };		
 
@@ -278,8 +225,8 @@ const unsigned char WAVE_1[]={//SLIGHT DOWN
 };	
 const unsigned char WAVE_2[]={//FLAT
 
-	 -8,  0,0x29,3,
-	  0,  0,0x2B,3,
+	 -8,  0,0x17,3,
+	  0,  0,0x19,3,
 	0x80
 };	
 const unsigned char WAVE_5[]={//SLIGHT UP
@@ -291,8 +238,8 @@ const unsigned char WAVE_5[]={//SLIGHT UP
 
 const unsigned char WAVE_6[]={//UP
 
-	 -8,  0,0x2D,3|OAM_FLIP_V,
-	  0,  0,0x2F,3|OAM_FLIP_V,
+	 -8,  0,0x3B,3|OAM_FLIP_V,
+	  0,  0,0x3D,3|OAM_FLIP_V,
 	0x80
 };		
 
@@ -302,8 +249,8 @@ const unsigned char * const WAVE[] = {WAVE_0, WAVE_0, WAVE_1, WAVE_2, WAVE_2, WA
 
 const unsigned char WAVE2_0[]={//DOWN
 
-	 -8,  0,0x2D,1,
-	  0,  0,0x2F,1,
+	 -8,  0,0x3B,1,
+	  0,  0,0x3D,1,
 	0x80
 };		
 
@@ -315,8 +262,8 @@ const unsigned char WAVE2_1[]={//SLIGHT DOWN
 };	
 const unsigned char WAVE2_2[]={//FLAT
 
-	 -8,  0,0x29,1,
-	  0,  0,0x2B,1,
+	 -8,  0,0x17,1,
+	  0,  0,0x19,1,
 	0x80
 };		
 	
@@ -329,8 +276,8 @@ const unsigned char WAVE2_5[]={//SLIGHT UP
 
 const unsigned char WAVE2_6[]={//UP
 
-	 -8,  0,0x2D,1|OAM_FLIP_V,
-	  0,  0,0x2F,1|OAM_FLIP_V,
+	 -8,  0,0x3B,1|OAM_FLIP_V,
+	  0,  0,0x3D,1|OAM_FLIP_V,
 	0x80
 };		
 
@@ -340,17 +287,17 @@ const unsigned char * const WAVE2[] = {WAVE2_0, WAVE2_0, WAVE2_1, WAVE2_2, WAVE2
 
 const unsigned char MINI_WAVE_0[]={
 
-	 -4,  4,0x11,3|OAM_FLIP_V,
+	 -12,  -6,0x11,3|OAM_FLIP_V,
 	0x80
 };
 const unsigned char MINI_WAVE_2[]={
 
-	 -4,  -4,0x0D,3,
+	 -12,  -6,0x0D,3,
 	0x80
 };
 const unsigned char MINI_WAVE_6[]={
 
-	 -4,  -4,0x11,3,
+	 -12,  -6,0x11,3,
 	0x80
 };
 
@@ -425,7 +372,7 @@ const unsigned char * const MINI_UFO[] = {MINI_UFO_0, MINI_UFO_U, MINI_UFO_D};
 
 const unsigned char Mini_Ball2[]={
 
-	 -4,  4,0x3D,1|OAM_FLIP_V,
+	 -12,  4,0x0B,1|OAM_FLIP_V,
 	0x80
 };
 
@@ -682,32 +629,32 @@ const unsigned char * const SWING2[] = {Swing2_0, Swing2_0, Swing2_1, Swing2_2, 
 // mini swing
 const unsigned char Mini_Swing_0[]={
 
-	 -4,  -4,0x1B,3,
+	 -12,  -4,0x1B,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_1[]={
 
-	 -4,  -4,0x1B,3,
+	 -12,  -4,0x1B,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_2[]={
 
-	 -4,  -4,0x3F,3,
+	 -12,  -4,0x3F,3,
 	0x80
 };
 
 
 const unsigned char Mini_Swing_5[]={
 
-	 -4,  -4,0x3D,3,
+	 -12,  -4,0x3D,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_6[]={
 
-	 -4,  -4,0x3D,3,
+	 -12,  -4,0x3D,3,
 	0x80
 };
 
@@ -715,32 +662,32 @@ const unsigned char * const MINI_SWING[] = {Mini_Swing_0, Mini_Swing_0, Mini_Swi
 
 const unsigned char Mini_Swing_0_ALT[]={
 
-	 -4,  -4,0x1B,3,
+	 -12,  -4,0x1B,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_1_ALT[]={
 
-	 -4,  -4,0x1B,3,
+	 -12,  -4,0x1B,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_2_ALT[]={
 
-	 -4,  -4,0x3F,3,
+	 -12,  -4,0x3F,3,
 	0x80
 };
 
 
 const unsigned char Mini_Swing_5_ALT[]={
 
-	 -4,  -4,0x3D,3,
+	 -12,  -4,0x3D,3,
 	0x80
 };
 
 const unsigned char Mini_Swing_6_ALT[]={
 
-	 -4,  -4,0x3D,3,
+	 -12,  -4,0x3D,3,
 	0x80
 };
 
@@ -748,32 +695,32 @@ const unsigned char * const MINI_SWING_ALT[] = {Mini_Swing_0_ALT, Mini_Swing_0_A
 
 const unsigned char Mini_Swing2_0[]={
 
-	 -4,  -4,0x1B,1,
+	 -12,  -4,0x1B,1,
 	0x80
 };
 
 const unsigned char Mini_Swing2_1[]={
 
-	 -4,  -4,0x1B,1,
+	 -12,  -4,0x1B,1,
 	0x80
 };
 
 const unsigned char Mini_Swing2_2[]={
 
-	 -4,  -4,0x3F,1,
+	 -12,  -4,0x3F,1,
 	0x80
 };
 
 
 const unsigned char Mini_Swing2_5[]={
 
-	 -4,  -4,0x3D,1,
+	 -12,  -4,0x3D,1,
 	0x80
 };
 
 const unsigned char Mini_Swing2_6[]={
 
-	 -4,  -4,0x3D,1,
+	 -12,  -4,0x3D,1,
 	0x80
 };
 
@@ -783,32 +730,32 @@ const unsigned char * const MINI_SWING2[] = {Mini_Swing2_0, Mini_Swing2_0, Mini_
 
 const unsigned char Mini_Ship_0[]={
 
-	 -4,  -4,0x01,3,
+	 0,  -4,0x01,3,
 	0x80
 };
 
 const unsigned char Mini_Ship_1[]={
 
-	 -4,  -4,0x03,3,
+	 0,  -4,0x03,3,
 	0x80
 };
 
 const unsigned char Mini_Ship_2[]={
 
-	 -4,  -4,0x05,3,
+	 0,  -4,0x05,3,
 	0x80
 };
 
 
 const unsigned char Mini_Ship_5[]={
 
-	 -4,  -4,0x07,3,
+	 0,  -4,0x07,3,
 	0x80
 };
 
 const unsigned char Mini_Ship_6[]={
 
-	 -4,  -4,0x09,3,
+	 0,  -4,0x09,3,
 	0x80
 };
 
@@ -890,7 +837,7 @@ const unsigned char Mini_Ship2_6[]={
 const unsigned char * const MINI_SHIP2[] = {Mini_Ship2_0, Mini_Ship2_0, Mini_Ship2_1, Mini_Ship2_2, Mini_Ship2_2, Mini_Ship2_5, Mini_Ship2_6, Mini_Ship2_6};
 // end mini ship
 #pragma rodata-name (pop)
-#pragma rodata-name (push, SPRITE_RENDER_BANK)
+#pragma rodata-name (push, "XCD_BANK_04")
 
 
 
@@ -946,7 +893,7 @@ const unsigned char COIN_3_X[]={
 };
 
 #pragma rodata-name (pop)
-#pragma rodata-name (push, PLAYER_RENDER_BANK)
+#pragma rodata-name (push, "XCD_BANK_05")
 
 const unsigned char Ball_0[]={
 
@@ -1023,35 +970,35 @@ const unsigned char Robot_Jump_1[]={//Did 4th walk frame here - Ficus
 
 const unsigned char Robot_0_Alt[]={//Also jumping frame - Ficus
 	
-	-8,   1, 0x01,3,//UNUSED - Ficus
-	 0,   1, 0x03,3,
-	 8,   1, 0xFF,3,
+	-12,   1, 0x01,3,//UNUSED - Ficus
+	 -4,   1, 0x03,3,
+	  4,   1, 0xFF,3,
 	0x80
 };
 const unsigned char Robot_1_Alt[]={//Also jumping frame - Ficus
 	
-	-8,   1, 0x07,3,//UNUSED - Ficus
-	 0,   1, 0x09,3,
-	 8,   1, 0xFF,3,
+	-12,   1, 0x07,3,//UNUSED - Ficus
+	 -4,   1, 0x09,3,
+	  4,   1, 0xFF,3,
 	0x80
 };
 const unsigned char Robot_2_Alt[]={//Also jumping frame - Ficus
 	
-	-8,   1, 0x0B,3,//UNUSED - Ficus
-	 0,   1, 0x0D,3,
-	 8,   1, 0xFF,3,
+	-12,   1, 0x0B,3,//UNUSED - Ficus
+	 -4,   1, 0x0D,3,
+	  4,   1, 0xFF,3,
 	0x80
 };
 
 const unsigned char Robot_Jump_1_Alt[]={//Did 4th walk frame here - Ficus
 	
-	-8,   1, 0x11,3,//No longer a jet, but the leftmost part of the sprite - Ficus
-	 0,   1, 0x13,3,
-	 8,   1, 0xFF,3,
+	-12,   1, 0x11,3,//No longer a jet, but the leftmost part of the sprite - Ficus
+	 -4,   1, 0x13,3,
+	  4,   1, 0xFF,3,
 	0x80
 };
 const unsigned char * const ROBOT[]={Robot_0, Robot_0, Robot_0, Robot_0, Robot_0, Robot_1, Robot_1, Robot_1, Robot_1, Robot_1, Robot_2, Robot_2, Robot_2, Robot_2, Robot_2, Robot_3, Robot_3, Robot_3, Robot_3, Robot_3,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1,Robot_Jump_1};
-const unsigned char * const ROBOT_ALT[]={Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt};
+const unsigned char * const ROBOT_ALT[]={Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_1_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_0_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_2_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt, Robot_Jump_1_Alt};
 const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1, Robot_Jump_1};
 
 
@@ -1059,25 +1006,25 @@ const unsigned char * const ROBOT_JUMP[]={Robot_Jump_1, Robot_Jump_1, Robot_Jump
 
 const unsigned char Mini_Robot_0[]={
 	
-	-4,   -4, 0x37,3,
+	-4,   -4, 0x13,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_1[]={
 	
-	-4,   -4, 0x39,3,
+	-4,   -4, 0x15,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_2[]={
 	
-	-4,   -4, 0x3B,3,
+	-4,   -4, 0x17,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump_1[]={
 	
-	-4,   -4, 0x39,3,
+	-4,   -4, 0x15,3,
 	0x80
 };//also mini robot 3rd animation frame - Ficus
 
@@ -1086,25 +1033,25 @@ const unsigned char * const MINI_ROBOT_JUMP[]={Mini_Robot_Jump_1, Mini_Robot_Jum
 // ================================================================
 const unsigned char Mini_Robot_ALT_0[]={
 	
-	-4,   -4, 0x37,3,
+	-12,   -4, 0x13,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_ALT_1[]={
 	
-	-4,   -4, 0x39,3,
+	-12,   -4, 0x15,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_ALT_2[]={
 	
-	-4,   -4, 0x3B,3,
+	-12,   -4, 0x17,3,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump_ALT_1[]={
 	
-	-4,   -4, 0x39,3,
+	-12,   -4, 0x15,3,
 	0x80
 };//also mini robot 3rd animation frame - Ficus
 
@@ -1114,70 +1061,70 @@ const unsigned char * const MINI_ROBOT_JUMP_ALT[]={Mini_Robot_Jump_ALT_1, Mini_R
 
 const unsigned char Robot2_0[]={
 	
-	-12,  1, 0x01,1,
-	 -4,  1, 0x03,1,
-	  4,  1, 0x05,1,
+	-12,   1, 0x01,1,
+	 -4,   1, 0x03,1,
+	  4,   1, 0x05,1,
 	0x80
 };
 
 const unsigned char Robot2_1[]={
 	
-	-12,  1, 0xFF,1,//UNUSED - Ficus
-	 -4,  1, 0x07,1,
-	  4,  1, 0x09,1,
+	-12,   1, 0xFF,1,//UNUSED - Ficus
+	 -4,   1, 0x07,1,
+	  4,   1, 0x09,1,
 	0x80
 };
 
 const unsigned char Robot2_2[]={
 	
-	-12,  1, 0x01,1,
-	 -4,  1, 0x0B,1,
-	  4,  1, 0x05,1,
+	-12,   1, 0x01,1,
+	 -4,   1, 0x0B,1,
+	  4,   1, 0x05,1,
 	0x80
 };
 const unsigned char Robot2_3[]={
 	
-	-12,  1, 0xFF,1,
-	 -4,  1, 0x0D,1,
-	  4,  1, 0x09,1,
+	-12,   1, 0xFF,1,
+	 -4,   1, 0x0D,1,
+	  4,   1, 0x09,1,
 	0x80
 };
 
 const unsigned char Robot_Jump2_1[]={
 	
-	-12,  1, 0xFF,1|OAM_FLIP_V,
-	 -4,  1, 0x0F,1,
-	  4,  1, 0x11,1,
+	-8,   1, 0xFF,1|OAM_FLIP_V,
+	-4,   1, 0x0F,1,
+	 4,   1, 0x11,1,
 	0x80
 };
 
 const unsigned char Robot_0_Alt2[]={//Also jumping frame - Ficus
 	
-	-8,   1, 0x01,1,//UNUSED - Ficus
-	 0,   1, 0x03,1,
-	 8,   1, 0xFF,1,
+	-12,   1, 0x01,1,//UNUSED - Ficus
+	 -4,   1, 0x03,1,
+	  4,   1, 0xFF,1,
 	0x80
 };
 const unsigned char Robot_1_Alt2[]={//Also jumping frame - Ficus
 	
-	-8,   1, 0x07,1,//UNUSED - Ficus
-	 0,   1, 0x09,1,
-	 8,   1, 0xFF,1,
+	-12,   1, 0x07,1,//UNUSED - Ficus
+	 -4,   1, 0x09,1,
+	  4,   1, 0xFF,1,
 	0x80
 };
 const unsigned char Robot_2_Alt2[]={//Also jumping frame - Ficus
 	
-	-8,   1, 0x0B,1,//UNUSED - Ficus
-	 0,   1, 0x0D,1,
-	 8,   1, 0xFF,1,
+	-12,   1, 0x0B,1,//UNUSED - Ficus
+	 -4,   1, 0x0D,1,
+	  4,   1, 0xFF,1,
 	0x80
 };
 
 const unsigned char Robot_Jump_1_Alt2[]={//Did 4th walk frame here - Ficus
 	
-	-8,   1, 0x11,1,//No longer a jet, but the leftmost part of the sprite - Ficus
-	 0,   1, 0x13,1,
-	 8,   1, 0xFF,1,
+	-12,   1, 0x11,1,//No longer a jet, but the leftmost part of the sprite - Ficus
+	 -4,   1, 0x13,1,
+	  4,   1, 0xFF,1,
 	0x80
 };
 
@@ -1188,25 +1135,25 @@ const unsigned char * const ROBOT_JUMP2[]={Robot_Jump2_1, Robot_Jump2_1, Robot_J
 
 const unsigned char Mini_Robot2_0[]={
 	
-	-4,   -4, 0x37,1,
+	-12,   -4, 0x13,1,
 	0x80
 };
 
 const unsigned char Mini_Robot2_1[]={
 	
-	-4,   -4, 0x39,1,
+	-12,   -4, 0x15,1,
 	0x80
 };
 
 const unsigned char Mini_Robot2_2[]={
 	
-	-4,   -4, 0x3B,1,
+	-12,   -4, 0x17,1,
 	0x80
 };
 
 const unsigned char Mini_Robot_Jump2_1[]={
 	
-	-4,   -4, 0x39,1,
+	-12,   -4, 0x15,1,
 	0x80
 };
 
@@ -1262,32 +1209,32 @@ const unsigned char Spider_Jump[]={
 
 const unsigned char Spider_0_Alt[]={
 	
-	-8,   0, 0x23,3,
-	 0,   0, 0x25,3,
-	 8,   0, 0xFF,3,
+	-12,   0, 0x23,3,
+	 -4,   0, 0x25,3,
+	  4,   0, 0xFF,3,
 	0x80
 };
 
 const unsigned char Spider_1_Alt[]={
 	
-	-8,   0, 0x29,3,
-	 0,   0, 0x2B,3,
-	 8,   0, 0xFF,3,
+	-12,   0, 0x29,3,
+	 -4,   0, 0x2B,3,
+	  4,   0, 0xFF,3,
 	0x80
 };
 
 const unsigned char Spider_2_Alt[]={
 	
-	-8,   0, 0x2F,3,
-	 0,   0, 0x31,3,
-	 8,   0, 0xFF,3,
+	-12,   0, 0x2F,3,
+	 -4,   0, 0x31,3,
+	  4,   0, 0xFF,3,
 	0x80
 };
 const unsigned char Spider_3_Alt[]={
 	
-	-8,   0, 0x33,3,
-	 0,   0, 0x35,3,
-	 8,   0, 0xFF,3,
+	-12,   0, 0x33,3,
+	 -4,   0, 0x35,3,
+	  4,   0, 0xFF,3,
 	0x80
 };
 
@@ -1300,32 +1247,32 @@ const unsigned char * const SPIDER_JUMP[]={Spider_3};
 
 const unsigned char Spider_0_Alt2[]={
 	
-	-8,   0, 0x23,1,
-	 0,   0, 0x25,1,
-	 8,   0, 0xFF,1,
+	-12,   0, 0x23,1,
+	 -4,   0, 0x25,1,
+	  4,   0, 0xFF,1,
 	0x80
 };
 
 const unsigned char Spider_1_Alt2[]={
 	
-	-8,   0, 0x29,1,
-	 0,   0, 0x2B,1,
-	 8,   0, 0xFF,1,
+	-12,   0, 0x29,1,
+	 -4,   0, 0x2B,1,
+	  4,   0, 0xFF,1,
 	0x80
 };
 
 const unsigned char Spider_2_Alt2[]={
 	
-	-8,   0, 0x2F,1,
-	 0,   0, 0x31,1,
-	 8,   0, 0xFF,1,
+	-12,   0, 0x2F,1,
+	 -4,   0, 0x31,1,
+	  4,   0, 0xFF,1,
 	0x80
 };
 const unsigned char Spider_3_Alt2[]={
 	
-	-8,   0, 0x33,1,
-	 0,   0, 0x35,1,
-	 8,   0, 0xFF,1,
+	-12,   0, 0x33,1,
+	 -4,   0, 0x35,1,
+	  4,   0, 0xFF,1,
 	0x80
 };
 
@@ -1379,95 +1326,88 @@ const unsigned char * const SPIDER_JUMP2[]={Spider2_3};
 
 const unsigned char Mini_Spider_0[]={
 
-	 -4,  -4,0x21,3,
+	 -12,  -4,0x21,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_1[]={
 
-	 -4,  -4,0x23,3,
+	 -12,  -4,0x23,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_2[]={
 
-	 -4,  -4,0x25,3,
+	 -12,  -4,0x25,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_3[]={
 
-	 -4,  -4,0x27,3,
+	 -12,  -4,0x27,3,
 	0x80
 };
 
 
 const unsigned char Mini_Spider_0_ALT[]={
 
-	 -4,  -4,0x21,3,
+	 -12,  -4,0x21,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_1_ALT[]={
 
-	 -4,  -4,0x23,3,
+	 -12,  -4,0x23,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_2_ALT[]={
 
-	 -4,  -4,0x25,3,
+	 -12,  -4,0x25,3,
 	0x80
 };
 
 const unsigned char Mini_Spider_3_ALT[]={
 
-	 -4,  -4,0x27,3,
+	 -12,  -4,0x27,3,
 	0x80
 };
-const unsigned char * const MINI_SPIDER[]={Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_1, Mini_Spider_1, Mini_Spider_1, Mini_Spider_1, Mini_Spider_2, Mini_Spider_2, Mini_Spider_2, Mini_Spider_2, Mini_Spider_3, Mini_Spider_3, Mini_Spider_3, Mini_Spider_3, Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_0};
-const unsigned char * const MINI_SPIDER_ALT[]={Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT};
+const unsigned char * const MINI_SPIDER[]={Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_0, Mini_Spider_1, Mini_Spider_1, Mini_Spider_1, Mini_Spider_1, Mini_Spider_2, Mini_Spider_2, Mini_Spider_2, Mini_Spider_2, Mini_Spider_3, Mini_Spider_3, Mini_Spider_3, Mini_Spider_3};
+const unsigned char * const MINI_SPIDER_ALT[]={Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_0_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_1_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_2_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT, Mini_Spider_3_ALT};
 const unsigned char * const MINI_SPIDER_JUMP[]={Mini_Spider_3};
 
 const unsigned char Mini_Spider2_0[]={
 
-	 -4,  -4,0x21,1,
+	 -12,  -4,0x21,1,
 	0x80
 };
 
 const unsigned char Mini_Spider2_1[]={
 
-	 -4,  -4,0x23,1,
+	 -12,  -4,0x23,1,
 	0x80
 };
 
 const unsigned char Mini_Spider2_2[]={
 
-	 -4,  -4,0x25,1,
+	 -12,  -4,0x25,1,
 	0x80
 };
 
 const unsigned char Mini_Spider2_3[]={
 
-	 -4,  -4,0x27,1,
+	 -12,  -4,0x27,1,
 	0x80
 };
 
-const unsigned char * const MINI_SPIDER2[]={Mini_Spider2_0, Mini_Spider2_0, Mini_Spider2_0, Mini_Spider2_0, Mini_Spider2_1, Mini_Spider2_1, Mini_Spider2_1, Mini_Spider2_1, Mini_Spider2_2, Mini_Spider2_2, Mini_Spider2_2, Mini_Spider2_2, Mini_Spider2_3, Mini_Spider2_3, Mini_Spider2_3, Mini_Spider2_3, Mini_Spider2_0, Mini_Spider2_0, Mini_Spider2_0, Mini_Spider2_0};
+const unsigned char * const MINI_SPIDER2[]={Mini_Spider2_0, Mini_Spider2_0, Mini_Spider2_0, Mini_Spider2_0, Mini_Spider2_1, Mini_Spider2_1, Mini_Spider2_1, Mini_Spider2_1, Mini_Spider2_2, Mini_Spider2_2, Mini_Spider2_2, Mini_Spider2_2, Mini_Spider2_3, Mini_Spider2_3, Mini_Spider2_3, Mini_Spider2_3};
 
 const unsigned char * const MINI_SPIDER_JUMP2[]={Mini_Spider2_3};
 
 #pragma rodata-name (pop)
-#pragma rodata-name (push, SPRITE_RENDER_BANK)
+#pragma rodata-name (push, "XCD_BANK_04")
 
 
-const unsigned char Speed_SLOW_Portal[]={
-	  0,  0,0xA1,0|OAM_FLIP_V,
-	  8,  0,0xA1,0|OAM_FLIP_H,	
-	  0,  13,0xA1,0,	
-	  8,  13,0xA1,0|OAM_FLIP_H|OAM_FLIP_V,	
-	0x80
-};
 const unsigned char Speed_05_Portal[]={
 	  0,  0,0xA1,1|OAM_FLIP_V,
 	  8,  0,0xA1,1|OAM_FLIP_H,	
@@ -1534,13 +1474,13 @@ const unsigned char Mini_Portal[]={
 };
 
 const unsigned char Growth_Portal[]={
-	  8,  0,0x81,0,	
-	  16,  0,0x83,0,	
-	  0,  16,0x85,0,	
-	  8,  16,0x87,0,
-	  16,  16,0x89,0,
-	  8,  32,0x81,0|OAM_FLIP_V,
-	  16,  32,0x83,0|OAM_FLIP_V,
+	  0,  0,0x81,0,	
+	  8,  0,0x83,0,	
+	  -8,  16,0x85,0,	
+	  0,  16,0x87,0,
+	  8,  16,0x89,0,
+	  0,  32,0x81,0|OAM_FLIP_V,
+	  8,  32,0x83,0|OAM_FLIP_V,
 	0x80
 };
 
@@ -1707,14 +1647,14 @@ const unsigned char Portal_Gamemode_Robot[]={
 const unsigned char Portal_Gamemode_Spider[]={
 
 	  0,  0,0x41,1,
-	  0, 16,0x47,1,
+	  0, 16,0xF3,1,
 	  0, 32,0x41,1|OAM_FLIP_V,
 	  8,  0,0x43,1,
 
-	  8, 16,0x9C,1,
+	  8, 16,0xF5,1,
 	  8, 32,0x43,1|OAM_FLIP_V,
 	 16,  0,0x45,1,
-	 16, 16,0x9E,1,
+	 16, 16,0xF7,1,
 
 	 16, 32,0x45,1|OAM_FLIP_V,
 	0x80
@@ -1737,14 +1677,14 @@ const unsigned char Portal_Gamemode_Ninja[]={
 const unsigned char Portal_Gamemode_Swing[]={
 
 	  0,  0,0x61,1,
-	  0, 16,0x67,1,
+	  0, 16,0xED,1,
 	  0, 32,0x61,1|OAM_FLIP_V,
 	  8,  0,0x63,1,
 
-	  8, 16,0x8C,1,
+	  8, 16,0xEF,1,
 	  8, 32,0x63,1|OAM_FLIP_V,
 	 16,  0,0x65,1,
-	 16, 16,0x8E,1,
+	 16, 16,0xF1,1,
 
 	 16, 32,0x65,1|OAM_FLIP_V,
 	0x80
@@ -1802,7 +1742,7 @@ const unsigned char Portal_Dual[]={
 	  16, 0,0x8F,1,
 	  0,  16,0x91,1,
 
-	 8, 16,0x93,1,
+	  8, 16,0x93,1,
 	  16, 16,0x95,1,
 	 0,  32,0x8B,1|OAM_FLIP_V,
 	 8, 32,0x8D,1|OAM_FLIP_V,
@@ -1878,19 +1818,19 @@ const unsigned char Bigboy_Portal[]={
 const unsigned char Teleport_Portal_Horizontal_Upwards_Enter[]={
 
 
-	  0,  0,0xF5,0|OAM_FLIP_H,  
-	  8,  0,0xF3,0|OAM_FLIP_H,  
-	  16, 0,0xF1,0|OAM_FLIP_H,
-	  24, 0,0xF1,0,  
+	  0,  0,0x9C,0|OAM_FLIP_H,  
+	  8, 0,0x8E,0|OAM_FLIP_H,  
+	  16, 0,0x8C,0|OAM_FLIP_H,
+	  24, 0,0x8C,0,  
 
-	32, 0,0xF3,0,
-	40, 0,0xF5,0,  
-//	0,8,0xE7,0|OAM_FLIP_H,
+	32, 0,0x8E,0,
+	40, 0,0x9C,0,  
+	0,8,0xE7,0|OAM_FLIP_H,
 	8,8,0xE5,0|OAM_FLIP_H,
 	16,8,0xE3,0|OAM_FLIP_H,
 	24,8,0xE3,0,
 	32,8,0xE5,0,
-//	40,8,0xE7,0,
+	40,8,0xE7,0,
 
 	0x80
 };
@@ -1898,19 +1838,19 @@ const unsigned char Teleport_Portal_Horizontal_Upwards_Enter[]={
 const unsigned char Teleport_Portal_Horizontal_Upwards_Exit[]={
 
 
-	  0,  0,0xF5,1|OAM_FLIP_H,  
-	  8, 0,0xF3,1|OAM_FLIP_H,  
-	  16, 0,0xF1,1|OAM_FLIP_H,
-	  24, 0,0xF1,1,  
+	  0,  0,0x9C,1|OAM_FLIP_H,  
+	  8, 0,0x8E,1|OAM_FLIP_H,  
+	  16, 0,0x8C,1|OAM_FLIP_H,
+	  24, 0,0x8C,1,  
 
-	32, 0,0xF3,1,
-	40,0,0xF5,1,  
-//	0,8,0xE7,1|OAM_FLIP_H,
+	32, 0,0x8E,1,
+	40,0,0x9C,1,  
+	0,8,0xE7,1|OAM_FLIP_H,
 	8,8,0xE5,1|OAM_FLIP_H,
 	16,8,0xE3,1|OAM_FLIP_H,
 	24,8,0xE3,1,
 	32,8,0xE5,1,
-//	40,8,0xE7,1,
+	40,8,0xE7,1,
 
 	0x80
 };
@@ -1918,38 +1858,38 @@ const unsigned char Teleport_Portal_Horizontal_Upwards_Exit[]={
 const unsigned char Teleport_Portal_Horizontal_Downwards_Enter[]={
 
 
-	  0,  0,0xF5,0|OAM_FLIP_H|OAM_FLIP_V,  
-	  8, 0,0xF3,0|OAM_FLIP_H|OAM_FLIP_V,  
-	  16, 0,0xF1,0|OAM_FLIP_H|OAM_FLIP_V,
-	  24, 0,0xF1,0|OAM_FLIP_V,  
+	  0,  0,0x9C,0|OAM_FLIP_H|OAM_FLIP_V,  
+	  8, 0,0x8E,0|OAM_FLIP_H|OAM_FLIP_V,  
+	  16, 0,0x8C,0|OAM_FLIP_H|OAM_FLIP_V,
+	  24, 0,0x8C,0|OAM_FLIP_V,  
 
-	32, 0,0xF3,0|OAM_FLIP_V,
-	40, 0,0xF5,0|OAM_FLIP_V,  
-//	0,-8,0xE7,0|OAM_FLIP_H|OAM_FLIP_V,
+	32, 0,0x8E,0|OAM_FLIP_V,
+	40, 0,0x9C,0|OAM_FLIP_V,  
+	0,-8,0xE7,0|OAM_FLIP_H|OAM_FLIP_V,
 	8,-8,0xE5,0|OAM_FLIP_H|OAM_FLIP_V,
 	16,-8,0xE3,0|OAM_FLIP_H|OAM_FLIP_V,
 	24,-8,0xE3,0|OAM_FLIP_V,
 	32,-8,0xE5,0|OAM_FLIP_V,
-//	40,-8,0xE7,0|OAM_FLIP_V,
+	40,-8,0xE7,0|OAM_FLIP_V,
 
 	0x80
 };
 const unsigned char Teleport_Portal_Horizontal_Downwards_Exit[]={
 
 
-	  0,  0,0xF5,1|OAM_FLIP_H|OAM_FLIP_V,  
-	  8, 0,0xF3,1|OAM_FLIP_H|OAM_FLIP_V,  
-	  16, 0,0xF1,1|OAM_FLIP_H|OAM_FLIP_V,
-	  24, 0,0xF1,1|OAM_FLIP_V,  
+	  0,  0,0x9C,1|OAM_FLIP_H|OAM_FLIP_V,  
+	  8, 0,0x8E,1|OAM_FLIP_H|OAM_FLIP_V,  
+	  16, 0,0x8C,1|OAM_FLIP_H|OAM_FLIP_V,
+	  24, 0,0x8C,1|OAM_FLIP_V,  
 
-	32, 0,0xF3,1|OAM_FLIP_V,
-	40, 0,0xF5,1|OAM_FLIP_V,  
-//	0,-8,0xE7,1|OAM_FLIP_H|OAM_FLIP_V,
+	32, 0,0x8E,1|OAM_FLIP_V,
+	40, 0,0x9C,1|OAM_FLIP_V,  
+	0,-8,0xE7,1|OAM_FLIP_H|OAM_FLIP_V,
 	8,-8,0xE5,1|OAM_FLIP_H|OAM_FLIP_V,
 	16,-8,0xE3,1|OAM_FLIP_H|OAM_FLIP_V,
 	24,-8,0xE3,1|OAM_FLIP_V,
 	32,-8,0xE5,1|OAM_FLIP_V,
-//	40,-8,0xE7,1|OAM_FLIP_V,
+	40,-8,0xE7,1|OAM_FLIP_V,
 
 	0x80
 };
@@ -2091,15 +2031,15 @@ const unsigned char Dash_Gravity_Orb_45Deg_UP[]={
 
 const unsigned char Spider_Orb_UP[]={
 
-	  0,  0,0xEF,1,
-	  8,  0,0xEF,1|OAM_FLIP_H,
+	  0,  0,0xC9,1,
+	  8,  0,0xC9,1|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Spider_Orb_DOWN[]={
 
-	  0,  0,0xEF,1|OAM_FLIP_V,
-	  8,  0,0xEF,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0,  0,0xC9,1|OAM_FLIP_V,
+	  8,  0,0xC9,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 const unsigned char Dash_Orb_45Deg_DOWN[]={
@@ -2115,6 +2055,8 @@ const unsigned char Dash_Gravity_Orb_45Deg_DOWN[]={
 	  8,  0,0xCF,1|OAM_FLIP_V,
 	0x80
 };
+
+
 
 const unsigned char Yellow_Jump_Orb[]={
 
@@ -2139,30 +2081,6 @@ const unsigned char Yellow_Jump_Orb4[]={
 
 	  0,  0,0x9F,1,
 	  8,  0,0x99,1|OAM_FLIP_H,
-	0x80
-};
-
-
-
-const unsigned char WHITE_ORB1[]={
-	  0,  0,0x99,2,
-	  8,  0,0x9B,2|OAM_FLIP_H,
-	0x80
-};
-
-const unsigned char WHITE_ORB2[]={
-	  0,  0,0x9B,2,
-	  8,  0,0x9D,2|OAM_FLIP_H,
-	0x80
-};
-const unsigned char WHITE_ORB3[]={
-	  0,  0,0x9D,2,
-	  8,  0,0x9F,2|OAM_FLIP_H,
-	0x80
-};
-const unsigned char WHITE_ORB4[]={
-	  0,  0,0x9F,2,
-	  8,  0,0x99,2|OAM_FLIP_H,
 	0x80
 };
 
@@ -2765,16 +2683,6 @@ struct SpriteFrame {
 	const uint8_t* ptr;
 };
 
-
-const struct SpriteFrame Skull_Open_Sprites[]={
-	{1, Skull_Trigger_1},
-	{4, Skull_Trigger_2},
-	{4, Skull_Trigger_3},
-	{1, Skull_Trigger_4},
-};
-
-
-
 const struct SpriteFrame COIN_SPRITES[]={
 	{5, COIN_SPRITE},
 	{5, COIN_1_SPRITE},
@@ -2865,12 +2773,6 @@ const struct SpriteFrame YELLOW_ORB_SPRITES[]={
 	{5, Yellow_Jump_Orb3},
 	{5, Yellow_Jump_Orb4},
 };
-const struct SpriteFrame WHITE_ORB_SPRITES[]={
-	{5, WHITE_ORB1},
-	{5, WHITE_ORB2},
-	{5, WHITE_ORB3},
-	{5, WHITE_ORB4},
-};
 const struct SpriteFrame BLUE_ORB_SPRITES[]={
 	{5, Blue_Jump_Orb},
 	{5, Blue_Jump_Orb2},
@@ -2909,12 +2811,6 @@ const struct SpriteFrame RANDOM_GAMEMODE_PORTAL[]={
 	{10, Portal_Gamemode_Swing},
 };
 
-const struct SpriteFrame MINI_COIN_SPRITES[]={
-	{5, MINICOIN_SPRITE1},
-	{5, MINICOIN_SPRITE2},
-	{5, MINICOIN_SPRITE3},
-	{5, MINICOIN_SPRITE4},
-};
 
 const unsigned char nometa[] = {0x80};
 
@@ -3224,15 +3120,15 @@ const unsigned char * const Metasprites[]={
 	Medium_Light_Right,
 	Medium_Light_Left,
 	
-	nometa, 
-	nometa, 
-	nometa,
-	nometa,
+	Long_Light_Right, //short light shifted down 8px
+	Long_Light_Left, //chain shifted down 8px
+	Short_Light_U,
+	Chain_U,
 	Black_Orb,
 	Dash_Orb,
 	Dash_Gravity_Orb,
-	nometa,
-	nometa,
+	BG_Spike_Group2,
+	Diamond_Shifted_Right,
 	Pulsing_Ball,
 	Music_Note,
 	Portal_Gamemode_Swing,
@@ -3269,20 +3165,6 @@ const unsigned char * const Metasprites[]={
 	Tallboy_Portal,
 	Longboy_Portal,
 	Bigboy_Portal,
-	Speed_SLOW_Portal,
-	MINICOIN_SPRITE1,
-	nometa,
-	nometa,
-	nometa,
-	nometa,
-	nometa,
-	nometa,
-	nometa,
-	nometa,
-	nometa,
-	nometa,
-	Skull_Trigger_1,
-	WHITE_ORB1,
 	};
 
 
@@ -3401,20 +3283,8 @@ const void* const animation_frame_list[] = {
 	NULL,
 	NULL,
 	NULL,
-	NULL,
-	MINI_COIN_SPRITES,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	Skull_Open_Sprites,
-	WHITE_ORB_SPRITES,
+	
+	
 };
 
 // Number of UNIQUE animation frames
@@ -3532,20 +3402,6 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	0,
-	sizeof(MINI_COIN_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	sizeof(Skull_Open_Sprites) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
-	sizeof(WHITE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 };
 
 #pragma rodata-name (pop)

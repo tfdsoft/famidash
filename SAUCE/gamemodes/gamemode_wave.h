@@ -1,33 +1,31 @@
 
-CODE_BANK_PUSH(MOVEMENT_BANK)
+CODE_BANK_PUSH("XCD_BANK_01")
 
 void wave_eject();
-void wave_movement(){
+void wave_movement(void){
 
-	tmp1 = dashing[currplayer];
-
-	if (!tmp1) {
+	if (!dashing[currplayer]) {
 		
-		currplayer_vel_y = !currplayer_mini ? 
-			(currplayer_gravity ? -currplayer_vel_x : currplayer_vel_x) :
-			(currplayer_gravity ? -(currplayer_vel_x << 1) : (currplayer_vel_x << 1));
+		currplayer_vel_y = !mini ? (currplayer_gravity ? -currplayer_vel_x : currplayer_vel_x) : (currplayer_gravity ? -(currplayer_vel_x << 1) : (currplayer_vel_x << 1));
 		
-		if (controllingplayer->a || controllingplayer->up) currplayer_vel_y = -currplayer_vel_y;
+		if (controllingplayer->a) currplayer_vel_y = -currplayer_vel_y;
 
-		if (!currplayer_slope_frames && !currplayer_was_on_slope_counter) {
+		if (controllingplayer->press_a) jumps++;
+
+		if (!slope_frames && !was_on_slope_counter) {
 			currplayer_y += currplayer_vel_y;
 		} else {
 			currplayer_vel_y = 0;
 		}
 
 	}	
-	else if (tmp1 == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
-	else if (tmp1 == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else if (tmp1 == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
-	else if (tmp1 == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else if (dashing[currplayer] == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
+	else if (dashing[currplayer] == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
+	else if (dashing[currplayer] == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
+	else if (dashing[currplayer] == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
 	else currplayer_vel_y = 1;
 
-	Generic.x = high_byte(currplayer_x) + 4;
+	Generic.x = high_byte(currplayer_x);
 	
 	// this literally offsets the collision down 2 pixel for the vel reset to happen every frame instead of each other frame
 	Generic.y = high_byte(currplayer_y) + ((high_byte(currplayer_vel_y) & 0x80) ? 2 : -2);
@@ -60,11 +58,11 @@ void wave_movement(){
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
 
-//	if (currplayer_vel_y != 0 && !slope_type){
-//		if(controllingplayer->press_a || controllingplayer->press_up) {
-//			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
-//		}
-//	}
+	if (currplayer_vel_y != 0 && !slope_type){
+		if(controllingplayer->press_a) {
+			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+		}
+	}
 	
 }	
 
@@ -94,6 +92,5 @@ void wave_eject() {
 		}
 	}
 }
-
 
 CODE_BANK_POP()

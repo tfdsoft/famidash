@@ -1,7 +1,7 @@
 
 CODE_BANK_PUSH("XCD_BANK_03")
 
-#include "defines/charmap/bg_charmap.h"
+#include "defines/bg_charmap.h"
 const char TEXT_nothinghere[] = "SORRY NOTHING HERE YET";
 
 void state_sorrynothing() {
@@ -20,6 +20,7 @@ void state_sorrynothing() {
     pal_bright(4);
     while (1) {
         ppu_wait_nmi();
+        music_update();
 
         if (joypad1.b) {
             set_scroll_x(0);

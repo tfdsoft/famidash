@@ -1,25 +1,6 @@
 ; Startup code for cc65 and Shiru's NES library
 ; based on code by Groepaz/Hitmen <groepaz@gmx.net>, Ullrich von Bassewitz <uz@cc65.org>
 
-; First, deal with defines given thru cmdline
-
-.ifndef __VS_SYSTEM
-	__VS_SYSTEM = 0
-.endif
-.ifndef __THE_ALBUM
-	__THE_ALBUM = 0
-.endif
-.ifndef __HUGE_ROM
-	__HUGE_ROM = 0
-.endif
-.define VS_SYSTEM ::__VS_SYSTEM
-.define ___VS_SYSTEM ::__VS_SYSTEM
-.define THE_ALBUM ::__THE_ALBUM
-.define ___THE_ALBUM ::__THE_ALBUM
-.define HUGE_ROM ::__HUGE_ROM
-.define ___HUGE_ROM ::__HUGE_ROM
-; The latter is to keep the C compilers happy
-
 ;REMOVED initlib
 ;this called the CONDES function
 .include "BUILD_FLAGS.s"
@@ -29,10 +10,6 @@
     .export _exit,__STARTUP__:absolute=1
 	.export _PAL_BUF := PAL_BUF, _PAL_UPDATE := PAL_UPDATE, _xargs := xargs
 	.export _PAL_BUF_RAW := PAL_BUF_RAW, _PAL_PTR := PAL_PTR
-	.export _trueFramerate := trueFramerate, _trueCpuRegion := trueCpuRegion, _trueFullRegion := trueFullRegion
-	.exportzp _framerate := framerate, _cpuRegion := cpuRegion, _fullRegion := fullRegion
-	.exportzp _mouse := mouse, _joypad1 := joypad1, _joypad2 := joypad2
-	.exportzp _controllingplayer := controllingplayer, _mouse_mask := mouse_mask
 	.import push0,popa,popax,_main
 
 ; Linker generated symbols
@@ -42,26 +19,19 @@
 	.import	__RODATA_LOAD__ ,__RODATA_RUN__ ,__RODATA_SIZE__
 
 	.import MAPPER, SUBMAPPER, MIRRORING, PRG_BANK_COUNT, CHR_BANK_COUNT, SRAM, TRAINER, CONSOLE_TYPE, PRG_RAM_COUNT, PRG_NVRAM_COUNT, CHR_RAM_COUNT, CHR_NVRAM_COUNT, CPU_PPU_TIMING, HARDWARE_TYPE, MISC_ROMS, DEF_EXP_DEVICE
-	.import _SRAM_VALIDATE, _donotresetrng
+	.import FIRST_MUSIC_BANK, FIRST_DMC_BANK, _SRAM_VALIDATE
 
 VRAM_BUF=__VRAM_BUF_START__
 OAM_BUF=__OAM_BUF_START__
 PAL_BUF_RAW=__PAL_BUF_START__
 PAL_BUF=PAL_BUF_RAW+$20
 
-SFX_STRINGS = 0
 
 ; .importzp _PAD_STATE, _PAD_STATET ;added
 .include "zeropage.inc"
 
-.include "music_songlist.inc"
-.include "sfx_sfxlist.inc"
 
-.ifndef _USE_ILLEGAL_OPCODES
-	.define _USE_ILLEGAL_OPCODES 0
-.endif
 
-.define USE_ILLEGAL_OPCODES ::_USE_ILLEGAL_OPCODES
 
 PPU_CTRL	=$2000
 PPU_MASK	=$2001
@@ -81,7 +51,9 @@ CTRL_PORT2	=$4017
 
 .segment "ZEROPAGE"
 
-FRAME_CNT: 			.res 1
+NTSC_MODE: 			.res 1
+FRAME_CNT1: 		.res 1
+FRAME_CNT2: 		.res 1
 VRAM_UPDATE: 		.res 1
 ; NAME_UPD_ADR: 		.res 2
 NAME_UPD_ENABLE: 	.res 1
@@ -92,15 +64,22 @@ PAL_PTR:            .res 2
 SCROLL_X: 			.res 1
 SCROLL_Y: 			.res 1
 SCROLL_X1: 			.res 1
-; SCROLL_Y1: 			.res 1
+SCROLL_Y1: 			.res 1
+; PAD_STATE: 			.res 2		;one byte per controller
+; PAD_STATE2: 		.res 2		;one byte per controller
+; PAD_STATEP: 		.res 2
+; PAD_STATEP2: 		.res 2
+; PAD_STATET: 		.res 2
+; PAD_STATET2: 		.res 2
 PPU_CTRL_VAR: 		.res 1
 PPU_CTRL_VAR1: 		.res 1
 PPU_MASK_VAR: 		.res 1
-RAND_SEED: 			.res 5
+RAND_SEED: 			.res 4
+
 TEMP: 				.res 11
 SPRID:				.res 1
 
-PAD_BUF		=TEMP+1
+; PAD_BUF		=TEMP+1
 
 PTR			=TEMP	;word
 LEN			=TEMP+2	;word
@@ -125,31 +104,9 @@ VRAM_INDEX:			.res 1
 ; DATA_PTR:			.res 2
 ; META_VAR:			.res 1
 
-; NOTE: These must be zero page and adjacent; the code relies on joypad1_down following mouse.
-mouse:				.res 4
-joypad1:			.res 3
-joypad2 			:= mouse + 1
-controllingplayer:	.res 2
-mouse_mask:			.res 1
-	kMouseZero = 0
-	kMouseButtons = 1
-	kMouseY = 2
-	kMouseX = 3
-
 xargs:				.res 4
-noMouse:			.res 1
 
-framerate:			.res 1	;	1 = ~60Hz (NTSC), 0 = ~50Hz (PAL, Dendy)
-cpuRegion:			.res 1	;	1 = NTSC speed (also on Dendy), 0 = PAL speed
-fullRegion:			.res 1	;	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = WTF
-
-.segment "BSS"
-trueFramerate:		.res 1
-trueCpuRegion:		.res 1
-trueFullRegion:		.res 1
-; NOTE: This variable is not page-sensitive and can be absolute.
-; advance_sensitivity: .res 1  ; Bool.
-
+ 
 ;
 ; NES 2.0 header
 ;
@@ -191,117 +148,14 @@ _exit:
     stx DMC_FREQ
     stx PPU_CTRL		;no NMI
 
-initPPU_first:		;
-    bit PPU_STATUS	;
-@1:					;	Wait out the first frame
-    bit PPU_STATUS	;
-    bpl @1			;__
-
-; We now have about 30,000 cycles to burn before the PPU stabilizes.
-; One thing we can do with this time is put RAM in a known state.
-; Here we fill it with $00, which matches what (say) a C compiler
-; expects for BSS.  Conveniently, X is still 0.
-
-initRNG:
-	lda _donotresetrng
-	cmp #1
-	bne @setseed
-	lda RAND_SEED
-	sta aart_lz_buffer
-	lda RAND_SEED+1
-	sta aart_lz_buffer+1
-	lda RAND_SEED+2
-	sta aart_lz_buffer+2
-	lda RAND_SEED+3
-	sta aart_lz_buffer+3
-	lda RAND_SEED+4
-	sta aart_lz_buffer+4
-	jmp clearRAM
-	
-@setseed:
-	lda $FC
-	bne @cont1
-@fallback1:
-	lda #$FD
-@cont1:
-	sta aart_lz_buffer
-	lda $FD
-	bne @cont2
-@fallback2:
-	lda #$FD
-@cont2:
-	sta aart_lz_buffer+1
-	lda $FE
-	bne @cont3
-@fallback3:
-	lda #$FD
-@cont3:
-	sta aart_lz_buffer+2
-	lda $FF
-    bne @cont4
-@fallback4:
-	lda #$FD
-@cont4:
-	sta aart_lz_buffer+3
-	lda $FB
-    bne @cont5
-@fallback5:
-	lda #$FD
-@cont5:
-	sta aart_lz_buffer+4
-
-clearRAM:
-    txa
-@1:
-    sta $00,x   ;
-    sta $0100,x ;
-    sta $0200,x ;
-    sta $0300,x ;   Clear regular NES RAM
-    sta $0400,x ;
-    sta $0500,x ;
-    sta $0600,x ;
-    sta $0700,x ;__
-	sta $6000,x ;
-	sta $6100,x ;   Clear the collision map space
-    sta $6200,x ;
-	sta $6300,x ;__
-    inx
-    bne @1
-
-    sta	framerate
-    sta	cpuRegion
-
-	lda aart_lz_buffer
-	sta RAND_SEED
-	lda aart_lz_buffer+1
-	sta RAND_SEED+1
-	lda aart_lz_buffer+2
-	sta RAND_SEED+2
-	lda aart_lz_buffer+3
-	sta RAND_SEED+3
-	lda aart_lz_buffer+4
-	sta RAND_SEED+4
-
-	lda #1
-	sta _donotresetrng
-
-	jsr initialize_mapper
-
-	; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
-	; jsr	copydata	; Sets all the initial values of variables
-
-    lda #<(__C_STACK_START__+__C_STACK_SIZE__) ;changed
-    sta	sp
-    lda	#>(__C_STACK_START__+__C_STACK_SIZE__)
-    sta	sp+1            ; Set argument stack ptr
-
-	; jsr	initlib	; removed. this called the CONDES function
-
-
-initPPU_second:
+initPPU:
+    bit PPU_STATUS
 @1:
     bit PPU_STATUS
     bpl @1
+@2:
+    bit PPU_STATUS
+    bpl @2
 
 clearPalette:
 	lda #$3f
@@ -327,10 +181,41 @@ clearVRAM:
 	dey
 	bne @1
 
+clearRAM:
+    txa
+@1:
+    sta $00,x   ;
+    sta $0100,x ;
+    sta $0200,x ;
+    sta $0300,x ;   Clear regular NES RAM
+    sta $0400,x ;
+    sta $0500,x ;
+    sta $0600,x ;
+    sta $0700,x ;__
+	sta $6000,x ;
+	sta $6100,x ;   Clear the collision map space
+    sta $6200,x ;
+	sta $6300,x ;__
+    inx
+    bne @1
+
+
 	lda #4
 	jsr _pal_bright
 	jsr _pal_clear
 	jsr _oam_clear
+
+	jsr initialize_mapper
+
+    ; jsr	zerobss	; Unnecessary, we already zeroed out the entire memory
+	jsr	copydata	; Sets all the initial values of variables
+
+    lda #<(__C_STACK_START__+__C_STACK_SIZE__) ;changed
+    sta	sp
+    lda	#>(__C_STACK_START__+__C_STACK_SIZE__)
+    sta	sp+1            ; Set argument stack ptr
+
+	; jsr	initlib	; removed. this called the CONDES function
 
 	lda #%10100000
 	sta <PPU_CTRL_VAR
@@ -338,25 +223,33 @@ clearVRAM:
 	lda #%00000110
 	sta <PPU_MASK_VAR
 
-	jsr	getTVSystem		;	0 = NTSC, 1 = PAL, 2 = Dendy, 3 = unknown
-	sta	fullRegion		;
-	sta	trueFullRegion	;__
-	eor	#3				;__ 0 = unknown, 1 = Dendy, 2 = PAL, 3 = NTSC
-	cmp	#3				;
-	rol	trueFramerate	;	Set framerate to 1 if value <= NTSC
-	cmp	#3				;	(so 50Hz systems - PAL, Dendy and unknown get 0)
-	rol	framerate		;__
-	and	#1				;	Set framerate to the last bit of the value
-	sta	cpuRegion		;	(so 1 = NTSC / Dendy, 0 = PAL / unknown)
-	sta	trueCpuRegion	;__
-	;__	As a result of the code above, an unknown region will behave like PAL
+waitSync3:
+	lda <FRAME_CNT1
+@1:
+	cmp <FRAME_CNT1
+	beq @1
+
+detectNTSC:
+	ldx #52				;blargg's code
+	ldy #24
+@1:
+	dex
+	bne @1
+	dey
+	bne @1
+
+	lda PPU_STATUS
+	and #$80
+	sta <NTSC_MODE
 
 	jsr _ppu_off
 
-init_famistudio:
+	; lda #0
+	; ldx #0
+	; jsr _set_vram_update
+
 	LDA #<-1			;   Do famistudio_init
     JSR _music_play		;__
-    JSR	famistudio_music_stop
 
     LDA #<.bank(sounds)
     JSR mmc3_tmp_prg_bank_1
@@ -365,7 +258,26 @@ init_famistudio:
 	ldy #>sounds
 	jsr famistudio_sfx_init
 
-finish:
+	lda $60FC
+	beq @fallback
+	sta <RAND_SEED
+	lda $60FD
+	beq @fallback
+	sta <RAND_SEED+1
+	lda $60FE
+	beq @fallback
+	sta <RAND_SEED+2
+	lda $60FF
+	beq @fallback
+	sta <RAND_SEED+3
+        bne @done
+@fallback:
+	lda #$FD
+	sta <RAND_SEED
+	sta <RAND_SEED+1
+	sta <RAND_SEED+2
+	sta <RAND_SEED+3
+@done:
 	lda #0
 	sta PPU_SCROLL
 	sta PPU_SCROLL
@@ -373,32 +285,57 @@ finish:
     cli
 
 	jmp _main			;no parameters
- 
-	.include "get_tv_system.s"
-.if !__THE_ALBUM
-	.include "METATILES/metatiles.s"
-.endif
-	.include "music_data_header.s"
 
-	.include "all_level_data.s"
-	.include "all_sprite_data.s"
-	.include "all_level_table.s"
+	.include "METATILES/metatiles.s"
+
+	.include "LEVELS/all_level_data.s"
+	.include "LEVELS/all_sprite_data.s"
+	.include "LEVELS/level_header.s"
+	.include "LEVELS/all_level_table.s"
 	
 	.include "mapper.s"
 	.include "neslib.s"
 	.include "nesdash.s"
 	.include "nesdoug.s"
-	.include "lz.s"
+    
+.segment "DMC_BANK_00"
+	.incbin "MUSIC/EXPORTS/music_bank0.dmc"
+.segment "DMC_BANK_01"
+	.incbin "MUSIC/EXPORTS/music_bank1.dmc"
 
 CURSED_MUSIC_ENABLE = 1
+.segment "BSS"
+.export _famistudio_state
+_famistudio_state = *
 .include "famistudio_ca65.s"
+	
 
-.if !__THE_ALBUM
+.segment "PCM_BANK"
+GeometryDashPCMA:
+	.incbin "MUSIC/PCM/geometry-dash2.pcm"
+	.byte $00
+
+.segment "PCM_BANK_B"
+GeometryDashPCMB:
+	.incbin "MUSIC/PCM/fire2.pcm"
+	.byte $00
+
+
+; Store music a switchable PRG bank
+; .s files, as generated by FamiStudio through the export menu
+.segment "MUS_BANK_00"
+	.include "MUSIC/EXPORTS/music_1.s"
+.segment "MUS_BANK_01"
+	.include "MUSIC/EXPORTS/music_2.s"
+.segment "MUS_BANK_02"
+	.include "MUSIC/EXPORTS/music_3.s"
+.segment "MUS_BANK_03"
+	.include "MUSIC/EXPORTS/music_4.s"
+.segment "MUS_BANK_04"
+	.include "MUSIC/EXPORTS/music_5.s"
+
 .segment "SFX_BANK"
-.else
-.segment "XCD_BANK_06"
-.endif
-	.include "sfx.s"
+	.include "MUSIC/EXPORTS/sfx.s"
 
 .segment "COLLMAP0"
 	collMap0:		.res 16*15
@@ -409,10 +346,6 @@ CURSED_MUSIC_ENABLE = 1
 .segment "COLLMAP3"
     collMap3:       .res 16*12
 	ground:			.res 16*3
-
-.segment "SRAM"
-	.align 256
-	aart_lz_buffer:	.res 512
 
 .segment "VECTORS"
 
@@ -430,79 +363,65 @@ _GAME_CHR:
  ;   .incbin "GRAPHICS/famidash2.chr" ; 8kb		//theory of everything (12)
  ;   .incbin "GRAPHICS/famidash-parallax2.chr" ; 4kb	//theory of everything (20)
    
-    .incbin "GRAPHICS/Level Tiles/SpikesA.chr" ; (0)
-    .incbin "GRAPHICS/Level Tiles/SpikesB.chr" ; (2)
-    .incbin "GRAPHICS/Level Tiles/SpikesC.chr" ; (4)
-    .incbin "GRAPHICS/Level Tiles/BlocksA.chr" ; (6)
-    .incbin "GRAPHICS/Level Tiles/BlocksB.chr" ; (8)
-    .incbin "GRAPHICS/Level Tiles/BlocksC.chr" ; (10)
-    .incbin "GRAPHICS/Level Tiles/BlocksD.chr" ; (12)
-    .incbin "GRAPHICS/Level Tiles/SawbladesA.chr" ; (14)
-    .incbin "GRAPHICS/Level Tiles/slopesA.chr" ; (16)
+    .incbin "GRAPHICS/SpikesA.chr" ; (0)
+    .incbin "GRAPHICS/SpikesB.chr" ; (2)
+    .incbin "GRAPHICS/BlocksA.chr" ; (4)
+    .incbin "GRAPHICS/BlocksB.chr" ; (6)
+    .incbin "GRAPHICS/BlocksC.chr" ; (8)
+    .incbin "GRAPHICS/BlocksD.chr" ; (10)
+    .incbin "GRAPHICS/SawbladesA.chr" ; (12)
+    .incbin "GRAPHICS/slopesA.chr" ; (14)
+    .incbin "GRAPHICS/slopesA.chr" ; ()
 
-    .incbin "GRAPHICS/Gamemode/so_retro_v2.chr" ; 1kb (18) 
-    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/so_retro_v2.chr" ; 1kb (16) 
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
-    .incbin "GRAPHICS/Gamemode/bankgamemodesA.chr" ; 1kb (20)
-    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/Gamemode/bankgamemodesAretro.chr" ; 1kb (22)
-    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/Gamemode/bankgamemodesB.chr" ; 1kb (24)
-    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
-    .incbin "GRAPHICS/Gamemode/bankgamemodesBretro.chr" ; 1kb (26)
-    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesA.chr" ; 1kb (18)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesAretro.chr" ; 1kb (20)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesB.chr" ; 1kb (22)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankgamemodesBretro.chr" ; 1kb (24)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
 
-    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (28) 
-    .incbin "GRAPHICS/Level Sprites/bankblank.chr" ; 1kb
-    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (30) 
-    .incbin "GRAPHICS/Level Sprites/bankblank2.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (26) 
+    .incbin "GRAPHICS/bankblank.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (28) 
+    .incbin "GRAPHICS/bankblank2.chr" ; 1kb
 
-    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (32) 
-    .incbin "GRAPHICS/Level Sprites/bankblankcloud.chr" ; 1kb
-    .incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (34) 
-    .incbin "GRAPHICS/Level Sprites/bankblankcloud2.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (30) 
+    .incbin "GRAPHICS/bankblankcloud.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (32) 
+    .incbin "GRAPHICS/bankblankcloud2.chr" ; 1kb
 
-    .if (_LEVELSET = 'A') || (_LEVELSET = $B16) || (_LEVELSET = $141006E)	; A or BIG or HUGE
-		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (36) 
-		.incbin "GRAPHICS/Level Sprites/bankblankfingerdash.chr" ; 1kb
-		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (38) 
-		.incbin "GRAPHICS/Level Sprites/bankblankfingerdash2.chr" ; 1kb
-	.else
-		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (36) 
-		.incbin "GRAPHICS/Level Sprites/bankblankextra.chr" ; 1kb
-		.incbin "GRAPHICS/Level Sprites/bankmain.chr" ; 1kb (38) 
-		.incbin "GRAPHICS/Level Sprites/bankblankextra2.chr" ; 1kb
-	.endif
-	
-    .repeat 15, I   ; banks 40 - 69
-        .incbin .sprintf("GRAPHICS/Icons/bankicon%02X.chr", I)  ; 1kb
-        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (34) 
+    .incbin "GRAPHICS/bankblankfingerdash.chr" ; 1kb
+    .incbin "GRAPHICS/bankmain.chr" ; 1kb (36) 
+    .incbin "GRAPHICS/bankblankfingerdash2.chr" ; 1kb
+
+    .repeat 16, I   ; banks 38 - 69
+        .incbin .sprintf("GRAPHICS/bankicon%02X.chr", I)  ; 1kb
+        .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .endrepeat
 
     .repeat 11, I   ; banks 70 - 91
         .incbin .sprintf("fan icon collection/CONTEST WINNERS/contest%1X.chr", I+1) ; 1kb
-        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+        .incbin "GRAPHICS/bankportals.chr" ; 1kb
     .endrepeat
 
-        .incbin "fan icon collection/starfox.chr" ; 1kb (92)
-        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
-
-    .incbin "GRAPHICS/Gamemode/banktriangle.chr" ; 1kb (94)
-    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+    .incbin "GRAPHICS/banktriangle.chr" ; 1kb (92)
+    .incbin "GRAPHICS/bankportals.chr" ; 1kb
     
-    .incbin "GRAPHICS/Menus/cursors.chr" ; 2kb (96)
+    .incbin "GRAPHICS/cursors.chr" ; 2kb (94)
 
-    .if _LEVELSET = 'C'
-		.incbin "GRAPHICS/Menus/C-menus.chr"    ; 4kb (98)
-	.else
-		.incbin "GRAPHICS/Menus/menus.chr"    ; 4kb (98)
-	.endif
-    .incbin "GRAPHICS/Menus/menuicons.chr"    ; 4kb (102)
-    .incbin "GRAPHICS/Menus/levelcomplete.chr"    ; 4kb (106)
-    .incbin "GRAPHICS/Menus/practicecomplete.chr"    ; 1kb (110)
-   .incbin "GRAPHICS/Level Tiles/SawbladesNone.chr" ; 1kb (111)
+    .incbin "GRAPHICS/SawbladesNone.chr" ; 2kb (96)
 
- ;   .incbin "GRAPHICS/Menus/practicecomplete.chr"    ; 1kb (112)
+
+    .incbin "GRAPHICS/menus.chr"    ; 4kb (98)
+    .incbin "GRAPHICS/menuicons.chr"    ; 4kb (102)
+    .incbin "GRAPHICS/levelcomplete.chr"    ; 4kb (106)
+    .incbin "GRAPHICS/practicecomplete.chr"    ; 1kb (110)
 
 .segment "PARALLAXCHR"  ; banks 112 - 255
 .export _PARALLAX_CHR

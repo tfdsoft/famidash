@@ -1,46 +1,44 @@
 
 CODE_BANK_PUSH("CODE")
 
-void slope_vel() {
-	switch (tmp8 & SLOPE_DEGREES_MASK) {
-		case SLOPE_22DEG:
+const unsigned short speed_table[] = {
+	CUBE_SPEED_X1, CUBE_SPEED_X05, CUBE_SPEED_X2, CUBE_SPEED_X3, CUBE_SPEED_X4
+};
+
+void slope_exit_vel() {
+	switch (tmp8 & 0x07) {
+		case SLOPE_22DEG_DOWN:
+		case SLOPE_22DEG_UP:
+			tmp5 = currplayer_vel_x >> 2;
+			break;
+		case SLOPE_45DEG_DOWN:
+		case SLOPE_45DEG_UP:
 			tmp5 = currplayer_vel_x >> 1;
 			break;
-		case SLOPE_45DEG:
-			tmp5 = currplayer_vel_x;
-			break;
-		case SLOPE_66DEG:
-			tmp5 = (currplayer_vel_x << 1); 	
-	}
-}
-
-void apply_slope_vel() {
-	tmp8 = currplayer_slope_type;
-	slope_vel();
-	if ((currplayer_slope_type & SLOPE_RISING)) {
-		if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
-			currplayer_vel_y = tmp5;
-		} else {
-			currplayer_vel_y = -tmp5;
-		}
-	} else {
-		if ((currplayer_slope_type & SLOPE_UPSIDEDOWN)) {
-			currplayer_vel_y = -tmp5;
-		} else {
-			currplayer_vel_y = tmp5;
-		}
+		case SLOPE_66DEG_DOWN:
+		case SLOPE_66DEG_UP:
+			tmp5 = (currplayer_vel_x >> 1); 
+			tmp5 = (tmp5 >> 1) + tmp5;	
 	}
 }
 
 void x_movement_coll() {
   mmc3_set_prg_bank_1(GET_BANK(bg_coll_R));
 
-	if (currplayer_slope_frames) {
-		currplayer_slope_frames -= 1;
-		if (currplayer_slope_type) {
-		// we we're on an slope and now we aren't, so push the player upwards a bit
-			apply_slope_vel();
+	if (slope_type && !slope_frames && gamemode != 6) {
+	// we we're on an slope and now we aren't, so push the player upwards a bit
+		tmp8 = slope_type;
+		slope_exit_vel();
+		if ((slope_type & 1)) {
+			if ((slope_type & 0b1000)) {
+				currplayer_vel_y = tmp5 + 0x200;
+			} else {
+				currplayer_vel_y = (tmp5 + 0x200)^0xFFFF;
+			}
 		}
+	}
+	if (slope_frames) {
+		slope_frames -= 1;
 	}
 	
 	Generic.x = high_byte(currplayer_x);
@@ -49,12 +47,13 @@ void x_movement_coll() {
 	if (high_byte(currplayer_x) > 0x10) {
 		bg_coll_floor_spikes(); // check for spikes at the left of the player (fixes standing on spikes)
 		if (bg_coll_R()) {
-			if (!(options & platformer) && !force_platformer) {idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);}
+			if (!(options & platformer)) {idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);}
 			else {currplayer_vel_x = 0; }
 		}
 	}
   
 }
+
 
 void x_movement(){
   mmc3_set_prg_bank_1(GET_BANK(bg_coll_R));
@@ -62,9 +61,7 @@ void x_movement(){
 
 	old_x = currplayer_x;
 	
-	currplayer_vel_x = ind16BE_load_NOC(CUBE_SPEED(framerate), speed);
-	
-//	if (controllingplayer->hold & PAD_LEFT) currplayer_vel_x = 0;
+	currplayer_vel_x = speed_table[speed & 0x7F];
 	
 	if (dashing[currplayer] == 4 || dashing[currplayer] == 5) {	
 		if (currplayer_y < 0x0600 && scroll_y == min_scroll_y){
@@ -73,18 +70,28 @@ void x_movement(){
 		//return; 
 	}
 
-	if (gamemode == GAMEMODE_WAVE) { // wave
-		Generic.width = WAVE_WIDTH;
-		Generic.height = WAVE_HEIGHT;
+	if (gamemode == 0x06) { // wave
+		if (mini) {
+			Generic.width = MINI_WAVE_WIDTH;
+			Generic.height = MINI_WAVE_HEIGHT;
+		} else {
+			Generic.width = WAVE_WIDTH;
+			Generic.height = WAVE_HEIGHT;
+		}
 	} else {
-		Generic.width = CUBE_WIDTH[currplayer_mini];
-		Generic.height = CUBE_HEIGHT[currplayer_mini];
+		if (!mini) {
+			Generic.width = CUBE_WIDTH;
+			Generic.height = CUBE_HEIGHT;
+		} else {
+			Generic.width = MINI_CUBE_WIDTH;
+			Generic.height = MINI_CUBE_HEIGHT;
+		}   
 	}
 
 	Generic.x = high_byte(currplayer_x); // this is much faster than passing a pointer to player
 	Generic.y = high_byte(currplayer_y);
 
-	if (!(options & platformer) && !force_platformer) {
+	if (!(options & platformer)) {
 		if ((controllingplayer->left) && !twoplayer && DEBUG_MODE) currplayer_x -= currplayer_vel_x;
 		else currplayer_x += currplayer_vel_x;
 	} else {
@@ -99,7 +106,7 @@ void x_movement(){
 
 		if (tmp7 && (controllingplayer->right)) {
 			tmp7 = high_byte(currplayer_x) + low_word(scroll_x);
-			high_byte(currplayer_x) -= ((tmp7 + 4) & 0x07) - 4 + currplayer_mini; // if mini put it a pixel left-er
+			high_byte(currplayer_x) -= ((tmp7 + 4) & 0x07) - 4 + mini; // if mini put it a pixel left-er
 		}
 		else if (tmp8 && (controllingplayer->left)) {
 			tmp8 = high_byte(currplayer_x) + low_word(scroll_x);
@@ -117,12 +124,12 @@ void x_movement(){
 	} 
 
 
-	if (currplayer_y < 0x0600 && !dual && !twoplayer){
+	if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
 		idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 	}
 	
 
-	else if (!(controllingplayer->hold & (PAD_A | PAD_UP))) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
+	else if (!(controllingplayer->a)) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 }
 
 

@@ -1,6 +1,6 @@
-CODE_BANK_PUSH(SPRITE_RENDER_BANK)
+CODE_BANK_PUSH("XCD_BANK_04")
 
-void reset_level();
+void reset_level(void);
 void minus15y();
 void minus15x();
 void plus15y();
@@ -13,37 +13,37 @@ void trail_loop();
 void __fastcall__ drawplayerone();
 void __fastcall__ drawplayertwo();
 
-void draw_sprites(){
+void draw_sprites(void){
 	// dual = 1;
 	// twoplayer = 1;
 	
 	// draw player
 	if (!invisible) {
 		if (dual) {
-			if (kandoframecnt & 1 && !player_invis) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone); }
-			else if (!player_invis) { crossPRGBankJump0(drawplayerone); crossPRGBankJump0(drawplayertwo); }
+			if (kandoframecnt & 0x01) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone);
+ }
+			else { crossPRGBankJump0(drawplayerone); crossPRGBankJump0(drawplayertwo); }
 		}
 #ifdef FLAG_KANDO_FUN_STUFF
-		else if (bigboi && !player_invis) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); minus15y(); crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); plus15y(); }
-		else if (longmode && !tallmode && !player_invis) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
-		else if (tallmode && !longmode && !player_invis) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); }
-		else if (tallmode && longmode && !player_invis) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
+		else if (bigboi) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); minus15y(); crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); plus15y(); }
+		else if (longmode && !tallmode) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
+		else if (tallmode && !longmode) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); }
+		else if (tallmode && longmode) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
 #endif
-		else if (!player_invis) crossPRGBankJump0(drawplayerone);
+		else crossPRGBankJump0(drawplayerone);
 	}
-
 	// the level sprites
 
 	//	for (index = 0; index < max_loaded_sprites; ++index){		//no flicker
 	if (invisblocks) return;
 
-	if (practice_point_count) {
-		tmp3 = practice_player_1_y_hi[curr_practice_point];
-		if (practice_sprite_x_pos > 10) { 
-			practice_sprite_x_pos -= 3;
-			oam_meta_spr(practice_sprite_x_pos, tmp3 - 1, Practice_Sprites[0]);
+	if (has_practice_point && curr_practice_point == has_practice_point) {
+		tmp3 = high_byte(practice_player_y[has_practice_point - 1]);
+		if (long_temp_x > 10) { 
+			long_temp_x -= 3;
+			oam_meta_spr(long_temp_x, tmp3 - 1, Practice_Sprites[0]);
 		}
-		// else if (practice_sprite_x_pos < 10) {}
+		// else if (long_temp_x < 10) {}
 	}
 
 	if (retro_mode) {
@@ -97,27 +97,16 @@ void draw_sprites(){
 			// If this frame has expired, then move to the next animation frame
 			animation_frame_count = idx8_dec(activesprites_anim_frame_count, index);
 			if ((int8_t)animation_frame_count < 0) {
-
-				if ((activesprites_type[index] == SKULL_ORB && activesprites_animated[index] == 1) || activesprites_type[index] != SKULL_ORB) {
-					animation_frame = idx8_inc(activesprites_anim_frame, index);
-				}
-
-				else if (activesprites_type[index] == SKULL_ORB && activesprites_animated[index] == 2) { if (activesprites_anim_frame[index]) { animation_frame = idx8_dec(activesprites_anim_frame, index); } else { animation_frame = activesprites_anim_frame[index]; } }
-
-				else { animation_frame = activesprites_anim_frame[index]; }
-
+				animation_frame = idx8_inc(activesprites_anim_frame, index);
 				// if the animation frame is past the length, wrap it around back to zero
 				if (animation_frame >= animation_frame_length[spr_type]) {
-					if (activesprites_type[index] != SKULL_ORB) {
-						activesprites_anim_frame[index] = 0;
-						animation_frame = 0;
-					}
-					else { activesprites_anim_frame[index]--; animation_frame--; }
+					activesprites_anim_frame[index] = 0;
+					animation_frame = 0;
 				}
 				// and then set the animation_frame_count to be reloaded
 				needs_reload = 1;
 			} else {
-					animation_frame = activesprites_anim_frame[index];
+				animation_frame = activesprites_anim_frame[index];
 			}
 			
 			// Now load the data for this frame of animation
@@ -138,60 +127,66 @@ void draw_sprites(){
 		} else {
 			animation_data_ptr = (unsigned char*)Metasprites[spr_type & 0x7F];
 		}
-		if (!disco_sprites) oam_meta_spr(temp_x, temp_y, animation_data_ptr);
-		else oam_meta_spr_disco(temp_x, temp_y, animation_data_ptr);
+		oam_meta_spr(temp_x, temp_y, animation_data_ptr);
 		
 	} while (++count < max_loaded_sprites);
 	if (!dual) {
-	if (kandoframecnt & 1) {
+	if (kandoframecnt & 0x01) {
 		
-		tmp2 = sizeof(trail_sprites_visible) - 1;
+		tmp2 = 0;
 		do {
-			__A__ = idx8_load(trail_sprites_visible, tmp2 - 1); __asm__("pha");	
+			__A__ = idx8_load(trail_sprites_visible, tmp2 + 1); __asm__("pha");	
 			idx8_store(trail_sprites_visible, tmp2, (__asm__("pla"), __A__));	// TODO: idx8_X or idxY_load_store macros, this is insane 
-		} while (--tmp2 != 0);
+		} while (++tmp2 < sizeof(trail_sprites_visible) - 1);
 
-		trail_sprites_visible[0] = (trails == 1 || orbactive);
+		if (orbactive) {
+			trail_sprites_visible[tmp2] = 1;
+		} else {
+			trail_sprites_visible[tmp2] = 0;
+		}
 	}
-	if (viseffects) {
-		if ((trails == 1) || (trails != 2 && forced_trails != 2 && !invisible)) {
-			trail_loop();
+	if (forced_trails != 2 && !invisible && viseffects) {
+		tmp6 = currplayer_vel_x << 1;
+		tmp5 = currplayer_x - tmp6;
+		
+		tmp1 = 8;
+
+		trail_loop();
+	}
+	else if ((forced_trails == 2 || trails == 2) && !dual && viseffects) {
+		temptemp5++;
+		tmp6 = currplayer_vel_x << 2;
+		
+		tmpA = player_x[0];
+		tmpB = player_y[0];
+
+		high_byte(player_x[0]) -= high_byte(tmp6);
+		high_byte(player_y[0]) = player_old_posy[3];
+
+		if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
+		
+		high_byte(player_x[0]) -= high_byte(tmp6);
+		high_byte(player_y[0]) = player_old_posy[6];
+
+		if (kandoframecnt & 1) crossPRGBankJump0(drawplayerone);
+
+		high_byte(player_x[0]) -= high_byte(tmp6);
+		high_byte(player_y[0]) = player_old_posy[8];
+
+		if (gamemode == 0) {
+			tmp9 = mini;
+			mini = 1;
 		}
-		else if ((forced_trails == 2 || trails == 2) && !(kandoframecnt & 1)) {
-			skipProcessingCubeRotationLogic++;
-			tmp6 = currplayer_vel_x << 1;
-			
-			tmpA = player_x[0];
-			tmpB = player_y[0];
 
-			high_byte(player_x[0]) -= high_byte(tmp6);
-			high_byte(player_y[0]) = player_old_posy[0];
-
-			crossPRGBankJump0(drawplayerone);
-			
-			high_byte(player_x[0]) -= high_byte(tmp6);
-			high_byte(player_y[0]) = player_old_posy[1];
-
-			crossPRGBankJump0(drawplayerone);
-
-			high_byte(player_x[0]) -= high_byte(tmp6);
-			high_byte(player_y[0]) = player_old_posy[2];
-
-			if (gamemode == GAMEMODE_CUBE) {
-				tmp9 = currplayer_mini;
-				currplayer_mini = 1;
-			}
-
-			crossPRGBankJump0(drawplayerone);
-			
-			if (gamemode == GAMEMODE_CUBE) {
-				currplayer_mini = tmp9;
-			}
-			
-			player_x[0] = tmpA;
-			player_y[0] = tmpB;
-			skipProcessingCubeRotationLogic--;		
+			if (!(kandoframecnt & 1)) crossPRGBankJump0(drawplayerone);
+		
+		if (gamemode == 0) {
+			mini = tmp9;
 		}
+		
+		player_x[0] = tmpA;
+		player_y[0] = tmpB;
+		temptemp5--;		
 	}
 	}
 #undef spr_type
@@ -199,46 +194,21 @@ void draw_sprites(){
 }
 
 void trail_loop() {
-	if (kandoframecnt & 1) {
-		tmp6 = currplayer_vel_x << 1;
-		tmp1 = 1;
-		tmp5 = currplayer_x - tmp6;
-		do {
-			if (trail_sprites_visible[tmp1]) {	
-				oam_spr(
-					high_byte(tmp5) + Trail_Circ_X,
-					player_old_posy[tmp1] + Trail_Circ_Y,
-					Trail_Circ_CHR, Trail_Circ_Attr);
-			}
-			
-			tmp5 = tmp5 - tmp6;
-			tmp1++;
-		} while (tmp1 < 8);
-	} else {
-		tmp1 = 7;
-		// the following 2 lines of code are equal to tmp5 -= (tmp6 * 7)
-		tmp5 = currplayer_vel_x << 4;
-		tmp5 = (currplayer_vel_x << 1) + currplayer_x - tmp5;
-		do {
-			if (trail_sprites_visible[tmp1]) {
-				oam_spr(
-					high_byte(tmp5) + Trail_Circ_X,
-					player_old_posy[tmp1] + Trail_Circ_Y,
-					Trail_Circ_CHR, Trail_Circ_Attr);
-			}
-			
-			tmp5 = tmp5 + tmp6;
-			tmp1--;
-		} while (tmp1 > 0);
-	}	
+	do {
+		if (idx8_load(trail_sprites_visible, tmp1 - 1)) {
+			oam_meta_spr(high_byte(tmp5), idx8_load(player_old_posy, (uint8_t)(9 - tmp1)), Trail_Circ);
+		}
+		tmp5 = tmp5 - tmp6;
+		tmp1--;
+	} while (tmp1 > 1);
 }
 
 void put_progress_bar_sprite() {
-	oam_meta_spr(tmp1, tmp2, (Number_Sprites+22)[tmp3 & 0x7F]);	// = Number_Sprites[22+tmp3]
+	oam_meta_spr(tmp1, tmp2, Number_Sprites[22 + tmp3]);
 }
 
 void put_number() {
-	oam_meta_spr(tmp1, tmp2, Number_Sprites[(high_byte(tmp6) + tmp3) & 0x7F]);
+	oam_meta_spr(tmp1, tmp2, Number_Sprites[high_byte(tmp6) + tmp3]);
 }
 
 void minus15y() {

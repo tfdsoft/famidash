@@ -99,12 +99,6 @@ uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
 void cap_scroll_y_at_top();
 
 /**
- * @brief Caps the Y scroll at 0x2EF
- */
-void cap_scroll_y_at_bottom();
-
-
-/**
  * @brief Play a raw PCM sample. Hangs the game until done.
  *
  * @note Sample parameters (offset, bank, sample rate) are specified in tables inside the routine and found by the @c sample parameter. 
@@ -154,23 +148,6 @@ void increment_attempt_count();
 #define display_attempt_counter(zeroChr, ppu_address) (storeByteToSreg(zeroChr), __AX__ = ppu_address, _display_attempt_counter(__EAX__))
 void _display_attempt_counter (uint32_t args);
 
-/**
- * ======================================================================================================================
- * FAMISTUDIO_SFX_CLEAR_CHANNEL (internal)
- * 
- *  Clears output buffer of a sound effect.
- * 
- *  [in] x: Offset of the sound effect stream.
- * ======================================================================================================================
- */
-void __fastcall__ _famistudio_sfx_clear_channel(unsigned int args);
-#define famistudio_sfx_clear_channel(channel) (__A__ = channel, __AX__ <<= 8, _famistudio_sfx_clear_channel(__AX__))
-
-/**
- * @brief Updates currplayer_table_idx from other currplayer variables
- */
-void update_currplayer_table_idx();
-
 #define low_word(a) *((uint16_t*)&a)
 #define high_word(a) *((uint16_t*)&a+1)
 
@@ -179,24 +156,16 @@ void update_currplayer_table_idx();
 
 #define GET_BANK(sym) (__asm__("ldx #0\nlda #<.bank(%v)", sym), __A__)
 
-#define uint32_inc(long) (\
-	__asm__("inc %v+0 \n bne %s", long, __LINE__), \
-	__asm__("inc %v+1 \n bne %s", long, __LINE__), \
-	__asm__("inc %v+2 \n bne %s", long, __LINE__), \
-	__asm__("inc %v+3 \n  %s:", long, __LINE__) \
-)
+#define uint32_inc(long) (__asm__("inc %v+0 \n bne %s", long, __LINE__), __asm__("inc %v+1 \n bne %s", long, __LINE__), __asm__("inc %v+2 \n bne %s", long, __LINE__), __asm__("inc %v+3 \n  %s:", long, __LINE__))
 
 // store a word's high and low bytes into separate places
 #define storeWordSeparately(word, low, high) \
-							(__AX__ = word, \
-							__asm__("STA %v", low), \
-							__asm__("STX %v", high))
+                            (__AX__ = word, \
+                            __asm__("STA %v", low), \
+                            __asm__("STX %v", high))
 
 extern uint8_t auto_fs_updates;
-#define nmi_fs_updates_on() (++auto_fs_updates)
-#define nmi_fs_updates_off() (auto_fs_updates = 0)
-#define pal_fade_out() (pal_fade_to(4, 0))
-#define pal_fade_in() (pal_fade_to(0, 4))
+#define pal_fade_to_withmusic(from, to) (++auto_fs_updates, pal_fade_to(from, to), auto_fs_updates = 0)
 
 // set palette color, index 0..31
 // completely inlines and replaces neslib's
@@ -207,10 +176,10 @@ extern uint8_t PAL_BUF_RAW[32];
 extern uint8_t PAL_BUF[32];
 #pragma zpsym("PAL_UPDATE")
 #define pal_col(index, color) ( \
-	PAL_BUF_RAW[index&0x1F] = (color), \
-	__A__ = (color), __asm__("tay"), \
-	__asm__("lda (%v), y", PAL_PTR), \
-	PAL_BUF[index&0x1F] = __A__)
+    PAL_BUF_RAW[index&0x1F] = (color), \
+    __A__ = (color), __asm__("tay"), \
+    __asm__("lda (%v), y", PAL_PTR), \
+    PAL_BUF[index&0x1F] = __A__)
 
 #define pal_set_update() ++PAL_UPDATE;
 
@@ -223,31 +192,24 @@ extern uint8_t PAL_BUF[32];
 #define DO_PRAGMA(x) DO_PRAGMA_(x)
 
 #define CODE_BANK_PUSH(bank) \
-	DO_PRAGMA(code-name(push, bank ))\
-	DO_PRAGMA(data-name(push, bank ))\
-	DO_PRAGMA(rodata-name(push, bank ))
+  DO_PRAGMA(code-name(push, bank ))\
+  DO_PRAGMA(data-name(push, bank ))\
+  DO_PRAGMA(rodata-name(push, bank ))
+
 
 #define CODE_BANK_POP() \
-	DO_PRAGMA(code-name(pop))\
-	DO_PRAGMA(data-name(pop))\
-	DO_PRAGMA(rodata-name(pop))
-
-#define CODE_BANK(bank) \
-	DO_PRAGMA(code-name(bank ))\
-	DO_PRAGMA(data-name(bank ))\
-	DO_PRAGMA(rodata-name(bank ))
+  DO_PRAGMA(code-name(pop))\
+  DO_PRAGMA(data-name(pop))\
+  DO_PRAGMA(rodata-name(pop))
 
 
 #define swapbyte(a, b) do { \
-	__A__ = (a); \
-	__asm__("pha"); \
-	(a) = (b); \
-	__asm__("pla"); \
-	(b) = __A__; \
+  __A__ = (a); \
+  __asm__("pha"); \
+  (a) = (b); \
+  __asm__("pla"); \
+  (b) = __A__; \
 } while(0);
-
-// Get the current value of Y (overwrites __A__ tho)
-#define get_Y (__asm__("tya"), __A__)
 
 //void state_sorrynothing();
 
@@ -257,11 +219,13 @@ extern uint8_t PAL_BUF[32];
 #define crossPRGBankJump8(sym, args) (__A__ = args, __asm__("sta ptr3 "), crossPRGBankJump0(sym))
 #define crossPRGBankJump16(sym, args) (__AX__ = args, __asm__("sta ptr3 \n stx ptr3+1"),crossPRGBankJump0(sym))
 
+#define uint16SepArrLoad(sym, idx) (__A__ = idx, __asm__("tay \n lda %v, y \n ldx %v, y", sym##_lo, sym##_hi), __AX__)
+
 // holy fuck i am a genius
 #define do_if_flag_common(func, opcode) do { \
-	__asm__("j" opcode " %s", __LINE__); \
-	do func while(0); \
-	__asm__("%s:", __LINE__); \
+__asm__("j" opcode " %s", __LINE__); \
+do func while(0); \
+ __asm__("%s:", __LINE__); \
 } while(0)
 
 #define do_if_c_set(func) do_if_flag_common(func, "cc")
@@ -285,28 +249,18 @@ extern uint8_t PAL_BUF[32];
 #define do_if_positive(func) do_if_n_clr(func) 
 #define do_if_bit7_clr(func) do_if_n_clr(func)
 
-#define do_if_bit7_set_mem(val, func) __asm__("BIT %v", val); do_if_bit7_set(func)
-#define do_if_bit7_clr_mem(val, func) __asm__("BIT %v", val); do_if_bit7_clr(func)
+#define do_if_bit7_set_mem(val, func) __A__ = val; do_if_bit7_set(func)
+#define do_if_bit7_clr_mem(val, func) __A__ = val; do_if_bit7_clr(func)
 #define do_if_bit6_set_mem(val, func) __asm__("BIT %v", val); do_if_v_set(func)
 #define do_if_bit6_clr_mem(val, func) __asm__("BIT %v", val); do_if_v_clr(func)
 
 #define do_if_in_range(val, min, max, func) __A__ = val; __asm__("sec \n sbc #%b \n sbc #%b-%b+1 ", min, max, min); do_if_c_clr(func)
-#define do_if_not_in_range(val, min, max, func) __A__ = val; __asm__("sec \n sbc #%b \n sbc #%b-%b+1 ", min, max, min); do_if_c_set(func)
 
 #define fc_mic_poll() (PEEK(0x4016) & 0x04)
 
 #define sec_adc(a, b) (__A__ = (a), __asm__("sec \nadc %v", b), __A__)
 #define clc_sbc(a, b) (__A__ = (a), __asm__("clc \nsbc %v", b), __A__)
 
-#define jumpInTableWithOffset(tbl, val, off) ( \
-	__A__ = val << 1, \
-	__asm__("tay \n lda %v-%w, y \n ldx %v-%w+1, y \n jsr callax ", tbl, (off * 2), tbl, (off * 2)))
-
 extern uint8_t shiftBy4table[16];
 #define shlNibble4(nibble) (idx8_load(shiftBy4table, nibble))
 #define shlNibble12(nibble) (idx8_load(shiftBy4table, nibble), __AX__ <<= 8)
-
-// Result in __AX__
-#define signExtend8to16(value) {__AX__ = 0; __A__ = value; do_if_negative({__asm__("dex");});}
-// The one above compiles optimally, the one below doesn't
-#define signExtend8to16inline(value) (__AX__ = 0, __A__ = value, (__A__ < 0) ? (__AX__ - 0x100) : (__AX__))

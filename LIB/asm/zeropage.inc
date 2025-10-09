@@ -13,16 +13,6 @@
         .globalzp       tmp1, tmp2, tmp3, tmp4
         .globalzp       regbank
 
-        .export c_sp := sp
-
-        ; Export C bindings for cc65 tmp vars
-        .repeat 4, I
-        .exportzp .ident(.sprintf("_cc65_ptr%s", .string(I+1))) = .ident(.sprintf("ptr%s", .string(I+1)))
-        .exportzp .ident(.sprintf("_cc65_tmp%s", .string(I+1))) = .ident(.sprintf("tmp%s", .string(I+1)))
-        .endrepeat
-        .export _cc65_sreg := sreg
-        .export _cc65_sp := sp
-
 ; The size of the register bank
 regbanksize     = 6
 

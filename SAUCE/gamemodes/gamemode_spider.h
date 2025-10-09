@@ -1,13 +1,15 @@
 
-CODE_BANK_PUSH(MOVEMENT_BANK)
+CODE_BANK_PUSH("XCD_BANK_01")
 
 void cube_vel_stuff();
 void spider_eject();
 void common_gravity_routine();
-void spider_movement(){
+void spider_movement(void){
 
-	tmpfallspeed = SPIDER_MAX_FALLSPEED(currplayer_table_idx);
-	tmpgravity = SPIDER_GRAVITY(currplayer_table_idx);
+	fallspeed_big = CUBE_MAX_FALLSPEED;
+	fallspeed_mini = MINI_CUBE_MAX_FALLSPEED;
+	gravity_big = CUBE_GRAVITY;
+	gravity_mini = MINI_CUBE_GRAVITY;
 
 	common_gravity_routine();
 
@@ -23,41 +25,57 @@ void spider_movement(){
 	spider_eject();
 	
 	if (!currplayer_gravity) {
-		if(((controllingplayer->press_a || controllingplayer->press_up) || cube_data[currplayer] & 2) && currplayer_vel_y == 0 && !orbed[currplayer]) {
-			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);	
+		if(controllingplayer->press_a && currplayer_vel_y == 0) {
 			jumps++;
-			currplayer_gravity = GRAVITY_UP;
-			update_currplayer_table_idx();
-			spider_up_wait();
+			currplayer_gravity = 1;
+			do {
+				high_byte(currplayer_y) -= 0x08;
+				crossPRGBankJump0(do_the_scroll_thing);				
+				if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
+					idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
+					break;
+				}
+				Generic.y = high_byte(currplayer_y); // the rest should be the same
+			} while (!bg_coll_U());
 			high_byte(currplayer_y) -= eject_U;
 			currplayer_vel_y = 0;
 		}
 }	
 	else {
-		if(((controllingplayer->press_a || controllingplayer->press_up) || cube_data[currplayer] & 2) && currplayer_vel_y == 0 && !orbed[currplayer]) {
-			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);
+		if(controllingplayer->press_a && currplayer_vel_y == 0) {
 			jumps++;
-			currplayer_gravity = GRAVITY_DOWN;
-			update_currplayer_table_idx();
-			spider_down_wait();
+			currplayer_gravity = 0;
+			do {
+				high_byte(currplayer_y) += 0x08;
+				crossPRGBankJump0(do_the_scroll_thing);				
+				
+				Generic.y = high_byte(currplayer_y); // the rest should be the same
+			} while (!bg_coll_D());
+
 			high_byte(currplayer_y) -= eject_D;
+			
 			currplayer_vel_y = 0;
+
+
 		}
 	}		
 	
 
 	// this literally offsets the collision down 1 pixel for the vel reset to happen every frame instead of each other frame
-
-/*	if (currplayer_gravity) {
+	if (currplayer_gravity) {
 		Generic.y = high_byte(currplayer_y) - 2;
 	} else {
 		Generic.y = high_byte(currplayer_y) + 1;
-	}		*/   									//this seemed to be unused??
+	}		
 
 	// check collision down a little lower than CUBE
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
-
+	if (currplayer_vel_y != 0){
+		if(controllingplayer->press_a) {
+			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+		}
+	}
 }	
 
 
@@ -78,31 +96,25 @@ void spider_eject() {
 		} 
 	}
 }
-#define LEFT_POS tmp7
-#define RIGHT_POS tmp9
+
 void spider_up_wait() {
-	LEFT_POS = Generic.x + low_word(scroll_x) + 3;
-	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 3;
 	do {
 		high_byte(currplayer_y) -= 0x08;
-		crossPRGBankJump0(process_y_scroll);
-		if (high_byte(currplayer_y) <= 0x07){ // && scroll_y <= min_scroll_y
+		crossPRGBankJump0(do_the_scroll_thing);
+		if (currplayer_y < 0x0600 && scroll_y <= min_scroll_y){
 			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 			break;
 		}
 		Generic.y = high_byte(currplayer_y); // the rest should be the same
-	} while (!bg_coll_U_spider());
+	} while (!bg_coll_U());
 }			
 
 void spider_down_wait() {
-	LEFT_POS = Generic.x + low_word(scroll_x) + 3;
-	RIGHT_POS = Generic.x + low_word(scroll_x) + Generic.width - 3;
 	do {
 		high_byte(currplayer_y) += 0x08;
-		crossPRGBankJump0(process_y_scroll);
+		crossPRGBankJump0(do_the_scroll_thing);
 		Generic.y = high_byte(currplayer_y); // the rest should be the same
-	} while (!bg_coll_D_spider());
+	} while (!bg_coll_D());
 }				
-#undef LEFT_POS
-#undef RIGHT_POS
+
 CODE_BANK_POP()

@@ -1,14 +1,10 @@
 // prototype
-void init_sprites();
-#if !__VS_SYSTEM
-	#include "defines/charmap/bg_charmap.h"
-	const unsigned char attempttext[]="PQQRSTQ"; //ATTEMPT
-#endif
-#ifdef level_luckydraw
-	#include "defines/charmap/luckydraw_charmap.h"
-	const unsigned char triggerstext[]="TRIGGERS SURVIVED"; //ATTEMPT
-	const unsigned char toptriggerstext[]="TOP TRIGGERS SURVIVED"; //ATTEMPT
-#endif
+void init_sprites(void);
+#include "defines/bg_charmap.h"
+const unsigned char attempttext[]="PQQRSTQ"; //ATTEMPT
+#include "defines/luckydraw_charmap.h"
+const unsigned char triggerstext[]="TRIGGERS SURVIVED"; //ATTEMPT
+const unsigned char toptriggerstext[]="TOP TRIGGERS SURVIVED"; //ATTEMPT
 
 
 //const unsigned char whartxt[]="wxyz";	// WHAR
@@ -60,19 +56,12 @@ void increase_parallax_scroll_column() {
 }
 
 extern unsigned char drawing_frame;
-void unrle_first_screen(){ // run-length decode the first screen of a level
+void unrle_first_screen(void){ // run-length decode the first screen of a level
 	// register unsigned char i;
 	#define i (*((uint8_t *)&ii))
 	register uint16_t ii;
 	mmc3_set_prg_bank_1(GET_BANK(increment_attempt_count));
-	#if !__VS_SYSTEM
-		increment_attempt_count();
-	#else
-		memfill(attemptCounter, 0, sizeof(attemptCounter));
-		for (tmp2 = 0; tmp2 < coins_inserted; tmp2++) {
-			increment_attempt_count();
-		}
-	#endif
+	increment_attempt_count();
 	coins = 0;
 	outline_color = 0x30;	
 	cube_data[0] = 0;
@@ -80,11 +69,11 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 
 	mmc3_set_prg_bank_1(level_data_bank);
 
-	// If practice mode has set a scroll position to restart from
-	// Then we dummy unrle, and adjust the parallax to match
-	if (practice_point_count) {
+	// If practice mode has set a scroll position to restart from, run the unrle function
+	// over and over until it catches up
+	if (has_practice_point) {
 
-		ii = lohi_arr32_load(practice_scroll_x, curr_practice_point) >> 4;
+		ii = practice_scroll_x[has_practice_point-1] >> 4;
 		dummy_unrle_columns(ii);
 
 		__A__ = -(6 * (9 / 3) / 2); __asm__("tay \n sty %v", parallax_scroll_column);
@@ -105,9 +94,9 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 			__asm__("bmi %g", unrle_first_screen_addition_loop);
 		parallax_scroll_column <<= 1;
 
-		//mmc3_set_prg_bank_1(GET_BANK(load_practice_state));
+		//mmc3_set_prg_bank_1(GET_BANK(restore_practice_state));
 		
-		crossPRGBankJump0(load_practice_state);	
+		crossPRGBankJump0(restore_practice_state);		
 
 		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
 		// Draw the nametable starting from where the scroll is set
@@ -117,6 +106,7 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 			i++;
 			uint32_inc(scroll_x);
 		} while (i != 0);
+		music_update();
 		
 	//	memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
 	
@@ -137,23 +127,21 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 		if (draw_screen()) flush_vram_update2();	// if draw_screen did anything, flush vram
 		i++;
 		uint32_inc(scroll_x);
+		if (!(i & 0x1F)) music_update();	// it takes about 29k cycles for exactly 2 of these subloops, aka 1 frame
 	} while (i != 0);
 
 	init_sprites();
 	
 	set_scroll_x(scroll_x);
 	set_scroll_y(scroll_y);
-	if (!practice_point_count) {
-		#if !__VS_SYSTEM
-			multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(6, 15));
-		#endif
+	if (!has_practice_point) {
+		multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(6, 15));
 	
 //		if (TOTALATTEMPTSTHOUSANDS >= 10)
 //			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
 //
 //		else {
-			#ifdef level_luckydraw
-			if (level == level_luckydraw && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
+			if (level == 0x0F && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
 				multi_vram_buffer_horz((const char*)triggerstext,sizeof(triggerstext)-1,NTADR_C(1, 17));
 				one_vram_buffer(0xF5+triggers_hit[2], NTADR_C(20,17));
 				one_vram_buffer(0xF5+triggers_hit[1], NTADR_C(21,17));
@@ -188,8 +176,6 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 				triggers_hit[1] = 0;
 				triggers_hit[2] = 0;
 			}
-
-			#endif
 			
 			mmc3_set_prg_bank_1(GET_BANK(_display_attempt_counter));
 			display_attempt_counter(0xF5, NTADR_C(20, 15));
