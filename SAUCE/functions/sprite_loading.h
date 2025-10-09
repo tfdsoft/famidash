@@ -454,6 +454,7 @@ static void sprite_gamemode_main() {
 	if (controllingplayer->a || controllingplayer->up) {
 		if (gamemode == BALL_MODE) ball_switched[currplayer] = 1;
 		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
+			if (gamemode == GAMEMODE_SPIDER) black_orbed[currplayer] = 1;
 			if (gamemode == ROBOT_MODE) orbed[currplayer] = 1;
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			settrailstuff();
@@ -1098,7 +1099,6 @@ void sprite_collide_lookup() {
 
 	spcl_blckorb:
 		table_offset = black_orb;
-		if (gamemode == GAMEMODE_SPIDER) black_orbed[currplayer] = 1;
 		goto spcl_orb_cmn;
 
 	spcl_red_orb:
