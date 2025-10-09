@@ -1098,6 +1098,7 @@ void sprite_collide_lookup() {
 
 	spcl_blckorb:
 		table_offset = black_orb;
+		if (gamemode == GAMEMODE_SPIDER) black_orbed[currplayer] = 1;
 		goto spcl_orb_cmn;
 
 	spcl_red_orb:

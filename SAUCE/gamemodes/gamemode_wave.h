@@ -6,27 +6,28 @@ void wave_movement(){
 
 	tmp1 = dashing[currplayer];
 
-	if (!tmp1) {
-		
-		currplayer_vel_y = !currplayer_mini ? 
-			(currplayer_gravity ? -currplayer_vel_x : currplayer_vel_x) :
-			(currplayer_gravity ? -(currplayer_vel_x << 1) : (currplayer_vel_x << 1));
-		
-		if (controllingplayer->a || controllingplayer->up) currplayer_vel_y = -currplayer_vel_y;
+	switch (tmp1) {
+	
+		case 0: 		
+			currplayer_vel_y = !currplayer_mini ? 
+				(currplayer_gravity ? -currplayer_vel_x : currplayer_vel_x) :
+				(currplayer_gravity ? -(currplayer_vel_x << 1) : (currplayer_vel_x << 1));
+			
+			if (controllingplayer->a || controllingplayer->up) currplayer_vel_y = -currplayer_vel_y;
 
-		if (!currplayer_slope_frames && !currplayer_was_on_slope_counter) {
-			currplayer_y += currplayer_vel_y;
-		} else {
-			currplayer_vel_y = 0;
-		}
+			if (!currplayer_slope_frames && !currplayer_was_on_slope_counter) {
+				currplayer_y += currplayer_vel_y;
+			} else {
+				currplayer_vel_y = 0;
+			}
+			break;
+		case 1: currplayer_vel_y = 1; break;
+		case 2: currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; break;
+		case 3: currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; break;
+		case 4: currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; break;
+		case 5: currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; break;
 
-	}	
-	else if (tmp1 == 2) { currplayer_vel_y = -currplayer_vel_x; currplayer_y += currplayer_vel_y; }
-	else if (tmp1 == 3) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else if (tmp1 == 4) { currplayer_vel_y = currplayer_vel_x; currplayer_y -= currplayer_vel_y; }	
-	else if (tmp1 == 5) { currplayer_vel_y = currplayer_vel_x; currplayer_y += currplayer_vel_y; }	
-	else currplayer_vel_y = 1;
-
+	};
 	Generic.x = high_byte(currplayer_x) + 4;
 	
 	// this literally offsets the collision down 2 pixel for the vel reset to happen every frame instead of each other frame
