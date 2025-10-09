@@ -250,21 +250,21 @@ void common_gravity_routine() {
 			case 4: tmpaccel *= 2; break;
 		};
 		currplayer_vel_y += tmpaccel;
+		currplayer_y += currplayer_vel_y;
 	} else if (tmp1 == 2) {
 		currplayer_vel_y = -currplayer_vel_x;
+		currplayer_y += currplayer_vel_y;
 	} else if (tmp1 == 3) {
 		currplayer_vel_y = currplayer_vel_x;
+		currplayer_y += currplayer_vel_y;
 	} else if (tmp1 == 4) {
 		currplayer_vel_y = currplayer_vel_x*2;
 		currplayer_y -= currplayer_vel_y;
-		return;
 	} else if (tmp1 == 5) {
 		currplayer_vel_y = currplayer_vel_x*2;
-	} else {
+		currplayer_y += currplayer_vel_y;
+	} else
 		currplayer_vel_y = currplayer_gravity ? -1 : 1;
-		return;
-	}
-	currplayer_y += currplayer_vel_y;
 }
 
 

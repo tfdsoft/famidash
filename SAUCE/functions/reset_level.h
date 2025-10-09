@@ -69,8 +69,6 @@ void reset_level() {
 	robotjumpframe[0] = 0;
 	slope_frames[0] = 0;
 	slope_frames[1] = 0;
-	spidered[0] = 0;
-	spidered[1] = 0;
 	nocamlockforced = 0;
 	minicoins = 0;
 	currplayer_slope_frames = 0;
