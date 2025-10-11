@@ -789,7 +789,8 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x11,
 			startingGroundColor: 0x11,
-			parallaxDisable: false
+			parallaxDisable: false,
+			maxFallSpeed: 0x07,
 		},		
 	],
 	globalObjectOffsets: [

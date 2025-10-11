@@ -135,6 +135,15 @@ void state_game(){
 //	current_transition_timer_length = 0;
 	mmc3_set_prg_bank_1(GET_BANK(reset_level));
 	reset_level();
+
+	scroll_y = spawn_scroll_y_pos;
+	seam_scroll_y = (0x2EF - 0x78); // [temp]	
+	set_scroll_y(scroll_y);
+
+	player_y[0] = spawn_y_pos;
+	player_y[1] = spawn_y_pos;
+	currplayer_y = spawn_y_pos;	
+	
 	update_currplayer_table_idx();
 
 	END_LEVEL_TIMER = 0;

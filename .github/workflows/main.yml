@@ -16,7 +16,7 @@ jobs:
         - { name: B-Sides MMC3 ROM, target: b-sides }
         - { name: C-Sides MMC3 ROM, target: c-sides }
         - { name: The Album MMC3 ROM, target: album }
-        - { name: The BIG MMC3 ROM, target: big }
+       # - { name: The BIG MMC3 ROM, target: big }
         - { name: The HUGE MMC3 ROM, target: huge }
 
     steps:

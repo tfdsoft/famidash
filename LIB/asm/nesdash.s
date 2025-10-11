@@ -211,7 +211,7 @@ shiftBy4table:
 
 .global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
 .import _current_deco_type, _current_spike_set, _current_block_set, _current_saw_set
-.import _song, _speed, _lastgcolortype, _lastbgcolortype
+.import _song, _speed, _lastgcolortype, _lastbgcolortype, _spawn_y_pos, _spawn_scroll_y_pos, _max_fallspeed
 .import _level_data_bank, _sprite_data_bank, _force_platformer
 .import _discomode
 
@@ -266,6 +266,24 @@ _init_rld:
 	AND	#$0F			;
 	STA	_gamemode		;	Get just the gamemode
 	INY					;__
+
+	LDA (ptr1),y		;spawn y position high byte
+	sta _spawn_y_pos+1
+	iny	
+	LDA (ptr1),y		;spawn y position low byte
+	sta _spawn_y_pos
+	iny
+	
+	LDA (ptr1),y		;spawn scroll y position high byte
+	sta _spawn_scroll_y_pos+1
+	iny	
+	LDA (ptr1),y		;spawn scroll y position low byte
+	sta _spawn_scroll_y_pos
+	iny
+	
+	LDA (ptr1),y		;max fall speed high byte
+	sta _max_fallspeed
+	iny
 
 	LDA (ptr1),y		;__	Force platformer, Parallax disable
 	LSR					;__	Parallax disable in carry
@@ -3892,7 +3910,7 @@ SSDPCM_getbyte:
 .endproc
 
 ; void display_attempt_counter (uint8_t zeroChr, uintptr_t ppu_address);
-.segment _LVLDONE_BANK
+;.segment _LVLDONE_BANK
 
 .import _attemptCounter
 

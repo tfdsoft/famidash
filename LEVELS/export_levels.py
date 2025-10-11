@@ -220,28 +220,46 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			f"<sprite_data_{level}",
 			f">sprite_data_{level}",
 			f"<(.bank(sprite_data_{level}))",
-			metadata['songID'],
-			f"({metadata['startingSpeed']} << 4) | {metadata['startingGameMode']}",
-			" | ".join ([
+			metadata.get('songID', 0),
+			f"({metadata.get('startingSpeed', 0)} << 4) | {metadata.get('startingGameMode', 0)}",
+			f"(${metadata.get('spawnYPositionHi', 0xB0):02X})",  # <- spawn position here
+			f"(${metadata.get('spawnYPositionLow', 0x00):02X})",  # <- spawn position here
+			f"(${metadata.get('scrollYPositionHi', 0x02):02X})",  # <- scroll position here
+			f"(${metadata.get('scrollYPositionLow', 0xEF):02X})",  # <- scroll position here
+			f"(${metadata.get('maxFallSpeed', 0x06):02X})",  # <- max fall speed here
+			" | ".join([
 				f"({int(bool(metadata.get(name)))} << {idx})"
-				for idx, name in enumerate(
-					['parallaxDisable', 'forcePlatformer'])
-			]),
-			f"_{metadata['decoType']}",
+				for idx, name in enumerate(['forcePlatformer', 'parallaxDisable'])
+			]),  # <- bitfield separate line
+			f"_{metadata.get('decoType', 'NONE')}",
 			getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
 			getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
 			getPropFormatted(metadata, 'sawSet', 'SAWBLADES', ('A',), "_"),
-			f"${metadata['startingBackgroundColor']:02X}",
-			f"${metadata['startingGroundColor']:02X}",
+			f"${metadata.get('startingBackgroundColor', 0):02X}",
+			f"${metadata.get('startingGroundColor', 0):02X}",
 			str(len(lines)),
 		]
 		maxHeaderStrLen = max(map(len, header))
 		headerDataDesc = [
-			"Sprite data ptr, low byte", "Sprite data ptr, high byte", "Sprite data bank",
-			"Song ID", "Starting game mode and speed",
-				", ".join(["Disable parallax", "Force platformer"][::-1]),
-			"Deco type", "Spike set", "Block set", "Sawblade set",
-			"Starting background color", "Starting ground color", "Level height"]
+			"Sprite data ptr, low byte",
+			"Sprite data ptr, high byte",
+			"Sprite data bank",
+			"Song ID",
+			"Starting game mode and speed",
+			"Spawn Y Position (high byte)",
+			"Spawn Y Position (low byte)",
+			"Y Scroll Position (high byte)",
+			"Y Scroll Position (low byte)",
+			"Max Fall Speed (high byte)",
+			", ".join(["Disable parallax", "Force platformer"][::-1]),
+			"Deco type",
+			"Spike set",
+			"Block set",
+			"Sawblade set",
+			"Starting background color",
+			"Starting ground color",
+			"Level height"
+        ]
 		header = [f"{i} ;{'_'*(maxHeaderStrLen-len(i)+3)} {headerDataDesc[idx]}" for idx, i in enumerate(header)]
 		total_rle_size += len(header) + len(rle_data)
 		if (len(lz_data) >= 8192 - len(header)):
@@ -317,7 +335,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 	print("============ TOTAL LEVEL COMPRESSION STATS ============")
 	print(f"Total RLE (+ header) size:    {total_rle_size}")
 	print(f"Total RLE+LZ (+ header) size: {total_final_size}")
-	print(f"Bytes shaved off:             {total_rle_size - total_final_size}")
+	print(f"Bytes shaved off:			 {total_rle_size - total_final_size}")
 	print(f"Effective compression rate:  {100-(total_final_size / total_rle_size * 100) : .6}%")
 	print("============ TOTAL LEVEL COMPRESSION STATS ============")
 	print("")

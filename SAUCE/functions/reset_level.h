@@ -83,7 +83,7 @@ void reset_level() {
 	#endif
 
 	scroll_y_subpx = 0;
-	scroll_y = 0x2EF;
+	scroll_y = spawn_scroll_y_pos;
 	seam_scroll_y = (0x2EF - 0x78); // [temp]
 	set_scroll_x(scroll_x);
 	set_scroll_y(scroll_y);
@@ -99,9 +99,9 @@ void reset_level() {
 	currplayer_x = 0x1110;
 	}
 
-	player_y[0] = 0xb000;
-	player_y[1] = 0xb000;
-	currplayer_y = 0xb000;
+	player_y[0] = spawn_y_pos;
+	player_y[1] = spawn_y_pos;
+	currplayer_y = spawn_y_pos;
 
 	memfill(jimsheatballalive, 0, MAX_FIREBALLS);
 

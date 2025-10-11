@@ -81,7 +81,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// invisiblelight
 	DEMON,	// firetemple
 	DEMON,	// pgclubstep
-	DEMON,	// deadlyclubstep
 	DEMON,	// thermodynamix
 	DEMON,	// foresttemple
 	DEMON,	// ninecircles
@@ -173,7 +172,6 @@ const uint8_t stars_list[] = {
 	10,	// invisiblelight
 	10,	// firetemple
 	10,	// pgclubstep
-	10,	// deadlyclubstep
 	10,	// thermodynamix
 	10,	// foresttemple
 	10,	// ninecircles

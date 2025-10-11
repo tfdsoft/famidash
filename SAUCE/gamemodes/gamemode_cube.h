@@ -15,11 +15,9 @@ void cube_movement(){
 	tmpfallspeed = CUBE_MAX_FALLSPEED(currplayer_table_idx);
 	tmpgravity = CUBE_GRAVITY(currplayer_table_idx);
 
-	#ifdef level_everyend
-		if (level == level_everyend) {
+	if (max_fallspeed == 0x07) {
 			tmpfallspeed += DASH_END_VEL_RESET(currplayer_table_idx);
-		}
-	#endif
+	}
 
 	common_gravity_routine();
 

@@ -71,7 +71,7 @@ OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= CONFIG/mmc3.cfg
 CFG2 ?= CONFIG/mmc3-album.cfg
-CFG3 ?= CONFIG/mmc3-big.cfg
+# CFG3 ?= CONFIG/mmc3-big.cfg
 CFG4 ?= CONFIG/mmc3-huge.cfg
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
@@ -83,7 +83,7 @@ endif
 .PHONY: default clean distclean build nsf vs-sys main b-sides
 
 build: $(OUTDIR) $(OUTDIR)/$(NAME).nes
-all: main vs-sys b-sides c-sides album big huge
+all: main vs-sys b-sides c-sides album huge
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
 
 main: LEVELSET = A
@@ -146,16 +146,6 @@ c-sides:
 	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
 	--no-print-directory
 
-big: LEVELSET = BIG
-big: OUTDIR = $(OUTDIR_PREFIX)/$@
-big: TMPDIR = $(TMPDIR_PREFIX)/$@
-big:
-	@echo Building BIG...
-	@$(MAKE) build LEVELSET=$(LEVELSET) \
-	CC65_DEFINES=$(CC65_DEFINES) \
-	CA65_DEFINES=$(CA65_DEFINES) \
-	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG3) \
-	--no-print-directory
 
 huge: LEVELSET = HUGE
 huge: CC65_DEFINES += -D__HUGE_ROM=1
