@@ -3910,7 +3910,7 @@ SSDPCM_getbyte:
 .endproc
 
 ; void display_attempt_counter (uint8_t zeroChr, uintptr_t ppu_address);
-;.segment _LVLDONE_BANK
+.segment _LVLDONE_BANK
 
 .import _attemptCounter
 

@@ -78,6 +78,14 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	cube_data[0] = 0;
 	cube_data[1] = 0;
 
+	dual = twoplayer ? 1 : 0;
+	player_gravity[0] = GRAVITY_DOWN;
+	scroll_x = 0;
+	drawing_frame = 0;
+	gravity_mod = 0;
+	disco_sprites = 0;
+
+
 	mmc3_set_prg_bank_1(level_data_bank);
 
 	// If practice mode has set a scroll position to restart from

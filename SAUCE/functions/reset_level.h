@@ -108,7 +108,7 @@ void reset_level() {
 	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
 
 	currplayer_gravity = GRAVITY_DOWN;
-	update_currplayer_table_idx();
+	//update_currplayer_table_idx();	;done again later on in this file
 
 	tmp1 = 0;
 	do {
@@ -116,12 +116,6 @@ void reset_level() {
 		activesprites_anim_frame[tmp1] = 0;
 	} while (++tmp1 < max_loaded_sprites);
 
-	dual = twoplayer ? 1 : 0;
-	player_gravity[0] = GRAVITY_DOWN;
-	scroll_x = 0;
-	drawing_frame = 0;
-	gravity_mod = 0;
-	disco_sprites = 0;
 	player_mini[0] = player_mini[1] = currplayer_mini = 0;
 	player_vel_x[0] = player_vel_x[1] = currplayer_vel_x = 0;
 	player_vel_y[0] = player_vel_y[1] = currplayer_vel_y = 0;
@@ -131,6 +125,7 @@ void reset_level() {
 	coins = 0;
 	orbactive = 0;
 	coin1_timer = coin2_timer = coin3_timer = 0;
+	
 //	cube_data[0] = 0;
 //	cube_data[1] = 0;   this resets in level_loading/unrle_first_screen
 #ifdef FLAG_KANDO_FUN_STUFF
