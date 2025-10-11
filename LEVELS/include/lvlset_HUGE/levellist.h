@@ -79,7 +79,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// speedracer
 	DEMON,	// endorphinrush
 	DEMON,	// everymadness
-	MEDIUMDEMON,	// skeletalshenanigans
+	DEMON,	// skeletalshenanigans
 	DEMON,	// hell
 	DEMON,	// invisiblelight
 	DEMON,	// firetemple

@@ -3316,7 +3316,7 @@
 			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
-			difficulty: "MEDIUMDEMON",
+			difficulty: "DEMON",
 			stars: 10,
 			songID: "song_slash_inferno",
 			startingGameMode: 5,
