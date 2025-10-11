@@ -107,6 +107,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_aftercatabath)
 	.byte .lobyte(level_data_slaughterhouse)
 	.byte .lobyte(level_data_everyend)
+	.byte .lobyte(level_data_luckydraw)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -211,6 +212,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_aftercatabath)
 	.byte .hibyte(level_data_slaughterhouse)
 	.byte .hibyte(level_data_everyend)
+	.byte .hibyte(level_data_luckydraw)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -315,6 +317,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_aftercatabath))
 	.byte .lobyte(.bank(level_data_slaughterhouse))
 	.byte .lobyte(.bank(level_data_everyend))
+	.byte .lobyte(.bank(level_data_luckydraw))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_dash_0)
@@ -488,6 +491,7 @@ _level_lengths_lo:
 	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($000098)		; slaughterhouse
 	.byte .lobyte($0002DC)		; everyend
+	.byte .lobyte($000089)		; luckydraw
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -594,6 +598,7 @@ _level_lengths_md:
 	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($000098)		; slaughterhouse
 	.byte .hibyte($0002DC)		; everyend
+	.byte .hibyte($000089)		; luckydraw
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -700,6 +705,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($000098)		; slaughterhouse
 	.byte .bankbyte($0002DC)		; everyend
+	.byte .bankbyte($000089)		; luckydraw
 
 .endif
 .endif

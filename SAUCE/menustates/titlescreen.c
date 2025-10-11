@@ -1021,3 +1021,47 @@ const uint8_t miniShipFrameTable[] = {0x01, 0x01, 0x03, 0x05, 0x07, 0x09, 0x09};
 const uint8_t miniSwingFrameTable[] = {0x3F, 0x1B, 0x3F, 0x3D};
 
 const uint8_t mysteryFrameTable[] = {0x1D, 0x7D, 0x1F, 0x7F, 0xFF};
+
+#ifdef level_luckydraw
+	#include "defines/charmap/luckydraw_charmap.h"
+	const unsigned char triggerstext[]="TRIGGERS SURVIVED"; //ATTEMPT
+	const unsigned char toptriggerstext[]="TOP TRIGGERS SURVIVED"; //ATTEMPT
+
+void Lucky_Draw_Text_Stuff() {
+			if (level == level_luckydraw && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
+				multi_vram_buffer_horz((const char*)triggerstext,sizeof(triggerstext)-1,NTADR_C(1, 6));
+				one_vram_buffer(0xF5+triggers_hit[2], NTADR_C(20,6));
+				one_vram_buffer(0xF5+triggers_hit[1], NTADR_C(21,6));
+				one_vram_buffer(0xF5+triggers_hit[0], NTADR_C(22,6));
+				one_vram_buffer(0xD0, NTADR_C(23,6));
+				one_vram_buffer(0xF5+8, NTADR_C(24,6));
+				one_vram_buffer(0xF5+0, NTADR_C(25,6));
+				one_vram_buffer(0xF5+0, NTADR_C(26,6));
+				
+				if (triggers > top_triggers) top_triggers = triggers;
+
+				multi_vram_buffer_horz((const char*)toptriggerstext,sizeof(toptriggerstext)-1,NTADR_C(1, 8));
+
+				
+				hexToDec(top_triggers);
+
+				if (hexToDecOutputBuffer[2])
+					one_vram_buffer(0xf5+hexToDecOutputBuffer[2], NTADR_C(23,8));
+
+				if (hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1])
+					one_vram_buffer(0xf5+hexToDecOutputBuffer[1], NTADR_C(24,8));
+
+				one_vram_buffer(0xf5+hexToDecOutputBuffer[0], NTADR_C(25,8));	
+		
+				one_vram_buffer(0xD0, NTADR_C(26,8));
+				one_vram_buffer(0xF5+8, NTADR_C(27,8));
+				one_vram_buffer(0xF5+0, NTADR_C(28,8));
+				one_vram_buffer(0xF5+0, NTADR_C(29,8));			
+			
+				triggers = 0;
+				triggers_hit[0] = 0;
+				triggers_hit[1] = 0;
+				triggers_hit[2] = 0;
+			}
+}
+#endif

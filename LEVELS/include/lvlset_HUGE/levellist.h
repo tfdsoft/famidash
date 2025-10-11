@@ -104,6 +104,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// aftercatabath
 	DEMON,	// slaughterhouse
 	DEMON,	// everyend
+	DEMON,	// luckydraw
 };
 
 const uint8_t stars_list[] = {
@@ -209,4 +210,5 @@ const uint8_t stars_list[] = {
 	10,	// aftercatabath
 	10,	// slaughterhouse
 	10,	// everyend
+	10,	// luckydraw
 };

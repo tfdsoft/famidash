@@ -4180,6 +4180,22 @@
 			parallaxDisable: false,
 			maxFallSpeed: 0x07,
 		},		
+		{
+			level: "luckydraw",
+			lowerText: "LUCKY DRAW",
+			decoType: "DECOCLOUD",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "LETTERBANK",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_meltdown",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},		
 //		{
 //			level: "test8",
 //			lowerText: "TEST8",
