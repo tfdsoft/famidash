@@ -11,7 +11,9 @@ You can find the B-Sides nightly [here](https://nightly.link/tfdsoft/famidash/wo
 
 You can find the C-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip).
 
-You can find the VS branch nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
+You can find the HUGE MAN (2.25MB) nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).
+
+You can find the VS (Arcade) branch nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
 You can find Famidash - The Album nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/famidash-the-album/famidash.nes.zip).
 
