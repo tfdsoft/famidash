@@ -1,1 +1,7 @@
+.vscode
 OUT
+
+*.nes
+*.mlb
+*.bak
+*.elf
