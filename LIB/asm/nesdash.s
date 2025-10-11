@@ -287,8 +287,8 @@ _init_rld:
 
 	LDA (ptr1),y		;__	Force platformer, Parallax disable
 	LSR					;__	Parallax disable in carry
-	ROL _no_parallax	;__	Store where it needs to go
-	STA _force_platformer	;	The rest is force platformer, store it
+	ROL _force_platformer	;__	Store where it needs to go
+	STA _no_parallax	;	The rest is force platformer, store it
 	INY					;__
 
 	LDA (ptr1),y			;
