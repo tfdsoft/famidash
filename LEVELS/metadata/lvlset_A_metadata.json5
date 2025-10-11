@@ -2351,7 +2351,8 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
 		},
 
 /*		{
