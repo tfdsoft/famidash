@@ -1853,6 +1853,132 @@
 			parallaxDisable: true
 		},
 		{
+			level: "cryogenic",
+			lowerText: "CRYOGENIC",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 6,
+			songID: "song_cryogenic",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x07,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [109, 13],
+					offsetX: +8
+				},
+				{
+					coordinates: [121, 14],
+					offsetX: +8
+				},
+				{
+					coordinates: [144, 10],
+					offsetX: +8
+				},
+				{
+					coordinates: [222, 15],
+					offsetY: -8
+				},
+				{
+					coordinates: [265, 13],
+					offsetX: +16
+				},
+				{
+					coordinates: [266, 12],
+					offsetY: +16
+				},
+				{
+					coordinates: [292, 11],
+					offsetX: +8
+				},
+				{
+					coordinates: [295, 18],
+					offsetY: +8
+				},
+				{
+					coordinates: [298, 18],
+					offsetY: +8
+				},
+				{
+					coordinates: [334, 19],
+					offsetY: +8
+				},
+				{
+					coordinates: [337, 19],
+					offsetY: +8
+				},
+				{
+					coordinates: [346, 13],
+					offsetY: +8
+				},
+				{
+					coordinates: [348, 16],
+					offsetX: +8
+				},
+				{
+					coordinates: [354, 12],
+					offsetX: +16
+				},
+				{
+					coordinates: [355, 11],
+					offsetY: +16
+				},
+				{
+					coordinates: [441, 18],
+					offsetX: +16
+				},
+				{
+					coordinates: [442, 17],
+					offsetY: +16
+				},
+				{
+					coordinates: [461, 24],
+					offsetX: +8
+				},
+				{
+					coordinates: [469, 22],
+					offsetY: +8
+				},
+				{
+					coordinates: [478, 24],
+					offsetX: +8
+				},
+				{
+					coordinates: [479, 20],
+					offsetX: +8
+				},
+				{
+					coordinates: [496, 23],
+					offsetX: +8
+				},
+				{
+					coordinates: [630, 18],
+					offsetX: +16
+				},
+				{
+					coordinates: [631, 17],
+					offsetY: +16
+				},
+				{
+					coordinates: [741, 16],
+					offsetX: +16
+				},
+				{
+					coordinates: [742, 17],
+					offsetY: -8
+				},
+				{
+					coordinates: [830, 22],
+					offsetX: +16
+				},
+			]
+		},
+		{
 			level: "oceane",
 			lowerText: "OCEANE",
 			decoType: "EXTRASPRITES1",
