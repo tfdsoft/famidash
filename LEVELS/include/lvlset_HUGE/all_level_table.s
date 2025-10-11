@@ -81,6 +81,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_endorphinrush)
 	.byte .lobyte(level_data_everymadness)
+	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_invisiblelight)
 	.byte .lobyte(level_data_firetemple)
@@ -102,6 +103,8 @@ _level_list_lo:
 	.byte .lobyte(level_data_aftermath)
 	.byte .lobyte(level_data_silentclubstep)
 	.byte .lobyte(level_data_kratos)
+	.byte .lobyte(level_data_aftercatabath)
+	.byte .lobyte(level_data_slaughterhouse)
 	.byte .lobyte(level_data_everyend)
 
 _level_list_hi:
@@ -181,6 +184,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_endorphinrush)
 	.byte .hibyte(level_data_everymadness)
+	.byte .hibyte(level_data_skeletalshenanigans)
 	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_invisiblelight)
 	.byte .hibyte(level_data_firetemple)
@@ -202,6 +206,8 @@ _level_list_hi:
 	.byte .hibyte(level_data_aftermath)
 	.byte .hibyte(level_data_silentclubstep)
 	.byte .hibyte(level_data_kratos)
+	.byte .hibyte(level_data_aftercatabath)
+	.byte .hibyte(level_data_slaughterhouse)
 	.byte .hibyte(level_data_everyend)
 
 _level_list_bank:
@@ -281,6 +287,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_endorphinrush))
 	.byte .lobyte(.bank(level_data_everymadness))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_invisiblelight))
 	.byte .lobyte(.bank(level_data_firetemple))
@@ -302,6 +309,8 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_aftermath))
 	.byte .lobyte(.bank(level_data_silentclubstep))
 	.byte .lobyte(.bank(level_data_kratos))
+	.byte .lobyte(.bank(level_data_aftercatabath))
+	.byte .lobyte(.bank(level_data_slaughterhouse))
 	.byte .lobyte(.bank(level_data_everyend))
 
 _level_chunk_list_lo:
@@ -314,13 +323,16 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_deathmoon_6)
 	.byte .lobyte(level_data_dearnostalgists_7)
 	.byte .lobyte(level_data_motion_8)
-	.byte .lobyte(level_data_futurefunk_9)
+	.byte .lobyte(level_data_skeletalshenanigans_9)
 	.byte .lobyte(level_data_futurefunk_10)
-	.byte .lobyte(level_data_eon_11)
-	.byte .lobyte(level_data_windylandscape_12)
-	.byte .lobyte(level_data_sonicwave_13)
-	.byte .lobyte(level_data_everyend_14)
-	.byte .lobyte(level_data_everyend_15)
+	.byte .lobyte(level_data_futurefunk_11)
+	.byte .lobyte(level_data_eon_12)
+	.byte .lobyte(level_data_windylandscape_13)
+	.byte .lobyte(level_data_sonicwave_14)
+	.byte .lobyte(level_data_aftercatabath_15)
+	.byte .lobyte(level_data_aftercatabath_16)
+	.byte .lobyte(level_data_everyend_17)
+	.byte .lobyte(level_data_everyend_18)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_dash_0)
@@ -332,13 +344,16 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_deathmoon_6)
 	.byte .hibyte(level_data_dearnostalgists_7)
 	.byte .hibyte(level_data_motion_8)
-	.byte .hibyte(level_data_futurefunk_9)
+	.byte .hibyte(level_data_skeletalshenanigans_9)
 	.byte .hibyte(level_data_futurefunk_10)
-	.byte .hibyte(level_data_eon_11)
-	.byte .hibyte(level_data_windylandscape_12)
-	.byte .hibyte(level_data_sonicwave_13)
-	.byte .hibyte(level_data_everyend_14)
-	.byte .hibyte(level_data_everyend_15)
+	.byte .hibyte(level_data_futurefunk_11)
+	.byte .hibyte(level_data_eon_12)
+	.byte .hibyte(level_data_windylandscape_13)
+	.byte .hibyte(level_data_sonicwave_14)
+	.byte .hibyte(level_data_aftercatabath_15)
+	.byte .hibyte(level_data_aftercatabath_16)
+	.byte .hibyte(level_data_everyend_17)
+	.byte .hibyte(level_data_everyend_18)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_dash_0))
@@ -350,13 +365,16 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_deathmoon_6))
 	.byte .lobyte(.bank(level_data_dearnostalgists_7))
 	.byte .lobyte(.bank(level_data_motion_8))
-	.byte .lobyte(.bank(level_data_futurefunk_9))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_9))
 	.byte .lobyte(.bank(level_data_futurefunk_10))
-	.byte .lobyte(.bank(level_data_eon_11))
-	.byte .lobyte(.bank(level_data_windylandscape_12))
-	.byte .lobyte(.bank(level_data_sonicwave_13))
-	.byte .lobyte(.bank(level_data_everyend_14))
-	.byte .lobyte(.bank(level_data_everyend_15))
+	.byte .lobyte(.bank(level_data_futurefunk_11))
+	.byte .lobyte(.bank(level_data_eon_12))
+	.byte .lobyte(.bank(level_data_windylandscape_13))
+	.byte .lobyte(.bank(level_data_sonicwave_14))
+	.byte .lobyte(.bank(level_data_aftercatabath_15))
+	.byte .lobyte(.bank(level_data_aftercatabath_16))
+	.byte .lobyte(.bank(level_data_everyend_17))
+	.byte .lobyte(.bank(level_data_everyend_18))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -438,6 +456,7 @@ _level_lengths_lo:
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($00008B)		; endorphinrush
 	.byte .lobyte($000090)		; everymadness
+	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($00008D)		; firetemple
@@ -459,6 +478,8 @@ _level_lengths_lo:
 	.byte .lobyte($00007C)		; aftermath
 	.byte .lobyte($000095)		; silentclubstep
 	.byte .lobyte($000087)		; kratos
+	.byte .lobyte($0001BF)		; aftercatabath
+	.byte .lobyte($000098)		; slaughterhouse
 	.byte .lobyte($0002DC)		; everyend
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -540,6 +561,7 @@ _level_lengths_md:
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($00008B)		; endorphinrush
 	.byte .hibyte($000090)		; everymadness
+	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($00008D)		; firetemple
@@ -561,6 +583,8 @@ _level_lengths_md:
 	.byte .hibyte($00007C)		; aftermath
 	.byte .hibyte($000095)		; silentclubstep
 	.byte .hibyte($000087)		; kratos
+	.byte .hibyte($0001BF)		; aftercatabath
+	.byte .hibyte($000098)		; slaughterhouse
 	.byte .hibyte($0002DC)		; everyend
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -642,6 +666,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($00008B)		; endorphinrush
 	.byte .bankbyte($000090)		; everymadness
+	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($00008D)		; firetemple
@@ -663,6 +688,8 @@ _level_lengths_hi:
 	.byte .bankbyte($00007C)		; aftermath
 	.byte .bankbyte($000095)		; silentclubstep
 	.byte .bankbyte($000087)		; kratos
+	.byte .bankbyte($0001BF)		; aftercatabath
+	.byte .bankbyte($000098)		; slaughterhouse
 	.byte .bankbyte($0002DC)		; everyend
 
 .endif

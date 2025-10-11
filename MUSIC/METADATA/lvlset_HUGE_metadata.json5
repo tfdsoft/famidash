@@ -588,12 +588,12 @@
 			originalArtist: ["MasterSword","Remix"],
 			coveringArtist: ["Kanako","Ketsukane"]
 		},
-		{
-			fmsSongName: "Metamorphosis",
-			lowerText: "METAMORPHOSIS",
-			originalArtist: "INTERWORLD",
-			coveringArtist: "ElAngel378",
-		},
+//		{
+//			fmsSongName: "Metamorphosis",
+//			lowerText: "METAMORPHOSIS",
+//			originalArtist: "INTERWORLD",
+//			coveringArtist: "ElAngel378",
+//		},
 		{
 			fmsSongName: "Meowstuff",
 			lowerText: "MEOWSTUFF",
@@ -675,6 +675,13 @@
 			originalArtist: "Kitsune²",
 			coveringArtist: "Clickerty",
 		},		
+		{
+			fmsSongName: "Slash Inferno",
+			upperText: "SLASH",
+			lowerText: "INFERNO",
+			originalArtist: ["WFlame Teminite","Boom Kitty"],
+			coveringArtist: "SeaGlowingPro",
+		},				
 		{
 			fmsSongName: "Sonic blaster",
 			lowerText: "SONIC BLASTER",

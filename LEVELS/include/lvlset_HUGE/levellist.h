@@ -78,6 +78,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// speedracer
 	DEMON,	// endorphinrush
 	DEMON,	// everymadness
+	MEDIUMDEMON,	// skeletalshenanigans
 	DEMON,	// hell
 	DEMON,	// invisiblelight
 	DEMON,	// firetemple
@@ -99,6 +100,8 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// aftermath
 	DEMON,	// silentclubstep
 	DEMON,	// kratos
+	DEMON,	// aftercatabath
+	DEMON,	// slaughterhouse
 	DEMON,	// everyend
 };
 
@@ -179,6 +182,7 @@ const uint8_t stars_list[] = {
 	10,	// speedracer
 	10,	// endorphinrush
 	10,	// everymadness
+	10,	// skeletalshenanigans
 	10,	// hell
 	10,	// invisiblelight
 	10,	// firetemple
@@ -200,5 +204,7 @@ const uint8_t stars_list[] = {
 	10,	// aftermath
 	10,	// silentclubstep
 	10,	// kratos
+	10,	// aftercatabath
+	10,	// slaughterhouse
 	10,	// everyend
 };
