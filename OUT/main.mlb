@@ -4,7 +4,7 @@ R:28:PPU_CTRL_VAR
 R:20:FRAME_COUNT_NOW
 R:22:PPU_MASK_VAR
 R:21:FRAME_COUNT_OLD
-P:e3ac-e46b:palBrightTable
+P:e3cb-e48a:palBrightTable
 R:24-25:PAL_SPR_PTR
 R:29-2a:pitch
 P:e076:nmi
@@ -15,7 +15,7 @@ P:c010-c215:test_header
 R:200-2ff:OAM_BUF
 P:e056:set_chr_bank
 P:e03b:set_prg_8000
-P:e46c:_reset
+P:e48b:_reset
 P:e000:_start
 R:2b:__bank_select_hi
 P:e021:__early_init
@@ -24,7 +24,7 @@ P:e020:irq
 R:0:__rc0
 R:1:__rc1
 P:e063:__zero_zp_bss
-P:e379:exit
+P:e398:exit
 P:e01f:_fini
 R:2d:__prg_8000
 R:2e:__prg_a000
@@ -33,7 +33,7 @@ R:3:__rc3
 R:2:__rc2
 R:12:__rc18
 R:13:__rc19
-P:e37f:__memset
+P:e39e:__memset
 R:4:__rc4
 R:6:__rc6
 R:8:__rc8
