@@ -137,20 +137,22 @@ void state_levelselect() {
 			draw_both_progress_bars();
 			return;
 		}
-		
-		if (joypad1.press_right){
+		if (joypad1.press_left || joypad1.press_right) hold_timer = 0;
+		if (joypad1.press_right || (joypad1.right && hold_timer >= 15)){
 			drawBarFlag = 2;
 			levelinc();
 			#if __VS_SYSTEM
 				menutimer = 0;
 			#endif
+			hold_timer = 0;
 		}
-		if (joypad1.press_left){
+		if (joypad1.press_left || (joypad1.left && hold_timer >= 15)){
 			drawBarFlag = 2;
 			leveldec();
 			#if __VS_SYSTEM
 				menutimer = 0;
 			#endif		
+			hold_timer = 0;
 		}
 
 		// NOTE: this is hardcoded. It used to be 0x3F with the old scroll scheme
@@ -161,6 +163,7 @@ void state_levelselect() {
 		draw_both_progress_bars();
 
 		dec_mouse_timer();
+		if (hold_timer < 15) hold_timer++;
 	}
 
 }
