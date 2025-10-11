@@ -4296,14 +4296,14 @@ vert_skip:
 	
 	DEY	; Y is 1
 	
-	LDX	#::_max_loaded_sprites
+	LDX	#0
 	loading_loop:
 		;__	Y is 0
 		LDA	(sprite_data),	y	;
 		CMP	#$FF				;	If sprite data ended, stfu
 		BEQ	return				;__
 		
-		DEX						;
+		INX						;
 		TXA						;	Load next sprite
 		JSR	_load_next_sprite	;
 		LDY	#0					;__ Reset Y
@@ -4311,7 +4311,7 @@ vert_skip:
 		; Part where it was writing to activesprites_active
 		; is ommited as it is done in load_next_sprite
 		
-		CPX	#0					;	Repeat for all sprite slots
+		CPX	#::_max_loaded_sprites					;	Repeat for all sprite slots
 		BNE	loading_loop		;__
 	
 	return:

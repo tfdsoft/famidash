@@ -467,6 +467,9 @@ def export_spr(folder: pathlib.PurePath, levels: Iterable[dict], globalOffsetSet
 			
 		if overflowStart > 0:
 			overflows.append([level, overflowStart, -1])
+            
+		# Explicitly sort sprites by X, then Y
+		level_data.sort(key=lambda s: (s[0] | (s[1] << 8), s[2] | (s[3] << 8)))
 
 		level_data.append([0xff]) # add terminator byte
 		all_data.append((level, len(level_data) * 5 - 4, level_data, num))
