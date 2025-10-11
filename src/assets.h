@@ -7,6 +7,10 @@ putinbank(chr_menu)
         #embed "./assets/test.chr"
     };
 
+putinbank(".prg_rom_fixed_lo")
+    const unsigned char test_palette[16]={ 0x0f,0x0c,0x11,0x31,0x0f,0x00,0x10,0x30,0x0f,0x07,0x17,0x27,0x0f,0x2d,0x00,0x10 };
+
+
 
 putinbank(".prg_rom_fixed_lo")
     const unsigned char test_header[518]={
