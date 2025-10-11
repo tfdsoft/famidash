@@ -63,6 +63,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_danceofviolins)
+	.byte .lobyte(level_data_trolled)
 	.byte .lobyte(level_data_aprettyeasylevel)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_extraordinaryexcitement)
@@ -168,6 +169,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_powertrip)
 	.byte .hibyte(level_data_danceofviolins)
+	.byte .hibyte(level_data_trolled)
 	.byte .hibyte(level_data_aprettyeasylevel)
 	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_extraordinaryexcitement)
@@ -273,6 +275,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_powertrip))
 	.byte .lobyte(.bank(level_data_danceofviolins))
+	.byte .lobyte(.bank(level_data_trolled))
 	.byte .lobyte(.bank(level_data_aprettyeasylevel))
 	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement))
@@ -447,6 +450,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
+	.byte .lobyte($00003D)		; trolled
 	.byte .lobyte($000070)		; aprettyeasylevel
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
@@ -554,6 +558,7 @@ _level_lengths_md:
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
+	.byte .hibyte($00003D)		; trolled
 	.byte .hibyte($000070)		; aprettyeasylevel
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
@@ -661,6 +666,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins
+	.byte .bankbyte($00003D)		; trolled
 	.byte .bankbyte($000070)		; aprettyeasylevel
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
