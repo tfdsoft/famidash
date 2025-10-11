@@ -1,0 +1,580 @@
+//
+// NESLIB IMPLEMENTATION IN C
+// by usersniper
+// feel free to use this lmao
+//
+
+#include <nes.h>
+
+#define high_byte(a) *((unsigned char*)&a+1)
+#define low_byte(a) *((unsigned char*)&a)
+
+// implemented:
+// _pal_all,_pal_bg,_pal_spr,_pal_col,_pal_clear
+// _pal_bright,_pal_spr_bright,_pal_bg_bright
+// _ppu_off,_ppu_on_all,_ppu_on_bg,_ppu_on_spr,_ppu_mask
+// _oam_clear,_oam_spr,_oam_meta_spr
+// _ppu_wait_nmi
+// _scroll,_split
+// _bank_spr, _bank_bg
+// _vram_read,_vram_write
+
+// !!!!FAMITONE 2 NOT INCLUDED!!!!
+
+// _pad_poll
+//
+// _vram_adr,_vram_put,_vram_fill,_vram_inc
+//
+// _memfill
+// _get_ppu_ctrl_var,_set_ppu_ctrl_var
+//
+
+
+// todo:
+// ,_ppu_system
+// ,_oam_size,_oam_hide_rest
+// _rand8,_rand16,_set_rand
+// ,_pad_trigger,_pad_state
+// _rand8,_rand16,_set_rand
+// ,_vram_unrle
+// _set_vram_update,_flush_vram_update
+// ,_delay
+//
+// _nesclock
+
+
+// el memory section!!!!!!
+unsigned char pad[2];
+static unsigned char spin;
+static volatile unsigned char __zp FRAME_COUNT_NOW, FRAME_COUNT_OLD;
+static volatile unsigned char __zp PPU_MASK_VAR, PPU_CTRL_VAR;
+static volatile unsigned char __zp PPU_CTRL_VAR1;
+static unsigned char __zp SCROLL_X, SCROLL_Y;
+static unsigned char __zp SCROLL_X1;//, SCROLL_Y1;
+#define PAL_BUF ((volatile char*)0x100) 
+static char SPRID;
+static char LEN;
+static char PAL_UPDATE;
+static char I;
+
+static char * __zp PAL_BG_PTR;
+static char * __zp PAL_SPR_PTR;
+
+
+static const char palBrightTable[192] = {
+    // 0
+    0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+    0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+
+    // 1
+    0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+    0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+    
+    // 2
+    0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+    0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+    
+    // 3
+    0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+    0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
+    
+    // 4
+    0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
+    0x08, 0x09, 0x0a, 0x0b, 0x0c, 0x0d, 0x0e, 0x0f,
+
+    // 5
+    0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16, 0x17,
+    0x18, 0x19, 0x1a, 0x1b, 0x1c, 0x1d, 0x1e, 0x1f,
+
+    // 6
+    0x20, 0x21, 0x22, 0x23, 0x24, 0x25, 0x26, 0x27,
+    0x28, 0x29, 0x2a, 0x2b, 0x2c, 0x2d, 0x2e, 0x2f,
+
+    // 7
+    0x30, 0x31, 0x32, 0x33, 0x34, 0x35, 0x36, 0x37,
+    0x38, 0x39, 0x3a, 0x3b, 0x3c, 0x3d, 0x3e, 0x3f,
+
+    // 8
+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
+    0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30
+};
+#define palBrightTable0 *((const char*)&palBrightTable[0])
+#define palBrightTable1 *((const char*)&palBrightTable[0x10])
+#define palBrightTable2 *((const char*)&palBrightTable[0x20])
+#define palBrightTable3 *((const char*)&palBrightTable[0x30])
+#define palBrightTable4 *((const char*)&palBrightTable[0x40])
+#define palBrightTable5 *((const char*)&palBrightTable[0x50])
+#define palBrightTable6 *((const char*)&palBrightTable[0x60])
+#define palBrightTable7 *((const char*)&palBrightTable[0x70])
+#define palBrightTable8 *((const char*)&palBrightTable[0x80])
+
+
+
+
+
+/*
+ *  ppu_wait_nmi()
+ *  wait for vblank.
+*/
+void ppu_wait_nmi(){
+    // stall until FRAME_COUNT_NOW is updated by nmi()
+    while (FRAME_COUNT_NOW == FRAME_COUNT_OLD){}
+
+    // set the frame counts equal;
+    // if I incremented instead of setting equal,
+    // the function would act strange on a lag frame!
+    FRAME_COUNT_OLD = FRAME_COUNT_NOW;
+}
+
+
+
+
+
+/*
+ *  ppu_off()
+ *  wait for vblank and turn off the screen!
+*/
+void ppu_off(){
+    PPU_MASK_VAR &= 0b11100111;
+    ppu_wait_nmi();
+}
+
+/*
+ *  ppu_on_all()
+ *  wait for vblank and turn on the screen!
+*/
+void ppu_on_all(){
+    PPU_MASK_VAR |= 0b00011000;
+    ppu_wait_nmi();
+}
+
+/*
+ *  ppu_on_bg()
+ *  wait for vblank and turn on the background layer.
+*/
+void ppu_on_bg(){
+    PPU_MASK_VAR |= 0b00001000;
+    ppu_wait_nmi();
+}
+
+/*
+ *  ppu_on_spr()
+ *  wait for vblank and turn on the sprite layer.
+*/
+void ppu_on_spr(){
+    PPU_MASK_VAR |= 0b00010000;
+    ppu_wait_nmi();
+}
+
+/*
+ *  ppu_mask()
+ *  set the mask value (to be applied at end of vblank).
+*/
+void ppu_mask(unsigned char mask){
+    PPU_MASK_VAR = mask;
+}
+
+
+
+
+
+// internal function used by the library;
+// do not call
+static void pal_copy(const char *data){
+    while (LEN > 0){
+        PAL_BUF[I] = data[I];
+        LEN--;
+        I++;
+    }
+}
+
+/*
+ * pal_all(data)
+ * set the palettes for everything
+*/
+void pal_all(const char *data){
+    LEN = 0x20;
+    I = 0x00;
+    pal_copy(data);
+    PAL_UPDATE++;
+}
+
+/*
+ * pal_bg(data)
+ * set the palettes for the background
+*/
+void pal_bg(const char *data){
+    LEN = 0x10;
+    I = 0x00;
+    pal_copy(data);
+    PAL_UPDATE++;
+}
+
+/*
+ * pal_spr(data)
+ * set the palettes for sprites
+*/
+void pal_spr(const char *data){
+    LEN = 0x20;
+    I = 0x10;
+    pal_copy(data);
+    PAL_UPDATE++;
+}
+
+/*
+ * pal_col(index, color)
+ * change one specific color in the palette.
+*/
+void pal_col(char index, char color){
+    index &= 0x1f;
+    color &= 0x3f;
+    PAL_BUF[index] = color;
+    PAL_UPDATE++;
+}
+
+/*
+ * pal_clear()
+ * DARKEN IT ALL!
+*/
+void pal_clear(){
+    for (char I=0; I<32; I++){
+        PAL_BUF[I] = 0x0f;
+    }
+    PAL_UPDATE++;
+}
+
+/*
+ * pal_spr_bright(bright)
+ * change the brightness of the sprites!
+*/
+void pal_spr_bright(char bright){
+    PAL_SPR_PTR = ((char*)(&palBrightTable[(bright << 4)]));
+    PAL_UPDATE++;
+}
+
+/*
+ * pal_bg_bright(bright)
+ * change the brightness of the background!
+*/
+void pal_bg_bright(char bright){
+    PAL_BG_PTR = ((char*)(&palBrightTable[(bright << 4)]));
+    PAL_UPDATE++;
+}
+
+/*
+ * pal_bright(bright)
+ * change the brightness of EVERYTHING.
+*/
+void pal_bright(char bright){
+    PAL_BG_PTR = ((char*)(&palBrightTable[(bright << 4)]));
+    PAL_SPR_PTR = PAL_BG_PTR;
+    PAL_UPDATE++;
+}
+
+
+
+
+
+/*
+ * oam_clear()
+ * clear the oam buffer.
+*/
+void oam_clear(){
+    if (SPRID > 64) SPRID = 64;
+    while(SPRID!=0) {
+        OAM_BUF[SPRID].y = 0xff;
+        SPRID--;
+    }
+}
+
+/*
+ * oam_spr(x, y, tile, attr)
+ * add a sprite to the oam buffer
+*/
+// if I laid this out correctly,
+// .A = x
+// .X = y
+// .__rc0 = tile
+// .__rc1 = attr 
+// no clue how the compiler is gonna optimize it though
+void oam_spr(char x, char y, char tile, char attr){
+    if(SPRID >= 64) return;
+    OAM_BUF[SPRID].y = y,
+    OAM_BUF[SPRID].tile = tile,
+    OAM_BUF[SPRID].attr = attr,
+    OAM_BUF[SPRID].x = x,
+    SPRID++;
+}
+
+/*
+ * oam_meta_spr(x, y, data)
+ * add multiple sprites to the oam buffer
+*/
+void oam_meta_spr(char x, char y, const char* data){
+    char* ptr = ((char*)data);
+    while (ptr[0] != 0x80){
+        if (SPRID >= 64) return;
+        OAM_BUF[SPRID].x = (ptr[0] + x);
+        OAM_BUF[SPRID].y = (ptr[1] + y);
+        OAM_BUF[SPRID].tile = ptr[2];
+        OAM_BUF[SPRID].attr = ptr[3];
+        ptr += 4;
+        SPRID++;
+    }
+}
+
+
+
+
+
+/*
+ *  scroll(x,y)
+ *  set the scroll x and y values.
+ *  
+ *  __inputs__
+ *  x: set x scroll
+ *  y: set y scroll
+*/
+void scroll(unsigned short x, unsigned short y){
+    unsigned char tmp = 0;
+
+    // if lsb is greater than or equal to 240:
+    if(low_byte(y) >= 240){
+        // engage in attribute corruption prevention
+        SCROLL_Y = (low_byte(y) - 240);
+    } else {
+        // don't otherwise.
+        SCROLL_Y = low_byte(y);
+    }
+
+
+    if(high_byte(y) & 1){
+        tmp = 2;
+    }
+
+    SCROLL_X = low_byte(x);
+
+    // set ppu ctrl to do its thing i guess
+    tmp |= (high_byte(x) & 1); // get lowest bit of x high byte
+    PPU_CTRL_VAR &= 0xfc; // clear the bits to set
+    PPU_CTRL_VAR |= tmp; // throw 'em in there
+
+}
+
+/*
+ *  split(x)
+ *  use the sprite zero hit to split the screen!
+ *  
+ *  __inputs__
+ *  x: set x scroll
+*/
+void split(unsigned short x){
+    unsigned char tmp;
+
+    tmp = (high_byte(x) & 1);
+    PPU_CTRL_VAR1 = ((PPU_CTRL_VAR & 0xfc) | tmp);
+
+    __attribute__((leaf)) __asm__ volatile (
+        "@3: \n"
+        "bit $2002 \n" // this is PPU.status
+        "bvs @3 \n"
+
+        "@4: \n"
+        "bit $2002 \n"
+        "bvc @4 \n"
+    ); // wait for sprite zero hit and then wait for it to clear
+    PPU.scroll = SCROLL_X1;
+    PPU.scroll = 0;
+    PPU.control = PPU_CTRL_VAR1;
+}
+
+
+
+
+
+/*
+ * bank_spr(n)
+ * set the graphics page for sprites
+*/
+void bank_spr(char n){
+    PPU_CTRL_VAR &= 0b11110111;
+    PPU_CTRL_VAR |= ((n & 1) << 3);
+}
+
+/*
+ * bank_bg(n)
+ * set the graphics page for the background
+*/
+void bank_bg(char n){
+    PPU_CTRL_VAR &= 0b11101111;
+    PPU_CTRL_VAR |= ((n & 1) << 4);
+}
+
+
+
+
+
+/*
+ * vram_read(*dest, size)
+ * get contents from vram.
+*/
+void vram_read(unsigned char* dest, unsigned short size){
+    for(unsigned short i=0; i<size; i++){
+        dest[i] = PPU.vram.data;
+    }
+}
+
+/*
+ * vram_write(*src, size)
+ * write a chunk of data to vram
+*/
+void vram_write(unsigned char* src, unsigned short size){
+    for(unsigned short i=0; i<size; i++){
+        PPU.vram.data = src[i];
+    }
+}
+
+
+
+
+
+/*
+ * pad_poll(p)
+ * get controller input!
+*/
+void pad_poll(unsigned char p){
+    unsigned char PAD_BUF;
+
+    JOYPAD[0] = 1; // poll by writing 1, then 0
+    JOYPAD[0] = 0;
+
+    for(char i=0; i<8; i++){
+        PAD_BUF <<= 1;  // get the bits!
+        PAD_BUF |= (JOYPAD[p] & 1);
+    }
+    pad[p] = PAD_BUF;
+}
+
+
+
+
+
+//
+// this is where the random number generator would go
+// IF I HAD ONE!!!!!!!!!
+//
+
+
+
+
+
+/*
+ * vram_adr(address)
+ * set the address of video memory
+*/
+void vram_adr(unsigned short address){
+    PPU.vram.address = high_byte(address);
+    PPU.vram.address = low_byte(address);
+}
+
+/*
+ * vram_put(data)
+ * put something in video memory (use vram_adr() first)
+*/
+void vram_put(unsigned char data){
+    PPU.vram.data = low_byte(data);
+}
+
+/*
+ * vram_fill(n,length)
+ * fill video memory with a value (use vram_adr() first)
+*/
+void vram_fill(unsigned char n, unsigned short length){
+    for(unsigned short i=0; i<length; i++){
+        PPU.vram.data = n;
+    }
+}
+
+/*
+ * vram_inc(n)
+ * zero to increment by 1, nonzero to increment by 32!
+*/
+void vram_inc(unsigned char n){
+    if(n){
+        PPU_CTRL_VAR &= 0b11111011;
+    } else {
+        PPU_CTRL_VAR |= 0b00000100;
+    }
+}
+
+
+
+
+
+/*
+ * memfill(*dest,value,size)
+ * fill memory with whatever funny byte you desire!
+*/
+void memfill(unsigned char* dest, unsigned char value, unsigned short size){
+    for(unsigned short i=0; i<size; i++){
+        dest[i] = value;
+    }
+}
+
+
+
+
+
+/*
+ * get_ppu_ctrl_var()
+ * title is self-explanatory
+*/
+unsigned char get_ppu_ctrl_var(){
+    return PPU_CTRL_VAR;
+}
+
+/*
+ * set_ppu_ctrl_var()
+ * title is self-explanatory
+*/
+void set_ppu_ctrl_var(unsigned char var){
+    PPU_CTRL_VAR = var;
+}
+
+
+
+
+
+/*  (CUSTOM)
+ *  ppu_emphasis()
+ *  tint the screen!
+ *
+ *  __inputs__
+ *  bgr: 0b000 = normal, 0b111 = dark
+*/
+void ppu_emphasis(unsigned char bgr){
+    PPU_MASK_VAR = ((PPU_MASK_VAR & 0b11100001) | (bgr & 0b11100001));
+    PPU.mask = PPU_MASK_VAR;
+    return;
+}
+
+
+
+/*  (CUSTOM)
+ *  ppu_grayscale()
+ *  tint the screen!
+ *
+ *  __inputs__
+ *  grayscale: 0 = off, 1 = on
+*/
+//void ppu_grayscale(unsigned char grayscale){
+//    PPU_MASK_VAR = ((PPU_MASK_VAR & 0b1) | (grayscale & 0b1))
+//    PPU.mask = PPU_MASK_VAR;
+//    return;
+//}

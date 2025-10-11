@@ -1,9 +1,0 @@
-# ew windows
-.vscode
-BUILD
-TMP
-
-MUSIC/music*.txt
-*.nes
-*.dbg
-*.bak

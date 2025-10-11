@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.c": "c",
+        "array": "c"
+    },
+    "makefile.configureOnOpen": true
+}
