@@ -51,9 +51,9 @@ VarBankActive_msprBuffer=0
 VarPalBank_mapBuffer=0
 VarPalBank_msprBuffer=0
 VarTileViewTagBuf=0
-VarBgPalCur=2
-VarPalActive=1
-VarTileActive=255
+VarBgPalCur=0
+VarPalActive=3
+VarTileActive=98
 VarBankActive=0
 VarPPUMask=0
 VarPPUMaskSet0=0
@@ -74,15 +74,15 @@ VarNameViewY=-1
 VarNameViewX2=0
 VarNameViewY2=-1
 VarNameSelectionL=-1
-VarNameSelectionR=8
+VarNameSelectionR=9
 VarNameSelectionT=-1
-VarNameSelectionB=7
-VarNameCopyW=18
+VarNameSelectionB=11
+VarNameCopyW=5
 VarNameCopyH=1
-VarCHRSelectionL=15
-VarCHRSelectionR=16
-VarCHRSelectionT=15
-VarCHRSelectionB=16
+VarCHRSelectionL=2
+VarCHRSelectionR=3
+VarCHRSelectionT=6
+VarCHRSelectionB=7
 VarCHRCopyW=2
 VarCHRCopyH=1
 VarCHRCopyRect=1
@@ -136,7 +136,7 @@ propertyCHRlabel7=global condition
 
 
 
-MetaSpriteBankName=Main
+MetaSpriteBankName=WorldMeltdown-Main
 MetaspritePlayBackCursor=0
 
 
@@ -158,7 +158,7 @@ RadioAutoexport_UseSubDir_NEXXT=0
 CheckAutoexport_MetatileAsBMP=0
 
 
-VarCHRSelected=00[ff]01
+VarCHRSelected=00[62]0100[9d]
 
 
 Palette=110f1030110f2a39110f2730110f11300f1121310f1222320f1323330f1424340f1525350f1626360f1727370f1828380f1929390f1a2a3a0f1b2b3b0f1c2c3c
@@ -176,22 +176,22 @@ CHRUndo=ff[10]00[8]ff[10]00[8]ff[8]00[8]ff[8]00ff[7]00[6]ff[8]00[2]ff[8]00[2]3f[
 CHRCopy=070b1f3d3f2b7f[2]00070f1e1c[2]003fe0d0f8bcfcd4fe[2]00e0f07838[2]00fcff[3]8081[3]f17e[2]7f[2]7e[3]0eff[3]0181[3]f17e[2]fe[2]7e[3]0e11[2]1f00[5]0e[2]00[6]ff81bd[4]81ff007e425a[2]427e00[3fa1]
 
 
-NameTable=ff[48]202122232425262728292223222b2c[2]ff[10]3031323334353637383932333a3b3c3dff[10]40ff424344454647484942434a4b4c[2]ff[2f]f7eff2ece4ffe1eee4ffede5ecf4e4eff7eeff[35]50515253ff[1c]60616263ff[1c]70717273ff[1c]80818283ff[3c]54555657ff[1c]64656667ff[1c]74757677ff[1c]84858687ff[37]7879ff[4]7a7bff[4]2e2fff[12]8889ff[4]8a8bff[4]3e3fff[49]1011[7]1011[7]1011[7]1011[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]
+NameTable=ff[68]202122232425262728292223222b2c[2]ff[10]3031323334353637383932333a3b3c3dff[10]40ff424344454647484942434a4b4c[2]ff[54]ede5ecf4e4eff7eeff[34]f7eff2ece4ff[6]f3f5e2fae5f2efff[49]54555657ff50515253ff[2]50515253ff[2]50515253ff[b]64656667ff60616263ff[2]60616263ff[2]60616263ff[b]74757677ff70717273ff[2]70717273ff[2]70717273ff[b]84858687ff80818283ff[2]80818283ff[2]80818283ff[31]7879ff[4]7a7bff[4]2e2fff[12]8889ff[4]8a8bff[4]3e3fff[49]1011[7]1011[7]1011[7]1011[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]
 
 
-NameCopy=f7eff2ece4ffe1eee4ffede5ecf4e4eff7ee323334353637383932333a3b3c3d40ff424344454647484942434a4b4c[2]ff[15]f7eff2ece4ff[3e]202122232425262728292223222b2c[2]ff[10]3031323334353637383932333a3b3c3dff[10]40ff424344454647484942434a4b4c[2]ff[35]f7eff2ece4ff[76]54555657ff[2]50515253ff[16]64656667ff[2]60616263ff[16]74757677ff[2]70717273ff[16]84858687ff[2]80818283ff[57]7879ff[4]7a7bff[4]2e2fff[12]8889ff[4]8a8bff[4]3e3fff[49]1011[7]1011[7]1011[7]1011[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]
+NameCopy=f7eff2ece4e5f2efff28292223222b2c[2]ff[2]3031323334353637383932333a3b3c3dff[2]40ff424344454647484942434a4b4c[2]ffe5f2efff[c]f7eff2ece4ff[3e]202122232425262728292223222b2c[2]ff[10]3031323334353637383932333a3b3c3dff[10]40ff424344454647484942434a4b4c[2]ff[35]f7eff2ece4ff[76]54555657ff[2]50515253ff[16]64656667ff[2]60616263ff[16]74757677ff[2]70717273ff[16]84858687ff[2]80818283ff[57]7879ff[4]7a7bff[4]2e2fff[12]8889ff[4]8a8bff[4]3e3fff[49]1011[7]1011[7]1011[7]1011[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]
 
 
-NameUndo=ff[48]202122232425262728292223222b2c[2]ff[10]3031323334353637383932333a3b3c3dff[10]40ff424344454647484942434a4b4c[2]ff[2f]f7eff2ece4ffe1eee4ffede5ecf4e4eff7eeff[35]50515253ff[1c]60616263ff[1c]70717273ff[1c]80818283ff[3c]54555657ff[1c]64656667ff[1c]74757677ff[1c]84858687ff[37]7879ff[4]7a7bff[4]2e2fff[12]8889ff[4]8a8bff[4]3e3fff[49]1011[7]1011[7]1011[7]1011[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]
+NameUndo=ff[68]202122232425262728292223222b2c[2]ff[10]3031323334353637383932333a3b3c3dff[10]40ff424344454647484942434a4b4c[2]ff[54]ede5ecf4e4eff7eeff[34]f7eff2ece4ff[6]f3f5e2fae5f2efff[49]54555657ff50515253ff[2]50515253ff[2]50515253ff[b]64656667ff60616263ff[2]60616263ff[2]60616263ff[b]74757677ff70717273ff[2]70717273ff[2]70717273ff[b]84858687ff80818283ff[2]80818283ff[2]80818283ff[31]7879ff[4]7a7bff[4]2e2fff[12]8889ff[4]8a8bff[4]3e3fff[49]1011[7]1011[7]1011[7]1011[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]1213[7]
 
 
-AttrTable=00[2]50[4]00[3]4055[4]1000[4]441100[6]401000[5]5044115000[2]f0[8]ff[8]0f[8]
+AttrTable=00[2]50[4]1000[2]4055[4]1000[2]4455[4]51004055aa6615ff01000405aaa6115f00[2]f0[8]ff[8]0f[8]
 
 
-AttrCopy=00[12]01[2e]
+AttrCopy=01[11]00[2]01[10]00[2]01[10]0001[a]
 
 
-AttrUndo=00[2]50[4]00[4]05[4]00[5]441100[6]401000[5]5044115000[2]f0[8]ff[8]0f[8]
+AttrUndo=00[2]50[4]1000[2]4055[4]1000[2]4455[4]51004055aa6615ff01000405aaa6115f00[2]f0[8]ff[8]0f[8]
 
 
 MetaSprites=ff[10000]
@@ -329,14 +329,14 @@ MetatileSet_8x8_props=00[2000]
 MetatileSet_8x8_propsUndo=00[2000]
 
 
-MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-MetatileSetLabels_8x8=Unlabeled,Unlabeled
-MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
+MetatileSetLabels_8x8=Unlabeled,Unlabeled
+MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
 
 CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
@@ -501,18 +501,18 @@ Checkpoint_MetatileSet_8x8_props=00[2000]
 Checkpoint_MetatileSet_8x8_propsUndo=00[2000]
 
 
-Checkpoint_MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-Checkpoint_MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-Checkpoint_MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-Checkpoint_MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-Checkpoint_MetatileSetLabels_8x8=Unlabeled,Unlabeled
-Checkpoint_MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_8x8=Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
 
-Checkpoint_CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-Checkpoint_CHRBankLabelsUndo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_CHRBankLabelsUndo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
 
 Checkpoint_32_NTSC_MsprDuration=00000006[100]
@@ -581,7 +581,7 @@ Current preset ID=0
 
 GUI behaviour:
 ---------------------------------------------------------
-Use paired mode if possible=1
+Use paired mode if possible=0
 Affect backgrounds=1
 Affect sprites=1
 
