@@ -17,7 +17,7 @@
 // _ppu_wait_nmi
 // _scroll,_split
 // _bank_spr, _bank_bg
-// _vram_read,_vram_write
+// _vram_read,_vram_write,_vram_unrle
 
 // !!!!FAMITONE 2 NOT INCLUDED!!!!
 
@@ -36,7 +36,7 @@
 // _rand8,_rand16,_set_rand
 // ,_pad_trigger,_pad_state
 // _rand8,_rand16,_set_rand
-// ,_vram_unrle
+// 
 // _set_vram_update,_flush_vram_update
 // ,_delay
 //
@@ -440,7 +440,44 @@ void vram_write(unsigned char* src, unsigned short size){
     }
 }
 
+/*
+ * vram_unrle(*src)
+ * decompress a nametable
+*/
+void vram_unrle(unsigned char* src){
+    unsigned char tag = src[0]; // tag is the least common byte
+    unsigned char value, run;
+    src++;
 
+    while(1){
+        if (src[0] != tag) { 
+            // if its not equal to the tag,
+            // just write the byte, plain and simple.
+            PPU.vram.data = value = src[0];
+        } else {
+            // if it IS the tag,
+            src++;
+            run = src[0]; // grab the run length.
+
+            if (run == 0) { 
+                // if the run length is 0,
+                // break out of the loop.
+                break;
+            }
+            if (run == 1) {
+                // if the run length is 1,
+                // write the tag.
+                PPU.vram.data = tag;
+            }
+            while (run > 0) {
+                PPU.vram.data = value;
+                run--;
+            }
+        }
+        src++; // move onto the next byte!
+    }
+    
+}
 
 
 

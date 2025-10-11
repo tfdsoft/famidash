@@ -13,7 +13,7 @@ int main(void){
     ppu_off(); // turn off everything
 
 
-    set_prg_8000(0);
+    
     set_chr_bank(0,0);
     set_chr_bank(1,2);
     set_chr_bank(2,4);
@@ -21,6 +21,7 @@ int main(void){
     set_chr_bank(4,6);
     set_chr_bank(5,7);
     // write chr
+    set_prg_8000(0);
     vram_adr(0x0000);
     vram_copy((void*)0xc000, 0x2000);
     
@@ -28,13 +29,16 @@ int main(void){
     // clear nametables
     vram_fill(0, 0x1000);
 
+    vram_adr(0x2000);
+    vram_unrle(test_header);
+
     // clear palette
-    vram_adr(0x3f00);
-    vram_fill(0, 0x20);
-
-
+    pal_col(0,0x0f);
+    pal_col(1,0x00);
+    pal_col(2,0x10);
+    pal_col(3,0x30);
     
-
+    //vram_fill(0, 0x1c);
 
 
     APU.status = 0b11111; // turn on all apu channels
@@ -43,16 +47,18 @@ int main(void){
 
     set_prg_8000(61);
 
+    pal_bright(4);
     ppu_on_all();
     //PPU.control = 0b10100000;
 
+    
     while(1){
         unsigned char tmp;
         unsigned short yscroll;
         ppu_wait_nmi();
         
 
-        scroll(32,yscroll++);
+        scroll(0,0);
 
         APU.triangle.period_low = low_byte(pitch);
         APU.triangle.len_period_high = ((high_byte(pitch) & 0x07) + 0x08);
