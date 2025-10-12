@@ -138,12 +138,18 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x16,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
 						[292, 24],	[429, 22],	[566, 21],	[707, 21],
 					],
 					offsetY: -8
+				},
+				{
+					coordinates: [429, 22],						//portal
+					offsetY: +2,
+					offsetX: -8
 				},
 			]
 		},

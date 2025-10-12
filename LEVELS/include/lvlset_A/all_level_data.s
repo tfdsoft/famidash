@@ -1083,7 +1083,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8149 bytes
+.segment "DAT_BANK_21"	; Total bank size: 8183 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -1096,7 +1096,7 @@
 		.byte ($00) ;__________________________ Spawn Y Position (low byte)
 		.byte ($02) ;__________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
-		.byte ($06) ;__________________________ Max Fall Speed (high byte)
+		.byte ($07) ;__________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
 		.byte _DECO1 ;_________________________ Deco type
 		.byte _SPIKESA ;_______________________ Spike set
@@ -1106,7 +1106,7 @@
 		.byte $16 ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1487
+		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1521
 
 
 .segment "DAT_BANK_22"	; Total bank size: 8131 bytes
@@ -1135,7 +1135,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_23"	; Total bank size: 5967 bytes
+.segment "DAT_BANK_23"	; Total bank size: 5987 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header

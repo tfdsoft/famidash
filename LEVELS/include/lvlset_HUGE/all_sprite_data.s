@@ -226,7 +226,7 @@ sprite_data_stereomadness:
   .byte $d0,$37,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6A"
+.segment "DAT_BANK_6C"
 sprite_data_backontrack:
   .byte $d0,$00,$88,$03,$0a
   .byte $30,$02,$70,$03,$2b
@@ -658,11 +658,11 @@ sprite_data_polargeist:
   .byte $50,$3a,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6C"
+.segment "DAT_BANK_6B"
 sprite_data_dryout:
   .byte $40,$02,$60,$03,$2b
   .byte $60,$02,$80,$03,$2e
-  .byte $e0,$02,$80,$03,$85
+  .byte $e0,$02,$80,$03,$86
   .byte $40,$03,$50,$03,$2d
   .byte $60,$04,$70,$03,$2c
   .byte $a0,$04,$60,$03,$2b
@@ -671,6 +671,7 @@ sprite_data_dryout:
   .byte $90,$05,$80,$03,$30
   .byte $b0,$05,$20,$03,$2d
   .byte $10,$06,$70,$03,$85
+  .byte $10,$06,$80,$03,$d5
   .byte $b0,$06,$80,$03,$2e
   .byte $d0,$06,$50,$03,$2d
   .byte $f0,$06,$50,$03,$2d
@@ -770,10 +771,12 @@ sprite_data_dryout:
   .byte $60,$19,$50,$03,$3b
   .byte $80,$19,$10,$03,$2f
   .byte $20,$1a,$30,$03,$3b
+  .byte $40,$1a,$10,$03,$31
   .byte $60,$1a,$20,$03,$aa
   .byte $60,$1a,$30,$03,$da
+  .byte $80,$1a,$10,$03,$31
   .byte $a0,$1a,$30,$03,$3b
-  .byte $d0,$1a,$38,$03,$08
+  .byte $c8,$1a,$3a,$03,$08
   .byte $90,$1b,$70,$03,$98
   .byte $90,$1b,$80,$03,$c8
   .byte $b0,$1b,$70,$03,$96
@@ -865,10 +868,11 @@ sprite_data_dryout:
   .byte $f0,$32,$f0,$02,$2d
   .byte $30,$33,$80,$03,$30
   .byte $40,$33,$50,$03,$2b
+  .byte $50,$33,$80,$03,$18
   .byte $60,$33,$70,$03,$93
   .byte $60,$33,$80,$03,$c3
+  .byte $70,$33,$80,$03,$18
   .byte $90,$33,$78,$03,$0a
-  .byte $90,$34,$d0,$02,$0f
   .byte $90,$34,$30,$03,$0f
   .byte $ff
 
@@ -3860,7 +3864,7 @@ sprite_data_theoryofeverything:
   .byte $10,$36,$b0,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_6A"
+.segment "DAT_BANK_66"
 sprite_data_electroman:
   .byte $00,$00,$30,$03,$82
   .byte $00,$00,$40,$03,$c1
@@ -8110,7 +8114,7 @@ sprite_data_dash:
   .byte $90,$45,$40,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_6C"
+.segment "DAT_BANK_6A"
 sprite_data_retray:
   .byte $00,$00,$50,$03,$8f
   .byte $00,$00,$60,$03,$cf
@@ -17784,7 +17788,7 @@ sprite_data_tinytunes:
   .byte $70,$32,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6B"
+.segment "DAT_BANK_6C"
 sprite_data_kappaclysm:
   .byte $00,$00,$50,$03,$8f
   .byte $00,$00,$60,$03,$b6
