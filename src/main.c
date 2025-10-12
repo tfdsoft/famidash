@@ -3,7 +3,6 @@
 #include "include.h"
 
 
-
 int main(void){
     set_prg_mode(PRG_MODE_1); // set 0xc000 - 0xdfff as swappable
     
@@ -18,7 +17,7 @@ int main(void){
     pal_bright(0);
     ppu_wait_nmi();
 
-    famistudio_init(0, 0xa000);
+    famistudio_init(1, 0xa000);
     
     set_chr_bank(0,0);
     set_chr_bank(1,2);

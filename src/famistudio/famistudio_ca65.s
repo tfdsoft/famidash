@@ -220,7 +220,7 @@ FAMISTUDIO_USE_ARPEGGIO          = 1
 ; Must be enabled if your project uses more than 1 bank of DPCM samples.
 ; When using this, you must implement the "famistudio_dpcm_bank_callback" callback 
 ; and switch to the correct bank every time a sample is played.
-; FAMISTUDIO_USE_DPCM_BANKSWITCHING = 1
+ FAMISTUDIO_USE_DPCM_BANKSWITCHING = 1
 
 ; Must be enabled if your project uses more than 63 unique DPCM mappings (a mapping is DPCM sample
 ; assigned to a note, with a specific pitch/loop, etc.). Implied when using FAMISTUDIO_USE_DPCM_BANKSWITCHING.
@@ -7554,3 +7554,9 @@ famistudio_rhythm_lut:
 .export _famistudio_sfx_sample_play := famistudio_sfx_sample_play
 .endif
 .endif
+
+
+
+
+
+    ;jmp set_prg_a000
