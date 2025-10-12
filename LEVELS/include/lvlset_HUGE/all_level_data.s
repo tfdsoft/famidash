@@ -1676,7 +1676,7 @@
 		.incbin "EXPORTS/generationretro.lz.bin" ; Size: 5191
 
 
-.segment "DAT_BANK_43"	; Total bank size: 8187 bytes
+.segment "DAT_BANK_43"	; Total bank size: 8174 bytes
 	.export level_data_dearnostalgists_8
 	level_data_dearnostalgists_8:
 	; Level data
@@ -1694,7 +1694,7 @@
 		.byte ($00) ;__________________________ Spawn Y Position (low byte)
 		.byte ($02) ;__________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
-		.byte ($06) ;__________________________ Max Fall Speed (high byte)
+		.byte ($07) ;__________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
 		.byte _DECO1 ;_________________________ Deco type
 		.byte _SPIKESA ;_______________________ Spike set
@@ -1704,7 +1704,7 @@
 		.byte $14 ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/cycles.lz.bin" ; Size: 3009
+		.incbin "EXPORTS/cycles.lz.bin" ; Size: 2996
 
 
 .segment "DAT_BANK_44"	; Total bank size: 8173 bytes
