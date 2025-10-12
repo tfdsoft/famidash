@@ -137,7 +137,7 @@ void state_game(){
 	reset_level();
 
 	scroll_y = spawn_scroll_y_pos;
-	seam_scroll_y = (0x2EF - 0x78); // [temp]	
+	seam_scroll_y = (spawn_scroll_y_pos - 0x78); // [temp]	
 	set_scroll_y(scroll_y);
 
 	player_y[0] = spawn_y_pos;
