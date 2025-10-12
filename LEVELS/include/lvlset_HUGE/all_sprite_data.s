@@ -3303,7 +3303,7 @@ sprite_data_clutterfunk:
   .byte $30,$30,$b0,$02,$2d
   .byte $30,$30,$10,$03,$84
   .byte $40,$30,$f0,$02,$08
-  .byte $60,$30,$20,$03,$19
+  .byte $5c,$30,$20,$03,$19
   .byte $70,$30,$00,$03,$94
   .byte $90,$30,$00,$03,$84
   .byte $a0,$30,$30,$03,$2d
@@ -3370,7 +3370,7 @@ sprite_data_clutterfunk:
   .byte $10,$35,$80,$02,$94
   .byte $10,$35,$80,$03,$94
   .byte $20,$35,$c8,$02,$0d
-  .byte $70,$35,$70,$03,$1b
+  .byte $68,$35,$70,$03,$1b
   .byte $90,$35,$a0,$02,$3c
   .byte $90,$35,$e0,$02,$3d
   .byte $b0,$35,$b0,$02,$3c
@@ -3393,7 +3393,7 @@ sprite_data_clutterfunk:
   .byte $c0,$36,$80,$03,$91
   .byte $f8,$36,$c0,$02,$05
   .byte $08,$37,$80,$02,$2d
-  .byte $20,$37,$00,$03,$05
+  .byte $18,$37,$00,$03,$05
   .byte $28,$37,$40,$03,$3d
   .byte $38,$37,$c0,$02,$05
   .byte $48,$37,$80,$02,$2d
@@ -3900,7 +3900,7 @@ sprite_data_theoryofeverything:
   .byte $70,$30,$e0,$01,$13
   .byte $80,$30,$10,$02,$36
   .byte $b0,$30,$b0,$01,$10
-  .byte $e0,$30,$f0,$01,$0b
+  .byte $e8,$30,$f0,$01,$0b
   .byte $20,$31,$b0,$01,$02
   .byte $30,$31,$b0,$01,$18
   .byte $30,$31,$e0,$01,$2c
@@ -42218,7 +42218,7 @@ sprite_data_foresttemple:
   .byte $90,$37,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_5C"
+.segment "DAT_BANK_5D"
 sprite_data_ninecircles:
   .byte $80,$00,$60,$03,$be
   .byte $80,$00,$70,$03,$d6
@@ -53051,7 +53051,7 @@ sprite_data_everyend:
   .byte $40,$fd,$50,$03,$d1
   .byte $ff
 
-.segment "DAT_BANK_5C"
+.segment "DAT_BANK_5D"
 sprite_data_luckydraw:
   .byte $00,$00,$60,$03,$cf
   .byte $00,$00,$80,$03,$8f

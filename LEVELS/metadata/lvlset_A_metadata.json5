@@ -435,16 +435,18 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x06,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
-						[107, 23],	[130, 22],	[210, 22],	[843, 16],	[880, 14],	[884, 14],		//orb
+						[107, 23],	[130, 22],	[210, 22],	[843, 16],	[880, 14],	[884, 14], [882, 18],		//orb
 						[204, 24],		//blue pad
 						[278, 21],		//upsidedown pad
 						[466, 25],	[470, 25],	[474, 25],	[811, 19],		//yellow orb
 						[673, 21],		//mini portal
 						[875, 16],		//pad
 						[840, 17], [952, 7],//deco
+						[855, 25], //coin 3
 					],
 					offsetX: -8
 				},
@@ -489,6 +491,10 @@
 					offsetX: -4
 				},
 				{
+					coordinates: [774, 20],		//big portal
+					offsetX: -4
+				},
+				{
 					coordinates: [125, 22],		//pulse rod
 					offsetX: +4
 				},
@@ -527,6 +533,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x05,
 			startingGroundColor: 0x15,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -574,6 +581,7 @@
 						[142, 51],		//Growth portal
 						[513, 54],		//yellow orb
 						[75, 51],		//normal grav portal
+						[782, 31],
 					],
 					offsetX: +8
 				},

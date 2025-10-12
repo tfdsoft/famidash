@@ -588,7 +588,7 @@
 		.incbin "EXPORTS/dorabaebasic4.lz.bin" ; Size: 3300
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8131 bytes
+.segment "DAT_BANK_13"	; Total bank size: 8133 bytes
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
 	; Header
@@ -601,7 +601,7 @@
 		.byte ($00) ;_______________________________ Spawn Y Position (low byte)
 		.byte ($02) ;_______________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_______________________________ Max Fall Speed (high byte)
+		.byte ($07) ;_______________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;_________________ Force platformer, Disable parallax
 		.byte _DECOCLOUD ;__________________________ Deco type
 		.byte _SPIKESA ;____________________________ Spike set
@@ -611,7 +611,7 @@
 		.byte $06 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4807
+		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4809
 
 	.export level_data_funnygameholiday
 	level_data_funnygameholiday:
@@ -881,7 +881,7 @@
 		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3137
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 8134 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 8152 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -894,7 +894,7 @@
 		.byte ($00) ;______________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;______________________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;______________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;______________________________________ Max Fall Speed (high byte)
+		.byte ($07) ;______________________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;________________________ Force platformer, Disable parallax
 		.byte _DECOCLOUD ;_________________________________ Deco type
 		.byte _SPIKESC ;___________________________________ Spike set
@@ -904,7 +904,7 @@
 		.byte $15 ;________________________________________ Starting ground color
 		.byte 57 ;_________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 4118
+		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 4136
 
 	.export level_data_electroman
 	level_data_electroman:

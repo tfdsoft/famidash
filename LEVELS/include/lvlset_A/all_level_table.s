@@ -174,7 +174,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A0)		; timemachine
 	.byte .lobyte($000084)		; cycles
 	.byte .lobyte($000088)		; xstep
-	.byte .lobyte($0000A2)		; clutterfunk
+	.byte .lobyte($0000A1)		; clutterfunk
 	.byte .lobyte($00008B)		; theoryofeverything
 	.byte .lobyte($00008D)		; electroman
 	.byte .lobyte($000091)		; clubstep
@@ -223,7 +223,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A0)		; timemachine
 	.byte .hibyte($000084)		; cycles
 	.byte .hibyte($000088)		; xstep
-	.byte .hibyte($0000A2)		; clutterfunk
+	.byte .hibyte($0000A1)		; clutterfunk
 	.byte .hibyte($00008B)		; theoryofeverything
 	.byte .hibyte($00008D)		; electroman
 	.byte .hibyte($000091)		; clubstep
@@ -272,7 +272,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A0)		; timemachine
 	.byte .bankbyte($000084)		; cycles
 	.byte .bankbyte($000088)		; xstep
-	.byte .bankbyte($0000A2)		; clutterfunk
+	.byte .bankbyte($0000A1)		; clutterfunk
 	.byte .bankbyte($00008B)		; theoryofeverything
 	.byte .bankbyte($00008D)		; electroman
 	.byte .bankbyte($000091)		; clubstep
