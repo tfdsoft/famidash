@@ -592,7 +592,7 @@
 			upperText: "ELECTROMAN",
 			lowerText: "ADVENTURES",
 			decoType: "DECOCLOUD",
-			spikeSet: "B",
+			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "INSANE",
@@ -602,41 +602,59 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
 			startingGroundColor: 0x01,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
-					coordinates: [117, 19],		//shrink portal
+					coordinates: [119, 19],		//shrink portal
 					offsetX: -12
 				},
 				{
-					coordinates: [292, 17],		//growth portal
+					coordinates: [804, 24],		//coin 3
+					offsetY: +16
+				},
+				{
+					coordinates: [293, 17],		//growth portal
 					offsetY: -16,
 					offsetX: +4
 				},
 				{
 					coordinates: [
-						[409, 19],		//normal grav portal
-						[527, 21],		//Growth portal
+						[410, 19],		//normal grav portal
+						[528, 21],		//Growth portal
+						[320, 17],		//chain not portal
 					],
 					offsetX: -16
 				},
 				{
 					coordinates: [
-						[583, 21],	[526, 21],		//UFO portal
-						[527, 21],		//Growth portal
+						[584, 21],	[527, 21],		//UFO portal
+						[528, 21],		//Growth portal
+						[295, 18], [302, 18], [310, 18], [319, 17],
 					],
 					offsetY: -8
 				},
 				{
-					coordinates: [819, 21],		//growth portal
+					coordinates: [820, 21],		//growth portal
 					offsetX: -12
 				},
 				{
-					coordinates: [836, 24],		//blue orb
+					coordinates: [
+						[175, 20], [133, 19], [837, 24], [164, 20], [384, 18], [386, 19], [388, 20], [584, 21],
+						[654, 19], [658, 22], [686, 23], [733, 25], [761, 21], [765, 21], [759, 24], [763, 24],
+						[767, 24], [761, 23], [765, 23], [812, 20],
+						[839, 16], [844, 16], [846, 17], [848, 18], [851, 18], [854, 18], [857, 18],
+						[860, 18], [863, 18], [804, 24], [106, 13],
+					],
 					offsetX: +8
 				},
 				{
 					coordinates: [
-						[839, 19],	[843, 19],		//blue orb
+						[183, 20], [173, 18], [175, 20], [167, 18], [130, 17], [133, 19], [164, 20],
+						[840, 19], [844, 19], [238, 18], [243, 18], [252, 24], [251, 18], [254, 18],		//blue orb
+						[357, 21], [360, 19], [363, 20], [368, 21], [371, 19], [374, 20], [395, 15],
+						[398, 17], [401, 16], [404, 18], [260, 20], [264, 17], [269, 15], [276, 14],
+						[286, 14], [288, 15], [290, 16], [409, 19], [410, 19], [447, 21], [453, 21],
+						[458, 19], [551, 22], [106, 13],
 					],
 					offsetY: +8
 				},
