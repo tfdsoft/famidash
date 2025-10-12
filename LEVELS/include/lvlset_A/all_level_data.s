@@ -189,7 +189,7 @@
 		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6380
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8187 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8154 bytes
 	.export level_data_bloodbathbutno
 	level_data_bloodbathbutno:
 	; Header
@@ -213,30 +213,6 @@
 		.byte 40 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/bloodbathbutno.lz.bin" ; Size: 6230
-
-	.export level_data_cantletgo
-	level_data_cantletgo:
-	; Header
-		.byte <sprite_data_cantletgo ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_cantletgo ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_cantletgo)) ;___ Sprite data bank
-		.byte song_cant_let_go ;__________________ Song ID
-		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_____________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 ;____________________________ Deco type
-		.byte _SPIKESA ;__________________________ Spike set
-		.byte _BLOCKSA ;__________________________ Block set
-		.byte _SAWBLADESA ;_______________________ Sawblade set
-		.byte $14 ;_______________________________ Starting background color
-		.byte $04 ;_______________________________ Starting ground color
-		.byte 27 ;________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1921
 
 
 .segment "DAT_BANK_09"	; Total bank size: 8186 bytes
@@ -831,7 +807,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.lz.bin" ; Size: 3647
 
 
-.segment "DAT_BANK_19"	; Total bank size: 8192 bytes
+.segment "DAT_BANK_19"	; Total bank size: 7366 bytes
 	.export level_data_greif
 	level_data_greif:
 	; Header
@@ -1007,7 +983,31 @@
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2225
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8173 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8001 bytes
+	.export level_data_cantletgo
+	level_data_cantletgo:
+	; Header
+		.byte <sprite_data_cantletgo ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_cantletgo ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_cantletgo)) ;___ Sprite data bank
+		.byte song_cant_let_go ;__________________ Song ID
+		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 ;____________________________ Deco type
+		.byte _SPIKESA ;__________________________ Spike set
+		.byte _BLOCKSA ;__________________________ Block set
+		.byte _SAWBLADESA ;_______________________ Sawblade set
+		.byte $14 ;_______________________________ Starting background color
+		.byte $04 ;_______________________________ Starting ground color
+		.byte 27 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2032
+
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -1135,7 +1135,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_23"	; Total bank size: 5977 bytes
+.segment "DAT_BANK_23"	; Total bank size: 6833 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header

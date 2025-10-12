@@ -213,12 +213,25 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x14,
 			startingGroundColor: 0x04,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
-						[33, 24],	[36, 22],	[39, 20],	[480, 20],	[590, 21],	[591, 21],
+						[33, 24],	[36, 22],	[39, 20],	[589, 21],	[590, 21],
 					],
 					offsetY: -8
+				},
+				{
+					coordinates: [
+						[163, 22], [604, 16], [670, 21],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[479, 20], [590, 21],
+					],
+					offsetX: -2
 				},
 			]
 		},
