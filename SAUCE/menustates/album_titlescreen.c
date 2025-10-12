@@ -17,6 +17,8 @@ const uint8_t G_Table2[];
 
 const uint8_t menu_irq_table[];
 
+const uint8_t xbgmlookuptable[];
+
 // Declarations of strings
 #include "defines/charmap/mainmenu_charmap.h"	// Set it for the further routine
 const char palsystem[] = "FOR PAL SYSTEMS";
@@ -157,7 +159,7 @@ void unrle_bgm2() {
 }
 
 void check_if_music_stopped2() {
-	if (famistudio_song_speed == 0x80) { music_play(song_menu_theme); }
+	if (famistudio_song_speed == 0x80) { if (!song) music_play(song_menu_theme); else music_play(xbgmlookuptable[song]);}
 }
 
 

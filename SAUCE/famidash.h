@@ -419,6 +419,7 @@ uint16_t target_scroll_y;
 //uint16_t reload_target_scroll_y;
 uint8_t song;
 uint8_t songplaying;
+uint8_t tempsong;
 uint8_t temptemp6;
 uint8_t make_cube_jump_higher;
 
