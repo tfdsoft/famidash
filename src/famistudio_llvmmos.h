@@ -143,12 +143,7 @@ void __attribute__((__leaf__)) famistudio_sfx_sample_play(unsigned char sample_i
 
 
 void famistudio_dpcm_bank_callback(unsigned char bank){
-    __attribute__((leaf)) __asm__ volatile (
-        "jsr set_prg_a000 \n"
-        :
-        :"a"(bank)
-        :"x","y","p"
-    );
+    set_prg_8000(2);
 }
 
 //__asm__ (

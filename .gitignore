@@ -5,3 +5,4 @@ OUT
 *.mlb
 *.bak
 *.elf
+*.o

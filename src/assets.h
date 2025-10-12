@@ -1,6 +1,8 @@
 #define putinbank(bank) __attribute__((section(bank),retain))
 
 #define chr_menu ".prg_rom_0"
+#define music_bank ".prg_rom_1"
+
 
 putinbank(chr_menu)
     const char chr0[] = {
@@ -47,4 +49,16 @@ putinbank(".prg_rom_fixed_lo")
         0xe1,0xcb,0xe5,0x00,0x01,0x4d,0x55,0x01,0x05,0x00,0x00,0x55,0x01,0x05,0x00,0x00,
         0x55,0x01,0x05,0x00,0x00,0x55,0x01,0x05,0x00,0x00,0x55,0x01,0x05,0x00,0x5a,0x01,
         0x07,0x05,0x01,0x07,0x01,0x00
+    };
+
+
+//putinbank(music_bank)
+//    __attribute__((leaf)) __asm__ (
+//        ".section prg_rom_1 \n"
+//        ".include \"./src/famistudio/music.s\"\n"
+//    );
+
+__attribute__((section(".prg_rom_2"),retain))
+    const unsigned char dpcm[] = {
+        #embed "./famistudio/music.dmc"
     };

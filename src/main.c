@@ -17,7 +17,6 @@ int main(void){
     pal_bright(0);
     ppu_wait_nmi();
 
-    famistudio_init(1, 0xa000);
     
     set_chr_bank(0,0);
     set_chr_bank(1,2);
@@ -42,31 +41,31 @@ int main(void){
     
     
 
-    set_prg_8000(61);// actually c000
-
-    
+    //set_prg_8000(61);// actually c000
     ppu_on_all();
     //PPU.control = 0b10100000;
 
     pal_fade_to(0,4);
 
-
-
-
-
-    APU.status = 0b11111; // turn on all apu channels
-    APU.triangle.counter = 0xFF; // enable the triangle, no timer
+    //APU.status = 0b11111; // turn on all apu channels
+    //APU.triangle.counter = 0xFF; // enable the triangle, no timer
+    set_prg_a000(1);
+    famistudio_init(1, 0xa000);
+    famistudio_music_stop();
+    famistudio_music_play(0);
     while(1){
         unsigned char tmp;
-        unsigned short yscroll;
+        //unsigned short yscroll;
         ppu_wait_nmi();
+        set_prg_a000(1);
+        famistudio_update();
         
 
         scroll(0,0);
 
-        APU.triangle.period_low = low_byte(pitch);
-        APU.triangle.len_period_high = ((high_byte(pitch) & 0x07) + 0x08);
-        pitch += 16;
+        //APU.triangle.period_low = low_byte(pitch);
+        //APU.triangle.len_period_high = ((high_byte(pitch) & 0x07) + 0x08);
+        //pitch += 16;
 
         for (unsigned char i=0;i<128;i++){
             PPU.mask = (0b00011000 + (tmp & 0b11100000));
