@@ -735,7 +735,7 @@
 		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6948
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8187 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8112 bytes
 	.export level_data_groundtospace
 	level_data_groundtospace:
 	; Header
@@ -1031,7 +1031,7 @@
 		.incbin "EXPORTS/hell.lz.bin" ; Size: 6264
 
 
-.segment "DAT_BANK_2B"	; Total bank size: 8147 bytes
+.segment "DAT_BANK_2B"	; Total bank size: 8171 bytes
 	.export level_data_bloodbathbutno
 	level_data_bloodbathbutno:
 	; Header
@@ -1068,7 +1068,7 @@
 		.byte ($00) ;__________________________ Spawn Y Position (low byte)
 		.byte ($02) ;__________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
-		.byte ($06) ;__________________________ Max Fall Speed (high byte)
+		.byte ($07) ;__________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
 		.byte _DECO1 ;_________________________ Deco type
 		.byte _SPIKESA ;_______________________ Spike set
@@ -1078,7 +1078,7 @@
 		.byte $13 ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1881
+		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1905
 
 
 .segment "DAT_BANK_2C"	; Total bank size: 8189 bytes
