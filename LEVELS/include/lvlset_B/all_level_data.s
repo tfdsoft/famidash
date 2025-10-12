@@ -139,7 +139,7 @@
 		.incbin "EXPORTS/futurefunk.lz.1.bin" ; Size: 8134
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8123 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8124 bytes
 	.export level_data_skeletalshenanigans
 	level_data_skeletalshenanigans:
 	; Header
@@ -162,7 +162,7 @@
 		.byte $0F ;_________________________________________ Starting ground color
 		.byte 27 ;__________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.0.bin" ; Size: 8105
+		.incbin "EXPORTS/skeletalshenanigans.lz.0.bin" ; Size: 8106
 
 
 .segment "DAT_BANK_07"	; Total bank size: 8105 bytes
@@ -783,11 +783,11 @@
 		.incbin "EXPORTS/motion.lz.1.bin" ; Size: 189
 
 
-.segment "DAT_BANK_23"	; Total bank size: 7754 bytes
+.segment "DAT_BANK_23"	; Total bank size: 7765 bytes
 	.export level_data_skeletalshenanigans_4
 	level_data_skeletalshenanigans_4:
 	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2587
+		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2598
 
 
 .segment "DAT_BANK_24"	; Total bank size: 8142 bytes

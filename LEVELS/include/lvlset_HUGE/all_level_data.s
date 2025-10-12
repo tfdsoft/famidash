@@ -276,7 +276,33 @@
 		.incbin "EXPORTS/futurefunk.lz.1.bin" ; Size: 8134
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8122 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8124 bytes
+	.export level_data_skeletalshenanigans
+	level_data_skeletalshenanigans:
+	; Header
+		.byte <sprite_data_skeletalshenanigans ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_skeletalshenanigans ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_skeletalshenanigans)) ;___ Sprite data bank
+		.byte song_slash_inferno ;__________________________ Song ID
+		.byte (0 << 4) | 5 ;________________________________ Starting game mode and speed
+		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_______________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_______________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
+		.byte ($06) ;_______________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_________________________ Force platformer, Disable parallax
+		.byte _DECO1 ;______________________________________ Deco type
+		.byte _SPIKESA ;____________________________________ Spike set
+		.byte _BLOCKSB ;____________________________________ Block set
+		.byte _SAWBLADESA ;_________________________________ Sawblade set
+		.byte $07 ;_________________________________________ Starting background color
+		.byte $0F ;_________________________________________ Starting ground color
+		.byte 27 ;__________________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/skeletalshenanigans.lz.0.bin" ; Size: 8106
+
+
+.segment "DAT_BANK_0D"	; Total bank size: 8122 bytes
 	.export level_data_sonicwave
 	level_data_sonicwave:
 	; Header
@@ -300,32 +326,6 @@
 		.byte 27 ;________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/sonicwave.lz.0.bin" ; Size: 8104
-
-
-.segment "DAT_BANK_0D"	; Total bank size: 8121 bytes
-	.export level_data_skeletalshenanigans
-	level_data_skeletalshenanigans:
-	; Header
-		.byte <sprite_data_skeletalshenanigans ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_skeletalshenanigans ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_skeletalshenanigans)) ;___ Sprite data bank
-		.byte song_slash_inferno ;__________________________ Song ID
-		.byte (0 << 4) | 5 ;________________________________ Starting game mode and speed
-		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_______________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_______________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_______________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;_________________________ Force platformer, Disable parallax
-		.byte _DECO1 ;______________________________________ Deco type
-		.byte _SPIKESA ;____________________________________ Spike set
-		.byte _BLOCKSB ;____________________________________ Block set
-		.byte _SAWBLADESA ;_________________________________ Sawblade set
-		.byte $07 ;_________________________________________ Starting background color
-		.byte $0F ;_________________________________________ Starting ground color
-		.byte 27 ;__________________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.0.bin" ; Size: 8103
 
 
 .segment "DAT_BANK_0E"	; Total bank size: 8106 bytes
@@ -2538,11 +2538,11 @@
 		.incbin "EXPORTS/everymadness.lz.bin" ; Size: 2618
 
 
-.segment "DAT_BANK_63"	; Total bank size: 7738 bytes
+.segment "DAT_BANK_63"	; Total bank size: 7745 bytes
 	.export level_data_skeletalshenanigans_10
 	level_data_skeletalshenanigans_10:
 	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2591
+		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2598
 
 
 .segment "DAT_BANK_64"	; Total bank size: 7682 bytes
