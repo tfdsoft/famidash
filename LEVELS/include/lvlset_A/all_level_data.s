@@ -1059,7 +1059,7 @@
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1881
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7358 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7362 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
@@ -1072,7 +1072,7 @@
 		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_________________________________ Max Fall Speed (high byte)
+		.byte ($07) ;_________________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;___________________ Force platformer, Disable parallax
 		.byte _DECO1 ;________________________________ Deco type
 		.byte _SPIKESA ;______________________________ Spike set
@@ -1082,7 +1082,7 @@
 		.byte $02 ;___________________________________ Starting ground color
 		.byte 27 ;____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1842
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1846
 
 
 .segment "DAT_BANK_21"	; Total bank size: 8147 bytes
@@ -1135,7 +1135,7 @@
 		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1487
 
 
-.segment "DAT_BANK_23"	; Total bank size: 5932 bytes
+.segment "DAT_BANK_23"	; Total bank size: 5952 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header

@@ -15,6 +15,11 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
+			//spawnYPositionHi: 0x30,		;default #$B000
+			//spawnYPositionLow: 0x00,
+			//scrollYPositionHi: 0x02,		;default $02EF, less to go up
+			//scrollYPositionLow: 0x30,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -26,7 +31,23 @@
 						[764, 21],				//ship portal
 					],
 					offsetY: -8
-				}
+				},
+				{
+					coordinates: [
+						[527, 25], [530, 25], [535, 25], [538, 25],
+						[539, 24], [542, 24],
+					],
+					offsetY: -4
+				},
+				{
+					coordinates: [716, 25],
+					offsetX: +8
+				},
+				{
+					coordinates: [449, 23],
+					offsetY: +8,
+					offsetX: +8
+				},
 			]	
 		},
 		{
