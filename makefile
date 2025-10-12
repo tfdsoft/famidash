@@ -9,4 +9,4 @@ default: make
 make:
 	rm -rf ./OUT
 	mkdir OUT
-	$(CC) ./src/main.c $(CARGS) -o ./OUT/main.nes -T link.ld -std=gnu23
+	$(CC) ./src/main.c ./famistudio.o $(CARGS) -o ./OUT/main.nes -T link.ld -std=gnu23

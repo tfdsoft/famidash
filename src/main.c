@@ -18,7 +18,7 @@ int main(void){
     pal_bright(0);
     ppu_wait_nmi();
 
-
+    famistudio_init(0, 0xa000);
     
     set_chr_bank(0,0);
     set_chr_bank(1,2);
