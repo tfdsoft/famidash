@@ -99,16 +99,17 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x2A,
 			startingGroundColor: 0x1A,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
-						[17, 25], [32, 25], [48, 25],
+						[17, 25], [32, 25], [47, 25], [172, 26], [198, 26], [203, 24], [687, 24],
 					],
 					offsetX: +8
 				},
 				{
 					coordinates: [
-						[321, 20],	[443, 21],
+						[321, 20],	[443, 21], [60, 24], [246, 25], [260, 25], [314, 25], [318, 24], [456, 25], [460, 24],
 						[568, 26],	[576, 24],	[584, 22],		//deco
 					],
 					offsetY: -8
@@ -116,6 +117,10 @@
 				{
 					coordinates: [709, 25],						//deco
 					offsetY: +8
+				},
+				{
+					coordinates: [185, 26],						//pulserod
+					offsetX: +4
 				},
 			]			
 		},

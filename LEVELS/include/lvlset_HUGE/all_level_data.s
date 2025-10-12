@@ -953,7 +953,7 @@
 		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6453
 
 
-.segment "DAT_BANK_28"	; Total bank size: 8172 bytes
+.segment "DAT_BANK_28"	; Total bank size: 8164 bytes
 	.export level_data_fireaura
 	level_data_fireaura:
 	; Header
@@ -977,30 +977,6 @@
 		.byte 27 ;_______________________________ Level height
 	; Level data
 		.incbin "EXPORTS/fireaura.lz.bin" ; Size: 6435
-
-	.export level_data_polargeist
-	level_data_polargeist:
-	; Header
-		.byte <sprite_data_polargeist ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_polargeist ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_polargeist)) ;___ Sprite data bank
-		.byte song_polargeist ;____________________ Song ID
-		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
-		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
-		.byte ($00) ;______________________________ Spawn Y Position (low byte)
-		.byte ($02) ;______________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
-		.byte ($06) ;______________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;________________ Force platformer, Disable parallax
-		.byte _DECO1 ;_____________________________ Deco type
-		.byte _SPIKESA ;___________________________ Spike set
-		.byte _BLOCKSA ;___________________________ Block set
-		.byte _SAWBLADESA ;________________________ Sawblade set
-		.byte $2A ;________________________________ Starting background color
-		.byte $1A ;________________________________ Starting ground color
-		.byte 27 ;_________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1701
 
 
 .segment "DAT_BANK_29"	; Total bank size: 8179 bytes
@@ -2685,7 +2661,31 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1846
 
 
-.segment "DAT_BANK_69"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_69"	; Total bank size: 8070 bytes
+	.export level_data_polargeist
+	level_data_polargeist:
+	; Header
+		.byte <sprite_data_polargeist ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_polargeist ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_polargeist)) ;___ Sprite data bank
+		.byte song_polargeist ;____________________ Song ID
+		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
+		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
+		.byte ($00) ;______________________________ Spawn Y Position (low byte)
+		.byte ($02) ;______________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
+		.byte ($07) ;______________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_____________________________ Deco type
+		.byte _SPIKESA ;___________________________ Spike set
+		.byte _BLOCKSA ;___________________________ Block set
+		.byte _SAWBLADESA ;________________________ Sawblade set
+		.byte $2A ;________________________________ Starting background color
+		.byte $1A ;________________________________ Starting ground color
+		.byte 27 ;_________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
+
 	.export level_data_lookatthislevel
 	level_data_lookatthislevel:
 	; Header
@@ -2711,7 +2711,7 @@
 		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1663
 
 
-.segment "DAT_BANK_6A"	; Total bank size: 8179 bytes
+.segment "DAT_BANK_6A"	; Total bank size: 8190 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -2734,10 +2734,10 @@
 		.byte $14 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1401
+		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_6C"	; Total bank size: 6199 bytes
+.segment "DAT_BANK_6C"	; Total bank size: 6339 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
