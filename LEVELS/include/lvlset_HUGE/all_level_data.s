@@ -2056,7 +2056,7 @@
 		.incbin "EXPORTS/hi.lz.bin" ; Size: 4696
 
 
-.segment "DAT_BANK_4F"	; Total bank size: 8173 bytes
+.segment "DAT_BANK_4F"	; Total bank size: 7865 bytes
 	.export level_data_demonpark
 	level_data_demonpark:
 	; Header
@@ -2093,7 +2093,7 @@
 		.byte ($00) ;_______________________________ Spawn Y Position (low byte)
 		.byte ($02) ;_______________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_______________________________ Max Fall Speed (high byte)
+		.byte ($07) ;_______________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;_________________ Force platformer, Disable parallax
 		.byte _DECO1 ;______________________________ Deco type
 		.byte _SPIKESA ;____________________________ Spike set
@@ -2103,7 +2103,7 @@
 		.byte $1A ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3094
+		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3137
 
 
 .segment "DAT_BANK_51"	; Total bank size: 8176 bytes

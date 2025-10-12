@@ -826,7 +826,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.lz.bin" ; Size: 3647
 
 
-.segment "DAT_BANK_19"	; Total bank size: 7366 bytes
+.segment "DAT_BANK_19"	; Total bank size: 7409 bytes
 	.export level_data_greif
 	level_data_greif:
 	; Header
@@ -863,7 +863,7 @@
 		.byte ($00) ;_______________________________ Spawn Y Position (low byte)
 		.byte ($02) ;_______________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_______________________________ Max Fall Speed (high byte)
+		.byte ($07) ;_______________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;_________________ Force platformer, Disable parallax
 		.byte _DECO1 ;______________________________ Deco type
 		.byte _SPIKESA ;____________________________ Spike set
@@ -873,7 +873,7 @@
 		.byte $1A ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3094
+		.incbin "EXPORTS/timemachine.lz.bin" ; Size: 3137
 
 
 .segment "DAT_BANK_1A"	; Total bank size: 8134 bytes
