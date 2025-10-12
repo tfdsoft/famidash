@@ -983,7 +983,7 @@
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2225
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8001 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8010 bytes
 	.export level_data_cantletgo
 	level_data_cantletgo:
 	; Header
@@ -1006,7 +1006,7 @@
 		.byte $04 ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2032
+		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2041
 
 	.export level_data_jumper
 	level_data_jumper:

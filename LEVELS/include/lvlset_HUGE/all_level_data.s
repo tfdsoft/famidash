@@ -1183,7 +1183,7 @@
 		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6128
 
 
-.segment "DAT_BANK_30"	; Total bank size: 8182 bytes
+.segment "DAT_BANK_30"	; Total bank size: 8191 bytes
 	.export level_data_dorabaebasic10
 	level_data_dorabaebasic10:
 	; Header
@@ -1230,7 +1230,7 @@
 		.byte $04 ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2032
+		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2041
 
 
 .segment "DAT_BANK_31"	; Total bank size: 8162 bytes
