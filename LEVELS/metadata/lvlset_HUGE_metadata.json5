@@ -168,6 +168,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x11,
 			startingGroundColor: 0x11,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -182,6 +183,19 @@
 						[441, 22],	[446, 22],	[451, 22],					//deco
 					],
 					offsetY: -8
+				},
+				{
+					coordinates: [258, 22],						//yellow orb
+					offsetX: -8
+				},
+				{
+					coordinates: [583, 17],						//coin 3
+					offsetX: +2
+				},
+				{
+					coordinates: [615, 20],						//yellow portal
+					offsetY: +8,
+					offsetX: +8
 				},
 			]
 		},

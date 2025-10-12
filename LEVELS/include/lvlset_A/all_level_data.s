@@ -239,7 +239,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 1921
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8181 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8186 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
@@ -276,7 +276,7 @@
 		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_________________________________ Max Fall Speed (high byte)
+		.byte ($07) ;_________________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;___________________ Force platformer, Disable parallax
 		.byte _DECO1 ;________________________________ Deco type
 		.byte _SPIKESA ;______________________________ Spike set
@@ -286,7 +286,7 @@
 		.byte $11 ;___________________________________ Starting ground color
 		.byte 27 ;____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 2012
+		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 2017
 
 
 .segment "DAT_BANK_0A"	; Total bank size: 8172 bytes
@@ -1109,7 +1109,7 @@
 		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1521
 
 
-.segment "DAT_BANK_22"	; Total bank size: 8131 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8126 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
