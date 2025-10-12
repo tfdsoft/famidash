@@ -290,7 +290,7 @@ sprite_data_backontrack:
   .byte $30,$15,$58,$03,$3c
   .byte $70,$15,$48,$03,$3c
   .byte $70,$15,$88,$03,$0d
-  .byte $b0,$15,$e0,$02,$11
+  .byte $b0,$15,$d8,$02,$11
   .byte $c0,$15,$58,$03,$3c
   .byte $f0,$15,$00,$03,$07
   .byte $00,$16,$48,$03,$0a
@@ -340,6 +340,8 @@ sprite_data_backontrack:
   .byte $a0,$22,$50,$03,$2c
   .byte $f0,$22,$28,$03,$00
   .byte $00,$23,$00,$03,$39
+  .byte $00,$23,$10,$03,$39
+  .byte $00,$23,$60,$03,$39
   .byte $00,$23,$70,$03,$39
   .byte $90,$23,$70,$03,$94
   .byte $90,$23,$80,$03,$c4
@@ -383,10 +385,12 @@ sprite_data_backontrack:
   .byte $70,$2c,$88,$03,$0a
   .byte $80,$2c,$50,$03,$93
   .byte $80,$2c,$60,$03,$c3
+  .byte $90,$2c,$68,$03,$3c
   .byte $a0,$2c,$30,$03,$91
   .byte $a0,$2c,$40,$03,$d1
+  .byte $d0,$2c,$68,$03,$3c
+  .byte $40,$2e,$50,$03,$2d
   .byte $50,$2e,$50,$03,$2d
-  .byte $60,$2e,$50,$03,$2d
   .byte $30,$2f,$50,$03,$2d
   .byte $40,$2f,$50,$03,$2d
   .byte $50,$2f,$50,$03,$2d
@@ -405,7 +409,6 @@ sprite_data_backontrack:
   .byte $60,$33,$80,$03,$30
   .byte $e0,$33,$70,$03,$2b
   .byte $f0,$33,$78,$03,$0a
-  .byte $d0,$34,$d0,$02,$0f
   .byte $d0,$34,$30,$03,$0f
   .byte $ff
 
@@ -9098,7 +9101,7 @@ sprite_data_dorabaebasic4:
   .byte $f0,$3f,$80,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_22"
 sprite_data_dorabaebasic6:
   .byte $00,$00,$70,$03,$9a
   .byte $00,$00,$80,$03,$d6
@@ -14723,7 +14726,7 @@ sprite_data_greif:
   .byte $e0,$28,$a0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_22"
+.segment "DAT_BANK_1B"
 sprite_data_aprettyeasylevel:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$c6
@@ -17503,7 +17506,7 @@ sprite_data_firetemple:
   .byte $f0,$36,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_03"
+.segment "DAT_BANK_22"
 sprite_data_foresttemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$ba

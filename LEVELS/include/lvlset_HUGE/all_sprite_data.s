@@ -340,6 +340,8 @@ sprite_data_backontrack:
   .byte $a0,$22,$50,$03,$2c
   .byte $f0,$22,$28,$03,$00
   .byte $00,$23,$00,$03,$39
+  .byte $00,$23,$10,$03,$39
+  .byte $00,$23,$60,$03,$39
   .byte $00,$23,$70,$03,$39
   .byte $90,$23,$70,$03,$94
   .byte $90,$23,$80,$03,$c4
@@ -383,10 +385,12 @@ sprite_data_backontrack:
   .byte $70,$2c,$88,$03,$0a
   .byte $80,$2c,$50,$03,$93
   .byte $80,$2c,$60,$03,$c3
+  .byte $90,$2c,$68,$03,$3c
   .byte $a0,$2c,$30,$03,$91
   .byte $a0,$2c,$40,$03,$d1
+  .byte $d0,$2c,$68,$03,$3c
+  .byte $40,$2e,$50,$03,$2d
   .byte $50,$2e,$50,$03,$2d
-  .byte $60,$2e,$50,$03,$2d
   .byte $30,$2f,$50,$03,$2d
   .byte $40,$2f,$50,$03,$2d
   .byte $50,$2f,$50,$03,$2d
@@ -405,7 +409,6 @@ sprite_data_backontrack:
   .byte $60,$33,$80,$03,$30
   .byte $e0,$33,$70,$03,$2b
   .byte $f0,$33,$78,$03,$0a
-  .byte $d0,$34,$d0,$02,$0f
   .byte $d0,$34,$30,$03,$0f
   .byte $ff
 
@@ -655,7 +658,7 @@ sprite_data_polargeist:
   .byte $50,$3a,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6B"
+.segment "DAT_BANK_6A"
 sprite_data_dryout:
   .byte $40,$02,$60,$03,$2b
   .byte $60,$02,$80,$03,$2e
@@ -8284,7 +8287,7 @@ sprite_data_retray:
   .byte $90,$27,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6A"
+.segment "DAT_BANK_6B"
 sprite_data_sonar:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$80,$03,$c1
