@@ -2735,7 +2735,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_6C"	; Total bank size: 6404 bytes
+.segment "DAT_BANK_6C"	; Total bank size: 6394 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
