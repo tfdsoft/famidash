@@ -80,7 +80,7 @@
 		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8020
 
 
-.segment "DAT_BANK_03"	; Total bank size: 7542 bytes
+.segment "DAT_BANK_03"	; Total bank size: 7958 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -386,7 +386,7 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5914
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 7967 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 7937 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -695,30 +695,30 @@
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3185
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8116 bytes
-	.export level_data_foresttemple
-	level_data_foresttemple:
+.segment "DAT_BANK_16"	; Total bank size: 8132 bytes
+	.export level_data_xstep
+	level_data_xstep:
 	; Header
-		.byte <sprite_data_foresttemple ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_foresttemple ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_foresttemple)) ;___ Sprite data bank
-		.byte song_haunted_woods ;___________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
-		.byte _DECO1 ;_______________________________ Deco type
-		.byte _SPIKESB ;_____________________________ Spike set
-		.byte _BLOCKSB ;_____________________________ Block set
-		.byte _SAWBLADESA ;__________________________ Sawblade set
-		.byte $0F ;__________________________________ Starting background color
-		.byte $0F ;__________________________________ Starting ground color
-		.byte 27 ;___________________________________ Level height
+		.byte <sprite_data_xstep ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_xstep ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_xstep)) ;___ Sprite data bank
+		.byte song_xstep ;____________________ Song ID
+		.byte (0 << 4) | 0 ;__________________ Starting game mode and speed
+		.byte ($B0) ;_________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;___________ Force platformer, Disable parallax
+		.byte _DECOCLOUD ;____________________ Deco type
+		.byte _SPIKESB ;______________________ Spike set
+		.byte _BLOCKSC ;______________________ Block set
+		.byte _SAWBLADESA ;___________________ Sawblade set
+		.byte $1C ;___________________________ Starting background color
+		.byte $0C ;___________________________ Starting ground color
+		.byte 27 ;____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
+		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4408
 
 	.export level_data_dreamer
 	level_data_dreamer:
@@ -745,35 +745,40 @@
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3688
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8029 bytes
-	.export level_data_xstep
-	level_data_xstep:
+.segment "DAT_BANK_17"	; Total bank size: 8183 bytes
+	.export level_data_foresttemple
+	level_data_foresttemple:
 	; Header
-		.byte <sprite_data_xstep ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_xstep ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_xstep)) ;___ Sprite data bank
-		.byte song_xstep ;____________________ Song ID
-		.byte (0 << 4) | 0 ;__________________ Starting game mode and speed
-		.byte ($B0) ;_________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;___________ Force platformer, Disable parallax
-		.byte _DECOCLOUD ;____________________ Deco type
-		.byte _SPIKESB ;______________________ Spike set
-		.byte _BLOCKSC ;______________________ Block set
-		.byte _SAWBLADESA ;___________________ Sawblade set
-		.byte $1C ;___________________________ Starting background color
-		.byte $0C ;___________________________ Starting ground color
-		.byte 27 ;____________________________ Level height
+		.byte <sprite_data_foresttemple ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_foresttemple ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_foresttemple)) ;___ Sprite data bank
+		.byte song_haunted_woods ;___________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_______________________________ Deco type
+		.byte _SPIKESB ;_____________________________ Spike set
+		.byte _BLOCKSB ;_____________________________ Block set
+		.byte _SAWBLADESA ;__________________________ Sawblade set
+		.byte $0F ;__________________________________ Starting background color
+		.byte $0F ;__________________________________ Starting ground color
+		.byte 27 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4339
+		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
 
 	.export level_data_rainbowtylenol_1
 	level_data_rainbowtylenol_1:
 	; Level data
 		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3672
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 101
 
 
 .segment "DAT_BANK_18"	; Total bank size: 7955 bytes
@@ -826,7 +831,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.lz.bin" ; Size: 3647
 
 
-.segment "DAT_BANK_19"	; Total bank size: 7409 bytes
+.segment "DAT_BANK_19"	; Total bank size: 7725 bytes
 	.export level_data_greif
 	level_data_greif:
 	; Header
@@ -924,13 +929,6 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/electroman.lz.bin" ; Size: 3980
-
-
-.segment "DAT_BANK_1B"	; Total bank size: 8149 bytes
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 101
 
 
 .segment "DAT_BANK_1C"	; Total bank size: 8129 bytes
@@ -1111,7 +1109,7 @@
 		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1521
 
 
-.segment "DAT_BANK_22"	; Total bank size: 8126 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8000 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header

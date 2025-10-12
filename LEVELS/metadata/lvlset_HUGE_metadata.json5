@@ -381,6 +381,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x1C,
 			startingGroundColor: 0x0C,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -393,17 +394,19 @@
 						[228, 21],	[459, 21],		//portal	//portal
 						[460, 21],		//portal / alignment
 						[613, 19],		//ball portal
+						[118, 23],	[512, 25],
 					],
 					offsetY: -8
 				},
 				{
 					coordinates: [
-						[52, 24],	[57, 24],	[65, 24],		//deco
+						[52, 24],	[57, 24],	[65, 24],	[86, 23],	[305, 20],	[632, 22],		//deco
 					],
 					offsetX: +8
 				},
 				{
 					coordinates: [
+						[239, 20],	[258, 24],		//pulserod
 						[508, 23],		//orb
 						[573, 18],		//upsidedown post
 						[574, 18],		//upsidedown pad
@@ -412,7 +415,7 @@
 				},
 				{
 					coordinates: [
-						[306, 20],	[460, 21],	[765, 19],		//portal alignment
+						[306, 20],	[460, 21],	[767, 19],		//portal alignment
 					],
 					offsetX: -17
 				},
