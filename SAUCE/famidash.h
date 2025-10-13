@@ -407,6 +407,9 @@ uint8_t prev_mouse_y;
 uint8_t showarrownow;
 #endif
 
+uint8_t level_resetting_flag;
+uint8_t timewarp_done;
+
 extern uint8_t parallax_scroll_column;
 extern uint8_t parallax_scroll_column_start;
 uint8_t parallax_scroll_x;

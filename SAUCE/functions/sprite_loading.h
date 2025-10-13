@@ -302,10 +302,12 @@ char sprite_load_special_behavior(){
 			return 0;
 
 		case SLOWMODE_ON:
-			slowmode = 1;
+			if (!level_resetting_flag) slowmode = 1;
+			else if (level_resetting_flag && !timewarp_done) { slowmode = 1; timewarp_done = 1; }
 			killSprite_return0;
 		case SLOWMODE_OFF:
-			slowmode = 0;
+			if (!level_resetting_flag) slowmode = 0;
+			else if (level_resetting_flag && !timewarp_done) { slowmode = 0; timewarp_done = 1; }
 			killSprite_return0;
 
 		case FORCED_TRAILS_ON:

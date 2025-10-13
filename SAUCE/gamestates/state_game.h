@@ -650,6 +650,9 @@ void state_game(){
 		if (kandodebugmode) { if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xAD), 2); }	
  //       color_emphasis(0);
 
+		if (level_resetting_flag) level_resetting_flag--;
+		timewarp_done = 0;
+
 		if (DEBUG_MODE) gray_line();
 		if (!DEBUG_MODE && kandodebugmode != 2) {
 		if (high_byte(player_x[0]) > 0x20) {

@@ -145,6 +145,9 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 		uint32_inc(scroll_x);
 	} while (i != 0);
 
+	level_resetting_flag = 2;
+	timewarp_done = 0;
+
 	init_sprites();
 	
 	set_scroll_x(scroll_x);
