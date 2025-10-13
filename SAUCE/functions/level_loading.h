@@ -146,7 +146,7 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	} while (i != 0);
 
 	level_resetting_flag = 2;
-	timewarp_done = 0;
+	if (!level_resetting_flag) timewarp_done = 0;
 
 	init_sprites();
 	
