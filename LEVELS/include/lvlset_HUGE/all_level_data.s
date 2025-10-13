@@ -1439,7 +1439,7 @@
 		.incbin "EXPORTS/factorytime.lz.bin" ; Size: 2317
 
 
-.segment "DAT_BANK_39"	; Total bank size: 8162 bytes
+.segment "DAT_BANK_39"	; Total bank size: 8187 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -1452,13 +1452,13 @@
 		.byte ($00) ;____________________________ Spawn Y Position (low byte)
 		.byte ($02) ;____________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;____________________________ Y Scroll Position (low byte)
-		.byte ($06) ;____________________________ Max Fall Speed (high byte)
+		.byte ($07) ;____________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;______________ Force platformer, Disable parallax
 		.byte _DECO1 ;___________________________ Deco type
 		.byte _SPIKESA ;_________________________ Spike set
 		.byte _BLOCKSB ;_________________________ Block set
 		.byte _SAWBLADESA ;______________________ Sawblade set
-		.byte $06 ;______________________________ Starting background color
+		.byte $0F ;______________________________ Starting background color
 		.byte $0F ;______________________________ Starting ground color
 		.byte 40 ;_______________________________ Level height
 	; Level data

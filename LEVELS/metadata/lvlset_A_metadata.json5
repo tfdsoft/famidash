@@ -672,8 +672,9 @@
 			songID: "song_clubstep",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x06,
+			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -691,7 +692,8 @@
 				},
 				{
 					coordinates: [
-						[71, 38],			//yellow orb
+						[47, 37],	[52, 33],	[76, 33],	[90, 30],		//pulserod
+						[71, 38],		//yellow orb
 						[336, 26],		//pink pad
 						[361, 25],		//blue
 						[786, 34],		//grav

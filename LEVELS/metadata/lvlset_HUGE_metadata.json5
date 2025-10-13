@@ -672,8 +672,9 @@
 			songID: "song_clubstep",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x06,
+			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
