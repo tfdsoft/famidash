@@ -1,5 +1,5 @@
 CC = mos-nes-mmc3-clang
-CARGS = -Os
+CARGS = -Oz -mreserve-zp=9
 NAME = famidash-llvm
 
 
