@@ -449,6 +449,9 @@ void vram_unrle(unsigned char* src){
     unsigned char value, run;
     src++;
 
+    PPU_CTRL_VAR &= 0b01111111;
+    PPU.control = PPU_CTRL_VAR;
+
     while(1){
         if (src[0] != tag) { 
             // if its not equal to the tag,
@@ -477,6 +480,8 @@ void vram_unrle(unsigned char* src){
         src++; // move onto the next byte!
     }
     
+    PPU_CTRL_VAR |= 0b10000000;
+    PPU.control = PPU_CTRL_VAR;
 }
 
 

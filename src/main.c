@@ -24,8 +24,10 @@ __attribute__((leaf)) __asm__(
     ".section .init.300,\"ax\",@progbits \n"
         "lda #$01 \n"
         "jsr set_prg_a000 \n"
-        "lda #$00 \n"
+        
+        "lda #$01 \n"
         "tax \n"
+        "dex \n"
         "ldy #$a0 \n"
         "jsr famistudio_init \n"
 );
