@@ -10,6 +10,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_dearnostalgists)
 	.byte .lobyte(level_data_sonicblaster)
 	.byte .lobyte(level_data_endorphinrush)
+	.byte .lobyte(level_data_trythisgd)
 	.byte .lobyte(level_data_invisiblelight)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_deadlyclubstep)
@@ -36,6 +37,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_dearnostalgists)
 	.byte .hibyte(level_data_sonicblaster)
 	.byte .hibyte(level_data_endorphinrush)
+	.byte .hibyte(level_data_trythisgd)
 	.byte .hibyte(level_data_invisiblelight)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_deadlyclubstep)
@@ -62,6 +64,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_dearnostalgists))
 	.byte .lobyte(.bank(level_data_sonicblaster))
 	.byte .lobyte(.bank(level_data_endorphinrush))
+	.byte .lobyte(.bank(level_data_trythisgd))
 	.byte .lobyte(.bank(level_data_invisiblelight))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_deadlyclubstep))
@@ -84,27 +87,30 @@ _level_list_bank:
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_dearnostalgists_0)
-	.byte .lobyte(level_data_eon_1)
-	.byte .lobyte(level_data_sonicwave_2)
-	.byte .lobyte(level_data_windylandscape_3)
-	.byte .lobyte(level_data_everyend_4)
+	.byte .lobyte(level_data_trythisgd_1)
+	.byte .lobyte(level_data_eon_2)
+	.byte .lobyte(level_data_sonicwave_3)
+	.byte .lobyte(level_data_windylandscape_4)
 	.byte .lobyte(level_data_everyend_5)
+	.byte .lobyte(level_data_everyend_6)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_dearnostalgists_0)
-	.byte .hibyte(level_data_eon_1)
-	.byte .hibyte(level_data_sonicwave_2)
-	.byte .hibyte(level_data_windylandscape_3)
-	.byte .hibyte(level_data_everyend_4)
+	.byte .hibyte(level_data_trythisgd_1)
+	.byte .hibyte(level_data_eon_2)
+	.byte .hibyte(level_data_sonicwave_3)
+	.byte .hibyte(level_data_windylandscape_4)
 	.byte .hibyte(level_data_everyend_5)
+	.byte .hibyte(level_data_everyend_6)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_dearnostalgists_0))
-	.byte .lobyte(.bank(level_data_eon_1))
-	.byte .lobyte(.bank(level_data_sonicwave_2))
-	.byte .lobyte(.bank(level_data_windylandscape_3))
-	.byte .lobyte(.bank(level_data_everyend_4))
+	.byte .lobyte(.bank(level_data_trythisgd_1))
+	.byte .lobyte(.bank(level_data_eon_2))
+	.byte .lobyte(.bank(level_data_sonicwave_3))
+	.byte .lobyte(.bank(level_data_windylandscape_4))
 	.byte .lobyte(.bank(level_data_everyend_5))
+	.byte .lobyte(.bank(level_data_everyend_6))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -115,6 +121,7 @@ _level_lengths_lo:
 	.byte .lobyte($000155)		; dearnostalgists
 	.byte .lobyte($0000A6)		; sonicblaster
 	.byte .lobyte($00008B)		; endorphinrush
+	.byte .lobyte($0000D4)		; trythisgd
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
@@ -143,6 +150,7 @@ _level_lengths_md:
 	.byte .hibyte($000155)		; dearnostalgists
 	.byte .hibyte($0000A6)		; sonicblaster
 	.byte .hibyte($00008B)		; endorphinrush
+	.byte .hibyte($0000D4)		; trythisgd
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
@@ -171,6 +179,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000155)		; dearnostalgists
 	.byte .bankbyte($0000A6)		; sonicblaster
 	.byte .bankbyte($00008B)		; endorphinrush
+	.byte .bankbyte($0000D4)		; trythisgd
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep

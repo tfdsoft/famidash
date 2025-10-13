@@ -81,6 +81,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// endorphinrush
 	DEMON,	// everymadness
 	DEMON,	// skeletalshenanigans
+	DEMON,	// trythisgd
 	DEMON,	// hell
 	DEMON,	// invisiblelight
 	DEMON,	// firetemple
@@ -188,6 +189,7 @@ const uint8_t stars_list[] = {
 	10,	// endorphinrush
 	10,	// everymadness
 	10,	// skeletalshenanigans
+	10,	// trythisgd
 	10,	// hell
 	10,	// invisiblelight
 	10,	// firetemple

@@ -80,7 +80,7 @@
 		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8017
 
 
-.segment "DAT_BANK_03"	; Total bank size: 7858 bytes
+.segment "DAT_BANK_03"	; Total bank size: 7542 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -386,7 +386,7 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5914
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8162 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 7953 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -399,17 +399,17 @@
 		.byte ($00) ;____________________________ Spawn Y Position (low byte)
 		.byte ($02) ;____________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;____________________________ Y Scroll Position (low byte)
-		.byte ($06) ;____________________________ Max Fall Speed (high byte)
+		.byte ($07) ;____________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (0 << 1) ;______________ Force platformer, Disable parallax
 		.byte _DECO1 ;___________________________ Deco type
 		.byte _SPIKESA ;_________________________ Spike set
 		.byte _BLOCKSB ;_________________________ Block set
 		.byte _SAWBLADESA ;______________________ Sawblade set
-		.byte $06 ;______________________________ Starting background color
+		.byte $0F ;______________________________ Starting background color
 		.byte $0F ;______________________________ Starting ground color
 		.byte 40 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5638
+		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5654
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 8160 bytes
@@ -928,7 +928,7 @@
 		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 4136
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8129 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 8180 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -953,6 +953,8 @@
 	; Level data
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2765
 
+
+.segment "DAT_BANK_1D"	; Total bank size: 8142 bytes
 	.export level_data_retray
 	level_data_retray:
 	; Header
@@ -976,6 +978,11 @@
 		.byte 27 ;_____________________________ Level height
 	; Level data
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2712
+
+	.export level_data_dash_0
+	level_data_dash_0:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 100
 
 
 .segment "DAT_BANK_1F"	; Total bank size: 8149 bytes
@@ -1050,13 +1057,6 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
-
-
-.segment "DAT_BANK_20"	; Total bank size: 8165 bytes
-	.export level_data_dash_0
-	level_data_dash_0:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 100
 
 
 .segment "DAT_BANK_21"	; Total bank size: 8178 bytes
@@ -1135,7 +1135,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_23"	; Total bank size: 7283 bytes
+.segment "DAT_BANK_23"	; Total bank size: 7488 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
