@@ -6,7 +6,7 @@ __attribute__((section(".aligned"),retain)) struct OAM_BUF {
 } OAM_BUF[64];
 
 
-unsigned short pitch; // starting pitch
+unsigned char gamestate;
 
 
 

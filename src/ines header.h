@@ -2,7 +2,7 @@
 #include <mapper.h>
 
 // maxed out mmc3 prg
-MAPPER_PRG_ROM_KB(64);
+MAPPER_PRG_ROM_KB(512);
 
 // 8kb of chr-ram
 MAPPER_CHR_ROM_KB(0);
