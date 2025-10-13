@@ -28,7 +28,7 @@
 #define song_death_moon 27
 #define song_atthespeedoflight2 28
 #define song_just_right_full 29
-#define song_time_machine 30
+#define song_bit_of_a_vibe 30
 #define song_thermodynamix 31
 #define song_dash 32
 #define song_isolation 33
@@ -50,7 +50,7 @@
 #define song_magic_touch 49
 #define song_hexagon_force 50
 #define song_factory_time 51
-#define song_bit_of_a_vibe 52
+#define song_time_machine 52
 #define song_cryogenic 53
 #define song_youve_been_trolled 54
 #define song_endgame 55
