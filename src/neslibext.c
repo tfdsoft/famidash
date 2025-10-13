@@ -1,10 +1,13 @@
 
 
-void vram_copy(unsigned char* from, unsigned short count){
+void vram_copy(const unsigned char* from, unsigned short count){
+    //PPU_CTRL_VAR &= 0b01111111;
+    //PPU.control = PPU_CTRL_VAR;
     for(unsigned short i=0; i<count; i++){
         PPU.vram.data = from[i];
     }
-    
+    //PPU_CTRL_VAR |= 0b10000000;
+    //PPU.control = PPU_CTRL_VAR;
 }
 
 

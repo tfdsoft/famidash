@@ -1,18 +1,35 @@
-#define putinbank(bank) __attribute__((section(bank),retain))
+#define putinbank(bank) __attribute__((section(bank),retain)) 
+
+//#define xstr(s) str(s)
+//#define str(s) #s
+
 
 #define chr_menu ".prg_rom_0"
-#define music_bank ".prg_rom_1"
+#define music_bank ".prg_rom_4"
 
 
-putinbank(chr_menu)
-    const char chr0[] = {
-        #embed "./assets/test.chr"
-    };
+#define include_chr(name, symbol, bank) \
+__attribute__((section(bank),retain)) __asm__ ( \
+    ".section "bank",\"a\",@progbits\n"\
+    #symbol": \n" \
+    ".incbin \"./src/chr/"name"\" \n" \
+); \
+extern const unsigned char symbol[] 
+
+
+
+include_chr("General.chr", chr_tiles_global, ".prg_rom_0"); // 1.00 kb
+include_chr("Grid.chr", chr_tiles_grid, ".prg_rom_0");      // 0.25 kb
+include_chr("Cross.chr", chr_tiles_cross, ".prg_rom_0");    // 0.25 kb
+include_chr("Brick.chr", chr_tiles_brick, ".prg_rom_0");    // 0.25 kb
+include_chr("Black.chr", chr_tiles_black, ".prg_rom_0");    // 0.25 kb
+
+
+
+
 
 putinbank(".prg_rom_fixed_lo")
-    const unsigned char test_palette[16]={ 0x0f,0x0c,0x11,0x31,0x0f,0x00,0x10,0x30,0x0f,0x07,0x17,0x27,0x0f,0x2d,0x00,0x10 };
-
-
+    const unsigned char test_palette[16]={ 0x14,0x0f,0x04,0x30,0x14,0x03,0x13,0x30,0x14,0x0f,0x26,0x30,0x14,0x0f,0x0f,0x0f };
 
 
 
@@ -91,7 +108,12 @@ putinbank(".prg_rom_fixed_lo")
 //        ".include \"./src/famistudio/music.s\"\n"
 //    );
 
-__attribute__((section(".prg_rom_2"),retain))
+putinbank(".prg_rom_2")
     const unsigned char dpcm[] = {
-        #embed "./famistudio/music.dmc"
+        #embed "./famistudio/music_bank0.dmc"
     };
+
+//putinbank(".prg_rom_3")
+//    const unsigned char dpcm[] = {
+//        #embed "./famistudio/music_bank1.dmc"
+//    };

@@ -46,7 +46,7 @@
 // el memory section!!!!!!
 unsigned char pad[2];
 static unsigned char spin;
-static volatile unsigned char __zp FRAME_COUNT_NOW, FRAME_COUNT_OLD;
+static volatile unsigned char __zp FRAME_CNT, FRAME_COUNT_OLD;
 static volatile unsigned char __zp PPU_MASK_VAR, PPU_CTRL_VAR;
 static volatile unsigned char __zp PPU_CTRL_VAR1;
 static unsigned char __zp SCROLL_X, SCROLL_Y;
@@ -123,13 +123,15 @@ static const char palBrightTable[192] = {
  *  wait for vblank.
 */
 void ppu_wait_nmi(){
-    // stall until FRAME_COUNT_NOW is updated by nmi()
-    while (FRAME_COUNT_NOW == FRAME_COUNT_OLD){}
+    // stall until FRAME_CNT is updated by nmi()
+    //while (FRAME_CNT == FRAME_COUNT_OLD){}
 
-    // set the frame counts equal;
-    // if I incremented instead of setting equal,
-    // the function would act strange on a lag frame!
-    FRAME_COUNT_OLD = FRAME_COUNT_NOW;
+    __attribute__((leaf)) __asm__ volatile (
+        "lda FRAME_CNT \n"
+        "1:"
+        "cmp FRAME_CNT \n"
+        "beq 1b \n"
+    );
 }
 
 
@@ -449,8 +451,8 @@ void vram_unrle(unsigned char* src){
     unsigned char value, run;
     src++;
 
-    PPU_CTRL_VAR &= 0b01111111;
-    PPU.control = PPU_CTRL_VAR;
+    //PPU_CTRL_VAR &= 0b01111111;
+    //PPU.control = PPU_CTRL_VAR;
 
     while(1){
         if (src[0] != tag) { 
@@ -480,8 +482,8 @@ void vram_unrle(unsigned char* src){
         src++; // move onto the next byte!
     }
     
-    PPU_CTRL_VAR |= 0b10000000;
-    PPU.control = PPU_CTRL_VAR;
+    //PPU_CTRL_VAR |= 0b10000000;
+    //PPU.control = PPU_CTRL_VAR;
 }
 
 
@@ -601,7 +603,7 @@ void set_ppu_ctrl_var(unsigned char var){
  *  bgr: 0b000 = normal, 0b111 = dark
 */
 void ppu_emphasis(unsigned char bgr){
-    PPU_MASK_VAR = ((PPU_MASK_VAR & 0b11100001) | (bgr & 0b11100001));
+    PPU_MASK_VAR = ((PPU_MASK_VAR & 0b00011111) | ((bgr<<5) & 0b11100000));
     PPU.mask = PPU_MASK_VAR;
     return;
 }

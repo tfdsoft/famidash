@@ -24,7 +24,7 @@ __attribute__((leaf)) __asm__(
     ".section .init.300,\"ax\",@progbits \n"
         "lda #$01 \n"
         "jsr set_prg_a000 \n"
-        
+
         "lda #$01 \n"
         "tax \n"
         "dex \n"
@@ -34,10 +34,9 @@ __attribute__((leaf)) __asm__(
 
 int main(void){
     PPU.control = PPU_CTRL_VAR = 0b10100000;
+    //PPU.mask = PPU_MASK_VAR = 0b00011000;
     ppu_off(); // turn off everything
 
-    
-    
     
     // clear oam buffer
     memfill((unsigned char*)0x200,0,0x100);
@@ -52,12 +51,19 @@ int main(void){
     set_chr_bank(3,5);
     set_chr_bank(4,6);
     set_chr_bank(5,7);
-    ppu_wait_nmi();
+
+    // clear chr
+    vram_adr(0x0000);
+    vram_fill(0,0x2000);
 
     // write chr
     set_prg_8000(0);
     vram_adr(0x0000);
-    vram_copy((void*)0xc000, 0x2000);
+    vram_copy(chr_tiles_global, 0x400);
+    vram_copy(chr_tiles_grid, 0x100);
+    vram_copy(chr_tiles_cross, 0x100);
+    vram_copy(chr_tiles_brick, 0x100);
+    vram_copy(chr_tiles_black, 0x100);
     
     // write nametable
     vram_adr(0x2000);
@@ -87,9 +93,11 @@ int main(void){
         unsigned char tmp;
         //unsigned short yscroll;
         ppu_wait_nmi();
+
+        //ppu_emphasis(111);
         set_prg_a000(1);
         famistudio_update();
-        
+        //ppu_emphasis(000);
 
         scroll(0,0);
 
@@ -97,10 +105,10 @@ int main(void){
         //APU.triangle.len_period_high = ((high_byte(pitch) & 0x07) + 0x08);
         //pitch += 16;
 
-        for (unsigned char i=0;i<128;i++){
-            PPU.mask = (0b00011000 + (tmp & 0b11100000));
-            tmp += 0b00100000;
-        }
-        PPU.mask = (0b00011000);
+        //for (unsigned char i=0;i<128;i++){
+        //    PPU.mask = (0b00011000 + (tmp & 0b11100000));
+        //    tmp += 0b00100000;
+        //}
+        //PPU.mask = (0b00011000);
     }
 }
