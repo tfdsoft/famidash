@@ -35,7 +35,7 @@
 		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8165
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8145 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8142 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -58,7 +58,7 @@
 		.byte $0F ;_________________________ Starting ground color
 		.byte 27 ;__________________________ Level height
 	; Level data
-		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8127
+		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8124
 
 
 .segment "DAT_BANK_03"	; Total bank size: 8122 bytes
