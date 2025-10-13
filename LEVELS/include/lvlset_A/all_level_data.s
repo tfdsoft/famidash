@@ -588,7 +588,7 @@
 		.incbin "EXPORTS/dorabaebasic4.lz.bin" ; Size: 3300
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8133 bytes
+.segment "DAT_BANK_13"	; Total bank size: 8140 bytes
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
 	; Header
@@ -611,7 +611,7 @@
 		.byte $06 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4809
+		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4816
 
 	.export level_data_funnygameholiday
 	level_data_funnygameholiday:

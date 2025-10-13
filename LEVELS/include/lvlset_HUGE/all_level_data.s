@@ -1966,7 +1966,7 @@
 		.incbin "EXPORTS/blastprocessing.lz.bin" ; Size: 4822
 
 
-.segment "DAT_BANK_4B"	; Total bank size: 8163 bytes
+.segment "DAT_BANK_4B"	; Total bank size: 8170 bytes
 	.export level_data_clutterfunk
 	level_data_clutterfunk:
 	; Header
@@ -1989,7 +1989,7 @@
 		.byte $06 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4809
+		.incbin "EXPORTS/clutterfunk.lz.bin" ; Size: 4816
 
 	.export level_data_deathmoon_7
 	level_data_deathmoon_7:
