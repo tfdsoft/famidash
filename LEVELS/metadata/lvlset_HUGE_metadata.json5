@@ -3497,7 +3497,329 @@
 					offsetX: -16
 				},
 			]
-		},				
+		},
+		{
+			level: "trythisgd",
+			lowerText: "TRY THIS GD",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_jumper",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+						coordinates: [49, 55],
+						offsetY: +8
+				},
+				{
+						coordinates: [70, 51],
+						offsetY: +8
+				},
+				{
+						coordinates: [123, 50],
+						offsetY: +5
+				},
+				{
+						coordinates: [128, 53],
+						offsetX: +7
+				},
+				{
+						coordinates: [145, 52],
+						offsetY: +8
+				},
+				{
+						coordinates: [149, 51],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [161, 51],
+						offsetY: +8
+				},
+				{
+						coordinates: [173, 51],
+						offsetX: +2
+				},
+				{
+						coordinates: [174, 51],
+						offsetY: +8
+				},
+				{
+						coordinates: [222, 51],
+						offsetX: -5
+				},
+				{
+						coordinates: [235, 50],
+						offsetX: +12
+				},
+				{
+						coordinates: [236, 51],
+						offsetY: -8,
+						offsetX: +8
+				},
+				{
+						coordinates: [282, 50],
+						offsetX: +8
+				},
+				{
+						coordinates: [305, 51],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [314, 51],
+						offsetY: +8
+				},
+				{
+						coordinates: [329, 50],
+						offsetY: +8,
+						offsetX: +10
+				},
+				{
+						coordinates: [333, 51],
+						offsetX: +1
+				},
+				{
+						coordinates: [338, 51],
+						offsetY: +8
+				},
+				{
+						coordinates: [341, 52],
+						offsetY: +8
+				},
+				{
+						coordinates: [344, 53],
+						offsetY: +8
+				},
+				{
+						coordinates: [346, 49],
+						offsetY: -8
+				},
+				{
+						coordinates: [369, 52],
+						offsetY: +8,
+						offsetX: +2
+				},
+				{
+						coordinates: [370, 53],
+						offsetX: -1
+				},
+				{
+						coordinates: [453, 51],
+						offsetX: +16
+				},
+				{
+						coordinates: [454, 52],
+						offsetY: -8
+				},
+				{
+						coordinates: [528, 52],
+						offsetY: -8
+				},
+				{
+						coordinates: [528, 51],
+						offsetX: -2
+				},
+				{
+						coordinates: [529, 52],
+						offsetX: -16
+				},
+				{
+						coordinates: [637, 41],
+						offsetX: -4
+				},
+				{
+						coordinates: [691, 45],
+						offsetX: +8
+				},
+				{
+						coordinates: [732, 43],
+						offsetY: +8,
+						offsetX: +16
+				},
+				{
+						coordinates: [733, 43],
+						offsetY: +8
+				},
+				{
+						coordinates: [803, 46],
+						offsetX: +16
+				},
+				{
+						coordinates: [804, 47],
+						offsetY: -8
+				},
+				{
+						coordinates: [805, 46],
+						offsetX: -8
+				},
+				{
+						coordinates: [817, 47],
+						offsetX: +8
+				},
+				{
+						coordinates: [824, 47],
+						offsetX: +8
+				},
+				{
+						coordinates: [832, 47],
+						offsetY: -8
+				},
+				{
+						coordinates: [853, 47],
+						offsetY: -8
+				},
+				{
+						coordinates: [865, 46],
+						offsetY: +8,
+						offsetX: +16
+				},
+				{
+						coordinates: [866, 46],
+						offsetY: +8
+				},
+				{
+						coordinates: [904, 44],
+						offsetY: -8
+				},
+				{
+						coordinates: [904, 51],
+						offsetY: +8
+				},
+				{
+						coordinates: [909, 47],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [912, 48],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [918, 45],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [921, 51],
+						offsetY: +3
+				},
+				{
+						coordinates: [921, 45],
+						offsetX: +8
+				},
+				{
+						coordinates: [1007, 44],
+						offsetX: +16
+				},
+				{
+						coordinates: [1008, 45],
+						offsetY: -8,
+						offsetX: +1
+				},
+				{
+						coordinates: [1044, 44],
+						offsetX: +16
+				},
+				{
+						coordinates: [1048, 45],
+						offsetX: +10
+				},
+				{
+						coordinates: [1086, 47],
+						offsetY: -8,
+						offsetX: +2
+				},
+				{
+						coordinates: [1111, 43],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [1128, 49],
+						offsetY: +8
+				},
+				{
+						coordinates: [1133, 49],
+						offsetY: +8
+				},
+				{
+						coordinates: [1140, 48],
+						offsetY: -8
+				},
+				{
+						coordinates: [1164, 47],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [1165, 47],
+						offsetY: +8,
+						offsetX: -8
+				},
+				{
+						coordinates: [1166, 48],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [1174, 46],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [1174, 50],
+						offsetY: +8,
+						offsetX: +8
+				},
+				{
+						coordinates: [1176, 48],
+						offsetY: +8,
+				},
+				{
+						coordinates: [1182, 48],
+						offsetY: -8,
+						offsetX: +16
+				},
+				{
+						coordinates: [1182, 49],
+						offsetY: -24,
+						offsetX: +16
+				},
+				{
+						coordinates: [1229, 41],
+						offsetX: +16,
+				},
+				{
+						coordinates: [1233, 45],
+						offsetY: +8,
+				},
+				{
+						coordinates: [1236, 44],
+						offsetY: +8,
+				},
+				{
+						coordinates: [1240, 43],
+						offsetY: +8,
+				},
+				{
+						coordinates: [1244, 42],
+						offsetX: +8,
+				},
+				{
+						coordinates: [1255, 36],
+						offsetY: -8,
+				},
+			]
+		},
 		{
 			level: "hell",
 			lowerText: "HELL",
