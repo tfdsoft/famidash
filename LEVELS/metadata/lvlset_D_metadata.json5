@@ -1,0 +1,74 @@
+{
+	community_levels: [
+		{
+			level: "kratos",
+			lowerText: "KRATOS",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "IMPOSSIBLEDEMON",
+			stars: 10,
+			songID: "song_kratos",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
+			level: "slaughterhouse",
+			lowerText: "SLAUGHTERHOUSE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "GRANDPADEMON",
+			stars: 10,
+			songID: "song_lost",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
+			level: "aftercatabath",
+			lowerText: "AFTERCATABATH",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "GRANDPADEMON",
+			stars: 10,
+			songID: "song_atthespeedoflightfull",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x06,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+	],
+	globalObjectOffsets: [
+		/*	Format:
+		{
+			objectID: int or array,
+			--
+			offset: [x_offset, y_offset] (in px)
+			OR
+			offset{X, Y}: offset (in px)
+
+			override: true if you want this setting to override the previous one for this tile
+		}
+		*/
+		{
+			objectID: 0x3E, /* Right medium post */
+			offsetX: -8
+		},
+		{
+			objectID: [0x0A, 0x0D, 0x25, 0x52, 0x56, 0xFD], /* Bottom pads */
+			offsetY: 8
+		},
+	],
+	levelSetDefineName: "D"
+}

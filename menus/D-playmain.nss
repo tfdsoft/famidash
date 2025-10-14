@@ -53,7 +53,7 @@ VarPalBank_msprBuffer=0
 VarTileViewTagBuf=0
 VarBgPalCur=3
 VarPalActive=0
-VarTileActive=255
+VarTileActive=228
 VarBankActive=0
 VarPPUMask=0
 VarPPUMaskSet0=0
@@ -79,10 +79,10 @@ VarNameSelectionT=-1
 VarNameSelectionB=12
 VarNameCopyW=3
 VarNameCopyH=1
-VarCHRSelectionL=15
-VarCHRSelectionR=16
-VarCHRSelectionT=15
-VarCHRSelectionB=16
+VarCHRSelectionL=4
+VarCHRSelectionR=5
+VarCHRSelectionT=14
+VarCHRSelectionB=15
 VarCHRCopyW=1
 VarCHRCopyH=1
 VarCHRCopyRect=1
@@ -143,7 +143,7 @@ MetaspritePlayBackCursor=0
 FilterCHR=1
 FilterName=9
 FileNameCHR=C:\Users\computer\Downloads\Stuff\menus
-FileNameName=C:\famidash-new\menus\h\playmain
+FileNameName=C:\famidash-new\menus\h\C-playmain.h
 FileNamePal=
 FileNameMetaSpriteBank=
 FileNameTileProps=
@@ -158,7 +158,7 @@ RadioAutoexport_UseSubDir_NEXXT=0
 CheckAutoexport_MetatileAsBMP=0
 
 
-VarCHRSelected=00[ff]01
+VarCHRSelected=00[e4]0100[1b]
 
 
 Palette=1c0f10301c0f2a391c28170f1c0f11210f1121310f1222320f1323330f1424340f1525350f1626360f1727370f1828380f1929390f1a2a3a0f1b2b3b0f1c2c3c
@@ -176,13 +176,13 @@ CHRUndo=ff[10]00[8]ff[10]00[8]ff[8]00[8]ff[8]00ff[7]00[6]ff[8]00[2]ff[8]00[2]3f[
 CHRCopy=00[10]ff[8]00fe[7]80[7]ff7f[7]0001[7]fffe[7]0081[2]f111[2]1f00[2]7e[2]0e[3]00[3]e0f8feff[2]fef8e00060787e[2]786000[3fa1]
 
 
-NameTable=fe[c0]ff[3b]0a06079293ff[28]202122232425262728292223222b2c[2]ff[24]0809a2a3ff[28]3031323334353637383932333a3b3c3dff[b]edf5f3e9e3ff[15]2a0607ff[7]00[11]ff[10]40ff424344454647484942434a4b4c[2]ff[b]e3f2e5e4e9f4f3ff[14]0809ff[5f]0cff[43]e6eff2e5f6e5f2e2eff5eee4ff[17]e9e3efeef3ff[9]ece5f6e5ecf3ff[c]f4e8e5ffe6e1ede9e4e1f3e8ffe3fff3e9e4e5f3ff[9]e4eaf6e9ff[3f]e1f2e5ffe4e5edefeeffefeeecf9ffece5f6e5ecf3ff[8]f7e1f4e5f2e6ece1ede5ff[15]00[d]ff[34]e4ea18eee1f4e5ff[a]e3efed[2]f5eee9f4f9ff[5]00[d]ff[17]e7ef[2]e4ffecf5e3ebffe2e5e1f4e9eee7fff4e8e5edff[7]efe3f5ece1f2eee5e2f5ece1ff[7]e3f2e5e4e9f4f3ff[5]00[d]ff[53]00[d]ff[49]f2e5e4e7e4ff[5]00[d]ff[17]f4effff0ece1f9fff4e8e5ffede1e9eeffece5f6e5ecf3ff[16]e2e1eee1eee1d6d0[3]ff[5]00[d]ff[17]e1eee4ffedeff2e5fff0ece5e1f3e5fff0ece1f9ff[16]e2ece1e3e5e3e1f0f4e1e9ee[2]ff[5]00[d]ff[17]f4e8e5ffede1e9eeffe7e1ede5ff[25]e4f4f0ecf3ff[5]00[d]ff[46]e1ece5e6f5eeebf9ff[5a]f0f315ecefecff[29]f6e9f3e9f4fff4e8e5ffe3efed[2]f5eee9f4f9fff4e1e2ff[14]eeeff4e1f0eff4e1f4efd6d4ff[29]f4effff0ece1f9fff4e8e5ffe3fff3e9e4e5f3ff[18]e2e9e7e6eceff0[2]e1d3d8d5ff[29]ece5f6e5ecf3ff[28]fae5[2]15f3e3eff4[2]ff[57]e1e4f2ecf5e3d0d9d6ff[43]0dff[12]e1f1f5e1ede1f2e9eee5ff[2c]f0f2e5f3[2]ffe1eef9ffebe5f9ff[a]0607ff[15]f3f4f5e4f3f8ff[2e]f4effff2e5f4f5f2eeff[c]08092aff[13]e3eceff5e4d5d4ff[43]2e2f0607ff[5c]3e3f08090bff[3b]fe[c0]
+NameTable=fe[c0]ff[3b]0a06079293ff[28]202122232425262728292223222b2c[2]ff[24]0809a2a3ff[28]3031323334353637383932333a3b3c3dff[b]edf5f3e9e3ff[15]2a0607ff[7]00[11]ff[10]40ff424344454647484942434a4b4c[2]ff[b]e3f2e5e4e9f4f3ff[14]0809ff[5f]0cff[43]e6eff2e5f6e5f2e2eff5eee4ff[17]e9e3efeef3ff[9]ece5f6e5ecf3ff[c]f4e8e5ffe6e1ede9e4e1f3e8ffe4fff3e9e4e5f3ff[9]e4eaf6e9ff[3f]e1f2e5ffe4e5edefeeffefeeecf9ffece5f6e5ecf3ff[8]f7e1f4e5f2e6ece1ede5ff[15]00[d]ff[34]e4ea18eee1f4e5ff[a]e3efed[2]f5eee9f4f9ff[5]00[d]ff[17]e7ef[2]e4ffecf5e3ebffe2e5e1f4e9eee7fff4e8e5edff[7]efe3f5ece1f2eee5e2f5ece1ff[7]e3f2e5e4e9f4f3ff[5]00[d]ff[53]00[d]ff[49]f2e5e4e7e4ff[5]00[d]ff[17]f4effff0ece1f9fff4e8e5ffede1e9eeffece5f6e5ecf3ff[16]e2e1eee1eee1d6d0[3]ff[5]00[d]ff[17]e1eee4ffedeff2e5fff0ece5e1f3e5fff0ece1f9ff[16]e2ece1e3e5e3e1f0f4e1e9ee[2]ff[5]00[d]ff[17]f4e8e5ffede1e9eeffe7e1ede5ff[25]e4f4f0ecf3ff[5]00[d]ff[46]e1ece5e6f5eeebf9ff[5a]f0f315ecefecff[29]f6e9f3e9f4fff4e8e5ffe3efed[2]f5eee9f4f9fff4e1e2ff[14]eeeff4e1f0eff4e1f4efd6d4ff[29]f4effff0ece1f9fff4e8e5ffe3fff3e9e4e5f3ff[18]e2e9e7e6eceff0[2]e1d3d8d5ff[29]ece5f6e5ecf3ff[28]fae5[2]15f3e3eff4[2]ff[57]e1e4f2ecf5e3d0d9d6ff[43]0dff[12]e1f1f5e1ede1f2e9eee5ff[2c]f0f2e5f3[2]ffe1eef9ffebe5f9ff[a]0607ff[15]f3f4f5e4f3f8ff[2e]f4effff2e5f4f5f2eeff[c]08092aff[13]e3eceff5e4d5d4ff[43]2e2f0607ff[5c]3e3f08090bff[3b]fe[c0]
 
 
 NameCopy=e1f2e5ff[c]f4effff2e5f4f5f2eeff[2]383932333a3b3c3dff40ff424344454647484942434a4b4c[2]ffeeeff4ffe6e9f4ffe9eefff4e8e5ff[3]ede1e9eeffe7e1ede5ff[3c]f4effff0ece1f9fff4e8e5ffede1e9eeffece5f6e5ecf3e1eee4ffedeff2e5fff0ece5e1f3e5fff0ece1f9ff[3]f4e8e5ffede1e9eeffe7e1ede5ff[23]eee5f7ffe3e8e5e3ebf0efe9eef4ffe3e1eeffe2e5ff[2]f0ece1e3e5e4f7e9f4e8eff5f4fff0e1f5f3e9eee7fff7e9f4e8ffe2ff[29]e4e5ece5f4e5ffe3e8e5e3ebf0efe9eef4f3ff[23]f3e5ece5e3f4ffeff2ffe8efece4ffedeff5f3e5ffece5e6f4ffe1eee4f0f2e5f3[2]ffedeff5f3e5fff2e9e7e8f4ff[29]ede1f8ffe3e8e5e3ebf0efe9eef4f3fff3f4eff2e5e4ffe0ffd8ff[29]e5f8e9f4ffece5f6e5ecff[27]f0e1f5f3e5e0f3e5ece5e3f4ffe0f2ffe8efece4ffedeff5f3e5fff2e9ff[b]f0e1f5f3e5e0f3e5ece5e3f4ffeff2ffe8efece4ffedeff5f3e5f2e9e7e8f4ff[16]e4e5ece5f4e5ffe3e8e5e3ebf0efe9eef4f3ff[2e]f3e5ece5e3f4ffeff2ffe8efece4ffedeff5f3e5ffece5e6f4ffe1eee4ff[3]f0f2e5f3[2]ffedeff5f3e5fff2e9e7e8f4ff[2f]f3eee5f3ffedeff5f3e5fff5f3e5f3fff0eff2f4ffb2ff[29]fe[40]ffe1ffeff2ffedeff5f3e5ffece5e6f4fff4efffeaf5edf0e0e6ecf9ff[7]e4ea18eee1f4e5ff[a]e3efed[2]f5eee9f4f9ff[5]00[d]ff[34]efe3f5ece1f2eee5e2f5ece1ff[7]e3f2e5e4e9f4f3ff[5]00[d]ff[12]f3f4e1f2f4ffeff2ffedeff5f3e5fff2e9e7e8f4fff4effff0e1f5f3e5ff[24]00[d]ff[49]f2e5e4e7e4ff[5]00[d]ff[12]f0f2e1e3f4e9e3e5ffedefe4e5ff[25]e2e1eee1eee1d6d0[3]ff[5]00[d]ff[41]e2ece1e3e5e3e1f0f4e1e9ee[2]ff[5]00[d]ff[12]f0e1f5f3e5ffe0fff0f2e5f3[2]ffe2ffeff2ffedeff5f3e5ffece5e6f4ff[1a]e4f4f0ecf3ff[5]00[d]ff[46]e1ece5e6f5eeebf9ff[24]eee5f7ffe3e8e5e3ebf0efe9eef4ffe3e1eeffe2e5ff[2]f0ece1e3e5e4ff[19]f0f315ecefecff[24]f7e9f4e8eff5f4fff0e1f5f3e9eee7fff7e9f4e8ffe2ff[1a]eeeff4e1f0eff4e1f4efd6d4ff[54]e2e9e7e6eceff0[2]e1d3d8d5ff[24]e4e5ece5f4e5ffe3e8e5e3ebf0efe9eef4f3ff[21]fae5[2]15f3e3eff4[2]ff[57]e1e4f2ecf5e3d0d9d6ff[24]f3e5ece5e3f4ffeff2ffe8efece4ffedeff5f3e5ffece5e6f4ffe1eee4ff[2]0dff[12]e1f1f5e1ede1f2e9eee5ff[24]f0f2e5f3[2]ffedeff5f3e5fff2e9e7e8f4ff[e]0607ff[15]f3f4f5e4f3f8ff[43]08092aff[13]e3eceff5e4d5d4ff[24]f3eee5f3ffedeff5f3e5fff5f3e5f3fff0eff2f4ffb2ff[9]2e2f0607ff[5c]3e3f08090bff[3b]fe[c0]
 
 
-NameUndo=fe[c0]ff[3b]0a06079293ff[28]202122232425262728292223222b2c[2]ff[24]0809a2a3ff[28]3031323334353637383932333a3b3c3dff[b]edf5f3e9e3ff[15]2a0607ff[7]00[11]ff[10]40ff424344454647484942434a4b4c[2]ff[b]e3f2e5e4e9f4f3ff[14]0809ff[5f]0cff[43]e6eff2e5f6e5f2e2eff5eee4ff[17]e9e3efeef3ff[9]ece5f6e5ecf3ff[c]f4e8e5ffe6e1ede9e4e1f3e8ffe3fff3e9e4e5f3ff[9]e4eaf6e9ff[3f]e1f2e5ffe4e5edefeeffefeeecf9ffece5f6e5ecf3ff[8]f7e1f4e5f2e6ece1ede5ff[15]00[d]ff[34]e4ea18eee1f4e5ff[a]e3efed[2]f5eee9f4f9ff[5]00[d]ff[17]e7ef[2]e4ffecf5e3ebffe2e5e1f4e9eee7a0f4e8e5edff[7]efe3f5ece1f2eee5e2f5ece1ff[7]e3f2e5e4e9f4f3ff[5]00[d]ff[53]00[d]ff[49]f2e5e4e7e4ff[5]00[d]ff[17]f4effff0ece1f9fff4e8e5ffede1e9eeffece5f6e5ecf3ff[16]e2e1eee1eee1d6d0[3]ff[5]00[d]ff[17]e1eee4ffedeff2e5fff0ece5e1f3e5fff0ece1f9ff[16]e2ece1e3e5e3e1f0f4e1e9ee[2]ff[5]00[d]ff[17]f4e8e5ffede1e9eeffe7e1ede5ff[25]e4f4f0ecf3ff[5]00[d]ff[46]e1ece5e6f5eeebf9ff[5a]f0f315ecefecff[29]f6e9f3e9f4fff4e8e5ffe3efed[2]f5eee9f4f9fff4e1e2ff[14]eeeff4e1f0eff4e1f4efd6d4ff[29]f4effff0ece1f9fff4e8e5ffe3fff3e9e4e5f3ff[18]e2e9e7e6eceff0[2]e1d3d8d5ff[29]ece5f6e5ecf3ff[28]fae5[2]15f3e3eff4[2]ff[57]e1e4f2ecf5e3d0d9d6ff[43]0dff[12]e1f1f5e1ede1f2e9eee5ff[2c]f0f2e5f3[2]ffe1eef9ffebe5f9ff[a]0607ff[15]f3f4f5e4f3f8ff[2e]f4effff2e5f4f5f2eeff[c]08092aff[13]e3eceff5e4d5d4ff[43]2e2f0607ff[5c]3e3f08090bff[3b]fe[c0]
+NameUndo=fe[c0]ff[3b]0a06079293ff[28]202122232425262728292223222b2c[2]ff[24]0809a2a3ff[28]3031323334353637383932333a3b3c3dff[b]edf5f3e9e3ff[15]2a0607ff[7]00[11]ff[10]40ff424344454647484942434a4b4c[2]ff[b]e3f2e5e4e9f4f3ff[14]0809ff[5f]0cff[43]e6eff2e5f6e5f2e2eff5eee4ff[17]e9e3efeef3ff[9]ece5f6e5ecf3ff[c]f4e8e5ffe6e1ede9e4e1f3e8ffe3fff3e9e4e5f3ff[9]e4eaf6e9ff[3f]e1f2e5ffe4e5edefeeffefeeecf9ffece5f6e5ecf3ff[8]f7e1f4e5f2e6ece1ede5ff[15]00[d]ff[34]e4ea18eee1f4e5ff[a]e3efed[2]f5eee9f4f9ff[5]00[d]ff[17]e7ef[2]e4ffecf5e3ebffe2e5e1f4e9eee7fff4e8e5edff[7]efe3f5ece1f2eee5e2f5ece1ff[7]e3f2e5e4e9f4f3ff[5]00[d]ff[53]00[d]ff[49]f2e5e4e7e4ff[5]00[d]ff[17]f4effff0ece1f9fff4e8e5ffede1e9eeffece5f6e5ecf3ff[16]e2e1eee1eee1d6d0[3]ff[5]00[d]ff[17]e1eee4ffedeff2e5fff0ece5e1f3e5fff0ece1f9ff[16]e2ece1e3e5e3e1f0f4e1e9ee[2]ff[5]00[d]ff[17]f4e8e5ffede1e9eeffe7e1ede5ff[25]e4f4f0ecf3ff[5]00[d]ff[46]e1ece5e6f5eeebf9ff[5a]f0f315ecefecff[29]f6e9f3e9f4fff4e8e5ffe3efed[2]f5eee9f4f9fff4e1e2ff[14]eeeff4e1f0eff4e1f4efd6d4ff[29]f4effff0ece1f9fff4e8e5ffe3fff3e9e4e5f3ff[18]e2e9e7e6eceff0[2]e1d3d8d5ff[29]ece5f6e5ecf3ff[28]fae5[2]15f3e3eff4[2]ff[57]e1e4f2ecf5e3d0d9d6ff[43]0dff[12]e1f1f5e1ede1f2e9eee5ff[2c]f0f2e5f3[2]ffe1eef9ffebe5f9ff[a]0607ff[15]f3f4f5e4f3f8ff[2e]f4effff2e5f4f5f2eeff[c]08092aff[13]e3eceff5e4d5d4ff[43]2e2f0607ff[5c]3e3f08090bff[3b]fe[c0]
 
 
 AttrTable=00[2]50[4]00[8]407000[9]0405[4]01000a[3]00[4]4d00[8]8000[c]a0[3]00[20]0400080a[2]00[18]8000[2]1000[11]0a[3]0200[2]d71000[26]

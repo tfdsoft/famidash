@@ -69,7 +69,7 @@ void refreshmenu() {
 
 }
 
-#if LEVELSET != 'C'
+#if (LEVELSET != 'C') && (LEVELSET != 'D')
 
 	const uint8_t difficulty_pal_A[] ={
 		0x21,	// easy
