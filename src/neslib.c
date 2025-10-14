@@ -114,7 +114,19 @@ static const char palBrightTable[192] = {
 #define palBrightTable7 *((const char*)&palBrightTable[0x70])
 #define palBrightTable8 *((const char*)&palBrightTable[0x80])
 
-
+#define PAD_A			0x80
+#define PAD_B			0x40
+#if __VS_SYSTEM
+#define PAD_START		0x20
+#define PAD_SELECT		0x10
+#else
+#define PAD_SELECT		0x20
+#define PAD_START		0x10
+#endif
+#define PAD_UP			0x08
+#define PAD_DOWN		0x04
+#define PAD_LEFT		0x02
+#define PAD_RIGHT		0x01
 
 
 

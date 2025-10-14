@@ -2,4 +2,4 @@
 #include "neslibext.c"
 
 #include "famistudio_llvmmos.h"
-#include "music_wrappers.h"
+#include "famistudio_wrappers.h"

@@ -1,5 +1,5 @@
 CC = mos-nes-mmc3-clang
-CARGS = -Os -mreserve-zp=9
+CARGS = -Oz -mreserve-zp=9
 NAME = famidash-llvm
 
 
@@ -8,6 +8,7 @@ default: make
 
 make:
 	rm -rf ./OUT
+	rm *.o
 	mkdir OUT
 #ca65 ./src/famistudio/famistudio_ca65.s -o famistudio.o
 	ca65 ./src/famistudio/music_assets.s -o music.o

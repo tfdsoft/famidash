@@ -9,9 +9,9 @@
 ; FAMISTUDIO_USE_ARPEGGIO = 1
 ; FAMISTUDIO_USE_DPCM_BANKSWITCHING = 1
 
-.export _music_data_untitled:=music_data_untitled
+.export _music_data_1:=music_data_1
 
-music_data_untitled:
+music_data_1:
 	.byte 1
 	.word @instruments
 	.word @samples-5
@@ -23,7 +23,7 @@ music_data_untitled:
 	.word @song0ch4
 	.word 245,204
 
-.export music_data_untitled
+.export music_data_1
 .global FAMISTUDIO_DPCM_PTR
 
 @instruments:

@@ -56,42 +56,33 @@ int main(void){
     vram_adr(0x0000);
     vram_fill(0,0x2000);
 
-    // write chr
-    //set_prg_8000(0);
-    //vram_adr(0x0000);
-    //vram_copy(chr_tiles_global, 0x400);
-    //vram_copy(chr_tiles_grid, 0x100);
-    //vram_copy(chr_tiles_cross, 0x100);
-    //vram_copy(chr_tiles_brick, 0x100);
-    //vram_copy(chr_tiles_black, 0x100);
-    
-    // write nametable
-    //vram_adr(0x2000);
-    //vram_unrle(test_header);
-
     // clear palette
-    //pal_bg(test_palette);
+    pal_bg(test_palette);
     
-    // clear apu
-    //memfill((unsigned char*)0x4000,0,0x10);
+    ppu_on_all();
     
-    
-
-    //set_prg_8000(61);// actually c000
-    //PPU.control = PPU_CTRL_VAR = 0b10100000;
-    //ppu_on_all();
-    
-
-    //pal_fade_to(0,4);
+    pal_fade_to(0,4);
 
     //APU.status = 0b11111; // turn on all apu channels
     //APU.triangle.counter = 0xFF; // enable the triangle, no timer
     
+    //music_bank = 9;
+
+    music_play(song);
+    //set_prg_a000(9); 
+    //famistudio_init(1,0xa000);
+    //famistudio_music_play(1);
     while(1){
+        //unsigned short yscroll;
         ppu_wait_nmi();
-        scroll(0,0);
-        switch (gamestate) {
-            case 0: state_startup(); break;
+        pad_poll(0);
+        //set_prg_a000(9);
+        music_update();
+
+
+        if(pad_new[0] & PAD_RIGHT){
+            music_play(++song);
+            
         }
     }
 }

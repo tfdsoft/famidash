@@ -143,7 +143,7 @@ void __attribute__((__leaf__)) famistudio_sfx_sample_play(unsigned char sample_i
 
 
 void famistudio_dpcm_bank_callback(unsigned char bank){
-    set_prg_8000(2+bank);
+    set_prg_8000(dpcm_bank_0 + bank);
 }
 
 //__asm__ (

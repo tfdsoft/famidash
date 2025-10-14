@@ -3,4 +3,5 @@
 #define high_byte(a) *((unsigned char*)&a+1)
 #define low_byte(a) *((unsigned char*)&a)
 
-
+#define POKE(addr, val)    (*(unsigned char*) (addr) = (val))
+#define PEEK(addr)         (*(unsigned char*) (addr))

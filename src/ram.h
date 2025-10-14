@@ -8,5 +8,5 @@ __attribute__((section(".aligned"),retain)) struct OAM_BUF {
 
 unsigned char gamestate;
 
-
+unsigned char song;
 
