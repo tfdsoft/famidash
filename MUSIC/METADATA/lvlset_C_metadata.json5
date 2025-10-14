@@ -84,12 +84,13 @@
 			lowerText: "BLASTER",
 			originalArtistText: "F777",
 		},
-
+/*
 		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
 			originalArtistText: "CRIM3S",
 		},	
+		*/
 		{
 			fmsSongName: "endorphins",
 			lowerText: "ENDORPHINS",
@@ -101,11 +102,12 @@
 			lowerText: "EIGHTO",
 			originalArtistText: "JOMEKKA",
 		},		
+		/*
 		{
 			fmsSongName: "Kratos",
 			lowerText: "KRATOS",
 			originalArtistText: "SHAPPY",
-		},	
+		},	*/
 		{
 			fmsSongName: "Every End PT1",
 			lowerText: "EVERY END PT1",
@@ -157,6 +159,17 @@
 			upperText: "OKIBA",
 			lowerText: "CRACKDOWN",
 			originalArtistText: "BOSSFIGHT",
+		},
+		{
+			fmsSongName: "Pursuit",
+			lowerText: "PURSUIT",
+			originalArtistText: "BOOM KITTY",		
+		},
+		{
+			fmsSongName: "holography",
+			lowerText: "HOLOGRAPHY",
+			originalArtistText: "GARLAGAN",
+			
 		},
 		
 	],

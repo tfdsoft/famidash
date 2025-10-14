@@ -2,10 +2,12 @@
 // Exported by export_levels.py
 
 const uint8_t difficulty_list[] = {
+	EASYDEMON,	// xx
 	EASYDEMON,	// everymadness
 	EASYDEMON,	// supercycles
 	EASYDEMON,	// dearnostalgists
 	EASYDEMON,	// sonicblaster
+	EASYDEMON,	// motion
 	EASYDEMON,	// endorphinrush
 	MEDIUMDEMON,	// trythisgd
 	MEDIUMDEMON,	// invisiblelight
@@ -24,16 +26,16 @@ const uint8_t difficulty_list[] = {
 	IMPOSSIBLEDEMON,	// cataclysm
 	IMPOSSIBLEDEMON,	// aftermath
 	IMPOSSIBLEDEMON,	// silentclubstep
-	IMPOSSIBLEDEMON,	// kratos
-	GRANDPADEMON,	// slaughterhouse
 	GRANDPADEMON,	// everyend
 };
 
 const uint8_t stars_list[] = {
+	10,	// xx
 	10,	// everymadness
 	10,	// supercycles
 	10,	// dearnostalgists
 	10,	// sonicblaster
+	10,	// motion
 	10,	// endorphinrush
 	10,	// trythisgd
 	10,	// invisiblelight
@@ -52,7 +54,5 @@ const uint8_t stars_list[] = {
 	10,	// cataclysm
 	10,	// aftermath
 	10,	// silentclubstep
-	10,	// kratos
-	10,	// slaughterhouse
 	10,	// everyend
 };
