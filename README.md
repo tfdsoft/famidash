@@ -5,13 +5,15 @@ A demake of Geometry Dash for the NES using the MMC3 mapper.
 
 ## Nightly Builds
 
+You can find the new HUGE MAN (2.25MB) nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).
+
 You can find the main nightly build [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.main.nes.zip).
 
 You can find the B-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.b-sides.nes.zip).
 
 You can find the C-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip).
 
-You can find the HUGE MAN (2.25MB) nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).
+You can find the D-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.d-sides.nes.zip).
 
 You can find the VS (Arcade) branch nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
