@@ -8,7 +8,7 @@ default: make
 
 make:
 	rm -rf ./OUT
-	rm *.o
+	rm -f *.o
 	mkdir OUT
 #ca65 ./src/famistudio/famistudio_ca65.s -o famistudio.o
 	ca65 ./src/famistudio/music_assets.s -o music.o

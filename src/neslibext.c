@@ -1,3 +1,6 @@
+unsigned char pad_old;
+unsigned char pad_new;
+
 
 
 void vram_copy(const unsigned char* from, unsigned short count){
@@ -27,3 +30,38 @@ void pal_fade_to(unsigned char from, unsigned char to){
         }
     }
 }
+
+
+/*
+ * pad_poll(p)
+ * get controller input, AND if it was just pressed!
+*/
+
+void pad_poll_plus(){
+    unsigned char PAD_BUF;
+
+    pad_old = pad[0];
+
+    JOYPAD[0] = 1; // poll by writing 1, then 0
+    JOYPAD[0] = 0;
+
+    for(char i=0; i<8; i++){
+        PAD_BUF <<= 1;  // get the bits!
+        PAD_BUF |= (JOYPAD[0] & 1);
+    }
+    pad[0] = PAD_BUF;
+    /*
+    __attribute__((leaf)) __asm__ volatile (
+        "lda pad,x \n"
+        "eor pad_old,x \n"
+        "and pad,x \n"
+        "sta pad_new,x \n"
+        :
+        :"x"(p)
+        :"a","y","p"
+    );
+    */
+
+    pad_new = ((pad_old ^ pad[0]) & pad[0]);
+}
+    

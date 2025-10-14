@@ -41,7 +41,7 @@ int main(void){
     // clear oam buffer
     memfill((unsigned char*)0x200,0,0x100);
 
-    pal_col(0,0x0f);
+    pal_col(0,0x30);
     pal_bright(0);
     
 
@@ -66,23 +66,29 @@ int main(void){
     //APU.status = 0b11111; // turn on all apu channels
     //APU.triangle.counter = 0xFF; // enable the triangle, no timer
     
-    //music_bank = 9;
+    //music_bank = music_bank_0;
+
+    song = 4;
 
     music_play(song);
-    //set_prg_a000(9); 
+    //set_prg_a000(36); 
     //famistudio_init(1,0xa000);
-    //famistudio_music_play(1);
+    //famistudio_music_play(0);
     while(1){
         //unsigned short yscroll;
         ppu_wait_nmi();
-        pad_poll(0);
-        //set_prg_a000(9);
+        //pad_poll_plus();
+        //get_pad_new();
+
+        //set_prg_a000(36);
         music_update();
 
 
-        if(pad_new[0] & PAD_RIGHT){
+        if(pad_new & PAD_LEFT){
+            music_play(--song);
+        }
+        if(pad_new & PAD_RIGHT){
             music_play(++song);
-            
         }
     }
 }
