@@ -43,7 +43,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_bloodbathbutno)
 	.byte .lobyte(level_data_rainbowtylenol)
 	.byte .lobyte(level_data_greif)
-	.byte .lobyte(level_data_aprettyeasylevel)
 	.byte .lobyte(level_data_extraordinaryexcitement)
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
@@ -90,7 +89,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_bloodbathbutno)
 	.byte .hibyte(level_data_rainbowtylenol)
 	.byte .hibyte(level_data_greif)
-	.byte .hibyte(level_data_aprettyeasylevel)
 	.byte .hibyte(level_data_extraordinaryexcitement)
 	.byte .hibyte(level_data_thelightningroad)
 	.byte .hibyte(level_data_nightmare)
@@ -137,7 +135,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_bloodbathbutno))
 	.byte .lobyte(.bank(level_data_rainbowtylenol))
 	.byte .lobyte(.bank(level_data_greif))
-	.byte .lobyte(.bank(level_data_aprettyeasylevel))
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement))
 	.byte .lobyte(.bank(level_data_thelightningroad))
 	.byte .lobyte(.bank(level_data_nightmare))
@@ -202,7 +199,6 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; bloodbathbutno
 	.byte .lobyte($0000B5)		; rainbowtylenol
 	.byte .lobyte($000069)		; greif
-	.byte .lobyte($000070)		; aprettyeasylevel
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
@@ -251,7 +247,6 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; bloodbathbutno
 	.byte .hibyte($0000B5)		; rainbowtylenol
 	.byte .hibyte($000069)		; greif
-	.byte .hibyte($000070)		; aprettyeasylevel
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
@@ -300,7 +295,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; bloodbathbutno
 	.byte .bankbyte($0000B5)		; rainbowtylenol
 	.byte .bankbyte($000069)		; greif
-	.byte .bankbyte($000070)		; aprettyeasylevel
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare

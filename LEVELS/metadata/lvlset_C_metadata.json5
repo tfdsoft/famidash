@@ -1,6 +1,22 @@
 {
 	community_levels: [
 		{
+			level: "xx",
+			lowerText: "X",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_holography",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "everymadness",
 			upperText: "EVERY",
 			lowerText: "MADNESS",
@@ -76,7 +92,28 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},			
-
+		{
+			level: "motion",
+			lowerText: "MOTION",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_pursuit",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [572, 17],
+					offsetX: -8
+				},			
+			]
+		},
 		{
 			level: "endorphinrush",
 			upperText: "ENDORPHIN",
@@ -1049,6 +1086,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		/*
 		{
 			level: "kratos",
 			lowerText: "KRATOS",
@@ -1064,7 +1102,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
-		},
+		},*/
 //		{
 //			level: "aftercatabath",
 //			lowerText: "AFTERCATABATH",
@@ -1081,6 +1119,7 @@
 //			startingGroundColor: 0x0F,
 //			parallaxDisable: true
 //		},
+/*
 		{
 			level: "slaughterhouse",
 			lowerText: "SLAUGHTERHOUSE",
@@ -1097,6 +1136,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		*/
 		{
 			level: "everyend",
 			lowerText: "EVERY END",

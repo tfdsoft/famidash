@@ -135,12 +135,6 @@
 			
 		},
 		{
-			fmsSongName: "holography",
-			lowerText: "HOLOGRAPHY",
-			originalArtistText: "GARLAGAN",
-			
-		},
-		{
 			fmsSongName: "Dance of the violins",
 			upperText: "DANCE OF",
 			lowerText: "THE VIOLINS",
@@ -188,12 +182,6 @@
 			
 		},	
 		{
-			fmsSongName: "Pursuit",
-			lowerText: "PURSUIT",
-			originalArtistText: "BOOM KITTY",
-			
-		},
-		{
 			fmsSongName: "Problematic",
 			lowerText: "PROBLEMATIC",
 			originalArtistText: "NIGHTKILLA",
@@ -228,7 +216,13 @@
 			upperText: "SLASH",
 			lowerText: "INFERNO",
 			originalArtistText: "WF TEM BKIT"
-		},		
+		},
+		{
+			fmsSongName: "against the odds redux",
+			upperText: "8 BIT AGAINST",
+			lowerText: "THE ODDS REDUX",
+			originalArtistText: "ELITEFERREX",
+		},
 	],
 	SFX: [
 		{

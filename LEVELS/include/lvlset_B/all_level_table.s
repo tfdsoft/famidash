@@ -25,15 +25,14 @@ _level_list_lo:
 	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_danceofviolins)
+	.byte .lobyte(level_data_aprettyeasylevel)
 	.byte .lobyte(level_data_highlife)
-	.byte .lobyte(level_data_xx)
 	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_problematic)
 	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_infinitecircles)
 	.byte .lobyte(level_data_deathmoon)
 	.byte .lobyte(level_data_clutterfunk2)
-	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_futurefunk)
@@ -60,15 +59,14 @@ _level_list_hi:
 	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_powertrip)
 	.byte .hibyte(level_data_danceofviolins)
+	.byte .hibyte(level_data_aprettyeasylevel)
 	.byte .hibyte(level_data_highlife)
-	.byte .hibyte(level_data_xx)
 	.byte .hibyte(level_data_skeletalshenanigans)
 	.byte .hibyte(level_data_problematic)
 	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_infinitecircles)
 	.byte .hibyte(level_data_deathmoon)
 	.byte .hibyte(level_data_clutterfunk2)
-	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_futurefunk)
@@ -95,15 +93,14 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_powertrip))
 	.byte .lobyte(.bank(level_data_danceofviolins))
+	.byte .lobyte(.bank(level_data_aprettyeasylevel))
 	.byte .lobyte(.bank(level_data_highlife))
-	.byte .lobyte(.bank(level_data_xx))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 	.byte .lobyte(.bank(level_data_problematic))
 	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_infinitecircles))
 	.byte .lobyte(.bank(level_data_deathmoon))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
-	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_futurefunk))
@@ -116,9 +113,8 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_highlife_3)
 	.byte .lobyte(level_data_skeletalshenanigans_4)
 	.byte .lobyte(level_data_deathmoon_5)
-	.byte .lobyte(level_data_motion_6)
+	.byte .lobyte(level_data_futurefunk_6)
 	.byte .lobyte(level_data_futurefunk_7)
-	.byte .lobyte(level_data_futurefunk_8)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_cryogenic_0)
@@ -127,9 +123,8 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_highlife_3)
 	.byte .hibyte(level_data_skeletalshenanigans_4)
 	.byte .hibyte(level_data_deathmoon_5)
-	.byte .hibyte(level_data_motion_6)
+	.byte .hibyte(level_data_futurefunk_6)
 	.byte .hibyte(level_data_futurefunk_7)
-	.byte .hibyte(level_data_futurefunk_8)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_cryogenic_0))
@@ -138,9 +133,8 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_highlife_3))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans_4))
 	.byte .lobyte(.bank(level_data_deathmoon_5))
-	.byte .lobyte(.bank(level_data_motion_6))
+	.byte .lobyte(.bank(level_data_futurefunk_6))
 	.byte .lobyte(.bank(level_data_futurefunk_7))
-	.byte .lobyte(.bank(level_data_futurefunk_8))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -166,15 +160,14 @@ _level_lengths_lo:
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
+	.byte .lobyte($000070)		; aprettyeasylevel
 	.byte .lobyte($000154)		; highlife
-	.byte .lobyte($000090)		; xx
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($00006E)		; problematic
 	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($00006F)		; infinitecircles
 	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($0000B1)		; clutterfunk2
-	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($0001DD)		; futurefunk
@@ -203,15 +196,14 @@ _level_lengths_md:
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
+	.byte .hibyte($000070)		; aprettyeasylevel
 	.byte .hibyte($000154)		; highlife
-	.byte .hibyte($000090)		; xx
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($00006E)		; problematic
 	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($00006F)		; infinitecircles
 	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($0000B1)		; clutterfunk2
-	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($0001DD)		; futurefunk
@@ -240,15 +232,14 @@ _level_lengths_hi:
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins
+	.byte .bankbyte($000070)		; aprettyeasylevel
 	.byte .bankbyte($000154)		; highlife
-	.byte .bankbyte($000090)		; xx
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($00006E)		; problematic
 	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($00006F)		; infinitecircles
 	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($0000B1)		; clutterfunk2
-	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($0001DD)		; futurefunk

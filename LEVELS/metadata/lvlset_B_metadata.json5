@@ -744,6 +744,38 @@
 			parallaxDisable: true
 		},
 		{
+			level: "aprettyeasylevel",
+			upperText: "A PRETTY",
+			lowerText: "EASY LEVEL",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "C",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 9,
+			songID: "song_against_the_odds_redux",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			objectOffsets: [
+				{
+					coordinates: [
+						[87, 21],	[205, 16],	[218, 21],	[231, 19],	[264, 20],		//gravity portal
+						[343, 23],	[468, 21],	[532, 20],	[657, 16],					//gravity portal
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[227, 17],	[255, 16],	[277, 14],	[326, 15],					//gravity portal
+						[417, 15],	[518, 14],	[648, 14],								//gravity portal
+					],
+					offsetY: +8
+				},
+			]
+		},
+		{
 			level: "highlife",
 			lowerText: "HIGH LIFE",
 			decoType: "DECO1",
@@ -759,22 +791,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},	
-		{
-			level: "xx",
-			lowerText: "X",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_holography",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
 		{
 			level: "skeletalshenanigans",
 			upperText: "SKELETAL",
@@ -970,28 +986,6 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
-		},
-		{
-			level: "motion",
-			lowerText: "MOTION",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_pursuit",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					coordinates: [572, 17],
-					offsetX: -8
-				},			
-			]
 		},
 		{
 			level: "speedracer",

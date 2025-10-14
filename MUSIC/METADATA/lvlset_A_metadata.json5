@@ -335,12 +335,6 @@
 			vsSystemEnabled: false
 		},
 		{
-			fmsSongName: "against the odds redux",
-			upperText: "8 BIT AGAINST",
-			lowerText: "THE ODDS REDUX",
-			originalArtistText: "ELITEFERREX",
-		},
-		{
 			fmsSongName: "Ground to Space",
 			upperText: "GROUND TO",
 			lowerText: "SPACE",

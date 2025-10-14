@@ -4,7 +4,7 @@
 #define LEVELSET 'A'
 
 #define OFFICIAL_LEVEL_COUNT 22
-#define COMMUNITY_LEVEL_COUNT 23
+#define COMMUNITY_LEVEL_COUNT 22
 
 #define level_stereomadness 0
 #define level_backontrack 1
@@ -44,10 +44,9 @@
 #define level_bloodbathbutno 35
 #define level_rainbowtylenol 36
 #define level_greif 37
-#define level_aprettyeasylevel 38
-#define level_extraordinaryexcitement 39
-#define level_thelightningroad 40
-#define level_nightmare 41
-#define level_demonpark 42
-#define level_firetemple 43
-#define level_foresttemple 44
+#define level_extraordinaryexcitement 38
+#define level_thelightningroad 39
+#define level_nightmare 40
+#define level_demonpark 41
+#define level_firetemple 42
+#define level_foresttemple 43
