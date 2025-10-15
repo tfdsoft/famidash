@@ -6,6 +6,6 @@
 #define OFFICIAL_LEVEL_COUNT 0
 #define COMMUNITY_LEVEL_COUNT 3
 
-#define level_slaughterhouse 0
-#define level_kratos 1
+#define level_kratos 0
+#define level_slaughterhouse 1
 #define level_aftercatabath 2

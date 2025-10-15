@@ -1,8 +1,8 @@
 
 // Exported by export_levels.py
 
-const char levelText00[14] = "SLAUGHTERHOUSE";
-const char levelText01[ 6] = "KRATOS";
+const char levelText00[ 6] = "KRATOS";
+const char levelText01[14] = "SLAUGHTERHOUSE";
 const char levelText02[13] = "AFTERCATABATH";
 
 

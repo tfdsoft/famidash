@@ -4,13 +4,13 @@
 
 const char musicSoundTestString00[ 8] = "SCHEMING";
 const char musicSoundTestString01[12] = "AT$THE$SPEED";
-const char musicSoundTestString02[10] = "EMEHT$UNEM";
+const char musicSoundTestString02[ 4] = "MENU";
 const char musicSoundTestString03[ 8] = "PRACTICE";
 const char musicSoundTestString04[ 6] = "WEASEL";
 const char musicSoundTestString05[ 4] = "LOST";
 const char musicSoundTestString06[ 6] = "KRATOS";
 const char musicSoundTestString07[ 8] = "OF$LIGHT";
-const char musicSoundTestString08[ 6] = "ROBTOP";
+const char musicSoundTestString08[ 8] = "TOBY$FOX";
 const char musicSoundTestString09[12] = "OCULARNEBULA";
 const char musicSoundTestString0A[13] = "KEVIN$MACLEOD";
 const char musicSoundTestString0B[ 6] = "CRIM3S";
@@ -93,7 +93,7 @@ CODE_BANK_PUSH("RODATA")
 #if !__VS_SYSTEM
 
 const uint8_t xbgmlookuptable[] = {
-	song_emeht_unem,
+	song_menu_theme_human_capturing_mix,
 	song_practice,
 	song_scheming_weasel,
 	song_lost,
