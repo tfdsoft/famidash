@@ -3,55 +3,51 @@
 #define IDENT(x) x
 #define XSTR(x) #x
 #define STR(x) XSTR(x)
-#define PATH(x,y) STR(IDENT(x))
-
 
 #define file(symbol, bank) __attribute__((section((".prg_rom_"STR(bank))),retain)) const unsigned char symbol[]
 
+// LEVELS
+// banks 0-31 are reserved for level data.
 
-
-
-#define embed_dpcm(name, symbol, bank) \
-__asm__ ( \
-    ".section " ".prg_rom_"#bank ",\"a\",@progbits \n"\
-    #symbol": \n" \
-    ".incbin \"./src/famistudio/"name"\" \n" \
-); \
-extern const unsigned char symbol[] 
-
-
-
-#define chr_bank_0 32 // menu
-#define chr_bank_1 33
-#define chr_bank_2 34
+// GRAPHICS
+#define chr_bank_0 32       // menu graphics
+#define chr_bank_1 33       // level graphics
+#define chr_bank_2 34       // 
 #define chr_bank_3 35
 
-#define sfx_bank 36
-#define music_bank_0 37
-#define music_bank_1 38
-#define music_bank_2 39
+// MUSIC DATA
+#define sfx_bank 36         // sound fx!
+#define music_bank_0 37     // the freakin' music.
+#define music_bank_1 38     // |    go to src/famistudio/music_assets.s
+#define music_bank_2 39     // V    to set these banks manually.
 
-#define dpcm_bank_0 40
-#define dpcm_bank_1 41
-#define dpcm_bank_2 42
-#define dpcm_bank_3 43
-#define dpcm_bank_4 44
-#define dpcm_bank_5 45
-#define dpcm_bank_6 46
-#define dpcm_bank_7 47
-#define dpcm_bank_8 48
-#define dpcm_bank_9 49
-#define dpcm_bank_10 50
-#define dpcm_bank_11 51
-#define dpcm_bank_12 52
-#define dpcm_bank_13 53
-#define dpcm_bank_14 54
-#define dpcm_bank_15 55
+// SAMPLES
+#define dpcm_bank_0 40      // the samplOH MY GOD WHY ARE THERE SO MANY
+#define dpcm_bank_1 41      // |    yeah i guess kando wasn't joking
+#define dpcm_bank_2 42      // |    when he said "no more space"
+#define dpcm_bank_3 43      // |
+#define dpcm_bank_4 44      // |
+#define dpcm_bank_5 45      // |
+#define dpcm_bank_6 46      // |
+#define dpcm_bank_7 47      // |
+#define dpcm_bank_8 48      // |
+#define dpcm_bank_9 49      // |
+#define dpcm_bank_10 50     // |
+#define dpcm_bank_11 51     // |
+#define dpcm_bank_12 52     // |
+#define dpcm_bank_13 53     // |    on top of all this, there's still
+#define dpcm_bank_14 54     // |    a whole sample bank being left
+#define dpcm_bank_15 55     // V    out: bank16.
 
-#define extra_code_bank 59
+// banks 56-57 are reserved, on the off-chance we need more extra code
 
-#define nametable_bank_0 60
-#define nametable_bank_1 61
+#define extra_code_bank 59  // gamestates that don't need to switch
+                            // banks frequently can go in here
+
+#define nametable_bank_0 60 // neslib-rle-packed nametables
+#define nametable_bank_1 61 // V
+
+// banks 62 and 63 are fixed. not much i can do about that
 
 
 file(chr_logo, chr_bank_0) = {
