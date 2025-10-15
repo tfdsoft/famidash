@@ -1,7 +1,5 @@
 #ew windows
 .vscode
-OUT
-sauce
 
 *.nes
 *.mlb
