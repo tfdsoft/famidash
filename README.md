@@ -15,7 +15,7 @@ Want more levels? Check out
 , 
 [C-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip)
 , and
-[D-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip)
+[D-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.d-sides.nes.zip)
 
 Want EVERYTHING? Download
 [The Obese](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).
