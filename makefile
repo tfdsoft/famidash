@@ -7,9 +7,19 @@ default: make
 
 
 make:
-	rm -rf ./OUT
-	rm -f *.o
-	mkdir OUT
-#ca65 ./src/famistudio/famistudio_ca65.s -o famistudio.o
-	ca65 ./src/famistudio/music_assets.s -o music.o
-	$(CC) ./src/main.c ./*.o $(CARGS) -o ./OUT/main.nes -T link.ld -std=gnu23
+
+# 	remove duplicate dpcm files
+	rm -rf ./src/famistudio/music_[!0]_bank*.dmc
+	
+# 	OUT is where the rom will be
+	mkdir OUT -p
+	mkdir TMP -p
+
+#	compile all of the music assets into one giant object file
+	ca65 ./src/famistudio/music_assets.s -o ./TMP/music.o
+
+# 	run llvm-mos
+	$(CC) ./src/main.c ./TMP/*.o $(CARGS) -o ./OUT/$(NAME).nes -T link.ld -std=gnu23
+
+#	delete object files
+	rm -rf ./TMP

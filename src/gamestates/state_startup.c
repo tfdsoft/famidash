@@ -44,7 +44,8 @@ void state_startup() {
     ppu_on_all();
     pal_fade_to(0,4);
 
-    music_play(1);
+    song = 1;
+    music_play(song);
     
     while(1){
         ppu_wait_nmi();
@@ -54,13 +55,13 @@ void state_startup() {
         
         music_update();
 
-        //if((PAD_STATET[0] & PAD_LEFT)) music_play(--song);
+        if((PAD_STATET[0] & PAD_LEFT)) music_play(--song);
         
-        //if((PAD_STATET[0] & PAD_RIGHT)) music_play(++song);
+        if((PAD_STATET[0] & PAD_RIGHT)) music_play(++song);
         
 
-        //if(PAD_STATET[0] & PAD_A) sfx_play(1,0);
-        //if(PAD_STATET[0] & PAD_B) sfx_play(0,0);
+        if(PAD_STATET[0] & PAD_A) sfx_play(1,0);
+        if(PAD_STATET[0] & PAD_B) sfx_play(0,0);
             
         
         ppu_grayscale(0);
