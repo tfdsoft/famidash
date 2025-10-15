@@ -44,12 +44,12 @@
 
 
 // el memory section!!!!!!
-static unsigned char spin;
-static volatile unsigned char __zp FRAME_CNT, FRAME_COUNT_OLD;
-static volatile unsigned char __zp PPU_MASK_VAR, PPU_CTRL_VAR;
-static volatile unsigned char __zp PPU_CTRL_VAR1;
-static unsigned char __zp SCROLL_X, SCROLL_Y;
-static unsigned char __zp SCROLL_X1;//, SCROLL_Y1;
+//static unsigned char spin;
+static volatile unsigned char FRAME_CNT;
+static volatile unsigned char PPU_MASK_VAR, PPU_CTRL_VAR;
+static volatile unsigned char PPU_CTRL_VAR1;
+static unsigned char SCROLL_X, SCROLL_Y;
+static unsigned char SCROLL_X1;//, SCROLL_Y1;
 #define PAL_BUF ((volatile char*)0x100) 
 __attribute__((used)) 
     volatile unsigned char PAD_STATE[2], 
