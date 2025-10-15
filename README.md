@@ -4,6 +4,7 @@
 A demake of Geometry Dash for the NES using the MMC3 mapper.
 
 ## Nightly Builds
+
 ### WARNING! These are constantly changing and *might* be broken.
 
 If you're just looking to play Geometry Dash on your NES and that's it,\
