@@ -1,4 +1,4 @@
-__attribute__((section(".aligned"),retain)) struct OAM_BUF {
+__attribute__((section(".aligned.0"),retain)) struct OAM_BUF {
     unsigned char y;
     unsigned char tile;
     unsigned char attr;
