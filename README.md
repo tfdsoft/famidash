@@ -10,8 +10,8 @@ A demake of Geometry Dash for the NES using the MMC3 mapper.
 If you're just looking to play Geometry Dash on your NES and that's it,\
 we recommend starting with [The Original Game](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.main.nes.zip).
 
-Want more levels? Check out 
-[B-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.b-sides.nes.zip) 
+Want more levels? Check out
+[B-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.b-sides.nes.zip)
 , 
 [C-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip)
 , and
@@ -23,6 +23,9 @@ Want EVERYTHING? Download
 Do you have WAY too many quarters? Play the [Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
 Want just the music? Download [The Album](https://nightly.link/tfdsoft/famidash/workflows/main/famidash-the-album/famidash.nes.zip)!
+
+A rework is also in progress, titled Famidash 2.0. \
+It can be found [here](https://github.com/tfdsoft/famidash/blob/llvm-mos-compiler/OUT/main.nes)
 
 ## contributing
 
