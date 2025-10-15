@@ -27,8 +27,8 @@ void state_startup() {
         music_update();
 
         pal_bright(4);
-        if((stall >= 87)) pal_bright(2);
-        if((stall >= 80) && (stall < 83)) pal_bright(2);
+        if((stall >= 87)) pal_bright(3);
+        if((stall >= 80) && (stall < 83)) pal_bright(3);
     }
 
     pal_fade_to(4,0);
