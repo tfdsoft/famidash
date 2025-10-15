@@ -1,3 +1,5 @@
+//unsigned char automatic_fs_updates = 0;
+
 __attribute__((interrupt_norecurse)) void nmi(){
     // oh yeah just a heads up:
     // llvm-mos needs to push EVERY. SINGLE.
@@ -61,4 +63,5 @@ __attribute__((interrupt_norecurse)) void nmi(){
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
     
+    //if(automatic_fs_updates) music_update();
 }

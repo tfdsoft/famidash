@@ -22,14 +22,14 @@ __attribute__((leaf)) __asm__(
     // end of clearRAM
 
     ".section .init.300,\"ax\",@progbits \n"
-        //"lda #$01 \n"
-        //"jsr set_prg_a000 \n"
+        "lda #$37 \n"
+        "jsr set_prg_a000 \n"
 
-        //"lda #$01 \n"
-        //"tax \n"
-        //"dex \n"
-        //"ldy #$a0 \n"
-        //"jsr famistudio_init \n"
+        "lda #$01 \n"
+        "tax \n"
+        "dex \n"
+        "ldy #$a0 \n"
+        "jsr famistudio_init \n"
 
         //"ldx #$00 \n"
         //"tax \n"
@@ -43,6 +43,9 @@ int main(void){
     
     ppu_off(); // turn off everything
     
+    music_play(0);
+    famistudio_music_stop();
+
     // clear oam buffer
     memfill((unsigned char*)0x200,0,0x100);
 
@@ -73,7 +76,10 @@ int main(void){
         ppu_off();
         ppu_wait_nmi();
         switch(gamestate){
-            default: state_startup(); break;
+            default: 
+                //banked_call_a000(extra_code_bank, state_startup); 
+                state_startup();
+                break;
         }
     }
 }

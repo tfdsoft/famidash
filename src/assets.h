@@ -48,6 +48,8 @@ extern const unsigned char symbol[]
 #define dpcm_bank_14 54
 #define dpcm_bank_15 55
 
+#define extra_code_bank 59
+
 #define nametable_bank_0 60
 #define nametable_bank_1 61
 

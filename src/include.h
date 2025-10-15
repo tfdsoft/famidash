@@ -9,12 +9,15 @@ __attribute__((retain))
 
 #include "libraries.h"
 
+#include "interrupts.c"
+
+
 #include "./gamestates/state_startup.c"
 
 
 
 
-#include "interrupts.c"
+
 
 
     

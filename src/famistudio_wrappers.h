@@ -4,7 +4,7 @@ unsigned char current_bank, song_count;
 
 void music_play(unsigned char s){
     
-    //prev_bank = get_prg_a000();
+    unsigned char prev_bank = get_prg_a000();
     current_bank = music_bank_0;
     song_count = 0;
 
@@ -38,18 +38,20 @@ void music_play(unsigned char s){
     famistudio_init(1,0xa000);
     famistudio_music_play(song_count);
     
-    //set_prg_a000(prev_bank);
+    set_prg_a000(prev_bank);
 }
 
 void music_update(){
-    //prev_bank = get_prg_a000();
+    unsigned char prev_bank = get_prg_a000();
     set_prg_a000(music_bank);
     famistudio_update();
-    //set_prg_a000(prev_bank);
+    set_prg_a000(prev_bank);
 }
 
 void sfx_play(unsigned char index, unsigned char channel){
+    unsigned char prev_bank = get_prg_a000();
     set_prg_a000(sfx_bank);
     famistudio_sfx_init(0xa000);
     famistudio_sfx_play(index,channel);
+    set_prg_a000(prev_bank);
 }
