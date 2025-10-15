@@ -4,20 +4,24 @@
 A demake of Geometry Dash for the NES using the MMC3 mapper.
 
 ## Nightly Builds
+### WARNING! These are constantly changing and *might* be broken.
 
-You can find the new HUGE MAN (2.25MB) nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).
+If you're just looking to play Geometry Dash on your NES and that's it,\
+we recommend starting with [The Original Game](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.main.nes.zip).
 
-You can find the main nightly build [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.main.nes.zip).
+Want more levels? Check out 
+[B-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.b-sides.nes.zip) 
+, 
+[C-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip)
+, and
+[D-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip)
 
-You can find the B-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.b-sides.nes.zip).
+Want EVERYTHING? Download
+[The Obese](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).
 
-You can find the C-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip).
+Do you have WAY too many quarters? Play the [Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
-You can find the D-Sides nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.d-sides.nes.zip).
-
-You can find the VS (Arcade) branch nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
-
-You can find Famidash - The Album nightly [here](https://nightly.link/tfdsoft/famidash/workflows/main/famidash-the-album/famidash.nes.zip).
+Want just the music? Download [The Album](https://nightly.link/tfdsoft/famidash/workflows/main/famidash-the-album/famidash.nes.zip)!
 
 ## contributing
 
