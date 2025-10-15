@@ -9,7 +9,7 @@ __attribute__((retain))
 
 #include "libraries.h"
 
-//#include "./gamestates/state_startup.c"
+#include "./gamestates/state_startup.c"
 
 
 

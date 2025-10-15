@@ -44,7 +44,6 @@
 
 
 // el memory section!!!!!!
-unsigned char pad[2];
 static unsigned char spin;
 static volatile unsigned char __zp FRAME_CNT, FRAME_COUNT_OLD;
 static volatile unsigned char __zp PPU_MASK_VAR, PPU_CTRL_VAR;
@@ -52,6 +51,11 @@ static volatile unsigned char __zp PPU_CTRL_VAR1;
 static unsigned char __zp SCROLL_X, SCROLL_Y;
 static unsigned char __zp SCROLL_X1;//, SCROLL_Y1;
 #define PAL_BUF ((volatile char*)0x100) 
+__attribute__((used)) 
+    volatile unsigned char PAD_STATE[2], 
+    PAD_STATEP[2], 
+    PAD_STATET[2];
+static unsigned char TEMP;
 static char SPRID;
 static char LEN;
 static char PAL_UPDATE;
@@ -504,17 +508,48 @@ void vram_unrle(unsigned char* src){
  * pad_poll(p)
  * get controller input!
 */
-void pad_poll(unsigned char p){
-    unsigned char PAD_BUF;
+void pad_poll(unsigned char pad){
+    __attribute__((leaf)) __asm__ volatile (
+            "ldx #3 \n"
 
-    JOYPAD[0] = 1; // poll by writing 1, then 0
-    JOYPAD[0] = 0;
+        ".padPollPort: \n"
 
-    for(char i=0; i<8; i++){
-        PAD_BUF <<= 1;  // get the bits!
-        PAD_BUF |= (JOYPAD[p] & 1);
-    }
-    pad[p] = PAD_BUF;
+            "lda #1 \n"
+            "sta $4016 \n"
+            "sta __rc2,x \n"
+            "lda #0 \n"
+            "sta $4016 \n"
+
+        ".padPollLoop: \n"
+
+            "lda $4016,y \n"
+            "lsr a \n"
+            "rol __rc2,x \n"
+            "bcc .padPollLoop \n"
+
+            "dex \n"
+            "bne .padPollPort \n"
+
+            "lda __rc3 \n"
+            "cmp __rc4 \n"
+            "beq .done \n"
+            "cmp __rc5 \n"
+            "beq .done \n"
+            "lda __rc4 \n"
+
+        ".done: \n"
+
+            "sta PAD_STATE,y \n"
+            "tax \n"
+            "eor PAD_STATEP,y \n"
+            "and PAD_STATE ,y \n"
+            "sta PAD_STATET,y \n"
+            "txa \n"
+            "sta PAD_STATEP,y \n"
+        :
+        :"y"(pad)
+        :"a","x","p","rc2","rc3","rc4","rc5"
+    );
 }
 
 
@@ -629,8 +664,8 @@ void ppu_emphasis(unsigned char bgr){
  *  __inputs__
  *  grayscale: 0 = off, 1 = on
 */
-//void ppu_grayscale(unsigned char grayscale){
-//    PPU_MASK_VAR = ((PPU_MASK_VAR & 0b1) | (grayscale & 0b1))
-//    PPU.mask = PPU_MASK_VAR;
-//    return;
-//}
+void ppu_grayscale(unsigned char grayscale){
+    PPU_MASK_VAR = ((PPU_MASK_VAR & 0b11111110) | (grayscale & 0b00000001));
+    PPU.mask = PPU_MASK_VAR;
+    return;
+}

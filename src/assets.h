@@ -5,14 +5,6 @@
 #define STR(x) XSTR(x)
 #define PATH(x,y) STR(IDENT(x))
 
-/*#define embed_chr(name, symbol, bank) \
-__asm__ ( \
-    ".section .prg_rom_"#bank ",\"a\",@progbits \n"\
-    #symbol": \n" \
-    ".incbin \"./src/chr/"name"\" \n" \
-); \
-extern const unsigned char symbol[] 
-*/
 
 #define file(symbol, bank) __attribute__((section((".prg_rom_"STR(bank))),retain)) const unsigned char symbol[]
 
@@ -34,10 +26,10 @@ extern const unsigned char symbol[]
 #define chr_bank_2 34
 #define chr_bank_3 35
 
-#define music_bank_0 36
-#define music_bank_1 37
-#define music_bank_2 38
-#define music_bank_3 39
+#define sfx_bank 36
+#define music_bank_0 37
+#define music_bank_1 38
+#define music_bank_2 39
 
 #define dpcm_bank_0 40
 #define dpcm_bank_1 41
@@ -85,7 +77,7 @@ file(chr_tiles_black, chr_bank_1) = {
 
 
 putinbank(".prg_rom_fixed_lo") const unsigned char test_palette[16]={
-    0x0f,0x00,0x10,0x30,
+    0x0f,0x00,0x3d,0x30,
     0x0f,0x0f,0x0f,0x0f,
     0x0f,0x0f,0x0f,0x0f,
     0x0f,0x0f,0x0f,0x0f

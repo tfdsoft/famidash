@@ -22,27 +22,32 @@ __attribute__((leaf)) __asm__(
     // end of clearRAM
 
     ".section .init.300,\"ax\",@progbits \n"
-        "lda #$01 \n"
-        "jsr set_prg_a000 \n"
+        //"lda #$01 \n"
+        //"jsr set_prg_a000 \n"
 
-        "lda #$01 \n"
-        "tax \n"
-        "dex \n"
-        "ldy #$a0 \n"
-        "jsr famistudio_init \n"
+        //"lda #$01 \n"
+        //"tax \n"
+        //"dex \n"
+        //"ldy #$a0 \n"
+        //"jsr famistudio_init \n"
+
+        //"ldx #$00 \n"
+        //"tax \n"
+        //"dex \n"
+        //"ldy #$a0 \n"
+        //"jsr famistudio_sfx_init \n"
 );
 
 int main(void){
     PPU.control = PPU_CTRL_VAR = 0b10100000;
-    //PPU.mask = PPU_MASK_VAR = 0b00011000;
+    
     ppu_off(); // turn off everything
-
     
     // clear oam buffer
     memfill((unsigned char*)0x200,0,0x100);
 
-    pal_col(0,0x30);
-    pal_bright(0);
+    // clear palette
+    pal_bg(test_palette);
     
 
     set_chr_bank(0,0);
@@ -56,39 +61,19 @@ int main(void){
     vram_adr(0x0000);
     vram_fill(0,0x2000);
 
-    // clear palette
-    pal_bg(test_palette);
-    
-    ppu_on_all();
-    
-    pal_fade_to(0,4);
+    ppu_on_spr();
 
     //APU.status = 0b11111; // turn on all apu channels
     //APU.triangle.counter = 0xFF; // enable the triangle, no timer
     
     //music_bank = music_bank_0;
 
-    song = 4;
-
-    music_play(song);
-    //set_prg_a000(36); 
-    //famistudio_init(1,0xa000);
-    //famistudio_music_play(0);
     while(1){
-        //unsigned short yscroll;
+        pal_bright(0);
+        ppu_off();
         ppu_wait_nmi();
-        //pad_poll_plus();
-        //get_pad_new();
-
-        //set_prg_a000(36);
-        music_update();
-
-
-        if(pad_new & PAD_LEFT){
-            music_play(--song);
-        }
-        if(pad_new & PAD_RIGHT){
-            music_play(++song);
+        switch(gamestate){
+            default: state_startup(); break;
         }
     }
 }

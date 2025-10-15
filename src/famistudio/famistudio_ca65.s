@@ -4377,6 +4377,12 @@ famistudio_update:
 
 ;----------------------------------------------------------------------------------------------------------------------
 .if FAMISTUDIO_CFG_SFX_SUPPORT
+;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
+;*  MODIFIED
+    .import set_prg_a000
+    LDA #36
+    JSR set_prg_a000
+;!!! FAMISTUDIO DRIVER MODIFICATION END
 
     ; Process all sound effect streams
     .if FAMISTUDIO_CFG_SFX_STREAMS > 0

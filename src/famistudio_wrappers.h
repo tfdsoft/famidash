@@ -47,3 +47,9 @@ void music_update(){
     famistudio_update();
     //set_prg_a000(prev_bank);
 }
+
+void sfx_play(unsigned char index, unsigned char channel){
+    set_prg_a000(sfx_bank);
+    famistudio_sfx_init(0xa000);
+    famistudio_sfx_play(index,channel);
+}
