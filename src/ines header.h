@@ -4,7 +4,8 @@
 // maxed out mmc3 prg
 MAPPER_PRG_ROM_KB(512);
 
-// 8kb of chr-ram
+// 8kB of chr-ram
+// Will be increased to 256k with parallax implementation
 MAPPER_CHR_ROM_KB(0);
 MAPPER_CHR_RAM_KB(8);
 
