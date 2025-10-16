@@ -51,13 +51,13 @@ void state_startup() {
         ppu_wait_nmi();
 
         ppu_grayscale(1);
-        //pad_poll(0);
+        pad_poll(0);
         
         music_update();
 
-        if((player1_pressed & PAD_LEFT)) music_play(--song);
+        if((PAD_STATET[0] & PAD_LEFT)) music_play(--song);
         
-        if((player1_pressed & PAD_RIGHT)) music_play(++song);
+        if((PAD_STATET[0] & PAD_RIGHT)) music_play(++song);
         
 
         //if(player1_pressed & PAD_A) sfx_play(1,0);
