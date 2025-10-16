@@ -137,7 +137,7 @@ __attribute__((section(".aligned"))) void oam_and_readjoypad(){
 
         "STX CTRL_PORT1 \n"
 
-        "LDA #>OAM_BUF \n"
+        "LDA #$02 \n"
         "STA $4014 \n"
     
         // Desync cycles: 432, 576, 672, 848, 432*2-4 (860)
@@ -156,12 +156,12 @@ __attribute__((section(".aligned"))) void oam_and_readjoypad(){
         "STY mouse,X \n"        // put get put GET
         "BNE 1b \n"             // put get (put)
 
-    "1: \n"
+    "11: \n"
         "LDA CONTROLLER_PORT \n" // put get put GET        // Starts: 619
         "AND #$03 \n"           // put get*         *672
         "CMP #$01 \n"           // put get
         "ROL joypad1 \n" // put get put get put    // This can desync, but we finish before it matters.
-        "BCC 1b \n"             // get put (get)
+        "BCC 11b \n"             // get put (get)
 
     //".if 0" // TODO support SNES extra buttons 
     //    "STY joypad1+1" // get put get

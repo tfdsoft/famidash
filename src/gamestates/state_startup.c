@@ -62,8 +62,9 @@ void state_startup() {
 
         //if(player1_pressed & PAD_A) sfx_play(1,0);
         //if(player1_pressed & PAD_B) sfx_play(0,0);
-            
-        //if(player1_pressed){}
+        if(player1_hold){}
+        if(player1_pressed){}
+        if(player1_released){}
         ppu_grayscale(0);
     }
 }
