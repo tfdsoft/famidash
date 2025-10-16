@@ -13,8 +13,8 @@ __attribute__((interrupt_norecurse)) void nmi(){
     if ((PPU_MASK_VAR & 0b00011000)) {
 
         // send the sprites in!
-        PPU.sprite.address = 0x00;
-        APU.sprite.dma = 0x02;
+        //PPU.sprite.address = 0x00;
+        //APU.sprite.dma = 0x02;
         // why ricoh put the OAM DMA register on 
         // the APU and not the PPU is beyond me
 
@@ -47,17 +47,20 @@ __attribute__((interrupt_norecurse)) void nmi(){
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[15]];
         }
 
+        
         //
         // everything else i need
         // goes below here...
         //
 
         
+        
+        oam_and_readjoypad();
 
-        PPU.status; // read ppu status. thanks llvm-mos!
-        PPU.scroll = SCROLL_X;
-        PPU.scroll = SCROLL_Y;
-        PPU.control = PPU_CTRL_VAR;
+        //PPU.status; // read ppu status. thanks llvm-mos!
+        //PPU.scroll = SCROLL_X;
+        //PPU.scroll = SCROLL_Y;
+        //PPU.control = PPU_CTRL_VAR;
 
     }
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask

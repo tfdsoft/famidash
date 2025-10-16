@@ -82,4 +82,5 @@ int main(void){
                 break;
         }
     }
+    //APU.sprite.dma;
 }

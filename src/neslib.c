@@ -45,24 +45,22 @@
 
 // el memory section!!!!!!
 //static unsigned char spin;
-static volatile unsigned char FRAME_CNT;
-static volatile unsigned char PPU_MASK_VAR, PPU_CTRL_VAR;
-static volatile unsigned char PPU_CTRL_VAR1;
-static unsigned char SCROLL_X, SCROLL_Y;
-static unsigned char SCROLL_X1;//, SCROLL_Y1;
+__attribute__((retain)) static volatile unsigned char FRAME_CNT;
+__attribute__((retain)) static volatile unsigned char PPU_MASK_VAR, PPU_CTRL_VAR;
+__attribute__((retain)) static volatile unsigned char PPU_CTRL_VAR1;
+__attribute__((retain)) static unsigned char SCROLL_X, SCROLL_Y;
+__attribute__((retain)) static unsigned char SCROLL_X1;//, SCROLL_Y1;
 #define PAL_BUF ((volatile char*)0x100) 
-__attribute__((used)) 
-    volatile unsigned char PAD_STATE[2], 
-    PAD_STATEP[2], 
-    PAD_STATET[2];
-static unsigned char TEMP;
-static char SPRID;
-static char LEN;
-static char PAL_UPDATE;
-static char I;
+__attribute__((retain)) 
+    volatile unsigned char PAD_STATE[2], PAD_STATEP[2], PAD_STATET[2];
+//static unsigned char TEMP;
+__attribute__((retain)) static char SPRID;
+__attribute__((retain)) static char LEN;
+__attribute__((retain)) static char PAL_UPDATE;
+__attribute__((retain)) static char I;
 
-static char * __zp PAL_BG_PTR;
-static char * __zp PAL_SPR_PTR;
+__attribute__((retain)) static char * __zp PAL_BG_PTR;
+__attribute__((retain)) static char * __zp PAL_SPR_PTR;
 
 
 static const char palBrightTable[192] = {
@@ -138,7 +136,7 @@ static const char palBrightTable[192] = {
  *  ppu_wait_nmi()
  *  wait for vblank.
 */
-void ppu_wait_nmi(){
+__attribute__((retain)) void ppu_wait_nmi(){
     // stall until FRAME_CNT is updated by nmi()
     //while (FRAME_CNT == FRAME_COUNT_OLD){}
 
@@ -289,7 +287,7 @@ void pal_bg_bright(char bright){
  * pal_bright(bright)
  * change the brightness of EVERYTHING.
 */
-void pal_bright(char bright){
+__attribute__((retain)) void pal_bright(char bright){
     PAL_BG_PTR = ((char*)(&palBrightTable[(bright << 4)]));
     PAL_SPR_PTR = PAL_BG_PTR;
     PAL_UPDATE++;
