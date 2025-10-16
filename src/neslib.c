@@ -54,10 +54,10 @@ __attribute__((retain)) static unsigned char SCROLL_X1;//, SCROLL_Y1;
 __attribute__((retain)) 
     volatile unsigned char PAD_STATE[2], PAD_STATEP[2], PAD_STATET[2];
 //static unsigned char TEMP;
-__attribute__((retain)) static char SPRID;
-__attribute__((retain)) static char LEN;
-__attribute__((retain)) static char PAL_UPDATE;
-__attribute__((retain)) static char I;
+__attribute__((retain)) static unsigned char SPRID;
+__attribute__((retain)) static unsigned char LEN;
+__attribute__((retain)) static unsigned char PAL_UPDATE;
+__attribute__((retain)) static unsigned char I;
 
 __attribute__((retain)) static char * __zp PAL_BG_PTR;
 __attribute__((retain)) static char * __zp PAL_SPR_PTR;

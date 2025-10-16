@@ -1,6 +1,6 @@
 //unsigned char automatic_fs_updates = 0;
 
-__attribute__((interrupt_norecurse)) void nmi(){
+__attribute__((interrupt)) void nmi(){
     // oh yeah just a heads up:
     // llvm-mos needs to push EVERY. SINGLE.
     // VIRTUAL. REGISTER.
@@ -13,8 +13,8 @@ __attribute__((interrupt_norecurse)) void nmi(){
     if ((PPU_MASK_VAR & 0b00011000)) {
 
         // send the sprites in!
-        //PPU.sprite.address = 0x00;
-        //APU.sprite.dma = 0x02;
+        PPU.sprite.address = 0x00;
+        APU.sprite.dma = 0x02;
         // why ricoh put the OAM DMA register on 
         // the APU and not the PPU is beyond me
 
@@ -55,16 +55,23 @@ __attribute__((interrupt_norecurse)) void nmi(){
 
         
         
-        oam_and_readjoypad();
+        //oam_and_readjoypad();
 
-        //PPU.status; // read ppu status. thanks llvm-mos!
-        //PPU.scroll = SCROLL_X;
-        //PPU.scroll = SCROLL_Y;
-        //PPU.control = PPU_CTRL_VAR;
+        PPU.status; // read ppu status. thanks llvm-mos!
+        PPU.scroll = SCROLL_X;
+        PPU.scroll = SCROLL_Y;
+        PPU.control = PPU_CTRL_VAR;
 
     }
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
     
     //if(automatic_fs_updates) music_update();
+}
+
+
+
+
+__attribute__((interrupt_norecurse)) void irq(){
+
 }

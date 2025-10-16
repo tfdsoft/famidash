@@ -60,8 +60,9 @@ void state_startup() {
         if((PAD_STATET[0] & PAD_RIGHT)) music_play(++song);
         
 
-        //if(player1_pressed & PAD_A) sfx_play(1,0);
-        //if(player1_pressed & PAD_B) sfx_play(0,0);
+        if(PAD_STATET[0] & PAD_A) sfx_play(1,0);
+        if(PAD_STATET[0] & PAD_B) sfx_play(0,0);
+
         if(player1_hold){}
         if(player1_pressed){}
         if(player1_released){}
