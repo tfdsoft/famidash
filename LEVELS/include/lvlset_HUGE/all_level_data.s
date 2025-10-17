@@ -361,7 +361,7 @@
 		.byte <sprite_data_trythisgd ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_trythisgd ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_trythisgd)) ;___ Sprite data bank
-		.byte song_jumper ;_______________________ Song ID
+		.byte song_try_this ;_____________________ Song ID
 		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($00) ;_____________________________ Spawn Y Position (low byte)

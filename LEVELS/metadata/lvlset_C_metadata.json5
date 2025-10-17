@@ -140,7 +140,7 @@
 			sawSet: "A",
 			difficulty: "MEDIUMDEMON",
 			stars: 10,
-			songID: "song_crackdown",
+			songID: "song_try_this",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,

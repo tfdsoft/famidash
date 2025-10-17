@@ -761,6 +761,12 @@
 			coveringArtist: ["SeaGlowingPro","ElAngel378"]
 		},	
 		{
+			fmsSongName: "Try This",
+			lowerText: "TRY THIS",
+			originalArtist: "Pegboard Nerds",
+			coveringArtist: "ElAngel378",			
+		},		
+		{
 			fmsSongName: "ultimatedestruction",
 			upperText: "ULTIMATE",
 			lowerText: "DESTRUCTION",
