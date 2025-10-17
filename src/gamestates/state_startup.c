@@ -90,11 +90,11 @@ void state_startup() {
         
         //music_update();
 
-        if((PAD_STATET[0] & PAD_LEFT)) music_play(--song);
+        if((player1_pressed & PAD_LEFT)) music_play(--song);
         
-        if((PAD_STATET[0] & PAD_RIGHT)) music_play(++song);
+        if((player1_pressed & PAD_RIGHT)) music_play(++song);
         
-        if(PAD_STATET[0] & PAD_A) {
+        if(player1_pressed & PAD_A) {
             sfx_play(2,0);
             famistudio_music_stop();
             pal_fade_to(4,0);

@@ -55,11 +55,11 @@ __attribute__((interrupt_norecurse)) void nmi(){
 
         
         
-        //oam_and_readjoypad();
-        PPU.status; // read ppu status. thanks llvm-mos!
-        PPU.scroll = SCROLL_X;
-        PPU.scroll = SCROLL_Y;
-        PPU.control = PPU_CTRL_VAR;
+        oam_and_readjoypad();
+        //PPU.status; // read ppu status. thanks llvm-mos!
+        //PPU.scroll = SCROLL_X;
+        //PPU.scroll = SCROLL_Y;
+        //PPU.control = PPU_CTRL_VAR;
     }
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count

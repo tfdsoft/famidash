@@ -77,23 +77,29 @@ void pal_fade_to(unsigned char from, unsigned char to){
 
 __attribute__((retain)) 
     unsigned char __zp
-    mouse[4], 
-    joypad1[3], 
+    joypad[7], 
+    //joypad1[3], 
     mouse_mask,
     noMouse;
 
-#define player1_hold (*((unsigned char*)&joypad1[0]))
-#define player1_pressed (*((unsigned char*)&joypad1[1]))
-#define player1_released (*((unsigned char*)&joypad1[2]))
+#define MOUSE_Y_MINIMUM 1
+#define MOUSE_X_MINIMUM 1
+#define MOUSE_Y_MAXIMUM 239
+#define MOUSE_X_MAXIMUM 255
 
-#define player2_hold (*((unsigned char*)&mouse[1]))
-#define player2_pressed (*((unsigned char*)&jmouse[2]))
-#define player2_released (*((unsigned char*)&mouse[3]))
+__attribute__((section(".prg_rom_fixed_lo.1"),retain))
+    const unsigned char MouseBoundsMin[] = {
+        MOUSE_Y_MINIMUM, 
+        MOUSE_X_MINIMUM
+    };
 
+__attribute__((section(".prg_rom_fixed_lo.2"),retain))
+    const unsigned char MouseBoundsMax[] = {
+        MOUSE_Y_MAXIMUM, 
+        MOUSE_X_MAXIMUM
+    };
 
-//extern void oam_and_readjoypad();
-// the fact that this worked first-try is batshit insane
-/*__attribute__((retain)) void oam_and_readjoypad(){
+__attribute__((section(".prg_rom_fixed_lo.0"),retain)) void oam_and_readjoypad(){
     __attribute__((leaf)) __asm__ volatile (
         //".section .zp \n"
         //"mouse: .fill 4 \n"
@@ -103,7 +109,8 @@ __attribute__((retain))
         
         //".section .aligned,\"a\",@progbits \n"
 
-        "joypad2 = mouse+1 \n"
+        "joypad2 = joypad+1 \n"
+        "joypad1 = joypad+4 \n"
         "CTRL_PORT2 = $4017 \n"
         "CTRL_PORT1 = $4016 \n"
         "MOUSE_PORT = CTRL_PORT2 \n"
@@ -122,17 +129,17 @@ __attribute__((retain))
         "sta __rc7 \n"
 
         // Save the previous mouse state so we can calculate the next frames press/release
-        "lda mouse + kMouseY \n"
+        "lda joypad + kMouseY \n"
         "sta __rc2 \n"
-        "lda mouse + kMouseX \n"
+        "lda joypad + kMouseX \n"
         "sta __rc3 \n"
-        "lda mouse + kMouseButtons \n"
+        "lda joypad + kMouseButtons \n"
         "sta __rc4 \n"
 
         // Strobe the joypads.
         "LDX #$00 \n"
         "LDY #$01 \n"
-        "STY mouse \n"
+        "STY joypad \n"
         "STY CTRL_PORT1 \n"
 
     //".if 0"
@@ -157,12 +164,12 @@ __attribute__((retain))
         "LDA mouse_mask  \n"    // get put get*     *576  // Starts: 4, 158, 312, 466, [620]
         "AND MOUSE_PORT \n"   // put get put GET
         "CMP #$01 \n"           // put get
-        "ROL mouse,X \n"        // put get put get* PUT GET  *432
+        "ROL joypad,X \n"        // put get put get* PUT GET  *432
         "BCC 1b  \n"            // put get (put)
 
         "INX \n"                // put get
         "CPX #$04 \n"           // put get
-        "STY mouse,X \n"        // put get put GET
+        "STY joypad,X \n"        // put get put GET
         "BNE 1b \n"             // put get (put)
 
     "1: \n"
@@ -211,15 +218,7 @@ __attribute__((retain))
 
 
 
-    "MOUSE_Y_MINIMUM = 1 \n"
-    "MOUSE_X_MINIMUM = 1 \n"
-    "MOUSE_Y_MAXIMUM = 239 \n"
-    "MOUSE_X_MAXIMUM = 255 \n"
-
-    "MouseBoundsMin: \n"
-        ".byte MOUSE_Y_MINIMUM, MOUSE_X_MINIMUM \n"
-    "MouseBoundsMax: \n"
-        ".byte MOUSE_Y_MAXIMUM, MOUSE_X_MAXIMUM \n"
+    
 
     //".scope calculate_extra_fields: \n"
     "1: \n"
@@ -236,13 +235,13 @@ __attribute__((retain))
         "sta joypad1 + 2 \n"
 
         // Check the report to see if we have a snes mouse plugged in
-        "lda mouse + kMouseButtons \n"
+        "lda joypad + kMouseButtons \n"
         "and #$0f \n"
         "cmp #$01 \n"
         "beq 1f \n"
             // treat this as a standard NES controller instead and
             // calculate the press/release for it
-            "lda mouse + kMouseZero \n"
+            "lda joypad + kMouseZero \n"
             "sta joypad2 \n"
             // Pressed
             "lda __rc7 \n"
@@ -258,7 +257,7 @@ __attribute__((retain))
 
             // no snes mouse, so leave the first field empty
             "lda #0 \n"
-            "sta mouse + kMouseZero \n"
+            "sta joypad + kMouseZero \n"
         "lda #1 \n"
         "sta noMouse \n"
             "jmp 9f \n"
@@ -267,14 +266,14 @@ __attribute__((retain))
         // convert the X/Y displacement into X/Y positions on the screen
         "ldx #1 \n"
     "10: \n" // loop:
-            "lda mouse + kMouseY,x \n"
+            "lda joypad + kMouseY,x \n"
             "bpl 11f \n" // :+
                 // subtract the negative number instead
                 "and #$7f \n"
-                "sta mouse + kMouseZero \n" // reuse this value as a temp value
+                "sta joypad + kMouseZero \n" // reuse this value as a temp value
                 "lda __rc2,x \n"
                 "sec  \n"
-                "sbc mouse + kMouseZero \n"
+                "sbc joypad + kMouseZero \n"
                 // check if we underflowed
                 "bcc 1f \n"
                 // check the lower bounds
@@ -295,30 +294,30 @@ __attribute__((retain))
     "1: \n" // wrapped:
             "lda MouseBoundsMax,x \n"
     "2: \n" // setvalue:
-            "sta mouse + kMouseY,x \n"
+            "sta joypad + kMouseY,x \n"
             "dex \n"
             "bpl 10b \n"
         // calculate newly pressed buttons and shift it into byte zero
         "lda __rc4 \n"
         "eor #$C0 \n"
-        "and mouse + kMouseButtons \n"
+        "and joypad + kMouseButtons \n"
         "rol \n"
-        "ror mouse + kMouseZero \n"
+        "ror joypad + kMouseZero \n"
         "rol \n"
-        "ror mouse + kMouseZero \n"
+        "ror joypad + kMouseZero \n"
         
         // calculate newly released buttons
-        "lda mouse + kMouseButtons \n"
+        "lda joypad + kMouseButtons \n"
         "eor #$C0 \n"
         "and __rc4 \n"
         "rol \n"
-        "ror mouse + kMouseZero \n"
+        "ror joypad + kMouseZero \n"
         "rol \n"
-        "ror mouse + kMouseZero \n"
+        "ror joypad + kMouseZero \n"
 
         // Set the connected bit
         "sec \n"
-        "ror mouse + kMouseZero \n"
+        "ror joypad + kMouseZero \n"
     //.endif
 
     "9: \n"
@@ -329,4 +328,12 @@ __attribute__((retain))
         :"a","x","y","p","rc2","rc3","rc4","rc6","rc7"
     );
     
-}*/
+}
+
+#define player1_hold (*((unsigned char*)&joypad[4]))
+#define player1_pressed (*((unsigned char*)&joypad[5]))
+#define player1_released (*((unsigned char*)&joypad[6]))
+
+#define player2_hold (*((unsigned char*)&joypad[1]))
+#define player2_pressed (*((unsigned char*)&joypad[2]))
+#define player2_released (*((unsigned char*)&joypad[3]))

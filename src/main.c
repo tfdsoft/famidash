@@ -85,7 +85,7 @@ int main(void){
                 //state_startup();
                 break;
             case 1:
-                //banked_call_a000(extra_code_bank, state_menu);
+                banked_call_a000(extra_code_bank, state_menu);
                 //state_menu();
                 break;
         }
