@@ -159,7 +159,7 @@ void main(){
 				mmc3_set_prg_bank_1(GET_BANK(state_credits));
 				state_credits();
 				#if __HUGE_ROM
-				crossPRGBankJump0(choose_menu_theme);
+				if (!menuthemechosen) crossPRGBankJump0(choose_menu_theme);
 				#endif
 				break;
 			}
