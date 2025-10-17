@@ -1,7 +1,4 @@
 
-
-
-
 void vram_copy(const unsigned char* from, unsigned short count){
     //PPU_CTRL_VAR &= 0b01111111;
     //PPU.control = PPU_CTRL_VAR;
@@ -75,6 +72,15 @@ void pal_fade_to(unsigned char from, unsigned char to){
 
 }
 
+
+
+//
+//  OAMDMA-aligned controller polling
+//  if this looks scary, that's because it is.
+//  getting this to work in llvm-mos has been
+//  an absolute bloody nightmare.
+//
+
 __attribute__((retain)) 
     unsigned char __zp
     joypad[7], 
@@ -99,7 +105,7 @@ __attribute__((section(".prg_rom_fixed_lo.2"),retain))
         MOUSE_X_MAXIMUM
     };
 
-__attribute__((section(".prg_rom_fixed_lo.0"),retain)) void oam_and_readjoypad(){
+__attribute__((section(".prg_rom_fixed.0"),retain)) void oam_and_readjoypad(){
     __attribute__((leaf)) __asm__ volatile (
         //".section .zp \n"
         //"mouse: .fill 4 \n"
@@ -329,7 +335,6 @@ __attribute__((section(".prg_rom_fixed_lo.0"),retain)) void oam_and_readjoypad()
     );
     
 }
-
 #define player1_hold (*((unsigned char*)&joypad[4]))
 #define player1_pressed (*((unsigned char*)&joypad[5]))
 #define player1_released (*((unsigned char*)&joypad[6]))
@@ -337,3 +342,64 @@ __attribute__((section(".prg_rom_fixed_lo.0"),retain)) void oam_and_readjoypad()
 #define player2_hold (*((unsigned char*)&joypad[1]))
 #define player2_pressed (*((unsigned char*)&joypad[2]))
 #define player2_released (*((unsigned char*)&joypad[3]))
+
+
+//
+//  ...and that's enough of that.
+//
+struct pad {
+    union {
+        unsigned char hold;
+        struct {
+            unsigned char right : 1;
+            unsigned char left : 1;
+            unsigned char down : 1;
+            unsigned char up : 1;
+            #if __VS_SYSTEM
+            unsigned char select : 1;
+            unsigned char start : 1;
+            #else
+            unsigned char start : 1;
+            unsigned char select : 1;
+            #endif
+            unsigned char b : 1;
+            unsigned char a : 1;
+        };
+    };
+    union {
+        unsigned char press;
+        struct {
+            unsigned char press_right : 1;
+            unsigned char press_left : 1;
+            unsigned char press_down : 1;
+            unsigned char press_up : 1;
+            #if __VS_SYSTEM
+            unsigned char press_select : 1;
+            unsigned char press_start : 1;
+            #else
+            unsigned char press_start : 1;
+            unsigned char press_select : 1;
+            #endif
+            unsigned char press_b : 1;
+            unsigned char press_a : 1;
+        };
+    };
+    union {
+        unsigned char release;
+        struct {
+            unsigned char release_right : 1;
+            unsigned char release_left : 1;
+            unsigned char release_down : 1;
+            unsigned char release_up : 1;
+            #if __VS_SYSTEM
+            unsigned char release_select : 1;
+            unsigned char release_start : 1;
+            #else
+            unsigned char release_start : 1;
+            unsigned char release_select : 1;
+            #endif
+            unsigned char release_b : 1;
+            unsigned char release_a : 1;
+        };
+    };
+};

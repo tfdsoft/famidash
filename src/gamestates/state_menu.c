@@ -1,7 +1,7 @@
 
 
 
-
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".110")))
 void state_menu() {
     ppu_off();
 
@@ -14,19 +14,21 @@ void state_menu() {
     vram_adr(0x2000);
     vram_unrle(nt_logo);
 
-    pal_bg(test_palette);
+    //pal_bg();
 
     ppu_on_all();
     pal_fade_to(0,4);
 
     music_play(0);
 
+
+    //automatic_fs_updates=1;
     while(1){
         ppu_wait_nmi();
-        music_update();
+        //music_update();
 
 
 
-
+        //continue;
     }
 }

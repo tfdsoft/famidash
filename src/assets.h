@@ -50,11 +50,17 @@
 // banks 62 and 63 are fixed. not much i can do about that
 
 
+file(chr_menu_global, chr_bank_0) = {
+    #embed "./chr/Menu_Global.chr" // 0.50 kb
+};
+file(chr_font, chr_bank_0) = {
+    #embed "./chr/Font.chr" // 1.50 kb
+};  
 file(chr_logo, chr_bank_0) = {
     #embed "./chr/Logo.chr" // 1.00 kb
 };    
-file(chr_font, chr_bank_0) = {
-    #embed "./chr/Font.chr" // 1.50 kb
+file(chr_famidash, chr_bank_0) = {
+    #embed "./chr/Famidash.chr" // 1.00 kb
 };    
 
 

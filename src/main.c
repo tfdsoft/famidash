@@ -40,17 +40,19 @@ __attribute__((leaf)) __asm__(
 
 int main(void){
     PPU.control = PPU_CTRL_VAR = 0b10100000;
-    
+    PPU.mask = PPU_MASK_VAR = 0b00000110;
     ppu_off(); // turn off everything
+    
 
-    music_play(0);
-    famistudio_music_stop();
+    //music_play(0);
+    //famistudio_music_stop();
 
     // clear oam buffer
-    memfill((unsigned char*)0x200,0,0x100);
+    //memfill((unsigned char*)0x200,0,0x100);
+    oam_clear();
 
     // clear palette
-    //pal_bg(test_palette);
+    pal_bg((const char *)0x120);
     
 
     set_chr_bank(0,0);
@@ -76,20 +78,16 @@ int main(void){
     while(1){
         pal_bright(0);
         ppu_off();
-        ppu_wait_nmi();
-        //if(PEEK(mouse)&PAD_A) sfx_play(3,0);
-        //if(PEEK(joypad1)&PAD_A) sfx_play(0,0);
         switch(gamestate){
             default: 
-                banked_call_a000(extra_code_bank, state_startup); 
+                banked_call(extra_code_bank, state_startup); 
                 //state_startup();
                 break;
             case 1:
-                banked_call_a000(extra_code_bank, state_menu);
+                banked_call(extra_code_bank, state_credits);
                 //state_menu();
                 break;
         }
-        
     }
     //APU.sprite.dma;
 }

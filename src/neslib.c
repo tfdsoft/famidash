@@ -301,11 +301,11 @@ __attribute__((retain)) void pal_bright(char bright){
  * oam_clear()
  * clear the oam buffer.
 */
-void oam_clear(){
-    if (SPRID > 64) SPRID = 64;
-    while(SPRID!=0) {
+__attribute__((retain)) void oam_clear(){
+    //if (SPRID > 64) 
+    SPRID = 64;
+    for(; SPRID!=255; SPRID--) {
         OAM_BUF[SPRID].y = 0xff;
-        SPRID--;
     }
 }
 

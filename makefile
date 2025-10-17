@@ -66,7 +66,7 @@ OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
-CARGS = -Oz -flto -fnonreentrant -mreserve-zp=21
+CARGS = -Oz -flto -fnonreentrant -mreserve-zp=7
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -107,7 +107,7 @@ $(TMPDIR)/music.o: src/famistudio/music_0_bank*.dmc src/famistudio/*.s src/famis
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/music.o src/*.* $(CFG)
 	# 	run llvm-mos
 	$(CC) src/main.c  $(TMPDIR)/*.o $(CARGS) -o $@ -T $(CFG) -std=gnu23
-# src/THEFUCKINGASM.s
+	make clean
 clean:
 ifeq ($(OS),Windows_NT)
 	$(call del,$(OUTDIR_PREFIX)/*.*)

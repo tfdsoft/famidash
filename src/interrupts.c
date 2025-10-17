@@ -1,6 +1,8 @@
 unsigned char automatic_fs_updates = 0;
+unsigned char nmi_prev_bank;
 
 __attribute__((interrupt_norecurse)) void nmi(){
+    
     // oh yeah just a heads up:
     // llvm-mos needs to push EVERY. SINGLE.
     // VIRTUAL. REGISTER.
@@ -8,7 +10,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
     // to do, so whatever you put in here
     // needs to be extra speedy.
 
-
+    nmi_prev_bank = get_prg_a000();
     // if rendering is off, do not access vram
     if ((PPU_MASK_VAR & 0b00011000)) {
 
@@ -59,14 +61,22 @@ __attribute__((interrupt_norecurse)) void nmi(){
         //PPU.status; // read ppu status. thanks llvm-mos!
         //PPU.scroll = SCROLL_X;
         //PPU.scroll = SCROLL_Y;
-        //PPU.control = PPU_CTRL_VAR;
+        ///PPU.control = PPU_CTRL_VAR;
     }
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
     
-    pad_poll(0);
+    //pad_poll(0);
     //bruh.joemom++; 
-    if(automatic_fs_updates) {music_update();}
+
+    
+    if(automatic_fs_updates) {
+        
+        music_update();
+        set_prg_a000(nmi_prev_bank);
+    }
+
+    
 }
 
 
