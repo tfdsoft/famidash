@@ -76,10 +76,9 @@ void pal_fade_to(unsigned char from, unsigned char to){
 }
 
 __attribute__((retain)) 
-    unsigned char __zp 
+    unsigned char __zp
     mouse[4], 
     joypad1[3], 
-    controllingplayer[2], 
     mouse_mask,
     noMouse;
 
@@ -91,9 +90,19 @@ __attribute__((retain))
 #define player2_pressed (*((unsigned char*)&jmouse[2]))
 #define player2_released (*((unsigned char*)&mouse[3]))
 
+
+//extern void oam_and_readjoypad();
 // the fact that this worked first-try is batshit insane
-__attribute__((section(".aligned"))) void oam_and_readjoypad(){
+/*__attribute__((retain)) void oam_and_readjoypad(){
     __attribute__((leaf)) __asm__ volatile (
+        //".section .zp \n"
+        //"mouse: .fill 4 \n"
+        //"joypad1: .fill 3 \n"
+        //"mouse_mask: .fill 1 \n"
+        //"noMouse: .fill 1 \n"
+        
+        //".section .aligned,\"a\",@progbits \n"
+
         "joypad2 = mouse+1 \n"
         "CTRL_PORT2 = $4017 \n"
         "CTRL_PORT1 = $4016 \n"
@@ -156,12 +165,12 @@ __attribute__((section(".aligned"))) void oam_and_readjoypad(){
         "STY mouse,X \n"        // put get put GET
         "BNE 1b \n"             // put get (put)
 
-    "11: \n"
+    "1: \n"
         "LDA CONTROLLER_PORT \n" // put get put GET        // Starts: 619
         "AND #$03 \n"           // put get*         *672
         "CMP #$01 \n"           // put get
         "ROL joypad1 \n" // put get put get put    // This can desync, but we finish before it matters.
-        "BCC 11b \n"             // get put (get)
+        "BCC 1b \n"             // get put (get)
 
     //".if 0" // TODO support SNES extra buttons 
     //    "STY joypad1+1" // get put get
@@ -196,7 +205,7 @@ __attribute__((section(".aligned"))) void oam_and_readjoypad(){
         //PPU.control = PPU_CTRL_VAR;
         "lda PPU_CTRL_VAR \n"
         "sta $2000 \n"
-    /*"jmp 1f \n"
+    "jmp 1f \n"
 
 
 
@@ -314,10 +323,10 @@ __attribute__((section(".aligned"))) void oam_and_readjoypad(){
 
     "9: \n"
     //".endscope \n"
-    */
+    
         :
         :
         :"a","x","y","p","rc2","rc3","rc4","rc6","rc7"
     );
     
-}
+}*/

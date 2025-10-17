@@ -42,7 +42,7 @@ int main(void){
     PPU.control = PPU_CTRL_VAR = 0b10100000;
     
     ppu_off(); // turn off everything
-    
+
     music_play(0);
     famistudio_music_stop();
 
@@ -50,7 +50,7 @@ int main(void){
     memfill((unsigned char*)0x200,0,0x100);
 
     // clear palette
-    pal_bg(test_palette);
+    //pal_bg(test_palette);
     
 
     set_chr_bank(0,0);
@@ -71,16 +71,25 @@ int main(void){
     
     //music_bank = music_bank_0;
 
+    
+
     while(1){
         pal_bright(0);
         ppu_off();
         ppu_wait_nmi();
+        //if(PEEK(mouse)&PAD_A) sfx_play(3,0);
+        //if(PEEK(joypad1)&PAD_A) sfx_play(0,0);
         switch(gamestate){
             default: 
-                //banked_call_a000(extra_code_bank, state_startup); 
-                state_startup();
+                banked_call_a000(extra_code_bank, state_startup); 
+                //state_startup();
+                break;
+            case 1:
+                //banked_call_a000(extra_code_bank, state_menu);
+                //state_menu();
                 break;
         }
+        
     }
     //APU.sprite.dma;
 }

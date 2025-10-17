@@ -13,7 +13,11 @@ __attribute__((retain))
 #include "interrupts.c"
 
 
-#include "./gamestates/state_startup.c"
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".0"),retain))
+    #include "./gamestates/state_startup.c"
+
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".1"),retain))
+    #include "./gamestates/state_menu.c"
 
 
 

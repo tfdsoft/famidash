@@ -66,7 +66,7 @@ OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
-CARGS = -Oz -mreserve-zp=7
+CARGS = -Oz -flto -fnonreentrant -mreserve-zp=21
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -103,10 +103,11 @@ $(TMPDIR)/music.o: src/famistudio/music_0_bank*.dmc src/famistudio/*.s src/famis
 	#	compile all of the music assets into one giant object file
 	$(CA65) src/famistudio/music_assets.s -o $@
 
+
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/music.o src/*.* $(CFG)
 	# 	run llvm-mos
-	$(CC) src/main.c $(TMPDIR)/*.o $(CARGS) -o $@ -T $(CFG) -std=gnu23
-
+	$(CC) src/main.c  $(TMPDIR)/*.o $(CARGS) -o $@ -T $(CFG) -std=gnu23
+# src/THEFUCKINGASM.s
 clean:
 ifeq ($(OS),Windows_NT)
 	$(call del,$(OUTDIR_PREFIX)/*.*)

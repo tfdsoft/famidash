@@ -2,7 +2,7 @@ static unsigned char music_bank;
 //unsigned char prev_bank;
 unsigned char current_bank, song_count;
 
-void music_play(unsigned char s){
+__attribute__((retain)) void music_play(unsigned char s){
     
     unsigned char prev_bank = get_prg_a000();
     current_bank = music_bank_0;
@@ -41,14 +41,14 @@ void music_play(unsigned char s){
     set_prg_a000(prev_bank);
 }
 
-void music_update(){
+__attribute__((retain)) void music_update(){
     unsigned char prev_bank = get_prg_a000();
     set_prg_a000(music_bank);
     famistudio_update();
     set_prg_a000(prev_bank);
 }
 
-void sfx_play(unsigned char index, unsigned char channel){
+__attribute__((retain)) void sfx_play(unsigned char index, unsigned char channel){
     unsigned char prev_bank = get_prg_a000();
     set_prg_a000(sfx_bank);
     famistudio_sfx_init(0xa000);
