@@ -158,7 +158,11 @@ void set_settings() {
 		case SETTINGS_BTN_SFX:
 			options ^= sfxoff; break;
 		case SETTINGS_BTN_MUSIC:
+#if !__HUGE_ROM
 			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgmlookuptable[menu_music]); } break;
+#else
+			options ^= musicoff; if (options & musicoff) { famistudio_music_stop(); music_update(); } else { music_play(xbgmlookuptable[menutheme]); } break;
+#endif
 		case SETTINGS_BTN_CLICKSFX:
 			options ^= jumpsound; break;
 		case SETTINGS_BTN_VFX:

@@ -328,6 +328,9 @@ uint8_t kandokidshack;
 uint8_t kandokidshack2;
 uint8_t kandokidshack3;
 uint8_t kandokidshack4;
+uint8_t menuthemechosen;
+uint8_t menutheme;
+
 
 #if __VS_SYSTEM
 

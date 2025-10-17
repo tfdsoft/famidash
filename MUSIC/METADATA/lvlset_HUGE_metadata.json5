@@ -15,6 +15,24 @@
 			coveringArtist: "UserSniper",
 		},
 		{
+			fmsSongName: "emehT uneM",
+			lowerText: "EMEHT UNEM",
+			originalArtist: "ROBTOP",
+			coveringArtist: "Crafty Jumper",
+		},		
+		{
+			fmsSongName: "Menu Theme (Human Capturing Mix)",
+			lowerText: "MENU D SIDES",
+			originalArtist: "TOBY FOX",
+			coveringArtist: "Crafty Jumper",
+		},	
+		{
+			fmsSongName: "Menu Theme E Side",
+			lowerText: "MENU E SIDES",
+			originalArtist: "RICK ASTLEY",
+			coveringArtist: "Nerdboy628",
+		},		
+		{
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
 			lowerText: "MADNESS",

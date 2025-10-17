@@ -94,7 +94,7 @@ void play_next_queue() {
 
 			music_queue[MAX_SONG_QUEUE_SIZE] = 0xFF;
 
-			if (music_queue[0] != 0xFF) { music_play(xbgmlookuptable[music_queue[0]]); }
+			if (music_queue[0] != 0xFF) { music_play(xbgmlookuptable[music_queue[0]]); songplaying = 1; }
 			else { famistudio_music_stop(); songplaying = 0; }
 				
 			//refresh_queue_screen();
@@ -180,8 +180,8 @@ void state_soundtest() {
 		}
 
 	if (joypad1.press_right || joypad1.press_left) hold_timer = 0;
-	if (joypad1.press_right || (joypad1.right && hold_timer >= 15)) { tempsong++; temptemp6 = 0; if (tempsong == song_max) {tempsong = 0;} if (!queuemode) update_text1(); else update_text3(); hold_timer = 0;}
-	if (joypad1.press_left || (joypad1.left && hold_timer >= 15)) { if (tempsong == 0) {tempsong = song_max - 1;} else tempsong--; temptemp6 = 0; if (!queuemode) update_text1(); else update_text3();  hold_timer = 0;}
+	if (joypad1.press_right || (joypad1.right && hold_timer >= 15)) { tempsong++; if (tempsong == 4) tempsong = 5; temptemp6 = 0; if (tempsong == song_max) {tempsong = 0;} if (!queuemode) update_text1(); else update_text3(); hold_timer = 0;}
+	if (joypad1.press_left || (joypad1.left && hold_timer >= 15)) { if (tempsong == 0) {tempsong = song_max - 1;} else tempsong--; if (tempsong == 4) tempsong = 3; temptemp6 = 0; if (!queuemode) update_text1(); else update_text3();  hold_timer = 0;}
 
 	if (!queuemode) {		//not queue mode
 		if (joypad1.press_b) {
@@ -222,6 +222,7 @@ void state_soundtest() {
 				song = tempsong;
 				music_play(xbgmlookuptable[song]); 
 				music_queue[0] = song;
+				songplaying = 1;
 				update_text2();
 			}
 			else {

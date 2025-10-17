@@ -67,7 +67,13 @@ void state_levelselect() {
 	#if __VS_SYSTEM
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(idx8_load(xbgmlookuptable, newrand() & 31));
 	#else
+
+	#if !__HUGE_ROM
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menu_music]);
+	#else
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menutheme]);
+	#endif
+
 	#endif
 	menuMusicCurrentlyPlaying = 1;
 

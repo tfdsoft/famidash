@@ -6,7 +6,9 @@
 //
 // ============================================================
 
-
+#if __HUGE_ROM
+void choose_menu_theme();
+#endif
 
 // THE INCLUDE FILE ===========================================
 //
@@ -156,6 +158,9 @@ void main(){
 			default: {
 				mmc3_set_prg_bank_1(GET_BANK(state_credits));
 				state_credits();
+				#if __HUGE_ROM
+				crossPRGBankJump0(choose_menu_theme);
+				#endif
 				break;
 			}
 			

@@ -86,7 +86,7 @@ const char palsystem[] = "FOR PAL SYSTEMS";
 // Routines start
 #if __HUGE_ROM
 void check_if_music_stopped2() {
-	if (famistudio_song_speed == 0x80) { if (!song) music_play(song_menu_theme); else music_play(xbgmlookuptable[song]);}
+	if (famistudio_song_speed == 0x80) { if (!songplaying) music_play(xbgmlookuptable[menutheme]); else music_play(xbgmlookuptable[song]);}
 }
 #endif
 
@@ -189,7 +189,13 @@ void state_menu() {
 	#if __VS_SYSTEM
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(idx8_load(xbgmlookuptable, newrand() & 31));
 	#else
+
+	#if !__HUGE_ROM
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menu_music]);
+	#else
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menutheme]);
+	#endif
+
 	#endif
 	menuMusicCurrentlyPlaying = 1;
 
@@ -1063,5 +1069,19 @@ void Lucky_Draw_Text_Stuff() {
 				triggers_hit[1] = 0;
 				triggers_hit[2] = 0;
 			}
+}
+#endif
+
+
+
+#if __HUGE_ROM
+void choose_menu_theme() {
+	tmp1 = newrand();
+	if (!tmp1) menutheme = 4;
+	else if (tmp1 < 63) menutheme = 0;
+	else if (tmp1 < 126) menutheme = 3;
+	else if (tmp1 < 189) menutheme = 1;
+	else menutheme = 2;
+	menuthemechosen = 1;
 }
 #endif
