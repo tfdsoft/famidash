@@ -1,0 +1,1 @@
+extern void donut_decompress_vram

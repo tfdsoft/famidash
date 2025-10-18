@@ -1,33 +1,33 @@
 #include "assets.h"
 
 file(chr_menu_global, chr_bank_0) = {
-    #embed "./chr/Menu_Global.chr" // 0.50 kb
+    #embed "./chr/uncompressed/Menu_Global.chr" // 0.50 kb
 };
 file(chr_font, chr_bank_0) = {
-    #embed "./chr/Font.chr" // 1.50 kb
+    #embed "./chr/uncompressed/Font.chr" // 1.50 kb
 };  
 file(chr_logo, chr_bank_0) = {
-    #embed "./chr/Logo.chr" // 1.00 kb
+    #embed "./chr/uncompressed/Logo.chr" // 1.00 kb
 };    
 file(chr_famidash, chr_bank_0) = {
-    #embed "./chr/Famidash.chr" // 1.00 kb
+    #embed "./chr/uncompressed/Famidash.chr" // 1.00 kb
 };    
 
 
 file(chr_tiles_global, chr_bank_1) = {
-    #embed "./chr/General.chr" // 1.00 kb
+    #embed "./chr/uncompressed/General.chr" // 1.00 kb
 };    
 file(chr_tiles_grid, chr_bank_1) = {
-    #embed "./chr/Grid.chr" // 1.00 kb
+    #embed "./chr/uncompressed/Grid.chr" // 1.00 kb
 };    
 file(chr_tiles_cross, chr_bank_1) = {
-    #embed "./chr/Cross.chr" // 0.25 kb
+    #embed "./chr/uncompressed/Cross.chr" // 0.25 kb
 };
 file(chr_tiles_brick, chr_bank_1) = {
-    #embed "./chr/Brick.chr" // 0.25 kb
+    #embed "./chr/uncompressed/Brick.chr" // 0.25 kb
 };
 file(chr_tiles_black, chr_bank_1) = {
-    #embed "./chr/Black.chr" // 0.25 kb
+    #embed "./chr/uncompressed/Black.chr" // 0.25 kb
 };
 
 //embed(); // 1.00 kb
