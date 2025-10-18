@@ -29,4 +29,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: famidash.${{ matrix.target.target }}-llvm.nes
-          path: BUILD/${{ matrix.target.target }}/famidash-llvm.nes
+          path: OUT/${{ matrix.target.target }}/famidash-llvm.nes
+

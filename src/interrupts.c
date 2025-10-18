@@ -49,7 +49,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[15]];
         }
 
-        
+         
         //
         // everything else i need
         // goes below here...
