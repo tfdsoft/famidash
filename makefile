@@ -66,7 +66,7 @@ OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
-CFLAGS = -Os -flto -fnonreentrant -mreserve-zp=9 -std=gnu23 -Wall -Wextra
+CFLAGS = -Os -ffast-math -flto -fnonreentrant -mreserve-zp=9 -std=gnu23 -Wall -Wextra
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -76,7 +76,12 @@ endif
 
 .PHONY: default clean distclean build main
 
+
+# optimize for code size (the ideal method)
 build: $(TMPDIR) $(OUTDIR) $(OUTDIR)/$(NAME).nes
+	
+
+
 all: main
 
 main: LEVELSET = A
@@ -108,10 +113,14 @@ $(TMPDIR)/assets.o: src/chr/*.chr src/assets.c src/assets.h
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/music.o $(TMPDIR)/assets.o src/*.h src/*.c src/gamestates/*.c $(CFG)
 	$(CC) src/main.c $(TMPDIR)/*.o $(CFLAGS) -o $@ -T $(CFG)
+	
+
+
+
 
 clean:
 ifeq ($(OS),Windows_NT)
-	$(call del,$(OUTDIR_PREFIX)/*.*)
+	$(call del,$(TMPDIR_PREFIX)/*.*)
 else ifeq ($(OS),MSDOS)
 	$(call del,$(TMPDIR_PREFIX)/*.*)
 else
