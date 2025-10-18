@@ -1,3 +1,7 @@
+## PLEASE NOTE: THIS CURRENTLY DOES NOT WORK!!!
+# as such, main.yml has been disabled.
+
+
 name: Cache llvm-mos-sdk
 description: Caches llvm-mos-sdk and builds it from source if missing
 inputs:
