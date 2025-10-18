@@ -66,7 +66,8 @@ OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
-CFLAGS = -flto -Os -ffast-math -fnonreentrant -mreserve-zp=9 -std=gnu23 -Wall -Wextra
+CFLAGS = -flto -Os -ffast-math -fnonreentrant -std=gnu23 -Wall -Wextra
+LDFLAGS = -mreserve-zp=9 -T $(CFG)
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -112,7 +113,7 @@ $(TMPDIR)/assets.o: src/chr/*.chr src/assets.c src/assets.h
 	$(CC) -c src/assets.c $(CFLAGS) -o $@
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/music.o $(TMPDIR)/assets.o src/*.h src/*.c src/gamestates/*.c $(CFG)
-	$(CC) src/main.c $(TMPDIR)/*.o $(CFLAGS) -o $@ -T $(CFG)
+	$(CC) src/main.c $(TMPDIR)/*.o $(CFLAGS) $(LDFLAGS) -o $@
 	
 
 
