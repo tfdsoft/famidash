@@ -25,7 +25,7 @@ Do you have WAY too many quarters? Play the [Arcade Version](https://nightly.lin
 Want just the music? Download [The Album](https://nightly.link/tfdsoft/famidash/workflows/main/famidash-the-album/famidash.nes.zip)!
 
 A rework is also in progress, titled Famidash 2.0. \
-Its branch can be found [here](https://github.com/tfdsoft/famidash/tree/llvm-mos-compiler)
+You can find it [here](https://nightly.link/tfdsoft/famidash/workflows/main/llvm-mos-compiler/famidash.main-llvm.nes.zip), with [its branch](https://github.com/tfdsoft/famidash/tree/llvm-mos-compiler)
 
 ## contributing
 
