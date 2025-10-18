@@ -1,4 +1,29 @@
 
+
+/*void __temporary_prg_a000(char bank_id){
+    __attribute__((leaf)) __asm__ volatile(
+        "pha \n"
+        "tax \n"
+        "lda #0b111 \n"
+        "ora __bank_select_hi \n"
+        "jmp __set_reg_retry \n"
+    );
+}
+
+void __pop_prg_a000(){
+    __attribute__((leaf)) __asm__ volatile(
+        "pla \n"
+        "sta __prg_a000\n"
+        "tax \n"
+        "lda #0b111 \n"
+        "ora __bank_select_hi \n"
+        "jmp __set_reg_retry \n"
+    );
+}*/
+
+
+
+
 void vram_copy(const unsigned char* from, unsigned short count){
     //PPU_CTRL_VAR &= 0b01111111;
     //PPU.control = PPU_CTRL_VAR;
@@ -11,21 +36,6 @@ void vram_copy(const unsigned char* from, unsigned short count){
 
 
 void pal_fade_to(unsigned char from, unsigned char to){
-/*
-    if(from < to) {
-        while (from < to){
-            pal_bright(++from);
-            ppu_wait_nmi();
-            ppu_wait_nmi();
-        }
-    }else{
-        while (from > to){
-            pal_bright(--from);
-            ppu_wait_nmi();
-            ppu_wait_nmi();
-        }
-    }
-*/
     __attribute__((leaf)) __asm__ volatile (
         	// A = from
             // X = to
@@ -39,6 +49,7 @@ void pal_fade_to(unsigned char from, unsigned char to){
         "1: \n	" // fade_loop:
             "lda #2 \n"
             "jsr ppu_wait_nmi \n" //wait 1 frames
+            "jsr ppu_wait_nmi \n"
             "jsr ppu_wait_nmi \n"
             
             "lda __rc12 \n" //from

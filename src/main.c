@@ -9,8 +9,8 @@ __attribute__((leaf)) __asm__(
         "lda #0 \n"
         "tax \n"
     "1: \n"
-        "pha \n"
         "sta  $00,x \n"
+        "sta $100,x \n"
         "sta $200,x \n"
         "sta $300,x \n"
         "sta $400,x \n"
@@ -44,15 +44,16 @@ int main(void){
     ppu_off(); // turn off everything
     
 
-    //music_play(0);
-    //famistudio_music_stop();
+    music_play(0);
+    famistudio_music_stop();
 
     // clear oam buffer
     //memfill((unsigned char*)0x200,0,0x100);
     oam_clear();
 
     // clear palette
-    pal_bg((const char *)0x120);
+    //pal_bg((const char *)0x120);
+    pal_bright(0);
     
 
     set_chr_bank(0,0);

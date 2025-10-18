@@ -10,7 +10,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
     // to do, so whatever you put in here
     // needs to be extra speedy.
 
-    nmi_prev_bank = get_prg_a000();
+    
     // if rendering is off, do not access vram
     if ((PPU_MASK_VAR & 0b00011000)) {
 
@@ -33,17 +33,17 @@ __attribute__((interrupt_norecurse)) void nmi(){
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[2]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[3]];
 
-            PPU.vram.data = PAL_BG_PTR[PAL_BUF[0]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[4]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[5]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[6]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[7]];
 
-            PPU.vram.data = PAL_BG_PTR[PAL_BUF[0]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[8]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[9]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[10]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[11]];
 
-            PPU.vram.data = PAL_BG_PTR[PAL_BUF[0]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[12]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[13]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[14]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[15]];
@@ -71,7 +71,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
 
     
     if(automatic_fs_updates) {
-        
+        nmi_prev_bank = get_prg_a000();
         music_update();
         set_prg_a000(nmi_prev_bank);
     }

@@ -10,8 +10,10 @@ __attribute__((retain)) void music_play(unsigned char s){
 
     // ok so we need to figure out what bank the
     // requested song is in.
-
     set_prg_a000(current_bank);
+
+    //if(s > 0){
+    
     __attribute__((leaf)) __asm__ volatile (
         "tsx \n"
         "1: \n" // bank_loop
@@ -35,9 +37,16 @@ __attribute__((retain)) void music_play(unsigned char s){
         :"a"(s)
         :"y","p"
     );
+        //famistudio_init(1,0xa000);
+        //famistudio_music_play(song_count);
+    //} else {
+        //famistudio_init(1,0xa000);
+        //famistudio_music_play(0);
+    //}
+    
     famistudio_init(1,0xa000);
     famistudio_music_play(song_count);
-    
+
     set_prg_a000(prev_bank);
 }
 

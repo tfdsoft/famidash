@@ -66,7 +66,7 @@ OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
-CARGS = -Oz -flto -fnonreentrant -mreserve-zp=7
+CARGS = -Os -flto -fnonreentrant -mreserve-zp=9
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
