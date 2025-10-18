@@ -1,4 +1,6 @@
 #include <nes.h>
+#include <stdint.h>
+
 #include "ines header.h"
 
 #include "macros.h"

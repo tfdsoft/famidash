@@ -66,7 +66,7 @@ OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
-CFLAGS = -Os -flto -fnonreentrant -mreserve-zp=9 -std=gnu23
+CFLAGS = -Os -flto -fnonreentrant -mreserve-zp=9 -std=gnu23 -Wall -Wextra
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)

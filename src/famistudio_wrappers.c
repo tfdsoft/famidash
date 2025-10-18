@@ -1,10 +1,10 @@
-static unsigned char music_bank;
-//unsigned char prev_bank;
-unsigned char current_bank, song_count;
+static uint8_t music_bank;
+//uint8_t prev_bank;
+uint8_t current_bank, song_count;
 
-__attribute__((retain)) void music_play(unsigned char s){
+__attribute__((retain)) void music_play(uint8_t s){
     
-    unsigned char prev_bank = get_prg_a000();
+    uint8_t prev_bank = get_prg_a000();
     current_bank = music_bank_0;
     song_count = 0;
 
@@ -51,14 +51,14 @@ __attribute__((retain)) void music_play(unsigned char s){
 }
 
 __attribute__((retain)) void music_update(){
-    unsigned char prev_bank = get_prg_a000();
+    uint8_t prev_bank = get_prg_a000();
     set_prg_a000(music_bank);
     famistudio_update();
     set_prg_a000(prev_bank);
 }
 
-__attribute__((retain)) void sfx_play(unsigned char index, unsigned char channel){
-    unsigned char prev_bank = get_prg_a000();
+__attribute__((retain)) void sfx_play(uint8_t index, uint8_t channel){
+    uint8_t prev_bank = get_prg_a000();
     set_prg_a000(sfx_bank);
     famistudio_sfx_init(0xa000);
     famistudio_sfx_play(index,channel);

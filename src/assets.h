@@ -1,10 +1,12 @@
+#include <stdint.h>
+
 #define putinbank(bank) __attribute__((section(bank),retain))
 
 #define IDENT(x) x
 #define XSTR(x) #x
 #define STR(x) XSTR(x)
 
-#define file(symbol, bank) __attribute__((section((".prg_rom_"STR(bank))),retain)) const unsigned char symbol[]
+#define file(symbol, bank) __attribute__((section((".prg_rom_"STR(bank))),retain)) const uint8_t symbol[]
 
 // LEVELS
 // banks 0-31 are reserved for level data.
@@ -49,14 +51,14 @@
 
 // banks 62 and 63 are fixed. not much i can do about that
 
-extern const unsigned char chr_menu_global[];
-extern const unsigned char chr_font[];
-extern const unsigned char chr_logo[];
-extern const unsigned char chr_famidash[];
+extern const uint8_t chr_menu_global[];
+extern const uint8_t chr_font[];
+extern const uint8_t chr_logo[];
+extern const uint8_t chr_famidash[];
 
-extern const unsigned char chr_tiles_global[];
-extern const unsigned char chr_tiles_grid[];
-extern const unsigned char chr_tiles_cross[];
-extern const unsigned char chr_tiles_brick[];
-extern const unsigned char chr_tiles_black[];
+extern const uint8_t chr_tiles_global[];
+extern const uint8_t chr_tiles_grid[];
+extern const uint8_t chr_tiles_cross[];
+extern const uint8_t chr_tiles_brick[];
+extern const uint8_t chr_tiles_black[];
 

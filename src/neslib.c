@@ -50,7 +50,7 @@ __attribute__((retain)) static volatile unsigned char PPU_MASK_VAR, PPU_CTRL_VAR
 __attribute__((retain)) static volatile unsigned char PPU_CTRL_VAR1;
 __attribute__((retain)) static unsigned char SCROLL_X, SCROLL_Y;
 __attribute__((retain)) static unsigned char SCROLL_X1;//, SCROLL_Y1;
-#define PAL_BUF ((volatile char*)0x100) 
+#define PAL_BUF ((volatile uint8_t*)0x100) 
 __attribute__((retain)) 
     volatile unsigned char PAD_STATE[2], PAD_STATEP[2], PAD_STATET[2];
 //static unsigned char TEMP;
@@ -59,11 +59,11 @@ __attribute__((retain)) static unsigned char LEN;
 __attribute__((retain)) static unsigned char PAL_UPDATE;
 __attribute__((retain)) static unsigned char I;
 
-__attribute__((retain)) static char * __zp PAL_BG_PTR;
-__attribute__((retain)) static char * __zp PAL_SPR_PTR;
+__attribute__((retain)) static uint8_t * __zp PAL_BG_PTR;
+__attribute__((retain)) static uint8_t * __zp PAL_SPR_PTR;
 
 
-static const char palBrightTable[192] = {
+static const uint8_t palBrightTable[192] = {
     // 0
     0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
     0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
@@ -109,15 +109,15 @@ static const char palBrightTable[192] = {
     0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30,
     0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30, 0x30
 };
-#define palBrightTable0 *((const char*)&palBrightTable[0])
-#define palBrightTable1 *((const char*)&palBrightTable[0x10])
-#define palBrightTable2 *((const char*)&palBrightTable[0x20])
-#define palBrightTable3 *((const char*)&palBrightTable[0x30])
-#define palBrightTable4 *((const char*)&palBrightTable[0x40])
-#define palBrightTable5 *((const char*)&palBrightTable[0x50])
-#define palBrightTable6 *((const char*)&palBrightTable[0x60])
-#define palBrightTable7 *((const char*)&palBrightTable[0x70])
-#define palBrightTable8 *((const char*)&palBrightTable[0x80])
+#define palBrightTable0 *((const uint8_t*)&palBrightTable[0])
+#define palBrightTable1 *((const uint8_t*)&palBrightTable[0x10])
+#define palBrightTable2 *((const uint8_t*)&palBrightTable[0x20])
+#define palBrightTable3 *((const uint8_t*)&palBrightTable[0x30])
+#define palBrightTable4 *((const uint8_t*)&palBrightTable[0x40])
+#define palBrightTable5 *((const uint8_t*)&palBrightTable[0x50])
+#define palBrightTable6 *((const uint8_t*)&palBrightTable[0x60])
+#define palBrightTable7 *((const uint8_t*)&palBrightTable[0x70])
+#define palBrightTable8 *((const uint8_t*)&palBrightTable[0x80])
 
 #define PAD_A			0x80
 #define PAD_B			0x40
@@ -250,7 +250,7 @@ void pal_spr(const unsigned char * const data){
  * pal_col(index, color)
  * change one specific color in the palette.
 */
-void pal_col(char index, char color){
+void pal_col(uint8_t index, uint8_t color){
     index &= 0x1f;
     color &= 0x3f;
     PAL_BUF[index] = color;
@@ -262,7 +262,7 @@ void pal_col(char index, char color){
  * DARKEN IT ALL!
 */
 void pal_clear(){
-    for (char I=0; I<32; I++){
+    for (uint8_t I=0; I<32; I++){
         PAL_BUF[I] = 0x0f;
     }
     PAL_UPDATE++;
@@ -273,7 +273,7 @@ void pal_clear(){
  * change the brightness of the sprites!
 */
 void pal_spr_bright(char bright){
-    PAL_SPR_PTR = ((char*)(&palBrightTable[(bright << 4)]));
+    PAL_SPR_PTR = ((uint8_t*)(&palBrightTable[(bright << 4)]));
     PAL_UPDATE++;
 }
 
@@ -282,7 +282,7 @@ void pal_spr_bright(char bright){
  * change the brightness of the background!
 */
 void pal_bg_bright(char bright){
-    PAL_BG_PTR = ((char*)(&palBrightTable[(bright << 4)]));
+    PAL_BG_PTR = ((uint8_t*)(&palBrightTable[(bright << 4)]));
     PAL_UPDATE++;
 }
 
@@ -291,7 +291,7 @@ void pal_bg_bright(char bright){
  * change the brightness of EVERYTHING.
 */
 __attribute__((retain)) void pal_bright(char bright){
-    PAL_BG_PTR = ((char*)(&palBrightTable[(bright << 4)]));
+    PAL_BG_PTR = ((uint8_t*)(&palBrightTable[(bright << 4)]));
     PAL_SPR_PTR = PAL_BG_PTR;
     PAL_UPDATE++;
 }

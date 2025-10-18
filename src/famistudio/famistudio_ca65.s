@@ -1053,7 +1053,7 @@ famistudio_ptr1_hi = famistudio_ptr1+1
 .exportzp FAMISTUDIO_SFX_CH3
 .endif
 .if FAMISTUDIO_USE_DPCM_BANKSWITCHING
-.global famistudio_dpcm_bank_callback
+.global famistudio_dpcm_bank_callback: absolute
 .endif
 
 .segment .string(FAMISTUDIO_CA65_CODE_SEGMENT)
