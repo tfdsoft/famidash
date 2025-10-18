@@ -109,7 +109,7 @@ $(TMPDIR)/music.o: src/famistudio/music_0_bank*.dmc src/famistudio/*.s src/famis
 #		compile all of the music assets into one giant object file
 	$(CA65) src/famistudio/music_assets.s -o $@
 
-$(TMPDIR)/assets.o: src/chr/*.chr src/assets.c src/assets.h
+$(TMPDIR)/assets.o: src/chr/uncompressed/*.chr src/assets.c src/assets.h
 	$(CC) -c src/assets.c $(CFLAGS) -o $@
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/music.o $(TMPDIR)/assets.o src/*.h src/*.c src/gamestates/*.c $(CFG)
