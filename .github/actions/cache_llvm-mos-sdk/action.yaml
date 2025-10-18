@@ -1,11 +1,11 @@
 name: Cache llvm-mos-sdk
 description: Caches llvm-mos-sdk and builds it from source if missing
 inputs:
-  cc65Ref:
+  llvm-mos-sdk-ref:
     description: "llvm-mos-sdk Git Ref (used to checkout a fixed version)"
     required: false
     default: "master"
-  cc65Path:
+  llvm-mos-sdk-path:
     description: "llvm-mos-sdk path to cache"
     required: false
     default: ${{ github.workspace }}/opt/llvm-mos-sdk
@@ -14,16 +14,16 @@ runs:
   steps:
       # Cache llvm-mos-sdk
       - uses: actions/cache@v4
-        id: cache_cc65
+        id: cache_llvm-mos-sdk
         with:
-          path: ${{ inputs.llvm-mos-sdkPath }}
+          path: ${{ inputs.llvm-mos-sdk-path }}
           key: ${{ runner.os }}-llvm-mos-sdk-${{ inputs.llvm-mos-sdkRef }}-${{ hashFiles('.github/actions/cache_llvm-mos-sdk/*') }}
       # Checkout llvm-mos-sdk
       - uses: actions/checkout@v4
         if: steps.cache_llvm-mos-sdk.outputs.cache-hit != 'true'
         with:
           repository: llvm-mos/llvm-mos-sdk
-          ref: ${{ inputs.llvm-mos-sdkRef }}
+          ref: ${{ inputs.llvm-mos-sdk-ref }}
           path: './llvm-mos-sdk'
       # Build llvm-mos-sdk
       #- if: steps.cache_llvm-mos-sdk.outputs.cache-hit != 'true'
