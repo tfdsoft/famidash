@@ -205,7 +205,7 @@ void ppu_mask(unsigned char mask){
 
 // internal function used by the library;
 // do not call
-static void pal_copy(const char *data){
+static void pal_copy(const unsigned char * const data){
     while (LEN > 0){
         PAL_BUF[I] = data[I];
         LEN--;
@@ -217,7 +217,7 @@ static void pal_copy(const char *data){
  * pal_all(data)
  * set the palettes for everything
 */
-void pal_all(const char *data){
+void pal_all(const unsigned char * const data){
     LEN = 0x20;
     I = 0x00;
     pal_copy(data);
@@ -228,7 +228,7 @@ void pal_all(const char *data){
  * pal_bg(data)
  * set the palettes for the background
 */
-void pal_bg(const char *data){
+void pal_bg(const unsigned char * const data){
     LEN = 0x10;
     I = 0x00;
     pal_copy(data);
@@ -239,7 +239,7 @@ void pal_bg(const char *data){
  * pal_spr(data)
  * set the palettes for sprites
 */
-void pal_spr(const char *data){
+void pal_spr(const unsigned char * const data){
     LEN = 0x20;
     I = 0x10;
     pal_copy(data);
@@ -335,7 +335,7 @@ void oam_spr(char x, char y, char tile, char attr){
  * oam_meta_spr(x, y, data)
  * add multiple sprites to the oam buffer
 */
-void oam_meta_spr(char x, char y, const char* data){
+void oam_meta_spr(char x, char y, const char* const data){
     char* ptr = ((char*)data);
     while (ptr[0] != 0x80){
         if (SPRID >= 64) return;
@@ -443,7 +443,7 @@ void bank_bg(char n){
  * vram_read(*dest, size)
  * get contents from vram.
 */
-void vram_read(unsigned char* dest, unsigned short size){
+void vram_read(unsigned char* const dest, unsigned short size){
     for(unsigned short i=0; i<size; i++){
         dest[i] = PPU.vram.data;
     }
@@ -453,7 +453,7 @@ void vram_read(unsigned char* dest, unsigned short size){
  * vram_write(*src, size)
  * write a chunk of data to vram
 */
-void vram_write(unsigned char* src, unsigned short size){
+void vram_write(const unsigned char* const src, unsigned short size){
     for(unsigned short i=0; i<size; i++){
         PPU.vram.data = src[i];
     }
@@ -463,7 +463,7 @@ void vram_write(unsigned char* src, unsigned short size){
  * vram_unrle(*src)
  * decompress a nametable
 */
-void vram_unrle(unsigned char* src){
+void vram_unrle(const unsigned char* src){
     unsigned char tag = src[0]; // tag is the least common byte
     unsigned char value, run;
     src++;
@@ -614,7 +614,7 @@ void vram_inc(unsigned char n){
  * memfill(*dest,value,size)
  * fill memory with whatever funny byte you desire!
 */
-void memfill(unsigned char* dest, unsigned char value, unsigned short size){
+void memfill(unsigned char* const dest, unsigned char value, unsigned short size){
     for(unsigned short i=0; i<size; i++){
         dest[i] = value;
     }

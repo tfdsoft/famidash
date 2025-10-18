@@ -24,7 +24,7 @@ void __pop_prg_a000(){
 
 
 
-void vram_copy(const unsigned char* from, unsigned short count){
+void vram_copy(const unsigned char* const from, unsigned short count){
     //PPU_CTRL_VAR &= 0b01111111;
     //PPU.control = PPU_CTRL_VAR;
     for(unsigned short i=0; i<count; i++){
