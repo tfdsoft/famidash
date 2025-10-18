@@ -1,5 +1,3 @@
-# currently disabled due to llvm mos sdk not caching
-
 name: Build ROM
 
 on: [push]

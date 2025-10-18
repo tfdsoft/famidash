@@ -1,14 +1,10 @@
-## PLEASE NOTE: THIS CURRENTLY DOES NOT WORK!!!
-# as such, main.yml has been disabled.
-
-
 name: Cache llvm-mos-sdk
 description: Caches llvm-mos-sdk and builds it from source if missing
 inputs:
   llvm-mos-sdk-ref:
     description: "llvm-mos-sdk Git Ref (used to checkout a fixed version)"
     required: false
-    default: "master"
+    default: "main"
   llvm-mos-sdk-path:
     description: "llvm-mos-sdk path to cache"
     required: false
