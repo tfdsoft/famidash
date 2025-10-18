@@ -27,9 +27,9 @@ runs:
           path: './llvm-mos-sdk'
       # Build llvm-mos-sdk
       - if: steps.cache_llvm-mos-sdk.outputs.cache-hit != 'true'
-       run: |
-         cd llvm-mos-sdk
-         PREFIX=${{ inputs.llvm-mos-sdkPath }} mkdir build && cd build
-         PREFIX=${{ inputs.llvm-mos-sdkPath }} cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX=${{ inputs.llvm-mos-sdkPath }} ..
-         PREFIX=${{ inputs.llvm-mos-sdkPath }} ninja install
-       shell: bash
+        run: |
+          cd llvm-mos-sdk
+          PREFIX=${{ inputs.llvm-mos-sdkPath }} mkdir build && cd build
+          PREFIX=${{ inputs.llvm-mos-sdkPath }} cmake -G "Ninja" -DCMAKE_INSTALL_PREFIX=${{ inputs.llvm-mos-sdkPath }} ..
+          PREFIX=${{ inputs.llvm-mos-sdkPath }} ninja install
+        shell: bash
