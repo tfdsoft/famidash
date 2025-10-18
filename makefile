@@ -98,16 +98,16 @@ $(TMPDIR):
 	$(call mkdir,$(TMPDIR))
 
 $(TMPDIR)/music.o: src/famistudio/music_0_bank*.dmc src/famistudio/*.s src/famistudio/NoteTables/*.*
-	#	remove duplicate dpcm files
+#		remove duplicate dpcm files
 	$(call del,src/famistudio/music_[!0]_bank*.dmc)
-	#	compile all of the music assets into one giant object file
+#		compile all of the music assets into one giant object file
 	$(CA65) src/famistudio/music_assets.s -o $@
 
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/music.o src/*.* $(CFG)
-	# 	run llvm-mos
+# 		run llvm-mos
 	$(CC) src/main.c  $(TMPDIR)/*.o $(CARGS) -o $@ -T $(CFG) -std=gnu23
-	make clean
+
 clean:
 ifeq ($(OS),Windows_NT)
 	$(call del,$(OUTDIR_PREFIX)/*.*)
