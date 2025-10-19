@@ -50,7 +50,6 @@ void pal_fade_to(unsigned char from, unsigned char to){
             "lda #2 \n"
             "jsr ppu_wait_nmi \n" //wait 1 frames
             "jsr ppu_wait_nmi \n"
-            "jsr ppu_wait_nmi \n"
             
             "lda __rc12 \n" //from
             "cmp __rc11 \n" //to

@@ -159,7 +159,7 @@ __attribute__((noinline)) void ppu_wait_nmi(){
  *  ppu_off()
  *  wait for vblank and turn off the screen!
 */
-__attribute__((noinline)) void ppu_off(){
+void ppu_off(){
     PPU_MASK_VAR &= 0b11100111;
     ppu_wait_nmi();
 }
@@ -168,7 +168,7 @@ __attribute__((noinline)) void ppu_off(){
  *  ppu_on_all()
  *  wait for vblank and turn on the screen!
 */
-__attribute__((noinline)) void ppu_on_all(){
+void ppu_on_all(){
     PPU_MASK_VAR |= 0b00011000;
     ppu_wait_nmi();
 }
@@ -177,7 +177,7 @@ __attribute__((noinline)) void ppu_on_all(){
  *  ppu_on_bg()
  *  wait for vblank and turn on the background layer.
 */
-__attribute__((noinline)) void ppu_on_bg(){
+void ppu_on_bg(){
     PPU_MASK_VAR |= 0b00001000;
     ppu_wait_nmi();
 }
@@ -186,7 +186,7 @@ __attribute__((noinline)) void ppu_on_bg(){
  *  ppu_on_spr()
  *  wait for vblank and turn on the sprite layer.
 */
-__attribute__((noinline)) void ppu_on_spr(){
+void ppu_on_spr(){
     PPU_MASK_VAR |= 0b00010000;
     ppu_wait_nmi();
 }
@@ -195,7 +195,7 @@ __attribute__((noinline)) void ppu_on_spr(){
  *  ppu_mask()
  *  set the mask value (to be applied at end of vblank).
 */
-__attribute__((noinline)) void ppu_mask(unsigned char mask){
+void ppu_mask(unsigned char mask){
     PPU_MASK_VAR = mask;
 }
 
