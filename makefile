@@ -98,7 +98,7 @@ main:
 #target: dependencies
 
 CHR:
-	python3 src/chr/donut.py src/chr/uncompressed/ src/chr/dnt -f
+	python3 --version #src/chr/donut.py src/chr/uncompressed/ src/chr/dnt -f
 
 $(OUTDIR):
 	$(call mkdir,$(OUTDIR))
