@@ -20,6 +20,10 @@ jobs:
         uses: ./.github/actions/cache_cc65
       - name: Cache llvm-mos-sdk
         uses: ./.github/actions/cache_llvm-mos-sdk
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12.3'
       - name: Set path
         run: |
           echo "${{ github.workspace }}/opt/cc65/bin:${{ github.workspace }}/opt/llvm-mos-sdk/bin" >> $GITHUB_PATH
