@@ -47,7 +47,7 @@ void state_startup() {
     set_prg_8000(chr_bank_0);
     vram_adr(0x200);
     donut_decompress_vram(chr_font);
-    donut_decompress_vram(chr_logo);
+    donut_decompress_vram(chr_menu_tfdlogo);
 
     vram_adr(0x2000);
     vram_unrle(nt_logo);
@@ -80,7 +80,7 @@ void state_startup() {
         if((stall >= 80) && (stall < 83)) pal_bright(3);
     }
 
-    pal_fade_to(3,0);
+    pal_fade_to(4,0);
     ppu_off();
 
     set_prg_8000(nametable_bank_0);
@@ -93,8 +93,8 @@ void state_startup() {
     ppu_on_all();
     pal_fade_to(0,4);
 
- 
-    music_play(1);
+    song = 1;
+    music_play(song);
     //__attribute__((leaf)) __asm__ volatile (
     //    "lda song \n"
     //    "jsr music_play \n"
@@ -197,7 +197,7 @@ void state_credits() {
     vram_adr(0x0000);
     donut_decompress_vram(chr_menu_global);
     vram_adr(0x0800);
-    donut_decompress_vram(chr_famidash);
+    donut_decompress_vram(chr_menu_famidash);
 
     //automatic_fs_updates = 1;
     //music_play(1);
@@ -214,5 +214,6 @@ void state_credits() {
     for(unsigned short stall=300; stall>0; stall--){
         ppu_wait_nmi();
     }
+    pal_fade_to(4,0);
     gamestate = 2;
 }

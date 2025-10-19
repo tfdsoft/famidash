@@ -88,6 +88,10 @@ int main(void){
                 banked_call(extra_code_bank, state_credits);
                 //state_menu();
                 break;
+            case 2:
+                banked_call(extra_code_bank, state_menu);
+                //state_menu();
+                break;
         }
     }
     //APU.sprite.dma;

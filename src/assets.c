@@ -1,16 +1,22 @@
 #include "assets.h"
 
-file(chr_menu_global, chr_bank_0) = {
-    #embed "./chr/dnt/Menu_Global.bin"
-};
 file(chr_font, chr_bank_0) = {
     #embed "./chr/dnt/Font.bin"
 };  
-file(chr_logo, chr_bank_0) = {
-    #embed "./chr/dnt/Logo.bin"
+file(chr_menu_global, chr_bank_0) = {
+    #embed "./chr/dnt/Menu_Global.bin"
+};
+file(chr_menu_buttons, chr_bank_0) = {
+    #embed "./chr/dnt/Menu_Buttons.bin"
+};
+file(chr_menu_difficulties, chr_bank_0) = {
+    #embed "./chr/dnt/Menu_Difficulties.bin"
+};
+file(chr_menu_tfdlogo, chr_bank_0) = {
+    #embed "./chr/dnt/Menu_TFDLogo.bin"
 };    
-file(chr_famidash, chr_bank_0) = {
-    #embed "./chr/dnt/Famidash.bin"
+file(chr_menu_famidash, chr_bank_0) = {
+    #embed "./chr/dnt/Menu_Famidash.bin"
 };    
 
 

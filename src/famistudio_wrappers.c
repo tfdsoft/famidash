@@ -2,7 +2,7 @@ static uint8_t music_bank;
 //uint8_t prev_bank;
 uint8_t current_bank, song_count;
 
-__attribute__((retain)) void music_play(uint8_t s){
+__attribute__((noinline)) void music_play(uint8_t s){
     
     uint8_t prev_bank = get_prg_a000();
     current_bank = music_bank_0;

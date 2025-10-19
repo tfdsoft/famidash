@@ -51,10 +51,12 @@
 
 // banks 62 and 63 are fixed. not much i can do about that
 
-extern const uint8_t chr_menu_global[];
 extern const uint8_t chr_font[];
-extern const uint8_t chr_logo[];
-extern const uint8_t chr_famidash[];
+extern const uint8_t chr_menu_global[];
+extern const uint8_t chr_menu_buttons[];
+extern const uint8_t chr_menu_difficulties[];
+extern const uint8_t chr_menu_tfdlogo[];
+extern const uint8_t chr_menu_famidash[];
 
 extern const uint8_t chr_tiles_global[];
 extern const uint8_t chr_tiles_grid[];
