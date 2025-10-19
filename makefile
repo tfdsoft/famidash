@@ -79,7 +79,7 @@ endif
 
 
 # optimize for code size (the ideal method)
-build: CHR $(TMPDIR) $(OUTDIR) $(OUTDIR)/$(NAME).nes
+build: $(TMPDIR) $(OUTDIR) $(OUTDIR)/$(NAME).nes
 	
 
 
@@ -97,8 +97,6 @@ main:
 
 #target: dependencies
 
-CHR: src/chr/dnt/*.bin
-	python3 src/chr/donut.py src/chr/uncompressed/ src/chr/dnt -f
 
 $(OUTDIR):
 	$(call mkdir,$(OUTDIR))
