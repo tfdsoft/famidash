@@ -67,7 +67,7 @@ TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
 CFLAGS = -flto -Os -ffast-math -fnonreentrant -std=gnu23 -Wall -Wextra
-LDFLAGS = -mreserve-zp=9 -T $(CFG)
+LDFLAGS = -mreserve-zp=27 -T $(CFG)
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -79,7 +79,7 @@ endif
 
 
 # optimize for code size (the ideal method)
-build: $(TMPDIR) $(OUTDIR) $(OUTDIR)/$(NAME).nes
+build: CHR $(TMPDIR) $(OUTDIR) $(OUTDIR)/$(NAME).nes
 	
 
 
@@ -97,6 +97,9 @@ main:
 
 #target: dependencies
 
+CHR:
+	python3 src/chr/donut.py src/chr/uncompressed/ src/chr/dnt -f
+
 $(OUTDIR):
 	$(call mkdir,$(OUTDIR))
 
@@ -109,10 +112,13 @@ $(TMPDIR)/music.o: src/famistudio/music_0_bank*.dmc src/famistudio/*.s src/famis
 #		compile all of the music assets into one giant object file
 	$(CA65) src/famistudio/music_assets.s -o $@
 
-$(TMPDIR)/assets.o: src/chr/uncompressed/*.chr src/assets.c src/assets.h
+$(TMPDIR)/donut.o: src/chr/*.s
+	$(CA65) src/chr/donut.s -o $@
+
+$(TMPDIR)/assets.o: src/chr/dnt/*.bin src/assets.c src/assets.h
 	$(CC) -c src/assets.c $(CFLAGS) -o $@
 
-$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/music.o $(TMPDIR)/assets.o src/*.h src/*.c src/gamestates/*.c $(CFG)
+$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/music.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/gamestates/*.c $(CFG)
 	$(CC) src/main.c $(TMPDIR)/*.o $(CFLAGS) $(LDFLAGS) -o $@
 	
 

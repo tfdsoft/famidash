@@ -139,7 +139,7 @@ static const uint8_t palBrightTable[192] = {
  *  ppu_wait_nmi()
  *  wait for vblank.
 */
-__attribute__((retain)) void ppu_wait_nmi(){
+__attribute__((noinline)) void ppu_wait_nmi(){
     // stall until FRAME_CNT is updated by nmi()
     //while (FRAME_CNT == FRAME_COUNT_OLD){}
 
@@ -159,7 +159,7 @@ __attribute__((retain)) void ppu_wait_nmi(){
  *  ppu_off()
  *  wait for vblank and turn off the screen!
 */
-void ppu_off(){
+__attribute__((noinline)) void ppu_off(){
     PPU_MASK_VAR &= 0b11100111;
     ppu_wait_nmi();
 }
@@ -168,7 +168,7 @@ void ppu_off(){
  *  ppu_on_all()
  *  wait for vblank and turn on the screen!
 */
-void ppu_on_all(){
+__attribute__((noinline)) void ppu_on_all(){
     PPU_MASK_VAR |= 0b00011000;
     ppu_wait_nmi();
 }
@@ -177,7 +177,7 @@ void ppu_on_all(){
  *  ppu_on_bg()
  *  wait for vblank and turn on the background layer.
 */
-void ppu_on_bg(){
+__attribute__((noinline)) void ppu_on_bg(){
     PPU_MASK_VAR |= 0b00001000;
     ppu_wait_nmi();
 }
@@ -186,7 +186,7 @@ void ppu_on_bg(){
  *  ppu_on_spr()
  *  wait for vblank and turn on the sprite layer.
 */
-void ppu_on_spr(){
+__attribute__((noinline)) void ppu_on_spr(){
     PPU_MASK_VAR |= 0b00010000;
     ppu_wait_nmi();
 }
@@ -195,7 +195,7 @@ void ppu_on_spr(){
  *  ppu_mask()
  *  set the mask value (to be applied at end of vblank).
 */
-void ppu_mask(unsigned char mask){
+__attribute__((noinline)) void ppu_mask(unsigned char mask){
     PPU_MASK_VAR = mask;
 }
 
@@ -217,7 +217,7 @@ static void pal_copy(const unsigned char * const data){
  * pal_all(data)
  * set the palettes for everything
 */
-void pal_all(const unsigned char * const data){
+__attribute__((noinline)) void pal_all(const unsigned char * const data){
     LEN = 0x20;
     I = 0x00;
     pal_copy(data);
@@ -228,7 +228,7 @@ void pal_all(const unsigned char * const data){
  * pal_bg(data)
  * set the palettes for the background
 */
-void pal_bg(const unsigned char * const data){
+__attribute__((noinline)) void pal_bg(const unsigned char * const data){
     LEN = 0x10;
     I = 0x00;
     pal_copy(data);
@@ -239,7 +239,7 @@ void pal_bg(const unsigned char * const data){
  * pal_spr(data)
  * set the palettes for sprites
 */
-void pal_spr(const unsigned char * const data){
+__attribute__((noinline)) void pal_spr(const unsigned char * const data){
     LEN = 0x20;
     I = 0x10;
     pal_copy(data);
@@ -250,7 +250,7 @@ void pal_spr(const unsigned char * const data){
  * pal_col(index, color)
  * change one specific color in the palette.
 */
-void pal_col(uint8_t index, uint8_t color){
+__attribute__((noinline)) void pal_col(uint8_t index, uint8_t color){
     index &= 0x1f;
     color &= 0x3f;
     PAL_BUF[index] = color;
@@ -261,7 +261,7 @@ void pal_col(uint8_t index, uint8_t color){
  * pal_clear()
  * DARKEN IT ALL!
 */
-void pal_clear(){
+__attribute__((noinline)) void pal_clear(){
     for (uint8_t I=0; I<32; I++){
         PAL_BUF[I] = 0x0f;
     }
@@ -272,7 +272,7 @@ void pal_clear(){
  * pal_spr_bright(bright)
  * change the brightness of the sprites!
 */
-void pal_spr_bright(char bright){
+__attribute__((noinline)) void pal_spr_bright(char bright){
     PAL_SPR_PTR = ((uint8_t*)(&palBrightTable[(bright << 4)]));
     PAL_UPDATE++;
 }
@@ -281,7 +281,7 @@ void pal_spr_bright(char bright){
  * pal_bg_bright(bright)
  * change the brightness of the background!
 */
-void pal_bg_bright(char bright){
+__attribute__((noinline)) void pal_bg_bright(char bright){
     PAL_BG_PTR = ((uint8_t*)(&palBrightTable[(bright << 4)]));
     PAL_UPDATE++;
 }
@@ -290,7 +290,7 @@ void pal_bg_bright(char bright){
  * pal_bright(bright)
  * change the brightness of EVERYTHING.
 */
-__attribute__((retain)) void pal_bright(char bright){
+__attribute__((noinline)) void pal_bright(char bright){
     PAL_BG_PTR = ((uint8_t*)(&palBrightTable[(bright << 4)]));
     PAL_SPR_PTR = PAL_BG_PTR;
     PAL_UPDATE++;
@@ -322,7 +322,7 @@ __attribute__((retain)) void oam_clear(){
 // .__rc0 = tile
 // .__rc1 = attr 
 // no clue how the compiler is gonna optimize it though
-void oam_spr(char x, char y, char tile, char attr){
+__attribute__((noinline)) void oam_spr(char x, char y, char tile, char attr){
     if(SPRID >= 64) return;
     OAM_BUF[SPRID].y = y,
     OAM_BUF[SPRID].tile = tile,
@@ -335,7 +335,7 @@ void oam_spr(char x, char y, char tile, char attr){
  * oam_meta_spr(x, y, data)
  * add multiple sprites to the oam buffer
 */
-void oam_meta_spr(char x, char y, const char* const data){
+__attribute__((noinline)) void oam_meta_spr(char x, char y, const char* const data){
     char* ptr = ((char*)data);
     while (ptr[0] != 0x80){
         if (SPRID >= 64) return;
@@ -360,7 +360,7 @@ void oam_meta_spr(char x, char y, const char* const data){
  *  x: set x scroll
  *  y: set y scroll
 */
-void scroll(unsigned short x, unsigned short y){
+__attribute__((noinline)) void scroll(unsigned short x, unsigned short y){
     unsigned char tmp = 0;
 
     // if lsb is greater than or equal to 240:
@@ -393,7 +393,7 @@ void scroll(unsigned short x, unsigned short y){
  *  __inputs__
  *  x: set x scroll
 */
-void split(unsigned short x){
+__attribute__((noinline)) void split(unsigned short x){
     unsigned char tmp;
 
     tmp = (high_byte(x) & 1);
@@ -421,7 +421,7 @@ void split(unsigned short x){
  * bank_spr(n)
  * set the graphics page for sprites
 */
-void bank_spr(char n){
+__attribute__((noinline)) void bank_spr(char n){
     PPU_CTRL_VAR &= 0b11110111;
     PPU_CTRL_VAR |= ((n & 1) << 3);
 }
@@ -430,7 +430,7 @@ void bank_spr(char n){
  * bank_bg(n)
  * set the graphics page for the background
 */
-void bank_bg(char n){
+__attribute__((noinline)) void bank_bg(char n){
     PPU_CTRL_VAR &= 0b11101111;
     PPU_CTRL_VAR |= ((n & 1) << 4);
 }
@@ -443,7 +443,7 @@ void bank_bg(char n){
  * vram_read(*dest, size)
  * get contents from vram.
 */
-void vram_read(unsigned char* const dest, unsigned short size){
+__attribute__((noinline)) void vram_read(unsigned char* const dest, unsigned short size){
     for(unsigned short i=0; i<size; i++){
         dest[i] = PPU.vram.data;
     }
@@ -453,7 +453,7 @@ void vram_read(unsigned char* const dest, unsigned short size){
  * vram_write(*src, size)
  * write a chunk of data to vram
 */
-void vram_write(const unsigned char* const src, unsigned short size){
+__attribute__((noinline)) void vram_write(const unsigned char* const src, unsigned short size){
     for(unsigned short i=0; i<size; i++){
         PPU.vram.data = src[i];
     }
@@ -463,7 +463,7 @@ void vram_write(const unsigned char* const src, unsigned short size){
  * vram_unrle(*src)
  * decompress a nametable
 */
-void vram_unrle(const unsigned char* src){
+__attribute__((noinline)) void vram_unrle(const unsigned char* src){
     unsigned char tag = src[0]; // tag is the least common byte
     unsigned char value, run;
     src++;
@@ -509,7 +509,7 @@ void vram_unrle(const unsigned char* src){
  * pad_poll(p)
  * get controller input!
 */
-void pad_poll(unsigned char pad){
+__attribute__((noinline)) void pad_poll(unsigned char pad){
     __attribute__((leaf)) __asm__ volatile (
             "ldx #3 \n"
 

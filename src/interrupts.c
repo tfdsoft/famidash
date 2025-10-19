@@ -61,7 +61,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
         //PPU.status; // read ppu status. thanks llvm-mos!
         //PPU.scroll = SCROLL_X;
         //PPU.scroll = SCROLL_Y;
-        ///PPU.control = PPU_CTRL_VAR;
+        //PPU.control = PPU_CTRL_VAR;
     }
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
@@ -71,12 +71,19 @@ __attribute__((interrupt_norecurse)) void nmi(){
 
     
     if(automatic_fs_updates) {
-        nmi_prev_bank = get_prg_a000();
+        //nmi_prev_bank = get_prg_a000();
+        __attribute__((leaf)) __asm__ volatile (
+            "lda __prg_a000 \n"
+            "pha \n"
+        );
         music_update();
-        set_prg_a000(nmi_prev_bank);
+        __attribute__((leaf)) __asm__ volatile (
+            "pla \n"
+            "jsr set_prg_a000 \n"
+        );
+        //set_prg_a000(nmi_prev_bank);
     }
 
-    
 }
 
 

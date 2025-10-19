@@ -45,9 +45,9 @@ void state_startup() {
     automatic_fs_updates = 1;
 
     set_prg_8000(chr_bank_0);
-    vram_adr(0x0200);
-    vram_copy(chr_font,0x600);
-    vram_copy(chr_logo,0x400);
+    vram_adr(0x200);
+    donut_decompress_vram(chr_font);
+    donut_decompress_vram(chr_logo);
 
     vram_adr(0x2000);
     vram_unrle(nt_logo);
@@ -195,9 +195,9 @@ void state_credits() {
 
     set_prg_8000(chr_bank_0);
     vram_adr(0x0000);
-    vram_copy(chr_menu_global,0x200);
+    donut_decompress_vram(chr_menu_global);
     vram_adr(0x0800);
-    vram_copy(chr_famidash,0x400);
+    donut_decompress_vram(chr_famidash);
 
     //automatic_fs_updates = 1;
     //music_play(1);

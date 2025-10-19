@@ -7,8 +7,8 @@ void state_menu() {
 
     set_prg_8000(chr_bank_0);
     vram_adr(0x0200);
-    vram_copy(chr_font,0x600);
-    vram_copy(chr_logo,0x600);
+    //donut_bulk_load(chr_logo);
+    //vram_copy(chr_logo,0x600);
 
     set_prg_8000(nametable_bank_0);
     vram_adr(0x2000);

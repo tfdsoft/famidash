@@ -494,6 +494,7 @@ def main(argv=None):
                             ratio = 0
                         else:
                             ratio = float('NaN')
+                    output_file.write(b'\xff')
                     print("{} :{:>6.1%} ({} => {} bytes, {})".format(input_file.file_name, ratio, r, w, output_file.file_name), file=sys.stderr)
                     total_input_bytes += r
                     total_output_bytes += w

@@ -1,6 +1,8 @@
 #ew windows
 .vscode
 
+src/chr/dnt/*.bin
+
 *.nes
 *.mlb
 *.bak
