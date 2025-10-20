@@ -106,10 +106,10 @@ int main(void){
                 banked_call(extra_code_bank, state_menu);
                 //state_menu();
                 break;
-            //case 0x11:
-            //    banked_call(extra_code_bank, state_levelselect);
-            //    //state_menu();
-            //    break;
+            case 0x11:
+                banked_call(extra_code_bank, state_levelselect);
+                //state_menu();
+                break;
         }
     }
     //APU.sprite.dma;
