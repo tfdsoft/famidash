@@ -16,14 +16,15 @@ const unsigned char nt_title[171]={
 
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".109")))
 void state_menu() {
+    //unsigned char option = 0;
+
     ppu_off();
 
-    set_prg_8000(chr_bank_0);
-    vram_adr(0x0000);
-    donut_decompress_vram(chr_menu_global);
-    donut_decompress_vram(chr_font);
-    donut_decompress_vram(chr_menu_famidash);
-    donut_decompress_vram(chr_menu_buttons);
+    vram_adr(0x000);
+    donut_decompress_vram(chr_menu_global, chr_bank_0);
+    donut_decompress_vram(chr_font, chr_bank_0);
+    donut_decompress_vram(chr_menu_famidash, chr_bank_0);
+    donut_decompress_vram(chr_menu_buttons, chr_bank_0);
 
     vram_adr(0x2000);
     vram_unrle(nt_title);
@@ -33,7 +34,9 @@ void state_menu() {
     ppu_on_all();
     pal_fade_to(0,4);
 
-    music_play(--song);
+    //song = 1;
+    __asm__("lda #0"); // this is required for some reason
+    music_play(0);
 
 
     //automatic_fs_updates=1;
@@ -41,8 +44,23 @@ void state_menu() {
         ppu_wait_nmi();
 
         if(player1_pressed & PAD_A) {
-            gamestate = 0xff;
+            gamestate = 0x11;
+            pal_fade_to(4,0);
             break;
         }
+    }
+}
+
+
+
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".119")))
+void state_levelselect(){
+    ppu_off();
+        
+    vram_adr(0x800);
+    donut_decompress_vram(chr_menu_difficulties, chr_bank_0);
+    
+    while(1){
+        ppu_wait_nmi();
     }
 }

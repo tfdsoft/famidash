@@ -144,7 +144,7 @@ void __attribute__((__leaf__)) famistudio_sfx_sample_play(unsigned char sample_i
 
 
 void famistudio_dpcm_bank_callback(unsigned char bank){
-    if(chr_load_in_progress == 0) set_prg_8000(dpcm_bank_0 + bank);
+    set_prg_8000(dpcm_bank_0 + bank);
 }
 
 //__asm__ (

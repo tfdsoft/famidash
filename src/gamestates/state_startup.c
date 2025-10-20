@@ -44,10 +44,10 @@ void state_startup() {
 
     automatic_fs_updates = 1;
 
-    set_prg_8000(chr_bank_0);
+    //set_prg_8000(chr_bank_0);
     vram_adr(0x200);
-    donut_decompress_vram(chr_font);
-    donut_decompress_vram(chr_menu_tfdlogo);
+    donut_decompress_vram(chr_font, chr_bank_0);
+    donut_decompress_vram(chr_menu_tfdlogo, chr_bank_0);
 
     vram_adr(0x2000);
     vram_unrle(nt_logo);
@@ -121,7 +121,7 @@ void state_startup() {
             sfx_play(2,0);
             pal_fade_to(4,0);
 
-            gamestate = 1;
+            gamestate = 0;
             break;
         }
         
@@ -193,13 +193,12 @@ void state_credits() {
 
     //automatic_fs_updates = 0;
 
-    set_prg_8000(chr_bank_0);
     vram_adr(0x0000);
-    donut_decompress_vram(chr_menu_global);
-    vram_adr(0x0800);
-    donut_decompress_vram(chr_menu_famidash);
+    donut_decompress_vram(chr_menu_global, chr_bank_0);
+    donut_decompress_vram(chr_font, chr_bank_0);
+    donut_decompress_vram(chr_menu_famidash, chr_bank_0);
 
-    //automatic_fs_updates = 1;
+    automatic_fs_updates = 1;
     //music_play(1);
 
     vram_adr(0x2000);
@@ -215,5 +214,5 @@ void state_credits() {
         ppu_wait_nmi();
     }
     pal_fade_to(4,0);
-    gamestate = 2;
+    gamestate = 0x10;
 }

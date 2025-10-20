@@ -9,8 +9,8 @@ __attribute__((retain))
     #include "ram.h"
 
 
-//__attribute__((section(".prg_rom_fixed_lo"),retain))
-    #include "libraries.h"
+
+#include "libraries.h"
 
 #include "interrupts.c"
 

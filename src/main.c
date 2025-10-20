@@ -80,18 +80,36 @@ int main(void){
         pal_bright(0);
         ppu_off();
         switch(gamestate){
+
+            // when in doubt, go back to startup
             default: 
                 banked_call(extra_code_bank, state_startup); 
                 //state_startup();
                 break;
-            case 1:
+
+
+
+            //
+            //  CREDITS-RELATED STUFF
+            //
+            case 0x00:
                 banked_call(extra_code_bank, state_credits);
                 //state_menu();
                 break;
-            case 2:
+
+
+
+            //
+            //  MENU-RELATED STUFF
+            //
+            case 0x10:
                 banked_call(extra_code_bank, state_menu);
                 //state_menu();
                 break;
+            //case 0x11:
+            //    banked_call(extra_code_bank, state_levelselect);
+            //    //state_menu();
+            //    break;
         }
     }
     //APU.sprite.dma;
