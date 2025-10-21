@@ -80,14 +80,11 @@ int main(void){
         pal_bright(0);
         ppu_off();
         switch(gamestate){
-
             // when in doubt, go back to startup
             default: 
                 banked_call(extra_code_bank, state_startup); 
                 //state_startup();
                 break;
-
-
 
             //
             //  CREDITS-RELATED STUFF
@@ -96,9 +93,7 @@ int main(void){
                 banked_call(extra_code_bank, state_credits);
                 //state_menu();
                 break;
-
-
-
+                
             //
             //  MENU-RELATED STUFF
             //

@@ -36,8 +36,6 @@ const unsigned char nt_warning[] = {
 
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".009")))
 void state_startup() {
-    ppu_off();
-
     famistudio_music_stop();
 
     //automatic_fs_updates = 0;
@@ -189,9 +187,6 @@ const unsigned char nt_credits[537]={
 
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".019")))
 void state_credits() {
-    ppu_off();
-
-    //automatic_fs_updates = 0;
 
     vram_adr(0x0000);
     donut_decompress_vram(chr_menu_global, chr_bank_0);

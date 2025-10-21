@@ -36,8 +36,6 @@ __attribute__((section(".prg_rom_"STR(extra_code_bank)".109")))
 void state_menu() {
     //unsigned char option = 0;
 
-    ppu_off();
-
     vram_adr(0x000);
     donut_decompress_vram(chr_menu_global, chr_bank_0);
     donut_decompress_vram(chr_font, chr_bank_0);
@@ -52,8 +50,11 @@ void state_menu() {
     ppu_on_all();
     pal_fade_to(0,4);
 
-    //song = 1;
-    __asm__("lda #0"); // this is required for some reason
+    // for some reason, the compiler
+    // absolutely REFUSES to put an
+    // lda #0 before running this, so
+    // do it manually here
+    __asm__("lda #0"); 
     music_play(0);
 
 
