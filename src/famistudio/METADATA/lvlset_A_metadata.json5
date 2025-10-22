@@ -289,75 +289,6 @@
 			originalArtistText: "KEVIN MACLEOD",
 			vsSystemEnabled: false
 		},
-		{
-			fmsSongName: "retray",
-			lowerText: "GOLDEN HAZE",
-			originalArtistText: "DETIOUSMUSIC",
-		},
-		{
-			fmsSongName: "infernoplex",
-			lowerText: "INFERNOPLEX",
-			originalArtistText: "DIMRAIN47",
-		},
-
-		{
-			fmsSongName: "The Challenge",
-			upperText: "THE",
-			lowerText: "CHALLENGE",
-			originalArtistText: "ROBTOP",
-		},
-		{
-			fmsSongName: "atthespeedoflight",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "atthespeedoflight2",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 2",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "midnight",
-			lowerText: "MIDNIGHT",
-			originalArtistText: "CORNANDBEANS",
-		},
-		{
-			fmsSongName: "haunted woods",
-			lowerText: "HAUNTED WOODS",
-			originalArtistText: "WATERFLAME",
-		},
-		{
-			fmsSongName: "just right",
-			lowerText: "JUST RIGHT",
-			originalArtistText: "DAN HARRISON B",
-			vsSystemEnabled: false
-		},
-		{
-			fmsSongName: "Ground to Space",
-			upperText: "GROUND TO",
-			lowerText: "SPACE",
-			originalArtistText: "SEAGLOWINGPRO",
-		},
-		{
-			fmsSongName: "rainbow tylenol",
-			upperText: "RAINBOW",
-			lowerText: "TYLENOL",
-			originalArtistText: "KITSUNE2",
-		},
-		{
-			fmsSongName: "stalemate greif cut",
-			upperText: "STALEMATE",
-			lowerText: "GREIF CUT",
-			originalArtistText: "KAYOSZX",
-		},		
-		{
-			fmsSongName: "Extraordinary Excitement",
-			upperText: "EXTRAORDINARY",
-			lowerText: "EXCITEMENT",
-			originalArtistText: "SEAGLOWINGPRO",
-		},			
 	],
 	SFX: [
 		{
@@ -367,15 +298,6 @@
 				trackAuthor: "UserSniper",
 				durationNTSC: 383,
 				durationPAL: 460
-			}
-		},
-		{
-			text: "CLICK",
-			nsfData: {
-				trackLabel: "Click SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 50,
-				durationPAL: 40
 			}
 		},
 		{
@@ -397,33 +319,6 @@
 			}
 		},
 		{
-			text: "CHEST OPEN",
-			nsfData: {
-				trackLabel: "Chest Open SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 100,
-				durationPAL: 120
-			}
-		},
-		{
-			text: "ORBS",
-			nsfData: {
-				trackLabel: "Orbs SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 683,
-				durationPAL: 820
-			}
-		},
-		{
-			text: "DIAMONDS",
-			nsfData: {
-				trackLabel: "Diamonds SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 683,
-				durationPAL: 820
-			}
-		},
-		{
 			text: "EXIT LEVEL",
 			nsfData: {
 				trackLabel: "Exit Level SFX",
@@ -442,47 +337,12 @@
 			}
 		},
 		{
-			text: "INVALID",
-			nsfData: {
-				trackLabel: "Invalid SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 633,
-				durationPAL: 640
-			}
-		},
-		{
 			text: "ACHIEVEMENT GET",
 			nsfData: {
 				trackLabel: "Achievement Get SFX",
 				trackAuthor: "UserSniper",
 				durationNTSC: 950,
 				durationPAL: 1140
-			}
-		}
-	],
-	PCM: [
-		{
-			segment: "PCM_BANK",
-			path: "MUSIC/PCM/SSDPCM2-geometryDash.pcm",
-			sampleRateNTSC: 4,
-			sampleRatePAL: 3,
-			nsfData: {
-				trackLabel: "Geometry Dash Voice Clip",
-				trackAuthor: "VA: MDK",
-				durationNTSC: 1150,
-				durationPAL: 1100
-			}
-		},
-		{
-			segment: "PCM_BANK_B",
-			path: "MUSIC/PCM/SSDPCM2-fire.pcm",
-			sampleRateNTSC: 10,
-			sampleRatePAL: 8,
-			nsfData: {
-				trackLabel: "FIRE IN THE HOLE! Voice Clip",
-				trackAuthor: "VA: Joe",
-				durationNTSC: 1650,
-				durationPAL: 1650
 			}
 		}
 	],

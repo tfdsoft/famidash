@@ -188,16 +188,17 @@ def processMetadata(metadata : dict) -> dict:
     sfxSizeArrayList = [f'\tsizeof(sfxSoundTestString{i:02X}),' if i != None else '\t0,' for i in sfxIdxList]
 
     # Get PCM data
-    pcmlist = [i for i in metadata['PCM'] if set(['segment', 'path', 'sampleRateNTSC', 'sampleRatePAL']).issubset(set(i.keys()))]
-    bankIncludesList = [f"\t.byte <.bank(pcmData{i})" for i in range(len(pcmlist))]
-    sampleRateNTSCList = [f"\t.byte {i['sampleRateNTSC']}" for i in pcmlist]
-    sampleRatePALList = [f"\t.byte {i['sampleRatePAL']}" for i in pcmlist]
-    pcmHeaderList = ['', '; PCM includes']
-    for idx, i in enumerate(pcmlist):
-        pcmHeaderList += [f'.segment "{i["segment"]}"', f'\tpcmData{idx}:', f'\t\t.incbin "{i["path"]}"']
+    #pcmlist = [i for i in metadata['PCM'] if set(['segment', 'path', 'sampleRateNTSC', 'sampleRatePAL']).issubset(set(i.keys()))]
+    #bankIncludesList = [f"\t.byte <.bank(pcmData{i})" for i in range(len(pcmlist))]
+    #sampleRateNTSCList = [f"\t.byte {i['sampleRateNTSC']}" for i in pcmlist]
+    #sampleRatePALList = [f"\t.byte {i['sampleRatePAL']}" for i in pcmlist]
+    #pcmHeaderList = ['', '; PCM includes']
+    #for idx, i in enumerate(pcmlist):
+    #    pcmHeaderList += [f'.segment "{i["segment"]}"', f'\tpcmData{idx}:', f'\t\t.incbin "{i["path"]}"']
 
     # Get NSF metadata
-    nsfMetaList = [i.get('nsfData') for i in (songlist + metadata['SFX'] + metadata['PCM']) if 'nsfData' in i.keys()]
+    nsfMetaList = [i.get('nsfData') for i in (songlist + metadata['SFX']) if 'nsfData' in i.keys()]
+    # + metadata['PCM']
     # For now, don't warn people of missing NSF metadata, but do warn about incomplete data
     trackLabelList = [i.get('trackLabel') for i in nsfMetaList]
     trackAuthorList = [processNSFTrackAuthorMetadata(i.get('trackAuthor')) for i in nsfMetaList]
@@ -229,12 +230,12 @@ def processMetadata(metadata : dict) -> dict:
             'durationPALList': durationPALList,
             'durationFadeList': durationFadeList
         },
-        'pcmMetadata': {
-            'bankTable': bankIncludesList,
-            'sampleRateNTSC': sampleRateNTSCList,
-            'sampleRatePAL': sampleRatePALList,
-            'headerData': pcmHeaderList
-        },
+    #    'pcmMetadata': {
+    #        'bankTable': bankIncludesList,
+    #        'sampleRateNTSC': sampleRateNTSCList,
+    #        'sampleRatePAL': sampleRatePALList,
+    #        'headerData': pcmHeaderList
+    #    },
         'dpcmAlignerName': metadata['dpcmAligner'],
         'songModule': metadata['songModule'],
         'extendedMetadata': extMeta
