@@ -104,7 +104,7 @@ $(OUTDIR):
 $(TMPDIR):
 	$(call mkdir,$(TMPDIR))
 
-$(TMPDIR)/music.o: src/famistudio/EXPORTS/music_0_bank*.dmc src/famistudio/*.s src/famistudio/EXPORTS/*.s src/famistudio/NoteTables/*.*
+$(TMPDIR)/music.o: famistudio/EXPORTS/music_0_bank*.dmc src/famistudio/*.s src/famistudio/EXPORTS/*.s src/famistudio/NoteTables/*.*
 #		remove duplicate dpcm files
 	$(call del,src/famistudio/music_[!0]_bank*.dmc)
 #		compile all of the music assets into one giant object file

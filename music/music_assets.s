@@ -4,7 +4,7 @@
 
 .segment "_pprg__rom__36"
     .org $a000
-    .include "./EXPORTS/sfx.s"
+    .include "./EXPORTS/lvlset_A/sfx.s"
 
 .segment "_pprg__rom__37"
     .org $a000
