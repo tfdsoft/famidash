@@ -34,7 +34,7 @@ asmDpcmSongMatchRegex = lambda x : r'(?ms:(^@song' + x + r'\S*:.*?)(?=^@song(?!'
 datBankSegPrefix = "prg_rom_"
 dmcBankMetaUnused = 63  # a special dmc bank for shit to go unused
 musicFolder = pathlib.Path(sys.path[0]).resolve()
-tmpFolder = (musicFolder.parent / "TMP").resolve()
+tmpFolder = (musicFolder.parent / "/TMP").resolve()
 
 # Because itertools is old af sometimes
 def batched(iterable, n, *, strict=False):
@@ -396,7 +396,7 @@ if __name__ == "__main__":
 
     # Get FamiStudio text file
     print("\n==== Exporting a FamiStudio text file for processing...")
-    fsTxtPath = tmpFolder / "{exportStemPrefix}_fs.txt"
+    fsTxtPath = tmpFolder / f"{exportStemPrefix}_fs.txt"
 
     proc = subprocess.run([*fsCmd, modulePath, 'famistudio-txt-export', fsTxtPath], capture_output=True)
     checkErr(proc)
