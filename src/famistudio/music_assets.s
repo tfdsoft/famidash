@@ -4,16 +4,16 @@
 
 .segment "_pprg__rom__36"
     .org $a000
-    .include "./sfx.s"
+    .include "./EXPORTS/sfx.s"
 
 .segment "_pprg__rom__37"
     .org $a000
-    .include "./music_0.s"
+    .include "./EXPORTS/music_0.s"
 
 .segment "_pprg__rom__38"
     .org $a000
-    .include "./music_1.s"
+    .include "./EXPORTS/music_1.s"
 
 .segment "_pprg__rom__39"
     .org $a000
-    .include "./music_2.s"
+    .include "./EXPORTS/music_2.s"
