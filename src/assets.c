@@ -59,52 +59,52 @@ file(chr_tiles_black, chr_bank_1) = {
 
 
 file(dpcm_0, dpcm_bank_0) = {
-    #embed "./famistudio/music_0_bank0.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank0.dmc"
 };
 file(dpcm_1, dpcm_bank_1) = {
-    #embed "./famistudio/music_0_bank1.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank1.dmc"
 };
 file(dpcm_2, dpcm_bank_2) = {
-    #embed "./famistudio/music_0_bank2.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank2.dmc"
 };
 file(dpcm_3, dpcm_bank_3) = {
-    #embed "./famistudio/music_0_bank3.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank3.dmc"
 };
 file(dpcm_4, dpcm_bank_4) = {
-    #embed "./famistudio/music_0_bank4.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank4.dmc"
 };
 file(dpcm_5, dpcm_bank_5) = {
-    #embed "./famistudio/music_0_bank5.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank5.dmc"
 };
 file(dpcm_6, dpcm_bank_6) = {
-    #embed "./famistudio/music_0_bank6.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank6.dmc"
 };
 file(dpcm_7, dpcm_bank_7) = {
-    #embed "./famistudio/music_0_bank7.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank7.dmc"
 };
 file(dpcm_8, dpcm_bank_8) = {
-    #embed "./famistudio/music_0_bank8.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank8.dmc"
 };
 file(dpcm_9, dpcm_bank_9) = {
-    #embed "./famistudio/music_0_bank9.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank9.dmc"
 };
 file(dpcm_10, dpcm_bank_10) = {
-    #embed "./famistudio/music_0_bank10.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank10.dmc"
 };
 file(dpcm_11, dpcm_bank_11) = {
-    #embed "./famistudio/music_0_bank11.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank11.dmc"
 };
 file(dpcm_12, dpcm_bank_12) = {
-    #embed "./famistudio/music_0_bank12.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank12.dmc"
 };
 file(dpcm_13, dpcm_bank_13) = {
-    #embed "./famistudio/music_0_bank13.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank13.dmc"
 };
 file(dpcm_14, dpcm_bank_14) = {
-    #embed "./famistudio/music_0_bank14.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank14.dmc"
 };
 file(dpcm_15, dpcm_bank_15) = {
-    #embed "./famistudio/music_0_bank15.dmc"
+    #embed "./famistudio/EXPORTS/music_0_bank15.dmc"
 };
 //embed_dpcm("music_0_bank0.dmc", dpcm_0, dpcm_bank_0);
 //embed_dpcm("music_0_bank1.dmc", dpcm_1, dpcm_bank_1);
