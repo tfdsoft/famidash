@@ -61,11 +61,65 @@ Paths are given to relative to the MUSIC folder, unless it begins with a /, then
 12. If the compilation errors out due to an overflow in DAT_BANK_XX, congratulations, you've run out of space! Refer to step 13.
 13. If anything odd went on in any of these steps, ping @kandowontu and you'll probably get a response within 120 hours (response times will vary)
 
-## levels (guide by Ficus)
+## levels (guide by SeaGlowingPro)
+
+To make levels, make sure you have [Tiled level editor](https://www.mapeditor.org/). You also need a local copy of the entire Famidash repository. This is the main way to make Famidash levels, with up-to-date stuff synced with the repo.
+
+You can also use [NerdBoy628's web-based level editor](https://websim.ai/@NerdBoy628/famidash-editor/) as an alternative.
+
+Make sure you also have [Python](https://www.python.org/) installed. It is needed for the exporting and building job. Keep in mind that a ROM can only have a limited amount of levels.
+
+Note: This guide is for Windows users, especially with the apps mentioned above. It might not 100% work with other operating systems.
+
+
+How to open/view levels:
+* Navigate to /LEVELS/LEVEL DATA. There should be folders for levels in their respective ROM sides.
+* Go to one of the folders, and open a level of your choice. The level should be a .tmx file.
+* If the level you opened only shows red X boxes, it means the image files linked to the level weren't found. You should look at /GRAPHICS/ to find the files. The names of the files are `famidash.bmp` and `sprites.png`.
+
+How to make levels:
+
+* As a starting point, you can get an empty template level. You can find it at /LEVELS/LEVEL DATA/lvlset_X/template.tmx. Copying the file and renaming it to the level you'll make is recommended, to save the original template file for future level creations. (P.S. if you lost the template file, you can always redownload it here)
+	- If it shows red X boxes, refer to bullet 3 on how to open/view levels.
+* **It is recommended to playtest your layout/level in actual Geometry Dash**, as playtesting in Famidash is complicated and not instant due to technical stuff.
+* Once you're making a level, keep note that all tiles in `famidash` should be placed in the empty nameless layer, and all tiles in `sprites` should be in the SP layer. Putting them at the wrong layers will cause wrong tiles and sprites to load in-game.
+* Please note that **you shouldn't flip and rotate tiles** in the editor. Doing so will cause their IDs to be beyond the metatile ID limit, causing invalid tile IDs which causes build errors.
+* For triggers like color changes, enable trail triggers, and invisible gravity portals, they should be placed 10 tiles to the right, and within the player's current view. Placing them outside the player view will not load them. In other words, the triggers have to "load" within the game in order to trigger them.
+* For Tiled, you can also do a little trickery in level making by utilizing their built-in tools, including, but not limited to, `Shape Fill Tool`, `Random Mode`, and `Bucket Fill Tool`.
+
+How to add levels:
+
+* To add levels, the .tmx file with the level you made should be placed within one of the folders linking to a ROM side. (example: /LEVELS/LEVEL DATA/lvlset_X/your_level.tmx)
+* Once your level is in a folder, you must look for the level metadata file corresponding to that side, which can be found in /LEVELS/metadata/lvlset_X_metadata.json5.
+* Once you set up the metadata, what's left is exporting the level and building it.
+
+How to set up a level's metadata:
+
+* Look for a metadata template in any of the .json5 files. This will serve as a guide to set up the level's metadata. More importantly, here are some important metadata conditions and arguments needed:
+	- For upperText and lowerText arguments, the name should be in UPPERCASE
+	- For decoType, arguments are "DECO1", "DECOCLOUD", and "EXTRASPRITES1"
+	- For spikeSet, arguments are "A", "B", and "C"
+	- For blockSet, arguments are "A", "B", "C", and "D"
+	- For sawSet, arguments are "A" and "LETTERBANK"
+	- For difficulty, it actually depends on what side the level is in:
+		- If the level is in A, B or HUGE, difficulties are "AUTO", "EASY", "NORMAL", "HARD", "HARDER", "INSANE" and "DEMON"
+		- If the level is in C or D, difficulties are "EASYDEMON", "MEDIUMDEMON", "HARDDEMON", "INSANEDEMON", "EXTREMEDEMON", "IMPOSSIBLEDEMON" and "GRANDPADEMON"
+	- For stars, you can put a number, which will be the amount of stars a level will have
+		- Please note that difficulty and stars are important to keep in the metadata, otherwise the level won't export
+	- For the songID, it must link to a song that already exists in the ROM side. Most songs follow the `song_name_of_the_music` format
+	- For starting colors, it should link to the index of a color you want to start with. Refer to [PPU palettes](https://www.nesdev.org/wiki/PPU_palettes) for reference.
+	- For maxFallSpeed, 0x07 is recommended as this is nearly accurate to GD. Without the maxFallSpeed argument, the default speed set is 0x06
+	- For parallaxDisable, enabling it with true will replace the level background in-game with a blank color background
 
 How to export and update levels:
 
-* Open in tiled - make sure you have the sprites and tiles on the correct layers.
-* Export - This will save in "the folder that you do stuff in".
-* Go back a folder and run export_levels.bat - This will compile all the levels into their data folders.
-* Go back another folder and run build.bat. All the level updates should be in the game.
+* Run export_levels.bat - This will compile all the levels into their data folders. You can also run any export level .bat file in the main directory.
+* Run build.bat or any build .bat file. Look out for the `famidash.nes created` line in the terminal. If the line appears, it means that the level updates should be in the game.
+
+Common errors when exporting/building:
+
+* While building the ROMs, if a memory bank byte overflow happens in the middle of building, it means that there is not enough ROM space. It is usually solved by removing some existing levels or optimizing a level, specifically sprites and level length.
+* While exporting levels, if it doesn't export and shows that it expected a comma or another character, it means that there is a syntax error in a .json5 file.
+
+
+For any concerns and problems regarding level making and exporting, feel free to ask the developers for help. (response times will vary)

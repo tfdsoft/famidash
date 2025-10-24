@@ -1,5 +1,36 @@
 {
 	community_levels: [
+		/*
+		{
+			level: "yourlevel",
+			upperText: "UPPER TEXT",
+			lowerText: "LOWER TEXT",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 1,
+			songID: "song_stereo_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			//spawnYPositionHi: 0x30,		;default #$B000
+			//spawnYPositionLow: 0x00,
+			//scrollYPositionHi: 0x02,		;default $02EF, less to go up
+			//scrollYPositionLow: 0x30,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [8, 8],
+					offsetY: +8,
+					offsetX: -8
+				},
+			]	
+		},
+		*/
 		{
 			level: "kratos",
 			lowerText: "KRATOS",
