@@ -2146,7 +2146,7 @@
 		.incbin "EXPORTS/aprettyeasylevel.lz.bin" ; Size: 3647
 
 
-.segment "DAT_BANK_55"	; Total bank size: 8054 bytes
+.segment "DAT_BANK_55"	; Total bank size: 8066 bytes
 	.export level_data_electroman
 	level_data_electroman:
 	; Header
@@ -2169,7 +2169,7 @@
 		.byte $01 ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/electroman.lz.bin" ; Size: 4490
+		.incbin "EXPORTS/electroman.lz.bin" ; Size: 4502
 
 	.export level_data_sonar
 	level_data_sonar:

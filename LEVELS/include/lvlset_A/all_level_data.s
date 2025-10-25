@@ -695,7 +695,7 @@
 		.incbin "EXPORTS/extraordinaryexcitement.lz.1.bin" ; Size: 4630
 
 
-.segment "DAT_BANK_16"	; Total bank size: 7979 bytes
+.segment "DAT_BANK_16"	; Total bank size: 7991 bytes
 	.export level_data_electroman
 	level_data_electroman:
 	; Header
@@ -718,7 +718,7 @@
 		.byte $01 ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/electroman.lz.bin" ; Size: 4490
+		.incbin "EXPORTS/electroman.lz.bin" ; Size: 4502
 
 	.export level_data_timemachine
 	level_data_timemachine:
