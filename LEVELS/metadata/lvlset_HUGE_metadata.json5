@@ -1999,7 +1999,7 @@
 			sawSet: "A",
 			difficulty: "HARDER",
 			stars: 6,
-			songID: "song_pyrophoric",
+			songID: "song_pyrophoric_legacy_remix",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x07,

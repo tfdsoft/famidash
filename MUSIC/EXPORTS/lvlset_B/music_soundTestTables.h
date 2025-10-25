@@ -344,7 +344,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_ninox,
 	song_speed_racer,
 	song_magic_touch,
-	song_pyrophoric,
+	song_pyrophoric_legacy_remix,
 	song_subtle_oddities,
 	song_hell,
 	song_death_moon,

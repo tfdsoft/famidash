@@ -767,7 +767,7 @@
 		.byte <sprite_data_pyrophoric ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_pyrophoric ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_pyrophoric)) ;___ Sprite data bank
-		.byte song_pyrophoric ;____________________ Song ID
+		.byte song_pyrophoric_legacy_remix ;_______ Song ID
 		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
 		.byte ($00) ;______________________________ Spawn Y Position (low byte)
