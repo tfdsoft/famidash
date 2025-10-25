@@ -1,6 +1,8 @@
 #ew windows
 .vscode
 
+TMP
+
 *.nes
 *.mlb
 *.bak

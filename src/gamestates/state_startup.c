@@ -81,7 +81,7 @@ void state_startup() {
     pal_fade_to(4,0);
     ppu_off();
 
-    set_prg_8000(nametable_bank_0);
+    //set_prg_8000(nametable_bank_0);
     vram_adr(0x2000);
     vram_unrle(nt_warning);
 

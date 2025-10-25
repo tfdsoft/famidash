@@ -104,11 +104,13 @@ $(OUTDIR):
 $(TMPDIR):
 	$(call mkdir,$(TMPDIR))
 
-$(TMPDIR)/music.o: famistudio/EXPORTS/music_0_bank*.dmc src/famistudio/*.s src/famistudio/EXPORTS/*.s src/famistudio/NoteTables/*.*
-#		remove duplicate dpcm files
-	$(call del,src/famistudio/music_[!0]_bank*.dmc)
+
+$(TMPDIR)/famistudio.o: music/*.s
+	$(CA65) music/music_assets.s $(call ca65IncDir, music/EXPORTS/lvlset_$(LEVELSET)) -o $@
+
+#$(TMPDIR)/music.o: music/EXPORTS/lvlset_$(LEVELSET)/music_bank*.dmc music/EXPORTS/lvlset_$(LEVELSET)/music_*.s music/NoteTables/*.* 
 #		compile all of the music assets into one giant object file
-	$(CA65) src/famistudio/music_assets.s -o $@
+#	$(CA65) music/EXPORTS/lvlset_$(LEVELSET)/music_data_header.s -o $@
 
 $(TMPDIR)/donut.o: src/chr/*.s
 	$(CA65) src/chr/donut.s -o $@
@@ -116,8 +118,8 @@ $(TMPDIR)/donut.o: src/chr/*.s
 $(TMPDIR)/assets.o: src/chr/dnt/*.bin src/assets.c src/assets.h
 	$(CC) -c src/assets.c $(CFLAGS) -o $@
 
-$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/music.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/gamestates/*.c $(CFG)
-	$(CC) src/main.c $(TMPDIR)/*.o $(CFLAGS) $(LDFLAGS) -o $@
+$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/famistudio.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/gamestates/*.c music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
+	$(CC) src/main.c $(call cc65IncDir,music/EXPORTS/lvlset_$(LEVELSET)) $(TMPDIR)/*.o $(CFLAGS) $(LDFLAGS) -o $@
 	
 
 

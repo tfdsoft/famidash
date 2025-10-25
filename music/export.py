@@ -611,6 +611,13 @@ if __name__ == "__main__":
 
     (exportPath / "music_data_header.s").write_text("\n".join(header_data))
 
+
+    # Export C bank data
+    (exportPath / "musicBankData.h").write_text(
+        '#define music_bank_0 ' + str(firstMusBank) + '\n' +
+        '#define dpcm_bank_0 ' + str(firstDmcBank) + '\n' 
+    )
+
     print(f"== {exportStemPrefix}_soundTestTables.h")
     processed_soundtest_metadata = processed_metadata['soundTestData']
 
