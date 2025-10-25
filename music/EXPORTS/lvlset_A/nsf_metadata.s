@@ -2,6 +2,13 @@
 
 RIFFChunkStart "tlbl"
 .asciiz "Menu Theme"
+.asciiz "Stereo Madness"
+.asciiz "Back On Track"
+.asciiz "Polargeist"
+.asciiz "Dry Out"
+.asciiz "Base After Base"
+.asciiz "Cant Let Go ~ Can't Let Go"
+.asciiz "Jumper"
 .asciiz "Practice ~ Stay Inside Me"
 .asciiz "Death SFX"
 .asciiz "LEVEL COMPLETE! SFX"
@@ -12,6 +19,13 @@ RIFFChunkStart "tlbl"
 
 RIFFChunkStart "taut"
 .asciiz "Original by RobTop, covered by Zenith302"
+.asciiz "Original by ForeverBound, covered by Zenith302, UserSniper"
+.asciiz "Original by DJVI, covered by aquamarine.gay"
+.asciiz "Original by Step, covered by UserSniper, Zenith302, Vikrinox"
+.asciiz "Original by DJVI, covered by UserSniper"
+.asciiz "Original by DJVI, covered by Zenith302, UserSniper, Vikrinox, alexmush"
+.asciiz "Original by DJVI, covered by UserSniper, alexmush"
+.asciiz "Original by Waterflame, covered by zukinnyk, UserSniper, Zenith302"
 .asciiz "Original by OcularNebula, covered by UserSniper"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
@@ -22,13 +36,19 @@ RIFFChunkStart "taut"
 
 RIFFChunkStart "time"
 .if REGION = 0
-.dword 60034, 479634, 383, 3167
-.dword 683, 650, 967, 950
+.dword 60034, 85550, 82817, 90700
+.dword 81433, 85000, 80750, 86467
+.dword 479634, 383, 3167, 683
+.dword 650, 967, 950
 .else
-.dword 72160, 576760, 460, 3020
-.dword 700, 680, 920, 1140
+.dword 72160, 102840, 99540, 109000
+.dword 97880, 102160, 97040, 104100
+.dword 576760, 460, 3020, 700
+.dword 680, 920, 1140
 .endif
 
 RIFFChunkStart "fade"
-.dword 4294967295, 4294967295, 0, 0
+.dword 4294967295, 0, 0, 0
 .dword 0, 0, 0, 0
+.dword 4294967295, 0, 0, 0
+.dword 0, 0, 0

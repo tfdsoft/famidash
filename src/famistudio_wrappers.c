@@ -48,11 +48,12 @@ __attribute__((noinline, retain))
         "1: \n" // bank_loop
         "tsx \n"
         "pha \n"
-        "clc \n"// set borrow, due to the export
-                // script not accounting for the
-                // dpcm aligner
+        "sec \n"
         "sbc $a000 \n"
         
+        //"clc\n" // add 1 since the exporter doesn't
+        //"adc #$01\n" // account for the dpcm aligner
+
         "bcc 1f \n"
         "txs \n"
         "tay \n"

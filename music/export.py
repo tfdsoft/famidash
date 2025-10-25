@@ -465,7 +465,7 @@ if __name__ == "__main__":
     elif dpcmAlignerName == "dpcm_D-sides":
         maxDataInBank = 8192 - (instsize / 3 * 3)
     else:
-        maxDataInBank = 8192 - (instsize / 5 * 3)
+        maxDataInBank = 8192 - (instsize / 2 * 3)
     print(f"== Total maximum size of data in a bank is {maxDataInBank} bytes")
 
     # Get song sizes in bytes

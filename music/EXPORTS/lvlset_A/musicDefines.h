@@ -1,4 +1,11 @@
-#define song_menu_theme 0
-#define song_scheming_weasel 1
+#define song_back_on_track 0
+#define song_cant_let_go 1
 #define song_practice 2
-#define song_max 3
+#define song_polargeist 3
+#define song_dry_out 4
+#define song_base_after_base 5
+#define song_menu_theme 6
+#define song_scheming_weasel 7
+#define song_stereo_madness 8
+#define song_jumper 9
+#define song_max 10

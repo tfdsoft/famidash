@@ -2,51 +2,107 @@
 
 #if !__VS_SYSTEM
 
-const char musicSoundTestString00[ 8] = "SCHEMING";
-const char musicSoundTestString01[ 4] = "MENU";
-const char musicSoundTestString02[ 8] = "PRACTICE";
-const char musicSoundTestString03[ 6] = "WEASEL";
-const char musicSoundTestString04[ 6] = "ROBTOP";
-const char musicSoundTestString05[12] = "OCULARNEBULA";
-const char musicSoundTestString06[13] = "KEVIN$MACLEOD";
+const char musicSoundTestString00[ 7] = "STEREO$";
+const char musicSoundTestString01[ 7] = "BACK$ON";
+const char musicSoundTestString02[10] = "BASE$AFTER";
+const char musicSoundTestString03[ 8] = "SCHEMING";
+const char musicSoundTestString04[ 4] = "MENU";
+const char musicSoundTestString05[ 7] = "MADNESS";
+const char musicSoundTestString06[ 5] = "TRACK";
+const char musicSoundTestString07[10] = "POLARGEIST";
+const char musicSoundTestString08[ 7] = "DRY$OUT";
+const char musicSoundTestString09[ 4] = "BASE";
+const char musicSoundTestString0A[11] = "CANT$LET$GO";
+const char musicSoundTestString0B[ 6] = "JUMPER";
+const char musicSoundTestString0C[ 8] = "PRACTICE";
+const char musicSoundTestString0D[ 6] = "WEASEL";
+const char musicSoundTestString0E[ 6] = "ROBTOP";
+const char musicSoundTestString0F[12] = "FOREVERBOUND";
+const char musicSoundTestString10[ 4] = "DJVI";
+const char musicSoundTestString11[ 4] = "STEP";
+const char musicSoundTestString12[10] = "WATERFLAME";
+const char musicSoundTestString13[12] = "OCULARNEBULA";
+const char musicSoundTestString14[13] = "KEVIN$MACLEOD";
 
 
 const char* const xbgmtextsUpper[] = {
 	NULL,
-	NULL,
 	musicSoundTestString00,
+	musicSoundTestString01,
+	NULL,
+	NULL,
+	musicSoundTestString02,
+	NULL,
+	NULL,
+	NULL,
+	musicSoundTestString03,
 };
 
 const uint8_t xbgmtextsUpperSize[] = {
 	0,
-	0,
 	sizeof(musicSoundTestString00),
-};
-
-
-const char* const xbgmtextsLower[] = {
-	musicSoundTestString01,
-	musicSoundTestString02,
-	musicSoundTestString03,
-};
-
-const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString01),
+	0,
+	0,
 	sizeof(musicSoundTestString02),
+	0,
+	0,
+	0,
 	sizeof(musicSoundTestString03),
 };
 
 
-const char* const xbgmtextsOriginalArtist[] = {
+const char* const xbgmtextsLower[] = {
 	musicSoundTestString04,
 	musicSoundTestString05,
 	musicSoundTestString06,
+	musicSoundTestString07,
+	musicSoundTestString08,
+	musicSoundTestString09,
+	musicSoundTestString0A,
+	musicSoundTestString0B,
+	musicSoundTestString0C,
+	musicSoundTestString0D,
 };
 
-const uint8_t xbgmtextsOriginalArtistSize[] = {
+const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString04),
 	sizeof(musicSoundTestString05),
 	sizeof(musicSoundTestString06),
+	sizeof(musicSoundTestString07),
+	sizeof(musicSoundTestString08),
+	sizeof(musicSoundTestString09),
+	sizeof(musicSoundTestString0A),
+	sizeof(musicSoundTestString0B),
+	sizeof(musicSoundTestString0C),
+	sizeof(musicSoundTestString0D),
+};
+
+
+const char* const xbgmtextsOriginalArtist[] = {
+	musicSoundTestString0E,
+	musicSoundTestString0F,
+	musicSoundTestString10,
+	musicSoundTestString11,
+	musicSoundTestString10,
+	musicSoundTestString10,
+	musicSoundTestString10,
+	musicSoundTestString12,
+	musicSoundTestString13,
+	musicSoundTestString14,
+};
+
+const uint8_t xbgmtextsOriginalArtistSize[] = {
+	sizeof(musicSoundTestString0E),
+	sizeof(musicSoundTestString0F),
+	sizeof(musicSoundTestString10),
+	sizeof(musicSoundTestString11),
+	sizeof(musicSoundTestString10),
+	sizeof(musicSoundTestString10),
+	sizeof(musicSoundTestString10),
+	sizeof(musicSoundTestString12),
+	sizeof(musicSoundTestString13),
+	sizeof(musicSoundTestString14),
 };
 
 
@@ -69,6 +125,13 @@ CODE_BANK_PUSH("RODATA")
 
 const uint8_t xbgmlookuptable[] = {
 	song_menu_theme,
+	song_stereo_madness,
+	song_back_on_track,
+	song_polargeist,
+	song_dry_out,
+	song_base_after_base,
+	song_cant_let_go,
+	song_jumper,
 	song_practice,
 	song_scheming_weasel,
 };
@@ -76,6 +139,13 @@ const uint8_t xbgmlookuptable[] = {
 #else
 
 const uint8_t xbgmlookuptable[] = {
+	song_stereo_madness,
+	song_back_on_track,
+	song_polargeist,
+	song_dry_out,
+	song_base_after_base,
+	song_cant_let_go,
+	song_jumper,
 };
 
 #endif

@@ -1,4 +1,11 @@
-song_menu_theme = 0
-song_scheming_weasel = 1
+song_back_on_track = 0
+song_cant_let_go = 1
 song_practice = 2
-song_max = 3
+song_polargeist = 3
+song_dry_out = 4
+song_base_after_base = 5
+song_menu_theme = 6
+song_scheming_weasel = 7
+song_stereo_madness = 8
+song_jumper = 9
+song_max = 10

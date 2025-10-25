@@ -2,10 +2,10 @@
 
 .if .not(useConstInitPtr)
 music_data_locations_lo:
-	.byte <music_data_famidash_music0
+	.byte <music_data_famidash_music0, <music_data_famidash_music1, <music_data_famidash_music2
 music_data_locations_hi:
-	.byte >music_data_famidash_music0
+	.byte >music_data_famidash_music0, >music_data_famidash_music1, >music_data_famidash_music2
 .endif
 
 music_counts:
-	.byte , $FF ;last bank is marked with an FF to always stop bank picking
+	.byte 3, 3, $FF ;last bank is marked with an FF to always stop bank picking

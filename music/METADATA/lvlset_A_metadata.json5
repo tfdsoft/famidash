@@ -16,7 +16,7 @@
 				durationPAL: 36080,
 				looped: true
 			}
-		},/*
+		},
 		{
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
@@ -124,7 +124,7 @@
 				durationNTSC: 86467,
 				durationPAL: 104100
 			}
-		},
+		},/*
 		{
 			fmsSongName: "Time Machine",
 			lowerText: "TIME MACHINE",
