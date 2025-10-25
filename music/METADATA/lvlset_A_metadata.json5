@@ -16,7 +16,7 @@
 				durationPAL: 36080,
 				looped: true
 			}
-		},
+		},/*
 		{
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
@@ -265,7 +265,7 @@
 			fmsSongName: "Dash",
 			lowerText: "DASH",
 			originalArtistText: "MDK",
-		},
+		},*/
 		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",

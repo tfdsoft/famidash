@@ -44,11 +44,15 @@ __attribute__((noinline, retain))
     if(s == 255) s++;
     
     __attribute__((leaf)) __asm__ volatile (
+
         "1: \n" // bank_loop
         "tsx \n"
         "pha \n"
-        "sec \n"
+        "clc \n"// set borrow, due to the export
+                // script not accounting for the
+                // dpcm aligner
         "sbc $a000 \n"
+        
         "bcc 1f \n"
         "txs \n"
         "tay \n"
@@ -56,11 +60,14 @@ __attribute__((noinline, retain))
         "lda __prg_a000 \n"
         "jsr set_prg_a000 \n"
         "tya \n"
+
         "sec \n"
-        "bcs 1b \n"
+        "bcs 1b \n" // bra
+
         "1: \n"
         "pla \n"
         "ldx __prg_a000 \n"
+
         :"=a"(song_count),"=x"(music_bank)
         :"a"(s)
         :"y","p"

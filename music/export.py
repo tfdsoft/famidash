@@ -31,7 +31,7 @@ asmDpcmSongHeaderMatchRegex = lambda dpcmAlignerName : r'(?m:^; \d+ : ' + dpcmAl
 asmDpcmSongHeaderIdxRegex = lambda dpcmAlignerName : r'(?m:^; \d+ : ' + dpcmAlignerName + r'.*?$\n(?:^\t\.word @song(\d+).*?$\n){5}^\t.word \d+,\d+.*?$\n)'
 asmDpcmSongMatchRegex = lambda x : r'(?ms:(^@song' + x + r'\S*:.*?)(?=^@song(?!' + x + r')))' #BUG: currently doesn't match if the dpcm song is the last
 
-datBankSegPrefix = "__pprg__rom__"
+datBankSegPrefix = "_pprg__rom__"
 dmcBankMetaUnused = 63  # a special dmc bank for shit to go unused
 musicFolder = pathlib.Path(sys.path[0]).resolve()
 tmpFolder = (musicFolder.parent / "TMP").resolve()

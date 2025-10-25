@@ -55,7 +55,7 @@ void state_menu() {
     // lda #0 before running this, so
     // do it manually here
     __asm__("lda #0"); 
-    music_play(0);
+    music_play(song_menu_theme);
 
 
     //automatic_fs_updates=1;

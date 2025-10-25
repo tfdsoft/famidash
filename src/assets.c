@@ -1,7 +1,5 @@
 #include "assets.h"
-//__attribute__((leaf)) __asm__ (
-//        ".org $a000 \n"
-//    );
+
 file(chr_font, chr_bank_0) = {
     #embed "./chr/dnt/Font.bin"
 };  

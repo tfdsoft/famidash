@@ -66,7 +66,7 @@ OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
-CFLAGS = -flto -Os -ffast-math -fnonreentrant -std=gnu23 -Wall -Wextra
+CFLAGS = -flto -Oz -ffast-math -fnonreentrant -std=gnu23 -Wall -Wextra
 LDFLAGS = -mreserve-zp=27 -T $(CFG)
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
@@ -106,11 +106,11 @@ $(TMPDIR):
 
 
 $(TMPDIR)/famistudio.o: music/*.s
-	$(CA65) music/music_assets.s $(call ca65IncDir, music/EXPORTS/lvlset_$(LEVELSET)) -o $@
+	$(CA65) music/music_assets.s -o $@
 
-#$(TMPDIR)/music.o: music/EXPORTS/lvlset_$(LEVELSET)/music_bank*.dmc music/EXPORTS/lvlset_$(LEVELSET)/music_*.s music/NoteTables/*.* 
-#		compile all of the music assets into one giant object file
-#	$(CA65) music/EXPORTS/lvlset_$(LEVELSET)/music_data_header.s -o $@
+$(TMPDIR)/music.o: music/EXPORTS/lvlset_$(LEVELSET)/music_bank*.dmc music/EXPORTS/lvlset_$(LEVELSET)/music_*.s music/NoteTables/*.* 
+#	compile all of the music assets into one giant object file
+	$(CA65) music/EXPORTS/lvlset_$(LEVELSET)/music_data_header.s -o $@
 
 $(TMPDIR)/donut.o: src/chr/*.s
 	$(CA65) src/chr/donut.s -o $@
@@ -118,7 +118,7 @@ $(TMPDIR)/donut.o: src/chr/*.s
 $(TMPDIR)/assets.o: src/chr/dnt/*.bin src/assets.c src/assets.h
 	$(CC) -c src/assets.c $(CFLAGS) -o $@
 
-$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/famistudio.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/gamestates/*.c music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
+$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/famistudio.o $(TMPDIR)/music.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/gamestates/*.c music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
 	$(CC) src/main.c $(call cc65IncDir,music/EXPORTS/lvlset_$(LEVELSET)) $(TMPDIR)/*.o $(CFLAGS) $(LDFLAGS) -o $@
 	
 
