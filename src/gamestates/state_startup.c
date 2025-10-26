@@ -91,9 +91,8 @@ void state_startup() {
     ppu_on_all();
     pal_fade_to(0,4);
 
-    __asm__("lda #0");
     song = 0;
-    music_play(0);
+    music_play(song_scheming_weasel);
     //__attribute__((leaf)) __asm__ volatile (
     //    "lda song \n"
     //    "jsr music_play \n"
