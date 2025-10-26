@@ -1,1 +1,0 @@
-music/export_wrapper.py -v -f /home/sniper/Downloads/FamiStudio
