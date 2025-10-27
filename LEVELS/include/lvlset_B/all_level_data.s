@@ -191,7 +191,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8074
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 7668 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 7658 bytes
 	.export level_data_rainingtacos
 	level_data_rainingtacos:
 	; Header
@@ -214,7 +214,7 @@
 		.byte $0F ;__________________________________ Starting ground color
 		.byte 32 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/rainingtacos.lz.bin" ; Size: 7650
+		.incbin "EXPORTS/rainingtacos.lz.bin" ; Size: 7640
 
 
 .segment "DAT_BANK_0B"	; Total bank size: 7576 bytes

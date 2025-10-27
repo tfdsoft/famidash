@@ -22453,7 +22453,7 @@ sprite_data_lostinthewoods:
   .byte $20,$27,$80,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_4D"
+.segment "DAT_BANK_4A"
 sprite_data_rainingtacos:
   .byte $00,$00,$c0,$02,$ee
   .byte $00,$00,$f0,$02,$b6
@@ -23115,7 +23115,9 @@ sprite_data_rainingtacos:
   .byte $60,$48,$50,$02,$a3
   .byte $60,$48,$10,$03,$a3
   .byte $a0,$48,$50,$02,$a0
+  .byte $a0,$48,$60,$02,$e0
   .byte $a0,$48,$10,$03,$a0
+  .byte $a0,$48,$20,$03,$e0
   .byte $e0,$48,$50,$02,$0f
   .byte $e0,$48,$10,$03,$0f
   .byte $ff
