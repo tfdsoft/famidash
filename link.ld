@@ -1,6 +1,12 @@
 INCLUDE common.ld
 INCLUDE c-in-ram.ld
 
+__prg_rom_22 = 0xa000;
+__prg_rom_23 = 0xa000;
+__prg_rom_24 = 0xa000;
+__prg_rom_25 = 0xa000;
+__prg_rom_26 = 0xa000;
+__prg_rom_27 = 0xa000;
 __prg_rom_28 = 0xa000;
 __prg_rom_29 = 0xa000;
 __prg_rom_30 = 0xa000;
