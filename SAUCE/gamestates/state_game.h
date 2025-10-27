@@ -3,6 +3,7 @@
 	Implemented in asm
 */
 // void set_tile_banks();
+void check_for_cube_data_2_set();
 void __fastcall__ movement();
 void __fastcall__ movement2();
 void mouse_and_cursor();
@@ -465,7 +466,7 @@ void state_game(){
 
 		decrement_was_on_slope();
 
-		if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+		crossPRGBankJump0(check_for_cube_data_2_set);
 
 	if (orbed[currplayer]) {
 		if (!(controllingplayer->hold & (PAD_A | PAD_UP)) && !mouse.left) orbed[currplayer] = 0;
@@ -584,7 +585,7 @@ void state_game(){
 			}
 
 			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer) && !force_platformer) { invert_gravity(currplayer_gravity); update_currplayer_table_idx(); }			//DEBUG GRAVITY
-			if (((controllingplayer->press_a || controllingplayer->press_up)) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+			crossPRGBankJump0(check_for_cube_data_2_set);
 			
 			decrement_was_on_slope();		
 			if (orbed[currplayer]) {

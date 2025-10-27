@@ -1095,3 +1095,7 @@ void slope_jump_check() {
 		make_cube_jump_higher = 0;
 	}
 }
+
+void check_for_cube_data_2_set() {
+	if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0 && (gamemode != GAMEMODE_UFO && gamemode != GAMEMODE_SHIP && gamemode != GAMEMODE_WAVE)) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+}
