@@ -104,6 +104,10 @@ void spider_down_wait() {
 	do {
 		high_byte(currplayer_y) += 0x08;
 		crossPRGBankJump0(process_y_scroll);
+		if (high_byte(currplayer_y) >= 0xF8) { //&& scroll_y <= min_scroll_y)
+			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
+			break;
+		}
 		Generic.y = high_byte(currplayer_y); // the rest should be the same
 	} while (!bg_coll_D_spider());
 }				

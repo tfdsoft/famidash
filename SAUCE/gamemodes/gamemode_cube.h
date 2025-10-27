@@ -1,6 +1,7 @@
 
 CODE_BANK_PUSH(MOVEMENT_BANK)
 
+void slope_jump_check();
 void x_movement_coll();
 void common_gravity_routine();
 void cube_eject();
@@ -77,12 +78,8 @@ void cube_movement(){
 
 					currplayer_vel_y = JUMP_VEL(currplayer_table_idx); // JUMP
 
-					if (make_cube_jump_higher) {
-						if ((currplayer_slope_type & SLOPE_DEGREES_MASK) != SLOPE_22DEG) {
-							currplayer_vel_y += MAKE_CUBE_JUMP_HIGHER(currplayer_table_idx);
-						}
-						make_cube_jump_higher = 0;
-					}
+					crossPRGBankJump0(slope_jump_check);
+
 				}
 			
 			}
@@ -91,12 +88,7 @@ void cube_movement(){
 
 				currplayer_vel_y = JUMP_VEL(currplayer_table_idx); // JUMP
 
-				if (make_cube_jump_higher) {
-					if ((currplayer_slope_type & SLOPE_DEGREES_MASK) != SLOPE_22DEG) {
-						currplayer_vel_y += MAKE_CUBE_JUMP_HIGHER(currplayer_table_idx);
-					}
-					make_cube_jump_higher = 0;
-				}
+				crossPRGBankJump0(slope_jump_check);
 
 				if (gamemode == GAMEMODE_NINJA) { idx8_dec(ninjajumps, currplayer); }
 			
