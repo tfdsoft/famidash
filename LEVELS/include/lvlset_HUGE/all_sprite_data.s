@@ -5716,7 +5716,7 @@ sprite_data_electrodynamix:
   .byte $50,$45,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_28"
+.segment "DAT_BANK_6D"
 sprite_data_hexagonforce:
   .byte $00,$00,$60,$03,$93
   .byte $00,$00,$80,$03,$d3
@@ -5857,17 +5857,8 @@ sprite_data_hexagonforce:
   .byte $00,$19,$f0,$02,$c6
   .byte $30,$19,$90,$02,$10
   .byte $30,$19,$d0,$02,$13
-  .byte $70,$19,$80,$02,$3b
-  .byte $70,$19,$e0,$02,$2b
-  .byte $a0,$19,$80,$02,$32
-  .byte $a0,$19,$e0,$02,$32
-  .byte $d0,$19,$b0,$02,$32
   .byte $d0,$19,$c0,$02,$0b
-  .byte $10,$1a,$80,$02,$32
-  .byte $40,$1a,$e0,$02,$2b
   .byte $68,$1a,$80,$02,$0b
-  .byte $68,$1a,$90,$02,$32
-  .byte $68,$1a,$e0,$02,$32
   .byte $b0,$1a,$88,$02,$01
   .byte $b0,$1a,$b8,$02,$01
   .byte $50,$1b,$e0,$02,$aa
@@ -52072,7 +52063,7 @@ sprite_data_cataclysm:
   .byte $b0,$30,$d0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_6D"
+.segment "DAT_BANK_6A"
 sprite_data_aftermath:
   .byte $30,$00,$50,$03,$b6
   .byte $30,$00,$70,$03,$01

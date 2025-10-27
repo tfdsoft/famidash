@@ -761,7 +761,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7041
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8177 bytes
+.segment "DAT_BANK_21"	; Total bank size: 8182 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -784,7 +784,7 @@
 		.byte $12 ;__________________________________ Starting ground color
 		.byte 40 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6948
+		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6953
 
 
 .segment "DAT_BANK_22"	; Total bank size: 8112 bytes
@@ -929,7 +929,7 @@
 		.incbin "EXPORTS/endorphinrush.lz.bin" ; Size: 6525
 
 
-.segment "DAT_BANK_28"	; Total bank size: 8083 bytes
+.segment "DAT_BANK_28"	; Total bank size: 8081 bytes
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
@@ -953,6 +953,30 @@
 		.byte 27 ;____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/thermodynamix.lz.bin" ; Size: 6524
+
+	.export level_data_dryout
+	level_data_dryout:
+	; Header
+		.byte <sprite_data_dryout ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_dryout ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_dryout)) ;___ Sprite data bank
+		.byte song_dry_out ;___________________ Song ID
+		.byte (0 << 4) | 0 ;___________________ Starting game mode and speed
+		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
+		.byte ($00) ;__________________________ Spawn Y Position (low byte)
+		.byte ($02) ;__________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
+		.byte ($07) ;__________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
+		.byte _DECO1 ;_________________________ Deco type
+		.byte _SPIKESA ;_______________________ Spike set
+		.byte _BLOCKSA ;_______________________ Block set
+		.byte _SAWBLADESA ;____________________ Sawblade set
+		.byte $16 ;____________________________ Starting background color
+		.byte $16 ;____________________________ Starting ground color
+		.byte 27 ;_____________________________ Level height
+	; Level data
+		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1521
 
 
 .segment "DAT_BANK_29"	; Total bank size: 8192 bytes
@@ -2638,32 +2662,6 @@
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2225
 
 
-.segment "DAT_BANK_6A"	; Total bank size: 8067 bytes
-	.export level_data_dryout
-	level_data_dryout:
-	; Header
-		.byte <sprite_data_dryout ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_dryout ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_dryout)) ;___ Sprite data bank
-		.byte song_dry_out ;___________________ Song ID
-		.byte (0 << 4) | 0 ;___________________ Starting game mode and speed
-		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
-		.byte ($00) ;__________________________ Spawn Y Position (low byte)
-		.byte ($02) ;__________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
-		.byte ($07) ;__________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
-		.byte _DECO1 ;_________________________ Deco type
-		.byte _SPIKESA ;_______________________ Spike set
-		.byte _BLOCKSA ;_______________________ Block set
-		.byte _SAWBLADESA ;____________________ Sawblade set
-		.byte $16 ;____________________________ Starting background color
-		.byte $16 ;____________________________ Starting ground color
-		.byte 27 ;_____________________________ Level height
-	; Level data
-		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1521
-
-
 .segment "DAT_BANK_6B"	; Total bank size: 7607 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
@@ -2716,7 +2714,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
 
-.segment "DAT_BANK_6D"	; Total bank size: 7730 bytes
+.segment "DAT_BANK_6D"	; Total bank size: 7725 bytes
 	.export level_data_lookatthislevel
 	level_data_lookatthislevel:
 	; Header

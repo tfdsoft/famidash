@@ -106,7 +106,7 @@
 		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7524
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8177 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8182 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -129,7 +129,7 @@
 		.byte $12 ;__________________________________ Starting ground color
 		.byte 40 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6948
+		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 6953
 
 
 .segment "DAT_BANK_05"	; Total bank size: 8097 bytes
@@ -1061,7 +1061,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8183 bytes
+.segment "DAT_BANK_21"	; Total bank size: 8138 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
