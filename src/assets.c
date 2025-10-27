@@ -39,3 +39,20 @@ file(chr_tiles_black, chr_bank_1) = {
 
 
 
+/*
+.segment "_pprg__rom__45"
+	firstDMCBankPtr := *
+	.incbin "music_bank0.dmc"
+.segment "_pprg__rom__46"
+	.incbin "music_bank2.dmc"
+.segment "_pprg__rom__47"
+	.incbin "music_bank6.dmc"
+.segment "_pprg__rom__48"
+	.incbin "music_bank8.dmc"
+.segment "_pprg__rom__49"
+	.incbin "music_bank10.dmc"
+.segment "_pprg__rom__50"
+	.incbin "music_bank14.dmc"
+.segment "_pprg__rom__51"
+	.incbin "music_bank16.dmc"
+    */

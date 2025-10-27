@@ -3,11 +3,16 @@
 #if !__VS_SYSTEM
 
 const char sfxSoundTestString00[ 5] = "DEATH";
-const char sfxSoundTestString01[14] = "LEVEL$COMPLETE";
-const char sfxSoundTestString02[ 4] = "COIN";
-const char sfxSoundTestString03[10] = "EXIT$LEVEL";
-const char sfxSoundTestString04[11] = "START$LEVEL";
-const char sfxSoundTestString05[15] = "ACHIEVEMENT$GET";
+const char sfxSoundTestString01[ 5] = "CLICK";
+const char sfxSoundTestString02[14] = "LEVEL$COMPLETE";
+const char sfxSoundTestString03[ 4] = "COIN";
+const char sfxSoundTestString04[10] = "CHEST$OPEN";
+const char sfxSoundTestString05[ 4] = "ORBS";
+const char sfxSoundTestString06[ 8] = "DIAMONDS";
+const char sfxSoundTestString07[10] = "EXIT$LEVEL";
+const char sfxSoundTestString08[11] = "START$LEVEL";
+const char sfxSoundTestString09[ 7] = "INVALID";
+const char sfxSoundTestString0A[15] = "ACHIEVEMENT$GET";
 
 
 const char* const sfxtexts[] = {
@@ -17,6 +22,11 @@ const char* const sfxtexts[] = {
 	sfxSoundTestString03,
 	sfxSoundTestString04,
 	sfxSoundTestString05,
+	sfxSoundTestString06,
+	sfxSoundTestString07,
+	sfxSoundTestString08,
+	sfxSoundTestString09,
+	sfxSoundTestString0A,
 };
 
 const uint8_t sfxtextSizes[] = {
@@ -26,6 +36,11 @@ const uint8_t sfxtextSizes[] = {
 	sizeof(sfxSoundTestString03),
 	sizeof(sfxSoundTestString04),
 	sizeof(sfxSoundTestString05),
+	sizeof(sfxSoundTestString06),
+	sizeof(sfxSoundTestString07),
+	sizeof(sfxSoundTestString08),
+	sizeof(sfxSoundTestString09),
+	sizeof(sfxSoundTestString0A),
 };
 
 #else
