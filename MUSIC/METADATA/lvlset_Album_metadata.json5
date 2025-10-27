@@ -636,6 +636,12 @@
 			coveringArtist: "Clickerty",
 		},		
 		{
+			fmsSongName: "Raining Tacos",
+			lowerText: "RAINING TACOS",
+			originalArtist: ["Parry Gripp","BooneBum"],
+			coveringArtist: "SeaGlowingPro",
+		},	
+		{
 			fmsSongName: "Round 1 (GDW Cut)",
 			upperText: "ROUND 1",
 			lowerText: "GDW CUT",

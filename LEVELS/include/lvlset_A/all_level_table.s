@@ -27,7 +27,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_deadlocked)
 	.byte .lobyte(level_data_fingerdash)
 	.byte .lobyte(level_data_dash)
-	.byte .lobyte(level_data_retray)
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_thechallenge)
 	.byte .lobyte(level_data_dorabaebasic4)
@@ -73,7 +72,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_deadlocked)
 	.byte .hibyte(level_data_fingerdash)
 	.byte .hibyte(level_data_dash)
-	.byte .hibyte(level_data_retray)
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_thechallenge)
 	.byte .hibyte(level_data_dorabaebasic4)
@@ -119,7 +117,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_deadlocked))
 	.byte .lobyte(.bank(level_data_fingerdash))
 	.byte .lobyte(.bank(level_data_dash))
-	.byte .lobyte(.bank(level_data_retray))
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_thechallenge))
 	.byte .lobyte(.bank(level_data_dorabaebasic4))
@@ -183,7 +180,6 @@ _level_lengths_lo:
 	.byte .lobyte($0000BF)		; deadlocked
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
-	.byte .lobyte($000066)		; retray
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($000027)		; thechallenge
 	.byte .lobyte($0000A4)		; dorabaebasic4
@@ -231,7 +227,6 @@ _level_lengths_md:
 	.byte .hibyte($0000BF)		; deadlocked
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
-	.byte .hibyte($000066)		; retray
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($000027)		; thechallenge
 	.byte .hibyte($0000A4)		; dorabaebasic4
@@ -279,7 +274,6 @@ _level_lengths_hi:
 	.byte .bankbyte($0000BF)		; deadlocked
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
-	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($000027)		; thechallenge
 	.byte .bankbyte($0000A4)		; dorabaebasic4

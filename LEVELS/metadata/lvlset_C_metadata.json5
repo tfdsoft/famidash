@@ -485,6 +485,22 @@
 			]
 		},
 		{
+			level: "hell",
+			lowerText: "HELL",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "MEDIUMDEMON",
+			stars: 10,
+			songID: "song_hell",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "invisiblelight",
 			upperText: "INVISIBLE",
 			lowerText: "LIGHT",
@@ -1030,23 +1046,6 @@
 			]
 		},			
 		{
-			level: "windylandscape",
-			upperText: "WINDY",
-			lowerText: "LANDSCAPE",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "EXTREMEDEMON",
-			stars: 10,
-			songID: "song_windfall",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
 			level: "bloodbath",
 			lowerText: "BLOODBATH",
 			decoType: "DECOCLOUD",
@@ -1101,74 +1100,6 @@
 			parallaxDisable: true
 		},
 		{
-			level: "silentclubstep",
-			upperText: "SILENT",
-			lowerText: "CLUBSTEP",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "IMPOSSIBLEDEMON",
-			stars: 10,
-			songID: "song_clubstep",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		/*
-		{
-			level: "kratos",
-			lowerText: "KRATOS",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "IMPOSSIBLEDEMON",
-			stars: 10,
-			songID: "song_kratos",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},*/
-//		{
-//			level: "aftercatabath",
-//			lowerText: "AFTERCATABATH",
-//			decoType: "DECO1",
-//			spikeSet: "C",
-//			blockSet: "B",
-//			sawSet: "A",
-//			difficulty: "GRANDPADEMON",
-//			stars: 10,
-//			songID: "song_atthespeedoflightfull",
-//			startingGameMode: 0,
-//			startingSpeed: 1,
-//			startingBackgroundColor: 0x06,
-//			startingGroundColor: 0x0F,
-//			parallaxDisable: true
-//		},
-/*
-		{
-			level: "slaughterhouse",
-			lowerText: "SLAUGHTERHOUSE",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "GRANDPADEMON",
-			stars: 10,
-			songID: "song_lost",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		*/
-		{
 			level: "everyend",
 			lowerText: "EVERY END",
 			decoType: "DECO1",
@@ -1184,7 +1115,23 @@
 			startingGroundColor: 0x11,
 			parallaxDisable: false,
 			maxFallSpeed: 0x07,
-		},		
+		},
+		{
+			level: "luckydraw",
+			lowerText: "LUCKY DRAW",
+			decoType: "DECOCLOUD",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "LETTERBANK",
+			difficulty: "GRANDPADEMON",
+			stars: 10,
+			songID: "song_every_end_pt1",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
 	],
 	globalObjectOffsets: [
 		/*	Format:

@@ -10,6 +10,7 @@ const uint8_t difficulty_list[] = {
 	EASYDEMON,	// motion
 	EASYDEMON,	// endorphinrush
 	MEDIUMDEMON,	// trythisgd
+	MEDIUMDEMON,	// hell
 	MEDIUMDEMON,	// invisiblelight
 	HARDDEMON,	// pgclubstep
 	HARDDEMON,	// deadlyclubstep
@@ -21,12 +22,11 @@ const uint8_t difficulty_list[] = {
 	INSANEDEMON,	// hi
 	INSANEDEMON,	// eon
 	EXTREMEDEMON,	// sonicwave
-	EXTREMEDEMON,	// windylandscape
 	EXTREMEDEMON,	// bloodbath
 	IMPOSSIBLEDEMON,	// cataclysm
 	IMPOSSIBLEDEMON,	// aftermath
-	IMPOSSIBLEDEMON,	// silentclubstep
 	GRANDPADEMON,	// everyend
+	GRANDPADEMON,	// luckydraw
 };
 
 const uint8_t stars_list[] = {
@@ -38,6 +38,7 @@ const uint8_t stars_list[] = {
 	10,	// motion
 	10,	// endorphinrush
 	10,	// trythisgd
+	10,	// hell
 	10,	// invisiblelight
 	10,	// pgclubstep
 	10,	// deadlyclubstep
@@ -49,10 +50,9 @@ const uint8_t stars_list[] = {
 	10,	// hi
 	10,	// eon
 	10,	// sonicwave
-	10,	// windylandscape
 	10,	// bloodbath
 	10,	// cataclysm
 	10,	// aftermath
-	10,	// silentclubstep
 	10,	// everyend
+	10,	// luckydraw
 };

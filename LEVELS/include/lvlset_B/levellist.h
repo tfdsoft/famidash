@@ -18,6 +18,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// rainbowdust
 	HARDER,	// factorytime
 	HARDER,	// thesteamworks
+	INSANE,	// rainingtacos
 	INSANE,	// dorabaebasic10
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
@@ -31,9 +32,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// deathmoon
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
-	DEMON,	// hell
 	DEMON,	// futurefunk
-	DEMON,	// luckydraw
 };
 
 const uint8_t stars_list[] = {
@@ -53,6 +52,7 @@ const uint8_t stars_list[] = {
 	7,	// rainbowdust
 	7,	// factorytime
 	7,	// thesteamworks
+	8,	// rainingtacos
 	8,	// dorabaebasic10
 	8,	// subtleoddities
 	8,	// powertrip
@@ -66,7 +66,5 @@ const uint8_t stars_list[] = {
 	10,	// deathmoon
 	10,	// clutterfunk2
 	10,	// speedracer
-	10,	// hell
 	10,	// futurefunk
-	10,	// luckydraw
 };

@@ -1360,7 +1360,7 @@
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "EASY",
-			stars: 2,
+			//stars: 2,
 			songID: "song_golden_haze",
 			startingGameMode: 0,
 			startingSpeed: 1,
@@ -2608,6 +2608,57 @@
 				},
 			]
 		},
+		{
+			level: "rainingtacos",
+			lowerText: "RAINING TACOS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_raining_tacos",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			spawnYPositionHi: 0x00,
+			objectOffsets: [
+				{
+					coordinates: [
+						[58, 27], [63, 23], [91, 24], [96, 24], [98, 27], [99, 27], [150, 23], [150, 24],
+						[169, 25], [301, 19], [309, 21], [319, 20], [336, 18], [352, 19], [362, 20], [377, 19],
+						[377, 20], [422, 18], [504, 10], [531, 13], [545, 17], [598, 16], [627, 14], [631, 16],
+						[717, 16], [748, 15], [753, 15], [933, 18],
+						[173, 28],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[94, 25], [129, 23], [133, 23], [137, 23], [166, 22], [175, 25], [180, 21], [218, 19],
+						[221, 20], [224, 19], [227, 20], [238, 19], [246, 22], [251, 21], [278, 21], [309, 21],
+						[316, 18], [388, 21], [396, 21], [402, 20], [408, 19], [479, 11], [497, 12], [511, 9],
+						[517, 10], [523, 11], [552, 17], [589, 12], [606, 15], [619, 14], [627, 14], [748, 15],
+						[761, 15], [771, 14], [919, 19], [933, 18],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[150, 24], [190, 24], [218, 20], [227, 21], [227, 22], [377, 20],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[618, 14], [726, 16],
+					],
+					offsetX: +16
+				},
+			]
+		},		
 		{
 			level: "bloodbathbutno",
 			upperText: "BLOODBATH",
@@ -4681,7 +4732,7 @@
 			sawSet: "LETTERBANK",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_meltdown",
+			songID: "song_every_end_pt1",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,

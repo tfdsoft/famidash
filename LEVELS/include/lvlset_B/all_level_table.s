@@ -21,6 +21,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_rainbowdust)
 	.byte .lobyte(level_data_factorytime)
 	.byte .lobyte(level_data_thesteamworks)
+	.byte .lobyte(level_data_rainingtacos)
 	.byte .lobyte(level_data_dorabaebasic10)
 	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_powertrip)
@@ -34,9 +35,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_deathmoon)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
-	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_futurefunk)
-	.byte .lobyte(level_data_luckydraw)
 
 _level_list_hi:
 	.byte .hibyte(level_data_sonar)
@@ -55,6 +54,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_rainbowdust)
 	.byte .hibyte(level_data_factorytime)
 	.byte .hibyte(level_data_thesteamworks)
+	.byte .hibyte(level_data_rainingtacos)
 	.byte .hibyte(level_data_dorabaebasic10)
 	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_powertrip)
@@ -68,9 +68,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_deathmoon)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
-	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_futurefunk)
-	.byte .hibyte(level_data_luckydraw)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_sonar))
@@ -89,6 +87,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_rainbowdust))
 	.byte .lobyte(.bank(level_data_factorytime))
 	.byte .lobyte(.bank(level_data_thesteamworks))
+	.byte .lobyte(.bank(level_data_rainingtacos))
 	.byte .lobyte(.bank(level_data_dorabaebasic10))
 	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_powertrip))
@@ -102,9 +101,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_deathmoon))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
-	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_futurefunk))
-	.byte .lobyte(.bank(level_data_luckydraw))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_cryogenic_0)
@@ -156,6 +153,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000AB)		; rainbowdust
 	.byte .lobyte($000090)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
+	.byte .lobyte($0000BB)		; rainingtacos
 	.byte .lobyte($000097)		; dorabaebasic10
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($0000C0)		; powertrip
@@ -169,9 +167,7 @@ _level_lengths_lo:
 	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
-	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($0001DD)		; futurefunk
-	.byte .lobyte($000089)		; luckydraw
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -192,6 +188,7 @@ _level_lengths_md:
 	.byte .hibyte($0000AB)		; rainbowdust
 	.byte .hibyte($000090)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
+	.byte .hibyte($0000BB)		; rainingtacos
 	.byte .hibyte($000097)		; dorabaebasic10
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($0000C0)		; powertrip
@@ -205,9 +202,7 @@ _level_lengths_md:
 	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
-	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($0001DD)		; futurefunk
-	.byte .hibyte($000089)		; luckydraw
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -228,6 +223,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000AB)		; rainbowdust
 	.byte .bankbyte($000090)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
+	.byte .bankbyte($0000BB)		; rainingtacos
 	.byte .bankbyte($000097)		; dorabaebasic10
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($0000C0)		; powertrip
@@ -241,9 +237,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
-	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($0001DD)		; futurefunk
-	.byte .bankbyte($000089)		; luckydraw
 
 .endif
 .endif

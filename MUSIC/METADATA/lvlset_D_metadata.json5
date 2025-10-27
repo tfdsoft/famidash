@@ -27,9 +27,17 @@
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
 			originalArtistText: "KEVIN MACLEOD",
-			
 		},	
-
+		{
+			fmsSongName: "Clubstep",
+			lowerText: "CLUBSTEP",
+			originalArtistText: "DJ NATE",
+		},
+		{
+			fmsSongName: "Windfall",
+			lowerText: "WINDFALL",
+			originalArtistText: "THEFATRAT",
+		},	
 		{
 			fmsSongName: "lost",
 			lowerText: "LOST",

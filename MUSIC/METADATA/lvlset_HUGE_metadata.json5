@@ -699,7 +699,13 @@
 			lowerText: "TYLENOL",
 			originalArtist: "Kitsune²",
 			coveringArtist: "Clickerty",
-		},		
+		},
+		{
+			fmsSongName: "Raining Tacos",
+			lowerText: "RAINING TACOS",
+			originalArtist: ["Parry Gripp","BooneBum"],
+			coveringArtist: "SeaGlowingPro",
+		},	
 		{
 			fmsSongName: "Slash Inferno",
 			upperText: "SLASH",

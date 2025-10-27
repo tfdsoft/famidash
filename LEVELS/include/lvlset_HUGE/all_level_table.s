@@ -27,7 +27,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_deadlocked)
 	.byte .lobyte(level_data_fingerdash)
 	.byte .lobyte(level_data_dash)
-	.byte .lobyte(level_data_retray)
 	.byte .lobyte(level_data_sonar)
 	.byte .lobyte(level_data_darkparadise)
 	.byte .lobyte(level_data_leveleasy)
@@ -56,6 +55,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_factorytime)
 	.byte .lobyte(level_data_thesteamworks)
 	.byte .lobyte(level_data_lostinthewoods)
+	.byte .lobyte(level_data_rainingtacos)
 	.byte .lobyte(level_data_bloodbathbutno)
 	.byte .lobyte(level_data_rainbowtylenol)
 	.byte .lobyte(level_data_greif)
@@ -134,7 +134,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_deadlocked)
 	.byte .hibyte(level_data_fingerdash)
 	.byte .hibyte(level_data_dash)
-	.byte .hibyte(level_data_retray)
 	.byte .hibyte(level_data_sonar)
 	.byte .hibyte(level_data_darkparadise)
 	.byte .hibyte(level_data_leveleasy)
@@ -163,6 +162,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_factorytime)
 	.byte .hibyte(level_data_thesteamworks)
 	.byte .hibyte(level_data_lostinthewoods)
+	.byte .hibyte(level_data_rainingtacos)
 	.byte .hibyte(level_data_bloodbathbutno)
 	.byte .hibyte(level_data_rainbowtylenol)
 	.byte .hibyte(level_data_greif)
@@ -241,7 +241,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_deadlocked))
 	.byte .lobyte(.bank(level_data_fingerdash))
 	.byte .lobyte(.bank(level_data_dash))
-	.byte .lobyte(.bank(level_data_retray))
 	.byte .lobyte(.bank(level_data_sonar))
 	.byte .lobyte(.bank(level_data_darkparadise))
 	.byte .lobyte(.bank(level_data_leveleasy))
@@ -270,6 +269,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_factorytime))
 	.byte .lobyte(.bank(level_data_thesteamworks))
 	.byte .lobyte(.bank(level_data_lostinthewoods))
+	.byte .lobyte(.bank(level_data_rainingtacos))
 	.byte .lobyte(.bank(level_data_bloodbathbutno))
 	.byte .lobyte(.bank(level_data_rainbowtylenol))
 	.byte .lobyte(.bank(level_data_greif))
@@ -420,7 +420,6 @@ _level_lengths_lo:
 	.byte .lobyte($0000BF)		; deadlocked
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
-	.byte .lobyte($000066)		; retray
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($000090)		; leveleasy
@@ -449,6 +448,7 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
 	.byte .lobyte($000066)		; lostinthewoods
+	.byte .lobyte($0000BB)		; rainingtacos
 	.byte .lobyte($000090)		; bloodbathbutno
 	.byte .lobyte($0000B5)		; rainbowtylenol
 	.byte .lobyte($000069)		; greif
@@ -529,7 +529,6 @@ _level_lengths_md:
 	.byte .hibyte($0000BF)		; deadlocked
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
-	.byte .hibyte($000066)		; retray
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($000090)		; leveleasy
@@ -558,6 +557,7 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
 	.byte .hibyte($000066)		; lostinthewoods
+	.byte .hibyte($0000BB)		; rainingtacos
 	.byte .hibyte($000090)		; bloodbathbutno
 	.byte .hibyte($0000B5)		; rainbowtylenol
 	.byte .hibyte($000069)		; greif
@@ -638,7 +638,6 @@ _level_lengths_hi:
 	.byte .bankbyte($0000BF)		; deadlocked
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
-	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($000090)		; leveleasy
@@ -667,6 +666,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
 	.byte .bankbyte($000066)		; lostinthewoods
+	.byte .bankbyte($0000BB)		; rainingtacos
 	.byte .bankbyte($000090)		; bloodbathbutno
 	.byte .bankbyte($0000B5)		; rainbowtylenol
 	.byte .bankbyte($000069)		; greif

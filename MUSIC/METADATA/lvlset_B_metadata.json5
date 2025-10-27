@@ -118,11 +118,6 @@
 			originalArtistText: "LEMON DEMON",
 		},
 		{
-			fmsSongName: "Hell",
-			lowerText: "ACCELERATE",
-			originalArtistText: "ACID NOTATION",
-		},
-		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
 			originalArtistText: "SOUNDHOLICK",
@@ -223,6 +218,11 @@
 			lowerText: "THE ODDS REDUX",
 			originalArtistText: "ELITEFERREX",
 		},
+		{
+			fmsSongName: "Raining Tacos",
+			lowerText: "RAINING TACOS",
+			originalArtistText: "PARRY GRIPP",
+		},	
 	],
 	SFX: [
 		{

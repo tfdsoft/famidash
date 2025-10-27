@@ -48,7 +48,6 @@
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
 			originalArtistText: "DJ NATE",
-			
 		},		
 		{
 			fmsSongName: "atthespeedoflight",
@@ -84,30 +83,16 @@
 			lowerText: "BLASTER",
 			originalArtistText: "F777",
 		},
-/*
-		{
-			fmsSongName: "lost",
-			lowerText: "LOST",
-			originalArtistText: "CRIM3S",
-		},	
-		*/
 		{
 			fmsSongName: "endorphins",
 			lowerText: "ENDORPHINS",
 			originalArtistText: "DUOCORE",
 		},	
-		
 		{
 			fmsSongName: "eighto",
 			lowerText: "EIGHTO",
 			originalArtistText: "JOMEKKA",
 		},		
-		/*
-		{
-			fmsSongName: "Kratos",
-			lowerText: "KRATOS",
-			originalArtistText: "SHAPPY",
-		},	*/
 		{
 			fmsSongName: "Every End PT1",
 			lowerText: "EVERY END PT1",
@@ -117,11 +102,6 @@
 			fmsSongName: "Every End PT2",
 			lowerText: "EVERY END PT2",
 			originalArtistText: "DIMRAIN47",
-		},	
-		{
-			fmsSongName: "Windfall",
-			lowerText: "WINDFALL",
-			originalArtistText: "THEFATRAT",
 		},	
 		{
 			fmsSongName: "Thermodynamix",
@@ -175,7 +155,11 @@
 			fmsSongName: "Try This",
 			lowerText: "TRY THIS",
 			originalArtistText: "PEGBOARD NERDS",
-			
+		},
+		{
+			fmsSongName: "Hell",
+			lowerText: "ACCELERATE",
+			originalArtistText: "ACID NOTATION",
 		},
 		
 	],
