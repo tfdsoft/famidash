@@ -224,11 +224,11 @@ FAMISTUDIO_USE_ARPEGGIO          = 1
 
 ; Must be enabled if your project uses more than 63 unique DPCM mappings (a mapping is DPCM sample
 ; assigned to a note, with a specific pitch/loop, etc.). Implied when using FAMISTUDIO_USE_DPCM_BANKSWITCHING.
-; FAMISTUDIO_USE_DPCM_EXTENDED_RANGE = 1
+ FAMISTUDIO_USE_DPCM_EXTENDED_RANGE = 1
 
 ; Allows having up to 256 instrument at the cost of slightly higher CPU usage when switching instrument.
 ; When this is off, the limit is 64 for regular instruments and 32 for expansion instrumnets.
-; FAMISTUDIO_USE_INSTRUMENT_EXTENDED_RANGE = 1
+ FAMISTUDIO_USE_INSTRUMENT_EXTENDED_RANGE = 1
 
 ; Must be enabled if your project uses the "Phase Reset" effect.
  FAMISTUDIO_USE_PHASE_RESET = 1
@@ -489,6 +489,7 @@ FAMISTUDIO_USE_ARPEGGIO          = 1
 .endif
 
 FAMISTUDIO_DPCM_PTR = (FAMISTUDIO_DPCM_OFF & $3fff) >> 6
+.export FAMISTUDIO_DPCM_PTR: absolute
 
 .if FAMISTUDIO_EXP_NONE
     FAMISTUDIO_NUM_ENVELOPES        = 3+3+2+3
