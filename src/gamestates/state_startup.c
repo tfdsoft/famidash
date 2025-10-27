@@ -91,9 +91,9 @@ void state_startup() {
     ppu_on_all();
     pal_fade_to(0,4);
 
-    __asm__ ("lda #0");
-    song = 0;
-    music_play(song);
+    //__asm__ ("lda #0");
+    song = 255;
+    music_play(song_scheming_weasel);
     //__attribute__((leaf)) __asm__ volatile (
     //    "lda song \n"
     //    "jsr music_play \n"
@@ -112,9 +112,13 @@ void state_startup() {
         
         //music_update();
 
-        if((player1_pressed & PAD_LEFT)) music_play(--song);
+        //if((player1_pressed & PAD_LEFT)) music_play(--song);
         
-        if((player1_pressed & PAD_RIGHT)) music_play(++song);
+        if((player1_pressed & PAD_RIGHT)) {
+            ++song;
+            if(song == song_max) song = 0;
+            music_play(song);
+        }
         
         if(player1_pressed & PAD_A) {
             sfx_play(2,0);

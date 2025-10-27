@@ -288,7 +288,7 @@
 			lowerText: "WEASEL",
 			originalArtistText: "KEVIN MACLEOD",
 			vsSystemEnabled: false
-		},
+		},/*
 		{
 			fmsSongName: "retray",
 			lowerText: "GOLDEN HAZE",
@@ -357,7 +357,7 @@
 			upperText: "EXTRAORDINARY",
 			lowerText: "EXCITEMENT",
 			originalArtistText: "SEAGLOWINGPRO",
-		},			
+		},			*/
 	],
 	SFX: [
 		{
