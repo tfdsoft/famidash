@@ -24,6 +24,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// deadlocked
 	INSANE,	// fingerdash
 	INSANE,	// dash
+	EASY,	// retray
 	NORMAL,	// leveleasy
 	NORMAL,	// thechallenge
 	NORMAL,	// dorabaebasic4
@@ -70,6 +71,7 @@ const uint8_t stars_list[] = {
 	15,	// deadlocked
 	12,	// fingerdash
 	12,	// dash
+	2,	// retray
 	3,	// leveleasy
 	3,	// thechallenge
 	3,	// dorabaebasic4

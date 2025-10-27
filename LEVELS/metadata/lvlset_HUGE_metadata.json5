@@ -1360,7 +1360,7 @@
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "EASY",
-			//stars: 2,
+			stars: 2,
 			songID: "song_golden_haze",
 			startingGameMode: 0,
 			startingSpeed: 1,
