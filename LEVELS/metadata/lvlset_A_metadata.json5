@@ -844,7 +844,7 @@
 			upperText: "HEXAGON",
 			lowerText: "FORCE",
 			decoType: "DECO1",
-			spikeSet: "B",
+			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "INSANE",
@@ -852,48 +852,55 @@
 			songID: "song_hexagon_force",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x02,
-			startingGroundColor: 0x12,
+			startingBackgroundColor: 0x13,
+			startingGroundColor: 0x03,
 			parallaxDisable: true,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
+						[161, 29], [59, 32], [177, 33], [179, 32], [181, 33], [288, 300], [284, 30], [280, 30],
+						[387, 24], [697, 24], [703, 24], [793, 23], [1007, 14], [1009, 16], [1015, 16], [1023, 12], [996, 14],
 						[199, 28],		//ball
 						[200, 28],	[296, 32],	[709, 23],	[910, 19],	[995, 14],		//grav
 						[250, 28],		//blue
 						[427, 23],	[683, 23],		//ship
 						[708, 23],		//single
 						[710, 23],		//growth
-						[751, 28],	[1022, 18],			//coin
-						[980, 15],	[981, 15],		//deco
+						[751, 28],	[1023, 18],			//coin
+						[981, 15],	[982, 15],		//deco
 					],
 					offsetY: +8			
 				},
 				{
 					coordinates: [
+						[71, 31], [301, 34], [387, 28], [999, 15], [640, 24],
 						[275, 30],	[504, 26],		//cube
 						[351, 25],		//dual
 						[427, 27],		//ship
-						[502, 26],	[994, 15],		//single
+						[502, 26],	[995, 15],		//single
 						[503, 26],	[918, 20],		//grav
-						[579, 24],	[793, 25],	[943, 15],		//speed
-						[995, 15],			//growth
+						[579, 24],	[943, 15],		//speed
+						[996, 15],			//growth
 					],
 					offsetY: -8			
 				},
 				{
 					coordinates: [
+						[66, 30], [57, 32], [585, 24], [591, 22], [599, 27], [604, 24], [613, 24], [621, 23], [630, 25],
 						[253, 33],	[422, 23],			//yellow
 						[422, 24],	[422, 29],		//deco
 						[503, 26],			//grav
 						[670, 22],	[670, 27],		//yellow pad
 						[751, 28],		//coin
-						[994, 15],		//single
+						[995, 15],		//single
+						[762, 26], [772, 24], [782, 26], [1001, 13], [1004, 13], [1026, 14],
 					],
 					offsetX: +8			
 				},
 				{
 					coordinates: [
+						[24, 36], [27, 38], [116, 32], [161, 29], [996, 15], [996, 14],
 						[570, 27],		//yellow
 						[504, 26],		//cube
 						[874, 24],		//blue orb
@@ -909,7 +916,6 @@
 				{
 					coordinates: [
 						[573, 23],			//ufo
-						[639, 23],		//dual
 						[708, 23],	[502, 26],			//single
 						[942, 14],		//ship
 						[942, 15],		//mini

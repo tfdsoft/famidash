@@ -143,19 +143,22 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_foresttemple))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_dash_0)
-	.byte .lobyte(level_data_rainbowtylenol_1)
-	.byte .lobyte(level_data_extraordinaryexcitement_2)
+	.byte .lobyte(level_data_hexagonforce_0)
+	.byte .lobyte(level_data_dash_1)
+	.byte .lobyte(level_data_rainbowtylenol_2)
+	.byte .lobyte(level_data_extraordinaryexcitement_3)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_dash_0)
-	.byte .hibyte(level_data_rainbowtylenol_1)
-	.byte .hibyte(level_data_extraordinaryexcitement_2)
+	.byte .hibyte(level_data_hexagonforce_0)
+	.byte .hibyte(level_data_dash_1)
+	.byte .hibyte(level_data_rainbowtylenol_2)
+	.byte .hibyte(level_data_extraordinaryexcitement_3)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_dash_0))
-	.byte .lobyte(.bank(level_data_rainbowtylenol_1))
-	.byte .lobyte(.bank(level_data_extraordinaryexcitement_2))
+	.byte .lobyte(.bank(level_data_hexagonforce_0))
+	.byte .lobyte(.bank(level_data_dash_1))
+	.byte .lobyte(.bank(level_data_rainbowtylenol_2))
+	.byte .lobyte(.bank(level_data_extraordinaryexcitement_3))
 
 .define MID_LEVEL_LENGTHS_ENABLED 0
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
