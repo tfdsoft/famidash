@@ -5,7 +5,11 @@
 			fmsSongName: "Menu Theme (Human Capturing Mix)",
 			lowerText: "MENU",
 			originalArtistText: "TOBY FOX",
-			
+		},
+		{
+			fmsSongName: "Clubstep",
+			lowerText: "CLUBSTEP",
+			originalArtistText: "DJ NATE",
 		},
 		{
 			fmsSongName: "Practice",
@@ -29,15 +33,11 @@
 			originalArtistText: "KEVIN MACLEOD",
 		},	
 		{
-			fmsSongName: "Clubstep",
-			lowerText: "CLUBSTEP",
-			originalArtistText: "DJ NATE",
+			fmsSongName: "atthespeedoflightfull",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT",
+			originalArtistText: "DIMRAIN47",
 		},
-		{
-			fmsSongName: "Windfall",
-			lowerText: "WINDFALL",
-			originalArtistText: "THEFATRAT",
-		},	
 		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
@@ -49,10 +49,9 @@
 			originalArtistText: "SHAPPY",
 		},
 		{
-			fmsSongName: "atthespeedoflightfull",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
-			originalArtistText: "DIMRAIN47",
+			fmsSongName: "Windfall",
+			lowerText: "WINDFALL",
+			originalArtistText: "THEFATRAT",
 		},
 	],
 	SFX: [

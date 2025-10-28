@@ -32,7 +32,7 @@
 			upperText: "BACK ON",
 			lowerText: "TRACK",
 			originalArtist: "DJVI",
-			coveringArtist: "aquamarine.gay",
+			coveringArtist: ["aquamarine", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Polargeist",
@@ -44,7 +44,7 @@
 			fmsSongName: "Dry Out Full",
 			lowerText: "DRY OUT",
 			originalArtist: "DJVI",
-			coveringArtist: ["UserSniper", "Crafty Jumper"]
+			coveringArtist: ["UserSniper", "Crafty Jumper", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Base after Base",
@@ -63,13 +63,13 @@
 			fmsSongName: "Jumper Full",
 			lowerText: "JUMPER",
 			originalArtist: "Waterflame",
-			coveringArtist: ["Zenith302", "zukinnyk", "UserSniper"]
+			coveringArtist: ["Zenith302", "zukinnyk", "UserSniper", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Time Machine Full",
 			lowerText: "TIME MACHINE",
 			originalArtist: "Waterflame",
-			coveringArtist: ["Zenith302", "Vikrinox", "alexmush"]
+			coveringArtist: ["Zenith302", "Vikrinox", "alexmush", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Cycles",
@@ -107,7 +107,7 @@
 			fmsSongName: "Clubstep Full",
 			lowerText: "CLUBSTEP",
 			originalArtist: "Dj-Nate",
-			coveringArtist: "cloud54",
+			coveringArtist: ["cloud54", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Electrodynamix",
@@ -134,7 +134,7 @@
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING 2",
 			originalArtist: "Dj-Nate",
-			coveringArtist: ["UserSniper","Abstract"]
+			coveringArtist: ["UserSniper","Abstract 64"]
 		},
 		{
 			fmsSongName: "Geometrical Dominator",
@@ -299,7 +299,7 @@
 			fmsSongName: "Driving By Night",
 			upperText: "DRIVING BY",
 			lowerText: "NIGHT",
-			originalArtist: "Reinn",
+			originalArtist: "Reinnbow",
 			coveringArtist: "NerdBoy628",
 		},
 		{
@@ -325,14 +325,14 @@
 			upperText: "EVERY END",
 			lowerText: "PART 1",
 			originalArtist: "Dimrain47",
-			coveringArtist: ["ElAngel378","UserSniper"]
+			coveringArtist: ["UserSniper","ElAngel378"]
 		},
 		{
 			fmsSongName: "Every End PT2",
 			upperText: "EVERY END",
 			lowerText: "PART 2",
 			originalArtist: "Dimrain47",
-			coveringArtist: ["ElAngel378","UserSniper"]
+			coveringArtist: ["UserSniper","ElAngel378"]
 		},
 		{
 			fmsSongName: "Every Madness",
@@ -345,8 +345,8 @@
 			fmsSongName: "Extraordinary Excitement",
 			upperText: "EXTRAORDINARY",
 			lowerText: "EXCITEMENT",
-			originalArtist: "SEAGLOWINGPRO",
-			coveringArtist: "SEAGLOWINGPRO"
+			originalArtist: "SeaGlowingPro",
+			coveringArtist: "SeaGlowingPro"
 		},
 		{
 			fmsSongName: "Factory Time",
@@ -357,7 +357,7 @@
 		{
 			fmsSongName: "Fairydust",
 			lowerText: "FAIRYDUST",
-			originalArtist: "NIGHTKILLA",
+			originalArtist: "RUKKUS",
 			coveringArtist: "ElAngel378",
 		},	
 		{
@@ -370,19 +370,19 @@
 			fmsSongName: "Fingerbang",
 			lowerText: "FINGERBANG",
 			originalArtist: "MDK",
-			coveringArtist: ["Crafty Jumper", "ElAngel378"]
-		},
-		{
-			fmsSongName: "Flow",
-			lowerText: "FLOW",
-			originalArtist: "Creo",
-			coveringArtist: "SeaGlowingPro",
+			coveringArtist: ["ElAngel378", "Crafty Jumper"]
 		},
 		{
 			fmsSongName: "Fire Aura",
 			lowerText: "FIRE AURA",
 			originalArtist: "Kid2Will",
 			coveringArtist: "Vikrinox",
+		},
+		{
+			fmsSongName: "Flow",
+			lowerText: "FLOW",
+			originalArtist: "Creo",
+			coveringArtist: "SeaGlowingPro",
 		},
 		{
 			fmsSongName: "Free Mind",
@@ -412,7 +412,7 @@
 		{
 			fmsSongName: "Golden Haze",
 			lowerText: "GOLDEN HAZE",
-			originalArtist: "Detious",
+			originalArtist: "DetiousMusic",
 			coveringArtist: ["Crafty Jumper", "ElAngel378"]
 		},
 		{
@@ -447,12 +447,6 @@
 			coveringArtist: ["cloud54", "SeaGlowingPro"]
 		},
 		{
-			fmsSongName: "Isolation",
-			lowerText: "ISOLATION",
-			originalArtist: "NightHawk22",
-			coveringArtist: ["Crafty Jumper", "SeaGlowingPro"]
-		},
-		{
 			fmsSongName: "Infiltration",
 			lowerText: "INFILTRATION",
 			originalArtist: "ParagonX9",
@@ -464,6 +458,12 @@
 			lowerText: "POWER",
 			originalArtist: "TheFatRat",
 			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
+		},
+		{
+			fmsSongName: "Isolation",
+			lowerText: "ISOLATION",
+			originalArtist: "NightHawk22",
+			coveringArtist: ["Crafty Jumper", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "jack russel",
@@ -534,16 +534,16 @@
 			coveringArtist: ["Kanako","Ketsukane"]
 		},
 		{
-			fmsSongName: "Metamorphosis",
-			lowerText: "METAMORPHOSIS",
-			originalArtist: "INTERWORLD",
-			coveringArtist: "ElAngel378",
-		},
-		{
 			fmsSongName: "Meowstuff",
 			lowerText: "MEOWSTUFF",
 			originalArtist: "Davince",
 			coveringArtist: "SeaGlowingPro",
+		},
+		{
+			fmsSongName: "Metamorphosis",
+			lowerText: "METAMORPHOSIS",
+			originalArtist: "INTERWORLD",
+			coveringArtist: "ElAngel378",
 		},
 		{
 			fmsSongName: "Miami Hotline Vol. 3",
@@ -599,13 +599,13 @@
 		{
 			fmsSongName: "Problematic",
 			lowerText: "PROBLEMATIC",
-			originalArtist: "NIGHTkilla",
+			originalArtist: "RUKKUS",
 			coveringArtist: "ElAngel378",
 		},
 		{
 			fmsSongName: "Pursuit",
 			lowerText: "PURSUIT",
-			originalArtist: "BoomKitty",
+			originalArtist: "Boom Kitty",
 			coveringArtist: "Crafty Jumper",
 		},
         {
@@ -626,7 +626,7 @@
 			upperText: "PYROPHORIC",
             lowerText: "REMIX",
 			originalArtist: "NerdBoy628",
-			coveringArtist: "alexmush",
+			coveringArtist: ["NerdBoy628","alexmush"],
 		},
 		{
 			fmsSongName: "rainbow tylenol",
@@ -771,8 +771,6 @@
 			originalArtist: "Waterflame",
 			coveringArtist: "SeaGlowingPro",
 		},	
-		
-		
 	],
 
 	artistTextMappingTable: {

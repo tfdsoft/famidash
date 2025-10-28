@@ -5,43 +5,43 @@
 const char musicSoundTestString00[ 8] = "SCHEMING";
 const char musicSoundTestString01[12] = "AT$THE$SPEED";
 const char musicSoundTestString02[ 4] = "MENU";
-const char musicSoundTestString03[ 8] = "PRACTICE";
-const char musicSoundTestString04[ 6] = "WEASEL";
-const char musicSoundTestString05[ 8] = "CLUBSTEP";
-const char musicSoundTestString06[ 8] = "WINDFALL";
+const char musicSoundTestString03[ 8] = "CLUBSTEP";
+const char musicSoundTestString04[ 8] = "PRACTICE";
+const char musicSoundTestString05[ 6] = "WEASEL";
+const char musicSoundTestString06[ 8] = "OF$LIGHT";
 const char musicSoundTestString07[ 4] = "LOST";
 const char musicSoundTestString08[ 6] = "KRATOS";
-const char musicSoundTestString09[ 8] = "OF$LIGHT";
+const char musicSoundTestString09[ 8] = "WINDFALL";
 const char musicSoundTestString0A[ 8] = "TOBY$FOX";
-const char musicSoundTestString0B[12] = "OCULARNEBULA";
-const char musicSoundTestString0C[13] = "KEVIN$MACLEOD";
-const char musicSoundTestString0D[ 7] = "DJ$NATE";
-const char musicSoundTestString0E[ 9] = "THEFATRAT";
+const char musicSoundTestString0B[ 7] = "DJ$NATE";
+const char musicSoundTestString0C[12] = "OCULARNEBULA";
+const char musicSoundTestString0D[13] = "KEVIN$MACLEOD";
+const char musicSoundTestString0E[ 9] = "DIMRAIN47";
 const char musicSoundTestString0F[ 6] = "CRIM3S";
 const char musicSoundTestString10[ 6] = "SHAPPY";
-const char musicSoundTestString11[ 9] = "DIMRAIN47";
+const char musicSoundTestString11[ 9] = "THEFATRAT";
 
 
 const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
+	NULL,
 	musicSoundTestString00,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
 	musicSoundTestString01,
+	NULL,
+	NULL,
+	NULL,
 };
 
 const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
+	0,
 	sizeof(musicSoundTestString00),
-	0,
-	0,
-	0,
-	0,
 	sizeof(musicSoundTestString01),
+	0,
+	0,
+	0,
 };
 
 
@@ -110,13 +110,13 @@ CODE_BANK_PUSH("RODATA")
 
 const uint8_t xbgmlookuptable[] = {
 	song_menu_theme_human_capturing_mix,
+	song_clubstep,
 	song_practice,
 	song_scheming_weasel,
-	song_clubstep,
-	song_windfall,
+	song_atthespeedoflightfull,
 	song_lost,
 	song_kratos,
-	song_atthespeedoflightfull,
+	song_windfall,
 };
 
 #else

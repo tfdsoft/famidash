@@ -267,6 +267,12 @@
 			originalArtistText: "MDK",
 		},
 		{
+			fmsSongName: "The Challenge",
+			upperText: "THE",
+			lowerText: "CHALLENGE",
+			originalArtistText: "ROBTOP",
+		},
+		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",
 			originalArtistText: "OCULARNEBULA",
@@ -290,26 +296,9 @@
 			vsSystemEnabled: false
 		},
 		{
-			fmsSongName: "retray",
-			lowerText: "GOLDEN HAZE",
-			originalArtistText: "DETIOUSMUSIC",
-		},
-		{
-			fmsSongName: "infernoplex",
-			lowerText: "INFERNOPLEX",
-			originalArtistText: "DIMRAIN47",
-		},
-
-		{
-			fmsSongName: "The Challenge",
-			upperText: "THE",
-			lowerText: "CHALLENGE",
-			originalArtistText: "ROBTOP",
-		},
-		{
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
+			lowerText: "OF LIGHT PT 1",
 			originalArtistText: "DIMRAIN47",
 		},
 		{
@@ -319,14 +308,31 @@
 			originalArtistText: "DIMRAIN47",
 		},
 		{
-			fmsSongName: "midnight",
-			lowerText: "MIDNIGHT",
-			originalArtistText: "CORNANDBEANS",
+			fmsSongName: "Extraordinary Excitement",
+			upperText: "EXTRAORDINARY",
+			lowerText: "EXCITEMENT",
+			originalArtistText: "SEAGLOWINGPRO",
+		},
+		{
+			fmsSongName: "retray",
+			lowerText: "GOLDEN HAZE",
+			originalArtistText: "DETIOUSMUSIC",
+		},
+		{
+			fmsSongName: "Ground to Space",
+			upperText: "GROUND TO",
+			lowerText: "SPACE",
+			originalArtistText: "SEAGLOWINGPRO",
 		},
 		{
 			fmsSongName: "haunted woods",
 			lowerText: "HAUNTED WOODS",
 			originalArtistText: "WATERFLAME",
+		},
+		{
+			fmsSongName: "infernoplex",
+			lowerText: "INFERNOPLEX",
+			originalArtistText: "DIMRAIN47",
 		},
 		{
 			fmsSongName: "just right",
@@ -335,10 +341,9 @@
 			vsSystemEnabled: false
 		},
 		{
-			fmsSongName: "Ground to Space",
-			upperText: "GROUND TO",
-			lowerText: "SPACE",
-			originalArtistText: "SEAGLOWINGPRO",
+			fmsSongName: "midnight",
+			lowerText: "MIDNIGHT",
+			originalArtistText: "CORNANDBEANS",
 		},
 		{
 			fmsSongName: "rainbow tylenol",
@@ -351,13 +356,7 @@
 			upperText: "STALEMATE",
 			lowerText: "GREIF CUT",
 			originalArtistText: "KAYOSZX",
-		},		
-		{
-			fmsSongName: "Extraordinary Excitement",
-			upperText: "EXTRAORDINARY",
-			lowerText: "EXCITEMENT",
-			originalArtistText: "SEAGLOWINGPRO",
-		},			
+		},
 	],
 	SFX: [
 		{

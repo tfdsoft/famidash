@@ -15,7 +15,7 @@
 		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",
-			originalArtistText: "OCULARNEBULAR",
+			originalArtistText: "OCULARNEBULA",
 			
 			nsfData: {
 				trackLabel: "Practice ~ Stay Inside Me",
@@ -35,30 +35,58 @@
 			originalArtistText: "KEVIN MACLEOD",
 			vsSystemEnabled: false
 		},
-
 		{
-			fmsSongName: "Stereo madness 2",
-			upperText: "STEREO ",
-			lowerText: "MADNESS 2",
-			originalArtistText: "FOREVERBOUND",
+			fmsSongName: "against the odds redux",
+			upperText: "8 BIT AGAINST",
+			lowerText: "THE ODDS REDUX",
+			originalArtistText: "ELITEFERREX",
+		},
+		{
+			fmsSongName: "Chaoz Fantasy Extended",
+			lowerText: "CHAOZ FANTASY",
+			originalArtistText: "PARAGONX9",
+		},
+		{
+			fmsSongName: "Speed Racer",
+			lowerText: "CHAOZ IMPACT",
+			originalArtistText: "PARAGONX9",
+		},
+		{
+			fmsSongName: "check out",
+			lowerText: "CHECK OUT",
+			originalArtistText: "MADHOUSEDUDE",
+		},
+		{
+			fmsSongName: "clutterfunk 2",
+			lowerText: "CLUTTERFUNK 2",
+			originalArtistText: "WATERFLAME",
+			/* no vs system to speak of */
+		},
+		{
+			fmsSongName: "Cryogenic",
+			lowerText: "CRYOGENIC",
+			originalArtistText: "NERDBOY628",
+		},	
+		{
+			fmsSongName: "Dance of the violins",
+			upperText: "DANCE OF",
+			lowerText: "THE VIOLINS",
+			originalArtistText: "F777",
+		},
+		{
+			fmsSongName: "Death Moon",
+			lowerText: "DEATH MOON",
+			originalArtistText: "SOUNDHOLICK",
 		},
 		{
 			fmsSongName: "Driving By Night",
 			upperText: "DRIVING BY",
 			lowerText: "NIGHT",
 			originalArtistText: "REINNBOW",
-			
-		},
-		{
-			fmsSongName: "Chaoz Fantasy Extended",
-			upperText: "CHAOZ FANTASY",
-			lowerText: "EXTENDED",
-			originalArtistText: "PARAGONX9",
-			
 		},
 		{
 			fmsSongName: "endgame",
-			lowerText: "DECODE",
+			lowerText: "ENDGAME",
 			originalArtistText: "WATERFLAME",
 			vsSystemEnabled: true,
 			nsfData: {
@@ -70,13 +98,22 @@
 				durationNTSC: 79283,
 				durationPAL: 95280
 			}
-		},		
-		{
-			fmsSongName: "clutterfunk 2",
-			lowerText: "CLUTTERFUNK 2",
-			originalArtistText: "WATERFLAME",
-			/* no vs system to speak of */
 		},
+		{
+			fmsSongName: "Factory Time",
+			lowerText: "FACTORY TIME",
+			originalArtistText: "VISAGER",
+		},	
+		{
+			fmsSongName: "Fantasy",
+			lowerText: "FANTASY",
+			originalArtistText: "CLOUDFIELD",
+		},
+		{
+			fmsSongName: "Fire Aura",
+			lowerText: "FIRE AURA",
+			originalArtistText: "KID2WILL",
+		},		
 		{
 			fmsSongName: "Glitch Gremlin",
 			upperText: "GLITCH",
@@ -85,57 +122,10 @@
 			/* no vs system to speak of */
 		},
 		{
-			fmsSongName: "kesobomb",
-			lowerText: "KESOBOMB",
-			originalArtistText: "RYMDCRAFT",
-			/* no vs system to speak of */
-		},
-		{
-			fmsSongName: "Ninox",
-			lowerText: "NINOX",
-			originalArtistText: "MEGANEKO",
-		},
-		{
-			fmsSongName: "Speed Racer",
-			upperText: "CHAOZ",
-			lowerText: "IMPACT",
+			fmsSongName: "Infiltration",
+			lowerText: "INFILTRATION",
 			originalArtistText: "PARAGONX9",
-		},
-		{
-			fmsSongName: "Magic Touch",
-			lowerText: "MAGIC TOUCH",
-			originalArtistText: "ROMOS",
-		},
-		{
-			fmsSongName: "Pyrophoric (Legacy Remix)",
-			lowerText: "PYROPHORIC",
-			originalArtistText: "NERDBOY628",
-		},
-		{
-			fmsSongName: "subtle oddities",
-			upperText: "SUBTLE",
-			lowerText: "ODDITIES",
-			originalArtistText: "LEMON DEMON",
-		},
-		{
-			fmsSongName: "Death Moon",
-			lowerText: "DEATH MOON",
-			originalArtistText: "SOUNDHOLICK",
-			
-		},
-		{
-			fmsSongName: "check out",
-			lowerText: "CHECK OUT",
-			originalArtistText: "MADHOUSEDUDE",
-			
-		},
-		{
-			fmsSongName: "Dance of the violins",
-			upperText: "DANCE OF",
-			lowerText: "THE VIOLINS",
-			originalArtistText: "F777",
-			
-		},
+		},	
 		{
 			fmsSongName: "Infinite Power",
 			upperText: "INFINITE",
@@ -143,69 +133,51 @@
 			originalArtistText: "THEFATRAT",
 		},	
 		{
-			fmsSongName: "Fantasy",
-			lowerText: "FANTASY",
-			originalArtistText: "CLOUDFIELD",
-		},		
+			fmsSongName: "kesobomb",
+			lowerText: "KESOBOMB",
+			originalArtistText: "RYMDKRAFT",
+			/* no vs system to speak of */
+		},
 		{
-			fmsSongName: "Infiltration",
-			lowerText: "INFILTRATION",
-			originalArtistText: "PARAGONX9",
-		},			
-		{
-			fmsSongName: "Power Trip",
-			lowerText: "POWER TRIP",
-			originalArtistText: "BOOM KITTY",
-		},			
-		{
-			fmsSongName: "What's a Future Funk?",
-			upperText: "WHATS A",
-			lowerText: "FUTURE FUNK",
-			originalArtistText: "LEMKUUJA",
-			
-		},			
-		{
-			fmsSongName: "Tiny Tunes",
-			lowerText: "TINY TUNES",
-			originalArtistText: "FANTOMENK",
-			
-		},		
-		{
-			fmsSongName: "Meowstuff",
-			lowerText: "MEOWSTUFF",
-			originalArtistText: "DAVINCE",
-			
-		},	
-		{
-			fmsSongName: "Problematic",
-			lowerText: "PROBLEMATIC",
-			originalArtistText: "NIGHTKILLA",
-		},	
-		{
-			fmsSongName: "Xenogenesis",
-			lowerText: "XENOGENESIS",
-			originalArtistText: "THEFATRAT",
-		},		
-		{
-			fmsSongName: "Fire Aura",
-			lowerText: "FIRE AURA",
-			originalArtistText: "KID2WILL",
-		},			
+			fmsSongName: "Magic Touch",
+			lowerText: "MAGIC TOUCH",
+			originalArtistText: "ROMOS",
+		},
 		{
 			fmsSongName: "Meltdown",
 			lowerText: "MELTDOWN",
 			originalArtistText: "MASTERSWORD"
-		},		
+		},	
 		{
-			fmsSongName: "Factory Time",
-			lowerText: "FACTORY TIME",
-			originalArtistText: "VISAGER",
-		},		
+			fmsSongName: "Meowstuff",
+			lowerText: "MEOWSTUFF",
+			originalArtistText: "DAVINCE",
+		},	
 		{
-			fmsSongName: "Cryogenic",
-			lowerText: "CRYOGENIC",
+			fmsSongName: "Ninox",
+			lowerText: "NINOX",
+			originalArtistText: "MEGANEKO",
+		},
+		{
+			fmsSongName: "Power Trip",
+			lowerText: "POWER TRIP",
+			originalArtistText: "BOOM KITTY",
+		},
+		{
+			fmsSongName: "Problematic",
+			lowerText: "PROBLEMATIC",
+			originalArtistText: "RUKKUS",
+		},	
+		{
+			fmsSongName: "Pyrophoric (Legacy Remix)",
+			lowerText: "PYROPHORIC",
 			originalArtistText: "NERDBOY628",
-		},		
+		},
+		{
+			fmsSongName: "Raining Tacos",
+			lowerText: "RAINING TACOS",
+			originalArtistText: "PARRY GRIPP",
+		},	
 		{
 			fmsSongName: "Slash Inferno",
 			upperText: "SLASH",
@@ -213,16 +185,33 @@
 			originalArtistText: "WF TEM BKIT"
 		},
 		{
-			fmsSongName: "against the odds redux",
-			upperText: "8 BIT AGAINST",
-			lowerText: "THE ODDS REDUX",
-			originalArtistText: "ELITEFERREX",
+			fmsSongName: "Stereo madness 2",
+			upperText: "STEREO ",
+			lowerText: "MADNESS 2",
+			originalArtistText: "FOREVERBOUND",
+		},	
+		{
+			fmsSongName: "subtle oddities",
+			upperText: "SUBTLE",
+			lowerText: "ODDITIES",
+			originalArtistText: "LEMON DEMON",
 		},
 		{
-			fmsSongName: "Raining Tacos",
-			lowerText: "RAINING TACOS",
-			originalArtistText: "PARRY GRIPP",
-		},	
+			fmsSongName: "Tiny Tunes",
+			lowerText: "TINY TUNES",
+			originalArtistText: "FANTOMENK",
+		},
+		{
+			fmsSongName: "What's a Future Funk?",
+			upperText: "WHATS A",
+			lowerText: "FUTURE FUNK",
+			originalArtistText: "LEMKUUJA",
+		},				
+		{
+			fmsSongName: "Xenogenesis",
+			lowerText: "XENOGENESIS",
+			originalArtistText: "THEFATRAT",
+		},				
 	],
 	SFX: [
 		{
