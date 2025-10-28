@@ -648,6 +648,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
 			spawnYPositionHi: 0x00,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [

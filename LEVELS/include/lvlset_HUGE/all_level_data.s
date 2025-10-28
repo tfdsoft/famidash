@@ -618,7 +618,7 @@
 		.byte ($00) ;________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;________________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;________________________________ Max Fall Speed (high byte)
+		.byte ($07) ;________________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
 		.byte _DECO1 ;_______________________________ Deco type
 		.byte _SPIKESA ;_____________________________ Spike set
