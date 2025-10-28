@@ -463,7 +463,7 @@ static void sprite_gamemode_main() {
 	if (controllingplayer->a || controllingplayer->up) {
 		if (gamemode == BALL_MODE) ball_switched[currplayer] = 1;
 		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
-			if (gamemode == GAMEMODE_SPIDER) black_orbed[currplayer] = 1;
+			if (gamemode == GAMEMODE_SPIDER && collided == BLACK_ORB) black_orbed[currplayer] = 1;
 			if (gamemode == ROBOT_MODE) orbed[currplayer] = 1;
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			settrailstuff();
@@ -954,7 +954,7 @@ void sprite_collide_lookup() {
 	// Alphabet blocks
 	spcl_s_block:
 		if (dashing[currplayer]){
-			dashing[currplayer] = 0; orbed[currplayer] = 1;
+			dashing[currplayer] = 0; orbed[currplayer] = 1; currplayer_vel_y = 0;
 		}
 		return;
 	spcl_h_block: hblocked[currplayer] = 1; return;
