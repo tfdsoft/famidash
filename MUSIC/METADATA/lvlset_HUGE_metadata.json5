@@ -12,7 +12,7 @@
 			fmsSongName: "Menu Theme B Sides",
 			lowerText: "MENU B SIDES",
 			originalArtist: ["RobTop", "MudStep"],
-			coveringArtist: "UserSniper",
+			coveringArtist: ["UserSniper", "jaezu"],
 		},
 		{
 			fmsSongName: "emehT uneM",
@@ -825,10 +825,8 @@
 		{
 			fmsSongName: "XO",
 			lowerText: "XO",
-			originalArtist: ["Eden", "Aaron Musselwhite"],
+			originalArtist: ["EDEN     AARON", "   MUSSELWHITE"],
 			coveringArtist: "SeaGlowingPro",
-			upperOrigArtistText: "EDEN     AARON",
-			lowerOrigArtistText: "   MUSSELWHITE"
 		},			
 		{
 			fmsSongName: "Youve been Trolled",
