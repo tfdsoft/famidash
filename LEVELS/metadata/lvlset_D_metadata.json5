@@ -32,6 +32,22 @@
 		},
 		*/
 		{
+			level: "demoncryogenic",
+			lowerText: "DEMON CRYOGENIC",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDDEMON",
+			stars: 10,
+			songID: "song_cryogenic",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "windylandscape",
 			upperText: "WINDY",
 			lowerText: "LANDSCAPE",

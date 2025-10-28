@@ -39,6 +39,11 @@
 			originalArtistText: "DIMRAIN47",
 		},
 		{
+			fmsSongName: "Cryogenic",
+			lowerText: "CRYOGENIC",
+			originalArtistText: "NERDBOY628",
+		},	
+		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
 			originalArtistText: "CRIM3S",

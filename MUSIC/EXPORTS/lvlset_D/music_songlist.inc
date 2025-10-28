@@ -1,9 +1,10 @@
 song_atthespeedoflightfull = 0
 song_windfall = 1
-song_menu_theme_human_capturing_mix = 2
-song_clubstep = 3
-song_scheming_weasel = 4
-song_practice = 5
-song_lost = 6
-song_kratos = 7
-song_max = 8
+song_clubstep = 2
+song_lost = 3
+song_practice = 4
+song_scheming_weasel = 5
+song_kratos = 6
+song_menu_theme_human_capturing_mix = 7
+song_cryogenic = 8
+song_max = 9

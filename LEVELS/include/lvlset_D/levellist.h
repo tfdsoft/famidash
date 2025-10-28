@@ -2,6 +2,7 @@
 // Exported by export_levels.py
 
 const uint8_t difficulty_list[] = {
+	HARDDEMON,	// demoncryogenic
 	EXTREMEDEMON,	// windylandscape
 	IMPOSSIBLEDEMON,	// silentclubstep
 	IMPOSSIBLEDEMON,	// kratos
@@ -10,6 +11,7 @@ const uint8_t difficulty_list[] = {
 };
 
 const uint8_t stars_list[] = {
+	10,	// demoncryogenic
 	10,	// windylandscape
 	10,	// silentclubstep
 	10,	// kratos
