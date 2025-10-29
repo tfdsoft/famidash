@@ -11,7 +11,7 @@ __attribute__((retain))
 #include "musicBankData.h"
 
 #include "libraries.h"
-#include "interrupts.c"
+#include "nmi.c"
 
 
 

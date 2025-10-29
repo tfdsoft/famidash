@@ -47,6 +47,27 @@ __attribute__((interrupt_norecurse)) void nmi(){
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[13]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[14]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[15]];
+
+
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[0]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[17]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[18]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[19]];
+
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[20]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[21]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[22]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[23]];
+
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[24]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[25]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[26]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[27]];
+
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[28]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[29]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[30]];
+            PPU.vram.data = PAL_BG_PTR[PAL_BUF[31]];
         }
 
          

@@ -37,6 +37,11 @@ file(chr_tiles_black, chr_bank_1) = {
 };
 
 
+file(chr_ground_0, chr_bank_3) = {
+    #embed "./chr/dnt/Ground0.bin"
+};
+
+
 
 
 /*

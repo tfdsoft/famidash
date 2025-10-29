@@ -44,3 +44,7 @@ extern const uint8_t chr_tiles_cross[];
 extern const uint8_t chr_tiles_brick[];
 extern const uint8_t chr_tiles_black[];
 
+
+
+extern const uint8_t chr_ground_0[];
+

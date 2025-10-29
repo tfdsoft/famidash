@@ -62,6 +62,9 @@ __attribute__((retain)) static unsigned char I;
 __attribute__((retain)) static uint8_t * __zp PAL_BG_PTR;
 __attribute__((retain)) static uint8_t * __zp PAL_SPR_PTR;
 
+__attribute__((section(".zp.name_upd_adr"),retain)) volatile const char *NAME_UPD_ADR;
+__attribute__((section(".zp.name_upd_enable"),retain)) volatile char NAME_UPD_ENABLE;
+
 
 static const uint8_t palBrightTable[192] = {
     // 0
@@ -206,11 +209,20 @@ void ppu_mask(unsigned char mask){
 // internal function used by the library;
 // do not call
 static void pal_copy(const unsigned char * const data){
-    while (LEN > 0){
-        PAL_BUF[I] = data[I];
-        LEN--;
-        I++;
+    if(I == 0){
+        while (LEN > 0){
+            PAL_BUF[I] = data[I];
+            LEN--;
+            I++;
+        }
+    } else {
+        while (LEN > 0){
+            PAL_BUF[I] = data[I-0x10];
+            LEN--;
+            I++;
+        }
     }
+    
 }
 
 /*
@@ -240,7 +252,7 @@ __attribute__((noinline)) void pal_bg(const unsigned char * const data){
  * set the palettes for sprites
 */
 __attribute__((noinline)) void pal_spr(const unsigned char * const data){
-    LEN = 0x20;
+    LEN = 0x10;
     I = 0x10;
     pal_copy(data);
     PAL_UPDATE++;
@@ -304,12 +316,13 @@ __attribute__((noinline)) void pal_bright(char bright){
  * oam_clear()
  * clear the oam buffer.
 */
-__attribute__((retain)) void oam_clear(){
+__attribute__((noinline)) void oam_clear(){
     //if (SPRID > 64) 
-    SPRID = 64;
-    for(; SPRID!=255; SPRID--) {
-        OAM_BUF[SPRID].y = 0xff;
-    }
+    SPRID = 0;
+    do{
+        POKE((0x200 + SPRID), 0xff);
+        SPRID+=4;
+    }while(SPRID != 0);
 }
 
 /*
@@ -319,8 +332,8 @@ __attribute__((retain)) void oam_clear(){
 // if I laid this out correctly,
 // .A = x
 // .X = y
-// .__rc0 = tile
-// .__rc1 = attr 
+// .__rc2 = tile
+// .__rc3 = attr 
 // no clue how the compiler is gonna optimize it though
 __attribute__((noinline)) void oam_spr(char x, char y, char tile, char attr){
     if(SPRID >= 64) return;
@@ -604,6 +617,19 @@ void vram_inc(unsigned char n){
     } else {
         PPU_CTRL_VAR |= 0b00000100;
     }
+}
+
+
+
+
+
+/*
+ * set_vram_update(*buf)
+ * set the pointer to the vram buffer.
+*/
+void set_vram_update(const char *buf) {
+    NAME_UPD_ADR = buf;
+    NAME_UPD_ENABLE = NAME_UPD_ADR != 0;
 }
 
 

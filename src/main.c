@@ -55,7 +55,7 @@ int main(void){
     //pal_bg((const char *)0x120);
     pal_bright(0);
     
-
+    set_chr_a12_inversion(CHR_A12_INVERT);
     set_chr_bank(0,0);
     set_chr_bank(1,2);
     set_chr_bank(2,4);
