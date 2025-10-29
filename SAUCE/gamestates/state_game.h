@@ -249,7 +249,6 @@ void state_game(){
 //			draw_sprites();
 //			if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			crossPRGBankJump0(sprite_collide);
-
 		}
 		else {
 			#if __VS_SYSTEM
@@ -453,6 +452,8 @@ void state_game(){
 		if (joypad1.select && DEBUG_MODE) {
 		    if (++END_LEVEL_TIMER > 60) {
 				END_LEVEL_TIMER = 0;
+				kandokidshack4 = 0;
+				oam_clear();
 				gameState = STATE_LVLDONE;
 				//DEBUG_MODE = 0;
 				famistudio_music_stop();
