@@ -62,55 +62,56 @@ char bg_coll_sides() {
 	return 0;
 }
 
+#pragma warn (unreachable-code, push, off)
 char col_death_bottom_routine() {
 	if ((uint8_t)(temp_y & 0x0f) > 0x0a) {							// If Y pos inside block ≥ 8px, die
-		tmp20f();				// If Y pos inside block < 8px, die
-		if (tmp2 >= 0x04 && tmp2 < 0x09) {		// If X pos even insider, die even more
+		// If Y pos inside block < 8px, die
+		do_if_in_range((uint8_t)(temp_x & 0x0f), 0x04, 0x09-1, {		// If X pos even insider, die even more
 			cube_data[currplayer] = 1;
 			return 1;
-		}
+		});
 	}	
 	return 0;
 }
 
 char col_death_top_routine() {
 	if ((uint8_t)(temp_y & 0x0f) < 0x06) {			
-		tmp20f();				// If Y pos inside block < 8px, die
-		if (tmp2 >= 0x04 && tmp2 < 0x09) {		// If X pos even insider, die even more
+		// If Y pos inside block < 8px, die
+		do_if_in_range((uint8_t)(temp_x & 0x0f), 0x04, 0x09-1, {		// If X pos even insider, die even more
 			cube_data[currplayer] = 1;
 			return 1;
-		}
+		});
 	}	
 	return 0;
 }
 
 char col_death_right_routine() {
 	if ((uint8_t)(temp_x & 0x0f) >= 0x0a) {
-		tmp2 = temp_y & 0x0f;
-		if (tmp2 >= 0x06 && tmp2 < 0x09) {
+		do_if_in_range((uint8_t)(temp_y & 0x0f), 0x06, 0x09-1, {
 			cube_data[currplayer] = 1;
 			return 1;
-		}
+		});
 	}
 	return 0;
 }
 
 char col_death_left_routine() {
 	if ((uint8_t)(temp_x & 0x0f) < 0x06) {
-		tmp2 = temp_y & 0x0f;
-		if (tmp2 >= 0x06 && tmp2 < 0x09) {
+		do_if_in_range((uint8_t)(temp_y & 0x0f), 0x06, 0x09-1, {
 			cube_data[currplayer] = 1;
 			return 1;
-		}
+		});
 	}
 	return 0;
 }
+
 
 /*
 	Clobbers:
 	tmp2
 */
 char bg_coll_spikes() {
+	#define _break goto bg_coll_spikes_break
 	switch (collision) {
 		case COL_DEATH_LEFT:
 			return col_death_left_routine();
@@ -140,82 +141,65 @@ char bg_coll_spikes() {
 		case COL_DEATH:	
 			tmp2 = (uint8_t)(temp_y & 0x0f);
 			if (tmp2 >= 0x04 && tmp2 < 0x0c) {
-				tmp20f();
-				if (tmp2 >= 0x04 && tmp2 < 0x09) {
-					break;
-				}
+				do_if_in_range((uint8_t)(temp_x & 0x0f), 0x04, 0x09-1, {_break;});
 			}
 			return 0;
 		case COL_LEFT_SPIKE_BLOCK:
 		case COL_BOTTOM_LEFT_SPIKE:
 			if (!(uint8_t)(temp_y & 0x08)) {
-				tmp20f();
-				if (tmp2 >= 0x02 && tmp2 < 0x06)
-					break;
+				do_if_in_range((uint8_t)(temp_x & 0x0f), 0x02, 0x06-1, {_break;});
 			}
 			return 0;
 		case COL_RIGHT_SPIKE_BLOCK:
 		case COL_BOTTOM_RIGHT_SPIKE:
 			if (!(uint8_t)(temp_y & 0x08)) {
-				tmp20f();
-				if (tmp2 >= 0x0a && tmp2 < 0x0d)
-					break;
+				do_if_in_range((uint8_t)(temp_x & 0x0f), 0x0a, 0x0d-1, {_break;});
 			}
 			return 0;
 		case COL_BOTTOM_SPIKES:
 			if (!(uint8_t)(temp_y & 0x08)) {
-				tmp2 = (uint8_t)(temp_x & 0x07);
-				if (tmp2 >= 0x02 && tmp2 < 0x06)
-					break;
+				do_if_in_range((uint8_t)(temp_x & 0x07), 0x02, 0x06-1, {_break;});
 			}
 			return 0;
-			case COL_UP_LEFT_SPIKE:
+		case COL_UP_LEFT_SPIKE:
 			if (!(uint8_t)(temp_y & 0x08)) {
-				tmp20f();
-				if (tmp2 >= 0x02 && tmp2 < 0x06)
-					break;
+				do_if_in_range((uint8_t)(temp_x & 0x0f), 0x02, 0x06-1, {_break;});
 			}
 			return 0;
 		case COL_UP_RIGHT_SPIKE:
 			if (!(uint8_t)(temp_y & 0x08)) {
-				tmp20f();
-				if (tmp2 >= 0x0a && tmp2 < 0x0d)
-					break;
+				do_if_in_range((uint8_t)(temp_x & 0x0f), 0x0a, 0x0d-1, {_break;});
 			}
 			return 0;
 		case COL_UP_BOTH_SPIKES:
 			if (!(uint8_t)(temp_y & 0x08)) {
-				tmp2 = (uint8_t)(temp_x & 0x07);
-				if (tmp2 >= 0x02 && tmp2 < 0x06)
-					break;
+				do_if_in_range((uint8_t)(temp_x & 0x07), 0x02, 0x06-1, {_break;});
 			}
 			return 0;
 		case COL_DOWN_LEFT_SPIKE:
 			if ((uint8_t)(temp_y & 0x08)) {
-				tmp20f();
-				if (tmp2 >= 0x02 && tmp2 < 0x06)
-					break;
+				do_if_in_range((uint8_t)(temp_x & 0x0f), 0x02, 0x06-1, {_break;});
 			}
 			return 0;
 		case COL_DOWN_RIGHT_SPIKE:
 			if ((uint8_t)(temp_y & 0x08)) {
-				tmp20f();
-				if (tmp2 >= 0x0a && tmp2 < 0x0d)
-					break;
+				do_if_in_range((uint8_t)(temp_x & 0x0f), 0x0a, 0x0d-1, {_break;});
 			}
 			return 0;
 		case COL_DOWN_BOTH_SPIKES:
 			if ((uint8_t)(temp_y & 0x08)) {
-				tmp2 = (uint8_t)(temp_x & 0x07);
-				if (tmp2 >= 0x02 && tmp2 < 0x06)
-					break;
+				do_if_in_range((uint8_t)(temp_x & 0x07), 0x02, 0x06-1, {_break;});
 			}
 			return 0;
 		default: return 0;
 	}
+	#undef _break
+	bg_coll_spikes_break:
 	cube_data[currplayer] = 1;		
 	return 1;					
 }
+
+#pragma warn(unreachable-code, pop)
 
 /*
 	Clobbers:
@@ -1069,14 +1053,11 @@ void commonly_stored_routine_2() {
 			scroll_y
 		), temp_y, temp_room);
 }		
-void tmp20f() {
-	tmp2 = (uint8_t)(temp_x & 0x0f);	
-}
 
 void commonly_used_death_check() {
-	if ((uint8_t)(temp_x & 0x0f) >= 0x04 && (uint8_t)(temp_x & 0x0f) < 0x09) {
+	do_if_in_range((uint8_t)(temp_x & 0x0f), 0x04, 0x08, {
 		cube_data[currplayer] = 1;
-	}
+	});
 }
 
 
