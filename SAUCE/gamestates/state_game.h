@@ -240,7 +240,7 @@ void state_game(){
 		}
 
 		kandoframecnt++;
-		if ((slowmode || (kandokidshack4 == 15)) && (kandoframecnt & 1)) { ppu_wait_nmi(); 
+		if ((slowmode || (kandokidshack4 == 15)) && !(kandoframecnt & 1)) { ppu_wait_nmi(); 
 			if (!(kandokidshack4 == 15)) music_update();
 //			oam_clear();
 //			mmc3_set_prg_bank_1(GET_BANK(draw_screen));
