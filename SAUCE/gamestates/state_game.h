@@ -246,14 +246,14 @@ void state_game(){
 					ppu_wait_nmi(); 
 					crossPRGBankJump0(sprite_collide);
 				}
-				else { everything_else(); }
+				else { everything_else(); }			//do the normal state_game stuff
 		}
 		else if ((slowmode || (kandokidshack4 == 15)) && !(kandoframecnt & 1)) { ppu_wait_nmi(); 
 			if (!(kandokidshack4 == 15)) music_update();
 			crossPRGBankJump0(sprite_collide);
 		}
 		else {
-			everything_else();
+			everything_else();				//do the normal state_game stuff
 		}
    //     check_spr_objects();
 
