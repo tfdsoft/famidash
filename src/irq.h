@@ -5,5 +5,9 @@
 
 extern void *irq_ptr;
 extern uint8_t irq_reload_value, irq_count;
+extern uint32_t irq_args;
 
 extern void irq_basic();
+extern void irq_set_x_scroll();
+extern void irq_set_chr();
+extern void irq_set_chr_and_scroll();

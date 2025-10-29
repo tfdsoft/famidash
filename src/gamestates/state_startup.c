@@ -1,4 +1,4 @@
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".000")))
+__attribute__((section(".prg_rom_"STR(extra_code_bank))))
 const unsigned char pal_logo[16]={
     0x0f,0x00,0x3d,0x30,
     0x0f,0x0f,0x16,0x26,

@@ -2,7 +2,7 @@ unsigned char automatic_fs_updates = 0;
 unsigned char nmi_prev_bank;
 
 __attribute__((interrupt_norecurse)) void nmi(){
-    
+    //__asm__("sei");
     // oh yeah just a heads up:
     // llvm-mos needs to push EVERY. SINGLE.
     // VIRTUAL. REGISTER.
@@ -13,7 +13,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
     
     // if rendering is off, do not access vram
     if ((PPU_MASK_VAR & 0b00011000)) {
-
+        
         // send the sprites in!
         //PPU.sprite.address = 0x00;
         //APU.sprite.dma = 0x02;
@@ -88,10 +88,11 @@ __attribute__((interrupt_norecurse)) void nmi(){
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
 
+    //if(irq_reload_value > 0){
     IRQ_LATCH = irq_reload_value;
     IRQ_RELOAD = irq_reload_value;
-    IRQ_ENABLE = irq_reload_value;  // this *should* get optimized
-                                    // to a single ST%r
+    IRQ_ENABLE = irq_reload_value;
+    //}
     irq_count = 0;
     //pad_poll(0);
     //bruh.joemom++; 
@@ -110,7 +111,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
         //);
         set_prg_a000(nmi_prev_bank);
     }
-
+    //__asm__("sei");
 }
 
 

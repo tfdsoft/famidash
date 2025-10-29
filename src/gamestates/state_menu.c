@@ -39,8 +39,7 @@ void state_menu() {
     donut_decompress_vram(chr_menu_famidash, chr_bank_0);
     set_chr_bank(5,7);
     donut_decompress_vram(chr_menu_buttons, chr_bank_0);
-    set_chr_bank(5,8);
-    vram_adr(0xc00);
+    set_chr_bank(0,8);
     donut_decompress_vram(chr_ground_0, chr_bank_3);
 
     set_chr_bank(1,7);
@@ -52,7 +51,12 @@ void state_menu() {
     pal_bg(pal_title);
     pal_spr(pal_title);
 
-    setup_basic_interrupt(175, irq_basic);
+    setup_advanced_interrupt(
+        175, 
+        irq_set_chr_and_scroll,
+        args88(5,8)
+    );
+    //third_byte(irq_args) = interrupt_scroll;
 
     ppu_on_all();
     pal_fade_to(0,4);
@@ -69,10 +73,10 @@ void state_menu() {
     while(1){
         ppu_wait_nmi();
         scroll(0,0);
-        //ppu_emphasis(0b110);
         oam_clear();
-        //ppu_emphasis(0b000);
-        
+
+        third_byte(irq_args) = ++interrupt_scroll;
+        set_chr_bank(5,7);
 
         oam_spr(88, 191, 0xf5, 1);
         oam_spr(96, 191, 0xf7, 1);
@@ -82,7 +86,7 @@ void state_menu() {
         oam_spr(160, 191, 0xfb, 1);
 
 
-        set_chr_bank(5,7);
+        
 
         if(player1_pressed & PAD_A) {
             gamestate = 0x11;
@@ -93,12 +97,12 @@ void state_menu() {
         // this is incredibly basic, but it'll
         // work for the moment. basically, stall
         // until the interrupt...
-        while(irq_count == 0){__asm__ volatile("");}
+        //while(irq_count == 0){__asm__ volatile("");}
 
         // ...then update registers accordingly.
-        set_chr_bank(5,8);
-        PPU.scroll = ++interrupt_scroll;
-        PPU.scroll = interrupt_scroll;
+        //set_chr_bank(5,8);
+        //PPU.scroll = ++interrupt_scroll;
+        //PPU.scroll = interrupt_scroll;
     }
 }
 
@@ -148,14 +152,18 @@ void state_levelselect(){
 
     pal_bg(pal_levelselect);
 
-    setup_basic_interrupt(175, irq_basic);
+    setup_basic_interrupt(
+        0, 
+        irq_basic
+    );
+    set_chr_bank(5,8);
 
     ppu_on_all();
     pal_fade_to(0,4);
 
     while(1){
         ppu_wait_nmi();
-        set_chr_bank(5,7);
+        //set_chr_bank(5,7);
         oam_clear();
 
         if(player1_pressed & PAD_B) {
@@ -164,7 +172,7 @@ void state_levelselect(){
             break;
         }
 
-        while(irq_count == 0){__asm__ volatile("");}
-        set_chr_bank(5,8);
+        //while(irq_count == 0){__asm__ volatile("");}
+        //set_chr_bank(5,8);
     }
 }

@@ -114,7 +114,7 @@ __attribute__((section(".prg_rom_fixed_lo.2"),retain))
         MOUSE_X_MAXIMUM
     };
 
-__attribute__((section(".prg_rom_fixed.0"),retain)) void oam_and_readjoypad(){
+__attribute__((section(".prg_rom_fixed_lo"),noinline)) void oam_and_readjoypad(){
     __attribute__((leaf)) __asm__ volatile (
         //".section .zp \n"
         //"mouse: .fill 4 \n"
@@ -176,7 +176,7 @@ __attribute__((section(".prg_rom_fixed.0"),retain)) void oam_and_readjoypad(){
         // DMC DMA:         // PUT GET PUT GET        // Starts: 0
 
     "1: \n"
-        "LDA mouse_mask  \n"    // get put get*     *576  // Starts: 4, 158, 312, 466, [620]
+        "LDA mouse_mask \n"    // get put get*     *576  // Starts: 4, 158, 312, 466, [620]
         "AND MOUSE_PORT \n"   // put get put GET
         "CMP #$01 \n"           // put get
         "ROL joypad,X \n"        // put get put get* PUT GET  *432

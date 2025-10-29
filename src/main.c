@@ -43,7 +43,8 @@ int main(void){
     PPU.mask = PPU_MASK_VAR = 0b00000110;
     ppu_off(); // turn off everything
 
-    //irq_reload_value = 0;
+    irq_reload_value = 64;
+    irq_ptr = irq_basic;
     
     music_play(0);
     famistudio_music_stop();
@@ -57,12 +58,6 @@ int main(void){
     pal_bright(0);
     
     set_chr_a12_inversion(CHR_A12_INVERT);
-    set_chr_bank(0,0);
-    set_chr_bank(1,2);
-    set_chr_bank(2,4);
-    set_chr_bank(3,5);
-    set_chr_bank(4,6);
-    set_chr_bank(5,7);
 
     // clear chr
     vram_adr(0x0000);
@@ -78,8 +73,18 @@ int main(void){
     
 
     while(1){
+        irq_reload_value = 0;
+        __asm__("sei");
         pal_bright(0);
         ppu_off();
+        oam_clear();
+        set_chr_bank(0,0);
+        set_chr_bank(1,2);
+        set_chr_bank(2,4);
+        set_chr_bank(3,5);
+        set_chr_bank(4,6);
+        set_chr_bank(5,7);
+
         switch(gamestate){
             // when in doubt, go back to startup
             default: 

@@ -8,13 +8,15 @@ IRQ_RELOAD  = $c001
 IRQ_DISABLE = $e000
 IRQ_ENABLE  = $e001
 
-.globl irq_count
+.globl irq_count, irq_args
 .globl irq_reload_value, irq_ptr
 
 .section .zp.bss
     irq_count:          .fill 1 ; how many IRQs have
                                 ; been executed this
                                 ; frame
+    irq_args:           .fill 4 ; arguments for advanced
+                                ; interrupts
 
 .section .bss
     irq_reload_value:   .fill 1 ; scanlines to wait
@@ -47,11 +49,70 @@ IRQ_ENABLE  = $e001
     .Lreturn_point:
         jmp (irq_ptr)
 
-    
+
+stall:
+    1:          ; stall for a bit so that the
+        dey     ; register updates are outside
+        bne 1b  ; the active display
+        rts
+
     
 .globl irq_basic
     irq_basic:
         inc irq_count
         rts
+
+
+
+.globl irq_set_x_scroll
+    ; args+0 = new X scroll value
+    irq_set_x_scroll:
+        ldy #$9
+        jsr stall
+        
+        lda irq_args+0
+        sta $2005 ;PPU_SCROLL
+        sta $2005 ;PPU_SCROLL
+        
+        inc irq_count
+        rts
+
+.globl irq_set_chr
+    ; args+0 = chr bank ID
+    ; args+1 = chr bank value
+    irq_set_chr:
+        ldy #$9
+        jsr stall
+
+        lda irq_args+0
+        ldx irq_args+1
+        
+        jsr set_chr_bank    ; args were loaded
+                            ; at the start
+        inc irq_count
+        rts
+
+.globl irq_set_chr_and_scroll
+    ; args+0 = chr bank ID
+    ; args+1 = chr bank value
+    ; args+2 = new X scroll value
+    irq_set_chr_and_scroll:
+        ldy #$9
+        jsr stall
+
+        lda irq_args+0
+        ldx irq_args+1
+        ldy irq_args+2
+
+        sty $2005 ;PPU_SCROLL
+        sty $2005 ;PPU_SCROLL
+
+        jsr set_chr_bank    ; args were loaded
+                            ; at the start
+        
+        
+        inc irq_count
+        rts
+
 
 

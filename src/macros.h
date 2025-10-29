@@ -5,3 +5,6 @@
 
 #define POKE(addr, val)    (*(unsigned char*) (addr) = (val))
 #define PEEK(addr)         (*(unsigned char*) (addr))
+
+#define args888(a,b,c)    ((unsigned long)((a&0xff)+((b&0xff)<<8)+((c&0xff)<<16)))
+#define args88(a,b)    ((a)|(b<<8))
