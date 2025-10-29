@@ -61,7 +61,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8024
 
 
-.segment "DAT_BANK_03"	; Total bank size: 7868 bytes
+.segment "DAT_BANK_03"	; Total bank size: 8069 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -85,6 +85,11 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7850
+
+	.export level_data_windylandscape_0
+	level_data_windylandscape_0:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
 .segment "DAT_BANK_04"	; Total bank size: 7417 bytes
@@ -113,7 +118,7 @@
 		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7399
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8078 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8092 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -138,20 +143,8 @@
 	; Level data
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5547
 
-	.export level_data_windylandscape_0
-	level_data_windylandscape_0:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
-
-.segment "DAT_BANK_07"	; Total bank size: 8058 bytes
-	.export level_data_aftercatabath_2
-	level_data_aftercatabath_2:
-	; Level data
-		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
-
-
-.segment "DAT_BANK_08"	; Total bank size: 5728 bytes
+.segment "DAT_BANK_07"	; Total bank size: 6500 bytes
 	.export level_data_demoncryogenic
 	level_data_demoncryogenic:
 	; Header
@@ -164,7 +157,7 @@
 		.byte ($00) ;__________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;__________________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;__________________________________ Max Fall Speed (high byte)
+		.byte ($07) ;__________________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
 		.byte _DECO1 ;_________________________________ Deco type
 		.byte _SPIKESA ;_______________________________ Spike set
@@ -174,4 +167,11 @@
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/demoncryogenic.lz.bin" ; Size: 4374
+		.incbin "EXPORTS/demoncryogenic.lz.bin" ; Size: 5146
+
+
+.segment "DAT_BANK_08"	; Total bank size: 8058 bytes
+	.export level_data_aftercatabath_2
+	level_data_aftercatabath_2:
+	; Level data
+		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717

@@ -46,12 +46,12 @@
 #define song_electrodynamix 45
 #define song_idols 46
 #define song_back_on_track_full 47
-#define song_check_out 48
+#define song_clutterfunk_2 48
 #define song_cryogenic 49
 #define song_eighto_full 50
 #define song_hexagon_force 51
 #define song_clubstep_full 52
-#define song_clutterfunk_2 53
+#define song_check_out 53
 #define song_magic_touch 54
 #define song_time_machine 55
 #define song_factory_time 56

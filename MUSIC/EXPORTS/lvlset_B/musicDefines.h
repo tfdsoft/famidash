@@ -6,8 +6,8 @@
 #define song_practice 5
 #define song_magic_touch 6
 #define song_cryogenic 7
-#define song_factory_time 8
-#define song_check_out 9
+#define song_check_out 8
+#define song_factory_time 9
 #define song_endgame 10
 #define song_clutterfunk_2 11
 #define song_slash_inferno 12

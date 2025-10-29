@@ -45,7 +45,16 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[73, 21], [76, 22], [79, 23], [127, 21], [128, 23],
+					],
+					offsetX: -8
+				},
+			]
 		},
 		{
 			level: "windylandscape",

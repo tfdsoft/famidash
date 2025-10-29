@@ -224,7 +224,7 @@
 		.incbin "EXPORTS/dash.lz.0.bin" ; Size: 8132
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8144 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8145 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -247,7 +247,7 @@
 		.byte $0F ;_________________________ Starting ground color
 		.byte 27 ;__________________________ Level height
 	; Level data
-		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8126
+		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8127
 
 
 .segment "DAT_BANK_0B"	; Total bank size: 8136 bytes
