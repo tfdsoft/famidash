@@ -6,6 +6,7 @@
 void check_for_cube_data_2_set();
 void __fastcall__ movement();
 void __fastcall__ movement2();
+void everything_else();
 void mouse_and_cursor();
 extern uint8_t famistudio_song_speed;
 const uint8_t BG_Table[]={
@@ -240,17 +241,126 @@ void state_game(){
 		}
 
 		kandoframecnt++;
-		if ((slowmode || (kandokidshack4 == 15)) && !(kandoframecnt & 1)) { ppu_wait_nmi(); 
+		if (slowmode && (kandokidshack4 == 15)) {
+				if ((kandoframecnt & 3)) { 
+					ppu_wait_nmi(); 
+					crossPRGBankJump0(sprite_collide);
+				}
+				else { everything_else(); }
+		}
+		else if ((slowmode || (kandokidshack4 == 15)) && !(kandoframecnt & 1)) { ppu_wait_nmi(); 
 			if (!(kandokidshack4 == 15)) music_update();
-//			oam_clear();
-//			mmc3_set_prg_bank_1(GET_BANK(draw_screen));
-//			draw_screen(); 
-//			mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
-//			draw_sprites();
-//			if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 			crossPRGBankJump0(sprite_collide);
 		}
 		else {
+			everything_else();
+		}
+   //     check_spr_objects();
+
+  		oam_clear();
+
+		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
+		draw_screen(); 
+		mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
+		draw_sprites();
+        
+		if (kandodebugmode) { if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xAD), 2); }	
+ //       color_emphasis(0);
+
+		if (level_resetting_flag) level_resetting_flag--;
+		timewarp_done = 0;
+
+		if (DEBUG_MODE) gray_line();
+		if (!DEBUG_MODE && kandodebugmode != 2) {
+		if (high_byte(player_x[0]) > 0x20) {
+			if (cube_data[0] & 1 || cube_data[1] & 1) {
+				death_animation();
+				mmc3_set_prg_bank_1(GET_BANK(reset_level));
+				reset_level();
+				#if __VS_SYSTEM
+					if (!coins_inserted) {
+						gameState = STATE_GAMEOVER; 
+						sfx_play(sfx_exit_level,0);
+						music_update();
+						gameboy_check();
+						pauseStatus = 0;
+						return;
+					}
+				#endif
+			}
+		} else cube_data[0] = cube_data[1] = 0;
+	}
+
+        if (gameState != STATE_GAME) return;
+	if (mouse_timer) mouse_timer--;
+
+    }
+    
+}
+
+void runthecolls() {
+	if (!invincible_counter) {
+		x_movement_coll();
+	}
+
+	if (processXMovement) {
+		x_movement();
+	}	
+
+
+
+	if (!invincible_counter) {
+		crossPRGBankJump0(bg_coll_death);
+	}
+}				
+
+void set_player_banks() {
+		if (!retro_mode) {
+			iconbank1 = 20; iconbank2 = 24; iconbank3 = iconbank;
+		}
+		else {
+			iconbank1 = 22; iconbank2 = 26; iconbank3 = 18;
+		}
+		
+		if (gamemode == GAMEMODE_NINJA) mmc3_set_2kb_chr_bank_0(NINJABANK);
+		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE)) mmc3_set_2kb_chr_bank_0(iconbank2);
+		else if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_SHIP || gamemode == GAMEMODE_UFO) mmc3_set_2kb_chr_bank_0(iconbank3);
+		else mmc3_set_2kb_chr_bank_0(iconbank1);
+
+}
+
+void x_minus_15() {
+	high_byte(player_x[0]) -= 15;
+	high_byte(currplayer_x) -= 15;	
+}
+void x_plus_15() {
+	high_byte(player_x[0]) += 15;
+	high_byte(currplayer_x) += 15;	
+}
+void y_minus_15() {
+	high_byte(player_y[0]) -= 15;
+	high_byte(currplayer_y) -= 15;	
+}
+void y_plus_15() {
+	high_byte(player_y[0]) += 15;
+	high_byte(currplayer_y) += 15;	
+}
+
+void mouse_and_cursor() {
+	if (mouse.connected) {
+		if (mouse.left || mouse.right || mouse.x != prev_mouse_x || mouse.y != prev_mouse_y) mouse_timer = 120;
+		if (mouse.right_press) joypad1.press_b = true;
+		if (mouse.right) joypad1.b = true;
+		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
+		if (kandoframecnt > 0xFC) kandoframecnt = 0;
+		if (gameState != STATE_GAME) { if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA1 + (2*mouseframe)), 2); }
+
+		prev_mouse_x = mouse.x;
+		prev_mouse_y = mouse.y;
+	}
+}
+
+void everything_else() {
 			#if __VS_SYSTEM
 			music_update();
 			ppu_wait_nmi();
@@ -325,13 +435,13 @@ void state_game(){
 
 			#if !__VS_SYSTEM	// No pause in arcade
 			if (joypad1.press_start || (mouse.right_press && !(mouse.left))) {
-				joypad1.press = 0;
-				mouse.right_press = 0;
+				pauseStatus = 1;
 				famistudio_music_pause(1);
 				famistudio_update();
 				color_emphasis(COL_EMP_DARK);
+				mouse.right_press = 0;
+				joypad1.press = 0;
 				exittimer = 0;
-				pauseStatus = 1;
 				// ppu_off();
 				// mmc3_set_8kb_chr(16);
 				// vram_adr(NAMETABLE_B);
@@ -637,111 +747,6 @@ void state_game(){
 				currplayer_slope_type = slope_type[0];
 				currplayer_last_slope_type = last_slope_type[0];
 				update_currplayer_table_idx();
-			}
 		}
 	}
-   //     check_spr_objects();
-
-  		oam_clear();
-
-		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
-		draw_screen(); 
-		mmc3_set_prg_bank_1(GET_BANK(draw_sprites));	
-		draw_sprites();
-        
-		if (kandodebugmode) { if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xAD), 2); }	
- //       color_emphasis(0);
-
-		if (level_resetting_flag) level_resetting_flag--;
-		timewarp_done = 0;
-
-		if (DEBUG_MODE) gray_line();
-		if (!DEBUG_MODE && kandodebugmode != 2) {
-		if (high_byte(player_x[0]) > 0x20) {
-			if (cube_data[0] & 1 || cube_data[1] & 1) {
-				death_animation();
-				mmc3_set_prg_bank_1(GET_BANK(reset_level));
-				reset_level();
-				#if __VS_SYSTEM
-					if (!coins_inserted) {
-						gameState = STATE_GAMEOVER; 
-						sfx_play(sfx_exit_level,0);
-						music_update();
-						gameboy_check();
-						pauseStatus = 0;
-						return;
-					}
-				#endif
-			}
-		} else cube_data[0] = cube_data[1] = 0;
-	}
-
-        if (gameState != STATE_GAME) return;
-	if (mouse_timer) mouse_timer--;
-
-    }
-    
 }
-
-void runthecolls() {
-	if (!invincible_counter) {
-		x_movement_coll();
-	}
-
-	if (processXMovement) {
-		x_movement();
-	}	
-
-
-
-	if (!invincible_counter) {
-		crossPRGBankJump0(bg_coll_death);
-	}
-}				
-
-void set_player_banks() {
-		if (!retro_mode) {
-			iconbank1 = 20; iconbank2 = 24; iconbank3 = iconbank;
-		}
-		else {
-			iconbank1 = 22; iconbank2 = 26; iconbank3 = 18;
-		}
-		
-		if (gamemode == GAMEMODE_NINJA) mmc3_set_2kb_chr_bank_0(NINJABANK);
-		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE)) mmc3_set_2kb_chr_bank_0(iconbank2);
-		else if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_SHIP || gamemode == GAMEMODE_UFO) mmc3_set_2kb_chr_bank_0(iconbank3);
-		else mmc3_set_2kb_chr_bank_0(iconbank1);
-
-}
-
-void x_minus_15() {
-	high_byte(player_x[0]) -= 15;
-	high_byte(currplayer_x) -= 15;	
-}
-void x_plus_15() {
-	high_byte(player_x[0]) += 15;
-	high_byte(currplayer_x) += 15;	
-}
-void y_minus_15() {
-	high_byte(player_y[0]) -= 15;
-	high_byte(currplayer_y) -= 15;	
-}
-void y_plus_15() {
-	high_byte(player_y[0]) += 15;
-	high_byte(currplayer_y) += 15;	
-}
-
-void mouse_and_cursor() {
-	if (mouse.connected) {
-		if (mouse.left || mouse.right || mouse.x != prev_mouse_x || mouse.y != prev_mouse_y) mouse_timer = 120;
-		if (mouse.right_press) joypad1.press_b = true;
-		if (mouse.right) joypad1.b = true;
-		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
-		if (kandoframecnt > 0xFC) kandoframecnt = 0;
-		if (gameState != STATE_GAME) { if (mouse_timer) oam_spr(mouse.x, mouse.y - 1, (0xA1 + (2*mouseframe)), 2); }
-
-		prev_mouse_x = mouse.x;
-		prev_mouse_y = mouse.y;
-	}
-}
-
