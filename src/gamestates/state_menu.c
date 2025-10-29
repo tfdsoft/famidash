@@ -90,7 +90,7 @@ void state_menu() {
         }
 
         
-        for(unsigned short i=0; i<512; i++){
+        for(unsigned short i=0; i<768; i++){
             __asm__ ("nop");
         }
         set_chr_bank(5,8);
