@@ -244,13 +244,16 @@ void state_game(){
 		if (slowmode && (kandokidshack4 == 15)) {
 				if ((kandoframecnt & 3)) { 
 					ppu_wait_nmi(); 
-					crossPRGBankJump0(sprite_collide);
+					crossPRGBankJump0(check_for_cube_data_2_set);
+					//crossPRGBankJump0(sprite_collide);
 				}
 				else { everything_else(); }			//do the normal state_game stuff
 		}
-		else if ((slowmode || (kandokidshack4 == 15)) && !(kandoframecnt & 1)) { ppu_wait_nmi(); 
+		else if ((slowmode || (kandokidshack4 == 15)) && !(kandoframecnt & 1)) { 
+			ppu_wait_nmi(); 
 			if (!(kandokidshack4 == 15)) music_update();
-			crossPRGBankJump0(sprite_collide);
+			crossPRGBankJump0(check_for_cube_data_2_set);
+			//crossPRGBankJump0(sprite_collide);
 		}
 		else {
 			everything_else();				//do the normal state_game stuff
