@@ -1087,14 +1087,7 @@ void choose_menu_theme() {
 #endif
 
 
-void slope_jump_check() {
-	if (make_cube_jump_higher) {
-		if ((currplayer_slope_type & SLOPE_DEGREES_MASK) != SLOPE_22DEG) {
-			currplayer_vel_y += MAKE_CUBE_JUMP_HIGHER(currplayer_table_idx);
-		}
-		make_cube_jump_higher = 0;
-	}
-}
+
 
 void check_for_cube_data_2_set() {
 	if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0 && (gamemode != GAMEMODE_UFO && gamemode != GAMEMODE_SHIP)) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
