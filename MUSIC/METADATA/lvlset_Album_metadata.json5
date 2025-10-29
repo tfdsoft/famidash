@@ -675,12 +675,12 @@
 			coveringArtist: "ElAngel378",
 		},	
 		{
-			fmsSongName: "subtle oddities",
+			fmsSongName: "Subtle Oddities",
 			upperText: "SUBTLE",
 			lowerText: "ODDITIES",
 			originalArtist: "Lemon Demon",
-			coveringArtist: "DWEDIT",
-		},	
+			coveringArtist: ["alexmush", "SeaGlowingPro"]
+		},
 		{
 			fmsSongName: "The Angel",
 			lowerText: "THE ANGEL",
