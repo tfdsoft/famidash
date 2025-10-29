@@ -67,7 +67,7 @@ TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
 CFLAGS = -flto -Os -ffast-math -fnonreentrant -std=gnu23 -Wall -Wextra
-LDFLAGS = -mreserve-zp=27 -T $(CFG)
+LDFLAGS = -mreserve-zp=28 -T $(CFG)
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -118,8 +118,8 @@ $(TMPDIR)/donut.o: src/chr/*.s
 $(TMPDIR)/assets.o: src/chr/dnt/*.bin src/assets.c src/assets.h
 	$(CC) -c src/assets.c $(CFLAGS) -o $@
 
-$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/famistudio.o $(TMPDIR)/music.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/gamestates/*.c music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
-	$(CC) src/main.c $(call cc65IncDir,music/EXPORTS/lvlset_$(LEVELSET)) $(TMPDIR)/*.o $(CFLAGS) $(LDFLAGS) -o $@
+$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/famistudio.o $(TMPDIR)/music.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/*.s src/gamestates/*.c music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
+	$(CC) src/main.c src/*.s $(call cc65IncDir,music/EXPORTS/lvlset_$(LEVELSET)) $(TMPDIR)/*.o $(CFLAGS) $(LDFLAGS) -o $@
 	
 
 

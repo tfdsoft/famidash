@@ -28,6 +28,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
             PPU.vram.address = 0x3f;
             PPU.vram.address = 0x00;
             
+            // unrolled for THE SPEED
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[0]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[1]];
             PPU.vram.data = PAL_BG_PTR[PAL_BUF[2]];
@@ -78,7 +79,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
 
         
         
-        oam_and_readjoypad();
+        oam_and_readjoypad(); // PPU regs are reset in here
         //PPU.status; // read ppu status. thanks llvm-mos!
         //PPU.scroll = SCROLL_X;
         //PPU.scroll = SCROLL_Y;
@@ -86,7 +87,12 @@ __attribute__((interrupt_norecurse)) void nmi(){
     }
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
-    
+
+    IRQ_LATCH = irq_reload_value;
+    IRQ_RELOAD = irq_reload_value;
+    IRQ_ENABLE = irq_reload_value;  // this *should* get optimized
+                                    // to a single ST%r
+    irq_count = 0;
     //pad_poll(0);
     //bruh.joemom++; 
 

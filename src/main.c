@@ -42,8 +42,9 @@ int main(void){
     PPU.control = PPU_CTRL_VAR = 0b10100000;
     PPU.mask = PPU_MASK_VAR = 0b00000110;
     ppu_off(); // turn off everything
-    
 
+    //irq_reload_value = 0;
+    
     music_play(0);
     famistudio_music_stop();
 

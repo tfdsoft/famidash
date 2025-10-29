@@ -52,6 +52,8 @@ void state_menu() {
     pal_bg(pal_title);
     pal_spr(pal_title);
 
+    setup_basic_interrupt(175, irq_basic);
+
     ppu_on_all();
     pal_fade_to(0,4);
 
@@ -61,7 +63,6 @@ void state_menu() {
     // do it manually here
     __asm__("lda #0"); 
     music_play(song_menu_theme);
-
 
     //automatic_fs_updates=1;
    interrupt_scroll = 0;
@@ -89,10 +90,12 @@ void state_menu() {
             break;
         }
 
-        
-        for(unsigned short i=0; i<768; i++){
-            __asm__ ("nop");
-        }
+        // this is incredibly basic, but it'll
+        // work for the moment. basically, stall
+        // until the interrupt...
+        while(irq_count == 0){__asm__ volatile("");}
+
+        // ...then update registers accordingly.
         set_chr_bank(5,8);
         PPU.scroll = ++interrupt_scroll;
         PPU.scroll = interrupt_scroll;
@@ -145,12 +148,15 @@ void state_levelselect(){
 
     pal_bg(pal_levelselect);
 
+    setup_basic_interrupt(175, irq_basic);
+
     ppu_on_all();
     pal_fade_to(0,4);
 
     while(1){
         ppu_wait_nmi();
         set_chr_bank(5,7);
+        oam_clear();
 
         if(player1_pressed & PAD_B) {
             gamestate = 0x10;
@@ -158,9 +164,7 @@ void state_levelselect(){
             break;
         }
 
-        for(unsigned short i=0; i<960; i++){
-            __asm__ ("nop");
-        }
+        while(irq_count == 0){__asm__ volatile("");}
         set_chr_bank(5,8);
     }
 }

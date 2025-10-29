@@ -3,5 +3,5 @@
         "*.c": "c",
         "array": "c"
     },
-    "makefile.configureOnOpen": true
+    "makefile.configureOnOpen": false
 }
