@@ -436,7 +436,7 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; dorabaebasic6
 	.byte .lobyte($0000AC)		; dreamer
 	.byte .lobyte($00005C)		; lookatthislevel
-	.byte .lobyte($0000A3)		; groundtospace
+	.byte .lobyte($0000A2)		; groundtospace
 	.byte .lobyte($000088)		; subzero
 	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
@@ -546,7 +546,7 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; dorabaebasic6
 	.byte .hibyte($0000AC)		; dreamer
 	.byte .hibyte($00005C)		; lookatthislevel
-	.byte .hibyte($0000A3)		; groundtospace
+	.byte .hibyte($0000A2)		; groundtospace
 	.byte .hibyte($000088)		; subzero
 	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
@@ -656,7 +656,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; dorabaebasic6
 	.byte .bankbyte($0000AC)		; dreamer
 	.byte .bankbyte($00005C)		; lookatthislevel
-	.byte .bankbyte($0000A3)		; groundtospace
+	.byte .bankbyte($0000A2)		; groundtospace
 	.byte .bankbyte($000088)		; subzero
 	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii

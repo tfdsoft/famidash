@@ -1704,9 +1704,10 @@
 			songID: "song_ground_to_space",
 			startingGameMode: 0,
 			startingSpeed: 1,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02,
+			startingBackgroundColor: 0x03,
+			startingGroundColor: 0x00,
 			parallaxDisable: true,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -1716,7 +1717,9 @@
 					offsetY: +8
 				},
 				{
-					coordinates: [107, 20],		//yellow orb
+					coordinates: [
+						[138, 9], [107, 20],
+					],
 					offsetX: -8
 				},
 				{
@@ -1725,13 +1728,13 @@
 				},
 				{
 					coordinates: [
-						[298, 12],	[511, 16],	[845, 17],		//speed portal
+						[298, 12],	[511, 17],	[845, 17],		//speed portal
 						[719, 16],		//grav portal
 					],
 					offsetY: -8
 				},
 				{
-					coordinates: [844, 16],		//grav portal
+					coordinates: [822, 16],		//grav portal
 					offsetX: +16
 				},
 			]
