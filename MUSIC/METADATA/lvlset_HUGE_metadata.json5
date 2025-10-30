@@ -247,6 +247,7 @@
 			originalArtist: "Dimrain47",
 			coveringArtist: "ElAngel378",
 		},
+		/*
 		{
 			fmsSongName: "Back on Track Full",
 			upperText: "BACK ON",
@@ -254,6 +255,7 @@
 			originalArtist: "DJVI",
 			coveringArtist: ["aquamarine", "SeaGlowingPro"]
 		},
+		*/
 		{
 			fmsSongName: "Bad Apple",
 			lowerText: "BAD APPLE",
@@ -309,12 +311,14 @@
 			originalArtist: "MadhouseDUDE",
 			coveringArtist: ["sussysy", "SeaGlowingPro"]
 		},
+		/*
 		{
 			fmsSongName: "Clubstep Full",
 			lowerText: "CLUBSTEP FULL",
 			originalArtist: "Dj Nate",
 			coveringArtist: ["cloud54", "SeaGlowingPro"]
 		},
+		*/
 		{
 			fmsSongName: "clutterfunk 2",
 			lowerText: "CLUTTERFUNK 2",
@@ -353,12 +357,14 @@
 			originalArtist: "Reinnbow",
 			coveringArtist: "NerdBoy628",
 		},
+		/*
 		{
 			fmsSongName: "Dry Out Full",
 			lowerText: "DRY OUT FULL",
 			originalArtist: "DJVI",
 			coveringArtist: ["UserSniper", "Crafty Jumper", "SeaGlowingPro"]
-		},		
+		},
+		*/
 		{
 			fmsSongName: "eighto",
 			upperText: "EIGHTO",
@@ -366,12 +372,14 @@
 			originalArtist: "Jomekka",
 			coveringArtist: "sussysy",
 		},
+		/*
 		{
 			fmsSongName: "eighto full",
 			lowerText: "EIGHTO",
 			originalArtist: "Jomekka",
 			coveringArtist: "sussysy",
 		},
+		*/
 		{
 			fmsSongName: "endgame",
 			lowerText: "ENDGAME",
@@ -541,13 +549,15 @@
 			lowerText: "JACK RUSSEL",
 			originalArtist: "Bossfight",
 			coveringArtist: "NerdBoy628",
-		},	
+		},
+		/*
 		{
 			fmsSongName: "Jumper Full",
 			lowerText: "JUMPER FULL",
 			originalArtist: "Waterflame",
 			coveringArtist: ["Zenith302", "zukinnyk", "UserSniper", "SeaGlowingPro"]
-		},		
+		},
+		*/
 		{
 			fmsSongName: "just right",
 			upperText: "JUST RIGHT",
@@ -738,12 +748,14 @@
 			originalArtist: "KayoszX",
 			coveringArtist: ["ElAngel378"]
 		},	
+		/*
 		{
 			fmsSongName: "Stalemate Full",
 			lowerText: "STALEMATE",
 			originalArtist: "KayoszX",
 			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
-		},	
+		},
+		*/
 		{
 			fmsSongName: "Stereo madness 2",
 			upperText: "STEREO",
@@ -782,7 +794,8 @@
 			lowerText: "THERMODYNAMIX",
 			originalArtist: "Dj Nate",
 			coveringArtist: ["Vikrinox","SeaGlowingPro"]
-		},		
+		},
+		/*		
 		{
 			fmsSongName: "Time Machine Full",
 			upperText: "TIME MACHINE",
@@ -790,6 +803,7 @@
 			originalArtist: "Waterflame",
 			coveringArtist: ["Zenith302", "Vikrinox", "alexmush", "SeaGlowingPro"]
 		},
+		*/
 		{
 			fmsSongName: "Tiny Tunes",
 			lowerText: "TINY TUNES",
