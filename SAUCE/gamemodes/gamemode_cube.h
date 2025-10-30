@@ -106,7 +106,9 @@ void cube_movement(){
 				jumps++;
 				currplayer_vel_y = ROBOT_JUMP_VEL(currplayer_table_idx); // JUMP
 
-				robotjumptime[currplayer] = ROBOT_JUMP_TIME[framerate];
+				// robotjumptime[currplayer] = ROBOT_JUMP_TIME[framerate]
+				__A__ = ROBOT_JUMP_TIME[framerate], __asm__("pha");
+				idx8_store(robotjumptime, currplayer, (__asm__("pla"), __A__));
 				robotjumpframe[0] = 1;
 			}
 		}
@@ -117,7 +119,9 @@ void cube_movement(){
 				jumps++;
 				currplayer_vel_y = ROBOT_JUMP_VEL(currplayer_table_idx); // JUMP
 				
-				robotjumptime[currplayer] = ROBOT_JUMP_TIME[framerate];
+				// robotjumptime[currplayer] = ROBOT_JUMP_TIME[framerate]
+				__A__ = ROBOT_JUMP_TIME[framerate], __asm__("pha");
+				idx8_store(robotjumptime, currplayer, (__asm__("pla"), __A__));
 				robotjumpframe[0] = 1;
 			}
 		}
