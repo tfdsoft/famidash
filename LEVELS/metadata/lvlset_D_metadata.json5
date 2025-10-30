@@ -54,6 +54,12 @@
 					],
 					offsetX: -8
 				},
+				{
+					coordinates: [
+						[181, 18],
+					],
+					offsetY: +8
+				},
 			]
 		},
 		{
