@@ -253,7 +253,13 @@
 			lowerText: "TRACK FULL",
 			originalArtist: "DJVI",
 			coveringArtist: ["aquamarine", "SeaGlowingPro"]
-		},		
+		},
+		{
+			fmsSongName: "Bad Apple",
+			lowerText: "BAD APPLE",
+			originalArtist: "Zun",
+			coveringArtist: "Crafty Jumper",
+		},
 		{
 			fmsSongName: "Beep Beep",
 			lowerText: "BEEP BEEP",
@@ -587,8 +593,8 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
-			fmsSongName: "Mayhem",
-			lowerText: "MAYHEM",
+			fmsSongName: "Mayhem Re-NES",
+			lowerText: "MAYHEM RE NES",
 			originalArtist: "Crafty Jumper",
 			coveringArtist: "Crafty Jumper",
 		},
@@ -782,7 +788,7 @@
 			upperText: "TIME MACHINE",
 			lowerText: "FULL",
 			originalArtist: "Waterflame",
-			coveringArtist: ["Zenith302", "Vikrinox", "alexmush"]
+			coveringArtist: ["Zenith302", "Vikrinox", "alexmush", "SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Tiny Tunes",

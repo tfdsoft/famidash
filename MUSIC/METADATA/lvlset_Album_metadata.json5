@@ -215,6 +215,12 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
+			fmsSongName: "Bad Apple",
+			lowerText: "BAD APPLE",
+			originalArtist: "Zun",
+			coveringArtist: "Crafty Jumper",
+		},
+		{
 			fmsSongName: "Beast Mode (GDW Cut)",
 			upperText: "BEAST MODE",
 			lowerText: "GDW CUT",
@@ -516,8 +522,8 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
-			fmsSongName: "Mayhem",
-			lowerText: "MAYHEM",
+			fmsSongName: "Mayhem Re-NES",
+			lowerText: "MAYHEM RE NES",
 			originalArtist: "Crafty Jumper",
 			coveringArtist: "Crafty Jumper",
 		},
