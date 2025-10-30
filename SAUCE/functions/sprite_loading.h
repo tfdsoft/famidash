@@ -1248,7 +1248,10 @@ void retrofireballclear() {
 
 void dual_cap_check() {
 	if (dual && !twoplayer) {
-		player_vel_y[!currplayer] /= 2;
+		// Load player_vel_y of the other player, divide by 2
+		__AX__ = player_vel_y[(currplayer^1)&0x7F] / 2;
+		// Store it back (real fast)
+		__asm__("sta %v, y \n txa \n sta %v+1, y", player_vel_y, player_vel_y);
 	}
 }				
 

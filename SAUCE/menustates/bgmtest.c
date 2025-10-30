@@ -99,13 +99,13 @@ void state_soundtest() {
 			}
 		}			
 	__A__ = idx16_load_hi_NOC(xbgmtextsUpper, song);
-	if (__A__) draw_padded_text(xbgmtextsUpper[song & 0xFF], xbgmtextsUpperSize[song], 18, NTADR_A(7, 8));
+	if (__A__) draw_padded_text(xbgmtextsUpper[song], xbgmtextsUpperSize[song], 18, NTADR_A(7, 8));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 8));
 	__A__ = idx16_load_hi_NOC(xbgmtextsLower, song);
-	if (__A__) draw_padded_text(xbgmtextsLower[song & 0xFF], xbgmtextsLowerSize[song], 18, NTADR_A(7, 9));
+	if (__A__) draw_padded_text(xbgmtextsLower[song], xbgmtextsLowerSize[song], 18, NTADR_A(7, 9));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 9));
 	__A__ = idx16_load_hi_NOC(xbgmtextsOriginalArtist, song);
-	if (__A__) draw_padded_text(xbgmtextsOriginalArtist[song & 0xFF], xbgmtextsOriginalArtistSize[song], 18, NTADR_A(7, 14));
+	if (__A__) draw_padded_text(xbgmtextsOriginalArtist[song], xbgmtextsOriginalArtistSize[song], 18, NTADR_A(7, 14));
 	else one_vram_buffer_horz_repeat('$', 17, NTADR_A(7, 14));
 	
 	draw_padded_text(sfxtexts[sfx & 0x7F], sfxtextSizes[sfx], 18, NTADR_A(7, 19));
