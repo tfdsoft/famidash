@@ -1025,12 +1025,12 @@ void bg_coll_death() {
 	if (collision) {
 		if (!dblocked[currplayer] || gamemode != GAMEMODE_WAVE) {
 			if (bg_coll_U_D_checks() | bg_coll_mini_blocks() | bg_coll_spikes() | bg_coll_slope()) {
-				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+				cube_data[currplayer] |= 1;
 			}
 		}
 		else {
 			if (bg_coll_mini_blocks() | bg_coll_spikes() | bg_coll_slope()) {
-				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+				cube_data[currplayer] |= 1;
 			}
 		}
 	}
