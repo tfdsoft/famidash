@@ -448,7 +448,7 @@ _level_lengths_lo:
 	.byte .lobyte($000082)		; tinytunes
 	.byte .lobyte($000079)		; kappaclysm
 	.byte .lobyte($0000A5)		; sunshine
-	.byte .lobyte($0000BB)		; revolution
+	.byte .lobyte($0000BA)		; revolution
 	.byte .lobyte($0000B0)		; funnygameholiday
 	.byte .lobyte($0000BF)		; fireaura
 	.byte .lobyte($0000AB)		; rainbowdust
@@ -558,7 +558,7 @@ _level_lengths_md:
 	.byte .hibyte($000082)		; tinytunes
 	.byte .hibyte($000079)		; kappaclysm
 	.byte .hibyte($0000A5)		; sunshine
-	.byte .hibyte($0000BB)		; revolution
+	.byte .hibyte($0000BA)		; revolution
 	.byte .hibyte($0000B0)		; funnygameholiday
 	.byte .hibyte($0000BF)		; fireaura
 	.byte .hibyte($0000AB)		; rainbowdust
@@ -668,7 +668,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000082)		; tinytunes
 	.byte .bankbyte($000079)		; kappaclysm
 	.byte .bankbyte($0000A5)		; sunshine
-	.byte .bankbyte($0000BB)		; revolution
+	.byte .bankbyte($0000BA)		; revolution
 	.byte .bankbyte($0000B0)		; funnygameholiday
 	.byte .bankbyte($0000BF)		; fireaura
 	.byte .bankbyte($0000AB)		; rainbowdust

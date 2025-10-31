@@ -41,9 +41,9 @@
 #define song_atthespeedoflight2 40
 #define song_hexagon_force 41
 #define song_cryogenic 42
-#define song_bad_apple 43
+#define song_check_out 43
 #define song_magic_touch 44
-#define song_check_out 45
+#define song_bad_apple 45
 #define song_factory_time 46
 #define song_clutterfunk_2 47
 #define song_idols 48

@@ -46,9 +46,9 @@
 #define song_eighto_full 45
 #define song_hexagon_force 46
 #define song_clubstep_full 47
-#define song_bad_apple 48
+#define song_check_out 48
 #define song_magic_touch 49
-#define song_check_out 50
+#define song_bad_apple 50
 #define song_factory_time 51
 #define song_electroman_adventures 52
 #define song_death_moon 53

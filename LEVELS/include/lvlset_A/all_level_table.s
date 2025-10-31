@@ -196,7 +196,7 @@ _level_lengths_lo:
 	.byte .lobyte($000088)		; subzero
 	.byte .lobyte($000079)		; kappaclysm
 	.byte .lobyte($0000A5)		; sunshine
-	.byte .lobyte($0000BB)		; revolution
+	.byte .lobyte($0000BA)		; revolution
 	.byte .lobyte($0000B0)		; funnygameholiday
 	.byte .lobyte($000066)		; lostinthewoods
 	.byte .lobyte($000090)		; bloodbathbutno
@@ -244,7 +244,7 @@ _level_lengths_md:
 	.byte .hibyte($000088)		; subzero
 	.byte .hibyte($000079)		; kappaclysm
 	.byte .hibyte($0000A5)		; sunshine
-	.byte .hibyte($0000BB)		; revolution
+	.byte .hibyte($0000BA)		; revolution
 	.byte .hibyte($0000B0)		; funnygameholiday
 	.byte .hibyte($000066)		; lostinthewoods
 	.byte .hibyte($000090)		; bloodbathbutno
@@ -292,7 +292,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000088)		; subzero
 	.byte .bankbyte($000079)		; kappaclysm
 	.byte .bankbyte($0000A5)		; sunshine
-	.byte .bankbyte($0000BB)		; revolution
+	.byte .bankbyte($0000BA)		; revolution
 	.byte .bankbyte($0000B0)		; funnygameholiday
 	.byte .bankbyte($000066)		; lostinthewoods
 	.byte .bankbyte($000090)		; bloodbathbutno

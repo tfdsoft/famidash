@@ -2342,10 +2342,11 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
-						[24, 25],	[277, 20],	[326, 25],	[524, 23],	[1048, 22],		//speed portal
+						[24, 25],	[384, 25],	[326, 25],	[524, 23],	[1048, 22],		//speed portal
 						[138, 21],		//wave		
 						[524, 21],		//single portal
 						[652, 20],		//speed portal
@@ -2355,7 +2356,9 @@
 				},
 				{
 					coordinates: [
+						[82, 21],		//ufo portal
 						[138, 20],		//gravity
+						[277, 19],		//cube portal
 						[524, 20],			//speed
 						[525, 20],			//mini portal
 						[526, 20],		//gravity portal
@@ -2367,8 +2370,10 @@
 				{
 					coordinates: [
 						[50, 23],		//pink orb
+						[60, 26],		//pulse rod
 						[406, 19],			//diamond
 						[406, 25],			//diamond
+						[941, 20], [942, 20], [943, 20], [944, 20],
 					],
 					offsetX: +8			
 				},
@@ -2401,7 +2406,6 @@
 				},
 			]
 		},
-		
 		{
 			level: "funnygameholiday",
 			upperText: "FUNNYGAME",
