@@ -69,6 +69,7 @@ int main(void){
     //APU.triangle.counter = 0xFF; // enable the triangle, no timer
     
     //music_bank = music_bank_0;
+    //gamestate = 0x10;
 
     
 

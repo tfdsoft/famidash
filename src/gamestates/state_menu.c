@@ -40,7 +40,7 @@ void state_menu() {
     set_chr_bank(5,7);
     donut_decompress_vram(chr_menu_buttons, chr_bank_0);
     set_chr_bank(0,8);
-    donut_decompress_vram(chr_ground_0, chr_bank_3);
+    donut_decompress_vram(chr_ground_1, chr_bank_3);
 
     set_chr_bank(1,7);
 
@@ -50,6 +50,7 @@ void state_menu() {
 
     pal_bg(pal_title);
     pal_spr(pal_title);
+    pal_col(0x17, 0x28);
 
     setup_advanced_interrupt(
         175, 
@@ -78,6 +79,7 @@ void state_menu() {
         third_byte(irq_args) = ++interrupt_scroll;
         set_chr_bank(5,7);
 
+        // button sprites
         oam_spr(88, 191, 0xf5, 1);
         oam_spr(96, 191, 0xf7, 1);
         oam_spr(120, 191, 0xf1, 1);
@@ -86,7 +88,28 @@ void state_menu() {
         oam_spr(160, 191, 0xfb, 1);
 
 
-        
+        // the the the the 
+        // these are temporary until i implement oam_meta_spr
+
+        // center
+        oam_spr(117, 100, 0xd7, 0b00100011);
+        oam_spr(131, 100, 0xd7, 0b00100011);
+
+        // left
+        oam_spr(71, 101, 0xd7, 0b00100011);
+        oam_spr(81, 101, 0xd7, 0b00100011);
+
+        // left
+        oam_spr(167, 101, 0xd7, 0b00100011);
+        oam_spr(177, 101, 0xd7, 0b00100011);
+
+        // same order but for the bottom
+        oam_spr(117, 107, 0xd7, 0b00100011);
+        oam_spr(131, 107, 0xd7, 0b00100011);
+        oam_spr(71, 105, 0xd7, 0b00100011);
+        oam_spr(81, 105, 0xd7, 0b00100011);
+        oam_spr(167, 105, 0xd7, 0b00100011);
+        oam_spr(177, 105, 0xd7, 0b00100011);
 
         if(player1_pressed & PAD_A) {
             gamestate = 0x11;

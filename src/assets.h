@@ -47,4 +47,7 @@ extern const uint8_t chr_tiles_black[];
 
 
 extern const uint8_t chr_ground_0[];
+extern const uint8_t chr_ground_1[];
+extern const uint8_t chr_ground_2[];
+extern const uint8_t chr_ground_3[];
 

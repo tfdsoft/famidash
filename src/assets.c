@@ -40,6 +40,15 @@ file(chr_tiles_black, chr_bank_1) = {
 file(chr_ground_0, chr_bank_3) = {
     #embed "./chr/dnt/Ground0.bin"
 };
+file(chr_ground_1, chr_bank_3) = {
+    #embed "./chr/dnt/Ground1.bin"
+};
+file(chr_ground_2, chr_bank_3) = {
+    #embed "./chr/dnt/Ground2.bin"
+};
+file(chr_ground_3, chr_bank_3) = {
+    #embed "./chr/dnt/Ground3.bin"
+};
 
 
 

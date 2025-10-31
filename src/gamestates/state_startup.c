@@ -78,6 +78,9 @@ void state_startup() {
         if((stall >= 80) && (stall < 83)) pal_bright(3);
     }
 
+    //gamestate = 0x10;
+    //return;
+
     pal_fade_to(4,0);
     ppu_off();
 
@@ -124,7 +127,7 @@ void state_startup() {
             sfx_play(2,0);
             pal_fade_to(4,0);
 
-            gamestate = 0;
+            gamestate = 0x10;
             break;
         }
         
