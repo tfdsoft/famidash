@@ -1090,5 +1090,5 @@ void choose_menu_theme() {
 
 
 void check_for_cube_data_2_set() {
-	if ((controllingplayer->press_a || controllingplayer->press_up) && currplayer_vel_y != 0 && (gamemode != GAMEMODE_UFO && gamemode != GAMEMODE_SHIP)) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+	if ((controllingplayer->press & (PAD_A | PAD_UP)) && currplayer_vel_y != 0 && (gamemode != GAMEMODE_UFO && gamemode != GAMEMODE_SHIP)) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 }

@@ -351,7 +351,7 @@ void y_plus_15() {
 
 void mouse_and_cursor() {
 	if (mouse.connected) {
-		if (mouse.left || mouse.right || mouse.x != prev_mouse_x || mouse.y != prev_mouse_y) mouse_timer = 120;
+		if ((mouse.status_raw & (MOUSE_LEFT | MOUSE_RIGHT)) || mouse.x != prev_mouse_x || mouse.y != prev_mouse_y) mouse_timer = 120;
 		if (mouse.right_press) joypad1.press_b = true;
 		if (mouse.right) joypad1.b = true;
 		if (!(kandoframecnt & 0x07)) mouseframe += mouseframe == 7 ? -7 : 1;
@@ -371,7 +371,7 @@ void everything_else() {
 			ppu_wait_nmi();
 			music_update();
 			#endif
-			if (!twoplayer && !mouse.connected) joypad2 = joypad1;
+			if (!twoplayer && !(mouse.status_computed & MOUSE_CONNECTED)) joypad2 = joypad1;
 			// set_tile_banks();
 		
 			set_player_banks();
@@ -402,7 +402,7 @@ void everything_else() {
 				dual = 1;
 			}
 			
-			if (!(joypad1.a) && !(joypad1.up)) {
+			if (!(joypad1.hold & (PAD_A | PAD_UP))) {
 				if (dashing[0]) currplayer_vel_y = DASH_END_VEL_RESET(currplayer_table_idx);
 				dashing[0] = 0;
 			}
@@ -437,7 +437,7 @@ void everything_else() {
 
 
 			#if !__VS_SYSTEM	// No pause in arcade
-			if (joypad1.press_start || (mouse.right_press && !(mouse.left))) {
+			if (joypad1.press_start || (mouse.right_press && !(mouse.status_raw & MOUSE_LEFT))) {
 				pauseStatus = 1;
 				famistudio_music_pause(1);
 				famistudio_update();
@@ -452,7 +452,7 @@ void everything_else() {
 				// ppu_on_all();
 				kandokidshack3 = 0;
 				kandokidshack4 = 0;
-				while (!(joypad1.press & PAD_START) && !(mouse.right_press)) {
+				while (!(joypad1.press & PAD_START) && !(mouse.status_computed & MOUSE_RIGHT_PRESS)) {
 					if (VRAM_UPDATE == 1) {
 						ppu_wait_nmi();
 					}
@@ -468,7 +468,7 @@ void everything_else() {
 						kandokidshack4++;
 					}
 
-					else if ((controllingplayer->press_b || mouse.left_press) && !(controllingplayer->up) && !(controllingplayer->down)) {
+					else if ((controllingplayer->press_b || mouse.left_press) && !(controllingplayer->hold & (PAD_UP | PAD_DOWN))) {
 						famistudio_music_pause(0);
 						mmc3_set_prg_bank_1(GET_BANK(store_practice_state));
 						store_practice_state();
@@ -532,7 +532,7 @@ void everything_else() {
 				}		
 
 //		}
-		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.up) && !(joypad1.down)) {
+		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.hold & (PAD_UP | PAD_DOWN))) {
 			curr_practice_point--;
 			if (latest_practice_point) latest_practice_point--;
 			if (curr_practice_point >= practice_point_count)
@@ -583,7 +583,7 @@ void everything_else() {
 		crossPRGBankJump0(check_for_cube_data_2_set);
 
 	if (orbed[currplayer]) {
-		if (!(controllingplayer->hold & (PAD_A | PAD_UP)) && !mouse.left) orbed[currplayer] = 0;
+		if (!(controllingplayer->hold & (PAD_A | PAD_UP)) && !(mouse.status_raw & MOUSE_LEFT)) orbed[currplayer] = 0;
 	}
 
 		crossPRGBankJump0(sprite_collide);
@@ -677,11 +677,11 @@ void everything_else() {
 
 		if (dual) { 
 			currplayer = 1;					//take focus
-			if (!(joypad2.a) && !(joypad2.up)) {
+			if (!(joypad2.hold & (PAD_A | PAD_UP))) {
 				if (dashing[1]) currplayer_vel_y = currplayer_gravity ? -0x0100 : 0x0100;
 				dashing[1] = 0;
 			}
-			if (twoplayer || !mouse.connected) controllingplayer = &joypad2;		//take controls
+			if (twoplayer || !(mouse.status_computed & MOUSE_CONNECTED)) controllingplayer = &joypad2;		//take controls
 
 
 			{	

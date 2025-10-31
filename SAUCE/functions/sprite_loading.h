@@ -460,9 +460,9 @@ static uint16_t sprite_gamemode_y_adjust() {	// A trampoline of sorts
 }
 
 static void sprite_gamemode_main() {
-	if (controllingplayer->a || controllingplayer->up) {
+	if (controllingplayer->hold & (PAD_A | PAD_UP)) {
 		if (gamemode == BALL_MODE) ball_switched[currplayer] = 1;
-		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
+		if ((cube_data[currplayer] & 2) || controllingplayer->press & (PAD_A | PAD_UP)) {
 			if (gamemode == GAMEMODE_SPIDER && collided == BLACK_ORB) black_orbed[currplayer] = 1;
 			if (gamemode == ROBOT_MODE) orbed[currplayer] = 1;
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
@@ -547,7 +547,7 @@ static void sprite_gamemode_main() {
 }
 
 static void sprite_gamemode_controller_check() {
-	if (controllingplayer->press_a || controllingplayer->press_up) {	
+	if (controllingplayer->press & (PAD_A | PAD_UP)) {	
 		idx8_store(cube_data, currplayer, cube_data[currplayer] & 0x01);
 		settrailstuff();
 		switch (collided) {
@@ -720,12 +720,12 @@ void sprite_collide_lookup() {
 	spcl_skl_orb:
 		activesprites_animated[index] = 1;
 		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
-			if ((controllingplayer->a || controllingplayer->up)) {
+			if (controllingplayer->hold & (PAD_A | PAD_UP)) {
 				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
 				activesprites_animated[index] = 0;
 			}
 		} else {
-			if (controllingplayer->press_a || controllingplayer->press_up) {	
+			if (controllingplayer->press & (PAD_A | PAD_UP)) {	
 				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
 				activesprites_animated[index] = 0;
 			}
@@ -734,12 +734,12 @@ void sprite_collide_lookup() {
 	
 	spcl_wht_orb:
 		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
-			if ((controllingplayer->a || controllingplayer->up)) {
+			if (controllingplayer->hold & (PAD_A | PAD_UP)) {
 				currplayer_vel_y = 0;
 				activesprites_activated[index] = 1;
 			}
 		} else {
-			if (controllingplayer->press_a || controllingplayer->press_up) {	
+			if (controllingplayer->press & (PAD_A | PAD_UP)) {	
 				currplayer_vel_y = 0;
 				activesprites_activated[index] = 1;
 			}
@@ -942,7 +942,7 @@ void sprite_collide_lookup() {
 	
 	// - Teleport portals (and square)
 	spcl_tlpt_sq:
-		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
+		if ((cube_data[currplayer] & 2) || (controllingplayer->press & (PAD_A | PAD_UP))) {
 			currplayer_vel_y = 0;
 			orbed[currplayer] = 1;
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
@@ -1052,7 +1052,7 @@ void sprite_collide_lookup() {
 
 	// Spider orbs and pads
 	spcl_sporbup:
-		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
+		if ((cube_data[currplayer] & 2) || (controllingplayer->press & (PAD_A | PAD_UP))) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 	spcl_sppadup:
 			high_byte(currplayer_y) -= eject_D;
@@ -1067,7 +1067,7 @@ void sprite_collide_lookup() {
 		}
 		return;
 	spcl_sporbdn:
-		if ((cube_data[currplayer] & 2) || controllingplayer->press_a || controllingplayer->press_up) {
+		if ((cube_data[currplayer] & 2) || (controllingplayer->press & (PAD_A | PAD_UP))) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 	spcl_sppaddn:
 			high_byte(currplayer_y) -= eject_U + 1;

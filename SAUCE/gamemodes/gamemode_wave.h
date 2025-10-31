@@ -13,7 +13,7 @@ void wave_movement(){
 				(currplayer_gravity ? -currplayer_vel_x : currplayer_vel_x) :
 				(currplayer_gravity ? -(currplayer_vel_x << 1) : (currplayer_vel_x << 1));
 			
-			if (controllingplayer->a || controllingplayer->up) currplayer_vel_y = -currplayer_vel_y;
+			if (controllingplayer->hold & (PAD_A | PAD_UP)) currplayer_vel_y = -currplayer_vel_y;
 
 			if (!currplayer_slope_frames && !currplayer_was_on_slope_counter) {
 				currplayer_y += currplayer_vel_y;
@@ -62,7 +62,7 @@ void wave_movement(){
 	Generic.y = high_byte(currplayer_y);
 
 //	if (currplayer_vel_y != 0 && !slope_type){
-//		if(controllingplayer->press_a || controllingplayer->press_up) {
+//		if(controllingplayer->press & (PAD_A | PAD_UP)) {
 //			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 //		}
 //	}

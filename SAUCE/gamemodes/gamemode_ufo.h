@@ -26,7 +26,7 @@ void ufo_movement(){
 //	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
 
-	if((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed[currplayer]) {
+	if((controllingplayer->press & (PAD_A | PAD_UP)) && !ufo_orbed[currplayer]) {
 		currplayer_vel_y = UFO_JUMP_VEL(currplayer_table_idx); // JUMP
 		jumps++;
 	}

@@ -30,7 +30,7 @@ void ball_movement(){
 		Generic.y = high_byte(currplayer_y) + 1;
 	}
 
-	//if (controllingplayer->press_a || controllingplayer->press_up) idx8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
+	//if (controllingplayer->press & (PAD_A | PAD_UP)) idx8_store(cube_data, currplayer, cube_data[currplayer] | 2);	
 
 	ball_eject();
 
@@ -77,7 +77,7 @@ void ball_movement(){
 	}
 
 	if (gamemode == GAMEMODE_BALL) {
-		if (((controllingplayer->a || controllingplayer->up)) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0){
+		if (((controllingplayer->hold & (PAD_A | PAD_UP))) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0){
 			jumps++;
 			invert_gravity(currplayer_gravity);
 			update_currplayer_table_idx();
@@ -93,7 +93,7 @@ void ball_movement(){
 		}
 	}
 	else {
-		if ((controllingplayer->press_a || controllingplayer->press_up) && !ufo_orbed[currplayer]){
+		if ((controllingplayer->press & (PAD_A | PAD_UP)) && !ufo_orbed[currplayer]){
 			invert_gravity(currplayer_gravity);
 			update_currplayer_table_idx();
 			bg_coll_floor_spikes();

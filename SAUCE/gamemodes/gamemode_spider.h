@@ -23,7 +23,9 @@ void spider_movement(){
 	spider_eject();
 	
 	if (!currplayer_gravity) {
-		if(((controllingplayer->press_a || controllingplayer->press_up) || ((controllingplayer->a || controllingplayer->up) && black_orbed[currplayer]) || cube_data[currplayer] & 2) && currplayer_vel_y == 0 && !orbed[currplayer] && !dashing[currplayer]) {
+		if(((controllingplayer->press & (PAD_A | PAD_UP)) ||
+			((controllingplayer->hold & (PAD_A | PAD_UP)) && black_orbed[currplayer]) ||
+			cube_data[currplayer] & 2) && currplayer_vel_y == 0 && !orbed[currplayer] && !dashing[currplayer]) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);	
 			jumps++;
 			currplayer_gravity = GRAVITY_UP;
@@ -33,10 +35,12 @@ void spider_movement(){
 			currplayer_vel_y = 0;
 			black_orbed[currplayer] = 0;
 		}
-		else if (!(controllingplayer->a || controllingplayer->up)) black_orbed[currplayer] = 0;
+		else if (!(controllingplayer->hold & (PAD_A | PAD_UP))) black_orbed[currplayer] = 0;
 }	
 	else {
-		if(((controllingplayer->press_a || controllingplayer->press_up) || ((controllingplayer->a || controllingplayer->up) && black_orbed[currplayer]) || cube_data[currplayer] & 2) && currplayer_vel_y == 0 && !orbed[currplayer] && !dashing[currplayer]) {
+		if(((controllingplayer->press & (PAD_A | PAD_UP)) ||
+			((controllingplayer->hold & (PAD_A | PAD_UP)) && black_orbed[currplayer]) ||
+			cube_data[currplayer] & 2) && currplayer_vel_y == 0 && !orbed[currplayer] && !dashing[currplayer]) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 0b11111101);
 			jumps++;
 			currplayer_gravity = GRAVITY_DOWN;
@@ -46,7 +50,7 @@ void spider_movement(){
 			currplayer_vel_y = 0;
 			black_orbed[currplayer] = 0;
 		}
-		else if (!(controllingplayer->a || controllingplayer->up)) black_orbed[currplayer] = 0;
+		else if (!(controllingplayer->hold & (PAD_A | PAD_UP))) black_orbed[currplayer] = 0;
 	}		
 	
 

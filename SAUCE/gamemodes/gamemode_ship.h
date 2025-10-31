@@ -11,7 +11,7 @@ void is_player_falling() {
 void ship_movement(){
 	is_player_falling();
 
-	tmp2 = (controllingplayer->a || controllingplayer->up); // input
+	tmp2 = (controllingplayer->hold & (PAD_A | PAD_UP)) != 0; // input
 
 	if (tmp2) { // holding
 		tmpgravity = SHIP_GRAVITY_BASE(currplayer_table_idx);

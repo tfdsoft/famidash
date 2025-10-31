@@ -42,6 +42,12 @@ extern Mouse mouse;
 extern uint8_t mouse_mask;
 #pragma zpsym("mouse_mask");
 
+#define MOUSE_RIGHT_PRESS 0x08
+#define MOUSE_LEFT_PRESS 0x10
+#define MOUSE_RIGHT_RELEASE 0x20
+#define MOUSE_LEFT_RELEASE 0x40
+#define MOUSE_CONNECTED 0x80
+
 #define MOUSE_LEFT 0x40
 #define MOUSE_RIGHT 0x80
 

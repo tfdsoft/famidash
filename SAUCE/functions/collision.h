@@ -684,7 +684,7 @@ char bg_coll_slope() {
 			tmp8 = tmp4 - tmp7;
 
 			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA) {
-				if ((controllingplayer->a || controllingplayer->up)) {
+				if (controllingplayer->hold & (PAD_A | PAD_UP)) {
 					make_cube_jump_higher = 1;
 					
 				} else {
@@ -704,11 +704,11 @@ char bg_coll_slope() {
 				}
 
 				if (a_check_lookup[tmp4]) {
-					if (controllingplayer->a || controllingplayer->up) {
+					if (controllingplayer->hold & (PAD_A | PAD_UP)) {
 						unstick();
 					}
 				} else {
-					if (!(controllingplayer->a || controllingplayer->up)) {
+					if (!(controllingplayer->hold & (PAD_A | PAD_UP))) {
 						unstick();
 					}
 				}	

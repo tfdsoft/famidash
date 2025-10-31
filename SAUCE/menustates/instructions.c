@@ -30,7 +30,7 @@ void state_instructions(){
 		kandoframecnt++;
 	} while (!joypad1.press
 		#if !__VS_SYSTEM
-			&& !mouse.left_press
+			&& !(mouse.status_computed & MOUSE_LEFT_PRESS)
 		#endif
 		);
 	gameState = STATE_MENU;
