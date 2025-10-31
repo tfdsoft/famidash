@@ -303,6 +303,32 @@
 
 
 .segment "DAT_BANK_0D"	; Total bank size: 8122 bytes
+	.export level_data_hexagonforce
+	level_data_hexagonforce:
+	; Header
+		.byte <sprite_data_hexagonforce ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_hexagonforce ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_hexagonforce)) ;___ Sprite data bank
+		.byte song_hexagon_force ;___________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_______________________________ Deco type
+		.byte _SPIKESA ;_____________________________ Spike set
+		.byte _BLOCKSB ;_____________________________ Block set
+		.byte _SAWBLADESA ;__________________________ Sawblade set
+		.byte $13 ;__________________________________ Starting background color
+		.byte $03 ;__________________________________ Starting ground color
+		.byte 40 ;___________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/hexagonforce.lz.0.bin" ; Size: 8104
+
+
+.segment "DAT_BANK_0E"	; Total bank size: 8122 bytes
 	.export level_data_sonicwave
 	level_data_sonicwave:
 	; Header
@@ -326,32 +352,6 @@
 		.byte 27 ;________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/sonicwave.lz.0.bin" ; Size: 8104
-
-
-.segment "DAT_BANK_0E"	; Total bank size: 8106 bytes
-	.export level_data_hexagonforce
-	level_data_hexagonforce:
-	; Header
-		.byte <sprite_data_hexagonforce ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_hexagonforce ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_hexagonforce)) ;___ Sprite data bank
-		.byte song_hexagon_force ;___________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
-		.byte _DECO1 ;_______________________________ Deco type
-		.byte _SPIKESA ;_____________________________ Spike set
-		.byte _BLOCKSB ;_____________________________ Block set
-		.byte _SAWBLADESA ;__________________________ Sawblade set
-		.byte $13 ;__________________________________ Starting background color
-		.byte $03 ;__________________________________ Starting ground color
-		.byte 40 ;___________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/hexagonforce.lz.0.bin" ; Size: 8088
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 8106 bytes
@@ -927,7 +927,7 @@
 		.incbin "EXPORTS/cryogenic.lz.1.bin" ; Size: 1618
 
 
-.segment "DAT_BANK_27"	; Total bank size: 8144 bytes
+.segment "DAT_BANK_27"	; Total bank size: 8154 bytes
 	.export level_data_endorphinrush
 	level_data_endorphinrush:
 	; Header
@@ -2790,11 +2790,11 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_6F"	; Total bank size: 8177 bytes
+.segment "DAT_BANK_6F"	; Total bank size: 8167 bytes
 	.export level_data_hexagonforce_0
 	level_data_hexagonforce_0:
 	; Level data
-		.incbin "EXPORTS/hexagonforce.lz.1.bin" ; Size: 560
+		.incbin "EXPORTS/hexagonforce.lz.1.bin" ; Size: 550
 
 
 .segment "DAT_BANK_70"	; Total bank size: 5111 bytes
