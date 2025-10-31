@@ -3,7 +3,6 @@
 	Implemented in asm
 */
 // void set_tile_banks();
-void check_for_cube_data_2_set();
 void __fastcall__ movement();
 void __fastcall__ movement2();
 void everything_else();
@@ -39,7 +38,9 @@ const uint8_t G_Table[]={
 	0x2C
 };
 
-
+void check_for_cube_data_2_set() {
+	if ((controllingplayer->press & (PAD_A | PAD_UP)) && currplayer_vel_y != 0 && (gamemode != GAMEMODE_UFO && gamemode != GAMEMODE_SHIP)) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
+}
 
 void x_minus_15();
 void y_minus_15();
@@ -244,7 +245,7 @@ void state_game(){
 		if (slowmode && (kandokidshack4 == 15)) {
 				if ((kandoframecnt & 3)) { 
 					ppu_wait_nmi(); 
-					crossPRGBankJump0(check_for_cube_data_2_set);
+					check_for_cube_data_2_set();
 					//crossPRGBankJump0(sprite_collide);
 				}
 				else { everything_else(); }			//do the normal state_game stuff
@@ -252,7 +253,7 @@ void state_game(){
 		else if ((slowmode || (kandokidshack4 == 15)) && !(kandoframecnt & 1)) { 
 			ppu_wait_nmi(); 
 			if (!(kandokidshack4 == 15)) music_update();
-			crossPRGBankJump0(check_for_cube_data_2_set);
+			check_for_cube_data_2_set();
 			//crossPRGBankJump0(sprite_collide);
 		}
 		else {
@@ -585,7 +586,7 @@ void everything_else() {
 
 		decrement_was_on_slope();
 
-		crossPRGBankJump0(check_for_cube_data_2_set);
+		check_for_cube_data_2_set();
 
 	if (orbed[currplayer]) {
 		if (!(controllingplayer->hold & (PAD_A | PAD_UP)) && !(mouse.status_raw & MOUSE_LEFT)) orbed[currplayer] = 0;
@@ -704,7 +705,7 @@ void everything_else() {
 			}
 
 			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer) && !force_platformer) { invert_gravity(currplayer_gravity); update_currplayer_table_idx(); }			//DEBUG GRAVITY
-			crossPRGBankJump0(check_for_cube_data_2_set);
+			check_for_cube_data_2_set();
 			
 			decrement_was_on_slope();		
 			if (orbed[currplayer]) {
