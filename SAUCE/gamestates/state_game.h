@@ -371,7 +371,12 @@ void everything_else() {
 			ppu_wait_nmi();
 			music_update();
 			#endif
-			if (!twoplayer && !(mouse.status_computed & MOUSE_CONNECTED)) joypad2 = joypad1;
+			if (!twoplayer && !(mouse.status_computed & MOUSE_CONNECTED)) {
+				// Copy joypad byte by byte
+				joypad2.hold = joypad1.hold;
+				joypad2.press = joypad1.press;
+				joypad2.release = joypad1.release;
+			};
 			// set_tile_banks();
 		
 			set_player_banks();
