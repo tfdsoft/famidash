@@ -226,7 +226,7 @@ sprite_data_stereomadness:
   .byte $d0,$37,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_23"
+.segment "DAT_BANK_20"
 sprite_data_backontrack:
   .byte $d0,$00,$88,$03,$0a
   .byte $30,$02,$70,$03,$2b
@@ -1107,7 +1107,7 @@ sprite_data_baseafterbase:
   .byte $30,$36,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_19"
+.segment "DAT_BANK_23"
 sprite_data_cantletgo:
   .byte $b0,$00,$60,$03,$2b
   .byte $d0,$00,$80,$03,$2e
@@ -1535,7 +1535,7 @@ sprite_data_jumper:
   .byte $f0,$37,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0D"
+.segment "DAT_BANK_1B"
 sprite_data_timemachine:
   .byte $10,$01,$70,$03,$ab
   .byte $10,$01,$80,$03,$db
@@ -2951,7 +2951,7 @@ sprite_data_xstep:
   .byte $a0,$34,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_1D"
 sprite_data_clutterfunk:
   .byte $60,$01,$80,$03,$2b
   .byte $60,$01,$88,$03,$0a
@@ -3470,7 +3470,7 @@ sprite_data_clutterfunk:
   .byte $a0,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0E"
+.segment "DAT_BANK_0D"
 sprite_data_theoryofeverything:
   .byte $c0,$00,$70,$03,$0b
   .byte $00,$01,$68,$03,$25
@@ -4440,7 +4440,7 @@ sprite_data_electroman:
   .byte $e0,$36,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1D"
+.segment "DAT_BANK_1C"
 sprite_data_clubstep:
   .byte $80,$00,$30,$03,$38
   .byte $90,$00,$50,$03,$3d
@@ -6042,7 +6042,7 @@ sprite_data_hexagonforce:
   .byte $a0,$41,$c0,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_20"
+.segment "DAT_BANK_1F"
 sprite_data_blastprocessing:
   .byte $00,$00,$60,$03,$92
   .byte $00,$00,$80,$03,$c2
@@ -8958,69 +8958,98 @@ sprite_data_leveleasy:
 
 .segment "DAT_BANK_16"
 sprite_data_thechallenge:
-  .byte $00,$00,$70,$03,$cf
   .byte $00,$00,$80,$03,$b6
-  .byte $90,$00,$58,$03,$0d
-  .byte $80,$01,$30,$03,$0e
-  .byte $e0,$01,$50,$03,$0b
-  .byte $20,$02,$40,$03,$45
-  .byte $90,$02,$30,$03,$f9
-  .byte $90,$02,$40,$03,$f9
-  .byte $90,$02,$50,$03,$f9
-  .byte $48,$03,$30,$03,$06
-  .byte $78,$03,$30,$03,$06
-  .byte $b8,$03,$40,$03,$4c
-  .byte $e0,$03,$e0,$02,$f9
-  .byte $e0,$03,$f0,$02,$f9
-  .byte $f0,$03,$f0,$02,$f9
-  .byte $f0,$03,$00,$03,$f9
-  .byte $00,$04,$00,$03,$f9
-  .byte $00,$04,$10,$03,$f9
-  .byte $10,$04,$10,$03,$f9
-  .byte $20,$04,$20,$03,$f9
-  .byte $20,$04,$38,$03,$27
-  .byte $30,$04,$30,$03,$f9
-  .byte $60,$04,$28,$03,$27
-  .byte $30,$05,$58,$03,$0a
-  .byte $80,$05,$30,$03,$0b
-  .byte $c0,$05,$30,$03,$05
-  .byte $e0,$05,$f0,$02,$05
-  .byte $f8,$05,$20,$03,$27
-  .byte $40,$06,$10,$03,$27
-  .byte $60,$07,$10,$03,$13
-  .byte $80,$07,$f0,$02,$10
-  .byte $a0,$07,$f0,$02,$17
-  .byte $90,$08,$e8,$02,$0d
-  .byte $a0,$08,$d0,$02,$0e
-  .byte $a0,$08,$e8,$02,$0d
-  .byte $b0,$08,$d0,$02,$0e
-  .byte $b0,$08,$e8,$02,$0d
-  .byte $c0,$08,$d0,$02,$0e
-  .byte $c0,$08,$e8,$02,$0d
-  .byte $e0,$08,$c8,$02,$08
-  .byte $80,$09,$20,$03,$06
-  .byte $b0,$09,$20,$03,$06
-  .byte $20,$0b,$d0,$02,$0c
-  .byte $50,$0b,$f8,$02,$0b
-  .byte $90,$0b,$00,$03,$46
-  .byte $40,$0c,$f0,$02,$0e
-  .byte $40,$0c,$08,$03,$0d
-  .byte $50,$0c,$f0,$02,$0e
-  .byte $50,$0c,$08,$03,$0d
-  .byte $60,$0c,$f0,$02,$0e
-  .byte $60,$0c,$08,$03,$0d
-  .byte $70,$0c,$f0,$02,$0e
-  .byte $90,$0c,$08,$03,$0a
-  .byte $e0,$0c,$e0,$02,$00
-  .byte $20,$0e,$00,$03,$06
-  .byte $40,$0e,$70,$00,$07
-  .byte $50,$0e,$60,$00,$1a
-  .byte $60,$0e,$50,$00,$1b
-  .byte $10,$0f,$30,$00,$0f
-  .byte $10,$0f,$c0,$00,$0f
-  .byte $10,$0f,$a0,$01,$0f
-  .byte $10,$0f,$70,$02,$0f
-  .byte $10,$0f,$50,$03,$0f
+  .byte $a0,$00,$58,$03,$0d
+  .byte $90,$01,$30,$03,$0e
+  .byte $b0,$01,$10,$03,$07
+  .byte $f0,$01,$50,$03,$0b
+  .byte $30,$02,$40,$03,$45
+  .byte $80,$02,$30,$03,$f9
+  .byte $80,$02,$40,$03,$f9
+  .byte $80,$02,$50,$03,$f9
+  .byte $30,$03,$30,$03,$06
+  .byte $60,$03,$30,$03,$06
+  .byte $a0,$03,$40,$03,$4c
+  .byte $f0,$03,$40,$02,$10
+  .byte $08,$04,$30,$03,$27
+  .byte $50,$04,$20,$03,$27
+  .byte $90,$04,$20,$02,$1a
+  .byte $e0,$04,$a0,$02,$0b
+  .byte $20,$05,$20,$02,$0b
+  .byte $20,$05,$68,$03,$0a
+  .byte $60,$05,$30,$03,$0b
+  .byte $70,$05,$20,$02,$06
+  .byte $a0,$05,$30,$03,$05
+  .byte $c0,$05,$f0,$02,$05
+  .byte $e0,$05,$20,$03,$27
+  .byte $20,$06,$10,$03,$27
+  .byte $50,$06,$20,$02,$0b
+  .byte $90,$06,$30,$02,$13
+  .byte $e0,$06,$f0,$01,$16
+  .byte $40,$07,$10,$02,$0e
+  .byte $40,$07,$20,$03,$13
+  .byte $80,$07,$f0,$02,$08
+  .byte $80,$07,$f0,$02,$17
+  .byte $90,$07,$f0,$01,$0e
+  .byte $d0,$07,$c0,$01,$02
+  .byte $10,$08,$f0,$01,$05
+  .byte $40,$08,$c0,$01,$05
+  .byte $90,$08,$d8,$02,$0d
+  .byte $a0,$08,$c0,$02,$0e
+  .byte $a0,$08,$d8,$02,$0d
+  .byte $b0,$08,$d0,$01,$27
+  .byte $b0,$08,$c0,$02,$0e
+  .byte $b0,$08,$d8,$02,$0d
+  .byte $c0,$08,$c0,$02,$0e
+  .byte $c0,$08,$d8,$02,$0d
+  .byte $10,$09,$e0,$01,$05
+  .byte $30,$09,$c0,$01,$05
+  .byte $50,$09,$e0,$01,$05
+  .byte $80,$09,$10,$03,$06
+  .byte $c0,$09,$10,$03,$06
+  .byte $28,$0a,$c8,$01,$24
+  .byte $30,$0b,$c0,$02,$0c
+  .byte $70,$0b,$e0,$02,$0b
+  .byte $b0,$0b,$f0,$02,$46
+  .byte $40,$0c,$e0,$02,$0e
+  .byte $40,$0c,$f8,$02,$0d
+  .byte $50,$0c,$e0,$02,$0e
+  .byte $50,$0c,$f8,$02,$0d
+  .byte $60,$0c,$a0,$01,$00
+  .byte $60,$0c,$f0,$01,$04
+  .byte $60,$0c,$e0,$02,$0e
+  .byte $60,$0c,$f8,$02,$0d
+  .byte $70,$0c,$a0,$01,$09
+  .byte $70,$0c,$f0,$01,$08
+  .byte $70,$0c,$e0,$02,$0e
+  .byte $90,$0c,$f8,$02,$0a
+  .byte $e0,$0c,$d0,$02,$00
+  .byte $00,$0d,$20,$02,$28
+  .byte $20,$0d,$f0,$01,$44
+  .byte $40,$0d,$60,$01,$05
+  .byte $60,$0d,$90,$01,$05
+  .byte $80,$0d,$60,$01,$05
+  .byte $90,$0d,$30,$01,$0b
+  .byte $c0,$0d,$b0,$01,$03
+  .byte $e8,$0d,$40,$01,$05
+  .byte $10,$0e,$b0,$01,$00
+  .byte $20,$0e,$f0,$02,$06
+  .byte $50,$0e,$50,$01,$06
+  .byte $80,$0e,$40,$01,$28
+  .byte $b0,$0e,$20,$01,$dd
+  .byte $d0,$0e,$f0,$00,$01
+  .byte $d0,$0e,$b8,$01,$15
+  .byte $10,$0f,$20,$03,$0f
+  .byte $60,$0f,$c0,$00,$09
+  .byte $d0,$0f,$e8,$00,$20
+  .byte $f0,$0f,$f0,$01,$13
+  .byte $20,$10,$b0,$00,$28
+  .byte $40,$10,$10,$01,$28
+  .byte $90,$10,$f8,$00,$21
+  .byte $10,$11,$f0,$00,$08
+  .byte $50,$11,$00,$01,$1b
+  .byte $50,$11,$00,$02,$0f
+  .byte $40,$12,$00,$01,$0f
   .byte $ff
 
 .segment "DAT_BANK_1D"
@@ -9834,7 +9863,7 @@ sprite_data_dorabaebasic6:
   .byte $20,$38,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1C"
+.segment "DAT_BANK_1B"
 sprite_data_dreamer:
   .byte $00,$00,$80,$03,$bf
   .byte $60,$00,$20,$03,$36
@@ -11189,7 +11218,7 @@ sprite_data_kappaclysm:
   .byte $b0,$2e,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_20"
+.segment "DAT_BANK_1F"
 sprite_data_sunshine:
   .byte $00,$00,$50,$03,$a5
   .byte $00,$00,$60,$03,$18
@@ -11572,7 +11601,7 @@ sprite_data_sunshine:
   .byte $e0,$3f,$d0,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_1A"
+.segment "DAT_BANK_19"
 sprite_data_revolution:
   .byte $60,$01,$80,$03,$2a
   .byte $80,$01,$68,$03,$15
@@ -12357,7 +12386,7 @@ sprite_data_revolution:
   .byte $30,$48,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1B"
+.segment "DAT_BANK_1A"
 sprite_data_funnygameholiday:
   .byte $00,$00,$80,$03,$bd
   .byte $b0,$00,$40,$03,$36
@@ -16641,7 +16670,7 @@ sprite_data_extraordinaryexcitement:
   .byte $70,$5d,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_21"
+.segment "DAT_BANK_20"
 sprite_data_thelightningroad:
   .byte $00,$00,$70,$03,$8f
   .byte $00,$00,$80,$03,$cf
@@ -17799,7 +17828,7 @@ sprite_data_demonpark:
   .byte $70,$3e,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_23"
+.segment "DAT_BANK_22"
 sprite_data_firetemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$b6
@@ -18023,91 +18052,4 @@ sprite_data_firetemple:
   .byte $18,$36,$60,$03,$1b
   .byte $30,$36,$70,$03,$b8
   .byte $f0,$36,$70,$03,$0f
-  .byte $ff
-
-.segment "DAT_BANK_1E"
-sprite_data_foresttemple:
-  .byte $00,$00,$60,$03,$80
-  .byte $00,$00,$70,$03,$ba
-  .byte $00,$00,$80,$03,$c0
-  .byte $70,$06,$78,$03,$0d
-  .byte $10,$09,$90,$02,$0e
-  .byte $90,$0b,$50,$03,$03
-  .byte $70,$0e,$20,$03,$01
-  .byte $80,$0e,$20,$03,$18
-  .byte $80,$0e,$30,$03,$14
-  .byte $80,$11,$20,$03,$19
-  .byte $90,$11,$20,$03,$24
-  .byte $90,$11,$30,$03,$16
-  .byte $20,$17,$20,$03,$01
-  .byte $40,$17,$10,$03,$36
-  .byte $50,$17,$50,$03,$36
-  .byte $80,$17,$10,$03,$32
-  .byte $80,$17,$60,$03,$32
-  .byte $b0,$17,$20,$03,$36
-  .byte $b0,$17,$60,$03,$36
-  .byte $e0,$17,$10,$03,$32
-  .byte $e0,$17,$40,$03,$36
-  .byte $00,$18,$70,$03,$36
-  .byte $20,$18,$00,$03,$36
-  .byte $20,$18,$40,$03,$32
-  .byte $40,$18,$60,$03,$36
-  .byte $60,$18,$10,$03,$32
-  .byte $80,$18,$30,$03,$36
-  .byte $90,$18,$60,$03,$32
-  .byte $b0,$18,$00,$03,$36
-  .byte $d0,$18,$30,$03,$32
-  .byte $d0,$18,$70,$03,$36
-  .byte $00,$19,$10,$03,$36
-  .byte $10,$19,$60,$03,$32
-  .byte $30,$19,$40,$03,$36
-  .byte $50,$19,$10,$03,$32
-  .byte $70,$19,$60,$03,$36
-  .byte $90,$19,$00,$03,$36
-  .byte $90,$19,$40,$03,$32
-  .byte $c0,$19,$70,$03,$36
-  .byte $d0,$19,$10,$03,$32
-  .byte $f0,$19,$30,$03,$36
-  .byte $10,$1a,$60,$03,$32
-  .byte $20,$1a,$00,$03,$36
-  .byte $50,$1a,$30,$03,$32
-  .byte $50,$1a,$70,$03,$36
-  .byte $60,$1a,$10,$03,$36
-  .byte $90,$1a,$30,$03,$36
-  .byte $90,$1a,$60,$03,$32
-  .byte $b0,$1a,$00,$03,$36
-  .byte $c0,$1a,$60,$03,$36
-  .byte $f0,$1a,$10,$03,$32
-  .byte $f0,$1a,$60,$03,$32
-  .byte $40,$1b,$10,$03,$32
-  .byte $40,$1b,$60,$03,$32
-  .byte $90,$1b,$10,$03,$32
-  .byte $90,$1b,$60,$03,$32
-  .byte $e0,$1b,$10,$03,$32
-  .byte $e0,$1b,$60,$03,$32
-  .byte $10,$1c,$20,$03,$03
-  .byte $10,$1c,$30,$03,$15
-  .byte $20,$1c,$20,$03,$18
-  .byte $c0,$1c,$50,$03,$bf
-  .byte $10,$1e,$30,$03,$07
-  .byte $60,$20,$20,$03,$01
-  .byte $70,$20,$20,$03,$19
-  .byte $00,$21,$30,$03,$b0
-  .byte $70,$24,$10,$03,$24
-  .byte $70,$24,$20,$03,$14
-  .byte $10,$25,$60,$03,$ba
-  .byte $40,$28,$10,$03,$04
-  .byte $40,$28,$20,$03,$15
-  .byte $a0,$2b,$30,$03,$1a
-  .byte $e0,$2c,$30,$03,$02
-  .byte $80,$2d,$40,$03,$cf
-  .byte $30,$30,$30,$03,$00
-  .byte $30,$30,$40,$03,$14
-  .byte $d0,$30,$80,$03,$c0
-  .byte $a0,$35,$60,$03,$8f
-  .byte $a0,$35,$70,$03,$bf
-  .byte $a0,$35,$80,$03,$cf
-  .byte $a0,$36,$60,$03,$1b
-  .byte $c0,$36,$70,$03,$b8
-  .byte $90,$37,$40,$03,$0f
   .byte $ff

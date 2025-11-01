@@ -4,12 +4,13 @@
 #define LEVELSET 'D'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 7
+#define COMMUNITY_LEVEL_COUNT 8
 
 #define level_goldenhaze 0
 #define level_demoncryogenic 1
-#define level_windylandscape 2
-#define level_silentclubstep 3
-#define level_kratos 4
-#define level_aftercatabath 5
-#define level_slaughterhouse 6
+#define level_foresttemple 2
+#define level_windylandscape 3
+#define level_silentclubstep 4
+#define level_kratos 5
+#define level_aftercatabath 6
+#define level_slaughterhouse 7

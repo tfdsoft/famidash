@@ -80,7 +80,7 @@
 		.incbin "EXPORTS/hexagonforce.lz.0.bin" ; Size: 8104
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8135 bytes
+.segment "DAT_BANK_03"	; Total bank size: 8035 bytes
 	.export level_data_rainbowtylenol
 	level_data_rainbowtylenol:
 	; Header
@@ -104,11 +104,6 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8017
-
-	.export level_data_dash_1
-	level_data_dash_1:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 100
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8143 bytes
@@ -391,7 +386,14 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5914
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8026 bytes
+.segment "DAT_BANK_0D"	; Total bank size: 8162 bytes
+	.export level_data_dash_1
+	level_data_dash_1:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 100
+
+
+.segment "DAT_BANK_0E"	; Total bank size: 7988 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -415,6 +417,30 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5727
+
+	.export level_data_subzero
+	level_data_subzero:
+	; Header
+		.byte <sprite_data_subzero ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_subzero ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_subzero)) ;___ Sprite data bank
+		.byte song_cant_let_go ;________________ Song ID
+		.byte (0 << 4) | 0 ;____________________ Starting game mode and speed
+		.byte ($B0) ;___________________________ Spawn Y Position (high byte)
+		.byte ($00) ;___________________________ Spawn Y Position (low byte)
+		.byte ($02) ;___________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;___________________________ Y Scroll Position (low byte)
+		.byte ($06) ;___________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;_____________ Force platformer, Disable parallax
+		.byte _DECO1 ;__________________________ Deco type
+		.byte _SPIKESA ;________________________ Spike set
+		.byte _BLOCKSA ;________________________ Block set
+		.byte _SAWBLADESA ;_____________________ Sawblade set
+		.byte $01 ;_____________________________ Starting background color
+		.byte $01 ;_____________________________ Starting ground color
+		.byte 27 ;______________________________ Level height
+	; Level data
+		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2225
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 8158 bytes
@@ -700,7 +726,7 @@
 		.incbin "EXPORTS/extraordinaryexcitement.lz.1.bin" ; Size: 4630
 
 
-.segment "DAT_BANK_16"	; Total bank size: 7991 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8136 bytes
 	.export level_data_electroman
 	level_data_electroman:
 	; Header
@@ -800,38 +826,7 @@
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3688
 
 
-.segment "DAT_BANK_18"	; Total bank size: 8101 bytes
-	.export level_data_foresttemple
-	level_data_foresttemple:
-	; Header
-		.byte <sprite_data_foresttemple ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_foresttemple ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_foresttemple)) ;___ Sprite data bank
-		.byte song_haunted_woods ;___________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
-		.byte _DECO1 ;_______________________________ Deco type
-		.byte _SPIKESB ;_____________________________ Spike set
-		.byte _BLOCKSB ;_____________________________ Block set
-		.byte _SAWBLADESA ;__________________________ Sawblade set
-		.byte $0F ;__________________________________ Starting background color
-		.byte $0F ;__________________________________ Starting ground color
-		.byte 27 ;___________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
-
-	.export level_data_rainbowtylenol_2
-	level_data_rainbowtylenol_2:
-	; Level data
-		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3691
-
-
-.segment "DAT_BANK_19"	; Total bank size: 8160 bytes
+.segment "DAT_BANK_18"	; Total bank size: 7981 bytes
 	.export level_data_nightmare
 	level_data_nightmare:
 	; Header
@@ -856,32 +851,13 @@
 	; Level data
 		.incbin "EXPORTS/nightmare.lz.bin" ; Size: 4272
 
-	.export level_data_cycles
-	level_data_cycles:
-	; Header
-		.byte <sprite_data_cycles ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_cycles ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_cycles)) ;___ Sprite data bank
-		.byte song_cycles ;____________________ Song ID
-		.byte (0 << 4) | 0 ;___________________ Starting game mode and speed
-		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
-		.byte ($00) ;__________________________ Spawn Y Position (low byte)
-		.byte ($02) ;__________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
-		.byte ($07) ;__________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
-		.byte _DECO1 ;_________________________ Deco type
-		.byte _SPIKESA ;_______________________ Spike set
-		.byte _BLOCKSA ;_______________________ Block set
-		.byte _SAWBLADESA ;____________________ Sawblade set
-		.byte $04 ;____________________________ Starting background color
-		.byte $14 ;____________________________ Starting ground color
-		.byte 27 ;_____________________________ Level height
+	.export level_data_rainbowtylenol_2
+	level_data_rainbowtylenol_2:
 	; Level data
-		.incbin "EXPORTS/cycles.lz.bin" ; Size: 2996
+		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3691
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 8160 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8160 bytes
 	.export level_data_greif
 	level_data_greif:
 	; Header
@@ -907,7 +883,7 @@
 		.incbin "EXPORTS/greif.lz.bin" ; Size: 4236
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 8100 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 8100 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -933,7 +909,33 @@
 		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 4136
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 8126 bytes
+	.export level_data_cycles
+	level_data_cycles:
+	; Header
+		.byte <sprite_data_cycles ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_cycles ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_cycles)) ;___ Sprite data bank
+		.byte song_cycles ;____________________ Song ID
+		.byte (0 << 4) | 0 ;___________________ Starting game mode and speed
+		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
+		.byte ($00) ;__________________________ Spawn Y Position (low byte)
+		.byte ($02) ;__________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
+		.byte ($07) ;__________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
+		.byte _DECO1 ;_________________________ Deco type
+		.byte _SPIKESA ;_______________________ Spike set
+		.byte _BLOCKSA ;_______________________ Block set
+		.byte _SAWBLADESA ;____________________ Sawblade set
+		.byte $04 ;____________________________ Starting background color
+		.byte $14 ;____________________________ Starting ground color
+		.byte 27 ;_____________________________ Level height
+	; Level data
+		.incbin "EXPORTS/cycles.lz.bin" ; Size: 2996
+
+
+.segment "DAT_BANK_1C"	; Total bank size: 8180 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -959,31 +961,38 @@
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2765
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8149 bytes
-	.export level_data_subzero
-	level_data_subzero:
+.segment "DAT_BANK_1E"	; Total bank size: 8182 bytes
+	.export level_data_thechallenge
+	level_data_thechallenge:
 	; Header
-		.byte <sprite_data_subzero ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_subzero ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_subzero)) ;___ Sprite data bank
-		.byte song_cant_let_go ;________________ Song ID
-		.byte (0 << 4) | 0 ;____________________ Starting game mode and speed
-		.byte ($B0) ;___________________________ Spawn Y Position (high byte)
-		.byte ($00) ;___________________________ Spawn Y Position (low byte)
-		.byte ($02) ;___________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;___________________________ Y Scroll Position (low byte)
-		.byte ($06) ;___________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;_____________ Force platformer, Disable parallax
-		.byte _DECO1 ;__________________________ Deco type
-		.byte _SPIKESA ;________________________ Spike set
-		.byte _BLOCKSA ;________________________ Block set
-		.byte _SAWBLADESA ;_____________________ Sawblade set
-		.byte $01 ;_____________________________ Starting background color
-		.byte $01 ;_____________________________ Starting ground color
-		.byte 27 ;______________________________ Level height
+		.byte <sprite_data_thechallenge ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_thechallenge ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_thechallenge)) ;___ Sprite data bank
+		.byte song_the_challenge ;___________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 ;_______________________ Deco type
+		.byte _SPIKESA ;_____________________________ Spike set
+		.byte _BLOCKSB ;_____________________________ Block set
+		.byte _SAWBLADESA ;__________________________ Sawblade set
+		.byte $0F ;__________________________________ Starting background color
+		.byte $0F ;__________________________________ Starting ground color
+		.byte 57 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2225
+		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 2512
 
+	.export level_data_hexagonforce_0
+	level_data_hexagonforce_0:
+	; Level data
+		.incbin "EXPORTS/hexagonforce.lz.1.bin" ; Size: 550
+
+
+.segment "DAT_BANK_1F"	; Total bank size: 7947 bytes
 	.export level_data_cantletgo
 	level_data_cantletgo:
 	; Header
@@ -1007,6 +1016,32 @@
 		.byte 27 ;________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2041
+
+
+.segment "DAT_BANK_20"	; Total bank size: 8138 bytes
+	.export level_data_stereomadness
+	level_data_stereomadness:
+	; Header
+		.byte <sprite_data_stereomadness ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_stereomadness ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_stereomadness)) ;___ Sprite data bank
+		.byte song_stereo_madness ;___________________ Song ID
+		.byte (0 << 4) | 0 ;__________________________ Starting game mode and speed
+		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;___________________ Force platformer, Disable parallax
+		.byte _DECO1 ;________________________________ Deco type
+		.byte _SPIKESA ;______________________________ Spike set
+		.byte _BLOCKSA ;______________________________ Block set
+		.byte _SAWBLADESA ;___________________________ Sawblade set
+		.byte $12 ;___________________________________ Starting background color
+		.byte $02 ;___________________________________ Starting ground color
+		.byte 27 ;____________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1846
 
 	.export level_data_polargeist
 	level_data_polargeist:
@@ -1033,38 +1068,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8097 bytes
-	.export level_data_stereomadness
-	level_data_stereomadness:
-	; Header
-		.byte <sprite_data_stereomadness ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_stereomadness ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_stereomadness)) ;___ Sprite data bank
-		.byte song_stereo_madness ;___________________ Song ID
-		.byte (0 << 4) | 0 ;__________________________ Starting game mode and speed
-		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;_________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;___________________ Force platformer, Disable parallax
-		.byte _DECO1 ;________________________________ Deco type
-		.byte _SPIKESA ;______________________________ Spike set
-		.byte _BLOCKSA ;______________________________ Block set
-		.byte _SAWBLADESA ;___________________________ Sawblade set
-		.byte $12 ;___________________________________ Starting background color
-		.byte $02 ;___________________________________ Starting ground color
-		.byte 27 ;____________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1846
-
-	.export level_data_hexagonforce_0
-	level_data_hexagonforce_0:
-	; Level data
-		.incbin "EXPORTS/hexagonforce.lz.1.bin" ; Size: 550
-
-
-.segment "DAT_BANK_22"	; Total bank size: 7943 bytes
+.segment "DAT_BANK_21"	; Total bank size: 7983 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -1089,6 +1093,8 @@
 	; Level data
 		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1521
 
+
+.segment "DAT_BANK_22"	; Total bank size: 7515 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -1112,29 +1118,3 @@
 		.byte 27 ;__________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
-
-
-.segment "DAT_BANK_23"	; Total bank size: 8189 bytes
-	.export level_data_thechallenge
-	level_data_thechallenge:
-	; Header
-		.byte <sprite_data_thechallenge ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_thechallenge ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_thechallenge)) ;___ Sprite data bank
-		.byte song_the_challenge ;___________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 ;_______________________ Deco type
-		.byte _SPIKESA ;_____________________________ Spike set
-		.byte _BLOCKSB ;_____________________________ Block set
-		.byte _SAWBLADESA ;__________________________ Sawblade set
-		.byte $0F ;__________________________________ Starting background color
-		.byte $06 ;__________________________________ Starting ground color
-		.byte 57 ;___________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 969

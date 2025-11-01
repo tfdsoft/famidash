@@ -133,6 +133,23 @@
 			]
 		},
 		{
+			level: "foresttemple",
+			lowerText: "FOREST TEMPLE",
+			decoType: "DECO1",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDDEMON",
+			stars: 10,
+			songID: "song_haunted_woods",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+		},
+		{
 			level: "windylandscape",
 			upperText: "WINDY",
 			lowerText: "LANDSCAPE",

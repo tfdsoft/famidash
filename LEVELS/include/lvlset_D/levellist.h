@@ -4,6 +4,7 @@
 const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// goldenhaze
 	HARDDEMON,	// demoncryogenic
+	HARDDEMON,	// foresttemple
 	EXTREMEDEMON,	// windylandscape
 	IMPOSSIBLEDEMON,	// silentclubstep
 	IMPOSSIBLEDEMON,	// kratos
@@ -14,6 +15,7 @@ const uint8_t difficulty_list[] = {
 const uint8_t stars_list[] = {
 	10,	// goldenhaze
 	10,	// demoncryogenic
+	10,	// foresttemple
 	10,	// windylandscape
 	10,	// silentclubstep
 	10,	// kratos

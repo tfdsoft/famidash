@@ -433,7 +433,7 @@ _level_lengths_lo:
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($000090)		; leveleasy
-	.byte .lobyte($000027)		; thechallenge
+	.byte .lobyte($000030)		; thechallenge
 	.byte .lobyte($0000A4)		; dorabaebasic4
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($000090)		; dorabaebasic6
@@ -544,7 +544,7 @@ _level_lengths_md:
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($000090)		; leveleasy
-	.byte .hibyte($000027)		; thechallenge
+	.byte .hibyte($000030)		; thechallenge
 	.byte .hibyte($0000A4)		; dorabaebasic4
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($000090)		; dorabaebasic6
@@ -655,7 +655,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($000090)		; leveleasy
-	.byte .bankbyte($000027)		; thechallenge
+	.byte .bankbyte($000030)		; thechallenge
 	.byte .bankbyte($0000A4)		; dorabaebasic4
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($000090)		; dorabaebasic6

@@ -49,6 +49,11 @@
 			originalArtistText: "DETIOUSMUSIC",
 		},
 		{
+			fmsSongName: "haunted woods",
+			lowerText: "HAUNTED WOODS",
+			originalArtistText: "WATERFLAME",
+		},
+		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
 			originalArtistText: "CRIM3S",

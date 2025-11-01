@@ -48,7 +48,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_nightmare)
 	.byte .lobyte(level_data_demonpark)
 	.byte .lobyte(level_data_firetemple)
-	.byte .lobyte(level_data_foresttemple)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -94,7 +93,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_nightmare)
 	.byte .hibyte(level_data_demonpark)
 	.byte .hibyte(level_data_firetemple)
-	.byte .hibyte(level_data_foresttemple)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -140,7 +138,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_nightmare))
 	.byte .lobyte(.bank(level_data_demonpark))
 	.byte .lobyte(.bank(level_data_firetemple))
-	.byte .lobyte(.bank(level_data_foresttemple))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_hexagonforce_0)
@@ -188,7 +185,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B3)		; dash
 	.byte .lobyte($000066)		; retray
 	.byte .lobyte($000090)		; leveleasy
-	.byte .lobyte($000027)		; thechallenge
+	.byte .lobyte($000030)		; thechallenge
 	.byte .lobyte($0000A4)		; dorabaebasic4
 	.byte .lobyte($000090)		; dorabaebasic6
 	.byte .lobyte($0000AC)		; dreamer
@@ -207,7 +204,6 @@ _level_lengths_lo:
 	.byte .lobyte($000098)		; nightmare
 	.byte .lobyte($0000A2)		; demonpark
 	.byte .lobyte($00008D)		; firetemple
-	.byte .lobyte($000090)		; foresttemple
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -236,7 +232,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B3)		; dash
 	.byte .hibyte($000066)		; retray
 	.byte .hibyte($000090)		; leveleasy
-	.byte .hibyte($000027)		; thechallenge
+	.byte .hibyte($000030)		; thechallenge
 	.byte .hibyte($0000A4)		; dorabaebasic4
 	.byte .hibyte($000090)		; dorabaebasic6
 	.byte .hibyte($0000AC)		; dreamer
@@ -255,7 +251,6 @@ _level_lengths_md:
 	.byte .hibyte($000098)		; nightmare
 	.byte .hibyte($0000A2)		; demonpark
 	.byte .hibyte($00008D)		; firetemple
-	.byte .hibyte($000090)		; foresttemple
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -284,7 +279,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B3)		; dash
 	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($000090)		; leveleasy
-	.byte .bankbyte($000027)		; thechallenge
+	.byte .bankbyte($000030)		; thechallenge
 	.byte .bankbyte($0000A4)		; dorabaebasic4
 	.byte .bankbyte($000090)		; dorabaebasic6
 	.byte .bankbyte($0000AC)		; dreamer
@@ -303,7 +298,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000098)		; nightmare
 	.byte .bankbyte($0000A2)		; demonpark
 	.byte .bankbyte($00008D)		; firetemple
-	.byte .bankbyte($000090)		; foresttemple
 
 .endif
 .endif

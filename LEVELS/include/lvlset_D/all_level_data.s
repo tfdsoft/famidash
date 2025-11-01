@@ -144,7 +144,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_07"	; Total bank size: 7602 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8018 bytes
 	.export level_data_demoncryogenic
 	level_data_demoncryogenic:
 	; Header
@@ -201,3 +201,29 @@
 	level_data_aftercatabath_2:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
+
+
+.segment "DAT_BANK_0A"	; Total bank size: 6652 bytes
+	.export level_data_foresttemple
+	level_data_foresttemple:
+	; Header
+		.byte <sprite_data_foresttemple ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_foresttemple ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_foresttemple)) ;___ Sprite data bank
+		.byte song_haunted_woods ;___________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_______________________________ Deco type
+		.byte _SPIKESB ;_____________________________ Spike set
+		.byte _BLOCKSB ;_____________________________ Block set
+		.byte _SAWBLADESA ;__________________________ Sawblade set
+		.byte $0F ;__________________________________ Starting background color
+		.byte $0F ;__________________________________ Starting ground color
+		.byte 27 ;___________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392

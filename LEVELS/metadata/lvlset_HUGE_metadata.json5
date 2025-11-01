@@ -1480,29 +1480,27 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x06,
+			startingGroundColor: 0x0F,
 			parallaxDisable: true,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
-						[52, 51],	[55, 51],		//pink orb
-						[59, 52],		//dash orb
-						[95, 50],		//green orb
+						[64, 51], [162, 28], [222, 20],
 					],
 					offsetX: +8
 				},
 				{
 					coordinates: [
-						[66, 52],	[70, 51],		//green orb
+						[162, 28], [237, 27], [253, 14], [265, 15],
 					],
-					offsetY: -8
+					offsetY: +8
 				},
 				{
 					coordinates: [
-						[142, 44],		//gravity portal
-						[181, 47],		//yellow orb
+						[119, 47],
 					],
-					offsetY: +8
+					offsetX: +16
 				},
 			]
 		},
