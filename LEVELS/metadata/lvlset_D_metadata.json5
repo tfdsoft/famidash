@@ -109,7 +109,7 @@
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "HARDDEMON",
-			//stars: 10,
+			stars: 10,
 			songID: "song_cryogenic",
 			startingGameMode: 0,
 			startingSpeed: 0,
