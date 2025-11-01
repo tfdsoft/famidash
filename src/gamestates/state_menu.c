@@ -40,7 +40,7 @@ void state_menu() {
     set_chr_bank(5,7);
     donut_decompress_vram(chr_menu_buttons, chr_bank_0);
     set_chr_bank(0,8);
-    donut_decompress_vram(chr_ground_1, chr_bank_3);
+    donut_decompress_vram(chr_ground_3, chr_bank_3);
 
     set_chr_bank(1,7);
 
