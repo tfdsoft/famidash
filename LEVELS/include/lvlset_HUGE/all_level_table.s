@@ -86,6 +86,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_everymadness)
 	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_trythisgd)
+	.byte .lobyte(level_data_goldenhaze)
 	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_invisiblelight)
 	.byte .lobyte(level_data_firetemple)
@@ -194,6 +195,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_everymadness)
 	.byte .hibyte(level_data_skeletalshenanigans)
 	.byte .hibyte(level_data_trythisgd)
+	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_invisiblelight)
 	.byte .hibyte(level_data_firetemple)
@@ -302,6 +304,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_everymadness))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 	.byte .lobyte(.bank(level_data_trythisgd))
+	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_invisiblelight))
 	.byte .lobyte(.bank(level_data_firetemple))
@@ -485,6 +488,7 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($0000D4)		; trythisgd
+	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($0000A2)		; hell
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($00008D)		; firetemple
@@ -595,6 +599,7 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($0000D4)		; trythisgd
+	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($0000A2)		; hell
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($00008D)		; firetemple
@@ -705,6 +710,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($0000D4)		; trythisgd
+	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($0000A2)		; hell
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($00008D)		; firetemple

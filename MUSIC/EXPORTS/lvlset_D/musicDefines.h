@@ -3,8 +3,9 @@
 #define song_clubstep 2
 #define song_lost 3
 #define song_practice 4
-#define song_scheming_weasel 5
+#define song_golden_haze_not_retray 5
 #define song_kratos 6
 #define song_menu_theme_human_capturing_mix 7
 #define song_cryogenic 8
-#define song_max 9
+#define song_scheming_weasel 9
+#define song_max 10

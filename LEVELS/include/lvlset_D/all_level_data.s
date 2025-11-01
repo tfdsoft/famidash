@@ -118,7 +118,33 @@
 		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7399
 
 
-.segment "DAT_BANK_06"	; Total bank size: 7522 bytes
+.segment "DAT_BANK_05"	; Total bank size: 7370 bytes
+	.export level_data_goldenhaze
+	level_data_goldenhaze:
+	; Header
+		.byte <sprite_data_goldenhaze ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_goldenhaze ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_goldenhaze)) ;___ Sprite data bank
+		.byte song_golden_haze_not_retray ;________ Song ID
+		.byte (1 << 4) | 0 ;_______________________ Starting game mode and speed
+		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
+		.byte ($00) ;______________________________ Spawn Y Position (low byte)
+		.byte ($02) ;______________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
+		.byte ($07) ;______________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_____________________________ Deco type
+		.byte _SPIKESC ;___________________________ Spike set
+		.byte _BLOCKSB ;___________________________ Block set
+		.byte _SAWBLADESA ;________________________ Sawblade set
+		.byte $17 ;________________________________ Starting background color
+		.byte $17 ;________________________________ Starting ground color
+		.byte 27 ;_________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
+
+
+.segment "DAT_BANK_07"	; Total bank size: 7602 bytes
 	.export level_data_demoncryogenic
 	level_data_demoncryogenic:
 	; Header
@@ -144,7 +170,7 @@
 		.incbin "EXPORTS/demoncryogenic.lz.bin" ; Size: 5733
 
 
-.segment "DAT_BANK_07"	; Total bank size: 7807 bytes
+.segment "DAT_BANK_08"	; Total bank size: 7336 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -170,7 +196,7 @@
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5547
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8058 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8058 bytes
 	.export level_data_aftercatabath_2
 	level_data_aftercatabath_2:
 	; Level data

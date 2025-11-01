@@ -42,7 +42,12 @@
 			fmsSongName: "Cryogenic",
 			lowerText: "CRYOGENIC",
 			originalArtistText: "NERDBOY628",
-		},	
+		},
+		{
+			fmsSongName: "Golden Haze NOT RETRAY",
+			lowerText: "GOLDEN HAZE",
+			originalArtistText: "DETIOUSMUSIC",
+		},
 		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
