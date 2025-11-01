@@ -9002,6 +9002,7 @@ sprite_data_thechallenge:
   .byte $b0,$08,$d8,$02,$0d
   .byte $c0,$08,$c0,$02,$0e
   .byte $c0,$08,$d8,$02,$0d
+  .byte $d0,$08,$c0,$02,$fe
   .byte $10,$09,$e0,$01,$05
   .byte $30,$09,$c0,$01,$05
   .byte $50,$09,$e0,$01,$05

@@ -2614,7 +2614,7 @@
 		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2598
 
 
-.segment "DAT_BANK_69"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_69"	; Total bank size: 8166 bytes
 	.export level_data_highlife_6
 	level_data_highlife_6:
 	; Level data

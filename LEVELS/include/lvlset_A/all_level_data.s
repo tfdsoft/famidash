@@ -726,7 +726,7 @@
 		.incbin "EXPORTS/extraordinaryexcitement.lz.1.bin" ; Size: 4630
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8136 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8141 bytes
 	.export level_data_electroman
 	level_data_electroman:
 	; Header
