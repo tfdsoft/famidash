@@ -202,6 +202,12 @@
 			originalArtistText: "FANTOMENK",
 		},
 		{
+			fmsSongName: "ultimatedestruction",
+			upperText: "ULTIMATE",
+			lowerText: "DESTRUCTION",
+			originalArtistText: "TMM43",
+		},
+		{
 			fmsSongName: "What's a Future Funk?",
 			upperText: "WHATS A",
 			lowerText: "FUTURE FUNK",

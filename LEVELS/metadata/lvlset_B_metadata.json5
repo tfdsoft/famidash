@@ -173,7 +173,31 @@
 				{ coordinates: [522, 18], offsetX: +16 }, //circle (sign)
 			],
 		},
-
+		{
+			level: "ultiatedestruction",
+			upperText: "ULTIATE",
+			lowerText: "DESTRUCTION",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_ultimatedestruction",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x11,
+			startingGroundColor: 0x11,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[185, 33]
+					],
+					offsetY: +8
+				},
+			]
+		},
 		{
 			level: "moonlight",
 			lowerText: "MOONLIGHT",
@@ -239,7 +263,7 @@
 					offsetY: +8
 				},
 			]
-		},	
+		},
 		{
 			level: "fofii_fofii_fofii",
 			upperText: "FOFII",

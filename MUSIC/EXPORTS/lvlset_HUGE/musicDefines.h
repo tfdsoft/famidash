@@ -52,9 +52,9 @@
 #define song_chaoz_impact 51
 #define song_endgame 52
 #define song_free_mind 53
-#define song_dry_out 54
-#define song_death_moon 55
-#define song_slash_inferno 56
+#define song_death_moon 54
+#define song_slash_inferno 55
+#define song_ultimatedestruction 56
 #define song_electroman_adventures 57
 #define song_ground_to_space 58
 #define song_rainbow_tylenol 59
@@ -85,9 +85,9 @@
 #define song_glint 84
 #define song_just_right 85
 #define song_mayhem_re_nes 86
-#define song_infinite_power 87
-#define song_pyrophoric_apparently_too_many_creative_liberties_mix 88
-#define song_ultimatedestruction 89
+#define song_dry_out 87
+#define song_infinite_power 88
+#define song_pyrophoric_apparently_too_many_creative_liberties_mix 89
 #define song_xenogenesis 90
 #define song_candyland 91
 #define song_chaozfantasy 92
