@@ -12,18 +12,18 @@ const char coin_counter[][3];
 	Refreshes level name & number
 */
 void refreshmenu() {
-	tmp5 = ((level&1)<<2)<<8;
+	tmp5 = ((level&1)<<2)<<8;	// Which nametable to put the data into
 	set_scroll_x(((level-tmp4)&1)<<8);
 	
 	__A__ = idx16_load_hi_NOC(levelTextsUpper, level);
-	if (__A__) draw_padded_text(levelTextsUpper[level & 0x7F], levelTextsUpperSize[level], 17, NTADR_A(8, 10)+tmp5);
-	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10)+tmp5);
+	if (__A__) draw_padded_text(levelTextsUpper[level & 0x7F], levelTextsUpperSize[level], 17, NTADR_A(8, 10)|(tmp5 & 0xFF00));
+	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10)|(tmp5 & 0xFF00));
 	// if (leveltexts2[level]) // always true
-	draw_padded_text(levelTextsLower[level & 0x7F], levelTextsLowerSize[level], 17, NTADR_A(8, 11)+tmp5);
+	draw_padded_text(levelTextsLower[level & 0x7F], levelTextsLowerSize[level], 17, NTADR_A(8, 11)|(tmp5 & 0xFF00));
 
-	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9)+tmp5);
-	one_vram_buffer('z', NTADR_A(8, 9)+tmp5); }
-	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9)+tmp5);
+	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9)|(tmp5 & 0xFF00));
+	one_vram_buffer('z', NTADR_A(8, 9)|(tmp5 & 0xFF00)); }
+	else one_vram_buffer_horz_repeat(' ', 2, NTADR_A(7, 9)|(tmp5 & 0xFF00));
 
 	{	// write the difficulty
 		tmp1 = difficulty_list[level];
@@ -32,15 +32,15 @@ void refreshmenu() {
 		pal_set_update();
 		
 		tmp1 = (tmp1 << 1) + 'a';
-		one_vram_buffer(tmp1, NTADR_A(7, 10)+tmp5);
-		one_vram_buffer(++tmp1, NTADR_A(8, 10)+tmp5);
-		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(7, 11)+tmp5);
-		one_vram_buffer(++tmp1, NTADR_A(8, 11)+tmp5);
+		one_vram_buffer(tmp1, NTADR_A(7, 10)|(tmp5 & 0xFF00));
+		one_vram_buffer(++tmp1, NTADR_A(8, 10)|(tmp5 & 0xFF00));
+		one_vram_buffer((tmp1 += ('c'-'b')), NTADR_A(7, 11)|(tmp5 & 0xFF00));
+		one_vram_buffer(++tmp1, NTADR_A(8, 11)|(tmp5 & 0xFF00));
 		
 
 	}
 	// Star count stuff
-		printDecimal(stars_list[level], 2, '0', ' ', NTADR_A(22, 9)+tmp5);
+		printDecimal(stars_list[level], 2, '0', ' ', NTADR_A(22, 9)|(tmp5 & 0xFF00));
 
 	// level number
 	#ifdef FLAG_ENABLE_TEST_LEVELS
@@ -65,7 +65,7 @@ void refreshmenu() {
 		tmp7 = byte((byte(coin3_obtained[level] << 1) | coin2_obtained[level]) << 1) | coin1_obtained[level];
 		tmp7 = byte(tmp7<<1) + tmp7;
 	// actually draw the coins
-		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12)+tmp5);
+		multi_vram_buffer_horz((const char * const)coin_counter+tmp7, 3, NTADR_A(22, 12)|(tmp5 & 0xFF00));
 
 }
 

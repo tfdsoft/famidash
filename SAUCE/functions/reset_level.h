@@ -22,8 +22,11 @@ void death_animation() {
 			dual == 1 ? oam_clear_two_players() : oam_clear_player();
 			
 			if (robotjumpframe[0] < 20) {
-				if (!retro_mode) oam_meta_spr(high_byte(player_x[tmp2])-2, high_byte(player_y[tmp2])-2, Explode_Sprites[robotjumpframe[0] & 0x7F]);
-				else oam_meta_spr(high_byte(player_x[tmp2])-2, high_byte(player_y[tmp2])-2, ExplodeR_Sprites[robotjumpframe[0] & 0x7F]);
+				oam_meta_spr(
+					idx16_load_hi_NOC(player_x, tmp2)-2,
+					idx16_load_hi_NOC(player_y, tmp2)-2,
+					(retro_mode) ? ExplodeR_Sprites[robotjumpframe[0] & 0x7F] :
+					Explode_Sprites[robotjumpframe[0] & 0x7F]);
 				++robotjumpframe[0];
 			}
 //			pad_poll(0);

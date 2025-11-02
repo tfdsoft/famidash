@@ -111,8 +111,10 @@ void draw_sprites(){
 					if (activesprites_type[index] != SKULL_ORB) {
 						activesprites_anim_frame[index] = 0;
 						animation_frame = 0;
+					} else {
+						idx8_dec(activesprites_anim_frame, index);
+						animation_frame--;
 					}
-					else { activesprites_anim_frame[index]--; animation_frame--; }
 				}
 				// and then set the animation_frame_count to be reloaded
 				needs_reload = 1;
