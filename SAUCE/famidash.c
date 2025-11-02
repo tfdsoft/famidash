@@ -85,8 +85,10 @@ void main(){
 			}
 
 			case STATE_MENU: {
-				#if __THE_ALBUM || __HUGE_ROM
+				#if __THE_ALBUM
 					cursedmusic = 0;
+				#endif
+				#if __THE_ALBUM || __HUGE_ROM
 					for (tmp1 = 0; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {
 						music_queue[tmp1] = 0xFF;
 					};
