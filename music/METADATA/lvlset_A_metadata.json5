@@ -18,6 +18,19 @@
 			}
 		},
 		{
+			fmsSongName: "didn't realize it (credits mix) (WIP!!) (IN-GAME)",
+			lowerText: "DIDN'T REALIZE IT",
+			originalArtistText: "I HAVE NO CLUE",
+			nsfData: {
+				trackLabel: "didn't realize it (credits mix)",
+				trackAuthor: {
+					original: "i have no clue",
+					cover: "alexmush, jaezu"
+				},
+				looped: true
+			}
+		},
+		{
 			fmsSongName: "Stereo Madness",
 			upperText: "STEREO ",
 			lowerText: "MADNESS",

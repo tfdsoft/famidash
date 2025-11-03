@@ -127,7 +127,7 @@ void state_startup() {
             sfx_play(2,0);
             pal_fade_to(4,0);
 
-            gamestate = 0x10;
+            gamestate = 0x00;
             break;
         }
         
@@ -201,8 +201,8 @@ void state_credits() {
     donut_decompress_vram(chr_font, chr_bank_0);
     donut_decompress_vram(chr_menu_famidash, chr_bank_0);
 
-    automatic_fs_updates = 1;
-    //music_play(1);
+    //automatic_fs_updates = 1;
+    music_play(song_didnt_realize_it_credits_mix_wip_in_game);
 
     vram_adr(0x2000);
     vram_unrle(nt_credits);
