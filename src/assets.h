@@ -37,6 +37,7 @@ extern const uint8_t chr_menu_buttons[];
 extern const uint8_t chr_menu_difficulties[];
 extern const uint8_t chr_menu_tfdlogo[];
 extern const uint8_t chr_menu_famidash[];
+extern const uint8_t chr_menu_robtop[];
 
 extern const uint8_t chr_tiles_global[];
 extern const uint8_t chr_tiles_grid[];

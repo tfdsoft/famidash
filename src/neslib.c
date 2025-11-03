@@ -348,7 +348,9 @@ __attribute__((noinline)) void oam_spr(char x, char y, char tile, char attr){
  * oam_meta_spr(x, y, data)
  * add multiple sprites to the oam buffer
 */
-__attribute__((noinline)) void oam_meta_spr(char x, char y, const char* const data){
+// TODO: optimize this function so it doesn't
+// take 8 billion years to execute
+__attribute__((noinline)) void oam_meta_spr(char x, char y, const unsigned char* const data){
     char* ptr = ((char*)data);
     while (ptr[0] != 0x80){
         if (SPRID >= 64) return;

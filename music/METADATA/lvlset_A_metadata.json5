@@ -18,6 +18,22 @@
 			}
 		},
 		{
+			fmsSongName: "Menu Theme (2.2)",
+			lowerText: "MENU but 2.2",
+			originalArtistText: "TOBY FOX",
+			vsSystemEnabled: false,
+			nsfData: {
+				trackLabel: "Menu Theme (2.2)",
+				trackAuthor: {
+					original: "Toby Fox",
+					cover: "Zenith302"
+				},
+				durationNTSC: 30017,
+				durationPAL: 36080,
+				looped: true
+			}
+		},
+		{
 			fmsSongName: "didn't realize it (credits mix) (WIP!!) (IN-GAME)",
 			lowerText: "DIDN'T REALIZE IT",
 			originalArtistText: "I HAVE NO CLUE",

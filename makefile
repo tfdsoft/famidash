@@ -118,7 +118,7 @@ $(TMPDIR)/donut.o: src/chr/*.s
 $(TMPDIR)/assets.o: src/chr/dnt/*.bin src/assets.c src/assets.h
 	$(CC) -c src/assets.c $(CFLAGS) -o $@
 
-$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/famistudio.o $(TMPDIR)/music.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/*.s src/gamestates/*.c music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
+$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/famistudio.o $(TMPDIR)/music.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/*.s src/gamestates/*.c src/defines/*.h music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
 	$(CC) src/main.c src/*.s $(call cc65IncDir,music/EXPORTS/lvlset_$(LEVELSET)) $(TMPDIR)/*.o $(CFLAGS) $(LDFLAGS) -o $@
 	
 

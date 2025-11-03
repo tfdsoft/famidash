@@ -47,8 +47,11 @@ void pal_fade_to(unsigned char from, unsigned char to){
             "jmp 4f \n"
             
         "1: \n	" // fade_loop:
-            "lda #2 \n"
-            "jsr ppu_wait_nmi \n" //wait 1 frames
+            "ldx #2 \n" //wait this many frames
+        "11:"
+            "jsr ppu_wait_nmi \n" 
+            "dex \n"
+            "bne 11b \n"
             
             "lda __rc12 \n" //from
             "cmp __rc11 \n" //to
@@ -108,7 +111,7 @@ __attribute__((section(".prg_rom_fixed_lo.1"),retain))
         MOUSE_X_MINIMUM
     };
 
-__attribute__((section(".prg_rom_fixed_lo.2"),retain))
+__attribute__((section(".prg_rom_fixed_lo.1"),retain))
     const unsigned char MouseBoundsMax[] = {
         MOUSE_Y_MAXIMUM, 
         MOUSE_X_MAXIMUM
@@ -412,3 +415,63 @@ struct pad {
         };
     };
 };
+
+/*
+ * vram_unrle_ignore0(*src)
+ * decompress a nametable, but don't write zero
+*/
+__attribute__((noinline)) 
+void vram_unrle_ignore0(const unsigned char* src){
+    unsigned char tag = src[0]; // tag is the least common byte
+    unsigned char value, run;
+    src++;
+
+    //PPU_CTRL_VAR &= 0b01111111;
+    //PPU.control = PPU_CTRL_VAR;
+
+    while(1){
+        if (src[0] != tag) { 
+            // if its not equal to the tag,
+            // just write the byte, plain and simple.
+            value = src[0];
+            if(value == 0) {
+                __asm__ volatile (
+                    "pha \n"
+                    "lda $2007 \n"
+                    "pla \n"
+                );
+            } 
+            else {PPU.vram.data = value;}
+        } else {
+            // if it IS the tag,
+            src++;
+            run = src[0]; // grab the run length.
+
+            if (run == 0) { 
+                // if the run length is 0,
+                // break out of the loop.
+                break;
+            }
+            if (run == 1) {
+                // if the run length is 1,
+                // write the tag.
+                PPU.vram.data = tag;
+            }
+            while (run > 0) {
+                if(value == 0) {
+                    __asm__ volatile (
+                        "pha \n"
+                        "lda $2007 \n"
+                        "pla \n"
+                    );
+                }
+                else {PPU.vram.data = value;}
+                run--;
+            }
+        }
+        src++; // move onto the next byte!
+    }
+    
+    //PPU_CTRL_VAR |= 0b10000000;
+    //PPU.control = PPU_CTRL_VAR;
+}

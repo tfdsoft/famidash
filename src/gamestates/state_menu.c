@@ -1,5 +1,15 @@
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".100")))
-const unsigned char pal_title[16]={ 0x11,0x0f,0x10,0x30,0x11,0x0f,0x2a,0x39,0x11,0x01,0x11,0x30,0x11,0x0f,0x21,0x31 };
+const unsigned char pal_title[32]={ 
+    0x11,0x0f,0x10,0x30,
+    0x11,0x0f,0x2a,0x39,
+    0x11,0x01,0x11,0x30,
+    0x11,0x0f,0x21,0x31,
+    
+    0x11,0x0f,0x10,0x30,
+    0x11,0x0f,0x2a,0x28,
+    0x11,0x28,0x17,0x0f,
+    0x11,0x0f,0x21,0x31,
+};
 
 
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".101")))
@@ -29,6 +39,49 @@ const unsigned char nt_title[349]={
 };
 
 
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".101")))
+const uint8_t mspr_title[]={
+    // everything in this table is shifted to the left by
+    // one pixel due to *the problematic line.*
+
+    // small button sprites
+    87, 187, 0xf5, 1,
+    95, 187, 0xf7, 1,
+    119, 187, 0xf1, 1,
+    127, 187, 0xf3, 1, // this line is problematic.
+    151, 187, 0xf9, 1,
+    159, 187, 0xfb, 1,
+
+    // ROBTOP text
+    7, 203, 0x41, 2,  // r
+    15, 203, 0x43, 2, // o
+    23, 203, 0x45, 2, // b
+    31, 203, 0x47, 2, // t
+    39, 203, 0x43, 2, // o
+    47, 203, 0x49, 2, // p
+
+    // large button sprites (the blue parts)
+    // (top)
+    116, 100, 0xd7, 0b00100011,
+    130, 100, 0xd7, 0b00100011,
+    70, 101, 0xd7, 0b00100011,
+    80, 101, 0xd7, 0b00100011,
+    166, 101, 0xd7, 0b00100011,
+    176, 101, 0xd7, 0b00100011,
+
+    // (bottom)
+    116, 107, 0xd7, 0b00100011,
+    130, 107, 0xd7, 0b00100011,
+    70, 105, 0xd7, 0b00100011,
+    80, 105, 0xd7, 0b00100011,
+    166, 105, 0xd7, 0b00100011,
+    176, 105, 0xd7, 0b00100011,
+ 
+    0x80 // end of data
+
+};
+
+
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".109")))
 void state_menu() {
     //unsigned char option = 0;
@@ -37,20 +90,22 @@ void state_menu() {
     donut_decompress_vram(chr_menu_global, chr_bank_0);
     donut_decompress_vram(chr_font, chr_bank_0);
     donut_decompress_vram(chr_menu_famidash, chr_bank_0);
-    set_chr_bank(5,7);
+    //set_chr_bank(5,7);
     donut_decompress_vram(chr_menu_buttons, chr_bank_0);
     set_chr_bank(0,8);
     donut_decompress_vram(chr_ground_3, chr_bank_3);
+    donut_decompress_vram(chr_menu_robtop, chr_bank_0);
 
     set_chr_bank(1,7);
 
     vram_adr(0x2000);
-    vram_unrle(nt_title);
+    vram_fill(0,0x400); // fill the first nametable with nothing
+
+    vram_adr(0x2000);
+    vram_unrle_ignore0(nt_title);
     vram_unrle(nt_title);
 
-    pal_bg(pal_title);
-    pal_spr(pal_title);
-    pal_col(0x17, 0x28);
+    pal_all(pal_title);
 
     setup_advanced_interrupt(
         175, 
@@ -67,49 +122,28 @@ void state_menu() {
     // lda #0 before running this, so
     // do it manually here
     __asm__("lda #0"); 
-    music_play(song_menu_theme);
+    music_play(song_didnt_realize_it_credits_mix_wip_in_game);
 
     //automatic_fs_updates=1;
-   interrupt_scroll = 0;
+    interrupt_scroll = 0;
     while(1){
         ppu_wait_nmi();
         scroll(0,0);
         oam_clear();
 
-        third_byte(irq_args) = ++interrupt_scroll;
+        interrupt_scroll += phys_speed[1];
+
+        third_byte(irq_args) = high_byte(interrupt_scroll);
         set_chr_bank(5,7);
 
-        // button sprites
-        oam_spr(88, 191, 0xf5, 1);
-        oam_spr(96, 191, 0xf7, 1);
-        oam_spr(120, 191, 0xf1, 1);
-        oam_spr(128, 191, 0xf3, 1);
-        oam_spr(152, 191, 0xf9, 1);
-        oam_spr(160, 191, 0xfb, 1);
+        ppu_emphasis(0b111);
+        // the fact that i can use a metasprite for
+        // EVERYTHING on the menu is bloody brilliant
+        oam_meta_spr(1,0,mspr_title); // one to the right
+                                    // so i can put sprites at
+                                    // x = 128
+        ppu_emphasis(0b000);
 
-
-        // the the the the 
-        // these are temporary until i implement oam_meta_spr
-
-        // center
-        oam_spr(117, 100, 0xd7, 0b00100011);
-        oam_spr(131, 100, 0xd7, 0b00100011);
-
-        // left
-        oam_spr(71, 101, 0xd7, 0b00100011);
-        oam_spr(81, 101, 0xd7, 0b00100011);
-
-        // left
-        oam_spr(167, 101, 0xd7, 0b00100011);
-        oam_spr(177, 101, 0xd7, 0b00100011);
-
-        // same order but for the bottom
-        oam_spr(117, 107, 0xd7, 0b00100011);
-        oam_spr(131, 107, 0xd7, 0b00100011);
-        oam_spr(71, 105, 0xd7, 0b00100011);
-        oam_spr(81, 105, 0xd7, 0b00100011);
-        oam_spr(167, 105, 0xd7, 0b00100011);
-        oam_spr(177, 105, 0xd7, 0b00100011);
 
         if(player1_pressed & PAD_A) {
             gamestate = 0x11;

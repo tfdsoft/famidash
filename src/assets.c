@@ -17,6 +17,9 @@ file(chr_menu_tfdlogo, chr_bank_0) = {
 };    
 file(chr_menu_famidash, chr_bank_0) = {
     #embed "./chr/dnt/Menu_Famidash.bin"
+}; 
+file(chr_menu_robtop, chr_bank_0) = {
+    #embed "./chr/dnt/Menu_Robtop.bin"
 };    
 
 

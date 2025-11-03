@@ -2,6 +2,7 @@
 
 RIFFChunkStart "tlbl"
 .asciiz "Menu Theme"
+.asciiz "Menu Theme (2.2)"
 .asciiz "didn't realize it (credits mix)"
 .asciiz "Stereo Madness"
 .asciiz "Back On Track"
@@ -31,6 +32,7 @@ RIFFChunkStart "tlbl"
 
 RIFFChunkStart "taut"
 .asciiz "Original by RobTop, covered by Zenith302"
+.asciiz "Original by Toby Fox, covered by Zenith302"
 .asciiz "Original by i have no clue, covered by alexmush, jaezu"
 .asciiz "Original by ForeverBound, covered by Zenith302, UserSniper"
 .asciiz "Original by DJVI, covered by aquamarine.gay"
@@ -60,28 +62,28 @@ RIFFChunkStart "taut"
 
 RIFFChunkStart "time"
 .if REGION = 0
-.dword 60034, 4294967295, 85550, 82817
-.dword 90700, 81433, 85000, 80750
-.dword 86467, 96067, 85933, 82350
-.dword 96583, 89000, 87800, 479634
-.dword 383, 50, 3167, 683
-.dword 100, 683, 683, 650
-.dword 967, 633, 950
+.dword 60034, 60034, 4294967295, 85550
+.dword 82817, 90700, 81433, 85000
+.dword 80750, 86467, 96067, 85933
+.dword 82350, 96583, 89000, 87800
+.dword 479634, 383, 50, 3167
+.dword 683, 100, 683, 683
+.dword 650, 967, 633, 950
 .else
-.dword 72160, 4294967295, 102840, 99540
-.dword 109000, 97880, 102160, 97040
-.dword 104100, 115460, 103280, 98980
-.dword 116080, 106960, 105520, 576760
-.dword 460, 40, 3020, 700
-.dword 120, 820, 820, 680
-.dword 920, 640, 1140
+.dword 72160, 72160, 4294967295, 102840
+.dword 99540, 109000, 97880, 102160
+.dword 97040, 104100, 115460, 103280
+.dword 98980, 116080, 106960, 105520
+.dword 576760, 460, 40, 3020
+.dword 700, 120, 820, 820
+.dword 680, 920, 640, 1140
 .endif
 
 RIFFChunkStart "fade"
-.dword 4294967295, 4294967295, 0, 0
+.dword 4294967295, 4294967295, 4294967295, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
-.dword 0, 0, 0, 4294967295
+.dword 0, 0, 0, 0
+.dword 4294967295, 0, 0, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
-.dword 0, 0, 0

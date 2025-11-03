@@ -15,6 +15,8 @@ __attribute__((retain))
 #include "nmi.c"
 
 
+#include "./defines/physics.h"
+
 
 #include "./gamestates/state_startup.c"
 #include "./gamestates/state_menu.c"
