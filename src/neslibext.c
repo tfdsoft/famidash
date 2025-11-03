@@ -442,6 +442,8 @@ void vram_unrle_ignore0(const unsigned char* src){
     // causing extra read cycles. i have to disable
     // it here
     APU.status &= 0b00001111;
+    ppu_wait_nmi(); // wait for dmc to clear.
+    // i genuinely can't think of a better way to do this
 
     while(1){
         if (src[0] != tag) { 
