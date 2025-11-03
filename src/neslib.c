@@ -352,13 +352,20 @@ __attribute__((noinline)) void oam_spr(char x, char y, char tile, char attr){
 // take 8 billion years to execute
 __attribute__((noinline)) void oam_meta_spr(char x, char y, const unsigned char* const data){
     char* ptr = ((char*)data);
+    char* oam_ptr = (((char*)OAM_BUF) + (SPRID<<2));
     while (ptr[0] != 0x80){
         if (SPRID >= 64) return;
-        OAM_BUF[SPRID].x = (ptr[0] + x);
-        OAM_BUF[SPRID].y = (ptr[1] + y);
-        OAM_BUF[SPRID].tile = ptr[2];
-        OAM_BUF[SPRID].attr = ptr[3];
+        //OAM_BUF[SPRID].x = (ptr[0] + x);
+        //OAM_BUF[SPRID].y = (ptr[1] + y);
+        //OAM_BUF[SPRID].tile = ptr[2];
+        //OAM_BUF[SPRID].attr = ptr[3];
+
+        POKE(oam_ptr + 3, (ptr[0] + x));
+        POKE(oam_ptr + 0, (ptr[1] + y));
+        POKE(oam_ptr + 1, ptr[2]);
+        POKE(oam_ptr + 2, ptr[3]);
         ptr += 4;
+        oam_ptr += 4;
         SPRID++;
     }
 }
