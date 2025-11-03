@@ -7,8 +7,11 @@
 __attribute__((retain))
     #include "ram.h"
 
+
+// == the compiler/linker figures these out ==
 #include "musicDefines.h"
 #include "musicBankData.h"
+// ===========================================
 
 #include "libraries.h"
 #include "irq.c"

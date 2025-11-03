@@ -21,11 +21,11 @@
 
 #define chr_bank_0 52       // menu graphics
 #define chr_bank_1 53       // level graphics
-#define chr_bank_2 54       // 
+#define chr_bank_2 54       // backgrounds
 #define chr_bank_3 55
 
-#define extra_code_bank 60  // gamestates that don't need to switch
-                            // banks frequently can go in here
+#define extra_code_bank 59      // gamestates that don't need to switch
+#define extra_code_bank_1 60    // banks frequently can go in here
 
 #define sfx_bank 61         // sound effects.
 
@@ -45,7 +45,7 @@ extern const uint8_t chr_tiles_cross[];
 extern const uint8_t chr_tiles_brick[];
 extern const uint8_t chr_tiles_black[];
 
-
+extern const uint8_t chr_background_0[];
 
 extern const uint8_t chr_ground_0[];
 extern const uint8_t chr_ground_1[];

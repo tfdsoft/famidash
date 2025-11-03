@@ -5,6 +5,8 @@
 
 #include "donut.c"
 
+#include "parallax.c"
+
 #include "famistudio_llvmmos.h"
 #include "famistudio_wrappers.c"
 

@@ -1,5 +1,6 @@
 #include "assets.h"
 
+// menu stuff
 file(chr_font, chr_bank_0) = {
     #embed "./chr/dnt/Font.bin"
 };  
@@ -23,6 +24,8 @@ file(chr_menu_robtop, chr_bank_0) = {
 };    
 
 
+
+// block sets
 file(chr_tiles_global, chr_bank_1) = {
     #embed "./chr/dnt/General.bin"
 };    
@@ -40,6 +43,13 @@ file(chr_tiles_black, chr_bank_1) = {
 };
 
 
+// backgrounds
+file(chr_background_0, chr_bank_2) = {
+    #embed "./chr/dnt/Background0.bin"
+};
+
+
+// grounds
 file(chr_ground_0, chr_bank_3) = {
     #embed "./chr/dnt/Ground0.bin"
 };
