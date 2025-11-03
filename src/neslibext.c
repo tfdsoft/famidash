@@ -441,8 +441,9 @@ void vram_unrle_ignore0(const unsigned char* src){
     // this sounds batshit insane, but the APU DMC is
     // causing extra read cycles. i have to disable
     // it here
+    APU.delta_mod.length = 0;
     APU.status &= 0b00001111;
-    ppu_wait_nmi(); // wait for dmc to clear.
+    disable_nmi(); // just in case music_update runs.
     // i genuinely can't think of a better way to do this
 
     while(1){
@@ -481,6 +482,7 @@ void vram_unrle_ignore0(const unsigned char* src){
     }
 
     APU.status |= 0b00010000;
+    enable_nmi();
     //PPU_CTRL_VAR |= 0b10000000;
     //PPU.control = PPU_CTRL_VAR;
 }
