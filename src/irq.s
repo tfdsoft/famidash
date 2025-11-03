@@ -97,8 +97,9 @@ stall:
     ; args+1 = chr bank value
     ; args+2 = new X scroll value
     irq_set_chr_and_scroll:
-        ldy #$9
+        ldy #$8
         jsr stall
+        nop     ; this nop is for timing purposes
 
         lda irq_args+0
         ldx irq_args+1
@@ -107,10 +108,13 @@ stall:
         sty $2005 ;PPU_SCROLL
         sty $2005 ;PPU_SCROLL
 
-        jsr set_chr_bank    ; args were loaded
-                            ; at the start
-        
-        
+        ;jsr set_chr_bank    ; args were loaded
+        ;                    ; at the start
+        ;fuck it, we inline
+        ora __bank_select_hi
+        sta $8000
+        stx $8001
+
         inc irq_count
         rts
 

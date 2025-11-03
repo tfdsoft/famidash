@@ -490,6 +490,8 @@ __attribute__((noinline)) void vram_unrle(const unsigned char* src){
     unsigned char value, run;
     src++;
 
+    // disable (and re-enable) nmi while doing this
+
     //PPU_CTRL_VAR &= 0b01111111;
     //PPU.control = PPU_CTRL_VAR;
 

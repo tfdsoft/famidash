@@ -96,7 +96,7 @@ void state_menu() {
 
     // load ground
     set_chr_bank(0,0x8);
-    donut_decompress_vram(chr_ground_3, chr_bank_3);
+    donut_decompress_vram(chr_ground_0, chr_bank_3);
     donut_decompress_vram(chr_menu_robtop, chr_bank_0);
 
     // load first frame of parallax background
@@ -104,20 +104,24 @@ void state_menu() {
     set_chr_bank(1,0x10);
     donut_decompress_vram(chr_background_0, chr_bank_2);
 
+    // set second sprite bank to the big buttons
+    set_chr_bank(1,0x7);
+    
+    // set second bg bank to parallax
     set_chr_bank(3,0x10);
     // optimization; the second animation frame will go
     // here, but we don't need it yet
-    vram_fill(0,0x800); // fill the first nametable with nothing
+    //vram_fill(0,0x800); // fill the first nametable with nothing
     
-    // set second sprite bank to the big buttons
-    set_chr_bank(1,0x7);
 
     vram_adr(0x2000);
     vram_write_parallax(0);
-
+    
     vram_adr(0x2000);
     vram_unrle_ignore0(nt_title);
     vram_unrle(nt_title);
+
+    
 
     pal_all(pal_title);
 
@@ -138,7 +142,7 @@ void state_menu() {
     // lda #0 before running this, so
     // do it manually here (if song is 0)
     __asm__("lda #0"); 
-    music_play(song_menu_theme_22);
+    music_play(song_menu_theme);
 
     //automatic_fs_updates=1;
     //interrupt_scroll = 0;

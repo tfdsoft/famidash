@@ -13,13 +13,6 @@ __attribute__((interrupt_norecurse)) void nmi(){
     
     // if rendering is off, do not access vram
     if ((PPU_MASK_VAR & 0b00011000)) {
-        
-        // send the sprites in!
-        //PPU.sprite.address = 0x00;
-        //APU.sprite.dma = 0x02;
-        // why ricoh put the OAM DMA register on 
-        // the APU and not the PPU is beyond me
-
         // send the palette in!
         if(PAL_UPDATE){
             PAL_UPDATE = 0;

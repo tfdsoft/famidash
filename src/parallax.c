@@ -28,13 +28,16 @@ const uint8_t * const bg_table_ptr[] = {
 
 
 
+__attribute__((retain)) uint8_t vram_i, vram_j;
 
 __attribute__((noinline))
 void vram_write_parallax(uint8_t bg_id){
+    //disable_nmi();
     // lots of ugly stuff is happening in this
     // function, brace yourselves
     //uint8_t prev_bank = get_prg_a000();
     uint8_t width, height, wtimesh;
+    //uint8_t i,j;
     const uint8_t * ptr;
 
     __attribute__((leaf)) __asm__ volatile (
@@ -44,7 +47,7 @@ void vram_write_parallax(uint8_t bg_id){
         "jsr set_prg_a000 \n"
         :
         :
-        :"a"
+        :"a","x","y","p"
     );
 
     // ok so first, actually switch to the bank
@@ -64,12 +67,16 @@ void vram_write_parallax(uint8_t bg_id){
     // it won't have to add two each time
     ptr += 2;
 
-    for(char i=0; i<30; i++){ // i = y
-        for(char j=0; j<32; j++){ // j = x
-            uint8_t tileid = (j % width);
-            tileid += ((i * width) % wtimesh);
+    for(vram_i=0; vram_i<30; vram_i++){ // i = y
+        for(vram_j=0; vram_j<32; vram_j++){ // j = x
+            uint8_t tileid = (vram_j % width);
+            tileid += ((vram_i * width) % wtimesh);
             PPU.vram.data = ptr[tileid];
         }
+    }
+
+    for(vram_i=0; vram_i<64; vram_i++){
+        PPU.vram.data = 0;
     }
 
     __attribute__((leaf)) __asm__ volatile (
@@ -77,8 +84,10 @@ void vram_write_parallax(uint8_t bg_id){
         "jsr set_prg_a000"
         :
         :
-        :"a"
+        :"a","x","y","p"
     );
     // and finally, go back.
     //set_prg_a000(prev_bank);
+    //enable_nmi();
+    
 }
