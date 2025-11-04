@@ -2,14 +2,14 @@
 // Exported by export_levels.py
 
 const uint8_t difficulty_list[] = {
-	EASYDEMON,	// problematic
-	EASYDEMON,	// xx
-	EASYDEMON,	// everymadness
 	EASYDEMON,	// supercycles
-	EASYDEMON,	// dearnostalgists
+	EASYDEMON,	// xx
+	EASYDEMON,	// problematic
 	EASYDEMON,	// sonicblaster
+	EASYDEMON,	// dearnostalgists
 	EASYDEMON,	// motion
 	EASYDEMON,	// endorphinrush
+	EASYDEMON,	// everymadness
 	MEDIUMDEMON,	// trythisgd
 	MEDIUMDEMON,	// hell
 	MEDIUMDEMON,	// invisiblelight
@@ -31,14 +31,14 @@ const uint8_t difficulty_list[] = {
 };
 
 const uint8_t stars_list[] = {
-	10,	// problematic
-	10,	// xx
-	10,	// everymadness
 	10,	// supercycles
-	10,	// dearnostalgists
+	10,	// xx
+	10,	// problematic
 	10,	// sonicblaster
+	10,	// dearnostalgists
 	10,	// motion
 	10,	// endorphinrush
+	10,	// everymadness
 	10,	// trythisgd
 	10,	// hell
 	10,	// invisiblelight

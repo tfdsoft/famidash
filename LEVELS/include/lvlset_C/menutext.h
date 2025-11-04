@@ -1,19 +1,19 @@
 
 // Exported by export_levels.py
 
-const char levelText00[ 5] = "EVERY";
-const char levelText01[ 5] = "SONIC";
-const char levelText02[ 9] = "ENDORPHIN";
+const char levelText00[ 5] = "SONIC";
+const char levelText01[ 9] = "ENDORPHIN";
+const char levelText02[ 5] = "EVERY";
 const char levelText03[ 9] = "INVISIBLE";
 const char levelText04[ 6] = "DEADLY";
-const char levelText05[11] = "PROBLEMATIC";
+const char levelText05[12] = "SUPER CYCLES";
 const char levelText06[ 1] = "X";
-const char levelText07[ 7] = "MADNESS";
-const char levelText08[12] = "SUPER CYCLES";
+const char levelText07[11] = "PROBLEMATIC";
+const char levelText08[ 7] = "BLASTER";
 const char levelText09[17] = " DEAR NOSTALGISTS";
-const char levelText0A[ 7] = "BLASTER";
-const char levelText0B[ 6] = "MOTION";
-const char levelText0C[ 4] = "RUSH";
+const char levelText0A[ 6] = "MOTION";
+const char levelText0B[ 4] = "RUSH";
+const char levelText0C[ 7] = "MADNESS";
 const char levelText0D[11] = "TRY THIS GD";
 const char levelText0E[ 4] = "HELL";
 const char levelText0F[ 5] = "LIGHT";
@@ -37,11 +37,11 @@ const char levelText1E[10] = "LUCKY DRAW";
 const char* const levelTextsUpper[] = {
 	NULL,
 	NULL,
+	NULL,
 	levelText00,
 	NULL,
 	NULL,
 	levelText01,
-	NULL,
 	levelText02,
 	NULL,
 	NULL,
@@ -66,11 +66,11 @@ const char* const levelTextsUpper[] = {
 const uint8_t levelTextsUpperSize[] = {
 	0,
 	0,
+	0,
 	sizeof(levelText00),
 	0,
 	0,
 	sizeof(levelText01),
-	0,
 	sizeof(levelText02),
 	0,
 	0,

@@ -32,6 +32,38 @@
 		},
 		*/
 		{
+			level: "supercycles",
+			lowerText: "SUPER CYCLES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_cycles",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			parallaxDisable: true
+		},
+		{
+			level: "xx",
+			lowerText: "X",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_holography",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "problematic",
 			lowerText: "PROBLEMATIC",
 			decoType: "DECO1",
@@ -93,64 +125,22 @@
 			]
 		},
 		{
-			level: "xx",
-			lowerText: "X",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "B",
+			level: "sonicblaster",
+			upperText: "SONIC",
+			lowerText: "BLASTER",
+			decoType: "DECO1",
+			spikeSet: "C",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "EASYDEMON",
 			stars: 10,
-			songID: "song_holography",
+			songID: "song_sonic_blaster",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
-			level: "everymadness",
-			upperText: "EVERY",
-			lowerText: "MADNESS",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "A",
-			sawSet: "A",
-			difficulty: "EASYDEMON",
-			stars: 10,
-			songID: "song_every_madness",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02,
-			objectOffsets: [
-				{
-					coordinates: [
-						[128, 25], [132, 24], [136, 23], [140, 22],
-						[144, 21], [218, 25], [222, 24], [226, 23],
-						[230, 22], [234, 21], [646, 26], [650, 25],
-						[654, 24], [658, 23],	//deco
-					],
-					offsetY: -8
-				}
-			]	
-		},	
-		{
-			level: "supercycles",
-			lowerText: "SUPER CYCLES",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "EASYDEMON",
-			stars: 10,
-			songID: "song_cycles",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x12,
-			startingGroundColor: 0x02,
-			parallaxDisable: true
-		},		
 		{
 			level: "dearnostalgists",
 			lowerText: " DEAR NOSTALGISTS",
@@ -167,23 +157,6 @@
 			startingGroundColor: 0x1C,
 			parallaxDisable: true
 		},
-		{
-			level: "sonicblaster",
-			upperText: "SONIC",
-			lowerText: "BLASTER",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "EASYDEMON",
-			stars: 10,
-			songID: "song_sonic_blaster",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},			
 		{
 			level: "motion",
 			lowerText: "MOTION",
@@ -222,7 +195,34 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
-		},		
+		},
+		{
+			level: "everymadness",
+			upperText: "EVERY",
+			lowerText: "MADNESS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_every_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			objectOffsets: [
+				{
+					coordinates: [
+						[128, 25], [132, 24], [136, 23], [140, 22],
+						[144, 21], [218, 25], [222, 24], [226, 23],
+						[230, 22], [234, 21], [646, 26], [650, 25],
+						[654, 24], [658, 23],	//deco
+					],
+					offsetY: -8
+				}
+			]	
+		},
 		{
 			level: "trythisgd",
 			lowerText: "TRY THIS GD",
@@ -745,7 +745,6 @@
 				},
 			]
 		},		
-
 		{
 			level: "fairydust",
 			lowerText: "FAIRYDUST",
@@ -968,9 +967,6 @@
 				},
 			]
 		},
-
-
-
 		{
 			level: "stalemate",
 			lowerText: "STALEMATE",
@@ -1076,14 +1072,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
-			/* objectOffsets: [
-				{
-					objectID: [0x08, 0x09],
-					offsetX: 4
-				}
-			] */
-		},		
-
+		},
 		{
 			level: "sonicwave",
 			lowerText: "SONIC WAVE",
