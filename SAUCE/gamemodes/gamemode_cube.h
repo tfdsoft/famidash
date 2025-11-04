@@ -69,10 +69,13 @@ void cube_movement(){
 
 	if ((gamemode == GAMEMODE_CUBE && currplayer_vel_y == 0 && dashing[currplayer] == 0) || (gamemode == GAMEMODE_CUBE && (kandokidshack == 9 && dashing[currplayer] == 0)) || gamemode == GAMEMODE_NINJA){		//cube
 		//if(bg_coll_D2()) {
+
+			if (gamemode == GAMEMODE_NINJA && currplayer_vel_y == 0) ninjajumps[currplayer] = 3; //ninja jump reset
+
 			if (gamemode != GAMEMODE_NINJA) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
-			else if (gamemode == GAMEMODE_NINJA && currplayer_vel_y == 0) { 
-				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1); 
-				ninjajumps[currplayer] = 3; //ninja jump reset 
+			
+			else {
+				if (ninjajumps[currplayer]) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			}
 
 			if((controllingplayer->hold & (PAD_A | PAD_UP)) && (!jblocked[currplayer] && !fblocked[currplayer] && !kandokidshack && gamemode == GAMEMODE_CUBE)) {			//no jblock - hold A to buffer jump
