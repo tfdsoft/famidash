@@ -883,7 +883,7 @@
 		.incbin "EXPORTS/greif.lz.bin" ; Size: 4236
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 8100 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 8175 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -907,6 +907,30 @@
 		.byte 57 ;_________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 4136
+
+	.export level_data_test9
+	level_data_test9:
+	; Header
+		.byte <sprite_data_test9 ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_test9 ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_test9)) ;___ Sprite data bank
+		.byte song_electroman_adventures ;____ Song ID
+		.byte (0 << 4) | 0 ;__________________ Starting game mode and speed
+		.byte ($B0) ;_________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_________________________ Y Scroll Position (low byte)
+		.byte ($06) ;_________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;___________ Force platformer, Disable parallax
+		.byte _DECO1 ;________________________ Deco type
+		.byte _SPIKESA ;______________________ Spike set
+		.byte _BLOCKSA ;______________________ Block set
+		.byte _SAWBLADESA ;___________________ Sawblade set
+		.byte $12 ;___________________________ Starting background color
+		.byte $02 ;___________________________ Starting ground color
+		.byte 57 ;____________________________ Level height
+	; Level data
+		.incbin "EXPORTS/test9.lz.bin" ; Size: 57
 
 
 .segment "DAT_BANK_1B"	; Total bank size: 8126 bytes
@@ -935,7 +959,7 @@
 		.incbin "EXPORTS/cycles.lz.bin" ; Size: 2996
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8180 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 8191 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header

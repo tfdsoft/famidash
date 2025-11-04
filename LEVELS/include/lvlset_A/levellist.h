@@ -45,6 +45,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// nightmare
 	DEMON,	// demonpark
 	DEMON,	// firetemple
+	DEMON,	// test9
 };
 
 const uint8_t stars_list[] = {
@@ -91,4 +92,5 @@ const uint8_t stars_list[] = {
 	10,	// nightmare
 	10,	// demonpark
 	10,	// firetemple
+	10,	// test9
 };

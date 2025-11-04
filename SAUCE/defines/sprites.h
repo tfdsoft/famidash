@@ -1722,14 +1722,14 @@ const unsigned char Portal_Gamemode_Spider[]={
 const unsigned char Portal_Gamemode_Ninja[]={
 
 	  0,  0,0x41,0,
-	  0, 16,0xF3,0,
+	  0, 16,0x47,0,
 	  0, 32,0x41,0|OAM_FLIP_V,
 	  8,  0,0x43,0,
 
-	  8, 16,0xF5,0,
+	  8, 16,0x9C,0,
 	  8, 32,0x43,0|OAM_FLIP_V,
 	 16,  0,0x45,0,
-	 16, 16,0xF7,0,
+	 16, 16,0x9E,0,
 
 	 16, 32,0x45,0|OAM_FLIP_V,
 	0x80
