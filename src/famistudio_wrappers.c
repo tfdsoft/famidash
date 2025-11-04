@@ -84,13 +84,7 @@ __attribute__((noinline, retain))
     famistudio_init(1,0xa000);
     famistudio_music_play(song_count);
 
-    __attribute__((leaf)) __asm__ volatile (
-        "pla \n"
-        "jsr set_prg_a000 \n"
-        :
-        :
-        :"a","x","y","p"
-    );
+    pop_prg_a000();
 }
 
 __attribute__((noinline)) void music_update(){

@@ -109,13 +109,14 @@ void state_menu() {
     
     // set second bg bank to parallax
     set_chr_bank(3,0x10);
-    // optimization; the second animation frame will go
-    // here, but we don't need it yet
-    //vram_fill(0,0x800); // fill the first nametable with nothing
-    
 
+    // write the parallax tilemap
     vram_adr(0x2000);
     vram_write_parallax(0);
+
+    // generate the rest of the parallax frames
+    vram_adr(0x401);
+    vram_generate_parallax(0);
     
     vram_adr(0x2000);
     vram_unrle_ignore0(nt_title);
@@ -152,6 +153,8 @@ void state_menu() {
         oam_clear();
 
         interrupt_scroll += phys_speed[1];
+
+        set_chr_bank(3,(0x10+((high_byte(interrupt_scroll)>>4)%12)));
 
         third_byte(irq_args) = high_byte(interrupt_scroll);
         set_chr_bank(5,7);

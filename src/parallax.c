@@ -40,15 +40,8 @@ void vram_write_parallax(uint8_t bg_id){
     //uint8_t i,j;
     const uint8_t * ptr;
 
-    __attribute__((leaf)) __asm__ volatile (
-        "lda __prg_a000 \n"
-        "pha \n"
-        "lda #"STR(extra_code_bank_1)" \n"
-        "jsr set_prg_a000 \n"
-        :
-        :
-        :"a","x","y","p"
-    );
+    push_prg_a000();
+    set_prg_a000(extra_code_bank_1);
 
     // ok so first, actually switch to the bank
     // where the tile patterns tables are
@@ -67,27 +60,100 @@ void vram_write_parallax(uint8_t bg_id){
     // it won't have to add two each time
     ptr += 2;
 
-    for(vram_i=0; vram_i<30; vram_i++){ // i = y
-        for(vram_j=0; vram_j<32; vram_j++){ // j = x
-            uint8_t tileid = (vram_j % width);
-            tileid += ((vram_i * width) % wtimesh);
+    for(uint8_t i=0; i<30; i++){ // i = y
+        for(uint8_t j=0; j<32; j++){ // j = x
+            uint8_t tileid = (j % width);
+            tileid += ((i * width) % wtimesh);
             PPU.vram.data = ptr[tileid];
         }
     }
 
-    for(vram_i=0; vram_i<64; vram_i++){
+    for(uint8_t i=0; i<64; i++){
         PPU.vram.data = 0;
     }
 
-    __attribute__((leaf)) __asm__ volatile (
-        "pla \n"
-        "jsr set_prg_a000"
-        :
-        :
-        :"a","x","y","p"
-    );
-    // and finally, go back.
-    //set_prg_a000(prev_bank);
-    //enable_nmi();
+
+    pop_prg_a000();
+
+
+
     
+}
+
+__attribute__((noinline))
+void vram_generate_parallax(uint8_t bg_id){
+    //uint16_t tmp, tmp2;
+    const uint8_t * ptr;
+    uint8_t width, height, wtimesh;
+    //uint8_t tile;
+
+    // empty the parallax buffer
+    memfill((uint8_t*)0x6000, 0, 0x800);
+
+    push_prg_a000();
+    set_prg_a000(extra_code_bank_1);
+
+    // fetch the bg from the ppu
+    APU.delta_mod.length = 0;
+    APU.status &= 0b00001111;
+    disable_nmi(); // just in case music_update runs.
+    for(uint8_t i=0; i<64; i++){
+        for(char j=0; j<16; j++){
+            bg_buffer_2[(i<<4)+j] = PPU.vram.data;
+        }
+    }
+    enable_nmi();
+
+    // get the pointer to the requested bg table
+    ptr = bg_table_ptr[bg_id];
+
+    // get the width and height
+    width = ptr[0];
+    height = ptr[1];
+    wtimesh = (width * height);
+
+    // increment the pointer by two, which
+    // *should* make the loop faster since
+    // it won't have to add two each time
+    ptr += 2;
+
+   
+    // alright, first off:
+    // write the tiles as-is to chr-ram,
+    // starting at bank 0x10, and incrementing
+    // by 4 banks each time.
+    // each tile is 16 bytes.
+
+    
+    vram_adr(0);
+    
+    // 1. get the id of the next tile to write
+    // 2. set up a pointer to that tile's data
+    // 3. copy that tile to vram
+    // 4. repeat from 1. until all tiles are copied
+
+    for (uint8_t bg_width = 1; bg_width < width; bg_width++){
+        set_chr_bank(2,0x10+bg_width);
+
+        for (uint8_t j=0; j<height; j++){ // y
+            for (uint8_t i=0; i<width; i++){ // x
+                uint8_t tile = ((i % width)+ (j * width));
+                uint8_t newtile = (((i+(width-bg_width)) % width)+ (j * width));
+
+                tile = (ptr[tile]);
+                newtile = (ptr[newtile]-0x40);
+
+                for (uint8_t k=0; k<16; k++){
+                    bg_buffer_1[(newtile<<4)+k] = bg_buffer_1[(tile<<4)+k];
+                }
+            }
+        }
+        vram_adr(0);
+        vram_copy(bg_buffer_1, 0x400);
+        
+    }
+    set_chr_bank(2,4);
+
+
+    pop_prg_a000();
 }

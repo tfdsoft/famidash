@@ -21,7 +21,25 @@ void __pop_prg_a000(){
     );
 }*/
 
+void push_prg_a000(){
+    __attribute__((leaf)) __asm__ volatile (
+        "lda __prg_a000 \n"
+        "pha \n"
+        :
+        :
+        :"a","x","y","p"
+    );
+}
 
+void pop_prg_a000(){
+    __attribute__((leaf)) __asm__ volatile (
+        "pla \n"
+        "jsr set_prg_a000"
+        :
+        :
+        :"a","x","y","p"
+    );
+}
 
 
 void vram_copy(const unsigned char* const from, unsigned short count){

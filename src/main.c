@@ -46,8 +46,8 @@ int main(void){
     irq_reload_value = 64;
     irq_ptr = irq_basic;
     
-    music_play(0);
-    famistudio_music_stop();
+    //music_play(0);
+    //famistudio_music_stop();
 
     // clear oam buffer
     //memfill((unsigned char*)0x200,0,0x100);
@@ -71,7 +71,7 @@ int main(void){
     //music_bank = music_bank_0;
     //gamestate = 0x10;
 
-    
+    set_wram_mode(WRAM_ON);
 
     while(1){
         //setup_basic_interrupt(
@@ -90,6 +90,8 @@ int main(void){
         set_chr_bank(3,5);
         set_chr_bank(4,6);
         set_chr_bank(5,7);
+
+        //bruhmomento = 3;
 
         switch(gamestate){
             // when in doubt, go back to startup
