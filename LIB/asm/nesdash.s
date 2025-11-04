@@ -772,11 +772,18 @@ jmpto_draw_screen_UD_tiles:
 
 	;__	Parallax rendering variables
 
-	ParallaxBufferStart = tmp1
+	ParallaxCurrentRow = tmp1
 	; LoopCount still in effect
-	ParallaxExtent = tmp3
-	SeamValueTmp = tmp4
+	ParallaxInvisBlMask = tmp3
 
+	TileBotRight = ptr1+0
+	TileTopRight = ptr1+1
+	TileBotLeft = ptr2+0
+
+	ParallaxCurrentIdx = ptr3+0
+	; SeamValue = ptr3+1 still in effect
+	ParallaxBufferStart = ptr4+0
+	ParallaxExtent = ptr4+1
 
 	; Write architecture:
 
@@ -860,6 +867,10 @@ write_start:
 	lda	#>(fl_lvlRenderRTiles-1)
 	sta	instBufWriteBuffer+1
 
+
+	lda	_no_parallax		;	Skip parallax rendering
+	beq	RenderParallax		;__	if there is none
+
 	; The sequence itself:
 	LDY	CurrentRow
 @tileWriteLoop:
@@ -887,17 +898,12 @@ write_start:
 	TAY
 	DEX
 	BPL @tileWriteLoop
+	BMI	RuntimeModifiedTiles
 
 RenderParallax:
 
-	lda	_no_parallax		;	Skip parallax rendering
-	bne	StartAttributes		;__	if there is none
-
 	; Loop through the vram writes and find any $00 tiles and replace them with parallax
 	; Calculate the end of the parallax column offset
-	ldy parallax_scroll_column
-	lda ParallaxBufferOffset, y
-	ldx #2 * TileWriteSize
 	jsr RenderParallaxSub
 
 	; move to the next scroll column for next frame
@@ -1013,87 +1019,98 @@ FinishRendering:
 
 
 RenderParallaxSub:
-	; In:
-	;	[A] Right or Left offset
-	;	[X] Tile offset
+	ldy parallax_scroll_column
+	lda ParallaxBufferOffset, y
 	sta ParallaxBufferStart
 	clc
 	adc #9
 	sta ParallaxExtent
 
-	ldy	parallax_scroll_column_start
-	lda seam_scroll_y+1
-	cmp	#$02
-	bcc @yesSeam
-		cmp	#$FF
-		beq	:+
-			iny		;	If not at beginning, start with 3 instead of 0
-			iny		;__	(shift accordingly)
-		:
-		lda	#$FF			;	No seam
-		sta	SeamValueTmp	;__
-		bne	@afterSeam		;__	= BRA
-	@yesSeam:
-		lda	SeamValue
-		; carry is clear
-		sbc	#30-1-1	; -1 to make a BEQ condition
-		sta	SeamValueTmp
-		iny
-		iny
-	@afterSeam:
-
-
-	lda ParallaxBufferStart	
-	clc
-	adc ParallaxBufferStartTable,	y
+	lda	parallax_scroll_column_start
+	ldy seam_scroll_y+1
+	iny		;__	Make $FF a valid index
+	; clc unneeded, as the last addition cannot possibly overflow
+	adc	prlxSeamAddrHiTbl,	y
 	tay
 
+	lda ParallaxBufferStart
+	; clc unneeded, as the last addition cannot possibly overflow
+	adc ParallaxBufferStartTable,	y
+	sta	ParallaxCurrentIdx
+
+	ldx #2 * TileWriteSize
+
+	ldy	ParallaxCurrentRow
+
 	@loop:
+		lda columnBuffer,y
+		and	ParallaxInvisBlMask
+		tay
+
+		lda	metatiles_bot_right, y
+		sta	TileBotRight
+		lda	metatiles_top_right, y
+		sta	TileTopRight
+		lda	metatiles_bot_left, y
+		sta	TileBotLeft
+		lda	metatiles_top_left, y
+		
+		ldy	ParallaxCurrentIdx
+		cmp	#0	;__	Really unfortunate
+
 		; Replace the top left tile
-		lda VRAM_BUF+TileOffL-1,	x
 		bne :+
 			; empty tile, so replace it with the parallax for this
 			lda ParallaxBuffer+0,	y
-			sta VRAM_BUF+TileOffL-1,	x
 		:
+		sta VRAM_BUF+TileOffL-1,	x
 		; Replace the top right tile
-		lda VRAM_BUF+TileOffR-1,	x
+		lda TileTopRight
 		bne :+
 			; empty tile, so replace it with the parallax for this
 			lda ParallaxBuffer+ParallaxBufferRightOffset+0,	y
-			sta VRAM_BUF+TileOffR-1,	x
 		:
+		sta VRAM_BUF+TileOffR-1,	x
 		; Replace the bottom left tile
 		dex
-		lda VRAM_BUF+TileOffL-1,	x
+		lda TileBotLeft
 		bne :+
 			; empty tile, so replace it with the parallax for this
 			lda ParallaxBuffer+5,	y	;__	Offset of half the size
-			sta VRAM_BUF+TileOffL-1,	x
 		:
+		sta VRAM_BUF+TileOffL-1,	x
 		; Replace the bottom right tile
-		lda VRAM_BUF+TileOffR-1,	x
+		lda TileBotRight
 		bne :+
 			; empty tile, so replace it with the parallax for this
 			lda ParallaxBuffer+ParallaxBufferRightOffset+5,	y	;__	Offset of half the size
-			sta VRAM_BUF+TileOffR-1,	x
 		:
+		sta VRAM_BUF+TileOffR-1,	x
 		iny
 		cpy ParallaxExtent
 		bne :+
 			ldy ParallaxBufferStart
 		:
+		sty	ParallaxCurrentIdx
 
-		dec SeamValueTmp
-		beq	@seamColl
+		LDA CurrentRow
+		CMP SeamValue
+		BEQ	@seamColl
+			TAY
+			INY
+			STY CurrentRow
 
 		@noSeamColl:
 		dex
 		bne @loop
 	rts
 
-	@seamColl:							;
-		tya								;
+	@seamColl:
+		; sec unnecessary, as the CMP yielded an =, and as such the carry is set	
+		sbc	#29							;
+		STA CurrentRow					;	row - 30 (seam) + 1 (inc)
+		TAY								;__
+		lda	ParallaxCurrentIdx			;
 		clc								;
 		adc	#6							;
 		cmp	ParallaxExtent				;
@@ -1101,7 +1118,7 @@ RenderParallaxSub:
 			; sec is already done		;	if we've hit the seam
 			sbc	#9						;
 		:								;
-		tay								;
+		sta	ParallaxCurrentIdx			;
 		jmp	@noSeamColl					;__
 
 
@@ -1138,6 +1155,9 @@ tileNtAddrHiTbl:
 
 attrNtAddrHiTbl:
 	.byte	$27,	$23
+
+prlxSeamAddrHiTbl:
+	.byte	0,	2,	2,	2
 .endproc
 
 
