@@ -99,11 +99,15 @@ void state_menu() {
     donut_decompress_vram(chr_ground_0, chr_bank_3);
     donut_decompress_vram(chr_menu_robtop, chr_bank_0);
 
-    // load first frame of parallax background
-    vram_adr(0x1800);
-    set_chr_bank(1,0x10);
+    // load parallax background
+    vram_adr(0x1000);
+    set_chr_bank(0,0x10);
+    set_chr_bank(1,0x12);
     donut_decompress_vram(chr_background_0, chr_bank_2);
 
+    // set first sprite bank to the ground
+    // the "robtop/tfdsoft" text is there
+    set_chr_bank(0,0x8);
     // set second sprite bank to the big buttons
     set_chr_bank(1,0x7);
     
@@ -154,7 +158,10 @@ void state_menu() {
 
         interrupt_scroll += phys_speed[1];
 
-        set_chr_bank(3,(0x10+((high_byte(interrupt_scroll)>>4)%12)));
+        // set parallax bank
+        set_chr_bank(3,
+            ((((uint16_t)(high_byte(interrupt_scroll) + (third_byte(interrupt_scroll)<<8)))>>3)%48) + 0x10
+        );
 
         third_byte(irq_args) = high_byte(interrupt_scroll);
         set_chr_bank(5,7);
