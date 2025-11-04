@@ -221,13 +221,6 @@
 			coveringArtist: "Crafty Jumper",
 		},
 		{
-			fmsSongName: "Beast Mode (GDW Cut)",
-			upperText: "BEAST MODE",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},
-		{
 			fmsSongName: "Beep Beep",
 			lowerText: "BEEP BEEP",
 			originalArtist: "Schtiffles",
@@ -509,13 +502,6 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
-			fmsSongName: "Machina (GDW Cut)",
-			upperText: "MACHINA",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},
-		{
 			fmsSongName: "Magic Touch",
 			lowerText: "MAGIC TOUCH",
 			originalArtist: "Romos",
@@ -584,13 +570,6 @@
 			coveringArtist: "sussysy",
 		},
 		{
-			fmsSongName: "Payload (GDW Cut)",
-			upperText: "PAYLOAD",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},
-		{
 			fmsSongName: "Power Trip",
 			lowerText: "POWER TRIP",
 			originalArtist: "Boom Kitty",
@@ -648,23 +627,16 @@
 			coveringArtist: "SeaGlowingPro",
 		},	
 		{
-			fmsSongName: "Round 1 (GDW Cut)",
-			upperText: "ROUND 1",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},	
+			fmsSongName: "Slash Inferno",
+			upperText: "SLASH",
+			lowerText: "INFERNO",
+			originalArtist: ["WFlame Temini","te Boom Kitty"],
+			coveringArtist: "SeaGlowingPro",
+		},				
 		{
 			fmsSongName: "Sonic blaster",
 			lowerText: "SONIC BLASTER",
 			originalArtist: "F777",
-			coveringArtist: "ElAngel378",
-		},	
-		{
-			fmsSongName: "Space Pirates (GDW Cut)",
-			upperText: "SPACE PIRATES",
-			lowerText: "GDW CUT",
-			originalArtist: "Waterflame",
 			coveringArtist: "ElAngel378",
 		},	
 		{
@@ -745,13 +717,6 @@
 			upperOrigArtistText: "EDEN     AARON",
 			lowerOrigArtistText: "   MUSSELWHITE"
 		},	
-		{
-			fmsSongName: "Years (GDW Cut)",
-			upperText: "YEARS",
-			lowerText: "GDW CUT",
-			originalArtist: "Dex Arson",
-			coveringArtist: "ElAngel378",
-		},		
 		{
 			fmsSongName: "Youve been Trolled",
 			upperText: "YOUVE BEEN",
