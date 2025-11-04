@@ -10,8 +10,8 @@
 #define song_pyrophoric 9
 #define song_cant_let_go 10
 #define song_dash_full 11
-#define song_atthespeedoflightfull 12
-#define song_ninox 13
+#define song_dry_out 12
+#define song_atthespeedoflightfull 13
 #define song_dance_of_the_violins 14
 #define song_the_angel 15
 #define song_whats_a_future_funk 16
@@ -85,9 +85,9 @@
 #define song_glint 84
 #define song_just_right 85
 #define song_mayhem_re_nes 86
-#define song_dry_out 87
-#define song_infinite_power 88
-#define song_pyrophoric_apparently_too_many_creative_liberties_mix 89
+#define song_infinite_power 87
+#define song_pyrophoric_apparently_too_many_creative_liberties_mix 88
+#define song_select_payment_type 89
 #define song_xenogenesis 90
 #define song_candyland 91
 #define song_chaozfantasy 92
@@ -114,7 +114,7 @@
 #define song_kratos 113
 #define song_meowstuff 114
 #define song_midnight 115
-#define song_select_payment_type 116
+#define song_ninox 116
 #define song_jumper 117
 #define song_lost 118
 #define song_ludicrous_speed 119
