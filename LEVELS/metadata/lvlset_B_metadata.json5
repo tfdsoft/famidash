@@ -303,6 +303,34 @@
 			]			
 		},
 		{
+			level: "selectpaymenttype",
+			upperText: "SELECT",
+			lowerText: "PAYMENT TYPE",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_select_payment_type",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			maxFallSpeed: 0x07,
+			parallaxDisable: false,
+			objectOffsets: [
+				{
+					coordinates: [[134, 20], [150, 21]],
+					offsetY: +8,
+				},
+				{
+					coordinates: [612, 17],
+					offsetX: +16
+				},
+			]	
+		},
+		{
 			level: "pyrophoric",
 			lowerText: "PYROPHORIC",
 			decoType: "DECO1",
@@ -799,7 +827,6 @@
 				},
 			]
 		},
-		
 		{
 			level: "subtleoddities",
 			upperText: "SUBTLE",
@@ -899,6 +926,96 @@
 			parallaxDisable: true
 		},	
 		{
+			level: "infinitecircles",
+			upperText: "INFINITE",
+			lowerText: "CIRCLES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_infinite_power",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
+			level: "decode",
+			lowerText: "DECODE",
+			decoType: "DECOCLOUD",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_endgame",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x06,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[314, 10],	[324, 10],	[330, 9],	[335, 11],	[337, 10],		//deco
+						[341, 11],	[346, 10],	[352, 10],	[360, 9],		//deco
+					],
+					offsetY: +8
+				},
+			]
+		},		
+		{
+			level: "deathmoon",
+			lowerText: "DEATH MOON",
+			decoType: "DECO1",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_death_moon",
+			startingGameMode: 0,
+			startingSpeed: 3,
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
+			level: "clutterfunk2",
+			lowerText: "CLUTTERFUNK 2",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_clutterfunk_2",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
+			level: "speedracer",
+			lowerText: "SPEED RACER",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_speed_racer",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "skeletalshenanigans",
 			upperText: "SKELETAL",
 			lowerText: "SHENANIGANS",
@@ -958,157 +1075,6 @@
 					offsetX: -16
 				},
 			]
-		},			
-		{
-			level: "problematic",
-			lowerText: "PROBLEMATIC",
-			decoType: "DECO1",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_problematic",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					coordinates: [29, 24],			//pink orb
-					offsetX: -8		
-				},
-				{
-					coordinates: [
-						[30, 21],		//pink orb
-						[118, 21],		//cube portal
-						[156, 21],	[187, 21],	[212, 22],	[381, 20],	[436, 24],	[483, 19],	[483, 21],	[499, 18],	[526, 21],	[551, 21],		//speed portal
-						[212, 21],	[366, 21],		//grav portal
-						
-					],
-					offsetY: -8			
-				},
-				{
-					coordinates: [
-						[118, 20],		//normal grav portal
-						[240, 20],	[291, 23],	[405, 17],		//speed portal
-						[316, 22],		//dual portal
-						[366, 20],		//single portal
-					],
-					offsetY: +8			
-				},
-				{
-					coordinates: [155, 20],		//normal grav portal
-					offsetX: +16		
-				},
-				{
-					coordinates: [
-						[188, 20],			//mini portal
-						[483, 19],	[483, 21],		//speed portal
-						[527, 20],		//normal gravity portal
-					],
-					offsetX: -16	
-				},
-				{
-					coordinates: [212, 21],		//grav portal
-					offsetX: +10,		
-				},
-				{
-					coordinates: [522, 16],		//reverse grav portal
-					offsetY: +16		
-				},
-			]
-		},		
-		{
-			level: "decode",
-			lowerText: "DECODE",
-			decoType: "DECOCLOUD",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_endgame",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x06,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					coordinates: [
-						[314, 10],	[324, 10],	[330, 9],	[335, 11],	[337, 10],		//deco
-						[341, 11],	[346, 10],	[352, 10],	[360, 9],		//deco
-					],
-					offsetY: +8
-				},
-			]
-		},		
-		{
-			level: "infinitecircles",
-			upperText: "INFINITE",
-			lowerText: "CIRCLES",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_infinite_power",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
-			level: "deathmoon",
-			lowerText: "DEATH MOON",
-			decoType: "DECO1",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_death_moon",
-			startingGameMode: 0,
-			startingSpeed: 3,
-			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
-			level: "clutterfunk2",
-			lowerText: "CLUTTERFUNK 2",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_clutterfunk_2",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
-			level: "speedracer",
-			lowerText: "SPEED RACER",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_speed_racer",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
 		},
 		{
 			level: "futurefunk",

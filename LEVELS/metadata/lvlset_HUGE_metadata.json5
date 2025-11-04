@@ -2021,6 +2021,34 @@
 			]			
 		},
 		{
+			level: "selectpaymenttype",
+			upperText: "SELECT",
+			lowerText: "PAYMENT TYPE",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_select_payment_type",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			maxFallSpeed: 0x07,
+			parallaxDisable: false,
+			objectOffsets: [
+				{
+					coordinates: [[134, 20], [150, 21]],
+					offsetY: +8,
+				},
+				{
+					coordinates: [612, 17],
+					offsetX: +16
+				},
+			]	
+		},
+		{
 			level: "pyrophoric",
 			lowerText: "PYROPHORIC",
 			decoType: "DECO1",

@@ -128,6 +128,11 @@
 			originalArtistText: "BOSSFIGHT",
 		},
 		{
+			fmsSongName: "Problematic",
+			lowerText: "PROBLEMATIC",
+			originalArtistText: "RUKKUS",
+		},
+		{
 			fmsSongName: "Pursuit",
 			lowerText: "PURSUIT",
 			originalArtistText: "BOOM KITTY",		

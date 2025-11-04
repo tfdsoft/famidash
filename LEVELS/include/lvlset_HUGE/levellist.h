@@ -39,6 +39,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// subzero
 	HARD,	// moonlight
 	HARD,	// fofii_fofii_fofii
+	HARD,	// selectpaymenttype
 	HARDER,	// pyrophoric
 	HARDER,	// cryogenic
 	HARDER,	// oceane
@@ -150,6 +151,7 @@ const uint8_t stars_list[] = {
 	5,	// subzero
 	5,	// moonlight
 	5,	// fofii_fofii_fofii
+	5,	// selectpaymenttype
 	6,	// pyrophoric
 	6,	// cryogenic
 	6,	// oceane

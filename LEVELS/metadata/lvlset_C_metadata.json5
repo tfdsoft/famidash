@@ -32,6 +32,67 @@
 		},
 		*/
 		{
+			level: "problematic",
+			lowerText: "PROBLEMATIC",
+			decoType: "DECO1",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_problematic",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [29, 24],			//pink orb
+					offsetX: -8		
+				},
+				{
+					coordinates: [
+						[30, 21],		//pink orb
+						[118, 21],		//cube portal
+						[156, 21],	[187, 21],	[212, 22],	[381, 20],	[436, 24],	[483, 19],	[483, 21],	[499, 18],	[526, 21],	[551, 21],		//speed portal
+						[212, 21],	[366, 21],		//grav portal
+						
+					],
+					offsetY: -8			
+				},
+				{
+					coordinates: [
+						[118, 20],		//normal grav portal
+						[240, 20],	[291, 23],	[405, 17],		//speed portal
+						[316, 22],		//dual portal
+						[366, 20],		//single portal
+					],
+					offsetY: +8			
+				},
+				{
+					coordinates: [155, 20],		//normal grav portal
+					offsetX: +16		
+				},
+				{
+					coordinates: [
+						[188, 20],			//mini portal
+						[483, 19],	[483, 21],		//speed portal
+						[527, 20],		//normal gravity portal
+					],
+					offsetX: -16	
+				},
+				{
+					coordinates: [212, 21],		//grav portal
+					offsetX: +10,		
+				},
+				{
+					coordinates: [522, 16],		//reverse grav portal
+					offsetY: +16		
+				},
+			]
+		},
+		{
 			level: "xx",
 			lowerText: "X",
 			decoType: "EXTRASPRITES1",

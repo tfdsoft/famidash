@@ -5,6 +5,7 @@
 .segment "RODATA_2"
 
 _level_list_lo:
+	.byte .lobyte(level_data_problematic)
 	.byte .lobyte(level_data_xx)
 	.byte .lobyte(level_data_everymadness)
 	.byte .lobyte(level_data_supercycles)
@@ -32,6 +33,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_luckydraw)
 
 _level_list_hi:
+	.byte .hibyte(level_data_problematic)
 	.byte .hibyte(level_data_xx)
 	.byte .hibyte(level_data_everymadness)
 	.byte .hibyte(level_data_supercycles)
@@ -59,6 +61,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_luckydraw)
 
 _level_list_bank:
+	.byte .lobyte(.bank(level_data_problematic))
 	.byte .lobyte(.bank(level_data_xx))
 	.byte .lobyte(.bank(level_data_everymadness))
 	.byte .lobyte(.bank(level_data_supercycles))
@@ -116,6 +119,7 @@ _level_chunk_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
+	.byte .lobyte($00006E)		; problematic
 	.byte .lobyte($000090)		; xx
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($000088)		; supercycles
@@ -145,6 +149,7 @@ _level_lengths_lo:
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
+	.byte .hibyte($00006E)		; problematic
 	.byte .hibyte($000090)		; xx
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($000088)		; supercycles
@@ -174,6 +179,7 @@ _level_lengths_md:
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
+	.byte .bankbyte($00006E)		; problematic
 	.byte .bankbyte($000090)		; xx
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($000088)		; supercycles

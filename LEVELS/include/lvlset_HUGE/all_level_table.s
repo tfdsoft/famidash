@@ -42,6 +42,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_subzero)
 	.byte .lobyte(level_data_moonlight)
 	.byte .lobyte(level_data_fofii_fofii_fofii)
+	.byte .lobyte(level_data_selectpaymenttype)
 	.byte .lobyte(level_data_pyrophoric)
 	.byte .lobyte(level_data_cryogenic)
 	.byte .lobyte(level_data_oceane)
@@ -152,6 +153,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_subzero)
 	.byte .hibyte(level_data_moonlight)
 	.byte .hibyte(level_data_fofii_fofii_fofii)
+	.byte .hibyte(level_data_selectpaymenttype)
 	.byte .hibyte(level_data_pyrophoric)
 	.byte .hibyte(level_data_cryogenic)
 	.byte .hibyte(level_data_oceane)
@@ -262,6 +264,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_subzero))
 	.byte .lobyte(.bank(level_data_moonlight))
 	.byte .lobyte(.bank(level_data_fofii_fofii_fofii))
+	.byte .lobyte(.bank(level_data_selectpaymenttype))
 	.byte .lobyte(.bank(level_data_pyrophoric))
 	.byte .lobyte(.bank(level_data_cryogenic))
 	.byte .lobyte(.bank(level_data_oceane))
@@ -447,6 +450,7 @@ _level_lengths_lo:
 	.byte .lobyte($000088)		; subzero
 	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
+	.byte .lobyte($0000BC)		; selectpaymenttype
 	.byte .lobyte($000050)		; pyrophoric
 	.byte .lobyte($000099)		; cryogenic
 	.byte .lobyte($00005D)		; oceane
@@ -559,6 +563,7 @@ _level_lengths_md:
 	.byte .hibyte($000088)		; subzero
 	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
+	.byte .hibyte($0000BC)		; selectpaymenttype
 	.byte .hibyte($000050)		; pyrophoric
 	.byte .hibyte($000099)		; cryogenic
 	.byte .hibyte($00005D)		; oceane
@@ -671,6 +676,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000088)		; subzero
 	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii
+	.byte .bankbyte($0000BC)		; selectpaymenttype
 	.byte .bankbyte($000050)		; pyrophoric
 	.byte .bankbyte($000099)		; cryogenic
 	.byte .bankbyte($00005D)		; oceane

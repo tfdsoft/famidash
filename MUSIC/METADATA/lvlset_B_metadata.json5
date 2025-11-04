@@ -164,11 +164,6 @@
 			originalArtistText: "BOOM KITTY",
 		},
 		{
-			fmsSongName: "Problematic",
-			lowerText: "PROBLEMATIC",
-			originalArtistText: "RUKKUS",
-		},	
-		{
 			fmsSongName: "Pyrophoric (Legacy Remix)",
 			lowerText: "PYROPHORIC",
 			originalArtistText: "NERDBOY628",
@@ -177,7 +172,13 @@
 			fmsSongName: "Raining Tacos",
 			lowerText: "RAINING TACOS",
 			originalArtistText: "PARRY GRIPP",
-		},	
+		},
+		{
+			fmsSongName: "Select Payment Type",
+			upperText: "SELECT",
+			lowerText: "PAYMENT TYPE",
+			originalArtistText: "CRAFTY JUMPER"
+		},
 		{
 			fmsSongName: "Slash Inferno",
 			upperText: "SLASH",

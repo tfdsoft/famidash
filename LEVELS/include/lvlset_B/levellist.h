@@ -9,6 +9,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// ultiatedestruction
 	HARD,	// moonlight
 	HARD,	// fofii_fofii_fofii
+	HARD,	// selectpaymenttype
 	HARDER,	// pyrophoric
 	HARDER,	// cryogenic
 	HARDER,	// oceane
@@ -26,13 +27,12 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// danceofviolins
 	INSANE,	// aprettyeasylevel
 	INSANE,	// highlife
-	DEMON,	// skeletalshenanigans
-	DEMON,	// problematic
-	DEMON,	// decode
 	DEMON,	// infinitecircles
+	DEMON,	// decode
 	DEMON,	// deathmoon
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
+	DEMON,	// skeletalshenanigans
 	DEMON,	// futurefunk
 };
 
@@ -44,6 +44,7 @@ const uint8_t stars_list[] = {
 	5,	// ultiatedestruction
 	5,	// moonlight
 	5,	// fofii_fofii_fofii
+	5,	// selectpaymenttype
 	6,	// pyrophoric
 	6,	// cryogenic
 	6,	// oceane
@@ -61,12 +62,11 @@ const uint8_t stars_list[] = {
 	8,	// danceofviolins
 	9,	// aprettyeasylevel
 	9,	// highlife
-	10,	// skeletalshenanigans
-	10,	// problematic
-	10,	// decode
 	10,	// infinitecircles
+	10,	// decode
 	10,	// deathmoon
 	10,	// clutterfunk2
 	10,	// speedracer
+	10,	// skeletalshenanigans
 	10,	// futurefunk
 };

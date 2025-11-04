@@ -720,7 +720,14 @@
 			lowerText: "RAINING TACOS",
 			originalArtist: ["Parry Gripp","BooneBum"],
 			coveringArtist: "SeaGlowingPro",
-		},	
+		},
+		{
+			fmsSongName: "Select Payment Type",
+			upperText: "SELECT",
+			lowerText: "PAYMENT TYPE",
+			originalArtist: "Crafty Jumper",
+			coveringArtist: "Crafty Jumper",
+		},
 		{
 			fmsSongName: "Slash Inferno",
 			upperText: "SLASH",

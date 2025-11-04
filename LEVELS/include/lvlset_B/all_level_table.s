@@ -12,6 +12,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_ultiatedestruction)
 	.byte .lobyte(level_data_moonlight)
 	.byte .lobyte(level_data_fofii_fofii_fofii)
+	.byte .lobyte(level_data_selectpaymenttype)
 	.byte .lobyte(level_data_pyrophoric)
 	.byte .lobyte(level_data_cryogenic)
 	.byte .lobyte(level_data_oceane)
@@ -29,13 +30,12 @@ _level_list_lo:
 	.byte .lobyte(level_data_danceofviolins)
 	.byte .lobyte(level_data_aprettyeasylevel)
 	.byte .lobyte(level_data_highlife)
-	.byte .lobyte(level_data_skeletalshenanigans)
-	.byte .lobyte(level_data_problematic)
-	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_infinitecircles)
+	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_deathmoon)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
+	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_futurefunk)
 
 _level_list_hi:
@@ -46,6 +46,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_ultiatedestruction)
 	.byte .hibyte(level_data_moonlight)
 	.byte .hibyte(level_data_fofii_fofii_fofii)
+	.byte .hibyte(level_data_selectpaymenttype)
 	.byte .hibyte(level_data_pyrophoric)
 	.byte .hibyte(level_data_cryogenic)
 	.byte .hibyte(level_data_oceane)
@@ -63,13 +64,12 @@ _level_list_hi:
 	.byte .hibyte(level_data_danceofviolins)
 	.byte .hibyte(level_data_aprettyeasylevel)
 	.byte .hibyte(level_data_highlife)
-	.byte .hibyte(level_data_skeletalshenanigans)
-	.byte .hibyte(level_data_problematic)
-	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_infinitecircles)
+	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_deathmoon)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
+	.byte .hibyte(level_data_skeletalshenanigans)
 	.byte .hibyte(level_data_futurefunk)
 
 _level_list_bank:
@@ -80,6 +80,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_ultiatedestruction))
 	.byte .lobyte(.bank(level_data_moonlight))
 	.byte .lobyte(.bank(level_data_fofii_fofii_fofii))
+	.byte .lobyte(.bank(level_data_selectpaymenttype))
 	.byte .lobyte(.bank(level_data_pyrophoric))
 	.byte .lobyte(.bank(level_data_cryogenic))
 	.byte .lobyte(.bank(level_data_oceane))
@@ -97,13 +98,12 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_danceofviolins))
 	.byte .lobyte(.bank(level_data_aprettyeasylevel))
 	.byte .lobyte(.bank(level_data_highlife))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans))
-	.byte .lobyte(.bank(level_data_problematic))
-	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_infinitecircles))
+	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_deathmoon))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 	.byte .lobyte(.bank(level_data_futurefunk))
 
 _level_chunk_list_lo:
@@ -111,8 +111,8 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_thesteamworks_1)
 	.byte .lobyte(level_data_subtleoddities_2)
 	.byte .lobyte(level_data_highlife_3)
-	.byte .lobyte(level_data_skeletalshenanigans_4)
-	.byte .lobyte(level_data_deathmoon_5)
+	.byte .lobyte(level_data_deathmoon_4)
+	.byte .lobyte(level_data_skeletalshenanigans_5)
 	.byte .lobyte(level_data_futurefunk_6)
 	.byte .lobyte(level_data_futurefunk_7)
 
@@ -121,8 +121,8 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_thesteamworks_1)
 	.byte .hibyte(level_data_subtleoddities_2)
 	.byte .hibyte(level_data_highlife_3)
-	.byte .hibyte(level_data_skeletalshenanigans_4)
-	.byte .hibyte(level_data_deathmoon_5)
+	.byte .hibyte(level_data_deathmoon_4)
+	.byte .hibyte(level_data_skeletalshenanigans_5)
 	.byte .hibyte(level_data_futurefunk_6)
 	.byte .hibyte(level_data_futurefunk_7)
 
@@ -131,8 +131,8 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_thesteamworks_1))
 	.byte .lobyte(.bank(level_data_subtleoddities_2))
 	.byte .lobyte(.bank(level_data_highlife_3))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans_4))
-	.byte .lobyte(.bank(level_data_deathmoon_5))
+	.byte .lobyte(.bank(level_data_deathmoon_4))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_5))
 	.byte .lobyte(.bank(level_data_futurefunk_6))
 	.byte .lobyte(.bank(level_data_futurefunk_7))
 
@@ -147,6 +147,7 @@ _level_lengths_lo:
 	.byte .lobyte($00006C)		; ultiatedestruction
 	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
+	.byte .lobyte($0000BC)		; selectpaymenttype
 	.byte .lobyte($000050)		; pyrophoric
 	.byte .lobyte($000099)		; cryogenic
 	.byte .lobyte($00005D)		; oceane
@@ -164,13 +165,12 @@ _level_lengths_lo:
 	.byte .lobyte($000096)		; danceofviolins
 	.byte .lobyte($000070)		; aprettyeasylevel
 	.byte .lobyte($000154)		; highlife
-	.byte .lobyte($0000D5)		; skeletalshenanigans
-	.byte .lobyte($00006E)		; problematic
-	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($00006F)		; infinitecircles
+	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
+	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($0001DD)		; futurefunk
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -183,6 +183,7 @@ _level_lengths_md:
 	.byte .hibyte($00006C)		; ultiatedestruction
 	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
+	.byte .hibyte($0000BC)		; selectpaymenttype
 	.byte .hibyte($000050)		; pyrophoric
 	.byte .hibyte($000099)		; cryogenic
 	.byte .hibyte($00005D)		; oceane
@@ -200,13 +201,12 @@ _level_lengths_md:
 	.byte .hibyte($000096)		; danceofviolins
 	.byte .hibyte($000070)		; aprettyeasylevel
 	.byte .hibyte($000154)		; highlife
-	.byte .hibyte($0000D5)		; skeletalshenanigans
-	.byte .hibyte($00006E)		; problematic
-	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($00006F)		; infinitecircles
+	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
+	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($0001DD)		; futurefunk
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -219,6 +219,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00006C)		; ultiatedestruction
 	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii
+	.byte .bankbyte($0000BC)		; selectpaymenttype
 	.byte .bankbyte($000050)		; pyrophoric
 	.byte .bankbyte($000099)		; cryogenic
 	.byte .bankbyte($00005D)		; oceane
@@ -236,13 +237,12 @@ _level_lengths_hi:
 	.byte .bankbyte($000096)		; danceofviolins
 	.byte .bankbyte($000070)		; aprettyeasylevel
 	.byte .bankbyte($000154)		; highlife
-	.byte .bankbyte($0000D5)		; skeletalshenanigans
-	.byte .bankbyte($00006E)		; problematic
-	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($00006F)		; infinitecircles
+	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
+	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($0001DD)		; futurefunk
 
 .endif

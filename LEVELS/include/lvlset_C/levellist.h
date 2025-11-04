@@ -2,6 +2,7 @@
 // Exported by export_levels.py
 
 const uint8_t difficulty_list[] = {
+	EASYDEMON,	// problematic
 	EASYDEMON,	// xx
 	EASYDEMON,	// everymadness
 	EASYDEMON,	// supercycles
@@ -30,6 +31,7 @@ const uint8_t difficulty_list[] = {
 };
 
 const uint8_t stars_list[] = {
+	10,	// problematic
 	10,	// xx
 	10,	// everymadness
 	10,	// supercycles
