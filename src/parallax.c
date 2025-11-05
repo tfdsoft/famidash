@@ -153,21 +153,26 @@ void vram_generate_parallax(uint8_t bg_id){
 
         for (uint8_t bg_width = 1; bg_width < width; bg_width++){
             set_chr_bank(2,(0x10+(bg_width<<2)+step));
+            vram_adr(0);
 
-            for (uint8_t j=0; j<height; j++){ // y
+            for (uint8_t j=0, jtw=0; j<height; j++, jtw += width){ // y
                 for (uint8_t i=0; i<width; i++){ // x
-                    uint8_t tile = ((i % width)+ (j * width));
-                    uint8_t newtile = (((i+(width-bg_width)) % width)+ (j * width));
+
+                    uint8_t tile = (i + jtw);
+
+                    uint8_t newtile = (i+(width-bg_width));
+                    if(newtile >= width) newtile -= width;
+                    newtile += jtw;
 
                     tile = (ptr[tile]);
                     newtile = (ptr[newtile]-0x40);
-
+                    
                     for (uint8_t k=0; k<16; k++){
                         bg_buffer_1[(newtile<<4)+k] = bg_buffer_1[(tile<<4)+k];
                     }
                 }
             }
-            vram_adr(0);
+            
             vram_copy(bg_buffer_1, 0x400);
         }
     }
@@ -177,3 +182,22 @@ void vram_generate_parallax(uint8_t bg_id){
     pop_prg_a000();
 }
 
+/*
+for (uint8_t j=0, jtw=0; j<height; j++, jtw += width){ // y
+    for (uint8_t i=0; i<width; i++){ // x
+
+        uint8_t tile = (i + jtw);
+
+        uint8_t newtile = (i+(width-bg_width));
+        if(newtile >= width) newtile -= width;
+        newtile += jtw;
+
+        tile = (ptr[tile]);
+        newtile = (ptr[newtile]-0x40);
+        
+        for (uint8_t k=0; k<16; k++){
+            bg_buffer_1[(newtile<<4)+k] = bg_buffer_1[(tile<<4)+k];
+        }
+    }
+}
+*/

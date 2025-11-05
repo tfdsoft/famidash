@@ -506,3 +506,49 @@ void vram_unrle_ignore0(const unsigned char* src){
 }
 
 
+uint8_t fast_mod8(uint8_t n, uint8_t mod){
+    __attribute__((leaf)) __asm__ volatile (
+        "stx __rc2 \n"
+        "cmp __rc2 \n"
+        "bcc 9f \n" // if number is less than mod,
+                    // don't run the loop
+        "1: \n"
+        "sec \n"
+        "sbc __rc2 \n"
+        "cmp __rc2 \n"
+        "bcs 1b \n"
+
+        "9: \n"
+        :"=a"(n)
+        :"a"(n),"x"(mod)
+        :"y","p","rc2"
+    );
+
+    return n;
+}
+
+
+// DO NOT USE IF MULT CAN BE ZERO
+uint8_t fast_mult8(uint8_t n, uint8_t mult){
+    __attribute__((leaf)) __asm__ volatile (
+        "stx __rc2 \n"
+        "cmp __rc2 \n"
+        "beq 9f \n" // if mult = 1,
+                    // don't run the loop
+        "dex \n"
+        "sta __rc2 \n"
+        
+        "1: \n"
+        "clc \n"
+        "adc __rc2 \n"
+        "dex \n"
+        "bne 1b \n"
+
+        "9: \n"
+        :"=a"(n)
+        :"a"(n),"x"(mult)
+        :"y","p","rc2"
+    );
+
+    return n;
+}
