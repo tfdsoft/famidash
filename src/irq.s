@@ -105,8 +105,8 @@ stall:
         ldx irq_args+1
         ldy irq_args+2
 
-        sty $2005 ;PPU_SCROLL
-        sty $2005 ;PPU_SCROLL
+        sty $2005 ; PPU_SCROLL
+        sty $2005 ; PPU_SCROLL
 
         ;jsr set_chr_bank    ; args were loaded
         ;                    ; at the start
@@ -120,3 +120,24 @@ stall:
 
 
 
+;.globl irq_enable_sprites
+;    irq_enable_sprites:
+;        ; DMA the sprites, in the event that decay occurred
+;        ;lda #$00
+;        ;sta $2003   ; OAM_ADDR
+;        ;lda #$02
+;        ;sta $4014   ; OAM_DMA
+;        
+;        ; enable sprites
+;        lda #$10    
+;        sta $2001   ; PPU_MASK
+;
+;        ; stall for at least 8 lines
+;        ldy #$40
+;        jsr stall   
+;
+;        ; disable sprites
+;        jsr get_ppu_mask_var
+;        sta $2001   ; PPU_MASK
+;
+;        rts

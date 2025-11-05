@@ -53,6 +53,20 @@ const uint8_t * const bg_table_ptr[] = {
     tt_bg0, tt_bg1, tt_bg2
 };
 
+
+__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".999")))
+const uint8_t mspr_loading[] = {
+    -32, -4, 0, 0,
+    -24, -4,  0, 0,
+    -16, -4, 0, 0,
+    -8, -4, 0, 0,
+    0, -4, 0, 0,
+    8, -4, 0, 0,
+    16, -4, 0, 0,
+    24, -4, 0, 0,
+    0x80
+};
+
 uint8_t loaded_bg_width;
 
 __attribute__((noinline))
@@ -66,12 +80,12 @@ void vram_write_parallax(uint8_t bg_id){
     const uint8_t * ptr;
 
     push_prg_a000();
-    set_prg_a000(extra_code_bank_1);
 
     // ok so first, actually switch to the bank
     // where the tile patterns tables are
     set_prg_a000(extra_code_bank_1);
 
+    
     // get the pointer to the requested bg table
     ptr = bg_table_ptr[bg_id];
 
@@ -126,6 +140,11 @@ void vram_generate_parallax(uint8_t bg_id){
     push_prg_a000();
     set_prg_a000(extra_code_bank_1);
 
+    set_chr_bank(1,8); // ground + menu text
+    oam_clear();
+    oam_meta_spr(128,120, mspr_loading);
+    pal_spr_bright(4);
+
     // get the pointer to the requested bg table
     ptr = bg_table_ptr[bg_id];
 
@@ -150,7 +169,7 @@ void vram_generate_parallax(uint8_t bg_id){
         set_chr_bank(2,0x10+step);
 
         APU.delta_mod.length = 0;
-        APU.status &= 0b00000000;
+        APU.status &= 0b00001111;
         disable_nmi(); // just in case music_update runs.
         for(uint8_t i=0; i<64; i++){
             for(char j=0; j<16; j++){

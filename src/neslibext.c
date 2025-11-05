@@ -537,7 +537,7 @@ uint8_t fast_mult8(uint8_t n, uint8_t mult){
                     // don't run the loop
         "dex \n"
         "sta __rc2 \n"
-        
+
         "1: \n"
         "clc \n"
         "adc __rc2 \n"
@@ -552,3 +552,7 @@ uint8_t fast_mult8(uint8_t n, uint8_t mult){
 
     return n;
 }
+
+
+__attribute__((noinline)) 
+uint8_t get_ppu_mask_var() {return PPU_MASK_VAR;}

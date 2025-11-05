@@ -108,10 +108,10 @@ void state_menu() {
     
     if(loaded_bg_set != background_set){
         donut_decompress_vram(chr_bg[background_set], chr_bank_2);
-        automatic_fs_updates = 0;
+        //automatic_fs_updates = 0;
         vram_generate_parallax(background_set);
         loaded_bg_set = background_set;
-        automatic_fs_updates = 1;
+        //automatic_fs_updates = 1;
     }
 
     // set first sprite bank to the ground
@@ -168,7 +168,7 @@ void state_menu() {
 
         // set parallax bank
         set_chr_bank(3,
-            ((((uint16_t)(high_byte(interrupt_scroll) + (third_byte(interrupt_scroll)<<8)))>>3)%loaded_bg_width) + 0x10
+            ((((uint16_t)(high_byte(interrupt_scroll) | (third_byte(interrupt_scroll)<<8)))>>3)%loaded_bg_width) + 0x10
         );
 
         if((FRAME_CNT & 0x3F) < 5) {
