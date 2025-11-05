@@ -85,10 +85,13 @@ void vram_write_parallax(uint8_t bg_id){
     // it won't have to add two each time
     ptr += 2;
 
-    for(uint8_t i=0; i<30; i++){ // i = y
-        for(uint8_t j=0; j<32; j++){ // j = x
-            uint8_t tileid = (j % width);
-            tileid += ((i * width) % wtimesh);
+    for(uint8_t i=0,itw=0; i<30; i++,itw+=width){ // i = y
+        if(itw >= wtimesh) itw -= wtimesh; // (i * width)
+
+        for(uint8_t j=0, jmw=0; j<32; j++, jmw++){ // j = x
+            if(jmw >= width) jmw -= width; // (j % width)
+            uint8_t tileid = (jmw);
+            tileid += (itw);
             PPU.vram.data = ptr[tileid];
         }
     }
@@ -100,6 +103,16 @@ void vram_write_parallax(uint8_t bg_id){
 
     pop_prg_a000();
 }
+
+    /*for(uint8_t i=0, itw=0; i<30; i++, itw += width){ // i = y
+        if(itw > wtimesh) itw -= wtimesh;
+        for(uint8_t j=0, jmw=0; j<32; j++,jmw++){ // j = x
+            if(jmw >= width) jmw -= width;
+            uint8_t tileid = (jmw);
+            tileid += (itw);
+            PPU.vram.data = ptr[tileid];
+        }
+    }*/
 
 __attribute__((noinline))
 void vram_generate_parallax(uint8_t bg_id){
@@ -150,25 +163,33 @@ void vram_generate_parallax(uint8_t bg_id){
         // 2. set up a pointer to that tile's data
         // 3. copy that tile to vram
         // 4. repeat from 1. until all tiles are copied
-
+        
         for (uint8_t bg_width = 1; bg_width < width; bg_width++){
             set_chr_bank(2,(0x10+(bg_width<<2)+step));
             vram_adr(0);
 
+            
             for (uint8_t j=0, jtw=0; j<height; j++, jtw += width){ // y
-                for (uint8_t i=0; i<width; i++){ // x
+                uint8_t tile_end = jtw+width;
+                //for (uint8_t i=0; i<width; i++){ // x
+                for (uint8_t tileidx = jtw, newtileidx = (width-bg_width); 
+                    tileidx < tile_end; 
+                    tileidx++, newtileidx++
+                ){
+                    if(newtileidx >= (width)) newtileidx = 0;
 
-                    uint8_t tile = (i + jtw);
+                    uint8_t tile = ptr[tileidx];//(i + jtw);
+                    uint8_t newtile = (ptr[newtileidx+jtw]-0x40);
 
-                    uint8_t newtile = (i+(width-bg_width));
-                    if(newtile >= width) newtile -= width;
-                    newtile += jtw;
+                    //uint8_t newtile = (i+(width-bg_width));
+                    //if(newtile >= width) newtile -= width;
+                    //newtile += jtw;
 
-                    tile = (ptr[tile]);
-                    newtile = (ptr[newtile]-0x40);
+                    //tile = (ptr[tile]);
+                    //newtile = (ptr[newtile]-0x40);
                     
-                    for (uint8_t k=0; k<16; k++){
-                        bg_buffer_1[(newtile<<4)+k] = bg_buffer_1[(tile<<4)+k];
+                    for (uint8_t k=8; k<16; k++){
+                        bg_buffer_1[(newtile<<4)|k] = bg_buffer_1[(tile<<4)|k];
                     }
                 }
             }
