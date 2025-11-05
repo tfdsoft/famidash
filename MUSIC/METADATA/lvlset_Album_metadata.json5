@@ -419,7 +419,7 @@
 			upperText: "GROUND TO",
 			lowerText: "SPACE",
 			originalArtist: "SeaGlowingPro",
-			coveringArtist: "SeaGlowingPro",
+			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
 		},
 		{
 			fmsSongName: "haunted woods",
