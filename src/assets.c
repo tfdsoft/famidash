@@ -47,9 +47,9 @@ file(chr_tiles_black, chr_bank_1) = {
 file(chr_background_0, chr_bank_2) = {
     #embed "./chr/dnt/Background0.bin"
 };
-//file(chr_background_1, chr_bank_2) = {
-//    #embed "./chr/dnt/Background1.bin"
-//};
+file(chr_background_1, chr_bank_2) = {
+    #embed "./chr/dnt/Background1.bin"
+};
 file(chr_background_2, chr_bank_2) = {
     #embed "./chr/dnt/Background2.bin"
 };
@@ -69,6 +69,27 @@ file(chr_ground_3, chr_bank_3) = {
     #embed "./chr/dnt/Ground3.bin"
 };
 
+
+
+
+
+
+
+
+__attribute__((section(".prg_rom_fixed_lo.2000"), retain))
+const uint8_t * const chr_bg[] = {
+    chr_background_0,
+    chr_background_1,
+    chr_background_2
+};
+
+__attribute__((section(".prg_rom_fixed_lo.2001"), retain))
+const uint8_t * const chr_g[] = {
+    chr_ground_0,
+    chr_ground_1,
+    chr_ground_2,
+    chr_ground_3,
+};
 
 
 

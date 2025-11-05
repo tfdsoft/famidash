@@ -46,13 +46,7 @@ int main(void){
     irq_reload_value = 64;
     irq_ptr = irq_basic;
 
-    
-    
-    //music_play(0);
-    //famistudio_music_stop();
-
     // clear oam buffer
-    //memfill((unsigned char*)0x200,0,0x100);
     oam_clear();
 
     // clear palette
@@ -67,17 +61,12 @@ int main(void){
 
     ppu_on_spr();
 
-    //APU.status = 0b11111; // turn on all apu channels
-    //APU.triangle.counter = 0xFF; // enable the triangle, no timer
-    
-    //music_bank = music_bank_0;
-    //gamestate = 0x10;
-
     set_wram_mode(WRAM_ON);
 
     loaded_bg_set = 0xff;
-    background_set = 0x00;
-    
+    loaded_g_set = 0xff;
+    background_set = ground_set = 0;
+
     while(1){
         //setup_basic_interrupt(
         //    0,

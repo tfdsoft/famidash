@@ -57,3 +57,7 @@ extern const uint8_t chr_ground_1[];
 extern const uint8_t chr_ground_2[];
 extern const uint8_t chr_ground_3[];
 
+
+
+extern const uint8_t * const chr_bg[];
+extern const uint8_t * const chr_g[];

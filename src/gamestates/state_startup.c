@@ -124,6 +124,9 @@ void state_startup() {
         if((player1_pressed & PAD_LEFT)) {
             ++background_set;
         }
+        if((player1_pressed & PAD_DOWN)) {
+            ++ground_set;
+        }
         
         if(player1_pressed & PAD_A) {
             sfx_play(2,0);

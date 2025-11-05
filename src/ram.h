@@ -10,7 +10,6 @@ __attribute__((section(".aligned.0"),retain)) struct OAM_BUF {
 unsigned char gamestate=0xff;
 
 unsigned char song;
-unsigned long interrupt_scroll;
 
 
 
@@ -191,14 +190,15 @@ struct LVL_HDR {
 
 */
 
-__attribute((section(".prg_ram"),retain))
-unsigned char bg_buffer[2048];
+__attribute((retain))
+uint8_t loaded_bg_set, loaded_g_set;
 
 __attribute((section(".prg_ram"),retain))
-uint8_t 
-    background_set, ground_set,
-    loaded_bg_set, loaded_g_set
-    ;
+uint8_t bg_buffer[2048], background_set, ground_set;
+
+
+
+
 
 
 
