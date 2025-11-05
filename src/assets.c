@@ -47,6 +47,12 @@ file(chr_tiles_black, chr_bank_1) = {
 file(chr_background_0, chr_bank_2) = {
     #embed "./chr/dnt/Background0.bin"
 };
+//file(chr_background_1, chr_bank_2) = {
+//    #embed "./chr/dnt/Background1.bin"
+//};
+file(chr_background_2, chr_bank_2) = {
+    #embed "./chr/dnt/Background2.bin"
+};
 
 
 // grounds

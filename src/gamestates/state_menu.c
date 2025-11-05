@@ -103,7 +103,14 @@ void state_menu() {
     vram_adr(0x1000);
     set_chr_bank(0,0x10);
     set_chr_bank(1,0x12);
-    donut_decompress_vram(chr_background_0, chr_bank_2);
+    
+    if(loaded_bg_set != background_set){
+        donut_decompress_vram(chr_background_2, chr_bank_2);
+        automatic_fs_updates = 0;
+        vram_generate_parallax(background_set);
+        loaded_bg_set = background_set;
+        automatic_fs_updates = 1;
+    }
 
     // set first sprite bank to the ground
     // the "robtop/tfdsoft" text is there
@@ -112,15 +119,17 @@ void state_menu() {
     set_chr_bank(1,0x7);
     
     // set second bg bank to parallax
-    set_chr_bank(3,0x10);
+    set_chr_bank(3,((((uint16_t)(high_byte(interrupt_scroll) + (third_byte(interrupt_scroll)<<8)))>>3)%48) + 0x10);
 
     // write the parallax tilemap
     vram_adr(0x2000);
-    vram_write_parallax(0);
+    vram_write_parallax(background_set);
 
     // generate the rest of the parallax frames
-    vram_adr(0x401);
-    vram_generate_parallax(0);
+    //vram_adr(0x401);
+    
+    
+    
     
     vram_adr(0x2000);
     vram_unrle_ignore0(nt_title);
@@ -160,7 +169,7 @@ void state_menu() {
 
         // set parallax bank
         set_chr_bank(3,
-            ((((uint16_t)(high_byte(interrupt_scroll) + (third_byte(interrupt_scroll)<<8)))>>3)%48) + 0x10
+            ((((uint16_t)(high_byte(interrupt_scroll) + (third_byte(interrupt_scroll)<<8)))>>3)%24) + 0x10
         );
 
         third_byte(irq_args) = high_byte(interrupt_scroll);

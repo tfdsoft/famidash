@@ -1,4 +1,4 @@
-__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".1")))
+__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".001")))
 const uint8_t tt_bg0[] = {
     // alright, here's how the structure works:
     // - width
@@ -20,15 +20,25 @@ const uint8_t tt_bg0[] = {
     0x59, 0x5b, 0x5d, 0x5f, 0x7c, 0x7e,  0x4c, 0x4e, 0x50, 0x52, 0x54, 0x56,
 };
 
+__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".001")))
+const uint8_t tt_bg2[] = {
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".010")))
-const uint8_t * const bg_table_ptr[] = {
-    tt_bg0
+    6, // width
+    6, // height
+    0x40, 0x42, 0x44, 0x46, 0x48, 0x4a,
+    0x41, 0x43, 0x45, 0x47, 0x49, 0x4b,
+    0x60, 0x62, 0x64, 0x66, 0x68, 0x6a,
+    0x46, 0x48, 0x4a, 0x40, 0x42, 0x44, 
+    0x47, 0x49, 0x4b, 0x41, 0x43, 0x45, 
+    0x66, 0x68, 0x6a, 0x60, 0x62, 0x64, 
 };
 
 
+__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".010")))
+const uint8_t * const bg_table_ptr[] = {
+    tt_bg0, tt_bg2, tt_bg2
+};
 
-__attribute__((retain)) uint8_t vram_i, vram_j;
 
 __attribute__((noinline))
 void vram_write_parallax(uint8_t bg_id){
@@ -74,21 +84,16 @@ void vram_write_parallax(uint8_t bg_id){
 
 
     pop_prg_a000();
-
-
-
-    
 }
 
 __attribute__((noinline))
 void vram_generate_parallax(uint8_t bg_id){
-    //uint16_t tmp, tmp2;
     const uint8_t * ptr;
-    uint8_t width, height, wtimesh;
-    //uint8_t tile;
+    uint8_t width, height;
 
     // empty the parallax buffer
-    memfill((uint8_t*)0x6000, 0, 0x800);
+    // don't do it anymore (we need all the frames)
+    //memfill((uint8_t*)0x6000, 0, 0x800);
 
     push_prg_a000();
     set_prg_a000(extra_code_bank_1);
@@ -99,7 +104,6 @@ void vram_generate_parallax(uint8_t bg_id){
     // get the width and height
     width = ptr[0];
     height = ptr[1];
-    wtimesh = (width * height);
 
     // increment the pointer by two, which
     // *should* make the loop faster since
@@ -116,7 +120,7 @@ void vram_generate_parallax(uint8_t bg_id){
         set_chr_bank(2,0x10+step);
 
         APU.delta_mod.length = 0;
-        APU.status &= 0b00001111;
+        APU.status &= 0b00000000;
         disable_nmi(); // just in case music_update runs.
         for(uint8_t i=0; i<64; i++){
             for(char j=0; j<16; j++){

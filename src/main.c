@@ -45,6 +45,8 @@ int main(void){
 
     irq_reload_value = 64;
     irq_ptr = irq_basic;
+
+    
     
     //music_play(0);
     //famistudio_music_stop();
@@ -73,6 +75,9 @@ int main(void){
 
     set_wram_mode(WRAM_ON);
 
+    loaded_bg_set = 0xff;
+    background_set = 0x00;
+    
     while(1){
         //setup_basic_interrupt(
         //    0,

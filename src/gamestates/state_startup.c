@@ -121,6 +121,9 @@ void state_startup() {
             if(song == song_max) song = 0;
             music_play(song);
         }
+        if((player1_pressed & PAD_LEFT)) {
+            ++background_set;
+        }
         
         if(player1_pressed & PAD_A) {
             sfx_play(2,0);

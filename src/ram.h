@@ -194,5 +194,13 @@ struct LVL_HDR {
 __attribute((section(".prg_ram"),retain))
 unsigned char bg_buffer[2048];
 
+__attribute((section(".prg_ram"),retain))
+uint8_t 
+    background_set, ground_set,
+    loaded_bg_set, loaded_g_set
+    ;
+
+
+
 #define bg_buffer_1 (&bg_buffer[0])
 #define bg_buffer_2 (&bg_buffer[1024])
