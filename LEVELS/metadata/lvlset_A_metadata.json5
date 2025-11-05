@@ -1748,8 +1748,18 @@
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x01,
-			startingGroundColor: 0x01
-		},		
+			startingGroundColor: 0x01,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[23, 25], [32, 22], [36, 23], [40, 24], [514, 22], [518, 23], [524, 23], [687, 25],
+						[693, 25], [711, 23], [740, 25], [745, 23], [750, 25], [776, 23], [799, 23], [834, 23], [367, 18],
+					],
+					offsetY: +8
+				},
+			]
+		},
 		{
 			level: "kappaclysm",
 			lowerText: "KAPPACLYSM",
