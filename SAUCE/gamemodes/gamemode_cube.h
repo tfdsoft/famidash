@@ -89,7 +89,7 @@ void cube_movement(){
 				}
 			
 			}
-			else if((controllingplayer->press & (PAD_A | PAD_UP)) && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack || (gamemode == GAMEMODE_NINJA && ninjajumps[currplayer]))) {		//jblock making you release and press A again to jump
+			else if((controllingplayer->press & (PAD_A | PAD_UP)) && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack || (gamemode == GAMEMODE_NINJA && ninjajumps[currplayer] && !orbed[currplayer]))) {		//jblock making you release and press A again to jump
 				jumps++;
 
 				currplayer_vel_y = JUMP_VEL(currplayer_table_idx); // JUMP
@@ -99,7 +99,9 @@ void cube_movement(){
 				if (gamemode == GAMEMODE_NINJA) { idx8_dec(ninjajumps, currplayer); }
 			
 			}
-	} else if (gamemode == GAMEMODE_ROBOT) {
+	}
+
+	else if (gamemode == GAMEMODE_ROBOT) {
 		
 		if (controllingplayer->press & (PAD_A | PAD_UP)) {
 			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0b100);	
