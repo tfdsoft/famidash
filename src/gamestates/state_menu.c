@@ -108,10 +108,10 @@ void state_menu() {
     
     if(loaded_bg_set != background_set){
         donut_decompress_vram(chr_bg[background_set], chr_bank_2);
-        //automatic_fs_updates = 0;
+        automatic_fs_updates = 0;
         vram_generate_parallax(background_set);
         loaded_bg_set = background_set;
-        //automatic_fs_updates = 1;
+        automatic_fs_updates = 1;
     }
 
     // set first sprite bank to the ground

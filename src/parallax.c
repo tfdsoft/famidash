@@ -162,10 +162,12 @@ void vram_generate_parallax(uint8_t bg_id){
         APU.delta_mod.length = 0;
         APU.status &= 0b00001111;
         disable_nmi(); // just in case music_update runs.
-        for(uint8_t i=0; i<64; i++){
-            for(char j=0; j<16; j++){
-                bg_buffer_2[(i<<4)+j] = PPU.vram.data;
-            }
+        for(uint8_t i=0; i<4; i++){
+            uint8_t j=0;
+            do{
+                bg_buffer_2[(i<<8)+j] = PPU.vram.data;
+                j++;
+            } while (j != 0);
         }
         enable_nmi();
         
