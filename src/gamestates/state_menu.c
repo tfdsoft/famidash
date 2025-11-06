@@ -89,20 +89,6 @@ void state_menu() {
     unsigned char menu_color = 0x11;
     unsigned long interrupt_scroll = 0;
 
-    
-
-    // load menu stuff
-    vram_adr(0x000);
-    donut_decompress_vram(chr_menu_global, chr_bank_0);
-    donut_decompress_vram(chr_font, chr_bank_0);
-    donut_decompress_vram(chr_menu_famidash, chr_bank_0);
-    donut_decompress_vram(chr_menu_buttons, chr_bank_0);
-
-    // load ground
-    set_chr_bank(0,0x8);
-    donut_decompress_vram(chr_g[ground_set], chr_bank_3);
-    donut_decompress_vram(chr_menu_robtop, chr_bank_0);
-
     // load parallax background
     vram_adr(0x1000);
     set_chr_bank(0,0x10);
@@ -115,6 +101,18 @@ void state_menu() {
         loaded_bg_set = background_set;
         //automatic_fs_updates = 1;
     }
+
+    // load menu stuff
+    vram_adr(0x000);
+    donut_decompress_vram(chr_menu_global, chr_bank_0);
+    donut_decompress_vram(chr_font, chr_bank_0);
+    donut_decompress_vram(chr_menu_famidash, chr_bank_0);
+    donut_decompress_vram(chr_menu_buttons, chr_bank_0);
+
+    // load ground
+    set_chr_bank(0,0x8);
+    donut_decompress_vram(chr_g[ground_set], chr_bank_3);
+    donut_decompress_vram(chr_menu_robtop, chr_bank_0);
 
     // set first sprite bank to the ground
     // the "robtop/tfdsoft" text is there
