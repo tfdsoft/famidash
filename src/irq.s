@@ -34,6 +34,8 @@ IRQ_ENABLE  = $e001
 ;
 ;   it's 6:30 am. don't harass me over this, alex
 
+;   NOTE: DON'T SET AN IRQ BEFORE SCANLINE 16.
+
 .section .text.irq,"a",@progbits
 .globl irq
     irq:
@@ -45,10 +47,14 @@ IRQ_ENABLE  = $e001
 
         sta IRQ_DISABLE ; disable mmc3 irq
 
-        ; RUN THIS INTERRUPT
-        
-        ; setup new pointer
         ldy irq_table_offset
+        lda irq_table+0,y
+        cmp #$ff
+        beq exitirq     ; if the reload value is 255,
+                        ; don't bother
+
+        ; RUN THIS INTERRUPT
+        ; setup new pointer
         lda irq_table+1,y
         sta irq_ptr+0
         lda irq_table+2,y
@@ -73,8 +79,9 @@ IRQ_ENABLE  = $e001
         sta IRQ_RELOAD
         sta IRQ_ENABLE
 
-        
+    
         ; EXIT IRQ
+    exitirq:
         pla     ; get Y
         tay
         pla     ; get X
@@ -86,7 +93,10 @@ IRQ_ENABLE  = $e001
     1:
         jmp (irq_ptr)
 
-
+    2:
+        sta IRQ_LATCH
+        sta IRQ_RELOAD
+        beq exitirq ; bra
 
 
 
@@ -126,7 +136,7 @@ stall:
     ; ptr+3 = chr bank ID
     ; ptr+4 = chr bank value
     irq_set_chr:
-        ldy #$7
+        ldy #$3
         jsr stall
 
         ldy irq_table_offset
@@ -146,24 +156,26 @@ stall:
     ; ptr+4 = chr bank value
     ; ptr+5 = new X scroll value
     irq_set_chr_and_scroll:
-        ldy #$2
-        jsr stall
+
+    ; inline'd the stall(in) here because it took too long to jsr
+        ldy #3
+    1:          ; stall for a bit so that the
+        dey     ; register updates are outside
+        bne 1b  ; the active display
+
 
         ldy irq_table_offset
 
-        ; push chr bank for faster access later
         lda irq_table+3,y
-        pha
+        pha ; push chr bank for faster access later
         lda irq_table+4,y
-        pha
+        tax ; transfer to X so we don't need another load
 
         lda irq_table+5,y
         
         sta $2005 ; PPU_SCROLL
         sta $2005 ; PPU_SCROLL
 
-        pla
-        tax
         pla
         ora __bank_select_hi
         sta $8000

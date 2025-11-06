@@ -6,7 +6,7 @@ unsigned char nmi_prev_bank;
 
 
 __attribute__((interrupt_norecurse)) void nmi(){
-    //__asm__("sei");
+    
     // oh yeah just a heads up:
     // llvm-mos needs to push EVERY. SINGLE.
     // VIRTUAL. REGISTER.
@@ -17,7 +17,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
     
     // if rendering is off, do not access vram
     if ((PPU_MASK_VAR & 0b00011000)) {
-
+        // /__asm__("cli");
         // send the palette in!
         if(PAL_UPDATE){
             PAL_UPDATE = 0;
@@ -82,11 +82,14 @@ __attribute__((interrupt_norecurse)) void nmi(){
         IRQ_RELOAD = irq_table[0];
         IRQ_ENABLE = irq_table[0];
 
+        
+
         oam_and_readjoypad(); // PPU regs are reset in here
         //PPU.status; // read ppu status. thanks llvm-mos!
         //PPU.scroll = SCROLL_X;
         //PPU.scroll = SCROLL_Y;
         //PPU.control = PPU_CTRL_VAR;
+        
     }
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
@@ -97,22 +100,14 @@ __attribute__((interrupt_norecurse)) void nmi(){
     //bruh.joemom++; 
 
     
+    //__asm__("cli");
     
-
     if(automatic_fs_updates) {
         push_prg_a000();
-        //__attribute__((leaf)) __asm__ volatile (
-        //    "lda __prg_a000 \n"
-        //    "pha \n"
-        //);
+        
         music_update();
-        //__attribute__((leaf)) __asm__ volatile (
-        //    "pla \n"
-        //    "jsr set_prg_a000 \n"
-        //);
         pop_prg_a000();
     }
-    //__asm__("sei");
 }
 
 

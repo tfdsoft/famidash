@@ -89,6 +89,8 @@ void state_menu() {
     unsigned char menu_color = 0x11;
     unsigned long interrupt_scroll = 0;
 
+    
+
     // load menu stuff
     vram_adr(0x000);
     donut_decompress_vram(chr_menu_global, chr_bank_0);
@@ -108,10 +110,10 @@ void state_menu() {
     
     if(loaded_bg_set != background_set){
         donut_decompress_vram(chr_bg[background_set], chr_bank_2);
-        automatic_fs_updates = 0;
+        //automatic_fs_updates = 0;
         vram_generate_parallax(background_set);
         loaded_bg_set = background_set;
-        automatic_fs_updates = 1;
+        //automatic_fs_updates = 1;
     }
 
     // set first sprite bank to the ground
@@ -136,21 +138,22 @@ void state_menu() {
 
     pal_all(pal_title);
 
+    
     flush_irq();
-    add_advanced_interrupt(
-        16, 
-        irq_set_chr_and_scroll,
-        3
-    );
-    add_advanced_interrupt(
-        0, 
+    add_advanced_interrupt( // set button chr
+        94, 
         irq_set_chr,
         args88(5,7)
     );
-    add_advanced_interrupt(
-        155, 
+    add_advanced_interrupt( // ground scroll
+        79, 
         irq_set_chr_and_scroll,
         args88(5,8)
+    );
+    add_advanced_interrupt( // set background chr
+        47, 
+        irq_set_chr_and_scroll,
+        3
     );
     enable_irq();
     
@@ -158,13 +161,13 @@ void state_menu() {
     oam_meta_spr(1,0,mspr_title);
 
     ppu_on_all();
-    pal_fade_to(0,4);
+    pal_fade_to(1,4);
 
     // for some reason, the compiler
     // absolutely REFUSES to put an
     // lda #0 before running this, so
     // do it manually here (if song is 0)
-    __asm__("lda #0"); 
+    //__asm__("lda #0"); 
     music_play(song_menu_theme);
 
     //automatic_fs_updates=0;
@@ -175,8 +178,9 @@ void state_menu() {
         oam_clear();
 
         interrupt_scroll += phys_speed[1];
-        IRQ(0).arg1 = ((((uint16_t)(high_byte(interrupt_scroll) | (third_byte(interrupt_scroll)<<8)))>>3)%loaded_bg_width) + 0x10;
-        IRQ(2).arg2 = high_byte(interrupt_scroll);
+        IRQ(1).arg2 = high_byte(interrupt_scroll);
+        IRQ(2).arg1 = ((((uint16_t)(high_byte(interrupt_scroll) | (third_byte(interrupt_scroll)<<8)))>>3)%loaded_bg_width) + 0x10;
+        
 
 
         if((FRAME_CNT & 0x3F) < 5) {

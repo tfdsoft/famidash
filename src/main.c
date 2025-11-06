@@ -19,9 +19,22 @@ __attribute__((leaf)) __asm__(
         "sta $700,x \n"
         "inx \n"
         "bne 1b \n"
+
     // end of clearRAM
 
     ".section .init.300,\"ax\",@progbits \n"
+        // make sure the irq doesn't trigger itself
+        "lda #255 \n"
+        "sta irq_table+0 \n"
+        "sta irq_table+6 \n"
+        
+        "lda #<irq_basic \n"
+        "ldx #>irq_basic \n"
+        "sta irq_table+1 \n"
+        "stx irq_table+2 \n"
+        "sta irq_table+7 \n"
+        "stx irq_table+8 \n"
+
         "lda #$37 \n"
         "jsr set_prg_a000 \n"
 
@@ -31,6 +44,9 @@ __attribute__((leaf)) __asm__(
         "ldy #$a0 \n"
         "jsr famistudio_init \n"
 
+        "lda #$c0\n"
+        "sta $4017\n" // disable apu frame counter irq
+
         //"ldx #$00 \n"
         //"tax \n"
         //"dex \n"
@@ -39,6 +55,7 @@ __attribute__((leaf)) __asm__(
 );
 
 int main(void){
+
     PPU.control = PPU_CTRL_VAR = 0b10100000;
     PPU.mask = PPU_MASK_VAR = 0b00000110;
     ppu_off(); // turn off everything
