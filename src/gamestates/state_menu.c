@@ -193,8 +193,8 @@ void state_menu() {
 
             pal_col(0, menu_color);
             pal_col(2, menu_color-0x10);
-            pal_col(9, menu_color-0x10);
-            pal_col(10, menu_color);
+            pal_col(9, menu_color);
+            pal_col(10, menu_color+0x10);
         }
 
 
