@@ -22,10 +22,11 @@ void death_animation() {
 			dual == 1 ? oam_clear_two_players() : oam_clear_player();
 			
 			if (robotjumpframe[0] < 20) {
+				if (retro_mode && (gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_UFO)) mmc3_set_2kb_chr_bank_0(iconbank1);
 				oam_meta_spr(
 					idx16_load_hi_NOC(player_x, tmp2)-2,
 					idx16_load_hi_NOC(player_y, tmp2)-2,
-					(retro_mode) ? ExplodeR_Sprites[robotjumpframe[0] & 0x7F] :
+					(retro_mode && (gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_UFO)) ? ExplodeR_Sprites[robotjumpframe[0] & 0x7F] :
 					Explode_Sprites[robotjumpframe[0] & 0x7F]);
 				++robotjumpframe[0];
 			}
