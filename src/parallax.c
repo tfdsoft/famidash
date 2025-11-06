@@ -182,9 +182,10 @@ void vram_generate_parallax(uint8_t bg_id){
             set_chr_bank(2,(0x10+(bg_width<<2)+step));
             vram_adr(0);
 
+            
             for (uint8_t j=0, jtw=0; j<height; j++, jtw += width){ // y
                 uint8_t tile_end = jtw+width;
-                //for (uint8_t i=0; i<width; i++){ // x
+                
                 for (uint8_t tileidx = jtw, newtileidx = (width-bg_width); 
                     tileidx < tile_end; 
                     tileidx++, newtileidx++

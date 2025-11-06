@@ -183,7 +183,7 @@ void state_menu() {
         
 
 
-        if((FRAME_CNT & 0x3F) < 5) {
+        if((FRAME_CNT & 0x3f) < 5) {
 
             if(FRAME_CNT & 0x1) menu_color -= 1;
             else menu_color += 1;
