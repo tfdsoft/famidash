@@ -1,6 +1,10 @@
 unsigned char automatic_fs_updates = 0;
 unsigned char nmi_prev_bank;
 
+
+// TODO: convert this to asm
+
+
 __attribute__((interrupt_norecurse)) void nmi(){
     //__asm__("sei");
     // oh yeah just a heads up:

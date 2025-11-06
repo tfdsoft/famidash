@@ -27,7 +27,12 @@ IRQ_ENABLE  = $e001
                                     ; extra byte to catch the
                                     ; end of the table.
 
-
+; yes, i am fully aware that there is a better way to do this:
+; - only increment the offset by the amount of arguments
+; - bake the function pointers into the reload value,
+;   using a lookup table
+;
+;   it's 6:30 am. don't harass me over this, alex
 
 .section .text.irq,"a",@progbits
 .globl irq
