@@ -118,15 +118,6 @@ void vram_write_parallax(uint8_t bg_id){
     pop_prg_a000();
 }
 
-    /*for(uint8_t i=0, itw=0; i<30; i++, itw += width){ // i = y
-        if(itw > wtimesh) itw -= wtimesh;
-        for(uint8_t j=0, jmw=0; j<32; j++,jmw++){ // j = x
-            if(jmw >= width) jmw -= width;
-            uint8_t tileid = (jmw);
-            tileid += (itw);
-            PPU.vram.data = ptr[tileid];
-        }
-    }*/
 
 __attribute__((noinline))
 void vram_generate_parallax(uint8_t bg_id){
@@ -178,6 +169,8 @@ void vram_generate_parallax(uint8_t bg_id){
         }
         enable_nmi();
         
+
+
         // 1. get the id of the next tile to write
         // 2. set up a pointer to that tile's data
         // 3. copy that tile to vram

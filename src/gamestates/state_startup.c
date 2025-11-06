@@ -221,7 +221,7 @@ void state_credits() {
     pal_fade_to(0,4);
 
     
-    for(unsigned short stall=300; stall>0; stall--){
+    for(unsigned short stall=240; stall>0; stall--){
         ppu_wait_nmi();
     }
     pal_fade_to(4,0);
