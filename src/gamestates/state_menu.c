@@ -102,6 +102,11 @@ void state_menu() {
         //automatic_fs_updates = 1;
     }
 
+    set_chr_bank(2,4);
+    //set_chr_bank(3,5);
+    set_chr_bank(4,6);
+    set_chr_bank(5,7);
+
     // load menu stuff
     vram_adr(0x000);
     donut_decompress_vram(chr_menu_global, chr_bank_0);
@@ -112,11 +117,9 @@ void state_menu() {
     // load ground
     set_chr_bank(0,0x8);
     donut_decompress_vram(chr_g[ground_set], chr_bank_3);
+    // the "robtop/tfdsoft" text is there
     donut_decompress_vram(chr_menu_robtop, chr_bank_0);
 
-    // set first sprite bank to the ground
-    // the "robtop/tfdsoft" text is there
-    set_chr_bank(0,0x8);
     // set second sprite bank to the big buttons
     set_chr_bank(1,0x6);
     
@@ -151,7 +154,7 @@ void state_menu() {
     add_advanced_interrupt( // set background chr
         47, 
         irq_set_chr_and_scroll,
-        3
+        args88(3,0x10)
     );
     enable_irq();
     
@@ -191,8 +194,8 @@ void state_menu() {
 
             pal_col(0, menu_color);
             pal_col(2, menu_color-0x10);
-            pal_col(9, menu_color);
-            pal_col(10, menu_color+0x10);
+            pal_col(9, menu_color-0x10);
+            pal_col(10, menu_color);
         }
 
 
