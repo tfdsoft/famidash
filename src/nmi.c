@@ -9,10 +9,11 @@ __attribute__((interrupt_norecurse)) void nmi(){
     // this is gonna take almost a full scanline
     // to do, so whatever you put in here
     // needs to be extra speedy.
-
+    
     
     // if rendering is off, do not access vram
     if ((PPU_MASK_VAR & 0b00011000)) {
+
         // send the palette in!
         if(PAL_UPDATE){
             PAL_UPDATE = 0;
@@ -70,8 +71,13 @@ __attribute__((interrupt_norecurse)) void nmi(){
         // goes below here...
         //
 
-        
-        
+        irq_count = 0;
+        irq_table_offset = 0;
+        IRQ_DISABLE = 0;
+        IRQ_LATCH = irq_table[0];
+        IRQ_RELOAD = irq_table[0];
+        IRQ_ENABLE = irq_table[0];
+
         oam_and_readjoypad(); // PPU regs are reset in here
         //PPU.status; // read ppu status. thanks llvm-mos!
         //PPU.scroll = SCROLL_X;
@@ -82,17 +88,15 @@ __attribute__((interrupt_norecurse)) void nmi(){
     FRAME_CNT++; // increase frame count
 
     //if(irq_reload_value > 0){
-    IRQ_LATCH = irq_reload_value;
-    IRQ_RELOAD = irq_reload_value;
-    IRQ_ENABLE = irq_reload_value;
-    //}
-    irq_count = 0;
+    
     //pad_poll(0);
     //bruh.joemom++; 
 
     
+    
+
     if(automatic_fs_updates) {
-        nmi_prev_bank = get_prg_a000();
+        push_prg_a000();
         //__attribute__((leaf)) __asm__ volatile (
         //    "lda __prg_a000 \n"
         //    "pha \n"
@@ -102,7 +106,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
         //    "pla \n"
         //    "jsr set_prg_a000 \n"
         //);
-        set_prg_a000(nmi_prev_bank);
+        pop_prg_a000();
     }
     //__asm__("sei");
 }

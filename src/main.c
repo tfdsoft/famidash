@@ -43,8 +43,7 @@ int main(void){
     PPU.mask = PPU_MASK_VAR = 0b00000110;
     ppu_off(); // turn off everything
 
-    irq_reload_value = 64;
-    irq_ptr = irq_basic;
+    disable_irq();
 
     // clear oam buffer
     oam_clear();
@@ -68,7 +67,7 @@ int main(void){
     background_set = ground_set = 0;
 
     while(1){
-        //setup_basic_interrupt(
+        //add_basic_interrupt(
         //    0,
         //    irq_basic
         //);

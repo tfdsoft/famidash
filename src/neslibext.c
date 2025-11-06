@@ -553,6 +553,10 @@ uint8_t fast_mult8(uint8_t n, uint8_t mult){
     return n;
 }
 
+uint8_t fast_multby6(uint8_t n){
+    return ((n<<2)+(n<<1));
+}
+
 
 __attribute__((noinline)) 
 uint8_t get_ppu_mask_var() {return PPU_MASK_VAR;}

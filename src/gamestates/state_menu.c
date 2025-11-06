@@ -118,7 +118,7 @@ void state_menu() {
     // the "robtop/tfdsoft" text is there
     set_chr_bank(0,0x8);
     // set second sprite bank to the big buttons
-    set_chr_bank(1,0x7);
+    set_chr_bank(1,0x6);
     
     // set second bg bank to parallax
     set_chr_bank(3,0x10);
@@ -136,11 +136,23 @@ void state_menu() {
 
     pal_all(pal_title);
 
-    setup_advanced_interrupt(
-        175, 
+    flush_irq();
+    add_advanced_interrupt(
+        16, 
+        irq_set_chr_and_scroll,
+        3
+    );
+    add_advanced_interrupt(
+        0, 
+        irq_set_chr,
+        args88(5,7)
+    );
+    add_advanced_interrupt(
+        155, 
         irq_set_chr_and_scroll,
         args88(5,8)
     );
+    enable_irq();
     
     // run once before fading in
     oam_meta_spr(1,0,mspr_title);
@@ -155,7 +167,7 @@ void state_menu() {
     __asm__("lda #0"); 
     music_play(song_menu_theme);
 
-    //automatic_fs_updates=1;
+    //automatic_fs_updates=0;
     //interrupt_scroll = 0;
     while(1){
         ppu_wait_nmi();
@@ -163,13 +175,9 @@ void state_menu() {
         oam_clear();
 
         interrupt_scroll += phys_speed[1];
-        third_byte(irq_args) = high_byte(interrupt_scroll);
-        set_chr_bank(5,7);
+        IRQ(0).arg1 = ((((uint16_t)(high_byte(interrupt_scroll) | (third_byte(interrupt_scroll)<<8)))>>3)%loaded_bg_width) + 0x10;
+        IRQ(2).arg2 = high_byte(interrupt_scroll);
 
-        // set parallax bank
-        set_chr_bank(3,
-            ((((uint16_t)(high_byte(interrupt_scroll) | (third_byte(interrupt_scroll)<<8)))>>3)%loaded_bg_width) + 0x10
-        );
 
         if((FRAME_CNT & 0x3F) < 5) {
 
@@ -251,7 +259,7 @@ void state_levelselect(){
 
     pal_bg(pal_levelselect);
 
-    setup_basic_interrupt(
+    add_basic_interrupt(
         0, 
         irq_basic
     );

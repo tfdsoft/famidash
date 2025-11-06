@@ -133,7 +133,7 @@ void state_startup() {
             sfx_play(2,0);
             pal_fade_to(4,0);
 
-            gamestate = 0x00;
+            gamestate = 0x10;
             break;
         }
         
