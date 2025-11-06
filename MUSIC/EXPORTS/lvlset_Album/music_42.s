@@ -32,7 +32,7 @@ music_data_famidash_music42:
 	.word @song2ch2
 	.word @song2ch3
 	.word @song2ch4
-	.word 143,119
+	.word 286,238
 ; 03 : Pyrophoric
 	.word @song3ch0
 	.word @song3ch1
@@ -551,7 +551,7 @@ music_data_famidash_music42:
 	.byte $00, $fd, $8f, $44, $00
 ; The DPCM aligner used to be here
 @song2ch0:
-	.byte $46, $01, $70, $a0, $05, $71, $81, $73, $81, $75, $81, $77, $81, $79, $81, $7b, $81, $7d, $81, $7f, $81, $4f, $02, $b2
+	.byte $46, $02, $70, $a0, $05, $71, $81, $73, $81, $75, $81, $77, $81, $79, $81, $7b, $81, $7d, $81, $7f, $81, $4f, $02, $b2
 	.byte $29, $95, $29, $85, $29, $85, $2b, $85, $2c, $95, $2e, $95, $30, $95
 @song2ref39:
 	.byte $30, $8d, $31, $85, $30, $8d, $2e, $85, $2c, $8d, $2b, $85

@@ -24,7 +24,7 @@ music_data_famidash_music44:
 	.word @song1ch2
 	.word @song1ch3
 	.word @song1ch4
-	.word 143,119
+	.word 286,238
 ; 02 : Meowstuff
 	.word @song2ch0
 	.word @song2ch1
@@ -253,7 +253,7 @@ music_data_famidash_music44:
 
 ; The DPCM aligner used to be here
 @song1ch0:
-	.byte $46, $01, $70, $9c, $05, $71, $81, $73, $81, $75, $81, $77, $81, $79, $81, $7b, $81, $7d, $81, $7f, $81, $4f, $02, $ac
+	.byte $46, $02, $70, $9c, $05, $71, $81, $73, $81, $75, $81, $77, $81, $79, $81, $7b, $81, $7d, $81, $7f, $81, $4f, $02, $ac
 	.byte $29, $95, $29, $85, $29, $85, $2b, $85, $2c, $95, $2e, $95, $30, $95
 @song1ref39:
 	.byte $30, $8d, $31, $85, $30, $8d, $2e, $85, $2c, $8d, $2b, $85
