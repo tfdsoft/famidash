@@ -1017,7 +1017,7 @@
 		.incbin "EXPORTS/clutterfunk2.lz.bin" ; Size: 6453
 
 
-.segment "DAT_BANK_2B"	; Total bank size: 8164 bytes
+.segment "DAT_BANK_2B"	; Total bank size: 8169 bytes
 	.export level_data_fireaura
 	level_data_fireaura:
 	; Header
