@@ -105,9 +105,7 @@ void cube_movement(){
 		
 			if (gamemode == GAMEMODE_NINJA && currplayer_vel_y == 0) ninjajumps[currplayer] = 3; //ninja jump reset
 
-			if (gamemode != GAMEMODE_NINJA) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);				
-			
-			else {
+			else if (gamemode == GAMEMODE_NINJA && currplayer_vel_y != 0) {
 				if (ninjajumps[currplayer]) idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);
 			}
 
