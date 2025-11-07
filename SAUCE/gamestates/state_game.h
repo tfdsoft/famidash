@@ -326,7 +326,7 @@ void set_player_banks() {
 			iconbank1 = 22; iconbank2 = 26; iconbank3 = 18;
 		}
 		
-		if (gamemode == GAMEMODE_NINJA) mmc3_set_2kb_chr_bank_0(NINJABANK);
+		if (gamemode == GAMEMODE_NINJA && !retro_mode) mmc3_set_2kb_chr_bank_0(NINJABANK);
 		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE)) mmc3_set_2kb_chr_bank_0(iconbank2);
 		else if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_SHIP || gamemode == GAMEMODE_UFO) mmc3_set_2kb_chr_bank_0(iconbank3);
 		else mmc3_set_2kb_chr_bank_0(iconbank1);

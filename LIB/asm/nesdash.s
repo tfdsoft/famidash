@@ -2379,6 +2379,13 @@ drawplayer_center_offsets:
 	STA sreg+0			;__ The X of oam_meta_spr is temp_x
 
 	; The switch 
+	LDX _retro_mode
+	beq @normal
+	LDX _gamemode
+	cpx #$08
+	jeq	robot
+	
+@normal:
 	LDX _gamemode
 	DEX			;	case 0x01: ship shit
 	jeq ship	;__
@@ -2804,14 +2811,14 @@ drawplayer_center_offsets:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE, <_SWING, <_CUBE
         .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE
     sprite_table_table_lo2:
-        .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT_ALT, <_SPIDER_ALT, <_WAVE, <_SWING, <_CUBE
-        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL_ALT, <_MINI_UFO, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE, <_MINI_SWING_ALT, <_MINI_CUBE
+        .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT_ALT, <_SPIDER_ALT, <_WAVE, <_SWING, <_ROBOT_ALT
+        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL_ALT, <_MINI_UFO, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE, <_MINI_SWING_ALT, <_MINI_ROBOT_ALT
     sprite_table_table_hi:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER, >_WAVE, >_SWING, >_CUBE
         .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE
     sprite_table_table_hi2:
-        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER_ALT, >_WAVE, >_SWING, >_CUBE
-        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING_ALT, >_MINI_CUBE
+        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER_ALT, >_WAVE, >_SWING, >_ROBOT_ALT
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING_ALT, >_MINI_ROBOT_ALT
 
     rounding_slope_table:
 		;     45v  22v  66v  45^  22^  66^  nothing
