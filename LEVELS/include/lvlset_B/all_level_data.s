@@ -350,7 +350,7 @@
 		.incbin "EXPORTS/dorabaebasic10.lz.bin" ; Size: 6114
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8144 bytes
+.segment "DAT_BANK_10"	; Total bank size: 8154 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -839,7 +839,7 @@
 		.incbin "EXPORTS/factorytime.lz.bin" ; Size: 2317
 
 
-.segment "DAT_BANK_23"	; Total bank size: 7955 bytes
+.segment "DAT_BANK_23"	; Total bank size: 7980 bytes
 	.export level_data_subtleoddities_2
 	level_data_subtleoddities_2:
 	; Level data

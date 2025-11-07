@@ -1349,7 +1349,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2099
 
 
-.segment "DAT_BANK_36"	; Total bank size: 8178 bytes
+.segment "DAT_BANK_36"	; Total bank size: 8183 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -2719,37 +2719,11 @@
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 2512
 
 
-.segment "DAT_BANK_6C"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_6C"	; Total bank size: 8180 bytes
 	.export level_data_subtleoddities_5
 	level_data_subtleoddities_5:
 	; Level data
 		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2292
-
-
-.segment "DAT_BANK_6D"	; Total bank size: 8184 bytes
-	.export level_data_lookatthislevel
-	level_data_lookatthislevel:
-	; Header
-		.byte <sprite_data_lookatthislevel ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_lookatthislevel ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_lookatthislevel)) ;___ Sprite data bank
-		.byte song_driving_by_night ;___________________ Song ID
-		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
-		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;___________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;___________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;___________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
-		.byte _DECO1 ;__________________________________ Deco type
-		.byte _SPIKESA ;________________________________ Spike set
-		.byte _BLOCKSA ;________________________________ Block set
-		.byte _SAWBLADESA ;_____________________________ Sawblade set
-		.byte $0F ;_____________________________________ Starting background color
-		.byte $0F ;_____________________________________ Starting ground color
-		.byte 27 ;______________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1663
 
 
 .segment "DAT_BANK_6E"	; Total bank size: 7492 bytes
@@ -2778,7 +2752,7 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1846
 
 
-.segment "DAT_BANK_6F"	; Total bank size: 8155 bytes
+.segment "DAT_BANK_6F"	; Total bank size: 8165 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -2803,8 +2777,32 @@
 	; Level data
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
+	.export level_data_lookatthislevel
+	level_data_lookatthislevel:
+	; Header
+		.byte <sprite_data_lookatthislevel ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_lookatthislevel ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_lookatthislevel)) ;___ Sprite data bank
+		.byte song_driving_by_night ;___________________ Song ID
+		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
+		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;___________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;___________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
+		.byte ($06) ;___________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
+		.byte _DECO1 ;__________________________________ Deco type
+		.byte _SPIKESA ;________________________________ Spike set
+		.byte _BLOCKSA ;________________________________ Block set
+		.byte _SAWBLADESA ;_____________________________ Sawblade set
+		.byte $0F ;_____________________________________ Starting background color
+		.byte $0F ;_____________________________________ Starting ground color
+		.byte 27 ;______________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1663
 
-.segment "DAT_BANK_70"	; Total bank size: 7388 bytes
+
+.segment "DAT_BANK_70"	; Total bank size: 7413 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header

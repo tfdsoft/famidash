@@ -10556,7 +10556,7 @@ sprite_data_ninox:
   .byte $70,$2f,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_26"
+.segment "DAT_BANK_6C"
 sprite_data_dorabaebasic6:
   .byte $00,$00,$70,$03,$9a
   .byte $00,$00,$80,$03,$d6
@@ -12777,7 +12777,7 @@ sprite_data_subzero:
   .byte $00,$35,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6D"
+.segment "DAT_BANK_36"
 sprite_data_moonlight:
   .byte $00,$00,$70,$03,$6f
   .byte $00,$00,$80,$03,$bf
@@ -12845,13 +12845,17 @@ sprite_data_moonlight:
   .byte $90,$0a,$c0,$02,$91
   .byte $90,$0a,$d0,$02,$e1
   .byte $90,$0a,$e0,$02,$49
+  .byte $a0,$0a,$b0,$02,$fa
   .byte $b0,$0a,$c0,$02,$81
   .byte $e0,$0a,$c0,$02,$49
   .byte $00,$0b,$d0,$02,$49
   .byte $40,$0b,$f0,$02,$49
+  .byte $90,$0b,$c0,$02,$fa
   .byte $e0,$0b,$f0,$02,$49
+  .byte $f0,$0b,$d0,$02,$fa
   .byte $20,$0c,$c0,$02,$49
   .byte $80,$0c,$e0,$02,$49
+  .byte $90,$0c,$b0,$02,$fa
   .byte $d0,$0c,$d0,$02,$49
   .byte $f0,$0c,$c0,$02,$fa
   .byte $f0,$0c,$f0,$02,$fa
@@ -12859,11 +12863,13 @@ sprite_data_moonlight:
   .byte $00,$0d,$f0,$02,$fa
   .byte $10,$0d,$d0,$02,$fa
   .byte $10,$0d,$e0,$02,$fa
+  .byte $a0,$0d,$c0,$02,$fa
   .byte $d0,$0d,$b0,$02,$49
   .byte $f0,$0d,$e0,$02,$49
   .byte $30,$0e,$c0,$02,$49
   .byte $70,$0e,$e0,$02,$49
   .byte $c0,$0e,$d0,$02,$49
+  .byte $00,$0f,$a0,$02,$fa
   .byte $a0,$0f,$c8,$02,$00
   .byte $a0,$0f,$d0,$02,$16
   .byte $00,$10,$c0,$02,$49
@@ -13047,6 +13053,7 @@ sprite_data_moonlight:
   .byte $40,$20,$c0,$02,$49
   .byte $80,$20,$f0,$02,$49
   .byte $90,$20,$e0,$02,$91
+  .byte $b0,$20,$b0,$02,$fa
   .byte $b0,$20,$d0,$02,$36
   .byte $b0,$20,$e0,$02,$81
   .byte $d0,$20,$f0,$02,$36
@@ -23406,7 +23413,7 @@ sprite_data_thesteamworks:
   .byte $60,$4f,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6F"
+.segment "DAT_BANK_6D"
 sprite_data_lostinthewoods:
   .byte $00,$00,$60,$03,$ba
   .byte $00,$00,$70,$03,$8f
@@ -27009,7 +27016,7 @@ sprite_data_dorabaebasic10:
   .byte $c0,$3a,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6C"
+.segment "DAT_BANK_70"
 sprite_data_subtleoddities:
   .byte $20,$01,$30,$03,$dd
   .byte $20,$01,$40,$03,$8c
@@ -31910,7 +31917,7 @@ sprite_data_thelightningroad:
   .byte $90,$34,$10,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_36"
+.segment "DAT_BANK_6C"
 sprite_data_nightmare:
   .byte $a0,$00,$60,$03,$02
   .byte $d0,$00,$80,$03,$2c
@@ -33384,7 +33391,7 @@ sprite_data_supercycles:
   .byte $b0,$34,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_70"
+.segment "DAT_BANK_26"
 sprite_data_xx:
   .byte $00,$00,$70,$03,$14
   .byte $a0,$00,$60,$03,$96
@@ -42346,7 +42353,7 @@ sprite_data_goldenhaze:
   .byte $f0,$3d,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6C"
+.segment "DAT_BANK_6D"
 sprite_data_hell:
   .byte $00,$00,$70,$03,$8f
   .byte $00,$00,$80,$03,$cf

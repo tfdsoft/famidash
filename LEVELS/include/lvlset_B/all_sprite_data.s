@@ -1549,7 +1549,7 @@ sprite_data_ultiatedestruction:
   .byte $10,$2a,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_23"
+.segment "DAT_BANK_10"
 sprite_data_moonlight:
   .byte $00,$00,$70,$03,$6f
   .byte $00,$00,$80,$03,$bf
@@ -1617,13 +1617,17 @@ sprite_data_moonlight:
   .byte $90,$0a,$c0,$02,$91
   .byte $90,$0a,$d0,$02,$e1
   .byte $90,$0a,$e0,$02,$49
+  .byte $a0,$0a,$b0,$02,$fa
   .byte $b0,$0a,$c0,$02,$81
   .byte $e0,$0a,$c0,$02,$49
   .byte $00,$0b,$d0,$02,$49
   .byte $40,$0b,$f0,$02,$49
+  .byte $90,$0b,$c0,$02,$fa
   .byte $e0,$0b,$f0,$02,$49
+  .byte $f0,$0b,$d0,$02,$fa
   .byte $20,$0c,$c0,$02,$49
   .byte $80,$0c,$e0,$02,$49
+  .byte $90,$0c,$b0,$02,$fa
   .byte $d0,$0c,$d0,$02,$49
   .byte $f0,$0c,$c0,$02,$fa
   .byte $f0,$0c,$f0,$02,$fa
@@ -1631,11 +1635,13 @@ sprite_data_moonlight:
   .byte $00,$0d,$f0,$02,$fa
   .byte $10,$0d,$d0,$02,$fa
   .byte $10,$0d,$e0,$02,$fa
+  .byte $a0,$0d,$c0,$02,$fa
   .byte $d0,$0d,$b0,$02,$49
   .byte $f0,$0d,$e0,$02,$49
   .byte $30,$0e,$c0,$02,$49
   .byte $70,$0e,$e0,$02,$49
   .byte $c0,$0e,$d0,$02,$49
+  .byte $00,$0f,$a0,$02,$fa
   .byte $a0,$0f,$c8,$02,$00
   .byte $a0,$0f,$d0,$02,$16
   .byte $00,$10,$c0,$02,$49
@@ -1819,6 +1825,7 @@ sprite_data_moonlight:
   .byte $40,$20,$c0,$02,$49
   .byte $80,$20,$f0,$02,$49
   .byte $90,$20,$e0,$02,$91
+  .byte $b0,$20,$b0,$02,$fa
   .byte $b0,$20,$d0,$02,$36
   .byte $b0,$20,$e0,$02,$81
   .byte $d0,$20,$f0,$02,$36
@@ -9547,7 +9554,7 @@ sprite_data_factorytime:
   .byte $90,$37,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_10"
+.segment "DAT_BANK_23"
 sprite_data_thesteamworks:
   .byte $00,$00,$70,$03,$cf
   .byte $00,$00,$80,$03,$83
