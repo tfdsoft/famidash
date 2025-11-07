@@ -1683,7 +1683,7 @@
 		.incbin "EXPORTS/danceofviolins.lz.bin" ; Size: 5309
 
 
-.segment "DAT_BANK_43"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_43"	; Total bank size: 8140 bytes
 	.export level_data_deadlyclubstep
 	level_data_deadlyclubstep:
 	; Header
@@ -2541,7 +2541,7 @@
 		.byte ($02) ;_____________________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;_____________________________________ Y Scroll Position (low byte)
 		.byte ($07) ;_____________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;_______________________ Force platformer, Disable parallax
+		.byte (0 << 0) | (1 << 1) ;_______________________ Force platformer, Disable parallax
 		.byte _EXTRASPRITES1 ;____________________________ Deco type
 		.byte _SPIKESA ;__________________________________ Spike set
 		.byte _BLOCKSD ;__________________________________ Block set

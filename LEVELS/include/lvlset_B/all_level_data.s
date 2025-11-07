@@ -480,7 +480,7 @@
 		.incbin "EXPORTS/oceane.lz.bin" ; Size: 2910
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8105 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8020 bytes
 	.export level_data_generationretro
 	level_data_generationretro:
 	; Header
@@ -736,7 +736,7 @@
 		.byte ($02) ;_____________________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;_____________________________________ Y Scroll Position (low byte)
 		.byte ($07) ;_____________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;_______________________ Force platformer, Disable parallax
+		.byte (0 << 0) | (1 << 1) ;_______________________ Force platformer, Disable parallax
 		.byte _EXTRASPRITES1 ;____________________________ Deco type
 		.byte _SPIKESA ;__________________________________ Spike set
 		.byte _BLOCKSD ;__________________________________ Block set
