@@ -643,7 +643,7 @@ const unsigned char Swing_6[]={
 };
 
 
-const unsigned char * const SWING[] = {Swing_6, Swing_0, Swing_1, Swing_2, Swing_2, Swing_5, Swing_6, Swing_0};
+const unsigned char * const SWING[] = {Swing_0, Swing_0, Swing_1, Swing_2, Swing_2, Swing_5, Swing_6, Swing_6};
 const unsigned char Swing2_0[]={
 
 	 -8,  0,0x39,1,
