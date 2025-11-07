@@ -2553,7 +2553,7 @@
 		.incbin "EXPORTS/selectpaymenttype.lz.bin" ; Size: 4161
 
 
-.segment "DAT_BANK_61"	; Total bank size: 8141 bytes
+.segment "DAT_BANK_61"	; Total bank size: 8096 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header

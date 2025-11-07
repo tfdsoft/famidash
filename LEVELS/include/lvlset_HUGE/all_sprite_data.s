@@ -41261,7 +41261,7 @@ sprite_data_skeletalshenanigans:
   .byte $e0,$52,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_53"
+.segment "DAT_BANK_61"
 sprite_data_trythisgd:
   .byte $70,$01,$50,$03,$86
   .byte $70,$01,$60,$03,$c6
@@ -41785,19 +41785,9 @@ sprite_data_trythisgd:
   .byte $30,$48,$00,$03,$aa
   .byte $c8,$48,$f8,$02,$24
   .byte $c8,$48,$f8,$02,$19
-  .byte $e8,$48,$08,$03,$32
-  .byte $00,$49,$e0,$02,$32
-  .byte $00,$49,$30,$03,$32
-  .byte $20,$49,$d0,$02,$32
-  .byte $20,$49,$40,$03,$32
-  .byte $40,$49,$d0,$02,$32
-  .byte $40,$49,$40,$03,$32
   .byte $50,$49,$f0,$02,$a9
-  .byte $68,$49,$e8,$02,$32
   .byte $60,$49,$f0,$02,$a8
-  .byte $68,$49,$28,$03,$32
   .byte $70,$49,$f0,$02,$a7
-  .byte $80,$49,$08,$03,$32
   .byte $d0,$49,$f0,$02,$fa
   .byte $d0,$49,$20,$03,$fa
   .byte $e0,$49,$f0,$02,$fa
@@ -42818,7 +42808,7 @@ sprite_data_hell:
   .byte $90,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_61"
+.segment "DAT_BANK_53"
 sprite_data_invisiblelight:
   .byte $00,$00,$30,$03,$cf
   .byte $00,$00,$40,$03,$c0

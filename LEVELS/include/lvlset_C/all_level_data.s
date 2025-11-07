@@ -506,7 +506,7 @@
 		.incbin "EXPORTS/xx.lz.bin" ; Size: 6190
 
 
-.segment "DAT_BANK_14"	; Total bank size: 7874 bytes
+.segment "DAT_BANK_14"	; Total bank size: 7974 bytes
 	.export level_data_eighto
 	level_data_eighto:
 	; Header
