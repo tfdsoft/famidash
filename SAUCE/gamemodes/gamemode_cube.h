@@ -118,7 +118,7 @@ void cube_movement(){
 		if ((!retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4) || (dashing[currplayer] == 0 && kandokidshack == 9)){		//robot
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);			
 			if((controllingplayer->hold & (PAD_A | PAD_UP)) && !orbed[currplayer]) {
-				jumps++;
+				if((controllingplayer->press & (PAD_A | PAD_UP))) jumps++;
 				currplayer_vel_y = ROBOT_JUMP_VEL(currplayer_table_idx); // JUMP
 
 				// robotjumptime[currplayer] = ROBOT_JUMP_TIME[framerate]
@@ -131,7 +131,7 @@ void cube_movement(){
 		else if ((gamemode == GAMEMODE_ROBOT && retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4) || (gamemode == GAMEMODE_NINJA && retro_mode && ninjajumps[currplayer] && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4)) {		//jim
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);		
 			if((controllingplayer->hold & (PAD_A | PAD_UP)) && !orbed[currplayer]) {
-				jumps++;
+				if((controllingplayer->press & (PAD_A | PAD_UP))) jumps++;
 				currplayer_vel_y = ROBOT_JUMP_VEL(currplayer_table_idx); // JUMP
 				
 				if (gamemode == GAMEMODE_NINJA) { idx8_dec(ninjajumps, currplayer); }
@@ -149,7 +149,7 @@ void cube_movement(){
 				cube_data[currplayer] = 0;
 				if (robotjumptime[currplayer]) idx8_dec(robotjumptime, currplayer); 
 				if((controllingplayer->hold & (PAD_A | PAD_UP)) && !jblocked[currplayer] && !orbed[currplayer]) {	
-					jumps++;
+					if((controllingplayer->press & (PAD_A | PAD_UP))) jumps++;
 					if (robotjumpframe[0]) robotjumpframe[0]++;
 					if ( robotjumpframe[0] > 3 ) robotjumpframe[0] = 3;
 					currplayer_vel_y = ROBOT_JUMP_VEL(currplayer_table_idx); // JUMP
