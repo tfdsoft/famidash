@@ -22,6 +22,8 @@ Want EVERYTHING? Download
 
 Do you have WAY too many quarters? Play the [Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
+Want EVERYTHING, but you still have too many quarters? Play the [Obese Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-huge.nes.zip)
+
 Want just the music? Download [The Album](https://nightly.link/tfdsoft/famidash/workflows/main/famidash-the-album/famidash.nes.zip)!
 
 A rework is also in progress, titled Famidash 2.0. \
