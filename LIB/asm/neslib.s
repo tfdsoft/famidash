@@ -185,7 +185,7 @@ nmi:
 @skipAll:
 	
 	
-	.if VS_SYSTEM
+	.if __VS_SYSTEM
 		ldx #0
 		lda _CREDITS1_PREV
 		and #%00100000

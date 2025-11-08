@@ -13,6 +13,7 @@ jobs:
         target:
         - { name: Main MMC3 ROM, target: main }
         - { name: VS-System ROM, target: vs-sys }
+        - { name: VS-System HUGE ROM, target: vs-huge }
         - { name: B-Sides MMC3 ROM, target: b-sides }
         - { name: C-Sides MMC3 ROM, target: c-sides }
         - { name: D-Sides MMC3 ROM, target: d-sides }

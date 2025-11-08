@@ -103,7 +103,7 @@ void state_lvldone() {
 	menuselection = 1;
 
 	#if __VS_SYSTEM
-	coins_inserted--;
+//	coins_inserted--;
 	#endif
 	
 	while (1) {
