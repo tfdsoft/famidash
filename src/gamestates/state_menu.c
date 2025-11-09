@@ -183,7 +183,7 @@ void state_menu() {
         IRQ(1).arg2 = high_byte(interrupt_scroll);
 
         scroll_bank += (phys_speed[1] >> 3);
-        if(high_byte(scroll_bank) >= 48) high_byte(scroll_bank) = 0;
+        if(high_byte(scroll_bank) >= loaded_bg_width) high_byte(scroll_bank) = 0;
         IRQ(2).arg1 = (high_byte(scroll_bank)+0x10);
         
 
