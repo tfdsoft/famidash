@@ -159,6 +159,7 @@ void state_menu() {
     enable_irq();
     
     // run once before fading in
+    oam_clear();
     oam_meta_spr(1,0,mspr_title);
 
     ppu_on_all();

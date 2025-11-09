@@ -65,7 +65,7 @@ void pal_fade_to(unsigned char from, unsigned char to){
             "jmp 4f \n"
             
         "1: \n	" // fade_loop:
-            "ldx #2 \n" //wait this many frames
+            "ldx #1 \n" //wait this many frames
         "11:"
             "jsr ppu_wait_nmi \n" 
             "dex \n"
