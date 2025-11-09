@@ -3023,7 +3023,7 @@
 			parallaxDisable: true
 		},
 		{
-			level: "trolled",
+			level: "trolledfix",
 			upperText: "YOUVE BEEN",
 			lowerText: "TROLLED",
 			decoType: "DECO1",
@@ -3489,7 +3489,7 @@
 			parallaxDisable: true
 		},
 		{
-			level: "dearnostalgists",
+			level: "dearnostalgistsfix",
 			lowerText: " DEAR NOSTALGISTS",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "C",
@@ -4558,7 +4558,7 @@
 			]
 		},
 		{
-			level: "futurefunk",
+			level: "futurefunkfix",
 			lowerText: "FUTURE FUNK",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "C",

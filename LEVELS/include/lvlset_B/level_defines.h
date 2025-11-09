@@ -37,4 +37,4 @@
 #define level_clutterfunk2 28
 #define level_speedracer 29
 #define level_skeletalshenanigans 30
-#define level_futurefunk 31
+#define level_futurefunkfix 31

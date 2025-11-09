@@ -142,7 +142,7 @@
 			parallaxDisable: true
 		},
 		{
-			level: "dearnostalgists",
+			level: "dearnostalgistsfix",
 			lowerText: " DEAR NOSTALGISTS",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "C",

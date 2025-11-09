@@ -67,7 +67,7 @@
 #define level_subtleoddities 58
 #define level_powertrip 59
 #define level_danceofviolins 60
-#define level_trolled 61
+#define level_trolledfix 61
 #define level_aprettyeasylevel 62
 #define level_highlife 63
 #define level_extraordinaryexcitement 64
@@ -81,7 +81,7 @@
 #define level_sonicblaster 72
 #define level_decode 73
 #define level_deathmoon 74
-#define level_dearnostalgists 75
+#define level_dearnostalgistsfix 75
 #define level_clutterfunk2 76
 #define level_motion 77
 #define level_speedracer 78
@@ -99,7 +99,7 @@
 #define level_foresttemple 90
 #define level_ninecircles 91
 #define level_fairydust 92
-#define level_futurefunk 93
+#define level_futurefunkfix 93
 #define level_stalemate 94
 #define level_eighto 95
 #define level_hi 96

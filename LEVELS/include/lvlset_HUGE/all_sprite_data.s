@@ -29051,7 +29051,7 @@ sprite_data_danceofviolins:
   .byte $ff
 
 .segment "DAT_BANK_21"
-sprite_data_trolled:
+sprite_data_trolledfix:
   .byte $00,$00,$60,$03,$bd
   .byte $00,$00,$70,$03,$8f
   .byte $00,$00,$80,$03,$cf
@@ -29111,6 +29111,7 @@ sprite_data_trolled:
   .byte $e0,$05,$50,$03,$36
   .byte $60,$06,$70,$03,$d1
   .byte $e0,$07,$30,$03,$02
+  .byte $e0,$07,$48,$03,$25
   .byte $80,$0a,$78,$03,$52
   .byte $00,$0b,$60,$03,$01
   .byte $50,$0b,$60,$03,$33
@@ -36643,11 +36644,14 @@ sprite_data_deathmoon:
   .byte $ff
 
 .segment "DAT_BANK_55"
-sprite_data_dearnostalgists:
+sprite_data_dearnostalgistsfix:
   .byte $00,$00,$10,$03,$8f
   .byte $00,$00,$20,$03,$cf
+  .byte $60,$00,$80,$03,$07
+  .byte $80,$00,$80,$03,$1a
   .byte $a0,$00,$10,$03,$8f
   .byte $a0,$00,$20,$03,$cf
+  .byte $a0,$00,$80,$03,$1b
   .byte $10,$01,$10,$03,$80
   .byte $10,$01,$20,$03,$c0
   .byte $70,$01,$70,$03,$15
@@ -36658,6 +36662,7 @@ sprite_data_dearnostalgists:
   .byte $f0,$01,$60,$03,$27
   .byte $10,$02,$10,$03,$ac
   .byte $10,$02,$20,$03,$ec
+  .byte $10,$02,$60,$03,$0f
   .byte $20,$02,$50,$03,$0e
   .byte $20,$02,$78,$03,$0d
   .byte $30,$02,$50,$03,$0e
@@ -46867,7 +46872,7 @@ sprite_data_fairydust:
   .byte $ff
 
 .segment "DAT_BANK_13"
-sprite_data_futurefunk:
+sprite_data_futurefunkfix:
   .byte $00,$00,$10,$03,$96
   .byte $00,$00,$20,$03,$c6
   .byte $e0,$00,$70,$03,$0b

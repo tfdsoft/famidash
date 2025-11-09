@@ -10,7 +10,7 @@
 #define level_xx 1
 #define level_problematic 2
 #define level_sonicblaster 3
-#define level_dearnostalgists 4
+#define level_dearnostalgistsfix 4
 #define level_motion 5
 #define level_endorphinrush 6
 #define level_everymadness 7

@@ -18555,7 +18555,7 @@ sprite_data_skeletalshenanigans:
   .byte $ff
 
 .segment "DAT_BANK_08"
-sprite_data_futurefunk:
+sprite_data_futurefunkfix:
   .byte $00,$00,$10,$03,$96
   .byte $00,$00,$20,$03,$c6
   .byte $e0,$00,$70,$03,$0b

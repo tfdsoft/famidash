@@ -1077,7 +1077,7 @@
 			]
 		},
 		{
-			level: "futurefunk",
+			level: "futurefunkfix",
 			lowerText: "FUTURE FUNK",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "C",

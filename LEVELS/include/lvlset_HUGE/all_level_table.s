@@ -66,7 +66,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_danceofviolins)
-	.byte .lobyte(level_data_trolled)
+	.byte .lobyte(level_data_trolledfix)
 	.byte .lobyte(level_data_aprettyeasylevel)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_extraordinaryexcitement)
@@ -80,7 +80,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_sonicblaster)
 	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_deathmoon)
-	.byte .lobyte(level_data_dearnostalgists)
+	.byte .lobyte(level_data_dearnostalgistsfix)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_speedracer)
@@ -98,7 +98,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_ninecircles)
 	.byte .lobyte(level_data_fairydust)
-	.byte .lobyte(level_data_futurefunk)
+	.byte .lobyte(level_data_futurefunkfix)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_eighto)
 	.byte .lobyte(level_data_hi)
@@ -177,7 +177,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_powertrip)
 	.byte .hibyte(level_data_danceofviolins)
-	.byte .hibyte(level_data_trolled)
+	.byte .hibyte(level_data_trolledfix)
 	.byte .hibyte(level_data_aprettyeasylevel)
 	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_extraordinaryexcitement)
@@ -191,7 +191,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_sonicblaster)
 	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_deathmoon)
-	.byte .hibyte(level_data_dearnostalgists)
+	.byte .hibyte(level_data_dearnostalgistsfix)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_speedracer)
@@ -209,7 +209,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_ninecircles)
 	.byte .hibyte(level_data_fairydust)
-	.byte .hibyte(level_data_futurefunk)
+	.byte .hibyte(level_data_futurefunkfix)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_eighto)
 	.byte .hibyte(level_data_hi)
@@ -288,7 +288,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_powertrip))
 	.byte .lobyte(.bank(level_data_danceofviolins))
-	.byte .lobyte(.bank(level_data_trolled))
+	.byte .lobyte(.bank(level_data_trolledfix))
 	.byte .lobyte(.bank(level_data_aprettyeasylevel))
 	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement))
@@ -302,7 +302,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_sonicblaster))
 	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_deathmoon))
-	.byte .lobyte(.bank(level_data_dearnostalgists))
+	.byte .lobyte(.bank(level_data_dearnostalgistsfix))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_speedracer))
@@ -320,7 +320,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_ninecircles))
 	.byte .lobyte(.bank(level_data_fairydust))
-	.byte .lobyte(.bank(level_data_futurefunk))
+	.byte .lobyte(.bank(level_data_futurefunkfix))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_eighto))
 	.byte .lobyte(.bank(level_data_hi))
@@ -347,12 +347,12 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_highlife_6)
 	.byte .lobyte(level_data_extraordinaryexcitement_7)
 	.byte .lobyte(level_data_deathmoon_8)
-	.byte .lobyte(level_data_dearnostalgists_9)
+	.byte .lobyte(level_data_dearnostalgistsfix_9)
 	.byte .lobyte(level_data_motion_10)
 	.byte .lobyte(level_data_skeletalshenanigans_11)
 	.byte .lobyte(level_data_trythisgd_12)
-	.byte .lobyte(level_data_futurefunk_13)
-	.byte .lobyte(level_data_futurefunk_14)
+	.byte .lobyte(level_data_futurefunkfix_13)
+	.byte .lobyte(level_data_futurefunkfix_14)
 	.byte .lobyte(level_data_eon_15)
 	.byte .lobyte(level_data_windylandscape_16)
 	.byte .lobyte(level_data_sonicwave_17)
@@ -371,12 +371,12 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_highlife_6)
 	.byte .hibyte(level_data_extraordinaryexcitement_7)
 	.byte .hibyte(level_data_deathmoon_8)
-	.byte .hibyte(level_data_dearnostalgists_9)
+	.byte .hibyte(level_data_dearnostalgistsfix_9)
 	.byte .hibyte(level_data_motion_10)
 	.byte .hibyte(level_data_skeletalshenanigans_11)
 	.byte .hibyte(level_data_trythisgd_12)
-	.byte .hibyte(level_data_futurefunk_13)
-	.byte .hibyte(level_data_futurefunk_14)
+	.byte .hibyte(level_data_futurefunkfix_13)
+	.byte .hibyte(level_data_futurefunkfix_14)
 	.byte .hibyte(level_data_eon_15)
 	.byte .hibyte(level_data_windylandscape_16)
 	.byte .hibyte(level_data_sonicwave_17)
@@ -395,12 +395,12 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_highlife_6))
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement_7))
 	.byte .lobyte(.bank(level_data_deathmoon_8))
-	.byte .lobyte(.bank(level_data_dearnostalgists_9))
+	.byte .lobyte(.bank(level_data_dearnostalgistsfix_9))
 	.byte .lobyte(.bank(level_data_motion_10))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans_11))
 	.byte .lobyte(.bank(level_data_trythisgd_12))
-	.byte .lobyte(.bank(level_data_futurefunk_13))
-	.byte .lobyte(.bank(level_data_futurefunk_14))
+	.byte .lobyte(.bank(level_data_futurefunkfix_13))
+	.byte .lobyte(.bank(level_data_futurefunkfix_14))
 	.byte .lobyte(.bank(level_data_eon_15))
 	.byte .lobyte(.bank(level_data_windylandscape_16))
 	.byte .lobyte(.bank(level_data_sonicwave_17))
@@ -474,7 +474,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
-	.byte .lobyte($00003D)		; trolled
+	.byte .lobyte($00003D)		; trolledfix
 	.byte .lobyte($000070)		; aprettyeasylevel
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
@@ -488,7 +488,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A6)		; sonicblaster
 	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($000125)		; deathmoon
-	.byte .lobyte($000155)		; dearnostalgists
+	.byte .lobyte($000155)		; dearnostalgistsfix
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($000080)		; speedracer
@@ -506,7 +506,7 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000082)		; fairydust
-	.byte .lobyte($0001DD)		; futurefunk
+	.byte .lobyte($0001DD)		; futurefunkfix
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($000078)		; eighto
 	.byte .lobyte($00009A)		; hi
@@ -587,7 +587,7 @@ _level_lengths_md:
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
-	.byte .hibyte($00003D)		; trolled
+	.byte .hibyte($00003D)		; trolledfix
 	.byte .hibyte($000070)		; aprettyeasylevel
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
@@ -601,7 +601,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A6)		; sonicblaster
 	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($000125)		; deathmoon
-	.byte .hibyte($000155)		; dearnostalgists
+	.byte .hibyte($000155)		; dearnostalgistsfix
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($000080)		; speedracer
@@ -619,7 +619,7 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000082)		; fairydust
-	.byte .hibyte($0001DD)		; futurefunk
+	.byte .hibyte($0001DD)		; futurefunkfix
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($000078)		; eighto
 	.byte .hibyte($00009A)		; hi
@@ -700,7 +700,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins
-	.byte .bankbyte($00003D)		; trolled
+	.byte .bankbyte($00003D)		; trolledfix
 	.byte .bankbyte($000070)		; aprettyeasylevel
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
@@ -714,7 +714,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A6)		; sonicblaster
 	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($000125)		; deathmoon
-	.byte .bankbyte($000155)		; dearnostalgists
+	.byte .bankbyte($000155)		; dearnostalgistsfix
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($000080)		; speedracer
@@ -732,7 +732,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000082)		; fairydust
-	.byte .bankbyte($0001DD)		; futurefunk
+	.byte .bankbyte($0001DD)		; futurefunkfix
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($000078)		; eighto
 	.byte .bankbyte($00009A)		; hi

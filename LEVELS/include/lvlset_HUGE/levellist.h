@@ -63,7 +63,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
 	INSANE,	// danceofviolins
-	INSANE,	// trolled
+	INSANE,	// trolledfix
 	INSANE,	// aprettyeasylevel
 	INSANE,	// highlife
 	INSANE,	// extraordinaryexcitement
@@ -77,7 +77,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// sonicblaster
 	DEMON,	// decode
 	DEMON,	// deathmoon
-	DEMON,	// dearnostalgists
+	DEMON,	// dearnostalgistsfix
 	DEMON,	// clutterfunk2
 	DEMON,	// motion
 	DEMON,	// speedracer
@@ -95,7 +95,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// foresttemple
 	DEMON,	// ninecircles
 	DEMON,	// fairydust
-	DEMON,	// futurefunk
+	DEMON,	// futurefunkfix
 	DEMON,	// stalemate
 	DEMON,	// eighto
 	DEMON,	// hi
@@ -175,7 +175,7 @@ const uint8_t stars_list[] = {
 	8,	// subtleoddities
 	8,	// powertrip
 	8,	// danceofviolins
-	9,	// trolled
+	9,	// trolledfix
 	9,	// aprettyeasylevel
 	9,	// highlife
 	9,	// extraordinaryexcitement
@@ -189,7 +189,7 @@ const uint8_t stars_list[] = {
 	10,	// sonicblaster
 	10,	// decode
 	10,	// deathmoon
-	10,	// dearnostalgists
+	10,	// dearnostalgistsfix
 	10,	// clutterfunk2
 	10,	// motion
 	10,	// speedracer
@@ -207,7 +207,7 @@ const uint8_t stars_list[] = {
 	10,	// foresttemple
 	10,	// ninecircles
 	10,	// fairydust
-	10,	// futurefunk
+	10,	// futurefunkfix
 	10,	// stalemate
 	10,	// eighto
 	10,	// hi

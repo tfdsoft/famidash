@@ -36,7 +36,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_skeletalshenanigans)
-	.byte .lobyte(level_data_futurefunk)
+	.byte .lobyte(level_data_futurefunkfix)
 
 _level_list_hi:
 	.byte .hibyte(level_data_sonar)
@@ -70,7 +70,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_skeletalshenanigans)
-	.byte .hibyte(level_data_futurefunk)
+	.byte .hibyte(level_data_futurefunkfix)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_sonar))
@@ -104,7 +104,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
-	.byte .lobyte(.bank(level_data_futurefunk))
+	.byte .lobyte(.bank(level_data_futurefunkfix))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_cryogenic_0)
@@ -113,8 +113,8 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_highlife_3)
 	.byte .lobyte(level_data_deathmoon_4)
 	.byte .lobyte(level_data_skeletalshenanigans_5)
-	.byte .lobyte(level_data_futurefunk_6)
-	.byte .lobyte(level_data_futurefunk_7)
+	.byte .lobyte(level_data_futurefunkfix_6)
+	.byte .lobyte(level_data_futurefunkfix_7)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_cryogenic_0)
@@ -123,8 +123,8 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_highlife_3)
 	.byte .hibyte(level_data_deathmoon_4)
 	.byte .hibyte(level_data_skeletalshenanigans_5)
-	.byte .hibyte(level_data_futurefunk_6)
-	.byte .hibyte(level_data_futurefunk_7)
+	.byte .hibyte(level_data_futurefunkfix_6)
+	.byte .hibyte(level_data_futurefunkfix_7)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_cryogenic_0))
@@ -133,8 +133,8 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_highlife_3))
 	.byte .lobyte(.bank(level_data_deathmoon_4))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans_5))
-	.byte .lobyte(.bank(level_data_futurefunk_6))
-	.byte .lobyte(.bank(level_data_futurefunk_7))
+	.byte .lobyte(.bank(level_data_futurefunkfix_6))
+	.byte .lobyte(.bank(level_data_futurefunkfix_7))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -171,7 +171,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($0000D5)		; skeletalshenanigans
-	.byte .lobyte($0001DD)		; futurefunk
+	.byte .lobyte($0001DD)		; futurefunkfix
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -207,7 +207,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($0000D5)		; skeletalshenanigans
-	.byte .hibyte($0001DD)		; futurefunk
+	.byte .hibyte($0001DD)		; futurefunkfix
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -243,7 +243,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
-	.byte .bankbyte($0001DD)		; futurefunk
+	.byte .bankbyte($0001DD)		; futurefunkfix
 
 .endif
 .endif

@@ -3,29 +3,29 @@
 
 
 .segment "DAT_BANK_00"	; Total bank size: 8188 bytes
-	.export level_data_futurefunk
-	level_data_futurefunk:
+	.export level_data_futurefunkfix
+	level_data_futurefunkfix:
 	; Header
-		.byte <sprite_data_futurefunk ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_futurefunk ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_futurefunk)) ;___ Sprite data bank
-		.byte song_whats_a_future_funk ;___________ Song ID
-		.byte (1 << 4) | 0 ;_______________________ Starting game mode and speed
-		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
-		.byte ($00) ;______________________________ Spawn Y Position (low byte)
-		.byte ($02) ;______________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
-		.byte ($06) ;______________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 ;_____________________ Deco type
-		.byte _SPIKESC ;___________________________ Spike set
-		.byte _BLOCKSB ;___________________________ Block set
-		.byte _SAWBLADESA ;________________________ Sawblade set
-		.byte $0F ;________________________________ Starting background color
-		.byte $0F ;________________________________ Starting ground color
-		.byte 57 ;_________________________________ Level height
+		.byte <sprite_data_futurefunkfix ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_futurefunkfix ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_futurefunkfix)) ;___ Sprite data bank
+		.byte song_whats_a_future_funk ;______________ Song ID
+		.byte (1 << 4) | 0 ;__________________________ Starting game mode and speed
+		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
+		.byte ($06) ;_________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 ;________________________ Deco type
+		.byte _SPIKESC ;______________________________ Spike set
+		.byte _BLOCKSB ;______________________________ Block set
+		.byte _SAWBLADESA ;___________________________ Sawblade set
+		.byte $0F ;___________________________________ Starting background color
+		.byte $0F ;___________________________________ Starting ground color
+		.byte 57 ;____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/futurefunk.lz.0.bin" ; Size: 8170
+		.incbin "EXPORTS/futurefunkfix.lz.0.bin" ; Size: 8170
 
 
 .segment "DAT_BANK_01"	; Total bank size: 8184 bytes
@@ -81,10 +81,10 @@
 
 
 .segment "DAT_BANK_03"	; Total bank size: 8153 bytes
-	.export level_data_futurefunk_6
-	level_data_futurefunk_6:
+	.export level_data_futurefunkfix_6
+	level_data_futurefunkfix_6:
 	; Level data
-		.incbin "EXPORTS/futurefunk.lz.1.bin" ; Size: 8153
+		.incbin "EXPORTS/futurefunkfix.lz.1.bin" ; Size: 8153
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8136 bytes
@@ -589,7 +589,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3528
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 8168 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 8178 bytes
 	.export level_data_infinitecircles
 	level_data_infinitecircles:
 	; Header
@@ -614,10 +614,10 @@
 	; Level data
 		.incbin "EXPORTS/infinitecircles.lz.bin" ; Size: 4341
 
-	.export level_data_futurefunk_7
-	level_data_futurefunk_7:
+	.export level_data_futurefunkfix_7
+	level_data_futurefunkfix_7:
 	; Level data
-		.incbin "EXPORTS/futurefunk.lz.2.bin" ; Size: 3809
+		.incbin "EXPORTS/futurefunkfix.lz.2.bin" ; Size: 3819
 
 
 .segment "DAT_BANK_1C"	; Total bank size: 8147 bytes
