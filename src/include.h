@@ -23,6 +23,7 @@ __attribute__((retain))
 
 #include "./gamestates/state_startup.c"
 #include "./gamestates/state_menu.c"
+#include "./gamestates/state_bankexplorer.c"
 
 
 

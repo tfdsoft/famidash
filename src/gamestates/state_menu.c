@@ -87,7 +87,8 @@ const uint8_t mspr_title[]={
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".109")))
 void state_menu() {
     unsigned char menu_color = 0x11;
-    unsigned long interrupt_scroll = 0;
+    unsigned short interrupt_scroll = 0;
+    unsigned short scroll_bank = 0;
 
     // load parallax background
     vram_adr(0x1000);
@@ -96,10 +97,8 @@ void state_menu() {
     
     if(loaded_bg_set != background_set){
         donut_decompress_vram(chr_bg[background_set], chr_bank_2);
-        //automatic_fs_updates = 0;
         vram_generate_parallax(background_set);
         loaded_bg_set = background_set;
-        //automatic_fs_updates = 1;
     }
 
     set_chr_bank(2,4);
@@ -175,13 +174,17 @@ void state_menu() {
     //automatic_fs_updates=0;
     //interrupt_scroll = 0;
     while(1){
+        
         ppu_wait_nmi();
         scroll(0,0);
         oam_clear();
 
         interrupt_scroll += phys_speed[1];
         IRQ(1).arg2 = high_byte(interrupt_scroll);
-        IRQ(2).arg1 = ((((uint16_t)(high_byte(interrupt_scroll) | (third_byte(interrupt_scroll)<<8)))>>3)%loaded_bg_width) + 0x10;
+
+        scroll_bank += (phys_speed[1] >> 3);
+        if(high_byte(scroll_bank) >= 48) high_byte(scroll_bank) = 0;
+        IRQ(2).arg1 = (high_byte(scroll_bank)+0x10);
         
 
 
@@ -211,6 +214,10 @@ void state_menu() {
         if(player1_pressed & PAD_A) {
             gamestate = 0x11;
             pal_fade_to(4,0);
+            break;
+        }
+        if(player1_pressed & PAD_SELECT) {
+            gamestate = 0xf0;
             break;
         }
 
