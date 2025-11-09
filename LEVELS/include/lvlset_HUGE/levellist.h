@@ -77,7 +77,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// sonicblaster
 	DEMON,	// decode
 	DEMON,	// deathmoon
-	DEMON,	// dearnostalgistsfix
 	DEMON,	// clutterfunk2
 	DEMON,	// motion
 	DEMON,	// speedracer
@@ -189,7 +188,6 @@ const uint8_t stars_list[] = {
 	10,	// sonicblaster
 	10,	// decode
 	10,	// deathmoon
-	10,	// dearnostalgistsfix
 	10,	// clutterfunk2
 	10,	// motion
 	10,	// speedracer

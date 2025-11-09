@@ -142,14 +142,14 @@
 			parallaxDisable: true
 		},
 		{
-			level: "dearnostalgistsfix",
+			level: "dearnostalgists",
 			lowerText: " DEAR NOSTALGISTS",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "C",
 			blockSet: "A",
 			sawSet: "A",
 			difficulty: "EASYDEMON",
-			stars: 10,
+			//stars: 10,
 			songID: "song_crackdown",
 			startingGameMode: 0,
 			startingSpeed: 2,

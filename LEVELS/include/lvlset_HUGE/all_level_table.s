@@ -80,7 +80,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_sonicblaster)
 	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_deathmoon)
-	.byte .lobyte(level_data_dearnostalgistsfix)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_speedracer)
@@ -191,7 +190,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_sonicblaster)
 	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_deathmoon)
-	.byte .hibyte(level_data_dearnostalgistsfix)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_speedracer)
@@ -302,7 +300,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_sonicblaster))
 	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_deathmoon))
-	.byte .lobyte(.bank(level_data_dearnostalgistsfix))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_speedracer))
@@ -347,19 +344,18 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_highlife_6)
 	.byte .lobyte(level_data_extraordinaryexcitement_7)
 	.byte .lobyte(level_data_deathmoon_8)
-	.byte .lobyte(level_data_dearnostalgistsfix_9)
-	.byte .lobyte(level_data_motion_10)
-	.byte .lobyte(level_data_skeletalshenanigans_11)
-	.byte .lobyte(level_data_trythisgd_12)
+	.byte .lobyte(level_data_motion_9)
+	.byte .lobyte(level_data_skeletalshenanigans_10)
+	.byte .lobyte(level_data_trythisgd_11)
+	.byte .lobyte(level_data_futurefunkfix_12)
 	.byte .lobyte(level_data_futurefunkfix_13)
-	.byte .lobyte(level_data_futurefunkfix_14)
-	.byte .lobyte(level_data_eon_15)
-	.byte .lobyte(level_data_windylandscape_16)
-	.byte .lobyte(level_data_sonicwave_17)
+	.byte .lobyte(level_data_eon_14)
+	.byte .lobyte(level_data_windylandscape_15)
+	.byte .lobyte(level_data_sonicwave_16)
+	.byte .lobyte(level_data_aftercatabath_17)
 	.byte .lobyte(level_data_aftercatabath_18)
-	.byte .lobyte(level_data_aftercatabath_19)
+	.byte .lobyte(level_data_everyend_19)
 	.byte .lobyte(level_data_everyend_20)
-	.byte .lobyte(level_data_everyend_21)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_hexagonforce_0)
@@ -371,19 +367,18 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_highlife_6)
 	.byte .hibyte(level_data_extraordinaryexcitement_7)
 	.byte .hibyte(level_data_deathmoon_8)
-	.byte .hibyte(level_data_dearnostalgistsfix_9)
-	.byte .hibyte(level_data_motion_10)
-	.byte .hibyte(level_data_skeletalshenanigans_11)
-	.byte .hibyte(level_data_trythisgd_12)
+	.byte .hibyte(level_data_motion_9)
+	.byte .hibyte(level_data_skeletalshenanigans_10)
+	.byte .hibyte(level_data_trythisgd_11)
+	.byte .hibyte(level_data_futurefunkfix_12)
 	.byte .hibyte(level_data_futurefunkfix_13)
-	.byte .hibyte(level_data_futurefunkfix_14)
-	.byte .hibyte(level_data_eon_15)
-	.byte .hibyte(level_data_windylandscape_16)
-	.byte .hibyte(level_data_sonicwave_17)
+	.byte .hibyte(level_data_eon_14)
+	.byte .hibyte(level_data_windylandscape_15)
+	.byte .hibyte(level_data_sonicwave_16)
+	.byte .hibyte(level_data_aftercatabath_17)
 	.byte .hibyte(level_data_aftercatabath_18)
-	.byte .hibyte(level_data_aftercatabath_19)
+	.byte .hibyte(level_data_everyend_19)
 	.byte .hibyte(level_data_everyend_20)
-	.byte .hibyte(level_data_everyend_21)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_hexagonforce_0))
@@ -395,19 +390,18 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_highlife_6))
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement_7))
 	.byte .lobyte(.bank(level_data_deathmoon_8))
-	.byte .lobyte(.bank(level_data_dearnostalgistsfix_9))
-	.byte .lobyte(.bank(level_data_motion_10))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans_11))
-	.byte .lobyte(.bank(level_data_trythisgd_12))
+	.byte .lobyte(.bank(level_data_motion_9))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_10))
+	.byte .lobyte(.bank(level_data_trythisgd_11))
+	.byte .lobyte(.bank(level_data_futurefunkfix_12))
 	.byte .lobyte(.bank(level_data_futurefunkfix_13))
-	.byte .lobyte(.bank(level_data_futurefunkfix_14))
-	.byte .lobyte(.bank(level_data_eon_15))
-	.byte .lobyte(.bank(level_data_windylandscape_16))
-	.byte .lobyte(.bank(level_data_sonicwave_17))
+	.byte .lobyte(.bank(level_data_eon_14))
+	.byte .lobyte(.bank(level_data_windylandscape_15))
+	.byte .lobyte(.bank(level_data_sonicwave_16))
+	.byte .lobyte(.bank(level_data_aftercatabath_17))
 	.byte .lobyte(.bank(level_data_aftercatabath_18))
-	.byte .lobyte(.bank(level_data_aftercatabath_19))
+	.byte .lobyte(.bank(level_data_everyend_19))
 	.byte .lobyte(.bank(level_data_everyend_20))
-	.byte .lobyte(.bank(level_data_everyend_21))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -488,7 +482,6 @@ _level_lengths_lo:
 	.byte .lobyte($0000A6)		; sonicblaster
 	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($000125)		; deathmoon
-	.byte .lobyte($000155)		; dearnostalgistsfix
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($000080)		; speedracer
@@ -601,7 +594,6 @@ _level_lengths_md:
 	.byte .hibyte($0000A6)		; sonicblaster
 	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($000125)		; deathmoon
-	.byte .hibyte($000155)		; dearnostalgistsfix
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($000080)		; speedracer
@@ -714,7 +706,6 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A6)		; sonicblaster
 	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($000125)		; deathmoon
-	.byte .bankbyte($000155)		; dearnostalgistsfix
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($000080)		; speedracer
