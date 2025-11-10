@@ -110,10 +110,11 @@
 #define song_ninox 109
 #define song_repmuj 110
 #define song_scheming_weasel 111
-#define song_cant_let_go 112
-#define song_flow 113
-#define song_ludicrous_speed 114
-#define song_metamorphosis 115
+#define song_flow 112
+#define song_ludicrous_speed 113
+#define song_metamorphosis 114
+#define song_moon_fries 115
 #define song_problematic 116
-#define song_the_challenge 117
-#define song_max 118
+#define song_cant_let_go 117
+#define song_the_challenge 118
+#define song_max 119
