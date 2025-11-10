@@ -118,7 +118,33 @@
 		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7399
 
 
-.segment "DAT_BANK_05"	; Total bank size: 7370 bytes
+.segment "DAT_BANK_05"	; Total bank size: 7376 bytes
+	.export level_data_demoncryogenic
+	level_data_demoncryogenic:
+	; Header
+		.byte <sprite_data_demoncryogenic ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_demoncryogenic ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_demoncryogenic)) ;___ Sprite data bank
+		.byte song_cryogenic ;_________________________ Song ID
+		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
+		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;__________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;__________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;__________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_________________________________ Deco type
+		.byte _SPIKESA ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
+		.byte _SAWBLADESA ;____________________________ Sawblade set
+		.byte $0F ;____________________________________ Starting background color
+		.byte $0F ;____________________________________ Starting ground color
+		.byte 27 ;_____________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/demoncryogenic.lz.bin" ; Size: 7358
+
+
+.segment "DAT_BANK_06"	; Total bank size: 7370 bytes
 	.export level_data_goldenhaze
 	level_data_goldenhaze:
 	; Header
@@ -144,33 +170,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8018 bytes
-	.export level_data_demoncryogenic
-	level_data_demoncryogenic:
-	; Header
-		.byte <sprite_data_demoncryogenic ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_demoncryogenic ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_demoncryogenic)) ;___ Sprite data bank
-		.byte song_cryogenic ;_________________________ Song ID
-		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
-		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;__________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;__________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;__________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
-		.byte _DECO1 ;_________________________________ Deco type
-		.byte _SPIKESA ;_______________________________ Spike set
-		.byte _BLOCKSB ;_______________________________ Block set
-		.byte _SAWBLADESA ;____________________________ Sawblade set
-		.byte $0F ;____________________________________ Starting background color
-		.byte $0F ;____________________________________ Starting ground color
-		.byte 27 ;_____________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/demoncryogenic.lz.bin" ; Size: 5733
-
-
-.segment "DAT_BANK_08"	; Total bank size: 7336 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8152 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -203,7 +203,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 6652 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 7597 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
