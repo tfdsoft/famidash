@@ -778,7 +778,10 @@ jmpto_draw_screen_UD_tiles:
 
 	TileBotRight = ptr1+0
 	TileTopRight = ptr1+1
-	TileBotLeft = ptr2+0
+	TileBotLeft = tmp4
+
+	RunModPtrL = ptr2
+	RunModPtrR = sreg
 
 	ParallaxCurrentIdx = ptr3+0
 	; SeamValue = ptr3+1 still in effect
@@ -898,16 +901,6 @@ write_start:
 	TAY
 	DEX
 	BPL @tileWriteLoop
-	BMI	RuntimeModifiedTiles
-
-RenderParallax:
-
-	; Loop through the vram writes and find any $00 tiles and replace them with parallax
-	; Calculate the end of the parallax column offset
-	jsr RenderParallaxSub
-
-	; move to the next scroll column for next frame
-	jsr _increase_parallax_scroll_column
 
 RuntimeModifiedTiles:
 	LDX	#TileWriteSize
@@ -928,6 +921,17 @@ RuntimeModifiedTiles:
 		TAY
 		DEX
 		BNE @loop
+	BEQ	StartAttributes
+
+RenderParallax:
+
+	; Loop through the vram writes and find any $00 tiles and replace them with parallax
+	; Calculate the end of the parallax column offset
+	jsr RenderParallaxSub
+
+	; move to the next scroll column for next frame
+	jsr _increase_parallax_scroll_column
+
 
 StartAttributes:
 	; Seam pos for attributes:
@@ -1012,8 +1016,10 @@ FinishRendering:
 	adc	#TotalEnd
 	sta	VRAM_INDEX
 
-	lda	#1				;	Return 1
-	ldx	#0				;__
+	lda	#1				;
+	ldx	#0				;	Return 1
+	stx	sreg+0			;
+	stx	sreg+1			;__
 
 	RTS
 
@@ -1038,78 +1044,111 @@ RenderParallaxSub:
 	adc ParallaxBufferStartTable,	y
 	sta	ParallaxCurrentIdx
 
-	ldx #2 * TileWriteSize
+	; Load runtime code modification pointers
+	lda #<(RUNMOD_fl_lvlRenderRTiles_TileDataL_Top+1+(30*5)-256)
+	sta	RunModPtrL
+	lda #>(RUNMOD_fl_lvlRenderRTiles_TileDataL_Top+1+(30*5)-256)
+	sta	RunModPtrL+1
+	lda #<(RUNMOD_fl_lvlRenderRTiles_TileDataR_Top+1+(30*5)-256)
+	sta	RunModPtrR
+	lda #>(RUNMOD_fl_lvlRenderRTiles_TileDataR_Top+1+(30*5)-256)
+	sta	RunModPtrR+1
 
-	ldy	ParallaxCurrentRow
+	ldx	ParallaxCurrentRow
+
+	lda #<-(30*5)
 
 	@loop:
-		lda columnBuffer,y
-		and	ParallaxInvisBlMask
 		tay
+		lda columnBuffer,x
+		and	ParallaxInvisBlMask
+		tax
 
-		lda	metatiles_bot_right, y
+		lda	metatiles_bot_right, x
 		sta	TileBotRight
-		lda	metatiles_top_right, y
+		lda	metatiles_top_right, x
 		sta	TileTopRight
-		lda	metatiles_bot_left, y
+		lda	metatiles_bot_left, x
 		sta	TileBotLeft
-		lda	metatiles_top_left, y
+		lda	metatiles_top_left, x
 		
-		ldy	ParallaxCurrentIdx
+		ldx	ParallaxCurrentIdx
 		cmp	#0	;__	Really unfortunate
 
 		; Replace the top left tile
 		bne :+
 			; empty tile, so replace it with the parallax for this
-			lda ParallaxBuffer+0,	y
+			lda ParallaxBuffer+0,	x
 		:
-		sta VRAM_BUF+TileOffL-1,	x
+		sta	(RunModPtrL), y
 		; Replace the top right tile
 		lda TileTopRight
 		bne :+
 			; empty tile, so replace it with the parallax for this
-			lda ParallaxBuffer+ParallaxBufferRightOffset+0,	y
+			lda ParallaxBuffer+ParallaxBufferRightOffset+0,	x
 		:
-		sta VRAM_BUF+TileOffR-1,	x
+		sta	(RunModPtrR), y
+
+		tya
+		clc
+		adc	#5
+		tay
+
 		; Replace the bottom left tile
-		dex
 		lda TileBotLeft
 		bne :+
 			; empty tile, so replace it with the parallax for this
-			lda ParallaxBuffer+5,	y	;__	Offset of half the size
+			lda ParallaxBuffer+5,	x	;__	Offset of half the size
 		:
-		sta VRAM_BUF+TileOffL-1,	x
+		sta	(RunModPtrL), y
 		; Replace the bottom right tile
 		lda TileBotRight
 		bne :+
 			; empty tile, so replace it with the parallax for this
-			lda ParallaxBuffer+ParallaxBufferRightOffset+5,	y	;__	Offset of half the size
+			lda ParallaxBuffer+ParallaxBufferRightOffset+5,	x	;__	Offset of half the size
 		:
-		sta VRAM_BUF+TileOffR-1,	x
-		iny
-		cpy ParallaxExtent
+		sta	(RunModPtrR), y
+		inx
+		cpx ParallaxExtent
 		bne :+
-			ldy ParallaxBufferStart
+			ldx ParallaxBufferStart
 		:
-		sty	ParallaxCurrentIdx
+		stx	ParallaxCurrentIdx
 
 		LDA CurrentRow
 		CMP SeamValue
 		BEQ	@seamColl
-			TAY
-			INY
-			STY CurrentRow
+			TAX
+			INX
+			STX CurrentRow
 
 		@noSeamColl:
-		dex
+		tya
+		clc
+		adc	#5
 		bne @loop
-	rts
+		;__	Our pointer's overflowed, either a new half or end the operation
+		ldy	#<(RUNMOD_fl_lvlRenderRTiles_TileDataL_Bot+1+(30*5)-256)
+		cpy	RunModPtrL
+		beq	@return
+		;__	Second half
+		sty	RunModPtrL
+		ldy	#>(RUNMOD_fl_lvlRenderRTiles_TileDataL_Bot+1+(30*5)-256)
+		sty	RunModPtrL+1
+		ldy #<(RUNMOD_fl_lvlRenderRTiles_TileDataR_Bot+1+(30*5)-256)
+		sty	RunModPtrR
+		ldy #>(RUNMOD_fl_lvlRenderRTiles_TileDataR_Bot+1+(30*5)-256)
+		sty	RunModPtrR+1
+		lda #<-(30*5)
+		bne	@loop	;__	= BRA
+	@return:
+		rts
 
 	@seamColl:
 		; sec unnecessary, as the CMP yielded an =, and as such the carry is set	
 		sbc	#29							;
 		STA CurrentRow					;	row - 30 (seam) + 1 (inc)
-		TAY								;__
+		TAX								;__
 		lda	ParallaxCurrentIdx			;
 		clc								;
 		adc	#6							;
@@ -1142,7 +1181,7 @@ ParallaxBuffer:
 		.byte ParallaxBufferLCol1 - ParallaxBuffer
 		.byte ParallaxBufferLCol2 - ParallaxBuffer
 	ParallaxBufferLeftOffset = 0
-	ParallaxBufferRightOffset = <(ParallaxBufferRCol0 - ParallaxBufferLCol0)
+	ParallaxBufferRightOffset = ParallaxBufferRCol0 - ParallaxBufferLCol0
 
 ParallaxBufferStartTable:
 	.byte	0,	6,	3,	0,	6
