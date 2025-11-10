@@ -483,7 +483,8 @@
 		},
 		{
 			fmsSongName: "Golden Haze",
-			lowerText: "GOLDEN HAZE",
+			upperText: "GOLDEN HAZE",
+			lowerText: "CUT",
 			originalArtist: "DetiousMusic",
 			coveringArtist: ["Crafty Jumper", "ElAngel378"]
 		},

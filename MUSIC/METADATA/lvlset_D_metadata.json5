@@ -45,7 +45,8 @@
 		},
 		{
 			fmsSongName: "Golden Haze NOT RETRAY",
-			lowerText: "GOLDEN HAZE",
+			upperText: "GOLDEN HAZE",
+			lowerText: "CUT",
 			originalArtistText: "DETIOUSMUSIC",
 		},
 		{

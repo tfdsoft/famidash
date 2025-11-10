@@ -2292,7 +2292,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_freedom_dive,
 	song_glint,
 	song_glitch_gremlin,
-	song_golden_haze,
+	song_golden_haze_full,
 	song_ground_to_space,
 	song_haunted_woods,
 	song_holography,
