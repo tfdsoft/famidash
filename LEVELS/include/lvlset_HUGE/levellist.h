@@ -91,6 +91,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// pgclubstep
 	DEMON,	// deadlyclubstep
 	DEMON,	// thermodynamix
+	DEMON,	// demoncryogenic
 	DEMON,	// foresttemple
 	DEMON,	// ninecircles
 	DEMON,	// fairydust
@@ -202,6 +203,7 @@ const uint8_t stars_list[] = {
 	10,	// pgclubstep
 	10,	// deadlyclubstep
 	10,	// thermodynamix
+	10,	// demoncryogenic
 	10,	// foresttemple
 	10,	// ninecircles
 	10,	// fairydust

@@ -94,6 +94,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_deadlyclubstep)
 	.byte .lobyte(level_data_thermodynamix)
+	.byte .lobyte(level_data_demoncryogenic)
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_ninecircles)
 	.byte .lobyte(level_data_fairydust)
@@ -204,6 +205,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_deadlyclubstep)
 	.byte .hibyte(level_data_thermodynamix)
+	.byte .hibyte(level_data_demoncryogenic)
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_ninecircles)
 	.byte .hibyte(level_data_fairydust)
@@ -314,6 +316,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_deadlyclubstep))
 	.byte .lobyte(.bank(level_data_thermodynamix))
+	.byte .lobyte(.bank(level_data_demoncryogenic))
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_ninecircles))
 	.byte .lobyte(.bank(level_data_fairydust))
@@ -347,15 +350,16 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_motion_9)
 	.byte .lobyte(level_data_skeletalshenanigans_10)
 	.byte .lobyte(level_data_trythisgd_11)
-	.byte .lobyte(level_data_futurefunkfix_12)
+	.byte .lobyte(level_data_demoncryogenic_12)
 	.byte .lobyte(level_data_futurefunkfix_13)
-	.byte .lobyte(level_data_eon_14)
-	.byte .lobyte(level_data_windylandscape_15)
-	.byte .lobyte(level_data_sonicwave_16)
-	.byte .lobyte(level_data_aftercatabath_17)
+	.byte .lobyte(level_data_futurefunkfix_14)
+	.byte .lobyte(level_data_eon_15)
+	.byte .lobyte(level_data_windylandscape_16)
+	.byte .lobyte(level_data_sonicwave_17)
 	.byte .lobyte(level_data_aftercatabath_18)
-	.byte .lobyte(level_data_everyend_19)
+	.byte .lobyte(level_data_aftercatabath_19)
 	.byte .lobyte(level_data_everyend_20)
+	.byte .lobyte(level_data_everyend_21)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_hexagonforce_0)
@@ -370,15 +374,16 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_motion_9)
 	.byte .hibyte(level_data_skeletalshenanigans_10)
 	.byte .hibyte(level_data_trythisgd_11)
-	.byte .hibyte(level_data_futurefunkfix_12)
+	.byte .hibyte(level_data_demoncryogenic_12)
 	.byte .hibyte(level_data_futurefunkfix_13)
-	.byte .hibyte(level_data_eon_14)
-	.byte .hibyte(level_data_windylandscape_15)
-	.byte .hibyte(level_data_sonicwave_16)
-	.byte .hibyte(level_data_aftercatabath_17)
+	.byte .hibyte(level_data_futurefunkfix_14)
+	.byte .hibyte(level_data_eon_15)
+	.byte .hibyte(level_data_windylandscape_16)
+	.byte .hibyte(level_data_sonicwave_17)
 	.byte .hibyte(level_data_aftercatabath_18)
-	.byte .hibyte(level_data_everyend_19)
+	.byte .hibyte(level_data_aftercatabath_19)
 	.byte .hibyte(level_data_everyend_20)
+	.byte .hibyte(level_data_everyend_21)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_hexagonforce_0))
@@ -393,15 +398,16 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_motion_9))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans_10))
 	.byte .lobyte(.bank(level_data_trythisgd_11))
-	.byte .lobyte(.bank(level_data_futurefunkfix_12))
+	.byte .lobyte(.bank(level_data_demoncryogenic_12))
 	.byte .lobyte(.bank(level_data_futurefunkfix_13))
-	.byte .lobyte(.bank(level_data_eon_14))
-	.byte .lobyte(.bank(level_data_windylandscape_15))
-	.byte .lobyte(.bank(level_data_sonicwave_16))
-	.byte .lobyte(.bank(level_data_aftercatabath_17))
+	.byte .lobyte(.bank(level_data_futurefunkfix_14))
+	.byte .lobyte(.bank(level_data_eon_15))
+	.byte .lobyte(.bank(level_data_windylandscape_16))
+	.byte .lobyte(.bank(level_data_sonicwave_17))
 	.byte .lobyte(.bank(level_data_aftercatabath_18))
-	.byte .lobyte(.bank(level_data_everyend_19))
+	.byte .lobyte(.bank(level_data_aftercatabath_19))
 	.byte .lobyte(.bank(level_data_everyend_20))
+	.byte .lobyte(.bank(level_data_everyend_21))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -496,6 +502,7 @@ _level_lengths_lo:
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
 	.byte .lobyte($00008E)		; thermodynamix
+	.byte .lobyte($0000A8)		; demoncryogenic
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000082)		; fairydust
@@ -608,6 +615,7 @@ _level_lengths_md:
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
 	.byte .hibyte($00008E)		; thermodynamix
+	.byte .hibyte($0000A8)		; demoncryogenic
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000082)		; fairydust
@@ -720,6 +728,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep
 	.byte .bankbyte($00008E)		; thermodynamix
+	.byte .bankbyte($0000A8)		; demoncryogenic
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000082)		; fairydust
