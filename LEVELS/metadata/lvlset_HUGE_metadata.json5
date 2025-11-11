@@ -4590,7 +4590,7 @@
 				},
 			]
 		},
-		{
+/*		{
 			level: "futurefunkfix",
 			lowerText: "FUTURE FUNK",
 			decoType: "EXTRASPRITES1",
@@ -4611,7 +4611,7 @@
 					offsetX: -8
 				},			
 			]
-		},
+		}, */
 		{
 			level: "stalemate",
 			lowerText: "STALEMATE",

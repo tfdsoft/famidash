@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 32
+#define COMMUNITY_LEVEL_COUNT 31
 
 #define level_sonar 0
 #define level_darkparadise 1
@@ -37,4 +37,3 @@
 #define level_clutterfunk2 28
 #define level_speedracer 29
 #define level_skeletalshenanigans 30
-#define level_futurefunkfix 31

@@ -1076,7 +1076,7 @@
 				},
 			]
 		},
-		{
+/*		{
 			level: "futurefunkfix",
 			lowerText: "FUTURE FUNK",
 			decoType: "EXTRASPRITES1",
@@ -1097,8 +1097,8 @@
 					offsetX: -8
 				},			
 			]
-		},
-	],
+		}, */
+	], 
 	globalObjectOffsets: [
 		/*	Format:
 		{

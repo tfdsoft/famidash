@@ -129,20 +129,19 @@ const char levelText7C[15] = "DEMON CRYOGENIC";
 const char levelText7D[13] = "FOREST TEMPLE";
 const char levelText7E[12] = "NINE CIRCLES";
 const char levelText7F[ 9] = "FAIRYDUST";
-const char levelText80[11] = "FUTURE FUNK";
-const char levelText81[ 9] = "STALEMATE";
-const char levelText82[ 2] = "8O";
-const char levelText83[ 2] = "HI";
-const char levelText84[ 3] = "EON";
-const char levelText85[ 9] = "LANDSCAPE";
-const char levelText86[10] = "SONIC WAVE";
-const char levelText87[ 9] = "CATACLYSM";
-const char levelText88[ 9] = "AFTERMATH";
-const char levelText89[ 6] = "KRATOS";
-const char levelText8A[13] = "AFTERCATABATH";
-const char levelText8B[14] = "SLAUGHTERHOUSE";
-const char levelText8C[ 9] = "EVERY END";
-const char levelText8D[10] = "LUCKY DRAW";
+const char levelText80[ 9] = "STALEMATE";
+const char levelText81[ 2] = "8O";
+const char levelText82[ 2] = "HI";
+const char levelText83[ 3] = "EON";
+const char levelText84[ 9] = "LANDSCAPE";
+const char levelText85[10] = "SONIC WAVE";
+const char levelText86[ 9] = "CATACLYSM";
+const char levelText87[ 9] = "AFTERMATH";
+const char levelText88[ 6] = "KRATOS";
+const char levelText89[13] = "AFTERCATABATH";
+const char levelText8A[14] = "SLAUGHTERHOUSE";
+const char levelText8B[ 9] = "EVERY END";
+const char levelText8C[10] = "LUCKY DRAW";
 
 
 const char* const levelTextsUpper[] = {
@@ -234,7 +233,6 @@ const char* const levelTextsUpper[] = {
 	NULL,
 	NULL,
 	levelText22,
-	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -346,7 +344,6 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	0,
 	sizeof(levelText22),
-	0,
 	0,
 	0,
 	0,
@@ -470,16 +467,15 @@ const char* const levelTextsLower[] = {
 	levelText83,
 	levelText84,
 	levelText85,
-	levelText86,
 	levelText14,
+	levelText86,
 	levelText87,
-	levelText88,
 	levelText32,
+	levelText88,
 	levelText89,
 	levelText8A,
 	levelText8B,
 	levelText8C,
-	levelText8D,
 };
 
 const uint8_t levelTextsLowerSize[] = {
@@ -582,14 +578,13 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText83),
 	sizeof(levelText84),
 	sizeof(levelText85),
-	sizeof(levelText86),
 	sizeof(levelText14),
+	sizeof(levelText86),
 	sizeof(levelText87),
-	sizeof(levelText88),
 	sizeof(levelText32),
+	sizeof(levelText88),
 	sizeof(levelText89),
 	sizeof(levelText8A),
 	sizeof(levelText8B),
 	sizeof(levelText8C),
-	sizeof(levelText8D),
 };
