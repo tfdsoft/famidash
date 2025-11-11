@@ -50,3 +50,31 @@ void state_bankexplorer(){
         }
     }
 }
+
+
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".919")))
+void state_test(){
+    unsigned char bank = 0;
+
+    vram_adr(0x2000);
+    vram_unrle(nt_bankexplore);
+
+    set_chr_bank(4,0);
+    set_chr_bank(5,1);
+
+    pal_bg(pal_bankexplore);
+
+    flush_irq();
+
+    ppu_on_all();
+    pal_bright(4);
+    while(1){
+        ppu_wait_nmi();
+        scroll(0,0);
+
+        if(player1_pressed & PAD_RIGHT) {
+            set_chr_bank(4,bank);
+            set_chr_bank(5,++bank);
+        }
+    }
+}

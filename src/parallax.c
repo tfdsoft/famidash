@@ -131,10 +131,10 @@ void vram_generate_parallax(uint8_t bg_id){
     push_prg_a000();
     set_prg_a000(extra_code_bank_1);
 
-    set_chr_bank(1,8); // ground + menu text
-    oam_clear();
-    oam_meta_spr(128,120, mspr_loading);
-    pal_spr_bright(4);
+    //set_chr_bank(1,8); // ground + menu text
+    //oam_clear();
+    //oam_meta_spr(128,120, mspr_loading);
+    //pal_spr_bright(4);
 
     // get the pointer to the requested bg table
     ptr = bg_table_ptr[bg_id];

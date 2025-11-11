@@ -46,6 +46,7 @@
 // el memory section!!!!!!
 //static unsigned char spin;
 __attribute__((retain)) static volatile unsigned char FRAME_CNT;
+__attribute__((retain)) static volatile unsigned char VRAM_UPDATE;
 __attribute__((retain)) static volatile unsigned char PPU_MASK_VAR, PPU_CTRL_VAR;
 __attribute__((retain)) static volatile unsigned char PPU_CTRL_VAR1;
 __attribute__((retain)) static unsigned char SCROLL_X, SCROLL_Y;
@@ -145,6 +146,8 @@ static const uint8_t palBrightTable[192] = {
 __attribute__((noinline)) void ppu_wait_nmi(){
     // stall until FRAME_CNT is updated by nmi()
     //while (FRAME_CNT == FRAME_COUNT_OLD){}
+
+        VRAM_UPDATE = 1;
 
     __attribute__((leaf)) __asm__ volatile (
         "lda FRAME_CNT \n"
@@ -638,7 +641,7 @@ void vram_inc(unsigned char n){
  * set_vram_update(*buf)
  * set the pointer to the vram buffer.
 */
-void set_vram_update(const char *buf) {
+__attribute__((noinline)) void set_vram_update(const char *buf) {
     NAME_UPD_ADR = buf;
     NAME_UPD_ENABLE = NAME_UPD_ADR != 0;
 }

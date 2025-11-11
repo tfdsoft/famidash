@@ -11,7 +11,6 @@ const unsigned char pal_title[32]={
     0x11,0x0f,0x21,0x31,
 };
 
-
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".101")))
 const unsigned char nt_title[374]={
 0x02,0x01,0x02,0x3f,0x00,0x02,0x87,0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,
@@ -39,7 +38,6 @@ const unsigned char nt_title[374]={
 0x03,0x00,0x02,0x03,0x55,0x44,0x11,0x55,0x00,0x02,0x09,0xa0,0x02,0x07,0xaa,0x02,
 0x07,0x00,0x02,0x07,0x02,0x00
 };
-
 
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".102")))
 const uint8_t mspr_title[]={
@@ -161,6 +159,8 @@ void state_menu() {
     oam_clear();
     oam_meta_spr(1,0,mspr_title);
 
+    multi_vram_buffer_horz("2.0", 4, 0x2134);
+
     ppu_on_all();
     pal_fade_to(1,4);
 
@@ -232,7 +232,6 @@ void state_menu() {
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".110")))
 const unsigned char pal_levelselect[16]={ 0x11,0x01,0x11,0x30,0x11,0x0f,0x2a,0x39,0x11,0x0f,0x10,0x30,0x11,0x0f,0x21,0x31 };
 
-
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".111")))
 const unsigned char nt_levelselect[345]={
 0x04,0x01,0x04,0x3f,0x00,0x04,0x05,0x1a,0x1b,0x0e,0x07,0x04,0x03,0x0f,0x0e,0x07,
@@ -259,6 +258,9 @@ const unsigned char nt_levelselect[345]={
 0x04,0x03,0xc0,0xd4,0x0f,0x04,0x07,0x04,0x00
 };
 
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".115")))
+const char str_levelselect[] = "stereo\x01madness";
+
 
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".119")))
 void state_levelselect(){
@@ -277,6 +279,8 @@ void state_levelselect(){
         irq_basic
     );
     set_chr_bank(5,8);
+
+    multi_vram_buffer_horz(str_levelselect,sizeof(str_levelselect)-1,0x214a);
 
     ppu_on_all();
     pal_fade_to(0,4);

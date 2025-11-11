@@ -33,6 +33,13 @@ const unsigned char nt_warning[] = {
     0x00,0x01,0x0c,0x04,0x05,0x01,0x02,0x00,0x01,0x19,0x01,0x00
 };
 
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".005")))
+const char str_logo_text[] = "VRAM BUFFER TEST, THIS IS PEAK";
+
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".006")))
+const char str_warning[] = "HERE IT GOES.";
+
+
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".009")))
 void state_startup() {
     famistudio_music_stop();
@@ -52,6 +59,7 @@ void state_startup() {
     pal_bg(pal_logo);
     pal_spr(pal_logo);
 
+    multi_vram_buffer_horz(str_logo_text, sizeof(str_logo_text)-1, 0x2101);
     
     //pal_bright(0);
     ppu_on_all();
@@ -78,8 +86,6 @@ void state_startup() {
         if((stall >= 80) && (stall < 83)) pal_bright(3);
     }
 
-    //gamestate = 0x10;
-    //return;
 
     pal_fade_to(4,0);
     ppu_off();
@@ -91,8 +97,12 @@ void state_startup() {
     pal_col(0,0x11);
     pal_col(1,0x0f);
 
+    multi_vram_buffer_horz(str_warning, sizeof(str_warning)-1, 0x2249);
+
     ppu_on_all();
     pal_fade_to(0,4);
+
+    //multi_vram_buffer_horz(pal_logo, 16, 0x3ff0);
 
     //__asm__ ("lda #0");
     song = 255;

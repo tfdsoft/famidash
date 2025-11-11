@@ -22,6 +22,12 @@ __attribute__((leaf)) __asm__(
 
     // end of clearRAM
 
+    ".section .init.280,\"ax\",@progbits \n"
+        "lda #0 \n"
+        "sta __rc2 \n"
+        "sta __rc3 \n"
+        "jsr set_vram_buffer \n"
+
     ".section .init.300,\"ax\",@progbits \n"
         // make sure the irq doesn't trigger itself
         "lda #255 \n"
@@ -46,6 +52,8 @@ __attribute__((leaf)) __asm__(
 
         "lda #$c0\n"
         "sta $4017\n" // disable apu frame counter irq
+
+
 
         //"ldx #$00 \n"
         //"tax \n"
@@ -75,6 +83,8 @@ int main(void){
     vram_adr(0x0000);
     vram_fill(0,0x2000);
 
+    set_vram_buffer();
+
     ppu_on_spr();
 
     set_wram_mode(WRAM_ON);
@@ -82,6 +92,7 @@ int main(void){
     loaded_bg_set = 0xff;
     loaded_g_set = 0xff;
     background_set = ground_set = 0;
+
 
     while(1){
         //add_basic_interrupt(
