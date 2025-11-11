@@ -27,6 +27,12 @@
 // set to 1 to display metatile data when compiling via the
 // command line.
 #define PRINT_METATILES 0
+//
+// Enable Debug Mode
+// Activated by pressing SELECT during gameplay
+// Recommended to be disabled for release builds
+// Also activates kandokidshackX variables
+#define DEBUG_MODE_ENABLED 1
 // ============================================================
 
 
