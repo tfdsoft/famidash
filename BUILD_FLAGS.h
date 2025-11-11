@@ -31,8 +31,11 @@
 // Enable Debug Mode
 // Activated by pressing SELECT during gameplay
 // Recommended to be disabled for release builds
-// Also activates kandokidshackX variables
 #define DEBUG_MODE_ENABLED 1
+//
+// Enable kandokidshackX Variables
+// Activated in convoluted methods
+#define KANDOKIDSHACKX_ENABLED 1
 // ============================================================
 
 

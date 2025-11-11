@@ -467,14 +467,15 @@ void everything_else() {
 
 					if (mouse.right) exittimer++;
 					else exittimer = 0;
-//					#if DEBUG_MODE_ENABLED
+
+					#if KANDOKIDSHACKX_ENABLED
 					if ((joypad1.up) && (joypad1.press_b)) {
 						kandokidshack3++;
 					}
 					if ((joypad1.down) && (joypad1.press_b)) {
 						kandokidshack4++;
 					}
-//					#endif
+					#endif
 
 					if ((controllingplayer->press_b || mouse.left_press) && !(controllingplayer->hold & (PAD_UP | PAD_DOWN))) {
 						famistudio_music_pause(0);
@@ -495,14 +496,16 @@ void everything_else() {
 					if ((joypad1.press_left) && DEBUG_MODE) {
 						gravity_mod == 4 ? gravity_mod = 0 : gravity_mod++;
 					}
-//					#if DEBUG_MODE_ENABLED
+
+					#if KANDOKIDSHACKX_ENABLED
 					if ((joypad1.down) && (joypad1.press_a)) {
 						kandokidshack++;
 					}
 					else if ((joypad1.up) && (joypad1.press_a)) {
 						kandokidshack2++;
 					}
-//					#endif
+					#endif
+
 					else if ((joypad1.press_a) && DEBUG_MODE) {
 						nocamlock = 1;
 	#ifdef FLAG_KANDO_FUN_STUFF
@@ -531,10 +534,9 @@ void everything_else() {
 			}
 			#endif	// No pause in arcade
 		#if !__VS_SYSTEM	 //no practice or debug in arcade
-//		if (options & debugtoggle) {
 		#if DEBUG_MODE_ENABLED
 
-			if (joypad1.press_select && practice_point_count == 0) //THE BIG DEBUG - DISABLE BEFORE RELEASE
+			if (joypad1.press_select && practice_point_count == 0)
 				{ 
 					DEBUG_MODE = !DEBUG_MODE; 
 					cube_data[0] &= 2; 
@@ -542,7 +544,6 @@ void everything_else() {
 					if (!DEBUG_MODE) nocamlock = 0;
 				}		
 		#endif
-//		}
 		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.hold & (PAD_UP | PAD_DOWN))) {
 			curr_practice_point--;
 			if (latest_practice_point) latest_practice_point--;
