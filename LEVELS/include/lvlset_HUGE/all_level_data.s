@@ -2747,7 +2747,7 @@
 		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2292
 
 
-.segment "DAT_BANK_6D"	; Total bank size: 7727 bytes
+.segment "DAT_BANK_6D"	; Total bank size: 7732 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header

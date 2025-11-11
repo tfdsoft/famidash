@@ -1040,7 +1040,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2041
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7402 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7407 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header

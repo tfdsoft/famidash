@@ -19678,6 +19678,7 @@ sprite_data_sunshine:
   .byte $50,$2f,$e0,$02,$8f
   .byte $50,$2f,$f0,$02,$bf
   .byte $d0,$2f,$50,$02,$17
+  .byte $e0,$2f,$68,$02,$0a
   .byte $e0,$2f,$58,$02,$20
   .byte $e0,$2f,$78,$02,$0a
   .byte $40,$30,$20,$02,$0c
