@@ -4,7 +4,7 @@ __attribute__((retain)) static uint8_t __zp VRAM_INDEX;
 //__attribute__((retain)) static uint8_t 
 
 // immediately after PAL_BUF
-#define VRAM_BUF ((volatile char*)0x160) 
+#define VRAM_BUF ((volatile char*)0x140) 
 
 
 

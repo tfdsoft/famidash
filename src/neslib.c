@@ -51,7 +51,8 @@ __attribute__((retain)) static volatile unsigned char PPU_MASK_VAR, PPU_CTRL_VAR
 __attribute__((retain)) static volatile unsigned char PPU_CTRL_VAR1;
 __attribute__((retain)) static unsigned char SCROLL_X, SCROLL_Y;
 __attribute__((retain)) static unsigned char SCROLL_X1;//, SCROLL_Y1;
-#define PAL_BUF ((volatile uint8_t*)0x100) 
+//#define PAL_BUF ((volatile uint8_t*)0x100) 
+__attribute__((retain)) static uint8_t __zp PAL_BUF[32];
 __attribute__((retain)) 
     volatile unsigned char PAD_STATE[2], PAD_STATEP[2], PAD_STATET[2];
 //static unsigned char TEMP;

@@ -29,7 +29,7 @@
 temp = $05  ; 15 bytes are used
 
 ; jroweboy - donut starts at this addr + 64 because ???? but it works out just fine anyway
-donut_block_buffer = $0120  ; 64 bytes
+donut_block_buffer = $0100  ; 64 bytes
 
 ; .segment "_pzp":zeropage
 ; donut_stream_ptr:       .res 2
