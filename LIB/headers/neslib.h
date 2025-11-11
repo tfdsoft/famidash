@@ -103,7 +103,7 @@ void __fastcall__ _oam_spr(uint32_t args);
 // Note: sprid removed for speed
 
 void __fastcall__ _oam_meta_spr(uint32_t args);
-#define oam_meta_spr(x, y, data)(storeBytesToSreg(x, y), __AX__ = (uintptr_t)data, _oam_meta_spr(__EAX__))
+#define oam_meta_spr(x, y, data)(storeBytesToSreg(x, y), __AX__ = (uintptr_t)((void *)data), _oam_meta_spr(__EAX__))
 
 void __fastcall__ _oam_meta_spr_disco(uint32_t args);
 #define oam_meta_spr_disco(x, y, data)(storeBytesToSreg(x, y), __AX__ = (uintptr_t)data, _oam_meta_spr_disco(__EAX__))
