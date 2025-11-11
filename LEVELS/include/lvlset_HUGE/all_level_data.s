@@ -217,33 +217,7 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8126
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8141 bytes
-	.export level_data_demoncryogenic
-	level_data_demoncryogenic:
-	; Header
-		.byte <sprite_data_demoncryogenic ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_demoncryogenic ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_demoncryogenic)) ;___ Sprite data bank
-		.byte song_cryogenic ;_________________________ Song ID
-		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
-		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;__________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;__________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;__________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
-		.byte _DECO1 ;_________________________________ Deco type
-		.byte _SPIKESA ;_______________________________ Spike set
-		.byte _BLOCKSB ;_______________________________ Block set
-		.byte _SAWBLADESA ;____________________________ Sawblade set
-		.byte $0F ;____________________________________ Starting background color
-		.byte $0F ;____________________________________ Starting ground color
-		.byte 27 ;_____________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/demoncryogenic.lz.0.bin" ; Size: 8123
-
-
-.segment "DAT_BANK_0A"	; Total bank size: 8136 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8136 bytes
 	.export level_data_thesteamworks
 	level_data_thesteamworks:
 	; Header
@@ -267,6 +241,32 @@
 		.byte 27 ;____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/thesteamworks.lz.0.bin" ; Size: 8118
+
+
+.segment "DAT_BANK_0A"	; Total bank size: 8136 bytes
+	.export level_data_demoncryogenic
+	level_data_demoncryogenic:
+	; Header
+		.byte <sprite_data_demoncryogenic ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_demoncryogenic ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_demoncryogenic)) ;___ Sprite data bank
+		.byte song_cryogenic ;_________________________ Song ID
+		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
+		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;__________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;__________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;__________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_________________________________ Deco type
+		.byte _SPIKESA ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
+		.byte _SAWBLADESA ;____________________________ Sawblade set
+		.byte $0F ;____________________________________ Starting background color
+		.byte $0F ;____________________________________ Starting ground color
+		.byte 27 ;_____________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/demoncryogenic.lz.0.bin" ; Size: 8118
 
 
 .segment "DAT_BANK_0B"	; Total bank size: 8124 bytes
@@ -2783,7 +2783,7 @@
 		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1663
 
 
-.segment "DAT_BANK_6C"	; Total bank size: 7522 bytes
+.segment "DAT_BANK_6C"	; Total bank size: 7509 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -2811,7 +2811,7 @@
 	.export level_data_demoncryogenic_12
 	level_data_demoncryogenic_12:
 	; Level data
-		.incbin "EXPORTS/demoncryogenic.lz.1.bin" ; Size: 1535
+		.incbin "EXPORTS/demoncryogenic.lz.1.bin" ; Size: 1522
 
 
 .segment "DAT_BANK_6D"	; Total bank size: 7777 bytes

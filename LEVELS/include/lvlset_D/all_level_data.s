@@ -54,7 +54,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8148
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8141 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8136 bytes
 	.export level_data_demoncryogenic
 	level_data_demoncryogenic:
 	; Header
@@ -77,7 +77,7 @@
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/demoncryogenic.lz.0.bin" ; Size: 8123
+		.incbin "EXPORTS/demoncryogenic.lz.0.bin" ; Size: 8118
 
 
 .segment "DAT_BANK_03"	; Total bank size: 8024 bytes
@@ -198,7 +198,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8148 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8143 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -229,8 +229,8 @@
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 3777 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 3764 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data
-		.incbin "EXPORTS/demoncryogenic.lz.1.bin" ; Size: 1535
+		.incbin "EXPORTS/demoncryogenic.lz.1.bin" ; Size: 1522

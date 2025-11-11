@@ -646,7 +646,6 @@ sprite_data_demoncryogenic:
   .byte $f0,$0d,$00,$03,$49
   .byte $00,$0e,$40,$03,$49
   .byte $10,$0e,$e0,$02,$0c
-  .byte $20,$0e,$e0,$02,$0c
   .byte $20,$0e,$10,$03,$49
   .byte $50,$0e,$10,$03,$06
   .byte $70,$0e,$20,$03,$0b
