@@ -153,9 +153,7 @@ __attribute__((noinline)) void flush_vram_update2(){
 
 		"7: \n"	//.LupdNameLoop:
 
-			//"lda (NAME_UPD_ADR),y \n" // data
 			"pla \n"
-			//"iny \n" 
 			"sta $2007 \n" // PPU_DATA 
 			"dex \n"
 			"bne 7b \n"
