@@ -88,13 +88,20 @@ void multi_vram_buffer_horz(
 // ONLY CALL IN NMI!!!!!!
 __attribute__((noinline)) void flush_vram_update2(){
 	__attribute__((leaf)) __asm__ volatile(
+			// save important stuff
+			"tsx \n"
+			"stx __rc3 \n" // save stack
+
+			// calculate stack offset
+			"ldx #$5f \n" // buffer is at $0160
+			"txs \n"
 
 		"1: \n" // flush_vram_update2:
 			"ldy #0 \n"
 
 		"2: \n" // .LupdName:
 			// First byte is upper PPU address or #$ff if done
-			"lda (NAME_UPD_ADR),y \n"
+			"pla \n" //"lda (NAME_UPD_ADR),y \n"
 			"iny \n"
 			"cmp #$40 \n"	// bits 6 and 7 indicate sequential ops
 			"bcc 4f \n"
@@ -114,10 +121,10 @@ __attribute__((noinline)) void flush_vram_update2(){
 
 		"4: \n" // .LupdSingle:
 			"sta $2006 \n" // PPU_ADDR
-			"lda (NAME_UPD_ADR),y \n" // address lo
+			"pla \n" //"lda (NAME_UPD_ADR),y \n" // address lo
 			"iny \n" 
 			"sta $2006 \n" // PPU_ADDR
-			"lda (NAME_UPD_ADR),y \n" // data
+			"pla \n" //"lda (NAME_UPD_ADR),y \n" // data
 			"iny \n" 
 			"sta $2007 \n" // PPU_DATA 
 			"bne 2b \n" // always taken. Assumes index never wraps
@@ -135,26 +142,12 @@ __attribute__((noinline)) void flush_vram_update2(){
 			"and #$3f \n" 
 
 			"sta $2006 \n" // PPU_ADDR
-			"lda (NAME_UPD_ADR),y \n" // address lo
+			"pla \n" //"lda (NAME_UPD_ADR),y \n" // address lo
 			"iny \n" 
 			"sta $2006 \n" // PPU_ADDR
-			"lda (NAME_UPD_ADR),y \n" 
+			"pla \n" //"lda (NAME_UPD_ADR),y \n" 
 			"iny \n" 
-///*
-			// save important stuff
-			"sta __rc2 \n" // save size
-			"tsx \n"
-			"stx __rc3 \n" // save stack
 
-			// calculate stack offset
-			"tya \n"
-			"clc \n"
-			"adc #$5f \n" // buffer is at $0160
-			"tax \n"
-			"txs \n"
-
-			"lda __rc2 \n"
-//*/
 			// store size in counter
 			"tax \n"
 
@@ -170,13 +163,15 @@ __attribute__((noinline)) void flush_vram_update2(){
 			"lda PPU_CTRL_VAR \n"
 			"sta $2000 \n"
 
+			
+
+			"jmp 2b \n"
+
+		"8: \n" // exit
 			// restore stack
 			"ldx __rc3 \n"
 			"txs \n"
 
-			"jmp 2b \n"
-
-		"8: \n"
 			"jmp __post_vram_update \n" 
 	);
 }
