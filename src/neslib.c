@@ -341,7 +341,7 @@ __attribute__((noinline)) void oam_clear(){
 // no clue how the compiler is gonna optimize it though
 __attribute__((noinline)) void oam_spr(char x, char y, char tile, char attr){
     if(SPRID >= 64) return;
-    OAM_BUF[SPRID].y = y,
+    OAM_BUF[SPRID].y = --y,
     OAM_BUF[SPRID].tile = tile,
     OAM_BUF[SPRID].attr = attr,
     OAM_BUF[SPRID].x = x,
@@ -357,6 +357,7 @@ __attribute__((noinline)) void oam_spr(char x, char y, char tile, char attr){
 __attribute__((noinline)) void oam_meta_spr(char x, char y, const unsigned char* const data){
     char* ptr = ((char*)data);
     char* oam_ptr = (((char*)OAM_BUF) + (SPRID<<2));
+    y--;
     while (ptr[0] != 0x80){
         if (SPRID >= 64) return;
         //OAM_BUF[SPRID].x = (ptr[0] + x);

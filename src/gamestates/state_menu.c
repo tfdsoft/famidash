@@ -45,48 +45,73 @@ const uint8_t mspr_title[]={
     // one pixel due to *the problematic line.*
 
     // small button sprites
-    87, 183, 0xf5, 1,
-    95, 183, 0xf7, 1,
-    119, 183, 0xf1, 1,
-    127, 183, 0xf3, 1, // this line is problematic.
-    151, 183, 0xf9, 1,
-    159, 183, 0xfb, 1,
+    87, 184, 0xf5, 1,
+    95, 184, 0xf7, 1,
+    119, 184, 0xf1, 1,
+    127, 184, 0xf3, 1, // this line is problematic.
+    151, 184, 0xf9, 1,
+    159, 184, 0xfb, 1,
 
     // ROBTOP text
-    7, 199, 0x41, 2,  // r/t
-    15, 199, 0x43, 2, // o/f
-    23, 199, 0x45, 2, // b/d
-    31, 199, 0x47, 2, // t/s
-    39, 199, 0x49, 2, // o/o
-    47, 199, 0x4b, 2, // p/f
-    55, 199, 0x4d, 2, //  /t
+    7, 200, 0x41, 2,  // r/t
+    15, 200, 0x43, 2, // o/f
+    23, 200, 0x45, 2, // b/d
+    31, 200, 0x47, 2, // t/s
+    39, 200, 0x49, 2, // o/o
+    47, 200, 0x4b, 2, // p/f
+    55, 200, 0x4d, 2, //  /t
 
     // large button sprites (the blue parts)
     // (top)
-    116, 100, 0xd7, 0b00100011,
-    130, 100, 0xd7, 0b00100011,
-    70, 101, 0xd7, 0b00100011,
-    80, 101, 0xd7, 0b00100011,
-    166, 101, 0xd7, 0b00100011,
-    176, 101, 0xd7, 0b00100011,
+    116, 101, 0xd7, 0b00100011,
+    130, 101, 0xd7, 0b00100011,
+    70, 102, 0xd7, 0b00100011,
+    80, 102, 0xd7, 0b00100011,
+    166, 102, 0xd7, 0b00100011,
+    176, 102, 0xd7, 0b00100011,
 
     // (bottom)
-    116, 107, 0xd7, 0b00100011,
-    130, 107, 0xd7, 0b00100011,
-    70, 105, 0xd7, 0b00100011,
-    80, 105, 0xd7, 0b00100011,
-    166, 105, 0xd7, 0b00100011,
-    176, 105, 0xd7, 0b00100011,
+    116, 108, 0xd7, 0b00100011,
+    130, 108, 0xd7, 0b00100011,
+    70, 106, 0xd7, 0b00100011,
+    80, 106, 0xd7, 0b00100011,
+    166, 106, 0xd7, 0b00100011,
+    176, 106, 0xd7, 0b00100011,
  
     0x80 // end of data
 };
 
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".103")))
+const uint8_t mspr_selectarrow[]={
+    0, 0,  0x1c,   0b00000000,
+    8,  0,  0x1c,   0b01000000,
+    0x80
+};
+
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".104")))
+const uint8_t mspr_selectbox[]={
+    0, 0,  0x0c,   0b00000000,
+    8,  0,  0x0c,   0b01000000,
+    0x80
+};
+
+__attribute__((section(".prg_rom_"STR(extra_code_bank)".105")))
+const uint16_t mspr_select_pos[]={
+    0x5078, // play
+    0x50a8, // community
+    0xb858, // settings
+    0xb878, // music
+    0xb898, // help
+    0x5048, // icon kit
+};
+#define menu_button_count (sizeof(mspr_select_pos)>>1)
 
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".109")))
 void state_menu() {
     unsigned char menu_color = 0x11;
     unsigned short interrupt_scroll = 0;
     unsigned short scroll_bank = 0;
+    signed char selection = 0;
 
     // load parallax background
     vram_adr(0x1000);
@@ -174,7 +199,6 @@ void state_menu() {
     //automatic_fs_updates=0;
     //interrupt_scroll = 0;
     while(1){
-        
         ppu_wait_nmi();
         scroll(0,0);
         oam_clear();
@@ -205,21 +229,65 @@ void state_menu() {
 
 
         
+        
+        if((selection >= 2) && (selection < 5)){
+            oam_meta_spr(
+                low_byte(mspr_select_pos[selection]),
+                high_byte(mspr_select_pos[selection]),
+                mspr_selectbox
+            );
+        } else {
+            oam_meta_spr(
+                low_byte(mspr_select_pos[selection]),
+                high_byte(mspr_select_pos[selection]),
+                mspr_selectarrow
+            );
+        }
+
         // the fact that i can use a metasprite for
         // EVERYTHING on the menu is bloody brilliant
         oam_meta_spr(1,0,mspr_title); // one to the right
                                     // so i can put sprites at
                                     // x = 128
+        
+        if(player1_pressed & PAD_RIGHT) selection++;
+        if(player1_pressed & PAD_LEFT) selection--;
+
+        if(player1_pressed & PAD_DOWN) selection += (menu_button_count>>1);
+        if(player1_pressed & PAD_UP) selection -= (menu_button_count>>1);
+
+        if(selection >= ((uint8_t)menu_button_count)) {
+            selection -= menu_button_count;
+        }
+        if(selection < 0) {
+            selection += menu_button_count;
+        }
 
         if(player1_pressed & PAD_A) {
-            gamestate = 0x11;
+            switch(selection){
+                case 0: // play
+                    gamestate = 0x11;
+                    break;
+                /*case 1: // community
+                    break;
+                case 2: // settings
+                    break;
+                case 3: // music
+                    break;
+                case 4: // help
+                    break;
+                case 5: // icon kit
+                    break;*/
+                default:
+                    sfx_play(3,0);
+            }
             pal_fade_to(4,0);
             break;
         }
-        if(player1_pressed & PAD_SELECT) {
-            gamestate = 0xf0;
-            break;
-        }
+        //if(player1_pressed & PAD_SELECT) {
+        //    gamestate = 0xf0;
+        //    break;
+        //}
 
     }
 }

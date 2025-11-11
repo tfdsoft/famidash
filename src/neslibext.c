@@ -53,7 +53,7 @@ void vram_copy(const unsigned char* const from, unsigned short count){
 }
 
 
-void pal_fade_to(unsigned char from, unsigned char to){
+__attribute__((noinline)) void pal_fade_to(unsigned char from, unsigned char to){
     __attribute__((leaf)) __asm__ volatile (
         	// A = from
             // X = to
