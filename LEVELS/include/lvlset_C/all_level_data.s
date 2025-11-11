@@ -506,7 +506,7 @@
 		.incbin "EXPORTS/eighto.lz.bin" ; Size: 5730
 
 
-.segment "DAT_BANK_14"	; Total bank size: 8140 bytes
+.segment "DAT_BANK_14"	; Total bank size: 8135 bytes
 	.export level_data_deadlyclubstep
 	level_data_deadlyclubstep:
 	; Header

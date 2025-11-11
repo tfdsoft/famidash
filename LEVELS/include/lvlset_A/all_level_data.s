@@ -313,8 +313,8 @@
 		.byte _SPIKESA ;_________________________ Spike set
 		.byte _BLOCKSB ;_________________________ Block set
 		.byte _SAWBLADESA ;______________________ Sawblade set
-		.byte $02 ;______________________________ Starting background color
-		.byte $12 ;______________________________ Starting ground color
+		.byte $0F ;______________________________ Starting background color
+		.byte $0F ;______________________________ Starting ground color
 		.byte 47 ;_______________________________ Level height
 	; Level data
 		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6128

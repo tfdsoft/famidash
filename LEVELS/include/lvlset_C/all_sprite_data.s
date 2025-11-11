@@ -5462,8 +5462,6 @@ sprite_data_invisiblelight:
 
 .segment "DAT_BANK_14"
 sprite_data_pgclubstep:
-  .byte $00,$00,$70,$03,$c5
-  .byte $00,$00,$80,$03,$8f
   .byte $98,$00,$30,$03,$3e
   .byte $c0,$00,$30,$03,$49
   .byte $e0,$00,$30,$03,$49
@@ -5471,6 +5469,7 @@ sprite_data_pgclubstep:
   .byte $10,$01,$88,$03,$0a
   .byte $20,$01,$50,$03,$0b
   .byte $40,$01,$40,$03,$0b
+  .byte $40,$01,$60,$03,$86
   .byte $50,$01,$30,$03,$05
   .byte $60,$01,$20,$03,$06
   .byte $90,$01,$28,$03,$25

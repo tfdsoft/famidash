@@ -2341,8 +2341,8 @@
 			songID: "song_just_right",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x02,
-			startingGroundColor: 0x12,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -4295,7 +4295,7 @@
 				{
 					coordinates: [
 						[181, 18], [578, 22], [597, 22], [618, 14], [722, 10], [725, 10], [734, 18], [745, 17], [981, 14],
-						[920, 12],
+						[920, 12], [407, 19],
 					],
 					offsetY: +8
 				},

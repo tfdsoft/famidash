@@ -1835,8 +1835,8 @@
 			songID: "song_just_right",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x02,
-			startingGroundColor: 0x12,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
