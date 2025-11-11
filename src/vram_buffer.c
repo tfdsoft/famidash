@@ -97,12 +97,12 @@ __attribute__((noinline)) void flush_vram_update2(){
 			"txs \n"
 
 		"1: \n" // flush_vram_update2:
-			"ldy #0 \n"
+			//"ldy #0 \n"
 
 		"2: \n" // .LupdName:
 			// First byte is upper PPU address or #$ff if done
 			"pla \n" //"lda (NAME_UPD_ADR),y \n"
-			"iny \n"
+			//"iny \n"
 			"cmp #$40 \n"	// bits 6 and 7 indicate sequential ops
 			"bcc 4f \n"
 
@@ -122,10 +122,10 @@ __attribute__((noinline)) void flush_vram_update2(){
 		"4: \n" // .LupdSingle:
 			"sta $2006 \n" // PPU_ADDR
 			"pla \n" //"lda (NAME_UPD_ADR),y \n" // address lo
-			"iny \n" 
+			//"iny \n" 
 			"sta $2006 \n" // PPU_ADDR
 			"pla \n" //"lda (NAME_UPD_ADR),y \n" // data
-			"iny \n" 
+			//"iny \n" 
 			"sta $2007 \n" // PPU_DATA 
 			"bne 2b \n" // always taken. Assumes index never wraps
 
@@ -143,10 +143,10 @@ __attribute__((noinline)) void flush_vram_update2(){
 
 			"sta $2006 \n" // PPU_ADDR
 			"pla \n" //"lda (NAME_UPD_ADR),y \n" // address lo
-			"iny \n" 
+			//"iny \n" 
 			"sta $2006 \n" // PPU_ADDR
 			"pla \n" //"lda (NAME_UPD_ADR),y \n" 
-			"iny \n" 
+			//"iny \n" 
 
 			// store size in counter
 			"tax \n"
@@ -155,15 +155,13 @@ __attribute__((noinline)) void flush_vram_update2(){
 
 			//"lda (NAME_UPD_ADR),y \n" // data
 			"pla \n"
-			"iny \n" 
+			//"iny \n" 
 			"sta $2007 \n" // PPU_DATA 
 			"dex \n"
 			"bne 7b \n"
 
 			"lda PPU_CTRL_VAR \n"
 			"sta $2000 \n"
-
-			
 
 			"jmp 2b \n"
 
