@@ -49,8 +49,11 @@
 //
 // Minor Version Number
 // increment by 1 for officially released patches.
-// does nothing if FLAG_BETA_BUILD is uncommented.
-#define FLAG_MIN_VER '3'
+#define FLAG_MIN_VER '2'
+//
+// Patch Version Number
+// increment by 1 for patches
+#define FLAG_PATCH_VER '8'
 // ============================================================
 
 
