@@ -137,7 +137,7 @@ vs-huge: OUTDIR = $(OUTDIR_PREFIX)/$@
 vs-huge: TMPDIR = $(TMPDIR_PREFIX)/$@
 
 vs-huge:
-	@echo Building HUGE...
+	@echo Building HUGE-VS...
 	@$(MAKE) build LEVELSET=$(LEVELSET) \
 	CC65_DEFINES="$(CC65_DEFINES)" \
 	CA65_DEFINES="$(CA65_DEFINES)" \
