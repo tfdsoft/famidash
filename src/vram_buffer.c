@@ -93,7 +93,7 @@ __attribute__((noinline)) void flush_vram_update2(){
 			"stx __rc3 \n" // save stack
 
 			// calculate stack offset
-			"ldx #$5f \n" // buffer is at $0160
+			"ldx #$3f \n" // buffer is at $0140
 			"txs \n"
 
 		"1: \n" // flush_vram_update2:
