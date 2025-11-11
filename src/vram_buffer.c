@@ -140,13 +140,28 @@ __attribute__((noinline)) void flush_vram_update2(){
 			"sta $2006 \n" // PPU_ADDR
 			"lda (NAME_UPD_ADR),y \n" 
 			"iny \n" 
+///*
+			// save important stuff
+			"sta __rc2 \n" // save size
+			"tsx \n"
+			"stx __rc3 \n" // save stack
 
+			// calculate stack offset
+			"tya \n"
+			"clc \n"
+			"adc #$5f \n" // buffer is at $0160
+			"tax \n"
+			"txs \n"
+
+			"lda __rc2 \n"
+//*/
 			// store size in counter
 			"tax \n"
 
 		"7: \n"	//.LupdNameLoop:
 
-			"lda (NAME_UPD_ADR),y \n" // data
+			//"lda (NAME_UPD_ADR),y \n" // data
+			"pla \n"
 			"iny \n" 
 			"sta $2007 \n" // PPU_DATA 
 			"dex \n"
@@ -154,6 +169,10 @@ __attribute__((noinline)) void flush_vram_update2(){
 
 			"lda PPU_CTRL_VAR \n"
 			"sta $2000 \n"
+
+			// restore stack
+			"ldx __rc3 \n"
+			"txs \n"
 
 			"jmp 2b \n"
 
