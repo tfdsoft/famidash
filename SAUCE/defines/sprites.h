@@ -3284,6 +3284,7 @@ const unsigned char * const Metasprites[]={
 	Skull_Trigger_1,
 	WHITE_ORB1,
 	Blue_Jump_Orb,
+	Green_Jump_Orb,
 	};
 
 
@@ -3417,6 +3418,7 @@ const void* const animation_frame_list[] = {
 	Skull_Open_Sprites,
 	WHITE_ORB_SPRITES,
 	BLUE_ORB_SPRITES,
+	GREEN_ORB_SPRITES,
 };
 
 // Number of UNIQUE animation frames
@@ -3549,6 +3551,7 @@ const unsigned char animation_frame_length[] = {
 	sizeof(Skull_Open_Sprites) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	sizeof(WHITE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
 	sizeof(BLUE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
+	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
 };
 
 #pragma rodata-name (pop)
