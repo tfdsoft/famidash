@@ -18285,12 +18285,3 @@ sprite_data_firetemple:
   .byte $30,$36,$70,$03,$b8
   .byte $f0,$36,$70,$03,$0f
   .byte $ff
-
-.segment "DAT_BANK_1F"
-sprite_data_test9:
-  .byte $80,$00,$60,$03,$7b
-  .byte $90,$00,$50,$03,$7d
-  .byte $00,$01,$60,$03,$05
-  .byte $90,$01,$60,$03,$0b
-  .byte $00,$02,$60,$03,$44
-  .byte $ff
