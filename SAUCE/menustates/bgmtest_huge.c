@@ -328,12 +328,12 @@ void state_soundtest() {
 				(mouse.left && ((mouse.x >= 0xD6 && mouse.x <= 0xDC) && (mouse.y >= 0x34 && mouse.y <= 0x42)))) && 
 			hold_timer >= 15))) { 
 				tempsong++; 
+				if (tempsong == song_max) {tempsong = 0;} 
 				if (tempsong == 4) tempsong = 5; 
 				temptemp6 = 0; 
-				if (tempsong == song_max) {tempsong = 0;} 
+				hold_timer = 0;
 				if (!queuemode) crossPRGBankJump0(update_text1);
 				else crossPRGBankJump0(update_text3);
-				hold_timer = 0;
 			}
 	if (joypad1.press_left || 
 			(mouse.left_press && ((mouse.x >= 0x1D && mouse.x <= 0x25) && (mouse.y >= 0x34 && mouse.y <= 0x42))) || 
@@ -344,9 +344,9 @@ void state_soundtest() {
 				else tempsong--; 
 				if (tempsong == 4) tempsong = 3; 
 				temptemp6 = 0; 
+				hold_timer = 0;
 				if (!queuemode) crossPRGBankJump0(update_text1);
 				else crossPRGBankJump0(update_text3);
-				hold_timer = 0;
 			}
 
 	if (!queuemode) {		//not queue mode

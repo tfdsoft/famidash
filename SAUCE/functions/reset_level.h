@@ -67,13 +67,6 @@ void reset_level() {
 	wrap_mode = 0;
 	force_platformer = 0;
 	player_invis = 0;
-	slope_type[0] = SLOPE_NONE;
-	slope_type[1] = SLOPE_NONE;
-	currplayer_slope_type = SLOPE_NONE;
-	last_slope_type[0] = SLOPE_NONE;
-	last_slope_type[1] = SLOPE_NONE;
-	currplayer_last_slope_type = SLOPE_NONE;
-	curr_practice_point = latest_practice_point;
 	robotjumpframe[0] = 0;
 	slope_frames[0] = 0;
 	slope_frames[1] = 0;
@@ -82,16 +75,38 @@ void reset_level() {
 	currplayer_slope_frames = 0;
 	make_cube_jump_higher = 0;
 
+	player_mini[0] = player_mini[1] = currplayer_mini = 0;
+	player_vel_x[0] = player_vel_x[1] = currplayer_vel_x = 0;
+	player_vel_y[0] = player_vel_y[1] = currplayer_vel_y = 0;
+	forced_trails = 0;
+	cube_rotate[0] = 0;
+	cube_rotate[1] = 0;
+	coins = 0;
+	orbactive = 0;
+	coin1_timer = coin2_timer = coin3_timer = 0;	
+#ifdef FLAG_KANDO_FUN_STUFF
+	tallmode = 0;
+	longmode = 0;
+	bigboi = 0;
+#endif	
+	slope_type[0] = SLOPE_NONE;
+	slope_type[1] = SLOPE_NONE;
+	currplayer_slope_type = SLOPE_NONE;
+	last_slope_type[0] = SLOPE_NONE;
+	last_slope_type[1] = SLOPE_NONE;
+	currplayer_last_slope_type = SLOPE_NONE;
+	curr_practice_point = latest_practice_point;
+
 	#if __VS_SYSTEM
 	if (!coins_inserted) return;
 	#endif
-
-	scroll_y_subpx = 0;
-	scroll_y = spawn_scroll_y_pos;
 	seam_scroll_y = (0x2EF - 0x78); // [temp]
 	set_scroll_x(scroll_x);
 	set_scroll_y(scroll_y);
 	init_rld(level);
+
+	scroll_y_subpx = 0;
+	scroll_y = spawn_scroll_y_pos;
 
 	if (!(options & platformer) && !force_platformer) {
 	player_x[0] = 0x0000;
@@ -112,7 +127,6 @@ void reset_level() {
 	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
 
 	currplayer_gravity = GRAVITY_DOWN;
-	//update_currplayer_table_idx();	;done again later on in this file
 
 	tmp1 = 0;
 	do {
@@ -120,23 +134,6 @@ void reset_level() {
 		activesprites_anim_frame[tmp1] = 0;
 	} while (++tmp1 < max_loaded_sprites);
 
-	player_mini[0] = player_mini[1] = currplayer_mini = 0;
-	player_vel_x[0] = player_vel_x[1] = currplayer_vel_x = 0;
-	player_vel_y[0] = player_vel_y[1] = currplayer_vel_y = 0;
-	forced_trails = 0;
-	cube_rotate[0] = 0;
-	cube_rotate[1] = 0;
-	coins = 0;
-	orbactive = 0;
-	coin1_timer = coin2_timer = coin3_timer = 0;
-	
-//	cube_data[0] = 0;
-//	cube_data[1] = 0;   this resets in level_loading/unrle_first_screen
-#ifdef FLAG_KANDO_FUN_STUFF
-	tallmode = 0;
-	longmode = 0;
-	bigboi = 0;
-#endif
 	target_scroll_y = 0x0180;
 	curr_x_scroll_stop = 0x5000;
 	target_x_scroll_stop = 0x5000;

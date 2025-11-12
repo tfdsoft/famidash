@@ -3160,17 +3160,17 @@ const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Ship, 
 	Portal_Gamemode_Ball, // ball
 	Portal_Gamemode_UFO, // ufo
-	Portal_Gamemode_Robot, // wave
-	Blue_Jump_Orb, // bobot
+	Portal_Gamemode_Robot, 
+	Blue_Jump_Orb, 
 	Pink_Jump_Orb, 
-	COIN_SPRITE, // swing
+	COIN_SPRITE, 
 	Portal_Gravity_Down,
 	Portal_Gravity_Up,
 	Yellow_Jump_Pad,
 	Yellow_Jump_Orb,
 	Yellow_Jump_Pad_U,
 	Gravity_Pad,
-	Gravity_Pad_U,	  //Coin Disappear
+	Gravity_Pad_U,	 
 	nometa, // end stage trigger
 
 	Portal_Gravity_Down_Horizontal_Downwards,
@@ -3183,11 +3183,11 @@ const unsigned char * const Metasprites[]={
 	Portal_Gamemode_Spider,
 	Mini_Portal,
 	Growth_Portal,
-	COIN_SPRITE, // swing
-	COIN_SPRITE, // swing
-	COIN_SPRITE_X, // swing
-	COIN_SPRITE_X, // swing
-	COIN_SPRITE_X, // swing
+	COIN_SPRITE,
+	COIN_SPRITE, 
+	COIN_SPRITE_X,
+	COIN_SPRITE_X,
+	COIN_SPRITE_X,
 	Yellow_Jump_Orb, //bigger jump orb
 
 	Speed_30_Portal,
@@ -3428,16 +3428,16 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	sizeof(BLUE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
-	sizeof(PINK_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
+	sizeof(BLUE_ORB_SPRITES) / sizeof(struct SpriteFrame),
+	sizeof(PINK_ORB_SPRITES) / sizeof(struct SpriteFrame),
 	sizeof(COIN_SPRITES) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	0, // Portal_Gravity_Down,
 	0, // Portal_Gravity_Up,
 	sizeof(YELLOW_PAD_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
-	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
+	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), 
 	sizeof(YELLOW_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad_U,
 	sizeof(GRAVITY_PAD_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad,
-	sizeof(GRAVITY_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
+	sizeof(GRAVITY_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	 
 	0, // nometa, // end stage trigger
 	
 	0, //horizontal portals
@@ -3455,35 +3455,18 @@ const unsigned char animation_frame_length[] = {
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
 	sizeof(COIN_SPRITES_X) / sizeof(struct SpriteFrame), // COIN_SPRITE
-	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
+	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), 
 
 	0,
 	0,
 	0,
 	0,
 	0,
-	sizeof(PINK_PAD_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad,
-	sizeof(PINK_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Gravity_Pad_U,	  //Coin Disappear
-	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
-	sizeof(RED_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,	
-	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
-	0,
+	sizeof(PINK_PAD_SPRITES) / sizeof(struct SpriteFrame), 
+	sizeof(PINK_PAD_U_SPRITES) / sizeof(struct SpriteFrame), 
+	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), 
+	sizeof(RED_ORB_SPRITES) / sizeof(struct SpriteFrame),
+	sizeof(YELLOW_ORB_SPRITES) / sizeof(struct SpriteFrame), 
 	0,
 	0,
 	0,
@@ -3507,10 +3490,7 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	0,
-	0,
-	sizeof(RED_PAD_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
-	sizeof(RED_PAD_U_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+
 	0,
 	0,
 	0,
@@ -3527,8 +3507,10 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	sizeof(RANDOM_GAMEMODE_PORTAL) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
-	sizeof(GREEN_PAD_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	0,
+	0,
+	sizeof(RED_PAD_SPRITES) / sizeof(struct SpriteFrame),
+	sizeof(RED_PAD_U_SPRITES) / sizeof(struct SpriteFrame), 
 	0,
 	0,
 	0,
@@ -3537,7 +3519,25 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	sizeof(MINI_COIN_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	sizeof(RANDOM_GAMEMODE_PORTAL) / sizeof(struct SpriteFrame), 
+	sizeof(GREEN_PAD_SPRITES) / sizeof(struct SpriteFrame),
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	sizeof(MINI_COIN_SPRITES) / sizeof(struct SpriteFrame), 
 	0,
 	0,
 	0,
@@ -3548,10 +3548,10 @@ const unsigned char animation_frame_length[] = {
 	0,
 	0,
 	0,
-	sizeof(Skull_Open_Sprites) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
-	sizeof(WHITE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Red_Jump_Pad,
-	sizeof(BLUE_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
-	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), // Yellow_Jump_Pad,
+	sizeof(Skull_Open_Sprites) / sizeof(struct SpriteFrame),
+	sizeof(WHITE_ORB_SPRITES) / sizeof(struct SpriteFrame),
+	sizeof(BLUE_ORB_SPRITES) / sizeof(struct SpriteFrame),
+	sizeof(GREEN_ORB_SPRITES) / sizeof(struct SpriteFrame), 
 };
 
 #pragma rodata-name (pop)

@@ -71,17 +71,17 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 			increment_attempt_count();
 		}
 	#endif
-	coins = 0;
-	outline_color = 0x30;	
 	cube_data[0] = 0;
 	cube_data[1] = 0;
-
-	dual = twoplayer ? 1 : 0;
-	player_gravity[0] = GRAVITY_DOWN;
+	coins = 0;
 	scroll_x = 0;
 	drawing_frame = 0;
 	gravity_mod = 0;
 	disco_sprites = 0;
+
+	outline_color = 0x30;	
+	dual = twoplayer ? 1 : 0;
+	player_gravity[0] = GRAVITY_DOWN;
 
 
 	mmc3_set_prg_bank_1(level_data_bank);
@@ -111,8 +111,6 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 			__asm__("bmi %g", unrle_first_screen_addition_loop);
 		parallax_scroll_column <<= 1;
 
-		//mmc3_set_prg_bank_1(GET_BANK(load_practice_state));
-		
 		crossPRGBankJump0(load_practice_state);	
 
 		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
@@ -123,9 +121,6 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 			i++;
 			uint32_inc(scroll_x);
 		} while (i != 0);
-		
-	//	memcpy(famistudio_state, practice_famistudio_state, sizeof(practice_famistudio_state));
-	
 	} 
 	else {
 		// To get the draw screen R to start in the left nametable, scroll must be negative.
@@ -157,10 +152,6 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 			multi_vram_buffer_horz((const char*)attempttext,sizeof(attempttext)-1,NTADR_C(6, 15));
 		#endif
 	
-//		if (TOTALATTEMPTSTHOUSANDS >= 10)
-//			multi_vram_buffer_horz((const char*)whartxt,sizeof(whartxt)-1,NTADR_C(15, 15));
-//
-//		else {
 			#ifdef level_luckydraw
 			
 			crossPRGBankJump0(Lucky_Draw_Text_Stuff);

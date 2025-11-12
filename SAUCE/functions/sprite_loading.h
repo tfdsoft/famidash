@@ -203,45 +203,6 @@ char sprite_load_special_behavior(){
 	#define killSprite_return0 activesprites_type[index] = 0xFF; return 0
 
 	#define type tmp4
-/*
-	//	color fading code
-	if ((type >= 0x80) && (type < 0xF0)){                //COLOR TRIGGERS ON LOADING    was type & 0x30 and tmp2 = (type & 0x3f)-10 for spots 0x10-0x70
-		if (!discomode) tmp2 = (type & 0x3F);                        
-		else { 
-			return 0x00;
-		}
-		tmp3 = oneShadeDarker(tmp2);
-		if (type >= 0xC0) {
-			original_gnd_palette_idx_0 = 5;
-			original_gnd_palette_idx_1 = 6;
-			original_gnd_palette_color_0 = PAL_BUF[5];
-			original_gnd_palette_color_1 = PAL_BUF[6];
-			pal_col(5, tmp3);
-			pal_col(6, tmp2);
-			lastgcolortype = type;
-			gnd_palette_transition_timer = current_transition_timer_length;
-		} else {
-			original_bg_palette_idx_0 = 0;
-			original_bg_palette_idx_1 = 1;
-			original_bg_palette_idx_2 = 9;
-			original_bg_palette_color_0 = PAL_BUF[0];
-			original_bg_palette_color_1 = PAL_BUF[1];
-			original_bg_palette_color_2 = PAL_BUF[9];
-			pal_col(0, tmp2);
-			pal_col(1, tmp3);
-			pal_col(9, tmp3);
-			lastbgcolortype = type;
-			bg_palette_transition_timer = current_transition_timer_length;
-		}
-		pal_set_update();
-		activesprites_type[index] = 0xFF; 
-		return 0x00;
-	}
-	else if (type == 0xFA) {
-				current_transition_timer_length = ((0xb0 - low_byte(Generic2.y)) >> 3) & 0x1e; // force it to be even
-				activesprites_type[index] = 0xFF;
-	}
-	*/
 
 	switch(type) {
 		#ifdef FLAG_KANDO_FUN_STUFF	
@@ -1010,21 +971,18 @@ void sprite_collide_lookup() {
 		settrailstuff();
 		table_offset = yellow_pad;
 		currplayer_vel_y = sprite_gamemode_y_adjust();
-		//idx8_inc(activesprites_activated, index);	
 		return;
 	spcl_pinkpad:
 		clear_slope_stuff();
 		settrailstuff();
 		table_offset = pink_pad;
 		currplayer_vel_y = sprite_gamemode_y_adjust();
-		//idx8_inc(activesprites_activated, index);	
 		return;
 	spcl_red_pad:
 		clear_slope_stuff();
 		settrailstuff();
 		table_offset = red_pad;
 		currplayer_vel_y = sprite_gamemode_y_adjust();
-		//idx8_inc(activesprites_activated, index);	
 		return;
 
 	spcl_grn_pad:
@@ -1045,7 +1003,6 @@ void sprite_collide_lookup() {
 			currplayer_gravity = GRAVITY_UP;				//flip gravity
 			update_currplayer_table_idx();
 			currplayer_vel_y = PAD_HEIGHT_BLUE(currplayer_table_idx);
-			//invincible_counter = 3;
 		}
 		idx8_inc(activesprites_activated, index);
 		return;
