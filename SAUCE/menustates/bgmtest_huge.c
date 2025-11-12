@@ -1,14 +1,15 @@
 void mouse_and_cursor();
 void lvl_done_update();
 void refresh_queue_screen();
-void text_stuff();
 void play_next_queue();
+void text_stuff();
 void update_text1();
 void update_text2();
 void update_text3();
 
 
-CODE_BANK_PUSH("XCD_BANK_09")
+
+CODE_BANK_PUSH("XCD_BANK_10")
 
 const unsigned char state_soundtestscreen[468]={
 0x01,0x02,0x01,0x04,0xae,0x02,0x01,0x13,0xae,0x02,0x01,0x09,0xaf,0x02,0x01,0x13,
@@ -74,7 +75,6 @@ const unsigned char SoundQueue[416]={
 0x44,0x55,0x00,0x01,0x05,0x45,0x07,0x05,0x05,0x0d,0x07,0x05,0x05,0x0d,0x01,0x00
 };
 
-
 void unrle_bgm1() {
 	vram_adr(NAMETABLE_A);
 	vram_unrle(state_soundtestscreen);  
@@ -83,6 +83,18 @@ void unrle_bgm2() {
 	vram_adr(NAMETABLE_A);
 	vram_unrle(SoundQueue);  
 }
+
+CODE_BANK_POP()
+CODE_BANK_PUSH("XCD_BANK_09")
+
+#include "defines/charmap/bgm_charmap.h"
+#include "music_soundTestTables.h"
+#include "sfx_soundTestTables.h"
+
+
+
+
+
 
 
 
@@ -115,179 +127,6 @@ void check_if_music_stopped_huge() {
 		}
 	}
 }	
-
-CODE_BANK_POP()
-CODE_BANK_PUSH("XCD_BANK_07")
-
-
-void refreshmenu();
-void refreshmenu_part2();
-void code_checker();
-void set_fun_settings();
-
-
-#include "defines/charmap/bgm_charmap.h"
-#include "music_soundTestTables.h"
-#include "sfx_soundTestTables.h"
-
-
-#include "defines/charmap/bgm_charmap.h"
-
-
-
-
-
-void state_soundtest() {
-  	famistudio_music_stop();
-  	music_update();
-
-	pal_bg(paletteMenu);
-
-	tempsong = 0;
-	temptemp6 = 0; 	
-	#define sfx tmp4
-	sfx = 0;
-	settingvalue = 0;
-//	menuMusicCurrentlyPlaying=0;
-	crossPRGBankJump0(unrle_bgm1); 	
-	update_text1();
-	
-	ppu_on_all();
-	pal_fade_in();
-	
-	while (1) {
-		//rand8();
-		ppu_wait_nmi();
-		oam_clear();
-		crossPRGBankJump0(check_if_music_stopped_huge);
-		 // read the first controller
-		 crossPRGBankJump0(mouse_and_cursor);
-		kandoframecnt++;
-		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
-		if (tmp4) refresh_queue_screen();
-		if (tmp5) {
-			__A__ = idx16_load_hi_NOC(xbgmtextsCoveringArtist1, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist1[tempsong], xbgmtextsCoveringArtist1Size[tempsong], 14, NTADR_A(9, 19));
-			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 19));
-			__A__ = idx16_load_hi_NOC(xbgmtextsCoveringArtist2, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist2[tempsong], xbgmtextsCoveringArtist2Size[tempsong], 14, NTADR_A(9, 20));
-			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 20));
-			__A__ = idx16_load_hi_NOC(xbgmtextsCoveringArtist3, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist3[tempsong], xbgmtextsCoveringArtist3Size[tempsong], 14, NTADR_A(9, 21));
-			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 21));
-			__A__ = idx16_load_hi_NOC(xbgmtextsCoveringArtist4, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist4[tempsong], xbgmtextsCoveringArtist4Size[tempsong], 14, NTADR_A(9, 22));
-			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 22));
-			tmp5 = 0;
-		}
-
-	if (joypad1.press_right || joypad1.press_left || mouse.left_press) hold_timer = 0;
-	if (joypad1.press_right || 
-			(mouse.left_press && ((mouse.x >= 0xD6 && mouse.x <= 0xDC) && (mouse.y >= 0x34 && mouse.y <= 0x42))) || 
-			(((joypad1.right || 
-				(mouse.left && ((mouse.x >= 0xD6 && mouse.x <= 0xDC) && (mouse.y >= 0x34 && mouse.y <= 0x42)))) && 
-					hold_timer >= 15))) { 
-						tempsong++; 
-						if (tempsong == 4) tempsong = 5; 
-						temptemp6 = 0; 
-						if (tempsong == song_max) {tempsong = 0;} 
-						if (!queuemode) update_text1(); 
-						else update_text3(); 
-						hold_timer = 0;
-					}
-	if (joypad1.press_left || 
-			(mouse.left_press && ((mouse.x >= 0x1D && mouse.x <= 0x25) && (mouse.y >= 0x34 && mouse.y <= 0x42))) || 
-			(((joypad1.left || 
-				(mouse.left && ((mouse.x >= 0x1D && mouse.x <= 0x25) && (mouse.y >= 0x34 && mouse.y <= 0x42)))) && 
-					hold_timer >= 15))) { 	
-						if (tempsong == 0) tempsong = song_max - 1;
-						else tempsong--; 
-						if (tempsong == 4) tempsong = 3; 
-						temptemp6 = 0; 
-						if (!queuemode) update_text1(); 
-						else update_text3();  
-						hold_timer = 0;
-				}
-
-	if (!queuemode) {		//not queue mode
-		if (joypad1.press_b || mouse.right_press) {
-			tmp3--;			
-			one_vram_buffer(' ', NTADR_A(11, 7));
-			one_vram_buffer(' ', NTADR_A(11, 14));
-			//menuMusicCurrentlyPlaying = 1;
-			gameState = STATE_MENU;
-			return;
-		}
-		if (joypad1.press_a || (mouse.left_press && ((mouse.x >= 0x2E && mouse.x <= 0xCD) && (mouse.y >= 0x2B && mouse.y <= 0x4B)))) {
-				song = tempsong;
-				if (!temptemp6) { music_play(xbgmlookuptable[song]); temptemp6 = 1; songplaying = 1; }
-				else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
-		}					
-		if (joypad1.press_select) { 
-			ppu_off();
-			crossPRGBankJump0(unrle_bgm2); 	   	
-			ppu_on_all();
-			queuemode = 1;
-			update_text2();
-			update_text3();
-		}
-	}
-	else {					//queue mode
-		if (joypad1.press_select) { 
-			ppu_off();
-			crossPRGBankJump0(unrle_bgm1);
-			ppu_on_all();
-			queuemode = 0;
-			update_text1();
-		}	
-		if (joypad1.press_up) {
-				crossPRGBankJump0(play_next_queue);		//debug
-		}
-		if (joypad1.press_a) {
-			if (music_queue[0] == 0xFF) { 
-				song = tempsong;
-				music_play(xbgmlookuptable[song]); 
-				music_queue[0] = song;
-				songplaying = 1;
-				update_text2();
-			}
-			else {
-				for (tmp1 = 1; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {
-					if (music_queue[tmp1] == 0xFF) {
-						music_queue[tmp1] = tempsong;
-						break;
-					}
-				}
-				if (music_queue[10] == 0xFF) update_text2();
-			}
-		}
-		if (joypad1.press_b) {
-			if (music_queue[0] == 0xFF) { }
-			else if (music_queue[1] == 0xFF) { 
-					music_queue[0] = 0xFF;
-					refresh_queue_screen();
-					tmp4 = 2;
-					famistudio_music_stop();
-					songplaying = 0;
-			}
-			else {
-				for (tmp1 = MAX_SONG_QUEUE_SIZE - 1; tmp1--; tmp1 > 0) {
-					if (music_queue[tmp1] != 0xFF) {
-						music_queue[tmp1] = 0xFF;
-						refresh_queue_screen();
-						tmp4 = 2;
-						break;
-					}
-				}
-			}
-		}
-	}				
-		
-		// sound test codes
-	if (hold_timer < 15) hold_timer++;	
-	}
-}
-
 
 void refresh_queue_screen() {
 	switch (tmp4) {
@@ -322,7 +161,7 @@ void refresh_queue_screen() {
 			for (tmp1 = 4; tmp1 < 6; tmp1++) {			//limited to 5??
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			if (music_queue[tmp1] != 0xFF) {
-				text_stuff();			
+				crossPRGBankJump0(text_stuff);			
 			}
 			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			tmp4 = 4;
@@ -332,7 +171,7 @@ void refresh_queue_screen() {
 			for (tmp1 = 6; tmp1 < 8; tmp1++) {			//limited to 5??
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			if (music_queue[tmp1] != 0xFF) {
-				text_stuff();			
+				crossPRGBankJump0(text_stuff);			
 			}
 			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			tmp4 = 5;
@@ -342,7 +181,7 @@ void refresh_queue_screen() {
 			for (tmp1 = 8; tmp1 < 10; tmp1++) {			//limited to 5??
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			if (music_queue[tmp1] != 0xFF) {
-				text_stuff();			
+				crossPRGBankJump0(text_stuff);			
 			}
 			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 			}
@@ -390,7 +229,7 @@ void update_text2() {
 	for (tmp1 = 0; tmp1 < 2; tmp1++) {			//limited to 5??
 		if (music_queue[tmp1] != 0xFF) {
 			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			text_stuff();
+			crossPRGBankJump0(text_stuff);
 		}
 		else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
 	}	
@@ -398,7 +237,21 @@ void update_text2() {
 	tmp4 = 2;
 }	
 
-
+void update_covering_artists() {
+			__A__ = idx16_load_hi_NOC(xbgmtextsCoveringArtist1, tempsong);
+			if (__A__) draw_padded_text(xbgmtextsCoveringArtist1[tempsong], xbgmtextsCoveringArtist1Size[tempsong], 14, NTADR_A(9, 19));
+			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 19));
+			__A__ = idx16_load_hi_NOC(xbgmtextsCoveringArtist2, tempsong);
+			if (__A__) draw_padded_text(xbgmtextsCoveringArtist2[tempsong], xbgmtextsCoveringArtist2Size[tempsong], 14, NTADR_A(9, 20));
+			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 20));
+			__A__ = idx16_load_hi_NOC(xbgmtextsCoveringArtist3, tempsong);
+			if (__A__) draw_padded_text(xbgmtextsCoveringArtist3[tempsong], xbgmtextsCoveringArtist3Size[tempsong], 14, NTADR_A(9, 21));
+			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 21));
+			__A__ = idx16_load_hi_NOC(xbgmtextsCoveringArtist4, tempsong);
+			if (__A__) draw_padded_text(xbgmtextsCoveringArtist4[tempsong], xbgmtextsCoveringArtist4Size[tempsong], 14, NTADR_A(9, 22));
+			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 22));
+			tmp5 = 0;
+}
 
 
 
@@ -416,5 +269,169 @@ void text_stuff() {
 		one_vram_buffer_horz_repeat('$', 7, NTADR_A((3 + xbgmtextsLowerSize[tmp3]), (13 + (tmp1))));
 
 	}	
-}				
+}	
+
+CODE_BANK_POP()
+CODE_BANK_PUSH("XCD_BANK_07")
+
+
+void refreshmenu();
+void refreshmenu_part2();
+void code_checker();
+void set_fun_settings();
+
+
+
+
+#include "defines/charmap/bgm_charmap.h"
+
+
+
+
+
+void state_soundtest() {
+  	famistudio_music_stop();
+  	music_update();
+
+	pal_bg(paletteMenu);
+
+	tempsong = 0;
+	temptemp6 = 0; 	
+	#define sfx tmp4
+	sfx = 0;
+	settingvalue = 0;
+//	menuMusicCurrentlyPlaying=0;
+	crossPRGBankJump0(unrle_bgm1); 	
+	crossPRGBankJump0(update_text1);
+	
+	ppu_on_all();
+	pal_fade_in();
+	
+	while (1) {
+		//rand8();
+		ppu_wait_nmi();
+		oam_clear();
+		crossPRGBankJump0(check_if_music_stopped_huge);
+		 // read the first controller
+		 crossPRGBankJump0(mouse_and_cursor);
+		kandoframecnt++;
+		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
+		if (tmp4) crossPRGBankJump0(refresh_queue_screen);
+		if (tmp5) {
+				crossPRGBankJump0(update_covering_artists);
+		}
+
+	if (joypad1.press_right || joypad1.press_left || mouse.left_press) hold_timer = 0;
+	if (joypad1.press_right || 
+			(mouse.left_press && ((mouse.x >= 0xD6 && mouse.x <= 0xDC) && (mouse.y >= 0x34 && mouse.y <= 0x42))) || 
+			(((joypad1.right || 
+				(mouse.left && ((mouse.x >= 0xD6 && mouse.x <= 0xDC) && (mouse.y >= 0x34 && mouse.y <= 0x42)))) && 
+					hold_timer >= 15))) { 
+						tempsong++; 
+						if (tempsong == 4) tempsong = 5; 
+						temptemp6 = 0; 
+						if (tempsong == song_max) {tempsong = 0;} 
+						if (!queuemode) crossPRGBankJump0(update_text1);
+						else crossPRGBankJump0(update_text3);
+						hold_timer = 0;
+					}
+	if (joypad1.press_left || 
+			(mouse.left_press && ((mouse.x >= 0x1D && mouse.x <= 0x25) && (mouse.y >= 0x34 && mouse.y <= 0x42))) || 
+			(((joypad1.left || 
+				(mouse.left && ((mouse.x >= 0x1D && mouse.x <= 0x25) && (mouse.y >= 0x34 && mouse.y <= 0x42)))) && 
+					hold_timer >= 15))) { 	
+						if (tempsong == 0) tempsong = song_max - 1;
+						else tempsong--; 
+						if (tempsong == 4) tempsong = 3; 
+						temptemp6 = 0; 
+						if (!queuemode) crossPRGBankJump0(update_text1);
+						else crossPRGBankJump0(update_text3);
+						hold_timer = 0;
+				}
+
+	if (!queuemode) {		//not queue mode
+		if (joypad1.press_b || mouse.right_press ||
+			(mouse.left_press && ((mouse.x >= 0x37 && mouse.x <= 0xAC) && (mouse.y >= 0xD3 && mouse.y <= 0xDB)))
+		) {
+			tmp3--;			
+			one_vram_buffer(' ', NTADR_A(11, 7));
+			one_vram_buffer(' ', NTADR_A(11, 14));
+			//menuMusicCurrentlyPlaying = 1;
+			gameState = STATE_MENU;
+			return;
+		}
+		if (joypad1.press_a || (mouse.left_press && ((mouse.x >= 0x2E && mouse.x <= 0xCD) && (mouse.y >= 0x2B && mouse.y <= 0x4B)))) {
+				song = tempsong;
+				if (!temptemp6) { music_play(xbgmlookuptable[song]); temptemp6 = 1; songplaying = 1; }
+				else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
+		}					
+		if (joypad1.press_select ||
+			(mouse.left_press && ((mouse.x >= 0x26 && mouse.x <= 0xDD) && (mouse.y >= 0xC3 && mouse.y <= 0xCB)))
+		) { 
+			ppu_off();
+			crossPRGBankJump0(unrle_bgm2); 	   	
+			ppu_on_all();
+			queuemode = 1;
+			crossPRGBankJump0(update_text2);
+			crossPRGBankJump0(update_text3);
+		}
+	}
+	else {					//queue mode
+		if (joypad1.press_select) { 
+			ppu_off();
+			crossPRGBankJump0(unrle_bgm1);
+			ppu_on_all();
+			queuemode = 0;
+			crossPRGBankJump0(update_text1);
+		}	
+		if (joypad1.press_up) {
+				crossPRGBankJump0(play_next_queue);		//debug
+		}
+		if (joypad1.press_a) {
+			if (music_queue[0] == 0xFF) { 
+				song = tempsong;
+				music_play(xbgmlookuptable[song]); 
+				music_queue[0] = song;
+				songplaying = 1;
+				crossPRGBankJump0(update_text2);
+			}
+			else {
+				for (tmp1 = 1; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {
+					if (music_queue[tmp1] == 0xFF) {
+						music_queue[tmp1] = tempsong;
+						break;
+					}
+				}
+				if (music_queue[10] == 0xFF) crossPRGBankJump0(update_text2);
+			}
+		}
+		if (joypad1.press_b) {
+			if (music_queue[0] == 0xFF) { }
+			else if (music_queue[1] == 0xFF) { 
+					music_queue[0] = 0xFF;
+					crossPRGBankJump0(refresh_queue_screen);
+					tmp4 = 2;
+					famistudio_music_stop();
+					songplaying = 0;
+			}
+			else {
+				for (tmp1 = MAX_SONG_QUEUE_SIZE - 1; tmp1--; tmp1 > 0) {
+					if (music_queue[tmp1] != 0xFF) {
+						music_queue[tmp1] = 0xFF;
+						crossPRGBankJump0(refresh_queue_screen);
+						tmp4 = 2;
+						break;
+					}
+				}
+			}
+		}
+	}				
+		
+		// sound test codes
+	if (hold_timer < 15) hold_timer++;	
+	}
+}
+
+
+			
 CODE_BANK_POP()
