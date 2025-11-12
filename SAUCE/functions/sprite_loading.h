@@ -249,7 +249,7 @@ char sprite_load_special_behavior(){
 				gravity_mod = 0;
 				killSprite_return0;
 			case NULLSCAPES_ORB:
-				nullscapes_active = 1;
+				nullscapes_active++;
 				killSprite_return0;
 		#endif
 		case FORCED_FREECAM_ON:

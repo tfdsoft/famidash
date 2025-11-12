@@ -100,13 +100,19 @@ void draw_sprites(){
 							activesprites_type[index] = RED_ORB;
 							break;
 					case 1:	
-							activesprites_type[index] = BLUE_ORB;
+							activesprites_type[index] = BLUE_ORB_MULTI;
 							break;
 					case 2:	
 							activesprites_type[index] = YELLOW_ORB;
 							break;
 					case 3:	
 							activesprites_type[index] = BLACK_ORB;
+							break;
+					case 4:	
+							activesprites_type[index] = GREEN_ORB_MULTI;
+							break;
+					case 5:	
+							activesprites_type[index] = PINK_ORB;
 							break;
 				};
 			}

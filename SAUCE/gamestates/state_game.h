@@ -383,7 +383,8 @@ void everything_else() {
 			set_player_banks();
 
 			if (!(kandoframecnt & 7)) nullscapes_orb_type++;
-			if (nullscapes_orb_type == 4) nullscapes_orb_type = 0;
+			if (nullscapes_active == 1 && nullscapes_orb_type == 4) nullscapes_orb_type = 0;
+			else if (nullscapes_active == 2 && nullscapes_orb_type == 6) nullscapes_orb_type = 0;
 
 			if (!kandodebugmode) {
 				// crossPRGBankJump0(mouse_update);
