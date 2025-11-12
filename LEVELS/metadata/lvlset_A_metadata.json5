@@ -2472,7 +2472,7 @@
 					
 			],
 		},
-		{
+/*		{
 			level: "test9",
 			lowerText: "TEST8",
 			decoType: "DECO1",
@@ -2487,7 +2487,7 @@
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
 			parallaxDisable: false
-		}, 
+		},  */
 	],
 	globalObjectOffsets: [
 		/*	Format:

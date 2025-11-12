@@ -59,7 +59,7 @@ uint8_t sprite_heights[]={
 	0x34,	0x34,	0x34,	0x34,	0x34,	0x02,	0x10,	SPBH,	// 60 - 67
 	0x10,	SPBH,	0x34,	0x34,	0x34,	0x20,	0x08,	SPBH,	// 68 - 6F
 	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x10,	SPBH,	0x10,	// 70 - 77
-	SPBH,	0x12,	0x12,	0x00,	0x00,	0x00,	SPBH,	SPBH,	// 78 - 7F
+	SPBH,	0x12,	0x12,	0x12,	0x00,	0x00,	SPBH,	SPBH,	// 78 - 7F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	SPBH,	COLR,	// 88 - 8F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 90 - 97
@@ -166,7 +166,7 @@ int8_t sprite_y_offset[]={
 	-0x02,	-0x02,	-0x02,	-0x02,	-0x02,	0x00,	0x00,	0x00,	// 60 - 67
 	0x00,	0x00,	-0x02,	-0x02,	-0x02,	0x00,	0x04,	0x00,	// 68 - 6F
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 70 - 77
-	0x00,	-0x01,	-0x01,	0x00,	0x00,	0x00,	0x00,	0x00,	// 78 - 7F
+	0x00,	-0x01,	-0x01,	-0x01,	0x00,	0x00,	0x00,	0x00,	// 78 - 7F
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 80 - 87
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 88 - 8F
 	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	0x00,	// 90 - 97
@@ -470,6 +470,7 @@ static void sprite_gamemode_main() {
 			clear_slope_stuff();
 
 			switch (collided) {
+			case BLUE_ORB_MULTI:
 			case BLUE_ORB:
 				if (!activesprites_activated[index]) {
 					invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
@@ -541,7 +542,7 @@ static void sprite_gamemode_main() {
 				currplayer_vel_y = sprite_gamemode_y_adjust();
 				//break;
 			};
-		idx8_inc(activesprites_activated, index);			
+		if (activesprites_type[index] != 0x7B) idx8_inc(activesprites_activated, index);			
 		}
 	}
 }
@@ -551,6 +552,7 @@ static void sprite_gamemode_controller_check() {
 		idx8_store(cube_data, currplayer, cube_data[currplayer] & 0x01);
 		settrailstuff();
 		switch (collided) {
+		case BLUE_ORB_MULTI:
 		case BLUE_ORB:
 			if (!activesprites_activated[index]) {
 				invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
@@ -625,7 +627,7 @@ static void sprite_gamemode_controller_check() {
 			currplayer_vel_y = sprite_gamemode_y_adjust();
 			//break;
 		};
-	idx8_inc(activesprites_activated, index);
+	if (activesprites_type[index] != 0x7B) idx8_inc(activesprites_activated, index);
 	}
 }
 
@@ -665,7 +667,7 @@ void sprite_collide_lookup() {
 		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
-		&&spcl_default,	&&spcl_skl_orb,	&&spcl_wht_orb,	&&spcl_default,	// 0x78 - 0x7B
+		&&spcl_default,	&&spcl_skl_orb,	&&spcl_wht_orb,	&&spcl_orb_cmn,	// 0x78 - 0x7B
 		&&spcl_default,	&&spcl_default,	&&spcl_default //,	&&spcl_default	// 0x7C - 0x7F
 	};
 	static void * const sprite_collide_jump_table_1[] = {
