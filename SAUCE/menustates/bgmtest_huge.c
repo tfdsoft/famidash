@@ -376,18 +376,25 @@ void state_soundtest() {
 			crossPRGBankJump0(update_text3);
 		}
 	}
-	else {					//queue mode
-		if (joypad1.press_select) { 
+	else {											//queue mode
+		if (joypad1.press_select ||
+			(mouse.left_press && ((mouse.x >= 0x26 && mouse.x <= 0xDD) && (mouse.y >= 0xBC && mouse.y <= 0xC3)))			//exit queue		
+		) { 
 			ppu_off();
 			crossPRGBankJump0(unrle_bgm1);
 			ppu_on_all();
 			queuemode = 0;
 			crossPRGBankJump0(update_text1);
 		}	
-		if (joypad1.press_up) {
+
+		if (joypad1.press_up ||
+			(mouse.left_press && ((mouse.x >= 0x0E && mouse.x <= 0xED) && (mouse.y >= 0x5A && mouse.y <= 0xB8)))
+		) {
 				crossPRGBankJump0(play_next_queue);		//debug
 		}
-		if (joypad1.press_a) {
+
+
+		if (joypad1.press_a || (mouse.left_press && ((mouse.x >= 0x2E && mouse.x <= 0xCD) && (mouse.y >= 0x2B && mouse.y <= 0x4B)))) {
 			if (music_queue[0] == 0xFF) { 
 				song = tempsong;
 				music_play(xbgmlookuptable[song]); 
@@ -405,7 +412,7 @@ void state_soundtest() {
 				if (music_queue[10] == 0xFF) crossPRGBankJump0(update_text2);
 			}
 		}
-		if (joypad1.press_b) {
+		if (joypad1.press_b || mouse.right_press) {
 			if (music_queue[0] == 0xFF) { }
 			else if (music_queue[1] == 0xFF) { 
 					music_queue[0] = 0xFF;
