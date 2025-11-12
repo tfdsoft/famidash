@@ -1,3 +1,4 @@
+void mouse_and_cursor();
 void lvl_done_update();
 void refresh_queue_screen();
 void text_stuff();
@@ -160,6 +161,7 @@ void state_soundtest() {
 		oam_clear();
 		crossPRGBankJump0(check_if_music_stopped_huge);
 		 // read the first controller
+		 crossPRGBankJump0(mouse_and_cursor);
 		kandoframecnt++;
 		if (kandoframecnt & 1 && mouse_timer) mouse_timer--;	
 		if (tmp4) refresh_queue_screen();
@@ -179,12 +181,36 @@ void state_soundtest() {
 			tmp5 = 0;
 		}
 
-	if (joypad1.press_right || joypad1.press_left) hold_timer = 0;
-	if (joypad1.press_right || (joypad1.right && hold_timer >= 15)) { tempsong++; if (tempsong == 4) tempsong = 5; temptemp6 = 0; if (tempsong == song_max) {tempsong = 0;} if (!queuemode) update_text1(); else update_text3(); hold_timer = 0;}
-	if (joypad1.press_left || (joypad1.left && hold_timer >= 15)) { if (tempsong == 0) {tempsong = song_max - 1;} else tempsong--; if (tempsong == 4) tempsong = 3; temptemp6 = 0; if (!queuemode) update_text1(); else update_text3();  hold_timer = 0;}
+	if (joypad1.press_right || joypad1.press_left || mouse.left_press) hold_timer = 0;
+	if (joypad1.press_right || 
+			(mouse.left_press && ((mouse.x >= 0xD6 && mouse.x <= 0xDC) && (mouse.y >= 0x34 && mouse.y <= 0x42))) || 
+			(((joypad1.right || 
+				(mouse.left && ((mouse.x >= 0xD6 && mouse.x <= 0xDC) && (mouse.y >= 0x34 && mouse.y <= 0x42)))) && 
+					hold_timer >= 15))) { 
+						tempsong++; 
+						if (tempsong == 4) tempsong = 5; 
+						temptemp6 = 0; 
+						if (tempsong == song_max) {tempsong = 0;} 
+						if (!queuemode) update_text1(); 
+						else update_text3(); 
+						hold_timer = 0;
+					}
+	if (joypad1.press_left || 
+			(mouse.left_press && ((mouse.x >= 0x1D && mouse.x <= 0x25) && (mouse.y >= 0x34 && mouse.y <= 0x42))) || 
+			(((joypad1.left || 
+				(mouse.left && ((mouse.x >= 0x1D && mouse.x <= 0x25) && (mouse.y >= 0x34 && mouse.y <= 0x42)))) && 
+					hold_timer >= 15))) { 	
+						if (tempsong == 0) tempsong = song_max - 1;
+						else tempsong--; 
+						if (tempsong == 4) tempsong = 3; 
+						temptemp6 = 0; 
+						if (!queuemode) update_text1(); 
+						else update_text3();  
+						hold_timer = 0;
+				}
 
 	if (!queuemode) {		//not queue mode
-		if (joypad1.press_b) {
+		if (joypad1.press_b || mouse.right_press) {
 			tmp3--;			
 			one_vram_buffer(' ', NTADR_A(11, 7));
 			one_vram_buffer(' ', NTADR_A(11, 14));
@@ -192,7 +218,7 @@ void state_soundtest() {
 			gameState = STATE_MENU;
 			return;
 		}
-		if (joypad1.press_a) {
+		if (joypad1.press_a || (mouse.left_press && ((mouse.x >= 0x2E && mouse.x <= 0xCD) && (mouse.y >= 0x2B && mouse.y <= 0x4B)))) {
 				song = tempsong;
 				if (!temptemp6) { music_play(xbgmlookuptable[song]); temptemp6 = 1; songplaying = 1; }
 				else { famistudio_music_stop(); music_update(); temptemp6 = 0; songplaying = 0; }
