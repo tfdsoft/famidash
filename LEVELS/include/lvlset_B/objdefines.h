@@ -134,6 +134,7 @@
 #define WHITE_ORB				0x7A
 #define BLUE_ORB_MULTI			0x7B
 #define GREEN_ORB_MULTI			0x7C
+#define NULLSCAPES_ORB			0x7D
 
 #define PLAYER_INVIS_OFF			0x7F
 #define WRAP_MODE_ON				0x8E

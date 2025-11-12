@@ -382,6 +382,9 @@ void everything_else() {
 		
 			set_player_banks();
 
+			if (!(kandoframecnt & 7)) nullscapes_orb_type++;
+			if (nullscapes_orb_type == 4) nullscapes_orb_type = 0;
+
 			if (!kandodebugmode) {
 				// crossPRGBankJump0(mouse_update);
 				// pad_poll(0); // read the first controller

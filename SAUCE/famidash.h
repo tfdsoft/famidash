@@ -291,6 +291,9 @@ uint8_t practice_bg_color_type[MAX_PRACTICE_POINTS];
 //uint8_t practice_trail_sprites_visible[9];
 //uint8_t practice_player_old_posy[9];
 uint8_t practice_orbactive[MAX_PRACTICE_POINTS];
+uint8_t practice_nullscapes_active[MAX_PRACTICE_POINTS];
+uint8_t practice_nullscapes_orb_type[MAX_PRACTICE_POINTS];
+uint8_t practice_kandoframecnt[MAX_PRACTICE_POINTS];
 
 uint8_t practice_song[MAX_PRACTICE_POINTS];
 uint8_t practice_player_invis[MAX_PRACTICE_POINTS];
@@ -395,6 +398,8 @@ uint8_t nocamlock;
 uint8_t nocamlockforced;
 uint8_t nestopia;
 
+uint8_t nullscapes_orb_type;
+uint8_t nullscapes_active;
 
 uint8_t last_slope_type[2];
 

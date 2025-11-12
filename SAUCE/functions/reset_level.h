@@ -65,6 +65,8 @@ void reset_level() {
 	black_orbed[1] = 0;
 	slowmode = 0;
 	wrap_mode = 0;
+	nullscapes_active = 0;
+	nullscapes_orb_type = 0;
 	force_platformer = 0;
 	player_invis = 0;
 	robotjumpframe[0] = 0;

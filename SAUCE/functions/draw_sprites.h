@@ -88,6 +88,32 @@ void draw_sprites(){
 		#define animation_ptr tmpptr1
 		#define animation_data_ptr tmpptr2
 		
+
+		if (nullscapes_active) {
+			if (activesprites_type[index] == YELLOW_ORB ||
+			activesprites_type[index] == RED_ORB ||
+			activesprites_type[index] == BLACK_ORB ||
+			activesprites_type[index] == BLUE_ORB) {
+
+				switch (nullscapes_orb_type) {
+					case 0:	
+							activesprites_type[index] = RED_ORB;
+							break;
+					case 1:	
+							activesprites_type[index] = BLUE_ORB;
+							break;
+					case 2:	
+							activesprites_type[index] = YELLOW_ORB;
+							break;
+					case 3:	
+							activesprites_type[index] = BLACK_ORB;
+							break;
+				};
+			}
+		}						
+		
+
+
 		needs_reload = 0;
 		spr_type = activesprites_type[index];
 		animation_ptr = (unsigned char *)animation_frame_list[spr_type & 0x7F];
@@ -108,6 +134,7 @@ void draw_sprites(){
 
 				// if the animation frame is past the length, wrap it around back to zero
 				if (animation_frame >= animation_frame_length[spr_type]) {
+				
 					if (activesprites_type[index] != SKULL_ORB) {
 						activesprites_anim_frame[index] = 0;
 						animation_frame = 0;

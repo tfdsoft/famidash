@@ -78,10 +78,13 @@ void store_practice_state(){
 	idx8_store(practice_g_color_type, get_Y, lastgcolortype);
 	idx8_store(practice_outline_color, get_Y, outline_color);
 	idx8_store(practice_orbactive, get_Y, orbactive);
+	idx8_store(practice_nullscapes_active, get_Y, nullscapes_active);
+	idx8_store(practice_nullscapes_orb_type, get_Y, nullscapes_orb_type);
 	idx8_store(practice_disco_sprites, get_Y, disco_sprites);
 	idx8_store(practice_slowmode, get_Y, slowmode);
 	idx8_store(practice_forced_trails, get_Y, forced_trails);
 	idx8_store(practice_gravity_mod, get_Y, gravity_mod);
+	idx8_store(practice_kandoframecnt, get_Y, kandoframecnt);
 
 	if (practice_music_sync) {
 		memcpy(practice_famistudio_state + lohi_arr16_load(multStateLookup, tmp1), famistudio_state, FAMISTUDIO_STATE_SIZE);
@@ -131,6 +134,7 @@ void load_practice_state() {
 	slowmode = idx8_load(practice_slowmode, get_Y);
 	forced_trails = idx8_load(practice_forced_trails, get_Y);
 	gravity_mod = idx8_load(practice_gravity_mod, get_Y);
+	kandoframecnt = idx8_load(practice_kandoframecnt, get_Y);
 	
 	currplayer_last_slope_type = last_slope_type[0] = \
 		idx8_load(practice_player_1_last_slope_type, get_Y);
@@ -154,7 +158,8 @@ void load_practice_state() {
 //		idx8_store(trail_sprites_visible, tmp2, practice_trail_sprites_visible[tmp2]);
 //		idx8_store(player_old_posy, tmp2, practice_player_old_posy[tmp2]);
 //	} while (++tmp2 < 9);
-	orbactive = idx8_load(practice_orbactive, get_Y);
+	nullscapes_active = idx8_load(practice_nullscapes_active, get_Y);
+	nullscapes_orb_type = idx8_load(practice_nullscapes_orb_type, get_Y);
 	practice_sprite_x_pos = idx8_load(practice_player_1_x_hi, get_Y);
 
 	outline_color = idx8_load(practice_outline_color, get_Y);

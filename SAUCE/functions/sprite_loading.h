@@ -59,7 +59,7 @@ uint8_t sprite_heights[]={
 	0x34,	0x34,	0x34,	0x34,	0x34,	0x02,	0x10,	SPBH,	// 60 - 67
 	0x10,	SPBH,	0x34,	0x34,	0x34,	0x20,	0x08,	SPBH,	// 68 - 6F
 	SPBH,	SPBH,	SPBH,	SPBH,	SPBH,	0x10,	SPBH,	0x10,	// 70 - 77
-	SPBH,	0x12,	0x12,	0x12,	0x12,	0x00,	SPBH,	SPBH,	// 78 - 7F
+	SPBH,	0x12,	0x12,	0x12,	0x12,	SPBH,	SPBH,	SPBH,	// 78 - 7F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 80 - 87
 	COLR,	COLR,	COLR,	COLR,	COLR,	0x00,	SPBH,	COLR,	// 88 - 8F
 	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	COLR,	// 90 - 97
@@ -247,6 +247,9 @@ char sprite_load_special_behavior(){
 				killSprite_return0;
 			case GRAVITY_1X_PORTAL_INVIS:
 				gravity_mod = 0;
+				killSprite_return0;
+			case NULLSCAPES_ORB:
+				nullscapes_active = 1;
 				killSprite_return0;
 		#endif
 		case FORCED_FREECAM_ON:
@@ -1084,7 +1087,7 @@ void sprite_collide_lookup() {
 		// intentional leak
 
 	spcl_orb_cmn:
-		ufo_orbed[currplayer] = 1;			
+		ufo_orbed[currplayer] = 1;		
 		if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) {
 			sprite_gamemode_main();
 		} else {
