@@ -93,6 +93,10 @@ void draw_sprites(){
 			if (activesprites_type[index] == YELLOW_ORB ||
 			activesprites_type[index] == RED_ORB ||
 			activesprites_type[index] == BLACK_ORB ||
+			activesprites_type[index] == BLUE_ORB_MULTI ||
+			activesprites_type[index] == PINK_ORB ||
+			activesprites_type[index] == GREEN_ORB ||
+			activesprites_type[index] == GREEN_ORB_MULTI ||
 			activesprites_type[index] == BLUE_ORB) {
 
 				switch (nullscapes_orb_type) {
