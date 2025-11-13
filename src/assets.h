@@ -1,10 +1,10 @@
 #include <stdint.h>
 
-#define putinbank(bank) __attribute__((section(bank),retain))
-
 #define IDENT(x) x
 #define XSTR(x) #x
 #define STR(x) XSTR(x)
+
+#define putinbank(bank) __attribute__((section(".prg_rom_"STR(bank)),retain))
 
 #define file(symbol, bank) __attribute__((section((".prg_rom_"STR(bank))),retain)) const uint8_t symbol[]
 

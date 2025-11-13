@@ -59,13 +59,13 @@ __attribute((noinline))
 void multi_vram_buffer_horz(
 	const char *data, uint8_t len, uint16_t ppu_addr
 ){
-	uint8_t tmp, run;
+	uint8_t run;
 	//     A - len
 	//     X - <ppu_address
 	// __rc2 - <data
 	// __rc3 - >data
 	// __rc4 - >ppu_address
-	VRAM_BUF[VRAM_INDEX+2] = tmp = len;
+	VRAM_BUF[VRAM_INDEX+2] = len;
 
 	// multi_vram_buffer_common:
 	VRAM_BUF[VRAM_INDEX] = (0x40 | high_byte(ppu_addr));
@@ -75,9 +75,27 @@ void multi_vram_buffer_horz(
 	}
 	VRAM_INDEX = (len + 3);
 	VRAM_BUF[VRAM_INDEX] = 0xff;
+	//VRAM_INDEX--;
 }
 
+__attribute((noinline)) 
+void str_vram_buffer(
+	const char *data, uint16_t ppu_addr
+){
+	uint8_t run = 0;
 
+	// multi_vram_buffer_common:
+	VRAM_BUF[VRAM_INDEX] = (0x40 | high_byte(ppu_addr));
+	VRAM_BUF[VRAM_INDEX+1] = low_byte(ppu_addr);
+	while (data[run] != 0){
+		VRAM_BUF[(VRAM_INDEX+run+3)] = data[run];
+		run++;
+	}
+	VRAM_BUF[VRAM_INDEX+2] = run;
+
+	VRAM_INDEX += (run + 3);
+	VRAM_BUF[VRAM_INDEX] = 0xff;
+}
 
 
 

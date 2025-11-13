@@ -1,4 +1,4 @@
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".100")))
+putinbank(extra_code_bank.100)
 const unsigned char pal_title[32]={ 
     0x11,0x0f,0x01,0x30,
     0x11,0x0f,0x2a,0x39,
@@ -11,7 +11,7 @@ const unsigned char pal_title[32]={
     0x11,0x0f,0x21,0x31,
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".101")))
+putinbank(extra_code_bank.101)
 const unsigned char nt_title[374]={
 0x02,0x01,0x02,0x3f,0x00,0x02,0x87,0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,
 0x89,0x82,0x83,0x82,0x8b,0x8c,0x8c,0x00,0x02,0x0f,0x90,0x91,0x92,0x93,0x94,0x95,
@@ -39,7 +39,7 @@ const unsigned char nt_title[374]={
 0x07,0x00,0x02,0x07,0x02,0x00
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".102")))
+putinbank(extra_code_bank.102)
 const uint8_t mspr_title[]={
     // everything in this table is shifted to the left by
     // one pixel due to *the problematic line.*
@@ -81,21 +81,21 @@ const uint8_t mspr_title[]={
     0x80 // end of data
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".103")))
+putinbank(extra_code_bank.103)
 const uint8_t mspr_selectarrow[]={
     0, 0,  0x1c,   0b00000000,
     8,  0,  0x1c,   0b01000000,
     0x80
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".104")))
+putinbank(extra_code_bank.104)
 const uint8_t mspr_selectbox[]={
     0, 0,  0x0c,   0b00000000,
     8,  0,  0x0c,   0b01000000,
     0x80
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".105")))
+putinbank(extra_code_bank.105)
 const uint16_t mspr_select_pos[]={
     0x5078, // play
     0x50a8, // community
@@ -106,7 +106,7 @@ const uint16_t mspr_select_pos[]={
 };
 #define menu_button_count (sizeof(mspr_select_pos)>>1)
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".109")))
+putinbank(extra_code_bank.106)
 void state_menu() {
     unsigned char menu_color = 0x11;
     unsigned short interrupt_scroll = 0;
@@ -297,10 +297,10 @@ void state_menu() {
 
 
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".110")))
+putinbank(extra_code_bank.110)
 const unsigned char pal_levelselect[16]={ 0x11,0x01,0x11,0x30,0x11,0x0f,0x2a,0x39,0x11,0x0f,0x10,0x30,0x11,0x0f,0x21,0x31 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".111")))
+putinbank(extra_code_bank.111)
 const unsigned char nt_levelselect[345]={
 0x04,0x01,0x04,0x3f,0x00,0x04,0x05,0x1a,0x1b,0x0e,0x07,0x04,0x03,0x0f,0x0e,0x07,
 0x07,0x0f,0x0e,0x07,0x04,0x03,0x0f,0x1a,0x1b,0x00,0x04,0x0d,0x1e,0x17,0x04,0x03,
@@ -326,11 +326,11 @@ const unsigned char nt_levelselect[345]={
 0x04,0x03,0xc0,0xd4,0x0f,0x04,0x07,0x04,0x00
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".115")))
+putinbank(extra_code_bank.112)
 const char str_levelselect[] = "stereo\x01madness";
 
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".119")))
+putinbank(extra_code_bank.113)
 void state_levelselect(){
     ppu_off();
         

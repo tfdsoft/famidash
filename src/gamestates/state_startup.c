@@ -1,4 +1,4 @@
-__attribute__((section(".prg_rom_"STR(extra_code_bank))))
+putinbank(extra_code_bank)
 const unsigned char pal_logo[16]={
     0x0f,0x00,0x3d,0x30,
     0x0f,0x0f,0x16,0x26,
@@ -6,7 +6,7 @@ const unsigned char pal_logo[16]={
     0x0f,0x0f,0x0f,0x0f
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".001")))
+putinbank(extra_code_bank.001)
 const unsigned char nt_logo[] = {
     0x01,0x00,0x01,0xfe,0x00,0x01,0x4c,0x80,0x81,0x00,0x01,0x1c,0x82,0x83,0x84,0x85,
     0x00,0x01,0x1a,0x86,0x87,0x88,0x89,0x00,0x01,0x1a,0x8a,0x8b,0x8c,0x8d,0x00,0x00,
@@ -17,7 +17,7 @@ const unsigned char nt_logo[] = {
     0xac,0x01,0x00
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".002")))
+putinbank(extra_code_bank.002)
 const unsigned char nt_warning[] = {
     0x01,0x00,0x01,0xfe,0x00,0x01,0x0c,0x57,0x41,0x52,0x4e,0x49,0x4e,0x47,0x21,0x00,
     0x01,0x31,0x54,0x48,0x49,0x53,0x00,0x42,0x52,0x41,0x4e,0x43,0x48,0x00,0x49,0x53,
@@ -33,18 +33,15 @@ const unsigned char nt_warning[] = {
     0x00,0x01,0x0c,0x04,0x05,0x01,0x02,0x00,0x01,0x19,0x01,0x00
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".005")))
-const char str_logo_text[] = "VRAM BUFFER TEST, THIS IS PEAK";
-
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".006")))
-const char str_warning[] = "HERE IT GOES.";
+//__attribute__((section(".prg_rom_"STR(extra_code_bank)".005")))
+putinbank(extra_code_bank.005)
+const char str_ripsave[] = "SAVE FILE HAS BEEN ERASED.";
 
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".009")))
+
+putinbank(extra_code_bank.009)
 void state_startup() {
     famistudio_music_stop();
-
-    //automatic_fs_updates = 0;
 
     automatic_fs_updates = 1;
 
@@ -59,7 +56,6 @@ void state_startup() {
     pal_bg(pal_logo);
     pal_spr(pal_logo);
 
-    multi_vram_buffer_horz(str_logo_text, sizeof(str_logo_text)-1, 0x2101);
     
     //pal_bright(0);
     ppu_on_all();
@@ -88,14 +84,27 @@ void state_startup() {
         
     }
 
-    if(player1_hold & PAD_SELECT) {
-        sfx_play(0,0);
-        memfill((uint8_t*)0x6000, 0, 0x2000);
-    }
-
-
     pal_fade_to(4,0);
     ppu_off();
+
+    if(player1_hold & PAD_SELECT) {
+        sfx_play(0,0);
+        vram_adr(0x2000);
+        vram_fill(0, 0x3c0);
+        memfill((uint8_t*)0x6000, 0, 0x2000);
+
+        str_vram_buffer(str_ripsave, 0x21c3);
+
+        ppu_on_all();
+        pal_fade_to(0,4);
+        for(char stall = 180; stall>0; stall--){
+            ppu_wait_nmi();
+        }
+        pal_fade_to(4,0);
+        ppu_off();
+    }
+
+    
 
     //set_prg_8000(nametable_bank_0);
     vram_adr(0x2000);
@@ -103,8 +112,6 @@ void state_startup() {
 
     pal_col(0,0x11);
     pal_col(1,0x0f);
-
-    multi_vram_buffer_horz(str_warning, sizeof(str_warning)-1, 0x2249);
 
     ppu_on_all();
     pal_fade_to(0,4);
@@ -172,7 +179,7 @@ void state_startup() {
 
 
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".010")))
+putinbank(extra_code_bank.010)
 const unsigned char pal_credits[16]={ 
     0x1c,0x0f,0x10,0x30,
     0x1c,0x0f,0x2a,0x39,
@@ -180,7 +187,7 @@ const unsigned char pal_credits[16]={
     0x1c,0x0f,0x21,0x31
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".011")))
+putinbank(extra_code_bank.011)
 const unsigned char nt_credits[537]={
 0x04,0x01,0x04,0x3f,0x03,0x03,0x0e,0x0f,0x10,0x00,0x04,0x15,0x10,0x0e,0x0f,0x03,
 0x03,0x02,0x02,0x1e,0x1f,0x00,0x04,0x03,0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,
@@ -218,7 +225,7 @@ const unsigned char nt_credits[537]={
 0x04,0x02,0xe0,0xd4,0x00,0x04,0x07,0x04,0x00
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank)".019")))
+putinbank(extra_code_bank.019)
 void state_credits() {
 
     vram_adr(0x0000);
