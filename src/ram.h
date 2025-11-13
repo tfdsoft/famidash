@@ -199,8 +199,5 @@ uint8_t sram_buffer[2048], background_set, ground_set;
 #define bg_buffer (&sram_buffer[0])
 #define coll_buffer (&sram_buffer[0])
 
-
-
-
 #define bg_buffer_1 (&bg_buffer[0])
 #define bg_buffer_2 (&bg_buffer[1024])

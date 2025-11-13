@@ -156,7 +156,8 @@ void vram_generate_parallax(uint8_t bg_id){
     for(uint8_t step = 0; step < 4; step++){
         // fetch the next bg frame from the ppu
         // (gotta run this four times)
-        vram_adr(1);
+        vram_adr(0);
+        PPU.vram.data; // prime the read
         set_chr_bank(2,0x10+step);
 
         APU.delta_mod.length = 0;
@@ -181,7 +182,7 @@ void vram_generate_parallax(uint8_t bg_id){
         for (uint8_t bg_width = 1; bg_width < width; bg_width++){
             set_chr_bank(2,(0x10+(bg_width<<2)+step));
             vram_adr(0);
-
+            
             
             for (uint8_t j=0, jtw=0; j<height; j++, jtw += width){ // y
                 uint8_t tile_end = jtw+width;

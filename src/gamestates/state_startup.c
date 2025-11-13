@@ -84,6 +84,13 @@ void state_startup() {
         pal_bright(4);
         if((stall >= 87)) pal_bright(3);
         if((stall >= 80) && (stall < 83)) pal_bright(3);
+
+        
+    }
+
+    if(player1_hold & PAD_SELECT) {
+        sfx_play(0,0);
+        memfill((uint8_t*)0x6000, 0, 0x2000);
     }
 
 
