@@ -1,0 +1,14 @@
+#define sfx_explode_11 0
+#define sfx_playsound_01 1
+#define sfx_quitsound_01 2
+#define sfx_achievement_01 3
+#define sfx_endstart_02 4
+#define sfx_highscoreget02 5
+#define sfx_chestclick 6
+#define sfx_chestland 7
+#define sfx_chestopen01 8
+#define sfx_reward01 9
+#define sfx_gold01 10
+#define sfx_gold02 11
+#define sfx_secretkey 12
+#define sfx_max 13

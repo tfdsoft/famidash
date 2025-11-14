@@ -12,6 +12,7 @@ __attribute__((retain))
 #include "musicDefines.h"
 #include "musicBankData.h"
 // ===========================================
+#include "../music/EXPORTS/sfx.h"
 
 #include "libraries.h"
 #include "irq.c"

@@ -133,11 +133,13 @@ int main(void){
             //
             case 0x10:
                 banked_call(extra_code_bank, state_menu);
-                //state_menu();
                 break;
             case 0x11:
                 banked_call(extra_code_bank, state_levelselect);
-                //state_menu();
+                break;
+                
+            case 0x14:
+                banked_call(extra_code_bank, state_soundtest);
                 break;
 
 

@@ -145,7 +145,8 @@ __attribute__((noinline)) void flush_vram_update2(){
 			"pla \n" //"lda (NAME_UPD_ADR),y \n" // data
 			//"iny \n" 
 			"sta $2007 \n" // PPU_DATA 
-			"bne 2b \n" // always taken. Assumes index never wraps
+			"clc \n"
+			"bcc 2b \n" // always taken. Assumes index never wraps
 
 		"5: \n"	// .LupdHorzSeq:
 			// Clear control bit for vertical traversal

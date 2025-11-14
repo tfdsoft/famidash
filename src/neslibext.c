@@ -560,3 +560,10 @@ uint8_t fast_multby6(uint8_t n){
 
 __attribute__((noinline)) 
 uint8_t get_ppu_mask_var() {return PPU_MASK_VAR;}
+
+__attribute__((noinline))
+uint8_t num_to_ascii(uint8_t n){
+    n &= 0x0f;
+    if(n > 0x09) return (n + 0x37);
+    return (n + 0x30);
+}
