@@ -75,7 +75,7 @@ _level_lengths_lo:
 	.byte .lobyte($000097)		; shardscapes
 	.byte .lobyte($0000A0)		; element111rg
 	.byte .lobyte($000098)		; slaughterhouse
-	.byte .lobyte($0000A0)		; nullscapes
+	.byte .lobyte($000075)		; nullscapes
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -90,7 +90,7 @@ _level_lengths_md:
 	.byte .hibyte($000097)		; shardscapes
 	.byte .hibyte($0000A0)		; element111rg
 	.byte .hibyte($000098)		; slaughterhouse
-	.byte .hibyte($0000A0)		; nullscapes
+	.byte .hibyte($000075)		; nullscapes
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -105,7 +105,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000097)		; shardscapes
 	.byte .bankbyte($0000A0)		; element111rg
 	.byte .bankbyte($000098)		; slaughterhouse
-	.byte .bankbyte($0000A0)		; nullscapes
+	.byte .bankbyte($000075)		; nullscapes
 
 .endif
 .endif

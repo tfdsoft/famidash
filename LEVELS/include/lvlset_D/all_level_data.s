@@ -165,7 +165,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8137 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8072 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -213,6 +213,11 @@
 		.byte 57 ;__________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2288
+
+	.export level_data_windylandscape_1
+	level_data_windylandscape_1:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
 .segment "DAT_BANK_09"	; Total bank size: 8058 bytes
@@ -272,7 +277,7 @@
 		.incbin "EXPORTS/element111rg.lz.bin" ; Size: 3108
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8128 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8175 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data
@@ -300,9 +305,4 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 57 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1420
-
-	.export level_data_windylandscape_1
-	level_data_windylandscape_1:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
+		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1402
