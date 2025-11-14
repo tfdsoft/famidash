@@ -227,7 +227,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8067 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8077 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -253,7 +253,7 @@
 		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 6904 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 6909 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data
@@ -281,4 +281,4 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1271
+		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1276

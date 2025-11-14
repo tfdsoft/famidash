@@ -265,7 +265,14 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+							[164, 15], [179, 14]
+					],	offsetX: +8
+				},
+			]				
 		},
 	],
 	globalObjectOffsets: [

@@ -741,7 +741,13 @@
 			lowerText: "INFERNO",
 			originalArtist: ["WFlame Temini","te Boom Kitty"],
 			coveringArtist: "SeaGlowingPro",
-		},				
+		},		
+		{
+			fmsSongName: "Slow Down",
+			lowerText: "SLOW DOWN",
+			originalArtist: "CREO",
+			coveringArtist: "SeaGlowingPro",
+		},		
 		{
 			fmsSongName: "Sonic blaster",
 			lowerText: "SONIC BLASTER",

@@ -4866,6 +4866,24 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},		
+
+		{
+			level: "shardscapes",
+			lowerText: "SHARDSCAPES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_slow_down",
+			maxFallSpeed: 0x07,
+			startingGameMode: 4,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x30,
+			startingGroundColor: 0x30,
+			parallaxDisable: true
+		},		
 		{
 			level: "slaughterhouse",
 			lowerText: "SLAUGHTERHOUSE",
