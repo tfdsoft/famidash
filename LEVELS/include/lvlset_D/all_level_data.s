@@ -165,7 +165,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8072 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8137 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -213,11 +213,6 @@
 		.byte 57 ;__________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2288
-
-	.export level_data_windylandscape_1
-	level_data_windylandscape_1:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
 .segment "DAT_BANK_09"	; Total bank size: 8058 bytes
@@ -277,7 +272,7 @@
 		.incbin "EXPORTS/element111rg.lz.bin" ; Size: 3108
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8154 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8128 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data
@@ -291,8 +286,8 @@
 		.byte <(.bank(sprite_data_nullscapes)) ;___ Sprite data bank
 		.byte song_flow ;__________________________ Song ID
 		.byte (1 << 4) | 4 ;_______________________ Starting game mode and speed
-		.byte ($30) ;______________________________ Spawn Y Position (high byte)
-		.byte ($00) ;______________________________ Spawn Y Position (low byte)
+		.byte ($FF) ;______________________________ Spawn Y Position (high byte)
+		.byte ($FF) ;______________________________ Spawn Y Position (low byte)
 		.byte ($02) ;______________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
 		.byte ($06) ;______________________________ Max Fall Speed (high byte)
@@ -305,4 +300,9 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 57 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1381
+		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1420
+
+	.export level_data_windylandscape_1
+	level_data_windylandscape_1:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201

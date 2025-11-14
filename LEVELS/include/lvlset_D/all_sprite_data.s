@@ -3590,7 +3590,7 @@ sprite_data_aftercatabath:
   .byte $f0,$ad,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0B"
+.segment "DAT_BANK_08"
 sprite_data_shardscapes:
   .byte $00,$00,$40,$03,$bf
   .byte $00,$00,$60,$03,$18
@@ -4078,10 +4078,12 @@ sprite_data_slaughterhouse:
 
 .segment "DAT_BANK_0A"
 sprite_data_nullscapes:
-  .byte $00,$00,$e0,$00,$6f
-  .byte $00,$00,$f0,$00,$bf
-  .byte $00,$00,$00,$01,$18
-  .byte $10,$00,$20,$01,$7d
+  .byte $00,$00,$60,$02,$f4
+  .byte $00,$00,$a0,$02,$6f
+  .byte $00,$00,$b0,$02,$bf
+  .byte $00,$00,$c0,$02,$18
+  .byte $10,$00,$e0,$02,$7d
+  .byte $60,$00,$00,$02,$f5
   .byte $20,$01,$20,$01,$7f
   .byte $30,$01,$20,$01,$6f
   .byte $70,$01,$20,$01,$7f
@@ -4144,11 +4146,9 @@ sprite_data_nullscapes:
   .byte $60,$13,$f0,$00,$05
   .byte $e0,$13,$c0,$00,$05
   .byte $a0,$18,$d0,$00,$8f
-  .byte $c0,$18,$b0,$01,$19
-  .byte $50,$19,$00,$02,$6f
+  .byte $c0,$18,$d0,$00,$19
   .byte $50,$19,$20,$02,$15
   .byte $60,$19,$10,$02,$80
-  .byte $80,$19,$00,$02,$7f
   .byte $a0,$19,$10,$02,$90
   .byte $b0,$19,$a0,$01,$7d
   .byte $d0,$19,$00,$02,$b0
