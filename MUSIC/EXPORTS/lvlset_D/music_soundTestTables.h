@@ -11,22 +11,25 @@ const char musicSoundTestString05[ 8] = "PRACTICE";
 const char musicSoundTestString06[ 6] = "WEASEL";
 const char musicSoundTestString07[ 8] = "OF$LIGHT";
 const char musicSoundTestString08[ 9] = "CRYOGENIC";
-const char musicSoundTestString09[ 3] = "CUT";
-const char musicSoundTestString0A[13] = "HAUNTED$WOODS";
-const char musicSoundTestString0B[ 4] = "LOST";
+const char musicSoundTestString09[ 4] = "FLOW";
+const char musicSoundTestString0A[ 3] = "CUT";
+const char musicSoundTestString0B[13] = "HAUNTED$WOODS";
 const char musicSoundTestString0C[ 6] = "KRATOS";
-const char musicSoundTestString0D[ 8] = "WINDFALL";
-const char musicSoundTestString0E[ 8] = "TOBY$FOX";
-const char musicSoundTestString0F[ 7] = "DJ$NATE";
-const char musicSoundTestString10[12] = "OCULARNEBULA";
-const char musicSoundTestString11[13] = "KEVIN$MACLEOD";
-const char musicSoundTestString12[ 9] = "DIMRAIN47";
-const char musicSoundTestString13[10] = "NERDBOY628";
-const char musicSoundTestString14[12] = "DETIOUSMUSIC";
-const char musicSoundTestString15[10] = "WATERFLAME";
-const char musicSoundTestString16[ 6] = "CRIM3S";
-const char musicSoundTestString17[ 6] = "SHAPPY";
-const char musicSoundTestString18[ 9] = "THEFATRAT";
+const char musicSoundTestString0D[ 4] = "LOST";
+const char musicSoundTestString0E[ 9] = "SLOW$DOWN";
+const char musicSoundTestString0F[ 8] = "WINDFALL";
+const char musicSoundTestString10[ 8] = "TOBY$FOX";
+const char musicSoundTestString11[ 7] = "DJ$NATE";
+const char musicSoundTestString12[12] = "OCULARNEBULA";
+const char musicSoundTestString13[13] = "KEVIN$MACLEOD";
+const char musicSoundTestString14[ 9] = "DIMRAIN47";
+const char musicSoundTestString15[10] = "NERDBOY628";
+const char musicSoundTestString16[ 4] = "CREO";
+const char musicSoundTestString17[12] = "DETIOUSMUSIC";
+const char musicSoundTestString18[10] = "WATERFLAME";
+const char musicSoundTestString19[ 6] = "SHAPPY";
+const char musicSoundTestString1A[ 6] = "CRIM3S";
+const char musicSoundTestString1B[ 9] = "THEFATRAT";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -36,7 +39,9 @@ const char* const xbgmtextsUpper[] = {
 	musicSoundTestString00,
 	musicSoundTestString01,
 	NULL,
+	NULL,
 	musicSoundTestString02,
+	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -50,7 +55,9 @@ const uint8_t xbgmtextsUpperSize[] = {
 	sizeof(musicSoundTestString00),
 	sizeof(musicSoundTestString01),
 	0,
+	0,
 	sizeof(musicSoundTestString02),
+	0,
 	0,
 	0,
 	0,
@@ -70,6 +77,8 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString0B,
 	musicSoundTestString0C,
 	musicSoundTestString0D,
+	musicSoundTestString0E,
+	musicSoundTestString0F,
 };
 
 const uint8_t xbgmtextsLowerSize[] = {
@@ -84,12 +93,12 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString0B),
 	sizeof(musicSoundTestString0C),
 	sizeof(musicSoundTestString0D),
+	sizeof(musicSoundTestString0E),
+	sizeof(musicSoundTestString0F),
 };
 
 
 const char* const xbgmtextsOriginalArtist[] = {
-	musicSoundTestString0E,
-	musicSoundTestString0F,
 	musicSoundTestString10,
 	musicSoundTestString11,
 	musicSoundTestString12,
@@ -99,11 +108,13 @@ const char* const xbgmtextsOriginalArtist[] = {
 	musicSoundTestString16,
 	musicSoundTestString17,
 	musicSoundTestString18,
+	musicSoundTestString19,
+	musicSoundTestString1A,
+	musicSoundTestString16,
+	musicSoundTestString1B,
 };
 
 const uint8_t xbgmtextsOriginalArtistSize[] = {
-	sizeof(musicSoundTestString0E),
-	sizeof(musicSoundTestString0F),
 	sizeof(musicSoundTestString10),
 	sizeof(musicSoundTestString11),
 	sizeof(musicSoundTestString12),
@@ -113,6 +124,10 @@ const uint8_t xbgmtextsOriginalArtistSize[] = {
 	sizeof(musicSoundTestString16),
 	sizeof(musicSoundTestString17),
 	sizeof(musicSoundTestString18),
+	sizeof(musicSoundTestString19),
+	sizeof(musicSoundTestString1A),
+	sizeof(musicSoundTestString16),
+	sizeof(musicSoundTestString1B),
 };
 
 
@@ -140,10 +155,12 @@ const uint8_t xbgmlookuptable[] = {
 	song_scheming_weasel,
 	song_atthespeedoflightfull,
 	song_cryogenic,
+	song_flow,
 	song_golden_haze_not_retray,
 	song_haunted_woods,
-	song_lost,
 	song_kratos,
+	song_lost,
+	song_slow_down,
 	song_windfall,
 };
 

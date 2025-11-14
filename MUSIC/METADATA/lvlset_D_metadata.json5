@@ -44,6 +44,11 @@
 			originalArtistText: "NERDBOY628",
 		},
 		{
+			fmsSongName: "Flow",
+			lowerText: "FLOW",
+			originalArtistText: "CREO",
+		},
+		{
 			fmsSongName: "Golden Haze NOT RETRAY",
 			upperText: "GOLDEN HAZE",
 			lowerText: "CUT",
@@ -55,14 +60,19 @@
 			originalArtistText: "WATERFLAME",
 		},
 		{
+			fmsSongName: "Kratos",
+			lowerText: "KRATOS",
+			originalArtistText: "SHAPPY",
+		},
+		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
 			originalArtistText: "CRIM3S",
 		},
 		{
-			fmsSongName: "Kratos",
-			lowerText: "KRATOS",
-			originalArtistText: "SHAPPY",
+			fmsSongName: "Slow Down",
+			lowerText: "SLOW DOWN",
+			originalArtistText: "CREO",
 		},
 		{
 			fmsSongName: "Windfall",
