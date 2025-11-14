@@ -10,6 +10,7 @@ const uint8_t difficulty_list[] = {
 	IMPOSSIBLEDEMON,	// kratos
 	GRANDPADEMON,	// aftercatabath
 	IMPOSSIBLEDEMON,	// shardscapes
+	IMPOSSIBLEDEMON,	// element111rg
 	GRANDPADEMON,	// slaughterhouse
 	GRANDPADEMON,	// nullscapes
 };
@@ -23,6 +24,7 @@ const uint8_t stars_list[] = {
 	10,	// kratos
 	10,	// aftercatabath
 	10,	// shardscapes
+	10,	// element111rg
 	10,	// slaughterhouse
 	10,	// nullscapes
 };

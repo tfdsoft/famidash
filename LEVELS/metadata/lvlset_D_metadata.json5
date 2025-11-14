@@ -235,6 +235,24 @@
 			parallaxDisable: true
 		},
 		{
+			level: "element111rg",
+			upperText: "ELEMENT",
+			lowerText: "111 RG",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "IMPOSSIBLEDEMON",
+			stars: 10,
+			songID: "song_time_machine",
+			maxFallSpeed: 0x07,
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x11,
+			startingGroundColor: 0x11,
+			maxFallSpeed: 0x07,
+		},
+		{
 			level: "slaughterhouse",
 			lowerText: "SLAUGHTERHOUSE",
 			decoType: "DECO1",
@@ -269,8 +287,11 @@
 			objectOffsets: [
 				{
 					coordinates: [
-							[164, 15], [179, 14]
-					],	offsetX: +8
+							[164, 15], [179, 14], [581, 32],
+					],	offsetX: +8,
+					coordinates: [
+							[453, 33], [472, 31], [491, 31], [511, 33], [609, 32], [646, 36], [666, 34],
+					],	offsetY: +8
 				},
 			]				
 		},

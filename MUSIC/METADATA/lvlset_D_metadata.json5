@@ -7,6 +7,21 @@
 			originalArtistText: "TOBY FOX",
 		},
 		{
+			fmsSongName: "Time Machine",
+			lowerText: "TIME MACHINE",
+			originalArtistText: "WATERFLAME",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Time Machine",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "Zenith302, Vikrinox, alexmush"
+				},
+				durationNTSC: 96067,
+				durationPAL: 115460
+			}
+		},
+		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
 			originalArtistText: "DJ NATE",
