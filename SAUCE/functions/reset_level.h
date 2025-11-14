@@ -74,6 +74,7 @@ void reset_level() {
 	slope_frames[1] = 0;
 	nocamlockforced = 0;
 	minicoins = 0;
+	kandoframecnt = 0;
 	currplayer_slope_frames = 0;
 	make_cube_jump_higher = 0;
 
