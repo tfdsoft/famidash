@@ -253,7 +253,7 @@
 		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 6909 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 6905 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data
@@ -281,4 +281,4 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1276
+		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1272
