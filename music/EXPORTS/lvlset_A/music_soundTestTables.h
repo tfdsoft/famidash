@@ -2,26 +2,26 @@
 
 #if !__VS_SYSTEM
 
-const char musicSoundTestString00[ 7] = "STEREO$";
-const char musicSoundTestString01[ 7] = "BACK$ON";
-const char musicSoundTestString02[10] = "BASE$AFTER";
-const char musicSoundTestString03[ 9] = "THEORY$OF";
+const char musicSoundTestString00[ 7] = "STEREO ";
+const char musicSoundTestString01[ 7] = "BACK ON";
+const char musicSoundTestString02[10] = "BASE AFTER";
+const char musicSoundTestString03[ 9] = "THEORY OF";
 const char musicSoundTestString04[10] = "ELECTROMAN";
 const char musicSoundTestString05[ 7] = "HEXAGON";
 const char musicSoundTestString06[ 5] = "BLAST";
 const char musicSoundTestString07[11] = "GEOMETRICAL";
 const char musicSoundTestString08[ 8] = "SCHEMING";
 const char musicSoundTestString09[ 4] = "MENU";
-const char musicSoundTestString0A[ 8] = "MENU$$22";
-const char musicSoundTestString0B[16] = "DIDNT$REALIZE$IT";
+const char musicSoundTestString0A[12] = "MENU but 2.2";
+const char musicSoundTestString0B[17] = "DIDN'T REALIZE IT";
 const char musicSoundTestString0C[ 7] = "MADNESS";
 const char musicSoundTestString0D[ 5] = "TRACK";
 const char musicSoundTestString0E[10] = "POLARGEIST";
-const char musicSoundTestString0F[ 7] = "DRY$OUT";
+const char musicSoundTestString0F[ 7] = "DRY OUT";
 const char musicSoundTestString10[ 4] = "BASE";
-const char musicSoundTestString11[11] = "CANT$LET$GO";
+const char musicSoundTestString11[11] = "CANT LET GO";
 const char musicSoundTestString12[ 6] = "JUMPER";
-const char musicSoundTestString13[12] = "TIME$MACHINE";
+const char musicSoundTestString13[12] = "TIME MACHINE";
 const char musicSoundTestString14[ 6] = "CYCLES";
 const char musicSoundTestString15[ 5] = "XSTEP";
 const char musicSoundTestString16[11] = "CLUTTERFUNK";
@@ -31,7 +31,7 @@ const char musicSoundTestString19[ 8] = "CLUBSTEP";
 const char musicSoundTestString1A[14] = "ELECTRODYNAMIX";
 const char musicSoundTestString1B[ 5] = "FORCE";
 const char musicSoundTestString1C[10] = "PROCESSING";
-const char musicSoundTestString1D[12] = "EVERYTHING$2";
+const char musicSoundTestString1D[12] = "EVERYTHING 2";
 const char musicSoundTestString1E[ 9] = "DOMINATOR";
 const char musicSoundTestString1F[10] = "DEADLOCKED";
 const char musicSoundTestString20[10] = "FINGERDASH";
@@ -39,17 +39,17 @@ const char musicSoundTestString21[ 4] = "DASH";
 const char musicSoundTestString22[ 8] = "PRACTICE";
 const char musicSoundTestString23[ 6] = "WEASEL";
 const char musicSoundTestString24[ 6] = "ROBTOP";
-const char musicSoundTestString25[ 8] = "TOBY$FOX";
-const char musicSoundTestString26[14] = "I$HAVE$NO$CLUE";
+const char musicSoundTestString25[ 8] = "TOBY FOX";
+const char musicSoundTestString26[14] = "I HAVE NO CLUE";
 const char musicSoundTestString27[12] = "FOREVERBOUND";
 const char musicSoundTestString28[ 4] = "DJVI";
 const char musicSoundTestString29[ 4] = "STEP";
 const char musicSoundTestString2A[10] = "WATERFLAME";
-const char musicSoundTestString2B[ 7] = "DJ$NATE";
+const char musicSoundTestString2B[ 7] = "DJ NATE";
 const char musicSoundTestString2C[ 4] = "F777";
 const char musicSoundTestString2D[ 3] = "MDK";
 const char musicSoundTestString2E[12] = "OCULARNEBULA";
-const char musicSoundTestString2F[13] = "KEVIN$MACLEOD";
+const char musicSoundTestString2F[13] = "KEVIN MACLEOD";
 
 
 const char* const xbgmtextsUpper[] = {

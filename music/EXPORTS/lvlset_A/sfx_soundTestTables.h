@@ -2,19 +2,22 @@
 
 #if !__VS_SYSTEM
 
-const char sfxSoundTestString00[ 5] = "DEATH";
-const char sfxSoundTestString01[ 5] = "CLICK";
-const char sfxSoundTestString02[14] = "LEVEL$COMPLETE";
-const char sfxSoundTestString03[ 4] = "COIN";
-const char sfxSoundTestString04[10] = "CHEST$OPEN";
-const char sfxSoundTestString05[ 4] = "ORBS";
-const char sfxSoundTestString06[ 8] = "DIAMONDS";
-const char sfxSoundTestString07[10] = "EXIT$LEVEL";
-const char sfxSoundTestString08[11] = "START$LEVEL";
-const char sfxSoundTestString09[ 7] = "INVALID";
-const char sfxSoundTestString0A[15] = "ACHIEVEMENT$GET";
+putinbank(sound_test_bank.textdata.000) const char sfxSoundTestString00[11] = "EXPLODE_11";
+putinbank(sound_test_bank.textdata.001) const char sfxSoundTestString01[13] = "PLAYSOUND_01";
+putinbank(sound_test_bank.textdata.002) const char sfxSoundTestString02[13] = "QUITSOUND_01";
+putinbank(sound_test_bank.textdata.003) const char sfxSoundTestString03[15] = "ACHIEVEMENT_01";
+putinbank(sound_test_bank.textdata.004) const char sfxSoundTestString04[12] = "ENDSTART_02";
+putinbank(sound_test_bank.textdata.005) const char sfxSoundTestString05[15] = "HIGHSCOREGET02";
+putinbank(sound_test_bank.textdata.006) const char sfxSoundTestString06[11] = "CHESTCLICK";
+putinbank(sound_test_bank.textdata.007) const char sfxSoundTestString07[10] = "CHESTLAND";
+putinbank(sound_test_bank.textdata.008) const char sfxSoundTestString08[12] = "CHESTOPEN01";
+putinbank(sound_test_bank.textdata.009) const char sfxSoundTestString09[ 7] = "GOLD01";
+putinbank(sound_test_bank.textdata.010) const char sfxSoundTestString0A[ 7] = "GOLD02";
+putinbank(sound_test_bank.textdata.011) const char sfxSoundTestString0B[ 9] = "REWARD01";
+putinbank(sound_test_bank.textdata.012) const char sfxSoundTestString0C[10] = "SECRETKEY";
 
 
+putinbank(sound_test_bank.text)
 const char* const sfxtexts[] = {
 	sfxSoundTestString00,
 	sfxSoundTestString01,
@@ -27,8 +30,11 @@ const char* const sfxtexts[] = {
 	sfxSoundTestString08,
 	sfxSoundTestString09,
 	sfxSoundTestString0A,
+	sfxSoundTestString0B,
+	sfxSoundTestString0C,
 };
 
+putinbank(sound_test_bank.textlookup)
 const uint8_t sfxtextSizes[] = {
 	sizeof(sfxSoundTestString00),
 	sizeof(sfxSoundTestString01),
@@ -41,6 +47,8 @@ const uint8_t sfxtextSizes[] = {
 	sizeof(sfxSoundTestString08),
 	sizeof(sfxSoundTestString09),
 	sizeof(sfxSoundTestString0A),
+	sizeof(sfxSoundTestString0B),
+	sizeof(sfxSoundTestString0C),
 };
 
 #else

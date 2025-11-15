@@ -18,17 +18,6 @@ RIFFChunkStart "tlbl"
 .asciiz "Theory Of Everything"
 .asciiz "Electroman Adventures"
 .asciiz "Practice ~ Stay Inside Me"
-.asciiz "Death SFX"
-.asciiz "Click SFX"
-.asciiz "LEVEL COMPLETE! SFX"
-.asciiz "Coin SFX"
-.asciiz "Chest Open SFX"
-.asciiz "Orbs SFX"
-.asciiz "Diamonds SFX"
-.asciiz "Exit Level SFX"
-.asciiz "Start Level SFX"
-.asciiz "Invalid SFX"
-.asciiz "Achievement Get SFX"
 
 RIFFChunkStart "taut"
 .asciiz "Original by RobTop, covered by Zenith302"
@@ -48,17 +37,6 @@ RIFFChunkStart "taut"
 .asciiz "Original by Dj-Nate, covered by leejh20, UserSniper, Vikrinox, Zenith302"
 .asciiz "Original by Waterflame, covered by cloud54, UserSniper, alexmush"
 .asciiz "Original by OcularNebula, covered by UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
-.asciiz "UserSniper"
 
 RIFFChunkStart "time"
 .if REGION = 0
@@ -66,17 +44,13 @@ RIFFChunkStart "time"
 .dword 82817, 90700, 81433, 85000
 .dword 80750, 86467, 96067, 85933
 .dword 82350, 96583, 89000, 87800
-.dword 479634, 383, 50, 3167
-.dword 683, 100, 683, 683
-.dword 650, 967, 633, 950
+.dword 479634
 .else
 .dword 72160, 72160, 4294967295, 102840
 .dword 99540, 109000, 97880, 102160
 .dword 97040, 104100, 115460, 103280
 .dword 98980, 116080, 106960, 105520
-.dword 576760, 460, 40, 3020
-.dword 700, 120, 820, 820
-.dword 680, 920, 640, 1140
+.dword 576760
 .endif
 
 RIFFChunkStart "fade"
@@ -84,6 +58,4 @@ RIFFChunkStart "fade"
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
-.dword 4294967295, 0, 0, 0
-.dword 0, 0, 0, 0
-.dword 0, 0, 0, 0
+.dword 4294967295

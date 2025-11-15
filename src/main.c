@@ -137,7 +137,7 @@ int main(void){
                 break;
 
             case 0x14:
-                banked_call(extra_code_bank, state_soundtest);
+                banked_call(sound_test_bank, state_soundtest);
                 break;
 
 

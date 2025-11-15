@@ -369,7 +369,7 @@ void state_levelselect(){
 
 
 
-putinbank(extra_code_bank.soundtest.00)
+putinbank(sound_test_bank.soundtest.00)
 const unsigned char pal_genericmenu[16]={
     0x17,0x0f,0x10,0x30,
     0x17,0x0f,0x2a,0x39,
@@ -377,7 +377,7 @@ const unsigned char pal_genericmenu[16]={
     0x17,0x0f,0x21,0x31 
 };
 
-putinbank(extra_code_bank.soundtest.01)
+putinbank(sound_test_bank.soundtest.01)
 const unsigned char nt_genericmenu[351]={
 0x04,0x01,0x04,0x46,0x06,0x01,0x04,0x0f,0x06,0x01,0x04,0x0a,0x19,0x04,0x02,0x05,
 0x19,0x04,0x0f,0x05,0x19,0x04,0x02,0x01,0x04,0x06,0x09,0x0e,0x0f,0x0e,0x07,0x04,
@@ -403,16 +403,19 @@ const unsigned char nt_genericmenu[351]={
 0x44,0xaa,0x79,0xa6,0xa5,0xad,0xa7,0xa5,0xa9,0xd6,0x00,0x04,0x07,0x04,0x00
 };
 
-putinbank(extra_code_bank.soundtest.02)
+putinbank(sound_test_bank.soundtest.02)
 const char str_soundtest[] = "\x01sound\x01test\x01"; //20aa
 
-putinbank(extra_code_bank.soundtest.03)
+putinbank(sound_test_bank.soundtest.03)
 const char str_music[] = "MUSIC"; //2189
 
-putinbank(extra_code_bank.soundtest.04)
+putinbank(sound_test_bank.soundtest.04)
 const char str_soundeffects[] = "SOUND EFFECTS"; //21c9
 
-putinbank(extra_code_bank.soundtest.09)
+putinbank(sound_test_bank.soundtest.04)
+const char str_16spaces[] = "                ";
+
+putinbank(sound_test_bank.soundtest.09)
 void state_soundtest(){
     signed char selection = 0;
     unsigned char index[2] = {0,0};
@@ -451,6 +454,7 @@ void state_soundtest(){
         if(index[1] == 0xff){index[1]++;}
         if(index[0] == song_max){index[0]--;}
         if(index[1] == sfx_max){index[1]--;}
+
         one_vram_buffer(
             num_to_ascii(index[selection]),
             0x2198 + (selection << 6)
@@ -459,6 +463,19 @@ void state_soundtest(){
             num_to_ascii((index[selection]>>4)),
             0x2197 + (selection << 6)
         );
+
+        if(selection == 1){
+            
+            str_vram_buffer(
+                str_16spaces,
+                0x21e9
+            );
+            str_vram_buffer(
+                sfxtexts[index[1]],
+                0x21e9
+            );
+        }
+
 
 
         if(player1_pressed & PAD_A) {

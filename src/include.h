@@ -11,6 +11,7 @@ __attribute__((retain))
 // == the compiler/linker figures these out ==
 #include "musicDefines.h"
 #include "musicBankData.h"
+#include "sfx_soundTestTables.h"
 // ===========================================
 #include "../music/EXPORTS/sfx.h"
 

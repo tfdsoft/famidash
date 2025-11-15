@@ -26,6 +26,7 @@
 #define chr_bank_3 55
 
 // MORE CODE
+#define sound_test_bank 58  // gamestates that don't need to switch
 #define extra_code_bank 59  // gamestates that don't need to switch
 #define extra_code_bank_1 60// banks frequently can go in here
 

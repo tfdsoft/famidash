@@ -84,12 +84,12 @@ def convertTextToMenuFormat(name : str | None) -> str | None:
         return None
     niceName = ""
     for c in name:
-        if (c.isalpha() and c.isupper()) or (c.isdigit()):
-            niceName += c
-        elif (c.isspace()):
-            niceName += "$"
-        else:
-            print(f"Warning: illegal character '{c}' detected in sound test string '{name}'. Will be omitted.")
+        #if (c.isalpha() and c.isupper()) or (c.isdigit()):
+        niceName += c
+        #elif (c.isspace()):
+        #    niceName += "$"
+        #else:
+        #    print(f"Warning: illegal character '{c}' detected in sound test string '{name}'. Will be omitted.")
     return niceName
 
 def processNSFTrackAuthorMetadata(author : str | dict) -> str:
@@ -183,7 +183,7 @@ def processMetadata(metadata : dict) -> dict:
     processedSfxTextList = tuple(map(convertTextToMenuFormat, sfxTextSet))
 
     # Convert to C
-    sfxOutputStringsList = [f'const char sfxSoundTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedSfxTextList)]
+    sfxOutputStringsList = [f'putinbank(sound_test_bank.textdata.{i:03}) const char sfxSoundTestString{i:02X}[{(len(s)+1):2}] = "{s}";' for i, s in enumerate(processedSfxTextList)]
     sfxArrayList = [f'\tsfxSoundTestString{i:02X},' if i != None else '\tNULL,' for i in sfxIdxList]
     sfxSizeArrayList = [f'\tsizeof(sfxSoundTestString{i:02X}),' if i != None else '\t0,' for i in sfxIdxList]
 
@@ -669,10 +669,10 @@ if __name__ == "__main__":
         '', '#if !__VS_SYSTEM',
         '', *processed_soundtest_metadata['sfxSoundTestStrings'],
         '',
-        '', 'const char* const sfxtexts[] = {',
+        '', 'putinbank(sound_test_bank.text)\nconst char* const sfxtexts[] = {',
         *processed_soundtest_metadata['sfxPtrs'],
         '};',
-        '', 'const uint8_t sfxtextSizes[] = {',
+        '', 'putinbank(sound_test_bank.textlookup)\nconst uint8_t sfxtextSizes[] = {',
         *processed_soundtest_metadata['sfxSizes'],
         '};',
         '', '#else',

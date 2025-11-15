@@ -390,104 +390,44 @@
 	],
 	SFX: [
 		{
-			text: "DEATH",
-			nsfData: {
-				trackLabel: "Death SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 383,
-				durationPAL: 460
-			}
+			text: "EXPLODE_11",
 		},
 		{
-			text: "CLICK",
-			nsfData: {
-				trackLabel: "Click SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 50,
-				durationPAL: 40
-			}
+			text: "PLAYSOUND_01",
 		},
 		{
-			text: "LEVEL COMPLETE",
-			nsfData: {
-				trackLabel: "LEVEL COMPLETE! SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 3167,
-				durationPAL: 3020
-			}
+			text: "QUITSOUND_01",
 		},
 		{
-			text: "COIN",
-			nsfData: {
-				trackLabel: "Coin SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 683,
-				durationPAL: 700
-			}
+			text: "ACHIEVEMENT_01",
 		},
 		{
-			text: "CHEST OPEN",
-			nsfData: {
-				trackLabel: "Chest Open SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 100,
-				durationPAL: 120
-			}
+			text: "ENDSTART_02",
 		},
 		{
-			text: "ORBS",
-			nsfData: {
-				trackLabel: "Orbs SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 683,
-				durationPAL: 820
-			}
+			text: "HIGHSCOREGET02",
 		},
 		{
-			text: "DIAMONDS",
-			nsfData: {
-				trackLabel: "Diamonds SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 683,
-				durationPAL: 820
-			}
+			text: "CHESTCLICK",
 		},
 		{
-			text: "EXIT LEVEL",
-			nsfData: {
-				trackLabel: "Exit Level SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 650,
-				durationPAL: 680
-			}
+			text: "CHESTLAND",
 		},
 		{
-			text: "START LEVEL",
-			nsfData: {
-				trackLabel: "Start Level SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 967,
-				durationPAL: 920
-			}
+			text: "CHESTOPEN01",
 		},
 		{
-			text: "INVALID",
-			nsfData: {
-				trackLabel: "Invalid SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 633,
-				durationPAL: 640
-			}
+			text: "GOLD01",
 		},
 		{
-			text: "ACHIEVEMENT GET",
-			nsfData: {
-				trackLabel: "Achievement Get SFX",
-				trackAuthor: "UserSniper",
-				durationNTSC: 950,
-				durationPAL: 1140
-			}
-		}
+			text: "GOLD02",
+		},
+		{
+			text: "REWARD01",
+		},
+		{
+			text: "SECRETKEY",
+		},
 	],
 	PCM: [/*
 		{
