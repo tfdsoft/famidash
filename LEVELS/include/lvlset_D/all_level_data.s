@@ -165,7 +165,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8067 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8072 bytes
 	.export level_data_element111rg
 	level_data_element111rg:
 	; Header
