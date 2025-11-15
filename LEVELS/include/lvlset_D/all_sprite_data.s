@@ -3590,7 +3590,7 @@ sprite_data_aftercatabath:
   .byte $f0,$ad,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0B"
+.segment "DAT_BANK_08"
 sprite_data_shardscapes:
   .byte $00,$00,$40,$03,$bf
   .byte $00,$00,$60,$03,$18
@@ -3805,7 +3805,7 @@ sprite_data_element111rg:
   .byte $40,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0C"
+.segment "DAT_BANK_0B"
 sprite_data_slaughterhouse:
   .byte $00,$00,$f0,$01,$18
   .byte $00,$00,$e0,$02,$fe
