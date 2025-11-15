@@ -87,7 +87,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8024
 
 
-.segment "DAT_BANK_04"	; Total bank size: 7868 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8069 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -112,8 +112,13 @@
 	; Level data
 		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7850
 
+	.export level_data_windylandscape_1
+	level_data_windylandscape_1:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
-.segment "DAT_BANK_05"	; Total bank size: 7417 bytes
+
+.segment "DAT_BANK_05"	; Total bank size: 7833 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -191,7 +196,7 @@
 		.incbin "EXPORTS/element111rg.lz.bin" ; Size: 5983
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8072 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8137 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -240,11 +245,6 @@
 	; Level data
 		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2288
 
-	.export level_data_windylandscape_1
-	level_data_windylandscape_1:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
-
 
 .segment "DAT_BANK_0A"	; Total bank size: 8058 bytes
 	.export level_data_aftercatabath_3
@@ -253,7 +253,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8052 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8181 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -278,8 +278,6 @@
 	; Level data
 		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
 
-
-.segment "DAT_BANK_0C"	; Total bank size: 8180 bytes
 	.export level_data_nullscapes
 	level_data_nullscapes:
 	; Header
@@ -302,8 +300,10 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 57 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1865
+		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3753
 
+
+.segment "DAT_BANK_0C"	; Total bank size: 7825 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data
