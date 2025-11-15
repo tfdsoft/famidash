@@ -91,7 +91,10 @@ void state_ramcheck(){
 
 
 
-    __asm__ volatile("ramcheck_failed:");
+    __attribute__((leaf)) __asm__ volatile(
+        "rts \n"
+        "ramcheck_failed: \n"
+    );
     set_chr_bank(2,4);
     set_chr_bank(3,5);
 
