@@ -80,8 +80,11 @@ int main(void){
     set_chr_a12_inversion(CHR_A12_INVERT);
 
     // clear chr
+    set_chr_default();
     vram_adr(0x0000);
     vram_fill(0,0x2000);
+
+    banked_call(extra_code_bank, state_ramcheck); 
 
     set_vram_buffer();
 
@@ -105,12 +108,7 @@ int main(void){
         pal_bright(0);
         ppu_off();
         oam_clear();
-        set_chr_bank(0,0);
-        set_chr_bank(1,2);
-        set_chr_bank(2,4);
-        set_chr_bank(3,5);
-        set_chr_bank(4,6);
-        set_chr_bank(5,7);
+        set_chr_default();
         vram_adr(0);
 
         switch(gamestate){
@@ -137,7 +135,7 @@ int main(void){
             case 0x11:
                 banked_call(extra_code_bank, state_levelselect);
                 break;
-                
+
             case 0x14:
                 banked_call(extra_code_bank, state_soundtest);
                 break;
@@ -150,9 +148,9 @@ int main(void){
             //
             //  DEBUG STUFF
             //
-            case 0xf0:
+            /*case 0xf0:
                 banked_call(extra_code_bank, state_bankexplorer);
-                break;
+                break;*/
         }
     }
     //APU.sprite.dma;

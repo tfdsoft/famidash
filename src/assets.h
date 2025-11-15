@@ -4,7 +4,7 @@
 #define XSTR(x) #x
 #define STR(x) XSTR(x)
 
-#define putinbank(bank) __attribute__((section(".prg_rom_"STR(bank)),retain))
+#define putinbank(bank) __attribute__((section(".prg_rom_"STR(bank)),used))
 
 #define file(symbol, bank) __attribute__((section((".prg_rom_"STR(bank))),retain)) const uint8_t symbol[]
 

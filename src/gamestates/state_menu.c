@@ -1,4 +1,4 @@
-putinbank(extra_code_bank.100)
+putinbank(extra_code_bank.menu.00)
 const unsigned char pal_title[32]={ 
     0x11,0x0f,0x01,0x30,
     0x11,0x0f,0x2a,0x39,
@@ -11,7 +11,7 @@ const unsigned char pal_title[32]={
     0x11,0x0f,0x21,0x31,
 };
 
-putinbank(extra_code_bank.101)
+putinbank(extra_code_bank.menu.01)
 const unsigned char nt_title[374]={
 0x02,0x01,0x02,0x3f,0x00,0x02,0x87,0x80,0x81,0x82,0x83,0x84,0x85,0x86,0x87,0x88,
 0x89,0x82,0x83,0x82,0x8b,0x8c,0x8d,0x00,0x02,0x0f,0x90,0x91,0x92,0x93,0x94,0x95,
@@ -39,7 +39,7 @@ const unsigned char nt_title[374]={
 0x07,0x00,0x02,0x07,0x02,0x00
 };
 
-putinbank(extra_code_bank.102)
+putinbank(extra_code_bank.menu.02)
 const uint8_t mspr_title[]={
     // everything in this table is shifted to the left by
     // one pixel due to *the problematic line.*
@@ -81,21 +81,21 @@ const uint8_t mspr_title[]={
     0x80 // end of data
 };
 
-putinbank(extra_code_bank.103)
+putinbank(extra_code_bank.menu.03)
 const uint8_t mspr_selectarrow[]={
     0, 0,  0x5f,   0b00000000,
     8,  0,  0x5f,   0b01000000,
     0x80
 };
 
-putinbank(extra_code_bank.104)
+putinbank(extra_code_bank.menu.04)
 const uint8_t mspr_selectbox[]={
     0, 0,  0x4f,   0b00000000,
     8,  0,  0x4f,   0b01000000,
     0x80
 };
 
-putinbank(extra_code_bank.105)
+putinbank(extra_code_bank.menu.05)
 const uint16_t mspr_select_pos[]={
     0x5078, // play
     0x50a8, // community
@@ -106,7 +106,7 @@ const uint16_t mspr_select_pos[]={
 };
 #define menu_button_count (sizeof(mspr_select_pos)>>1)
 
-putinbank(extra_code_bank.106)
+putinbank(extra_code_bank.menu.09)
 void state_menu() {
     unsigned char menu_color = 0x11;
     unsigned short interrupt_scroll = 0;
@@ -297,10 +297,10 @@ void state_menu() {
 
 
 
-putinbank(extra_code_bank.110)
+putinbank(extra_code_bank.levelselect.00)
 const unsigned char pal_levelselect[16]={ 0x11,0x01,0x11,0x30,0x11,0x0f,0x2a,0x39,0x11,0x0f,0x10,0x30,0x11,0x0f,0x21,0x31 };
 
-putinbank(extra_code_bank.111)
+putinbank(extra_code_bank.levelselect.01)
 const unsigned char nt_levelselect[324]={
 0x04,0x01,0x04,0x3f,0x00,0x04,0x05,0x1a,0x1b,0x0e,0x07,0x04,0x03,0x0f,0x0e,0x07,
 0x07,0x0f,0x0e,0x07,0x04,0x03,0x0f,0x1a,0x1b,0x00,0x04,0x0d,0x1e,0x17,0x04,0x03,
@@ -325,10 +325,10 @@ const unsigned char nt_levelselect[324]={
 0x04,0x07,0x04,0x00
 };
 
-putinbank(extra_code_bank.112)
+putinbank(extra_code_bank.levelselect.02)
 const char str_levelselect[] = "stereo\x01madness";
 
-putinbank(extra_code_bank.113)
+putinbank(extra_code_bank.levelselect.09)
 void state_levelselect(){
     vram_adr(0x800);
     donut_decompress_vram(chr_menu_difficulties, chr_bank_0);
@@ -369,7 +369,7 @@ void state_levelselect(){
 
 
 
-putinbank(extra_code_bank.140)
+putinbank(extra_code_bank.soundtest.00)
 const unsigned char pal_genericmenu[16]={
     0x17,0x0f,0x10,0x30,
     0x17,0x0f,0x2a,0x39,
@@ -377,7 +377,7 @@ const unsigned char pal_genericmenu[16]={
     0x17,0x0f,0x21,0x31 
 };
 
-putinbank(extra_code_bank.141)
+putinbank(extra_code_bank.soundtest.01)
 const unsigned char nt_genericmenu[351]={
 0x04,0x01,0x04,0x46,0x06,0x01,0x04,0x0f,0x06,0x01,0x04,0x0a,0x19,0x04,0x02,0x05,
 0x19,0x04,0x0f,0x05,0x19,0x04,0x02,0x01,0x04,0x06,0x09,0x0e,0x0f,0x0e,0x07,0x04,
@@ -403,16 +403,16 @@ const unsigned char nt_genericmenu[351]={
 0x44,0xaa,0x79,0xa6,0xa5,0xad,0xa7,0xa5,0xa9,0xd6,0x00,0x04,0x07,0x04,0x00
 };
 
-putinbank(extra_code_bank.142)
+putinbank(extra_code_bank.soundtest.02)
 const char str_soundtest[] = "\x01sound\x01test\x01"; //20aa
 
-putinbank(extra_code_bank.143)
+putinbank(extra_code_bank.soundtest.03)
 const char str_music[] = "MUSIC"; //2189
 
-putinbank(extra_code_bank.144)
+putinbank(extra_code_bank.soundtest.04)
 const char str_soundeffects[] = "SOUND EFFECTS"; //21c9
 
-putinbank(extra_code_bank.149)
+putinbank(extra_code_bank.soundtest.09)
 void state_soundtest(){
     signed char selection = 0;
     unsigned char index[2] = {0,0};

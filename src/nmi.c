@@ -14,7 +14,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
     // to do, so whatever you put in here
     // needs to be extra speedy.
     
-    
+    PPU.mask=0;
     // if rendering is off, do not access vram
     if ((PPU_MASK_VAR & 0b00011000)) {
         // /__asm__("cli");

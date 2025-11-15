@@ -567,3 +567,15 @@ uint8_t num_to_ascii(uint8_t n){
     if(n > 0x09) return (n + 0x37);
     return (n + 0x30);
 }
+
+
+
+__attribute__((noinline))
+void set_chr_default(){
+    set_chr_bank(0,0);
+    set_chr_bank(1,2);
+    set_chr_bank(2,4);
+    set_chr_bank(3,5);
+    set_chr_bank(4,6);
+    set_chr_bank(5,7);
+}
