@@ -118,7 +118,7 @@
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8188 bytes
+.segment "DAT_BANK_05"	; Total bank size: 7833 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -144,7 +144,7 @@
 		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7399
 
 
-.segment "DAT_BANK_06"	; Total bank size: 7786 bytes
+.segment "DAT_BANK_06"	; Total bank size: 7370 bytes
 	.export level_data_goldenhaze
 	level_data_goldenhaze:
 	; Header
@@ -227,7 +227,33 @@
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8062 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8174 bytes
+	.export level_data_element111rg
+	level_data_element111rg:
+	; Header
+		.byte <sprite_data_element111rg ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_element111rg ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_element111rg)) ;___ Sprite data bank
+		.byte song_time_machine ;____________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;__________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_______________________________ Deco type
+		.byte _SPIKESA ;_____________________________ Spike set
+		.byte _BLOCKSB ;_____________________________ Block set
+		.byte _SAWBLADESA ;__________________________ Sawblade set
+		.byte $1C ;__________________________________ Starting background color
+		.byte $0F ;__________________________________ Starting ground color
+		.byte 27 ;___________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/element111rg.lz.bin" ; Size: 4514
+
+
+.segment "DAT_BANK_0B"	; Total bank size: 8144 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -252,32 +278,6 @@
 	; Level data
 		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
 
-	.export level_data_element111rg
-	level_data_element111rg:
-	; Header
-		.byte <sprite_data_element111rg ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_element111rg ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_element111rg)) ;___ Sprite data bank
-		.byte song_time_machine ;____________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;__________________ Force platformer, Disable parallax
-		.byte _DECO1 ;_______________________________ Deco type
-		.byte _SPIKESA ;_____________________________ Spike set
-		.byte _BLOCKSB ;_____________________________ Block set
-		.byte _SAWBLADESA ;__________________________ Sawblade set
-		.byte $11 ;__________________________________ Starting background color
-		.byte $11 ;__________________________________ Starting ground color
-		.byte 27 ;___________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/element111rg.lz.bin" ; Size: 3108
-
-
-.segment "DAT_BANK_0B"	; Total bank size: 8186 bytes
 	.export level_data_nullscapes
 	level_data_nullscapes:
 	; Header
@@ -303,7 +303,7 @@
 		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 1865
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 2428 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 4690 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data

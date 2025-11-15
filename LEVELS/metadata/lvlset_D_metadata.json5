@@ -248,9 +248,29 @@
 			maxFallSpeed: 0x07,
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x11,
-			startingGroundColor: 0x11,
+			startingBackgroundColor: 0x1C,
+			startingGroundColor: 0x0F,
 			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[101, 10],
+					],
+					offsetX: -8,
+				},
+				{
+					coordinates: [
+						[241, 8], [312, 9], [330, 10],
+					],
+					offsetY: +16,
+				},
+				{
+					coordinates: [
+						[212, 13], [241, 10], [322, 13], [312, 11], [364, 12],
+					],
+					offsetY: -16,
+				},
+			],
 		},
 		{
 			level: "slaughterhouse",
@@ -291,12 +311,14 @@
 						[164, 15], [179, 14], [581, 32],
 					],
 					offsetX: +8,
+				},
+				{
 					coordinates: [
 						[453, 33], [472, 31], [491, 31], [511, 33], [609, 32], [646, 36], [666, 34],
 					],
 					offsetY: +8,
 				},
-			]				
+			],
 		},
 	],
 	globalObjectOffsets: [
