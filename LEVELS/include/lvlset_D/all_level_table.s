@@ -73,7 +73,7 @@ _level_lengths_lo:
 	.byte .lobyte($000087)		; kratos
 	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($000097)		; shardscapes
-	.byte .lobyte($0000A0)		; element111rg
+	.byte .lobyte($0000A2)		; element111rg
 	.byte .lobyte($000098)		; slaughterhouse
 	.byte .lobyte($000075)		; nullscapes
 
@@ -88,7 +88,7 @@ _level_lengths_md:
 	.byte .hibyte($000087)		; kratos
 	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($000097)		; shardscapes
-	.byte .hibyte($0000A0)		; element111rg
+	.byte .hibyte($0000A2)		; element111rg
 	.byte .hibyte($000098)		; slaughterhouse
 	.byte .hibyte($000075)		; nullscapes
 
@@ -103,7 +103,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000087)		; kratos
 	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($000097)		; shardscapes
-	.byte .bankbyte($0000A0)		; element111rg
+	.byte .bankbyte($0000A2)		; element111rg
 	.byte .bankbyte($000098)		; slaughterhouse
 	.byte .bankbyte($000075)		; nullscapes
 
