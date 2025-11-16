@@ -48,8 +48,7 @@
 		},
 		{
 			fmsSongName: "Stereo Madness",
-			upperText: "STEREO ",
-			lowerText: "MADNESS",
+			lowerText: "STEREO MADNESS",
 			originalArtistText: "FOREVERBOUND",
 			vsSystemEnabled: true,
 			nsfData: {
@@ -64,8 +63,7 @@
 		},
 		{
 			fmsSongName: "Back on Track",
-			upperText: "BACK ON",
-			lowerText: "TRACK",
+			lowerText: "BACK ON TRACK",
 			originalArtistText: "DJVI",
 			vsSystemEnabled: true,
 			nsfData: {
@@ -110,8 +108,7 @@
 		},
 		{
 			fmsSongName: "Base after Base",
-			upperText: "BASE AFTER",
-			lowerText: "BASE",
+			lowerText: "BASE AFTER BASE",
 			originalArtistText: "DJVI",
 			vsSystemEnabled: true,
 			nsfData: {
@@ -258,14 +255,12 @@
 		},
 		{
 			fmsSongName: "Hexagon Force",
-			upperText: "HEXAGON",
-			lowerText: "FORCE",
+			lowerText: "HEXAGON FORCE",
 			originalArtistText: "WATERFLAME",
 		},
 		{
 			fmsSongName: "Blast processing",
-			upperText: "BLAST",
-			lowerText: "PROCESSING",
+			lowerText: "BLAST PROCESSING",
 			originalArtistText: "WATERFLAME",
 		},
 		{
@@ -313,11 +308,24 @@
 		},
 		{
 			fmsSongName: "Scheming Weasel",
-			upperText: "SCHEMING",
-			lowerText: "WEASEL",
+			lowerText: "SCHEMING WEASEL",
 			originalArtistText: "KEVIN MACLEOD",
 			vsSystemEnabled: false
-		},/*
+		},
+		{
+			fmsSongName: "Ground to Space",
+			lowerText: "GROUND TO SPACE",
+			originalArtistText: "SEAGLOWINGPRO",
+		},
+		{
+			fmsSongName: "Ground to Space (GDA)",
+			upperText: "GROUND TO SPACE",
+			lowerText: "ADVANCE",
+			originalArtistText: "SGP,ORION",
+		},
+		
+		
+		
 		{
 			fmsSongName: "retray",
 			lowerText: "GOLDEN HAZE",
@@ -328,14 +336,17 @@
 			lowerText: "INFERNOPLEX",
 			originalArtistText: "DIMRAIN47",
 		},
-
+		/*{
+			fmsSongName: "Every End (Full)",
+			lowerText: "EVERY END",
+			originalArtistText: "DIMRAIN47",
+		},*/
 		{
 			fmsSongName: "The Challenge",
-			upperText: "THE",
-			lowerText: "CHALLENGE",
+			lowerText: "THE CHALLENGE",
 			originalArtistText: "ROBTOP",
 		},
-		{
+		/*{
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT",
@@ -346,7 +357,7 @@
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT PT 2",
 			originalArtistText: "DIMRAIN47",
-		},
+		},*/
 		{
 			fmsSongName: "midnight",
 			lowerText: "MIDNIGHT",
@@ -364,15 +375,8 @@
 			vsSystemEnabled: false
 		},
 		{
-			fmsSongName: "Ground to Space",
-			upperText: "GROUND TO",
-			lowerText: "SPACE",
-			originalArtistText: "SEAGLOWINGPRO",
-		},
-		{
 			fmsSongName: "rainbow tylenol",
-			upperText: "RAINBOW",
-			lowerText: "TYLENOL",
+			lowerText: "RAINBOW TYLENOL",
 			originalArtistText: "KITSUNE2",
 		},
 		{
@@ -386,7 +390,7 @@
 			upperText: "EXTRAORDINARY",
 			lowerText: "EXCITEMENT",
 			originalArtistText: "SEAGLOWINGPRO",
-		},			*/
+		},			/**/
 	],
 	SFX: [
 		{

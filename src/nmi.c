@@ -17,9 +17,9 @@ __attribute__((interrupt_norecurse)) void nmi(){
     
     // if rendering is off, do not access vram
     if ((PPU_MASK_VAR & 0b00011000)) {
-        PPU.mask=0;
         // send the palette in!
         if(VRAM_UPDATE){
+            PPU.mask=0;
             if(PAL_UPDATE){
                 PAL_UPDATE = 0;
 
@@ -75,13 +75,15 @@ __attribute__((interrupt_norecurse)) void nmi(){
                 flush_vram_update2();
             }
 
+            PPU.vram.address = 0;
+            PPU.vram.address = 0;
+
             PPU.status; // read ppu status. thanks llvm-mos!
             PPU.scroll = SCROLL_X;
             PPU.scroll = SCROLL_Y;
             PPU.control = PPU_CTRL_VAR;
-
-            oam_and_readjoypad(); // PPU regs are reset in here
-            
+            PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
+            oam_and_readjoypad();
         }
 
         irq_count = 0;

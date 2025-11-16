@@ -2,33 +2,33 @@
 
 #if !__VS_SYSTEM
 
-putinbank(sound_test_bank.textdata.000) const char sfxSoundTestString00[15] = "ACHIEVEMENT_01";
-putinbank(sound_test_bank.textdata.001) const char sfxSoundTestString01[10] = "BUYITEM01";
-putinbank(sound_test_bank.textdata.002) const char sfxSoundTestString02[10] = "BUYITEM03";
-putinbank(sound_test_bank.textdata.003) const char sfxSoundTestString03[ 8] = "CHEST07";
-putinbank(sound_test_bank.textdata.004) const char sfxSoundTestString04[ 8] = "CHEST08";
-putinbank(sound_test_bank.textdata.005) const char sfxSoundTestString05[11] = "CHESTCLICK";
-putinbank(sound_test_bank.textdata.006) const char sfxSoundTestString06[10] = "CHESTLAND";
-putinbank(sound_test_bank.textdata.007) const char sfxSoundTestString07[11] = "CHESTOPEN1";
-putinbank(sound_test_bank.textdata.008) const char sfxSoundTestString08[11] = "COUNTER003";
-putinbank(sound_test_bank.textdata.009) const char sfxSoundTestString09[10] = "CRYSTAL01";
-putinbank(sound_test_bank.textdata.010) const char sfxSoundTestString0A[ 7] = "DOOR01";
-putinbank(sound_test_bank.textdata.011) const char sfxSoundTestString0B[ 8] = "DOOR001";
-putinbank(sound_test_bank.textdata.012) const char sfxSoundTestString0C[ 7] = "DOOR02";
-putinbank(sound_test_bank.textdata.013) const char sfxSoundTestString0D[12] = "ENDSTART_02";
-putinbank(sound_test_bank.textdata.014) const char sfxSoundTestString0E[11] = "EXPLODE_11";
-putinbank(sound_test_bank.textdata.015) const char sfxSoundTestString0F[ 7] = "GOLD01";
-putinbank(sound_test_bank.textdata.016) const char sfxSoundTestString10[ 7] = "GOLD02";
-putinbank(sound_test_bank.textdata.017) const char sfxSoundTestString11[15] = "HIGHSCOREGET02";
-putinbank(sound_test_bank.textdata.018) const char sfxSoundTestString12[15] = "MAGICEXPLOSION";
-putinbank(sound_test_bank.textdata.019) const char sfxSoundTestString13[13] = "PLAYSOUND_01";
-putinbank(sound_test_bank.textdata.020) const char sfxSoundTestString14[13] = "QUITSOUND_01";
-putinbank(sound_test_bank.textdata.021) const char sfxSoundTestString15[ 9] = "REWARD01";
-putinbank(sound_test_bank.textdata.022) const char sfxSoundTestString16[10] = "SECRETKEY";
-putinbank(sound_test_bank.textdata.023) const char sfxSoundTestString17[11] = "UNLOCKPATH";
+putinbank(sound_test_bank.sfxtext.data.000) const char sfxSoundTestString00[15] = "ACHIEVEMENT_01";
+putinbank(sound_test_bank.sfxtext.data.001) const char sfxSoundTestString01[10] = "BUYITEM01";
+putinbank(sound_test_bank.sfxtext.data.002) const char sfxSoundTestString02[10] = "BUYITEM03";
+putinbank(sound_test_bank.sfxtext.data.003) const char sfxSoundTestString03[ 8] = "CHEST07";
+putinbank(sound_test_bank.sfxtext.data.004) const char sfxSoundTestString04[ 8] = "CHEST08";
+putinbank(sound_test_bank.sfxtext.data.005) const char sfxSoundTestString05[11] = "CHESTCLICK";
+putinbank(sound_test_bank.sfxtext.data.006) const char sfxSoundTestString06[10] = "CHESTLAND";
+putinbank(sound_test_bank.sfxtext.data.007) const char sfxSoundTestString07[11] = "CHESTOPEN1";
+putinbank(sound_test_bank.sfxtext.data.008) const char sfxSoundTestString08[11] = "COUNTER003";
+putinbank(sound_test_bank.sfxtext.data.009) const char sfxSoundTestString09[10] = "CRYSTAL01";
+putinbank(sound_test_bank.sfxtext.data.010) const char sfxSoundTestString0A[ 7] = "DOOR01";
+putinbank(sound_test_bank.sfxtext.data.011) const char sfxSoundTestString0B[ 8] = "DOOR001";
+putinbank(sound_test_bank.sfxtext.data.012) const char sfxSoundTestString0C[ 7] = "DOOR02";
+putinbank(sound_test_bank.sfxtext.data.013) const char sfxSoundTestString0D[12] = "ENDSTART_02";
+putinbank(sound_test_bank.sfxtext.data.014) const char sfxSoundTestString0E[11] = "EXPLODE_11";
+putinbank(sound_test_bank.sfxtext.data.015) const char sfxSoundTestString0F[ 7] = "GOLD01";
+putinbank(sound_test_bank.sfxtext.data.016) const char sfxSoundTestString10[ 7] = "GOLD02";
+putinbank(sound_test_bank.sfxtext.data.017) const char sfxSoundTestString11[15] = "HIGHSCOREGET02";
+putinbank(sound_test_bank.sfxtext.data.018) const char sfxSoundTestString12[15] = "MAGICEXPLOSION";
+putinbank(sound_test_bank.sfxtext.data.019) const char sfxSoundTestString13[13] = "PLAYSOUND_01";
+putinbank(sound_test_bank.sfxtext.data.020) const char sfxSoundTestString14[13] = "QUITSOUND_01";
+putinbank(sound_test_bank.sfxtext.data.021) const char sfxSoundTestString15[ 9] = "REWARD01";
+putinbank(sound_test_bank.sfxtext.data.022) const char sfxSoundTestString16[10] = "SECRETKEY";
+putinbank(sound_test_bank.sfxtext.data.023) const char sfxSoundTestString17[11] = "UNLOCKPATH";
 
 
-putinbank(sound_test_bank.text)
+putinbank(sound_test_bank.sfxtext.ptr)
 const char* const sfxtexts[] = {
 	sfxSoundTestString00,
 	sfxSoundTestString01,
@@ -54,34 +54,6 @@ const char* const sfxtexts[] = {
 	sfxSoundTestString15,
 	sfxSoundTestString16,
 	sfxSoundTestString17,
-};
-
-putinbank(sound_test_bank.textlookup)
-const uint8_t sfxtextSizes[] = {
-	sizeof(sfxSoundTestString00),
-	sizeof(sfxSoundTestString01),
-	sizeof(sfxSoundTestString02),
-	sizeof(sfxSoundTestString03),
-	sizeof(sfxSoundTestString04),
-	sizeof(sfxSoundTestString05),
-	sizeof(sfxSoundTestString06),
-	sizeof(sfxSoundTestString07),
-	sizeof(sfxSoundTestString08),
-	sizeof(sfxSoundTestString09),
-	sizeof(sfxSoundTestString0A),
-	sizeof(sfxSoundTestString0B),
-	sizeof(sfxSoundTestString0C),
-	sizeof(sfxSoundTestString0D),
-	sizeof(sfxSoundTestString0E),
-	sizeof(sfxSoundTestString0F),
-	sizeof(sfxSoundTestString10),
-	sizeof(sfxSoundTestString11),
-	sizeof(sfxSoundTestString12),
-	sizeof(sfxSoundTestString13),
-	sizeof(sfxSoundTestString14),
-	sizeof(sfxSoundTestString15),
-	sizeof(sfxSoundTestString16),
-	sizeof(sfxSoundTestString17),
 };
 
 #else

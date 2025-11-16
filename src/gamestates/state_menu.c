@@ -404,13 +404,16 @@ const unsigned char nt_genericmenu[351]={
 };
 
 putinbank(sound_test_bank.soundtest.02)
-const char str_soundtest[] = "\x01sound\x01test\x01"; //20aa
+const char str_soundtest[] = "\x01sound\x01test\x01";
 
 putinbank(sound_test_bank.soundtest.03)
-const char str_music[] = "MUSIC"; //2189
+const char str_music[] = "MUSIC"; 
 
 putinbank(sound_test_bank.soundtest.04)
-const char str_soundeffects[] = "SOUND EFFECTS"; //21c9
+const char str_soundeffects[] = "SOUND EFFECTS";
+
+putinbank(sound_test_bank.soundtest.05)
+const char str_byartist[] = "BY:";
 
 putinbank(sound_test_bank.soundtest.09)
 void state_soundtest(){
@@ -425,23 +428,25 @@ void state_soundtest(){
     pal_bg(pal_genericmenu);
 
     str_vram_buffer(str_soundtest, 0x20aa);
-    str_vram_buffer(str_music, 0x2168);
-    str_vram_buffer(str_soundeffects, 0x21e8);
+    str_vram_buffer(str_music, 0x2127);
+    str_vram_buffer(str_byartist, 0x21c7);
+    str_vram_buffer(str_soundeffects, 0x2227);
 
     ppu_on_all();
     pal_fade_to(0,4);
 
     while(1){
         ppu_wait_nmi();
+        scroll(0,0);
 
 
-        one_vram_buffer(0x00, (0x2166 + (selection << 7)));
+        one_vram_buffer(0x00, (0x2126 + (selection << 8)));
         if(player1_pressed & PAD_DOWN){selection++;}
         if(player1_pressed & PAD_UP){selection--;}
 
         if(selection >= 2){selection = 0;}
         if(selection < 0){selection = 1;}
-        one_vram_buffer('>', (0x2166 + (selection << 7)));
+        one_vram_buffer('>', (0x2126 + (selection << 8)));
 
 
         if(player1_pressed & PAD_RIGHT){
@@ -451,26 +456,45 @@ void state_soundtest(){
             index[selection]--;
         }
 
-        if(index[0] == 0xff){index[0]++;}
-        if(index[1] == 0xff){index[1]++;}
-        if(index[0] == song_max){index[0]--;}
-        if(index[1] == sfx_max){index[1]--;}
+        if(low_byte(index) == 0xff){index[0]++;}
+        if(high_byte(index) == 0xff){index[1]++;}
+        if(low_byte(index) == song_max){index[0]--;}
+        if(high_byte(index) == sfx_max){index[1]--;}
 
-        one_vram_buffer_repeat(' ', 17, (0x2188+(selection<<7)));
+        one_vram_buffer_repeat(' ', 17, (0x2168+(selection<<8)));
+        if(selection == 0){
+            one_vram_buffer_repeat(' ', 17, 0x2188);
+            unsigned char tmp = high_byte(xbgmtextsUpper[low_byte(index)]);
+            if(tmp){
+                str_vram_buffer(
+                    xbgmtextsUpper[low_byte(index)],
+                    0x2168
+                );
+            }
+            str_vram_buffer(
+                xbgmtextsLower[low_byte(index)],
+                0x2188
+            );
+            one_vram_buffer_repeat(' ', 14, 0x21cb);
+            str_vram_buffer(
+                xbgmtextsOriginalArtist[low_byte(index)],
+                0x21cb
+            );
+        }
         if(selection == 1){
             str_vram_buffer(
-                sfxtexts[index[1]],
-                0x2208
+                sfxtexts[high_byte(index)],
+                0x2268
             );
         }
 
         one_vram_buffer(
             num_to_ascii(index[selection]),
-            0x2178 + (selection << 7)
+            0x2138 + (selection << 8)
         );
         one_vram_buffer(
             num_to_ascii((index[selection]>>4)),
-            0x2177 + (selection << 7)
+            0x2137 + (selection << 8)
         );
 
 
@@ -478,10 +502,10 @@ void state_soundtest(){
         if(player1_pressed & PAD_A) {
             switch(selection){
                 case 0:
-                    music_play(index[0]);
+                    music_play(xbgmlookuptable[low_byte(index)]);
                     break;
                 case 1:
-                    sfx_play(index[1],0);
+                    sfx_play(high_byte(index),0);
                     break;
             }
         }

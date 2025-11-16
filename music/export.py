@@ -166,7 +166,7 @@ def processMetadata(metadata : dict) -> dict:
     processedTextList = tuple(map(convertTextToMenuFormat, totalTextSet))
 
     # Convert to C
-    outputStringsList = [f'const char musicSoundTestString{i:02X}[{len(s):2}] = "{s}";' for i, s in enumerate(processedTextList)]
+    outputStringsList = [f'putinbank(sound_test_bank.musictext.data.{i}) const char musicSoundTestString{i:02X}[{(len(s)+1):2}] = "{s}";' for i, s in enumerate(processedTextList)]
 
     pointerArrays = {key: 
             [f'\tmusicSoundTestString{i:02X},' if i != None else '\tNULL,' for i in idxLists[key]]
@@ -183,7 +183,7 @@ def processMetadata(metadata : dict) -> dict:
     processedSfxTextList = tuple(map(convertTextToMenuFormat, sfxTextSet))
 
     # Convert to C
-    sfxOutputStringsList = [f'putinbank(sound_test_bank.textdata.{i:03}) const char sfxSoundTestString{i:02X}[{(len(s)+1):2}] = "{s}";' for i, s in enumerate(processedSfxTextList)]
+    sfxOutputStringsList = [f'putinbank(sound_test_bank.sfxtext.data.{i:03}) const char sfxSoundTestString{i:02X}[{(len(s)+1):2}] = "{s}";' for i, s in enumerate(processedSfxTextList)]
     sfxArrayList = [f'\tsfxSoundTestString{i:02X},' if i != None else '\tNULL,' for i in sfxIdxList]
     sfxSizeArrayList = [f'\tsizeof(sfxSoundTestString{i:02X}),' if i != None else '\t0,' for i in sfxIdxList]
 
@@ -626,12 +626,12 @@ if __name__ == "__main__":
     for key in processed_soundtest_metadata['musicPtrs'].keys():
         arrName = key[0].upper() + key[1:-4] # remove the Text at the end
         mainArrays += [
-            '', f'const char* const xbgmtexts{arrName}[] = {{',
+            '', f'putinbank(sound_test_bank.musictext.ptr) const char* const xbgmtexts{arrName}[] = {{',
             *processed_soundtest_metadata['musicPtrs'][key],
             '};',
-            '', f'const uint8_t xbgmtexts{arrName}Size[] = {{',
-            *processed_soundtest_metadata['musicSizes'][key],
-            '};',
+            #'', f'const uint8_t xbgmtexts{arrName}Size[] = {{',
+            #*processed_soundtest_metadata['musicSizes'][key],
+            #'};',
             ''
         ]
         vsArrays += [
@@ -648,17 +648,17 @@ if __name__ == "__main__":
         '', *vsArrays,
         '', '#endif',
         '', '', '',
-        'CODE_BANK_PUSH("RODATA")',
+        #'CODE_BANK_PUSH("RODATA")',
         '', '#if !__VS_SYSTEM',
-        '', 'const uint8_t xbgmlookuptable[] = {',
+        '', 'putinbank(sound_test_bank.musictext.index) const uint8_t xbgmlookuptable[] = {',
         *[f"\t{i}," for i in processed_soundtest_metadata['songNames']],
         '};',
         '', '#else',
-        '', 'const uint8_t xbgmlookuptable[] = {',
+        '', 'putinbank(sound_test_bank.musictext.index) const uint8_t xbgmlookuptable[] = {',
         *[f"\t{i}," for i in processed_soundtest_metadata['vsSongNames']],
         '};',
         '', '#endif',
-        '', 'CODE_BANK_POP()',
+        #'', 'CODE_BANK_POP()',
         ''
     ]
     (exportPath / f"{exportStemPrefix}_soundTestTables.h").write_text("\n".join(soundTestTextData))
@@ -669,12 +669,12 @@ if __name__ == "__main__":
         '', '#if !__VS_SYSTEM',
         '', *processed_soundtest_metadata['sfxSoundTestStrings'],
         '',
-        '', 'putinbank(sound_test_bank.text)\nconst char* const sfxtexts[] = {',
+        '', 'putinbank(sound_test_bank.sfxtext.ptr)\nconst char* const sfxtexts[] = {',
         *processed_soundtest_metadata['sfxPtrs'],
         '};',
-        '', 'putinbank(sound_test_bank.textlookup)\nconst uint8_t sfxtextSizes[] = {',
-        *processed_soundtest_metadata['sfxSizes'],
-        '};',
+        #'', 'putinbank(sound_test_bank.sfxtextlookup)\nconst uint8_t sfxtextSizes[] = {',
+        #*processed_soundtest_metadata['sfxSizes'],
+        #'};',
         '', '#else',
         '',
         'const char* const sfxtexts[] = {};',
