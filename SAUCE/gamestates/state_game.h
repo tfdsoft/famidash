@@ -532,7 +532,7 @@ void everything_else() {
 				famistudio_music_pause(0);
 				if (kandokidshack != 9) kandokidshack = 0;
 				if (kandokidshack2 != 7) kandokidshack2 = 0;
-				if (kandokidshack3 == 12) DEBUG_MODE = !DEBUG_MODE;
+				if ((DEBUG_MODE != 2 && DEBUG_MODE != 3) && kandokidshack3 == 12) DEBUG_MODE = !DEBUG_MODE;
 				if ((DEBUG_MODE == 1) && kandokidshack3 == (0b00010010 + 0b00001100)) DEBUG_MODE = 2;
 				if ((DEBUG_MODE == 2) && kandokidshack4 == (0b00001001 + 0b00011010 + 0b01000111 - 0b01000000)) DEBUG_MODE = 3;
 				else if (kandokidshack3 == 20) kandodebugmode ^= 1;
