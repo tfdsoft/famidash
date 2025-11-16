@@ -170,7 +170,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8139 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8144 bytes
 	.export level_data_element111rg_with_secret_way
 	level_data_element111rg_with_secret_way:
 	; Header
@@ -193,7 +193,7 @@
 		.byte $0F ;__________________________________________________ Starting ground color
 		.byte 27 ;___________________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/element111rg_with_secret_way.lz.bin" ; Size: 6050
+		.incbin "EXPORTS/element111rg_with_secret_way.lz.bin" ; Size: 6040
 
 
 .segment "DAT_BANK_09"	; Total bank size: 7805 bytes
