@@ -121,22 +121,6 @@ void reset_level() {
 	currplayer_x = 0x1110;
 	}
 
-	player_y[0] = spawn_y_pos;
-	player_y[1] = spawn_y_pos;
-	currplayer_y = spawn_y_pos;
-
-	memfill(jimsheatballalive, 0, MAX_FIREBALLS);
-
-	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
-
-	currplayer_gravity = GRAVITY_DOWN;
-
-	tmp1 = 0;
-	do {
-		activesprites_active[tmp1] = 0;
-		activesprites_anim_frame[tmp1] = 0;
-	} while (++tmp1 < max_loaded_sprites);
-
 	target_scroll_y = 0x0180;
 	curr_x_scroll_stop = 0x5000;
 	target_x_scroll_stop = 0x5000;

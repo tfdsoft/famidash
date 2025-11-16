@@ -176,72 +176,6 @@ void state_lvldone() {
 			#endif
 
 			tmp2 = 0;
-
-
-/*
-			do {
-				if (!achievements[tmp2]) {
-					if (LEVELCOMPLETE[tmp2]) {
-						achievements[tmp2] = 1;
-						switch (tmp2) {
-							case 0:
-							case 1:
-							case 2:
-							case 3:			//display achievements here
-							case 4:
-							case 5:
-							case 6:
-							case 7:
-							case 8:
-							case 9:
-							case 10: break;
-						};
-					}
-				}
-			} while (++tmp2 <= 10);
-
-			if (!achievements[11]) {
-				if (kandokidshack >= 10) {
-					achievements[11] = 1;
-					//display text here
-				}
-			}
-
-			if (!achievements[12]) {
-				if (kandokidshack >= 20) {
-					achievements[12] = 1;
-					//display text here
-				}
-			}
-				
-			
-			if (!achievements[13]) {
-				if (kandokidshack >= 30) {
-					achievements[13] = 1;
-					//display text here
-				}
-			}
-				
-			
-			if (!achievements[14]) {
-				
-			}
-			if (!achievements[15]) {
-				
-			}
-			if (!achievements[16]) {
-				
-			}
-			if (!achievements[17]) {
-				
-			}
-			if (!achievements[18]) {
-				
-			}
-			if (!achievements[19]) {
-				
-			}
-*/
 			current_state = 4;
 			tmp1 = 1;
 			break;
@@ -279,8 +213,8 @@ void state_lvldone() {
 			checkcoinproceed();
 			break;
 		case 7:
-		lvl_done_update();
-		oam_clear();
+			lvl_done_update();
+			oam_clear();
 
 			mouse_and_cursor();
 
