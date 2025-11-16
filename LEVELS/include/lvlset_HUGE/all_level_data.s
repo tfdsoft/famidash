@@ -2232,7 +2232,7 @@
 		.incbin "EXPORTS/electroman.lz.bin" ; Size: 4502
 
 
-.segment "DAT_BANK_55"	; Total bank size: 8132 bytes
+.segment "DAT_BANK_55"	; Total bank size: 8189 bytes
 	.export level_data_xstep
 	level_data_xstep:
 	; Header
@@ -2257,29 +2257,10 @@
 	; Level data
 		.incbin "EXPORTS/xstep.lz.bin" ; Size: 4408
 
-	.export level_data_dreamer
-	level_data_dreamer:
-	; Header
-		.byte <sprite_data_dreamer ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_dreamer ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_dreamer)) ;___ Sprite data bank
-		.byte song_midnight ;___________________ Song ID
-		.byte (1 << 4) | 0 ;____________________ Starting game mode and speed
-		.byte ($B0) ;___________________________ Spawn Y Position (high byte)
-		.byte ($00) ;___________________________ Spawn Y Position (low byte)
-		.byte ($02) ;___________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;___________________________ Y Scroll Position (low byte)
-		.byte ($06) ;___________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;_____________ Force platformer, Disable parallax
-		.byte _DECO1 ;__________________________ Deco type
-		.byte _SPIKESA ;________________________ Spike set
-		.byte _BLOCKSB ;________________________ Block set
-		.byte _SAWBLADESA ;_____________________ Sawblade set
-		.byte $0F ;_____________________________ Starting background color
-		.byte $0F ;_____________________________ Starting ground color
-		.byte 27 ;______________________________ Level height
+	.export level_data_sonicwave_15
+	level_data_sonicwave_15:
 	; Level data
-		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3688
+		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3763
 
 
 .segment "DAT_BANK_56"	; Total bank size: 8181 bytes
@@ -2358,7 +2339,7 @@
 		.incbin "EXPORTS/infinitecircles.lz.bin" ; Size: 4341
 
 
-.segment "DAT_BANK_58"	; Total bank size: 8049 bytes
+.segment "DAT_BANK_58"	; Total bank size: 8052 bytes
 	.export level_data_darkparadise
 	level_data_darkparadise:
 	; Header
@@ -2383,10 +2364,29 @@
 	; Level data
 		.incbin "EXPORTS/darkparadise.lz.bin" ; Size: 4328
 
-	.export level_data_sonicwave_15
-	level_data_sonicwave_15:
+	.export level_data_dreamer
+	level_data_dreamer:
+	; Header
+		.byte <sprite_data_dreamer ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_dreamer ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_dreamer)) ;___ Sprite data bank
+		.byte song_midnight ;___________________ Song ID
+		.byte (1 << 4) | 0 ;____________________ Starting game mode and speed
+		.byte ($B0) ;___________________________ Spawn Y Position (high byte)
+		.byte ($00) ;___________________________ Spawn Y Position (low byte)
+		.byte ($02) ;___________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;___________________________ Y Scroll Position (low byte)
+		.byte ($06) ;___________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_____________ Force platformer, Disable parallax
+		.byte _DECO1 ;__________________________ Deco type
+		.byte _SPIKESA ;________________________ Spike set
+		.byte _BLOCKSB ;________________________ Block set
+		.byte _SAWBLADESA ;_____________________ Sawblade set
+		.byte $0F ;_____________________________ Starting background color
+		.byte $0F ;_____________________________ Starting ground color
+		.byte 27 ;______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3703
+		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3688
 
 
 .segment "DAT_BANK_59"	; Total bank size: 8166 bytes

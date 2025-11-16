@@ -51066,7 +51066,7 @@ sprite_data_sonicwave:
   .byte $60,$60,$10,$03,$07
   .byte $70,$60,$20,$03,$1a
   .byte $80,$60,$10,$03,$1b
-  .byte $d0,$61,$70,$03,$0f
+  .byte $f0,$61,$70,$03,$0f
   .byte $ff
 
 .segment "DAT_BANK_65"

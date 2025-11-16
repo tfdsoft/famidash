@@ -641,11 +641,11 @@
 		.incbin "EXPORTS/hi.lz.bin" ; Size: 4696
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 7539 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 7599 bytes
 	.export level_data_sonicwave_3
 	level_data_sonicwave_3:
 	; Level data
-		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3703
+		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3763
 
 	.export level_data_eon_2
 	level_data_eon_2:
