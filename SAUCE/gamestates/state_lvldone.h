@@ -4,6 +4,11 @@ void checkcointimer();
 void checkcoinproceed();
 void lvl_done_update();
 
+#include "defines/charmap/bgm_charmap.h"
+
+const char cheater[] = "CHEATER";
+const uint8_t cheatersize = sizeof(cheater);
+
 void state_lvldone() {
 	#define current_state tmp2
 	#define sprite_0_y tmp3
@@ -42,7 +47,9 @@ void state_lvldone() {
 	}
 	#if !__VS_SYSTEM
 	if (!(DEBUG_MODE == 3)) display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
+	else draw_padded_text(cheater, cheatersize, 18, NTADR_A(7, 13));
 	#endif
+
 
 	hexToDec(jumps);
 	tmp1 = 0;
