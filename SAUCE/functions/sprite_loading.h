@@ -250,6 +250,7 @@ char sprite_load_special_behavior(){
 				killSprite_return0;
 			case NULLSCAPES_ORB:
 				nullscapes_active++;
+				if (nullscapes_active == 3) nullscapes_active = 0;
 				killSprite_return0;
 		#endif
 		case FORCED_FREECAM_ON:
