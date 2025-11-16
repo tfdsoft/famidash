@@ -546,7 +546,7 @@
 		.incbin "EXPORTS/ninecircles.lz.bin" ; Size: 7962
 
 
-.segment "DAT_BANK_16"	; Total bank size: 7868 bytes
+.segment "DAT_BANK_16"	; Total bank size: 7872 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -569,7 +569,7 @@
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7850
+		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7854
 
 
 .segment "DAT_BANK_18"	; Total bank size: 7792 bytes

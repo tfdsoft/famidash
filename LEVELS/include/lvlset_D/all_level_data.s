@@ -87,7 +87,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8024
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8069 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8073 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -110,7 +110,7 @@
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7850
+		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7854
 
 	.export level_data_windylandscape_1
 	level_data_windylandscape_1:
