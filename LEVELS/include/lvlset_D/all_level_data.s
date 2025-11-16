@@ -118,7 +118,7 @@
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
-.segment "DAT_BANK_05"	; Total bank size: 7833 bytes
+.segment "DAT_BANK_05"	; Total bank size: 8098 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -144,7 +144,7 @@
 		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7399
 
 
-.segment "DAT_BANK_06"	; Total bank size: 7370 bytes
+.segment "DAT_BANK_06"	; Total bank size: 7786 bytes
 	.export level_data_goldenhaze
 	level_data_goldenhaze:
 	; Header
@@ -196,7 +196,7 @@
 		.incbin "EXPORTS/element111rg.lz.bin" ; Size: 5983
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8137 bytes
+.segment "DAT_BANK_09"	; Total bank size: 7793 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -240,10 +240,10 @@
 		.byte _BLOCKSB ;____________________________ Block set
 		.byte _SAWBLADESA ;_________________________ Sawblade set
 		.byte $30 ;_________________________________ Starting background color
-		.byte $30 ;_________________________________ Starting ground color
+		.byte $0F ;_________________________________ Starting ground color
 		.byte 57 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2288
+		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2210
 
 
 .segment "DAT_BANK_0A"	; Total bank size: 8058 bytes

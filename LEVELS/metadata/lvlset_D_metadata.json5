@@ -227,12 +227,41 @@
 			difficulty: "IMPOSSIBLEDEMON",
 			stars: 10,
 			songID: "song_slow_down",
+			//spawnYPositionHi: 0x30,
+			//spawnYPositionLow: 0x00,
+			//scrollYPositionHi: 0x02,
+			//scrollYPositionLow: 0x30,
 			maxFallSpeed: 0x07,
 			startingGameMode: 4,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x30,
-			startingGroundColor: 0x30,
-			parallaxDisable: true
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[375, 37], [81, 39], [103, 38], [115, 38], [139, 37], [143, 35], [208, 38], [257, 39],
+						[275, 39], [286, 39], [293, 38],
+					],
+					offsetX: +8,
+				},
+				{
+					coordinates: [
+						[521, 31], [609, 33], [33, 39], [47, 40], [62, 37], [86, 39], [92, 38], [110, 38],
+						[198, 37], [227, 38], [250, 39], [253, 40], [269, 38],
+					],
+					offsetY: +8,
+				},
+				{
+					coordinates: [
+						[28, 37], [36, 38], [58, 38], [65, 38], [73, 39], [77, 38], [97, 37], [119, 38],
+						[126, 38], [130, 37], [135, 38], [165, 37], [173, 36], [179, 38], [190, 38],
+						[194, 38], [214, 38], [222, 37], [236, 38], [244, 37], [262, 37], [281, 39],
+					],
+					offsetY: +8,
+					offsetX: +8,
+				},
+			],
 		},
 		{
 			level: "element111rg",
