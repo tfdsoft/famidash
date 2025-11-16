@@ -242,9 +242,6 @@ void state_game(){
 		}
 
 		kandoframecnt++;
-
-		if (DEBUG_MODE || (kandokidshack == 9) || (kandokidshack3 > 10) || (kandokidshack4 > 10)) cheater = 1;
-
 		if (slowmode && (kandokidshack4 == 15)) {
 				if ((kandoframecnt & 3)) { 
 					ppu_wait_nmi(); 

@@ -24,13 +24,12 @@ void state_levelselect() {
 	#if __VS_SYSTEM
 		menutimer = 0;
 	#endif
-		
+
 	pal_bg(oldsplashMenu);
 
 	if (tempplat == 1) { tempplat = 0; options |= platformer; }
 	slowmode = 0;
 	disco_sprites = 0;
-	cheater = 0;
 	
 	vram_adr(NAMETABLE_A);
 	vram_unrle(level_select_screen); 
