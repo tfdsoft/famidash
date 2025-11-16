@@ -77,7 +77,7 @@ char col_death_bottom_routine() {
 char col_death_top_routine() {
 	if ((uint8_t)(temp_y & 0x0f) < 0x06) {			
 		// If Y pos inside block < 8px, die
-		do_if_in_range((uint8_t)(temp_x & 0x0f), 0x04, 0x09-1, {		// If X pos even insider, die even more
+		do_if_in_range((uint8_t)(temp_x & 0x0f), 0x05, 0x08-1, {		// If X pos even insider, die even more
 			cube_data[currplayer] = 1;
 			return 1;
 		});
