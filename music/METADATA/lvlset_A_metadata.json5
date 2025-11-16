@@ -390,22 +390,19 @@
 	],
 	SFX: [
 		{
-			text: "EXPLODE_11",
-		},
-		{
-			text: "PLAYSOUND_01",
-		},
-		{
-			text: "QUITSOUND_01",
-		},
-		{
 			text: "ACHIEVEMENT_01",
 		},
 		{
-			text: "ENDSTART_02",
+			text: "BUYITEM01",
 		},
 		{
-			text: "HIGHSCOREGET02",
+			text: "BUYITEM03",
+		},
+		{
+			text: "CHEST07",
+		},
+		{
+			text: "CHEST08",
 		},
 		{
 			text: "CHESTCLICK",
@@ -414,7 +411,28 @@
 			text: "CHESTLAND",
 		},
 		{
-			text: "CHESTOPEN01",
+			text: "CHESTOPEN1",
+		},
+		{
+			text: "COUNTER003",
+		},
+		{
+			text: "CRYSTAL01",
+		},
+		{
+			text: "DOOR01",
+		},
+		{
+			text: "DOOR001",
+		},
+		{
+			text: "DOOR02",
+		},
+		{
+			text: "ENDSTART_02",
+		},
+		{
+			text: "EXPLODE_11",
 		},
 		{
 			text: "GOLD01",
@@ -423,10 +441,25 @@
 			text: "GOLD02",
 		},
 		{
+			text: "HIGHSCOREGET02",
+		},
+		{
+			text: "MAGICEXPLOSION",
+		},
+		{
+			text: "PLAYSOUND_01",
+		},
+		{
+			text: "QUITSOUND_01",
+		},
+		{
 			text: "REWARD01",
 		},
 		{
 			text: "SECRETKEY",
+		},
+		{
+			text: "UNLOCKPATH",
 		},
 	],
 	PCM: [/*

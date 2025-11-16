@@ -447,8 +447,14 @@ void state_soundtest(){
         one_vram_buffer('>', (0x2187 + (selection << 6)));
 
 
-        if(player1_pressed & PAD_RIGHT){index[selection]++;}
-        if(player1_pressed & PAD_LEFT){index[selection]--;}
+        if(player1_pressed & PAD_RIGHT){
+            index[selection]++;
+            str_vram_buffer(str_16spaces, (0x21a9 + (selection << 6)));
+        }
+        if(player1_pressed & PAD_LEFT){
+            index[selection]--;
+            str_vram_buffer(str_16spaces, (0x21a9 + (selection << 6)));
+        }
 
         if(index[0] == 0xff){index[0]++;}
         if(index[1] == 0xff){index[1]++;}
@@ -465,11 +471,6 @@ void state_soundtest(){
         );
 
         if(selection == 1){
-            
-            str_vram_buffer(
-                str_16spaces,
-                0x21e9
-            );
             str_vram_buffer(
                 sfxtexts[index[1]],
                 0x21e9
