@@ -41,7 +41,7 @@ void state_lvldone() {
 		vram_unrle(leveldone);
 	}
 	#if !__VS_SYSTEM
-	display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
+	if (!(DEBUG_MODE == 3)) display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
 	#endif
 
 	hexToDec(jumps);
