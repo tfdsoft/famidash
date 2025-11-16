@@ -7,7 +7,7 @@ void lvl_done_update();
 #include "defines/charmap/bgm_charmap.h"
 
 const char cheater[] = "CHEATER";
-const uint8_t cheatersize = sizeof(cheater);
+const uint8_t cheatersize = sizeof(cheater) - 1;
 
 void state_lvldone() {
 	#define current_state tmp2
