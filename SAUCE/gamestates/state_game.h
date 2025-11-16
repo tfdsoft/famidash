@@ -274,7 +274,7 @@ void state_game(){
 		if (level_resetting_flag) level_resetting_flag--;
 		timewarp_done = 0;
 
-		if (DEBUG_MODE == 1 || DEBUG_MODE == 2) gray_line();
+		if ((DEBUG_MODE == 1) || (DEBUG_MODE == 2)) gray_line();
 		if (!DEBUG_MODE && kandodebugmode != 2) {
 		if (high_byte(player_x[0]) > 0x20) {
 			if (cube_data[0] & 1 || cube_data[1] & 1) {
@@ -533,7 +533,7 @@ void everything_else() {
 				if (kandokidshack != 9) kandokidshack = 0;
 				if (kandokidshack2 != 7) kandokidshack2 = 0;
 				if (kandokidshack3 == 12) DEBUG_MODE = !DEBUG_MODE;
-				if (DEBUG_MODE && kandokidshack3 == 30) DEBUG_MODE = 2;
+				if ((DEBUG_MODE == 1) && kandokidshack3 == 30) DEBUG_MODE = 2;
 				if ((DEBUG_MODE == 2) && kandokidshack4 == 42) DEBUG_MODE = 3;
 				else if (kandokidshack3 == 20) kandodebugmode ^= 1;
 				else kandokidshack3 = 0;
