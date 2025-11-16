@@ -66,7 +66,7 @@ char bg_coll_sides() {
 char col_death_bottom_routine() {
 	if ((uint8_t)(temp_y & 0x0f) > 0x0a) {							// If Y pos inside block ≥ 8px, die
 		// If Y pos inside block < 8px, die
-		do_if_in_range((uint8_t)(temp_x & 0x0f), 0x04, 0x09-1, {		// If X pos even insider, die even more
+		do_if_in_range((uint8_t)(temp_x & 0x0f), 0x05, 0x08-1, {		// If X pos even insider, die even more
 			cube_data[currplayer] = 1;
 			return 1;
 		});
@@ -122,6 +122,7 @@ char bg_coll_spikes() {
 		case COL_DEATH_TOP:
 			return col_death_top_routine();	
 
+		case COL_TOP_CENTER_SPIKE:
 		case COL_TOP_SPIKES:
 		case COL_DEATH_BOTTOM:
 			return col_death_bottom_routine();	
@@ -301,6 +302,8 @@ char bg_coll_mini_blocks() {
 				return 1;
 			}
 			break;
+
+		case COL_TOP_CENTER_SPIKE:
 		case COL_TOP_SPIKES:
 		case COL_TOP:
 			tmp2 = (uint8_t)(temp_y & 0x0f);

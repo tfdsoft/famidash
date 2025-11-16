@@ -1,3 +1,4 @@
+#define COL_TOP_CENTER_SPIKE 0x3d
 #define COL_BOTTOM_CENTER_SPIKE 0x3c
 
 #define COL_TOP_SPIKES 0x3b
