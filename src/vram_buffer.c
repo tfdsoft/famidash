@@ -43,15 +43,25 @@ void one_vram_buffer(char data, int ppu_addr){
 		:"a"(data),"x"(low_byte(ppu_addr)),"rc2"(high_byte(ppu_addr))
 		:"y","p","rc2"
 	);*/
-
-	VRAM_BUF[VRAM_INDEX+2] = data;
 	VRAM_BUF[VRAM_INDEX] = high_byte(ppu_addr);
 	VRAM_BUF[VRAM_INDEX+1] = low_byte(ppu_addr);
+	VRAM_BUF[VRAM_INDEX+2] = data;
 	VRAM_INDEX += 3;
 	VRAM_BUF[VRAM_INDEX] = 0xff;
+	
 }
 
-
+__attribute__((noinline))
+void one_vram_buffer_repeat(
+	char data, uint8_t len, int ppu_addr
+){
+	VRAM_BUF[VRAM_INDEX] = (0x40 | high_byte(ppu_addr));
+	VRAM_BUF[VRAM_INDEX+1] = low_byte(ppu_addr);
+	VRAM_BUF[VRAM_INDEX+2] = (len|0x80);
+	VRAM_BUF[VRAM_INDEX+3] = data;
+	VRAM_INDEX += 4;
+	VRAM_BUF[VRAM_INDEX] = 0xff;
+}
 
 
 
@@ -77,6 +87,8 @@ void multi_vram_buffer_horz(
 	VRAM_BUF[VRAM_INDEX] = 0xff;
 	//VRAM_INDEX--;
 }
+
+
 
 __attribute((noinline)) 
 void str_vram_buffer(
@@ -130,7 +142,7 @@ __attribute__((noinline)) void flush_vram_update2(){
 			"cpx #$80 \n"
 			"bmi 5f \n"
 			"cpx #$ff \n"
-			"beq 8f \n"
+			"beq 10f \n"
 
 		"3: \n"	// .LupdVertSeq:
 			// Set control bit for vertical traversal
@@ -167,6 +179,8 @@ __attribute__((noinline)) void flush_vram_update2(){
 			"pla \n" //"lda (NAME_UPD_ADR),y \n" 
 			//"iny \n" 
 
+			"bmi 8f \n"
+
 			// store size in counter
 			"tax \n"
 
@@ -182,7 +196,22 @@ __attribute__((noinline)) void flush_vram_update2(){
 
 			"jmp 2b \n"
 
-		"8: \n" // exit
+		"8: \n" //.LupdRepeatedByte:
+			"and #$7f \n"
+			"tax \n"
+			"pla \n"
+
+		"9: \n" //.LupdRepeatedByteLoop:
+			"sta $2007 \n"
+			"dex \n"
+			"bne 9b \n"
+
+			"lda PPU_CTRL_VAR \n"
+			"sta $2000 \n"
+			
+			"jmp 2b \n"
+
+		"10: \n" // exit
 			// restore stack
 			"ldx __rc3 \n"
 			"txs \n"

@@ -230,7 +230,7 @@ __attribute__((section(".prg_rom_fixed_lo"),noinline)) void oam_and_readjoypad()
 
 
 
-
+        /*
     // now that that's over...
     // it would probably be best if i just
     // reset the ppu's registers now, since
@@ -249,7 +249,7 @@ __attribute__((section(".prg_rom_fixed_lo"),noinline)) void oam_and_readjoypad()
         "lda PPU_CTRL_VAR \n"
         "sta $2000 \n"
     "jmp 1f \n"
-
+        */
 
 
 

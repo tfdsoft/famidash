@@ -412,9 +412,6 @@ const char str_music[] = "MUSIC"; //2189
 putinbank(sound_test_bank.soundtest.04)
 const char str_soundeffects[] = "SOUND EFFECTS"; //21c9
 
-putinbank(sound_test_bank.soundtest.04)
-const char str_16spaces[] = "                ";
-
 putinbank(sound_test_bank.soundtest.09)
 void state_soundtest(){
     signed char selection = 0;
@@ -428,8 +425,8 @@ void state_soundtest(){
     pal_bg(pal_genericmenu);
 
     str_vram_buffer(str_soundtest, 0x20aa);
-    str_vram_buffer(str_music, 0x2189);
-    str_vram_buffer(str_soundeffects, 0x21c9);
+    str_vram_buffer(str_music, 0x2168);
+    str_vram_buffer(str_soundeffects, 0x21e8);
 
     ppu_on_all();
     pal_fade_to(0,4);
@@ -438,22 +435,20 @@ void state_soundtest(){
         ppu_wait_nmi();
 
 
-        one_vram_buffer(0x00, (0x2187 + (selection << 6)));
+        one_vram_buffer(0x00, (0x2166 + (selection << 7)));
         if(player1_pressed & PAD_DOWN){selection++;}
         if(player1_pressed & PAD_UP){selection--;}
 
         if(selection >= 2){selection = 0;}
         if(selection < 0){selection = 1;}
-        one_vram_buffer('>', (0x2187 + (selection << 6)));
+        one_vram_buffer('>', (0x2166 + (selection << 7)));
 
 
         if(player1_pressed & PAD_RIGHT){
             index[selection]++;
-            str_vram_buffer(str_16spaces, (0x21a9 + (selection << 6)));
         }
         if(player1_pressed & PAD_LEFT){
             index[selection]--;
-            str_vram_buffer(str_16spaces, (0x21a9 + (selection << 6)));
         }
 
         if(index[0] == 0xff){index[0]++;}
@@ -461,21 +456,22 @@ void state_soundtest(){
         if(index[0] == song_max){index[0]--;}
         if(index[1] == sfx_max){index[1]--;}
 
-        one_vram_buffer(
-            num_to_ascii(index[selection]),
-            0x2198 + (selection << 6)
-        );
-        one_vram_buffer(
-            num_to_ascii((index[selection]>>4)),
-            0x2197 + (selection << 6)
-        );
-
+        one_vram_buffer_repeat(' ', 17, (0x2188+(selection<<7)));
         if(selection == 1){
             str_vram_buffer(
                 sfxtexts[index[1]],
-                0x21e9
+                0x2208
             );
         }
+
+        one_vram_buffer(
+            num_to_ascii(index[selection]),
+            0x2178 + (selection << 7)
+        );
+        one_vram_buffer(
+            num_to_ascii((index[selection]>>4)),
+            0x2177 + (selection << 7)
+        );
 
 
 
