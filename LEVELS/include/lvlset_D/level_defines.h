@@ -11,9 +11,9 @@
 #define level_foresttemple 2
 #define level_windylandscape 3
 #define level_silentclubstep 4
-#define level_kratos 5
-#define level_aftercatabath 6
-#define level_shardscapes 7
-#define level_element111rg_with_secret_way 8
-#define level_slaughterhouse 9
+#define level_aftercatabath 5
+#define level_shardscapes 6
+#define level_element111rg_with_secret_way 7
+#define level_slaughterhouse 8
+#define level_kratos 9
 #define level_nullscapes 10

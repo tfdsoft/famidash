@@ -4835,6 +4835,136 @@
 			parallaxDisable: true
 		},
 		{
+			level: "aftercatabath",
+			lowerText: "AFTERCATABATH",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_atthespeedoflightfull",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x06,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},		
+		{
+			level: "shardscapes",
+			lowerText: "SHARDSCAPES",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_slow_down",
+			//spawnYPositionHi: 0x30,
+			//spawnYPositionLow: 0x00,
+			//scrollYPositionHi: 0x02,
+			//scrollYPositionLow: 0x30,
+			maxFallSpeed: 0x07,
+			startingGameMode: 4,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x30,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[375, 37], [81, 39], [103, 38], [115, 38], [139, 37], [143, 35], [208, 38], [257, 39],
+						[275, 39], [286, 39], [293, 38], [356, 35], [402, 33], [465, 35], [528, 32], [538, 29],
+					],
+					offsetX: +8,
+				},
+				{
+					coordinates: [
+						[521, 31], [609, 33], [33, 39], [47, 40], [62, 37], [86, 39], [92, 38], [110, 38],
+						[198, 37], [227, 38], [250, 39], [253, 40], [269, 38], [366, 35], [435, 32],
+					],
+					offsetY: +8,
+				},
+				{
+					coordinates: [
+						[28, 37], [36, 38], [58, 38], [65, 38], [73, 39], [77, 38], [97, 37], [119, 38],
+						[126, 38], [130, 37], [135, 38], [165, 37], [173, 36], [179, 38], [190, 38],
+						[194, 38], [214, 38], [222, 37], [236, 38], [244, 37], [262, 37], [281, 39],
+						[547, 34],
+					],
+					offsetY: +8,
+					offsetX: +8,
+				},
+			],
+		},
+		{
+			level: "element111rg",
+			upperText: "ELEMENT",
+			lowerText: "111 RG",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_time_machine",
+			maxFallSpeed: 0x07,
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x1C,
+			startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[101, 10], [526, 12],
+					],
+					offsetX: -8,
+				},
+				{
+					coordinates: [
+						[470, 15], [712, 10],
+					],
+					offsetY: -8,
+				},
+				{
+					coordinates: [
+						[470, 14], [712, 9],
+					],
+					offsetY: +8,
+				},
+				{
+					coordinates: [
+						[241, 8], [312, 9], [330, 10], [992, 17],
+					],
+					offsetY: +16,
+				},
+				{
+					coordinates: [
+						[212, 13], [241, 10], [322, 13], [312, 11], [364, 12], [440, 15], [575, 10],
+						[642, 7], [863, 19],
+					],
+					offsetY: -16,
+				},
+			],
+		},
+		{
+			level: "slaughterhouse",
+			lowerText: "SLAUGHTERHOUSE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_lost",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "kratos",
 			lowerText: "KRATOS",
 			decoType: "DECO1",
@@ -4851,55 +4981,37 @@
 			parallaxDisable: true
 		},
 		{
-			level: "aftercatabath",
-			lowerText: "AFTERCATABATH",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_atthespeedoflightfull",
-			startingGameMode: 0,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x06,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},		
-
-		{
-			level: "shardscapes",
-			lowerText: "SHARDSCAPES",
+			level: "nullscapes",
+			lowerText: "NULLSCAPES",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_slow_down",
-			maxFallSpeed: 0x07,
+			songID: "song_flow",
+			spawnYPositionHi: 0xFF,
+			spawnYPositionLow: 0xFF,
 			startingGameMode: 4,
-			startingSpeed: 1,
-			startingBackgroundColor: 0x30,
-			startingGroundColor: 0x30,
-			parallaxDisable: true
-		},		
-		{
-			level: "slaughterhouse",
-			lowerText: "SLAUGHTERHOUSE",
-			decoType: "DECO1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_lost",
-			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},		
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[164, 15], [179, 14], [581, 32],
+					],
+					offsetX: +8,
+				},
+				{
+					coordinates: [
+						[453, 33], [472, 31], [491, 31], [511, 33], [609, 32], [646, 36], [666, 34],
+					],
+					offsetY: +8,
+				},
+			],
+		},
 		{
 			level: "everyend",
 			lowerText: "EVERY END",

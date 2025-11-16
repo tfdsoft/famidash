@@ -105,10 +105,12 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// cataclysm
 	DEMON,	// aftermath
 	DEMON,	// silentclubstep
-	DEMON,	// kratos
 	DEMON,	// aftercatabath
 	DEMON,	// shardscapes
+	DEMON,	// element111rg
 	DEMON,	// slaughterhouse
+	DEMON,	// kratos
+	DEMON,	// nullscapes
 	DEMON,	// everyend
 	DEMON,	// luckydraw
 };
@@ -217,10 +219,12 @@ const uint8_t stars_list[] = {
 	10,	// cataclysm
 	10,	// aftermath
 	10,	// silentclubstep
-	10,	// kratos
 	10,	// aftercatabath
 	10,	// shardscapes
+	10,	// element111rg
 	10,	// slaughterhouse
+	10,	// kratos
+	10,	// nullscapes
 	10,	// everyend
 	10,	// luckydraw
 };
