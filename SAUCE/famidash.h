@@ -397,6 +397,7 @@ uint8_t current_saw_set;
 uint8_t nocamlock;
 uint8_t nocamlockforced;
 uint8_t nestopia;
+uint8_t cheater;
 
 uint8_t nullscapes_orb_type;
 uint8_t nullscapes_active;
