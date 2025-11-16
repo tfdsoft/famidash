@@ -14,6 +14,6 @@
 #define level_kratos 5
 #define level_aftercatabath 6
 #define level_shardscapes 7
-#define level_element111rg 8
+#define level_element111rg_with_secret_way 8
 #define level_slaughterhouse 9
 #define level_nullscapes 10
