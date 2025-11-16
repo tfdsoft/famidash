@@ -489,7 +489,7 @@ void everything_else() {
 						joypad1.press = PAD_START;
 						orbed[currplayer] = 1;
 					}
-					if (joypad1.press_select || exittimer == 100) { 
+					if ((joypad1.select || exittimer == 100) && DEBUG_MODE) { 
 						gameState = STATE_LEVELSELECT; 
 						sfx_play(sfx_exit_level,0);
 						music_update();
