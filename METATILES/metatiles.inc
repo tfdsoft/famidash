@@ -211,8 +211,8 @@ Metatile "DOWN_RIGHT_DIAG_SPIKES",									$00, $2F, $3C, $19, PAL_0, COL_DEATH_
 Metatile "DOWN_LEFT_DIAG_SPIKES",									$2E, $00, $18, $3D, PAL_0, COL_DEATH_BOTTOM_LEFT
 Metatile "FAKE_SPIKE_UP", 											$22, $23, $32, $33, PAL_2, COL_NONE
 Metatile "FAKE_SPIKE_TOP", 											$24, $25, $34, $35, PAL_2, COL_NONE
-Metatile "SPIKE_PLATFORM", 											$3C, $3D, $3A, $3B, PAL_0, COL_BOTTOM_RIGHT_SPIKE
-Metatile "SPIKE_INVERTED_PLATFORM", 								$2C, $2D, $3A, $3B, PAL_0, COL_BOTTOM_RIGHT_SPIKE
+Metatile "SPIKE_PLATFORM", 											$3C, $3D, $3A, $3B, PAL_0, COL_BOTTOM_CENTER_SPIKE
+Metatile "SPIKE_INVERTED_PLATFORM", 								$2C, $2D, $3A, $3B, PAL_0, COL_BOTTOM_CENTER_SPIKE
 Metatile "TOP_SLAB_CHECKERED", 										$3A, $3B, $56, $57, PAL_0, COL_TOP
 Metatile "BOTTOM_SLAB_CHECKERED", 									$46, $47, $3A, $3B, PAL_0, COL_BOTTOM
 Metatile "FAKE_SPIKE_HALF", 										$00, $00, $3C, $3D, PAL_2, COL_NONE

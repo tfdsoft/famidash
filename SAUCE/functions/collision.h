@@ -156,6 +156,11 @@ char bg_coll_spikes() {
 				do_if_in_range((uint8_t)(temp_x & 0x0f), 0x0a, 0x0d-1, {_break;});
 			}
 			return 0;
+		case COL_BOTTOM_CENTER_SPIKE:
+			if (!(uint8_t)(temp_y & 0x08)) {
+				do_if_in_range((uint8_t)(temp_x & 0x0f), 0x07, 0x0b-1, {_break;});
+			}
+			return 0;			
 		case COL_BOTTOM_SPIKES:
 			if (!(uint8_t)(temp_y & 0x08)) {
 				do_if_in_range((uint8_t)(temp_x & 0x07), 0x02, 0x06-1, {_break;});
