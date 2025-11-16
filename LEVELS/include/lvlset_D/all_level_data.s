@@ -196,7 +196,7 @@
 		.incbin "EXPORTS/element111rg_with_secret_way.lz.bin" ; Size: 6050
 
 
-.segment "DAT_BANK_09"	; Total bank size: 7803 bytes
+.segment "DAT_BANK_09"	; Total bank size: 7805 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -243,7 +243,7 @@
 		.byte $0F ;_________________________________ Starting ground color
 		.byte 57 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2220
+		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2222
 
 
 .segment "DAT_BANK_0A"	; Total bank size: 8058 bytes
