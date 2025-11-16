@@ -6,8 +6,8 @@ void lvl_done_update();
 
 #include "defines/charmap/bgm_charmap.h"
 
-const char cheater[] = "CHEATER";
-const uint8_t cheatersize = sizeof(cheater) - 1;
+const char cheatertext[] = "CHEATER";
+const uint8_t cheatersize = sizeof(cheatertext) - 1;
 
 void state_lvldone() {
 	#define current_state tmp2
@@ -47,7 +47,7 @@ void state_lvldone() {
 	}
 	#if !__VS_SYSTEM
 	if (!DEBUG_MODE && !cheater) display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
-	else draw_padded_text(cheater, cheatersize, 18, NTADR_A(7, 13));
+	else draw_padded_text(cheatertext, cheatersize, 18, NTADR_A(7, 13));
 	#endif
 
 
