@@ -4980,7 +4980,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
+/*		{
 			level: "nullscapes",
 			lowerText: "NULLSCAPES",
 			decoType: "DECO1",
@@ -5011,7 +5011,7 @@
 					offsetY: +8,
 				},
 			],
-		},
+		},*/
 		{
 			level: "everyend",
 			lowerText: "EVERY END",

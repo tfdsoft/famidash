@@ -110,7 +110,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// element111rg
 	DEMON,	// slaughterhouse
 	DEMON,	// kratos
-	DEMON,	// nullscapes
 	DEMON,	// everyend
 	DEMON,	// luckydraw
 };
@@ -224,7 +223,6 @@ const uint8_t stars_list[] = {
 	10,	// element111rg
 	10,	// slaughterhouse
 	10,	// kratos
-	10,	// nullscapes
 	10,	// everyend
 	10,	// luckydraw
 };

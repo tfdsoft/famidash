@@ -4,7 +4,7 @@
 #define LEVELSET 'D'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 11
+#define COMMUNITY_LEVEL_COUNT 10
 
 #define level_goldenhaze 0
 #define level_demoncryogenic 1
@@ -16,4 +16,3 @@
 #define level_element111rg_with_secret_way 7
 #define level_slaughterhouse 8
 #define level_kratos 9
-#define level_nullscapes 10
