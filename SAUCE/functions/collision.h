@@ -293,6 +293,7 @@ char bg_coll_mini_blocks() {
 			break;
 		case COL_BOTTOM_LEFT_SPIKE:
 		case COL_BOTTOM_RIGHT_SPIKE:
+		case COL_BOTTOM_CENTER_SPIKE:
 		case COL_BOTTOM_SPIKES:
 		case COL_BOTTOM:
 			tmp2 = (uint8_t)(temp_y & 0x0f);
