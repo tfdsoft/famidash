@@ -1,3 +1,14 @@
+
+
+
+
+
+
+
+
+
+
+
 /*
 __attribute__((section(".prg_rom_"STR(extra_code_bank)".900")))
 const uint8_t pal_bankexplore[] = {

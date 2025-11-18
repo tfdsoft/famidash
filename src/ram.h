@@ -193,6 +193,7 @@ struct LVL_HDR {
 __attribute((retain))
 uint8_t loaded_bg_set, loaded_g_set;
 
+
 __attribute((section(".prg_ram"),retain)) 
 uint8_t sram_buffer[2048], background_set, ground_set;
 
@@ -201,3 +202,7 @@ uint8_t sram_buffer[2048], background_set, ground_set;
 
 #define bg_buffer_1 (&bg_buffer[0])
 #define bg_buffer_2 (&bg_buffer[1024])
+
+
+__attribute((section(".prg_ram"),retain)) 
+uint8_t saved_menu_theme;

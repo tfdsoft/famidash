@@ -193,8 +193,8 @@ void state_menu() {
     // absolutely REFUSES to put an
     // lda #0 before running this, so
     // do it manually here (if song is 0)
-    //__asm__("lda #0"); 
-    music_play(song_menu_theme);
+    __asm__("lda #0"); 
+    music_play(saved_menu_theme);
 
     //automatic_fs_updates=0;
     //interrupt_scroll = 0;
@@ -261,6 +261,10 @@ void state_menu() {
         }
         if(selection < 0) {
             selection += menu_button_count;
+        }
+
+        if(player1_pressed & PAD_B) {
+            break;
         }
 
         if(player1_pressed & PAD_A) {
@@ -513,6 +517,13 @@ void state_soundtest(){
             famistudio_music_stop();
         }
 
+        if(player1_pressed & PAD_SELECT) {
+            if(!selection){
+                sfx_play(sfx_counter003,0);
+                saved_menu_theme = xbgmlookuptable[low_byte(index)];
+            }
+        }
+        
 
         if(player1_pressed & PAD_B) {
             gamestate = 0x10;

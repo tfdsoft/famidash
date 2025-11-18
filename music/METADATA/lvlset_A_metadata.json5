@@ -18,6 +18,12 @@
 			}
 		},
 		{
+			fmsSongName: "Rustic Runes",
+			lowerText: "RUSTIC RUNES",
+			originalArtistText: "PSY-NIGMA",
+			vsSystemEnabled: false,
+		},
+		{
 			fmsSongName: "Menu Theme (2.2)",
 			lowerText: "MENU but 2.2",
 			originalArtistText: "TOBY FOX",

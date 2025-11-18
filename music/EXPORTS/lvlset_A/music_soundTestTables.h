@@ -9,65 +9,68 @@ putinbank(sound_test_bank.musictext.data.3) const char musicSoundTestString03[16
 putinbank(sound_test_bank.musictext.data.4) const char musicSoundTestString04[10] = "STALEMATE";
 putinbank(sound_test_bank.musictext.data.5) const char musicSoundTestString05[14] = "EXTRAORDINARY";
 putinbank(sound_test_bank.musictext.data.6) const char musicSoundTestString06[ 5] = "MENU";
-putinbank(sound_test_bank.musictext.data.7) const char musicSoundTestString07[13] = "MENU but 2.2";
-putinbank(sound_test_bank.musictext.data.8) const char musicSoundTestString08[18] = "DIDN'T REALIZE IT";
-putinbank(sound_test_bank.musictext.data.9) const char musicSoundTestString09[15] = "STEREO MADNESS";
-putinbank(sound_test_bank.musictext.data.10) const char musicSoundTestString0A[14] = "BACK ON TRACK";
-putinbank(sound_test_bank.musictext.data.11) const char musicSoundTestString0B[11] = "POLARGEIST";
-putinbank(sound_test_bank.musictext.data.12) const char musicSoundTestString0C[ 8] = "DRY OUT";
-putinbank(sound_test_bank.musictext.data.13) const char musicSoundTestString0D[16] = "BASE AFTER BASE";
-putinbank(sound_test_bank.musictext.data.14) const char musicSoundTestString0E[12] = "CANT LET GO";
-putinbank(sound_test_bank.musictext.data.15) const char musicSoundTestString0F[ 7] = "JUMPER";
-putinbank(sound_test_bank.musictext.data.16) const char musicSoundTestString10[13] = "TIME MACHINE";
-putinbank(sound_test_bank.musictext.data.17) const char musicSoundTestString11[ 7] = "CYCLES";
-putinbank(sound_test_bank.musictext.data.18) const char musicSoundTestString12[ 6] = "XSTEP";
-putinbank(sound_test_bank.musictext.data.19) const char musicSoundTestString13[12] = "CLUTTERFUNK";
-putinbank(sound_test_bank.musictext.data.20) const char musicSoundTestString14[11] = "EVERYTHING";
-putinbank(sound_test_bank.musictext.data.21) const char musicSoundTestString15[11] = "ADVENTURES";
-putinbank(sound_test_bank.musictext.data.22) const char musicSoundTestString16[ 9] = "CLUBSTEP";
-putinbank(sound_test_bank.musictext.data.23) const char musicSoundTestString17[15] = "ELECTRODYNAMIX";
-putinbank(sound_test_bank.musictext.data.24) const char musicSoundTestString18[14] = "HEXAGON FORCE";
-putinbank(sound_test_bank.musictext.data.25) const char musicSoundTestString19[17] = "BLAST PROCESSING";
-putinbank(sound_test_bank.musictext.data.26) const char musicSoundTestString1A[13] = "EVERYTHING 2";
-putinbank(sound_test_bank.musictext.data.27) const char musicSoundTestString1B[10] = "DOMINATOR";
-putinbank(sound_test_bank.musictext.data.28) const char musicSoundTestString1C[11] = "DEADLOCKED";
-putinbank(sound_test_bank.musictext.data.29) const char musicSoundTestString1D[11] = "FINGERDASH";
-putinbank(sound_test_bank.musictext.data.30) const char musicSoundTestString1E[ 5] = "DASH";
-putinbank(sound_test_bank.musictext.data.31) const char musicSoundTestString1F[ 9] = "PRACTICE";
-putinbank(sound_test_bank.musictext.data.32) const char musicSoundTestString20[16] = "SCHEMING WEASEL";
-putinbank(sound_test_bank.musictext.data.33) const char musicSoundTestString21[ 8] = "ADVANCE";
-putinbank(sound_test_bank.musictext.data.34) const char musicSoundTestString22[12] = "GOLDEN HAZE";
-putinbank(sound_test_bank.musictext.data.35) const char musicSoundTestString23[12] = "INFERNOPLEX";
-putinbank(sound_test_bank.musictext.data.36) const char musicSoundTestString24[14] = "THE CHALLENGE";
-putinbank(sound_test_bank.musictext.data.37) const char musicSoundTestString25[ 9] = "MIDNIGHT";
-putinbank(sound_test_bank.musictext.data.38) const char musicSoundTestString26[14] = "HAUNTED WOODS";
-putinbank(sound_test_bank.musictext.data.39) const char musicSoundTestString27[11] = "JUST RIGHT";
-putinbank(sound_test_bank.musictext.data.40) const char musicSoundTestString28[16] = "RAINBOW TYLENOL";
-putinbank(sound_test_bank.musictext.data.41) const char musicSoundTestString29[10] = "GREIF CUT";
-putinbank(sound_test_bank.musictext.data.42) const char musicSoundTestString2A[11] = "EXCITEMENT";
-putinbank(sound_test_bank.musictext.data.43) const char musicSoundTestString2B[ 7] = "ROBTOP";
-putinbank(sound_test_bank.musictext.data.44) const char musicSoundTestString2C[ 9] = "TOBY FOX";
-putinbank(sound_test_bank.musictext.data.45) const char musicSoundTestString2D[15] = "I HAVE NO CLUE";
-putinbank(sound_test_bank.musictext.data.46) const char musicSoundTestString2E[13] = "FOREVERBOUND";
-putinbank(sound_test_bank.musictext.data.47) const char musicSoundTestString2F[ 5] = "DJVI";
-putinbank(sound_test_bank.musictext.data.48) const char musicSoundTestString30[ 5] = "STEP";
-putinbank(sound_test_bank.musictext.data.49) const char musicSoundTestString31[11] = "WATERFLAME";
-putinbank(sound_test_bank.musictext.data.50) const char musicSoundTestString32[ 8] = "DJ NATE";
-putinbank(sound_test_bank.musictext.data.51) const char musicSoundTestString33[ 5] = "F777";
-putinbank(sound_test_bank.musictext.data.52) const char musicSoundTestString34[ 4] = "MDK";
-putinbank(sound_test_bank.musictext.data.53) const char musicSoundTestString35[13] = "OCULARNEBULA";
-putinbank(sound_test_bank.musictext.data.54) const char musicSoundTestString36[14] = "KEVIN MACLEOD";
-putinbank(sound_test_bank.musictext.data.55) const char musicSoundTestString37[14] = "SEAGLOWINGPRO";
-putinbank(sound_test_bank.musictext.data.56) const char musicSoundTestString38[10] = "SGP,ORION";
-putinbank(sound_test_bank.musictext.data.57) const char musicSoundTestString39[13] = "DETIOUSMUSIC";
-putinbank(sound_test_bank.musictext.data.58) const char musicSoundTestString3A[10] = "DIMRAIN47";
-putinbank(sound_test_bank.musictext.data.59) const char musicSoundTestString3B[13] = "CORNANDBEANS";
-putinbank(sound_test_bank.musictext.data.60) const char musicSoundTestString3C[15] = "DAN HARRISON B";
-putinbank(sound_test_bank.musictext.data.61) const char musicSoundTestString3D[ 9] = "KITSUNE2";
-putinbank(sound_test_bank.musictext.data.62) const char musicSoundTestString3E[ 8] = "KAYOSZX";
+putinbank(sound_test_bank.musictext.data.7) const char musicSoundTestString07[13] = "RUSTIC RUNES";
+putinbank(sound_test_bank.musictext.data.8) const char musicSoundTestString08[13] = "MENU but 2.2";
+putinbank(sound_test_bank.musictext.data.9) const char musicSoundTestString09[18] = "DIDN'T REALIZE IT";
+putinbank(sound_test_bank.musictext.data.10) const char musicSoundTestString0A[15] = "STEREO MADNESS";
+putinbank(sound_test_bank.musictext.data.11) const char musicSoundTestString0B[14] = "BACK ON TRACK";
+putinbank(sound_test_bank.musictext.data.12) const char musicSoundTestString0C[11] = "POLARGEIST";
+putinbank(sound_test_bank.musictext.data.13) const char musicSoundTestString0D[ 8] = "DRY OUT";
+putinbank(sound_test_bank.musictext.data.14) const char musicSoundTestString0E[16] = "BASE AFTER BASE";
+putinbank(sound_test_bank.musictext.data.15) const char musicSoundTestString0F[12] = "CANT LET GO";
+putinbank(sound_test_bank.musictext.data.16) const char musicSoundTestString10[ 7] = "JUMPER";
+putinbank(sound_test_bank.musictext.data.17) const char musicSoundTestString11[13] = "TIME MACHINE";
+putinbank(sound_test_bank.musictext.data.18) const char musicSoundTestString12[ 7] = "CYCLES";
+putinbank(sound_test_bank.musictext.data.19) const char musicSoundTestString13[ 6] = "XSTEP";
+putinbank(sound_test_bank.musictext.data.20) const char musicSoundTestString14[12] = "CLUTTERFUNK";
+putinbank(sound_test_bank.musictext.data.21) const char musicSoundTestString15[11] = "EVERYTHING";
+putinbank(sound_test_bank.musictext.data.22) const char musicSoundTestString16[11] = "ADVENTURES";
+putinbank(sound_test_bank.musictext.data.23) const char musicSoundTestString17[ 9] = "CLUBSTEP";
+putinbank(sound_test_bank.musictext.data.24) const char musicSoundTestString18[15] = "ELECTRODYNAMIX";
+putinbank(sound_test_bank.musictext.data.25) const char musicSoundTestString19[14] = "HEXAGON FORCE";
+putinbank(sound_test_bank.musictext.data.26) const char musicSoundTestString1A[17] = "BLAST PROCESSING";
+putinbank(sound_test_bank.musictext.data.27) const char musicSoundTestString1B[13] = "EVERYTHING 2";
+putinbank(sound_test_bank.musictext.data.28) const char musicSoundTestString1C[10] = "DOMINATOR";
+putinbank(sound_test_bank.musictext.data.29) const char musicSoundTestString1D[11] = "DEADLOCKED";
+putinbank(sound_test_bank.musictext.data.30) const char musicSoundTestString1E[11] = "FINGERDASH";
+putinbank(sound_test_bank.musictext.data.31) const char musicSoundTestString1F[ 5] = "DASH";
+putinbank(sound_test_bank.musictext.data.32) const char musicSoundTestString20[ 9] = "PRACTICE";
+putinbank(sound_test_bank.musictext.data.33) const char musicSoundTestString21[16] = "SCHEMING WEASEL";
+putinbank(sound_test_bank.musictext.data.34) const char musicSoundTestString22[ 8] = "ADVANCE";
+putinbank(sound_test_bank.musictext.data.35) const char musicSoundTestString23[12] = "GOLDEN HAZE";
+putinbank(sound_test_bank.musictext.data.36) const char musicSoundTestString24[12] = "INFERNOPLEX";
+putinbank(sound_test_bank.musictext.data.37) const char musicSoundTestString25[14] = "THE CHALLENGE";
+putinbank(sound_test_bank.musictext.data.38) const char musicSoundTestString26[ 9] = "MIDNIGHT";
+putinbank(sound_test_bank.musictext.data.39) const char musicSoundTestString27[14] = "HAUNTED WOODS";
+putinbank(sound_test_bank.musictext.data.40) const char musicSoundTestString28[11] = "JUST RIGHT";
+putinbank(sound_test_bank.musictext.data.41) const char musicSoundTestString29[16] = "RAINBOW TYLENOL";
+putinbank(sound_test_bank.musictext.data.42) const char musicSoundTestString2A[10] = "GREIF CUT";
+putinbank(sound_test_bank.musictext.data.43) const char musicSoundTestString2B[11] = "EXCITEMENT";
+putinbank(sound_test_bank.musictext.data.44) const char musicSoundTestString2C[ 7] = "ROBTOP";
+putinbank(sound_test_bank.musictext.data.45) const char musicSoundTestString2D[10] = "PSY-NIGMA";
+putinbank(sound_test_bank.musictext.data.46) const char musicSoundTestString2E[ 9] = "TOBY FOX";
+putinbank(sound_test_bank.musictext.data.47) const char musicSoundTestString2F[15] = "I HAVE NO CLUE";
+putinbank(sound_test_bank.musictext.data.48) const char musicSoundTestString30[13] = "FOREVERBOUND";
+putinbank(sound_test_bank.musictext.data.49) const char musicSoundTestString31[ 5] = "DJVI";
+putinbank(sound_test_bank.musictext.data.50) const char musicSoundTestString32[ 5] = "STEP";
+putinbank(sound_test_bank.musictext.data.51) const char musicSoundTestString33[11] = "WATERFLAME";
+putinbank(sound_test_bank.musictext.data.52) const char musicSoundTestString34[ 8] = "DJ NATE";
+putinbank(sound_test_bank.musictext.data.53) const char musicSoundTestString35[ 5] = "F777";
+putinbank(sound_test_bank.musictext.data.54) const char musicSoundTestString36[ 4] = "MDK";
+putinbank(sound_test_bank.musictext.data.55) const char musicSoundTestString37[13] = "OCULARNEBULA";
+putinbank(sound_test_bank.musictext.data.56) const char musicSoundTestString38[14] = "KEVIN MACLEOD";
+putinbank(sound_test_bank.musictext.data.57) const char musicSoundTestString39[14] = "SEAGLOWINGPRO";
+putinbank(sound_test_bank.musictext.data.58) const char musicSoundTestString3A[10] = "SGP,ORION";
+putinbank(sound_test_bank.musictext.data.59) const char musicSoundTestString3B[13] = "DETIOUSMUSIC";
+putinbank(sound_test_bank.musictext.data.60) const char musicSoundTestString3C[10] = "DIMRAIN47";
+putinbank(sound_test_bank.musictext.data.61) const char musicSoundTestString3D[13] = "CORNANDBEANS";
+putinbank(sound_test_bank.musictext.data.62) const char musicSoundTestString3E[15] = "DAN HARRISON B";
+putinbank(sound_test_bank.musictext.data.63) const char musicSoundTestString3F[ 9] = "KITSUNE2";
+putinbank(sound_test_bank.musictext.data.64) const char musicSoundTestString40[ 8] = "KAYOSZX";
 
 
 putinbank(sound_test_bank.musictext.ptr) const char* const xbgmtextsUpper[] = {
+	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -137,8 +140,8 @@ putinbank(sound_test_bank.musictext.ptr) const char* const xbgmtextsLower[] = {
 	musicSoundTestString1E,
 	musicSoundTestString1F,
 	musicSoundTestString20,
-	musicSoundTestString03,
 	musicSoundTestString21,
+	musicSoundTestString03,
 	musicSoundTestString22,
 	musicSoundTestString23,
 	musicSoundTestString24,
@@ -148,48 +151,50 @@ putinbank(sound_test_bank.musictext.ptr) const char* const xbgmtextsLower[] = {
 	musicSoundTestString28,
 	musicSoundTestString29,
 	musicSoundTestString2A,
+	musicSoundTestString2B,
 };
 
 
 putinbank(sound_test_bank.musictext.ptr) const char* const xbgmtextsOriginalArtist[] = {
-	musicSoundTestString2B,
 	musicSoundTestString2C,
 	musicSoundTestString2D,
 	musicSoundTestString2E,
 	musicSoundTestString2F,
 	musicSoundTestString30,
-	musicSoundTestString2F,
-	musicSoundTestString2F,
-	musicSoundTestString2F,
-	musicSoundTestString31,
-	musicSoundTestString31,
-	musicSoundTestString2F,
-	musicSoundTestString2F,
 	musicSoundTestString31,
 	musicSoundTestString32,
 	musicSoundTestString31,
-	musicSoundTestString32,
-	musicSoundTestString32,
 	musicSoundTestString31,
 	musicSoundTestString31,
-	musicSoundTestString32,
+	musicSoundTestString33,
+	musicSoundTestString33,
+	musicSoundTestString31,
 	musicSoundTestString31,
 	musicSoundTestString33,
 	musicSoundTestString34,
+	musicSoundTestString33,
 	musicSoundTestString34,
+	musicSoundTestString34,
+	musicSoundTestString33,
+	musicSoundTestString33,
+	musicSoundTestString34,
+	musicSoundTestString33,
 	musicSoundTestString35,
+	musicSoundTestString36,
 	musicSoundTestString36,
 	musicSoundTestString37,
 	musicSoundTestString38,
 	musicSoundTestString39,
 	musicSoundTestString3A,
-	musicSoundTestString2B,
 	musicSoundTestString3B,
-	musicSoundTestString31,
 	musicSoundTestString3C,
+	musicSoundTestString2C,
 	musicSoundTestString3D,
+	musicSoundTestString33,
 	musicSoundTestString3E,
-	musicSoundTestString37,
+	musicSoundTestString3F,
+	musicSoundTestString40,
+	musicSoundTestString39,
 };
 
 
@@ -211,6 +216,7 @@ const uint8_t xbgmtextsOriginalArtistSize[] = {};
 
 putinbank(sound_test_bank.musictext.index) const uint8_t xbgmlookuptable[] = {
 	song_menu_theme,
+	song_rustic_runes,
 	song_menu_theme_22,
 	song_didnt_realize_it_credits_mix_wip_in_game,
 	song_stereo_madness,
