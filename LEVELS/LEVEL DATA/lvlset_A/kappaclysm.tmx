@@ -14,7 +14,7 @@
   <image source="../../../GRAPHICS/Old/parallax Red.bmp" width="144" height="72"/>
  </imagelayer>
  <imagelayer id="4" name="Image Layer 2" offsetx="0" offsety="432" repeatx="1">
-  <image source="../../../GRAPHICS/ground.bmp" width="64" height="128"/>
+  <image source="../../../GRAPHICS/ground Red.bmp" width="64" height="128"/>
  </imagelayer>
  <layer id="1" width="752" height="27">
   <data encoding="csv">
