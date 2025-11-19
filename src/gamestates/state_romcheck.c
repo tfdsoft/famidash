@@ -52,11 +52,11 @@ unsigned char check_vram_amount(){
 
     // write the value
     vram_adr(0);
-    set_chr_bank(2,0);
+    set_chr_mode_2(0);
     PPU.vram.data = 0x55;
 
     do {
-        set_chr_bank(3,(1 << bank));
+        set_chr_mode_3((1 << bank));
 
         vram_adr(0x400);
         PPU.vram.data; // prime read
@@ -71,7 +71,6 @@ unsigned char check_vram_amount(){
 putinbank(extra_code_bank.ramcheck.09)
 void state_ramcheck(){
     unsigned char type,ramcount,ramneeded;
-    //set_chr_bank(2,);
 
     type = 0;
     ramcount = check_vram_amount();
@@ -95,8 +94,8 @@ void state_ramcheck(){
         "rts \n"
         "ramcheck_failed: \n"
     );
-    set_chr_bank(2,4);
-    set_chr_bank(3,5);
+    set_chr_mode_2(4);
+    set_chr_mode_3(5);
 
     pal_bg(pal_grayscale);
 

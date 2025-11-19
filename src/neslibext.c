@@ -572,10 +572,18 @@ uint8_t num_to_ascii(uint8_t n){
 
 __attribute__((noinline))
 void set_chr_default(){
-    set_chr_bank(0,0);
-    set_chr_bank(1,2);
-    set_chr_bank(2,4);
-    set_chr_bank(3,5);
-    set_chr_bank(4,6);
-    set_chr_bank(5,7);
+    set_chr_mode_0(0);
+    set_chr_mode_1(2);
+    set_chr_mode_2(4);
+    set_chr_mode_3(5);
+    set_chr_mode_4(6);
+    set_chr_mode_5(7);
+}
+
+__attribute__((noinline))
+void set_bg_chr_page(uint8_t page){
+    set_chr_mode_2((page<<2)+0);
+    set_chr_mode_3((page<<2)+1);
+    set_chr_mode_4((page<<2)+2);
+    set_chr_mode_5((page<<2)+3);
 }

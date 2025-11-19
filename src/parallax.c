@@ -131,11 +131,6 @@ void vram_generate_parallax(uint8_t bg_id){
     push_prg_a000();
     set_prg_a000(extra_code_bank_1);
 
-    //set_chr_bank(1,8); // ground + menu text
-    //oam_clear();
-    //oam_meta_spr(128,120, mspr_loading);
-    //pal_spr_bright(4);
-
     // get the pointer to the requested bg table
     ptr = bg_table_ptr[bg_id];
 
@@ -158,7 +153,7 @@ void vram_generate_parallax(uint8_t bg_id){
         // (gotta run this four times)
         vram_adr(0);
         PPU.vram.data; // prime the read
-        set_chr_bank(2,0x10+step);
+        set_chr_mode_2(0x10+step);
 
         APU.delta_mod.length = 0;
         APU.status &= 0b00001111;
@@ -180,7 +175,7 @@ void vram_generate_parallax(uint8_t bg_id){
         // 4. repeat from 1. until all tiles are copied
         
         for (uint8_t bg_width = 1; bg_width < width; bg_width++){
-            set_chr_bank(2,(0x10+(bg_width<<2)+step));
+            set_chr_mode_2((0x10+(bg_width<<2)+step));
             vram_adr(0);
             
             
@@ -212,7 +207,7 @@ void vram_generate_parallax(uint8_t bg_id){
             vram_copy(bg_buffer_1, 0x400);
         }
     }
-    set_chr_bank(2,4);
+    set_chr_mode_2(4);
 
 
     pop_prg_a000();

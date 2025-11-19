@@ -1,12 +1,12 @@
 unsigned char automatic_fs_updates = 0;
-unsigned char nmi_prev_bank;
+unsigned char nmi_in_progress;
 
 
 // TODO: convert this to asm
 
 
 __attribute__((interrupt_norecurse)) void nmi(){
-    
+    nmi_in_progress++;
     // oh yeah just a heads up:
     // llvm-mos needs to push EVERY. SINGLE.
     // VIRTUAL. REGISTER.
@@ -96,13 +96,6 @@ __attribute__((interrupt_norecurse)) void nmi(){
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
 
-    //if(irq_reload_value > 0){
-    
-    //pad_poll(0);
-    //bruh.joemom++; 
-
-    
-    //__asm__("cli");
     
     if(automatic_fs_updates) {
         push_prg_a000();
@@ -110,6 +103,7 @@ __attribute__((interrupt_norecurse)) void nmi(){
         music_update();
         pop_prg_a000();
     }
+
 }
 
 

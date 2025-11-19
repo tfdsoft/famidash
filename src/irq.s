@@ -39,6 +39,7 @@ IRQ_ENABLE  = $e001
 .section .text.irq,"a",@progbits
 .globl irq
     irq:
+
         pha     ; store A
         txa
         pha     ; store X

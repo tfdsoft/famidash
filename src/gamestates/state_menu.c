@@ -115,8 +115,8 @@ void state_menu() {
 
     // load parallax background
     vram_adr(0x1000);
-    set_chr_bank(0,0x10);
-    set_chr_bank(1,0x12);
+    set_chr_mode_0(0x10);
+    set_chr_mode_1(0x12);
     
     if(loaded_bg_set != background_set){
         donut_decompress_vram(chr_bg[background_set], chr_bank_2);
@@ -124,10 +124,10 @@ void state_menu() {
         loaded_bg_set = background_set;
     }
 
-    set_chr_bank(2,4);
+    set_chr_mode_2(4);
     //set_chr_bank(3,5);
-    set_chr_bank(4,6);
-    set_chr_bank(5,7);
+    set_chr_mode_4(6);
+    set_chr_mode_5(7);
 
     // load menu stuff
     vram_adr(0x000);
@@ -137,16 +137,16 @@ void state_menu() {
     donut_decompress_vram(chr_menu_buttons, chr_bank_0);
 
     // load ground
-    set_chr_bank(0,0x8);
+    set_chr_mode_0(0x8);
     donut_decompress_vram(chr_g[ground_set], chr_bank_3);
     // the "robtop/tfdsoft" text is there
     donut_decompress_vram(chr_menu_robtop, chr_bank_0);
 
     // set second sprite bank to the big buttons
-    set_chr_bank(1,0x6);
+    set_chr_mode_1(0x6);
     
     // set second bg bank to parallax
-    set_chr_bank(3,0x10);
+    set_chr_mode_3(0x10);
 
     // write the parallax tilemap
     vram_adr(0x2000);
@@ -184,7 +184,7 @@ void state_menu() {
     oam_clear();
     oam_meta_spr(1,0,mspr_title);
 
-    multi_vram_buffer_horz("2.0", 4, 0x2134);
+    multi_vram_buffer_horz("2.0", 4, NT_ADR_A(20,9));
 
     ppu_on_all();
     pal_fade_to(1,4);
@@ -342,20 +342,15 @@ void state_levelselect(){
 
     pal_bg(pal_levelselect);
 
-    add_basic_interrupt(
-        0, 
-        irq_basic
-    );
-    set_chr_bank(5,8);
+    set_chr_mode_5(8);
 
-    multi_vram_buffer_horz(str_levelselect,sizeof(str_levelselect)-1,0x214a);
+    str_vram_buffer(str_levelselect, NT_ADR_A(10,10));
 
     ppu_on_all();
     pal_fade_to(0,4);
 
     while(1){
         ppu_wait_nmi();
-        //set_chr_bank(5,7);
         oam_clear();
 
         if(player1_pressed & PAD_B) {
@@ -363,9 +358,13 @@ void state_levelselect(){
             pal_fade_to(4,0);
             break;
         }
-
-        //while(irq_count == 0){__asm__ volatile("");}
-        //set_chr_bank(5,8);
+        if(player1_pressed & PAD_A) {
+            gamestate = 0x20;
+            famistudio_music_stop();
+            sfx_play(sfx_playsound_01,0);
+            pal_fade_to(4,0);
+            break;
+        }
     }
 }
 

@@ -109,6 +109,7 @@ int main(void){
         ppu_off();
         oam_clear();
         set_chr_default();
+        flush_irq();
         vram_adr(0);
 
         switch(gamestate){
@@ -140,10 +141,13 @@ int main(void){
                 banked_call(sound_test_bank, state_soundtest);
                 break;
 
-
-
-
-
+            //
+            //  GAME-RELATED STUFF
+            //  (in prg_rom_fixed_lo, do not use banked_call())
+            //
+            case 0x20:
+                state_game();
+                break;
 
             //
             //  DEBUG STUFF
