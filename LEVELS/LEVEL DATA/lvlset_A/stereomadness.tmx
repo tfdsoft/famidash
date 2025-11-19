@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="895" height="27" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="2">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-down" width="895" height="27" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="2">
  <editorsettings>
   <export target="stereomadness.csv" format="csv"/>
  </editorsettings>
@@ -11,6 +11,9 @@
  </tileset>
  <imagelayer id="7" name="test" parallaxx="0.9" parallaxy="0.9" repeatx="1" repeaty="1">
   <image source="../../../GRAPHICS/Old/parallax Blue.bmp" width="192" height="72"/>
+ </imagelayer>
+ <imagelayer id="8" name="Image Layer 2" offsetx="0" offsety="432" repeatx="1">
+  <image source="../../../GRAPHICS/ground.bmp" width="80" height="32"/>
  </imagelayer>
  <layer id="1" width="895" height="27">
   <data encoding="csv">
