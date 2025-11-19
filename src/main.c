@@ -98,12 +98,6 @@ int main(void){
 
 
     while(1){
-        //add_basic_interrupt(
-        //    0,
-        //    irq_basic
-        //);
-        //irq_reload_value = 0;
-        //irq_ptr = irq_basic;
         __asm__("sei");
         pal_bright(0);
         ppu_off();

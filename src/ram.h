@@ -190,8 +190,10 @@ struct LVL_HDR {
 
 */
 
+
 __attribute((retain))
-uint8_t loaded_bg_set, loaded_g_set;
+uint8_t loaded_bg_set, loaded_g_set,
+        return_gamestate;
 
 
 __attribute((section(".prg_ram"),retain)) 

@@ -113,6 +113,8 @@ void state_menu() {
     unsigned short scroll_bank = 0;
     signed char selection = 0;
 
+    automatic_fs_updates=1;
+
     // load parallax background
     vram_adr(0x1000);
     set_chr_mode_0(0x10);
@@ -194,13 +196,15 @@ void state_menu() {
     // lda #0 before running this, so
     // do it manually here (if song is 0)
     __asm__("lda #0"); 
-    music_play(saved_menu_theme);
+    if(!famistudio_song_speed) {
+        music_play(saved_menu_theme);
+    }
 
-    //automatic_fs_updates=0;
+    
     //interrupt_scroll = 0;
     while(1){
         ppu_wait_nmi();
-        scroll(0,0);
+        //scroll(0,0);
         oam_clear();
 
         interrupt_scroll += phys_speed[1];
@@ -334,8 +338,14 @@ const char str_levelselect[] = "stereo\x01madness";
 
 putinbank(extra_code_bank.levelselect.09)
 void state_levelselect(){
-    vram_adr(0x800);
+
+    automatic_fs_updates=1;
+
+    vram_adr(0x000);
+    donut_decompress_vram(chr_menu_global, chr_bank_0);
+    donut_decompress_vram(chr_font, chr_bank_0);
     donut_decompress_vram(chr_menu_difficulties, chr_bank_0);
+    donut_decompress_vram(chr_menu_buttons, chr_bank_0);
     
     vram_adr(0x2000);
     vram_unrle(nt_levelselect);
@@ -349,6 +359,10 @@ void state_levelselect(){
     ppu_on_all();
     pal_fade_to(0,4);
 
+    if(!famistudio_song_speed) {
+        music_play(saved_menu_theme);
+    }
+
     while(1){
         ppu_wait_nmi();
         oam_clear();
@@ -359,6 +373,7 @@ void state_levelselect(){
             break;
         }
         if(player1_pressed & PAD_A) {
+            return_gamestate = gamestate;
             gamestate = 0x20;
             famistudio_music_stop();
             sfx_play(sfx_playsound_01,0);

@@ -1,28 +1,9 @@
 static uint8_t music_bank;
 //uint8_t prev_bank;
 uint8_t current_bank, song_count;
+extern uint8_t famistudio_song_speed;
 
-/*__attribute__((noinline, retain)) 
-void music_play(volatile uint8_t song) {
-    __attribute__((leaf)) __asm__ volatile (
-        "jsr _music_play \n"
-        :
-        :"a"(s)
-        :"x","y","p"
-    );
-}*/
-
-#define play_song_zero() \
-__attribute__((leaf)) __asm__ volatile ( \
-    "lda #0 \n" \
-    "jsr music_play \n" \
-    : \
-    : \
-    :"a","x","y","p" \
-);
-
-__attribute__((noinline, retain)) 
-    void music_play(uint8_t s){
+__attribute__((noinline)) void music_play(uint8_t s){
     
     __attribute__((leaf)) __asm__ volatile (
         "lda __prg_a000 \n"
