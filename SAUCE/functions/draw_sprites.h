@@ -119,6 +119,7 @@ void draw_sprites(){
 							activesprites_type[index] = PINK_ORB;
 							break;
 				};
+				activesprites_activated[index] = 0;
 			}
 		}						
 		
