@@ -130,11 +130,7 @@ def getCsvDataFromTmx(fileHandle, layerNames) -> list:
 	lines = list(csv.reader(csvData[0].text.strip().splitlines()))
 
 	# get local tileset IDs
-	# For tile layers, empty tile (0) should become 1 instead of -1
-	if 'SP' in layerNames:
-		lookup = {0: -1}   # sprite layer
-	else:
-		lookup = {0: 0}    # tile layer
+	lookup = {0: -1}
 	for line in lines:
 		idx = 0
 		while idx < len(line):
