@@ -178,7 +178,7 @@
 			upperText: "THE",
 			lowerText: "CHALLENGE",
 			originalArtist: "RobTop",
-			coveringArtist: "ElAngel378",
+			overingArtist: ["Crafty Jumper", "ElAngel378"],
 		},		
 		{
 			fmsSongName: "Practice",
