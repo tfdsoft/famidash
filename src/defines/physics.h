@@ -6,6 +6,9 @@ putinbank(fixed_lo.physics)
 const uint16_t phys_speed[] = {
     0x02C4, // 1x
     0x023B, //.5x
+    0x0371, // 2x
+    0x0429, // 3x
+    0x051E, // 4x
 };
 
 putinbank(fixed_lo.physics)
