@@ -4,8 +4,7 @@
 #include "ines header.h"
 #include "macros.h"
 
-__attribute__((retain))
-    #include "ram.h"
+#include "ram.h"
 
 
 // == the compiler/linker figures these out ==
@@ -22,7 +21,7 @@ __attribute__((retain))
 
 
 #include "./defines/physics.h"
-
+#include "collision.c"
 
 #include "./gamestates/state_startup.c"
 #include "./gamestates/state_menu.c"

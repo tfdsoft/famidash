@@ -126,7 +126,7 @@ void vram_generate_parallax(uint8_t bg_id){
 
     // empty the parallax buffer
     // don't do it anymore (we need all the frames)
-    //memfill((uint8_t*)0x6000, 0, 0x800);
+    memfill((uint8_t*)0x6000, 0, sizeof(sram_buffer));
 
     push_prg_a000();
     set_prg_a000(extra_code_bank_1);

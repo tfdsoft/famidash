@@ -2,8 +2,18 @@
 // i'm not going to re-use 1.x's physics table since
 // it's optimized for cc65
 
-__attribute__((section(".prg_rom_fixed_lo.1"),retain))
+putinbank(fixed_lo.physics)
 const uint16_t phys_speed[] = {
     0x02C4, // 1x
     0x023B, //.5x
+};
+
+putinbank(fixed_lo.physics)
+const uint16_t phys_gravity[] = {
+    0x009a, // cube
+};
+
+putinbank(fixed_lo.physics)
+const uint16_t phys_jumpvel[] = {
+    -0x6ac, // cube
 };

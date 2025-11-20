@@ -204,7 +204,7 @@ void state_menu() {
     //interrupt_scroll = 0;
     while(1){
         ppu_wait_nmi();
-        //scroll(0,0);
+        scroll(0,0);
         oam_clear();
 
         interrupt_scroll += phys_speed[1];
@@ -338,7 +338,7 @@ const char str_levelselect[] = "stereo\x01madness";
 
 putinbank(extra_code_bank.levelselect.09)
 void state_levelselect(){
-
+    scroll(0,0);
     automatic_fs_updates=1;
 
     vram_adr(0x000);
