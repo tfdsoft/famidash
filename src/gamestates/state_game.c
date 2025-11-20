@@ -75,7 +75,12 @@ void state_game(){
     set_bg_chr_page(0);
 
     add_advanced_interrupt(
-        191,
+        0,
+        irq_set_chr,
+        args88(3,0x10)
+    ); 
+    add_advanced_interrupt(
+        189,
         irq_set_chr,
         args88(3,1)
     ); 
@@ -110,7 +115,7 @@ void state_game(){
             (phys_speed[player.prop.speed]>>3)
         );
         if(high_byte(scroll_bank) & 0x80) high_byte(scroll_bank) += loaded_bg_width;
-        set_1k_chr_1((high_byte(scroll_bank) + 0x10));
+        IRQ(0).arg1 = (high_byte(scroll_bank) + 0x10);
 
         oam_clear();
         oam_spr(
