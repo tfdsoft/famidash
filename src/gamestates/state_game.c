@@ -91,8 +91,8 @@ void state_game(){
     ppu_on_all();
     pal_fade_to(0,4);
 
-    player.x.word = 0;
-    player.y.word = 0;
+    player.x.word = camera.x.word = 0;
+    player.y.word = camera.y.word = 0;
     player.width = player.height = 15;
 
     automatic_fs_updates = 0;
@@ -107,15 +107,18 @@ void state_game(){
 
         run_player_collision();
 
-        camera.x.word = (player.x.word - 0x60);
+        if(player.x.word > 0x60){
+            camera.x.word = (player.x.word - 0x60);
+        
+            high_byte(scroll_bank) &= 0x3f;
+            scroll_bank -= (
+                (phys_speed[player.prop.speed]>>2) +
+                (phys_speed[player.prop.speed]>>3)
+            );
+            if(high_byte(scroll_bank) & 0x80) high_byte(scroll_bank) += loaded_bg_width;
+            IRQ(0).arg1 = (high_byte(scroll_bank) + 0x10);
 
-        high_byte(scroll_bank) &= 0x3f;
-        scroll_bank -= (
-            (phys_speed[player.prop.speed]>>2) +
-            (phys_speed[player.prop.speed]>>3)
-        );
-        if(high_byte(scroll_bank) & 0x80) high_byte(scroll_bank) += loaded_bg_width;
-        IRQ(0).arg1 = (high_byte(scroll_bank) + 0x10);
+        }
 
         oam_clear();
         oam_spr(

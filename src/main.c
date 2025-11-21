@@ -1,5 +1,6 @@
-#include "assets.h"
+#include "../BUILDFLAGS.h"
 
+#include "assets.h"
 #include "include.h"
 
 __attribute__((leaf)) __asm__(

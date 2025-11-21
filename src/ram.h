@@ -230,7 +230,7 @@ struct Player {
 };
 struct Camera {
     union {
-        unsigned _BitInt(24) x;
+        unsigned _BitInt(24) int24;
         struct {
             uint8_t subpixel;
             uint8_t lo;
@@ -242,7 +242,7 @@ struct Camera {
         };
     } x;
     union {
-        unsigned _BitInt(24) y;
+        unsigned _BitInt(24) int24;
         struct {
             uint8_t subpixel;
             uint8_t lo;

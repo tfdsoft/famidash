@@ -106,6 +106,9 @@ const uint16_t mspr_select_pos[]={
 };
 #define menu_button_count (sizeof(mspr_select_pos)>>1)
 
+putinbank(extra_code_bank.menu.text)
+const char str_demo[] = "\xb0\xb1\xb2\xb3"; // DEMO
+
 putinbank(extra_code_bank.menu.09)
 void state_menu() {
     unsigned char menu_color = 0x11;
@@ -186,7 +189,12 @@ void state_menu() {
     oam_clear();
     oam_meta_spr(1,0,mspr_title);
 
-    multi_vram_buffer_horz("2.0", 4, NT_ADR_A(20,9));
+    str_vram_buffer(str_version, NT_ADR_A(20,9));
+
+    #ifdef FLAG_ISDEMO
+        str_vram_buffer(str_demo, NT_ADR_A(1,3));
+        one_vram_buffer(FLAG_ISDEMO, NT_ADR_A(6,3));
+    #endif
 
     ppu_on_all();
     pal_fade_to(1,4);
