@@ -11,7 +11,7 @@ putinbank(sound_test_bank.musictext.data.5) const char musicSoundTestString05[14
 putinbank(sound_test_bank.musictext.data.6) const char musicSoundTestString06[ 5] = "MENU";
 putinbank(sound_test_bank.musictext.data.7) const char musicSoundTestString07[13] = "RUSTIC RUNES";
 putinbank(sound_test_bank.musictext.data.8) const char musicSoundTestString08[13] = "MENU but 2.2";
-putinbank(sound_test_bank.musictext.data.9) const char musicSoundTestString09[18] = "DIDN'T REALIZE IT";
+putinbank(sound_test_bank.musictext.data.9) const char musicSoundTestString09[18] = "DIDN'T REALISE IT";
 putinbank(sound_test_bank.musictext.data.10) const char musicSoundTestString0A[15] = "STEREO MADNESS";
 putinbank(sound_test_bank.musictext.data.11) const char musicSoundTestString0B[14] = "BACK ON TRACK";
 putinbank(sound_test_bank.musictext.data.12) const char musicSoundTestString0C[11] = "POLARGEIST";
