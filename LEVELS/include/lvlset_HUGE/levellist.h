@@ -86,6 +86,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// trythisgd
 	DEMON,	// goldenhaze
 	DEMON,	// hell
+	DEMON,	// gameover
 	DEMON,	// invisiblelight
 	DEMON,	// firetemple
 	DEMON,	// pgclubstep
@@ -199,6 +200,7 @@ const uint8_t stars_list[] = {
 	10,	// trythisgd
 	10,	// goldenhaze
 	10,	// hell
+	10,	// gameover
 	10,	// invisiblelight
 	10,	// firetemple
 	10,	// pgclubstep

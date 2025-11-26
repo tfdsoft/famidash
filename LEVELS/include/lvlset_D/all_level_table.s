@@ -6,6 +6,7 @@
 
 _level_list_lo:
 	.byte .lobyte(level_data_goldenhaze)
+	.byte .lobyte(level_data_gameover)
 	.byte .lobyte(level_data_demoncryogenic)
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_windylandscape)
@@ -18,6 +19,7 @@ _level_list_lo:
 
 _level_list_hi:
 	.byte .hibyte(level_data_goldenhaze)
+	.byte .hibyte(level_data_gameover)
 	.byte .hibyte(level_data_demoncryogenic)
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_windylandscape)
@@ -30,6 +32,7 @@ _level_list_hi:
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_goldenhaze))
+	.byte .lobyte(.bank(level_data_gameover))
 	.byte .lobyte(.bank(level_data_demoncryogenic))
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_windylandscape))
@@ -63,6 +66,7 @@ _level_chunk_list_bank:
 
 _level_lengths_lo:
 	.byte .lobyte($00009F)		; goldenhaze
+	.byte .lobyte($000078)		; gameover
 	.byte .lobyte($0000A8)		; demoncryogenic
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($00009A)		; windylandscape
@@ -77,6 +81,7 @@ _level_lengths_lo:
 
 _level_lengths_md:
 	.byte .hibyte($00009F)		; goldenhaze
+	.byte .hibyte($000078)		; gameover
 	.byte .hibyte($0000A8)		; demoncryogenic
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($00009A)		; windylandscape
@@ -91,6 +96,7 @@ _level_lengths_md:
 
 _level_lengths_hi:
 	.byte .bankbyte($00009F)		; goldenhaze
+	.byte .bankbyte($000078)		; gameover
 	.byte .bankbyte($0000A8)		; demoncryogenic
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($00009A)		; windylandscape

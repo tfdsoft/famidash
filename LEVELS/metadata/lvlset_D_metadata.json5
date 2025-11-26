@@ -102,6 +102,59 @@
 			]
 		},
 		{
+			level: "gameover",
+			lowerText: "GAME OVER",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "MEDIUMDEMON",
+			stars: 10,
+			songID: "song_endgame",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[79, 24], [493, 19],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[181, 23], [240, 18], [246, 19], [366, 20], [434, 8], [599, 22],
+						[647, 20], [648, 21], [649, 20], [650, 21], [651, 20], [685, 23], [715, 23],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[345, 24], [515, 18], [533, 5], [545, 20],
+						[609, 18], [609, 21], [609, 24],
+						[619, 18], [619, 21], [619, 24],
+						[628, 18], [628, 21], [628, 24], [693, 24],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[495, 19],
+					],
+					offsetX: -16
+				},
+				{
+					coordinates: [
+						[494, 20], [567, 24], [605, 22], [644, 21],
+					],
+					offsetY: -8
+				},
+			]
+		},
+		{
 			level: "demoncryogenic",
 			lowerText: "DEMON CRYOGENIC",
 			decoType: "DECO1",

@@ -3,6 +3,7 @@
 
 const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// goldenhaze
+	MEDIUMDEMON,	// gameover
 	HARDDEMON,	// demoncryogenic
 	HARDDEMON,	// foresttemple
 	EXTREMEDEMON,	// windylandscape
@@ -16,6 +17,7 @@ const uint8_t difficulty_list[] = {
 
 const uint8_t stars_list[] = {
 	10,	// goldenhaze
+	10,	// gameover
 	10,	// demoncryogenic
 	10,	// foresttemple
 	10,	// windylandscape
