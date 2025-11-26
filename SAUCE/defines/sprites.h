@@ -1545,13 +1545,13 @@ const unsigned char Growth_Portal[]={
 };
 
 const unsigned char Gravity_2x_Portal[]={
-	  0,  0,0x81,3,	
-	  8,  0,0x83,3,	
-	  -8,  16,0x85,3,	
-	  0,  16,0x87,3,
-	  8,  16,0x89,3,
-	  0,  32,0x81,3|OAM_FLIP_V,
-	  8,  32,0x83,3|OAM_FLIP_V,
+	  8,  0,0xA3,1|OAM_FLIP_H,	
+	  0,  0,0xA7,1|OAM_FLIP_H,	
+	  //-8,  16,0xFF,3|OAM_FLIP_H,	
+	  8,  16,0x97,1|OAM_FLIP_H,
+	  0,  16,0xB7,1|OAM_FLIP_H,
+	  8,  32,0xA3,1|OAM_FLIP_V|OAM_FLIP_H,
+	  0,  32,0xA7,1|OAM_FLIP_V|OAM_FLIP_H,
 	0x80
 };
 
