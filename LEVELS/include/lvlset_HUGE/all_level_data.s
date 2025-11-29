@@ -738,7 +738,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7507
 
 
-.segment "DAT_BANK_1E"	; Total bank size: 8108 bytes
+.segment "DAT_BANK_1E"	; Total bank size: 8100 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -761,7 +761,7 @@
 		.byte $0F ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7399
+		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7391
 
 	.export level_data_luckydraw
 	level_data_luckydraw:

@@ -118,7 +118,7 @@
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
-.segment "DAT_BANK_05"	; Total bank size: 7833 bytes
+.segment "DAT_BANK_05"	; Total bank size: 7825 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -141,7 +141,7 @@
 		.byte $0F ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7399
+		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7391
 
 
 .segment "DAT_BANK_06"	; Total bank size: 7370 bytes

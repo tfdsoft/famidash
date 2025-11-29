@@ -31,7 +31,7 @@
 // Enable Debug Mode
 // Activated by pressing SELECT during gameplay
 // Recommended to be disabled for release builds
-#define DEBUG_MODE_ENABLED 0
+#define DEBUG_MODE_ENABLED 1
 //
 // Enable kandokidshackX Variables
 // Activated in convoluted methods
@@ -50,7 +50,7 @@
 //
 // Beta Build
 // uncomment if compiling a demo or beta build.
-//#define FLAG_BETA_BUILD
+#define FLAG_BETA_BUILD
 //
 // Major Version Number 
 // set if releasing a demo/beta.
