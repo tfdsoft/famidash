@@ -9,6 +9,7 @@ const uint8_t difficulty_list[] = {
 	HARDDEMON,	// jawbreaker
 	INSANEDEMON,	// acropolis
 	EXTREMEDEMON,	// windylandscape
+	EXTREMEDEMON,	// icdx
 	IMPOSSIBLEDEMON,	// silentclubstep
 	IMPOSSIBLEDEMON,	// aftercatabath
 	IMPOSSIBLEDEMON,	// shardscapes
@@ -25,6 +26,7 @@ const uint8_t stars_list[] = {
 	10,	// jawbreaker
 	10,	// acropolis
 	10,	// windylandscape
+	10,	// icdx
 	10,	// silentclubstep
 	10,	// aftercatabath
 	10,	// shardscapes

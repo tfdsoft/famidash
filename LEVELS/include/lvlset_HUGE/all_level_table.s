@@ -106,6 +106,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_hi)
 	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_windylandscape)
+	.byte .lobyte(level_data_icdx)
 	.byte .lobyte(level_data_sonicwave)
 	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_cataclysm)
@@ -221,6 +222,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_hi)
 	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_windylandscape)
+	.byte .hibyte(level_data_icdx)
 	.byte .hibyte(level_data_sonicwave)
 	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_cataclysm)
@@ -336,6 +338,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_hi))
 	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_windylandscape))
+	.byte .lobyte(.bank(level_data_icdx))
 	.byte .lobyte(.bank(level_data_sonicwave))
 	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_cataclysm))
@@ -520,6 +523,7 @@ _level_lengths_lo:
 	.byte .lobyte($00009A)		; hi
 	.byte .lobyte($000286)		; eon
 	.byte .lobyte($00009A)		; windylandscape
+	.byte .lobyte($000092)		; icdx
 	.byte .lobyte($0000FB)		; sonicwave
 	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
@@ -637,6 +641,7 @@ _level_lengths_md:
 	.byte .hibyte($00009A)		; hi
 	.byte .hibyte($000286)		; eon
 	.byte .hibyte($00009A)		; windylandscape
+	.byte .hibyte($000092)		; icdx
 	.byte .hibyte($0000FB)		; sonicwave
 	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
@@ -754,6 +759,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00009A)		; hi
 	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($00009A)		; windylandscape
+	.byte .bankbyte($000092)		; icdx
 	.byte .bankbyte($0000FB)		; sonicwave
 	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm

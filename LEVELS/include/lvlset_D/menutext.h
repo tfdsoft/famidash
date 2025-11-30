@@ -2,21 +2,23 @@
 // Exported by export_levels.py
 
 const char levelText00[ 5] = "WINDY";
-const char levelText01[ 6] = "SILENT";
-const char levelText02[ 7] = "ELEMENT";
-const char levelText03[11] = "GOLDEN HAZE";
-const char levelText04[ 9] = "GAME OVER";
-const char levelText05[15] = "DEMON CRYOGENIC";
-const char levelText06[13] = "FOREST TEMPLE";
-const char levelText07[10] = "JAWBREAKER";
-const char levelText08[ 9] = "ACROPOLIS";
-const char levelText09[ 9] = "LANDSCAPE";
-const char levelText0A[ 8] = "CLUBSTEP";
-const char levelText0B[13] = "AFTERCATABATH";
-const char levelText0C[11] = "SHARDSCAPES";
-const char levelText0D[ 6] = "111 RG";
-const char levelText0E[14] = "SLAUGHTERHOUSE";
-const char levelText0F[ 6] = "KRATOS";
+const char levelText01[10] = "ICE CARBON";
+const char levelText02[ 6] = "SILENT";
+const char levelText03[ 7] = "ELEMENT";
+const char levelText04[11] = "GOLDEN HAZE";
+const char levelText05[ 9] = "GAME OVER";
+const char levelText06[15] = "DEMON CRYOGENIC";
+const char levelText07[13] = "FOREST TEMPLE";
+const char levelText08[10] = "JAWBREAKER";
+const char levelText09[ 9] = "ACROPOLIS";
+const char levelText0A[ 9] = "LANDSCAPE";
+const char levelText0B[ 8] = "DIABLO X";
+const char levelText0C[ 8] = "CLUBSTEP";
+const char levelText0D[13] = "AFTERCATABATH";
+const char levelText0E[11] = "SHARDSCAPES";
+const char levelText0F[ 6] = "111 RG";
+const char levelText10[14] = "SLAUGHTERHOUSE";
+const char levelText11[ 6] = "KRATOS";
 
 
 const char* const levelTextsUpper[] = {
@@ -28,9 +30,10 @@ const char* const levelTextsUpper[] = {
 	NULL,
 	levelText00,
 	levelText01,
-	NULL,
-	NULL,
 	levelText02,
+	NULL,
+	NULL,
+	levelText03,
 	NULL,
 	NULL,
 };
@@ -44,16 +47,16 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	sizeof(levelText00),
 	sizeof(levelText01),
-	0,
-	0,
 	sizeof(levelText02),
+	0,
+	0,
+	sizeof(levelText03),
 	0,
 	0,
 };
 
 
 const char* const levelTextsLower[] = {
-	levelText03,
 	levelText04,
 	levelText05,
 	levelText06,
@@ -66,10 +69,11 @@ const char* const levelTextsLower[] = {
 	levelText0D,
 	levelText0E,
 	levelText0F,
+	levelText10,
+	levelText11,
 };
 
 const uint8_t levelTextsLowerSize[] = {
-	sizeof(levelText03),
 	sizeof(levelText04),
 	sizeof(levelText05),
 	sizeof(levelText06),
@@ -82,4 +86,6 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText0D),
 	sizeof(levelText0E),
 	sizeof(levelText0F),
+	sizeof(levelText10),
+	sizeof(levelText11),
 };

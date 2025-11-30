@@ -255,6 +255,22 @@
 			parallaxDisable: true
 		},
 		{
+			level: "icdx",
+			upperText: "ICE CARBON",
+			lowerText: "DIABLO X",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EXTREMEDEMON",
+			stars: 10,
+			songID: "song_clubstep",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x00,
+			startingGroundColor: 0x0F,
+		},
+		{
 			level: "silentclubstep",
 			upperText: "SILENT",
 			lowerText: "CLUBSTEP",

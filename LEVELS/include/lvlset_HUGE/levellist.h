@@ -103,6 +103,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// hi
 	DEMON,	// eon
 	DEMON,	// windylandscape
+	DEMON,	// icdx
 	DEMON,	// sonicwave
 	DEMON,	// bloodbath
 	DEMON,	// cataclysm
@@ -219,6 +220,7 @@ const uint8_t stars_list[] = {
 	10,	// hi
 	10,	// eon
 	10,	// windylandscape
+	10,	// icdx
 	10,	// sonicwave
 	10,	// bloodbath
 	10,	// cataclysm

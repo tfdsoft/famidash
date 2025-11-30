@@ -191,7 +191,33 @@
 		.incbin "EXPORTS/jawbreaker.lz.bin" ; Size: 6877
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8144 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8161 bytes
+	.export level_data_icdx
+	level_data_icdx:
+	; Header
+		.byte <sprite_data_icdx ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_icdx ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_icdx)) ;___ Sprite data bank
+		.byte song_clubstep ;________________ Song ID
+		.byte (0 << 4) | 0 ;_________________ Starting game mode and speed
+		.byte ($B0) ;________________________ Spawn Y Position (high byte)
+		.byte ($00) ;________________________ Spawn Y Position (low byte)
+		.byte ($02) ;________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;________________________ Y Scroll Position (low byte)
+		.byte ($06) ;________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;__________ Force platformer, Disable parallax
+		.byte _DECO1 ;_______________________ Deco type
+		.byte _SPIKESA ;_____________________ Spike set
+		.byte _BLOCKSB ;_____________________ Block set
+		.byte _SAWBLADESA ;__________________ Sawblade set
+		.byte $00 ;__________________________ Starting background color
+		.byte $0F ;__________________________ Starting ground color
+		.byte 40 ;___________________________ Level height
+	; Level data
+		.incbin "EXPORTS/icdx.lz.bin" ; Size: 6607
+
+
+.segment "DAT_BANK_09"	; Total bank size: 8144 bytes
 	.export level_data_element111rg_with_secret_way
 	level_data_element111rg_with_secret_way:
 	; Header
@@ -217,7 +243,7 @@
 		.incbin "EXPORTS/element111rg_with_secret_way.lz.bin" ; Size: 6040
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8090 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8090 bytes
 	.export level_data_acropolis
 	level_data_acropolis:
 	; Header
@@ -272,7 +298,7 @@
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8121 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8121 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -298,14 +324,14 @@
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5547
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8058 bytes
+.segment "DAT_BANK_0D"	; Total bank size: 8058 bytes
 	.export level_data_aftercatabath_3
 	level_data_aftercatabath_3:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
 
 
-.segment "DAT_BANK_0D"	; Total bank size: 8082 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8082 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -355,7 +381,7 @@
 		.incbin "EXPORTS/gameover.lz.bin" ; Size: 3654
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8085 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8085 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data
