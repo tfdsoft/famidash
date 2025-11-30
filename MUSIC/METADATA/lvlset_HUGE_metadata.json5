@@ -736,6 +736,12 @@
 			coveringArtist: "Crafty Jumper",
 		},
 		{
+			fmsSongName: "Shiawase VIP",
+			lowerText: "SHIAWASE VIP",
+			originalArtist: "Dion Timmer",
+			coveringArtist: "Crafty Jumper",
+		},
+		{
 			fmsSongName: "Slash Inferno",
 			upperText: "SLASH",
 			lowerText: "INFERNO",
