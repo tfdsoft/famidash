@@ -277,7 +277,7 @@
 			spikeSet: "A",
 			blockSet: "A",
 			sawSet: "A",
-			difficulty: "EXTREMEDEMON",
+			difficulty: "IMPOSSIBLEDEMON",
 			stars: 10,
 			songID: "song_cryogenic",
 			startingGameMode: 0,
