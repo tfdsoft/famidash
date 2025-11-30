@@ -4,16 +4,18 @@
 #define LEVELSET 'D'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 11
+#define COMMUNITY_LEVEL_COUNT 13
 
 #define level_goldenhaze 0
 #define level_gameover 1
 #define level_demoncryogenic 2
 #define level_foresttemple 3
-#define level_windylandscape 4
-#define level_silentclubstep 5
-#define level_aftercatabath 6
-#define level_shardscapes 7
-#define level_element111rg_with_secret_way 8
-#define level_slaughterhouse 9
-#define level_kratos 10
+#define level_jawbreaker 4
+#define level_acropolis 5
+#define level_windylandscape 6
+#define level_silentclubstep 7
+#define level_aftercatabath 8
+#define level_shardscapes 9
+#define level_element111rg_with_secret_way 10
+#define level_slaughterhouse 11
+#define level_kratos 12

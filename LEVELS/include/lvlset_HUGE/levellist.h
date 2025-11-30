@@ -96,8 +96,10 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// foresttemple
 	DEMON,	// ninecircles
 	DEMON,	// fairydust
+	DEMON,	// jawbreaker
 	DEMON,	// stalemate
 	DEMON,	// eighto
+	DEMON,	// acropolis
 	DEMON,	// hi
 	DEMON,	// eon
 	DEMON,	// windylandscape
@@ -210,8 +212,10 @@ const uint8_t stars_list[] = {
 	10,	// foresttemple
 	10,	// ninecircles
 	10,	// fairydust
+	10,	// jawbreaker
 	10,	// stalemate
 	10,	// eighto
+	10,	// acropolis
 	10,	// hi
 	10,	// eon
 	10,	// windylandscape

@@ -4643,6 +4643,23 @@
 				},
 			]
 		},
+		{
+			level: "jawbreaker",
+			lowerText: "JAWBREAKER",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_dash",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x01,
+			startingGroundColor: 0x01,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+		},
 /*		{
 			level: "futurefunkfix",
 			lowerText: "FUTURE FUNK",
@@ -4738,7 +4755,23 @@
 					offsetY: -8
 				},
 			]
-		},		
+		},
+		{
+			level: "acropolis",
+			lowerText: "ACROPOLIS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_fingerdash",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x00,
+			startingGroundColor: 0x00,
+			maxFallSpeed: 0x07,
+		},
 		{
 			level: "hi",
 			lowerText: "HI",

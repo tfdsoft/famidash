@@ -99,8 +99,10 @@ _level_list_lo:
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_ninecircles)
 	.byte .lobyte(level_data_fairydust)
+	.byte .lobyte(level_data_jawbreaker)
 	.byte .lobyte(level_data_stalemate)
 	.byte .lobyte(level_data_eighto)
+	.byte .lobyte(level_data_acropolis)
 	.byte .lobyte(level_data_hi)
 	.byte .lobyte(level_data_eon)
 	.byte .lobyte(level_data_windylandscape)
@@ -212,8 +214,10 @@ _level_list_hi:
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_ninecircles)
 	.byte .hibyte(level_data_fairydust)
+	.byte .hibyte(level_data_jawbreaker)
 	.byte .hibyte(level_data_stalemate)
 	.byte .hibyte(level_data_eighto)
+	.byte .hibyte(level_data_acropolis)
 	.byte .hibyte(level_data_hi)
 	.byte .hibyte(level_data_eon)
 	.byte .hibyte(level_data_windylandscape)
@@ -325,8 +329,10 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_ninecircles))
 	.byte .lobyte(.bank(level_data_fairydust))
+	.byte .lobyte(.bank(level_data_jawbreaker))
 	.byte .lobyte(.bank(level_data_stalemate))
 	.byte .lobyte(.bank(level_data_eighto))
+	.byte .lobyte(.bank(level_data_acropolis))
 	.byte .lobyte(.bank(level_data_hi))
 	.byte .lobyte(.bank(level_data_eon))
 	.byte .lobyte(.bank(level_data_windylandscape))
@@ -507,8 +513,10 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000082)		; fairydust
+	.byte .lobyte($000086)		; jawbreaker
 	.byte .lobyte($000092)		; stalemate
 	.byte .lobyte($000078)		; eighto
+	.byte .lobyte($000064)		; acropolis
 	.byte .lobyte($00009A)		; hi
 	.byte .lobyte($000286)		; eon
 	.byte .lobyte($00009A)		; windylandscape
@@ -622,8 +630,10 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000082)		; fairydust
+	.byte .hibyte($000086)		; jawbreaker
 	.byte .hibyte($000092)		; stalemate
 	.byte .hibyte($000078)		; eighto
+	.byte .hibyte($000064)		; acropolis
 	.byte .hibyte($00009A)		; hi
 	.byte .hibyte($000286)		; eon
 	.byte .hibyte($00009A)		; windylandscape
@@ -737,8 +747,10 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000082)		; fairydust
+	.byte .bankbyte($000086)		; jawbreaker
 	.byte .bankbyte($000092)		; stalemate
 	.byte .bankbyte($000078)		; eighto
+	.byte .bankbyte($000064)		; acropolis
 	.byte .bankbyte($00009A)		; hi
 	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($00009A)		; windylandscape
