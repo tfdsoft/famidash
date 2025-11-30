@@ -4920,6 +4920,22 @@
 			parallaxDisable: true
 		},
 		{
+			level: "wcropolix",
+			lowerText: "WCROPOLIX",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_glitch_gremlin",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "silentclubstep",
 			upperText: "SILENT",
 			lowerText: "CLUBSTEP",
@@ -5130,7 +5146,86 @@
 			startingGroundColor: 0x11,
 			parallaxDisable: false,
 			maxFallSpeed: 0x07,
-		},		
+		},
+		{
+			level: "silentcircles",
+			lowerText: "SILENT CIRCLES",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_nine_circles",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x02,
+			startingGroundColor: 0x02,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+						coordinates: [61, 22],		//yellow gravity portal
+						offsetY: +8
+				},
+				{
+						coordinates: [62, 22],		//yellow orb
+						offsetY: +8
+				},
+				{
+						coordinates: [67, 21],		//blue gravity portal
+						offsetY: +8
+				},
+				{
+						coordinates: [68, 21],		//0.5x speed portal
+						offsetY: +8
+				},
+				{
+						coordinates: [75, 29],		//blue orb
+						offsetY: +8
+				},
+				{
+						coordinates: [80, 29],		//yellow pad
+						offsetX: +8
+				},
+				{
+						coordinates: [104, 20],		//ship portal
+						offsetY: +16
+				},
+				{
+						coordinates: [104, 22],		//2x speed portal
+						offsetY: -8
+				},
+				{
+						coordinates: [177, 20],		//cube portal
+						offsetY: +16
+				},
+				{
+						coordinates: [177, 22],		//0.5x speed portal
+						offsetY: -8
+				},
+				{
+						coordinates: [222, 20],		//3x speed portal
+						offsetY: -8
+				},
+				{
+						coordinates: [251, 17],		//mini portal
+						offsetY: +8
+				},
+				{
+						coordinates: [258, 17],		//big portal
+						offsetY: +8
+				},
+				{
+						coordinates: [279, 16],		//mini portal
+						offsetX: +8,
+						offsetY: +8
+				},
+				{
+						coordinates: [785, 20],		//3x speed portal
+						offsetY: -8
+				},
+			]
+		},
 		{
 			level: "luckydraw",
 			lowerText: "LUCKY DRAW",

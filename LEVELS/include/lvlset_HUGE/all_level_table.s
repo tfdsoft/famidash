@@ -111,6 +111,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_cataclysm)
 	.byte .lobyte(level_data_aftermath)
+	.byte .lobyte(level_data_wcropolix)
 	.byte .lobyte(level_data_silentclubstep)
 	.byte .lobyte(level_data_aftercatabath)
 	.byte .lobyte(level_data_shardscapes)
@@ -118,6 +119,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_slaughterhouse)
 	.byte .lobyte(level_data_kratos)
 	.byte .lobyte(level_data_everyend)
+	.byte .lobyte(level_data_silentcircles)
 	.byte .lobyte(level_data_luckydraw)
 
 _level_list_hi:
@@ -227,6 +229,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_cataclysm)
 	.byte .hibyte(level_data_aftermath)
+	.byte .hibyte(level_data_wcropolix)
 	.byte .hibyte(level_data_silentclubstep)
 	.byte .hibyte(level_data_aftercatabath)
 	.byte .hibyte(level_data_shardscapes)
@@ -234,6 +237,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_slaughterhouse)
 	.byte .hibyte(level_data_kratos)
 	.byte .hibyte(level_data_everyend)
+	.byte .hibyte(level_data_silentcircles)
 	.byte .hibyte(level_data_luckydraw)
 
 _level_list_bank:
@@ -343,6 +347,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_cataclysm))
 	.byte .lobyte(.bank(level_data_aftermath))
+	.byte .lobyte(.bank(level_data_wcropolix))
 	.byte .lobyte(.bank(level_data_silentclubstep))
 	.byte .lobyte(.bank(level_data_aftercatabath))
 	.byte .lobyte(.bank(level_data_shardscapes))
@@ -350,6 +355,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_slaughterhouse))
 	.byte .lobyte(.bank(level_data_kratos))
 	.byte .lobyte(.bank(level_data_everyend))
+	.byte .lobyte(.bank(level_data_silentcircles))
 	.byte .lobyte(.bank(level_data_luckydraw))
 
 _level_chunk_list_lo:
@@ -528,6 +534,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
 	.byte .lobyte($00007C)		; aftermath
+	.byte .lobyte($00007F)		; wcropolix
 	.byte .lobyte($000095)		; silentclubstep
 	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($00006F)		; shardscapes
@@ -535,6 +542,7 @@ _level_lengths_lo:
 	.byte .lobyte($000098)		; slaughterhouse
 	.byte .lobyte($000087)		; kratos
 	.byte .lobyte($0002DC)		; everyend
+	.byte .lobyte($000084)		; silentcircles
 	.byte .lobyte($000089)		; luckydraw
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -646,6 +654,7 @@ _level_lengths_md:
 	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
 	.byte .hibyte($00007C)		; aftermath
+	.byte .hibyte($00007F)		; wcropolix
 	.byte .hibyte($000095)		; silentclubstep
 	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($00006F)		; shardscapes
@@ -653,6 +662,7 @@ _level_lengths_md:
 	.byte .hibyte($000098)		; slaughterhouse
 	.byte .hibyte($000087)		; kratos
 	.byte .hibyte($0002DC)		; everyend
+	.byte .hibyte($000084)		; silentcircles
 	.byte .hibyte($000089)		; luckydraw
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -764,6 +774,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm
 	.byte .bankbyte($00007C)		; aftermath
+	.byte .bankbyte($00007F)		; wcropolix
 	.byte .bankbyte($000095)		; silentclubstep
 	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($00006F)		; shardscapes
@@ -771,6 +782,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000098)		; slaughterhouse
 	.byte .bankbyte($000087)		; kratos
 	.byte .bankbyte($0002DC)		; everyend
+	.byte .bankbyte($000084)		; silentcircles
 	.byte .bankbyte($000089)		; luckydraw
 
 .endif
