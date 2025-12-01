@@ -4,7 +4,7 @@
 #define LEVELSET 'A'
 
 #define OFFICIAL_LEVEL_COUNT 22
-#define COMMUNITY_LEVEL_COUNT 21
+#define COMMUNITY_LEVEL_COUNT 22
 
 #define level_stereomadness 0
 #define level_backontrack 1
@@ -49,3 +49,4 @@
 #define level_nightmare 40
 #define level_demonpark 41
 #define level_firetemple 42
+#define level_test9 43
