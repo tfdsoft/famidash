@@ -1501,12 +1501,12 @@ const unsigned char Speed_30_Portal[]={
 	  14,  0,0xAB,1,
 	  12,  0,0xA9,1,
 	  20,  0,0xAB,1,
-	  0,  16,0xA9,1|OAM_FLIP_V,
-	  8,  16,0xAB,1|OAM_FLIP_V,
-	  6,  16,0xA9,1|OAM_FLIP_V,
-	  14,  16,0xAB,1|OAM_FLIP_V,
-	  12,	16,0xA9,1|OAM_FLIP_V,
-	  20,  16,0xAB,1|OAM_FLIP_V,
+	  0,  13,0xA9,1|OAM_FLIP_V,
+	  8,  13,0xAB,1|OAM_FLIP_V,
+	  6,  13,0xA9,1|OAM_FLIP_V,
+	  14,  13,0xAB,1|OAM_FLIP_V,
+	  12,	13,0xA9,1|OAM_FLIP_V,
+	  20,  13,0xAB,1|OAM_FLIP_V,
 	0x80
 };
 
@@ -1515,10 +1515,10 @@ const unsigned char Speed_40_Portal[]={
 	  5,  0,0xAD,2,
 	  10,  0,0xAD,2,
 	  15,  0,0xAD,2,
-	  0,  16,0xAD,2|OAM_FLIP_V,
-	  5,  16,0xAD,2|OAM_FLIP_V,
-	  10,  16,0xAD,2|OAM_FLIP_V,
-	  15,  16,0xAD,2|OAM_FLIP_V,
+	  0,  13,0xAD,2|OAM_FLIP_V,
+	  5,  13,0xAD,2|OAM_FLIP_V,
+	  10,  13,0xAD,2|OAM_FLIP_V,
+	  15,  13,0xAD,2|OAM_FLIP_V,
 	0x80
 };
 
