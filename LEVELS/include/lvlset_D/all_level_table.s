@@ -9,39 +9,54 @@ _level_list_lo:
 	.byte .lobyte(level_data_gameover)
 	.byte .lobyte(level_data_demoncryogenic)
 	.byte .lobyte(level_data_foresttemple)
+	.byte .lobyte(level_data_jawbreaker)
+	.byte .lobyte(level_data_acropolis)
 	.byte .lobyte(level_data_windylandscape)
+	.byte .lobyte(level_data_icdx)
+	.byte .lobyte(level_data_wcropolix)
 	.byte .lobyte(level_data_silentclubstep)
 	.byte .lobyte(level_data_aftercatabath)
 	.byte .lobyte(level_data_shardscapes)
 	.byte .lobyte(level_data_element111rg_with_secret_way)
 	.byte .lobyte(level_data_slaughterhouse)
 	.byte .lobyte(level_data_kratos)
+	.byte .lobyte(level_data_silentcircles)
 
 _level_list_hi:
 	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_gameover)
 	.byte .hibyte(level_data_demoncryogenic)
 	.byte .hibyte(level_data_foresttemple)
+	.byte .hibyte(level_data_jawbreaker)
+	.byte .hibyte(level_data_acropolis)
 	.byte .hibyte(level_data_windylandscape)
+	.byte .hibyte(level_data_icdx)
+	.byte .hibyte(level_data_wcropolix)
 	.byte .hibyte(level_data_silentclubstep)
 	.byte .hibyte(level_data_aftercatabath)
 	.byte .hibyte(level_data_shardscapes)
 	.byte .hibyte(level_data_element111rg_with_secret_way)
 	.byte .hibyte(level_data_slaughterhouse)
 	.byte .hibyte(level_data_kratos)
+	.byte .hibyte(level_data_silentcircles)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_gameover))
 	.byte .lobyte(.bank(level_data_demoncryogenic))
 	.byte .lobyte(.bank(level_data_foresttemple))
+	.byte .lobyte(.bank(level_data_jawbreaker))
+	.byte .lobyte(.bank(level_data_acropolis))
 	.byte .lobyte(.bank(level_data_windylandscape))
+	.byte .lobyte(.bank(level_data_icdx))
+	.byte .lobyte(.bank(level_data_wcropolix))
 	.byte .lobyte(.bank(level_data_silentclubstep))
 	.byte .lobyte(.bank(level_data_aftercatabath))
 	.byte .lobyte(.bank(level_data_shardscapes))
 	.byte .lobyte(.bank(level_data_element111rg_with_secret_way))
 	.byte .lobyte(.bank(level_data_slaughterhouse))
 	.byte .lobyte(.bank(level_data_kratos))
+	.byte .lobyte(.bank(level_data_silentcircles))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_demoncryogenic_0)
@@ -69,13 +84,18 @@ _level_lengths_lo:
 	.byte .lobyte($000078)		; gameover
 	.byte .lobyte($0000A8)		; demoncryogenic
 	.byte .lobyte($000090)		; foresttemple
+	.byte .lobyte($000086)		; jawbreaker
+	.byte .lobyte($000064)		; acropolis
 	.byte .lobyte($00009A)		; windylandscape
+	.byte .lobyte($000092)		; icdx
+	.byte .lobyte($00007F)		; wcropolix
 	.byte .lobyte($000095)		; silentclubstep
 	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($00006F)		; shardscapes
 	.byte .lobyte($0000A2)		; element111rg_with_secret_way
 	.byte .lobyte($000098)		; slaughterhouse
 	.byte .lobyte($000087)		; kratos
+	.byte .lobyte($000084)		; silentcircles
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -84,13 +104,18 @@ _level_lengths_md:
 	.byte .hibyte($000078)		; gameover
 	.byte .hibyte($0000A8)		; demoncryogenic
 	.byte .hibyte($000090)		; foresttemple
+	.byte .hibyte($000086)		; jawbreaker
+	.byte .hibyte($000064)		; acropolis
 	.byte .hibyte($00009A)		; windylandscape
+	.byte .hibyte($000092)		; icdx
+	.byte .hibyte($00007F)		; wcropolix
 	.byte .hibyte($000095)		; silentclubstep
 	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($00006F)		; shardscapes
 	.byte .hibyte($0000A2)		; element111rg_with_secret_way
 	.byte .hibyte($000098)		; slaughterhouse
 	.byte .hibyte($000087)		; kratos
+	.byte .hibyte($000084)		; silentcircles
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -99,13 +124,18 @@ _level_lengths_hi:
 	.byte .bankbyte($000078)		; gameover
 	.byte .bankbyte($0000A8)		; demoncryogenic
 	.byte .bankbyte($000090)		; foresttemple
+	.byte .bankbyte($000086)		; jawbreaker
+	.byte .bankbyte($000064)		; acropolis
 	.byte .bankbyte($00009A)		; windylandscape
+	.byte .bankbyte($000092)		; icdx
+	.byte .bankbyte($00007F)		; wcropolix
 	.byte .bankbyte($000095)		; silentclubstep
 	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($00006F)		; shardscapes
 	.byte .bankbyte($0000A2)		; element111rg_with_secret_way
 	.byte .bankbyte($000098)		; slaughterhouse
 	.byte .bankbyte($000087)		; kratos
+	.byte .bankbyte($000084)		; silentcircles
 
 .endif
 .endif
