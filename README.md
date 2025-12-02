@@ -18,7 +18,8 @@ Want more levels? Check out
 [D-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.d-sides.nes.zip)
 
 Want EVERYTHING? Download
-[The Obese](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).
+[The Obese](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).\
+<sub>Note: Will not work on most emulators. Try an accurate emulator like [Mesen](https://www.mesen.ca/) for this huge ROM.</sub>
 
 Do you have WAY too many quarters? Play the [Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
