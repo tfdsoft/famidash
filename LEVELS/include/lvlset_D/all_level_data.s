@@ -113,7 +113,7 @@
 		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7854
 
 
-.segment "DAT_BANK_05"	; Total bank size: 7825 bytes
+.segment "DAT_BANK_05"	; Total bank size: 7409 bytes
 	.export level_data_kratos
 	level_data_kratos:
 	; Header
@@ -165,7 +165,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8138 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8162 bytes
 	.export level_data_icdx
 	level_data_icdx:
 	; Header
@@ -188,10 +188,10 @@
 		.byte $0F ;__________________________ Starting ground color
 		.byte 40 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7054
+		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7113
 
 
-.segment "DAT_BANK_08"	; Total bank size: 7866 bytes
+.segment "DAT_BANK_08"	; Total bank size: 7961 bytes
 	.export level_data_jawbreaker
 	level_data_jawbreaker:
 	; Header
@@ -243,7 +243,7 @@
 		.incbin "EXPORTS/element111rg_with_secret_way.lz.bin" ; Size: 6040
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 7889 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8010 bytes
 	.export level_data_acropolis
 	level_data_acropolis:
 	; Header
@@ -267,30 +267,6 @@
 		.byte 27 ;________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/acropolis.lz.bin" ; Size: 5631
-
-	.export level_data_shardscapes
-	level_data_shardscapes:
-	; Header
-		.byte <sprite_data_shardscapes ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_shardscapes ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_shardscapes)) ;___ Sprite data bank
-		.byte song_slow_down ;______________________ Song ID
-		.byte (1 << 4) | 4 ;________________________ Starting game mode and speed
-		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_______________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_______________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
-		.byte ($07) ;_______________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
-		.byte _DECO1 ;______________________________ Deco type
-		.byte _SPIKESA ;____________________________ Spike set
-		.byte _BLOCKSB ;____________________________ Block set
-		.byte _SAWBLADESA ;_________________________ Sawblade set
-		.byte $30 ;_________________________________ Starting background color
-		.byte $0F ;_________________________________ Starting ground color
-		.byte 57 ;__________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2222
 
 
 .segment "DAT_BANK_0C"	; Total bank size: 8121 bytes
@@ -457,7 +433,33 @@
 		.incbin "EXPORTS/wcropolix.lz.bin" ; Size: 4155
 
 
-.segment "DAT_BANK_11"	; Total bank size: 8086 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8189 bytes
+	.export level_data_shardscapes
+	level_data_shardscapes:
+	; Header
+		.byte <sprite_data_shardscapes ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_shardscapes ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_shardscapes)) ;___ Sprite data bank
+		.byte song_slow_down ;______________________ Song ID
+		.byte (1 << 4) | 4 ;________________________ Starting game mode and speed
+		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_______________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_______________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_______________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
+		.byte _DECO1 ;______________________________ Deco type
+		.byte _SPIKESA ;____________________________ Spike set
+		.byte _BLOCKSB ;____________________________ Block set
+		.byte _SAWBLADESA ;_________________________ Sawblade set
+		.byte $30 ;_________________________________ Starting background color
+		.byte $0F ;_________________________________ Starting ground color
+		.byte 57 ;__________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2222
+
+
+.segment "DAT_BANK_12"	; Total bank size: 4735 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data

@@ -4843,6 +4843,61 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x00,
 			startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[36, 30], [370, 30],
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[369, 30], [368, 30],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[517, 27], [786, 29], [787, 29],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[29, 26], [244, 29], [369, 30], [370, 30], [368, 30], [517, 26], [786, 28], [787, 28],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[21, 29], [130, 28], [56, 30], [184, 28], [228, 30], [288, 30], [383, 30], [409, 29], [368, 30], [459, 29], [517, 25], [653, 30], [738, 31],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[44, 30], [385, 30], [787, 29],
+					],
+					offsetX: -16
+				},
+				{
+					coordinates: [
+						[43, 29], [36, 30], [211, 30],
+					],
+					offsetY: +16
+				},
+				{
+						coordinates: [15, 32],
+						offsetY: -7
+				},
+				{
+					coordinates: [
+						[69, 32], [72, 32], [75, 32], [84, 29],
+					],
+					offsetX: +4
+				},
+			]
 		},
 		{
 			level: "sonicwave",
