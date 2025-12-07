@@ -165,7 +165,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8103 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8138 bytes
 	.export level_data_icdx
 	level_data_icdx:
 	; Header
@@ -243,7 +243,7 @@
 		.incbin "EXPORTS/element111rg_with_secret_way.lz.bin" ; Size: 6040
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8090 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 7889 bytes
 	.export level_data_acropolis
 	level_data_acropolis:
 	; Header
@@ -292,11 +292,6 @@
 	; Level data
 		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2222
 
-	.export level_data_windylandscape_1
-	level_data_windylandscape_1:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
-
 
 .segment "DAT_BANK_0C"	; Total bank size: 8121 bytes
 	.export level_data_silentclubstep
@@ -331,7 +326,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8082 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8181 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -355,6 +350,56 @@
 		.byte 27 ;___________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
+
+	.export level_data_nullscapes
+	level_data_nullscapes:
+	; Header
+		.byte <sprite_data_nullscapes ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_nullscapes ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_nullscapes)) ;___ Sprite data bank
+		.byte song_flow ;__________________________ Song ID
+		.byte (1 << 4) | 4 ;_______________________ Starting game mode and speed
+		.byte ($FF) ;______________________________ Spawn Y Position (high byte)
+		.byte ($FF) ;______________________________ Spawn Y Position (low byte)
+		.byte ($02) ;______________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
+		.byte ($06) ;______________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_____________________________ Deco type
+		.byte _SPIKESA ;___________________________ Spike set
+		.byte _BLOCKSB ;___________________________ Block set
+		.byte _SAWBLADESA ;________________________ Sawblade set
+		.byte $0F ;________________________________ Starting background color
+		.byte $0F ;________________________________ Starting ground color
+		.byte 57 ;_________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3753
+
+
+.segment "DAT_BANK_0F"	; Total bank size: 8165 bytes
+	.export level_data_silentcircles
+	level_data_silentcircles:
+	; Header
+		.byte <sprite_data_silentcircles ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_silentcircles ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_silentcircles)) ;___ Sprite data bank
+		.byte song_cryogenic ;________________________ Song ID
+		.byte (1 << 4) | 0 ;__________________________ Starting game mode and speed
+		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
+		.byte _DECO1 ;________________________________ Deco type
+		.byte _SPIKESC ;______________________________ Spike set
+		.byte _BLOCKSB ;______________________________ Block set
+		.byte _SAWBLADESA ;___________________________ Sawblade set
+		.byte $02 ;___________________________________ Starting background color
+		.byte $02 ;___________________________________ Starting ground color
+		.byte 30 ;____________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/silentcircles.lz.bin" ; Size: 4274
 
 	.export level_data_gameover
 	level_data_gameover:
@@ -380,34 +425,13 @@
 	; Level data
 		.incbin "EXPORTS/gameover.lz.bin" ; Size: 3654
 
-
-.segment "DAT_BANK_0F"	; Total bank size: 7408 bytes
-	.export level_data_silentcircles
-	level_data_silentcircles:
-	; Header
-		.byte <sprite_data_silentcircles ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_silentcircles ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_silentcircles)) ;___ Sprite data bank
-		.byte song_cryogenic ;________________________ Song ID
-		.byte (1 << 4) | 0 ;__________________________ Starting game mode and speed
-		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;_________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
-		.byte _DECO1 ;________________________________ Deco type
-		.byte _SPIKESC ;______________________________ Spike set
-		.byte _BLOCKSB ;______________________________ Block set
-		.byte _SAWBLADESA ;___________________________ Sawblade set
-		.byte $02 ;___________________________________ Starting background color
-		.byte $02 ;___________________________________ Starting ground color
-		.byte 30 ;____________________________________ Level height
+	.export level_data_windylandscape_1
+	level_data_windylandscape_1:
 	; Level data
-		.incbin "EXPORTS/silentcircles.lz.bin" ; Size: 4274
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8110 bytes
+.segment "DAT_BANK_10"	; Total bank size: 7289 bytes
 	.export level_data_wcropolix
 	level_data_wcropolix:
 	; Header
@@ -433,7 +457,7 @@
 		.incbin "EXPORTS/wcropolix.lz.bin" ; Size: 4155
 
 
-.segment "DAT_BANK_11"	; Total bank size: 6741 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8086 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data
