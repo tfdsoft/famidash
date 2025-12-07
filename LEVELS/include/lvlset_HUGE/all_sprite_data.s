@@ -2424,7 +2424,7 @@ sprite_data_cycles:
   .byte $40,$33,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_66"
+.segment "DAT_BANK_3F"
 sprite_data_xstep:
   .byte $30,$01,$70,$03,$2a
   .byte $50,$01,$78,$03,$0a
@@ -9799,7 +9799,7 @@ sprite_data_thechallenge:
   .byte $40,$12,$00,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_3F"
+.segment "DAT_BANK_6A"
 sprite_data_dorabaebasic4:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$70,$03,$bf
@@ -40443,7 +40443,7 @@ sprite_data_skeletalshenanigans:
   .byte $a0,$45,$30,$03,$f9
   .byte $a0,$45,$40,$03,$f9
   .byte $a0,$45,$50,$03,$f9
-  .byte $a0,$45,$30,$03,$08
+  .byte $b0,$45,$30,$03,$57
   .byte $d0,$45,$40,$03,$32
   .byte $d0,$45,$60,$03,$2c
   .byte $10,$46,$50,$03,$27

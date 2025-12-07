@@ -269,7 +269,7 @@
 		.incbin "EXPORTS/demoncryogenic.lz.0.bin" ; Size: 8118
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8124 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8132 bytes
 	.export level_data_skeletalshenanigans
 	level_data_skeletalshenanigans:
 	; Header
@@ -282,7 +282,7 @@
 		.byte ($00) ;_______________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;_______________________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_______________________________________ Max Fall Speed (high byte)
+		.byte ($07) ;_______________________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (1 << 1) ;_________________________ Force platformer, Disable parallax
 		.byte _DECO1 ;______________________________________ Deco type
 		.byte _SPIKESA ;____________________________________ Spike set
@@ -292,7 +292,7 @@
 		.byte $0F ;_________________________________________ Starting ground color
 		.byte 27 ;__________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.0.bin" ; Size: 8106
+		.incbin "EXPORTS/skeletalshenanigans.lz.0.bin" ; Size: 8114
 
 
 .segment "DAT_BANK_0C"	; Total bank size: 8122 bytes
@@ -2788,7 +2788,7 @@
 		.incbin "EXPORTS/ninox.lz.bin" ; Size: 2317
 
 
-.segment "DAT_BANK_66"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_66"	; Total bank size: 8188 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -2812,6 +2812,11 @@
 		.byte 35 ;_______________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2765
+
+	.export level_data_skeletalshenanigans_10
+	level_data_skeletalshenanigans_10:
+	; Level data
+		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2619
 
 
 .segment "DAT_BANK_69"	; Total bank size: 7943 bytes
@@ -2840,12 +2845,7 @@
 		.incbin "EXPORTS/everymadness.lz.bin" ; Size: 2618
 
 
-.segment "DAT_BANK_6A"	; Total bank size: 7781 bytes
-	.export level_data_skeletalshenanigans_10
-	level_data_skeletalshenanigans_10:
-	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2598
-
+.segment "DAT_BANK_6A"	; Total bank size: 7799 bytes
 	.export level_data_subzero
 	level_data_subzero:
 	; Header

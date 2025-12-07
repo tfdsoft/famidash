@@ -80,7 +80,7 @@
 		.incbin "EXPORTS/thesteamworks.lz.0.bin" ; Size: 8118
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8124 bytes
+.segment "DAT_BANK_03"	; Total bank size: 8132 bytes
 	.export level_data_skeletalshenanigans
 	level_data_skeletalshenanigans:
 	; Header
@@ -93,7 +93,7 @@
 		.byte ($00) ;_______________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;_______________________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_______________________________________ Max Fall Speed (high byte)
+		.byte ($07) ;_______________________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (1 << 1) ;_________________________ Force platformer, Disable parallax
 		.byte _DECO1 ;______________________________________ Deco type
 		.byte _SPIKESA ;____________________________________ Spike set
@@ -103,7 +103,7 @@
 		.byte $0F ;_________________________________________ Starting ground color
 		.byte 27 ;__________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.0.bin" ; Size: 8106
+		.incbin "EXPORTS/skeletalshenanigans.lz.0.bin" ; Size: 8114
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8103 bytes
@@ -367,6 +367,13 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5635
+
+
+.segment "DAT_BANK_0F"	; Total bank size: 8170 bytes
+	.export level_data_skeletalshenanigans_5
+	level_data_skeletalshenanigans_5:
+	; Level data
+		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2619
 
 
 .segment "DAT_BANK_10"	; Total bank size: 8168 bytes
@@ -713,13 +720,6 @@
 		.byte 27 ;________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/selectpaymenttype.lz.bin" ; Size: 4161
-
-
-.segment "DAT_BANK_1D"	; Total bank size: 7895 bytes
-	.export level_data_skeletalshenanigans_5
-	level_data_skeletalshenanigans_5:
-	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2598
 
 
 .segment "DAT_BANK_1E"	; Total bank size: 8192 bytes

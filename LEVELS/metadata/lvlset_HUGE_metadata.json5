@@ -3618,6 +3618,7 @@
 			startingBackgroundColor: 0x07,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -3657,7 +3658,7 @@
 				},
 				{
 					coordinates: [
-						[401, 10], [639, 11], [1115, 21], [1151, 11],
+						[401, 10], [639, 11], [1151, 11],
 					],
 					offsetX: -16
 				},

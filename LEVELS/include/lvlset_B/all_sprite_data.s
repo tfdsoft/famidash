@@ -5763,7 +5763,7 @@ sprite_data_oceane:
   .byte $40,$23,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0F"
+.segment "DAT_BANK_1D"
 sprite_data_generationretro:
   .byte $00,$00,$80,$03,$bf
   .byte $10,$01,$60,$03,$ba
@@ -18456,7 +18456,7 @@ sprite_data_skeletalshenanigans:
   .byte $a0,$45,$30,$03,$f9
   .byte $a0,$45,$40,$03,$f9
   .byte $a0,$45,$50,$03,$f9
-  .byte $a0,$45,$30,$03,$08
+  .byte $b0,$45,$30,$03,$57
   .byte $d0,$45,$40,$03,$32
   .byte $d0,$45,$60,$03,$2c
   .byte $10,$46,$50,$03,$27
