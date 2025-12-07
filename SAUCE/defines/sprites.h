@@ -1879,11 +1879,11 @@ const unsigned char Teleport_Portal_Horizontal_Upwards_Enter[]={
 
 
 	  0,  0,0xF5,0|OAM_FLIP_H,  
-	  8,  0,0xF3,0|OAM_FLIP_H,  
+	  8,  0,0xE1,0|OAM_FLIP_H,  
 	  16, 0,0xF1,0|OAM_FLIP_H,
 	  24, 0,0xF1,0,  
 
-	32, 0,0xF3,0,
+	32, 0,0xE1,0,
 	40, 0,0xF5,0,  
 //	0,8,0xE7,0|OAM_FLIP_H,
 	8,8,0xE5,0|OAM_FLIP_H,
@@ -1899,11 +1899,11 @@ const unsigned char Teleport_Portal_Horizontal_Upwards_Exit[]={
 
 
 	  0,  0,0xF5,1|OAM_FLIP_H,  
-	  8, 0,0xF3,1|OAM_FLIP_H,  
+	  8, 0,0xE1,1|OAM_FLIP_H,  
 	  16, 0,0xF1,1|OAM_FLIP_H,
 	  24, 0,0xF1,1,  
 
-	32, 0,0xF3,1,
+	32, 0,0xE1,1,
 	40,0,0xF5,1,  
 //	0,8,0xE7,1|OAM_FLIP_H,
 	8,8,0xE5,1|OAM_FLIP_H,
@@ -1919,11 +1919,11 @@ const unsigned char Teleport_Portal_Horizontal_Downwards_Enter[]={
 
 
 	  0,  0,0xF5,0|OAM_FLIP_H|OAM_FLIP_V,  
-	  8, 0,0xF3,0|OAM_FLIP_H|OAM_FLIP_V,  
+	  8, 0,0xE1,0|OAM_FLIP_H|OAM_FLIP_V,  
 	  16, 0,0xF1,0|OAM_FLIP_H|OAM_FLIP_V,
 	  24, 0,0xF1,0|OAM_FLIP_V,  
 
-	32, 0,0xF3,0|OAM_FLIP_V,
+	32, 0,0xE1,0|OAM_FLIP_V,
 	40, 0,0xF5,0|OAM_FLIP_V,  
 //	0,-8,0xE7,0|OAM_FLIP_H|OAM_FLIP_V,
 	8,-8,0xE5,0|OAM_FLIP_H|OAM_FLIP_V,
@@ -1938,11 +1938,11 @@ const unsigned char Teleport_Portal_Horizontal_Downwards_Exit[]={
 
 
 	  0,  0,0xF5,1|OAM_FLIP_H|OAM_FLIP_V,  
-	  8, 0,0xF3,1|OAM_FLIP_H|OAM_FLIP_V,  
+	  8, 0,0xE1,1|OAM_FLIP_H|OAM_FLIP_V,  
 	  16, 0,0xF1,1|OAM_FLIP_H|OAM_FLIP_V,
 	  24, 0,0xF1,1|OAM_FLIP_V,  
 
-	32, 0,0xF3,1|OAM_FLIP_V,
+	32, 0,0xE1,1|OAM_FLIP_V,
 	40, 0,0xF5,1|OAM_FLIP_V,  
 //	0,-8,0xE7,1|OAM_FLIP_H|OAM_FLIP_V,
 	8,-8,0xE5,1|OAM_FLIP_H|OAM_FLIP_V,
@@ -2512,57 +2512,19 @@ const unsigned char Teleport_Square_Exit[]={
 };
 const unsigned char Spider_Pad_Up[]={
 
-	  0, -8,0xE1,1,
-	  8, -8,0xE1,1|OAM_FLIP_H,
+	  0, -8,0xF3,1,
+	  8, -8,0xF3,1|OAM_FLIP_H,
 	0x80
 };
 
-const unsigned char Spider_Pad_Up2[]={
-
-	  0, -8,0xE3,1,
-	  8, -8,0xE5,1|OAM_FLIP_H,
-	0x80
-};
-
-const unsigned char Spider_Pad_Up3[]={
-
-	  0, -8,0xE5,1,
-	  8, -8,0xE7,1|OAM_FLIP_H,
-	0x80
-};
-
-const unsigned char Spider_Pad_Up4[]={
-
-	  0, -8,0xE7,1,
-	  8, -8,0xE1,1|OAM_FLIP_H,
-	0x80
-};
 
 const unsigned char Spider_Pad_Down[]={
 
-	  0, -0,0xE1,1|OAM_FLIP_V,
-	  8, -0,0xE1,1|OAM_FLIP_H|OAM_FLIP_V,
+	  0, -0,0xF3,1|OAM_FLIP_V,
+	  8, -0,0xF3,1|OAM_FLIP_H|OAM_FLIP_V,
 	0x80
 };
 
-const unsigned char Spider_Pad_Down2[]={
-
-	  0, -0,0xE3,1|OAM_FLIP_V,
-	  8, -0,0xE5,1|OAM_FLIP_H|OAM_FLIP_V,
-	0x80
-};
-const unsigned char Spider_Pad_Down3[]={
-
-	  0, -0,0xE5,1|OAM_FLIP_V,
-	  8, -0,0xE7,1|OAM_FLIP_H|OAM_FLIP_V,
-	0x80
-};
-const unsigned char Spider_Pad_Down4[]={
-
-	  0, -0,0xE7,1|OAM_FLIP_V,
-	  8, -0,0xE9,1|OAM_FLIP_H|OAM_FLIP_V,
-	0x80
-};
 
 const unsigned char Short_Light[]={
 
@@ -2609,13 +2571,13 @@ const unsigned char Long_Light_U[]={
 };	
 
 const unsigned char Short_Light_Left[]={
-	 0, -4,0xF3,3,
+	 0, -4,0xF5,3,
 	 8, -4,0xF1,3,
 	0x80
 };
 
 const unsigned char Short_Light_Right[]={
-	 8, -4,0xF3,3|OAM_FLIP_H,
+	 8, -4,0xF5,3|OAM_FLIP_H,
 	 0, -4,0xF1,3|OAM_FLIP_H,
 	0x80
 };
@@ -2806,18 +2768,6 @@ const struct SpriteFrame PINK_PAD_SPRITES[]={
 	{5, Pink_Jump_Pad2},
 	{5, Pink_Jump_Pad3},
 	{5, Pink_Jump_Pad4},
-};
-const struct SpriteFrame SPIDER_PAD_UP_SPRITES[]={
-	{5, Spider_Pad_Up},
-	{5, Spider_Pad_Up2},
-	{5, Spider_Pad_Up3},
-	{5, Spider_Pad_Up4},
-};
-const struct SpriteFrame SPIDER_PAD_DOWN_SPRITES[]={
-	{5, Spider_Pad_Down},
-	{5, Spider_Pad_Down2},
-	{5, Spider_Pad_Down3},
-	{5, Spider_Pad_Down4},
 };
 const struct SpriteFrame RED_PAD_SPRITES[]={
 	{5, Red_Jump_Pad},
