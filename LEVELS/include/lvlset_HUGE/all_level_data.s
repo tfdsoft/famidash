@@ -629,7 +629,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7724
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 7658 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 7665 bytes
 	.export level_data_rainingtacos
 	level_data_rainingtacos:
 	; Header
@@ -652,7 +652,7 @@
 		.byte $0F ;__________________________________ Starting ground color
 		.byte 32 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/rainingtacos.lz.bin" ; Size: 7640
+		.incbin "EXPORTS/rainingtacos.lz.bin" ; Size: 7647
 
 
 .segment "DAT_BANK_1B"	; Total bank size: 8126 bytes
@@ -2014,6 +2014,32 @@
 		.incbin "EXPORTS/firetemple.lz.bin" ; Size: 3185
 
 
+.segment "DAT_BANK_4B"	; Total bank size: 8179 bytes
+	.export level_data_dorabaebasic4
+	level_data_dorabaebasic4:
+	; Header
+		.byte <sprite_data_dorabaebasic4 ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_dorabaebasic4 ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_dorabaebasic4)) ;___ Sprite data bank
+		.byte song_electrodynamix ;___________________ Song ID
+		.byte (0 << 4) | 0 ;__________________________ Starting game mode and speed
+		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
+		.byte ($06) ;_________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;___________________ Force platformer, Disable parallax
+		.byte _DECO1 ;________________________________ Deco type
+		.byte _SPIKESA ;______________________________ Spike set
+		.byte _BLOCKSB ;______________________________ Block set
+		.byte _SAWBLADESA ;___________________________ Sawblade set
+		.byte $0F ;___________________________________ Starting background color
+		.byte $0F ;___________________________________ Starting ground color
+		.byte 57 ;____________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/dorabaebasic4.lz.bin" ; Size: 3300
+
+
 .segment "DAT_BANK_4C"	; Total bank size: 8181 bytes
 	.export level_data_blastprocessing
 	level_data_blastprocessing:
@@ -2071,7 +2097,7 @@
 		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3336
 
 
-.segment "DAT_BANK_4E"	; Total bank size: 8134 bytes
+.segment "DAT_BANK_4E"	; Total bank size: 8152 bytes
 	.export level_data_tinytunes
 	level_data_tinytunes:
 	; Header
@@ -2095,30 +2121,6 @@
 		.byte 27 ;________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/tinytunes.lz.bin" ; Size: 4798
-
-	.export level_data_dorabaebasic4
-	level_data_dorabaebasic4:
-	; Header
-		.byte <sprite_data_dorabaebasic4 ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_dorabaebasic4 ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_dorabaebasic4)) ;___ Sprite data bank
-		.byte song_electrodynamix ;___________________ Song ID
-		.byte (0 << 4) | 0 ;__________________________ Starting game mode and speed
-		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;___________________ Force platformer, Disable parallax
-		.byte _DECO1 ;________________________________ Deco type
-		.byte _SPIKESA ;______________________________ Spike set
-		.byte _BLOCKSB ;______________________________ Block set
-		.byte _SAWBLADESA ;___________________________ Sawblade set
-		.byte $0F ;___________________________________ Starting background color
-		.byte $0F ;___________________________________ Starting ground color
-		.byte 57 ;____________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/dorabaebasic4.lz.bin" ; Size: 3300
 
 
 .segment "DAT_BANK_4F"	; Total bank size: 8171 bytes

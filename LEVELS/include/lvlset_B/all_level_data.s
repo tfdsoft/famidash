@@ -158,7 +158,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8074
 
 
-.segment "DAT_BANK_07"	; Total bank size: 7658 bytes
+.segment "DAT_BANK_07"	; Total bank size: 7665 bytes
 	.export level_data_rainingtacos
 	level_data_rainingtacos:
 	; Header
@@ -181,7 +181,7 @@
 		.byte $0F ;__________________________________ Starting ground color
 		.byte 32 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/rainingtacos.lz.bin" ; Size: 7640
+		.incbin "EXPORTS/rainingtacos.lz.bin" ; Size: 7647
 
 
 .segment "DAT_BANK_08"	; Total bank size: 7576 bytes
@@ -506,6 +506,13 @@
 		.incbin "EXPORTS/rainbowdust.lz.bin" ; Size: 5108
 
 
+.segment "DAT_BANK_15"	; Total bank size: 7670 bytes
+	.export level_data_thesteamworks_1
+	level_data_thesteamworks_1:
+	; Level data
+		.incbin "EXPORTS/thesteamworks.lz.1.bin" ; Size: 2809
+
+
 .segment "DAT_BANK_16"	; Total bank size: 8152 bytes
 	.export level_data_tinytunes
 	level_data_tinytunes:
@@ -665,7 +672,7 @@
 		.incbin "EXPORTS/moonlight.lz.bin" ; Size: 4220
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 8183 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 7549 bytes
 	.export level_data_powertrip
 	level_data_powertrip:
 	; Header
@@ -690,13 +697,8 @@
 	; Level data
 		.incbin "EXPORTS/powertrip.lz.bin" ; Size: 4195
 
-	.export level_data_thesteamworks_1
-	level_data_thesteamworks_1:
-	; Level data
-		.incbin "EXPORTS/thesteamworks.lz.1.bin" ; Size: 2809
 
-
-.segment "DAT_BANK_1C"	; Total bank size: 8056 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 8061 bytes
 	.export level_data_selectpaymenttype
 	level_data_selectpaymenttype:
 	; Header
@@ -753,7 +755,7 @@
 		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 2544
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8117 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8147 bytes
 	.export level_data_ninox
 	level_data_ninox:
 	; Header
@@ -810,7 +812,7 @@
 		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2292
 
 
-.segment "DAT_BANK_21"	; Total bank size: 2656 bytes
+.segment "DAT_BANK_21"	; Total bank size: 3782 bytes
 	.export level_data_ultiatedestruction
 	level_data_ultiatedestruction:
 	; Header
