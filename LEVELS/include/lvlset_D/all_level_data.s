@@ -367,7 +367,7 @@
 		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
 		.byte ($07) ;_________________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
-		.byte _DECO1 ;________________________________ Deco type
+		.byte _EXTRASPRITES1 ;________________________ Deco type
 		.byte _SPIKESC ;______________________________ Spike set
 		.byte _BLOCKSB ;______________________________ Block set
 		.byte _SAWBLADESA ;___________________________ Sawblade set

@@ -5206,7 +5206,7 @@
 		{
 			level: "silentcircles",
 			lowerText: "SILENT CIRCLES",
-			decoType: "DECO1",
+			decoType: "EXTRASPRITES1",
 			spikeSet: "C",
 			blockSet: "B",
 			sawSet: "A",
