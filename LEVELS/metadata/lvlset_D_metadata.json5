@@ -546,7 +546,7 @@
 			sawSet: "A",
 			difficulty: "GRANDPADEMON",
 			stars: 10,
-			songID: "song_cryogenic",
+			songID: "song_supernova",
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x02,

@@ -2510,7 +2510,7 @@
 		.byte <sprite_data_silentcircles ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_silentcircles ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_silentcircles)) ;___ Sprite data bank
-		.byte song_nine_circles ;_____________________ Song ID
+		.byte song_supernova ;________________________ Song ID
 		.byte (1 << 4) | 0 ;__________________________ Starting game mode and speed
 		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
 		.byte ($00) ;_________________________________ Spawn Y Position (low byte)

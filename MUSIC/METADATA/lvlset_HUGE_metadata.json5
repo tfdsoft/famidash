@@ -797,6 +797,12 @@
 			coveringArtist: ["alexmush", "SeaGlowingPro"]
 		},
 		{
+			fmsSongName: "Supernova",
+			lowerText: "SUPERNOVA",
+			originalArtist: "XTRULLOR",
+			coveringArtist: "ElAngel378",
+		},
+		{
 			fmsSongName: "The Angel",
 			lowerText: "THE ANGEL",
 			originalArtist: "Cacola",

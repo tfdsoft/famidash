@@ -105,6 +105,11 @@
 			originalArtistText: "CREO",
 		},
 		{
+			fmsSongName: "Supernova",
+			lowerText: "SUPERNOVA",
+			originalArtistText: "XTRULLOR",
+		},
+		{
 			fmsSongName: "Windfall",
 			lowerText: "WINDFALL",
 			originalArtistText: "THEFATRAT",
