@@ -520,12 +520,14 @@
 			originalArtist: "Dimrain47",
 			coveringArtist: "cloud54",
 		},
+		/*
 		{
 			fmsSongName: "Infernoplex full",
 			lowerText: "INFERNOPLEX",
 			originalArtist: "Dimrain47",
 			coveringArtist: ["cloud54", "SeaGlowingPro"]
 		},
+		*/
 		{
 			fmsSongName: "Infiltration",
 			lowerText: "INFILTRATION",
@@ -565,13 +567,15 @@
 			lowerText: "SUNSHINE CUT",
 			originalArtist: ["Tessa Violet", "dan harrison b"],
 			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
-		},		
+		},
+		/*
 		{
 			fmsSongName: "Just Right Full",
 			lowerText: "JUST RIGHT",
 			originalArtist: ["Tessa Violet", "dan harrison b"],
 			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
-		},		
+		},
+		*/
 		{
 			fmsSongName: "kesobomb",
 			lowerText: "KESOBOMB",
@@ -747,13 +751,13 @@
 			lowerText: "INFERNO",
 			originalArtist: ["WFlame Temini","te Boom Kitty"],
 			coveringArtist: "SeaGlowingPro",
-		},		
+		},
 		{
 			fmsSongName: "Slow Down",
 			lowerText: "SLOW DOWN",
 			originalArtist: "CREO",
 			coveringArtist: "SeaGlowingPro",
-		},		
+		},
 		{
 			fmsSongName: "Sonic blaster",
 			lowerText: "SONIC BLASTER",
@@ -807,7 +811,7 @@
 			lowerText: "THE ANGEL",
 			originalArtist: "Cacola",
 			coveringArtist: "ElAngel378",
-		},	
+		},
 		{
 			fmsSongName: "The Seven Seas",
 			lowerText: "THE SEVEN SEAS",

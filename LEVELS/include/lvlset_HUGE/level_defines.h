@@ -4,7 +4,7 @@
 #define LEVELSET 21037166
 
 #define OFFICIAL_LEVEL_COUNT 22
-#define COMMUNITY_LEVEL_COUNT 94
+#define COMMUNITY_LEVEL_COUNT 95
 
 #define level_stereomadness 0
 #define level_backontrack 1
@@ -119,6 +119,7 @@
 #define level_element111rg 110
 #define level_slaughterhouse 111
 #define level_kratos 112
-#define level_everyend 113
-#define level_silentcircles 114
-#define level_luckydraw 115
+#define level_nullscapes 113
+#define level_everyend 114
+#define level_silentcircles 115
+#define level_luckydraw 116
