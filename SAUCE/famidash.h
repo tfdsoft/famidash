@@ -531,7 +531,10 @@ uint8_t bigboi;
 uint8_t gravity_mod;
 #endif
 
+uint8_t practicebuffer;
 uint8_t tempplat;
+
+unsigned char END_LEVEL_TIMER;
 
 #if __THE_ALBUM || __HUGE_ROM
 uint8_t queuemode;

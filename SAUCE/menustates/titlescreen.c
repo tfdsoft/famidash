@@ -1087,11 +1087,61 @@ void choose_menu_theme() {
 
 
 void check_practice_point_deletion() {
-	if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.hold & (PAD_UP | PAD_DOWN))) {
+	if (practicebuffer || (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.hold & (PAD_UP | PAD_DOWN)))) {
 				curr_practice_point--;
+				practicebuffer = 0;
 				if (latest_practice_point) latest_practice_point--;
 				if (curr_practice_point >= practice_point_count)
 					curr_practice_point = practice_point_count - 1;
 	}
 }
 
+void end_level_debug() {
+				END_LEVEL_TIMER = 0;
+				kandokidshack4 = 0;
+				oam_clear();
+				gameState = STATE_LVLDONE;
+				//DEBUG_MODE = 0;
+				famistudio_music_stop();
+}				
+
+void decrement_was_on_slope() {
+	if (currplayer_was_on_slope_counter) {
+		currplayer_was_on_slope_counter--;
+		
+		if (!currplayer_was_on_slope_counter) {
+			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL) {
+				// Set carry to 1 if slope is upside down
+				__A__ = (currplayer_slope_type & SLOPE_UPSIDEDOWN) + (256 - SLOPE_UPSIDEDOWN);
+				__A__ = currplayer_table_idx & ~TBLIDX_GRAV;
+				__asm__ ("adc #0 \n tay");
+				// Thus, gravity in the table index is replaced with SLOPE_UPSIDEDOWN
+				switch (gamemode) {
+					case GAMEMODE_BALL:
+						switch (currplayer_slope_type) {
+							case SLOPE_22DEG_UP:
+							case SLOPE_22DEG_UP_UD:
+								currplayer_vel_y += EXIT_SLOPE_BALL_22(get_Y);
+								break;
+							case SLOPE_66DEG_UP:
+							case SLOPE_66DEG_UP_UD:
+								currplayer_vel_y += EXIT_SLOPE_BALL_66(get_Y);
+						}
+						break;
+					case GAMEMODE_CUBE:
+						switch (currplayer_slope_type) {
+							case SLOPE_22DEG_UP:
+							case SLOPE_22DEG_UP_UD:
+								currplayer_vel_y += EXIT_SLOPE_CUBE_22(get_Y);
+								break;
+						}
+						break;
+				}
+			}
+			currplayer_slope_type = 0;
+		}
+	} else {
+		currplayer_last_slope_type = 0;
+		currplayer_slope_type = 0;
+	}	
+}

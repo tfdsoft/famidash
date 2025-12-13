@@ -3,6 +3,8 @@
 	Implemented in asm
 */
 // void set_tile_banks();
+void decrement_was_on_slope();
+void end_level_debug();
 void __fastcall__ movement();
 void __fastcall__ movement2();
 void everything_else();
@@ -50,48 +52,9 @@ void runthecolls();
 void set_player_banks();
 
 extern unsigned char* PARALLAX_CHR;
-unsigned char END_LEVEL_TIMER;
 
-void decrement_was_on_slope() {
-	if (currplayer_was_on_slope_counter) {
-		currplayer_was_on_slope_counter--;
-		
-		if (!currplayer_was_on_slope_counter) {
-			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL) {
-				// Set carry to 1 if slope is upside down
-				__A__ = (currplayer_slope_type & SLOPE_UPSIDEDOWN) + (256 - SLOPE_UPSIDEDOWN);
-				__A__ = currplayer_table_idx & ~TBLIDX_GRAV;
-				__asm__ ("adc #0 \n tay");
-				// Thus, gravity in the table index is replaced with SLOPE_UPSIDEDOWN
-				switch (gamemode) {
-					case GAMEMODE_BALL:
-						switch (currplayer_slope_type) {
-							case SLOPE_22DEG_UP:
-							case SLOPE_22DEG_UP_UD:
-								currplayer_vel_y += EXIT_SLOPE_BALL_22(get_Y);
-								break;
-							case SLOPE_66DEG_UP:
-							case SLOPE_66DEG_UP_UD:
-								currplayer_vel_y += EXIT_SLOPE_BALL_66(get_Y);
-						}
-						break;
-					case GAMEMODE_CUBE:
-						switch (currplayer_slope_type) {
-							case SLOPE_22DEG_UP:
-							case SLOPE_22DEG_UP_UD:
-								currplayer_vel_y += EXIT_SLOPE_CUBE_22(get_Y);
-								break;
-						}
-						break;
-				}
-			}
-			currplayer_slope_type = 0;
-		}
-	} else {
-		currplayer_last_slope_type = 0;
-		currplayer_slope_type = 0;
-	}	
-}
+
+
 
 
 void state_game(){
@@ -562,9 +525,11 @@ void everything_else() {
 		#if !__VS_SYSTEM
 		if (auto_practicepoints && auto_practicepoint_timer) auto_practicepoint_timer--;
 
+		if (practicebuffer) practicebuffer--;
+
 		if (practice_point_count && !auto_practicepoint_timer) { 
 			if (gamemode == 0 || gamemode == 2 || gamemode == 4 || gamemode == 5 || gamemode == 8) {
-				if (currplayer_vel_y == 0) crossPRGBankJump0(store_practice_state); 
+				if (currplayer_vel_y == 0) crossPRGBankJump0(store_practice_state); practicebuffer = 4;
 			}
 			else crossPRGBankJump0(store_practice_state); 
 		}
@@ -582,12 +547,7 @@ void everything_else() {
 
 		if (joypad1.select && DEBUG_MODE) {
 		    if (++END_LEVEL_TIMER > 60) {
-				END_LEVEL_TIMER = 0;
-				kandokidshack4 = 0;
-				oam_clear();
-				gameState = STATE_LVLDONE;
-				//DEBUG_MODE = 0;
-				famistudio_music_stop();
+				crossPRGBankJump0(end_level_debug);
 		    }
 		} else {
 		    END_LEVEL_TIMER = 0;
@@ -596,7 +556,7 @@ void everything_else() {
 		//if (DEBUG_MODE) color_emphasis(COL_EMP_BLUE);
 //		if (DEBUG_MODE) gray_line();
 
-		decrement_was_on_slope();
+		crossPRGBankJump0(decrement_was_on_slope);
 
 		check_for_cube_data_2_set();
 
@@ -719,7 +679,7 @@ void everything_else() {
 			if (controllingplayer->press_right && DEBUG_MODE && !(options & platformer) && !force_platformer) { invert_gravity(currplayer_gravity); update_currplayer_table_idx(); }			//DEBUG GRAVITY
 			check_for_cube_data_2_set();
 			
-			decrement_was_on_slope();		
+			crossPRGBankJump0(decrement_was_on_slope);		
 			if (orbed[currplayer]) {
 				if (!(controllingplayer->hold & (PAD_A | PAD_UP))) orbed[currplayer] = 0;
 			}
