@@ -1086,5 +1086,12 @@ void choose_menu_theme() {
 #endif
 
 
-
+void check_practice_point_deletion() {
+	if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.hold & (PAD_UP | PAD_DOWN))) {
+				curr_practice_point--;
+				if (latest_practice_point) latest_practice_point--;
+				if (curr_practice_point >= practice_point_count)
+					curr_practice_point = practice_point_count - 1;
+	}
+}
 

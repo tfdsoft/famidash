@@ -1,6 +1,7 @@
 extern unsigned char drawing_frame;
 extern unsigned char* PARALLAX_CHR;
 
+void check_practice_point_deletion();
 void music_restore();
 
 void death_animation() {
@@ -20,12 +21,7 @@ void death_animation() {
 		while (tmp1 != 0){
 			ppu_wait_nmi();
 
-			if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.hold & (PAD_UP | PAD_DOWN))) {
-				curr_practice_point--;
-				if (latest_practice_point) latest_practice_point--;
-				if (curr_practice_point >= practice_point_count)
-					curr_practice_point = practice_point_count - 1;
-			}
+			crossPRGBankJump0(check_practice_point_deletion);
 	
 			dual == 1 ? oam_clear_two_players() : oam_clear_player();
 			
