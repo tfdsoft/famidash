@@ -4420,8 +4420,7 @@
 						offsetX: -24
 				},
 			]
-		},		
-
+		},
 		{
 			level: "fairydust",
 			lowerText: "FAIRYDUST",
@@ -4653,7 +4652,7 @@
 			sawSet: "A",
 			difficulty: "DEMON",
 			stars: 10,
-			songID: "song_dash",
+			songID: "song_jawbreaker",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x01,

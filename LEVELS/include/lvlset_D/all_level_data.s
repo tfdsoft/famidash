@@ -198,7 +198,7 @@
 		.byte <sprite_data_jawbreaker ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_jawbreaker ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_jawbreaker)) ;___ Sprite data bank
-		.byte song_clubstep ;______________________ Song ID
+		.byte song_jawbreaker ;____________________ Song ID
 		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
 		.byte ($00) ;______________________________ Spawn Y Position (low byte)

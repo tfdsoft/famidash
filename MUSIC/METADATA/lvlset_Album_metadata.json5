@@ -469,7 +469,13 @@
 			lowerText: "JACK RUSSEL",
 			originalArtist: "Bossfight",
 			coveringArtist: "NerdBoy628",
-		},	
+		},
+		{
+			fmsSongName: "Jawbreaker",
+			lowerText: "JAWBREAKER",
+			originalArtist: "RUKKUS",
+			coveringArtist: "SeaGlowingPro",
+		},
 		{
 			fmsSongName: "Just Right Full",
 			lowerText: "JUST RIGHT",

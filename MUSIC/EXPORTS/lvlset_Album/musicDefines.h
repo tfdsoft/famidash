@@ -53,7 +53,7 @@
 #define song_bad_apple 52
 #define song_cryogenic 53
 #define song_electroman_adventures 54
-#define song_moon_fries 55
+#define song_jawbreaker 55
 #define song_stalemate_full 56
 #define song_theory_of_everything 57
 #define song_midnight 58
@@ -112,11 +112,12 @@
 #define song_select_payment_type 111
 #define song_repmuj 112
 #define song_scheming_weasel 113
-#define song_flow 114
-#define song_lost 115
-#define song_ludicrous_speed 116
-#define song_metamorphosis 117
+#define song_lost 114
+#define song_ludicrous_speed 115
+#define song_metamorphosis 116
+#define song_moon_fries 117
 #define song_problematic 118
 #define song_cant_let_go 119
 #define song_the_challenge 120
-#define song_max 121
+#define song_flow 121
+#define song_max 122

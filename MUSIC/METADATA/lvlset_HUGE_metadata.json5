@@ -287,12 +287,14 @@
 			originalArtist: "Tobu",
 			coveringArtist: "NerdBoy628",
 		},
+		/*
 		{
 			fmsSongName: "Chaoz Airflow",
 			lowerText: "CHAOZ AIRFLOW",
 			originalArtist: "ParagonX9",
 			coveringArtist: "SeaGlowingPro",
 		},
+		*/
 		{
 			fmsSongName: "ChaozFantasy",
 			lowerText: "CHAOZ FANTASY",
@@ -552,6 +554,12 @@
 			lowerText: "JACK RUSSEL",
 			originalArtist: "Bossfight",
 			coveringArtist: "NerdBoy628",
+		},
+		{
+			fmsSongName: "Jawbreaker",
+			lowerText: "JAWBREAKER",
+			originalArtist: "RUKKUS",
+			coveringArtist: "SeaGlowingPro",
 		},
 		/*
 		{

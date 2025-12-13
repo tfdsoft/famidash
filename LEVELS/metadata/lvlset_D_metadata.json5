@@ -213,7 +213,7 @@
 			sawSet: "A",
 			difficulty: "HARDDEMON",
 			stars: 10,
-			songID: "song_clubstep",
+			songID: "song_jawbreaker",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x01,
