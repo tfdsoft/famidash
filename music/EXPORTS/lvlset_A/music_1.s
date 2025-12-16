@@ -25,7 +25,7 @@ music_data_famidash_music1:
 	.word @song0ch3
 	.word @song0ch4
 	.word 286,238
-; 01 : Blast processing
+; 01 : Blast Processing
 	.word @song1ch0
 	.word @song1ch1
 	.word @song1ch2

@@ -265,7 +265,7 @@
 			originalArtistText: "WATERFLAME",
 		},
 		{
-			fmsSongName: "Blast processing",
+			fmsSongName: "Blast Processing",
 			lowerText: "BLAST PROCESSING",
 			originalArtistText: "WATERFLAME",
 		},
@@ -333,6 +333,11 @@
 		
 		
 		{
+			fmsSongName: "The Challenge",
+			lowerText: "THE CHALLENGE",
+			originalArtistText: "ROBTOP",
+		},
+		{
 			fmsSongName: "retray",
 			lowerText: "GOLDEN HAZE",
 			originalArtistText: "DETIOUSMUSIC",
@@ -347,11 +352,6 @@
 			lowerText: "EVERY END",
 			originalArtistText: "DIMRAIN47",
 		},*/
-		{
-			fmsSongName: "The Challenge",
-			lowerText: "THE CHALLENGE",
-			originalArtistText: "ROBTOP",
-		},
 		/*{
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
