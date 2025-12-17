@@ -940,7 +940,7 @@
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2765
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 7894 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 7889 bytes
 	.export level_data_subzero
 	level_data_subzero:
 	; Header

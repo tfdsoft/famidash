@@ -1504,7 +1504,7 @@
 				},
 			]
 		},
-		{
+		{ 
 			level: "dorabaebasic4",
 			upperText: "DORABAE",
 			lowerText: "BASIC4",
@@ -1519,20 +1519,23 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: false,
 			objectOffsets: [
 				{
 					coordinates: [
-						[470, 44],	[797, 38],		//cube portal
-						[541, 38],	[621, 39],	[857, 37],	[957, 40],		//speed portal
-						[796, 38],		//growth portal
+						[470, 44],
+						[797, 38],
+						[541, 38],
+						[621, 39],
+						[857, 37],
+						[957, 40],
+						[78, 54]
 					],
-					offsetY: -8
+					offsetY: -8 
 				},
 				{
-					coordinates: [796, 38],		//growth portal
-					offsetX: +16
-				},
+					coordinates: [797, 37],
+					offsetY: +8 
+				}
 			]
 		},
 		{
