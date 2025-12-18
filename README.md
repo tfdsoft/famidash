@@ -49,9 +49,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[kandowontu](https://github.com/kandowontu)|director, current lead developer, maintainer|
 |[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
 |[alexmush](https://github.com/ADM228)|code, asm, code optimisation, music, codebase unification|
-|[jroweboy](https://github.com/jroweboy)|graphics, code optimisation, parallax, menu, etc|
-|[Zenith](https://github.com/ZenithNeko)|music, graphics|
-|[jaezu](https://github.com/jaezudev)|i'm solely here because of kando's orders|
 |[ElAngel378](https://github.com/ElAngel378)|music|
 |[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music|
 |[KawaiiDawn](https://github.com/Astroclimber26)|levels|
@@ -73,6 +70,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 |[banana6000](https://github.com/xXFamidashFan69Xx)|icons, levels|
 |[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
 |[AleFunky](https://github.com/AleFunky)|code, levels, testing, bugfixes|
+|[jroweboy](https://github.com/jroweboy)|graphics, code optimisation, parallax, menu, etc|
+|[Zenith](https://github.com/ZenithNeko)|music, graphics|
+|[jaezu](https://github.com/jaezudev)|i'm solely here because of kando's orders|
 |NerdBoy628|levels, music|
 |blacecaptainn|icon contest winner|
 |dtpls|icon contest winner|
