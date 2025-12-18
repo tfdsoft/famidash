@@ -86,21 +86,20 @@ __attribute__((interrupt_norecurse)) void nmi(){
             oam_and_readjoypad();
         }
 
+        
         irq_count = 0;
         irq_table_offset = 0;
         IRQ_DISABLE = 0;
         IRQ_LATCH = irq_table[0];
         IRQ_RELOAD = irq_table[0];
         IRQ_ENABLE = irq_table[0];
-        
+        PPU.status;
+        __attribute__((leaf))__asm__ volatile ("cli");
     }
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
 
-    PPU.status; // read ppu status. thanks llvm-mos!
     __attribute__((leaf))__asm__ volatile(
-        "cli \n"
-
         "lda automatic_fs_updates \n"
         "beq 1f \n" // skip the following check if false
 
