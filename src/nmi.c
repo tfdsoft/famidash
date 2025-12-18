@@ -1,4 +1,4 @@
-unsigned char automatic_fs_updates = 0;
+__attribute__((retain)) unsigned char automatic_fs_updates = 0;
 unsigned char nmi_in_progress;
 
 
@@ -92,17 +92,38 @@ __attribute__((interrupt_norecurse)) void nmi(){
         IRQ_LATCH = irq_table[0];
         IRQ_RELOAD = irq_table[0];
         IRQ_ENABLE = irq_table[0];
+        
     }
     PPU.mask = PPU_MASK_VAR; // re-set PPU.mask
     FRAME_CNT++; // increase frame count
 
+    PPU.status; // read ppu status. thanks llvm-mos!
+    __attribute__((leaf))__asm__ volatile(
+        "cli \n"
+
+        "lda automatic_fs_updates \n"
+        "beq 1f \n" // skip the following check if false
+
+        "lda #0 \n"
+        "sta automatic_fs_updates \n"
+        "lda __prg_a000 \n"
+        "pha \n"
+        "jsr music_update \n"
+        "pla \n"
+        "sta __prg_a000 \n"
+        "jsr set_prg_a000 \n"
+        "inc automatic_fs_updates \n"
+
+        "1: \n"
+    );
     
-    if(automatic_fs_updates) {
+    /*if(automatic_fs_updates) {
         push_prg_a000();
-        
-        music_update();
+        automatic_fs_updates = 0;
+        //music_update();
+        automatic_fs_updates++;
         pop_prg_a000();
-    }
+    }*/
 
 }
 

@@ -168,21 +168,22 @@ void state_menu() {
 
     
     flush_irq();
+    add_advanced_interrupt( // set background chr
+        0, 
+        irq_set_chr_and_scroll,
+        args88(3,0x10)
+    );
     add_advanced_interrupt( // set button chr
-        94, 
+        93, 
         irq_set_chr,
         args88(5,7)
     );
     add_advanced_interrupt( // ground scroll
-        79, 
+        78, 
         irq_set_chr_and_scroll,
         args88(5,8)
     );
-    add_advanced_interrupt( // set background chr
-        47, 
-        irq_set_chr_and_scroll,
-        args88(3,0x10)
-    );
+    
     enable_irq();
     
     // run once before fading in
@@ -216,11 +217,11 @@ void state_menu() {
         oam_clear();
 
         interrupt_scroll += phys_speed[1];
-        IRQ(1).arg2 = high_byte(interrupt_scroll);
+        IRQ(2).arg2 = high_byte(interrupt_scroll);
 
         scroll_bank += (phys_speed[1] >> 3);
         if(high_byte(scroll_bank) >= loaded_bg_width) high_byte(scroll_bank) = 0;
-        IRQ(2).arg1 = (high_byte(scroll_bank)+0x10);
+        IRQ(0).arg1 = (high_byte(scroll_bank)+0x10);
         
 
 

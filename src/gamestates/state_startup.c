@@ -156,6 +156,7 @@ void state_startup() {
             sfx_play(sfx_quitsound_01,0);
             pal_fade_to(4,0);
 
+            __asm__("ldx #0");
             gamestate = 0x00;
             break;
         }

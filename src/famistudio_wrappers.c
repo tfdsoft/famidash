@@ -69,17 +69,17 @@ __attribute__((noinline)) void music_play(uint8_t s){
 }
 
 __attribute__((noinline)) void music_update(){
-    uint8_t prev_bank = get_prg_a000();
+    push_prg_a000();
     set_prg_a000(music_bank);
     famistudio_update();
-    set_prg_a000(prev_bank);
+    pop_prg_a000();
 }
 
 __attribute__((noinline)) void sfx_play(uint8_t index, uint8_t channel){
-    uint8_t prev_bank = get_prg_a000();
+    push_prg_a000();
     set_prg_a000(sfx_bank);
     famistudio_sfx_init(0xa000);
     famistudio_sfx_play(index,channel);
-    set_prg_a000(prev_bank);
+    pop_prg_a000();
 }
 
