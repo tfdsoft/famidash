@@ -1154,7 +1154,6 @@ void sprite_collide(){
 						lastgcolortype = tmp4;
 					} else {
 						pal_col(0, tmp2);
-						pal_col(0x13, tmp2);
 						pal_col(1, oneShadeDarker(tmp2)); 
 						pal_col(9, oneShadeDarker(tmp2)); 
 						pal_col(0x0D, oneShadeDarker(tmp2)); 
