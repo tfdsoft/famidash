@@ -785,7 +785,7 @@
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 805
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8192 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8164 bytes
 	.export level_data_icdx
 	level_data_icdx:
 	; Header
@@ -808,7 +808,7 @@
 		.byte $0F ;__________________________ Starting ground color
 		.byte 40 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7113
+		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7115
 
 
 .segment "DAT_BANK_21"	; Total bank size: 8190 bytes

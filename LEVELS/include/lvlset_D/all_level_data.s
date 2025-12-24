@@ -165,7 +165,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8162 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8164 bytes
 	.export level_data_icdx
 	level_data_icdx:
 	; Header
@@ -188,7 +188,7 @@
 		.byte $0F ;__________________________ Starting ground color
 		.byte 40 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7113
+		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7115
 
 
 .segment "DAT_BANK_08"	; Total bank size: 7961 bytes
