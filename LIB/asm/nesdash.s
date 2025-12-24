@@ -354,9 +354,11 @@ _init_rld:
 	;	Now fade it
 	LDA palBrightTable3, Y	;	Store faded color to slot 5
 	STA PAL_BUF_RAW+5		;__
+	STA PAL_BUF_RAW+13		;__
 	TAY						;
 	LDA	(PAL_PTR),y			;	Store it into the buffer
 	STA	PAL_BUF+5			;__
+	STA	PAL_BUF+13			;__
 	INC <PAL_UPDATE			;__ Yes, we do need to update the palette
 
 	
