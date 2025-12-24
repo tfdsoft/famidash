@@ -186,6 +186,11 @@
 			originalArtistText: "WF TEM BKIT"
 		},
 		{
+			fmsSongName: "Snow!",
+			lowerText: "SNOW",
+			originalArtistText: "WATERFLAME"
+		},
+		{
 			fmsSongName: "Stereo madness 2",
 			upperText: "STEREO ",
 			lowerText: "MADNESS 2",

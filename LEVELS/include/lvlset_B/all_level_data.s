@@ -755,14 +755,14 @@
 		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 2544
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8189 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8190 bytes
 	.export level_data_ajollyretrochristmas
 	level_data_ajollyretrochristmas:
 	; Header
 		.byte <sprite_data_ajollyretrochristmas ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_ajollyretrochristmas ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_ajollyretrochristmas)) ;___ Sprite data bank
-		.byte song_dance_of_the_violins ;____________________ Song ID
+		.byte song_snow ;____________________________________ Song ID
 		.byte (0 << 4) | 0 ;_________________________________ Starting game mode and speed
 		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
 		.byte ($00) ;________________________________________ Spawn Y Position (low byte)
@@ -778,7 +778,7 @@
 		.byte $0F ;__________________________________________ Starting ground color
 		.byte 27 ;___________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/ajollyretrochristmas.lz.bin" ; Size: 2375
+		.incbin "EXPORTS/ajollyretrochristmas.lz.bin" ; Size: 2371
 
 	.export level_data_ninox
 	level_data_ninox:
@@ -829,7 +829,7 @@
 		.incbin "EXPORTS/factorytime.lz.bin" ; Size: 2317
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7980 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7975 bytes
 	.export level_data_subtleoddities_2
 	level_data_subtleoddities_2:
 	; Level data

@@ -183,7 +183,7 @@
 			sawSet: "A",
 			difficulty: "HARD",
 			stars: 5,
-			songID: "song_dance_of_the_violins",
+			songID: "song_snow",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,

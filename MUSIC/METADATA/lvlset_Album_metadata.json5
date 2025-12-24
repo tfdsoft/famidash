@@ -657,7 +657,13 @@
 			lowerText: "INFERNO",
 			originalArtist: ["WFlame Temini","te Boom Kitty"],
 			coveringArtist: "SeaGlowingPro",
-		},				
+		},
+		{
+			fmsSongName: "Snow!",
+			lowerText: "SNOW",
+			originalArtist: "Waterflame",
+			coveringArtist: "SeaGlowingPro",
+		},
 		{
 			fmsSongName: "Sonic blaster",
 			lowerText: "SONIC BLASTER",
