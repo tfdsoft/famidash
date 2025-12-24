@@ -30,6 +30,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_retray)
 	.byte .lobyte(level_data_sonar)
 	.byte .lobyte(level_data_darkparadise)
+	.byte .lobyte(level_data_xmaschallenge)
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_thechallenge)
 	.byte .lobyte(level_data_dorabaebasic4)
@@ -149,6 +150,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_retray)
 	.byte .hibyte(level_data_sonar)
 	.byte .hibyte(level_data_darkparadise)
+	.byte .hibyte(level_data_xmaschallenge)
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_thechallenge)
 	.byte .hibyte(level_data_dorabaebasic4)
@@ -268,6 +270,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_retray))
 	.byte .lobyte(.bank(level_data_sonar))
 	.byte .lobyte(.bank(level_data_darkparadise))
+	.byte .lobyte(.bank(level_data_xmaschallenge))
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_thechallenge))
 	.byte .lobyte(.bank(level_data_dorabaebasic4))
@@ -456,6 +459,7 @@ _level_lengths_lo:
 	.byte .lobyte($000066)		; retray
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000064)		; darkparadise
+	.byte .lobyte($000018)		; xmaschallenge
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($000030)		; thechallenge
 	.byte .lobyte($0000A4)		; dorabaebasic4
@@ -577,6 +581,7 @@ _level_lengths_md:
 	.byte .hibyte($000066)		; retray
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000064)		; darkparadise
+	.byte .hibyte($000018)		; xmaschallenge
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($000030)		; thechallenge
 	.byte .hibyte($0000A4)		; dorabaebasic4
@@ -698,6 +703,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000064)		; darkparadise
+	.byte .bankbyte($000018)		; xmaschallenge
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($000030)		; thechallenge
 	.byte .bankbyte($0000A4)		; dorabaebasic4

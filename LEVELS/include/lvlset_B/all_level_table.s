@@ -7,6 +7,7 @@
 _level_list_lo:
 	.byte .lobyte(level_data_sonar)
 	.byte .lobyte(level_data_darkparadise)
+	.byte .lobyte(level_data_xmaschallenge)
 	.byte .lobyte(level_data_ninox)
 	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_ajollyretrochristmas)
@@ -41,6 +42,7 @@ _level_list_lo:
 _level_list_hi:
 	.byte .hibyte(level_data_sonar)
 	.byte .hibyte(level_data_darkparadise)
+	.byte .hibyte(level_data_xmaschallenge)
 	.byte .hibyte(level_data_ninox)
 	.byte .hibyte(level_data_lookatthislevel)
 	.byte .hibyte(level_data_ajollyretrochristmas)
@@ -75,6 +77,7 @@ _level_list_hi:
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_sonar))
 	.byte .lobyte(.bank(level_data_darkparadise))
+	.byte .lobyte(.bank(level_data_xmaschallenge))
 	.byte .lobyte(.bank(level_data_ninox))
 	.byte .lobyte(.bank(level_data_lookatthislevel))
 	.byte .lobyte(.bank(level_data_ajollyretrochristmas))
@@ -136,6 +139,7 @@ _level_chunk_list_bank:
 _level_lengths_lo:
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000064)		; darkparadise
+	.byte .lobyte($000018)		; xmaschallenge
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($0000F1)		; ajollyretrochristmas
@@ -172,6 +176,7 @@ _level_lengths_lo:
 _level_lengths_md:
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000064)		; darkparadise
+	.byte .hibyte($000018)		; xmaschallenge
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($0000F1)		; ajollyretrochristmas
@@ -208,6 +213,7 @@ _level_lengths_md:
 _level_lengths_hi:
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000064)		; darkparadise
+	.byte .bankbyte($000018)		; xmaschallenge
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($0000F1)		; ajollyretrochristmas

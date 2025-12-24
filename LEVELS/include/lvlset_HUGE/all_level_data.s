@@ -598,7 +598,7 @@
 		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 7774
 
 
-.segment "DAT_BANK_19"	; Total bank size: 7742 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8158 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -650,7 +650,7 @@
 		.incbin "EXPORTS/rainingtacos.lz.bin" ; Size: 7647
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 7576 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 8042 bytes
 	.export level_data_scarletsurge
 	level_data_scarletsurge:
 	; Header
@@ -837,7 +837,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7041
 
 
-.segment "DAT_BANK_22"	; Total bank size: 8151 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8179 bytes
 	.export level_data_jawbreaker
 	level_data_jawbreaker:
 	; Header
@@ -861,6 +861,30 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/jawbreaker.lz.bin" ; Size: 6877
+
+	.export level_data_xmaschallenge
+	level_data_xmaschallenge:
+	; Header
+		.byte <sprite_data_xmaschallenge ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_xmaschallenge ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_xmaschallenge)) ;___ Sprite data bank
+		.byte song_snow ;_____________________________ Song ID
+		.byte (0 << 4) | 0 ;__________________________ Starting game mode and speed
+		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
+		.byte ($06) ;_________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
+		.byte _DECO1 ;________________________________ Deco type
+		.byte _SPIKESA ;______________________________ Spike set
+		.byte _BLOCKSB ;______________________________ Block set
+		.byte _SAWBLADESA ;___________________________ Sawblade set
+		.byte $16 ;___________________________________ Starting background color
+		.byte $0F ;___________________________________ Starting ground color
+		.byte 27 ;____________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/xmaschallenge.lz.bin" ; Size: 1266
 
 
 .segment "DAT_BANK_23"	; Total bank size: 8169 bytes
@@ -2980,7 +3004,7 @@
 		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 673
 
 
-.segment "DAT_BANK_72"	; Total bank size: 8060 bytes
+.segment "DAT_BANK_72"	; Total bank size: 8070 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -3066,7 +3090,7 @@
 		.incbin "EXPORTS/hexagonforce.lz.1.bin" ; Size: 550
 
 
-.segment "DAT_BANK_74"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_74"	; Total bank size: 7845 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -3092,7 +3116,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_75"	; Total bank size: 7661 bytes
+.segment "DAT_BANK_75"	; Total bank size: 7741 bytes
 	.export level_data_ultiatedestruction
 	level_data_ultiatedestruction:
 	; Header

@@ -71,7 +71,47 @@
 			startingGroundColor: 0x01,
 			parallaxDisable: true
 		},
-
+		{
+			level: "xmaschallenge",
+			upperText: "XMAS",
+			lowerText: "CHALLENGE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASY",
+			stars: 2,
+			songID: "song_snow",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[30, 23], [38, 23], [44, 23],
+					],
+					offsetX: -4
+				},
+				{
+					coordinates: [
+						[34, 23], [42, 23], [48, 23],
+					],
+					offsetX: +4
+				},
+				{
+					coordinates: [
+						[57, 25], [79, 22], [100, 23],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [99, 22],
+					offsetX: +16
+				},
+			]
+		},
 		{
 			level: "ninox",
 			lowerText: "NINOX",
