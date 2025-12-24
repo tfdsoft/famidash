@@ -197,7 +197,9 @@ void state_game(){
 			tmp3 = 0xC0 + BG_Table[discoframe];
 			tmp2 = (tmp3 & 0x3F);  		    
 			pal_col(6, tmp2);
+			pal_col(0x13, tmp2);
 			pal_col(5, oneShadeDarker(tmp2)); 
+			pal_col(0x0D, oneShadeDarker(tmp2)); 
 			pal_set_update();
 
 			discoframe++;
