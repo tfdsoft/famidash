@@ -174,6 +174,38 @@
 			],
 		},
 		{
+			level: "ajollyretrochristmas",
+			upperText: "A JOLLY RETRO",
+			lowerText: "CHRISTMAS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_dance_of_the_violins",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[60, 15], [201, 23], [247, 25], [249, 24], [427, 19], [571, 18], [912, 7], [973, 10], [1479, 14],
+					],
+					offsetY: -8,
+				},
+				{
+					coordinates: [
+						[1408, 13], [1470, 13],
+					],
+					offsetX: +8
+				},
+			]	
+		},
+		{
 			level: "ultiatedestruction",
 			upperText: "ULTIATE",
 			lowerText: "DESTRUCTION",

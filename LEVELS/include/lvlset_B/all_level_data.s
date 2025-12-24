@@ -698,7 +698,7 @@
 		.incbin "EXPORTS/powertrip.lz.bin" ; Size: 4195
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8061 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 8091 bytes
 	.export level_data_selectpaymenttype
 	level_data_selectpaymenttype:
 	; Header
@@ -755,7 +755,31 @@
 		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 2544
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8147 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8189 bytes
+	.export level_data_ajollyretrochristmas
+	level_data_ajollyretrochristmas:
+	; Header
+		.byte <sprite_data_ajollyretrochristmas ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_ajollyretrochristmas ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_ajollyretrochristmas)) ;___ Sprite data bank
+		.byte song_dance_of_the_violins ;____________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;________________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;________________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;________________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;__________________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_______________________________________ Deco type
+		.byte _SPIKESA ;_____________________________________ Spike set
+		.byte _BLOCKSB ;_____________________________________ Block set
+		.byte _SAWBLADESA ;__________________________________ Sawblade set
+		.byte $0F ;__________________________________________ Starting background color
+		.byte $0F ;__________________________________________ Starting ground color
+		.byte 27 ;___________________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/ajollyretrochristmas.lz.bin" ; Size: 2375
+
 	.export level_data_ninox
 	level_data_ninox:
 	; Header
@@ -805,14 +829,14 @@
 		.incbin "EXPORTS/factorytime.lz.bin" ; Size: 2317
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8160 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7980 bytes
 	.export level_data_subtleoddities_2
 	level_data_subtleoddities_2:
 	; Level data
 		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2292
 
 
-.segment "DAT_BANK_21"	; Total bank size: 3782 bytes
+.segment "DAT_BANK_21"	; Total bank size: 6979 bytes
 	.export level_data_ultiatedestruction
 	level_data_ultiatedestruction:
 	; Header
