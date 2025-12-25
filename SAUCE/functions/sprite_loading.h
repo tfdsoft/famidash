@@ -994,7 +994,7 @@ void sprite_collide_lookup() {
 		invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
 		update_currplayer_table_idx();
 		dual_cap_check();
-		table_offset = yellow_pad;
+		table_offset = yellow_orb;
 		currplayer_vel_y = sprite_gamemode_y_adjust();
 		idx8_inc(activesprites_activated, index);
 		#endif
