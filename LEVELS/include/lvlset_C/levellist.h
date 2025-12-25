@@ -6,7 +6,7 @@ const uint8_t difficulty_list[] = {
 	EASYDEMON,	// xx
 	EASYDEMON,	// problematic
 	EASYDEMON,	// sonicblaster
-	DEMON,	// deathmoon
+	EASYDEMON,	// deathmoon
 	EASYDEMON,	// motion
 	EASYDEMON,	// endorphinrush
 	EASYDEMON,	// everymadness

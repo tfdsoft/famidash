@@ -148,7 +148,7 @@
 			spikeSet: "B",
 			blockSet: "B",
 			sawSet: "A",
-			difficulty: "DEMON",
+			difficulty: "EASYDEMON",
 			stars: 10,
 			songID: "song_death_moon",
 			startingGameMode: 0,
