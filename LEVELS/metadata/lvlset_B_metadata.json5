@@ -238,7 +238,7 @@
 			lowerText: "CHRISTMAS",
 			decoType: "DECO1",
 			spikeSet: "A",
-			blockSet: "B",
+			blockSet: "D",
 			sawSet: "A",
 			difficulty: "HARD",
 			stars: 5,
@@ -252,13 +252,13 @@
 			objectOffsets: [
 				{
 					coordinates: [
-						[60, 15], [201, 23], [247, 25], [249, 24], [427, 19], [571, 18], [912, 7], [973, 10], [1479, 14],
+						[60, 15], [201, 23], [247, 25], [249, 24], [431, 19], [575, 18], [919, 7], [980, 10], [1488, 14],
 					],
 					offsetY: -8,
 				},
 				{
 					coordinates: [
-						[1408, 13], [1470, 13],
+						[1417, 13], [1479, 13],
 					],
 					offsetX: +8
 				},

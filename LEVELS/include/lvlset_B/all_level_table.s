@@ -140,7 +140,7 @@ _level_lengths_lo:
 	.byte .lobyte($000018)		; xmaschallenge
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($00005C)		; lookatthislevel
-	.byte .lobyte($0000F1)		; ajollyretrochristmas
+	.byte .lobyte($0000F3)		; ajollyretrochristmas
 	.byte .lobyte($00006C)		; ultiatedestruction
 	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
@@ -177,7 +177,7 @@ _level_lengths_md:
 	.byte .hibyte($000018)		; xmaschallenge
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($00005C)		; lookatthislevel
-	.byte .hibyte($0000F1)		; ajollyretrochristmas
+	.byte .hibyte($0000F3)		; ajollyretrochristmas
 	.byte .hibyte($00006C)		; ultiatedestruction
 	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
@@ -214,7 +214,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000018)		; xmaschallenge
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($00005C)		; lookatthislevel
-	.byte .bankbyte($0000F1)		; ajollyretrochristmas
+	.byte .bankbyte($0000F3)		; ajollyretrochristmas
 	.byte .bankbyte($00006C)		; ultiatedestruction
 	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii
