@@ -9,6 +9,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_xx)
 	.byte .lobyte(level_data_problematic)
 	.byte .lobyte(level_data_sonicblaster)
+	.byte .lobyte(level_data_deathmoon)
 	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_endorphinrush)
 	.byte .lobyte(level_data_everymadness)
@@ -36,6 +37,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_xx)
 	.byte .hibyte(level_data_problematic)
 	.byte .hibyte(level_data_sonicblaster)
+	.byte .hibyte(level_data_deathmoon)
 	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_endorphinrush)
 	.byte .hibyte(level_data_everymadness)
@@ -63,6 +65,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_xx))
 	.byte .lobyte(.bank(level_data_problematic))
 	.byte .lobyte(.bank(level_data_sonicblaster))
+	.byte .lobyte(.bank(level_data_deathmoon))
 	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_endorphinrush))
 	.byte .lobyte(.bank(level_data_everymadness))
@@ -86,28 +89,31 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_luckydraw))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_motion_0)
-	.byte .lobyte(level_data_trythisgd_1)
-	.byte .lobyte(level_data_eon_2)
-	.byte .lobyte(level_data_sonicwave_3)
-	.byte .lobyte(level_data_everyend_4)
+	.byte .lobyte(level_data_deathmoon_0)
+	.byte .lobyte(level_data_motion_1)
+	.byte .lobyte(level_data_trythisgd_2)
+	.byte .lobyte(level_data_eon_3)
+	.byte .lobyte(level_data_sonicwave_4)
 	.byte .lobyte(level_data_everyend_5)
+	.byte .lobyte(level_data_everyend_6)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_motion_0)
-	.byte .hibyte(level_data_trythisgd_1)
-	.byte .hibyte(level_data_eon_2)
-	.byte .hibyte(level_data_sonicwave_3)
-	.byte .hibyte(level_data_everyend_4)
+	.byte .hibyte(level_data_deathmoon_0)
+	.byte .hibyte(level_data_motion_1)
+	.byte .hibyte(level_data_trythisgd_2)
+	.byte .hibyte(level_data_eon_3)
+	.byte .hibyte(level_data_sonicwave_4)
 	.byte .hibyte(level_data_everyend_5)
+	.byte .hibyte(level_data_everyend_6)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_motion_0))
-	.byte .lobyte(.bank(level_data_trythisgd_1))
-	.byte .lobyte(.bank(level_data_eon_2))
-	.byte .lobyte(.bank(level_data_sonicwave_3))
-	.byte .lobyte(.bank(level_data_everyend_4))
+	.byte .lobyte(.bank(level_data_deathmoon_0))
+	.byte .lobyte(.bank(level_data_motion_1))
+	.byte .lobyte(.bank(level_data_trythisgd_2))
+	.byte .lobyte(.bank(level_data_eon_3))
+	.byte .lobyte(.bank(level_data_sonicwave_4))
 	.byte .lobyte(.bank(level_data_everyend_5))
+	.byte .lobyte(.bank(level_data_everyend_6))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -117,6 +123,7 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; xx
 	.byte .lobyte($00006E)		; problematic
 	.byte .lobyte($0000A6)		; sonicblaster
+	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($00008B)		; endorphinrush
 	.byte .lobyte($000090)		; everymadness
@@ -146,6 +153,7 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; xx
 	.byte .hibyte($00006E)		; problematic
 	.byte .hibyte($0000A6)		; sonicblaster
+	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($00008B)		; endorphinrush
 	.byte .hibyte($000090)		; everymadness
@@ -175,6 +183,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; xx
 	.byte .bankbyte($00006E)		; problematic
 	.byte .bankbyte($0000A6)		; sonicblaster
+	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($00008B)		; endorphinrush
 	.byte .bankbyte($000090)		; everymadness

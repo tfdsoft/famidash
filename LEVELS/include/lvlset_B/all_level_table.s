@@ -5,6 +5,7 @@
 .segment "RODATA_2"
 
 _level_list_lo:
+	.byte .lobyte(level_data_bestautomaticlvl)
 	.byte .lobyte(level_data_sonar)
 	.byte .lobyte(level_data_darkparadise)
 	.byte .lobyte(level_data_xmaschallenge)
@@ -34,12 +35,12 @@ _level_list_lo:
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_infinitecircles)
 	.byte .lobyte(level_data_decode)
-	.byte .lobyte(level_data_deathmoon)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_skeletalshenanigans)
 
 _level_list_hi:
+	.byte .hibyte(level_data_bestautomaticlvl)
 	.byte .hibyte(level_data_sonar)
 	.byte .hibyte(level_data_darkparadise)
 	.byte .hibyte(level_data_xmaschallenge)
@@ -69,12 +70,12 @@ _level_list_hi:
 	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_infinitecircles)
 	.byte .hibyte(level_data_decode)
-	.byte .hibyte(level_data_deathmoon)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_skeletalshenanigans)
 
 _level_list_bank:
+	.byte .lobyte(.bank(level_data_bestautomaticlvl))
 	.byte .lobyte(.bank(level_data_sonar))
 	.byte .lobyte(.bank(level_data_darkparadise))
 	.byte .lobyte(.bank(level_data_xmaschallenge))
@@ -104,7 +105,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_infinitecircles))
 	.byte .lobyte(.bank(level_data_decode))
-	.byte .lobyte(.bank(level_data_deathmoon))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
@@ -114,29 +114,27 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_thesteamworks_1)
 	.byte .lobyte(level_data_subtleoddities_2)
 	.byte .lobyte(level_data_highlife_3)
-	.byte .lobyte(level_data_deathmoon_4)
-	.byte .lobyte(level_data_skeletalshenanigans_5)
+	.byte .lobyte(level_data_skeletalshenanigans_4)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_cryogenic_0)
 	.byte .hibyte(level_data_thesteamworks_1)
 	.byte .hibyte(level_data_subtleoddities_2)
 	.byte .hibyte(level_data_highlife_3)
-	.byte .hibyte(level_data_deathmoon_4)
-	.byte .hibyte(level_data_skeletalshenanigans_5)
+	.byte .hibyte(level_data_skeletalshenanigans_4)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_cryogenic_0))
 	.byte .lobyte(.bank(level_data_thesteamworks_1))
 	.byte .lobyte(.bank(level_data_subtleoddities_2))
 	.byte .lobyte(.bank(level_data_highlife_3))
-	.byte .lobyte(.bank(level_data_deathmoon_4))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans_5))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_4))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
+	.byte .lobyte($00006F)		; bestautomaticlvl
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($000018)		; xmaschallenge
@@ -166,7 +164,6 @@ _level_lengths_lo:
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($00006F)		; infinitecircles
 	.byte .lobyte($00008A)		; decode
-	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($0000D5)		; skeletalshenanigans
@@ -174,6 +171,7 @@ _level_lengths_lo:
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
+	.byte .hibyte($00006F)		; bestautomaticlvl
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($000018)		; xmaschallenge
@@ -203,7 +201,6 @@ _level_lengths_md:
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($00006F)		; infinitecircles
 	.byte .hibyte($00008A)		; decode
-	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($0000D5)		; skeletalshenanigans
@@ -211,6 +208,7 @@ _level_lengths_md:
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
+	.byte .bankbyte($00006F)		; bestautomaticlvl
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($000018)		; xmaschallenge
@@ -240,7 +238,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($00006F)		; infinitecircles
 	.byte .bankbyte($00008A)		; decode
-	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($0000D5)		; skeletalshenanigans

@@ -2,6 +2,7 @@
 // Exported by export_levels.py
 
 const uint8_t difficulty_list[] = {
+	AUTO,	// bestautomaticlvl
 	EASY,	// sonar
 	EASY,	// darkparadise
 	EASY,	// xmaschallenge
@@ -31,13 +32,13 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// highlife
 	DEMON,	// infinitecircles
 	DEMON,	// decode
-	DEMON,	// deathmoon
 	DEMON,	// clutterfunk2
 	DEMON,	// speedracer
 	DEMON,	// skeletalshenanigans
 };
 
 const uint8_t stars_list[] = {
+	1,	// bestautomaticlvl
 	2,	// sonar
 	2,	// darkparadise
 	2,	// xmaschallenge
@@ -67,7 +68,6 @@ const uint8_t stars_list[] = {
 	9,	// highlife
 	10,	// infinitecircles
 	10,	// decode
-	10,	// deathmoon
 	10,	// clutterfunk2
 	10,	// speedracer
 	10,	// skeletalshenanigans

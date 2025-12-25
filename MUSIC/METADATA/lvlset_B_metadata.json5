@@ -8,6 +8,21 @@
 			vsSystemEnabled: false
 		},
 		{
+			fmsSongName: "Dry Out",
+			lowerText: "DRY OUT",
+			originalArtistText: "DJVI",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Dry Out",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "UserSniper"
+				},
+				durationNTSC: 81433,
+				durationPAL: 97880
+			}
+		},
+		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
 			originalArtistText: "DJ NATE",
@@ -72,11 +87,6 @@
 			upperText: "DANCE OF",
 			lowerText: "THE VIOLINS",
 			originalArtistText: "F777",
-		},
-		{
-			fmsSongName: "Death Moon",
-			lowerText: "DEATH MOON",
-			originalArtistText: "SOUNDHOLICK",
 		},
 		{
 			fmsSongName: "Driving By Night",

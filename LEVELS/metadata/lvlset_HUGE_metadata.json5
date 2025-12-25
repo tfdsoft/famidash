@@ -1357,6 +1357,24 @@
 	],
 	community_levels: [
 		{
+			level: "bestautomaticlvl",
+			upperText: "BEST",
+			lowerText: "AUTOMATIC LVL",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "AUTO",
+			stars: 1,
+			songID: "song_dry_out",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x10,
+			maxFallSpeed: 0x07,
+			parallaxDisable: false
+		},
+		{
 			level: "retray",
 			lowerText: "RETRAY",
 			decoType: "DECO1",
