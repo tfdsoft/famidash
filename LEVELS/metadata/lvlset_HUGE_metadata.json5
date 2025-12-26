@@ -1890,7 +1890,7 @@
 				{ coordinates: [485, 17], offsetX: +16 }, //circle (sign)
 				{ coordinates: [522, 18], offsetX: +16 }, //circle (sign)
 			],
-		},		
+		},
 		{
 			level: "groundtospace",
 			upperText: "GROUND TO",
@@ -1938,6 +1938,38 @@
 					offsetX: +16
 				},
 			]
+		},
+		{
+			level: "ajollyretrochristmas",
+			upperText: "A JOLLY RETRO",
+			lowerText: "CHRISTMAS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_snow",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[60, 15], [201, 23], [247, 25], [249, 24], [431, 19], [575, 18], [919, 7], [980, 10], [1402, 8], [1488, 14],
+					],
+					offsetY: -8,
+				},
+				{
+					coordinates: [
+						[1417, 13], [1479, 13], [1498, 13], [1499, 13], [1500, 13], [1501, 13], [1502, 13], [1503, 13], [1504, 13], [1505, 13], [1506, 13], [1507, 13], [1508, 13], [1509, 13], [1510, 13], [1511, 13],
+					],
+					offsetX: +8
+				},
+			]	
 		},
 		{
 			level: "ultiatedestruction",

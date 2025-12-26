@@ -1031,7 +1031,7 @@ sprite_data_darkparadise:
   .byte $d0,$26,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_15"
+.segment "DAT_BANK_06"
 sprite_data_xmaschallenge:
   .byte $00,$00,$60,$03,$01
   .byte $00,$00,$70,$03,$ba
@@ -1358,7 +1358,7 @@ sprite_data_ninox:
   .byte $70,$2f,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_0D"
 sprite_data_lookatthislevel:
   .byte $00,$00,$e0,$01,$14
   .byte $00,$00,$70,$03,$14
@@ -1825,7 +1825,7 @@ sprite_data_lookatthislevel:
   .byte $90,$23,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_20"
 sprite_data_ajollyretrochristmas:
   .byte $00,$00,$70,$03,$bf
   .byte $00,$00,$88,$03,$fd
@@ -1887,19 +1887,50 @@ sprite_data_ajollyretrochristmas:
   .byte $b0,$0b,$f0,$02,$13
   .byte $00,$0c,$b0,$02,$10
   .byte $20,$0c,$80,$02,$36
+  .byte $60,$0c,$70,$03,$2d
   .byte $90,$0c,$40,$03,$18
   .byte $90,$0c,$48,$03,$15
   .byte $b0,$0c,$d0,$02,$36
+  .byte $c0,$0c,$70,$03,$2c
   .byte $00,$0d,$20,$03,$36
+  .byte $20,$0d,$80,$03,$2c
   .byte $30,$0d,$50,$03,$93
   .byte $50,$0d,$50,$03,$83
+  .byte $60,$0d,$10,$03,$36
+  .byte $60,$0d,$80,$03,$2c
+  .byte $b0,$0d,$80,$03,$2d
+  .byte $c0,$0d,$e0,$02,$36
+  .byte $e0,$0d,$80,$03,$2d
   .byte $10,$0e,$88,$03,$0a
+  .byte $30,$0e,$00,$03,$36
   .byte $50,$0e,$70,$03,$0b
+  .byte $a0,$0e,$f0,$02,$36
+  .byte $b0,$0e,$60,$03,$2d
+  .byte $e0,$0e,$e0,$02,$36
+  .byte $30,$0f,$10,$03,$36
+  .byte $40,$0f,$60,$03,$2d
   .byte $70,$0f,$68,$03,$0b
+  .byte $80,$0f,$c0,$02,$36
   .byte $90,$0f,$58,$03,$28
+  .byte $c0,$0f,$00,$03,$36
+  .byte $e0,$0f,$80,$03,$2d
   .byte $00,$10,$88,$03,$0a
+  .byte $20,$10,$d0,$02,$36
+  .byte $20,$10,$80,$03,$2d
+  .byte $80,$10,$60,$03,$2c
+  .byte $a0,$10,$f0,$02,$36
+  .byte $00,$11,$e0,$02,$36
+  .byte $00,$11,$80,$03,$2c
+  .byte $60,$11,$d0,$02,$36
+  .byte $80,$11,$80,$03,$2b
+  .byte $c0,$11,$70,$03,$2d
+  .byte $20,$12,$f0,$02,$36
+  .byte $50,$12,$60,$03,$2d
+  .byte $80,$12,$50,$03,$2d
+  .byte $c0,$12,$c0,$02,$36
   .byte $c0,$12,$48,$03,$52
   .byte $10,$13,$40,$03,$13
+  .byte $30,$13,$a0,$02,$36
   .byte $70,$13,$d0,$02,$10
   .byte $b0,$13,$f0,$02,$19
   .byte $20,$16,$30,$03,$0b
@@ -2021,7 +2052,7 @@ sprite_data_ajollyretrochristmas:
   .byte $80,$5e,$a0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_06"
+.segment "DAT_BANK_15"
 sprite_data_ultiatedestruction:
   .byte $10,$03,$80,$03,$2a
   .byte $30,$03,$70,$03,$2b
@@ -6863,7 +6894,7 @@ sprite_data_generationretro:
   .byte $60,$45,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_11"
+.segment "DAT_BANK_12"
 sprite_data_scarletsurge:
   .byte $00,$00,$60,$03,$01
   .byte $00,$00,$80,$03,$bf
@@ -7912,7 +7943,7 @@ sprite_data_scarletsurge:
   .byte $80,$57,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_12"
+.segment "DAT_BANK_13"
 sprite_data_tinytunes:
   .byte $00,$00,$80,$03,$bf
   .byte $a0,$00,$88,$03,$0a
@@ -9242,7 +9273,7 @@ sprite_data_fireaura:
   .byte $40,$4a,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_10"
+.segment "DAT_BANK_11"
 sprite_data_rainbowdust:
   .byte $00,$00,$60,$03,$ee
   .byte $00,$00,$70,$03,$80
@@ -11253,7 +11284,7 @@ sprite_data_rainingtacos:
   .byte $e0,$48,$10,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_13"
+.segment "DAT_BANK_14"
 sprite_data_dorabaebasic10:
   .byte $00,$00,$80,$03,$98
   .byte $d0,$00,$80,$03,$0b
@@ -12145,7 +12176,7 @@ sprite_data_subtleoddities:
   .byte $50,$46,$90,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_1B"
+.segment "DAT_BANK_1C"
 sprite_data_powertrip:
   .byte $50,$00,$10,$03,$cf
   .byte $50,$00,$20,$03,$8f
@@ -13889,7 +13920,7 @@ sprite_data_danceofviolins:
   .byte $60,$3a,$d0,$02,$c4
   .byte $ff
 
-.segment "DAT_BANK_1C"
+.segment "DAT_BANK_1B"
 sprite_data_aprettyeasylevel:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$c6
@@ -15894,7 +15925,7 @@ sprite_data_infinitecircles:
   .byte $00,$2b,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0F"
+.segment "DAT_BANK_10"
 sprite_data_decode:
   .byte $00,$00,$70,$03,$c6
   .byte $00,$00,$80,$03,$96
@@ -16441,7 +16472,7 @@ sprite_data_decode:
   .byte $30,$35,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0E"
+.segment "DAT_BANK_0F"
 sprite_data_clutterfunk2:
   .byte $00,$00,$40,$03,$84
   .byte $00,$00,$50,$03,$b8
@@ -17555,7 +17586,7 @@ sprite_data_clutterfunk2:
   .byte $c0,$44,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1C"
+.segment "DAT_BANK_1D"
 sprite_data_speedracer:
   .byte $00,$00,$70,$03,$c5
   .byte $00,$00,$80,$03,$95
@@ -18088,7 +18119,7 @@ sprite_data_speedracer:
   .byte $30,$31,$e0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_15"
+.segment "DAT_BANK_1B"
 sprite_data_skeletalshenanigans:
   .byte $00,$00,$50,$03,$b7
   .byte $00,$00,$60,$03,$dd
