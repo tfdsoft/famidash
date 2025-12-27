@@ -2444,7 +2444,7 @@
 		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3763
 
 
-.segment "DAT_BANK_5A"	; Total bank size: 8181 bytes
+.segment "DAT_BANK_5A"	; Total bank size: 8180 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -2491,7 +2491,7 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 57 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3753
+		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3752
 
 
 .segment "DAT_BANK_5B"	; Total bank size: 8160 bytes
@@ -3161,7 +3161,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_77"	; Total bank size: 8146 bytes
+.segment "DAT_BANK_77"	; Total bank size: 8181 bytes
 	.export level_data_ultiatedestruction
 	level_data_ultiatedestruction:
 	; Header
