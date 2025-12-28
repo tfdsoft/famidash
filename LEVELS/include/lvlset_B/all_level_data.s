@@ -106,7 +106,7 @@
 		.incbin "EXPORTS/skeletalshenanigans.lz.0.bin" ; Size: 8114
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8103 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8106 bytes
 	.export level_data_cryogenic
 	level_data_cryogenic:
 	; Header
@@ -129,7 +129,7 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/cryogenic.lz.0.bin" ; Size: 8085
+		.incbin "EXPORTS/cryogenic.lz.0.bin" ; Size: 8088
 
 
 .segment "DAT_BANK_05"	; Total bank size: 8094 bytes
