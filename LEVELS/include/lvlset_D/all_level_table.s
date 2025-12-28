@@ -5,6 +5,7 @@
 .segment "RODATA_2"
 
 _level_list_lo:
+	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_goldenhaze)
 	.byte .lobyte(level_data_gameover)
 	.byte .lobyte(level_data_demoncryogenic)
@@ -24,6 +25,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_silentcircles)
 
 _level_list_hi:
+	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_gameover)
 	.byte .hibyte(level_data_demoncryogenic)
@@ -43,6 +45,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_silentcircles)
 
 _level_list_bank:
+	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_gameover))
 	.byte .lobyte(.bank(level_data_demoncryogenic))
@@ -83,6 +86,7 @@ _level_chunk_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
+	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($000078)		; gameover
 	.byte .lobyte($0000A8)		; demoncryogenic
@@ -104,6 +108,7 @@ _level_lengths_lo:
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
+	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($000078)		; gameover
 	.byte .hibyte($0000A8)		; demoncryogenic
@@ -125,6 +130,7 @@ _level_lengths_md:
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
+	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($000078)		; gameover
 	.byte .bankbyte($0000A8)		; demoncryogenic

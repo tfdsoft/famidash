@@ -33,7 +33,6 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// infinitecircles
 	DEMON,	// decode
 	DEMON,	// clutterfunk2
-	DEMON,	// speedracer
 	DEMON,	// skeletalshenanigans
 };
 
@@ -69,6 +68,5 @@ const uint8_t stars_list[] = {
 	10,	// infinitecircles
 	10,	// decode
 	10,	// clutterfunk2
-	10,	// speedracer
 	10,	// skeletalshenanigans
 };

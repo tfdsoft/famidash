@@ -36,7 +36,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_infinitecircles)
 	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_clutterfunk2)
-	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_skeletalshenanigans)
 
 _level_list_hi:
@@ -71,7 +70,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_infinitecircles)
 	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_clutterfunk2)
-	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_skeletalshenanigans)
 
 _level_list_bank:
@@ -106,29 +104,31 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_infinitecircles))
 	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
-	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_cryogenic_0)
-	.byte .lobyte(level_data_thesteamworks_1)
-	.byte .lobyte(level_data_subtleoddities_2)
-	.byte .lobyte(level_data_highlife_3)
-	.byte .lobyte(level_data_skeletalshenanigans_4)
+	.byte .lobyte(level_data_ajollyretrochristmas_0)
+	.byte .lobyte(level_data_cryogenic_1)
+	.byte .lobyte(level_data_thesteamworks_2)
+	.byte .lobyte(level_data_subtleoddities_3)
+	.byte .lobyte(level_data_highlife_4)
+	.byte .lobyte(level_data_skeletalshenanigans_5)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_cryogenic_0)
-	.byte .hibyte(level_data_thesteamworks_1)
-	.byte .hibyte(level_data_subtleoddities_2)
-	.byte .hibyte(level_data_highlife_3)
-	.byte .hibyte(level_data_skeletalshenanigans_4)
+	.byte .hibyte(level_data_ajollyretrochristmas_0)
+	.byte .hibyte(level_data_cryogenic_1)
+	.byte .hibyte(level_data_thesteamworks_2)
+	.byte .hibyte(level_data_subtleoddities_3)
+	.byte .hibyte(level_data_highlife_4)
+	.byte .hibyte(level_data_skeletalshenanigans_5)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_cryogenic_0))
-	.byte .lobyte(.bank(level_data_thesteamworks_1))
-	.byte .lobyte(.bank(level_data_subtleoddities_2))
-	.byte .lobyte(.bank(level_data_highlife_3))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans_4))
+	.byte .lobyte(.bank(level_data_ajollyretrochristmas_0))
+	.byte .lobyte(.bank(level_data_cryogenic_1))
+	.byte .lobyte(.bank(level_data_thesteamworks_2))
+	.byte .lobyte(.bank(level_data_subtleoddities_3))
+	.byte .lobyte(.bank(level_data_highlife_4))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_5))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -165,7 +165,6 @@ _level_lengths_lo:
 	.byte .lobyte($00006F)		; infinitecircles
 	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($0000B1)		; clutterfunk2
-	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -202,7 +201,6 @@ _level_lengths_md:
 	.byte .hibyte($00006F)		; infinitecircles
 	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($0000B1)		; clutterfunk2
-	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -239,7 +237,6 @@ _level_lengths_hi:
 	.byte .bankbyte($00006F)		; infinitecircles
 	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($0000B1)		; clutterfunk2
-	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 
 .endif

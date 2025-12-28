@@ -32,6 +32,22 @@
 		},
 		*/
 		{
+			level: "speedracer",
+			lowerText: "SPEED RACER",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_speed_racer",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "goldenhaze",
 			lowerText: "GOLDEN HAZE",
 			decoType: "DECO1",

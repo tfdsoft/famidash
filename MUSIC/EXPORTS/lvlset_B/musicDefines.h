@@ -33,6 +33,5 @@
 #define song_driving_by_night 32
 #define song_scheming_weasel 33
 #define song_ninox 34
-#define song_speed_racer 35
-#define song_ultimatedestruction 36
-#define song_max 37
+#define song_ultimatedestruction 35
+#define song_max 36

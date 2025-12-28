@@ -4,7 +4,7 @@
 #define LEVELSET 'B'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 33
+#define COMMUNITY_LEVEL_COUNT 32
 
 #define level_bestautomaticlvl 0
 #define level_sonar 1
@@ -37,5 +37,4 @@
 #define level_infinitecircles 28
 #define level_decode 29
 #define level_clutterfunk2 30
-#define level_speedracer 31
-#define level_skeletalshenanigans 32
+#define level_skeletalshenanigans 31
