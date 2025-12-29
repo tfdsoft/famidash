@@ -2456,30 +2456,11 @@
 		.incbin "EXPORTS/sonicwave.lz.1.bin" ; Size: 3763
 
 
-.segment "DAT_BANK_5A"	; Total bank size: 8180 bytes
-	.export level_data_foresttemple
-	level_data_foresttemple:
-	; Header
-		.byte <sprite_data_foresttemple ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_foresttemple ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_foresttemple)) ;___ Sprite data bank
-		.byte song_haunted_woods ;___________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
-		.byte _DECO1 ;_______________________________ Deco type
-		.byte _SPIKESB ;_____________________________ Spike set
-		.byte _BLOCKSB ;_____________________________ Block set
-		.byte _SAWBLADESA ;__________________________ Sawblade set
-		.byte $0F ;__________________________________ Starting background color
-		.byte $0F ;__________________________________ Starting ground color
-		.byte 27 ;___________________________________ Level height
+.segment "DAT_BANK_5A"	; Total bank size: 8182 bytes
+	.export level_data_ajollyretrochristmas_2
+	level_data_ajollyretrochristmas_2:
 	; Level data
-		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
+		.incbin "EXPORTS/ajollyretrochristmas.lz.1.bin" ; Size: 4412
 
 	.export level_data_nullscapes
 	level_data_nullscapes:
@@ -2506,11 +2487,30 @@
 		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3752
 
 
-.segment "DAT_BANK_5B"	; Total bank size: 8114 bytes
-	.export level_data_ajollyretrochristmas_2
-	level_data_ajollyretrochristmas_2:
+.segment "DAT_BANK_5B"	; Total bank size: 8116 bytes
+	.export level_data_foresttemple
+	level_data_foresttemple:
+	; Header
+		.byte <sprite_data_foresttemple ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_foresttemple ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_foresttemple)) ;___ Sprite data bank
+		.byte song_haunted_woods ;___________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;__________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_______________________________ Deco type
+		.byte _SPIKESB ;_____________________________ Spike set
+		.byte _BLOCKSB ;_____________________________ Block set
+		.byte _SAWBLADESA ;__________________________ Sawblade set
+		.byte $0F ;__________________________________ Starting background color
+		.byte $0F ;__________________________________ Starting ground color
+		.byte 27 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/ajollyretrochristmas.lz.1.bin" ; Size: 4408
+		.incbin "EXPORTS/foresttemple.lz.bin" ; Size: 4392
 
 	.export level_data_dreamer
 	level_data_dreamer:
