@@ -539,11 +539,11 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3528
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8073 bytes
+.segment "DAT_BANK_17"	; Total bank size: 8077 bytes
 	.export level_data_ajollyretrochristmas_0
 	level_data_ajollyretrochristmas_0:
 	; Level data
-		.incbin "EXPORTS/ajollyretrochristmas.lz.1.bin" ; Size: 4408
+		.incbin "EXPORTS/ajollyretrochristmas.lz.1.bin" ; Size: 4412
 
 	.export level_data_aprettyeasylevel
 	level_data_aprettyeasylevel:
