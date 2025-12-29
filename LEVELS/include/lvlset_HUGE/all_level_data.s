@@ -191,7 +191,7 @@
 		.incbin "EXPORTS/dash.lz.0.bin" ; Size: 8132
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8144 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8150 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -214,7 +214,7 @@
 		.byte $0F ;_________________________ Starting ground color
 		.byte 27 ;__________________________ Level height
 	; Level data
-		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8126
+		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8132
 
 
 .segment "DAT_BANK_09"	; Total bank size: 8136 bytes
@@ -790,7 +790,7 @@
 		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7391
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8175 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8183 bytes
 	.export level_data_goldenhaze
 	level_data_goldenhaze:
 	; Header
@@ -818,7 +818,7 @@
 	.export level_data_eon_14
 	level_data_eon_14:
 	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 805
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 813
 
 
 .segment "DAT_BANK_21"	; Total bank size: 8164 bytes
@@ -1030,7 +1030,7 @@
 		.incbin "EXPORTS/invisiblelight.lz.bin" ; Size: 6760
 
 
-.segment "DAT_BANK_27"	; Total bank size: 8179 bytes
+.segment "DAT_BANK_27"	; Total bank size: 8189 bytes
 	.export level_data_cryogenic_3
 	level_data_cryogenic_3:
 	; Level data

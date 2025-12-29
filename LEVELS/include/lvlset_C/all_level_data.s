@@ -35,7 +35,7 @@
 		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8165
 
 
-.segment "DAT_BANK_02"	; Total bank size: 8142 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8150 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -58,7 +58,7 @@
 		.byte $0F ;_________________________ Starting ground color
 		.byte 27 ;__________________________ Level height
 	; Level data
-		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8124
+		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8132
 
 
 .segment "DAT_BANK_03"	; Total bank size: 8122 bytes
@@ -295,7 +295,7 @@
 		.incbin "EXPORTS/cataclysm.lz.bin" ; Size: 7041
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 7641 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 7649 bytes
 	.export level_data_fairydust
 	level_data_fairydust:
 	; Header
@@ -323,7 +323,7 @@
 	.export level_data_eon_3
 	level_data_eon_3:
 	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 805
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 813
 
 
 .segment "DAT_BANK_0D"	; Total bank size: 8189 bytes
