@@ -838,7 +838,15 @@
 			lowerText: "CUT",
 			originalArtist: "Dj Nate",
 			coveringArtist: "Vikrinox",
-		},		
+		},
+		{
+			fmsSongName: "Thermodynamix (Acheron)",
+			upperText: "THERMODYNAMIX",
+			lowerText: "ACHERON CUT",
+			originalArtist: "Dj Nate",
+			coveringArtist: ["Vikrinox","SeaGlowingPro"],
+			overingArtist: "Nullscales",
+		},
 		{
 			fmsSongName: "Thermodynamix Full",
 			lowerText: "THERMODYNAMIX",

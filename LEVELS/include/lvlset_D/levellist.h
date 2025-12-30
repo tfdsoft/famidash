@@ -11,6 +11,7 @@ const uint8_t difficulty_list[] = {
 	INSANEDEMON,	// acropolis
 	EXTREMEDEMON,	// windylandscape
 	EXTREMEDEMON,	// icdx
+	EXTREMEDEMON,	// styx
 	IMPOSSIBLEDEMON,	// wcropolix
 	IMPOSSIBLEDEMON,	// silentclubstep
 	IMPOSSIBLEDEMON,	// aftercatabath
@@ -32,6 +33,7 @@ const uint8_t stars_list[] = {
 	10,	// acropolis
 	10,	// windylandscape
 	10,	// icdx
+	10,	// styx
 	10,	// wcropolix
 	10,	// silentclubstep
 	10,	// aftercatabath

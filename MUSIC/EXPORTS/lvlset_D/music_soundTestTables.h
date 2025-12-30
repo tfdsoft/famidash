@@ -5,39 +5,41 @@
 const char musicSoundTestString00[ 8] = "SCHEMING";
 const char musicSoundTestString01[12] = "AT$THE$SPEED";
 const char musicSoundTestString02[11] = "GOLDEN$HAZE";
-const char musicSoundTestString03[ 4] = "MENU";
-const char musicSoundTestString04[12] = "TIME$MACHINE";
-const char musicSoundTestString05[ 8] = "CLUBSTEP";
-const char musicSoundTestString06[ 8] = "PRACTICE";
-const char musicSoundTestString07[ 6] = "WEASEL";
-const char musicSoundTestString08[ 8] = "OF$LIGHT";
-const char musicSoundTestString09[12] = "CHAOZ$IMPACT";
-const char musicSoundTestString0A[ 9] = "CRYOGENIC";
-const char musicSoundTestString0B[ 7] = "ENDGAME";
-const char musicSoundTestString0C[ 4] = "FLOW";
-const char musicSoundTestString0D[ 3] = "CUT";
-const char musicSoundTestString0E[13] = "HAUNTED$WOODS";
-const char musicSoundTestString0F[10] = "JAWBREAKER";
-const char musicSoundTestString10[ 6] = "KRATOS";
-const char musicSoundTestString11[ 4] = "LOST";
-const char musicSoundTestString12[ 9] = "SLOW$DOWN";
-const char musicSoundTestString13[ 9] = "SUPERNOVA";
-const char musicSoundTestString14[ 8] = "WINDFALL";
-const char musicSoundTestString15[ 8] = "TOBY$FOX";
-const char musicSoundTestString16[10] = "WATERFLAME";
-const char musicSoundTestString17[ 7] = "DJ$NATE";
-const char musicSoundTestString18[12] = "OCULARNEBULA";
-const char musicSoundTestString19[13] = "KEVIN$MACLEOD";
-const char musicSoundTestString1A[ 9] = "DIMRAIN47";
-const char musicSoundTestString1B[ 9] = "PARAGONX9";
-const char musicSoundTestString1C[10] = "NERDBOY628";
-const char musicSoundTestString1D[ 4] = "CREO";
-const char musicSoundTestString1E[12] = "DETIOUSMUSIC";
-const char musicSoundTestString1F[ 6] = "RUKKUS";
-const char musicSoundTestString20[ 6] = "SHAPPY";
-const char musicSoundTestString21[ 6] = "CRIM3S";
-const char musicSoundTestString22[ 8] = "XTRULLOR";
-const char musicSoundTestString23[ 9] = "THEFATRAT";
+const char musicSoundTestString03[13] = "THERMODYNAMIX";
+const char musicSoundTestString04[ 4] = "MENU";
+const char musicSoundTestString05[12] = "TIME$MACHINE";
+const char musicSoundTestString06[ 8] = "CLUBSTEP";
+const char musicSoundTestString07[ 8] = "PRACTICE";
+const char musicSoundTestString08[ 6] = "WEASEL";
+const char musicSoundTestString09[ 8] = "OF$LIGHT";
+const char musicSoundTestString0A[12] = "CHAOZ$IMPACT";
+const char musicSoundTestString0B[ 9] = "CRYOGENIC";
+const char musicSoundTestString0C[ 7] = "ENDGAME";
+const char musicSoundTestString0D[ 4] = "FLOW";
+const char musicSoundTestString0E[ 3] = "CUT";
+const char musicSoundTestString0F[13] = "HAUNTED$WOODS";
+const char musicSoundTestString10[10] = "JAWBREAKER";
+const char musicSoundTestString11[ 6] = "KRATOS";
+const char musicSoundTestString12[ 4] = "LOST";
+const char musicSoundTestString13[ 9] = "SLOW$DOWN";
+const char musicSoundTestString14[ 9] = "SUPERNOVA";
+const char musicSoundTestString15[11] = "ACHERON$CUT";
+const char musicSoundTestString16[ 8] = "WINDFALL";
+const char musicSoundTestString17[ 8] = "TOBY$FOX";
+const char musicSoundTestString18[10] = "WATERFLAME";
+const char musicSoundTestString19[ 7] = "DJ$NATE";
+const char musicSoundTestString1A[12] = "OCULARNEBULA";
+const char musicSoundTestString1B[13] = "KEVIN$MACLEOD";
+const char musicSoundTestString1C[ 9] = "DIMRAIN47";
+const char musicSoundTestString1D[ 9] = "PARAGONX9";
+const char musicSoundTestString1E[10] = "NERDBOY628";
+const char musicSoundTestString1F[ 4] = "CREO";
+const char musicSoundTestString20[12] = "DETIOUSMUSIC";
+const char musicSoundTestString21[ 6] = "RUKKUS";
+const char musicSoundTestString22[ 6] = "SHAPPY";
+const char musicSoundTestString23[ 6] = "CRIM3S";
+const char musicSoundTestString24[ 8] = "XTRULLOR";
+const char musicSoundTestString25[ 9] = "THEFATRAT";
 
 
 const char* const xbgmtextsUpper[] = {
@@ -58,6 +60,7 @@ const char* const xbgmtextsUpper[] = {
 	NULL,
 	NULL,
 	NULL,
+	musicSoundTestString03,
 	NULL,
 };
 
@@ -79,12 +82,12 @@ const uint8_t xbgmtextsUpperSize[] = {
 	0,
 	0,
 	0,
+	sizeof(musicSoundTestString03),
 	0,
 };
 
 
 const char* const xbgmtextsLower[] = {
-	musicSoundTestString03,
 	musicSoundTestString04,
 	musicSoundTestString05,
 	musicSoundTestString06,
@@ -102,10 +105,11 @@ const char* const xbgmtextsLower[] = {
 	musicSoundTestString12,
 	musicSoundTestString13,
 	musicSoundTestString14,
+	musicSoundTestString15,
+	musicSoundTestString16,
 };
 
 const uint8_t xbgmtextsLowerSize[] = {
-	sizeof(musicSoundTestString03),
 	sizeof(musicSoundTestString04),
 	sizeof(musicSoundTestString05),
 	sizeof(musicSoundTestString06),
@@ -123,49 +127,53 @@ const uint8_t xbgmtextsLowerSize[] = {
 	sizeof(musicSoundTestString12),
 	sizeof(musicSoundTestString13),
 	sizeof(musicSoundTestString14),
+	sizeof(musicSoundTestString15),
+	sizeof(musicSoundTestString16),
 };
 
 
 const char* const xbgmtextsOriginalArtist[] = {
-	musicSoundTestString15,
-	musicSoundTestString16,
 	musicSoundTestString17,
 	musicSoundTestString18,
 	musicSoundTestString19,
 	musicSoundTestString1A,
 	musicSoundTestString1B,
 	musicSoundTestString1C,
-	musicSoundTestString16,
 	musicSoundTestString1D,
 	musicSoundTestString1E,
-	musicSoundTestString16,
+	musicSoundTestString18,
 	musicSoundTestString1F,
 	musicSoundTestString20,
+	musicSoundTestString18,
 	musicSoundTestString21,
-	musicSoundTestString1D,
 	musicSoundTestString22,
 	musicSoundTestString23,
+	musicSoundTestString1F,
+	musicSoundTestString24,
+	musicSoundTestString19,
+	musicSoundTestString25,
 };
 
 const uint8_t xbgmtextsOriginalArtistSize[] = {
-	sizeof(musicSoundTestString15),
-	sizeof(musicSoundTestString16),
 	sizeof(musicSoundTestString17),
 	sizeof(musicSoundTestString18),
 	sizeof(musicSoundTestString19),
 	sizeof(musicSoundTestString1A),
 	sizeof(musicSoundTestString1B),
 	sizeof(musicSoundTestString1C),
-	sizeof(musicSoundTestString16),
 	sizeof(musicSoundTestString1D),
 	sizeof(musicSoundTestString1E),
-	sizeof(musicSoundTestString16),
+	sizeof(musicSoundTestString18),
 	sizeof(musicSoundTestString1F),
 	sizeof(musicSoundTestString20),
+	sizeof(musicSoundTestString18),
 	sizeof(musicSoundTestString21),
-	sizeof(musicSoundTestString1D),
 	sizeof(musicSoundTestString22),
 	sizeof(musicSoundTestString23),
+	sizeof(musicSoundTestString1F),
+	sizeof(musicSoundTestString24),
+	sizeof(musicSoundTestString19),
+	sizeof(musicSoundTestString25),
 };
 
 
@@ -204,6 +212,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_lost,
 	song_slow_down,
 	song_supernova,
+	song_thermodynamix_acheron,
 	song_windfall,
 };
 

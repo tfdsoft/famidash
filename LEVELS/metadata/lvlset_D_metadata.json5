@@ -342,6 +342,22 @@
 			]
 		},
 		{
+            level: "styx",
+            lowerText: "STYX",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "B",
+            sawSet: "A",
+            difficulty: "EXTREMEDEMON",
+            stars: 10,
+            songID: "song_thermodynamix_acheron",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x11,
+            startingGroundColor: 0x11,
+            parallaxDisable: true
+        },
+		{
 			level: "wcropolix",
 			lowerText: "WCROPOLIX",
 			decoType: "DECO1",

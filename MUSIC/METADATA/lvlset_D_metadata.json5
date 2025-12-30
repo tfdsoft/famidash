@@ -120,6 +120,12 @@
 			originalArtistText: "XTRULLOR",
 		},
 		{
+			fmsSongName: "Thermodynamix (Acheron)",
+			upperText: "THERMODYNAMIX",
+			lowerText: "ACHERON CUT",
+			originalArtistText: "DJ NATE",
+		},
+		{
 			fmsSongName: "Windfall",
 			lowerText: "WINDFALL",
 			originalArtistText: "THEFATRAT",
