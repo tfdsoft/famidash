@@ -217,7 +217,7 @@
 		.incbin "EXPORTS/jawbreaker.lz.bin" ; Size: 6877
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8183 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8190 bytes
 	.export level_data_styx
 	level_data_styx:
 	; Header
@@ -240,7 +240,7 @@
 		.byte $11 ;__________________________ Starting ground color
 		.byte 27 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/styx.lz.bin" ; Size: 6079
+		.incbin "EXPORTS/styx.lz.bin" ; Size: 6086
 
 
 .segment "DAT_BANK_0A"	; Total bank size: 8154 bytes
