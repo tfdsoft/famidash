@@ -705,30 +705,30 @@
 		.incbin "EXPORTS/extraordinaryexcitement.lz.1.bin" ; Size: 4630
 
 
-.segment "DAT_BANK_16"	; Total bank size: 7675 bytes
-	.export level_data_electroman
-	level_data_electroman:
+.segment "DAT_BANK_16"	; Total bank size: 8141 bytes
+	.export level_data_electromanadventures
+	level_data_electromanadventures:
 	; Header
-		.byte <sprite_data_electroman ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_electroman ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_electroman)) ;___ Sprite data bank
-		.byte song_electroman_adventures ;_________ Song ID
-		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
-		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
-		.byte ($00) ;______________________________ Spawn Y Position (low byte)
-		.byte ($02) ;______________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
-		.byte ($07) ;______________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;________________ Force platformer, Disable parallax
-		.byte _DECOCLOUD ;_________________________ Deco type
-		.byte _SPIKESA ;___________________________ Spike set
-		.byte _BLOCKSB ;___________________________ Block set
-		.byte _SAWBLADESA ;________________________ Sawblade set
-		.byte $02 ;________________________________ Starting background color
-		.byte $01 ;________________________________ Starting ground color
-		.byte 27 ;_________________________________ Level height
+		.byte <sprite_data_electromanadventures ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_electromanadventures ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_electromanadventures)) ;___ Sprite data bank
+		.byte song_electroman_adventures ;___________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;________________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;________________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;________________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;__________________________ Force platformer, Disable parallax
+		.byte _DECOCLOUD ;___________________________________ Deco type
+		.byte _SPIKESA ;_____________________________________ Spike set
+		.byte _BLOCKSB ;_____________________________________ Block set
+		.byte _SAWBLADESA ;__________________________________ Sawblade set
+		.byte $02 ;__________________________________________ Starting background color
+		.byte $01 ;__________________________________________ Starting ground color
+		.byte 27 ;___________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/electroman.lz.bin" ; Size: 4502
+		.incbin "EXPORTS/electromanadventures.lz.bin" ; Size: 4502
 
 	.export level_data_timemachine
 	level_data_timemachine:
@@ -940,7 +940,7 @@
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2765
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 7889 bytes
+.segment "DAT_BANK_1E"	; Total bank size: 7729 bytes
 	.export level_data_subzero
 	level_data_subzero:
 	; Header

@@ -18,7 +18,7 @@
 #define level_xstep 9
 #define level_clutterfunk 10
 #define level_theoryofeverything 11
-#define level_electroman 12
+#define level_electromanadventures 12
 #define level_clubstep 13
 #define level_electrodynamix 14
 #define level_hexagonforce 15

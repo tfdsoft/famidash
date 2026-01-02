@@ -14,7 +14,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// xstep
 	INSANE,	// clutterfunk
 	INSANE,	// theoryofeverything
-	INSANE,	// electroman
+	INSANE,	// electromanadventures
 	DEMON,	// clubstep
 	INSANE,	// electrodynamix
 	INSANE,	// hexagonforce
@@ -60,7 +60,7 @@ const uint8_t stars_list[] = {
 	10,	// xstep
 	11,	// clutterfunk
 	12,	// theoryofeverything
-	10,	// electroman
+	10,	// electromanadventures
 	14,	// clubstep
 	12,	// electrodynamix
 	12,	// hexagonforce

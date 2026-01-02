@@ -17,7 +17,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_xstep)
 	.byte .lobyte(level_data_clutterfunk)
 	.byte .lobyte(level_data_theoryofeverything)
-	.byte .lobyte(level_data_electroman)
+	.byte .lobyte(level_data_electromanadventures)
 	.byte .lobyte(level_data_clubstep)
 	.byte .lobyte(level_data_electrodynamix)
 	.byte .lobyte(level_data_hexagonforce)
@@ -62,7 +62,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_xstep)
 	.byte .hibyte(level_data_clutterfunk)
 	.byte .hibyte(level_data_theoryofeverything)
-	.byte .hibyte(level_data_electroman)
+	.byte .hibyte(level_data_electromanadventures)
 	.byte .hibyte(level_data_clubstep)
 	.byte .hibyte(level_data_electrodynamix)
 	.byte .hibyte(level_data_hexagonforce)
@@ -107,7 +107,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_xstep))
 	.byte .lobyte(.bank(level_data_clutterfunk))
 	.byte .lobyte(.bank(level_data_theoryofeverything))
-	.byte .lobyte(.bank(level_data_electroman))
+	.byte .lobyte(.bank(level_data_electromanadventures))
 	.byte .lobyte(.bank(level_data_clubstep))
 	.byte .lobyte(.bank(level_data_electrodynamix))
 	.byte .lobyte(.bank(level_data_hexagonforce))
@@ -173,7 +173,7 @@ _level_lengths_lo:
 	.byte .lobyte($000088)		; xstep
 	.byte .lobyte($0000A1)		; clutterfunk
 	.byte .lobyte($00008B)		; theoryofeverything
-	.byte .lobyte($00008D)		; electroman
+	.byte .lobyte($00008D)		; electromanadventures
 	.byte .lobyte($000091)		; clubstep
 	.byte .lobyte($0000B2)		; electrodynamix
 	.byte .lobyte($0000A9)		; hexagonforce
@@ -220,7 +220,7 @@ _level_lengths_md:
 	.byte .hibyte($000088)		; xstep
 	.byte .hibyte($0000A1)		; clutterfunk
 	.byte .hibyte($00008B)		; theoryofeverything
-	.byte .hibyte($00008D)		; electroman
+	.byte .hibyte($00008D)		; electromanadventures
 	.byte .hibyte($000091)		; clubstep
 	.byte .hibyte($0000B2)		; electrodynamix
 	.byte .hibyte($0000A9)		; hexagonforce
@@ -267,7 +267,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000088)		; xstep
 	.byte .bankbyte($0000A1)		; clutterfunk
 	.byte .bankbyte($00008B)		; theoryofeverything
-	.byte .bankbyte($00008D)		; electroman
+	.byte .bankbyte($00008D)		; electromanadventures
 	.byte .bankbyte($000091)		; clubstep
 	.byte .bankbyte($0000B2)		; electrodynamix
 	.byte .bankbyte($0000A9)		; hexagonforce
