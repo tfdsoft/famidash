@@ -192,13 +192,15 @@
 			lowerText: "WEASEL",
 			originalArtist: "Kevin MacLeod",
 			coveringArtist: "UserSniper",
-		},	
+		},
+		/*
 		{
 			fmsSongName: "2NES",
 			lowerText: "2NES",
 			originalArtist: "Ranedom",
 			coveringArtist: "Ranedom",
-		},		
+		},
+		*/
 		{
 			fmsSongName: "against the odds redux",
 			upperText: "8BIT AGAINST",
@@ -212,6 +214,7 @@
 			originalArtist: "Acid Notation",
 			coveringArtist: "ElAngel378",
 		},
+		/*
 		{
 			fmsSongName: "Airborne Robots",
 			upperText: "AIRBORNE",
@@ -219,6 +222,7 @@
 			originalArtist: "F777",
 			coveringArtist: ["Crafty Jumper", "ElAngel378"]
 		},
+		*/
 		{
 			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
@@ -255,7 +259,6 @@
 			originalArtist: "DJVI",
 			coveringArtist: ["aquamarine", "SeaGlowingPro"]
 		},
-		*/
 		{
 			fmsSongName: "Bad Apple",
 			lowerText: "BAD APPLE",
@@ -268,6 +271,7 @@
 			originalArtist: "Schtiffles",
 			coveringArtist: "Clickerty",
 		},
+		*/
 		{
 			fmsSongName: "Bit Of A Vibe",
 			upperText: "BIT OF",
@@ -281,13 +285,13 @@
 			originalArtist: "RUKKUS",
 			coveringArtist: "NerdBoy628"
 		},
+		/*
 		{
 			fmsSongName: "candyland",
 			lowerText: "CANDYLAND",
 			originalArtist: "Tobu",
 			coveringArtist: "NerdBoy628",
 		},
-		/*
 		{
 			fmsSongName: "Chaoz Airflow",
 			lowerText: "CHAOZ AIRFLOW",
@@ -340,12 +344,14 @@
 			originalArtist: "F777",
 			coveringArtist: "ElAngel378",
 		},
+		/*
 		{
 			fmsSongName: "Dash Full",
 			lowerText: "DASH FULL",
 			originalArtist: "MDK",
 			coveringArtist: "Crafty Jumper",
-		},		
+		},
+		*/
 		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
@@ -439,13 +445,15 @@
 			lowerText: "FANTASY",
 			originalArtist: ["CLOUDFIELD","REICHUU"],
 			coveringArtist: "ElAngel378",
-		},				
+		},
+		/*		
 		{
 			fmsSongName: "Fingerbang",
 			lowerText: "FINGERBANG",
 			originalArtist: "MDK",
 			coveringArtist: ["ElAngel378", "Crafty Jumper"]
 		},
+		*/
 		{
 			fmsSongName: "Fire Aura",
 			lowerText: "FIRE AURA",
@@ -464,6 +472,7 @@
 			originalArtist: "ElAngel378",
 			coveringArtist: "ElAngel378",
 		},
+		/*
 		{
 			fmsSongName: "FREEDOM DiVE",
 			upperText: "FREEDOM",
@@ -477,6 +486,7 @@
 			originalArtist: "Dominuus",
 			coveringArtist: "SeaGlowingPro",
 		},
+		*/
 		{
 			fmsSongName: "Glitch Gremlin",
 			lowerText: "GLITCH GREMLIN",
@@ -509,12 +519,14 @@
 			originalArtist: "garlagan",
 			coveringArtist: "sussysy",
 		},
+		/*
 		{
 			fmsSongName: "Idols",
 			lowerText: "IDOLS",
 			originalArtist: "Virtual Riot",
 			coveringArtist: "SeaGlowingPro",
 		},
+		*/
 		{
 			fmsSongName: "infernoplex",
 			upperText: "INFERNOPLEX",
@@ -549,12 +561,14 @@
 			originalArtist: "NightHawk22",
 			coveringArtist: ["Crafty Jumper", "SeaGlowingPro"]
 		},
+		/*
 		{
 			fmsSongName: "jack russel",
 			lowerText: "JACK RUSSEL",
 			originalArtist: "Bossfight",
 			coveringArtist: "NerdBoy628",
 		},
+		*/
 		{
 			fmsSongName: "Jawbreaker",
 			lowerText: "JAWBREAKER",
@@ -602,6 +616,7 @@
 			originalArtist: "Crim3s",
 			coveringArtist: "SeaGlowingPro",
 		},
+		/*
 		{
 			fmsSongName: "ludicrous speed",
 			upperText: "LUDICROUS",
@@ -609,6 +624,7 @@
 			originalArtist: "F777",
 			coveringArtist: "ElAngel378",
 		},
+		*/
 		{
 			fmsSongName: "Magic Touch",
 			lowerText: "MAGIC TOUCH",
@@ -639,12 +655,14 @@
 			originalArtist: "Davince",
 			coveringArtist: "SeaGlowingPro",
 		},
+		/*
 		{
 			fmsSongName: "Metamorphosis",
 			lowerText: "METAMORPHOSIS",
 			originalArtist: "INTERWORLD",
 			coveringArtist: "ElAngel378",
 		},
+		*/
 		{
 			fmsSongName: "Miami Hotline Vol. 3",
 			upperText: "MIAMI HOTLINE",
@@ -689,12 +707,14 @@
 			originalArtist: "Boom Kitty",
 			coveringArtist: "Crafty Jumper",
 		},
+		/*
 		{
 			fmsSongName: "Press Start",
 			lowerText: "PRESS START",
 			originalArtist: "MDK",
 			coveringArtist: "Crafty Jumper",
 		},
+		*/
 		{
 			fmsSongName: "Problematic",
 			lowerText: "PROBLEMATIC",
@@ -826,12 +846,14 @@
 			originalArtist: "Cacola",
 			coveringArtist: "ElAngel378",
 		},
+		/*
 		{
 			fmsSongName: "The Seven Seas",
 			lowerText: "THE SEVEN SEAS",
 			originalArtist: "F777",
 			coveringArtist: "Crafty Jumper",
-		},	
+		},
+		*/
 		{
 			fmsSongName: "Thermodynamix",
 			upperText: "THERMODYNAMIX",
@@ -845,7 +867,6 @@
 			lowerText: "ACHERON CUT",
 			originalArtist: "Dj Nate",
 			coveringArtist: ["Vikrinox","SeaGlowingPro"],
-			overingArtist: "Nullscales",
 		},
 		{
 			fmsSongName: "Thermodynamix Full",
@@ -867,13 +888,13 @@
 			lowerText: "TINY TUNES",
 			originalArtist: "FantomenK",
 			coveringArtist: ["SeaGlowingPro","ElAngel378"]
-		},	
+		},
 		{
 			fmsSongName: "Try This",
 			lowerText: "TRY THIS",
 			originalArtist: "Pegboard Nerds",
 			coveringArtist: "ElAngel378",
-		},		
+		},
 		{
 			fmsSongName: "ultimatedestruction",
 			upperText: "ULTIMATE",
@@ -893,13 +914,13 @@
 			lowerText: "WINDFALL",
 			originalArtist: "TheFatRat",
 			coveringArtist: "SeaGlowingPro",
-		},	
+		},
 		{
 			fmsSongName: "Xenogenesis",
 			lowerText: "XENOGENESIS",
 			originalArtist: "TheFatRat",
 			coveringArtist: "Ranedom",
-		},	
+		},
 		{
 			fmsSongName: "XO",
 			lowerText: "XO",
