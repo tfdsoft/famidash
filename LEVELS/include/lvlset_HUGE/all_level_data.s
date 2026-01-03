@@ -873,7 +873,7 @@
 		.byte <sprite_data_cataclysm ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_cataclysm ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_cataclysm)) ;___ Sprite data bank
-		.byte song_atthespeedoflight ;____________ Song ID
+		.byte song_atthespeedoflightfull ;________ Song ID
 		.byte (1 << 4) | 0 ;______________________ Starting game mode and speed
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
@@ -2072,7 +2072,7 @@
 		.byte <sprite_data_kappaclysm ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_kappaclysm ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_kappaclysm)) ;___ Sprite data bank
-		.byte song_atthespeedoflight ;_____________ Song ID
+		.byte song_atthespeedoflightfull ;_________ Song ID
 		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
 		.byte ($00) ;______________________________ Spawn Y Position (low byte)
