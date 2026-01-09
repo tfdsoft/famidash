@@ -67,7 +67,7 @@ void cube_movement(){
 
 
 
-	if ((gamemode == GAMEMODE_CUBE && currplayer_vel_y == 0 && dashing[currplayer] == 0) || (gamemode == GAMEMODE_CUBE && (kandokidshack == 9 && dashing[currplayer] == 0)) || (gamemode == GAMEMODE_NINJA && !retro_mode)){		//cube
+	if ((gamemode == GAMEMODE_CUBE && currplayer_vel_y == 0 && dashing[currplayer] == 0) || (gamemode == GAMEMODE_CUBE && (kandokidshack == 9 && dashing[currplayer] == 0)) || (gamemode == GAMEMODE_NINJA)){		//cube
 		//if(bg_coll_D2()) {
 
 			if (gamemode == GAMEMODE_NINJA && currplayer_vel_y == 0) ninjajumps[currplayer] = 3; //ninja jump reset
@@ -100,7 +100,7 @@ void cube_movement(){
 			}
 	}
 
-	else if (gamemode == GAMEMODE_ROBOT || (retro_mode && gamemode == GAMEMODE_NINJA)) {
+	else if (gamemode == GAMEMODE_ROBOT) {
 		
 			if (gamemode == GAMEMODE_NINJA && currplayer_vel_y == 0) ninjajumps[currplayer] = 3; //ninja jump reset
 
@@ -114,7 +114,7 @@ void cube_movement(){
 		}
 
 
-		if ((!retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4) || (dashing[currplayer] == 0 && kandokidshack == 9)){		//robot
+		if (((currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4) || (dashing[currplayer] == 0 && kandokidshack == 9)){		//robot
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);			
 			if((controllingplayer->hold & (PAD_A | PAD_UP)) && !orbed[currplayer]) {
 				if((controllingplayer->press & (PAD_A | PAD_UP))) jumps++;
@@ -127,7 +127,7 @@ void cube_movement(){
 			}
 		}
 		
-		else if ((gamemode == GAMEMODE_ROBOT && retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4) || (gamemode == GAMEMODE_NINJA && retro_mode && !jumpedonthisframe[currplayer]  && ninjajumps[currplayer] && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4)) {		//jim
+		else if ((gamemode == GAMEMODE_ROBOT && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4) || (gamemode == GAMEMODE_NINJA && !jumpedonthisframe[currplayer]  && ninjajumps[currplayer] && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4)) {		//jim
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);		
 			if((controllingplayer->hold & (PAD_A | PAD_UP)) && !orbed[currplayer]) {
 				if((controllingplayer->press & (PAD_A | PAD_UP))) jumps++;
@@ -170,77 +170,7 @@ void cube_movement(){
 	fblocked[currplayer] = 0;
 	hblocked[currplayer] = 0;
 	jblocked[currplayer] = 0;
-//jim's shit
-	if (retro_mode && !dual) {
-		if (controllingplayer->press_b && !practice_point_count) {
-			tmp9 = 0;
-			do {
-				if (!jimsheatballalive[tmp9]) {
-					jimsheatballframe[tmp9] = 0;
-					jimsheatballalive[tmp9] = 1;
-					if (controllingplayer->up) idx16_store_NOC(jimsheatball_vel_y, tmp9, JIMSHEATBALL_JUMP_VEL_d4x7(framerate));
-					else idx16_store_NOC(jimsheatball_vel_y, tmp9, JIMSHEATBALL_JUMP_VEL(framerate));
-					idx16_store_NOC(jimsheatballx, tmp9, high_byte(old_x));
-					idx16_store_hi_NOC(jimsheatbally, tmp9, high_byte(player_y[0]));
-					break;
-				}
-			} while (++tmp9 < MAX_FIREBALLS);
 
-		}
-	}
-// done with jims shit	
-// jims heat bomb:
-	idx16_store_NOC(player_x, currplayer, currplayer_x);
-	idx16_store_NOC(player_y, currplayer, currplayer_y);
-	idx16_store_NOC(player_vel_x, currplayer, currplayer_vel_x);
-	idx16_store_NOC(player_vel_y, currplayer, currplayer_vel_y);
-	player_gravity[currplayer] = currplayer_gravity;
-
-	if (retro_mode) {
-		tmp9 = 0;
-		do {
-			if (jimsheatballalive[tmp9]) {
-
-					
-				currplayer_x = jimsheatballx[tmp9 & 0x7F];
-				currplayer_y = jimsheatbally[tmp9 & 0x7F];
-				currplayer_vel_x = jimsheatball_vel_x[tmp9 & 0x7F];
-				currplayer_vel_y = jimsheatball_vel_y[tmp9 & 0x7F];
-				currplayer_gravity = GRAVITY_DOWN;
-				update_currplayer_table_idx();
-
-				if(currplayer_vel_y > JIMSHEATBALL_MAX_FALLSPEED(framerate)){
-					currplayer_vel_y += -JIMSHEATBALL_GRAVITY(framerate);
-				} else currplayer_vel_y += JIMSHEATBALL_GRAVITY(framerate);
-				currplayer_y += currplayer_vel_y;
-				
-				Generic.x = high_byte(currplayer_x);
-				Generic.y = high_byte(currplayer_y);
-				
-			if (!(kandoframecnt & 3)) {
-			//	x_movement_coll();
-				if(bg_coll_D()){ // check collision below
-					high_byte(currplayer_y) -= eject_D;
-					low_byte(currplayer_y) = 0;
-					currplayer_vel_y = JIMSHEATBALL_JUMP_VEL(framerate);
-				}
-			}
-				if (cube_data[currplayer] & 1) { idx8_store(cube_data, currplayer, cube_data[currplayer] & 2); }
-				idx16_store_NOC(jimsheatballx, tmp9, currplayer_x);
-				idx16_store_NOC(jimsheatbally, tmp9, currplayer_y);
-				idx16_store_NOC(jimsheatball_vel_x, tmp9, currplayer_vel_x);
-				idx16_store_NOC(jimsheatball_vel_y, tmp9, currplayer_vel_y);
-			}	
-		} while (++tmp9 < MAX_FIREBALLS);
-	}
-	currplayer_x = player_x[currplayer & 0x7F];
-	currplayer_y = player_y[currplayer & 0x7F];
-	currplayer_vel_x = player_vel_x[currplayer & 0x7F];
-	currplayer_vel_y = player_vel_y[currplayer & 0x7F];
-	currplayer_gravity = player_gravity[currplayer];
-	Generic.x = high_byte(currplayer_x);
-	Generic.y = high_byte(currplayer_y);
-	update_currplayer_table_idx();
 }	
 
 
