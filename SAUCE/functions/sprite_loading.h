@@ -513,6 +513,7 @@ static void sprite_gamemode_main() {
 		activesprites_type[index] != GREEN_ORB_MULTI
 	) 
 		idx8_inc(activesprites_activated, index);		
+	if (gamemode == GAMEMODE_NINJA) jumpedonthisframe[currplayer] = 1;
 		}
 	}
 }

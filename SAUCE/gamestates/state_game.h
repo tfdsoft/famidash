@@ -336,6 +336,8 @@ void everything_else() {
 			ppu_wait_nmi();
 			music_update();
 			#endif
+			jumpedonthisframe[0] = 0;
+			jumpedonthisframe[1] = 0;
 			if (!twoplayer && !(mouse.status_computed & MOUSE_CONNECTED)) {
 				// Copy joypad byte by byte
 				joypad2.hold = joypad1.hold;
