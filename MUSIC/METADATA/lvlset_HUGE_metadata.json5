@@ -285,6 +285,12 @@
 			originalArtist: "RUKKUS",
 			coveringArtist: "NerdBoy628"
 		},
+		{
+			fmsSongName: "C Madness",
+			lowerText: "C MADNESS",
+			originalArtist: ["FBound  Lunar", "Crafty Jumper"],
+			coveringArtist: ["Zenith302", "UserSniper", "NerdBoy628"]
+		},
 		/*
 		{
 			fmsSongName: "candyland",
