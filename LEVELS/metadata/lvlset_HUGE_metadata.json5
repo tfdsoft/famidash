@@ -1461,6 +1461,36 @@
 			parallaxDisable: true
 		},
 		{
+			level: "madness",
+			lowerText: "MADNESS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "EASY",
+			stars: 2,
+			songID: "song_c_madness",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
+			//spawnYPositionHi: 0x30,		;default #$B000
+			//spawnYPositionLow: 0x00,
+			//scrollYPositionHi: 0x02,		;default $02EF, less to go up
+			//scrollYPositionLow: 0x30,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[126, 55], [130, 54], [134, 53], [138, 52], [142, 51], [146, 50], [150, 49], [154, 48], [158, 47], [162, 46], [166, 45], [170, 44], [174, 43],
+						[178, 42], [182, 41], [186, 40], [190, 39], [194, 38], [198, 37], [202, 36], [206, 35], [210, 34], [214, 33], [218, 32], [222, 31], [226, 30],
+						[230, 29], [234, 28], [418, 28], [764, 20],
+					],
+					offsetY: -8
+				},
+			]	
+		},
+		{
 			level: "xmaschallenge",
 			upperText: "XMAS",
 			lowerText: "CHALLENGE",
