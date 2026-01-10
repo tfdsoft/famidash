@@ -84,7 +84,7 @@ def convertTextToMenuFormat(name : str | None) -> str | None:
         return None
     niceName = ""
     for c in name:
-        if (c.isalpha() and c.isupper()) or (c.isdigit()):
+        if (c.isalpha()) or (c.isdigit()):
             niceName += c
         elif (c.isspace()):
             niceName += "$"
