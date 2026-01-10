@@ -113,10 +113,10 @@
 #define level_windylandscape 104
 #define level_icdx 105
 #define level_sonicwave 106
-#define level_bloodbath 107
-#define level_cataclysm 108
-#define level_aftermath 109
-#define level_styx 110
+#define level_styx 107
+#define level_bloodbath 108
+#define level_cataclysm 109
+#define level_aftermath 110
 #define level_wcropolix 111
 #define level_silentclubstep 112
 #define level_aftercatabath 113

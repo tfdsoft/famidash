@@ -71,59 +71,59 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// aprettyeasylevel
 	INSANE,	// highlife
 	INSANE,	// extraordinaryexcitement
-	DEMON,	// thelightningroad
-	DEMON,	// nightmare
-	DEMON,	// demonpark
-	DEMON,	// supercycles
-	DEMON,	// xx
-	DEMON,	// problematic
-	DEMON,	// infinitecircles
-	DEMON,	// sonicblaster
-	DEMON,	// decode
-	DEMON,	// deathmoon
-	DEMON,	// clutterfunk2
-	DEMON,	// motion
-	DEMON,	// speedracer
-	DEMON,	// endorphinrush
-	DEMON,	// everymadness
-	DEMON,	// skeletalshenanigans
-	DEMON,	// trythisgd
-	DEMON,	// goldenhaze
-	DEMON,	// hell
-	DEMON,	// gameover
-	DEMON,	// invisiblelight
-	DEMON,	// firetemple
-	DEMON,	// pgclubstep
-	DEMON,	// deadlyclubstep
-	DEMON,	// thermodynamix
-	DEMON,	// demoncryogenic
-	DEMON,	// foresttemple
-	DEMON,	// ninecircles
-	DEMON,	// fairydust
-	DEMON,	// jawbreaker
-	DEMON,	// stalemate
-	DEMON,	// eighto
-	DEMON,	// acropolis
-	DEMON,	// hi
-	DEMON,	// eon
-	DEMON,	// windylandscape
-	DEMON,	// icdx
-	DEMON,	// sonicwave
-	DEMON,	// bloodbath
-	DEMON,	// cataclysm
-	DEMON,	// aftermath
-	DEMON,	// styx
-	DEMON,	// wcropolix
-	DEMON,	// silentclubstep
-	DEMON,	// aftercatabath
-	DEMON,	// shardscapes
-	DEMON,	// element111rg
-	DEMON,	// slaughterhouse
-	DEMON,	// kratos
-	DEMON,	// nullscapes
-	DEMON,	// everyend
-	DEMON,	// silentcircles
-	DEMON,	// luckydraw
+	EASYDEMON,	// thelightningroad
+	EASYDEMON,	// nightmare
+	EASYDEMON,	// demonpark
+	EASYDEMON,	// supercycles
+	EASYDEMON,	// xx
+	EASYDEMON,	// problematic
+	EASYDEMON,	// infinitecircles
+	EASYDEMON,	// sonicblaster
+	EASYDEMON,	// decode
+	EASYDEMON,	// deathmoon
+	EASYDEMON,	// clutterfunk2
+	EASYDEMON,	// motion
+	EASYDEMON,	// speedracer
+	EASYDEMON,	// endorphinrush
+	EASYDEMON,	// everymadness
+	MEDIUMDEMON,	// skeletalshenanigans
+	MEDIUMDEMON,	// trythisgd
+	MEDIUMDEMON,	// goldenhaze
+	MEDIUMDEMON,	// hell
+	MEDIUMDEMON,	// gameover
+	MEDIUMDEMON,	// invisiblelight
+	MEDIUMDEMON,	// firetemple
+	HARDDEMON,	// pgclubstep
+	HARDDEMON,	// deadlyclubstep
+	HARDDEMON,	// thermodynamix
+	HARDDEMON,	// demoncryogenic
+	HARDDEMON,	// foresttemple
+	HARDDEMON,	// ninecircles
+	HARDDEMON,	// fairydust
+	HARDDEMON,	// jawbreaker
+	INSANEDEMON,	// stalemate
+	INSANEDEMON,	// eighto
+	INSANEDEMON,	// acropolis
+	INSANEDEMON,	// hi
+	INSANEDEMON,	// eon
+	EXTREMEDEMON,	// windylandscape
+	EXTREMEDEMON,	// icdx
+	EXTREMEDEMON,	// sonicwave
+	EXTREMEDEMON,	// styx
+	EXTREMEDEMON,	// bloodbath
+	IMPOSSIBLEDEMON,	// cataclysm
+	IMPOSSIBLEDEMON,	// aftermath
+	IMPOSSIBLEDEMON,	// wcropolix
+	IMPOSSIBLEDEMON,	// silentclubstep
+	IMPOSSIBLEDEMON,	// aftercatabath
+	IMPOSSIBLEDEMON,	// shardscapes
+	IMPOSSIBLEDEMON,	// element111rg
+	GRANDPADEMON,	// slaughterhouse
+	GRANDPADEMON,	// kratos
+	GRANDPADEMON,	// nullscapes
+	GRANDPADEMON,	// everyend
+	GRANDPADEMON,	// silentcircles
+	GRANDPADEMON,	// luckydraw
 };
 
 const uint8_t stars_list[] = {
@@ -234,10 +234,10 @@ const uint8_t stars_list[] = {
 	10,	// windylandscape
 	10,	// icdx
 	10,	// sonicwave
+	10,	// styx
 	10,	// bloodbath
 	10,	// cataclysm
 	10,	// aftermath
-	10,	// styx
 	10,	// wcropolix
 	10,	// silentclubstep
 	10,	// aftercatabath
