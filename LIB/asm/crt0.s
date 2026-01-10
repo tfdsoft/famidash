@@ -484,8 +484,19 @@ _GAME_CHR:
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     .endrepeat
 
+
+
+	.ifdef __HUGE_ROM
+;        .incbin "fan icon collection/starfox.chr" ; 1kb (92)
+;        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+
+        .incbin "GRAPHICS/Menus/HUGE-demon.chr" ; 1kb (92)
+        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb	(93 - unused, filler)
+	.else
         .incbin "fan icon collection/starfox.chr" ; 1kb (92)
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+	.endif
+
 
     .incbin "GRAPHICS/Gamemode/banktriangle.chr" ; 1kb (94)
     .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
@@ -502,8 +513,7 @@ _GAME_CHR:
     .incbin "GRAPHICS/Menus/practicecomplete.chr"    ; 1kb (110)
    .incbin "GRAPHICS/Level Tiles/SawbladesNone.chr" ; 1kb (111)
 
- ;   .incbin "GRAPHICS/Menus/practicecomplete.chr"    ; 1kb (112)
-
+ 
 .segment "PARALLAXCHR"  ; banks 112 - 255
 .export _PARALLAX_CHR
 _PARALLAX_CHR:

@@ -12,7 +12,11 @@
 
 #define TOTAL_LEVEL_COUNT (OFFICIAL_LEVEL_COUNT+COMMUNITY_LEVEL_COUNT)
 
+#if __HUGE_ROM
+#define MAX_ICONS 26 //total icons
+#else
 #define MAX_ICONS 27 //total icons
+#endif
 #define MAX_FIREBALLS 20
 #define MAX_PRACTICE_POINTS 8
 #define max_loaded_sprites 16
