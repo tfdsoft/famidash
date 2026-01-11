@@ -81,7 +81,7 @@ void state_lvldone() {
 	#endif
 	current_state = 0;
 	
-	if (!practice_point_count) {
+	if (!DEBUG_MODE && !kandokidshack && !kandokidshack3 && !kandokidshack4 && !practice_point_count) {
 		LEVELCOMPLETE[level] = 1;
 		
 		if (coins & COIN_1) coin1_obtained[level] = 1;
