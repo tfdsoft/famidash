@@ -191,7 +191,7 @@
 		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7115
 
 
-.segment "DAT_BANK_08"	; Total bank size: 7866 bytes
+.segment "DAT_BANK_08"	; Total bank size: 7961 bytes
 	.export level_data_jawbreaker
 	level_data_jawbreaker:
 	; Header
@@ -217,7 +217,7 @@
 		.incbin "EXPORTS/jawbreaker.lz.bin" ; Size: 6877
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8079 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8090 bytes
 	.export level_data_respite
 	level_data_respite:
 	; Header
@@ -240,10 +240,10 @@
 		.byte $0F ;_____________________________ Starting ground color
 		.byte 27 ;______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/respite.lz.bin" ; Size: 6210
+		.incbin "EXPORTS/respite.lz.bin" ; Size: 6221
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 7913 bytes
 	.export level_data_styx
 	level_data_styx:
 	; Header
@@ -266,7 +266,7 @@
 		.byte $11 ;__________________________ Starting ground color
 		.byte 27 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/styx.lz.bin" ; Size: 6086
+		.incbin "EXPORTS/styx.lz.bin" ; Size: 6089
 
 
 .segment "DAT_BANK_0B"	; Total bank size: 8154 bytes
@@ -371,7 +371,7 @@
 		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2222
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8126 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8141 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -535,7 +535,7 @@
 		.incbin "EXPORTS/wcropolix.lz.bin" ; Size: 4155
 
 
-.segment "DAT_BANK_15"	; Total bank size: 5360 bytes
+.segment "DAT_BANK_15"	; Total bank size: 6331 bytes
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
 	; Level data
