@@ -413,7 +413,7 @@ void common_dash_orb_routine() {
 
 // Load the player velocity from the height table
 static uint16_t _sprite_gamemode_y_adjust() {
-	return ind16BE_load_NOC(sprite_gamemode_adjust_heights(currplayer_table_idx), ((retro_mode && gamemode == GAMEMODE_ROBOT) || GAMEMODE_NINJA) ? table_offset : gamemode | table_offset);
+	return ind16BE_load_NOC(sprite_gamemode_adjust_heights(currplayer_table_idx), ((retro_mode && gamemode == GAMEMODE_ROBOT) || gamemode == GAMEMODE_NINJA) ? table_offset : gamemode | table_offset);
 }
 
 #pragma code-name(pop)
