@@ -208,6 +208,13 @@
 			coveringArtist: ["Crafty Jumper", "ElAngel378"]
 		},
 		{
+			fmsSongName: "Animation Warrior Theme",
+			upperText: "ANIMATION",
+			lowerText: "WARRIOR THEME",
+			originalArtist: "NightHawk22",
+			coveringArtist: "Kabez",
+		},
+		{
 			fmsSongName: "atthespeedoflightfull",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT",
