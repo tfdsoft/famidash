@@ -40,6 +40,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 - https://twitter.com/TFDSoft
 - https://discord.gg/PCbwQaZs8K
 
+## wiki
+
+You can look at the [TFDSoft wiki](https://tfdsoft.miraheze.org) for more information about specific content.
+
 ## credits
 ### core team
 
