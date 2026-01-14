@@ -128,7 +128,7 @@ void state_lvldone() {
 			set_scroll_y(high_byte(tmp6));
 			
 			if (high_byte(tmp6) < 10) {
-				current_state++;
+				current_state = 1;
 				tmp5 = -0x0600;
 			}
 			break;
@@ -137,7 +137,7 @@ void state_lvldone() {
 			tmp6 -= tmp5;
 			set_scroll_y(high_byte(tmp6));
 			if (high_byte(tmp6) < 5 && !(high_byte(tmp5) & 0x80)) {
-				current_state++;
+				current_state = 2;
 				tmp5 = -0x0300;
 			}
 			break;
@@ -146,7 +146,7 @@ void state_lvldone() {
 			tmp6 -= tmp5;
 			set_scroll_y(high_byte(tmp6));
 			if (high_byte(tmp6) < 3 && !(high_byte(tmp5) & 0x80)) {
-				current_state++;
+				current_state = 3;
 				set_scroll_y(0);
 			}
 			break;
@@ -176,7 +176,7 @@ void state_lvldone() {
 			#endif
 
 			tmp2 = 0;
-			current_state++;
+			current_state = 4;
 			tmp1 = 1;
 			break;
 		case 4: // coin 1
