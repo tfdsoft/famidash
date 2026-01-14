@@ -1462,7 +1462,7 @@
 		},
 		{
 			level: "madness",
-			lowerText: "MADNESSg",
+			lowerText: "MADNESS^",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "A",
