@@ -936,7 +936,7 @@ void sprite_collide_lookup() {
 		}
 		return;
 	spcl_h_block: hblocked[currplayer] = 1; return;
-	spcl_j_block: jblocked[currplayer] = 1; return;
+	spcl_j_block: jblocked[currplayer] = 1; orbed[currplayer] = 1; return;
 	spcl_d_block: dblocked[currplayer] = 1; return;
 	spcl_f_block: fblocked[currplayer] = 1; return;
 
