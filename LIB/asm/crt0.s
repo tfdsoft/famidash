@@ -486,7 +486,7 @@ _GAME_CHR:
 
 
 
-	.ifdef __HUGE_ROM
+	.if (_LEVELSET = $141006E)
 ;        .incbin "fan icon collection/starfox.chr" ; 1kb (92)
 ;        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
 
