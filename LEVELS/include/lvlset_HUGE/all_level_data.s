@@ -1520,7 +1520,7 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5914
 
 
-.segment "DAT_BANK_3A"	; Total bank size: 8184 bytes
+.segment "DAT_BANK_3A"	; Total bank size: 8190 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -1543,7 +1543,7 @@
 		.byte $06 ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/decode.lz.bin" ; Size: 5885
+		.incbin "EXPORTS/decode.lz.bin" ; Size: 5856
 
 
 .segment "DAT_BANK_3D"	; Total bank size: 8169 bytes
@@ -3006,7 +3006,7 @@
 		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 2544
 
 
-.segment "DAT_BANK_72"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_72"	; Total bank size: 8150 bytes
 	.export level_data_subtleoddities_6
 	level_data_subtleoddities_6:
 	; Level data
