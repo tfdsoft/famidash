@@ -53,9 +53,9 @@
 #define song_clubstep_full 52
 #define song_cryogenic 53
 #define song_stalemate_full 54
-#define song_electroman_adventures 55
-#define song_endgame 56
-#define song_moon_fries 57
+#define song_scheming_weasel 55
+#define song_electroman_adventures 56
+#define song_endgame 57
 #define song_blast_processing 58
 #define song_dance_of_the_violins 59
 #define song_rainbow_tylenol 60
@@ -85,9 +85,9 @@
 #define song_glint 84
 #define song_miami_hotline_vol_3 85
 #define song_pyrophoric_apparently_too_many_creative_liberties_mix 86
-#define song_scheming_weasel 87
-#define song_dry_out_full 88
-#define song_infinite_power 89
+#define song_dry_out_full 87
+#define song_infinite_power 88
+#define song_moon_fries 89
 #define song_xenogenesis 90
 #define song_blacklight 91
 #define song_chaozfantasy 92
