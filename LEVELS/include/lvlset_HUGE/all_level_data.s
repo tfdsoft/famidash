@@ -1209,7 +1209,7 @@
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1905
 
 
-.segment "DAT_BANK_2F"	; Total bank size: 8140 bytes
+.segment "DAT_BANK_2F"	; Total bank size: 8131 bytes
 	.export level_data_respite
 	level_data_respite:
 	; Header
@@ -1232,7 +1232,7 @@
 		.byte $0F ;_____________________________ Starting ground color
 		.byte 27 ;______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/respite.lz.bin" ; Size: 6221
+		.incbin "EXPORTS/respite.lz.bin" ; Size: 6212
 
 
 .segment "DAT_BANK_30"	; Total bank size: 8189 bytes

@@ -217,7 +217,7 @@
 		.incbin "EXPORTS/jawbreaker.lz.bin" ; Size: 6877
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8090 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8081 bytes
 	.export level_data_respite
 	level_data_respite:
 	; Header
@@ -240,7 +240,7 @@
 		.byte $0F ;_____________________________ Starting ground color
 		.byte 27 ;______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/respite.lz.bin" ; Size: 6221
+		.incbin "EXPORTS/respite.lz.bin" ; Size: 6212
 
 
 .segment "DAT_BANK_0A"	; Total bank size: 7913 bytes
@@ -371,7 +371,7 @@
 		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2222
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8141 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8136 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
