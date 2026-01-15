@@ -157,6 +157,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		/*
 		{
 			level: "dearnostalgists",
 			lowerText: " DEAR NOSTALGISTS",
@@ -165,7 +166,7 @@
 			blockSet: "A",
 			sawSet: "A",
 			difficulty: "EASYDEMON",
-			//stars: 10,
+			stars: 10,
 			songID: "song_crackdown",
 			startingGameMode: 0,
 			startingSpeed: 2,
@@ -173,6 +174,7 @@
 			startingGroundColor: 0x1C,
 			parallaxDisable: true
 		},
+		*/
 		{
 			level: "motion",
 			lowerText: "MOTION",
