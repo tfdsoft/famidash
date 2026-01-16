@@ -71,6 +71,7 @@ You can look at the [TFDSoft wiki](https://tfdsoft.miraheze.org) for more inform
 |[AnnoyedArt1256](https://github.com/AnnoyedArt1256)|level compression asm|
 |[sussysy](https://github.com/VECTREX45)|music|
 |[Crafty Jumper](https://github.com/Crafty-Jumper)|levels, music|
+|[banana6000](https://github.com/xXFamidashFan69Xx)|icons, levels|
 |[bigfloppa385](https://github.com/Nintendo-Bro385)|icons, levels|
 |[AleFunky](https://github.com/AleFunky)|code, levels, testing, bugfixes|
 |[jroweboy](https://github.com/jroweboy)|graphics, code optimisation, parallax, menu, etc|
