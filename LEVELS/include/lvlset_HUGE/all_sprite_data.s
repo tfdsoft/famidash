@@ -3470,7 +3470,7 @@ sprite_data_clutterfunk:
   .byte $a0,$3e,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_72"
+.segment "DAT_BANK_3A"
 sprite_data_theoryofeverything:
   .byte $c0,$00,$70,$03,$0b
   .byte $00,$01,$68,$03,$25
@@ -11900,7 +11900,7 @@ sprite_data_dreamer:
   .byte $a0,$42,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_3A"
+.segment "DAT_BANK_72"
 sprite_data_lookatthislevel:
   .byte $00,$00,$e0,$01,$14
   .byte $00,$00,$70,$03,$14
