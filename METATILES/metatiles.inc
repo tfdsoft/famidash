@@ -22,7 +22,7 @@ Metatile "SPIKE_UP", 												$22, $23, $32, $33, PAL_0, COL_DEATH
 Metatile "SPIKE_HALF", 												$00, $00, $3C, $3D, PAL_0, COL_DEATH_BOTTOM
 Metatile "HALF_SPIKE_BACKGROUND", 									$0C, $0D, $74, $75, PAL_2, COL_DEATH_BOTTOM
 Metatile "HALF_SPIKE_BACKGROUND_TOP", 								$64, $65, $1E, $1F, PAL_2, COL_DEATH_TOP
-Metatile "PLATFORM_SPIKE", 											$3A, $3B, $3C, $3D, PAL_0, COL_ALL
+Metatile "PLATFORM_SPIKE", 											$3A, $3B, $3C, $3D, PAL_0, COL_TOP_CENTER_SPIKE
 Metatile "PLATFORM_PITSPIKES",										$3A, $3B, $16, $17, PAL_0, COL_ALL
 Metatile "PITSPIKES_TOP", 											$06, $07, $00, $00, PAL_0, COL_DEATH_TOP
 Metatile "PITSPIKES", 												$00, $00, $16, $17, PAL_0, COL_DEATH_BOTTOM
