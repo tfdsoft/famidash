@@ -425,38 +425,7 @@
 		.incbin "EXPORTS/trythisgd.lz.0.bin" ; Size: 8076
 
 
-.segment "DAT_BANK_11"	; Total bank size: 8192 bytes
-	.export level_data_deathmoon
-	level_data_deathmoon:
-	; Header
-		.byte <sprite_data_deathmoon ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_deathmoon ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_deathmoon)) ;___ Sprite data bank
-		.byte song_death_moon ;___________________ Song ID
-		.byte (3 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_____________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 ;____________________________ Deco type
-		.byte _SPIKESB ;__________________________ Spike set
-		.byte _BLOCKSB ;__________________________ Block set
-		.byte _SAWBLADESA ;_______________________ Sawblade set
-		.byte $16 ;_______________________________ Starting background color
-		.byte $0F ;_______________________________ Starting ground color
-		.byte 57 ;________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8074
-
-	.export level_data_dash_1
-	level_data_dash_1:
-	; Level data
-		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 100
-
-
-.segment "DAT_BANK_12"	; Total bank size: 8044 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8044 bytes
 	.export level_data_everyend
 	level_data_everyend:
 	; Header
@@ -482,7 +451,7 @@
 		.incbin "EXPORTS/everyend.lz.0.bin" ; Size: 8026
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8035 bytes
+.segment "DAT_BANK_12"	; Total bank size: 8035 bytes
 	.export level_data_rainbowtylenol
 	level_data_rainbowtylenol:
 	; Header
@@ -506,6 +475,32 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8017
+
+
+.segment "DAT_BANK_13"	; Total bank size: 8028 bytes
+	.export level_data_deathmoon
+	level_data_deathmoon:
+	; Header
+		.byte <sprite_data_deathmoon ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_deathmoon ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_deathmoon)) ;___ Sprite data bank
+		.byte song_death_moon ;___________________ Song ID
+		.byte (3 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte ($06) ;_____________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 ;____________________________ Deco type
+		.byte _SPIKESB ;__________________________ Spike set
+		.byte _BLOCKSB ;__________________________ Block set
+		.byte _SAWBLADESA ;_______________________ Sawblade set
+		.byte $16 ;_______________________________ Starting background color
+		.byte $0F ;_______________________________ Starting ground color
+		.byte 57 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8010
 
 
 .segment "DAT_BANK_14"	; Total bank size: 8024 bytes
@@ -1572,7 +1567,7 @@
 		.incbin "EXPORTS/eighto.lz.bin" ; Size: 5730
 
 
-.segment "DAT_BANK_3E"	; Total bank size: 8080 bytes
+.segment "DAT_BANK_3E"	; Total bank size: 8180 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -1620,6 +1615,11 @@
 		.byte 27 ;____________________________ Level height
 	; Level data
 		.incbin "EXPORTS/ninox.lz.bin" ; Size: 2317
+
+	.export level_data_dash_1
+	level_data_dash_1:
+	; Level data
+		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 100
 
 
 .segment "DAT_BANK_3F"	; Total bank size: 8158 bytes
@@ -2217,11 +2217,6 @@
 	; Level data
 		.incbin "EXPORTS/tinytunes.lz.bin" ; Size: 4798
 
-	.export level_data_deathmoon_9
-	level_data_deathmoon_9:
-	; Level data
-		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3336
-
 
 .segment "DAT_BANK_52"	; Total bank size: 8171 bytes
 	.export level_data_everyend_20
@@ -2254,11 +2249,16 @@
 		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3378
 
 
-.segment "DAT_BANK_53"	; Total bank size: 8053 bytes
+.segment "DAT_BANK_53"	; Total bank size: 8098 bytes
 	.export level_data_aftercatabath_18
 	level_data_aftercatabath_18:
 	; Level data
 		.incbin "EXPORTS/aftercatabath.lz.2.bin" ; Size: 4717
+
+	.export level_data_deathmoon_9
+	level_data_deathmoon_9:
+	; Level data
+		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3381
 
 
 .segment "DAT_BANK_54"	; Total bank size: 8020 bytes
