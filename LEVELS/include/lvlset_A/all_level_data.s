@@ -370,7 +370,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2099
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8178 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8115 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -383,7 +383,7 @@
 		.byte ($00) ;________________________ Spawn Y Position (low byte)
 		.byte ($02) ;________________________ Y Scroll Position (high byte)
 		.byte ($EF) ;________________________ Y Scroll Position (low byte)
-		.byte ($06) ;________________________ Max Fall Speed (high byte)
+		.byte ($07) ;________________________ Max Fall Speed (high byte)
 		.byte (0 << 0) | (1 << 1) ;__________ Force platformer, Disable parallax
 		.byte _DECO1 ;_______________________ Deco type
 		.byte _SPIKESA ;_____________________ Spike set
@@ -393,10 +393,10 @@
 		.byte $01 ;__________________________ Starting ground color
 		.byte 27 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/toe2.lz.bin" ; Size: 5914
+		.incbin "EXPORTS/toe2.lz.bin" ; Size: 6011
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 7831 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 7991 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -888,7 +888,7 @@
 		.incbin "EXPORTS/theoryofeverything.lz.bin" ; Size: 4136
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 8126 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 8181 bytes
 	.export level_data_cycles
 	level_data_cycles:
 	; Header
@@ -914,7 +914,7 @@
 		.incbin "EXPORTS/cycles.lz.bin" ; Size: 2996
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8180 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 8190 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
