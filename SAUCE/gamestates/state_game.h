@@ -380,7 +380,7 @@ void everything_else() {
 			}
 			
 			if (!(joypad1.hold & (PAD_A | PAD_UP))) {
-				if (dashing[0]) currplayer_vel_y = DASH_END_VEL_RESET(currplayer_table_idx);
+				if (dashing[0]) currplayer_vel_y = 0;
 				dashing[0] = 0;
 			}
 
