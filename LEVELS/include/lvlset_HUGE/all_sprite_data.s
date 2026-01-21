@@ -4577,7 +4577,6 @@ sprite_data_clubstep:
   .byte $50,$0c,$50,$03,$3d
   .byte $80,$0c,$18,$03,$0b
   .byte $d0,$0c,$50,$03,$13
-  .byte $f0,$0c,$20,$03,$bf
   .byte $20,$0d,$e0,$02,$10
   .byte $20,$0d,$10,$03,$86
   .byte $20,$0d,$30,$03,$49
@@ -4595,7 +4594,6 @@ sprite_data_clubstep:
   .byte $20,$0e,$20,$02,$0e
   .byte $20,$0e,$d0,$02,$36
   .byte $30,$0e,$48,$02,$0d
-  .byte $30,$0e,$60,$02,$b0
   .byte $40,$0e,$00,$02,$49
   .byte $40,$0e,$20,$02,$0e
   .byte $50,$0e,$48,$02,$25
@@ -28520,7 +28518,7 @@ sprite_data_subtleoddities:
   .byte $50,$46,$90,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_6C"
+.segment "DAT_BANK_6D"
 sprite_data_powertrip:
   .byte $50,$00,$10,$03,$cf
   .byte $50,$00,$20,$03,$8f
@@ -54547,7 +54545,7 @@ sprite_data_styx:
   .byte $b0,$2f,$b0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_6D"
+.segment "DAT_BANK_6C"
 sprite_data_bloodbath:
   .byte $00,$00,$20,$03,$8f
   .byte $00,$00,$30,$03,$cf

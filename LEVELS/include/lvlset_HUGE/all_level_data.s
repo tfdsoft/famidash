@@ -1622,7 +1622,7 @@
 		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 100
 
 
-.segment "DAT_BANK_3F"	; Total bank size: 8158 bytes
+.segment "DAT_BANK_3F"	; Total bank size: 8169 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -1645,7 +1645,7 @@
 		.byte $0F ;______________________________ Starting ground color
 		.byte 40 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5654
+		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5665
 
 
 .segment "DAT_BANK_40"	; Total bank size: 8183 bytes
