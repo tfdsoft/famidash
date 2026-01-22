@@ -15,6 +15,9 @@
 
 
 #define NT_ADR_A(x,y) (0x2000 + ((y<<5) + x))
+#define NT_ADR_B(x,y) (0x2400 + ((y<<5) + x))
+#define NT_ADR_C(x,y) (0x2800 + ((y<<5) + x))
+#define NT_ADR_D(x,y) (0x2c00 + ((y<<5) + x))
 
 #define set_2k_chr_0(b) set_chr_mode_0(b)
 #define set_2k_chr_1(b) set_chr_mode_1(b)

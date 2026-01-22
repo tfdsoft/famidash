@@ -1,25 +1,7 @@
 
+__attribute__((retain)) unsigned char* __zp PAL_BG_PTR_OLD;
 
-/*void __temporary_prg_a000(char bank_id){
-    __attribute__((leaf)) __asm__ volatile(
-        "pha \n"
-        "tax \n"
-        "lda #0b111 \n"
-        "ora __bank_select_hi \n"
-        "jmp __set_reg_retry \n"
-    );
-}
 
-void __pop_prg_a000(){
-    __attribute__((leaf)) __asm__ volatile(
-        "pla \n"
-        "sta __prg_a000\n"
-        "tax \n"
-        "lda #0b111 \n"
-        "ora __bank_select_hi \n"
-        "jmp __set_reg_retry \n"
-    );
-}*/
 
 void push_prg_a000(){
     __attribute__((leaf)) __asm__ volatile (
@@ -53,7 +35,8 @@ void vram_copy(const unsigned char* const from, unsigned short count){
 }
 
 
-__attribute__((noinline)) void pal_fade_to(unsigned char from, unsigned char to){
+__attribute__((noinline))
+void pal_fade_to(unsigned char from, unsigned char to){
     __attribute__((leaf)) __asm__ volatile (
         	// A = from
             // X = to
@@ -65,7 +48,7 @@ __attribute__((noinline)) void pal_fade_to(unsigned char from, unsigned char to)
             "jmp 4f \n"
             
         "1: \n	" // fade_loop:
-            "ldx #1 \n" //wait this many frames
+            "ldx #2 \n" //wait this many frames
         "11:"
             "jsr ppu_wait_nmi \n" 
             "dex \n"
@@ -135,7 +118,8 @@ __attribute__((section(".prg_rom_fixed_lo.1"),retain))
         MOUSE_X_MAXIMUM
     };
 
-__attribute__((aligned(128),noinline)) void oam_and_readjoypad(){
+__attribute__((aligned(64),noinline))
+void oam_and_readjoypad(){
     __attribute__((leaf)) __asm__ volatile (
         //".section .zp \n"
         //"mouse: .fill 4 \n"
@@ -227,34 +211,6 @@ __attribute__((aligned(128),noinline)) void oam_and_readjoypad(){
 
         // NEXT: 878
     //.endif // CONTROLLER_SIZE = 2
-
-
-
-        /*
-    // now that that's over...
-    // it would probably be best if i just
-    // reset the ppu's registers now, since
-    // i'm not gonna update anything else
-
-
-        //PPU.status; // read ppu status. thanks llvm-mos!
-        "lda $2002 \n"
-        //PPU.scroll = SCROLL_X;
-        "lda SCROLL_X \n"
-        "sta $2005 \n"
-        //PPU.scroll = SCROLL_Y;
-        "lda SCROLL_Y \n"
-        "sta $2005 \n"
-        //PPU.control = PPU_CTRL_VAR;
-        "lda PPU_CTRL_VAR \n"
-        "sta $2000 \n"
-    "jmp 1f \n"
-        */
-
-
-
-
-    
 
     //".scope calculate_extra_fields: \n"
     "1: \n"
@@ -506,6 +462,7 @@ void vram_unrle_ignore0(const unsigned char* src){
 }
 
 
+/*
 uint8_t fast_mod8(uint8_t n, uint8_t mod){
     __attribute__((leaf)) __asm__ volatile (
         "stx __rc2 \n"
@@ -556,7 +513,7 @@ uint8_t fast_mult8(uint8_t n, uint8_t mult){
 uint8_t fast_multby6(uint8_t n){
     return ((n<<2)+(n<<1));
 }
-
+*/
 
 __attribute__((noinline)) 
 uint8_t get_ppu_mask_var() {return PPU_MASK_VAR;}
@@ -586,4 +543,51 @@ void set_bg_chr_page(uint8_t page){
     set_chr_mode_3((page<<2)+1);
     set_chr_mode_4((page<<2)+2);
     set_chr_mode_5((page<<2)+3);
+}
+
+// replacement for the built-in one
+__attribute__((noinline))
+void set_prg_a000(char bank_id){
+    __attribute__((leaf)) __asm__ volatile (
+        "stx __prg_a000 \n"
+        "lda #0b00000111 \n"
+        "ora __bank_select_hi \n"
+        "php \n"
+        "sei \n"
+        "nop \n"
+        "sta $8000 \n"
+        "plp \n"
+        "stx $8001 \n"
+        "lda #0 \n"
+        "sta __in_progress \n"
+        :
+        :"x"(bank_id)
+        :"a","p"
+    );
+}
+
+// replacement for the built-in one
+__attribute__((noinline))
+void set_chr_bank(char reg, char bank_id){
+    __attribute__((leaf)) __asm__ volatile (
+        "ora __bank_select_hi \n"
+        "php \n"
+        "sei \n"
+        "nop \n"
+        "sta $8000 \n"
+        "plp \n"
+        "stx $8001 \n"
+        "lda #0 \n"
+        "sta __in_progress \n"
+        :
+        :"a"(reg),"x"(bank_id)
+        :"p"
+    );
+}
+
+
+
+__attribute__((noinline))
+void wait_frames(short frames){
+    for(;frames>0;frames--) ppu_wait_nmi();
 }

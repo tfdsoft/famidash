@@ -9,6 +9,10 @@
 #define high_byte(a) *((unsigned char*)&a+1)
 #define low_byte(a) *((unsigned char*)&a)
 
+#define OAM_FLIP_V		0x80
+#define OAM_FLIP_H		0x40
+#define OAM_BEHIND		0x20
+
 // implemented:
 // _pal_all,_pal_bg,_pal_spr,_pal_col,_pal_clear
 // _pal_bright,_pal_spr_bright,_pal_bg_bright
@@ -47,7 +51,7 @@
 //static unsigned char spin;
 __attribute__((retain)) static volatile unsigned char FRAME_CNT;
 __attribute__((retain)) static volatile unsigned char VRAM_UPDATE;
-__attribute__((retain)) static volatile unsigned char PPU_MASK_VAR, PPU_CTRL_VAR;
+__attribute__((retain)) volatile unsigned char PPU_MASK_VAR, PPU_CTRL_VAR;
 __attribute__((retain)) static volatile unsigned char PPU_CTRL_VAR1;
 __attribute__((retain)) static unsigned char SCROLL_X, SCROLL_Y;
 __attribute__((retain)) static unsigned char SCROLL_X1;//, SCROLL_Y1;
@@ -58,16 +62,16 @@ __attribute__((retain))
 //static unsigned char TEMP;
 __attribute__((retain)) static unsigned char SPRID;
 __attribute__((retain)) static unsigned char LEN;
-__attribute__((retain)) static unsigned char PAL_UPDATE;
+__attribute__((retain)) unsigned char PAL_UPDATE;
 __attribute__((retain)) static unsigned char I;
 
-__attribute__((retain)) static uint8_t * __zp PAL_BG_PTR;
-__attribute__((retain)) static uint8_t * __zp PAL_SPR_PTR;
+__attribute__((retain)) uint8_t * __zp PAL_BG_PTR;
+__attribute__((retain)) uint8_t * __zp PAL_SPR_PTR;
 
 __attribute__((section(".zp.name_upd_adr"),retain)) volatile const char *NAME_UPD_ADR;
 __attribute__((section(".zp.name_upd_enable"),retain)) volatile char NAME_UPD_ENABLE;
 
-
+__attribute__((aligned(256)))
 static const uint8_t palBrightTable[192] = {
     // 0
     0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f, 0x0f,
@@ -148,9 +152,9 @@ __attribute__((noinline)) void ppu_wait_nmi(){
     // stall until FRAME_CNT is updated by nmi()
     //while (FRAME_CNT == FRAME_COUNT_OLD){}
 
-        VRAM_UPDATE = 1;
-
     __attribute__((leaf)) __asm__ volatile (
+        "lda #1 \n"
+        "sta VRAM_UPDATE \n"
         "lda FRAME_CNT \n"
         "1:"
         "cmp FRAME_CNT \n"
@@ -601,6 +605,19 @@ __attribute__((noinline)) void pad_poll(unsigned char pad){
  * set the address of video memory
 */
 void vram_adr(unsigned short address){
+    /* __asm__(
+        "lda PPU_CTRL_VAR \n"
+        "pha \n"
+        "and #0b01111111 \n"
+        "sta $2000 \n"
+        "stx $2006 \n"
+        "sty $2006  \n"
+        "pla \n"
+        "sta $2000 \n"
+        :
+        :"x"(low_byte(address)),"y"(high_byte(address))
+        :"a","p"
+    ); */
     PPU.vram.address = high_byte(address);
     PPU.vram.address = low_byte(address);
 }

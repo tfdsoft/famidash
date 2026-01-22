@@ -1,21 +1,24 @@
 #include "irq.h"
 
 __attribute__((noinline)) void flush_irq(){
-    __asm__("sei");
+    __asm__("sei \n nop \n");
+
     // we don't want interrupts firing while writing to
     // the table, so disable them
     irq_table[0] = 255;
     irq_count = 0;
+    
+    ppu_wait_nmi();
 }
 
 void disable_irq(){
-    __asm__("sei");
+    __asm__("sei \n nop \n");
     IRQ_DISABLE = 0;
 }
 
 void enable_irq(){
     __asm__("cli");
-    //IRQ_ENABLE = 0;
+    //PPU.control = PPU_CTRL_VAR;
     ppu_wait_nmi();
 }
 

@@ -116,7 +116,7 @@ void state_game(){
                 (phys_speed[player.prop.speed]>>3)
             );
             if(high_byte(scroll_bank) & 0x80) high_byte(scroll_bank) += loaded_bg_width;
-            IRQ(0).arg1 = (high_byte(scroll_bank) + 0x10);
+            
 
         }
 
@@ -145,5 +145,6 @@ void state_game(){
         if(player1_pressed & PAD_RIGHT) player.prop.speed++;
 
         scroll(camera.x.word, camera.y.word);
+        IRQ(0).arg1 = (high_byte(scroll_bank) + 0x10);
     }
 }
