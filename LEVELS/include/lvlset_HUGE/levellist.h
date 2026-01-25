@@ -102,6 +102,7 @@ const uint8_t difficulty_list[] = {
 	HARDDEMON,	// ninecircles
 	HARDDEMON,	// fairydust
 	HARDDEMON,	// jawbreaker
+	HARDDEMON,	// futurefunkfix
 	INSANEDEMON,	// stalemate
 	INSANEDEMON,	// eighto
 	INSANEDEMON,	// acropolis
@@ -228,6 +229,7 @@ const uint8_t stars_list[] = {
 	10,	// ninecircles
 	10,	// fairydust
 	10,	// jawbreaker
+	10,	// futurefunkfix
 	10,	// stalemate
 	10,	// eighto
 	10,	// acropolis

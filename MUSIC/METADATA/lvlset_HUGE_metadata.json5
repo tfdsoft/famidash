@@ -909,12 +909,19 @@
 			coveringArtist: "UserSniper",
 		},	
 		{
-			fmsSongName: "What's a Future Funk?",
+			fmsSongName: "Future Funk PT1",
 			upperText: "WHATS A",
-			lowerText: "FUTURE FUNK",
+			lowerText: "FUTUREFUNKPT1",
 			originalArtist: "LemKuuja",
-			coveringArtist: "SeaGlowingPro",
-		},	
+			coveringArtist: ["SeaGlowingPro", "ElAngel378"],
+		},
+		{
+			fmsSongName: "Future Funk PT2",
+			upperText: "WHATS A",
+			lowerText: "FUTUREFUNKPT2",
+			originalArtist: "LemKuuja",
+			coveringArtist: ["SeaGlowingPro", "ElAngel378"],
+		},
 		{
 			fmsSongName: "Windfall",
 			lowerText: "WINDFALL",

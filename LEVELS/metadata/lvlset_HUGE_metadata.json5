@@ -4840,16 +4840,16 @@
 			parallaxDisable: true,
 			maxFallSpeed: 0x07,
 		},
-/*		{
+		{
 			level: "futurefunkfix",
 			lowerText: "FUTURE FUNK",
 			decoType: "EXTRASPRITES1",
 			spikeSet: "C",
 			blockSet: "B",
 			sawSet: "A",
-			difficulty: "DEMON",
+			difficulty: "HARDDEMON",
 			stars: 10,
-			songID: "song_whats_a_future_funk",
+			songID: "song_future_funk_pt1",
 			startingGameMode: 0,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
@@ -4861,7 +4861,7 @@
 					offsetX: -8
 				},			
 			]
-		}, */
+		},
 		{
 			level: "stalemate",
 			lowerText: "STALEMATE",

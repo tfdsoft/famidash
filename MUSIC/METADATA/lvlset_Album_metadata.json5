@@ -678,10 +678,10 @@
 			coveringArtist: "ElAngel378",
 		},	
 		{
-			fmsSongName: "Stalemate Full",
+			fmsSongName: "stalemate",
 			lowerText: "STALEMATE",
 			originalArtist: "KayoszX",
-			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
+			coveringArtist: "ElAngel378",
 		},	
 		{
 			fmsSongName: "Stereo madness 2",
@@ -735,12 +735,19 @@
 			coveringArtist: "UserSniper",
 		},	
 		{
-			fmsSongName: "What's a Future Funk?",
+			fmsSongName: "Future Funk PT1",
 			upperText: "WHATS A",
-			lowerText: "FUTURE FUNK",
+			lowerText: "FUTUREFUNKPT1",
 			originalArtist: "LemKuuja",
-			coveringArtist: "SeaGlowingPro",
-		},	
+			coveringArtist: ["SeaGlowingPro", "ElAngel378"],
+		},
+		{
+			fmsSongName: "Future Funk PT2",
+			upperText: "WHATS A",
+			lowerText: "FUTUREFUNKPT2",
+			originalArtist: "LemKuuja",
+			coveringArtist: ["SeaGlowingPro", "ElAngel378"],
+		},
 		{
 			fmsSongName: "Windfall",
 			lowerText: "WINDFALL",
@@ -767,7 +774,8 @@
 			lowerText: "TROLLED",
 			originalArtist: "TheClydeCash",
 			coveringArtist: "SeaGlowingPro",
-		},	
+		},
+		/*
 		{
 			fmsSongName: "ssendaM oeretS",
 			lowerText: "SSENDAM OERETS",
@@ -785,7 +793,8 @@
 			lowerText: "REPMUJ",
 			originalArtist: "Waterflame",
 			coveringArtist: "SeaGlowingPro",
-		},	
+		},
+		*/
 	],
 
 	artistTextMappingTable: {

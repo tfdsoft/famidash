@@ -166,6 +166,15 @@ void state_game(){
 				}
 			}
 		#endif
+		
+		#ifdef level_futurefunkfix
+			if (level == level_futurefunkfix) {
+				if (song == song_future_funk_pt1 && famistudio_song_speed == 0x80) {
+					song = song_future_funk_pt2;
+					music_play(song);
+				}
+			}
+		#endif
 
 		if (((forced_trails == 2) || trails == 2 || !(kandoframecnt & 0x1))) {
 			if (!(kandoframecnt & 1)) {

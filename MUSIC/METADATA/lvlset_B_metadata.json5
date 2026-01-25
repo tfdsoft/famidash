@@ -218,12 +218,20 @@
 			lowerText: "DESTRUCTION",
 			originalArtistText: "TMM43",
 		},
+		/*
 		{
-			fmsSongName: "What's a Future Funk?",
+			fmsSongName: "Future Funk PT1",
 			upperText: "WHATS A",
-			lowerText: "FUTURE FUNK",
+			lowerText: "FUTUREFUNKPT1",
 			originalArtistText: "LEMKUUJA",
-		},				
+		},
+		{
+			fmsSongName: "Future Funk PT2",
+			upperText: "WHATS A",
+			lowerText: "FUTUREFUNKPT2",
+			originalArtistText: "LEMKUUJA",
+		},
+		*/
 		{
 			fmsSongName: "Xenogenesis",
 			lowerText: "XENOGENESIS",
