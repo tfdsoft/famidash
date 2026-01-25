@@ -126,16 +126,16 @@ char bg_coll_spikes() {
 			return col_death_bottom_routine();	
 			
 		case COL_DEATH_BOTTOM_LEFT:
-			return col_death_left_routine() | col_death_bottom_routine();
+			return (col_death_left_routine() ? __AX__ : col_death_bottom_routine());	// = death_left() | death_bottom()
 
 		case COL_DEATH_BOTTOM_RIGHT:
-			return col_death_right_routine() | col_death_bottom_routine();
+			return (col_death_right_routine() ? __AX__ : col_death_bottom_routine());
 
 		case COL_DEATH_TOP_LEFT:
-			return col_death_left_routine() | col_death_top_routine();
+			return (col_death_left_routine() ? __AX__ : col_death_top_routine());
 		
 		case COL_DEATH_TOP_RIGHT:
-			return col_death_right_routine() | col_death_top_routine();
+			return (col_death_right_routine() ? __AX__ : col_death_top_routine());
 
 		case COL_DEATH:	
 			tmp2 = (uint8_t)(temp_y & 0x0f);
@@ -431,7 +431,7 @@ char bg_side_coll_common() {
 
 		if (bg_coll_spikes()) return 0;
 
-		return bg_coll_sides() || bg_coll_mini_blocks();
+		return bg_coll_sides() ? __AX__ : bg_coll_mini_blocks();
 	} 
 	
 	return 0;
@@ -749,7 +749,7 @@ char bg_coll_slope() {
 	tmp2, tmp8
 */
 char bg_coll_return_D () {
-	tmp1 = bg_coll_U_D_checks() || bg_coll_mini_blocks();
+	tmp1 = bg_coll_U_D_checks() ? __AX__ : bg_coll_mini_blocks();
 	eject_D = tmp8;
 	return tmp1;
 }
@@ -1040,12 +1040,12 @@ void bg_coll_death() {
 	
 	if (collision) {
 		if (!dblocked[currplayer] || gamemode != GAMEMODE_WAVE) {
-			if (bg_coll_U_D_checks() | bg_coll_mini_blocks() | bg_coll_spikes() | bg_coll_slope()) {
+			if (bg_coll_U_D_checks() || bg_coll_mini_blocks() || bg_coll_spikes() || bg_coll_slope()) {
 				cube_data[currplayer] |= 1;
 			}
 		}
 		else {
-			if (bg_coll_mini_blocks() | bg_coll_spikes() | bg_coll_slope()) {
+			if (bg_coll_mini_blocks() || bg_coll_spikes() || bg_coll_slope()) {
 				cube_data[currplayer] |= 1;
 			}
 		}
