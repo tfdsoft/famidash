@@ -2165,7 +2165,7 @@
 					],
 					offsetY: -8		
 				},
-			]			
+			]
 		},
 		{
 			level: "selectpaymenttype",
@@ -2209,7 +2209,33 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x07,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[43, 18], [280, 25], [435, 21], [450, 18],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[83, 18],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[202, 16], [280, 25],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [54, 20],
+					offsetY: -4,
+					offsetX: +8
+				},
+			]
 		},
 		{
 			level: "cryogenic",
@@ -2226,6 +2252,7 @@
 			startingBackgroundColor: 0x07,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
+			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
 					coordinates: [109, 13],

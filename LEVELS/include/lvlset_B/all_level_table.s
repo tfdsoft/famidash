@@ -145,7 +145,7 @@ _level_lengths_lo:
 	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
 	.byte .lobyte($0000BC)		; selectpaymenttype
-	.byte .lobyte($000050)		; pyrophoric
+	.byte .lobyte($00004D)		; pyrophoric
 	.byte .lobyte($000099)		; cryogenic
 	.byte .lobyte($00005D)		; oceane
 	.byte .lobyte($0000B2)		; generationretro
@@ -181,7 +181,7 @@ _level_lengths_md:
 	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
 	.byte .hibyte($0000BC)		; selectpaymenttype
-	.byte .hibyte($000050)		; pyrophoric
+	.byte .hibyte($00004D)		; pyrophoric
 	.byte .hibyte($000099)		; cryogenic
 	.byte .hibyte($00005D)		; oceane
 	.byte .hibyte($0000B2)		; generationretro
@@ -217,7 +217,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii
 	.byte .bankbyte($0000BC)		; selectpaymenttype
-	.byte .bankbyte($000050)		; pyrophoric
+	.byte .bankbyte($00004D)		; pyrophoric
 	.byte .bankbyte($000099)		; cryogenic
 	.byte .bankbyte($00005D)		; oceane
 	.byte .bankbyte($0000B2)		; generationretro
