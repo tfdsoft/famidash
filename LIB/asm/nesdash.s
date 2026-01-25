@@ -1252,7 +1252,7 @@ prlxSeamAddrHiTbl:
 			CMP	#$38				;
 			TXA						;	If the difference is less than
 			SBC	#$00				;	($78 - $40), we went too far
-			BCC	@ret0				;__
+			BMI	@ret0				;__
 			JSR	@get_debt				;__	Get debt (not adjusted for inflation)
 			SBC	#$10					;__	Carry is set
 			TAY							;	AX -= 0x10 (we *are* moving the seam after all)
@@ -1309,7 +1309,7 @@ prlxSeamAddrHiTbl:
 			TXA						;	If the difference is more than
 			LDX	#0					;	($78 + $40), we went too far
 			SBC	#$00				;	Also load scrolling direction offset
-			BCS	@ret0				;__
+			BPL	@ret0				;__
 			JSR	@get_debt				;__	Get debt (not adjusted for inflation)
 			ADC	#$10-1					;__	Carry is set
 			TAY							;	AX += 0x10 (we *are* moving the seam after all)
