@@ -1350,7 +1350,7 @@ ntAddrHiTbl:
 			TXA						;	If the difference is less than
 			LDX	#2					;	($78 - $40), we went too far
 			SBC	#$00				;	Also load the scrolling direction offset
-			BCS	@fin				;__
+			BPL	@fin				;__
 		
 		@ret0:		;
 			LDA	#0	;	Return 0
@@ -1375,7 +1375,7 @@ ntAddrHiTbl:
 			TXA						;	If the difference is more than
 			LDX	#0					;	($78 + $40), we went too far
 			SBC	#$00				;	Also load scrolling direction offset
-			BCS	@ret0				;__
+			BPL	@ret0				;__
 		
 		@fin:
 			STX	scroll_direction
