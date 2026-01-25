@@ -175,7 +175,7 @@ void load_practice_state() {
 	tmp3 = oneShadeDarker(tmp3);
 	pal_col(1, tmp3);
 	pal_col(9, tmp3);
-	pal_col(0x13, tmp3);
+	pal_col(13, tmp3);
 
 	tmp3 = (lastgcolortype & 0x3F);
 	pal_col(6, tmp3);
