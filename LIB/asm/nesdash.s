@@ -1985,15 +1985,17 @@ write_loop:	; literally the same for both unified and separate writes
 .segment "CODE"
 
 .proc endRoutineVbufHorzSeq
+	DEC	instBufWriteBuffer+4	;__	The length
+	noDec:
 	JSR	set_horz_vbuf_seq
 	LDA	#<(fl_updSeqNormal-1)
 	STA	instBufWriteBuffer+5
 	LDA	#>(fl_updSeqNormal-1)
 	STA	instBufWriteBuffer+6
-	DEC	instBufWriteBuffer+4	;__	The length
 	ldx #7
 	JMP	transferWriteToInstBuf
 .endproc
+.export endRoutineVbufHorzSeqNoDec := endRoutineVbufHorzSeq::noDec
 
 
 ; void movement();
@@ -4149,7 +4151,7 @@ bank:
 		sta	instBufWriteBuffer+3	;__
 		sty	instBufWriteBuffer+4	;__	The amount of bytes
 
-		tay
+		tya
 
 		sec				;__	The amount of bytes needs to be incremented
 		adc	VRAM_INDEX
@@ -4157,16 +4159,16 @@ bank:
 		tax
 		dex
 	vram_write_main:
-		lda	_attemptCounter-1, y
+		lda	_attemptCounter, y
 		; clc should not be needed as the writes SHOULD NOT overflow
 		adc	zeroChr
 		sta	VRAM_BUF,	x
 		dex
 		dey
-		bne vram_write_main
+		bpl vram_write_main
 
 	vram_write_finish:
-		jmp	endRoutineVbufHorzSeq
+		jmp	endRoutineVbufHorzSeqNoDec
 
 	use_one_vram_buffer:
 		lda	_attemptCounter+0
