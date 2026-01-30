@@ -6,7 +6,6 @@ CODE_BANK_PUSH(MOVEMENT_BANK)
 #define table_offset tmp3
 #define collided tmp4
 
-void sprite_gamemode_controller_check();
 void ball_eject();
 void common_gravity_routine();
 void ball_movement(){
@@ -97,7 +96,7 @@ void ball_eject() {
 						currplayer_vel_y = (-currplayer_vel_y / 3) * 2;
 						table_offset = yellow_pad;
 						tmpA = crossPRGBankJump0(sprite_gamemode_y_adjust);
-						if (currplayer_vel_y > tmpA) currplayer_vel_y = tmpA;
+						if (currplayer_vel_y < tmpA) currplayer_vel_y = tmpA;
 					}
 				}
 				orbactive = 0;
