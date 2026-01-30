@@ -2315,9 +2315,9 @@ drawcube_sprite_none:
 
 
 drawplayer_center_offsets:
-	;		Cub	Shp Bal	UFO	RBT	SPI	Wav
-	.byte	8,	8,	8,	8,	4,	4,	8,	8,	8; normal size
-	.byte	4,	4,	4,	4,	4,	4,	4,	4,	4; mini 
+	;		Cub	Shp Bal	UFO	RBT	SPI	Wav Sng Nja Pgo
+	.byte	8,	8,	8,	8,	4,	4,	8,	8,	8,	8; normal size
+	.byte	4,	4,	4,	4,	4,	4,	4,	4,	4,	4; mini 
 
 ; void drawplayerone();
 .segment _PLAYER_RENDER_BANK
