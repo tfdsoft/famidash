@@ -421,6 +421,12 @@ static uint16_t _sprite_gamemode_y_adjust() {
 #pragma data-name(pop)
 
 static uint16_t sprite_gamemode_y_adjust() {	// A trampoline of sorts
+	if (gamemode == GAMEMODE_POGO) {
+		gamemode = GAMEMODE_SWING;
+		tmpA = crossPRGBankJump0(_sprite_gamemode_y_adjust);
+		gamemode = GAMEMODE_POGO;
+		return tmpA;
+	}
 	return crossPRGBankJump0(_sprite_gamemode_y_adjust);
 }
 
@@ -513,7 +519,7 @@ static void sprite_gamemode_main() {
 		activesprites_type[index] != GREEN_ORB_MULTI
 	) 
 		idx8_inc(activesprites_activated, index);		
-	if (gamemode == GAMEMODE_NINJA) jumpedonthisframe[currplayer] = 1;
+		orbhitonthisframe[currplayer] = 1;
 		}
 	}
 }
@@ -639,7 +645,7 @@ void sprite_collide_lookup() {
 		&&spcl_orb_cmn,	&&spcl_orb_cmn,	&&spcl_orb_cmn,	&&spcl_gv13_pt,	// 0x5C - 0x5F
 		&&spcl_gv12_pt,	&&spcl_gv23_pt,	&&spcl_gv2x_pt,	&&spcl_gv1x_pt,	// 0x60 - 0x63
 		&&spcl_rndmode,	&&spcl_grn_pad,	&&spcl_tlpt_pt,	&&spcl_default,	// 0x64 - 0x67
-		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x68 - 0x6B
+		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_pogo,	&&spcl_default,	// 0x68 - 0x6B
 		&&spcl_default,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
@@ -697,7 +703,7 @@ void sprite_collide_lookup() {
 	
 	spcl_skl_orb:
 		activesprites_animated[index] = 1;
-		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
+		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_POGO ||gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
 			if (controllingplayer->hold & (PAD_A | PAD_UP)) {
 				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
 				activesprites_animated[index] = 0;
@@ -711,7 +717,7 @@ void sprite_collide_lookup() {
 		return;
 	
 	spcl_wht_orb:
-		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
+		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_POGO || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
 			if (controllingplayer->hold & (PAD_A | PAD_UP)) {
 				currplayer_vel_y = 0;
 				activesprites_activated[index] = 1;
@@ -765,6 +771,14 @@ void sprite_collide_lookup() {
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
 		return;
 
+	spcl_pogo:
+		settrailstuff();
+		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+		gamemode = GAMEMODE_POGO;
+		retrofireballclear();		
+		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);	
+		return;
+		
 	spcl_swing:
 		settrailstuff();
 		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
@@ -1071,7 +1085,7 @@ void sprite_collide_lookup() {
 
 	spcl_orb_cmn:
 		ufo_orbed[currplayer] = 1;		
-		if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) {
+		if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_POGO || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) {
 			sprite_gamemode_main();
 		} else {
 			sprite_gamemode_controller_check();

@@ -1,6 +1,12 @@
 
 CODE_BANK_PUSH(MOVEMENT_BANK)
 
+#define yellow_pad  0x01 << 3
+#define black_orb   0x06 << 3
+#define table_offset tmp3
+#define collided tmp4
+
+void sprite_gamemode_controller_check();
 void ball_eject();
 void common_gravity_routine();
 void ball_movement(){
@@ -11,7 +17,7 @@ void ball_movement(){
 
 //	if ((controllingplayer->press_a) && currplayer_vel_y != 0) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 
-	if (gamemode == GAMEMODE_SWING) {
+	if (gamemode == GAMEMODE_SWING || gamemode == GAMEMODE_POGO) {
 		tmpfallspeed = SWING_MAX_FALLSPEED(currplayer_table_idx);
 		tmpgravity = SWING_GRAVITY(currplayer_table_idx);
 		common_gravity_routine();
@@ -61,13 +67,21 @@ void ball_movement(){
 			}
 		}
 	}
-	else {
+	else if (gamemode == GAMEMODE_SWING) {		//swing
 		if ((controllingplayer->press & (PAD_A | PAD_UP)) && !ufo_orbed[currplayer]){
 			invert_gravity(currplayer_gravity);
 			update_currplayer_table_idx();
 			bg_coll_floor_spikes();
 		}
 	}		
+	else {			//pogo
+		if (controllingplayer->press & (PAD_A | PAD_UP) && !orbhitonthisframe[currplayer]) {
+			table_offset = black_orb;
+			collided = BLACK_ORB;
+			crossPRGBankJump0(sprite_gamemode_controller_check);
+		}
+	}
+	
 	ufo_orbed[currplayer] = 0;
 }
 
@@ -76,7 +90,16 @@ void ball_eject() {
 		//if(high_byte(currplayer_vel_y) & 0x80){
 			if(bg_coll_U()){ // check collision above
 				high_byte(currplayer_y) = high_byte(currplayer_y) - eject_U;
-				currplayer_vel_y = 0;
+				if (gamemode != GAMEMODE_POGO) currplayer_vel_y = 0;
+				else {
+					if (!currplayer_gravity) currplayer_vel_y = 0;
+					else {
+						currplayer_vel_y = (-currplayer_vel_y / 3) * 2;
+						table_offset = yellow_pad;
+						tmpA = crossPRGBankJump0(sprite_gamemode_y_adjust);
+						if (currplayer_vel_y > tmpA) currplayer_vel_y = tmpA;
+					}
+				}
 				orbactive = 0;
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);			//fix for orb
 			}
@@ -84,7 +107,16 @@ void ball_eject() {
 		//else{
 			if(bg_coll_D()){ // check collision below
 			    high_byte(currplayer_y) = high_byte(currplayer_y) - eject_D;
-			    currplayer_vel_y = 0;
+				if (gamemode != GAMEMODE_POGO) currplayer_vel_y = 0;
+				else {
+					if (currplayer_gravity) currplayer_vel_y = 0;
+					else {
+						currplayer_vel_y = (-currplayer_vel_y / 3) * 2;
+						table_offset = yellow_pad;
+						tmpA = crossPRGBankJump0(sprite_gamemode_y_adjust);
+						if (currplayer_vel_y > tmpA) currplayer_vel_y = tmpA;
+					}
+				}
 				orbactive = 0;
 				idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);		    //fix for orb
 			}

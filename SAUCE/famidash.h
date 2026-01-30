@@ -35,6 +35,7 @@
 #define GAMEMODE_WAVE   0x06
 #define GAMEMODE_SWING  0x07
 #define GAMEMODE_NINJA  0x08
+#define GAMEMODE_POGO  0x09
 
 // table_idx masks
 #define TBLIDX_GRAV	0b001
@@ -324,7 +325,7 @@ int16_t player_vel_x[2];
 int16_t player_vel_y[2];
 uint8_t player_gravity[2];
 uint8_t player_mini[2];
-uint8_t jumpedonthisframe[2];
+uint8_t orbhitonthisframe[2];
 
 uint8_t practice_sprite_x_pos;
 

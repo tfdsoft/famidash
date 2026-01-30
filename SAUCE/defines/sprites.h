@@ -519,7 +519,27 @@ const unsigned char Cube_6[]={
 };
 
 const unsigned char * const CUBE[] = {Cube_0, Cube_1, Cube_2, Cube_3, Cube_4, Cube_5, Cube_6, Cube_6};
+
+const unsigned char Pogo_0[]={
+
+	 -8,  0,0x25,3,
+	  0,  0,0x25,3|OAM_FLIP_H,
+	0x80
+};
+
+
+const unsigned char * const POGO[] = {Pogo_0, Pogo_0, Pogo_0, Pogo_0, Pogo_0, Pogo_0, Pogo_0, Pogo_0};
 // end cube
+
+
+const unsigned char Pogo2_0[]={
+
+	 -8,  0,0x25,1,
+	  0,  0,0x25,1|OAM_FLIP_H,
+	0x80
+};
+
+const unsigned char * const POGO2[] = {Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0};
 	
 const unsigned char Cube2_0[]={
 
@@ -1749,6 +1769,21 @@ const unsigned char Portal_Gamemode_Swing[]={
 	 16, 32,0x65,1|OAM_FLIP_V,
 	0x80
 };
+const unsigned char Portal_Gamemode_Pogo[]={
+
+	  0,  0,0x61,0,
+	  0, 16,0x67,0,
+	  0, 32,0x61,0|OAM_FLIP_V,
+	  8,  0,0x63,0,
+
+	  8, 16,0x8C,0,
+	  8, 32,0x63,0|OAM_FLIP_V,
+	 16,  0,0x65,0,
+	 16, 16,0x8E,0,
+
+	 16, 32,0x65,0|OAM_FLIP_V,
+	0x80
+};
 const unsigned char Portal_Gamemode_Wave[]={
 
 	  0,  0,0x61,0,
@@ -1823,55 +1858,6 @@ const unsigned char Portal_Single[]={
 	  8, 32,0x8D,0|OAM_FLIP_V,
 
 	 16, 32,0x8F,0|OAM_FLIP_V,
-	0x80
-};
-const unsigned char Tallboy_Portal[]={
-
-	  0,  0,0x8B,3,
-	  8, 0,0x8D,3,
-	  16, 0,0x8F,3,
-	  0,  16,0x91,3,
-
-	  8, 16,0x93,3,
-	  16, 16,0x95,3,
-	  0,  32,0x8B,3|OAM_FLIP_V,
-	  8, 32,0x8D,3|OAM_FLIP_V,
-
-	 16, 32,0x8F,3|OAM_FLIP_V,
-	0x80
-};
-
-
-
-const unsigned char Longboy_Portal[]={
-
-	  0,  0,0x66,1,
-	  8, 0,0x68,1,
-	  16, 0,0x6A,1,
-	  0,  16,0x76,1,
-
-	  8, 16,0x78,1,
-	  16, 16,0x7A,1,
-	 0,  32,0x66,1|OAM_FLIP_V,
-	 8, 32,0x68,1|OAM_FLIP_V,
-
-	 16, 32,0x6A,1|OAM_FLIP_V,
-	0x80
-};
-
-const unsigned char Bigboy_Portal[]={
-
-	  0,  0,0x66,0,
-	  8, 0,0x68,0,
-	  16, 0,0x6A,0,
-	  0,  16,0x76,0,
-
-	  8, 16,0x78,0,
-	  16, 16,0x7A,0,
-	 0,  32,0x66,0|OAM_FLIP_V,
-	 8, 32,0x68,0|OAM_FLIP_V,
-
-	 16, 32,0x6A,0|OAM_FLIP_V,
 	0x80
 };
 
@@ -3216,9 +3202,9 @@ const unsigned char * const Metasprites[]={
 	Teleport_Portal_Horizontal_Downwards_Exit,
 	Teleport_Portal_Horizontal_Downwards_Enter,
 	Teleport_Portal_Horizontal_Upwards_Exit,
-	Tallboy_Portal,
-	Longboy_Portal,
-	Bigboy_Portal,
+	Portal_Gamemode_Pogo,
+	nometa,
+	nometa,
 	Speed_SLOW_Portal,
 	MINICOIN_SPRITE1,
 	nometa,
