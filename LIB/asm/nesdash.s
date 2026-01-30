@@ -2406,7 +2406,7 @@ drawplayer_center_offsets:
 	dex			;	case 0x08: NINJA
 	jeq	cube	;__
 	dex			;	case 0x09: POGO
-	jeq	ufo	;__
+	jeq	pogo	;__
 	
 	; default: cube
     cube:
@@ -2603,6 +2603,16 @@ drawplayer_center_offsets:
 		STA _ballframe	;__
 	@donball:
 		JMP fin
+
+	pogo:
+		ldy #$00
+		lda _robotjumpframe
+		beq @noanim
+		ldy #$01
+		dec _robotjumpframe
+
+	@noanim:
+		jmp fin
 
 	ufo:
 		; Real C code:
@@ -2915,7 +2925,7 @@ drawplayer_common := _drawplayerone::common
 	dex			;	case 0x08: NINJA
 	jeq	cube	;__
 	dex			;	case 0x08: NINJA
-	jeq	ufo	;__
+	jeq	pogo	;__
 
     ; default: cube
     cube:
@@ -3088,6 +3098,21 @@ drawplayer_common := _drawplayerone::common
 	@continue:
 		LDY _ballframe
 		JMP drawplayer_common
+		
+		
+		
+	pogo:
+		ldy #$00
+		lda _robotjumpframe+1
+		beq @noanim
+		ldy #$01
+		dec _robotjumpframe+1
+
+	@noanim:
+		jmp drawplayer_common
+
+		
+		
 	ufo:
 		; Real C code:
 			; 		if (!player_gravity[1]) {

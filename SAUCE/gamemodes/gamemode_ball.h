@@ -97,6 +97,7 @@ void ball_eject() {
 						table_offset = yellow_pad;
 						tmpA = crossPRGBankJump0(sprite_gamemode_y_adjust);
 						if (currplayer_vel_y < tmpA) currplayer_vel_y = tmpA;
+						robotjumptime[currplayer] = 6;
 					}
 				}
 				orbactive = 0;
@@ -114,6 +115,7 @@ void ball_eject() {
 						table_offset = yellow_pad;
 						tmpA = crossPRGBankJump0(sprite_gamemode_y_adjust);
 						if (currplayer_vel_y > tmpA) currplayer_vel_y = tmpA;
+						robotjumpframe[currplayer] = 6;
 					}
 				}
 				orbactive = 0;

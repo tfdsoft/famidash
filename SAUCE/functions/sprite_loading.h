@@ -733,6 +733,8 @@ void sprite_collide_lookup() {
 	
 	spcl_cube:
 		orbactive = 0;
+		robotjumpframe[0] = 0;
+		robotjumpframe[1] = 0;
 		exitPortalTimer = 10;
 		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
 		if (retro_mode) gamemode = GAMEMODE_ROBOT;
@@ -791,6 +793,7 @@ void sprite_collide_lookup() {
 		#ifdef FLAG_KANDO_FUN_STUFF
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
 			gamemode = GAMEMODE_NINJA;
+			retrofireballclear();
 		#endif
 		return;
 
@@ -800,6 +803,7 @@ void sprite_collide_lookup() {
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
 			idx8_inc(activesprites_activated, index);
+			retrofireballclear();
 		#endif
 		return;
 
@@ -1214,6 +1218,8 @@ void retrofireballclear() {
 	if (retro_mode) {
 		memfill(jimsheatballalive, 0, sizeof(jimsheatballalive));		
 	}
+	robotjumpframe[0] = 0;
+	robotjumpframe[1] = 0;
 }			
 
 void dual_cap_check() {

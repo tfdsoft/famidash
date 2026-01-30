@@ -74,6 +74,7 @@ void reset_level() {
 	force_platformer = 0;
 	player_invis = 0;
 	robotjumpframe[0] = 0;
+	robotjumpframe[1] = 0;
 	slope_frames[0] = 0;
 	slope_frames[1] = 0;
 	nocamlockforced = 0;
