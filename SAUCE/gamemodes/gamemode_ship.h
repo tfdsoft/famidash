@@ -1,7 +1,6 @@
 
 CODE_BANK_PUSH(MOVEMENT_BANK)
 
-void bigboi_stuff();
 void ufo_ship_eject();
 
 void is_player_falling() {
@@ -54,7 +53,6 @@ void ship_movement(){
 	
 	ufo_ship_eject();
 
-	bigboi_stuff();
 }
 
 void ufo_ship_eject() {

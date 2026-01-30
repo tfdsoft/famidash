@@ -595,53 +595,6 @@ void everything_else() {
 		
 		processXMovement = 0;
 		
-#ifdef FLAG_KANDO_FUN_STUFF		
-		if (bigboi && !(kandoframecnt & 1) ) {
-
-			x_plus_15();
-
-			runthecolls();
-			
-			x_minus_15();
-
-			y_minus_15();
-
-		
-			runthecolls();
-
-			x_plus_15();
-
-			runthecolls();
-
-			x_minus_15();
-
-			y_plus_15();
-
-		}			
-			
-		else {
-			if (longmode) {
-
-				x_plus_15();
-
-				runthecolls();
-				
-				x_minus_15();
-
-			}
-
-			if (tallmode) {
-
-				y_minus_15();
-
-				runthecolls();
-
-				y_plus_15();
-
-			}
-		}
-		processXMovement = 1;
-#endif
 		dblocked[currplayer] = 0;
 		if (invincible_counter) invincible_counter--;
 		

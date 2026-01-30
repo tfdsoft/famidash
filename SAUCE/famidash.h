@@ -526,9 +526,6 @@ uint8_t current_transition_timer_length;
 uint16_t target_x_scroll_stop;
 uint16_t curr_x_scroll_stop;
 uint8_t disco_sprites;
-uint8_t tallmode;
-uint8_t longmode;
-uint8_t bigboi;
 uint8_t gravity_mod;
 #endif
 

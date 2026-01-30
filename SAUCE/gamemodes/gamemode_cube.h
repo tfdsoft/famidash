@@ -29,37 +29,6 @@ void cube_movement(){
 	cube_eject();
 	
 
-	if (bigboi) {
-
-		Generic.x += 15;
-
-		cube_eject();
-
-		Generic.y -= 15;
-
-		cube_eject();		
-		
-		Generic.x -= 15;
-		
-		cube_eject();
-
-	}
-
-	else {
-		if (longmode) {
-
-			Generic.x += 15;
-			
-			cube_eject();
-		}
-		
-		if (tallmode) {
-			Generic.x = high_byte(currplayer_x);
-			Generic.y -= 15;
-			
-			cube_eject();
-		}		
-	}	
 	// check collision down a little lower than CUBE
 	Generic.x = high_byte(currplayer_x); // the rest should be the same
 	Generic.y = high_byte(currplayer_y); // the rest should be the same

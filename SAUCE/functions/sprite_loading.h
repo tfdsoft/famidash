@@ -639,8 +639,8 @@ void sprite_collide_lookup() {
 		&&spcl_orb_cmn,	&&spcl_orb_cmn,	&&spcl_orb_cmn,	&&spcl_gv13_pt,	// 0x5C - 0x5F
 		&&spcl_gv12_pt,	&&spcl_gv23_pt,	&&spcl_gv2x_pt,	&&spcl_gv1x_pt,	// 0x60 - 0x63
 		&&spcl_rndmode,	&&spcl_grn_pad,	&&spcl_tlpt_pt,	&&spcl_default,	// 0x64 - 0x67
-		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tall_pt,	&&spcl_long_pt,	// 0x68 - 0x6B
-		&&spcl_bigmode,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
+		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x68 - 0x6B
+		&&spcl_default,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
 		&&spcl_default,	&&spcl_skl_orb,	&&spcl_wht_orb,	&&spcl_orb_cmn,	// 0x78 - 0x7B
@@ -870,23 +870,7 @@ void sprite_collide_lookup() {
 		return;
 
 	// - Kando size portals
-	spcl_tall_pt:
-		#ifdef FLAG_KANDO_FUN_STUFF
-			tallmode = 1;
-		#endif
-		return;
 
-	spcl_long_pt:
-		#ifdef FLAG_KANDO_FUN_STUFF
-			longmode = 1;
-		#endif
-		return;
-
-	spcl_bigmode:
-		#ifdef FLAG_KANDO_FUN_STUFF
-			bigboi = 1;
-		#endif
-		return;
 
 	// - Doubling portals
 	spcl_dual_pt:
@@ -910,9 +894,6 @@ void sprite_collide_lookup() {
 			else { player_gravity[1] = player_gravity[0]; }
 			activesprites_activated[index] = 1;
 
-			tallmode = 0;
-			longmode = 0;
-			bigboi = 0;
 			// activesprites_type[index] = 0xFF;
 			exitPortalTimer = 10;
 		}

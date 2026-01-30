@@ -37,26 +37,7 @@ void wave_movement(){
 
 	wave_eject();
 	
-	if (bigboi) {
-		Generic.y -= 15;
-		wave_eject();		
-		Generic.x += 15;
-		wave_eject();		
-		Generic.y += 15;
-		wave_eject();		
-	}
-	
-	else {
-		if (longmode) {
-			Generic.x += 15;
-			wave_eject();				
-		}
-		if (tallmode) {
-			Generic.x = high_byte(currplayer_x);
-			Generic.y -= 15;
-			wave_eject();				
-		}
-	}
+
 
 	Generic.x = high_byte(currplayer_x);
 	Generic.y = high_byte(currplayer_y);
