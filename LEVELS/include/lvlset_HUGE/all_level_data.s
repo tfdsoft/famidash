@@ -1655,30 +1655,30 @@
 		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5665
 
 
-.segment "DAT_BANK_43"	; Total bank size: 8183 bytes
-	.export level_data_speedracer
-	level_data_speedracer:
+.segment "DAT_BANK_43"	; Total bank size: 8189 bytes
+	.export level_data_acropolis
+	level_data_acropolis:
 	; Header
-		.byte <sprite_data_speedracer ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_speedracer ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_speedracer)) ;___ Sprite data bank
-		.byte song_chaoz_impact ;__________________ Song ID
-		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
-		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
-		.byte ($00) ;______________________________ Spawn Y Position (low byte)
-		.byte ($02) ;______________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
-		.byte ($06) ;______________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 ;_____________________ Deco type
-		.byte _SPIKESA ;___________________________ Spike set
-		.byte _BLOCKSB ;___________________________ Block set
-		.byte _SAWBLADESA ;________________________ Sawblade set
-		.byte $0F ;________________________________ Starting background color
-		.byte $0F ;________________________________ Starting ground color
-		.byte 27 ;_________________________________ Level height
+		.byte <sprite_data_acropolis ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_acropolis ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_acropolis)) ;___ Sprite data bank
+		.byte song_final_battle ;_________________ Song ID
+		.byte (1 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 ;____________________________ Deco type
+		.byte _SPIKESA ;__________________________ Spike set
+		.byte _BLOCKSB ;__________________________ Block set
+		.byte _SAWBLADESA ;_______________________ Sawblade set
+		.byte $00 ;_______________________________ Starting background color
+		.byte $00 ;_______________________________ Starting ground color
+		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5635
+		.incbin "EXPORTS/acropolis.lz.bin" ; Size: 5641
 
 	.export level_data_thechallenge
 	level_data_thechallenge:
@@ -1705,30 +1705,30 @@
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 2512
 
 
-.segment "DAT_BANK_44"	; Total bank size: 7984 bytes
-	.export level_data_acropolis
-	level_data_acropolis:
+.segment "DAT_BANK_44"	; Total bank size: 7988 bytes
+	.export level_data_speedracer
+	level_data_speedracer:
 	; Header
-		.byte <sprite_data_acropolis ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_acropolis ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_acropolis)) ;___ Sprite data bank
-		.byte song_final_battle ;_________________ Song ID
-		.byte (1 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 ;____________________________ Deco type
-		.byte _SPIKESA ;__________________________ Spike set
-		.byte _BLOCKSB ;__________________________ Block set
-		.byte _SAWBLADESA ;_______________________ Sawblade set
-		.byte $00 ;_______________________________ Starting background color
-		.byte $00 ;_______________________________ Starting ground color
-		.byte 27 ;________________________________ Level height
+		.byte <sprite_data_speedracer ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_speedracer ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_speedracer)) ;___ Sprite data bank
+		.byte song_chaoz_impact ;__________________ Song ID
+		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
+		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
+		.byte ($00) ;______________________________ Spawn Y Position (low byte)
+		.byte ($02) ;______________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
+		.byte ($06) ;______________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 ;_____________________ Deco type
+		.byte _SPIKESA ;___________________________ Spike set
+		.byte _BLOCKSB ;___________________________ Block set
+		.byte _SAWBLADESA ;________________________ Sawblade set
+		.byte $0F ;________________________________ Starting background color
+		.byte $0F ;________________________________ Starting ground color
+		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/acropolis.lz.bin" ; Size: 5631
+		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5635
 
 	.export level_data_factorytime
 	level_data_factorytime:
