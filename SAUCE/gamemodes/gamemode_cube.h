@@ -58,13 +58,13 @@ void cube_movement(){
 				}
 			
 			}
-			else if((controllingplayer->press & (PAD_A | PAD_UP)) && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack || (gamemode == GAMEMODE_NINJA && ninjajumps[currplayer] && !jumpedonthisframe[currplayer] && !orbed[currplayer]))) {		//jblock making you release and press A again to jump
+			else if((controllingplayer->press & (PAD_A | PAD_UP)) && (jblocked[currplayer] || fblocked[currplayer] || kandokidshack || (gamemode == GAMEMODE_NINJA && ninjajumps[currplayer] && !orbhitonthisframe[currplayer] && !orbed[currplayer]))) {		//jblock making you release and press A again to jump
 				jumps++;
 				currplayer_vel_y = JUMP_VEL(currplayer_table_idx); // JUMP
 
 				slope_jump_check();
 
-				if (gamemode == GAMEMODE_NINJA) { idx8_dec(ninjajumps, currplayer); jumpedonthisframe[currplayer] = 1; }
+				if (gamemode == GAMEMODE_NINJA) { idx8_dec(ninjajumps, currplayer); orbhitonthisframe[currplayer] = 1; }
 			
 			}
 	}
@@ -96,13 +96,13 @@ void cube_movement(){
 			}
 		}
 		
-		else if ((gamemode == GAMEMODE_ROBOT && retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4) || (gamemode == GAMEMODE_NINJA && retro_mode && !jumpedonthisframe[currplayer]  && ninjajumps[currplayer] && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4)) {		//jim
+		else if ((gamemode == GAMEMODE_ROBOT && retro_mode && (currplayer_vel_y == 0) && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4) || (gamemode == GAMEMODE_NINJA && retro_mode && !orbhitonthisframe[currplayer]  && ninjajumps[currplayer] && !hblocked[currplayer] && dashing[currplayer] == 0 && cube_data[currplayer] & 4)) {		//jim
 			idx8_store(cube_data, currplayer, cube_data[currplayer] & 1);		
 			if((controllingplayer->hold & (PAD_A | PAD_UP)) && !orbed[currplayer]) {
 				if((controllingplayer->press & (PAD_A | PAD_UP))) jumps++;
 				currplayer_vel_y = ROBOT_JUMP_VEL(currplayer_table_idx); // JUMP
 				
-				if (gamemode == GAMEMODE_NINJA) { idx8_dec(ninjajumps, currplayer); jumpedonthisframe[currplayer] = 1; }
+				if (gamemode == GAMEMODE_NINJA) { idx8_dec(ninjajumps, currplayer); orbhitonthisframe[currplayer] = 1; }
 				
 				// robotjumptime[currplayer] = ROBOT_JUMP_TIME[framerate]
 				__A__ = ROBOT_JUMP_TIME[framerate], __asm__("pha");
