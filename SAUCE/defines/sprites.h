@@ -541,6 +541,26 @@ const unsigned char Pogo2_0[]={
 
 const unsigned char * const POGO2[] = {Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0};
 	
+	
+const unsigned char Mini_Pogo_0[]={
+
+	-4,  -4,0x29,3,
+	0x80
+};
+	
+const unsigned char * const MINI_POGO[] = {Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0};
+
+	
+const unsigned char Mini_Pogo2_0[]={
+
+	-4,  -4,0x29,1,
+	0x80
+};
+	
+const unsigned char * const MINI_POGO2[] = {Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0};
+
+
+	
 const unsigned char Cube2_0[]={
 
 	 -8,  0,0x01,1,

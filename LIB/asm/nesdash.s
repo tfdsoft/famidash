@@ -2258,7 +2258,7 @@ end:
 .import _CUBE_GRAVITY_lo
 .importzp _cube_rotate, _was_on_slope_counter
 .import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2, _SPIDER_ALT, _SPIDER_ALT2, _POGO
-.import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT
+.import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT, _MINI_POGO
 .importzp _cube_data, _slope_frames, _slope_type
 drawcube_rounding_table:
 	.byte 0, <-1, <-2, 3, 2, 1
@@ -2406,7 +2406,7 @@ drawplayer_center_offsets:
 	dex			;	case 0x08: NINJA
 	jeq	cube	;__
 	dex			;	case 0x09: POGO
-	jeq	ball	;__
+	jeq	ufo	;__
 	
 	; default: cube
     cube:
@@ -2813,16 +2813,16 @@ drawplayer_center_offsets:
 
     sprite_table_table_lo:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE, <_SWING, <_CUBE, <_POGO
-        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE, <_MINI_BALL
+        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE, <_MINI_POGO
     sprite_table_table_lo2:
         .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT_ALT, <_SPIDER_ALT, <_WAVE, <_SWING, <_ROBOT_ALT, <_POGO
-        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL_ALT, <_MINI_UFO, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE, <_MINI_SWING_ALT, <_MINI_ROBOT_ALT, <_MINI_BALL
+        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL_ALT, <_MINI_UFO, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE, <_MINI_SWING_ALT, <_MINI_ROBOT_ALT, <_MINI_POGO
     sprite_table_table_hi:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER, >_WAVE, >_SWING, >_CUBE, >_POGO
-        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE, >_MINI_BALL
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE, >_MINI_POGO
     sprite_table_table_hi2:
         .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER_ALT, >_WAVE, >_SWING, >_ROBOT_ALT, >_POGO
-        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING_ALT, >_MINI_ROBOT_ALT, >_MINI_BALL
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING_ALT, >_MINI_ROBOT_ALT, >_MINI_POGO
 
     rounding_slope_table:
 		;     45v  22v  66v  45^  22^  66^  nothing
@@ -2835,7 +2835,7 @@ drawplayer_common := _drawplayerone::common
 .segment _PLAYER_RENDER_BANK
 
 .import _CUBE2, _SHIP2, _BALL2, _ROBOT2, _UFO2, _SPIDER2, _WAVE2, _SWING2, _POGO2
-.import _MINI_CUBE2, _MINI_SHIP2, _MINI_BALL2, _MINI_ROBOT2, _MINI_UFO2, _MINI_SPIDER2, _MINI_WAVE2, _MINI_SWING2
+.import _MINI_CUBE2, _MINI_SHIP2, _MINI_BALL2, _MINI_ROBOT2, _MINI_UFO2, _MINI_SPIDER2, _MINI_WAVE2, _MINI_SWING2, _MINI_POGO2
 
 .export _drawplayertwo
 .proc _drawplayertwo
@@ -2915,7 +2915,7 @@ drawplayer_common := _drawplayerone::common
 	dex			;	case 0x08: NINJA
 	jeq	cube	;__
 	dex			;	case 0x08: NINJA
-	jeq	ball	;__
+	jeq	ufo	;__
 
     ; default: cube
     cube:
@@ -3256,16 +3256,16 @@ drawplayer_common := _drawplayerone::common
 		JMP drawplayer_common
 	sprite_table_table_lo:
 		.byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT2, <_SPIDER2, <_WAVE2, <_SWING2, <_CUBE2, <_POGO2
-		.byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2, <_MINI_CUBE2, <_MINI_BALL2
+		.byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2, <_MINI_CUBE2, <_MINI_POGO2
     sprite_table_table_lo2:
         .byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT_ALT2, <_SPIDER_ALT2, <_WAVE2, <_SWING2, <_CUBE2, <_POGO2
-        .byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL_ALT, <_MINI_UFO2, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE2, <_MINI_SWING_ALT, <_MINI_CUBE2, <_MINI_BALL2
+        .byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL_ALT, <_MINI_UFO2, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE2, <_MINI_SWING_ALT, <_MINI_CUBE2, <_MINI_POGO2
 	sprite_table_table_hi:
 		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2, >_WAVE2, >_SWING2, >_CUBE2, >_POGO2
-		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2, >_MINI_CUBE2, >_MINI_BALL2
+		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2, >_MINI_CUBE2, >_MINI_POGO2
     sprite_table_table_hi2:
         .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT2, >_SPIDER_ALT2, >_WAVE2, >_SWING2, >_CUBE2, >_POGO2
-        .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL_ALT, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE2, >_MINI_SWING_ALT, >_MINI_CUBE2, >_MINI_BALL2
+        .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL_ALT, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE2, >_MINI_SWING_ALT, >_MINI_CUBE2, >_MINI_POGO2
     rounding_slope_table:
 		;     45v  22v  66v  45^  22^  66^  nothing
         .byte $09, $08, $09, $00, $03, $04, $08, $00
