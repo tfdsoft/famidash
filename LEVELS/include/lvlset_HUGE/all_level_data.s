@@ -1712,7 +1712,7 @@
 		.byte <sprite_data_acropolis ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_acropolis ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_acropolis)) ;___ Sprite data bank
-		.byte song_fingerdash ;___________________ Song ID
+		.byte song_final_battle ;_________________ Song ID
 		.byte (1 << 4) | 0 ;______________________ Starting game mode and speed
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($00) ;_____________________________ Spawn Y Position (low byte)

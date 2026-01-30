@@ -9,6 +9,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_respite)
 	.byte .lobyte(level_data_goldenhaze)
 	.byte .lobyte(level_data_gameover)
+	.byte .lobyte(level_data_toeiiv2)
 	.byte .lobyte(level_data_demoncryogenic)
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_jawbreaker)
@@ -31,6 +32,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_respite)
 	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_gameover)
+	.byte .hibyte(level_data_toeiiv2)
 	.byte .hibyte(level_data_demoncryogenic)
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_jawbreaker)
@@ -53,6 +55,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_respite))
 	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_gameover))
+	.byte .lobyte(.bank(level_data_toeiiv2))
 	.byte .lobyte(.bank(level_data_demoncryogenic))
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_jawbreaker))
@@ -96,6 +99,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000D0)		; respite
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($000078)		; gameover
+	.byte .lobyte($00009D)		; toeiiv2
 	.byte .lobyte($0000A8)		; demoncryogenic
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($000086)		; jawbreaker
@@ -120,6 +124,7 @@ _level_lengths_md:
 	.byte .hibyte($0000D0)		; respite
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($000078)		; gameover
+	.byte .hibyte($00009D)		; toeiiv2
 	.byte .hibyte($0000A8)		; demoncryogenic
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($000086)		; jawbreaker
@@ -144,6 +149,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000D0)		; respite
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($000078)		; gameover
+	.byte .bankbyte($00009D)		; toeiiv2
 	.byte .bankbyte($0000A8)		; demoncryogenic
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($000086)		; jawbreaker

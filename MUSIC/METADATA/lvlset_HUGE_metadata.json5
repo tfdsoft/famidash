@@ -452,6 +452,12 @@
 			originalArtist: ["CLOUDFIELD","REICHUU"],
 			coveringArtist: "ElAngel378",
 		},
+		{
+			fmsSongName: "Final Battle",
+			lowerText: "FINAL BATTLE",
+			originalArtist: "Waterflame",
+			coveringArtist: "HatSwitch",
+		},
 		/*		
 		{
 			fmsSongName: "Fingerbang",

@@ -27,6 +27,12 @@
 			originalArtistText: "DJ NATE",
 		},
 		{
+			fmsSongName: "TOE 2 old ver",
+			upperText: "THEORY OF",
+			lowerText: "EVERYTHING 2",
+			originalArtistText: "DJ NATE",
+		},
+		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",
 			originalArtistText: "OCULARNEBULA",
@@ -77,6 +83,11 @@
 				durationNTSC: 79283,
 				durationPAL: 95280
 			}
+		},
+		{
+			fmsSongName: "Final Battle",
+			lowerText: "FINAL BATTLE",
+			originalArtistText: "WATERFLAME",
 		},
 		{
 			fmsSongName: "Flow",

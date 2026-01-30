@@ -246,6 +246,7 @@
 			originalArtist: "RUKKUS",
 			coveringArtist: "NerdBoy628"
 		},
+		/*
 		{
 			fmsSongName: "candyland",
 			lowerText: "CANDYLAND",
@@ -258,6 +259,7 @@
 			originalArtist: "ParagonX9",
 			coveringArtist: "SeaGlowingPro",
 		},
+		*/
 		{
 			fmsSongName: "ChaozFantasy",
 			lowerText: "CHAOZ FANTASY",
@@ -371,7 +373,13 @@
 			lowerText: "FANTASY",
 			originalArtist: ["CLOUDFIELD","REICHUU"],
 			coveringArtist: "ElAngel378",
-		},				
+		},
+		{
+			fmsSongName: "Final Battle",
+			lowerText: "FINAL BATTLE",
+			originalArtist: "Waterflame",
+			coveringArtist: "HatSwitch",
+		},		
 		{
 			fmsSongName: "Fingerbang",
 			lowerText: "FINGERBANG",
