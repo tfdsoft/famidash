@@ -295,7 +295,33 @@
 		.incbin "EXPORTS/element111rg_with_secret_way.lz.bin" ; Size: 6040
 
 
-.segment "DAT_BANK_0D"	; Total bank size: 8014 bytes
+.segment "DAT_BANK_0D"	; Total bank size: 8020 bytes
+	.export level_data_acropolis
+	level_data_acropolis:
+	; Header
+		.byte <sprite_data_acropolis ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_acropolis ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_acropolis)) ;___ Sprite data bank
+		.byte song_final_battle ;_________________ Song ID
+		.byte (1 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 ;____________________________ Deco type
+		.byte _SPIKESA ;__________________________ Spike set
+		.byte _BLOCKSB ;__________________________ Block set
+		.byte _SAWBLADESA ;_______________________ Sawblade set
+		.byte $00 ;_______________________________ Starting background color
+		.byte $00 ;_______________________________ Starting ground color
+		.byte 27 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/acropolis.lz.bin" ; Size: 5641
+
+
+.segment "DAT_BANK_0E"	; Total bank size: 7893 bytes
 	.export level_data_speedracer
 	level_data_speedracer:
 	; Header
@@ -319,32 +345,6 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5635
-
-
-.segment "DAT_BANK_0E"	; Total bank size: 7889 bytes
-	.export level_data_acropolis
-	level_data_acropolis:
-	; Header
-		.byte <sprite_data_acropolis ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_acropolis ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_acropolis)) ;___ Sprite data bank
-		.byte song_final_battle ;_________________ Song ID
-		.byte (1 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 ;____________________________ Deco type
-		.byte _SPIKESA ;__________________________ Spike set
-		.byte _BLOCKSB ;__________________________ Block set
-		.byte _SAWBLADESA ;_______________________ Sawblade set
-		.byte $00 ;_______________________________ Starting background color
-		.byte $00 ;_______________________________ Starting ground color
-		.byte 27 ;________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/acropolis.lz.bin" ; Size: 5631
 
 	.export level_data_shardscapes
 	level_data_shardscapes:
