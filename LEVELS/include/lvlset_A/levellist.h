@@ -24,6 +24,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// deadlocked
 	INSANE,	// fingerdash
 	INSANE,	// dash
+	NORMAL,	// thetower
 	EASY,	// retray
 	NORMAL,	// leveleasy
 	NORMAL,	// thechallenge
@@ -43,7 +44,6 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// extraordinaryexcitement
 	DEMON,	// thelightningroad
 	DEMON,	// nightmare
-	DEMON,	// demonpark
 	DEMON,	// firetemple
 };
 
@@ -70,6 +70,7 @@ const uint8_t stars_list[] = {
 	15,	// deadlocked
 	12,	// fingerdash
 	12,	// dash
+	5,	// thetower
 	2,	// retray
 	3,	// leveleasy
 	3,	// thechallenge
@@ -89,6 +90,5 @@ const uint8_t stars_list[] = {
 	9,	// extraordinaryexcitement
 	10,	// thelightningroad
 	10,	// nightmare
-	10,	// demonpark
 	10,	// firetemple
 };

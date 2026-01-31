@@ -27,6 +27,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_deadlocked)
 	.byte .lobyte(level_data_fingerdash)
 	.byte .lobyte(level_data_dash)
+	.byte .lobyte(level_data_thetower)
 	.byte .lobyte(level_data_retray)
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_thechallenge)
@@ -46,7 +47,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_extraordinaryexcitement)
 	.byte .lobyte(level_data_thelightningroad)
 	.byte .lobyte(level_data_nightmare)
-	.byte .lobyte(level_data_demonpark)
 	.byte .lobyte(level_data_firetemple)
 
 _level_list_hi:
@@ -72,6 +72,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_deadlocked)
 	.byte .hibyte(level_data_fingerdash)
 	.byte .hibyte(level_data_dash)
+	.byte .hibyte(level_data_thetower)
 	.byte .hibyte(level_data_retray)
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_thechallenge)
@@ -91,7 +92,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_extraordinaryexcitement)
 	.byte .hibyte(level_data_thelightningroad)
 	.byte .hibyte(level_data_nightmare)
-	.byte .hibyte(level_data_demonpark)
 	.byte .hibyte(level_data_firetemple)
 
 _level_list_bank:
@@ -117,6 +117,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_deadlocked))
 	.byte .lobyte(.bank(level_data_fingerdash))
 	.byte .lobyte(.bank(level_data_dash))
+	.byte .lobyte(.bank(level_data_thetower))
 	.byte .lobyte(.bank(level_data_retray))
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_thechallenge))
@@ -136,7 +137,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement))
 	.byte .lobyte(.bank(level_data_thelightningroad))
 	.byte .lobyte(.bank(level_data_nightmare))
-	.byte .lobyte(.bank(level_data_demonpark))
 	.byte .lobyte(.bank(level_data_firetemple))
 
 _level_chunk_list_lo:
@@ -183,6 +183,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000BF)		; deadlocked
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
+	.byte .lobyte($000027)		; thetower
 	.byte .lobyte($000066)		; retray
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($000030)		; thechallenge
@@ -202,7 +203,6 @@ _level_lengths_lo:
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
-	.byte .lobyte($0000A2)		; demonpark
 	.byte .lobyte($00008D)		; firetemple
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -230,6 +230,7 @@ _level_lengths_md:
 	.byte .hibyte($0000BF)		; deadlocked
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
+	.byte .hibyte($000027)		; thetower
 	.byte .hibyte($000066)		; retray
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($000030)		; thechallenge
@@ -249,7 +250,6 @@ _level_lengths_md:
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
-	.byte .hibyte($0000A2)		; demonpark
 	.byte .hibyte($00008D)		; firetemple
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -277,6 +277,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000BF)		; deadlocked
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
+	.byte .bankbyte($000027)		; thetower
 	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($000030)		; thechallenge
@@ -296,7 +297,6 @@ _level_lengths_hi:
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
-	.byte .bankbyte($0000A2)		; demonpark
 	.byte .bankbyte($00008D)		; firetemple
 
 .endif

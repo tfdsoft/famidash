@@ -8609,6 +8609,18 @@ sprite_data_dash:
   .byte $90,$45,$40,$02,$0f
   .byte $ff
 
+.segment "DAT_BANK_09"
+sprite_data_thetower:
+  .byte $00,$00,$f0,$02,$de
+  .byte $00,$00,$10,$03,$83
+  .byte $00,$00,$30,$03,$cf
+  .byte $10,$03,$f0,$02,$0b
+  .byte $f0,$06,$a0,$02,$06
+  .byte $00,$07,$50,$02,$0b
+  .byte $00,$07,$a0,$02,$06
+  .byte $30,$0e,$f0,$01,$0f
+  .byte $ff
+
 .segment "DAT_BANK_7C"
 sprite_data_bestautomaticlvl:
   .byte $20,$00,$88,$03,$0a
@@ -59128,7 +59140,7 @@ sprite_data_aftercatabath:
   .byte $f0,$ad,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_79"
+.segment "DAT_BANK_7E"
 sprite_data_shardscapes:
   .byte $00,$00,$60,$03,$18
   .byte $00,$00,$70,$03,$bf
