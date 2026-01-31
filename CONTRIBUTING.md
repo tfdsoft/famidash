@@ -65,7 +65,7 @@ Paths are given to relative to the MUSIC folder, unless it begins with a /, then
 
 To make levels, make sure you have [Tiled level editor](https://www.mapeditor.org/). You also need a local copy of the entire Famidash repository. This is the main way to make Famidash levels, with up-to-date stuff synced with the repo.
 
-You can also use [NerdBoy628's web-based level editor](https://websim.ai/@NerdBoy628/famidash-editor/) as an alternative.
+You can also use [NerdBoy628's web-based level editor](https://nerdboy628.github.io/famidash-editor/) as an alternative.
 
 Make sure you also have [Python](https://www.python.org/) installed. It is needed for the exporting and building job. Keep in mind that a ROM can only have a limited amount of levels.
 
