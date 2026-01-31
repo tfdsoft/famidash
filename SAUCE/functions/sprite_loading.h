@@ -198,6 +198,8 @@ void clear_slope_stuff() {
 	currplayer_last_slope_type = 0;
 }
 
+
+
 char sprite_load_special_behavior(){
 
 	#define killSprite_return0 activesprites_type[index] = 0xFF; return 0
@@ -429,6 +431,13 @@ static uint16_t sprite_gamemode_y_adjust() {	// A trampoline of sorts
 	}
 	return crossPRGBankJump0(_sprite_gamemode_y_adjust);
 }
+
+void pad_stuff() {
+		clear_slope_stuff();
+		settrailstuff();
+		currplayer_vel_y = sprite_gamemode_y_adjust();
+		orbhitonthisframe[currplayer] = 1;
+}	
 
 static void sprite_gamemode_main() {
 	if (controllingplayer->hold & (PAD_A | PAD_UP)) {
@@ -971,31 +980,24 @@ void sprite_collide_lookup() {
 
 	// collided with a pad
 	spcl_ylw_pad:
-		clear_slope_stuff();
-		settrailstuff();
 		table_offset = yellow_pad;
-		currplayer_vel_y = sprite_gamemode_y_adjust();
+		pad_stuff();
 		return;
 	spcl_pinkpad:
-		clear_slope_stuff();
-		settrailstuff();
 		table_offset = pink_pad;
-		currplayer_vel_y = sprite_gamemode_y_adjust();
+		pad_stuff();
 		return;
 	spcl_red_pad:
-		clear_slope_stuff();
-		settrailstuff();
 		table_offset = red_pad;
-		currplayer_vel_y = sprite_gamemode_y_adjust();
+		pad_stuff();
 		return;
 
 	spcl_grn_pad:
 		#ifdef FLAG_KANDO_FUN_STUFF
 		invert_gravity(currplayer_gravity); invert_gravity(player_gravity[0]); invert_gravity(player_gravity[1]);
 		update_currplayer_table_idx();
-		dual_cap_check();
 		table_offset = yellow_orb;
-		currplayer_vel_y = sprite_gamemode_y_adjust();
+		pad_stuff();
 		idx8_inc(activesprites_activated, index);
 		#endif
 		return;
@@ -1007,6 +1009,7 @@ void sprite_collide_lookup() {
 			currplayer_gravity = GRAVITY_UP;				//flip gravity
 			update_currplayer_table_idx();
 			currplayer_vel_y = PAD_HEIGHT_BLUE(currplayer_table_idx);
+			orbhitonthisframe[currplayer] = 1;
 		}
 		idx8_inc(activesprites_activated, index);
 		return;
@@ -1018,6 +1021,7 @@ void sprite_collide_lookup() {
 			currplayer_gravity = GRAVITY_DOWN;				//flip gravity
 			update_currplayer_table_idx();
 			currplayer_vel_y = PAD_HEIGHT_BLUE(currplayer_table_idx);
+			orbhitonthisframe[currplayer] = 1;
 			//invincible_counter = 3;				
 		}
 		idx8_inc(activesprites_activated, index);	

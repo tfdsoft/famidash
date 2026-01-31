@@ -92,7 +92,7 @@ void ball_eject() {
 				if (gamemode != GAMEMODE_POGO) currplayer_vel_y = 0;
 				else {
 					if (!currplayer_gravity) currplayer_vel_y = 0;
-					else {
+					else if (!orbhitonthisframe[currplayer]) {
 						currplayer_vel_y = (-currplayer_vel_y / 3) * 2;
 						table_offset = yellow_pad;
 						tmpA = crossPRGBankJump0(sprite_gamemode_y_adjust);
@@ -110,7 +110,7 @@ void ball_eject() {
 				if (gamemode != GAMEMODE_POGO) currplayer_vel_y = 0;
 				else {
 					if (currplayer_gravity) currplayer_vel_y = 0;
-					else {
+					else if (!orbhitonthisframe[currplayer]) {
 						currplayer_vel_y = (-currplayer_vel_y / 3) * 2;
 						table_offset = yellow_pad;
 						tmpA = crossPRGBankJump0(sprite_gamemode_y_adjust);
