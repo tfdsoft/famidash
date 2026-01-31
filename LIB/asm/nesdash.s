@@ -77,6 +77,7 @@ sprite_data = _sprite_data
 	rld_column:			.res 1
 	parallax_scroll_column: .res 1
 	parallax_scroll_column_start: .res 1
+	ud_tiles_current_ptr_pos: .res 1	;__	Where in the RUNMOD portion the second VRAM pointer is
 
 	current_song_bank:	.res 1
 	auto_fs_updates:	.res 1
@@ -1204,6 +1205,8 @@ prlxSeamAddrHiTbl:
 .global metatiles_top_left, metatiles_top_right, metatiles_bot_left, metatiles_bot_right
 .import _no_parallax, _invisblocks, _force_platformer
 .import _scroll_y
+.import RUNMOD_fl_lvlRenderUDTiles_TileAddrTop, RUNMOD_fl_lvlRenderUDTiles_TileAddrBot
+.import RUNMOD_fl_lvlRenderUDTiles_TileDataTop, RUNMOD_fl_lvlRenderUDTiles_TileDataBot
 
 .proc draw_screen_UD_tiles_frame0
 	scroll_direction = tmp1
@@ -1419,27 +1422,30 @@ prlxSeamAddrHiTbl:
 		;	Off:|			0..31			|			32..63			|
 		;		 \  Combined length of 32  / \  Combined length of 32  /
 		;
-		;		VRAM buffer (after swapping)
-		;	Wr:	| Wr. A (32-X)	| Wr. C (32-X)	| Wr. B (X)	| Wr. D (X)	|
-		;	NT:	|	NT. A/C		|	NT. A/C		|	NT. B/D	|	NT. B/D	|
-		;	Tile|	Lower		|	Upper		|	Lower	|	Upper	|
-		;	X:	|				X				|	  		0			|
-		;	Len:|			  32-X			  	|			X			|
-		;	Off:|							0..63						|
-
+		;		VRAM buffer (new write):
+		;	Wr:	|  Write A	|	 Write B	|  Write C	|	 Write D	|
+		;	Len:|	  X		|	  32-X		|	  X		|	  32-X		|
+		;	NT:	|	NT. B/D	|	NT. A/C		|	NT. B/D	|	NT. A/C		|
+		;	Tile|			Upper			|			Lower			|
+		;	X:	|	  0		|		X		|	  0		|		X		|
+		;	Off:|			0..31			|			32..63			|
+		;		 \  Combined length of 32  / \  Combined length of 32  /
+		;
 		;		Instruction buffer:
-		;	| Instruct.	| Addr A	| Len A	| Addr C	| Addr B	| Len B	| Addr D	|
-		;	|	0	1	|	2	3	|	4	|	5	6	|	7	8	|	9	|	10	11	|
+		;	| Instruct.	|
+		;	|	0	1	|
 
 		SeparateWriteSize = (16*4)
 
 		IBWBInst	= instBufWriteBuffer+0
-		IBWBAddrA	= instBufWriteBuffer+2
-		IBWBLenA	= instBufWriteBuffer+4
-		IBWBAddrC	= instBufWriteBuffer+5
-		IBWBAddrB	= instBufWriteBuffer+7
-		IBWBLenB	= instBufWriteBuffer+9
-		IBWBAddrD	= instBufWriteBuffer+10
+
+		RUNMOD_AddrAHi	= RUNMOD_fl_lvlRenderUDTiles_TileAddrTop+1
+		RUNMOD_AddrALo	= RUNMOD_fl_lvlRenderUDTiles_TileAddrTop+6
+		RUNMOD_AddrCHi	= RUNMOD_fl_lvlRenderUDTiles_TileAddrBot+1
+		RUNMOD_AddrCLo	= RUNMOD_fl_lvlRenderUDTiles_TileAddrBot+6
+
+		RUNMOD_TileDataTop = RUNMOD_fl_lvlRenderUDTiles_TileDataTop
+		RUNMOD_TileDataBot = RUNMOD_fl_lvlRenderUDTiles_TileDataBot
 
 		@shift_addr:
 			LDA	this_seam_pos	;__	Get bits: hhll uuuu (u will be ignored)
@@ -1449,15 +1455,15 @@ prlxSeamAddrHiTbl:
 		@store_low:
 			TAY					;__	Tmp storage
 			AND	#$C0			;	Store low byte for X=0
-			STA	IBWBAddrD+1		;__
-			ORA	#$20			;	Get and store low byte of Address D
-			STA	IBWBAddrB+1		;__
+			STA	RUNMOD_AddrALo	;__
+			ORA	#$20			;	Get and store low byte of Address C
+			STA	RUNMOD_AddrCLo	;__
 			LSR					;
 			ORA	rld_column		;	Add the X
 			ASL					;__
-			STA	IBWBAddrA+1		;__	Store low byte of Address C
-			AND	#<~$20			;	Get and store low byte of Address A
-			STA	IBWBAddrC+1		;__
+			PHA					;__	Store low byte of Address D
+			AND	#<~$20			;	Get and store low byte of Address B
+			PHA					;__
 		@store_high:
 			LDA	_scroll_x+1		;	Thanks jroweboy
 			LSR					;__
@@ -1470,69 +1476,61 @@ prlxSeamAddrHiTbl:
 			BEQ	:+				;	Get Y of nametable
 				ORA	#$08		;
 			:					;__
-			STA	IBWBAddrA+0		;__	Store high byte of Address A
-			STA	IBWBAddrC+0		;__	Store high byte of Address C
+			PHA					;__	Store high byte of Address B, D
 			EOR	#$04			;__	Invert the high byte's X of the nametable
-			STA	IBWBAddrB+0		;__	Store high byte of Address B
-			STA	IBWBAddrD+0		;__	Store high byte of Address D
-		@store_length:
+			STA RUNMOD_AddrAHi	;__	Store high byte of Address A
+			STA RUNMOD_AddrCHi	;__	Store high byte of Address C
+		@restore_write_address:
+			LDX ud_tiles_current_ptr_pos
+			LDA #<PPU_DATA
+			STA RUNMOD_TileDataTop+3, X
+			STA RUNMOD_TileDataBot+3, X
+			STA RUNMOD_TileDataTop+8, X
+			STA RUNMOD_TileDataBot+8, X
+		@write_start:
 			LDA	#16				;
 			SEC					;	Get length of writes A & C
 			SBC	rld_column		;__
-			ASL					;
-			STA	IBWBLenA		;__
-			LDA	rld_column		;
-			ASL					;	Store length of write B
-			STA	IBWBLenB		;__
+			STA tmp3
 
+			LDA	#$0F
+			STA	column_idx
+
+			LDX	#160
 		@write_loop:
-			jsr write_loop		;__	First, get the OG data
+			LDY	column_idx			;
+			LDA	(collmap_ptr),	Y	;	Get metatile
+			TAY						;__
 
-			; Current X is VRAM_INDEX + 32
+			LDA	metatiles_top_left,	Y	;
+			STA	RUNMOD_TileDataTop+1, X	;
+			LDA	metatiles_top_right,Y	;
+			STA	RUNMOD_TileDataTop+6, X	;	Get and store the tiles
+			LDA	metatiles_bot_left,	Y	;	into the VRAM buffer
+			STA	RUNMOD_TileDataBot+1, X	;
+			LDA	metatiles_bot_right,Y	;
+			STA	RUNMOD_TileDataBot+6, X	;__
+
 			TXA
-			PHA
+			SEC
+			SBC #10
+			TAX
 
-			; Then swap writes B and C
-			; Using the triple block reversal algorithm
+			DEC tmp3
+			BEQ @write_new_write
 
-			; The block_reversal subroutine takes in:
-			; A = starting offset in VRAM buffer
-			; X = length
-
-			; A is already VRAM_INDEX + 32 = the offset of block C
-			LDX	IBWBLenA			;	Reverse block C
-			JSR	block_reversal		;__
-
-			LDA	IBWBLenA			;
-			CLC						;
-			ADC	VRAM_INDEX			;
-			PHA						;	Reverse block B
-									;
-			LDX	IBWBLenB			;
-			JSR block_reversal		;__
-
-			PLA						;= offset of block B
-									;
-			LDX	#32					;	Reverse blocks B&C, finishing the routine
-			JSR	block_reversal		;__
+			DEC	column_idx
+			BPL @write_loop
 
 		@fin:
-			PLA							;
-			CLC							;	VRAM_INDEX + 32 + 32 = new VRAM index
-			ADC	#SeparateWriteSize-32	;
-			STA	VRAM_INDEX				;__
-
 			; TODO eventually: parallax
 
-			lda	#<(fl_seqLvlUDTiles-1)
+			lda	#<(fl_lvlRenderUDTiles-1)
 			sta	IBWBInst+0
-			lda	#>(fl_seqLvlUDTiles-1)
+			lda	#>(fl_lvlRenderUDTiles-1)
 			sta	IBWBInst+1
 
-			dec	IBWBLenA
-			dec	IBWBLenB
-
-			ldx #12
+			ldx #2
 			jsr transferWriteToInstBuf
 
 			lda	buf_curSeqMode
@@ -1543,40 +1541,31 @@ prlxSeamAddrHiTbl:
 			LDX	#0
 			RTS
 
-block_reversal:
-	block_size = tmp3
-	swap = tmp4
-	@start:
-		;	A:	Offset
-		;	X:	Length
-		stx	block_size
+		@write_new_write:
+			PLA		;__	High byte of Address B&D
+			STA RUNMOD_TileDataTop+1, X
+			STA RUNMOD_TileDataBot+1, X
+			STA tmp3	;__	The value is between $20 and $27, < $80 and > $10
+			PLA		;__	Low byte of Address B
+			STA RUNMOD_TileDataTop+6, X
+			PLA		;__	Low byte of Address D
+			STA RUNMOD_TileDataBot+6, X
 
-		tay
-		clc
-		adc	block_size
-		tax
-		dex
+			LDA #<PPU_ADDR
+			STA RUNMOD_TileDataTop+3, X
+			STA RUNMOD_TileDataBot+3, X
+			STA RUNMOD_TileDataTop+8, X
+			STA RUNMOD_TileDataBot+8, X
 
-		lsr	block_size	; Discard the extra bit since the center element doesn't need swapping (if it exists)
+			TXA
+			STA ud_tiles_current_ptr_pos
+			SEC
+			SBC #10
+			TAX
 
-		; A: data mover
-		; X: left ptr
-		; Y: right ptr
-
-	@loop:
-		lda	VRAM_BUF,	X
-		sta	swap
-		lda	VRAM_BUF,	Y
-		sta	VRAM_BUF,	X
-		lda	swap
-		sta	VRAM_BUF,	Y
-		iny
-		dex
-		dec	block_size
-		bne	@loop
-
-	rts
-
+			DEC column_idx
+			BMI @fin
+			JMP @write_loop
 
 write_loop:	; literally the same for both unified and separate writes
 	@start:
@@ -1735,7 +1724,7 @@ write_loop:	; literally the same for both unified and separate writes
 ; [Not available in C]
 .segment "WRAMCODE"
 
-.proc fl_seqLvlUDTiles
+.proc fl_lvlRenderUDTiles
 	;	Write architecture:
 	;		VRAM buffer (initial write):
 	;	Wr:	|	 Write A	|  Write B	|	 Write C	|  Write D	|
@@ -1756,102 +1745,42 @@ write_loop:	; literally the same for both unified and separate writes
 
 
 	;		Instruction buffer:
-	;	| Instruct.	| Addr A	| Len A	| Addr C	| Addr B	| Len B	| Addr D	|
-	;	|	0	1	|	2	3	|	4	|	5	6	|	7	8	|	9	|	10	11	|
+	;	| Instruct.	|
+	;	|	0	1	|
 
-	lda	PPU_CTRL_VAR
-	and #<~$04
-	sta	PPU_CTRL
+	SelfMod		= 0
 
-	partA:
+	lda	PPU_CTRL_VAR	;
+	and #<~$04			;	Set horizontal mode
+	sta	PPU_CTRL		;__
 
-		pla				;
-		sta	PPU_ADDR	;	Store address A
-		pla				;
-		sta PPU_ADDR	;__
-		pla				;__	Get length A
+	RUNMOD_TileAddrTop:
+	lda #SelfMod	;
+	sta PPU_ADDR	;	Store address A
+	lda #SelfMod	;
+	sta PPU_ADDR	;__
+	RUNMOD_TileDataTop:
+	.repeat 34		;	Store A data
+	lda #SelfMod	;	Store B address
+	sta	PPU_DATA	;	Store B data
+	.endrepeat		;__
 
-		sty	NAME_UPD_PTR
-		tax
-		tay
-		@loopA:
-			lda (NAME_UPD_PTR),y
-			sta PPU_DATA
-			dey
-			bne	@loopA
-		@finalWriteA:
-			lda (NAME_UPD_PTR),y
-			sta PPU_DATA
-		txa
-		tay
-		sec
-		adc	NAME_UPD_PTR
-		sta	NAME_UPD_PTR
-
-	partC:
-		pla				;
-		sta	PPU_ADDR	;	Store address C
-		pla				;
-		sta PPU_ADDR	;__
-
-		@loopC:
-			lda (NAME_UPD_PTR),y
-			sta PPU_DATA
-			dey
-			bne	@loopC
-		@finalWriteC:
-			lda (NAME_UPD_PTR),y
-			sta PPU_DATA
-		txa
-		tay
-		sec
-		adc	NAME_UPD_PTR
-		sta	NAME_UPD_PTR
-
-	partB:
-		pla				;
-		sta	PPU_ADDR	;	Store address B
-		pla				;
-		sta PPU_ADDR	;__
-		pla				;__	Get length B
-
-		tax
-		tay
-		@loopB:
-			lda (NAME_UPD_PTR),y
-			sta PPU_DATA
-			dey
-			bne	@loopB
-		@finalWriteB:
-			lda (NAME_UPD_PTR),y
-			sta PPU_DATA
-		txa
-		tay
-		sec
-		adc	NAME_UPD_PTR
-		sta	NAME_UPD_PTR
-
-	partD:
-		pla				;
-		sta	PPU_ADDR	;	Store address D
-		pla				;
-		sta PPU_ADDR	;__
-
-		@loopD:
-			lda (NAME_UPD_PTR),y
-			sta PPU_DATA
-			dey
-			bne	@loopD
-		@finalWriteD:
-			lda (NAME_UPD_PTR),y
-			sta PPU_DATA
-		txa
-		tay
-		sec
-		adc	NAME_UPD_PTR
-		tay
-
+	RUNMOD_TileAddrBot:
+	lda #SelfMod	;
+	sta PPU_ADDR	;	Store address C
+	lda #SelfMod	;
+	sta PPU_ADDR	;__
+	RUNMOD_TileDataBot:
+	.repeat 34		;	Store C data
+	lda #SelfMod	;	Store D address
+	sta	PPU_DATA	;	Store D data
+	.endrepeat		;__
 	rts
+
+	.export RUNMOD_fl_lvlRenderUDTiles_TileAddrTop := RUNMOD_TileAddrTop
+	.export RUNMOD_fl_lvlRenderUDTiles_TileAddrBot := RUNMOD_TileAddrBot
+	.export RUNMOD_fl_lvlRenderUDTiles_TileDataTop := RUNMOD_TileDataTop
+	.export RUNMOD_fl_lvlRenderUDTiles_TileDataBot := RUNMOD_TileDataBot
 .endproc
 
 
