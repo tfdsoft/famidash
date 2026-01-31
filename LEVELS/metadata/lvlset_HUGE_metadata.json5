@@ -1365,6 +1365,28 @@
 					offsetY: -8
 				},
 			],
+		},
+		{
+			level: "thetower",
+			lowerText: "THE TOWER",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "NORMAL",
+			stars: 5,
+			songID: "song_final_battle",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x03,
+			startingGroundColor: 0x02,
+			spawnYPositionHi: 0xA0,
+			spawnYPositionLow: 0x00,
+			scrollYPositionHi: 0x02,
+			scrollYPositionLow: 0x80,
+			parallaxDisable: true,
+			forcePlatformer: true,
+			maxFallSpeed: 0x07,
 		}
 	],
 	community_levels: [

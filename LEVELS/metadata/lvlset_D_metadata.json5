@@ -32,6 +32,35 @@
 		},
 		*/
 		{
+			level: "demonpark",
+			lowerText: "DEMON PARK",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "EASYDEMON",
+			stars: 10,
+			songID: "song_time_machine",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x06,
+			objectOffsets: [
+				{
+					coordinates: [
+						[314, 18],	[315, 18],	[602, 9],		//deco
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[314, 21],	[315, 21],	[459, 15],	[491, 14],	[584, 10],	[597, 13],	[601, 13],	[616, 11],	[619, 11],	[622, 12],	[625, 12],		//deco
+					],
+					offsetY: -8
+				},
+			]
+		},
+		{
 			level: "speedracer",
 			lowerText: "SPEED RACER",
 			decoType: "EXTRASPRITES1",

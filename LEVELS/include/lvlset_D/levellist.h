@@ -2,6 +2,7 @@
 // Exported by export_levels.py
 
 const uint8_t difficulty_list[] = {
+	EASYDEMON,	// demonpark
 	EASYDEMON,	// speedracer
 	EASYDEMON,	// respite
 	MEDIUMDEMON,	// goldenhaze
@@ -26,6 +27,7 @@ const uint8_t difficulty_list[] = {
 };
 
 const uint8_t stars_list[] = {
+	10,	// demonpark
 	10,	// speedracer
 	10,	// respite
 	10,	// goldenhaze
