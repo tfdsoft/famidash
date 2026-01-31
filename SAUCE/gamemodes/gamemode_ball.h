@@ -78,6 +78,7 @@ void ball_movement(){
 			table_offset = black_orb;
 			collided = BLACK_ORB;
 			crossPRGBankJump0(sprite_gamemode_controller_check);
+			idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x02);
 		}
 	}
 	
