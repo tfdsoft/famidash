@@ -1353,76 +1353,10 @@ prlxSeamAddrHiTbl:
 			ORA	#>collMap0		;	Get high byte
 			STA	collmap_ptr+1	;__
 
-		@get_write_type:
-			; 2 scenarios: one write 64 tiles long, or 4 writes, 16-x and x tiles long each (thanks jrowe screen extension)
-			LDY rld_column
-			jne write_separate
-
-	write_unified:
-		@shift_addr:
-			LDA	this_seam_pos	;__	Get bits: hhll uuuu (u will be ignored)
-			ASL					;	Double 8-bit left shift
-			ADC	#$80			;	to shift the mm bits to the high byte
-			ROL					;__	to get ll00 00hh
-		@store_low:
-			TAY					;__	Tmp storage
-			AND	#$C0			;__	Store the low byte for X=0
-			STA	instBufWriteBuffer+3
-		@store_high:
-
-			LDA	_scroll_x+1		;	Thanks jroweboy
-			AND	#$01			;
-			TAX					;__
-			TYA					;	Get X of nametable
-			AND	#$03			;__
-			ORA	draw_screen_R::tileNtAddrHiTbl, X
-			LDY	this_seam_pos+1	;
-			BEQ	:+				;	Get Y of nametable
-				ORA	#$08		;__
-			:	STA	instBufWriteBuffer+2;__	Store the high byte of nametable addr
-		@store_length:
-			LDA	#64-1				;	Store length
-			STA	instBufWriteBuffer+4;__
-
-		jsr write_loop
-
-		; Current X is VRAM_INDEX + 32
-
-		TXA
-		CLC
-		ADC	#UnifiedTileWriteSize-32
-		STA	VRAM_INDEX
-
-		; TODO eventually: parallax
-
-		lda	#<(fl_updSeqNormal-1)
-		sta	instBufWriteBuffer+5
-		lda	#>(fl_updSeqNormal-1)
-		sta	instBufWriteBuffer+6
-
-		jsr	set_horz_vbuf_seq
-
-		ldx #7
-		jsr transferWriteToInstBuf
-
-		LDA #1
-		LDX	#0
-
-		RTS
-
-	write_separate:
+	write:
 		;	Write architecture:
 
-		;		VRAM buffer (initial write):
-		;	Wr:	|	 Write A	|  Write B	|	 Write C	|  Write D	|
-		;	Len:|	  32-X		|	  X		|	  32-X		|	  X		|
-		;	NT:	|	NT. A/C		|	NT. B/D	|	NT. A/C		|	NT. B/D	|
-		;	Tile|			Lower			|			Upper			|
-		;	X:	|		X		|	  0		|		X		|	  0		|
-		;	Off:|			0..31			|			32..63			|
-		;		 \  Combined length of 32  / \  Combined length of 32  /
-		;
-		;		VRAM buffer (new write):
+		;		the runtime buffer:
 		;	Wr:	|  Write A	|	 Write B	|  Write C	|	 Write D	|
 		;	Len:|	  X		|	  32-X		|	  X		|	  32-X		|
 		;	NT:	|	NT. B/D	|	NT. A/C		|	NT. B/D	|	NT. A/C		|
@@ -1491,6 +1425,7 @@ prlxSeamAddrHiTbl:
 			LDA	#16				;
 			SEC					;	Get length of writes A & C
 			SBC	rld_column		;__
+			AND #$0F			;__
 			STA tmp3
 
 			LDA	#$0F
@@ -1498,6 +1433,11 @@ prlxSeamAddrHiTbl:
 
 			LDX	#160
 		@write_loop:
+			DEC tmp3
+			BMI @write_new_write
+
+		@write_loop_tiles:
+
 			LDY	column_idx			;
 			LDA	(collmap_ptr),	Y	;	Get metatile
 			TAY						;__
@@ -1515,9 +1455,6 @@ prlxSeamAddrHiTbl:
 			SEC
 			SBC #10
 			TAX
-
-			DEC tmp3
-			BEQ @write_new_write
 
 			DEC	column_idx
 			BPL @write_loop
@@ -1563,34 +1500,7 @@ prlxSeamAddrHiTbl:
 			SBC #10
 			TAX
 
-			DEC column_idx
-			BMI @fin
-			JMP @write_loop
-
-write_loop:	; literally the same for both unified and separate writes
-	@start:
-		LDA	#$0F
-		STA	column_idx
-		LDX	VRAM_INDEX
-	@loop:
-		LDY	column_idx			;
-		LDA	(collmap_ptr),	Y	;	Get metatile
-		TAY						;__
-
-		LDA	metatiles_top_left,	Y	;
-		STA	VRAM_BUF+33, X			;
-		LDA	metatiles_top_right,Y	;
-		STA	VRAM_BUF+32, X			;	Get and store the tiles
-		LDA	metatiles_bot_left,	Y	;	into the VRAM buffer
-		STA	VRAM_BUF+1, X			;
-		LDA	metatiles_bot_right,Y	;
-		STA	VRAM_BUF+0, X			;__
-
-		INX
-		INX
-		DEC	column_idx
-		BPL @loop
-	RTS
+			JMP @write_loop_tiles
 
 .endproc
 
