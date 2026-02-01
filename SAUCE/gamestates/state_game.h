@@ -300,7 +300,7 @@ void set_player_banks() {
 		}
 		
 		if ((gamemode == GAMEMODE_NINJA && !retro_mode) || gamemode == GAMEMODE_POGO) mmc3_set_2kb_chr_bank_0(NINJABANK);
-		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE)) mmc3_set_2kb_chr_bank_0(iconbank2);
+		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE)) mmc3_set_2kb_chr_bank_0(iconbank2);
 		else if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_SHIP || gamemode == GAMEMODE_UFO) mmc3_set_2kb_chr_bank_0(iconbank3);
 		else mmc3_set_2kb_chr_bank_0(iconbank1);
 
@@ -489,7 +489,7 @@ void everything_else() {
 					else if ((joypad1.press_a) && DEBUG_MODE) {
 						nocamlock = 1;
 	#ifdef FLAG_KANDO_FUN_STUFF
-						gamemode == GAMEMODE_POGO ? gamemode = GAMEMODE_CUBE : gamemode++;
+						gamemode == GAMEMODE_SNAKE ? gamemode = GAMEMODE_CUBE : gamemode++;
 	#else
 						gamemode == GAMEMODE_SWING ? gamemode = GAMEMODE_CUBE : gamemode++;
 	#endif			

@@ -36,6 +36,8 @@
 #define GAMEMODE_SWING  0x07
 #define GAMEMODE_NINJA  0x08
 #define GAMEMODE_POGO  0x09
+#define GAMEMODE_SNAKE 0x0A
+#define GAMEMODE_FOOTBALL 0x0B
 
 // table_idx masks
 #define TBLIDX_GRAV	0b001

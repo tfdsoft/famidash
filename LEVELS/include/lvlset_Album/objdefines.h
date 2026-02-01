@@ -116,7 +116,7 @@
 #define TELEPORT_PORTAL_DOWNWARDS_ENTER		0x68
 #define TELEPORT_PORTAL_UPWARDS_EXIT		0x69
 #define POGO_MODE			0x6A
-#define NOTHING1			0x6B			//unused
+#define SNAKE_MODE			0x6B
 #define NOTHING2			0x6C			//unused
 #define SPEED_SLOW				0x6D
 #define MINI_COIN				0x6E
