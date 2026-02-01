@@ -101,7 +101,7 @@ How to make levels:
 
 
 ### NerdBoy628's level editor
-* **This editor is still a work in progress.** Some features are absent or are being wokred on. However, the rest of the steps from the Famidash Level Editor can be applied here.
+* **This editor is still a work in progress.** Some features are absent or are being worked on. However, the rest of the steps from the Famidash Level Editor can be applied here.
 
 
 ### Tiled level editor
