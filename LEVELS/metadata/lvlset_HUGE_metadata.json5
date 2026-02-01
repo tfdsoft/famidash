@@ -1375,7 +1375,7 @@
 			sawSet: "A",
 			difficulty: "NORMAL",
 			stars: 5,
-			songID: "song_final_battle",
+			songID: "song_desert_city",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x03,

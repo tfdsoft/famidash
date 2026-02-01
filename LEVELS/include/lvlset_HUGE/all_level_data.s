@@ -3180,7 +3180,7 @@
 		.byte <sprite_data_thetower ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_thetower ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_thetower)) ;___ Sprite data bank
-		.byte song_final_battle ;________________ Song ID
+		.byte song_desert_city ;_________________ Song ID
 		.byte (0 << 4) | 0 ;_____________________ Starting game mode and speed
 		.byte ($A0) ;____________________________ Spawn Y Position (high byte)
 		.byte ($00) ;____________________________ Spawn Y Position (low byte)
