@@ -1,10 +1,10 @@
 # Contributing to Famidash
 
-congration you have decided to contribute to nintendo family computer geometry dash this guideline will show you the guidelines
+congregations you have decided to contribute to nintendo family computer geometry dash this guideline will show you the guidelines
 
 ## overview
 
-Famidash has grown to be a large project, which means there are a few guidelines to abide by when contributing. Generally, you should ALWAYS create a fork somewhere else, then apply your changes there. To get those changes into the main branch, opening up a pull request is necessary. Your changes will then be reviewed by a maintainers and merged if deemed appropriate. Don't create PRs for every little change; instead do all of your changes in your fork, then open up a single PR for all of them. If it isn't clear already, direct commits (unless by a maintainer for housekeeping or other reasons) are frowned upon and will immediately be reverted upon discovery.
+Famidash has grown to be a large project, which means there are a few guidelines to abide by when contributing. Generally, you should ALWAYS create a fork somewhere else, then apply your changes there. To get those changes into the main branch, opening up a pull request is necessary. Your changes will then be reviewed by the maintainers and merged if deemed appropriate. Don't create PRs for every little change; instead do all of your changes in your fork, then open up a single PR for all of them. If it isn't clear already, direct commits (unless by a maintainer for housekeeping or other reasons) are frowned upon and will immediately be reverted upon discovery.
 
 Your PR may be accepted or rejected at the maintainers' discretion; as such, they are not obliged to disclose the reason of a potential rejection, so don't even bother pestering them about it. Though if you ask nicely, you might get a more cooperative answer.
 
@@ -63,16 +63,51 @@ Paths are given to relative to the MUSIC folder, unless it begins with a /, then
 
 ## levels (guide by SeaGlowingPro)
 
-To make levels, make sure you have [Tiled level editor](https://www.mapeditor.org/). You also need a local copy of the entire Famidash repository. This is the main way to make Famidash levels, with up-to-date stuff synced with the repo.
+To make levels, download the Famidash Level Editor. Releases/betas can be found in the TFDSoft Discord server under #editor-releases. You also need a local copy of the entire Famidash repository in order to actually test your level on a NES, or an emulator. This is the main way to make Famidash levels, with up-to-date stuff synced with the repo.
 
 You can also use [NerdBoy628's web-based level editor](https://nerdboy628.github.io/famidash-editor/) as an alternative.
+
+For the old original way of making levels, you can use [Tiled level editor](https://www.mapeditor.org/). Please note that there will be major differences with features and level handling unlike the editors mentioned above.
 
 Make sure you also have [Python](https://www.python.org/) installed. It is needed for the exporting and building job. Keep in mind that a ROM can only have a limited amount of levels.
 
 Note: This guide is for Windows users, especially with the apps mentioned above. It might not 100% work with other operating systems.
 
+### Famidash Level Editor
+
+How to find/open levels:
+
+* Navigate to /LEVELS/LEVEL DATA. There should be folders for levels in their respective ROM sides.
+* Go to one of the folders, and choose a level of your choice. The level should be a .tmx file.
+* If you decided a level, you can open it in the editor under the `Open` button or `File > Open TMX`.
+* If you opened a level with .json5 metadata, you can use `Set Options > Attempt JSON load` to load the level's set metadata.
+
+How to make levels:
+
+* The editor starts with a simple blank level. You can start your work there.
+* You can playtest your level progress using the simulator, which can be accessed using `F5`.
+* You can find options for various features and quirks in the editor. However, recommended options for level making include `Level Options > Show Accurate Tileset` and `Level Options > Lock sprites to usable set`.
+* With the two options mentioned above enabled, look for `Set Options`. These will give you an idea on what blocks and sprites will look like in-game. Recommended to prevent random messed up tiles due to being incompatible with the current set.
+* You can also find other options in `Set Options`, including background and ground colors, starting gamemode, level name, level difficulty, stars, maximum fall speed, and the like.
+	- For upper text and lower text, the name should be in UPPERCASE. Maximum characters for level names is 15.
+	- For difficulty, it actually depends on what side the level is in:
+		- If the level is in A or B, difficulties are "AUTO", "EASY", "NORMAL", "HARD", "HARDER", "INSANE" and "DEMON".
+		- If the level is in C or D, difficulties are "EASYDEMON", "MEDIUMDEMON", "HARDDEMON", "INSANEDEMON", "EXTREMEDEMON", "IMPOSSIBLEDEMON" and "GRANDPADEMON".
+		- You can use every difficulty if the level is in the Huge Man ROM.
+	- For starting background/ground colors, it should link to the index of a color you want to start with. Refer to [PPU palettes](https://www.nesdev.org/wiki/PPU_palettes) for reference.
+	- For the maximum fall speed, 0x07 is recommended as this is nearly accurate to GD. Without the argument, the default speed set is 0x06.
+* Once the metadata is complete, you can export the .json file later.
+* You can navigate and use the editor's built-in tools to make level making faster.
+
+
+### NerdBoy628's level editor
+* **WIP**
+
+
+### Tiled level editor
 
 How to open/view levels:
+
 * Navigate to /LEVELS/LEVEL DATA. There should be folders for levels in their respective ROM sides.
 * Go to one of the folders, and open a level of your choice. The level should be a .tmx file.
 * If the level you opened only shows red X boxes, it means the image files linked to the level weren't found. You should look at /GRAPHICS/ to find the files. The names of the files are `famidash.bmp` and `sprites.png`.
@@ -83,33 +118,32 @@ How to make levels:
 	- If it shows red X boxes, refer to bullet 3 on how to open/view levels.
 * **It is recommended to playtest your layout/level in actual Geometry Dash**, as playtesting in Famidash is complicated and not instant due to technical stuff.
 * Once you're making a level, keep note that all tiles in `famidash` should be placed in the empty nameless layer, and all tiles in `sprites` should be in the SP layer. Putting them at the wrong layers will cause wrong tiles and sprites to load in-game.
-* Please note that **you shouldn't flip and rotate tiles** in the editor. Doing so will cause their IDs to be beyond the metatile ID limit, causing invalid tile IDs which causes build errors.
+* Please note that **you shouldn't flip and rotate tiles** in the editor. Doing so will cause their IDs to be beyond the metatile ID limit, causing invalid tile IDs which will result to build errors.
 * For triggers like color changes, enable trail triggers, and invisible gravity portals, they should be placed 10 tiles to the right, and within the player's current view. Placing them outside the player view will not load them. In other words, the triggers have to "load" within the game in order to trigger them.
-* For Tiled, you can also do a little trickery in level making by utilizing their built-in tools, including, but not limited to, `Shape Fill Tool`, `Random Mode`, and `Bucket Fill Tool`.
+* You can also do a little trickery in level making by utilizing Tiled's built-in tools, including, but not limited to, `Shape Fill Tool`, `Random Mode`, and `Bucket Fill Tool`.
+
+
+### Adding the level in-game
 
 How to add levels:
 
 * To add levels, the .tmx file with the level you made should be placed within one of the folders linking to a ROM side. (example: /LEVELS/LEVEL DATA/lvlset_X/your_level.tmx)
 * Once your level is in a folder, you must look for the level metadata file corresponding to that side, which can be found in /LEVELS/metadata/lvlset_X_metadata.json5.
-* Once you set up the metadata, what's left is exporting the level and building it.
+* After you set up the metadata, what's left is exporting the level and building it.
 
 How to set up a level's metadata:
 
+* **Note: If you used the Tiled editor, it is important to follow this guide. Other editors have the metadata and .json5 file already set up for you.**
 * Look for a metadata template in any of the .json5 files. This will serve as a guide to set up the level's metadata. More importantly, here are some important metadata conditions and arguments needed:
-	- For upperText and lowerText arguments, the name should be in UPPERCASE
-	- For decoType, arguments are "DECO1", "DECOCLOUD", and "EXTRASPRITES1"
-	- For spikeSet, arguments are "A", "B", and "C"
-	- For blockSet, arguments are "A", "B", "C", and "D"
-	- For sawSet, arguments are "A" and "LETTERBANK"
-	- For difficulty, it actually depends on what side the level is in:
-		- If the level is in A, B or HUGE, difficulties are "AUTO", "EASY", "NORMAL", "HARD", "HARDER", "INSANE" and "DEMON"
-		- If the level is in C or D, difficulties are "EASYDEMON", "MEDIUMDEMON", "HARDDEMON", "INSANEDEMON", "EXTREMEDEMON", "IMPOSSIBLEDEMON" and "GRANDPADEMON"
-	- For stars, you can put a number, which will be the amount of stars a level will have
-		- Please note that difficulty and stars are important to keep in the metadata, otherwise the level won't export
-	- For the songID, it must link to a song that already exists in the ROM side. Most songs follow the `song_name_of_the_music` format
-	- For starting colors, it should link to the index of a color you want to start with. Refer to [PPU palettes](https://www.nesdev.org/wiki/PPU_palettes) for reference.
-	- For maxFallSpeed, 0x07 is recommended as this is nearly accurate to GD. Without the maxFallSpeed argument, the default speed set is 0x06
-	- For parallaxDisable, enabling it with true will replace the level background in-game with a blank color background
+	- For conditions not listed here, please refer to the `How to make levels` section in the Famidash editor, as the steps are pretty much identical.
+	- For decoType, arguments are "DECO1", "DECOCLOUD", and "EXTRASPRITES1".
+	- For spikeSet, arguments are "A", "B", and "C".
+	- For blockSet, arguments are "A", "B", "C", and "D".
+	- For sawSet, arguments are "A" and "LETTERBANK".
+	- For stars, you can put a number, which will be the amount of stars a level will have.
+		- Please note that difficulty and stars are important to keep in the metadata, otherwise the level won't export.
+	- For the songID, it must link to a song that already exists in the ROM side. Most songs follow the `song_name_of_the_music` format.
+	- For parallaxDisable, enabling it with true will replace the level background in-game with a blank color background.
 
 How to export and update levels:
 
