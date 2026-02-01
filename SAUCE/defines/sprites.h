@@ -340,17 +340,17 @@ const unsigned char * const WAVE2[] = {WAVE2_0, WAVE2_0, WAVE2_1, WAVE2_2, WAVE2
 
 const unsigned char MINI_WAVE_0[]={
 
-	 -4,  4,0x11,3|OAM_FLIP_V,
+	 -4,  4,0x0F,3|OAM_FLIP_V,
 	0x80
 };
 const unsigned char MINI_WAVE_2[]={
 
-	 -4,  -4,0x0D,3,
+	 -4,  -4,0xB,3,
 	0x80
 };
 const unsigned char MINI_WAVE_6[]={
 
-	 -4,  -4,0x11,3,
+	 -4,  -4,0x0F,3,
 	0x80
 };
 
@@ -362,17 +362,17 @@ const unsigned char * const MINI_WAVE[] = {MINI_WAVE_0, MINI_WAVE_0, MINI_WAVE_0
 
 const unsigned char MINI_WAVE2_0[]={
 
-	 -4,  -6,0x11,1|OAM_FLIP_V,
+	 -4,  -6,0x0F,1|OAM_FLIP_V,
 	0x80
 };
 const unsigned char MINI_WAVE2_2[]={
 
-	 -4,  -6,0x0D,1,
+	 -4,  -6,0x0B,1,
 	0x80
 };
 const unsigned char MINI_WAVE2_6[]={
 
-	 -4,  -6,0x11,1,
+	 -4,  -6,0x0F,1,
 	0x80
 };
 
@@ -522,68 +522,68 @@ const unsigned char * const CUBE[] = {Cube_0, Cube_1, Cube_2, Cube_3, Cube_4, Cu
 
 const unsigned char Pogo_0[]={
 
-	 -8,  0,0x25,3,
-	  0,  0,0x25,3|OAM_FLIP_H,
+	 -8,  0,0x11,3,
+	  0,  0,0x11,3|OAM_FLIP_H,
 	0x80
 };
 
 const unsigned char Pogo_1[]={
 
-	 -8,  0,0x27,3,
-	  0,  0,0x27,3|OAM_FLIP_H,
+	 -8,  0,0x13,3,
+	  0,  0,0x13,3|OAM_FLIP_H,
 	0x80
 };
 
 
-const unsigned char * const POGO[] = {Pogo_0, Pogo_1, Pogo_0, Pogo_0, Pogo_0, Pogo_0, Pogo_0, Pogo_0};
+const unsigned char * const POGO[] = {Pogo_0, Pogo_1};
 // end cube
 
 
 const unsigned char Pogo2_0[]={
 
-	 -8,  0,0x25,1,
-	  0,  0,0x25,1|OAM_FLIP_H,
+	 -8,  0,0x11,1,
+	  0,  0,0x11,1|OAM_FLIP_H,
 	0x80
 };
 const unsigned char Pogo2_1[]={
 
-	 -8,  0,0x27,1,
-	  0,  0,0x27,1|OAM_FLIP_H,
+	 -8,  0,0x13,1,
+	  0,  0,0x13,1|OAM_FLIP_H,
 	0x80
 };
 
-const unsigned char * const POGO2[] = {Pogo2_0, Pogo2_1, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0, Pogo2_0};
+const unsigned char * const POGO2[] = {Pogo2_0, Pogo2_1};
 	
 	
 const unsigned char Mini_Pogo_0[]={
 
-	-4,  -4,0x29,3,
+	-4,  -4,0x15,3,
 	0x80
 };
 	
 const unsigned char Mini_Pogo_1[]={
 
-	-4,  -4,0x2B,3,
+	-4,  -4,0x17,3,
 	0x80
 };
 	
-const unsigned char * const MINI_POGO[] = {Mini_Pogo_0, Mini_Pogo_1, Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0, Mini_Pogo_0};
+const unsigned char * const MINI_POGO[] = {Mini_Pogo_0, Mini_Pogo_1};
 
 	
 const unsigned char Mini_Pogo2_0[]={
 
-	-4,  -4,0x29,1,
+	-4,  -4,0x15,1,
 	0x80
 };
 	
 	
 const unsigned char Mini_Pogo2_1[]={
 
-	-4,  -4,0x2B,1,
+	-4,  -4,0x17,1,
 	0x80
 };
 	
-const unsigned char * const MINI_POGO2[] = {Mini_Pogo2_0, Mini_Pogo2_1, Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0, Mini_Pogo2_0};
+const unsigned char * const MINI_POGO2[] = {Mini_Pogo2_0, Mini_Pogo2_1};
 
 
 	

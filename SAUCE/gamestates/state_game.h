@@ -299,8 +299,8 @@ void set_player_banks() {
 			iconbank1 = 22; iconbank2 = 26; iconbank3 = 18;
 		}
 		
-		if ((gamemode == GAMEMODE_NINJA && !retro_mode) || gamemode == GAMEMODE_POGO) mmc3_set_2kb_chr_bank_0(NINJABANK);
-		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE)) mmc3_set_2kb_chr_bank_0(iconbank2);
+		if ((gamemode == GAMEMODE_NINJA && !retro_mode)) mmc3_set_2kb_chr_bank_0(NINJABANK);
+		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE || gamemode == GAMEMODE_POGO)) mmc3_set_2kb_chr_bank_0(iconbank2);
 		else if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_SHIP || gamemode == GAMEMODE_UFO) mmc3_set_2kb_chr_bank_0(iconbank3);
 		else mmc3_set_2kb_chr_bank_0(iconbank1);
 
@@ -523,7 +523,7 @@ void everything_else() {
 					DEBUG_MODE = !DEBUG_MODE; 
 					cube_data[0] &= 2; 
 					cube_data[1] &= 2; 
-					if (!DEBUG_MODE) nocamlock = 0;
+					//if (!DEBUG_MODE) nocamlock = 0;
 				}		
 		#endif
 		if (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.hold & (PAD_UP | PAD_DOWN))) {
