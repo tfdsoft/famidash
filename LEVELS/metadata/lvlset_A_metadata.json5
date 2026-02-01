@@ -1375,7 +1375,7 @@
 			sawSet: "A",
 			difficulty: "NORMAL",
 			stars: 5,
-			songID: "song_cant_let_go",
+			songID: "song_desert_city",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x03,

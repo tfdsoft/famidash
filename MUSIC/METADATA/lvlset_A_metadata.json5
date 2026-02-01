@@ -267,6 +267,11 @@
 			originalArtistText: "MDK",
 		},
 		{
+			fmsSongName: "Desert City",
+			lowerText: "DESERT CITY",
+			originalArtistText: "KEVIN MACLEOD",
+		},
+		{
 			fmsSongName: "The Challenge",
 			upperText: "THE",
 			lowerText: "CHALLENGE",

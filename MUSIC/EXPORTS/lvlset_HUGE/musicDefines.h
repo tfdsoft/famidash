@@ -111,8 +111,9 @@
 #define song_select_payment_type 110
 #define song_ultimatedestruction 111
 #define song_cant_let_go 112
-#define song_the_challenge 113
-#define song_flow 114
-#define song_lost 115
-#define song_youve_been_trolled 116
-#define song_max 117
+#define song_desert_city 113
+#define song_the_challenge 114
+#define song_flow 115
+#define song_lost 116
+#define song_youve_been_trolled 117
+#define song_max 118
