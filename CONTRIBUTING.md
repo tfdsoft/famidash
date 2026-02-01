@@ -71,7 +71,7 @@ For the old original way of making levels, you can use [Tiled level editor](http
 
 Make sure you also have [Python](https://www.python.org/) installed. It is needed for the exporting and building job. Keep in mind that a ROM can only have a limited amount of levels.
 
-Note: This guide is for Windows users, especially with the apps mentioned above. It might not 100% work with other operating systems.
+*Note: This guide is for Windows users, especially with the apps mentioned above. It might not 100% work with other operating systems like Mac or Linux.*
 
 ### Famidash Level Editor
 
@@ -101,7 +101,7 @@ How to make levels:
 
 
 ### NerdBoy628's level editor
-* **WIP**
+* **This editor is still a work in progress.** Some features are absent or are being wokred on. However, the rest of the steps from the Famidash Level Editor can be applied here.
 
 
 ### Tiled level editor
@@ -154,6 +154,7 @@ Common errors when exporting/building:
 
 * While building the ROMs, if a memory bank byte overflow happens in the middle of building, it means that there is not enough ROM space. It is usually solved by removing some existing levels or optimizing a level, specifically sprites and level length.
 * While exporting levels, if it doesn't export and shows that it expected a comma or another character, it means that there is a syntax error in a .json5 file.
+* If you playtest your level on the actual game, but you found changes that weren't supposed to happen, double check if you exported the level or set up its metadata correctly.
 
 
 For any concerns and problems regarding level making and exporting, feel free to ask the developers for help. (response times will vary)
