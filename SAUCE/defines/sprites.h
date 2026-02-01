@@ -48,32 +48,6 @@ const unsigned char MINICOIN_SPRITE4[]={
 };
 
 
-const unsigned char Heat_Ball_1[]={
-
-	  0,  0,0x1D,3,
-	0x80
-};
-
-const unsigned char Heat_Ball_2[]={
-
-	  0,  0,0x1D,3|OAM_FLIP_H,
-	0x80
-};
-
-const unsigned char Heat_Ball_3[]={
-
-	  0,  8,0x1D,3|OAM_FLIP_V,
-	0x80
-};
-
-const unsigned char Heat_Ball_4[]={
-
-	  0,  8,0x1D,3|OAM_FLIP_V|OAM_FLIP_H,
-	0x80
-};
-
-const unsigned char * const Heat_Ball_Sprites[] = {Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_1,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_2,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_3,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4,Heat_Ball_4};
-
 
 
 

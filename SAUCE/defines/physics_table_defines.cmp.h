@@ -171,36 +171,6 @@ const uint8_t SWING_GRAVITY_lo[] = {0x48, 0xB8, 0x51, 0xAF, 0x32, 0xCE, 0x38, 0x
 const uint8_t SWING_GRAVITY_hi[] = {0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF};
 #define SWING_GRAVITY(table_idx) (lohi_arr16_load(SWING_GRAVITY, table_idx))
 
-// Depends on framerate
-const uint8_t JIMSHEATBALL_MAX_FALLSPEED_lo[] = {0x9A, 0x00};
-#define JIMSHEATBALL_MAX_FALLSPEED_hi 0x03
-#define JIMSHEATBALL_MAX_FALLSPEED(framerate) ( \
-	__A__ = framerate, \
-	__asm__("tay"), \
-	__asm__("ldx #%b \n lda %v, y", (uint8_t)JIMSHEATBALL_MAX_FALLSPEED_hi, JIMSHEATBALL_MAX_FALLSPEED_lo), \
-	__AX__ \
-)
-
-// Depends on framerate
-const uint8_t JIMSHEATBALL_GRAVITY_lo[] = {0x4B, 0x34};
-#define JIMSHEATBALL_GRAVITY_hi 0x00
-#define JIMSHEATBALL_GRAVITY(framerate) ( \
-	__A__ = framerate, \
-	__asm__("tay"), \
-	__asm__("ldx #%b \n lda %v, y", (uint8_t)JIMSHEATBALL_GRAVITY_hi, JIMSHEATBALL_GRAVITY_lo), \
-	__AX__ \
-)
-
-// Depends on framerate
-const uint8_t JIMSHEATBALL_JUMP_VEL_lo[] = {0xBA, 0x70};
-const uint8_t JIMSHEATBALL_JUMP_VEL_hi[] = {0xFB, 0xFC};
-#define JIMSHEATBALL_JUMP_VEL(framerate) (lohi_arr16_load(JIMSHEATBALL_JUMP_VEL, framerate))
-
-// Depends on framerate
-const uint8_t JIMSHEATBALL_JUMP_VEL_d4x7_lo[] = {0x85, 0xC4};
-const uint8_t JIMSHEATBALL_JUMP_VEL_d4x7_hi[] = {0xF8, 0xF9};
-#define JIMSHEATBALL_JUMP_VEL_d4x7(framerate) (lohi_arr16_load(JIMSHEATBALL_JUMP_VEL_d4x7, framerate))
-
 const uint8_t MAKE_CUBE_JUMP_HIGHER_lo[] = {0x66, 0x9A, 0x66, 0x9A, 0x80, 0x80, 0x80, 0x80};
 const uint8_t MAKE_CUBE_JUMP_HIGHER_hi[] = {0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00, 0xFF, 0x00};
 #define MAKE_CUBE_JUMP_HIGHER(table_idx) (lohi_arr16_load(MAKE_CUBE_JUMP_HIGHER, table_idx))

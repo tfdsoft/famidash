@@ -40,21 +40,7 @@ void draw_sprites(){
 		// else if (practice_sprite_x_pos < 10) {}
 	}
 
-	if (retro_mode) {
-		tmp9 = 0;
-		do {
-			if (jimsheatballalive[tmp9]) {
-				oam_meta_spr(jimsheatballx[tmp9 & 0x7F], idx16_load_hi_NOC(jimsheatbally, tmp9), Heat_Ball_Sprites[jimsheatballframe[tmp9] & 0x7F]);		
-				jimsheatballframe[tmp9] == 20 ? jimsheatballframe[tmp9] = 0 : idx8_inc(jimsheatballframe, tmp9);
-				jimsheatballx[tmp9 & 0x7F] >= 0xF8 ? jimsheatballalive[tmp9] = 0 : idx16_inc_NOC(jimsheatballx, tmp9);
-			}
-		} while (++tmp9 < MAX_FIREBALLS);
-	}
 
-	
-
-
-	
 
 	// The flickering motherfucker, by jrowe
 	shuffle_offset = (shuffle_offset + 11) & 0x0F;

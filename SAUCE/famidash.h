@@ -230,13 +230,6 @@ uint8_t auto_practicepoints;
 #endif
 
 
-uint8_t jimsheatballalive[MAX_FIREBALLS]; //jims heatball shit
-uint16_t jimsheatballx[MAX_FIREBALLS]; //jims heatball shit
-uint16_t jimsheatbally[MAX_FIREBALLS];
-int16_t jimsheatball_vel_x[MAX_FIREBALLS];
-int16_t jimsheatball_vel_y[MAX_FIREBALLS];
-uint8_t jimsheatballframe[MAX_FIREBALLS];
-
 //uint8_t greyscale_mode;
 
 //uint8_t practice_famistudio_state[0xbf];

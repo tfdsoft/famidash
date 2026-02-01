@@ -88,8 +88,6 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	player_y[1] = spawn_y_pos;
 	currplayer_y = spawn_y_pos;
 
-	memfill(jimsheatballalive, 0, MAX_FIREBALLS);
-
 	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
 
 	currplayer_gravity = GRAVITY_DOWN;

@@ -11,7 +11,7 @@ void spider_up_wait();
 void spider_down_wait();
 extern char bg_coll_U();
 extern char bg_coll_D();
-void 	retrofireballclear();
+void 	clearrobotjumpframes();
 void settrailstuff();
 
 const unsigned char OUTLINES[]={
@@ -758,34 +758,34 @@ void sprite_collide_lookup() {
 		if (gamemode != collided) currplayer_vel_y /= 2;
 		gamemode = collided;
 		activesprites_activated[index] = 1;
-		retrofireballclear();
+		clearrobotjumpframes();
 		return;
 
 	spcl_robot:
 		exitPortalTimer = 10;
 		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
 		gamemode = GAMEMODE_ROBOT;
-		retrofireballclear();
+		clearrobotjumpframes();
 		return;
 
 	spcl_spider:
 		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
 		gamemode = GAMEMODE_SPIDER;
-		retrofireballclear();		
+		clearrobotjumpframes();		
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
 		return;
 
 	spcl_wave:
 		settrailstuff();		
 		gamemode = GAMEMODE_WAVE;
-		retrofireballclear();		
+		clearrobotjumpframes();		
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
 		return;
 
 	spcl_snake:
 		settrailstuff();		
 		gamemode = GAMEMODE_SNAKE;
-		retrofireballclear();		
+		clearrobotjumpframes();		
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
 		return;
 
@@ -793,7 +793,7 @@ void sprite_collide_lookup() {
 		settrailstuff();
 		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
 		gamemode = GAMEMODE_POGO;
-		retrofireballclear();		
+		clearrobotjumpframes();		
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);	
 		return;
 		
@@ -801,7 +801,7 @@ void sprite_collide_lookup() {
 		settrailstuff();
 		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
 		gamemode = GAMEMODE_SWING;
-		retrofireballclear();		
+		clearrobotjumpframes();		
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);	
 		return;
 
@@ -809,7 +809,7 @@ void sprite_collide_lookup() {
 		#ifdef FLAG_KANDO_FUN_STUFF
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
 			gamemode = GAMEMODE_NINJA;
-			retrofireballclear();
+			clearrobotjumpframes();
 		#endif
 		return;
 
@@ -819,7 +819,7 @@ void sprite_collide_lookup() {
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
 			idx8_inc(activesprites_activated, index);
-			retrofireballclear();
+			clearrobotjumpframes();
 		#endif
 		return;
 
@@ -1225,10 +1225,7 @@ void settrailstuff() {
 	}
 }
 
-void retrofireballclear() {
-	if (retro_mode) {
-		memfill(jimsheatballalive, 0, sizeof(jimsheatballalive));		
-	}
+void clearrobotjumpframes() {
 	robotjumpframe[0] = 0;
 	robotjumpframe[1] = 0;
 }			
