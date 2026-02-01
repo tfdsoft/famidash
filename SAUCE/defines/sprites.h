@@ -354,6 +354,109 @@ const unsigned char MINI_WAVE2_6[]={
 const unsigned char * const MINI_WAVE2[] = {MINI_WAVE2_0, MINI_WAVE2_0, MINI_WAVE2_0, MINI_WAVE2_2, MINI_WAVE2_2, MINI_WAVE2_6, MINI_WAVE2_6, MINI_WAVE2_6};
 
 
+const unsigned char SNAKE_0[]={//DOWN
+
+	 -8,  0,0x25,3,
+	  0,  0,0x27,3,
+	0x80
+};		
+
+const unsigned char SNAKE_2[]={//FLAT
+
+	 -8,  0,0x21,3,
+	  0,  0,0x23,3,
+	0x80
+};	
+
+const unsigned char SNAKE_6[]={//UP
+
+	 -8,  0,0x29,3,
+	  0,  0,0x2B,3,
+
+	0x80
+};		
+
+
+
+const unsigned char * const SNAKE[] = {SNAKE_0, SNAKE_0, SNAKE_2, SNAKE_2, SNAKE_2, SNAKE_2, SNAKE_6, SNAKE_6};
+
+
+const unsigned char SNAKE2_0[]={//DOWN
+
+	 -8,  0,0x25,1,
+	  0,  0,0x27,1,
+	0x80
+};		
+
+const unsigned char SNAKE2_2[]={//FLAT
+
+	 -8,  0,0x21,1,
+	  0,  0,0x23,1,
+	0x80
+};	
+
+const unsigned char SNAKE2_6[]={//UP
+
+	 -8,  0,0x29,1,
+	  0,  0,0x2B,1,
+
+	0x80
+};		
+
+
+
+const unsigned char * const SNAKE2[] = {SNAKE2_0, SNAKE2_0, SNAKE2_2, SNAKE2_2, SNAKE2_2, SNAKE2_2, SNAKE2_6, SNAKE2_6};
+
+
+
+
+const unsigned char MINI_SNAKE_0[]={
+
+	 -4,  -4,0x2F,3,
+	0x80
+};
+
+
+const unsigned char MINI_SNAKE_2[]={
+
+	 -4,  -4,0x2D,3,
+	0x80
+};
+
+
+const unsigned char MINI_SNAKE_6[]={
+
+	 -4,  -4,0x31,3,
+	0x80
+};
+
+const unsigned char * const MINI_SNAKE[] = {MINI_SNAKE_0, MINI_SNAKE_0, MINI_SNAKE_2, MINI_SNAKE_2, MINI_SNAKE_2, MINI_SNAKE_2, MINI_SNAKE_6, MINI_SNAKE_6};
+
+
+const unsigned char MINI_SNAKE2_0[]={
+
+	 -4,  -4,0x2F,1,
+	0x80
+};
+
+
+const unsigned char MINI_SNAKE2_2[]={
+
+	 -4,  -4,0x2D,1,
+	0x80
+};
+
+
+const unsigned char MINI_SNAKE2_6[]={
+
+	 -4,  -4,0x31,1,
+	0x80
+};
+
+
+const unsigned char * const MINI_SNAKE2[] = {MINI_SNAKE2_0, MINI_SNAKE2_0, MINI_SNAKE2_2, MINI_SNAKE2_2, MINI_SNAKE2_2, MINI_SNAKE2_2, MINI_SNAKE2_6, MINI_SNAKE2_6};
+
+
 const unsigned char UFO_0[]={
 
 	 -8,  -1,0x3F,3,
