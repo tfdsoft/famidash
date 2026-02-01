@@ -1208,6 +1208,10 @@ prlxSeamAddrHiTbl:
 .import RUNMOD_fl_lvlRenderUDTiles_TileAddrTop, RUNMOD_fl_lvlRenderUDTiles_TileAddrBot
 .import RUNMOD_fl_lvlRenderUDTiles_TileDataTop, RUNMOD_fl_lvlRenderUDTiles_TileDataBot
 
+.import RUNMOD_fl_lvlRenderUDTiles_AttrLo
+.import RUNMOD_fl_lvlRenderUDTiles_AttrHi0
+.import RUNMOD_fl_lvlRenderUDTiles_AttrHi1
+
 .proc draw_screen_UD_tiles_frame0
 	scroll_direction = tmp1
 	column_idx = tmp2
@@ -1442,6 +1446,7 @@ prlxSeamAddrHiTbl:
 			LDA	(collmap_ptr),	Y	;	Get metatile
 			TAY						;__
 
+			; TODO eventually: parallax
 			LDA	metatiles_top_left,	Y	;
 			STA	RUNMOD_TileDataTop+1, X	;
 			LDA	metatiles_top_right,Y	;
@@ -1458,25 +1463,7 @@ prlxSeamAddrHiTbl:
 
 			DEC	column_idx
 			BPL @write_loop
-
-		@fin:
-			; TODO eventually: parallax
-
-			lda	#<(fl_lvlRenderUDTiles-1)
-			sta	IBWBInst+0
-			lda	#>(fl_lvlRenderUDTiles-1)
-			sta	IBWBInst+1
-
-			ldx #2
-			jsr transferWriteToInstBuf
-
-			lda	buf_curSeqMode
-			and	#<~$80
-			sta	buf_curSeqMode
-
-			LDA	#1
-			LDX	#0
-			RTS
+			BMI @fin
 
 		@write_new_write:
 			PLA		;__	High byte of Address B&D
@@ -1502,6 +1489,62 @@ prlxSeamAddrHiTbl:
 
 			JMP @write_loop_tiles
 
+		@fin:
+	setup_attributes:
+		AttrCntInc = tmp4
+		SeamValue = ptr3+1
+		AttrCalcTmpVRAM_INDEX = ptr4+0
+		RUNMOD_AttrLo = RUNMOD_fl_lvlRenderUDTiles_AttrLo+1
+		RUNMOD_AttrHi0 = RUNMOD_fl_lvlRenderUDTiles_AttrHi0+1
+		RUNMOD_AttrHi1 = RUNMOD_fl_lvlRenderUDTiles_AttrHi1+1
+
+		LDA collmap_ptr+1
+		STA ptr1+1
+		LDA collmap_ptr
+		AND #$E0
+		STA ptr1
+		EOR	#$80			;	Never activate the seam
+		STA	SeamValue		;__
+
+		LDA #$23
+		LDY this_seam_pos+1
+		BEQ :+
+			ORA #$08
+		:
+		STA RUNMOD_AttrHi0
+		ORA #$04
+		STA RUNMOD_AttrHi1
+		LDA this_seam_pos	;__	Bits: yyy00000
+		AND #$E0			;
+		LSR					;	Bits: 11yyy000
+		LSR					;
+		ORA #$C0			;___
+		STA RUNMOD_AttrLo
+
+		LDA	VRAM_INDEX
+		STA	AttrCalcTmpVRAM_INDEX
+
+		LDA	#$02
+		STA	AttrCntInc
+
+		LDA #8 - 1
+		JSR attributeCalc
+
+		lda	#<(fl_lvlRenderUDTiles-1)
+		sta	IBWBInst+0
+		lda	#>(fl_lvlRenderUDTiles-1)
+		sta	IBWBInst+1
+
+		ldx #2
+		jsr transferWriteToInstBuf
+
+		lda	buf_curSeqMode
+		and	#<~$80
+		sta	buf_curSeqMode
+
+		LDA	#1
+		LDX	#0
+		RTS
 .endproc
 
 
@@ -1659,6 +1702,8 @@ prlxSeamAddrHiTbl:
 	;	|	0	1	|
 
 	SelfMod		= 0
+	AttrDataOff = 0
+	TotalSize	= 8
 
 	lda	PPU_CTRL_VAR	;
 	and #<~$04			;	Set horizontal mode
@@ -1685,12 +1730,44 @@ prlxSeamAddrHiTbl:
 	lda #SelfMod	;	Store D address
 	sta	PPU_DATA	;	Store D data
 	.endrepeat		;__
+
+
+	RUNMOD_AttrHi0:
+	lda #SelfMod	;__	Load first high byte of VRAM address
+	sta	PPU_ADDR
+	RUNMOD_AttrLo:
+	ldx #SelfMod
+	stx PPU_ADDR
+
+	.repeat	8,	I
+		lda	VRAM_BUF+AttrDataOff+I,	y
+		sta	PPU_DATA
+	.endrepeat
+
+	RUNMOD_AttrHi1:
+	lda	#SelfMod	;__	Load second high byte of VRAM address
+	sta PPU_ADDR
+	stx PPU_ADDR
+
+	.repeat	8,	I
+		lda	VRAM_BUF+AttrDataOff+I,	y
+		sta	PPU_DATA
+	.endrepeat
+
+	tya
+	clc
+	adc	#TotalSize
+	tay
+
 	rts
 
 	.export RUNMOD_fl_lvlRenderUDTiles_TileAddrTop := RUNMOD_TileAddrTop
 	.export RUNMOD_fl_lvlRenderUDTiles_TileAddrBot := RUNMOD_TileAddrBot
 	.export RUNMOD_fl_lvlRenderUDTiles_TileDataTop := RUNMOD_TileDataTop
 	.export RUNMOD_fl_lvlRenderUDTiles_TileDataBot := RUNMOD_TileDataBot
+	.export RUNMOD_fl_lvlRenderUDTiles_AttrLo := RUNMOD_AttrLo
+	.export RUNMOD_fl_lvlRenderUDTiles_AttrHi0 := RUNMOD_AttrHi0
+	.export RUNMOD_fl_lvlRenderUDTiles_AttrHi1 := RUNMOD_AttrHi1
 .endproc
 
 
