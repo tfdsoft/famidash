@@ -3069,7 +3069,6 @@ drawplayer_common := _drawplayerone::common
 				ADC rounding_slope_table-1, y
 			: 
 			TAX					;__
-            TAX
 			lda _gamemode
 			cmp #$0B
 			bne @doit
