@@ -44,10 +44,6 @@ void check_for_cube_data_2_set() {
 	if ((controllingplayer->press & (PAD_A | PAD_UP)) && currplayer_vel_y != 0 && (gamemode != GAMEMODE_UFO && gamemode != GAMEMODE_SHIP)) idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x02);
 }
 
-void x_minus_15();
-void y_minus_15();
-void x_plus_15();
-void y_plus_15();
 void runthecolls();
 void set_player_banks();
 
@@ -306,22 +302,6 @@ void set_player_banks() {
 
 }
 
-void x_minus_15() {
-	high_byte(player_x[0]) -= 15;
-	high_byte(currplayer_x) -= 15;	
-}
-void x_plus_15() {
-	high_byte(player_x[0]) += 15;
-	high_byte(currplayer_x) += 15;	
-}
-void y_minus_15() {
-	high_byte(player_y[0]) -= 15;
-	high_byte(currplayer_y) -= 15;	
-}
-void y_plus_15() {
-	high_byte(player_y[0]) += 15;
-	high_byte(currplayer_y) += 15;	
-}
 
 void mouse_and_cursor() {
 	if (mouse.connected) {
