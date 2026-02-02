@@ -3027,6 +3027,21 @@ drawplayer_common := _drawplayerone::common
 	;	ldx _skipProcessingCubeRotationLogic		;PLAYER TRAILS are disabled for 2 player mode anyway
 	;	bne	@fin		
 
+
+		LDA _gamemode
+		cmp #$0B
+		bne @normalagain
+		lda _player_vel_y+3
+		ORA _player_vel_y+2
+		bne @normalagain
+		
+		lda #0
+		sta _cube_rotate+3
+		beq @round
+		
+		
+		@normalagain:
+
 		LDA _player_vel_y+3		;	if player_vel_y == 0
 		ORA _player_vel_y+2		;
 		BNE @no_round			;__
@@ -3054,6 +3069,12 @@ drawplayer_common := _drawplayerone::common
 				ADC rounding_slope_table-1, y
 			: 
 			TAX					;__
+            TAX
+			lda _gamemode
+			cmp #$0B
+			bne @doit
+			jmp @no_round
+			@doit:
 			JMP @fin_nold
 
 		@no_round:
@@ -3061,6 +3082,68 @@ drawplayer_common := _drawplayerone::common
 		ASL				;	Physics table index
 		ASL				;	(just the framerate)
 		TAY				;__
+
+		LDX _gamemode
+		cpx #$0B
+		bne @normalstuff
+
+		lda _orbed+1
+		beq @disregard1
+		lda _player_vel_y+2
+		ora _player_vel_y+3
+		beq @hi
+		
+
+
+	@disregard1:
+		lda _player_vel_y+2
+		ora _player_vel_y+3
+		bne @normalstuff
+
+		lda _chargepower+1
+		beq @normalstuff
+
+		cmp #5
+		BCS :+
+		ldx #23
+		stx _cube_rotate+3
+		jmp @fin
+
+	: 	cmp #15
+		BCS :+
+		ldx #22
+		stx _cube_rotate+3
+		jmp @fin
+
+
+	: 	cmp #25
+		BCS :+
+		ldx #21
+		stx _cube_rotate+3
+		jmp @fin
+
+
+	: 	cmp #30
+		BCS :+
+		ldx #20
+		stx _cube_rotate+3
+		jmp @fin
+
+
+	: 	cmp #46
+		BCS @hi
+		ldx #20
+		stx _cube_rotate+3
+		jmp @fin
+
+	@hi:
+
+		ldx #6
+		stx _cube_rotate+3
+		jmp @fin	
+	  
+	
+	@normalstuff:
 
 		LDA _cube_rotate+2
 
