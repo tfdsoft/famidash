@@ -2500,34 +2500,34 @@ drawplayer_center_offsets:
 		lda _chargepower
 		beq @normalstuff
 
-		cmp #5
+		cmp #10
 		BCS :+
 		ldx #23
 		stx _cube_rotate+1
 		jmp @fin
 
-	: 	cmp #15
+	: 	cmp #20
 		BCS :+
 		ldx #22
 		stx _cube_rotate+1
 		jmp @fin
 
 
-	: 	cmp #25
+	: 	cmp #30
 		BCS :+
 		ldx #21
 		stx _cube_rotate+1
 		jmp @fin
 
 
-	: 	cmp #30
+	: 	cmp #38
 		BCS :+
 		ldx #20
 		stx _cube_rotate+1
 		jmp @fin
 
 
-	: 	cmp #46
+	: 	cmp #50
 		BCS @hi
 		ldx #20
 		stx _cube_rotate+1
