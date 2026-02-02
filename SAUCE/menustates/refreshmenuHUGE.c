@@ -30,7 +30,7 @@ void refreshmenu() {
 	{	// write the difficulty
 		tmp1 = difficulty_list[level];
 		if (stars_list[level] == 10 && level > 25) {
-			mmc3_set_1kb_chr_bank_2(92);
+			mmc3_set_1kb_chr_bank_2(90);
 			pal_col(0x0a, difficulty_pal_C[tmp1]);
 			pal_col(0x0b, difficulty_pal_D[tmp1]);
 		}
