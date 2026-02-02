@@ -321,6 +321,8 @@ int16_t player_vel_y[2];
 uint8_t player_gravity[2];
 uint8_t player_mini[2];
 uint8_t orbhitonthisframe[2];
+uint8_t chargepower[2];
+
 
 uint8_t practice_sprite_x_pos;
 

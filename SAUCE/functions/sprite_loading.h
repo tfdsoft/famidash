@@ -655,7 +655,7 @@ void sprite_collide_lookup() {
 		&&spcl_gv12_pt,	&&spcl_gv23_pt,	&&spcl_gv2x_pt,	&&spcl_gv1x_pt,	// 0x60 - 0x63
 		&&spcl_rndmode,	&&spcl_grn_pad,	&&spcl_tlpt_pt,	&&spcl_default,	// 0x64 - 0x67
 		&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_pogo,	&&spcl_snake,	// 0x68 - 0x6B
-		&&spcl_default,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
+		&&spcl_footb,	&&spcl_spdslow,	&&spcl_minicoi,	&&spcl_default,	// 0x6C - 0x6F
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
 		&&spcl_default,	&&spcl_skl_orb,	&&spcl_wht_orb,	&&spcl_orb_cmn,	// 0x78 - 0x7B
@@ -785,6 +785,12 @@ void sprite_collide_lookup() {
 	spcl_snake:
 		settrailstuff();		
 		gamemode = GAMEMODE_SNAKE;
+		clearrobotjumpframes();		
+		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
+		return;
+
+	spcl_footb:
+		gamemode = GAMEMODE_FOOTBALL;
 		clearrobotjumpframes();		
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
 		return;

@@ -1908,6 +1908,21 @@ const unsigned char Portal_Gamemode_Swing[]={
 	 16, 32,0x65,1|OAM_FLIP_V,
 	0x80
 };
+const unsigned char Portal_Gamemode_Football[]={
+
+	  0,  0,0x61,2,
+	  0, 16,0x67,2,
+	  0, 32,0x61,2|OAM_FLIP_V,
+	  8,  0,0x63,2,
+
+	  8, 16,0x8C,2,
+	  8, 32,0x63,2|OAM_FLIP_V,
+	 16,  0,0x65,2,
+	 16, 16,0x8E,2,
+
+	 16, 32,0x65,2|OAM_FLIP_V,
+	0x80
+};
 const unsigned char Portal_Gamemode_Pogo[]={
 
 	  0,  0,0x61,0,
@@ -3343,7 +3358,7 @@ const unsigned char * const Metasprites[]={
 	Teleport_Portal_Horizontal_Upwards_Exit,
 	Portal_Gamemode_Pogo,
 	Portal_Gamemode_Snake,
-	nometa,
+	Portal_Gamemode_Football,
 	Speed_SLOW_Portal,
 	MINICOIN_SPRITE1,
 	nometa,

@@ -136,6 +136,25 @@ void cube_movement(){
 				robotjumpframe[0] = 3;
 		}
 	}
+	
+	else if (gamemode == GAMEMODE_FOOTBALL) {
+		
+		if (controllingplayer->hold & (PAD_A | PAD_UP) && !orbed[currplayer]) { chargepower[currplayer]++; dashing[currplayer] = 1; }
+		if (chargepower[currplayer] > 60) { chargepower[currplayer] = 0; currplayer_vel_y = 0; dashing[currplayer] = 0; orbed[currplayer] = 1; }
+		
+	}
+	
+	if (gamemode == GAMEMODE_FOOTBALL && !(controllingplayer->hold & (PAD_A | PAD_UP))) {
+		
+		tmp3 = chargepower[currplayer];
+		
+		tmpA = (tmp3 * (currplayer_gravity ? 0x0039 : -0x0039));
+		
+		if (chargepower[currplayer]) { currplayer_vel_y = tmpA; currplayer_y += currplayer_vel_y; }
+		
+		chargepower[currplayer] = 0;
+	
+	}
 	fblocked[currplayer] = 0;
 	hblocked[currplayer] = 0;
 	jblocked[currplayer] = 0;
