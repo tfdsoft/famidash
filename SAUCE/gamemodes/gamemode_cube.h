@@ -139,7 +139,7 @@ void cube_movement(){
 	
 	else if (gamemode == GAMEMODE_FOOTBALL) {
 		
-		if (controllingplayer->hold & (PAD_A | PAD_UP) && !orbed[currplayer] && currplayer_vel_y == 0) { chargepower[currplayer]++; }
+		if (controllingplayer->hold & (PAD_A | PAD_UP) && !orbed[currplayer]) { chargepower[currplayer]++; }
 		if (chargepower[currplayer] > 50) { chargepower[currplayer] = 0; currplayer_vel_y = 0; }
 		
 	}
@@ -150,7 +150,7 @@ void cube_movement(){
 		
 		tmpA = (tmp3 * (currplayer_gravity ? 0x0039 : -0x0039));
 		
-		if (chargepower[currplayer]) { currplayer_vel_y = tmpA; currplayer_y += currplayer_vel_y; }
+		if (chargepower[currplayer] && currplayer_vel_y == 0) { currplayer_vel_y = tmpA; currplayer_y += currplayer_vel_y; }
 		
 		chargepower[currplayer] = 0;
 	
