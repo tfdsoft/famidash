@@ -89,6 +89,8 @@ void reset_level() {
 	forced_trails = 0;
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
+	chargepower[0] = 0;
+	chargepower[1] = 0;
 	coins = 0;
 	orbactive = 0;
 	coin1_timer = coin2_timer = coin3_timer = 0;	

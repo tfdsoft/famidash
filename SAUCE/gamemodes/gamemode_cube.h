@@ -33,7 +33,7 @@ void cube_movement(){
 	Generic.x = high_byte(currplayer_x); // the rest should be the same
 	Generic.y = high_byte(currplayer_y); // the rest should be the same
 
-
+	update_currplayer_table_idx();
 
 
 	if ((gamemode == GAMEMODE_CUBE && currplayer_vel_y == 0 && dashing[currplayer] == 0) || (gamemode == GAMEMODE_CUBE && (kandokidshack == 9 && dashing[currplayer] == 0)) || (gamemode == GAMEMODE_NINJA && !retro_mode)){		//cube
