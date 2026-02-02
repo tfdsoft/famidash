@@ -117,7 +117,7 @@
 #define TELEPORT_PORTAL_UPWARDS_EXIT		0x69
 #define POGO_MODE			0x6A
 #define SNAKE_MODE			0x6B
-#define NOTHING2			0x6C			//unused
+#define FOOTBALL_MODE			0x6C		
 #define SPEED_SLOW				0x6D
 #define MINI_COIN				0x6E
 #define PLAYER_INVIS_ON			0x6F
