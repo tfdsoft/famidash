@@ -429,6 +429,12 @@ static uint16_t sprite_gamemode_y_adjust() {	// A trampoline of sorts
 		gamemode = GAMEMODE_POGO;
 		return tmpA;
 	}
+	if (gamemode == GAMEMODE_FOOTBALL) {
+		gamemode = GAMEMODE_CUBE;
+		tmpA = crossPRGBankJump0(_sprite_gamemode_y_adjust);
+		gamemode = GAMEMODE_FOOTBALL;
+		return tmpA;
+	}
 	return crossPRGBankJump0(_sprite_gamemode_y_adjust);
 }
 
