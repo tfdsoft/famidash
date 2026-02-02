@@ -296,7 +296,7 @@ void set_player_banks() {
 		}
 		
 		if ((gamemode == GAMEMODE_NINJA && !retro_mode) || gamemode == GAMEMODE_SNAKE) mmc3_set_2kb_chr_bank_0(NINJABANK);
-		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE || gamemode == GAMEMODE_POGO)) mmc3_set_2kb_chr_bank_0(iconbank2);
+		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT && gamemode != GAMEMODE_FOOTBALL)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE || gamemode == GAMEMODE_POGO)) mmc3_set_2kb_chr_bank_0(iconbank2);
 		else if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_SHIP || gamemode == GAMEMODE_UFO) mmc3_set_2kb_chr_bank_0(iconbank3);
 		else if (gamemode == GAMEMODE_FOOTBALL) mmc3_set_2kb_chr_bank_0(FOOTBALLBANK);
 		else mmc3_set_2kb_chr_bank_0(iconbank1);

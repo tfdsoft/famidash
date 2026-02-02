@@ -2253,9 +2253,9 @@ end:
 .segment _PLAYER_RENDER_BANK
 
 .import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y, _player_mini
-.import _ballframe, _robotframe, _robotjumpframe, _spiderframe
+.import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _orbed
 .import _retro_mode, _icon, _gameState, _titleicon, _skipProcessingCubeRotationLogic
-.import _CUBE_GRAVITY_lo
+.import _CUBE_GRAVITY_lo, _chargepower
 .importzp _cube_rotate, _was_on_slope_counter
 .import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2, _SPIDER_ALT, _SPIDER_ALT2, _POGO, _SNAKE
 .import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT, _MINI_POGO, _MINI_SNAKE
@@ -2321,6 +2321,7 @@ drawplayer_center_offsets:
 
 ; void drawplayerone();
 .segment _PLAYER_RENDER_BANK
+
 
 .export _drawplayerone
 .proc _drawplayerone
@@ -2421,7 +2422,23 @@ drawplayer_center_offsets:
         BIT _cube_data
         BMI @round
 		ldx _skipProcessingCubeRotationLogic			;player trails?
-		bne	@fin			;if so, get out of here
+		beq @nofin
+		jmp @fin			;if so, get out of here
+	@nofin:
+
+		LDA _gamemode
+		cmp #$0B
+		bne @normalagain
+		lda _player_vel_y+1
+		ORA _player_vel_y+0
+		bne @normalagain
+		
+		lda #0
+		sta _cube_rotate+1
+		beq @round
+		
+		
+		@normalagain:
 		LDA _player_vel_y+1		;	if player_vel_y == 0
 		ORA _player_vel_y+0		;
 		BNE @no_round		    ;__
@@ -2449,6 +2466,11 @@ drawplayer_center_offsets:
                 ADC rounding_slope_table-1, y
             : 
             TAX
+			lda _gamemode
+			cmp #$0B
+			bne @doit
+			jmp @no_round
+			@doit:
             JMP @fin_nold
 
 		@no_round:
@@ -2457,11 +2479,72 @@ drawplayer_center_offsets:
 		ASL				;	(just the framerate)
 		TAY				;__
 
-		LDA _cube_rotate
 
+		LDX _gamemode
+		cpx #$0B
+		bne @normalstuff
+
+		lda _orbed
+		beq @disregard1
+		lda _player_vel_y+0
+		ora _player_vel_y+1
+		beq @hi
+		
+
+
+	@disregard1:
+		lda _player_vel_y+0
+		ora _player_vel_y+1
+		bne @normalstuff
+
+		lda _chargepower
+		beq @normalstuff
+
+		cmp #5
+		BCS :+
+		ldx #23
+		stx _cube_rotate+1
+		jmp @fin
+
+	: 	cmp #15
+		BCS :+
+		ldx #22
+		stx _cube_rotate+1
+		jmp @fin
+
+
+	: 	cmp #25
+		BCS :+
+		ldx #21
+		stx _cube_rotate+1
+		jmp @fin
+
+
+	: 	cmp #30
+		BCS :+
+		ldx #20
+		stx _cube_rotate+1
+		jmp @fin
+
+
+	: 	cmp #46
+		BCS @hi
+		ldx #20
+		stx _cube_rotate+1
+		jmp @fin
+
+	@hi:
+
+		ldx #6
+		stx _cube_rotate+1
+		jmp @fin	
+	  
+	
+	@normalstuff:
+		LDA _cube_rotate
 		LDX _player_gravity+0
 		BNE @subtract
-
+		@add:
 			CLC						;
 			ADC _CUBE_GRAVITY_lo,Y	;
 			STA _cube_rotate		;

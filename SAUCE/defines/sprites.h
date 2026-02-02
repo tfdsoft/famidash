@@ -189,10 +189,20 @@ const unsigned char Mini_Cube_3[]={
 
 	-4,  -4,0x3B,3,
 	0x80
-};//Full 360 mini frames need to be added here - Ficus
+	
+};
+
+const unsigned char Mini_Cube_4[]={
+
+	-4,  -4,0x3D,3,
+	0x80
+	
+};
+
+//Full 360 mini frames need to be added here - Ficus
 	
 	
-const unsigned char * const MINI_CUBE[] = {Mini_Cube_0, Mini_Cube_1, Mini_Cube_1, Mini_Cube_2, Mini_Cube_2, Mini_Cube_3, Mini_Cube_0, Mini_Cube_0};
+const unsigned char * const MINI_CUBE[] = {Mini_Cube_0, Mini_Cube_1, Mini_Cube_1, Mini_Cube_2, Mini_Cube_2, Mini_Cube_3, Mini_Cube_4, Mini_Cube_4};
 
 const unsigned char Mini_Cube2_0[]={
 
@@ -216,10 +226,19 @@ const unsigned char Mini_Cube2_3[]={
 
 	-4,  -4,0x3B,1,
 	0x80
-};//Full 360 mini frames need to be added here too - Ficus
+	
+};
+	
+const unsigned char Mini_Cube2_4[]={
+
+	-4,  -4,0x3D,1,
+	0x80
+};
+
+//Full 360 mini frames need to be added here too - Ficus
 	
 	
-const unsigned char * const MINI_CUBE2[] = {Mini_Cube2_0, Mini_Cube2_1, Mini_Cube2_1, Mini_Cube2_2, Mini_Cube2_2, Mini_Cube2_3, Mini_Cube2_0, Mini_Cube2_0};
+const unsigned char * const MINI_CUBE2[] = {Mini_Cube2_0, Mini_Cube2_1, Mini_Cube2_1, Mini_Cube2_2, Mini_Cube2_2, Mini_Cube2_3, Mini_Cube2_4, Mini_Cube2_4};
 
 
 const unsigned char Mini_Ball[]={
