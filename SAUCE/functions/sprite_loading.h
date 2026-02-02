@@ -665,7 +665,7 @@ void sprite_collide_lookup() {
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x70 - 0x73
 		&&spcl_default,	&&spcl_tlpt_pt,	&&spcl_default,	&&spcl_tlpt_pt,	// 0x74 - 0x77
 		&&spcl_default,	&&spcl_skl_orb,	&&spcl_wht_orb,	&&spcl_orb_cmn,	// 0x78 - 0x7B
-		&&spcl_orb_cmn,	&&spcl_default,	&&spcl_default //,	&&spcl_default	// 0x7C - 0x7F
+		&&spcl_orb_cmn,	&&spcl_suprrnd,	&&spcl_default //,	&&spcl_default	// 0x7C - 0x7F
 	};
 	static void * const sprite_collide_jump_table_1[] = {
 		&&spcl_default,	&&spcl_default,	&&spcl_default,	&&spcl_default,	// 0x80 - 0x83
@@ -831,6 +831,18 @@ void sprite_collide_lookup() {
 			if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
 			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
+			idx8_inc(activesprites_activated, index);
+			clearrobotjumpframes();
+		#endif
+		return;
+
+	spcl_suprrnd:
+		#ifdef FLAG_KANDO_FUN_STUFF
+			if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
+			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
+			do {
+				gamemode = newrand() & 15;
+			} while (gamemode > 0x0B);
 			idx8_inc(activesprites_activated, index);
 			clearrobotjumpframes();
 		#endif
