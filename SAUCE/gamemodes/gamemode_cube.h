@@ -139,8 +139,8 @@ void cube_movement(){
 	
 	else if (gamemode == GAMEMODE_FOOTBALL) {
 		
-		if (controllingplayer->hold & (PAD_A | PAD_UP) && !orbed[currplayer]) { chargepower[currplayer]++; dashing[currplayer] = 1; }
-		if (chargepower[currplayer] > 60) { chargepower[currplayer] = 0; currplayer_vel_y = 0; dashing[currplayer] = 0; orbed[currplayer] = 1; }
+		if (controllingplayer->hold & (PAD_A | PAD_UP) && !orbed[currplayer] && currplayer_vel_y == 0) { chargepower[currplayer]++; }
+		if (chargepower[currplayer] > 50) { chargepower[currplayer] = 0; currplayer_vel_y = 0; }
 		
 	}
 	

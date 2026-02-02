@@ -1235,7 +1235,6 @@ void settrailstuff() {
 void clearrobotjumpframes() {
 	robotjumpframe[0] = 0;
 	robotjumpframe[1] = 0;
-	if (gamemode == GAMEMODE_FOOTBALL) { dashing[0] = 0; dashing[1] = 0; }
 }			
 
 void dual_cap_check() {
