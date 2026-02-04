@@ -65,10 +65,14 @@ void state_game(){
 	kandokidshack3 = 0;
 	kandokidshack4 = 0;
 	animating = 0;
+	orbactive = 0;
+	nocamlock = 0;
+	currplayer = 0;
+	END_LEVEL_TIMER = 0;
+	kandoframecnt = 0;
+	practice_point_count = 0;
 	memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
 	memfill(attemptCounter, 0, sizeof(attemptCounter));
-	practice_point_count = 0;
-	orbactive = 0;
 	
 	outline_color = 0x30;
 
@@ -82,7 +86,6 @@ void state_game(){
 
 	// set_tile_banks();
 	
-	nocamlock = 0;
 	use_auto_chrswitch = 1;
 
 	pal_bg(paletteDefault);
@@ -92,7 +95,6 @@ void state_game(){
 
 	oam_clear();
     
-	currplayer = 0;
 	controllingplayer = &joypad1;
 //	current_transition_timer_length = 0;
 	mmc3_set_prg_bank_1(GET_BANK(reset_level));
@@ -108,8 +110,6 @@ void state_game(){
 	
 	update_currplayer_table_idx();
 
-	END_LEVEL_TIMER = 0;
-	kandoframecnt = 0;
 
 	
 	iconbank = (icon<<1) + 40;
