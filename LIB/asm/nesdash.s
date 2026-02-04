@@ -2615,6 +2615,8 @@ drawplayer_center_offsets:
 			PLA
 		@resume:
 			STA xargs+0	; flip setting
+
+
 			TXA
 			AND #$07
 			TAY
@@ -2884,6 +2886,15 @@ drawplayer_center_offsets:
 
 
 	fin:
+			LDA _gamemode
+			cmp #$08
+			bne :+
+			LDA _player_gravity+0
+			BEQ :+
+			lda xargs+0
+			ORA #$80
+			STA xargs+0
+			:	
     common:
 		TYA					;
 		ASL					;	Double da index cuz it's a table of shorts
@@ -3202,6 +3213,17 @@ drawplayer_common := _drawplayerone::common
 			TXA
 			AND #$07
 			TAY
+
+			LDA _gamemode
+			cmp #$08
+			bne :+
+			LDA _player_gravity+1
+			BEQ :+
+			lda xargs+0
+			ORA #$80
+			STA xargs+0
+			:				
+
 			JMP drawplayer_common
 
 	ship:
