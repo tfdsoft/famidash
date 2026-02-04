@@ -99,8 +99,9 @@ void state_startup() {
         for(char stall = 180; stall>0; stall--){
             ppu_wait_nmi();
         }
-        pal_fade_to(4,0);
-        ppu_off();
+        
+        //pal_fade_to(4,0);
+        //ppu_off();
     }
 
     
