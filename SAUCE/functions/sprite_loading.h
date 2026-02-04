@@ -423,10 +423,16 @@ static uint16_t _sprite_gamemode_y_adjust() {
 #pragma data-name(pop)
 
 static uint16_t sprite_gamemode_y_adjust() {	// A trampoline of sorts
-	if (gamemode == GAMEMODE_POGO || gamemode == GAMEMODE_SNAKE) {
+	if (gamemode == GAMEMODE_POGO) {
 		gamemode = GAMEMODE_SWING;
 		tmpA = crossPRGBankJump0(_sprite_gamemode_y_adjust);
 		gamemode = GAMEMODE_POGO;
+		return tmpA;
+	}
+	if (gamemode == GAMEMODE_SNAKE) {
+		gamemode = GAMEMODE_WAVE;
+		tmpA = crossPRGBankJump0(_sprite_gamemode_y_adjust);
+		gamemode = GAMEMODE_SNAKE;
 		return tmpA;
 	}
 	if (gamemode == GAMEMODE_FOOTBALL) {
