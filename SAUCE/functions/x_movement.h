@@ -73,7 +73,7 @@ void x_movement(){
 		//return; 
 	}
 
-	if (gamemode == GAMEMODE_WAVE) { // wave
+	if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) { // wave
 		Generic.width = WAVE_WIDTH;
 		Generic.height = WAVE_HEIGHT;
 	} else {

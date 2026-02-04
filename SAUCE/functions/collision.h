@@ -56,7 +56,7 @@ char bg_coll_sides() {
 			if (!(uint8_t)(temp_y & 0x08)) return 1;		// If Y pos inside block < 8px
 			break;
 		case COL_FLOOR_CEIL:
-			if (gamemode == GAMEMODE_WAVE) return 0;
+			if (gamemode == gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) return 0;
 			
 	};
 	return 0;
@@ -410,7 +410,7 @@ char bg_side_coll_common() {
 
 	bg_collision_sub();
 	if (collision) {
-		if (gamemode == GAMEMODE_WAVE) {
+		if (gamemode == gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) {
 			if (bg_coll_slope()) {
 				if (!dblocked[currplayer]) {
 					idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
@@ -527,7 +527,7 @@ char bg_coll_slope() {
 	// 45 degrees
 
 	col_slope_LU45:
-		if (gamemode == GAMEMODE_WAVE && !currplayer_mini) {
+		if ((gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) && !currplayer_mini) {
 			return 0;
 		}
 		else {
@@ -667,7 +667,7 @@ char bg_coll_slope() {
 		goto col_end;	
 
 	col_slope_LU66_TOP:
-		if (gamemode == GAMEMODE_WAVE && currplayer_mini) {
+		if ((gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) && currplayer_mini) {
 			return 0;
 		}
 
@@ -679,7 +679,7 @@ char bg_coll_slope() {
 		goto col_end;		
 
 	col_slope_LU66_BOT:
-		if (gamemode == GAMEMODE_WAVE && currplayer_mini) {
+		if ((gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) && currplayer_mini) {
 			return 0;
 		}
 		if ((uint8_t)(temp_x & 0x0f) < 0x08) return 1;
@@ -888,7 +888,7 @@ char bg_coll_U() {
 	}
 
 	if (high_byte(currplayer_vel_y) & 0x80) {
-		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 10 : 0); // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 10 : 0); // automatically only the low byte
 		
 		storeWordSeparately(
 			add_scroll_y(
@@ -944,7 +944,7 @@ char bg_coll_D() {
 	
 	if (!(high_byte(currplayer_vel_y) & 0x80)) {
 		// check 2 points on the right side
-		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE ? 4 : 0); // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 4 : 0); // automatically only the low byte
 
 		storeWordSeparately(
 			add_scroll_y(

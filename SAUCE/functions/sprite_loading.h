@@ -757,7 +757,7 @@ void sprite_collide_lookup() {
 		robotjumpframe[0] = 0;
 		robotjumpframe[1] = 0;
 		exitPortalTimer = 10;
-		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+		if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) currplayer_vel_y = 0;
 		if (retro_mode) gamemode = GAMEMODE_ROBOT;
 		else gamemode = GAMEMODE_CUBE;
 		clearrobotjumpframes();
@@ -776,13 +776,13 @@ void sprite_collide_lookup() {
 
 	spcl_robot:
 		exitPortalTimer = 10;
-		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y /= 2;
+		if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) currplayer_vel_y /= 2;
 		gamemode = GAMEMODE_ROBOT;
 		clearrobotjumpframes();
 		return;
 
 	spcl_spider:
-		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+		if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) currplayer_vel_y = 0;
 		gamemode = GAMEMODE_SPIDER;
 		clearrobotjumpframes();		
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);		
@@ -810,7 +810,7 @@ void sprite_collide_lookup() {
 
 	spcl_pogo:
 		settrailstuff();
-		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+		if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) currplayer_vel_y = 0;
 		gamemode = GAMEMODE_POGO;
 		clearrobotjumpframes();		
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);	
@@ -818,7 +818,7 @@ void sprite_collide_lookup() {
 		
 	spcl_swing:
 		settrailstuff();
-		if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;
+		if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) currplayer_vel_y = 0;
 		gamemode = GAMEMODE_SWING;
 		clearrobotjumpframes();		
 		if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);	
@@ -826,7 +826,7 @@ void sprite_collide_lookup() {
 
 	spcl_ninja:
 		#ifdef FLAG_KANDO_FUN_STUFF
-			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
+			if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) currplayer_vel_y = 0;		
 			gamemode = GAMEMODE_NINJA;
 			clearrobotjumpframes();
 		#endif
@@ -835,7 +835,7 @@ void sprite_collide_lookup() {
 	spcl_rndmode:
 		#ifdef FLAG_KANDO_FUN_STUFF
 			if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
-			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
+			if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) currplayer_vel_y = 0;		
 			gamemode = newrand() & 7;
 			idx8_inc(activesprites_activated, index);
 			clearrobotjumpframes();
@@ -845,7 +845,7 @@ void sprite_collide_lookup() {
 	spcl_suprrnd:
 		#ifdef FLAG_KANDO_FUN_STUFF
 			if (!dual || twoplayer) target_scroll_y = (lohi_arr16_load(activesprites_y, index) - PORTAL_TO_TOP_DIFF);
-			if (gamemode == GAMEMODE_WAVE) currplayer_vel_y = 0;		
+			if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) currplayer_vel_y = 0;		
 			do {
 				gamemode = newrand() & 15;
 			} while (gamemode > 0x0B);
