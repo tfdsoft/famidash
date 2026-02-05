@@ -1043,7 +1043,7 @@
 		.incbin "EXPORTS/invisiblelight.lz.bin" ; Size: 6760
 
 
-.segment "DAT_BANK_2B"	; Total bank size: 8152 bytes
+.segment "DAT_BANK_2B"	; Total bank size: 8155 bytes
 	.export level_data_azuronxolax
 	level_data_azuronxolax:
 	; Header
@@ -1066,7 +1066,7 @@
 		.byte $02 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6538
+		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6541
 
 
 .segment "DAT_BANK_2C"	; Total bank size: 8094 bytes

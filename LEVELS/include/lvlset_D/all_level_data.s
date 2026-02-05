@@ -217,7 +217,7 @@
 		.incbin "EXPORTS/jawbreaker.lz.bin" ; Size: 6877
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8152 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8155 bytes
 	.export level_data_azuronxolax
 	level_data_azuronxolax:
 	; Header
@@ -240,7 +240,7 @@
 		.byte $02 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6538
+		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6541
 
 
 .segment "DAT_BANK_0A"	; Total bank size: 8081 bytes
