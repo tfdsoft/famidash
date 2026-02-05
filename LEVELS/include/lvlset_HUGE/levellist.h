@@ -99,6 +99,7 @@ const uint8_t difficulty_list[] = {
 	HARDDEMON,	// deadlyclubstep
 	HARDDEMON,	// thermodynamix
 	HARDDEMON,	// demoncryogenic
+	HARDDEMON,	// azuronxolax
 	HARDDEMON,	// foresttemple
 	HARDDEMON,	// ninecircles
 	HARDDEMON,	// fairydust
@@ -227,6 +228,7 @@ const uint8_t stars_list[] = {
 	10,	// deadlyclubstep
 	10,	// thermodynamix
 	10,	// demoncryogenic
+	10,	// azuronxolax
 	10,	// foresttemple
 	10,	// ninecircles
 	10,	// fairydust

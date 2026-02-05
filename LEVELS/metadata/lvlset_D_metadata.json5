@@ -300,6 +300,22 @@
 			]
 		},
 		{
+            level: "azuronxolax",
+            lowerText: "AZURONXOLAX",
+            decoType: "EXTRASPRITES1",
+            spikeSet: "A",
+            blockSet: "B",
+            sawSet: "A",
+            difficulty: "HARDDEMON",
+            stars: 10,
+            songID: "song_endgame",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x12,
+            startingGroundColor: 0x02,
+            parallaxDisable: true
+        },
+		{
 			level: "foresttemple",
 			lowerText: "FOREST TEMPLE",
 			decoType: "DECO1",

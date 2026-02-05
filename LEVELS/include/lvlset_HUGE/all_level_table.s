@@ -102,6 +102,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_deadlyclubstep)
 	.byte .lobyte(level_data_thermodynamix)
 	.byte .lobyte(level_data_demoncryogenic)
+	.byte .lobyte(level_data_azuronxolax)
 	.byte .lobyte(level_data_foresttemple)
 	.byte .lobyte(level_data_ninecircles)
 	.byte .lobyte(level_data_fairydust)
@@ -229,6 +230,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_deadlyclubstep)
 	.byte .hibyte(level_data_thermodynamix)
 	.byte .hibyte(level_data_demoncryogenic)
+	.byte .hibyte(level_data_azuronxolax)
 	.byte .hibyte(level_data_foresttemple)
 	.byte .hibyte(level_data_ninecircles)
 	.byte .hibyte(level_data_fairydust)
@@ -356,6 +358,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_deadlyclubstep))
 	.byte .lobyte(.bank(level_data_thermodynamix))
 	.byte .lobyte(.bank(level_data_demoncryogenic))
+	.byte .lobyte(.bank(level_data_azuronxolax))
 	.byte .lobyte(.bank(level_data_foresttemple))
 	.byte .lobyte(.bank(level_data_ninecircles))
 	.byte .lobyte(.bank(level_data_fairydust))
@@ -561,6 +564,7 @@ _level_lengths_lo:
 	.byte .lobyte($000093)		; deadlyclubstep
 	.byte .lobyte($00008E)		; thermodynamix
 	.byte .lobyte($0000A8)		; demoncryogenic
+	.byte .lobyte($000148)		; azuronxolax
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000082)		; fairydust
@@ -690,6 +694,7 @@ _level_lengths_md:
 	.byte .hibyte($000093)		; deadlyclubstep
 	.byte .hibyte($00008E)		; thermodynamix
 	.byte .hibyte($0000A8)		; demoncryogenic
+	.byte .hibyte($000148)		; azuronxolax
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000082)		; fairydust
@@ -819,6 +824,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000093)		; deadlyclubstep
 	.byte .bankbyte($00008E)		; thermodynamix
 	.byte .bankbyte($0000A8)		; demoncryogenic
+	.byte .bankbyte($000148)		; azuronxolax
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000082)		; fairydust

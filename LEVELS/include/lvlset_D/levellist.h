@@ -9,6 +9,7 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// gameover
 	HARDDEMON,	// toeiiv2
 	HARDDEMON,	// demoncryogenic
+	HARDDEMON,	// azuronxolax
 	HARDDEMON,	// foresttemple
 	HARDDEMON,	// jawbreaker
 	INSANEDEMON,	// acropolis
@@ -34,6 +35,7 @@ const uint8_t stars_list[] = {
 	10,	// gameover
 	10,	// toeiiv2
 	10,	// demoncryogenic
+	10,	// azuronxolax
 	10,	// foresttemple
 	10,	// jawbreaker
 	10,	// acropolis
