@@ -106,7 +106,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000D0)		; respite
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($000078)		; gameover
-	.byte .lobyte($00009D)		; toeiiv2
+	.byte .lobyte($0000A1)		; toeiiv2
 	.byte .lobyte($0000A8)		; demoncryogenic
 	.byte .lobyte($000148)		; azuronxolax
 	.byte .lobyte($000090)		; foresttemple
@@ -133,7 +133,7 @@ _level_lengths_md:
 	.byte .hibyte($0000D0)		; respite
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($000078)		; gameover
-	.byte .hibyte($00009D)		; toeiiv2
+	.byte .hibyte($0000A1)		; toeiiv2
 	.byte .hibyte($0000A8)		; demoncryogenic
 	.byte .hibyte($000148)		; azuronxolax
 	.byte .hibyte($000090)		; foresttemple
@@ -160,7 +160,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000D0)		; respite
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($000078)		; gameover
-	.byte .bankbyte($00009D)		; toeiiv2
+	.byte .bankbyte($0000A1)		; toeiiv2
 	.byte .bankbyte($0000A8)		; demoncryogenic
 	.byte .bankbyte($000148)		; azuronxolax
 	.byte .bankbyte($000090)		; foresttemple
