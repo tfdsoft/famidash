@@ -98,6 +98,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_gameover)
 	.byte .lobyte(level_data_invisiblelight)
 	.byte .lobyte(level_data_firetemple)
+	.byte .lobyte(level_data_toeiiv2)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_deadlyclubstep)
 	.byte .lobyte(level_data_thermodynamix)
@@ -226,6 +227,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_gameover)
 	.byte .hibyte(level_data_invisiblelight)
 	.byte .hibyte(level_data_firetemple)
+	.byte .hibyte(level_data_toeiiv2)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_deadlyclubstep)
 	.byte .hibyte(level_data_thermodynamix)
@@ -354,6 +356,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_gameover))
 	.byte .lobyte(.bank(level_data_invisiblelight))
 	.byte .lobyte(.bank(level_data_firetemple))
+	.byte .lobyte(.bank(level_data_toeiiv2))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_deadlyclubstep))
 	.byte .lobyte(.bank(level_data_thermodynamix))
@@ -560,6 +563,7 @@ _level_lengths_lo:
 	.byte .lobyte($000078)		; gameover
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($00008D)		; firetemple
+	.byte .lobyte($0000A1)		; toeiiv2
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
 	.byte .lobyte($00008E)		; thermodynamix
@@ -690,6 +694,7 @@ _level_lengths_md:
 	.byte .hibyte($000078)		; gameover
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($00008D)		; firetemple
+	.byte .hibyte($0000A1)		; toeiiv2
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
 	.byte .hibyte($00008E)		; thermodynamix
@@ -820,6 +825,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000078)		; gameover
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($00008D)		; firetemple
+	.byte .bankbyte($0000A1)		; toeiiv2
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep
 	.byte .bankbyte($00008E)		; thermodynamix

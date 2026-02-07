@@ -95,6 +95,7 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// gameover
 	MEDIUMDEMON,	// invisiblelight
 	MEDIUMDEMON,	// firetemple
+	HARDDEMON,	// toeiiv2
 	HARDDEMON,	// pgclubstep
 	HARDDEMON,	// deadlyclubstep
 	HARDDEMON,	// thermodynamix
@@ -224,6 +225,7 @@ const uint8_t stars_list[] = {
 	10,	// gameover
 	10,	// invisiblelight
 	10,	// firetemple
+	10,	// toeiiv2
 	10,	// pgclubstep
 	10,	// deadlyclubstep
 	10,	// thermodynamix
