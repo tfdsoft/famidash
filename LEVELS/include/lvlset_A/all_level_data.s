@@ -28,7 +28,7 @@
 		.incbin "EXPORTS/extraordinaryexcitement.lz.0.bin" ; Size: 8134
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8191 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8150 bytes
 	.export level_data_dash
 	level_data_dash:
 	; Header
@@ -1040,7 +1040,7 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1846
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8183 bytes
+.segment "DAT_BANK_21"	; Total bank size: 8119 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -1089,8 +1089,6 @@
 	; Level data
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
-
-.segment "DAT_BANK_22"	; Total bank size: 7684 bytes
 	.export level_data_thetower
 	level_data_thetower:
 	; Header
@@ -1105,12 +1103,12 @@
 		.byte ($80) ;____________________________ Y Scroll Position (low byte)
 		.byte ($07) ;____________________________ Max Fall Speed (high byte)
 		.byte (1 << 0) | (1 << 1) ;______________ Force platformer, Disable parallax
-		.byte _DECO1 ;___________________________ Deco type
+		.byte _EXTRASPRITES1 ;___________________ Deco type
 		.byte _SPIKESA ;_________________________ Spike set
 		.byte _BLOCKSB ;_________________________ Block set
 		.byte _SAWBLADESA ;______________________ Sawblade set
 		.byte $03 ;______________________________ Starting background color
-		.byte $02 ;______________________________ Starting ground color
+		.byte $0F ;______________________________ Starting ground color
 		.byte 32 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/thetower.lz.bin" ; Size: 985
+		.incbin "EXPORTS/thetower.lz.bin" ; Size: 1354

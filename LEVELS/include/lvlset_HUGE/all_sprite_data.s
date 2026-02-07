@@ -1282,7 +1282,7 @@ sprite_data_cantletgo:
   .byte $30,$34,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_7E"
+.segment "DAT_BANK_26"
 sprite_data_jumper:
   .byte $e0,$00,$80,$03,$2c
   .byte $b0,$01,$80,$03,$2e
@@ -8609,16 +8609,51 @@ sprite_data_dash:
   .byte $90,$45,$40,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_09"
+.segment "DAT_BANK_7D"
 sprite_data_thetower:
   .byte $00,$00,$f0,$02,$de
   .byte $00,$00,$10,$03,$83
   .byte $00,$00,$30,$03,$cf
+  .byte $88,$00,$e0,$02,$6e
+  .byte $38,$01,$e0,$02,$6e
+  .byte $40,$02,$e0,$02,$6e
+  .byte $b8,$02,$e0,$02,$6e
   .byte $10,$03,$f0,$02,$0b
-  .byte $f0,$06,$a0,$02,$06
+  .byte $30,$04,$c0,$02,$6e
+  .byte $b0,$04,$d0,$02,$6e
+  .byte $40,$05,$c0,$02,$6e
+  .byte $b0,$06,$40,$02,$07
+  .byte $d0,$06,$50,$02,$6e
+  .byte $f8,$06,$a0,$02,$06
   .byte $00,$07,$50,$02,$0b
-  .byte $00,$07,$a0,$02,$06
-  .byte $30,$0e,$f0,$01,$0f
+  .byte $20,$07,$90,$02,$6e
+  .byte $50,$08,$30,$02,$6e
+  .byte $20,$0b,$50,$02,$6e
+  .byte $30,$0b,$f0,$01,$6e
+  .byte $70,$0b,$f0,$01,$6e
+  .byte $70,$0b,$50,$02,$6e
+  .byte $e0,$0b,$50,$02,$6e
+  .byte $f0,$0b,$f0,$01,$6e
+  .byte $30,$0c,$f0,$01,$6e
+  .byte $30,$0c,$50,$02,$6e
+  .byte $50,$0c,$c0,$01,$1a
+  .byte $90,$0c,$20,$02,$6e
+  .byte $a0,$0c,$c0,$01,$6e
+  .byte $e0,$0c,$c0,$01,$6e
+  .byte $e0,$0c,$20,$02,$6e
+  .byte $40,$0e,$d0,$01,$f8
+  .byte $50,$0e,$d0,$01,$f8
+  .byte $60,$0e,$d0,$01,$f8
+  .byte $70,$0e,$d0,$01,$f8
+  .byte $80,$0e,$d0,$01,$f8
+  .byte $90,$0e,$d0,$01,$f8
+  .byte $30,$0f,$e0,$01,$8f
+  .byte $40,$10,$e0,$01,$86
+  .byte $70,$10,$10,$02,$f8
+  .byte $a0,$10,$10,$02,$f8
+  .byte $d0,$10,$10,$02,$f8
+  .byte $e0,$10,$20,$02,$1b
+  .byte $20,$12,$20,$02,$0f
   .byte $ff
 
 .segment "DAT_BANK_7E"
@@ -61103,7 +61138,7 @@ sprite_data_kratos:
   .byte $90,$34,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_7F"
+.segment "DAT_BANK_80"
 sprite_data_nullscapes:
   .byte $00,$00,$c0,$02,$18
   .byte $a0,$00,$00,$02,$f5
