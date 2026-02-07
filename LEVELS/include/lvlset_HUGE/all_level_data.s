@@ -1029,7 +1029,7 @@
 		.incbin "EXPORTS/invisiblelight.lz.bin" ; Size: 6760
 
 
-.segment "DAT_BANK_2A"	; Total bank size: 8182 bytes
+.segment "DAT_BANK_2A"	; Total bank size: 8191 bytes
 	.export level_data_toeiiv2
 	level_data_toeiiv2:
 	; Header
@@ -1052,7 +1052,7 @@
 		.byte $01 ;_____________________________ Starting ground color
 		.byte 27 ;______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/toeiiv2.lz.bin" ; Size: 6613
+		.incbin "EXPORTS/toeiiv2.lz.bin" ; Size: 6622
 
 
 .segment "DAT_BANK_2C"	; Total bank size: 8155 bytes

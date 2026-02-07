@@ -217,7 +217,7 @@
 		.incbin "EXPORTS/jawbreaker.lz.bin" ; Size: 6877
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8153 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8162 bytes
 	.export level_data_toeiiv2
 	level_data_toeiiv2:
 	; Header
@@ -240,7 +240,7 @@
 		.byte $01 ;_____________________________ Starting ground color
 		.byte 27 ;______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/toeiiv2.lz.bin" ; Size: 6613
+		.incbin "EXPORTS/toeiiv2.lz.bin" ; Size: 6622
 
 	.export level_data_demoncryogenic_0
 	level_data_demoncryogenic_0:
