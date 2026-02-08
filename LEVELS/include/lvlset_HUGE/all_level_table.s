@@ -62,6 +62,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_rainbowdust)
 	.byte .lobyte(level_data_factorytime)
 	.byte .lobyte(level_data_thesteamworks)
+	.byte .lobyte(level_data_astronomicalexpedition)
 	.byte .lobyte(level_data_lostinthewoods)
 	.byte .lobyte(level_data_rainingtacos)
 	.byte .lobyte(level_data_bloodbathbutno)
@@ -191,6 +192,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_rainbowdust)
 	.byte .hibyte(level_data_factorytime)
 	.byte .hibyte(level_data_thesteamworks)
+	.byte .hibyte(level_data_astronomicalexpedition)
 	.byte .hibyte(level_data_lostinthewoods)
 	.byte .hibyte(level_data_rainingtacos)
 	.byte .hibyte(level_data_bloodbathbutno)
@@ -320,6 +322,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_rainbowdust))
 	.byte .lobyte(.bank(level_data_factorytime))
 	.byte .lobyte(.bank(level_data_thesteamworks))
+	.byte .lobyte(.bank(level_data_astronomicalexpedition))
 	.byte .lobyte(.bank(level_data_lostinthewoods))
 	.byte .lobyte(.bank(level_data_rainingtacos))
 	.byte .lobyte(.bank(level_data_bloodbathbutno))
@@ -397,24 +400,27 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_ajollyretrochristmas_2)
 	.byte .lobyte(level_data_cryogenic_3)
 	.byte .lobyte(level_data_thesteamworks_4)
-	.byte .lobyte(level_data_rainbowtylenol_5)
-	.byte .lobyte(level_data_subtleoddities_6)
-	.byte .lobyte(level_data_highlife_7)
-	.byte .lobyte(level_data_extraordinaryexcitement_8)
-	.byte .lobyte(level_data_deathmoon_9)
-	.byte .lobyte(level_data_motion_10)
-	.byte .lobyte(level_data_skeletalshenanigans_11)
-	.byte .lobyte(level_data_trythisgd_12)
-	.byte .lobyte(level_data_demoncryogenic_13)
-	.byte .lobyte(level_data_futurefunkfix_14)
-	.byte .lobyte(level_data_futurefunkfix_15)
-	.byte .lobyte(level_data_eon_16)
-	.byte .lobyte(level_data_windylandscape_17)
-	.byte .lobyte(level_data_sonicwave_18)
-	.byte .lobyte(level_data_aftercatabath_19)
-	.byte .lobyte(level_data_aftercatabath_20)
-	.byte .lobyte(level_data_everyend_21)
-	.byte .lobyte(level_data_everyend_22)
+	.byte .lobyte(level_data_astronomicalexpedition_5)
+	.byte .lobyte(level_data_astronomicalexpedition_6)
+	.byte .lobyte(level_data_astronomicalexpedition_7)
+	.byte .lobyte(level_data_rainbowtylenol_8)
+	.byte .lobyte(level_data_subtleoddities_9)
+	.byte .lobyte(level_data_highlife_10)
+	.byte .lobyte(level_data_extraordinaryexcitement_11)
+	.byte .lobyte(level_data_deathmoon_12)
+	.byte .lobyte(level_data_motion_13)
+	.byte .lobyte(level_data_skeletalshenanigans_14)
+	.byte .lobyte(level_data_trythisgd_15)
+	.byte .lobyte(level_data_demoncryogenic_16)
+	.byte .lobyte(level_data_futurefunkfix_17)
+	.byte .lobyte(level_data_futurefunkfix_18)
+	.byte .lobyte(level_data_eon_19)
+	.byte .lobyte(level_data_windylandscape_20)
+	.byte .lobyte(level_data_sonicwave_21)
+	.byte .lobyte(level_data_aftercatabath_22)
+	.byte .lobyte(level_data_aftercatabath_23)
+	.byte .lobyte(level_data_everyend_24)
+	.byte .lobyte(level_data_everyend_25)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_hexagonforce_0)
@@ -422,24 +428,27 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_ajollyretrochristmas_2)
 	.byte .hibyte(level_data_cryogenic_3)
 	.byte .hibyte(level_data_thesteamworks_4)
-	.byte .hibyte(level_data_rainbowtylenol_5)
-	.byte .hibyte(level_data_subtleoddities_6)
-	.byte .hibyte(level_data_highlife_7)
-	.byte .hibyte(level_data_extraordinaryexcitement_8)
-	.byte .hibyte(level_data_deathmoon_9)
-	.byte .hibyte(level_data_motion_10)
-	.byte .hibyte(level_data_skeletalshenanigans_11)
-	.byte .hibyte(level_data_trythisgd_12)
-	.byte .hibyte(level_data_demoncryogenic_13)
-	.byte .hibyte(level_data_futurefunkfix_14)
-	.byte .hibyte(level_data_futurefunkfix_15)
-	.byte .hibyte(level_data_eon_16)
-	.byte .hibyte(level_data_windylandscape_17)
-	.byte .hibyte(level_data_sonicwave_18)
-	.byte .hibyte(level_data_aftercatabath_19)
-	.byte .hibyte(level_data_aftercatabath_20)
-	.byte .hibyte(level_data_everyend_21)
-	.byte .hibyte(level_data_everyend_22)
+	.byte .hibyte(level_data_astronomicalexpedition_5)
+	.byte .hibyte(level_data_astronomicalexpedition_6)
+	.byte .hibyte(level_data_astronomicalexpedition_7)
+	.byte .hibyte(level_data_rainbowtylenol_8)
+	.byte .hibyte(level_data_subtleoddities_9)
+	.byte .hibyte(level_data_highlife_10)
+	.byte .hibyte(level_data_extraordinaryexcitement_11)
+	.byte .hibyte(level_data_deathmoon_12)
+	.byte .hibyte(level_data_motion_13)
+	.byte .hibyte(level_data_skeletalshenanigans_14)
+	.byte .hibyte(level_data_trythisgd_15)
+	.byte .hibyte(level_data_demoncryogenic_16)
+	.byte .hibyte(level_data_futurefunkfix_17)
+	.byte .hibyte(level_data_futurefunkfix_18)
+	.byte .hibyte(level_data_eon_19)
+	.byte .hibyte(level_data_windylandscape_20)
+	.byte .hibyte(level_data_sonicwave_21)
+	.byte .hibyte(level_data_aftercatabath_22)
+	.byte .hibyte(level_data_aftercatabath_23)
+	.byte .hibyte(level_data_everyend_24)
+	.byte .hibyte(level_data_everyend_25)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_hexagonforce_0))
@@ -447,24 +456,27 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_ajollyretrochristmas_2))
 	.byte .lobyte(.bank(level_data_cryogenic_3))
 	.byte .lobyte(.bank(level_data_thesteamworks_4))
-	.byte .lobyte(.bank(level_data_rainbowtylenol_5))
-	.byte .lobyte(.bank(level_data_subtleoddities_6))
-	.byte .lobyte(.bank(level_data_highlife_7))
-	.byte .lobyte(.bank(level_data_extraordinaryexcitement_8))
-	.byte .lobyte(.bank(level_data_deathmoon_9))
-	.byte .lobyte(.bank(level_data_motion_10))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans_11))
-	.byte .lobyte(.bank(level_data_trythisgd_12))
-	.byte .lobyte(.bank(level_data_demoncryogenic_13))
-	.byte .lobyte(.bank(level_data_futurefunkfix_14))
-	.byte .lobyte(.bank(level_data_futurefunkfix_15))
-	.byte .lobyte(.bank(level_data_eon_16))
-	.byte .lobyte(.bank(level_data_windylandscape_17))
-	.byte .lobyte(.bank(level_data_sonicwave_18))
-	.byte .lobyte(.bank(level_data_aftercatabath_19))
-	.byte .lobyte(.bank(level_data_aftercatabath_20))
-	.byte .lobyte(.bank(level_data_everyend_21))
-	.byte .lobyte(.bank(level_data_everyend_22))
+	.byte .lobyte(.bank(level_data_astronomicalexpedition_5))
+	.byte .lobyte(.bank(level_data_astronomicalexpedition_6))
+	.byte .lobyte(.bank(level_data_astronomicalexpedition_7))
+	.byte .lobyte(.bank(level_data_rainbowtylenol_8))
+	.byte .lobyte(.bank(level_data_subtleoddities_9))
+	.byte .lobyte(.bank(level_data_highlife_10))
+	.byte .lobyte(.bank(level_data_extraordinaryexcitement_11))
+	.byte .lobyte(.bank(level_data_deathmoon_12))
+	.byte .lobyte(.bank(level_data_motion_13))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_14))
+	.byte .lobyte(.bank(level_data_trythisgd_15))
+	.byte .lobyte(.bank(level_data_demoncryogenic_16))
+	.byte .lobyte(.bank(level_data_futurefunkfix_17))
+	.byte .lobyte(.bank(level_data_futurefunkfix_18))
+	.byte .lobyte(.bank(level_data_eon_19))
+	.byte .lobyte(.bank(level_data_windylandscape_20))
+	.byte .lobyte(.bank(level_data_sonicwave_21))
+	.byte .lobyte(.bank(level_data_aftercatabath_22))
+	.byte .lobyte(.bank(level_data_aftercatabath_23))
+	.byte .lobyte(.bank(level_data_everyend_24))
+	.byte .lobyte(.bank(level_data_everyend_25))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -527,6 +539,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000AB)		; rainbowdust
 	.byte .lobyte($000090)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
+	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($000066)		; lostinthewoods
 	.byte .lobyte($0000BB)		; rainingtacos
 	.byte .lobyte($000090)		; bloodbathbutno
@@ -658,6 +671,7 @@ _level_lengths_md:
 	.byte .hibyte($0000AB)		; rainbowdust
 	.byte .hibyte($000090)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
+	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($000066)		; lostinthewoods
 	.byte .hibyte($0000BB)		; rainingtacos
 	.byte .hibyte($000090)		; bloodbathbutno
@@ -789,6 +803,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000AB)		; rainbowdust
 	.byte .bankbyte($000090)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
+	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($000066)		; lostinthewoods
 	.byte .bankbyte($0000BB)		; rainingtacos
 	.byte .bankbyte($000090)		; bloodbathbutno

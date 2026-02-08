@@ -215,6 +215,13 @@
 			coveringArtist: "Kabez",
 		},
 		{
+			fmsSongName: "Astronomical Expedition",
+			upperText: "ASTRONOMICAL",
+			lowerText: "EXPEDITION",
+			originalArtist: "SeaGlowingPro",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
 			fmsSongName: "atthespeedoflightfull",
 			upperText: "AT THE SPEED",
 			lowerText: "OF LIGHT",
@@ -411,12 +418,14 @@
 			originalArtist: "XI",
 			coveringArtist: "SeaGlowingPro",
 		},
+		/*
 		{
 			fmsSongName: "Glint",
 			lowerText: "GLINT",
 			originalArtist: "Dominuus",
 			coveringArtist: "SeaGlowingPro",
 		},
+		*/
 		{
 			fmsSongName: "Glitch Gremlin",
 			lowerText: "GLITCH GREMLIN",

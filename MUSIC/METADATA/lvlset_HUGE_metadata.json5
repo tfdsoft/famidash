@@ -220,6 +220,13 @@
 			originalArtist: "Acid Notation",
 			coveringArtist: "ElAngel378",
 		},
+		{
+			fmsSongName: "Astronomical Expedition",
+			upperText: "ASTRONOMICAL",
+			lowerText: "EXPEDITION",
+			originalArtist: "SeaGlowingPro",
+			coveringArtist: "SeaGlowingPro",
+		},
 		/*
 		{
 			fmsSongName: "Airborne Robots",

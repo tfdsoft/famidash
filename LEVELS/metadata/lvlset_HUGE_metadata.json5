@@ -2826,7 +2826,46 @@
 					offsetY: -8
 				},
 			]
-		},				
+		},
+		{
+			level: "astronomicalexpedition",
+			upperText: "ASTRONOMICAL",
+			lowerText: "EXPEDITION",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_astronomical_expedition",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			spawnYPositionHi: 0x00,
+			objectOffsets: [
+				{
+					coordinates: [
+						[139, 11], [177, 8], [294, 21], [576, 12], [580, 10], [668, 15], [687, 12], [689, 7], [710, 10], [712, 7], [719, 8], [728, 12], [730, 7], [754, 10], [756, 6], [972, 12], [1059, 8], [1062, 11], [1067, 7], [1124, 9], [1186, 18], [1425, 15],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[202, 14], [294, 21], [397, 15], [433, 14], [460, 14], [466, 17], [472, 17], [478, 17], [535, 11], [570, 14], [638, 17], [700, 10], [766, 9], [852, 6], [919, 10], [1043, 12], [1079, 9], [1083, 6], [1103, 5], [1168, 8], [1186, 18], [1271, 8], [1377, 7], [1487, 18],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[432, 14], [516, 12], [1486, 17],
+					],
+					offsetX: +16
+				},
+			],
+		},		
 		{
 			level: "lostinthewoods",
 			upperText: "LOST IN",
