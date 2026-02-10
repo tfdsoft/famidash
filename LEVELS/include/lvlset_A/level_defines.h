@@ -3,8 +3,8 @@
 
 #define LEVELSET 'A'
 
-#define OFFICIAL_LEVEL_COUNT 23
-#define COMMUNITY_LEVEL_COUNT 20
+#define OFFICIAL_LEVEL_COUNT 25
+#define COMMUNITY_LEVEL_COUNT 19
 
 #define level_stereomadness 0
 #define level_backontrack 1
@@ -29,23 +29,24 @@
 #define level_fingerdash 20
 #define level_dash 21
 #define level_thetower 22
-#define level_retray 23
-#define level_leveleasy 24
-#define level_thechallenge 25
-#define level_dorabaebasic4 26
-#define level_dorabaebasic6 27
-#define level_dreamer 28
-#define level_groundtospace 29
-#define level_subzero 30
-#define level_kappaclysm 31
-#define level_sunshine 32
-#define level_revolution 33
-#define level_funnygameholiday 34
-#define level_lostinthewoods 35
-#define level_bloodbathbutno 36
-#define level_rainbowtylenol 37
-#define level_greif 38
-#define level_extraordinaryexcitement 39
-#define level_thelightningroad 40
-#define level_nightmare 41
-#define level_firetemple 42
+#define level_thesewers 23
+#define level_thechallenge 24
+#define level_retray 25
+#define level_leveleasy 26
+#define level_dorabaebasic4 27
+#define level_dorabaebasic6 28
+#define level_dreamer 29
+#define level_groundtospace 30
+#define level_subzero 31
+#define level_kappaclysm 32
+#define level_sunshine 33
+#define level_revolution 34
+#define level_funnygameholiday 35
+#define level_lostinthewoods 36
+#define level_bloodbathbutno 37
+#define level_rainbowtylenol 38
+#define level_greif 39
+#define level_extraordinaryexcitement 40
+#define level_thelightningroad 41
+#define level_nightmare 42
+#define level_firetemple 43

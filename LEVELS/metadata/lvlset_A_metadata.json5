@@ -1398,7 +1398,109 @@
                     offsetX: +8,
                 }
             ]
-		}
+		},
+		{
+			level: "thesewers",
+			lowerText: "THE SEWERS",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 6,
+			songID: "song_scheming_weasel",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x1a,
+			startingGroundColor: 0x0f,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			forcePlatformer: true,
+			objectOffsets: [
+				{
+					coordinates: [15,38],
+					offsetX: 8,
+				},
+				{
+					coordinates: [11,40],
+					offsetX: 8,
+				},
+				{
+					coordinates: [23,41],
+					offsetX: 8,
+				},
+				{
+					coordinates: [27,39],
+					offsetX: 8,
+				},
+				{
+					coordinates: [49,32],
+					offsetX: 8,
+				},
+				{
+					coordinates: [105,25],
+					offsetX: 8,
+				},
+				{
+					coordinates: [105,10],
+					offsetX: 8,
+				},
+				{
+					coordinates: [102,15],
+					offsetX: 8,
+				},
+				{
+					coordinates: [136,47],
+					offsetY: 16,
+				},
+				{
+					coordinates: [133,35],
+					offsetX: 8,
+				},
+				{
+					coordinates: [133,22],
+					offsetX: 8,
+				},
+			]
+		},
+		{
+			level: "thechallenge",
+			upperText: "THE",
+			lowerText: "CHALLENGE",
+			decoType: "EXTRASPRITES1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 3,
+			songID: "song_the_challenge",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[64, 51], [162, 28], [222, 20],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[162, 28], [237, 27], [253, 14], [265, 15],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[119, 47],
+					],
+					offsetX: +16
+				},
+			]
+		},
 	],
 	community_levels: [
 		{
@@ -1468,44 +1570,6 @@
 						[753, 26],		//yellow pad
 					],
 					offsetX: -8
-				},
-			]
-		},	
-		{
-			level: "thechallenge",
-			upperText: "THE",
-			lowerText: "CHALLENGE",
-			decoType: "EXTRASPRITES1",
-			spikeSet: "A",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "NORMAL",
-			stars: 3,
-			songID: "song_the_challenge",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true,
-			maxFallSpeed: 0x07,
-			objectOffsets: [
-				{
-					coordinates: [
-						[64, 51], [162, 28], [222, 20],
-					],
-					offsetX: +8
-				},
-				{
-					coordinates: [
-						[162, 28], [237, 27], [253, 14], [265, 15],
-					],
-					offsetY: +8
-				},
-				{
-					coordinates: [
-						[119, 47],
-					],
-					offsetX: +16
 				},
 			]
 		},
