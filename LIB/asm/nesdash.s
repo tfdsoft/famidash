@@ -872,10 +872,10 @@ write_start:
 	sta	instBufWriteBuffer+1
 
 
-	lda	_no_parallax		;	Skip parallax rendering
-	beq	RenderParallax		;__	if there is none
+	lda	_no_parallax		;	If we have parallax on,
+	beq	RenderTilesWithParallax		;__	use the rendering loop with parallax
 
-	; The sequence itself:
+RenderTilesNoParallax:
 	LDY	CurrentRow
 @tileWriteLoop:
 	lda columnBuffer,Y
@@ -903,7 +903,7 @@ write_start:
 	DEX
 	BPL @tileWriteLoop
 
-RuntimeModifiedTiles:
+RuntimeModifiedTilesNoParallax:
 	LDX	#TileWriteSize
 	LDY #0
 
@@ -922,110 +922,9 @@ RuntimeModifiedTiles:
 		TAY
 		DEX
 		BNE @loop
-	BEQ	StartAttributes
+	JMP	StartAttributes
 
-RenderParallax:
-
-	; Loop through the vram writes and find any $00 tiles and replace them with parallax
-	; Calculate the end of the parallax column offset
-	jsr RenderParallaxSub
-
-	; move to the next scroll column for next frame
-	jsr _increase_parallax_scroll_column
-
-
-StartAttributes:
-	; Seam pos for attributes:
-	; ( <seam_scroll_y & $E0 | >seam_scroll_y & 3) ^ column
-	LDA seam_scroll_y
-	AND #$E0
-	STA SeamValue
-	LDA seam_scroll_y+1
-	AND #$03	; add bit 1 to not use if no seam
-	ORA SeamValue
-	STA SeamValue
-
-	LDY	#>collMap2		;__	Get the default value
-	AND #$03			;	Bits 0 and 1 are directly from >seam_scroll_y
-	CMP	#$03			;	For value $FF start at screen 0, otherwise screen 2
-	BNE	:+				;
-		LDY	#>collMap0	;	Get high byte of starting value
-	:					;	(the screen)
-	STY	ptr1+1			;__
-
-	LDA rld_column		;
-	AND #$0E			;	Get column (w/o highest bit cuz attributes)
-	; ADC #<collMap0	; the low byte is 0
-	STA ptr1			;__
-	EOR	SeamValue		;	The only overlapping bit is bit 1,
-	STA	SeamValue		;__	if it's invalid the seam won't be drawn
-
-	LDA	VRAM_INDEX
-	CLC
-	ADC	#AttrOffData
-	STA	AttrCalcTmpVRAM_INDEX
-
-	LDA	#$20
-	STA	AttrCntInc
-
-	LDA #8 - 1
-	JSR attributeCalc
-
-	; Increment screen (we always increment)
-	INC ptr1+1
-
-	DEC	SeamValue
-
-	LDA #8 - 1
-	JSR attributeCalc
-
-	LDA rld_column
-	LSR
-	ORA #$C0
-
-	; Store address
-	LDX VRAM_INDEX
-	CLC
-	addressLoop:
-		; Low byte
-		STA VRAM_BUF+AttrOffAddr,	X
-		INX
-
-		; C is cleared by BCC
-		ADC #$08
-		CMP	#$E0
-		BCC addressLoop
-
-FinishRendering:
-
-	; Update rld_column
-	ldx rld_column
-	inx
-	txa
-	and #$0F
-	sta rld_column
-
-	ldx	#2
-	jsr	transferWriteToInstBuf
-
-	lda	buf_curSeqMode
-	ora	#$80
-	sta	buf_curSeqMode
-
-	lda	VRAM_INDEX
-	clc
-	adc	#TotalEnd
-	sta	VRAM_INDEX
-
-	lda	#1				;
-	ldx	#0				;	Return 1
-	stx	sreg+0			;
-	stx	sreg+1			;__
-
-	RTS
-
-
-RenderParallaxSub:
+RenderTilesWithParallax:
 	ldy parallax_scroll_column
 	lda ParallaxBufferOffset, y
 	sta ParallaxBufferStart
@@ -1131,7 +1030,7 @@ RenderParallaxSub:
 		;__	Our pointer's overflowed, either a new half or end the operation
 		ldy	#<(RUNMOD_fl_lvlRenderRTiles_TileDataL_Bot+1+(30*5)-256)
 		cpy	RunModPtrL
-		beq	@return
+		beq	@finish
 		;__	Second half
 		sty	RunModPtrL
 		ldy	#>(RUNMOD_fl_lvlRenderRTiles_TileDataL_Bot+1+(30*5)-256)
@@ -1142,8 +1041,6 @@ RenderParallaxSub:
 		sty	RunModPtrR+1
 		lda #<-(30*5)
 		bne	@loop	;__	= BRA
-	@return:
-		rts
 
 	@seamColl:
 		; sec unnecessary, as the CMP yielded an =, and as such the carry is set
@@ -1160,6 +1057,100 @@ RenderParallaxSub:
 		:								;
 		sta	ParallaxCurrentIdx			;
 		jmp	@noSeamColl					;__
+
+
+	@finish:
+		; move to the next scroll column for next frame
+		jsr _increase_parallax_scroll_column
+StartAttributes:
+	; Seam pos for attributes:
+	; ( <seam_scroll_y & $E0 | >seam_scroll_y & 3) ^ column
+	LDA seam_scroll_y
+	AND #$E0
+	STA SeamValue
+	LDA seam_scroll_y+1
+	AND #$03	; add bit 1 to not use if no seam
+	ORA SeamValue
+	STA SeamValue
+
+	LDY	#>collMap2		;__	Get the default value
+	AND #$03			;	Bits 0 and 1 are directly from >seam_scroll_y
+	CMP	#$03			;	For value $FF start at screen 0, otherwise screen 2
+	BNE	:+				;
+		LDY	#>collMap0	;	Get high byte of starting value
+	:					;	(the screen)
+	STY	ptr1+1			;__
+
+	LDA rld_column		;
+	AND #$0E			;	Get column (w/o highest bit cuz attributes)
+	; ADC #<collMap0	; the low byte is 0
+	STA ptr1			;__
+	EOR	SeamValue		;	The only overlapping bit is bit 1,
+	STA	SeamValue		;__	if it's invalid the seam won't be drawn
+
+	LDA	VRAM_INDEX
+	CLC
+	ADC	#AttrOffData
+	STA	AttrCalcTmpVRAM_INDEX
+
+	LDA	#$20
+	STA	AttrCntInc
+
+	LDA #8 - 1
+	JSR attributeCalc
+
+	; Increment screen (we always increment)
+	INC ptr1+1
+
+	DEC	SeamValue
+
+	LDA #8 - 1
+	JSR attributeCalc
+
+	LDA rld_column
+	LSR
+	ORA #$C0
+
+	; Store address
+	LDX VRAM_INDEX
+	CLC
+	addressLoop:
+		; Low byte
+		STA VRAM_BUF+AttrOffAddr,	X
+		INX
+
+		; C is cleared by BCC
+		ADC #$08
+		CMP	#$E0
+		BCC addressLoop
+
+FinishRendering:
+
+	; Update rld_column
+	ldx rld_column
+	inx
+	txa
+	and #$0F
+	sta rld_column
+
+	ldx	#2
+	jsr	transferWriteToInstBuf
+
+	lda	buf_curSeqMode
+	ora	#$80
+	sta	buf_curSeqMode
+
+	lda	VRAM_INDEX
+	clc
+	adc	#TotalEnd
+	sta	VRAM_INDEX
+
+	lda	#1				;
+	ldx	#0				;	Return 1
+	stx	sreg+0			;
+	stx	sreg+1			;__
+
+	RTS
 
 
 ; Column striped parallax data definition
