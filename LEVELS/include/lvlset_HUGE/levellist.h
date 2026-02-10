@@ -25,8 +25,6 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// fingerdash
 	INSANE,	// dash
 	NORMAL,	// thetower
-	HARD,	// thesewers
-	HARD,	// thechallenge
 	AUTO,	// bestautomaticlvl
 	EASY,	// retray
 	EASY,	// sonar
@@ -34,6 +32,7 @@ const uint8_t difficulty_list[] = {
 	EASY,	// madness
 	EASY,	// xmaschallenge
 	NORMAL,	// leveleasy
+	NORMAL,	// thechallenge
 	NORMAL,	// dorabaebasic4
 	NORMAL,	// ninox
 	NORMAL,	// dorabaebasic6
@@ -157,8 +156,6 @@ const uint8_t stars_list[] = {
 	12,	// fingerdash
 	12,	// dash
 	5,	// thetower
-	6,	// thesewers
-	3,	// thechallenge
 	1,	// bestautomaticlvl
 	2,	// retray
 	2,	// sonar
@@ -166,6 +163,7 @@ const uint8_t stars_list[] = {
 	2,	// madness
 	2,	// xmaschallenge
 	3,	// leveleasy
+	3,	// thechallenge
 	3,	// dorabaebasic4
 	3,	// ninox
 	3,	// dorabaebasic6
