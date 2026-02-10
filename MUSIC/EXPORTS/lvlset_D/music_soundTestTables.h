@@ -213,7 +213,7 @@ const uint8_t xbgmlookuptable[] = {
 	song_menu_theme_human_capturing_mix,
 	song_time_machine,
 	song_clubstep,
-	song_toe_2,
+	song_toe_2_old_ver,
 	song_practice,
 	song_scheming_weasel,
 	song_atthespeedoflightfull,

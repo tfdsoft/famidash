@@ -1416,10 +1416,6 @@
 			maxFallSpeed: 0x07,
 			parallaxDisable: true,
 			forcePlatformer: true,
-			spawnYPositionHi: 0xA0,
-			spawnYPositionLow: 0x00,
-			scrollYPositionHi: 0x02,
-			scrollYPositionLow: 0x80,
 			objectOffsets: [
 				{
 					coordinates: [15,38],

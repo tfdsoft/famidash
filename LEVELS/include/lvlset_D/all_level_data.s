@@ -224,7 +224,7 @@
 		.byte <sprite_data_toeiiv2 ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_toeiiv2 ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_toeiiv2)) ;___ Sprite data bank
-		.byte song_toe_2 ;______________________ Song ID
+		.byte song_toe_2_old_ver ;______________ Song ID
 		.byte (0 << 4) | 0 ;____________________ Starting game mode and speed
 		.byte ($B0) ;___________________________ Spawn Y Position (high byte)
 		.byte ($00) ;___________________________ Spawn Y Position (low byte)

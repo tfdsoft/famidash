@@ -2991,10 +2991,10 @@
 		.byte <(.bank(sprite_data_thesewers)) ;___ Sprite data bank
 		.byte song_scheming_weasel ;______________ Song ID
 		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($A0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
 		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
-		.byte ($80) ;_____________________________ Y Scroll Position (low byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
 		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
 		.byte (1 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
 		.byte _EXTRASPRITES1 ;____________________ Deco type
