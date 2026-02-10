@@ -28,7 +28,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_fingerdash)
 	.byte .lobyte(level_data_dash)
 	.byte .lobyte(level_data_thetower)
-	.byte .lobyte(level_data_thesewers)
 	.byte .lobyte(level_data_thechallenge)
 	.byte .lobyte(level_data_bestautomaticlvl)
 	.byte .lobyte(level_data_retray)
@@ -159,7 +158,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_fingerdash)
 	.byte .hibyte(level_data_dash)
 	.byte .hibyte(level_data_thetower)
-	.byte .hibyte(level_data_thesewers)
 	.byte .hibyte(level_data_thechallenge)
 	.byte .hibyte(level_data_bestautomaticlvl)
 	.byte .hibyte(level_data_retray)
@@ -290,7 +288,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_fingerdash))
 	.byte .lobyte(.bank(level_data_dash))
 	.byte .lobyte(.bank(level_data_thetower))
-	.byte .lobyte(.bank(level_data_thesewers))
 	.byte .lobyte(.bank(level_data_thechallenge))
 	.byte .lobyte(.bank(level_data_bestautomaticlvl))
 	.byte .lobyte(.bank(level_data_retray))
@@ -508,7 +505,6 @@ _level_lengths_lo:
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
 	.byte .lobyte($000048)		; thetower
-	.byte .lobyte($00001B)		; thesewers
 	.byte .lobyte($000030)		; thechallenge
 	.byte .lobyte($00006F)		; bestautomaticlvl
 	.byte .lobyte($000066)		; retray
@@ -641,7 +637,6 @@ _level_lengths_md:
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
 	.byte .hibyte($000048)		; thetower
-	.byte .hibyte($00001B)		; thesewers
 	.byte .hibyte($000030)		; thechallenge
 	.byte .hibyte($00006F)		; bestautomaticlvl
 	.byte .hibyte($000066)		; retray
@@ -774,7 +769,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
 	.byte .bankbyte($000048)		; thetower
-	.byte .bankbyte($00001B)		; thesewers
 	.byte .bankbyte($000030)		; thechallenge
 	.byte .bankbyte($00006F)		; bestautomaticlvl
 	.byte .bankbyte($000066)		; retray

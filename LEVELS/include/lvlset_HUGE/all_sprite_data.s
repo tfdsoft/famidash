@@ -226,7 +226,7 @@ sprite_data_stereomadness:
   .byte $d0,$37,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_84"
+.segment "DAT_BANK_70"
 sprite_data_backontrack:
   .byte $d0,$00,$88,$03,$0a
   .byte $30,$02,$70,$03,$2b
@@ -8656,78 +8656,6 @@ sprite_data_thetower:
   .byte $20,$12,$20,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
-sprite_data_thesewers:
-  .byte $00,$00,$f0,$02,$de
-  .byte $20,$00,$30,$03,$49
-  .byte $b8,$00,$10,$03,$6e
-  .byte $f8,$00,$f0,$02,$6e
-  .byte $78,$01,$20,$03,$6e
-  .byte $b8,$01,$00,$03,$49
-  .byte $d0,$01,$d0,$02,$0b
-  .byte $d0,$01,$f0,$02,$0b
-  .byte $00,$02,$a0,$02,$49
-  .byte $10,$02,$60,$02,$fe
-  .byte $20,$02,$60,$02,$fe
-  .byte $30,$02,$60,$02,$fe
-  .byte $40,$02,$60,$02,$fe
-  .byte $40,$02,$80,$02,$6e
-  .byte $50,$02,$60,$02,$fe
-  .byte $60,$02,$60,$02,$fe
-  .byte $70,$02,$60,$02,$fe
-  .byte $70,$02,$80,$02,$6e
-  .byte $80,$02,$60,$02,$fe
-  .byte $90,$02,$60,$02,$fe
-  .byte $a0,$02,$60,$02,$fe
-  .byte $b0,$02,$60,$02,$fe
-  .byte $e0,$02,$60,$02,$fe
-  .byte $e0,$02,$00,$03,$07
-  .byte $e0,$02,$10,$03,$05
-  .byte $f0,$02,$60,$02,$fe
-  .byte $00,$03,$60,$02,$fe
-  .byte $10,$03,$60,$02,$fe
-  .byte $18,$03,$90,$02,$49
-  .byte $20,$04,$20,$02,$49
-  .byte $60,$04,$00,$02,$6e
-  .byte $c0,$04,$20,$02,$49
-  .byte $00,$05,$00,$02,$6e
-  .byte $30,$05,$00,$02,$6e
-  .byte $70,$05,$20,$02,$49
-  .byte $e0,$05,$20,$02,$49
-  .byte $68,$06,$80,$01,$1a
-  .byte $98,$06,$30,$01,$49
-  .byte $98,$06,$20,$02,$49
-  .byte $b0,$06,$a0,$01,$6e
-  .byte $b0,$06,$d8,$01,$0a
-  .byte $b0,$06,$10,$02,$6e
-  .byte $d0,$06,$30,$01,$6e
-  .byte $d0,$06,$58,$01,$0a
-  .byte $d0,$06,$80,$01,$6e
-  .byte $e0,$07,$10,$03,$03
-  .byte $f0,$07,$00,$02,$8a
-  .byte $f0,$07,$10,$03,$62
-  .byte $00,$08,$20,$02,$6e
-  .byte $10,$08,$f0,$02,$6e
-  .byte $58,$08,$f0,$01,$6e
-  .byte $58,$08,$c0,$02,$6e
-  .byte $80,$08,$20,$03,$dd
-  .byte $80,$08,$30,$03,$f4
-  .byte $80,$08,$90,$03,$de
-  .byte $a0,$08,$e0,$02,$6e
-  .byte $b0,$08,$00,$02,$6e
-  .byte $c0,$08,$b0,$00,$00
-  .byte $c0,$08,$80,$01,$86
-  .byte $d0,$08,$a0,$00,$80
-  .byte $d0,$08,$b0,$00,$63
-  .byte $10,$09,$c0,$00,$f8
-  .byte $10,$09,$10,$01,$de
-  .byte $30,$09,$d0,$00,$f5
-  .byte $40,$09,$c0,$00,$f8
-  .byte $70,$09,$c0,$00,$f8
-  .byte $80,$09,$d0,$00,$1b
-  .byte $40,$0a,$d0,$00,$0f
-  .byte $ff
-
 .segment "DAT_BANK_6E"
 sprite_data_thechallenge:
   .byte $00,$00,$80,$03,$b6
@@ -9108,7 +9036,7 @@ sprite_data_bestautomaticlvl:
   .byte $f0,$2a,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_85"
+.segment "DAT_BANK_84"
 sprite_data_retray:
   .byte $00,$00,$50,$03,$8f
   .byte $00,$00,$60,$03,$cf
