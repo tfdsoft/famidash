@@ -224,7 +224,7 @@
 			sawSet: "A",
             difficulty: "HARDDEMON",
             stars: 10,
-            songID: "song_toe_2_old_ver",
+            songID: "song_toe_2",
             startingGameMode: 0,
             startingSpeed: 0,
             startingBackgroundColor: 0x01,
