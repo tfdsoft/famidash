@@ -110,9 +110,11 @@ banked(startup_bank.func) void state_startup(){
     se_set_palette_color(1,0x0f);
 
     se_turn_on_rendering();
-    se_fade_palette_to(0,4);
+    se_fade_palette_to(8,4);
 
     se_music_play(song_scheming_weasel);
+
+    se_sfx_play(sfx_highscoreget02,0);
 
     u8 song = 0;
 
