@@ -111,13 +111,13 @@ jmp jsrfar
 
 
 ;; vram functions
-.align 16
+.align 8
 jmp se_vram_unrle
 jmp se_vram_donut_decompress
 
 
 ;; ppu functions
-.align 16
+.align 8
 jmp se_wait_vsync
 jmp se_wait_frames
 jmp se_turn_off_rendering
@@ -143,7 +143,7 @@ jmp se_draw_metasprite
 
 
 ;; vram buffer
-.align 16
+.align 8
 ;jmp se_set_vram_update  ; not needed
 jmp se_set_vram_buffer
 
@@ -152,12 +152,12 @@ jmp se_string_vram_buffer
 
 
 ;; memory stuff
-.align 16
+.align 8
 jmp se_memory_fill
 jmp se_memory_copy
 
 ;; music stuff
-.align 16
+.align 8
 .import se_music_play,se_sfx_play,se_music_update
 jmp se_music_play   
 jmp se_sfx_play 
@@ -1290,6 +1290,32 @@ PPU_DATA = $2007
     rts
 .endproc
 
+.export se_one_vram_buffer_repeat_horizontal
+.proc se_one_vram_buffer_repeat_horizontal
+    ldy se_vram_index
+    pha
+    lda __rc3
+    and #%00111111
+    ora #%01000000
+    sta se_vram_buffer, y 
+    iny
+    lda __rc2
+    sta se_vram_buffer, y 
+    iny
+    txa
+    ora #%10000000
+    sta se_vram_buffer, y 
+    iny
+    pla
+    sta se_vram_buffer, y 
+    iny
+    lda #$ff
+    sta se_vram_buffer, y 
+    sty se_vram_index
+
+    rts
+.endproc
+
 .export se_string_vram_buffer
 .proc se_string_vram_buffer
     pha
@@ -1596,228 +1622,6 @@ PPU_DATA = $2007
 ;;
     
     ; see the header file
-
-
-
-
-;;
-;;  OAM DMA SHENANIGANS
-;;  ok so basically, controller reads aligned to OAM DMA
-;;
-
-MouseBoundsMin:
-    .byte 1,1
-MouseBoundsMax:
-    .byte 254,239
-
-
-.export se_safe_controller_polling
-.proc se_safe_controller_polling
-    .export joypad1
-    .export joypad2
-    joypad2 = se_joypad+1
-    joypad1 = se_joypad+4
-    controller_port_1 = $4016
-    controller_port_2 = $4017
-    mouse_port = controller_port_2
-    controller_port = controller_port_1
-    kMouseZero = 0
-    kMouseButtons = 1
-    kMouseY = 2
-    kMouseX = 3
-
-    ; save registers (this *is* called from nmi, after all)
-    lda __rc2
-    pha
-    lda __rc3
-    pha
-    lda __rc4
-    pha
-    lda __rc6
-    pha
-    lda __rc7
-    pha
-    
-    ;save previous controller state
-    lda joypad1
-    sta __rc6
-
-    ;save previous controller state
-    lda joypad2
-    sta __rc7
-
-    ;save previous mouse state
-    lda se_joypad + kMouseY
-    sta __rc2
-    lda se_joypad + kMouseX
-    sta __rc3
-    lda se_joypad + kMouseButtons
-    sta __rc4
-
-    ;strobe joypads
-    ldx #0
-    ldy #1
-    sty se_joypad
-    sty controller_port_1
-    stx controller_port_1
-
-    ;INITIATE THE DMA!
-    lda #2
-    sta $4014
-
-    ; poll
-    @poll_mouse:
-        lda se_mouse_mask    ; get put get*     *576  // Starts: 4, 158, 312, 466, [620]
-        and mouse_port   ; put get put GET
-        cmp #1           ; put get
-        rol se_joypad,x        ; put get put get* PUT GET  *432
-        bcc @poll_mouse            ; put get (put)
-
-        inx                ; put get
-        cpx #4           ; put get
-        sty se_joypad,x        ; put get put GET
-        bne @poll_mouse             ; put get (put)
-
-    @poll_controller:
-        lda controller_port ; put get put GET        // Starts: 619
-        and #3           ; put get*         *672
-        cmp #1           ; put get
-        rol joypad1 ; put get put get put    // This can desync, but we finish before it matters.
-        bcc @poll_controller             ; get put (get)
-
-    ;".if 0" // TODO support SNES extra buttons 
-    ;    "STY joypad1+1" // get put get
-    ;    "NOP"                // put get
-    ;"1:"
-    ;    "LDA CONTROLLER_PORT \n" // put get* put GET *848  // Starts: 751, [879]
-    ;    "AND #$03 \n"           // put get
-    ;    "CMP #$01 \n"           // put get
-    ;    "ROL joypad1+1 \n" // put get put get put    // This can desync, but we finish before it matters.
-    ;    "BCC 1b \n"             // get* put (get)   *860
-
-
-    ; calculate the remaining fields:
-    ; pressed
-    lda __rc6
-    eor #$ff
-    and joypad1
-    sta joypad1 + 1
-
-    ; released
-    lda joypad1
-    eor #$ff
-    and __rc6
-    sta joypad1 + 2
-
-    ; Check the report to see if we have a snes mouse plugged in
-    lda se_joypad + kMouseButtons
-    and #15
-    cmp #1
-    beq @snes_mouse_detected
-        ; no mouse? treat this as a standard controller instead
-        lda se_joypad + kMouseZero
-        sta joypad2
-
-        ; pressed
-        lda __rc7
-        eor #$ff
-        and joypad2
-        sta joypad2 + 1
-
-        ; released
-        lda joypad1
-        eor #$ff
-        and __rc7
-        sta joypad2 + 2
-
-        ; no snes mouse, so leave the first field empty
-        ldx #0
-        stx se_joypad + kMouseZero
-        inx
-        stx se_no_mouse
-        jmp @exit
-
-    @snes_mouse_detected:
-        ldx #1
-
-    @loop:
-        lda se_joypad + kMouseY,x
-        bpl :+
-            ; subtract the negative number instead
-            and #$7f
-            sta se_joypad + kMouseZero
-            lda __rc2,x
-            sec
-            sbc se_joypad + kMouseZero
-            ; check if we underflowed
-            bcc @wrappednegative
-
-            ;check lower bounds
-            cmp MouseBoundsMin,x
-            bcs @setvalue   ; didn't wrap so set the value now
-        
-        @wrappednegative:
-            lda MouseBoundsMin,x
-            jmp @setvalue
-
-        :   ; add the positive number
-            clc
-            adc __rc2,x 
-            ; check if we wrapped, set to the max bounds if we did
-            bcs @wrapped
-
-            ; check the upper bounds
-            cmp MouseBoundsMax,x
-            bcc @setvalue
-
-        @wrapped:
-            lda MouseBoundsMax,x 
-        
-        @setvalue:
-            sta se_joypad + kMouseY,x 
-            dex
-            bpl @loop
-
-    ; calculate newly pressed buttons and shift it into byte zero
-    lda __rc4
-    eor #$c0
-    and se_joypad + kMouseButtons
-    rol
-    ror se_joypad + kMouseZero
-    rol
-    ror se_joypad + kMouseZero
-
-    ; calculate newly released buttons
-
-    lda se_joypad + kMouseButtons
-    eor #$c0
-    and __rc4
-    rol
-    ror se_joypad + kMouseZero
-    rol
-    ror se_joypad + kMouseZero
-
-    ; set the connected bit
-    sec
-    ror se_joypad + kMouseZero
-
-    @exit:
-
-    pla
-    sta __rc7
-    pla
-    sta __rc6
-    pla
-    sta __rc4
-    pla
-    sta __rc3
-    pla
-    sta __rc2
-    
-    rts
-.endproc
-
-
 
 
 
@@ -2132,45 +1936,263 @@ se_run_da_irq:
 .endproc
 
 .proc se_sample_eof
-    lda #0
-    sta se_sample_in_progress
-    lda #255
-    sta se_irq_table+0
-    rts
+    ;lda #0
+    ;sta se_sample_in_progress
+    ;lda #255
+    ;sta se_irq_table+0
+    ;rts
 .endproc
 
 .proc funny_pcm_routine
-    .org $00d0  ; 60 bytes to work with
+    ;.org $00d0  ; 60 bytes to work with
 
-    @load_instruction: lda $c000    ; 3
-    bmi @exit_eof_sample            ; 5
-    sta $4011                       ; 8
-    inc @load_instruction + 1       ; 10
-    beq @inc_high_byte              ; 12
-    rts                             ; 13
+    ;@load_instruction: lda $c000    ; 3
+    ;bmi @exit_eof_sample            ; 5
+    ;sta $4011                       ; 8
+    ;inc @load_instruction + 1       ; 10
+    ;beq @inc_high_byte              ; 12
+    ;rts                             ; 13
 
-    @inc_high_byte:
-    inc @load_instruction + 2       ; 15
-    lda @load_instruction + 2       ; 17
-    cmp #$e0                        ; 19
-    bne @exit                       ; 21
+    ;@inc_high_byte:
+    ;inc @load_instruction + 2       ; 15
+    ;lda @load_instruction + 2       ; 17
+    ;cmp #$e0                        ; 19
+    ;bne @exit                       ; 21
 
-    inc __prg_c000                  ; 23
+    ;inc __prg_c000                  ; 23
 
-    lda #%00000110                  ; 25
-    ora __bank_select_hi            ; 27
-    sta $8000                       ; 30
-    lda __prg_c000                  ; 32
-    sta $8001                       ; 35
-    lda #$c0                        ; 37
-    sta @load_instruction + 2       ; 39
-    @exit:
-    rts                             ; 40
-    @exit_eof_sample:
-    jmp se_sample_eof               ; 43
+    ;lda #%00000110                  ; 25
+    ;ora __bank_select_hi            ; 27
+    ;sta $8000                       ; 30
+    ;lda __prg_c000                  ; 32
+    ;sta $8001                       ; 35
+    ;lda #$c0                        ; 37
+    ;sta @load_instruction + 2       ; 39
+    ;@exit:
+    ;rts                             ; 40
+    ;@exit_eof_sample:
+    ;jmp se_sample_eof               ; 43
 
-    .reloc
+    ;.reloc
 .endproc
 
-;.align 128
 .include "famistudio_ca65.s"
+
+
+
+;;
+;;  OAM DMA SHENANIGANS
+;;  ok so basically, controller reads aligned to OAM DMA
+;;
+
+MouseBoundsMin:
+    .byte 1,1
+MouseBoundsMax:
+    .byte 254,239
+
+.align 32
+.export se_safe_controller_polling
+.proc se_safe_controller_polling
+    .export joypad1
+    .export joypad2
+    joypad2 = se_joypad+1
+    joypad1 = se_joypad+4
+    controller_port_1 = $4016
+    controller_port_2 = $4017
+    mouse_port = controller_port_2
+    controller_port = controller_port_1
+    kMouseZero = 0
+    kMouseButtons = 1
+    kMouseY = 2
+    kMouseX = 3
+
+    ; save registers (this *is* called from nmi, after all)
+    lda __rc2
+    pha
+    lda __rc3
+    pha
+    lda __rc4
+    pha
+    lda __rc6
+    pha
+    lda __rc7
+    pha
+    
+    ;save previous controller state
+    lda joypad1
+    sta __rc6
+
+    ;save previous controller state
+    lda joypad2
+    sta __rc7
+
+    ;save previous mouse state
+    lda se_joypad + kMouseY
+    sta __rc2
+    lda se_joypad + kMouseX
+    sta __rc3
+    lda se_joypad + kMouseButtons
+    sta __rc4
+
+    ;strobe joypads
+    ldx #0
+    ldy #1
+    sty se_joypad
+    sty controller_port_1
+    stx controller_port_1
+
+    ;INITIATE THE DMA!
+    lda #2
+    sta $4014
+
+    ; poll
+    @poll_mouse:
+        lda se_mouse_mask    ; get put get*     *576  // Starts: 4, 158, 312, 466, [620]
+        and mouse_port   ; put get put GET
+        cmp #1           ; put get
+        rol se_joypad,x        ; put get put get* PUT GET  *432
+        bcc @poll_mouse            ; put get (put)
+
+        inx                ; put get
+        cpx #4           ; put get
+        sty se_joypad,x        ; put get put GET
+        bne @poll_mouse             ; put get (put)
+
+    @poll_controller:
+        lda controller_port ; put get put GET        // Starts: 619
+        and #3           ; put get*         *672
+        cmp #1           ; put get
+        rol joypad1 ; put get put get put    // This can desync, but we finish before it matters.
+        bcc @poll_controller             ; get put (get)
+
+    ;".if 0" // TODO support SNES extra buttons 
+    ;    "STY joypad1+1" // get put get
+    ;    "NOP"                // put get
+    ;"1:"
+    ;    "LDA CONTROLLER_PORT \n" // put get* put GET *848  // Starts: 751, [879]
+    ;    "AND #$03 \n"           // put get
+    ;    "CMP #$01 \n"           // put get
+    ;    "ROL joypad1+1 \n" // put get put get put    // This can desync, but we finish before it matters.
+    ;    "BCC 1b \n"             // get* put (get)   *860
+
+
+    ; calculate the remaining fields:
+    ; pressed
+    lda __rc6
+    eor #$ff
+    and joypad1
+    sta joypad1 + 1
+
+    ; released
+    lda joypad1
+    eor #$ff
+    and __rc6
+    sta joypad1 + 2
+
+    ; Check the report to see if we have a snes mouse plugged in
+    lda se_joypad + kMouseButtons
+    and #15
+    cmp #1
+    beq @snes_mouse_detected
+        ; no mouse? treat this as a standard controller instead
+        lda se_joypad + kMouseZero
+        sta joypad2
+
+        ; pressed
+        lda __rc7
+        eor #$ff
+        and joypad2
+        sta joypad2 + 1
+
+        ; released
+        lda joypad1
+        eor #$ff
+        and __rc7
+        sta joypad2 + 2
+
+        ; no snes mouse, so leave the first field empty
+        ldx #0
+        stx se_joypad + kMouseZero
+        inx
+        stx se_no_mouse
+        jmp @exit
+
+    @snes_mouse_detected:
+        ldx #1
+
+    @loop:
+        lda se_joypad + kMouseY,x
+        bpl :+
+            ; subtract the negative number instead
+            and #$7f
+            sta se_joypad + kMouseZero
+            lda __rc2,x
+            sec
+            sbc se_joypad + kMouseZero
+            ; check if we underflowed
+            bcc @wrappednegative
+
+            ;check lower bounds
+            cmp MouseBoundsMin,x
+            bcs @setvalue   ; didn't wrap so set the value now
+        
+        @wrappednegative:
+            lda MouseBoundsMin,x
+            jmp @setvalue
+
+        :   ; add the positive number
+            clc
+            adc __rc2,x 
+            ; check if we wrapped, set to the max bounds if we did
+            bcs @wrapped
+
+            ; check the upper bounds
+            cmp MouseBoundsMax,x
+            bcc @setvalue
+
+        @wrapped:
+            lda MouseBoundsMax,x 
+        
+        @setvalue:
+            sta se_joypad + kMouseY,x 
+            dex
+            bpl @loop
+
+    ; calculate newly pressed buttons and shift it into byte zero
+    lda __rc4
+    eor #$c0
+    and se_joypad + kMouseButtons
+    rol
+    ror se_joypad + kMouseZero
+    rol
+    ror se_joypad + kMouseZero
+
+    ; calculate newly released buttons
+
+    lda se_joypad + kMouseButtons
+    eor #$c0
+    and __rc4
+    rol
+    ror se_joypad + kMouseZero
+    rol
+    ror se_joypad + kMouseZero
+
+    ; set the connected bit
+    sec
+    ror se_joypad + kMouseZero
+
+    @exit:
+
+    pla
+    sta __rc7
+    pla
+    sta __rc6
+    pla
+    sta __rc4
+    pla
+    sta __rc3
+    pla
+    sta __rc2
+    
+    rts
+.endproc

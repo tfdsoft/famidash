@@ -1,3 +1,33 @@
+/*==============================================
+ *  ENGINE CONFIGURATION
+ *  customize your ROM configuration.
+**============================================*/
+
+// Sound Test Bank =============================
+#define sound_test_bank 61
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==============================================
+ *  You shouldn't have to touch anything
+ *  below this point.
+**============================================*/
+
 typedef unsigned char u8;
 typedef unsigned short u16;
 #define u24 __BitInt(24)
@@ -35,7 +65,7 @@ extern u8 __prg_8000, __prg_a000;
 extern void* se_post_nmi_ptr;
 extern void* se_irq_ptr;
 extern u8 se_sample_in_progress;
-extern u8 se_irq_table[32];
+extern u8 se_irq_table[32], se_irq_table_position;
 extern const u8 se_identity_table[256];
 
 struct pad {
@@ -136,6 +166,9 @@ __attribute__((leaf)) void se_draw_metasprite(u8 x, u8 y, const u8* const data);
 
 __attribute__((leaf)) void se_one_vram_buffer(
 	const char data, const u16 ppu_addr
+);
+__attribute__((leaf)) void se_one_vram_buffer_repeat_horizontal(
+	const char data, const u8 len, const u16 ppu_addr
 );
 __attribute__((leaf)) void se_string_vram_buffer(
 	const char *data, const u16 ppu_addr

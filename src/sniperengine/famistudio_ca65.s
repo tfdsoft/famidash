@@ -228,7 +228,7 @@ FAMISTUDIO_USE_PITCH_TRACK       = 1
 
 ; Allows having up to 256 instrument at the cost of slightly higher CPU usage when switching instrument.
 ; When this is off, the limit is 64 for regular instruments and 32 for expansion instrumnets.
-; FAMISTUDIO_USE_INSTRUMENT_EXTENDED_RANGE = 1
+ FAMISTUDIO_USE_INSTRUMENT_EXTENDED_RANGE = 1
 
 ; Must be enabled if your project uses the "Phase Reset" effect.
 ; FAMISTUDIO_USE_PHASE_RESET = 1

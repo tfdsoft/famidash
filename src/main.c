@@ -13,6 +13,7 @@
 
 #include "state_startup.c"
 #include "state_menu.c"
+#include "state_debug.c"
 
 
 int main(void) {
@@ -69,15 +70,20 @@ int main(void) {
             case 0x10:
                 jsrfar_noargs(startup_bank, state_menu);
                 break;
+            
+            case 0x14:
+                jsrfar_noargs(debug_bank, state_soundtest);
+                break;
 
             case 0xff:
                 jsrfar_noargs(60,thegreet_message);
                 break;
         }
         //se_post_nmi_ptr = nofunction;
+        se_irq_table_position = 0;
         se_irq_ptr = nofunction;
         se_irq_table[0]=255;
-        se_irq_table[1]=60; // location 0x60 (rts)
-        se_irq_table[2]=81; // of the identity table
+        se_irq_table[1]=0x60; // location 0x60 (rts)
+        se_irq_table[2]=0x81; // of the identity table
     }
 }

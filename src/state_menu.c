@@ -118,8 +118,6 @@ banked(startup_bank.data) const u8 menu_irq_table[] = {
     0, //15 x scroll goes here
 
     255, // end of table
-    60,
-    81
 };
 
 banked(startup_bank.func)
@@ -321,3 +319,6 @@ void state_menu() {
     __asm__("sei");
     
 }
+
+
+

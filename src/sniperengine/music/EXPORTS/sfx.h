@@ -1,3 +1,5 @@
+extern u8 sfx[];
+
 #define sfx_achievement_01 0
 #define sfx_buyitem01 1
 #define sfx_buyitem03 2
