@@ -446,7 +446,7 @@ def main(argv=None):
     if not options.output and len(options.input) > 1:
         options.output = options.input.pop()
     if '-' not in options.input and not sys.stdin.isatty():
-        options.input.append('-')
+        options.input+='-'
     if options.output is None and not sys.stdout.isatty():
         options.output = '-'
     if not options.input or not options.output:

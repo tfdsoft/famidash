@@ -4,6 +4,8 @@ INCLUDE c-in-ram.ld
 /* set bank start positions before the
 default linker script does it for me */
 
+__prg_rom_0 = 0xa000;
+
 __prg_rom_22 = 0xa000;
 __prg_rom_23 = 0xa000;
 __prg_rom_24 = 0xa000;

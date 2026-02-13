@@ -1,5 +1,5 @@
-__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".001")))
-const uint8_t tt_bg0[] = {
+banked(chr_bank_2.table)
+const u8 tt_bg0[] = {
     // alright, here's how the structure works:
     // - width
     // - height
@@ -20,8 +20,8 @@ const uint8_t tt_bg0[] = {
     0x59, 0x5b, 0x5d, 0x5f, 0x7c, 0x7e,  0x4c, 0x4e, 0x50, 0x52, 0x54, 0x56,
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".002")))
-const uint8_t tt_bg1[] = {
+banked(chr_bank_2.table)
+const u8 tt_bg1[] = {
 
     6, // width
     6, // height
@@ -34,8 +34,8 @@ const uint8_t tt_bg1[] = {
     0x6c, 0x6e, 0x70, 0x72, 0x74, 0x76, 
 };
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".003")))
-const uint8_t tt_bg2[] = {
+banked(chr_bank_2.table)
+const u8 tt_bg2[] = {
 
     6, // width
     6, // height
@@ -48,14 +48,14 @@ const uint8_t tt_bg2[] = {
 };
 
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".010")))
-const uint8_t * const bg_table_ptr[] = {
+banked(chr_bank_2.table)
+const u8 * const bg_table_ptr[] = {
     tt_bg0, tt_bg1, tt_bg2
 };
 
 
-__attribute__((section(".prg_rom_"STR(extra_code_bank_1)".999")))
-const uint8_t mspr_loading[] = {
+banked(chr_bank_2.table)
+const u8 mspr_loading[] = {
     -32, -4, 0, 0,
     -24, -4,  0, 0,
     -16, -4, 0, 0,
@@ -67,23 +67,27 @@ const uint8_t mspr_loading[] = {
     0x80
 };
 
-uint8_t loaded_bg_width;
+u8 loaded_bg_width;
 
 __attribute__((noinline))
-void vram_write_parallax(uint8_t bg_id){
+void vram_write_parallax(const u8 bg_id){
     //disable_nmi();
     // lots of ugly stuff is happening in this
     // function, brace yourselves
     //uint8_t prev_bank = get_prg_a000();
-    uint8_t width, height, wtimesh;
+    u8 width, height, wtimesh;
     //uint8_t i,j;
-    const uint8_t * ptr;
+    const u8 * ptr;
 
-    push_prg_a000();
+    //push_prg_a000();
+    __asm__(
+        "lda __prg_a000 \n"
+        "pha \n"
+    );
 
     // ok so first, actually switch to the bank
     // where the tile patterns tables are
-    set_prg_a000(extra_code_bank_1);
+    set_prg_a000(chr_bank_2);
 
     
     // get the pointer to the requested bg table
@@ -99,37 +103,48 @@ void vram_write_parallax(uint8_t bg_id){
     // it won't have to add two each time
     ptr += 2;
 
-    for(uint8_t i=0,itw=0; i<30; i++,itw+=width){ // i = y
+    for(u8 i=0,itw=0; i<30; i++,itw+=width){ // i = y
         if(itw >= wtimesh) itw -= wtimesh; // (i * width)
 
-        for(uint8_t j=0, jmw=0; j<32; j++, jmw++){ // j = x
+        for(u8 j=0, jmw=0; j<32; j++, jmw++){ // j = x
             if(jmw >= width) jmw -= width; // (j % width)
-            uint8_t tileid = (jmw);
+            u8 tileid = (jmw);
             tileid += (itw);
             PPU.vram.data = ptr[tileid];
         }
     }
 
-    for(uint8_t i=0; i<64; i++){
+    for(u8 i=0; i<64; i++){
         PPU.vram.data = 0;
     }
 
-
-    pop_prg_a000();
+    __asm__(
+        "pla \n"
+        "jsr set_prg_a000 \n"
+    );
 }
 
 
 __attribute__((noinline))
-void vram_generate_parallax(uint8_t bg_id){
-    const uint8_t * ptr;
-    uint8_t width, height;
+void vram_generate_parallax(u8 bg_id){
+    #define bg_buffer (&sram_buffer[0])
+    #define coll_buffer (&sram_buffer[0])
+
+    #define bg_buffer_1 (&bg_buffer[0])
+    #define bg_buffer_2 (&bg_buffer[1024])
+
+    const u8 * ptr;
+    u8 width, height;
 
     // empty the parallax buffer
     // don't do it anymore (we need all the frames)
-    memfill((uint8_t*)0x6000, 0, sizeof(sram_buffer));
+    se_memory_fill((void*)0x6000, 0, sizeof(sram_buffer));
 
-    push_prg_a000();
-    set_prg_a000(extra_code_bank_1);
+    __asm__(
+        "lda __prg_a000 \n"
+        "pha \n"
+    );
+    set_prg_a000(chr_bank_2);
 
     // get the pointer to the requested bg table
     ptr = bg_table_ptr[bg_id];
@@ -146,26 +161,24 @@ void vram_generate_parallax(uint8_t bg_id){
     ptr += 2;
 
 
-    
-
-    for(uint8_t step = 0; step < 4; step++){
+    __asm__("php \n sei");
+    APU.delta_mod.length = 0;
+    APU.status &= 0b00001111;
+    disable_nmi(); // just in case music_update runs.
+    for(u8 step = 0; step < 4; step++){
         // fetch the next bg frame from the ppu
         // (gotta run this four times)
-        vram_adr(0);
+        set_chr_bank(2,0x10+step);
+        se_vram_address(0);
         PPU.vram.data; // prime the read
-        set_chr_mode_2(0x10+step);
 
-        APU.delta_mod.length = 0;
-        APU.status &= 0b00001111;
-        disable_nmi(); // just in case music_update runs.
-        for(uint8_t i=0; i<4; i++){
-            uint8_t j=0;
+        for(u8 i=0; i<4; i++){
+            u8 j=0;
             do{
                 bg_buffer_2[(i<<8)+j] = PPU.vram.data;
                 j++;
             } while (j != 0);
         }
-        enable_nmi();
         
 
 
@@ -173,23 +186,21 @@ void vram_generate_parallax(uint8_t bg_id){
         // 2. set up a pointer to that tile's data
         // 3. copy that tile to vram
         // 4. repeat from 1. until all tiles are copied
-        
-        for (uint8_t bg_width = 1; bg_width < width; bg_width++){
-            set_chr_mode_2((0x10+(bg_width<<2)+step));
-            vram_adr(0);
+        for (u8 bg_width = 1; bg_width < width; bg_width++){
+            set_chr_bank(2,(0x10+(bg_width<<2)+step));
+            se_vram_address(0);
             
-            
-            for (uint8_t j=0, jtw=0; j<height; j++, jtw += width){ // y
-                uint8_t tile_end = jtw+width;
+            for (u8 j=0, jtw=0; j<height; j++, jtw += width){ // y
+                u8 tile_end = jtw+width;
                 
-                for (uint8_t tileidx = jtw, newtileidx = (width-bg_width); 
+                for (u8 tileidx = jtw, newtileidx = (width-bg_width); 
                     tileidx < tile_end; 
                     tileidx++, newtileidx++
                 ){
                     if(newtileidx >= (width)) newtileidx = 0;
 
-                    uint8_t tile = ptr[tileidx];//(i + jtw);
-                    uint8_t newtile = (ptr[newtileidx+jtw]-0x40);
+                    u8 tile = ptr[tileidx];//(i + jtw);
+                    u8 newtile = (ptr[newtileidx+jtw]-0x40);
 
                     //uint8_t newtile = (i+(width-bg_width));
                     //if(newtile >= width) newtile -= width;
@@ -198,19 +209,25 @@ void vram_generate_parallax(uint8_t bg_id){
                     //tile = (ptr[tile]);
                     //newtile = (ptr[newtile]-0x40);
                     
-                    for (uint8_t k=8; k<16; k++){
+                    for (u8 k=8; k<16; k++){
                         bg_buffer_1[(newtile<<4)|k] = bg_buffer_1[(tile<<4)|k];
                     }
                 }
             }
             
-            vram_copy(bg_buffer_1, 0x400);
+            se_vram_address(0);
+            se_memory_copy((void*)0x2007, bg_buffer_1, 0x400);
         }
+        
     }
-    set_chr_mode_2(4);
+    set_chr_bank(2,4);
+    enable_nmi();
 
-
-    pop_prg_a000();
+    __asm__("plp");
+    __asm__(
+        "pla \n"
+        "jsr set_prg_a000 \n"
+    );
 }
 
 /*

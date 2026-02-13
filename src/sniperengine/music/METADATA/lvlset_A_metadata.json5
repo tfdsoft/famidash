@@ -1,0 +1,635 @@
+{
+	songModule: "music_master.fms",
+	songs: [
+		{
+			fmsSongName: "Menu Theme",
+			lowerText: "MENU",
+			originalArtistText: "ROBTOP",
+			vsSystemEnabled: false,
+			nsfData: {
+				trackLabel: "Menu Theme",
+				trackAuthor: {
+					original: "RobTop",
+					cover: "Zenith302"
+				},
+				durationNTSC: 30017,
+				durationPAL: 36080,
+				looped: true
+			}
+		},
+		{
+			fmsSongName: "Rustic Runes",
+			lowerText: "RUSTIC RUNES",
+			originalArtistText: "PSY-NIGMA",
+			vsSystemEnabled: false,
+		},
+		{
+			fmsSongName: "Menu Theme (2.2)",
+			lowerText: "MENU but 2.2",
+			originalArtistText: "TOBY FOX",
+			vsSystemEnabled: false,
+			nsfData: {
+				trackLabel: "Menu Theme (2.2)",
+				trackAuthor: {
+					original: "Toby Fox",
+					cover: "Zenith302"
+				},
+				durationNTSC: 30017,
+				durationPAL: 36080,
+				looped: true
+			}
+		},
+		{
+			fmsSongName: "didn't realize it (credits mix) (WIP!!) (IN-GAME)",
+			lowerText: "DIDN'T REALISE IT",
+			originalArtistText: "I HAVE NO CLUE",
+			nsfData: {
+				trackLabel: "didn't realize it (credits mix)",
+				trackAuthor: {
+					original: "i have no clue",
+					cover: "alexmush, jaezu"
+				},
+				looped: true
+			}
+		},
+		{
+			fmsSongName: "Stereo Madness",
+			lowerText: "STEREO MADNESS",
+			originalArtistText: "FOREVERBOUND",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Stereo Madness",
+				trackAuthor: {
+					original: "ForeverBound",
+					cover: "Zenith302, UserSniper"
+				},
+				durationNTSC: 85550,
+				durationPAL: 102840
+			}
+		},
+		{
+			fmsSongName: "Back on Track",
+			lowerText: "BACK ON TRACK",
+			originalArtistText: "DJVI",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Back On Track",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "aquamarine.gay"
+				},
+				durationNTSC: 82817,
+				durationPAL: 99540
+			}
+		},
+		{
+			fmsSongName: "Polargeist",
+			lowerText: "POLARGEIST",
+			originalArtistText: "STEP",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Polargeist",
+				trackAuthor: {
+					original: "Step",
+					cover: "UserSniper, Zenith302, Vikrinox"
+				},
+				durationNTSC: 90700,
+				durationPAL: 109000
+			}
+		},
+		{
+			fmsSongName: "Dry Out",
+			lowerText: "DRY OUT",
+			originalArtistText: "DJVI",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Dry Out",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "UserSniper"
+				},
+				durationNTSC: 81433,
+				durationPAL: 97880
+			}
+		},
+		{
+			fmsSongName: "Base after Base",
+			lowerText: "BASE AFTER BASE",
+			originalArtistText: "DJVI",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Base After Base",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "Zenith302, UserSniper, Vikrinox, alexmush"
+				},
+				durationNTSC: 85000,
+				durationPAL: 102160
+			}
+		},
+		{
+			fmsSongName: "Can't Let Go",
+			lowerText: "CANT LET GO",
+			originalArtistText: "DJVI",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Cant Let Go ~ Can't Let Go",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "UserSniper, alexmush"
+				},
+				durationNTSC: 80750,
+				durationPAL: 97040
+			}
+		},
+		{
+			fmsSongName: "Jumper",
+			lowerText: "JUMPER",
+			originalArtistText: "WATERFLAME",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Jumper",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "zukinnyk, UserSniper, Zenith302"
+				},
+				durationNTSC: 86467,
+				durationPAL: 104100
+			}
+		},
+		{
+			fmsSongName: "Time Machine",
+			lowerText: "TIME MACHINE",
+			originalArtistText: "WATERFLAME",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Time Machine",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "Zenith302, Vikrinox, alexmush"
+				},
+				durationNTSC: 96067,
+				durationPAL: 115460
+			}
+		},
+		{
+			fmsSongName: "Cycles",
+			lowerText: "CYCLES",
+			originalArtistText: "DJVI",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Cycles",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "aquamarine.gay, alexmush"
+				},
+				durationNTSC: 85933,
+				durationPAL: 103280
+			}
+		},
+		{
+			fmsSongName: "xStep",
+			lowerText: "XSTEP",
+			originalArtistText: "DJVI",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "xStep",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "Vikrinox, alexmush"
+				},
+				durationNTSC: 82350,
+				durationPAL: 98980
+			}
+		},
+		{
+			fmsSongName: "Clutterfunk",
+			lowerText: "CLUTTERFUNK",
+			originalArtistText: "WATERFLAME",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Clutterfunk",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "Zenith302, aquamarine.gay, Vikrinox"
+				},
+				durationNTSC: 96583,
+				durationPAL: 116080
+			}
+		},
+		{
+			fmsSongName: "Theory of Everything",
+			upperText: "THEORY OF",
+			lowerText: "EVERYTHING",
+			originalArtistText: "DJ NATE",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Theory Of Everything",
+				trackAuthor: {
+					original: "Dj-Nate",
+					cover: "leejh20, UserSniper, Vikrinox, Zenith302"
+				},
+				durationNTSC: 89000,
+				durationPAL: 106960
+			}
+		},
+		{
+			fmsSongName: "Electroman Adventures",
+			upperText: "ELECTROMAN",
+			lowerText: "ADVENTURES",
+			originalArtistText: "WATERFLAME",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Electroman Adventures",
+				trackAuthor: {
+					original: "Waterflame",
+					cover: "cloud54, UserSniper, alexmush"
+				},
+				durationNTSC: 87800,
+				durationPAL: 105520
+			}
+		},
+		{
+			fmsSongName: "Clubstep",
+			lowerText: "CLUBSTEP",
+			originalArtistText: "DJ NATE",
+		},
+		{
+			fmsSongName: "Electrodynamix",
+			lowerText: "ELECTRODYNAMIX",
+			originalArtistText: "DJ NATE",
+		},
+		{
+			fmsSongName: "Hexagon Force",
+			lowerText: "HEXAGON FORCE",
+			originalArtistText: "WATERFLAME",
+		},
+		{
+			fmsSongName: "Blast Processing",
+			lowerText: "BLAST PROCESSING",
+			originalArtistText: "WATERFLAME",
+		},
+		{
+			fmsSongName: "TOE 2",
+			upperText: "THEORY OF",
+			lowerText: "EVERYTHING 2",
+			originalArtistText: "DJ NATE",
+		},
+		{
+			fmsSongName: "Geometrical Dominator",
+			upperText: "GEOMETRICAL",
+			lowerText: "DOMINATOR",
+			originalArtistText: "WATERFLAME",
+		},
+		{
+			fmsSongName: "Deadlocked",
+			lowerText: "DEADLOCKED",
+			originalArtistText: "F777",
+		},
+		{
+			fmsSongName: "Fingerdash",
+			lowerText: "FINGERDASH",
+			originalArtistText: "MDK",
+		},
+		{
+			fmsSongName: "Dash",
+			lowerText: "DASH",
+			originalArtistText: "MDK",
+		},
+		{
+			fmsSongName: "Practice",
+			lowerText: "PRACTICE",
+			originalArtistText: "OCULARNEBULA",
+			vsSystemEnabled: false,
+			nsfData: {
+				trackLabel: "Practice ~ Stay Inside Me",
+				trackAuthor: {
+					original: "OcularNebula",
+					cover: "UserSniper"
+				},
+				durationNTSC: 239817,
+				durationPAL: 288380,
+				looped: true
+			}
+		},
+		{
+			fmsSongName: "Scheming Weasel",
+			lowerText: "SCHEMING WEASEL",
+			originalArtistText: "KEVIN MACLEOD",
+			vsSystemEnabled: false
+		},
+		{
+			fmsSongName: "Ground to Space",
+			lowerText: "GROUND TO SPACE",
+			originalArtistText: "SEAGLOWINGPRO",
+		},
+		{
+			fmsSongName: "Ground to Space (GDA)",
+			upperText: "GROUND TO SPACE",
+			lowerText: "ADVANCE",
+			originalArtistText: "SGP,ORION",
+		},
+		
+		
+		
+		{
+			fmsSongName: "The Challenge",
+			lowerText: "THE CHALLENGE",
+			originalArtistText: "ROBTOP",
+		},
+		{
+			fmsSongName: "retray",
+			lowerText: "GOLDEN HAZE",
+			originalArtistText: "DETIOUSMUSIC",
+		},
+		{
+			fmsSongName: "infernoplex",
+			lowerText: "INFERNOPLEX",
+			originalArtistText: "DIMRAIN47",
+		},
+		/*{
+			fmsSongName: "Every End (Full)",
+			lowerText: "EVERY END",
+			originalArtistText: "DIMRAIN47",
+		},*/
+		/*{
+			fmsSongName: "atthespeedoflight",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT",
+			originalArtistText: "DIMRAIN47",
+		},
+		{
+			fmsSongName: "atthespeedoflight2",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT 2",
+			originalArtistText: "DIMRAIN47",
+		},*/
+		{
+			fmsSongName: "midnight",
+			lowerText: "MIDNIGHT",
+			originalArtistText: "CORNANDBEANS",
+		},
+		{
+			fmsSongName: "haunted woods",
+			lowerText: "HAUNTED WOODS",
+			originalArtistText: "WATERFLAME",
+		},
+		{
+			fmsSongName: "just right",
+			lowerText: "JUST RIGHT",
+			originalArtistText: "DAN HARRISON B",
+			vsSystemEnabled: false
+		},
+		{
+			fmsSongName: "rainbow tylenol",
+			lowerText: "RAINBOW TYLENOL",
+			originalArtistText: "KITSUNE2",
+		},
+		{
+			fmsSongName: "stalemate greif cut",
+			upperText: "STALEMATE",
+			lowerText: "GREIF CUT",
+			originalArtistText: "KAYOSZX",
+		},		
+		{
+			fmsSongName: "Extraordinary Excitement",
+			upperText: "EXTRAORDINARY",
+			lowerText: "EXCITEMENT",
+			originalArtistText: "SEAGLOWINGPRO",
+		},			/**/
+	],
+	SFX: [
+		{
+			text: "ACHIEVEMENT_01",
+		},
+		{
+			text: "BUYITEM01",
+		},
+		{
+			text: "BUYITEM03",
+		},
+		{
+			text: "CHEST07",
+		},
+		{
+			text: "CHEST08",
+		},
+		{
+			text: "CHESTCLICK",
+		},
+		{
+			text: "CHESTLAND",
+		},
+		{
+			text: "CHESTOPEN1",
+		},
+		{
+			text: "COUNTER003",
+		},
+		{
+			text: "CRYSTAL01",
+		},
+		{
+			text: "DOOR01",
+		},
+		{
+			text: "DOOR001",
+		},
+		{
+			text: "DOOR02",
+		},
+		{
+			text: "ENDSTART_02",
+		},
+		{
+			text: "EXPLODE_11",
+		},
+		{
+			text: "GOLD01",
+		},
+		{
+			text: "GOLD02",
+		},
+		{
+			text: "HIGHSCOREGET02",
+		},
+		{
+			text: "MAGICEXPLOSION",
+		},
+		{
+			text: "PLAYSOUND_01",
+		},
+		{
+			text: "QUITSOUND_01",
+		},
+		{
+			text: "REWARD01",
+		},
+		{
+			text: "SECRETKEY",
+		},
+		{
+			text: "UNLOCKPATH",
+		},
+	],
+	PCM: [/*
+		{
+			segment: "PCM_BANK",
+			path: "MUSIC/PCM/SSDPCM2-geometryDash.pcm",
+			sampleRateNTSC: 4,
+			sampleRatePAL: 3,
+			nsfData: {
+				trackLabel: "Geometry Dash Voice Clip",
+				trackAuthor: "VA: MDK",
+				durationNTSC: 1150,
+				durationPAL: 1100
+			}
+		},
+		{
+			segment: "PCM_BANK_B",
+			path: "MUSIC/PCM/SSDPCM2-fire.pcm",
+			sampleRateNTSC: 10,
+			sampleRatePAL: 8,
+			nsfData: {
+				trackLabel: "FIRE IN THE HOLE! Voice Clip",
+				trackAuthor: "VA: Joe",
+				durationNTSC: 1650,
+				durationPAL: 1650
+			}
+		}
+	*/],
+	dpcmAligner: "zzzzzzzz"
+}
+
+/*{
+	songModule: "famidash_epsm.fms",
+	songs: [
+		{
+			fmsSongName: "Stay Inside Me EPSM",
+			lowerText: "Stay Inside Me",
+			originalArtistText: "idfk lmao",
+		},
+		{
+			fmsSongName: "Time Machine EPSM",
+			lowerText: "TIME MACHINE",
+			originalArtistText: "WATERFLAME",
+		},
+		{
+			fmsSongName: "will it blend",
+			lowerText: "KILL ME",
+			originalArtistText: "idfk lmao",
+		},
+	],
+	SFX: [
+		{
+			text: "ACHIEVEMENT_01",
+		},
+		{
+			text: "BUYITEM01",
+		},
+		{
+			text: "BUYITEM03",
+		},
+		{
+			text: "CHEST07",
+		},
+		{
+			text: "CHEST08",
+		},
+		{
+			text: "CHESTCLICK",
+		},
+		{
+			text: "CHESTLAND",
+		},
+		{
+			text: "CHESTOPEN1",
+		},
+		{
+			text: "COUNTER003",
+		},
+		{
+			text: "CRYSTAL01",
+		},
+		{
+			text: "DOOR01",
+		},
+		{
+			text: "DOOR001",
+		},
+		{
+			text: "DOOR02",
+		},
+		{
+			text: "ENDSTART_02",
+		},
+		{
+			text: "EXPLODE_11",
+		},
+		{
+			text: "GOLD01",
+		},
+		{
+			text: "GOLD02",
+		},
+		{
+			text: "HIGHSCOREGET02",
+		},
+		{
+			text: "MAGICEXPLOSION",
+		},
+		{
+			text: "PLAYSOUND_01",
+		},
+		{
+			text: "QUITSOUND_01",
+		},
+		{
+			text: "REWARD01",
+		},
+		{
+			text: "SECRETKEY",
+		},
+		{
+			text: "UNLOCKPATH",
+		},
+		{
+			text: "PAUSE",
+		},
+		{
+			text: "bleep.ogg",
+		},
+		{
+			text: "bowlingimpact.ogg",
+		},
+		{
+			text: "buttonclick.ogg",
+		},
+		{
+			text: "buzzer.ogg",
+		},
+		{
+			text: "chime.ogg",
+		},
+		{
+			text: "chomp.ogg",
+		},
+		{
+			text: "coin.ogg",
+		},
+		{
+			text: "diamond.au",
+		},
+		{
+			text: "dirt_rise.ogg",
+		},
+		{
+			text: "gravebutton.ogg",
+		},
+		{
+			text: "tap.ogg",
+		},
+	],
+	PCM: [],
+	dpcmAligner: "zzzzzzzzzzzzzzzzzzzzz"
+}*/

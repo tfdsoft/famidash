@@ -1,8 +1,36 @@
-#include "assets.h"
+/*==============================================
+ *  ASSETS
+ *  got any binary files or data that need to
+ *  be included? Put them here.
+ *==============================================
+ *  USAGE:
+ *  file(symbol, bank) = {
+ *      #embed "<path/to/file>"
+ *  }
+ *  symbol: the keyword that gets created
+ *          after adding the file to the project
+ *  bank:   the bank where the file will reside
+ *==============================================
+ *  EXAMPLE
+ *  to add a compressed graphics file to
+ *  bank 52, you'd use it like this:
+ * 
+ *  file(CHR_menu_font_pusab, 52) = {
+ *      #embed "./chr/dnt/Menu_Font_Pusab.bin"
+ *  }
+**============================================*/
+
+#define chr_bank_0 56
+#define chr_bank_1 57
+#define chr_bank_2 58
+#define chr_bank_3 59
+
+#define startup_bank 60
+#define debug_bank 61
 
 // menu stuff
-file(chr_font, chr_bank_0) = {
-    #embed "./chr/dnt/Font.bin"
+file(chr_menu_font_pusab, chr_bank_0) = {
+    #embed "./chr/dnt/Menu_Font_Pusab.bin"
 };  
 file(chr_menu_global, chr_bank_0) = {
     #embed "./chr/dnt/Menu_Global.bin"
@@ -76,37 +104,17 @@ file(chr_ground_3, chr_bank_3) = {
 
 
 
-__attribute__((section(".prg_rom_fixed_lo.2000"), retain))
-const uint8_t * const chr_bg[] = {
+//__attribute__((section(".prg_rom_fixed_lo.2000"), retain))
+const u8 * const chr_bg[] = {
     chr_background_0,
     chr_background_1,
     chr_background_2
 };
 
-__attribute__((section(".prg_rom_fixed_lo.2001"), retain))
-const uint8_t * const chr_g[] = {
+//__attribute__((section(".prg_rom_fixed_lo.2001"), retain))
+const u8 * const chr_g[] = {
     chr_ground_0,
     chr_ground_1,
     chr_ground_2,
     chr_ground_3,
 };
-
-
-
-/*
-.segment "_pprg__rom__45"
-	firstDMCBankPtr := *
-	.incbin "music_bank0.dmc"
-.segment "_pprg__rom__46"
-	.incbin "music_bank2.dmc"
-.segment "_pprg__rom__47"
-	.incbin "music_bank6.dmc"
-.segment "_pprg__rom__48"
-	.incbin "music_bank8.dmc"
-.segment "_pprg__rom__49"
-	.incbin "music_bank10.dmc"
-.segment "_pprg__rom__50"
-	.incbin "music_bank14.dmc"
-.segment "_pprg__rom__51"
-	.incbin "music_bank16.dmc"
-    */

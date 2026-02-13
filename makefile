@@ -13,6 +13,7 @@ mkdir $(subst /,\\,$(1))
 endef
 
 PYTHON := python
+
 else ifeq ($(OS),MSDOS)
 # MS-DOS
 # add "set OS=MSDOS" to autoexec
@@ -30,6 +31,7 @@ endef
 
 PYTHON := python
 DIRSEP := \\
+
 else
 # Ubuntu/Debian
 CC = mos-nes-mmc3-clang
@@ -67,7 +69,7 @@ TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
 CFLAGS = -flto -Os -ffast-math -fnonreentrant -std=gnu23 -Wall -Wextra
-LDFLAGS = -mreserve-zp=32 -T $(CFG)
+LDFLAGS = -mreserve-zp=64 -T $(CFG)
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -105,24 +107,27 @@ $(TMPDIR):
 	$(call mkdir,$(TMPDIR))
 
 
-$(TMPDIR)/famistudio.o: music/*.s
-	$(CA65) music/music_assets.s -o $@
+$(TMPDIR)/sfx.o: src/sniperengine/music/*.s
+	$(CA65) src/sniperengine/music/music_assets.s -o $@
 
-$(TMPDIR)/music.o: music/EXPORTS/lvlset_$(LEVELSET)/music_bank*.dmc music/EXPORTS/lvlset_$(LEVELSET)/music_*.s music/NoteTables/*.* 
+$(TMPDIR)/music.o: src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/music_bank*.dmc src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/music_*.s src/sniperengine/NoteTables/*.* 
 #	compile all of the music assets into one giant object file
-	$(CA65) music/EXPORTS/lvlset_$(LEVELSET)/music_data_header.s -o $@
-
-$(TMPDIR)/donut.o: src/chr/*.s
-	$(CA65) src/chr/donut.s -o $@
-
-$(TMPDIR)/assets.o: src/chr/dnt/*.bin src/assets.c src/assets.h
-	$(CC) -c src/assets.c $(CFLAGS) -o $@
-
-$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/famistudio.o $(TMPDIR)/music.o $(TMPDIR)/assets.o $(TMPDIR)/donut.o src/*.h src/*.c src/*.s src/gamestates/*.c src/defines/*.h music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
-	$(CC) src/main.c src/*.s $(call cc65IncDir,music/EXPORTS/lvlset_$(LEVELSET)) $(TMPDIR)/*.o $(CFLAGS) $(LDFLAGS) -o $@
-	
+	$(CA65) src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/music_data_header.s -o $@
 
 
+# custom assembly code (not to be put in .prg_rom_fixed_lo)
+$(TMPDIR)/asm.o: src/*.s
+	$(CC) -c src/*.s -o $@
+
+#$(TMPDIR)/assets.o: src/chr/dnt/*.bin src/assets.c src/assets.h
+#	#$(CC) -c src/assets.c $(CFLAGS) -o $@
+
+$(TMPDIR)/sniperengine.o: src/sniperengine/sniperengine.s
+	$(CA65) src/sniperengine/sniperengine.s -o $@
+
+$(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/sniperengine.o $(TMPDIR)/music.o $(TMPDIR)/sfx.o $(TMPDIR)/asm.o src/*.h src/*.c src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
+	python3 src/chr/donut.py src/chr/uncompressed/ src/chr/dnt -f
+	$(CC) src/main.c $(TMPDIR)/*.o $(call cc65IncDir,src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)) $(CFLAGS) $(LDFLAGS) -o $@
 
 
 clean:

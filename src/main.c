@@ -1,156 +1,83 @@
-#include "../BUILDFLAGS.h"
-
-#include "assets.h"
-#include "include.h"
-
-__attribute__((leaf)) __asm__(
-    ".section .init.100,\"ax\",@progbits \n"
-    ".globl clearRAM \n"
-    "clearRAM: \n"
-        "lda #0 \n"
-        "tax \n"
-    "1: \n"
-        "sta  $00,x \n"
-        "sta $100,x \n"
-        "sta $200,x \n"
-        "sta $300,x \n"
-        "sta $400,x \n"
-        "sta $500,x \n"
-        "sta $600,x \n"
-        "sta $700,x \n"
-        "inx \n"
-        "bne 1b \n"
-
-    // end of clearRAM
-
-    ".section .init.280,\"ax\",@progbits \n"
-        "lda #0 \n"
-        "sta __rc2 \n"
-        "sta __rc3 \n"
-        "jsr set_vram_buffer \n"
-
-    ".section .init.300,\"ax\",@progbits \n"
-        // make sure the irq doesn't trigger itself
-        "lda #255 \n"
-        "sta irq_table+0 \n"
-        "sta irq_table+6 \n"
-        
-        "lda #<irq_basic \n"
-        "ldx #>irq_basic \n"
-        "sta irq_table+1 \n"
-        "stx irq_table+2 \n"
-        "sta irq_table+7 \n"
-        "stx irq_table+8 \n"
-
-        "lda #$37 \n"
-        "jsr set_prg_a000 \n"
-
-        "lda #$01 \n"
-        "tax \n"
-        "dex \n"
-        "ldy #$a0 \n"
-        "jsr famistudio_init \n"
-
-        "lda #$c0\n"
-        "sta $4017\n" // disable apu frame counter irq
+// the lifeblood of the engine. don't remove these lines.
+#include <nes.h>
 
 
+#include "sniperengine/sniperengine.h"
+#include "ines_header.h"
+#include "assets.c"
+#include "ram.h"
 
-        //"ldx #$00 \n"
-        //"tax \n"
-        //"dex \n"
-        //"ldy #$a0 \n"
-        //"jsr famistudio_sfx_init \n"
-);
+#include "funny_custom_routines.h"
+#include "physics.h"
+#include "parallax.c"
 
-int main(void){
+#include "state_startup.c"
+#include "state_menu.c"
 
-    PPU.control = PPU_CTRL_VAR = 0b10100000;
-    PPU.mask = PPU_MASK_VAR = 0b00000110;
-    ppu_off(); // turn off everything
 
-    disable_irq();
+int main(void) {
+    PPU.control = se_ppu_ctrl_var = 0b10100000;
+    PPU.mask = se_ppu_mask_var = 0b00000110;
+    PPU.status;
+    se_init(1); // byte passed indicates A12 inversion value
+
+    //disable_irq();
 
     // clear oam buffer
-    oam_clear();
+    se_clear_sprites();
 
-    // clear palette
-    //pal_bg((const char *)0x120);
-    pal_bright(0);
-    
-    set_chr_a12_inversion(CHR_A12_INVERT);
+    se_set_palette_brightness_all(0);
 
-    // clear chr
-    set_chr_default();
-    vram_adr(0x0000);
-    vram_fill(0,0x2000);
+    set_prg_a000(music_bank_0);
+    famistudio_init(1,0xa000);
 
-    banked_call(extra_code_bank, state_ramcheck); 
+    se_post_nmi_ptr = se_music_update;
 
-    set_vram_buffer();
-
-    ppu_on_spr();
-
-    set_wram_mode(WRAM_ON);
-
-    loaded_bg_set = 0xff;
-    loaded_g_set = 0xff;
-    background_set = ground_set = 0;
-
+    se_clear_palette();
 
     while(1){
         __asm__("sei");
-        pal_bright(0);
-        ppu_off();
-        oam_clear();
-        set_chr_default();
-        flush_irq();
-        vram_adr(0);
+        se_set_palette_brightness_all(0);
+        se_turn_off_rendering();
+        se_clear_sprites();
+        se_memory_fill(se_irq_table,0,32);
+        __asm__("dec se_irq_table");
+        set_chr_bank(0,0);
+        set_chr_bank(1,2);
+        set_chr_bank(2,4);
+        set_chr_bank(3,5);
+        set_chr_bank(4,6);
+        set_chr_bank(5,7);
 
-        switch(gamestate){
+        switch (gamestate){
+
             // when in doubt, go back to startup
-            default: 
-                banked_call(extra_code_bank, state_startup); 
-                //state_startup();
+            default:
+                jsrfar_noargs(startup_bank, state_startup);
                 break;
 
             //
-            //  CREDITS-RELATED STUFF
+            //  CREDITS STUFF
             //
-            case 0x00:
-                banked_call(extra_code_bank, state_credits);
-                //state_menu();
+            case 0x01:
+                jsrfar_noargs(startup_bank, state_credits);
                 break;
-                
+
             //
             //  MENU-RELATED STUFF
             //
             case 0x10:
-                banked_call(extra_code_bank, state_menu);
-                break;
-            case 0x11:
-                banked_call(extra_code_bank, state_levelselect);
+                jsrfar_noargs(startup_bank, state_menu);
                 break;
 
-            case 0x14:
-                banked_call(sound_test_bank, state_soundtest);
+            case 0xff:
+                jsrfar_noargs(60,thegreet_message);
                 break;
-
-            //
-            //  GAME-RELATED STUFF
-            //  (in prg_rom_fixed_lo, do not use banked_call())
-            //
-            case 0x20:
-                state_game();
-                break;
-
-            //
-            //  DEBUG STUFF
-            //
-            /*case 0xf0:
-                banked_call(extra_code_bank, state_bankexplorer);
-                break;*/
         }
+        //se_post_nmi_ptr = nofunction;
+        se_irq_ptr = nofunction;
+        se_irq_table[0]=255;
+        se_irq_table[1]=60; // location 0x60 (rts)
+        se_irq_table[2]=81; // of the identity table
     }
-    //APU.sprite.dma;
 }
