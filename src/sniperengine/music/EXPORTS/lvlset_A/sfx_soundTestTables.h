@@ -26,6 +26,18 @@ banked(sound_test_bank.sfxtext.data.020) const char sfxSoundTestString14[13] = "
 banked(sound_test_bank.sfxtext.data.021) const char sfxSoundTestString15[ 9] = "REWARD01";
 banked(sound_test_bank.sfxtext.data.022) const char sfxSoundTestString16[10] = "SECRETKEY";
 banked(sound_test_bank.sfxtext.data.023) const char sfxSoundTestString17[11] = "UNLOCKPATH";
+banked(sound_test_bank.sfxtext.data.024) const char sfxSoundTestString18[ 6] = "PAUSE";
+banked(sound_test_bank.sfxtext.data.025) const char sfxSoundTestString19[10] = "bleep.ogg";
+banked(sound_test_bank.sfxtext.data.026) const char sfxSoundTestString1A[18] = "bowlingimpact.ogg";
+banked(sound_test_bank.sfxtext.data.027) const char sfxSoundTestString1B[16] = "buttonclick.ogg";
+banked(sound_test_bank.sfxtext.data.028) const char sfxSoundTestString1C[11] = "buzzer.ogg";
+banked(sound_test_bank.sfxtext.data.029) const char sfxSoundTestString1D[10] = "chime.ogg";
+banked(sound_test_bank.sfxtext.data.030) const char sfxSoundTestString1E[10] = "chomp.ogg";
+banked(sound_test_bank.sfxtext.data.031) const char sfxSoundTestString1F[ 9] = "coin.ogg";
+banked(sound_test_bank.sfxtext.data.032) const char sfxSoundTestString20[11] = "diamond.au";
+banked(sound_test_bank.sfxtext.data.033) const char sfxSoundTestString21[14] = "dirt_rise.ogg";
+banked(sound_test_bank.sfxtext.data.034) const char sfxSoundTestString22[16] = "gravebutton.ogg";
+banked(sound_test_bank.sfxtext.data.035) const char sfxSoundTestString23[ 8] = "tap.ogg";
 
 
 banked(sound_test_bank.sfxtext.ptr)
@@ -54,6 +66,18 @@ const char* const sfxtexts[] = {
 	sfxSoundTestString15,
 	sfxSoundTestString16,
 	sfxSoundTestString17,
+	sfxSoundTestString18,
+	sfxSoundTestString19,
+	sfxSoundTestString1A,
+	sfxSoundTestString1B,
+	sfxSoundTestString1C,
+	sfxSoundTestString1D,
+	sfxSoundTestString1E,
+	sfxSoundTestString1F,
+	sfxSoundTestString20,
+	sfxSoundTestString21,
+	sfxSoundTestString22,
+	sfxSoundTestString23,
 };
 
 #else

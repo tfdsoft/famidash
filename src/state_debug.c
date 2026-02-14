@@ -83,11 +83,11 @@ void state_soundtest(){
 
         se_one_vram_buffer(0x00, (0x2126 + (selection << 8)));
         if(joypad1.press_down){selection++;}
-        if(joypad1.press_down){selection--;}
+        if(joypad1.press_up){selection--;}
 
         if(selection >= 2){selection = 0;}
         if(selection < 0){selection = 1;}
-        se_one_vram_buffer('>', (0x2126 + (selection << 6)));
+        se_one_vram_buffer('>', (0x2126 + (selection << 8)));
 
 
         if(joypad1.press_right){

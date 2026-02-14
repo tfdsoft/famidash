@@ -197,7 +197,7 @@ banked(startup_bank.func) void state_credits() {
 
     // enable music
     se_post_nmi_ptr = se_music_update;
-    se_music_play(song_didnt_realize_it_credits_mix_wip_in_game);
+    //se_music_play(song_didnt_realize_it_credits_mix_wip_in_game);
 
     se_vram_address(0x2000);
     se_vram_unrle(nt_credits,0);

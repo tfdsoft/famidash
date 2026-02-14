@@ -166,6 +166,10 @@ void state_menu() {
     // set second bg bank to parallax
     set_chr_bank(3,0x10);
 
+    // clear tilemap
+    se_vram_address(0x2000);
+    se_memory_fill((void*)0x2007,0,0x800);
+
     // write the parallax tilemap
     se_vram_address(0x2000);
     vram_write_parallax(background_set);
@@ -215,7 +219,7 @@ void state_menu() {
     // do it manually here (if song is 0)
     //__asm__("lda #0"); 
     //if(!famistudio_song_speed) {
-        se_music_play(song_menu_theme);
+    se_music_play(saved_menu_theme);
     //}
 
     

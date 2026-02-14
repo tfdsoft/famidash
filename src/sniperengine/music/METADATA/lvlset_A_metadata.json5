@@ -1,4 +1,4 @@
-{
+/*{
 	songModule: "music_master.fms",
 	songs: [
 		{
@@ -18,26 +18,10 @@
 			}
 		},
 		{
-			fmsSongName: "Rustic Runes",
-			lowerText: "RUSTIC RUNES",
-			originalArtistText: "PSY-NIGMA",
-			vsSystemEnabled: false,
-		},
-		{
-			fmsSongName: "Menu Theme (2.2)",
-			lowerText: "MENU but 2.2",
-			originalArtistText: "TOBY FOX",
-			vsSystemEnabled: false,
-			nsfData: {
-				trackLabel: "Menu Theme (2.2)",
-				trackAuthor: {
-					original: "Toby Fox",
-					cover: "Zenith302"
-				},
-				durationNTSC: 30017,
-				durationPAL: 36080,
-				looped: true
-			}
+			fmsSongName: "Scheming Weasel",
+			lowerText: "SCHEMING WEASEL",
+			originalArtistText: "KEVIN MACLEOD",
+			vsSystemEnabled: false
 		},
 		{
 			fmsSongName: "didn't realize it (credits mix) (WIP!!) (IN-GAME)",
@@ -297,7 +281,7 @@
 			originalArtistText: "MDK",
 		},
 		{
-			fmsSongName: "Practice",
+			fmsSongName: "Practice (Original Mix)",
 			lowerText: "PRACTICE",
 			originalArtistText: "OCULARNEBULA",
 			vsSystemEnabled: false,
@@ -312,91 +296,6 @@
 				looped: true
 			}
 		},
-		{
-			fmsSongName: "Scheming Weasel",
-			lowerText: "SCHEMING WEASEL",
-			originalArtistText: "KEVIN MACLEOD",
-			vsSystemEnabled: false
-		},
-		{
-			fmsSongName: "Ground to Space",
-			lowerText: "GROUND TO SPACE",
-			originalArtistText: "SEAGLOWINGPRO",
-		},
-		{
-			fmsSongName: "Ground to Space (GDA)",
-			upperText: "GROUND TO SPACE",
-			lowerText: "ADVANCE",
-			originalArtistText: "SGP,ORION",
-		},
-		
-		
-		
-		{
-			fmsSongName: "The Challenge",
-			lowerText: "THE CHALLENGE",
-			originalArtistText: "ROBTOP",
-		},
-		{
-			fmsSongName: "retray",
-			lowerText: "GOLDEN HAZE",
-			originalArtistText: "DETIOUSMUSIC",
-		},
-		{
-			fmsSongName: "infernoplex",
-			lowerText: "INFERNOPLEX",
-			originalArtistText: "DIMRAIN47",
-		},
-		/*{
-			fmsSongName: "Every End (Full)",
-			lowerText: "EVERY END",
-			originalArtistText: "DIMRAIN47",
-		},*/
-		/*{
-			fmsSongName: "atthespeedoflight",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "atthespeedoflight2",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 2",
-			originalArtistText: "DIMRAIN47",
-		},*/
-		{
-			fmsSongName: "midnight",
-			lowerText: "MIDNIGHT",
-			originalArtistText: "CORNANDBEANS",
-		},
-		{
-			fmsSongName: "haunted woods",
-			lowerText: "HAUNTED WOODS",
-			originalArtistText: "WATERFLAME",
-		},
-		{
-			fmsSongName: "just right",
-			lowerText: "JUST RIGHT",
-			originalArtistText: "DAN HARRISON B",
-			vsSystemEnabled: false
-		},
-		{
-			fmsSongName: "rainbow tylenol",
-			lowerText: "RAINBOW TYLENOL",
-			originalArtistText: "KITSUNE2",
-		},
-		{
-			fmsSongName: "stalemate greif cut",
-			upperText: "STALEMATE",
-			lowerText: "GREIF CUT",
-			originalArtistText: "KAYOSZX",
-		},		
-		{
-			fmsSongName: "Extraordinary Excitement",
-			upperText: "EXTRAORDINARY",
-			lowerText: "EXCITEMENT",
-			originalArtistText: "SEAGLOWINGPRO",
-		},			/**/
 	],
 	SFX: [
 		{
@@ -497,27 +396,27 @@
 				durationPAL: 1650
 			}
 		}
-	*/],
+	],
 	dpcmAligner: "zzzzzzzz"
-}
+}*/
 
-/*{
+{
 	songModule: "famidash_epsm.fms",
 	songs: [
 		{
-			fmsSongName: "Stay Inside Me EPSM",
+			fmsSongName: "Stay Inside Me",
 			lowerText: "Stay Inside Me",
-			originalArtistText: "idfk lmao",
+			originalArtistText: "OCULARNEBULA",
 		},
 		{
-			fmsSongName: "Time Machine EPSM",
+			fmsSongName: "Time Machine",
 			lowerText: "TIME MACHINE",
 			originalArtistText: "WATERFLAME",
 		},
 		{
-			fmsSongName: "will it blend",
-			lowerText: "KILL ME",
-			originalArtistText: "idfk lmao",
+			fmsSongName: "Scheming Weasel",
+			lowerText: "SCHEMING WEASEL",
+			originalArtistText: "KEVIN MACLEOD",
 		},
 	],
 	SFX: [
@@ -631,5 +530,5 @@
 		},
 	],
 	PCM: [],
-	dpcmAligner: "zzzzzzzzzzzzzzzzzzzzz"
-}*/
+	dpcmAligner: "zzzz"
+}

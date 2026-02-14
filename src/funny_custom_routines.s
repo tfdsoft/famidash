@@ -131,18 +131,17 @@ custom_irq_that_updates_chr_and_x_scroll:
     lda se_irq_table+5,y
 
     ldy #3
-
     1:
         php
         plp
         dey
         bne 1b
-    nop
-    
-    sta $2005 ; PPU_SCROLL
-    sta $2005 ; PPU_SCROLL
-
+    tay
     pla
+    
+    sty $2005 ; PPU_SCROLL
+    sty $2005 ; PPU_SCROLL
+
     ora __bank_select_hi
     sta $8000
     stx $8001
