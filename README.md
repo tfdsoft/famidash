@@ -7,6 +7,13 @@ A demake of Geometry Dash for the NES using the MMC3 mapper.
 
 ### WARNING! These are constantly changing and *might* be broken.
 
+
+Want EVERYTHING? Download
+[Huge Man](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).\
+<sub>Note: Will not work on most emulators. Try an accurate emulator like [Mesen](https://www.mesen.ca/) for this huge ROM.</sub>
+
+For the individual releases:
+
 If you're just looking to play Geometry Dash on your NES and that's it,\
 we recommend starting with [The Original Game](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.main.nes.zip).
 
@@ -16,10 +23,6 @@ Want more levels? Check out
 [C-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip)
 , and
 [D-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.d-sides.nes.zip)
-
-Want EVERYTHING? Download
-[The Obese](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).\
-<sub>Note: Will not work on most emulators. Try an accurate emulator like [Mesen](https://www.mesen.ca/) for this huge ROM.</sub>
 
 Do you have WAY too many quarters? Play the [Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
