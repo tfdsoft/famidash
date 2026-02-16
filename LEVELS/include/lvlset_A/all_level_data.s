@@ -106,7 +106,7 @@
 		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8017
 
 
-.segment "DAT_BANK_04"	; Total bank size: 7792 bytes
+.segment "DAT_BANK_04"	; Total bank size: 7781 bytes
 	.export level_data_groundtospace
 	level_data_groundtospace:
 	; Header
@@ -129,7 +129,7 @@
 		.byte $00 ;___________________________________ Starting ground color
 		.byte 27 ;____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 7774
+		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 7763
 
 
 .segment "DAT_BANK_05"	; Total bank size: 8192 bytes

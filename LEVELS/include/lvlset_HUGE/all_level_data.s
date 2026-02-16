@@ -666,7 +666,7 @@
 		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7854
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 7792 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 7781 bytes
 	.export level_data_groundtospace
 	level_data_groundtospace:
 	; Header
@@ -689,7 +689,7 @@
 		.byte $00 ;___________________________________ Starting ground color
 		.byte 27 ;____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 7774
+		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 7763
 
 
 .segment "DAT_BANK_20"	; Total bank size: 8158 bytes
