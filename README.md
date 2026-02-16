@@ -12,14 +12,11 @@ A demake of Geometry Dash for the NES using the MMC3 mapper.
 
 
 Want EVERYTHING? Download
-
-[Huge Man](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).
-
+[Huge Man](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip). \
+If you still have too many quarters, play the [Huge Man VS Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-huge.nes.zip) \
 <sub>Note: Will not work on most emulators. Try an accurate emulator like [Mesen](https://www.mesen.ca/) for this huge ROM.</sub>
-
-
-
-
+<br>
+<br>
 
 For the individual releases:
 
@@ -33,9 +30,7 @@ Want more levels? Check out
 , and
 [D-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.d-sides.nes.zip)
 
-Do you have WAY too many quarters? Play the [Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
-
-Want EVERYTHING, but you still have too many quarters? Play the [Obese Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-huge.nes.zip)
+Do you have WAY too many quarters? Play the [VS Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
 Want just the music? Download [The Album](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.album.nes.zip)!
 
@@ -52,9 +47,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and 
 - https://twitter.com/TFDSoft
 - https://discord.gg/PCbwQaZs8K
 
+<!--
 ## wiki
 
 You can look at the [TFDSoft wiki](https://tfdsoft.miraheze.org) for more information about specific content.
+Comment: wiki has no progress and is still wip
+-->
 
 ## credits
 ### core team
