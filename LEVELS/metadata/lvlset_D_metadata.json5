@@ -489,7 +489,7 @@
 			lowerText: "WCROPOLIX",
 			decoType: "DECO1",
 			spikeSet: "A",
-			blockSet: "A",
+			blockSet: "B",
 			sawSet: "A",
 			difficulty: "IMPOSSIBLEDEMON",
 			stars: 10,

@@ -585,7 +585,7 @@
 		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
 		.byte _DECO1 ;____________________________ Deco type
 		.byte _SPIKESA ;__________________________ Spike set
-		.byte _BLOCKSA ;__________________________ Block set
+		.byte _BLOCKSB ;__________________________ Block set
 		.byte _SAWBLADESA ;_______________________ Sawblade set
 		.byte $0F ;_______________________________ Starting background color
 		.byte $0F ;_______________________________ Starting ground color
