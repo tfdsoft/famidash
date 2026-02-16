@@ -13,7 +13,7 @@ A demake of Geometry Dash for the NES using the MMC3 mapper.
 
 Want EVERYTHING? Download
 
-[Huge Man](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).\
+[Huge Man](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.huge.nes.zip).
 
 <sub>Note: Will not work on most emulators. Try an accurate emulator like [Mesen](https://www.mesen.ca/) for this huge ROM.</sub>
 
