@@ -465,6 +465,8 @@ uint8_t minicoins;
 uint16_t auto_practicepoint_timer;
 #endif
 
+uint8_t cheated;
+
 // Sprite Storage
 lohi_arr16_decl(activesprites_x, max_loaded_sprites);
 lohi_arr16_decl(activesprites_y, max_loaded_sprites);

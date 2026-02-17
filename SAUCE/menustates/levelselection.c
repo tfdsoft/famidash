@@ -29,6 +29,7 @@ void state_levelselect() {
 	if (tempplat == 1) { tempplat = 0; options |= platformer; }
 	slowmode = 0;
 	disco_sprites = 0;
+	cheated = 0;
 	
 	vram_adr(NAMETABLE_A);
 	vram_unrle(level_select_screen); 

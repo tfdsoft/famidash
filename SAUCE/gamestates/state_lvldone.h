@@ -46,8 +46,8 @@ void state_lvldone() {
 		vram_unrle(leveldone);
 	}
 	#if !__VS_SYSTEM
-	if (!DEBUG_MODE && !kandokidshack && !kandokidshack3 && !kandokidshack4) display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
-	else draw_padded_text(cheater, cheatersize, 18, NTADR_A(7, 13));
+	display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
+	if (DEBUG_MODE || kandokidshack || kandokidshack3 || kandokidshack4 || cheated) draw_padded_text(cheater, cheatersize, 18, NTADR_A(7, 14));
 	#endif
 
 
