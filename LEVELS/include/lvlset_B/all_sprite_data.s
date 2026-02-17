@@ -1128,7 +1128,7 @@ sprite_data_xmaschallenge:
   .byte $20,$09,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1C"
+.segment "DAT_BANK_1F"
 sprite_data_ninox:
   .byte $a0,$00,$60,$03,$2a
   .byte $f0,$00,$50,$03,$2a
@@ -3653,6 +3653,7 @@ sprite_data_selectpaymenttype:
   .byte $e0,$21,$e0,$02,$93
   .byte $f0,$21,$d0,$02,$c4
   .byte $f0,$21,$e0,$02,$94
+  .byte $60,$25,$10,$03,$1b
   .byte $50,$26,$f0,$02,$08
   .byte $50,$26,$f0,$02,$03
   .byte $f0,$26,$f0,$02,$95
@@ -3820,7 +3821,6 @@ sprite_data_selectpaymenttype:
   .byte $80,$39,$20,$03,$36
   .byte $90,$39,$f0,$02,$b6
   .byte $a0,$39,$f0,$02,$b7
-  .byte $a0,$39,$28,$03,$0a
   .byte $b0,$39,$f0,$02,$b8
   .byte $c0,$39,$d0,$02,$36
   .byte $c0,$39,$f0,$02,$b9
@@ -3829,7 +3829,6 @@ sprite_data_selectpaymenttype:
   .byte $d0,$39,$10,$03,$36
   .byte $e0,$39,$f0,$02,$bb
   .byte $f0,$39,$f0,$02,$bc
-  .byte $00,$3a,$70,$02,$1b
   .byte $00,$3a,$a0,$02,$0c
   .byte $00,$3a,$f0,$02,$bd
   .byte $10,$3a,$f0,$02,$b1

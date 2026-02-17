@@ -226,7 +226,7 @@ sprite_data_stereomadness:
   .byte $d0,$37,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_70"
+.segment "DAT_BANK_71"
 sprite_data_backontrack:
   .byte $d0,$00,$88,$03,$0a
   .byte $30,$02,$70,$03,$2b
@@ -9959,7 +9959,7 @@ sprite_data_darkparadise:
   .byte $d0,$26,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_21"
+.segment "DAT_BANK_6F"
 sprite_data_madness:
   .byte $d0,$06,$88,$03,$25
   .byte $e0,$07,$68,$03,$3c
@@ -13626,7 +13626,7 @@ sprite_data_ajollyretrochristmas:
   .byte $80,$5e,$a0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_6F"
+.segment "DAT_BANK_21"
 sprite_data_ultiatedestruction:
   .byte $10,$03,$80,$03,$2a
   .byte $30,$03,$70,$03,$2b
@@ -14908,7 +14908,7 @@ sprite_data_fofii_fofii_fofii:
   .byte $10,$2b,$b0,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_7E"
+.segment "DAT_BANK_73"
 sprite_data_selectpaymenttype:
   .byte $10,$03,$68,$03,$0a
   .byte $70,$03,$60,$03,$13
@@ -15082,6 +15082,7 @@ sprite_data_selectpaymenttype:
   .byte $e0,$21,$e0,$02,$93
   .byte $f0,$21,$d0,$02,$c4
   .byte $f0,$21,$e0,$02,$94
+  .byte $60,$25,$10,$03,$1b
   .byte $50,$26,$f0,$02,$08
   .byte $50,$26,$f0,$02,$03
   .byte $f0,$26,$f0,$02,$95
@@ -15249,7 +15250,6 @@ sprite_data_selectpaymenttype:
   .byte $80,$39,$20,$03,$36
   .byte $90,$39,$f0,$02,$b6
   .byte $a0,$39,$f0,$02,$b7
-  .byte $a0,$39,$28,$03,$0a
   .byte $b0,$39,$f0,$02,$b8
   .byte $c0,$39,$d0,$02,$36
   .byte $c0,$39,$f0,$02,$b9
@@ -15258,7 +15258,6 @@ sprite_data_selectpaymenttype:
   .byte $d0,$39,$10,$03,$36
   .byte $e0,$39,$f0,$02,$bb
   .byte $f0,$39,$f0,$02,$bc
-  .byte $00,$3a,$70,$02,$1b
   .byte $00,$3a,$a0,$02,$0c
   .byte $00,$3a,$f0,$02,$bd
   .byte $10,$3a,$f0,$02,$b1
@@ -45723,7 +45722,7 @@ sprite_data_gameover:
   .byte $60,$2e,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_70"
+.segment "DAT_BANK_71"
 sprite_data_invisiblelight:
   .byte $00,$00,$30,$03,$cf
   .byte $00,$00,$40,$03,$c0
@@ -61771,7 +61770,7 @@ sprite_data_shardscapes:
   .byte $e0,$2a,$40,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_73"
+.segment "DAT_BANK_7E"
 sprite_data_element111rg:
   .byte $b0,$00,$60,$03,$05
   .byte $e0,$00,$20,$03,$10
@@ -63639,7 +63638,7 @@ sprite_data_silentcircles:
   .byte $c0,$31,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_71"
+.segment "DAT_BANK_70"
 sprite_data_luckydraw:
   .byte $00,$00,$60,$03,$cf
   .byte $00,$00,$80,$03,$8f
