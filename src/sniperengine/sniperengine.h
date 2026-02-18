@@ -4,7 +4,7 @@
 **============================================*/
 
 // Sound Test Bank =============================
-#define sound_test_bank 61
+#define sound_test_bank 0
 
 
 
@@ -47,6 +47,7 @@ typedef unsigned long u32;
  #define hi(a) *(((unsigned char *)&a) + 1)
 
 #define banked(bank) __attribute__((section(".prg_rom_"STR(bank)),used))
+#define nesram __attribute__((section(".bss"),retain))
 #define sram __attribute__((section(".prg_ram"),retain))
 #define file(symbol, bank) __attribute__((section((".prg_rom_"STR(bank))),retain)) const u8 symbol[]
 
@@ -60,8 +61,9 @@ __attribute__((section(".aligned"),retain)) struct sprite_buffer {
 
 extern u8 se_frame_count;
 extern u8 se_ppu_ctrl_var, se_ppu_mask_var;
+extern u16 se_scroll_x, se_scroll_y;
 extern u8 se_palette_update;
-extern u8 __prg_8000, __prg_a000;
+extern u8 __prg_8000, __prg_a000, __bank_select_hi;
 extern void* se_post_nmi_ptr;
 extern void* se_irq_ptr;
 extern u8 se_sample_in_progress;
@@ -143,8 +145,6 @@ __attribute__((leaf)) void set_chr_bank(u8 window, u8 bank);
 __attribute__((leaf)) void se_vram_unrle(const void* data, u8 usezero);
 __attribute__((leaf)) void se_vram_donut_decompress(const u8 * data, u8 bank);
 
-
-
 __attribute__((leaf)) void se_wait_vsync();
 __attribute__((leaf)) void se_wait_frames(u8 frames);
 __attribute__((leaf)) void se_turn_off_rendering();
@@ -159,6 +159,8 @@ __attribute__((leaf)) void se_set_palette_brightness_background(u8 bright);
 __attribute__((leaf)) void se_set_palette_brightness_sprites(u8 bright);
 __attribute__((leaf)) void se_set_palette_brightness_all(u8 bright);
 __attribute__((leaf)) void se_fade_palette_to(u8 from, u8 to);
+
+__attribute__((leaf)) void se_gray_line();
 
 __attribute__((leaf)) void se_clear_sprites();
 __attribute__((leaf)) void se_draw_sprite(u8 x, u8 y, u8 tile, u8 attr);
@@ -191,10 +193,10 @@ __attribute__((leaf)) void se_memory_copy(void* to, void* from, u16 length);
 #define se_play_sample(ptr, bank, rate) __asm__ volatile( \
     "lda #<"STR(ptr)" \n" \
     "ldx #>"STR(ptr)" \n" \
-    "sta $d1 \n" \
-    "stx $d2 \n" \
-    "lda #"STR(bank)" \n" \
-    "ldx #"STR(rate)" \n" \
+    "sta funny_pcm_routine+1 \n" \
+    "stx funny_pcm_routine+2 \n" \
+    "lda #"STR(rate)" \n" \
+    "ldx #"STR(bank)" \n" \
     "jsr se_play_sample \n" \
 )
 

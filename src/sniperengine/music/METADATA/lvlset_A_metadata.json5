@@ -405,7 +405,7 @@
 	songs: [
 		{
 			fmsSongName: "Stay Inside Me",
-			lowerText: "Stay Inside Me",
+			lowerText: "STAY INSIDE ME",
 			originalArtistText: "OCULARNEBULA",
 		},
 		{
@@ -417,6 +417,11 @@
 			fmsSongName: "Scheming Weasel",
 			lowerText: "SCHEMING WEASEL",
 			originalArtistText: "KEVIN MACLEOD",
+		},
+		{
+			fmsSongName: "Menu Theme",
+			lowerText: "MENU THEME",
+			originalArtistText: "RobTop",
 		},
 	],
 	SFX: [

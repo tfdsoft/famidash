@@ -2,15 +2,18 @@
 
 #if !__VS_SYSTEM
 
-banked(sound_test_bank.musictext.data.0) const char musicSoundTestString00[15] = "Stay Inside Me";
+banked(sound_test_bank.musictext.data.0) const char musicSoundTestString00[15] = "STAY INSIDE ME";
 banked(sound_test_bank.musictext.data.1) const char musicSoundTestString01[13] = "TIME MACHINE";
 banked(sound_test_bank.musictext.data.2) const char musicSoundTestString02[16] = "SCHEMING WEASEL";
-banked(sound_test_bank.musictext.data.3) const char musicSoundTestString03[13] = "OCULARNEBULA";
-banked(sound_test_bank.musictext.data.4) const char musicSoundTestString04[11] = "WATERFLAME";
-banked(sound_test_bank.musictext.data.5) const char musicSoundTestString05[14] = "KEVIN MACLEOD";
+banked(sound_test_bank.musictext.data.3) const char musicSoundTestString03[11] = "MENU THEME";
+banked(sound_test_bank.musictext.data.4) const char musicSoundTestString04[13] = "OCULARNEBULA";
+banked(sound_test_bank.musictext.data.5) const char musicSoundTestString05[11] = "WATERFLAME";
+banked(sound_test_bank.musictext.data.6) const char musicSoundTestString06[14] = "KEVIN MACLEOD";
+banked(sound_test_bank.musictext.data.7) const char musicSoundTestString07[ 7] = "RobTop";
 
 
 banked(sound_test_bank.musictext.ptr) const char* const xbgmtextsUpper[] = {
+	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -21,13 +24,15 @@ banked(sound_test_bank.musictext.ptr) const char* const xbgmtextsLower[] = {
 	musicSoundTestString00,
 	musicSoundTestString01,
 	musicSoundTestString02,
+	musicSoundTestString03,
 };
 
 
 banked(sound_test_bank.musictext.ptr) const char* const xbgmtextsOriginalArtist[] = {
-	musicSoundTestString03,
 	musicSoundTestString04,
 	musicSoundTestString05,
+	musicSoundTestString06,
+	musicSoundTestString07,
 };
 
 
@@ -51,6 +56,7 @@ banked(sound_test_bank.musictext.index) const u8 xbgmlookuptable[] = {
 	song_stay_inside_me,
 	song_time_machine,
 	song_scheming_weasel,
+	song_menu_theme,
 };
 
 #else

@@ -14,7 +14,7 @@
 __attribute__((retain)) u8  loaded_bg_set = 0xff, loaded_g_set = 0xff,
     return_gamestate;
 sram u8 sram_buffer[2048], background_set, ground_set;
-sram u8 saved_menu_theme;
+//sram u8 saved_menu_theme;
 
 
 
@@ -32,5 +32,5 @@ sram u8 saved_menu_theme;
 
 // generally, you want a state machine to
 // control your game loop with
-u8 gamestate;
+u8 gamestate = 0xfe;
 

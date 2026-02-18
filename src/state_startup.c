@@ -213,13 +213,3 @@ banked(startup_bank.func) void state_credits() {
     gamestate = 0x10;
     famistudio_music_stop();
 }
-
-file(samples_0, 1) = {
-    #embed "./samples/gofuckyourself0.pcm"
-};
-file(samples_1, 2) = {
-    #embed "./samples/gofuckyourself1.pcm"
-};
-file(samples_2, 3) = {
-    #embed "./samples/geometryDash2.pcm"
-};

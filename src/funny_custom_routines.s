@@ -138,8 +138,8 @@ custom_irq_that_updates_chr_and_x_scroll:
         bne 1b
     tay
     pla
-    
-    sty $2005 ; PPU_SCROLL
+
+    ;sty $2005 ; PPU_SCROLL
     sty $2005 ; PPU_SCROLL
 
     ora __bank_select_hi

@@ -6,7 +6,7 @@ u8 num_to_ascii(u8 n){
 }
 
 banked(sound_test_bank.data)
-const unsigned char pal_genericmenu[16]={
+const u8 pal_genericmenu[]={
     0x17,0x0f,0x10,0x30,
     0x17,0x0f,0x2a,0x39,
     0x17,0x11,0x21,0x30,
@@ -14,7 +14,7 @@ const unsigned char pal_genericmenu[16]={
 };
 
 banked(sound_test_bank.data)
-const unsigned char nt_genericmenu[351]={
+const u8 nt_genericmenu[]={
 0x04,0x01,0x04,0x46,0x06,0x01,0x04,0x0f,0x06,0x01,0x04,0x0a,0x19,0x04,0x02,0x05,
 0x19,0x04,0x0f,0x05,0x19,0x04,0x02,0x01,0x04,0x06,0x09,0x0e,0x0f,0x0e,0x07,0x04,
 0x11,0x0f,0x0e,0x0f,0x08,0x01,0x04,0x05,0x09,0x1e,0x1f,0x1e,0x17,0x04,0x06,0x74,
@@ -58,6 +58,7 @@ void state_soundtest(){
 
     famistudio_music_stop();
 
+    se_wait_vsync();
     se_vram_address(0x2000);
     se_vram_unrle(nt_genericmenu,0);
 
@@ -74,12 +75,22 @@ void state_soundtest(){
     se_irq_table[1]=0x60; // location 0x60 (rts)
     se_irq_table[2]=0x81; // of the identity table
 
+    set_chr_bank(2,0);
+    set_chr_bank(3,1);
+    set_chr_bank(4,2);
+    set_chr_bank(5,3);
+    set_chr_bank(0,4);
+    set_chr_bank(1,6);
+
     se_turn_on_rendering();
     se_fade_palette_to(0,4);
+
+    __asm__("cli");
 
     while(1){
         se_wait_vsync();
 
+        se_gray_line();
 
         se_one_vram_buffer(0x00, (0x2126 + (selection << 8)));
         if(joypad1.press_down){selection++;}
@@ -155,10 +166,11 @@ void state_soundtest(){
         }
 
         if(joypad1.press_select) {
-            if(!selection){
-                se_sfx_play(sfx_counter003,0);
-                saved_menu_theme = xbgmlookuptable[lo(index)];
-            }
+            //if(!selection){
+            //    se_sfx_play(sfx_counter003,0);
+            //    saved_menu_theme = xbgmlookuptable[lo(index)];
+            //}
+            se_play_sample((samples_0+0x2000),1,1);
         }
         
 
@@ -169,4 +181,56 @@ void state_soundtest(){
         }
     }
     
+}
+
+
+
+banked(debug_bank.data) const char str_gsjmp[] = "GAMESTATE JUMPER";
+banked(debug_bank.data) const u8 pal_gsjmp[] = {
+    0x0f, 0x00, 0x10, 0x20,
+    0x0f, 0x24, 0x24, 0x24,
+    0x0f, 0x24, 0x24, 0x24,
+    0x0f, 0x24, 0x24, 0x24,
+};
+
+banked(debug_bank.func) void state_gamestatejumper(){
+
+    se_vram_address(0);
+    se_memory_fill((void*)0x2007, 0, 0x100);
+    se_vram_donut_decompress(chr_menu_font_pusab, chr_bank_0);
+
+    se_vram_address(0x2000);
+    se_memory_fill((void*)0x2007, 0, 0x400);
+
+    se_set_palette_all(pal_gsjmp);
+    se_set_palette_brightness_all(4);
+
+    se_vram_address(nametable_address_A(8,11));
+    se_memory_copy((void*)0x2007,(void*)str_gsjmp, sizeof(str_gsjmp)-1);
+
+    se_turn_on_rendering();
+    while(1){
+        se_wait_vsync();
+
+        gamestate += joypad1.press_right;
+        gamestate -= joypad1.press_left;
+        gamestate += (joypad1.press_up << 4);
+        gamestate -= (joypad1.press_down << 4);
+
+        se_one_vram_buffer(
+            num_to_ascii(gamestate),
+            nametable_address_A(16,14)
+        );
+        se_one_vram_buffer(
+            num_to_ascii((gamestate>>4)),
+            nametable_address_A(15,14)
+        );
+
+        
+
+
+        if(joypad1.press_start){
+            break;
+        }
+    }
 }

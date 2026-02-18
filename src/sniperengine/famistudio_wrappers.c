@@ -76,7 +76,7 @@ __attribute__((noinline)) void se_sfx_play(u8 index, u8 channel){
         "lda __prg_a000 \n"
         "pha \n"
     );
-    set_prg_a000(61);
+    set_prg_a000(sound_test_bank);
     famistudio_sfx_init(sfx);
     famistudio_sfx_play(index,channel);
     __asm__(

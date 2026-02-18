@@ -147,7 +147,7 @@ FAMISTUDIO_CFG_NTSC_SUPPORT  = 1
  FAMISTUDIO_CFG_SFX_STREAMS   = 1
 
 ; Blaarg's smooth vibrato technique. Eliminates phase resets ("pops") on square channels. 
- FAMISTUDIO_CFG_SMOOTH_VIBRATO = 1
+; FAMISTUDIO_CFG_SMOOTH_VIBRATO = 1
 
 ; Enables DPCM playback support.
 FAMISTUDIO_CFG_DPCM_SUPPORT   = 1
@@ -4382,7 +4382,7 @@ famistudio_update:
 ;!!! FAMISTUDIO DRIVER MODIFICATION BEGIN
 ;*  MODIFIED
     ;.import set_prg_a000
-    LDA #61
+    LDA #0
     JSR set_prg_a000
 ;!!! FAMISTUDIO DRIVER MODIFICATION END
 

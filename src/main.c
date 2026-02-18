@@ -43,17 +43,27 @@ int main(void) {
         se_clear_sprites();
         se_memory_fill(se_irq_table,0,32);
         __asm__("dec se_irq_table");
-        set_chr_bank(0,0);
-        set_chr_bank(1,2);
-        set_chr_bank(2,4);
-        set_chr_bank(3,5);
-        set_chr_bank(4,6);
-        set_chr_bank(5,7);
+        if(__bank_select_hi & 0x80){ // inverted
+            set_chr_bank(2,0);
+            set_chr_bank(3,1);
+            set_chr_bank(4,2);
+            set_chr_bank(5,3);
+            set_chr_bank(0,4);
+            set_chr_bank(1,6);
+        } else {    // normal
+            set_chr_bank(0,0);
+            set_chr_bank(1,2);
+            set_chr_bank(2,4);
+            set_chr_bank(3,5);
+            set_chr_bank(4,6);
+            set_chr_bank(5,7);
+        }
+        se_scroll_x = se_scroll_y = 0;
 
         switch (gamestate){
 
             // when in doubt, go back to startup
-            default:
+            case 0x00:
                 jsrfar_noargs(startup_bank, state_startup);
                 break;
 
@@ -74,10 +84,15 @@ int main(void) {
             case 0x14:
                 jsrfar_noargs(debug_bank, state_soundtest);
                 break;
-
+            
             case 0xff:
-                jsrfar_noargs(60,thegreet_message);
+            default:
+                jsrfar_noargs(debug_bank, state_gamestatejumper);
                 break;
+
+            //case 0xff:
+            //    jsrfar_noargs(60,thegreet_message);
+            //    break;
         }
         //se_post_nmi_ptr = nofunction;
         se_irq_table_position = 0;

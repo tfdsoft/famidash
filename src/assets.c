@@ -26,7 +26,7 @@
 #define chr_bank_3 59
 
 #define startup_bank 60
-#define debug_bank 61
+#define debug_bank 0
 
 // menu stuff
 file(chr_menu_font_pusab, chr_bank_0) = {
@@ -117,4 +117,19 @@ const u8 * const chr_g[] = {
     chr_ground_1,
     chr_ground_2,
     chr_ground_3,
+};
+
+
+
+
+
+// samples n such
+file(samples_0, 1) = {
+    #embed "./samples/gof0.pcm"
+};
+file(samples_1, 2) = {
+    #embed "./samples/gofuckyourself1.pcm"
+};
+file(samples_2, 3) = {
+    #embed "./samples/geometryDash2.pcm"
 };
