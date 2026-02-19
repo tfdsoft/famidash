@@ -2036,6 +2036,7 @@ PPU_DATA = $2007
             beq @skip_nametable_updates
                 ldy #0
                 sty se_vram_update
+                sty se_vram_index
                 jsr flush_vram_update2
             @skip_nametable_updates:
             ldy $2002
@@ -2051,9 +2052,9 @@ PPU_DATA = $2007
 
         ; disable irq while we update it
         lda #0
-        sta se_irq_table_position
         sta mmc3_IRQ_DISABLE
-
+        sta se_irq_table_position
+        
         ; get new values for this frame
         lda se_irq_table+0  ; first reload value
         ldx se_irq_table+1  ; first pointer (lo)

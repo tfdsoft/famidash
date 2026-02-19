@@ -20,6 +20,11 @@
  *  }
 **============================================*/
 
+#define sample_bank_0 52
+#define sample_bank_1 53
+#define sample_bank_2 54
+#define sample_bank_3 55
+
 #define chr_bank_0 56
 #define chr_bank_1 57
 #define chr_bank_2 58
@@ -124,12 +129,12 @@ const u8 * const chr_g[] = {
 
 
 // samples n such
-file(samples_0, 1) = {
-    #embed "./samples/gof0.pcm"
+file(samples_0, sample_bank_0) = {
+    #embed "./samples/geometryDash0.pcm"
 };
-file(samples_1, 2) = {
-    #embed "./samples/gofuckyourself1.pcm"
+file(samples_1, sample_bank_1) = {
+    #embed "./samples/geometryDash1.pcm"
 };
-file(samples_2, 3) = {
-    #embed "./samples/geometryDash2.pcm"
+file(pcm_playsound_01, sample_bank_2) = {
+    #embed "./samples/playSound_01.pcm"
 };

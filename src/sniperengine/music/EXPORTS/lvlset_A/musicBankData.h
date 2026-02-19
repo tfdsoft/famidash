@@ -1,2 +1,2 @@
-#define music_bank_0 54
-#define dpcm_bank_0 55
+#define music_bank_0 50
+#define dpcm_bank_0 51

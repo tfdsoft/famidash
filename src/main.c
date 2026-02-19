@@ -1,19 +1,31 @@
-// the lifeblood of the engine. don't remove these lines.
+// the lifeblood of the engine. don't remove this line.
 #include <nes.h>
-
-
 #include "sniperengine/sniperengine.h"
 #include "ines_header.h"
+
+
+
+// const data
 #include "assets.c"
+// non-const data
 #include "ram.h"
 
+// extra code
 #include "funny_custom_routines.h"
 #include "physics.h"
 #include "parallax.c"
+#include "rle.c"
+
+// level data
+#include "levels.c"
+
 
 #include "state_startup.c"
 #include "state_menu.c"
 #include "state_debug.c"
+
+
+
 
 
 int main(void) {
@@ -39,6 +51,7 @@ int main(void) {
     while(1){
         __asm__("sei");
         se_set_palette_brightness_all(0);
+        se_wait_vsync(); // this is needed to flush the vram buffer
         se_turn_off_rendering();
         se_clear_sprites();
         se_memory_fill(se_irq_table,0,32);

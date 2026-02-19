@@ -153,25 +153,26 @@ void state_menu() {
     // enable music
     se_post_nmi_ptr = se_music_update;
 
-    // load parallax background
-    se_vram_address(0x1000);
-    set_chr_bank(0,0x10);
-    set_chr_bank(1,0x12);
     
+    // load parallax background
     if(loaded_bg_set != background_set){
+        se_vram_address(0x1000);
+        set_chr_bank(0,0x10);
+        set_chr_bank(1,0x12);
         se_vram_donut_decompress(chr_bg[background_set], chr_bank_2);
         vram_generate_parallax(background_set);
         loaded_bg_set = background_set;
+        set_chr_bank(0,4);
+        set_chr_bank(1,6);
     }
 
-    se_vram_address(0);
+
     set_chr_bank(2,0);
     set_chr_bank(3,1);
     set_chr_bank(4,2);
     set_chr_bank(5,3);
-    set_chr_bank(0,4);
-    set_chr_bank(1,6);
 
+    se_vram_address(0);
     // load menu stuff
     se_vram_donut_decompress(chr_menu_global, chr_bank_0);
     se_vram_donut_decompress(chr_menu_font_pusab, chr_bank_0);
@@ -184,9 +185,9 @@ void state_menu() {
     // the "robtop/tfdsoft" text is there
     se_vram_donut_decompress(chr_menu_robtop, chr_bank_0);
 
-
     
 
+    
 
     // clear tilemap
     se_vram_address(0x2000);

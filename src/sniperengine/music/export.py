@@ -421,7 +421,7 @@ if __name__ == "__main__":
     elif dpcmAlignerName == "dpcm_ALBUM":
         lastDatBank = 0x3B
     else:
-        lastDatBank = 0x37
+        lastDatBank = 0x33
     
     neededSongNames = sorted(i['fmsSongName'] for i in processed_metadata['filteredSongList'])
     if any(i not in songNames for i in neededSongNames):
