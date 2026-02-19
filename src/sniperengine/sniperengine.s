@@ -745,26 +745,26 @@ PPU_DATA = $2007
         ; bail if donut_decompress_block does not
         ; advance X by 64 bytes, indicating a header error.
 
-    tsx
-    stx se_vram_tmp_stack_pointer
-    ldx #$0f    ; set temporary stack location for faster writes
-    txs
+    ;tsx
+    ;stx se_vram_tmp_stack_pointer
+    ;ldx #$0f    ; set temporary stack location for faster writes
+    ;txs
 
     ldx #256 - 64
     upload_loop:
-        pla ;lda a:donut_block_buffer - (256 - 64), x
+        lda a:donut_block_buffer - (256 - 64), x
         sta PPU_DATA
         inx
         bmi upload_loop
+    bpl block_loop
 
-    ldx se_vram_tmp_stack_pointer
-    txs
+    ;ldx se_vram_tmp_stack_pointer
+    ;txs
     bne block_loop
 
     ; ldx donut_block_count
     ; bne block_loop
     end_block_upload:
-    
     
     rts
 .endproc
@@ -2251,7 +2251,7 @@ se_run_da_irq:
     
     @load_instruction: lda $c000    ; 3
 
-    bmi @exit_eof_sample            ; 5
+    ;bmi @exit_eof_sample            ; 5
     sta $4011                       ; 8
     inc @load_instruction + 1       ; 10
     bne @exit                       ; 12

@@ -56,6 +56,8 @@ void state_soundtest(){
     signed char selection = 0;
     unsigned char index[2] = {0,0};
 
+    char bankstr[8];
+
     famistudio_music_stop();
 
     se_wait_vsync();
@@ -140,6 +142,20 @@ void state_soundtest(){
             );
         }
 
+        bankstr[0] = num_to_ascii((__prg_8000>>4));
+        bankstr[1] = num_to_ascii(__prg_8000);
+        bankstr[2] = ':';
+        bankstr[3] = num_to_ascii((*(u8*)0x24)>>4);
+        bankstr[4] = num_to_ascii((*(u8*)0x24));
+        bankstr[5] = num_to_ascii((*(u8*)0x23)>>4);
+        bankstr[6] = num_to_ascii((*(u8*)0x23));
+        bankstr[7] = 0;
+
+        se_string_vram_buffer(
+            bankstr,
+            nametable_address_A(6,23)
+        );
+
         se_one_vram_buffer(
             num_to_ascii(index[selection]),
             0x2138 + (selection << 8)
@@ -170,7 +186,7 @@ void state_soundtest(){
             //    se_sfx_play(sfx_counter003,0);
             //    saved_menu_theme = xbgmlookuptable[lo(index)];
             //}
-            se_play_sample((pcm_playsound_01+0x2000),sample_bank_2,1);
+            se_play_sample(0,0,1);
         }
         
 
