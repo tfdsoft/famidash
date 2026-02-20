@@ -22,6 +22,7 @@
 
 #include "state_startup.c"
 #include "state_menu.c"
+#include "state_game.c"
 #include "state_debug.c"
 
 
@@ -97,15 +98,18 @@ int main(void) {
             case 0x14:
                 jsrfar_noargs(debug_bank, state_soundtest);
                 break;
+
+            //
+            //  GAME
+            //
+            case 0x20:
+                state_game();
+                break;
             
             case 0xff:
             default:
                 jsrfar_noargs(debug_bank, state_gamestatejumper);
                 break;
-
-            //case 0xff:
-            //    jsrfar_noargs(60,thegreet_message);
-            //    break;
         }
         //se_post_nmi_ptr = nofunction;
         se_irq_table_position = 0;

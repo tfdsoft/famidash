@@ -1144,23 +1144,23 @@ PPU_DATA = $2007
     pha
 
     ; stop the vram buffer *juuuuuust* in case
-    lda #255
-    sta se_vram_buffer+0
+    ;lda #255
+    ;sta se_vram_buffer+0
 
     txa
 
     jsr set_prg_a000
 
     ; disable nmi
-    lda se_ppu_ctrl_var
-    and #%01111111
-    sta $2000
+    ;lda se_ppu_ctrl_var
+    ;and #%01111111
+    ;sta $2000
 
     jsr donut_block
 
     ; revert ppu_ctrl
-    lda se_ppu_ctrl_var
-    sta $2000
+    ;lda se_ppu_ctrl_var
+    ;sta $2000
 
     pla
     jsr set_prg_a000
@@ -2251,7 +2251,7 @@ se_run_da_irq:
     
     @load_instruction: lda $c000    ; 3
 
-    ;bmi @exit_eof_sample            ; 5
+    bmi @exit_eof_sample            ; 5
     sta $4011                       ; 8
     inc @load_instruction + 1       ; 10
     bne @exit                       ; 12
