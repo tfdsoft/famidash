@@ -7,7 +7,6 @@
 _level_list_lo:
 	.byte .lobyte(level_data_demonpark)
 	.byte .lobyte(level_data_speedracer)
-	.byte .lobyte(level_data_respite)
 	.byte .lobyte(level_data_goldenhaze)
 	.byte .lobyte(level_data_gameover)
 	.byte .lobyte(level_data_toeiiv2)
@@ -32,7 +31,6 @@ _level_list_lo:
 _level_list_hi:
 	.byte .hibyte(level_data_demonpark)
 	.byte .hibyte(level_data_speedracer)
-	.byte .hibyte(level_data_respite)
 	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_gameover)
 	.byte .hibyte(level_data_toeiiv2)
@@ -57,7 +55,6 @@ _level_list_hi:
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_demonpark))
 	.byte .lobyte(.bank(level_data_speedracer))
-	.byte .lobyte(.bank(level_data_respite))
 	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_gameover))
 	.byte .lobyte(.bank(level_data_toeiiv2))
@@ -103,7 +100,6 @@ _level_chunk_list_bank:
 _level_lengths_lo:
 	.byte .lobyte($0000A2)		; demonpark
 	.byte .lobyte($000080)		; speedracer
-	.byte .lobyte($0000D0)		; respite
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($000078)		; gameover
 	.byte .lobyte($0000A1)		; toeiiv2
@@ -130,7 +126,6 @@ _level_lengths_lo:
 _level_lengths_md:
 	.byte .hibyte($0000A2)		; demonpark
 	.byte .hibyte($000080)		; speedracer
-	.byte .hibyte($0000D0)		; respite
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($000078)		; gameover
 	.byte .hibyte($0000A1)		; toeiiv2
@@ -157,7 +152,6 @@ _level_lengths_md:
 _level_lengths_hi:
 	.byte .bankbyte($0000A2)		; demonpark
 	.byte .bankbyte($000080)		; speedracer
-	.byte .bankbyte($0000D0)		; respite
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($000078)		; gameover
 	.byte .bankbyte($0000A1)		; toeiiv2

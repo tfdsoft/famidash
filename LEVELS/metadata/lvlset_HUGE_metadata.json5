@@ -3881,6 +3881,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		/*
 		{
             level: "respite",
             lowerText: "RESPITE",
@@ -3897,6 +3898,7 @@
             startingGroundColor: 0x0F,
             parallaxDisable: true
         },
+		*/
 		{
 			level: "everymadness",
 			upperText: "EVERY",
