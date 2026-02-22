@@ -23,6 +23,10 @@ sram u8 sram_buffer[2048], background_set, ground_set;
 
 #define metatiles_collision (*(u8*)&sram_buffer[1024])  // collision
 
+#define collision_map_0 (*(u8*)&sram_buffer[1280])
+#define collision_map_1 (*(u8*)&sram_buffer[1536-16])
+#define collision_map_2 (*(u8*)&sram_buffer[1792-32])
+
 
 
 

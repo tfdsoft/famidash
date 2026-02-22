@@ -10,5 +10,6 @@ struct Level {
         //u8 line;
     } color;
 
-    u8 data[];
+    u8* tile_data; u8 tile_bank;
+    u8* sprite_data; u8 sprite_bank;
 };

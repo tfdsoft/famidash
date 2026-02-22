@@ -113,7 +113,7 @@ void state_soundtest(){
         if(lo(index) == 0xff){index[0]++;}
         if(hi(index) == 0xff){index[1]++;}
         if(lo(index) == song_max){index[0]--;}
-        if(hi(index) == sfx_max){index[1]--;}
+        //if(hi(index) == sfx_max){index[1]--;}
 
         se_one_vram_buffer_repeat_horizontal(' ', 17, (0x2168+(selection<<8)));
         if(selection == 0){

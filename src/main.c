@@ -7,6 +7,8 @@
 
 // const data
 #include "assets.c"
+#include "levels.c"
+
 // non-const data
 #include "ram.h"
 
@@ -16,10 +18,7 @@
 #include "parallax.c"
 #include "rle.c"
 
-// level data
-#include "levels.c"
-
-
+// gamestates
 #include "state_startup.c"
 #include "state_menu.c"
 #include "state_game.c"

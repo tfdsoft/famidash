@@ -3,7 +3,10 @@ void state_game() {
     __asm__("cli");
     //se_wait_frames(20);
 
-    //se_vram_donut_decompress();
+
+    // load the global stuff
+    se_vram_address(0);
+    se_vram_donut_decompress(chr_tiles_global,chr_bank_1);
 
 
 
