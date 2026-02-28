@@ -12,6 +12,7 @@ banked(fixed.func) void state_game() {
 
     se_music_play(song_desert_city);
 
+    u24 x_scroll = 0;
     u16 y_scroll = 0;
     u8 y_offset = 0;
 
@@ -46,9 +47,9 @@ banked(fixed.func) void state_game() {
         if(joypad1.down) y_scroll++;
         //if(joypad1.left) se_scroll_x-=2;
         //if(joypad1.right) 
-        se_scroll_x++;
+        x_scroll += phys_speed[1];
 
-        se_set_scroll(se_scroll_x,y_scroll);
+        se_set_scroll((x_scroll>>8),y_scroll);
 
 
 
@@ -56,9 +57,9 @@ banked(fixed.func) void state_game() {
 
         if((1+(se_scroll_x>>4)&0x0f) != lvl_rle_x_offset){
             level_rle_fetch_columns(1,0);
+            level_draw_metatile_column(32+(se_scroll_x>>3), y_offset);
         }
 
-        level_draw_metatile_column(32+(se_scroll_x>>3), y_offset);
 
 
 

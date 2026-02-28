@@ -30,12 +30,12 @@
 
 typedef unsigned char u8;
 typedef unsigned short u16;
-#define u24 unsigned __BitInt(24)
+#define u24 unsigned _BitInt(24)
 typedef unsigned long u32;
 
 typedef signed char s8;
 typedef signed short s16;
-#define s24 signed __BitInt(24)
+#define s24 signed _BitInt(24)
 typedef signed long s32;
 
 #define XSTR(x) #x
