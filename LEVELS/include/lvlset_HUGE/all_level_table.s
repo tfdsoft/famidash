@@ -518,7 +518,7 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; dorabaebasic6
 	.byte .lobyte($0000AC)		; dreamer
 	.byte .lobyte($00005C)		; lookatthislevel
-	.byte .lobyte($000065)		; hungrymanadventures
+	.byte .lobyte($00006A)		; hungrymanadventures
 	.byte .lobyte($0000A2)		; groundtospace
 	.byte .lobyte($0000F3)		; ajollyretrochristmas
 	.byte .lobyte($00006C)		; ultiatedestruction
@@ -650,7 +650,7 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; dorabaebasic6
 	.byte .hibyte($0000AC)		; dreamer
 	.byte .hibyte($00005C)		; lookatthislevel
-	.byte .hibyte($000065)		; hungrymanadventures
+	.byte .hibyte($00006A)		; hungrymanadventures
 	.byte .hibyte($0000A2)		; groundtospace
 	.byte .hibyte($0000F3)		; ajollyretrochristmas
 	.byte .hibyte($00006C)		; ultiatedestruction
@@ -782,7 +782,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; dorabaebasic6
 	.byte .bankbyte($0000AC)		; dreamer
 	.byte .bankbyte($00005C)		; lookatthislevel
-	.byte .bankbyte($000065)		; hungrymanadventures
+	.byte .bankbyte($00006A)		; hungrymanadventures
 	.byte .bankbyte($0000A2)		; groundtospace
 	.byte .bankbyte($0000F3)		; ajollyretrochristmas
 	.byte .bankbyte($00006C)		; ultiatedestruction
