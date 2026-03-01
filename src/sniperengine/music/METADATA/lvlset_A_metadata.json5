@@ -404,14 +404,9 @@
 	songModule: "famidash_epsm.fms",
 	songs: [
 		{
-			fmsSongName: "Stay Inside Me",
-			lowerText: "STAY INSIDE ME",
-			originalArtistText: "OCULARNEBULA",
-		},
-		{
-			fmsSongName: "Time Machine",
-			lowerText: "TIME MACHINE",
-			originalArtistText: "WATERFLAME",
+			fmsSongName: "Menu Theme",
+			lowerText: "MENU THEME",
+			originalArtistText: "ROBTOP",
 		},
 		{
 			fmsSongName: "Scheming Weasel",
@@ -419,14 +414,44 @@
 			originalArtistText: "KEVIN MACLEOD",
 		},
 		{
+			fmsSongName: "Stereo Madness",
+			lowerText: "STEREO MADNESS",
+			originalArtistText: "FOREVERBOUND",
+		},
+		{
+			fmsSongName: "Jumper",
+			lowerText: "JUMPER",
+			originalArtistText: "WATERFLAME",
+		},
+		{
+			fmsSongName: "Time Machine",
+			lowerText: "TIME MACHINE",
+			originalArtistText: "WATERFLAME",
+		},
+		{
+			fmsSongName: "Stay Inside Me",
+			lowerText: "STAY INSIDE ME",
+			originalArtistText: "OCULARNEBULA",
+		},
+		{
 			fmsSongName: "Desert City",
 			lowerText: "DESERT CITY",
 			originalArtistText: "idfk lmao",
 		},
 		{
-			fmsSongName: "Menu Theme",
-			lowerText: "MENU THEME",
-			originalArtistText: "RobTop",
+			fmsSongName: "Insert Cash (FD2 version)",
+			lowerText: "INSERT CASH",
+			originalArtistText: "CRAFTY JUMPER",
+		},
+		{
+			fmsSongName: "Golden Haze",
+			lowerText: "GOLDEN HAZE",
+			originalArtistText: "CRAFTY JUMPER",
+		},
+		{
+			fmsSongName: "super underground 64",
+			lowerText: "SUPER UNDERGROUND 64",
+			originalArtistText: "nintendo.",
 		},
 	],
 	SFX: [

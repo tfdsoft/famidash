@@ -196,6 +196,7 @@ __attribute__((leaf)) void se_string_vram_buffer(
 );
 
 
+__attribute__((leaf)) void se_flush_vram_buffer();
 
 
 __attribute__((leaf)) void se_memory_fill(void* ptr, u8 data, u16 length);

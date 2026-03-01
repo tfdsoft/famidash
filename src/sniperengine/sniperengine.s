@@ -1692,7 +1692,8 @@ __exit_vram_buffer_noupdate:
 
 
 ; system from neslib, modified to be  T H E  S P E E D
-.proc flush_vram_update2
+.export se_flush_vram_buffer
+.proc se_flush_vram_buffer
     tsx
     stx se_vram_tmp_stack_pointer
 
@@ -2179,7 +2180,7 @@ __exit_vram_buffer_noupdate:
                 ldy #0
                 sty se_vram_update
                 sty se_vram_index
-                jsr flush_vram_update2
+                jsr se_flush_vram_buffer
             @skip_nametable_updates:
             ldy $2002
 

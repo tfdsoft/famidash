@@ -16,6 +16,9 @@ banked(fixed.func) void state_game() {
     u16 y_scroll = 0;
     u8 y_offset = 0;
 
+    u24 player_x = 0, player_y = 0;
+    u16 player_x_speed = 0, player_y_speed = 0;
+
     // load the global stuff
     se_vram_address(0);
     se_vram_donut_decompress(chr_tiles_global,chr_bank_1);
@@ -29,25 +32,27 @@ banked(fixed.func) void state_game() {
     level_rle_init(lvl_test_header);
 
     se_set_palette_background(pal_game);
+    se_set_palette_sprites(pal_game);
     se_set_palette_brightness_all(4);
-    se_turn_on_rendering();
-    
 
-    //level_rle_fetch_columns(1,0);
-    //for(char i=0;i<16;i++){
-    //    level_draw_metatile_column(i<<1, 0);
-    //    se_wait_vsync();
-    //}
+    se_turn_on_rendering();
+    level_rle_fetch_columns(16,0);
+    for(char i=0;i<16;i++){
+        level_draw_metatile_column(i<<1, 0);
+        se_wait_vsync();
+    }
+
+    
 
 
     while(1){
         se_wait_vsync();
+        se_clear_sprites();
 
         if(joypad1.up) y_scroll--;
         if(joypad1.down) y_scroll++;
         //if(joypad1.left) se_scroll_x-=2;
-        //if(joypad1.right) 
-        x_scroll += phys_speed[1];
+        if(joypad1.right) x_scroll += phys_speed[1];
 
         se_set_scroll((x_scroll>>8),y_scroll);
 
@@ -60,7 +65,10 @@ banked(fixed.func) void state_game() {
             level_draw_metatile_column(32+(se_scroll_x>>3), y_offset);
         }
 
-
+        player_y_speed += phys_gravity[0];
+        player_y += player_y_speed;
+        se_draw_sprite(player_x,(player_y>>8),0x04,0);
+        se_draw_sprite(8+player_x,(player_y>>8),0x06,0);
 
 
         

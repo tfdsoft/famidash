@@ -154,6 +154,7 @@ void state_menu() {
     se_post_nmi_ptr = se_music_update;
 
     
+    background_set = 2;
     // load parallax background
     if(loaded_bg_set != background_set){
         se_vram_address(0x1000);
@@ -181,11 +182,10 @@ void state_menu() {
 
     // load ground
     //set_chr_bank(0,0x8);
+    ground_set = 2;
     se_vram_donut_decompress(chr_g[ground_set], chr_bank_3);
     // the "robtop/tfdsoft" text is there
     se_vram_donut_decompress(chr_menu_robtop, chr_bank_0);
-
-    
 
     
 

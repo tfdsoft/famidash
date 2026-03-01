@@ -9,9 +9,11 @@ FAMISTUDIO_EXP_EPSM_RHYTHM_CHN5_ENABLE = 0
 FAMISTUDIO_EXP_EPSM_RHYTHM_CHN6_ENABLE = 0
 
 ; Music data banks
-.segment "_pprg__rom__50"
+.segment "_pprg__rom__49"
 	firstMusicBankPtr := *
 	.include "music_0.s"
+.segment "_pprg__rom__50"
+	.include "music_1.s"
 
 ; DMC banks
 .segment "_pprg__rom__51"

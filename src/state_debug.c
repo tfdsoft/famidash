@@ -42,17 +42,12 @@ const u8 nt_genericmenu[]={
 banked(sound_test_bank.data)
 const char str_soundtest[] = "\x01sound\x01test\x01";
 
-banked(sound_test_bank.data)
-const char str_music[] = "MUSIC"; 
+banked(sound_test_bank.data) const char str_song[] = "SONG:"; 
+banked(sound_test_bank.data) const char str_soundeffects[] = "SFX:";
+banked(sound_test_bank.data) const char str_byartist[] = "ORIGINAL ARTIST:";
+banked(sound_test_bank.data) const char str_coveredby[] = "COVERED BY:";
 
-banked(sound_test_bank.data)
-const char str_soundeffects[] = "SOUND EFFECTS";
-
-banked(sound_test_bank.data)
-const char str_byartist[] = "BY:";
-
-banked(sound_test_bank.func)
-void state_soundtest(){
+banked(sound_test_bank.func) void state_soundtest(){
     signed char selection = 0;
     unsigned char index[2] = {0,0};
 
@@ -66,10 +61,11 @@ void state_soundtest(){
 
     se_set_palette_background(pal_genericmenu);
 
-    se_string_vram_buffer(str_soundtest, 0x20aa);
-    se_string_vram_buffer(str_music, 0x2127);
-    se_string_vram_buffer(str_byartist, 0x21c7);
-    se_string_vram_buffer(str_soundeffects, 0x2227);
+    se_string_vram_buffer(str_soundtest, nametable_address_A(10,5));
+    se_string_vram_buffer(str_song, nametable_address_A(6,9));
+    se_string_vram_buffer(str_byartist, nametable_address_A(6,13));
+    se_string_vram_buffer(str_soundeffects, nametable_address_A(6,17));
+    se_flush_vram_buffer();
 
     se_irq_table_position = 0;
     se_irq_ptr = nofunction;
@@ -94,13 +90,13 @@ void state_soundtest(){
 
         se_gray_line();
 
-        se_one_vram_buffer(0x00, (0x2126 + (selection << 8)));
+        se_one_vram_buffer(0x00, (nametable_address_A(5,9) + (selection << 8)));
         if(joypad1.press_down){selection++;}
         if(joypad1.press_up){selection--;}
 
         if(selection >= 2){selection = 0;}
         if(selection < 0){selection = 1;}
-        se_one_vram_buffer('>', (0x2126 + (selection << 8)));
+        se_one_vram_buffer('>', (nametable_address_A(5,9) + (selection << 8)));
 
 
         if(joypad1.press_right){
@@ -115,30 +111,43 @@ void state_soundtest(){
         if(lo(index) == song_max){index[0]--;}
         //if(hi(index) == sfx_max){index[1]--;}
 
-        se_one_vram_buffer_repeat_horizontal(' ', 17, (0x2168+(selection<<8)));
+        se_one_vram_buffer_repeat_horizontal(
+            ' ',
+            20,
+            (nametable_address_A(6,10)+(selection<<8))
+        );
         if(selection == 0){
-            se_one_vram_buffer_repeat_horizontal(' ', 17, 0x2188);
+            se_one_vram_buffer_repeat_horizontal(
+                ' ',
+                20,
+                nametable_address_A(6,11)
+            );
             unsigned char tmp = hi(xbgmtextsUpper[lo(index)]);
             if(tmp){
                 se_string_vram_buffer(
                     xbgmtextsUpper[lo(index)],
-                    0x2168
+                    nametable_address_A(6,10)
                 );
             }
             se_string_vram_buffer(
                 xbgmtextsLower[lo(index)],
-                0x2188
+                nametable_address_A(6,11)
             );
-            se_one_vram_buffer_repeat_horizontal(' ', 14, 0x21cb);
+
+            se_one_vram_buffer_repeat_horizontal(
+                ' ',
+                20,
+                nametable_address_A(6,14)
+            );
             se_string_vram_buffer(
                 xbgmtextsOriginalArtist[lo(index)],
-                0x21cb
+                nametable_address_A(6,14)
             );
         }
         if(selection == 1){
             se_string_vram_buffer(
                 sfxtexts[hi(index)],
-                0x2268
+                nametable_address_A(6,18)
             );
         }
 
@@ -158,11 +167,11 @@ void state_soundtest(){
 
         se_one_vram_buffer(
             num_to_ascii(index[selection]),
-            0x2138 + (selection << 8)
+            nametable_address_A(12,9) + (selection << 8)
         );
         se_one_vram_buffer(
             num_to_ascii((index[selection]>>4)),
-            0x2137 + (selection << 8)
+            nametable_address_A(11,9) + (selection << 8)
         );
 
 

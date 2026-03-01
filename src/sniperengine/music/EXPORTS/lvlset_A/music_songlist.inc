@@ -1,6 +1,11 @@
-song_desert_city = 0
-song_menu_theme = 1
-song_scheming_weasel = 2
-song_stay_inside_me = 3
-song_time_machine = 4
-song_max = 5
+song_scheming_weasel = 0
+song_stay_inside_me = 1
+song_time_machine = 2
+song_insert_cash_fd2_version = 3
+song_super_underground_64 = 4
+song_desert_city = 5
+song_golden_haze = 6
+song_menu_theme = 7
+song_stereo_madness = 8
+song_jumper = 9
+song_max = 10

@@ -2,19 +2,32 @@
 
 #if !__VS_SYSTEM
 
-banked(sound_test_bank.musictext.data.0) const char musicSoundTestString00[15] = "STAY INSIDE ME";
-banked(sound_test_bank.musictext.data.1) const char musicSoundTestString01[13] = "TIME MACHINE";
-banked(sound_test_bank.musictext.data.2) const char musicSoundTestString02[16] = "SCHEMING WEASEL";
-banked(sound_test_bank.musictext.data.3) const char musicSoundTestString03[12] = "DESERT CITY";
-banked(sound_test_bank.musictext.data.4) const char musicSoundTestString04[11] = "MENU THEME";
-banked(sound_test_bank.musictext.data.5) const char musicSoundTestString05[13] = "OCULARNEBULA";
-banked(sound_test_bank.musictext.data.6) const char musicSoundTestString06[11] = "WATERFLAME";
-banked(sound_test_bank.musictext.data.7) const char musicSoundTestString07[14] = "KEVIN MACLEOD";
-banked(sound_test_bank.musictext.data.8) const char musicSoundTestString08[10] = "idfk lmao";
-banked(sound_test_bank.musictext.data.9) const char musicSoundTestString09[ 7] = "RobTop";
+banked(sound_test_bank.musictext.data.0) const char musicSoundTestString00[11] = "MENU THEME";
+banked(sound_test_bank.musictext.data.1) const char musicSoundTestString01[16] = "SCHEMING WEASEL";
+banked(sound_test_bank.musictext.data.2) const char musicSoundTestString02[15] = "STEREO MADNESS";
+banked(sound_test_bank.musictext.data.3) const char musicSoundTestString03[ 7] = "JUMPER";
+banked(sound_test_bank.musictext.data.4) const char musicSoundTestString04[13] = "TIME MACHINE";
+banked(sound_test_bank.musictext.data.5) const char musicSoundTestString05[15] = "STAY INSIDE ME";
+banked(sound_test_bank.musictext.data.6) const char musicSoundTestString06[12] = "DESERT CITY";
+banked(sound_test_bank.musictext.data.7) const char musicSoundTestString07[12] = "INSERT CASH";
+banked(sound_test_bank.musictext.data.8) const char musicSoundTestString08[12] = "GOLDEN HAZE";
+banked(sound_test_bank.musictext.data.9) const char musicSoundTestString09[21] = "SUPER UNDERGROUND 64";
+banked(sound_test_bank.musictext.data.10) const char musicSoundTestString0A[ 7] = "ROBTOP";
+banked(sound_test_bank.musictext.data.11) const char musicSoundTestString0B[14] = "KEVIN MACLEOD";
+banked(sound_test_bank.musictext.data.12) const char musicSoundTestString0C[13] = "FOREVERBOUND";
+banked(sound_test_bank.musictext.data.13) const char musicSoundTestString0D[11] = "WATERFLAME";
+banked(sound_test_bank.musictext.data.14) const char musicSoundTestString0E[13] = "OCULARNEBULA";
+banked(sound_test_bank.musictext.data.15) const char musicSoundTestString0F[10] = "idfk lmao";
+banked(sound_test_bank.musictext.data.16) const char musicSoundTestString10[14] = "CRAFTY JUMPER";
+banked(sound_test_bank.musictext.data.17) const char musicSoundTestString11[10] = "nintendo.";
 
 
 banked(sound_test_bank.musictext.ptr) const char* const xbgmtextsUpper[] = {
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -29,15 +42,25 @@ banked(sound_test_bank.musictext.ptr) const char* const xbgmtextsLower[] = {
 	musicSoundTestString02,
 	musicSoundTestString03,
 	musicSoundTestString04,
-};
-
-
-banked(sound_test_bank.musictext.ptr) const char* const xbgmtextsOriginalArtist[] = {
 	musicSoundTestString05,
 	musicSoundTestString06,
 	musicSoundTestString07,
 	musicSoundTestString08,
 	musicSoundTestString09,
+};
+
+
+banked(sound_test_bank.musictext.ptr) const char* const xbgmtextsOriginalArtist[] = {
+	musicSoundTestString0A,
+	musicSoundTestString0B,
+	musicSoundTestString0C,
+	musicSoundTestString0D,
+	musicSoundTestString0D,
+	musicSoundTestString0E,
+	musicSoundTestString0F,
+	musicSoundTestString10,
+	musicSoundTestString10,
+	musicSoundTestString11,
 };
 
 
@@ -58,11 +81,16 @@ const u8 xbgmtextsOriginalArtistSize[] = {};
 #if !__VS_SYSTEM
 
 banked(sound_test_bank.musictext.index) const u8 xbgmlookuptable[] = {
-	song_stay_inside_me,
-	song_time_machine,
-	song_scheming_weasel,
-	song_desert_city,
 	song_menu_theme,
+	song_scheming_weasel,
+	song_stereo_madness,
+	song_jumper,
+	song_time_machine,
+	song_stay_inside_me,
+	song_desert_city,
+	song_insert_cash_fd2_version,
+	song_golden_haze,
+	song_super_underground_64,
 };
 
 #else
