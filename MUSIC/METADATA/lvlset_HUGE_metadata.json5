@@ -106,7 +106,7 @@
 			upperText: "THEORY OF",
 			lowerText: "EVERYTHING",
 			originalArtist: "Dj Nate",
-			coveringArtist: ["ElAngel378"]
+			coveringArtist: "ElAngel378",
 		},
 		{
 			fmsSongName: "Electroman Adventures",
@@ -139,7 +139,7 @@
 			upperText: "BLAST",
 			lowerText: "PROCESSING",
 			originalArtist: "Waterflame",
-			coveringArtist: "ElAngel378",
+			coveringArtist: ["ElAngel378", "Crafty Jumper"],
 		},
 		{
 			fmsSongName: "TOE 2",
