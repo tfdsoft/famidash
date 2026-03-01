@@ -73,8 +73,8 @@
 		.byte _SPIKESC ;_______________________ Spike set
 		.byte _BLOCKSB ;_______________________ Block set
 		.byte _SAWBLADESA ;____________________ Sawblade set
-		.byte $00 ;____________________________ Starting background color
-		.byte $00 ;____________________________ Starting ground color
+		.byte $0F ;____________________________ Starting background color
+		.byte $0F ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
 		.incbin "EXPORTS/tetrix.lz.0.bin" ; Size: 8128
