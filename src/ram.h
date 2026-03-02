@@ -48,5 +48,5 @@ sram u8 sram_buffer[2048], background_set, ground_set;
 
 // generally, you want a state machine to
 // control your game loop with
-u8 gamestate = 0x14;
+u8 gamestate = 0x20;
 

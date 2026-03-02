@@ -43,6 +43,19 @@ static void __level_rle_fetch_next_tile(){
     }
     lvl_rle_run--;
 }
+static void __level_rle_fetch_previous_tile(){
+    if(lvl_rle_run == lvl_rle_pointer[1]) {
+        lvl_rle_pointer-=2;
+
+        //if(lvl_rle_pointer == (u8*)0xc000) {
+        //    lvl_rle_pointer == 0xa000
+        //}
+
+        lvl_rle_value = lvl_rle_pointer[0];
+        lvl_rle_run = 0;
+    }
+    lvl_rle_run++;
+}
 
 void level_rle_fetch_columns(s8 count, u8 y_offset){
     set_prg_a000(active_lvl.tile_bank);
@@ -57,17 +70,21 @@ void level_rle_fetch_columns(s8 count, u8 y_offset){
                 collision_map_0[grid16(lvl_rle_x_offset,height)] = lvl_rle_value;
             }
 
-            for(u8 tile=0; tile<16; tile++){
-                u8 id = collision_map_0[grid16(lvl_rle_x_offset,y_offset)];
-                
-            }
-
             ++lvl_rle_x_offset;
-            lvl_rle_x_offset &= 0x0f;
+            //lvl_rle_x_offset &= 0x0f;
         }
-    } //else {
+    } else {
         // go backward code
-    //}
+        for(; count!=0; count++) {
+            --lvl_rle_x_offset;
+            // decompress tiles into the table
+            for(u8 height=active_lvl.height; height>0; height--){
+                __level_rle_fetch_previous_tile();
+                collision_map_0[grid16(lvl_rle_x_offset,height-1)] = lvl_rle_value;
+            }
+        }
+
+    }
 }
 
 
