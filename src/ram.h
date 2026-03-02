@@ -16,20 +16,22 @@ __attribute__((retain)) u8  loaded_bg_set = 0xff, loaded_g_set = 0xff,
 sram u8 sram_buffer[2048], background_set, ground_set;
 
 // ok so here's where the metatiles are
-#define metatiles_TL ((u8*)sram_buffer)    // top left
-#define metatiles_TR ((u8*)sram_buffer+256)  // top right
-#define metatiles_BL ((u8*)sram_buffer+512)  // bottom left
-#define metatiles_BR ((u8*)sram_buffer+768)  // bottom right
+#define metatiles_TL ((u8*)sram_buffer)    // top left, 256
+#define metatiles_TR ((u8*)sram_buffer+256)  // top right, 256
+#define metatiles_BL ((u8*)sram_buffer+512)  // bottom left, 256
+#define metatiles_BR ((u8*)sram_buffer+768)  // bottom right, 256
 
-#define metatiles_collision (*(u8*)&sram_buffer[1024])  // collision
+#define metatiles_collision (*(u8*)&sram_buffer[1024])  // collision, 256
 
-#define collision_map_0 ((u8*)(sram_buffer+1280))
-#define collision_map_1 ((u8*)(sram_buffer+1536-16))
-#define collision_map_2 ((u8*)(sram_buffer+1792-32))
+// da collision buffer
+#define collision_map_0 ((u8*)(sram_buffer+1280)) // 240
+#define collision_map_1 ((u8*)(sram_buffer+1536-16)) // 240
+#define collision_map_2 ((u8*)(sram_buffer+1792-32)) // 240
 
 // 32 tiles to buffer the next column of tiles
-#define tile_buffer ((u8*)(sram_buffer+2016))
+#define tile_buffer ((u8*)(sram_buffer+2016)) // 32
 
+// this pads out the entire buffer nicely
 
 
 
