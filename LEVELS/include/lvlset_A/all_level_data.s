@@ -990,7 +990,7 @@
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 2512
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 7705 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 7894 bytes
 	.export level_data_cantletgo
 	level_data_cantletgo:
 	; Header
@@ -1015,6 +1015,32 @@
 	; Level data
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2041
 
+	.export level_data_explorers
+	level_data_explorers:
+	; Header
+		.byte <sprite_data_explorers ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_explorers ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_explorers)) ;___ Sprite data bank
+		.byte song_explorers ;____________________ Song ID
+		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 ;____________________________ Deco type
+		.byte _SPIKESA ;__________________________ Spike set
+		.byte _BLOCKSB ;__________________________ Block set
+		.byte _SAWBLADESA ;_______________________ Sawblade set
+		.byte $03 ;_______________________________ Starting background color
+		.byte $03 ;_______________________________ Starting ground color
+		.byte 27 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/explorers.lz.bin" ; Size: 2035
+
+
+.segment "DAT_BANK_20"	; Total bank size: 8183 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
@@ -1040,7 +1066,7 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1846
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_21"	; Total bank size: 7508 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -1065,6 +1091,8 @@
 	; Level data
 		.incbin "EXPORTS/dryout.lz.bin" ; Size: 1521
 
+
+.segment "DAT_BANK_22"	; Total bank size: 7676 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -1113,6 +1141,8 @@
 	; Level data
 		.incbin "EXPORTS/thetower.lz.bin" ; Size: 1354
 
+
+.segment "DAT_BANK_23"	; Total bank size: 7905 bytes
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header

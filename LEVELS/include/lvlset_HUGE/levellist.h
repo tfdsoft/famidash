@@ -24,6 +24,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// deadlocked
 	INSANE,	// fingerdash
 	INSANE,	// dash
+	DEMON,	// explorers
 	NORMAL,	// thetower
 	HARD,	// thechallenge
 	AUTO,	// bestautomaticlvl
@@ -126,7 +127,6 @@ const uint8_t difficulty_list[] = {
 	IMPOSSIBLEDEMON,	// element111rg
 	GRANDPADEMON,	// slaughterhouse
 	GRANDPADEMON,	// kratos
-	GRANDPADEMON,	// nullscapes
 	GRANDPADEMON,	// everyend
 	GRANDPADEMON,	// silentcircles
 	GRANDPADEMON,	// luckydraw
@@ -155,6 +155,7 @@ const uint8_t stars_list[] = {
 	15,	// deadlocked
 	12,	// fingerdash
 	12,	// dash
+	15,	// explorers
 	5,	// thetower
 	3,	// thechallenge
 	1,	// bestautomaticlvl
@@ -257,7 +258,6 @@ const uint8_t stars_list[] = {
 	10,	// element111rg
 	10,	// slaughterhouse
 	10,	// kratos
-	10,	// nullscapes
 	10,	// everyend
 	10,	// silentcircles
 	10,	// luckydraw

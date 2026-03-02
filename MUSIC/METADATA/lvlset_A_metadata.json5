@@ -267,6 +267,11 @@
 			originalArtistText: "MDK",
 		},
 		{
+			fmsSongName: "Explorers",
+			lowerText: "EXPLORERS",
+			originalArtistText: "HINKIK",
+		},
+		{
 			fmsSongName: "Desert City",
 			lowerText: "DESERT CITY",
 			originalArtistText: "KEVIN MACLEOD",

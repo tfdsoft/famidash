@@ -1366,6 +1366,55 @@
 				},
 			],
 		},
+		{ 
+			level: "explorers",
+			lowerText: "EXPLORERS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 15,
+			songID: "song_explorers",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x03,
+			startingGroundColor: 0x03,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[107, 18],
+						[33, 17],
+						[39, 17],
+						[110, 18],
+						[130, 18],
+						[134, 18],
+						[36, 20],
+						[42, 20],
+						[151, 19],
+						[157, 19],
+						[154, 23],
+						[160, 23],
+						[176, 19]
+					],
+					offsetY: +8 
+				},
+				{
+					coordinates: [
+						[175, 26],
+						[175, 17],
+						[175, 18],
+						[175, 19],
+						[178, 16],
+						[178, 17],
+						[178, 18]
+					],
+					offsetX: -8
+				}
+			]
+		},
 		{
 			level: "thetower",
             lowerText: "THE TOWER",
@@ -5624,6 +5673,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		/*
 		{ 
 			level: "nullscapes",
 			lowerText: "NULLSCAPES",
@@ -5667,6 +5717,7 @@
 				}
 			]
 		},
+		*/
 		{
 			level: "everyend",
 			lowerText: "EVERY END",

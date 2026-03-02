@@ -27,6 +27,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_deadlocked)
 	.byte .lobyte(level_data_fingerdash)
 	.byte .lobyte(level_data_dash)
+	.byte .lobyte(level_data_explorers)
 	.byte .lobyte(level_data_thetower)
 	.byte .lobyte(level_data_thechallenge)
 	.byte .lobyte(level_data_bestautomaticlvl)
@@ -129,7 +130,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_element111rg)
 	.byte .lobyte(level_data_slaughterhouse)
 	.byte .lobyte(level_data_kratos)
-	.byte .lobyte(level_data_nullscapes)
 	.byte .lobyte(level_data_everyend)
 	.byte .lobyte(level_data_silentcircles)
 	.byte .lobyte(level_data_luckydraw)
@@ -157,6 +157,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_deadlocked)
 	.byte .hibyte(level_data_fingerdash)
 	.byte .hibyte(level_data_dash)
+	.byte .hibyte(level_data_explorers)
 	.byte .hibyte(level_data_thetower)
 	.byte .hibyte(level_data_thechallenge)
 	.byte .hibyte(level_data_bestautomaticlvl)
@@ -259,7 +260,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_element111rg)
 	.byte .hibyte(level_data_slaughterhouse)
 	.byte .hibyte(level_data_kratos)
-	.byte .hibyte(level_data_nullscapes)
 	.byte .hibyte(level_data_everyend)
 	.byte .hibyte(level_data_silentcircles)
 	.byte .hibyte(level_data_luckydraw)
@@ -287,6 +287,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_deadlocked))
 	.byte .lobyte(.bank(level_data_fingerdash))
 	.byte .lobyte(.bank(level_data_dash))
+	.byte .lobyte(.bank(level_data_explorers))
 	.byte .lobyte(.bank(level_data_thetower))
 	.byte .lobyte(.bank(level_data_thechallenge))
 	.byte .lobyte(.bank(level_data_bestautomaticlvl))
@@ -389,7 +390,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_element111rg))
 	.byte .lobyte(.bank(level_data_slaughterhouse))
 	.byte .lobyte(.bank(level_data_kratos))
-	.byte .lobyte(.bank(level_data_nullscapes))
 	.byte .lobyte(.bank(level_data_everyend))
 	.byte .lobyte(.bank(level_data_silentcircles))
 	.byte .lobyte(.bank(level_data_luckydraw))
@@ -504,6 +504,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000BF)		; deadlocked
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
+	.byte .lobyte($000050)		; explorers
 	.byte .lobyte($000048)		; thetower
 	.byte .lobyte($000030)		; thechallenge
 	.byte .lobyte($00006F)		; bestautomaticlvl
@@ -606,7 +607,6 @@ _level_lengths_lo:
 	.byte .lobyte($0000A2)		; element111rg
 	.byte .lobyte($000098)		; slaughterhouse
 	.byte .lobyte($000087)		; kratos
-	.byte .lobyte($000075)		; nullscapes
 	.byte .lobyte($0002DC)		; everyend
 	.byte .lobyte($000084)		; silentcircles
 	.byte .lobyte($000089)		; luckydraw
@@ -636,6 +636,7 @@ _level_lengths_md:
 	.byte .hibyte($0000BF)		; deadlocked
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
+	.byte .hibyte($000050)		; explorers
 	.byte .hibyte($000048)		; thetower
 	.byte .hibyte($000030)		; thechallenge
 	.byte .hibyte($00006F)		; bestautomaticlvl
@@ -738,7 +739,6 @@ _level_lengths_md:
 	.byte .hibyte($0000A2)		; element111rg
 	.byte .hibyte($000098)		; slaughterhouse
 	.byte .hibyte($000087)		; kratos
-	.byte .hibyte($000075)		; nullscapes
 	.byte .hibyte($0002DC)		; everyend
 	.byte .hibyte($000084)		; silentcircles
 	.byte .hibyte($000089)		; luckydraw
@@ -768,6 +768,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000BF)		; deadlocked
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
+	.byte .bankbyte($000050)		; explorers
 	.byte .bankbyte($000048)		; thetower
 	.byte .bankbyte($000030)		; thechallenge
 	.byte .bankbyte($00006F)		; bestautomaticlvl
@@ -870,7 +871,6 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A2)		; element111rg
 	.byte .bankbyte($000098)		; slaughterhouse
 	.byte .bankbyte($000087)		; kratos
-	.byte .bankbyte($000075)		; nullscapes
 	.byte .bankbyte($0002DC)		; everyend
 	.byte .bankbyte($000084)		; silentcircles
 	.byte .bankbyte($000089)		; luckydraw

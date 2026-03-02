@@ -162,6 +162,12 @@
 			coveringArtist: "Crafty Jumper",
 		},
 		{
+			fmsSongName: "Explorers",
+			lowerText: "EXPLORERS",
+			originalArtist: "Hinkik",
+			coveringArtist: "Crafty Jumper",
+		},
+		{
 			fmsSongName: "The Challenge",
 			upperText: "THE",
 			lowerText: "CHALLENGE",
@@ -488,12 +494,14 @@
 			originalArtist: "NightHawk22",
 			coveringArtist: ["Crafty Jumper", "SeaGlowingPro"]
 		},
+		/*
 		{
 			fmsSongName: "jack russel",
 			lowerText: "JACK RUSSEL",
 			originalArtist: "Bossfight",
 			coveringArtist: "NerdBoy628",
 		},
+		*/
 		{
 			fmsSongName: "Jawbreaker",
 			lowerText: "JAWBREAKER",
