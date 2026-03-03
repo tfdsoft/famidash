@@ -1335,7 +1335,7 @@
 		.incbin "EXPORTS/hell.lz.bin" ; Size: 6264
 
 
-.segment "DAT_BANK_37"	; Total bank size: 8172 bytes
+.segment "DAT_BANK_37"	; Total bank size: 8166 bytes
 	.export level_data_bloodbathbutno
 	level_data_bloodbathbutno:
 	; Header
@@ -1382,7 +1382,7 @@
 		.byte $13 ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1906
+		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1900
 
 
 .segment "DAT_BANK_38"	; Total bank size: 8189 bytes
