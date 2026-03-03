@@ -1366,6 +1366,7 @@
 				},
 			],
 		},
+		/*
 		{ 
 			level: "explorers",
 			lowerText: "EXPLORERS",
@@ -1415,6 +1416,7 @@
 				}
 			]
 		},
+		*/
 		{
 			level: "thetower",
             lowerText: "THE TOWER",

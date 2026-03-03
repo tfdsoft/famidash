@@ -6,6 +6,7 @@ const uint8_t difficulty_list[] = {
 	EASYDEMON,	// speedracer
 	MEDIUMDEMON,	// goldenhaze
 	MEDIUMDEMON,	// gameover
+	HARDDEMON,	// explorers
 	HARDDEMON,	// toeiiv2
 	HARDDEMON,	// demoncryogenic
 	HARDDEMON,	// azuronxolax
@@ -31,6 +32,7 @@ const uint8_t stars_list[] = {
 	10,	// speedracer
 	10,	// goldenhaze
 	10,	// gameover
+	15,	// explorers
 	10,	// toeiiv2
 	10,	// demoncryogenic
 	10,	// azuronxolax

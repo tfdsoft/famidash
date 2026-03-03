@@ -352,7 +352,7 @@
 		.incbin "EXPORTS/acropolis.lz.bin" ; Size: 5641
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 7974 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8175 bytes
 	.export level_data_speedracer
 	level_data_speedracer:
 	; Header
@@ -376,6 +376,11 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5635
+
+	.export level_data_windylandscape_1
+	level_data_windylandscape_1:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
 
 
 .segment "DAT_BANK_10"	; Total bank size: 8121 bytes
@@ -563,7 +568,7 @@
 		.incbin "EXPORTS/wcropolix.lz.bin" ; Size: 4155
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8184 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8185 bytes
 	.export level_data_shardscapes
 	level_data_shardscapes:
 	; Header
@@ -588,7 +593,26 @@
 	; Level data
 		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2222
 
-	.export level_data_windylandscape_1
-	level_data_windylandscape_1:
+	.export level_data_explorers
+	level_data_explorers:
+	; Header
+		.byte <sprite_data_explorers ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_explorers ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_explorers)) ;___ Sprite data bank
+		.byte song_explorers ;____________________ Song ID
+		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 ;____________________________ Deco type
+		.byte _SPIKESA ;__________________________ Spike set
+		.byte _BLOCKSB ;__________________________ Block set
+		.byte _SAWBLADESA ;_______________________ Sawblade set
+		.byte $03 ;_______________________________ Starting background color
+		.byte $03 ;_______________________________ Starting ground color
+		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
+		.incbin "EXPORTS/explorers.lz.bin" ; Size: 2035

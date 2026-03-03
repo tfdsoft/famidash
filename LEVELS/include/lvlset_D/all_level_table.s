@@ -9,6 +9,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_goldenhaze)
 	.byte .lobyte(level_data_gameover)
+	.byte .lobyte(level_data_explorers)
 	.byte .lobyte(level_data_toeiiv2)
 	.byte .lobyte(level_data_demoncryogenic)
 	.byte .lobyte(level_data_azuronxolax)
@@ -33,6 +34,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_gameover)
+	.byte .hibyte(level_data_explorers)
 	.byte .hibyte(level_data_toeiiv2)
 	.byte .hibyte(level_data_demoncryogenic)
 	.byte .hibyte(level_data_azuronxolax)
@@ -57,6 +59,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_gameover))
+	.byte .lobyte(.bank(level_data_explorers))
 	.byte .lobyte(.bank(level_data_toeiiv2))
 	.byte .lobyte(.bank(level_data_demoncryogenic))
 	.byte .lobyte(.bank(level_data_azuronxolax))
@@ -102,6 +105,7 @@ _level_lengths_lo:
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($000078)		; gameover
+	.byte .lobyte($000050)		; explorers
 	.byte .lobyte($0000A1)		; toeiiv2
 	.byte .lobyte($0000A8)		; demoncryogenic
 	.byte .lobyte($000148)		; azuronxolax
@@ -128,6 +132,7 @@ _level_lengths_md:
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($000078)		; gameover
+	.byte .hibyte($000050)		; explorers
 	.byte .hibyte($0000A1)		; toeiiv2
 	.byte .hibyte($0000A8)		; demoncryogenic
 	.byte .hibyte($000148)		; azuronxolax
@@ -154,6 +159,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($000078)		; gameover
+	.byte .bankbyte($000050)		; explorers
 	.byte .bankbyte($0000A1)		; toeiiv2
 	.byte .bankbyte($0000A8)		; demoncryogenic
 	.byte .bankbyte($000148)		; azuronxolax

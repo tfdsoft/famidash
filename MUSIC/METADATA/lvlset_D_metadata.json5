@@ -33,6 +33,11 @@
 			originalArtistText: "DJ NATE",
 		},
 		{
+			fmsSongName: "Explorers",
+			lowerText: "EXPLORERS",
+			originalArtistText: "HINKIK",
+		},
+		{
 			fmsSongName: "Practice",
 			lowerText: "PRACTICE",
 			originalArtistText: "OCULARNEBULA",
