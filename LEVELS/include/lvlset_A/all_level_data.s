@@ -218,7 +218,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8171 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8172 bytes
 	.export level_data_bloodbathbutno
 	level_data_bloodbathbutno:
 	; Header
@@ -265,7 +265,7 @@
 		.byte $13 ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1905
+		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1906
 
 
 .segment "DAT_BANK_09"	; Total bank size: 8186 bytes
