@@ -52,7 +52,7 @@ typedef signed long s32;
  #define hi(a) *(((unsigned char *)&a) + 1)
 
 #define banked(bank) __attribute__((section(".prg_rom_"STR(bank)),used))
-#define nesram __attribute__((section(".bss"),retain))
+#define force __attribute__((section(".bss"),retain))
 #define sram __attribute__((section(".prg_ram"),retain))
 #define file(symbol, bank) __attribute__((section((".prg_rom_"STR(bank))),retain)) const u8 symbol[]
 

@@ -1468,8 +1468,8 @@ donut_stream_ptr = $02
         iny
         clc 
         adc __rc5
-        clc
-        sbc #0
+        ;clc
+        ;sbc #0
         sta sprite_buffer+0,x
         lda (__rc2),y		;tile
         iny
@@ -1540,7 +1540,7 @@ donut_stream_ptr = $02
     lda __rc3
     and #%00111111
     ora #%10000000
-    jmp __se_one_vram_buffer_repeat ; bra
+    bmi __se_one_vram_buffer_repeat ; bra
 .endproc
 
 .export se_one_vram_buffer_repeat_horizontal
@@ -1586,7 +1586,7 @@ donut_stream_ptr = $02
     lda __rc4
     and #%00111111
     ora #%10000000
-    jmp __se_multi_vram_buffer
+    bmi __se_multi_vram_buffer
 .endproc
 
 .export se_multi_vram_buffer_horizontal
@@ -1797,6 +1797,7 @@ __exit_vram_buffer_noupdate:
     @exit:
     ldx se_vram_tmp_stack_pointer
     txs
+
     jmp __post_vram_update
 
     @do_not_update:

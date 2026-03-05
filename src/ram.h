@@ -8,7 +8,65 @@
  *      declaration.
 **============================================*/
 
+struct Player {
+    struct {
+        union {
+            u24 full;
+            struct {
+                u8 sub;
+                u8 lo;
+                u8 hi;
+            };
+            struct {
+                u8 :8;
+                u16 word;
+            };
+        } x;
+        union {
+            u24 full;
+            struct {
+                u8 sub;
+                u8 lo;
+                u8 hi;
+            };
+            struct {
+                u8 :8;
+                u16 word;
+            };
+        } y;
+    } pos;
+    struct {
+        s16 x;
+        s16 y;
+    } speed;
+} Player;
 
+struct Camera {
+    union {
+        u24 full;
+        struct {
+            u8 sub;
+            u8 lo;
+            u8 hi;
+        };
+        struct {
+            u8 :8;
+            u16 word;
+        };
+    } x;
+    union {
+        u24 full;
+        struct {
+            u8 sub;
+            u8 lo;
+            u8 hi;
+        };
+        struct {
+            u8 :8;
+            u16 word;
+        };
+    } y;
+} Camera;
 
 
 __attribute__((retain)) u8  loaded_bg_set = 0xff, loaded_g_set = 0xff,

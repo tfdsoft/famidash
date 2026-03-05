@@ -69,7 +69,7 @@ TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
 
 CFLAGS = -flto -Os -ffast-math -fnonreentrant -std=gnu23 -Wall -Wextra
-LDFLAGS = -mreserve-zp=48 -T $(CFG)
+LDFLAGS = -mreserve-zp=64 -T $(CFG)
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)
@@ -126,7 +126,7 @@ $(TMPDIR)/sniperengine.o: src/sniperengine/sniperengine.s
 	$(CA65) src/sniperengine/sniperengine.s -o $@
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/sniperengine.o $(TMPDIR)/music.o $(TMPDIR)/sfx.o $(TMPDIR)/asm.o src/*.h src/*.c src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
-	python3 src/chr/donut.py src/chr/uncompressed/ src/chr/dnt -f
+	#./generate_everything.sh
 	$(CC) src/main.c $(TMPDIR)/*.o $(call cc65IncDir,src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)) $(CFLAGS) $(LDFLAGS) -o $@
 
 

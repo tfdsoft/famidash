@@ -20,6 +20,8 @@
 #include "physics.h"
 #include "parallax.c"
 #include "rle.c"
+#include "rendering.c"
+#include "collision.c"
 
 // gamestates
 #include "state_startup.c"
