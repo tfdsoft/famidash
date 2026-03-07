@@ -28,33 +28,7 @@
 		.incbin "EXPORTS/futurefunkfix.lz.0.bin" ; Size: 8170
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8186 bytes
-	.export level_data_windylandscape
-	level_data_windylandscape:
-	; Header
-		.byte <sprite_data_windylandscape ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_windylandscape ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_windylandscape)) ;___ Sprite data bank
-		.byte song_windfall ;__________________________ Song ID
-		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
-		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;__________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;__________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
-		.byte ($06) ;__________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
-		.byte _DECO1 ;_________________________________ Deco type
-		.byte _SPIKESC ;_______________________________ Spike set
-		.byte _BLOCKSB ;_______________________________ Block set
-		.byte _SAWBLADESA ;____________________________ Sawblade set
-		.byte $0F ;____________________________________ Starting background color
-		.byte $0F ;____________________________________ Starting ground color
-		.byte 27 ;_____________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.0.bin" ; Size: 8168
-
-
-.segment "DAT_BANK_02"	; Total bank size: 8184 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8184 bytes
 	.export level_data_highlife
 	level_data_highlife:
 	; Header
@@ -80,7 +54,7 @@
 		.incbin "EXPORTS/highlife.lz.0.bin" ; Size: 8166
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8179 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8179 bytes
 	.export level_data_motion
 	level_data_motion:
 	; Header
@@ -106,14 +80,14 @@
 		.incbin "EXPORTS/motion.lz.0.bin" ; Size: 8161
 
 
-.segment "DAT_BANK_04"	; Total bank size: 8171 bytes
+.segment "DAT_BANK_03"	; Total bank size: 8171 bytes
 	.export level_data_astronomicalexpedition_6
 	level_data_astronomicalexpedition_6:
 	; Level data
 		.incbin "EXPORTS/astronomicalexpedition.lz.2.bin" ; Size: 8171
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8166 bytes
 	.export level_data_aftercatabath
 	level_data_aftercatabath:
 	; Header
@@ -139,14 +113,14 @@
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8148
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8165 bytes
+.segment "DAT_BANK_05"	; Total bank size: 8165 bytes
 	.export level_data_everyend_24
 	level_data_everyend_24:
 	; Level data
 		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8165
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8161 bytes
 	.export level_data_subtleoddities
 	level_data_subtleoddities:
 	; Header
@@ -172,21 +146,21 @@
 		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8143
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8161 bytes
 	.export level_data_astronomicalexpedition_5
 	level_data_astronomicalexpedition_5:
 	; Level data
 		.incbin "EXPORTS/astronomicalexpedition.lz.1.bin" ; Size: 8161
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8153 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8153 bytes
 	.export level_data_futurefunkfix_17
 	level_data_futurefunkfix_17:
 	; Level data
 		.incbin "EXPORTS/futurefunkfix.lz.1.bin" ; Size: 8153
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8152 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8152 bytes
 	.export level_data_extraordinaryexcitement
 	level_data_extraordinaryexcitement:
 	; Header
@@ -212,7 +186,7 @@
 		.incbin "EXPORTS/extraordinaryexcitement.lz.0.bin" ; Size: 8134
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8150 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8150 bytes
 	.export level_data_dash
 	level_data_dash:
 	; Header
@@ -238,7 +212,7 @@
 		.incbin "EXPORTS/dash.lz.0.bin" ; Size: 8132
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8150 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8150 bytes
 	.export level_data_eon
 	level_data_eon:
 	; Header
@@ -264,7 +238,7 @@
 		.incbin "EXPORTS/eon.lz.0.bin" ; Size: 8132
 
 
-.segment "DAT_BANK_0D"	; Total bank size: 8136 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8136 bytes
 	.export level_data_thesteamworks
 	level_data_thesteamworks:
 	; Header
@@ -290,7 +264,7 @@
 		.incbin "EXPORTS/thesteamworks.lz.0.bin" ; Size: 8118
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8136 bytes
+.segment "DAT_BANK_0D"	; Total bank size: 8136 bytes
 	.export level_data_demoncryogenic
 	level_data_demoncryogenic:
 	; Header
@@ -314,6 +288,32 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/demoncryogenic.lz.0.bin" ; Size: 8118
+
+
+.segment "DAT_BANK_0E"	; Total bank size: 8135 bytes
+	.export level_data_windylandscape
+	level_data_windylandscape:
+	; Header
+		.byte <sprite_data_windylandscape ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_windylandscape ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_windylandscape)) ;___ Sprite data bank
+		.byte song_windfall ;__________________________ Song ID
+		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
+		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;__________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;__________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;__________________________________ Y Scroll Position (low byte)
+		.byte ($06) ;__________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;____________________ Force platformer, Disable parallax
+		.byte _DECO1 ;_________________________________ Deco type
+		.byte _SPIKESC ;_______________________________ Spike set
+		.byte _BLOCKSB ;_______________________________ Block set
+		.byte _SAWBLADESA ;____________________________ Sawblade set
+		.byte $0F ;____________________________________ Starting background color
+		.byte $0F ;____________________________________ Starting ground color
+		.byte 27 ;_____________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.0.bin" ; Size: 8117
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 8132 bytes
@@ -583,7 +583,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8024
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 8174 bytes
 	.export level_data_sonicblaster
 	level_data_sonicblaster:
 	; Header
@@ -608,13 +608,13 @@
 	; Level data
 		.incbin "EXPORTS/sonicblaster.lz.bin" ; Size: 7971
 
-	.export level_data_windylandscape_20
-	level_data_windylandscape_20:
+	.export level_data_motion_13
+	level_data_motion_13:
 	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 201
+		.incbin "EXPORTS/motion.lz.1.bin" ; Size: 185
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8165 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 7980 bytes
 	.export level_data_ninecircles
 	level_data_ninecircles:
 	; Header
@@ -638,11 +638,6 @@
 		.byte 27 ;__________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/ninecircles.lz.bin" ; Size: 7962
-
-	.export level_data_motion_13
-	level_data_motion_13:
-	; Level data
-		.incbin "EXPORTS/motion.lz.1.bin" ; Size: 185
 
 
 .segment "DAT_BANK_1D"	; Total bank size: 8183 bytes
@@ -2817,7 +2812,7 @@
 		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 3864
 
 
-.segment "DAT_BANK_69"	; Total bank size: 7836 bytes
+.segment "DAT_BANK_69"	; Total bank size: 8115 bytes
 	.export level_data_nightmare
 	level_data_nightmare:
 	; Header
@@ -2865,6 +2860,11 @@
 		.byte 27 ;____________________________ Level height
 	; Level data
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3528
+
+	.export level_data_windylandscape_20
+	level_data_windylandscape_20:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 279
 
 
 .segment "DAT_BANK_6A"	; Total bank size: 8160 bytes
