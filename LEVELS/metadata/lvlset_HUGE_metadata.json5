@@ -1579,6 +1579,23 @@
 			parallaxDisable: false
 		},
 		{
+            level: "movie",
+            upperText: "THE TRIPLE",
+            lowerText: "SPIKE OF DOOM",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "A",
+            sawSet: "A",
+            difficulty: "AUTO",
+            stars: 1,
+            songID: "song_stereo_madness",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x0F,
+            startingGroundColor: 0x0F,
+            parallaxDisable: false
+        },
+		{
 			level: "retray",
 			lowerText: "RETRAY",
 			decoType: "DECO1",

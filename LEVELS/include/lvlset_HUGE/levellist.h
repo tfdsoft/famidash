@@ -27,6 +27,7 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// thetower
 	HARD,	// thechallenge
 	AUTO,	// bestautomaticlvl
+	AUTO,	// movie
 	EASY,	// retray
 	EASY,	// sonar
 	EASY,	// darkparadise
@@ -157,6 +158,7 @@ const uint8_t stars_list[] = {
 	5,	// thetower
 	3,	// thechallenge
 	1,	// bestautomaticlvl
+	1,	// movie
 	2,	// retray
 	2,	// sonar
 	2,	// darkparadise
