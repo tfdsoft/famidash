@@ -692,7 +692,7 @@
 		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 7763
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8188 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7742 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -3106,7 +3106,7 @@
 		.incbin "EXPORTS/everymadness.lz.bin" ; Size: 2618
 
 
-.segment "DAT_BANK_78"	; Total bank size: 7729 bytes
+.segment "DAT_BANK_78"	; Total bank size: 8190 bytes
 	.export level_data_subzero
 	level_data_subzero:
 	; Header

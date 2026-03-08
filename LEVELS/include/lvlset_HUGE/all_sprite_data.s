@@ -9036,7 +9036,7 @@ sprite_data_bestautomaticlvl:
   .byte $f0,$2a,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_20"
+.segment "DAT_BANK_78"
 sprite_data_movie:
   .byte $00,$00,$70,$03,$15
   .byte $a0,$00,$50,$03,$8f
@@ -9104,10 +9104,13 @@ sprite_data_movie:
   .byte $00,$21,$50,$03,$bf
   .byte $00,$22,$50,$03,$b6
   .byte $10,$22,$50,$03,$bf
+  .byte $70,$22,$60,$03,$07
   .byte $10,$23,$60,$03,$b6
   .byte $20,$23,$60,$03,$bf
+  .byte $80,$23,$60,$03,$1a
   .byte $20,$24,$60,$03,$b0
   .byte $30,$24,$60,$03,$bf
+  .byte $90,$24,$60,$03,$1b
   .byte $30,$25,$60,$03,$b0
   .byte $40,$25,$60,$03,$bf
   .byte $40,$26,$60,$03,$b6
