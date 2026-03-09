@@ -61,6 +61,47 @@
 			]
 		},
 		{
+			level: "decode",
+			lowerText: "DECODE",
+			decoType: "DECOCLOUD",
+			spikeSet: "B",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_endgame",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x06,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[314, 10],	[324, 10],	[330, 9],	[335, 11],	[337, 10],		//deco
+						[341, 11],	[346, 10],	[352, 10],	[360, 9],		//deco
+					],
+					offsetY: +8
+				},
+			]
+		},
+		{
+			level: "clutterfunk2",
+			lowerText: "CLUTTERFUNK 2",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "DEMON",
+			stars: 10,
+			songID: "song_clutterfunk_2",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true
+		},
+		{
 			level: "speedracer",
 			lowerText: "SPEED RACER",
 			decoType: "EXTRASPRITES1",

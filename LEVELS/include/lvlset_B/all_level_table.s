@@ -28,6 +28,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_thesteamworks)
 	.byte .lobyte(level_data_rainingtacos)
 	.byte .lobyte(level_data_dorabaebasic10)
+	.byte .lobyte(level_data_offtomars)
 	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_danceofviolins)
@@ -35,8 +36,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_tetrix)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_infinitecircles)
-	.byte .lobyte(level_data_decode)
-	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_skeletalshenanigans)
 
 _level_list_hi:
@@ -63,6 +62,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_thesteamworks)
 	.byte .hibyte(level_data_rainingtacos)
 	.byte .hibyte(level_data_dorabaebasic10)
+	.byte .hibyte(level_data_offtomars)
 	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_powertrip)
 	.byte .hibyte(level_data_danceofviolins)
@@ -70,8 +70,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_tetrix)
 	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_infinitecircles)
-	.byte .hibyte(level_data_decode)
-	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_skeletalshenanigans)
 
 _level_list_bank:
@@ -98,6 +96,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_thesteamworks))
 	.byte .lobyte(.bank(level_data_rainingtacos))
 	.byte .lobyte(.bank(level_data_dorabaebasic10))
+	.byte .lobyte(.bank(level_data_offtomars))
 	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_powertrip))
 	.byte .lobyte(.bank(level_data_danceofviolins))
@@ -105,8 +104,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_tetrix))
 	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_infinitecircles))
-	.byte .lobyte(.bank(level_data_decode))
-	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 
 _level_chunk_list_lo:
@@ -163,6 +160,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000CC)		; thesteamworks
 	.byte .lobyte($0000BB)		; rainingtacos
 	.byte .lobyte($000097)		; dorabaebasic10
+	.byte .lobyte($000097)		; offtomars
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
@@ -170,8 +168,6 @@ _level_lengths_lo:
 	.byte .lobyte($000138)		; tetrix
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($00006F)		; infinitecircles
-	.byte .lobyte($00008A)		; decode
-	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -200,6 +196,7 @@ _level_lengths_md:
 	.byte .hibyte($0000CC)		; thesteamworks
 	.byte .hibyte($0000BB)		; rainingtacos
 	.byte .hibyte($000097)		; dorabaebasic10
+	.byte .hibyte($000097)		; offtomars
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
@@ -207,8 +204,6 @@ _level_lengths_md:
 	.byte .hibyte($000138)		; tetrix
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($00006F)		; infinitecircles
-	.byte .hibyte($00008A)		; decode
-	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -237,6 +232,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000CC)		; thesteamworks
 	.byte .bankbyte($0000BB)		; rainingtacos
 	.byte .bankbyte($000097)		; dorabaebasic10
+	.byte .bankbyte($000097)		; offtomars
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins
@@ -244,8 +240,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000138)		; tetrix
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($00006F)		; infinitecircles
-	.byte .bankbyte($00008A)		; decode
-	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 
 .endif

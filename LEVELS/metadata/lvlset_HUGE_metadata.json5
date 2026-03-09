@@ -3394,7 +3394,45 @@
 				},
 			]
 		},
-		
+		{ 
+			level: "offtomars",
+			lowerText: "OFF TO MARS",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_off_to_mars",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			maxFallSpeed: 0x07,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [80, 56],
+					offsetY: +8,
+				},
+				{
+					coordinates: [179, 55],
+					offsetY: -8,
+				},
+				{
+					coordinates: [
+						[195, 54],
+						[535, 11],
+						[674, 17],
+						[673, 17],
+						[786, 25],
+						[860, 54],
+						[879, 54]
+					],
+					offsetX: +8,
+				},
+			],
+		},
 		{
 			level: "subtleoddities",
 			upperText: "SUBTLE",

@@ -3,6 +3,8 @@
 
 const uint8_t difficulty_list[] = {
 	EASYDEMON,	// demonpark
+	DEMON,	// decode
+	DEMON,	// clutterfunk2
 	EASYDEMON,	// speedracer
 	MEDIUMDEMON,	// goldenhaze
 	MEDIUMDEMON,	// gameover
@@ -29,6 +31,8 @@ const uint8_t difficulty_list[] = {
 
 const uint8_t stars_list[] = {
 	10,	// demonpark
+	10,	// decode
+	10,	// clutterfunk2
 	10,	// speedracer
 	10,	// goldenhaze
 	10,	// gameover

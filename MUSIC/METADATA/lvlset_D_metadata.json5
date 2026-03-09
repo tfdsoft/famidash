@@ -70,6 +70,12 @@
 			originalArtistText: "PARAGONX9",
 		},
 		{
+			fmsSongName: "clutterfunk 2",
+			lowerText: "CLUTTERFUNK 2",
+			originalArtistText: "WATERFLAME",
+			/* no vs system to speak of */
+		},
+		{
 			fmsSongName: "Cryogenic",
 			lowerText: "CRYOGENIC",
 			originalArtistText: "NERDBOY628",

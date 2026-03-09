@@ -67,12 +67,6 @@
 			originalArtistText: "MADHOUSEDUDE",
 		},
 		{
-			fmsSongName: "clutterfunk 2",
-			lowerText: "CLUTTERFUNK 2",
-			originalArtistText: "WATERFLAME",
-			/* no vs system to speak of */
-		},
-		{
 			fmsSongName: "Cryogenic",
 			lowerText: "CRYOGENIC",
 			originalArtistText: "NERDBOY628",
@@ -88,21 +82,6 @@
 			upperText: "DRIVING BY",
 			lowerText: "NIGHT",
 			originalArtistText: "REINNBOW",
-		},
-		{
-			fmsSongName: "endgame",
-			lowerText: "ENDGAME",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Decode ~ Endgame",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Vikrinox"
-				},
-				durationNTSC: 79283,
-				durationPAL: 95280
-			}
 		},
 		{
 			fmsSongName: "Factory Time",
@@ -157,12 +136,18 @@
 			fmsSongName: "Meowstuff",
 			lowerText: "MEOWSTUFF",
 			originalArtistText: "DAVINCE",
-		},	
+		},
 		{
 			fmsSongName: "Ninox",
 			lowerText: "NINOX",
 			originalArtistText: "MEGANEKO",
 		},
+		{
+        	fmsSongName: "Off to Mars",
+	        lowerText: "OFF TO MARS",
+        	originalArtist: "cosmicspace33",
+        	coveringArtist: ["Crafty Jumper","cosmicspace33"],
+        },
 		{
 			fmsSongName: "Power Trip",
 			lowerText: "POWER TRIP",

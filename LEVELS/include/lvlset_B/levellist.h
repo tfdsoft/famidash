@@ -25,6 +25,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// thesteamworks
 	INSANE,	// rainingtacos
 	INSANE,	// dorabaebasic10
+	INSANE,	// offtomars
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
 	INSANE,	// danceofviolins
@@ -32,8 +33,6 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// tetrix
 	INSANE,	// highlife
 	DEMON,	// infinitecircles
-	DEMON,	// decode
-	DEMON,	// clutterfunk2
 	DEMON,	// skeletalshenanigans
 };
 
@@ -61,6 +60,7 @@ const uint8_t stars_list[] = {
 	7,	// thesteamworks
 	8,	// rainingtacos
 	8,	// dorabaebasic10
+	8,	// offtomars
 	8,	// subtleoddities
 	8,	// powertrip
 	8,	// danceofviolins
@@ -68,7 +68,5 @@ const uint8_t stars_list[] = {
 	9,	// tetrix
 	9,	// highlife
 	10,	// infinitecircles
-	10,	// decode
-	10,	// clutterfunk2
 	10,	// skeletalshenanigans
 };

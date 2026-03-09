@@ -68,6 +68,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// rainbowtylenol
 	INSANE,	// greif
 	INSANE,	// dorabaebasic10
+	INSANE,	// offtomars
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
 	INSANE,	// danceofviolins
@@ -199,6 +200,7 @@ const uint8_t stars_list[] = {
 	8,	// rainbowtylenol
 	8,	// greif
 	8,	// dorabaebasic10
+	8,	// offtomars
 	8,	// subtleoddities
 	8,	// powertrip
 	8,	// danceofviolins

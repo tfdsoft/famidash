@@ -71,6 +71,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_rainbowtylenol)
 	.byte .lobyte(level_data_greif)
 	.byte .lobyte(level_data_dorabaebasic10)
+	.byte .lobyte(level_data_offtomars)
 	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_danceofviolins)
@@ -201,6 +202,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_rainbowtylenol)
 	.byte .hibyte(level_data_greif)
 	.byte .hibyte(level_data_dorabaebasic10)
+	.byte .hibyte(level_data_offtomars)
 	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_powertrip)
 	.byte .hibyte(level_data_danceofviolins)
@@ -331,6 +333,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_rainbowtylenol))
 	.byte .lobyte(.bank(level_data_greif))
 	.byte .lobyte(.bank(level_data_dorabaebasic10))
+	.byte .lobyte(.bank(level_data_offtomars))
 	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_powertrip))
 	.byte .lobyte(.bank(level_data_danceofviolins))
@@ -507,7 +510,7 @@ _level_lengths_lo:
 	.byte .lobyte($000048)		; thetower
 	.byte .lobyte($000030)		; thechallenge
 	.byte .lobyte($00006F)		; bestautomaticlvl
-	.byte .lobyte($0000A0)		; movie
+	.byte .lobyte($0000C0)		; movie
 	.byte .lobyte($000066)		; retray
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000064)		; darkparadise
@@ -548,6 +551,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B5)		; rainbowtylenol
 	.byte .lobyte($000069)		; greif
 	.byte .lobyte($000097)		; dorabaebasic10
+	.byte .lobyte($000097)		; offtomars
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
@@ -639,7 +643,7 @@ _level_lengths_md:
 	.byte .hibyte($000048)		; thetower
 	.byte .hibyte($000030)		; thechallenge
 	.byte .hibyte($00006F)		; bestautomaticlvl
-	.byte .hibyte($0000A0)		; movie
+	.byte .hibyte($0000C0)		; movie
 	.byte .hibyte($000066)		; retray
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000064)		; darkparadise
@@ -680,6 +684,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B5)		; rainbowtylenol
 	.byte .hibyte($000069)		; greif
 	.byte .hibyte($000097)		; dorabaebasic10
+	.byte .hibyte($000097)		; offtomars
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
@@ -771,7 +776,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000048)		; thetower
 	.byte .bankbyte($000030)		; thechallenge
 	.byte .bankbyte($00006F)		; bestautomaticlvl
-	.byte .bankbyte($0000A0)		; movie
+	.byte .bankbyte($0000C0)		; movie
 	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000064)		; darkparadise
@@ -812,6 +817,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B5)		; rainbowtylenol
 	.byte .bankbyte($000069)		; greif
 	.byte .bankbyte($000097)		; dorabaebasic10
+	.byte .bankbyte($000097)		; offtomars
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins

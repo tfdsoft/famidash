@@ -735,6 +735,12 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
+        	fmsSongName: "Off to Mars",
+	        lowerText: "OFF TO MARS",
+        	originalArtist: "cosmicspace33",
+        	coveringArtist: ["Crafty Jumper","cosmicspace33"],
+        },
+		{
 			fmsSongName: "okiba crackdown",
 			upperText: "OKIBA",
 			lowerText: "CRACKDOWN",

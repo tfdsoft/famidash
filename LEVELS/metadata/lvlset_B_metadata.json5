@@ -49,6 +49,25 @@
 			maxFallSpeed: 0x07,
 			parallaxDisable: false
 		},
+		/*
+		{
+            level: "movie",
+            upperText: "THE TRIPLE",
+            lowerText: "SPIKE OF DOOM",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "A",
+            sawSet: "A",
+            difficulty: "AUTO",
+            stars: 1,
+            songID: "song_stereo_madness_2",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x0F,
+            startingGroundColor: 0x0F,
+            parallaxDisable: false
+        },
+		*/
 		{
 			level: "sonar",
 			lowerText: "SONAR",
@@ -945,6 +964,45 @@
 				},
 			]
 		},
+		{ 
+			level: "offtomars",
+			lowerText: "OFF TO MARS",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_off_to_mars",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			maxFallSpeed: 0x07,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [80, 56],
+					offsetY: +8,
+				},
+				{
+					coordinates: [179, 55],
+					offsetY: -8,
+				},
+				{
+					coordinates: [
+						[195, 54],
+						[535, 11],
+						[674, 17],
+						[673, 17],
+						[786, 25],
+						[860, 54],
+						[879, 54]
+					],
+					offsetX: +8,
+				},
+			],
+		},
 		{
 			level: "subtleoddities",
 			upperText: "SUBTLE",
@@ -1070,47 +1128,6 @@
 			difficulty: "DEMON",
 			stars: 10,
 			songID: "song_infinite_power",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
-			parallaxDisable: true
-		},
-		{
-			level: "decode",
-			lowerText: "DECODE",
-			decoType: "DECOCLOUD",
-			spikeSet: "B",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_endgame",
-			startingGameMode: 0,
-			startingSpeed: 0,
-			startingBackgroundColor: 0x16,
-			startingGroundColor: 0x06,
-			parallaxDisable: true,
-			objectOffsets: [
-				{
-					coordinates: [
-						[314, 10],	[324, 10],	[330, 9],	[335, 11],	[337, 10],		//deco
-						[341, 11],	[346, 10],	[352, 10],	[360, 9],		//deco
-					],
-					offsetY: +8
-				},
-			]
-		},		
-		{
-			level: "clutterfunk2",
-			lowerText: "CLUTTERFUNK 2",
-			decoType: "DECO1",
-			spikeSet: "C",
-			blockSet: "B",
-			sawSet: "A",
-			difficulty: "DEMON",
-			stars: 10,
-			songID: "song_clutterfunk_2",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
