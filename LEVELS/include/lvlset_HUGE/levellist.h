@@ -31,7 +31,6 @@ const uint8_t difficulty_list[] = {
 	EASY,	// retray
 	EASY,	// sonar
 	EASY,	// darkparadise
-	EASY,	// madness
 	EASY,	// xmaschallenge
 	NORMAL,	// leveleasy
 	NORMAL,	// dorabaebasic4
@@ -163,7 +162,6 @@ const uint8_t stars_list[] = {
 	2,	// retray
 	2,	// sonar
 	2,	// darkparadise
-	2,	// madness
 	2,	// xmaschallenge
 	3,	// leveleasy
 	3,	// dorabaebasic4

@@ -1681,6 +1681,7 @@
 			startingGroundColor: 0x01,
 			parallaxDisable: true
 		},
+		/*
 		{
 			level: "madness",
 			lowerText: "MADNESS^",
@@ -1695,10 +1696,6 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
-			//spawnYPositionHi: 0x30,		;default #$B000
-			//spawnYPositionLow: 0x00,
-			//scrollYPositionHi: 0x02,		;default $02EF, less to go up
-			//scrollYPositionLow: 0x30,
 			maxFallSpeed: 0x07,
 			objectOffsets: [
 				{
@@ -1711,6 +1708,7 @@
 				},
 			]	
 		},
+		*/
 		{
 			level: "xmaschallenge",
 			upperText: "XMAS",

@@ -723,7 +723,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7724
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_21"	; Total bank size: 7665 bytes
 	.export level_data_rainingtacos
 	level_data_rainingtacos:
 	; Header
@@ -2424,7 +2424,7 @@
 		.incbin "EXPORTS/hi.lz.bin" ; Size: 4696
 
 
-.segment "DAT_BANK_5E"	; Total bank size: 7865 bytes
+.segment "DAT_BANK_5E"	; Total bank size: 8081 bytes
 	.export level_data_demonpark
 	level_data_demonpark:
 	; Header
@@ -2935,7 +2935,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3528
 
 
-.segment "DAT_BANK_6E"	; Total bank size: 8176 bytes
+.segment "DAT_BANK_6E"	; Total bank size: 8171 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -3377,7 +3377,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_82"	; Total bank size: 8191 bytes
+.segment "DAT_BANK_82"	; Total bank size: 8190 bytes
 	.export level_data_trythisgd_15
 	level_data_trythisgd_15:
 	; Level data
@@ -3407,32 +3407,8 @@
 	; Level data
 		.incbin "EXPORTS/trolledfix.lz.bin" ; Size: 1315
 
-	.export level_data_madness
-	level_data_madness:
-	; Header
-		.byte <sprite_data_madness ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_madness ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_madness)) ;___ Sprite data bank
-		.byte song_c_madness ;__________________ Song ID
-		.byte (0 << 4) | 0 ;____________________ Starting game mode and speed
-		.byte ($B0) ;___________________________ Spawn Y Position (high byte)
-		.byte ($00) ;___________________________ Spawn Y Position (low byte)
-		.byte ($02) ;___________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;___________________________ Y Scroll Position (low byte)
-		.byte ($07) ;___________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (0 << 1) ;_____________ Force platformer, Disable parallax
-		.byte _DECO1 ;__________________________ Deco type
-		.byte _SPIKESA ;________________________ Spike set
-		.byte _BLOCKSA ;________________________ Block set
-		.byte _SAWBLADESA ;_____________________ Sawblade set
-		.byte $12 ;_____________________________ Starting background color
-		.byte $02 ;_____________________________ Starting ground color
-		.byte 57 ;______________________________ Level height
-	; Level data
-		.incbin "EXPORTS/madness.lz.bin" ; Size: 1194
 
-
-.segment "DAT_BANK_83"	; Total bank size: 8177 bytes
+.segment "DAT_BANK_83"	; Total bank size: 7831 bytes
 	.export level_data_ultiatedestruction
 	level_data_ultiatedestruction:
 	; Header
