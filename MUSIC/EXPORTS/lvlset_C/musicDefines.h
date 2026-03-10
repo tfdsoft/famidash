@@ -23,7 +23,7 @@
 #define song_atthespeedoflight3 22
 #define song_blacklight 23
 #define song_fairydust 24
-#define song_scheming_weasel 25
-#define song_cycles 26
+#define song_cycles 25
+#define song_scheming_weasel 26
 #define song_problematic 27
 #define song_max 28
