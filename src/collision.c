@@ -1,10 +1,14 @@
 
-u8 get_metatile_at(u8 x, u16 y){
+static u8 get_metatile_at(u8 x, u16 y){
     return collision_map_0[grid16((x>>4),(y>>4))];
 }
 
 
+static u8 get_collision_at_point(u8 x, u16 y){
 
+}
+
+/*
 static void check_player_collision_x(struct Player* player){
     player->pos.x.full += player->speed.x;
     if(get_metatile_at(player->pos.x.lo,player->pos.y.word)){
@@ -24,34 +28,63 @@ static u8 check_player_collision_y(struct Player* player){
         player->speed.y = 0;
     }
     return tmp;
+}*/
+
+u8 check_collision_LR(struct Player* player, s8 extra_x){
+    u8 x = player->pos.x.lo + extra_x;
+    u16 y = player->pos.y.word;
+
+    if(get_metatile_at(x,y)) return 1;
+    if(get_metatile_at(x,y+15)) return 1;
+
+    return 0;
+}
+
+u8 check_collision_UD(struct Player* player, s8 extra_y){
+    u8 x = player->pos.x.lo;
+    u16 y = player->pos.y.word + extra_y;
+
+    if(get_metatile_at(x,y)) return 1;
+    if(get_metatile_at(x+15,y)) return 1;
+
+    return 0;
 }
 
 
-
 void move_player(struct Player* player){
-    //#define collision_byte (*(u8*)(sram_buffer+2016+30))
 
-    u8 collision_byte;
+    player->speed.y += (phys_gravity[0]>>1);
+    if(player->speed.y > 0x700) player->speed.y = 0x700;
 
-    player->speed.y += phys_gravity[0];
-    if(player->speed.y > 0x0700) player->speed.y = 0x0700;
-    //if(player->speed.y > 0) {
-    collision_byte = check_player_collision_y(player);
-        if(joypad1.a) 
-            player->speed.y = phys_jumpvel[0];
-    //}
-
+    player->pos.y.full += player->speed.y;
+    if(check_collision_UD(player, 0)){
+        player->pos.y.lo = 1+(player->pos.y.lo | 0x07);
+        player->speed.y = 0;
+    }
+    if(check_collision_UD(player, 16)){
+        player->pos.y.lo &= 0xf8;
+        player->speed.y = 0;
+    }
+    if(check_collision_UD(player, 18)){
+        if(joypad1.a) player->speed.y = phys_jumpvel[0];
+    }
     
     
+
 
     player->speed.x = 0;
-    if(joypad1.left) {
-        player->speed.x = -phys_speed[0];
+    if(joypad1.left) player->speed.x = -phys_speed[0];
+    if(joypad1.right) player->speed.x = phys_speed[0];
+    
+    player->pos.x.full += player->speed.x;
+    if(check_collision_LR(player, 0)) { // left
+        player->pos.x.word = 1+(player->pos.x.word | 0x0007);
+        player->speed.x = 0;
     }
-    if(joypad1.right) {
-        player->speed.x = phys_speed[0];
+    if(check_collision_LR(player, 15)) { // left
+        player->pos.x.lo &= 0xf8;
+        player->speed.x = 0;
     }
-    check_player_collision_x(player);
 
 
     #define left_side_scroll_bounds 0x60
