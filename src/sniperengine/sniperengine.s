@@ -1468,8 +1468,8 @@ donut_stream_ptr = $02
         iny
         clc 
         adc __rc5
-        ;clc
-        ;sbc #0
+        sec
+        sbc #1
         sta sprite_buffer+0,x
         lda (__rc2),y		;tile
         iny

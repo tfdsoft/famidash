@@ -28,6 +28,7 @@
 #include "state_menu.c"
 #include "state_game.c"
 #include "state_debug.c"
+#include "state_iconkit.c"
 
 
 
@@ -98,9 +99,12 @@ int main(void) {
             case 0x10:
                 jsrfar_noargs(startup_bank, state_menu);
                 break;
-            
+                
             case 0x14:
                 jsrfar_noargs(debug_bank, state_soundtest);
+                break;
+            case 0x16:
+                jsrfar_noargs(startup_bank, state_iconkit);
                 break;
 
             //

@@ -1,4 +1,4 @@
-void level_rle_fetch_columns(s8 count){
+banked(fixed.func) void level_rle_fetch_columns(s8 count){
     set_prg_a000(active_lvl.tile_bank);
     //y_offset %= 30; // nes nametables are 30 tiles tall
 
@@ -29,7 +29,7 @@ void level_rle_fetch_columns(s8 count){
 }
 
 
-void level_fetch_metatile_tiles(u8 column, u8 y_offset, u8 side){
+banked(fixed.func) void level_fetch_metatile_tiles(u8 column, u8 y_offset, u8 side){
 
     
     if(side) for(u8 i=0; i<15; i++){
@@ -44,7 +44,7 @@ void level_fetch_metatile_tiles(u8 column, u8 y_offset, u8 side){
     }
 }
 
-void level_draw_metatile_column(u8 column, u8 y_offset){
+banked(fixed.func) void level_draw_metatile_column(u8 column, u8 y_offset){
     column &= 0xfe;
     y_offset &= 0xfe;
     u8 y_offset_mod30 = (y_offset % 30);

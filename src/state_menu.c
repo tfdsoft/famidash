@@ -141,8 +141,7 @@ banked(startup_bank.data) const u8 menu_irq_table[] = {
     255, // end of table
 };
 
-banked(startup_bank.func)
-void state_menu() {
+banked(startup_bank.func) void state_menu() {
     unsigned char menu_color = 0x11;
     unsigned short interrupt_scroll = 0;
     unsigned short scroll_bank = 0;
@@ -246,14 +245,7 @@ void state_menu() {
     se_turn_on_rendering();
     se_fade_palette_to(0,4);
 
-    // for some reason, the compiler
-    // absolutely REFUSES to put an
-    // lda #0 before running this, so
-    // do it manually here (if song is 0)
-    //__asm__("lda #0"); 
-    //if(!famistudio_song_speed) {
     se_music_play(song_menu_theme);
-    //}
 
     
     //interrupt_scroll = 0;
@@ -284,8 +276,8 @@ void state_menu() {
 
             se_set_palette_color(0, menu_color);
             se_set_palette_color(2, menu_color-0x10);
-            se_set_palette_color(9, menu_color-0x10);
-            se_set_palette_color(10, menu_color);
+            se_set_palette_color(9, menu_color);
+            se_set_palette_color(10, menu_color+0x10);
         }
 
 
@@ -343,9 +335,10 @@ void state_menu() {
                     gamestate = 0x14;
                     break;
                 /*case 4: // help
-                    break;
-                case 5: // icon kit
                     break;*/
+                case 5: // icon kit
+                    gamestate = 0x16;
+                    break;
                 default:
                     se_sfx_play(sfx_gold01,0);
             }

@@ -31,7 +31,7 @@
 #define chr_bank_3 59
 
 #define startup_bank 60
-#define debug_bank 0
+#define debug_bank 61
 
 // menu stuff
 file(chr_menu_font_pusab, chr_bank_0) = {
@@ -54,6 +54,9 @@ file(chr_menu_famidash, chr_bank_0) = {
 }; 
 file(chr_menu_robtop, chr_bank_0) = {
     #embed "./chr/dnt/Menu_Robtop.bin"
+};    
+file(chr_menu_iconkit, chr_bank_0) = {
+    #embed "./chr/dnt/Menu_Iconkit.bin"
 };    
 
 
