@@ -10,17 +10,20 @@ banked(2) const u8 lvl_test_sprites[] = {
 
 banked(level_bank_0) const struct Level lvl_test_header = {
     /* NAME (up to 23 characters) */
-    "lmao",
+    .name = "lmao",
 
-    /* COLORS */ {
-        0x20,//background
-        0x20,//ground
+    .color = {
+        .bg = 0x20,//background
+        .g = 0x20,//ground
     },
 
-    15, // level height
+    .height = 15, // level height
 
-    (u8*)lvl_test_tiles, 2,
-    (u8*)lvl_test_sprites, 2
+    .tile_data = (u8*)lvl_test_tiles,
+    .tile_bank = 2,
+    
+    .sprite_data = (u8*)lvl_test_sprites,
+    .sprite_bank = 2
 };
 
 

@@ -1,7 +1,7 @@
 NSTssTXT
 
-BtnTiles=1
-BtnChecker=0
+BtnTiles=0
+BtnChecker=1
 BtnSelTiles=0
 BtnChrBank1=1
 BtnChrBank2=0
@@ -58,9 +58,9 @@ VarBankActive_msprBuffer=0
 VarPalBank_mapBuffer=0
 VarPalBank_msprBuffer=0
 VarTileViewTagBuf=0
-VarBgPalCur=1
-VarPalActive=2
-VarTileActive=151
+VarBgPalCur=0
+VarPalActive=0
+VarTileActive=0
 VarBankActive=0
 VarPPUMask=0
 VarPPUMaskSet0=0
@@ -80,16 +80,16 @@ VarNameViewX=0
 VarNameViewY=-1
 VarNameViewX2=0
 VarNameViewY2=-1
-VarNameSelectionL=8
+VarNameSelectionL=-1
 VarNameSelectionR=9
-VarNameSelectionT=18
-VarNameSelectionB=19
-VarNameCopyW=14
+VarNameSelectionT=-1
+VarNameSelectionB=13
+VarNameCopyW=10
 VarNameCopyH=2
-VarCHRSelectionL=7
-VarCHRSelectionR=8
-VarCHRSelectionT=9
-VarCHRSelectionB=10
+VarCHRSelectionL=0
+VarCHRSelectionR=1
+VarCHRSelectionT=0
+VarCHRSelectionB=1
 VarCHRCopyW=1
 VarCHRCopyH=1
 VarCHRCopyRect=1
@@ -175,7 +175,7 @@ RadioAutoexport_UseSubDir_NEXXT=0
 CheckAutoexport_MetatileAsBMP=0
 
 
-VarCHRSelected=00[97]0100[68]
+VarCHRSelected=0100[ff]
 
 
 Palette=000f1030000f2a39000f2738000f21310f1c21320f1122330f1223340f1324350f1324360f1526370f1627370f1928380f1829380f1b2a390f1b2b3c0f1c2c3b
@@ -193,22 +193,22 @@ CHRUndo=00[10]ff[8]00[10]ff[18]00[10]ff[8]3c66[4]3c18ff[9]3c66[4]3c18[2]ff[8]00f
 CHRCopy=4143[2]41[2]407f003e3c[2]3e[2]3f00[3]c03008f4[2]f27200[2]c0f008e82cac4e4f2f[2]100c0300353417100f0300[2]72f2f4[2]0830c000ac2ce808f0c000[4]3e[3]ff[3]00[3]1c[3]7f[2]00[2]03[3]df[3]00[3]01[3]8f[2]00[2]f8[3]ff[3]00[3]f0[3]fe[2]00[3]1f[3]ff[2]00[4]0e[3]7e00[3]ff[4]3f00[4]7f[2]1e[2]00[3]fc[2]ff[2]7f00[4]f8[2]3e[2]ff[4]81[3]ff007e[6]00[4]f8[4]00[5]f0[2]00[5]f8[2]ff[3]00[4]70[2]7e[2]4143[3]41[3]7f3e3c[2]3e[3]3f00ff[4]81[4]7e7f[3]7e[4]f8[5]00[4]f0[3]00[4]ff[3]808382[3]7e7f[3]7c[4]ff[3]01c141[2]713efe[3]3e[3]0eff[4]8382[3]7f[4]7c[4]ff[4]81[3]f18ffe[3]7e[3]0eff[2]7f[2]41[4]fe3e[7]ff[4]81[4]7e[8]3f[4]21[3]201e[7]1f7f[4]41[2]c1073e[7]f8ff[3]80ff0003027e7f[3]00[3]01ff[3]0181[3]0f00fe[3]7e[3]f0ff[3]8081[3]f17e[2]7f[2]7e[3]0eff[3]0181[3]f17e[2]fe[2]7e[3]0e81[2]f111[2]1f00[2]7e[2]0e[3]00[3]e0f8feff[2]fef8e00060787e[2]78600082[2]f2121e00[3]7c[2]0c[2]00[4]11[2]1f00[5]0e[2]00[6]829e90[2]f000[3]7c60[3]00[4]111f00[6]0e00[7]41[4]4f48[2]783e[4]30[3]00818f88[2]f800[3]7e70[3]00[4]20[2]38080f00[3]1f[2]07[2]00[4]04[2]3c20e000[3]f8[2]c0[2]00[4]02[2]0300[5]01[2]00[6]08[2]f800[5]f0[2]00[6]11[2]1f00[5]0e[2]00[6]82c2[3]82[3]fe7c3c[2]7c[3]fc00[3d61]
 
 
-NameTable=01[40]03[2]0e0f108500[1a]02[2]1e1f8e00[1b]0e0f8e8400[17]309000[3]1e1f8500[1d]108e00[a]555345524e414d4500[7]309100[3]8400[3a]309200[2c]81828384[8]83828100[4]309300[29]a0a1a2a3a4a5a6a7a8a900[16]b0b1b2b3b4b5b6b7b8b900[37]8c80[10]8d00[e]80c0c194959495949594959495949594958000[b]88890080d0d1969796979697969796979697969780008a8b00[8]989900809495949594959495949594959495949580009a9b00[b]80969796979697969796979697969796978000[e]9c80[10]9d00[27]86[20]109e00[1c]9f100e0f8500[1a]870e0f1e1f9e8600[18]869f1e1f03[2]0e0f9e00[16]9f0e0f03[2]02[2]1e1f108500[14]87101e1f02[2]01[40]
+NameTable=01[40]03[2]0e0f108500[1a]02[2]1e1f8e00[1b]0e0f8e8400[17]309000[3]1e1f8500[1d]108e00[a]555345524e414d4500[7]309100[3]8400[3a]309200[2c]81828384[8]83828100[4]309300[2b]a0a1a2a3a4a5a6a7a8a9aaabacadaeaf00[10]b0b1b2b3b4b5b6b7b8b9babbbcbdbebf00[2f]8c80[10]8d00[e]80c0c180[f]00[b]88890080d0d180[f]008a8b00[8]98990080[12]009a9b00[b]80[12]00[e]9c80[10]9d00[27]86[20]109e00[1c]9f100e0f8500[1a]870e0f1e1f9e8600[18]869f1e1f03[2]0e0f9e00[16]9f0e0f03[2]02[2]1e1f108500[14]87101e1f02[2]01[40]
 
 
-NameCopy=9495949594959495949594959495969796979697969796979697969700[2]a2a300[2]a6a7a8a9a2a3aaabac[2]00[3]80[3]00[1d]554e4f46[2]494349414c0044454d414b4500[3]8000[2]460047454f4d45545259004441534800464f5200[6]5448450046414d49434f4d2f4e455300425900[c]544644534f46543a00[25]4e4950455200[3]4649435553484f555345504c414e5400[2]574f4e545500[a]56494b52494e4f5800[2]55534800[b]5a454e49544833303200[2]4f57494e4750524f00[7]4a524f5745424f5900[2]59004a554d50455200[5]454c414e47454c33373800[2]4e005900[f]4a41455a5500[3]4441574e00[8]4e455244424f5936323800[32]414e44004d414e592c004d414e59004f54484552532e00[201]
+NameCopy=a0a1a2a3a4a5a6a7a8a9b0b1b2b3b4b5b6b7b8b9969796979697969700[2]a2a300[2]a6a7a8a9a2a3aaabac[2]00[3]80[3]00[1d]554e4f46[2]494349414c0044454d414b4500[3]8000[2]460047454f4d45545259004441534800464f5200[6]5448450046414d49434f4d2f4e455300425900[c]544644534f46543a00[25]4e4950455200[3]4649435553484f555345504c414e5400[2]574f4e545500[a]56494b52494e4f5800[2]55534800[b]5a454e49544833303200[2]4f57494e4750524f00[7]4a524f5745424f5900[2]59004a554d50455200[5]454c414e47454c33373800[2]4e005900[f]4a41455a5500[3]4441574e00[8]4e455244424f5936323800[32]414e44004d414e592c004d414e59004f54484552532e00[201]
 
 
-NameUndo=01[40]03[2]0e0f108500[1a]02[2]1e1f8e00[1b]0e0f8e8400[17]309000[3]1e1f8500[1d]108e00[a]555345524e414d4500[7]309100[3]8400[3a]309200[2c]81828384[8]83828100[4]309300[29]a0a1a2a3a4a5a6a7a8a900[16]b0b1b2b3b4b5b6b7b8b900[37]8c80[10]8d00[e]80c0c194959495949594959495949594958000[b]88890080d0d1969796979697969796979697969780008a8b00[8]989900809495949594959495949594959495949580009a9b00[b]80969796979697969796979697969796978000[e]9c80[10]9d00[27]86[20]109e00[1c]9f100e0f8500[1a]870e0f1e1f9e8600[18]869f1e1f03[2]0e0f9e00[16]9f0e0f03[2]02[2]1e1f108500[14]87101e1f02[2]01[40]
+NameUndo=01[40]03[2]0e0f108500[1a]02[2]1e1f8e00[1b]0e0f8e8400[17]309000[3]1e1f8500[1d]108e00[a]555345524e414d4500[7]309100[3]8400[3a]309200[2c]81828384[8]83828100[4]309300[2b]a0a1a2a3a4a5a6a7a8a9aaabacadaeaf00[10]b0b1b2b3b4b5b6b7b8b9babbbcbdbebf00[2f]8c80[10]8d00[e]80c0c180[f]00[b]88890080d0d180[f]008a8b00[8]98990080[12]009a9b00[b]80[12]00[e]9c80[10]9d00[27]86[20]109e00[1c]9f100e0f8500[1a]870e0f1e1f9e8600[18]869f1e1f03[2]0e0f9e00[16]9f0e0f03[2]02[2]1e1f108500[14]87101e1f02[2]01[40]
 
 
-AttrTable=703000[6]3100[6]3200[7]02000c00[7]11a8aa[3]44003000[6]c0713000[4]c0d400[8]
+AttrTable=703000[6]3100[6]3200[7]0200[9]1100[4]44003000[6]c0713000[4]c0d400[8]
 
 
-AttrCopy=02[1c]00[6]01000100010001000100[15]
+AttrCopy=03[2]00[8]03[2]00[8]02[8]00[6]01000100010001000100[15]
 
 
-AttrUndo=703000[6]3100[6]3200[7]02000c00[7]11a8aa[3]44003000[6]c0713000[4]c0d400[8]
+AttrUndo=703000[6]3100[6]3200[7]0200[2]0300[6]1100[4]44003000[6]c0713000[4]c0d400[8]
 
 
 MetaSprites=ff[10000]
@@ -357,14 +357,14 @@ MetatileSet_8x8_props=00[2000]
 MetatileSet_8x8_propsUndo=00[2000]
 
 
-MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-MetatileSetLabels_8x8=Unlabeled,Unlabeled
-MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
+MetatileSetLabels_8x8=Unlabeled,Unlabeled
+MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
 
 CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
@@ -538,18 +538,18 @@ Checkpoint_MetatileSet_8x8_props=00[2000]
 Checkpoint_MetatileSet_8x8_propsUndo=00[2000]
 
 
-Checkpoint_MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-Checkpoint_MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_2x2=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_2x2Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-Checkpoint_MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
-Checkpoint_MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_4x4=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_4x4Undo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-Checkpoint_MetatileSetLabels_8x8=Unlabeled,Unlabeled
-Checkpoint_MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_8x8=Unlabeled,Unlabeled
+Checkpoint_MetatileSetLabels_8x8Undo=Unlabeled,Unlabeled
 
-Checkpoint_CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_CHRBankLabels=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
-Checkpoint_CHRBankLabelsUndo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
+Checkpoint_CHRBankLabelsUndo=Unlabeled,Unlabeled,Unlabeled,Unlabeled
 
 
 Checkpoint_32_NTSC_MsprDuration=00000006[100]

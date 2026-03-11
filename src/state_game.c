@@ -89,8 +89,8 @@ banked(fixed.func) void state_game() {
         se_draw_sprite(
             8+(Player.pos.x.word - Camera.x.word),
             (Player.pos.y.word - Camera.y.word),
-            4,
-            0x40
+            6,
+            0
         );
 
 
