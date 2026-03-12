@@ -9,6 +9,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
+	.byte .lobyte(level_data_respite)
 	.byte .lobyte(level_data_goldenhaze)
 	.byte .lobyte(level_data_gameover)
 	.byte .lobyte(level_data_explorers)
@@ -36,6 +37,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
+	.byte .hibyte(level_data_respite)
 	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_gameover)
 	.byte .hibyte(level_data_explorers)
@@ -63,6 +65,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
+	.byte .lobyte(.bank(level_data_respite))
 	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_gameover))
 	.byte .lobyte(.bank(level_data_explorers))
@@ -111,6 +114,7 @@ _level_lengths_lo:
 	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
+	.byte .lobyte($0000D0)		; respite
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($000078)		; gameover
 	.byte .lobyte($000050)		; explorers
@@ -140,6 +144,7 @@ _level_lengths_md:
 	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
+	.byte .hibyte($0000D0)		; respite
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($000078)		; gameover
 	.byte .hibyte($000050)		; explorers
@@ -169,6 +174,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
+	.byte .bankbyte($0000D0)		; respite
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($000078)		; gameover
 	.byte .bankbyte($000050)		; explorers

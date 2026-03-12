@@ -327,6 +327,12 @@
 		},
 		*/
 		{
+			fmsSongName: "Careless",
+			lowerText: "CARELESS",
+			originalArtist: "SpazeMusic",
+			coveringArtist: "ElAngel378",
+		},
+		{
 			fmsSongName: "ChaozFantasy",
 			lowerText: "CHAOZ FANTASY",
 			originalArtist: "ParagonX9",

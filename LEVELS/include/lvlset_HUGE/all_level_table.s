@@ -92,6 +92,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_endorphinrush)
+	.byte .lobyte(level_data_respite)
 	.byte .lobyte(level_data_everymadness)
 	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_trythisgd)
@@ -222,6 +223,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_endorphinrush)
+	.byte .hibyte(level_data_respite)
 	.byte .hibyte(level_data_everymadness)
 	.byte .hibyte(level_data_skeletalshenanigans)
 	.byte .hibyte(level_data_trythisgd)
@@ -352,6 +354,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_endorphinrush))
+	.byte .lobyte(.bank(level_data_respite))
 	.byte .lobyte(.bank(level_data_everymadness))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 	.byte .lobyte(.bank(level_data_trythisgd))
@@ -569,6 +572,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($00008B)		; endorphinrush
+	.byte .lobyte($0000D0)		; respite
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($0000D4)		; trythisgd
@@ -701,6 +705,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($00008B)		; endorphinrush
+	.byte .hibyte($0000D0)		; respite
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($0000D4)		; trythisgd
@@ -833,6 +838,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($00008B)		; endorphinrush
+	.byte .bankbyte($0000D0)		; respite
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($0000D4)		; trythisgd

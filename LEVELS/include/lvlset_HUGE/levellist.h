@@ -89,6 +89,7 @@ const uint8_t difficulty_list[] = {
 	EASYDEMON,	// motion
 	EASYDEMON,	// speedracer
 	EASYDEMON,	// endorphinrush
+	EASYDEMON,	// respite
 	EASYDEMON,	// everymadness
 	MEDIUMDEMON,	// skeletalshenanigans
 	MEDIUMDEMON,	// trythisgd
@@ -220,6 +221,7 @@ const uint8_t stars_list[] = {
 	10,	// motion
 	10,	// speedracer
 	10,	// endorphinrush
+	10,	// respite
 	10,	// everymadness
 	10,	// skeletalshenanigans
 	10,	// trythisgd
