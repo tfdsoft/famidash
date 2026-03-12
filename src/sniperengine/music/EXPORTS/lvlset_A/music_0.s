@@ -362,19 +362,23 @@ music_data_famidash_music0:
 	.byte $c2,$03,$c1,$03,$c0,$03,$c1,$02,$c1,$00,$00
 
 @samples:
-	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$42,$0f,$00,$00 ; 00 023 SEUT - Kick (Pitch:15)
-	.byte $23+.lobyte(FAMISTUDIO_DPCM_PTR),$24,$0f,$40,$00 ; 01 Drums (Pitch:15)
-	.byte $3f+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0f,$40,$00 ; 02 every end clap (Pitch:15)
-	.byte $55+.lobyte(FAMISTUDIO_DPCM_PTR),$34,$0f,$40,$00 ; 03 gdmt kick (Pitch:15)
-	.byte $62+.lobyte(FAMISTUDIO_DPCM_PTR),$23,$0f,$40,$00 ; 04 gdmt snare (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$2a,$0f,$40,$00 ; 05 practice kick (Pitch:15)
-	.byte $33+.lobyte(FAMISTUDIO_DPCM_PTR),$30,$0f,$00,$00 ; 06 stereo madness snare (Pitch:15)
-	.byte $6b+.lobyte(FAMISTUDIO_DPCM_PTR),$73,$0f,$40,$00 ; 07 VEC2 Snares 038 (Pitch:15)
-	.byte $88+.lobyte(FAMISTUDIO_DPCM_PTR),$50,$0f,$40,$00 ; 08 VEH1 Hard Kick - (Pitch:15)
-	.byte $9c+.lobyte(FAMISTUDIO_DPCM_PTR),$3a,$0f,$40,$00 ; 09 VEH1 Hard Kick - 1 (Pitch:15)
-	.byte $4a+.lobyte(FAMISTUDIO_DPCM_PTR),$2c,$0f,$40,$00 ; 0a VEH1 Snares & Claps (Pitch:15)
-	.byte $2c+.lobyte(FAMISTUDIO_DPCM_PTR),$1c,$0f,$7e,$00 ; 0b VEH2 Houseloops  (Pitch:15)
-	.byte $0b+.lobyte(FAMISTUDIO_DPCM_PTR),$1a,$0f,$00,$00 ; 0c VEH2_Fill_Ins_-_ (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$42,$0f,$00,$00 ; 00 023 SEUT - Kick (Pitch:15)
+	.byte $07+.lobyte(FAMISTUDIO_DPCM_PTR),$24,$0f,$40,$02 ; 01 Drums (Pitch:15)
+	.byte $11+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0f,$40,$00 ; 02 every end clap (Pitch:15)
+	.byte $1c+.lobyte(FAMISTUDIO_DPCM_PTR),$34,$0f,$40,$00 ; 03 gdmt kick (Pitch:15)
+	.byte $1c+.lobyte(FAMISTUDIO_DPCM_PTR),$23,$0f,$40,$02 ; 04 gdmt snare (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$2a,$0f,$40,$03 ; 05 practice kick (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$01 ; 06 slhsmp1 (Pitch:15)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$01 ; 07 slhsmp2 (Pitch:15)
+	.byte $25+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$02 ; 08 slhsmp3 (Pitch:15)
+	.byte $29+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$00 ; 09 slhsmp4 (Pitch:15)
+	.byte $10+.lobyte(FAMISTUDIO_DPCM_PTR),$30,$0f,$00,$02 ; 0a stereo madness snare (Pitch:15)
+	.byte $69+.lobyte(FAMISTUDIO_DPCM_PTR),$1f,$0f,$40,$00 ; 0b VEC2 Snares 038 (Pitch:15)
+	.byte $1d+.lobyte(FAMISTUDIO_DPCM_PTR),$40,$0f,$40,$03 ; 0c VEH1 Hard Kick - (Pitch:15)
+	.byte $71+.lobyte(FAMISTUDIO_DPCM_PTR),$3a,$0f,$40,$00 ; 0d VEH1 Hard Kick - 1 (Pitch:15)
+	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$2c,$0f,$40,$03 ; 0e VEH1 Snares & Claps (Pitch:15)
+	.byte $0b+.lobyte(FAMISTUDIO_DPCM_PTR),$1c,$0f,$7e,$03 ; 0f VEH2 Houseloops  (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$1a,$0f,$00,$02 ; 10 VEH2_Fill_Ins_-_ (Pitch:15)
 
 @song0ch0:
 	.byte $46, $03, $8e
@@ -670,7 +674,7 @@ music_data_famidash_music0:
 	.byte $14, $81, $00, $81, $20, $85, $86, $18, $85, $80, $20, $85, $44, $00
 @song0ch4:
 @song0ref1163:
-	.byte $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d
+	.byte $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d
 	.byte $41, $16
 	.word @song0ref1163
 	.byte $41, $16
@@ -687,7 +691,7 @@ music_data_famidash_music0:
 	.word @song0ref1163
 	.byte $41, $16
 	.word @song0ref1163
-	.byte $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $9d, $0a, $9d
+	.byte $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $9d, $0e, $9d
 	.byte $41, $16
 	.word @song0ref1163
 	.byte $41, $16
@@ -710,10 +714,10 @@ music_data_famidash_music0:
 	.word @song0ref1163
 	.byte $41, $16
 	.word @song0ref1163
-	.byte $0a, $8d, $0a, $8d, $0a, $8d, $0a, $8d, $0a, $bd
+	.byte $0e, $8d, $0e, $8d, $0e, $8d, $0e, $8d, $0e, $bd
 	.byte $41, $16
 	.word @song0ref1163
-	.byte $0a, $8d, $0a, $bd, $44, $00
+	.byte $0e, $8d, $0e, $bd, $44, $00
 @song0ch5:
 	.byte $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $51, $fa, $00, $80, $1b, $9d, $9f, $00, $bd, $ff, $ff, $ff, $ff, $ff, $7f, $92
 @song0ref1306:
@@ -1161,21 +1165,21 @@ music_data_famidash_music0:
 	.byte $8a, $1e, $99, $45, $81, $44, $00
 @song1ch4:
 @song1ref392:
-	.byte $09, $85, $08, $89, $09, $81, $08, $81, $09, $81, $09, $85, $08, $85, $09, $81, $09, $81, $08, $81, $09, $81, $09, $85
-	.byte $08, $89, $09, $81, $08, $81, $09, $81, $09, $85, $08, $85, $09, $81, $09, $81, $08, $81, $09, $81
+	.byte $0d, $85, $0c, $89, $0d, $81, $0c, $81, $0d, $81, $0d, $85, $0c, $85, $0d, $81, $0d, $81, $0c, $81, $0d, $81, $0d, $85
+	.byte $0c, $89, $0d, $81, $0c, $81, $0d, $81, $0d, $85, $0c, $85, $0d, $81, $0d, $81, $0c, $81, $0d, $81
 	.byte $41, $2c
 	.word @song1ref392
 	.byte $41, $2a
 	.word @song1ref392
-	.byte $08, $08
+	.byte $0c, $0c
 	.byte $41, $2c
 	.word @song1ref392
 	.byte $41, $2c
 	.word @song1ref392
 	.byte $00, $bd
 @song1ref452:
-	.byte $09, $85, $09, $85, $09, $85, $09, $85, $09, $85, $09, $85, $09, $85, $09, $85, $09, $85, $09, $85, $09, $85, $09, $85
-	.byte $09, $85, $09, $85, $09, $85, $09, $85
+	.byte $0d, $85, $0d, $85, $0d, $85, $0d, $85, $0d, $85, $0d, $85, $0d, $85, $0d, $85, $0d, $85, $0d, $85, $0d, $85, $0d, $85
+	.byte $0d, $85, $0d, $85, $0d, $85, $0d, $85
 	.byte $41, $20
 	.word @song1ref452
 	.byte $41, $20
@@ -1403,5 +1407,5 @@ music_data_famidash_music0:
 	.word @song2ch1loop
 @song2ch4:
 @song2ch4loop:
-	.byte $03, $0b, $0c, $0d, $06, $07, $01, $02, $04, $05, $00, $89, $9f, $42
+	.byte $03, $0e, $0f, $10, $11, $01, $04, $05, $0d, $0c, $07, $08, $09, $0a, $06, $0b, $01, $02, $00, $99, $42
 	.word @song2ch4loop

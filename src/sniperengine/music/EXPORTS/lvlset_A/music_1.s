@@ -229,103 +229,103 @@ music_data_famidash_music1:
 .global FAMISTUDIO_DPCM_PTR
 
 @instruments:
-	.word @env25,@env5,@env18,@env0 ; 00 : SIM Kick (DMC)
-	.word @env20,@env5,@env18,@env0 ; 01 : VEH2 Houseloops - 060 (DMC)
-	.word @env6,@env1,@env18,@env0 ; 02 : VEH2_Fill_Ins_-_34 (DMC)
-	.word @env13,@env2,@env18,@env0 ; 03 : gdmt kick (DMC)
-	.word @env15,@env14,@env18,@env0 ; 04 : gdmt snare (DMC)
-	.word @env8,@env10,@env18,@env0 ; 05 : infernoplex_piano
-	.word @env23,@env16,@env18,@env0 ; 06 : EE clap (DMC)
-	.word @env7,@env10,@env18,@env0 ; 07 : blank
+	.word @env27,@env5,@env19,@env0 ; 00 : SIM Kick (DMC)
+	.word @env21,@env5,@env19,@env0 ; 01 : VEH2 Houseloops - 060 (DMC)
+	.word @env6,@env1,@env19,@env0 ; 02 : VEH2_Fill_Ins_-_34 (DMC)
+	.word @env14,@env2,@env19,@env0 ; 03 : gdmt kick (DMC)
+	.word @env16,@env15,@env19,@env0 ; 04 : gdmt snare (DMC)
+	.word @env8,@env11,@env19,@env0 ; 05 : infernoplex_piano
+	.word @env24,@env17,@env19,@env0 ; 06 : EE clap (DMC)
+	.word @env7,@env11,@env19,@env0 ; 07 : blank
 
 @instruments_exp:
-	.word @env11, @env10, @env0 ; 00 : epsm hihat (PSG)
-	.word @env21, @env10
+	.word @env12, @env11, @env0 ; 00 : epsm hihat (PSG)
+	.word @env22, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch0
-	.word @env17, @env10, @env0 ; 01 : epsm open ding (PSG)
-	.word @env21, @env10
+	.word @env18, @env11, @env0 ; 01 : epsm open ding (PSG)
+	.word @env22, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch1
-	.word @env7, @env10, @env0 ; 02 : SIM ding 2 (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 02 : SIM ding 2 (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch9
-	.word @env7, @env10, @env0 ; 03 : epsm noise (PSG)
-	.word @env21, @env10
+	.word @env7, @env11, @env0 ; 03 : epsm noise (PSG)
+	.word @env22, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch10
-	.word @env7, @env10, @env0 ; 04 : SIM Synth (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 04 : SIM Synth (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch11
-	.word @env7, @env10, @env0 ; 05 : SIM practice thingy (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 05 : SIM practice thingy (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch13
-	.word @env7, @env10, @env0 ; 06 : bass (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 06 : bass (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch14
-	.word @env24, @env10, @env0 ; 07 : tambourine (PSG)
-	.word @env21, @env10
+	.word @env26, @env11, @env0 ; 07 : tambourine (PSG)
+	.word @env22, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch15
-	.word @env7, @env10, @env0 ; 08 : FAMIDASH BASS (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 08 : FAMIDASH BASS (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch16
 	.word @env7, @env4, @env0 ; 09 : arp (FM)
-	.word @env22, @env10
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch17
-	.word @env7, @env10, @env0 ; 0a : Instrument 1
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 0a : Instrument 1
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch18
-	.word @env7, @env10, @env0 ; 0b : saw (FM) 2
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 0b : saw (FM) 2
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch19
-	.word @env7, @env10, @env0 ; 0c : saw (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 0c : saw (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch20
-	.word @env7, @env10, @env0 ; 0d : SIM Bass (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 0d : SIM Bass (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch21
-	.word @env7, @env10, @env0 ; 0e : randomsynth (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 0e : randomsynth (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch22
-	.word @env3, @env10, @env0 ; 0f : sine (FM)
-	.word @env22, @env10
+	.word @env3, @env11, @env0 ; 0f : sine (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch23
-	.word @env7, @env10, @env0 ; 10 : pluck (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 10 : pluck (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch24
-	.word @env7, @env10, @env0 ; 11 : bass2 (FM)
-	.word @env22, @env10
+	.word @env7, @env11, @env0 ; 11 : bass2 (FM)
+	.word @env23, @env11
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch25
@@ -386,54 +386,65 @@ music_data_famidash_music1:
 @env8:
 	.byte $00,$ce,$02,$cd,$cd,$cc,$cc,$cb,$cb,$ca,$c9,$c9,$c8,$c7,$c6,$c5,$c3,$c2,$c1,$00,$12
 @env9:
-	.byte $00,$cb,$c7,$c5,$c3,$c2,$02,$c1,$05,$c0,$00,$09
+	.byte $00,$cb,$c8,$c6,$c5,$c4,$c3,$c2,$c1,$c0,$00,$09
 @env10:
-	.byte $c0,$7f,$00,$01
+	.byte $00,$cb,$c7,$c5,$c3,$c2,$02,$c1,$05,$c0,$00,$09
 @env11:
-	.byte $00,$cf,$ce,$cc,$c0,$00,$04
+	.byte $c0,$7f,$00,$01
 @env12:
-	.byte $00,$c9,$c6,$c4,$c2,$c1,$c0,$00,$06
+	.byte $00,$cf,$ce,$cc,$c0,$00,$04
 @env13:
-	.byte $00,$c3,$c1,$c1,$c0,$00,$04
+	.byte $00,$c9,$c6,$c4,$c2,$c1,$c0,$00,$06
 @env14:
-	.byte $c6,$cb,$00,$01
+	.byte $00,$c3,$c1,$c1,$c0,$00,$04
 @env15:
-	.byte $00,$c6,$c3,$c2,$c1,$c1,$c0,$00,$06
+	.byte $c6,$cb,$00,$01
 @env16:
-	.byte $c6,$cd,$00,$01
+	.byte $00,$c6,$c3,$c2,$c1,$c1,$c0,$00,$06
 @env17:
-	.byte $00,$cf,$ce,$ce,$cd,$cc,$cb,$ca,$c9,$c8,$c7,$c6,$c5,$c4,$c3,$c2,$c1,$c0,$00,$11
+	.byte $c6,$cd,$00,$01
 @env18:
-	.byte $7f,$00,$00
+	.byte $00,$cf,$ce,$ce,$cd,$cc,$cb,$ca,$c9,$c8,$c7,$c6,$c5,$c4,$c3,$c2,$c1,$c0,$00,$11
 @env19:
-	.byte $b6,$ba,$00,$01
+	.byte $7f,$00,$00
 @env20:
-	.byte $00,$c8,$c2,$c1,$c0,$00,$04
+	.byte $b6,$ba,$00,$01
 @env21:
-	.byte $c1,$7f,$00,$00
+	.byte $00,$c8,$c2,$c1,$c0,$00,$04
 @env22:
-	.byte $c8,$7f,$00,$00
+	.byte $c1,$7f,$00,$00
 @env23:
-	.byte $00,$ca,$c7,$c5,$c3,$c2,$c1,$c1,$c0,$00,$08
+	.byte $c8,$7f,$00,$00
 @env24:
-	.byte $00,$cf,$cc,$c0,$00,$03
+	.byte $00,$ca,$c7,$c5,$c3,$c2,$c1,$c1,$c0,$00,$08
 @env25:
-	.byte $00,$c9,$c4,$c1,$c0,$00,$04
+	.byte $be,$c1,$c0,$00,$02
 @env26:
+	.byte $00,$cf,$cc,$c0,$00,$03
+@env27:
+	.byte $00,$c9,$c4,$c1,$c0,$00,$04
+@env28:
 	.byte $00,$cb,$c0,$c5,$c4,$c3,$02,$c2,$c0,$00,$08
 
 @samples:
-	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$42,$0f,$00,$00 ; 00 023 SEUT - Kick (Pitch:15)
-	.byte $23+.lobyte(FAMISTUDIO_DPCM_PTR),$24,$0f,$40,$00 ; 01 Drums (Pitch:15)
-	.byte $3f+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0f,$40,$00 ; 02 every end clap (Pitch:15)
-	.byte $55+.lobyte(FAMISTUDIO_DPCM_PTR),$34,$0f,$40,$00 ; 03 gdmt kick (Pitch:15)
-	.byte $62+.lobyte(FAMISTUDIO_DPCM_PTR),$23,$0f,$40,$00 ; 04 gdmt snare (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$2a,$0f,$40,$00 ; 05 practice kick (Pitch:15)
-	.byte $33+.lobyte(FAMISTUDIO_DPCM_PTR),$30,$0f,$00,$00 ; 06 stereo madness snare (Pitch:15)
-	.byte $4a+.lobyte(FAMISTUDIO_DPCM_PTR),$2c,$0f,$40,$00 ; 07 VEH1 Snares & Claps (Pitch:15)
-	.byte $2c+.lobyte(FAMISTUDIO_DPCM_PTR),$1c,$0f,$7e,$00 ; 08 VEH2 Houseloops  (Pitch:15)
-	.byte $0b+.lobyte(FAMISTUDIO_DPCM_PTR),$1a,$0e,$00,$00 ; 09 VEH2_Fill_Ins_-_ (Pitch:14)
-	.byte $0b+.lobyte(FAMISTUDIO_DPCM_PTR),$1a,$0f,$00,$00 ; 0a VEH2_Fill_Ins_-_ (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$42,$0f,$00,$00 ; 00 023 SEUT - Kick (Pitch:15)
+	.byte $07+.lobyte(FAMISTUDIO_DPCM_PTR),$24,$0f,$40,$02 ; 01 Drums (Pitch:15)
+	.byte $11+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0f,$40,$00 ; 02 every end clap (Pitch:15)
+	.byte $1c+.lobyte(FAMISTUDIO_DPCM_PTR),$34,$0f,$40,$00 ; 03 gdmt kick (Pitch:15)
+	.byte $1c+.lobyte(FAMISTUDIO_DPCM_PTR),$23,$0f,$40,$02 ; 04 gdmt snare (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$2a,$0f,$40,$03 ; 05 practice kick (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$01 ; 06 slhsmp1 (Pitch:15)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$01 ; 07 slhsmp2 (Pitch:15)
+	.byte $25+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$02 ; 08 slhsmp3 (Pitch:15)
+	.byte $29+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$00 ; 09 slhsmp4 (Pitch:15)
+	.byte $10+.lobyte(FAMISTUDIO_DPCM_PTR),$30,$0f,$00,$02 ; 0a stereo madness snare (Pitch:15)
+	.byte $69+.lobyte(FAMISTUDIO_DPCM_PTR),$1f,$0f,$40,$00 ; 0b VEC2 Snares 038 (Pitch:15)
+	.byte $1d+.lobyte(FAMISTUDIO_DPCM_PTR),$40,$0f,$40,$03 ; 0c VEH1 Hard Kick - (Pitch:15)
+	.byte $71+.lobyte(FAMISTUDIO_DPCM_PTR),$3a,$0f,$40,$00 ; 0d VEH1 Hard Kick - 1 (Pitch:15)
+	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$2c,$0f,$40,$03 ; 0e VEH1 Snares & Claps (Pitch:15)
+	.byte $0b+.lobyte(FAMISTUDIO_DPCM_PTR),$1c,$0f,$7e,$03 ; 0f VEH2 Houseloops  (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$1a,$0e,$00,$02 ; 10 VEH2_Fill_Ins_-_ (Pitch:14)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$1a,$0f,$00,$02 ; 11 VEH2_Fill_Ins_-_ (Pitch:15)
 
 @song0ch0:
 	.byte $46, $08
@@ -960,10 +971,10 @@ music_data_famidash_music1:
 	.byte $06, $8d, $06, $8d, $06, $8d, $06, $8d, $06, $8d, $06, $8d, $06, $8d, $06, $8d, $06, $8d, $06, $8d, $06, $8d, $06, $8d
 	.byte $06, $8d, $06, $8d, $06, $8d, $06, $8d, $06
 @song1ref299:
-	.byte $9d, $0b, $85, $0a, $85, $0b, $81, $0b, $81, $0a, $81, $0b, $81
+	.byte $9d, $12, $85, $11, $85, $12, $81, $12, $81, $11, $81, $12, $81
 @song1ref312:
-	.byte $06, $8d, $09, $89, $0b, $81, $06, $8d, $09, $8d, $06, $8d, $09, $89, $0b, $81, $06, $81, $0b, $89, $09, $8d, $06, $8d
-	.byte $09, $89, $0b, $81, $06, $8d, $09, $8d, $06, $8d, $09, $89, $0b, $81, $06, $81, $0b, $89, $09, $8d
+	.byte $06, $8d, $10, $89, $12, $81, $06, $8d, $10, $8d, $06, $8d, $10, $89, $12, $81, $06, $81, $12, $89, $10, $8d, $06, $8d
+	.byte $10, $89, $12, $81, $06, $8d, $10, $8d, $06, $8d, $10, $89, $12, $81, $06, $81, $12, $89, $10, $8d
 	.byte $41, $2c
 	.word @song1ref312
 	.byte $41, $2c
@@ -986,7 +997,7 @@ music_data_famidash_music1:
 	.word @song1ref312
 	.byte $41, $21
 	.word @song1ref312
-	.byte $9d, $0b, $85, $0a, $85, $0b, $81, $0b, $81, $0a, $81, $0b, $81, $00, $85, $42
+	.byte $9d, $12, $85, $11, $85, $12, $81, $12, $81, $11, $81, $12, $81, $00, $85, $42
 	.word @song1ch4loop
 @song1ch5:
 @song1ch5loop:
@@ -1648,5 +1659,5 @@ music_data_famidash_music1:
 	.word @song3ch1loop
 @song3ch4:
 @song3ch4loop:
-	.byte $03, $08, $09, $0b, $06, $07, $01, $02, $04, $05, $00, $89, $9f, $42
+	.byte $03, $0e, $0f, $10, $12, $01, $04, $05, $0d, $0c, $07, $08, $09, $0a, $06, $0b, $01, $02, $00, $99, $42
 	.word @song3ch4loop

@@ -333,112 +333,112 @@ music_data_famidash_music3:
 .global FAMISTUDIO_DPCM_PTR
 
 @instruments:
-	.word @env13,@env19,@env18,@env0 ; 00 : time machine snare (DMC)
-	.word @env10,@env15,@env18,@env0 ; 01 : stereo madness snare (DMC)
+	.word @env14,@env20,@env19,@env0 ; 00 : time machine snare (DMC)
+	.word @env11,@env16,@env19,@env0 ; 01 : stereo madness snare (DMC)
 
 @instruments_exp:
-	.word @env1, @env11, @env0 ; 00 : 001 SEUT - Hi Hat (PSG)
-	.word @env21, @env11
+	.word @env1, @env12, @env0 ; 00 : 001 SEUT - Hi Hat (PSG)
+	.word @env22, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch0
-	.word @env8, @env11, @env0 ; 01 : D2 HH2-015 (PSG)
-	.word @env21, @env9
+	.word @env8, @env12, @env0 ; 01 : D2 HH2-015 (PSG)
+	.word @env22, @env10
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch1
-	.word @env22, @env11, @env0 ; 02 : 006 SEUT - Hi Hat (PSG)
-	.word @env21, @env23
+	.word @env23, @env12, @env0 ; 02 : 006 SEUT - Hi Hat (PSG)
+	.word @env22, @env24
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch2
-	.word @env7, @env11, @env0 ; 03 : SUNPIANO (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 03 : SUNPIANO (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch3
-	.word @env7, @env11, @env0 ; 04 : GH pluckfromgh (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 04 : GH pluckfromgh (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch4
-	.word @env4, @env11, @env0 ; 05 : 007 SEUT - Hi Hat (PSG)
-	.word @env21, @env26
+	.word @env4, @env12, @env0 ; 05 : 007 SEUT - Hi Hat (PSG)
+	.word @env22, @env28
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch5
-	.word @env7, @env11, @env0 ; 06 : whateverthefuck (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 06 : whateverthefuck (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch6
-	.word @env7, @env11, @env0 ; 07 : Desert guitar (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 07 : Desert guitar (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch7
-	.word @env7, @env11, @env0 ; 08 : Scheme whateverthefuck (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 08 : Scheme whateverthefuck (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch8
-	.word @env7, @env11, @env0 ; 09 : TM flute (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 09 : TM flute (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch9
-	.word @env7, @env11, @env0 ; 0a : TM bass 2 (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 0a : TM bass 2 (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch10
-	.word @env7, @env11, @env0 ; 0b : TM bass 1 (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 0b : TM bass 1 (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch11
-	.word @env7, @env11, @env0 ; 0c : Desert bass (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 0c : Desert bass (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch13
-	.word @env7, @env11, @env0 ; 0d : stereo midness (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 0d : stereo midness (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch14
-	.word @env12, @env11, @env0 ; 0e : epsm hihat (PSG)
-	.word @env21, @env11
+	.word @env13, @env12, @env0 ; 0e : epsm hihat (PSG)
+	.word @env22, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch15
-	.word @env7, @env11, @env0 ; 0f : Scheme wind thingy (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 0f : Scheme wind thingy (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch17
-	.word @env7, @env11, @env0 ; 10 : Scheme Bass (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 10 : Scheme Bass (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch18
-	.word @env7, @env11, @env0 ; 11 : blank: epsm
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 11 : blank: epsm
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch19
-	.word @env7, @env11, @env0 ; 12 : funny desert thingy (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 12 : funny desert thingy (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch20
-	.word @env7, @env11, @env0 ; 13 : SM bass (FM)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 13 : SM bass (FM)
+	.word @env25, @env12
 	.byte $00, $03
 	.word 4000
 	.word @instrument_epsm_extra_patch21
-	.word @env7, @env11, @env0 ; 14 : time machine synth (PSG)
-	.word @env24, @env11
+	.word @env7, @env12, @env0 ; 14 : time machine synth (PSG)
+	.word @env25, @env12
 	.byte $00, $80
 	.word 4000
 	.word @instrument_epsm_extra_patch22
@@ -505,57 +505,68 @@ music_data_famidash_music3:
 @env8:
 	.byte $00,$ce,$cd,$c0,$00,$03
 @env9:
-	.byte $c8,$c2,$00,$01
+	.byte $00,$cb,$c8,$c6,$c5,$c4,$c3,$c2,$c1,$c0,$00,$09
 @env10:
-	.byte $00,$cb,$c7,$c5,$c3,$c2,$02,$c1,$05,$c0,$00,$09
+	.byte $c8,$c2,$00,$01
 @env11:
-	.byte $c0,$7f,$00,$01
+	.byte $00,$cb,$c7,$c5,$c3,$c2,$02,$c1,$05,$c0,$00,$09
 @env12:
-	.byte $00,$cf,$ce,$cc,$c0,$00,$04
+	.byte $c0,$7f,$00,$01
 @env13:
-	.byte $00,$c9,$c6,$c4,$c2,$c1,$c0,$00,$06
+	.byte $00,$cf,$ce,$cc,$c0,$00,$04
 @env14:
-	.byte $00,$c3,$c1,$c1,$c0,$00,$04
+	.byte $00,$c9,$c6,$c4,$c2,$c1,$c0,$00,$06
 @env15:
-	.byte $c6,$cb,$00,$01
+	.byte $00,$c3,$c1,$c1,$c0,$00,$04
 @env16:
-	.byte $00,$c6,$c3,$c2,$c1,$c1,$c0,$00,$06
+	.byte $c6,$cb,$00,$01
 @env17:
-	.byte $c6,$cd,$00,$01
+	.byte $00,$c6,$c3,$c2,$c1,$c1,$c0,$00,$06
 @env18:
-	.byte $7f,$00,$00
+	.byte $c6,$cd,$00,$01
 @env19:
-	.byte $b6,$ba,$00,$01
+	.byte $7f,$00,$00
 @env20:
-	.byte $00,$c8,$c2,$c1,$c0,$00,$04
+	.byte $b6,$ba,$00,$01
 @env21:
-	.byte $c1,$7f,$00,$00
+	.byte $00,$c8,$c2,$c1,$c0,$00,$04
 @env22:
-	.byte $00,$ce,$cd,$cd,$c0,$00,$04
+	.byte $c1,$7f,$00,$00
 @env23:
-	.byte $d6,$c8,$00,$01
+	.byte $00,$ce,$cd,$cd,$c0,$00,$04
 @env24:
-	.byte $c8,$7f,$00,$00
+	.byte $d6,$c8,$00,$01
 @env25:
-	.byte $00,$ca,$c7,$c5,$c3,$c2,$c1,$c1,$c0,$00,$08
+	.byte $c8,$7f,$00,$00
 @env26:
-	.byte $cb,$7f,$00,$00
+	.byte $00,$ca,$c7,$c5,$c3,$c2,$c1,$c1,$c0,$00,$08
 @env27:
-	.byte $00,$c9,$c4,$c1,$c0,$00,$04
+	.byte $be,$c1,$c0,$00,$02
 @env28:
+	.byte $cb,$7f,$00,$00
+@env29:
+	.byte $00,$c9,$c4,$c1,$c0,$00,$04
+@env30:
 	.byte $00,$cb,$c0,$c5,$c4,$c3,$02,$c2,$c0,$00,$08
 
 @samples:
-	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$42,$0f,$00,$00 ; 00 023 SEUT - Kick (Pitch:15)
-	.byte $23+.lobyte(FAMISTUDIO_DPCM_PTR),$24,$0f,$40,$00 ; 01 Drums (Pitch:15)
-	.byte $3f+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0f,$40,$00 ; 02 every end clap (Pitch:15)
-	.byte $55+.lobyte(FAMISTUDIO_DPCM_PTR),$34,$0f,$40,$00 ; 03 gdmt kick (Pitch:15)
-	.byte $62+.lobyte(FAMISTUDIO_DPCM_PTR),$23,$0f,$40,$00 ; 04 gdmt snare (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$2a,$0f,$40,$00 ; 05 practice kick (Pitch:15)
-	.byte $33+.lobyte(FAMISTUDIO_DPCM_PTR),$30,$0f,$00,$00 ; 06 stereo madness snare (Pitch:15)
-	.byte $4a+.lobyte(FAMISTUDIO_DPCM_PTR),$2c,$0f,$40,$00 ; 07 VEH1 Snares & Claps (Pitch:15)
-	.byte $2c+.lobyte(FAMISTUDIO_DPCM_PTR),$1c,$0f,$7e,$00 ; 08 VEH2 Houseloops  (Pitch:15)
-	.byte $0b+.lobyte(FAMISTUDIO_DPCM_PTR),$1a,$0f,$00,$00 ; 09 VEH2_Fill_Ins_-_ (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$42,$0f,$00,$00 ; 00 023 SEUT - Kick (Pitch:15)
+	.byte $07+.lobyte(FAMISTUDIO_DPCM_PTR),$24,$0f,$40,$02 ; 01 Drums (Pitch:15)
+	.byte $11+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0f,$40,$00 ; 02 every end clap (Pitch:15)
+	.byte $1c+.lobyte(FAMISTUDIO_DPCM_PTR),$34,$0f,$40,$00 ; 03 gdmt kick (Pitch:15)
+	.byte $1c+.lobyte(FAMISTUDIO_DPCM_PTR),$23,$0f,$40,$02 ; 04 gdmt snare (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$2a,$0f,$40,$03 ; 05 practice kick (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$01 ; 06 slhsmp1 (Pitch:15)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$01 ; 07 slhsmp2 (Pitch:15)
+	.byte $25+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$02 ; 08 slhsmp3 (Pitch:15)
+	.byte $29+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$00 ; 09 slhsmp4 (Pitch:15)
+	.byte $10+.lobyte(FAMISTUDIO_DPCM_PTR),$30,$0f,$00,$02 ; 0a stereo madness snare (Pitch:15)
+	.byte $69+.lobyte(FAMISTUDIO_DPCM_PTR),$1f,$0f,$40,$00 ; 0b VEC2 Snares 038 (Pitch:15)
+	.byte $1d+.lobyte(FAMISTUDIO_DPCM_PTR),$40,$0f,$40,$03 ; 0c VEH1 Hard Kick - (Pitch:15)
+	.byte $71+.lobyte(FAMISTUDIO_DPCM_PTR),$3a,$0f,$40,$00 ; 0d VEH1 Hard Kick - 1 (Pitch:15)
+	.byte $12+.lobyte(FAMISTUDIO_DPCM_PTR),$2c,$0f,$40,$03 ; 0e VEH1 Snares & Claps (Pitch:15)
+	.byte $0b+.lobyte(FAMISTUDIO_DPCM_PTR),$1c,$0f,$7e,$03 ; 0f VEH2 Houseloops  (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$1a,$0f,$00,$02 ; 10 VEH2_Fill_Ins_-_ (Pitch:15)
 
 @song0ch0:
 	.byte $46, $03
@@ -1081,8 +1092,8 @@ music_data_famidash_music3:
 	.word @song3ch3loop
 @song3ch4:
 @song3ch4loop:
-	.byte $ff, $ff, $87, $07, $8d, $07, $8d, $07, $8d, $07, $8d, $07, $8d, $07, $8d, $07, $8d, $07, $8d, $07, $8d, $07, $8d, $07
-	.byte $8d, $07, $8d, $07, $8d, $07, $8d, $07, $8d, $07, $85, $87, $00, $95, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
+	.byte $ff, $ff, $87, $0b, $8d, $0b, $8d, $0b, $8d, $0b, $8d, $0b, $8d, $0b, $8d, $0b, $8d, $0b, $8d, $0b, $8d, $0b, $8d, $0b
+	.byte $8d, $0b, $8d, $0b, $8d, $0b, $8d, $0b, $8d, $0b, $85, $87, $00, $95, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff, $ff
 	.byte $42
 	.word @song3ch4loop
 @song3ch5:
@@ -1532,5 +1543,5 @@ music_data_famidash_music3:
 	.word @song5ch1loop
 @song5ch4:
 @song5ch4loop:
-	.byte $03, $08, $09, $0a, $06, $07, $01, $02, $04, $05, $00, $89, $9f, $42
+	.byte $03, $0e, $0f, $10, $11, $01, $04, $05, $0d, $0c, $07, $08, $09, $0a, $06, $0b, $01, $02, $00, $99, $42
 	.word @song5ch4loop
