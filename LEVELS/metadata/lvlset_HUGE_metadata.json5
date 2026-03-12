@@ -5580,6 +5580,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		/*
 		{
 			level: "aftercatabath",
 			lowerText: "AFTERCATABATH",
@@ -5595,7 +5596,8 @@
 			startingBackgroundColor: 0x06,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
-		},		
+		},
+		*/
 		{
 			level: "shardscapes",
 			lowerText: "SHARDSCAPES",

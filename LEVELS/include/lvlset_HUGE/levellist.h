@@ -123,7 +123,6 @@ const uint8_t difficulty_list[] = {
 	IMPOSSIBLEDEMON,	// aftermath
 	IMPOSSIBLEDEMON,	// wcropolix
 	IMPOSSIBLEDEMON,	// silentclubstep
-	IMPOSSIBLEDEMON,	// aftercatabath
 	IMPOSSIBLEDEMON,	// shardscapes
 	IMPOSSIBLEDEMON,	// element111rg
 	GRANDPADEMON,	// slaughterhouse
@@ -255,7 +254,6 @@ const uint8_t stars_list[] = {
 	10,	// aftermath
 	10,	// wcropolix
 	10,	// silentclubstep
-	10,	// aftercatabath
 	10,	// shardscapes
 	10,	// element111rg
 	10,	// slaughterhouse

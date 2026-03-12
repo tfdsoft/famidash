@@ -126,7 +126,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_aftermath)
 	.byte .lobyte(level_data_wcropolix)
 	.byte .lobyte(level_data_silentclubstep)
-	.byte .lobyte(level_data_aftercatabath)
 	.byte .lobyte(level_data_shardscapes)
 	.byte .lobyte(level_data_element111rg)
 	.byte .lobyte(level_data_slaughterhouse)
@@ -257,7 +256,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_aftermath)
 	.byte .hibyte(level_data_wcropolix)
 	.byte .hibyte(level_data_silentclubstep)
-	.byte .hibyte(level_data_aftercatabath)
 	.byte .hibyte(level_data_shardscapes)
 	.byte .hibyte(level_data_element111rg)
 	.byte .hibyte(level_data_slaughterhouse)
@@ -388,7 +386,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_aftermath))
 	.byte .lobyte(.bank(level_data_wcropolix))
 	.byte .lobyte(.bank(level_data_silentclubstep))
-	.byte .lobyte(.bank(level_data_aftercatabath))
 	.byte .lobyte(.bank(level_data_shardscapes))
 	.byte .lobyte(.bank(level_data_element111rg))
 	.byte .lobyte(.bank(level_data_slaughterhouse))
@@ -420,10 +417,8 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_eon_19)
 	.byte .lobyte(level_data_windylandscape_20)
 	.byte .lobyte(level_data_sonicwave_21)
-	.byte .lobyte(level_data_aftercatabath_22)
-	.byte .lobyte(level_data_aftercatabath_23)
-	.byte .lobyte(level_data_everyend_24)
-	.byte .lobyte(level_data_everyend_25)
+	.byte .lobyte(level_data_everyend_22)
+	.byte .lobyte(level_data_everyend_23)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_hexagonforce_0)
@@ -448,10 +443,8 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_eon_19)
 	.byte .hibyte(level_data_windylandscape_20)
 	.byte .hibyte(level_data_sonicwave_21)
-	.byte .hibyte(level_data_aftercatabath_22)
-	.byte .hibyte(level_data_aftercatabath_23)
-	.byte .hibyte(level_data_everyend_24)
-	.byte .hibyte(level_data_everyend_25)
+	.byte .hibyte(level_data_everyend_22)
+	.byte .hibyte(level_data_everyend_23)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_hexagonforce_0))
@@ -476,10 +469,8 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_eon_19))
 	.byte .lobyte(.bank(level_data_windylandscape_20))
 	.byte .lobyte(.bank(level_data_sonicwave_21))
-	.byte .lobyte(.bank(level_data_aftercatabath_22))
-	.byte .lobyte(.bank(level_data_aftercatabath_23))
-	.byte .lobyte(.bank(level_data_everyend_24))
-	.byte .lobyte(.bank(level_data_everyend_25))
+	.byte .lobyte(.bank(level_data_everyend_22))
+	.byte .lobyte(.bank(level_data_everyend_23))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -606,7 +597,6 @@ _level_lengths_lo:
 	.byte .lobyte($00007C)		; aftermath
 	.byte .lobyte($00007F)		; wcropolix
 	.byte .lobyte($000095)		; silentclubstep
-	.byte .lobyte($0001BF)		; aftercatabath
 	.byte .lobyte($00006F)		; shardscapes
 	.byte .lobyte($0000A2)		; element111rg
 	.byte .lobyte($000098)		; slaughterhouse
@@ -739,7 +729,6 @@ _level_lengths_md:
 	.byte .hibyte($00007C)		; aftermath
 	.byte .hibyte($00007F)		; wcropolix
 	.byte .hibyte($000095)		; silentclubstep
-	.byte .hibyte($0001BF)		; aftercatabath
 	.byte .hibyte($00006F)		; shardscapes
 	.byte .hibyte($0000A2)		; element111rg
 	.byte .hibyte($000098)		; slaughterhouse
@@ -872,7 +861,6 @@ _level_lengths_hi:
 	.byte .bankbyte($00007C)		; aftermath
 	.byte .bankbyte($00007F)		; wcropolix
 	.byte .bankbyte($000095)		; silentclubstep
-	.byte .bankbyte($0001BF)		; aftercatabath
 	.byte .bankbyte($00006F)		; shardscapes
 	.byte .bankbyte($0000A2)		; element111rg
 	.byte .bankbyte($000098)		; slaughterhouse
