@@ -1,7 +1,7 @@
 
 ifeq ($(OS),Windows_NT)
 # Windows
-CC = ./BIN/mos-nes-mmc3-clang.exe
+CC = mos-nes-mmc3-clang
 CA65 := ./BIN/ca65.exe
 
 define del
