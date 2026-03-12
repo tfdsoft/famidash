@@ -12,6 +12,12 @@ The current development build can be found [here](https://nightly.link/tfdsoft/f
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). You'll find guides for adding music and levels there.
 
+## building
+
+yeah all you need is llvm-mos installed properly
+as well as cc65
+if that's satisfied then you can run build.bat (or make from the terminal of your choice)
+
 ## socials
 
 - https://twitter.com/TFDSoft
