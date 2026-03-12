@@ -454,14 +454,19 @@
 			originalArtistText: "CRAFTY JUMPER",
 		},
 		{
-			fmsSongName: "Golden Haze",
-			lowerText: "GOLDEN HAZE",
-			originalArtistText: "DETIOUSMUSIC",
-		},
-		{
 			fmsSongName: "Ground to Space",
 			lowerText: "GROUND TO SPACE",
 			originalArtistText: "SEAGLOWINGPRO",
+		},
+		{
+			fmsSongName: "Pyrophoric (ginished)",
+			lowerText: "PYROPHORIC",
+			originalArtistText: "NERDBOY628",
+		},
+		{
+			fmsSongName: "Golden Haze",
+			lowerText: "GOLDEN HAZE",
+			originalArtistText: "DETIOUSMUSIC",
 		},
 		{
 			fmsSongName: "super underground 64",
