@@ -2,7 +2,7 @@
 ifeq ($(OS),Windows_NT)
 # Windows
 CC = mos-nes-mmc3-clang
-CA65 := ./BIN/ca65.exe
+CA65 := ca65
 
 define del
 del $(subst /,\\,$(1))
@@ -126,7 +126,7 @@ $(TMPDIR)/sniperengine.o: src/sniperengine/sniperengine.s
 	$(CA65) src/sniperengine/sniperengine.s -o $@
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/sniperengine.o $(TMPDIR)/music.o $(TMPDIR)/sfx.o $(TMPDIR)/asm.o src/*.h src/*.c src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
-	#./generate_everything.sh
+#./generate_everything.sh
 	$(CC) src/main.c $(TMPDIR)/*.o $(call cc65IncDir,src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)) $(CFLAGS) $(LDFLAGS) -o $@
 
 
