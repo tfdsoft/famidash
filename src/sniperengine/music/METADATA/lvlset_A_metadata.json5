@@ -429,6 +429,11 @@
 			originalArtistText: "WATERFLAME",
 		},
 		{
+			fmsSongName: "Electroman Adventures",
+			lowerText: "ELECTROMAN ADVENTURES",
+			originalArtistText: "WATERFLAME",
+		},
+		{
 			fmsSongName: "Stay Inside Me",
 			lowerText: "STAY INSIDE ME",
 			originalArtistText: "OCULARNEBULA",
@@ -444,9 +449,19 @@
 			originalArtistText: "CRAFTY JUMPER",
 		},
 		{
+			fmsSongName: "Select Payment Type",
+			lowerText: "SELECT PAYMENT TYPE",
+			originalArtistText: "CRAFTY JUMPER",
+		},
+		{
 			fmsSongName: "Golden Haze",
 			lowerText: "GOLDEN HAZE",
-			originalArtistText: "CRAFTY JUMPER",
+			originalArtistText: "DETIOUSMUSIC",
+		},
+		{
+			fmsSongName: "Ground to Space",
+			lowerText: "GROUND TO SPACE",
+			originalArtistText: "SEAGLOWINGPRO",
 		},
 		{
 			fmsSongName: "super underground 64",
