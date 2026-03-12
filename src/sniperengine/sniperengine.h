@@ -145,6 +145,7 @@ __attribute__((leaf)) void set_prg_c000(u8 bank);
 __attribute__((leaf)) void set_prg_a000(u8 bank);
 __attribute__((leaf)) void set_chr_bank(u8 window, u8 bank);
 #define jsrfar_noargs(bank, func) __asm__ volatile("jsr jsrfar \n .word "STR(func)"\n .byte "STR(bank)" \n" :::"a","x","y","p")
+#define jsrfar_ptrarg(bank, func, ptr) __asm__ volatile("lda "STR(ptr)"+0 \n sta __rc2 \n lda "STR(ptr)"+1 \n sta __rc3 \n jsr jsrfar \n .word "STR(func)"\n .byte "STR(bank)" \n" :::"a","x","y","p")
 
 
 __attribute__((leaf)) void se_set_scroll(u16 x, u16 y);

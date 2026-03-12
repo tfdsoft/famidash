@@ -106,6 +106,9 @@ file(chr_ground_3, chr_bank_3) = {
 };
 
 
+file(chr_icon0, chr_bank_3) = {
+    #embed "./chr/dnt/Icon0.bin"
+};
 
 
 

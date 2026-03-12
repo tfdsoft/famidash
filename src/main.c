@@ -22,6 +22,7 @@
 #include "rle.c"
 #include "rendering.c"
 #include "collision.c"
+#include "icon_unpack.c"
 
 // gamestates
 #include "state_startup.c"

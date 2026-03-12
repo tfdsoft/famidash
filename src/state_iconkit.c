@@ -41,6 +41,10 @@ banked(startup_bank.func) void state_iconkit(){
     se_vram_donut_decompress(chr_menu_font_pusab, chr_bank_0);
     se_vram_donut_decompress(chr_menu_iconkit, chr_bank_0);
 
+
+    unpack_icon_firstframe(chr_icon0, chr_bank_3);
+
+
     se_vram_address(0x2000);
     se_vram_unrle(nt_iconkit,0);
 
