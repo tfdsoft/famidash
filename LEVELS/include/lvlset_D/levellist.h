@@ -3,8 +3,8 @@
 
 const uint8_t difficulty_list[] = {
 	EASYDEMON,	// demonpark
-	DEMON,	// decode
-	DEMON,	// clutterfunk2
+	EASYDEMON,	// decode
+	EASYDEMON,	// clutterfunk2
 	EASYDEMON,	// speedracer
 	EASYDEMON,	// respite
 	MEDIUMDEMON,	// goldenhaze
