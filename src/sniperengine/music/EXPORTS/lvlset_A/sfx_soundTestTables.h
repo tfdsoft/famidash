@@ -38,6 +38,8 @@ banked(sound_test_bank.sfxtext.data.032) const char sfxSoundTestString20[11] = "
 banked(sound_test_bank.sfxtext.data.033) const char sfxSoundTestString21[14] = "dirt_rise.ogg";
 banked(sound_test_bank.sfxtext.data.034) const char sfxSoundTestString22[16] = "gravebutton.ogg";
 banked(sound_test_bank.sfxtext.data.035) const char sfxSoundTestString23[ 8] = "tap.ogg";
+banked(sound_test_bank.sfxtext.data.036) const char sfxSoundTestString24[ 6] = "siren";
+banked(sound_test_bank.sfxtext.data.037) const char sfxSoundTestString25[ 5] = "boot";
 
 
 banked(sound_test_bank.sfxtext.ptr)
@@ -78,6 +80,8 @@ const char* const sfxtexts[] = {
 	sfxSoundTestString21,
 	sfxSoundTestString22,
 	sfxSoundTestString23,
+	sfxSoundTestString24,
+	sfxSoundTestString25,
 };
 
 #else

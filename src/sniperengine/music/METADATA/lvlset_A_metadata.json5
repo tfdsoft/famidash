@@ -477,6 +477,24 @@
 		},
 		{
 			fmsSongName: "Golden Haze",
+			lowerText: "Stalemate",
+			originalArtistText: "IDFK LMAO",
+			coveringArtistText: "LUNAR_GMD",
+		},
+		{
+			fmsSongName: "LOST (XVA REMIX) (Slaughterhouse)",
+			lowerText: "LOST",
+			originalArtistText: "IDFK LMAO",
+			coveringArtistText: "LUNAR_GMD",
+		},
+		{
+			fmsSongName: "Every End",
+			lowerText: "EVERY END",
+			originalArtistText: "DIMRAIN47",
+			coveringArtistText: "USERSNIPER",
+		},
+		{
+			fmsSongName: "Golden Haze",
 			lowerText: "GOLDEN HAZE",
 			originalArtistText: "DETIOUSMUSIC",
 			coveringArtistText: "USERSNIPER",
