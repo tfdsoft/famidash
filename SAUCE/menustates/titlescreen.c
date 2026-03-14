@@ -331,6 +331,8 @@ void state_menu() {
 
 					high_byte(player_x[0]) = currplayer_x_small;
 					high_byte(player_y[0]) = currplayer_y_small;
+					gamemode = 0;
+					player_mini[0] = 0;
 					crossPRGBankJump0(drawplayerone);
 					break;
 				case TITLEMODE_UFO:
@@ -344,8 +346,8 @@ void state_menu() {
 					player_mini[0] = 1;
 					high_byte(player_x[0]) = currplayer_x_small;
 					high_byte(player_y[0]) = currplayer_y_small;
+					gamemode = 0;
 					crossPRGBankJump0(drawplayerone);
-					player_mini[0] = 0;
 					break;
 				case TITLEMODE_SHIP:
 					title_ship_shit();
@@ -441,8 +443,13 @@ void state_menu() {
 					tmp2 = idx8_load(swingFrameTable1, ballframe & 1);
 					tmp7 = idx8_load(swingFrameTable2, ballframe);
 
-					oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
-					oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp2+2, tmp7);
+					//oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
+					//oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp2+2, tmp7);
+					high_byte(player_x[0]) = currplayer_x_small;
+					high_byte(player_y[0]) = currplayer_y_small;
+					gamemode = GAMEMODE_SWING;
+					player_mini[0] = 0;
+					crossPRGBankJump0(drawplayerone);
 					break;
 				case TITLEMODE_MINISHIP:
 					title_ship_shit();
@@ -520,7 +527,12 @@ void state_menu() {
 					if (!(kandoframecnt & 0x07)) { ++ballframe; ballframe &= 3; }
 
 					tmp7 = idx8_load(miniSwingFrameTable, ballframe);
-					oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20+xtra);
+					//oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20+xtra);
+					high_byte(player_x[0]) = currplayer_x_small;
+					high_byte(player_y[0]) = currplayer_y_small;
+					player_mini[0] = 1;
+					gamemode = GAMEMODE_SWING;
+					crossPRGBankJump0(drawplayerone);
 					break;
 				case TITLEMODE_META:
 					if (!(kandoframecnt & 0x07)) {
@@ -799,13 +811,18 @@ void roll_new_mode() {
 	titlecolor2 = menu_color_table[tmp2]; //  most of our colors suck
 	titlecolor3 = menu_color_table[tmp3];
 #endif
+	//titlemode = TITLEMODE_MINISWING; 	//debug if you want to force a mode
 	set_title_icon();
 }			
 
 void bounds_check() {
 	if (currplayer_y_small >= 160) {
 		currplayer_y_small = 160;
-	} else if (currplayer_y_small < 0x08) currplayer_y_small = 0x08;	
+		player_vel_y[0] = 0;
+	} else if (currplayer_y_small < 0x08) { 
+		currplayer_y_small = 0x08;	
+		player_vel_y[0] = 0;
+	}
 }
 
 void title_ship_shit() {
@@ -831,7 +848,7 @@ void title_ship_shit() {
 }					
 
 void title_swing_shit() {
-	if (kandoframecnt & 1) { 
+	if (kandoframecnt & 3) { 
 		if (!(newrand() & 15)) {
 			invert_gravity(currplayer_gravity);
 			update_currplayer_table_idx();
@@ -849,6 +866,7 @@ void title_swing_shit() {
 
 			
 	currplayer_y_small += currplayer_vel_y_small;
+	player_vel_y[0] = currplayer_vel_y_small << 10;
 
 	bounds_check();
 }
