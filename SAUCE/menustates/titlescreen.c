@@ -59,24 +59,24 @@ const char palsystem[] = "FOR PAL SYSTEMS";
 
 // Title screen modes
 #define	TITLEMODE_CUBE		0
-#define	TITLEMODE_UFO		1
-#define	TITLEMODE_MINICUBE	2
-#define	TITLEMODE_SHIP		3
+#define	TITLEMODE_SHIP		1
+#define	TITLEMODE_BALL		2
+#define	TITLEMODE_UFO		3
 #define	TITLEMODE_ROBOT		4
 #define	TITLEMODE_SPIDER	5
 #define	TITLEMODE_WAVE		6
-#define	TITLEMODE_BALL		7
-#define	TITLEMODE_SWING		8
-#define	TITLEMODE_NINJA		9
-#define	TITLEMODE_POGO		10
-#define	TITLEMODE_SNAKE		11
-#define	TITLEMODE_FOOTBALL	12
+#define	TITLEMODE_SWING		7
+#define	TITLEMODE_NINJA		8
+#define	TITLEMODE_POGO		9
+#define	TITLEMODE_SNAKE		10
+#define	TITLEMODE_FOOTBALL	11
+#define	TITLEMODE_MINICUBE	12
 #define	TITLEMODE_MINISHIP	13
 #define	TITLEMODE_MINIBALL	14
-#define	TITLEMODE_MINIWAVE	15
-#define	TITLEMODE_MINIUFO	16
-#define	TITLEMODE_MINIROBOT	17
-#define	TITLEMODE_MINISPDR	18
+#define	TITLEMODE_MINIUFO	15
+#define	TITLEMODE_MINIROBOT	16
+#define	TITLEMODE_MINISPDR	17
+#define	TITLEMODE_MINIWAVE	18
 #define	TITLEMODE_MINISWING	19
 #define	TITLEMODE_MINININJA	20
 #define	TITLEMODE_MINIPOGO	21
@@ -98,6 +98,11 @@ void check_if_music_stopped2() {
 	if (famistudio_song_speed == 0x80) { if (!songplaying) music_play(xbgmlookuptable[menutheme]); else music_play(xbgmlookuptable[song]);}
 }
 #endif
+
+void hi_byte_stuff() {
+	high_byte(player_x[0]) = currplayer_x_small;
+	high_byte(player_y[0]) = currplayer_y_small;
+}	
 
 void state_menu() {
 	oam_clear();
@@ -207,6 +212,7 @@ void state_menu() {
 
 	#endif
 	menuMusicCurrentlyPlaying = 1;
+	speed = 1;
 
 	settingvalue = 0;
 	practice_point_count = 0;
@@ -214,15 +220,14 @@ void state_menu() {
 	tmp8 = 0;
 	
 	kandoframecnt = 0;
+	currplayer_x_small = 0;
+	joypad1.press = 0;
 	teleport_output = 0Xff;
 	currplayer_y_small = 160;
-	currplayer_x_small = 0;
 	titlecolor3 = color3;
 	titlecolor2 = color2;
 	titlecolor1 = color1;
 
-	speed = 1;
-	joypad1.press = 0;
 	
 	write_irq_table(menu_irq_table);
 	//edit_irq_table(2, low_byte(tmp8));
@@ -328,11 +333,16 @@ void state_menu() {
 					//oam_spr(currplayer_x_small, currplayer_y_small, 1, 0x20);
 					//oam_spr(currplayer_x_small + 8, currplayer_y_small, 3, 0x20);
 					title_cube_shit();
-
-					high_byte(player_x[0]) = currplayer_x_small;
-					high_byte(player_y[0]) = currplayer_y_small;
+					hi_byte_stuff();
 					gamemode = 0;
-					player_mini[0] = 0;
+					crossPRGBankJump0(drawplayerone);
+					break;
+				case TITLEMODE_NINJA:
+					//oam_spr(currplayer_x_small, currplayer_y_small, 1, 0x20);
+					//oam_spr(currplayer_x_small + 8, currplayer_y_small, 3, 0x20);
+					title_cube_shit();
+					hi_byte_stuff();
+					gamemode = GAMEMODE_NINJA;
 					crossPRGBankJump0(drawplayerone);
 					break;
 				case TITLEMODE_UFO:
@@ -343,10 +353,13 @@ void state_menu() {
 					break;
 				case TITLEMODE_MINICUBE:
 					title_cube_shit();
-					player_mini[0] = 1;
-					high_byte(player_x[0]) = currplayer_x_small;
-					high_byte(player_y[0]) = currplayer_y_small;
 					gamemode = 0;
+					crossPRGBankJump0(drawplayerone);
+					break;
+				case TITLEMODE_MINININJA:
+					title_cube_shit();
+					hi_byte_stuff();
+					gamemode = GAMEMODE_NINJA;
 					crossPRGBankJump0(drawplayerone);
 					break;
 				case TITLEMODE_SHIP:
@@ -445,10 +458,8 @@ void state_menu() {
 
 					//oam_spr(currplayer_x_small, currplayer_y_small, tmp2, tmp7);
 					//oam_spr(currplayer_x_small + 8, currplayer_y_small, tmp2+2, tmp7);
-					high_byte(player_x[0]) = currplayer_x_small;
-					high_byte(player_y[0]) = currplayer_y_small;
+					hi_byte_stuff();
 					gamemode = GAMEMODE_SWING;
-					player_mini[0] = 0;
 					crossPRGBankJump0(drawplayerone);
 					break;
 				case TITLEMODE_MINISHIP:
@@ -528,9 +539,7 @@ void state_menu() {
 
 					tmp7 = idx8_load(miniSwingFrameTable, ballframe);
 					//oam_spr(currplayer_x_small, currplayer_y_small, tmp7, 0x20+xtra);
-					high_byte(player_x[0]) = currplayer_x_small;
-					high_byte(player_y[0]) = currplayer_y_small;
-					player_mini[0] = 1;
+					hi_byte_stuff();
 					gamemode = GAMEMODE_SWING;
 					crossPRGBankJump0(drawplayerone);
 					break;
@@ -750,11 +759,15 @@ void set_title_icon() {
 		if (titlemode < TITLEMODE_ROBOT) {	// cube, ufo, mini cube, ship
 			do {
 				tmp7 = newrand() & 31;
-			} while (tmp7 > 26);
+			} while (tmp7 > MAX_ICONS);
 			titleicon = tmp7;
 			tmp7 = 40 + (tmp7 * 2);
 			mmc3_set_2kb_chr_bank_0(retro_mode ? 18 : tmp7);
-		} else if (
+		} 
+		else if (titlemode == TITLEMODE_NINJA || titlemode == TITLEMODE_MINININJA) {
+			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? NINJABANK : 22);	
+		}
+		else if (
 			(titlemode <= TITLEMODE_BALL && titlemode != TITLEMODE_WAVE) || \
 			titlemode == TITLEMODE_MINIROBOT || titlemode == TITLEMODE_MINIBALL	\
 		){
@@ -777,10 +790,11 @@ void roll_new_mode() {
 	tmp7 = titlemode;
 	do {
 		titlemode = newrand() & 31;
-	} while (titlemode >= TITLEMODE_MINININJA || titlemode == TITLEMODE_NINJA || titlemode == TITLEMODE_POGO || titlemode == TITLEMODE_SNAKE || titlemode == TITLEMODE_FOOTBALL || titlemode == tmp7); // 1st: old sanity check? we have more
+	} while (titlemode > TITLEMODE_MINININJA || titlemode == TITLEMODE_POGO || titlemode == TITLEMODE_SNAKE || titlemode == TITLEMODE_FOOTBALL || titlemode == tmp7); // 1st: old sanity check? we have more
 //	if (titlemode >= 8) {
 //		titlemode = (newrand() & 7) + 8;
 //	}
+
 	if (retro_mode && (titlemode == TITLEMODE_CUBE || titlemode == TITLEMODE_MINICUBE))
 		titlemode = tmp7;
 
@@ -811,18 +825,22 @@ void roll_new_mode() {
 	titlecolor2 = menu_color_table[tmp2]; //  most of our colors suck
 	titlecolor3 = menu_color_table[tmp3];
 #endif
-	//titlemode = TITLEMODE_MINISWING; 	//debug if you want to force a mode
+	//titlemode = TITLEMODE_MINININJA; 	//debug if you want to force a mode
+	if (titlemode >= TITLEMODE_MINICUBE) player_mini[0] = 1;
+	else player_mini[0] = 0;
 	set_title_icon();
 }			
 
 void bounds_check() {
-	if (currplayer_y_small >= 160) {
-		currplayer_y_small = 160;
+	if (currplayer_y_small >= player_mini[0] ? 164 : 160) {
+		currplayer_y_small = player_mini[0] ? 164 : 160;
+		ninjajumps[0] = 3;
 		player_vel_y[0] = 0;
 	} else if (currplayer_y_small < 0x08) { 
 		currplayer_y_small = 0x08;	
 		player_vel_y[0] = 0;
 	}
+	else player_vel_y[0] = 1;
 }
 
 void title_ship_shit() {
@@ -900,25 +918,28 @@ void title_ufo_shit() {
 	} else currplayer_y_small += 4;
 	if (!(newrand() & 15)) teleport_output = 0;
 	
-	if (currplayer_y_small >= 160) {
-		currplayer_y_small = 160;
-	} else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+	bounds_check();
 }	
 void title_cube_shit() {
+	if (currplayer_y_small == (player_mini[0] ? 164 : 160)) ninjajumps[0] = 3;
 	if (teleport_output <= 0x1A) {
 		currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
 		teleport_output++;
 	} else currplayer_y_small += 4;
 
-	if (currplayer_y_small >= (titlemode == 0 ? 160 : 164)) {
-		currplayer_y_small = titlemode == 0 ? 160 : 164;
+	if (currplayer_y_small >= (player_mini[0] ? 164 : 160)) {
+		currplayer_y_small = player_mini[0] ? 164 : 160;
 		player_vel_y[0] = 0;
 	}		
 	
-	if (currplayer_y_small == (titlemode == 0 ? 160 : 164) && !(newrand() & 15)) { 
-		teleport_output = 0;
-		player_vel_y[0] = 1;
+	if ((currplayer_y_small == (player_mini[0] ? 164 : 160) || 
+			((titlemode == TITLEMODE_NINJA || titlemode == TITLEMODE_MINININJA) && ninjajumps[0])) 
+				&& !(newrand() & 15)) { 
+					teleport_output = 0;
+					player_vel_y[0] = 1;
+					ninjajumps[0]--;
 	} else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+	//bounds_check();
 }					
 
 void title_wave_shit() {
