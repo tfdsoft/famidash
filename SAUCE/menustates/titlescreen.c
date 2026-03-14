@@ -67,13 +67,22 @@ const char palsystem[] = "FOR PAL SYSTEMS";
 #define	TITLEMODE_WAVE		6
 #define	TITLEMODE_BALL		7
 #define	TITLEMODE_SWING		8
-#define	TITLEMODE_MINISHIP	9
-#define	TITLEMODE_MINIBALL	10
-#define	TITLEMODE_MINIWAVE	11
-#define	TITLEMODE_MINIUFO	12
-#define	TITLEMODE_MINIROBOT	13
-#define	TITLEMODE_MINISPDR	14
-#define	TITLEMODE_MINISWING	15
+#define	TITLEMODE_NINJA		9
+#define	TITLEMODE_POGO		10
+#define	TITLEMODE_SNAKE		11
+#define	TITLEMODE_FOOTBALL	12
+#define	TITLEMODE_MINISHIP	13
+#define	TITLEMODE_MINIBALL	14
+#define	TITLEMODE_MINIWAVE	15
+#define	TITLEMODE_MINIUFO	16
+#define	TITLEMODE_MINIROBOT	17
+#define	TITLEMODE_MINISPDR	18
+#define	TITLEMODE_MINISWING	19
+#define	TITLEMODE_MINININJA	20
+#define	TITLEMODE_MINIPOGO	21
+#define	TITLEMODE_MINISNAKE	22
+#define	TITLEMODE_MINIFOOTBALL	23
+
 #define	TITLEMODE_META		0xFF
 
 // System-dependent defines
@@ -457,19 +466,18 @@ void state_menu() {
 					title_mini_wave_shit();
 					
 					if (currplayer_y_small == 160 || currplayer_y_small == 8) {
-						tmp1 = 0x0D;
+						tmp1 = 0x0B;
 						tmp2 = 0x20;
-						oam_spr(currplayer_x_small, currplayer_y_small, 0x0D, 0x20+xtra);
 					} else {
-						tmp1 = 0x11;
+						tmp1 = 0x0F;
 						if (currplayer_gravity) {
 							tmp2 = 0xA0+xtra;
 						} else {
 							tmp2 = 0x20+xtra;
 						}
 					}
-
 					oam_spr(currplayer_x_small, currplayer_y_small, tmp1, tmp2);
+
 					break;
 				case TITLEMODE_MINIUFO:
 					title_ufo_shit();
@@ -757,10 +765,10 @@ void roll_new_mode() {
 	tmp7 = titlemode;
 	do {
 		titlemode = newrand() & 15;
-	} while (titlemode > TITLEMODE_MINISHIP || titlemode == tmp7); // 1st: old sanity check? we have more
-	if (titlemode >= 8) {
-		titlemode = (newrand() & 7) + 8;
-	}
+	} while (titlemode >= TITLEMODE_MINININJA || titlemode == TITLEMODE_NINJA || titlemode == TITLEMODE_POGO || titlemode == TITLEMODE_SNAKE || titlemode == TITLEMODE_FOOTBALL || titlemode == tmp7); // 1st: old sanity check? we have more
+//	if (titlemode >= 8) {
+//		titlemode = (newrand() & 7) + 8;
+//	}
 	if (retro_mode && (titlemode == TITLEMODE_CUBE || titlemode == TITLEMODE_MINICUBE))
 		titlemode = tmp7;
 
