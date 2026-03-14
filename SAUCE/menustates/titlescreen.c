@@ -764,7 +764,7 @@ void roll_new_mode() {
 	teleport_output = 0xFF;
 	tmp7 = titlemode;
 	do {
-		titlemode = newrand() & 15;
+		titlemode = newrand() & 31;
 	} while (titlemode >= TITLEMODE_MINININJA || titlemode == TITLEMODE_NINJA || titlemode == TITLEMODE_POGO || titlemode == TITLEMODE_SNAKE || titlemode == TITLEMODE_FOOTBALL || titlemode == tmp7); // 1st: old sanity check? we have more
 //	if (titlemode >= 8) {
 //		titlemode = (newrand() & 7) + 8;
