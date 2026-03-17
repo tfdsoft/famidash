@@ -12,8 +12,8 @@
 
 // const data
 #include "assets.c"
-#include "levels.c"
 #include "metatiles.c"
+#include "levels.c"
 
 // extra code
 #include "funny_custom_routines.h"

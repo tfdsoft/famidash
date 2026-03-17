@@ -1,6 +1,3 @@
-#define level_header_bank 0
-#define level_data_bank_0 1
-
 struct Level {
     u8 name[24];
 
@@ -13,6 +10,7 @@ struct Level {
 
     struct {
         const u8* blocks[4];
+        const struct Metatile* metatiles[4];
     } tileset;
 
     u8 height;

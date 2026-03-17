@@ -14,13 +14,22 @@ banked(fixed.func) void level_load_assets(struct Level passthru){
     // load default blocks
     se_vram_address(0);
     se_vram_donut_decompress(chr_tiles_global,chr_bank_1);
-    load_metatiles(16,mt_default_blocks,48);
+    load_metatiles(mt_default_blocks,16,0,48);
 
     for(u8 i=0; i<4; i++){
         se_vram_address((0x400 + (i<<8)));
-
         if(active_lvl.tileset.blocks[i]){
             se_vram_donut_decompress(active_lvl.tileset.blocks[i],chr_bank_1);
+        }
+    }
+    for(u8 i=0; i<4; i++){
+        if(active_lvl.tileset.metatiles[i]){
+            load_metatiles(
+                active_lvl.tileset.metatiles[i],
+                (0x40+(i<<4)),
+                (0x40+(i<<4)),
+                16
+            );
         }
     }
 }
@@ -74,7 +83,6 @@ banked(fixed.func) void state_game() {
     while(1){
         se_wait_vsync();
         se_clear_sprites();
-
 
         if(joypad1.right) scroll_direction = 16;
         if(joypad1.left) scroll_direction = -1;

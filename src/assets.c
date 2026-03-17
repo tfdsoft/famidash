@@ -20,6 +20,9 @@
  *  }
 **============================================*/
 
+#define level_header_bank 0
+#define level_data_bank_0 1
+
 #define sample_bank_0 52
 #define sample_bank_1 53
 #define sample_bank_2 54
@@ -66,16 +69,19 @@ file(chr_tiles_global, chr_bank_1) = {
     #embed "./chr/dnt/General.bin"
 };    
 file(chr_tiles_grid, chr_bank_1) = {
-    #embed "./chr/dnt/Grid.bin"
+    #embed "./chr/dnt/Game_Tiles_Grid.bin"
 };    
 file(chr_tiles_cross, chr_bank_1) = {
-    #embed "./chr/dnt/Cross.bin"
-};
-file(chr_tiles_brick, chr_bank_1) = {
-    #embed "./chr/dnt/Brick.bin"
+    #embed "./chr/dnt/Game_Tiles_Cross.bin"
 };
 file(chr_tiles_black, chr_bank_1) = {
-    #embed "./chr/dnt/Black.bin"
+    #embed "./chr/dnt/Game_Tiles_Black.bin"
+};
+file(chr_tiles_funnylookingsquares, chr_bank_1) = {
+    #embed "./chr/dnt/Game_Tiles_funnylookingsquares.bin"
+};
+file(chr_tiles_brick, chr_bank_1) = {
+    #embed "./chr/dnt/Game_Tiles_Brick.bin"
 };
 
 

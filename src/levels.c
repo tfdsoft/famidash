@@ -20,10 +20,16 @@ banked(level_header_bank) const struct Level lvl_test_header = {
     .tileset = {
         .blocks = {
             chr_tiles_grid,
-            NULL,
-            chr_tiles_grid,
-            NULL
+            chr_tiles_cross,
+            chr_tiles_black,
+            chr_tiles_funnylookingsquares,
         },
+        .metatiles = {
+            mt_normal_blockset,
+            mt_normal_blockset,
+            mt_normal_blockset,
+            mt_normal_blockset,
+        }
     },
 
     .height = 15, // level height

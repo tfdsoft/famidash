@@ -1,11 +1,11 @@
 #include "metatiles.h"
 
-void load_metatiles(u8 start_slot, const struct Metatile* mts, u8 size){
+void load_metatiles(const struct Metatile* mts, u8 start_slot, u8 tile_offset, u8 size){
     for(u8 i=0; i<size; i++){
-        metatiles_TL[start_slot+i] = mts[i].topleft;
-        metatiles_TR[start_slot+i] = mts[i].topright;
-        metatiles_BL[start_slot+i] = mts[i].bottomleft;
-        metatiles_BR[start_slot+i] = mts[i].bottomright;
+        metatiles_TL[start_slot+i] = mts[i].topleft + tile_offset;
+        metatiles_TR[start_slot+i] = mts[i].topright + tile_offset;
+        metatiles_BL[start_slot+i] = mts[i].bottomleft + tile_offset;
+        metatiles_BR[start_slot+i] = mts[i].bottomright + tile_offset;
     }
 }
 
@@ -67,8 +67,29 @@ banked(level_header_bank) const struct Metatile mt_default_blocks[] = {
     {0x36, 0x00, 0x39, 0x32}, // half spike corner (ur)
     {0x38, 0x33, 0x37, 0x00}, // half spike corner (dr)
     {0x33, 0x3a, 0x00, 0x35}, // half spike corner (dl)
-    {},
-    {},
-    {},
-    {},
+    {0x00, 0x00, 0x21, 0x23}, // ground spikes (down)
+    {0x24, 0x00, 0x25, 0x00}, // ground spikes (left)
+    {0x20, 0x22, 0x00, 0x00}, // ground spikes (up)
+    {0x00, 0x26, 0x00, 0x27}, // ground spikes (right)
+};
+
+
+banked(level_header_bank) const struct Metatile mt_normal_blockset[] = {
+    {0x00, 0x02, 0x01, 0x04},
+    {0x0c, 0x0e, 0x0d, 0x0f},
+    {0x04, 0x06, 0x05, 0x07},
+    {0x08, 0x0a, 0x09, 0x0b},
+    {0x00, 0x02, 0x05, 0x07},
+    {0x08, 0x02, 0x09, 0x03},
+    {0x04, 0x06, 0x01, 0x03},
+    {0x00, 0x0a, 0x01, 0x0b},
+
+    {0x00, 0x0a, 0x05, 0x0f},
+    {0x08, 0x02, 0x0d, 0x07},
+    {0x0c, 0x06, 0x09, 0x03},
+    {0x04, 0x0e, 0x01, 0x0b},
+    {0x08, 0x0a, 0x0d, 0x0f},
+    {0x0c, 0x06, 0x0d, 0x07},
+    {0x0c, 0x0e, 0x09, 0x0b},
+    {0x04, 0x0e, 0x05, 0x0f},
 };
