@@ -27,10 +27,11 @@ banked(sound_test_bank.musictext.data.21) const char musicSoundTestString15[13] 
 banked(sound_test_bank.musictext.data.22) const char musicSoundTestString16[14] = "CRAFTY JUMPER";
 banked(sound_test_bank.musictext.data.23) const char musicSoundTestString17[14] = "SEAGLOWINGPRO";
 banked(sound_test_bank.musictext.data.24) const char musicSoundTestString18[11] = "NERDBOY628";
-banked(sound_test_bank.musictext.data.25) const char musicSoundTestString19[10] = "IDFK LMAO";
-banked(sound_test_bank.musictext.data.26) const char musicSoundTestString1A[10] = "DIMRAIN47";
-banked(sound_test_bank.musictext.data.27) const char musicSoundTestString1B[13] = "DETIOUSMUSIC";
-banked(sound_test_bank.musictext.data.28) const char musicSoundTestString1C[10] = "NINTENDO.";
+banked(sound_test_bank.musictext.data.25) const char musicSoundTestString19[ 8] = "KAYOSZX";
+banked(sound_test_bank.musictext.data.26) const char musicSoundTestString1A[ 7] = "CRIM3S";
+banked(sound_test_bank.musictext.data.27) const char musicSoundTestString1B[10] = "DIMRAIN47";
+banked(sound_test_bank.musictext.data.28) const char musicSoundTestString1C[13] = "DETIOUSMUSIC";
+banked(sound_test_bank.musictext.data.29) const char musicSoundTestString1D[10] = "NINTENDO.";
 
 
 banked(sound_test_bank.musictext.ptr) const char* const xbgmtextsUpper[] = {
@@ -89,10 +90,10 @@ banked(sound_test_bank.musictext.ptr) const char* const xbgmtextsOriginalArtist[
 	musicSoundTestString17,
 	musicSoundTestString18,
 	musicSoundTestString19,
-	musicSoundTestString19,
 	musicSoundTestString1A,
 	musicSoundTestString1B,
 	musicSoundTestString1C,
+	musicSoundTestString1D,
 };
 
 
@@ -125,7 +126,7 @@ banked(sound_test_bank.musictext.index) const u8 xbgmlookuptable[] = {
 	song_select_payment_type,
 	song_ground_to_space,
 	song_pyrophoric_ginished,
-	song_golden_haze,
+	song_stalemate,
 	song_lost_xva_remix_slaughterhouse,
 	song_every_end,
 	song_golden_haze,

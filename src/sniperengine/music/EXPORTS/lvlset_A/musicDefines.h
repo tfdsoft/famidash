@@ -13,5 +13,6 @@
 #define song_golden_haze 12
 #define song_menu_theme 13
 #define song_scheming_weasel 14
-#define song_super_underground_64 15
-#define song_max 16
+#define song_stalemate 15
+#define song_super_underground_64 16
+#define song_max 17
