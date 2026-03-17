@@ -149,7 +149,8 @@ __attribute__((leaf)) void set_chr_bank(u8 window, u8 bank);
 
 
 __attribute__((leaf)) void se_set_scroll(u16 x, u16 y);
-#define se_vram_address(address) __asm__ volatile("ldx #>"STR(address)"\n stx $2006 \n ldx #<"STR(address)"\n stx $2006")
+void se_vram_address(u16 address) {PPU.vram.address = hi(address); PPU.vram.address = lo(address);}
+//__asm__ volatile("ldx #>"STR(address)"\n stx $2006 \n ldx #<"STR(address)"\n stx $2006")
 __attribute__((leaf)) void se_vram_unrle(const void* data, u8 usezero);
 __attribute__((leaf)) void se_vram_donut_decompress(const u8 * data, u8 bank);
 

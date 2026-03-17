@@ -6,6 +6,25 @@ banked(fixed.data) const u8 pal_game[] = {
 };
 
 
+banked(fixed.func) void level_load_assets(struct Level passthru){
+    set_prg_a000(level_header_bank);
+
+    active_lvl = passthru;
+
+    // load default blocks
+    se_vram_address(0);
+    se_vram_donut_decompress(chr_tiles_global,chr_bank_1);
+    load_metatiles(16,mt_default_blocks,48);
+
+    for(u8 i=0; i<4; i++){
+        se_vram_address((0x400 + (i<<8)));
+
+        if(active_lvl.tileset.blocks[i]){
+            se_vram_donut_decompress(active_lvl.tileset.blocks[i],chr_bank_1);
+        }
+    }
+}
+
 banked(fixed.func) void state_game() {
     se_play_sample((pcm_playsound_01+0x2000),sample_bank_2,1);
     __asm__("cli");
@@ -23,15 +42,14 @@ banked(fixed.func) void state_game() {
     //u16 player_x_speed = 0, player_y_speed = 0;
 
     // load the global stuff
-    se_vram_address(0);
-    se_vram_donut_decompress(chr_tiles_global,chr_bank_1);
+    
 
     // clear nametables
     se_vram_address(0x2000);
     se_memory_fill((void*)0x2007,0,0x1000);
 
-    set_prg_a000(level_bank_0);
-    load_metatiles(32,mt_default_blocks,32);
+    
+    level_load_assets(lvl_test_header);
     level_rle_init(lvl_test_header);
 
     level_rle_fetch_columns(16);
