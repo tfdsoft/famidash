@@ -5834,6 +5834,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		/*
 		{
 			level: "kratos",
 			lowerText: "KRATOS",
@@ -5850,6 +5851,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		*/
 		/*
 		{ 
 			level: "nullscapes",
