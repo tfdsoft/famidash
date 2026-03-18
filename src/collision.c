@@ -53,8 +53,11 @@ u8 check_collision_UD(struct Player* player, s8 extra_y){
 
 void move_player(struct Player* player){
 
-    player->speed.y += (phys_gravity[0]>>1);
+    player->speed.y += phys_gravity[0];
     if(player->speed.y > 0x700) player->speed.y = 0x700;
+
+    //common_gravity_routine
+    
 
     player->pos.y.full += player->speed.y;
     if(check_collision_UD(player, 0)){
@@ -64,8 +67,6 @@ void move_player(struct Player* player){
     if(check_collision_UD(player, 16)){
         player->pos.y.lo &= 0xf8;
         player->speed.y = 0;
-    }
-    if(check_collision_UD(player, 18)){
         if(joypad1.a) player->speed.y = phys_jumpvel[0];
     }
     
@@ -87,17 +88,36 @@ void move_player(struct Player* player){
     }
 
 
+
     #define left_side_scroll_bounds 0x60
     u16 tmp = (player->pos.x.word - Camera.x.word);
     if(tmp < left_side_scroll_bounds){
         Camera.x.word = player->pos.x.word - left_side_scroll_bounds;
+        if(Camera.x.hi & 0x80) Camera.x.word = 0;
     }
     #undef left_side_scroll_bounds
 
     #define right_side_scroll_bounds 0x80
-    tmp = (player->pos.x.word - Camera.x.word);
     if(tmp >= right_side_scroll_bounds){
         Camera.x.word = player->pos.x.word - right_side_scroll_bounds;
     }
     #undef right_side_scroll_bounds
+
+    #define top_side_scroll_bounds 0x60
+    tmp = (player->pos.y.word - Camera.y.word);
+    if(tmp < top_side_scroll_bounds){
+        Camera.y.word = player->pos.y.word - top_side_scroll_bounds;
+        if(Camera.y.hi & 0x80) Camera.y.word = 0;
+    }
+    #undef top_side_scroll_bounds
+
+    #define bottom_side_scroll_bounds 0x80
+    //tmp += 0x30;
+    if(tmp >= bottom_side_scroll_bounds){
+        Camera.y.word = player->pos.y.word - bottom_side_scroll_bounds;
+        if((Camera.y.word > (active_lvl.height<<4) - 0xc0)) {
+            Camera.y.word = (active_lvl.height<<4) - 0xc0;
+        }
+    }
+    #undef bottom_side_scroll_bounds
 }

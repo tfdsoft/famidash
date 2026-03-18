@@ -1,34 +1,3 @@
-banked(fixed.func) void level_rle_fetch_columns(s8 count){
-    set_prg_a000(active_lvl.tile_bank);
-    //y_offset %= 30; // nes nametables are 30 tiles tall
-
-    if(count >= 0){
-        for(; count>0; count--){ // fetch this many columns
-
-            // decompress columns into the table
-            for(u8 height=0; height<active_lvl.height; height++){
-                __level_rle_fetch_next_tile();
-                collision_map_0[grid16(lvl_rle_x_offset,height)] = lvl_rle_value;
-            }
-
-            ++lvl_rle_x_offset;
-            //lvl_rle_x_offset &= 0x0f;
-        }
-    } else {
-        // go backward code
-        for(; count!=0; count++) {
-            --lvl_rle_x_offset;
-            // decompress tiles into the table
-            for(u8 height=active_lvl.height; height>0; height--){
-                __level_rle_fetch_previous_tile();
-                collision_map_0[grid16(lvl_rle_x_offset,height-1)] = lvl_rle_value;
-            }
-        }
-
-    }
-}
-
-
 banked(fixed.func) void level_fetch_metatile_tiles(u8 column, u8 y_offset, u8 side){
 
     
@@ -85,4 +54,11 @@ banked(fixed.func) void level_draw_metatile_column(u8 column, u8 y_offset){
         y_offset_mod30,
         seam_address_2+1
     );
+}
+
+banked(fixed.func)
+u8 num_to_ascii(u8 n){
+    n &= 0x0f;
+    if(n > 0x09) return (n + 0x37);
+    return (n + 0x30);
 }

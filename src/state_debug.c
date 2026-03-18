@@ -1,9 +1,4 @@
-banked(sound_test_bank.func)
-u8 num_to_ascii(u8 n){
-    n &= 0x0f;
-    if(n > 0x09) return (n + 0x37);
-    return (n + 0x30);
-}
+
 
 banked(sound_test_bank.data)
 const u8 pal_genericmenu[]={

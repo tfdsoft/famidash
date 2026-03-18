@@ -32,7 +32,7 @@ banked(level_header_bank) const struct Level lvl_test_header = {
         }
     },
 
-    .height = 15, // level height
+    .height = 32, // level height
 
     .tile_data = (u8*)lvl_test_tiles,
     .tile_bank = level_data_bank_0,

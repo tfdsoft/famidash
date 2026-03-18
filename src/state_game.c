@@ -57,14 +57,18 @@ banked(fixed.func) void state_game() {
     se_vram_address(0x2000);
     se_memory_fill((void*)0x2007,0,0x1000);
 
-    
     level_load_assets(lvl_test_header);
     level_rle_init(lvl_test_header);
+
+    Player.pos.x.word = 0;
+    Player.pos.y.word = (active_lvl.height<<4)-0xc0;
+    Camera.x.word = 0;
+    Camera.y.word = (active_lvl.height<<4)-0xc0;
 
     level_rle_fetch_columns(16);
     disable_nmi();
     for(char i=0;i<16;i++){
-        level_draw_metatile_column(i<<1, 0);
+        level_draw_metatile_column(i<<1, (active_lvl.height));
         se_flush_vram_buffer();
     }
     enable_nmi();
@@ -77,12 +81,11 @@ banked(fixed.func) void state_game() {
     se_turn_on_rendering();
     
 
-    
-    Player.pos.x.word = 0x0080;
-
     while(1){
         se_wait_vsync();
         se_clear_sprites();
+
+        move_player(&Player);
 
         if(joypad1.right) scroll_direction = 16;
         if(joypad1.left) scroll_direction = -1;
@@ -104,7 +107,7 @@ banked(fixed.func) void state_game() {
         //se_draw_sprite(player_x,(player_y>>8),0x04,0);
         //se_draw_sprite(8+player_x,(player_y>>8),0x06,0);
 
-        move_player(&Player);
+        
 
         se_draw_sprite(
             (Player.pos.x.word - Camera.x.word),
@@ -119,8 +122,9 @@ banked(fixed.func) void state_game() {
             0
         );
 
-
-        se_set_scroll(Camera.x.word,Camera.y.word);
+        u16 tmp = (Camera.y.word + ((Camera.y.word / 0xf0)<<4));
+        
+        se_set_scroll(Camera.x.word,tmp);
         se_gray_line();
         //se_one_vram_buffer_repeat_vertical(
         //    0,

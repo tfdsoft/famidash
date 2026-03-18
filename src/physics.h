@@ -11,9 +11,9 @@ const u16 phys_speed[] = {
 };
 
 const u16 phys_gravity[] = {
-    0x009a, // cube
+    0x006b, // cube
 };
 
 const u16 phys_jumpvel[] = {
-    -0x6ac, // cube
+    -0x58f, // cube
 };
