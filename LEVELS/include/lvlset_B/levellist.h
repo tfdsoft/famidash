@@ -26,6 +26,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// rainingtacos
 	INSANE,	// dorabaebasic10
 	INSANE,	// offtomars
+	INSANE,	// akrile
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
 	INSANE,	// danceofviolins
@@ -61,6 +62,7 @@ const uint8_t stars_list[] = {
 	8,	// rainingtacos
 	8,	// dorabaebasic10
 	8,	// offtomars
+	8,	// akrile
 	8,	// subtleoddities
 	8,	// powertrip
 	8,	// danceofviolins

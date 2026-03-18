@@ -3432,6 +3432,128 @@
 			],
 		},
 		{
+			level: "akrile",
+			lowerText: "AKRILE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_the_explorer",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0f,
+			startingGroundColor: 0x0f,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [38,25],
+					offsetX: 8,
+				},
+				{
+					coordinates: [95,22],
+					offsetY: -8,
+				},
+				{
+					coordinates: [107,21],
+					offsetX: 8,
+				},
+				{
+					coordinates: [160,24],
+					offsetY: -8,
+				},
+				{
+					coordinates: [172,22],
+					offsetX: 8,
+				},
+				{
+					coordinates: [175,24],
+					offsetY: -8,
+				},
+				{
+					coordinates: [189,21],
+					offsetY: 8,
+				},
+				{
+					coordinates: [190,24],
+					offsetX: 8,
+					offsetY: -8,
+				},
+				{
+					coordinates: [200,22],
+					offsetY: -8,
+				},
+				{
+					coordinates: [208,24],
+					offsetX: 8,
+					offsetY: -8,
+				},
+				{
+					coordinates: [223,21],
+					offsetY: 8,
+				},
+				{
+					coordinates: [240,26],
+					offsetX: 8,
+				},
+				{
+					coordinates: [251,23],
+					offsetX: 8,
+					offsetY: 8,
+				},
+				{
+					coordinates: [305,22],
+					offsetY: -8,
+				},
+				{
+					coordinates: [325,22],
+					offsetY: -8,
+				},
+				{
+					coordinates: [347,20],
+					offsetY: -5,
+				},
+				{
+					coordinates: [381,18],
+					offsetX: -16,
+				},
+				{
+					coordinates: [383,20],
+					offsetX: -16,
+				},
+				{
+					coordinates: [381,22],
+					offsetX: -16,
+				},
+				{
+					coordinates: [399,20],
+					offsetX: 16,
+				},
+				{
+					coordinates: [440,19],
+					offsetX: -16,
+				},
+				{
+					coordinates: [438,21],
+					offsetX: -16,
+				},
+				{
+					coordinates: [491,16],
+					offsetX: 16,
+				},
+				{
+					coordinates: [515,16],
+					offsetX: 8,
+				},
+				{
+					coordinates: [521,19],
+					offsetX: 8,
+				},
+			]
+		},
+		{
 			level: "subtleoddities",
 			upperText: "SUBTLE",
 			lowerText: "ODDITIES",

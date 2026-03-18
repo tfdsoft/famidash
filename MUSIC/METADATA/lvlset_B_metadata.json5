@@ -193,6 +193,11 @@
 			originalArtistText: "LEMON DEMON",
 		},
 		{
+			fmsSongName: "The Explorer",
+			lowerText: "THE EXPLORER",
+			originalArtistText: "SPAZEMUSIC",
+		},
+		{
 			fmsSongName: "Tiny Tunes",
 			lowerText: "TINY TUNES",
 			originalArtistText: "FANTOMENK",
