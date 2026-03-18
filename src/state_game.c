@@ -32,13 +32,14 @@ banked(fixed.func) void level_load_assets(struct Level passthru){
             );
         }
     }
+
+    se_vram_address(0xc00);
+    se_vram_donut_decompress(chr_ground_0,chr_bank_3);
 }
 
 banked(fixed.func) void state_game() {
     se_play_sample((pcm_playsound_01+0x2000),sample_bank_2,1);
     __asm__("cli");
-
-    se_music_play(song_desert_city);
 
     //u24 x_scroll = 0;
     //u16 y_scroll = 0;
@@ -59,31 +60,26 @@ banked(fixed.func) void state_game() {
 
     level_load_assets(lvl_test_header);
     level_rle_init(lvl_test_header);
+    level_generate_ground_metatiles();
 
     Player.pos.x.word = 0;
-    Player.pos.y.word = (active_lvl.height<<4)-0xc0;
+    Player.pos.y.word = (active_lvl.height<<4)-0x10;
     Camera.x.word = 0;
     Camera.y.word = (active_lvl.height<<4)-0xc0;
-
-    level_rle_fetch_columns(16);
-    disable_nmi();
-    for(char i=0;i<16;i++){
-        level_draw_metatile_column(i<<1, (active_lvl.height));
-        se_flush_vram_buffer();
-    }
-    enable_nmi();
-    se_wait_frames(30);
 
     se_set_palette_background(pal_game);
     se_set_palette_sprites(pal_game);
     se_set_palette_brightness_all(4);
 
+    se_post_nmi_ptr = nofunction;
     se_turn_on_rendering();
+    se_music_play(song_stereo_madness);
     
 
     while(1){
         se_wait_vsync();
         se_clear_sprites();
+        se_music_update();
 
         move_player(&Player);
 
@@ -138,4 +134,6 @@ banked(fixed.func) void state_game() {
 
         if(joypad1.press_b) {gamestate = 0xff; break;}
     }
+
+    se_post_nmi_ptr = se_music_update;
 }

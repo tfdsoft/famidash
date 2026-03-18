@@ -57,6 +57,13 @@ static void __level_rle_fetch_previous_tile(){
     lvl_rle_run++;
 }
 
+banked(fixed.func) void level_generate_ground_metatiles(){
+    for (u8 i=0; i<48; i++){
+        u8 tmp = 0x10+((i&3) + ((i & 0xf0)>>2));
+        collision_map_0[i+(active_lvl.height<<4)] = tmp;
+    }
+}
+
 banked(fixed.func) void level_rle_fetch_columns(s8 count){
     set_prg_a000(active_lvl.tile_bank);
     //y_offset %= 30; // nes nametables are 30 tiles tall

@@ -273,7 +273,7 @@ se_palette_brightness_table:
 
 
 .export nofunction
-nofunction = se_identity_table+60
+nofunction = se_identity_table+$60
 
 ;;
 ;;  OAM DMA SHENANIGANS
