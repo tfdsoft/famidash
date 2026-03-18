@@ -57,6 +57,8 @@ void state_game(){
 	#ifdef level_luckydraw
 	if (level == level_luckydraw && (options & platformer) ) { options ^= platformer; tempplat = 1; }
 	#endif
+	fartmode = 0;
+	fartmode = (newrand() & 0xFF);
 	coin1_timer = 0;
 	coin2_timer = 0;
 	coin3_timer = 0;
@@ -295,10 +297,10 @@ void set_player_banks() {
 			iconbank1 = 22; iconbank2 = 26; iconbank3 = 18;
 		}
 		
-		if ((gamemode == GAMEMODE_NINJA && !retro_mode) || gamemode == GAMEMODE_SNAKE) mmc3_set_2kb_chr_bank_0(NINJABANK);
+		if ((gamemode == GAMEMODE_NINJA && !retro_mode) || (gamemode == GAMEMODE_SNAKE && fartmode)) mmc3_set_2kb_chr_bank_0(NINJABANK);
 		else if ((currplayer_mini && (gamemode != GAMEMODE_CUBE && gamemode != GAMEMODE_BALL && gamemode != GAMEMODE_ROBOT && gamemode != GAMEMODE_FOOTBALL)) || (gamemode == GAMEMODE_SWING) || (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE || gamemode == GAMEMODE_POGO)) mmc3_set_2kb_chr_bank_0(iconbank2);
 		else if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_SHIP || gamemode == GAMEMODE_UFO) mmc3_set_2kb_chr_bank_0(iconbank3);
-		else if (gamemode == GAMEMODE_FOOTBALL) mmc3_set_2kb_chr_bank_0(FOOTBALLBANK);
+		else if (gamemode == GAMEMODE_FOOTBALL || (gamemode == GAMEMODE_SNAKE && !fartmode)) mmc3_set_2kb_chr_bank_0(FOOTBALLBANK);
 		else mmc3_set_2kb_chr_bank_0(iconbank1);
 
 }
