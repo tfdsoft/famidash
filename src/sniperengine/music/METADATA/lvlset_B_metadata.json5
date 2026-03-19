@@ -49,7 +49,60 @@
 			originalArtistText: "KEVIN MACLEOD",
 			coveringArtistText: "USERSNIPER",
 		},
-		
+		{
+			fmsSongName: "Insert Cash (FD2 version)",
+			lowerText: "INSERT CASH",
+			originalArtistText: "CRAFTY JUMPER",
+			coveringArtistText: "USERSNIPER",
+		},
+		{
+			fmsSongName: "Select Payment Type",
+			lowerText: "SELECT PAYMENT TYPE",
+			originalArtistText: "CRAFTY JUMPER",
+			coveringArtistText: "CRAFTY JUMPER",
+		},
+		{
+			fmsSongName: "Ground to Space",
+			lowerText: "GROUND TO SPACE",
+			originalArtistText: "SEAGLOWINGPRO",
+			coveringArtistText: "CRAFTY JUMPER",
+		},
+		{
+			fmsSongName: "Pyrophoric (ginished)",
+			lowerText: "PYROPHORIC",
+			originalArtistText: "NERDBOY628",
+			coveringArtistText: "KABEZ",
+		},
+		{
+			fmsSongName: "Stalemate",
+			lowerText: "Stalemate",
+			originalArtistText: "KAYOSZX",
+			coveringArtistText: "LUNAR_GMD",
+		},
+		{
+			fmsSongName: "LOST (XVA REMIX) (Slaughterhouse)",
+			lowerText: "LOST",
+			originalArtistText: "CRIM3S",
+			coveringArtistText: "LUNAR_GMD",
+		},
+		{
+			fmsSongName: "Every End",
+			lowerText: "EVERY END",
+			originalArtistText: "DIMRAIN47",
+			coveringArtistText: "USERSNIPER",
+		},
+		{
+			fmsSongName: "Golden Haze",
+			lowerText: "GOLDEN HAZE",
+			originalArtistText: "DETIOUSMUSIC",
+			coveringArtistText: "USERSNIPER",
+		},
+		{
+			fmsSongName: "super underground 64",
+			lowerText: "SUPER UNDERGROUND 64",
+			originalArtistText: "NINTENDO.",
+			coveringArtistText: "USERSNIPER",
+		},
 	],
 	SFX: [
 		{

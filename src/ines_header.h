@@ -4,7 +4,9 @@
 **============================================*/
 
 // Program ROM size (16 - 1024 kB) =============
-#define SE_PROGRAM_ROM_SIZE     512
+#ifndef SE_PROGRAM_ROM_SIZE
+    #define SE_PROGRAM_ROM_SIZE     512
+#endif
 
 // Character RAM size (1 - 256 kB) =============
 #define SE_CHARACTER_RAM_SIZE   128

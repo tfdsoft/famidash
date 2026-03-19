@@ -1,9 +1,11 @@
 // the lifeblood of the engine. don't remove this line.
 #include <nes.h>
 #include "sniperengine/sniperengine.h"
+
+// bank locations (one for main, one for oversize)
+#include "cfg.h"
+// catches anything not defined prior
 #include "ines_header.h"
-
-
 
 
 

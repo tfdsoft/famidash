@@ -67,6 +67,7 @@ TMPDIR_PREFIX = TMP
 OUTDIR ?= $(OUTDIR_PREFIX)
 TMPDIR ?= $(TMPDIR_PREFIX)
 CFG ?= link.ld
+CFG_OVERSIZE ?= link_oversize.ld
 
 CFLAGS = -flto -Oz -ffast-math -fnonreentrant -std=gnu23 -Wall -Wextra
 LDFLAGS = -mreserve-zp=64 -T $(CFG)
@@ -77,7 +78,7 @@ $(error Level set not specified, you are not calling this makefile correctly)
 endif
 endif
 
-.PHONY: default clean distclean build main
+.PHONY: default clean distclean build oversize
 
 
 # optimize for code size (the ideal method)
@@ -85,7 +86,7 @@ build: $(TMPDIR) $(OUTDIR) $(OUTDIR)/$(NAME).nes
 	
 
 
-all: main
+all: main oversize
 
 main: LEVELSET = A
 main: OUTDIR = $(OUTDIR_PREFIX)/$@
@@ -95,6 +96,16 @@ main:
 	@$(MAKE) build LEVELSET=$(LEVELSET) \
 	CA65_DEFINES=$(CA65_DEFINES) \
 	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
+	--no-print-directory
+
+oversize: LEVELSET = B
+oversize: OUTDIR = $(OUTDIR_PREFIX)/$@
+oversize: TMPDIR = $(TMPDIR_PREFIX)/$@
+oversize:
+	@echo Building oversize...
+	@$(MAKE) build LEVELSET=$(LEVELSET) \
+	CA65_DEFINES=$(CA65_DEFINES) \
+	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG_OVERSIZE) \
 	--no-print-directory
 
 #target: dependencies
@@ -127,7 +138,7 @@ $(TMPDIR)/sniperengine.o: src/sniperengine/sniperengine.s
 
 $(OUTDIR)/$(NAME).nes: $(OUTDIR) $(TMPDIR)/sniperengine.o $(TMPDIR)/music.o $(TMPDIR)/sfx.o $(TMPDIR)/asm.o src/*.h src/*.c src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)/*.h $(CFG)
 #./generate_everything.sh
-	$(CC) src/main.c $(TMPDIR)/*.o $(call cc65IncDir,src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)) $(CFLAGS) $(LDFLAGS) -o $@
+	$(CC) src/main.c $(TMPDIR)/*.o $(call cc65IncDir,src/sniperengine/music/EXPORTS/lvlset_$(LEVELSET)) $(call cc65IncDir,src/config/$(LEVELSET)) $(CFLAGS) $(LDFLAGS) -o $@
 
 
 clean:

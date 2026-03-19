@@ -11,7 +11,8 @@ jobs:
       fail-fast: false
       matrix:
         target:
-        - { name: Main MMC3 ROM, target: main }
+        - { name: FD2 Lite, target: main }
+        - { name: FD2 Full, target: oversize }
 
     steps:
       - name: Checkout

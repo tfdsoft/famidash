@@ -57,7 +57,7 @@ void move_player(struct Player* player){
     if(player->speed.y > 0x700) player->speed.y = 0x700;
 
     //common_gravity_routine
-    
+
 
     player->pos.y.full += player->speed.y;
     if(check_collision_UD(player, 0)){
@@ -69,7 +69,7 @@ void move_player(struct Player* player){
         player->speed.y = 0;
         if(joypad1.a) player->speed.y = phys_jumpvel[0];
     }
-    
+    if(joypad1.up) player->speed.y = phys_jumpvel[0];
     
 
 
