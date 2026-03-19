@@ -8091,7 +8091,7 @@ sprite_data_fingerdash:
   .byte $10,$39,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_76"
+.segment "DAT_BANK_77"
 sprite_data_dash:
   .byte $80,$00,$f0,$02,$f5
   .byte $80,$00,$00,$03,$87
@@ -43877,7 +43877,7 @@ sprite_data_endorphinrush:
   .byte $00,$36,$a0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_77"
+.segment "DAT_BANK_76"
 sprite_data_respite:
   .byte $00,$00,$60,$03,$01
   .byte $00,$00,$70,$03,$14
@@ -44259,7 +44259,9 @@ sprite_data_respite:
   .byte $70,$3e,$10,$03,$f9
   .byte $70,$3e,$28,$03,$25
   .byte $80,$3e,$18,$03,$25
+  .byte $b0,$3e,$e0,$02,$f4
   .byte $c0,$3e,$10,$03,$b8
+  .byte $80,$40,$d0,$02,$f5
   .byte $c0,$40,$00,$03,$51
   .byte $f0,$40,$c0,$02,$4f
   .byte $f0,$40,$10,$03,$4e
@@ -44292,6 +44294,7 @@ sprite_data_respite:
   .byte $60,$46,$80,$02,$09
   .byte $80,$46,$70,$02,$b6
   .byte $c0,$46,$d0,$02,$b8
+  .byte $00,$47,$60,$02,$f4
   .byte $00,$47,$70,$02,$b6
   .byte $10,$47,$c0,$02,$33
   .byte $40,$47,$b0,$02,$00
@@ -51170,7 +51173,7 @@ sprite_data_azuronxolax:
   .byte $00,$4b,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1E"
+.segment "DAT_BANK_76"
 sprite_data_foresttemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$ba

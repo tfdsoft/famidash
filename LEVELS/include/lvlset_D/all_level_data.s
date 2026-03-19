@@ -305,7 +305,7 @@
 		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 279
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8081 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8122 bytes
 	.export level_data_respite
 	level_data_respite:
 	; Header
@@ -328,7 +328,7 @@
 		.byte $0F ;_____________________________ Starting ground color
 		.byte 27 ;______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/respite.lz.bin" ; Size: 6212
+		.incbin "EXPORTS/respite.lz.bin" ; Size: 6253
 
 
 .segment "DAT_BANK_0D"	; Total bank size: 8188 bytes
@@ -485,7 +485,7 @@
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5635
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8136 bytes
+.segment "DAT_BANK_13"	; Total bank size: 8151 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
