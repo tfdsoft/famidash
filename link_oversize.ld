@@ -69,5 +69,74 @@ __prg_rom_58 = 0xa000;
 __prg_rom_59 = 0xa000;
 __prg_rom_60 = 0xa000;
 __prg_rom_61 = 0xa000;
+__prg_rom_62 = 0xa000;
+__prg_rom_63 = 0xa000;
+
+__prg_rom_64 = 0xa000;
+__prg_rom_65 = 0xa000;
+__prg_rom_66 = 0xa000;
+__prg_rom_67 = 0xa000;
+__prg_rom_68 = 0xa000;
+__prg_rom_69 = 0xa000;
+__prg_rom_70 = 0xa000;
+__prg_rom_71 = 0xa000;
+__prg_rom_72 = 0xa000;
+__prg_rom_73 = 0xa000;
+__prg_rom_74 = 0xa000;
+__prg_rom_75 = 0xa000;
+__prg_rom_76 = 0xa000;
+__prg_rom_77 = 0xa000;
+__prg_rom_78 = 0xa000;
+__prg_rom_79 = 0xa000;
+
+__prg_rom_80 = 0xa000;
+__prg_rom_81 = 0xa000;
+__prg_rom_82 = 0xa000;
+__prg_rom_83 = 0xa000;
+__prg_rom_84 = 0xa000;
+__prg_rom_85 = 0xa000;
+__prg_rom_86 = 0xa000;
+__prg_rom_87 = 0xa000;
+__prg_rom_88 = 0xa000;
+__prg_rom_89 = 0xa000;
+__prg_rom_90 = 0xa000;
+__prg_rom_91 = 0xa000;
+__prg_rom_92 = 0xa000;
+__prg_rom_93 = 0xa000;
+__prg_rom_94 = 0xa000;
+__prg_rom_95 = 0xa000;
+
+__prg_rom_96 = 0xa000;
+__prg_rom_97 = 0xa000;
+__prg_rom_98 = 0xa000;
+__prg_rom_99 = 0xa000;
+__prg_rom_100 = 0xa000;
+__prg_rom_101 = 0xa000;
+__prg_rom_102 = 0xa000;
+__prg_rom_103 = 0xa000;
+__prg_rom_104 = 0xa000;
+__prg_rom_105 = 0xa000;
+__prg_rom_106 = 0xa000;
+__prg_rom_107 = 0xa000;
+__prg_rom_108 = 0xa000;
+__prg_rom_109 = 0xa000;
+__prg_rom_110 = 0xa000;
+__prg_rom_111 = 0xa000;
+
+__prg_rom_112 = 0xa000;
+__prg_rom_113 = 0xa000;
+__prg_rom_114 = 0xa000;
+__prg_rom_115 = 0xa000;
+__prg_rom_116 = 0xa000;
+__prg_rom_117 = 0xa000;
+__prg_rom_118 = 0xa000;
+__prg_rom_119 = 0xa000;
+__prg_rom_120 = 0xa000;
+__prg_rom_121 = 0xa000;
+__prg_rom_122 = 0xa000;
+__prg_rom_123 = 0xa000;
+__prg_rom_124 = 0xa000;
+__prg_rom_125 = 0xa000;
+
 
 INCLUDE prg-rom-banked-mode-1_oversize.ld

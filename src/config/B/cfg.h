@@ -1,18 +1,19 @@
 #define SE_PROGRAM_ROM_SIZE 1024
 
 
-#define level_header_bank 0
-#define level_data_bank_0 1
+#define level_header_bank 1
+#define level_data_bank_0 2
 
-#define sample_bank_0 52
-#define sample_bank_1 53
-#define sample_bank_2 54
-#define sample_bank_3 55
 
-#define chr_bank_0 56
-#define chr_bank_1 57
-#define chr_bank_2 58
-#define chr_bank_3 59
+#define sample_bank_0 116
+#define sample_bank_1 117
+#define sample_bank_2 118
+#define sample_bank_3 119
 
-#define startup_bank 60
-#define debug_bank 61
+#define chr_bank_0 120
+#define chr_bank_1 121
+#define chr_bank_2 122
+#define chr_bank_3 123
+
+#define startup_bank 124
+#define debug_bank 0
