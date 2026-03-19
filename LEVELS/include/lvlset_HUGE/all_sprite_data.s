@@ -6054,7 +6054,7 @@ sprite_data_hexagonforce:
   .byte $a0,$41,$c0,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_33"
+.segment "DAT_BANK_34"
 sprite_data_blastprocessing:
   .byte $00,$00,$60,$03,$92
   .byte $00,$00,$80,$03,$c2
@@ -7417,7 +7417,7 @@ sprite_data_geometricaldominator:
   .byte $b0,$43,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_6E"
+.segment "DAT_BANK_7C"
 sprite_data_deadlocked:
   .byte $00,$00,$60,$03,$bd
   .byte $00,$00,$70,$03,$8c
@@ -10106,7 +10106,7 @@ sprite_data_darkparadise:
   .byte $d0,$26,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1F"
+.segment "DAT_BANK_7C"
 sprite_data_xmaschallenge:
   .byte $00,$00,$60,$03,$01
   .byte $00,$00,$70,$03,$ba
@@ -20939,7 +20939,7 @@ sprite_data_kappaclysm:
   .byte $b0,$2e,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_35"
+.segment "DAT_BANK_6E"
 sprite_data_sunshine:
   .byte $00,$00,$50,$03,$a5
   .byte $00,$00,$60,$03,$18
@@ -43962,6 +43962,9 @@ sprite_data_respite:
   .byte $f0,$0c,$50,$03,$8f
   .byte $00,$0d,$10,$03,$00
   .byte $a0,$0d,$60,$03,$bf
+  .byte $b0,$0d,$50,$03,$57
+  .byte $b0,$0d,$60,$03,$57
+  .byte $b0,$0d,$70,$03,$57
   .byte $c0,$0d,$88,$03,$25
   .byte $f0,$0d,$70,$03,$0e
   .byte $f0,$0d,$88,$03,$0d
@@ -61398,7 +61401,7 @@ sprite_data_wcropolix:
   .byte $e0,$30,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_7C"
+.segment "DAT_BANK_33"
 sprite_data_silentclubstep:
   .byte $00,$00,$60,$03,$8f
   .byte $00,$00,$70,$03,$cf
