@@ -5,6 +5,7 @@ INCLUDE nes.ld
 ASSERT(__prg_ram_size + __prg_nvram_size <= 8,
        "MMC3 only supports up to 8KiB of PRG-(NV)RAM.")
 ASSERT(__prg_rom_size <= 1024, "MMC3 Oversize only supports up to 1MiB of PRG-ROM.")
+/*TODO: add 2mb support*/
 
 MEMORY {
   prg_ram : ORIGIN = 0x6000, LENGTH = (__prg_ram_size + __prg_nvram_size) * 1024

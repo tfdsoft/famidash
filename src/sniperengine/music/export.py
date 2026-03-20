@@ -412,14 +412,14 @@ if __name__ == "__main__":
     dpcmAlignerName = processed_metadata['dpcmAlignerName']
 
     songNames = [song['Name'] for song in fsTxtData['Song']]
-    if dpcmAlignerName == "dpcm_BIG":
+    if dpcmAlignerName == "dpcm_oversize":
     # special case if aligner is dpcm_BIG
         lastDatBank = 0x73    
-    elif dpcmAlignerName == "dpcm_HUGE":
+    #elif dpcmAlignerName == "dpcm_HUGE":
     # special case if aligner is dpcm_BIG
-        lastDatBank = 0xF0
-    elif dpcmAlignerName == "dpcm_ALBUM":
-        lastDatBank = 0x3B
+        #lastDatBank = 0xF0
+    #elif dpcmAlignerName == "dpcm_ALBUM":
+        #lastDatBank = 0x3B
     else:
         lastDatBank = 0x33
     

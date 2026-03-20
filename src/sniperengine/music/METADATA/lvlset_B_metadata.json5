@@ -68,7 +68,7 @@
 			coveringArtistText: "CRAFTY JUMPER",
 		},
 		{
-			fmsSongName: "Pyrophoric (ginished)",
+			fmsSongName: "Pyrophoric (sniper edition)",
 			lowerText: "PYROPHORIC",
 			originalArtistText: "NERDBOY628",
 			coveringArtistText: "KABEZ",
@@ -221,5 +221,5 @@
 		},
 	],
 	PCM: [],
-	dpcmAligner: "zzzz"
+	dpcmAligner: "dpcm_oversize"
 }

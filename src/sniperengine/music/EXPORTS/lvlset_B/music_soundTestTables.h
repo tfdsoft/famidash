@@ -125,7 +125,7 @@ banked(sound_test_bank.musictext.index) const u8 xbgmlookuptable[] = {
 	song_insert_cash_fd2_version,
 	song_select_payment_type,
 	song_ground_to_space,
-	song_pyrophoric_ginished,
+	song_pyrophoric_sniper_edition,
 	song_stalemate,
 	song_lost_xva_remix_slaughterhouse,
 	song_every_end,

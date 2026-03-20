@@ -120,7 +120,7 @@ music_data_famidash_music1:
 	.word @song1ch19
 	.endif
 	.word 262,218
-; 02 : zzzz
+; 02 : dpcm_oversize
 	.word @song2ch0
 	.word @song2ch1
 	.word @song2ch2
@@ -269,7 +269,7 @@ music_data_famidash_music1:
 @instrument_epsm_extra_patch13:
 	.byte $04,$c0,$00,$1f,$00,$00,$07,$00,$00,$1f,$00,$00,$07,$00,$00,$1f,$00,$00,$07,$00,$00,$1f,$00,$00,$07,$00,$20,$00,$20,$00,$00
 @instrument_epsm_extra_patch14:
-	.byte $2a,$c0,$00,$1f,$00,$00,$00,$00,$03,$1f,$00,$0d,$00,$00,$02,$1f,$00,$00,$0f,$00,$00,$1f,$0e,$10,$4a,$00,$12,$13,$20,$0a,$00
+	.byte $2a,$c0,$00,$1f,$00,$09,$00,$00,$03,$1f,$00,$0c,$00,$00,$02,$1f,$00,$00,$0f,$00,$00,$1f,$0d,$10,$2a,$00,$12,$12,$20,$0a,$00
 @instrument_epsm_extra_patch15:
 	.byte $32,$c0,$00,$1f,$00,$00,$0a,$00,$00,$1f,$00,$00,$02,$00,$00,$9f,$00,$00,$08,$00,$00,$1f,$0f,$00,$f7,$00,$19,$00,$38,$0b,$00
 @instrument_epsm_extra_patch16:
