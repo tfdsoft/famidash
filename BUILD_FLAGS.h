@@ -77,7 +77,7 @@
 // Dendy as well as some emulators do not execute those
 // reliably, therefore we advise to have it turned off for
 // maximum hardware compatibility.
-#define USE_ILLEGAL_OPCODES 0
+#define USE_ILLEGAL_OPCODES 1
 // ============================================================
 
 

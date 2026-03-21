@@ -2886,24 +2886,24 @@ drawplayer_center_offsets:
 
 
 	fin:
-;			LDA _gamemode
-;			cmp #$08
-;			bne common
-;			lda _player_vel_y+0
-;			ora _player_vel_y+1
-;			bne common
-;			lda _player_gravity+0
-;			beq :+
-;			lda #0
-;			sta _cube_rotate+0
-;			lda #$0C
-;			sta _cube_rotate+1
-;			bne :++
-;		:	
-;			lda #0
-;			sta _cube_rotate+0
-;			sta _cube_rotate+1
-;		:	
+			LDA _gamemode
+			cmp #$08
+			bne common
+			lda _player_vel_y+0
+			ora _player_vel_y+1
+			bne common
+			lda _player_gravity+0
+			beq :+
+			lda #0
+			sta _cube_rotate+0
+			lda #$0C
+			sta _cube_rotate+1
+			bne :++
+		:	
+			lda #0
+			sta _cube_rotate+0
+			sta _cube_rotate+1
+		:	
     common:
 		TYA					;
 		ASL					;	Double da index cuz it's a table of shorts
