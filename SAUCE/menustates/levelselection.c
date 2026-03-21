@@ -29,8 +29,24 @@ void state_levelselect() {
 	if (tempplat == 1) { tempplat = 0; options |= platformer; }
 	slowmode = 0;
 	disco_sprites = 0;
+	#if !__VS_SYSTEM
 	cheated = 0;
+	#endif
 	jumps = 0;
+	top_triggers = 0;
+	triggers = 0;
+	triggers_hit[0] = 0;
+	triggers_hit[1] = 0;
+	triggers_hit[2] = 0;
+
+	
+	practice_point_count = 0;
+
+	// one_vram_buffer(0xb0+kandokidshackTENS, NTADR_A(17,17));
+	// one_vram_buffer(0xb0+kandokidshackONES, NTADR_A(18,17));
+
+	cube_rotate[0] = 0;
+	cube_rotate[1] = 0;	
 	
 	vram_adr(NAMETABLE_A);
 	vram_unrle(level_select_screen); 
@@ -46,24 +62,12 @@ void state_levelselect() {
 
 	tmp8 = 0xff00;
 	tmp4 = 1;
+	low_byte(tmpA) = 1;
 	crossPRGBankJump0(refreshmenu);
-	top_triggers = 0;
-	triggers = 0;
-	triggers_hit[0] = 0;
-	triggers_hit[1] = 0;
-	triggers_hit[2] = 0;
+
 
 	drawBarFlag = 2;
-	low_byte(tmpA) = 1;
 	draw_both_progress_bars();
-	
-	practice_point_count = 0;
-
-	// one_vram_buffer(0xb0+kandokidshackTENS, NTADR_A(17,17));
-	// one_vram_buffer(0xb0+kandokidshackONES, NTADR_A(18,17));
-
-	cube_rotate[0] = 0;
-	cube_rotate[1] = 0;
 
 	#if __VS_SYSTEM
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(idx8_load(xbgmlookuptable, newrand() & 31));
