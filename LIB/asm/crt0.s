@@ -58,7 +58,7 @@ SFX_STRINGS = 0
 .include "sfx_sfxlist.inc"
 
 .ifndef _USE_ILLEGAL_OPCODES
-	.define _USE_ILLEGAL_OPCODES 1
+	.define _USE_ILLEGAL_OPCODES 0
 .endif
 
 .define USE_ILLEGAL_OPCODES ::_USE_ILLEGAL_OPCODES
