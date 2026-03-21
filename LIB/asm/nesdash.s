@@ -2434,7 +2434,6 @@ drawplayer_center_offsets:
 		bne @normalagain
 		
 		lda #0
-		sta _cube_rotate+0
 		sta _cube_rotate+1
 		beq @round
 		
