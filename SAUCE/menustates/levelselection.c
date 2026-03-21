@@ -61,8 +61,8 @@ void state_levelselect() {
 	set_scroll_y(0);  
 
 	tmp8 = 0xff00;
-	tmp4 = 1;
 	low_byte(tmpA) = 1;
+	tmp4 = 1;
 	crossPRGBankJump0(refreshmenu);
 
 

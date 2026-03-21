@@ -2434,6 +2434,7 @@ drawplayer_center_offsets:
 		bne @normalagain
 		
 		lda #0
+		sta _cube_rotate+0
 		sta _cube_rotate+1
 		beq @round
 		
@@ -2570,9 +2571,9 @@ drawplayer_center_offsets:
 		@fin:
 			LDX _cube_rotate+1
         @fin_nold:
-			LDA _gamemode
-			cmp #8
-			beq @noflip
+			;LDA _gamemode
+			;cmp #8
+			;beq @noflip
 
 			LDA _gameState
 			cmp #1	; STATE_MENU
@@ -2888,13 +2889,22 @@ drawplayer_center_offsets:
 	fin:
 			LDA _gamemode
 			cmp #$08
-			bne :+
-			LDA _player_gravity+0
-			BEQ :+
-			lda xargs+0
-			ORA #$80
-			STA xargs+0
-			:	
+			bne common
+			lda _player_vel_y+0
+			ora _player_vel_y+1
+			bne common
+			lda _player_gravity+0
+			beq :+
+			lda #0
+			sta _cube_rotate+0
+			lda #$0C
+			sta _cube_rotate+1
+			bne :++
+		:	
+			lda #0
+			sta _cube_rotate+0
+			sta _cube_rotate+1
+		:	
     common:
 		TYA					;
 		ASL					;	Double da index cuz it's a table of shorts
@@ -3185,9 +3195,6 @@ drawplayer_common := _drawplayerone::common
 		@fin:
 			LDX _cube_rotate+3
         @fin_nold:
-			LDA _gamemode
-			cmp #8
-			beq @noflip	
 			LDA _icon
 			cmp #$12
 			beq @noflip
@@ -3216,13 +3223,22 @@ drawplayer_common := _drawplayerone::common
 
 			LDA _gamemode
 			cmp #$08
-			bne :+
-			LDA _player_gravity+1
-			BEQ :+
-			lda xargs+0
-			ORA #$80
-			STA xargs+0
-			:				
+			bne :++
+			lda _player_vel_y+2
+			ora _player_vel_y+3
+			bne :++
+			lda _player_gravity+1
+			beq :+
+			lda #0
+			sta _cube_rotate+2
+			lda #$0C
+			sta _cube_rotate+3
+			bne :++
+		:	
+			lda #0
+			sta _cube_rotate+2
+			sta _cube_rotate+3
+		:	
 
 			JMP drawplayer_common
 
