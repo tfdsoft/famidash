@@ -22,19 +22,19 @@
 // various game-essential defines
 #include "level_defines.h"
 #include "defines/space_defines.h"
-#pragma rodata-name (push, "RODATA")
+//#pragma rodata-name (push, "RODATA")
 #include "defines/physics_defines.h"
 #if !__THE_ALBUM
 #include "defines/physics_table_defines.cmp.h"
-#pragma rodata-name (pop)
 #endif
+//#pragma rodata-name (pop)
 // grounds go here
 #if !__THE_ALBUM
 #pragma rodata-name (push, "XCD_BANK_05")
 #include "mouse.h"
+#pragma rodata-name (pop)
 #endif
 //#include "mouse.c"
-#pragma rodata-name (pop)
 #if !__THE_ALBUM
 #pragma rodata-name (push, GROUND_BANK)
 #include "grounddata.h"
