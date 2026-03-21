@@ -85,7 +85,6 @@ void store_practice_state(){
 	idx8_store(practice_forced_trails, get_Y, forced_trails);
 	idx8_store(practice_gravity_mod, get_Y, gravity_mod);
 	idx8_store(practice_kandoframecnt, get_Y, kandoframecnt);
-	idx8_store(practice_jumps, get_Y, jumps);
 
 	if (practice_music_sync) {
 		memcpy(practice_famistudio_state + lohi_arr16_load(multStateLookup, tmp1), famistudio_state, FAMISTUDIO_STATE_SIZE);
@@ -136,7 +135,6 @@ void load_practice_state() {
 	forced_trails = idx8_load(practice_forced_trails, get_Y);
 	gravity_mod = idx8_load(practice_gravity_mod, get_Y);
 	kandoframecnt = idx8_load(practice_kandoframecnt, get_Y);
-	jumps = idx8_load(practice_jumps, get_Y);
 	
 	currplayer_last_slope_type = last_slope_type[0] = \
 		idx8_load(practice_player_1_last_slope_type, get_Y);

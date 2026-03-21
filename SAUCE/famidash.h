@@ -294,8 +294,6 @@ uint8_t practice_kandoframecnt[MAX_PRACTICE_POINTS];
 uint8_t practice_song[MAX_PRACTICE_POINTS];
 uint8_t practice_player_invis[MAX_PRACTICE_POINTS];
 
-uint8_t practice_jumps[MAX_PRACTICE_POINTS];
-
 uint8_t practice_famistudio_state[FAMISTUDIO_STATE_SIZE * MAX_PRACTICE_POINTS];
 uint8_t practice_famistudio_registers[FAMISTUDIO_OUTPUT_BUF_SIZE * MAX_PRACTICE_POINTS];
 
