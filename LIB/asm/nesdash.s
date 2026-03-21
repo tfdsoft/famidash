@@ -2695,7 +2695,7 @@ drawplayer_center_offsets:
 		ldy #$00
 		lda _robotjumpframe
 		beq @noanim
-		ldy #$01
+		iny
 		dec _robotjumpframe
 
 	@noanim:
@@ -3311,7 +3311,7 @@ drawplayer_common := _drawplayerone::common
 		ldy #$00
 		lda _robotjumpframe+1
 		beq @noanim
-		ldy #$01
+		iny
 		dec _robotjumpframe+1
 
 	@noanim:
@@ -3375,7 +3375,7 @@ drawplayer_common := _drawplayerone::common
 			bne @cont1
 			lda #0
 			sta _robotframe
-			ldy #0
+			tay
 			jmp @fini
 			
 		@cont1:
@@ -3415,7 +3415,7 @@ drawplayer_common := _drawplayerone::common
 			bne @cont1
 			lda #0
 			sta _spiderframe
-			ldy #0
+			tay
 			jmp drawplayer_common
 			
 		@cont1:
