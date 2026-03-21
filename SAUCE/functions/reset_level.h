@@ -130,7 +130,6 @@ void reset_level() {
 		memfill(player_old_posy, 0, sizeof(player_old_posy));
 		memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));
 		invincible_counter = 8;
-		jumps = 0;
 	}
 	update_currplayer_table_idx();
 

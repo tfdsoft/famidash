@@ -30,6 +30,7 @@ void state_levelselect() {
 	slowmode = 0;
 	disco_sprites = 0;
 	cheated = 0;
+	jumps = 0;
 	
 	vram_adr(NAMETABLE_A);
 	vram_unrle(level_select_screen); 
