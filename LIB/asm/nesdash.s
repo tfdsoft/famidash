@@ -171,7 +171,7 @@ end:
 	rts
 .endproc
 .endif
-.segment "RODATA"
+.segment "RODATA_2"
 
 .export _shiftBy4table := shiftBy4table
 shiftBy4table:
