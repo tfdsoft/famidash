@@ -57,6 +57,9 @@ banked(fixed.func) void state_game() {
     // clear nametables
     se_vram_address(0x2000);
     se_memory_fill((void*)0x2007,0,0x1000);
+    
+    // clear collision map
+    se_memory_fill((void*)collision_map_0,0,720); 
 
     level_load_assets(lvl_test_header);
     level_rle_init(lvl_test_header);
@@ -73,7 +76,7 @@ banked(fixed.func) void state_game() {
 
     se_post_nmi_ptr = nofunction;
     se_turn_on_rendering();
-    se_music_play(song_stereo_madness);
+    se_music_play(song_desert_city);
     
 
     while(1){

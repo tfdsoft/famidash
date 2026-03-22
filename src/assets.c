@@ -69,6 +69,12 @@ file(chr_tiles_brick, chr_bank_1) = {
 };
 
 
+
+file(chr_tiles_onedotnine, chr_bank_1) = {
+    #embed "./chr/dnt/Game_Tiles_onedotnine.bin"
+};
+
+
 // backgrounds
 file(chr_background_0, chr_bank_2) = {
     #embed "./chr/dnt/Background0.bin"

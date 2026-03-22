@@ -19,7 +19,7 @@ banked(level_header_bank) const struct Level lvl_test_header = {
 
     .tileset = {
         .blocks = {
-            chr_tiles_grid,
+            chr_tiles_onedotnine,
             chr_tiles_cross,
             chr_tiles_black,
             chr_tiles_funnylookingsquares,
@@ -32,7 +32,7 @@ banked(level_header_bank) const struct Level lvl_test_header = {
         }
     },
 
-    .height = 15, // level height
+    .height = 32, // level height
 
     .tile_data = (u8*)lvl_test_tiles,
     .tile_bank = level_data_bank_0,
