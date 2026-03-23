@@ -20,13 +20,13 @@ void state_levelselect() {
 	mmc3_set_8kb_chr(MENUBANK);
 	mmc3_set_2kb_chr_bank_0(0xFF);
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-	#if __VS_SYSTEM
-		menutimer = 0;
-	#endif
 
 	pal_bg(oldsplashMenu);
 
 	if (tempplat == 1) { tempplat = 0; options |= platformer; }
+	#if __VS_SYSTEM
+		menutimer = 0;
+	#endif
 	slowmode = 0;
 	disco_sprites = 0;
 	#if !__VS_SYSTEM
@@ -35,6 +35,7 @@ void state_levelselect() {
 	jumps = 0;
 	top_triggers = 0;
 	triggers = 0;
+	force_platformer = 0;
 	triggers_hit[0] = 0;
 	triggers_hit[1] = 0;
 	triggers_hit[2] = 0;
