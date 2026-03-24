@@ -184,7 +184,7 @@ void state_menu() {
 		discoframe = newrand() & 15;
 	} while (discoframe > 11);
 
-	if (joypad1.select) nestopia = 1;
+//	if (joypad1.select) nestopia = 1;
 
 	#if !__VS_SYSTEM
 	gamemode = 0;
@@ -353,6 +353,7 @@ void state_menu() {
 					break;
 				case TITLEMODE_MINICUBE:
 					title_cube_shit();
+					hi_byte_stuff();
 					gamemode = 0;
 					crossPRGBankJump0(drawplayerone);
 					break;
@@ -756,24 +757,44 @@ void state_menu() {
 }
 
 void set_title_icon() {
-		if (titlemode < TITLEMODE_ROBOT) {	// cube, ufo, mini cube, ship
-			do {
-				tmp7 = newrand() & 31;
-			} while (tmp7 > MAX_ICONS);
-			titleicon = tmp7;
-			tmp7 = 40 + (tmp7 * 2);
-			mmc3_set_2kb_chr_bank_0(retro_mode ? 18 : tmp7);
-		} 
-		else if (titlemode == TITLEMODE_NINJA || titlemode == TITLEMODE_MINININJA) {
-			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? NINJABANK : 22);	
-		}
-		else if (
-			(titlemode <= TITLEMODE_BALL && titlemode != TITLEMODE_WAVE) || \
-			titlemode == TITLEMODE_MINIROBOT || titlemode == TITLEMODE_MINIBALL	\
-		){
-			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 20 : 22);	
-		} else if (titlemode <= TITLEMODE_MINISWING) {
-			mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 24 : 26);		
+		switch (titlemode) {
+			case TITLEMODE_CUBE:
+			case TITLEMODE_SHIP:
+			case TITLEMODE_UFO:
+			case TITLEMODE_MINICUBE:
+				do {
+					tmp7 = newrand() & 31;
+				} while (tmp7 > MAX_ICONS);
+				titleicon = tmp7;
+				tmp7 = 40 + (tmp7 * 2);
+				mmc3_set_2kb_chr_bank_0(retro_mode ? 18 : tmp7);
+				return;
+				
+				
+			case TITLEMODE_NINJA:
+			case TITLEMODE_MINININJA:
+				mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? NINJABANK : 22);	
+				return;
+				
+			case TITLEMODE_ROBOT:
+			case TITLEMODE_SPIDER:
+			case TITLEMODE_BALL:
+			case TITLEMODE_MINIBALL:
+			case TITLEMODE_MINIROBOT:
+				mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 20 : 22);
+				return;
+		
+			case TITLEMODE_WAVE:
+			case TITLEMODE_SWING:
+			case TITLEMODE_POGO:
+			case TITLEMODE_MINIPOGO:
+			case TITLEMODE_MINISPDR:
+			case TITLEMODE_MINISHIP:
+			case TITLEMODE_MINIWAVE:
+			case TITLEMODE_MINIUFO:
+			case TITLEMODE_MINISWING:
+				mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? 24 : 26);		
+				return;
 		}
 }			
 
@@ -832,11 +853,11 @@ void roll_new_mode() {
 }			
 
 void bounds_check() {
-	if (currplayer_y_small >= player_mini[0] ? 164 : 160) {
-		currplayer_y_small = player_mini[0] ? 164 : 160;
+	if (currplayer_y_small >= (player_mini[0] ? 164 : 160)) {
+		currplayer_y_small = (player_mini[0] ? 164 : 160);
 		ninjajumps[0] = 3;
 		player_vel_y[0] = 0;
-	} else if (currplayer_y_small < 0x08) { 
+	} else if (currplayer_y_small <= 0x08) { 
 		currplayer_y_small = 0x08;	
 		player_vel_y[0] = 0;
 	}
@@ -1073,50 +1094,6 @@ const uint8_t miniShipFrameTable[] = {0x01, 0x01, 0x03, 0x05, 0x07, 0x09, 0x09};
 const uint8_t miniSwingFrameTable[] = {0x3F, 0x1B, 0x3F, 0x3D};
 
 const uint8_t mysteryFrameTable[] = {0x1D, 0x7D, 0x1F, 0x7F, 0xFF};
-
-#ifdef level_luckydraw
-	#include "defines/charmap/luckydraw_charmap.h"
-	const unsigned char triggerstext[]="TRIGGERS SURVIVED"; //ATTEMPT
-	const unsigned char toptriggerstext[]="TOP TRIGGERS SURVIVED"; //ATTEMPT
-
-void Lucky_Draw_Text_Stuff() {
-			if (level == level_luckydraw && (triggers_hit[0] || triggers_hit[1] || triggers_hit[2])) {
-				multi_vram_buffer_horz((const char*)triggerstext,sizeof(triggerstext)-1,NTADR_C(1, 6));
-				one_vram_buffer(0xF5+triggers_hit[2], NTADR_C(20,6));
-				one_vram_buffer(0xF5+triggers_hit[1], NTADR_C(21,6));
-				one_vram_buffer(0xF5+triggers_hit[0], NTADR_C(22,6));
-				one_vram_buffer(0xD0, NTADR_C(23,6));
-				one_vram_buffer(0xF5+8, NTADR_C(24,6));
-				one_vram_buffer(0xF5+0, NTADR_C(25,6));
-				one_vram_buffer(0xF5+0, NTADR_C(26,6));
-				
-				if (triggers > top_triggers) top_triggers = triggers;
-
-				multi_vram_buffer_horz((const char*)toptriggerstext,sizeof(toptriggerstext)-1,NTADR_C(1, 8));
-
-				
-				hexToDec(top_triggers);
-
-				if (hexToDecOutputBuffer[2])
-					one_vram_buffer(0xf5+hexToDecOutputBuffer[2], NTADR_C(23,8));
-
-				if (hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1])
-					one_vram_buffer(0xf5+hexToDecOutputBuffer[1], NTADR_C(24,8));
-
-				one_vram_buffer(0xf5+hexToDecOutputBuffer[0], NTADR_C(25,8));	
-		
-				one_vram_buffer(0xD0, NTADR_C(26,8));
-				one_vram_buffer(0xF5+8, NTADR_C(27,8));
-				one_vram_buffer(0xF5+0, NTADR_C(28,8));
-				one_vram_buffer(0xF5+0, NTADR_C(29,8));			
-			
-				triggers = 0;
-				triggers_hit[0] = 0;
-				triggers_hit[1] = 0;
-				triggers_hit[2] = 0;
-			}
-}
-#endif
 
 
 
