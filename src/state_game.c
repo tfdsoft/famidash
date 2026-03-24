@@ -11,6 +11,8 @@ banked(fixed.func) void level_load_assets(struct Level passthru){
 
     active_lvl = passthru;
 
+    se_memory_fill(sram_buffer, 0, 0x400);
+
     // load default blocks
     se_vram_address(0);
     se_vram_donut_decompress(chr_tiles_global,chr_bank_1);
@@ -27,7 +29,7 @@ banked(fixed.func) void level_load_assets(struct Level passthru){
             load_metatiles(
                 active_lvl.tileset.metatiles[i],
                 (0x40+(i<<4)),
-                (0x40+(i<<4)),
+                (i<<4),
                 16
             );
         }
