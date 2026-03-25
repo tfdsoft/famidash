@@ -4137,7 +4137,13 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			parallaxDisable: true
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [684, 20],
+					offsetX: -24
+				}
+			]
 		},
 		{
 			level: "endorphinrush",
