@@ -1792,33 +1792,7 @@
 		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5665
 
 
-.segment "DAT_BANK_45"	; Total bank size: 8101 bytes
-	.export level_data_speedracer
-	level_data_speedracer:
-	; Header
-		.byte <sprite_data_speedracer ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_speedracer ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_speedracer)) ;___ Sprite data bank
-		.byte song_chaoz_impact ;__________________ Song ID
-		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
-		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
-		.byte ($00) ;______________________________ Spawn Y Position (low byte)
-		.byte ($02) ;______________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
-		.byte ($06) ;______________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 ;_____________________ Deco type
-		.byte _SPIKESA ;___________________________ Spike set
-		.byte _BLOCKSB ;___________________________ Block set
-		.byte _SAWBLADESA ;________________________ Sawblade set
-		.byte $0F ;________________________________ Starting background color
-		.byte $0F ;________________________________ Starting ground color
-		.byte 27 ;_________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5652
-
-
-.segment "DAT_BANK_46"	; Total bank size: 8145 bytes
+.segment "DAT_BANK_45"	; Total bank size: 8090 bytes
 	.export level_data_acropolis
 	level_data_acropolis:
 	; Header
@@ -1842,6 +1816,32 @@
 		.byte 27 ;________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/acropolis.lz.bin" ; Size: 5641
+
+
+.segment "DAT_BANK_46"	; Total bank size: 8135 bytes
+	.export level_data_speedracer
+	level_data_speedracer:
+	; Header
+		.byte <sprite_data_speedracer ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_speedracer ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_speedracer)) ;___ Sprite data bank
+		.byte song_chaoz_impact ;__________________ Song ID
+		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
+		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
+		.byte ($00) ;______________________________ Spawn Y Position (low byte)
+		.byte ($02) ;______________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
+		.byte ($06) ;______________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 ;_____________________ Deco type
+		.byte _SPIKESA ;___________________________ Spike set
+		.byte _BLOCKSB ;___________________________ Block set
+		.byte _SAWBLADESA ;________________________ Sawblade set
+		.byte $0F ;________________________________ Starting background color
+		.byte $0F ;________________________________ Starting ground color
+		.byte 27 ;_________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5631
 
 
 .segment "DAT_BANK_47"	; Total bank size: 8184 bytes
