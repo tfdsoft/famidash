@@ -881,7 +881,7 @@ void roll_new_mode() {
 	titlecolor2 = menu_color_table[tmp2]; //  most of our colors suck
 	titlecolor3 = menu_color_table[tmp3];
 #endif
-	titlemode = TITLEMODE_NINJA; 	//debug if you want to force a mode
+//	titlemode = TITLEMODE_NINJA; 	//* if you want to force a mode
 	if (titlemode >= TITLEMODE_MINICUBE) player_mini[0] = 1;
 	else player_mini[0] = 0;
 	set_title_icon();
