@@ -839,7 +839,7 @@ void roll_new_mode() {
 	currplayer_gravity = GRAVITY_DOWN;
 	update_currplayer_table_idx();
 	currplayer_x_small = 0x08; 
-	currplayer_y_small = (player_mini[0] ? 0xA4 : 0xA0);
+	currplayer_y_small = 0xA0;
 	player_vel_y[0] = 0;
 	tmpi8 = 0;
 	teleport_output = 0xFF;
