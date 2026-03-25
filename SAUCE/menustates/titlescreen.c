@@ -14,6 +14,7 @@ void title_wave_shit();
 void title_mini_wave_shit();
 void title_swing_shit();
 void title_pogo_shit();
+void title_football_shit();
 
 void roll_new_mode();
 void settings();
@@ -352,6 +353,13 @@ void state_menu() {
 					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20+xtra);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, 0x60+xtra);
+					break;
+				case TITLEMODE_MINIFOOTBALL:
+				case TITLEMODE_FOOTBALL:
+					title_football_shit();
+					hi_byte_stuff();
+					gamemode = GAMEMODE_FOOTBALL;
+					crossPRGBankJump0(drawplayerone);
 					break;
 				case TITLEMODE_POGO:
 					title_pogo_shit();
@@ -798,6 +806,11 @@ void set_title_icon() {
 				mmc3_set_2kb_chr_bank_0(retro_mode == 0 ? NINJABANK : 22);	
 				return;
 				
+			case TITLEMODE_FOOTBALL:
+			case TITLEMODE_MINIFOOTBALL:
+				mmc3_set_2kb_chr_bank_0(FOOTBALLBANK);	
+				return;
+				
 			case TITLEMODE_ROBOT:
 			case TITLEMODE_SPIDER:
 			case TITLEMODE_BALL:
@@ -826,14 +839,14 @@ void roll_new_mode() {
 	currplayer_gravity = GRAVITY_DOWN;
 	update_currplayer_table_idx();
 	currplayer_x_small = 0x08; 
-	currplayer_y_small = 0xA0;
+	currplayer_y_small = (player_mini[0] ? 0xA4 : 0xA0);
 	player_vel_y[0] = 0;
 	tmpi8 = 0;
 	teleport_output = 0xFF;
 	tmp7 = titlemode;
 	do {
 		titlemode = newrand() & 31;
-	} while (titlemode >= TITLEMODE_MINISNAKE || titlemode == TITLEMODE_SNAKE || titlemode == TITLEMODE_FOOTBALL || titlemode == tmp7); // 1st: old sanity check? we have more
+	} while (titlemode == TITLEMODE_MINISNAKE || titlemode == TITLEMODE_SNAKE || titlemode > TITLEMODE_MINIFOOTBALL || titlemode == tmp7); // 1st: old sanity check? we have more
 //	if (titlemode >= 8) {
 //		titlemode = (newrand() & 7) + 8;
 //	}
@@ -868,7 +881,7 @@ void roll_new_mode() {
 	titlecolor2 = menu_color_table[tmp2]; //  most of our colors suck
 	titlecolor3 = menu_color_table[tmp3];
 #endif
-//	titlemode = TITLEMODE_MINIPOGO; 	//debug if you want to force a mode
+	//titlemode = TITLEMODE_MINIFOOTBALL; 	//debug if you want to force a mode
 	if (titlemode >= TITLEMODE_MINICUBE) player_mini[0] = 1;
 	else player_mini[0] = 0;
 	set_title_icon();
@@ -961,6 +974,22 @@ void title_ufo_shit() {
 	} else currplayer_y_small += 4;
 	if (!(newrand() & 15)) teleport_output = 0;
 	
+	bounds_check();
+}	
+
+void title_football_shit() {
+	if (chargepower[0] <= 50 && chargepower[0]) {
+		if ((newrand() & 0xFF) < 0xFB) chargepower[0]++;
+		else { 
+			chargepower[0] = 0;
+			//start jump here
+		
+		}
+	}
+	else if (!chargepower[0]) {
+		if ((newrand() & 0xFF) < 0x08) chargepower[0]++;
+	}
+	else chargepower[0] = 0;
 	bounds_check();
 }	
 void title_cube_shit() {
@@ -1157,63 +1186,3 @@ void choose_menu_theme() {
 }
 #endif
 
-
-void check_practice_point_deletion() {
-	if (practicebuffer || (practice_point_count > 1 && (joypad1.press_select || (mouse.left && mouse.right_press)) && !(joypad1.hold & (PAD_UP | PAD_DOWN)))) {
-				curr_practice_point--;
-				practicebuffer = 0;
-				if (latest_practice_point) latest_practice_point--;
-				if (curr_practice_point >= practice_point_count)
-					curr_practice_point = practice_point_count - 1;
-	}
-}
-
-void end_level_debug() {
-				END_LEVEL_TIMER = 0;
-				kandokidshack4 = 0;
-				oam_clear();
-				gameState = STATE_LVLDONE;
-				//DEBUG_MODE = 0;
-				famistudio_music_stop();
-}				
-
-void decrement_was_on_slope() {
-	if (currplayer_was_on_slope_counter) {
-		currplayer_was_on_slope_counter--;
-		
-		if (!currplayer_was_on_slope_counter) {
-			if (gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_BALL) {
-				// Set carry to 1 if slope is upside down
-				__A__ = (currplayer_slope_type & SLOPE_UPSIDEDOWN) + (256 - SLOPE_UPSIDEDOWN);
-				__A__ = currplayer_table_idx & ~TBLIDX_GRAV;
-				__asm__ ("adc #0 \n tay");
-				// Thus, gravity in the table index is replaced with SLOPE_UPSIDEDOWN
-				switch (gamemode) {
-					case GAMEMODE_BALL:
-						switch (currplayer_slope_type) {
-							case SLOPE_22DEG_UP:
-							case SLOPE_22DEG_UP_UD:
-								currplayer_vel_y += EXIT_SLOPE_BALL_22(get_Y);
-								break;
-							case SLOPE_66DEG_UP:
-							case SLOPE_66DEG_UP_UD:
-								currplayer_vel_y += EXIT_SLOPE_BALL_66(get_Y);
-						}
-						break;
-					case GAMEMODE_CUBE:
-						switch (currplayer_slope_type) {
-							case SLOPE_22DEG_UP:
-							case SLOPE_22DEG_UP_UD:
-								currplayer_vel_y += EXIT_SLOPE_CUBE_22(get_Y);
-								break;
-						}
-						break;
-				}
-			}
-			currplayer_slope_type = 0;
-		}
-	} else {
-		currplayer_last_slope_type = 0;
-		currplayer_slope_type = 0;
-	}	
-}

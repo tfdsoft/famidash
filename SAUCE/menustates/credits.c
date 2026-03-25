@@ -172,4 +172,3 @@ void Lucky_Draw_Text_Stuff() {
 			}
 }
 #endif
-
