@@ -52,17 +52,17 @@ file(chr_menu_iconkit, chr_bank_0) = {
 file(chr_tiles_global, chr_bank_1) = {
     #embed "./chr/dnt/General.bin"
 };    
-file(chr_tiles_grid, chr_bank_1) = {
-    #embed "./chr/dnt/Game_Tiles_Grid.bin"
+file(chr_tiles_checker, chr_bank_1) = {
+    #embed "./chr/dnt/Game_Tiles_Checker.bin"
 };    
-file(chr_tiles_cross, chr_bank_1) = {
-    #embed "./chr/dnt/Game_Tiles_Cross.bin"
+file(chr_tiles_x, chr_bank_1) = {
+    #embed "./chr/dnt/Game_Tiles_X.bin"
 };
 file(chr_tiles_black, chr_bank_1) = {
     #embed "./chr/dnt/Game_Tiles_Black.bin"
 };
-file(chr_tiles_funnylookingsquares, chr_bank_1) = {
-    #embed "./chr/dnt/Game_Tiles_funnylookingsquares.bin"
+file(chr_tiles_chipped, chr_bank_1) = {
+    #embed "./chr/dnt/Game_Tiles_Chipped.bin"
 };
 file(chr_tiles_brick, chr_bank_1) = {
     #embed "./chr/dnt/Game_Tiles_Brick.bin"

@@ -19,10 +19,7 @@ banked(level_header_bank) const struct Level lvl_test_header = {
 
     .tileset = {
         .blocks = {
-            chr_tiles_onedotnine,
-            chr_tiles_cross,
-            chr_tiles_black,
-            chr_tiles_funnylookingsquares,
+            chr_tiles_checker,
         },
         .metatiles = {
             mt_normal_blockset,
