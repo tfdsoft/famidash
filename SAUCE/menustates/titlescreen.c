@@ -13,6 +13,7 @@ void title_robot_shit();
 void title_wave_shit();
 void title_mini_wave_shit();
 void title_swing_shit();
+void title_pogo_shit();
 
 void roll_new_mode();
 void settings();
@@ -26,6 +27,7 @@ const uint8_t BG_Table2[];
 const uint8_t G_Table2[];
 const uint8_t menu_color_table[];
 
+const uint8_t POGO_Title_Jump_Table[];
 const uint8_t UFO_Title_Jump_Table[];
 const uint8_t BALL_Title_Jump_Table[];
 const uint8_t shipFrameTable[];
@@ -350,6 +352,26 @@ void state_menu() {
 					
 					oam_spr(currplayer_x_small, currplayer_y_small, 0x3F, 0x20+xtra);
 					oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x3F, 0x60+xtra);
+					break;
+				case TITLEMODE_POGO:
+					title_pogo_shit();
+					if (teleport_output <= 8) {
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x13, 0x20+xtra);
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x13, 0x60+xtra);
+					}
+					else {
+						oam_spr(currplayer_x_small, currplayer_y_small, 0x11, 0x20+xtra);
+						oam_spr(currplayer_x_small + 8, currplayer_y_small, 0x11, 0x60+xtra);
+					}
+					break;
+				case TITLEMODE_MINIPOGO:
+					title_pogo_shit();
+					if (teleport_output <= 5) {
+						oam_spr(currplayer_x_small, currplayer_y_small - 4, 0x17, 0x20+xtra);
+					}
+					else {
+						oam_spr(currplayer_x_small, currplayer_y_small - 4, 0x15, 0x20+xtra);
+					}
 					break;
 				case TITLEMODE_MINICUBE:
 					title_cube_shit();
@@ -811,7 +833,7 @@ void roll_new_mode() {
 	tmp7 = titlemode;
 	do {
 		titlemode = newrand() & 31;
-	} while (titlemode > TITLEMODE_MINININJA || titlemode == TITLEMODE_POGO || titlemode == TITLEMODE_SNAKE || titlemode == TITLEMODE_FOOTBALL || titlemode == tmp7); // 1st: old sanity check? we have more
+	} while (titlemode >= TITLEMODE_MINISNAKE || titlemode == TITLEMODE_SNAKE || titlemode == TITLEMODE_FOOTBALL || titlemode == tmp7); // 1st: old sanity check? we have more
 //	if (titlemode >= 8) {
 //		titlemode = (newrand() & 7) + 8;
 //	}
@@ -846,7 +868,7 @@ void roll_new_mode() {
 	titlecolor2 = menu_color_table[tmp2]; //  most of our colors suck
 	titlecolor3 = menu_color_table[tmp3];
 #endif
-	//titlemode = TITLEMODE_MINININJA; 	//debug if you want to force a mode
+//	titlemode = TITLEMODE_MINIPOGO; 	//debug if you want to force a mode
 	if (titlemode >= TITLEMODE_MINICUBE) player_mini[0] = 1;
 	else player_mini[0] = 0;
 	set_title_icon();
@@ -963,6 +985,16 @@ void title_cube_shit() {
 	//bounds_check();
 }					
 
+void title_pogo_shit() {
+	if (teleport_output <= 0x22) {
+		currplayer_y_small -= POGO_Title_Jump_Table[teleport_output];		//hop hop
+		teleport_output++;
+	} else currplayer_y_small += 5;
+
+	if (currplayer_y_small >= (player_mini[0] ? 164 : 160)) teleport_output = 0; 	
+
+	bounds_check();
+}
 void title_wave_shit() {
 	tmp2 = newrand() & 63;
 	if (kandoframecnt & 1) { if (tmp2 >= 60) invert_gravity(currplayer_gravity); update_currplayer_table_idx(); }
@@ -1052,6 +1084,22 @@ const uint8_t UFO_Title_Jump_Table[]={
 	-3,	-3,
 	-4,
 	-5,
+};
+
+const uint8_t POGO_Title_Jump_Table[]={
+	6,	6,
+	5,	5, 
+	4,	4,
+	3,	3,
+	2,	2,	2,	2,
+	1,	1,	1,	1,	1,
+	0,
+	-1,	-1,	-1,	-1,	-1,
+	-2,	-2,	-2,	-2,
+	-3,	-3,
+	-4, -4,
+	-5,	-5,
+	-6, -6,
 };
 
 const uint8_t BALL_Title_Jump_Table[]={

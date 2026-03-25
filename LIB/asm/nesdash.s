@@ -2497,7 +2497,7 @@ drawplayer_center_offsets:
 		ora _player_vel_y+1
 		bne @normalstuff
 
-		lda _chargepower
+		lda _chargepower+0			;football
 		beq @normalstuff
 
 		cmp #10
@@ -3119,7 +3119,7 @@ drawplayer_common := _drawplayerone::common
 		ora _player_vel_y+3
 		bne @normalstuff
 
-		lda _chargepower+1
+		lda _chargepower+1		;football
 		beq @normalstuff
 
 		cmp #5
