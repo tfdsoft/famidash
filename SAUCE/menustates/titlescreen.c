@@ -881,7 +881,7 @@ void roll_new_mode() {
 	titlecolor2 = menu_color_table[tmp2]; //  most of our colors suck
 	titlecolor3 = menu_color_table[tmp3];
 #endif
-	//titlemode = TITLEMODE_MINIFOOTBALL; 	//debug if you want to force a mode
+	titlemode = TITLEMODE_NINJA; 	//debug if you want to force a mode
 	if (titlemode >= TITLEMODE_MINICUBE) player_mini[0] = 1;
 	else player_mini[0] = 0;
 	set_title_icon();
@@ -993,7 +993,6 @@ void title_football_shit() {
 	bounds_check();
 }	
 void title_cube_shit() {
-	if (currplayer_y_small == (player_mini[0] ? 164 : 160)) ninjajumps[0] = 3;
 	if (teleport_output <= 0x1A) {
 		currplayer_y_small -= UFO_Title_Jump_Table[teleport_output];		//hop hop
 		teleport_output++;
@@ -1011,7 +1010,9 @@ void title_cube_shit() {
 					player_vel_y[0] = 1;
 					ninjajumps[0]--;
 	} else if (currplayer_y_small < 0x08) { currplayer_y_small = 0x08; teleport_output = 0x0E; }
+	else if (currplayer_y_small == (player_mini[0] ? 164 : 160)) ninjajumps[0] = 3;
 	//bounds_check();
+	
 }					
 
 void title_pogo_shit() {
