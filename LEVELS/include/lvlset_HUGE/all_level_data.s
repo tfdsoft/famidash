@@ -3246,7 +3246,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
 
-.segment "DAT_BANK_7E"	; Total bank size: 8160 bytes
+.segment "DAT_BANK_7E"	; Total bank size: 8150 bytes
 	.export level_data_lookatthislevel
 	level_data_lookatthislevel:
 	; Header

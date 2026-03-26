@@ -1030,7 +1030,7 @@
 		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 2017
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8091 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8081 bytes
 	.export level_data_thetower
 	level_data_thetower:
 	; Header
