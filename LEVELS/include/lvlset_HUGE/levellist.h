@@ -73,6 +73,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// powertrip
 	INSANE,	// danceofviolins
 	INSANE,	// trolledfix
+	INSANE,	// birdbrain
 	INSANE,	// aprettyeasylevel
 	INSANE,	// highlife
 	INSANE,	// extraordinaryexcitement
@@ -126,7 +127,6 @@ const uint8_t difficulty_list[] = {
 	IMPOSSIBLEDEMON,	// silentclubstep
 	IMPOSSIBLEDEMON,	// shardscapes
 	IMPOSSIBLEDEMON,	// element111rg
-	GRANDPADEMON,	// slaughterhouse
 	GRANDPADEMON,	// everyend
 	GRANDPADEMON,	// silentcircles
 	GRANDPADEMON,	// luckydraw
@@ -204,6 +204,7 @@ const uint8_t stars_list[] = {
 	8,	// powertrip
 	8,	// danceofviolins
 	9,	// trolledfix
+	9,	// birdbrain
 	9,	// aprettyeasylevel
 	9,	// highlife
 	9,	// extraordinaryexcitement
@@ -257,7 +258,6 @@ const uint8_t stars_list[] = {
 	10,	// silentclubstep
 	10,	// shardscapes
 	10,	// element111rg
-	10,	// slaughterhouse
 	10,	// everyend
 	10,	// silentcircles
 	10,	// luckydraw

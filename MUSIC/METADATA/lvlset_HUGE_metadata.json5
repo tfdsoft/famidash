@@ -294,6 +294,13 @@
 		},
 		*/
 		{
+			fmsSongName: "Birdbrain",
+			upperText: "BIRDBRAIN",
+			lowerText: "HEV MIX",
+			originalArtist: ["Jamie Paige", "OK GLASS"],
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
 			fmsSongName: "Bit Of A Vibe",
 			upperText: "BIT OF",
 			lowerText: "A VIBE",

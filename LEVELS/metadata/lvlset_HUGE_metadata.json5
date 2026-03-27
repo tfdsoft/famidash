@@ -3618,7 +3618,53 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-		},			
+		},
+		{
+			level: "birdbrain",
+			lowerText: "BIRDBRAIN",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 9,
+			songID: "song_birdbrain",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			spawnYPositionHi: 0x10,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			containsKasaneTeto: false,
+			objectOffsets: [
+				{
+					coordinates: [
+						[9, 18], [17, 20], [138, 14], [138, 16], [174, 17], [183, 14], [206, 15], [286, 19], [345, 15], [368, 16], [758, 14], [761, 14], [627, 9], [332, 15],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[61, 21], [182, 14], [261, 17], [472, 9],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[49, 18], [138, 14], [138, 16], [210, 17], [222, 18], [345, 15], [346, 15], [472, 9], [473, 9], [505, 13], [564, 7], [920, 17],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[4, 19], [49, 19], [151, 14], [164, 15], [305, 19], [392, 13], [492, 11], [500, 14], [525, 5], [716, 10], [728, 11], [895, 17], [900, 18], [910, 10], [928, 18], [956, 18],
+						[123, 14], [135, 16], [145, 16], [298, 20],
+					],
+					offsetY: -8
+				},
+			]
+		},
 		{
 			level: "aprettyeasylevel",
 			upperText: "A PRETTY",
@@ -5824,6 +5870,7 @@
 				},
 			],
 		},
+		/*
 		{
 			level: "slaughterhouse",
 			lowerText: "SLAUGHTERHOUSE",
@@ -5840,7 +5887,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		/*
 		{
 			level: "kratos",
 			lowerText: "KRATOS",

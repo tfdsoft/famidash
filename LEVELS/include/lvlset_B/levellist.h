@@ -30,6 +30,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
 	INSANE,	// danceofviolins
+	INSANE,	// birdbrain
 	INSANE,	// aprettyeasylevel
 	INSANE,	// tetrix
 	INSANE,	// highlife
@@ -66,6 +67,7 @@ const uint8_t stars_list[] = {
 	8,	// subtleoddities
 	8,	// powertrip
 	8,	// danceofviolins
+	9,	// birdbrain
 	9,	// aprettyeasylevel
 	9,	// tetrix
 	9,	// highlife
