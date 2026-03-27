@@ -3394,7 +3394,8 @@
 		},
 		{ 
 			level: "offtomars",
-			lowerText: "OFF TO MARS",
+			upperText: "OFF TO",
+			lowerText: "MARS",
 			decoType: "DECO1",
 			spikeSet: "C",
 			blockSet: "A",
