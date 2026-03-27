@@ -2009,7 +2009,7 @@ early_exit:
 .endproc
 
 ; uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
-.segment "CODE"
+.segment "CODE_2"
 
 .export _calculate_linear_scroll_y
 .proc _calculate_linear_scroll_y
