@@ -30,6 +30,9 @@ file(chr_menu_global, chr_bank_0) = {
 file(chr_menu_buttons, chr_bank_0) = {
     #embed "./chr/dnt/Menu_Buttons.bin"
 };
+file(chr_menu_pause, chr_bank_0) = {
+    #embed "./chr/dnt/Menu_Pause.bin"
+};
 file(chr_menu_difficulties, chr_bank_0) = {
     #embed "./chr/dnt/Menu_Difficulties.bin"
 };

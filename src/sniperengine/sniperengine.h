@@ -64,6 +64,7 @@ __attribute__((section(".aligned"),retain)) struct sprite_buffer {
     unsigned char x;
 } sprite_buffer[64];
 
+extern u8 se_palette_buffer[32];
 extern u8 se_frame_count;
 extern u8 se_ppu_ctrl_var, se_ppu_mask_var;
 extern u16 se_scroll_x, se_scroll_y;

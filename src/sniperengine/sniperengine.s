@@ -52,6 +52,7 @@ mmc3_IRQ_ENABLE  = $e001
 
 .segment "ZEROPAGE"
     se_palette_buffer:  .res 32
+    .export se_palette_buffer
     se_palette_pointer_bg:  .res 2
     se_palette_pointer_spr: .res 2
 
@@ -1985,10 +1986,10 @@ __exit_vram_buffer_noupdate:
     cmp #PPU_PAGE
     beq ppu_stash
 
-    lda __rc5
-    pha
-    lda __rc3
-    pha
+    ;lda __rc5
+    ;pha
+    ;lda __rc3
+    ;pha
 
     ;cpr __rc5, __rc3 ; compare registers
     ;bcc @8
@@ -2014,52 +2015,17 @@ __exit_vram_buffer_noupdate:
     iny 
     jmp @5
     @6:
-    pla
-    sta __rc3
-    pla
-    sta __rc5
+    ;pla
+    ;sta __rc3
+    ;pla
+    ;sta __rc5
 
     @exit:
     rts
 
-
-    
-
-    ; backward copy
-    ;@8:
-    ;lda __rc7
-    ;clc
-    ;adc __rc5
-    ;sta __rc5
-    ;lda __rc7
-    ;clc
-    ;adc __rc3
-    ;sta __rc3
-    ;ldx __rc7
-    ;ldy __rc6
-    ;@9:
-    ;dey
-    ;lda (__rc4), y 
-    ;sta (__rc2), y 
-    ;tya
-    ;bne @9
-    ;@A:
-    ;dec __rc5
-    ;dec __rc3
-    ;txa
-    ;beq @6
-    ;@B:
-    ;dey
-    ;lda (__rc4), y 
-    ;sta (__rc2), y 
-    ;tya
-    ;bne @B
-    ;dex
-    ;jmp @A
-
     ppu_stash:
-    lda __rc5
-    pha
+    ;lda __rc5
+    ;pha
     ldy #0
     ldx __rc7
     beq @5
@@ -2079,8 +2045,8 @@ __exit_vram_buffer_noupdate:
     iny
     jmp @5
     @6:
-    pla
-    sta __rc5
+    ;pla
+    ;sta __rc5
     rts
 .endproc
 
