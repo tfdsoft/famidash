@@ -90,6 +90,9 @@ banked(startup_bank.data) const u8 pal_pausemenu[] = {
 banked(startup_bank.func) void game_pause_menu(){
     se_turn_off_rendering();
 
+    // empty the buffer to prevent visual bugs
+    se_flush_vram_buffer();
+
     se_vram_address(nametable_address_A(0,0));
     se_vram_unrle(nt_pausemenu,0);
 
