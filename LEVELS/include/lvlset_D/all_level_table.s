@@ -6,10 +6,12 @@
 
 _level_list_lo:
 	.byte .lobyte(level_data_demonpark)
+	.byte .lobyte(level_data_infinitecircles)
 	.byte .lobyte(level_data_decode)
 	.byte .lobyte(level_data_clutterfunk2)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_respite)
+	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_goldenhaze)
 	.byte .lobyte(level_data_gameover)
 	.byte .lobyte(level_data_explorers)
@@ -34,10 +36,12 @@ _level_list_lo:
 
 _level_list_hi:
 	.byte .hibyte(level_data_demonpark)
+	.byte .hibyte(level_data_infinitecircles)
 	.byte .hibyte(level_data_decode)
 	.byte .hibyte(level_data_clutterfunk2)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_respite)
+	.byte .hibyte(level_data_skeletalshenanigans)
 	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_gameover)
 	.byte .hibyte(level_data_explorers)
@@ -62,10 +66,12 @@ _level_list_hi:
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_demonpark))
+	.byte .lobyte(.bank(level_data_infinitecircles))
 	.byte .lobyte(.bank(level_data_decode))
 	.byte .lobyte(.bank(level_data_clutterfunk2))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_respite))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_gameover))
 	.byte .lobyte(.bank(level_data_explorers))
@@ -89,32 +95,37 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_silentcircles))
 
 _level_chunk_list_lo:
-	.byte .lobyte(level_data_demoncryogenic_0)
-	.byte .lobyte(level_data_windylandscape_1)
-	.byte .lobyte(level_data_aftercatabath_2)
+	.byte .lobyte(level_data_skeletalshenanigans_0)
+	.byte .lobyte(level_data_demoncryogenic_1)
+	.byte .lobyte(level_data_windylandscape_2)
 	.byte .lobyte(level_data_aftercatabath_3)
+	.byte .lobyte(level_data_aftercatabath_4)
 
 _level_chunk_list_hi:
-	.byte .hibyte(level_data_demoncryogenic_0)
-	.byte .hibyte(level_data_windylandscape_1)
-	.byte .hibyte(level_data_aftercatabath_2)
+	.byte .hibyte(level_data_skeletalshenanigans_0)
+	.byte .hibyte(level_data_demoncryogenic_1)
+	.byte .hibyte(level_data_windylandscape_2)
 	.byte .hibyte(level_data_aftercatabath_3)
+	.byte .hibyte(level_data_aftercatabath_4)
 
 _level_chunk_list_bank:
-	.byte .lobyte(.bank(level_data_demoncryogenic_0))
-	.byte .lobyte(.bank(level_data_windylandscape_1))
-	.byte .lobyte(.bank(level_data_aftercatabath_2))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_0))
+	.byte .lobyte(.bank(level_data_demoncryogenic_1))
+	.byte .lobyte(.bank(level_data_windylandscape_2))
 	.byte .lobyte(.bank(level_data_aftercatabath_3))
+	.byte .lobyte(.bank(level_data_aftercatabath_4))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
 	.byte .lobyte($0000A2)		; demonpark
+	.byte .lobyte($00006F)		; infinitecircles
 	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($000080)		; speedracer
 	.byte .lobyte($0000D0)		; respite
+	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($000078)		; gameover
 	.byte .lobyte($000050)		; explorers
@@ -141,10 +152,12 @@ _level_lengths_lo:
 
 _level_lengths_md:
 	.byte .hibyte($0000A2)		; demonpark
+	.byte .hibyte($00006F)		; infinitecircles
 	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($000080)		; speedracer
 	.byte .hibyte($0000D0)		; respite
+	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($000078)		; gameover
 	.byte .hibyte($000050)		; explorers
@@ -171,10 +184,12 @@ _level_lengths_md:
 
 _level_lengths_hi:
 	.byte .bankbyte($0000A2)		; demonpark
+	.byte .bankbyte($00006F)		; infinitecircles
 	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($000080)		; speedracer
 	.byte .bankbyte($0000D0)		; respite
+	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($000078)		; gameover
 	.byte .bankbyte($000050)		; explorers

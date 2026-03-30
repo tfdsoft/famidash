@@ -39,6 +39,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_dorabaebasic4)
 	.byte .lobyte(level_data_ninox)
 	.byte .lobyte(level_data_dorabaebasic6)
+	.byte .lobyte(level_data_somewhereinaforest)
 	.byte .lobyte(level_data_dreamer)
 	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_hungrymanadventures)
@@ -132,7 +133,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_element111rg)
 	.byte .lobyte(level_data_everyend)
 	.byte .lobyte(level_data_silentcircles)
-	.byte .lobyte(level_data_luckydraw)
 
 _level_list_hi:
 	.byte .hibyte(level_data_stereomadness)
@@ -169,6 +169,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_dorabaebasic4)
 	.byte .hibyte(level_data_ninox)
 	.byte .hibyte(level_data_dorabaebasic6)
+	.byte .hibyte(level_data_somewhereinaforest)
 	.byte .hibyte(level_data_dreamer)
 	.byte .hibyte(level_data_lookatthislevel)
 	.byte .hibyte(level_data_hungrymanadventures)
@@ -262,7 +263,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_element111rg)
 	.byte .hibyte(level_data_everyend)
 	.byte .hibyte(level_data_silentcircles)
-	.byte .hibyte(level_data_luckydraw)
 
 _level_list_bank:
 	.byte .lobyte(.bank(level_data_stereomadness))
@@ -299,6 +299,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_dorabaebasic4))
 	.byte .lobyte(.bank(level_data_ninox))
 	.byte .lobyte(.bank(level_data_dorabaebasic6))
+	.byte .lobyte(.bank(level_data_somewhereinaforest))
 	.byte .lobyte(.bank(level_data_dreamer))
 	.byte .lobyte(.bank(level_data_lookatthislevel))
 	.byte .lobyte(.bank(level_data_hungrymanadventures))
@@ -392,88 +393,90 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_element111rg))
 	.byte .lobyte(.bank(level_data_everyend))
 	.byte .lobyte(.bank(level_data_silentcircles))
-	.byte .lobyte(.bank(level_data_luckydraw))
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_hexagonforce_0)
 	.byte .lobyte(level_data_dash_1)
-	.byte .lobyte(level_data_ajollyretrochristmas_2)
-	.byte .lobyte(level_data_cryogenic_3)
-	.byte .lobyte(level_data_thesteamworks_4)
-	.byte .lobyte(level_data_astronomicalexpedition_5)
+	.byte .lobyte(level_data_somewhereinaforest_2)
+	.byte .lobyte(level_data_ajollyretrochristmas_3)
+	.byte .lobyte(level_data_cryogenic_4)
+	.byte .lobyte(level_data_thesteamworks_5)
 	.byte .lobyte(level_data_astronomicalexpedition_6)
 	.byte .lobyte(level_data_astronomicalexpedition_7)
-	.byte .lobyte(level_data_rainbowtylenol_8)
-	.byte .lobyte(level_data_subtleoddities_9)
-	.byte .lobyte(level_data_birdbrain_10)
-	.byte .lobyte(level_data_highlife_11)
-	.byte .lobyte(level_data_extraordinaryexcitement_12)
-	.byte .lobyte(level_data_deathmoon_13)
-	.byte .lobyte(level_data_motion_14)
-	.byte .lobyte(level_data_skeletalshenanigans_15)
-	.byte .lobyte(level_data_trythisgd_16)
-	.byte .lobyte(level_data_demoncryogenic_17)
-	.byte .lobyte(level_data_futurefunkfix_18)
+	.byte .lobyte(level_data_astronomicalexpedition_8)
+	.byte .lobyte(level_data_rainbowtylenol_9)
+	.byte .lobyte(level_data_subtleoddities_10)
+	.byte .lobyte(level_data_birdbrain_11)
+	.byte .lobyte(level_data_highlife_12)
+	.byte .lobyte(level_data_extraordinaryexcitement_13)
+	.byte .lobyte(level_data_deathmoon_14)
+	.byte .lobyte(level_data_motion_15)
+	.byte .lobyte(level_data_skeletalshenanigans_16)
+	.byte .lobyte(level_data_trythisgd_17)
+	.byte .lobyte(level_data_demoncryogenic_18)
 	.byte .lobyte(level_data_futurefunkfix_19)
-	.byte .lobyte(level_data_eon_20)
-	.byte .lobyte(level_data_windylandscape_21)
-	.byte .lobyte(level_data_sonicwave_22)
-	.byte .lobyte(level_data_everyend_23)
+	.byte .lobyte(level_data_futurefunkfix_20)
+	.byte .lobyte(level_data_eon_21)
+	.byte .lobyte(level_data_windylandscape_22)
+	.byte .lobyte(level_data_sonicwave_23)
 	.byte .lobyte(level_data_everyend_24)
+	.byte .lobyte(level_data_everyend_25)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_hexagonforce_0)
 	.byte .hibyte(level_data_dash_1)
-	.byte .hibyte(level_data_ajollyretrochristmas_2)
-	.byte .hibyte(level_data_cryogenic_3)
-	.byte .hibyte(level_data_thesteamworks_4)
-	.byte .hibyte(level_data_astronomicalexpedition_5)
+	.byte .hibyte(level_data_somewhereinaforest_2)
+	.byte .hibyte(level_data_ajollyretrochristmas_3)
+	.byte .hibyte(level_data_cryogenic_4)
+	.byte .hibyte(level_data_thesteamworks_5)
 	.byte .hibyte(level_data_astronomicalexpedition_6)
 	.byte .hibyte(level_data_astronomicalexpedition_7)
-	.byte .hibyte(level_data_rainbowtylenol_8)
-	.byte .hibyte(level_data_subtleoddities_9)
-	.byte .hibyte(level_data_birdbrain_10)
-	.byte .hibyte(level_data_highlife_11)
-	.byte .hibyte(level_data_extraordinaryexcitement_12)
-	.byte .hibyte(level_data_deathmoon_13)
-	.byte .hibyte(level_data_motion_14)
-	.byte .hibyte(level_data_skeletalshenanigans_15)
-	.byte .hibyte(level_data_trythisgd_16)
-	.byte .hibyte(level_data_demoncryogenic_17)
-	.byte .hibyte(level_data_futurefunkfix_18)
+	.byte .hibyte(level_data_astronomicalexpedition_8)
+	.byte .hibyte(level_data_rainbowtylenol_9)
+	.byte .hibyte(level_data_subtleoddities_10)
+	.byte .hibyte(level_data_birdbrain_11)
+	.byte .hibyte(level_data_highlife_12)
+	.byte .hibyte(level_data_extraordinaryexcitement_13)
+	.byte .hibyte(level_data_deathmoon_14)
+	.byte .hibyte(level_data_motion_15)
+	.byte .hibyte(level_data_skeletalshenanigans_16)
+	.byte .hibyte(level_data_trythisgd_17)
+	.byte .hibyte(level_data_demoncryogenic_18)
 	.byte .hibyte(level_data_futurefunkfix_19)
-	.byte .hibyte(level_data_eon_20)
-	.byte .hibyte(level_data_windylandscape_21)
-	.byte .hibyte(level_data_sonicwave_22)
-	.byte .hibyte(level_data_everyend_23)
+	.byte .hibyte(level_data_futurefunkfix_20)
+	.byte .hibyte(level_data_eon_21)
+	.byte .hibyte(level_data_windylandscape_22)
+	.byte .hibyte(level_data_sonicwave_23)
 	.byte .hibyte(level_data_everyend_24)
+	.byte .hibyte(level_data_everyend_25)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_hexagonforce_0))
 	.byte .lobyte(.bank(level_data_dash_1))
-	.byte .lobyte(.bank(level_data_ajollyretrochristmas_2))
-	.byte .lobyte(.bank(level_data_cryogenic_3))
-	.byte .lobyte(.bank(level_data_thesteamworks_4))
-	.byte .lobyte(.bank(level_data_astronomicalexpedition_5))
+	.byte .lobyte(.bank(level_data_somewhereinaforest_2))
+	.byte .lobyte(.bank(level_data_ajollyretrochristmas_3))
+	.byte .lobyte(.bank(level_data_cryogenic_4))
+	.byte .lobyte(.bank(level_data_thesteamworks_5))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition_6))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition_7))
-	.byte .lobyte(.bank(level_data_rainbowtylenol_8))
-	.byte .lobyte(.bank(level_data_subtleoddities_9))
-	.byte .lobyte(.bank(level_data_birdbrain_10))
-	.byte .lobyte(.bank(level_data_highlife_11))
-	.byte .lobyte(.bank(level_data_extraordinaryexcitement_12))
-	.byte .lobyte(.bank(level_data_deathmoon_13))
-	.byte .lobyte(.bank(level_data_motion_14))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans_15))
-	.byte .lobyte(.bank(level_data_trythisgd_16))
-	.byte .lobyte(.bank(level_data_demoncryogenic_17))
-	.byte .lobyte(.bank(level_data_futurefunkfix_18))
+	.byte .lobyte(.bank(level_data_astronomicalexpedition_8))
+	.byte .lobyte(.bank(level_data_rainbowtylenol_9))
+	.byte .lobyte(.bank(level_data_subtleoddities_10))
+	.byte .lobyte(.bank(level_data_birdbrain_11))
+	.byte .lobyte(.bank(level_data_highlife_12))
+	.byte .lobyte(.bank(level_data_extraordinaryexcitement_13))
+	.byte .lobyte(.bank(level_data_deathmoon_14))
+	.byte .lobyte(.bank(level_data_motion_15))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_16))
+	.byte .lobyte(.bank(level_data_trythisgd_17))
+	.byte .lobyte(.bank(level_data_demoncryogenic_18))
 	.byte .lobyte(.bank(level_data_futurefunkfix_19))
-	.byte .lobyte(.bank(level_data_eon_20))
-	.byte .lobyte(.bank(level_data_windylandscape_21))
-	.byte .lobyte(.bank(level_data_sonicwave_22))
-	.byte .lobyte(.bank(level_data_everyend_23))
+	.byte .lobyte(.bank(level_data_futurefunkfix_20))
+	.byte .lobyte(.bank(level_data_eon_21))
+	.byte .lobyte(.bank(level_data_windylandscape_22))
+	.byte .lobyte(.bank(level_data_sonicwave_23))
 	.byte .lobyte(.bank(level_data_everyend_24))
+	.byte .lobyte(.bank(level_data_everyend_25))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -513,6 +516,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A4)		; dorabaebasic4
 	.byte .lobyte($00007B)		; ninox
 	.byte .lobyte($000090)		; dorabaebasic6
+	.byte .lobyte($00009D)		; somewhereinaforest
 	.byte .lobyte($0000AC)		; dreamer
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($00006A)		; hungrymanadventures
@@ -606,7 +610,6 @@ _level_lengths_lo:
 	.byte .lobyte($0000A2)		; element111rg
 	.byte .lobyte($0002DC)		; everyend
 	.byte .lobyte($000084)		; silentcircles
-	.byte .lobyte($000089)		; luckydraw
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -645,6 +648,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A4)		; dorabaebasic4
 	.byte .hibyte($00007B)		; ninox
 	.byte .hibyte($000090)		; dorabaebasic6
+	.byte .hibyte($00009D)		; somewhereinaforest
 	.byte .hibyte($0000AC)		; dreamer
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($00006A)		; hungrymanadventures
@@ -738,7 +742,6 @@ _level_lengths_md:
 	.byte .hibyte($0000A2)		; element111rg
 	.byte .hibyte($0002DC)		; everyend
 	.byte .hibyte($000084)		; silentcircles
-	.byte .hibyte($000089)		; luckydraw
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -777,6 +780,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A4)		; dorabaebasic4
 	.byte .bankbyte($00007B)		; ninox
 	.byte .bankbyte($000090)		; dorabaebasic6
+	.byte .bankbyte($00009D)		; somewhereinaforest
 	.byte .bankbyte($0000AC)		; dreamer
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($00006A)		; hungrymanadventures
@@ -870,7 +874,6 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A2)		; element111rg
 	.byte .bankbyte($0002DC)		; everyend
 	.byte .bankbyte($000084)		; silentcircles
-	.byte .bankbyte($000089)		; luckydraw
 
 .endif
 .endif

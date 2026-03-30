@@ -36,6 +36,7 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// dorabaebasic4
 	NORMAL,	// ninox
 	NORMAL,	// dorabaebasic6
+	NORMAL,	// somewhereinaforest
 	HARD,	// dreamer
 	HARD,	// lookatthislevel
 	HARD,	// hungrymanadventures
@@ -129,7 +130,6 @@ const uint8_t difficulty_list[] = {
 	IMPOSSIBLEDEMON,	// element111rg
 	GRANDPADEMON,	// everyend
 	GRANDPADEMON,	// silentcircles
-	GRANDPADEMON,	// luckydraw
 };
 
 const uint8_t stars_list[] = {
@@ -167,6 +167,7 @@ const uint8_t stars_list[] = {
 	3,	// dorabaebasic4
 	3,	// ninox
 	3,	// dorabaebasic6
+	3,	// somewhereinaforest
 	4,	// dreamer
 	4,	// lookatthislevel
 	4,	// hungrymanadventures
@@ -260,5 +261,4 @@ const uint8_t stars_list[] = {
 	10,	// element111rg
 	10,	// everyend
 	10,	// silentcircles
-	10,	// luckydraw
 };

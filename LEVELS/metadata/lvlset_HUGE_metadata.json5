@@ -1968,6 +1968,51 @@
 			]
 		},
 		{
+			level: "somewhereinaforest",
+			upperText: "SOMEWHERE",
+			lowerText: "IN A FOREST",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "NORMAL",
+			stars: 3,
+			songID: "song_somewhere_in_a_forest",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[65, 25], [111, 25], [375, 15], [387, 19], [403, 19], [507, 15], [519, 10], [946, 25], [961, 24], [965, 26], [213, 25], [946, 21], [950, 20], [955, 17], [738, 9],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[386, 18], [707, 9], [717, 9], [797, 17],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[507, 14], [878, 22], [274, 24], [457, 18], [467, 21], [670, 10], [650, 9], [713, 8],
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[6, 20], [14, 19], [24, 18], [38, 20], [52, 19], [273, 23], [614, 4],
+					],
+					offsetY: +8,
+					offsetX: +8
+				},
+			]
+		},
+		{
 			level: "dreamer",
 			lowerText: "DREAMER",
 			decoType: "DECO1",
@@ -6046,6 +6091,7 @@
 				},
 			]
 		},
+		/*
 		{
 			level: "luckydraw",
 			lowerText: "LUCKY DRAW",
@@ -6061,7 +6107,8 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
-		},		
+		},
+		*/
 //		{
 //			level: "test8",
 //			lowerText: "TEST8",

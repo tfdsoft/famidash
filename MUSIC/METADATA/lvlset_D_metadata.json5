@@ -122,6 +122,12 @@
 			originalArtistText: "WATERFLAME",
 		},
 		{
+			fmsSongName: "Infinite Power",
+			upperText: "INFINITE",
+			lowerText: "POWER",
+			originalArtistText: "THEFATRAT",
+		},	
+		{
 			fmsSongName: "Jawbreaker",
 			lowerText: "JAWBREAKER",
 			originalArtistText: "RUKKUS",
@@ -135,6 +141,12 @@
 			fmsSongName: "lost",
 			lowerText: "LOST",
 			originalArtistText: "CRIM3S",
+		},
+		{
+			fmsSongName: "Slash Inferno",
+			upperText: "SLASH",
+			lowerText: "INFERNO",
+			originalArtistText: "WF TEM BKIT",
 		},
 		{
 			fmsSongName: "Slow Down",
