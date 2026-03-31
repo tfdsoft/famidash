@@ -194,7 +194,7 @@
 			lowerText: "2NES",
 			originalArtist: "Ranedom",
 			coveringArtist: "Ranedom",
-		},		
+		},
 		{
 			fmsSongName: "against the odds redux",
 			upperText: "8BIT AGAINST",
@@ -425,6 +425,7 @@
 			originalArtist: "ElAngel378",
 			coveringArtist: "ElAngel378",
 		},
+		/*
 		{
 			fmsSongName: "FREEDOM DiVE",
 			upperText: "FREEDOM",
@@ -432,7 +433,6 @@
 			originalArtist: "XI",
 			coveringArtist: "SeaGlowingPro",
 		},
-		/*
 		{
 			fmsSongName: "Glint",
 			lowerText: "GLINT",
