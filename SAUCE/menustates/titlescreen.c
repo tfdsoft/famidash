@@ -114,23 +114,23 @@ void state_menu() {
 	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
 
 	#if !__VS_SYSTEM
-		#if LEVELSET == 'A'
-			if (LEVELCOMPLETE[0] && 
-			LEVELCOMPLETE[1] && 
-			LEVELCOMPLETE[2] && 
-			LEVELCOMPLETE[3] && 
-			LEVELCOMPLETE[4] && 
-			LEVELCOMPLETE[5] && 
-			LEVELCOMPLETE[6] && 
-			LEVELCOMPLETE[7] && 
-			LEVELCOMPLETE[8] && 
-			LEVELCOMPLETE[9] && 
-			LEVELCOMPLETE[0x0A] && 
-			LEVELCOMPLETE[0x0B] && 
-			LEVELCOMPLETE[0x0C]) all_levels_complete = 0xFC;
-		#else
+		//#if LEVELSET == 'A'
+		//	if (LEVELCOMPLETE[0] && 
+		//	LEVELCOMPLETE[1] && 
+		//	LEVELCOMPLETE[2] && 
+		//	LEVELCOMPLETE[3] && 
+		//	LEVELCOMPLETE[4] && 
+		//	LEVELCOMPLETE[5] && 
+		//	LEVELCOMPLETE[6] && 
+		//	LEVELCOMPLETE[7] && 
+		//	LEVELCOMPLETE[8] && 
+		//	LEVELCOMPLETE[9] && 
+		//	LEVELCOMPLETE[0x0A] && 
+		//	LEVELCOMPLETE[0x0B] && 
+		//	LEVELCOMPLETE[0x0C]) all_levels_complete = 0xFC;
+		//#else
 			all_levels_complete = 0xFC;
-		#endif
+		//#endif
 	#endif
 	// Palette
 	if (all_levels_complete == 0xFC) pal_bg(splashMenu2);
@@ -139,7 +139,6 @@ void state_menu() {
 	// Tilemap 1
 	vram_adr(NAMETABLE_A);
 	vram_unrle(game_start_screen);
-	vram_adr(NAMETABLE_B);
 	vram_unrle(game_start_screen);
 
 	// Tilemap 2
@@ -208,7 +207,7 @@ void state_menu() {
 	#else
 
 	#if !__HUGE_ROM
-	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menu_music]);
+	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(song_desert_city);
 	#else
 	if (menuMusicCurrentlyPlaying == 0 && !nestopia) music_play(xbgmlookuptable[menutheme]);
 	#endif
@@ -767,9 +766,9 @@ void state_menu() {
 			case TITLE_BTN_SOUNDTEST:
 				gameState = STATE_SOUNDTEST;
 				return;
-			case TITLE_BTN_SETTINGS: 
-				gameState = STATE_SETTINGS;
-				return;
+			//case TITLE_BTN_SETTINGS: 
+			//	gameState = STATE_SETTINGS;
+			//	return;
 			case TITLE_BTN_INSTRUCTIONS:
 				tmp2 = 0;
 				gameState = STATE_INSTRUCTIONS;
@@ -779,9 +778,12 @@ void state_menu() {
 				gameState = STATE_FUNSETTINGS;
 				return;
 		#endif
-			case TITLE_BTN_CUSTOMIZE: 
-				gameState = STATE_CUSTOMIZE;
-				return;
+			//case TITLE_BTN_CUSTOMIZE: 
+			//	gameState = STATE_CUSTOMIZE;
+			//	return;
+		default:
+			sfx_play(sfx_invalid,0);
+			return;
 	};
 	
 }

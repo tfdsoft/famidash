@@ -5,16 +5,6 @@ RIFFChunkStart "tlbl"
 .asciiz "Stereo Madness"
 .asciiz "Back On Track"
 .asciiz "Polargeist"
-.asciiz "Dry Out"
-.asciiz "Base After Base"
-.asciiz "Cant Let Go ~ Can't Let Go"
-.asciiz "Jumper"
-.asciiz "Time Machine"
-.asciiz "Cycles"
-.asciiz "xStep"
-.asciiz "Clutterfunk"
-.asciiz "Theory Of Everything"
-.asciiz "Electroman Adventures"
 .asciiz "Practice ~ Stay Inside Me"
 .asciiz "Death SFX"
 .asciiz "Click SFX"
@@ -28,23 +18,12 @@ RIFFChunkStart "tlbl"
 .asciiz "Invalid SFX"
 .asciiz "Achievement Get SFX"
 .asciiz "Geometry Dash Voice Clip"
-.asciiz "FIRE IN THE HOLE! Voice Clip"
 
 RIFFChunkStart "taut"
 .asciiz "Original by RobTop, covered by Zenith302"
 .asciiz "Original by ForeverBound, covered by Zenith302, UserSniper"
 .asciiz "Original by DJVI, covered by aquamarine.gay"
 .asciiz "Original by Step, covered by UserSniper, Zenith302, Vikrinox"
-.asciiz "Original by DJVI, covered by UserSniper"
-.asciiz "Original by DJVI, covered by Zenith302, UserSniper, Vikrinox, alexmush"
-.asciiz "Original by DJVI, covered by UserSniper, alexmush"
-.asciiz "Original by Waterflame, covered by zukinnyk, UserSniper, Zenith302"
-.asciiz "Original by Waterflame, covered by Zenith302, Vikrinox, alexmush"
-.asciiz "Original by DJVI, covered by aquamarine.gay, alexmush"
-.asciiz "Original by DJVI, covered by Vikrinox, alexmush"
-.asciiz "Original by Waterflame, covered by Zenith302, aquamarine.gay, Vikrinox"
-.asciiz "Original by Dj-Nate, covered by leejh20, UserSniper, Vikrinox, Zenith302"
-.asciiz "Original by Waterflame, covered by cloud54, UserSniper, alexmush"
 .asciiz "Original by OcularNebula, covered by UserSniper"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
@@ -58,32 +37,25 @@ RIFFChunkStart "taut"
 .asciiz "UserSniper"
 .asciiz "UserSniper"
 .asciiz "VA: MDK"
-.asciiz "VA: Joe"
 
 RIFFChunkStart "time"
 .if REGION = 0
 .dword 60034, 85550, 82817, 90700
-.dword 81433, 85000, 80750, 86467
-.dword 96067, 85933, 82350, 96583
-.dword 89000, 87800, 479634, 383
-.dword 50, 3167, 683, 100
-.dword 683, 683, 650, 967
-.dword 633, 950, 1150, 1650
+.dword 479634, 383, 50, 3167
+.dword 683, 100, 683, 683
+.dword 650, 967, 633, 950
+.dword 1150
 .else
 .dword 72160, 102840, 99540, 109000
-.dword 97880, 102160, 97040, 104100
-.dword 115460, 103280, 98980, 116080
-.dword 106960, 105520, 576760, 460
-.dword 40, 3020, 700, 120
-.dword 820, 820, 680, 920
-.dword 640, 1140, 1100, 1650
+.dword 576760, 460, 40, 3020
+.dword 700, 120, 820, 820
+.dword 680, 920, 640, 1140
+.dword 1100
 .endif
 
 RIFFChunkStart "fade"
 .dword 4294967295, 0, 0, 0
+.dword 4294967295, 0, 0, 0
 .dword 0, 0, 0, 0
 .dword 0, 0, 0, 0
-.dword 0, 0, 4294967295, 0
-.dword 0, 0, 0, 0
-.dword 0, 0, 0, 0
-.dword 0, 0, 0, 0
+.dword 0

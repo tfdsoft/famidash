@@ -18,7 +18,7 @@
 			}
 		},
 		{
-			fmsSongName: "Stereo Madness",
+			fmsSongName: "Retray Madness",
 			upperText: "STEREO ",
 			lowerText: "MADNESS",
 			originalArtistText: "FOREVERBOUND",
@@ -34,7 +34,7 @@
 			}
 		},
 		{
-			fmsSongName: "Back on Track",
+			fmsSongName: "Back on ReTraY",
 			upperText: "BACK ON",
 			lowerText: "TRACK",
 			originalArtistText: "DJVI",
@@ -50,7 +50,7 @@
 			}
 		},
 		{
-			fmsSongName: "Polargeist",
+			fmsSongName: "Polartray",
 			lowerText: "POLARGEIST",
 			originalArtistText: "STEP",
 			vsSystemEnabled: true,
@@ -64,215 +64,6 @@
 				durationPAL: 109000
 			}
 		},
-		{
-			fmsSongName: "Dry Out",
-			lowerText: "DRY OUT",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Dry Out",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "UserSniper"
-				},
-				durationNTSC: 81433,
-				durationPAL: 97880
-			}
-		},
-		{
-			fmsSongName: "Base after Base",
-			upperText: "BASE AFTER",
-			lowerText: "BASE",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Base After Base",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "Zenith302, UserSniper, Vikrinox, alexmush"
-				},
-				durationNTSC: 85000,
-				durationPAL: 102160
-			}
-		},
-		{
-			fmsSongName: "Can't Let Go",
-			lowerText: "CANT LET GO",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Cant Let Go ~ Can't Let Go",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "UserSniper, alexmush"
-				},
-				durationNTSC: 80750,
-				durationPAL: 97040
-			}
-		},
-		{
-			fmsSongName: "Jumper",
-			lowerText: "JUMPER",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Jumper",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "zukinnyk, UserSniper, Zenith302"
-				},
-				durationNTSC: 86467,
-				durationPAL: 104100
-			}
-		},
-		{
-			fmsSongName: "Time Machine",
-			lowerText: "TIME MACHINE",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Time Machine",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Zenith302, Vikrinox, alexmush"
-				},
-				durationNTSC: 96067,
-				durationPAL: 115460
-			}
-		},
-		{
-			fmsSongName: "Cycles",
-			lowerText: "CYCLES",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Cycles",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "aquamarine.gay, alexmush"
-				},
-				durationNTSC: 85933,
-				durationPAL: 103280
-			}
-		},
-		{
-			fmsSongName: "xStep",
-			lowerText: "XSTEP",
-			originalArtistText: "DJVI",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "xStep",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "Vikrinox, alexmush"
-				},
-				durationNTSC: 82350,
-				durationPAL: 98980
-			}
-		},
-		{
-			fmsSongName: "Clutterfunk",
-			lowerText: "CLUTTERFUNK",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Clutterfunk",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Zenith302, aquamarine.gay, Vikrinox"
-				},
-				durationNTSC: 96583,
-				durationPAL: 116080
-			}
-		},
-		{
-			fmsSongName: "Theory of Everything",
-			upperText: "THEORY OF",
-			lowerText: "EVERYTHING",
-			originalArtistText: "DJ NATE",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Theory Of Everything",
-				trackAuthor: {
-					original: "Dj-Nate",
-					cover: "leejh20, UserSniper, Vikrinox, Zenith302"
-				},
-				durationNTSC: 89000,
-				durationPAL: 106960
-			}
-		},
-		{
-			fmsSongName: "Electroman Adventures",
-			upperText: "ELECTROMAN",
-			lowerText: "ADVENTURES",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Electroman Adventures",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "cloud54, UserSniper, alexmush"
-				},
-				durationNTSC: 87800,
-				durationPAL: 105520
-			}
-		},
-		{
-			fmsSongName: "Clubstep",
-			lowerText: "CLUBSTEP",
-			originalArtistText: "DJ NATE",
-		},
-		{
-			fmsSongName: "Electrodynamix",
-			lowerText: "ELECTRODYNAMIX",
-			originalArtistText: "DJ NATE",
-		},
-		{
-			fmsSongName: "Hexagon Force",
-			upperText: "HEXAGON",
-			lowerText: "FORCE",
-			originalArtistText: "WATERFLAME",
-		},
-		{
-			fmsSongName: "Blast Processing",
-			upperText: "BLAST",
-			lowerText: "PROCESSING",
-			originalArtistText: "WATERFLAME",
-		},
-		{
-			fmsSongName: "TOE 2",
-			upperText: "THEORY OF",
-			lowerText: "EVERYTHING 2",
-			originalArtistText: "DJ NATE",
-		},
-		{
-			fmsSongName: "Geometrical Dominator",
-			upperText: "GEOMETRICAL",
-			lowerText: "DOMINATOR",
-			originalArtistText: "WATERFLAME",
-		},
-		{
-			fmsSongName: "Deadlocked",
-			lowerText: "DEADLOCKED",
-			originalArtistText: "F777",
-		},
-		{
-			fmsSongName: "Fingerdash",
-			lowerText: "FINGERDASH",
-			originalArtistText: "MDK",
-		},
-		{
-			fmsSongName: "Dash",
-			lowerText: "DASH",
-			originalArtistText: "MDK",
-		},
-		/*
-		{
-			fmsSongName: "Explorers",
-			lowerText: "EXPLORERS",
-			originalArtistText: "HINKIK",
-		},
-		*/
 		{
 			fmsSongName: "Desert City",
 			lowerText: "DESERT CITY",
@@ -308,23 +99,12 @@
 			vsSystemEnabled: false
 		},
 		{
-			fmsSongName: "atthespeedoflight",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 1",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "atthespeedoflight2",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT PT 2",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "Extraordinary Excitement",
-			upperText: "EXTRAORDINARY",
-			lowerText: "EXCITEMENT",
-			originalArtistText: "SEAGLOWINGPRO",
-		},
+			fmsSongName: "Youve been Trolled",
+			upperText: "YOUVE BEEN",
+			lowerText: "TROLLED",
+			originalArtist: "TheClydeCash",
+			coveringArtist: "SeaGlowingPro",
+		},	
 		{
 			fmsSongName: "retray",
 			upperText: "GOLDEN HAZE",
@@ -332,43 +112,11 @@
 			originalArtistText: "DETIOUSMUSIC",
 		},
 		{
-			fmsSongName: "Ground to Space",
+			fmsSongName: "Ground to ReTraY",
 			upperText: "GROUND TO",
 			lowerText: "SPACE",
-			originalArtistText: "SEAGLOWINGPRO",
-		},
-		{
-			fmsSongName: "haunted woods",
-			lowerText: "HAUNTED WOODS",
-			originalArtistText: "WATERFLAME",
-		},
-		{
-			fmsSongName: "infernoplex",
-			lowerText: "INFERNOPLEX",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "just right",
-			lowerText: "JUST RIGHT",
-			originalArtistText: "DAN HARRISON B",
-			vsSystemEnabled: false
-		},
-		{
-			fmsSongName: "midnight",
-			lowerText: "MIDNIGHT",
-			originalArtistText: "CORNANDBEANS",
-		},
-		{
-			fmsSongName: "rainbow tylenol",
-			upperText: "RAINBOW",
-			lowerText: "TYLENOL",
-			originalArtistText: "KITSUNE2",
-		},
-		{
-			fmsSongName: "stalemate greif cut",
-			upperText: "STALEMATE",
-			lowerText: "GREIF CUT",
-			originalArtistText: "KAYOSZX",
+			originalArtist: "SeaGlowingPro",
+			coveringArtist: ["SeaGlowingPro", "ElAngel378"]
 		},
 	],
 	SFX: [
@@ -475,7 +223,7 @@
 	PCM: [
 		{
 			segment: "PCM_BANK",
-			path: "MUSIC/PCM/SSDPCM2-geometryDash.pcm",
+			path: "MUSIC/PCM/SSDPCM2-incorrect.pcm",
 			sampleRateNTSC: 4,
 			sampleRatePAL: 3,
 			nsfData: {
@@ -485,18 +233,6 @@
 				durationPAL: 1100
 			}
 		},
-		{
-			segment: "PCM_BANK_B",
-			path: "MUSIC/PCM/SSDPCM2-fire.pcm",
-			sampleRateNTSC: 10,
-			sampleRatePAL: 8,
-			nsfData: {
-				trackLabel: "FIRE IN THE HOLE! Voice Clip",
-				trackAuthor: "VA: Joe",
-				durationNTSC: 1650,
-				durationPAL: 1650
-			}
-		}
 	],
 	dpcmAligner: "dpcm"
 }

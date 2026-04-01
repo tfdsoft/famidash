@@ -31,11 +31,11 @@
 // Enable Debug Mode
 // Activated by pressing SELECT during gameplay
 // Recommended to be disabled for release builds
-#define DEBUG_MODE_ENABLED 1
+#define DEBUG_MODE_ENABLED 0
 //
 // Enable kandokidshackX Variables
 // Activated in convoluted methods
-#define KANDOKIDSHACKX_ENABLED 1
+#define KANDOKIDSHACKX_ENABLED 0
 // ============================================================
 
 
@@ -50,7 +50,7 @@
 //
 // Beta Build
 // uncomment if compiling a demo or beta build.
-#define FLAG_BETA_BUILD
+//#define FLAG_BETA_BUILD
 //
 // Major Version Number 
 // set if releasing a demo/beta.
@@ -58,11 +58,11 @@
 //
 // Minor Version Number
 // increment by 1 for officially released patches.
-#define FLAG_MIN_VER '2'
+#define FLAG_MIN_VER '3'
 //
 // Patch Version Number
 // increment by 1 for patches
-#define FLAG_PATCH_VER '8'
+#define FLAG_PATCH_VER '0'
 // ============================================================
 
 

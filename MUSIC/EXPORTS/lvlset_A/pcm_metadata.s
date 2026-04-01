@@ -2,12 +2,9 @@
 
 Bank:
 	.byte <.bank(pcmData0)
-	.byte <.bank(pcmData1)
 
 SampleRate_NTSC:   ; Also applies to Dendy, as it is derived from the CPU speed
 	.byte 4
-	.byte 10
 
 SampleRate_PAL:
 	.byte 3
-	.byte 8

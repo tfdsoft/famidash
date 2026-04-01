@@ -59,7 +59,6 @@ void state_credits(){
 
 	vram_adr(NAMETABLE_A);
 	vram_unrle(Credits);
-	vram_adr(NAMETABLE_B);
 	vram_unrle(Credits2);
 	#if !__THE_ALBUM
 		vram_adr(NAMETABLE_D);

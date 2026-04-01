@@ -76,6 +76,7 @@ void main(){
 				break;
 			}
 			case STATE_SAVEVALIDATE: {
+				sfx_play(sfx_max,0);
 				#if !__VS_SYSTEM
 					music_play(song_scheming_weasel);
 				#endif
