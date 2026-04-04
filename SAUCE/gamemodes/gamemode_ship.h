@@ -29,7 +29,7 @@ void ship_movement(){
 		tmpgravity = SHIP_GRAVITY_HOLD_FALL(currplayer_table_idx);
 	}
 
-	if (tmp2 ^ (currplayer_gravity ? 1 : 0)) {
+	if ((currplayer_gravity ? 1 : 0) ^ tmp2) {
 		tmpgravity = -tmpgravity;
 	}
 

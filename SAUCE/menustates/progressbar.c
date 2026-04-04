@@ -126,7 +126,7 @@ void draw_percentage() {
 		crossPRGBankJump0(put_number);
 	}
 
-	if (hexToDecOutputBuffer[2] | hexToDecOutputBuffer[1]) {
+	if (hexToDecOutputBuffer[2] || hexToDecOutputBuffer[1]) {
 		tmp1 += 8;					    		   // x
 		high_byte(tmp6) = hexToDecOutputBuffer[1]; // number
 		crossPRGBankJump0(put_number);

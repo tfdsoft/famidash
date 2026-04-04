@@ -210,8 +210,13 @@ char sprite_load_special_behavior(){
 
 	switch(type) {
 		#ifdef FLAG_KANDO_FUN_STUFF	
-			case DEATH_CHANCE: 
-				if ((newrand() & 63) == (newrand() & 63)) {
+			case DEATH_CHANCE:
+				// if ((newrand() & 63) == (newrand() & 63)), paraphrased
+				// attempts to use less tmp variables result in c stack operations
+				cc65_tmp1 = newrand();
+				cc65_tmp2 = newrand();
+				cc65_tmp2 = (cc65_tmp2 ^ cc65_tmp1) & 63;
+				if (cc65_tmp2 == 0) {
 					idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
 				}
 				triggers_hit[0]++;

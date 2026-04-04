@@ -150,6 +150,8 @@ void cube_movement(){
 		
 		tmp3 = (chargepower[currplayer] > 45 ? 45 : chargepower[currplayer]);
 		
+		// TODO: KANDO!!! REMOVE MULTIPLICATION HERE!!!
+		// Also this should probably be a physics constant regulated by region
 		tmpA = (tmp3 * (currplayer_gravity ? 0x004C : -0x004C));
 		
 		if (chargepower[currplayer] && currplayer_vel_y == 0) { currplayer_vel_y = tmpA; }

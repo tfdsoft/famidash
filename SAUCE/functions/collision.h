@@ -128,16 +128,20 @@ char bg_coll_spikes() {
 			return col_death_bottom_routine();	
 			
 		case COL_DEATH_BOTTOM_LEFT:
-			return col_death_left_routine() | col_death_bottom_routine();
+			tmp2 = col_death_left_routine();
+			return LSB(col_death_bottom_routine()) | tmp2;
 
 		case COL_DEATH_BOTTOM_RIGHT:
-			return col_death_right_routine() | col_death_bottom_routine();
+			tmp2 = col_death_right_routine();
+			return LSB(col_death_bottom_routine()) | tmp2;
 
 		case COL_DEATH_TOP_LEFT:
-			return col_death_left_routine() | col_death_top_routine();
+			tmp2 = col_death_left_routine();
+			return LSB(col_death_top_routine()) | tmp2;
 		
 		case COL_DEATH_TOP_RIGHT:
-			return col_death_right_routine() | col_death_top_routine();
+			tmp2 = col_death_right_routine();
+			return LSB(col_death_top_routine()) | tmp2;
 
 		case COL_DEATH:	
 			tmp2 = (uint8_t)(temp_y & 0x0f);
@@ -756,7 +760,7 @@ char bg_coll_return_D () {
 char bg_coll_return_U () {
 	tmp3 = bg_coll_U_D_checks();
 	tmp1 = bg_coll_mini_blocks();
-	eject_U = tmp8 | (tmp3 ? 0xf0 : 0xf8);
+	eject_U = (tmp3 ? 0xf0 : 0xf8) | tmp8;
 	return tmp1 | tmp3;
 }
 
@@ -879,7 +883,7 @@ char bg_coll_U() {
 
 			if (collision) {
 				// Clobbers 1, 4, 7, 8
-				low_byte(tmp3) |= bg_coll_return_slope_U();
+				tmp3 = LSB(bg_coll_return_slope_U()) | tmp3;
 			}
 
 			temp_x += Generic.width; // automatically only the low byte
@@ -935,7 +939,7 @@ char bg_coll_D() {
 			
 			if (collision) {
 				// Clobbers 1, 4, 7, 8
-				low_byte(tmp3) |= bg_coll_return_slope_D();
+				tmp3 = LSB(bg_coll_return_slope_D()) | tmp3;
 			}
 			temp_x += Generic.width; // automatically only the low byte
 		} while (++tmp2 < 2);	
@@ -1033,12 +1037,12 @@ void bg_coll_death() {
 	
 	if (collision) {
 		if (!dblocked[currplayer] || gamemode != GAMEMODE_WAVE) {
-			if (bg_coll_U_D_checks() | bg_coll_mini_blocks() | bg_coll_spikes() | bg_coll_slope()) {
+			if (bg_coll_U_D_checks() || bg_coll_mini_blocks() || bg_coll_spikes() || bg_coll_slope()) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
 			}
 		}
 		else {
-			if (bg_coll_mini_blocks() | bg_coll_spikes() | bg_coll_slope()) {
+			if (bg_coll_mini_blocks() || bg_coll_spikes() || bg_coll_slope()) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
 			}
 		}
