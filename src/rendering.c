@@ -1,12 +1,12 @@
 banked(fixed.func) void level_fetch_metatile_tiles(u8 column, u8 y_offset, u8 side){
 
     
-    if(side) for(u8 i=0; i<15; i++){
+    if(side) for(u8 i=0; i<16; i++){
         u8 tile = collision_map_0[grid16((column),(y_offset+i))];
         tile_buffer[i<<1] = metatiles_TR[tile];
         tile_buffer[1+(i<<1)] = metatiles_BR[tile];
     }
-    else for(u8 i=0; i<15; i++){
+    else for(u8 i=0; i<16; i++){
         u8 tile = collision_map_0[grid16((column),(y_offset+i))];
         tile_buffer[i<<1] = metatiles_TL[tile];
         tile_buffer[1+(i<<1)] = metatiles_BL[tile];

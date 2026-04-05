@@ -3,11 +3,6 @@ static u8 get_metatile_at(u8 x, u16 y){
     return collision_map_0[grid16((x>>4),(y>>4))];
 }
 
-
-static u8 get_collision_at_point(u8 x, u16 y){
-
-}
-
 /*
 static void check_player_collision_x(struct Player* player){
     player->pos.x.full += player->speed.x;
@@ -29,6 +24,14 @@ static u8 check_player_collision_y(struct Player* player){
     }
     return tmp;
 }*/
+u8 check_collision_point(struct Player* player, s8 extra_x, s8 extra_y){
+    u8 x = player->pos.x.lo + extra_x;
+    u16 y = player->pos.y.word + extra_y;
+
+    if(get_metatile_at(x,y)) return 1;
+
+    return 0;
+}
 
 u8 check_collision_LR(struct Player* player, s8 extra_x){
     u8 x = player->pos.x.lo + extra_x;
@@ -52,6 +55,7 @@ u8 check_collision_UD(struct Player* player, s8 extra_y){
 
 
 void move_player(struct Player* player){
+    u8 collision_value;
 
     player->speed.y += phys_gravity[0];
     if(player->speed.y > 0x700) player->speed.y = 0x700;
@@ -60,36 +64,46 @@ void move_player(struct Player* player){
 
 
     player->pos.y.full += player->speed.y;
-    if(check_collision_UD(player, 0)){
-        player->pos.y.lo = 1+(player->pos.y.lo | 0x07);
-        player->speed.y = 0;
+    //collision_value = check_collision_UD(player, 0);
+    //if(collision_value){
+    //    player->pos.y.lo = 1+(player->pos.y.lo | 0x07);
+    //    player->speed.y = 0;
+    //}
+    if(player->speed.y > 0){
+        collision_value = check_collision_UD(player, player->size.height);
+        if(collision_value){
+            player->pos.y.lo &= 0xf8;
+            player->speed.y = 0;
+            if(joypad1.a) player->speed.y = phys_jumpvel[0];
+        }
     }
-    if(check_collision_UD(player, 16)){
-        player->pos.y.lo &= 0xf8;
-        player->speed.y = 0;
-        if(joypad1.a) player->speed.y = phys_jumpvel[0];
-    }
-    if(joypad1.up) player->speed.y = phys_jumpvel[0];
+    
+    
     
 
 
-    player->speed.x = 0;
-    if(joypad1.left) player->speed.x = -phys_speed[0];
-    if(joypad1.right) player->speed.x = phys_speed[0];
+    //player->speed.x = 0;
+    //if(joypad1.left) player->speed.x = -phys_speed[0];
+    //if(joypad1.right)
+    player->speed.x = phys_speed[0];
     
     player->pos.x.full += player->speed.x;
-    if(check_collision_LR(player, 0)) { // left
-        player->pos.x.word = 1+(player->pos.x.word | 0x0007);
-        player->speed.x = 0;
+    collision_value = check_collision_point(player, (player->size.width >>1), (player->size.height >>1));
+    if(collision_value) {
+        player->properties.is_dead = 1;
     }
-    if(check_collision_LR(player, 15)) { // left
-        player->pos.x.lo &= 0xf8;
-        player->speed.x = 0;
-    }
+    //if(check_collision_LR(player, 0)) { // left
+    //    player->pos.x.word = 1+(player->pos.x.word | 0x0007);
+    //    player->speed.x = 0;
+    //}
+    //if(check_collision_LR(player, 15)) { // right
+    //    player->pos.x.lo &= 0xf8;
+    //    player->speed.x = 0;
+    //}
 
 
 
-    #define left_side_scroll_bounds 0x60
+    #define left_side_scroll_bounds 0x40
     u16 tmp = (player->pos.x.word - Camera.x.word);
     if(tmp < left_side_scroll_bounds){
         Camera.x.word = player->pos.x.word - left_side_scroll_bounds;
@@ -97,7 +111,7 @@ void move_player(struct Player* player){
     }
     #undef left_side_scroll_bounds
 
-    #define right_side_scroll_bounds 0x80
+    #define right_side_scroll_bounds 0x60
     if(tmp >= right_side_scroll_bounds){
         Camera.x.word = player->pos.x.word - right_side_scroll_bounds;
     }

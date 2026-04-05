@@ -82,6 +82,8 @@ int main(void) {
         }
         se_set_scroll(0,0);
 
+        //gamestate = 0x20;
+
         switch (gamestate){
 
             // when in doubt, go back to startup

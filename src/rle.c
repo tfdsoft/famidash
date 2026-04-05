@@ -87,7 +87,7 @@ banked(fixed.func) void level_rle_fetch_columns(s8 count){
             // decompress tiles into the table
             for(u8 height=active_lvl.height; height>0; height--){
                 __level_rle_fetch_previous_tile();
-                collision_map_0[grid16(lvl_rle_x_offset,height-1)] = lvl_rle_value;
+                collision_map_0[grid16(lvl_rle_x_offset,(height-1))] = lvl_rle_value;
             }
         }
 

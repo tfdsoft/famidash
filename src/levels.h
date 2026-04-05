@@ -13,6 +13,8 @@ struct Level {
         const struct Metatile* metatiles[4];
     } tileset;
 
+    u8 song;
+
     u8 height;
 
     u8* tile_data; u8 tile_bank;

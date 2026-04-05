@@ -39,6 +39,14 @@ struct Player {
         s16 x;
         s16 y;
     } speed;
+    struct {
+        u8 width;
+        u8 height;
+    } size;
+    struct {
+        u8 is_dead :1;
+        u8 gravity
+    } properties;
 } Player;
 
 struct Camera {
@@ -108,5 +116,5 @@ sram u8 sram_buffer[2048], background_set, ground_set;
 
 // generally, you want a state machine to
 // control your game loop with
-u8 gamestate = 0x20;
+u8 gamestate;
 

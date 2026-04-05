@@ -145,7 +145,7 @@ banked(startup_bank.func) void state_menu() {
     unsigned char menu_color = 0x11;
     unsigned short interrupt_scroll = 0;
     unsigned short scroll_bank = 0;
-    u16 scroll_speed = 0;//phys_speed[1];
+    u16 scroll_speed = phys_speed[1];
     signed char selection = 0;
 
     famistudio_music_stop();
@@ -153,7 +153,7 @@ banked(startup_bank.func) void state_menu() {
     se_post_nmi_ptr = se_music_update;
 
     
-    background_set = 2;
+    //background_set = 2;
     // load parallax background
     if(loaded_bg_set != background_set){
         se_vram_address(0x1000);
@@ -181,7 +181,7 @@ banked(startup_bank.func) void state_menu() {
 
     // load ground
     //set_chr_bank(0,0x8);
-    ground_set = 2;
+    //ground_set = 2;
     se_vram_donut_decompress(chr_g[ground_set], chr_bank_3);
     // the "robtop/tfdsoft" text is there
     se_vram_donut_decompress(chr_menu_robtop, chr_bank_0);
@@ -254,8 +254,8 @@ banked(startup_bank.func) void state_menu() {
         //scroll(0,0);
         se_clear_sprites();
 
-        scroll_speed += (joypad1.right << 3);
-        scroll_speed -= (joypad1.left << 3);
+        //scroll_speed += (joypad1.right << 3);
+        //scroll_speed -= (joypad1.left << 3);
 
         interrupt_scroll += scroll_speed;
         se_irq_table[25] = hi(interrupt_scroll);
@@ -276,8 +276,8 @@ banked(startup_bank.func) void state_menu() {
 
             se_set_palette_color(0, menu_color);
             se_set_palette_color(2, menu_color-0x10);
-            se_set_palette_color(9, menu_color);
-            se_set_palette_color(10, menu_color+0x10);
+            se_set_palette_color(9, menu_color-0x10);
+            se_set_palette_color(10, menu_color);
         }
 
 

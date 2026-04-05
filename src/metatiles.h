@@ -5,6 +5,13 @@ struct Metatile {
     u8 bottomright;
 };
 
+
+
+// one byte crammed full of info.
+// the guide:
+
+// palettes: 0 = background, 1 = ground, 2/3 = color channels
+// 
 struct Metatile_Attr {
     u8 palette : 2;
 

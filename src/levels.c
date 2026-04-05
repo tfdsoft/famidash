@@ -29,6 +29,8 @@ banked(level_header_bank) const struct Level lvl_test_header = {
         }
     },
 
+    .song = song_stereo_madness,
+
     .height = 32, // level height
 
     .tile_data = (u8*)lvl_test_tiles,
