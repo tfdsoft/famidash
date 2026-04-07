@@ -149,10 +149,10 @@ banked(sound_test_bank.func) void state_soundtest(){
         bankstr[0] = num_to_ascii((__prg_8000>>4));
         bankstr[1] = num_to_ascii(__prg_8000);
         bankstr[2] = ':';
-        bankstr[3] = num_to_ascii((*(u8*)0x24)>>4);
-        bankstr[4] = num_to_ascii((*(u8*)0x24));
-        bankstr[5] = num_to_ascii((*(u8*)0x23)>>4);
-        bankstr[6] = num_to_ascii((*(u8*)0x23));
+        bankstr[3] = num_to_ascii((*(u8*)0x23)>>4);
+        bankstr[4] = num_to_ascii((*(u8*)0x23));
+        bankstr[5] = num_to_ascii((*(u8*)0x22)>>4);
+        bankstr[6] = num_to_ascii((*(u8*)0x22));
         bankstr[7] = 0;
 
         se_string_vram_buffer(
