@@ -8609,7 +8609,7 @@ sprite_data_dash:
   .byte $90,$45,$40,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_76"
+.segment "DAT_BANK_1D"
 sprite_data_thetower:
   .byte $00,$00,$f0,$02,$de
   .byte $00,$00,$10,$03,$83
@@ -34213,7 +34213,7 @@ sprite_data_birdbrain:
   .byte $10,$3d,$f0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_81"
+.segment "DAT_BANK_82"
 sprite_data_aprettyeasylevel:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$c6
@@ -56471,7 +56471,7 @@ sprite_data_eighto:
   .byte $70,$2e,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_5C"
+.segment "DAT_BANK_81"
 sprite_data_acropolis:
   .byte $30,$01,$58,$03,$0d
   .byte $60,$01,$70,$03,$06

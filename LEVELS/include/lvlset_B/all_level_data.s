@@ -28,33 +28,7 @@
 		.incbin "EXPORTS/highlife.lz.0.bin" ; Size: 8166
 
 
-.segment "DAT_BANK_01"	; Total bank size: 8179 bytes
-	.export level_data_birdbrain
-	level_data_birdbrain:
-	; Header
-		.byte <sprite_data_birdbrain ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_birdbrain ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_birdbrain)) ;___ Sprite data bank
-		.byte song_birdbrain ;____________________ Song ID
-		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($10) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 ;____________________________ Deco type
-		.byte _SPIKESA ;__________________________ Spike set
-		.byte _BLOCKSD ;__________________________ Block set
-		.byte _SAWBLADESA ;_______________________ Sawblade set
-		.byte $0F ;_______________________________ Starting background color
-		.byte $0F ;_______________________________ Starting ground color
-		.byte 27 ;________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/birdbrain.lz.0.bin" ; Size: 8161
-
-
-.segment "DAT_BANK_02"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_01"	; Total bank size: 8161 bytes
 	.export level_data_subtleoddities
 	level_data_subtleoddities:
 	; Header
@@ -80,7 +54,7 @@
 		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8143
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8146 bytes
+.segment "DAT_BANK_02"	; Total bank size: 8146 bytes
 	.export level_data_tetrix
 	level_data_tetrix:
 	; Header
@@ -104,6 +78,32 @@
 		.byte 27 ;_____________________________ Level height
 	; Level data
 		.incbin "EXPORTS/tetrix.lz.0.bin" ; Size: 8128
+
+
+.segment "DAT_BANK_03"	; Total bank size: 8141 bytes
+	.export level_data_birdbrain
+	level_data_birdbrain:
+	; Header
+		.byte <sprite_data_birdbrain ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_birdbrain ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_birdbrain)) ;___ Sprite data bank
+		.byte song_birdbrain ;____________________ Song ID
+		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($10) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 ;____________________________ Deco type
+		.byte _SPIKESA ;__________________________ Spike set
+		.byte _BLOCKSD ;__________________________ Block set
+		.byte _SAWBLADESA ;_______________________ Sawblade set
+		.byte $0F ;_______________________________ Starting background color
+		.byte $0F ;_______________________________ Starting ground color
+		.byte 27 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/birdbrain.lz.0.bin" ; Size: 8123
 
 
 .segment "DAT_BANK_04"	; Total bank size: 8136 bytes
@@ -843,7 +843,7 @@
 		.incbin "EXPORTS/tetrix.lz.1.bin" ; Size: 1797
 
 
-.segment "DAT_BANK_22"	; Total bank size: 5718 bytes
+.segment "DAT_BANK_22"	; Total bank size: 5895 bytes
 	.export level_data_xmaschallenge
 	level_data_xmaschallenge:
 	; Header
@@ -868,6 +868,11 @@
 	; Level data
 		.incbin "EXPORTS/xmaschallenge.lz.bin" ; Size: 1266
 
+	.export level_data_birdbrain_5
+	level_data_birdbrain_5:
+	; Level data
+		.incbin "EXPORTS/birdbrain.lz.1.bin" ; Size: 1249
+
 	.export level_data_ultiatedestruction
 	level_data_ultiatedestruction:
 	; Header
@@ -891,8 +896,3 @@
 		.byte 40 ;_________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/ultiatedestruction.lz.bin" ; Size: 1087
-
-	.export level_data_birdbrain_5
-	level_data_birdbrain_5:
-	; Level data
-		.incbin "EXPORTS/birdbrain.lz.1.bin" ; Size: 1072
