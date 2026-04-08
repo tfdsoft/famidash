@@ -57,9 +57,8 @@ mmc3_IRQ_ENABLE  = $e001
     se_palette_pointer_spr: .res 2
 
     se_name_upd_adr:    .res 1
-    se_name_upd_enable: .res 1
+    ;se_name_upd_enable: .res 1
     se_vram_index:      .res 1
-    se_vram_tmp_stack_pointer:  .res 1
 
     se_joypad:          .res 7
     se_mouse_mask:      .res 1
@@ -70,8 +69,6 @@ mmc3_IRQ_ENABLE  = $e001
     .export se_post_nmi_ptr
     se_irq_ptr:         .res 2
     .export se_irq_ptr
-    se_sample_in_progress:  .res 1
-    .export se_sample_in_progress
 
 ;se_rle_pointer:     .res 2 ;__rc2 is used instead
 
@@ -90,11 +87,14 @@ mmc3_IRQ_ENABLE  = $e001
     se_vram_update:     .res 1
     se_palette_update:  .res 1
     .export se_palette_update
+    se_name_upd_enable: .res 1
 
     se_sprite_id:       .res 1
 
     se_rle_tag:         .res 1
     se_rle_byte:        .res 1
+
+    se_vram_tmp_stack_pointer:  .res 1
 
     se_music_bank:      .res 1
     .export se_music_bank
@@ -496,6 +496,12 @@ MouseBoundsMax:
 .endproc
 
 
+; THE SOUND ENGINE!
+.include "famistudio_ca65.s"
+
+
+
+
 .export disable_nmi
 .proc disable_nmi
     lda se_ppu_ctrl_var
@@ -520,7 +526,6 @@ MouseBoundsMax:
 ;;
 ;;  MMC3 BANKING FUNCTIONS
 ;;  CODE IS FROM THE LLVM-MOS-SDK (modified, of course)
-;;  EVERYTHING FROM THIS POINT FORWARD IS AT $8300
 ;;
 .export set_prg_c000
 .proc set_prg_c000
@@ -2340,17 +2345,13 @@ se_run_da_irq:
     dex
     stx se_irq_table+3
 
-    inc se_sample_in_progress
-
     plp
     rts
 .endproc
 
 .proc se_sample_eof
-    ldx #0
-    stx se_sample_in_progress
-    dex
-    stx se_irq_table+0
+    lda #$ff
+    sta se_irq_table+0
     rts
 .endproc
 
@@ -2358,7 +2359,6 @@ se_run_da_irq:
 .segment "_pzp_pdata"
 .export funny_pcm_routine
 .proc funny_pcm_routine
-    
     @load_instruction: lda $c000    ; 3
 
     bmi @exit_eof_sample            ; 5
@@ -2388,5 +2388,3 @@ se_run_da_irq:
 
 .endproc
 .popseg
-
-.include "famistudio_ca65.s"

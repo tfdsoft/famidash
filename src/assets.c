@@ -89,6 +89,43 @@ file(chr_background_2, chr_bank_2) = {
     #embed "./chr/dnt/Background2.bin"
 };
 
+#ifdef ROM_LITE
+file(chr_ad_0, chr_bank_4) = {
+    0x11, 0x21, 0x39,
+    #embed "./chr/dnt/Ad_GDA.bin"
+};
+file(chr_ad_1, chr_bank_4) = {
+    0x16, 0x10, 0x30,
+    #embed "./chr/dnt/Ad_SNES.bin"
+};
+file(chr_ad_2, chr_bank_4) = {
+    0x2d, 0x10, 0x30,
+    #embed "./chr/dnt/Ad_Slope.bin"
+};
+file(chr_ad_3, chr_bank_4) = {
+    0x12, 0x10, 0x39,
+    #embed "./chr/dnt/Ad_WiiDash.bin"
+};
+file(chr_ad_4, chr_bank_4) = {
+    0x0c, 0x1c, 0x39,
+    #embed "./chr/dnt/Ad_FD2.bin"
+};
+file(chr_ad_5, chr_bank_4) = {
+    0x0f, 0x19, 0x29,
+    #embed "./chr/dnt/Ad_Retray.bin"
+};
+
+banked(chr_bank_4) const u8 * const chr_ads[] = {
+    chr_ad_0,
+    chr_ad_1,
+    chr_ad_2,
+    chr_ad_3,
+    chr_ad_4,
+    chr_ad_5
+};
+
+#endif
+
 
 // grounds
 file(chr_ground_0, chr_bank_3) = {

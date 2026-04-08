@@ -72,7 +72,6 @@ extern u8 se_palette_update;
 extern u8 __prg_8000, __prg_a000, __bank_select_hi;
 extern void* se_post_nmi_ptr;
 extern void* se_irq_ptr;
-extern u8 se_sample_in_progress;
 extern u8 se_irq_table[32], se_irq_table_position;
 extern const u8 se_identity_table[256];
 
@@ -238,13 +237,6 @@ __attribute__((leaf)) void se_memory_copy(void* to, void* from, u16 length);
 __asm__ (
     ".section .prg_rom_fixed_lo.famistudio_dpcm_bank_callback \n"
     "famistudio_dpcm_bank_callback: \n"
-    "pha \n"
-    "lda "STR(se_sample_in_progress)" \n"
-    "beq 1f \n"
-    "pla \n"
-    "rts \n"
-    "1: \n"
-    "pla \n"
     "clc \n"
     "adc #"STR(dpcm_bank_0)" \n"
     "jmp set_prg_8000 \n"

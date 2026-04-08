@@ -27,3 +27,30 @@ void unpack_icon_firstframe(const u8* data, u8 bank){
         "jsr set_prg_a000 \n"
     );
 }
+
+#ifdef ROM_LITE
+banked(fixed.func)
+__attribute__((noinline))
+void unpack_ad(const u8 index){
+    __attribute__((leaf)) __asm__ volatile(
+        "lda __prg_a000 \n"
+        "pha \n"
+    );
+
+    set_prg_a000(chr_bank_4);
+
+    const u8* data = chr_ads[index];
+
+    se_set_palette_color(13, data[0]);
+    se_set_palette_color(14, data[1]);
+    se_set_palette_color(15, data[2]);
+
+    se_vram_address(0xc00);
+    se_vram_donut_decompress((data+3), chr_bank_4);
+
+    __attribute__((leaf)) __asm__ volatile(
+        "pla \n"
+        "jsr set_prg_a000 \n"
+    );
+}
+#endif

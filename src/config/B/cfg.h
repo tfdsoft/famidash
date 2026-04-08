@@ -1,5 +1,5 @@
 #define SE_PROGRAM_ROM_SIZE 1024
-
+#define ROM_FULL
 
 #define level_header_bank 1
 #define level_data_bank_0 2

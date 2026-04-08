@@ -24,7 +24,7 @@
 #include "rle.c"
 #include "rendering.c"
 #include "collision.c"
-#include "icon_unpack.c"
+#include "unpack.c"
 
 // gamestates
 #include "state_startup.c"
@@ -57,6 +57,8 @@ int main(void) {
 
     se_clear_palette();
 
+    gamestate = 0x20;
+
     while(1){
         __attribute__((leaf)) __asm__ volatile ("sei");
         se_set_palette_brightness_all(0);
@@ -82,7 +84,7 @@ int main(void) {
         }
         se_set_scroll(0,0);
 
-        //gamestate = 0x20;
+        
 
         switch (gamestate){
 

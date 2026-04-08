@@ -70,7 +70,7 @@ CFG ?= link.ld
 CFG_OVERSIZE ?= link_oversize.ld
 
 CFLAGS = -flto -Os -ffast-math -fnonreentrant -std=gnu23 -Wall -Wextra
-LDFLAGS = -mreserve-zp=64 -T $(CFG)
+LDFLAGS = -mreserve-zp=60 -T $(CFG)
 
 ifneq ($(findstring build,$(MAKECMDGOALS)),)
 ifeq ($(LEVELSET),)

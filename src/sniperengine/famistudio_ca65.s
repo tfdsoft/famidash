@@ -207,7 +207,7 @@ FAMISTUDIO_USE_PITCH_TRACK       = 1
 ; Must be enabled if any song uses arpeggios (not to be confused with instrument arpeggio envelopes, those are always
 ; supported).
 ; More information at: (TODO)
-; FAMISTUDIO_USE_ARPEGGIO          = 1
+ FAMISTUDIO_USE_ARPEGGIO          = 1
 
 ; Must be enabled if any song uses the "Duty Cycle" effect (equivalent of FamiTracker Vxx, also called "Timbre").  
  FAMISTUDIO_USE_DUTYCYCLE_EFFECT  = 1
@@ -3205,7 +3205,7 @@ update_fm_instrument:
     tay
     ; And then read the pointer to the extended instrument patch data
     lda (@ptr),y
-    sta @ex_patch
+    sta @ex_patch+0
     iny
     lda (@ptr),y
     sta @ex_patch+1
