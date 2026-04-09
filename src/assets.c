@@ -114,6 +114,14 @@ file(chr_ad_5, chr_bank_4) = {
     0x0f, 0x19, 0x29,
     #embed "./chr/dnt/Ad_Retray.bin"
 };
+file(chr_ad_6, chr_bank_4) = {
+    0x02, 0x11, 0x2b,
+    #embed "./chr/dnt/Ad_Tactus.bin"
+};
+file(chr_ad_7, chr_bank_4) = {
+    0x0f, 0x16, 0x20,
+    #embed "./chr/dnt/Ad_Famiwiki.bin"
+};
 
 banked(chr_bank_4) const u8 * const chr_ads[] = {
     chr_ad_0,
@@ -121,7 +129,9 @@ banked(chr_bank_4) const u8 * const chr_ads[] = {
     chr_ad_2,
     chr_ad_3,
     chr_ad_4,
-    chr_ad_5
+    chr_ad_5,
+    chr_ad_6,
+    chr_ad_7
 };
 
 #endif
