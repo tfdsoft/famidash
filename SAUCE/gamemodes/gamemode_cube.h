@@ -209,7 +209,7 @@ void cube_eject() {
 				if (!hblocked[currplayer]) {
 					currplayer_vel_y = 0;
 				} else {
-					currplayer_vel_y = 0xffff;
+					currplayer_vel_y = currplayer_gravity ? 0xffff : 0;
 				}
 				orbactive = 0;
 				if (fblocked[currplayer]) {
@@ -227,7 +227,7 @@ void cube_eject() {
 				if (!hblocked[currplayer]) {
 					currplayer_vel_y = 0;
 				} else {
-					currplayer_vel_y = 1;
+					currplayer_vel_y = !currplayer_gravity ? 0xffff : 0;
 				}
 				orbactive = 0;
 				if (fblocked[currplayer]) {
