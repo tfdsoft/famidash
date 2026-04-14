@@ -57,8 +57,6 @@ int main(void) {
 
     se_clear_palette();
 
-    gamestate = 0x20;
-
     while(1){
         __attribute__((leaf)) __asm__ volatile ("sei");
         se_set_palette_brightness_all(0);
