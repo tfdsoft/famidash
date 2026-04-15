@@ -61,7 +61,7 @@
 		.byte <sprite_data_tetrix ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_tetrix ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_tetrix)) ;___ Sprite data bank
-		.byte song_subtle_oddities ;___________ Song ID
+		.byte song_tetris_remix_final ;________ Song ID
 		.byte (0 << 4) | 0 ;___________________ Starting game mode and speed
 		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
 		.byte ($00) ;__________________________ Spawn Y Position (low byte)

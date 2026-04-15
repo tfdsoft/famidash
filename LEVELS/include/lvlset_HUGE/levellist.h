@@ -76,6 +76,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// trolledfix
 	INSANE,	// birdbrain
 	INSANE,	// aprettyeasylevel
+	INSANE,	// tetrix
 	INSANE,	// highlife
 	INSANE,	// extraordinaryexcitement
 	EASYDEMON,	// thelightningroad
@@ -123,7 +124,6 @@ const uint8_t difficulty_list[] = {
 	EXTREMEDEMON,	// styx
 	EXTREMEDEMON,	// bloodbath
 	IMPOSSIBLEDEMON,	// cataclysm
-	IMPOSSIBLEDEMON,	// aftermath
 	IMPOSSIBLEDEMON,	// wcropolix
 	IMPOSSIBLEDEMON,	// silentclubstep
 	IMPOSSIBLEDEMON,	// shardscapes
@@ -207,6 +207,7 @@ const uint8_t stars_list[] = {
 	9,	// trolledfix
 	9,	// birdbrain
 	9,	// aprettyeasylevel
+	9,	// tetrix
 	9,	// highlife
 	9,	// extraordinaryexcitement
 	10,	// thelightningroad
@@ -254,7 +255,6 @@ const uint8_t stars_list[] = {
 	10,	// styx
 	10,	// bloodbath
 	10,	// cataclysm
-	10,	// aftermath
 	10,	// wcropolix
 	10,	// silentclubstep
 	10,	// shardscapes

@@ -3744,6 +3744,22 @@
 			]
 		},
 		{
+			level: "tetrix",
+			lowerText: "TETRIX",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 9,
+			songID: "song_tetris_remix_final",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+		},
+		{
 			level: "highlife",
 			lowerText: "HIGH LIFE",
 			decoType: "DECO1",
@@ -5751,6 +5767,7 @@
 				}
 			]
 		},
+		/*
 		{
 			level: "aftermath",
 			lowerText: "AFTERMATH",
@@ -5767,6 +5784,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
+		*/
 		{
 			level: "wcropolix",
 			lowerText: "WCROPOLIX",

@@ -1309,7 +1309,7 @@
 			sawSet: "A",
 			difficulty: "INSANE",
 			stars: 9,
-			songID: "song_subtle_oddities",
+			songID: "song_tetris_remix_final",
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,

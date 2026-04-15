@@ -79,6 +79,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_trolledfix)
 	.byte .lobyte(level_data_birdbrain)
 	.byte .lobyte(level_data_aprettyeasylevel)
+	.byte .lobyte(level_data_tetrix)
 	.byte .lobyte(level_data_highlife)
 	.byte .lobyte(level_data_extraordinaryexcitement)
 	.byte .lobyte(level_data_thelightningroad)
@@ -126,7 +127,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_styx)
 	.byte .lobyte(level_data_bloodbath)
 	.byte .lobyte(level_data_cataclysm)
-	.byte .lobyte(level_data_aftermath)
 	.byte .lobyte(level_data_wcropolix)
 	.byte .lobyte(level_data_silentclubstep)
 	.byte .lobyte(level_data_shardscapes)
@@ -209,6 +209,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_trolledfix)
 	.byte .hibyte(level_data_birdbrain)
 	.byte .hibyte(level_data_aprettyeasylevel)
+	.byte .hibyte(level_data_tetrix)
 	.byte .hibyte(level_data_highlife)
 	.byte .hibyte(level_data_extraordinaryexcitement)
 	.byte .hibyte(level_data_thelightningroad)
@@ -256,7 +257,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_styx)
 	.byte .hibyte(level_data_bloodbath)
 	.byte .hibyte(level_data_cataclysm)
-	.byte .hibyte(level_data_aftermath)
 	.byte .hibyte(level_data_wcropolix)
 	.byte .hibyte(level_data_silentclubstep)
 	.byte .hibyte(level_data_shardscapes)
@@ -339,6 +339,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_trolledfix))
 	.byte .lobyte(.bank(level_data_birdbrain))
 	.byte .lobyte(.bank(level_data_aprettyeasylevel))
+	.byte .lobyte(.bank(level_data_tetrix))
 	.byte .lobyte(.bank(level_data_highlife))
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement))
 	.byte .lobyte(.bank(level_data_thelightningroad))
@@ -386,7 +387,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_styx))
 	.byte .lobyte(.bank(level_data_bloodbath))
 	.byte .lobyte(.bank(level_data_cataclysm))
-	.byte .lobyte(.bank(level_data_aftermath))
 	.byte .lobyte(.bank(level_data_wcropolix))
 	.byte .lobyte(.bank(level_data_silentclubstep))
 	.byte .lobyte(.bank(level_data_shardscapes))
@@ -407,20 +407,21 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_rainbowtylenol_9)
 	.byte .lobyte(level_data_subtleoddities_10)
 	.byte .lobyte(level_data_birdbrain_11)
-	.byte .lobyte(level_data_highlife_12)
-	.byte .lobyte(level_data_extraordinaryexcitement_13)
-	.byte .lobyte(level_data_deathmoon_14)
-	.byte .lobyte(level_data_motion_15)
-	.byte .lobyte(level_data_skeletalshenanigans_16)
-	.byte .lobyte(level_data_trythisgd_17)
-	.byte .lobyte(level_data_demoncryogenic_18)
-	.byte .lobyte(level_data_futurefunkfix_19)
+	.byte .lobyte(level_data_tetrix_12)
+	.byte .lobyte(level_data_highlife_13)
+	.byte .lobyte(level_data_extraordinaryexcitement_14)
+	.byte .lobyte(level_data_deathmoon_15)
+	.byte .lobyte(level_data_motion_16)
+	.byte .lobyte(level_data_skeletalshenanigans_17)
+	.byte .lobyte(level_data_trythisgd_18)
+	.byte .lobyte(level_data_demoncryogenic_19)
 	.byte .lobyte(level_data_futurefunkfix_20)
-	.byte .lobyte(level_data_eon_21)
-	.byte .lobyte(level_data_windylandscape_22)
-	.byte .lobyte(level_data_sonicwave_23)
-	.byte .lobyte(level_data_everyend_24)
+	.byte .lobyte(level_data_futurefunkfix_21)
+	.byte .lobyte(level_data_eon_22)
+	.byte .lobyte(level_data_windylandscape_23)
+	.byte .lobyte(level_data_sonicwave_24)
 	.byte .lobyte(level_data_everyend_25)
+	.byte .lobyte(level_data_everyend_26)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_hexagonforce_0)
@@ -435,20 +436,21 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_rainbowtylenol_9)
 	.byte .hibyte(level_data_subtleoddities_10)
 	.byte .hibyte(level_data_birdbrain_11)
-	.byte .hibyte(level_data_highlife_12)
-	.byte .hibyte(level_data_extraordinaryexcitement_13)
-	.byte .hibyte(level_data_deathmoon_14)
-	.byte .hibyte(level_data_motion_15)
-	.byte .hibyte(level_data_skeletalshenanigans_16)
-	.byte .hibyte(level_data_trythisgd_17)
-	.byte .hibyte(level_data_demoncryogenic_18)
-	.byte .hibyte(level_data_futurefunkfix_19)
+	.byte .hibyte(level_data_tetrix_12)
+	.byte .hibyte(level_data_highlife_13)
+	.byte .hibyte(level_data_extraordinaryexcitement_14)
+	.byte .hibyte(level_data_deathmoon_15)
+	.byte .hibyte(level_data_motion_16)
+	.byte .hibyte(level_data_skeletalshenanigans_17)
+	.byte .hibyte(level_data_trythisgd_18)
+	.byte .hibyte(level_data_demoncryogenic_19)
 	.byte .hibyte(level_data_futurefunkfix_20)
-	.byte .hibyte(level_data_eon_21)
-	.byte .hibyte(level_data_windylandscape_22)
-	.byte .hibyte(level_data_sonicwave_23)
-	.byte .hibyte(level_data_everyend_24)
+	.byte .hibyte(level_data_futurefunkfix_21)
+	.byte .hibyte(level_data_eon_22)
+	.byte .hibyte(level_data_windylandscape_23)
+	.byte .hibyte(level_data_sonicwave_24)
 	.byte .hibyte(level_data_everyend_25)
+	.byte .hibyte(level_data_everyend_26)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_hexagonforce_0))
@@ -463,20 +465,21 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_rainbowtylenol_9))
 	.byte .lobyte(.bank(level_data_subtleoddities_10))
 	.byte .lobyte(.bank(level_data_birdbrain_11))
-	.byte .lobyte(.bank(level_data_highlife_12))
-	.byte .lobyte(.bank(level_data_extraordinaryexcitement_13))
-	.byte .lobyte(.bank(level_data_deathmoon_14))
-	.byte .lobyte(.bank(level_data_motion_15))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans_16))
-	.byte .lobyte(.bank(level_data_trythisgd_17))
-	.byte .lobyte(.bank(level_data_demoncryogenic_18))
-	.byte .lobyte(.bank(level_data_futurefunkfix_19))
+	.byte .lobyte(.bank(level_data_tetrix_12))
+	.byte .lobyte(.bank(level_data_highlife_13))
+	.byte .lobyte(.bank(level_data_extraordinaryexcitement_14))
+	.byte .lobyte(.bank(level_data_deathmoon_15))
+	.byte .lobyte(.bank(level_data_motion_16))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_17))
+	.byte .lobyte(.bank(level_data_trythisgd_18))
+	.byte .lobyte(.bank(level_data_demoncryogenic_19))
 	.byte .lobyte(.bank(level_data_futurefunkfix_20))
-	.byte .lobyte(.bank(level_data_eon_21))
-	.byte .lobyte(.bank(level_data_windylandscape_22))
-	.byte .lobyte(.bank(level_data_sonicwave_23))
-	.byte .lobyte(.bank(level_data_everyend_24))
+	.byte .lobyte(.bank(level_data_futurefunkfix_21))
+	.byte .lobyte(.bank(level_data_eon_22))
+	.byte .lobyte(.bank(level_data_windylandscape_23))
+	.byte .lobyte(.bank(level_data_sonicwave_24))
 	.byte .lobyte(.bank(level_data_everyend_25))
+	.byte .lobyte(.bank(level_data_everyend_26))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -556,6 +559,7 @@ _level_lengths_lo:
 	.byte .lobyte($00003D)		; trolledfix
 	.byte .lobyte($00009D)		; birdbrain
 	.byte .lobyte($000070)		; aprettyeasylevel
+	.byte .lobyte($000138)		; tetrix
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
 	.byte .lobyte($000087)		; thelightningroad
@@ -603,7 +607,6 @@ _level_lengths_lo:
 	.byte .lobyte($00007C)		; styx
 	.byte .lobyte($0000D5)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
-	.byte .lobyte($00007C)		; aftermath
 	.byte .lobyte($00007F)		; wcropolix
 	.byte .lobyte($000095)		; silentclubstep
 	.byte .lobyte($00006F)		; shardscapes
@@ -688,6 +691,7 @@ _level_lengths_md:
 	.byte .hibyte($00003D)		; trolledfix
 	.byte .hibyte($00009D)		; birdbrain
 	.byte .hibyte($000070)		; aprettyeasylevel
+	.byte .hibyte($000138)		; tetrix
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
 	.byte .hibyte($000087)		; thelightningroad
@@ -735,7 +739,6 @@ _level_lengths_md:
 	.byte .hibyte($00007C)		; styx
 	.byte .hibyte($0000D5)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
-	.byte .hibyte($00007C)		; aftermath
 	.byte .hibyte($00007F)		; wcropolix
 	.byte .hibyte($000095)		; silentclubstep
 	.byte .hibyte($00006F)		; shardscapes
@@ -820,6 +823,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00003D)		; trolledfix
 	.byte .bankbyte($00009D)		; birdbrain
 	.byte .bankbyte($000070)		; aprettyeasylevel
+	.byte .bankbyte($000138)		; tetrix
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
 	.byte .bankbyte($000087)		; thelightningroad
@@ -867,7 +871,6 @@ _level_lengths_hi:
 	.byte .bankbyte($00007C)		; styx
 	.byte .bankbyte($0000D5)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm
-	.byte .bankbyte($00007C)		; aftermath
 	.byte .bankbyte($00007F)		; wcropolix
 	.byte .bankbyte($000095)		; silentclubstep
 	.byte .bankbyte($00006F)		; shardscapes

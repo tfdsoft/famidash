@@ -115,7 +115,7 @@
 			fmsSongName: "Infiltration",
 			lowerText: "INFILTRATION",
 			originalArtistText: "PARAGONX9",
-		},	
+		},
 		{
 			fmsSongName: "kesobomb",
 			lowerText: "KESOBOMB",
@@ -190,6 +190,12 @@
 			upperText: "SUBTLE",
 			lowerText: "ODDITIES",
 			originalArtistText: "LEMON DEMON",
+		},
+		{
+			fmsSongName: "Tetris Remix (Final)",
+			upperText: "TETRIS REMIX",
+			lowerText: "FINAL",
+			originalArtistText: "PARKERMAN1700",
 		},
 		{
 			fmsSongName: "The Explorer",
