@@ -685,6 +685,13 @@
 		.incbin "EXPORTS/ninecircles.lz.bin" ; Size: 7962
 
 
+.segment "DAT_BANK_1E"	; Total bank size: 8110 bytes
+	.export level_data_windylandscape_23
+	level_data_windylandscape_23:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 279
+
+
 .segment "DAT_BANK_1F"	; Total bank size: 7781 bytes
 	.export level_data_groundtospace
 	level_data_groundtospace:
@@ -1005,30 +1012,11 @@
 		.incbin "EXPORTS/fairydust.lz.bin" ; Size: 6818
 
 
-.segment "DAT_BANK_2B"	; Total bank size: 8188 bytes
-	.export level_data_thetower
-	level_data_thetower:
-	; Header
-		.byte <sprite_data_thetower ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_thetower ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_thetower)) ;___ Sprite data bank
-		.byte song_desert_city ;_________________ Song ID
-		.byte (0 << 4) | 0 ;_____________________ Starting game mode and speed
-		.byte ($A0) ;____________________________ Spawn Y Position (high byte)
-		.byte ($00) ;____________________________ Spawn Y Position (low byte)
-		.byte ($02) ;____________________________ Y Scroll Position (high byte)
-		.byte ($80) ;____________________________ Y Scroll Position (low byte)
-		.byte ($07) ;____________________________ Max Fall Speed (high byte)
-		.byte (1 << 0) | (1 << 1) ;______________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 ;___________________ Deco type
-		.byte _SPIKESA ;_________________________ Spike set
-		.byte _BLOCKSB ;_________________________ Block set
-		.byte _SAWBLADESA ;______________________ Sawblade set
-		.byte $03 ;______________________________ Starting background color
-		.byte $0F ;______________________________ Starting ground color
-		.byte 32 ;_______________________________ Level height
+.segment "DAT_BANK_2B"	; Total bank size: 8187 bytes
+	.export level_data_somewhereinaforest_2
+	level_data_somewhereinaforest_2:
 	; Level data
-		.incbin "EXPORTS/thetower.lz.bin" ; Size: 1354
+		.incbin "EXPORTS/somewhereinaforest.lz.1.bin" ; Size: 1361
 
 
 .segment "DAT_BANK_2C"	; Total bank size: 8179 bytes
@@ -3339,10 +3327,29 @@
 	; Level data
 		.incbin "EXPORTS/lookatthislevel.lz.bin" ; Size: 1663
 
-	.export level_data_trythisgd_18
-	level_data_trythisgd_18:
+	.export level_data_thetower
+	level_data_thetower:
+	; Header
+		.byte <sprite_data_thetower ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_thetower ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_thetower)) ;___ Sprite data bank
+		.byte song_desert_city ;_________________ Song ID
+		.byte (0 << 4) | 0 ;_____________________ Starting game mode and speed
+		.byte ($A0) ;____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;____________________________ Y Scroll Position (high byte)
+		.byte ($80) ;____________________________ Y Scroll Position (low byte)
+		.byte ($07) ;____________________________ Max Fall Speed (high byte)
+		.byte (1 << 0) | (1 << 1) ;______________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 ;___________________ Deco type
+		.byte _SPIKESA ;_________________________ Spike set
+		.byte _BLOCKSB ;_________________________ Block set
+		.byte _SAWBLADESA ;______________________ Sawblade set
+		.byte $03 ;______________________________ Starting background color
+		.byte $0F ;______________________________ Starting ground color
+		.byte 32 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/trythisgd.lz.1.bin" ; Size: 1372
+		.incbin "EXPORTS/thetower.lz.bin" ; Size: 1354
 
 
 .segment "DAT_BANK_81"	; Total bank size: 8177 bytes
@@ -3376,7 +3383,7 @@
 		.incbin "EXPORTS/movie.lz.bin" ; Size: 1448
 
 
-.segment "DAT_BANK_82"	; Total bank size: 8187 bytes
+.segment "DAT_BANK_82"	; Total bank size: 8135 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -3401,20 +3408,15 @@
 	; Level data
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
-	.export level_data_somewhereinaforest_2
-	level_data_somewhereinaforest_2:
+	.export level_data_trythisgd_18
+	level_data_trythisgd_18:
 	; Level data
-		.incbin "EXPORTS/somewhereinaforest.lz.1.bin" ; Size: 1361
+		.incbin "EXPORTS/trythisgd.lz.1.bin" ; Size: 1372
 
 	.export level_data_birdbrain_11
 	level_data_birdbrain_11:
 	; Level data
 		.incbin "EXPORTS/birdbrain.lz.1.bin" ; Size: 1249
-
-	.export level_data_windylandscape_23
-	level_data_windylandscape_23:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 279
 
 
 .segment "DAT_BANK_83"	; Total bank size: 7831 bytes

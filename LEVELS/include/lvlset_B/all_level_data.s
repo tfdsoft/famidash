@@ -262,7 +262,7 @@
 		.incbin "EXPORTS/scarletsurge.lz.bin" ; Size: 7558
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8177 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8187 bytes
 	.export level_data_somewhereinaforest_0
 	level_data_somewhereinaforest_0:
 	; Level data
