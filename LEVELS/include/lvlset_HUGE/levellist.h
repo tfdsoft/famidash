@@ -124,12 +124,18 @@ const uint8_t difficulty_list[] = {
 	EXTREMEDEMON,	// styx
 	EXTREMEDEMON,	// bloodbath
 	IMPOSSIBLEDEMON,	// cataclysm
+	IMPOSSIBLEDEMON,	// aftermath
 	IMPOSSIBLEDEMON,	// wcropolix
 	IMPOSSIBLEDEMON,	// silentclubstep
+	IMPOSSIBLEDEMON,	// aftercatabath
 	IMPOSSIBLEDEMON,	// shardscapes
 	IMPOSSIBLEDEMON,	// element111rg
+	GRANDPADEMON,	// slaughterhouse
+	GRANDPADEMON,	// kratos
+	GRANDPADEMON,	// nullscapes
 	GRANDPADEMON,	// everyend
 	GRANDPADEMON,	// silentcircles
+	GRANDPADEMON,	// luckydraw
 };
 
 const uint8_t stars_list[] = {
@@ -255,10 +261,16 @@ const uint8_t stars_list[] = {
 	10,	// styx
 	10,	// bloodbath
 	10,	// cataclysm
+	10,	// aftermath
 	10,	// wcropolix
 	10,	// silentclubstep
+	10,	// aftercatabath
 	10,	// shardscapes
 	10,	// element111rg
+	10,	// slaughterhouse
+	10,	// kratos
+	10,	// nullscapes
 	10,	// everyend
 	10,	// silentcircles
+	10,	// luckydraw
 };

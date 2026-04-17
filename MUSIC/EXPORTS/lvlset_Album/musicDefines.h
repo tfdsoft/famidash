@@ -11,7 +11,7 @@
 #define song_driving_by_night 10
 #define song_flow 11
 #define song_the_angel 12
-#define song_problematic 13
+#define song_ludicrous_speed 13
 #define song_time_machine_full 14
 #define song_clutterfunk 15
 #define song_miami_hotline_vol_3 16
@@ -27,10 +27,10 @@
 #define song_just_right_full 26
 #define song_isolation 27
 #define song_press_start 28
-#define song_blast_processing 29
-#define song_toe_2 30
-#define song_polargeist 31
-#define song_electroman_adventures 32
+#define song_polargeist 29
+#define song_blast_processing 30
+#define song_toe_2 31
+#define song_rainbow_tylenol 32
 #define song_fingerdash 33
 #define song_death_moon 34
 #define song_geometrical_dominator 35
@@ -55,8 +55,8 @@
 #define song_cryogenic 54
 #define song_animation_warrior_theme 55
 #define song_astronomical_expedition 56
-#define song_ludicrous_speed 57
-#define song_rainbow_tylenol 58
+#define song_electroman_adventures 57
+#define song_metamorphosis 58
 #define song_shiawase_vip 59
 #define song_theory_of_everything 60
 #define song_fantasy 61
@@ -110,9 +110,9 @@
 #define song_menu_theme 109
 #define song_chaoz_impact 110
 #define song_meowstuff 111
-#define song_metamorphosis 112
-#define song_moon_fries 113
-#define song_ninox 114
+#define song_moon_fries 112
+#define song_ninox 113
+#define song_problematic 114
 #define song_the_challenge 115
 #define song_lost 116
 #define song_max 117

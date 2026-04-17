@@ -5767,7 +5767,6 @@
 				}
 			]
 		},
-		/*
 		{
 			level: "aftermath",
 			lowerText: "AFTERMATH",
@@ -5784,7 +5783,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		*/
 		{
 			level: "wcropolix",
 			lowerText: "WCROPOLIX",
@@ -5818,7 +5816,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		/*
 		{
 			level: "aftercatabath",
 			lowerText: "AFTERCATABATH",
@@ -5835,7 +5832,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		*/
 		{
 			level: "shardscapes",
 			lowerText: "SHARDSCAPES",
@@ -5934,7 +5930,6 @@
 				},
 			],
 		},
-		/*
 		{
 			level: "slaughterhouse",
 			lowerText: "SLAUGHTERHOUSE",
@@ -5967,8 +5962,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		*/
-		/*
 		{ 
 			level: "nullscapes",
 			lowerText: "NULLSCAPES",
@@ -6012,7 +6005,6 @@
 				}
 			]
 		},
-		*/
 		{
 			level: "everyend",
 			lowerText: "EVERY END",
@@ -6109,7 +6101,6 @@
 				},
 			]
 		},
-		/*
 		{
 			level: "luckydraw",
 			lowerText: "LUCKY DRAW",
@@ -6126,7 +6117,6 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		*/
 //		{
 //			level: "test8",
 //			lowerText: "TEST8",
