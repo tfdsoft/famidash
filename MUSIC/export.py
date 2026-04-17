@@ -419,7 +419,7 @@ if __name__ == "__main__":
     # special case if aligner is dpcm_BIG
         lastDatBank = 0xEF
     elif dpcmAlignerName == "dpcm_ALBUM":
-        lastDatBank = 0x3B
+        lastDatBank = 0x3A
     else:
         lastDatBank = 0x33
     

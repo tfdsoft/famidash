@@ -180,91 +180,73 @@ void state_soundtest() {
 
 
 void refresh_queue_screen() {
-		if (!tmp4 || tmp4 == 0xFF) {
+		switch (tmp4) {
+			default:
+			case 0xFF:
 //					ppu_off();
 //					crossPRGBankJump0(unrle_bgm2);
 					update_text2();
 //					ppu_on_all();
 					tmp4 = 2;
-		}
-		else if (tmp4 == 1) {
+					break;
+			case 0x01:
 					update_text3();
 					tmp4 = 3;
-		}			
-		else if (tmp4 == 2) {
-			for (tmp1 = 2; tmp1 < 4; tmp1++) {			//limited to 5??
-			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));		
-			if (music_queue[tmp1] != 0xFF) {
-				tmp3 = music_queue[tmp1];
-				__A__ = idx16_load_hi(xbgmtextsUpper, tmp3);
-				if (__A__) { 
-					multi_vram_buffer_horz(xbgmtextsUpper[tmp3], xbgmtextsUpperSize[tmp3], NTADR_A(3, (13 + (tmp1))));
-					multi_vram_buffer_horz(xbgmtextsLower[tmp3], xbgmtextsLowerSize[tmp3], NTADR_A((4 + xbgmtextsUpperSize[tmp3]), (13 + (tmp1))));
-				} else {
-					multi_vram_buffer_horz(xbgmtextsLower[tmp3], xbgmtextsLowerSize[tmp3], NTADR_A(3, (13 + (tmp1))));
-					one_vram_buffer_horz_repeat('$', 7, NTADR_A((3 + xbgmtextsLowerSize[tmp3]), (13 + (tmp1))));
-				}				
-			} else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			tmp4 = 1;
-			}
-		}
-		else if (tmp4 == 3) {
-			for (tmp1 = 4; tmp1 < 6; tmp1++) {			//limited to 5??
-			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			if (music_queue[tmp1] != 0xFF) {
-				text_stuff();			
-			}
-			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			tmp4 = 4;
-			}
-		}
-		else if (tmp4 == 4) {
-			for (tmp1 = 6; tmp1 < 8; tmp1++) {			//limited to 5??
-			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			if (music_queue[tmp1] != 0xFF) {
-				text_stuff();			
-			}
-			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			tmp4 = 5;
-			}
-		}
-		else if (tmp4 == 5) {
-			for (tmp1 = 8; tmp1 < 10; tmp1++) {			//limited to 5??
-			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			if (music_queue[tmp1] != 0xFF) {
-				text_stuff();			
-			}
-			else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			}
-			tmp4 = 0;
-		}
+					break;
+			case 0x02:
+				for (tmp1 = 2; tmp1 < 4; tmp1++) {			//limited to 5??
+				one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));		
+				if (music_queue[tmp1] != 0xFF) {
+					tmp3 = music_queue[tmp1];
+					__A__ = idx16_load_hi(xbgmtextsUpper, tmp3);
+					if (__A__) { 
+						multi_vram_buffer_horz(xbgmtextsUpper[tmp3], xbgmtextsUpperSize[tmp3], NTADR_A(3, (13 + (tmp1))));
+						multi_vram_buffer_horz(xbgmtextsLower[tmp3], xbgmtextsLowerSize[tmp3], NTADR_A((4 + xbgmtextsUpperSize[tmp3]), (13 + (tmp1))));
+					} else {
+						multi_vram_buffer_horz(xbgmtextsLower[tmp3], xbgmtextsLowerSize[tmp3], NTADR_A(3, (13 + (tmp1))));
+						one_vram_buffer_horz_repeat('$', 7, NTADR_A((3 + xbgmtextsLowerSize[tmp3]), (13 + (tmp1))));
+					}				
+				} else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+				tmp4 = 1;
+				}
+				break;
+			case 0x03:
+				for (tmp1 = 4; tmp1 < 6; tmp1++) {			//limited to 5??
+					one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+					if (music_queue[tmp1] != 0xFF) {
+						text_stuff();			
+					}
+					else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+					tmp4 = 4;
+				}
+				break;
+			case 0x04:
+				for (tmp1 = 6; tmp1 < 8; tmp1++) {			//limited to 5??
+				one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+				if (music_queue[tmp1] != 0xFF) {
+					text_stuff();			
+				}
+				else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+				tmp4 = 5;
+				}
+				break;
+			case 0x05:
+				for (tmp1 = 8; tmp1 < 10; tmp1++) {			//limited to 5??
+				one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+				if (music_queue[tmp1] != 0xFF) {
+					text_stuff();			
+				}
+				else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+				}
+				tmp4 = 0;
+				break;
+		};
 			
 }					
 
+
 //CODE_BANK_POP()
 
-
-
-
-void colorinc() {
-	if (idx8_inc(icon_colors, settingvalue) & 0x30) {
-		if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
-			idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] + 0x10) & 0x30);
-	} else {
-		if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
-			icon_colors[settingvalue] = 0x0F;
-	}	
-}
-
-void colordec() {
-	if (idx8_dec(icon_colors, settingvalue) & 0x30) {
-		if ((uint8_t)(icon_colors[settingvalue] & 0x0F) >= 0x0D)
-			idx8_store(icon_colors, settingvalue, (icon_colors[settingvalue] & 0x30) | 0x0C);
-	} else {
-		if (((icon_colors[settingvalue] - 0x0D) & 0xFE) == 0)	// if color == 0x0D or 0x0E
-			icon_colors[settingvalue] = 0x0C;
-	}
-}	
 
 
 void update_text1() {
