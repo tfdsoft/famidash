@@ -870,7 +870,7 @@
 		.incbin "EXPORTS/cryogenic.lz.1.bin" ; Size: 1675
 
 
-.segment "DAT_BANK_22"	; Total bank size: 7198 bytes
+.segment "DAT_BANK_22"	; Total bank size: 7318 bytes
 	.export level_data_xmaschallenge
 	level_data_xmaschallenge:
 	; Header
