@@ -30,6 +30,7 @@ const uint8_t difficulty_list[] = {
 	AUTO,	// bestautomaticlvl
 	AUTO,	// movie
 	EASY,	// retray
+	HARD,	// groundtoretray
 	EASY,	// sonar
 	EASY,	// darkparadise
 	EASY,	// madness
@@ -170,6 +171,7 @@ const uint8_t stars_list[] = {
 	1,	// bestautomaticlvl
 	1,	// movie
 	2,	// retray
+	5,	// groundtoretray
 	2,	// sonar
 	2,	// darkparadise
 	2,	// madness

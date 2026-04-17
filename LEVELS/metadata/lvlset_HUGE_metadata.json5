@@ -1588,6 +1588,54 @@
 				},
 			]
 		},
+		{ 
+			level: "groundtoretray",
+			upperText: "GROUND TO",
+			lowerText: "RETRAY",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_golden_haze",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			maxFallSpeed: 0x07,
+			startingBackgroundColor: 0x03,
+			startingGroundColor: 0x00,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[171, 20],		//ball portal
+						[477, 25],	[498, 22],	[499, 22],		//speed portal
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [212, 19],		//gravity portal
+					offsetX: +16,
+				},
+				{
+					coordinates: [
+						[213, 19],		//ship portal
+						[212, 19],		//gravity portal
+						[227, 19],	[234, 19],	[301, 19],	[306, 19],		//speed portal
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [214, 19],		//speed portal
+					offsetY: +14,
+					offsetX: -12
+				},
+				{
+					coordinates: [308, 19],		//wave portal
+					offsetX: -8
+				},
+			]
+		},
 		{
 			level: "sonar",
 			lowerText: "SONAR",

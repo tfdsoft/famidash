@@ -33,6 +33,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_bestautomaticlvl)
 	.byte .lobyte(level_data_movie)
 	.byte .lobyte(level_data_retray)
+	.byte .lobyte(level_data_groundtoretray)
 	.byte .lobyte(level_data_sonar)
 	.byte .lobyte(level_data_darkparadise)
 	.byte .lobyte(level_data_madness)
@@ -172,6 +173,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_bestautomaticlvl)
 	.byte .hibyte(level_data_movie)
 	.byte .hibyte(level_data_retray)
+	.byte .hibyte(level_data_groundtoretray)
 	.byte .hibyte(level_data_sonar)
 	.byte .hibyte(level_data_darkparadise)
 	.byte .hibyte(level_data_madness)
@@ -311,6 +313,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_bestautomaticlvl))
 	.byte .lobyte(.bank(level_data_movie))
 	.byte .lobyte(.bank(level_data_retray))
+	.byte .lobyte(.bank(level_data_groundtoretray))
 	.byte .lobyte(.bank(level_data_sonar))
 	.byte .lobyte(.bank(level_data_darkparadise))
 	.byte .lobyte(.bank(level_data_madness))
@@ -546,6 +549,7 @@ _level_lengths_lo:
 	.byte .lobyte($00006F)		; bestautomaticlvl
 	.byte .lobyte($0000C0)		; movie
 	.byte .lobyte($000066)		; retray
+	.byte .lobyte($000066)		; groundtoretray
 	.byte .lobyte($00008D)		; sonar
 	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($00008C)		; madness
@@ -687,6 +691,7 @@ _level_lengths_md:
 	.byte .hibyte($00006F)		; bestautomaticlvl
 	.byte .hibyte($0000C0)		; movie
 	.byte .hibyte($000066)		; retray
+	.byte .hibyte($000066)		; groundtoretray
 	.byte .hibyte($00008D)		; sonar
 	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($00008C)		; madness
@@ -828,6 +833,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00006F)		; bestautomaticlvl
 	.byte .bankbyte($0000C0)		; movie
 	.byte .bankbyte($000066)		; retray
+	.byte .bankbyte($000066)		; groundtoretray
 	.byte .bankbyte($00008D)		; sonar
 	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($00008C)		; madness
