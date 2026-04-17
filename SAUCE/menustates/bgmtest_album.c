@@ -81,16 +81,16 @@ void state_soundtest() {
 		if (tmp4) refresh_queue_screen();
 		if (tmp5) {
 			__A__ = idx16_load_hi(xbgmtextsCoveringArtist1, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist1[tempsong & 0xFF], xbgmtextsCoveringArtist1Size[tempsong], 14, NTADR_A(9, 19));
+			if (__A__) draw_padded_text(xbgmtextsCoveringArtist1[tempsong], xbgmtextsCoveringArtist1Size[tempsong], 14, NTADR_A(9, 19));
 			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 19));
 			__A__ = idx16_load_hi(xbgmtextsCoveringArtist2, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist2[tempsong & 0xFF], xbgmtextsCoveringArtist2Size[tempsong], 14, NTADR_A(9, 20));
+			if (__A__) draw_padded_text(xbgmtextsCoveringArtist2[tempsong], xbgmtextsCoveringArtist2Size[tempsong], 14, NTADR_A(9, 20));
 			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 20));
 			__A__ = idx16_load_hi(xbgmtextsCoveringArtist3, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist3[tempsong & 0xFF], xbgmtextsCoveringArtist3Size[tempsong], 14, NTADR_A(9, 21));
+			if (__A__) draw_padded_text(xbgmtextsCoveringArtist3[tempsong], xbgmtextsCoveringArtist3Size[tempsong], 14, NTADR_A(9, 21));
 			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 21));
 			__A__ = idx16_load_hi(xbgmtextsCoveringArtist4, tempsong);
-			if (__A__) draw_padded_text(xbgmtextsCoveringArtist4[tempsong & 0xFF], xbgmtextsCoveringArtist4Size[tempsong], 14, NTADR_A(9, 22));
+			if (__A__) draw_padded_text(xbgmtextsCoveringArtist4[tempsong], xbgmtextsCoveringArtist4Size[tempsong], 14, NTADR_A(9, 22));
 			else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 22));
 			tmp5 = 0;
 		}
@@ -251,17 +251,17 @@ void refresh_queue_screen() {
 
 void update_text1() {
 	__A__ = idx16_load_hi(xbgmtextsUpper, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsUpper[tempsong & 0xFF], xbgmtextsUpperSize[tempsong], 14, NTADR_A(9, 7));
+	if (__A__) draw_padded_text(xbgmtextsUpper[tempsong], xbgmtextsUpperSize[tempsong], 14, NTADR_A(9, 7));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 7));
 	__A__ = idx16_load_hi(xbgmtextsLower, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsLower[tempsong & 0xFF], xbgmtextsLowerSize[tempsong], 14, NTADR_A(9, 8));
+	if (__A__) draw_padded_text(xbgmtextsLower[tempsong], xbgmtextsLowerSize[tempsong], 14, NTADR_A(9, 8));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 8));
 	
 	__A__ = idx16_load_hi(xbgmtextsLowerOrigArtist, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsLowerOrigArtist[tempsong & 0xFF], xbgmtextsLowerOrigArtistSize[tempsong], 14, NTADR_A(9, 14));
+	if (__A__) draw_padded_text(xbgmtextsLowerOrigArtist[tempsong], xbgmtextsLowerOrigArtistSize[tempsong], 14, NTADR_A(9, 14));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 14));
 	__A__ = idx16_load_hi(xbgmtextsUpperOrigArtist, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsUpperOrigArtist[tempsong & 0xFF], xbgmtextsUpperOrigArtistSize[tempsong], 14, NTADR_A(9, 13));
+	if (__A__) draw_padded_text(xbgmtextsUpperOrigArtist[tempsong], xbgmtextsUpperOrigArtistSize[tempsong], 14, NTADR_A(9, 13));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 13));
 
 	tmp5 = 1;
@@ -269,10 +269,10 @@ void update_text1() {
 
 void update_text3() {
 	__A__ = idx16_load_hi(xbgmtextsUpper, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsUpper[tempsong & 0xFF], xbgmtextsUpperSize[tempsong], 14, NTADR_A(9, 7));
+	if (__A__) draw_padded_text(xbgmtextsUpper[tempsong], xbgmtextsUpperSize[tempsong], 14, NTADR_A(9, 7));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 7));
 	__A__ = idx16_load_hi(xbgmtextsLower, tempsong);
-	if (__A__) draw_padded_text(xbgmtextsLower[tempsong & 0xFF], xbgmtextsLowerSize[tempsong], 14, NTADR_A(9, 8));
+	if (__A__) draw_padded_text(xbgmtextsLower[tempsong], xbgmtextsLowerSize[tempsong], 14, NTADR_A(9, 8));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 8));
 }
 void update_text2() {
