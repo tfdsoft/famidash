@@ -106,7 +106,7 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// gameover
 	MEDIUMDEMON,	// invisiblelight
 	MEDIUMDEMON,	// firetemple
-	DEMON,	// explorers
+	HARDDEMON,	// explorers
 	HARDDEMON,	// toeiiv2
 	HARDDEMON,	// pgclubstep
 	HARDDEMON,	// deadlyclubstep
