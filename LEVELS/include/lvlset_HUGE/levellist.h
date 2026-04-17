@@ -25,12 +25,14 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// fingerdash
 	INSANE,	// dash
 	NORMAL,	// thetower
+	HARD,	// thesewers
 	HARD,	// thechallenge
 	AUTO,	// bestautomaticlvl
 	AUTO,	// movie
 	EASY,	// retray
 	EASY,	// sonar
 	EASY,	// darkparadise
+	EASY,	// madness
 	EASY,	// xmaschallenge
 	NORMAL,	// leveleasy
 	NORMAL,	// dorabaebasic4
@@ -102,6 +104,7 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// gameover
 	MEDIUMDEMON,	// invisiblelight
 	MEDIUMDEMON,	// firetemple
+	DEMON,	// explorers
 	HARDDEMON,	// toeiiv2
 	HARDDEMON,	// pgclubstep
 	HARDDEMON,	// deadlyclubstep
@@ -162,12 +165,14 @@ const uint8_t stars_list[] = {
 	12,	// fingerdash
 	12,	// dash
 	5,	// thetower
+	6,	// thesewers
 	3,	// thechallenge
 	1,	// bestautomaticlvl
 	1,	// movie
 	2,	// retray
 	2,	// sonar
 	2,	// darkparadise
+	2,	// madness
 	2,	// xmaschallenge
 	3,	// leveleasy
 	3,	// dorabaebasic4
@@ -239,6 +244,7 @@ const uint8_t stars_list[] = {
 	10,	// gameover
 	10,	// invisiblelight
 	10,	// firetemple
+	15,	// explorers
 	10,	// toeiiv2
 	10,	// pgclubstep
 	10,	// deadlyclubstep
