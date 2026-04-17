@@ -42,7 +42,7 @@ const uint8_t stars_list[] = {
 	10,	// skeletalshenanigans
 	10,	// goldenhaze
 	10,	// gameover
-	15,	// explorers
+	10,	// explorers
 	10,	// toeiiv2
 	10,	// demoncryogenic
 	10,	// azuronxolax

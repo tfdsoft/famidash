@@ -248,7 +248,7 @@ const uint8_t stars_list[] = {
 	10,	// gameover
 	10,	// invisiblelight
 	10,	// firetemple
-	15,	// explorers
+	10,	// explorers
 	10,	// toeiiv2
 	10,	// pgclubstep
 	10,	// deadlyclubstep
