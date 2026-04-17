@@ -25,6 +25,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_tinytunes)
 	.byte .lobyte(level_data_fireaura)
 	.byte .lobyte(level_data_rainbowdust)
+	.byte .lobyte(level_data_wintherace)
 	.byte .lobyte(level_data_factorytime)
 	.byte .lobyte(level_data_thesteamworks)
 	.byte .lobyte(level_data_rainingtacos)
@@ -60,6 +61,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_tinytunes)
 	.byte .hibyte(level_data_fireaura)
 	.byte .hibyte(level_data_rainbowdust)
+	.byte .hibyte(level_data_wintherace)
 	.byte .hibyte(level_data_factorytime)
 	.byte .hibyte(level_data_thesteamworks)
 	.byte .hibyte(level_data_rainingtacos)
@@ -95,6 +97,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_tinytunes))
 	.byte .lobyte(.bank(level_data_fireaura))
 	.byte .lobyte(.bank(level_data_rainbowdust))
+	.byte .lobyte(.bank(level_data_wintherace))
 	.byte .lobyte(.bank(level_data_factorytime))
 	.byte .lobyte(.bank(level_data_thesteamworks))
 	.byte .lobyte(.bank(level_data_rainingtacos))
@@ -163,6 +166,7 @@ _level_lengths_lo:
 	.byte .lobyte($000082)		; tinytunes
 	.byte .lobyte($0000BF)		; fireaura
 	.byte .lobyte($0000AB)		; rainbowdust
+	.byte .lobyte($00008F)		; wintherace
 	.byte .lobyte($000090)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
 	.byte .lobyte($0000BB)		; rainingtacos
@@ -200,6 +204,7 @@ _level_lengths_md:
 	.byte .hibyte($000082)		; tinytunes
 	.byte .hibyte($0000BF)		; fireaura
 	.byte .hibyte($0000AB)		; rainbowdust
+	.byte .hibyte($00008F)		; wintherace
 	.byte .hibyte($000090)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
 	.byte .hibyte($0000BB)		; rainingtacos
@@ -237,6 +242,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000082)		; tinytunes
 	.byte .bankbyte($0000BF)		; fireaura
 	.byte .bankbyte($0000AB)		; rainbowdust
+	.byte .bankbyte($00008F)		; wintherace
 	.byte .bankbyte($000090)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
 	.byte .bankbyte($0000BB)		; rainingtacos

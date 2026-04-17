@@ -228,6 +228,12 @@
 		},
 		*/
 		{
+			fmsSongName: "Win the Race",
+			upperText: "WIN THE",
+			lowerText: "RACE",
+			originalArtistText: "COSMICSPACE33",
+		},
+		{
 			fmsSongName: "Xenogenesis",
 			lowerText: "XENOGENESIS",
 			originalArtistText: "THEFATRAT",

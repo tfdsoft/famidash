@@ -2,10 +2,10 @@
 #define song_practice 1
 #define song_magic_touch 2
 #define song_tetris_remix_final 3
-#define song_check_out 4
-#define song_factory_time 5
-#define song_cryogenic 6
-#define song_fantasy 7
+#define song_factory_time 4
+#define song_fantasy 5
+#define song_check_out 6
+#define song_cryogenic 7
 #define song_raining_tacos 8
 #define song_snow 9
 #define song_clubstep 10
@@ -34,4 +34,5 @@
 #define song_off_to_mars 33
 #define song_scheming_weasel 34
 #define song_ultimatedestruction 35
-#define song_max 36
+#define song_win_the_race 36
+#define song_max 37

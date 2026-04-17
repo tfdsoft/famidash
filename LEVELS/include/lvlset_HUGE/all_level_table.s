@@ -65,6 +65,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_funnygameholiday)
 	.byte .lobyte(level_data_fireaura)
 	.byte .lobyte(level_data_rainbowdust)
+	.byte .lobyte(level_data_wintherace)
 	.byte .lobyte(level_data_factorytime)
 	.byte .lobyte(level_data_thesteamworks)
 	.byte .lobyte(level_data_astronomicalexpedition)
@@ -205,6 +206,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_funnygameholiday)
 	.byte .hibyte(level_data_fireaura)
 	.byte .hibyte(level_data_rainbowdust)
+	.byte .hibyte(level_data_wintherace)
 	.byte .hibyte(level_data_factorytime)
 	.byte .hibyte(level_data_thesteamworks)
 	.byte .hibyte(level_data_astronomicalexpedition)
@@ -345,6 +347,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_funnygameholiday))
 	.byte .lobyte(.bank(level_data_fireaura))
 	.byte .lobyte(.bank(level_data_rainbowdust))
+	.byte .lobyte(.bank(level_data_wintherace))
 	.byte .lobyte(.bank(level_data_factorytime))
 	.byte .lobyte(.bank(level_data_thesteamworks))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition))
@@ -581,6 +584,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B0)		; funnygameholiday
 	.byte .lobyte($0000BF)		; fireaura
 	.byte .lobyte($0000AB)		; rainbowdust
+	.byte .lobyte($00008F)		; wintherace
 	.byte .lobyte($000090)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
 	.byte .lobyte($000102)		; astronomicalexpedition
@@ -723,6 +727,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B0)		; funnygameholiday
 	.byte .hibyte($0000BF)		; fireaura
 	.byte .hibyte($0000AB)		; rainbowdust
+	.byte .hibyte($00008F)		; wintherace
 	.byte .hibyte($000090)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
 	.byte .hibyte($000102)		; astronomicalexpedition
@@ -865,6 +870,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B0)		; funnygameholiday
 	.byte .bankbyte($0000BF)		; fireaura
 	.byte .bankbyte($0000AB)		; rainbowdust
+	.byte .bankbyte($00008F)		; wintherace
 	.byte .bankbyte($000090)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
 	.byte .bankbyte($000102)		; astronomicalexpedition

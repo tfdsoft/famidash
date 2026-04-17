@@ -22,6 +22,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// tinytunes
 	HARDER,	// fireaura
 	HARDER,	// rainbowdust
+	HARDER,	// wintherace
 	HARDER,	// factorytime
 	HARDER,	// thesteamworks
 	INSANE,	// rainingtacos
@@ -58,6 +59,7 @@ const uint8_t stars_list[] = {
 	6,	// tinytunes
 	7,	// fireaura
 	7,	// rainbowdust
+	7,	// wintherace
 	7,	// factorytime
 	7,	// thesteamworks
 	8,	// rainingtacos

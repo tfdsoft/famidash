@@ -1598,7 +1598,7 @@
 			sawSet: "A",
 			difficulty: "EASY",
 			stars: 2,
-			songID: "song_golden_haze",
+			songID: "song_ground_to_retray",
 			startingGameMode: 0,
 			startingSpeed: 1,
 			maxFallSpeed: 0x07,
@@ -2948,6 +2948,51 @@
 				{
 					coordinates: [
 						[70, 22],	[73, 24],	[76, 22],		//deco
+					],
+					offsetY: +8
+				},
+			]
+		},
+		{
+			level: "wintherace",
+			upperText: "WIN",
+			lowerText: "THE RACE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_win_the_race",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[65, 17], [96, 21], [143, 23], [187, 18], [320, 20], [376, 20], [481, 16], [500, 18], [502, 21], [503, 21], [504, 21], [505, 21], [511, 21], [513, 21], [647, 21], [735, 22],
+						[839, 20], [843, 24],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[128, 21], [182, 22], [187, 18], [217, 18], [217, 19], [217, 20], [320, 20], [414, 21], [433, 14], [470, 26], [472, 16], [480, 20], [513, 21], [679, 21],
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[477, 20], [478, 24], [626, 20], [678, 21],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[519, 19],
 					],
 					offsetY: +8
 				},

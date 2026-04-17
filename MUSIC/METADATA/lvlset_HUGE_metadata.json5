@@ -558,6 +558,13 @@
 			coveringArtist: ["Crafty Jumper", "ElAngel378"]
 		},
 		{
+			fmsSongName: "Ground to ReTraY",
+			upperText: "GROUND TO",
+			lowerText: "RETRAY",
+			originalArtist: ["DetiousMusic", "SeaGlowingPro"],
+			coveringArtist: "Crafty Jumper",
+		},
+		{
 			fmsSongName: "Ground to Space",
 			upperText: "GROUND TO",
 			lowerText: "SPACE",
@@ -881,7 +888,7 @@
 			lowerText: "GREIF CUT",
 			originalArtist: "KayoszX",
 			coveringArtist: ["ElAngel378"]
-		},	
+		},
 		/*
 		{
 			fmsSongName: "Stalemate Full",
@@ -903,6 +910,12 @@
 			lowerText: "ODDITIES",
 			originalArtist: "Lemon Demon",
 			coveringArtist: ["alexmush", "SeaGlowingPro"]
+		},
+		{
+			fmsSongName: "Sunslammer",
+			lowerText: "SUNSLAMMER",
+			originalArtist: ["Toby Fox", "Seth Peelle"],
+			coveringArtist: "SeaGlowingPro",
 		},
 		{
 			fmsSongName: "Supernova",
@@ -1000,6 +1013,13 @@
 			coveringArtist: ["SeaGlowingPro", "ElAngel378"],
 		},
 		{
+			fmsSongName: "Win the Race",
+			upperText: "WIN THE",
+			lowerText: "RACE",
+			originalArtist: "cosmicspace33",
+			coveringArtist: "Crafty Jumper",
+		},
+		{
 			fmsSongName: "Windfall",
 			lowerText: "WINDFALL",
 			originalArtist: "TheFatRat",
@@ -1016,7 +1036,7 @@
 			lowerText: "XO",
 			originalArtist: ["EDEN     AARON", "   MUSSELWHITE"],
 			coveringArtist: "SeaGlowingPro",
-		},			
+		},
 		{
 			fmsSongName: "Youve been Trolled",
 			upperText: "YOUVE BEEN",
