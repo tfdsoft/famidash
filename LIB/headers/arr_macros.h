@@ -77,7 +77,7 @@
 // The latter type is way faster
 
 #define idx16_load_lo(arr, idx) (*(((uint8_t * const)arr)+((idx<<1))))
-#define idx16_load_hi(arr, idx) (*(((uint8_t * const)(arr+1))+((idx<<1))))
+#define idx16_load_hi(arr, idx) (*(((uint8_t * const)arr)+((idx<<1)+1)))
 
 // So far, we've been able to get away without an idx16_load_NOC by
 // using array[idx & 0x7F]

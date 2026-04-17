@@ -17,11 +17,11 @@ void refreshmenu() {
 	tmp5 = ((level&1)<<2)<<8;	// Which nametable to put the data into
 	set_scroll_x(((level-tmp4)&1)<<8);
 	
-	__A__ = idx16_load_hi_NOC(levelTextsUpper, level);
-	if (__A__) draw_padded_text(levelTextsUpper[level & 0x7F], levelTextsUpperSize[level], 17, NTADR_A(8, 10)|(tmp5 & 0xFF00));
+	__A__ = idx16_load_hi(levelTextsUpper, level);
+	if (__A__) draw_padded_text(levelTextsUpper[level], levelTextsUpperSize[level], 17, NTADR_A(8, 10)|(tmp5 & 0xFF00));
 	else one_vram_buffer_horz_repeat(' ', 17, NTADR_A(8, 10)|(tmp5 & 0xFF00));
 	// if (leveltexts2[level]) // always true
-	draw_padded_text(levelTextsLower[level & 0x7F], levelTextsLowerSize[level], 17, NTADR_A(8, 11)|(tmp5 & 0xFF00));
+	draw_padded_text(levelTextsLower[level], levelTextsLowerSize[level], 17, NTADR_A(8, 11)|(tmp5 & 0xFF00));
 
 	if (LEVELCOMPLETE[level]) { one_vram_buffer('y', NTADR_A(7, 9)|(tmp5 & 0xFF00));
 	one_vram_buffer('z', NTADR_A(8, 9)|(tmp5 & 0xFF00)); }

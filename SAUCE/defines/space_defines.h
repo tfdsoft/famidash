@@ -20,7 +20,7 @@
 #define MAX_FIREBALLS 20
 #define MAX_PRACTICE_POINTS 8
 #define max_loaded_sprites 16
-#define MAX_LEVEL_COMPLETE 0x80		//129 levels max (increase if we get more)
+#define MAX_LEVEL_COMPLETE 0xFF		//129 levels max (increase if we get more)
 
 #define NINJABANK 92
 #define FOOTBALLBANK 94
