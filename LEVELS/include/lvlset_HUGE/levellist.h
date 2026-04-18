@@ -24,7 +24,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// deadlocked
 	INSANE,	// fingerdash
 	INSANE,	// dash
-	HARDDEMON,	// explorers
+	DEMON,	// explorers
 	NORMAL,	// thetower
 	HARD,	// thesewers
 	HARD,	// thechallenge

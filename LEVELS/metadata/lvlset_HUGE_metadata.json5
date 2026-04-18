@@ -1373,7 +1373,7 @@
 			spikeSet: "A",
 			blockSet: "B",
 			sawSet: "A",
-			difficulty: "HARDDEMON",
+			difficulty: "DEMON",
 			stars: 10,
 			songID: "song_explorers",
 			startingGameMode: 0,
