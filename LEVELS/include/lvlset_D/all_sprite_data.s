@@ -5462,6 +5462,7 @@ sprite_data_demonpyrophoric:
   .byte $e0,$17,$30,$03,$86
   .byte $e0,$17,$60,$03,$49
   .byte $20,$18,$40,$03,$49
+  .byte $40,$18,$f0,$02,$07
   .byte $60,$18,$20,$03,$49
   .byte $a8,$18,$40,$03,$0b
   .byte $c0,$18,$10,$03,$10
@@ -5536,6 +5537,7 @@ sprite_data_demonpyrophoric:
   .byte $48,$1e,$40,$03,$19
   .byte $50,$1e,$40,$03,$17
   .byte $60,$1e,$20,$03,$4a
+  .byte $70,$1e,$10,$03,$1a
   .byte $90,$1e,$30,$03,$3d
   .byte $90,$1e,$60,$03,$2c
   .byte $c0,$1e,$30,$03,$3c
@@ -6023,7 +6025,7 @@ sprite_data_demonpyrophoric:
   .byte $b0,$3a,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1D"
+.segment "DAT_BANK_0B"
 sprite_data_explorers:
   .byte $d0,$00,$50,$03,$2d
   .byte $e0,$00,$80,$03,$2b

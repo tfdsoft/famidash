@@ -80,40 +80,14 @@
 		.incbin "EXPORTS/motion.lz.0.bin" ; Size: 8161
 
 
-.segment "DAT_BANK_03"	; Total bank size: 8172 bytes
-	.export level_data_demonpyrophoric
-	level_data_demonpyrophoric:
-	; Header
-		.byte <sprite_data_demonpyrophoric ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_demonpyrophoric ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_demonpyrophoric)) ;___ Sprite data bank
-		.byte song_pyrophoric_xl ;______________________ Song ID
-		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
-		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;___________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;___________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;___________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
-		.byte _DECO1 ;__________________________________ Deco type
-		.byte _SPIKESA ;________________________________ Spike set
-		.byte _BLOCKSB ;________________________________ Block set
-		.byte _SAWBLADESA ;_____________________________ Sawblade set
-		.byte $06 ;_____________________________________ Starting background color
-		.byte $0F ;_____________________________________ Starting ground color
-		.byte 27 ;______________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/demonpyrophoric.lz.0.bin" ; Size: 8154
-
-
-.segment "DAT_BANK_04"	; Total bank size: 8171 bytes
+.segment "DAT_BANK_03"	; Total bank size: 8171 bytes
 	.export level_data_astronomicalexpedition_7
 	level_data_astronomicalexpedition_7:
 	; Level data
 		.incbin "EXPORTS/astronomicalexpedition.lz.2.bin" ; Size: 8171
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_04"	; Total bank size: 8166 bytes
 	.export level_data_aftercatabath
 	level_data_aftercatabath:
 	; Header
@@ -139,14 +113,14 @@
 		.incbin "EXPORTS/aftercatabath.lz.0.bin" ; Size: 8148
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8165 bytes
+.segment "DAT_BANK_05"	; Total bank size: 8165 bytes
 	.export level_data_everyend_28
 	level_data_everyend_28:
 	; Level data
 		.incbin "EXPORTS/everyend.lz.1.bin" ; Size: 8165
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8161 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8161 bytes
 	.export level_data_subtleoddities
 	level_data_subtleoddities:
 	; Header
@@ -170,6 +144,32 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/subtleoddities.lz.0.bin" ; Size: 8143
+
+
+.segment "DAT_BANK_07"	; Total bank size: 8161 bytes
+	.export level_data_demonpyrophoric
+	level_data_demonpyrophoric:
+	; Header
+		.byte <sprite_data_demonpyrophoric ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_demonpyrophoric ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_demonpyrophoric)) ;___ Sprite data bank
+		.byte song_pyrophoric_xl ;______________________ Song ID
+		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
+		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;___________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;___________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;___________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;___________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
+		.byte _DECO1 ;__________________________________ Deco type
+		.byte _SPIKESA ;________________________________ Spike set
+		.byte _BLOCKSB ;________________________________ Block set
+		.byte _SAWBLADESA ;_____________________________ Sawblade set
+		.byte $06 ;_____________________________________ Starting background color
+		.byte $0F ;_____________________________________ Starting ground color
+		.byte 27 ;______________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/demonpyrophoric.lz.0.bin" ; Size: 8143
 
 
 .segment "DAT_BANK_08"	; Total bank size: 8161 bytes
@@ -3091,7 +3091,7 @@
 		.incbin "EXPORTS/offtomars.lz.bin" ; Size: 3860
 
 
-.segment "DAT_BANK_71"	; Total bank size: 8175 bytes
+.segment "DAT_BANK_71"	; Total bank size: 8185 bytes
 	.export level_data_greif
 	level_data_greif:
 	; Header
@@ -3763,8 +3763,8 @@
 		.incbin "EXPORTS/thesewers.lz.bin" ; Size: 940
 
 
-.segment "DAT_BANK_8F"	; Total bank size: 3416 bytes
+.segment "DAT_BANK_8F"	; Total bank size: 3427 bytes
 	.export level_data_demonpyrophoric_19
 	level_data_demonpyrophoric_19:
 	; Level data
-		.incbin "EXPORTS/demonpyrophoric.lz.1.bin" ; Size: 863
+		.incbin "EXPORTS/demonpyrophoric.lz.1.bin" ; Size: 874
