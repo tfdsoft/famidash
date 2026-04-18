@@ -8656,7 +8656,7 @@ sprite_data_thetower:
   .byte $20,$12,$20,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_75"
+.segment "DAT_BANK_22"
 sprite_data_thesewers:
   .byte $00,$00,$f0,$02,$de
   .byte $20,$00,$30,$03,$49
@@ -23672,7 +23672,7 @@ sprite_data_funnygameholiday:
   .byte $00,$40,$e0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_6E"
+.segment "DAT_BANK_6F"
 sprite_data_fireaura:
   .byte $00,$00,$70,$03,$86
   .byte $00,$00,$80,$03,$b6

@@ -596,7 +596,57 @@
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4692
 
 
-.segment "DAT_BANK_19"	; Total bank size: 8181 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8144 bytes
+	.export level_data_silentcircles
+	level_data_silentcircles:
+	; Header
+		.byte <sprite_data_silentcircles ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_silentcircles ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_silentcircles)) ;___ Sprite data bank
+		.byte song_supernova ;________________________ Song ID
+		.byte (1 << 4) | 0 ;__________________________ Starting game mode and speed
+		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_________________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 ;________________________ Deco type
+		.byte _SPIKESC ;______________________________ Spike set
+		.byte _BLOCKSB ;______________________________ Block set
+		.byte _SAWBLADESA ;___________________________ Sawblade set
+		.byte $02 ;___________________________________ Starting background color
+		.byte $02 ;___________________________________ Starting ground color
+		.byte 30 ;____________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/silentcircles.lz.bin" ; Size: 4454
+
+	.export level_data_gameover
+	level_data_gameover:
+	; Header
+		.byte <sprite_data_gameover ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_gameover ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_gameover)) ;___ Sprite data bank
+		.byte song_endgame ;_____________________ Song ID
+		.byte (0 << 4) | 0 ;_____________________ Starting game mode and speed
+		.byte ($B0) ;____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;____________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;____________________________ Y Scroll Position (low byte)
+		.byte ($07) ;____________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;______________ Force platformer, Disable parallax
+		.byte _DECO1 ;___________________________ Deco type
+		.byte _SPIKESC ;_________________________ Spike set
+		.byte _BLOCKSB ;_________________________ Block set
+		.byte _SAWBLADESA ;______________________ Sawblade set
+		.byte $0F ;______________________________ Starting background color
+		.byte $0F ;______________________________ Starting ground color
+		.byte 27 ;_______________________________ Level height
+	; Level data
+		.incbin "EXPORTS/gameover.lz.bin" ; Size: 3654
+
+
+.segment "DAT_BANK_1A"	; Total bank size: 8181 bytes
 	.export level_data_foresttemple
 	level_data_foresttemple:
 	; Header
@@ -646,7 +696,7 @@
 		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3753
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 8031 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 8176 bytes
 	.export level_data_infinitecircles
 	level_data_infinitecircles:
 	; Header
@@ -670,56 +720,6 @@
 		.byte 57 ;______________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/infinitecircles.lz.bin" ; Size: 4341
-
-	.export level_data_gameover
-	level_data_gameover:
-	; Header
-		.byte <sprite_data_gameover ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_gameover ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_gameover)) ;___ Sprite data bank
-		.byte song_endgame ;_____________________ Song ID
-		.byte (0 << 4) | 0 ;_____________________ Starting game mode and speed
-		.byte ($B0) ;____________________________ Spawn Y Position (high byte)
-		.byte ($00) ;____________________________ Spawn Y Position (low byte)
-		.byte ($02) ;____________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;____________________________ Y Scroll Position (low byte)
-		.byte ($07) ;____________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;______________ Force platformer, Disable parallax
-		.byte _DECO1 ;___________________________ Deco type
-		.byte _SPIKESC ;_________________________ Spike set
-		.byte _BLOCKSB ;_________________________ Block set
-		.byte _SAWBLADESA ;______________________ Sawblade set
-		.byte $0F ;______________________________ Starting background color
-		.byte $0F ;______________________________ Starting ground color
-		.byte 27 ;_______________________________ Level height
-	; Level data
-		.incbin "EXPORTS/gameover.lz.bin" ; Size: 3654
-
-
-.segment "DAT_BANK_1B"	; Total bank size: 8109 bytes
-	.export level_data_silentcircles
-	level_data_silentcircles:
-	; Header
-		.byte <sprite_data_silentcircles ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_silentcircles ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_silentcircles)) ;___ Sprite data bank
-		.byte song_supernova ;________________________ Song ID
-		.byte (1 << 4) | 0 ;__________________________ Starting game mode and speed
-		.byte ($B0) ;_________________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_________________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_________________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_________________________________ Y Scroll Position (low byte)
-		.byte ($07) ;_________________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;___________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 ;________________________ Deco type
-		.byte _SPIKESC ;______________________________ Spike set
-		.byte _BLOCKSB ;______________________________ Block set
-		.byte _SAWBLADESA ;___________________________ Sawblade set
-		.byte $02 ;___________________________________ Starting background color
-		.byte $02 ;___________________________________ Starting ground color
-		.byte 30 ;____________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/silentcircles.lz.bin" ; Size: 4274
 
 
 .segment "DAT_BANK_1C"	; Total bank size: 8119 bytes
