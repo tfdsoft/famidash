@@ -4953,6 +4953,66 @@
 					
 			],
 		},
+		{
+			level: "demonpyrophoric",
+			upperText: "DEMON",
+			lowerText: "PYROPHORIC",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "MEDIUMDEMON",
+			stars: 10,
+			songID: "song_pyrophoric_xl",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x06,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[42, 21], [96, 22], [127, 21], [153, 22], [214, 21], [227, 19], [234, 21], [259, 21], [274, 23], [299, 23], [301, 22], [341, 22], [406, 22],
+						[728, 22], [763, 22], [771, 19], [807, 20], [813, 21], [814, 21], [862, 21], [866, 22], [899, 21], [905, 23], [920, 23], [108, 22], [914, 22], 
+						[180, 22], [689, 21], [522, 23], [528, 24], [538, 24], [544, 23],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[20, 20], [35, 24], [42, 20], [308, 21], [395, 22], [439, 23], [565, 22], [625, 16], [646, 21], [771, 19], [795, 22], [807, 20], [814, 21],
+						[894, 21], [897, 20], [903, 21], [45, 24], [3, 26], [45, 20], [172, 21], [844, 19],
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[264, 20], [317, 21], [484, 22],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[285, 22], [762, 21], [786, 21],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[916, 22], [549, 21],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[770, 23], [775, 22], [790, 23], [798, 24], [794, 19], [813, 25], [813, 17], [822, 21], [825, 24], [833, 21], [836, 18], [843, 22], [850, 18], [853, 21], [858, 24], [806, 23],
+					],
+					offsetY: +8,
+					offsetX: +8
+				},
+			]
+		},
 		{ 
 			level: "explorers",
 			lowerText: "EXPLORERS",

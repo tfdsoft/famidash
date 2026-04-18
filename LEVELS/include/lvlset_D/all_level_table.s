@@ -14,6 +14,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_goldenhaze)
 	.byte .lobyte(level_data_gameover)
+	.byte .lobyte(level_data_demonpyrophoric)
 	.byte .lobyte(level_data_explorers)
 	.byte .lobyte(level_data_toeiiv2)
 	.byte .lobyte(level_data_demoncryogenic)
@@ -44,6 +45,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_skeletalshenanigans)
 	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_gameover)
+	.byte .hibyte(level_data_demonpyrophoric)
 	.byte .hibyte(level_data_explorers)
 	.byte .hibyte(level_data_toeiiv2)
 	.byte .hibyte(level_data_demoncryogenic)
@@ -74,6 +76,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_gameover))
+	.byte .lobyte(.bank(level_data_demonpyrophoric))
 	.byte .lobyte(.bank(level_data_explorers))
 	.byte .lobyte(.bank(level_data_toeiiv2))
 	.byte .lobyte(.bank(level_data_demoncryogenic))
@@ -96,24 +99,27 @@ _level_list_bank:
 
 _level_chunk_list_lo:
 	.byte .lobyte(level_data_skeletalshenanigans_0)
-	.byte .lobyte(level_data_demoncryogenic_1)
-	.byte .lobyte(level_data_windylandscape_2)
-	.byte .lobyte(level_data_aftercatabath_3)
+	.byte .lobyte(level_data_demonpyrophoric_1)
+	.byte .lobyte(level_data_demoncryogenic_2)
+	.byte .lobyte(level_data_windylandscape_3)
 	.byte .lobyte(level_data_aftercatabath_4)
+	.byte .lobyte(level_data_aftercatabath_5)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_skeletalshenanigans_0)
-	.byte .hibyte(level_data_demoncryogenic_1)
-	.byte .hibyte(level_data_windylandscape_2)
-	.byte .hibyte(level_data_aftercatabath_3)
+	.byte .hibyte(level_data_demonpyrophoric_1)
+	.byte .hibyte(level_data_demoncryogenic_2)
+	.byte .hibyte(level_data_windylandscape_3)
 	.byte .hibyte(level_data_aftercatabath_4)
+	.byte .hibyte(level_data_aftercatabath_5)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_skeletalshenanigans_0))
-	.byte .lobyte(.bank(level_data_demoncryogenic_1))
-	.byte .lobyte(.bank(level_data_windylandscape_2))
-	.byte .lobyte(.bank(level_data_aftercatabath_3))
+	.byte .lobyte(.bank(level_data_demonpyrophoric_1))
+	.byte .lobyte(.bank(level_data_demoncryogenic_2))
+	.byte .lobyte(.bank(level_data_windylandscape_3))
 	.byte .lobyte(.bank(level_data_aftercatabath_4))
+	.byte .lobyte(.bank(level_data_aftercatabath_5))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -128,6 +134,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($000078)		; gameover
+	.byte .lobyte($000097)		; demonpyrophoric
 	.byte .lobyte($000050)		; explorers
 	.byte .lobyte($0000A1)		; toeiiv2
 	.byte .lobyte($0000A8)		; demoncryogenic
@@ -160,6 +167,7 @@ _level_lengths_md:
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($000078)		; gameover
+	.byte .hibyte($000097)		; demonpyrophoric
 	.byte .hibyte($000050)		; explorers
 	.byte .hibyte($0000A1)		; toeiiv2
 	.byte .hibyte($0000A8)		; demoncryogenic
@@ -192,6 +200,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($000078)		; gameover
+	.byte .bankbyte($000097)		; demonpyrophoric
 	.byte .bankbyte($000050)		; explorers
 	.byte .bankbyte($0000A1)		; toeiiv2
 	.byte .bankbyte($0000A8)		; demoncryogenic

@@ -818,6 +818,12 @@
 			coveringArtist: ["NerdBoy628","alexmush"],
 		},
 		{
+			fmsSongName: "Pyrophoric XL",
+			lowerText: "PYROPHORIC XL",
+			originalArtist: "NerdBoy628",
+			coveringArtist: ["NerdBoy628","alexmush","SeaGlowingPro"],
+		},
+		{
 			fmsSongName: "rainbow tylenol",
 			upperText: "RAINBOW",
 			lowerText: "TYLENOL",
@@ -910,12 +916,6 @@
 			lowerText: "ODDITIES",
 			originalArtist: "Lemon Demon",
 			coveringArtist: ["alexmush", "SeaGlowingPro"]
-		},
-		{
-			fmsSongName: "Sunslammer",
-			lowerText: "SUNSLAMMER",
-			originalArtist: ["Toby Fox", "Seth Peelle"],
-			coveringArtist: "SeaGlowingPro",
 		},
 		{
 			fmsSongName: "Supernova",

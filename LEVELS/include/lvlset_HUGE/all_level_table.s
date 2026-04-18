@@ -109,6 +109,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_gameover)
 	.byte .lobyte(level_data_invisiblelight)
 	.byte .lobyte(level_data_firetemple)
+	.byte .lobyte(level_data_demonpyrophoric)
 	.byte .lobyte(level_data_explorers)
 	.byte .lobyte(level_data_toeiiv2)
 	.byte .lobyte(level_data_pgclubstep)
@@ -250,6 +251,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_gameover)
 	.byte .hibyte(level_data_invisiblelight)
 	.byte .hibyte(level_data_firetemple)
+	.byte .hibyte(level_data_demonpyrophoric)
 	.byte .hibyte(level_data_explorers)
 	.byte .hibyte(level_data_toeiiv2)
 	.byte .hibyte(level_data_pgclubstep)
@@ -391,6 +393,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_gameover))
 	.byte .lobyte(.bank(level_data_invisiblelight))
 	.byte .lobyte(.bank(level_data_firetemple))
+	.byte .lobyte(.bank(level_data_demonpyrophoric))
 	.byte .lobyte(.bank(level_data_explorers))
 	.byte .lobyte(.bank(level_data_toeiiv2))
 	.byte .lobyte(.bank(level_data_pgclubstep))
@@ -447,16 +450,17 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_motion_16)
 	.byte .lobyte(level_data_skeletalshenanigans_17)
 	.byte .lobyte(level_data_trythisgd_18)
-	.byte .lobyte(level_data_demoncryogenic_19)
-	.byte .lobyte(level_data_futurefunkfix_20)
+	.byte .lobyte(level_data_demonpyrophoric_19)
+	.byte .lobyte(level_data_demoncryogenic_20)
 	.byte .lobyte(level_data_futurefunkfix_21)
-	.byte .lobyte(level_data_eon_22)
-	.byte .lobyte(level_data_windylandscape_23)
-	.byte .lobyte(level_data_sonicwave_24)
-	.byte .lobyte(level_data_aftercatabath_25)
+	.byte .lobyte(level_data_futurefunkfix_22)
+	.byte .lobyte(level_data_eon_23)
+	.byte .lobyte(level_data_windylandscape_24)
+	.byte .lobyte(level_data_sonicwave_25)
 	.byte .lobyte(level_data_aftercatabath_26)
-	.byte .lobyte(level_data_everyend_27)
+	.byte .lobyte(level_data_aftercatabath_27)
 	.byte .lobyte(level_data_everyend_28)
+	.byte .lobyte(level_data_everyend_29)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_hexagonforce_0)
@@ -478,16 +482,17 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_motion_16)
 	.byte .hibyte(level_data_skeletalshenanigans_17)
 	.byte .hibyte(level_data_trythisgd_18)
-	.byte .hibyte(level_data_demoncryogenic_19)
-	.byte .hibyte(level_data_futurefunkfix_20)
+	.byte .hibyte(level_data_demonpyrophoric_19)
+	.byte .hibyte(level_data_demoncryogenic_20)
 	.byte .hibyte(level_data_futurefunkfix_21)
-	.byte .hibyte(level_data_eon_22)
-	.byte .hibyte(level_data_windylandscape_23)
-	.byte .hibyte(level_data_sonicwave_24)
-	.byte .hibyte(level_data_aftercatabath_25)
+	.byte .hibyte(level_data_futurefunkfix_22)
+	.byte .hibyte(level_data_eon_23)
+	.byte .hibyte(level_data_windylandscape_24)
+	.byte .hibyte(level_data_sonicwave_25)
 	.byte .hibyte(level_data_aftercatabath_26)
-	.byte .hibyte(level_data_everyend_27)
+	.byte .hibyte(level_data_aftercatabath_27)
 	.byte .hibyte(level_data_everyend_28)
+	.byte .hibyte(level_data_everyend_29)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_hexagonforce_0))
@@ -509,16 +514,17 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_motion_16))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans_17))
 	.byte .lobyte(.bank(level_data_trythisgd_18))
-	.byte .lobyte(.bank(level_data_demoncryogenic_19))
-	.byte .lobyte(.bank(level_data_futurefunkfix_20))
+	.byte .lobyte(.bank(level_data_demonpyrophoric_19))
+	.byte .lobyte(.bank(level_data_demoncryogenic_20))
 	.byte .lobyte(.bank(level_data_futurefunkfix_21))
-	.byte .lobyte(.bank(level_data_eon_22))
-	.byte .lobyte(.bank(level_data_windylandscape_23))
-	.byte .lobyte(.bank(level_data_sonicwave_24))
-	.byte .lobyte(.bank(level_data_aftercatabath_25))
+	.byte .lobyte(.bank(level_data_futurefunkfix_22))
+	.byte .lobyte(.bank(level_data_eon_23))
+	.byte .lobyte(.bank(level_data_windylandscape_24))
+	.byte .lobyte(.bank(level_data_sonicwave_25))
 	.byte .lobyte(.bank(level_data_aftercatabath_26))
-	.byte .lobyte(.bank(level_data_everyend_27))
+	.byte .lobyte(.bank(level_data_aftercatabath_27))
 	.byte .lobyte(.bank(level_data_everyend_28))
+	.byte .lobyte(.bank(level_data_everyend_29))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -628,6 +634,7 @@ _level_lengths_lo:
 	.byte .lobyte($000078)		; gameover
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($00008D)		; firetemple
+	.byte .lobyte($000097)		; demonpyrophoric
 	.byte .lobyte($000050)		; explorers
 	.byte .lobyte($0000A1)		; toeiiv2
 	.byte .lobyte($000094)		; pgclubstep
@@ -771,6 +778,7 @@ _level_lengths_md:
 	.byte .hibyte($000078)		; gameover
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($00008D)		; firetemple
+	.byte .hibyte($000097)		; demonpyrophoric
 	.byte .hibyte($000050)		; explorers
 	.byte .hibyte($0000A1)		; toeiiv2
 	.byte .hibyte($000094)		; pgclubstep
@@ -914,6 +922,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000078)		; gameover
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($00008D)		; firetemple
+	.byte .bankbyte($000097)		; demonpyrophoric
 	.byte .bankbyte($000050)		; explorers
 	.byte .bankbyte($0000A1)		; toeiiv2
 	.byte .bankbyte($000094)		; pgclubstep

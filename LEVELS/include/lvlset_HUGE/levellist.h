@@ -106,6 +106,7 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// gameover
 	MEDIUMDEMON,	// invisiblelight
 	MEDIUMDEMON,	// firetemple
+	MEDIUMDEMON,	// demonpyrophoric
 	HARDDEMON,	// explorers
 	HARDDEMON,	// toeiiv2
 	HARDDEMON,	// pgclubstep
@@ -248,6 +249,7 @@ const uint8_t stars_list[] = {
 	10,	// gameover
 	10,	// invisiblelight
 	10,	// firetemple
+	10,	// demonpyrophoric
 	10,	// explorers
 	10,	// toeiiv2
 	10,	// pgclubstep

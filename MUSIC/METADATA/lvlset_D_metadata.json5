@@ -143,6 +143,11 @@
 			originalArtistText: "CRIM3S",
 		},
 		{
+			fmsSongName: "Pyrophoric XL",
+			lowerText: "PYROPHORIC XL",
+			originalArtistText: "NERDBOY628",
+		},
+		{
 			fmsSongName: "Slash Inferno",
 			upperText: "SLASH",
 			lowerText: "INFERNO",

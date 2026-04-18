@@ -11,6 +11,7 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// skeletalshenanigans
 	MEDIUMDEMON,	// goldenhaze
 	MEDIUMDEMON,	// gameover
+	MEDIUMDEMON,	// demonpyrophoric
 	HARDDEMON,	// explorers
 	HARDDEMON,	// toeiiv2
 	HARDDEMON,	// demoncryogenic
@@ -42,6 +43,7 @@ const uint8_t stars_list[] = {
 	10,	// skeletalshenanigans
 	10,	// goldenhaze
 	10,	// gameover
+	10,	// demonpyrophoric
 	10,	// explorers
 	10,	// toeiiv2
 	10,	// demoncryogenic
