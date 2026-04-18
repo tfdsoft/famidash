@@ -27,6 +27,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_deadlocked)
 	.byte .lobyte(level_data_fingerdash)
 	.byte .lobyte(level_data_dash)
+	.byte .lobyte(level_data_explorers)
 	.byte .lobyte(level_data_thetower)
 	.byte .lobyte(level_data_thesewers)
 	.byte .lobyte(level_data_thechallenge)
@@ -110,7 +111,6 @@ _level_list_lo:
 	.byte .lobyte(level_data_invisiblelight)
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_demonpyrophoric)
-	.byte .lobyte(level_data_explorers)
 	.byte .lobyte(level_data_toeiiv2)
 	.byte .lobyte(level_data_pgclubstep)
 	.byte .lobyte(level_data_deadlyclubstep)
@@ -169,6 +169,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_deadlocked)
 	.byte .hibyte(level_data_fingerdash)
 	.byte .hibyte(level_data_dash)
+	.byte .hibyte(level_data_explorers)
 	.byte .hibyte(level_data_thetower)
 	.byte .hibyte(level_data_thesewers)
 	.byte .hibyte(level_data_thechallenge)
@@ -252,7 +253,6 @@ _level_list_hi:
 	.byte .hibyte(level_data_invisiblelight)
 	.byte .hibyte(level_data_firetemple)
 	.byte .hibyte(level_data_demonpyrophoric)
-	.byte .hibyte(level_data_explorers)
 	.byte .hibyte(level_data_toeiiv2)
 	.byte .hibyte(level_data_pgclubstep)
 	.byte .hibyte(level_data_deadlyclubstep)
@@ -311,6 +311,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_deadlocked))
 	.byte .lobyte(.bank(level_data_fingerdash))
 	.byte .lobyte(.bank(level_data_dash))
+	.byte .lobyte(.bank(level_data_explorers))
 	.byte .lobyte(.bank(level_data_thetower))
 	.byte .lobyte(.bank(level_data_thesewers))
 	.byte .lobyte(.bank(level_data_thechallenge))
@@ -394,7 +395,6 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_invisiblelight))
 	.byte .lobyte(.bank(level_data_firetemple))
 	.byte .lobyte(.bank(level_data_demonpyrophoric))
-	.byte .lobyte(.bank(level_data_explorers))
 	.byte .lobyte(.bank(level_data_toeiiv2))
 	.byte .lobyte(.bank(level_data_pgclubstep))
 	.byte .lobyte(.bank(level_data_deadlyclubstep))
@@ -552,6 +552,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000BF)		; deadlocked
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
+	.byte .lobyte($000050)		; explorers
 	.byte .lobyte($000048)		; thetower
 	.byte .lobyte($00001B)		; thesewers
 	.byte .lobyte($000030)		; thechallenge
@@ -635,7 +636,6 @@ _level_lengths_lo:
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000097)		; demonpyrophoric
-	.byte .lobyte($000050)		; explorers
 	.byte .lobyte($0000A1)		; toeiiv2
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
@@ -696,6 +696,7 @@ _level_lengths_md:
 	.byte .hibyte($0000BF)		; deadlocked
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
+	.byte .hibyte($000050)		; explorers
 	.byte .hibyte($000048)		; thetower
 	.byte .hibyte($00001B)		; thesewers
 	.byte .hibyte($000030)		; thechallenge
@@ -779,7 +780,6 @@ _level_lengths_md:
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000097)		; demonpyrophoric
-	.byte .hibyte($000050)		; explorers
 	.byte .hibyte($0000A1)		; toeiiv2
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
@@ -840,6 +840,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000BF)		; deadlocked
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
+	.byte .bankbyte($000050)		; explorers
 	.byte .bankbyte($000048)		; thetower
 	.byte .bankbyte($00001B)		; thesewers
 	.byte .bankbyte($000030)		; thechallenge
@@ -923,7 +924,6 @@ _level_lengths_hi:
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000097)		; demonpyrophoric
-	.byte .bankbyte($000050)		; explorers
 	.byte .bankbyte($0000A1)		; toeiiv2
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep

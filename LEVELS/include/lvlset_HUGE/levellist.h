@@ -24,6 +24,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// deadlocked
 	INSANE,	// fingerdash
 	INSANE,	// dash
+	HARDDEMON,	// explorers
 	NORMAL,	// thetower
 	HARD,	// thesewers
 	HARD,	// thechallenge
@@ -107,7 +108,6 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// invisiblelight
 	MEDIUMDEMON,	// firetemple
 	MEDIUMDEMON,	// demonpyrophoric
-	HARDDEMON,	// explorers
 	HARDDEMON,	// toeiiv2
 	HARDDEMON,	// pgclubstep
 	HARDDEMON,	// deadlyclubstep
@@ -167,6 +167,7 @@ const uint8_t stars_list[] = {
 	15,	// deadlocked
 	12,	// fingerdash
 	12,	// dash
+	10,	// explorers
 	5,	// thetower
 	6,	// thesewers
 	3,	// thechallenge
@@ -250,7 +251,6 @@ const uint8_t stars_list[] = {
 	10,	// invisiblelight
 	10,	// firetemple
 	10,	// demonpyrophoric
-	10,	// explorers
 	10,	// toeiiv2
 	10,	// pgclubstep
 	10,	// deadlyclubstep
