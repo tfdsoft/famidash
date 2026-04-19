@@ -7,7 +7,6 @@ const uint8_t difficulty_list[] = {
 	EASYDEMON,	// decode
 	EASYDEMON,	// clutterfunk2
 	EASYDEMON,	// speedracer
-	EASYDEMON,	// respite
 	MEDIUMDEMON,	// skeletalshenanigans
 	MEDIUMDEMON,	// goldenhaze
 	MEDIUMDEMON,	// gameover
@@ -39,7 +38,6 @@ const uint8_t stars_list[] = {
 	10,	// decode
 	10,	// clutterfunk2
 	10,	// speedracer
-	10,	// respite
 	10,	// skeletalshenanigans
 	10,	// goldenhaze
 	10,	// gameover

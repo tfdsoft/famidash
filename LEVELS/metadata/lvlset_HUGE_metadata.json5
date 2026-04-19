@@ -4386,7 +4386,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
 		},
-		{
+	/*	{
             level: "respite",
             lowerText: "RESPITE",
             decoType: "EXTRASPRITES1",
@@ -4401,7 +4401,7 @@
             startingBackgroundColor: 0x0F,
             startingGroundColor: 0x0F,
             parallaxDisable: true
-        },
+        }, */
 		{
 			level: "everymadness",
 			upperText: "EVERY",
