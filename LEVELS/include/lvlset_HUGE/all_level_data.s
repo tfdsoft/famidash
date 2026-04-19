@@ -1242,33 +1242,7 @@
 		.incbin "EXPORTS/demoncryogenic.lz.1.bin" ; Size: 1522
 
 
-.segment "DAT_BANK_35"	; Total bank size: 8110 bytes
-	.export level_data_azuronxolax
-	level_data_azuronxolax:
-	; Header
-		.byte <sprite_data_azuronxolax ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_azuronxolax ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_azuronxolax)) ;___ Sprite data bank
-		.byte song_endgame ;________________________ Song ID
-		.byte (0 << 4) | 0 ;________________________ Starting game mode and speed
-		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_______________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_______________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_______________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 ;______________________ Deco type
-		.byte _SPIKESA ;____________________________ Spike set
-		.byte _BLOCKSB ;____________________________ Block set
-		.byte _SAWBLADESA ;_________________________ Sawblade set
-		.byte $12 ;_________________________________ Starting background color
-		.byte $02 ;_________________________________ Starting ground color
-		.byte 27 ;__________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6541
-
-
-.segment "DAT_BANK_36"	; Total bank size: 8154 bytes
+.segment "DAT_BANK_35"	; Total bank size: 8094 bytes
 	.export level_data_endorphinrush
 	level_data_endorphinrush:
 	; Header
@@ -1294,7 +1268,7 @@
 		.incbin "EXPORTS/endorphinrush.lz.bin" ; Size: 6525
 
 
-.segment "DAT_BANK_37"	; Total bank size: 8153 bytes
+.segment "DAT_BANK_36"	; Total bank size: 8153 bytes
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
@@ -1318,6 +1292,32 @@
 		.byte 27 ;____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/thermodynamix.lz.bin" ; Size: 6524
+
+
+.segment "DAT_BANK_37"	; Total bank size: 8146 bytes
+	.export level_data_azuronxolax
+	level_data_azuronxolax:
+	; Header
+		.byte <sprite_data_azuronxolax ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_azuronxolax ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_azuronxolax)) ;___ Sprite data bank
+		.byte song_endgame ;________________________ Song ID
+		.byte (0 << 4) | 0 ;________________________ Starting game mode and speed
+		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_______________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_______________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
+		.byte ($06) ;_______________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 ;______________________ Deco type
+		.byte _SPIKESA ;____________________________ Spike set
+		.byte _BLOCKSB ;____________________________ Block set
+		.byte _SAWBLADESA ;_________________________ Sawblade set
+		.byte $12 ;_________________________________ Starting background color
+		.byte $02 ;_________________________________ Starting ground color
+		.byte 27 ;__________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6517
 
 
 .segment "DAT_BANK_38"	; Total bank size: 8172 bytes
