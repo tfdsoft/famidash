@@ -534,7 +534,7 @@
 		.incbin "EXPORTS/wintherace.lz.bin" ; Size: 3325
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8158 bytes
+.segment "DAT_BANK_17"	; Total bank size: 8190 bytes
 	.export level_data_akrile
 	level_data_akrile:
 	; Header
@@ -557,7 +557,7 @@
 		.byte $0F ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/akrile.lz.bin" ; Size: 4594
+		.incbin "EXPORTS/akrile.lz.bin" ; Size: 4626
 
 	.export level_data_sonar
 	level_data_sonar:
@@ -741,7 +741,7 @@
 		.incbin "EXPORTS/offtomars.lz.bin" ; Size: 3860
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 7767 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 7782 bytes
 	.export level_data_selectpaymenttype
 	level_data_selectpaymenttype:
 	; Header
