@@ -13292,6 +13292,7 @@ sprite_data_silentcircles:
   .byte $00,$1f,$80,$02,$8f
   .byte $10,$1f,$80,$02,$b5
   .byte $30,$1f,$80,$02,$bf
+  .byte $30,$1f,$a0,$02,$1a
   .byte $50,$1f,$80,$02,$82
   .byte $70,$1f,$80,$02,$8f
   .byte $80,$1f,$80,$02,$b5
@@ -13460,6 +13461,7 @@ sprite_data_silentcircles:
   .byte $90,$30,$80,$02,$b5
   .byte $b0,$30,$80,$02,$bf
   .byte $d0,$30,$80,$02,$82
+  .byte $e0,$30,$f0,$02,$1b
   .byte $f0,$30,$80,$02,$8f
   .byte $f0,$30,$f0,$02,$20
   .byte $00,$31,$80,$02,$b5

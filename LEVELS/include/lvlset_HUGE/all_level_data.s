@@ -1761,7 +1761,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2099
 
 
-.segment "DAT_BANK_47"	; Total bank size: 8125 bytes
+.segment "DAT_BANK_47"	; Total bank size: 8130 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header

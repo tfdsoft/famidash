@@ -404,7 +404,7 @@
 		.incbin "EXPORTS/styx.lz.bin" ; Size: 6089
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8154 bytes
+.segment "DAT_BANK_10"	; Total bank size: 8164 bytes
 	.export level_data_element111rg_with_secret_way
 	level_data_element111rg_with_secret_way:
 	; Header
