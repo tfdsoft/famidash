@@ -3420,7 +3420,7 @@
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2564
 
 
-.segment "DAT_BANK_83"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_83"	; Total bank size: 8176 bytes
 	.export level_data_highlife_13
 	level_data_highlife_13:
 	; Level data

@@ -755,7 +755,7 @@
 		.incbin "EXPORTS/demoncryogenic.lz.1.bin" ; Size: 1522
 
 
-.segment "DAT_BANK_1E"	; Total bank size: 8162 bytes
+.segment "DAT_BANK_1E"	; Total bank size: 8177 bytes
 	.export level_data_demonpyrophoric_1
 	level_data_demonpyrophoric_1:
 	; Level data

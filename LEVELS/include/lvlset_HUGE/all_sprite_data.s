@@ -10117,7 +10117,7 @@ sprite_data_sonar:
   .byte $f0,$35,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_82"
+.segment "DAT_BANK_83"
 sprite_data_darkparadise:
   .byte $00,$00,$30,$03,$b5
   .byte $00,$00,$40,$03,$85
@@ -56656,7 +56656,7 @@ sprite_data_fairydust:
   .byte $60,$32,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_83"
+.segment "DAT_BANK_82"
 sprite_data_jawbreaker:
   .byte $f0,$00,$70,$03,$2a
   .byte $10,$01,$60,$03,$33
@@ -56697,6 +56697,7 @@ sprite_data_jawbreaker:
   .byte $80,$05,$40,$03,$0b
   .byte $c0,$05,$20,$03,$01
   .byte $c0,$05,$30,$03,$16
+  .byte $20,$07,$10,$03,$07
   .byte $90,$07,$40,$03,$09
   .byte $a0,$08,$10,$03,$08
   .byte $40,$09,$40,$03,$02
@@ -56779,6 +56780,7 @@ sprite_data_jawbreaker:
   .byte $f0,$12,$d0,$02,$bf
   .byte $00,$13,$d0,$02,$81
   .byte $20,$13,$d0,$02,$8f
+  .byte $20,$13,$60,$03,$1a
   .byte $30,$13,$d0,$02,$b1
   .byte $50,$13,$d0,$02,$bf
   .byte $60,$13,$d0,$02,$81
@@ -56923,6 +56925,7 @@ sprite_data_jawbreaker:
   .byte $30,$1f,$d0,$02,$b1
   .byte $50,$1f,$d0,$02,$bf
   .byte $60,$1f,$d0,$02,$81
+  .byte $70,$1f,$00,$03,$1b
   .byte $80,$1f,$d0,$02,$8f
   .byte $90,$1f,$d0,$02,$b1
   .byte $b0,$1f,$d0,$02,$bf
