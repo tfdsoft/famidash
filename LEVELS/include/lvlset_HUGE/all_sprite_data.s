@@ -35421,7 +35421,7 @@ sprite_data_aprettyeasylevel:
   .byte $00,$2b,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_30"
+.segment "DAT_BANK_2F"
 sprite_data_tetrix:
   .byte $30,$01,$88,$03,$0a
   .byte $70,$01,$50,$03,$2b
@@ -35937,6 +35937,7 @@ sprite_data_tetrix:
   .byte $00,$2a,$d0,$02,$8f
   .byte $10,$2a,$f0,$02,$b6
   .byte $50,$2a,$d0,$02,$83
+  .byte $70,$2a,$00,$03,$07
   .byte $80,$2a,$d0,$02,$8f
   .byte $80,$2a,$f0,$02,$ba
   .byte $b0,$2a,$d0,$02,$81
@@ -36523,6 +36524,7 @@ sprite_data_tetrix:
   .byte $e0,$5d,$a0,$02,$81
   .byte $e0,$5d,$b0,$02,$cc
   .byte $e0,$5d,$c0,$02,$b5
+  .byte $00,$5e,$20,$03,$1a
   .byte $30,$5e,$a0,$02,$8f
   .byte $30,$5e,$b0,$02,$cf
   .byte $90,$5e,$a0,$02,$86
@@ -36688,6 +36690,7 @@ sprite_data_tetrix:
   .byte $50,$71,$88,$03,$0a
   .byte $60,$71,$40,$03,$81
   .byte $60,$71,$50,$03,$b6
+  .byte $70,$71,$e0,$02,$1b
   .byte $a0,$71,$50,$03,$2b
   .byte $b0,$71,$40,$03,$86
   .byte $b0,$71,$50,$03,$b1
