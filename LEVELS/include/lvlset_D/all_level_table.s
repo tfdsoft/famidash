@@ -134,7 +134,7 @@ _level_lengths_lo:
 	.byte .lobyte($000050)		; explorers
 	.byte .lobyte($0000A1)		; toeiiv2
 	.byte .lobyte($0000A8)		; demoncryogenic
-	.byte .lobyte($000148)		; azuronxolax
+	.byte .lobyte($0000C2)		; azuronxolax
 	.byte .lobyte($000090)		; foresttemple
 	.byte .lobyte($000086)		; jawbreaker
 	.byte .lobyte($000064)		; acropolis
@@ -166,7 +166,7 @@ _level_lengths_md:
 	.byte .hibyte($000050)		; explorers
 	.byte .hibyte($0000A1)		; toeiiv2
 	.byte .hibyte($0000A8)		; demoncryogenic
-	.byte .hibyte($000148)		; azuronxolax
+	.byte .hibyte($0000C2)		; azuronxolax
 	.byte .hibyte($000090)		; foresttemple
 	.byte .hibyte($000086)		; jawbreaker
 	.byte .hibyte($000064)		; acropolis
@@ -198,7 +198,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000050)		; explorers
 	.byte .bankbyte($0000A1)		; toeiiv2
 	.byte .bankbyte($0000A8)		; demoncryogenic
-	.byte .bankbyte($000148)		; azuronxolax
+	.byte .bankbyte($0000C2)		; azuronxolax
 	.byte .bankbyte($000090)		; foresttemple
 	.byte .bankbyte($000086)		; jawbreaker
 	.byte .bankbyte($000064)		; acropolis

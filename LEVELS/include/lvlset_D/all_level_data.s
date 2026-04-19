@@ -295,7 +295,7 @@
 		.incbin "EXPORTS/toeiiv2.lz.bin" ; Size: 6622
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 7970 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 7946 bytes
 	.export level_data_azuronxolax
 	level_data_azuronxolax:
 	; Header
@@ -318,7 +318,7 @@
 		.byte $02 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6541
+		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6517
 
 
 .segment "DAT_BANK_0D"	; Total bank size: 7993 bytes
