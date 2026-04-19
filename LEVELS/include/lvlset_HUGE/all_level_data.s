@@ -817,7 +817,7 @@
 		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7724
 
 
-.segment "DAT_BANK_25"	; Total bank size: 8171 bytes
+.segment "DAT_BANK_25"	; Total bank size: 8186 bytes
 	.export level_data_rainingtacos
 	level_data_rainingtacos:
 	; Header
@@ -3687,7 +3687,7 @@
 		.incbin "EXPORTS/birdbrain.lz.1.bin" ; Size: 1249
 
 
-.segment "DAT_BANK_8D"	; Total bank size: 8012 bytes
+.segment "DAT_BANK_8D"	; Total bank size: 8025 bytes
 	.export level_data_madness
 	level_data_madness:
 	; Header
@@ -3710,7 +3710,7 @@
 		.byte $02 ;_____________________________ Starting ground color
 		.byte 57 ;______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/madness.lz.bin" ; Size: 1194
+		.incbin "EXPORTS/madness.lz.bin" ; Size: 1207
 
 	.export level_data_ultiatedestruction
 	level_data_ultiatedestruction:
