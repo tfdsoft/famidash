@@ -31828,7 +31828,7 @@ sprite_data_offtomars:
   .byte $e0,$3a,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_77"
+.segment "DAT_BANK_69"
 sprite_data_akrile:
   .byte $00,$00,$d0,$02,$8f
   .byte $00,$00,$e0,$02,$cf
@@ -49997,6 +49997,7 @@ sprite_data_gameover:
   .byte $b0,$06,$20,$03,$32
   .byte $b0,$06,$60,$03,$32
   .byte $80,$07,$30,$03,$01
+  .byte $90,$08,$80,$03,$07
   .byte $20,$0a,$30,$03,$8f
   .byte $30,$0a,$40,$03,$00
   .byte $58,$0b,$50,$03,$19
@@ -50124,6 +50125,7 @@ sprite_data_gameover:
   .byte $d0,$1b,$60,$02,$0b
   .byte $20,$1c,$30,$02,$18
   .byte $70,$1c,$40,$03,$05
+  .byte $80,$1c,$70,$03,$1a
   .byte $90,$1c,$40,$03,$05
   .byte $d0,$1c,$70,$03,$33
   .byte $f0,$1c,$70,$03,$33
@@ -50282,7 +50284,8 @@ sprite_data_gameover:
   .byte $70,$2c,$40,$03,$10
   .byte $80,$2c,$70,$03,$2b
   .byte $b8,$2c,$50,$03,$16
-  .byte $c0,$2c,$50,$03,$93
+  .byte $c0,$2c,$50,$03,$1b
+  .byte $c0,$2c,$60,$03,$93
   .byte $b0,$2d,$00,$03,$83
   .byte $b0,$2d,$10,$03,$af
   .byte $20,$2e,$00,$03,$8f

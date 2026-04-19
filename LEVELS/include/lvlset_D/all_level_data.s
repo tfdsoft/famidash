@@ -300,7 +300,7 @@
 		.incbin "EXPORTS/toeiiv2.lz.bin" ; Size: 6622
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8155 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8170 bytes
 	.export level_data_azuronxolax
 	level_data_azuronxolax:
 	; Header
@@ -596,7 +596,7 @@
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4692
 
 
-.segment "DAT_BANK_19"	; Total bank size: 8144 bytes
+.segment "DAT_BANK_19"	; Total bank size: 8154 bytes
 	.export level_data_silentcircles
 	level_data_silentcircles:
 	; Header
@@ -643,7 +643,7 @@
 		.byte $0F ;______________________________ Starting ground color
 		.byte 27 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/gameover.lz.bin" ; Size: 3654
+		.incbin "EXPORTS/gameover.lz.bin" ; Size: 3664
 
 
 .segment "DAT_BANK_1A"	; Total bank size: 8181 bytes
