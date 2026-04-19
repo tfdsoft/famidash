@@ -222,7 +222,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8164 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8178 bytes
 	.export level_data_icdx
 	level_data_icdx:
 	; Header
@@ -245,7 +245,7 @@
 		.byte $0F ;__________________________ Starting ground color
 		.byte 40 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7115
+		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7129
 
 
 .segment "DAT_BANK_0A"	; Total bank size: 8192 bytes
@@ -480,7 +480,7 @@
 		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2207
 
 
-.segment "DAT_BANK_13"	; Total bank size: 8020 bytes
+.segment "DAT_BANK_13"	; Total bank size: 8030 bytes
 	.export level_data_acropolis
 	level_data_acropolis:
 	; Header

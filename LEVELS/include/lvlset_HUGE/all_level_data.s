@@ -990,7 +990,7 @@
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 813
 
 
-.segment "DAT_BANK_2C"	; Total bank size: 8164 bytes
+.segment "DAT_BANK_2C"	; Total bank size: 8178 bytes
 	.export level_data_icdx
 	level_data_icdx:
 	; Header
@@ -1013,7 +1013,7 @@
 		.byte $0F ;__________________________ Starting ground color
 		.byte 40 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7115
+		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7129
 
 
 .segment "DAT_BANK_2D"	; Total bank size: 8190 bytes
@@ -3304,7 +3304,7 @@
 		.incbin "EXPORTS/cycles.lz.bin" ; Size: 2996
 
 
-.segment "DAT_BANK_7B"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_7B"	; Total bank size: 8176 bytes
 	.export level_data_thesteamworks_5
 	level_data_thesteamworks_5:
 	; Level data
