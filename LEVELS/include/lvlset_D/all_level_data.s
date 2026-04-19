@@ -139,7 +139,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8024
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8183 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8151 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -163,6 +163,11 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7854
+
+	.export level_data_windylandscape_3
+	level_data_windylandscape_3:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 279
 
 
 .segment "DAT_BANK_07"	; Total bank size: 7825 bytes
@@ -243,7 +248,7 @@
 		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7115
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8145 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8192 bytes
 	.export level_data_jawbreaker
 	level_data_jawbreaker:
 	; Header
@@ -267,11 +272,6 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/jawbreaker.lz.bin" ; Size: 6877
-
-	.export level_data_windylandscape_3
-	level_data_windylandscape_3:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 279
 
 
 .segment "DAT_BANK_0B"	; Total bank size: 8051 bytes
@@ -430,7 +430,7 @@
 		.incbin "EXPORTS/element111rg_with_secret_way.lz.bin" ; Size: 6040
 
 
-.segment "DAT_BANK_11"	; Total bank size: 8143 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8128 bytes
 	.export level_data_decode
 	level_data_decode:
 	; Header
@@ -477,7 +477,7 @@
 		.byte $0F ;_________________________________ Starting ground color
 		.byte 57 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2222
+		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2207
 
 
 .segment "DAT_BANK_13"	; Total bank size: 8020 bytes

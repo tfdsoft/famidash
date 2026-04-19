@@ -8434,7 +8434,7 @@ sprite_data_jawbreaker:
   .byte $f0,$33,$e0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_06"
+.segment "DAT_BANK_0A"
 sprite_data_acropolis:
   .byte $30,$01,$58,$03,$0d
   .byte $60,$01,$70,$03,$06
@@ -11933,13 +11933,16 @@ sprite_data_shardscapes:
   .byte $30,$28,$40,$02,$27
   .byte $40,$28,$10,$02,$33
   .byte $80,$28,$30,$02,$27
+  .byte $90,$28,$50,$02,$07
   .byte $a0,$28,$70,$02,$33
   .byte $d0,$28,$40,$02,$27
   .byte $d0,$28,$60,$02,$a0
   .byte $e0,$28,$10,$02,$33
+  .byte $e0,$28,$20,$02,$1a
   .byte $f0,$28,$60,$02,$90
   .byte $10,$29,$60,$02,$80
   .byte $50,$29,$40,$02,$33
+  .byte $80,$29,$30,$02,$1b
   .byte $c0,$29,$20,$02,$33
   .byte $e0,$29,$40,$02,$7c
   .byte $00,$2a,$20,$02,$33
