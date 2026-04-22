@@ -1519,6 +1519,39 @@
 			]
 		},
 		{
+			level: "thecellar",
+			upperText: "",
+			lowerText: "THE CELLAR",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_scheming_weasel",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x1c,
+			startingGroundColor: 0x0f,
+			maxFallSpeed: 0x07,
+			parallaxDisable: true,
+			forcePlatformer: true,
+			spawnYPositionHi: 0xb0,
+			spawnYPositionLow: 0x00,
+			scrollYPositionHi: 0x02,
+			scrollYPositionLow: 0xef,
+			objectOffsets: [
+				{
+					coordinates: [46,56],
+					offsetY: 48,
+				},
+				{
+					coordinates: [174,37],
+					offsetX: -8,
+				},
+			]
+		},
+		{
 			level: "thechallenge",
 			upperText: "THE",
 			lowerText: "CHALLENGE",

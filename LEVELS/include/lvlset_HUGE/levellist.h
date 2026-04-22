@@ -27,6 +27,7 @@ const uint8_t difficulty_list[] = {
 	DEMON,	// explorers
 	NORMAL,	// thetower
 	HARD,	// thesewers
+	HARDER,	// thecellar
 	HARD,	// thechallenge
 	AUTO,	// bestautomaticlvl
 	AUTO,	// movie
@@ -169,6 +170,7 @@ const uint8_t stars_list[] = {
 	10,	// explorers
 	5,	// thetower
 	6,	// thesewers
+	7,	// thecellar
 	3,	// thechallenge
 	1,	// bestautomaticlvl
 	1,	// movie

@@ -8656,7 +8656,7 @@ sprite_data_thetower:
   .byte $20,$12,$20,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_23"
+.segment "DAT_BANK_21"
 sprite_data_thesewers:
   .byte $00,$00,$f0,$02,$de
   .byte $20,$00,$30,$03,$49
@@ -8728,7 +8728,53 @@ sprite_data_thesewers:
   .byte $40,$0a,$d0,$00,$0f
   .byte $ff
 
-.segment "DAT_BANK_23"
+.segment "DAT_BANK_05"
+sprite_data_thecellar:
+  .byte $00,$00,$60,$03,$9c
+  .byte $00,$00,$70,$03,$cf
+  .byte $00,$00,$80,$03,$bf
+  .byte $20,$00,$30,$03,$39
+  .byte $00,$01,$40,$03,$2b
+  .byte $90,$01,$f0,$02,$35
+  .byte $f0,$01,$10,$03,$49
+  .byte $f0,$01,$20,$03,$04
+  .byte $40,$02,$e0,$01,$0b
+  .byte $40,$02,$40,$03,$2b
+  .byte $50,$02,$30,$00,$2b
+  .byte $70,$02,$90,$02,$2b
+  .byte $80,$02,$30,$03,$b1
+  .byte $80,$02,$40,$03,$6f
+  .byte $90,$02,$30,$03,$bd
+  .byte $a0,$02,$30,$03,$b1
+  .byte $b0,$02,$30,$03,$bf
+  .byte $b0,$02,$40,$03,$2b
+  .byte $c0,$02,$40,$03,$7f
+  .byte $d0,$02,$30,$00,$2b
+  .byte $d0,$02,$50,$01,$35
+  .byte $e0,$02,$b0,$03,$de
+  .byte $f0,$02,$10,$02,$07
+  .byte $20,$03,$10,$00,$8c
+  .byte $40,$03,$10,$00,$8f
+  .byte $70,$03,$10,$00,$6f
+  .byte $70,$03,$80,$03,$7f
+  .byte $90,$03,$80,$03,$b0
+  .byte $e0,$03,$20,$03,$de
+  .byte $e0,$03,$70,$03,$bc
+  .byte $e0,$03,$80,$03,$80
+  .byte $90,$09,$d8,$02,$0a
+  .byte $a0,$09,$98,$02,$0a
+  .byte $d8,$0a,$50,$02,$1a
+  .byte $00,$0d,$50,$02,$f8
+  .byte $10,$0d,$50,$02,$b0
+  .byte $30,$0d,$50,$02,$f8
+  .byte $60,$0d,$50,$02,$f8
+  .byte $70,$0d,$60,$02,$1b
+  .byte $80,$0e,$70,$02,$b3
+  .byte $a0,$0e,$a0,$02,$83
+  .byte $10,$0f,$c0,$02,$0f
+  .byte $ff
+
+.segment "DAT_BANK_22"
 sprite_data_thechallenge:
   .byte $00,$00,$80,$03,$b6
   .byte $a0,$00,$58,$03,$0d
@@ -9002,7 +9048,7 @@ sprite_data_retray:
   .byte $90,$27,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_22"
+.segment "DAT_BANK_23"
 sprite_data_leveleasy:
   .byte $00,$00,$70,$03,$ac
   .byte $00,$00,$80,$03,$e1
@@ -11398,7 +11444,7 @@ sprite_data_subzero:
   .byte $00,$35,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_22"
+.segment "DAT_BANK_23"
 sprite_data_kappaclysm:
   .byte $00,$00,$50,$03,$8f
   .byte $00,$00,$60,$03,$b6

@@ -26,6 +26,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// dash
 	NORMAL,	// thetower
 	HARD,	// thesewers
+	HARDER,	// thecellar
 	HARD,	// thechallenge
 	EASY,	// retray
 	NORMAL,	// leveleasy
@@ -73,6 +74,7 @@ const uint8_t stars_list[] = {
 	12,	// dash
 	5,	// thetower
 	6,	// thesewers
+	7,	// thecellar
 	3,	// thechallenge
 	2,	// retray
 	3,	// leveleasy
