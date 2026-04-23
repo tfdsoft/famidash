@@ -3799,6 +3799,57 @@
 			parallaxDisable: true
 		},
 		{
+			level: "newdashcity",
+			lowerText: "NEW DASH CITY",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_new_dash_city",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			hasSuperheroes: false,
+			objectOffsets: [
+				{
+					coordinates: [
+						[169, 20], [881, 11], [1056, 21], [1059, 23], [1075, 22], [1077, 18], [1099, 17], [1309, 23], [1369, 24], [1385, 24], [1441, 24],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[187, 17], [190, 17], [232, 18], [233, 18], [550, 22], [768, 18], [769, 18], [777, 16], [778, 16], [893, 13], [1145, 21], [1190, 21], [1238, 21],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[157, 23], [364, 23], [366, 23], [534, 23], [722, 23], [906, 11], [1001, 14], [1006, 14], [1033, 15], [1057, 22], [1104, 20], [1273, 22], [1328, 21], [1384, 22],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[859, 8], [1127, 18],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[536, 16], [566, 16], [1225, 21],
+					],
+					offsetY: +8,
+					offsetX: +8,
+				},
+			]
+		},
+		{
 			level: "trolledfix",
 			upperText: "YOUVE BEEN",
 			lowerText: "TROLLED",

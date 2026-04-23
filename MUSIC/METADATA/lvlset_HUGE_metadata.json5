@@ -747,6 +747,12 @@
 			coveringArtist: "Kabez",
 		},
 		{
+			fmsSongName: "New Dash City",
+			lowerText: "NEW DASH CITY",
+			originalArtist: "SeaGlowingPro",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
 			fmsSongName: "Nine Circles",
 			lowerText: "NINE CIRCLES",
 			originalArtist: "RUKKUS",
@@ -964,13 +970,13 @@
 			originalArtist: "Dj Nate",
 			coveringArtist: ["Vikrinox","SeaGlowingPro"],
 		},
+		/*
 		{
 			fmsSongName: "Thermodynamix Full",
 			lowerText: "THERMODYNAMIX",
 			originalArtist: "Dj Nate",
 			coveringArtist: ["Vikrinox","SeaGlowingPro"]
 		},
-		/*		
 		{
 			fmsSongName: "Time Machine Full",
 			upperText: "TIME MACHINE",
