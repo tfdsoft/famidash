@@ -555,7 +555,7 @@ _level_lengths_lo:
 	.byte .lobyte($000050)		; explorers
 	.byte .lobyte($000048)		; thetower
 	.byte .lobyte($00001B)		; thesewers
-	.byte .lobyte($000030)		; thecellar
+	.byte .lobyte($000028)		; thecellar
 	.byte .lobyte($000030)		; thechallenge
 	.byte .lobyte($00006F)		; bestautomaticlvl
 	.byte .lobyte($0000C0)		; movie
@@ -699,7 +699,7 @@ _level_lengths_md:
 	.byte .hibyte($000050)		; explorers
 	.byte .hibyte($000048)		; thetower
 	.byte .hibyte($00001B)		; thesewers
-	.byte .hibyte($000030)		; thecellar
+	.byte .hibyte($000028)		; thecellar
 	.byte .hibyte($000030)		; thechallenge
 	.byte .hibyte($00006F)		; bestautomaticlvl
 	.byte .hibyte($0000C0)		; movie
@@ -843,7 +843,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000050)		; explorers
 	.byte .bankbyte($000048)		; thetower
 	.byte .bankbyte($00001B)		; thesewers
-	.byte .bankbyte($000030)		; thecellar
+	.byte .bankbyte($000028)		; thecellar
 	.byte .bankbyte($000030)		; thechallenge
 	.byte .bankbyte($00006F)		; bestautomaticlvl
 	.byte .bankbyte($0000C0)		; movie

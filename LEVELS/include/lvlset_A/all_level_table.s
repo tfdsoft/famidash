@@ -191,7 +191,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B3)		; dash
 	.byte .lobyte($000048)		; thetower
 	.byte .lobyte($00001B)		; thesewers
-	.byte .lobyte($000030)		; thecellar
+	.byte .lobyte($000028)		; thecellar
 	.byte .lobyte($000030)		; thechallenge
 	.byte .lobyte($000066)		; retray
 	.byte .lobyte($000090)		; leveleasy
@@ -240,7 +240,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B3)		; dash
 	.byte .hibyte($000048)		; thetower
 	.byte .hibyte($00001B)		; thesewers
-	.byte .hibyte($000030)		; thecellar
+	.byte .hibyte($000028)		; thecellar
 	.byte .hibyte($000030)		; thechallenge
 	.byte .hibyte($000066)		; retray
 	.byte .hibyte($000090)		; leveleasy
@@ -289,7 +289,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B3)		; dash
 	.byte .bankbyte($000048)		; thetower
 	.byte .bankbyte($00001B)		; thesewers
-	.byte .bankbyte($000030)		; thecellar
+	.byte .bankbyte($000028)		; thecellar
 	.byte .bankbyte($000030)		; thechallenge
 	.byte .bankbyte($000066)		; retray
 	.byte .bankbyte($000090)		; leveleasy

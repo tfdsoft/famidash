@@ -167,7 +167,7 @@ const uint8_t stars_list[] = {
 	15,	// deadlocked
 	12,	// fingerdash
 	12,	// dash
-	10,	// explorers
+	15,	// explorers
 	5,	// thetower
 	6,	// thesewers
 	7,	// thecellar

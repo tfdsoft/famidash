@@ -132,7 +132,7 @@
 		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 7763
 
 
-.segment "DAT_BANK_05"	; Total bank size: 7753 bytes
+.segment "DAT_BANK_05"	; Total bank size: 7542 bytes
 	.export level_data_fingerdash
 	level_data_fingerdash:
 	; Header
@@ -1056,7 +1056,7 @@
 		.incbin "EXPORTS/thetower.lz.bin" ; Size: 1354
 
 
-.segment "DAT_BANK_21"	; Total bank size: 7628 bytes
+.segment "DAT_BANK_21"	; Total bank size: 7498 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -1106,7 +1106,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_22"	; Total bank size: 7585 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8046 bytes
 	.export level_data_thecellar
 	level_data_thecellar:
 	; Header
@@ -1129,10 +1129,10 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 57 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1286
+		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1132
 
 
-.segment "DAT_BANK_23"	; Total bank size: 7670 bytes
+.segment "DAT_BANK_23"	; Total bank size: 7396 bytes
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header

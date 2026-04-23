@@ -409,7 +409,7 @@
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "HARDDEMON",
-			stars: 10,
+			stars: 15,
 			songID: "song_explorers",
 			startingGameMode: 0,
 			startingSpeed: 0,
