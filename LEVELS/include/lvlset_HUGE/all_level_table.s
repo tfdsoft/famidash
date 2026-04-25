@@ -594,7 +594,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000BA)		; revolution
 	.byte .lobyte($0000B0)		; funnygameholiday
 	.byte .lobyte($0000BF)		; fireaura
-	.byte .lobyte($0000AB)		; rainbowdust
+	.byte .lobyte($0000A6)		; rainbowdust
 	.byte .lobyte($00008F)		; wintherace
 	.byte .lobyte($000090)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
@@ -739,7 +739,7 @@ _level_lengths_md:
 	.byte .hibyte($0000BA)		; revolution
 	.byte .hibyte($0000B0)		; funnygameholiday
 	.byte .hibyte($0000BF)		; fireaura
-	.byte .hibyte($0000AB)		; rainbowdust
+	.byte .hibyte($0000A6)		; rainbowdust
 	.byte .hibyte($00008F)		; wintherace
 	.byte .hibyte($000090)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
@@ -884,7 +884,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000BA)		; revolution
 	.byte .bankbyte($0000B0)		; funnygameholiday
 	.byte .bankbyte($0000BF)		; fireaura
-	.byte .bankbyte($0000AB)		; rainbowdust
+	.byte .bankbyte($0000A6)		; rainbowdust
 	.byte .bankbyte($00008F)		; wintherace
 	.byte .bankbyte($000090)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks

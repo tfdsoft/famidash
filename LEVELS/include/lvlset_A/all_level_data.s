@@ -80,7 +80,7 @@
 		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8017
 
 
-.segment "DAT_BANK_03"	; Total bank size: 7781 bytes
+.segment "DAT_BANK_03"	; Total bank size: 7992 bytes
 	.export level_data_groundtospace
 	level_data_groundtospace:
 	; Header
@@ -769,7 +769,7 @@
 		.incbin "EXPORTS/dreamer.lz.bin" ; Size: 3688
 
 
-.segment "DAT_BANK_17"	; Total bank size: 8192 bytes
+.segment "DAT_BANK_17"	; Total bank size: 7984 bytes
 	.export level_data_nightmare
 	level_data_nightmare:
 	; Header
@@ -797,7 +797,7 @@
 	.export level_data_rainbowtylenol_1
 	level_data_rainbowtylenol_1:
 	; Level data
-		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3691
+		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3694
 
 
 .segment "DAT_BANK_18"	; Total bank size: 8160 bytes

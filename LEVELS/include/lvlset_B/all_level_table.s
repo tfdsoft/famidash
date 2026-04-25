@@ -171,7 +171,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000E1)		; scarletsurge
 	.byte .lobyte($000082)		; tinytunes
 	.byte .lobyte($0000BF)		; fireaura
-	.byte .lobyte($0000AB)		; rainbowdust
+	.byte .lobyte($0000A6)		; rainbowdust
 	.byte .lobyte($00008F)		; wintherace
 	.byte .lobyte($000090)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
@@ -210,7 +210,7 @@ _level_lengths_md:
 	.byte .hibyte($0000E1)		; scarletsurge
 	.byte .hibyte($000082)		; tinytunes
 	.byte .hibyte($0000BF)		; fireaura
-	.byte .hibyte($0000AB)		; rainbowdust
+	.byte .hibyte($0000A6)		; rainbowdust
 	.byte .hibyte($00008F)		; wintherace
 	.byte .hibyte($000090)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
@@ -249,7 +249,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000E1)		; scarletsurge
 	.byte .bankbyte($000082)		; tinytunes
 	.byte .bankbyte($0000BF)		; fireaura
-	.byte .bankbyte($0000AB)		; rainbowdust
+	.byte .bankbyte($0000A6)		; rainbowdust
 	.byte .bankbyte($00008F)		; wintherace
 	.byte .bankbyte($000090)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
