@@ -1782,7 +1782,7 @@
 			stars: 2,
 			songID: "song_xenogenesis",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x01,
 			parallaxDisable: true
@@ -2742,7 +2742,7 @@
 			stars: 6,
 			songID: "song_kesobomb",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 2,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
@@ -2808,7 +2808,7 @@
 			stars: 6,
 			songID: "song_atthespeedoflightfull",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
@@ -4236,7 +4236,7 @@
 			stars: 10,
 			songID: "song_holography",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
@@ -5048,7 +5048,7 @@
 			stars: 10,
 			songID: "song_blacklight",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
@@ -5746,7 +5746,7 @@
 			stars: 10,
 			songID: "song_stalemate",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true
@@ -5836,7 +5836,7 @@
 			stars: 10,
 			songID: "song_miami_hotline_vol_3",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true

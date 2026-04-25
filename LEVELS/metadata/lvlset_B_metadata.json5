@@ -103,7 +103,7 @@
 			stars: 2,
 			songID: "song_xenogenesis",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x01,
 			parallaxDisable: true
@@ -236,7 +236,7 @@
 			stars: 4,			
 			songID: "song_driving_by_night",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
@@ -665,7 +665,7 @@
 			stars: 6,
 			songID: "song_kesobomb",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 2,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true

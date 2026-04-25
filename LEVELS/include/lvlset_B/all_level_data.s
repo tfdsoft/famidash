@@ -488,7 +488,7 @@
 		.byte >sprite_data_oceane ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_oceane)) ;___ Sprite data bank
 		.byte song_kesobomb ;__________________ Song ID
-		.byte (0 << 4) | 0 ;___________________ Starting game mode and speed
+		.byte (2 << 4) | 0 ;___________________ Starting game mode and speed
 		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
 		.byte ($00) ;__________________________ Spawn Y Position (low byte)
 		.byte ($02) ;__________________________ Y Scroll Position (high byte)
@@ -649,7 +649,7 @@
 		.byte >sprite_data_darkparadise ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_darkparadise)) ;___ Sprite data bank
 		.byte song_xenogenesis ;_____________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________ Starting game mode and speed
+		.byte (1 << 4) | 0 ;_________________________ Starting game mode and speed
 		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
 		.byte ($00) ;________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;________________________________ Y Scroll Position (high byte)
@@ -817,14 +817,14 @@
 		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 3864
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7730 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7725 bytes
 	.export level_data_highlife_8
 	level_data_highlife_8:
 	; Level data
 		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2563
 
 
-.segment "DAT_BANK_21"	; Total bank size: 7922 bytes
+.segment "DAT_BANK_21"	; Total bank size: 7912 bytes
 	.export level_data_ninox
 	level_data_ninox:
 	; Header
@@ -894,7 +894,7 @@
 		.byte >sprite_data_lookatthislevel ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_lookatthislevel)) ;___ Sprite data bank
 		.byte song_driving_by_night ;___________________ Song ID
-		.byte (0 << 4) | 0 ;____________________________ Starting game mode and speed
+		.byte (1 << 4) | 0 ;____________________________ Starting game mode and speed
 		.byte ($B0) ;___________________________________ Spawn Y Position (high byte)
 		.byte ($00) ;___________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;___________________________________ Y Scroll Position (high byte)

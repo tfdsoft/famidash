@@ -1972,7 +1972,7 @@
 			stars: 6,
 			songID: "song_atthespeedoflight",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,

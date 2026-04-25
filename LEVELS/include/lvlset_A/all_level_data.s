@@ -520,7 +520,7 @@
 		.byte >sprite_data_kappaclysm ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_kappaclysm)) ;___ Sprite data bank
 		.byte song_atthespeedoflight ;_____________ Song ID
-		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
+		.byte (1 << 4) | 0 ;_______________________ Starting game mode and speed
 		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
 		.byte ($00) ;______________________________ Spawn Y Position (low byte)
 		.byte ($02) ;______________________________ Y Scroll Position (high byte)
@@ -1132,7 +1132,7 @@
 		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
-.segment "DAT_BANK_23"	; Total bank size: 7051 bytes
+.segment "DAT_BANK_23"	; Total bank size: 7041 bytes
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header

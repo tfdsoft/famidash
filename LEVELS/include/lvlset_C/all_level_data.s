@@ -384,7 +384,7 @@
 		.byte >sprite_data_invisiblelight ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_invisiblelight)) ;___ Sprite data bank
 		.byte song_blacklight ;________________________ Song ID
-		.byte (0 << 4) | 0 ;___________________________ Starting game mode and speed
+		.byte (1 << 4) | 0 ;___________________________ Starting game mode and speed
 		.byte ($B0) ;__________________________________ Spawn Y Position (high byte)
 		.byte ($00) ;__________________________________ Spawn Y Position (low byte)
 		.byte ($02) ;__________________________________ Y Scroll Position (high byte)
@@ -409,7 +409,7 @@
 		.incbin "EXPORTS/trythisgd.lz.1.bin" ; Size: 1372
 
 
-.segment "DAT_BANK_10"	; Total bank size: 7944 bytes
+.segment "DAT_BANK_10"	; Total bank size: 7939 bytes
 	.export level_data_endorphinrush
 	level_data_endorphinrush:
 	; Header
@@ -495,7 +495,7 @@
 		.byte >sprite_data_xx ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_xx)) ;___ Sprite data bank
 		.byte song_holography ;____________ Song ID
-		.byte (0 << 4) | 0 ;_______________ Starting game mode and speed
+		.byte (1 << 4) | 0 ;_______________ Starting game mode and speed
 		.byte ($B0) ;______________________ Spawn Y Position (high byte)
 		.byte ($00) ;______________________ Spawn Y Position (low byte)
 		.byte ($02) ;______________________ Y Scroll Position (high byte)
@@ -573,7 +573,7 @@
 		.byte >sprite_data_stalemate ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_stalemate)) ;___ Sprite data bank
 		.byte song_stalemate ;____________________ Song ID
-		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte (1 << 4) | 0 ;______________________ Starting game mode and speed
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
 		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
@@ -591,7 +591,7 @@
 		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5195
 
 
-.segment "DAT_BANK_17"	; Total bank size: 7967 bytes
+.segment "DAT_BANK_17"	; Total bank size: 7962 bytes
 	.export level_data_problematic
 	level_data_problematic:
 	; Header
@@ -632,7 +632,7 @@
 		.byte >sprite_data_hi ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_hi)) ;___ Sprite data bank
 		.byte song_miami_hotline_vol_3 ;___ Song ID
-		.byte (0 << 4) | 0 ;_______________ Starting game mode and speed
+		.byte (1 << 4) | 0 ;_______________ Starting game mode and speed
 		.byte ($B0) ;______________________ Spawn Y Position (high byte)
 		.byte ($00) ;______________________ Spawn Y Position (low byte)
 		.byte ($02) ;______________________ Y Scroll Position (high byte)
@@ -695,7 +695,7 @@
 		.incbin "EXPORTS/motion.lz.1.bin" ; Size: 185
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7705 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7700 bytes
 	.export level_data_everymadness
 	level_data_everymadness:
 	; Header

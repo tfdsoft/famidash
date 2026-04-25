@@ -1704,7 +1704,6 @@ sprite_data_clutterfunk2:
   .byte $00,$00,$40,$03,$84
   .byte $00,$00,$50,$03,$b8
   .byte $00,$00,$60,$03,$cf
-  .byte $00,$00,$70,$03,$15
   .byte $a0,$00,$60,$03,$2c
   .byte $c0,$00,$50,$03,$32
   .byte $f0,$00,$30,$03,$32
@@ -2813,7 +2812,7 @@ sprite_data_clutterfunk2:
   .byte $c0,$44,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1D"
+.segment "DAT_BANK_15"
 sprite_data_speedracer:
   .byte $90,$00,$50,$03,$36
   .byte $90,$00,$88,$03,$0a
@@ -3900,7 +3899,7 @@ sprite_data_skeletalshenanigans:
   .byte $e0,$52,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_15"
+.segment "DAT_BANK_1D"
 sprite_data_goldenhaze:
   .byte $00,$00,$60,$03,$01
   .byte $00,$00,$80,$03,$b7
@@ -8669,7 +8668,7 @@ sprite_data_windylandscape:
   .byte $f0,$3b,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_14"
+.segment "DAT_BANK_1D"
 sprite_data_icdx:
   .byte $e0,$00,$88,$03,$0d
   .byte $f0,$00,$09,$03,$10
@@ -9515,7 +9514,6 @@ sprite_data_wcropolix:
   .byte $10,$00,$50,$03,$cf
   .byte $90,$00,$40,$03,$36
   .byte $90,$00,$60,$03,$36
-  .byte $a0,$00,$60,$03,$14
   .byte $a0,$00,$70,$03,$14
   .byte $a0,$00,$80,$03,$14
   .byte $d0,$00,$40,$03,$36

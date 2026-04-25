@@ -217,7 +217,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8181 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8176 bytes
 	.export level_data_icdx
 	level_data_icdx:
 	; Header
@@ -506,7 +506,7 @@
 		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5628
 
 
-.segment "DAT_BANK_14"	; Total bank size: 7934 bytes
+.segment "DAT_BANK_14"	; Total bank size: 8167 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -530,6 +530,11 @@
 		.byte 57 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5545
+
+	.export level_data_skeletalshenanigans_0
+	level_data_skeletalshenanigans_0:
+	; Level data
+		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2604
 
 
 .segment "DAT_BANK_16"	; Total bank size: 7426 bytes
@@ -717,13 +722,6 @@
 		.byte 57 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3746
-
-
-.segment "DAT_BANK_1D"	; Total bank size: 7821 bytes
-	.export level_data_skeletalshenanigans_0
-	level_data_skeletalshenanigans_0:
-	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2604
 
 
 .segment "DAT_BANK_1E"	; Total bank size: 7445 bytes

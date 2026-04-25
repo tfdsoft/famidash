@@ -519,7 +519,6 @@ sprite_data_darkparadise:
   .byte $00,$00,$30,$03,$b5
   .byte $00,$00,$40,$03,$85
   .byte $00,$00,$50,$03,$cf
-  .byte $00,$00,$70,$03,$14
   .byte $00,$00,$88,$03,$0a
   .byte $a0,$00,$88,$03,$0a
   .byte $10,$01,$30,$03,$33
@@ -1785,10 +1784,8 @@ sprite_data_somewhereinaforest:
 .segment "DAT_BANK_21"
 sprite_data_lookatthislevel:
   .byte $00,$00,$e0,$01,$14
-  .byte $00,$00,$70,$03,$14
   .byte $00,$00,$88,$03,$56
   .byte $10,$00,$e0,$02,$fe
-  .byte $10,$00,$f0,$02,$14
   .byte $50,$00,$08,$03,$0a
   .byte $a0,$00,$20,$03,$b8
   .byte $b0,$00,$20,$03,$b7
@@ -6879,7 +6876,6 @@ sprite_data_oceane:
   .byte $00,$00,$f0,$02,$cf
   .byte $30,$00,$68,$03,$25
   .byte $40,$00,$30,$03,$02
-  .byte $40,$00,$40,$03,$16
   .byte $20,$01,$d0,$02,$90
   .byte $20,$01,$f0,$02,$c0
   .byte $30,$01,$f0,$02,$cf

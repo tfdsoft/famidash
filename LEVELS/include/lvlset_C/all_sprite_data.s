@@ -668,7 +668,6 @@ sprite_data_supercycles:
 
 .segment "DAT_BANK_10"
 sprite_data_xx:
-  .byte $00,$00,$70,$03,$14
   .byte $a0,$00,$60,$03,$96
   .byte $a0,$00,$70,$03,$b6
   .byte $a0,$00,$80,$03,$cf
@@ -2089,7 +2088,6 @@ sprite_data_sonicblaster:
 sprite_data_deathmoon:
   .byte $00,$00,$50,$03,$96
   .byte $00,$00,$60,$03,$b6
-  .byte $00,$00,$70,$03,$20
   .byte $00,$00,$80,$03,$cf
   .byte $90,$00,$60,$03,$86
   .byte $10,$01,$60,$03,$8f
@@ -5336,7 +5334,6 @@ sprite_data_invisiblelight:
   .byte $00,$00,$40,$03,$c0
   .byte $00,$00,$50,$03,$80
   .byte $00,$00,$60,$03,$bf
-  .byte $00,$00,$70,$03,$14
   .byte $10,$00,$30,$03,$cf
   .byte $80,$00,$70,$03,$2a
   .byte $c0,$00,$50,$03,$2a
@@ -9895,7 +9892,6 @@ sprite_data_eighto:
 .segment "DAT_BANK_1F"
 sprite_data_hi:
   .byte $00,$00,$60,$03,$8f
-  .byte $00,$00,$70,$03,$14
   .byte $00,$00,$80,$03,$cf
   .byte $a0,$00,$60,$03,$80
   .byte $b0,$00,$60,$03,$8f
