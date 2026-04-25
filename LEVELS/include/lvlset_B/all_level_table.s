@@ -153,10 +153,10 @@ _level_chunk_list_bank:
 
 _level_lengths_lo:
 	.byte .lobyte($00006F)		; bestautomaticlvl
-	.byte .lobyte($00008D)		; sonar
+	.byte .lobyte($00008B)		; sonar
 	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($000018)		; xmaschallenge
-	.byte .lobyte($00007B)		; ninox
+	.byte .lobyte($00007A)		; ninox
 	.byte .lobyte($00009D)		; somewhereinaforest
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($0000F3)		; ajollyretrochristmas
@@ -166,7 +166,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000BC)		; selectpaymenttype
 	.byte .lobyte($00004D)		; pyrophoric
 	.byte .lobyte($000099)		; cryogenic
-	.byte .lobyte($00005D)		; oceane
+	.byte .lobyte($00005B)		; oceane
 	.byte .lobyte($0000B2)		; generationretro
 	.byte .lobyte($0000E1)		; scarletsurge
 	.byte .lobyte($000082)		; tinytunes
@@ -185,17 +185,17 @@ _level_lengths_lo:
 	.byte .lobyte($000100)		; newdashcity
 	.byte .lobyte($00009D)		; birdbrain
 	.byte .lobyte($000070)		; aprettyeasylevel
-	.byte .lobyte($000138)		; tetrix
+	.byte .lobyte($000137)		; tetrix
 	.byte .lobyte($000154)		; highlife
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
 	.byte .hibyte($00006F)		; bestautomaticlvl
-	.byte .hibyte($00008D)		; sonar
+	.byte .hibyte($00008B)		; sonar
 	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($000018)		; xmaschallenge
-	.byte .hibyte($00007B)		; ninox
+	.byte .hibyte($00007A)		; ninox
 	.byte .hibyte($00009D)		; somewhereinaforest
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($0000F3)		; ajollyretrochristmas
@@ -205,7 +205,7 @@ _level_lengths_md:
 	.byte .hibyte($0000BC)		; selectpaymenttype
 	.byte .hibyte($00004D)		; pyrophoric
 	.byte .hibyte($000099)		; cryogenic
-	.byte .hibyte($00005D)		; oceane
+	.byte .hibyte($00005B)		; oceane
 	.byte .hibyte($0000B2)		; generationretro
 	.byte .hibyte($0000E1)		; scarletsurge
 	.byte .hibyte($000082)		; tinytunes
@@ -224,17 +224,17 @@ _level_lengths_md:
 	.byte .hibyte($000100)		; newdashcity
 	.byte .hibyte($00009D)		; birdbrain
 	.byte .hibyte($000070)		; aprettyeasylevel
-	.byte .hibyte($000138)		; tetrix
+	.byte .hibyte($000137)		; tetrix
 	.byte .hibyte($000154)		; highlife
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
 	.byte .bankbyte($00006F)		; bestautomaticlvl
-	.byte .bankbyte($00008D)		; sonar
+	.byte .bankbyte($00008B)		; sonar
 	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($000018)		; xmaschallenge
-	.byte .bankbyte($00007B)		; ninox
+	.byte .bankbyte($00007A)		; ninox
 	.byte .bankbyte($00009D)		; somewhereinaforest
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($0000F3)		; ajollyretrochristmas
@@ -244,7 +244,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000BC)		; selectpaymenttype
 	.byte .bankbyte($00004D)		; pyrophoric
 	.byte .bankbyte($000099)		; cryogenic
-	.byte .bankbyte($00005D)		; oceane
+	.byte .bankbyte($00005B)		; oceane
 	.byte .bankbyte($0000B2)		; generationretro
 	.byte .bankbyte($0000E1)		; scarletsurge
 	.byte .bankbyte($000082)		; tinytunes
@@ -263,7 +263,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000100)		; newdashcity
 	.byte .bankbyte($00009D)		; birdbrain
 	.byte .bankbyte($000070)		; aprettyeasylevel
-	.byte .bankbyte($000138)		; tetrix
+	.byte .bankbyte($000137)		; tetrix
 	.byte .bankbyte($000154)		; highlife
 
 .endif

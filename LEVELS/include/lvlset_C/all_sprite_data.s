@@ -1376,7 +1376,6 @@ sprite_data_problematic:
   .byte $80,$27,$78,$03,$0a
   .byte $a0,$27,$80,$03,$1b
   .byte $70,$28,$50,$03,$0f
-  .byte $80,$2a,$40,$03,$0f
   .byte $ff
 
 .segment "DAT_BANK_1D"

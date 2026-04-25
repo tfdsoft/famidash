@@ -121,8 +121,8 @@ _level_chunk_list_bank:
 _level_lengths_lo:
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($000090)		; xx
-	.byte .lobyte($00006E)		; problematic
-	.byte .lobyte($0000A6)		; sonicblaster
+	.byte .lobyte($000068)		; problematic
+	.byte .lobyte($0000A5)		; sonicblaster
 	.byte .lobyte($000125)		; deathmoon
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($00008B)		; endorphinrush
@@ -132,10 +132,10 @@ _level_lengths_lo:
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
-	.byte .lobyte($00008E)		; thermodynamix
+	.byte .lobyte($00008D)		; thermodynamix
 	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000082)		; fairydust
-	.byte .lobyte($000092)		; stalemate
+	.byte .lobyte($000091)		; stalemate
 	.byte .lobyte($000078)		; eighto
 	.byte .lobyte($00009A)		; hi
 	.byte .lobyte($000286)		; eon
@@ -144,15 +144,15 @@ _level_lengths_lo:
 	.byte .lobyte($00007D)		; cataclysm
 	.byte .lobyte($00007C)		; aftermath
 	.byte .lobyte($0002DC)		; everyend
-	.byte .lobyte($000089)		; luckydraw
+	.byte .lobyte($000087)		; luckydraw
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($000090)		; xx
-	.byte .hibyte($00006E)		; problematic
-	.byte .hibyte($0000A6)		; sonicblaster
+	.byte .hibyte($000068)		; problematic
+	.byte .hibyte($0000A5)		; sonicblaster
 	.byte .hibyte($000125)		; deathmoon
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($00008B)		; endorphinrush
@@ -162,10 +162,10 @@ _level_lengths_md:
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
-	.byte .hibyte($00008E)		; thermodynamix
+	.byte .hibyte($00008D)		; thermodynamix
 	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000082)		; fairydust
-	.byte .hibyte($000092)		; stalemate
+	.byte .hibyte($000091)		; stalemate
 	.byte .hibyte($000078)		; eighto
 	.byte .hibyte($00009A)		; hi
 	.byte .hibyte($000286)		; eon
@@ -174,15 +174,15 @@ _level_lengths_md:
 	.byte .hibyte($00007D)		; cataclysm
 	.byte .hibyte($00007C)		; aftermath
 	.byte .hibyte($0002DC)		; everyend
-	.byte .hibyte($000089)		; luckydraw
+	.byte .hibyte($000087)		; luckydraw
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($000090)		; xx
-	.byte .bankbyte($00006E)		; problematic
-	.byte .bankbyte($0000A6)		; sonicblaster
+	.byte .bankbyte($000068)		; problematic
+	.byte .bankbyte($0000A5)		; sonicblaster
 	.byte .bankbyte($000125)		; deathmoon
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($00008B)		; endorphinrush
@@ -192,10 +192,10 @@ _level_lengths_hi:
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep
-	.byte .bankbyte($00008E)		; thermodynamix
+	.byte .bankbyte($00008D)		; thermodynamix
 	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000082)		; fairydust
-	.byte .bankbyte($000092)		; stalemate
+	.byte .bankbyte($000091)		; stalemate
 	.byte .bankbyte($000078)		; eighto
 	.byte .bankbyte($00009A)		; hi
 	.byte .bankbyte($000286)		; eon
@@ -204,7 +204,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00007D)		; cataclysm
 	.byte .bankbyte($00007C)		; aftermath
 	.byte .bankbyte($0002DC)		; everyend
-	.byte .bankbyte($000089)		; luckydraw
+	.byte .bankbyte($000087)		; luckydraw
 
 .endif
 .endif

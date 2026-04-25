@@ -139,7 +139,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8024
 
 
-.segment "DAT_BANK_06"	; Total bank size: 7872 bytes
+.segment "DAT_BANK_06"	; Total bank size: 7869 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -162,7 +162,7 @@
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7854
+		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7851
 
 
 .segment "DAT_BANK_07"	; Total bank size: 7409 bytes
@@ -352,7 +352,7 @@
 		.incbin "EXPORTS/demoncryogenic.lz.1.bin" ; Size: 1522
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 7761 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 7758 bytes
 	.export level_data_styx
 	level_data_styx:
 	; Header
@@ -375,7 +375,7 @@
 		.byte $11 ;__________________________ Starting ground color
 		.byte 27 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/styx.lz.bin" ; Size: 6132
+		.incbin "EXPORTS/styx.lz.bin" ; Size: 6129
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 8144 bytes
@@ -480,7 +480,7 @@
 		.incbin "EXPORTS/shardscapes.lz.bin" ; Size: 2207
 
 
-.segment "DAT_BANK_13"	; Total bank size: 7970 bytes
+.segment "DAT_BANK_13"	; Total bank size: 7967 bytes
 	.export level_data_speedracer
 	level_data_speedracer:
 	; Header
@@ -503,10 +503,10 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5631
+		.incbin "EXPORTS/speedracer.lz.bin" ; Size: 5628
 
 
-.segment "DAT_BANK_14"	; Total bank size: 7936 bytes
+.segment "DAT_BANK_14"	; Total bank size: 7934 bytes
 	.export level_data_silentclubstep
 	level_data_silentclubstep:
 	; Header
@@ -529,7 +529,7 @@
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 57 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5547
+		.incbin "EXPORTS/silentclubstep.lz.bin" ; Size: 5545
 
 
 .segment "DAT_BANK_16"	; Total bank size: 7433 bytes
@@ -565,7 +565,7 @@
 		.incbin "EXPORTS/demonpark.lz.bin" ; Size: 4692
 
 
-.segment "DAT_BANK_18"	; Total bank size: 7588 bytes
+.segment "DAT_BANK_18"	; Total bank size: 7582 bytes
 	.export level_data_silentcircles
 	level_data_silentcircles:
 	; Header
@@ -588,7 +588,7 @@
 		.byte $02 ;___________________________________ Starting ground color
 		.byte 30 ;____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/silentcircles.lz.bin" ; Size: 4454
+		.incbin "EXPORTS/silentcircles.lz.bin" ; Size: 4448
 
 
 .segment "DAT_BANK_19"	; Total bank size: 7751 bytes
@@ -693,7 +693,7 @@
 		.incbin "EXPORTS/wcropolix.lz.bin" ; Size: 4155
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 7701 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 7695 bytes
 	.export level_data_nullscapes
 	level_data_nullscapes:
 	; Header
@@ -716,14 +716,14 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 57 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3752
+		.incbin "EXPORTS/nullscapes.lz.bin" ; Size: 3746
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 7836 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 7821 bytes
 	.export level_data_skeletalshenanigans_0
 	level_data_skeletalshenanigans_0:
 	; Level data
-		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2619
+		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2604
 
 
 .segment "DAT_BANK_1E"	; Total bank size: 7451 bytes

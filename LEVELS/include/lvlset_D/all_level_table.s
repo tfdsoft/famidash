@@ -126,7 +126,7 @@ _level_lengths_lo:
 	.byte .lobyte($00006F)		; infinitecircles
 	.byte .lobyte($00008A)		; decode
 	.byte .lobyte($0000B1)		; clutterfunk2
-	.byte .lobyte($000080)		; speedracer
+	.byte .lobyte($00007F)		; speedracer
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($000078)		; gameover
@@ -140,16 +140,16 @@ _level_lengths_lo:
 	.byte .lobyte($000064)		; acropolis
 	.byte .lobyte($00009A)		; windylandscape
 	.byte .lobyte($000092)		; icdx
-	.byte .lobyte($00007C)		; styx
+	.byte .lobyte($00007B)		; styx
 	.byte .lobyte($00007F)		; wcropolix
 	.byte .lobyte($000095)		; silentclubstep
 	.byte .lobyte($0001BF)		; aftercatabath
-	.byte .lobyte($00006F)		; shardscapes
+	.byte .lobyte($00006E)		; shardscapes
 	.byte .lobyte($0000A2)		; element111rg_with_secret_way
-	.byte .lobyte($000098)		; slaughterhouse
+	.byte .lobyte($000097)		; slaughterhouse
 	.byte .lobyte($000087)		; kratos
 	.byte .lobyte($000075)		; nullscapes
-	.byte .lobyte($000084)		; silentcircles
+	.byte .lobyte($000080)		; silentcircles
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
@@ -158,7 +158,7 @@ _level_lengths_md:
 	.byte .hibyte($00006F)		; infinitecircles
 	.byte .hibyte($00008A)		; decode
 	.byte .hibyte($0000B1)		; clutterfunk2
-	.byte .hibyte($000080)		; speedracer
+	.byte .hibyte($00007F)		; speedracer
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($000078)		; gameover
@@ -172,16 +172,16 @@ _level_lengths_md:
 	.byte .hibyte($000064)		; acropolis
 	.byte .hibyte($00009A)		; windylandscape
 	.byte .hibyte($000092)		; icdx
-	.byte .hibyte($00007C)		; styx
+	.byte .hibyte($00007B)		; styx
 	.byte .hibyte($00007F)		; wcropolix
 	.byte .hibyte($000095)		; silentclubstep
 	.byte .hibyte($0001BF)		; aftercatabath
-	.byte .hibyte($00006F)		; shardscapes
+	.byte .hibyte($00006E)		; shardscapes
 	.byte .hibyte($0000A2)		; element111rg_with_secret_way
-	.byte .hibyte($000098)		; slaughterhouse
+	.byte .hibyte($000097)		; slaughterhouse
 	.byte .hibyte($000087)		; kratos
 	.byte .hibyte($000075)		; nullscapes
-	.byte .hibyte($000084)		; silentcircles
+	.byte .hibyte($000080)		; silentcircles
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
@@ -190,7 +190,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00006F)		; infinitecircles
 	.byte .bankbyte($00008A)		; decode
 	.byte .bankbyte($0000B1)		; clutterfunk2
-	.byte .bankbyte($000080)		; speedracer
+	.byte .bankbyte($00007F)		; speedracer
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($000078)		; gameover
@@ -204,16 +204,16 @@ _level_lengths_hi:
 	.byte .bankbyte($000064)		; acropolis
 	.byte .bankbyte($00009A)		; windylandscape
 	.byte .bankbyte($000092)		; icdx
-	.byte .bankbyte($00007C)		; styx
+	.byte .bankbyte($00007B)		; styx
 	.byte .bankbyte($00007F)		; wcropolix
 	.byte .bankbyte($000095)		; silentclubstep
 	.byte .bankbyte($0001BF)		; aftercatabath
-	.byte .bankbyte($00006F)		; shardscapes
+	.byte .bankbyte($00006E)		; shardscapes
 	.byte .bankbyte($0000A2)		; element111rg_with_secret_way
-	.byte .bankbyte($000098)		; slaughterhouse
+	.byte .bankbyte($000097)		; slaughterhouse
 	.byte .bankbyte($000087)		; kratos
 	.byte .bankbyte($000075)		; nullscapes
-	.byte .bankbyte($000084)		; silentcircles
+	.byte .bankbyte($000080)		; silentcircles
 
 .endif
 .endif

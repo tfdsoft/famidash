@@ -165,7 +165,7 @@
 		.incbin "EXPORTS/deathmoon.lz.0.bin" ; Size: 8010
 
 
-.segment "DAT_BANK_07"	; Total bank size: 7989 bytes
+.segment "DAT_BANK_07"	; Total bank size: 7986 bytes
 	.export level_data_sonicblaster
 	level_data_sonicblaster:
 	; Header
@@ -188,7 +188,7 @@
 		.byte $0F ;__________________________________ Starting ground color
 		.byte 25 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/sonicblaster.lz.bin" ; Size: 7971
+		.incbin "EXPORTS/sonicblaster.lz.bin" ; Size: 7968
 
 
 .segment "DAT_BANK_08"	; Total bank size: 7980 bytes
@@ -269,7 +269,7 @@
 		.incbin "EXPORTS/pgclubstep.lz.bin" ; Size: 7507
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 7750 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 7749 bytes
 	.export level_data_cataclysm
 	level_data_cataclysm:
 	; Header
@@ -316,7 +316,7 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 673
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 672
 
 
 .segment "DAT_BANK_0C"	; Total bank size: 7649 bytes
@@ -565,7 +565,7 @@
 		.incbin "EXPORTS/deadlyclubstep.lz.bin" ; Size: 5276
 
 
-.segment "DAT_BANK_16"	; Total bank size: 8069 bytes
+.segment "DAT_BANK_16"	; Total bank size: 8054 bytes
 	.export level_data_stalemate
 	level_data_stalemate:
 	; Header
@@ -588,10 +588,10 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5210
+		.incbin "EXPORTS/stalemate.lz.bin" ; Size: 5195
 
 
-.segment "DAT_BANK_17"	; Total bank size: 7979 bytes
+.segment "DAT_BANK_17"	; Total bank size: 7967 bytes
 	.export level_data_problematic
 	level_data_problematic:
 	; Header
@@ -614,7 +614,7 @@
 		.byte $0F ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/problematic.lz.bin" ; Size: 4885
+		.incbin "EXPORTS/problematic.lz.bin" ; Size: 4873
 
 
 .segment "DAT_BANK_18"	; Total bank size: 7861 bytes
@@ -657,7 +657,7 @@
 		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3381
 
 
-.segment "DAT_BANK_1B"	; Total bank size: 7922 bytes
+.segment "DAT_BANK_1B"	; Total bank size: 7919 bytes
 	.export level_data_supercycles
 	level_data_supercycles:
 	; Header
@@ -680,7 +680,7 @@
 		.byte $02 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3378
+		.incbin "EXPORTS/supercycles.lz.bin" ; Size: 3375
 
 
 .segment "DAT_BANK_1D"	; Total bank size: 7464 bytes

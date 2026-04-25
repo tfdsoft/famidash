@@ -208,7 +208,7 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8112 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8108 bytes
 	.export level_data_bloodbathbutno
 	level_data_bloodbathbutno:
 	; Header
@@ -255,10 +255,10 @@
 		.byte $02 ;___________________________________ Starting ground color
 		.byte 27 ;____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1846
+		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1842
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8057 bytes
+.segment "DAT_BANK_09"	; Total bank size: 8054 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
@@ -281,10 +281,10 @@
 		.byte $0F ;____________________________________ Starting ground color
 		.byte 47 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/lostinthewoods.lz.bin" ; Size: 6133
+		.incbin "EXPORTS/lostinthewoods.lz.bin" ; Size: 6130
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8064 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8061 bytes
 	.export level_data_sunshine
 	level_data_sunshine:
 	; Header
@@ -307,7 +307,7 @@
 		.byte $0F ;______________________________ Starting ground color
 		.byte 47 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6128
+		.incbin "EXPORTS/sunshine.lz.bin" ; Size: 6125
 
 	.export level_data_jumper
 	level_data_jumper:
@@ -360,7 +360,7 @@
 		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6018
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8146 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8145 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -383,7 +383,7 @@
 		.byte $01 ;__________________________ Starting ground color
 		.byte 27 ;___________________________ Level height
 	; Level data
-		.incbin "EXPORTS/toe2.lz.bin" ; Size: 6011
+		.incbin "EXPORTS/toe2.lz.bin" ; Size: 6010
 
 	.export level_data_leveleasy
 	level_data_leveleasy:
@@ -462,7 +462,7 @@
 		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5665
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8173 bytes
+.segment "DAT_BANK_10"	; Total bank size: 8145 bytes
 	.export level_data_revolution
 	level_data_revolution:
 	; Header
@@ -509,7 +509,7 @@
 		.byte $0F ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/retray.lz.bin" ; Size: 2712
+		.incbin "EXPORTS/retray.lz.bin" ; Size: 2684
 
 
 .segment "DAT_BANK_11"	; Total bank size: 8098 bytes
@@ -928,7 +928,7 @@
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2765
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 7794 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 7793 bytes
 	.export level_data_subzero
 	level_data_subzero:
 	; Header
@@ -951,10 +951,10 @@
 		.byte $01 ;_____________________________ Starting ground color
 		.byte 27 ;______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2564
+		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2563
 
 
-.segment "DAT_BANK_1E"	; Total bank size: 7677 bytes
+.segment "DAT_BANK_1E"	; Total bank size: 7674 bytes
 	.export level_data_thechallenge
 	level_data_thechallenge:
 	; Header
@@ -977,7 +977,7 @@
 		.byte $0F ;__________________________________ Starting ground color
 		.byte 57 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 2512
+		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 2509
 
 
 .segment "DAT_BANK_1F"	; Total bank size: 8086 bytes
@@ -1030,7 +1030,7 @@
 		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 2017
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8091 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8061 bytes
 	.export level_data_thetower
 	level_data_thetower:
 	; Header
@@ -1053,7 +1053,7 @@
 		.byte $0F ;______________________________ Starting ground color
 		.byte 32 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/thetower.lz.bin" ; Size: 1354
+		.incbin "EXPORTS/thetower.lz.bin" ; Size: 1324
 
 
 .segment "DAT_BANK_21"	; Total bank size: 7287 bytes
@@ -1106,7 +1106,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1382
 
 
-.segment "DAT_BANK_22"	; Total bank size: 8046 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8048 bytes
 	.export level_data_thecellar
 	level_data_thecellar:
 	; Header
@@ -1129,7 +1129,7 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 57 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1132
+		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
 .segment "DAT_BANK_23"	; Total bank size: 7057 bytes
