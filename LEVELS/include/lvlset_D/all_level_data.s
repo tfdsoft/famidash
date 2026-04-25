@@ -139,7 +139,7 @@
 		.incbin "EXPORTS/aftercatabath.lz.1.bin" ; Size: 8024
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8151 bytes
+.segment "DAT_BANK_06"	; Total bank size: 8183 bytes
 	.export level_data_slaughterhouse
 	level_data_slaughterhouse:
 	; Header
@@ -163,11 +163,6 @@
 		.byte 27 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/slaughterhouse.lz.bin" ; Size: 7854
-
-	.export level_data_windylandscape_3
-	level_data_windylandscape_3:
-	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 279
 
 
 .segment "DAT_BANK_07"	; Total bank size: 7825 bytes
@@ -248,7 +243,7 @@
 		.incbin "EXPORTS/icdx.lz.bin" ; Size: 7129
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8192 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 7801 bytes
 	.export level_data_jawbreaker
 	level_data_jawbreaker:
 	; Header
@@ -274,7 +269,33 @@
 		.incbin "EXPORTS/jawbreaker.lz.bin" ; Size: 6877
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8051 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8125 bytes
+	.export level_data_azuronxolax
+	level_data_azuronxolax:
+	; Header
+		.byte <sprite_data_azuronxolax ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_azuronxolax ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_azuronxolax)) ;___ Sprite data bank
+		.byte song_endgame ;________________________ Song ID
+		.byte (0 << 4) | 0 ;________________________ Starting game mode and speed
+		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_______________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_______________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
+		.byte ($06) ;_______________________________ Max Fall Speed (high byte)
+		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 ;______________________ Deco type
+		.byte _SPIKESA ;____________________________ Spike set
+		.byte _BLOCKSB ;____________________________ Block set
+		.byte _SAWBLADESA ;_________________________ Sawblade set
+		.byte $12 ;_________________________________ Starting background color
+		.byte $02 ;_________________________________ Starting ground color
+		.byte 27 ;__________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6696
+
+
+.segment "DAT_BANK_0C"	; Total bank size: 7976 bytes
 	.export level_data_toeiiv2
 	level_data_toeiiv2:
 	; Header
@@ -300,33 +321,7 @@
 		.incbin "EXPORTS/toeiiv2.lz.bin" ; Size: 6622
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8146 bytes
-	.export level_data_azuronxolax
-	level_data_azuronxolax:
-	; Header
-		.byte <sprite_data_azuronxolax ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_azuronxolax ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_azuronxolax)) ;___ Sprite data bank
-		.byte song_endgame ;________________________ Song ID
-		.byte (0 << 4) | 0 ;________________________ Starting game mode and speed
-		.byte ($B0) ;_______________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_______________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_______________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_______________________________ Y Scroll Position (low byte)
-		.byte ($06) ;_______________________________ Max Fall Speed (high byte)
-		.byte (0 << 0) | (1 << 1) ;_________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 ;______________________ Deco type
-		.byte _SPIKESA ;____________________________ Spike set
-		.byte _BLOCKSB ;____________________________ Block set
-		.byte _SAWBLADESA ;_________________________ Sawblade set
-		.byte $12 ;_________________________________ Starting background color
-		.byte $02 ;_________________________________ Starting ground color
-		.byte 27 ;__________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/azuronxolax.lz.bin" ; Size: 6517
-
-
-.segment "DAT_BANK_0D"	; Total bank size: 7377 bytes
+.segment "DAT_BANK_0D"	; Total bank size: 8082 bytes
 	.export level_data_clutterfunk2
 	level_data_clutterfunk2:
 	; Header
@@ -727,6 +722,13 @@
 	level_data_demoncryogenic_2:
 	; Level data
 		.incbin "EXPORTS/demoncryogenic.lz.1.bin" ; Size: 1522
+
+
+.segment "DAT_BANK_1D"	; Total bank size: 8183 bytes
+	.export level_data_windylandscape_3
+	level_data_windylandscape_3:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 279
 
 
 .segment "DAT_BANK_1E"	; Total bank size: 6474 bytes

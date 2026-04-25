@@ -4388,7 +4388,7 @@ sprite_data_goldenhaze:
   .byte $f0,$3d,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0C"
+.segment "DAT_BANK_0D"
 sprite_data_gameover:
   .byte $00,$00,$80,$03,$9f
   .byte $10,$01,$e0,$02,$2d
@@ -7288,21 +7288,42 @@ sprite_data_azuronxolax:
   .byte $70,$43,$c0,$02,$0b
   .byte $f0,$43,$00,$03,$8f
   .byte $40,$44,$30,$03,$45
+  .byte $60,$44,$20,$03,$18
   .byte $70,$44,$30,$03,$14
   .byte $80,$44,$20,$03,$f9
   .byte $80,$44,$30,$03,$f9
   .byte $80,$44,$40,$03,$f9
-  .byte $90,$44,$20,$03,$58
-  .byte $10,$46,$40,$03,$f4
-  .byte $e0,$46,$40,$03,$f5
-  .byte $20,$47,$40,$03,$f4
-  .byte $c0,$47,$40,$03,$f5
-  .byte $00,$48,$40,$03,$f4
-  .byte $f0,$48,$40,$03,$f5
+  .byte $80,$44,$50,$03,$fa
+  .byte $90,$44,$20,$03,$24
+  .byte $90,$44,$50,$03,$fa
+  .byte $30,$45,$10,$03,$f4
+  .byte $70,$46,$20,$03,$19
+  .byte $80,$46,$20,$03,$00
+  .byte $80,$46,$30,$03,$15
+  .byte $80,$47,$00,$03,$cf
+  .byte $80,$47,$10,$03,$bf
+  .byte $80,$47,$30,$03,$6f
+  .byte $80,$47,$40,$03,$f5
+  .byte $00,$48,$40,$03,$28
+  .byte $10,$48,$30,$03,$7f
+  .byte $10,$48,$40,$03,$b0
+  .byte $30,$48,$30,$03,$28
+  .byte $90,$48,$10,$03,$96
+  .byte $90,$48,$20,$03,$b8
+  .byte $a0,$48,$10,$03,$98
+  .byte $a0,$48,$20,$03,$b6
+  .byte $b0,$48,$10,$03,$96
+  .byte $b0,$48,$20,$03,$b8
+  .byte $b0,$48,$60,$03,$58
+  .byte $b0,$48,$70,$03,$14
+  .byte $c0,$48,$10,$03,$98
+  .byte $c0,$48,$20,$03,$b6
+  .byte $d0,$48,$10,$03,$91
+  .byte $d0,$48,$20,$03,$b0
   .byte $40,$49,$70,$03,$21
   .byte $a0,$49,$50,$03,$1b
   .byte $d0,$49,$70,$03,$81
-  .byte $00,$4b,$70,$03,$0f
+  .byte $00,$4b,$40,$03,$0f
   .byte $ff
 
 .segment "DAT_BANK_07"
@@ -7910,7 +7931,7 @@ sprite_data_jawbreaker:
   .byte $f0,$33,$e0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_0A"
+.segment "DAT_BANK_06"
 sprite_data_acropolis:
   .byte $30,$01,$58,$03,$0d
   .byte $60,$01,$70,$03,$06
@@ -11225,7 +11246,7 @@ sprite_data_aftercatabath:
   .byte $f0,$ad,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0A"
+.segment "DAT_BANK_1D"
 sprite_data_shardscapes:
   .byte $00,$00,$60,$03,$18
   .byte $00,$00,$70,$03,$bf
@@ -11847,7 +11868,7 @@ sprite_data_element111rg_with_secret_way:
   .byte $10,$3f,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1D"
+.segment "DAT_BANK_0C"
 sprite_data_slaughterhouse:
   .byte $00,$00,$f0,$01,$18
   .byte $00,$00,$e0,$02,$fe
@@ -12118,7 +12139,7 @@ sprite_data_slaughterhouse:
   .byte $a0,$3a,$a0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_0D"
+.segment "DAT_BANK_0A"
 sprite_data_kratos:
   .byte $00,$00,$10,$03,$bf
   .byte $00,$00,$88,$03,$56
