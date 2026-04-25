@@ -1526,7 +1526,7 @@
 		.incbin "EXPORTS/xx.lz.bin" ; Size: 6190
 
 
-.segment "DAT_BANK_3F"	; Total bank size: 8124 bytes
+.segment "DAT_BANK_3F"	; Total bank size: 8129 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
