@@ -527,7 +527,8 @@
 			fmsSongName: "Fracture (WcropoliX)",
 			upperText: "FRACTURE",
 			lowerText: "WCROPOLIX CUT",
-			originalArtistText: "RUKKUS",
+			originalArtist: "RUKKUS",
+			coveringArtist: "SEAGLOWINGPRO",
 		},
 		{
 			fmsSongName: "Free Mind",
