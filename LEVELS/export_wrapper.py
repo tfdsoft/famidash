@@ -12,7 +12,7 @@ metadataFileRegex = "lvlset_(.+)_metadata.json5"
 metadataFileGlob = "lvlset_*_metadata.json5"
 metadataFile = lambda lvlset: metadataPath / f"lvlset_{lvlset}_metadata.json5"
 outputFolder = lambda lvlset: own_path / "include" / f"lvlset_{lvlset}"
-csvFolder = lambda lvlset : own_path / "LEVEL DATA" / f"lvlset_{lvlset}"
+csvFolder = lambda lvlset : own_path / "LEVEL DATA" / f"lvlset_HUGE"
 innerScript = own_path / "export_levels.py"
 
 availableLevelSets = {re.findall(metadataFileRegex, i.name)[0] for i in (metadataPath).glob(metadataFileGlob)}
