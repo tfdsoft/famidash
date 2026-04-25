@@ -524,6 +524,12 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
+			fmsSongName: "Fracture (WcropoliX)",
+			upperText: "FRACTURE",
+			lowerText: "WCROPOLIX CUT",
+			originalArtistText: "RUKKUS",
+		},
+		{
 			fmsSongName: "Free Mind",
 			lowerText: "FREE MIND",
 			originalArtist: "ElAngel378",
@@ -770,6 +776,7 @@
         	originalArtist: "cosmicspace33",
         	coveringArtist: ["Crafty Jumper","cosmicspace33"],
         },
+		/*
 		{
 			fmsSongName: "okiba crackdown",
 			upperText: "OKIBA",
@@ -777,6 +784,7 @@
 			originalArtist: "Bossfight",
 			coveringArtist: "sussysy",
 		},
+		*/
 		{
 			fmsSongName: "Power Trip",
 			lowerText: "POWER TRIP",

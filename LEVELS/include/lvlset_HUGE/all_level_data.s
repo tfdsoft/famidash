@@ -3119,7 +3119,7 @@
 		.byte <sprite_data_wcropolix ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_wcropolix ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_wcropolix)) ;___ Sprite data bank
-		.byte song_glitch_gremlin ;_______________ Song ID
+		.byte song_fracture_wcropolix ;___________ Song ID
 		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
 		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
 		.byte ($00) ;_____________________________ Spawn Y Position (low byte)

@@ -111,6 +111,12 @@
 			originalArtistText: "CREO",
 		},
 		{
+			fmsSongName: "Fracture (WcropoliX)",
+			upperText: "FRACTURE",
+			lowerText: "WCROPOLIX CUT",
+			originalArtistText: "RUKKUS",
+		},
+		{
 			fmsSongName: "Golden Haze NOT RETRAY",
 			upperText: "GOLDEN HAZE",
 			lowerText: "CUT",
