@@ -217,7 +217,7 @@
 		.incbin "EXPORTS/ninecircles.lz.bin" ; Size: 7962
 
 
-.segment "DAT_BANK_09"	; Total bank size: 7742 bytes
+.segment "DAT_BANK_09"	; Total bank size: 7741 bytes
 	.export level_data_bloodbath
 	level_data_bloodbath:
 	; Header
@@ -240,7 +240,7 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7724
+		.incbin "EXPORTS/bloodbath.lz.bin" ; Size: 7723
 
 
 .segment "DAT_BANK_0A"	; Total bank size: 7525 bytes
@@ -319,7 +319,7 @@
 		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 672
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 7649 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 7648 bytes
 	.export level_data_fairydust
 	level_data_fairydust:
 	; Header
@@ -342,7 +342,7 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/fairydust.lz.bin" ; Size: 6818
+		.incbin "EXPORTS/fairydust.lz.bin" ; Size: 6817
 
 	.export level_data_eon_3
 	level_data_eon_3:
@@ -350,7 +350,7 @@
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 813
 
 
-.segment "DAT_BANK_0D"	; Total bank size: 7848 bytes
+.segment "DAT_BANK_0D"	; Total bank size: 7832 bytes
 	.export level_data_aftermath
 	level_data_aftermath:
 	; Header
@@ -373,7 +373,7 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6799
+		.incbin "EXPORTS/aftermath.lz.bin" ; Size: 6783
 
 
 .segment "DAT_BANK_0E"	; Total bank size: 8034 bytes
@@ -617,11 +617,11 @@
 		.incbin "EXPORTS/problematic.lz.bin" ; Size: 4873
 
 
-.segment "DAT_BANK_18"	; Total bank size: 7861 bytes
+.segment "DAT_BANK_18"	; Total bank size: 7858 bytes
 	.export level_data_everyend_6
 	level_data_everyend_6:
 	; Level data
-		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4775
+		.incbin "EXPORTS/everyend.lz.2.bin" ; Size: 4772
 
 
 .segment "DAT_BANK_19"	; Total bank size: 8015 bytes
@@ -650,11 +650,11 @@
 		.incbin "EXPORTS/hi.lz.bin" ; Size: 4696
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 8087 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 8078 bytes
 	.export level_data_deathmoon_0
 	level_data_deathmoon_0:
 	; Level data
-		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3381
+		.incbin "EXPORTS/deathmoon.lz.1.bin" ; Size: 3372
 
 
 .segment "DAT_BANK_1B"	; Total bank size: 7919 bytes
@@ -695,7 +695,7 @@
 		.incbin "EXPORTS/motion.lz.1.bin" ; Size: 185
 
 
-.segment "DAT_BANK_20"	; Total bank size: 7708 bytes
+.segment "DAT_BANK_20"	; Total bank size: 7705 bytes
 	.export level_data_everymadness
 	level_data_everymadness:
 	; Header
@@ -718,4 +718,4 @@
 		.byte $02 ;__________________________________ Starting ground color
 		.byte 27 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/everymadness.lz.bin" ; Size: 2618
+		.incbin "EXPORTS/everymadness.lz.bin" ; Size: 2615

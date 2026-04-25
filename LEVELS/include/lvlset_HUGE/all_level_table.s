@@ -537,25 +537,25 @@ _level_lengths_lo:
 	.byte .lobyte($000088)		; backontrack
 	.byte .lobyte($000096)		; polargeist
 	.byte .lobyte($000087)		; dryout
-	.byte .lobyte($00008C)		; baseafterbase
+	.byte .lobyte($00008B)		; baseafterbase
 	.byte .lobyte($000086)		; cantletgo
 	.byte .lobyte($000090)		; jumper
 	.byte .lobyte($0000A0)		; timemachine
 	.byte .lobyte($000084)		; cycles
-	.byte .lobyte($000088)		; xstep
+	.byte .lobyte($000087)		; xstep
 	.byte .lobyte($0000A1)		; clutterfunk
 	.byte .lobyte($00008B)		; theoryofeverything
 	.byte .lobyte($00008D)		; electromanadventures
 	.byte .lobyte($000091)		; clubstep
 	.byte .lobyte($0000B2)		; electrodynamix
 	.byte .lobyte($0000A9)		; hexagonforce
-	.byte .lobyte($0000A7)		; blastprocessing
+	.byte .lobyte($0000A6)		; blastprocessing
 	.byte .lobyte($00009C)		; toe2
-	.byte .lobyte($0000AF)		; geometricaldominator
+	.byte .lobyte($0000AE)		; geometricaldominator
 	.byte .lobyte($0000BF)		; deadlocked
 	.byte .lobyte($000093)		; fingerdash
 	.byte .lobyte($0000B3)		; dash
-	.byte .lobyte($000050)		; explorers
+	.byte .lobyte($000041)		; explorers
 	.byte .lobyte($00002F)		; thetower
 	.byte .lobyte($00001B)		; thesewers
 	.byte .lobyte($000027)		; thecellar
@@ -573,10 +573,10 @@ _level_lengths_lo:
 	.byte .lobyte($00007A)		; ninox
 	.byte .lobyte($000090)		; dorabaebasic6
 	.byte .lobyte($00009D)		; somewhereinaforest
-	.byte .lobyte($0000AC)		; dreamer
+	.byte .lobyte($0000AB)		; dreamer
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($00006A)		; hungrymanadventures
-	.byte .lobyte($0000A2)		; groundtospace
+	.byte .lobyte($0000A1)		; groundtospace
 	.byte .lobyte($0000F3)		; ajollyretrochristmas
 	.byte .lobyte($00006C)		; ultiatedestruction
 	.byte .lobyte($000088)		; subzero
@@ -589,19 +589,19 @@ _level_lengths_lo:
 	.byte .lobyte($0000B2)		; generationretro
 	.byte .lobyte($0000E1)		; scarletsurge
 	.byte .lobyte($000082)		; tinytunes
-	.byte .lobyte($000079)		; kappaclysm
+	.byte .lobyte($000078)		; kappaclysm
 	.byte .lobyte($0000A4)		; sunshine
 	.byte .lobyte($0000B9)		; revolution
-	.byte .lobyte($0000B0)		; funnygameholiday
+	.byte .lobyte($0000A4)		; funnygameholiday
 	.byte .lobyte($0000BF)		; fireaura
 	.byte .lobyte($0000A6)		; rainbowdust
 	.byte .lobyte($00008F)		; wintherace
-	.byte .lobyte($000090)		; factorytime
+	.byte .lobyte($00008F)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($000065)		; lostinthewoods
 	.byte .lobyte($0000BB)		; rainingtacos
-	.byte .lobyte($000090)		; bloodbathbutno
+	.byte .lobyte($00008B)		; bloodbathbutno
 	.byte .lobyte($0000B5)		; rainbowtylenol
 	.byte .lobyte($000069)		; greif
 	.byte .lobyte($000097)		; dorabaebasic10
@@ -613,20 +613,20 @@ _level_lengths_lo:
 	.byte .lobyte($000100)		; newdashcity
 	.byte .lobyte($00003D)		; trolledfix
 	.byte .lobyte($00009D)		; birdbrain
-	.byte .lobyte($000070)		; aprettyeasylevel
+	.byte .lobyte($00006F)		; aprettyeasylevel
 	.byte .lobyte($000137)		; tetrix
 	.byte .lobyte($000154)		; highlife
 	.byte .lobyte($0000F0)		; extraordinaryexcitement
 	.byte .lobyte($000087)		; thelightningroad
 	.byte .lobyte($000098)		; nightmare
-	.byte .lobyte($0000A2)		; demonpark
+	.byte .lobyte($0000A0)		; demonpark
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($000090)		; xx
 	.byte .lobyte($000068)		; problematic
 	.byte .lobyte($00006F)		; infinitecircles
 	.byte .lobyte($0000A5)		; sonicblaster
-	.byte .lobyte($00008A)		; decode
-	.byte .lobyte($000125)		; deathmoon
+	.byte .lobyte($000089)		; decode
+	.byte .lobyte($000124)		; deathmoon
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($00007F)		; speedracer
@@ -635,8 +635,8 @@ _level_lengths_lo:
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($0000D4)		; trythisgd
 	.byte .lobyte($00009F)		; goldenhaze
-	.byte .lobyte($0000A2)		; hell
-	.byte .lobyte($000078)		; gameover
+	.byte .lobyte($0000A1)		; hell
+	.byte .lobyte($000077)		; gameover
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000097)		; demonpyrophoric
@@ -645,8 +645,8 @@ _level_lengths_lo:
 	.byte .lobyte($000093)		; deadlyclubstep
 	.byte .lobyte($00008D)		; thermodynamix
 	.byte .lobyte($0000A8)		; demoncryogenic
-	.byte .lobyte($0000C8)		; azuronxolax
-	.byte .lobyte($000090)		; foresttemple
+	.byte .lobyte($0000C1)		; azuronxolax
+	.byte .lobyte($00008F)		; foresttemple
 	.byte .lobyte($0000BB)		; ninecircles
 	.byte .lobyte($000082)		; fairydust
 	.byte .lobyte($000086)		; jawbreaker
@@ -660,12 +660,12 @@ _level_lengths_lo:
 	.byte .lobyte($000092)		; icdx
 	.byte .lobyte($0000FB)		; sonicwave
 	.byte .lobyte($00007B)		; styx
-	.byte .lobyte($0000D5)		; bloodbath
+	.byte .lobyte($0000D4)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
-	.byte .lobyte($00007C)		; aftermath
-	.byte .lobyte($00007F)		; wcropolix
+	.byte .lobyte($00007B)		; aftermath
+	.byte .lobyte($00007E)		; wcropolix
 	.byte .lobyte($000095)		; silentclubstep
-	.byte .lobyte($0001BF)		; aftercatabath
+	.byte .lobyte($0001BE)		; aftercatabath
 	.byte .lobyte($00006E)		; shardscapes
 	.byte .lobyte($0000A2)		; element111rg
 	.byte .lobyte($000097)		; slaughterhouse
@@ -682,25 +682,25 @@ _level_lengths_md:
 	.byte .hibyte($000088)		; backontrack
 	.byte .hibyte($000096)		; polargeist
 	.byte .hibyte($000087)		; dryout
-	.byte .hibyte($00008C)		; baseafterbase
+	.byte .hibyte($00008B)		; baseafterbase
 	.byte .hibyte($000086)		; cantletgo
 	.byte .hibyte($000090)		; jumper
 	.byte .hibyte($0000A0)		; timemachine
 	.byte .hibyte($000084)		; cycles
-	.byte .hibyte($000088)		; xstep
+	.byte .hibyte($000087)		; xstep
 	.byte .hibyte($0000A1)		; clutterfunk
 	.byte .hibyte($00008B)		; theoryofeverything
 	.byte .hibyte($00008D)		; electromanadventures
 	.byte .hibyte($000091)		; clubstep
 	.byte .hibyte($0000B2)		; electrodynamix
 	.byte .hibyte($0000A9)		; hexagonforce
-	.byte .hibyte($0000A7)		; blastprocessing
+	.byte .hibyte($0000A6)		; blastprocessing
 	.byte .hibyte($00009C)		; toe2
-	.byte .hibyte($0000AF)		; geometricaldominator
+	.byte .hibyte($0000AE)		; geometricaldominator
 	.byte .hibyte($0000BF)		; deadlocked
 	.byte .hibyte($000093)		; fingerdash
 	.byte .hibyte($0000B3)		; dash
-	.byte .hibyte($000050)		; explorers
+	.byte .hibyte($000041)		; explorers
 	.byte .hibyte($00002F)		; thetower
 	.byte .hibyte($00001B)		; thesewers
 	.byte .hibyte($000027)		; thecellar
@@ -718,10 +718,10 @@ _level_lengths_md:
 	.byte .hibyte($00007A)		; ninox
 	.byte .hibyte($000090)		; dorabaebasic6
 	.byte .hibyte($00009D)		; somewhereinaforest
-	.byte .hibyte($0000AC)		; dreamer
+	.byte .hibyte($0000AB)		; dreamer
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($00006A)		; hungrymanadventures
-	.byte .hibyte($0000A2)		; groundtospace
+	.byte .hibyte($0000A1)		; groundtospace
 	.byte .hibyte($0000F3)		; ajollyretrochristmas
 	.byte .hibyte($00006C)		; ultiatedestruction
 	.byte .hibyte($000088)		; subzero
@@ -734,19 +734,19 @@ _level_lengths_md:
 	.byte .hibyte($0000B2)		; generationretro
 	.byte .hibyte($0000E1)		; scarletsurge
 	.byte .hibyte($000082)		; tinytunes
-	.byte .hibyte($000079)		; kappaclysm
+	.byte .hibyte($000078)		; kappaclysm
 	.byte .hibyte($0000A4)		; sunshine
 	.byte .hibyte($0000B9)		; revolution
-	.byte .hibyte($0000B0)		; funnygameholiday
+	.byte .hibyte($0000A4)		; funnygameholiday
 	.byte .hibyte($0000BF)		; fireaura
 	.byte .hibyte($0000A6)		; rainbowdust
 	.byte .hibyte($00008F)		; wintherace
-	.byte .hibyte($000090)		; factorytime
+	.byte .hibyte($00008F)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($000065)		; lostinthewoods
 	.byte .hibyte($0000BB)		; rainingtacos
-	.byte .hibyte($000090)		; bloodbathbutno
+	.byte .hibyte($00008B)		; bloodbathbutno
 	.byte .hibyte($0000B5)		; rainbowtylenol
 	.byte .hibyte($000069)		; greif
 	.byte .hibyte($000097)		; dorabaebasic10
@@ -758,20 +758,20 @@ _level_lengths_md:
 	.byte .hibyte($000100)		; newdashcity
 	.byte .hibyte($00003D)		; trolledfix
 	.byte .hibyte($00009D)		; birdbrain
-	.byte .hibyte($000070)		; aprettyeasylevel
+	.byte .hibyte($00006F)		; aprettyeasylevel
 	.byte .hibyte($000137)		; tetrix
 	.byte .hibyte($000154)		; highlife
 	.byte .hibyte($0000F0)		; extraordinaryexcitement
 	.byte .hibyte($000087)		; thelightningroad
 	.byte .hibyte($000098)		; nightmare
-	.byte .hibyte($0000A2)		; demonpark
+	.byte .hibyte($0000A0)		; demonpark
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($000090)		; xx
 	.byte .hibyte($000068)		; problematic
 	.byte .hibyte($00006F)		; infinitecircles
 	.byte .hibyte($0000A5)		; sonicblaster
-	.byte .hibyte($00008A)		; decode
-	.byte .hibyte($000125)		; deathmoon
+	.byte .hibyte($000089)		; decode
+	.byte .hibyte($000124)		; deathmoon
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($00007F)		; speedracer
@@ -780,8 +780,8 @@ _level_lengths_md:
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($0000D4)		; trythisgd
 	.byte .hibyte($00009F)		; goldenhaze
-	.byte .hibyte($0000A2)		; hell
-	.byte .hibyte($000078)		; gameover
+	.byte .hibyte($0000A1)		; hell
+	.byte .hibyte($000077)		; gameover
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000097)		; demonpyrophoric
@@ -790,8 +790,8 @@ _level_lengths_md:
 	.byte .hibyte($000093)		; deadlyclubstep
 	.byte .hibyte($00008D)		; thermodynamix
 	.byte .hibyte($0000A8)		; demoncryogenic
-	.byte .hibyte($0000C8)		; azuronxolax
-	.byte .hibyte($000090)		; foresttemple
+	.byte .hibyte($0000C1)		; azuronxolax
+	.byte .hibyte($00008F)		; foresttemple
 	.byte .hibyte($0000BB)		; ninecircles
 	.byte .hibyte($000082)		; fairydust
 	.byte .hibyte($000086)		; jawbreaker
@@ -805,12 +805,12 @@ _level_lengths_md:
 	.byte .hibyte($000092)		; icdx
 	.byte .hibyte($0000FB)		; sonicwave
 	.byte .hibyte($00007B)		; styx
-	.byte .hibyte($0000D5)		; bloodbath
+	.byte .hibyte($0000D4)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
-	.byte .hibyte($00007C)		; aftermath
-	.byte .hibyte($00007F)		; wcropolix
+	.byte .hibyte($00007B)		; aftermath
+	.byte .hibyte($00007E)		; wcropolix
 	.byte .hibyte($000095)		; silentclubstep
-	.byte .hibyte($0001BF)		; aftercatabath
+	.byte .hibyte($0001BE)		; aftercatabath
 	.byte .hibyte($00006E)		; shardscapes
 	.byte .hibyte($0000A2)		; element111rg
 	.byte .hibyte($000097)		; slaughterhouse
@@ -827,25 +827,25 @@ _level_lengths_hi:
 	.byte .bankbyte($000088)		; backontrack
 	.byte .bankbyte($000096)		; polargeist
 	.byte .bankbyte($000087)		; dryout
-	.byte .bankbyte($00008C)		; baseafterbase
+	.byte .bankbyte($00008B)		; baseafterbase
 	.byte .bankbyte($000086)		; cantletgo
 	.byte .bankbyte($000090)		; jumper
 	.byte .bankbyte($0000A0)		; timemachine
 	.byte .bankbyte($000084)		; cycles
-	.byte .bankbyte($000088)		; xstep
+	.byte .bankbyte($000087)		; xstep
 	.byte .bankbyte($0000A1)		; clutterfunk
 	.byte .bankbyte($00008B)		; theoryofeverything
 	.byte .bankbyte($00008D)		; electromanadventures
 	.byte .bankbyte($000091)		; clubstep
 	.byte .bankbyte($0000B2)		; electrodynamix
 	.byte .bankbyte($0000A9)		; hexagonforce
-	.byte .bankbyte($0000A7)		; blastprocessing
+	.byte .bankbyte($0000A6)		; blastprocessing
 	.byte .bankbyte($00009C)		; toe2
-	.byte .bankbyte($0000AF)		; geometricaldominator
+	.byte .bankbyte($0000AE)		; geometricaldominator
 	.byte .bankbyte($0000BF)		; deadlocked
 	.byte .bankbyte($000093)		; fingerdash
 	.byte .bankbyte($0000B3)		; dash
-	.byte .bankbyte($000050)		; explorers
+	.byte .bankbyte($000041)		; explorers
 	.byte .bankbyte($00002F)		; thetower
 	.byte .bankbyte($00001B)		; thesewers
 	.byte .bankbyte($000027)		; thecellar
@@ -863,10 +863,10 @@ _level_lengths_hi:
 	.byte .bankbyte($00007A)		; ninox
 	.byte .bankbyte($000090)		; dorabaebasic6
 	.byte .bankbyte($00009D)		; somewhereinaforest
-	.byte .bankbyte($0000AC)		; dreamer
+	.byte .bankbyte($0000AB)		; dreamer
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($00006A)		; hungrymanadventures
-	.byte .bankbyte($0000A2)		; groundtospace
+	.byte .bankbyte($0000A1)		; groundtospace
 	.byte .bankbyte($0000F3)		; ajollyretrochristmas
 	.byte .bankbyte($00006C)		; ultiatedestruction
 	.byte .bankbyte($000088)		; subzero
@@ -879,19 +879,19 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B2)		; generationretro
 	.byte .bankbyte($0000E1)		; scarletsurge
 	.byte .bankbyte($000082)		; tinytunes
-	.byte .bankbyte($000079)		; kappaclysm
+	.byte .bankbyte($000078)		; kappaclysm
 	.byte .bankbyte($0000A4)		; sunshine
 	.byte .bankbyte($0000B9)		; revolution
-	.byte .bankbyte($0000B0)		; funnygameholiday
+	.byte .bankbyte($0000A4)		; funnygameholiday
 	.byte .bankbyte($0000BF)		; fireaura
 	.byte .bankbyte($0000A6)		; rainbowdust
 	.byte .bankbyte($00008F)		; wintherace
-	.byte .bankbyte($000090)		; factorytime
+	.byte .bankbyte($00008F)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($000065)		; lostinthewoods
 	.byte .bankbyte($0000BB)		; rainingtacos
-	.byte .bankbyte($000090)		; bloodbathbutno
+	.byte .bankbyte($00008B)		; bloodbathbutno
 	.byte .bankbyte($0000B5)		; rainbowtylenol
 	.byte .bankbyte($000069)		; greif
 	.byte .bankbyte($000097)		; dorabaebasic10
@@ -903,20 +903,20 @@ _level_lengths_hi:
 	.byte .bankbyte($000100)		; newdashcity
 	.byte .bankbyte($00003D)		; trolledfix
 	.byte .bankbyte($00009D)		; birdbrain
-	.byte .bankbyte($000070)		; aprettyeasylevel
+	.byte .bankbyte($00006F)		; aprettyeasylevel
 	.byte .bankbyte($000137)		; tetrix
 	.byte .bankbyte($000154)		; highlife
 	.byte .bankbyte($0000F0)		; extraordinaryexcitement
 	.byte .bankbyte($000087)		; thelightningroad
 	.byte .bankbyte($000098)		; nightmare
-	.byte .bankbyte($0000A2)		; demonpark
+	.byte .bankbyte($0000A0)		; demonpark
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($000090)		; xx
 	.byte .bankbyte($000068)		; problematic
 	.byte .bankbyte($00006F)		; infinitecircles
 	.byte .bankbyte($0000A5)		; sonicblaster
-	.byte .bankbyte($00008A)		; decode
-	.byte .bankbyte($000125)		; deathmoon
+	.byte .bankbyte($000089)		; decode
+	.byte .bankbyte($000124)		; deathmoon
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($00007F)		; speedracer
@@ -925,8 +925,8 @@ _level_lengths_hi:
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($0000D4)		; trythisgd
 	.byte .bankbyte($00009F)		; goldenhaze
-	.byte .bankbyte($0000A2)		; hell
-	.byte .bankbyte($000078)		; gameover
+	.byte .bankbyte($0000A1)		; hell
+	.byte .bankbyte($000077)		; gameover
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000097)		; demonpyrophoric
@@ -935,8 +935,8 @@ _level_lengths_hi:
 	.byte .bankbyte($000093)		; deadlyclubstep
 	.byte .bankbyte($00008D)		; thermodynamix
 	.byte .bankbyte($0000A8)		; demoncryogenic
-	.byte .bankbyte($0000C8)		; azuronxolax
-	.byte .bankbyte($000090)		; foresttemple
+	.byte .bankbyte($0000C1)		; azuronxolax
+	.byte .bankbyte($00008F)		; foresttemple
 	.byte .bankbyte($0000BB)		; ninecircles
 	.byte .bankbyte($000082)		; fairydust
 	.byte .bankbyte($000086)		; jawbreaker
@@ -950,12 +950,12 @@ _level_lengths_hi:
 	.byte .bankbyte($000092)		; icdx
 	.byte .bankbyte($0000FB)		; sonicwave
 	.byte .bankbyte($00007B)		; styx
-	.byte .bankbyte($0000D5)		; bloodbath
+	.byte .bankbyte($0000D4)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm
-	.byte .bankbyte($00007C)		; aftermath
-	.byte .bankbyte($00007F)		; wcropolix
+	.byte .bankbyte($00007B)		; aftermath
+	.byte .bankbyte($00007E)		; wcropolix
 	.byte .bankbyte($000095)		; silentclubstep
-	.byte .bankbyte($0001BF)		; aftercatabath
+	.byte .bankbyte($0001BE)		; aftercatabath
 	.byte .bankbyte($00006E)		; shardscapes
 	.byte .bankbyte($0000A2)		; element111rg
 	.byte .bankbyte($000097)		; slaughterhouse

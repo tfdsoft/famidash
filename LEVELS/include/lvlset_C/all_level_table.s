@@ -123,12 +123,12 @@ _level_lengths_lo:
 	.byte .lobyte($000090)		; xx
 	.byte .lobyte($000068)		; problematic
 	.byte .lobyte($0000A5)		; sonicblaster
-	.byte .lobyte($000125)		; deathmoon
+	.byte .lobyte($000124)		; deathmoon
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($00008B)		; endorphinrush
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($0000D4)		; trythisgd
-	.byte .lobyte($0000A2)		; hell
+	.byte .lobyte($0000A1)		; hell
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($000094)		; pgclubstep
 	.byte .lobyte($000093)		; deadlyclubstep
@@ -140,9 +140,9 @@ _level_lengths_lo:
 	.byte .lobyte($00009A)		; hi
 	.byte .lobyte($000286)		; eon
 	.byte .lobyte($0000FB)		; sonicwave
-	.byte .lobyte($0000D5)		; bloodbath
+	.byte .lobyte($0000D4)		; bloodbath
 	.byte .lobyte($00007D)		; cataclysm
-	.byte .lobyte($00007C)		; aftermath
+	.byte .lobyte($00007B)		; aftermath
 	.byte .lobyte($0002DC)		; everyend
 	.byte .lobyte($000087)		; luckydraw
 
@@ -153,12 +153,12 @@ _level_lengths_md:
 	.byte .hibyte($000090)		; xx
 	.byte .hibyte($000068)		; problematic
 	.byte .hibyte($0000A5)		; sonicblaster
-	.byte .hibyte($000125)		; deathmoon
+	.byte .hibyte($000124)		; deathmoon
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($00008B)		; endorphinrush
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($0000D4)		; trythisgd
-	.byte .hibyte($0000A2)		; hell
+	.byte .hibyte($0000A1)		; hell
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($000094)		; pgclubstep
 	.byte .hibyte($000093)		; deadlyclubstep
@@ -170,9 +170,9 @@ _level_lengths_md:
 	.byte .hibyte($00009A)		; hi
 	.byte .hibyte($000286)		; eon
 	.byte .hibyte($0000FB)		; sonicwave
-	.byte .hibyte($0000D5)		; bloodbath
+	.byte .hibyte($0000D4)		; bloodbath
 	.byte .hibyte($00007D)		; cataclysm
-	.byte .hibyte($00007C)		; aftermath
+	.byte .hibyte($00007B)		; aftermath
 	.byte .hibyte($0002DC)		; everyend
 	.byte .hibyte($000087)		; luckydraw
 
@@ -183,12 +183,12 @@ _level_lengths_hi:
 	.byte .bankbyte($000090)		; xx
 	.byte .bankbyte($000068)		; problematic
 	.byte .bankbyte($0000A5)		; sonicblaster
-	.byte .bankbyte($000125)		; deathmoon
+	.byte .bankbyte($000124)		; deathmoon
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($00008B)		; endorphinrush
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($0000D4)		; trythisgd
-	.byte .bankbyte($0000A2)		; hell
+	.byte .bankbyte($0000A1)		; hell
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($000094)		; pgclubstep
 	.byte .bankbyte($000093)		; deadlyclubstep
@@ -200,9 +200,9 @@ _level_lengths_hi:
 	.byte .bankbyte($00009A)		; hi
 	.byte .bankbyte($000286)		; eon
 	.byte .bankbyte($0000FB)		; sonicwave
-	.byte .bankbyte($0000D5)		; bloodbath
+	.byte .bankbyte($0000D4)		; bloodbath
 	.byte .bankbyte($00007D)		; cataclysm
-	.byte .bankbyte($00007C)		; aftermath
+	.byte .bankbyte($00007B)		; aftermath
 	.byte .bankbyte($0002DC)		; everyend
 	.byte .bankbyte($000087)		; luckydraw
 

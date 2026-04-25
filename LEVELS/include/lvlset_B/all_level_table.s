@@ -173,7 +173,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000BF)		; fireaura
 	.byte .lobyte($0000A6)		; rainbowdust
 	.byte .lobyte($00008F)		; wintherace
-	.byte .lobyte($000090)		; factorytime
+	.byte .lobyte($00008F)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
 	.byte .lobyte($0000BB)		; rainingtacos
 	.byte .lobyte($000097)		; dorabaebasic10
@@ -184,7 +184,7 @@ _level_lengths_lo:
 	.byte .lobyte($000096)		; danceofviolins
 	.byte .lobyte($000100)		; newdashcity
 	.byte .lobyte($00009D)		; birdbrain
-	.byte .lobyte($000070)		; aprettyeasylevel
+	.byte .lobyte($00006F)		; aprettyeasylevel
 	.byte .lobyte($000137)		; tetrix
 	.byte .lobyte($000154)		; highlife
 
@@ -212,7 +212,7 @@ _level_lengths_md:
 	.byte .hibyte($0000BF)		; fireaura
 	.byte .hibyte($0000A6)		; rainbowdust
 	.byte .hibyte($00008F)		; wintherace
-	.byte .hibyte($000090)		; factorytime
+	.byte .hibyte($00008F)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
 	.byte .hibyte($0000BB)		; rainingtacos
 	.byte .hibyte($000097)		; dorabaebasic10
@@ -223,7 +223,7 @@ _level_lengths_md:
 	.byte .hibyte($000096)		; danceofviolins
 	.byte .hibyte($000100)		; newdashcity
 	.byte .hibyte($00009D)		; birdbrain
-	.byte .hibyte($000070)		; aprettyeasylevel
+	.byte .hibyte($00006F)		; aprettyeasylevel
 	.byte .hibyte($000137)		; tetrix
 	.byte .hibyte($000154)		; highlife
 
@@ -251,7 +251,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000BF)		; fireaura
 	.byte .bankbyte($0000A6)		; rainbowdust
 	.byte .bankbyte($00008F)		; wintherace
-	.byte .bankbyte($000090)		; factorytime
+	.byte .bankbyte($00008F)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
 	.byte .bankbyte($0000BB)		; rainingtacos
 	.byte .bankbyte($000097)		; dorabaebasic10
@@ -262,7 +262,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000096)		; danceofviolins
 	.byte .bankbyte($000100)		; newdashcity
 	.byte .bankbyte($00009D)		; birdbrain
-	.byte .bankbyte($000070)		; aprettyeasylevel
+	.byte .bankbyte($00006F)		; aprettyeasylevel
 	.byte .bankbyte($000137)		; tetrix
 	.byte .bankbyte($000154)		; highlife
 

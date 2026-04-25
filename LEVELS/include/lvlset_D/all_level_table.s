@@ -122,28 +122,28 @@ _level_chunk_list_bank:
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
-	.byte .lobyte($0000A2)		; demonpark
+	.byte .lobyte($0000A0)		; demonpark
 	.byte .lobyte($00006F)		; infinitecircles
-	.byte .lobyte($00008A)		; decode
+	.byte .lobyte($000089)		; decode
 	.byte .lobyte($0000B1)		; clutterfunk2
 	.byte .lobyte($00007F)		; speedracer
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($00009F)		; goldenhaze
-	.byte .lobyte($000078)		; gameover
+	.byte .lobyte($000077)		; gameover
 	.byte .lobyte($000097)		; demonpyrophoric
-	.byte .lobyte($000050)		; explorers
+	.byte .lobyte($000041)		; explorers
 	.byte .lobyte($0000A1)		; toeiiv2
 	.byte .lobyte($0000A8)		; demoncryogenic
-	.byte .lobyte($0000C8)		; azuronxolax
-	.byte .lobyte($000090)		; foresttemple
+	.byte .lobyte($0000C1)		; azuronxolax
+	.byte .lobyte($00008F)		; foresttemple
 	.byte .lobyte($000086)		; jawbreaker
 	.byte .lobyte($000064)		; acropolis
 	.byte .lobyte($00009A)		; windylandscape
 	.byte .lobyte($000092)		; icdx
 	.byte .lobyte($00007B)		; styx
-	.byte .lobyte($00007F)		; wcropolix
+	.byte .lobyte($00007E)		; wcropolix
 	.byte .lobyte($000095)		; silentclubstep
-	.byte .lobyte($0001BF)		; aftercatabath
+	.byte .lobyte($0001BE)		; aftercatabath
 	.byte .lobyte($00006E)		; shardscapes
 	.byte .lobyte($0000A2)		; element111rg_with_secret_way
 	.byte .lobyte($000097)		; slaughterhouse
@@ -154,28 +154,28 @@ _level_lengths_lo:
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
-	.byte .hibyte($0000A2)		; demonpark
+	.byte .hibyte($0000A0)		; demonpark
 	.byte .hibyte($00006F)		; infinitecircles
-	.byte .hibyte($00008A)		; decode
+	.byte .hibyte($000089)		; decode
 	.byte .hibyte($0000B1)		; clutterfunk2
 	.byte .hibyte($00007F)		; speedracer
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($00009F)		; goldenhaze
-	.byte .hibyte($000078)		; gameover
+	.byte .hibyte($000077)		; gameover
 	.byte .hibyte($000097)		; demonpyrophoric
-	.byte .hibyte($000050)		; explorers
+	.byte .hibyte($000041)		; explorers
 	.byte .hibyte($0000A1)		; toeiiv2
 	.byte .hibyte($0000A8)		; demoncryogenic
-	.byte .hibyte($0000C8)		; azuronxolax
-	.byte .hibyte($000090)		; foresttemple
+	.byte .hibyte($0000C1)		; azuronxolax
+	.byte .hibyte($00008F)		; foresttemple
 	.byte .hibyte($000086)		; jawbreaker
 	.byte .hibyte($000064)		; acropolis
 	.byte .hibyte($00009A)		; windylandscape
 	.byte .hibyte($000092)		; icdx
 	.byte .hibyte($00007B)		; styx
-	.byte .hibyte($00007F)		; wcropolix
+	.byte .hibyte($00007E)		; wcropolix
 	.byte .hibyte($000095)		; silentclubstep
-	.byte .hibyte($0001BF)		; aftercatabath
+	.byte .hibyte($0001BE)		; aftercatabath
 	.byte .hibyte($00006E)		; shardscapes
 	.byte .hibyte($0000A2)		; element111rg_with_secret_way
 	.byte .hibyte($000097)		; slaughterhouse
@@ -186,28 +186,28 @@ _level_lengths_md:
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
-	.byte .bankbyte($0000A2)		; demonpark
+	.byte .bankbyte($0000A0)		; demonpark
 	.byte .bankbyte($00006F)		; infinitecircles
-	.byte .bankbyte($00008A)		; decode
+	.byte .bankbyte($000089)		; decode
 	.byte .bankbyte($0000B1)		; clutterfunk2
 	.byte .bankbyte($00007F)		; speedracer
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($00009F)		; goldenhaze
-	.byte .bankbyte($000078)		; gameover
+	.byte .bankbyte($000077)		; gameover
 	.byte .bankbyte($000097)		; demonpyrophoric
-	.byte .bankbyte($000050)		; explorers
+	.byte .bankbyte($000041)		; explorers
 	.byte .bankbyte($0000A1)		; toeiiv2
 	.byte .bankbyte($0000A8)		; demoncryogenic
-	.byte .bankbyte($0000C8)		; azuronxolax
-	.byte .bankbyte($000090)		; foresttemple
+	.byte .bankbyte($0000C1)		; azuronxolax
+	.byte .bankbyte($00008F)		; foresttemple
 	.byte .bankbyte($000086)		; jawbreaker
 	.byte .bankbyte($000064)		; acropolis
 	.byte .bankbyte($00009A)		; windylandscape
 	.byte .bankbyte($000092)		; icdx
 	.byte .bankbyte($00007B)		; styx
-	.byte .bankbyte($00007F)		; wcropolix
+	.byte .bankbyte($00007E)		; wcropolix
 	.byte .bankbyte($000095)		; silentclubstep
-	.byte .bankbyte($0001BF)		; aftercatabath
+	.byte .bankbyte($0001BE)		; aftercatabath
 	.byte .bankbyte($00006E)		; shardscapes
 	.byte .bankbyte($0000A2)		; element111rg_with_secret_way
 	.byte .bankbyte($000097)		; slaughterhouse
