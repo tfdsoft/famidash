@@ -874,7 +874,7 @@ sprite_data_dryout:
   .byte $90,$34,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_8D"
+.segment "DAT_BANK_8F"
 sprite_data_baseafterbase:
   .byte $70,$02,$70,$03,$2b
   .byte $a0,$02,$40,$03,$2d
@@ -31874,7 +31874,6 @@ sprite_data_offtomars:
 
 .segment "DAT_BANK_8D"
 sprite_data_unity:
-  .byte $00,$00,$70,$03,$14
   .byte $00,$00,$88,$03,$0a
   .byte $a0,$00,$20,$03,$a0
   .byte $a0,$00,$60,$03,$cf

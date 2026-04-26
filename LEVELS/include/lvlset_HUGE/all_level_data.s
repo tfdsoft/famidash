@@ -3675,7 +3675,7 @@
 		.incbin "EXPORTS/movie.lz.bin" ; Size: 1428
 
 
-.segment "DAT_BANK_8D"	; Total bank size: 8187 bytes
+.segment "DAT_BANK_8D"	; Total bank size: 8188 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
@@ -3699,6 +3699,30 @@
 		.byte 27 ;__________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1384
+
+	.export level_data_thecellar
+	level_data_thecellar:
+	; Header
+		.byte <sprite_data_thecellar ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_thecellar ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_thecellar)) ;___ Sprite data bank
+		.byte song_scheming_weasel ;______________ Song ID
+		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
+		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
+		.byte (1 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 ;____________________________ Deco type
+		.byte _SPIKESA ;__________________________ Spike set
+		.byte _BLOCKSB ;__________________________ Block set
+		.byte _SAWBLADESA ;_______________________ Sawblade set
+		.byte $1C ;_______________________________ Starting background color
+		.byte $0F ;_______________________________ Starting ground color
+		.byte 57 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
 .segment "DAT_BANK_8E"	; Total bank size: 8146 bytes
@@ -3732,31 +3756,7 @@
 		.incbin "EXPORTS/madness.lz.bin" ; Size: 1207
 
 
-.segment "DAT_BANK_8F"	; Total bank size: 8143 bytes
-	.export level_data_thecellar
-	level_data_thecellar:
-	; Header
-		.byte <sprite_data_thecellar ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_thecellar ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_thecellar)) ;___ Sprite data bank
-		.byte song_scheming_weasel ;______________ Song ID
-		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($00) ;_____________________________ Spawn Y Position (low byte)
-		.byte ($02) ;_____________________________ Y Scroll Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte ($07) ;_____________________________ Max Fall Speed (high byte)
-		.byte (1 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 ;____________________________ Deco type
-		.byte _SPIKESA ;__________________________ Spike set
-		.byte _BLOCKSB ;__________________________ Block set
-		.byte _SAWBLADESA ;_______________________ Sawblade set
-		.byte $1C ;_______________________________ Starting background color
-		.byte $0F ;_______________________________ Starting ground color
-		.byte 57 ;________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
-
+.segment "DAT_BANK_8F"	; Total bank size: 8137 bytes
 	.export level_data_ultiatedestruction
 	level_data_ultiatedestruction:
 	; Header
