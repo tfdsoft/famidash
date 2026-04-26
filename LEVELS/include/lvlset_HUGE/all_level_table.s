@@ -78,6 +78,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_greif)
 	.byte .lobyte(level_data_dorabaebasic10)
 	.byte .lobyte(level_data_offtomars)
+	.byte .lobyte(level_data_unity)
 	.byte .lobyte(level_data_akrile)
 	.byte .lobyte(level_data_subtleoddities)
 	.byte .lobyte(level_data_powertrip)
@@ -221,6 +222,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_greif)
 	.byte .hibyte(level_data_dorabaebasic10)
 	.byte .hibyte(level_data_offtomars)
+	.byte .hibyte(level_data_unity)
 	.byte .hibyte(level_data_akrile)
 	.byte .hibyte(level_data_subtleoddities)
 	.byte .hibyte(level_data_powertrip)
@@ -364,6 +366,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_greif))
 	.byte .lobyte(.bank(level_data_dorabaebasic10))
 	.byte .lobyte(.bank(level_data_offtomars))
+	.byte .lobyte(.bank(level_data_unity))
 	.byte .lobyte(.bank(level_data_akrile))
 	.byte .lobyte(.bank(level_data_subtleoddities))
 	.byte .lobyte(.bank(level_data_powertrip))
@@ -606,6 +609,7 @@ _level_lengths_lo:
 	.byte .lobyte($000069)		; greif
 	.byte .lobyte($000097)		; dorabaebasic10
 	.byte .lobyte($000097)		; offtomars
+	.byte .lobyte($00006B)		; unity
 	.byte .lobyte($000081)		; akrile
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($0000C0)		; powertrip
@@ -751,6 +755,7 @@ _level_lengths_md:
 	.byte .hibyte($000069)		; greif
 	.byte .hibyte($000097)		; dorabaebasic10
 	.byte .hibyte($000097)		; offtomars
+	.byte .hibyte($00006B)		; unity
 	.byte .hibyte($000081)		; akrile
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($0000C0)		; powertrip
@@ -896,6 +901,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000069)		; greif
 	.byte .bankbyte($000097)		; dorabaebasic10
 	.byte .bankbyte($000097)		; offtomars
+	.byte .bankbyte($00006B)		; unity
 	.byte .bankbyte($000081)		; akrile
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($0000C0)		; powertrip

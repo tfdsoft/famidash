@@ -3626,6 +3626,69 @@
 				},
 			],
 		},
+		{ 
+			level: "unity",
+			lowerText: "UNITY",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_stereo_madness_2",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[230, 21],
+						[400, 20],
+						[475, 24],
+						[485, 21],
+						[499, 21],
+						[501, 23],
+						[514, 21],
+						[514, 24],
+						[524, 21],
+						[537, 21],
+						[539, 23],
+						[541, 25],
+						[503, 25]
+					],
+					offsetY: +8 
+				},
+				{
+					coordinates: [
+						[231, 21],
+						[324, 20],
+						[554, 21]
+					],
+					offsetY: +8, 
+					offsetX: -16
+				},
+				{
+					coordinates: [552, 20],
+					offsetY: +24 
+				},
+				{
+					coordinates: [
+						[475, 19],
+						[497, 20],
+						[524, 19],
+						[535, 20],
+						[553, 22],
+						[533, 18],
+						[495, 18],
+						[552, 22],
+					],
+					offsetY: -8 
+				}
+			]
+		},
 		{
 			level: "akrile",
 			lowerText: "AKRILE",

@@ -75,6 +75,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// greif
 	INSANE,	// dorabaebasic10
 	INSANE,	// offtomars
+	INSANE,	// unity
 	INSANE,	// akrile
 	INSANE,	// subtleoddities
 	INSANE,	// powertrip
@@ -219,6 +220,7 @@ const uint8_t stars_list[] = {
 	8,	// greif
 	8,	// dorabaebasic10
 	8,	// offtomars
+	8,	// unity
 	8,	// akrile
 	8,	// subtleoddities
 	8,	// powertrip
