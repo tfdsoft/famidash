@@ -94,7 +94,7 @@ void x_movement(){
 		tmp8 = bg_coll_L();
 
 		if (!tmp7 && (controllingplayer->right)) currplayer_x += currplayer_vel_x;
-		else if (!tmp8 && controllingplayer->left && currplayer_x > 0x1000) currplayer_x -= currplayer_vel_x;
+		else if (!tmp8 && controllingplayer->left && currplayer_x > 0x1200) currplayer_x -= currplayer_vel_x;
 		else currplayer_vel_x = 0;
 
 
