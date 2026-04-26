@@ -262,6 +262,30 @@ void bg_coll_floor_spikes() { // used for spike collision
 	Clobbers:
 	tmp2, tmp8
 */
+
+char bg_coll_top_bottom_slabs() {
+	switch (collision) {
+		case COL_BOTTOM:
+			tmp2 = (uint8_t)(temp_y & 0x0f);
+			tmp8 = tmp2 & 0x07;	 
+			// if (tmp2 >= 0x08) {
+			if (tmp8 != tmp2) {
+				return 1;
+			}
+			break;
+		case COL_TOP:
+			tmp2 = (uint8_t)(temp_y & 0x0f);
+			tmp8 = tmp2 & 0x07;	 
+			// if (tmp2 >= 0x08) {
+			if (tmp8 == tmp2) {
+				return 1;
+			}
+			break;
+		};
+	return 0;
+}
+			
+
 char bg_coll_mini_blocks() {
 	if (collision != COL_FLOOR_CEIL && high_byte(currplayer_x) < 0x10) return 0;
 	switch (collision) {
@@ -299,7 +323,6 @@ char bg_coll_mini_blocks() {
 		case COL_BOTTOM_RIGHT_SPIKE:
 		case COL_BOTTOM_CENTER_SPIKE:
 		case COL_BOTTOM_SPIKES:
-		case COL_BOTTOM:
 			tmp2 = (uint8_t)(temp_y & 0x0f);
 			tmp8 = tmp2 & 0x07;	 
 			// if (tmp2 >= 0x08) {
@@ -310,7 +333,6 @@ char bg_coll_mini_blocks() {
 
 		case COL_TOP_CENTER_SPIKE:
 		case COL_TOP_SPIKES:
-		case COL_TOP:
 			tmp2 = (uint8_t)(temp_y & 0x0f);
 			tmp8 = tmp2 & 0x07;	 
 			// if (tmp2 >= 0x08) {
@@ -428,7 +450,7 @@ char bg_side_coll_common() {
 
 		if (bg_coll_spikes()) return 0;
 
-		return bg_coll_sides() || bg_coll_mini_blocks();
+		return bg_coll_sides() || bg_coll_mini_blocks() || bg_coll_top_bottom_slabs();
 	} 
 	
 	return 0;
@@ -746,7 +768,7 @@ char bg_coll_slope() {
 	tmp2, tmp8
 */
 char bg_coll_return_D () {
-	tmp1 = bg_coll_U_D_checks() || bg_coll_mini_blocks();
+	tmp1 = bg_coll_U_D_checks() || bg_coll_mini_blocks() || bg_coll_top_bottom_slabs();
 	eject_D = tmp8;
 	return tmp1;
 }
@@ -759,7 +781,7 @@ char bg_coll_return_D () {
 */
 char bg_coll_return_U () {
 	tmp3 = bg_coll_U_D_checks();
-	tmp1 = bg_coll_mini_blocks();
+	tmp1 = bg_coll_mini_blocks() || bg_coll_top_bottom_slabs();
 	eject_U = (tmp3 ? 0xf0 : 0xf8) | tmp8;
 	return tmp1 | tmp3;
 }
@@ -1037,12 +1059,19 @@ void bg_coll_death() {
 	
 	if (collision) {
 		if (!dblocked[currplayer] || gamemode != GAMEMODE_WAVE) {
-			if (bg_coll_U_D_checks() || bg_coll_mini_blocks() || bg_coll_spikes() || bg_coll_slope()) {
-				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+			if (!force_platformer) {
+				if (bg_coll_U_D_checks() || bg_coll_mini_blocks() || bg_coll_top_bottom_slabs() || bg_coll_spikes() || bg_coll_slope()) {
+					idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+				}
 			}
+			else {
+				if (bg_coll_U_D_checks() || bg_coll_mini_blocks() || bg_coll_spikes() || bg_coll_slope()) {
+					idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
+				}
+			}				
 		}
 		else {
-			if (bg_coll_mini_blocks() || bg_coll_spikes() || bg_coll_slope()) {
+			if (bg_coll_mini_blocks() || bg_coll_top_bottom_slabs() || bg_coll_spikes() || bg_coll_slope()) {
 				idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
 			}
 		}
