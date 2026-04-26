@@ -106,7 +106,7 @@
 			coveringArtist: ["cloud54", "UserSniper", "alexmush", "Crafty Jumper"]
 		},
 		{
-			fmsSongName: "Clubstep Full",
+			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
 			originalArtist: "Dj-Nate",
 			coveringArtist: ["cloud54", "SeaGlowingPro"]
@@ -500,7 +500,7 @@
 			fmsSongName: "Isolation",
 			lowerText: "ISOLATION",
 			originalArtist: "NightHawk22",
-			coveringArtist: ["Crafty Jumper", "SeaGlowingPro"]
+			coveringArtist: "okujassu",
 		},
 		/*
 		{
@@ -577,12 +577,14 @@
 			originalArtist: "Davince",
 			coveringArtist: "SeaGlowingPro",
 		},
+		/*
 		{
 			fmsSongName: "Metamorphosis",
 			lowerText: "METAMORPHOSIS",
 			originalArtist: "INTERWORLD",
 			coveringArtist: "ElAngel378",
 		},
+		*/
 		{
 			fmsSongName: "Miami Hotline Vol. 3",
 			upperText: "MIAMI HOTLINE",

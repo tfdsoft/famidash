@@ -630,7 +630,7 @@
 			fmsSongName: "Isolation",
 			lowerText: "ISOLATION",
 			originalArtist: "NightHawk22",
-			coveringArtist: ["Crafty Jumper", "SeaGlowingPro"]
+			coveringArtist: "okujassu",
 		},
 		/*
 		{
@@ -1046,12 +1046,14 @@
 			originalArtist: "TheFatRat",
 			coveringArtist: "Ranedom",
 		},
+		/*
 		{
 			fmsSongName: "XO",
 			lowerText: "XO",
 			originalArtist: ["EDEN     AARON", "   MUSSELWHITE"],
 			coveringArtist: "SeaGlowingPro",
 		},
+		*/
 		{
 			fmsSongName: "Youve been Trolled",
 			upperText: "YOUVE BEEN",
