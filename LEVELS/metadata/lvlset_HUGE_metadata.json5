@@ -2191,7 +2191,7 @@
 			stars: 4,			
 			songID: "song_driving_by_night",
 			startingGameMode: 0,
-			startingSpeed: 0,
+			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
