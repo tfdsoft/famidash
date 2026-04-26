@@ -3445,6 +3445,13 @@
 
 
 .segment "DAT_BANK_85"	; Total bank size: 8178 bytes
+	.export level_data_subtleoddities_9
+	level_data_subtleoddities_9:
+	; Level data
+		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2295
+
+
+.segment "DAT_BANK_86"	; Total bank size: 8188 bytes
 	.export level_data_unity
 	level_data_unity:
 	; Header
@@ -3467,19 +3474,12 @@
 		.byte $0F ;___________________________ Starting ground color
 		.byte 27 ;____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/unity.lz.bin" ; Size: 2277
+		.incbin "EXPORTS/unity.lz.bin" ; Size: 2266
 
-
-.segment "DAT_BANK_86"	; Total bank size: 8188 bytes
-	.export level_data_subtleoddities_9
-	level_data_subtleoddities_9:
+	.export level_data_trythisgd_18
+	level_data_trythisgd_18:
 	; Level data
-		.incbin "EXPORTS/subtleoddities.lz.1.bin" ; Size: 2295
-
-	.export level_data_somewhereinaforest_1
-	level_data_somewhereinaforest_1:
-	; Level data
-		.incbin "EXPORTS/somewhereinaforest.lz.1.bin" ; Size: 1361
+		.incbin "EXPORTS/trythisgd.lz.1.bin" ; Size: 1372
 
 
 .segment "DAT_BANK_88"	; Total bank size: 8163 bytes
@@ -3584,7 +3584,7 @@
 		.incbin "EXPORTS/bestautomaticlvl.lz.bin" ; Size: 1818
 
 
-.segment "DAT_BANK_8B"	; Total bank size: 8187 bytes
+.segment "DAT_BANK_8B"	; Total bank size: 8176 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -3638,10 +3638,10 @@
 	; Level data
 		.incbin "EXPORTS/cryogenic.lz.1.bin" ; Size: 1675
 
-	.export level_data_trythisgd_18
-	level_data_trythisgd_18:
+	.export level_data_somewhereinaforest_1
+	level_data_somewhereinaforest_1:
 	; Level data
-		.incbin "EXPORTS/trythisgd.lz.1.bin" ; Size: 1372
+		.incbin "EXPORTS/somewhereinaforest.lz.1.bin" ; Size: 1361
 
 
 .segment "DAT_BANK_8C"	; Total bank size: 7793 bytes
@@ -3675,7 +3675,7 @@
 		.incbin "EXPORTS/movie.lz.bin" ; Size: 1428
 
 
-.segment "DAT_BANK_8D"	; Total bank size: 8192 bytes
+.segment "DAT_BANK_8D"	; Total bank size: 8187 bytes
 	.export level_data_backontrack
 	level_data_backontrack:
 	; Header
