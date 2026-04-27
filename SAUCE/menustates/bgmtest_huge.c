@@ -132,7 +132,7 @@ void refresh_queue_screen() {
 	switch (tmp4) {
 		case 0:
 		case 0xFF:
-				update_text2();
+				crossPRGBankJump0(update_text2);
 				tmp4 = 2;
 				break;
 		case 1:
@@ -372,7 +372,7 @@ void state_soundtest() {
 			crossPRGBankJump0(unrle_bgm2); 	   	
 			ppu_on_all();
 			queuemode = 1;
-			crossPRGBankJump0(update_text2);
+			update_text2();
 			crossPRGBankJump0(update_text3);
 		}
 	}
@@ -400,7 +400,7 @@ void state_soundtest() {
 				music_play(xbgmlookuptable[song]); 
 				music_queue[0] = song;
 				songplaying = 1;
-				crossPRGBankJump0(update_text2);
+				update_text2();
 			}
 			else {
 				for (tmp1 = 1; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {
@@ -409,7 +409,7 @@ void state_soundtest() {
 						break;
 					}
 				}
-				if (music_queue[10] == 0xFF) crossPRGBankJump0(update_text2);
+				if (music_queue[10] == 0xFF) update_text2();
 			}
 		}
 		if (joypad1.press_b || mouse.right_press) {
