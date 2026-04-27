@@ -3912,6 +3912,70 @@
 				},
 			]
 		},
+		{ 
+			level: "dastardly",
+			lowerText: "DASTARDLY",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_dastardly",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			maxFallSpeed: 0x07,
+			startingBackgroundColor: 0x0C,
+			startingGroundColor: 0x0C,
+			spawnYPositionHi: 0x70,
+			spawnYPositionLow: 0x00,
+			scrollYPositionHi: 0x02,
+			scrollYPositionLow: 0x30,
+			parallaxDisable: true,
+			objectOffsets: [
+				{
+					coordinates: [
+						[57, 10],
+						[91, 14],
+						[97, 15],
+						[95, 16],
+						[269, 17],
+						[270, 17],
+						[229, 14]
+					],
+					offsetY: +8 
+				},
+				{
+					coordinates: [97, 11],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[241, 12],
+						[1062, 13]
+					], 
+					offsetX: -16
+				},
+				{
+					coordinates: [269, 10],
+					offsetY: +8, 
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[406, 14],
+						[427, 17],
+						[521, 13]
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [1062, 14],
+					offsetY: -16, 
+					offsetX: -16
+				}
+			]
+		},
 		{
 			level: "trolledfix",
 			upperText: "YOUVE BEEN",

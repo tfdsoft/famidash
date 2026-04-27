@@ -81,6 +81,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// powertrip
 	INSANE,	// danceofviolins
 	INSANE,	// newdashcity
+	INSANE,	// dastardly
 	INSANE,	// trolledfix
 	INSANE,	// birdbrain
 	INSANE,	// aprettyeasylevel
@@ -226,6 +227,7 @@ const uint8_t stars_list[] = {
 	8,	// powertrip
 	8,	// danceofviolins
 	8,	// newdashcity
+	8,	// dastardly
 	9,	// trolledfix
 	9,	// birdbrain
 	9,	// aprettyeasylevel

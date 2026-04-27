@@ -397,6 +397,13 @@
 		},
 		*/
 		{
+			fmsSongName: "Dastardly",
+			upperText: "DICK DASTARDLY",
+			lowerText: "RICHARDSON",
+			originalArtist: "LCHAVASSE",
+			coveringArtist: "CRAFTY JUMPER"
+		},
+		{
 			fmsSongName: "Death Moon",
 			lowerText: "DEATH MOON",
 			originalArtist: "SoundHolicK",

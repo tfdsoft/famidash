@@ -84,6 +84,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_powertrip)
 	.byte .lobyte(level_data_danceofviolins)
 	.byte .lobyte(level_data_newdashcity)
+	.byte .lobyte(level_data_dastardly)
 	.byte .lobyte(level_data_trolledfix)
 	.byte .lobyte(level_data_birdbrain)
 	.byte .lobyte(level_data_aprettyeasylevel)
@@ -228,6 +229,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_powertrip)
 	.byte .hibyte(level_data_danceofviolins)
 	.byte .hibyte(level_data_newdashcity)
+	.byte .hibyte(level_data_dastardly)
 	.byte .hibyte(level_data_trolledfix)
 	.byte .hibyte(level_data_birdbrain)
 	.byte .hibyte(level_data_aprettyeasylevel)
@@ -372,6 +374,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_powertrip))
 	.byte .lobyte(.bank(level_data_danceofviolins))
 	.byte .lobyte(.bank(level_data_newdashcity))
+	.byte .lobyte(.bank(level_data_dastardly))
 	.byte .lobyte(.bank(level_data_trolledfix))
 	.byte .lobyte(.bank(level_data_birdbrain))
 	.byte .lobyte(.bank(level_data_aprettyeasylevel))
@@ -615,6 +618,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
 	.byte .lobyte($000100)		; newdashcity
+	.byte .lobyte($0000B2)		; dastardly
 	.byte .lobyte($00003D)		; trolledfix
 	.byte .lobyte($00009D)		; birdbrain
 	.byte .lobyte($00006F)		; aprettyeasylevel
@@ -761,6 +765,7 @@ _level_lengths_md:
 	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
 	.byte .hibyte($000100)		; newdashcity
+	.byte .hibyte($0000B2)		; dastardly
 	.byte .hibyte($00003D)		; trolledfix
 	.byte .hibyte($00009D)		; birdbrain
 	.byte .hibyte($00006F)		; aprettyeasylevel
@@ -907,6 +912,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins
 	.byte .bankbyte($000100)		; newdashcity
+	.byte .bankbyte($0000B2)		; dastardly
 	.byte .bankbyte($00003D)		; trolledfix
 	.byte .bankbyte($00009D)		; birdbrain
 	.byte .bankbyte($00006F)		; aprettyeasylevel
