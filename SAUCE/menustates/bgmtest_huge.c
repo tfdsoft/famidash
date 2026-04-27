@@ -223,19 +223,6 @@ void update_text3() {
 	if (__A__) draw_padded_text(xbgmtextsLower[tempsong], xbgmtextsLowerSize[tempsong], 14, NTADR_A(9, 8));
 	else one_vram_buffer_horz_repeat('$', 15, NTADR_A(9, 8));
 }
-void update_text2() {
-	if (music_queue[0] != 0xFF) one_vram_buffer(0x9F, NTADR_A(1, 13));
-	else one_vram_buffer(0xFF, NTADR_A(1, 13));
-	for (tmp1 = 0; tmp1 < 2; tmp1++) {			//limited to 5??
-		if (music_queue[tmp1] != 0xFF) {
-			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-			crossPRGBankJump0(text_stuff);
-		}
-		else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
-	}	
-	//ppu_on_all();
-	tmp4 = 2;
-}	
 
 void update_covering_artists() {
 			__A__ = idx16_load_hi(xbgmtextsCoveringArtist1, tempsong);
@@ -286,6 +273,19 @@ void set_fun_settings();
 #include "defines/charmap/bgm_charmap.h"
 
 
+void update_text2() {
+	if (music_queue[0] != 0xFF) one_vram_buffer(0x9F, NTADR_A(1, 13));
+	else one_vram_buffer(0xFF, NTADR_A(1, 13));
+	for (tmp1 = 0; tmp1 < 2; tmp1++) {			//limited to 5??
+		if (music_queue[tmp1] != 0xFF) {
+			one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+			crossPRGBankJump0(text_stuff);
+		}
+		else one_vram_buffer_horz_repeat('$', 27, NTADR_A(3, (13 + (tmp1))));	
+	}	
+	//ppu_on_all();
+	tmp4 = 2;
+}	
 
 
 
