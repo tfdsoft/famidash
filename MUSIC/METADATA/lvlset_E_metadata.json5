@@ -2,9 +2,9 @@
 	songModule: "music_master.fms",
 	songs: [
 		{
-			fmsSongName: "Menu Theme (Human Capturing Mix)",
+			fmsSongName: "Menu Theme E Side",
 			lowerText: "MENU",
-			originalArtistText: "TOBY FOX",
+			originalArtistText: "RICK ASTLEY",
 		},
 		{
 			fmsSongName: "Time Machine",

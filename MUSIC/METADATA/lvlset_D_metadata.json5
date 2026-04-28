@@ -2,9 +2,9 @@
 	songModule: "music_master.fms",
 	songs: [
 		{
-			fmsSongName: "emehT uneM",
-			lowerText: "EMEHT UNEM",
-			originalArtistText: "ROBTOP",
+			fmsSongName: "Menu Theme (Human Capturing Mix)",
+			lowerText: "MENU",
+			originalArtistText: "TOBY FOX",
 			
 		},
 		{
