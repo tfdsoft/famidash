@@ -397,17 +397,17 @@
 		},
 		*/
 		{
+			fmsSongName: "Death Moon",
+			lowerText: "DEATH MOON",
+			originalArtist: "SoundHolicK",
+			coveringArtist: "ElAngel378",
+		},
+		{
 			fmsSongName: "Dastardly",
 			upperText: "DICK DASTARDLY",
 			lowerText: "RICHARDSON",
 			originalArtist: "LCHAVASSE",
 			coveringArtist: ["CRAFTY JUMPER","SEAGLOWINGPRO"]
-		},
-		{
-			fmsSongName: "Death Moon",
-			lowerText: "DEATH MOON",
-			originalArtist: "SoundHolicK",
-			coveringArtist: "ElAngel378",
 		},
 		{
 			fmsSongName: "Driving By Night",
@@ -1067,7 +1067,7 @@
 			lowerText: "TROLLED",
 			originalArtist: "TheClydeCash",
 			coveringArtist: "SeaGlowingPro",
-		},			
+		},
 	],
 	SFX: [
 		{

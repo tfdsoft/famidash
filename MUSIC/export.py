@@ -461,7 +461,7 @@ if __name__ == "__main__":
     instsize = int(instsize['instSize'])
     if extMeta:
         maxDataInBank = 8192 - (instsize / 8 * 3)
-    elif dpcmAlignerName == "dpcm_D-sides":
+    elif dpcmAlignerName == "dpcm_E-sides":
         maxDataInBank = 8192 - (instsize / 3 * 3)
     else:
         maxDataInBank = 8192 - (instsize / 5 * 3)

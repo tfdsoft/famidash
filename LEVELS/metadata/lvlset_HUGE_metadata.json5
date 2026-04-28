@@ -1651,7 +1651,8 @@
             startingSpeed: 0,
             startingBackgroundColor: 0x0F,
             startingGroundColor: 0x0F,
-            parallaxDisable: false
+            parallaxDisable: false,
+			maxFallSpeed: 0x07,
         },
 		{
 			level: "retray",
@@ -3244,7 +3245,7 @@
 					offsetX: +16
 				},
 			],
-		},		
+		},
 		{
 			level: "lostinthewoods",
 			upperText: "LOST IN",

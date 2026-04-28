@@ -282,5 +282,5 @@
 			}
 		}
 	],
-	dpcmAligner: "dpcm_C-sides"
+	dpcmAligner: "dpcm_D-sides"
 }

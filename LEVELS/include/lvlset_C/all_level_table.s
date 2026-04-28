@@ -5,38 +5,110 @@
 .segment "RODATA_2"
 
 _level_list_lo:
+	.byte .lobyte(level_data_movie)
+	.byte .lobyte(level_data_groundtoretray)
+	.byte .lobyte(level_data_madness)
+	.byte .lobyte(level_data_hungrymanadventures)
+	.byte .lobyte(level_data_astronomicalexpedition)
+	.byte .lobyte(level_data_overawed)
+	.byte .lobyte(level_data_unity)
+	.byte .lobyte(level_data_dastardly)
+	.byte .lobyte(level_data_trolledfix)
 	.byte .lobyte(level_data_supercycles)
+	.byte .lobyte(level_data_futurefunkfix)
 
 _level_list_hi:
+	.byte .hibyte(level_data_movie)
+	.byte .hibyte(level_data_groundtoretray)
+	.byte .hibyte(level_data_madness)
+	.byte .hibyte(level_data_hungrymanadventures)
+	.byte .hibyte(level_data_astronomicalexpedition)
+	.byte .hibyte(level_data_overawed)
+	.byte .hibyte(level_data_unity)
+	.byte .hibyte(level_data_dastardly)
+	.byte .hibyte(level_data_trolledfix)
 	.byte .hibyte(level_data_supercycles)
+	.byte .hibyte(level_data_futurefunkfix)
 
 _level_list_bank:
+	.byte .lobyte(.bank(level_data_movie))
+	.byte .lobyte(.bank(level_data_groundtoretray))
+	.byte .lobyte(.bank(level_data_madness))
+	.byte .lobyte(.bank(level_data_hungrymanadventures))
+	.byte .lobyte(.bank(level_data_astronomicalexpedition))
+	.byte .lobyte(.bank(level_data_overawed))
+	.byte .lobyte(.bank(level_data_unity))
+	.byte .lobyte(.bank(level_data_dastardly))
+	.byte .lobyte(.bank(level_data_trolledfix))
 	.byte .lobyte(.bank(level_data_supercycles))
+	.byte .lobyte(.bank(level_data_futurefunkfix))
 
 _level_chunk_list_lo:
-
+	.byte .lobyte(level_data_astronomicalexpedition_0)
+	.byte .lobyte(level_data_astronomicalexpedition_1)
+	.byte .lobyte(level_data_astronomicalexpedition_2)
+	.byte .lobyte(level_data_futurefunkfix_3)
+	.byte .lobyte(level_data_futurefunkfix_4)
 
 _level_chunk_list_hi:
-
+	.byte .hibyte(level_data_astronomicalexpedition_0)
+	.byte .hibyte(level_data_astronomicalexpedition_1)
+	.byte .hibyte(level_data_astronomicalexpedition_2)
+	.byte .hibyte(level_data_futurefunkfix_3)
+	.byte .hibyte(level_data_futurefunkfix_4)
 
 _level_chunk_list_bank:
+	.byte .lobyte(.bank(level_data_astronomicalexpedition_0))
+	.byte .lobyte(.bank(level_data_astronomicalexpedition_1))
+	.byte .lobyte(.bank(level_data_astronomicalexpedition_2))
+	.byte .lobyte(.bank(level_data_futurefunkfix_3))
+	.byte .lobyte(.bank(level_data_futurefunkfix_4))
 
-
-.define MID_LEVEL_LENGTHS_ENABLED 0
+.define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
 
 _level_lengths_lo:
+	.byte .lobyte($0000B8)		; movie
+	.byte .lobyte($000066)		; groundtoretray
+	.byte .lobyte($00008B)		; madness
+	.byte .lobyte($00006A)		; hungrymanadventures
+	.byte .lobyte($000102)		; astronomicalexpedition
+	.byte .lobyte($0000A7)		; overawed
+	.byte .lobyte($00006B)		; unity
+	.byte .lobyte($0000B2)		; dastardly
+	.byte .lobyte($00003D)		; trolledfix
 	.byte .lobyte($000088)		; supercycles
+	.byte .lobyte($0001DD)		; futurefunkfix
 
 .if MID_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_md:
+	.byte .hibyte($0000B8)		; movie
+	.byte .hibyte($000066)		; groundtoretray
+	.byte .hibyte($00008B)		; madness
+	.byte .hibyte($00006A)		; hungrymanadventures
+	.byte .hibyte($000102)		; astronomicalexpedition
+	.byte .hibyte($0000A7)		; overawed
+	.byte .hibyte($00006B)		; unity
+	.byte .hibyte($0000B2)		; dastardly
+	.byte .hibyte($00003D)		; trolledfix
 	.byte .hibyte($000088)		; supercycles
+	.byte .hibyte($0001DD)		; futurefunkfix
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
 
 _level_lengths_hi:
+	.byte .bankbyte($0000B8)		; movie
+	.byte .bankbyte($000066)		; groundtoretray
+	.byte .bankbyte($00008B)		; madness
+	.byte .bankbyte($00006A)		; hungrymanadventures
+	.byte .bankbyte($000102)		; astronomicalexpedition
+	.byte .bankbyte($0000A7)		; overawed
+	.byte .bankbyte($00006B)		; unity
+	.byte .bankbyte($0000B2)		; dastardly
+	.byte .bankbyte($00003D)		; trolledfix
 	.byte .bankbyte($000088)		; supercycles
+	.byte .bankbyte($0001DD)		; futurefunkfix
 
 .endif
 .endif

@@ -5,7 +5,36 @@
 			fmsSongName: "emehT uneM",
 			lowerText: "EMEHT UNEM",
 			originalArtistText: "ROBTOP",
-			
+		},
+		{
+			fmsSongName: "Stereo Madness",
+			upperText: "STEREO ",
+			lowerText: "MADNESS",
+			originalArtistText: "FOREVERBOUND",
+			vsSystemEnabled: true,
+			nsfData: {
+				trackLabel: "Stereo Madness",
+				trackAuthor: {
+					original: "ForeverBound",
+					cover: "Zenith302, UserSniper"
+				},
+				durationNTSC: 85550,
+				durationPAL: 102840
+			}
+		},
+		{
+			fmsSongName: "Cycles",
+			lowerText: "CYCLES",
+			originalArtistText: "DJVI",
+			nsfData: {
+				trackLabel: "Cycles",
+				trackAuthor: {
+					original: "DJVI",
+					cover: "aquamarine.gay, alexmush"
+				},
+				durationNTSC: 85933,
+				durationPAL: 103280
+			}
 		},
 		{
 			fmsSongName: "Practice",
@@ -21,23 +50,51 @@
 			vsSystemEnabled: false
 		},
 		{
-			fmsSongName: "Clubstep",
-			lowerText: "CLUBSTEP",		//we need at least 2 banks filled to compile, temporary
-			originalArtistText: "DJ NATE",
-		},		
+			fmsSongName: "Astronomical Expedition",
+			upperText: "ASTRONOMICAL",
+			lowerText: "EXPEDITION",
+			originalArtistText: "SEAGLOWINGPRO",
+		},
 		{
-			fmsSongName: "Cycles",
-			lowerText: "CYCLES",
-			originalArtistText: "DJVI",
-			nsfData: {
-				trackLabel: "Cycles",
-				trackAuthor: {
-					original: "DJVI",
-					cover: "aquamarine.gay, alexmush"
-				},
-				durationNTSC: 85933,
-				durationPAL: 103280
-			}
+			fmsSongName: "C Madness",
+			lowerText: "C MADNESS",
+			originalArtistText: "FOREVERBOUND",
+		},
+		{
+			fmsSongName: "Dastardly",
+			upperText: "DICK DASTARDLY",
+			lowerText: "RICHARDSON",
+			originalArtistText: "LCHAVASSE",
+		},
+		{
+			fmsSongName: "Hungryman Adventures",
+			upperText: "ELECTROMAN",
+			lowerText: "MY VERSION",
+			originalArtistText: "WATERFLAME",
+		},
+		{
+			fmsSongName: "Ground to ReTraY",
+			upperText: "GROUND TO",
+			lowerText: "RETRAY",
+			originalArtistText: "DETIOUS   SGP",
+		},
+		{
+			fmsSongName: "Future Funk PT1",
+			upperText: "WHATS A",
+			lowerText: "FUTUREFUNKPT1",
+			originalArtistText: "LEMKUUJA",
+		},
+		{
+			fmsSongName: "Future Funk PT2",
+			upperText: "WHATS A",
+			lowerText: "FUTUREFUNKPT2",
+			originalArtistText: "LEMKUUJA",
+		},
+		{
+			fmsSongName: "Youve been Trolled",
+			upperText: "YOUVE BEEN",
+			lowerText: "TROLLED",
+			originalArtistText: "THECLYDECASH",
 		},
 	],
 	SFX: [
