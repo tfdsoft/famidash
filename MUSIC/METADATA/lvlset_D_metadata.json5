@@ -2,40 +2,15 @@
 	songModule: "music_master.fms",
 	songs: [
 		{
-			fmsSongName: "Menu Theme (Human Capturing Mix)",
-			lowerText: "MENU",
-			originalArtistText: "TOBY FOX",
-		},
-		{
-			fmsSongName: "Time Machine",
-			lowerText: "TIME MACHINE",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Time Machine",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Zenith302, Vikrinox, alexmush"
-				},
-				durationNTSC: 96067,
-				durationPAL: 115460
-			}
+			fmsSongName: "emehT uneM",
+			lowerText: "EMEHT UNEM",
+			originalArtistText: "ROBTOP",
+			
 		},
 		{
 			fmsSongName: "Clubstep",
 			lowerText: "CLUBSTEP",
 			originalArtistText: "DJ NATE",
-		},
-		{
-			fmsSongName: "TOE 2",
-			upperText: "THEORY OF",
-			lowerText: "EVERYTHING 2",
-			originalArtistText: "DJ NATE",
-		},
-		{
-			fmsSongName: "Explorers",
-			lowerText: "EXPLORERS",
-			originalArtistText: "HINKIK",
 		},
 		{
 			fmsSongName: "Practice",
@@ -56,129 +31,128 @@
 			fmsSongName: "Scheming Weasel",
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
-			originalArtistText: "KEVIN MACLEOD",
-		},	
+			originalArtistText: "KEVIN MACLEOD",	
+		},
 		{
-			fmsSongName: "atthespeedoflightfull",
+			fmsSongName: "Hell",
+			lowerText: "ACCELERATE",
+			originalArtistText: "ACID NOTATION",
+		},
+		{
+			fmsSongName: "atthespeedoflight",
 			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
+			lowerText: "OF LIGHT PT 1",
 			originalArtistText: "DIMRAIN47",
 		},
 		{
-			fmsSongName: "Careless",
-			lowerText: "CARELESS",
-			originalArtistText: "SPAZEMUSIC",
+			fmsSongName: "atthespeedoflight2",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT 2",
+			originalArtistText: "DIMRAIN47",
 		},
 		{
-			fmsSongName: "Speed Racer",
-			lowerText: "CHAOZ IMPACT",
-			originalArtistText: "PARAGONX9",
+			fmsSongName: "atthespeedoflight3",
+			upperText: "AT THE SPEED",
+			lowerText: "OF LIGHT PT 3",
+			originalArtistText: "DIMRAIN47",
 		},
 		{
-			fmsSongName: "clutterfunk 2",
-			lowerText: "CLUTTERFUNK 2",
-			originalArtistText: "WATERFLAME",
-			/* no vs system to speak of */
-		},
-		{
-			fmsSongName: "Cryogenic",
-			lowerText: "CRYOGENIC",
-			originalArtistText: "NERDBOY628",
-		},
-		{
-			fmsSongName: "endgame",
-			lowerText: "ENDGAME",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Decode ~ Endgame",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Vikrinox"
-				},
-				durationNTSC: 79283,
-				durationPAL: 95280
-			}
-		},
-		{
-			fmsSongName: "Final Battle",
-			lowerText: "FINAL BATTLE",
-			originalArtistText: "WATERFLAME",
-		},
-		{
-			fmsSongName: "Flow",
-			lowerText: "FLOW",
-			originalArtistText: "CREO",
-		},
-		{
-			fmsSongName: "Fracture (WcropoliX)",
-			upperText: "FRACTURE",
-			lowerText: "WCROPOLIX CUT",
+			fmsSongName: "Blacklight",
+			lowerText: "BLACKLIGHT",
 			originalArtistText: "RUKKUS",
 		},
 		{
-			fmsSongName: "Golden Haze NOT RETRAY",
-			upperText: "GOLDEN HAZE",
-			lowerText: "CUT",
-			originalArtistText: "DETIOUSMUSIC",
+			fmsSongName: "Death Moon",
+			lowerText: "DEATH MOON",
+			originalArtistText: "SOUNDHOLICK",
 		},
 		{
-			fmsSongName: "haunted woods",
-			lowerText: "HAUNTED WOODS",
-			originalArtistText: "WATERFLAME",
+			fmsSongName: "eighto",
+			lowerText: "EIGHTO",
+			originalArtistText: "JOMEKKA",
 		},
 		{
-			fmsSongName: "Infinite Power",
-			upperText: "INFINITE",
-			lowerText: "POWER",
-			originalArtistText: "THEFATRAT",
+			fmsSongName: "endorphins",
+			lowerText: "ENDORPHINS",
+			originalArtistText: "DUOCORE",
+		},
+		{
+			fmsSongName: "Every End PT1",
+			lowerText: "EVERY END PT1",
+			originalArtistText: "DIMRAIN47",
+		},
+		{
+			fmsSongName: "Every End PT2",
+			lowerText: "EVERY END PT2",
+			originalArtistText: "DIMRAIN47",
+		},
+		{
+			fmsSongName: "Every Madness",
+			lowerText: "EVERY MADNESS",
+			originalArtistText: "CLOUD54",
+		},
+		{
+			fmsSongName: "Fairydust",
+			lowerText: "FAIRYDUST",
+			originalArtistText: "RUKKUS",
+		},
+		{
+			fmsSongName: "holography",
+			lowerText: "HOLOGRAPHY",
+			originalArtistText: "GARLAGAN",
+		},
+		{
+			fmsSongName: "Miami Hotline Vol. 3",
+			upperText: "MIAMI HOTLINE",
+			lowerText: "VOL 3",
+			originalArtistText: "DEMONICITY",
+		},
+		{
+			fmsSongName: "Nine Circles",
+			lowerText: "NINE CIRCLES",
+			originalArtistText: "RUKKUS",
+		},
+		{
+			fmsSongName: "crackdown",
+			upperText: "OKIBA",
+			lowerText: "CRACKDOWN",
+			originalArtistText: "BOSSFIGHT",
+		},
+		{
+			fmsSongName: "Problematic",
+			lowerText: "PROBLEMATIC",
+			originalArtistText: "RUKKUS",
+		},
+		{
+			fmsSongName: "Pursuit",
+			lowerText: "PURSUIT",
+			originalArtistText: "BOOM KITTY",		
+		},
+		{
+			fmsSongName: "Sonic blaster",
+			upperText: "SONIC",
+			lowerText: "BLASTER",
+			originalArtistText: "F777",
+		},
+		{
+			fmsSongName: "stalemate",
+			lowerText: "STALEMATE",
+			originalArtistText: "KAYOSZX",
+		},
+		{
+			fmsSongName: "EON",
+			lowerText: "THE ANGEL",
+			originalArtistText: "CACOLA",
+		},
+		{
+			fmsSongName: "Thermodynamix",
+			lowerText: "THERMODYNAMIX",
+			originalArtistText: "DJ NATE",
 		},	
 		{
-			fmsSongName: "Jawbreaker",
-			lowerText: "JAWBREAKER",
-			originalArtistText: "RUKKUS",
-		},
-		{
-			fmsSongName: "Kratos",
-			lowerText: "KRATOS",
-			originalArtistText: "SHAPPY",
-		},
-		{
-			fmsSongName: "lost",
-			lowerText: "LOST",
-			originalArtistText: "CRIM3S",
-		},
-		{
-			fmsSongName: "Pyrophoric XL",
-			lowerText: "PYROPHORIC XL",
-			originalArtistText: "NERDBOY628",
-		},
-		{
-			fmsSongName: "Slash Inferno",
-			upperText: "SLASH",
-			lowerText: "INFERNO",
-			originalArtistText: "WF TEM BKIT",
-		},
-		{
-			fmsSongName: "Slow Down",
-			lowerText: "SLOW DOWN",
-			originalArtistText: "CREO",
-		},
-		{
-			fmsSongName: "Supernova",
-			lowerText: "SUPERNOVA",
-			originalArtistText: "XTRULLOR",
-		},
-		{
-			fmsSongName: "Thermodynamix (Acheron)",
-			upperText: "THERMODYNAMIX",
-			lowerText: "ACHERON CUT",
-			originalArtistText: "DJ NATE",
-		},
-		{
-			fmsSongName: "Windfall",
-			lowerText: "WINDFALL",
-			originalArtistText: "THEFATRAT",
+			fmsSongName: "Try This",
+			lowerText: "TRY THIS",
+			originalArtistText: "PEGBOARD NERDS",
 		},
 	],
 	SFX: [
@@ -308,5 +282,5 @@
 			}
 		}
 	],
-	dpcmAligner: "dpcm_D-sides"
+	dpcmAligner: "dpcm_C-sides"
 }

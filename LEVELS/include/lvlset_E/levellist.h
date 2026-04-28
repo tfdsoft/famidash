@@ -1,0 +1,64 @@
+
+// Exported by export_levels.py
+
+const uint8_t difficulty_list[] = {
+	EASYDEMON,	// demonpark
+	EASYDEMON,	// infinitecircles
+	EASYDEMON,	// decode
+	EASYDEMON,	// clutterfunk2
+	EASYDEMON,	// speedracer
+	MEDIUMDEMON,	// skeletalshenanigans
+	MEDIUMDEMON,	// goldenhaze
+	MEDIUMDEMON,	// gameover
+	MEDIUMDEMON,	// demonpyrophoric
+	HARDDEMON,	// explorers
+	HARDDEMON,	// toeiiv2
+	HARDDEMON,	// demoncryogenic
+	HARDDEMON,	// azuronxolax
+	HARDDEMON,	// foresttemple
+	HARDDEMON,	// jawbreaker
+	INSANEDEMON,	// acropolis
+	EXTREMEDEMON,	// windylandscape
+	EXTREMEDEMON,	// icdx
+	EXTREMEDEMON,	// styx
+	IMPOSSIBLEDEMON,	// wcropolix
+	IMPOSSIBLEDEMON,	// silentclubstep
+	IMPOSSIBLEDEMON,	// aftercatabath
+	IMPOSSIBLEDEMON,	// shardscapes
+	IMPOSSIBLEDEMON,	// element111rg_with_secret_way
+	GRANDPADEMON,	// slaughterhouse
+	GRANDPADEMON,	// kratos
+	GRANDPADEMON,	// nullscapes
+	GRANDPADEMON,	// silentcircles
+};
+
+const uint8_t stars_list[] = {
+	10,	// demonpark
+	10,	// infinitecircles
+	10,	// decode
+	10,	// clutterfunk2
+	10,	// speedracer
+	10,	// skeletalshenanigans
+	10,	// goldenhaze
+	10,	// gameover
+	10,	// demonpyrophoric
+	15,	// explorers
+	10,	// toeiiv2
+	10,	// demoncryogenic
+	10,	// azuronxolax
+	10,	// foresttemple
+	10,	// jawbreaker
+	10,	// acropolis
+	10,	// windylandscape
+	10,	// icdx
+	10,	// styx
+	10,	// wcropolix
+	10,	// silentclubstep
+	10,	// aftercatabath
+	10,	// shardscapes
+	10,	// element111rg_with_secret_way
+	10,	// slaughterhouse
+	10,	// kratos
+	10,	// nullscapes
+	10,	// silentcircles
+};

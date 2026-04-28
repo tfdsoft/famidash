@@ -506,7 +506,7 @@ _GAME_CHR:
     
     .incbin "GRAPHICS/Menus/cursors.chr" ; 2kb (96)
 
-    .if (_LEVELSET = 'C') || (_LEVELSET = 'D')
+    .if ((_LEVELSET = 'D') || (_LEVELSET = 'E'))
 		.incbin "GRAPHICS/Menus/C-menus.chr"    ; 4kb (98)
 	.else
 		.incbin "GRAPHICS/Menus/menus.chr"    ; 4kb (98)
