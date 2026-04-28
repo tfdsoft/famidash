@@ -27,8 +27,10 @@ Want more levels? Check out
 [B-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.b-sides.nes.zip)
 , 
 [C-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.c-sides.nes.zip)
-, and
+, 
 [D-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.d-sides.nes.zip)
+, and
+[E-Sides](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.e-sides.nes.zip)
 
 Do you have WAY too many quarters? Play the [VS Arcade Version](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.vs-sys.nes.zip).
 
