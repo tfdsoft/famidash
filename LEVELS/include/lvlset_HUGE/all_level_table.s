@@ -73,6 +73,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_astronomicalexpedition)
 	.byte .lobyte(level_data_lostinthewoods)
 	.byte .lobyte(level_data_rainingtacos)
+	.byte .lobyte(level_data_overawed)
 	.byte .lobyte(level_data_bloodbathbutno)
 	.byte .lobyte(level_data_rainbowtylenol)
 	.byte .lobyte(level_data_greif)
@@ -218,6 +219,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_astronomicalexpedition)
 	.byte .hibyte(level_data_lostinthewoods)
 	.byte .hibyte(level_data_rainingtacos)
+	.byte .hibyte(level_data_overawed)
 	.byte .hibyte(level_data_bloodbathbutno)
 	.byte .hibyte(level_data_rainbowtylenol)
 	.byte .hibyte(level_data_greif)
@@ -363,6 +365,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_astronomicalexpedition))
 	.byte .lobyte(.bank(level_data_lostinthewoods))
 	.byte .lobyte(.bank(level_data_rainingtacos))
+	.byte .lobyte(.bank(level_data_overawed))
 	.byte .lobyte(.bank(level_data_bloodbathbutno))
 	.byte .lobyte(.bank(level_data_rainbowtylenol))
 	.byte .lobyte(.bank(level_data_greif))
@@ -607,6 +610,7 @@ _level_lengths_lo:
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($000065)		; lostinthewoods
 	.byte .lobyte($0000BB)		; rainingtacos
+	.byte .lobyte($0000A7)		; overawed
 	.byte .lobyte($00008B)		; bloodbathbutno
 	.byte .lobyte($0000B5)		; rainbowtylenol
 	.byte .lobyte($000069)		; greif
@@ -754,6 +758,7 @@ _level_lengths_md:
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($000065)		; lostinthewoods
 	.byte .hibyte($0000BB)		; rainingtacos
+	.byte .hibyte($0000A7)		; overawed
 	.byte .hibyte($00008B)		; bloodbathbutno
 	.byte .hibyte($0000B5)		; rainbowtylenol
 	.byte .hibyte($000069)		; greif
@@ -901,6 +906,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($000065)		; lostinthewoods
 	.byte .bankbyte($0000BB)		; rainingtacos
+	.byte .bankbyte($0000A7)		; overawed
 	.byte .bankbyte($00008B)		; bloodbathbutno
 	.byte .bankbyte($0000B5)		; rainbowtylenol
 	.byte .bankbyte($000069)		; greif

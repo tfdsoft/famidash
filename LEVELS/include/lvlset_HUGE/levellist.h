@@ -70,6 +70,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// astronomicalexpedition
 	INSANE,	// lostinthewoods
 	INSANE,	// rainingtacos
+	INSANE,	// overawed
 	INSANE,	// bloodbathbutno
 	INSANE,	// rainbowtylenol
 	INSANE,	// greif
@@ -216,6 +217,7 @@ const uint8_t stars_list[] = {
 	7,	// astronomicalexpedition
 	8,	// lostinthewoods
 	8,	// rainingtacos
+	8,	// overawed
 	8,	// bloodbathbutno
 	8,	// rainbowtylenol
 	8,	// greif

@@ -3346,7 +3346,55 @@
 					offsetX: +16
 				},
 			]
-		},		
+		},
+		{
+			level: "overawed",
+			lowerText: "OVERAWED",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_clubstep",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[445, 15], [918, 14], [947, 19],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [571, 19],		//0.5 gravity portal
+					offsetX: +16
+				},
+				{
+					coordinates: [572, 19],		//swing portal
+					offsetX: -4
+				},
+				{
+					coordinates: [
+						[572, 20], [873, 19],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[368, 14], [734, 11], [734, 17], [734, 23], [735, 14],
+						[735, 20], [736, 11], [736, 17], [736, 23],
+						[737, 14], [737, 20], [909, 22], [286, 20],
+						[366, 15], [363, 15], [1019, 18],
+					],
+					offsetY: +8
+				},
+			]
+		},
 		{
 			level: "bloodbathbutno",
 			upperText: "BLOODBATH",
