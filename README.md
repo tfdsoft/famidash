@@ -18,7 +18,7 @@ If you still have too many quarters, play the [Huge Man VS Arcade Version](https
 <br>
 <br>
 
-For the individual releases:
+For the individual releases: 
 
 If you're just looking to play Geometry Dash on your NES and that's it,\
 we recommend starting with [The Original Game](https://nightly.link/tfdsoft/famidash/workflows/main/main/famidash.main.nes.zip).

@@ -401,7 +401,7 @@
 			upperText: "DICK DASTARDLY",
 			lowerText: "RICHARDSON",
 			originalArtist: "LCHAVASSE",
-			coveringArtist: "CRAFTY JUMPER"
+			coveringArtist: ["CRAFTY JUMPER","SEAGLOWINGPRO"]
 		},
 		{
 			fmsSongName: "Death Moon",
