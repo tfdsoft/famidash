@@ -125,14 +125,14 @@
 		.incbin "EXPORTS/movie.lz.bin" ; Size: 1428
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8089 bytes
+.segment "DAT_BANK_08"	; Total bank size: 8161 bytes
 	.export level_data_overawed
 	level_data_overawed:
 	; Header
 		.byte <sprite_data_overawed ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_overawed ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_overawed)) ;___ Sprite data bank
-		.byte song_astronomical_expedition ;_____ Song ID
+		.byte song_deep_swim ;___________________ Song ID
 		.byte (0 << 4) | 0 ;_____________________ Starting game mode and speed
 		.byte ($B0) ;____________________________ Spawn Y Position (high byte)
 		.byte ($00) ;____________________________ Spawn Y Position (low byte)
@@ -148,7 +148,7 @@
 		.byte $0F ;______________________________ Starting ground color
 		.byte 27 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/overawed.lz.bin" ; Size: 5787
+		.incbin "EXPORTS/overawed.lz.bin" ; Size: 5859
 
 	.export level_data_unity
 	level_data_unity:

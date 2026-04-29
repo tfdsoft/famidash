@@ -61,6 +61,11 @@
 			originalArtistText: "FOREVERBOUND",
 		},
 		{
+			fmsSongName: "Deep Swim",
+			lowerText: "DEEP SWIM",
+			originalArtistText: "WINDOWS96",
+		},
+		{
 			fmsSongName: "Dastardly",
 			upperText: "DICK DASTARDLY",
 			lowerText: "RICHARDSON",

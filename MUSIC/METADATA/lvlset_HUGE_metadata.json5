@@ -403,11 +403,17 @@
 			coveringArtist: "ElAngel378",
 		},
 		{
+			fmsSongName: "Deep Swim",
+			lowerText: "DEEP SWIM",
+			originalArtist: "Windows96",
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
 			fmsSongName: "Dastardly",
 			upperText: "DICK DASTARDLY",
 			lowerText: "RICHARDSON",
-			originalArtist: "LCHAVASSE",
-			coveringArtist: ["CRAFTY JUMPER","SEAGLOWINGPRO"]
+			originalArtist: "lchavasse",
+			coveringArtist: ["Crafty Jumper","SeaGlowingPro"]
 		},
 		{
 			fmsSongName: "Driving By Night",

@@ -7,8 +7,9 @@
 #define song_future_funk_pt2 6
 #define song_c_madness 7
 #define song_ground_to_retray 8
-#define song_emeht_unem 9
-#define song_stereo_madness 10
-#define song_cycles 11
-#define song_scheming_weasel 12
-#define song_max 13
+#define song_stereo_madness 9
+#define song_cycles 10
+#define song_scheming_weasel 11
+#define song_deep_swim 12
+#define song_emeht_unem 13
+#define song_max 14
