@@ -122,7 +122,6 @@ void reset_level() {
 	currplayer_x = 0x1110;
 	}
 
-	target_scroll_y = 0x0180;
 	curr_x_scroll_stop = 0x5000;
 	target_x_scroll_stop = 0x5000;
 	if (!practice_point_count) {
@@ -143,6 +142,7 @@ void reset_level() {
 		crossPRGBankJump0(music_restore);
 	}		
 	nmi_fs_updates_off();
+	
 }
 
 CODE_BANK_POP()
