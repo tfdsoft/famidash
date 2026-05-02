@@ -390,11 +390,11 @@
 		.incbin "EXPORTS/bestautomaticlvl.lz.bin" ; Size: 1818
 
 
-.segment "DAT_BANK_10"	; Total bank size: 8097 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8016 bytes
 	.export level_data_newdashcity_5
 	level_data_newdashcity_5:
 	; Level data
-		.incbin "EXPORTS/newdashcity.lz.1.bin" ; Size: 6011
+		.incbin "EXPORTS/newdashcity.lz.1.bin" ; Size: 6035
 
 
 .segment "DAT_BANK_11"	; Total bank size: 8100 bytes
@@ -480,7 +480,7 @@
 		.incbin "EXPORTS/generationretro.lz.bin" ; Size: 5191
 
 
-.segment "DAT_BANK_15"	; Total bank size: 8008 bytes
+.segment "DAT_BANK_15"	; Total bank size: 7988 bytes
 	.export level_data_oceane
 	level_data_oceane:
 	; Header

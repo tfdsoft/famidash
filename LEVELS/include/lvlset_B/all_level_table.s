@@ -182,7 +182,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000C0)		; subtleoddities
 	.byte .lobyte($0000C0)		; powertrip
 	.byte .lobyte($000096)		; danceofviolins
-	.byte .lobyte($000100)		; newdashcity
+	.byte .lobyte($000108)		; newdashcity
 	.byte .lobyte($00009D)		; birdbrain
 	.byte .lobyte($00006F)		; aprettyeasylevel
 	.byte .lobyte($000137)		; tetrix
@@ -221,7 +221,7 @@ _level_lengths_md:
 	.byte .hibyte($0000C0)		; subtleoddities
 	.byte .hibyte($0000C0)		; powertrip
 	.byte .hibyte($000096)		; danceofviolins
-	.byte .hibyte($000100)		; newdashcity
+	.byte .hibyte($000108)		; newdashcity
 	.byte .hibyte($00009D)		; birdbrain
 	.byte .hibyte($00006F)		; aprettyeasylevel
 	.byte .hibyte($000137)		; tetrix
@@ -260,7 +260,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000C0)		; subtleoddities
 	.byte .bankbyte($0000C0)		; powertrip
 	.byte .bankbyte($000096)		; danceofviolins
-	.byte .bankbyte($000100)		; newdashcity
+	.byte .bankbyte($000108)		; newdashcity
 	.byte .bankbyte($00009D)		; birdbrain
 	.byte .bankbyte($00006F)		; aprettyeasylevel
 	.byte .bankbyte($000137)		; tetrix
