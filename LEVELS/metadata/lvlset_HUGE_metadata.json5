@@ -1856,6 +1856,41 @@
 				},
 			]
 		},
+		/*
+		{
+			level: "nicktoons",
+			lowerText: "NICKTOONS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "NORMAL",
+			stars: 3,
+			songID: "song_every_madness",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x28,
+			startingGroundColor: 0x27,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			spawnYPositionHi: 0x00,
+			objectOffsets: [
+				{
+					coordinates: [
+						[154, 15], [231, 15], [307, 15], [384, 15],
+						[87, 16], [128, 16], [162, 16], [200, 16], [226, 16],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[226, 16],
+					],
+					offsetX: +8
+				},
+			]
+		},
+		*/
 		{
 			level: "leveleasy",
 			lowerText: "LEVEL EASY",
@@ -2784,7 +2819,8 @@
 		},		
 		{
 			level: "tinytunes",
-			lowerText: "TINY TUNES",
+			upperText: "TINY",
+			lowerText: "TUNES",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "B",
