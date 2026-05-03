@@ -40,6 +40,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_darkparadise)
 	.byte .lobyte(level_data_madness)
 	.byte .lobyte(level_data_xmaschallenge)
+	.byte .lobyte(level_data_nicktoons)
 	.byte .lobyte(level_data_leveleasy)
 	.byte .lobyte(level_data_dorabaebasic4)
 	.byte .lobyte(level_data_ninox)
@@ -186,6 +187,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_darkparadise)
 	.byte .hibyte(level_data_madness)
 	.byte .hibyte(level_data_xmaschallenge)
+	.byte .hibyte(level_data_nicktoons)
 	.byte .hibyte(level_data_leveleasy)
 	.byte .hibyte(level_data_dorabaebasic4)
 	.byte .hibyte(level_data_ninox)
@@ -332,6 +334,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_darkparadise))
 	.byte .lobyte(.bank(level_data_madness))
 	.byte .lobyte(.bank(level_data_xmaschallenge))
+	.byte .lobyte(.bank(level_data_nicktoons))
 	.byte .lobyte(.bank(level_data_leveleasy))
 	.byte .lobyte(.bank(level_data_dorabaebasic4))
 	.byte .lobyte(.bank(level_data_ninox))
@@ -577,6 +580,7 @@ _level_lengths_lo:
 	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($00008B)		; madness
 	.byte .lobyte($000018)		; xmaschallenge
+	.byte .lobyte($000059)		; nicktoons
 	.byte .lobyte($000090)		; leveleasy
 	.byte .lobyte($0000A4)		; dorabaebasic4
 	.byte .lobyte($00007A)		; ninox
@@ -725,6 +729,7 @@ _level_lengths_md:
 	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($00008B)		; madness
 	.byte .hibyte($000018)		; xmaschallenge
+	.byte .hibyte($000059)		; nicktoons
 	.byte .hibyte($000090)		; leveleasy
 	.byte .hibyte($0000A4)		; dorabaebasic4
 	.byte .hibyte($00007A)		; ninox
@@ -873,6 +878,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($00008B)		; madness
 	.byte .bankbyte($000018)		; xmaschallenge
+	.byte .bankbyte($000059)		; nicktoons
 	.byte .bankbyte($000090)		; leveleasy
 	.byte .bankbyte($0000A4)		; dorabaebasic4
 	.byte .bankbyte($00007A)		; ninox

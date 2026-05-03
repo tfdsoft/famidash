@@ -1856,7 +1856,7 @@
 				},
 			]
 		},
-		/*
+		
 		{
 			level: "nicktoons",
 			lowerText: "NICKTOONS",
@@ -1890,7 +1890,7 @@
 				},
 			]
 		},
-		*/
+		
 		{
 			level: "leveleasy",
 			lowerText: "LEVEL EASY",

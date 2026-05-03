@@ -37,6 +37,7 @@ const uint8_t difficulty_list[] = {
 	EASY,	// darkparadise
 	EASY,	// madness
 	EASY,	// xmaschallenge
+	NORMAL,	// nicktoons
 	NORMAL,	// leveleasy
 	NORMAL,	// dorabaebasic4
 	NORMAL,	// ninox
@@ -184,6 +185,7 @@ const uint8_t stars_list[] = {
 	2,	// darkparadise
 	2,	// madness
 	2,	// xmaschallenge
+	3,	// nicktoons
 	3,	// leveleasy
 	3,	// dorabaebasic4
 	3,	// ninox

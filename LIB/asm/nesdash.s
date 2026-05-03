@@ -1941,7 +1941,7 @@ play:
 
 
 ; void load_next_sprite(uint8_t slot);
-.segment "CODE_2"
+.segment "CODE"
 
 .import _activesprites_x_lo, _activesprites_x_hi
 .import _activesprites_y_lo, _activesprites_y_hi
