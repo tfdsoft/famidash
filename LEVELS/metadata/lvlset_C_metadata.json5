@@ -156,6 +156,61 @@
 				},
 			]
 		},
+		{ 
+			level: "short_kings",
+			lowerText: "SHORT KINGS",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "NORMAL",
+			stars: 3,
+			songID: "song_stereo_madness",
+			startingGameMode: 0,
+			startingSpeed: 3,
+			maxFallSpeed: 0x07,
+			startingBackgroundColor: 0x01,
+			startingGroundColor: 0x15,
+			spawnYPositionHi: 0x00,
+			objectOffsets: [
+				{
+					coordinates: [
+						[9, 13],
+						[77, 15],
+						[84, 15],
+						[158, 17],
+						[172, 14],
+						[255, 14],
+						[267, 15],
+						[268, 15],
+						[269, 15],
+						[341, 15]
+					],
+					offsetY: -8 
+				},
+				{
+					coordinates: [112, 15],
+					offsetY: +8 
+				},
+				{
+					coordinates: [
+						[173, 14],
+						[256, 14]
+					],
+					offsetY: -8, 
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[172, 15],
+						[255, 15],
+						[267, 16],
+						[341, 16]
+					],
+					offsetY: -16 
+				}
+			]
+		},
 		{
 			level: "hungrymanadventures",
 			upperText: "HUNGRYMAN",
