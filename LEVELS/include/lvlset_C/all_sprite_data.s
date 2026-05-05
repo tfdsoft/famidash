@@ -578,7 +578,9 @@ sprite_data_short_kings:
   .byte $90,$06,$d8,$02,$0d
   .byte $a0,$06,$c0,$02,$0e
   .byte $b0,$06,$d8,$02,$0a
+  .byte $d0,$06,$00,$03,$07
   .byte $f0,$06,$c0,$02,$ec
+  .byte $f0,$06,$08,$03,$0a
   .byte $00,$07,$d8,$02,$0b
   .byte $e0,$07,$e8,$02,$0d
   .byte $f0,$07,$d0,$02,$0e
@@ -599,6 +601,7 @@ sprite_data_short_kings:
   .byte $c8,$0a,$b8,$02,$18
   .byte $00,$0b,$e0,$02,$84
   .byte $00,$0b,$f0,$02,$b8
+  .byte $50,$0c,$10,$03,$1a
   .byte $f0,$0f,$b8,$02,$00
   .byte $f0,$0f,$c0,$02,$20
   .byte $f8,$0f,$b8,$02,$19
@@ -696,6 +699,7 @@ sprite_data_short_kings:
   .byte $00,$15,$a0,$02,$fa
   .byte $00,$15,$20,$03,$fa
   .byte $10,$15,$90,$02,$fa
+  .byte $20,$15,$20,$03,$1b
   .byte $40,$15,$b0,$02,$fa
   .byte $40,$15,$00,$03,$fa
   .byte $50,$15,$b0,$02,$fa
