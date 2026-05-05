@@ -132,7 +132,7 @@
 			sawSet: "A",
 			difficulty: "NORMAL",
 			stars: 3,
-			songID: "song_stereo_madness",
+			songID: "song_load",
 			startingGameMode: 0,
 			startingSpeed: 3,
 			maxFallSpeed: 0x07,

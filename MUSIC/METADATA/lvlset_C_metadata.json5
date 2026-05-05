@@ -96,6 +96,11 @@
 			originalArtistText: "LEMKUUJA",
 		},
 		{
+			fmsSongName: "Load",
+			lowerText: "LOAD",
+			originalArtistText: "KIYNARIA"
+		},
+		{
 			fmsSongName: "Youve been Trolled",
 			upperText: "YOUVE BEEN",
 			lowerText: "TROLLED",
