@@ -149,7 +149,7 @@ sprite_data_movie:
   .byte $c0,$47,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0C"
+.segment "DAT_BANK_09"
 sprite_data_groundtoretray:
   .byte $70,$03,$40,$03,$33
   .byte $90,$03,$30,$03,$01
@@ -319,7 +319,7 @@ sprite_data_groundtoretray:
   .byte $90,$27,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0D"
+.segment "DAT_BANK_0C"
 sprite_data_madness:
   .byte $d0,$06,$88,$03,$25
   .byte $e0,$07,$68,$03,$3c
@@ -427,7 +427,7 @@ sprite_data_madness:
   .byte $30,$36,$80,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_09"
+.segment "DAT_BANK_0C"
 sprite_data_short_kings:
   .byte $00,$00,$d8,$02,$0a
   .byte $90,$00,$a0,$02,$18
@@ -2490,7 +2490,7 @@ sprite_data_astronomicalexpedition:
   .byte $60,$64,$e0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_08"
+.segment "DAT_BANK_0A"
 sprite_data_overawed:
   .byte $00,$00,$40,$03,$6f
   .byte $00,$00,$50,$03,$ee
@@ -2859,7 +2859,7 @@ sprite_data_overawed:
   .byte $f0,$40,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0C"
+.segment "DAT_BANK_0B"
 sprite_data_unity:
   .byte $00,$00,$88,$03,$0a
   .byte $a0,$00,$20,$03,$a0
@@ -3395,7 +3395,7 @@ sprite_data_dastardly:
   .byte $30,$45,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0B"
+.segment "DAT_BANK_0C"
 sprite_data_trolledfix:
   .byte $00,$00,$60,$03,$bd
   .byte $00,$00,$70,$03,$8f

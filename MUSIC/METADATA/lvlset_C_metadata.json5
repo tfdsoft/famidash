@@ -84,6 +84,21 @@
 			originalArtistText: "DETIOUS   SGP",
 		},
 		{
+			fmsSongName: "Load",
+			lowerText: "LOAD",
+			originalArtistText: "KIYNARIA"
+		},
+		{
+			fmsSongName: "Sunslammer",
+			lowerText: "SUNSLAMMER",
+			originalArtistText: "SETH PEELLE"
+		},
+		{
+			fmsSongName: "Unity",
+			lowerText: "UNITY",
+			originalArtistText: "THEFATRAT"
+		},
+		{
 			fmsSongName: "Future Funk PT1",
 			upperText: "WHATS A",
 			lowerText: "FUTUREFUNKPT1",
@@ -94,11 +109,6 @@
 			upperText: "WHATS A",
 			lowerText: "FUTUREFUNKPT2",
 			originalArtistText: "LEMKUUJA",
-		},
-		{
-			fmsSongName: "Load",
-			lowerText: "LOAD",
-			originalArtistText: "KIYNARIA"
 		},
 		{
 			fmsSongName: "Youve been Trolled",
