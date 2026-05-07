@@ -236,7 +236,7 @@
 		.incbin "EXPORTS/cryogenic.lz.0.bin" ; Size: 8061
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 7665 bytes
 	.export level_data_rainingtacos
 	level_data_rainingtacos:
 	; Header
@@ -915,18 +915,11 @@
 		.incbin "EXPORTS/tetrix.lz.1.bin" ; Size: 1792
 
 
-.segment "DAT_BANK_24"	; Total bank size: 7864 bytes
+.segment "DAT_BANK_24"	; Total bank size: 7982 bytes
 	.export level_data_cryogenic_2
 	level_data_cryogenic_2:
 	; Level data
 		.incbin "EXPORTS/cryogenic.lz.1.bin" ; Size: 1675
-
-
-.segment "DAT_BANK_25"	; Total bank size: 5881 bytes
-	.export level_data_somewhereinaforest_0
-	level_data_somewhereinaforest_0:
-	; Level data
-		.incbin "EXPORTS/somewhereinaforest.lz.1.bin" ; Size: 1361
 
 	.export level_data_ultiatedestruction
 	level_data_ultiatedestruction:
@@ -948,6 +941,13 @@
 		.byte _SAWBLADESA ;________________________________ Sawblade set
 		.byte $11 ;________________________________________ Starting background color
 		.byte $11 ;________________________________________ Starting ground color
-		.byte 40 ;_________________________________________ Level height
+		.byte 27 ;_________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/ultiatedestruction.lz.bin" ; Size: 1084
+		.incbin "EXPORTS/ultiatedestruction.lz.bin" ; Size: 1526
+
+
+.segment "DAT_BANK_25"	; Total bank size: 7411 bytes
+	.export level_data_somewhereinaforest_0
+	level_data_somewhereinaforest_0:
+	; Level data
+		.incbin "EXPORTS/somewhereinaforest.lz.1.bin" ; Size: 1361
