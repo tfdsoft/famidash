@@ -1024,7 +1024,7 @@
 			upperText: "ULTIMATE",
 			lowerText: "DESTRUCTION",
 			originalArtist: "TMM43",
-			coveringArtist: "UserSniper",
+			coveringArtist: ["UserSniper","Kabez"]
 		},
 		{
 			fmsSongName: "Unity",

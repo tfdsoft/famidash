@@ -771,7 +771,7 @@
 			upperText: "ULTIMATE",
 			lowerText: "DESTRUCTION",
 			originalArtist: "TMM43",
-			coveringArtist: "UserSniper",
+			coveringArtist: ["UserSniper","Kabez"]
 		},	
 		{
 			fmsSongName: "Future Funk PT1",
