@@ -695,6 +695,12 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
+			fmsSongName: "Load",
+			lowerText: "LOAD",
+			originalArtist: "kiynaria",
+			coveringArtist: "Crafty Jumper",
+		},
+		{
 			fmsSongName: "lost",
 			lowerText: "LOST",
 			originalArtist: "Crim3s",

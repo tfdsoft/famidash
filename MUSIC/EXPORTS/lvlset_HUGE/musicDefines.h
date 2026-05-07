@@ -47,9 +47,9 @@
 #define song_astronomical_expedition 46
 #define song_menu_theme_b_sides 47
 #define song_atthespeedoflight2 48
-#define song_desert_city 49
-#define song_endgame 50
-#define song_free_mind 51
+#define song_endgame 49
+#define song_free_mind 50
+#define song_load 51
 #define song_explorers 52
 #define song_driving_by_night 53
 #define song_slash_inferno 54
@@ -129,6 +129,7 @@
 #define song_off_to_mars 128
 #define song_problematic 129
 #define song_menu_theme 130
-#define song_deep_swim 131
-#define song_flow 132
-#define song_max 133
+#define song_desert_city 131
+#define song_deep_swim 132
+#define song_flow 133
+#define song_max 134
