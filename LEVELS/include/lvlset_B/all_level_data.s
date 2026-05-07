@@ -689,7 +689,7 @@
 		.incbin "EXPORTS/darkparadise.lz.bin" ; Size: 4328
 
 
-.segment "DAT_BANK_1D"	; Total bank size: 8120 bytes
+.segment "DAT_BANK_1D"	; Total bank size: 8122 bytes
 	.export level_data_moonlight
 	level_data_moonlight:
 	; Header
@@ -736,7 +736,7 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 3864
+		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 3866
 
 
 .segment "DAT_BANK_1E"	; Total bank size: 8091 bytes
@@ -915,7 +915,7 @@
 		.incbin "EXPORTS/tetrix.lz.1.bin" ; Size: 1792
 
 
-.segment "DAT_BANK_24"	; Total bank size: 7982 bytes
+.segment "DAT_BANK_24"	; Total bank size: 7987 bytes
 	.export level_data_cryogenic_2
 	level_data_cryogenic_2:
 	; Level data
@@ -943,10 +943,10 @@
 		.byte $11 ;________________________________________ Starting ground color
 		.byte 27 ;_________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/ultiatedestruction.lz.bin" ; Size: 1526
+		.incbin "EXPORTS/ultiatedestruction.lz.bin" ; Size: 1531
 
 
-.segment "DAT_BANK_25"	; Total bank size: 7411 bytes
+.segment "DAT_BANK_25"	; Total bank size: 7431 bytes
 	.export level_data_somewhereinaforest_0
 	level_data_somewhereinaforest_0:
 	; Level data

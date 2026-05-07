@@ -1298,7 +1298,7 @@
 		.incbin "EXPORTS/endorphinrush.lz.bin" ; Size: 6525
 
 
-.segment "DAT_BANK_38"	; Total bank size: 8086 bytes
+.segment "DAT_BANK_38"	; Total bank size: 8091 bytes
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
@@ -1345,7 +1345,7 @@
 		.byte $11 ;________________________________________ Starting ground color
 		.byte 27 ;_________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/ultiatedestruction.lz.bin" ; Size: 1526
+		.incbin "EXPORTS/ultiatedestruction.lz.bin" ; Size: 1531
 
 
 .segment "DAT_BANK_39"	; Total bank size: 8189 bytes
@@ -2976,7 +2976,7 @@
 		.incbin "EXPORTS/infinitecircles.lz.bin" ; Size: 4320
 
 
-.segment "DAT_BANK_74"	; Total bank size: 8172 bytes
+.segment "DAT_BANK_74"	; Total bank size: 8174 bytes
 	.export level_data_nightmare
 	level_data_nightmare:
 	; Header
@@ -3023,7 +3023,7 @@
 		.byte $0F ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 3864
+		.incbin "EXPORTS/pyrophoric.lz.bin" ; Size: 3866
 
 
 .segment "DAT_BANK_75"	; Total bank size: 8182 bytes
@@ -3837,7 +3837,7 @@
 		.incbin "EXPORTS/trolledfix.lz.bin" ; Size: 1315
 
 
-.segment "DAT_BANK_91"	; Total bank size: 8182 bytes
+.segment "DAT_BANK_91"	; Total bank size: 8187 bytes
 	.export level_data_madness
 	level_data_madness:
 	; Header
