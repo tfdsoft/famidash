@@ -12,6 +12,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_nicktoons)
 	.byte .lobyte(level_data_hungrymanadventures)
 	.byte .lobyte(level_data_astronomicalexpedition)
+	.byte .lobyte(level_data_ninecircleseasy)
 	.byte .lobyte(level_data_overawed)
 	.byte .lobyte(level_data_unity)
 	.byte .lobyte(level_data_dastardly)
@@ -27,6 +28,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_nicktoons)
 	.byte .hibyte(level_data_hungrymanadventures)
 	.byte .hibyte(level_data_astronomicalexpedition)
+	.byte .hibyte(level_data_ninecircleseasy)
 	.byte .hibyte(level_data_overawed)
 	.byte .hibyte(level_data_unity)
 	.byte .hibyte(level_data_dastardly)
@@ -42,6 +44,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_nicktoons))
 	.byte .lobyte(.bank(level_data_hungrymanadventures))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition))
+	.byte .lobyte(.bank(level_data_ninecircleseasy))
 	.byte .lobyte(.bank(level_data_overawed))
 	.byte .lobyte(.bank(level_data_unity))
 	.byte .lobyte(.bank(level_data_dastardly))
@@ -81,6 +84,7 @@ _level_lengths_lo:
 	.byte .lobyte($000059)		; nicktoons
 	.byte .lobyte($00006A)		; hungrymanadventures
 	.byte .lobyte($000102)		; astronomicalexpedition
+	.byte .lobyte($0000B9)		; ninecircleseasy
 	.byte .lobyte($0000A7)		; overawed
 	.byte .lobyte($00006B)		; unity
 	.byte .lobyte($0000B2)		; dastardly
@@ -98,6 +102,7 @@ _level_lengths_md:
 	.byte .hibyte($000059)		; nicktoons
 	.byte .hibyte($00006A)		; hungrymanadventures
 	.byte .hibyte($000102)		; astronomicalexpedition
+	.byte .hibyte($0000B9)		; ninecircleseasy
 	.byte .hibyte($0000A7)		; overawed
 	.byte .hibyte($00006B)		; unity
 	.byte .hibyte($0000B2)		; dastardly
@@ -115,6 +120,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000059)		; nicktoons
 	.byte .bankbyte($00006A)		; hungrymanadventures
 	.byte .bankbyte($000102)		; astronomicalexpedition
+	.byte .bankbyte($0000B9)		; ninecircleseasy
 	.byte .bankbyte($0000A7)		; overawed
 	.byte .bankbyte($00006B)		; unity
 	.byte .bankbyte($0000B2)		; dastardly

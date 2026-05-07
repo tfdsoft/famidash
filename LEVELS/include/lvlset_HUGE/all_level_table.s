@@ -72,6 +72,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_factorytime)
 	.byte .lobyte(level_data_thesteamworks)
 	.byte .lobyte(level_data_astronomicalexpedition)
+	.byte .lobyte(level_data_ninecircleseasy)
 	.byte .lobyte(level_data_lostinthewoods)
 	.byte .lobyte(level_data_rainingtacos)
 	.byte .lobyte(level_data_overawed)
@@ -219,6 +220,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_factorytime)
 	.byte .hibyte(level_data_thesteamworks)
 	.byte .hibyte(level_data_astronomicalexpedition)
+	.byte .hibyte(level_data_ninecircleseasy)
 	.byte .hibyte(level_data_lostinthewoods)
 	.byte .hibyte(level_data_rainingtacos)
 	.byte .hibyte(level_data_overawed)
@@ -366,6 +368,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_factorytime))
 	.byte .lobyte(.bank(level_data_thesteamworks))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition))
+	.byte .lobyte(.bank(level_data_ninecircleseasy))
 	.byte .lobyte(.bank(level_data_lostinthewoods))
 	.byte .lobyte(.bank(level_data_rainingtacos))
 	.byte .lobyte(.bank(level_data_overawed))
@@ -612,6 +615,7 @@ _level_lengths_lo:
 	.byte .lobyte($00008F)		; factorytime
 	.byte .lobyte($0000CC)		; thesteamworks
 	.byte .lobyte($000102)		; astronomicalexpedition
+	.byte .lobyte($0000B9)		; ninecircleseasy
 	.byte .lobyte($000065)		; lostinthewoods
 	.byte .lobyte($0000BB)		; rainingtacos
 	.byte .lobyte($0000A7)		; overawed
@@ -761,6 +765,7 @@ _level_lengths_md:
 	.byte .hibyte($00008F)		; factorytime
 	.byte .hibyte($0000CC)		; thesteamworks
 	.byte .hibyte($000102)		; astronomicalexpedition
+	.byte .hibyte($0000B9)		; ninecircleseasy
 	.byte .hibyte($000065)		; lostinthewoods
 	.byte .hibyte($0000BB)		; rainingtacos
 	.byte .hibyte($0000A7)		; overawed
@@ -910,6 +915,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00008F)		; factorytime
 	.byte .bankbyte($0000CC)		; thesteamworks
 	.byte .bankbyte($000102)		; astronomicalexpedition
+	.byte .bankbyte($0000B9)		; ninecircleseasy
 	.byte .bankbyte($000065)		; lostinthewoods
 	.byte .bankbyte($0000BB)		; rainingtacos
 	.byte .bankbyte($0000A7)		; overawed

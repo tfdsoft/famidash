@@ -69,6 +69,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// factorytime
 	HARDER,	// thesteamworks
 	HARDER,	// astronomicalexpedition
+	HARDER,	// ninecircleseasy
 	INSANE,	// lostinthewoods
 	INSANE,	// rainingtacos
 	INSANE,	// overawed
@@ -217,6 +218,7 @@ const uint8_t stars_list[] = {
 	7,	// factorytime
 	7,	// thesteamworks
 	7,	// astronomicalexpedition
+	7,	// ninecircleseasy
 	8,	// lostinthewoods
 	8,	// rainingtacos
 	8,	// overawed

@@ -300,6 +300,56 @@
 			],
 		},
 		{
+			level: "ninecircleseasy",
+			upperText: "NINE CIRCLES",
+			lowerText: "EASY",
+			decoType: "DECO1",
+			spikeSet: "C",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_nine_circles",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x06,
+			startingGroundColor: 0x16,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[99, 18], [239, 16], [382, 16], [695, 21], [696, 21], [885, 21], [946, 21], [1057, 25], [647, 19],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[695, 21], [944, 20],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[294, 19], [482, 22], [510, 21], [594, 24], [606, 17], [651, 22], [808, 21], [815, 25], [828, 25], [845, 25], [890, 21], [898, 21], [907, 21], [945, 21], [945, 20], [647, 19],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[438, 19], [455, 21], [510, 21], [555, 22], [558, 24], [696, 20], [885, 20], [890, 21], [898, 21], [907, 21], [945, 20], [944, 20], [946, 20],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[946, 20], [946, 21],
+					],
+					offsetX: -8
+				},
+			]
+		},
+		{
 			level: "overawed",
 			lowerText: "OVERAWED",
 			decoType: "DECO1",
