@@ -1245,10 +1245,11 @@ void sprite_collide(){
 	} while (++index < max_loaded_sprites);
 	if (gamemode != GAMEMODE_WAVE) {
 		Generic.width = CUBE_WIDTH[currplayer_mini]; 
+		Generic.height = CUBE_HEIGHT[currplayer_mini];
 	} else {
 		Generic.width = WAVE_WIDTH;
+		Generic.height = WAVE_HEIGHT;
 	}
-	Generic.height = CUBE_HEIGHT[currplayer_mini];
 }
 
 
