@@ -88,7 +88,7 @@ void refreshmenu() {
 		0x30,	// harder
 		0x06,	// insane
 		0x30,	// demon
-		0x0F,	// auto
+		0x21,	// auto
 	};
 	
 #else
@@ -104,13 +104,13 @@ void refreshmenu() {
 	};
 
 	const uint8_t difficulty_pal_B[] ={
-		0x30,	// easy
-		0x30,	// normal
-		0x30,	// hard
-		0x30,	// harder
-		0x30,	// insane
-		0x30,	// demon
-		0x30,	// auto
+		0x30,	// easy demon
+		0x30,	// medium demon
+		0x30,	// hard demon
+		0x30,	// insane demon
+		0x30,	// extreme demon
+		0x30,	// impossible demon
+		0x30,	// grandpa demon
 	};
 	
 #endif
