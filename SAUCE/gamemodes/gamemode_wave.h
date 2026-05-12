@@ -38,8 +38,8 @@ void wave_movement(){
 	Generic.x = high_byte(currplayer_x) + 4;
 	
 	// this literally offsets the collision down 2 pixel for the vel reset to happen every frame instead of each other frame
-	Generic.y = high_byte(currplayer_y) + ((high_byte(currplayer_vel_y) & 0x80) ? 2 : -2);
-	
+	Generic.y = high_byte(currplayer_y) + 4 + ((high_byte(currplayer_vel_y) & 0x80) ? 2 : -2);
+	//+4 is for centering
 	
 
 	wave_eject();
