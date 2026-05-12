@@ -436,7 +436,7 @@ char bg_side_coll_common() {
 
 	bg_collision_sub();
 	if (collision) {
-		if (gamemode == gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) {
+		if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) {
 			if (bg_coll_slope()) {
 				if (!dblocked[currplayer]) {
 					idx8_store(cube_data, currplayer, cube_data[currplayer] | 1);
