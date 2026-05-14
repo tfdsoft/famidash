@@ -51,7 +51,7 @@ void ball_movement(){
 	}
 
 	if (gamemode == GAMEMODE_BALL) {
-		if (((controllingplayer->hold & (PAD_A | PAD_UP))) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0){
+		if (((controllingplayer->hold & (PAD_A | PAD_UP))) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0 && !orbed[currplayer]){
 			jumps++;
 			invert_gravity(currplayer_gravity);
 			update_currplayer_table_idx();
@@ -67,7 +67,7 @@ void ball_movement(){
 		}
 	}
 	else if (gamemode == GAMEMODE_SWING) {		//swing
-		if ((controllingplayer->press & (PAD_A | PAD_UP)) && !ufo_orbed[currplayer]){
+		if ((controllingplayer->press & (PAD_A | PAD_UP)) && !ufo_orbed[currplayer] && !orbed[currplayer]){
 			invert_gravity(currplayer_gravity);
 			update_currplayer_table_idx();
 			bg_coll_floor_spikes();
