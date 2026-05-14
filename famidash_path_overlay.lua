@@ -18,9 +18,28 @@ local ADDR_SCROLL_X   = 0x04A6  -- 32-bit
 local ADDR_SCROLL_Y   = 0x04AA  -- 16-bit raw (lo|hi); linearised as lo + hi*240
 local ADDR_PLAYER_X   = 0x043D  -- 16-bit (hi byte is pixel)
 local ADDR_PLAYER_Y   = 0x0441  -- 16-bit (hi byte is pixel)
+local ADDR_JOYPAD1_HOLD = 0x0022
+
+local PAD_A  = 0x80
+local PAD_UP = 0x08
 
 local TRAIL_MAX   = 600
 local TRAIL_COLOR = 0xFFFF00     -- yellow (0xRRGGBB)
+
+local function drawTrailSegment(ax, ay, bx, by, color, thick)
+    emu.drawLine(ax, ay, bx, by, color)
+    if not thick then return end
+
+    local dx = bx - ax
+    local dy = by - ay
+    if math.abs(dx) >= math.abs(dy) then
+        emu.drawLine(ax, ay - 1, bx, by - 1, color)
+        emu.drawLine(ax, ay + 1, bx, by + 1, color)
+    else
+        emu.drawLine(ax - 1, ay, bx - 1, by, color)
+        emu.drawLine(ax + 1, ay, bx + 1, by, color)
+    end
+end
 
 local trail = {}
 local trailHead = 1   -- next write slot
@@ -73,8 +92,13 @@ emu.addEventCallback(function()
     end
     prevPx = px
 
+    -- Read gameplay hold state from joypad1.hold so this reflects the same
+    -- input bits the game logic uses (PAD_A / PAD_UP), independent of Lua API quirks.
+    local hold = emu.read(ADDR_JOYPAD1_HOLD, M) or 0
+    local aHeld = ((hold & (PAD_A | PAD_UP)) ~= 0)
+
     -- Append current position to the ring buffer.
-    trail[trailHead] = { x = px, y = py }
+    trail[trailHead] = { x = px, y = py, a = aHeld }
     trailHead = trailHead + 1
     if trailHead > TRAIL_MAX then trailHead = 1 end
     if trailCount < TRAIL_MAX then trailCount = trailCount + 1 end
@@ -105,7 +129,8 @@ emu.addEventCallback(function()
             -- Only draw segments where at least one endpoint is on-screen.
             if (axS >= -8 and axS <= 264 and ayS >= -8 and ayS <= 248)
                or (bxS >= -8 and bxS <= 264 and byS >= -8 and byS <= 248) then
-                emu.drawLine(axS, ayS, bxS, byS, TRAIL_COLOR)
+                local thick = (prevEntry.a == true) or (curEntry.a == true)
+                drawTrailSegment(axS, ayS, bxS, byS, TRAIL_COLOR, thick)
             end
         end
         prevEntry = curEntry
