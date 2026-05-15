@@ -73,25 +73,13 @@ void reset_level() {
 	ufo_orbed[1] = 0;
 	black_orbed[0] = 0;
 	black_orbed[1] = 0;
-	slowmode = 0;
-	wrap_mode = 0;
-	nullscapes_active = 0;
-	nullscapes_orb_type = 0;
-	player_invis = 0;
-	robotjumpframe[0] = 0;
-	robotjumpframe[1] = 0;
-	slope_frames[0] = 0;
-	slope_frames[1] = 0;
-	nocamlockforced = 0;
-	minicoins = 0;
-	kandoframecnt = 0;
+
 	currplayer_slope_frames = 0;
-	make_cube_jump_higher = 0;
+
 
 	player_mini[0] = player_mini[1] = currplayer_mini = 0;
 	player_vel_x[0] = player_vel_x[1] = currplayer_vel_x = 0;
 	player_vel_y[0] = player_vel_y[1] = currplayer_vel_y = 0;
-	forced_trails = 0;
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
 	chargepower[0] = 0;
@@ -99,6 +87,16 @@ void reset_level() {
 	coins = 0;
 	orbactive = 0;
 	discoframe = 0;
+	
+	nullscapes_orb_type = 0;
+	player_invis = 0;
+	robotjumpframe[0] = 0;
+	robotjumpframe[1] = 0;	
+	
+	
+	slope_frames[0] = 0;
+	slope_frames[1] = 0;
+	nocamlockforced = 0;
 	coin1_timer = coin2_timer = coin3_timer = 0;	
 	slope_type[0] = SLOPE_NONE;
 	slope_type[1] = SLOPE_NONE;

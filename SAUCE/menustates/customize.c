@@ -35,7 +35,7 @@ void state_customize() {
 		__asm__("clc \n adc %v, y", coin2_obtained);
 		__asm__("clc \n adc %v, y", coin3_obtained);
 		kandokidshack = __A__;
-		if (LEVELCOMPLETE[tmp2]) kandokidshack2 += stars_list[tmp2];
+		if (invisblocks ? invisible_LEVELCOMPLETE[tmp2] : LEVELCOMPLETE[tmp2]) kandokidshack2 += stars_list[tmp2];
 
 		tmp2++;
 	}

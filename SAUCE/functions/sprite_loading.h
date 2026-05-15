@@ -311,8 +311,15 @@ char sprite_load_special_behavior(){
 			return 0x30;
 
 		case COIN1:
-			if (coin1_obtained[level]) {
-				activesprites_type[index] = COINGOTTEN1;
+			if (!invisblocks) {
+				if (coin1_obtained[level]) {
+					activesprites_type[index] = COINGOTTEN1;
+				}
+			}
+			else {
+				if (invisible_coin1_obtained[level]) {
+					activesprites_type[index] = COINGOTTEN1;
+				}
 			}
 		case COINGOTTEN1:
 			if (coin1_timer) {
@@ -321,10 +328,16 @@ char sprite_load_special_behavior(){
 			return 0x10;
 
 		case COIN2:
-			if (coin2_obtained[level]) {
-				activesprites_type[index] = COINGOTTEN2;
+			if (!invisblocks) {
+				if (coin2_obtained[level]) {
+					activesprites_type[index] = COINGOTTEN2;
+				}
 			}
-
+			else {
+				if (invisible_coin2_obtained[level]) {
+					activesprites_type[index] = COINGOTTEN2;
+				}
+			}
 		case COINGOTTEN2:
 			if (coin2_timer) {
 				animate_coin_2();
@@ -332,10 +345,16 @@ char sprite_load_special_behavior(){
 			return 0x10;
 
 		case COIN3:
-			if (coin3_obtained[level]) {
-				activesprites_type[index] = COINGOTTEN3;
+			if (!invisblocks) {
+				if (coin3_obtained[level]) {
+					activesprites_type[index] = COINGOTTEN3;
+				}
 			}
-
+			else {
+				if (invisible_coin3_obtained[level]) {
+					activesprites_type[index] = COINGOTTEN3;
+				}
+			}
 		case COINGOTTEN3:
 			#ifdef level_fingerdash
 				if (level == level_fingerdash && minicoins != 10) {
@@ -416,18 +435,18 @@ void common_dash_orb_routine() {
 #define table_offset tmp3
 #define collided tmp4
 
-#pragma data-name(push, "XCD_BANK_06")
-#pragma rodata-name(push, "XCD_BANK_06")
-#pragma code-name(push, "XCD_BANK_06")
+//#pragma data-name(push, "XCD_BANK_06")
+//#pragma rodata-name(push, "XCD_BANK_06")
+//#pragma code-name(push, "XCD_BANK_06")
 
 // Load the player velocity from the height table
 static uint16_t _sprite_gamemode_y_adjust() {
 	return ind16BE_load_NOC(sprite_gamemode_adjust_heights(currplayer_table_idx), ((retro_mode && gamemode == GAMEMODE_ROBOT) || gamemode == GAMEMODE_NINJA) ? table_offset : gamemode | table_offset);
 }
 
-#pragma code-name(pop)
-#pragma rodata-name(pop)
-#pragma data-name(pop)
+//#pragma code-name(pop)
+//#pragma rodata-name(pop)
+//#pragma data-name(pop)
 
 static uint16_t sprite_gamemode_y_adjust() {	// A trampoline of sorts
 	if (gamemode == GAMEMODE_POGO) {

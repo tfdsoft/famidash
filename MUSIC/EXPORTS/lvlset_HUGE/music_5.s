@@ -27,55 +27,52 @@ music_data_famidash_music5:
 	.word @song1ch3
 	.word @song1ch4
 	.word 245,204
-; 02 : Miami Hotline Vol. 3
+; 02 : just right
 	.word @song2ch0
 	.word @song2ch1
 	.word @song2ch2
 	.word @song2ch3
 	.word @song2ch4
-	.word 266,221
+	.word 245,204
 
 .export music_data_famidash_music5
 .global FAMISTUDIO_DPCM_PTR
 
 @instruments:
-	.word @env70,@env39,@env43,@env1 ; 00 : blank instant decay
-	.word @env20,@env39,@env43,@env1 ; 01 : blank instant more decay
-	.word @env13,@env9,@env53,@env1 ; 02 : hat
-	.word @env57,@env9,@env4,@env1 ; 03 : cymbal
-	.word @env32,@env9,@env43,@env1 ; 04 : rel hats
-	.word @env41,@env44,@env43,@env1 ; 05 : clap
-	.word @env32,@env39,@env43,@env1 ; 06 : Instrument 2
-	.word @env14,@env54,@env43,@env1 ; 07 : kick
-	.word @env34,@env42,@env4,@env1 ; 08 : snare
-	.word @env30,@env39,@env43,@env1 ; 09 : blank
-	.word @env62,@env39,@env43,@env1 ; 0a : blank quiet
-	.word @env22,@env39,@env43,@env1 ; 0b : DMC: drums + bass
-	.word @env27,@env55,@env43,@env1 ; 0c : (G2) normal noise kick
-	.word @env57,@env39,@env4,@env1 ; 0d : cymbal no pitch
-	.word @env58,@env39,@env43,@env1 ; 0e : piano
-	.word @env69,@env11,@env17,@env1 ; 0f : FF lead
-	.word @env7,@env39,@env28,@env1 ; 10 : deep bass
-	.word @env35,@env39,@env43,@env1 ; 11 : triangle pluck 3
-	.word @env40,@env39,@env43,@env1 ; 12 : infernoplex_piano
-	.word @env72,@env39,@env47,@env1 ; 13 : death moon lead
-	.word @env48,@env18,@env43,@env1 ; 14 : lots of clap
-	.word @env23,@env39,@env6,@env1 ; 15 : xo_voice
-	.word @env29,@env39,@env43,@env1 ; 16 : loud menu acc
-	.word @env3,@env39,@env43,@env1 ; 17 : echo
-	.word @env8,@env39,@env45,@env1 ; 18 : loud sample
-	.word @env71,@env39,@env43,@env1 ; 19 : blank slower string
-	.word @env50,@env39,@env43,@env1 ; 1a : triangle pluck 4
-	.word @env65,@env39,@env43,@env1 ; 1b : blank slower string loud
-	.word @env15,@env39,@env43,@env1 ; 1c : slower string loud
-	.word @env68,@env39,@env43,@env1 ; 1d : menu acc
-	.word @env66,@env39,@env67,@env1 ; 1e : piano duty
-	.word @env5,@env39,@env43,@env26 ; 1f : triangle drums
-	.word @env41,@env39,@env43,@env1 ; 20 : clap no app
-	.word @env19,@env21,@env12,@env1 ; 21 : Instrument 3
-	.word @env64,@env39,@env47,@env1 ; 22 : Instrument 4
-	.word @env22,@env39,@env43,@env2 ; 23 : triangle drum
-	.word @env10,@env39,@env16,@env1 ; 24 : endorphin lead
+	.word @env40,@env43,@env42,@env1 ; 00 : clap
+	.word @env33,@env41,@env4,@env1 ; 01 : snare
+	.word @env53,@env11,@env4,@env1 ; 02 : cymbal
+	.word @env31,@env11,@env42,@env1 ; 03 : rel hats
+	.word @env15,@env11,@env50,@env1 ; 04 : hat
+	.word @env16,@env51,@env42,@env1 ; 05 : kick
+	.word @env29,@env38,@env42,@env1 ; 06 : blank
+	.word @env65,@env38,@env42,@env1 ; 07 : blank instant decay
+	.word @env5,@env38,@env44,@env1 ; 08 : sample
+	.word @env39,@env38,@env42,@env1 ; 09 : infernoplex_piano
+	.word @env20,@env38,@env42,@env1 ; 0a : blank instant more decay
+	.word @env22,@env38,@env42,@env1 ; 0b : DMC: drums + bass
+	.word @env26,@env52,@env42,@env1 ; 0c : (G2) normal noise kick
+	.word @env53,@env38,@env4,@env1 ; 0d : cymbal no pitch
+	.word @env59,@env38,@env46,@env1 ; 0e : Instrument 4
+	.word @env54,@env38,@env42,@env1 ; 0f : piano
+	.word @env9,@env38,@env27,@env1 ; 10 : deep bass
+	.word @env64,@env13,@env18,@env1 ; 11 : FF lead
+	.word @env34,@env38,@env42,@env1 ; 12 : triangle pluck 3
+	.word @env3,@env38,@env42,@env1 ; 13 : echo
+	.word @env67,@env38,@env46,@env1 ; 14 : death moon lead
+	.word @env10,@env38,@env44,@env1 ; 15 : loud sample
+	.word @env23,@env38,@env7,@env1 ; 16 : xo_voice
+	.word @env28,@env38,@env42,@env1 ; 17 : loud menu acc
+	.word @env48,@env38,@env42,@env1 ; 18 : triangle pluck 4
+	.word @env63,@env38,@env42,@env1 ; 19 : menu acc
+	.word @env60,@env38,@env42,@env1 ; 1a : blank slower string loud
+	.word @env19,@env21,@env14,@env1 ; 1b : Instrument 3
+	.word @env5,@env38,@env42,@env25 ; 1c : triangle drums
+	.word @env40,@env38,@env42,@env1 ; 1d : clap no app
+	.word @env12,@env38,@env17,@env1 ; 1e : endorphin lead
+	.word @env61,@env38,@env62,@env1 ; 1f : piano duty
+	.word @env22,@env38,@env42,@env2 ; 20 : triangle drum
+	.word @env66,@env38,@env42,@env1 ; 21 : blank slower string
 
 @env0:
 	.byte $00,$c0,$bf,$bf,$be,$04,$bf,$bf,$c0,$c0,$c1,$c1,$c2,$04,$c1,$c1,$00,$01
@@ -90,31 +87,31 @@ music_data_famidash_music5:
 @env5:
 	.byte $00,$c9,$c8,$c7,$c6,$c6,$c5,$c5,$c4,$00,$08
 @env6:
-	.byte $c3,$7f,$00,$00
+	.byte $00,$c0,$bd,$bb,$ba,$bb,$be,$c2,$c5,$c6,$c5,$c3,$00,$01
 @env7:
-	.byte $00,$cf,$cd,$cb,$ca,$c9,$c8,$c8,$c7,$00,$08
+	.byte $c3,$7f,$00,$00
 @env8:
-	.byte $00,$cc,$ca,$c8,$c7,$c7,$c6,$c6,$c5,$00,$08
+	.byte $00,$c0,$bd,$bb,$ba,$ba,$bc,$bf,$c1,$c4,$c6,$c6,$c5,$c3,$00,$01
 @env9:
-	.byte $bd,$c0,$00,$01
+	.byte $00,$cf,$cd,$cb,$ca,$c9,$c8,$c8,$c7,$00,$08
 @env10:
-	.byte $00,$cf,$ce,$cd,$cc,$cb,$ca,$ca,$c9,$00,$08
+	.byte $00,$cc,$ca,$c8,$c7,$c7,$c6,$c6,$c5,$00,$08
 @env11:
-	.byte $c0,$cc,$c0,$cc,$c0,$cc,$c0,$08,$c0,$00,$00
+	.byte $bd,$c0,$00,$01
 @env12:
-	.byte $c2,$c1,$c0,$c1,$00,$02
+	.byte $00,$cf,$ce,$cd,$cc,$cb,$ca,$ca,$c9,$00,$08
 @env13:
-	.byte $00,$c8,$c4,$c2,$c0,$00,$04
+	.byte $c0,$cc,$c0,$cc,$c0,$cc,$c0,$08,$c0,$00,$00
 @env14:
-	.byte $00,$cd,$c9,$c5,$c2,$c1,$c0,$00,$06
+	.byte $c2,$c1,$c0,$c1,$00,$02
 @env15:
-	.byte $0d,$c4,$c6,$c8,$ca,$cc,$cd,$ce,$03,$cd,$cc,$00,$0a,$cc,$cb,$cb,$ca,$c9,$c8,$c7,$c7,$c6,$c6,$c5,$c4,$c4,$c3,$c2,$c1,$c0,$00,$1d
+	.byte $00,$c8,$c4,$c2,$c0,$00,$04
 @env16:
-	.byte $c1,$c0,$c1,$c0,$00,$03
+	.byte $00,$cd,$c9,$c5,$c2,$c1,$c0,$00,$06
 @env17:
-	.byte $c1,$06,$c0,$00,$02
+	.byte $c1,$c0,$c1,$c0,$00,$03
 @env18:
-	.byte $bc,$c1,$c0,$00,$00
+	.byte $c1,$06,$c0,$00,$02
 @env19:
 	.byte $00,$ca,$cf,$02,$ce,$cd,$cc,$ca,$c8,$c6,$c3,$00,$0a
 @env20:
@@ -126,105 +123,95 @@ music_data_famidash_music5:
 @env23:
 	.byte $00,$cf,$ce,$cd,$cc,$cc,$cb,$cb,$ca,$03,$c9,$00,$0a
 @env24:
-	.byte $c0,$c7,$cc,$00,$00
-@env25:
 	.byte $00,$c0,$02,$bf,$0a,$c0,$04,$c1,$0a,$c0,$c0,$00,$01
-@env26:
+@env25:
 	.byte $80,$bf,$f1,$00,$02
-@env27:
+@env26:
 	.byte $00,$cc,$ca,$c7,$c5,$c4,$c3,$c2,$00,$07
-@env28:
+@env27:
 	.byte $c2,$c2,$c0,$04,$c1,$00,$04
-@env29:
+@env28:
 	.byte $00,$cf,$cf,$ce,$cd,$cd,$cc,$cc,$cb,$cb,$ca,$02,$c9,$02,$c8,$02,$c7,$02,$c6,$02,$c5,$02,$c4,$02,$c3,$03,$c2,$03,$c1,$03,$c0,$00,$1e
-@env30:
+@env29:
 	.byte $04,$cf,$00,$01,$ca,$c6,$c4,$c2,$c0,$00,$08
-@env31:
+@env30:
 	.byte $00,$c0,$05,$bf,$14,$c0,$0a,$c1,$14,$c0,$03,$c0,$00,$01
-@env32:
+@env31:
 	.byte $00,$c8,$c6,$c5,$c5,$c4,$c4,$c3,$02,$c2,$02,$c1,$02,$c0,$00,$0d
-@env33:
+@env32:
 	.byte $00,$c0,$bf,$be,$bd,$02,$be,$bf,$c0,$c1,$c2,$c3,$02,$c2,$c1,$00,$01
-@env34:
+@env33:
 	.byte $00,$cd,$cb,$c8,$c6,$c5,$c4,$c3,$c2,$c1,$c1,$c0,$00,$0b
-@env35:
+@env34:
 	.byte $00,$cf,$02,$c0,$00,$03
-@env36:
+@env35:
 	.byte $c0,$c3,$c7,$ca,$00,$00
-@env37:
+@env36:
 	.byte $00,$c0,$be,$bc,$ba,$02,$bc,$be,$c0,$c2,$c4,$c6,$02,$c4,$c2,$00,$01
-@env38:
+@env37:
 	.byte $c0,$c3,$c7,$cc,$00,$00
-@env39:
+@env38:
 	.byte $c0,$7f,$00,$01
-@env40:
+@env39:
 	.byte $00,$ce,$02,$cd,$cd,$cc,$cc,$cb,$cb,$ca,$c9,$c9,$c8,$c7,$c6,$c5,$c3,$00,$10
-@env41:
+@env40:
 	.byte $00,$cf,$ca,$cc,$ca,$c9,$c8,$c6,$c5,$c4,$c2,$c1,$c0,$00,$0c
-@env42:
+@env41:
 	.byte $c6,$cc,$00,$01
-@env43:
+@env42:
 	.byte $7f,$00,$00
-@env44:
+@env43:
 	.byte $bc,$c1,$c0,$00,$02
-@env45:
+@env44:
 	.byte $c2,$7f,$00,$00
-@env46:
+@env45:
 	.byte $00,$c0,$c0,$bf,$02,$be,$06,$bf,$02,$c0,$02,$c1,$02,$c2,$06,$c1,$02,$c0,$00,$01
-@env47:
+@env46:
 	.byte $c1,$7f,$00,$00
-@env48:
-	.byte $00,$cf,$cd,$cb,$00,$01
-@env49:
+@env47:
 	.byte $00,$c0,$bf,$be,$be,$bd,$bd,$bc,$04,$bd,$bd,$be,$be,$bf,$c0,$c1,$c2,$c2,$c3,$c3,$c4,$04,$c3,$c3,$c2,$c2,$c1,$00,$01
-@env50:
+@env48:
 	.byte $00,$cf,$03,$c0,$00,$03
-@env51:
+@env49:
 	.byte $c0,$c0,$cc,$00,$00
-@env52:
-	.byte $c0,$c0,$c9,$00,$00
-@env53:
+@env50:
 	.byte $c0,$c1,$00,$00
-@env54:
+@env51:
 	.byte $c9,$cf,$00,$01
-@env55:
+@env52:
 	.byte $c6,$ca,$cb,$00,$02
-@env56:
-	.byte $c0,$cb,$00,$00
-@env57:
+@env53:
 	.byte $18,$cf,$ce,$cd,$cc,$cb,$ca,$c9,$c8,$c8,$c7,$c7,$c6,$02,$c5,$c5,$c4,$02,$c3,$03,$c2,$c2,$00,$15,$c2,$c2,$c1,$03,$c0,$00,$1c
-@env58:
+@env54:
 	.byte $00,$cf,$ce,$ce,$cd,$cd,$cc,$cc,$cb,$cb,$ca,$c9,$c9,$c8,$c7,$c6,$c5,$c3,$00,$11
-@env59:
+@env55:
 	.byte $c0,$c0,$c7,$00,$00
-@env60:
-	.byte $c0,$c0,$c5,$00,$00
-@env61:
+@env56:
 	.byte $c0,$c4,$c7,$cc,$00,$00
-@env62:
-	.byte $04,$c2,$00,$01,$c1,$05,$c0,$00,$06
-@env63:
+@env57:
+	.byte $00,$c0,$bf,$be,$bd,$bd,$be,$bf,$c1,$c2,$c3,$c3,$c2,$c1,$00,$01
+@env58:
 	.byte $c0,$c3,$c7,$00,$00
-@env64:
+@env59:
 	.byte $0b,$cf,$ca,$ca,$c9,$02,$c8,$02,$c7,$00,$08,$c7,$c5,$c3,$c2,$c1,$c0,$00,$10
-@env65:
+@env60:
 	.byte $0c,$c6,$c7,$c8,$c9,$ca,$ca,$cb,$04,$ca,$00,$09,$ca,$ca,$c9,$02,$c8,$02,$c7,$02,$c6,$02,$c5,$c5,$c4,$c4,$c3,$c2,$c1,$c0,$00,$1d
-@env66:
+@env61:
 	.byte $14,$cf,$ce,$ce,$cd,$cd,$cc,$cc,$cb,$cb,$ca,$c9,$c9,$c8,$c7,$c6,$c5,$c3,$00,$11,$c2,$c1,$c0,$00,$16
-@env67:
+@env62:
 	.byte $c2,$c1,$c0,$00,$02
-@env68:
+@env63:
 	.byte $00,$c8,$c8,$c7,$c6,$c6,$c5,$c5,$c4,$c4,$c3,$02,$c2,$06,$c1,$07,$c0,$00,$10
-@env69:
+@env64:
 	.byte $00,$cf,$cf,$ce,$cc,$cb,$ca,$c9,$c8,$c7,$c6,$c6,$c5,$c4,$c4,$c3,$c2,$c1,$c0,$00,$12
-@env70:
+@env65:
 	.byte $00,$cf,$cf,$cb,$c8,$c5,$c3,$c2,$c1,$c0,$00,$09
-@env71:
+@env66:
 	.byte $0c,$c2,$c3,$c4,$c5,$c6,$c6,$c7,$04,$c6,$00,$09,$c6,$c6,$c5,$02,$c4,$02,$c3,$02,$c2,$02,$c1,$c1,$c0,$00,$18
-@env72:
+@env67:
 	.byte $00,$cf,$ca,$c9,$c8,$c7,$c6,$c6,$c5,$00,$08
-@env73:
-	.byte $c0,$c5,$cc,$00,$00
+@env68:
+	.byte $00,$c0,$be,$bd,$bc,$bc,$bd,$bf,$c1,$c3,$c4,$c4,$c3,$c2,$00,$01
 
 @samples:
 	.byte $2a+.lobyte(FAMISTUDIO_DPCM_PTR),$a8,$0b,$40,$02 ; 00 BSV (Pitch:11)
@@ -244,72 +231,84 @@ music_data_famidash_music5:
 	.byte $11+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 0e fdbass A# (Pitch:15)
 	.byte $23+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0d,$40,$00 ; 0f fdbass B (Pitch:13)
 	.byte $23+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$00 ; 10 fdbass B (Pitch:15)
-	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 11 fdbass C (Pitch:15)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$08,$40,$00 ; 12 fdbass C# (Pitch:8)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$09,$40,$00 ; 13 fdbass C# (Pitch:9)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0a,$40,$00 ; 14 fdbass C# (Pitch:10)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0b,$40,$00 ; 15 fdbass C# (Pitch:11)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0c,$40,$00 ; 16 fdbass C# (Pitch:12)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0e,$40,$00 ; 17 fdbass C# (Pitch:14)
-	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 18 fdbass C# (Pitch:15)
-	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0b,$40,$00 ; 19 fdbass D (Pitch:11)
-	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0d,$40,$00 ; 1a fdbass D (Pitch:13)
-	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0f,$40,$00 ; 1b fdbass D (Pitch:15)
-	.byte $6b+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0e,$40,$00 ; 1c fdkick (Pitch:14)
-	.byte $5e+.lobyte(FAMISTUDIO_DPCM_PTR),$78,$0f,$40,$01 ; 1d hi (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$38,$0f,$40,$01 ; 1e is a (Pitch:15)
-	.byte $0e+.lobyte(FAMISTUDIO_DPCM_PTR),$6d,$0f,$40,$02 ; 1f machine (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$e0,$0e,$40,$07 ; 20 MUSIC_PCM_DS-geo (Pitch:14)
-	.byte $36+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$08 ; 21 one (Pitch:15)
-	.byte $52+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0c,$40,$04 ; 22 OrchHitA.dmc (Pitch:12)
-	.byte $52+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0e,$40,$04 ; 23 OrchHitA.dmc (Pitch:14)
-	.byte $52+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$04 ; 24 OrchHitA.dmc (Pitch:15)
-	.byte $6a+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0c,$40,$03 ; 25 OrchHitF.dmc (Pitch:12)
-	.byte $6a+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$03 ; 26 OrchHitF.dmc (Pitch:15)
-	.byte $64+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0c,$40,$04 ; 27 OrchHitG.dmc (Pitch:12)
-	.byte $64+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0e,$40,$04 ; 28 OrchHitG.dmc (Pitch:14)
-	.byte $64+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$04 ; 29 OrchHitG.dmc (Pitch:15)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0a,$40,$04 ; 2a OrchHitG#.dmc (Pitch:10)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0c,$40,$04 ; 2b OrchHitG#.dmc (Pitch:12)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0d,$40,$04 ; 2c OrchHitG#.dmc (Pitch:13)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0e,$40,$04 ; 2d OrchHitG#.dmc (Pitch:14)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$04 ; 2e OrchHitG#.dmc (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$0a ; 2f PressStart (mp3c (Pitch:15)
-	.byte $2f+.lobyte(FAMISTUDIO_DPCM_PTR),$57,$0f,$40,$0b ; 30 run (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$41,$0f,$34,$00 ; 31 snare (Pitch:15)
-	.byte $0f+.lobyte(FAMISTUDIO_DPCM_PTR),$39,$0f,$40,$01 ; 32 this (Pitch:15)
-	.byte $38+.lobyte(FAMISTUDIO_DPCM_PTR),$e7,$0f,$40,$07 ; 33 three (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$37,$0f,$40,$02 ; 34 time (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$d6,$0f,$40,$08 ; 35 two (Pitch:15)
-	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$0a ; 36 untitled (Pitch:15)
-	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$39,$0e,$40,$0b ; 37 voc1 (Pitch:14)
-	.byte $0f+.lobyte(FAMISTUDIO_DPCM_PTR),$12,$0e,$40,$0b ; 38 voc2 (Pitch:14)
-	.byte $14+.lobyte(FAMISTUDIO_DPCM_PTR),$1e,$0e,$40,$0b ; 39 voc3 (Pitch:14)
-	.byte $1c+.lobyte(FAMISTUDIO_DPCM_PTR),$4b,$0e,$40,$0b ; 3a voc4 (Pitch:14)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$03,$40,$00 ; 11 fdbass C (Pitch:3)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$05,$40,$00 ; 12 fdbass C (Pitch:5)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$07,$40,$00 ; 13 fdbass C (Pitch:7)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$09,$40,$00 ; 14 fdbass C (Pitch:9)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0a,$40,$00 ; 15 fdbass C (Pitch:10)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0c,$40,$00 ; 16 fdbass C (Pitch:12)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0d,$40,$00 ; 17 fdbass C (Pitch:13)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0e,$40,$00 ; 18 fdbass C (Pitch:14)
+	.byte $35+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 19 fdbass C (Pitch:15)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$08,$40,$00 ; 1a fdbass C# (Pitch:8)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$09,$40,$00 ; 1b fdbass C# (Pitch:9)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0a,$40,$00 ; 1c fdbass C# (Pitch:10)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0b,$40,$00 ; 1d fdbass C# (Pitch:11)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0c,$40,$00 ; 1e fdbass C# (Pitch:12)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0d,$40,$00 ; 1f fdbass C# (Pitch:13)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0e,$40,$00 ; 20 fdbass C# (Pitch:14)
+	.byte $47+.lobyte(FAMISTUDIO_DPCM_PTR),$47,$0f,$40,$00 ; 21 fdbass C# (Pitch:15)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$07,$40,$00 ; 22 fdbass D (Pitch:7)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0a,$40,$00 ; 23 fdbass D (Pitch:10)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0b,$40,$00 ; 24 fdbass D (Pitch:11)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0d,$40,$00 ; 25 fdbass D (Pitch:13)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0e,$40,$00 ; 26 fdbass D (Pitch:14)
+	.byte $59+.lobyte(FAMISTUDIO_DPCM_PTR),$46,$0f,$40,$00 ; 27 fdbass D (Pitch:15)
+	.byte $6b+.lobyte(FAMISTUDIO_DPCM_PTR),$2b,$0e,$40,$00 ; 28 fdkick (Pitch:14)
+	.byte $5e+.lobyte(FAMISTUDIO_DPCM_PTR),$78,$0f,$40,$01 ; 29 hi (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$38,$0f,$40,$01 ; 2a is a (Pitch:15)
+	.byte $0e+.lobyte(FAMISTUDIO_DPCM_PTR),$6d,$0f,$40,$02 ; 2b machine (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$e0,$0e,$40,$07 ; 2c MUSIC_PCM_DS-geo (Pitch:14)
+	.byte $36+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$08 ; 2d one (Pitch:15)
+	.byte $52+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0c,$40,$04 ; 2e OrchHitA.dmc (Pitch:12)
+	.byte $52+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0e,$40,$04 ; 2f OrchHitA.dmc (Pitch:14)
+	.byte $52+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$04 ; 30 OrchHitA.dmc (Pitch:15)
+	.byte $6a+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0c,$40,$03 ; 31 OrchHitF.dmc (Pitch:12)
+	.byte $6a+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$03 ; 32 OrchHitF.dmc (Pitch:15)
+	.byte $64+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0c,$40,$04 ; 33 OrchHitG.dmc (Pitch:12)
+	.byte $64+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0e,$40,$04 ; 34 OrchHitG.dmc (Pitch:14)
+	.byte $64+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$04 ; 35 OrchHitG.dmc (Pitch:15)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0a,$40,$04 ; 36 OrchHitG#.dmc (Pitch:10)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0c,$40,$04 ; 37 OrchHitG#.dmc (Pitch:12)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0d,$40,$04 ; 38 OrchHitG#.dmc (Pitch:13)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0e,$40,$04 ; 39 OrchHitG#.dmc (Pitch:14)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$45,$0f,$40,$04 ; 3a OrchHitG#.dmc (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$0a ; 3b PressStart (mp3c (Pitch:15)
+	.byte $2f+.lobyte(FAMISTUDIO_DPCM_PTR),$57,$0f,$40,$0b ; 3c run (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$41,$0f,$34,$00 ; 3d snare (Pitch:15)
+	.byte $0f+.lobyte(FAMISTUDIO_DPCM_PTR),$39,$0f,$40,$01 ; 3e this (Pitch:15)
+	.byte $38+.lobyte(FAMISTUDIO_DPCM_PTR),$e7,$0f,$40,$07 ; 3f three (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$37,$0f,$40,$02 ; 40 time (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$d6,$0f,$40,$08 ; 41 two (Pitch:15)
+	.byte $40+.lobyte(FAMISTUDIO_DPCM_PTR),$ff,$0f,$40,$0a ; 42 untitled (Pitch:15)
+	.byte $00+.lobyte(FAMISTUDIO_DPCM_PTR),$39,$0e,$40,$0b ; 43 voc1 (Pitch:14)
+	.byte $0f+.lobyte(FAMISTUDIO_DPCM_PTR),$12,$0e,$40,$0b ; 44 voc2 (Pitch:14)
+	.byte $14+.lobyte(FAMISTUDIO_DPCM_PTR),$1e,$0e,$40,$0b ; 45 voc3 (Pitch:14)
+	.byte $1c+.lobyte(FAMISTUDIO_DPCM_PTR),$4b,$0e,$40,$0b ; 46 voc4 (Pitch:14)
 
 ; The DPCM aligner used to be here
 @song1ch0:
-	.byte $75, $49, .lobyte(@env31), .hibyte(@env31), $4f, $01, $92, $18, $85, $92, $1c, $85, $1f, $85, $23, $85, $26, $95, $24
+	.byte $75, $49, .lobyte(@env30), .hibyte(@env30), $4f, $01, $8c, $18, $85, $8c, $1c, $85, $1f, $85, $23, $85, $26, $95, $24
 	.byte $85, $23, $95, $21, $85, $23, $9d, $18, $85, $1c, $85, $1f, $85, $23, $85, $23, $95, $51, $fc, $00, $85, $75, $00, $83
-	.byte $7a, $a4, $1a, $1c, $1f, $1f, $00, $1a, $1c, $1f, $1f, $00, $1f, $00, $7b, $92, $50, $a9, $1c, $25, $50, $2d, $25, $1c
-	.byte $7f, $51, $f3, $90, $4b, .lobyte(@env51), .hibyte(@env51), $4f, $03, $48, $06, $ba, $2a, $7f, $51, $f3, $90, $4d, $4f
+	.byte $7a, $92, $1a, $1c, $1f, $1f, $00, $1a, $1c, $1f, $1f, $00, $1f, $00, $7b, $8c, $50, $a9, $1c, $25, $50, $2d, $25, $1c
+	.byte $7f, $51, $f3, $90, $4b, .lobyte(@env49), .hibyte(@env49), $4f, $03, $48, $06, $b2, $2a, $7f, $51, $f3, $90, $4d, $4f
 	.byte $01, $48, $06, $2a, $7f, $51, $f9, $90, $4d, $4f, $00, $2a, $48, $05, $81, $7f, $51, $f3, $90, $4d, $4f, $03, $48, $06
 	.byte $2a, $7f, $51, $f3, $90, $4d, $4f, $01, $48, $06, $2a, $7f, $51, $f9, $90, $4d, $4f, $00, $2a, $48, $04, $81, $7f, $51
 	.byte $f3, $90, $4d, $4f, $03, $48, $06, $2a, $7f, $51, $f3, $90, $4d, $4f, $01, $48, $06, $2a, $7f, $51, $f9, $90, $4d, $4f
 	.byte $00, $2a, $81, $7f, $51, $fd, $90, $4d, $4f, $03, $2a, $83, $00
 @song1ref172:
-	.byte $45, $81, $7f, $4b, .lobyte(@env38), .hibyte(@env38)
+	.byte $45, $81, $7f, $4b, .lobyte(@env37), .hibyte(@env37)
 @song1ref178:
 	.byte $4f, $03
 @song1ref180:
-	.byte $80, $17, $4d, $17, $4d, $17, $4d, $82, $17, $83, $00, $91, $4b, .lobyte(@env36), .hibyte(@env36), $80, $17, $4d, $17
-	.byte $4d, $17, $4d, $82, $17, $83, $00, $8d, $83, $4b, .lobyte(@env38), .hibyte(@env38), $80, $17, $4d, $82, $17, $83, $4d
-	.byte $80, $17, $4d, $82, $17, $83, $4d, $80, $17, $81, $4d, $82, $17, $81, $4b, .lobyte(@env63), .hibyte(@env63), $1c, $83
-	.byte $00, $4b, .lobyte(@env51), .hibyte(@env51), $b6, $23, $81, $7c, $45, $76, $81, $7f, $4d, $23, $81, $7c, $45, $76, $81
-	.byte $7f, $00, $89, $83, $4b, .lobyte(@env38), .hibyte(@env38), $82, $15, $4d, $15, $83, $4d, $15, $4d, $15, $83, $4d, $15
-	.byte $81, $4b, .lobyte(@env61), .hibyte(@env61), $0e, $85
+	.byte $8e, $17, $4d, $17, $4d, $17, $4d, $94, $17, $83, $00, $91, $4b, .lobyte(@env35), .hibyte(@env35), $8e, $17, $4d, $17
+	.byte $4d, $17, $4d, $94, $17, $83, $00, $8d, $83, $4b, .lobyte(@env37), .hibyte(@env37), $8e, $17, $4d, $94, $17, $83, $4d
+	.byte $8e, $17, $4d, $94, $17, $83, $4d, $8e, $17, $81, $4d, $94, $17, $81, $4b, .lobyte(@env58), .hibyte(@env58), $1c, $83
+	.byte $00, $4b, .lobyte(@env49), .hibyte(@env49), $b4, $23, $81, $7c, $45, $76, $81, $7f, $4d, $23, $81, $7c, $45, $76, $81
+	.byte $7f, $00, $89, $83, $4b, .lobyte(@env37), .hibyte(@env37), $94, $15, $4d, $15, $83, $4d, $15, $4d, $15, $83, $4d, $15
+	.byte $81, $4b, .lobyte(@env56), .hibyte(@env56), $0e, $85
 @song1ref281:
-	.byte $4b, .lobyte(@env38), .hibyte(@env38)
+	.byte $4b, .lobyte(@env37), .hibyte(@env37)
 @song1ref284:
 	.byte $17, $4d, $17, $83, $4d, $17, $4d, $17, $83, $4d, $17, $81, $00, $81, $4d, $15, $81, $4d, $15, $81, $4d, $17, $4d, $17
 	.byte $83, $4d, $17, $4d, $17, $83, $4d, $17, $81, $4d, $17, $81, $4d, $15, $81, $00, $81, $4d, $17, $4d, $17, $83, $4d, $17
@@ -324,58 +323,58 @@ music_data_famidash_music5:
 	.byte $85, $83, $4d
 	.byte $41, $0c
 	.word @song1ref180
-	.byte $49, .lobyte(@env1), .hibyte(@env1), $4a, $00, $7a, $4b, .lobyte(@env39), .hibyte(@env39), $4c, $4f, $01, $ac, $32
+	.byte $49, .lobyte(@env1), .hibyte(@env1), $4a, $00, $7a, $4b, .lobyte(@env38), .hibyte(@env38), $4c, $4f, $01, $ae, $32
 	.byte $81, $4f, $00, $32, $81, $4f, $01, $32, $81, $51, $f8, $00, $4f, $00, $32
 	.byte $41, $1e
 	.word @song1ref172
-	.byte $9b, $8f, $79, $4b, .lobyte(@env39), .hibyte(@env39), $4c, $92, $50, $f0, $28, $2e, $81, $00, $81, $50, $14, $2d, $26
-	.byte $81, $00, $81, $7f, $51, $fc, $40, $4f, $01, $3c, $87, $45, $81, $7c, $00, $4f, $02, $9c, $17, $81, $7b, $4f, $01, $17
+	.byte $9b, $8f, $79, $4b, .lobyte(@env38), .hibyte(@env38), $4c, $8c, $50, $f0, $28, $2e, $81, $00, $81, $50, $14, $2d, $26
+	.byte $81, $00, $81, $7f, $51, $fc, $40, $4f, $01, $3c, $87, $45, $81, $7c, $00, $4f, $02, $9e, $17, $81, $7b, $4f, $01, $17
 	.byte $81, $00, $81, $7e, $1c, $89, $7b, $17, $81, $00, $81, $79, $4f, $00, $17, $81, $17, $81, $7f, $51, $fd, $d0, $00, $18
 	.byte $7f, $51, $fd, $50, $18, $81, $8f, $7f, $00, $8d, $75, $4f, $01, $9a, $26, $8d, $77, $4f, $00, $26, $81, $78, $26, $81
-	.byte $79, $26, $26, $26, $26, $7f, $51, $fc, $40, $4f, $01, $92, $1c, $87, $45, $81, $79, $00, $9c, $1f, $81, $7c, $21, $81
+	.byte $79, $26, $26, $26, $26, $7f, $51, $fc, $40, $4f, $01, $8c, $1c, $87, $45, $81, $79, $00, $9e, $1f, $81, $7c, $21, $81
 	.byte $00, $81, $7b, $1f, $89, $17, $81, $00, $81, $79, $4f, $00, $17, $81, $17, $81, $00, $85, $78, $4f, $01, $18, $8d, $7a
-	.byte $a0, $1f, $81, $1f, $81, $1f, $1f, $1f, $1f, $79, $9c, $17, $85, $78, $87, $77, $87, $7a, $1a, $81, $1a, $81, $7f, $51
+	.byte $a0, $1f, $81, $1f, $81, $1f, $1f, $1f, $1f, $79, $9e, $17, $85, $78, $87, $77, $87, $7a, $1a, $81, $1a, $81, $7f, $51
 	.byte $f9, $30
 @song1ref552:
-	.byte $4f, $01, $92, $1c, $85
+	.byte $4f, $01, $8c, $1c, $85
 @song1ref557:
-	.byte $7c, $aa, $1f, $81, $1c, $81, $00, $85, $1f, $81, $1c, $81, $7a, $9c, $13, $85, $7c, $0e, $81, $00, $81, $79, $4f, $00
+	.byte $7c, $ac, $1f, $81, $1c, $81, $00, $85, $1f, $81, $1c, $81, $7a, $9e, $13, $85, $7c, $0e, $81, $00, $81, $79, $4f, $00
 	.byte $17, $81, $17, $81, $00, $81, $7b, $a0, $10, $10, $78, $83, $00, $81
 	.byte $41, $0a
 	.word @song1ref557
 	.byte $00, $89, $7d, $21, $81, $23, $81, $21, $1f, $1c, $81, $00, $81, $79, $51, $fc, $30
 	.byte $41, $0c
 	.word @song1ref552
-	.byte $00, $81, $1f, $81, $00, $89, $7e, $1c, $85, $49, .lobyte(@env49), .hibyte(@env49), $1a, $49, .lobyte(@env37), .hibyte(@env37)
-	.byte $81, $49, .lobyte(@env46), .hibyte(@env46), $85, $49, .lobyte(@env1), .hibyte(@env1), $4a, $85, $49, .lobyte(@env1)
-	.byte .hibyte(@env1), $4a, $00, $85, $aa, $1a, $81, $1a, $81, $1c, $81, $00, $81, $26, $81, $26, $81, $24, $81, $24, $81
-	.byte $23, $81, $1f, $81, $1c, $81, $4b, .lobyte(@env59), .hibyte(@env59), $bc, $24, $85, $4d, $24, $85, $4d, $24, $85, $4d
-	.byte $24, $85, $4d, $24, $81, $4d, $24, $81, $4d, $24, $81, $4d, $24, $81, $7c, $4b, .lobyte(@env51), .hibyte(@env51), $21
-	.byte $4d, $21, $4d, $21, $4d, $21, $4d, $21, $4d, $21, $4d, $21, $4d, $21, $7f, $4b, .lobyte(@env39), .hibyte(@env39), $4c
-	.byte $a6, $23, $23, $81, $00, $83, $23, $23, $81, $00, $8f, $23, $81, $23, $81, $23, $23, $81, $00, $1f, $83, $00, $1f, $81
+	.byte $00, $81, $1f, $81, $00, $89, $7e, $1c, $85, $49, .lobyte(@env47), .hibyte(@env47), $1a, $49, .lobyte(@env36), .hibyte(@env36)
+	.byte $81, $49, .lobyte(@env45), .hibyte(@env45), $85, $49, .lobyte(@env1), .hibyte(@env1), $4a, $85, $49, .lobyte(@env1)
+	.byte .hibyte(@env1), $4a, $00, $85, $ac, $1a, $81, $1a, $81, $1c, $81, $00, $81, $26, $81, $26, $81, $24, $81, $24, $81
+	.byte $23, $81, $1f, $81, $1c, $81, $4b, .lobyte(@env55), .hibyte(@env55), $be, $24, $85, $4d, $24, $85, $4d, $24, $85, $4d
+	.byte $24, $85, $4d, $24, $81, $4d, $24, $81, $4d, $24, $81, $4d, $24, $81, $7c, $4b, .lobyte(@env49), .hibyte(@env49), $21
+	.byte $4d, $21, $4d, $21, $4d, $21, $4d, $21, $4d, $21, $4d, $21, $4d, $21, $7f, $4b, .lobyte(@env38), .hibyte(@env38), $4c
+	.byte $a8, $23, $23, $81, $00, $83, $23, $23, $81, $00, $8f, $23, $81, $23, $81, $23, $23, $81, $00, $1f, $83, $00, $1f, $81
 @song1ref748:
 	.byte $7d, $9a
 @song1ref750:
-	.byte $1f, $81, $21, $23, $7f, $9e, $10, $81, $00, $81, $10, $81, $7d, $9a, $07, $81, $7f, $9e, $10, $81, $7d, $9a, $09, $81
+	.byte $1f, $81, $21, $23, $7f, $a2, $10, $81, $00, $81, $10, $81, $7d, $9a, $07, $81, $7f, $a2, $10, $81, $7d, $9a, $09, $81
 	.byte $00, $81, $0b, $81, $00, $81, $0e, $81, $00, $81, $7f, $0e, $81, $00, $81, $7b, $02, $81, $7d
 	.byte $41, $16
 	.word @song1ref750
-	.byte $7f, $10, $81, $7d, $83, $7e, $10, $81, $7f, $10, $85, $7d, $1f, $81, $21, $23, $00, $85, $7f, $b0, $34, $81, $00, $81
+	.byte $7f, $10, $81, $7d, $83, $7e, $10, $81, $7f, $10, $85, $7d, $1f, $81, $21, $23, $00, $85, $7f, $aa, $34, $81, $00, $81
 	.byte $2f, $81, $2b, $81, $2d, $81, $00, $81, $28, $81, $26, $81, $00, $85, $2b, $2d, $2f, $32
 	.byte $41, $0c
 	.word @song1ref748
-	.byte $7f, $b0, $2d, $81, $2b, $81, $32, $81, $2f, $81, $2d, $81, $2b, $81, $00, $83, $77, $9a, $17, $83, $00, $83, $15, $83
-	.byte $7d, $49, .lobyte(@env25), .hibyte(@env25), $00, $81, $c4, $1c, $81, $1f, $81, $1f, $81, $21, $81, $00, $89, $1f, $81
+	.byte $7f, $aa, $2d, $81, $2b, $81, $32, $81, $2f, $81, $2d, $81, $2b, $81, $00, $83, $77, $9a, $17, $83, $00, $83, $15, $83
+	.byte $7d, $49, .lobyte(@env24), .hibyte(@env24), $00, $81, $9c, $1c, $81, $1f, $81, $1f, $81, $21, $81, $00, $89, $1f, $81
 	.byte $00, $81, $23, $81, $1f, $81, $23, $23, $23, $23, $00, $85, $87, $23, $26, $47, $05, $50, $ec, $33, $34, $43, $28, $49
-	.byte .lobyte(@env0), .hibyte(@env0), $81, $49, .lobyte(@env33), .hibyte(@env33), $85, $49, .lobyte(@env25), .hibyte(@env25)
-	.byte $26, $81, $c4, $23, $50, $0a, $2d, $2b, $43, $1f, $81, $00, $99, $83, $78, $1c, $81, $7b, $1f, $81, $00, $81, $7d, $50
+	.byte .lobyte(@env0), .hibyte(@env0), $81, $49, .lobyte(@env32), .hibyte(@env32), $85, $49, .lobyte(@env24), .hibyte(@env24)
+	.byte $26, $81, $9c, $23, $50, $0a, $2d, $2b, $43, $1f, $81, $00, $99, $83, $78, $1c, $81, $7b, $1f, $81, $00, $81, $7d, $50
 	.byte $fb, $2c, $2d, $43, $21, $50, $fb, $2c, $2d, $43, $21, $50, $fb, $2c, $2d, $43, $21, $00, $81, $1f, $81, $21, $81, $23
 	.byte $81, $23, $81, $00, $85, $23, $81, $26, $81, $50, $fc, $33, $34, $43, $28, $83, $00, $81, $26, $81, $23, $81, $47, $03
 	.byte $21, $81, $1f, $81, $1f, $83, $00, $9b, $44, $00
 @song1ch1:
-	.byte $74, $4f, $01, $b2, $10, $85, $76, $15, $85, $78, $18, $85, $1c, $85, $1f, $95, $1a, $85, $1e, $95, $1e, $85, $1c, $85
+	.byte $74, $4f, $01, $c2, $10, $85, $76, $15, $85, $78, $18, $85, $1c, $85, $1f, $95, $1a, $85, $1e, $95, $1e, $85, $1c, $85
 	.byte $77, $87, $76, $87, $75, $87, $76, $10, $85, $77, $13, $85, $78, $18, $85, $1c, $85, $1b, $85, $77, $87, $76, $83, $45
-	.byte $85, $00, $81, $81, $74, $1f, $79, $26, $28, $2b, $28, $26, $28, $2b, $28, $26, $28, $2b, $45, $83, $00, $9d, $75, $9e
+	.byte $85, $00, $81, $81, $74, $1f, $79, $26, $28, $2b, $28, $26, $28, $2b, $28, $26, $28, $2b, $45, $83, $00, $9d, $75, $a2
 @song1ref1073:
 	.byte $0c, $81, $7d, $17, $17, $17, $17, $81, $10, $13, $81, $00, $81, $15, $81, $00, $85, $17, $17, $17, $17, $81, $0e, $12
 	.byte $81, $00, $81, $15, $81, $00, $81, $17, $17, $81, $12
@@ -400,41 +399,41 @@ music_data_famidash_music5:
 	.byte $41, $1e
 	.word @song1ref1073
 	.byte $83, $17, $81, $17, $17, $81, $12, $15, $81, $00, $81, $17, $81, $00, $85, $17, $81, $17, $17, $81, $10, $13, $81, $00
-	.byte $89, $83, $7f, $4f, $00, $a4, $26, $81, $24, $81, $23, $81, $1f, $85, $72, $4f, $02, $92, $2d, $74, $81, $76, $81, $78
-	.byte $81, $7f, $51, $fb, $00, $2d, $87, $45, $81, $76, $00, $4f, $01, $9c, $1f, $81, $78, $4f, $02, $1f, $81, $00, $81, $7e
+	.byte $89, $83, $7f, $4f, $00, $92, $26, $81, $24, $81, $23, $81, $1f, $85, $72, $4f, $02, $8c, $2d, $74, $81, $76, $81, $78
+	.byte $81, $7f, $51, $fb, $00, $2d, $87, $45, $81, $76, $00, $4f, $01, $9e, $1f, $81, $78, $4f, $02, $1f, $81, $00, $81, $7e
 	.byte $4f, $00, $18, $89, $7b, $4f, $02, $18, $81, $00, $81, $7a, $4f, $01, $13, $81, $13, $81, $7c, $51, $fc, $90, $00, $a0
-	.byte $1c, $7c, $51, $fe, $70, $1c, $81, $8f, $70, $00, $7b, $9a, $26, $81, $23, $26, $85, $78, $a4, $23, $81, $21, $4f, $02
+	.byte $1c, $7c, $51, $fe, $70, $1c, $81, $8f, $70, $00, $7b, $9a, $26, $81, $23, $26, $85, $78, $92, $23, $81, $21, $4f, $02
 	.byte $1f, $83, $7f, $4f, $00, $1f, $81, $79, $4f, $01, $23, $81, $23, $81, $7f, $4f, $02, $21, $21, $21, $21, $51, $fb, $00
-	.byte $4f, $00, $92, $18, $87, $45, $81, $79, $00, $4f, $01, $9c, $15, $81, $78, $4f, $02, $18, $81, $00, $81, $7c, $4f, $00
-	.byte $17, $89, $7b, $4f, $02, $1a, $81, $00, $81, $7a, $4f, $01, $13, $81, $13, $81, $00, $85, $83, $a4, $1f, $81, $00, $81
-	.byte $92, $2d, $43, $50, $24, $39, $2e, $4f, $00, $ac, $37, $81, $37, $81, $4f, $01, $37, $37, $37, $37, $7b, $a4, $23, $81
+	.byte $4f, $00, $8c, $18, $87, $45, $81, $79, $00, $4f, $01, $9e, $15, $81, $78, $4f, $02, $18, $81, $00, $81, $7c, $4f, $00
+	.byte $17, $89, $7b, $4f, $02, $1a, $81, $00, $81, $7a, $4f, $01, $13, $81, $13, $81, $00, $85, $83, $92, $1f, $81, $00, $81
+	.byte $8c, $2d, $43, $50, $24, $39, $2e, $4f, $00, $ae, $37, $81, $37, $81, $4f, $01, $37, $37, $37, $37, $7b, $92, $23, $81
 	.byte $21, $4f, $02, $1f, $83, $00, $81, $7a, $4f, $01, $23, $81, $21, $4f, $02, $1f, $7d, $4f, $01, $21, $81, $7f, $4f, $00
-	.byte $21, $81, $51, $fa, $40, $4f, $00, $92, $18, $85, $00, $81, $4e, $ff, $9c, $1f, $83, $00, $1f, $83, $00, $1f, $81, $77
-	.byte $4e, $00, $4f, $01, $17, $85, $7f, $4f, $00, $13, $81, $00, $81, $7d, $4f, $01, $13, $81, $13, $81, $00, $81, $7f, $a4
-	.byte $18, $18, $78, $87, $00, $85, $76, $4f, $02, $9c, $17, $81, $75, $4f, $01, $21, $81, $00, $81, $7a, $4f, $00, $1f, $8b
-	.byte $00, $83, $7c, $21, $81, $4e, $ff, $81, $4e, $00, $81, $21, $85, $79, $51, $fd, $40, $4f, $00, $92, $18, $85, $00, $81
-	.byte $9c, $1c, $83, $00, $76, $1c, $83, $00, $7a, $4f, $00, $1f, $89, $7b, $4f, $02, $1a, $81, $00, $81, $7a, $4f, $01, $17
-	.byte $81, $17, $81, $00, $81, $78, $4f, $00, $ac, $2d, $81, $79, $21, $81, $2d, $81, $21, $81, $2a, $81, $1a, $81, $26, $8d
-	.byte $7f, $ae, $32, $81, $32, $81, $30, $81, $30, $81, $2f, $81, $2b, $81, $28, $81, $c8, $26, $7d, $81, $7b, $81, $79, $81
+	.byte $21, $81, $51, $fa, $40, $4f, $00, $8c, $18, $85, $00, $81, $4e, $ff, $9e, $1f, $83, $00, $1f, $83, $00, $1f, $81, $77
+	.byte $4e, $00, $4f, $01, $17, $85, $7f, $4f, $00, $13, $81, $00, $81, $7d, $4f, $01, $13, $81, $13, $81, $00, $81, $7f, $92
+	.byte $18, $18, $78, $87, $00, $85, $76, $4f, $02, $9e, $17, $81, $75, $4f, $01, $21, $81, $00, $81, $7a, $4f, $00, $1f, $8b
+	.byte $00, $83, $7c, $21, $81, $4e, $ff, $81, $4e, $00, $81, $21, $85, $79, $51, $fd, $40, $4f, $00, $8c, $18, $85, $00, $81
+	.byte $9e, $1c, $83, $00, $76, $1c, $83, $00, $7a, $4f, $00, $1f, $89, $7b, $4f, $02, $1a, $81, $00, $81, $7a, $4f, $01, $17
+	.byte $81, $17, $81, $00, $81, $78, $4f, $00, $ae, $2d, $81, $79, $21, $81, $2d, $81, $21, $81, $2a, $81, $1a, $81, $26, $8d
+	.byte $7f, $a6, $32, $81, $32, $81, $30, $81, $30, $81, $2f, $81, $2b, $81, $28, $81, $bc, $26, $7d, $81, $7b, $81, $79, $81
 	.byte $7f, $26, $7d, $81, $7b, $81, $79, $81, $7f, $26, $7d, $81, $7b, $81, $79, $81, $7f, $26, $7d, $81, $7b, $81, $79, $81
-	.byte $7f, $26, $7d, $81, $7f, $26, $7d, $81, $7f, $26, $7d, $81, $7f, $26, $7d, $81, $7e, $4b, .lobyte(@env51), .hibyte(@env51)
-	.byte $26, $4d, $26, $4d, $26, $4d, $26, $4d, $26, $4d, $26, $4d, $26, $4d, $26, $7f, $4b, .lobyte(@env39), .hibyte(@env39)
-	.byte $4c, $a4, $28, $28, $81, $00, $83, $28, $28, $81, $00, $8f, $28, $81, $28, $81, $28, $28, $81, $00, $2b, $83, $00, $2b
+	.byte $7f, $26, $7d, $81, $7f, $26, $7d, $81, $7f, $26, $7d, $81, $7f, $26, $7d, $81, $7e, $4b, .lobyte(@env49), .hibyte(@env49)
+	.byte $26, $4d, $26, $4d, $26, $4d, $26, $4d, $26, $4d, $26, $4d, $26, $4d, $26, $7f, $4b, .lobyte(@env38), .hibyte(@env38)
+	.byte $4c, $92, $28, $28, $81, $00, $83, $28, $28, $81, $00, $8f, $28, $81, $28, $81, $28, $28, $81, $00, $2b, $83, $00, $2b
 	.byte $81
 @song1ref1762:
-	.byte $76, $a6, $1c, $81, $1e, $1f, $00, $99, $77, $a0, $07, $81, $00, $81, $09, $81, $00, $81, $09, $81, $00, $85
+	.byte $76, $a8, $1c, $81, $1e, $1f, $00, $99, $77, $a0, $07, $81, $00, $81, $09, $81, $00, $81, $09, $81, $00, $85
 	.byte $41, $0a
 	.word @song1ref1762
-	.byte $74, $0e, $81, $7c, $17, $81, $7b, $17, $81, $7d, $17, $85, $76, $a6, $1c, $81, $1e, $1f, $00, $85, $78, $9e, $28, $81
-	.byte $00, $81, $23, $81, $1f, $81, $21, $81, $00, $81, $1c, $81, $1a, $81, $00, $85, $1f, $21, $23, $26, $7f, $b0, $34, $81
-	.byte $76, $a6, $1e, $1f, $78, $00, $8d, $9e, $21, $81, $1f, $81, $26, $81, $23, $81, $21, $81, $1f, $81, $00, $83, $77, $a0
+	.byte $74, $0e, $81, $7c, $17, $81, $7b, $17, $81, $7d, $17, $85, $76, $a8, $1c, $81, $1e, $1f, $00, $85, $78, $a2, $28, $81
+	.byte $00, $81, $23, $81, $1f, $81, $21, $81, $00, $81, $1c, $81, $1a, $81, $00, $85, $1f, $21, $23, $26, $7f, $aa, $34, $81
+	.byte $76, $a8, $1e, $1f, $78, $00, $8d, $a2, $21, $81, $1f, $81, $26, $81, $23, $81, $21, $81, $1f, $81, $00, $83, $77, $a0
 	.byte $10, $83, $00, $83, $0e, $83
 @song1ref1865:
 	.byte $79
 @song1ref1866:
 	.byte $40, $0b, $81, $04, $81, $40, $0b, $81, $04, $81, $40, $0b, $81, $07, $09, $83, $09, $81, $7b, $40, $0b, $85, $02, $85
 	.byte $40, $0b, $85, $00, $85, $79, $40, $0b, $85, $04, $81, $40, $0b, $81, $40, $0b, $81, $7c, $07, $09, $83, $09, $81, $40
-	.byte $0b, $85, $78, $4f, $01, $ae, $2f, $00, $7b, $4f, $00, $a0, $0b, $85, $4f, $01, $ae, $26, $75, $4f, $00, $23, $78, $4f
+	.byte $0b, $85, $78, $4f, $01, $a6, $2f, $00, $7b, $4f, $00, $a0, $0b, $85, $4f, $01, $a6, $26, $75, $4f, $00, $23, $78, $4f
 	.byte $01, $2b, $75, $4f, $00, $23, $78, $4f, $01, $26, $75, $4f, $00, $23, $7c, $a0
 	.byte $41, $0a
 	.word @song1ref1866
@@ -446,7 +445,7 @@ music_data_famidash_music5:
 	.byte $96, $15, $85, $18, $85, $1c, $85, $21, $85, $1a, $95, $17, $85, $1f, $95, $1e, $85, $1c, $9d, $15, $85, $18, $85, $1c
 	.byte $85, $21, $85, $1b, $95, $00, $85, $13, $9d, $1f, $95, $50, $ea, $2b, $60, $85, $18, $81, $00, $81, $15, $81, $00, $81
 	.byte $18, $81, $00, $81, $15, $81, $00, $81, $1a, $81, $00, $81, $1e, $81, $00, $81, $1a, $81, $00, $81, $1e, $81, $00, $81
-	.byte $17, $81, $00, $81, $1a, $81, $00, $81, $17, $81, $b4, $2f, $2f, $96, $1a, $81, $b4, $2f, $2f, $96, $1c, $81, $00, $81
+	.byte $17, $81, $00, $81, $1a, $81, $00, $81, $17, $81, $b0, $2f, $2f, $96, $1a, $81, $b0, $2f, $2f, $96, $1c, $81, $00, $81
 	.byte $17, $81, $00, $81, $1c, $81, $00, $81, $17, $81, $00, $81, $18, $81, $15, $81, $18, $81, $15, $81, $18, $81, $15, $81
 	.byte $18, $85, $1a, $81, $15, $81, $1a, $81, $15, $81, $1a, $81, $15, $81, $18, $81, $15, $81, $17, $81, $12, $81, $17, $81
 	.byte $12, $81, $17, $81, $12, $81, $17, $12, $15, $12, $1c, $81, $17, $81, $1c, $81, $17, $81, $1c, $81, $00, $81, $1c, $81
@@ -467,7 +466,7 @@ music_data_famidash_music5:
 	.word @song1ref2194
 	.byte $1c, $85, $17, $85, $1c, $85, $17, $85, $1a, $8d, $1f, $8d, $18, $85, $15, $85, $18, $81, $21, $85, $1f, $81, $2f, $81
 	.byte $2d, $2b, $1a, $85, $1f, $85, $15, $85, $18, $85, $15, $85, $1a, $85, $21, $85, $2f, $81, $2d, $2b, $87, $2f, $85, $2d
-	.byte $85, $00, $81, $80
+	.byte $85, $00, $81, $8e
 @song1ref2279:
 	.byte $50, $f2, $3e, $48, $00, $83, $50, $f2, $3e, $48, $00, $83, $50, $f2, $3e, $48, $00, $83
 	.byte $41, $09
@@ -481,8 +480,8 @@ music_data_famidash_music5:
 	.byte $26, $8d
 	.byte $41, $0d
 	.word @song1ref2334
-	.byte $81, $2d, $81, $9f, $26, $9d, $c2, $26, $85, $26, $85, $26, $85, $26, $85, $c0, $32, $81, $32, $81, $32, $81, $32, $81
-	.byte $a2, $32, $32, $32, $32, $32, $32, $32, $32, $be, $31, $85, $c6, $2c, $00, $83, $2c, $00, $83, $2c, $00, $83, $2c, $00
+	.byte $81, $2d, $81, $9f, $26, $9d, $b6, $26, $85, $26, $85, $26, $85, $26, $85, $ba, $32, $81, $32, $81, $32, $81, $32, $81
+	.byte $a4, $32, $32, $32, $32, $32, $32, $32, $32, $b8, $31, $85, $c0, $2c, $00, $83, $2c, $00, $83, $2c, $00, $83, $2c, $00
 	.byte $9b
 @song1ref2412:
 	.byte $96
@@ -491,16 +490,16 @@ music_data_famidash_music5:
 	.byte $81
 	.byte $41, $12
 	.word @song1ref2413
-	.byte $81, $1c, $a2, $1c, $96, $1c, $a2, $1c, $96, $1c, $a2, $1c, $96, $1c, $a2, $1c
+	.byte $81, $1c, $a4, $1c, $96, $1c, $a4, $1c, $96, $1c, $a4, $1c, $96, $1c, $a4, $1c
 	.byte $41, $19
 	.word @song1ref2412
 	.byte $41, $0c
 	.word @song1ref2413
-	.byte $10, $81, $17, $00, $83, $1a, $81, $80, $1c, $81, $1c, $81, $1c, $81, $1a, $81, $1a, $81, $1a, $81, $96, $1c, $81, $23
+	.byte $10, $81, $17, $00, $83, $1a, $81, $8e, $1c, $81, $1c, $81, $1c, $81, $1a, $81, $1a, $81, $1a, $81, $96, $1c, $81, $23
 	.byte $81, $1c, $81, $28, $81, $23, $81, $17, $89, $23, $85, $1f, $81, $23, $81, $26, $85, $50, $7f, $32, $0d, $81, $00, $50
 	.byte $80, $0d, $28
 @song1ref2514:
-	.byte $1c, $83, $00, $23, $83, $00, $1c, $83, $00, $17, $83, $00, $1c, $83, $00, $a2, $3b, $81, $96, $1f, $83, $00, $a2, $3b
+	.byte $1c, $83, $00, $23, $83, $00, $1c, $83, $00, $17, $83, $00, $1c, $83, $00, $a4, $3b, $81, $96, $1f, $83, $00, $a4, $3b
 	.byte $81, $3b, $81, $3b, $81, $96
 	.byte $41, $0f
 	.word @song1ref2514
@@ -509,105 +508,105 @@ music_data_famidash_music5:
 	.word @song1ref2514
 	.byte $21, $81, $1f, $83, $00, $1f, $81, $23, $21, $1f, $00, $44, $00
 @song1ch3:
-	.byte $74, $92, $1e, $73, $81, $72, $81, $71, $81, $76, $90
+	.byte $74, $8c, $1e, $73, $81, $72, $81, $71, $81, $76, $82
 @song1ref2586:
-	.byte $25, $81, $75, $27, $81, $76, $25, $81, $78, $27, $81, $7d, $86, $2e, $85, $76, $90, $25, $81, $75, $27, $81, $76
+	.byte $25, $81, $75, $27, $81, $76, $25, $81, $78, $27, $81, $7d, $84, $2e, $85, $76, $82, $25, $81, $75, $27, $81, $76
 	.byte $41, $0e
 	.word @song1ref2586
 	.byte $76
 	.byte $41, $0e
 	.word @song1ref2586
-	.byte $76, $25, $81, $75, $27, $81, $76, $25, $74, $92, $50, $06, $35, $37, $77, $86, $21, $74, $92, $50, $06, $35, $37, $7d
+	.byte $76, $25, $81, $75, $27, $81, $76, $25, $74, $8c, $50, $06, $35, $37, $77, $84, $21, $74, $8c, $50, $06, $35, $37, $7d
 @song1ref2640:
-	.byte $86, $2e, $85, $76, $90, $25, $81, $75, $27, $81, $76, $25, $81, $75, $27, $81, $76, $25, $81, $78, $27, $81, $7b
+	.byte $84, $2e, $85, $76, $82, $25, $81, $75, $27, $81, $76, $25, $81, $75, $27, $81, $76, $25, $81, $78, $27, $81, $7b
 	.byte $41, $0e
 	.word @song1ref2640
-	.byte $7b, $86, $2e, $85, $76, $90, $25, $81, $73, $26, $81, $74, $25, $81, $73, $26, $81, $74, $25, $81, $78, $27, $81, $7f
-	.byte $25, $85, $75, $84, $2e, $00, $83, $2e, $00, $83, $2e, $00, $83, $7f, $92, $50, $04, $36, $3c
+	.byte $7b, $84, $2e, $85, $76, $82, $25, $81, $73, $26, $81, $74, $25, $81, $73, $26, $81, $74, $25, $81, $78, $27, $81, $7f
+	.byte $25, $85, $75, $88, $2e, $00, $83, $2e, $00, $83, $2e, $00, $83, $7f, $8c, $50, $04, $36, $3c
 @song1ref2709:
-	.byte $85, $90, $25, $81, $7e, $8a, $2b, $2b, $7f, $86, $2e, $85, $90, $25, $81, $88, $2e, $81, $86, $2c
+	.byte $85, $82, $25, $81, $7e, $80, $2b, $2b, $7f, $84, $2e, $85, $82, $25, $81, $86, $2e, $81, $84, $2c
 	.byte $41, $0c
 	.word @song1ref2709
 @song1ref2732:
-	.byte $85, $90, $25, $81, $88, $2e, $81, $86, $2e, $85, $90, $25, $81, $88, $2e, $81, $86, $2c
+	.byte $85, $82, $25, $81, $86, $2e, $81, $84, $2e, $85, $82, $25, $81, $86, $2e, $81, $84, $2c
 	.byte $41, $0b
 	.word @song1ref2732
-	.byte $86, $2a, $2b, $2c, $2d, $7d, $2e, $81, $7f
+	.byte $84, $2a, $2b, $2c, $2d, $7d, $2e, $81, $7f
 @song1ref2762:
-	.byte $88, $2e, $81, $86, $2e, $81, $88, $2e, $81, $90, $25, $81, $88, $2e, $81, $86, $2c
+	.byte $86, $2e, $81, $84, $2e, $81, $86, $2e, $81, $82, $25, $81, $86, $2e, $81, $84, $2c
 @song1ref2779:
-	.byte $81, $88, $2e
+	.byte $81, $86, $2e
 @song1ref2782:
-	.byte $81, $90, $25, $81, $88, $2e, $81, $86, $2e, $81, $88, $2e, $81, $86, $2c, $81, $88, $2c, $81, $86, $50, $fa, $3a, $36
+	.byte $81, $82, $25, $81, $86, $2e, $81, $84, $2e, $81, $86, $2e, $81, $84, $2c, $81, $86, $2c, $81, $84, $50, $fa, $3a, $36
 	.byte $81, $50, $06, $36, $3a
 	.byte $41, $09
 	.word @song1ref2782
-	.byte $90, $25, $81, $88, $2e, $81, $86, $2c, $2c, $2c, $2c
+	.byte $82, $25, $81, $86, $2e, $81, $84, $2c, $2c, $2c, $2c
 @song1ref2825:
-	.byte $90, $25
+	.byte $82, $25
 @song1ref2827:
-	.byte $81, $88, $2e, $81, $86, $2e, $81, $88, $2e, $81, $90, $25, $81, $86, $2e, $81, $2d, $2e, $81, $2d
+	.byte $81, $86, $2e, $81, $84, $2e, $81, $86, $2e, $81, $82, $25, $81, $84, $2e, $81, $2d, $2e, $81, $2d
 	.byte $41, $0a
 	.word @song1ref2825
 	.byte $41, $0a
 	.word @song1ref2762
-	.byte $86, $2e
+	.byte $84, $2e
 	.byte $41, $0b
 	.word @song1ref2779
 	.byte $41, $0a
 	.word @song1ref2825
 	.byte $41, $0a
 	.word @song1ref2762
-	.byte $86, $2e
+	.byte $84, $2e
 	.byte $41, $0b
 	.word @song1ref2779
 	.byte $41, $0a
 	.word @song1ref2825
 	.byte $41, $0a
 	.word @song1ref2762
-	.byte $86, $2e, $81, $88, $2e, $81, $86, $2b
+	.byte $84, $2e, $81, $86, $2e, $81, $84, $2b
 	.byte $41, $09
 	.word @song1ref2827
-	.byte $7e, $8a, $2b
+	.byte $7e, $80, $2b
 @song1ref2889:
-	.byte $81, $7f, $86, $2e, $85, $90, $25, $81, $7a, $98, $2c, $81
+	.byte $81, $7f, $84, $2e, $85, $82, $25, $81, $7a, $98, $2c, $81
 @song1ref2901:
-	.byte $7f, $86, $2c, $85, $90, $25, $81, $7a, $98, $2c, $81, $7f, $86, $2e, $85, $90, $25, $81, $7a, $98, $2c
+	.byte $7f, $84, $2c, $85, $82, $25, $81, $7a, $98, $2c, $81, $7f, $84, $2e, $85, $82, $25, $81, $7a, $98, $2c
 	.byte $41, $0d
 	.word @song1ref2889
 	.byte $41, $0b
 	.word @song1ref2901
-	.byte $81, $7f, $86, $2e, $85, $78, $88, $25, $81, $7c, $29, $81, $29, $81, $29, $81, $7d, $29, $28, $27, $26, $7e, $27, $28
-	.byte $7f, $29, $2a, $86, $2c, $85
+	.byte $81, $7f, $84, $2e, $85, $78, $86, $25, $81, $7c, $29, $81, $29, $81, $29, $81, $7d, $29, $28, $27, $26, $7e, $27, $28
+	.byte $7f, $29, $2a, $84, $2c, $85
 @song1ref2958:
-	.byte $8a, $2d, $81, $7d, $84, $2a, $00
+	.byte $80, $2d, $81, $7d, $88, $2a, $00
 @song1ref2965:
 	.byte $7f
 @song1ref2966:
-	.byte $8e, $26, $81, $7d, $84, $2a, $00, $7f, $8a, $2d, $81, $7d, $84, $2a, $00, $7f, $8e, $26, $81, $7d, $84, $2a, $00, $7f
+	.byte $8a, $26, $81, $7d, $88, $2a, $00, $7f, $80, $2d, $81, $7d, $88, $2a, $00, $7f, $8a, $26, $81, $7d, $88, $2a, $00, $7f
 	.byte $41, $10
 	.word @song1ref2958
 	.byte $7f
 	.byte $41, $10
 	.word @song1ref2958
-	.byte $7f, $8a, $2d, $81, $7d, $84, $2a, $00, $7f, $8e, $26, $81, $26, $81, $86, $2e, $2e, $2e, $2e
+	.byte $7f, $80, $2d, $81, $7d, $88, $2a, $00, $7f, $8a, $26, $81, $26, $81, $84, $2e, $2e, $2e, $2e
 	.byte $41, $0c
 	.word @song1ref2966
 	.byte $7f
 	.byte $41, $10
 	.word @song1ref2958
-	.byte $7c, $90, $32, $32, $32, $32
+	.byte $7c, $82, $32, $32, $32, $32
 	.byte $41, $0c
 	.word @song1ref2965
 	.byte $7f
 	.byte $41, $10
 	.word @song1ref2958
-	.byte $7f, $8a, $2d, $81, $2d, $81, $8e, $26, $81, $7d, $84, $2a, $00, $7f, $51, $fa, $a0, $86, $50, $02, $38, $39
+	.byte $7f, $80, $2d, $81, $2d, $81, $8a, $26, $81, $7d, $88, $2a, $00, $7f, $51, $fa, $a0, $84, $50, $02, $38, $39
 @song1ref3058:
-	.byte $81, $7d, $84, $2a, $00, $7f, $8e, $26, $81, $7d, $84, $2a, $00
+	.byte $81, $7d, $88, $2a, $00, $7f, $8a, $26, $81, $7d, $88, $2a, $00
 @song1ref3071:
-	.byte $7f, $51, $fa, $a0, $86, $50, $02, $38, $39, $81, $7d, $84, $2a, $00, $7f, $8e, $26, $81, $7d, $84, $2a, $00, $7e, $51
-	.byte $f9, $80, $86, $2d, $81, $7d, $84, $2a, $00, $7f, $8e, $26, $81, $7d, $84, $2a, $00, $7e, $51, $f9, $80, $86, $2d
+	.byte $7f, $51, $fa, $a0, $84, $50, $02, $38, $39, $81, $7d, $88, $2a, $00, $7f, $8a, $26, $81, $7d, $88, $2a, $00, $7e, $51
+	.byte $f9, $80, $84, $2d, $81, $7d, $88, $2a, $00, $7f, $8a, $26, $81, $7d, $88, $2a, $00, $7e, $51, $f9, $80, $84, $2d
 	.byte $41, $0f
 	.word @song1ref3058
 	.byte $41, $11
@@ -616,50 +615,50 @@ music_data_famidash_music5:
 	.word @song1ref3058
 	.byte $41, $11
 	.word @song1ref3071
-	.byte $81, $7d, $84, $2a, $00
+	.byte $81, $7d, $88, $2a, $00
 @song1ref3135:
-	.byte $90, $25, $81, $7a, $98, $2c, $81, $7d, $86, $2e, $85, $90, $25, $81, $7a, $98, $2c, $81, $7d, $86, $2e, $85
+	.byte $82, $25, $81, $7a, $98, $2c, $81, $7d, $84, $2e, $85, $82, $25, $81, $7a, $98, $2c, $81, $7d, $84, $2e, $85
 	.byte $41, $0c
 	.word @song1ref3135
-	.byte $7e, $2c, $85, $7f, $2e, $81, $7d, $84, $2a, $00, $7f, $8e, $26, $81, $7d, $84, $2a, $00, $7f, $86, $2e, $81, $7d, $84
-	.byte $2a, $00, $7f, $8e, $26, $81, $7d, $84, $2a, $00, $7f, $86, $2e, $81, $7d, $84, $2a, $00, $7f, $8e, $26, $81, $84, $2a
-	.byte $00, $86, $2e, $81, $84, $2a, $00, $86, $2e, $81, $7e, $83, $7d, $83, $7c, $83, $00, $85, $7a, $8e, $26, $81, $00, $81
-	.byte $26, $81, $71, $92, $2d, $72, $81, $73, $81, $74, $81, $75, $83, $76, $83, $77, $83, $78, $2e, $81, $79, $2f, $81, $7c
+	.byte $7e, $2c, $85, $7f, $2e, $81, $7d, $88, $2a, $00, $7f, $8a, $26, $81, $7d, $88, $2a, $00, $7f, $84, $2e, $81, $7d, $88
+	.byte $2a, $00, $7f, $8a, $26, $81, $7d, $88, $2a, $00, $7f, $84, $2e, $81, $7d, $88, $2a, $00, $7f, $8a, $26, $81, $88, $2a
+	.byte $00, $84, $2e, $81, $88, $2a, $00, $84, $2e, $81, $7e, $83, $7d, $83, $7c, $83, $00, $85, $7a, $8a, $26, $81, $00, $81
+	.byte $26, $81, $71, $8c, $2d, $72, $81, $73, $81, $74, $81, $75, $83, $76, $83, $77, $83, $78, $2e, $81, $79, $2f, $81, $7c
 @song1ref3256:
-	.byte $8a, $0c, $81
+	.byte $80, $0c, $81
 @song1ref3259:
-	.byte $78, $88, $10
+	.byte $78, $86, $10
 @song1ref3262:
-	.byte $81, $7f, $86, $10, $81, $78, $88
+	.byte $81, $7f, $84, $10, $81, $78, $86
 @song1ref3269:
 	.byte $10
 @song1ref3270:
-	.byte $81, $7a, $8e, $0b, $00, $78, $88, $10, $81, $7f, $86, $10, $81, $78, $88, $10, $81, $7a, $8e, $0b, $00, $78, $88, $10
-	.byte $81, $7f, $86, $10, $81, $78, $88, $10, $81, $7a, $8e, $0b, $00, $7f, $86, $10, $81, $7b, $8a, $0e, $81, $7c
+	.byte $81, $7a, $8a, $0b, $00, $78, $86, $10, $81, $7f, $84, $10, $81, $78, $86, $10, $81, $7a, $8a, $0b, $00, $78, $86, $10
+	.byte $81, $7f, $84, $10, $81, $78, $86, $10, $81, $7a, $8a, $0b, $00, $7f, $84, $10, $81, $7b, $80, $0e, $81, $7c
 	.byte $41, $0c
 	.word @song1ref3269
-	.byte $79, $8a, $0e
+	.byte $79, $80, $0e
 	.byte $41, $0d
 	.word @song1ref3262
-	.byte $7d, $8a, $0e, $81, $7f, $86, $10, $81, $7d, $8a, $0e, $81, $7b, $86, $10, $81, $7a
+	.byte $7d, $80, $0e, $81, $7f, $84, $10, $81, $7d, $80, $0e, $81, $7b, $84, $10, $81, $7a
 	.byte $41, $0a
 	.word @song1ref3256
-	.byte $79, $8a, $0e, $81, $7f, $86, $10, $81, $7b, $8a, $0e
+	.byte $79, $80, $0e, $81, $7f, $84, $10, $81, $7b, $80, $0e
 	.byte $41, $13
 	.word @song1ref3270
 	.byte $41, $10
 	.word @song1ref3259
-	.byte $7e, $8a, $10, $81, $7d, $0f, $81, $7f, $10, $81, $7c, $8e, $14, $81, $14, $81, $14, $81, $7f, $8a, $10, $81, $10, $81
-	.byte $10, $81, $86, $2e, $85
+	.byte $7e, $80, $10, $81, $7d, $0f, $81, $7f, $10, $81, $7c, $8a, $14, $81, $14, $81, $14, $81, $7f, $80, $10, $81, $10, $81
+	.byte $10, $81, $84, $2e, $85
 @song1ref3391:
-	.byte $8a, $2d, $81, $74, $84, $2a, $00, $7f, $8e, $26, $81, $74, $84, $2a, $00, $7f, $8a, $2d, $81, $74, $84, $2a, $00, $7f
-	.byte $8e, $26, $81, $74, $84, $2a, $00, $7f
+	.byte $80, $2d, $81, $74, $88, $2a, $00, $7f, $8a, $26, $81, $74, $88, $2a, $00, $7f, $80, $2d, $81, $74, $88, $2a, $00, $7f
+	.byte $8a, $26, $81, $74, $88, $2a, $00, $7f
 	.byte $41, $0a
 	.word @song1ref3391
 	.byte $00, $81
 @song1ref3428:
-	.byte $8e, $26, $81, $74, $88, $30, $30, $7f, $8a, $2d, $81, $79, $88, $30, $81, $7f, $8e, $26, $81, $74, $88, $30, $30, $7f
-	.byte $8a, $2d, $81, $79, $88, $30, $81, $7f
+	.byte $8a, $26, $81, $74, $86, $30, $30, $7f, $80, $2d, $81, $79, $86, $30, $81, $7f, $8a, $26, $81, $74, $86, $30, $30, $7f
+	.byte $80, $2d, $81, $79, $86, $30, $81, $7f
 	.byte $41, $10
 	.word @song1ref3428
 	.byte $7f
@@ -678,477 +677,462 @@ music_data_famidash_music5:
 @song1ch4:
 	.byte $46, $06
 @song1ref3488:
-	.byte $1d, $81, $00, $81, $1d, $81, $00, $81, $1d, $81, $00, $81, $32, $85
+	.byte $29, $81, $00, $81, $29, $81, $00, $81, $29, $81, $00, $81, $3e, $85
 	.byte $41, $0e
 	.word @song1ref3488
 	.byte $41, $0e
 	.word @song1ref3488
 	.byte $41, $09
 	.word @song1ref3488
-	.byte $32, $1d, $32, $32, $85
+	.byte $3e, $29, $3e, $3e, $85
 	.byte $41, $0e
 	.word @song1ref3488
 	.byte $41, $0e
 	.word @song1ref3488
-	.byte $1d, $81, $00, $91, $1d, $81, $00, $99, $32, $85
+	.byte $29, $81, $00, $91, $29, $81, $00, $99, $3e, $85
 @song1ref3532:
-	.byte $1d, $81, $1a, $1a, $32, $81, $00, $1a
+	.byte $29, $81, $25, $25, $3e, $81, $00, $25
 @song1ref3540:
-	.byte $1d, $81, $00, $81, $32, $81, $00, $81, $1d, $81, $17, $17, $32, $81, $00, $17
+	.byte $29, $81, $00, $81, $3e, $81, $00, $81, $29, $81, $1f, $1f, $3e, $81, $00, $1f
 	.byte $41, $0a
 	.word @song1ref3540
-	.byte $16, $16, $32, $81, $00, $16
+	.byte $1e, $1e, $3e, $81, $00, $1e
 @song1ref3565:
-	.byte $1d, $81, $0f, $0f, $32, $81, $0f, $0f, $1d, $81, $10, $10, $32, $81, $00, $10
+	.byte $29, $81, $0f, $0f, $3e, $81, $0f, $0f, $29, $81, $10, $10, $3e, $81, $00, $10
 	.byte $41, $0a
 	.word @song1ref3540
-	.byte $18, $18, $32, $81, $18, $18, $1d, $81, $18, $18, $32, $81, $18, $18, $1d, $81, $19, $19, $32, $81, $19, $19, $1d, $81
-	.byte $19, $19, $32, $81, $19, $19
+	.byte $21, $21, $3e, $81, $21, $21, $29, $81, $21, $21, $3e, $81, $21, $21, $29, $81, $22, $22, $3e, $81, $22, $22, $29, $81
+	.byte $22, $22, $3e, $81, $22, $22
 	.byte $41, $0a
 	.word @song1ref3565
-	.byte $0f, $0f, $32, $32, $32, $32, $1d
+	.byte $0f, $0f, $3e, $3e, $3e, $3e, $29
 @song1ref3624:
-	.byte $81, $10, $10, $32, $81, $10, $10, $1d, $81, $1d, $81, $32, $32, $32, $81
+	.byte $81, $10, $10, $3e, $81, $10, $10, $29, $81, $29, $81, $3e, $3e, $3e, $81
 @song1ref3639:
-	.byte $1d, $81, $15, $15, $32, $81, $15, $15, $1d, $81, $15, $15, $32, $81, $15, $15
+	.byte $29, $81, $1d, $1d, $3e, $81, $1d, $1d, $29, $81, $1d, $1d, $3e, $81, $1d, $1d
 	.byte $41, $10
 	.word @song1ref3639
 	.byte $41, $10
 	.word @song1ref3639
-	.byte $32
+	.byte $3e
 @song1ref3662:
-	.byte $81, $16, $16, $32, $81, $16, $16, $1d, $81, $16, $16, $32, $81, $16, $16, $1d
+	.byte $81, $1e, $1e, $3e, $81, $1e, $1e, $29, $81, $1e, $1e, $3e, $81, $1e, $1e, $29
 	.byte $41, $10
 	.word @song1ref3662
 	.byte $41, $09
 	.word @song1ref3624
-	.byte $10, $10, $32, $81, $10, $10
+	.byte $10, $10, $3e, $81, $10, $10
 	.byte $41, $18
 	.word @song1ref3532
 	.byte $41, $0a
 	.word @song1ref3540
-	.byte $16, $16, $32, $81, $00, $16
+	.byte $1e, $1e, $3e, $81, $00, $1e
 	.byte $41, $0a
 	.word @song1ref3540
-	.byte $10, $10, $32, $81, $00, $10
+	.byte $10, $10, $3e, $81, $00, $10
 	.byte $41, $0a
 	.word @song1ref3540
-	.byte $1d, $81, $1d, $81, $1d, $81, $1d, $81, $1d, $81, $1d, $81, $1d
+	.byte $29, $81, $29, $81, $29, $81, $29, $81, $29, $81, $29, $81, $29
 @song1ref3727:
 	.byte $81
 @song1ref3728:
-	.byte $15, $85, $32, $81, $00, $81, $15, $81, $15, $81, $32, $81, $16, $81, $1a, $85, $32, $81, $00, $81, $1a, $85, $32, $16
+	.byte $1d, $85, $3e, $81, $00, $81, $1d, $81, $1d, $81, $3e, $81, $1e, $81, $25, $85, $3e, $81, $00, $81, $25, $85, $3e, $1e
 	.byte $83
 @song1ref3753:
-	.byte $15, $85, $32, $81, $14, $81, $15, $85, $32, $81, $00, $81, $1a, $85, $32, $81, $1a, $81, $1a, $85, $32, $14, $14, $14
+	.byte $1d, $85, $3e, $81, $1c, $81, $1d, $85, $3e, $81, $00, $81, $25, $85, $3e, $81, $25, $81, $25, $85, $3e, $1c, $1c, $1c
 	.byte $41, $0a
 	.word @song1ref3753
-	.byte $14, $89, $32, $1a, $83, $00, $85, $32, $32, $1d, $1d, $15, $85, $32, $81, $00, $81, $14, $81, $14, $81, $32, $14, $14
-	.byte $14, $14, $16, $17, $1b, $32, $81, $00, $81, $14, $85, $32, $81, $32
+	.byte $1c, $89, $3e, $25, $83, $00, $85, $3e, $3e, $29, $29, $1d, $85, $3e, $81, $00, $81, $1c, $81, $1c, $81, $3e, $1c, $1c
+	.byte $1c, $1c, $1e, $1f, $26, $3e, $81, $00, $81, $1c, $85, $3e, $81, $3e
 	.byte $41, $19
 	.word @song1ref3727
-	.byte $16, $16
+	.byte $1e, $1e
 	.byte $41, $16
 	.word @song1ref3753
 	.byte $83
 	.byte $41, $0c
 	.word @song1ref3728
-	.byte $14, $89, $32, $14, $83, $16, $81, $16, $81, $32, $00, $17, $81, $1d, $81, $17, $81, $32, $81, $15, $81, $1d, $81, $17
-	.byte $81, $32, $81, $15, $81, $1d, $81, $17, $81, $32, $81, $14, $81, $1d, $81, $1a, $81, $32, $81, $13
+	.byte $1c, $89, $3e, $1c, $83, $1e, $81, $1e, $81, $3e, $00, $1f, $81, $29, $81, $1f, $81, $3e, $81, $1d, $81, $29, $81, $1f
+	.byte $81, $3e, $81, $1d, $81, $29, $81, $1f, $81, $3e, $81, $1c, $81, $29, $81, $25, $81, $3e, $81, $1b
 @song1ref3874:
-	.byte $81, $1d, $81, $15, $81, $32, $81, $15, $81, $1d, $81, $15, $81, $32, $81, $15
+	.byte $81, $29, $81, $1d, $81, $3e, $81, $1d, $81, $29, $81, $1d, $81, $3e, $81, $1d
 	.byte $41, $0a
 	.word @song1ref3874
-	.byte $85, $32, $85, $1d, $95, $1d, $00, $83, $1d, $00, $9b
+	.byte $85, $3e, $85, $29, $95, $29, $00, $83, $29, $00, $9b
 @song1ref3904:
-	.byte $1d, $00, $83, $32, $15, $83, $1d, $00, $1b, $81, $32, $00, $18, $81, $1d, $00, $83, $32, $16, $00, $81, $1d, $00, $19
-	.byte $81, $1d, $00, $32, $17
+	.byte $29, $00, $83, $3e, $1d, $83, $29, $00, $26, $81, $3e, $00, $21, $81, $29, $00, $83, $3e, $1e, $00, $81, $29, $00, $22
+	.byte $81, $29, $00, $3e, $1f
 	.byte $41, $15
 	.word @song1ref3904
-	.byte $32, $00, $1d, $00, $32, $00, $1d, $00
+	.byte $3e, $00, $29, $00, $3e, $00, $29, $00
 	.byte $41, $1d
 	.word @song1ref3904
 	.byte $41, $15
 	.word @song1ref3904
-	.byte $46, $04, $1d, $81, $1d, $10, $1d, $81, $32, $00, $32, $17, $32, $00, $46, $06, $1d, $81, $13, $81, $32, $81, $13, $81
-	.byte $1d, $81, $14, $15, $32, $81, $15, $00, $1d, $81, $13, $00, $32, $81, $13, $00, $1d, $81, $16, $00, $1d, $81, $00
+	.byte $46, $04, $29, $81, $29, $10, $29, $81, $3e, $00, $3e, $1f, $3e, $00, $46, $06, $29, $81, $1b, $81, $3e, $81, $1b, $81
+	.byte $29, $81, $1c, $1d, $3e, $81, $1d, $00, $29, $81, $1b, $00, $3e, $81, $1b, $00, $29, $81, $1e, $00, $29, $81, $00
 @song1ref3997:
-	.byte $81, $1d, $81, $13, $81, $32, $81, $16, $81, $1d, $81, $14, $81, $32, $81, $15
+	.byte $81, $29, $81, $1b, $81, $3e, $81, $1e, $81, $29, $81, $1c, $81, $3e, $81, $1d
 	.byte $41, $0c
 	.word @song1ref3997
-	.byte $00, $32, $81, $14, $00
+	.byte $00, $3e, $81, $1c, $00
 @song1ref4021:
-	.byte $1d, $81, $13, $81, $32, $81, $15, $81, $1d, $81, $1b, $81, $32, $00, $18, $81, $1d, $81, $17, $81, $32, $81, $17, $81
-	.byte $1d, $81, $19, $81, $32, $81, $17, $81
+	.byte $29, $81, $1b, $81, $3e, $81, $1d, $81, $29, $81, $26, $81, $3e, $00, $21, $81, $29, $81, $1f, $81, $3e, $81, $1f, $81
+	.byte $29, $81, $22, $81, $3e, $81, $1f, $81
 	.byte $41, $0d
 	.word @song1ref4021
-	.byte $81, $18, $81, $1d, $81, $16, $81, $32, $81, $16, $81, $1d, $81, $10, $81, $32, $1d, $1d, $81, $44, $00
+	.byte $81, $21, $81, $29, $81, $1e, $81, $3e, $81, $1e, $81, $29, $81, $10, $81, $3e, $29, $29, $81, $44, $00
 @song2ch0:
-	.byte $46, $03
-@song2ref3:
-	.byte $80
-@song2ref4:
-	.byte $0e, $81, $1a, $81, $82, $0e, $85, $80, $0e, $81, $0e, $81, $8c, $0e, $45, $80, $0e, $81, $0e, $81, $1a, $81, $82, $0e
-	.byte $85, $80, $0e, $81, $0e, $81, $8c, $0e, $45, $80, $0e, $81
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $00, $bd, $4f, $01, $82
-@song2ref87:
-	.byte $0b, $81, $0e, $81, $0b, $81, $0e, $81, $04, $81, $0b, $81, $04, $81, $0b, $81
+	.byte $8e, $19, $81, $25, $81, $19, $81, $25, $81, $79, $00, $48, $05, $8c
+@song2ref15:
+	.byte $1d, $48, $05, $1d, $48, $05, $1e, $50, $f5, $2a, $2c, $20
+@song2ref27:
+	.byte $00, $81, $1d, $1e, $00, $49, .lobyte(@env68), .hibyte(@env68), $50, $f6, $2c, $2e, $8c, $22, $49, .lobyte(@env1), .hibyte(@env1)
+	.byte $4a, $00, $49, .lobyte(@env68), .hibyte(@env68), $20, $81, $49, .lobyte(@env1), .hibyte(@env1), $4a, $00, $81, $8c
+	.byte $50, $f6, $2c, $2e, $22, $20, $48, $04, $81, $20, $48, $04, $81, $50, $f6, $2c, $2e, $22, $20, $81, $00, $1d, $81, $1b
+@song2ref82:
+	.byte $49, .lobyte(@env8), .hibyte(@env8), $19, $85, $49, .lobyte(@env1), .hibyte(@env1), $4a, $00, $91, $8c, $1b, $00
+@song2ref96:
+	.byte $1b, $81, $00, $81, $1d, $81, $00, $81, $50, $f8, $29, $2c, $81, $49, .lobyte(@env57), .hibyte(@env57), $20, $81, $75
+	.byte $49, .lobyte(@env1), .hibyte(@env1), $4a, $8c, $50, $7f, $2c, $14, $81, $79, $00, $81, $00, $48, $05
+	.byte $41, $0f
+	.word @song2ref15
+@song2ref134:
+	.byte $00, $81, $8c, $50, $f6, $2c, $2e, $22, $20, $48, $06, $85, $50, $f6, $2c, $2e, $22, $20, $81, $1d, $81, $1b, $81, $19
+	.byte $85, $49, .lobyte(@env1), .hibyte(@env1), $4a
+@song2ref163:
+	.byte $92
+@song2ref164:
+	.byte $36, $81, $00, $81, $31, $81, $00, $81, $2e, $81, $49, .lobyte(@env1), .hibyte(@env1), $4a, $8c, $1b, $48, $06, $81
 	.byte $41, $10
-	.word @song2ref87
-@song2ref106:
-	.byte $0b, $81, $0c, $81, $0b, $81, $0c, $81, $04, $81, $0b, $81, $04, $81, $0b, $81
+	.word @song2ref96
+	.byte $20, $81, $1d, $81, $20, $81
+	.byte $41, $0a
+	.word @song2ref27
+	.byte $41, $0e
+	.word @song2ref134
+	.byte $41, $16
+	.word @song2ref82
+	.byte $20, $81, $1d, $81, $20, $81
+	.byte $41, $0a
+	.word @song2ref27
+	.byte $41, $1c
+	.word @song2ref134
 	.byte $41, $10
-	.word @song2ref106
-@song2ref125:
-	.byte $0b, $81, $10, $81, $0b, $81, $10, $81, $04, $81, $0b, $81, $04, $81, $0b, $81
-	.byte $41, $10
-	.word @song2ref125
-@song2ref144:
-	.byte $0b, $81, $0f, $81, $0b, $81, $0f, $81, $04, $81, $0b, $81, $04, $81, $0b, $81
-	.byte $41, $10
-	.word @song2ref144
-	.byte $4b, .lobyte(@env60), .hibyte(@env60), $4f, $01
-@song2ref168:
-	.byte $0b, $81, $4b, .lobyte(@env52), .hibyte(@env52), $0e, $81, $4b, .lobyte(@env60), .hibyte(@env60), $0b, $81, $4b, .lobyte(@env52)
-	.byte .hibyte(@env52), $0e, $81, $4b, .lobyte(@env39), .hibyte(@env39), $4c, $04, $81, $4b, .lobyte(@env60), .hibyte(@env60)
-	.byte $0b, $81, $4b, .lobyte(@env39), .hibyte(@env39), $4c, $04, $81, $4b, .lobyte(@env60), .hibyte(@env60), $0b, $81, $4d
-	.byte $41, $10
-	.word @song2ref168
-@song2ref211:
-	.byte $4d, $0b, $81, $4b, .lobyte(@env56), .hibyte(@env56), $0c, $81, $4b, .lobyte(@env60), .hibyte(@env60), $0b, $81, $4b
-	.byte .lobyte(@env56), .hibyte(@env56), $0c, $81, $4b, .lobyte(@env39), .hibyte(@env39), $4c, $04, $81, $4b, .lobyte(@env60)
-	.byte .hibyte(@env60), $0b, $81, $4b, .lobyte(@env39), .hibyte(@env39), $4c, $04, $81, $4b, .lobyte(@env60), .hibyte(@env60)
-	.byte $0b, $81
-	.byte $41, $10
-	.word @song2ref211
-	.byte $4b, .lobyte(@env73), .hibyte(@env73)
-@song2ref257:
-	.byte $0b, $81, $4b, .lobyte(@env59), .hibyte(@env59), $10, $81, $4b, .lobyte(@env73), .hibyte(@env73), $0b, $81, $4b, .lobyte(@env59)
-	.byte .hibyte(@env59), $10, $81, $4b, .lobyte(@env24), .hibyte(@env24), $04, $81, $4b, .lobyte(@env73), .hibyte(@env73), $0b
-	.byte $81, $4b, .lobyte(@env24), .hibyte(@env24), $04, $81, $4b, .lobyte(@env73), .hibyte(@env73), $0b, $81, $4d
-	.byte $41, $10
-	.word @song2ref257
-	.byte $00, $bd, $7c, $4b, .lobyte(@env51), .hibyte(@env51), $b8
-@song2ref305:
-	.byte $21, $85, $43, $22, $81, $45, $89, $4d, $26, $81, $45, $81, $4d, $28, $81, $45, $89, $4d, $28, $81, $45, $89, $4d, $1f
-	.byte $85, $43, $21, $81, $45, $81, $4d, $24, $85, $43, $26, $81, $45, $81, $4d, $26, $85, $43, $28, $81, $45, $81, $4d, $26
-	.byte $81, $45, $89, $4d, $23, $81, $45, $89, $4d, $21, $81, $45, $89, $4d, $1f, $81, $45, $89, $4d, $1f, $85, $43, $21, $81
-	.byte $45, $81, $4d, $22, $81, $45, $89, $4d, $1f, $81, $45, $89, $4d, $27, $81, $45, $89, $4d, $27, $85, $4d, $27, $85, $4d
-	.byte $41, $42
-	.word @song2ref305
-	.byte $4d, $1b, $81, $45, $89, $4d, $1b, $85, $4d, $1b, $85, $4d
-	.byte $41, $4a
-	.word @song2ref305
-	.byte $4d
-	.byte $41, $42
-	.word @song2ref305
-	.byte $4d, $1b, $81, $45, $89, $4d, $1b, $85, $4d, $1b, $85, $4d
-	.byte $41, $4a
-	.word @song2ref305
-	.byte $4d
-	.byte $41, $42
-	.word @song2ref305
-	.byte $4d, $1b, $81, $45, $89, $4d, $1b, $85, $4d, $1b, $85, $4b, .lobyte(@env39), .hibyte(@env39), $4c, $4f, $01, $82, $0b
-	.byte $81, $0e, $81, $0b, $81, $0e, $81, $7b, $04, $81, $0b, $81, $04, $81, $0b, $81, $7a, $0b, $81, $0e, $81, $0b, $81, $0e
-	.byte $81, $79, $04, $81, $0b, $81, $04, $81, $0b, $81, $78, $0b, $81, $0c, $81, $0b, $81, $0c, $81, $77, $04, $81, $0b, $81
-	.byte $04, $81, $0b, $81, $76, $0b, $81, $0c, $81, $0b, $81, $0c, $81, $75, $04, $81, $0b, $81, $04, $81, $0b, $81, $74, $0b
-	.byte $81, $10, $81, $0b, $81, $10, $81, $73, $04, $81, $0b, $81, $04, $81, $0b, $81, $72, $0b, $81, $10, $81, $0b, $81, $10
-	.byte $81, $71, $04, $81, $0b, $81, $04, $81, $0b, $81, $44, $00
+	.word @song2ref96
+@song2ref216:
+	.byte $49, .lobyte(@env30), .hibyte(@env30), $50, $f8, $29, $2c, $81, $8c, $20, $81, $1d, $81, $1b, $81, $50, $f0, $29, $2c
+	.byte $20, $83, $1d, $85, $21, $85, $1d, $81, $1b, $81, $50, $f6, $2b, $2d, $21, $83, $1d, $81, $1b, $81, $1b, $85, $19, $81
+	.byte $16, $81, $00, $81, $19, $85, $00, $81
+@song2ref267:
+	.byte $50, $f3, $27, $29, $1d, $83, $1b, $85, $19, $85, $1b, $85
+	.byte $41, $21
+	.word @song2ref216
+	.byte $89, $16, $81, $50, $f3, $27, $29, $1d, $83, $1b, $85, $19, $8d, $00, $85
+@song2ref297:
+	.byte $50, $f5, $2a, $2c, $20, $1d, $81
+@song2ref304:
+	.byte $1b, $81, $1d, $81, $50, $f5, $2a, $2c, $20, $1d, $1b, $49, .lobyte(@env68), .hibyte(@env68), $87, $4f, $01, $8c, $50
+	.byte $f6, $2b, $2d, $21, $1d, $81, $1b, $81, $1d, $81, $50, $f0, $2a, $2d, $21, $1d, $1b, $85, $4f, $00, $81, $49, .lobyte(@env30)
+	.byte .hibyte(@env30), $50, $0e, $27, $25, $8c, $19, $81, $49, .lobyte(@env6), .hibyte(@env6), $95
+@song2ref358:
+	.byte $49, .lobyte(@env30), .hibyte(@env30), $00, $4f, $00, $81, $7d, $4b, .lobyte(@env49), .hibyte(@env49), $8e, $1d, $4d
+	.byte $1d, $4d, $1d, $4d, $1d, $4d, $1b, $4d, $1b, $4d, $1b, $4d, $1b, $4d, $20, $4d, $20, $4d, $20, $4d, $20, $4d, $1e, $4d
+	.byte $1e, $4d, $1e, $79, $4d, $1e, $4b, .lobyte(@env38), .hibyte(@env38), $4c, $8c
+	.byte $41, $0d
+	.word @song2ref297
+@song2ref410:
+	.byte $49, .lobyte(@env30), .hibyte(@env30), $4f, $01, $50, $f0, $2a, $2d, $8c, $21, $1d, $81, $1b, $81, $1d, $81, $50, $eb
+	.byte $29, $2d, $21, $1d, $1b, $49, .lobyte(@env68), .hibyte(@env68), $87, $49, .lobyte(@env30), .hibyte(@env30), $50, $0e
+	.byte $27, $25, $8c, $19, $81, $49, .lobyte(@env6), .hibyte(@env6), $95, $49, .lobyte(@env30), .hibyte(@env30), $4f, $00
+	.byte $16, $81, $8c
+	.byte $41, $09
+	.word @song2ref267
+	.byte $41, $0d
+	.word @song2ref297
+	.byte $41, $11
+	.word @song2ref410
+	.byte $41, $12
+	.word @song2ref358
+	.byte $00, $85, $4b, .lobyte(@env38), .hibyte(@env38), $4c, $8c
+	.byte $41, $09
+	.word @song2ref304
+	.byte $41, $11
+	.word @song2ref410
+	.byte $41, $11
+	.word @song2ref358
+	.byte $4d, $1e, $4d, $1d, $81, $00, $99, $44, $00
 @song2ch1:
-	.byte $77, $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref3
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $4e, $03, $4f, $02
-	.byte $41, $1c
-	.word @song2ref4
-	.byte $00, $bd, $7a
-@song2ref679:
-	.byte $4e, $00, $82, $40, $51, $85, $40, $52, $85, $a8, $40, $60, $a9, $82, $40, $52, $81, $40, $4f, $85, $40, $51, $85, $40
-	.byte $54, $85, $a8, $40, $60, $a5, $82, $40, $53, $85, $00, $85, $40, $51, $85, $00, $85, $40, $4f, $85, $00, $85, $40, $4f
-	.byte $85, $40, $51, $85, $40, $52, $85, $00, $85, $40, $4f, $85, $00, $85, $a8, $40, $60, $9d
-	.byte $41, $28
-	.word @song2ref679
-	.byte $3f, $85, $00, $95, $4b, .lobyte(@env24), .hibyte(@env24), $b2
-@song2ref756:
-	.byte $1a, $bd, $4d, $18, $bd, $4d, $1c, $bd, $4d, $1b, $bd, $4d, $1a, $bd, $4d, $18, $bd, $4d, $1c, $bd, $4d, $1b, $bd, $4d
+	.byte $83, $8e, $20, $81, $1d, $81, $20, $81, $00, $9d, $9f, $a6, $36, $81, $3a, $81, $3d, $81, $40, $4d, $81, $40, $4e, $85
+	.byte $40, $52, $85, $40, $50, $85, $00, $95, $9f, $9f, $7a
+	.byte $41, $0a
+	.word @song2ref163
+@song2ref536:
+	.byte $00, $81, $2a, $81, $00, $81, $30, $81, $00, $81, $33, $81, $00, $81, $35, $81, $00, $89, $9f, $9f, $75, $31, $81, $00
+	.byte $81, $2c, $81, $00, $81, $29, $81, $00, $81, $25, $81, $00, $81, $2c, $8d, $00, $8d, $9f, $9f, $7a
+	.byte $41, $0a
+	.word @song2ref164
+	.byte $41, $12
+	.word @song2ref536
+@song2ref586:
+	.byte $75, $00, $81
+@song2ref589:
+	.byte $9c, $20
+@song2ref591:
+	.byte $81
+@song2ref592:
+	.byte $00, $81
+@song2ref594:
+	.byte $20, $81, $00, $81, $20, $81, $00, $81
+@song2ref602:
+	.byte $20, $81
+@song2ref604:
+	.byte $00, $81, $21, $81, $00, $81, $21, $81, $00, $81, $21, $81, $00, $81, $21, $81, $78, $92, $22, $81, $75, $9c, $22, $81
+	.byte $00, $81, $22, $81, $00, $81, $22, $81, $22, $81, $22, $81, $77, $00, $81, $1e, $81, $00, $81, $1e, $81, $7f, $a6, $3f
+	.byte $81, $3c, $81, $3a, $81, $38, $81
+	.byte $41, $38
+	.word @song2ref586
+	.byte $00, $85, $1e, $85, $00, $85, $75
+	.byte $41, $0e
+	.word @song2ref592
+	.byte $41, $12
+	.word @song2ref602
+@song2ref675:
+	.byte $92, $19, $81, $25, $81, $19, $81, $22, $81, $19, $81, $25, $81, $19, $81, $22, $81, $00, $81, $9c, $1e, $81, $00, $81
+	.byte $1e, $81, $00, $81, $1e, $81, $00, $81, $1e
+	.byte $41, $0f
+	.word @song2ref591
+	.byte $41, $12
+	.word @song2ref602
+	.byte $41, $0e
+	.word @song2ref675
+	.byte $00, $81, $9f, $83
+	.byte $41, $0b
+	.word @song2ref589
+	.byte $85
 	.byte $41, $10
-	.word @song2ref756
-	.byte $4d
-	.byte $41, $10
-	.word @song2ref756
-	.byte $00, $bd, $bf, $bf, $44, $00
+	.word @song2ref604
+	.byte $41, $1f
+	.word @song2ref675
+	.byte $81, $00, $89
+	.byte $41, $1a
+	.word @song2ref594
+	.byte $41, $1a
+	.word @song2ref675
+	.byte $20, $81, $00, $81, $20, $81, $00, $9d, $44, $00
 @song2ch2:
-	.byte $bf, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $92
-@song2ref811:
-	.byte $2f, $81, $28, $81, $2f, $81, $28, $81, $1c, $81, $28, $81, $1c, $81, $28, $81
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $00, $bd, $4b, .lobyte(@env51), .hibyte(@env51)
-@song2ref871:
-	.byte $02, $85, $4d, $0e, $85, $4d, $02, $85, $4d, $0e, $85, $4d, $02, $85, $4d, $1a, $85, $4d, $02, $85, $4d, $0e, $85, $4d
-	.byte $40, $0c, $85, $4d, $0c, $85, $4d, $40, $0c, $85, $4d, $0c, $85, $4d, $40, $0c, $85, $4d, $18, $85, $4d, $40, $0c, $85
-	.byte $4d, $0c, $85, $4d, $04, $85, $4d, $10, $85, $4d, $04, $85, $4d, $10, $85, $4d, $04, $85, $4d, $1c, $85, $4d, $04, $85
-	.byte $4d, $10, $85, $4d, $03, $85, $4d, $0f, $85, $4d, $03, $85, $4d, $0f, $85, $4d, $03, $85, $4d, $1b, $85, $4d, $03, $85
-	.byte $4d, $0f, $85, $4d
-	.byte $41, $40
-	.word @song2ref871
-	.byte $4d
-	.byte $41, $40
-	.word @song2ref871
-	.byte $4d
-	.byte $41, $40
-	.word @song2ref871
-	.byte $00, $bd, $bf, $bf, $bf, $bf, $bf, $bf, $bf, $4b, .lobyte(@env39), .hibyte(@env39), $4c
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $41, $10
-	.word @song2ref811
-	.byte $44, $00
-@song2ch3:
-	.byte $84
-@song2ref1017:
-	.byte $30, $00, $8b, $30, $00, $8b, $30, $00, $8b, $30, $00, $8b, $30, $00, $8b, $30, $00, $8b
-	.byte $41, $12
-	.word @song2ref1017
-	.byte $30, $00, $8b, $30, $00, $8b, $30, $00, $8b, $30, $00, $8b
-@song2ref1050:
-	.byte $30, $00, $8b, $8a, $2c, $85, $00, $85, $84, $30, $00, $8b, $8a, $2c, $85, $00, $85, $84, $30, $00, $8b, $8a, $2c, $85
-	.byte $00, $85, $84
-	.byte $41, $15
-	.word @song2ref1050
-	.byte $84
-	.byte $41, $10
-	.word @song2ref1050
-@song2ref1084:
-	.byte $30, $00, $30, $00, $30, $00, $86, $2e, $81, $84, $30, $94, $2e, $84, $30, $00, $30, $30, $30, $00, $30, $00, $30, $00
-	.byte $30, $00, $86, $2e, $81, $84, $30, $94, $2e, $84, $30, $00, $30, $00, $30, $00
-	.byte $41, $20
-	.word @song2ref1084
-	.byte $41, $20
-	.word @song2ref1084
-	.byte $41, $20
-	.word @song2ref1084
-	.byte $41, $20
-	.word @song2ref1084
-	.byte $41, $20
-	.word @song2ref1084
-	.byte $41, $20
-	.word @song2ref1084
-	.byte $30, $00, $30, $00, $30, $00, $72, $92
-@song2ref1150:
-	.byte $2f, $81, $73, $83, $74, $83, $75, $2e, $81, $76, $83, $77, $81, $2d, $78, $83, $79, $81, $2c, $81, $7a, $81, $2b, $83
-	.byte $7b, $2a, $83, $7f
-@song2ref1178:
-	.byte $86, $2e, $7d, $92, $2e, $87, $50, $06, $39, $3a, $2d, $7c, $87, $7b, $81, $50, $06, $38, $39, $2c, $81, $7a, $87, $79
-	.byte $50, $06, $37, $38, $2b, $83, $78, $85, $50, $06, $36, $37, $77, $2a, $85, $76, $83, $50, $06, $35, $36, $29, $75, $87
-	.byte $74, $83, $50, $06, $34, $35, $28, $81, $73, $89, $72, $81, $50, $06, $33, $34, $27, $85, $71, $85, $50, $06, $32, $33
-	.byte $26, $85, $00, $bd, $bf, $bf, $bf, $72
-	.byte $41, $12
-	.word @song2ref1150
-	.byte $29, $83, $28, $83, $27, $81, $7f, $50, $e7, $39, $30, $81, $00, $85, $84, $2c, $81, $2c, $81, $00, $81, $2c, $81, $00
-	.byte $81, $2c, $81, $00, $89, $72, $51, $2f, $c0, $92, $26, $51, $c8, $00, $81, $71, $00, $87, $7f, $81
-@song2ref1305:
-	.byte $00, $85, $82
-@song2ref1308:
-	.byte $23, $85, $8a, $2c, $85, $82, $23, $85, $00, $85, $23, $85, $8a, $2c, $85, $82, $23, $85, $00, $85
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $23, $85, $8a, $2c, $85, $82, $23, $85, $00, $85, $23, $85, $8a, $2c, $85, $2c, $85
-	.byte $41, $12
-	.word @song2ref1305
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $23, $85, $8a, $2c, $85, $82, $23, $85, $00, $85, $23, $85, $8a, $2c, $85, $2c, $85
-	.byte $41, $12
-	.word @song2ref1305
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $41, $10
-	.word @song2ref1308
-	.byte $23, $85, $8a, $2c, $85, $82, $23, $85, $00, $85, $23, $85, $8a, $2c, $85, $82, $23, $85, $00, $bd, $bf, $bf, $bf, $bf
-	.byte $bf, $bf, $bf
+	.byte $8f, $9f, $9f, $8c, $2e, $81, $2c, $81, $29, $81, $27, $81, $25, $81, $00, $81, $29, $00, $83, $2a, $00, $9b, $9f, $9f
+	.byte $12, $85, $1e, $85, $19, $85, $16, $85, $14, $85, $18, $85, $1b, $85, $14, $85
+@song2ref791:
+	.byte $19, $81, $1d
+@song2ref794:
+	.byte $81, $19, $81, $1d, $81, $19, $81, $1d, $81
+	.byte $41, $0c
+	.word @song2ref791
+	.byte $41, $0c
+	.word @song2ref791
+	.byte $41, $0c
+	.word @song2ref791
+	.byte $00, $95, $19, $81, $00
+	.byte $41, $09
+	.word @song2ref794
+	.byte $41, $0c
+	.word @song2ref791
+	.byte $41, $0c
+	.word @song2ref791
+	.byte $12, $9d, $14, $9d, $19, $9d, $18, $9d, $16, $9d, $12, $9d, $19, $9d, $18, $9d, $16, $9d, $12, $8d, $12, $8d, $87
+	.byte $41, $0c
+	.word @song2ref791
+@song2ref852:
+	.byte $19, $81, $1d, $81
+@song2ref856:
+	.byte $18, $81, $1d, $81, $18, $81, $1d, $81, $18, $81, $1d, $81, $18, $81, $1d, $81, $16, $81, $1d, $81, $16, $81, $1d, $81
+	.byte $16, $81, $1d, $81, $16, $81, $1d, $81, $12, $81, $19, $81, $12, $81, $19, $81, $12, $81, $19, $81, $12, $81, $19
+	.byte $41, $09
+	.word @song2ref794
+	.byte $19, $81, $1d, $81
 	.byte $41, $25
-	.word @song2ref1178
-	.byte $44, $00
-@song2ch4:
-@song2ref1431:
-	.byte $1d, $85, $00, $85, $1d, $85, $00, $85, $1d, $85, $00, $85, $1d, $85, $00, $85
+	.word @song2ref852
+	.byte $9d
+	.byte $41, $0c
+	.word @song2ref791
+	.byte $00, $85
+	.byte $41, $2f
+	.word @song2ref856
+	.byte $41, $09
+	.word @song2ref794
+	.byte $19, $81, $1d, $81
+	.byte $41, $25
+	.word @song2ref852
+	.byte $8d, $14, $8d, $19, $81, $00, $99, $44, $00
+@song2ch3:
+	.byte $46, $06, $84, $14, $45, $81, $00, $87
+@song2ref950:
+	.byte $75, $83, $79, $80
+@song2ref954:
+	.byte $31, $00, $75, $83, $79, $31, $00, $75, $83, $79, $31, $00, $75, $83, $79
+	.byte $41, $09
+	.word @song2ref954
+	.byte $7f, $90, $50, $f7, $4e, $41, $85, $79, $80, $2f, $00, $75, $83, $79
+	.byte $41, $09
+	.word @song2ref954
+@song2ref989:
+	.byte $79, $31, $00, $75, $82, $2e, $00
+@song2ref996:
+	.byte $79, $80, $2f, $00, $75, $82, $2e, $00, $79, $80, $2f, $00, $75, $82, $2e, $00, $79, $80, $2f, $00, $75, $82, $2e, $00
+	.byte $83, $84, $1b
+@song2ref1023:
+	.byte $72, $90, $2a
+@song2ref1026:
+	.byte $79, $80, $2f, $72, $90, $2a, $75, $82, $2e, $72, $90, $2a, $79, $80, $2f, $72, $90, $2a, $75, $82, $2e, $72, $90, $2a
+	.byte $79, $80, $2f, $72, $90, $2a, $75, $82, $2e
+	.byte $41, $0b
+	.word @song2ref1023
+	.byte $7f, $50, $f9, $3f, $35, $85, $00, $85, $84, $1b, $45
+	.byte $41, $0c
+	.word @song2ref996
+	.byte $7f, $84, $1b, $45, $1b, $45
+	.byte $41, $0a
+	.word @song2ref1026
+	.byte $7f, $84, $1b, $45, $79, $80, $2f, $7f, $84, $1b
+@song2ref1095:
+	.byte $1b, $81
+@song2ref1097:
+	.byte $79, $80, $2f, $00, $7f, $82, $21, $00, $79, $80, $2f, $00, $75, $82, $2e, $00, $7f, $21, $00, $21, $00, $21, $00, $21
+	.byte $00
 	.byte $41, $10
-	.word @song2ref1431
+	.word @song2ref1097
 	.byte $41, $10
-	.word @song2ref1431
-	.byte $41, $10
-	.word @song2ref1431
-@song2ref1456:
-	.byte $1d, $85, $00, $85, $32, $85, $00, $85, $1d, $85, $00, $85, $32, $85, $00, $85
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $bf, $bf, $bf, $bf, $bf, $bf, $bf, $af, $1e, $8d
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-@song2ref1524:
-	.byte $1d, $85, $00, $85, $32, $85, $00, $85, $1d, $85, $00, $85, $1d, $85, $1d, $85
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-@song2ref1549:
-	.byte $1d, $85, $00, $85, $32, $85, $00, $85, $1d, $85, $00, $85, $1d, $81, $1d, $85, $1d, $81
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1524
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
-	.byte $41, $10
-	.word @song2ref1456
+	.word @song2ref1097
+	.byte $41, $09
+	.word @song2ref996
+	.byte $84, $1b, $7f, $1b, $81, $45, $81
 	.byte $41, $12
-	.word @song2ref1549
-	.byte $1d, $85, $00, $b5, $1d, $85, $00, $b5, $1d, $85, $00, $b5, $1d, $85, $00, $b5, $1d, $85, $00, $95, $1d, $85, $00, $95
-	.byte $1d, $85, $00, $95, $1d, $85, $00, $95
+	.word @song2ref1095
+	.byte $41, $0e
+	.word @song2ref1097
+	.byte $41, $0a
+	.word @song2ref950
+	.byte $41, $11
+	.word @song2ref989
+	.byte $7c, $84, $1b, $45
+	.byte $41, $0c
+	.word @song2ref996
+	.byte $79, $80, $2f, $00, $75, $83, $79
+	.byte $41, $09
+	.word @song2ref954
+	.byte $79
+	.byte $41, $09
+	.word @song2ref954
+	.byte $79
+	.byte $41, $09
+	.word @song2ref954
+	.byte $79, $31, $00, $75, $83, $79, $31, $00, $75, $83, $79, $31, $00, $7f, $82, $21, $81, $79, $80, $2f, $00, $7f, $82, $21
+	.byte $81, $79, $80, $2f, $00, $7f, $82, $21, $81, $79, $80, $2f, $00, $7f, $82, $21, $81, $21, $81, $21, $81, $80, $2f, $00
+	.byte $82, $21, $81, $80, $2f, $00, $82, $21, $81, $80, $2f, $00, $82, $21, $81, $80, $2f, $00, $82, $21, $21, $21, $21, $51
+	.byte $fe, $60, $21, $21, $21, $21, $21, $21, $21, $21, $21, $21, $21, $21, $21, $21, $21, $21, $51, $07, $f0, $21, $21, $21
+	.byte $21, $46, $03, $21, $21, $21, $21, $21, $21, $21, $21, $46, $06, $21, $81, $80, $2f, $00
+@song2ref1289:
+	.byte $84, $1b
+@song2ref1291:
+	.byte $81
+@song2ref1292:
+	.byte $80, $2f, $00, $82, $21, $81
+@song2ref1298:
+	.byte $80, $2f, $00, $82, $1e, $81, $80, $2f, $00, $82, $21, $81, $80, $2f, $00, $82, $1e
 	.byte $41, $10
-	.word @song2ref1431
-	.byte $1d, $85, $1d, $85, $1d, $85, $1d, $85, $1d, $85, $00, $95, $bf, $bf, $bf, $44, $00
+	.word @song2ref1291
+	.byte $41, $10
+	.word @song2ref1291
+	.byte $41, $0f
+	.word @song2ref1291
+	.byte $41, $11
+	.word @song2ref1289
+	.byte $41, $10
+	.word @song2ref1291
+	.byte $41, $10
+	.word @song2ref1291
+	.byte $81, $00, $87, $70, $51, $04, $f0, $81, $90, $2d, $8d, $7c, $84, $1b, $81, $7f
+	.byte $41, $09
+	.word @song2ref1292
+	.byte $51, $f0, $00, $00, $82, $21, $7f, $00, $83
+	.byte $41, $11
+	.word @song2ref1289
+	.byte $41, $10
+	.word @song2ref1291
+	.byte $41, $0f
+	.word @song2ref1291
+	.byte $87, $7c, $84, $1b, $81, $7f
+	.byte $41, $0b
+	.word @song2ref1298
+	.byte $41, $10
+	.word @song2ref1291
+	.byte $41, $0f
+	.word @song2ref1291
+	.byte $75, $83, $79
+	.byte $41, $09
+	.word @song2ref954
+	.byte $79, $31, $00, $7f, $84, $1d, $81, $45, $83, $00, $93, $44, $00
+@song2ch4:
+	.byte $29, $00, $8b
+@song2ref1408:
+	.byte $14, $00, $17, $00, $14, $00, $17, $00, $14, $00, $17, $00
+	.byte $41, $0c
+	.word @song2ref1408
+	.byte $14, $00, $17, $00, $14, $00, $17, $00, $15, $81, $23, $81, $14, $81, $13, $81, $12, $85, $00, $85, $16, $00, $19
+@song2ref1446:
+	.byte $00, $16, $00, $19, $00, $16, $00, $19, $00, $16, $00, $83
+	.byte $41, $0c
+	.word @song2ref1408
+	.byte $41, $0c
+	.word @song2ref1408
+	.byte $14, $00, $8b, $29, $20, $17, $18, $20, $27, $1a, $00, $8b, $29
+	.byte $41, $0b
+	.word @song2ref1446
+	.byte $19, $00, $16, $00, $19, $00
+@song2ref1486:
+	.byte $29, $81, $17, $17
+@song2ref1490:
+	.byte $3e, $81, $17, $17, $29, $81, $17, $17, $3e, $81, $17, $17
+	.byte $41, $10
+	.word @song2ref1486
+	.byte $41, $10
+	.word @song2ref1486
+	.byte $00, $9d
+	.byte $41, $10
+	.word @song2ref1486
+	.byte $41, $10
+	.word @song2ref1486
+	.byte $29, $00, $9b, $29, $00, $9b, $83, $14, $81, $00, $81, $14, $81, $00, $81, $14, $81, $00, $81, $14, $81, $00, $81, $1d
+	.byte $81, $00, $81, $1d, $81, $00, $81, $1d, $81, $00, $81, $1d, $81, $00, $81, $24, $81, $00, $81, $24, $81, $00, $81, $24
+	.byte $81, $24, $81, $24, $81, $00, $81, $15, $81, $00, $81, $15, $81, $00, $81, $15, $81, $00, $81, $15, $81, $29, $81, $16
+	.byte $81, $29, $81, $16, $81, $29, $81, $16, $81, $29, $81, $29, $81, $29, $81, $1d, $81, $29, $81, $1d, $81, $29, $81, $1d
+	.byte $81, $29, $81, $1d, $81
+@song2ref1617:
+	.byte $29, $29, $29, $29, $29, $29, $29, $29, $29
+	.byte $41, $09
+	.word @song2ref1617
+	.byte $41, $09
+	.word @song2ref1617
+	.byte $29, $29, $29, $29, $29, $29, $00, $83
+	.byte $41, $10
+	.word @song2ref1486
+@song2ref1643:
+	.byte $29, $81, $25, $25, $3e, $81, $25, $25, $29, $81, $25, $25, $3e, $81, $25, $25, $29, $81, $24, $24, $3e, $81, $24, $24
+	.byte $29, $81, $24, $24, $3e, $81, $24, $24, $29, $81, $15, $15, $3e, $81, $15, $15, $29, $81, $15, $15, $3e, $81, $15, $15
+	.byte $41, $10
+	.word @song2ref1486
+	.byte $41, $24
+	.word @song2ref1643
+	.byte $00, $81, $15, $15, $00, $81, $15, $15, $16, $16, $16, $16
+	.byte $41, $0c
+	.word @song2ref1486
+	.byte $00, $85
+	.byte $41, $30
+	.word @song2ref1643
+	.byte $00, $85
+	.byte $41, $0c
+	.word @song2ref1490
+	.byte $41, $24
+	.word @song2ref1643
+	.byte $00, $81, $15, $15, $00, $81, $16, $16, $16, $81, $16, $16, $17, $9d, $44, $00

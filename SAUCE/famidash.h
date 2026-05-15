@@ -181,7 +181,16 @@ uint8_t coin3_obtained[MAX_LEVEL_COMPLETE];
 uint8_t LEVELCOMPLETE[MAX_LEVEL_COMPLETE];
 uint8_t level_completeness_normal[MAX_LEVEL_COMPLETE*2];
 #define level_completeness_practice (&level_completeness_normal[MAX_LEVEL_COMPLETE])
-uint8_t achievements[0x20];
+
+uint8_t invisible_coin1_obtained[MAX_LEVEL_COMPLETE];
+uint8_t invisible_coin2_obtained[MAX_LEVEL_COMPLETE];
+uint8_t invisible_coin3_obtained[MAX_LEVEL_COMPLETE];
+
+uint8_t invisible_LEVELCOMPLETE[MAX_LEVEL_COMPLETE];
+uint8_t invisible_level_completeness_normal[MAX_LEVEL_COMPLETE*2];
+#define invisible_level_completeness_practice (&invisible_level_completeness_normal[MAX_LEVEL_COMPLETE])
+
+
 
 uint8_t invisible;
 uint8_t twoplayer;
