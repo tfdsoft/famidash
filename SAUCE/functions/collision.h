@@ -914,7 +914,7 @@ char bg_coll_U() {
 	}
 
 	if (high_byte(currplayer_vel_y) & 0x80) {
-		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 10 : 0); // automatically only the low byte
+		temp_x = Generic.x + low_word(scroll_x) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 4 : 0); // automatically only the low byte
 		
 		storeWordSeparately(
 			add_scroll_y(
