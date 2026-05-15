@@ -19,7 +19,8 @@ void refreshmenu() {
 	tmp5 = ((level&1)<<2)<<8;	// Which nametable to put the data into
 	set_scroll_x(((level-tmp4)&1)<<8);
 	
-	if (invisblocks) multi_vram_buffer_horz((const char*)invisibletext,sizeof(invisibletext),NTADR_A(12, 9));	
+	if (invisblocks) { multi_vram_buffer_horz((const char*)invisibletext,sizeof(invisibletext),NTADR_A(12, 9));	
+	multi_vram_buffer_horz((const char*)invisibletext,sizeof(invisibletext),NTADR_B(12, 9)); }
 	
 	__A__ = idx16_load_hi(levelTextsUpper, level);
 	if (__A__) draw_padded_text(levelTextsUpper[level], levelTextsUpperSize[level], 17, NTADR_A(8, 10)|(tmp5 & 0xFF00));
