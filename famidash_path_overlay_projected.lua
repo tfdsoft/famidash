@@ -17,6 +17,7 @@ local ADDR_JOYPAD1_HOLD  = 0x0022
 local PAD_A  = 0x80
 local PAD_UP = 0x08
 local GAMEMODE_SHIP = 1
+local GAMEMODE_WAVE = 6
 
 local TRAIL_MAX           = 600
 local TRAIL_COLOR         = 0xFFFF00  -- yellow
@@ -433,6 +434,7 @@ emu.addEventCallback(function()
     local aPressedFresh = aHeld and (not prevAHeld)
     prevAHeld = aHeld
     local gamemode = tryReadGamemode()
+    local isWaveMode = (gamemode == GAMEMODE_WAVE)
 
     local screenSize = emu.getScreenSize()
     local screenBuffer = emu.getScreenBuffer()
@@ -470,9 +472,9 @@ emu.addEventCallback(function()
                     local pressedFresh = (prevEntry.p == true) or (curEntry.p == true)
                     local held = (prevEntry.a == true) or (curEntry.a == true)
                     local thickness = 1
-                    if held then thickness = 3 end
+                    if held and (not isWaveMode) then thickness = 3 end
                     drawTrailSegment(axS, ayS, bxS, byS, TRAIL_COLOR, thickness)
-                    if pressedFresh and curEntry.p == true then
+                    if (not isWaveMode) and pressedFresh and curEntry.p == true then
                         drawFilledCircle(bxS, byS, 4, TRAIL_COLOR)
                     end
                 end

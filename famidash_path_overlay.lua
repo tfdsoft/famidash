@@ -19,6 +19,7 @@ local ADDR_SCROLL_Y   = 0x04AA  -- 16-bit raw (lo|hi); linearised as lo + hi*240
 local ADDR_PLAYER_X   = 0x043D  -- 16-bit (hi byte is pixel)
 local ADDR_PLAYER_Y   = 0x0441  -- 16-bit (hi byte is pixel)
 local ADDR_JOYPAD1_HOLD = 0x0022
+local GAMEMODE_WAVE   = 6
 
 local PAD_A  = 0x80
 local PAD_UP = 0x08
@@ -56,6 +57,23 @@ local trailHead = 1   -- next write slot
 local trailCount = 0  -- valid entries
 local prevPx = -1
 local prevAHeld = false
+local gamemodeLabel = nil
+local gamemodeLabelChecked = false
+
+local function tryReadGamemode()
+    if not gamemodeLabelChecked then
+        gamemodeLabelChecked = true
+        local ok, label = pcall(function() return emu.getLabelAddress("_gamemode") end)
+        if ok and label and label.address ~= nil and label.memType ~= nil then
+            gamemodeLabel = label
+        end
+    end
+
+    if gamemodeLabel ~= nil then
+        return emu.read(gamemodeLabel.address, gamemodeLabel.memType, false)
+    end
+    return nil
+end
 
 local function clearTrail()
     trail = {}
@@ -110,6 +128,8 @@ emu.addEventCallback(function()
     local aHeld = ((hold & (PAD_A | PAD_UP)) ~= 0)
     local aPressedFresh = aHeld and (not prevAHeld)
     prevAHeld = aHeld
+    local gamemode = tryReadGamemode()
+    local isWaveMode = (gamemode == GAMEMODE_WAVE)
 
     -- Append current position to the ring buffer.
     trail[trailHead] = { x = px, y = py, a = aHeld, p = aPressedFresh }
@@ -146,9 +166,9 @@ emu.addEventCallback(function()
                 local pressedFresh = (prevEntry.p == true) or (curEntry.p == true)
                 local held = (prevEntry.a == true) or (curEntry.a == true)
                 local thickness = 1
-                if held then thickness = 3 end
+                if held and (not isWaveMode) then thickness = 3 end
                 drawTrailSegment(axS, ayS, bxS, byS, TRAIL_COLOR, thickness)
-                if pressedFresh and curEntry.p == true then
+                if (not isWaveMode) and pressedFresh and curEntry.p == true then
                     drawFilledCircle(bxS, byS, 4, TRAIL_COLOR)
                 end
             end
