@@ -435,18 +435,18 @@ void common_dash_orb_routine() {
 #define table_offset tmp3
 #define collided tmp4
 
-//#pragma data-name(push, "XCD_BANK_06")
-//#pragma rodata-name(push, "XCD_BANK_06")
-//#pragma code-name(push, "XCD_BANK_06")
+#pragma data-name(push, "XCD_BANK_06")
+#pragma rodata-name(push, "XCD_BANK_06")
+#pragma code-name(push, "XCD_BANK_06")
 
 // Load the player velocity from the height table
 static uint16_t _sprite_gamemode_y_adjust() {
 	return ind16BE_load_NOC(sprite_gamemode_adjust_heights(currplayer_table_idx), ((retro_mode && gamemode == GAMEMODE_ROBOT) || gamemode == GAMEMODE_NINJA) ? table_offset : gamemode | table_offset);
 }
 
-//#pragma code-name(pop)
-//#pragma rodata-name(pop)
-//#pragma data-name(pop)
+#pragma code-name(pop)
+#pragma rodata-name(pop)
+#pragma data-name(pop)
 
 static uint16_t sprite_gamemode_y_adjust() {	// A trampoline of sorts
 	if (gamemode == GAMEMODE_POGO) {
