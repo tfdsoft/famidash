@@ -3913,8 +3913,8 @@ SSDPCM_getbyte:
 ; void update_level_completeness();
 .segment "CODE_2"
 
-.import _level, _practice_point_count
-.import _level_completeness_normal
+.import _level, _practice_point_count, _make_cube_jump_higher, _minicoins, _wrap_mode, _forced_trails
+.import _level_completeness_normal, _invisible_level_completeness_normal, _invisblocks
 
 .export _update_level_completeness
 .proc _update_level_completeness
@@ -3925,6 +3925,14 @@ SSDPCM_getbyte:
 	levelLengthHi = tmp1
 
 	percentage = tmp2
+
+	lda #$00
+	sta _slowmode
+	sta _wrap_mode
+	sta _minicoins
+	sta _kandoframecnt
+	sta _forced_trails
+	sta _make_cube_jump_higher
 
 	start:
 		LDY	_level
@@ -4021,6 +4029,17 @@ SSDPCM_getbyte:
 		ADC _level				;
 		TAX						;__
 
+		lda _invisblocks
+		beq noinvis
+		TYA						;
+		CMP _invisible_level_completeness_normal, X
+		BCC :+					;	Update value if bigger than last one
+			STA _invisible_level_completeness_normal, X
+		:						;__
+		RTS
+
+
+noinvis:
 		TYA						;
 		CMP _level_completeness_normal, X
 		BCC :+					;	Update value if bigger than last one

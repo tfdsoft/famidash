@@ -20,7 +20,8 @@ void draw_progress_bar();
 void draw_both_progress_bars() {
 	
 		// Normal level completeness stuff
-		tmp7 = level_completeness_normal[level];
+		if (!invisblocks) tmp7 = level_completeness_normal[level];
+		else tmp7 = invisible_level_completeness_normal[level];
 		hexToDec(tmp7);
 		tmp1 = 112;		// x
 		if (tmp4) {
@@ -40,7 +41,8 @@ void draw_both_progress_bars() {
 		
 	
 		// Practice level completeness stuff
-		tmp7 = level_completeness_practice[level];
+		if (!invisblocks) tmp7 = level_completeness_practice[level];
+		else tmp7 = invisible_level_completeness_practice[level];
 		hexToDec(tmp7);
 		tmp1 = 112;		// x
 		if (tmp4) {
@@ -110,7 +112,7 @@ void draw_full_progress_bar() {
 	draw_bar_sprites();
 	// end tmp5 usage
 }
-
+/*
 void draw_level_progress() {
 	update_level_completeness();
 	hexToDec(__A__);
@@ -119,7 +121,7 @@ void draw_level_progress() {
 	tmp3 = 25;		// offset
 	draw_percentage();	
 }
-
+*/
 void draw_percentage() {
 	if (hexToDecOutputBuffer[2]) { 				  
 		high_byte(tmp6) = hexToDecOutputBuffer[2]; // number

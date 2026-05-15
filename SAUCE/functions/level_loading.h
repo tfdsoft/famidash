@@ -78,6 +78,9 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	drawing_frame = 0;
 	gravity_mod = 0;
 	disco_sprites = 0;
+	nullscapes_active = 0;
+
+
 
 	outline_color = 0x30;	
 	dual = twoplayer ? 1 : 0;
