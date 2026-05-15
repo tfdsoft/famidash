@@ -57,6 +57,7 @@ const uint8_t difficulty_list[] = {
 	HARDER,	// pyrophoric
 	HARDER,	// cryogenic
 	HARDER,	// oceane
+	HARDER,	// endgame
 	HARDER,	// generationretro
 	HARDER,	// scarletsurge
 	HARDER,	// tinytunes
@@ -207,6 +208,7 @@ const uint8_t stars_list[] = {
 	6,	// pyrophoric
 	6,	// cryogenic
 	6,	// oceane
+	6,	// endgame
 	6,	// generationretro
 	6,	// scarletsurge
 	6,	// tinytunes

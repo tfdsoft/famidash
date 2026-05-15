@@ -727,12 +727,14 @@
 			originalArtist: "Crafty Jumper",
 			coveringArtist: "Crafty Jumper",
 		},
+		/*
 		{
 			fmsSongName: "Megalovania",
 			lowerText: "MEGALOVANIA",
 			originalArtist: "Toby Fox",
 			coveringArtist: "Crafty Jumper",
-		},		
+		},
+		*/
 		{
 			fmsSongName: "Meltdown",
 			lowerText: "MELTDOWN",

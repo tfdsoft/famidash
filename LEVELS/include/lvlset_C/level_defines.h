@@ -4,7 +4,7 @@
 #define LEVELSET 'C'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 14
+#define COMMUNITY_LEVEL_COUNT 15
 
 #define level_movie 0
 #define level_groundtoretray 1
@@ -12,11 +12,12 @@
 #define level_short_kings 3
 #define level_nicktoons 4
 #define level_hungrymanadventures 5
-#define level_astronomicalexpedition 6
-#define level_ninecircleseasy 7
-#define level_overawed 8
-#define level_unity 9
-#define level_dastardly 10
-#define level_trolledfix 11
-#define level_supercycles 12
-#define level_futurefunkfix 13
+#define level_endgame 6
+#define level_astronomicalexpedition 7
+#define level_ninecircleseasy 8
+#define level_overawed 9
+#define level_unity 10
+#define level_dastardly 11
+#define level_trolledfix 12
+#define level_supercycles 13
+#define level_futurefunkfix 14

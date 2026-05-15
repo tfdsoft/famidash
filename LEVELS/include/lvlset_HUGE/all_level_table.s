@@ -60,6 +60,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_pyrophoric)
 	.byte .lobyte(level_data_cryogenic)
 	.byte .lobyte(level_data_oceane)
+	.byte .lobyte(level_data_endgame)
 	.byte .lobyte(level_data_generationretro)
 	.byte .lobyte(level_data_scarletsurge)
 	.byte .lobyte(level_data_tinytunes)
@@ -209,6 +210,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_pyrophoric)
 	.byte .hibyte(level_data_cryogenic)
 	.byte .hibyte(level_data_oceane)
+	.byte .hibyte(level_data_endgame)
 	.byte .hibyte(level_data_generationretro)
 	.byte .hibyte(level_data_scarletsurge)
 	.byte .hibyte(level_data_tinytunes)
@@ -358,6 +360,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_pyrophoric))
 	.byte .lobyte(.bank(level_data_cryogenic))
 	.byte .lobyte(.bank(level_data_oceane))
+	.byte .lobyte(.bank(level_data_endgame))
 	.byte .lobyte(.bank(level_data_generationretro))
 	.byte .lobyte(.bank(level_data_scarletsurge))
 	.byte .lobyte(.bank(level_data_tinytunes))
@@ -606,6 +609,7 @@ _level_lengths_lo:
 	.byte .lobyte($00004D)		; pyrophoric
 	.byte .lobyte($000099)		; cryogenic
 	.byte .lobyte($00005B)		; oceane
+	.byte .lobyte($00009F)		; endgame
 	.byte .lobyte($0000B2)		; generationretro
 	.byte .lobyte($0000E1)		; scarletsurge
 	.byte .lobyte($000082)		; tinytunes
@@ -757,6 +761,7 @@ _level_lengths_md:
 	.byte .hibyte($00004D)		; pyrophoric
 	.byte .hibyte($000099)		; cryogenic
 	.byte .hibyte($00005B)		; oceane
+	.byte .hibyte($00009F)		; endgame
 	.byte .hibyte($0000B2)		; generationretro
 	.byte .hibyte($0000E1)		; scarletsurge
 	.byte .hibyte($000082)		; tinytunes
@@ -908,6 +913,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00004D)		; pyrophoric
 	.byte .bankbyte($000099)		; cryogenic
 	.byte .bankbyte($00005B)		; oceane
+	.byte .bankbyte($00009F)		; endgame
 	.byte .bankbyte($0000B2)		; generationretro
 	.byte .bankbyte($0000E1)		; scarletsurge
 	.byte .bankbyte($000082)		; tinytunes

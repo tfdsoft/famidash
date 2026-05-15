@@ -8,6 +8,7 @@ const uint8_t difficulty_list[] = {
 	NORMAL,	// short_kings
 	NORMAL,	// nicktoons
 	HARD,	// hungrymanadventures
+	HARDER,	// endgame
 	HARDER,	// astronomicalexpedition
 	HARDER,	// ninecircleseasy
 	INSANE,	// overawed
@@ -25,6 +26,7 @@ const uint8_t stars_list[] = {
 	3,	// short_kings
 	3,	// nicktoons
 	4,	// hungrymanadventures
+	6,	// endgame
 	7,	// astronomicalexpedition
 	7,	// ninecircleseasy
 	8,	// overawed

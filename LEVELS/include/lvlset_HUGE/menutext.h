@@ -104,92 +104,93 @@ const char levelText63[12] = "PAYMENT TYPE";
 const char levelText64[10] = "PYROPHORIC";
 const char levelText65[ 9] = "CRYOGENIC";
 const char levelText66[ 6] = "OCEANE";
-const char levelText67[ 5] = "RETRO";
-const char levelText68[ 5] = "SURGE";
-const char levelText69[ 5] = "TUNES";
-const char levelText6A[10] = "KAPPACLYSM";
-const char levelText6B[ 8] = "SUNSHINE";
-const char levelText6C[10] = "REVOLUTION";
-const char levelText6D[ 7] = "HOLIDAY";
-const char levelText6E[ 9] = "FIRE AURA";
-const char levelText6F[ 4] = "DUST";
-const char levelText70[ 8] = "THE RACE";
-const char levelText71[12] = "FACTORY TIME";
-const char levelText72[14] = "THE STEAMWORKS";
-const char levelText73[10] = "EXPEDITION";
-const char levelText74[ 4] = "EASY";
-const char levelText75[ 9] = "THE WOODS";
-const char levelText76[13] = "RAINING TACOS";
-const char levelText77[ 8] = "OVERAWED";
-const char levelText78[ 6] = "BUT NO";
-const char levelText79[ 7] = "TYLENOL";
-const char levelText7A[ 5] = "GREIF";
-const char levelText7B[ 2] = "10";
-const char levelText7C[ 4] = "MARS";
-const char levelText7D[ 5] = "UNITY";
-const char levelText7E[ 6] = "AKRILE";
-const char levelText7F[ 8] = "ODDITIES";
-const char levelText80[10] = "POWER TRIP";
-const char levelText81[ 7] = "VIOLINS";
-const char levelText82[13] = "NEW DASH CITY";
-const char levelText83[ 9] = "DASTARDLY";
-const char levelText84[ 7] = "TROLLED";
-const char levelText85[ 9] = "BIRDBRAIN";
-const char levelText86[10] = "EASY LEVEL";
-const char levelText87[ 6] = "TETRIX";
-const char levelText88[ 9] = "HIGH LIFE";
-const char levelText89[10] = "EXCITEMENT";
-const char levelText8A[ 4] = "ROAD";
-const char levelText8B[13] = "THE NIGHTMARE";
-const char levelText8C[10] = "DEMON PARK";
-const char levelText8D[12] = "SUPER CYCLES";
-const char levelText8E[ 1] = "X";
-const char levelText8F[11] = "PROBLEMATIC";
-const char levelText90[ 7] = "CIRCLES";
-const char levelText91[ 7] = "BLASTER";
-const char levelText92[ 6] = "DECODE";
-const char levelText93[10] = "DEATH MOON";
-const char levelText94[13] = "CLUTTERFUNK 2";
-const char levelText95[ 6] = "MOTION";
-const char levelText96[11] = "SPEED RACER";
-const char levelText97[ 4] = "RUSH";
-const char levelText98[11] = "SHENANIGANS";
-const char levelText99[11] = "TRY THIS GD";
-const char levelText9A[11] = "GOLDEN HAZE";
-const char levelText9B[ 4] = "HELL";
-const char levelText9C[ 9] = "GAME OVER";
-const char levelText9D[ 5] = "LIGHT";
-const char levelText9E[11] = "FIRE TEMPLE";
-const char levelText9F[ 9] = "TOE II V2";
-const char levelTextA0[11] = "PG CLUBSTEP";
-const char levelTextA1[13] = "THERMODYNAMIX";
-const char levelTextA2[15] = "DEMON CRYOGENIC";
-const char levelTextA3[11] = "AZURONXOLAX";
-const char levelTextA4[13] = "FOREST TEMPLE";
-const char levelTextA5[ 9] = "FAIRYDUST";
-const char levelTextA6[10] = "JAWBREAKER";
-const char levelTextA7[11] = "FUTURE FUNK";
-const char levelTextA8[ 9] = "STALEMATE";
-const char levelTextA9[ 2] = "8O";
-const char levelTextAA[ 9] = "ACROPOLIS";
-const char levelTextAB[ 2] = "HI";
-const char levelTextAC[ 3] = "EON";
-const char levelTextAD[ 9] = "LANDSCAPE";
-const char levelTextAE[ 8] = "DIABLO X";
-const char levelTextAF[10] = "SONIC WAVE";
-const char levelTextB0[ 4] = "STYX";
-const char levelTextB1[ 9] = "CATACLYSM";
-const char levelTextB2[ 9] = "AFTERMATH";
-const char levelTextB3[ 9] = "WCROPOLIX";
-const char levelTextB4[13] = "AFTERCATABATH";
-const char levelTextB5[11] = "SHARDSCAPES";
-const char levelTextB6[ 6] = "111 RG";
-const char levelTextB7[14] = "SLAUGHTERHOUSE";
-const char levelTextB8[ 6] = "KRATOS";
-const char levelTextB9[10] = "NULLSCAPES";
-const char levelTextBA[ 9] = "EVERY END";
-const char levelTextBB[14] = "SILENT CIRCLES";
-const char levelTextBC[10] = "LUCKY DRAW";
+const char levelText67[ 7] = "ENDGAME";
+const char levelText68[ 5] = "RETRO";
+const char levelText69[ 5] = "SURGE";
+const char levelText6A[ 5] = "TUNES";
+const char levelText6B[10] = "KAPPACLYSM";
+const char levelText6C[ 8] = "SUNSHINE";
+const char levelText6D[10] = "REVOLUTION";
+const char levelText6E[ 7] = "HOLIDAY";
+const char levelText6F[ 9] = "FIRE AURA";
+const char levelText70[ 4] = "DUST";
+const char levelText71[ 8] = "THE RACE";
+const char levelText72[12] = "FACTORY TIME";
+const char levelText73[14] = "THE STEAMWORKS";
+const char levelText74[10] = "EXPEDITION";
+const char levelText75[ 4] = "EASY";
+const char levelText76[ 9] = "THE WOODS";
+const char levelText77[13] = "RAINING TACOS";
+const char levelText78[ 8] = "OVERAWED";
+const char levelText79[ 6] = "BUT NO";
+const char levelText7A[ 7] = "TYLENOL";
+const char levelText7B[ 5] = "GREIF";
+const char levelText7C[ 2] = "10";
+const char levelText7D[ 4] = "MARS";
+const char levelText7E[ 5] = "UNITY";
+const char levelText7F[ 6] = "AKRILE";
+const char levelText80[ 8] = "ODDITIES";
+const char levelText81[10] = "POWER TRIP";
+const char levelText82[ 7] = "VIOLINS";
+const char levelText83[13] = "NEW DASH CITY";
+const char levelText84[ 9] = "DASTARDLY";
+const char levelText85[ 7] = "TROLLED";
+const char levelText86[ 9] = "BIRDBRAIN";
+const char levelText87[10] = "EASY LEVEL";
+const char levelText88[ 6] = "TETRIX";
+const char levelText89[ 9] = "HIGH LIFE";
+const char levelText8A[10] = "EXCITEMENT";
+const char levelText8B[ 4] = "ROAD";
+const char levelText8C[13] = "THE NIGHTMARE";
+const char levelText8D[10] = "DEMON PARK";
+const char levelText8E[12] = "SUPER CYCLES";
+const char levelText8F[ 1] = "X";
+const char levelText90[11] = "PROBLEMATIC";
+const char levelText91[ 7] = "CIRCLES";
+const char levelText92[ 7] = "BLASTER";
+const char levelText93[ 6] = "DECODE";
+const char levelText94[10] = "DEATH MOON";
+const char levelText95[13] = "CLUTTERFUNK 2";
+const char levelText96[ 6] = "MOTION";
+const char levelText97[11] = "SPEED RACER";
+const char levelText98[ 4] = "RUSH";
+const char levelText99[11] = "SHENANIGANS";
+const char levelText9A[11] = "TRY THIS GD";
+const char levelText9B[11] = "GOLDEN HAZE";
+const char levelText9C[ 4] = "HELL";
+const char levelText9D[ 9] = "GAME OVER";
+const char levelText9E[ 5] = "LIGHT";
+const char levelText9F[11] = "FIRE TEMPLE";
+const char levelTextA0[ 9] = "TOE II V2";
+const char levelTextA1[11] = "PG CLUBSTEP";
+const char levelTextA2[13] = "THERMODYNAMIX";
+const char levelTextA3[15] = "DEMON CRYOGENIC";
+const char levelTextA4[11] = "AZURONXOLAX";
+const char levelTextA5[13] = "FOREST TEMPLE";
+const char levelTextA6[ 9] = "FAIRYDUST";
+const char levelTextA7[10] = "JAWBREAKER";
+const char levelTextA8[11] = "FUTURE FUNK";
+const char levelTextA9[ 9] = "STALEMATE";
+const char levelTextAA[ 2] = "8O";
+const char levelTextAB[ 9] = "ACROPOLIS";
+const char levelTextAC[ 2] = "HI";
+const char levelTextAD[ 3] = "EON";
+const char levelTextAE[ 9] = "LANDSCAPE";
+const char levelTextAF[ 8] = "DIABLO X";
+const char levelTextB0[10] = "SONIC WAVE";
+const char levelTextB1[ 4] = "STYX";
+const char levelTextB2[ 9] = "CATACLYSM";
+const char levelTextB3[ 9] = "AFTERMATH";
+const char levelTextB4[ 9] = "WCROPOLIX";
+const char levelTextB5[13] = "AFTERCATABATH";
+const char levelTextB6[11] = "SHARDSCAPES";
+const char levelTextB7[ 6] = "111 RG";
+const char levelTextB8[14] = "SLAUGHTERHOUSE";
+const char levelTextB9[ 6] = "KRATOS";
+const char levelTextBA[10] = "NULLSCAPES";
+const char levelTextBB[ 9] = "EVERY END";
+const char levelTextBC[14] = "SILENT CIRCLES";
+const char levelTextBD[10] = "LUCKY DRAW";
 
 
 const char* const levelTextsUpper[] = {
@@ -245,6 +246,7 @@ const char* const levelTextsUpper[] = {
 	NULL,
 	levelText13,
 	levelText14,
+	NULL,
 	NULL,
 	NULL,
 	NULL,
@@ -395,6 +397,7 @@ const uint8_t levelTextsUpperSize[] = {
 	0,
 	sizeof(levelText13),
 	sizeof(levelText14),
+	0,
 	0,
 	0,
 	0,
@@ -598,24 +601,24 @@ const char* const levelTextsLower[] = {
 	levelText95,
 	levelText96,
 	levelText97,
-	levelText33,
 	levelText98,
+	levelText33,
 	levelText99,
 	levelText9A,
 	levelText9B,
 	levelText9C,
 	levelText9D,
 	levelText9E,
-	levelText64,
 	levelText9F,
+	levelText64,
 	levelTextA0,
-	levelText40,
 	levelTextA1,
+	levelText40,
 	levelTextA2,
 	levelTextA3,
 	levelTextA4,
-	levelText1C,
 	levelTextA5,
+	levelText1C,
 	levelTextA6,
 	levelTextA7,
 	levelTextA8,
@@ -627,12 +630,12 @@ const char* const levelTextsLower[] = {
 	levelTextAE,
 	levelTextAF,
 	levelTextB0,
-	levelText1E,
 	levelTextB1,
+	levelText1E,
 	levelTextB2,
 	levelTextB3,
-	levelText40,
 	levelTextB4,
+	levelText40,
 	levelTextB5,
 	levelTextB6,
 	levelTextB7,
@@ -641,6 +644,7 @@ const char* const levelTextsLower[] = {
 	levelTextBA,
 	levelTextBB,
 	levelTextBC,
+	levelTextBD,
 };
 
 const uint8_t levelTextsLowerSize[] = {
@@ -748,24 +752,24 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelText95),
 	sizeof(levelText96),
 	sizeof(levelText97),
-	sizeof(levelText33),
 	sizeof(levelText98),
+	sizeof(levelText33),
 	sizeof(levelText99),
 	sizeof(levelText9A),
 	sizeof(levelText9B),
 	sizeof(levelText9C),
 	sizeof(levelText9D),
 	sizeof(levelText9E),
-	sizeof(levelText64),
 	sizeof(levelText9F),
+	sizeof(levelText64),
 	sizeof(levelTextA0),
-	sizeof(levelText40),
 	sizeof(levelTextA1),
+	sizeof(levelText40),
 	sizeof(levelTextA2),
 	sizeof(levelTextA3),
 	sizeof(levelTextA4),
-	sizeof(levelText1C),
 	sizeof(levelTextA5),
+	sizeof(levelText1C),
 	sizeof(levelTextA6),
 	sizeof(levelTextA7),
 	sizeof(levelTextA8),
@@ -777,12 +781,12 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelTextAE),
 	sizeof(levelTextAF),
 	sizeof(levelTextB0),
-	sizeof(levelText1E),
 	sizeof(levelTextB1),
+	sizeof(levelText1E),
 	sizeof(levelTextB2),
 	sizeof(levelTextB3),
-	sizeof(levelText40),
 	sizeof(levelTextB4),
+	sizeof(levelText40),
 	sizeof(levelTextB5),
 	sizeof(levelTextB6),
 	sizeof(levelTextB7),
@@ -791,4 +795,5 @@ const uint8_t levelTextsLowerSize[] = {
 	sizeof(levelTextBA),
 	sizeof(levelTextBB),
 	sizeof(levelTextBC),
+	sizeof(levelTextBD),
 };
