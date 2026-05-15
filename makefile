@@ -84,111 +84,18 @@ endif
 .PHONY: default clean distclean build nsf vs-sys main b-sides
 
 build: $(OUTDIR) $(OUTDIR)/$(NAME).nes
-all: main vs-sys b-sides c-sides d-sides album huge vs-huge
+all: main
 nsf-main: $(TMPDIR_PREFIX)/main/$(NAME)_prg.bin $(TMPDIR_PREFIX)/main/$(NAME)_nsfprg.bin $(TMPDIR_PREFIX)/main/$(NAME)_meta.bin $(TMPDIR_PREFIX)/main/$(NAME)_hdr.bin
 
-main: LEVELSET = A
+main: LEVELSET = D
 main: OUTDIR = $(OUTDIR_PREFIX)/$@
 main: TMPDIR = $(TMPDIR_PREFIX)/$@
 main:
-	@echo Building main...
-	@$(MAKE) build LEVELSET=$(LEVELSET) \
-	CC65_DEFINES=$(CC65_DEFINES) \
-	CA65_DEFINES=$(CA65_DEFINES) \
-	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
-	--no-print-directory
-	
-album: LEVELSET = Album
-album: CC65_DEFINES += -D__THE_ALBUM=1
-album: CA65_DEFINES += -D__THE_ALBUM=1
-album: OUTDIR = $(OUTDIR_PREFIX)/$@
-album: TMPDIR = $(TMPDIR_PREFIX)/$@
-album:
-	@echo Building the album...
-	@$(MAKE) build LEVELSET=$(LEVELSET) \
-	CC65_DEFINES=$(CC65_DEFINES) \
-	CA65_DEFINES=$(CA65_DEFINES) \
-	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG2) \
-	--no-print-directory
-
-vs-sys: LEVELSET = A
-vs-sys: CC65_DEFINES += -D__VS_SYSTEM=1
-vs-sys: CA65_DEFINES += -D__VS_SYSTEM=1
-vs-sys: OUTDIR = $(OUTDIR_PREFIX)/$@
-vs-sys: TMPDIR = $(TMPDIR_PREFIX)/$@
-vs-sys: CFG = CONFIG/vs-sys.cfg
-vs-sys:
-	@echo Building VS System version...
-	@$(MAKE) build LEVELSET=$(LEVELSET) \
-	CC65_DEFINES=$(CC65_DEFINES) \
-	CA65_DEFINES=$(CA65_DEFINES) \
-	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
-	--no-print-directory
-
-DEFINES_HUGE = \
-	-D__HUGE_ROM=1 \
-	-D__VS_SYSTEM=1 \
-	-DDEBUG
-
-vs-huge: LEVELSET = HUGE
-vs-huge: CC65_DEFINES += $(DEFINES_HUGE)
-vs-huge: CA65_DEFINES += $(DEFINES_HUGE)
-vs-huge: OUTDIR = $(OUTDIR_PREFIX)/$@
-vs-huge: TMPDIR = $(TMPDIR_PREFIX)/$@
-
-vs-huge:
-	@echo Building HUGE-VS...
-	@$(MAKE) build LEVELSET=$(LEVELSET) \
-	CC65_DEFINES="$(CC65_DEFINES)" \
-	CA65_DEFINES="$(CA65_DEFINES)" \
-	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG5) \
-	--no-print-directory
-	
-b-sides: LEVELSET = B
-b-sides: OUTDIR = $(OUTDIR_PREFIX)/$@
-b-sides: TMPDIR = $(TMPDIR_PREFIX)/$@
-b-sides:
-	@echo Building B-Sides...
-	@$(MAKE) build LEVELSET=$(LEVELSET) \
-	CC65_DEFINES=$(CC65_DEFINES) \
-	CA65_DEFINES=$(CA65_DEFINES) \
-	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
-	--no-print-directory
-
-c-sides: LEVELSET = C
-c-sides: OUTDIR = $(OUTDIR_PREFIX)/$@
-c-sides: TMPDIR = $(TMPDIR_PREFIX)/$@
-c-sides:
-	@echo Building C-Sides...
-	@$(MAKE) build LEVELSET=$(LEVELSET) \
-	CC65_DEFINES=$(CC65_DEFINES) \
-	CA65_DEFINES=$(CA65_DEFINES) \
-	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
-	--no-print-directory
-
-d-sides: LEVELSET = D
-d-sides: OUTDIR = $(OUTDIR_PREFIX)/$@
-d-sides: TMPDIR = $(TMPDIR_PREFIX)/$@
-d-sides:
 	@echo Building D-Sides...
 	@$(MAKE) build LEVELSET=$(LEVELSET) \
 	CC65_DEFINES=$(CC65_DEFINES) \
 	CA65_DEFINES=$(CA65_DEFINES) \
 	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG) \
-	--no-print-directory
-
-
-huge: LEVELSET = HUGE
-huge: CC65_DEFINES += -D__HUGE_ROM=1
-huge: CA65_DEFINES += -D__HUGE_ROM=1
-huge: OUTDIR = $(OUTDIR_PREFIX)/$@
-huge: TMPDIR = $(TMPDIR_PREFIX)/$@
-huge:
-	@echo Building HUGE...
-	@$(MAKE) build LEVELSET=$(LEVELSET) \
-	CC65_DEFINES=$(CC65_DEFINES) \
-	CA65_DEFINES=$(CA65_DEFINES) \
-	OUTDIR=$(OUTDIR) TMPDIR=$(TMPDIR) CFG=$(CFG4) \
 	--no-print-directory
 
 #target: dependencies

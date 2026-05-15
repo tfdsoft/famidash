@@ -214,14 +214,7 @@ if __name__ == "__main__":
 		exit(1)
 
 
-	if args.exportAll:
-		levelSet = "all"
-	else:
-		levelSet = args.levelSet
-		while levelSet not in availableLevelSets.union({"exit", "all"}):
-			levelSet = input(f"Please select the level set to export [{', '.join(sorted(availableLevelSets))}, 'exit' to exit, 'all' to build them all]: ")
-		if levelSet == "exit":
-			exit(0)
+	levelSet = "D"
 
 	if levelSet == "all":
 		levelSetsToExport = availableLevelSets

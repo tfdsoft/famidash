@@ -479,20 +479,34 @@ _GAME_CHR:
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     .endrepeat
 
-    .repeat 11, I   ; banks 70 - 91
+    .repeat 10, I   ; banks 70 - 89
         .incbin .sprintf("fan icon collection/CONTEST WINNERS/contest%1X.chr", I+1) ; 1kb
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     .endrepeat
 
-        .incbin "fan icon collection/starfox.chr" ; 1kb (92)
-        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
 
-    .incbin "GRAPHICS/Gamemode/banktriangle.chr" ; 1kb (94)
+
+	.if (_LEVELSET = $141006E)
+;        .incbin "fan icon collection/starfox.chr" ; 1kb (90)
+;        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+
+        .incbin "GRAPHICS/Menus/HUGE-demon.chr" ; 1kb (90)
+        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb	(93 - unused, filler)
+	.else
+        .incbin "fan icon collection/starfox.chr" ; 1kb (90)
+        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+	.endif
+
+
+    .incbin "GRAPHICS/Gamemode/banktriangle.chr" ; 1kb (92)
+    .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
+    
+    .incbin "GRAPHICS/Gamemode/bankfootball.chr" ; 1kb (94)
     .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     
     .incbin "GRAPHICS/Menus/cursors.chr" ; 2kb (96)
 
-    .if (_LEVELSET = 'C') || (_LEVELSET = 'D')
+    .if ((_LEVELSET = 'D') || (_LEVELSET = 'E'))
 		.incbin "GRAPHICS/Menus/C-menus.chr"    ; 4kb (98)
 	.else
 		.incbin "GRAPHICS/Menus/menus.chr"    ; 4kb (98)
@@ -502,8 +516,7 @@ _GAME_CHR:
     .incbin "GRAPHICS/Menus/practicecomplete.chr"    ; 1kb (110)
    .incbin "GRAPHICS/Level Tiles/SawbladesNone.chr" ; 1kb (111)
 
- ;   .incbin "GRAPHICS/Menus/practicecomplete.chr"    ; 1kb (112)
-
+ 
 .segment "PARALLAXCHR"  ; banks 112 - 255
 .export _PARALLAX_CHR
 _PARALLAX_CHR:

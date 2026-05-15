@@ -46,8 +46,8 @@ void state_lvldone() {
 		vram_unrle(leveldone);
 	}
 	#if !__VS_SYSTEM
-	if (!DEBUG_MODE && !kandokidshack && !kandokidshack3 && !kandokidshack4) display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
-	else draw_padded_text(cheater, cheatersize, 18, NTADR_A(7, 13));
+	display_attempt_counter(0xD0, NTADR_A(20, 13));	// Same bank as this
+	if (DEBUG_MODE || kandokidshack || kandokidshack3 || kandokidshack4 || cheated) draw_padded_text(cheater, cheatersize, 18, NTADR_A(7, 14));
 	#endif
 
 
@@ -81,7 +81,7 @@ void state_lvldone() {
 	#endif
 	current_state = 0;
 	
-	if (!practice_point_count) {
+	if (!DEBUG_MODE && !kandokidshack && !kandokidshack3 && !kandokidshack4 && !practice_point_count) {
 		LEVELCOMPLETE[level] = 1;
 		
 		if (coins & COIN_1) coin1_obtained[level] = 1;
@@ -211,8 +211,10 @@ void state_lvldone() {
 			}
 			tmp1--;
 			checkcoinproceed();
-			break;
 		case 7:
+			break;
+		
+		
 			lvl_done_update();
 			oam_clear();
 
@@ -240,8 +242,7 @@ void state_lvldone() {
 			}
 
 		#if !__VS_SYSTEM	// Disable level restarting on VS system
-			if (joypad1.press_left) { menuselection ^= 1; lvl_done_update(); }
-			if (joypad1.press_right) { menuselection ^= 1; lvl_done_update(); }
+			if (joypad1.press_left || joypad1.press_right) { menuselection ^= 1; lvl_done_update(); }
 			if (joypad1.press_start || joypad1.press_a){
 				if (menuselection) {
 		#else

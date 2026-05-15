@@ -23,12 +23,6 @@ void draw_sprites(){
 			if (kandoframecnt & 1 && !player_invis) { crossPRGBankJump0(drawplayertwo); crossPRGBankJump0(drawplayerone); }
 			else if (!player_invis) { crossPRGBankJump0(drawplayerone); crossPRGBankJump0(drawplayertwo); }
 		}
-#ifdef FLAG_KANDO_FUN_STUFF
-		else if (bigboi && !player_invis) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); minus15y(); crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); plus15y(); }
-		else if (longmode && !tallmode && !player_invis) { crossPRGBankJump0(drawplayerone); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
-		else if (tallmode && !longmode && !player_invis) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); }
-		else if (tallmode && longmode && !player_invis) { crossPRGBankJump0(drawplayerone); minus15y(); crossPRGBankJump0(drawplayerone); plus15y(); plus15x(); crossPRGBankJump0(drawplayerone); minus15x(); }
-#endif
 		else if (!player_invis) crossPRGBankJump0(drawplayerone);
 	}
 
@@ -46,21 +40,7 @@ void draw_sprites(){
 		// else if (practice_sprite_x_pos < 10) {}
 	}
 
-	if (retro_mode) {
-		tmp9 = 0;
-		do {
-			if (jimsheatballalive[tmp9]) {
-				oam_meta_spr(jimsheatballx[tmp9 & 0x7F], idx16_load_hi_NOC(jimsheatbally, tmp9), Heat_Ball_Sprites[jimsheatballframe[tmp9] & 0x7F]);		
-				jimsheatballframe[tmp9] == 20 ? jimsheatballframe[tmp9] = 0 : idx8_inc(jimsheatballframe, tmp9);
-				jimsheatballx[tmp9 & 0x7F] >= 0xF8 ? jimsheatballalive[tmp9] = 0 : idx16_inc_NOC(jimsheatballx, tmp9);
-			}
-		} while (++tmp9 < MAX_FIREBALLS);
-	}
 
-	
-
-
-	
 
 	// The flickering motherfucker, by jrowe
 	shuffle_offset = (shuffle_offset + 11) & 0x0F;

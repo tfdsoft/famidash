@@ -1,0 +1,22 @@
+Exporting everything specified in metadata.json5
+Loading cached TMX level: silentcircles; RLE size: 14806; RLE+LZ size: 4448; compression rate:  69.96%
+
+============ TOTAL LEVEL COMPRESSION STATS ============
+Total RLE (+ header) size:    14824
+Total RLE+LZ (+ header) size: 4466
+Bytes shaved off:			 10358
+Effective compression rate:   69.8732%
+============ TOTAL LEVEL COMPRESSION STATS ============
+
+Sprite data for silentcircles from TMX is 2106 bytes long
+Bank DAT_BANK_00: 6572/8192 bytes
+	level_data_silentcircles: 4466
+	sprite_data_silentcircles: 2106
+
+Exporting includes:
+	- Menu text... Done
+	- Level list... Done
+	- Level table... Done
+	- Level defines... Done
+Running export script for level set D...
+Export finished.

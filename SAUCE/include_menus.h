@@ -51,7 +51,11 @@ CODE_BANK("XCD_BANK_06")
 
 #if !__THE_ALBUM
 #include "menustates/funsettings.c"
+#if !__HUGE_ROM
 #include "menustates/refreshmenu.c"
+#else
+#include "menustates/refreshmenuHUGE.c"
+#endif
 #include "menustates/progressbar_pt2.c"
 #endif
 

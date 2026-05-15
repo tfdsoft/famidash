@@ -8,6 +8,7 @@
 
 #if __HUGE_ROM
 void choose_menu_theme();
+void setdefaultoptions();
 #endif
 
 // THE INCLUDE FILE ===========================================
@@ -49,6 +50,8 @@ void main(){
     // Initialize mapper
     mmc3_disable_irq();
 
+	setdefaultoptions();
+
     // Initialize controllers
 	#if !__THE_ALBUM
 	mouse.x = 0x78;
@@ -60,46 +63,16 @@ void main(){
 
 	// assigning value at startup as opposed to compile time
 	// is needed for cc65 to export the label for mesen
-	gameState = STATE_SAVEVALIDATE;
+//	gameState = STATE_SAVEVALIDATE;
 	nmi_fs_updates_on();
 
 	menuMusicCurrentlyPlaying = 0;
 
-
+	gameState = STATE_GAME;
 
     while (1){
-    	forceNoFadeOut = 0;
-		switch (gameState){
-			case STATE_SOUNDTEST: {
-				mmc3_set_prg_bank_1(GET_BANK(state_soundtest));
-				state_soundtest();
-				break;
-			}
-			case STATE_SAVEVALIDATE: {
-				#if !__VS_SYSTEM
-					music_play(song_scheming_weasel);
-				#endif
-				mmc3_set_prg_bank_1(GET_BANK(state_savefile_validate));
-				state_savefile_validate();
-				break;
-			}
-
-			case STATE_MENU: {
-				#if __THE_ALBUM
-					cursedmusic = 0;
-				#endif
-				#if __THE_ALBUM || __HUGE_ROM
-					for (tmp1 = 0; tmp1 < MAX_SONG_QUEUE_SIZE; tmp1++) {
-						music_queue[tmp1] = 0xFF;
-					};
-				#endif
-				mmc3_set_prg_bank_1(GET_BANK(state_menu));
-				state_menu();
-				break;			
-			}
-			
-		#if !__THE_ALBUM		//non-album states
-		
+    	forceNoFadeOut = 0;	
+		switch (gameState) {
 			case STATE_GAME: {
 				state_game();
 				use_auto_chrswitch = 0;
@@ -111,6 +84,7 @@ void main(){
 				state_lvldone();
 				break;
 			}
+/*
 			case STATE_FUNSETTINGS: {
 				mmc3_set_prg_bank_1(GET_BANK(state_funsettings));
 				state_funsettings();
@@ -154,30 +128,23 @@ void main(){
 				break;
 			}
 			#endif
+*/
+//		#endif
 
-		#endif
-
-			default: {
-				mmc3_set_prg_bank_1(GET_BANK(state_credits));
-				state_credits();
-				#if __HUGE_ROM
-				if (!menuthemechosen) crossPRGBankJump0(choose_menu_theme);
-				#endif
-				break;
-			}
 			
 
 		}
-		framerate = trueFramerate;
-		cpuRegion = trueCpuRegion;
-		fullRegion = trueFullRegion;
-		nmi_fs_updates_on();
-		if (!forceNoFadeOut) pal_fade_out();
-		mmc3_disable_irq();
-		ppu_off();
-		if (forceNoFadeOut) flush_vram_update2();
-    }
+	framerate = trueFramerate;
+	cpuRegion = trueCpuRegion;
+	fullRegion = trueFullRegion;
+	nmi_fs_updates_on();
+	if (!forceNoFadeOut) pal_fade_out();
+	mmc3_disable_irq();
+	ppu_off();
+	if (forceNoFadeOut) flush_vram_update2();
+	}
 }
+
 
 void setdefaultoptions() {
 	// Enable SRAM write

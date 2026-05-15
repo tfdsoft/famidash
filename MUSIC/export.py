@@ -84,7 +84,7 @@ def convertTextToMenuFormat(name : str | None) -> str | None:
         return None
     niceName = ""
     for c in name:
-        if (c.isalpha() and c.isupper()) or (c.isdigit()):
+        if (c.isalpha()) or (c.isdigit()):
             niceName += c
         elif (c.isspace()):
             niceName += "$"
@@ -417,7 +417,7 @@ if __name__ == "__main__":
         lastDatBank = 0x73    
     elif dpcmAlignerName == "dpcm_HUGE":
     # special case if aligner is dpcm_BIG
-        lastDatBank = 0xEF
+        lastDatBank = 0x33
     elif dpcmAlignerName == "dpcm_ALBUM":
         lastDatBank = 0x3B
     else:
@@ -459,12 +459,7 @@ if __name__ == "__main__":
         print("Instrument size not correctly present in the FamiStudio command output.")
         exit(3)
     instsize = int(instsize['instSize'])
-    if extMeta:
-        maxDataInBank = 8192 - (instsize / 8 * 3)
-    elif dpcmAlignerName == "dpcm_D-sides":
-        maxDataInBank = 8192 - (instsize / 3 * 3)
-    else:
-        maxDataInBank = 8192 - (instsize / 5 * 3)
+    maxDataInBank = 8192 - (instsize / 3 * 3)
     print(f"== Total maximum size of data in a bank is {maxDataInBank} bytes")
 
     # Get song sizes in bytes

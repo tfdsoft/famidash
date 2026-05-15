@@ -1,30 +1,16 @@
 {
-	songModule: "music_master.fms",
+	songModule: "the album.fms",
 	songs: [
 		{
-			fmsSongName: "Menu Theme (Human Capturing Mix)",
-			lowerText: "MENU",
-			originalArtistText: "TOBY FOX",
+			fmsSongName: "emehT uneM",
+			lowerText: "EMEHT UNEM",
+			originalArtistText: "ROBTOP",
+			
 		},
 		{
-			fmsSongName: "Time Machine",
-			lowerText: "TIME MACHINE",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Time Machine",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Zenith302, Vikrinox, alexmush"
-				},
-				durationNTSC: 96067,
-				durationPAL: 115460
-			}
-		},
-		{
-			fmsSongName: "Clubstep",
-			lowerText: "CLUBSTEP",
-			originalArtistText: "DJ NATE",
+			fmsSongName: "Every End PT2",
+			lowerText: "EVERY END PT2",
+			originalArtistText: "DIMRAIN47",
 		},
 		{
 			fmsSongName: "Practice",
@@ -45,90 +31,12 @@
 			fmsSongName: "Scheming Weasel",
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
-			originalArtistText: "KEVIN MACLEOD",
-		},	
-		{
-			fmsSongName: "atthespeedoflightfull",
-			upperText: "AT THE SPEED",
-			lowerText: "OF LIGHT",
-			originalArtistText: "DIMRAIN47",
-		},
-		{
-			fmsSongName: "Speed Racer",
-			lowerText: "CHAOZ IMPACT",
-			originalArtistText: "PARAGONX9",
-		},
-		{
-			fmsSongName: "Cryogenic",
-			lowerText: "CRYOGENIC",
-			originalArtistText: "NERDBOY628",
-		},
-		{
-			fmsSongName: "endgame",
-			lowerText: "ENDGAME",
-			originalArtistText: "WATERFLAME",
-			vsSystemEnabled: true,
-			nsfData: {
-				trackLabel: "Decode ~ Endgame",
-				trackAuthor: {
-					original: "Waterflame",
-					cover: "Vikrinox"
-				},
-				durationNTSC: 79283,
-				durationPAL: 95280
-			}
-		},
-		{
-			fmsSongName: "Flow",
-			lowerText: "FLOW",
-			originalArtistText: "CREO",
-		},
-		{
-			fmsSongName: "Golden Haze NOT RETRAY",
-			upperText: "GOLDEN HAZE",
-			lowerText: "CUT",
-			originalArtistText: "DETIOUSMUSIC",
-		},
-		{
-			fmsSongName: "haunted woods",
-			lowerText: "HAUNTED WOODS",
-			originalArtistText: "WATERFLAME",
-		},
-		{
-			fmsSongName: "Jawbreaker",
-			lowerText: "JAWBREAKER",
-			originalArtistText: "RUKKUS",
-		},
-		{
-			fmsSongName: "Kratos",
-			lowerText: "KRATOS",
-			originalArtistText: "SHAPPY",
-		},
-		{
-			fmsSongName: "lost",
-			lowerText: "LOST",
-			originalArtistText: "CRIM3S",
-		},
-		{
-			fmsSongName: "Slow Down",
-			lowerText: "SLOW DOWN",
-			originalArtistText: "CREO",
+			originalArtistText: "KEVIN MACLEOD",	
 		},
 		{
 			fmsSongName: "Supernova",
-			lowerText: "SUPERNOVA",
-			originalArtistText: "XTRULLOR",
-		},
-		{
-			fmsSongName: "Thermodynamix (Acheron)",
-			upperText: "THERMODYNAMIX",
-			lowerText: "ACHERON CUT",
-			originalArtistText: "DJ NATE",
-		},
-		{
-			fmsSongName: "Windfall",
-			lowerText: "WINDFALL",
-			originalArtistText: "THEFATRAT",
+			lowerText: "TEXT",
+			originalArtistText: "TEXT",
 		},
 	],
 	SFX: [
@@ -258,5 +166,5 @@
 			}
 		}
 	],
-	dpcmAligner: "dpcm_D-sides"
+	dpcmAligner: "dpcm_HUGE"
 }

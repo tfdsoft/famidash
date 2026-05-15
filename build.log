@@ -1,0 +1,10 @@
+Building D-Sides...
+./BIN/cc65.exe  -Osir -g --eagerly-inline-funcs SAUCE/famidash.c -I LIB/headers -I . -I MUSIC/EXPORTS/lvlset_D -I LEVELS/include/lvlset_D -E --add-source -o TMP/main/famidash.pp.c
+./BIN/cc65.exe  -Osir -g --eagerly-inline-funcs SAUCE/famidash.c -I LIB/headers -I . -I MUSIC/EXPORTS/lvlset_D -I LEVELS/include/lvlset_D --add-source -o TMP/main/famidash.s
+./BIN/ca65.exe  -l BUILD/main/famidash.lst --cpu 6502X -I LIB/asm --bin-include-dir LIB/asm TMP/main/famidash.s -g 
+python UTILS/defines_to_asm.py TMP/main/BUILD_FLAGS.s BUILD_FLAGS.h LEVELS/include/lvlset_D/level_defines.h SAUCE/defines/space_defines.h SAUCE/defines/physics_defines.h
+./BIN/ca65.exe  LIB/asm/crt0.s -l BUILD/main/crt0.lst --cpu 6502X -g -I . --bin-include-dir . -I MUSIC/EXPORTS/lvlset_D --bin-include-dir MUSIC/EXPORTS/lvlset_D -I LEVELS/include/lvlset_D --bin-include-dir LEVELS/include/lvlset_D -I TMP/main --bin-include-dir TMP/main -o TMP/main/crt0.o
+./BIN/ld65.exe -C CONFIG/mmc3.cfg -o BUILD/main/famidash.nes -L TMP/main --obj-path TMP/main -L LIB --obj-path LIB crt0.o famidash.o nes.lib --dbgfile BUILD/main/famidash.dbg
+famidash.nes created
+        1 file(s) copied.
+        1 file(s) copied.

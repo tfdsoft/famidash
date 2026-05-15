@@ -35,6 +35,9 @@
 #define GAMEMODE_WAVE   0x06
 #define GAMEMODE_SWING  0x07
 #define GAMEMODE_NINJA  0x08
+#define GAMEMODE_POGO  0x09
+#define GAMEMODE_SNAKE 0x0A
+#define GAMEMODE_FOOTBALL 0x0B
 
 // table_idx masks
 #define TBLIDX_GRAV	0b001
@@ -227,13 +230,6 @@ uint8_t auto_practicepoints;
 #endif
 
 
-uint8_t jimsheatballalive[MAX_FIREBALLS]; //jims heatball shit
-uint16_t jimsheatballx[MAX_FIREBALLS]; //jims heatball shit
-uint16_t jimsheatbally[MAX_FIREBALLS];
-int16_t jimsheatball_vel_x[MAX_FIREBALLS];
-int16_t jimsheatball_vel_y[MAX_FIREBALLS];
-uint8_t jimsheatballframe[MAX_FIREBALLS];
-
 //uint8_t greyscale_mode;
 
 //uint8_t practice_famistudio_state[0xbf];
@@ -324,7 +320,9 @@ int16_t player_vel_x[2];
 int16_t player_vel_y[2];
 uint8_t player_gravity[2];
 uint8_t player_mini[2];
-uint8_t jumpedonthisframe[2];
+uint8_t orbhitonthisframe[2];
+uint8_t chargepower[2];
+
 
 uint8_t practice_sprite_x_pos;
 
@@ -434,6 +432,7 @@ uint8_t songplaying;
 uint8_t tempsong;
 uint8_t temptemp6;
 uint8_t make_cube_jump_higher;
+uint8_t fartmode;
 
 uint8_t animating;
 uint8_t coin1_timer;
@@ -466,6 +465,8 @@ uint8_t minicoins;
 #if !__VS_SYSTEM
 uint16_t auto_practicepoint_timer;
 #endif
+
+uint8_t cheated;
 
 // Sprite Storage
 lohi_arr16_decl(activesprites_x, max_loaded_sprites);
@@ -526,9 +527,6 @@ uint8_t current_transition_timer_length;
 uint16_t target_x_scroll_stop;
 uint16_t curr_x_scroll_stop;
 uint8_t disco_sprites;
-uint8_t tallmode;
-uint8_t longmode;
-uint8_t bigboi;
 uint8_t gravity_mod;
 #endif
 

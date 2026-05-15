@@ -13,7 +13,7 @@
 .importzp _sprite_data
 sprite_data = _sprite_data
 
-.define gamemode_count 9
+.define gamemode_count 12
 
 .macro INCW addr
 	INC addr
@@ -171,7 +171,7 @@ end:
 	rts
 .endproc
 .endif
-.segment "RODATA"
+.segment "RODATA_2"
 
 .export _shiftBy4table := shiftBy4table
 shiftBy4table:
@@ -332,10 +332,12 @@ _init_rld:
 	LDA palBrightTable3, Y	;
 	STA PAL_BUF_RAW+1		;	Store faded color to slots 1 and 9
 	STA PAL_BUF_RAW+9		;__
+	STA PAL_BUF_RAW+13		;__
 	TAY						;
 	LDA (PAL_PTR),y			;	Store it into the buffer
 	STA PAL_BUF+1			;
 	STA PAL_BUF+9			;__
+	STA PAL_BUF+13			;__
 	incw ptr1				;	Move on
 	LDY #0					;__
 
@@ -354,11 +356,9 @@ _init_rld:
 	;	Now fade it
 	LDA palBrightTable3, Y	;	Store faded color to slot 5
 	STA PAL_BUF_RAW+5		;__
-	STA PAL_BUF_RAW+13		;__
 	TAY						;
 	LDA	(PAL_PTR),y			;	Store it into the buffer
 	STA	PAL_BUF+5			;__
-	STA	PAL_BUF+13			;__
 	INC <PAL_UPDATE			;__ Yes, we do need to update the palette
 
 	
@@ -1350,7 +1350,7 @@ ntAddrHiTbl:
 			TXA						;	If the difference is less than
 			LDX	#2					;	($78 - $40), we went too far
 			SBC	#$00				;	Also load the scrolling direction offset
-			BCS	@fin				;__
+			BPL	@fin				;__
 		
 		@ret0:		;
 			LDA	#0	;	Return 0
@@ -1375,7 +1375,7 @@ ntAddrHiTbl:
 			TXA						;	If the difference is more than
 			LDX	#0					;	($78 + $40), we went too far
 			SBC	#$00				;	Also load scrolling direction offset
-			BCS	@ret0				;__
+			BPL	@ret0				;__
 		
 		@fin:
 			STX	scroll_direction
@@ -1804,9 +1804,9 @@ ntAddrHiTbl:
 		RTS     ; break or use the RTS trick
 
 	jump_table_lo:
-		.byte <(_cube_movement-1), <(_ship_movement-1), <(_ball_movement-1), <(_ufo_movement-1), <(_cube_movement-1), <(_spider_movement-1), <(_wave_movement-1), <(_ball_movement-1), <(_cube_movement-1)
+		.byte <(_cube_movement-1), <(_ship_movement-1), <(_ball_movement-1), <(_ufo_movement-1), <(_cube_movement-1), <(_spider_movement-1), <(_wave_movement-1), <(_ball_movement-1), <(_cube_movement-1), <(_ball_movement-1), <(_wave_movement-1), <(_cube_movement-1)
 	jump_table_hi:
-		.byte >(_cube_movement-1), >(_ship_movement-1), >(_ball_movement-1), >(_ufo_movement-1), >(_cube_movement-1), >(_spider_movement-1), >(_wave_movement-1), >(_ball_movement-1), >(_cube_movement-1)
+		.byte >(_cube_movement-1), >(_ship_movement-1), >(_ball_movement-1), >(_ufo_movement-1), >(_cube_movement-1), >(_spider_movement-1), >(_wave_movement-1), >(_ball_movement-1), >(_cube_movement-1), >(_ball_movement-1), >(_wave_movement-1), >(_cube_movement-1)
 
 .endproc
 .endif
@@ -2009,7 +2009,7 @@ early_exit:
 .endproc
 
 ; uint16_t calculate_linear_scroll_y(uint16_t nonlinearScroll);
-.segment "CODE"
+.segment "CODE_2"
 
 .export _calculate_linear_scroll_y
 .proc _calculate_linear_scroll_y
@@ -2253,12 +2253,12 @@ end:
 .segment _PLAYER_RENDER_BANK
 
 .import _player_x, _player_y, _player_gravity, _player_vel_x, _player_vel_y, _player_mini
-.import _ballframe, _robotframe, _robotjumpframe, _spiderframe
+.import _ballframe, _robotframe, _robotjumpframe, _spiderframe, _orbed
 .import _retro_mode, _icon, _gameState, _titleicon, _skipProcessingCubeRotationLogic
-.import _CUBE_GRAVITY_lo
+.import _CUBE_GRAVITY_lo, _chargepower
 .importzp _cube_rotate, _was_on_slope_counter
-.import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2, _SPIDER_ALT, _SPIDER_ALT2
-.import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT
+.import _CUBE, _SHIP, _BALL, _ROBOT, _ROBOT_ALT, _UFO, _SPIDER, _WAVE, _SWING, _ROBOT_ALT2, _SPIDER_ALT, _SPIDER_ALT2, _POGO, _SNAKE
+.import _MINI_CUBE, _MINI_SHIP, _MINI_BALL, _MINI_BALL_ALT, _MINI_ROBOT, _MINI_ROBOT_ALT, _MINI_UFO, _MINI_SPIDER, _MINI_SPIDER_ALT, _MINI_WAVE, _MINI_SWING, _MINI_SWING_ALT, _MINI_POGO, _MINI_SNAKE
 .importzp _cube_data, _slope_frames, _slope_type
 drawcube_rounding_table:
 	.byte 0, <-1, <-2, 3, 2, 1
@@ -2315,12 +2315,13 @@ drawcube_sprite_none:
 
 
 drawplayer_center_offsets:
-	;		Cub	Shp Bal	UFO	RBT	SPI	Wav
-	.byte	8,	8,	8,	8,	4,	4,	8,	8,	8; normal size
-	.byte	4,	4,	4,	4,	4,	4,	4,	4,	4; mini 
+	;		Cub	Shp Bal	UFO	RBT	SPI	Wav Sng Nja Pgo Snk Ftb
+	.byte	8,	8,	8,	8,	4,	4,	8,	8,	8,	8,	8,	8; normal size
+	.byte	4,	4,	4,	4,	4,	4,	4,	4,	4,	4,	4,	4; mini 
 
 ; void drawplayerone();
 .segment _PLAYER_RENDER_BANK
+
 
 .export _drawplayerone
 .proc _drawplayerone
@@ -2405,6 +2406,10 @@ drawplayer_center_offsets:
 	jeq	ship	;__
 	dex			;	case 0x08: NINJA
 	jeq	cube	;__
+	dex			;	case 0x09: POGO
+	jeq	pogo	;__
+	dex			;	case 0x0A: SNAKE
+	jeq	wave	;__
 	
 	; default: cube
     cube:
@@ -2417,7 +2422,23 @@ drawplayer_center_offsets:
         BIT _cube_data
         BMI @round
 		ldx _skipProcessingCubeRotationLogic			;player trails?
-		bne	@fin			;if so, get out of here
+		beq @nofin
+		jmp @fin			;if so, get out of here
+	@nofin:
+
+		LDA _gamemode
+		cmp #$0B
+		bne @normalagain
+		lda _player_vel_y+1
+		ORA _player_vel_y+0
+		bne @normalagain
+		
+		lda #0
+		sta _cube_rotate+1
+		beq @round
+		
+		
+		@normalagain:
 		LDA _player_vel_y+1		;	if player_vel_y == 0
 		ORA _player_vel_y+0		;
 		BNE @no_round		    ;__
@@ -2445,6 +2466,11 @@ drawplayer_center_offsets:
                 ADC rounding_slope_table-1, y
             : 
             TAX
+			lda _gamemode
+			cmp #$0B
+			bne @doit
+			jmp @no_round
+			@doit:
             JMP @fin_nold
 
 		@no_round:
@@ -2453,11 +2479,72 @@ drawplayer_center_offsets:
 		ASL				;	(just the framerate)
 		TAY				;__
 
-		LDA _cube_rotate
 
+		LDX _gamemode
+		cpx #$0B
+		bne @normalstuff
+
+		lda _orbed
+		beq @disregard1
+		lda _player_vel_y+0
+		ora _player_vel_y+1
+		beq @hi
+		
+
+
+	@disregard1:
+		lda _player_vel_y+0
+		ora _player_vel_y+1
+		bne @normalstuff
+
+		lda _chargepower+0			;football
+		beq @normalstuff
+
+		cmp #10
+		BCS :+
+		ldx #23
+		stx _cube_rotate+1
+		jmp @fin
+
+	: 	cmp #20
+		BCS :+
+		ldx #22
+		stx _cube_rotate+1
+		jmp @fin
+
+
+	: 	cmp #30
+		BCS :+
+		ldx #21
+		stx _cube_rotate+1
+		jmp @fin
+
+
+	: 	cmp #38
+		BCS :+
+		ldx #20
+		stx _cube_rotate+1
+		jmp @fin
+
+
+	: 	cmp #50
+		BCS @hi
+		ldx #20
+		stx _cube_rotate+1
+		jmp @fin
+
+	@hi:
+
+		ldx #6
+		stx _cube_rotate+1
+		jmp @fin	
+	  
+	
+	@normalstuff:
+		LDA _cube_rotate
 		LDX _player_gravity+0
 		BNE @subtract
-
+		@add:
 			CLC						;
 			ADC _CUBE_GRAVITY_lo,Y	;
 			STA _cube_rotate		;
@@ -2483,9 +2570,9 @@ drawplayer_center_offsets:
 		@fin:
 			LDX _cube_rotate+1
         @fin_nold:
-			LDA _gamemode
-			cmp #8
-			beq @noflip
+			;LDA _gamemode
+			;cmp #8
+			;beq @noflip
 
 			LDA _gameState
 			cmp #1	; STATE_MENU
@@ -2528,6 +2615,8 @@ drawplayer_center_offsets:
 			PLA
 		@resume:
 			STA xargs+0	; flip setting
+
+
 			TXA
 			AND #$07
 			TAY
@@ -2601,6 +2690,16 @@ drawplayer_center_offsets:
 		STA _ballframe	;__
 	@donball:
 		JMP fin
+
+	pogo:
+		ldy #$00
+		lda _robotjumpframe
+		beq @noanim
+		ldy #$01
+		dec _robotjumpframe
+
+	@noanim:
+		jmp fin
 
 	ufo:
 		; Real C code:
@@ -2787,6 +2886,24 @@ drawplayer_center_offsets:
 
 
 	fin:
+			LDA _gamemode
+			cmp #$08
+			bne common
+			lda _player_vel_y+0
+			ora _player_vel_y+1
+			bne common
+			lda _player_gravity+0
+			beq :+
+			lda #0
+			sta _cube_rotate+0
+			lda #$0C
+			sta _cube_rotate+1
+			bne :++
+		:	
+			lda #0
+			sta _cube_rotate+0
+			sta _cube_rotate+1
+		:	
     common:
 		TYA					;
 		ASL					;	Double da index cuz it's a table of shorts
@@ -2810,17 +2927,17 @@ drawplayer_center_offsets:
 		JMP __oam_meta_spr_flipped ;__	oam_meta_spr(temp_x, high_byte(player_y[0])-1, [whatever the fuck we set here]);
 
     sprite_table_table_lo:
-        .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE, <_SWING, <_CUBE
-        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE
+        .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT, <_SPIDER, <_WAVE, <_SWING, <_CUBE, <_POGO, <_SNAKE, <_CUBE
+        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL, <_MINI_UFO, <_MINI_ROBOT, <_MINI_SPIDER, <_MINI_WAVE, <_MINI_SWING, <_MINI_CUBE, <_MINI_POGO, <_MINI_SNAKE, <_MINI_CUBE
     sprite_table_table_lo2:
-        .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT_ALT, <_SPIDER_ALT, <_WAVE, <_SWING, <_ROBOT_ALT
-        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL_ALT, <_MINI_UFO, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE, <_MINI_SWING_ALT, <_MINI_ROBOT_ALT
+        .byte <_CUBE, <_SHIP, <_BALL, <_UFO, <_ROBOT_ALT, <_SPIDER_ALT, <_WAVE, <_SWING, <_ROBOT_ALT, <_POGO, <_SNAKE, <_CUBE
+        .byte <_MINI_CUBE, <_MINI_SHIP, <_MINI_BALL_ALT, <_MINI_UFO, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE, <_MINI_SWING_ALT, <_MINI_ROBOT_ALT, <_MINI_POGO, <_MINI_SNAKE, <_MINI_CUBE
     sprite_table_table_hi:
-        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER, >_WAVE, >_SWING, >_CUBE
-        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE
+        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT, >_SPIDER, >_WAVE, >_SWING, >_CUBE, >_POGO, >_SNAKE, >_CUBE
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL, >_MINI_UFO, >_MINI_ROBOT, >_MINI_SPIDER, >_MINI_WAVE, >_MINI_SWING, >_MINI_CUBE, >_MINI_POGO, >_MINI_SNAKE, >_MINI_CUBE
     sprite_table_table_hi2:
-        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER_ALT, >_WAVE, >_SWING, >_ROBOT_ALT
-        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING_ALT, >_MINI_ROBOT_ALT
+        .byte >_CUBE, >_SHIP, >_BALL, >_UFO, >_ROBOT_ALT, >_SPIDER_ALT, >_WAVE, >_SWING, >_ROBOT_ALT, >_POGO, >_SNAKE, >_CUBE
+        .byte >_MINI_CUBE, >_MINI_SHIP, >_MINI_BALL_ALT, >_MINI_UFO, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE, >_MINI_SWING_ALT, >_MINI_ROBOT_ALT, >_MINI_POGO, >_MINI_SNAKE, >_MINI_CUBE
 
     rounding_slope_table:
 		;     45v  22v  66v  45^  22^  66^  nothing
@@ -2832,8 +2949,8 @@ drawplayer_common := _drawplayerone::common
 ; void drawplayertwo();
 .segment _PLAYER_RENDER_BANK
 
-.import _CUBE2, _SHIP2, _BALL2, _ROBOT2, _UFO2, _SPIDER2, _WAVE2, _SWING2
-.import _MINI_CUBE2, _MINI_SHIP2, _MINI_BALL2, _MINI_ROBOT2, _MINI_UFO2, _MINI_SPIDER2, _MINI_WAVE2, _MINI_SWING2
+.import _CUBE2, _SHIP2, _BALL2, _ROBOT2, _UFO2, _SPIDER2, _WAVE2, _SWING2, _POGO2, _SNAKE2
+.import _MINI_CUBE2, _MINI_SHIP2, _MINI_BALL2, _MINI_ROBOT2, _MINI_UFO2, _MINI_SPIDER2, _MINI_WAVE2, _MINI_SWING2, _MINI_POGO2, _MINI_SNAKE2
 
 .export _drawplayertwo
 .proc _drawplayertwo
@@ -2912,6 +3029,10 @@ drawplayer_common := _drawplayerone::common
 	jeq	ship	;__
 	dex			;	case 0x08: NINJA
 	jeq	cube	;__
+	dex			;	case 0x09: POGO
+	jeq	pogo	;__
+	dex			;	case 0x0A: SNAKE
+	jeq	pogo	;__
 
     ; default: cube
     cube:
@@ -2925,6 +3046,21 @@ drawplayer_common := _drawplayerone::common
         BMI @round
 	;	ldx _skipProcessingCubeRotationLogic		;PLAYER TRAILS are disabled for 2 player mode anyway
 	;	bne	@fin		
+
+
+		LDA _gamemode
+		cmp #$0B
+		bne @normalagain
+		lda _player_vel_y+3
+		ORA _player_vel_y+2
+		bne @normalagain
+		
+		lda #0
+		sta _cube_rotate+3
+		beq @round
+		
+		
+		@normalagain:
 
 		LDA _player_vel_y+3		;	if player_vel_y == 0
 		ORA _player_vel_y+2		;
@@ -2953,6 +3089,11 @@ drawplayer_common := _drawplayerone::common
 				ADC rounding_slope_table-1, y
 			: 
 			TAX					;__
+			lda _gamemode
+			cmp #$0B
+			bne @doit
+			jmp @no_round
+			@doit:
 			JMP @fin_nold
 
 		@no_round:
@@ -2960,6 +3101,68 @@ drawplayer_common := _drawplayerone::common
 		ASL				;	Physics table index
 		ASL				;	(just the framerate)
 		TAY				;__
+
+		LDX _gamemode
+		cpx #$0B
+		bne @normalstuff
+
+		lda _orbed+1
+		beq @disregard1
+		lda _player_vel_y+2
+		ora _player_vel_y+3
+		beq @hi
+		
+
+
+	@disregard1:
+		lda _player_vel_y+2
+		ora _player_vel_y+3
+		bne @normalstuff
+
+		lda _chargepower+1		;football
+		beq @normalstuff
+
+		cmp #5
+		BCS :+
+		ldx #23
+		stx _cube_rotate+3
+		jmp @fin
+
+	: 	cmp #15
+		BCS :+
+		ldx #22
+		stx _cube_rotate+3
+		jmp @fin
+
+
+	: 	cmp #25
+		BCS :+
+		ldx #21
+		stx _cube_rotate+3
+		jmp @fin
+
+
+	: 	cmp #30
+		BCS :+
+		ldx #20
+		stx _cube_rotate+3
+		jmp @fin
+
+
+	: 	cmp #46
+		BCS @hi
+		ldx #20
+		stx _cube_rotate+3
+		jmp @fin
+
+	@hi:
+
+		ldx #6
+		stx _cube_rotate+3
+		jmp @fin	
+	  
+	
+	@normalstuff:
 
 		LDA _cube_rotate+2
 
@@ -2991,9 +3194,6 @@ drawplayer_common := _drawplayerone::common
 		@fin:
 			LDX _cube_rotate+3
         @fin_nold:
-			LDA _gamemode
-			cmp #8
-			beq @noflip	
 			LDA _icon
 			cmp #$12
 			beq @noflip
@@ -3019,6 +3219,26 @@ drawplayer_common := _drawplayerone::common
 			TXA
 			AND #$07
 			TAY
+
+			LDA _gamemode
+			cmp #$08
+			bne :++
+			lda _player_vel_y+2
+			ora _player_vel_y+3
+			bne :++
+			lda _player_gravity+1
+			beq :+
+			lda #0
+			sta _cube_rotate+2
+			lda #$0C
+			sta _cube_rotate+3
+			bne :++
+		:	
+			lda #0
+			sta _cube_rotate+2
+			sta _cube_rotate+3
+		:	
+
 			JMP drawplayer_common
 
 	ship:
@@ -3084,6 +3304,21 @@ drawplayer_common := _drawplayerone::common
 	@continue:
 		LDY _ballframe
 		JMP drawplayer_common
+		
+		
+		
+	pogo:
+		ldy #$00
+		lda _robotjumpframe+1
+		beq @noanim
+		ldy #$01
+		dec _robotjumpframe+1
+
+	@noanim:
+		jmp drawplayer_common
+
+		
+		
 	ufo:
 		; Real C code:
 			; 		if (!player_gravity[1]) {
@@ -3251,17 +3486,17 @@ drawplayer_common := _drawplayerone::common
 		TAY
 		JMP drawplayer_common
 	sprite_table_table_lo:
-		.byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT2, <_SPIDER2, <_WAVE2, <_SWING2, <_CUBE2
-		.byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2, <_MINI_CUBE2
+		.byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT2, <_SPIDER2, <_WAVE2, <_SWING2, <_CUBE2, <_POGO2, <_SNAKE2, <_CUBE2
+		.byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL2, <_MINI_UFO2, <_MINI_ROBOT2, <_MINI_SPIDER2, <_MINI_WAVE2, <_MINI_SWING2, <_MINI_CUBE2, <_MINI_POGO2, <_MINI_SNAKE2, <_MINI_CUBE2
     sprite_table_table_lo2:
-        .byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT_ALT2, <_SPIDER_ALT2, <_WAVE2, <_SWING2, <_CUBE2
-        .byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL_ALT, <_MINI_UFO2, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE2, <_MINI_SWING_ALT, <_MINI_CUBE2
+        .byte <_CUBE2, <_SHIP2, <_BALL2, <_UFO2, <_ROBOT_ALT2, <_SPIDER_ALT2, <_WAVE2, <_SWING2, <_CUBE2, <_POGO2, <_SNAKE2, <_CUBE2
+        .byte <_MINI_CUBE2, <_MINI_SHIP2, <_MINI_BALL_ALT, <_MINI_UFO2, <_MINI_ROBOT_ALT, <_MINI_SPIDER_ALT, <_MINI_WAVE2, <_MINI_SWING_ALT, <_MINI_CUBE2, <_MINI_POGO2, <_MINI_SNAKE2, <_MINI_CUBE2
 	sprite_table_table_hi:
-		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2, >_WAVE2, >_SWING2, >_CUBE2
-		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2, >_MINI_CUBE2
+		.byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT2, >_SPIDER2, >_WAVE2, >_SWING2, >_CUBE2, >_POGO2, >_SNAKE2, >_CUBE2
+		.byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL2, >_MINI_UFO2, >_MINI_ROBOT2, >_MINI_SPIDER2, >_MINI_WAVE2, >_MINI_SWING2, >_MINI_CUBE2, >_MINI_POGO2, >_MINI_SNAKE2, >_MINI_CUBE2
     sprite_table_table_hi2:
-        .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT2, >_SPIDER_ALT2, >_WAVE2, >_SWING2, >_CUBE2
-        .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL_ALT, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE2, >_MINI_SWING_ALT, >_MINI_CUBE2
+        .byte >_CUBE2, >_SHIP2, >_BALL2, >_UFO2, >_ROBOT_ALT2, >_SPIDER_ALT2, >_WAVE2, >_SWING2, >_CUBE2, >_POGO2, >_SNAKE2, >_CUBE2
+        .byte >_MINI_CUBE2, >_MINI_SHIP2, >_MINI_BALL_ALT, >_MINI_UFO2, >_MINI_ROBOT_ALT, >_MINI_SPIDER_ALT, >_MINI_WAVE2, >_MINI_SWING_ALT, >_MINI_CUBE2, >_MINI_POGO2, >_MINI_SNAKE2, >_MINI_CUBE2
     rounding_slope_table:
 		;     45v  22v  66v  45^  22^  66^  nothing
         .byte $09, $08, $09, $00, $03, $04, $08, $00

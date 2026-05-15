@@ -21,8 +21,8 @@ extern uint8_t famistudio_output_buf[FAMISTUDIO_OUTPUT_BUF_SIZE];
 void store_practice_state(){
 #if !__VS_SYSTEM
 	if (!practice_point_count) {
-		if (!practice_music_sync)
-			music_play(song_practice);
+	//	if (!practice_music_sync)
+	//		music_play(song_practice);
 		latest_practice_point = 0;
 	} else {
 		latest_practice_point++;
@@ -86,10 +86,10 @@ void store_practice_state(){
 	idx8_store(practice_gravity_mod, get_Y, gravity_mod);
 	idx8_store(practice_kandoframecnt, get_Y, kandoframecnt);
 
-	if (practice_music_sync) {
+//	if (practice_music_sync) {
 		memcpy(practice_famistudio_state + lohi_arr16_load(multStateLookup, tmp1), famistudio_state, FAMISTUDIO_STATE_SIZE);
 		memcpy(practice_famistudio_registers + multBufLookup[tmp1], famistudio_output_buf, FAMISTUDIO_OUTPUT_BUF_SIZE);
-    }
+//    }
 	practice_sprite_x_pos = high_byte(player_x[0]);
 	auto_practicepoint_timer = 200;
 #endif
@@ -175,7 +175,7 @@ void load_practice_state() {
 	tmp3 = oneShadeDarker(tmp3);
 	pal_col(1, tmp3);
 	pal_col(9, tmp3);
-	pal_col(0x13, tmp3);
+	pal_col(13, tmp3);
 
 	tmp3 = (lastgcolortype & 0x3F);
 	pal_col(6, tmp3);

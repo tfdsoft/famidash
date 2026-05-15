@@ -73,7 +73,7 @@ void x_movement(){
 		//return; 
 	}
 
-	if (gamemode == GAMEMODE_WAVE) { // wave
+	if (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE) { // wave
 		Generic.width = WAVE_WIDTH;
 		Generic.height = WAVE_HEIGHT;
 	} else {
@@ -119,7 +119,7 @@ void x_movement(){
 
 
 	if (!wrap_mode) {
-		if (currplayer_y < 0x0600 && !dual && !twoplayer){
+		if (currplayer_y < 0x0600){
 			idx8_store(cube_data, currplayer, cube_data[currplayer] | 0x01);	//DIE if player goes too high
 		}
 		

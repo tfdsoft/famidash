@@ -59,10 +59,16 @@ void reset_level() {
 	gameState = STATE_GAME; //fix for dying as the end trigger triggers
 	#endif
 	// slope stuff
+	seam_scroll_y = (0x2EF - 0x78); // [temp]
+	set_scroll_x(scroll_x);
+	set_scroll_y(scroll_y);
+	init_rld(level);
+
+	scroll_y = spawn_scroll_y_pos;
+	scroll_y_subpx = 0;
 	currplayer_was_on_slope_counter = 0;
 	was_on_slope_counter[0] = 0;
 	was_on_slope_counter[1] = 0;
-	jumps = 0;
 	ufo_orbed[0] = 0;
 	ufo_orbed[1] = 0;
 	black_orbed[0] = 0;
@@ -71,9 +77,9 @@ void reset_level() {
 	wrap_mode = 0;
 	nullscapes_active = 0;
 	nullscapes_orb_type = 0;
-	force_platformer = 0;
 	player_invis = 0;
 	robotjumpframe[0] = 0;
+	robotjumpframe[1] = 0;
 	slope_frames[0] = 0;
 	slope_frames[1] = 0;
 	nocamlockforced = 0;
@@ -88,14 +94,12 @@ void reset_level() {
 	forced_trails = 0;
 	cube_rotate[0] = 0;
 	cube_rotate[1] = 0;
+	chargepower[0] = 0;
+	chargepower[1] = 0;
 	coins = 0;
 	orbactive = 0;
+	discoframe = 0;
 	coin1_timer = coin2_timer = coin3_timer = 0;	
-#ifdef FLAG_KANDO_FUN_STUFF
-	tallmode = 0;
-	longmode = 0;
-	bigboi = 0;
-#endif	
 	slope_type[0] = SLOPE_NONE;
 	slope_type[1] = SLOPE_NONE;
 	currplayer_slope_type = SLOPE_NONE;
@@ -107,13 +111,6 @@ void reset_level() {
 	#if __VS_SYSTEM
 	if (!coins_inserted) return;
 	#endif
-	seam_scroll_y = (0x2EF - 0x78); // [temp]
-	set_scroll_x(scroll_x);
-	set_scroll_y(scroll_y);
-	init_rld(level);
-
-	scroll_y_subpx = 0;
-	scroll_y = spawn_scroll_y_pos;
 
 	if (!(options & platformer) && !force_platformer) {
 	player_x[0] = 0x0000;
@@ -128,7 +125,6 @@ void reset_level() {
 	target_scroll_y = 0x0180;
 	curr_x_scroll_stop = 0x5000;
 	target_x_scroll_stop = 0x5000;
-	discoframe = 0;
 	if (!practice_point_count) {
 		memfill(player_old_posy, 0, sizeof(player_old_posy));
 		memfill(trail_sprites_visible, 0, sizeof(trail_sprites_visible));

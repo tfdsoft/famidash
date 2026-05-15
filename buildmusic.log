@@ -1,0 +1,54 @@
+== Info on bank 1:
+	Info: Total assembly file size: 7690 bytes.
+== Info on bank 0:
+	Info: Total assembly file size: 7653 bytes.
+
+==== Loading metadata...
+
+==== Processing metadata...
+
+==== Checking FamiStudio version...
+
+==== Exporting a FamiStudio text file for processing...
+
+==== Getting sizes of songs and instruments...
+== Total maximum size of data in a bank is 6891.0 bytes
+== Bank 0:
+	- Songs: Every End PT2, Scheming Weasel
+	- Total approx. size: 6844 bytes
+== Bank 1:
+	- Songs: Practice, Supernova, emehT uneM
+	- Total approx. size: 6559 bytes
+
+==== Running export processes of each music data bank...
+
+== Export took 1.8808 seconds
+
+==== Checking if the DPCM files are identical...
+
+==== Exporting miscellaneous files...
+== musicPlayRoutines.s
+== musicDefines.h
+== music_songlist.inc
+== music_data_header.s
+== music_soundTestTables.h
+== sfx_soundTestTables.h
+== pcm_metadataTables.s
+== nsf_metadata.s
+
+==== Don't forget to set these options in the sound driver:
+FAMISTUDIO_USE_VIBRATO = 1
+FAMISTUDIO_USE_FAMITRACKER_TEMPO = 1
+FAMISTUDIO_USE_RELEASE_NOTES = 1
+FAMISTUDIO_USE_ARPEGGIO = 1
+FAMISTUDIO_USE_NOISE_SLIDE_NOTES = 1
+FAMISTUDIO_USE_DPCM_BANKSWITCHING = 1
+FAMISTUDIO_USE_VOLUME_SLIDES = 1
+FAMISTUDIO_USE_VOLUME_TRACK = 1
+FAMISTUDIO_USE_FAMITRACKER_DELAYED_NOTES_OR_CUTS = 1
+FAMISTUDIO_USE_DUTYCYCLE_EFFECT = 1
+FAMISTUDIO_USE_SLIDE_NOTES = 1
+FAMISTUDIO_USE_PITCH_TRACK = 1
+
+==== The export is over, now manually correct stuff as per the contributing guide
+Running export script for level set D...

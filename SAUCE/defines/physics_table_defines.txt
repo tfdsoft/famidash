@@ -122,12 +122,6 @@ fxp8 accel sz=16 [g] SPIDER_GRAVITY 1054.6875
 fxp8 accel sz=16 [gm] SWING_GRAVITY 703.125 787.5
 
 
-fxp8 vel [] JIMSHEATBALL_MAX_FALLSPEED 180.0
-fxp8 accel sz=16 [] JIMSHEATBALL_GRAVITY 731.25
-fxp8 vel [] JIMSHEATBALL_JUMP_VEL -213.75
-# literally the above / 4 * 7
-fxp8 vel [] JIMSHEATBALL_JUMP_VEL_d4x7 -374.0625
-
 fxp8 vel [g] MAKE_CUBE_JUMP_HIGHER -30
 
 fxp8 vel sz=16 [g] EXIT_SLOPE_BALL_22 -18.75
