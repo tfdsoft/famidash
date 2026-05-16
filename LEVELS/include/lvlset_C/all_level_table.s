@@ -17,6 +17,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_overawed)
 	.byte .lobyte(level_data_unity)
 	.byte .lobyte(level_data_dastardly)
+	.byte .lobyte(level_data_thetripletrial)
 	.byte .lobyte(level_data_trolledfix)
 	.byte .lobyte(level_data_supercycles)
 	.byte .lobyte(level_data_futurefunkfix)
@@ -34,6 +35,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_overawed)
 	.byte .hibyte(level_data_unity)
 	.byte .hibyte(level_data_dastardly)
+	.byte .hibyte(level_data_thetripletrial)
 	.byte .hibyte(level_data_trolledfix)
 	.byte .hibyte(level_data_supercycles)
 	.byte .hibyte(level_data_futurefunkfix)
@@ -51,6 +53,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_overawed))
 	.byte .lobyte(.bank(level_data_unity))
 	.byte .lobyte(.bank(level_data_dastardly))
+	.byte .lobyte(.bank(level_data_thetripletrial))
 	.byte .lobyte(.bank(level_data_trolledfix))
 	.byte .lobyte(.bank(level_data_supercycles))
 	.byte .lobyte(.bank(level_data_futurefunkfix))
@@ -92,6 +95,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A7)		; overawed
 	.byte .lobyte($00006B)		; unity
 	.byte .lobyte($0000B2)		; dastardly
+	.byte .lobyte($00003E)		; thetripletrial
 	.byte .lobyte($00003D)		; trolledfix
 	.byte .lobyte($000088)		; supercycles
 	.byte .lobyte($0001DD)		; futurefunkfix
@@ -111,6 +115,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A7)		; overawed
 	.byte .hibyte($00006B)		; unity
 	.byte .hibyte($0000B2)		; dastardly
+	.byte .hibyte($00003E)		; thetripletrial
 	.byte .hibyte($00003D)		; trolledfix
 	.byte .hibyte($000088)		; supercycles
 	.byte .hibyte($0001DD)		; futurefunkfix
@@ -130,6 +135,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A7)		; overawed
 	.byte .bankbyte($00006B)		; unity
 	.byte .bankbyte($0000B2)		; dastardly
+	.byte .bankbyte($00003E)		; thetripletrial
 	.byte .bankbyte($00003D)		; trolledfix
 	.byte .bankbyte($000088)		; supercycles
 	.byte .bankbyte($0001DD)		; futurefunkfix

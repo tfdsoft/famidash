@@ -4106,7 +4106,8 @@
 		},
 		{
 			level: "newdashcity",
-			lowerText: "NEW DASH CITY",
+			upperText: "NEW DASH",
+			lowerText: "CITY",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "B",
@@ -4217,6 +4218,31 @@
 					offsetY: -16, 
 					offsetX: -16
 				}
+			]
+		},
+		{
+			level: "thetripletrial",
+			upperText: "THE TRIPLE",
+			lowerText: "TRIAL",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "INSANE",
+			stars: 8,
+			songID: "song_dastardly",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x00,
+			startingGroundColor: 0x00,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[367, 21], [367, 24],
+					],
+					offsetX: +8
+				},
 			]
 		},
 		{
@@ -4581,7 +4607,8 @@
 		},
 		{
 			level: "supercycles",
-			lowerText: "SUPER CYCLES",
+			upperText: "SUPER",
+			lowerText: "CYCLES",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "B",
