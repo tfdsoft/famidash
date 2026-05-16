@@ -1211,16 +1211,20 @@ void sprite_collide(){
 						pal_col(5, oneShadeDarker(color2)); 
 						lastgcolortype = tmp4;
 					}
-					else if (tmp4 >= 0xC0){
+					else if (tmp4 >= 0xC0 && !invisblocks){
 						pal_col(6, tmp2);
 						pal_col(5, oneShadeDarker(tmp2)); 
 						lastgcolortype = tmp4;
-					} else {
+					} else if (tmp4 < 0xC0) {
 						pal_col(0, tmp2);
 						pal_col(1, oneShadeDarker(tmp2)); 
 						pal_col(9, oneShadeDarker(tmp2)); 
 						pal_col(0x0D, oneShadeDarker(tmp2)); 
 						lastbgcolortype = tmp4;
+						if (invisblocks) {
+							pal_col(6, tmp2);
+							pal_col(5, oneShadeDarker(tmp2)); 
+						}
 					}
 					pal_set_update();
 					activesprites_type[index] = 0xFF;
