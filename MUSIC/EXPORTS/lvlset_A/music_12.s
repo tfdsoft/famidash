@@ -31,7 +31,7 @@ music_data_famidash_music12:
 	.word @song1ch2
 	.word @song1ch3
 	.word @song1ch4
-	.word 366,305
+	.word 364,303
 ; 02 : Scheming Weasel
 	.word @song2ch0
 	.word @song2ch1
