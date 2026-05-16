@@ -3958,7 +3958,7 @@
 		.incbin "EXPORTS/trolledfix.lz.bin" ; Size: 1315
 
 
-.segment "DAT_BANK_94"	; Total bank size: 8173 bytes
+.segment "DAT_BANK_94"	; Total bank size: 8178 bytes
 	.export level_data_madness
 	level_data_madness:
 	; Header

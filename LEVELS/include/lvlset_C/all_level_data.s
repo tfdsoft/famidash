@@ -365,7 +365,7 @@
 		.incbin "EXPORTS/short_kings.lz.bin" ; Size: 1687
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8171 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8176 bytes
 	.export level_data_trolledfix
 	level_data_trolledfix:
 	; Header
