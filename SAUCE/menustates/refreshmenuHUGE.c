@@ -135,3 +135,4 @@ const char coin_counter[][3] = {
   "_^^",
   "^^^",
 };
+

@@ -1186,4 +1186,3 @@ void choose_menu_theme() {
 	menuthemechosen = 1;
 }
 #endif
-

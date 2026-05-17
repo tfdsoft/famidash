@@ -1,7 +1,9 @@
 CODE_BANK_PUSH(LVLDONE_BANK)
 
+void set_lvldone_palette();
 void checkcointimer();
 void checkcoinproceed();
+void set_completion_data();
 void lvl_done_update();
 
 #include "defines/charmap/bgm_charmap.h"
@@ -18,21 +20,8 @@ void state_lvldone() {
 
 	oam_clear();
 
-	mmc3_set_1kb_chr_bank_0(LEVELCOMPLETEBANK);
-	mmc3_set_1kb_chr_bank_1(PRACTICECOMPLETEBANK);
-	mmc3_set_1kb_chr_bank_2(LEVELCOMPLETEBANK+2);
-	mmc3_set_1kb_chr_bank_3(LEVELCOMPLETEBANK+3);
-	mmc3_set_2kb_chr_bank_1(MOUSEBANK);
-
-	// Set palettes back to natural colors since we aren't fading back in
-	pal_bright(4);
-	pal_bg(paletteMenu);
-	pal_col(0x0A,0x2A);
-	pal_col(0x0B,0x21);
-	pal_set_update();
-    //pal_spr(paletteMenu);
-	pal_spr(paletteDefaultSP);
-
+	crossPRGBankJump0(set_lvldone_palette);
+	
 	// Make a nametable for the chain
     vram_adr(NAMETABLE_C);
 	vram_fill(0xfe, 0x3c0);
@@ -81,26 +70,7 @@ void state_lvldone() {
 	#endif
 	current_state = 0;
 	
-	if (!DEBUG_MODE && !kandokidshack && !kandokidshack3 && !kandokidshack4 && !practice_point_count) {
-		if (!invisblocks) {
-			LEVELCOMPLETE[level] = 1;
-			if (coins & COIN_1) coin1_obtained[level] = 1;
-			if (coins & COIN_2) coin2_obtained[level] = 1;
-			if (coins & COIN_3) coin3_obtained[level] = 1;
-			level_completeness_normal[level] = 100;
-		}
-		else {
-			invisible_LEVELCOMPLETE[level] = 1;
-			if (coins & COIN_1) invisible_coin1_obtained[level] = 1;
-			if (coins & COIN_2) invisible_coin2_obtained[level] = 1;
-			if (coins & COIN_3) invisible_coin3_obtained[level] = 1;
-			invisible_level_completeness_normal[level] = 100;
-		}			
-
-	} else {
-		if (!invisblocks) level_completeness_practice[level] = 100;
-		else invisible_level_completeness_practice[level] = 100;
-	}
+	crossPRGBankJump0(set_completion_data);
 
 	#include "defines/charmap/endlevel_charmap.h"
 
