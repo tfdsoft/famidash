@@ -261,6 +261,49 @@
 			]
 		},
 		{
+			level: "dorabaebasic7",
+			lowerText: "DORABAEBASIC7",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 4,
+			songID: "song_endgame",
+			startingGameMode: 0,
+			startingSpeed: 1,
+			startingBackgroundColor: 0x0F,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+				{
+					coordinates: [
+						[225, 44], [610, 37], [616, 37], [622, 37], [628, 37], [634, 37], [640, 37], [653, 35], [655, 35], [1038, 28], [1045, 30], [1056, 28], [1063, 27], [1074, 29], [1081, 30], [1114, 28], [1238, 27], [1239, 27], [1475, 46],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[398, 43], [610, 41], [616, 41], [622, 41], [628, 41], [634, 41], [640, 41], [646, 41], [652, 41], [1239, 26],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[536, 37], [639, 38], [968, 27], [1183, 26], [1238, 27],
+					],
+					offsetX: +16
+				},
+				{
+					coordinates: [
+						[607, 38], [640, 38], [653, 39], [653, 35], [655, 35],
+					],
+					offsetX: -8
+				},
+			]
+		},
+		{
 			level: "endgame",
 			uppreText: "AVENGERS",
 			lowerText: "ENDGAME",

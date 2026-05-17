@@ -11,6 +11,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_short_kings)
 	.byte .lobyte(level_data_nicktoons)
 	.byte .lobyte(level_data_hungrymanadventures)
+	.byte .lobyte(level_data_dorabaebasic7)
 	.byte .lobyte(level_data_endgame)
 	.byte .lobyte(level_data_astronomicalexpedition)
 	.byte .lobyte(level_data_ninecircleseasy)
@@ -29,6 +30,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_short_kings)
 	.byte .hibyte(level_data_nicktoons)
 	.byte .hibyte(level_data_hungrymanadventures)
+	.byte .hibyte(level_data_dorabaebasic7)
 	.byte .hibyte(level_data_endgame)
 	.byte .hibyte(level_data_astronomicalexpedition)
 	.byte .hibyte(level_data_ninecircleseasy)
@@ -47,6 +49,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_short_kings))
 	.byte .lobyte(.bank(level_data_nicktoons))
 	.byte .lobyte(.bank(level_data_hungrymanadventures))
+	.byte .lobyte(.bank(level_data_dorabaebasic7))
 	.byte .lobyte(.bank(level_data_endgame))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition))
 	.byte .lobyte(.bank(level_data_ninecircleseasy))
@@ -89,6 +92,7 @@ _level_lengths_lo:
 	.byte .lobyte($000039)		; short_kings
 	.byte .lobyte($000059)		; nicktoons
 	.byte .lobyte($00006A)		; hungrymanadventures
+	.byte .lobyte($0000F7)		; dorabaebasic7
 	.byte .lobyte($00009F)		; endgame
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($0000B9)		; ninecircleseasy
@@ -109,6 +113,7 @@ _level_lengths_md:
 	.byte .hibyte($000039)		; short_kings
 	.byte .hibyte($000059)		; nicktoons
 	.byte .hibyte($00006A)		; hungrymanadventures
+	.byte .hibyte($0000F7)		; dorabaebasic7
 	.byte .hibyte($00009F)		; endgame
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($0000B9)		; ninecircleseasy
@@ -129,6 +134,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000039)		; short_kings
 	.byte .bankbyte($000059)		; nicktoons
 	.byte .bankbyte($00006A)		; hungrymanadventures
+	.byte .bankbyte($0000F7)		; dorabaebasic7
 	.byte .bankbyte($00009F)		; endgame
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($0000B9)		; ninecircleseasy
