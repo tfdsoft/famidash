@@ -370,6 +370,13 @@
 		},
 		*/
 		{
+			fmsSongName: "Clownparty Remix",
+			upperText: "CLOWNPARTY",
+			lowerText: "REMIX",
+			originalArtistText: "WATERFLAME",
+		},
+		
+		{
 			fmsSongName: "clutterfunk 2",
 			lowerText: "CLUTTERFUNK 2",
 			originalArtist: "Waterflame",
