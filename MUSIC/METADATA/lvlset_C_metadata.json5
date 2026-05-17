@@ -61,6 +61,12 @@
 			originalArtistText: "FOREVERBOUND",
 		},
 		{
+			fmsSongName: "Clownparty Remix",
+			upperText: "CLOWNPARTY",
+			lowerText: "REMIX",
+			originalArtistText: "WATERFLAME",
+		},
+		{
 			fmsSongName: "Deep Swim",
 			lowerText: "DEEP SWIM",
 			originalArtistText: "WINDOWS96",

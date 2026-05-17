@@ -1,8 +1,8 @@
 #define song_nine_circles 0
 #define song_future_funk_pt1 1
 #define song_hungryman_adventures 2
-#define song_deep_swim 3
-#define song_cycles 4
+#define song_clownparty_remix 3
+#define song_load 4
 #define song_sunslammer 5
 #define song_endgame 6
 #define song_practice 7
@@ -13,8 +13,9 @@
 #define song_unity 12
 #define song_c_madness 13
 #define song_ground_to_retray 14
-#define song_load 15
-#define song_stereo_madness 16
+#define song_stereo_madness 15
+#define song_cycles 16
 #define song_scheming_weasel 17
-#define song_youve_been_trolled 18
-#define song_max 19
+#define song_deep_swim 18
+#define song_youve_been_trolled 19
+#define song_max 20
