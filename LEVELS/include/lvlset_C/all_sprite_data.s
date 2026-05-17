@@ -319,7 +319,7 @@ sprite_data_groundtoretray:
   .byte $90,$27,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_0B"
+.segment "DAT_BANK_06"
 sprite_data_madness:
   .byte $d0,$06,$88,$03,$25
   .byte $e0,$07,$68,$03,$3c
@@ -595,7 +595,7 @@ sprite_data_short_kings:
   .byte $30,$16,$f0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_06"
+.segment "DAT_BANK_0B"
 sprite_data_nicktoons:
   .byte $d0,$00,$f0,$02,$2c
   .byte $b0,$01,$e0,$02,$33
