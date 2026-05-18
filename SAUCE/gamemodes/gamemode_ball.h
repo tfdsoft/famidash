@@ -51,7 +51,7 @@ void ball_movement(){
 	}
 
 	if (gamemode == GAMEMODE_BALL) {
-		if (((controllingplayer->hold & (PAD_A | PAD_UP))) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0 && !orbed[currplayer] && !orbhitonthisframe[currplayer]){
+		if (((controllingplayer->hold & (PAD_A | PAD_UP))) && (ball_switched[currplayer] == 0) && currplayer_vel_y == 0 && !orbed[currplayer]){
 			jumps++;
 			invert_gravity(currplayer_gravity);
 			update_currplayer_table_idx();
