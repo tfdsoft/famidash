@@ -918,7 +918,7 @@ char bg_coll_U() {
 		
 		storeWordSeparately(
 			add_scroll_y(
-				Generic.y + (currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0 + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 0 : 1)),
+				Generic.y + ((currplayer_mini ? byte(0x10 - Generic.height) >> 1 : 0) + (gamemode == GAMEMODE_WAVE || gamemode == GAMEMODE_SNAKE ? 0 : 1)),
 				scroll_y
 			), temp_y, temp_room);
 		
