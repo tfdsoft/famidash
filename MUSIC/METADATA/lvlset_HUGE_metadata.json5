@@ -373,7 +373,8 @@
 			fmsSongName: "Clownparty Remix",
 			upperText: "CLOWNPARTY",
 			lowerText: "REMIX",
-			originalArtistText: "WATERFLAME",
+			originalArtist: "Waterflame",
+			coveringArtist: "JuriJK",
 		},
 		
 		{
