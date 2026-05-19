@@ -92,6 +92,14 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	player_gravity[0] = GRAVITY_DOWN;
 
 
+	tmp1 = 0;
+	do {
+		activesprites_active[tmp1] = 0;
+		activesprites_anim_frame[tmp1] = 0;
+	} while (++tmp1 < max_loaded_sprites);
+
+	mmc3_set_prg_bank_1(level_data_bank);
+
 	player_y[0] = spawn_y_pos;
 	player_y[1] = spawn_y_pos;
 	currplayer_y = spawn_y_pos;
@@ -101,14 +109,6 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	player_gravity[1] = twoplayer ? GRAVITY_DOWN : GRAVITY_UP;
 
 	currplayer_gravity = GRAVITY_DOWN;
-
-	tmp1 = 0;
-	do {
-		activesprites_active[tmp1] = 0;
-		activesprites_anim_frame[tmp1] = 0;
-	} while (++tmp1 < max_loaded_sprites);
-
-	mmc3_set_prg_bank_1(level_data_bank);
 
 	// If practice mode has set a scroll position to restart from
 	// Then we dummy unrle, and adjust the parallax to match
@@ -164,8 +164,8 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 		uint32_inc(scroll_x);
 	} while (i != 0);
 
-	level_resetting_flag = 2;
-	if (!level_resetting_flag) timewarp_done = 0;
+//	level_resetting_flag = 2;
+//	if (!level_resetting_flag) timewarp_done = 0;   how was this a fix? this cant ever be false...
 
 	init_sprites();
 	
