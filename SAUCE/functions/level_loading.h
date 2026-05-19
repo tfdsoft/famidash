@@ -71,21 +71,7 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 			increment_attempt_count();
 		}
 	#endif
-	cube_data[0] = 0;
-	cube_data[1] = 0;
-	coins = 0;
-	scroll_x = 0;
-	drawing_frame = 0;
-	gravity_mod = 0;
-	disco_sprites = 0;
-	nullscapes_active = 0;
 
-	slowmode = 0;
-	wrap_mode = 0;
-	minicoins = 0;
-	kandoframecnt = 0;
-	forced_trails = 0;
-	make_cube_jump_higher = 0;
 
 	outline_color = 0x30;	
 	dual = twoplayer ? 1 : 0;

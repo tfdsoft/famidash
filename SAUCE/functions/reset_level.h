@@ -51,7 +51,12 @@ void death_animation() {
 	nmi_fs_updates_off();
 }
 
+#if LEVELSET != 0x141006E
 CODE_BANK_PUSH(RESETLEVEL_BANK)
+#else
+CODE_BANK_PUSH("XCD_BANK_10")
+#endif
+
 void reset_level() {
 	nmi_fs_updates_on();
 
@@ -87,6 +92,22 @@ void reset_level() {
 	coins = 0;
 	orbactive = 0;
 	discoframe = 0;
+
+	cube_data[0] = 0;
+	cube_data[1] = 0;
+	coins = 0;
+	scroll_x = 0;
+	drawing_frame = 0;
+	gravity_mod = 0;
+	disco_sprites = 0;
+	nullscapes_active = 0;
+
+	slowmode = 0;
+	wrap_mode = 0;
+	minicoins = 0;
+	kandoframecnt = 0;
+	forced_trails = 0;
+	make_cube_jump_higher = 0;
 	
 	nullscapes_orb_type = 0;
 	player_invis = 0;
