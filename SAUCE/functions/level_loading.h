@@ -152,8 +152,8 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 		parallax_scroll_x = 0;
 		parallax_scroll_column = 0;
 		parallax_scroll_column_start = 0;
-		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
 		i = 0;
+		mmc3_set_prg_bank_1(GET_BANK(draw_screen));
 	}
 	
 
