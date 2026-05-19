@@ -4912,7 +4912,7 @@
 			parallaxDisable: true
 		},
 		// fuggin rodata+vectors bank overflow
-		/*
+		
 		{
             level: "respitev2",
             lowerText: "RESPITE",
@@ -4968,7 +4968,7 @@
 				},
 			],
         },
-		*/
+		
 		{
 			level: "everymadness",
 			upperText: "EVERY",

@@ -3926,13 +3926,7 @@ SSDPCM_getbyte:
 
 	percentage = tmp2
 
-	lda #$00
-	sta _slowmode
-	sta _wrap_mode
-	sta _minicoins
-	sta _kandoframecnt
-	sta _forced_trails
-	sta _make_cube_jump_higher
+
 
 	start:
 		LDY	_level

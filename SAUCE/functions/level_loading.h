@@ -80,7 +80,12 @@ void unrle_first_screen(){ // run-length decode the first screen of a level
 	disco_sprites = 0;
 	nullscapes_active = 0;
 
-
+	slowmode = 0;
+	wrap_mode = 0;
+	minicoins = 0;
+	kandoframecnt = 0;
+	forced_trails = 0;
+	make_cube_jump_higher = 0;
 
 	outline_color = 0x30;	
 	dual = twoplayer ? 1 : 0;

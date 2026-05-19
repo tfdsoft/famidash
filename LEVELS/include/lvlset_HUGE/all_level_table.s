@@ -112,6 +112,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_motion)
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_endorphinrush)
+	.byte .lobyte(level_data_respitev2)
 	.byte .lobyte(level_data_everymadness)
 	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_trythisgd)
@@ -264,6 +265,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_motion)
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_endorphinrush)
+	.byte .hibyte(level_data_respitev2)
 	.byte .hibyte(level_data_everymadness)
 	.byte .hibyte(level_data_skeletalshenanigans)
 	.byte .hibyte(level_data_trythisgd)
@@ -416,6 +418,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_motion))
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_endorphinrush))
+	.byte .lobyte(.bank(level_data_respitev2))
 	.byte .lobyte(.bank(level_data_everymadness))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 	.byte .lobyte(.bank(level_data_trythisgd))
@@ -478,19 +481,20 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_extraordinaryexcitement_14)
 	.byte .lobyte(level_data_deathmoon_15)
 	.byte .lobyte(level_data_motion_16)
-	.byte .lobyte(level_data_skeletalshenanigans_17)
-	.byte .lobyte(level_data_trythisgd_18)
-	.byte .lobyte(level_data_demonpyrophoric_19)
-	.byte .lobyte(level_data_demoncryogenic_20)
-	.byte .lobyte(level_data_futurefunkfix_21)
+	.byte .lobyte(level_data_respitev2_17)
+	.byte .lobyte(level_data_skeletalshenanigans_18)
+	.byte .lobyte(level_data_trythisgd_19)
+	.byte .lobyte(level_data_demonpyrophoric_20)
+	.byte .lobyte(level_data_demoncryogenic_21)
 	.byte .lobyte(level_data_futurefunkfix_22)
-	.byte .lobyte(level_data_eon_23)
-	.byte .lobyte(level_data_windylandscape_24)
-	.byte .lobyte(level_data_sonicwave_25)
-	.byte .lobyte(level_data_aftercatabath_26)
+	.byte .lobyte(level_data_futurefunkfix_23)
+	.byte .lobyte(level_data_eon_24)
+	.byte .lobyte(level_data_windylandscape_25)
+	.byte .lobyte(level_data_sonicwave_26)
 	.byte .lobyte(level_data_aftercatabath_27)
-	.byte .lobyte(level_data_everyend_28)
+	.byte .lobyte(level_data_aftercatabath_28)
 	.byte .lobyte(level_data_everyend_29)
+	.byte .lobyte(level_data_everyend_30)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_dash_0)
@@ -510,19 +514,20 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_extraordinaryexcitement_14)
 	.byte .hibyte(level_data_deathmoon_15)
 	.byte .hibyte(level_data_motion_16)
-	.byte .hibyte(level_data_skeletalshenanigans_17)
-	.byte .hibyte(level_data_trythisgd_18)
-	.byte .hibyte(level_data_demonpyrophoric_19)
-	.byte .hibyte(level_data_demoncryogenic_20)
-	.byte .hibyte(level_data_futurefunkfix_21)
+	.byte .hibyte(level_data_respitev2_17)
+	.byte .hibyte(level_data_skeletalshenanigans_18)
+	.byte .hibyte(level_data_trythisgd_19)
+	.byte .hibyte(level_data_demonpyrophoric_20)
+	.byte .hibyte(level_data_demoncryogenic_21)
 	.byte .hibyte(level_data_futurefunkfix_22)
-	.byte .hibyte(level_data_eon_23)
-	.byte .hibyte(level_data_windylandscape_24)
-	.byte .hibyte(level_data_sonicwave_25)
-	.byte .hibyte(level_data_aftercatabath_26)
+	.byte .hibyte(level_data_futurefunkfix_23)
+	.byte .hibyte(level_data_eon_24)
+	.byte .hibyte(level_data_windylandscape_25)
+	.byte .hibyte(level_data_sonicwave_26)
 	.byte .hibyte(level_data_aftercatabath_27)
-	.byte .hibyte(level_data_everyend_28)
+	.byte .hibyte(level_data_aftercatabath_28)
 	.byte .hibyte(level_data_everyend_29)
+	.byte .hibyte(level_data_everyend_30)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_dash_0))
@@ -542,19 +547,20 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_extraordinaryexcitement_14))
 	.byte .lobyte(.bank(level_data_deathmoon_15))
 	.byte .lobyte(.bank(level_data_motion_16))
-	.byte .lobyte(.bank(level_data_skeletalshenanigans_17))
-	.byte .lobyte(.bank(level_data_trythisgd_18))
-	.byte .lobyte(.bank(level_data_demonpyrophoric_19))
-	.byte .lobyte(.bank(level_data_demoncryogenic_20))
-	.byte .lobyte(.bank(level_data_futurefunkfix_21))
+	.byte .lobyte(.bank(level_data_respitev2_17))
+	.byte .lobyte(.bank(level_data_skeletalshenanigans_18))
+	.byte .lobyte(.bank(level_data_trythisgd_19))
+	.byte .lobyte(.bank(level_data_demonpyrophoric_20))
+	.byte .lobyte(.bank(level_data_demoncryogenic_21))
 	.byte .lobyte(.bank(level_data_futurefunkfix_22))
-	.byte .lobyte(.bank(level_data_eon_23))
-	.byte .lobyte(.bank(level_data_windylandscape_24))
-	.byte .lobyte(.bank(level_data_sonicwave_25))
-	.byte .lobyte(.bank(level_data_aftercatabath_26))
+	.byte .lobyte(.bank(level_data_futurefunkfix_23))
+	.byte .lobyte(.bank(level_data_eon_24))
+	.byte .lobyte(.bank(level_data_windylandscape_25))
+	.byte .lobyte(.bank(level_data_sonicwave_26))
 	.byte .lobyte(.bank(level_data_aftercatabath_27))
-	.byte .lobyte(.bank(level_data_everyend_28))
+	.byte .lobyte(.bank(level_data_aftercatabath_28))
 	.byte .lobyte(.bank(level_data_everyend_29))
+	.byte .lobyte(.bank(level_data_everyend_30))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -667,6 +673,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000A6)		; motion
 	.byte .lobyte($00007F)		; speedracer
 	.byte .lobyte($00008B)		; endorphinrush
+	.byte .lobyte($0000E4)		; respitev2
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($0000D4)		; trythisgd
@@ -821,6 +828,7 @@ _level_lengths_md:
 	.byte .hibyte($0000A6)		; motion
 	.byte .hibyte($00007F)		; speedracer
 	.byte .hibyte($00008B)		; endorphinrush
+	.byte .hibyte($0000E4)		; respitev2
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($0000D4)		; trythisgd
@@ -975,6 +983,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000A6)		; motion
 	.byte .bankbyte($00007F)		; speedracer
 	.byte .bankbyte($00008B)		; endorphinrush
+	.byte .bankbyte($0000E4)		; respitev2
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($0000D4)		; trythisgd

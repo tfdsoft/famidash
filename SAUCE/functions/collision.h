@@ -216,7 +216,7 @@ char bg_coll_spikes() {
 	tmp8
 */
 void bg_coll_floor_spikes() { // used for spike collision
-	if (currplayer_vel_y != 0) {
+	if (currplayer_vel_y) {
 		currplayer_direction = high_byte(currplayer_vel_y) & 0x80;
 	}
 
@@ -503,9 +503,6 @@ char bg_coll_U_D_checks() {
 
 	return 0;
 }
-void unstick() {
-	tmp8 = 4;
-}
 
 void clear_slope_vars() {
 	currplayer_was_on_slope_counter = 0;
@@ -740,11 +737,11 @@ char bg_coll_slope() {
 
 				if (a_check_lookup[tmp4]) {
 					if (controllingplayer->hold & (PAD_A | PAD_UP)) {
-						unstick();
+						tmp8 = 4;
 					}
 				} else {
 					if (!(controllingplayer->hold & (PAD_A | PAD_UP))) {
-						unstick();
+						tmp8 = 4;
 					}
 				}	
 
