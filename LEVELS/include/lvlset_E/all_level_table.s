@@ -33,6 +33,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_slaughterhouse)
 	.byte .lobyte(level_data_kratos)
 	.byte .lobyte(level_data_nullscapes)
+	.byte .lobyte(level_data_heliopolis)
 	.byte .lobyte(level_data_silentcircles)
 
 _level_list_hi:
@@ -64,6 +65,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_slaughterhouse)
 	.byte .hibyte(level_data_kratos)
 	.byte .hibyte(level_data_nullscapes)
+	.byte .hibyte(level_data_heliopolis)
 	.byte .hibyte(level_data_silentcircles)
 
 _level_list_bank:
@@ -95,6 +97,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_slaughterhouse))
 	.byte .lobyte(.bank(level_data_kratos))
 	.byte .lobyte(.bank(level_data_nullscapes))
+	.byte .lobyte(.bank(level_data_heliopolis))
 	.byte .lobyte(.bank(level_data_silentcircles))
 
 _level_chunk_list_lo:
@@ -105,6 +108,7 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_windylandscape_4)
 	.byte .lobyte(level_data_aftercatabath_5)
 	.byte .lobyte(level_data_aftercatabath_6)
+	.byte .lobyte(level_data_heliopolis_7)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_respitev2_0)
@@ -114,6 +118,7 @@ _level_chunk_list_hi:
 	.byte .hibyte(level_data_windylandscape_4)
 	.byte .hibyte(level_data_aftercatabath_5)
 	.byte .hibyte(level_data_aftercatabath_6)
+	.byte .hibyte(level_data_heliopolis_7)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_respitev2_0))
@@ -123,6 +128,7 @@ _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_windylandscape_4))
 	.byte .lobyte(.bank(level_data_aftercatabath_5))
 	.byte .lobyte(.bank(level_data_aftercatabath_6))
+	.byte .lobyte(.bank(level_data_heliopolis_7))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -156,6 +162,7 @@ _level_lengths_lo:
 	.byte .lobyte($000097)		; slaughterhouse
 	.byte .lobyte($000087)		; kratos
 	.byte .lobyte($000075)		; nullscapes
+	.byte .lobyte($0000BC)		; heliopolis
 	.byte .lobyte($000080)		; silentcircles
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -189,6 +196,7 @@ _level_lengths_md:
 	.byte .hibyte($000097)		; slaughterhouse
 	.byte .hibyte($000087)		; kratos
 	.byte .hibyte($000075)		; nullscapes
+	.byte .hibyte($0000BC)		; heliopolis
 	.byte .hibyte($000080)		; silentcircles
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -222,6 +230,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000097)		; slaughterhouse
 	.byte .bankbyte($000087)		; kratos
 	.byte .bankbyte($000075)		; nullscapes
+	.byte .bankbyte($0000BC)		; heliopolis
 	.byte .bankbyte($000080)		; silentcircles
 
 .endif

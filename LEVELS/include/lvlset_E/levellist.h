@@ -30,6 +30,7 @@ const uint8_t difficulty_list[] = {
 	GRANDPADEMON,	// slaughterhouse
 	GRANDPADEMON,	// kratos
 	GRANDPADEMON,	// nullscapes
+	GRANDPADEMON,	// heliopolis
 	GRANDPADEMON,	// silentcircles
 };
 
@@ -62,5 +63,6 @@ const uint8_t stars_list[] = {
 	10,	// slaughterhouse
 	10,	// kratos
 	10,	// nullscapes
+	10,	// heliopolis
 	10,	// silentcircles
 };

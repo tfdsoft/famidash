@@ -57,7 +57,12 @@
 			upperText: "SCHEMING",
 			lowerText: "WEASEL",
 			originalArtistText: "KEVIN MACLEOD",
-		},	
+		},
+		{
+			fmsSongName: "Apoplexy",
+			lowerText: "APOPLEXY",
+			originalArtistText: "BEE HUNTER",
+		},
 		{
 			fmsSongName: "atthespeedoflightfull",
 			upperText: "AT THE SPEED",

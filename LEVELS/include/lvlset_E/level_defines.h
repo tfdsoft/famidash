@@ -4,7 +4,7 @@
 #define LEVELSET 'E'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 29
+#define COMMUNITY_LEVEL_COUNT 30
 
 #define level_demonpark 0
 #define level_infinitecircles 1
@@ -34,4 +34,5 @@
 #define level_slaughterhouse 25
 #define level_kratos 26
 #define level_nullscapes 27
-#define level_silentcircles 28
+#define level_heliopolis 28
+#define level_silentcircles 29
