@@ -286,25 +286,26 @@ void end_level_debug() {
 
 
 void set_completion_data() {
-	if (!DEBUG_MODE && !kandokidshack && !kandokidshack3 && !kandokidshack4 && !practice_point_count) {
-		if (!invisblocks) {
-			LEVELCOMPLETE[level] = 1;
-			if (coins & COIN_1) coin1_obtained[level] = 1;
-			if (coins & COIN_2) coin2_obtained[level] = 1;
-			if (coins & COIN_3) coin3_obtained[level] = 1;
-			level_completeness_normal[level] = 100;
+	if (!DEBUG_MODE && !kandokidshack && !kandokidshack3 && !kandokidshack4) {
+		if (!practice_point_count) {
+			if (!invisblocks) {
+				LEVELCOMPLETE[level] = 1;
+				if (coins & COIN_1) coin1_obtained[level] = 1;
+				if (coins & COIN_2) coin2_obtained[level] = 1;
+				if (coins & COIN_3) coin3_obtained[level] = 1;
+				level_completeness_normal[level] = 100;
+			}
+			else {
+				invisible_LEVELCOMPLETE[level] = 1;
+				if (coins & COIN_1) invisible_coin1_obtained[level] = 1;
+				if (coins & COIN_2) invisible_coin2_obtained[level] = 1;
+				if (coins & COIN_3) invisible_coin3_obtained[level] = 1;
+				invisible_level_completeness_normal[level] = 100;
+			}			
+		} else {
+			if (!invisblocks) level_completeness_practice[level] = 100;
+			else invisible_level_completeness_practice[level] = 100;
 		}
-		else {
-			invisible_LEVELCOMPLETE[level] = 1;
-			if (coins & COIN_1) invisible_coin1_obtained[level] = 1;
-			if (coins & COIN_2) invisible_coin2_obtained[level] = 1;
-			if (coins & COIN_3) invisible_coin3_obtained[level] = 1;
-			invisible_level_completeness_normal[level] = 100;
-		}			
-
-	} else {
-		if (!invisblocks) level_completeness_practice[level] = 100;
-		else invisible_level_completeness_practice[level] = 100;
 	}
 }
 
