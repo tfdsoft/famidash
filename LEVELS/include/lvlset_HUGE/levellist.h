@@ -151,8 +151,8 @@ const uint8_t difficulty_list[] = {
 	GRANDPADEMON,	// kratos
 	GRANDPADEMON,	// nullscapes
 	GRANDPADEMON,	// everyend
-	GRANDPADEMON,	// silentcircles
 	GRANDPADEMON,	// heliopolis
+	GRANDPADEMON,	// silentcircles
 	GRANDPADEMON,	// luckydraw
 };
 
@@ -306,7 +306,7 @@ const uint8_t stars_list[] = {
 	10,	// kratos
 	10,	// nullscapes
 	10,	// everyend
-	10,	// silentcircles
 	10,	// heliopolis
+	10,	// silentcircles
 	10,	// luckydraw
 };

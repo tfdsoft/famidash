@@ -155,6 +155,6 @@
 #define level_kratos 146
 #define level_nullscapes 147
 #define level_everyend 148
-#define level_silentcircles 149
-#define level_heliopolis 150
+#define level_heliopolis 149
+#define level_silentcircles 150
 #define level_luckydraw 151

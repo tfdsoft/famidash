@@ -193,8 +193,8 @@ const char levelTextBC[14] = "SLAUGHTERHOUSE";
 const char levelTextBD[ 6] = "KRATOS";
 const char levelTextBE[10] = "NULLSCAPES";
 const char levelTextBF[ 9] = "EVERY END";
-const char levelTextC0[14] = "SILENT CIRCLES";
-const char levelTextC1[10] = "HELIOPOLIS";
+const char levelTextC0[10] = "HELIOPOLIS";
+const char levelTextC1[14] = "SILENT CIRCLES";
 const char levelTextC2[10] = "LUCKY DRAW";
 
 

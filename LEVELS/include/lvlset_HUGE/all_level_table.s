@@ -154,8 +154,8 @@ _level_list_lo:
 	.byte .lobyte(level_data_kratos)
 	.byte .lobyte(level_data_nullscapes)
 	.byte .lobyte(level_data_everyend)
-	.byte .lobyte(level_data_silentcircles)
 	.byte .lobyte(level_data_heliopolis)
+	.byte .lobyte(level_data_silentcircles)
 	.byte .lobyte(level_data_luckydraw)
 
 _level_list_hi:
@@ -308,8 +308,8 @@ _level_list_hi:
 	.byte .hibyte(level_data_kratos)
 	.byte .hibyte(level_data_nullscapes)
 	.byte .hibyte(level_data_everyend)
-	.byte .hibyte(level_data_silentcircles)
 	.byte .hibyte(level_data_heliopolis)
+	.byte .hibyte(level_data_silentcircles)
 	.byte .hibyte(level_data_luckydraw)
 
 _level_list_bank:
@@ -462,8 +462,8 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_kratos))
 	.byte .lobyte(.bank(level_data_nullscapes))
 	.byte .lobyte(.bank(level_data_everyend))
-	.byte .lobyte(.bank(level_data_silentcircles))
 	.byte .lobyte(.bank(level_data_heliopolis))
+	.byte .lobyte(.bank(level_data_silentcircles))
 	.byte .lobyte(.bank(level_data_luckydraw))
 
 _level_chunk_list_lo:
@@ -721,8 +721,8 @@ _level_lengths_lo:
 	.byte .lobyte($000087)		; kratos
 	.byte .lobyte($000075)		; nullscapes
 	.byte .lobyte($0002DC)		; everyend
-	.byte .lobyte($000080)		; silentcircles
 	.byte .lobyte($0000BC)		; heliopolis
+	.byte .lobyte($000080)		; silentcircles
 	.byte .lobyte($000087)		; luckydraw
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -877,8 +877,8 @@ _level_lengths_md:
 	.byte .hibyte($000087)		; kratos
 	.byte .hibyte($000075)		; nullscapes
 	.byte .hibyte($0002DC)		; everyend
-	.byte .hibyte($000080)		; silentcircles
 	.byte .hibyte($0000BC)		; heliopolis
+	.byte .hibyte($000080)		; silentcircles
 	.byte .hibyte($000087)		; luckydraw
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -1033,8 +1033,8 @@ _level_lengths_hi:
 	.byte .bankbyte($000087)		; kratos
 	.byte .bankbyte($000075)		; nullscapes
 	.byte .bankbyte($0002DC)		; everyend
-	.byte .bankbyte($000080)		; silentcircles
 	.byte .bankbyte($0000BC)		; heliopolis
+	.byte .bankbyte($000080)		; silentcircles
 	.byte .bankbyte($000087)		; luckydraw
 
 .endif
