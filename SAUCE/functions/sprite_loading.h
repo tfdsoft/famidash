@@ -771,11 +771,13 @@ void sprite_collide_lookup() {
 		if ((gamemode == GAMEMODE_CUBE || gamemode == GAMEMODE_POGO || gamemode == GAMEMODE_BALL || gamemode == GAMEMODE_ROBOT || gamemode == GAMEMODE_NINJA || gamemode == GAMEMODE_SPIDER || gamemode >= GAMEMODE_SWING) && cube_data[currplayer] & 0x02) {
 			if (controllingplayer->hold & (PAD_A | PAD_UP)) {
 				currplayer_vel_y = 0;
+				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
 				activesprites_activated[index] = 1;
 			}
 		} else {
 			if (controllingplayer->press & (PAD_A | PAD_UP)) {	
 				currplayer_vel_y = 0;
+				idx8_store(cube_data,currplayer,cube_data[currplayer] | 0x01);
 				activesprites_activated[index] = 1;
 			}
 		}
