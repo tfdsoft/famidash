@@ -262,7 +262,8 @@
 		},
 		{
 			level: "dorabaebasic7",
-			lowerText: "DORABAEBASIC7",
+			upperText: "DORABAE",
+			lowerText: "BASIC7",
 			decoType: "DECO1",
 			spikeSet: "A",
 			blockSet: "B",

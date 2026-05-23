@@ -978,8 +978,8 @@
 		},		
 		{
 			level: "dorabaebasic10",
-			upperText: "DORABAEBASIC",
-			lowerText: "10",
+			upperText: "DORABAE",
+			lowerText: "BASIC10",
 			decoType: "DECO1",
 			spikeSet: "C",
 			blockSet: "B",
