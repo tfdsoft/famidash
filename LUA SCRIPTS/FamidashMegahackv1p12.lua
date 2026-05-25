@@ -32,6 +32,8 @@
 -- Changed text format for mod menu from "MOD MENU" to "Megahack vX.XXX Mod Menu"
 -- V1.12
 -- Added more information for the hacks included and for this hack and made them more clear.
+-- Reverted back to V1.11's engine to fix Ship Copter
+-- Did a whole workaround with the script to fix cheat dot again cus it keeps failing and failing I almost gave up
 -----------------------
 
 local editableMessage = "Editable text" -- edit this text with anything you want
@@ -136,12 +138,10 @@ local function ClicksHUD()
     while #clickTimes > 0 and clickTimes[1] < frameCounter - 60 do
         table.remove(clickTimes, 1)
     end
-    
+
+    local cps = #clickTimes
+
     local cpsColor
-    
-       local cps = #clickTimes
-
-
     if cps == 0 then
         cpsColor = 0x80000000
     elseif cps <= 5 then
@@ -152,13 +152,10 @@ local function ClicksHUD()
         cpsColor = 0x80FF0000
     end
 
-    local cps = #clickTimes
-
     emu.drawString(10, 10, "Total Clicks: " .. totalClicks, WHITE, (aDown or upDown) and GREEN or BLACK)
     emu.drawString(10, 25, "A Button", WHITE, aDown and GREEN or BLACK)
     emu.drawString(10, 40, "Up Button", WHITE, upDown and GREEN or BLACK)
-    emu.drawString(10, 55, "CPS: " .. cps, white, cpsColor)
-
+    emu.drawString(10, 55, "CPS: " .. cps, WHITE, cpsColor)
 end
 
 -- =========================
@@ -204,6 +201,7 @@ local function GamemodeRandomizer()
     if inTransition then
         local newMode = math.random(0, 11)
         emu.write(122, newMode, M)
+        cheatUsedThisAttempt = true
 
         emu.displayMessage(
             "Megahack",
@@ -214,10 +212,6 @@ local function GamemodeRandomizer()
         inTransition = false
     else
         lastGamemode = gamemode
-    end
-
-    if enabled[3] then
-        cheatDotActive = true
     end
 end
 
@@ -265,9 +259,7 @@ end
 
 local function PathOverlay()
 
-    if not enabled[5] then
-        return
-    end
+    if not enabled[5] then return end
 
     local M = emu.memType.nesMemory
     local gameState = emu.read(ADDR_GAMESTATE, M) or 0
@@ -294,10 +286,9 @@ local function PathOverlay()
 
     local hold = emu.read(0x0022, M) or 0
     local aHeld = ((hold & (0x80 | 0x08)) ~= 0)
-    local aPressedFresh = aHeld and (not prevAHeld)
     prevAHeld = aHeld
 
-    trail[trailHead] = { x = px, y = py, p = aPressedFresh, a = aHeld }
+    trail[trailHead] = { x = px, y = py, a = aHeld }
     trailHead = trailHead + 1
     if trailHead > TRAIL_MAX then trailHead = 1 end
 
@@ -324,23 +315,10 @@ local function PathOverlay()
             local axS, ayS = w2sx(prevEntry.x), w2sy(prevEntry.y)
             local bxS, byS = w2sx(curEntry.x), w2sy(curEntry.y)
 
-local held = prevEntry.a or curEntry.a
-local thickness = held and 3 or 1
+            emu.drawLine(axS, ayS, bxS, byS, TRAIL_COLOR)
 
-emu.drawLine(axS, ayS, bxS, byS, TRAIL_COLOR)
-
-if thickness == 3 then
-    emu.drawLine(axS, ayS-1, bxS, byS-1, TRAIL_COLOR)
-    emu.drawLine(axS, ayS+1, bxS, byS+1, TRAIL_COLOR)
-end
-
-if prevEntry.p or curEntry.p then
-    emu.drawLine(bxS-2, byS, bxS+2, byS, TRAIL_COLOR)
-    emu.drawLine(bxS, byS-2, bxS, byS+2, TRAIL_COLOR)
-end
+            prevEntry = curEntry
         end
-
-        prevEntry = curEntry
     end
 end
 
@@ -406,18 +384,29 @@ local function DrawCheatDot()
     local M = emu.memType.nesMemory
     local gameState = emu.read(ADDR_GAMESTATE, M) or 0
 
-    -- detect "death / reset" like ClicksHUD does
     local rawX = emu.read16(ADDR_PLAYER_X, M) or 0
     local playerX = rawX >> 8
 
-if prevPlayerX ~= nil and playerX < prevPlayerX - 20 then
-    cheatUsedThisAttempt = false
-end
+    local inLevel = (gameState == STATE_GAME)
+
+    local redActive = enabled[3] or enabled[6]
+
+    local died = false
+    if prevPlayerX ~= nil and playerX < prevPlayerX - 20 then
+        died = true
+    end
+
+    if (not inLevel or died) and not redActive then
+        cheatUsedThisAttempt = false
+    end
+    
+    if redActive and inLevel then
+        cheatUsedThisAttempt = true
+    end
 
     prevPlayerX = playerX
 
     local color = cheatUsedThisAttempt and RED or GREEN
-
     emu.drawString(235, 0, "O", color, BLACK)
 end
 
@@ -432,11 +421,13 @@ function Main()
     local inLevel = (gameState == STATE_GAME)
 
     local input = emu.getInput(0)
-if inLevel then
-    if input.select and not prevSelect then
-        cheatUsedThisAttempt = true
+
+    if inLevel then
+        if input.select and not prevSelect then
+            cheatUsedThisAttempt = true
+        end
     end
-end
+
     if inLevel then
         if input.right and not prevRight then menuOpen = true end
         if input.left and not prevLeft then menuOpen = false end
@@ -461,10 +452,10 @@ end
         drawMenu()
 
     else
-	if enabled[1] then ClicksHUD() end
-	if enabled[2] then InputTest() end
-	if enabled[3] then GamemodeRandomizer() end
-	EditableText()
+        if enabled[1] then ClicksHUD() end
+        if enabled[2] then InputTest() end
+        if enabled[3] then GamemodeRandomizer() end
+        EditableText()
     end
 
     DrawCheatDot()
@@ -480,4 +471,4 @@ end
 
 emu.addEventCallback(Main, emu.eventType.endFrame)
 emu.addEventCallback(ShipCopter, emu.eventType.inputPolled)
-emu.displayMessage("System", "Famidash Megahack v1.12 Loaded") 
+emu.displayMessage("System", "Famidash Megahack v1.12 Loaded")
