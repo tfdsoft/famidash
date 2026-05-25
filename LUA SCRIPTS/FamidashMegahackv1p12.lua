@@ -1,13 +1,25 @@
 ﻿-----------------------
--- Famidash Megahack v1.11
+-- Famidash Megahack v1.12
 -- By: Aaron Chen-Chang (Air Conditioner) & more
+-- Famidash Update 1.2.8
+-- This script was last updated on May 25th, 2026.
 -----------------------
--- Recommend pausing before opening menu
--- press right to open menu, press left to close menu
--- press up or down to move cursor, press A to select the hack you want to activate
+-- Recommend pausing before opening the menu.
+-- Press the Right button to open the menu, press the Left button to close the menu.
+-- Press the Up or Down button to move the cursor, press the A button to select the hack you want to activate and vice versa.
+-- If a hack is Green, it is allowed for completion and will not be flagged by the cheat indicator dot.
+-- If a hack is Red, it is not allowed for completion and will be flagged by the cheat indicator dot unless you disable the hack and reset player (by dying or exiting the level).
 -----------------------
--- Current hacks include: Clicks HUD, Input Test, Random Gamemode, Editable Text, Path Overlay, Ship Copter
+-- Current hacks include: Clicks HUD, Input Test, Random Gamemode, Editable Text, Path Overlay, Ship Copter.
 -- Cheat Indicator included and is always on.
+-----------------------
+-- Information for hacks:
+-- Clicks HUD (By Aaron Chen-Chang): Shows your total clicks and Clicks Per Second (CPS) during a level once turned on, if your CPS is 0, the background color for CPS will be black, 1~5 will be green, 6~10 will be yellow, >10 will be red, when you are pressing or holding the A button or the Up button, the "A button" or the "Up button" text and the total clicks will turn green.
+-- Input test (By Aaron Chen-Chang): Shows your inputs with a green background once turned on, this includes all possible inputs from controller 1.
+-- Random Gamemode (By Aaron Chen-Chang): Randomizes your gamemode from gamemodes 1-11 everytime you enter a portal or enter a level once turned on.
+-- Editable Text (By Aaron Chen-Chang): Edit your text to anything you want below, and it will show on screen once turned on.
+-- Path Overlay (By Kando Wontu): Shows the path you have taken by drawing a line trail down once turned on, if you click, the line gets thicker and vice versa.
+-- Ship Copter (By wilfredlam0418): Makes the swing gamemode behave like the ship once turned on.
 -----------------------
 -- Update log:
 -- v1.0 - Added mod menu
@@ -15,8 +27,11 @@
 -- v1.1 - Added cheat indicator
 -- Added - Editable Text, path overlay
 -- V1.11
--- Fixed cheat indicator to make it so that it also checks for debug mode (but only when you press select, so the old way to use debug mode still doesn't make it red)
+-- Fixed cheat indicator to make it so that it also checks for activating debug mode by pressing the Select button during a level
 -- Added - Ship Copter
+-- Changed text format for mod menu from "MOD MENU" to "Megahack vX.XXX Mod Menu"
+-- V1.12
+-- Added more information for the hacks included and for this hack and made them more clear.
 -----------------------
 
 local editableMessage = "Editable text" -- edit this text with anything you want
@@ -364,7 +379,7 @@ end
 
 local function drawMenu()
 
-    emu.drawString(10, 10, "Megahack v1.11 Mod menu")
+    emu.drawString(10, 10, "Megahack v1.12 Mod menu")
 
     for i = 1, #options do
 
@@ -465,4 +480,4 @@ end
 
 emu.addEventCallback(Main, emu.eventType.endFrame)
 emu.addEventCallback(ShipCopter, emu.eventType.inputPolled)
-emu.displayMessage("System", "Famidash Megahack v1.11 Loaded") 
+emu.displayMessage("System", "Famidash Megahack v1.12 Loaded") 
