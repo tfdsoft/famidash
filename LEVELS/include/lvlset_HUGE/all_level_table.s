@@ -113,6 +113,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_speedracer)
 	.byte .lobyte(level_data_endorphinrush)
 	.byte .lobyte(level_data_respitev2)
+	.byte .lobyte(level_data_chaozimpact)
 	.byte .lobyte(level_data_everymadness)
 	.byte .lobyte(level_data_skeletalshenanigans)
 	.byte .lobyte(level_data_trythisgd)
@@ -267,6 +268,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_speedracer)
 	.byte .hibyte(level_data_endorphinrush)
 	.byte .hibyte(level_data_respitev2)
+	.byte .hibyte(level_data_chaozimpact)
 	.byte .hibyte(level_data_everymadness)
 	.byte .hibyte(level_data_skeletalshenanigans)
 	.byte .hibyte(level_data_trythisgd)
@@ -421,6 +423,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_speedracer))
 	.byte .lobyte(.bank(level_data_endorphinrush))
 	.byte .lobyte(.bank(level_data_respitev2))
+	.byte .lobyte(.bank(level_data_chaozimpact))
 	.byte .lobyte(.bank(level_data_everymadness))
 	.byte .lobyte(.bank(level_data_skeletalshenanigans))
 	.byte .lobyte(.bank(level_data_trythisgd))
@@ -680,6 +683,7 @@ _level_lengths_lo:
 	.byte .lobyte($00007F)		; speedracer
 	.byte .lobyte($00008B)		; endorphinrush
 	.byte .lobyte($0000E4)		; respitev2
+	.byte .lobyte($000080)		; chaozimpact
 	.byte .lobyte($000090)		; everymadness
 	.byte .lobyte($0000D5)		; skeletalshenanigans
 	.byte .lobyte($0000D4)		; trythisgd
@@ -836,6 +840,7 @@ _level_lengths_md:
 	.byte .hibyte($00007F)		; speedracer
 	.byte .hibyte($00008B)		; endorphinrush
 	.byte .hibyte($0000E4)		; respitev2
+	.byte .hibyte($000080)		; chaozimpact
 	.byte .hibyte($000090)		; everymadness
 	.byte .hibyte($0000D5)		; skeletalshenanigans
 	.byte .hibyte($0000D4)		; trythisgd
@@ -992,6 +997,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00007F)		; speedracer
 	.byte .bankbyte($00008B)		; endorphinrush
 	.byte .bankbyte($0000E4)		; respitev2
+	.byte .bankbyte($000080)		; chaozimpact
 	.byte .bankbyte($000090)		; everymadness
 	.byte .bankbyte($0000D5)		; skeletalshenanigans
 	.byte .bankbyte($0000D4)		; trythisgd
