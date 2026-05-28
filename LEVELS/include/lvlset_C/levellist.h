@@ -18,6 +18,7 @@ const uint8_t difficulty_list[] = {
 	INSANE,	// thetripletrial
 	INSANE,	// trolledfix
 	DEMON,	// supercycles
+	DEMON,	// chaozimpact
 	DEMON,	// futurefunkfix
 };
 
@@ -38,5 +39,6 @@ const uint8_t stars_list[] = {
 	8,	// thetripletrial
 	9,	// trolledfix
 	10,	// supercycles
+	10,	// chaozimpact
 	10,	// futurefunkfix
 };

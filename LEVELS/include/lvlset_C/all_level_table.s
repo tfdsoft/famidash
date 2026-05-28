@@ -21,6 +21,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_thetripletrial)
 	.byte .lobyte(level_data_trolledfix)
 	.byte .lobyte(level_data_supercycles)
+	.byte .lobyte(level_data_chaozimpact)
 	.byte .lobyte(level_data_futurefunkfix)
 
 _level_list_hi:
@@ -40,6 +41,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_thetripletrial)
 	.byte .hibyte(level_data_trolledfix)
 	.byte .hibyte(level_data_supercycles)
+	.byte .hibyte(level_data_chaozimpact)
 	.byte .hibyte(level_data_futurefunkfix)
 
 _level_list_bank:
@@ -59,6 +61,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_thetripletrial))
 	.byte .lobyte(.bank(level_data_trolledfix))
 	.byte .lobyte(.bank(level_data_supercycles))
+	.byte .lobyte(.bank(level_data_chaozimpact))
 	.byte .lobyte(.bank(level_data_futurefunkfix))
 
 _level_chunk_list_lo:
@@ -102,6 +105,7 @@ _level_lengths_lo:
 	.byte .lobyte($00003E)		; thetripletrial
 	.byte .lobyte($00003D)		; trolledfix
 	.byte .lobyte($000088)		; supercycles
+	.byte .lobyte($000080)		; chaozimpact
 	.byte .lobyte($0001DD)		; futurefunkfix
 
 .if MID_LEVEL_LENGTHS_ENABLED
@@ -123,6 +127,7 @@ _level_lengths_md:
 	.byte .hibyte($00003E)		; thetripletrial
 	.byte .hibyte($00003D)		; trolledfix
 	.byte .hibyte($000088)		; supercycles
+	.byte .hibyte($000080)		; chaozimpact
 	.byte .hibyte($0001DD)		; futurefunkfix
 
 .if HIGH_LEVEL_LENGTHS_ENABLED
@@ -144,6 +149,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00003E)		; thetripletrial
 	.byte .bankbyte($00003D)		; trolledfix
 	.byte .bankbyte($000088)		; supercycles
+	.byte .bankbyte($000080)		; chaozimpact
 	.byte .bankbyte($0001DD)		; futurefunkfix
 
 .endif
