@@ -1,8 +1,8 @@
-﻿-----------------------
--- Famidash Megahack v1.15
+-----------------------
+-- Famidash Megahack v1.17
 -- By: Aaron Chen-Chang (Air Conditioner) & more
 -- Famidash Update 1.2.8
--- This script was last updated on May 30th, 4:06 P.M. 2026, Taiwan time.
+-- This script was last updated on May 31th, 4:46 P.M. 2026, Taiwan time.
 -----------------------
 -- In order to use this script, go to Mesen after you download it, open up your Famidash HUGE ROM after you downloaded it from TFDSoft Discord server or downloaded it online, and click Debug on the top bar, and go to Script Window or you can just press ctrl + N to open the script window. And paste this script into it, and click run. 
 -----------------------
@@ -13,14 +13,18 @@
 -----------------------
 -- Current hacks include: Clicks HUD, Input Test, Random Gamemode, Editable Text, Path Overlay, Ship Copter.
 -- Cheat Indicator included and is always on.
+-- Searching included and is always on.
+-- Completion message is included and is always on.
 -----------------------
 -- Information for hacks:
+-- Cheat indicator (By Aaron Chen-Chang): Will turn red when detected cheats that aren't allowed and rewinding.
 -- Clicks HUD (By Aaron Chen-Chang): Shows your total clicks and Clicks Per Second (CPS) during a level once turned on, if your CPS is 0, the background color for CPS will be black, 1~5 will be green, 6~10 will be yellow, >10 will be red, when you are pressing or holding the A button or the Up button, the "A button" or the "Up button" text and the total clicks will turn green.
 -- Input test (By Aaron Chen-Chang): Shows your inputs with a green background once turned on, this includes all possible inputs from controller 1.
 -- Random Gamemode (By Aaron Chen-Chang): Randomizes your gamemode from gamemodes 1-11 everytime you enter a portal or enter a level once turned on.
 -- Editable Text (By Aaron Chen-Chang): Edit your text to anything you want below, and it will show on screen once turned on.
 -- Path Overlay (By Kando Wontu): Shows the path you have taken by drawing a line trail down once turned on, if you click, the line gets thicker and vice versa.
 -- Ship Copter (By wilfredlam0418): Makes the swing gamemode behave like the ship once turned on.
+-- Search (By wilfredlam0418): Allows searching in level select screen, press / to start typing, press up or down after typing to select level, press enter to choose level, press left to delete characters. 
 -----------------------
 -- Update log:
 -- v1.0 - Added mod menu
@@ -51,9 +55,13 @@
 -- Added A LOT more completion messages.
 -- Fixed completion message overflowing.
 -- Added GD completion messages
+-- V1.16
+-- Added Search, a hack that lets you search for the levels.
+-- V1.17
+-- Added an intro.
 -----------------------
 
-local editableMessage = "editable text" -- edit this text with anything you want
+local editableMessage = "Best runs: 28%, 23-66%, 36-81%, 46-100%" -- edit this text with anything you want
 local editableX = 0
 local editableY = 120
 local editableShowBox = true
@@ -67,6 +75,29 @@ local clicked_up = false
 local rewindDetected = false
 local lastFrame = nil
 local prevInLevel = false
+local search_key = "/"
+local backspace_key = "Left Arrow"
+local confirm_key = "Enter"
+local suggestion_up_key = "Up Arrow"
+local suggestion_down_key = "Down Arrow"
+local level_names = {[0] = ""}
+local recording_names = true
+local recording_frame = -1000
+local last_level = -1
+local character_tiles = "???????????????.????????????????????????????????0123456789?ABCDEFGHIJKLMNOPQRSTU???????????VWXYZ?????????????????????????????? ?"
+local space = false
+local searching = false
+local usable_keys = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ. "
+local key_pressed = false
+local query = ""
+local suggestions = {}
+local color = 12632256
+local chosen_suggestion = 1
+local press_right = false
+local search_held = false
+local backspace_held = false
+local confirm_held = false
+local suggestion_up_held = false
 
 -- text should not be longer than this message
 local winTexts = {
@@ -291,6 +322,13 @@ local winTexts = {
 local currentWinText = ""
 local winTextTimer = 0
 local winTextDelay = 0
+local introActive = true
+local introText =
+    "Famidash Megahack V1.17\n" ..
+    "By Aaron Chen-Chang and more"
+
+local introChars = 0
+local blinkTimer = 0
 
 -- =========================
 -- MENU SYSTEM
@@ -623,7 +661,7 @@ end
 
 local function drawMenu()
 
-    emu.drawString(10, 10, "Megahack v1.15 Mod menu")
+    emu.drawString(10, 10, "Megahack v1.17 Mod menu")
 
     for i = 1, #options do
 
@@ -665,9 +703,6 @@ end
 
 prevInLevel = inLevel
 
-prevInLevel = inLevel
-
-prevInLevel = inLevel
     local redActive = enabled[3] or enabled[6]
 
     local died = false
@@ -686,11 +721,6 @@ end
 
     prevPlayerX = playerX
 
-local isRed =
-    cheatUsedThisAttempt or
-    rewindDetected or
-    redActive
-
 local color =
     (cheatUsedThisAttempt or rewindDetected or redActive)
     and RED or GREEN
@@ -698,10 +728,307 @@ local color =
 end
 
 -- =========================
+-- SEARCH
+-- =========================
+
+function search()
+	if emu.read(1180, emu.memType.nesMemory, false) == 6 then
+		if recording_names then -- Record level names
+			emu.drawRectangle(-256, -256, 768, 768, 0, true)
+			emu.drawString(20, 128, "Currently recording the names of the levels.")
+			if recording_frame >= -999 then
+				if recording_frame >= 0 then
+					if recording_frame % 2 == 0 then
+						emu.setInput({up = false, down = false, right = true, left = false, a = false, b = false, start = false, select = false}, 0)
+					else
+						emu.setInput({up = false, down = false, right = false, left = false, a = false, b = false, start = false, select = false}, 0)
+						space = false
+						if emu.read(1796, emu.memType.nesMemory, false) == 254 then
+							for i = 1795, 1811 do
+								if emu.read(i, emu.memType.nesMemory, false) == 254 then
+									if #level_names[#level_names] > 0 then
+										space = true
+									end
+								else
+									if space then
+										level_names[#level_names] = level_names[#level_names] .. " "
+										space = false
+									end
+									level_names[#level_names] = level_names[#level_names] .. character_tiles:sub(emu.read(i, emu.memType.nesMemory, false) - 127, emu.read(i, emu.memType.nesMemory, false) - 127)
+								end
+							end
+							space = true
+							for i = 1815, 1831 do
+								if emu.read(i, emu.memType.nesMemory, false) == 254 then
+									if #level_names[#level_names] > 0 then
+										space = true
+									end
+								else
+									if space then
+										level_names[#level_names] = level_names[#level_names] .. " "
+										space = false
+									end
+									level_names[#level_names] = level_names[#level_names] .. character_tiles:sub(emu.read(i, emu.memType.nesMemory, false) - 127, emu.read(i, emu.memType.nesMemory, false) - 127)
+								end
+							end
+						else
+							for i = 1799, 1815 do
+								if emu.read(i, emu.memType.nesMemory, false) == 254 then
+									if #level_names[#level_names] > 0 then
+										space = true
+									end
+								else
+									if space then
+										level_names[#level_names] = level_names[#level_names] .. " "
+										space = false
+									end
+									level_names[#level_names] = level_names[#level_names] .. character_tiles:sub(emu.read(i, emu.memType.nesMemory, false) - 127, emu.read(i, emu.memType.nesMemory, false) - 127)
+								end
+							end
+						end
+						if last_level > emu.read(1151, emu.memType.nesMemory, false) then
+							recording_names = false
+							level_names[#level_names] = nil
+						else
+							level_names[#level_names + 1] = ""
+							last_level = emu.read(1151, emu.memType.nesMemory, false)
+						end
+					end
+				elseif recording_frame == -1 then
+					emu.write(1151, 255, emu.memType.nesMemory)
+				end
+				recording_frame = recording_frame + 1
+			else
+				level_names = {[0] = ""}
+				recording_frame = -20
+				last_level = -1
+			end
+		else
+			if press_right then
+				emu.setInput({up = false, down = false, right = true, left = false, a = false, b = false, start = false, select = false}, 0)
+				press_right = false
+			end
+			if emu.read(1151, emu.memType.nesMemory, false) == 0 then
+				emu.setInput({left = false})
+			end
+			if emu.isKeyPressed(search_key) then
+				if not search_held then
+					searching = not searching
+					search_held = true
+					query = ""
+					key_pressed = "11111111111111111111111111111111111111"
+					chosen_suggestion = 1
+				end
+			else
+				search_held = false
+			end
+			if searching then
+				suggestions = {}
+				for i = 0, #level_names do
+					if level_names[i]:sub(1, #query) == query then
+						suggestions[#suggestions + 1] = i
+					end
+				end
+				emu.drawRectangle(0, 0, 256, 256, 2147483648, true)
+				emu.drawString(0, 192, query)
+				for i, v in ipairs(suggestions) do
+					if i == chosen_suggestion then
+						color = 16777215
+					else
+						color = 12632256
+					end
+					emu.drawString(0, 183 - 9 * (#suggestions - i), level_names[v], color)
+				end
+				for i = 1, #usable_keys do
+					if usable_keys:sub(i, i) == " " then
+						if emu.isKeyPressed("Space") then
+							if key_pressed:sub(i, i) == "0" then
+								query = query .. " "
+							end
+							key_pressed = key_pressed:sub(1, i - 1) .. 1 .. key_pressed:sub(i + 1)
+							chosen_suggestion = 1
+						else
+							key_pressed = key_pressed:sub(1, i - 1) .. 0 .. key_pressed:sub(i + 1)
+						end
+					else
+						if emu.isKeyPressed(usable_keys:sub(i, i)) then
+							if key_pressed:sub(i, i) == "0" then
+								query = query .. usable_keys:sub(i, i)
+							end
+							key_pressed = key_pressed:sub(1, i - 1) .. 1 .. key_pressed:sub(i + 1)
+							chosen_suggestion = 1
+						else
+							key_pressed = key_pressed:sub(1, i - 1) .. 0 .. key_pressed:sub(i + 1)
+						end
+					end
+				end
+				if emu.isKeyPressed(backspace_key) then
+					if not backspace_held then
+						query = query:sub(1, #query - 1)
+					end
+					backspace_held = true
+				else
+					backspace_held = false
+				end
+			end
+			if emu.isKeyPressed(suggestion_up_key) then
+				if not suggestion_up_held then
+					suggestion_up_held = true
+					chosen_suggestion = chosen_suggestion - 1
+					if chosen_suggestion < 1 then
+						chosen_suggestion = #suggestions
+					end
+				end
+			else
+				suggestion_up_held = false
+			end
+			if emu.isKeyPressed(suggestion_down_key) then
+				if not suggestion_down_held then
+					suggestion_down_held = true
+					chosen_suggestion = chosen_suggestion + 1
+					if chosen_suggestion > #suggestions then
+						chosen_suggestion = 1
+					end
+				end
+			else
+				suggestion_down_held = false
+			end
+			if emu.isKeyPressed(confirm_key) then
+				if searching or confirm_held then
+					confirm_held = true
+				end
+				if #suggestions > 0 then
+					if searching then
+						emu.write(1151, (suggestions[chosen_suggestion] - 1) % 256, emu.memType.nesMemory)
+					end
+					press_right = true
+					searching = false
+				end
+			else
+				confirm_held = false
+			end
+			if searching or search_held or backspace_held or confirm_held or suggestion_up_held or suggestion_down_held then
+				emu.setInput({up = false, down = false, right = false, left = false, a = false, b = false, start = false, select = false}, 0)
+			end
+		end
+	else
+		recording_names = true
+		recording_frame = -1000
+	end
+end
+-- =========================
+-- Intro
+-- =========================
+
+local rainbowFrame = 0
+
+local function HSVtoRGB(h)
+
+    local c = 255
+    local x = math.floor((1 - math.abs((h / 60) % 2 - 1)) * 255)
+
+    local r,g,b = 0,0,0
+
+    if h < 60 then
+        r,g,b = 255,x,0
+    elseif h < 120 then
+        r,g,b = x,255,0
+    elseif h < 180 then
+        r,g,b = 0,255,x
+    elseif h < 240 then
+        r,g,b = 0,x,255
+    elseif h < 300 then
+        r,g,b = x,0,255
+    else
+        r,g,b = 255,0,x
+    end
+
+    return r * 65536 + g * 256 + b
+end
+
+local function DrawIntro()
+
+
+rainbowFrame = rainbowFrame + 4
+if rainbowFrame >= 360 then
+    rainbowFrame = rainbowFrame - 360
+end
+
+local rainbowColor = HSVtoRGB(rainbowFrame)
+
+    emu.drawRectangle(-256, -256, 768, 768, 0, true)
+
+    if introChars < #introText then
+        introChars = introChars + 1
+    end
+
+    local visibleText = introText:sub(1, introChars)
+
+local title = "Famidash Megahack V1.17"
+local author = "By Aaron Chen-Chang and more"
+
+emu.drawString(10, 10, title, rainbowColor)
+emu.drawString(10, 25, author, 0xFFFFFF)
+
+emu.drawString(10, 45, "Description:")
+
+emu.drawString(10, 60, "Made to enhance your gameplay of Famidash.")
+
+emu.drawString(10, 75, "Press START in a level to open mod menu.")
+emu.drawString(10, 90, "Press START again or B to close mod menu.")
+
+emu.drawString(10, 105, "Press UP/DOWN to select hacks in mod menu.")
+emu.drawString(10, 120, "Press A to activate or toggle hacks in mod menu.")
+
+emu.drawString(10, 135, "Press / in level select screen to search")
+emu.drawString(10, 150, "Search using keyboard, backspace is left button.")
+emu.drawString(10, 165, "Press up or down to find levels you want.")
+emu.drawString(10, 180, "Press Enter to confirm, press / to stop searching.")
+
+emu.drawString(10, 195, "This script includes Completion Messages too! Enjoy!")
+
+
+    if introChars >= #introText then
+
+        blinkTimer = blinkTimer + 1
+
+        if math.floor(blinkTimer / 30) % 2 == 0 then
+            emu.drawString(
+                10,
+                210,
+                "Press ANY BUTTONS to continue..."
+            )
+        end
+
+        local input = emu.getInput(0)
+local realInput = emu.getInput(0)
+
+if realInput.start or realInput.a or realInput.b or realInput.select or realInput.up or realInput.down or realInput.left or realInput.right then
+    introActive = false
+end
+    end
+    emu.setInput({
+        up=false,
+        down=false,
+        left=false,
+        right=false,
+        a=false,
+        b=false,
+        start=false,
+        select=false
+    },0)
+end
+
+-- =========================
 -- MAIN LOOP
 -- =========================
 
 function Main()
+
+if introActive then
+    DrawIntro()
+    return
+end
 
     local M = emu.memType.nesMemory
     local gameState = emu.read(ADDR_GAMESTATE, M) or 0
@@ -802,6 +1129,17 @@ prevDown = input.down
 prevSelect = input.select
 end
 
+local doReset = true
+
+local function ResetOnLoad()
+    if doReset then
+        doReset = false
+        emu.reset()
+    end
+end
+
+emu.addEventCallback(ResetOnLoad, emu.eventType.endFrame)
 emu.addEventCallback(Main, emu.eventType.endFrame)
 emu.addEventCallback(ShipCopter, emu.eventType.inputPolled)
-emu.displayMessage("System", "Famidash Megahack v1.15 Loaded")
+emu.addEventCallback(search, emu.eventType.inputPolled)
+emu.displayMessage("System", "Famidash Megahack v1.17 Loaded")
