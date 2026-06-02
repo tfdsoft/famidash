@@ -1,0 +1,37 @@
+		{
+            level: "excitebycolon",
+			lowerText: "EXCITE",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "B",
+            sawSet: "A",
+            difficulty: "EASYDEMON",
+            stars: 10,
+            songID: "song_jumper_cut",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x15,
+            startingGroundColor: 0x14,
+            parallaxDisable: true,
+			maxFallSpeed: 0x07,
+			objectOffsets: [
+                {
+                    coordinates: [
+                        [141, 24], [192, 25], [225, 20], [270, 26], [321, 18], [433, 26], [458, 21], [507, 26],
+                    ],
+                    offsetY: -8
+                },
+				{
+                    coordinates: [
+                        [94, 26], [95, 26], [135, 25], [160, 24], [225, 20], [264, 20], [438, 24], [507, 26],
+                    ],
+                    offsetX: +8
+                },
+				{
+                    coordinates: [
+                        [198, 21], [320, 17],
+                    ],
+                    offsetX: +16
+                },
+			],
+        },
