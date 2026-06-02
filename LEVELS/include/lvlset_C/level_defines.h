@@ -4,7 +4,7 @@
 #define LEVELSET 'C'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 18
+#define COMMUNITY_LEVEL_COUNT 19
 
 #define level_movie 0
 #define level_groundtoretray 1
@@ -23,4 +23,5 @@
 #define level_trolledfix 14
 #define level_supercycles 15
 #define level_chaozimpact 16
-#define level_futurefunkfix 17
+#define level_solarcircles 17
+#define level_futurefunkfix 18
