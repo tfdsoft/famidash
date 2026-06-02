@@ -120,6 +120,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_goldenhaze)
 	.byte .lobyte(level_data_hell)
 	.byte .lobyte(level_data_gameover)
+	.byte .lobyte(level_data_solarcircles)
 	.byte .lobyte(level_data_invisiblelight)
 	.byte .lobyte(level_data_firetemple)
 	.byte .lobyte(level_data_demonpyrophoric)
@@ -275,6 +276,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_goldenhaze)
 	.byte .hibyte(level_data_hell)
 	.byte .hibyte(level_data_gameover)
+	.byte .hibyte(level_data_solarcircles)
 	.byte .hibyte(level_data_invisiblelight)
 	.byte .hibyte(level_data_firetemple)
 	.byte .hibyte(level_data_demonpyrophoric)
@@ -430,6 +432,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_goldenhaze))
 	.byte .lobyte(.bank(level_data_hell))
 	.byte .lobyte(.bank(level_data_gameover))
+	.byte .lobyte(.bank(level_data_solarcircles))
 	.byte .lobyte(.bank(level_data_invisiblelight))
 	.byte .lobyte(.bank(level_data_firetemple))
 	.byte .lobyte(.bank(level_data_demonpyrophoric))
@@ -690,6 +693,7 @@ _level_lengths_lo:
 	.byte .lobyte($00009F)		; goldenhaze
 	.byte .lobyte($0000A1)		; hell
 	.byte .lobyte($000077)		; gameover
+	.byte .lobyte($000079)		; solarcircles
 	.byte .lobyte($000097)		; invisiblelight
 	.byte .lobyte($00008D)		; firetemple
 	.byte .lobyte($000097)		; demonpyrophoric
@@ -847,6 +851,7 @@ _level_lengths_md:
 	.byte .hibyte($00009F)		; goldenhaze
 	.byte .hibyte($0000A1)		; hell
 	.byte .hibyte($000077)		; gameover
+	.byte .hibyte($000079)		; solarcircles
 	.byte .hibyte($000097)		; invisiblelight
 	.byte .hibyte($00008D)		; firetemple
 	.byte .hibyte($000097)		; demonpyrophoric
@@ -1004,6 +1009,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00009F)		; goldenhaze
 	.byte .bankbyte($0000A1)		; hell
 	.byte .bankbyte($000077)		; gameover
+	.byte .bankbyte($000079)		; solarcircles
 	.byte .bankbyte($000097)		; invisiblelight
 	.byte .bankbyte($00008D)		; firetemple
 	.byte .bankbyte($000097)		; demonpyrophoric

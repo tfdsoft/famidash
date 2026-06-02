@@ -117,6 +117,7 @@ const uint8_t difficulty_list[] = {
 	MEDIUMDEMON,	// goldenhaze
 	MEDIUMDEMON,	// hell
 	MEDIUMDEMON,	// gameover
+	MEDIUMDEMON,	// solarcircles
 	MEDIUMDEMON,	// invisiblelight
 	MEDIUMDEMON,	// firetemple
 	MEDIUMDEMON,	// demonpyrophoric
@@ -273,6 +274,7 @@ const uint8_t stars_list[] = {
 	10,	// goldenhaze
 	10,	// hell
 	10,	// gameover
+	10,	// solarcircles
 	10,	// invisiblelight
 	10,	// firetemple
 	10,	// demonpyrophoric
