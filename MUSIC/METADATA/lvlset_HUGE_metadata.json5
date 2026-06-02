@@ -925,6 +925,12 @@
 			coveringArtist: "SeaGlowingPro",
 		},
 		{
+			fmsSongName: "Solar Wind",
+			lowerText: "SOLAR WIND",
+			originalArtist: "Jumper",
+			coveringArtist: "Vikrinox",
+		},
+		{
 			fmsSongName: "Somewhere in a Forest",
 			upperText: "SOMEWHERE",
 			lowerText: "IN A FOREST",

@@ -1618,7 +1618,7 @@
 		.byte <sprite_data_solarcircles ;____________ Sprite data ptr, low byte
 		.byte >sprite_data_solarcircles ;____________ Sprite data ptr, high byte
 		.byte <(.bank(sprite_data_solarcircles)) ;___ Sprite data bank
-		.byte song_nine_circles ;____________________ Song ID
+		.byte song_solar_wind ;______________________ Song ID
 		.byte (1 << 4) | 0 ;_________________________ Starting game mode and speed
 		.byte ($B0) ;________________________________ Spawn Y Position (high byte)
 		.byte ($00) ;________________________________ Spawn Y Position (low byte)
