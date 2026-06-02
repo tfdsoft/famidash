@@ -120,6 +120,11 @@
 			originalArtistText: "RUKKUS",
 		},
 		{
+			fmsSongName: "Solar Wind",
+			lowerText: "SOLAR WIND",
+			originalArtistText: "JUMPER",
+		},
+		{
 			fmsSongName: "Sunslammer",
 			lowerText: "SUNSLAMMER",
 			originalArtistText: "SETH PEELLE"

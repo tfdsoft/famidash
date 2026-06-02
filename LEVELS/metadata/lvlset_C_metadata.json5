@@ -732,7 +732,7 @@
             sawSet: "A",
             difficulty: "DEMON",
             stars: 10,
-            songID: "song_nine_circles",
+            songID: "song_solar_wind",
             startingGameMode: 0,
             startingSpeed: 1,
             startingBackgroundColor: 0x0F,
