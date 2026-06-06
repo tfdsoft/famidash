@@ -5,6 +5,7 @@ const uint8_t difficulty_list[] = {
 	AUTO,	// movie
 	EASY,	// groundtoretray
 	EASY,	// madness
+	EASY,	// feather
 	NORMAL,	// short_kings
 	NORMAL,	// nicktoons
 	HARD,	// hungrymanadventures
@@ -27,6 +28,7 @@ const uint8_t stars_list[] = {
 	1,	// movie
 	2,	// groundtoretray
 	2,	// madness
+	2,	// feather
 	3,	// short_kings
 	3,	// nicktoons
 	4,	// hungrymanadventures

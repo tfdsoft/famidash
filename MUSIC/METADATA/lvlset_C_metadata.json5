@@ -50,6 +50,11 @@
 			vsSystemEnabled: false
 		},
 		{
+			fmsSongName: "Aether [New]",
+			lowerText: "AETHER NEW",
+			originalArtistText: "JUMPER",
+		},
+		{
 			fmsSongName: "Astronomical Expedition",
 			upperText: "ASTRONOMICAL",
 			lowerText: "EXPEDITION",
