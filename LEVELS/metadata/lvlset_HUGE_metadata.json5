@@ -1814,7 +1814,7 @@
 				},
 			]	
 		},
-		/*
+		
 		{ 
             level: "feather",
             lowerText: "FEATHER",
@@ -1832,7 +1832,7 @@
 			maxFallSpeed: 0x07,
             parallaxDisable: false,
         },
-		*/
+		
 		{
 			level: "xmaschallenge",
 			upperText: "XMAS",
