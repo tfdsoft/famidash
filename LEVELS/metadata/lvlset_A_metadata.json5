@@ -948,6 +948,7 @@
 			startingBackgroundColor: 0x02,
 			startingGroundColor: 0x12,
 			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [31, 26],		//yellow pad
@@ -1103,6 +1104,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -1169,6 +1171,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [	
@@ -1257,6 +1260,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [	
@@ -1323,6 +1327,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [	
@@ -1362,6 +1367,7 @@
 				},
 			],
 		},
+		// Explorers disabled due to skull orbs not displaying properly on main
 		/*
 		{ 
 			level: "explorers",
