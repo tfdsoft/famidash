@@ -453,7 +453,7 @@ uint16_t coin3_speed;
 
 uint16_t spawn_y_pos;
 uint16_t spawn_scroll_y_pos;
-uint8_t max_fallspeed;
+uint8_t max_fallspeed_7;
 
 #if __VS_SYSTEM
 uint16_t menutimer;

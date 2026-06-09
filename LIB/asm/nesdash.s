@@ -211,7 +211,7 @@ shiftBy4table:
 
 .global _level_list_lo, _level_list_hi, _level_list_bank, _sprite_list_lo, _sprite_list_hi, _sprite_list_bank
 .import _current_deco_type, _current_spike_set, _current_block_set, _current_saw_set
-.import _song, _speed, _lastgcolortype, _lastbgcolortype, _spawn_y_pos, _spawn_scroll_y_pos, _max_fallspeed
+.import _song, _speed, _lastgcolortype, _lastbgcolortype, _spawn_y_pos, _spawn_scroll_y_pos, _max_fallspeed_7
 .import _level_data_bank, _sprite_data_bank, _force_platformer
 .import _discomode
 
@@ -270,32 +270,45 @@ _init_rld:
 	LDA (ptr1),y		;spawn y position high byte
 	sta _spawn_y_pos+1
 	iny	
-	LDA (ptr1),y		;spawn y position low byte
-	sta _spawn_y_pos
-	iny
+;	LDA (ptr1),y		;spawn y position low byte
+;	sta _spawn_y_pos
+;	iny
 	
 ;	LDA (ptr1),y		;spawn scroll y position high byte
 	LDA #$02		;no levels need this setting
 	sta _spawn_scroll_y_pos+1
-	iny	
+;	iny	
 
-;	LDA (ptr1),y		;spawn scroll y position low byte
-;	sta _spawn_scroll_y_pos
-;	iny
-	
-	LDA (ptr1),y		;max fall speed high byte
-	sta _max_fallspeed
+	LDA (ptr1),y		;spawn scroll y position low byte
+	sta _spawn_scroll_y_pos
 	iny
-
+	
 	LDA (ptr1),y		;__	Force platformer, Parallax disable
 	LSR					;__	Parallax disable in carry
 	ROL _force_platformer	;__	Store where it needs to go
 	STA _no_parallax	;	The rest is force platformer, store it
 	INY					;__
 
-	LDA (ptr1),y			;
-	STA _current_deco_type	;	Deco type
-	INY						;__
+	LDA (ptr1),y		;max fall speed high byte
+	and #$80
+	lsr
+	lsr
+	lsr
+	lsr
+	lsr
+	lsr
+	lsr
+	sta _max_fallspeed_7
+
+	LDA (ptr1),y		
+	and #$7F
+	sta _current_deco_type	;	Deco Type
+
+	iny
+
+	;LDA (ptr1),y			;
+	;STA _current_deco_type	;	Deco type
+	;INY						;__
 	
 	LDA (ptr1),y			;
 	STA _current_spike_set	;	Spike set

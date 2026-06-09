@@ -18,7 +18,7 @@
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
 			//scrollYPositionLow: 0x30,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -153,7 +153,7 @@
             startingBackgroundColor: 0x0F,
             startingGroundColor: 0x0F,
             parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -209,7 +209,7 @@
 			startingBackgroundColor: 0x07,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -270,7 +270,7 @@
 			startingBackgroundColor: 0x17,
 			startingGroundColor: 0x17,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -340,7 +340,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -394,7 +394,7 @@
 			startingBackgroundColor: 0x06,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -453,7 +453,7 @@
 			startingBackgroundColor: 0x03,
 			startingGroundColor: 0x03,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
                 {
                     coordinates: [
@@ -530,7 +530,7 @@
             startingSpeed: 0,
             startingBackgroundColor: 0x01,
             startingGroundColor: 0x01,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
             parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -597,7 +597,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -646,7 +646,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 		},
 		{
 			level: "jawbreaker",
@@ -663,7 +663,7 @@
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x01,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 		},
 		{
 			level: "acropolis",
@@ -679,7 +679,7 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x00,
 			startingGroundColor: 0x00,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 		},
 		{
 			level: "windylandscape",
@@ -713,7 +713,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x00,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -800,7 +800,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 		},
 		{
 			level: "silentclubstep",
@@ -845,7 +845,7 @@
 			difficulty: "IMPOSSIBLEDEMON",
 			stars: 10,
 			songID: "song_slow_down",
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			startingGameMode: 4,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x30,
@@ -889,12 +889,12 @@
 			difficulty: "IMPOSSIBLEDEMON",
 			stars: 10,
 			songID: "song_time_machine",
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x1C,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -1073,7 +1073,7 @@
 			startingBackgroundColor: 0x02,
 			startingGroundColor: 0x02,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 						coordinates: [61, 22],		//yellow gravity portal

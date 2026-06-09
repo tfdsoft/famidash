@@ -227,12 +227,18 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			f"({metadata.get('startingSpeed', 0)} << 4) | {metadata.get('startingGameMode', 0)}",
 			f"(${metadata.get('spawnYPositionHi', 0xB0):02X})",  # <- spawn position here
 			f"(${metadata.get('scrollYPositionLow', 0xEF):02X})",  # <- scroll position here
-			f"(${metadata.get('maxFallSpeed', 0x06):02X})",  # <- max fall speed here
 			" | ".join([
 				f"({int(bool(metadata.get(name)))} << {idx})"
 				for idx, name in enumerate(['forcePlatformer', 'parallaxDisable'])
 			]),  # <- bitfield separate line
-			f"_{metadata.get('decoType', 'NONE')}",
+
+			" | ".join([
+				f"_{metadata.get('decoType', 'NONE')}",			
+				f"(${metadata.get('maxFallSpeed', 0x00):02X} << 7)",  # <- max fall speed here
+			]),  # <- bitfield separate line
+
+			#f"(${metadata.get('maxFallSpeed', 0x06):02X})",  # <- max fall speed here
+			#f"_{metadata.get('decoType', 'NONE')}",
 			getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
 			getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
 			getPropFormatted(metadata, 'sawSet', 'SAWBLADES', ('A',), "_"),
@@ -249,9 +255,8 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			"Starting game mode and speed",
 			"Spawn Y Position (high byte)",
 			"Y Scroll Position (low byte)",
-			"Max Fall Speed (high byte)",
 			", ".join(["Disable parallax", "Force platformer"][::-1]),
-			"Deco type",
+			", ".join(["Max Fall Speed (high byte)", "Deco type"][::-1]),
 			"Spike set",
 			"Block set",
 			"Sawblade set",

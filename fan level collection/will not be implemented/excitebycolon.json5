@@ -13,7 +13,7 @@
             startingBackgroundColor: 0x15,
             startingGroundColor: 0x14,
             parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
                 {
                     coordinates: [

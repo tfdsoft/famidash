@@ -18,7 +18,7 @@
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
 			//scrollYPositionLow: 0x30,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -45,7 +45,7 @@
             startingBackgroundColor: 0x0F,
             startingGroundColor: 0x0F,
             parallaxDisable: false,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
         },
 		{ 
 			level: "groundtoretray",
@@ -60,7 +60,7 @@
 			songID: "song_ground_to_retray",
 			startingGameMode: 0,
 			startingSpeed: 1,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			startingBackgroundColor: 0x03,
 			startingGroundColor: 0x00,
 			parallaxDisable: true,
@@ -109,7 +109,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -135,7 +135,7 @@
             startingSpeed: 0,
             startingBackgroundColor: 0x01,
             startingGroundColor: 0x0F,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
             parallaxDisable: false,
         },
 		{ 
@@ -150,7 +150,7 @@
 			songID: "song_load",
 			startingGameMode: 0,
 			startingSpeed: 3,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x15,
 			spawnYPositionHi: 0x00,
@@ -208,7 +208,7 @@
 			startingBackgroundColor: 0x28,
 			startingGroundColor: 0x27,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			spawnYPositionHi: 0x00,
 			objectOffsets: [
 				{
@@ -241,7 +241,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
 			startingGroundColor: 0x01,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -291,7 +291,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -335,7 +335,7 @@
 			startingBackgroundColor: 0x03,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -376,7 +376,7 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			parallaxDisable: true,
 			spawnYPositionHi: 0x00,
 			objectOffsets: [
@@ -416,7 +416,7 @@
 			startingBackgroundColor: 0x06,
 			startingGroundColor: 0x16,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -465,7 +465,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -513,7 +513,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -573,7 +573,7 @@
 			songID: "song_dastardly",
 			startingGameMode: 0,
 			startingSpeed: 1,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			startingBackgroundColor: 0x0C,
 			startingGroundColor: 0x0C,
 			spawnYPositionHi: 0x70,
@@ -639,7 +639,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x00,
 			startingGroundColor: 0x00,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -696,7 +696,7 @@
             startingBackgroundColor: 0x06,
             startingGroundColor: 0x16,
             parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -751,7 +751,7 @@
             startingBackgroundColor: 0x0F,
             startingGroundColor: 0x0F,
             parallaxDisable: true,
-			maxFallSpeed: 0x07,
+			maxFallSpeed: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
