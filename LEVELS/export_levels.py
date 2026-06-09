@@ -234,7 +234,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 
 			" | ".join([
 				f"_{metadata.get('decoType', 'NONE')}",			
-				f"(${metadata.get('maxFallSpeed', 0x00):02X} << 7)",  # <- max fall speed here
+				f"(${metadata.get('maxFallSpeed_is_7', 0x00):02X} << 7)",  # <- max fall speed here
 			]),  # <- bitfield separate line
 
 			#f"(${metadata.get('maxFallSpeed', 0x06):02X})",  # <- max fall speed here

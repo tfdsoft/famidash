@@ -18,7 +18,7 @@
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
 			//scrollYPositionLow: 0x30,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -44,7 +44,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x10,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: false
 		},
 		/*
@@ -122,7 +122,7 @@
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -192,7 +192,7 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -309,7 +309,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -341,7 +341,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x11,
 			startingGroundColor: 0x11,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -482,7 +482,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -510,7 +510,7 @@
 			startingBackgroundColor: 0x07,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -552,7 +552,7 @@
 			startingBackgroundColor: 0x07,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [109, 13],
@@ -796,7 +796,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -938,7 +938,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
 			spawnYPositionHi: 0x00,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -1078,7 +1078,7 @@
 			songID: "song_off_to_mars",
 			startingGameMode: 0,
 			startingSpeed: 1,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
@@ -1119,7 +1119,7 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0f,
 			startingGroundColor: 0x0f,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -1292,7 +1292,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			hasSuperheroes: false,
 			objectOffsets: [
 				{
@@ -1343,7 +1343,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			spawnYPositionHi: 0x10,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			containsKasaneTeto: false,
 			objectOffsets: [

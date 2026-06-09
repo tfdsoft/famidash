@@ -18,7 +18,7 @@
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
 			//scrollYPositionLow: 0x30,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -46,7 +46,7 @@
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
 			//scrollYPositionLow: 0x30,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -92,7 +92,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x14,
 			startingGroundColor: 0x14,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [ 			
@@ -126,7 +126,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x2A,
 			startingGroundColor: 0x1A,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -165,7 +165,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x16,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -195,7 +195,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x11,
 			startingGroundColor: 0x11,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -240,7 +240,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x14,
 			startingGroundColor: 0x04,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -276,7 +276,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x13,
 			startingGroundColor: 0x13,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates:	[
@@ -308,7 +308,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x2A,
 			startingGroundColor: 0x1A,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -359,7 +359,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x04,
 			startingGroundColor: 0x14,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -408,7 +408,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x1C,
 			startingGroundColor: 0x0C,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -462,7 +462,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x06,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -560,7 +560,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x05,
 			startingGroundColor: 0x15,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -629,7 +629,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
 			startingGroundColor: 0x01,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [119, 19],		//shrink portal
@@ -701,7 +701,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -772,7 +772,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x19,
 			startingGroundColor: 0x09,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -851,7 +851,7 @@
 			startingBackgroundColor: 0x13,
 			startingGroundColor: 0x03,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -998,7 +998,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x01,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -1377,7 +1377,7 @@
 			startingBackgroundColor: 0x03,
 			startingGroundColor: 0x03,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
                 {
                     coordinates: [
@@ -1458,7 +1458,7 @@
             scrollYPositionLow: 0x80,
             parallaxDisable: true,
             forcePlatformer: true,
-            maxFallSpeed: 0x01,
+            maxFallSpeed_is_7: 0x01,
             objectOffsets: [
                 {
                     coordinates: [
@@ -1485,7 +1485,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x1a,
 			startingGroundColor: 0x0f,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			forcePlatformer: true,
 			spawnYPositionHi: 0xA0,
@@ -1552,7 +1552,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x1c,
 			startingGroundColor: 0x0f,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			forcePlatformer: true,
 			spawnYPositionHi: 0xb0,
@@ -1585,7 +1585,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -1624,7 +1624,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x10,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: false
 		},
 		{
@@ -1643,7 +1643,7 @@
             startingBackgroundColor: 0x0F,
             startingGroundColor: 0x0F,
             parallaxDisable: false,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
         },
 		{
 			level: "retray",
@@ -1704,7 +1704,7 @@
 			songID: "song_ground_to_retray",
 			startingGameMode: 0,
 			startingSpeed: 1,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			startingBackgroundColor: 0x03,
 			startingGroundColor: 0x00,
 			parallaxDisable: true,
@@ -1793,7 +1793,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -1820,7 +1820,7 @@
             startingSpeed: 0,
             startingBackgroundColor: 0x01,
             startingGroundColor: 0x0F,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
             parallaxDisable: false,
         },
 		
@@ -1840,7 +1840,7 @@
 			startingBackgroundColor: 0x16,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -1878,7 +1878,7 @@
 			songID: "song_load",
 			startingGameMode: 0,
 			startingSpeed: 3,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x15,
 			spawnYPositionHi: 0x00,
@@ -1936,7 +1936,7 @@
 			startingBackgroundColor: 0x28,
 			startingGroundColor: 0x27,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			spawnYPositionHi: 0x00,
 			objectOffsets: [
 				{
@@ -2185,7 +2185,7 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -2365,7 +2365,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x02,
 			startingGroundColor: 0x01,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -2415,7 +2415,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -2459,7 +2459,7 @@
 			startingBackgroundColor: 0x03,
 			startingGroundColor: 0x00,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -2506,7 +2506,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -2538,7 +2538,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x11,
 			startingGroundColor: 0x11,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -2574,7 +2574,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x01,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -2704,7 +2704,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -2732,7 +2732,7 @@
 			startingBackgroundColor: 0x07,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -2774,7 +2774,7 @@
 			startingBackgroundColor: 0x07,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [109, 13],
@@ -2918,7 +2918,7 @@
 			startingBackgroundColor: 0x03,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -3132,7 +3132,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -3278,7 +3278,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -3419,7 +3419,7 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			spawnYPositionHi: 0x00,
 			objectOffsets: [
@@ -3459,7 +3459,7 @@
 			startingBackgroundColor: 0x06,
 			startingGroundColor: 0x16,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -3559,7 +3559,7 @@
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
 			spawnYPositionHi: 0x00,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -3610,7 +3610,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -3895,7 +3895,7 @@
 			songID: "song_off_to_mars",
 			startingGameMode: 0,
 			startingSpeed: 1,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
@@ -3937,7 +3937,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -3999,7 +3999,7 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x0f,
 			startingGroundColor: 0x0f,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -4173,7 +4173,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			hasSuperheroes: false,
 			objectOffsets: [
 				{
@@ -4221,7 +4221,7 @@
 			songID: "song_dastardly",
 			startingGameMode: 0,
 			startingSpeed: 1,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			startingBackgroundColor: 0x0C,
 			startingGroundColor: 0x0C,
 			spawnYPositionHi: 0x70,
@@ -4287,7 +4287,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x00,
 			startingGroundColor: 0x00,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -4328,7 +4328,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			spawnYPositionHi: 0x10,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			parallaxDisable: true,
 			containsKasaneTeto: false,
 			objectOffsets: [
@@ -4934,7 +4934,7 @@
             startingBackgroundColor: 0x0F,
             startingGroundColor: 0x0F,
             parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -4989,7 +4989,7 @@
             startingBackgroundColor: 0x06,
             startingGroundColor: 0x16,
             parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -5072,7 +5072,7 @@
 			startingBackgroundColor: 0x07,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -5455,7 +5455,7 @@
 			startingBackgroundColor: 0x17,
 			startingGroundColor: 0x17,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -5541,7 +5541,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -5594,7 +5594,7 @@
             startingBackgroundColor: 0x0F,
             startingGroundColor: 0x0F,
             parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -5723,7 +5723,7 @@
 			startingBackgroundColor: 0x06,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -5781,7 +5781,7 @@
             startingSpeed: 0,
             startingBackgroundColor: 0x01,
             startingGroundColor: 0x01,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
             parallaxDisable: true,
 			objectOffsets: [
 				{
@@ -5966,7 +5966,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -6015,7 +6015,7 @@
 			startingBackgroundColor: 0x0F,
 			startingGroundColor: 0x0F,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 		},
 		{
 			level: "ninecircles",
@@ -6303,7 +6303,7 @@
 			startingBackgroundColor: 0x01,
 			startingGroundColor: 0x01,
 			parallaxDisable: true,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 		},
 		{
 			level: "futurefunkfix",
@@ -6415,7 +6415,7 @@
 			startingSpeed: 1,
 			startingBackgroundColor: 0x00,
 			startingGroundColor: 0x00,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 		},
 		{
 			level: "hi",
@@ -6487,7 +6487,7 @@
 			startingSpeed: 0,
 			startingBackgroundColor: 0x00,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -6696,7 +6696,7 @@
 			songID: "song_slow_down",
 			//spawnYPositionHi: 0x30,
 			//scrollYPositionLow: 0x30,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			startingGameMode: 4,
 			startingSpeed: 1,
 			startingBackgroundColor: 0x30,
@@ -6740,12 +6740,12 @@
 			difficulty: "IMPOSSIBLEDEMON",
 			stars: 10,
 			songID: "song_time_machine",
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			startingGameMode: 0,
 			startingSpeed: 0,
 			startingBackgroundColor: 0x1C,
 			startingGroundColor: 0x0F,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
 					coordinates: [
@@ -6869,7 +6869,7 @@
 			startingBackgroundColor: 0x11,
 			startingGroundColor: 0x11,
 			parallaxDisable: false,
-			maxFallSpeed: 0x01,
+			maxFallSpeed_is_7: 0x01,
 		},
 		{
 			level: "heliopolis",
