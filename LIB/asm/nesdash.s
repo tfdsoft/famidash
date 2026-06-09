@@ -278,9 +278,10 @@ _init_rld:
 	LDA #$02		;no levels need this setting
 	sta _spawn_scroll_y_pos+1
 	iny	
-	LDA (ptr1),y		;spawn scroll y position low byte
-	sta _spawn_scroll_y_pos
-	iny
+
+;	LDA (ptr1),y		;spawn scroll y position low byte
+;	sta _spawn_scroll_y_pos
+;	iny
 	
 	LDA (ptr1),y		;max fall speed high byte
 	sta _max_fallspeed

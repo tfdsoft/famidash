@@ -17,8 +17,6 @@
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
-			//spawnYPositionLow: 0x00,
-			//scrollYPositionHi: 0x02,		;default $02EF, less to go up
 			//scrollYPositionLow: 0x30,
 			maxFallSpeed: 0x07,
 			parallaxDisable: true,
@@ -579,8 +577,6 @@
 			startingBackgroundColor: 0x0C,
 			startingGroundColor: 0x0C,
 			spawnYPositionHi: 0x70,
-			spawnYPositionLow: 0x00,
-			scrollYPositionHi: 0x02,
 			scrollYPositionLow: 0x30,
 			parallaxDisable: true,
 			objectOffsets: [

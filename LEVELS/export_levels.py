@@ -226,7 +226,6 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			metadata.get('songID', 0),
 			f"({metadata.get('startingSpeed', 0)} << 4) | {metadata.get('startingGameMode', 0)}",
 			f"(${metadata.get('spawnYPositionHi', 0xB0):02X})",  # <- spawn position here
-			f"(${metadata.get('spawnYPositionLow', 0x00):02X})",  # <- spawn position here
 			f"(${metadata.get('scrollYPositionLow', 0xEF):02X})",  # <- scroll position here
 			f"(${metadata.get('maxFallSpeed', 0x06):02X})",  # <- max fall speed here
 			" | ".join([
@@ -249,7 +248,6 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			"Song ID",
 			"Starting game mode and speed",
 			"Spawn Y Position (high byte)",
-			"Spawn Y Position (low byte)",
 			"Y Scroll Position (low byte)",
 			"Max Fall Speed (high byte)",
 			", ".join(["Disable parallax", "Force platformer"][::-1]),

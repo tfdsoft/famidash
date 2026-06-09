@@ -17,8 +17,6 @@
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
-			//spawnYPositionLow: 0x00,
-			//scrollYPositionHi: 0x02,		;default $02EF, less to go up
 			//scrollYPositionLow: 0x30,
 			maxFallSpeed: 0x07,
 			parallaxDisable: true,
@@ -47,8 +45,6 @@
 			startingBackgroundColor: 0x12,
 			startingGroundColor: 0x02,
 			//spawnYPositionHi: 0x30,		;default #$B000
-			//spawnYPositionLow: 0x00,
-			//scrollYPositionHi: 0x02,		;default $02EF, less to go up
 			//scrollYPositionLow: 0x30,
 			maxFallSpeed: 0x07,
 			objectOffsets: [
@@ -1432,11 +1428,8 @@
             startingBackgroundColor: 0x03,
             startingGroundColor: 0x0F,
             spawnYPositionHi: 0xA0,
-            spawnYPositionLow: 0x00,
-            scrollYPositionHi: 0x02,
             scrollYPositionLow: 0x80,
             parallaxDisable: true,
-            forcePlatformer: true,
             maxFallSpeed: 0x07,
             objectOffsets: [
                 {
@@ -1466,10 +1459,7 @@
 			startingGroundColor: 0x0f,
 			maxFallSpeed: 0x07,
 			parallaxDisable: true,
-			forcePlatformer: true,
 			spawnYPositionHi: 0xA0,
-			spawnYPositionLow: 0x00,
-			scrollYPositionHi: 0x02,
 			scrollYPositionLow: 0x80,
 			objectOffsets: [
 				{
@@ -1535,10 +1525,7 @@
 			startingGroundColor: 0x0f,
 			maxFallSpeed: 0x07,
 			parallaxDisable: true,
-			forcePlatformer: true,
 			spawnYPositionHi: 0xb0,
-			spawnYPositionLow: 0x00,
-			scrollYPositionHi: 0x02,
 			scrollYPositionLow: 0xef,
 			objectOffsets: [
 				{
