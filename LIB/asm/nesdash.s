@@ -311,10 +311,16 @@ _init_rld:
 	;INY						;__
 	
 	LDA (ptr1),y			;
+	and #$F0
+	lsr
+	lsr
+	lsr
+	lsr
 	STA _current_spike_set	;	Spike set
-	INY						;__
+;	INY						;__
 
 	LDA (ptr1),y			;
+	and #$0F
 	STA _current_block_set	;	Block set
 	INY						;__
 

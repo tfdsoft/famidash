@@ -237,10 +237,16 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 				f"(${metadata.get('maxFallSpeed_is_7', 0x00):02X} << 7)",  # <- max fall speed here
 			]),  # <- bitfield separate line
 
+
+			" << 4) | ".join([
+				getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "(_"),
+				getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
+			]),  # <- bitfield separate line
+
 			#f"(${metadata.get('maxFallSpeed', 0x06):02X})",  # <- max fall speed here
 			#f"_{metadata.get('decoType', 'NONE')}",
-			getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
-			getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
+			#getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
+			#getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
 			getPropFormatted(metadata, 'sawSet', 'SAWBLADES', ('A',), "_"),
 			f"${metadata.get('startingBackgroundColor', 0):02X}",
 			f"${metadata.get('startingGroundColor', 0):02X}",
@@ -257,8 +263,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			"Y Scroll Position (low byte)",
 			", ".join(["Disable parallax", "Force platformer"][::-1]),
 			", ".join(["Max Fall Speed (high byte)", "Deco type"][::-1]),
-			"Spike set",
-			"Block set",
+			", ".join(["Spike Set", "Block Set"][::-1]),
 			"Sawblade set",
 			"Starting background color",
 			"Starting ground color",
