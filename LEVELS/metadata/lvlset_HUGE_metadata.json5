@@ -1814,6 +1814,25 @@
 				},
 			]	
 		},
+		
+		{ 
+            level: "feather",
+            lowerText: "FEATHER",
+            decoType: "DECO1",
+            spikeSet: "A",
+            blockSet: "A",
+            sawSet: "A",
+            difficulty: "EASY",
+            stars: 2,
+            songID: "song_aether_new",
+            startingGameMode: 0,
+            startingSpeed: 0,
+            startingBackgroundColor: 0x01,
+            startingGroundColor: 0x0F,
+			maxFallSpeed: 0x07,
+            parallaxDisable: false,
+        },
+		
 		{
 			level: "xmaschallenge",
 			upperText: "XMAS",
@@ -1944,7 +1963,6 @@
 				},
 			]
 		},
-		
 		{
 			level: "leveleasy",
 			lowerText: "LEVEL EASY",

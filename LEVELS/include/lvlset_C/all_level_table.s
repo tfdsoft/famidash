@@ -8,6 +8,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_movie)
 	.byte .lobyte(level_data_groundtoretray)
 	.byte .lobyte(level_data_madness)
+	.byte .lobyte(level_data_feather)
 	.byte .lobyte(level_data_short_kings)
 	.byte .lobyte(level_data_nicktoons)
 	.byte .lobyte(level_data_hungrymanadventures)
@@ -29,6 +30,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_movie)
 	.byte .hibyte(level_data_groundtoretray)
 	.byte .hibyte(level_data_madness)
+	.byte .hibyte(level_data_feather)
 	.byte .hibyte(level_data_short_kings)
 	.byte .hibyte(level_data_nicktoons)
 	.byte .hibyte(level_data_hungrymanadventures)
@@ -50,6 +52,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_movie))
 	.byte .lobyte(.bank(level_data_groundtoretray))
 	.byte .lobyte(.bank(level_data_madness))
+	.byte .lobyte(.bank(level_data_feather))
 	.byte .lobyte(.bank(level_data_short_kings))
 	.byte .lobyte(.bank(level_data_nicktoons))
 	.byte .lobyte(.bank(level_data_hungrymanadventures))
@@ -95,6 +98,7 @@ _level_lengths_lo:
 	.byte .lobyte($0000B8)		; movie
 	.byte .lobyte($000066)		; groundtoretray
 	.byte .lobyte($00008B)		; madness
+	.byte .lobyte($000080)		; feather
 	.byte .lobyte($000039)		; short_kings
 	.byte .lobyte($000059)		; nicktoons
 	.byte .lobyte($00006A)		; hungrymanadventures
@@ -118,6 +122,7 @@ _level_lengths_md:
 	.byte .hibyte($0000B8)		; movie
 	.byte .hibyte($000066)		; groundtoretray
 	.byte .hibyte($00008B)		; madness
+	.byte .hibyte($000080)		; feather
 	.byte .hibyte($000039)		; short_kings
 	.byte .hibyte($000059)		; nicktoons
 	.byte .hibyte($00006A)		; hungrymanadventures
@@ -141,6 +146,7 @@ _level_lengths_hi:
 	.byte .bankbyte($0000B8)		; movie
 	.byte .bankbyte($000066)		; groundtoretray
 	.byte .bankbyte($00008B)		; madness
+	.byte .bankbyte($000080)		; feather
 	.byte .bankbyte($000039)		; short_kings
 	.byte .bankbyte($000059)		; nicktoons
 	.byte .bankbyte($00006A)		; hungrymanadventures

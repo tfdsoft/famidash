@@ -36,6 +36,7 @@ const uint8_t difficulty_list[] = {
 	EASY,	// sonar
 	EASY,	// darkparadise
 	EASY,	// madness
+	EASY,	// feather
 	EASY,	// xmaschallenge
 	NORMAL,	// short_kings
 	NORMAL,	// nicktoons
@@ -193,6 +194,7 @@ const uint8_t stars_list[] = {
 	2,	// sonar
 	2,	// darkparadise
 	2,	// madness
+	2,	// feather
 	2,	// xmaschallenge
 	3,	// short_kings
 	3,	// nicktoons

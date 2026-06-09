@@ -64,7 +64,7 @@ Comment: wiki has no progress and is still wip
 |[Zephyrside](https://github.com/zephyrside)/[UserSniper](https://github.com/usersniper)|project creator, former lead developer, code, music, graphics|
 |[kandowontu](https://github.com/kandowontu)|director, current lead developer, maintainer|
 |[Ficus mcHousePlant](https://github.com/FicusmcHousePlant)|levels, guidance, testing, bugfixes, graphics|
-|[alexmush](https://github.com/ADM228)|code, asm, code optimisation, music, codebase unification|
+|[dajinkosa](https://github.com/dajinkosa)|code, asm, code optimisation, music, codebase unification|
 |[ElAngel378](https://github.com/ElAngel378)|music|
 |[SeaGlowingPro](https://github.com/SeaGlowingPro)|levels, music|
 |[KawaiiDawn](https://github.com/Astroclimber26)|levels|
