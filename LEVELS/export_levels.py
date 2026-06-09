@@ -262,7 +262,7 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			"Spawn Y Position (high byte)",
 			"Y Scroll Position (low byte)",
 			", ".join(["Disable parallax", "Force platformer"][::-1]),
-			", ".join(["Max Fall Speed (high byte)", "Deco type"][::-1]),
+			", ".join(["Max Fall Speed is 7?", "Deco type"][::-1]),
 			", ".join(["Spike Set", "Block Set"][::-1]),
 			"Sawblade set",
 			"Starting background color",
