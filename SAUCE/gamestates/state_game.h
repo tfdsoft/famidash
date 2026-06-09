@@ -165,12 +165,6 @@ void state_game(){
 			}
 		#endif
 		
-		current_saw_set = SAWBLADESA;
-			
-		#ifdef level_luckydraw
-			if (level == level_luckydraw) current_saw_set = LETTERBANK;
-		#endif
-		
 		#ifdef level_futurefunkfix
 			if (level == level_futurefunkfix) {
 				if (song == song_future_funk_pt1 && famistudio_song_speed == 0x80) {

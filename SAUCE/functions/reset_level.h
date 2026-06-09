@@ -175,6 +175,12 @@ void reset_level() {
 
 	crossPRGBankJump0(unrle_first_screen);	// For bank saving
 
+	current_saw_set = SAWBLADESA;
+		
+	#ifdef level_luckydraw
+		if (level == level_luckydraw) current_saw_set = LETTERBANK;
+	#endif
+
 	if (!no_parallax) mmc3_set_1kb_chr_bank_2(parallax_scroll_x + GET_BANK(PARALLAX_CHR));
 	ppu_on_all();
 	pal_fade_in();
