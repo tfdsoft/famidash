@@ -274,7 +274,8 @@ _init_rld:
 	sta _spawn_y_pos
 	iny
 	
-	LDA (ptr1),y		;spawn scroll y position high byte
+;	LDA (ptr1),y		;spawn scroll y position high byte
+	LDA #$02		;no levels need this setting
 	sta _spawn_scroll_y_pos+1
 	iny	
 	LDA (ptr1),y		;spawn scroll y position low byte

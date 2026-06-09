@@ -7020,7 +7020,7 @@ sprite_data_toe2:
   .byte $e0,$3c,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_4A"
+.segment "DAT_BANK_88"
 sprite_data_geometricaldominator:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$b0
@@ -17381,7 +17381,7 @@ sprite_data_moonlight:
   .byte $20,$2f,$d0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_4E"
+.segment "DAT_BANK_4F"
 sprite_data_fofii_fofii_fofii:
   .byte $00,$00,$70,$03,$bf
   .byte $00,$00,$88,$03,$fd
@@ -20766,7 +20766,7 @@ sprite_data_cryogenic:
   .byte $90,$3b,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_88"
+.segment "DAT_BANK_4A"
 sprite_data_oceane:
   .byte $00,$00,$d0,$02,$80
   .byte $00,$00,$e0,$02,$b6
@@ -71888,7 +71888,7 @@ sprite_data_bloodbath:
   .byte $c0,$52,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_87"
+.segment "DAT_BANK_98"
 sprite_data_cataclysm:
   .byte $00,$00,$70,$03,$86
   .byte $00,$00,$80,$03,$cf
@@ -74491,7 +74491,7 @@ sprite_data_shardscapes:
   .byte $e0,$2a,$40,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_4F"
+.segment "DAT_BANK_4E"
 sprite_data_element111rg:
   .byte $b0,$00,$60,$03,$05
   .byte $e0,$00,$20,$03,$10
