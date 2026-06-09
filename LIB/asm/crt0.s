@@ -474,27 +474,29 @@ _GAME_CHR:
 		.incbin "GRAPHICS/Level Sprites/bankblankextra2.chr" ; 1kb
 	.endif
 	
-    .repeat 15, I   ; banks 40 - 69
+    .repeat 14, I   ; banks 40 - 67
         .incbin .sprintf("GRAPHICS/Icons/bankicon%02X.chr", I)  ; 1kb
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     .endrepeat
 
-    .repeat 9, I   ; banks 70 - 87
+    .repeat 9, I   ; banks 69 - 85
         .incbin .sprintf("fan icon collection/CONTEST WINNERS/contest%1X.chr", I+1) ; 1kb
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
     .endrepeat
 
 
 	.if (_LEVELSET = $141006E)
-;        .incbin "fan icon collection/starfox.chr" ; 1kb (88)
-;        .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
 
-        .incbin "GRAPHICS/Menus/HUGE-demon.chr" ; 1kb (88)
+        .incbin "GRAPHICS/Menus/HUGE-demon.chr" ; 1kb (86)
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb	(89 - unused, filler)
 	.else
-        .incbin "fan icon collection/starfox.chr" ; 1kb (88)
+        .incbin "fan icon collection/starfox.chr" ; 1kb (86)
         .incbin "GRAPHICS/Level Sprites/bankportals.chr" ; 1kb
 	.endif
+
+
+
+    .incbin "GRAPHICS/Level Tiles/slopesB.chr" ; (88)
 
     .incbin "GRAPHICS/Level Tiles/slopesD.chr" ; (90)
 

@@ -1774,19 +1774,18 @@ MouseBoundsMax:
 	
 	lda _current_block_set
 	cmp #::_BLOCKSD
+	beq @sloped
+	cmp #::_BLOCKSB
 	bne @slopea
 
+	lda #::_SLOPESB
+	bne @slopcont
+@sloped:
 	lda #::_SLOPESD
-	clc
-	adc CHRBANK_TEMP
-	jmp _mmc3_set_1kb_chr_bank_2
-	lda #1
-	beq @asdf
-
-
-
+	bne @slopcont
 @slopea:
 	lda #::_SLOPESA
+@slopcont:
 	clc
 	adc CHRBANK_TEMP
 	jmp _mmc3_set_1kb_chr_bank_2
