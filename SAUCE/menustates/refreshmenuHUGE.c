@@ -35,12 +35,12 @@ void refreshmenu() {
 	{	// write the difficulty
 		tmp1 = difficulty_list[level];
 		if (stars_list[level] == 10 && level > 25) {
-			mmc3_set_1kb_chr_bank_2(90);
+			mmc3_set_1kb_chr_bank_2(DEMONFACE_HUGE_BANK);
 			pal_col(0x0a, difficulty_pal_C[tmp1]);
 			pal_col(0x0b, difficulty_pal_D[tmp1]);
 		}
 		else {
-			mmc3_set_1kb_chr_bank_2(100);
+			mmc3_set_1kb_chr_bank_2(DIFFICULTY_FACE_BANK);
 			pal_col(0x0a, difficulty_pal_A[tmp1]);
 			pal_col(0x0b, difficulty_pal_B[tmp1]);
 		}

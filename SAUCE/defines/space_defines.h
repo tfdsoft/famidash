@@ -13,9 +13,9 @@
 #define TOTAL_LEVEL_COUNT (OFFICIAL_LEVEL_COUNT+COMMUNITY_LEVEL_COUNT)
 
 #if __HUGE_ROM
-#define MAX_ICONS 25 //total icons
+#define MAX_ICONS 24 //total icons
 #else
-#define MAX_ICONS 26 //total icons
+#define MAX_ICONS 25 //total icons
 #endif
 #define MAX_FIREBALLS 20
 #define MAX_PRACTICE_POINTS 8
@@ -27,9 +27,14 @@
 #define MOUSEBANK 96
 #define LETTERBANK 111
 #define MENUBANK 98
+
+#define DIFFICULTY_FACE_BANK 100
+
 #define MENUICONBANK 102
 #define LEVELCOMPLETEBANK 106
 #define PRACTICECOMPLETEBANK 110
+
+#define DEMONFACE_HUGE_BANK 88
 
 #define SPIKESA 0
 #define SPIKESB 2
@@ -40,6 +45,7 @@
 #define BLOCKSD 12
 #define SAWBLADESA 14
 #define SLOPESA 16
+#define SLOPESD 90
 
 #define DECO1 28
 #define DECOCLOUD 32
