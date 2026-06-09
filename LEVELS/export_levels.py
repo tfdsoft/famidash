@@ -247,7 +247,6 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			#f"_{metadata.get('decoType', 'NONE')}",
 			#getPropFormatted(metadata, 'spikeSet', 'SPIKES', ('A', 'B', 'C'), "_"),
 			#getPropFormatted(metadata, 'blockSet', 'BLOCKS', ('A', 'B', 'C', 'D'), "_"),
-			getPropFormatted(metadata, 'sawSet', 'SAWBLADES', ('A',), "_"),
 			f"${metadata.get('startingBackgroundColor', 0):02X}",
 			f"${metadata.get('startingGroundColor', 0):02X}",
 			str(len(lines)),
@@ -264,7 +263,6 @@ def export_bg(folder: pathlib.PurePath, levels: Iterable[dict], include_path : p
 			", ".join(["Disable parallax", "Force platformer"][::-1]),
 			", ".join(["Max Fall Speed is 7?", "Deco type"][::-1]),
 			", ".join(["Spike Set", "Block Set"][::-1]),
-			"Sawblade set",
 			"Starting background color",
 			"Starting ground color",
 			"Level height"

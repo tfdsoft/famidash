@@ -15695,7 +15695,7 @@ sprite_data_groundtospace:
   .byte $d0,$3e,$d0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_6F"
+.segment "DAT_BANK_70"
 sprite_data_ajollyretrochristmas:
   .byte $00,$00,$70,$03,$bf
   .byte $00,$00,$88,$03,$fd
@@ -32491,7 +32491,7 @@ sprite_data_overawed:
   .byte $f0,$40,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_49"
+.segment "DAT_BANK_88"
 sprite_data_bloodbathbutno:
   .byte $00,$00,$70,$03,$18
   .byte $00,$00,$88,$03,$0d
@@ -70047,7 +70047,7 @@ sprite_data_icdx:
   .byte $d0,$38,$20,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_70"
+.segment "DAT_BANK_6F"
 sprite_data_sonicwave:
   .byte $00,$00,$60,$03,$81
   .byte $00,$00,$70,$03,$c1
@@ -75592,7 +75592,7 @@ sprite_data_nullscapes:
   .byte $90,$2d,$00,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_3F"
+.segment "DAT_BANK_40"
 sprite_data_everyend:
   .byte $b0,$0b,$10,$03,$91
   .byte $b0,$0b,$20,$03,$d1

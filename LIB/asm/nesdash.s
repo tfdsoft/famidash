@@ -322,10 +322,10 @@ _init_rld:
 	LDA (ptr1),y			;
 	and #$0F
 	STA _current_block_set	;	Block set
-	INY						;__
+;	INY						;__
 
-	LDA (ptr1),y			;
-	STA _current_saw_set	;__	Saw set
+;	LDA (ptr1),y			;
+;	STA _current_saw_set	;__	Saw set
 
 	TYA						;
 	SEC						;
