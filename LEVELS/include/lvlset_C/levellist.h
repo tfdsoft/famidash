@@ -6,6 +6,7 @@ const uint8_t difficulty_list[] = {
 	EASY,	// groundtoretray
 	EASY,	// madness
 	EASY,	// feather
+	EASY,	// doubletripletrial
 	NORMAL,	// short_kings
 	NORMAL,	// nicktoons
 	NORMAL,	// cosmicdolphin
@@ -30,6 +31,7 @@ const uint8_t stars_list[] = {
 	2,	// groundtoretray
 	2,	// madness
 	2,	// feather
+	2,	// doubletripletrial
 	3,	// short_kings
 	3,	// nicktoons
 	3,	// cosmicdolphin

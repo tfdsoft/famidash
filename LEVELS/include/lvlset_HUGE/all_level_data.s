@@ -3026,6 +3026,27 @@
 		.incbin "EXPORTS/skeletalshenanigans.lz.1.bin" ; Size: 2604
 
 
+.segment "DAT_BANK_92"	; Total bank size: 8042 bytes
+	.export level_data_doubletripletrial
+	level_data_doubletripletrial:
+	; Header
+		.byte <sprite_data_doubletripletrial ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_doubletripletrial ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_doubletripletrial)) ;___ Sprite data bank
+		.byte song_dastardly ;____________________________ Song ID
+		.byte (4 << 4) | 0 ;______________________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;_____________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (0 << 1) ;_______________________ Force platformer, Disable parallax
+		.byte _DECO1 | ($01 << 7) ;_______________________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESA << 4) | _BLOCKSB ;________________ Block Set, Spike Set
+		.byte $00 ;_______________________________________ Starting background color
+		.byte $00 ;_______________________________________ Starting ground color
+		.byte 27 ;________________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/doubletripletrial.lz.bin" ; Size: 251
+
+
 .segment "DAT_BANK_93"	; Total bank size: 7705 bytes
 	.export level_data_highlife_13
 	level_data_highlife_13:

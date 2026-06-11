@@ -40,6 +40,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_darkparadise)
 	.byte .lobyte(level_data_madness)
 	.byte .lobyte(level_data_feather)
+	.byte .lobyte(level_data_doubletripletrial)
 	.byte .lobyte(level_data_xmaschallenge)
 	.byte .lobyte(level_data_short_kings)
 	.byte .lobyte(level_data_nicktoons)
@@ -198,6 +199,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_darkparadise)
 	.byte .hibyte(level_data_madness)
 	.byte .hibyte(level_data_feather)
+	.byte .hibyte(level_data_doubletripletrial)
 	.byte .hibyte(level_data_xmaschallenge)
 	.byte .hibyte(level_data_short_kings)
 	.byte .hibyte(level_data_nicktoons)
@@ -356,6 +358,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_darkparadise))
 	.byte .lobyte(.bank(level_data_madness))
 	.byte .lobyte(.bank(level_data_feather))
+	.byte .lobyte(.bank(level_data_doubletripletrial))
 	.byte .lobyte(.bank(level_data_xmaschallenge))
 	.byte .lobyte(.bank(level_data_short_kings))
 	.byte .lobyte(.bank(level_data_nicktoons))
@@ -619,6 +622,7 @@ _level_lengths_lo:
 	.byte .lobyte($000064)		; darkparadise
 	.byte .lobyte($00008B)		; madness
 	.byte .lobyte($000080)		; feather
+	.byte .lobyte($00003C)		; doubletripletrial
 	.byte .lobyte($000018)		; xmaschallenge
 	.byte .lobyte($000039)		; short_kings
 	.byte .lobyte($000059)		; nicktoons
@@ -779,6 +783,7 @@ _level_lengths_md:
 	.byte .hibyte($000064)		; darkparadise
 	.byte .hibyte($00008B)		; madness
 	.byte .hibyte($000080)		; feather
+	.byte .hibyte($00003C)		; doubletripletrial
 	.byte .hibyte($000018)		; xmaschallenge
 	.byte .hibyte($000039)		; short_kings
 	.byte .hibyte($000059)		; nicktoons
@@ -939,6 +944,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000064)		; darkparadise
 	.byte .bankbyte($00008B)		; madness
 	.byte .bankbyte($000080)		; feather
+	.byte .bankbyte($00003C)		; doubletripletrial
 	.byte .bankbyte($000018)		; xmaschallenge
 	.byte .bankbyte($000039)		; short_kings
 	.byte .bankbyte($000059)		; nicktoons

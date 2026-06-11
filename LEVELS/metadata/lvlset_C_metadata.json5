@@ -138,6 +138,35 @@
 			maxFallSpeed_is_7: 0x01,
             parallaxDisable: false,
         },
+		{
+			level: "doubletripletrial",
+			upperText: "DOUBLE TRIPLE",
+			lowerText: "TRIAL",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "B",
+			sawSet: "A",
+			difficulty: "EASY",
+			stars: 2,
+			songID: "song_dastardly",
+			startingGameMode: 0,
+			startingSpeed: 4,
+			startingBackgroundColor: 0x00,
+			startingGroundColor: 0x00,
+			maxFallSpeed_is_7: 0x01,
+			objectOffsets: [
+				{
+					coordinates: [
+						[25, 21], [25, 24], [36, 21], [36, 24], [47, 21], [47, 24], [58, 21], [58, 24], [69, 21], [69, 24],
+						[92, 21], [92, 24], [103, 21], [103, 24], [114, 21], [114, 24], [125, 21], [125, 24], [136, 21], [136, 24],
+						[159, 21], [159, 24], [170, 21], [170, 24], [181, 21], [181, 24], [192, 21], [192, 24], [203, 21], [203, 24],
+						[226, 21], [226, 24], [237, 21], [237, 24], [248, 21], [248, 24], [259, 21], [259, 24], [270, 21], [270, 24],
+						[293, 21], [293, 24], [304, 21], [304, 24], [315, 21], [315, 24], [326, 21], [326, 24], [349, 21], [349, 24],
+					],
+					offsetX: +8
+				},
+			]
+		},
 		{ 
 			level: "short_kings",
 			lowerText: "SHORT KINGS",

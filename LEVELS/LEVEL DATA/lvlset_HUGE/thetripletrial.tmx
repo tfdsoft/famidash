@@ -5,10 +5,10 @@
   <export target="../LEVELS/LEVEL DATA/decode.csv" format="csv"/>
  </editorsettings>
  <tileset firstgid="1" name="sprites" tilewidth="16" tileheight="16" tilecount="256" columns="16">
-  <image source="../../../../../Famidash_repo/famidash/GRAPHICS/sprites.png" width="256" height="256"/>
+  <image source="../../../GRAPHICS/sprites.png" width="256" height="256"/>
  </tileset>
  <tileset firstgid="257" name="famidash" tilewidth="16" tileheight="16" tilecount="256" columns="16">
-  <image source="../../../../../Famidash_repo/famidash/GRAPHICS/famidash.bmp" width="256" height="256"/>
+  <image source="../../../GRAPHICS/famidash.bmp" width="256" height="256"/>
  </tileset>
  <imagelayer id="3" name="Image Layer 1" parallaxx="0.9" parallaxy="0.9" repeatx="1" repeaty="1">
   <image source="../../../GRAPHICS/Old/parallax Blue.bmp" width="144" height="72"/>
