@@ -382,12 +382,17 @@
 			originalArtist: "Waterflame",
 			coveringArtist: "JuriJK",
 		},
-		
 		{
 			fmsSongName: "clutterfunk 2",
 			lowerText: "CLUTTERFUNK 2",
 			originalArtist: "Waterflame",
 			coveringArtist: "cloud54",
+		},
+		{
+			fmsSongName: "Cosmic Dolphin",
+			lowerText: "COSMIC DOLPHIN",
+			originalArtist: "megawolf77",
+			coveringArtist: "SeaGlowingPro",
 		},
 		{
 			fmsSongName: "Cryogenic",

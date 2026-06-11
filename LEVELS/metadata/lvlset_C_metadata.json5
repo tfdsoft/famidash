@@ -227,6 +227,46 @@
 			]
 		},
 		{
+			level: "cosmicdolphin",
+			upperText: "COSMIC",
+			middleText: "SPACE33",
+			lowerText: "DOLPHIN",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "NORMAL",
+			stars: 3,
+			songID: "song_cosmic_dolphin",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x02,
+			startingGroundColor: 0x0F,
+			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
+			spawnYPositionHi: 0x00,
+			objectOffsets: [
+				{
+					coordinates: [
+						[17, 45], [33, 45], [291, 39], [360, 39], [369, 32], [398, 33], [616, 32], [680, 31], [695, 32], [751, 28], [791, 27], [810, 30], [836, 34],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[242, 37], [242, 42], [245, 42], [248, 42], [269, 40], [288, 40], [291, 39], [369, 32], [398, 33], [552, 28], [586, 34], [751, 28], [791, 27], [810, 30], [836, 34],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[586, 33],
+					],
+					offsetY: +8
+				},
+			]
+		},
+		{
 			level: "hungrymanadventures",
 			upperText: "HUNGRYMAN",
 			lowerText: "ADVENTURES",

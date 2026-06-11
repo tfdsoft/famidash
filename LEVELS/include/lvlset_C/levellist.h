@@ -8,6 +8,7 @@ const uint8_t difficulty_list[] = {
 	EASY,	// feather
 	NORMAL,	// short_kings
 	NORMAL,	// nicktoons
+	NORMAL,	// cosmicdolphin
 	HARD,	// hungrymanadventures
 	HARD,	// dorabaebasic7
 	HARDER,	// endgame
@@ -31,6 +32,7 @@ const uint8_t stars_list[] = {
 	2,	// feather
 	3,	// short_kings
 	3,	// nicktoons
+	3,	// cosmicdolphin
 	4,	// hungrymanadventures
 	4,	// dorabaebasic7
 	6,	// endgame

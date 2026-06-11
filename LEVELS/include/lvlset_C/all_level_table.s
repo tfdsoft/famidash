@@ -11,6 +11,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_feather)
 	.byte .lobyte(level_data_short_kings)
 	.byte .lobyte(level_data_nicktoons)
+	.byte .lobyte(level_data_cosmicdolphin)
 	.byte .lobyte(level_data_hungrymanadventures)
 	.byte .lobyte(level_data_dorabaebasic7)
 	.byte .lobyte(level_data_endgame)
@@ -33,6 +34,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_feather)
 	.byte .hibyte(level_data_short_kings)
 	.byte .hibyte(level_data_nicktoons)
+	.byte .hibyte(level_data_cosmicdolphin)
 	.byte .hibyte(level_data_hungrymanadventures)
 	.byte .hibyte(level_data_dorabaebasic7)
 	.byte .hibyte(level_data_endgame)
@@ -55,6 +57,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_feather))
 	.byte .lobyte(.bank(level_data_short_kings))
 	.byte .lobyte(.bank(level_data_nicktoons))
+	.byte .lobyte(.bank(level_data_cosmicdolphin))
 	.byte .lobyte(.bank(level_data_hungrymanadventures))
 	.byte .lobyte(.bank(level_data_dorabaebasic7))
 	.byte .lobyte(.bank(level_data_endgame))
@@ -101,6 +104,7 @@ _level_lengths_lo:
 	.byte .lobyte($000080)		; feather
 	.byte .lobyte($000039)		; short_kings
 	.byte .lobyte($000059)		; nicktoons
+	.byte .lobyte($00008F)		; cosmicdolphin
 	.byte .lobyte($00006A)		; hungrymanadventures
 	.byte .lobyte($0000F7)		; dorabaebasic7
 	.byte .lobyte($00009F)		; endgame
@@ -125,6 +129,7 @@ _level_lengths_md:
 	.byte .hibyte($000080)		; feather
 	.byte .hibyte($000039)		; short_kings
 	.byte .hibyte($000059)		; nicktoons
+	.byte .hibyte($00008F)		; cosmicdolphin
 	.byte .hibyte($00006A)		; hungrymanadventures
 	.byte .hibyte($0000F7)		; dorabaebasic7
 	.byte .hibyte($00009F)		; endgame
@@ -149,6 +154,7 @@ _level_lengths_hi:
 	.byte .bankbyte($000080)		; feather
 	.byte .bankbyte($000039)		; short_kings
 	.byte .bankbyte($000059)		; nicktoons
+	.byte .bankbyte($00008F)		; cosmicdolphin
 	.byte .bankbyte($00006A)		; hungrymanadventures
 	.byte .bankbyte($0000F7)		; dorabaebasic7
 	.byte .bankbyte($00009F)		; endgame

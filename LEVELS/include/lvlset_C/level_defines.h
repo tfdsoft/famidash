@@ -4,7 +4,7 @@
 #define LEVELSET 'C'
 
 #define OFFICIAL_LEVEL_COUNT 0
-#define COMMUNITY_LEVEL_COUNT 20
+#define COMMUNITY_LEVEL_COUNT 21
 
 #define level_movie 0
 #define level_groundtoretray 1
@@ -12,17 +12,18 @@
 #define level_feather 3
 #define level_short_kings 4
 #define level_nicktoons 5
-#define level_hungrymanadventures 6
-#define level_dorabaebasic7 7
-#define level_endgame 8
-#define level_astronomicalexpedition 9
-#define level_ninecircleseasy 10
-#define level_overawed 11
-#define level_unity 12
-#define level_dastardly 13
-#define level_thetripletrial 14
-#define level_trolledfix 15
-#define level_supercycles 16
-#define level_chaozimpact 17
-#define level_solarcircles 18
-#define level_futurefunkfix 19
+#define level_cosmicdolphin 6
+#define level_hungrymanadventures 7
+#define level_dorabaebasic7 8
+#define level_endgame 9
+#define level_astronomicalexpedition 10
+#define level_ninecircleseasy 11
+#define level_overawed 12
+#define level_unity 13
+#define level_dastardly 14
+#define level_thetripletrial 15
+#define level_trolledfix 16
+#define level_supercycles 17
+#define level_chaozimpact 18
+#define level_solarcircles 19
+#define level_futurefunkfix 20
