@@ -3380,7 +3380,7 @@
 		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
-.segment "DAT_BANK_A0"	; Total bank size: 4353 bytes
+.segment "DAT_BANK_A0"	; Total bank size: 5029 bytes
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header

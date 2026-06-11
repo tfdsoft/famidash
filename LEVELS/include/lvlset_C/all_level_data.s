@@ -126,7 +126,7 @@
 		.incbin "EXPORTS/thetripletrial.lz.bin" ; Size: 300
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8128 bytes
+.segment "DAT_BANK_09"	; Total bank size: 7707 bytes
 	.export level_data_endgame
 	level_data_endgame:
 	; Header
@@ -460,7 +460,7 @@
 		.incbin "EXPORTS/trolledfix.lz.bin" ; Size: 1315
 
 
-.segment "DAT_BANK_15"	; Total bank size: 2451 bytes
+.segment "DAT_BANK_15"	; Total bank size: 2977 bytes
 	.export level_data_madness
 	level_data_madness:
 	; Header

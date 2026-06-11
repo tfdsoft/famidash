@@ -11079,7 +11079,7 @@ sprite_data_feather:
   .byte $f0,$31,$f0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_2B"
+.segment "DAT_BANK_A0"
 sprite_data_doubletripletrial:
   .byte $40,$01,$50,$03,$2d
   .byte $70,$01,$20,$03,$2d
@@ -11159,6 +11159,7 @@ sprite_data_doubletripletrial:
   .byte $b8,$0c,$60,$03,$3b
   .byte $e0,$0c,$20,$03,$2d
   .byte $10,$0d,$50,$03,$2d
+  .byte $70,$0d,$60,$03,$07
   .byte $d0,$0d,$50,$03,$2d
   .byte $00,$0e,$20,$03,$2d
   .byte $28,$0e,$30,$03,$27
@@ -11185,6 +11186,7 @@ sprite_data_doubletripletrial:
   .byte $e8,$10,$60,$03,$3b
   .byte $10,$11,$20,$03,$2d
   .byte $40,$11,$50,$03,$2d
+  .byte $a0,$11,$60,$03,$1a
   .byte $00,$12,$50,$03,$2d
   .byte $30,$12,$20,$03,$2d
   .byte $58,$12,$30,$03,$06
@@ -11206,6 +11208,7 @@ sprite_data_doubletripletrial:
   .byte $68,$14,$60,$03,$3b
   .byte $90,$14,$20,$03,$2d
   .byte $c0,$14,$50,$03,$2d
+  .byte $20,$15,$60,$03,$1b
   .byte $80,$15,$50,$03,$2d
   .byte $b0,$15,$20,$03,$2d
   .byte $d8,$15,$30,$03,$44
