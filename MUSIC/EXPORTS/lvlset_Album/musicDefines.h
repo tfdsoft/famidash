@@ -27,8 +27,8 @@
 #define song_just_right_full 26
 #define song_polargeist 27
 #define song_theory_of_everything 28
-#define song_blast_processing 29
-#define song_toe_2 30
+#define song_toe_2 29
+#define song_rainbow_tylenol 30
 #define song_fingerdash 31
 #define song_death_moon 32
 #define song_geometrical_dominator 33
@@ -56,9 +56,9 @@
 #define song_electroman_adventures 55
 #define song_moon_fries 56
 #define song_shiawase_vip 57
-#define song_press_start 58
-#define song_rainbow_tylenol 59
-#define song_select_payment_type 60
+#define song_blast_processing 58
+#define song_jumper_full 59
+#define song_press_start 60
 #define song_fantasy 61
 #define song_megalovania 62
 #define song_midnight 63
@@ -91,7 +91,7 @@
 #define song_cycles 90
 #define song_blacklight 91
 #define song_glitch_gremlin 92
-#define song_jumper_full 93
+#define song_select_payment_type 93
 #define song_against_the_odds_redux 94
 #define song_stereo_madness 95
 #define song_meltdown 96
