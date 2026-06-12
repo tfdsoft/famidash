@@ -845,7 +845,7 @@
 		.incbin "EXPORTS/kratos.lz.bin" ; Size: 7391
 
 
-.segment "DAT_BANK_2E"	; Total bank size: 8178 bytes
+.segment "DAT_BANK_2E"	; Total bank size: 8181 bytes
 	.export level_data_goldenhaze
 	level_data_goldenhaze:
 	; Header
@@ -864,11 +864,6 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
-
-	.export level_data_eon_24
-	level_data_eon_24:
-	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 813
 
 
 .segment "DAT_BANK_2F"	; Total bank size: 8190 bytes
@@ -1735,7 +1730,7 @@
 		.incbin "EXPORTS/dorabaebasic7.lz.bin" ; Size: 5709
 
 
-.segment "DAT_BANK_59"	; Total bank size: 8192 bytes
+.segment "DAT_BANK_59"	; Total bank size: 8175 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -1753,26 +1748,7 @@
 		.byte $0F ;______________________________ Starting ground color
 		.byte 40 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5666
-
-	.export level_data_hungrymanadventures
-	level_data_hungrymanadventures:
-	; Header
-		.byte <sprite_data_hungrymanadventures ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_hungrymanadventures ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_hungrymanadventures)) ;___ Sprite data bank
-		.byte song_hungryman_adventures ;___________________ Song ID
-		.byte (0 << 4) | 0 ;________________________________ Starting game mode and speed
-		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (0 << 1) ;_________________________ Force platformer, Disable parallax
-		.byte _DECOCLOUD | ($01 << 7) ;_____________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;__________________ Block Set, Spike Set
-		.byte $02 ;_________________________________________ Starting background color
-		.byte $01 ;_________________________________________ Starting ground color
-		.byte 27 ;__________________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/hungrymanadventures.lz.bin" ; Size: 2500
+		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5676
 
 
 .segment "DAT_BANK_5A"	; Total bank size: 8173 bytes
@@ -2977,7 +2953,7 @@
 		.incbin "EXPORTS/subzero.lz.bin" ; Size: 2563
 
 
-.segment "DAT_BANK_8E"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_8F"	; Total bank size: 8181 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
@@ -2997,8 +2973,6 @@
 	; Level data
 		.incbin "EXPORTS/thelightningroad.lz.bin" ; Size: 2765
 
-
-.segment "DAT_BANK_8F"	; Total bank size: 8174 bytes
 	.export level_data_retray
 	level_data_retray:
 	; Header
@@ -3019,7 +2993,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2684
 
 
-.segment "DAT_BANK_91"	; Total bank size: 8167 bytes
+.segment "DAT_BANK_91"	; Total bank size: 8172 bytes
 	.export level_data_skeletalshenanigans_18
 	level_data_skeletalshenanigans_18:
 	; Level data
@@ -3052,6 +3026,46 @@
 	level_data_highlife_13:
 	; Level data
 		.incbin "EXPORTS/highlife.lz.1.bin" ; Size: 2563
+
+
+.segment "DAT_BANK_94"	; Total bank size: 8080 bytes
+	.export level_data_hungrymanadventures
+	level_data_hungrymanadventures:
+	; Header
+		.byte <sprite_data_hungrymanadventures ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_hungrymanadventures ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_hungrymanadventures)) ;___ Sprite data bank
+		.byte song_hungryman_adventures ;___________________ Song ID
+		.byte (0 << 4) | 0 ;________________________________ Starting game mode and speed
+		.byte ($B0) ;_______________________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;_______________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (0 << 1) ;_________________________ Force platformer, Disable parallax
+		.byte _DECOCLOUD | ($01 << 7) ;_____________________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESA << 4) | _BLOCKSB ;__________________ Block Set, Spike Set
+		.byte $02 ;_________________________________________ Starting background color
+		.byte $01 ;_________________________________________ Starting ground color
+		.byte 27 ;__________________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/hungrymanadventures.lz.bin" ; Size: 2500
+
+	.export level_data_luckydraw
+	level_data_luckydraw:
+	; Header
+		.byte <sprite_data_luckydraw ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_luckydraw ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_luckydraw)) ;___ Sprite data bank
+		.byte song_every_end_pt1 ;________________ Song ID
+		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECOCLOUD | ($00 << 7) ;___________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESB << 4) | _BLOCKSB ;________ Block Set, Spike Set
+		.byte $0F ;_______________________________ Starting background color
+		.byte $0F ;_______________________________ Starting ground color
+		.byte 27 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 672
 
 
 .segment "DAT_BANK_95"	; Total bank size: 8192 bytes
@@ -3380,7 +3394,7 @@
 		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
-.segment "DAT_BANK_A0"	; Total bank size: 5029 bytes
+.segment "DAT_BANK_A0"	; Total bank size: 5157 bytes
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header
@@ -3405,21 +3419,7 @@
 	; Level data
 		.incbin "EXPORTS/demonpyrophoric.lz.1.bin" ; Size: 873
 
-	.export level_data_luckydraw
-	level_data_luckydraw:
-	; Header
-		.byte <sprite_data_luckydraw ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_luckydraw ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_luckydraw)) ;___ Sprite data bank
-		.byte song_every_end_pt1 ;________________ Song ID
-		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECOCLOUD | ($00 << 7) ;___________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESB << 4) | _BLOCKSB ;________ Block Set, Spike Set
-		.byte $0F ;_______________________________ Starting background color
-		.byte $0F ;_______________________________ Starting ground color
-		.byte 27 ;________________________________ Level height
+	.export level_data_eon_24
+	level_data_eon_24:
 	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 672
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 813

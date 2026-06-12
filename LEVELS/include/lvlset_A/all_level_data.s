@@ -351,7 +351,7 @@
 		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5727
 
 
-.segment "DAT_BANK_0F"	; Total bank size: 8165 bytes
+.segment "DAT_BANK_0F"	; Total bank size: 8175 bytes
 	.export level_data_clubstep
 	level_data_clubstep:
 	; Header
@@ -369,7 +369,7 @@
 		.byte $0F ;______________________________ Starting ground color
 		.byte 40 ;_______________________________ Level height
 	; Level data
-		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5666
+		.incbin "EXPORTS/clubstep.lz.bin" ; Size: 5676
 
 
 .segment "DAT_BANK_10"	; Total bank size: 8135 bytes
@@ -746,7 +746,7 @@
 		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 2016
 
 
-.segment "DAT_BANK_1C"	; Total bank size: 8165 bytes
+.segment "DAT_BANK_1C"	; Total bank size: 8180 bytes
 	.export level_data_thelightningroad
 	level_data_thelightningroad:
 	; Header
