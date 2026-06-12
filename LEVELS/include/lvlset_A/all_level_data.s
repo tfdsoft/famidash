@@ -908,7 +908,7 @@
 		.incbin "EXPORTS/thesewers.lz.bin" ; Size: 940
 
 
-.segment "DAT_BANK_22"	; Total bank size: 8137 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8147 bytes
 	.export level_data_thecellar
 	level_data_thecellar:
 	; Header
