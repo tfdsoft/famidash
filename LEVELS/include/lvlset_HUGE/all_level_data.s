@@ -1669,7 +1669,7 @@
 		.incbin "EXPORTS/eighto.lz.bin" ; Size: 5730
 
 
-.segment "DAT_BANK_57"	; Total bank size: 8071 bytes
+.segment "DAT_BANK_57"	; Total bank size: 8068 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -1687,7 +1687,7 @@
 		.byte $09 ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5729
+		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5726
 
 	.export level_data_ninox
 	level_data_ninox:
@@ -2347,7 +2347,7 @@
 		.incbin "EXPORTS/sonar.lz.bin" ; Size: 3525
 
 
-.segment "DAT_BANK_74"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_74"	; Total bank size: 8190 bytes
 	.export level_data_extraordinaryexcitement_14
 	level_data_extraordinaryexcitement_14:
 	; Level data

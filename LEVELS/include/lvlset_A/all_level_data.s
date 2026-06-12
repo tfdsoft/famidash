@@ -330,7 +330,7 @@
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1902
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8023 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8020 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -348,7 +348,7 @@
 		.byte $09 ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5729
+		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5726
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 8175 bytes
@@ -532,7 +532,7 @@
 		.incbin "EXPORTS/funnygameholiday.lz.bin" ; Size: 3261
 
 
-.segment "DAT_BANK_14"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_14"	; Total bank size: 8190 bytes
 	.export level_data_extraordinaryexcitement_2
 	level_data_extraordinaryexcitement_2:
 	; Level data
