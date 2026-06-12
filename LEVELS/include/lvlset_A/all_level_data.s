@@ -107,7 +107,7 @@
 		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7521
 
 
-.segment "DAT_BANK_05"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_05"	; Total bank size: 7341 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -125,7 +125,7 @@
 		.byte $03 ;__________________________________ Starting ground color
 		.byte 40 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 7316
+		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 7328
 
 
 .segment "DAT_BANK_06"	; Total bank size: 8146 bytes

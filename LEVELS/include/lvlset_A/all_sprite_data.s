@@ -5737,6 +5737,7 @@ sprite_data_electrodynamix:
 .segment "DAT_BANK_20"
 sprite_data_hexagonforce:
   .byte $c0,$00,$70,$03,$2b
+  .byte $20,$01,$60,$03,$33
   .byte $20,$01,$78,$03,$0a
   .byte $78,$01,$50,$03,$2b
   .byte $a0,$01,$00,$03,$2d
@@ -5748,6 +5749,7 @@ sprite_data_hexagonforce:
   .byte $a0,$02,$10,$03,$05
   .byte $b0,$02,$60,$03,$93
   .byte $c0,$02,$50,$03,$0b
+  .byte $70,$03,$40,$03,$33
   .byte $70,$03,$58,$03,$0a
   .byte $80,$03,$20,$03,$32
   .byte $98,$03,$10,$03,$32
@@ -5761,6 +5763,7 @@ sprite_data_hexagonforce:
   .byte $90,$04,$30,$03,$93
   .byte $d0,$04,$50,$03,$3d
   .byte $10,$05,$20,$03,$0c
+  .byte $10,$05,$40,$03,$33
   .byte $60,$05,$20,$03,$05
   .byte $70,$05,$40,$03,$32
   .byte $80,$05,$60,$03,$0b
@@ -5768,6 +5771,7 @@ sprite_data_hexagonforce:
   .byte $00,$06,$30,$03,$2b
   .byte $60,$06,$50,$03,$a3
   .byte $80,$06,$50,$03,$93
+  .byte $90,$06,$30,$03,$33
   .byte $90,$06,$48,$03,$25
   .byte $c0,$06,$40,$03,$0b
   .byte $f0,$06,$20,$03,$0b
@@ -8877,7 +8881,7 @@ sprite_data_thechallenge:
   .byte $40,$12,$00,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_05"
+.segment "DAT_BANK_23"
 sprite_data_retray:
   .byte $00,$00,$50,$03,$8f
   .byte $00,$00,$60,$03,$cf

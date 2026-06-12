@@ -866,7 +866,7 @@
 		.incbin "EXPORTS/goldenhaze.lz.bin" ; Size: 7352
 
 
-.segment "DAT_BANK_2F"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_2F"	; Total bank size: 8154 bytes
 	.export level_data_hexagonforce
 	level_data_hexagonforce:
 	; Header
@@ -884,7 +884,12 @@
 		.byte $03 ;__________________________________ Starting ground color
 		.byte 40 ;___________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 7316
+		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 7328
+
+	.export level_data_eon_24
+	level_data_eon_24:
+	; Level data
+		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 813
 
 
 .segment "DAT_BANK_30"	; Total bank size: 8164 bytes
@@ -1144,7 +1149,7 @@
 		.incbin "EXPORTS/endorphinrush.lz.bin" ; Size: 6525
 
 
-.segment "DAT_BANK_3E"	; Total bank size: 8148 bytes
+.segment "DAT_BANK_3E"	; Total bank size: 8168 bytes
 	.export level_data_thermodynamix
 	level_data_thermodynamix:
 	; Header
@@ -3394,7 +3399,7 @@
 		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
-.segment "DAT_BANK_A0"	; Total bank size: 5157 bytes
+.segment "DAT_BANK_A0"	; Total bank size: 5205 bytes
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header
@@ -3418,8 +3423,3 @@
 	level_data_demonpyrophoric_20:
 	; Level data
 		.incbin "EXPORTS/demonpyrophoric.lz.1.bin" ; Size: 873
-
-	.export level_data_eon_24
-	level_data_eon_24:
-	; Level data
-		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 813
