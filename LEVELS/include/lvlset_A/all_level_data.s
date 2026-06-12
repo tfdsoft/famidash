@@ -322,7 +322,7 @@
 		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
 		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
 		.byte _DECO1 | ($01 << 7) ;____________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSA ;_____ Block Set, Spike Set
+		.byte (_SPIKESA << 4) | _BLOCKSC ;_____ Block Set, Spike Set
 		.byte $13 ;____________________________ Starting background color
 		.byte $13 ;____________________________ Starting ground color
 		.byte 27 ;_____________________________ Level height
@@ -830,7 +830,7 @@
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1842
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8117 bytes
+.segment "DAT_BANK_21"	; Total bank size: 8132 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
@@ -867,7 +867,7 @@
 		.byte $14 ;_________________________________ Starting ground color
 		.byte 27 ;__________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1384
+		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1399
 
 	.export level_data_thetower
 	level_data_thetower:

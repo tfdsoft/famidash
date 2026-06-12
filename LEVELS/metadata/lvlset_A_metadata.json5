@@ -267,7 +267,7 @@
 			lowerText: "JUMPER",
 			decoType: "DECO1",
 			spikeSet: "A",
-			blockSet: "A",
+			blockSet: "C",
 			sawSet: "A",
 			difficulty: "HARDER",
 			stars: 7,
