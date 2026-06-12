@@ -330,7 +330,7 @@
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1902
 
 
-.segment "DAT_BANK_0E"	; Total bank size: 8021 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8023 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -348,7 +348,7 @@
 		.byte $09 ;____________________________________ Starting ground color
 		.byte 27 ;_____________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5727
+		.incbin "EXPORTS/electrodynamix.lz.bin" ; Size: 5729
 
 
 .segment "DAT_BANK_0F"	; Total bank size: 8175 bytes
