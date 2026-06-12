@@ -6064,7 +6064,7 @@ sprite_data_hexagonforce:
   .byte $a0,$41,$c0,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_4C"
+.segment "DAT_BANK_4D"
 sprite_data_blastprocessing:
   .byte $00,$00,$60,$03,$92
   .byte $00,$00,$80,$03,$c2
@@ -6975,15 +6975,16 @@ sprite_data_toe2:
   .byte $80,$30,$d0,$02,$09
   .byte $00,$31,$e0,$02,$33
   .byte $20,$31,$00,$03,$91
+  .byte $90,$31,$f0,$02,$bd
   .byte $f0,$31,$00,$03,$08
   .byte $f0,$31,$00,$03,$00
   .byte $f0,$31,$08,$03,$16
   .byte $00,$32,$00,$03,$a1
+  .byte $50,$32,$10,$03,$b0
   .byte $60,$32,$10,$03,$0b
   .byte $a0,$32,$f0,$02,$37
   .byte $a0,$32,$f0,$02,$0b
   .byte $a0,$32,$10,$03,$94
-  .byte $a0,$32,$20,$03,$b0
   .byte $c0,$32,$10,$03,$93
   .byte $c0,$32,$28,$03,$0d
   .byte $00,$33,$10,$03,$05
