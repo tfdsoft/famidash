@@ -937,7 +937,7 @@
 			upperText: "BLAST",
 			lowerText: "PROCESSING",
 			decoType: "DECO1",
-			spikeSet: "B",
+			spikeSet: "C",
 			blockSet: "B",
 			sawSet: "A",
 			difficulty: "HARDER",
@@ -951,7 +951,10 @@
 			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
 				{
-					coordinates: [31, 26],		//yellow pad
+					coordinates: [
+						[31, 26], [167, 25], [179, 20], [195, 21], [217, 20], [236, 19], [269, 24], [284, 18], [300, 21], [317, 22], [335, 23], [353, 22], [381, 23],
+						[530, 21], [547, 22], [577, 21], [1030, 20],
+					],
 					offsetX: -8
 				},
 				{
@@ -960,6 +963,8 @@
 				},
 				{
 					coordinates: [
+						[195, 21], [250, 20], [284, 18], [300, 21], [317, 22], [335, 23], [353, 22], [381, 23], [403, 22], [418, 22],
+						[526, 21], [530, 21], [533, 21], [577, 21], [586, 22], [595, 20], [604, 22],
 						[553, 20],		//single portal
 						[554, 20],		//grav portal
 						[978, 18],		//yellow orb
@@ -972,6 +977,7 @@
 				},
 				{
 					coordinates: [
+						[547, 22],
 						[609, 22],		//cube portal
 						[794, 21],		//ball portal
 						[905, 21],		//cube portal
@@ -979,8 +985,30 @@
 					offsetY: -8
 				},
 				{
-					coordinates: [938, 21],		//blue orb
+					coordinates: [
+						[147, 18], [147, 20], [720, 24], [781, 18], [938, 21],
+					],
 					offsetX: +8
+				},
+				{
+					coordinates: [
+						[72, 22], [73, 22], [99, 22], [101, 22], [108, 22], [110, 22],
+					],
+					offsetY: -4,
+				},
+				{
+					coordinates: [
+						[660, 23], [918, 23],
+					],
+					offsetY: +4,
+					offsetX: +4
+				},
+				{
+					coordinates: [
+						[662, 23], [920, 23],
+					],
+					offsetY: +4,
+					offsetX: -4
 				},
 			]
 		},
