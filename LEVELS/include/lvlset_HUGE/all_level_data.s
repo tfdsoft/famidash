@@ -2767,7 +2767,7 @@
 		.incbin "EXPORTS/dash.lz.1.bin" ; Size: 94
 
 
-.segment "DAT_BANK_84"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_84"	; Total bank size: 8180 bytes
 	.export level_data_theoryofeverything
 	level_data_theoryofeverything:
 	; Header
@@ -3384,7 +3384,7 @@
 		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
-.segment "DAT_BANK_A0"	; Total bank size: 5890 bytes
+.segment "DAT_BANK_A0"	; Total bank size: 5902 bytes
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header
@@ -3426,4 +3426,4 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 672
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684

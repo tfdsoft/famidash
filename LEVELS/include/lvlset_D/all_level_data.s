@@ -526,7 +526,7 @@
 		.incbin "EXPORTS/eon.lz.1.bin" ; Size: 813
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8180 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8192 bytes
 	.export level_data_everymadness
 	level_data_everymadness:
 	; Header
@@ -563,4 +563,4 @@
 		.byte $0F ;_______________________________ Starting ground color
 		.byte 27 ;________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 672
+		.incbin "EXPORTS/luckydraw.lz.bin" ; Size: 684
