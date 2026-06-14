@@ -248,7 +248,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2040
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8166 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8185 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -268,27 +268,8 @@
 	; Level data
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 6041
 
-	.export level_data_leveleasy
-	level_data_leveleasy:
-	; Header
-		.byte <sprite_data_leveleasy ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_leveleasy ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_leveleasy)) ;___ Sprite data bank
-		.byte song_stereo_madness ;_______________ Song ID
-		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 | ($00 << 7) ;_______________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSA ;________ Block Set, Spike Set
-		.byte $2C ;_______________________________ Starting background color
-		.byte $1C ;_______________________________ Starting ground color
-		.byte 27 ;________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2099
 
-
-.segment "DAT_BANK_0B"	; Total bank size: 8177 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8148 bytes
 	.export level_data_bloodbathbutno
 	level_data_bloodbathbutno:
 	; Header
@@ -307,6 +288,25 @@
 		.byte 40 ;_____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/bloodbathbutno.lz.bin" ; Size: 6023
+
+	.export level_data_leveleasy
+	level_data_leveleasy:
+	; Header
+		.byte <sprite_data_leveleasy ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_leveleasy ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_leveleasy)) ;___ Sprite data bank
+		.byte song_stereo_madness ;_______________ Song ID
+		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (0 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 | ($00 << 7) ;_______________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESA << 4) | _BLOCKSA ;________ Block Set, Spike Set
+		.byte $2C ;_______________________________ Starting background color
+		.byte $1C ;_______________________________ Starting ground color
+		.byte 27 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2099
 
 
 .segment "DAT_BANK_0C"	; Total bank size: 8116 bytes
@@ -412,7 +412,7 @@
 		.incbin "EXPORTS/retray.lz.bin" ; Size: 2684
 
 
-.segment "DAT_BANK_11"	; Total bank size: 8192 bytes
+.segment "DAT_BANK_11"	; Total bank size: 8191 bytes
 	.export level_data_blastprocessing
 	level_data_blastprocessing:
 	; Header
@@ -426,11 +426,11 @@
 		.byte (0 << 0) | (1 << 1) ;_____________________ Force platformer, Disable parallax
 		.byte _DECO1 | ($01 << 7) ;_____________________ Deco type, Max Fall Speed is 7?
 		.byte (_SPIKESC << 4) | _BLOCKSB ;______________ Block Set, Spike Set
-		.byte $02 ;_____________________________________ Starting background color
-		.byte $12 ;_____________________________________ Starting ground color
+		.byte $12 ;_____________________________________ Starting background color
+		.byte $02 ;_____________________________________ Starting ground color
 		.byte 27 ;______________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/blastprocessing.lz.bin" ; Size: 5294
+		.incbin "EXPORTS/blastprocessing.lz.bin" ; Size: 5293
 
 	.export level_data_dash_0
 	level_data_dash_0:

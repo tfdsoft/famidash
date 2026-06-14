@@ -6064,10 +6064,8 @@ sprite_data_hexagonforce:
   .byte $a0,$41,$c0,$01,$0f
   .byte $ff
 
-.segment "DAT_BANK_0B"
+.segment "DAT_BANK_0A"
 sprite_data_blastprocessing:
-  .byte $00,$00,$60,$03,$92
-  .byte $00,$00,$80,$03,$c2
   .byte $c8,$00,$50,$03,$3e
   .byte $00,$01,$40,$03,$30
   .byte $20,$01,$40,$03,$30

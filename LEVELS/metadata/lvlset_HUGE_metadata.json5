@@ -945,8 +945,8 @@
 			songID: "song_blast_processing",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x02,
-			startingGroundColor: 0x12,
+			startingBackgroundColor: 0x12,
+			startingGroundColor: 0x02,
 			parallaxDisable: true,
 			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
