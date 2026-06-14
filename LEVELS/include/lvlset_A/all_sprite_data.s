@@ -7316,7 +7316,7 @@ sprite_data_geometricaldominator:
   .byte $d0,$23,$00,$03,$33
   .byte $f0,$23,$10,$03,$e9
   .byte $20,$24,$f0,$02,$a3
-  .byte $20,$24,$10,$03,$cf
+  .byte $20,$24,$10,$03,$c0
   .byte $40,$24,$f0,$02,$93
   .byte $d0,$26,$e0,$02,$2a
   .byte $f0,$26,$d0,$02,$2a
@@ -15755,7 +15755,7 @@ sprite_data_rainbowtylenol:
   .byte $90,$46,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_07"
+.segment "DAT_BANK_1A"
 sprite_data_greif:
   .byte $00,$00,$30,$03,$8f
   .byte $00,$00,$40,$03,$bf
@@ -17262,7 +17262,7 @@ sprite_data_extraordinaryexcitement:
   .byte $70,$5d,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_1A"
+.segment "DAT_BANK_07"
 sprite_data_thelightningroad:
   .byte $00,$00,$70,$03,$8f
   .byte $00,$00,$80,$03,$cf

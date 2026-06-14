@@ -7316,7 +7316,7 @@ sprite_data_geometricaldominator:
   .byte $d0,$23,$00,$03,$33
   .byte $f0,$23,$10,$03,$e9
   .byte $20,$24,$f0,$02,$a3
-  .byte $20,$24,$10,$03,$cf
+  .byte $20,$24,$10,$03,$c0
   .byte $40,$24,$f0,$02,$93
   .byte $d0,$26,$e0,$02,$2a
   .byte $f0,$26,$d0,$02,$2a
@@ -11228,7 +11228,7 @@ sprite_data_feather:
   .byte $f0,$31,$f0,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_99"
+.segment "DAT_BANK_A0"
 sprite_data_doubletripletrial:
   .byte $40,$01,$50,$03,$2d
   .byte $70,$01,$20,$03,$2d
@@ -33143,7 +33143,7 @@ sprite_data_rainingtacos:
   .byte $e0,$48,$70,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_44"
+.segment "DAT_BANK_99"
 sprite_data_overawed:
   .byte $00,$00,$40,$03,$6f
   .byte $00,$00,$50,$03,$ee
@@ -72013,7 +72013,7 @@ sprite_data_sonicwave:
   .byte $f0,$61,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_99"
+.segment "DAT_BANK_44"
 sprite_data_styx:
   .byte $70,$00,$40,$03,$2a
   .byte $b0,$00,$40,$03,$28

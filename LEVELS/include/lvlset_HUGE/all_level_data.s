@@ -1266,7 +1266,33 @@
 		.incbin "EXPORTS/cryogenic.lz.1.bin" ; Size: 1675
 
 
-.segment "DAT_BANK_43"	; Total bank size: 8182 bytes
+.segment "DAT_BANK_43"	; Total bank size: 8188 bytes
+	.export level_data_geometricaldominator
+	level_data_geometricaldominator:
+	; Header
+		.byte <sprite_data_geometricaldominator ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_geometricaldominator ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_geometricaldominator)) ;___ Sprite data bank
+		.byte song_geometrical_dominator ;___________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;__________________________ Force platformer, Disable parallax
+		.byte _DECO1 | ($01 << 7) ;__________________________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESC << 4) | _BLOCKSB ;___________________ Block Set, Spike Set
+		.byte $00 ;__________________________________________ Starting background color
+		.byte $10 ;__________________________________________ Starting ground color
+		.byte 27 ;___________________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6383
+
+	.export level_data_tetrix_12
+	level_data_tetrix_12:
+	; Level data
+		.incbin "EXPORTS/tetrix.lz.1.bin" ; Size: 1792
+
+
+.segment "DAT_BANK_44"	; Total bank size: 8171 bytes
 	.export level_data_deadlocked
 	level_data_deadlocked:
 	; Header
@@ -1285,32 +1311,6 @@
 		.byte 27 ;_________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6377
-
-	.export level_data_tetrix_12
-	level_data_tetrix_12:
-	; Level data
-		.incbin "EXPORTS/tetrix.lz.1.bin" ; Size: 1792
-
-
-.segment "DAT_BANK_44"	; Total bank size: 8169 bytes
-	.export level_data_geometricaldominator
-	level_data_geometricaldominator:
-	; Header
-		.byte <sprite_data_geometricaldominator ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_geometricaldominator ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_geometricaldominator)) ;___ Sprite data bank
-		.byte song_geometrical_dominator ;___________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;__________________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;__________________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;___________________ Block Set, Spike Set
-		.byte $00 ;__________________________________________ Starting background color
-		.byte $10 ;__________________________________________ Starting ground color
-		.byte 27 ;___________________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6330
 
 
 .segment "DAT_BANK_45"	; Total bank size: 8192 bytes
@@ -3386,7 +3386,7 @@
 		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
-.segment "DAT_BANK_A0"	; Total bank size: 6252 bytes
+.segment "DAT_BANK_A0"	; Total bank size: 6928 bytes
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header

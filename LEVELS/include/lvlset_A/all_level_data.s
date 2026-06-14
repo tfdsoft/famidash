@@ -128,25 +128,25 @@
 		.incbin "EXPORTS/hexagonforce.lz.bin" ; Size: 7328
 
 
-.segment "DAT_BANK_06"	; Total bank size: 8146 bytes
-	.export level_data_deadlocked
-	level_data_deadlocked:
+.segment "DAT_BANK_06"	; Total bank size: 8152 bytes
+	.export level_data_geometricaldominator
+	level_data_geometricaldominator:
 	; Header
-		.byte <sprite_data_deadlocked ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_deadlocked ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_deadlocked)) ;___ Sprite data bank
-		.byte song_deadlocked ;____________________ Song ID
-		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
-		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 | ($01 << 7) ;________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Block Set, Spike Set
-		.byte $0F ;________________________________ Starting background color
-		.byte $0F ;________________________________ Starting ground color
-		.byte 27 ;_________________________________ Level height
+		.byte <sprite_data_geometricaldominator ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_geometricaldominator ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_geometricaldominator)) ;___ Sprite data bank
+		.byte song_geometrical_dominator ;___________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;__________________________ Force platformer, Disable parallax
+		.byte _DECO1 | ($01 << 7) ;__________________________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESC << 4) | _BLOCKSB ;___________________ Block Set, Spike Set
+		.byte $00 ;__________________________________________ Starting background color
+		.byte $10 ;__________________________________________ Starting ground color
+		.byte 27 ;___________________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6377
+		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6383
 
 	.export level_data_polargeist
 	level_data_polargeist:
@@ -168,25 +168,25 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
 
-.segment "DAT_BANK_07"	; Total bank size: 8059 bytes
-	.export level_data_geometricaldominator
-	level_data_geometricaldominator:
+.segment "DAT_BANK_07"	; Total bank size: 8111 bytes
+	.export level_data_deadlocked
+	level_data_deadlocked:
 	; Header
-		.byte <sprite_data_geometricaldominator ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_geometricaldominator ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_geometricaldominator)) ;___ Sprite data bank
-		.byte song_geometrical_dominator ;___________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;__________________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;__________________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;___________________ Block Set, Spike Set
-		.byte $00 ;__________________________________________ Starting background color
-		.byte $10 ;__________________________________________ Starting ground color
-		.byte 27 ;___________________________________________ Level height
+		.byte <sprite_data_deadlocked ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_deadlocked ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_deadlocked)) ;___ Sprite data bank
+		.byte song_deadlocked ;____________________ Song ID
+		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
+		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 | ($01 << 7) ;________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESA << 4) | _BLOCKSB ;_________ Block Set, Spike Set
+		.byte $0F ;________________________________ Starting background color
+		.byte $0F ;________________________________ Starting ground color
+		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6330
+		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6377
 
 
 .segment "DAT_BANK_09"	; Total bank size: 8172 bytes
@@ -673,7 +673,7 @@
 		.incbin "EXPORTS/rainbowtylenol.lz.1.bin" ; Size: 3694
 
 
-.segment "DAT_BANK_1A"	; Total bank size: 8069 bytes
+.segment "DAT_BANK_1A"	; Total bank size: 8064 bytes
 	.export level_data_firetemple
 	level_data_firetemple:
 	; Header
