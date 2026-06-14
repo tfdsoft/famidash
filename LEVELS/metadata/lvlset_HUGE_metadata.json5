@@ -1203,8 +1203,8 @@
 			songID: "song_deadlocked",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
+			startingBackgroundColor: 0x0C,
+			startingGroundColor: 0x1C,
 			parallaxDisable: true,
 			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
@@ -1228,6 +1228,7 @@
 					coordinates: [	
 						[28, 19],	//mini
 						[38, 21],	//growth
+						[109, 23],  //grav
 						[295, 18],	//mini
 						[296, 18],	//grav
 					],
@@ -1241,7 +1242,7 @@
 				},
 				{
 					coordinates: [	
-						[148, 20],	[342, 20],	[388, 20],	[407, 20],	[428, 16],	[508, 16],	[582, 19],	[859, 22],	[943, 22],	[1034, 21],	[1114, 21],	//speed
+						[148, 18],	[148, 20],	[342, 20],	[388, 20],	[407, 20],	[428, 16],	[508, 16],	[582, 19],	[859, 22],	[943, 22],	[1034, 21],	[1114, 21],	//speed
 						[250, 19],	//ball
 						[251, 19],	//growth
 						[718, 18],	//ship
@@ -1274,9 +1275,9 @@
 				},
 				{
 					coordinates: [	
-						[361, 24],	[361, 25],	//pad
+						[362, 19], [535, 20], [537, 16],
 					],
-					offsetX: -8
+					offsetX: +8
 				},
 			],
 		},
