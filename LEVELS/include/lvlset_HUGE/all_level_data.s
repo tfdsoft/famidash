@@ -686,23 +686,16 @@
 		.incbin "EXPORTS/thetripletrial.lz.bin" ; Size: 300
 
 
-.segment "DAT_BANK_24"	; Total bank size: 8120 bytes
-	.export level_data_astronomicalexpedition_7
-	level_data_astronomicalexpedition_7:
-	; Level data
-		.incbin "EXPORTS/astronomicalexpedition.lz.3.bin" ; Size: 289
-
-
-.segment "DAT_BANK_25"	; Total bank size: 8076 bytes
+.segment "DAT_BANK_25"	; Total bank size: 8087 bytes
 	.export level_data_heliopolis_31
 	level_data_heliopolis_31:
 	; Level data
 		.incbin "EXPORTS/heliopolis.lz.1.bin" ; Size: 7798
 
-	.export level_data_windylandscape_25
-	level_data_windylandscape_25:
+	.export level_data_astronomicalexpedition_7
+	level_data_astronomicalexpedition_7:
 	; Level data
-		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 278
+		.incbin "EXPORTS/astronomicalexpedition.lz.3.bin" ; Size: 289
 
 
 .segment "DAT_BANK_26"	; Total bank size: 8192 bytes
@@ -1266,7 +1259,7 @@
 		.incbin "EXPORTS/cryogenic.lz.1.bin" ; Size: 1675
 
 
-.segment "DAT_BANK_43"	; Total bank size: 8190 bytes
+.segment "DAT_BANK_43"	; Total bank size: 8185 bytes
 	.export level_data_deadlocked
 	level_data_deadlocked:
 	; Header
@@ -1284,15 +1277,10 @@
 		.byte $1C ;________________________________ Starting ground color
 		.byte 27 ;_________________________________ Level height
 	; Level data
-		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6385
-
-	.export level_data_tetrix_12
-	level_data_tetrix_12:
-	; Level data
-		.incbin "EXPORTS/tetrix.lz.1.bin" ; Size: 1792
+		.incbin "EXPORTS/deadlocked.lz.bin" ; Size: 6406
 
 
-.segment "DAT_BANK_44"	; Total bank size: 8177 bytes
+.segment "DAT_BANK_44"	; Total bank size: 8188 bytes
 	.export level_data_geometricaldominator
 	level_data_geometricaldominator:
 	; Header
@@ -1311,6 +1299,11 @@
 		.byte 27 ;___________________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6383
+
+	.export level_data_tetrix_12
+	level_data_tetrix_12:
+	; Level data
+		.incbin "EXPORTS/tetrix.lz.1.bin" ; Size: 1792
 
 
 .segment "DAT_BANK_45"	; Total bank size: 8192 bytes
@@ -3192,7 +3185,7 @@
 		.incbin "EXPORTS/short_kings.lz.bin" ; Size: 1687
 
 
-.segment "DAT_BANK_9A"	; Total bank size: 8187 bytes
+.segment "DAT_BANK_9A"	; Total bank size: 8137 bytes
 	.export level_data_polargeist
 	level_data_polargeist:
 	; Header
@@ -3317,7 +3310,7 @@
 		.incbin "EXPORTS/movie.lz.bin" ; Size: 1428
 
 
-.segment "DAT_BANK_9D"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_9D"	; Total bank size: 8187 bytes
 	.export level_data_trythisgd_19
 	level_data_trythisgd_19:
 	; Level data
@@ -3346,6 +3339,11 @@
 	level_data_birdbrain_11:
 	; Level data
 		.incbin "EXPORTS/birdbrain.lz.1.bin" ; Size: 1246
+
+	.export level_data_windylandscape_25
+	level_data_windylandscape_25:
+	; Level data
+		.incbin "EXPORTS/windylandscape.lz.1.bin" ; Size: 278
 
 
 .segment "DAT_BANK_9E"	; Total bank size: 8182 bytes

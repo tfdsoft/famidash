@@ -7856,7 +7856,7 @@ sprite_data_deadlocked:
   .byte $40,$35,$30,$03,$86
   .byte $b0,$35,$28,$03,$22
   .byte $b0,$35,$28,$03,$24
-  .byte $b0,$35,$38,$03,$20
+  .byte $b0,$35,$30,$03,$20
   .byte $40,$36,$50,$03,$95
   .byte $40,$36,$60,$03,$b9
   .byte $70,$36,$50,$03,$85
@@ -9084,7 +9084,7 @@ sprite_data_thetower:
   .byte $20,$12,$20,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_9D"
+.segment "DAT_BANK_24"
 sprite_data_thesewers:
   .byte $00,$00,$f0,$02,$de
   .byte $20,$00,$30,$03,$49
@@ -15186,7 +15186,7 @@ sprite_data_lookatthislevel:
   .byte $90,$23,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_9A"
+.segment "DAT_BANK_9D"
 sprite_data_hungrymanadventures:
   .byte $b0,$00,$80,$03,$2b
   .byte $c0,$00,$50,$03,$3d
@@ -46149,7 +46149,7 @@ sprite_data_nightmare:
   .byte $40,$3b,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_9A"
+.segment "DAT_BANK_43"
 sprite_data_demonpark:
   .byte $00,$00,$70,$03,$96
   .byte $00,$00,$80,$03,$d6
@@ -55379,7 +55379,7 @@ sprite_data_chaozimpact:
   .byte $a0,$31,$70,$02,$0f
   .byte $ff
 
-.segment "DAT_BANK_9D"
+.segment "DAT_BANK_9A"
 sprite_data_everymadness:
   .byte $20,$03,$f0,$02,$2b
   .byte $50,$03,$80,$03,$30
@@ -72006,7 +72006,7 @@ sprite_data_sonicwave:
   .byte $f0,$61,$70,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_44"
+.segment "DAT_BANK_99"
 sprite_data_styx:
   .byte $70,$00,$40,$03,$2a
   .byte $b0,$00,$40,$03,$28
@@ -72902,7 +72902,7 @@ sprite_data_bloodbath:
   .byte $c0,$52,$50,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_99"
+.segment "DAT_BANK_9A"
 sprite_data_cataclysm:
   .byte $00,$00,$70,$03,$86
   .byte $00,$00,$80,$03,$cf
