@@ -1129,8 +1129,8 @@
 			songID: "song_geometrical_dominator",
 			startingGameMode: 0,
 			startingSpeed: 0,
-			startingBackgroundColor: 0x0F,
-			startingGroundColor: 0x0F,
+			startingBackgroundColor: 0x00,
+			startingGroundColor: 0x10,
 			parallaxDisable: true,
 			maxFallSpeed_is_7: 0x01,
 			objectOffsets: [
@@ -1172,7 +1172,7 @@
 				},
 				{
 					coordinates: [
-						[665, 17], [674, 16],	[683, 17], [692, 16], [701, 17],		//deco
+						[341, 12], [543, 19], [665, 17], [674, 16],	[683, 17], [692, 16], [701, 17],		//deco
 					],
 					offsetX: -8
 				},
@@ -1180,6 +1180,13 @@
 					coordinates: [
 						[707, 16], 	[714, 19], 	[721, 16], 		[728, 18], 		//deco
 					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[226, 14], [228, 14], [230, 14],
+					],
+					offsetY: +8,
 					offsetX: +8
 				},
 			],

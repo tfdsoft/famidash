@@ -168,7 +168,28 @@
 		.incbin "EXPORTS/polargeist.lz.bin" ; Size: 1743
 
 
-.segment "DAT_BANK_08"	; Total bank size: 8172 bytes
+.segment "DAT_BANK_07"	; Total bank size: 8059 bytes
+	.export level_data_geometricaldominator
+	level_data_geometricaldominator:
+	; Header
+		.byte <sprite_data_geometricaldominator ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_geometricaldominator ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_geometricaldominator)) ;___ Sprite data bank
+		.byte song_geometrical_dominator ;___________________ Song ID
+		.byte (0 << 4) | 0 ;_________________________________ Starting game mode and speed
+		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;__________________________ Force platformer, Disable parallax
+		.byte _DECO1 | ($01 << 7) ;__________________________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESC << 4) | _BLOCKSB ;___________________ Block Set, Spike Set
+		.byte $00 ;__________________________________________ Starting background color
+		.byte $10 ;__________________________________________ Starting ground color
+		.byte 27 ;___________________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6330
+
+
+.segment "DAT_BANK_09"	; Total bank size: 8172 bytes
 	.export level_data_lostinthewoods
 	level_data_lostinthewoods:
 	; Header
@@ -208,7 +229,7 @@
 		.incbin "EXPORTS/baseafterbase.lz.bin" ; Size: 2016
 
 
-.segment "DAT_BANK_09"	; Total bank size: 8191 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8191 bytes
 	.export level_data_sunshine
 	level_data_sunshine:
 	; Header
@@ -248,7 +269,7 @@
 		.incbin "EXPORTS/cantletgo.lz.bin" ; Size: 2040
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_0B"	; Total bank size: 8185 bytes
 	.export level_data_toe2
 	level_data_toe2:
 	; Header
@@ -269,7 +290,7 @@
 		.incbin "EXPORTS/toe2.lz.bin" ; Size: 6041
 
 
-.segment "DAT_BANK_0B"	; Total bank size: 8148 bytes
+.segment "DAT_BANK_0C"	; Total bank size: 8148 bytes
 	.export level_data_bloodbathbutno
 	level_data_bloodbathbutno:
 	; Header
@@ -309,28 +330,7 @@
 		.incbin "EXPORTS/leveleasy.lz.bin" ; Size: 2099
 
 
-.segment "DAT_BANK_0C"	; Total bank size: 8116 bytes
-	.export level_data_geometricaldominator
-	level_data_geometricaldominator:
-	; Header
-		.byte <sprite_data_geometricaldominator ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_geometricaldominator ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_geometricaldominator)) ;___ Sprite data bank
-		.byte song_geometrical_dominator ;___________________ Song ID
-		.byte (0 << 4) | 0 ;_________________________________ Starting game mode and speed
-		.byte ($B0) ;________________________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;________________________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;__________________________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;__________________________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;___________________ Block Set, Spike Set
-		.byte $0F ;__________________________________________ Starting background color
-		.byte $0F ;__________________________________________ Starting ground color
-		.byte 27 ;___________________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/geometricaldominator.lz.bin" ; Size: 6017
-
-
-.segment "DAT_BANK_0E"	; Total bank size: 7985 bytes
+.segment "DAT_BANK_0E"	; Total bank size: 8170 bytes
 	.export level_data_electrodynamix
 	level_data_electrodynamix:
 	; Header
@@ -797,7 +797,7 @@
 		.incbin "EXPORTS/thechallenge.lz.bin" ; Size: 2509
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 7663 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 8148 bytes
 	.export level_data_jumper
 	level_data_jumper:
 	; Header
@@ -818,7 +818,7 @@
 		.incbin "EXPORTS/jumper.lz.bin" ; Size: 1902
 
 
-.segment "DAT_BANK_20"	; Total bank size: 8119 bytes
+.segment "DAT_BANK_20"	; Total bank size: 8185 bytes
 	.export level_data_stereomadness
 	level_data_stereomadness:
 	; Header
@@ -837,6 +837,25 @@
 		.byte 27 ;____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/stereomadness.lz.bin" ; Size: 1842
+
+	.export level_data_thecellar
+	level_data_thecellar:
+	; Header
+		.byte <sprite_data_thecellar ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_thecellar ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_thecellar)) ;___ Sprite data bank
+		.byte song_scheming_weasel ;______________ Song ID
+		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
+		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
+		.byte (1 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
+		.byte _DECO1 | ($01 << 7) ;_______________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Block Set, Spike Set
+		.byte $1C ;_______________________________ Starting background color
+		.byte $0F ;_______________________________ Starting ground color
+		.byte 57 ;________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
 .segment "DAT_BANK_21"	; Total bank size: 8154 bytes
@@ -879,7 +898,7 @@
 		.incbin "EXPORTS/backontrack.lz.bin" ; Size: 1399
 
 
-.segment "DAT_BANK_22"	; Total bank size: 8144 bytes
+.segment "DAT_BANK_22"	; Total bank size: 8115 bytes
 	.export level_data_thetower
 	level_data_thetower:
 	; Header
@@ -899,27 +918,6 @@
 	; Level data
 		.incbin "EXPORTS/thetower.lz.bin" ; Size: 1324
 
-	.export level_data_thecellar
-	level_data_thecellar:
-	; Header
-		.byte <sprite_data_thecellar ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_thecellar ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_thecellar)) ;___ Sprite data bank
-		.byte song_scheming_weasel ;______________ Song ID
-		.byte (0 << 4) | 0 ;______________________ Starting game mode and speed
-		.byte ($B0) ;_____________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;_____________________________ Y Scroll Position (low byte)
-		.byte (1 << 0) | (1 << 1) ;_______________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;_______________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSB ;________ Block Set, Spike Set
-		.byte $1C ;_______________________________ Starting background color
-		.byte $0F ;_______________________________ Starting ground color
-		.byte 57 ;________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
-
-
-.segment "DAT_BANK_23"	; Total bank size: 4847 bytes
 	.export level_data_thesewers
 	level_data_thesewers:
 	; Header
