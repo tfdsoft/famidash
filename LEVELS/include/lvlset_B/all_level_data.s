@@ -191,7 +191,7 @@
 		.incbin "EXPORTS/cryogenic.lz.0.bin" ; Size: 8061
 
 
-.segment "DAT_BANK_0A"	; Total bank size: 7660 bytes
+.segment "DAT_BANK_0A"	; Total bank size: 8126 bytes
 	.export level_data_rainingtacos
 	level_data_rainingtacos:
 	; Header
@@ -627,7 +627,7 @@
 		.incbin "EXPORTS/offtomars.lz.bin" ; Size: 3860
 
 
-.segment "DAT_BANK_1F"	; Total bank size: 8185 bytes
+.segment "DAT_BANK_1F"	; Total bank size: 7774 bytes
 	.export level_data_selectpaymenttype
 	level_data_selectpaymenttype:
 	; Header
@@ -780,7 +780,7 @@
 		.incbin "EXPORTS/somewhereinaforest.lz.1.bin" ; Size: 1361
 
 
-.segment "DAT_BANK_26"	; Total bank size: 914 bytes
+.segment "DAT_BANK_26"	; Total bank size: 1101 bytes
 	.export level_data_chippe
 	level_data_chippe:
 	; Header
@@ -798,4 +798,4 @@
 		.byte $0F ;____________________________ Starting ground color
 		.byte 32 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/chippe.lz.bin" ; Size: 901
+		.incbin "EXPORTS/chippe.lz.bin" ; Size: 1088

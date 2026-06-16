@@ -164,7 +164,7 @@ _level_lengths_lo:
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($0000F3)		; ajollyretrochristmas
 	.byte .lobyte($00006D)		; ultiatedestruction
-	.byte .lobyte($000039)		; chippe
+	.byte .lobyte($000043)		; chippe
 	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
 	.byte .lobyte($0000BC)		; selectpaymenttype
@@ -204,7 +204,7 @@ _level_lengths_md:
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($0000F3)		; ajollyretrochristmas
 	.byte .hibyte($00006D)		; ultiatedestruction
-	.byte .hibyte($000039)		; chippe
+	.byte .hibyte($000043)		; chippe
 	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
 	.byte .hibyte($0000BC)		; selectpaymenttype
@@ -244,7 +244,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($0000F3)		; ajollyretrochristmas
 	.byte .bankbyte($00006D)		; ultiatedestruction
-	.byte .bankbyte($000039)		; chippe
+	.byte .bankbyte($000043)		; chippe
 	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii
 	.byte .bankbyte($0000BC)		; selectpaymenttype
