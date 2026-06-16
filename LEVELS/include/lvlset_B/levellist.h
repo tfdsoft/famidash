@@ -11,6 +11,7 @@ const uint8_t difficulty_list[] = {
 	HARD,	// lookatthislevel
 	HARD,	// ajollyretrochristmas
 	HARD,	// ultiatedestruction
+	HARD,	// chippe
 	HARD,	// moonlight
 	HARD,	// fofii_fofii_fofii
 	HARD,	// selectpaymenttype
@@ -49,6 +50,7 @@ const uint8_t stars_list[] = {
 	4,	// lookatthislevel
 	5,	// ajollyretrochristmas
 	5,	// ultiatedestruction
+	5,	// chippe
 	5,	// moonlight
 	5,	// fofii_fofii_fofii
 	5,	// selectpaymenttype

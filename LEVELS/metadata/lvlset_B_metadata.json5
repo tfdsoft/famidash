@@ -364,6 +364,22 @@
 			]
 		},
 		{
+			level: "chippe",
+			lowerText: "CHIPPE",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "A",
+			sawSet: "A",
+			difficulty: "HARD",
+			stars: 5,
+			songID: "song_dry_out",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x16,
+			startingGroundColor: 0x0F,
+			maxFallSpeed_is_7: 0x01
+		},
+		{
 			level: "moonlight",
 			lowerText: "MOONLIGHT",
 			decoType: "EXTRASPRITES1",

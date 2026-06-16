@@ -14,6 +14,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_lookatthislevel)
 	.byte .lobyte(level_data_ajollyretrochristmas)
 	.byte .lobyte(level_data_ultiatedestruction)
+	.byte .lobyte(level_data_chippe)
 	.byte .lobyte(level_data_moonlight)
 	.byte .lobyte(level_data_fofii_fofii_fofii)
 	.byte .lobyte(level_data_selectpaymenttype)
@@ -51,6 +52,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_lookatthislevel)
 	.byte .hibyte(level_data_ajollyretrochristmas)
 	.byte .hibyte(level_data_ultiatedestruction)
+	.byte .hibyte(level_data_chippe)
 	.byte .hibyte(level_data_moonlight)
 	.byte .hibyte(level_data_fofii_fofii_fofii)
 	.byte .hibyte(level_data_selectpaymenttype)
@@ -88,6 +90,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_lookatthislevel))
 	.byte .lobyte(.bank(level_data_ajollyretrochristmas))
 	.byte .lobyte(.bank(level_data_ultiatedestruction))
+	.byte .lobyte(.bank(level_data_chippe))
 	.byte .lobyte(.bank(level_data_moonlight))
 	.byte .lobyte(.bank(level_data_fofii_fofii_fofii))
 	.byte .lobyte(.bank(level_data_selectpaymenttype))
@@ -161,6 +164,7 @@ _level_lengths_lo:
 	.byte .lobyte($00005C)		; lookatthislevel
 	.byte .lobyte($0000F3)		; ajollyretrochristmas
 	.byte .lobyte($00006D)		; ultiatedestruction
+	.byte .lobyte($000039)		; chippe
 	.byte .lobyte($000079)		; moonlight
 	.byte .lobyte($00006F)		; fofii_fofii_fofii
 	.byte .lobyte($0000BC)		; selectpaymenttype
@@ -200,6 +204,7 @@ _level_lengths_md:
 	.byte .hibyte($00005C)		; lookatthislevel
 	.byte .hibyte($0000F3)		; ajollyretrochristmas
 	.byte .hibyte($00006D)		; ultiatedestruction
+	.byte .hibyte($000039)		; chippe
 	.byte .hibyte($000079)		; moonlight
 	.byte .hibyte($00006F)		; fofii_fofii_fofii
 	.byte .hibyte($0000BC)		; selectpaymenttype
@@ -239,6 +244,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00005C)		; lookatthislevel
 	.byte .bankbyte($0000F3)		; ajollyretrochristmas
 	.byte .bankbyte($00006D)		; ultiatedestruction
+	.byte .bankbyte($000039)		; chippe
 	.byte .bankbyte($000079)		; moonlight
 	.byte .bankbyte($00006F)		; fofii_fofii_fofii
 	.byte .bankbyte($0000BC)		; selectpaymenttype
