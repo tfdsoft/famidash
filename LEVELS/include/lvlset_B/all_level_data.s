@@ -780,7 +780,7 @@
 		.incbin "EXPORTS/somewhereinaforest.lz.1.bin" ; Size: 1361
 
 
-.segment "DAT_BANK_26"	; Total bank size: 1101 bytes
+.segment "DAT_BANK_26"	; Total bank size: 1098 bytes
 	.export level_data_chippe
 	level_data_chippe:
 	; Header
@@ -798,4 +798,4 @@
 		.byte $0F ;____________________________ Starting ground color
 		.byte 32 ;_____________________________ Level height
 	; Level data
-		.incbin "EXPORTS/chippe.lz.bin" ; Size: 1088
+		.incbin "EXPORTS/chippe.lz.bin" ; Size: 1085

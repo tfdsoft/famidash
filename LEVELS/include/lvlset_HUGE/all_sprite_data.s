@@ -76479,7 +76479,7 @@ sprite_data_kratos:
   .byte $90,$34,$30,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_9F"
+.segment "DAT_BANK_32"
 sprite_data_nullscapes:
   .byte $00,$00,$c0,$02,$18
   .byte $a0,$00,$00,$02,$f5

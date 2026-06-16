@@ -954,25 +954,6 @@
 	; Level data
 		.incbin "EXPORTS/ninecircleseasy.lz.bin" ; Size: 7077
 
-	.export level_data_chippe
-	level_data_chippe:
-	; Header
-		.byte <sprite_data_chippe ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_chippe ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_chippe)) ;___ Sprite data bank
-		.byte song_dry_out ;___________________ Song ID
-		.byte (0 << 4) | 0 ;___________________ Starting game mode and speed
-		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
-		.byte _DECO1 | ($01 << 7) ;____________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESA << 4) | _BLOCKSA ;_____ Block Set, Spike Set
-		.byte $16 ;____________________________ Starting background color
-		.byte $0F ;____________________________ Starting ground color
-		.byte 32 ;_____________________________ Level height
-	; Level data
-		.incbin "EXPORTS/chippe.lz.bin" ; Size: 1088
-
 
 .segment "DAT_BANK_33"	; Total bank size: 8185 bytes
 	.export level_data_cataclysm
@@ -3405,6 +3386,27 @@
 		.byte 57 ;________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
+
+
+.segment "DAT_BANK_9F"	; Total bank size: 7739 bytes
+	.export level_data_chippe
+	level_data_chippe:
+	; Header
+		.byte <sprite_data_chippe ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_chippe ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_chippe)) ;___ Sprite data bank
+		.byte song_dry_out ;___________________ Song ID
+		.byte (0 << 4) | 0 ;___________________ Starting game mode and speed
+		.byte ($B0) ;__________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;__________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (0 << 1) ;____________ Force platformer, Disable parallax
+		.byte _DECO1 | ($01 << 7) ;____________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESA << 4) | _BLOCKSA ;_____ Block Set, Spike Set
+		.byte $16 ;____________________________ Starting background color
+		.byte $0F ;____________________________ Starting ground color
+		.byte 32 ;_____________________________ Level height
+	; Level data
+		.incbin "EXPORTS/chippe.lz.bin" ; Size: 1085
 
 
 .segment "DAT_BANK_A0"	; Total bank size: 7954 bytes
