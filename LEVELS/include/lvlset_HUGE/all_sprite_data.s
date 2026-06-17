@@ -7939,10 +7939,8 @@ sprite_data_deadlocked:
   .byte $40,$4a,$60,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_99"
+.segment "DAT_BANK_9E"
 sprite_data_fingerdash:
-  .byte $00,$00,$60,$03,$84
-  .byte $00,$00,$70,$03,$d5
   .byte $60,$02,$78,$03,$0a
   .byte $30,$03,$10,$03,$44
   .byte $40,$03,$60,$03,$f7
@@ -8071,7 +8069,7 @@ sprite_data_fingerdash:
   .byte $80,$17,$10,$03,$85
   .byte $b0,$17,$f0,$02,$36
   .byte $e8,$17,$40,$03,$36
-  .byte $20,$18,$40,$03,$07
+  .byte $20,$18,$38,$03,$07
   .byte $30,$18,$10,$03,$95
   .byte $58,$18,$e0,$02,$36
   .byte $50,$18,$10,$03,$85
@@ -8080,6 +8078,8 @@ sprite_data_fingerdash:
   .byte $f0,$18,$10,$03,$94
   .byte $10,$19,$10,$03,$85
   .byte $20,$19,$48,$03,$0a
+  .byte $30,$19,$20,$03,$49
+  .byte $40,$19,$10,$03,$49
   .byte $60,$19,$20,$03,$0b
   .byte $80,$19,$00,$03,$44
   .byte $b0,$19,$10,$03,$95
@@ -8090,6 +8090,8 @@ sprite_data_fingerdash:
   .byte $28,$1a,$40,$03,$36
   .byte $40,$1a,$10,$03,$85
   .byte $60,$1a,$e0,$02,$53
+  .byte $70,$1a,$00,$03,$49
+  .byte $80,$1a,$10,$03,$49
   .byte $90,$1a,$20,$03,$05
   .byte $e0,$1a,$10,$03,$94
   .byte $e8,$1a,$40,$03,$36
@@ -8101,11 +8103,17 @@ sprite_data_fingerdash:
   .byte $a0,$1b,$10,$03,$85
   .byte $c0,$1b,$10,$03,$45
   .byte $20,$1c,$00,$03,$01
+  .byte $40,$1c,$20,$03,$49
   .byte $60,$1c,$10,$03,$80
   .byte $60,$1c,$20,$03,$c0
+  .byte $60,$1c,$40,$03,$49
+  .byte $a0,$1c,$40,$03,$49
   .byte $c0,$1c,$00,$03,$96
   .byte $c0,$1c,$10,$03,$cf
+  .byte $c0,$1c,$20,$03,$49
   .byte $e0,$1c,$00,$03,$86
+  .byte $f0,$1c,$00,$03,$49
+  .byte $20,$1d,$00,$03,$49
   .byte $50,$1d,$f0,$02,$18
   .byte $e0,$1d,$00,$03,$96
   .byte $00,$1e,$00,$03,$86
@@ -10862,7 +10870,7 @@ sprite_data_darkparadise:
   .byte $d0,$26,$00,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_29"
+.segment "DAT_BANK_2A"
 sprite_data_madness:
   .byte $d0,$06,$88,$03,$25
   .byte $e0,$07,$68,$03,$3c
@@ -11360,7 +11368,7 @@ sprite_data_doubletripletrial:
   .byte $40,$17,$80,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_2A"
+.segment "DAT_BANK_2B"
 sprite_data_xmaschallenge:
   .byte $00,$00,$60,$03,$01
   .byte $00,$00,$70,$03,$ba
@@ -17638,7 +17646,7 @@ sprite_data_ultiatedestruction:
   .byte $70,$2a,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_2B"
+.segment "DAT_BANK_2C"
 sprite_data_chippe:
   .byte $30,$01,$80,$03,$30
   .byte $40,$01,$50,$03,$2c
@@ -64758,7 +64766,7 @@ sprite_data_azuronxolax:
   .byte $00,$4b,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_26"
+.segment "DAT_BANK_27"
 sprite_data_foresttemple:
   .byte $00,$00,$60,$03,$80
   .byte $00,$00,$70,$03,$ba
@@ -76509,7 +76517,7 @@ sprite_data_aftercatabath:
   .byte $f0,$ad,$40,$03,$0f
   .byte $ff
 
-.segment "DAT_BANK_9E"
+.segment "DAT_BANK_A2"
 sprite_data_shardscapes:
   .byte $00,$00,$60,$03,$18
   .byte $00,$00,$70,$03,$bf

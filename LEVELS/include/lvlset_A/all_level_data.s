@@ -65,7 +65,28 @@
 		.incbin "EXPORTS/rainbowtylenol.lz.0.bin" ; Size: 8017
 
 
-.segment "DAT_BANK_03"	; Total bank size: 7776 bytes
+.segment "DAT_BANK_03"	; Total bank size: 7777 bytes
+	.export level_data_fingerdash
+	level_data_fingerdash:
+	; Header
+		.byte <sprite_data_fingerdash ;____________ Sprite data ptr, low byte
+		.byte >sprite_data_fingerdash ;____________ Sprite data ptr, high byte
+		.byte <(.bank(sprite_data_fingerdash)) ;___ Sprite data bank
+		.byte song_fingerdash ;____________________ Song ID
+		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
+		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
+		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
+		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
+		.byte _EXTRASPRITES1 | ($01 << 7) ;________ Deco type, Max Fall Speed is 7?
+		.byte (_SPIKESC << 4) | _BLOCKSB ;_________ Block Set, Spike Set
+		.byte $04 ;________________________________ Starting background color
+		.byte $15 ;________________________________ Starting ground color
+		.byte 27 ;_________________________________ Level height
+	; Level data
+		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7764
+
+
+.segment "DAT_BANK_04"	; Total bank size: 7776 bytes
 	.export level_data_groundtospace
 	level_data_groundtospace:
 	; Header
@@ -84,27 +105,6 @@
 		.byte 27 ;____________________________________ Level height
 	; Level data
 		.incbin "EXPORTS/groundtospace.lz.bin" ; Size: 7763
-
-
-.segment "DAT_BANK_04"	; Total bank size: 7534 bytes
-	.export level_data_fingerdash
-	level_data_fingerdash:
-	; Header
-		.byte <sprite_data_fingerdash ;____________ Sprite data ptr, low byte
-		.byte >sprite_data_fingerdash ;____________ Sprite data ptr, high byte
-		.byte <(.bank(sprite_data_fingerdash)) ;___ Sprite data bank
-		.byte song_fingerdash ;____________________ Song ID
-		.byte (0 << 4) | 0 ;_______________________ Starting game mode and speed
-		.byte ($B0) ;______________________________ Spawn Y Position (high byte)
-		.byte ($EF) ;______________________________ Y Scroll Position (low byte)
-		.byte (0 << 0) | (1 << 1) ;________________ Force platformer, Disable parallax
-		.byte _EXTRASPRITES1 | ($01 << 7) ;________ Deco type, Max Fall Speed is 7?
-		.byte (_SPIKESC << 4) | _BLOCKSB ;_________ Block Set, Spike Set
-		.byte $0F ;________________________________ Starting background color
-		.byte $0F ;________________________________ Starting ground color
-		.byte 27 ;_________________________________ Level height
-	; Level data
-		.incbin "EXPORTS/fingerdash.lz.bin" ; Size: 7521
 
 
 .segment "DAT_BANK_05"	; Total bank size: 7341 bytes
@@ -858,7 +858,7 @@
 		.incbin "EXPORTS/thecellar.lz.bin" ; Size: 1134
 
 
-.segment "DAT_BANK_21"	; Total bank size: 8154 bytes
+.segment "DAT_BANK_21"	; Total bank size: 8189 bytes
 	.export level_data_dryout
 	level_data_dryout:
 	; Header
