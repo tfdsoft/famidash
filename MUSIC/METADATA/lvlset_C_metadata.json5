@@ -66,6 +66,12 @@
 			originalArtistText: "FOREVERBOUND",
 		},
 		{
+			fmsSongName: "Carefree Victory (Remix)",
+			upperText: "CAREFREE",
+			lowerText: "VICTORY REMIX",
+			originalArtistText: "MARK HADLEY",
+		},
+		{
 			fmsSongName: "Speed Racer",
 			lowerText: "CHAOZ IMPACT",
 			originalArtistText: "PARAGONX9",

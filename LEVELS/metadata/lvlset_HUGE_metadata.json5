@@ -3619,6 +3619,56 @@
 			]
 		},
 		{
+			level: "carefreevictory",
+			upperText: "CAREFREE",
+			lowerText: "VICTORY",
+			decoType: "DECO1",
+			spikeSet: "A",
+			blockSet: "D",
+			sawSet: "A",
+			difficulty: "HARDER",
+			stars: 7,
+			songID: "song_carefree_victory_remix",
+			startingGameMode: 0,
+			startingSpeed: 0,
+			startingBackgroundColor: 0x11,
+			startingGroundColor: 0x29,
+			parallaxDisable: true,
+			maxFallSpeed_is_7: 0x01,
+			objectOffsets: [
+				{
+					coordinates: [
+						[53, 20], [57, 22], [386, 19], [474, 25], [583, 8], [583, 14], [587, 13], [587, 9], [605, 10], [615, 11], [615, 16], [640, 14], [852, 12], [1020, 13], [1034, 13], [1187, 19], [1266, 15],
+					],
+					offsetX: -8
+				},
+				{
+					coordinates: [
+						[139, 22], [176, 22], [181, 23], [202, 24], [204, 25], [205, 25], [713, 17], [1044, 15], [1129, 16], [1154, 23],
+					],
+					offsetX: +8
+				},
+				{
+					coordinates: [
+						[53, 20], [225, 23], [410, 21], [428, 23], [484, 21], [517, 25], [670, 15], [865, 13], [968, 15], [1071, 16], [1083, 18], [1154, 23], [1266, 16],
+					],
+					offsetY: -8
+				},
+				{
+					coordinates: [
+						[894, 12],
+					],
+					offsetY: +8
+				},
+				{
+					coordinates: [
+						[75, 22], [313, 20], [409, 20], [446, 20], [531, 21], [607, 14], [662, 14], [753, 13], [1044, 15], [1045, 15],
+					],
+					offsetX: +16
+				},
+			]
+		},
+		{
 			level: "lostinthewoods",
 			upperText: "LOST IN",
 			lowerText: "THE WOODS",

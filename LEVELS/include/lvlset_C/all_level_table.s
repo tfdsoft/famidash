@@ -18,6 +18,7 @@ _level_list_lo:
 	.byte .lobyte(level_data_endgame)
 	.byte .lobyte(level_data_astronomicalexpedition)
 	.byte .lobyte(level_data_ninecircleseasy)
+	.byte .lobyte(level_data_carefreevictory)
 	.byte .lobyte(level_data_overawed)
 	.byte .lobyte(level_data_unity)
 	.byte .lobyte(level_data_dastardly)
@@ -42,6 +43,7 @@ _level_list_hi:
 	.byte .hibyte(level_data_endgame)
 	.byte .hibyte(level_data_astronomicalexpedition)
 	.byte .hibyte(level_data_ninecircleseasy)
+	.byte .hibyte(level_data_carefreevictory)
 	.byte .hibyte(level_data_overawed)
 	.byte .hibyte(level_data_unity)
 	.byte .hibyte(level_data_dastardly)
@@ -66,6 +68,7 @@ _level_list_bank:
 	.byte .lobyte(.bank(level_data_endgame))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition))
 	.byte .lobyte(.bank(level_data_ninecircleseasy))
+	.byte .lobyte(.bank(level_data_carefreevictory))
 	.byte .lobyte(.bank(level_data_overawed))
 	.byte .lobyte(.bank(level_data_unity))
 	.byte .lobyte(.bank(level_data_dastardly))
@@ -80,22 +83,25 @@ _level_chunk_list_lo:
 	.byte .lobyte(level_data_astronomicalexpedition_0)
 	.byte .lobyte(level_data_astronomicalexpedition_1)
 	.byte .lobyte(level_data_astronomicalexpedition_2)
-	.byte .lobyte(level_data_futurefunkfix_3)
+	.byte .lobyte(level_data_carefreevictory_3)
 	.byte .lobyte(level_data_futurefunkfix_4)
+	.byte .lobyte(level_data_futurefunkfix_5)
 
 _level_chunk_list_hi:
 	.byte .hibyte(level_data_astronomicalexpedition_0)
 	.byte .hibyte(level_data_astronomicalexpedition_1)
 	.byte .hibyte(level_data_astronomicalexpedition_2)
-	.byte .hibyte(level_data_futurefunkfix_3)
+	.byte .hibyte(level_data_carefreevictory_3)
 	.byte .hibyte(level_data_futurefunkfix_4)
+	.byte .hibyte(level_data_futurefunkfix_5)
 
 _level_chunk_list_bank:
 	.byte .lobyte(.bank(level_data_astronomicalexpedition_0))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition_1))
 	.byte .lobyte(.bank(level_data_astronomicalexpedition_2))
-	.byte .lobyte(.bank(level_data_futurefunkfix_3))
+	.byte .lobyte(.bank(level_data_carefreevictory_3))
 	.byte .lobyte(.bank(level_data_futurefunkfix_4))
+	.byte .lobyte(.bank(level_data_futurefunkfix_5))
 
 .define MID_LEVEL_LENGTHS_ENABLED 1
 .define HIGH_LEVEL_LENGTHS_ENABLED 0
@@ -114,6 +120,7 @@ _level_lengths_lo:
 	.byte .lobyte($00009F)		; endgame
 	.byte .lobyte($000102)		; astronomicalexpedition
 	.byte .lobyte($0000B9)		; ninecircleseasy
+	.byte .lobyte($0000D5)		; carefreevictory
 	.byte .lobyte($0000A7)		; overawed
 	.byte .lobyte($00006B)		; unity
 	.byte .lobyte($0000B2)		; dastardly
@@ -140,6 +147,7 @@ _level_lengths_md:
 	.byte .hibyte($00009F)		; endgame
 	.byte .hibyte($000102)		; astronomicalexpedition
 	.byte .hibyte($0000B9)		; ninecircleseasy
+	.byte .hibyte($0000D5)		; carefreevictory
 	.byte .hibyte($0000A7)		; overawed
 	.byte .hibyte($00006B)		; unity
 	.byte .hibyte($0000B2)		; dastardly
@@ -166,6 +174,7 @@ _level_lengths_hi:
 	.byte .bankbyte($00009F)		; endgame
 	.byte .bankbyte($000102)		; astronomicalexpedition
 	.byte .bankbyte($0000B9)		; ninecircleseasy
+	.byte .bankbyte($0000D5)		; carefreevictory
 	.byte .bankbyte($0000A7)		; overawed
 	.byte .bankbyte($00006B)		; unity
 	.byte .bankbyte($0000B2)		; dastardly

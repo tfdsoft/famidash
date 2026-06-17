@@ -344,6 +344,13 @@
 		},
 		*/
 		{
+			fmsSongName: "Carefree Victory (Remix)",
+			upperText: "CAREFREE",
+			lowerText: "VICTORY REMIX",
+			originalArtist: ["Mark Hadley", "Andrew   Toby"],
+			coveringArtist: "SeaGlowingPro",
+		},
+		{
 			fmsSongName: "Careless",
 			lowerText: "CARELESS",
 			originalArtist: "SpazeMusic",
@@ -660,13 +667,13 @@
 			originalArtist: "TheFatRat",
 			coveringArtist: ["ElAngel378", "SeaGlowingPro"]
 		},
+		/*
 		{
 			fmsSongName: "Isolation",
 			lowerText: "ISOLATION",
 			originalArtist: "NightHawk22",
 			coveringArtist: "okujassu",
 		},
-		/*
 		{
 			fmsSongName: "jack russel",
 			lowerText: "JACK RUSSEL",
@@ -749,8 +756,6 @@
 			originalArtist: "Crafty Jumper",
 			coveringArtist: "Crafty Jumper",
 		},
-		*/
-		/*
 		{
 			fmsSongName: "Megalovania",
 			lowerText: "MEGALOVANIA",
